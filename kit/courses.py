@@ -3,7 +3,7 @@
 Every course has a `family`: 'history' (Greece, Rome and the eight to come: HTML fragments per module in the kit,
 a syllabus with prompts, provenance.json) or 'markdown' (Brand + AI: units as Markdown in courses/, data under
 generator/data/<slug>/). The root home is Academy and lists every course of both families (docs/academy.md, A1).
-Until A3 lands, a markdown course is a placeholder panel in Academy that links to its own artifact.
+A markdown course is built by mdcourse.py from its data file into one Academy course per course in that file (A3).
 
 Text fields may use these placeholders, filled per course at build time:
 {content_mods} modules excluding the audit unit · {total_mods} all modules · {nrep} reports written · {kwords} thousands of words written
@@ -110,8 +110,6 @@ BRAND_AI = dict(
     tracks={'A': ('marketing', 'Personal brand'), 'B': ('technology', 'Building with AI')},
     # content and status come from the hub's own data file; build.py reads it, nothing here is typed by hand
     data='generator/data/brand-ai/hub.py',
-    # until A3: the units are read on the standalone hub; the Academy panel links there
-    artifact='https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT',
     eyebrow='BRAND + AI',
     card='A · Building a Marketable Personal Brand and B · Using AI to Build a Brand. Who pays, for what, how long it takes; which model for which task, how to brief, where the setup leaks. Every unit sourced and ending in a shipped deliverable.',
 )

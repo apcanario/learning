@@ -5,7 +5,8 @@ Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, deskt
 width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
 under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
 navigation context (drawer, title, arrows, continue) across home -> Rome -> report -> home -> Greece -> report ->
-Brand + AI placeholder. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
+a Brand + AI course and its reading and build pages, the drawer groups (tracks open by default, a course's units as an
+accordion) and the Backlog page; the same panel checks again in the light theme. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
 its own) and the top bar spans the content column. With --shots, saves dark and light screenshots at the three widths.
 """
@@ -104,6 +105,9 @@ def main():
         if lay != [390, 1]: fails.append(f'phone layout {lay}: expected [390, 1] (missing viewport tag?)')
         else: print('phone layout: 390 px at scale 1')
         check_panels(pg, 'phone', fails)
+        pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')"); pg.wait_for_timeout(50)
+        check_panels(pg, 'phone light', fails)
+        pg.evaluate("localStorage.removeItem('hellas-theme'); document.documentElement.removeAttribute('data-theme')")
         # drawer in each context, every unit expanded
         for pid in ['home', 'greece', 'rome', 'brand-a', 'brand-b']:
             pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
@@ -172,17 +176,59 @@ def main():
         dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
         if rome_reps and dr[:3] != ['Academy', 'Rome: course home', 'Syllabus and prompts']: fails.append(f'rome drawer top: {dr}')
         pg.click('#closeB'); pg.wait_for_timeout(200)
-        # the Brand + AI courses (A under Marketing, B under Technology): each its own drawer context, no arrows, written units link out
+        # the Brand + AI courses (A under Marketing, B under Technology, A3): each its own drawer context with a Units group
+        # and a "How it is built" group; written units open reading pages inside the site (never a link out); the reading
+        # page is a report (prev/next, continue); the briefs, build order, audits, bibliography and changelog are pages too
         for bid, short, key in (('brand-a', 'Personal brand', 'A'), ('brand-b', 'Building with AI', 'B')):
             pg.click('#homeB'); pg.wait_for_timeout(80)
             pg.click(f'#home a.course[href="#{bid}"]'); pg.wait_for_timeout(80)
-            step(f'{bid} home', dict(id=bid, nav=bid, u=f'COURSE {key}', t=short, arrows=False))
+            step(f'{bid} home', dict(id=bid, nav=bid, u=f'COURSE {key}', t=short, arrows=True, prev=False))
+            pg.click('#menuB'); pg.wait_for_timeout(250)
+            gr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dunit')].map(u => u.querySelector('.ut').textContent + (u.classList.contains('closed') ? ':closed' : ':open'))")
+            if gr != ['Units:open', 'How it is built:closed']: fails.append(f'{bid} drawer groups on arrival: {gr}')
+            pg.click('#closeB'); pg.wait_for_timeout(200)
             ba = pg.evaluate(f"[...document.querySelectorAll('#{bid} a.hrow')].map(a => a.getAttribute('href'))")
-            if not ba or not all(h.startswith('https://claude.ai/artifact/') for h in ba): fails.append(f'{bid} written units do not link to the hub: {ba[:3]}')
+            if not ba or not all(h.startswith('#read-') for h in ba): fails.append(f'{bid} written units do not open reading pages: {ba[:3]}')
+            # navigation never leaves the site: no artifact link in a hero, a button row or the drawer (a unit's own citations may cite one)
+            ext = pg.evaluate(f"[...document.querySelectorAll('.panel[data-ctx=\"{bid}\"] .hero a, .panel[data-ctx=\"{bid}\"] .hlinks a, .panel[data-ctx=\"{bid}\"] .hrows a.hrow:not([target]), [data-navctx=\"{bid}\"] a')].filter(a => a.getAttribute('href').startsWith('http')).map(a => a.href)")
+            if ext: fails.append(f'{bid} navigation links out of the site: {ext[:3]}')
+            pg.click(f'#{bid} a.hrow[href="{ba[0]}"]'); pg.wait_for_timeout(80)
+            step(f'{bid} reading', dict(id=ba[0][1:], nav=bid, u=lambda u: u.startswith(short.upper() + ' · '), arrows=True, prev=True))
+            for pid, t in ((f'{bid}-build', 'How it is built'), (f'{bid}-order', 'Build order'), (f'briefs-{key.lower()}', 'Briefs'), (f'{bid}-audits', 'Audits'), (f'{bid}-bibliography', 'Bibliography'), (f'{bid}-changelog', 'Changelog')):
+                pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(50)
+                step(f'{bid} {t}', dict(id=pid, nav=bid, t=t))
+            pg.click('#homeB'); pg.wait_for_timeout(80)
+            step(f'home after {bid}', dict(id='home', cont=lambda c: c.startswith('Continue reading ' + short + ' · ')))
+            pg.click(f'#home a.course[href="#{bid}"]'); pg.wait_for_timeout(80)
+            step(f'{bid} home resumes', dict(id=bid, cont=lambda c: c.startswith('Continue ') and c != '(hidden)'))
             pg.click('#menuB'); pg.wait_for_timeout(250)
             dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
             if dr[:2] != ['Academy', f'{short}: course home']: fails.append(f'{bid} drawer top: {dr}')
             pg.click('#closeB'); pg.wait_for_timeout(200)
+        # the root drawer: Home, Changelog, Backlog, then a collapsible group per track, open by default
+        pg.click('#homeB'); pg.wait_for_timeout(80)
+        pg.click('#menuB'); pg.wait_for_timeout(250)
+        dr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dtop .ditem .t')].map(t => t.textContent)")
+        if dr != ['Home', 'Changelog', 'Backlog']: fails.append(f'root drawer top: {dr}')
+        gr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dunit')].map(u => u.querySelector('.ut').textContent + (u.classList.contains('closed') ? ':closed' : ':open'))")
+        if gr != ['History:open', 'Marketing:open', 'Technology:open']: fails.append(f'root drawer groups: {gr}')
+        pg.click('[data-navctx="root"] .dunit[data-unit="track:history"] .duh'); pg.wait_for_timeout(50)
+        if not pg.evaluate("document.querySelector('[data-navctx=\"root\"] .dunit[data-unit=\"track:history\"]').classList.contains('closed')"): fails.append('root drawer: the History group does not collapse')
+        pg.click('[data-navctx="root"] .dunit[data-unit="track:history"] .duh'); pg.wait_for_timeout(50)
+        pg.click('#closeB'); pg.wait_for_timeout(200)
+        # a course drawer is an accordion: opening a second unit closes the first
+        pg.evaluate("location.hash = 'greece'"); pg.wait_for_timeout(50)
+        pg.click('#menuB'); pg.wait_for_timeout(250)
+        pg.click('[data-navctx="greece"] .dunit[data-unit="1"] .duh'); pg.wait_for_timeout(30)
+        pg.click('[data-navctx="greece"] .dunit[data-unit="2"] .duh'); pg.wait_for_timeout(30)
+        op = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"greece\"] .dunit:not(.closed)')].map(u => u.dataset.unit)")
+        if op != ['2']: fails.append(f'greece drawer accordion: open units {op}, expected [\'2\']')
+        pg.click('#closeB'); pg.wait_for_timeout(200)
+        # the backlog page renders the queue and the chats done
+        pg.evaluate("location.hash = 'backlog'"); pg.wait_for_timeout(50)
+        step('backlog', dict(id='backlog', nav='root', u='ACADEMY', t='Backlog', arrows=False))
+        nt = pg.evaluate("document.querySelectorAll('#backlog table').length")
+        if nt < 3: fails.append(f'backlog page: {nt} tables, expected the lanes, the proposed rows and the chats done')
         # the home lists every live course under its track, in order: History (Greece, Rome), Marketing (A), Technology (B)
         pg.click('#homeB'); pg.wait_for_timeout(80)
         tr = pg.evaluate("[...document.querySelectorAll('#home .track')].map(t => t.querySelector('h2').textContent + ':' + [...t.querySelectorAll('.cgrid a.course')].map(a => a.getAttribute('href')).join(','))")

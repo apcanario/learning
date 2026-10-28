@@ -1,8 +1,10 @@
 """Assemble personal-mythology.html, the Academy site, from the course data in courses.py.
 
 The root home is Academy (docs/academy.md, A1): every course of both families. History courses (Greece, Rome) are
-built from their kit folders as before; a markdown course (Brand + AI) is, until A3, a placeholder panel whose
-content comes from its own data file (generator/data/<slug>/hub.py) and which links to its current artifact.
+built from their kit folders; a markdown course (Brand + AI) is built by mdcourse.py from its data file
+(generator/data/<slug>/hub.py, AD5) into one Academy course per course in that file (AD6, A3): a course home, a
+reading page per written unit, and the "How it is built" pages (method, build order, briefs, audits, bibliography,
+changelog). The site also renders the Project's backlog and chat changelog (docs/) as a Backlog page.
 
 Each course has a syllabus file, a fragments folder, a prompts index (the modules with a written report),
 a colour and a short name. Greece keeps its original panel ids (#greece, #syllabus, #m23); later courses
@@ -10,6 +12,7 @@ are namespaced (#rome, #rome-syllabus, #rm01).
 """
 import json, re, html, pathlib, importlib.util
 from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES
+import mdcourse
 
 R = pathlib.Path(__file__).resolve().parent
 PROV = json.load(open(R / 'provenance.json'))
@@ -140,7 +143,7 @@ def drawer(c):
     top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">Academy</span></a>'
            f'<a class="ditem dhome" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span class="n">⌂</span><span class="t">{c["short"]}: course home</span></a>'
            f'<a class="ditem dhome" href="#{c["syl_id"]}" data-target="{c["syl_id"]}"><span class="n">§</span><span class="t">Syllabus and prompts</span></a></div>')
-    return f'<nav class="dlist" data-navctx="{c["id"]}" aria-label="{c["short"]} course" hidden>{top}{out}</nav>'
+    return f'<nav class="dlist" data-navctx="{c["id"]}" data-accordion aria-label="{c["short"]} course" hidden>{top}{out}</nav>'
 
 
 def ucard(c, u):
@@ -285,6 +288,7 @@ def load_markdown(c):
     spec = importlib.util.spec_from_file_location('hubdata_' + c['id'], R.parent / c['data'])
     d = importlib.util.module_from_spec(spec); spec.loader.exec_module(d)
     c['hub'] = d
+    c['data_dir'] = (R.parent / c['data']).parent
     c['subcourses'] = d.COURSES
     c['written'] = d.WRITTEN
     c['nunits'] = sum(len(sc['units']) for sc in d.COURSES)
@@ -303,64 +307,15 @@ def md_courses(c):
         done = [u for u in sc['units'] if u[0] in c['written']]
         out.append(dict(id=f'brand-{sc["k"]}', home_id=f'brand-{sc["k"]}', parent=c, sc=sc, theme=theme, short=short, key=sc['key'],
                         name=sc['name'], color=sc['color'], units=sc['units'], done=done, nunits=len(sc['units']), nwritten=len(done),
-                        status='in progress', card=sc['tile'], artifact=f'{c["artifact"]}#course-{sc["k"]}'))
+                        status='in progress', card=sc['tile']))
     return out
-
-
-def markdown_home(m):
-    """Course panel for a markdown course until A3: goal, outcomes, progress and units, each written unit linking to its
-    reading page on the course's own artifact."""
-    c, sc, d = m['parent'], m['sc'], m['parent']['hub']
-    rows = ''
-    for code, title, scope, *_ in sc['units']:
-        if code in c['written']:
-            rows += f'<a class="hrow" href="{c["artifact"]}#{c["written"][code]}"><span class="n">{code}</span><span class="t">{html.escape(title)}<small>{html.escape(scope)}</small></span></a>'
-        else:
-            pill = PILL_NEXT if code == d.NEXT_UNIT else '<span class="pill">soon</span>'
-            rows += f'<div class="hrow soon"><span class="n">{code}</span><span class="t">{html.escape(title)}<small>{html.escape(scope)}</small></span>{pill}</div>'
-    pct = round(100 * m['nwritten'] / m['nunits'])
-    first = next((u for u in sc['units'] if u[0] in c['written']), None)
-    first_code, first_title = (first[0], first[1]) if first else ('', '')
-    first_href = f'{c["artifact"]}#{c["written"][first_code]}' if first else m['artifact']
-    audits = ''.join(f'<li><strong>{html.escape(dt)}</strong> · {txt}</li>' for dt, txt in d.AUDIT_LOG)
-    t = THEME[m['theme']]
-    return f'''
-<section class="panel home" id="{m['home_id']}" data-ctx="{m['id']}" data-kind="course" data-t="{html.escape(m['short'])}" data-u="COURSE {m['key']}" data-c="{m['color']}" style="--cc:{m['color']}" hidden>
-  <header class="hero">
-    {crumbs(('Academy', 'home'), (t['name'], 'track-' + m['theme']), (f"Course {m['key']} · {m['short']}", None))}
-    <div class="eyebrow"><span class="u" style="--c:{m['color']}">COURSE {m['key']}</span> · Brand + AI · <span class="u" style="--c:var(--gold)">IN PROGRESS</span></div>
-    <h1>{html.escape(m['name'])}</h1>
-    <p class="lede">{sc['intro']}</p>
-    <div class="stats" data-n="4"><div><b>{m['nwritten']}</b><span>of {m['nunits']} units written</span></div><div><b>{pct}%</b><span>of the course</span></div><div><b>{len(d.AUDIT_LOG)}</b><span>audit{'s' if len(d.AUDIT_LOG) != 1 else ''} run</span></div><div><b>{html.escape(d.NEXT_UNIT)}</b><span>next unit to write</span></div></div>
-    <div class="hlinks"><a class="hbtn" href="{first_href}"><span>{'Start the course' if first_code else 'Open the course'}</span><b>{html.escape(first_code + ' ' + first_title) if first_code else 'On the Brand + AI hub'}</b></a><a class="hbtn alt" href="{c['artifact']}#briefs-{sc['k']}"><span>Briefs</span><b>Every unit's brief, copyable</b></a></div>
-    <p class="prov flag">Until A3 (docs/academy.md) the units are read on the Brand + AI hub, the course's own artifact; each written unit below opens there.</p>
-  </header>
-  <section class="howto edge" style="--hc:var(--blue)"><h2>What you will be able to do</h2><p>{html.escape(sc['goal'][0].upper() + sc['goal'][1:])}</p><ul>{sc['outcomes']}</ul><p class="over">{d.COURSE_NOTE}</p></section>
-  <h2 class="hsec">Units, in writing order</h2>
-  <div class="hrows">{rows}</div>
-  <details class="howto rules"><summary><h2>Audits run</h2><span>{len(d.AUDIT_LOG)} · next {html.escape(d.NEXT_AUDIT)}</span></summary><ul>{audits}</ul></details>
-  <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>Back to every course.</b></a>
-</section>'''
-
-
-def markdown_nav(m):
-    c, sc, d = m['parent'], m['sc'], m['parent']['hub']
-    out = f'<div class="dsec">Course {sc["key"]} · {html.escape(sc["name"])}</div>'
-    for code, title, *_ in sc['units']:
-        if code in c['written']:
-            out += f'<a class="ditem ext" href="{c["artifact"]}#{c["written"][code]}"><span class="n">{code}</span><span class="t">{html.escape(title)}</span></a>'
-        else:
-            pill = PILL_NEXT if code == d.NEXT_UNIT else '<span class="pill">soon</span>'
-            out += f'<div class="dsoon"><span class="n">{code}</span><span class="t">{html.escape(title)}</span>{pill}</div>'
-    top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">Academy</span></a>'
-           f'<a class="ditem dhome" href="#{m["home_id"]}" data-target="{m["home_id"]}"><span class="n">⌂</span><span class="t">{html.escape(m["short"])}: course home</span></a>'
-           f'<a class="ditem dhome ext" href="{m["artifact"]}"><span class="n">↗</span><span class="t">Read on the Brand + AI hub (until A3)</span></a></div>')
-    return f'<nav class="dlist" data-navctx="{m["id"]}" aria-label="{html.escape(m["short"])} course" hidden>{top}{out}</nav>'
 
 
 for c in MARKDOWN:
     load_markdown(c)
 MD = [m for c in MARKDOWN for m in md_courses(c)]
+for m in MD:
+    m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV)
 
 # the changelog page, built from CHANGELOG.md (the file is the source; the page is a rendering of it)
 def md_inline(t):
@@ -451,7 +406,41 @@ changelog = f"""
   <h2 class="hsec">Sessions, newest first</h2>
   <div class="clogs">{cl_cards}</div>
 </section>"""
-cl_link = f'<div class="hlinks" data-one><a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {cl_since}, newest first</b></a></div>'
+cl_link = (f'<div class="hlinks"><a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {cl_since}, newest first</b></a>'
+           f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a></div>')
+
+# the backlog page: docs/BACKLOG.md (the queue) and docs/CHANGELOG.md (the chats done), rendered as they are
+def md_sections(path):
+    """A docs/ markdown file as (title, intro lines, [(heading, lines)]) split on '## ' headings."""
+    L = path.read_text(encoding='utf-8').split('\n')
+    title, intro, secs = L[0][2:], [], []
+    for ln in L[1:]:
+        if ln.startswith('## '):
+            secs.append((ln[3:], []))
+        elif secs:
+            secs[-1][1].append(ln)
+        else:
+            intro.append(ln)
+    return title, intro, secs
+
+DOCS = R.parent / 'docs'
+bl_title, bl_intro, bl_secs = md_sections(DOCS / 'BACKLOG.md')
+dc_title, dc_intro, dc_secs = md_sections(DOCS / 'CHANGELOG.md')
+dc_rows = sum(1 for ln in (DOCS / 'CHANGELOG.md').read_text(encoding='utf-8').split('\n') if ln.startswith('| ') and not ln.startswith('| Date') and not ln.startswith('|---'))
+bl_body = ''.join(f'<section class="howto clsec" style="--hc:var(--orange)"><h2>{md_inline(h)}</h2>{md_blocks(b)}</section>' for h, b in bl_secs)
+dc_body = f'<section class="howto clsec" style="--hc:var(--gold)"><h2>{md_inline(dc_title)}</h2>{md_blocks(dc_intro)}</section>' + ''.join(f'<section class="howto clsec" style="--hc:var(--gold)"><h2>{md_inline(h)}</h2>{md_blocks(b)}</section>' for h, b in dc_secs)
+backlog = f"""
+<section class="panel log" id="backlog" data-ctx="root" data-kind="backlog" data-t="{html.escape(bl_title)}" data-u="ACADEMY" data-c="var(--orange)" hidden>
+  <header class="hero">
+    {crumbs(('Academy', 'home'), ('Backlog', None))}
+    <div class="eyebrow"><span class="u" style="--c:var(--orange)">BACKLOG</span> · the queue of chats · {dc_rows} chats done</div>
+    <h1>{html.escape(bl_title)}</h1>
+    {md_blocks(bl_intro).replace('<p>', '<p class="lede">', 1)}
+  </header>
+  {bl_body}
+  <h2 class="hsec">Chats done</h2>
+  {dc_body}
+</section>"""
 
 soon_cards = ''.join(f'<details class="course soon" style="--c:{col}"><summary><span class="cname">{html.escape(short)}</span><span class="ctitle">{html.escape(name)}</span><span class="pill">coming soon</span></summary><p class="nscope">{html.escape(scope)}</p><p class="nspine"><span>Spine</span>{html.escape(spine)}</p></details>' for short, name, col, scope, spine in NEXT)
 
@@ -517,25 +506,28 @@ roothome = f'''
   {cl_link}
 </section>'''
 
-panels = [roothome, changelog]
+panels = [roothome, changelog, backlog]
 for c in HISTORY:
     panels += [course_home(c), syllabus(c)] + c['report_panels']
 for m in MD:
-    panels.append(markdown_home(m))
+    panels += m['panels']
 
 def root_nav_track(t):
     hist = [c for c in HISTORY if c['theme'] == t['id']]
     mds = [m for m in MD if m['theme'] == t['id']]
-    out = f'<div class="dsec hub" style="--c:{t["color"]}">{html.escape(t["name"])}</div>'
+    out = ''
     out += ''.join(f'<a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">{c["num"]}</span><span class="t">{c["short"]}<small>{c["card_units"]} units · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"]) + " reports"}</small></span></a>' for c in hist)
     if t['id'] == 'history':
         out += ''.join(f'<div class="dsoon" style="--c:{col}"><span class="n">{k + len(HISTORY) + 1}</span><span class="t">{html.escape(s)}</span><span class="pill">soon</span></div>' for k, (s, _, col, _, _) in enumerate(NEXT))
     out += ''.join(f'<a class="ditem dcourse" href="#{m["home_id"]}" data-target="{m["home_id"]}" style="--c:{m["color"]}"><span class="n">{m["key"]}</span><span class="t">{html.escape(m["short"])}<small>{m["nwritten"]} of {m["nunits"]} units</small></span></a>' for m in mds)
-    return out
+    n = len(hist) + len(mds)
+    # a collapsible group (open by default; the reader's choice is remembered): the track label carries its colour
+    return (f'<div class="dunit closed" data-unit="track:{t["id"]}" data-open data-ulabel="{html.escape(t["name"]).upper()}" style="--c:{t["color"]}">'
+            f'<button class="duh" type="button" aria-expanded="false"><span class="un">■</span><span class="ut">{html.escape(t["name"])}</span><span class="cnt">{n}</span>{ICON_CHEV}</button><div class="ditems">{out}</div></div>')
 
-root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a><a class="ditem dhome" href="#changelog" data-target="changelog"><span class="n">≡</span><span class="t">Changelog</span></a></div>'
+root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a><a class="ditem dhome" href="#changelog" data-target="changelog"><span class="n">≡</span><span class="t">Changelog</span></a><a class="ditem dhome" href="#backlog" data-target="backlog"><span class="n">☐</span><span class="t">Backlog</span></a></div>'
             + ''.join(root_nav_track(t) for t in THEMES) + '</nav>')
-navs = root_nav + ''.join(drawer(c) for c in HISTORY) + ''.join(markdown_nav(m) for m in MD)
+navs = root_nav + ''.join(drawer(c) for c in HISTORY) + ''.join(m['nav'] for m in MD)
 
 CSS = open(R / 'shell.css').read()
 JS = open(R / 'shell.js').read()
@@ -591,5 +583,5 @@ open(R / 'FABLE-REVIEW.md', 'w').write('\n'.join(q) + '\n')
 from biblio import write_all as _biblio
 print(f'bibliography: {_biblio()} unit files')
 print(' · '.join(f"{c['short']}: {c['nrep']}/{c['content_mods']} reports, {c['words']:,} words" for c in HISTORY)
-      + ''.join(f" · {c['short']}: {c['nwritten']}/{c['nunits']} units (placeholder)" for c in MARKDOWN), '· size', len(page))
+      + ''.join(f" · {c['short']}: {c['nwritten']}/{c['nunits']} units" for c in MARKDOWN), '· size', len(page))
 print(REVIEW_LINE)

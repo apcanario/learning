@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **A3 (session 18):** the Brand + AI courses are read inside Academy (`mdcourse.py`), each with its units, briefs, build order, audits, bibliography and changelog; the standalone hub is retired. Backlog page, collapsible drawer groups, theme v3 hover states. Site version 50.
 - **DD-B3 (session 17):** course B is 8 core units and 3 deep dives; Academy shows B 2 of 11. Site version 49.
 - **Navigable (session 16):** breadcrumbs on every page, Start or Continue on every course page; course B is Using AI to Build a Brand. Site version 47.
 - **Catalogue (session 15):** the home lists every course under its track (History, Marketing, Technology); Brand + AI is two Academy courses, A and B. Site version 46.
@@ -37,6 +38,26 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 15. The home becomes a catalogue by track (A0) | 78 | 59 |
 | 28 Oct | 16. Navigable by others: breadcrumbs, start buttons, course B renamed | 78 | 59 |
 | 28 Oct | 17. Course B gains DD-B3; Academy counts rebuilt | 78 | 59 |
+| 28 Oct | 18. Brand + AI inside Academy (A3), the Backlog page, collapsible drawer, hover states | 78 | 59 |
+
+## 28 October 2026 · Session 18 · Brand + AI inside Academy (A3), the Backlog page, collapsible drawer, hover states
+
+Pedro's five points after session 17, worked at once: Brand + AI units opened the hub artifact instead of a page of the site; the public site should show the backlog beside the changelog; the drawer should be collapsible; side-by-side cards should share a height with their buttons on one line; the theme had no hover states. No report changed and no flag was cleared.
+
+### A3
+`mdcourse.py` is the markdown course family: `build.py` reads `generator/data/brand-ai/hub.py` (unchanged, AD5) and builds one Academy course per course in it (AD6): the course home (goal, outcomes, progress, units in writing order, audits run, course A's Frame), a reading page per written unit (`#read-<code>`, `data-kind="report"`, so prev/next, Continue and stored progress work), and the "How it is built" pages (`#brand-<k>-build`, `-order`, `#briefs-<k>`, `-audits`, `-bibliography`, `-changelog`). The drawer of each course has two groups: Units (open) and How it is built (closed). No navigation leaves the site. `verify.py` walks both courses, their reading and build pages, the Continue buttons, the drawer groups and the Backlog page, and runs the panel checks in the light theme as well; it absorbs the retired `check_page.py`. Retired: `generator/build_hub.py`, `hub.js`, `check_page.py`, `build_history.py`, `hubs/`. The skills, `SETUP.md`, `method.md` §7 and the READMEs point at Academy.
+
+### Backlog page
+`#backlog` (root) renders `docs/BACKLOG.md` and `docs/CHANGELOG.md` as they are; the Academy home links it beside the Changelog, and so does the root drawer.
+
+### Drawer
+Groups are generic (`.dunit`): a course's units are an accordion (opening one closes the others; the current report's unit opens on arrival), the root tracks are collapsible and open by default, and the reader's choice is remembered per group (`hellas-units-open` now stores 1 or 0).
+
+### Theme version 3
+`design/theme.css` section 7: hover states on cards, rows, drawer items, buttons, chips, summaries and links where a pointer can hover; pressed states everywhere; transitions that respect reduced motion; catalogue cards are flex columns so side-by-side cards share a height with the button on one line (`.cgrid` stretches). `shell.css` is the copy.
+
+### Published
+Version 50 of the site to the Academy artifact. The Pages push (`deploy.sh`) was refused by the session's deploy guard again and is left to run by hand.
 
 ## 28 October 2026 · Session 17 · Course B gains DD-B3; Academy counts rebuilt
 

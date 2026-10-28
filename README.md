@@ -6,10 +6,10 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 
 | Path | What |
 |---|---|
-| `kit/` | The Personal Mythology kit: the site builder (`build.py`), checks, both courses' reports, syllabi, audits, bibliographies, changelog. `kit/README.md` is its own guide. |
+| `kit/` | Academy: the site builder (`build.py`, with `mdcourse.py` for markdown courses), `verify.py`, `deploy.sh`, both history courses' reports, syllabi, audits, bibliographies, the site changelog. `kit/README.md` is its own guide. |
 | `design/theme.css` | The one stylesheet for every page in the Project. `design/README.md` says how to change it and propagate the change. |
 | `docs/` | The method layer: `method.md`, `courses-index.md`, `BACKLOG.md` (the queue of chats: start here), `CHANGELOG.md` (chats done), `academy.md` (the one-artifact plan), `sourcing-standard.md`, `reader.md`, `project-instructions.md`, the status notes. The claude.ai Project "Learning" holds mirrors of these; this repo is canonical. |
-| `generator/` | The hub generator: `build_hub.py` (renders `data/<slug>/hub.py` on `design/theme.css`), `build_history.py` (the history site from `kit/`), `check_page.py` (400 px, dark and light, 44 px targets, no overflow, no console error), `hub.js`, `data/_template/` for a new hub, `data/brand-ai/` (the Brand + AI content: `hub.py`, `units_data.py`, `units/`, `research/`, `briefs/`), `hubs/` (built pages). |
+| `generator/` | The data of the markdown courses (no generator since A3): `data/brand-ai/` (the Brand + AI content: `hub.py`, `units_data.py`, `units/`, `research/`, `briefs/`) and `data/_template/` for a new markdown course. `kit/build.py` renders them through `kit/mdcourse.py`. |
 | `skills/` | The four account skills (`write-unit`, `audit-units`, `file-unit`, `new-course`); install per `SETUP.md` §3. |
 | `SETUP.md` | How the Project, knowledge, skills and vault are set up and kept current. |
 | `audits/` | Audit reports that are not kit files (Brand + AI Audit 1). |
@@ -25,9 +25,9 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 
 1. Edit `design/theme.css` (a token in section 1 before a component).
 2. Copy it over `kit/shell.css`: `cp design/theme.css kit/shell.css`.
-3. `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED), and the Brand + AI hub build in `generator/`.
-4. Republish each page to its existing artifact (links in `docs/courses-index.md`). Never a new artifact.
+3. `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED).
+4. Publish Academy: the built page to its existing artifact (link in `docs/courses-index.md`), never a new one; then `./deploy.sh` for GitHub Pages.
 
 ## Where this is going (28 October 2026)
 
-One artifact, Academy, holds every course (`docs/academy.md`): the Personal Mythology site's `build.py` grows to render Markdown courses too, the page splits into a shell plus fetched report files, and the standalone Brand + AI hub is absorbed. Until A3 lands, the Brand + AI hub is built with `cd generator && python3 build_hub.py data/brand-ai && python3 check_page.py hubs/brand-and-ai-courses.html` and republished to its artifact.
+One site, Academy, holds every course (`docs/academy.md`). A3 is done: `kit/build.py` renders the Brand + AI courses from their data file and the standalone hub is gone. Next, A2 splits the page into a shell plus fetched report files, A4 adds a generated "How it was built" page per course, and A5 makes `courses/` the source of the markdown courses.

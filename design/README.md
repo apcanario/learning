@@ -1,6 +1,6 @@
 # design/
 
-**Version 2, 28 October 2026** (section 6, responsive: tablet from 768 px, desktop from 1100 px; the phone layout is version 1's, unchanged). Version 1 was the extraction of 27 October 2026.
+**Version 3, 28 October 2026** (section 7, interaction: hover and pressed states on every clickable thing where a pointer can hover, transitions that respect reduced motion, and equal-height catalogue cards with the button on one line). Version 2, the same day, added section 6 (responsive: tablet from 768 px, desktop from 1100 px; the phone layout is version 1's, unchanged). Version 1 was the extraction of 27 October 2026.
 
 `theme.css` is the only place style is defined in the Learning Project. It is the Personal Mythology visual system (the history site's `shell.css` of 27 October 2026), with three fixes and the few components the hubs need that the history pages lack. Every page in the Project is built from it; no page carries its own stylesheet.
 

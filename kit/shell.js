@@ -13,7 +13,7 @@
   });
   var items=[].slice.call(document.querySelectorAll('.ditem'));
   var navs=[].slice.call(document.querySelectorAll('[data-navctx]'));
-  items.forEach(function(a){var un=a.closest('.dunit');if(!un)return;meta[a.getAttribute('data-target')]={t:a.querySelector('.t').textContent,n:a.querySelector('.n').textContent,u:un.getAttribute('data-ulabel'),c:un.style.getPropertyValue('--c')};});
+  items.forEach(function(a){var un=a.closest('.dunit');if(!un||meta[a.getAttribute('data-target')])return;meta[a.getAttribute('data-target')]={t:a.querySelector('.t').textContent,n:a.querySelector('.n').textContent,u:un.getAttribute('data-ulabel'),c:un.style.getPropertyValue('--c')};});
   function isReport(id){return kindOf[id]==='report';}
   function seqFor(ctx){return ids.filter(function(i){return ctxOf[i]===ctx;});}
   // KEY keeps the last report read in any course (the name predates the second course); LKEY+ctx the last per course.
@@ -42,13 +42,25 @@
   function syncWide(){if(!wide)return;if(wide.matches){closeDrawer();drawer.setAttribute('aria-hidden','false');}}
   if(wide){if(wide.addEventListener)wide.addEventListener('change',syncWide);else if(wide.addListener)wide.addListener(syncWide);syncWide();}
 
-  // unit collapse: closed by default; remember which the reader opened (keys are namespaced per course)
+  // collapsible groups in the drawer (.dunit): a course's units are an accordion, one open at a time, closed by
+  // default; the root tracks are independent and open by default. The reader's choice is remembered per group
+  // (1 open, 0 closed; keys are namespaced per course).
   var opened={};try{opened=JSON.parse(get(UKEY)||'{}')||{};}catch(e){}
+  function setOpen(un,on){un.classList.toggle('closed',!on);un.querySelector('.duh').setAttribute('aria-expanded',on?'true':'false');}
+  function openGroup(un,remember){
+    var nav=un.closest('[data-navctx]');
+    if(nav&&nav.hasAttribute('data-accordion'))[].slice.call(nav.querySelectorAll('.dunit')).forEach(function(o){if(o!==un&&!o.classList.contains('closed')){setOpen(o,false);if(remember)opened[o.getAttribute('data-unit')]=0;}});
+    setOpen(un,true);if(remember)opened[un.getAttribute('data-unit')]=1;
+    if(remember)put(UKEY,JSON.stringify(opened));
+  }
   [].slice.call(document.querySelectorAll('.dunit')).forEach(function(un){
     var u=un.getAttribute('data-unit');var h=un.querySelector('.duh');
-    if(opened[u]){un.classList.remove('closed');h.setAttribute('aria-expanded','true');}
-    h.addEventListener('click',function(){var c=un.classList.toggle('closed');h.setAttribute('aria-expanded',c?'false':'true');if(c)delete opened[u];else opened[u]=1;put(UKEY,JSON.stringify(opened));});
+    var dflt=un.hasAttribute('data-open'),st=opened[u];
+    setOpen(un,st===1||(st===undefined&&dflt));
+    h.addEventListener('click',function(){if(un.classList.contains('closed'))openGroup(un,true);else{setOpen(un,false);opened[u]=0;put(UKEY,JSON.stringify(opened));}});
   });
+  // an accordion keeps one group open: the stored state may hold several from before, so keep only the first
+  navs.forEach(function(n){if(!n.hasAttribute('data-accordion'))return;var open=[].slice.call(n.querySelectorAll('.dunit:not(.closed)'));open.slice(1).forEach(function(o){setOpen(o,false);});});
 
   function lastAny(){var s=get(KEY);return s&&isReport(s)&&meta[s]?s:null;}
   function lastIn(ctx){var s=get(LKEY+ctx);if(s&&isReport(s)&&ctxOf[s]===ctx&&meta[s])return s;s=lastAny();return s&&ctxOf[s]===ctx?s:null;}
@@ -59,7 +71,7 @@
     panels.forEach(function(p){p.hidden=p.id!==id;});
     navs.forEach(function(n){n.hidden=n.getAttribute('data-navctx')!==ctx;});
     items.forEach(function(a){var on=a.getAttribute('data-target')===id;a.classList.toggle('is-active',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
-      if(on){var un=a.closest('.dunit');if(un&&un.classList.contains('closed')){un.classList.remove('closed');un.querySelector('.duh').setAttribute('aria-expanded','true');}}});
+      if(on){var un=a.closest('.dunit');if(un&&un.classList.contains('closed'))openGroup(un,false);}});
     var m=meta[id]||{};
     curFull=m.n?(m.u||'')+' · '+m.n:(m.u||'');fitCur();curT.textContent=m.t||'';cur.style.setProperty('--c',m.c||'');
     homeB.classList.toggle('is-here',id==='home');
@@ -70,8 +82,8 @@
     var pg=document.querySelector('#'+id+' .pager');
     if(pg&&!pg.innerHTML){
       var rs=reportsBy[ctx]||[],r=rs.indexOf(id),h='';
-      if(r>0){var p=meta[rs[r-1]];h+='<a href="#'+rs[r-1]+'" class="prev"><span>'+p.n+'</span>'+p.t+'</a>';}
-      if(r>=0&&r<rs.length-1){var n=meta[rs[r+1]];h+='<a href="#'+rs[r+1]+'" class="next">'+n.t+'<span>'+n.n+'</span></a>';}
+      if(r>0){var p=meta[rs[r-1]];h+='<a href="#'+rs[r-1]+'" class="prev">'+(p.n?'<span>'+p.n+'</span>':'')+p.t+'</a>';}
+      if(r>=0&&r<rs.length-1){var n=meta[rs[r+1]];h+='<a href="#'+rs[r+1]+'" class="next">'+n.t+(n.n?'<span>'+n.n+'</span>':'')+'</a>';}
       pg.innerHTML=h;
     }
     if(isReport(id)){put(KEY,id);put(LKEY+ctx,id);}
@@ -93,7 +105,7 @@
     [].slice.call(document.querySelectorAll('.hbtn.cont')).forEach(function(b){
       var long=b.hasAttribute('data-long'),s=long?lastAny():lastIn(b.getAttribute('data-course'));
       var t=b.querySelector('b');
-      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(long?(courseName[ctxOf[s]]||'')+' · ':'')+meta[s].n+' '+meta[s].t;}
+      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(long?(courseName[ctxOf[s]]||'')+' · ':'')+(meta[s].n?meta[s].n+' ':'')+meta[s].t;}
       else{b.hidden=true;}
       // "Start the course" shows only while there is nothing to continue; data-one when a single button is left
       var st=b.parentNode.querySelector('.hbtn.start');if(st)st.hidden=!!s;
@@ -106,7 +118,6 @@
   nextB.addEventListener('click',function(){var seq=seqFor(ctxOf[current]),k=seq.indexOf(current);if(k<seq.length-1)go(seq[k+1]);});
   homeB.addEventListener('click',function(e){e.preventDefault();go('home');});
   [].slice.call(document.querySelectorAll('[data-target]:not(.ditem)')).forEach(function(a){a.addEventListener('click',function(e){var t=a.getAttribute('data-target');if(!t)return;e.preventDefault();go(t);});});
-  // a drawer item without data-target is an external link (a markdown course's own artifact until A3): the browser follows it
   items.forEach(function(a){a.addEventListener('click',function(e){var t=a.getAttribute('data-target');if(!t){closeDrawer();return;}e.preventDefault();closeDrawer();go(t);});});
 
   var themeB=document.getElementById('themeB');
@@ -115,7 +126,8 @@
 
   [].slice.call(document.querySelectorAll('.copy')).forEach(function(bt){
     bt.addEventListener('click',function(){var pre=bt.closest('.pbox').querySelector('pre');var txt=pre.textContent;
-      function ok(){bt.textContent='copied';bt.classList.add('ok');setTimeout(function(){bt.textContent='copy prompt';bt.classList.remove('ok');},1600);}
+      var was=bt.textContent;
+      function ok(){bt.textContent='copied';bt.classList.add('ok');setTimeout(function(){bt.textContent=was;bt.classList.remove('ok');},1600);}
       function fb(){try{var r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);bt.textContent='selected, copy manually';}catch(e){}}
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fb);}else{fb();}});
   });

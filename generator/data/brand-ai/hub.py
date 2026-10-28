@@ -1,6 +1,7 @@
-"""Brand + AI hub: the content. build_hub.py renders it on design/theme.css.
+"""Brand + AI: the course data (AD5). Since A3, kit/build.py renders it into Academy through kit/mdcourse.py (one Academy
+course per entry in COURSES), on design/theme.css. build_hub.py is retired.
 
-Everything a reader sees on the hub is here or in the two files beside it:
+Everything a reader sees of the two courses is here or in the two files beside it:
   units_data.py                          the units and their briefs (PRE, A, B), verbatim from the v5.1 generator
   audience-growth-across-platforms.md    the written material for A2, A6, A9 (the research report)
 Text in this file is the v5.1 hub's text, re-marked with theme classes. Edit content here; edit style only in
@@ -16,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v6.8 · 28 Oct 2026'
+VERSION = 'v7 · 28 Oct 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -100,8 +101,8 @@ FRAME = """<h2 class="hsec">Frame</h2>
 LEARN_LEDE = "Read here. Everything about how the units get written lives in Build."
 LEARN_NOTE = "Order of writing: B1–B4 first, then A1, DD-B3, A3, A4, A5, A7, A8 with B5–B8 interleaved (B5 beside A3, B7 beside A5), then the four deep dives; DD-A2 and DD-B2 last. The history course keeps its own slot."
 
-LEARNING_NOTE = """<section class="howto edge" style="--hc:var(--blue)"><h2>Now in the Learning Project</h2>
-  <p>Since v6 this hub lives in the Learning Project with the history course. Where the procedure below and the Project's <code>method.md</code> differ, <code>method.md</code> governs: the Project, the vault path, the audit cadence and the review model are set there. The text below is kept as the v5.1 record.</p>
+LEARNING_NOTE = """<section class="howto edge" style="--hc:var(--blue)"><h2>Now in Academy</h2>
+  <p>Since v7 (28 Oct 2026, A3) the two courses are read here, in Academy, with the history courses; the standalone hub is gone. Where the procedure below and the Project's <code>method.md</code> differ, <code>method.md</code> governs: the Project, the vault path, the audit cadence and the review model are set there. The text below is kept as the v5.1 record.</p>
 </section>"""
 
 BUILD_LEDE = "Method, model rules, and the pages that hold the briefs, the audits and the sources. Nothing here is course content."
@@ -195,6 +196,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-10-28 12:30', "v7. The hub is retired (A3): both courses are read in Academy, each with its own drawer (Units; How it is built: method, build order, briefs, audits, bibliography, changelog) and each written unit as a page with prev/next and Continue. Same data file, same text; the Learn/Build split and the Hub template page are gone from the site (TEMPLATE_BLOCKS stays here for the new-course skill). No unit changed."),
     ('2026-10-28 11:10', "v6.8. DD-B3 Deep dive: how the best practitioners use the tool added to course B (units_data.py), search on: Karpathy's documented practice 2025–26 from his own posts, talks and repositories, and the other methods with a named author and a primary source (Anthropic, OpenAI, Willison, Mollick, spec-driven workflows, the chain-of-thought literature), each graded by evidence and tested for transfer from code to his work; deliverable: method cards and ten operating rules. Placed after A1 in the build order so B5, B7 and DD-B1 inherit it; Audit 2 still after B3, B4, A1. Course B is now 8 core units and 3 deep dives; 22 units, 17 remain. Build-order fix in build_hub.py: rows are numbered as courses-index.md numbers them (B1 is 4, Audit 1 after it, Audit 2 after A1), and the last unit no longer gets a sample-audit row beside the final audit. No written unit changed."),
     ('2026-10-28 10:30', "v6.7. Course B renamed Using AI to Build a Brand (hub.py NAME_B, the filed B units' front matter). Units unchanged."),
     ('2026-10-28 10:10', "v6.6. Home title is the hub's name (Brand + AI: two courses); Academy now lists course A under its Marketing track and course B under Technology, each linking here. No unit changed."),

@@ -17,7 +17,9 @@
    5  Components added for hubs (the history site has no equivalent)
    6  Responsive: tablet (from 768 px) and desktop (from 1100 px); the phone
       layout below 768 px is the one every rule above describes and does not change
-   Version 2, 28 Oct 2026 (section 6 added; 1 was the 27 Oct extraction).
+   7  Interaction: hover and pressed states for every clickable thing, on devices
+      that can hover; equal-height catalogue cards with the button on one line
+   Version 3, 28 Oct 2026 (section 7 added; 2 added section 6; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -460,7 +462,7 @@ details.clog[open]>summary::after{content:"–"}
   /* reading column: 760 px; the top bar follows it */
   main,.top-in{max-width:760px}
   /* two columns: course cards, unit cards, coming-soon list; an only card spans both */
-  .cgrid{grid-template-columns:1fr 1fr;column-gap:10px;align-items:start}
+  .cgrid{grid-template-columns:1fr 1fr;column-gap:10px;align-items:stretch}
   .panel.root>.cgrid{gap:24px 12px}
   .cgrid>.course:only-child{grid-column:1 / -1}
   .ucards,.part .ucards,.smods,.sunit .smods,.soonlist{grid-template-columns:1fr 1fr;align-items:start}
@@ -482,3 +484,31 @@ details.clog[open]>summary::after{content:"–"}
   html.locked{overflow:auto}
   /* the reading measure is unchanged (68ch on report text); the column itself stays 760 px */
 }
+
+/* 7 · Interaction ------------------------------------------------------------ */
+/* A card is a flex column so that side-by-side cards share a height and their buttons sit on one
+   line at the bottom (the meter and the button are pushed down; the blurb takes the slack). */
+.course.live{display:flex;flex-direction:column}
+.course.live p{flex:1 1 auto}
+.course.live .cgo{align-self:flex-start;margin-top:auto}
+/* transitions on the properties the states below change; respects reduced motion */
+@media (prefers-reduced-motion:no-preference){
+  .course,.ucard,.smod,.hrow,.ditem,.duh,.hbtn,.cgo,.ib,.toc a,.pager a,.copy,.rlink,.crumbs a,details.ucard>summary,details.rules>summary,details.clog>summary,details.course.soon>summary,.prompt summary,.quiz summary{transition:background-color .15s,border-color .15s,color .15s,box-shadow .15s,transform .15s}
+}
+/* hover: only where a pointer can hover (touch screens keep the pressed state below) */
+@media (hover:hover){
+  a.course:hover{border-color:var(--c);box-shadow:0 2px 12px var(--shadow);transform:translateY(-1px)}
+  a.course:hover .cgo{filter:brightness(1.1)}
+  .hrow:not(.soon):hover,.ditem:hover,.duh:hover,details.ucard>summary:hover,details.rules>summary:hover,details.clog>summary:hover,details.course.soon>summary:hover{background:var(--hover)}
+  .ditem:hover{color:var(--fg)}
+  .ib:not(:disabled):hover{background:var(--hover)}
+  .hbtn:hover{filter:brightness(1.1)}
+  .hbtn.alt:hover{filter:none;border-color:var(--muted);background:var(--hover)}
+  .toc a:hover,.pager a:hover,.copy:hover{border-color:var(--muted);color:var(--fg);background:var(--hover)}
+  .rlink:hover,.crumbs a:hover,.report a:hover,.prompt summary:hover,.quiz summary:hover{text-decoration:underline}
+  .smod:hover,.ucard:not(details):hover{border-color:var(--line-2)}
+}
+/* pressed: every device */
+a.course:active{transform:translateY(0);box-shadow:none}
+.hbtn:active,.cgo:active,.copy:active,.ib:active,.toc a:active,.pager a:active{transform:translateY(1px)}
+.hrow:active,.ditem:active,.duh:active,details.ucard>summary:active,details.rules>summary:active{background:var(--hover)}

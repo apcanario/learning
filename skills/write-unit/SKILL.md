@@ -14,7 +14,7 @@ One chat writes one unit. The method is `method.md` (§2 anatomy, §3 order, §4
 - Every unit this one points back to must be filed (history: every report its lane note names is registered). If one is not, stop and name it.
 
 ## 2. Assemble the brief (never reword it)
-- **Brand + AI:** use the brief pasted from the hub's Build · Briefs page. If none was pasted, build it exactly as the hub does: `PRE` from `generator/data/brand-ai/units_data.py` with `{GOAL}` replaced by the course goal in `generator/data/brand-ai/hub.py`, a blank line, then the unit's brief (fifth field of its entry).
+- **Brand + AI:** use the brief pasted from the course's Briefs page in Academy. If none was pasted, build it exactly as the hub does: `PRE` from `generator/data/brand-ai/units_data.py` with `{GOAL}` replaced by the course goal in `generator/data/brand-ai/hub.py`, a blank line, then the unit's brief (fifth field of its entry).
 - **Personal Mythology:** the module's `<pre>` prompt in its syllabus (`roman-syllabus.html` or `greek-syllabus.html`, `data-id="<id>"`) is the contract. Read `AGENT-SPEC.md` and `WRITER-BRIEF.md` in full, the module's lane note in `BACKLOG.md`, the quality-bar reports `WRITER-BRIEF.md` names, and every extra file the lane note lists. If a needed file is not attached, ask for it before writing.
 
 ## 3. Set the search mode
