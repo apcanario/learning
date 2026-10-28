@@ -67,6 +67,11 @@
   });
   // an accordion keeps one group open: the stored state may hold several from before, so keep only the first
   navs.forEach(function(n){if(!n.hasAttribute('data-accordion'))return;var open=[].slice.call(n.querySelectorAll('.dunit:not(.closed)'));open.slice(1).forEach(function(o){setOpen(o,false);});});
+  // the root tracks start closed; with no remembered choice, the track of the last report read opens (else the first)
+  (function(){var root=document.querySelector('[data-navctx="root"]');if(!root)return;
+    var groups=[].slice.call(root.querySelectorAll('.dunit'));if(!groups.length||groups.some(function(g){return opened[g.getAttribute('data-unit')]!==undefined;}))return;
+    var s=lastAny(),hit=null;if(s){var a=root.querySelector('.ditem[data-target="'+ctxOf[s]+'"]');if(a)hit=a.closest('.dunit');}
+    setOpen(hit||groups[0],true);})();
 
   function lastAny(){var s=get(KEY);return s&&isReport(s)&&meta[s]?s:null;}
   function lastIn(ctx){var s=get(LKEY+ctx);if(s&&isReport(s)&&ctxOf[s]===ctx&&meta[s])return s;s=lastAny();return s&&ctxOf[s]===ctx?s:null;}
@@ -141,7 +146,10 @@
     [].slice.call(document.querySelectorAll('.hbtn.cont')).forEach(function(b){
       var long=b.hasAttribute('data-long'),s=long?lastAny():lastIn(b.getAttribute('data-course'));
       var t=b.querySelector('b');
-      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(long?(courseName[ctxOf[s]]||'')+' · ':'')+(meta[s].n?meta[s].n+' ':'')+meta[s].t;}
+      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(long?(courseName[ctxOf[s]]||'')+' · ':'')+(meta[s].n?meta[s].n+' ':'')+meta[s].t;
+        // the root resume card carries the course's progress meter (data-progress on the hero, from build.py)
+        var mt=b.querySelector('.rmeter');if(mt){var pr=null;try{pr=JSON.parse(b.closest('[data-progress]').getAttribute('data-progress'))[ctxOf[s]];}catch(e){}
+          if(pr){mt.hidden=false;mt.querySelector('i').style.width=pr.pct+'%';mt.querySelector('.pct').textContent=pr.done+' of '+pr.of+' '+pr.what+' written';}else mt.hidden=true;}}
       else{b.hidden=true;}
       // "Start the course" shows only while there is nothing to continue; data-one when a single button is left
       var st=b.parentNode.querySelector('.hbtn.start');if(st)st.hidden=!!s;

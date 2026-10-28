@@ -374,6 +374,75 @@ MD = [m for c in MARKDOWN for m in md_courses(c)]
 for m in MD:
     m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV)
 
+
+# Derived fields (backlog row "Academy build: derived fields", 28 Oct 2026). Every number the home, the drawer and the
+# track headers show comes from here, so no two places can disagree.
+def next_unit(c):
+    """A history course's next module to write: the first in syllabus order without a report, the audit unit excluded."""
+    for u, _, _, mods in c['units']:
+        if u == c['audit_unit']:
+            continue
+        for mid, t, _ in mods:
+            if mid not in c['done']:
+                return mid, t
+    return None
+
+
+def md_next(m):
+    """A markdown course's next unit to write: the first in its build order without a vault file."""
+    for u in m['units']:
+        if u[0] not in m['parent']['written']:
+            return u[0], u[1]
+    return None
+
+
+for c in HISTORY:
+    c['next'] = next_unit(c)
+    c['pct'] = round(100 * c['nrep'] / c['content_mods']) if c['content_mods'] else 0
+for m in MD:
+    m['next'] = md_next(m)
+    m['pct'] = round(100 * m['nwritten'] / m['nunits']) if m['nunits'] else 0
+
+
+def dated_units():
+    """Every written unit with a recorded date, newest first: a markdown unit's `written` front-matter field; a history
+    report's date from provenance.json's `written` map ({course: {module: ISO date}}), which P23 fills (none yet).
+    Each entry: (date, course short, colour, code, title, panel id, model)."""
+    out = []
+    for m in MD:
+        vault = m['parent']['vault_units']
+        for u in m['units']:
+            if u[0] in vault:
+                fm = vault[u[0]][1]
+                if fm.get('written'):
+                    out.append((fm['written'], m['short'], m['color'], u[0], fm.get('title', u[1]), m['parent']['written'][u[0]], fm.get('model', '')))
+    for c in HISTORY:
+        for i, d in PROV.get('written', {}).get(c['id'], {}).items():
+            if i in c['index']:
+                out.append((d, c['short'], c['color'], i, c['index'][i]['title'], c['slug'](i), c['prov'].get(i, c['default_model'])))
+    return sorted(out, key=lambda x: x[0], reverse=True)
+
+
+DATED = dated_units()
+RECENT = DATED[:5]
+
+
+def totals():
+    return dict(live=len(HISTORY) + len(MD), coming=len(NEXT), reports=sum(c['nrep'] for c in HISTORY),
+                units=sum(m['nwritten'] for m in MD), words=sum(c['words'] for c in HISTORY))
+
+
+TOTALS = totals()
+
+
+def short_date(iso):
+    """2026-10-28 → 28 Oct 2026."""
+    try:
+        import datetime
+        return datetime.date.fromisoformat(iso).strftime('%-d %b %Y')
+    except Exception:
+        return iso
+
 # the changelog page, built from CHANGELOG.md (the file is the source; the page is a rendering of it)
 def md_inline(t):
     t = html.escape(t, quote=False)
@@ -507,9 +576,10 @@ def md_card(m):
     return card(THEME[m['theme']]['name'], m['color'], f'Course {m["key"]}', m['name'], html.escape(m['card']), meta, m['nwritten'], m['nunits'], m['status'], f'#{m["home_id"]}')
 
 
-ALL_UNITS = sum(m['nwritten'] for m in MD)
-N_LIVE = len(HISTORY) + len(MD)
+ALL_UNITS = TOTALS['units']
+N_LIVE = TOTALS['live']
 tracks = ''
+track_jump = ''
 for t in THEMES:
     hist = [c for c in HISTORY if c['theme'] == t['id']]
     mds = [m for m in MD if m['theme'] == t['id']]
@@ -518,10 +588,12 @@ for t in THEMES:
     count = f'{n} course{"s" if n != 1 else ""}'
     if hist: count += f' · {sum(c["nrep"] for c in hist)} reports'
     if mds: count += f' · {sum(m["nwritten"] for m in mds)} of {sum(m["nunits"] for m in mds)} units'
-    if t['id'] == 'history': count += f' · {len(NEXT)} coming'
+    if t['id'] == 'history': count += f' · {len(NEXT)} planned'
+    jump = f'{n} live' + (f' · {len(NEXT)} planned' if t['id'] == 'history' else '') if n else 'planned'
+    track_jump += f'<a class="hbtn alt" href="#track-{t["id"]}" style="--c:{t["color"]}"><span>Track</span><b>{html.escape(t["name"])}</b><small>{jump}</small></a>'
     extra = ''
     if t['id'] == 'history':
-        extra = f'''
+        extra = f"""
   <details class="howto rules">
     <summary><h2>Why history and myth together</h2><span>the method of the track</span></summary>
     <div class="ml-grid">
@@ -531,23 +603,51 @@ for t in THEMES:
     <p>The Greeks drew that line themselves. Herodotus calls his work a <em>historiē</em>, an inquiry, and still reports what the Persians and Egyptians told him. Thucydides warns that his history leaves out the <em>mythōdes</em>, the storylike, and will seem less pleasant for it (1.22). Plato expels the poets from his ideal city and then ends the <em>Republic</em> with a myth of his own.</p>
     <p>The tidy story of a clean progress "from mythos to logos" (the title of Wilhelm Nestle's book of 1940) is now itself treated as a modern myth: the Greeks never stopped telling myths; their philosophers used them, their historians argued with them, and their cities were governed by them. So each course reads a culture's myths and its history together, asks who told each story and what they gained by it, and keeps the evidence in view. The aim is not to debunk the myths but to understand them as well as the history. Later courses point back to earlier ones where they touch: Rome to Greece's units 7 and 10, Persia to units 6 and 11, Egypt to units 1 and 7.</p>
   </details>
-  <p class="hnote">Coming next, in the intended order: the two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Open any course to see its planned scope.</p>
-  <div class="soonlist">{soon_cards}</div>'''
-    tracks += f'''
+  <details class="howto rules planned">
+    <summary><h2>Planned</h2><span>{len(NEXT)} courses, in the intended order</span></summary>
+    <p class="hnote">The two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Open a course to see its scope and spine.</p>
+    <div class="soonlist">{soon_cards}</div>
+  </details>"""
+    tracks += f"""
   <section class="track" id="track-{t['id']}" style="--c:{t['color']}">
     <header class="thead"><div class="ttx"><span class="cname">Track</span><h2>{html.escape(t['name'])}</h2><p>{html.escape(t['lede'])}</p></div><span class="tmeta">{count}</span></header>
     <div class="cgrid">{cards}</div>{extra}
-  </section>'''
+  </section>"""
 
-roothome = f'''
+# the resume card: the reader's last report (shell.js, from localStorage) or, until there is one, the newest dated unit
+# (else the first report of the first course in progress). data-progress carries each course's progress for the meter.
+_prog = {c['home_id']: dict(pct=c['pct'], done=c['nrep'], of=c['content_mods'], what='reports') for c in HISTORY}
+_prog.update({m['home_id']: dict(pct=m['pct'], done=m['nwritten'], of=m['nunits'], what='units') for m in MD})
+if RECENT:
+    _d, _short, _col, _code, _title, _pid, _model = RECENT[0]
+    fallback = f'<a class="hbtn start" href="#{_pid}" data-target="{_pid}"><span>Start here · newest unit</span><b>{html.escape(_short)} · {html.escape(_code)} {html.escape(_title)}</b></a>'
+else:
+    _c = next((c for c in HISTORY if c['status'] != 'available' and c['first']), HISTORY[0])
+    fallback = f'<a class="hbtn start" href="#{_c["slug"](_c["first"])}" data-target="{_c["slug"](_c["first"])}"><span>Start here</span><b>{_c["short"]} · {_c["first"]} {html.escape(_c["index"][_c["first"]]["title"])}</b></a>'
+
+# new since: the dated units, newest first, and the latest kit session
+recent_rows = ''
+if cl_sessions:
+    _head = cl_sessions[0][0].split(' · ')
+    _date, _sess, _title = (_head + ['', ''])[:3]
+    recent_rows += f'<a class="hrow" href="#changelog" data-target="changelog"><span class="n">{html.escape(re.sub(r'(\w{3})\w* \d{4}$', r'\1', _date))}</span><span class="t">{md_inline(_title)}<small>{html.escape(_sess)} · the kit changelog</small></span><span class="pill prog">session</span></a>'
+for d, short, col, code, title, pid, model in RECENT:
+    recent_rows += f'<a class="hrow" href="#{pid}" data-target="{pid}" style="--c:{col}"><span class="n">{short_date(d).replace(" 2026", "")}</span><span class="t">{html.escape(code)} · {html.escape(title)}<small>{html.escape(short)}{" · " + html.escape(model) if model else ""}</small></span><span class="pill live">unit</span></a>'
+roothome = f"""
 <section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Academy" data-u="HOME" data-c="var(--red)" hidden>
-  <header class="hero">
-    <div class="eyebrow"><span class="u" style="--c:var(--red)">ACADEMY</span> · {N_LIVE} courses live · {len(NEXT)} coming · one reader</div>
+  <header class="hero resume" data-progress='{json.dumps(_prog)}'>
+    <div class="eyebrow"><span class="u" style="--c:var(--red)">ACADEMY</span> · {N_LIVE} courses live · {len(NEXT)} planned · one reader</div>
     <h1>Academy</h1>
-    <p class="lede">Every self-study course in one place, grouped by track. Each course is written one unit at a time to the same method and the same sourcing standard, audited every four units, and read in order. Pick up where you left off, or open a track.</p>
-    <div class="stats" data-n="4"><div><b>{N_LIVE}</b><span>courses live</span></div><div><b>{ALL_REPORTS + ALL_UNITS}</b><span>reports and units written</span></div><div><b>{ALL_WORDS//1000}k</b><span>words on the history track</span></div><div><b>{hours(ALL_WORDS)}</b><span>hours of reading</span></div></div>
-    <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b></a>{''.join(f'<a class="hbtn alt" href="#track-{t["id"]}"><span>Track</span><b>{html.escape(t["name"])}</b></a>' for t in THEMES)}</div>
+    <p class="lede">Every self-study course in one place. Pick up where you left off.</p>
+    <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b><span class="rmeter"><span class="bar" aria-hidden="true"><i></i></span><span class="pct mono"></span></span></a>{fallback}</div>
   </header>
+
+  <section class="recent">
+    <h2 class="hsec">New since</h2>
+    <div class="hrows">{recent_rows}</div>
+  </section>
+
+  <nav class="tjump" aria-label="Tracks">{track_jump}</nav>
   {tracks}
 
   <details class="howto rules">
@@ -560,8 +660,9 @@ roothome = f'''
       <li><strong>An open syllabus.</strong> Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.</li>
     </ol>
   </details>
+  <p class="totals mono">{N_LIVE} courses · {TOTALS['reports']} reports · {TOTALS['units']} units · {TOTALS['words']:,} words · {hours(TOTALS['words'])} h of reading</p>
   {cl_link}
-</section>'''
+</section>"""
 
 # A4 · "How it was built": one generated page per course (howbuilt.py), every fact read from a file
 for c in HISTORY:
@@ -612,12 +713,14 @@ def root_nav_track(t):
     mds = [m for m in MD if m['theme'] == t['id']]
     out = ''
     out += ''.join(f'<a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">{c["num"]}</span><span class="t">{c["short"]}<small>{c["card_units"]} units · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"]) + " reports"}</small></span></a>' for c in hist)
-    if t['id'] == 'history':
-        out += ''.join(f'<div class="dsoon" style="--c:{col}"><span class="n">{k + len(HISTORY) + 1}</span><span class="t">{html.escape(s)}</span><span class="pill">soon</span></div>' for k, (s, _, col, _, _) in enumerate(NEXT))
     out += ''.join(f'<a class="ditem dcourse" href="#{m["home_id"]}" data-target="{m["home_id"]}" style="--c:{m["color"]}"><span class="n">{m["key"]}</span><span class="t">{html.escape(m["short"])}<small>{m["nwritten"]} of {m["nunits"]} units</small></span></a>' for m in mds)
+    if t['id'] == 'history':
+        # the planned courses fold into one row; open it to see them in order
+        out += (f'<details class="dplan"><summary class="dsoon"><span class="n">+{len(NEXT)}</span><span class="t">planned, in order</span>{ICON_CHEV}</summary>'
+                + ''.join(f'<div class="dsoon" style="--c:{col}"><span class="n">{k + len(HISTORY) + 1}</span><span class="t">{html.escape(s)}</span><span class="pill">soon</span></div>' for k, (s, _, col, _, _) in enumerate(NEXT)) + '</details>')
     n = len(hist) + len(mds)
-    # a collapsible group (open by default; the reader's choice is remembered): the track label carries its colour
-    return (f'<div class="dunit closed" data-unit="track:{t["id"]}" data-open data-ulabel="{html.escape(t["name"]).upper()}" style="--c:{t["color"]}">'
+    # a collapsible group: closed unless the reader opened it; shell.js opens the track of the last report read (else the first)
+    return (f'<div class="dunit closed" data-unit="track:{t["id"]}" data-ulabel="{html.escape(t["name"]).upper()}" style="--c:{t["color"]}">'
             f'<button class="duh" type="button" aria-expanded="false"><span class="un">■</span><span class="ut">{html.escape(t["name"])}</span><span class="cnt">{n}</span>{ICON_CHEV}</button><div class="ditems">{out}</div></div>')
 
 root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a><a class="ditem dhome" href="#changelog" data-target="changelog"><span class="n">≡</span><span class="t">Changelog</span></a><a class="ditem dhome" href="#backlog" data-target="backlog"><span class="n">☐</span><span class="t">Backlog</span></a></div>'
@@ -650,7 +753,6 @@ page = f'''<meta charset="utf-8">
 <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Contents">
   <div class="dhead"><div class="brand">ACA<span>/</span>DEMY</div><button class="ib" id="closeB" type="button" aria-label="Close contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   {navs}
-  <div class="dfoot mono">{N_LIVE} courses · {ALL_REPORTS} reports · {ALL_WORDS:,} words · {ALL_UNITS} units</div>
 </aside>
 <main>
 {''.join(panels)}

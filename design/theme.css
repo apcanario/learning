@@ -14,12 +14,13 @@
    4  Components from Personal Mythology
       4a report  4b home and course cards  4c syllabus and prompts
       4d era ribbon  4e rule blocks and parts  4f root home  4g changelog
+      4h learner home (resume card, new since, track jump, folded planned lists)
    5  Components added for hubs (the history site has no equivalent)
    6  Responsive: tablet (from 768 px) and desktop (from 1100 px); the phone
       layout below 768 px is the one every rule above describes and does not change
    7  Interaction: hover and pressed states for every clickable thing, on devices
       that can hover; equal-height catalogue cards with the button on one line
-   Version 3, 28 Oct 2026 (section 7 added; 2 added section 6; 1 was the 27 Oct extraction).
+   Version 4, 28 Oct 2026 (4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -351,6 +352,42 @@ details.course.soon .nscope,details.course.soon .nspine{padding:0 14px}
 details.course.soon .nscope{font-size:14px;margin:0 0 10px;line-height:1.5}
 details.course.soon .nspine{font-size:12.5px;color:var(--muted);margin:0 0 14px}
 details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-right:8px}
+
+/* 4h · learner home (Academy root, 28 Oct 2026): the page opens on one resume card, then what is new, then the tracks.
+   The resume card is the root Continue button (shell.js fills it) grown to a card; while nothing has been read the
+   Start button stands in. Both span the column at every width. */
+.hlinks.hl-root,.hlinks.hl-root[data-one]{grid-template-columns:1fr}
+.hl-root .hbtn{padding:14px 16px;gap:6px}
+.hl-root .hbtn b{white-space:normal;font-size:18px;line-height:1.25;text-wrap:balance}
+.hl-root .hbtn span{opacity:1}
+.hl-root .cont span:first-child::before{content:"▶ ";font-size:9px;vertical-align:1px}
+.rmeter{display:grid;gap:6px;margin-top:6px;text-transform:none;letter-spacing:0;opacity:.9!important}
+.rmeter .bar{height:3px;border-radius:2px;background:color-mix(in srgb,var(--on-accent) 25%,transparent);overflow:hidden;display:block}
+.rmeter .bar i{display:block;height:100%;background:var(--on-accent)}
+.rmeter span{text-transform:none;letter-spacing:0}
+.rmeter .pct{font-size:11px;font-family:var(--mono);opacity:.85}
+/* new since: dated rows; the date column is wider than a module number */
+.recent .hrows{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 14px}
+.recent .hrow{color:var(--fg)}
+.recent .hrow:first-child{border-top:0}
+.recent .hrow .n{flex:0 0 4.6em;color:var(--c,var(--muted))}
+.recent .hnote{margin:10px 0 0}
+/* track jump: one tile per track, three across from 560 px */
+.tjump{display:grid;gap:8px}
+.tjump .hbtn{border-left:3px solid var(--c)}
+.tjump .hbtn small{font-family:var(--mono);font-size:11px;color:var(--muted)}
+@media (min-width:560px){.tjump{grid-template-columns:repeat(3,1fr)}}
+/* the planned courses fold into a rule block on the home and a row in the drawer */
+details.rules.planned>.hnote,details.rules.planned>.soonlist{padding:0 16px}
+details.rules.planned>.hnote{margin:0 0 10px}
+details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
+.dplan>summary{list-style:none;cursor:pointer;min-height:44px;border-radius:8px}
+.dplan>summary::-webkit-details-marker{display:none}
+.dplan>summary .chev{flex:0 0 16px;width:16px;height:16px;color:var(--dim);transform:rotate(-90deg);transition:transform .15s}
+.dplan[open]>summary .chev{transform:none}
+.dplan>div.dsoon{padding-left:22px}
+/* one line of totals, the only place the site's counts appear together */
+.totals{color:var(--dim);font-size:11px;margin:0;text-align:center}
 
 /* 4g · changelog page: one card per session, newest open */
 .log code{font-family:var(--mono);font-size:.84em;color:var(--fg);overflow-wrap:anywhere;background:none;border:0;padding:0}
