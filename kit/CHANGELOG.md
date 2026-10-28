@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **Catalogue (session 15):** the home lists every course under its track (History, Marketing, Technology); Brand + AI is two Academy courses, A and B. Site version 46.
 - **Responsive (session 14):** `design/theme.css` version 2 adds section 6: tablet from 768 px (760 px column, cards in two columns), desktop from 1100 px (the drawer is a persistent 300 px sidebar). The phone layout is unchanged. `verify.py` runs a phone, tablet and desktop pass. Publishing Academy means the artifact, then `./deploy.sh`.
 - **Academy (session 13):** the site is Academy: its home lists every course of both hubs, Brand + AI as a placeholder panel until A3. `deploy.sh` publishes the built page to GitHub Pages through the public repo `apcanario/academy` (https://apcanario.github.io/academy/).
 
@@ -31,6 +32,23 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 12. The repo, five artifacts deleted, the kit docs | 78 | 59 |
 | 28 Oct | 13. The site becomes Academy (A1), with GitHub Pages | 78 | 59 |
 | 28 Oct | 14. Tablet and desktop layouts (P11), Pages in every publish (P8), the deploy script ready for the split (P10) | 78 | 59 |
+| 28 Oct | 15. The home becomes a catalogue by track (A0) | 78 | 59 |
+
+## 28 October 2026 · Session 15 · The home becomes a catalogue by track (A0)
+
+Pedro's request after session 14, worked in the same chat on Fable 5.1 (`docs/academy.md` AD6). No report changed and no flag was cleared.
+
+### Tracks
+`courses.py` gains `THEMES` (History, Marketing, Technology, each with a colour and a lede) and every course names its track. The Academy home is now a catalogue: an Academy hero with four stat tiles (courses live, reports and units written, words, hours of reading) and a jump button per track; then one banner per track (`.track`, `.thead`, new in `theme.css` section 5) over its course cards, every card the same shape (track chip, title, blurb, meta row, progress meter, status pill, Continue or Open). The History track keeps the coming-soon list and folds the mythos/logos essay into a collapsed "Why history and myth together" block; the rules block sits collapsed at the end. The root drawer is grouped the same way.
+
+### Brand + AI as two courses
+The data file is unchanged (AD5), but Academy now builds one course per entry in its `COURSES`: `brand-a` (Personal brand) under Marketing and `brand-b` (Building with AI) under Technology, each with its own panel (goal and outcomes, four tiles, the units in writing order linking to the hub, the audit log) and its own drawer context. `tracks` in `courses.py:BRAND_AI` maps a course key to its track and short name.
+
+### Titles
+Course and home titles are the course names: "Academy", "Greek history and mythology", "Roman history and mythology", the two Brand + AI course names; the hub home is "Brand + AI: two courses" (v6.6). `verify.py` checks the track order on the home and that no course title is a slogan.
+
+### Published
+Version 46 of the site, to the Academy artifact and GitHub Pages; the hub as v6.6.
 
 ## 28 October 2026 · Session 14 · Tablet and desktop layouts (P11), Pages in every publish (P8), the deploy script ready for the split (P10)
 

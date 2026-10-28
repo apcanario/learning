@@ -4,7 +4,7 @@ The ordered queue of chats for the Learning Project. One row is one chat. Take t
 
 ## Queue
 
-Order decided 28 October 2026 (`academy.md` AD4, reworked after the Brand + AI hand-off landed in the repo; P4, S1 and A1 with P5 to P7, then P8 to P11, done the same day). Two lanes: the **Academy lane** (one chat at a time, in order) and the **Brand + AI writing lane** (runs in parallel, one unit per chat, per `docs/handoffs/2026-10-28-brand-ai-handoff.md` step 2 and `skills/`). History content work (S4, S5, S3, S6) follows the Academy lane.
+Order decided 28 October 2026 (`academy.md` AD4, reworked after the Brand + AI hand-off landed in the repo; P4, S1 and A1 with P5 to P7, then P8 to P11 and A0, done the same day). Two lanes: the **Academy lane** (one chat at a time, in order) and the **Brand + AI writing lane** (runs in parallel, one unit per chat, per `docs/handoffs/2026-10-28-brand-ai-handoff.md` step 2 and `skills/`). History content work (S4, S5, S3, S6) follows the Academy lane.
 
 ### Academy lane
 

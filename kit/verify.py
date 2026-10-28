@@ -105,7 +105,7 @@ def main():
         else: print('phone layout: 390 px at scale 1')
         check_panels(pg, 'phone', fails)
         # drawer in each context, every unit expanded
-        for pid in ['home', 'greece', 'rome', 'brand-ai']:
+        for pid in ['home', 'greece', 'rome', 'brand-a', 'brand-b']:
             pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
             pg.click('#menuB'); pg.wait_for_timeout(250)
             pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed'))")
@@ -172,16 +172,23 @@ def main():
         dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
         if rome_reps and dr[:3] != ['Academy', 'Rome: course home', 'Syllabus and prompts']: fails.append(f'rome drawer top: {dr}')
         pg.click('#closeB'); pg.wait_for_timeout(200)
-        # the Brand + AI placeholder: its own drawer context, no arrows, the home title Academy, written units link out
+        # the Brand + AI courses (A under Marketing, B under Technology): each its own drawer context, no arrows, written units link out
+        for bid, short, key in (('brand-a', 'Personal brand', 'A'), ('brand-b', 'Building with AI', 'B')):
+            pg.click('#homeB'); pg.wait_for_timeout(80)
+            pg.click(f'#home a.course[href="#{bid}"]'); pg.wait_for_timeout(80)
+            step(f'{bid} home', dict(id=bid, nav=bid, u=f'COURSE {key}', t=short, arrows=False))
+            ba = pg.evaluate(f"[...document.querySelectorAll('#{bid} a.hrow')].map(a => a.getAttribute('href'))")
+            if not ba or not all(h.startswith('https://claude.ai/artifact/') for h in ba): fails.append(f'{bid} written units do not link to the hub: {ba[:3]}')
+            pg.click('#menuB'); pg.wait_for_timeout(250)
+            dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
+            if dr[:2] != ['Academy', f'{short}: course home']: fails.append(f'{bid} drawer top: {dr}')
+            pg.click('#closeB'); pg.wait_for_timeout(200)
+        # the home lists every live course under its track, in order: History (Greece, Rome), Marketing (A), Technology (B)
         pg.click('#homeB'); pg.wait_for_timeout(80)
-        pg.click('#home a.course[href="#brand-ai"]'); pg.wait_for_timeout(80)
-        step('brand-ai home', dict(id='brand-ai', nav='brand-ai', u='COURSES A + B', t='Brand + AI', arrows=False))
-        ba = pg.evaluate("[...document.querySelectorAll('#brand-ai a.hrow')].map(a => a.getAttribute('href'))")
-        if not ba or not all(h.startswith('https://claude.ai/artifact/') for h in ba): fails.append(f'brand-ai written units do not link to the hub: {ba[:3]}')
-        pg.click('#menuB'); pg.wait_for_timeout(250)
-        dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
-        if dr[:2] != ['Academy', 'Brand + AI: course home']: fails.append(f'brand-ai drawer top: {dr}')
-        pg.click('#closeB'); pg.wait_for_timeout(200)
+        tr = pg.evaluate("[...document.querySelectorAll('#home .track')].map(t => t.querySelector('h2').textContent + ':' + [...t.querySelectorAll('.cgrid a.course')].map(a => a.getAttribute('href')).join(','))")
+        if tr != ['History:#greece,#rome', 'Marketing:#brand-a', 'Technology:#brand-b']: fails.append(f'home tracks: {tr}')
+        h1 = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"course\"] h1, #home h1')].map(h => h.textContent)")
+        if any(' in the order' in t or t.startswith('The courses') for t in h1): fails.append(f'course titles not self-evident: {h1}')
         title = pg.title()
         if title != 'Academy': fails.append(f'page title {title!r}, expected Academy')
         for label, s in log: print(f'  {label:28} {s["id"]:14} nav={s["nav"]:7} {s["u"]} | {s["t"][:40]} | arrows={s["arrows"]} prev={s["prev"]} next={s["next"]} | {s["cont"][:60]}')
@@ -197,7 +204,7 @@ def main():
           return {off: r.right <= 0, menu: getComputedStyle(document.getElementById('menuB')).display !== 'none',
                   main: document.querySelector('main').getBoundingClientRect().width,
                   cols: getComputedStyle(document.querySelector('#rome .ucards')).gridTemplateColumns.split(' ').length,
-                  home: getComputedStyle(document.querySelector('#home .cgrid')).gridTemplateColumns.split(' ').length}; }''')
+                  home: getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns.split(' ').length}; }''')
         if not t['off']: fails.append('tablet: drawer is on screen before the menu button is pressed')
         if not t['menu']: fails.append('tablet: menu button hidden')
         if not 740 <= t['main'] <= 768: fails.append(f'tablet: main column {t["main"]}px, expected about 760')
@@ -233,7 +240,7 @@ def main():
                   mainLeft: main.left, mainW: main.width, topLeft: top.left, topRight: top.right,
                   active: act ? act.dataset.target : null, listScroll: list ? getComputedStyle(list).overflowY : null,
                   measure: getComputedStyle(document.querySelector('#m23 .report p')).maxWidth,
-                  home: getComputedStyle(document.querySelector('#home .cgrid')).gridTemplateColumns.split(' ').length,
+                  home: getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns.split(' ').length,
                   ml: getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns.split(' ').length}; }''')
         if s['left'] != 0 or s['w'] != SIDE or s['h'] < s['vh'] - 1: fails.append(f'desktop: sidebar not at the left edge, {SIDE} px, full height: {s}')
         if s['hidden'] != 'false': fails.append(f'desktop: sidebar aria-hidden={s["hidden"]}')

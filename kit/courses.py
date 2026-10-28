@@ -9,8 +9,18 @@ Text fields may use these placeholders, filled per course at build time:
 {content_mods} modules excluding the audit unit · {total_mods} all modules · {nrep} reports written · {kwords} thousands of words written
 """
 
+# Tracks: the Academy home and the root drawer group courses by subject. Every course names its track.
+THEMES = [
+    dict(id='history', name='History', color='var(--red)',
+         lede='The history and mythology of one culture at a time, read together: who told each story, what they gained by it, and what the evidence says. Long sourced reports with disputes named, a self-test and a syllabus you can rerun.'),
+    dict(id='marketing', name='Marketing', color='var(--teal)',
+         lede='Building a personal brand from the record of what you actually do: audience, platform economics, cadence, benchmarks. Every unit sourced to platform data or peer-reviewed work and ending in a shipped deliverable.'),
+    dict(id='technology', name='Technology', color='var(--purple)',
+         lede='Working with AI models as tools: which model for which task, how to brief, how to keep a project from rotting, how to verify what the machine wrote before you trust it.'),
+]
+
 GREECE = dict(
-    id='greece', family='history', num=1, short='Greece', label='GREECE', name='Greek history and mythology', color='var(--red)',
+    id='greece', family='history', theme='history', num=1, short='Greece', label='GREECE', name='Greek history and mythology', color='var(--red)',
     syllabus='greek-syllabus.html', frags='greece', prompts='prompts-greece.json', prefix='m',
     home_id='greece', syl_id='syllabus', syl_anchor='s',
     unit_colors={'0': 'var(--gold)', '1': 'var(--orange)', '2': 'var(--purple)', '3': 'var(--red)', '4': 'var(--orange)', '5': 'var(--teal)', '6': 'var(--blue)', '7': 'var(--purple)', '8': 'var(--gold)', '9': 'var(--teal)', '10': 'var(--red)', '11': 'var(--blue)', '12': 'var(--gold)', '13': 'var(--teal)'},
@@ -35,7 +45,7 @@ GREECE = dict(
     ticks=[('3000 BC', '0'), ('1200 BC', f'{(1800/3529)*100:.1f}%'), ('AD 1', f'{(3000/3529)*100:.1f}%'), ('529', '100%')],
     era_note='The Classical age that most people mean by "ancient Greece" is the narrow blue slice: about 150 years. The myths are set in the long orange band and were written down in the teal one.',
     eyebrow='COURSE 1 · GREECE',
-    h1='Greek history and mythology, in the order it makes sense',
+    h1='Greek history and mythology',
     lede='Four parts and three deep dives, {content_mods} modules, plus a quality audit. History and myth are interleaved on purpose: the myths only make sense once you know which society was telling them and why. Every module is a long-form report with named primary sources, the places where ancient accounts disagree, a ten-question self-test and three ideas to carry forward.',
     rules='''<li><strong>Parts I to IV in order.</strong> Each report assumes the ones before it. Part I is the foundation; skipping it is how the gaps got there. Part IV ends with a capstone exam across the whole course.</li>
       <li><strong>Deep dives when you want them.</strong> Unit 10 (Troy) extends unit 4, unit 11 (Alexander) extends module 6.7, and unit 12 (Greek philosophy) extends modules 5.6, 6.5, 7.2 and 7.4. Take each straight after the material it extends, or after the capstone.</li>
@@ -51,7 +61,7 @@ GREECE = dict(
 )
 
 ROME = dict(
-    id='rome', family='history', num=2, short='Rome', label='ROME', name='Roman history and mythology', color='var(--purple)',
+    id='rome', family='history', theme='history', num=2, short='Rome', label='ROME', name='Roman history and mythology', color='var(--purple)',
     syllabus='roman-syllabus.html', frags='rome', prompts='prompts-rome.json', prefix='rm',
     home_id='rome', syl_id='rome-syllabus', syl_anchor='rs',
     unit_colors={'0': 'var(--gold)', '1': 'var(--orange)', '2': 'var(--purple)', '3': 'var(--teal)', '4': 'var(--red)', '5': 'var(--orange)', '6': 'var(--purple)', '7': 'var(--blue)', '8': 'var(--teal)', '9': 'var(--gold)', '10': 'var(--blue)', '11': 'var(--red)', '12': 'var(--purple)', '13': 'var(--gold)', '14': 'var(--teal)'},
@@ -76,7 +86,7 @@ ROME = dict(
     ticks=[('1000 BC', '0'), ('509 BC', f'{(491/1476)*100:.1f}%'), ('AD 1', f'{(1000/1476)*100:.1f}%'), ('476', '100%')],
     era_note='The late Republic that most people mean by "ancient Rome" is the thin red slice: about a century. The kings in the gold band were written about by Romans living in it, five hundred years after the fact. The eastern empire that kept the Roman name until 1453 runs off the right-hand edge.',
     eyebrow='COURSE 2 · ROME',
-    h1='Roman history and the myths Rome made of it',
+    h1='Roman history and mythology',
     lede='Four parts and three deep dives, {content_mods} modules, plus a quality audit. History and myth are interleaved more tightly than in the Greek course, because Rome told its myths as history: the legends sit inside the periods that produced them. Every module is a long-form report with named primary sources, the places where the accounts disagree, a ten-question self-test and three ideas to carry forward.',
     rules='''<li><strong>Parts I to IV in order.</strong> Each report assumes the ones before it. Part I matters more here than in Greece: the evidence for Rome's first four centuries is late and partisan, and every later report assumes you know how late. Part IV ends with a capstone exam.</li>
       <li><strong>Deep dives when you want them.</strong> Unit 11 (the fall of the Republic) extends unit 5; unit 12 (the Aeneid) extends module 6.3 and, for Aeneas, module 1.3; unit 13 (Roman philosophy) extends modules 4.5, 5.6, 7.3 and 10.2. Take each straight after the material it extends, or after the capstone.</li>
@@ -96,6 +106,8 @@ ROME = dict(
 BRAND_AI = dict(
     id='brand-ai', family='markdown', short='Brand + AI', label='BRAND + AI', name='Brand + AI: two courses for one reader', color='var(--teal)',
     home_id='brand-ai', status='in progress',
+    # each course in the data file's COURSES becomes its own Academy course: key -> (track, short name for the top bar and drawer)
+    tracks={'A': ('marketing', 'Personal brand'), 'B': ('technology', 'Building with AI')},
     # content and status come from the hub's own data file; build.py reads it, nothing here is typed by hand
     data='generator/data/brand-ai/hub.py',
     # until A3: the units are read on the standalone hub; the Academy panel links there

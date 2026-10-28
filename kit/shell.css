@@ -425,6 +425,20 @@ details.clog[open]>summary::after{content:"–"}
 /* a prose block that opens a hub section starts flush (report h2s keep their rule elsewhere) */
 .panel.stack .report>h2:first-child{margin-top:0;padding-top:0;border-top:0}
 .panel.stack .report>:last-child{margin-bottom:0}
+/* track banner on the Academy home: a subject heading over a group of course cards, carrying the track colour */
+.track{display:flex;flex-direction:column;gap:14px;scroll-margin-top:calc(var(--bar) + env(safe-area-inset-top,0px) + 12px)}
+.thead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 0 10px 14px;border-left:4px solid var(--c);border-bottom:1px solid var(--line)}
+.thead .ttx{min-width:0;flex:1 1 320px}
+.thead .cname{display:block;margin-bottom:2px}
+.thead h2{font-size:24px;margin:0 0 6px;letter-spacing:-.01em;line-height:1.1}
+.thead p{margin:0;color:var(--muted);font-size:14.5px;max-width:62ch}
+.tmeta{font-family:var(--mono);font-size:11px;color:var(--dim);white-space:nowrap;padding-bottom:2px}
+.track .cgrid{gap:12px}
+.track .cgrid>.course{margin:0}
+.track .soonlist{margin:0}
+.track .hnote{margin:0}
+/* catalogue card: the progress meter sits above the button */
+.course.live .meter{margin:0 0 14px}
 /* external link rows (bibliography): the domain wraps rather than widening the page */
 .hrow small.url{font-family:var(--mono);font-size:11px;overflow-wrap:anywhere}
 
