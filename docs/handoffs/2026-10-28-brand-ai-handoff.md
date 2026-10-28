@@ -9,7 +9,7 @@ Start here. The first job is to move this folder off zip files and into a GitHub
 - Hubs: Brand + AI https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT (v6.4); history site https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (Version 41).
 - Project: claude.ai Project "Learning", id `01a180ff-1a65-76f7-ac6e-78559607b587`. Knowledge (29 files: method, reader, sourcing standard, project instructions, courses-index, hub.py, units_data.py, theme.css, design README, the five written units, the superseded research page and its five notes, the kit briefs and rubrics) is current as of this hand-off.
 - Vault: the unit files in `generator/data/brand-ai/units/` are the copies to commit to the vault at `courses/brand-ai/`; nothing has been committed there from these sessions.
-- Temporary artifact "Knowledge transfer" (https://claude.ai/artifact/Tgy4URAP8HTf4tPK7GZwfJ) carried files into the Project knowledge; delete it once the repo exists.
+- Temporary artifact "Knowledge transfer" carried files into the Project knowledge; deleted 28 Oct 2026 (P1) once the repo existed. Knowledge uploads now come from the repo (`SETUP.md` §2).
 
 ## Step 1 · Create the repository (first thing, before any unit)
 
