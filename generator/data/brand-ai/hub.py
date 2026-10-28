@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v7 · 28 Oct 2026'
+VERSION = 'v7.1 · 28 Oct 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -145,7 +145,7 @@ BRIEFS_LEDE = "One brief per unit, self-contained: the shared preamble (reader, 
 BRIEF_LABEL = 'Opus brief'
 
 AUDITS_LEDE = "One audit run. Each audit records: units sampled, claims checked, failures, verdict (pass / full audit / rewrite), and what changed."
-AUDIT_LOG = [('2026-10-28', "Audit 1 (Fable 5.1, stratified sample, then full audit). Units: A2·A6·A9 (the audience-growth research) and B1. <strong>B1: PASS</strong>, 7 of 7 sampled claims hold, deliverable present. <strong>A2·A6·A9: sample 1 of 8 FAIL → full audit: 91 claims, 23 FAIL, 0 STALE, nothing invented, no conclusion flips → REWRITE</strong>, because the three deliverables (audience profile and allocation; playbook and metrics sheet; benchmarks table and checkpoints) do not exist and two table rows rest on figures no vidIQ page contains. Pattern: qualifiers the source does not carry. One non-accuracy item: a cited creator profile is a minor's; the name comes out. Consequences: B2 waits for the rewrite; every later Brand + AI unit gets a fresh checker (method §1 override). Report: the Brand + AI Audit 1 artifact.")]
+AUDIT_LOG = [('2026-10-28', "Audit 1 (Fable 5.1, stratified sample, then full audit). Units: A2·A6·A9 (the audience-growth research) and B1. <strong>B1: PASS</strong>, 7 of 7 sampled claims hold, deliverable present. <strong>A2·A6·A9: sample 1 of 8 FAIL → full audit: 91 claims, 23 FAIL, 0 STALE, nothing invented, no conclusion flips → REWRITE</strong>, because the three deliverables (audience profile and allocation; playbook and metrics sheet; benchmarks table and checkpoints) do not exist and two table rows rest on figures no vidIQ page contains. Pattern: qualifiers the source does not carry. One non-accuracy item: a cited creator profile is a minor's; the name comes out. Consequences: B2 waits for the rewrite; every later Brand + AI unit gets a fresh checker (method §1 override). Report: <code>audits/brand-ai/audit-1.html</code>. The three fresh checks that followed (A9 2 errors, 15 should-fix, 8 minor; A2 3/13/11; A6 1/9/7; all applied) are filed as <code>audits/brand-ai/fresh-check-A9.md</code>, <code>fresh-check-A2.md</code> and <code>fresh-check-A6.md</code>.")]
 AUDIT_PROMPTS_NOTE = "Run in the personal-assistant Project with Fable 5.1, on command, after every fourth written unit. Paste the units or point at their vault paths."
 AUDIT_PROMPTS = [
     ('Stratified-sample audit (every four units)', True, """You are auditing four units of a self-study course written by Opus 5.5 for one reader. Units: {list the four unit codes and their vault paths}.
@@ -196,6 +196,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-10-28 12:45', "v7.1. Housekeeping (P14, P15, P3): the syllabus rule reads 2 or 3 deep dives per course; the build-order lede's remaining-unit count is derived from ORDER and STATUS by kit/mdcourse.py instead of typed; the three fresh-check reports of A9, A2 and A6 are filed in audits/brand-ai/ and linked from the Audits page."),
     ('2026-10-28 12:30', "v7. The hub is retired (A3): both courses are read in Academy, each with its own drawer (Units; How it is built: method, build order, briefs, audits, bibliography, changelog) and each written unit as a page with prev/next and Continue. Same data file, same text; the Learn/Build split and the Hub template page are gone from the site (TEMPLATE_BLOCKS stays here for the new-course skill). No unit changed."),
     ('2026-10-28 11:10', "v6.8. DD-B3 Deep dive: how the best practitioners use the tool added to course B (units_data.py), search on: Karpathy's documented practice 2025–26 from his own posts, talks and repositories, and the other methods with a named author and a primary source (Anthropic, OpenAI, Willison, Mollick, spec-driven workflows, the chain-of-thought literature), each graded by evidence and tested for transfer from code to his work; deliverable: method cards and ten operating rules. Placed after A1 in the build order so B5, B7 and DD-B1 inherit it; Audit 2 still after B3, B4, A1. Course B is now 8 core units and 3 deep dives; 22 units, 17 remain. Build-order fix in build_hub.py: rows are numbered as courses-index.md numbers them (B1 is 4, Audit 1 after it, Audit 2 after A1), and the last unit no longer gets a sample-audit row beside the final audit. No written unit changed."),
     ('2026-10-28 10:30', "v6.7. Course B renamed Using AI to Build a Brand (hub.py NAME_B, the filed B units' front matter). Units unchanged."),
