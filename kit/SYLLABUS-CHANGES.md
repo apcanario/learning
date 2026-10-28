@@ -109,9 +109,7 @@ Renumber 12.1 to 12.5 as 13.1 to 13.5 in `greek-syllabus.html`. Update:
   - add this file under the docs entry.
 - **`prompts-*.json`:** unchanged, since none of the new modules has a report yet.
 - **Build and verify:** `python3 build.py` and `python3 verify.py`. The drawers and course homes gain the new units as "soon" items; check the Greek course home and the root page in both themes.
-- **Publish:**
-  - both standalone syllabi: Rome https://claude.ai/artifact/AEgHdAEpeLo1rtfBcuBbVy, Greek https://claude.ai/artifact/EdV1Nkt9HVEoApdMstbANm (read each with the Artifact tool first);
-  - the site artifact at https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH.
+- **Publish:** the site artifact at https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH. (At the time, the two standalone syllabus artifacts were republished too; they were retired on 28 October 2026, and the site's syllabus panels are the only published copy.)
 
 ## 4. When the new reports get written
 

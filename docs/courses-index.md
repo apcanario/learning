@@ -8,7 +8,7 @@ Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Pers
 
 | Hub | Page | Link | Built from |
 |---|---|---|---|
-| Personal Mythology | The site: both courses, syllabi, every report, changelog | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH | kit `build.py` with `shell.css` = `design/theme.css` (session 11, version 41), or `gen/build_history.py`; becomes Academy at A1 (`academy.md`) |
+| Personal Mythology | The site: both courses, syllabi, every report, changelog | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH | kit `build.py` with `shell.css` = `design/theme.css` (session 11 the theme, version 41; session 12 the repo and the kit docs, version 42, 28 Oct); becomes Academy at A1 (`academy.md`) |
 | Brand + AI | Brand and AI Courses: Learn and Build | https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT | `gen/build_hub.py data/brand-ai` → `gen/hubs/brand-and-ai-courses.html` (v6.4); absorbed into Academy at A3 |
 | Brand + AI | Audience Growth Across Platforms (standalone research page) | https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw | own CSS; the same report is the hub's reading page for A2 · A6 · A9 |
 

@@ -75,8 +75,8 @@ Curated bibliography: `bibliography/rome/r-3.2.md`.
 - Catiline (1970): title not given in the report
 - Jane Chaplin, *Livy's Exemplary History* (2000)
 - Cornell (1987): title not given in the report
-- Cornell, *Coriolanus: myth, history and performance* (2003)
 - Cornell (2003): title not given in the report
+- Cornell, *Coriolanus: myth, history and performance* (2003)
 - Sentinum. Flower (1995): title not given in the report
 - Harriet Flower, *Fabulae praetextae in context* (1995)
 - Langlands, *Exemplary Ethics in Ancient Rome* (2018)

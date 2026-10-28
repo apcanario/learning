@@ -62,8 +62,8 @@ Curated bibliography: `bibliography/rome/r-4.2.md`.
 - Polybius 1.7.2–4; 1.19.15; 1.20.15–16
 
 ### Modern works
-- Goldsworthy, *The Punic Wars* (2000)
 - Goldsworthy (2000): title not given in the report
+- Goldsworthy, *The Punic Wars* (2000)
 - W. V. Harris, *War and Imperialism in Republican Rome* (1979)
 - Hoyos, *Treaties True and False* (1985)
 - B. D. Hoyos, *Unplanned Wars* (1998)

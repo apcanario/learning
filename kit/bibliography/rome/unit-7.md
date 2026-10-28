@@ -33,8 +33,8 @@ Curated bibliography: `bibliography/rome/r-7.1.md`.
 ### Modern works
 - Barrett, *Agrippina* (1996)
 - Anthony Barrett, *Caligula: The Corruption of Power* (2015)
-- Barrett (2020): title not given in the report
 - Barrett, *Rome Is Burning* (2020)
+- Barrett (2020): title not given in the report
 - Champlin (2003): title not given in the report
 - Champlin, *Nero* (2003)
 - Edward Champlin, *Tiberius and His Age* (2024)

@@ -36,15 +36,15 @@ Curated bibliography: `bibliography/rome/r-5.1.md`.
 ### Modern works
 - P. A. Brunt, *Italian Manpower* (1971)
 - Keith Hopkins, *Conquerors and Slaves* (1978)
-- Hans Ulrich Instinsky, *Chiron* (1971)
 - Instinsky (1971): title not given in the report
+- Hans Ulrich Instinsky, *Chiron* (1971)
 - De Ligt (2012): title not given in the report
 - Luuk de Ligt, *Poverty and demography: the case of the Gracchan land reforms* (2012)
 - Jerzy Linderski, *The Pontiff and the Tribune* (2002)
 - Rathbone, *Journal of Roman Studies* (1985)
 - Dominic Rathbone, *Poor peasants and silent sherds* (2008)
-- Answer Rosenstein (2004): title not given in the report
 - Nathan Rosenstein, *Rome at War* (2004)
+- Answer Rosenstein (2004): title not given in the report
 - Arnold Toynbee, *Hannibal's Legacy* (1965)
 
 ## 5.2 Marius and Sulla

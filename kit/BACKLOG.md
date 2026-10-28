@@ -26,17 +26,16 @@ This may be more than one session's work. Publish after every finished unit so n
 - **Published:** the site with everything registered (the last publish of 25 October, after the checks of 10.5, 13.1 and 13.2, has no unchecked pills and carries the next pills); the Greek syllabus (version 7, unit 13 naming unit 12). The Rome syllabus is unchanged.
 - **Open corrections to Fable-written Greek reports** (7.2's Epicurean gods box, 9.3's Ovide moralisé date, 7.3's two, 9.4's exam timings) are in `review_notes` for the Fable review: don't apply them in a writing session. Three small corrections to Opus-written Rome reports (1.4, 3.1, 6.1), found by the 10.5 checker, are in `review_notes` with exact replacements; they were left unapplied in the checks session.
 
-## What I've attached
+## Where the source is
 
-- `personal-mythology-kit.zip`: the full, self-contained source; this file is inside it as `personal-mythology/NEXT-SESSION.md`, so the zip alone is enough. Unzip it into its own folder and read, in this order: `README.md`, `AGENT-SPEC.md`, `WRITER-BRIEF.md`, `reviews/units-9-13/BRIEF.md` (the checker brief), the end of `reviews/units-9-13/log.md` (the maintainer log: what was fixed, confirmed and left open for every report so far), and the last `review_notes` in `provenance.json`. Run `python3 build.py` and confirm it reproduces `personal-mythology.html` byte for byte before changing anything.
-- If the zip is missing, say so and stop. Use only the newest zip: two kits edited in parallel diverge in `provenance.json`, the prompts indexes and the site.
+- Clone the private repo `apcanario/learning`; work in `kit/`; this file is `kit/BACKLOG.md`. Read, in this order: `README.md`, `AGENT-SPEC.md`, `WRITER-BRIEF.md`, `reviews/units-9-13/BRIEF.md` (the checker brief), the end of `reviews/units-9-13/log.md` (the maintainer log: what was fixed, confirmed and left open for every report so far), and the last `review_notes` in `provenance.json`. Run `python3 build.py` and confirm it reproduces `personal-mythology.html` byte for byte before changing anything.
+- One kit session at a time: two kits edited in parallel diverge in `provenance.json`, the prompts indexes and the site. End with a commit and push.
 
-Live pages: update these, never create new ones.
+Live page: update it, never create a new one.
 - The site: https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH
-- The Rome syllabus: https://claude.ai/artifact/AEgHdAEpeLo1rtfBcuBbVy (republish only if `roman-syllabus.html` changes)
-- The Greek syllabus: https://claude.ai/artifact/EdV1Nkt9HVEoApdMstbANm (republish only if `greek-syllabus.html` changes; republished on 25 October when unit 13's why line came to name unit 12)
+- The standalone syllabus artifacts were retired on 28 October 2026; the site's syllabus panels are the only published copy.
 
-**Publishing, as it worked on 25 October.** Delegate each publish to one small agent so the large page stays out of the main context. For the site: the agent reads it with the Artifact tool (the result says the version "counts as viewed"; the full page need not be read), then publishes the local file once with the page's `url` and a short label, and never retries or forces. For a syllabus: the agent reads the page, reads the saved file in chunks to the end (a syllabus publish is refused until the whole page has been read), diffs it against the local file, then publishes once. A refusal right after a successful publish usually means the agent resent its own content; check the local file's time before publishing again.
+**Publishing, as it worked on 25 October.** Delegate the publish to one small agent so the large page stays out of the main context: the agent reads the site with the Artifact tool (the result says the version "counts as viewed"; the full page need not be read), then publishes the local file once with the page's `url` and a short label, and never retries or forces. A refusal right after a successful publish usually means the agent resent its own content; check the local file's time before publishing again.
 
 ## Already done, don't redo
 
@@ -69,7 +68,7 @@ A writer starts only when every report named in its lane note is registered. Wit
    - Re-run `check.py`; keep the body inside its band (most reports sit near the top of it, so a fix that adds words may need a cut).
    - Append one paragraph to `reviews/units-9-13/log.md`.
 5. **Register:** `python3 register.py rome "<model that actually wrote it>" X.Y`.
-6. **When a unit is complete:** `python3 crosscheck.py rome <ids>` and check every pointer between the unit's own reports (the early checkers saw their neighbours only as prompts); build, `verify.py`, publish the site; turn the unit's log into a `review_notes` entry; save a zip of the kit.
+6. **When a unit is complete:** `python3 crosscheck.py rome <ids>` and check every pointer between the unit's own reports (the early checkers saw their neighbours only as prompts); build, `verify.py`, publish the site; turn the unit's log into a `review_notes` entry; commit.
 
 ## Lane notes
 
@@ -133,7 +132,7 @@ After every unit: build, `python3 verify.py` (it must print ALL CHECKS PASSED), 
 ## At the end
 - Update `README.md` ("Where things stand", next steps), `review_notes` and the `artefacts` in `provenance.json`; rebuild and publish.
 - Add an entry for the session at the top of the sessions in `CHANGELOG.md` (and a row in its "At a glance" table, and update "Where things stand"); `build.py` renders it as the site's Changelog page.
-- Send me only the updated kit zip; the new `NEXT-SESSION.md` and `CHANGELOG.md` are inside it, so don't send them separately. If modules remain, `NEXT-SESSION.md` covers them; if Rome is complete, it says so, and the next job is the Fable review (`FABLE-REVIEW-SESSION.md`, updated for the new reports and audit numbers).
+- Commit and push; summarise in a few lines what was written, what changed and what is left. If modules remain, `NEXT-SESSION.md` covers them; if Rome is complete, it says so, and the next job is the Fable review (`FABLE-REVIEW-SESSION.md`, updated for the new reports and audit numbers).
 
 ## The Fable review flag
 Everything written with a model other than Fable 5.1 is flagged for later review with Fable 5.1: `register.py` records the model, the site marks each flagged report and course home, and `build.py` regenerates `FABLE-REVIEW.md` as the queue. Non-report changes go under `artefacts` in `provenance.json`. No flag is cleared in a writing session. If this session runs on Fable 5.1, record `"Fable 5.1"` for what it writes.

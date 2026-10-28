@@ -9,6 +9,7 @@ Everything that has happened to Personal Mythology, from the first request on 22
 - **Fable review:** every Rome report is reviewed (session 9). Of the 23 Greek Opus reports, 17 are reviewed (eleven audited in full, six cleared on the sample) and six are still flagged: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (session 10). Rome 14.3 and the Greek 13.3 high-signal pairs are done; every pair passed.
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
+- **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
 
 ## At a glance
 
@@ -24,6 +25,31 @@ Everything that has happened to Personal Mythology, from the first request on 22
 | 27 Oct | 8. The Fable review begins: the rubric and the syllabus | 78 | 59 |
 | 27 Oct | 9. Every Rome report reviewed: the sample, the capstone, the decision | 78 | 59 |
 | 27 Oct | 10. Bibliographies for every report; the Greek Opus cohort; the overlap checks | 78 | 59 |
+| 27 Oct | 11. The site moves onto the Learning Project theme | 78 | 59 |
+| 28 Oct | 12. The repo, five artifacts deleted, the kit docs | 78 | 59 |
+
+## 28 October 2026 · Session 12 · The repo, five artifacts deleted, the kit docs
+
+Housekeeping, no writing and no review (the kit work on Fable 5.1; the decisions are Pedro's, recorded in `docs/pm-status-2026-10-28.md` in the repo). No report changed and no flag was cleared. The session-11 kit never travelled: the zip handed over was session 10's (version 40, the old `shell.css`), so this session re-applied the theme to it (`cp ../design/theme.css shell.css`; `build.py` and `verify.py` pass; the three pages looked at in both themes) and restored the session 11 entry below from the live page, where it had been published.
+
+### The repo
+The kit was reviewed against the Project docs on 28 October and found to be the latest (`build.py` reproduces the site byte for byte). It now lives as `kit/` in the private GitHub repo `apcanario/learning`, beside `design/`, `docs/`, `generator/` and the vault `courses/`. A session clones the repo, works in `kit/` and ends with a commit; the zip is retired as transport. `README.md`, `BACKLOG.md` and `NEXT-SESSION.md` say so instead of "what I've attached".
+
+### Five artifacts deleted
+Pedro deleted the two standalone syllabus artifacts (Hellas Syllabus, Roma Syllabus) and the three stray draft pages (Rome 3.2, 3.3; Greek 11.6). The site's `#syllabus` and `#rome-syllabus` panels are the only published copy of the syllabi; `greek-syllabus.html` and `roman-syllabus.html` stay as build inputs. Their links were removed from `README.md`, `BACKLOG.md`, `NEXT-SESSION.md` and `SYLLABUS-CHANGES.md`.
+
+### Doc fixes
+`README.md`: the file table's `NEXT-SESSION.md` line (the review resumes at Greek 13.2 and 13.5 on the six flagged reports, not Rome 14.1) and `audits/` line (38 files, listed by audit) corrected; the design rules say the theme is changed in `design/theme.css` and copied. `provenance.json` `artefacts`: the code entry records the theme copy, the docs entry the fixes. Found in passing: `biblio.py` orders modern works that share a surname and year by set iteration, so `bibliography/<course>/unit-<n>.md` can reorder lines between builds with no change of content.
+
+### Published
+Version 42 of the site (this changelog; the page is otherwise version 41).
+
+## 27 October 2026 · Session 11 · The site moves onto the Learning Project theme
+
+No report written, reviewed or changed. The site's stylesheet is now `design/theme.css` of the Learning Project (the claude.ai Project that holds this course and Brand + AI), copied over `shell.css`; `build.py` and `shell.js` are unchanged, since the theme keeps every class name. Three things changed on the page: section links and every Answer, Model answer and prompt toggle are 44 px tall (they were 32); the light palette is retuned so every accent and the tertiary text reach 4.5:1 on page and card; long URLs wrap instead of widening the page. `verify.py` passes. From now on a style change is made in the Learning Project's `theme.css`, copied over `shell.css`, rebuilt and republished; see the Project's `design/README.md`.
+
+### Published
+Version 41 of the site (the theme only). The kit of this session was not handed on; session 12 rebuilt it from the session 10 kit and this entry from the live page.
 
 ## 27 October 2026 · Session 10 · Bibliographies for every report; the Greek Opus cohort; the overlap checks
 

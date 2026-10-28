@@ -156,8 +156,8 @@ Curated bibliography: `bibliography/greece/r-2.4.md`.
 - Jonathan Hall, *Ethnic Identity in Greek Antiquity* (1997)
 - Friedrich Solmsen, *Hesiod and Aeschylus* (1949)
 - Jean-Pierre Vernant, *Le mythe hésiodique des races* (1960)
-- West (1990): title not given in the report
 - M. L. West (1990): title not given in the report
+- West (1990): title not given in the report
 - M. L. West, *The East Face of Helicon* (1997)
 
 ## 2.5 The lesser divinities and personifications

@@ -42,8 +42,8 @@ Curated bibliography: `bibliography/rome/r-0.1.md`.
 - Louis de Beaufort (1738): title not given in the report
 - Carandini, *La nascita di Roma* (2006)
 - Cornell, *The Beginnings of Rome* (1995)
-- Hermann Dessau (1889): title not given in the report
 - Answer Hermann Dessau (1889): title not given in the report
+- Hermann Dessau (1889): title not given in the report
 - Alexander Enmann (1884): title not given in the report
 - Gary Forsythe, *A Critical History of Early Rome* (2005)
 - Bruce Frier, *Libri Annales Pontificum Maximorum* (1979)

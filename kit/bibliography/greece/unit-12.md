@@ -112,15 +112,15 @@ Curated bibliography: `bibliography/greece/r-12.2.md`.
 - Caston (2002): title not given in the report
 - Dover (1968): title not given in the report
 - Fine (1998): title not given in the report
-- Gagarin, *Antiphon the Athenian* (2002)
 - Gagarin (2002): title not given in the report
+- Gagarin, *Antiphon the Athenian* (2002)
 - Gigon, *Sokrates* (1947)
 - Gill, *The Death of Socrates* (1973)
 - Heinrich Gomperz (1912): title not given in the report
 - Irwin, *Plato's Moral Theory* (1977)
 - Kahn, *Plato and the Socratic Dialogue* (1996)
-- Kraut, *Socrates and the State* (1984)
 - Kraut (1984): title not given in the report
+- Kraut, *Socrates and the State* (1984)
 - Most, *Classical Quarterly* (1993)
 - Vlastos, *Oxford Studies in Ancient Philosophy* (1983)
 - Vlastos (1991): title not given in the report
@@ -176,8 +176,8 @@ Curated bibliography: `bibliography/greece/r-12.3.md`.
 - Lutosławski, *The Origin and Growth of Plato's Logic* (1897)
 - Morrow, *Studies in the Platonic Epistles* (1935)
 - Nussbaum, *The Fragility of Goodness* (1986)
-- Owen (1953): title not given in the report
 - Kahn. When Owen, *The Place of the <em>Timaeus</em> in Plato's Dialogues* (1953)
+- Owen (1953): title not given in the report
 - Popper, *The Open Society and Its Enemies* (1945)
 - Ryle, *Plato's <em>Parmenides</em>* (1939)
 - Sachs, *A Fallacy in Plato's <em>Republic</em>* (1963)
@@ -189,8 +189,8 @@ Curated bibliography: `bibliography/greece/r-12.3.md`.
 - Vidal-Naquet, *Athènes et l'Atlantide* (1964)
 - Vlastos, *The Disorderly Motion in the <em>Timaios</em>* (1939)
 - Vlastos, *The Third Man Argument in the <em>Parmenides</em>* (1954)
-- Vlastos, *Justice and Happiness in the <em>Republic</em>* (1971)
 - Vlastos (1971): title not given in the report
+- Vlastos, *Justice and Happiness in the <em>Republic</em>* (1971)
 - Vlastos, *The Individual as an Object of Love in Plato* (1973)
 - Vlastos (1991): title not given in the report
 
@@ -323,8 +323,8 @@ Curated bibliography: `bibliography/greece/r-12.6.md`.
 
 ### Modern works
 - Cyril Bailey, *The Greek Atomists and Epicurus* (1928)
-- David Furley, *Two Studies in the Greek Atomists* (1967)
 - Furley (1967): title not given in the report
+- David Furley, *Two Studies in the Greek Atomists* (1967)
 - Reinhold Glei, *Et invidus et inbecillus: das angebliche Epikurfragment bei Laktanz, De ira dei 13,20–21* (1988)
 - David Konstan, *Epicurus on the gods* (2011)
 - Konstan (2011): title not given in the report
@@ -333,8 +333,8 @@ Curated bibliography: `bibliography/greece/r-12.6.md`.
 - John Rist, *Epicurus: An Introduction* (1972)
 - David Sedley, *The Hellenistic Philosophers* (1987)
 - Sedley (1987): title not given in the report
-- Sedley (2011): title not given in the report
 - Sedley, *Epicurus' theological innatism* (2011)
+- Sedley (2011): title not given in the report
 - Smith, *Diogenes of Oinoanda: The Epicurean Inscription* (1993)
 - C. C. W. Taylor, *The Greeks on Pleasure* (1982)
 - James Warren, *Facing Death: Epicurus and His Critics* (2004)

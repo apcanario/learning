@@ -1,16 +1,18 @@
 # Personal Mythology: start here
 
-Personal Mythology is a self-study compendium of courses on the history and mythology of one culture at a time. Each course is a syllabus of modules, and each module is a long report (about 2,500–3,000 words) with named sources, dispute boxes, a ten-question self-test and three ideas to carry forward. Everything is published as one claude.ai artifact, built from this folder by `python3 build.py`.
+Personal Mythology is a self-study compendium of courses on the history and mythology of one culture at a time. Each course is a syllabus of modules, and each module is a long report (about 2,500–3,000 words) with named sources, dispute boxes, a ten-question self-test and three ideas to carry forward. Everything is published as one claude.ai artifact, built from this folder by `python3 build.py`. This folder is `kit/` in the private repo `apcanario/learning`, which is the home of everything (kit, design, generator, vault): a session clones the repo, works in `kit/`, and ends with a commit. The zip is retired as transport (28 October 2026).
 
 ## Live pages
 
 | Page | Link | Notes |
 |---|---|---|
 | Personal Mythology (the site) | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH | Always update this one; never publish a new copy. |
-| Rome syllabus (standalone) | https://claude.ai/artifact/AEgHdAEpeLo1rtfBcuBbVy | Republish only when `roman-syllabus.html` changes. |
-| Greek syllabus (standalone) | https://claude.ai/artifact/EdV1Nkt9HVEoApdMstbANm | Republish only when `greek-syllabus.html` changes. |
 
-## Where things stand (end of 27 October 2026, after the third Fable review session)
+The standalone Rome and Greek syllabus artifacts were retired on 28 October 2026; the site's syllabus panels (`#syllabus`, `#rome-syllabus`) are the only published copy. `greek-syllabus.html` and `roman-syllabus.html` stay as build inputs only.
+
+## Where things stand (28 October 2026, after session 12)
+
+- **Sessions 11 and 12 (27 and 28 October 2026): the theme, the repo, housekeeping.** `shell.css` is now a copy of `design/theme.css` (44 px `.toc a` and `summary` targets, the light palette that meets 4.5:1); site version 41, then 42 with the changelog. The two standalone syllabus artifacts and the three stray draft pages were deleted; the repo `apcanario/learning` became the home of the kit and the zip was retired. No report changed and no flag was cleared.
 
 - **Greece, course 1: complete.** 78 reports, about 244,000 words: the core, deep dives I (Troy), II (Alexander) and III (Greek philosophy, written on 25 October). 55 were written with Fable 5.1 and 23 with Opus 5.5 (10.4, 10.7 to 10.12, all of units 11 and 12). The audit is unit 13.
 - **Rome, course 2: in progress.** 59 of 79 reports, about 180,000 words, all written with Opus 5.5. Units 0 to 10 are complete; deep dive I has 11.1 and 11.2, deep dive III has 13.1 and 13.2, deep dive II (the Aeneid) has none. The syllabus (15 units, 85 modules) was also written with Opus 5.5; the audit is unit 14.
@@ -24,17 +26,17 @@ Personal Mythology is a self-study compendium of courses on the history and myth
 ## Next steps
 
 ### 1. Continue the Fable review (the current job)
-- **In a fresh chat on Fable 5.1:** attach only this zip and say "unzip it and follow NEXT-SESSION.md". The zip is self-contained; `NEXT-SESSION.md` inside it is the paste-ready prompt and says exactly where to resume.
+- **In a fresh chat on Fable 5.1:** clone `apcanario/learning`, work in `kit/`, and follow `NEXT-SESSION.md`; it is the paste-ready prompt and says exactly where to resume. End with a commit and push.
 - Order: the Greek Opus reports through 13.2 to 13.5 (sample first, then 13.4 decides) → Rome 14.3 (overlap checks, starting with the core pairings 14.6 listed) → a light read of the flagged kit documents. Done so far: Greek 13.1, Rome 14.6, 14.1, 14.2 (twelve reports and the capstone), 14.4 and 14.5 (`audits/`); every Rome report is off the queue.
 - **How a flag clears:** after a report has been reviewed and fixed, its entry in `provenance.json` becomes `"Opus 5.5, reviewed with Fable 5.1"` (or `"… (sampled)"` when its stratum was cleared on a sample). On the next build it drops off `FABLE-REVIEW.md` and loses its flag on the site.
 - **Sample first (decided 27 October 2026).** The reports are audited by stratified sample, not one by one: ten Rome reports across the three checking strata, then 14.4 decides per stratum whether the rest is cleared on the sample or audited in full (rule in `NEXT-SESSION.md`). **Cadence:** the same sample-first review runs on command at the end of every four written units of any course, on one in four of the reports written since the last review. **The alert is automatic:** `review_due.py` counts the complete units that still hold a flagged report (both courses pooled); `register.py` and `build.py` print its line after every registration and build, and `FABLE-REVIEW.md` opens with it; at four it reads FABLE REVIEW DUE and the writing session stops at the unit boundary and says so in its first line.
-- Keep only the newest zip. Every session ends by sending a new one, and adds its entry to `CHANGELOG.md`.
+- Every session ends with a commit to `apcanario/learning` and adds its entry to `CHANGELOG.md`. Two sessions editing the kit in parallel diverge in `provenance.json`, the prompts indexes and the site: one kit session at a time.
 
 ### 2. Backlog: the rest of Rome (writing)
 - `BACKLOG.md` is the writing prompt for deep dive I (11.3 to 11.8), deep dive III (13.3 to 13.8) and deep dive II (12.1 to 12.8), with lane notes and the pipeline (writer, fresh checker, maintainer). Run it when the review reaches a clean point, or whenever you decide to write first; it adds to the review queue unless the session runs on Fable 5.1.
 
 ### 3. Housekeeping
-- **Delete three stray draft pages.** Writers in earlier sessions accidentally published draft fragments as private pages on your account: Rome 3.2 and 3.3 (https://claude.ai/artifact/8ZsCzpeUaZC4VgMxSpDQVL, https://claude.ai/artifact/MUrVgjoM5DxVRNhUeWfUSU) and Greek 11.6, page title "r-11.6" (https://claude.ai/artifact/WGAiphxGRp3AG3SY8RnJke). Nothing links to them. The writers of units 4 to 6 published nothing. Delete them from the claude.ai artifacts gallery (claude.ai/code/artifacts), or ask any session to do it.
+- **Stray draft pages: deleted on 28 October 2026.** Writers in earlier sessions had published draft fragments of Rome 3.2, 3.3 and Greek 11.6 as private pages; nothing linked to them. A writer must never publish; only the site is published, and only to its existing artifact.
 - **Corrections once waiting, all applied on 27 October 2026 (session 2):** Greek 6.3, 7.2, 7.3 (two), 8.1, 9.3, 9.4 and Rome 1.4, 3.1, 6.1. Greek 7.2 and 8.1 ran over their targets; since length is advisory (below) nothing is owed.
 - **Bibliography for the reports already written:** `bibliography/<course>/unit-<n>.md` is the machine-extracted list for all 137 (it misses a citation whose work is named only earlier in the paragraph and keeps the report's own imprecisions, such as a modern work with no title). Curated `r-<id>.md` files for all 137 now exist (Sonnet 5.5, 27 October 2026), flagged in `provenance.json` until a Fable 5.1 spot-check of about three units.
 - **Modern works cited by surname and year without title** are the one systematic Rome habit the sample found (fixed in the twelve audited reports). A mechanical pass over the 44 sampled-clear reports (search for a surname followed by a bare year) is cheap and worth doing when they are next touched.
@@ -46,9 +48,9 @@ Personal Mythology is a self-study compendium of courses on the history and myth
 |---|---|
 | `README.md` | This file. |
 | `CHANGELOG.md` | Every session since the first request on 22 October 2026, newest first. `build.py` renders it as the site's Changelog page (`#changelog`, linked from the home page and the root drawer). Add an entry at the end of every session. |
-| `NEXT-SESSION.md` | Paste-ready prompt for the next session: the Fable review, resuming at Rome 14.1, with what is already done. |
+| `NEXT-SESSION.md` | Paste-ready prompt for the next review session (Fable 5.1): Greek 13.2 and 13.5 on the six still-flagged reports (11.1, 11.2, 11.4, 11.5, 11.6, 11.8), with what is already done. |
 | `BACKLOG.md` | The writing prompt for Rome 11.3 to 11.8, 13.3 to 13.8 and 12.1 to 12.8, with their lane notes (the former `NEXT-SESSION.md`). |
-| `audits/` | The Fable review's outputs, one Markdown file per audit run: `greece-13.1-rubric.md` (the rubric, baseline scores, blank scorecard), `rome-14.6-syllabus.md` (the syllabus review and its applied corrections), `rome-14.1-rubric.md` (the Rome dimensions and calibration), `rome-14.2-r-<id>.md` (one scorecard per audited report, thirteen so far), `rome-14.4-cohorts.md` (the cohort comparison and the stratum decision), and `AUDIT-BRIEF.md`, the brief given to each auditor agent. |
+| `audits/` | The Fable review's outputs, one Markdown file per audit run (38 files on 28 October 2026). Greece: `greece-13.1-rubric.md` (the rubric, baseline scores, blank scorecard), `greece-13.2-r-<id>.md` (eleven scorecards: 10.4, 10.7 to 10.12, 11.3, 11.7, 12.1, 12.6), `greece-13.3-disputes.md` and `greece-13.3-pairs.md` (the overlap work), `greece-13.4-cohorts.md` (interim cohort decision). Rome: `rome-14.1-rubric.md` (the Rome dimensions and calibration), `rome-14.2-r-<id>.md` (thirteen scorecards: twelve sampled reports and the capstone 10.5), `rome-14.3-core.md`, `rome-14.3-r-11.1.md`, `rome-14.3-r-13.1-13.2.md` (the overlap checks), `rome-14.4-cohorts.md` (the cohort comparison and the stratum decision), `rome-14.6-syllabus.md` (the syllabus review and its applied corrections). Briefs and tools: `AUDIT-BRIEF.md` (Rome), `AUDIT-BRIEF-GREECE.md`, `OVERLAP-BRIEF.md`, `overlap.py`. |
 | `SYLLABUS-CHANGES.md` | The syllabus changes applied on 25 October 2026 (the philosophy deep dives, the Aeneid review, the audit renumbering), with a note of the deviations. Kept as a record. |
 | `reviews/units-9-13/` | The units 8 to 13 sessions: the checker brief (`BRIEF.md`), one findings file per new report (`rome-8.1.md`, `greece-12.3.md`), one writer-notes file per report (`*-writer.md`, the writer's unsure claims), the capstone material (`rome-10.5-material.md`) and the maintainer log (`log.md`). |
 | `reviews/2026-quality-pass/` | The quality pass of 25 October: the reviewer brief, one findings file per Rome report (0.1 to 7.5), the syllabi review and the unit 7 writers' notes. Reviewers never edit reports; each finding was checked before it was applied. |
@@ -56,9 +58,9 @@ Personal Mythology is a self-study compendium of courses on the history and myth
 | `personal-mythology.html` | The built site, identical to the published artifact. |
 | `build.py` | Builds `personal-mythology.html` (and `FABLE-REVIEW.md`) from the course data. `python3 build.py`. |
 | `courses.py` | The courses as data: id, number, name, colour, syllabus file, fragments folder, prompts index, report-id prefix, unit colours, parts, era ribbon, home-page text, reading spine. `NEXT` holds the eight courses still to come. |
-| `shell.css`, `shell.js` | The site's styles and navigation (hash routing, one drawer context per course, prev/next within a course, continue buttons, theme toggle, copy buttons). Course-agnostic: a new course needs no changes here. |
-| `greek-syllabus.html` | Greek syllabus: 14 units (0–13), 83 modules (78 content, 5 audit), one prompt each. Unit 12 is deep dive III (Greek philosophy); unit 13 is the Greek audit. |
-| `roman-syllabus.html` | Rome syllabus: 15 units (0–14), 85 modules (79 content, 6 audit). Unit 13 is deep dive III (Roman philosophy); unit 14 is the Rome audit, and 14.6 reviews the syllabus itself. |
+| `shell.css`, `shell.js` | The site's styles and navigation (hash routing, one drawer context per course, prev/next within a course, continue buttons, theme toggle, copy buttons). Course-agnostic: a new course needs no changes here. `shell.css` is a copy of `design/theme.css` in the repo; never edit it here. |
+| `greek-syllabus.html` | Greek syllabus: 14 units (0–13), 83 modules (78 content, 5 audit), one prompt each. Unit 12 is deep dive III (Greek philosophy); unit 13 is the Greek audit. Build input only; published as the site's `#syllabus` panel. |
+| `roman-syllabus.html` | Rome syllabus: 15 units (0–14), 85 modules (79 content, 6 audit). Unit 13 is deep dive III (Roman philosophy); unit 14 is the Rome audit, and 14.6 reviews the syllabus itself. Build input only; published as the site's `#rome-syllabus` panel. |
 | `greece/r-*.html`, `rome/r-*.html` | The report fragments, one file per module. |
 | `prompts-greece.json`, `prompts-rome.json` | Per course, the modules that have a report: id → title and prompt, copied from the syllabus. |
 | `provenance.json` | Who wrote what: per course, the model for each report; `artefacts` for the syllabus, course text, spec and code; `review_notes` for the reviewer. Anything whose entry does not mention Fable 5.1 is flagged. |
@@ -82,6 +84,8 @@ Personal Mythology is a self-study compendium of courses on the history and myth
 5. `python3 build.py`, `python3 verify.py`, publish to the same artifact.
 
 ## Design rules (don't drift)
+
+`shell.css` is a copy of `design/theme.css` in the repo; change the theme there, then copy (`cp ../design/theme.css shell.css`), rebuild and republish. No page gets its own CSS.
 
 Dark-first, with a working light mode and the sun/moon toggle. Page `#0a0a0c`, cards `#131316`, borders `#1e1e24`. DM Sans for text, Space Mono for labels, Gentium Book Plus for Greek or Latin display words. Accents `#ff6b6b` (Greece), `#9b5de5` (Rome), plus `#f4a261`, `#2a9d8f`, `#457b9d`, `#e9c46a`; no grey as a dominant accent. Mobile-first, max width 700 px, every page carries its own `<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">` (without it phones lay the page out 980 px wide and shrink the text to 40 percent), 44 px touch targets, fixed frosted top bar, full-height slide-out drawer, at least 6 px between stacked cards.
 

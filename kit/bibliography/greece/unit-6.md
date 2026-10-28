@@ -128,8 +128,8 @@ Curated bibliography: `bibliography/greece/r-6.4.md`.
 - Gerald Else, *The Origin and Early Form of Greek Tragedy* (1965)
 - Simon Goldhill, *The Great Dionysia and civic ideology* (1987)
 - Jasper Griffin, *CQ* (1998)
-- Answer Griffith (1977): title not given in the report
 - Mark Griffith, *The Authenticity of Prometheus Bound* (1977)
+- Answer Griffith (1977): title not given in the report
 - Halliwell, *Aristotle's Poetics* (1986)
 - Malcolm Heath, *Political Comedy in Aristophanes* (1987)
 - Jeffrey Henderson (1990): title not given in the report

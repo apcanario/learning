@@ -78,14 +78,14 @@ Curated bibliography: `bibliography/rome/r-9.2.md`.
 
 ### Modern works
 - AD (1969): title not given in the report
-- Mary Beard, *The Roman Triumph* (2007)
 - Beard (2007): title not given in the report
+- Mary Beard, *The Roman Triumph* (2007)
 - P. A. Brunt, *Conscription and Volunteering in the Roman Imperial Army* (1974)
 - J. C. Coulston, *The Value of Trajan's Column as a Source for Military Equipment* (1989)
 - Richard Duncan-Jones, *Structure and Scale in the Roman Economy* (1990)
 - Giovanni Forni, *Il reclutamento delle legioni da Augusto a Diocleziano* (1953)
-- Isaac (1988): title not given in the report
 - Benjamin Isaac, *The Meaning of the Terms <em>Limes</em> and <em>Limitanei</em>* (1988)
+- Isaac (1988): title not given in the report
 - A. H. M. Jones, *The Later Roman Empire* (1964)
 
 ## 9.3 Family, women and slaves
@@ -204,8 +204,8 @@ Curated bibliography: `bibliography/rome/r-9.4.md`.
 - Keith Hopkins, *Death and Renewal* (1983)
 - Willem Jongman (1988): title not given in the report
 - Walter Scheidel, *Germs for Rome* (2003)
-- Storey (1997): title not given in the report
 - Glenn Storey, *The population of ancient Rome* (1997)
+- Storey (1997): title not given in the report
 - Paul Veyne, *Le pain et le cirque* (1976)
 - Andrew Wallace-Hadrill (1991): title not given in the report
 - Wallace-Hadrill, *Houses and Society in Pompeii and Herculaneum* (1994)
@@ -241,8 +241,8 @@ Curated bibliography: `bibliography/rome/r-9.5.md`.
 - Clementina Panella, *Arco di Costantino tra archeologia e archeometria* (1999)
 - Nicholas Purcell (1993): title not given in the report
 - Pier Luigi Tucci (2005): title not given in the report
-- T. P. Wiseman, *The House of Augustus* (2019)
 - Wiseman (2019): title not given in the report
+- T. P. Wiseman, *The House of Augustus* (2019)
 
 ### Corpora and inscriptions
 

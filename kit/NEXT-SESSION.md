@@ -1,10 +1,10 @@
 I'm continuing a self-study project called **Personal Mythology**: a compendium of courses on the history and mythology of different cultures, published as one claude.ai artifact. Greece (course 1) is complete; Rome (course 2) has 59 of 79 reports. Everything written with Opus 5.5 is flagged for review with Fable 5.1. All 59 Rome reports and 72 of the 78 Greek reports are reviewed; **six Greek reports are still flagged: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8.** This session finishes the review. It must run on Fable 5.1; if it is not, say so and stop.
 
-## What I've attached
+## Where the source is
 
-- `personal-mythology-kit.zip`. Unzip it into its own folder and read, in this order: `README.md`, `FABLE-REVIEW.md` (the queue; it opens with the review alert), the last two entries of `review_notes` in `provenance.json`, `audits/greece-13.4-cohorts.md` (the interim cohort decision and why the stratum was split), `audits/AUDIT-BRIEF-GREECE.md` (the brief each auditor agent gets) and one Greek scorecard as a model (`audits/greece-13.2-r-10.8.md`). Run `python3 build.py` and confirm it reproduces `personal-mythology.html` byte for byte before changing anything.
+- Clone the private repo `apcanario/learning` and work in `kit/`; this file is `kit/NEXT-SESSION.md`. Read, in this order: `README.md`, `FABLE-REVIEW.md` (the queue; it opens with the review alert), the last two entries of `review_notes` in `provenance.json`, `audits/greece-13.4-cohorts.md` (the interim cohort decision and why the stratum was split), `audits/AUDIT-BRIEF-GREECE.md` (the brief each auditor agent gets) and one Greek scorecard as a model (`audits/greece-13.2-r-10.8.md`). Run `python3 build.py` and confirm it reproduces `personal-mythology.html` byte for byte before changing anything.
 
-The live artifact is https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (update it, never create a new one; read it with the Artifact tool first). The Rome syllabus is published at https://claude.ai/artifact/AEgHdAEpeLo1rtfBcuBbVy and the Greek syllabus at https://claude.ai/artifact/EdV1Nkt9HVEoApdMstbANm; republish either only if it changes. Publishing works best delegated to one small agent per page (read the page, publish the local file once with its `url`, never retry or force).
+The live artifact is https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (update it, never create a new one; read it with the Artifact tool first). The standalone syllabus artifacts were retired on 28 October 2026; the site's syllabus panels are the only published copy. Publishing works best delegated to one small agent (read the page, publish the local file once with its `url`, never retry or force).
 
 ## Done on 27 October 2026 (sessions 1 to 3 of the review): don't redo
 
@@ -28,9 +28,9 @@ Writing the 20 unwritten Rome modules is the backlog (`BACKLOG.md`), not this se
 ## At the end of the session
 
 - `python3 build.py`, then `python3 verify.py`; it must print ALL CHECKS PASSED.
-- Publish to the same artifact (and either syllabus if it changed).
+- Publish to the same artifact.
 - Update `README.md` ("Where things stand"), add the session to `CHANGELOG.md` (entry, "At a glance" row, "Where things stand"), add a `review_notes` entry, and rewrite this `NEXT-SESSION.md` to say exactly where the next session resumes.
-- Send me the updated kit zip, and summarise in a few lines: what was reviewed, verdicts, what changed, what is left in the queue.
+- Commit and push, and summarise in a few lines: what was reviewed, verdicts, what changed, what is left in the queue.
 
 ## Rules
 

@@ -35,8 +35,8 @@ Curated bibliography: `bibliography/rome/r-11.1.md`.
 
 ### Modern works
 - A. E. Astin, *The Lex Annalis before Sulla* (1958)
-- P. A. Brunt, *Clientela* (1988)
 - Brunt (1988): title not given in the report
+- P. A. Brunt, *Clientela* (1988)
 - Graham Burton, *Death and Renewal* (1983)
 - Matthias Gelzer, *Die Nobilität der römischen Republik* (1912)
 - Hölkeskamp (2004): title not given in the report
@@ -80,14 +80,14 @@ Curated bibliography: `bibliography/rome/r-11.2.md`.
 - Velleius 2.40.3
 
 ### Modern works
-- Brunt, *The Army and the Land in the Roman Revolution* (1962)
 - Brunt (1962): title not given in the report
+- Brunt, *The Army and the Land in the Roman Revolution* (1962)
 - P. A. Brunt, *Italian Manpower* (1971)
 - Brunt (1988): title not given in the report
 - Stefan Chrissanthos, *Caesar and the Mutiny of 47 B.C.* (2001)
 - Emilio Gabba's (1976): title not given in the report
 - Erich Gruen, *The Last Generation of the Roman Republic* (1974)
-- Keaveney (2007): title not given in the report
 - Arthur Keaveney, *The Army in the Roman Revolution* (2007)
+- Keaveney (2007): title not given in the report
 - Anton von Premerstein, *Vom Werden und Wesen des Prinzipats* (1937)
 

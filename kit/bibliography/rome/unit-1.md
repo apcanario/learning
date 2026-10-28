@@ -194,8 +194,8 @@ Curated bibliography: `bibliography/rome/r-1.5.md`.
 - Livy 1.8.7; 1.17.5–6; 1.18.2; 1.18.6–10; 1.22.2; 1.32; 1.34.2; 1.41.6; 1.42–43; 1.43.10–11; 1.46.4; 1.60; 2.2.1–2; 2.8.6–8; 2.16.4; 2.21.5; 2.21.7; 5.19.6; 9.38.15; 40.29.3–14
 
 ### Modern works
-- Corniculum. Andreas Alföldi, *Early Rome and the Latins* (1965)
 - Alföldi (1965): title not given in the report
+- Corniculum. Andreas Alföldi, *Early Rome and the Latins* (1965)
 - Carandini, *Reading Carandini* (2001)
 - Andrea Carandini, *La nascita di Roma* (2007)
 - Cornell, *The Beginnings of Rome* (1995)

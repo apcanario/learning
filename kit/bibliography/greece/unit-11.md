@@ -43,8 +43,8 @@ Curated bibliography: `bibliography/greece/r-11.1.md`.
 - Errington, *The Nature of the Macedonian State* (1978)
 - Lehmann, *AJA* (1980)
 - Prag, *JHS* (1984)
-- Scullion, *Euripides and Macedon, or the Silence of the <em>Frogs</em>* (2003)
 - Scullion (2003): title not given in the report
+- Scullion, *Euripides and Macedon, or the Silence of the <em>Frogs</em>* (2003)
 
 ### Corpora and inscriptions
 
@@ -136,8 +136,8 @@ Curated bibliography: `bibliography/greece/r-11.4.md`.
 - Bosworth, *Conquest and Empire* (1988)
 - Bosworth, *Alexander, Euripides and Dionysos* (1996)
 - Fredricksmeyer, *Alexander, Zeus Ammon, and the Conquest of Asia* (1991)
-- Alexander. Tarn (1948): title not given in the report
 - Tarn, *Alexander the Great* (1948)
+- Alexander. Tarn (1948): title not given in the report
 
 ## 11.5 The court: Companions, conspiracies and the orientalising policy
 

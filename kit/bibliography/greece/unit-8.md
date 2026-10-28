@@ -48,8 +48,8 @@ Curated bibliography: `bibliography/greece/r-8.1.md`.
 - E. R. Dodds, *The Greeks and the Irrational* (1951)
 - Mary Douglas, *Purity and Danger* (1966)
 - Fritz Graf, *Magic in the Ancient World* (1997)
-- Julia Kindt, *Rethinking Greek Religion* (2012)
 - Kindt (2012): title not given in the report
+- Julia Kindt, *Rethinking Greek Religion* (2012)
 - Karl Meuli (1946): title not given in the report
 - Jon Mikalson, *Sacred and Civil Calendar of the Athenian Year* (1975)
 - Louis Moulinier (1952): title not given in the report

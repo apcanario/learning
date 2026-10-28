@@ -306,8 +306,8 @@ Curated bibliography: `bibliography/greece/r-10.9.md`.
 - Kirk, *The Iliad: A Commentary* (1985)
 - Kullmann, *Gods and Men in the Iliad and the Odyssey* (1985)
 - Lloyd-Jones, *The Justice of Zeus* (1971)
-- Homeric. Reinhardt (1938): title not given in the report
 - Homeric. Karl Reinhardt, *Das Parisurteil* (1938)
+- Homeric. Reinhardt (1938): title not given in the report
 - Laura Slatkin, *The Power of Thetis* (1991)
 - Bruno Snell, *Die Entdeckung des Geistes* (1946)
 - M. M. Willcock, *Mythological Paradeigma in the Iliad* (1964)

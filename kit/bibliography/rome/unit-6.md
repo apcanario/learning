@@ -24,8 +24,8 @@ Curated bibliography: `bibliography/rome/r-6.1.md`.
 - Velleius 2.121.1
 
 ### Modern works
-- Galinsky (1996): title not given in the report
 - Karl Galinsky, *Augustan Culture* (1996)
+- Galinsky (1996): title not given in the report
 - E. A. Judge, *<em>Res publica restituta</em>: a modern illusion?* (1974)
 - Answer Syme, *The Roman Revolution* (1939)
 - Ronald Syme, *The Roman Revolution* (1939)
@@ -65,8 +65,8 @@ Curated bibliography: `bibliography/rome/r-6.2.md`.
 - Peter Heslin, *Journal of Roman Studies* (2007)
 - Pax (1990): title not given in the report
 - Price, *Religions of Rome* (1998)
-- Answer Rehak (2001): title not given in the report
 - Paul Rehak, *Aeneas or Numa?* (2001)
+- Answer Rehak (2001): title not given in the report
 - Venus (1966): title not given in the report
 - Andrew Wallace-Hadrill (1981): title not given in the report
 - Polykleitos' Doryphoros. Paul Zanker, *The Power of Images in the Age of Augustus* (1988)

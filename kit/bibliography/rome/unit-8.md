@@ -30,17 +30,17 @@ Curated bibliography: `bibliography/rome/r-8.1.md`.
 - Géza Alföldy, *The Crisis of the Third Century as Seen by Contemporaries* (1974)
 - Gaston Halsberghe, *The Cult of Sol Invictus* (1972)
 - Kenneth Harl, *Coinage in the Roman Economy, 300 B.C. to A.D. 700* (1996)
-- Harper (2017): title not given in the report
 - Kyle Harper, *The Fate of Rome* (2017)
+- Harper (2017): title not given in the report
 - Palmyrene Malakbel. Steven Hijmans, *Sol: The Sun in the Art and Religions of Rome* (2009)
 - Liebeschuetz (2007): title not given in the report
 - Wolf Liebeschuetz, *Was there a crisis of the third century?* (2007)
-- Rathbone (1996): title not given in the report
 - Dominic Rathbone, *Monetisation, not price-inflation, in third-century AD Egypt?* (1996)
+- Rathbone (1996): title not given in the report
 - J. B. Rives, *The Decree of Decius and the Religion of Empire* (1999)
 - Michael Rostovtzeff, *The Social and Economic History of the Roman Empire* (1926)
-- Karl Strobel, *Das Imperium Romanum im "3. Jahrhundert"* (1993)
 - Strobel (1993): title not given in the report
+- Karl Strobel, *Das Imperium Romanum im "3. Jahrhundert"* (1993)
 - Witschel (1999): title not given in the report
 - Christian Witschel, *Krise, Rezession, Stagnation?* (1999)
 
@@ -108,8 +108,8 @@ Curated bibliography: `bibliography/rome/r-8.3.md`.
 - Judith Evans Grubbs, *Law and Family in Late Antiquity* (1995)
 - Henri Grégoire (1938): title not given in the report
 - R. P. C. Hanson, *The Search for the Christian Doctrine of God* (1988)
-- Seeck (1891): title not given in the report
 - Otto Seeck, *Das sogenannte Edikt von Mailand* (1891)
+- Seeck (1891): title not given in the report
 - T. C. Skeat (1954): title not given in the report
 - Peter Weiss (2003): title not given in the report
 - Rowan Williams, *Arius: Heresy and Tradition* (1987)
@@ -202,8 +202,8 @@ Curated bibliography: `bibliography/rome/r-8.6.md`.
 - Cheynet (1980): title not given in the report
 - Anatolia. Jean-Claude Cheynet, *Mantzikert: un désastre militaire?* (1980)
 - Heraclius. John Haldon, *Byzantium in the Seventh Century* (1990)
-- Harper (2017): title not given in the report
 - Kyle Harper, *The Fate of Rome* (2017)
+- Harper (2017): title not given in the report
 - Jones (1964): title not given in the report
 - Rome. Anthony Kaldellis, *Romanland* (2019)
 - George Ostrogorsky, *History of the Byzantine State* (1956)
