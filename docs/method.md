@@ -187,7 +187,7 @@ You are re-checking one unit written with live search six months ago: {unit code
 
 ## 7 · Filing a finished unit and updating its hub
 
-Run the `file-unit` skill, or by hand:
+Run the `file-unit` skill, or by hand. Since A5 (`academy.md`) the vault is the source of a markdown course: Academy reads its units from `courses/<course>/`, and a unit is written when its file is there with front matter. A history course still builds from the kit; its vault copy is the record.
 
 1. **Name.** `<code>-<slug>.md`: the unit code, then the title in lower case with words joined by hyphens, accents and punctuation dropped (`B1-mental-model.md`, `11.3-politics-in-the-street.md`).
 2. **Save to the vault** at `courses/<course>/<code>-<slug>.md`, where `<course>` is `brand-ai` for Brand + AI and `greece` or `rome` for Personal Mythology. Put the header first as front matter:
@@ -201,12 +201,14 @@ Run the `file-unit` skill, or by hand:
    search: off
    ---
    ```
-   Brand + AI: the unit in Markdown, ending with its deliverable and a Sources list of links. Personal Mythology: the fragment, unchanged, below the front matter.
+   Brand + AI: the unit in Markdown, ending with its deliverable and a Sources list of links; this file is what Academy renders, so there is no second copy. Personal Mythology: the fragment, unchanged, below the front matter.
 3. **Personal Mythology also files into the kit** (`kit/` in the repo): save the fragment without front matter as `<course>/r-<id>.html`; `check.py` until OK; the fresh check and maintainer pass (§5); the bibliography file `bibliography/<course>/r-<id>.md`; `python3 register.py <course> "<model>" <id>`; when the syllabus unit is complete, `crosscheck.py` over its modules; `python3 build.py`, `python3 verify.py` (ALL CHECKS PASSED); publish the site to its existing artifact; add the session to `CHANGELOG.md`. The kit's `shell.css` is a copy of `design/theme.css` (repo `README.md`, "After a theme change"); the kit's `build.py` is the one build of the Personal Mythology site.
-4. **Brand + AI updates its course data** in `generator/data/brand-ai/` (its `hub.py` stays the data file, AD5): copy the unit file to `units/<code>-<slug>.md`; add a reading page to `READINGS` (id `read-<code>`, the file, course, title, `covers=[code]`, a one-paragraph intro saying what it is and its gaps) and map the code in `WRITTEN`; set `STATUS[code]` to "written <d Mon>"; move `NEXT_UNIT`, `NEXT_AUDIT` and `AUDITS_RUN`; bump `VERSION`; add a `CHANGELOG` row (newest first). The unit's links join the course's bibliography automatically. Then, as for history: `cd kit && python3 build.py && python3 verify.py`, publish Academy (the artifact, then `deploy.sh`).
-5. **Update `courses-index.md`:** the unit's status, model, date and vault path; the audit count for its hub; for a search-on unit, its staleness date (written + six months). A Brand + AI row also carries the path of the unit's fresh-check report, which lives at `audits/brand-ai/fresh-check-<code>.md`.
+4. **Brand + AI updates its course data** in `generator/data/brand-ai/hub.py` (the data file, AD5; the unit itself stays only in the vault): add a `READINGS` entry for the unit's page (id `read-<code>`, course, title, `covers=[code]`, `name`, a one-paragraph intro saying what it is and its gaps; no file path: the build takes the text from the vault, and `WRITTEN` is derived there); set `STATUS[code]` to "written <d Mon>"; move `NEXT_UNIT`, `NEXT_AUDIT` and `AUDITS_RUN`; bump `VERSION`; add a `CHANGELOG` row (newest first). The unit's links join the course's bibliography automatically. Then, as for history: `cd kit && python3 build.py && python3 verify.py`, publish Academy (the artifact, then `deploy.sh`).
+5. **Update `courses-index.md`:** the unit's status, model, date and vault path; the audit count for its hub; for a search-on unit, its staleness date (written + six months). A Brand + AI row also carries the path of the unit's fresh-check report, which lives at `audits/brand-ai/fresh-check-<code>.md`. `kit/index_check.py` (run by `verify.py`) checks every row, count line and staleness date against the syllabi, `provenance.json`, the vault and the data files; a filing is not done until it passes.
 6. **Check the count.** If this was the fourth unit since the last audit in its hub, the next chat is the audit (§6), not a unit.
 7. **Commit and push.** The session ends with one commit naming the unit or the audit.
+
+**A new course** of either family is a folder plus an entry in `kit/courses.py` (`new-course` skill; `kit/README.md`, "Adding a course"): a history course is `kit/<id>/` (its syllabus, an empty prompts index, then its fragments), a markdown course is `generator/data/<slug>/` copied from `_template/` (its vault folder `courses/<slug>/` appears with the first filed unit). It appears on the Academy home after one build; its section in `courses-index.md` is added in the same chat, since `index_check.py` fails without it.
 
 ## 8 · Backlog and changelog
 

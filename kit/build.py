@@ -44,6 +44,14 @@ def flagged(model):
     return 'Fable 5.1' not in model
 
 
+def start_btn(c):
+    """The course home's Start button: the first written report, or the syllabus while nothing is written (a new course)."""
+    if c['first'] is None:
+        return f'<a class="hbtn start" href="#{c["syl_id"]}" data-target="{c["syl_id"]}"><span>Start the course</span><b>Nothing written yet: the syllabus</b></a>'
+    f = c['first']
+    return f'<a class="hbtn start" href="#{c["slug"](f)}" data-target="{c["slug"](f)}"><span>Start the course</span><b>{f} {html.escape(c["index"][f]["title"])}</b></a>'
+
+
 def yr(y):
     return f'{-y} BC' if y < 0 else f'AD {y}'
 
@@ -67,7 +75,7 @@ def load(c):
     idx = json.load(open(R / c['prompts']))
     c['index'] = {k: idx[k] for k in order if k in idx}
     c['done'] = set(c['index'])
-    c['first'] = next(iter(c['index']))  # the first written report, where a new reader starts
+    c['first'] = next(iter(c['index']), None)  # the first written report, where a new reader starts (None in a new course)
     c['prov'] = PROV.get(c['id'], {})
     c['slug'] = lambda i, p=c['prefix']: p + i.replace('.', '')
 
@@ -202,7 +210,7 @@ def course_home(c):
     <h1>{c['h1']}</h1>
     <p class="lede">{fill(c['lede'], c)}</p>
     <div class="stats" data-n="4"><div><b>{c['nrep']}</b><span>of {c['content_mods']} reports written</span></div><div><b>{c['units_complete']}</b><span>of {nunits} units complete</span></div><div><b>{c['words']//1000}k</b><span>words so far</span></div><div><b>{hours(c['words'])}</b><span>hours of reading</span></div></div>
-    <div class="hlinks"><a class="hbtn cont" href="#{c['home_id']}" data-course="{c['id']}" hidden><span>Continue</span><b></b></a><a class="hbtn start" href="#{c['slug'](c['first'])}" data-target="{c['slug'](c['first'])}"><span>Start the course</span><b>{c['first']} {html.escape(c['index'][c['first']]['title'])}</b></a><a class="hbtn alt" href="#{c['syl_id']}" data-target="{c['syl_id']}"><span>Syllabus</span><b>All {c['total_mods']} prompts, copyable</b></a></div>
+    <div class="hlinks"><a class="hbtn cont" href="#{c['home_id']}" data-course="{c['id']}" hidden><span>Continue</span><b></b></a>{start_btn(c)}<a class="hbtn alt" href="#{c['syl_id']}" data-target="{c['syl_id']}"><span>Syllabus</span><b>All {c['total_mods']} prompts, copyable</b></a></div>
     {c['flag']}
   </header>
 
@@ -292,11 +300,49 @@ G = HISTORY[0]
 
 
 def load_markdown(c):
-    """A markdown course's data file (generator/data/<slug>/hub.py): its courses, units, written set and status."""
+    """A markdown course: its data file (generator/data/<slug>/hub.py: courses, units, briefs, audit log, status) and
+    its filed units, read from the vault (courses/<slug>/, A5). A unit is written when its file is in the vault with
+    front matter; the data file's READINGS add a page's intro and top-bar name, and its research pages (an `md` path
+    relative to the data folder). WRITTEN is derived here, never typed."""
     spec = importlib.util.spec_from_file_location('hubdata_' + c['id'], R.parent / c['data'])
     d = importlib.util.module_from_spec(spec); spec.loader.exec_module(d)
     c['hub'] = d
     c['data_dir'] = (R.parent / c['data']).parent
+    c['vault'] = R.parent / c['vault']
+    codes = {u[0]: (sc, u) for sc in d.COURSES for u in sc['units']}
+    vault = {}
+    for f in sorted(c['vault'].glob('*.md')):
+        fm = howbuilt.front(f)
+        if not fm.get('code'):
+            continue
+        if fm['code'] not in codes:
+            raise SystemExit(f'{f.relative_to(R.parent)}: code {fm["code"]} is not a unit of {c["data"]}')
+        if fm['code'] in vault:
+            raise SystemExit(f'{f.relative_to(R.parent)}: a second vault file for {fm["code"]}')
+        vault[fm['code']] = (f, fm)
+    c['vault_units'] = vault
+    readings, by_code = [], {}
+    for r in d.READINGS:
+        if 'md' in r:                                  # research or other written material kept in the data folder
+            r['path'] = c['data_dir'] / r['md']
+        else:                                          # a unit's reading page: its text is the vault file
+            code = r['covers'][0]
+            if code not in vault:
+                raise SystemExit(f'{c["data"]}: READINGS {r["id"]} covers {code}, which has no file in {c["vault"].relative_to(R.parent)}/')
+            r['path'] = vault[code][0]
+        for x in r['covers']:
+            by_code[x] = r['id']
+        readings.append(r)
+    for code, (f, fm) in vault.items():                # a filed unit without a READINGS entry still gets its page
+        if code not in by_code:
+            sc, u = codes[code]
+            r = dict(id=f'read-{c["id"]}-{code.lower()}', path=f, course=sc['key'], title=fm.get('title', u[1]), covers=[code],
+                     name=f'{code} · {fm.get("title", u[1])}',
+                     intro=f'Unit {code}, written {fm.get("written", "(date not recorded)")} by {fm.get("model", "(model not recorded)")}, search {fm.get("search", "not recorded")}.')
+            readings.append(r)
+            by_code[code] = r['id']
+    d.READINGS[:] = readings
+    d.WRITTEN = {code: by_code[code] for code in vault}
     c['subcourses'] = d.COURSES
     c['written'] = d.WRITTEN
     c['nunits'] = sum(len(sc['units']) for sc in d.COURSES)
@@ -313,7 +359,10 @@ def md_courses(c):
         sc['k'] = sc['key'].lower()
         theme, short = c['tracks'][sc['key']]
         done = [u for u in sc['units'] if u[0] in c['written']]
-        out.append(dict(id=f'brand-{sc["k"]}', home_id=f'brand-{sc["k"]}', parent=c, sc=sc, theme=theme, short=short, key=sc['key'],
+        pid = f'{c.get("prefix", c["id"])}-{sc["k"]}'   # brand-a, brand-b; a new course: <id>-<key>
+        legacy = c.get('legacy_ids')                   # Brand + AI keeps the anchors it had at A3 (#briefs-a, #b-a2)
+        out.append(dict(id=pid, home_id=pid, briefs_id=f'briefs-{sc["k"]}' if legacy else f'{pid}-briefs',
+                        brief_anchor='b-' if legacy else f'{pid}-b-', parent=c, sc=sc, theme=theme, short=short, key=sc['key'],
                         name=sc['name'], color=sc['color'], units=sc['units'], done=done, nunits=len(sc['units']), nwritten=len(done),
                         status='in progress', card=sc['tile']))
     return out

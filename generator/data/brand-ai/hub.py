@@ -44,28 +44,29 @@ COURSES = [
 COURSE_NOTE = "Not content for its own sake: every unit is sourced to peer-reviewed, platform-official or large-sample data, labels anecdote and vendor data as such, and ends with a shipped deliverable."
 
 # ---- written material (reading pages under Learn) ---------------------------------------
-# A unit whose brief starts with "WRITTEN" is written; WRITTEN maps it to its reading page.
+# A unit is written when its file is in the vault, courses/brand-ai/ (A5); kit/build.py derives WRITTEN from it.
+# A unit's entry here (no `md`; covers=[code]) adds its page's top-bar name and intro; the text is the vault file.
+# An entry with `md` is other written material kept in this folder (the superseded research).
 READINGS = [
     dict(id='read-audience-growth', md='audience-growth-across-platforms.md', course='A',
          title='Audience growth across platforms (research, superseded)', covers=[], name='Audience growth (research)',
          intro="Superseded on 28 Oct 2026 by the A9, A2 and A6 units, after Audit 1 found 23 of 91 claims failing and the deliverables missing; kept as the record. Research run 27 Oct 2026 across five tracks (YouTube mechanics; Instagram and TikTok; platform strategy; retention and conversion; niche landscape). It stands as the written material for A2, A6 and A9 and feeds A4 and A7. Most figures are correlational and vendor-published; the text says so where it applies. Gaps: no measured calendar-time-to-milestone data, no short-form→long-form conversion rate, no primary newsletter churn, no Portuguese-language RPM or SEO data; the YPP February 2027 threshold is cited via AIR, not verified against YouTube Help."),
-    dict(id='read-a9', md='units/A9-what-to-expect-benchmarks.md', course='A',
+    dict(id='read-a9', course='A',
          title='What to expect: benchmarks', covers=['A9'], name='A9 · Benchmarks',
          intro="Unit A9, rewritten 28 Oct 2026 by Opus 5.5 in its own chat, search on, from its brief after Audit 1; fresh check the same day (Fable 5.1): fix, 2 errors, 15 should-fix, 8 minor, all applied. Deliverables: the expectation sheet (one row per benchmark, source and label on each) and the quarterly checkpoint schedule with its four verdicts. Replaces the research page as the written material for A9. Staleness check due 28 Apr 2027."),
-    dict(id='read-a2', md='units/A2-audience-and-platform-economics.md', course='A',
+    dict(id='read-a2', course='A',
          title='Audience and platform economics', covers=['A2'], name='A2 · Audience and platforms',
          intro="Unit A2, rewritten 28 Oct 2026 by Opus 5.5 in its own chat, search on; fresh check the same day (Fable 5.1): fix, 3 errors, 13 should-fix, 11 minor, all applied. Deliverables: the audience profile (one sentence, with the basis and label for each trait) and the platform allocation for 5–7 hours a week, with the bad-fortnight cut order. Flags for A3: the evidence supports one Short per episode, not the brief's 2–3. Staleness check due 28 Apr 2027."),
-    dict(id='read-a6', md='units/A6-how-growth-works-per-platform.md', course='A',
+    dict(id='read-a6', course='A',
          title='How growth works, per platform', covers=['A6'], name='A6 · Growth per platform',
          intro="Unit A6, rewritten 28 Oct 2026 by Opus 5.5 in its own chat, search on; fresh check the same day (Fable 5.1): fix, 1 error, 9 should-fix, 7 minor, all applied. Deliverables: the per-platform playbook (each rule names its evidence; his own conventions marked) and the metrics sheet read once a quarter on A9's checkpoint dates. Unverified: Studio and Instagram menu locations. Staleness check due 28 Apr 2027."),
-    dict(id='read-b2', md='units/B2-choosing-the-model.md', course='B',
+    dict(id='read-b2', course='B',
          title='Choosing the model', covers=['B2'], name='B2 · Choosing the model',
          intro="Unit B2, written 28 Oct 2026 by Opus 5.5 in its own chat, search on (lineup, prices, plan rules and benchmarks dated that day; staleness check due 28 Apr 2027); fresh check the same day (Fable 5.1): fix, 3 errors, 10 should-fix, 14 minor. Deliverable: the model-routing table for his recurring tasks, with effort, the evidence behind each pick and an override trigger per row. Known gaps, from the writer's unsure list: Artificial Analysis's per-task costs differ between its leaderboard and model pages; the per-model rate at which claude.ai usage is drawn is undocumented; the Shōmen token counts are assumptions; whether self-preference bias carries between sibling models is untested."),
-    dict(id='read-b1', md='units/B1-mental-model.md', course='B',
+    dict(id='read-b1', course='B',
          title='Mental model', covers=['B1'], name='B1 · Mental model',
          intro="Unit B1, written 28 Oct 2026 by Opus 5.5 in its own chat, with live search (Anthropic product facts checked and dated that day; staleness check due 28 Apr 2027). Seven sections in the brief's order, then the deliverable: the five-minute model of how Claude works, as plain prose. Known gaps, from the writer's unsure list: the 200K claude.ai window is taken from an undated help article; the 2.7 characters-per-token figure is arithmetic on Anthropic's glossary, not a measurement; the skill-description cost uses Anthropic's per-skill average; whether claude.ai usage reflects prompt caching, and how much memory a new chat receives, are undocumented; the nondeterminism study was run on Qwen, not Claude."),
 ]
-WRITTEN = {'A2': 'read-a2', 'A6': 'read-a6', 'A9': 'read-a9', 'B1': 'read-b1', 'B2': 'read-b2'}
 
 # ---- build order -----------------------------------------------------------------------
 DONE_ROWS = [('—', 'A2 · A6 · A9', 'Audience growth research → rewritten as three units after Audit 1', 'research: Fable 5.1 agents; units: Opus 5.5, fresh-checked by Fable 5.1', 'on', 'rewritten 28 Oct')]

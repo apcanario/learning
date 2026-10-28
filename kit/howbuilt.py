@@ -330,17 +330,22 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
     """The "How it was built" panel of a markdown Academy course; m is a course dict from build.py:md_courses."""
     c, sc, d = m['parent'], m['sc'], m['parent']['hub']
     ctx, key, col = m['id'], sc['key'], m['color']
-    slug = c['data_dir'].name                              # generator/data/<slug>/ -> courses/<slug>/, audits/<slug>/
-    vault, adir = REPO / 'courses' / slug, REPO / 'audits' / slug
+    vault = c['vault']                                     # courses/<slug>/, the source of the units (A5)
+    slug = vault.name
+    adir = REPO / 'audits' / slug
     codes = [u[0] for u in sc['units']]
     titles = {u[0]: u[1] for u in sc['units']}
 
     units = {}
-    for f in sorted(vault.glob('*.md')):
-        fm = front(f)
+    misfiled = []
+    for code, (f, fm) in c['vault_units'].items():         # read once by build.py:load_markdown
+        if code not in codes:
+            continue
         parts = fm.get('course', '').split(' · ')
-        if fm.get('code') in codes and len(parts) > 1 and parts[1] == key:
-            units[fm['code']] = dict(fm, path=f)
+        if len(parts) > 1 and parts[1] == key:
+            units[code] = dict(fm, path=f)
+        else:
+            misfiled.append(code)
     checks = {}
     for f in sorted(adir.glob('fresh-check-*.md')):
         fm = front(f)
@@ -392,9 +397,8 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
     stale = sorted((plus_months(units[x]['written'], 6), x) for x in order if units[x].get('search') == 'on')
     if stale:
         flags.append('Staleness checks owed (search on, six months after writing): ' + '; '.join(f'{e(x)} on {e(date_long(dd))}' for dd, x in stale) + '.')
-    no_vault = [x for x in d.WRITTEN if x in codes and x not in units]
-    if no_vault:
-        flags.append(f'Written but missing from <code>courses/{slug}/</code> with front matter: {", ".join(no_vault)}.')
+    if misfiled:
+        flags.append(f'Filed in <code>courses/{slug}/</code> with a front-matter <code>course</code> line that does not name course {e(key)}: {", ".join(misfiled)}.')
 
     # earlier material for this course (DONE_ROWS), and the superseded readings kept as the record
     earlier = [r for r in d.DONE_ROWS if any(x in codes for x in re.findall(r'(?:DD-)?[AB]\d+', r[1]))]

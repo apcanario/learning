@@ -1,14 +1,14 @@
 ---
 name: new-course
-description: Start a new course in the Learning Project, its syllabus, briefs and Academy course pages, from the template on design/theme.css. Use when asked to add a course or plan a new syllabus.
+description: Start a new course in the Learning Project, its syllabus, briefs and Academy course pages, from the template on design/theme.css. A course of either family is a folder plus a kit/courses.py entry. Use when asked to add a course or plan a new syllabus.
 ---
 
 # Start a new course
 
-A course is not started by writing units. It is started by a syllabus, a brief per unit and its pages in Academy, in that order. The rules are `method.md`; the requirement sets are `TEMPLATE_BLOCKS` in `generator/data/brand-ai/hub.py` (the syllabus and AI-rule requirements; the website ones are met by `design/theme.css`); the look is `design/theme.css` and nothing else.
+A course is not started by writing units. It is started by a syllabus, a brief per unit and its pages in Academy, in that order. In the repo a course of either family is one folder plus one entry in `kit/courses.py` (A5); it appears on the Academy home after one build. The rules are `method.md`; the requirement sets are `TEMPLATE_BLOCKS` in `generator/data/brand-ai/hub.py` (the syllabus and AI-rule requirements; the website ones are met by `design/theme.css`); the look is `design/theme.css` and nothing else.
 
 ## 1. Decide where it lives
-- **A new culture in Personal Mythology** (Egypt, Persia, Norse and the others in the kit's `courses.py` `NEXT`): it joins the existing site, which is its hub. Follow the kit's `README.md`, "Adding a course": a syllabus in the same structure as `roman-syllabus.html` (units, modules, one `<pre>` prompt each, an audit unit last), a dict in `COURSES` in `courses.py` (removed from `NEXT`), a fragments folder, an empty prompts index, an empty `provenance.json` entry with the syllabus under `artefacts`; then `build.py` and `verify.py`. Briefs are the syllabus prompts plus `AGENT-SPEC.md` (add a section for the new course's conventions) and `WRITER-BRIEF.md`.
+- **A new culture in Personal Mythology** (Egypt, Persia, Norse and the others in the kit's `courses.py` `NEXT`): the folder `kit/<id>/` with `syllabus.html` in the structure of `roman-syllabus.html` (units, modules, one `<pre>` prompt each, an audit unit last) and `prompts.json` holding `{}`; a dict in `COURSES` in `courses.py`, removed from `NEXT`, with `family='history'`, `syllabus='<id>/syllabus.html'`, `prompts='<id>/prompts.json'`, `frags='<id>'` and the home-page fields the Rome dict has (parts, eras, ticks, lede, rules, spine, card); the syllabus under `artefacts` in `provenance.json`. The fragments arrive in the same folder as reports are written; until the first, the course home's Start button opens the syllabus. Then step 5's build and step 6. Briefs are the syllabus prompts plus `AGENT-SPEC.md` (add a section for the new course's conventions) and `WRITER-BRIEF.md`.
 - **A new course beside Brand + AI's A and B** (a course C in the same data file): add it to `generator/data/brand-ai/` (`COURSES` in `hub.py`, its units in `units_data.py`, its track in `kit/courses.py` `tracks`); it appears in Academy on the next build.
 - **A new markdown course family:** a new data folder. Steps 2 to 6 below.
 Say which in the first line.
@@ -27,15 +27,15 @@ Draft the frame before the syllabus: the pick, up to three reasons, the override
 Fill the template in `method.md` §4 once for the course. Reader: copied from `reader.md`, nothing added. Sourcing standard: Part 1 of `sourcing-standard.md` plus a new part for this course (its acceptable sources and labels), which you add to `sourcing-standard.md`. Tone: the Project's. End with "End with the unit's deliverable, built out in full, not described."
 
 ## 5. The course in Academy
-1. Copy `generator/data/_template/` to `generator/data/<slug>/`.
+1. Copy `generator/data/_template/` to `generator/data/<slug>/`. That folder is the course; its units will be filed in `courses/<slug>/`, which Academy reads (A5), so create no `units/` folder and keep no `WRITTEN` map.
 2. `units_data.py`: `PRE` (step 4) and the units (step 3). `hub.py`: replace every `⟨…⟩` (identity, courses with goal and outcomes, `ORDER`, frame, ledes, changelog v1). Prose blocks use theme classes only (`design/README.md` lists them); no `style` attribute except `--c`, `--cc`, `--hc`.
-3. `kit/courses.py`: a dict with `family='markdown'`, `data='generator/data/<slug>/hub.py'` and a `tracks` map (course key → track id and short name) in `COURSES`; a new track in `THEMES` if none fits.
+3. `kit/courses.py`: a dict with `family='markdown'`, `data='generator/data/<slug>/hub.py'`, `vault='courses/<slug>'` and a `tracks` map (course key → track id and short name) in `COURSES`; a new track in `THEMES` if none fits. Its pages get ids `<id>-<key>` (`#<id>-a`, `#<id>-a-briefs`); do not set `prefix` or `legacy_ids`, which keep Brand + AI's A3 anchors.
 4. If a page needs a component the theme lacks, add it to `design/theme.css` section 5 with a one-line comment and copy it to `kit/shell.css`.
-5. `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED).
+5. Step 6's `courses-index.md` section first (`verify.py` runs `index_check.py`, which fails without it), then `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED). The home's expected tracks come from `courses.py`; nothing in `verify.py` is edited for a new course.
 6. Look at the new course once at the three widths: `python3 verify.py --shots <dir> --page <course panel id> --page <its build page id>`, then open the screenshots (phone, tablet, desktop; dark and light) with the Read tool and check by eye what the checks cannot: the course home reads as one page from the hero, the unit cards and build-order table sit inside the column, the drawer shows the course under its track. A fault goes to `design/theme.css` (then `cp design/theme.css kit/shell.css`), never the page; rebuild and verify again.
 7. Publish Academy: the artifact (read first, publish once with its `url`: the shell `kit/academy/index.html` with `root` `kit/academy` and the fetched files `python3 publish_files.py` prints as `files`), then `./deploy.sh`.
 
 ## 6. Register it in the Project
-- `courses-index.md`: a section for the course with every unit in build order (status "not written", model, search flag, vault path `courses/<slug>/<code>-<slug>.md`); an audit counter at 0.
+- `courses-index.md`: a section for the course with every unit in build order (status "not written", model, search flag, vault path `courses/<slug>/<code>-<slug>.md`, and for history `(+ kit/<id>/r-<id>.html)`), rows numbered from 1, and the count line above the table (markdown: "0 of N written"; history: "0 of N content reports; M modules with the audit unit" under a `### <Short> (course N)` heading); an audit counter at 0. `python3 kit/index_check.py` until it passes.
 - `project-instructions.md`: add the course to the Purpose line only if it stays under 400 words.
 - Reply with the course's Academy anchor, the unit count, the first unit to write and its model. Do not write a unit in this chat.

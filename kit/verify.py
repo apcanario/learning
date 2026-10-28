@@ -19,10 +19,18 @@ accordion) and the Backlog page; the same panel checks again in the light theme.
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
 its own) and the top bar spans the content column. With --shots, saves dark and light screenshots at the three widths
 of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home).
+Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
+import index_check
+from courses import COURSES, THEMES
+# each track and its course cards as the home must show them, from courses.py (A5: a new course needs no edit here)
+HOME_TRACKS = [t['name'] + ':' + ','.join(
+    ['#' + c['home_id'] for c in COURSES if c['family'] == 'history' and c['theme'] == t['id']]
+    + ['#' + f"{c.get('prefix', c['id'])}-{k.lower()}" for c in COURSES if c['family'] == 'markdown'
+       for k, (tr, _) in c['tracks'].items() if tr == t['id']]) for t in THEMES]
 
 R = pathlib.Path(__file__).resolve().parent
 SITE = R / 'academy'
@@ -128,7 +136,7 @@ def check_files(fails):
     # every report and syllabus panel, a markdown course's briefs and bibliography pages, a history course home (a
     # course panel whose label is a numbered course; Brand + AI homes are lettered and stay) and every course's
     # "How it was built" page leave the shell (A2, P20, P22, A4)
-    must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-bibliography|[a-z-]+-built)"', h)
+    must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-briefs|[a-z-]+-bibliography|[a-z-]+-built)"', h)
             or (' data-kind="course"' in h and re.search(r' data-u="COURSE \d', h))]
     kept = [h[:80] for h in must if ' data-src="' not in h]
     if kept: fails.append(f'split: {len(kept)} panels should be fetched but are in the shell: {kept[:2]}')
@@ -386,10 +394,10 @@ def main():
         step('backlog', dict(id='backlog', nav='root', u='ACADEMY', t='Backlog', arrows=False))
         nt = pg.evaluate("document.querySelectorAll('#backlog table').length")
         if nt < 3: fails.append(f'backlog page: {nt} tables, expected the lanes, the proposed rows and the chats done')
-        # the home lists every live course under its track, in order: History (Greece, Rome), Marketing (A), Technology (B)
+        # the home lists every live course under its track, in courses.py order (history courses, then markdown courses)
         pg.click('#homeB'); pg.wait_for_timeout(80)
         tr = pg.evaluate("[...document.querySelectorAll('#home .track')].map(t => t.querySelector('h2').textContent + ':' + [...t.querySelectorAll('.cgrid a.course')].map(a => a.getAttribute('href')).join(','))")
-        if tr != ['History:#greece,#rome', 'Marketing:#brand-a', 'Technology:#brand-b']: fails.append(f'home tracks: {tr}')
+        if tr != HOME_TRACKS: fails.append(f'home tracks: {tr}, courses.py gives {HOME_TRACKS}')
         h1 = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"course\"] h1, #home h1')].map(h => h.textContent)")
         if any(' in the order' in t or t.startswith('The courses') for t in h1): fails.append(f'course titles not self-evident: {h1}')
         title = pg.title()
@@ -488,6 +496,9 @@ def main():
         br.close()
     errs = [e for e in errors if 'fonts.g' not in e]
     if errs: fails.append('console errors: ' + ' | '.join(errs[:5]))
+    ix = index_check.check()   # A5: docs/courses-index.md against the sources it summarises
+    fails += ['courses-index.md: ' + x for x in ix]
+    print('courses-index.md: ' + (f'{len(ix)} mismatches' if ix else 'matches the sources'))
     print('\n'.join('FAIL ' + f for f in fails) if fails else 'ALL CHECKS PASSED')
     return 1 if fails else 0
 

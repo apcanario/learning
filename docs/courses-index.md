@@ -1,6 +1,6 @@
 # Courses index
 
-Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 28 October 2026 (Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md` and `academy.md`, and A1 done: the site is Academy; Brand + AI v6.8, B2 filed, DD-B3 added). Update a row whenever a unit is filed or audited (method.md §7).
+Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 28 October 2026 (Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md` and `academy.md`, and A1 to A5 done: the site is Academy; Brand + AI v6.8, B2 filed, DD-B3 added). Update a row whenever a unit is filed or audited (method.md §7). `kit/index_check.py` checks every unit row, count line and staleness date against the syllabi, `kit/provenance.json`, the vault and the data files; `kit/verify.py` runs it. The notes, review rows and audit counters are not checked (the counters wait for S3).
 
 Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Personal Mythology kit; `vault/` is `courses/`; `gen/` is `generator/`. Units not yet written show the vault path they will be filed at.
 
@@ -9,6 +9,8 @@ Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Pers
 | Hub | Page | Link | Built from |
 |---|---|---|---|
 | Academy | The one site: the Academy home listing every course by track, with the Changelog and the Backlog; Greece and Rome in full (syllabi, every report); Brand + AI as two courses (A, B), each with its units, briefs, build order, audits, bibliography and changelog; the eight history courses to come | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (version 55 onward, 28 Oct) · GitHub Pages: https://apcanario.github.io/academy/ (`kit/deploy.sh` through the public repo `apcanario/academy`) | kit `build.py` from `kit/courses.py` (`family` history or markdown; markdown through `kit/mdcourse.py`), `shell.css` = `design/theme.css`; A1, A3 and A2 of `academy.md` done 28 Oct: the build is `kit/academy/`, a shell plus one file per report fetched on navigation (sizes in `kit/README.md`); publish with `kit/publish_files.py` |
+
+A5 done 28 Oct 2026: the Brand + AI units are read from the vault, `courses/brand-ai/` (no copy under `gen/`); a new course of either family is a folder plus a `kit/courses.py` entry.
 
 A4 done 28 Oct 2026: every course has a generated "How it was built" page (`#greece-built`, `#rome-built`, `#brand-a-built`, `#brand-b-built`; `kit/howbuilt.py`).
 
@@ -35,14 +37,17 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 
 ## Brand + AI
 
-Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 3 deep dives; DD-B3 added 28 Oct 2026). 5 of 22 written. Briefs: the hub's Build · Briefs pages (`gen/data/brand-ai/units_data.py`). Build order: the hub's Build order page.
+Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 3 deep dives; DD-B3 added 28 Oct 2026). 5 of 22 written. A unit is written when its file is in `courses/brand-ai/` (A5: Academy reads it from there). Briefs: each course's Briefs page in Academy (`gen/data/brand-ai/units_data.py`). Build order: the Build order page.
 
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
-| — | A2 · A6 · A9 | A | Audience and platform economics · How growth works, per platform · What to expect: benchmarks | rewritten 28 Oct 2026 as three units from their briefs after Audit 1's REWRITE; each fresh-checked by Fable 5.1 (A9 fix 2/15/8; A2 fix 3/13/11; A6 fix 1/9/7), all findings applied; reports in `audits/brand-ai/fresh-check-A9.md`, `fresh-check-A2.md`, `fresh-check-A6.md` | research 27 Oct: Fable 5.1 research agents; rewrites: Opus 5.5; checks: Fable 5.1 | on | `gen/data/brand-ai/audience-growth-across-platforms.md` (the research, kept as reading); units at `courses/brand-ai/A9-…`, `A2-…`, `A6-…` |
-| 4 | B1 | B | Mental model | written 28 Oct 2026 | Opus 5.5 | on (writer's call: dated product facts) | `courses/brand-ai/B1-mental-model.md` · `gen/data/brand-ai/units/B1-mental-model.md` |
+| — | Research | A | Audience growth across platforms (research, superseded) | written 27 Oct 2026 across five tracks; Audit 1 (28 Oct) found 23 of 91 claims failing and the deliverables missing, REWRITE for A2, A6 and A9; kept as the record (`#read-audience-growth`) | Fable 5.1 research agents | on | `gen/data/brand-ai/audience-growth-across-platforms.md` |
+| 1 | A9 | A | What to expect: benchmarks | rewritten 28 Oct 2026 from its brief after Audit 1's REWRITE (own chat); fresh check Fable 5.1 fix, 2 errors, 15 should-fix, 8 minor, applied; report `audits/brand-ai/fresh-check-A9.md` | Opus 5.5 | on | `courses/brand-ai/A9-what-to-expect-benchmarks.md` |
+| 2 | A2 | A | Audience and platform economics | rewritten 28 Oct 2026 from its brief after Audit 1's REWRITE (own chat); fresh check Fable 5.1 fix, 3 errors, 13 should-fix, 11 minor, applied; report `audits/brand-ai/fresh-check-A2.md` | Opus 5.5 | on | `courses/brand-ai/A2-audience-and-platform-economics.md` |
+| 3 | A6 | A | How growth works, per platform | rewritten 28 Oct 2026 from its brief after Audit 1's REWRITE (own chat); fresh check Fable 5.1 fix, 1 error, 9 should-fix, 7 minor, applied; report `audits/brand-ai/fresh-check-A6.md` | Opus 5.5 | on | `courses/brand-ai/A6-how-growth-works-per-platform.md` |
+| 4 | B1 | B | Mental model | written 28 Oct 2026 | Opus 5.5 | on (writer's call: dated product facts) | `courses/brand-ai/B1-mental-model.md` |
 | ✓ | Audit 1 | A+B | Stratified-sample audit of the last four units | run 28 Oct 2026: B1 PASS, A2·A6·A9 REWRITE | Fable 5.1 | on | `audits/brand-ai/audit-1.html` (saved from the artifact) |
-| 5 | B2 | B | Choosing the model | written 28 Oct 2026 (own chat; fresh check Fable 5.1 fix, 3 errors, 10 should-fix, 14 minor, applied; report `audits/brand-ai/fresh-check-B2.md`) | Opus 5.5 | on | `courses/brand-ai/B2-choosing-the-model.md` · `gen/data/brand-ai/units/B2-choosing-the-model.md` |
+| 5 | B2 | B | Choosing the model | written 28 Oct 2026 (own chat; fresh check Fable 5.1 fix, 3 errors, 10 should-fix, 14 minor, applied; report `audits/brand-ai/fresh-check-B2.md`) | Opus 5.5 | on | `courses/brand-ai/B2-choosing-the-model.md` |
 | 6 | B3 | B | Prompting that holds up | not written · next | Opus 5.5 | off | `courses/brand-ai/B3-prompting-that-holds-up.md` |
 | 7 | B4 | B | Context engineering | not written | Opus 5.5 | off | `courses/brand-ai/B4-context-engineering.md` |
 | 8 | A1 | A | Positioning: the journey as a format | not written | Opus 5.5 | off | `courses/brand-ai/A1-positioning-the-journey-as-a-format.md` |

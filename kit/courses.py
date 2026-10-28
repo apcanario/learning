@@ -1,9 +1,10 @@
 """Course data for build.py. Each live course is a dict; NEXT lists the courses still to come.
 
 Every course has a `family`: 'history' (Greece, Rome and the eight to come: HTML fragments per module in the kit,
-a syllabus with prompts, provenance.json) or 'markdown' (Brand + AI: units as Markdown in courses/, data under
-generator/data/<slug>/). The root home is Academy and lists every course of both families (docs/academy.md, A1).
-A markdown course is built by mdcourse.py from its data file into one Academy course per course in that file (A3).
+a syllabus with prompts, provenance.json) or 'markdown' (Brand + AI: units as Markdown in the vault, `vault`, read
+directly since A5; the course data under generator/data/<slug>/, `data`). The root home is Academy and lists every
+course of both families (docs/academy.md, A1). A markdown course is built by mdcourse.py from its data file into one
+Academy course per course in that file (A3). A new course of either family is a folder plus an entry here (A5).
 
 Text fields may use these placeholders, filled per course at build time:
 {content_mods} modules excluding the audit unit · {total_mods} all modules · {nrep} reports written · {kwords} thousands of words written
@@ -106,10 +107,13 @@ ROME = dict(
 BRAND_AI = dict(
     id='brand-ai', family='markdown', short='Brand + AI', label='BRAND + AI', name='Brand + AI: two courses for one reader', color='var(--teal)',
     home_id='brand-ai', status='in progress',
+    prefix='brand',               # panel ids brand-a, brand-b (a new markdown course defaults to its id)
+    legacy_ids=True,              # keeps #briefs-a and #b-a2 from A3; a new course gets #<id>-<key>-briefs, #<id>-<key>-b-<code>
     # each course in the data file's COURSES becomes its own Academy course: key -> (track, short name for the top bar and drawer)
     tracks={'A': ('marketing', 'Personal brand'), 'B': ('technology', 'Building with AI')},
     # content and status come from the hub's own data file; build.py reads it, nothing here is typed by hand
     data='generator/data/brand-ai/hub.py',
+    vault='courses/brand-ai',     # the filed units (method.md §7); a unit is written when its file is here (A5)
     eyebrow='BRAND + AI',
     card='A · Building a Marketable Personal Brand and B · Using AI to Build a Brand. Who pays, for what, how long it takes; which model for which task, how to brief, where the setup leaks. Every unit sourced and ending in a shipped deliverable.',
 )

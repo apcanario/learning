@@ -28,8 +28,8 @@ COURSES = [
 ]
 COURSE_NOTE = '⟨One line: the sourcing standard and the deliverable rule, as the reader should see them.⟩'
 
-READINGS = []        # dict(id, md, course, title, covers=[codes], name, intro) per written-material page
-WRITTEN = {}         # unit code -> reading page id
+READINGS = []        # per unit filed in courses/<slug>/: dict(id='read-<code lower>', course, title, covers=[code], name, intro);
+                     # other written material kept in this folder adds md='<file>'. WRITTEN is derived by kit/build.py from the vault.
 
 DONE_ROWS = []
 ORDER = [("A1", "Opus 5.5", "off"), ("A2", "Opus 5.5", "on"), ("DD-A1", "Opus 5.5", "off")]

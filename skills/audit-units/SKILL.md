@@ -38,5 +38,5 @@ Exactly the output the prompt asks for: per-unit tables, failure rates, a verdic
 
 ## 5. Record
 - The course's Audits page in Academy: a log row (date, units sampled, claims checked, failures, verdict, what changed). For Brand + AI, add it to `AUDIT_LOG` in `generator/data/brand-ai/hub.py`, raise `AUDITS_RUN`, set `NEXT_AUDIT`, add a `CHANGELOG` row, rebuild and republish (`file-unit`, step 5). For Personal Mythology, the kit's `audits/` file and `provenance.json` (`"Opus 5.5, reviewed with Fable 5.1"`, or `"… (sampled)"`) as the kit's rules say.
-- `courses-index.md`: the audit row's status, the hub's counter reset to 0, any REWRITE noted on the unit's row.
+- `courses-index.md`: the audit row's status, the hub's counter reset to 0, any REWRITE noted on the unit's row. Then `python3 kit/index_check.py` (it checks the rows against the vault and the data files; `verify.py` runs it too).
 - A REWRITE blocks every new unit until the unit is rewritten in a new chat from its brief. Say so in the last line.

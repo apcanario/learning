@@ -53,6 +53,7 @@ def build(m, crumbs, theme, pill_next, chev):
     titles = {u[0]: u[1] for x in courses for u in x['units']}
     course_of = {u[0]: x for x in courses for u in x['units']}
     ulabel = m['short'].upper()
+    BR, BP = m['briefs_id'], m['brief_anchor']        # briefs-a and b-a2 for Brand + AI; <id>-briefs and <id>-b-a1 otherwise
 
     def panel(pid, kind, body, t=None, u=None, cls='stack', split=None):
         """split names the file stem when the panel leaves the shell as a fetched file (build.py's split, A2 and P20)."""
@@ -70,7 +71,7 @@ def build(m, crumbs, theme, pill_next, chev):
     for r in d.READINGS:
         if r['course'] != key:
             continue
-        src = (c['data_dir'] / r['md']).read_text(encoding='utf-8')
+        src = r['path'].read_text(encoding='utf-8')   # set by build.py:load_markdown (vault or data folder)
         body, lk = render_md(src)
         for u, t in lk.items():
             links.setdefault(u, t)
@@ -102,7 +103,7 @@ def build(m, crumbs, theme, pill_next, chev):
     pct = round(100 * m['nwritten'] / m['nunits'])
     audits = ''.join(f'<li><strong>{e(dt)}</strong> · {txt}</li>' for dt, txt in d.AUDIT_LOG)
     start = (f'<a class="hbtn start" href="#{read_of[first[0]]["id"]}" data-target="{read_of[first[0]]["id"]}"><span>Start the course</span><b>{e(first[0] + " " + first[1])}</b></a>' if first
-             else f'<a class="hbtn start" href="#briefs-{k}" data-target="briefs-{k}"><span>Open the course</span><b>No unit written yet · the briefs</b></a>')
+             else f'<a class="hbtn start" href="#{BR}" data-target="{BR}"><span>Open the course</span><b>No unit written yet · the briefs</b></a>')
     frame = getattr(d, 'FRAME', '') if key == 'A' else ''
     P.append(panel(ctx, 'course', f'''
   <header class="hero">
@@ -111,7 +112,7 @@ def build(m, crumbs, theme, pill_next, chev):
     <h1>{e(m['name'])}</h1>
     <p class="lede">{sc['intro']}</p>
     <div class="stats" data-n="4"><div><b>{m['nwritten']}</b><span>of {m['nunits']} units written</span></div><div><b>{pct}%</b><span>of the course</span></div><div><b>{len(d.AUDIT_LOG)}</b><span>audit{'s' if len(d.AUDIT_LOG) != 1 else ''} run</span></div><div><b>{e(d.NEXT_UNIT)}</b><span>next unit to write</span></div></div>
-    <div class="hlinks"><a class="hbtn cont" href="#{ctx}" data-course="{ctx}" hidden><span>Continue</span><b></b></a>{start}<a class="hbtn alt" href="#briefs-{k}" data-target="briefs-{k}"><span>Briefs</span><b>Every unit's brief, copyable</b></a></div>
+    <div class="hlinks"><a class="hbtn cont" href="#{ctx}" data-course="{ctx}" hidden><span>Continue</span><b></b></a>{start}<a class="hbtn alt" href="#{BR}" data-target="{BR}"><span>Briefs</span><b>Every unit's brief, copyable</b></a></div>
   </header>
   <section class="howto edge" style="--hc:var(--blue)"><h2>What you will be able to do</h2><p>{e(sc['goal'][0].upper() + sc['goal'][1:])}</p><ul>{sc['outcomes']}</ul><p class="over">{d.COURSE_NOTE}</p></section>
   <h2 class="hsec">Units, in writing order</h2>
@@ -140,7 +141,7 @@ def build(m, crumbs, theme, pill_next, chev):
     # ---- How it is built ----------------------------------------------------------------------
     bid = f'{ctx}-build'
     pages = [(bid, 'M', 'How we build', 'procedure, models, review rule'), (f'{ctx}-order', '1·2', 'Build order with models', f'{total - written} units to go'),
-             (f'briefs-{k}', f'P·{key}', f'Briefs · course {key}', f'{len(sc["units"]) - C_DONE[key]} open'), (f'{ctx}-audits', 'AU', 'Audits and audit prompts', f'next {d.NEXT_AUDIT}'),
+             (BR, f'P·{key}', f'Briefs · course {key}', f'{len(sc["units"]) - C_DONE[key]} open'), (f'{ctx}-audits', 'AU', 'Audits and audit prompts', f'next {d.NEXT_AUDIT}'),
              (f'{ctx}-bibliography', 'BIB', 'Bibliography', f'{len(biblio)} sources'), (f'{ctx}-changelog', 'LOG', 'Changelog', d.VERSION.split(' · ')[0]),
              (f'{ctx}-built', '✓', 'How it was built', 'models, checks, audits, flags')]   # the page itself is howbuilt.py's (A4)
     prow = ''.join(f'<a class="hrow" href="#{h}" data-target="{h}" style="--c:{col}"><span class="n">{n}</span><span class="t">{tt}<small>{e(s)}</small></span></a>' for h, n, tt, s in pages)
@@ -181,11 +182,11 @@ def build(m, crumbs, theme, pill_next, chev):
         pill = '<span class="pill live">written</span>' if is_done else '<span class="pill">not written</span>'
         full = brief if is_done else d.PRE.replace('{GOAL}', sc['goal']) + '\n\n' + brief
         read = f'<a class="rlink" href="#{read_of[code]["id"]}" data-target="{read_of[code]["id"]}">Read the unit →</a>' if code in read_of else ''
-        cards += (f'<article class="smod{" deep" if deep else ""}" id="b-{code.lower()}" style="--c:{ucol}"><div class="smod-top"><span class="code">{code}</span><h3>{e(title)}</h3>{pill}</div>'
+        cards += (f'<article class="smod{" deep" if deep else ""}" id="{BP}{code.lower()}" style="--c:{ucol}"><div class="smod-top"><span class="code">{code}</span><h3>{e(title)}</h3>{pill}</div>'
                   f'<p class="why">{e(scope)}</p><p class="ships"><b>Ships</b>{e(ships)}</p>{read}'
                   f'<details class="prompt"><summary>{e(d.BRIEF_LABEL)}</summary><div class="pbox"><pre>{e(full)}</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></details></article>')
     lede = d.BRIEFS_LEDE.format(k=k, K=key).replace(f'Learn · Course {key}', f'Course {key}').replace(f'href="#course-{k}" data-target="course-{k}"', f'href="#{ctx}" data-target="{ctx}"')
-    P.append(panel(f'briefs-{k}', 'build', f'''
+    P.append(panel(BR, 'build', f'''
   <header class="hero">{crumbs(*bc, ('Briefs', None))}{eyebrow((ulabel, col), ('BRIEFS', None))}<h1>{e(sc['name'])}: the briefs</h1><p class="lede">{lede}</p></header>
   <div class="smods">{cards}</div>''', t='Briefs', u=ulabel, split='briefs'))
 

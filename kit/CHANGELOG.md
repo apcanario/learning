@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **A5 (session 23):** the Brand + AI units are read from the vault; `docs/courses-index.md` is checked by `index_check.py` on every verify; a new course of either family is a folder plus a `courses.py` entry.
 - **A4 (session 22):** every course has a generated "How it was built" page: the model behind each report or unit, every check and audit with its verdict, the flags still open, the method and the sources policy. Site version 63.
 - **P22 (session 21):** the two history course homes are fetched files too (`academy/<course>/home.html`); the shell is 293 KB, down from 366 KB. Site version 60.
 - **P20 (session 20):** the two syllabi and the Brand + AI briefs and bibliography pages are fetched files like the reports (`academy/<course>/syllabus.html`, `briefs.html`, `bibliography.html`); the shell is 366 KB, down from 747 KB. Site version 58.
@@ -47,6 +48,16 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 20. The syllabi, briefs and bibliographies leave the shell too (P20); SETUP.md off the zips (P21) | 78 | 59 |
 | 28 Oct | 21. The history course homes leave the shell (P22) | 78 | 59 |
 | 28 Oct | 22. "How it was built" for every course (A4) | 78 | 59 |
+| 28 Oct | 23. The vault is the source; a new course is a folder (A5) | 78 | 59 |
+
+## 28 October 2026 · Session 23 · The vault is the source; a new course is a folder (A5)
+
+Backlog row A5 of `docs/BACKLOG.md`, Opus 5.5. No report or unit changed; the built site is byte for byte what it was.
+
+- **Vault as source.** `build.py:load_markdown` reads a markdown course's units from its vault folder (`courses.py` `vault='courses/brand-ai'`): a unit is written when its file is there with front matter, `WRITTEN` is derived, and a `READINGS` entry for a unit carries only its page's name and intro (no file path). A filed unit with no entry still gets a page, its intro made from the front matter. The duplicate copies in `generator/data/brand-ai/units/` are deleted; `mdcourse.py` and `howbuilt.py` read the paths `load_markdown` resolved. The build fails, naming the file, on a vault unit whose code is not in the data file, on two files for one code, or on a reading whose unit is not filed.
+- **The index checked.** `index_check.py` checks `docs/courses-index.md` against the sources: one row per unit and module, title, written or not, model, status (reviewed, sampled, flagged), search and path, the count line above each table and the staleness table. `verify.py` runs it, so ALL CHECKS PASSED covers the index. Fixes it forced: A2, A6 and A9 have their own rows (they shared one), and the dead `gen/data/brand-ai/units/` paths are gone.
+- **A new course is a folder.** A history course is `kit/<id>/` (syllabus, prompts index, fragments) plus its entry, and builds with no report written (the Start button opens the syllabus). A markdown course is `generator/data/<slug>/` plus its entry; its pages are `<id>-<key>`, `<id>-<key>-briefs` and so on, while Brand + AI keeps its A3 anchors (`prefix`, `legacy_ids`). `verify.py` takes the home's expected tracks from `courses.py`. Tested in a copy of the repo with a throwaway Egypt course and the template markdown course: both on the home after one build, verify clean but for their missing index sections, then clean with them.
+- **Method.** `method.md` §7, `SETUP.md`, the `file-unit`, `new-course` and `audit-units` skills, the READMEs and `project-instructions.md` follow the new layout.
 
 ## 28 October 2026 · Session 22 · "How it was built" for every course (A4)
 

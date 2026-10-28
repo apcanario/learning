@@ -1,6 +1,6 @@
 # Setup
 
-**28 October 2026:** the repository is https://github.com/apcanario/learning. Every session clones it and ends with a commit and push; nothing travels as a zip. `kit/` is Academy's builder with the history courses, `generator/data/` the markdown courses' data, `courses/` the vault, `docs/` the method layer, `skills/` the four account skills.
+**28 October 2026:** the repository is https://github.com/apcanario/learning. Every session clones it and ends with a commit and push; nothing travels as a zip. `kit/` is Academy's builder with the history courses, `generator/data/` the markdown courses' data, `courses/` the vault (since A5 the source of the markdown courses' units), `docs/` the method layer, `skills/` the four account skills.
 
 Exact steps to stand up the Learning Project and run it.
 
@@ -15,7 +15,7 @@ Method layer (`docs/`): `method.md`, `reader.md`, `sourcing-standard.md`, `cours
 
 Design: `design/README.md` (uploaded as `design-README.md`), `design/theme.css`.
 
-Brand + AI (`generator/data/brand-ai/`): `units_data.py` (every brief and the shared preamble), `hub.py` (goals, build order, audit log and prompts), `audience-growth-across-platforms.md`, `research/research-*.md` (five files), and each filed unit (`units/<code>-<slug>.md`).
+Brand + AI (`generator/data/brand-ai/`): `units_data.py` (every brief and the shared preamble), `hub.py` (goals, build order, audit log and prompts), `audience-growth-across-platforms.md`, `research/research-*.md` (five files), and each filed unit (from the vault: `courses/brand-ai/<code>-<slug>.md`).
 
 Personal Mythology (`kit/`): `AGENT-SPEC.md`, `WRITER-BRIEF.md`, `BACKLOG.md` (the Rome writing prompt with the lane notes), `roman-syllabus.html` (every Rome prompt; Greece is complete), `reviews/units-9-13/BRIEF.md` (uploaded as `CHECKER-BRIEF.md`), `audits/AUDIT-BRIEF.md`, `audits/AUDIT-BRIEF-GREECE.md`, `audits/greece-13.1-rubric.md`, `audits/rome-14.1-rubric.md`.
 
@@ -28,7 +28,7 @@ Skills belong to your account, not the Project. For each folder in `skills/` (`w
 3. Check it appears in the list and is on.
 
 ## 4. The vault
-In the vault repository, create `courses/brand-ai/`, `courses/rome/` and `courses/greece/`. Units are filed there as `<code>-<slug>.md` (`method.md` §7). The 137 history reports already written stay in the kit; nothing is moved.
+In the vault repository, create `courses/brand-ai/`, `courses/rome/` and `courses/greece/`. Units are filed there as `<code>-<slug>.md` (`method.md` §7). For Brand + AI the vault is the source: Academy reads the units from `courses/brand-ai/` (A5), and there is no other copy. The 137 history reports already written stay in the kit; nothing is moved.
 
 ## 5. One site (done 28 October 2026)
 Every course is read in Academy, https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH and https://apcanario.github.io/academy/, built by `kit/build.py` on `design/theme.css`. The Brand + AI hub and the Audience Growth artifacts were absorbed at A3 (`docs/academy.md`) and deleted.
@@ -41,7 +41,7 @@ One new chat per unit, model **Opus 5.5** (the build order names any exception).
 The chat ends by sending the unit file(s). It does not file them.
 
 ## 7. Filing a unit
-A new chat, any writing model. Attach the unit file(s); the chat clones `apcanario/learning`. The `file-unit` skill saves to the vault, updates the course's data file, rebuilds Academy, checks and publishes it (the artifact, then `kit/deploy.sh` to GitHub Pages), updates `courses-index.md`, and commits and pushes. Re-upload the changed knowledge files (step 2).
+A new chat, any writing model. Attach the unit file(s); the chat clones `apcanario/learning`. The `file-unit` skill saves to the vault (for Brand + AI that file is what Academy renders), updates the course's data file and `courses-index.md`, rebuilds Academy, checks it (`verify.py`, which also checks `courses-index.md` with `kit/index_check.py`) and publishes it (the artifact, then `kit/deploy.sh` to GitHub Pages), and commits and pushes. Re-upload the changed knowledge files (step 2).
 
 ## 8. Audits
 When `courses-index.md` shows four units since the last audit in a hub (Brand + AI: the first is due after B1), or a staleness date has come (A2, A6, A9: 27 April 2027): a new chat on **Fable 5.1** with web search on. The chat clones `apcanario/learning`; the units are in `courses/` and the history reports in `kit/`. Say "Run the audit." The `audit-units` skill uses the prompts in `method.md` §6 verbatim and records the result.
@@ -54,4 +54,4 @@ A change to `design/theme.css` reaches a page only when the page is rebuilt and 
 4. Add the session to `kit/CHANGELOG.md` and the version note to `design/README.md`; re-upload `design/theme.css` and `design/README.md` to the Project knowledge; commit and push.
 
 ## 10. A new course
-A new chat, clone the repo, and say what the course is. The `new-course` skill drafts the frame and asks you to confirm the pick, then builds the syllabus, the briefs and the course's data folder, adds the course to `kit/courses.py`, builds and publishes Academy, and adds the course to `courses-index.md`.
+A new chat, clone the repo, and say what the course is. The `new-course` skill drafts the frame and asks you to confirm the pick, then builds the syllabus, the briefs and the course's folder (`kit/<id>/` for a history course, `generator/data/<slug>/` for a markdown one), adds its entry to `kit/courses.py` and its section to `courses-index.md`, builds, verifies and publishes Academy. A folder plus that entry is the whole course (A5).
