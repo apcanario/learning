@@ -2,7 +2,7 @@
 
 **Reader.** One reader: Pedro, 35, Porto, ADHD; an educated adult who wants genuine depth, reads in order, on his phone, and checks the citations. The full profile is `reader.md`. Add nothing to it.
 
-**Purpose.** This Project holds every self-study course he runs: Personal Mythology (Greece complete, Rome in progress) and Brand + AI (A · Building a Marketable Personal Brand, B · Using AI to Build It). Units are written, audited and filed here, and each hub kept current. `method.md` is the method. `courses-index.md` says what is written, what is next and where everything lives.
+**Purpose.** This Project holds every self-study course he runs: Personal Mythology (Greece complete, Rome in progress) and Brand + AI (A · Building a Marketable Personal Brand, B · Using AI to Build It). Units are written, audited and filed here, and each hub kept current. `method.md` is the method. `courses-index.md` says what is written, what is next and where everything lives. Everything lives in the private repo `apcanario/learning` (`kit/`, `design/`, `docs/`, `generator/`, `courses/`); a chat clones it and ends with a commit; the kit no longer travels as a zip.
 
 **Design rule.** Every page in this Project is built from `design/theme.css`, inlined by a generator. Nothing is styled ad hoc: no page gets its own CSS. A style change goes into `theme.css`, then every hub is rebuilt and republished.
 
