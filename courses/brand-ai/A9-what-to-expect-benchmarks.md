@@ -44,6 +44,17 @@ The best single dataset is vidIQ's study of 32,926,088 channels that had fewer t
 | 12–51 | 1,259,198 | 8.65% |
 | 52 or more | 883,403 | 30.77% |
 
+```viz
+{"kind": "compare", "title": "Share that crossed 1,000 subscribers within 360 days, by videos added", "unit": "%", "max": 35,
+ "rows": [
+  {"label": "None added", "value": 0.20, "display": "0.20%", "tone": 6},
+  {"label": "1–11 videos", "value": 1.86, "tone": 2},
+  {"label": "12–51 videos", "value": 8.65, "tone": 1},
+  {"label": "52 or more", "value": 30.77, "tone": 3}
+ ],
+ "caption": "The table above, drawn. 32,926,088 channels under 1,000 subscribers, compared with themselves 360 days later; a bi-weekly channel (26 videos a year) sits in the 12–51 band. <a href=\"https://vidiq.com/research/youtube-uploads-1000-subscribers/\">vidIQ, 11 Sep 2026</a>; vendor data, correlational, groups unmatched."}
+```
+
 That first row is 83.1% of the sample showing no net change in video count over the year. vidIQ warns that this "does not prove a channel published nothing", since uploads can be offset by removals or changes in visibility. Video counts include Shorts, long-form and livestreams, and the 52-or-more group does not prove a weekly schedule.
 
 A bi-weekly channel adds 26 videos a year and sits in the 12–51 band: about one channel in twelve in that band crossed 1,000 within the year. A weekly channel sits in the 52-plus band at 30.77%. The groups were not matched, so the gap is an association: channels able to post weekly may also have more time, money or existing audience.

@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v7.2 · 28 Oct 2026'
+VERSION = 'v7.3 · 28 Oct 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -197,6 +197,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-10-28 22:45', "v7.3. P27: one figure each in A2 (Pew ever-use by platform, ages 30–49), A9 (share of sub-1K channels crossing 1,000 in a year, by videos added) and B2 (API output price per model): a ```viz compare fence in the unit's own text, drawn by kit/viz.py from the figures the unit already carries, captioned to the source. No claim added; the fresh checks are not rerun."),
     ('2026-10-28 15:00', "v7.2. P18: B2's fresh-check report (Fable 5.1, 28 Oct; fix, 3/10/14) filed from its chat as audits/brand-ai/fresh-check-B2.md and linked from the Audits page; the unit's fresh-check line and its courses-index row carry the path. No unit text changed."),
     ('2026-10-28 12:45', "v7.1. Housekeeping (P14, P15, P3): the syllabus rule reads 2 or 3 deep dives per course; the build-order lede's remaining-unit count is derived from ORDER and STATUS by kit/mdcourse.py instead of typed; the three fresh-check reports of A9, A2 and A6 are filed in audits/brand-ai/ and linked from the Audits page."),
     ('2026-10-28 12:30', "v7. The hub is retired (A3): both courses are read in Academy, each with its own drawer (Units; How it is built: method, build order, briefs, audits, bibliography, changelog) and each written unit as a page with prev/next and Continue. Same data file, same text; the Learn/Build split and the Hub template page are gone from the site (TEMPLATE_BLOCKS stays here for the new-course skill). No unit changed."),

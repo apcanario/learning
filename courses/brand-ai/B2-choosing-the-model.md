@@ -76,6 +76,17 @@ Four rules on the same page change what a task costs:
 
 On the price list alone, an output token on Haiku, Sonnet, Opus and Fable costs in the ratio 1 : 20 : 40 : 100 (arithmetic on the table). §5 shows why that ratio misleads.
 
+```viz
+{"kind": "compare", "title": "API output price, USD per million tokens", "max": 50,
+ "rows": [
+  {"label": "Fable 5.1", "value": 50, "display": "$50", "tone": 1},
+  {"label": "Opus 5.5", "value": 20, "display": "$20", "tone": 2},
+  {"label": "Sonnet 5.5", "value": 10, "display": "$10", "tone": 3},
+  {"label": "Haiku 5.5", "value": 0.5, "display": "$0.50 (prompt up to 100K)", "tone": 4}
+ ],
+ "caption": "The Output column of the table above: list price per million output tokens, the rate thinking tokens are also billed at. <a href=\"https://platform.claude.com/docs/en/about-claude/pricing\">Anthropic, Pricing</a>, read 28 Oct 2026. The 1 : 20 : 40 : 100 ratio; §5 gives the cost per task, which is what matters."}
+```
+
 ## 4 · The other vendors on the same axes
 
 His Project runs on claude.ai, which runs only Claude models. The other vendors matter to him where he calls a model from his own code, and as a check on whether Anthropic's prices are high or low. This unit compares the other vendors on API price, effort controls and window only; their positioning statements and consumer plan limits were not researched. Per-token prices, 28 October 2026, USD per million tokens unless stated:

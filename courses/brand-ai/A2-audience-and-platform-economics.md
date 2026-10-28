@@ -53,6 +53,21 @@ Pew's 2026 fact sheet gives the cleanest age cut. Share of US adults aged 30 to 
 | Reddit | 35% | 25% | 36% |
 | X | 20% | 18% | 22% |
 
+```viz
+{"kind": "compare", "title": "Ever use, US adults aged 30 to 49", "unit": "%", "max": 100,
+ "rows": [
+  {"label": "YouTube", "value": 91, "tone": 1},
+  {"label": "Facebook", "value": 78, "tone": 4},
+  {"label": "Instagram", "value": 64, "tone": 5},
+  {"label": "TikTok", "value": 45, "tone": 3},
+  {"label": "WhatsApp", "value": 39, "tone": 3},
+  {"label": "LinkedIn", "value": 37, "tone": 4},
+  {"label": "Reddit", "value": 35, "tone": 2},
+  {"label": "X", "value": 20, "tone": 6}
+ ],
+ "caption": "The Ages 30–49 column of the table above: share of US adults aged 30 to 49 who say they ever use each platform. <a href=\"https://www.pewresearch.org/internet/fact-sheet/social-media/\">Pew Research Center, fact sheet, 19 Oct 2026</a>, n = 5,511; American, ever-use, not time spent."}
+```
+
 Two limits. The figures are American, and they measure whether someone ever uses a platform, which says nothing about time spent or whether they would find him there.
 
 **YouTube** reaches nine in ten of the age band and nine in ten college graduates. It is also where this age band listens to long-form talk. Edison Research found 68% of Americans aged 35 to 54 consumed a podcast in the past month in 2026, up from 51% in 2023, though from 2025 the measure counts watching as well as listening ([Edison Research, The Podcast Consumer 2026, slides 13–14](https://www.edisonresearch.com/wp-content/uploads/2026/06/Podcast-Consumer-2026_Final_6.2.26.pdf)). Among weekly podcast consumers, YouTube was the service used most often, at 32% in Q1 2025 against 25% for Spotify ([Edison Research, Top 10 Findings of 2025, slide 9](https://ssrs.com/wp-content/uploads/Edison-Researchs-Top-10-Findings-of-2025.pdf)); trade press reports the 2026 figure as 37% ([Radio Ink, 5 Jun 2026](https://radioink.com/?p=103936)), which appears to match slide 30 of Edison's 2026 deck (service used most often, Q1 2026), though the slide's labels could not be confirmed. Patreon's company-sponsored survey of 2,002 US fans found 32% of what fans consume on YouTube comes from following or subscription feeds ([Patreon, State of Create, fieldwork Aug 2024](https://stateofcreate.co/)). The other two thirds comes from outside the following feed, which is the only route by which a new channel gets seen (mechanics in A6; the subscriber-feed evidence in A9 §1).
