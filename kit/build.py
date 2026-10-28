@@ -18,6 +18,7 @@ are namespaced (#rome, #rome-syllabus, #rm01).
 import json, re, html, pathlib, importlib.util
 from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES
 import mdcourse
+import howbuilt
 
 R = pathlib.Path(__file__).resolve().parent
 PROV = json.load(open(R / 'provenance.json'))
@@ -147,7 +148,8 @@ def drawer(c):
         out += '</div></div>'
     top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">Academy</span></a>'
            f'<a class="ditem dhome" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span class="n">⌂</span><span class="t">{c["short"]}: course home</span></a>'
-           f'<a class="ditem dhome" href="#{c["syl_id"]}" data-target="{c["syl_id"]}"><span class="n">§</span><span class="t">Syllabus and prompts</span></a></div>')
+           f'<a class="ditem dhome" href="#{c["syl_id"]}" data-target="{c["syl_id"]}"><span class="n">§</span><span class="t">Syllabus and prompts</span></a>'
+           f'<a class="ditem dhome" href="#{c["home_id"]}-built" data-target="{c["home_id"]}-built"><span class="n">✓</span><span class="t">How it was built</span></a></div>')
     return f'<nav class="dlist" data-navctx="{c["id"]}" data-accordion aria-label="{c["short"]} course" hidden>{top}{out}</nav>'
 
 
@@ -225,6 +227,7 @@ def course_home(c):
     <summary><h2>The reading spine</h2><span>primary and secondary</span></summary>
     {c['spine']}
   </details>
+  <a class="hbtn alt wide" href="#{c['home_id']}-built" data-target="{c['home_id']}-built"><span>How it was built</span><b>The model behind each report, every check and audit with its verdict, the flags still open.</b></a>
   <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>{c['closing']}</b></a>
 </section>'''
 
@@ -511,9 +514,15 @@ roothome = f'''
   {cl_link}
 </section>'''
 
+# A4 · "How it was built": one generated page per course (howbuilt.py), every fact read from a file
+for c in HISTORY:
+    c['built'] = howbuilt.history_page(c, crumbs, THEME, md_inline, md_blocks, flagged, unchecked)
+for m in MD:
+    m['panels'].append(howbuilt.markdown_page(m, crumbs, THEME, md_inline, md_blocks))
+
 panels = [roothome, changelog, backlog]
 for c in HISTORY:
-    panels += [course_home(c), syllabus(c)] + c['report_panels']
+    panels += [course_home(c), c['built'], syllabus(c)] + c['report_panels']
 for m in MD:
     panels += m['panels']
 

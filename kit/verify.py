@@ -13,7 +13,8 @@ Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, deskt
 width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
 under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
 navigation context (drawer, title, arrows, continue) across home -> Rome -> report -> home -> Greece -> report ->
-a Brand + AI course and its reading and build pages, the drawer groups (tracks open by default, a course's units as an
+a Brand + AI course and its reading and build pages, every course's "How it was built" page (A4: fetched through the
+shell, one row per written report or unit), the drawer groups (tracks open by default, a course's units as an
 accordion) and the Backlog page; the same panel checks again in the light theme. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
 its own) and the top bar spans the content column. With --shots, saves dark and light screenshots at the three widths
@@ -124,9 +125,10 @@ def check_files(fails):
     shell = (SITE / 'index.html').read_text()
     heads = re.findall(r'<section class="panel[^"]*"[^>]*>', shell)
     srcs = [m.group(1) for h in heads for m in [re.search(r' data-src="([^"]+)"', h)] if m]
-    # every report and syllabus panel, a markdown course's briefs and bibliography pages, and a history course home (a
-    # course panel whose label is a numbered course; Brand + AI homes are lettered and stay) leave the shell (A2, P20, P22)
-    must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-bibliography)"', h)
+    # every report and syllabus panel, a markdown course's briefs and bibliography pages, a history course home (a
+    # course panel whose label is a numbered course; Brand + AI homes are lettered and stay) and every course's
+    # "How it was built" page leave the shell (A2, P20, P22, A4)
+    must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-bibliography|[a-z-]+-built)"', h)
             or (' data-kind="course"' in h and re.search(r' data-u="COURSE \d', h))]
     kept = [h[:80] for h in must if ' data-src="' not in h]
     if kept: fails.append(f'split: {len(kept)} panels should be fetched but are in the shell: {kept[:2]}')
@@ -295,6 +297,14 @@ def main():
             pg.click('#prevB'); pg.wait_for_timeout(50)
             step('rome prev from first report', dict(id='rome-syllabus', nav='rome', u='ROME', t='Syllabus and prompts'))
             pg.evaluate(f"location.hash = '{first}'"); pg.wait_for_timeout(50)
+        # A4: each history course's "How it was built" page, fetched through the shell, one row per written report
+        for cid in ('greece', 'rome'):
+            pg.evaluate(f"location.hash = '{cid}-built'"); pg.wait_for_timeout(50)
+            step(f'{cid} how it was built', dict(id=f'{cid}-built', nav=cid, t='How it was built', arrows=True))
+            nrow = pg.evaluate(f"document.querySelectorAll('#{cid}-built tr[data-mod]').length")
+            nrep = pg.evaluate(f"document.querySelectorAll('nav[data-navctx=\"{cid}\"] .dunit a.ditem[data-target]').length")
+            if nrow != nrep or not nrow: fails.append(f'{cid}-built: {nrow} report rows for {nrep} written reports')
+        pg.evaluate(f"location.hash = '{first}'" if rome_reps else "location.hash = 'rome'"); pg.wait_for_timeout(50)
         pg.click('#homeB'); pg.wait_for_timeout(80)
         step('home again', dict(id='home', nav='root', arrows=False, cont=(lambda c: c.startswith('Continue reading Rome · ')) if rome_reps else (lambda c: True)))
         pg.click('#home a.course[href="#greece"]'); pg.wait_for_timeout(80)
@@ -338,6 +348,12 @@ def main():
             for pid, t in ((f'{bid}-build', 'How it is built'), (f'{bid}-order', 'Build order'), (f'briefs-{key.lower()}', 'Briefs'), (f'{bid}-audits', 'Audits'), (f'{bid}-bibliography', 'Bibliography'), (f'{bid}-changelog', 'Changelog')):
                 pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(50)
                 step(f'{bid} {t}', dict(id=pid, nav=bid, t=t))
+            # A4: the course's "How it was built" page, generated: one row per written unit, read from the front matter
+            pg.evaluate(f"location.hash = '{bid}-built'"); pg.wait_for_timeout(50)
+            step(f'{bid} How it was built', dict(id=f'{bid}-built', nav=bid, t='How it was built'))
+            nrow = pg.evaluate(f"document.querySelectorAll('#{bid}-built tr[data-unit]').length")
+            if nrow != len(ba) or not pg.evaluate(f"document.getElementById('{bid}-built').hasAttribute('data-loaded')"):
+                fails.append(f'{bid}-built: {nrow} unit rows for {len(ba)} written units, or not fetched through the shell')
             pg.click('#homeB'); pg.wait_for_timeout(80)
             step(f'home after {bid}', dict(id='home', cont=lambda c: c.startswith('Continue reading ' + short + ' · ')))
             pg.click(f'#home a.course[href="#{bid}"]'); pg.wait_for_timeout(80)

@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **A4 (session 22):** every course has a generated "How it was built" page: the model behind each report or unit, every check and audit with its verdict, the flags still open, the method and the sources policy. Site version 63.
 - **P22 (session 21):** the two history course homes are fetched files too (`academy/<course>/home.html`); the shell is 293 KB, down from 366 KB. Site version 60.
 - **P20 (session 20):** the two syllabi and the Brand + AI briefs and bibliography pages are fetched files like the reports (`academy/<course>/syllabus.html`, `briefs.html`, `bibliography.html`); the shell is 366 KB, down from 747 KB. Site version 58.
 - **A2 (session 19):** the site is a shell (747 KB) plus one file per report (143), fetched when a report is opened; `personal-mythology.html` is retired and the build is `academy/`. Site version 55.
@@ -45,6 +46,13 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 19. The split: a shell plus one file per report (A2) | 78 | 59 |
 | 28 Oct | 20. The syllabi, briefs and bibliographies leave the shell too (P20); SETUP.md off the zips (P21) | 78 | 59 |
 | 28 Oct | 21. The history course homes leave the shell (P22) | 78 | 59 |
+| 28 Oct | 22. "How it was built" for every course (A4) | 78 | 59 |
+
+## 28 October 2026 · Session 22 · "How it was built" for every course (A4)
+
+Backlog row A4 of `docs/BACKLOG.md`, Opus 5.5. No report changed and no flag was cleared.
+
+- **A4.** `howbuilt.py` builds one page per course and `build.py` places it after the course home (history) or after the build pages (Brand + AI), fetched as `academy/<course>/built.html`, linked from the course home and the drawer. History pages: one table per syllabus unit, each written report with its `provenance.json` entry, the quality pass or fresh check verdict (dated and attributed from each review folder's `BRIEF.md`), the Fable audit scorecards (verdict, mean, factual errors, from the file), the overlap checks that name it, and its writer's unsure list and curated bibliography; then the audits run, the course and kit material from `artefacts`, and the `review_notes` naming the course. Brand + AI pages: one row per written unit from its vault front matter (model, date, search), its STATUS, its fresh check (front matter, with the chat link) and the AUDIT_LOG verdicts, and the staleness date from the six-month rule. Both: flags still open, `docs/method.md` §1 (the family's column, the common rule, the five decisions with their overrides) and `docs/sourcing-standard.md` (Part 1 and the course's part). `verify.py` requires each page to be a fetched file with anchors and to carry one row per written report or unit. Shell 298 KB, 155 fetched files, ALL CHECKS PASSED.
 
 ## 28 October 2026 · Session 21 · The history course homes leave the shell (P22)
 

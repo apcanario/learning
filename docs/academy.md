@@ -52,7 +52,7 @@ Done when: the shell is under 1 MB, every report loads by `fetch`, `verify.py` p
 5. `skills/file-unit` and `skills/new-course` point at Academy's build and publish steps; `SETUP.md` §7 and §9 likewise.
 Done when: every written Brand + AI unit reads in Academy with its brief, audit log and bibliography; filing a Brand + AI unit is one procedure (`file-unit`) ending in an Academy publish; the old artifacts are gone.
 
-### A4 · "How it was built" per course
+### A4 · "How it was built" per course (done 28 Oct 2026; `kit/howbuilt.py`, called by `build.py`; panels `#<course>-built`, fetched as `academy/<course>/built.html`; history reports carry no written date in `provenance.json`, so the page says so (P23); file links go to the private repo on GitHub (P24))
 One generated page per course: the method in force, the model that wrote each unit, dates, the checks and audits run with verdicts, flags still open, the sources policy, and links to the audit files. History courses generate it from `provenance.json`, `review_notes` and `audits/`; Markdown courses from front matter and the audit log. The site's Changelog page stays the cross-course record.
 Done when: every course has the page and no fact on it is typed by hand.
 

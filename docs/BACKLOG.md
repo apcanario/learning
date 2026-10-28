@@ -4,13 +4,12 @@ The ordered queue of chats for the Learning Project. One row is one chat. Take t
 
 ## Queue
 
-Order decided 28 October 2026 (`academy.md` AD4, reworked after the Brand + AI hand-off landed in the repo; P4, S1 and A1 with P5 to P7, then P8 to P11 and A0, done the same day). Two lanes: the **Academy lane** (one chat at a time, in order) and the **Brand + AI writing lane** (one unit per chat, per `docs/handoffs/2026-10-28-brand-ai-handoff.md` step 2 and `skills/`). Order decided 28 October 2026 (Pedro, 14:57): the Academy lane runs first, rows 1 to 3 (A2, A4, A5; A2 done the same day), then the Brand + AI lane (B-1 onward); the history content work (S4, S5, S3, S6) follows after. The lanes no longer run in parallel.
+Order decided 28 October 2026 (`academy.md` AD4, reworked after the Brand + AI hand-off landed in the repo; P4, S1 and A1 with P5 to P7, then P8 to P11 and A0, done the same day). Two lanes: the **Academy lane** (one chat at a time, in order) and the **Brand + AI writing lane** (one unit per chat, per `docs/handoffs/2026-10-28-brand-ai-handoff.md` step 2 and `skills/`). Order decided 28 October 2026 (Pedro, 14:57): the Academy lane runs first, rows 1 to 3 (A2, A4, A5; A2 and A4 done the same day), then the Brand + AI lane (B-1 onward); the history content work (S4, S5, S3, S6) follows after. The lanes no longer run in parallel.
 
 ### Academy lane
 
 | # | Spec | Model | Prompt to paste |
 |---|---|---|---|
-| 2 | A4 · "How it was built" per course | any | Clone `apcanario/learning` and run A4 of `docs/academy.md`: one generated page per course from `provenance.json`, `review_notes`, `kit/audits/`, the Markdown front matter and the audit log; nothing typed by hand. Publish, commit, push. |
 | 3 | A5 · Vault as source and the method | any | Clone `apcanario/learning` and run A5 of `docs/academy.md`: `build.py` reads Markdown courses from `courses/` (the `generator/data/<slug>/units/` copies go away); `courses-index.md` generated or checked by script; `method.md` §7, `SETUP.md` and the four skills updated; the Project instructions name Academy. Commit and push. |
 | 4 | S4 · Greek 13.2 and 13.5, the six flagged reports | Fable 5.1 | Clone `apcanario/learning`, `cd kit`, and follow `NEXT-SESSION.md` exactly, except: no zip; end with a commit and push. The six reports are 11.1, 11.2, 11.4, 11.5, 11.6, 11.8. |
 | 5 | S5 · Bibliography spot-check | Fable 5.1, search on | Clone `apcanario/learning`, `cd kit`. Run S5 of `../docs/pm-status-2026-10-28.md`: one Rome and two Greek units; open every "(not verified)" reference in their `bibliography/<course>/r-<id>.md` by web search; correct or confirm; write `audits/bibliography-spot-check.md` with the hit rate; set the `artefacts` entry in `provenance.json` to "Sonnet 5.5, spot-checked with Fable 5.1 (sampled)" if under about one in ten is wrong, otherwise leave it flagged and say what is wrong. Build, commit, push. |
@@ -34,7 +33,7 @@ Dropped 28 October 2026: S2 (`generator/build_hub.py` exists; A3 absorbs it).
 
 | # | Task | Why | Suggested place |
 |---|---|---|---|
-
-_None._
+| P23 | Record a written date per history report: `register.py` stores the date beside the model in `provenance.json` (or a `written` map per course); backfill the 137 from `review_notes` and `kit/CHANGELOG.md` where a session dates them, "not recorded" otherwise; `howbuilt.py` shows it | A4 found `provenance.json` holds no date per report, so the history "How it was built" pages say so instead of giving one; the Brand + AI pages have it from front matter. A5 makes the vault the source for new units, so only the backfill is extra | Academy lane, after A5 (A5 may already settle the field) |
+| P24 | Decide where the audit and review files open for someone Academy is shared with: today every file link on the "How it was built" pages points at the private repo `apcanario/learning` on GitHub, which opens only for Pedro. Options: publish them as fetched pages in Academy (about 120 Markdown files rendered once per build; also on the public Pages repo) or keep them private and say so | AD7 makes Academy navigable by anyone it is shared with; the provenance pages are, but their evidence is not. Publishing audits publicly is Pedro's call | Academy lane, after A5; Pedro decides first |
 
 Done rows are in `CHANGELOG.md`.
