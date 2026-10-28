@@ -9,7 +9,13 @@ Decided 28 October 2026. One artifact holds every course Pedro runs: the ancient
 | AD1 | Academy takes over the Personal Mythology artifact, https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH; the title becomes Academy | The link and the reader's stored progress survive; 137 reports, their audits and provenance stay as built |
 | AD2 | The builder is the kit's `build.py`, extended; the separate Brand + AI hub (`generator/build_hub.py`, which exists and works) is absorbed at A3 and retired then | `build.py` is already course-generic (courses as data, one drawer per course, eight queued courses); Brand + AI is content on the same theme; `build_hub.py`'s Markdown renderer and hub pages are the starting material for A3 |
 | AD3 | Academy is a shell page plus the reports as separate published files, fetched on demand | A published artifact page is capped at 16 MB; the site is 4.3 MB with two courses and eight more are planned. An artifact may carry up to 511 files and 256 MB, and a page may `fetch` its own files |
-| AD4 | Order of chats after S1: A1 → A2 → S4 → S5 → A3 → A4 → A5 → S6 | Shell early so that every new unit lands in one place; Rome writing resumes once Academy holds everything |
+| AD4 | Order of chats: P4 (kit session 11 in) → A1 → A3 → A2 → A4 → A5, then S4 → S5 → S3 → S6. Brand + AI units keep being written in their own lane meanwhile (B3, B4, A1, Audit 2), filed on the standalone hub until A3 lands and in Academy after | Brand + AI is moving fast (five units on 28 Oct), so its migration comes before the split; the history content work (S4, S5) does not depend on Academy and waits |
+
+## What exists to build from (28 October 2026)
+
+- `kit/build.py` + `kit/shell.js`: the history site. Courses as data (`courses.py`), one drawer context per course, prev/next and continue buttons, syllabus panels with prompts, changelog panel, provenance flags, `verify.py` on an emulated phone. Session 11 put it on `design/theme.css` (version 41).
+- `generator/build_hub.py` + `generator/hub.js`: the Brand + AI hub. Learn (course pages, reading pages from Markdown via the `markdown` package) and Build (method, build order, briefs, audits log, bibliography collected from links, hub template, changelog), back navigation. `check_page.py` measures 400 px, both themes, 44 px targets, overflow, console.
+- Both inline the same `theme.css`; `hub.js` is modelled on `shell.js`. Academy keeps `build.py` and `shell.js` as the shell and takes `build_hub.py`'s Markdown renderer and Build pages as a second course family.
 
 ## Course families
 
@@ -33,11 +39,12 @@ Done when: the live page is titled Academy, lists both hubs' courses on its home
 Done when: the shell is under 1 MB, every report loads by `fetch`, `verify.py` prints ALL CHECKS PASSED on the published artifact's structure.
 
 ### A3 · Brand + AI migration
-1. Data model for a Markdown course in `build.py`: units from `courses/<course>/*.md` (front matter header = provenance), briefs and build order from `units_data.py`, audits from a log file, bibliography from the units' links.
-2. Markdown renderer to theme classes (headings, tables in `div.tbl`, blockquotes, code, links with `small.url`); the hub's Learn/Build pages become course pages in the drawer.
-3. Port `generator/build_hub.py`'s renderer and page builders into `kit/build.py` (or import them), and the text of `generator/data/brand-ai/hub.py` into the data files; `build_hub.py` and the standalone hub are retired.
-4. Publish; the Brand + AI artifact (https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT) and the Audience Growth page are deleted once their content is live in Academy.
-Done when: A2, A6, A9 and B1 read in Academy with their briefs, audit log and bibliography, and the old artifacts are gone.
+1. `kit/build.py` imports the page builders of `generator/build_hub.py` as the `markdown` family: course page (goal, outcomes, progress, unit cards), reading pages (Markdown via the `markdown` package, theme classes), briefs, build order, audits log, bibliography from links, changelog. Data stays where `hub.py` names it (`generator/data/brand-ai/`); `courses/brand-ai/` is the vault copy (A5 makes it the source).
+2. The hub's Learn/Build split becomes one course context in the Academy drawer: Learn pages first, Build pages under a "How it is built" group; `hub.js`'s back navigation is folded into `shell.js` or dropped.
+3. `verify.py` absorbs `check_page.py`'s checks (44 px targets, both themes, console) so one check covers every page.
+4. Publish; then delete the Brand + AI artifact (https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT) and the Audience Growth page (https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw); `build_hub.py`, `hub.js`, `check_page.py` and `build_history.py` are retired.
+5. `skills/file-unit` and `skills/new-course` point at Academy's build and publish steps; `SETUP.md` §7 and §9 likewise.
+Done when: every written Brand + AI unit reads in Academy with its brief, audit log and bibliography; filing a Brand + AI unit is one procedure (`file-unit`) ending in an Academy publish; the old artifacts are gone.
 
 ### A4 · "How it was built" per course
 One generated page per course: the method in force, the model that wrote each unit, dates, the checks and audits run with verdicts, flags still open, the sources policy, and links to the audit files. History courses generate it from `provenance.json`, `review_notes` and `audits/`; Markdown courses from front matter and the audit log. The site's Changelog page stays the cross-course record.
