@@ -6,7 +6,8 @@
 # `learning` stays private; only the build output travels. The script clones or pulls apcanario/academy into a
 # sibling folder of this repo (override with ACADEMY_DIR), replaces its contents with the build, commits and pushes
 # to main. Pages is set to serve main at the root, so the site is live at https://apcanario.github.io/academy/ a
-# minute or so after the push. Nothing else goes into that repo: the kit, the reports and the docs are in `learning`.
+# minute or so after the push. (First time only: switching Pages on in the repo's settings does not start a build by
+# itself; the first push after that does, which this script makes. 28 Oct 2026.) Nothing else goes into that repo: the kit, the reports and the docs are in `learning`.
 #
 # Two build shapes (docs/academy.md A2, P10):
 #   - before the split: the single page personal-mythology.html, copied in as index.html;
