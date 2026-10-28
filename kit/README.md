@@ -13,6 +13,8 @@ The standalone Rome and Greek syllabus artifacts were retired on 28 October 2026
 
 ## Where things stand (28 October 2026, after session 13)
 
+- **Session 16 (28 October 2026): navigable by others.** Breadcrumbs on every page, Start or Continue on every course page; course B renamed Using AI to Build a Brand. Site version 47.
+
 - **Session 15 (28 October 2026): the catalogue.** The home groups every course by track (`courses.py:THEMES`); Brand + AI is two Academy courses (A under Marketing, B under Technology); titles are course names. Site version 46.
 
 - **Session 14 (28 October 2026): tablet and desktop.** `design/theme.css` version 2 (section 6): a 760 px column and two-column cards from 768 px, a persistent 300 px sidebar from 1100 px; the phone layout unchanged. `verify.py` and `generator/check_page.py` check phone, tablet and desktop. `deploy.sh` copies `kit/academy/` whole once A2 splits the page, and is the last step of every publish. No report changed and no flag was cleared. Site version 45.

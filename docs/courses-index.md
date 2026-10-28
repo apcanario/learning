@@ -33,7 +33,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 
 ## Brand + AI
 
-Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build It** (8 core, 2 deep dives). 4 of 21 written. Briefs: the hub's Build · Briefs pages (`gen/data/brand-ai/units_data.py`). Build order: the hub's Build order page.
+Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 2 deep dives). 4 of 21 written. Briefs: the hub's Build · Briefs pages (`gen/data/brand-ai/units_data.py`). Build order: the hub's Build order page.
 
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|

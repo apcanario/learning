@@ -93,8 +93,12 @@
     [].slice.call(document.querySelectorAll('.hbtn.cont')).forEach(function(b){
       var long=b.hasAttribute('data-long'),s=long?lastAny():lastIn(b.getAttribute('data-course'));
       var t=b.querySelector('b');
-      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(long?(courseName[ctxOf[s]]||'')+' · ':'')+meta[s].n+' '+meta[s].t;b.parentNode.removeAttribute('data-one');}
-      else{b.hidden=true;b.parentNode.setAttribute('data-one','');}
+      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(long?(courseName[ctxOf[s]]||'')+' · ':'')+meta[s].n+' '+meta[s].t;}
+      else{b.hidden=true;}
+      // "Start the course" shows only while there is nothing to continue; data-one when a single button is left
+      var st=b.parentNode.querySelector('.hbtn.start');if(st)st.hidden=!!s;
+      var vis=[].filter.call(b.parentNode.querySelectorAll('.hbtn'),function(x){return !x.hidden;}).length;
+      if(vis===1)b.parentNode.setAttribute('data-one','');else b.parentNode.removeAttribute('data-one');
     });
     openCards();}
   function go(id){history.replaceState(null,'','#'+id);show(id,true);}

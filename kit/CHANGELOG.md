@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **Navigable (session 16):** breadcrumbs on every page, Start or Continue on every course page; course B is Using AI to Build a Brand. Site version 47.
 - **Catalogue (session 15):** the home lists every course under its track (History, Marketing, Technology); Brand + AI is two Academy courses, A and B. Site version 46.
 - **Responsive (session 14):** `design/theme.css` version 2 adds section 6: tablet from 768 px (760 px column, cards in two columns), desktop from 1100 px (the drawer is a persistent 300 px sidebar). The phone layout is unchanged. `verify.py` runs a phone, tablet and desktop pass. Publishing Academy means the artifact, then `./deploy.sh`.
 - **Academy (session 13):** the site is Academy: its home lists every course of both hubs, Brand + AI as a placeholder panel until A3. `deploy.sh` publishes the built page to GitHub Pages through the public repo `apcanario/academy` (https://apcanario.github.io/academy/).
@@ -33,6 +34,20 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 13. The site becomes Academy (A1), with GitHub Pages | 78 | 59 |
 | 28 Oct | 14. Tablet and desktop layouts (P11), Pages in every publish (P8), the deploy script ready for the split (P10) | 78 | 59 |
 | 28 Oct | 15. The home becomes a catalogue by track (A0) | 78 | 59 |
+| 28 Oct | 16. Navigable by others: breadcrumbs, start buttons, course B renamed | 78 | 59 |
+
+## 28 October 2026 · Session 16 · Navigable by others: breadcrumbs, start buttons, course B renamed
+
+Pedro's request after session 15 (`docs/academy.md` AD7): the site must be navigable by anyone it is shared with, using only what it shows; the content stays written for him. No report changed and no flag was cleared.
+
+### Navigation
+A breadcrumb trail (`.crumbs`, new in `theme.css` section 5, every link 44 px) opens every course page (Academy › track › course), syllabus page (Academy › course › Syllabus), report (Academy › course › Unit n › id, the unit crumb landing on the course home's unit card, now anchored `<course>-u<n>`) and the changelog. Every course page has Start the course (its first report) beside Continue; `shell.js` shows one or the other, and `data-one` is set only when a single button is left. Brand + AI course pages start at their first written unit on the hub. Syllabus pages are titled "<Course>: syllabus and prompts".
+
+### Course B
+Renamed Using AI to Build a Brand, in `hub.py`, both filed B units' front matter, `method.md` §7, `docs/project-instructions.md` and `courses.py`. Unit texts and the course copy are untouched.
+
+### Published
+Versions 47 and 48 of the site (48 after the rebase onto the P8 commit), to the Academy artifact and GitHub Pages; the hub as v6.7.
 
 ## 28 October 2026 · Session 15 · The home becomes a catalogue by track (A0)
 

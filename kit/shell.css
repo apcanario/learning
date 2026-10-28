@@ -425,6 +425,12 @@ details.clog[open]>summary::after{content:"–"}
 /* a prose block that opens a hub section starts flush (report h2s keep their rule elsewhere) */
 .panel.stack .report>h2:first-child{margin-top:0;padding-top:0;border-top:0}
 .panel.stack .report>:last-child{margin-bottom:0}
+/* breadcrumb trail at the top of every course, syllabus, report and changelog page: Academy › track or course › here */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:0 6px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--dim);margin:-10px 0 4px}
+.crumbs a{color:var(--muted);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.crumbs a:hover{color:var(--fg)}
+.crumbs span[aria-current]{color:var(--fg)}
+.crumbs .sep{color:var(--dim)}
 /* track banner on the Academy home: a subject heading over a group of course cards, carrying the track colour */
 .track{display:flex;flex-direction:column;gap:14px;scroll-margin-top:calc(var(--bar) + env(safe-area-inset-top,0px) + 12px)}
 .thead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 0 10px 14px;border-left:4px solid var(--c);border-bottom:1px solid var(--line)}

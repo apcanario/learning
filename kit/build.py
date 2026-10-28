@@ -58,6 +58,7 @@ def load(c):
     idx = json.load(open(R / c['prompts']))
     c['index'] = {k: idx[k] for k in order if k in idx}
     c['done'] = set(c['index'])
+    c['first'] = next(iter(c['index']))  # the first written report, where a new reader starts
     c['prov'] = PROV.get(c['id'], {})
     c['slug'] = lambda i, p=c['prefix']: p + i.replace('.', '')
 
@@ -85,6 +86,7 @@ def load(c):
         panels.append(f'''
 <section class="panel" id="{sl}" data-unit="{u}" data-ctx="{c['id']}" data-kind="report" hidden>
   <header class="phead">
+    {crumbs(('Academy', 'home'), (c['short'], c['home_id']), (f'Unit {u}', f'{c["home_id"]}-u{u}'), (i, None))}
     <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['label']}</span> · <span class="u" style="--c:{ucol[u]}">UNIT {u}</span> · {c['umap'][u][0]} · <span class="mono">{i}</span> · {n:,} words{' ' + PILL_UNCK if unchecked(model) else ''}</div>
     <h1>{html.escape(meta['title'])}</h1>
     <nav class="toc" aria-label="Sections">{toc}</nav>
@@ -155,10 +157,17 @@ def ucard(c, u):
             pill = PILL_NEXT if mid in c.get('next_up', ()) else '<span class="pill">soon</span>'
             rows += f'<div class="hrow soon"><span class="n">{mid}</span><span class="t">{html.escape(t)}<small>{html.escape(w)}</small></span>{pill}</div>'
     ids = ' '.join(c['slug'](m[0]) for m in mods)
-    return f'<details class="ucard{"" if have else " pending"}" data-mods="{ids}" style="--c:{col}"><summary class="uch"><span class="un">UNIT {u}</span><span class="uh">{html.escape(name)}</span><span class="st">{status}</span><span class="bar" aria-hidden="true"><i style="width:{pct}%"></i></span><span class="uwhy">{html.escape(why)}</span>{ICON_CHEV}</summary><div class="hrows">{rows}</div></details>'
+    return f'<details class="ucard{"" if have else " pending"}" id="{c["home_id"]}-u{u}" data-mods="{ids}" style="--c:{col}"><summary class="uch"><span class="un">UNIT {u}</span><span class="uh">{html.escape(name)}</span><span class="st">{status}</span><span class="bar" aria-hidden="true"><i style="width:{pct}%"></i></span><span class="uwhy">{html.escape(why)}</span>{ICON_CHEV}</summary><div class="hrows">{rows}</div></details>'
 
 
 THEME = {t['id']: t for t in THEMES}
+def crumbs(*items):
+    """Breadcrumb trail: (label, target panel id) pairs; the last item is the current page and has no link."""
+    out = []
+    for label, tgt in items:
+        out.append(f'<a href="#{tgt}" data-target="{tgt}">{html.escape(str(label))}</a>' if tgt else f'<span aria-current="page">{html.escape(str(label))}</span>')
+    return '<nav class="crumbs" aria-label="You are here">' + '<span class="sep" aria-hidden="true">›</span>'.join(out) + '</nav>'
+
 def hours(words):
     """Reading time at about 230 words a minute, as a short label."""
     h = words / 230 / 60
@@ -178,11 +187,12 @@ def course_home(c):
     return f'''
 <section class="panel home" id="{c['home_id']}" data-ctx="{c['id']}" data-kind="course" data-t="{c['short']}" data-u="COURSE {c['num']}" data-c="{c['color']}" style="--cc:{c['color']}" hidden>
   <header class="hero">
-    <div class="eyebrow"><span class="u" style="--c:{THEME[c['theme']]['color']}">{THEME[c['theme']]['name'].upper()}</span> · <span class="u" style="--c:{c['color']}">{c['eyebrow']}</span> · Personal Mythology{' · <span class="u" style="--c:var(--gold)">IN PROGRESS</span>' if c['status'] != 'available' else ' · <span class="u" style="--c:var(--teal)">COMPLETE</span>'}</div>
+    {crumbs(('Academy', 'home'), (THEME[c['theme']]['name'], 'track-' + c['theme']), (f"Course {c['num']} · {c['short']}", None))}
+    <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['eyebrow']}</span> · Personal Mythology{' · <span class="u" style="--c:var(--gold)">IN PROGRESS</span>' if c['status'] != 'available' else ' · <span class="u" style="--c:var(--teal)">COMPLETE</span>'}</div>
     <h1>{c['h1']}</h1>
     <p class="lede">{fill(c['lede'], c)}</p>
     <div class="stats" data-n="4"><div><b>{c['nrep']}</b><span>of {c['content_mods']} reports written</span></div><div><b>{c['units_complete']}</b><span>of {nunits} units complete</span></div><div><b>{c['words']//1000}k</b><span>words so far</span></div><div><b>{hours(c['words'])}</b><span>hours of reading</span></div></div>
-    <div class="hlinks"><a class="hbtn cont" href="#{c['home_id']}" data-course="{c['id']}" hidden><span>Continue</span><b></b></a><a class="hbtn alt" href="#{c['syl_id']}" data-target="{c['syl_id']}"><span>Syllabus</span><b>All {c['total_mods']} prompts, copyable</b></a></div>
+    <div class="hlinks"><a class="hbtn cont" href="#{c['home_id']}" data-course="{c['id']}" hidden><span>Continue</span><b></b></a><a class="hbtn start" href="#{c['slug'](c['first'])}" data-target="{c['slug'](c['first'])}"><span>Start the course</span><b>{c['first']} {html.escape(c['index'][c['first']]['title'])}</b></a><a class="hbtn alt" href="#{c['syl_id']}" data-target="{c['syl_id']}"><span>Syllabus</span><b>All {c['total_mods']} prompts, copyable</b></a></div>
     {c['flag']}
   </header>
 
@@ -227,8 +237,9 @@ def syllabus(c):
     return f'''
 <section class="panel syl" id="{c['syl_id']}" data-ctx="{c['id']}" data-kind="syllabus" data-t="Syllabus and prompts" data-u="{c['label']}" data-c="var(--gold)" style="--cc:{c['color']}" hidden>
   <header class="hero">
+    {crumbs(('Academy', 'home'), (c['short'], c['home_id']), ('Syllabus', None))}
     <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['label']}</span> · <span class="u" style="--c:var(--gold)">SYLLABUS</span> · {c['total_mods']} modules · every prompt in full</div>
-    <h1>The course, module by module</h1>
+    <h1>{c['short']}: syllabus and prompts</h1>
     <p class="lede">This is the complete syllabus the reports were generated from. Each module has its drop-in prompt; copy it into a new chat to regenerate a report yourself, extend one, or compare a fresh answer against the one here. Where a report exists it is linked.</p>
     {c['flag']}
   </header>
@@ -308,16 +319,20 @@ def markdown_home(m):
             pill = PILL_NEXT if code == d.NEXT_UNIT else '<span class="pill">soon</span>'
             rows += f'<div class="hrow soon"><span class="n">{code}</span><span class="t">{html.escape(title)}<small>{html.escape(scope)}</small></span>{pill}</div>'
     pct = round(100 * m['nwritten'] / m['nunits'])
+    first = next((u for u in sc['units'] if u[0] in c['written']), None)
+    first_code, first_title = (first[0], first[1]) if first else ('', '')
+    first_href = f'{c["artifact"]}#{c["written"][first_code]}' if first else m['artifact']
     audits = ''.join(f'<li><strong>{html.escape(dt)}</strong> · {txt}</li>' for dt, txt in d.AUDIT_LOG)
     t = THEME[m['theme']]
     return f'''
 <section class="panel home" id="{m['home_id']}" data-ctx="{m['id']}" data-kind="course" data-t="{html.escape(m['short'])}" data-u="COURSE {m['key']}" data-c="{m['color']}" style="--cc:{m['color']}" hidden>
   <header class="hero">
-    <div class="eyebrow"><span class="u" style="--c:{t['color']}">{t['name'].upper()}</span> · <span class="u" style="--c:{m['color']}">COURSE {m['key']}</span> · Brand + AI · <span class="u" style="--c:var(--gold)">IN PROGRESS</span></div>
+    {crumbs(('Academy', 'home'), (t['name'], 'track-' + m['theme']), (f"Course {m['key']} · {m['short']}", None))}
+    <div class="eyebrow"><span class="u" style="--c:{m['color']}">COURSE {m['key']}</span> · Brand + AI · <span class="u" style="--c:var(--gold)">IN PROGRESS</span></div>
     <h1>{html.escape(m['name'])}</h1>
     <p class="lede">{sc['intro']}</p>
     <div class="stats" data-n="4"><div><b>{m['nwritten']}</b><span>of {m['nunits']} units written</span></div><div><b>{pct}%</b><span>of the course</span></div><div><b>{len(d.AUDIT_LOG)}</b><span>audit{'s' if len(d.AUDIT_LOG) != 1 else ''} run</span></div><div><b>{html.escape(d.NEXT_UNIT)}</b><span>next unit to write</span></div></div>
-    <div class="hlinks"><a class="hbtn" href="{m['artifact']}"><span>Read on the Brand + AI hub</span><b>Course {m['key']} · {html.escape(d.VERSION)}</b></a><a class="hbtn alt" href="{c['artifact']}#briefs-{sc['k']}"><span>Briefs</span><b>Every unit's brief, copyable</b></a></div>
+    <div class="hlinks"><a class="hbtn" href="{first_href}"><span>{'Start the course' if first_code else 'Open the course'}</span><b>{html.escape(first_code + ' ' + first_title) if first_code else 'On the Brand + AI hub'}</b></a><a class="hbtn alt" href="{c['artifact']}#briefs-{sc['k']}"><span>Briefs</span><b>Every unit's brief, copyable</b></a></div>
     <p class="prov flag">Until A3 (docs/academy.md) the units are read on the Brand + AI hub, the course's own artifact; each written unit below opens there.</p>
   </header>
   <section class="howto edge" style="--hc:var(--blue)"><h2>What you will be able to do</h2><p>{html.escape(sc['goal'][0].upper() + sc['goal'][1:])}</p><ul>{sc['outcomes']}</ul><p class="over">{d.COURSE_NOTE}</p></section>
@@ -427,6 +442,7 @@ cl_other = ''.join(f'<section class="howto clsec"><h2>{md_inline(h)}</h2>{md_blo
 changelog = f"""
 <section class="panel log" id="changelog" data-ctx="root" data-kind="changelog" data-t="{html.escape(cl_title)}" data-u="ACADEMY" data-c="var(--gold)" hidden>
   <header class="hero">
+    {crumbs(('Academy', 'home'), ('Changelog', None))}
     <div class="eyebrow"><span class="u" style="--c:var(--gold)">CHANGELOG</span> · {len(cl_sessions)} sessions {cl_since}</div>
     <h1>{html.escape(cl_title)}</h1>
     {md_blocks(cl_intro).replace('<p>', '<p class="lede">', 1)}

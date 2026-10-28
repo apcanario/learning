@@ -113,7 +113,7 @@ BRAND_AI = dict(
     # until A3: the units are read on the standalone hub; the Academy panel links there
     artifact='https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT',
     eyebrow='BRAND + AI',
-    card='A · Building a Marketable Personal Brand and B · Using AI to Build It. Who pays, for what, how long it takes; which model for which task, how to brief, where the setup leaks. Every unit sourced and ending in a shipped deliverable.',
+    card='A · Building a Marketable Personal Brand and B · Using AI to Build a Brand. Who pays, for what, how long it takes; which model for which task, how to brief, where the setup leaks. Every unit sourced and ending in a shipped deliverable.',
 )
 
 COURSES = [GREECE, ROME, BRAND_AI]

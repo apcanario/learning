@@ -16,7 +16,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v6.6 · 28 Oct 2026'
+VERSION = 'v6.7 · 28 Oct 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -28,7 +28,7 @@ PRE, A, B = _ns['PRE'], _ns['A'], _ns['B']
 GOAL_A = ("by the end of the course the reader can state, in one sentence, who his audience is and what they pay for; run a publishing system that holds a bi-weekly cadence inside 5–7 h/week for twelve months; and read his own channel metrics against sourced benchmarks to decide, with evidence, whether to continue, change format or stop.")
 GOAL_B = ("by the end of the course the reader routes each recurring task to the right model and effort level without guessing; briefs any unit, draft or audit so that the first output is usable; keeps a project structure that does not rot; and verifies AI-written material by sampling before trusting it.")
 NAME_A = 'Building a Marketable Personal Brand'
-NAME_B = 'Using AI to Build It'
+NAME_B = 'Using AI to Build a Brand'
 
 COURSES = [
     dict(key='A', name=NAME_A, color='var(--teal)', units=A, goal=GOAL_A, slug='brand',
@@ -195,6 +195,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-10-28 10:30', "v6.7. Course B renamed Using AI to Build a Brand (hub.py NAME_B, the filed B units' front matter). Units unchanged."),
     ('2026-10-28 10:10', "v6.6. Home title is the hub's name (Brand + AI: two courses); Academy now lists course A under its Marketing track and course B under Technology, each linking here. No unit changed."),
     ('2026-10-28 09:30', "v6.5. Rebuilt on theme v2 (design/theme.css section 6, responsive): tablet from 768 px widens the column to 760 px and puts course cards in two columns; desktop from 1100 px turns the drawer into a persistent 300 px sidebar with the current page highlighted, no backdrop and no menu button. The phone layout is unchanged. check_page.py now runs a phone, tablet and desktop pass with the 6 px gap and 44 px target checks. No unit changed."),
     ('2026-10-28 08:20', "v6.4. B2 Choosing the model written (Opus 5.5, own chat, search on), fresh-checked by Fable 5.1 (fix, 3 errors, 10 should-fix, 14 minor; every finding applied) and filed: reading page under Learn, B2 marked written, counters moved. Next: B3. The hub now lives in the learning-project repository (NEXT-SESSION.md)."),

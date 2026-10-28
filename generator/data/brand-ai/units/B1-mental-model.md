@@ -1,7 +1,7 @@
 ---
 code: B1
 title: Mental model
-course: brand-ai · B · Using AI to Build It
+course: brand-ai · B · Using AI to Build a Brand
 model: Opus 5.5
 written: 2026-10-28
 search: on
