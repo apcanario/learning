@@ -17,7 +17,7 @@ Say which in the first line.
 Draft the frame before the syllabus: the pick, up to three reasons, the override condition, and where the evidence pushes back. Ask him to confirm or change the pick. One question, then build.
 
 ## 3. The syllabus
-- 8–10 core units plus 2 deep dives, written last (the comparables, and the hard-number one), unless the subject's own logic needs another shape; say so if it does.
+- 8–10 core units plus 2 or 3 deep dives, written last: the comparables and the hard-number one always; a third only when the subject has a documented practice worth verifying against its primary sources (as DD-B3 in course B). More than three, or another shape, needs the subject's own logic; say so if it does.
 - A course goal in one sentence and three measurable outcomes, each mapped to the units that deliver it.
 - Per unit: code, title, one-line scope, the deliverable it ships (built in full inside the unit), and the unit brief (`method.md` §4, Brief template: "Unit <code>, <Title>. [Search before writing.] Cover: … Deliverable: …").
 - A search flag per unit: on only where facts are current.

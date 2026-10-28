@@ -23,7 +23,7 @@ COURSES = [
     dict(key='A', name='⟨Course A name⟩', color='var(--teal)', units=A, slug='⟨course-slug⟩',
          goal='by the end of the course the reader can ⟨one sentence⟩.',
          tile='⟨One line for the Learn tile.⟩',
-         intro='⟨Two sentences: what the course is and is not; how many core units and deep dives.⟩',
+         intro='⟨Two sentences: what the course is and is not; how many core units and deep dives (8–10 core, 2 or 3 deep dives).⟩',
          outcomes='<li><strong>Outcome 1</strong> — ⟨measurable⟩ (A1).</li><li><strong>Outcome 2</strong> — ⟨measurable⟩ (A2).</li><li><strong>Outcome 3</strong> — ⟨measurable⟩ (DD-A1).</li>'),
 ]
 COURSE_NOTE = '⟨One line: the sourcing standard and the deliverable rule, as the reader should see them.⟩'

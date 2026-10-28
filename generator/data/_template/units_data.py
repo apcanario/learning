@@ -1,6 +1,6 @@
 # Units for a new course hub. Copy this folder to data/<course-slug>/ and replace every ⟨…⟩.
 # PRE is the shared preamble baked into every open brief; {GOAL} is replaced by the course goal.
-# Each unit: (code, title, one-line scope, what it ships, brief). A brief that starts with
+# Each unit: (code, title, one-line scope, what it ships, brief). 8–10 core units plus 2 or 3 deep dives (DD-), written last. A brief that starts with
 # "WRITTEN" marks the unit written; map it to its reading page in hub.py WRITTEN.
 PRE = ("Write one unit of a self-study course ⟨format: e.g. a long-form report for one reader⟩. "
 "Length is whatever the topic needs; do not pad and do not cut to a target. "

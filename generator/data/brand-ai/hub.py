@@ -177,11 +177,11 @@ TEMPLATE_BLOCKS = [
       <li>No horizontal overflow at 400 px: long text wraps anywhere; only tables and code may scroll, inside their own container.</li>
     </ul>"""),
     ('Syllabus requirements', """<ul>
-      <li>Course = 8–10 core units + 2 deep dives. Each unit: code, title, one-line scope, a shipped deliverable, an Opus brief. No length rule; the topic decides.</li>
+      <li>Course = 8–10 core units + 2 or 3 deep dives. Each unit: code, title, one-line scope, a shipped deliverable, an Opus brief. No length rule; the topic decides.</li>
       <li>Course goal in one sentence plus three measurable outcomes, each mapped to the units that deliver it, shown on the course page and baked into every brief.</li>
       <li>Every unit ends with something shipped (a document, a table, a skill, a model), built in full inside the unit, not described.</li>
       <li>Flag units that depend on current facts; they are written with live search and re-checked for staleness six months on.</li>
-      <li>Two deep dives written last: the comparables (what others did) and the hard-number one (money, time, exit math).</li>
+      <li>Deep dives written last. Two are standing: the comparables (what others did) and the hard-number one (money, time, exit math). A third is allowed when the subject has a documented practice worth verifying against its primary sources (course B: DD-B3); the history courses carry three by their own logic.</li>
       <li>An explicit writing order, with interleaving where two units build the same asset.</li>
       <li>Frame first: the pick, the reasons, the override condition, and where the evidence pushes back. The reader decides; the hub records.</li>
     </ul>"""),
