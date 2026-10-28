@@ -1,15 +1,15 @@
 # Courses index
 
-Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 28 October 2026 (Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md`; Brand + AI v6.1, B1 filed). Update a row whenever a unit is filed or audited (method.md §7).
+Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 28 October 2026 (Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md` and `academy.md`; Brand + AI v6.4, B2 filed). Update a row whenever a unit is filed or audited (method.md §7).
 
-Paths, all in the repo `apcanario/learning`: `kit/` is the Personal Mythology kit; `vault/` is `courses/`; `gen/` is `generator/`. Units not yet written show the vault path they will be filed at.
+Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Personal Mythology kit; `vault/` is `courses/`; `gen/` is `generator/`. Units not yet written show the vault path they will be filed at.
 
 ## Hubs
 
 | Hub | Page | Link | Built from |
 |---|---|---|---|
-| Personal Mythology | The site: both courses, syllabi, every report, changelog | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH | kit `build.py`; `kit/shell.css` must be a copy of `design/theme.css` (S1 of `pm-status-2026-10-28.md`; not yet done as of version 40) |
-| Brand + AI | Brand and AI Courses: Learn and Build | https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT | v6.3, 28 Oct 2026; content in `generator/data/brand-ai/hub.py`; no builder exists; absorbed into Academy at A3 (`academy.md`) |
+| Personal Mythology | The site: both courses, syllabi, every report, changelog | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH | kit `build.py` with `shell.css` = `design/theme.css` (session 11, version 41), or `gen/build_history.py`; becomes Academy at A1 (`academy.md`) |
+| Brand + AI | Brand and AI Courses: Learn and Build | https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT | `gen/build_hub.py data/brand-ai` → `gen/hubs/brand-and-ai-courses.html` (v6.4); absorbed into Academy at A3 |
 | Brand + AI | Audience Growth Across Platforms (standalone research page) | https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw | own CSS; the same report is the hub's reading page for A2 · A6 · A9 |
 
 Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Syllabus artifacts, and the three stray draft pages (r-3.2, r-3.3, r-11.6). The site's `#syllabus` and `#rome-syllabus` panels are the only published syllabi; `kit/greek-syllabus.html` and `kit/roman-syllabus.html` remain as build inputs.
@@ -18,7 +18,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 
 | Hub | Units since last audit | Next audit | Note |
 |---|---|---|---|
-| Brand + AI | 0 of 4 (Audit 1 ran 28 Oct 2026) | after four more written units (Audit 2 after B2, B3, B4, A1) | Audit 1: B1 PASS; A2·A6·A9 REWRITE. Rewritten 28 Oct 2026 as three units, each fresh-checked by Fable 5.1 and fixed (A9 2 errors; A2 3; A6 1). Gate cleared; B2 next. Fresh checker required for every Brand + AI unit (method §1 override). |
+| Brand + AI | 1 of 4 (Audit 1 ran 28 Oct 2026; B2 since) | after three more written units (Audit 2 after B3, B4, A1) | Audit 1: B1 PASS; A2·A6·A9 REWRITE. Rewritten 28 Oct 2026 as three units, each fresh-checked by Fable 5.1 and fixed (A9 2 errors; A2 3; A6 1). Gate cleared; B2 next. Fresh checker required for every Brand + AI unit (method §1 override). |
 | Personal Mythology | 0 of 4 new modules | after the 4th new Rome module (batch 1: 11.3, 11.4, 11.5, 11.6) | Decision of 28 October 2026: strict four-module cadence per method.md §6; `kit/review_due.py` still counts syllabus units and is to be rewritten (S3). Six Greek reports still flagged from the 27 October review: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (`NEXT-SESSION.md`, S4) |
 
 ## Staleness checks due (search-on units)
@@ -29,6 +29,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 | A6 | 28 Oct 2026 (rewrite) | 28 Apr 2027 |
 | A9 | 28 Oct 2026 (rewrite) | 28 Apr 2027 |
 | B1 | 28 Oct 2026 (search on: Anthropic product facts) | 28 Apr 2027 |
+| B2 | 28 Oct 2026 (search on: lineups, prices, plan rules, benchmarks) | 28 Apr 2027 |
 
 ## Brand + AI
 
@@ -37,29 +38,29 @@ Two courses for one reader. **A · Building a Marketable Personal Brand** (9 cor
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
 | — | A2 · A6 · A9 | A | Audience and platform economics · How growth works, per platform · What to expect: benchmarks | rewritten 28 Oct 2026 as three units from their briefs after Audit 1's REWRITE; each fresh-checked by Fable 5.1 (A9 fix 2/15/8; A2 fix 3/13/11; A6 fix 1/9/7), all findings applied | research 27 Oct: Fable 5.1 research agents; rewrites: Opus 5.5; checks: Fable 5.1 | on | `gen/data/brand-ai/audience-growth-across-platforms.md` (the research, kept as reading); units at `courses/brand-ai/A9-…`, `A2-…`, `A6-…` |
-| 4 | B1 | B | Mental model | written 28 Oct 2026; Audit 1 PASS (7 of 7 sampled claims) | Opus 5.5 | on (writer's call: dated product facts) | `courses/brand-ai/B1-mental-model.md` |
+| 4 | B1 | B | Mental model | written 28 Oct 2026 | Opus 5.5 | on (writer's call: dated product facts) | `courses/brand-ai/B1-mental-model.md` · `gen/data/brand-ai/units/B1-mental-model.md` |
 | ✓ | Audit 1 | A+B | Stratified-sample audit of the last four units | run 28 Oct 2026: B1 PASS, A2·A6·A9 REWRITE | Fable 5.1 | on | `audits/brand-ai/audit-1.html` (saved from the artifact) |
-| 5 | B2 | B | Choosing the model | not written · next, after A3 moves Brand + AI into Academy; fresh checker required | Opus 5.5 | on | `vault/courses/brand-ai/B2-choosing-the-model.md` |
-| 6 | B3 | B | Prompting that holds up | not written | Opus 5.5 | off | `vault/courses/brand-ai/B3-prompting-that-holds-up.md` |
-| 7 | B4 | B | Context engineering | not written | Opus 5.5 | off | `vault/courses/brand-ai/B4-context-engineering.md` |
-| 8 | A1 | A | Positioning: the journey as a format | not written | Opus 5.5 | off | `vault/courses/brand-ai/A1-positioning-the-journey-as-a-format.md` |
+| 5 | B2 | B | Choosing the model | written 28 Oct 2026 (own chat; fresh check Fable 5.1 fix, 3 errors, 10 should-fix, 14 minor, applied) | Opus 5.5 | on | `courses/brand-ai/B2-choosing-the-model.md` · `gen/data/brand-ai/units/B2-choosing-the-model.md` |
+| 6 | B3 | B | Prompting that holds up | not written · next | Opus 5.5 | off | `courses/brand-ai/B3-prompting-that-holds-up.md` |
+| 7 | B4 | B | Context engineering | not written | Opus 5.5 | off | `courses/brand-ai/B4-context-engineering.md` |
+| 8 | A1 | A | Positioning: the journey as a format | not written | Opus 5.5 | off | `courses/brand-ai/A1-positioning-the-journey-as-a-format.md` |
 | ✓ | Audit 2 | A+B | Stratified-sample audit of the last four units | due after #8 | Fable 5.1 | on | hub Audits page |
-| 9 | A3 | A | The journey system | not written | Opus 5.5 | off | `vault/courses/brand-ai/A3-the-journey-system.md` |
-| 10 | B5 | B | Skills and automation | not written | Opus 5.5 | off | `vault/courses/brand-ai/B5-skills-and-automation.md` |
-| 11 | A4 | A | Voice, disclosure and the record | not written | Opus 5.5 | off | `vault/courses/brand-ai/A4-voice-disclosure-and-the-record.md` |
-| 12 | A5 | A | Production craft | not written | Opus 5.5 | off | `vault/courses/brand-ai/A5-production-craft.md` |
+| 9 | A3 | A | The journey system | not written | Opus 5.5 | off | `courses/brand-ai/A3-the-journey-system.md` |
+| 10 | B5 | B | Skills and automation | not written | Opus 5.5 | off | `courses/brand-ai/B5-skills-and-automation.md` |
+| 11 | A4 | A | Voice, disclosure and the record | not written | Opus 5.5 | off | `courses/brand-ai/A4-voice-disclosure-and-the-record.md` |
+| 12 | A5 | A | Production craft | not written | Opus 5.5 | off | `courses/brand-ai/A5-production-craft.md` |
 | ✓ | Audit 3 | A+B | Stratified-sample audit of the last four units | due after #12 | Fable 5.1 | on | hub Audits page |
-| 13 | B7 | B | Content pipeline | not written | Opus 5.5 | off | `vault/courses/brand-ai/B7-content-pipeline.md` |
-| 14 | A7 | A | Monetisation through Shōmen | not written | Opus 5.5 | off | `vault/courses/brand-ai/A7-monetisation-through-shomen.md` |
-| 15 | A8 | A | Legal, tax, time | not written | Opus 5.5 | on | `vault/courses/brand-ai/A8-legal-tax-time.md` |
-| 16 | B6 | B | Research and verification | not written | Opus 5.5 | off | `vault/courses/brand-ai/B6-research-and-verification.md` |
+| 13 | B7 | B | Content pipeline | not written | Opus 5.5 | off | `courses/brand-ai/B7-content-pipeline.md` |
+| 14 | A7 | A | Monetisation through Shōmen | not written | Opus 5.5 | off | `courses/brand-ai/A7-monetisation-through-shomen.md` |
+| 15 | A8 | A | Legal, tax, time | not written | Opus 5.5 | on | `courses/brand-ai/A8-legal-tax-time.md` |
+| 16 | B6 | B | Research and verification | not written | Opus 5.5 | off | `courses/brand-ai/B6-research-and-verification.md` |
 | ✓ | Audit 4 | A+B | Stratified-sample audit of the last four units | due after #16 | Fable 5.1 | on | hub Audits page |
-| 17 | B8 | B | Cost, limits, hygiene | not written | Opus 5.5 | on | `vault/courses/brand-ai/B8-cost-limits-hygiene.md` |
-| 18 | DD-A1 | A | Deep dive: five creators who did this | not written | Opus 5.5 | on | `vault/courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md` |
-| 19 | DD-B1 | B | Deep dive: agents | not written | Opus 5.5 | off | `vault/courses/brand-ai/DD-B1-deep-dive-agents.md` |
-| 20 | DD-A2 | A | Deep dive: the exit math | not written | Opus 5.5 | off | `vault/courses/brand-ai/DD-A2-deep-dive-the-exit-math.md` |
+| 17 | B8 | B | Cost, limits, hygiene | not written | Opus 5.5 | on | `courses/brand-ai/B8-cost-limits-hygiene.md` |
+| 18 | DD-A1 | A | Deep dive: five creators who did this | not written | Opus 5.5 | on | `courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md` |
+| 19 | DD-B1 | B | Deep dive: agents | not written | Opus 5.5 | off | `courses/brand-ai/DD-B1-deep-dive-agents.md` |
+| 20 | DD-A2 | A | Deep dive: the exit math | not written | Opus 5.5 | off | `courses/brand-ai/DD-A2-deep-dive-the-exit-math.md` |
 | ✓ | Audit 5 | A+B | Stratified-sample audit of the last four units | due after #20 | Fable 5.1 | on | hub Audits page |
-| 21 | DD-B2 | B | Deep dive: his unknown unknowns | not written | Fable 5.1 | off | `vault/courses/brand-ai/DD-B2-deep-dive-his-unknown-unknowns.md` |
+| 21 | DD-B2 | B | Deep dive: his unknown unknowns | not written | Fable 5.1 | off | `courses/brand-ai/DD-B2-deep-dive-his-unknown-unknowns.md` |
 | ✓ | Audit 6 | A+B | Final audit of DD-B2 plus a full read of both courses against their goals | after #21 | Fable 5.1 | on | hub Audits page |
 
 ## Personal Mythology
@@ -221,30 +222,30 @@ In progress: 59 of 79 content reports; 85 modules with the audit unit. Written i
 | 57 | 11.2 | 11 · Deep dive I: the fall of the Republic | Generals and their armies | written · reviewed | Opus 5.5 | off | `kit/rome/r-11.2.html` |
 | 58 | 13.1 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Philosophy comes to Rome | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-13.1.html` |
 | 59 | 13.2 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Stoicism made Roman | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-13.2.html` |
-| 60 | 11.3 | 11 · Deep dive I: the fall of the Republic | Politics in the street | not written · batch 1 | Opus 5.5 | off | `vault/courses/rome/11.3-politics-in-the-street.md` (+ `kit/rome/r-11.3.html`) |
-| 61 | 11.4 | 11 · Deep dive I: the fall of the Republic | Women and the late Republic | not written · batch 1 | Opus 5.5 | off | `vault/courses/rome/11.4-women-and-the-late-republic.md` (+ `kit/rome/r-11.4.html`) |
-| 62 | 11.5 | 11 · Deep dive I: the fall of the Republic | Cicero through his letters | not written · batch 1 | Opus 5.5 | off | `vault/courses/rome/11.5-cicero-through-his-letters.md` (+ `kit/rome/r-11.5.html`) |
-| 63 | 11.6 | 11 · Deep dive I: the fall of the Republic | Caesar's Commentaries and Gaul | not written · batch 1 | Opus 5.5 | off | `vault/courses/rome/11.6-caesars-commentaries-and-gaul.md` (+ `kit/rome/r-11.6.html`) |
+| 60 | 11.3 | 11 · Deep dive I: the fall of the Republic | Politics in the street | not written · batch 1 | Opus 5.5 | off | `courses/rome/11.3-politics-in-the-street.md` (+ `kit/rome/r-11.3.html`) |
+| 61 | 11.4 | 11 · Deep dive I: the fall of the Republic | Women and the late Republic | not written · batch 1 | Opus 5.5 | off | `courses/rome/11.4-women-and-the-late-republic.md` (+ `kit/rome/r-11.4.html`) |
+| 62 | 11.5 | 11 · Deep dive I: the fall of the Republic | Cicero through his letters | not written · batch 1 | Opus 5.5 | off | `courses/rome/11.5-cicero-through-his-letters.md` (+ `kit/rome/r-11.5.html`) |
+| 63 | 11.6 | 11 · Deep dive I: the fall of the Republic | Caesar's Commentaries and Gaul | not written · batch 1 | Opus 5.5 | off | `courses/rome/11.6-caesars-commentaries-and-gaul.md` (+ `kit/rome/r-11.6.html`) |
 | ✓ | Review | Rome | Fable review of batch 1 (method.md §6) | after #63 | Fable 5.1 | off | `kit/audits/` |
-| 64 | 11.7 | 11 · Deep dive I: the fall of the Republic | The Ides of March | not written · batch 2 | Opus 5.5 | off | `vault/courses/rome/11.7-the-ides-of-march.md` (+ `kit/rome/r-11.7.html`) |
-| 65 | 11.8 | 11 · Deep dive I: the fall of the Republic | Why the Republic fell | not written · batch 2, last in unit 11 | Opus 5.5 | off | `vault/courses/rome/11.8-why-the-republic-fell.md` (+ `kit/rome/r-11.8.html`) |
-| 66 | 13.3 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The rival schools at Rome | not written · batch 2 | Opus 5.5 | off | `vault/courses/rome/13.3-the-rival-schools-at-rome.md` (+ `kit/rome/r-13.3.html`) |
-| 67 | 13.4 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Cato and the Stoic opposition | not written · batch 2 | Opus 5.5 | off | `vault/courses/rome/13.4-cato-and-the-stoic-opposition.md` (+ `kit/rome/r-13.4.html`) |
+| 64 | 11.7 | 11 · Deep dive I: the fall of the Republic | The Ides of March | not written · batch 2 | Opus 5.5 | off | `courses/rome/11.7-the-ides-of-march.md` (+ `kit/rome/r-11.7.html`) |
+| 65 | 11.8 | 11 · Deep dive I: the fall of the Republic | Why the Republic fell | not written · batch 2, last in unit 11 | Opus 5.5 | off | `courses/rome/11.8-why-the-republic-fell.md` (+ `kit/rome/r-11.8.html`) |
+| 66 | 13.3 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The rival schools at Rome | not written · batch 2 | Opus 5.5 | off | `courses/rome/13.3-the-rival-schools-at-rome.md` (+ `kit/rome/r-13.3.html`) |
+| 67 | 13.4 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Cato and the Stoic opposition | not written · batch 2 | Opus 5.5 | off | `courses/rome/13.4-cato-and-the-stoic-opposition.md` (+ `kit/rome/r-13.4.html`) |
 | ✓ | Review | Rome | Fable review of batch 2 | after #67 | Fable 5.1 | off | `kit/audits/` |
-| 68 | 13.5 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Seneca | not written · batch 3 | Opus 5.5 | off | `vault/courses/rome/13.5-seneca.md` (+ `kit/rome/r-13.5.html`) |
-| 69 | 13.6 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Musonius Rufus and Epictetus | not written · batch 3 | Opus 5.5 | off | `vault/courses/rome/13.6-musonius-rufus-and-epictetus.md` (+ `kit/rome/r-13.6.html`) |
-| 70 | 13.7 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Marcus Aurelius: a life | not written · batch 3 | Opus 5.5 | off | `vault/courses/rome/13.7-marcus-aurelius-a-life.md` (+ `kit/rome/r-13.7.html`) |
-| 71 | 13.8 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The Meditations and the afterlife of Roman Stoicism | not written · batch 3 | Opus 5.5 | off | `vault/courses/rome/13.8-the-meditations-and-the-afterlife-of-roman-stoicism.md` (+ `kit/rome/r-13.8.html`) |
+| 68 | 13.5 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Seneca | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.5-seneca.md` (+ `kit/rome/r-13.5.html`) |
+| 69 | 13.6 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Musonius Rufus and Epictetus | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.6-musonius-rufus-and-epictetus.md` (+ `kit/rome/r-13.6.html`) |
+| 70 | 13.7 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Marcus Aurelius: a life | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.7-marcus-aurelius-a-life.md` (+ `kit/rome/r-13.7.html`) |
+| 71 | 13.8 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The Meditations and the afterlife of Roman Stoicism | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.8-the-meditations-and-the-afterlife-of-roman-stoicism.md` (+ `kit/rome/r-13.8.html`) |
 | ✓ | Review | Rome | Fable review of batch 3 | after #71 | Fable 5.1 | off | `kit/audits/` |
-| 72 | 12.1 | 12 · Deep dive II: the Aeneid | Virgil and the making of the poem | not written · batch 4 | Opus 5.5 | off | `vault/courses/rome/12.1-virgil-and-the-making-of-the-poem.md` (+ `kit/rome/r-12.1.html`) |
-| 73 | 12.2 | 12 · Deep dive II: the Aeneid | Books 1 to 6: the Odyssean Aeneid | not written · batch 4 | Opus 5.5 | off | `vault/courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md` (+ `kit/rome/r-12.2.html`) |
-| 74 | 12.3 | 12 · Deep dive II: the Aeneid | Books 7 to 12: the Iliadic Aeneid | not written · batch 4 | Opus 5.5 | off | `vault/courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md` (+ `kit/rome/r-12.3.html`) |
-| 75 | 12.4 | 12 · Deep dive II: the Aeneid | Dido | not written · batch 4 | Opus 5.5 | off | `vault/courses/rome/12.4-dido.md` (+ `kit/rome/r-12.4.html`) |
+| 72 | 12.1 | 12 · Deep dive II: the Aeneid | Virgil and the making of the poem | not written · batch 4 | Opus 5.5 | off | `courses/rome/12.1-virgil-and-the-making-of-the-poem.md` (+ `kit/rome/r-12.1.html`) |
+| 73 | 12.2 | 12 · Deep dive II: the Aeneid | Books 1 to 6: the Odyssean Aeneid | not written · batch 4 | Opus 5.5 | off | `courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md` (+ `kit/rome/r-12.2.html`) |
+| 74 | 12.3 | 12 · Deep dive II: the Aeneid | Books 7 to 12: the Iliadic Aeneid | not written · batch 4 | Opus 5.5 | off | `courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md` (+ `kit/rome/r-12.3.html`) |
+| 75 | 12.4 | 12 · Deep dive II: the Aeneid | Dido | not written · batch 4 | Opus 5.5 | off | `courses/rome/12.4-dido.md` (+ `kit/rome/r-12.4.html`) |
 | ✓ | Review | Rome | Fable review of batch 4 | after #75 | Fable 5.1 | off | `kit/audits/` |
-| 76 | 12.5 | 12 · Deep dive II: the Aeneid | Book 6: the underworld and the parade of heroes | not written · batch 5 | Opus 5.5 | off | `vault/courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md` (+ `kit/rome/r-12.5.html`) |
-| 77 | 12.7 | 12 · Deep dive II: the Aeneid | Augustan or anti-Augustan? | not written · batch 5 | Opus 5.5 | off | `vault/courses/rome/12.7-augustan-or-anti-augustan.md` (+ `kit/rome/r-12.7.html`) |
-| 78 | 12.8 | 12 · Deep dive II: the Aeneid | The Aeneid after Rome | not written · batch 5 | Opus 5.5 | off | `vault/courses/rome/12.8-the-aeneid-after-rome.md` (+ `kit/rome/r-12.8.html`) |
-| 79 | 12.6 | 12 · Deep dive II: the Aeneid | The gods of the Aeneid | not written · batch 5, last (after 13.2) | Opus 5.5 | off | `vault/courses/rome/12.6-the-gods-of-the-aeneid.md` (+ `kit/rome/r-12.6.html`) |
+| 76 | 12.5 | 12 · Deep dive II: the Aeneid | Book 6: the underworld and the parade of heroes | not written · batch 5 | Opus 5.5 | off | `courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md` (+ `kit/rome/r-12.5.html`) |
+| 77 | 12.7 | 12 · Deep dive II: the Aeneid | Augustan or anti-Augustan? | not written · batch 5 | Opus 5.5 | off | `courses/rome/12.7-augustan-or-anti-augustan.md` (+ `kit/rome/r-12.7.html`) |
+| 78 | 12.8 | 12 · Deep dive II: the Aeneid | The Aeneid after Rome | not written · batch 5 | Opus 5.5 | off | `courses/rome/12.8-the-aeneid-after-rome.md` (+ `kit/rome/r-12.8.html`) |
+| 79 | 12.6 | 12 · Deep dive II: the Aeneid | The gods of the Aeneid | not written · batch 5, last (after 13.2) | Opus 5.5 | off | `courses/rome/12.6-the-gods-of-the-aeneid.md` (+ `kit/rome/r-12.6.html`) |
 | ✓ | Review | Rome | Fable review of batch 5; then 14.2 to 14.5 rerun over the 20 new reports as the course audit | after #79 | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 14.1 | 14 · Quality audit | Calibrate the rubric for Rome | run 27 Oct 2026 (calibrated on 0.1 and 1.4) | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 14.2 | 14 · Quality audit | Audit one report | run on a sample of 12 and the capstone; reruns on the 20 new reports when Rome is complete | Fable 5.1 | off | `kit/audits/` |

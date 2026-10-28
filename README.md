@@ -9,7 +9,10 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 | `kit/` | The Personal Mythology kit: the site builder (`build.py`), checks, both courses' reports, syllabi, audits, bibliographies, changelog. `kit/README.md` is its own guide. |
 | `design/theme.css` | The one stylesheet for every page in the Project. `design/README.md` says how to change it and propagate the change. |
 | `docs/` | The method layer: `method.md`, `courses-index.md`, `BACKLOG.md` (the queue of chats: start here), `CHANGELOG.md` (chats done), `academy.md` (the one-artifact plan), `sourcing-standard.md`, `reader.md`, `project-instructions.md`, the status notes. The claude.ai Project "Learning" holds mirrors of these; this repo is canonical. |
-| `generator/data/brand-ai/` | The Brand + AI hub content (`units_data.py`, `hub.py`, the unit and research files). |
+| `generator/` | The hub generator: `build_hub.py` (renders `data/<slug>/hub.py` on `design/theme.css`), `build_history.py` (the history site from `kit/`), `check_page.py` (400 px, dark and light, 44 px targets, no overflow, no console error), `hub.js`, `data/_template/` for a new hub, `data/brand-ai/` (the Brand + AI content: `hub.py`, `units_data.py`, `units/`, `research/`, `briefs/`), `hubs/` (built pages). |
+| `skills/` | The four account skills (`write-unit`, `audit-units`, `file-unit`, `new-course`); install per `SETUP.md` §3. |
+| `SETUP.md` | How the Project, knowledge, skills and vault are set up and kept current. |
+| `audits/` | Audit reports that are not kit files (Brand + AI Audit 1). |
 | `courses/` | The vault: finished units filed at `courses/<course>/<code>-<slug>.md` (`docs/method.md` §7). |
 
 ## Working in a chat
@@ -27,4 +30,4 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 
 ## Where this is going (28 October 2026)
 
-One artifact, Academy, holds every course (`docs/academy.md`): the Personal Mythology site's `build.py` grows to render Markdown courses too, the page splits into a shell plus fetched report files, and the standalone Brand + AI hub is absorbed. `generator/build_hub.py` was never written and will not be; `generator/data/brand-ai/hub.py` is content to port in A3. The kit's `shell.css` is still the pre-theme copy until S1 runs.
+One artifact, Academy, holds every course (`docs/academy.md`): the Personal Mythology site's `build.py` grows to render Markdown courses too, the page splits into a shell plus fetched report files, and the standalone Brand + AI hub is absorbed. Until A3 lands, the Brand + AI hub is built with `cd generator && python3 build_hub.py data/brand-ai && python3 check_page.py hubs/brand-and-ai-courses.html` and republished to its artifact.

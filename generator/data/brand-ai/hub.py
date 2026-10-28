@@ -16,7 +16,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v6.3 · 28 Oct 2026'
+VERSION = 'v6.4 · 28 Oct 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -57,20 +57,23 @@ READINGS = [
     dict(id='read-a6', md='units/A6-how-growth-works-per-platform.md', course='A',
          title='How growth works, per platform', covers=['A6'], name='A6 · Growth per platform',
          intro="Unit A6, rewritten 28 Oct 2026 by Opus 5.5 in its own chat, search on; fresh check the same day (Fable 5.1): fix, 1 error, 9 should-fix, 7 minor, all applied. Deliverables: the per-platform playbook (each rule names its evidence; his own conventions marked) and the metrics sheet read once a quarter on A9's checkpoint dates. Unverified: Studio and Instagram menu locations. Staleness check due 28 Apr 2027."),
+    dict(id='read-b2', md='units/B2-choosing-the-model.md', course='B',
+         title='Choosing the model', covers=['B2'], name='B2 · Choosing the model',
+         intro="Unit B2, written 28 Oct 2026 by Opus 5.5 in its own chat, search on (lineup, prices, plan rules and benchmarks dated that day; staleness check due 28 Apr 2027); fresh check the same day (Fable 5.1): fix, 3 errors, 10 should-fix, 14 minor. Deliverable: the model-routing table for his recurring tasks, with effort, the evidence behind each pick and an override trigger per row. Known gaps, from the writer's unsure list: Artificial Analysis's per-task costs differ between its leaderboard and model pages; the per-model rate at which claude.ai usage is drawn is undocumented; the Shōmen token counts are assumptions; whether self-preference bias carries between sibling models is untested."),
     dict(id='read-b1', md='units/B1-mental-model.md', course='B',
          title='Mental model', covers=['B1'], name='B1 · Mental model',
          intro="Unit B1, written 28 Oct 2026 by Opus 5.5 in its own chat, with live search (Anthropic product facts checked and dated that day; staleness check due 28 Apr 2027). Seven sections in the brief's order, then the deliverable: the five-minute model of how Claude works, as plain prose. Known gaps, from the writer's unsure list: the 200K claude.ai window is taken from an undated help article; the 2.7 characters-per-token figure is arithmetic on Anthropic's glossary, not a measurement; the skill-description cost uses Anthropic's per-skill average; whether claude.ai usage reflects prompt caching, and how much memory a new chat receives, are undocumented; the nondeterminism study was run on Qwen, not Claude."),
 ]
-WRITTEN = {'A2': 'read-a2', 'A6': 'read-a6', 'A9': 'read-a9', 'B1': 'read-b1'}
+WRITTEN = {'A2': 'read-a2', 'A6': 'read-a6', 'A9': 'read-a9', 'B1': 'read-b1', 'B2': 'read-b2'}
 
 # ---- build order -----------------------------------------------------------------------
 DONE_ROWS = [('—', 'A2 · A6 · A9', 'Audience growth research → rewritten as three units after Audit 1', 'research: Fable 5.1 agents; units: Opus 5.5, fresh-checked by Fable 5.1', 'on', 'rewritten 28 Oct')]
 ORDER = [("B1", "Opus 5.5", "off"), ("B2", "Opus 5.5", "on"), ("B3", "Opus 5.5", "off"), ("B4", "Opus 5.5", "off"), ("A1", "Opus 5.5", "off"), ("A3", "Opus 5.5", "off"), ("B5", "Opus 5.5", "off"), ("A4", "Opus 5.5", "off"), ("A5", "Opus 5.5", "off"), ("B7", "Opus 5.5", "off"), ("A7", "Opus 5.5", "off"), ("A8", "Opus 5.5", "on"), ("B6", "Opus 5.5", "off"), ("B8", "Opus 5.5", "on"), ("DD-A1", "Opus 5.5", "on"), ("DD-B1", "Opus 5.5", "off"), ("DD-A2", "Opus 5.5", "off"), ("DD-B2", "Fable 5.1", "off")]
-STATUS = {'B1': 'written 28 Oct', 'A9': 'rewritten 28 Oct', 'A2': 'rewritten 28 Oct', 'A6': 'rewritten 28 Oct'}   # unit code -> status text in the build-order table once filed
+STATUS = {'B1': 'written 28 Oct', 'A9': 'rewritten 28 Oct', 'A2': 'rewritten 28 Oct', 'A6': 'rewritten 28 Oct', 'B2': 'written 28 Oct'}   # unit code -> status text in the build-order table once filed
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
 FINAL_AUDIT = ('Audit 6', 'Final audit of DD-B2 plus a full read of both courses against their goals', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'B2', 1, 'after four more units (Audit 2 after A1)'
+NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'B3', 1, 'after three more units (Audit 2 after B3, B4, A1)'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_LEDE = "Two courses for one reader, written one unit at a time. <strong>Learn</strong> is where the finished units are read. <strong>Build</strong> is where they get made: method, briefs, audits, sources, history."
@@ -192,6 +195,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-10-28 08:20', "v6.4. B2 Choosing the model written (Opus 5.5, own chat, search on), fresh-checked by Fable 5.1 (fix, 3 errors, 10 should-fix, 14 minor; every finding applied) and filed: reading page under Learn, B2 marked written, counters moved. Next: B3. The hub now lives in the learning-project repository (NEXT-SESSION.md)."),
     ('2026-10-28 07:30', "v6.3. A9, A2 and A6 rewritten from their briefs (Opus 5.5, one chat each, search on) and fresh-checked by Fable 5.1 in separate chats (A9: 2 errors, 15 should-fix, 8 minor; A2: 3/13/11; A6: 1/9/7; every finding applied as an exact replacement). Each gets its own reading page under Learn; the 27 Oct research page stays as the superseded record. A2 flags A3's 2–3 Shorts per episode as above AIR's crowding line; one Short per episode is the allocation. Audit gate cleared; B2 next."),
     ('2026-10-28 07:05', "v6.2. Audit 1 logged (Fable 5.1): B1 PASS; A2·A6·A9 full audit, 23 of 91 claims failed, REWRITE for the missing deliverables. Rewrites of A9, A2 and A6 started, A9 first; fresh checker added for every later unit."),
     ('2026-10-28 05:55', "v6.1. B1 Mental model written (Opus 5.5, own chat in the Learning Project, search on) and filed: reading page under Learn, B1 marked written, counters moved. Four units are now written, so Audit 1 (Fable 5.1) is due before B2."),
