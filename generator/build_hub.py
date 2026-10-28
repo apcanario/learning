@@ -156,15 +156,18 @@ def build(data_dir):
                    + D['LEARNING_NOTE'] + f'<section class="howto" style="--hc:{BC}"><h2>Build pages</h2><div class="hrows">{rows}</div></section>'
                    + D['BUILD_PICK'] + D['BUILD_BODY']))
 
-    trs, n = [], written
+    # numbering continues the written count: ORDER rows already written are inside `written`, so the first
+    # ORDER row is numbered written - (written rows in ORDER) + 1, and audit rows fall every `every` units from the start
+    start = written - sum(1 for c, _, _ in D['ORDER'] if c in D.get('STATUS', {}))
+    trs, n = [], start
     for d in D['DONE_ROWS']:
         trs.append('<tr class="done">' + ''.join(f'<td>{x}</td>' for x in d) + '</tr>')
-    for code, model, search in D['ORDER']:
+    for i, (code, model, search) in enumerate(D['ORDER']):
         n += 1
         col = course_of[code]['color']
         st = D.get('STATUS', {}).get(code, '')
         trs.append(f'<tr{" class=\"done\"" if st else ""}><td>{n}</td><td class="code" style="--c:{col}">{code}</td><td>{e(titles[code])}</td><td>{model}</td><td>{search}</td><td>{e(st)}</td></tr>')
-        if n % every == 0:
+        if n % every == 0 and i < len(D['ORDER']) - 1:   # the last unit's audit is FINAL_AUDIT
             a = D['AUDIT_ROW']
             trs.append(f'<tr class="audit"><td>✓</td><td class="code">Audit {n // every}</td><td>{a[0]}</td><td>{a[1]}</td><td>{a[2]}</td><td>{a[3]}</td></tr>')
     f = D['FINAL_AUDIT']
@@ -173,7 +176,7 @@ def build(data_dir):
              + ''.join(trs) + '</tbody></table></div></div>')
     P.append(panel('order', f'{bar} · BUILD', 'Build order', BC,
                    hero(eyebrow(('BUILD', BC), ('BUILD ORDER', None)), 'Building order, with models', D['ORDER_LEDE'])
-                   + D['ORDER_NOTES'] + table + f'<p class="hnote">{D["ORDER_FOOT"].format(start=written + 1)}</p>'))
+                   + D['ORDER_NOTES'] + table + f'<p class="hnote">{D["ORDER_FOOT"].format(start=start + 1)}</p>'))
 
     for c in C:
         P.append(panel(f'briefs-{c["k"]}', f'{bar} · BUILD', f'Briefs {c["key"]}', BC,

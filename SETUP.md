@@ -48,7 +48,7 @@ In the vault repository, create `courses/brand-ai/`, `courses/rome/` and `course
 
 ## 6. Writing a unit
 One new chat per unit, model **Opus 5.5** (the build order names any exception).
-- **Brand + AI:** paste the unit's brief from the hub's Build · Briefs page (the Copy brief button). Turn web search on if the unit's search flag is on (`courses-index.md`; currently B2, A8, B8, DD-A1). Attach nothing else. The `write-unit` skill runs.
+- **Brand + AI:** paste the unit's brief from the hub's Build · Briefs page (the Copy brief button). Turn web search on if the unit's search flag is on (`courses-index.md`; currently B2, A8, B8, DD-A1, DD-B3). Attach nothing else. The `write-unit` skill runs.
 - **Personal Mythology:** attach `personal-mythology-kit.zip` (or, at least, the reports named in the module's lane note and the quality-bar reports `greece/r-4.2.html`, `r-6.3.html`, `r-8.1.html`). Paste the module's prompt from the syllabus and its lane note from `BACKLOG.md`. Search stays off except to verify a doubtful point.
 
 The chat ends by sending the unit file(s). It does not file them.

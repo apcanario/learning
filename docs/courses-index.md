@@ -1,6 +1,6 @@
 # Courses index
 
-Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 28 October 2026 (Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md` and `academy.md`, and A1 done: the site is Academy; Brand + AI v6.4, B2 filed). Update a row whenever a unit is filed or audited (method.md §7).
+Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 28 October 2026 (Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md` and `academy.md`, and A1 done: the site is Academy; Brand + AI v6.8, B2 filed, DD-B3 added). Update a row whenever a unit is filed or audited (method.md §7).
 
 Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Personal Mythology kit; `vault/` is `courses/`; `gen/` is `generator/`. Units not yet written show the vault path they will be filed at.
 
@@ -10,7 +10,7 @@ Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Pers
 |---|---|---|---|
 | Academy | The one site: the Academy home listing every course; Greece and Rome in full (syllabi, every report, changelog); Brand + AI as a placeholder course panel linking its written units to the Brand + AI hub until A3; the eight history courses to come | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (version 44, 28 Oct) · GitHub Pages: https://apcanario.github.io/academy/ (`kit/deploy.sh` through the public repo `apcanario/academy`) | kit `build.py` from `kit/courses.py` (`family` history or markdown), `shell.css` = `design/theme.css`; A1 of `academy.md` done 28 Oct; A3 folds the Brand + AI hub in, A2 splits the page into fetched files |
 
-Until A3: the Brand + AI units are read on the Brand + AI hub, https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT (`gen/build_hub.py data/brand-ai` → `gen/hubs/brand-and-ai-courses.html`, v6.4), and the Audience Growth research page, https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw, stands as its reading page for the superseded A2 · A6 · A9 research. Both are deleted at A3 (`academy.md`).
+Until A3: the Brand + AI units are read on the Brand + AI hub, https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT (`gen/build_hub.py data/brand-ai` → `gen/hubs/brand-and-ai-courses.html`, v6.8), and the Audience Growth research page, https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw, stands as its reading page for the superseded A2 · A6 · A9 research. Both are deleted at A3 (`academy.md`).
 
 Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Syllabus artifacts, and the three stray draft pages (r-3.2, r-3.3, r-11.6). The site's `#syllabus` and `#rome-syllabus` panels are the only published syllabi; `kit/greek-syllabus.html` and `kit/roman-syllabus.html` remain as build inputs.
 
@@ -33,7 +33,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 
 ## Brand + AI
 
-Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 2 deep dives). 4 of 21 written. Briefs: the hub's Build · Briefs pages (`gen/data/brand-ai/units_data.py`). Build order: the hub's Build order page.
+Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 3 deep dives; DD-B3 added 28 Oct 2026). 5 of 22 written. Briefs: the hub's Build · Briefs pages (`gen/data/brand-ai/units_data.py`). Build order: the hub's Build order page.
 
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
@@ -45,23 +45,24 @@ Two courses for one reader. **A · Building a Marketable Personal Brand** (9 cor
 | 7 | B4 | B | Context engineering | not written | Opus 5.5 | off | `courses/brand-ai/B4-context-engineering.md` |
 | 8 | A1 | A | Positioning: the journey as a format | not written | Opus 5.5 | off | `courses/brand-ai/A1-positioning-the-journey-as-a-format.md` |
 | ✓ | Audit 2 | A+B | Stratified-sample audit of the last four units | due after #8 | Fable 5.1 | on | hub Audits page |
-| 9 | A3 | A | The journey system | not written | Opus 5.5 | off | `courses/brand-ai/A3-the-journey-system.md` |
-| 10 | B5 | B | Skills and automation | not written | Opus 5.5 | off | `courses/brand-ai/B5-skills-and-automation.md` |
-| 11 | A4 | A | Voice, disclosure and the record | not written | Opus 5.5 | off | `courses/brand-ai/A4-voice-disclosure-and-the-record.md` |
-| 12 | A5 | A | Production craft | not written | Opus 5.5 | off | `courses/brand-ai/A5-production-craft.md` |
+| 9 | DD-B3 | B | Deep dive: how the best practitioners use the tool | not written (added 28 Oct 2026) | Opus 5.5 | on | `courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md` |
+| 10 | A3 | A | The journey system | not written | Opus 5.5 | off | `courses/brand-ai/A3-the-journey-system.md` |
+| 11 | B5 | B | Skills and automation | not written | Opus 5.5 | off | `courses/brand-ai/B5-skills-and-automation.md` |
+| 12 | A4 | A | Voice, disclosure and the record | not written | Opus 5.5 | off | `courses/brand-ai/A4-voice-disclosure-and-the-record.md` |
 | ✓ | Audit 3 | A+B | Stratified-sample audit of the last four units | due after #12 | Fable 5.1 | on | hub Audits page |
-| 13 | B7 | B | Content pipeline | not written | Opus 5.5 | off | `courses/brand-ai/B7-content-pipeline.md` |
-| 14 | A7 | A | Monetisation through Shōmen | not written | Opus 5.5 | off | `courses/brand-ai/A7-monetisation-through-shomen.md` |
-| 15 | A8 | A | Legal, tax, time | not written | Opus 5.5 | on | `courses/brand-ai/A8-legal-tax-time.md` |
-| 16 | B6 | B | Research and verification | not written | Opus 5.5 | off | `courses/brand-ai/B6-research-and-verification.md` |
+| 13 | A5 | A | Production craft | not written | Opus 5.5 | off | `courses/brand-ai/A5-production-craft.md` |
+| 14 | B7 | B | Content pipeline | not written | Opus 5.5 | off | `courses/brand-ai/B7-content-pipeline.md` |
+| 15 | A7 | A | Monetisation through Shōmen | not written | Opus 5.5 | off | `courses/brand-ai/A7-monetisation-through-shomen.md` |
+| 16 | A8 | A | Legal, tax, time | not written | Opus 5.5 | on | `courses/brand-ai/A8-legal-tax-time.md` |
 | ✓ | Audit 4 | A+B | Stratified-sample audit of the last four units | due after #16 | Fable 5.1 | on | hub Audits page |
-| 17 | B8 | B | Cost, limits, hygiene | not written | Opus 5.5 | on | `courses/brand-ai/B8-cost-limits-hygiene.md` |
-| 18 | DD-A1 | A | Deep dive: five creators who did this | not written | Opus 5.5 | on | `courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md` |
-| 19 | DD-B1 | B | Deep dive: agents | not written | Opus 5.5 | off | `courses/brand-ai/DD-B1-deep-dive-agents.md` |
-| 20 | DD-A2 | A | Deep dive: the exit math | not written | Opus 5.5 | off | `courses/brand-ai/DD-A2-deep-dive-the-exit-math.md` |
+| 17 | B6 | B | Research and verification | not written | Opus 5.5 | off | `courses/brand-ai/B6-research-and-verification.md` |
+| 18 | B8 | B | Cost, limits, hygiene | not written | Opus 5.5 | on | `courses/brand-ai/B8-cost-limits-hygiene.md` |
+| 19 | DD-A1 | A | Deep dive: five creators who did this | not written | Opus 5.5 | on | `courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md` |
+| 20 | DD-B1 | B | Deep dive: agents | not written | Opus 5.5 | off | `courses/brand-ai/DD-B1-deep-dive-agents.md` |
 | ✓ | Audit 5 | A+B | Stratified-sample audit of the last four units | due after #20 | Fable 5.1 | on | hub Audits page |
-| 21 | DD-B2 | B | Deep dive: his unknown unknowns | not written | Fable 5.1 | off | `courses/brand-ai/DD-B2-deep-dive-his-unknown-unknowns.md` |
-| ✓ | Audit 6 | A+B | Final audit of DD-B2 plus a full read of both courses against their goals | after #21 | Fable 5.1 | on | hub Audits page |
+| 21 | DD-A2 | A | Deep dive: the exit math | not written | Opus 5.5 | off | `courses/brand-ai/DD-A2-deep-dive-the-exit-math.md` |
+| 22 | DD-B2 | B | Deep dive: his unknown unknowns | not written | Fable 5.1 | off | `courses/brand-ai/DD-B2-deep-dive-his-unknown-unknowns.md` |
+| ✓ | Audit 6 | A+B | Final audit of DD-B2 plus a full read of both courses against their goals | after #22 | Fable 5.1 | on | hub Audits page |
 
 ## Personal Mythology
 

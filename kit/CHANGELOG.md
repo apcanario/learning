@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **DD-B3 (session 17):** course B is 8 core units and 3 deep dives; Academy shows B 2 of 11. Site version 49.
 - **Navigable (session 16):** breadcrumbs on every page, Start or Continue on every course page; course B is Using AI to Build a Brand. Site version 47.
 - **Catalogue (session 15):** the home lists every course under its track (History, Marketing, Technology); Brand + AI is two Academy courses, A and B. Site version 46.
 - **Responsive (session 14):** `design/theme.css` version 2 adds section 6: tablet from 768 px (760 px column, cards in two columns), desktop from 1100 px (the drawer is a persistent 300 px sidebar). The phone layout is unchanged. `verify.py` runs a phone, tablet and desktop pass. Publishing Academy means the artifact, then `./deploy.sh`.
@@ -35,6 +36,14 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 14. Tablet and desktop layouts (P11), Pages in every publish (P8), the deploy script ready for the split (P10) | 78 | 59 |
 | 28 Oct | 15. The home becomes a catalogue by track (A0) | 78 | 59 |
 | 28 Oct | 16. Navigable by others: breadcrumbs, start buttons, course B renamed | 78 | 59 |
+| 28 Oct | 17. Course B gains DD-B3; Academy counts rebuilt | 78 | 59 |
+
+## 28 October 2026 · Session 17 · Course B gains DD-B3; Academy counts rebuilt
+
+Pedro's request: a deep dive on Karpathy's documented practice and the other verifiable methods of using AI as a tool. Added to course B as DD-B3 in `generator/data/brand-ai/units_data.py` (hub v6.8), placed after A1 in the build order. Academy rebuilt from the same data file: course B is 2 of 11 units written; nothing else on the site changed, no report touched. `build_hub.py` now numbers the hub's build-order rows as `docs/courses-index.md` does and drops the duplicate sample-audit row beside the final audit.
+
+### Published
+Version 49 of the site to the Academy artifact; the hub as v6.8. The Pages push (`deploy.sh`) was refused by the session's deploy guard and is left to run by hand.
 
 ## 28 October 2026 · Session 16 · Navigable by others: breadcrumbs, start buttons, course B renamed
 

@@ -16,7 +16,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v6.7 · 28 Oct 2026'
+VERSION = 'v6.8 · 28 Oct 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -37,8 +37,8 @@ COURSES = [
          outcomes="<li><strong>Outcome 1</strong> — a positioning a stranger can repeat, tested against five sourced comparables (A1, DD-A1).</li><li><strong>Outcome 2</strong> — a publishing system that holds bi-weekly for twelve months inside the hour budget (A3, A5, A8).</li><li><strong>Outcome 3</strong> — a metrics sheet and benchmark table he reads quarterly to decide continue / change format / stop (A6, A9, A7, DD-A2).</li>"),
     dict(key='B', name=NAME_B, color='var(--purple)', units=B, goal=GOAL_B, slug='ai',
          tile="Which model for which task, how to brief, where the setup leaks, and what he doesn't know he's doing badly.",
-         intro="Not how LLMs work. Which model for which of his tasks, how to brief so he stops re-explaining, where the project setup leaks, and what he does not know he is doing badly. Eight core units and two deep dives.",
-         outcomes="<li><strong>Outcome 1</strong> — a model-routing table for every recurring task, with cost and effort (B1, B2).</li><li><strong>Outcome 2</strong> — a prompt library and a project structure that produce usable first outputs (B3, B4, B5).</li><li><strong>Outcome 3</strong> — a verification protocol and a content pipeline, both run on real work before the course ends (B6, B7, B8, DD-B1).</li>"),
+         intro="Not how LLMs work. Which model for which of his tasks, how to brief so he stops re-explaining, where the project setup leaks, and what he does not know he is doing badly. Eight core units and three deep dives.",
+         outcomes="<li><strong>Outcome 1</strong> — a model-routing table for every recurring task, with cost and effort (B1, B2).</li><li><strong>Outcome 2</strong> — a prompt library and a project structure that produce usable first outputs (B3, B4, B5, DD-B3).</li><li><strong>Outcome 3</strong> — a verification protocol and a content pipeline, both run on real work before the course ends (B6, B7, B8, DD-B1).</li>"),
 ]
 COURSE_NOTE = "Not content for its own sake: every unit is sourced to peer-reviewed, platform-official or large-sample data, labels anecdote and vendor data as such, and ends with a shipped deliverable."
 
@@ -68,7 +68,7 @@ WRITTEN = {'A2': 'read-a2', 'A6': 'read-a6', 'A9': 'read-a9', 'B1': 'read-b1', '
 
 # ---- build order -----------------------------------------------------------------------
 DONE_ROWS = [('—', 'A2 · A6 · A9', 'Audience growth research → rewritten as three units after Audit 1', 'research: Fable 5.1 agents; units: Opus 5.5, fresh-checked by Fable 5.1', 'on', 'rewritten 28 Oct')]
-ORDER = [("B1", "Opus 5.5", "off"), ("B2", "Opus 5.5", "on"), ("B3", "Opus 5.5", "off"), ("B4", "Opus 5.5", "off"), ("A1", "Opus 5.5", "off"), ("A3", "Opus 5.5", "off"), ("B5", "Opus 5.5", "off"), ("A4", "Opus 5.5", "off"), ("A5", "Opus 5.5", "off"), ("B7", "Opus 5.5", "off"), ("A7", "Opus 5.5", "off"), ("A8", "Opus 5.5", "on"), ("B6", "Opus 5.5", "off"), ("B8", "Opus 5.5", "on"), ("DD-A1", "Opus 5.5", "on"), ("DD-B1", "Opus 5.5", "off"), ("DD-A2", "Opus 5.5", "off"), ("DD-B2", "Fable 5.1", "off")]
+ORDER = [("B1", "Opus 5.5", "off"), ("B2", "Opus 5.5", "on"), ("B3", "Opus 5.5", "off"), ("B4", "Opus 5.5", "off"), ("A1", "Opus 5.5", "off"), ("DD-B3", "Opus 5.5", "on"), ("A3", "Opus 5.5", "off"), ("B5", "Opus 5.5", "off"), ("A4", "Opus 5.5", "off"), ("A5", "Opus 5.5", "off"), ("B7", "Opus 5.5", "off"), ("A7", "Opus 5.5", "off"), ("A8", "Opus 5.5", "on"), ("B6", "Opus 5.5", "off"), ("B8", "Opus 5.5", "on"), ("DD-A1", "Opus 5.5", "on"), ("DD-B1", "Opus 5.5", "off"), ("DD-A2", "Opus 5.5", "off"), ("DD-B2", "Fable 5.1", "off")]
 STATUS = {'B1': 'written 28 Oct', 'A9': 'rewritten 28 Oct', 'A2': 'rewritten 28 Oct', 'A6': 'rewritten 28 Oct', 'B2': 'written 28 Oct'}   # unit code -> status text in the build-order table once filed
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
@@ -98,7 +98,7 @@ FRAME = """<h2 class="hsec">Frame</h2>
 </ul></div>"""
 
 LEARN_LEDE = "Read here. Everything about how the units get written lives in Build."
-LEARN_NOTE = "Order of writing: B1–B4 first, then A1, A3, A4, A5, A7, A8 with B5–B8 interleaved (B5 beside A3, B7 beside A5), then the four deep dives; DD-A2 and DD-B2 last. The history course keeps its own slot."
+LEARN_NOTE = "Order of writing: B1–B4 first, then A1, DD-B3, A3, A4, A5, A7, A8 with B5–B8 interleaved (B5 beside A3, B7 beside A5), then the four deep dives; DD-A2 and DD-B2 last. The history course keeps its own slot."
 
 LEARNING_NOTE = """<section class="howto edge" style="--hc:var(--blue)"><h2>Now in the Learning Project</h2>
   <p>Since v6 this hub lives in the Learning Project with the history course. Where the procedure below and the Project's <code>method.md</code> differ, <code>method.md</code> governs: the Project, the vault path, the audit cadence and the review model are set there. The text below is kept as the v5.1 record.</p>
@@ -116,7 +116,7 @@ BUILD_BODY = """<div class="report">
     <li>Make a Project ("Courses — Brand &amp; AI"). Add to its knowledge: this page, the research report, the five notes files. Project instructions, three lines: who the reader is; this page holds every brief; each unit is written in full, not described.</li>
     <li>One chat per unit. Copy the unit's brief from its Briefs page, paste it into a new chat in that Project. Never reuse a chat across units; leaked context is how a course starts repeating itself.</li>
     <li>Save the output to the vault as <code>courses/brand-ai/&lt;code&gt;-&lt;slug&gt;.md</code> (e.g. <code>B1-mental-model.md</code>), same shape as the history course. Hand it to the assistant: it commits, adds the unit to Learn, moves the counters, adds a changelog line.</li>
-    <li>Units that need live facts (A8, B2, B8, DD-A1) are written with web search on; the briefs say so. Everything else without.</li>
+    <li>Units that need live facts (A8, B2, B8, DD-A1, DD-B3) are written with web search on; the briefs say so. Everything else without.</li>
     <li>After every fourth unit, run the audit prompt from the Audits page. The first fires after B1.</li>
   </ol>
   <h2>Models</h2>
@@ -128,13 +128,13 @@ BUILD_BODY = """<div class="report">
   </ul>
 </div>
 <section class="howto edge" style="--hc:var(--gold)"><h2>Review rule</h2>
-  <p>After every four written units, across both courses, Fable 5.1 audits by stratified sample: one claim per section per unit, checked against its source; more than one in ten fails → full audit of that unit. Units written with live search (A2, A6, A9, A8, B2, B8) are re-checked for staleness six months after writing.</p>
+  <p>After every four written units, across both courses, Fable 5.1 audits by stratified sample: one claim per section per unit, checked against its source; more than one in ten fails → full audit of that unit. Units written with live search (A2, A6, A9, A8, B2, B8, DD-B3) are re-checked for staleness six months after writing.</p>
   <p class="warn">Audit 1 ran 28 Oct: B1 PASS; A2·A6·A9 REWRITE. The three were rewritten the same day from their briefs, each fresh-checked by Fable 5.1 (A9 2 errors, A2 3, A6 1; all fixed). B2 is next; every unit gets a fresh checker.</p>
 </section>"""
 
-ORDER_LEDE = "Eighteen units remain. One row per unit in writing order; an audit row every fourth written unit. Opus 5.5 writes; Fable 5.1 audits and writes the last deep dive, which needs the chat history. \"Search\" means the unit is written with web search on because its facts are current."
+ORDER_LEDE = "Seventeen units remain. One row per unit in writing order; an audit row every fourth written unit. Opus 5.5 writes; Fable 5.1 audits and writes the last deep dive, which needs the chat history. \"Search\" means the unit is written with web search on because its facts are current."
 ORDER_NOTES = """<div class="report"><ul>
-  <li><strong>Why this order:</strong> B1–B4 first so every later brief is cheaper; A1 and A3 next because the Athens edit and the half-marathon season need the positioning and the journey system now; B5 beside A3 and B7 beside A5 because they build the same pipeline; A7, A8, B6, B8 once there is a channel to measure; deep dives last, DD-B2 last of all.</li>
+  <li><strong>Why this order:</strong> B1–B4 first so every later brief is cheaper; A1 and A3 next because the Athens edit and the half-marathon season need the positioning and the journey system now; DD-B3 between them (added 28 Oct 2026) so B5, B7 and DD-B1 inherit the practitioners' methods it verifies; B5 beside A3 and B7 beside A5 because they build the same pipeline; A7, A8, B6, B8 once there is a channel to measure; deep dives last, DD-B2 last of all.</li>
   <li><strong>Cadence:</strong> one unit per 3–4 days is the sustainable rate alongside the half-marathon block; that is 10–11 weeks to the end, with audits adding an evening each.</li>
   <li><strong>Audit gate:</strong> no new unit starts while an audit verdict is REWRITE on an earlier one.</li>
 </ul></div>"""
@@ -195,6 +195,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-10-28 11:10', "v6.8. DD-B3 Deep dive: how the best practitioners use the tool added to course B (units_data.py), search on: Karpathy's documented practice 2025–26 from his own posts, talks and repositories, and the other methods with a named author and a primary source (Anthropic, OpenAI, Willison, Mollick, spec-driven workflows, the chain-of-thought literature), each graded by evidence and tested for transfer from code to his work; deliverable: method cards and ten operating rules. Placed after A1 in the build order so B5, B7 and DD-B1 inherit it; Audit 2 still after B3, B4, A1. Course B is now 8 core units and 3 deep dives; 22 units, 17 remain. Build-order fix in build_hub.py: rows are numbered as courses-index.md numbers them (B1 is 4, Audit 1 after it, Audit 2 after A1), and the last unit no longer gets a sample-audit row beside the final audit. No written unit changed."),
     ('2026-10-28 10:30', "v6.7. Course B renamed Using AI to Build a Brand (hub.py NAME_B, the filed B units' front matter). Units unchanged."),
     ('2026-10-28 10:10', "v6.6. Home title is the hub's name (Brand + AI: two courses); Academy now lists course A under its Marketing track and course B under Technology, each linking here. No unit changed."),
     ('2026-10-28 09:30', "v6.5. Rebuilt on theme v2 (design/theme.css section 6, responsive): tablet from 768 px widens the column to 760 px and puts course cards in two columns; desktop from 1100 px turns the drawer into a persistent 300 px sidebar with the current page highlighted, no backdrop and no menu button. The phone layout is unchanged. check_page.py now runs a phone, tablet and desktop pass with the 6 px gap and 44 px target checks. No unit changed."),

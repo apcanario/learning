@@ -28,6 +28,7 @@ Order decided 28 October 2026 (`academy.md` AD4, reworked after the Brand + AI h
 | B-2 | B4 · Context engineering (search off) | same | Same procedure. |
 | B-3 | A1 · Positioning (search off) | same | Same procedure. |
 | B-4 | Audit 2 over B2, B3, B4, A1 | Fable 5.1, search on | `skills/audit-units`, `method.md` §6 prompt verbatim; log in `hub.py` AUDIT_LOG (or Academy's audit log after A3) and `docs/courses-index.md`; no new unit while a REWRITE is open. |
+| B-5 | DD-B3 · Deep dive: how the best practitioners use the tool (search on) | Opus 5.5 write · Fable 5.1 fresh check | Added 28 Oct 2026 (Pedro's request: Karpathy's documented practice and the other verifiable methods of using AI as a tool). Same procedure as B-1: paste the DD-B3 brief from the hub's Build · Briefs page, web search on; fresh check; file. Then A3, B5 and the rest in the hub's build order. |
 
 Dropped 28 October 2026: S2 (`generator/build_hub.py` exists; A3 absorbs it).
 
@@ -38,6 +39,8 @@ Dropped 28 October 2026: S2 (`generator/build_hub.py` exists; A3 absorbs it).
 | P1 | Delete the "Knowledge transfer" artifact (https://claude.ai/artifact/Tgy4URAP8HTf4tPK7GZwfJ) | Its files are in the repo; its own text says delete after use. Pedro held it on 28 Oct: the Brand + AI pipeline still uses it to move files into Project knowledge (handoff, Automation notes) | After A3, or when knowledge uploads come from the repo |
 | P3 | File the three fresh-check reports of A2, A6, A9 (28 Oct 2026, Fable 5.1) into `audits/brand-ai/` | They exist only in their chats; the hub summarises them (A9 2/15/8, A2 3/13/11, A6 1/9/7) | Any chat that can read those chats, or paste them in |
 | P12 | Desktop and tablet screenshots of each new page in `file-unit` and `new-course` (`verify.py --shots`, `check_page.py --shots`) as a filing step, so a new unit or hub is looked at once at the three widths | P11 made the checks automatic; the look is still only checked by eye when someone runs `--shots`, and the two skills do not say to | After A3 (the skills are rewritten there) |
+| P14 | Decide whether a course may carry three deep dives: `hub.py` TEMPLATE_BLOCKS ("8–10 core units + 2 deep dives"), `generator/data/_template/` and `skills/new-course` say two; course B now has three (DD-B3) | The syllabus rule and the live syllabus disagree; one line each to change, or DD-B3 is the one exception on record | Any chat; before `new-course` is next used |
+| P15 | Derive `ORDER_LEDE`'s remaining-unit count in `build_hub.py` from ORDER and STATUS instead of typing it in `hub.py` | It read "Eighteen" with 16 remaining before this chat and was retyped to "Seventeen" by hand; the audit-row numbering it sits above was already wrong the same way (fixed 28 Oct) | A3, where `build_hub.py` is absorbed into `kit/build.py`; or any earlier generator chat |
 | P13 | A2 note: `check_page.py` and `verify.py` measure the desktop sidebar on a single-file page; once the shell `fetch`es reports, the desktop and tablet passes must load a report through the shell as the phone pass will | The three-width passes were written against the monolith | A2 |
 
 Done rows are in `CHANGELOG.md`.
