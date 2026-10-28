@@ -25,6 +25,6 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 3. `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED), and the Brand + AI hub build in `generator/`.
 4. Republish each page to its existing artifact (links in `docs/courses-index.md`). Never a new artifact.
 
-## Still to move in (28 October 2026)
+## Still missing (28 October 2026)
 
-The initial commit holds the kit, the theme, the method docs and `units_data.py`. Still to add from the Project or Pedro's machine: `generator/data/brand-ai/hub.py`, `build_hub.py`, `check_page.py`, the Brand + AI unit files (A2, A6, A9, B1) and the research files, and `courses/brand-ai/B1-mental-model.md`. The kit's `shell.css` is still the pre-theme copy until S1 of `docs/pm-status-2026-10-28.md` runs.
+`generator/build_hub.py` and `generator/check_page.py` were never written or never transferred: `hub.py`'s docstring names a builder that exists nowhere (checked the Project, the "Knowledge transfer" artifact and GitHub). S2 of `docs/pm-status-2026-10-28.md` writes `build_hub.py` from `hub.py` and the published hub (version 6.1) and confirms it reproduces that page. The kit's `shell.css` is still the pre-theme copy until S1 runs.

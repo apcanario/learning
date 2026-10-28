@@ -101,3 +101,4 @@ B = [
  "personal gap report",
  "Deep dive B2, Unknown unknowns. Written last, by Fable, with access to the project's chat history. Review 90 days of conversations: classify each ask by task type, model used, whether the output was accepted, how many turns it took; find where he asked badly, where the tool was wrong for the job, where he did by hand what a skill already does, where he paid for research he did not need. Deliverable: a personal gap report with the ten highest-leverage changes."),
 ]
+
