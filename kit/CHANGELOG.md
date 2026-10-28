@@ -57,7 +57,7 @@ Groups are generic (`.dunit`): a course's units are an accordion (opening one cl
 `design/theme.css` section 7: hover states on cards, rows, drawer items, buttons, chips, summaries and links where a pointer can hover; pressed states everywhere; transitions that respect reduced motion; catalogue cards are flex columns so side-by-side cards share a height with the button on one line (`.cgrid` stretches). `shell.css` is the copy.
 
 ### Published
-Version 50 of the site to the Academy artifact. The Pages push (`deploy.sh`) was refused by the session's deploy guard again and is left to run by hand.
+Version 50 of the site to the Academy artifact and, with it, versions 49 and 50 to GitHub Pages (`deploy.sh` went through on the third try).
 
 ## 28 October 2026 · Session 17 · Course B gains DD-B3; Academy counts rebuilt
 
