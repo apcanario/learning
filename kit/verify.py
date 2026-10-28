@@ -1,6 +1,6 @@
 """Browser checks for personal-mythology.html, the Academy site (run after build.py).
 
-python3 verify.py [--shots DIR]
+python3 verify.py [--shots DIR] [--page ID ...]
 Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800. On every panel of every
 width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
 under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
@@ -8,7 +8,8 @@ navigation context (drawer, title, arrows, continue) across home -> Rome -> repo
 a Brand + AI course and its reading and build pages, the drawer groups (tracks open by default, a course's units as an
 accordion) and the Backlog page; the same panel checks again in the light theme. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
-its own) and the top bar spans the content column. With --shots, saves dark and light screenshots at the three widths.
+its own) and the top bar spans the content column. With --shots, saves dark and light screenshots at the three widths
+of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home).
 """
 import sys, json, pathlib
 from playwright.sync_api import sync_playwright
@@ -16,6 +17,7 @@ from playwright.sync_api import sync_playwright
 R = pathlib.Path(__file__).resolve().parent
 URL = (R / 'personal-mythology.html').as_uri()
 SHOTS = pathlib.Path(sys.argv[sys.argv.index('--shots') + 1]) if '--shots' in sys.argv else None
+PAGES = [a for i, a in enumerate(sys.argv) if i > 0 and sys.argv[i - 1] == '--page']   # extra panels to screenshot
 GAP = 6
 VIEWPORTS = [('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
 SIDE = 300  # desktop sidebar width (theme.css --side)
@@ -315,7 +317,7 @@ def main():
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile)
                 for theme in ('dark', 'light'):
                     pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
-                    for pid in ('home', 'rome', rp):
+                    for pid in ['home', 'rome', rp] + [x for x in PAGES if x not in ('home', 'rome', rp)]:
                         pg.goto(URL + '#' + pid); pg.reload(); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
                         pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, clip={'x': 0, 'y': 0, 'width': w, 'height': 2600})
                 ctx.close()
