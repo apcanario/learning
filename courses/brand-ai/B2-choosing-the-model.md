@@ -244,7 +244,7 @@ For his recurring tasks, as of 28 October 2026. Set model and effort before the 
 
 ## Writer's unsure list
 
-Fresh check 28 Oct 2026 (Fable 5.1): fix · 3 errors, 10 should-fix, 14 minor; all applied.
+Fresh check 28 Oct 2026 (Fable 5.1): fix · 3 errors, 10 should-fix, 14 minor; all applied; report `audits/brand-ai/fresh-check-B2.md`.
 
 1. **Artificial Analysis figures disagree with themselves.** The leaderboard gives Opus 5.5 at max $5.98 per task; the model page gives $10.04. The model page names index v5.0 with nine evaluations; the methodology page names v4.3.2 with ten. The meaning of "with fallback" in the model labels is not explained on the pages read. Every §5 and §7 ratio rests on the leaderboard.
 2. **Gemini 3.8 Flash at $3.49 per task, above Argon's $1.62,** is the most surprising figure in the unit and may be a data artefact. It is reported as the leaderboard shows it.
