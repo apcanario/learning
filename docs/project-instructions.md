@@ -6,7 +6,7 @@
 
 **Design rule.** Every page is built by `kit/build.py` from `design/theme.css`, inlined. Nothing is styled ad hoc: no page gets its own CSS. A style change goes into `theme.css`, copied to `kit/shell.css`, then Academy is rebuilt, verified and republished.
 
-**Publishing.** Academy is one site: `kit/academy/`, a shell page plus one file per report → the artifact https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (read it first, publish once with its url, the shell as the page and the report files `kit/publish_files.py` lists as `files`, never a new artifact, never forced), then `kit/deploy.sh` → https://apcanario.github.io/academy/. Both, every time.
+**Publishing.** Academy is one site: `kit/academy/`, a shell page plus one file per report, syllabus, briefs and bibliography page → the artifact https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (read it first, publish once with its url, the shell as the page and the fetched files `kit/publish_files.py` lists as `files`, never a new artifact, never forced), then `kit/deploy.sh` → https://apcanario.github.io/academy/. Both, every time.
 
 **One chat per unit.** Each unit is written in its own new chat, from its brief, with its deliverable in that same chat. Never reuse a chat across units. Audits and filing get their own chats.
 

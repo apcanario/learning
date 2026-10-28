@@ -1,11 +1,13 @@
 """Browser checks for academy/, the Academy site (run after build.py).
 
 python3 verify.py [--shots DIR] [--page ID ...]
-The site is a shell plus one file per report (docs/academy.md A2), so it is served over local HTTP from academy/, as
-the artifact and Pages serve it, and every pass that measures a report first navigates to it through the shell and
-waits for the fetch. The split itself is checked: every report panel is an empty stub whose data-src file exists, no
-file in academy/ is left unreferenced, a report is fetched once and kept, a section link into an unopened report loads
-it, a failed fetch shows the retry state, the shell is under 1 MB and the size table in README.md matches the files.
+The site is a shell plus one file per report (docs/academy.md A2), and since P20 one file per syllabus and per
+Brand + AI briefs and bibliography page, so it is served over local HTTP from academy/, as the artifact and Pages serve
+it, and every pass that measures a fetched panel first navigates to it through the shell and waits for the fetch. The
+split itself is checked: every report, syllabus, briefs and bibliography panel is an empty stub whose data-src file
+exists, no file in academy/ is left unreferenced, a report is fetched once and kept, a section link into an unopened
+report or syllabus or briefs page loads it, a failed fetch shows the retry state, the shell is under 1 MB and the size
+table in README.md matches the files.
 Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800. On every panel of every
 width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
 under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
@@ -119,17 +121,23 @@ def check_files(fails):
     """The split on disk: every stub's file exists, nothing in academy/ is unreferenced, the shell is under 1 MB, and
     README.md's size table is the one build.py would write for these files."""
     shell = (SITE / 'index.html').read_text()
-    srcs = re.findall(r'<section class="panel[^"]*"[^>]* data-kind="report"[^>]* data-src="([^"]+)"', shell)
-    reports = len(re.findall(r'<section class="panel[^"]*"[^>]* data-kind="report"', shell))
-    if len(srcs) != reports: fails.append(f'split: {reports} report panels but {len(srcs)} carry data-src')
+    heads = re.findall(r'<section class="panel[^"]*"[^>]*>', shell)
+    srcs = [m.group(1) for h in heads for m in [re.search(r' data-src="([^"]+)"', h)] if m]
+    # every report and syllabus panel, and a markdown course's briefs and bibliography pages, leave the shell (A2, P20)
+    must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-bibliography)"', h)]
+    kept = [h[:80] for h in must if ' data-src="' not in h]
+    if kept: fails.append(f'split: {len(kept)} panels should be fetched but are in the shell: {kept[:2]}')
+    if len(srcs) != len(must): fails.append(f'split: {len(must)} panels should be fetched but {len(srcs)} carry data-src')
+    noanch = [h[:80] for h in must if ' data-src="' in h and ' data-kind="report"' not in h and ' data-anchors="' not in h]
+    if noanch: fails.append(f'split: fetched panels without data-anchors: {noanch[:2]}')
     stubs = re.findall(r'(<section class="panel[^"]*"[^>]* data-src="[^"]+"[^>]*>)(.*?)</section>', shell, re.S)
     full = [h for h, body in stubs if body.strip()]
-    if full: fails.append(f'split: {len(full)} report stubs still hold content: {full[0][:80]}')
+    if full: fails.append(f'split: {len(full)} stubs still hold content: {full[0][:80]}')
     on_disk = sorted(str(f.relative_to(SITE)) for f in SITE.rglob('*.html') if f.name != 'index.html')
     missing = sorted(set(srcs) - set(on_disk)); orphans = sorted(set(on_disk) - set(srcs))
-    if missing: fails.append(f'split: {len(missing)} report files missing: {missing[:3]}')
+    if missing: fails.append(f'split: {len(missing)} fetched files missing: {missing[:3]}')
     if orphans: fails.append(f'split: {len(orphans)} files in academy/ no stub fetches: {orphans[:3]}')
-    if any(re.search(r'<(style|script|html|body)\b', (SITE / x).read_text(), re.I) for x in on_disk): fails.append('split: a report file carries a style, script or document tag')
+    if any(re.search(r'<(style|script|html|body)\b', (SITE / x).read_text(), re.I) for x in on_disk): fails.append('split: a fetched file carries a style, script or document tag')
     size = len(shell.encode())
     if size >= SHELL_MAX: fails.append(f'split: shell is {size:,} bytes, over the 1 MB limit')
     by = {}
@@ -146,7 +154,7 @@ def check_files(fails):
         bad = [k for k, v in want.items() if k not in rows or v not in rows[k]]
         if bad: fails.append(f'README.md size table does not match the files: {bad} (rebuild)')
     big = max((n, x) for fs in by.values() for n, x in fs)
-    print(f'split: shell {size / 1024:,.0f} KB (limit 1,024 KB), {len(on_disk)} report files in {len(by)} folders, largest {big[1]} {big[0] / 1024:,.0f} KB')
+    print(f'split: shell {size / 1024:,.0f} KB (limit 1,024 KB), {len(on_disk)} fetched files in {len(by)} folders, largest {big[1]} {big[0] / 1024:,.0f} KB')
     for ctx, fs in by.items():
         print(f'  {ctx + "/":10} {len(fs):3} files {sum(n for n, _ in fs) / 1024:7,.0f} KB, largest {max(fs)[1]} {max(fs)[0] / 1024:,.0f} KB')
 
@@ -177,6 +185,19 @@ def check_split(br, fails):
     pg.goto(URL + '#rm12-2'); pg.reload(); ready(pg); pg.wait_for_timeout(300)
     sec = pg.evaluate("(() => { const el = document.getElementById('rm12-2'); const p = [...document.querySelectorAll('.panel')].find(p => !p.hidden); return [p.id, !!el, el ? Math.round(el.getBoundingClientRect().top) : null]; })()")
     if sec[0] != 'rm12' or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #rm12-2 on a fresh load gave panel {sec[0]}, section found {sec[1]}, top {sec[2]}')
+    # a syllabus is a stub too (P20): empty until opened, fetched once, its prompts and copy buttons present
+    stub = pg.evaluate("(() => { const p = document.getElementById('rome-syllabus'); return [p.getAttribute('data-src'), p.innerHTML.length, (p.getAttribute('data-anchors') || '').split(' ').includes('rs-u3')]; })()")
+    if stub != ['rome/syllabus.html', 0, True]: fails.append(f'split: #rome-syllabus before opening is {stub}, expected an empty stub fetching rome/syllabus.html with its anchors')
+    pg.evaluate("location.hash = 'rome-syllabus'"); ready(pg)
+    got = pg.evaluate("[document.getElementById('rome-syllabus').hasAttribute('data-loaded'), document.querySelectorAll('#rome-syllabus article.smod pre').length, document.querySelectorAll('#rome-syllabus button.copy').length]")
+    if not (got[0] and got[1] >= 80 and got[1] == got[2]): fails.append(f'split: #rome-syllabus after opening (loaded, prompts, copy buttons) = {got}')
+    pg.evaluate("location.hash = 'rome'"); ready(pg); pg.evaluate("location.hash = 'rome-syllabus'"); ready(pg)
+    if hits.get('/rome/syllabus.html') != 1: fails.append(f'split: rome/syllabus.html fetched {hits.get("/rome/syllabus.html")} times, expected once')
+    # a link into an unopened syllabus (a unit anchor) and into unopened briefs (a brief's card), on a fresh load
+    for h, want in (('rs-u3', 'rome-syllabus'), ('s-m23', 'syllabus'), ('b-a2', 'briefs-a'), ('b-b3', 'briefs-b')):
+        pg.goto(URL + '#' + h); pg.reload(); ready(pg); pg.wait_for_timeout(300)
+        sec = pg.evaluate(f"(() => {{ const el = document.getElementById('{h}'); const p = [...document.querySelectorAll('.panel')].find(p => !p.hidden); return [p.id, !!el, el ? Math.round(el.getBoundingClientRect().top) : null]; }})()")
+        if sec[0] != want or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #{h} on a fresh load gave panel {sec[0]}, element found {sec[1]}, top {sec[2]}')
     # a failed fetch, then the retry
     fail['on'] = True
     pg.evaluate("location.hash = 'm25'"); ready(pg)
@@ -187,7 +208,7 @@ def check_split(br, fails):
     if not pg.evaluate("document.getElementById('m25').hasAttribute('data-loaded') && !!document.querySelector('#m25 .report')"): fails.append('split: retry after a failed fetch did not load the report')
     other = [e for e in errs if 'fonts.g' not in e and '503' not in e]
     if other: fails.append('split: console errors: ' + ' | '.join(other[:3]))
-    print('split: stub empty until opened; fetched once, kept and the next one prefetched; section link into an unopened report; failed fetch and retry')
+    print('split: stubs empty until opened; fetched once, kept and the next report prefetched; links into an unopened report, syllabus and briefs page; failed fetch and retry')
     ctx.close()
 
 def main():

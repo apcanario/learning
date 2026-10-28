@@ -36,21 +36,21 @@ Every course is read in Academy, https://claude.ai/artifact/WwmQpUSqAUJvrcmLczpp
 ## 6. Writing a unit
 One new chat per unit, model **Opus 5.5** (the build order names any exception).
 - **Brand + AI:** paste the unit's brief from the course's Briefs page in Academy (course home → How it is built → Briefs; the Copy brief button). Turn web search on if the unit's search flag is on (`courses-index.md`; currently B2, A8, B8, DD-A1, DD-B3). Attach nothing else. The `write-unit` skill runs.
-- **Personal Mythology:** attach `personal-mythology-kit.zip` (or, at least, the reports named in the module's lane note and the quality-bar reports `greece/r-4.2.html`, `r-6.3.html`, `r-8.1.html`). Paste the module's prompt from the syllabus and its lane note from `BACKLOG.md`. Search stays off except to verify a doubtful point.
+- **Personal Mythology:** clone `apcanario/learning` and work in `kit/` (the reports named in the module's lane note and the quality-bar reports `greece/r-4.2.html`, `r-6.3.html`, `r-8.1.html` are there). Paste the module's prompt from the syllabus and its lane note from `BACKLOG.md`. Search stays off except to verify a doubtful point.
 
 The chat ends by sending the unit file(s). It does not file them.
 
 ## 7. Filing a unit
-A new chat, any writing model. Attach the unit file(s) and `learning-project.zip` (newest); for a history module also the kit zip. The `file-unit` skill saves to the vault, updates the course's data file, rebuilds Academy, checks and publishes it (the artifact, then `kit/deploy.sh` to GitHub Pages), updates `courses-index.md`, and commits and pushes to the repository (before the repository exists: sends the new `learning-project.zip` and kit zip). Re-upload the changed knowledge files (step 2).
+A new chat, any writing model. Attach the unit file(s); the chat clones `apcanario/learning`. The `file-unit` skill saves to the vault, updates the course's data file, rebuilds Academy, checks and publishes it (the artifact, then `kit/deploy.sh` to GitHub Pages), updates `courses-index.md`, and commits and pushes. Re-upload the changed knowledge files (step 2).
 
 ## 8. Audits
-When `courses-index.md` shows four units since the last audit in a hub (Brand + AI: the first is due after B1), or a staleness date has come (A2, A6, A9: 27 April 2027): a new chat on **Fable 5.1** with web search on. Attach the units (vault files) and, for history, the kit zip. Say "Run the audit." The `audit-units` skill uses the prompts in `method.md` §6 verbatim and records the result.
+When `courses-index.md` shows four units since the last audit in a hub (Brand + AI: the first is due after B1), or a staleness date has come (A2, A6, A9: 27 April 2027): a new chat on **Fable 5.1** with web search on. The chat clones `apcanario/learning`; the units are in `courses/` and the history reports in `kit/`. Say "Run the audit." The `audit-units` skill uses the prompts in `method.md` §6 verbatim and records the result.
 
 ## 9. After a theme change
 A change to `design/theme.css` reaches a page only when the page is rebuilt and republished.
-1. In a new chat, attach `learning-project.zip` and describe the change. Edit `design/theme.css` only (a token first, a component in section 5 if one is new).
+1. In a new chat, clone `apcanario/learning` and describe the change. Edit `design/theme.css` only (a token first, a component in section 5 if one is new).
 2. `cp design/theme.css kit/shell.css`, then `cd kit && python3 build.py && python3 verify.py`. Nothing may fail at any width, in dark or light.
-3. Publish Academy: read https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH with the Artifact tool, publish `kit/academy/index.html` once with that `url`, `root` `kit/academy` and the report files `python3 publish_files.py` prints as `files`, then `./deploy.sh` so https://apcanario.github.io/academy/ carries the same build.
+3. Publish Academy: read https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH with the Artifact tool, publish `kit/academy/index.html` once with that `url`, `root` `kit/academy` and the fetched files `python3 publish_files.py` prints as `files`, then `./deploy.sh` so https://apcanario.github.io/academy/ carries the same build.
 4. Add the session to `kit/CHANGELOG.md` and the version note to `design/README.md`; re-upload `design/theme.css` and `design/README.md` to the Project knowledge; commit and push.
 
 ## 10. A new course

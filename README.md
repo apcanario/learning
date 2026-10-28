@@ -26,8 +26,8 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 1. Edit `design/theme.css` (a token in section 1 before a component).
 2. Copy it over `kit/shell.css`: `cp design/theme.css kit/shell.css`.
 3. `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED).
-4. Publish Academy: the built site to its existing artifact (link in `docs/courses-index.md`), never a new one: the shell `kit/academy/index.html` with the report files `python3 publish_files.py` lists as `files` (`kit/README.md`, Site layout and sizes); then `./deploy.sh` for GitHub Pages.
+4. Publish Academy: the built site to its existing artifact (link in `docs/courses-index.md`), never a new one: the shell `kit/academy/index.html` with the fetched files `python3 publish_files.py` lists as `files` (`kit/README.md`, Site layout and sizes); then `./deploy.sh` for GitHub Pages.
 
 ## Where this is going (28 October 2026)
 
-One site, Academy, holds every course (`docs/academy.md`). A3 is done: `kit/build.py` renders the Brand + AI courses from their data file and the standalone hub is gone. Next, A2 splits the page into a shell plus fetched report files, A4 adds a generated "How it was built" page per course, and A5 makes `courses/` the source of the markdown courses.
+One site, Academy, holds every course (`docs/academy.md`). A3 is done: `kit/build.py` renders the Brand + AI courses from their data file and the standalone hub is gone. A2 split the page into a shell plus fetched files (reports; syllabi, briefs and bibliographies since P20). Next, A4 adds a generated "How it was built" page per course, and A5 makes `courses/` the source of the markdown courses.

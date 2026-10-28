@@ -9,8 +9,8 @@
 # minute or so after the push. (First time only: switching Pages on in the repo's settings does not start a build by
 # itself; the first push after that does, which this script makes. 28 Oct 2026.) Nothing else goes into that repo: the kit, the reports and the docs are in `learning`.
 #
-# The build is the folder kit/academy/ (docs/academy.md A2): index.html, the shell, plus one file per report under
-# <course>/, fetched by relative path. The shell cannot work without the report files beside it, so the whole tree
+# The build is the folder kit/academy/ (docs/academy.md A2): index.html, the shell, plus one file per report (and, since
+# P20, per syllabus, briefs and bibliography page) under <course>/, fetched by relative path. The shell cannot work without those files beside it, so the whole tree
 # travels, and files that left the build are removed from the repo. (The single page personal-mythology.html was
 # retired at A2.) "Publish Academy" means the artifact first, then this script.
 set -euo pipefail

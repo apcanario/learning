@@ -54,8 +54,9 @@ def build(m, crumbs, theme, pill_next, chev):
     course_of = {u[0]: x for x in courses for u in x['units']}
     ulabel = m['short'].upper()
 
-    def panel(pid, kind, body, t=None, u=None, cls='stack'):
-        tu = (f' data-t="{e(t)}"' if t else '') + (f' data-u="{e(u)}"' if u else '')
+    def panel(pid, kind, body, t=None, u=None, cls='stack', split=None):
+        """split names the file stem when the panel leaves the shell as a fetched file (build.py's split, A2 and P20)."""
+        tu = (f' data-t="{e(t)}"' if t else '') + (f' data-u="{e(u)}"' if u else '') + (f' data-split="{split}"' if split else '')
         return f'<section class="panel{(" " + cls) if cls else ""}" id="{pid}" data-ctx="{ctx}" data-kind="{kind}"{tu} data-c="{col}" style="--cc:{col}" hidden>{body}</section>'
 
     def eyebrow(*parts):
@@ -133,7 +134,7 @@ def build(m, crumbs, theme, pill_next, chev):
   </header>
   <p class="lede">{r['intro']}</p>
   <div class="report">{r['body']}</div>
-  <div class="pager"></div>''', cls=''))
+  <div class="pager"></div>''', cls='', split=r['id']))
 
     # ---- How it is built ----------------------------------------------------------------------
     bid = f'{ctx}-build'
@@ -184,7 +185,7 @@ def build(m, crumbs, theme, pill_next, chev):
     lede = d.BRIEFS_LEDE.format(k=k, K=key).replace(f'Learn · Course {key}', f'Course {key}').replace(f'href="#course-{k}" data-target="course-{k}"', f'href="#{ctx}" data-target="{ctx}"')
     P.append(panel(f'briefs-{k}', 'build', f'''
   <header class="hero">{crumbs(*bc, ('Briefs', None))}{eyebrow((ulabel, col), ('BRIEFS', None))}<h1>{e(sc['name'])}: the briefs</h1><p class="lede">{lede}</p></header>
-  <div class="smods">{cards}</div>''', t='Briefs', u=ulabel))
+  <div class="smods">{cards}</div>''', t='Briefs', u=ulabel, split='briefs'))
 
     # audits
     prompts = ''.join(f'<details class="prompt"{" open" if op else ""}><summary>{e(tt)}</summary><div class="pbox"><pre>{e(p)}</pre><div class="pbar"><button class="copy" type="button">Copy prompt</button></div></div></details>' for tt, op, p in d.AUDIT_PROMPTS)
@@ -197,7 +198,7 @@ def build(m, crumbs, theme, pill_next, chev):
     bib = ''.join(f'<a class="hrow" target="_blank" rel="noopener" href="{e(u)}"><span class="t">{e(tt)}<small class="url">{e(u.split("//")[1].split("/")[0])}</small></span></a>' for u, tt in biblio)
     P.append(panel(f'{ctx}-bibliography', 'build', f'''
   <header class="hero">{crumbs(*bc, ('Bibliography', None))}{eyebrow((ulabel, col), ('BIBLIOGRAPHY', None))}<h1>Sources used so far ({len(biblio)})</h1><p class="lede">{d.BIB_NOTE}</p></header>
-  <div class="hrows">{bib}</div>''', t='Bibliography', u=ulabel))
+  <div class="hrows">{bib}</div>''', t='Bibliography', u=ulabel, split='bibliography'))
 
     # changelog (the data file's own, shared across its courses)
     names = {x['key']: x['name'] for x in courses}

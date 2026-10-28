@@ -34,7 +34,6 @@ Dropped 28 October 2026: S2 (`generator/build_hub.py` exists; A3 absorbs it).
 
 | # | Task | Why | Suggested place |
 |---|---|---|---|
-| P20 | Move the syllabi (and the Brand + AI briefs and bibliography pages) out of the shell as fetched files, the same way as the reports; `verify.py` checks them the same way | Found at A2: the shell is 747 KB, of which the two syllabi are 284 KB; each new history course adds about 180 KB (syllabus and course home), so the 1 MB limit is about four courses away. `shell.js` already fetches any panel that carries `data-src`, so the change is in `build.py` and `verify.py` | Academy lane, after A5 and before the first new history course |
-| P21 | `SETUP.md`: §9 step 1 still says to attach `learning-project.zip`, and the Personal Mythology line of the writing section says to attach `personal-mythology-kit.zip`; both become "clone `apcanario/learning`" | Found at A2 while updating the publish steps; the zips are retired | Housekeeping, with A5 (which rewrites `SETUP.md` anyway) |
+| P22 | Move the two history course homes (`#greece`, `#rome`; about 38 KB each) out of the shell as fetched files, with `data-anchors` for their unit cards (`#greece-u3`) | Found at P20: after the syllabi left, the course homes are the shell's largest growing part; eight history courses to come add about 300 KB. Not urgent: the shell is 366 KB, so the limit is about 16 courses away. Cost is the course-page checks in `verify.py` (continue buttons, unit cards) that assume the panel is in the page | Academy lane, before the fifth history course, or never |
 
 Done rows are in `CHANGELOG.md`.

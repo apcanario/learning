@@ -35,7 +35,7 @@ Live page: update it, never create a new one.
 - The site: https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH
 - The standalone syllabus artifacts were retired on 28 October 2026; the site's syllabus panels are the only published copy.
 
-**Publishing, as it worked on 25 October.** Delegate the publish to one small agent so the large page stays out of the main context: the agent reads the site with the Artifact tool (the result says the version "counts as viewed"; the full page need not be read), then publishes `academy/index.html` once with the page's `url`, `root` `academy`, the report files `python3 publish_files.py` prints as `files` (since A2 the site is a shell plus one file per report) and a short label, and never retries or forces. A refusal right after a successful publish usually means the agent resent its own content; check the local file's time before publishing again.
+**Publishing, as it worked on 25 October.** Delegate the publish to one small agent so the large page stays out of the main context: the agent reads the site with the Artifact tool (the result says the version "counts as viewed"; the full page need not be read), then publishes `academy/index.html` once with the page's `url`, `root` `academy`, the fetched files `python3 publish_files.py` prints as `files` (since A2 the site is a shell plus one file per report; since P20 the syllabi, briefs and bibliographies are files too) and a short label, and never retries or forces. A refusal right after a successful publish usually means the agent resent its own content; check the local file's time before publishing again.
 
 ## Already done, don't redo
 

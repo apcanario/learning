@@ -1,9 +1,11 @@
 (function(){
   // Panels carry their own context: data-ctx is the course id (or "root"), data-kind is root/course/syllabus/report,
   // and data-t / data-u / data-c give the top-bar title, label and colour. Report titles come from the drawer.
-  // A report panel arrives as an empty stub with data-src, its file's path relative to this page (docs/academy.md A2):
-  // the first visit fetches the file into the panel, which keeps it for the rest of the visit (data-loaded). Clicks and
-  // copy buttons are delegated, so content that arrives by fetch works like content that was in the page.
+  // A report panel arrives as an empty stub with data-src, its file's path relative to this page (docs/academy.md A2),
+  // and so do the syllabi and a markdown course's briefs and bibliography pages (P20): the first visit fetches the file
+  // into the panel, which keeps it for the rest of the visit (data-loaded). A stub that is not a report lists the ids
+  // inside its file in data-anchors, so a link to one of them loads the panel first. Clicks and copy buttons are
+  // delegated, so content that arrives by fetch works like content that was in the page.
   var panels=[].slice.call(document.querySelectorAll('.panel'));
   var ids=panels.map(function(p){return p.id;});
   var ctxOf={},kindOf={},meta={},reportsBy={},courseName={};
@@ -174,8 +176,10 @@
     if(ids.indexOf(h)>=0){show(h,true);return;}
     var el=document.getElementById(h);
     if(el){var p=el.closest('.panel');if(p){show(p.id,false);setTimeout(function(){el.scrollIntoView();},0);return;}}
+    // an id inside a file not yet fetched: a report section (#m23-2) by its numbering, any other (#rs-u3) by data-anchors
     var pid=h.replace(/-\d+$/,'');
-    if(pid!==h&&isReport(pid)){show(pid,false).then(function(){var t=document.getElementById(h);if(t&&current===pid)t.scrollIntoView();});return;}
+    if(pid===h||!isReport(pid)){pid=null;panels.some(function(p){if((' '+(p.getAttribute('data-anchors')||'')+' ').indexOf(' '+h+' ')>=0){pid=p.id;return true;}});}
+    if(pid){show(pid,false).then(function(){var t=document.getElementById(h);if(t&&current===pid)t.scrollIntoView();});return;}
     show('home',false);
   }
   window.addEventListener('hashchange',route);

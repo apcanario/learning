@@ -1,7 +1,9 @@
 """Assemble the Academy site in academy/ from the course data in courses.py: academy/index.html, the shell (home,
-drawer, course homes, syllabi, build pages, changelog, backlog), and one file per report, fetched by the shell on
-navigation (docs/academy.md A2): academy/<course>/r-<id>.html for a history report, academy/<course>/<reading id>.html
-for a markdown course's reading page. The size table in README.md is regenerated on every build.
+drawer, course homes, build pages, changelog, backlog), and one file per report, fetched by the shell on navigation
+(docs/academy.md A2): academy/<course>/r-<id>.html for a history report, academy/<course>/<reading id>.html for a
+markdown course's reading page. Since P20 each syllabus (academy/<course>/syllabus.html) and a markdown course's briefs
+and bibliography pages (academy/<course>/briefs.html, bibliography.html) are fetched the same way. The size table in
+README.md is regenerated on every build.
 
 The root home is Academy (docs/academy.md, A1): every course of both families. History courses (Greece, Rome) are
 built from their kit folders; a markdown course (Brand + AI) is built by mdcourse.py from its data file
@@ -90,7 +92,7 @@ def load(c):
         model = c['prov'].get(i, c['default_model'])
         audit = f' · flagged for Fable 5.1 review (unit {c["audit_unit"]} audit)' if flagged(model) else ''
         panels.append(f'''
-<section class="panel" id="{sl}" data-unit="{u}" data-ctx="{c['id']}" data-kind="report" hidden>
+<section class="panel" id="{sl}" data-unit="{u}" data-ctx="{c['id']}" data-kind="report" data-split="r-{i}" hidden>
   <header class="phead">
     {crumbs(('Academy', 'home'), (c['short'], c['home_id']), (f'Unit {u}', f'{c["home_id"]}-u{u}'), (i, None))}
     <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['label']}</span> · <span class="u" style="--c:{ucol[u]}">UNIT {u}</span> · {c['umap'][u][0]} · <span class="mono">{i}</span> · {n:,} words{' ' + PILL_UNCK if unchecked(model) else ''}</div>
@@ -241,7 +243,7 @@ def syllabus(c):
             s += f'<article class="smod" id="s-{c["slug"](mid)}"><div class="smod-top"><span class="code">{mid}</span><h3>{html.escape(t)}</h3></div><p class="why">{html.escape(w)}</p><div class="pbox"><pre>{html.escape(c["all_prompts"][mid])}</pre><div class="pbar"><button class="copy" type="button">copy prompt</button>{link}</div></div></article>'
         s += '</div></section>'
     return f'''
-<section class="panel syl" id="{c['syl_id']}" data-ctx="{c['id']}" data-kind="syllabus" data-t="Syllabus and prompts" data-u="{c['label']}" data-c="var(--gold)" style="--cc:{c['color']}" hidden>
+<section class="panel syl" id="{c['syl_id']}" data-ctx="{c['id']}" data-kind="syllabus" data-split="syllabus" data-t="Syllabus and prompts" data-u="{c['label']}" data-c="var(--gold)" style="--cc:{c['color']}" hidden>
   <header class="hero">
     {crumbs(('Academy', 'home'), (c['short'], c['home_id']), ('Syllabus', None))}
     <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['label']}</span> · <span class="u" style="--c:var(--gold)">SYLLABUS</span> · {c['total_mods']} modules · every prompt in full</div>
@@ -515,28 +517,34 @@ for c in HISTORY:
 for m in MD:
     panels += m['panels']
 
-# A2 · the split: every report panel (a history report, a markdown course's reading page) leaves the shell. The shell
-# keeps an empty stub with the panel's attributes and data-src, the report's path relative to the shell; the panel's
-# inner HTML becomes that file, fetched by shell.js on navigation. Files: academy/<ctx>/r-<id>.html for a history
-# report, academy/<ctx>/<reading id>.html for a markdown course.
+# A2 · the split: every report panel (a history report, a markdown course's reading page) leaves the shell, and so
+# (P20) does every syllabus and a markdown course's briefs and bibliography pages. A panel that leaves carries
+# data-split="<stem>" from its builder; the shell keeps an empty stub with the panel's attributes and data-src, the
+# file's path relative to the shell (<ctx>/<stem>.html); the panel's inner HTML becomes that file, fetched by shell.js
+# on navigation. A stub that is not a report also carries data-anchors, the ids inside its file, so a link into it
+# (#rs-u3, #b-a2) can load it first.
 SITE = R / 'academy'
-STEM = {c['slug'](i): f'r-{i}' for c in HISTORY for i in c['index']}
 REPORTS = {}
 def split(p):
     s = p.strip()
     head = s[:s.index('>') + 1]
-    if ' data-kind="report"' not in head:
+    m = re.search(r' data-split="([^"]+)"', head)
+    if not m:
         return p
     pid, ctx = re.search(r' id="([^"]+)"', head).group(1), re.search(r' data-ctx="([^"]+)"', head).group(1)
     assert head.endswith(' hidden>') and s.endswith('</section>'), pid
-    src = f'{ctx}/{STEM.get(pid, pid)}.html'
+    src = f'{ctx}/{m.group(1)}.html'
     assert src not in REPORTS, src
-    REPORTS[src] = s[len(head):-len('</section>')].strip() + '\n'
-    return '\n' + head[:-len(' hidden>')] + f' data-src="{src}" hidden></section>'
+    body = s[len(head):-len('</section>')].strip() + '\n'
+    REPORTS[src] = body
+    head = head.replace(m.group(0), '')
+    ids_in = re.findall(r' id="([^"]+)"', body)
+    anchors = '' if ' data-kind="report"' in head else f' data-anchors="{" ".join(ids_in)}"'
+    return '\n' + head[:-len(' hidden>')] + f' data-src="{src}"{anchors} hidden></section>'
 panels = [split(p) for p in panels]
 import shutil
 if SITE.exists():
-    shutil.rmtree(SITE)   # a report that left the build must leave the site too
+    shutil.rmtree(SITE)   # a file that left the build must leave the site too
 for src, body in REPORTS.items():
     (SITE / src).parent.mkdir(parents=True, exist_ok=True)
     (SITE / src).write_text(body)
@@ -600,7 +608,7 @@ if OLD.exists():
 # the size table in README.md (between the markers), regenerated on every build; verify.py checks it against the files
 def kb(n):
     return f'{n / 1024:,.0f} KB' if n < 1024 * 1024 else f'{n / 1024 / 1024:.2f} MB'
-rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, course homes, syllabi, build pages, changelog, backlog')]
+rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, course homes, build pages, changelog, backlog')]
 for ctx, name in [(c['id'], c['short']) for c in HISTORY] + [(m['id'], m['short']) for m in MD]:
     fs = [len(v.encode()) for k, v in REPORTS.items() if k.startswith(ctx + '/')]
     big = max(((len(v.encode()), k) for k, v in REPORTS.items() if k.startswith(ctx + '/')), default=(0, ''))
@@ -633,5 +641,5 @@ open(R / 'FABLE-REVIEW.md', 'w').write('\n'.join(q) + '\n')
 from biblio import write_all as _biblio
 print(f'bibliography: {_biblio()} unit files')
 print(' · '.join(f"{c['short']}: {c['nrep']}/{c['content_mods']} reports, {c['words']:,} words" for c in HISTORY)
-      + ''.join(f" · {c['short']}: {c['nwritten']}/{c['nunits']} units" for c in MARKDOWN), f'· shell {kb(len(page.encode()))}, {len(REPORTS)} report files, site {kb(allb)}')
+      + ''.join(f" · {c['short']}: {c['nwritten']}/{c['nunits']} units" for c in MARKDOWN), f'· shell {kb(len(page.encode()))}, {len(REPORTS)} fetched files, site {kb(allb)}')
 print(REVIEW_LINE)
