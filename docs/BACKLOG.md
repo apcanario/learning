@@ -34,6 +34,7 @@ Dropped 28 October 2026: S2 (`generator/build_hub.py` exists; A3 absorbs it).
 
 | # | Task | Why | Suggested place |
 |---|---|---|---|
-| P22 | Move the two history course homes (`#greece`, `#rome`; about 38 KB each) out of the shell as fetched files, with `data-anchors` for their unit cards (`#greece-u3`) | Found at P20: after the syllabi left, the course homes are the shell's largest growing part; eight history courses to come add about 300 KB. Not urgent: the shell is 366 KB, so the limit is about 16 courses away. Cost is the course-page checks in `verify.py` (continue buttons, unit cards) that assume the panel is in the page | Academy lane, before the fifth history course, or never |
+
+_None._
 
 Done rows are in `CHANGELOG.md`.

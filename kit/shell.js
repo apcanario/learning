@@ -2,10 +2,11 @@
   // Panels carry their own context: data-ctx is the course id (or "root"), data-kind is root/course/syllabus/report,
   // and data-t / data-u / data-c give the top-bar title, label and colour. Report titles come from the drawer.
   // A report panel arrives as an empty stub with data-src, its file's path relative to this page (docs/academy.md A2),
-  // and so do the syllabi and a markdown course's briefs and bibliography pages (P20): the first visit fetches the file
-  // into the panel, which keeps it for the rest of the visit (data-loaded). A stub that is not a report lists the ids
-  // inside its file in data-anchors, so a link to one of them loads the panel first. Clicks and copy buttons are
-  // delegated, so content that arrives by fetch works like content that was in the page.
+  // and so do the syllabi and a markdown course's briefs and bibliography pages (P20) and the history course homes
+  // (P22): the first visit fetches the file into the panel, which keeps it for the rest of the visit (data-loaded).
+  // A stub that is not a report lists the ids inside its file in data-anchors, so a link to one of them loads the
+  // panel first. Clicks and copy buttons are delegated, so content that arrives by fetch works like content that was
+  // in the page.
   var panels=[].slice.call(document.querySelectorAll('.panel'));
   var ids=panels.map(function(p){return p.id;});
   var ctxOf={},kindOf={},meta={},reportsBy={},courseName={};
@@ -88,7 +89,8 @@
     updateContinue();
     if(scroll)window.scrollTo(0,0);
     var done=load(id);
-    done.then(function(ok){if(ok&&current===id){pager(id);prefetch(id);}});
+    // a fetched panel's continue button and unit cards (a course home, P22) only exist once its file has landed
+    done.then(function(ok){if(ok&&current===id){pager(id);prefetch(id);if(kindOf[id]==='course')updateContinue();}});
     return done;
   }
   function pager(id){
@@ -100,7 +102,7 @@
       pg.innerHTML=h;
     }
   }
-  // fetch a report into its stub; resolves true when the panel holds its content (at once for a panel in the page)
+  // fetch a panel's file into its stub; resolves true when the panel holds its content (at once for a panel in the page)
   var loading={};
   function load(id){
     var p=document.getElementById(id),src=p&&p.getAttribute('data-src');
@@ -113,7 +115,7 @@
     },function(err){
       delete loading[id];p.setAttribute('data-failed','');
       var m=meta[id]||{},esc=function(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
-      p.innerHTML='<header class="phead"><h1>'+esc(m.t||'This report')+'</h1></header><p class="prov flag">The report could not be loaded ('+esc(err&&err.message||'network error')+'). Check the connection and try again.</p><div class="hlinks" data-one><a class="hbtn alt" href="#'+id+'" data-target="'+id+'"><span>Try again</span><b>'+esc((m.n?m.n+' ':'')+(m.t||''))+'</b></a></div>';
+      p.innerHTML='<header class="phead"><h1>'+esc(m.t||'This page')+'</h1></header><p class="prov flag">The page could not be loaded ('+esc(err&&err.message||'network error')+'). Check the connection and try again.</p><div class="hlinks" data-one><a class="hbtn alt" href="#'+id+'" data-target="'+id+'"><span>Try again</span><b>'+esc((m.n?m.n+' ':'')+(m.t||''))+'</b></a></div>';
       return false;
     });
     return loading[id];

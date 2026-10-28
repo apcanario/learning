@@ -1,13 +1,14 @@
 """Browser checks for academy/, the Academy site (run after build.py).
 
 python3 verify.py [--shots DIR] [--page ID ...]
-The site is a shell plus one file per report (docs/academy.md A2), and since P20 one file per syllabus and per
-Brand + AI briefs and bibliography page, so it is served over local HTTP from academy/, as the artifact and Pages serve
-it, and every pass that measures a fetched panel first navigates to it through the shell and waits for the fetch. The
-split itself is checked: every report, syllabus, briefs and bibliography panel is an empty stub whose data-src file
-exists, no file in academy/ is left unreferenced, a report is fetched once and kept, a section link into an unopened
-report or syllabus or briefs page loads it, a failed fetch shows the retry state, the shell is under 1 MB and the size
-table in README.md matches the files.
+The site is a shell plus one file per report (docs/academy.md A2), since P20 one file per syllabus and per Brand + AI
+briefs and bibliography page, and since P22 one file per history course home, so it is served over local HTTP from
+academy/, as the artifact and Pages serve it, and every pass that measures a fetched panel first navigates to it
+through the shell and waits for the fetch. The split itself is checked: every report, syllabus, briefs, bibliography
+and history course home panel is an empty stub whose data-src file exists, no file in academy/ is left unreferenced,
+a report is fetched once and kept, a section link into an unopened report, syllabus, briefs page or course home
+(a unit card) loads it, a failed fetch shows the retry state (a report and a course home, whose continue button and
+unit cards arrive with the fetch), the shell is under 1 MB and the size table in README.md matches the files.
 Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800. On every panel of every
 width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
 under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
@@ -123,8 +124,10 @@ def check_files(fails):
     shell = (SITE / 'index.html').read_text()
     heads = re.findall(r'<section class="panel[^"]*"[^>]*>', shell)
     srcs = [m.group(1) for h in heads for m in [re.search(r' data-src="([^"]+)"', h)] if m]
-    # every report and syllabus panel, and a markdown course's briefs and bibliography pages, leave the shell (A2, P20)
-    must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-bibliography)"', h)]
+    # every report and syllabus panel, a markdown course's briefs and bibliography pages, and a history course home (a
+    # course panel whose label is a numbered course; Brand + AI homes are lettered and stay) leave the shell (A2, P20, P22)
+    must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-bibliography)"', h)
+            or (' data-kind="course"' in h and re.search(r' data-u="COURSE \d', h))]
     kept = [h[:80] for h in must if ' data-src="' not in h]
     if kept: fails.append(f'split: {len(kept)} panels should be fetched but are in the shell: {kept[:2]}')
     if len(srcs) != len(must): fails.append(f'split: {len(must)} panels should be fetched but {len(srcs)} carry data-src')
@@ -166,6 +169,7 @@ def check_split(br, fails):
         u = route.request.url.split(str(SERVER.server_port), 1)[1]
         hits[u] = hits.get(u, 0) + 1
         if fail['on'] and u == '/greece/r-2.5.html': route.fulfill(status=503, body='down'); return
+        if fail.get('home') and u == '/rome/home.html': route.fulfill(status=503, body='down'); return
         route.continue_()
     errs = []
     ctx, pg, _ = new_page(None, br, errs, 'split', 390, 844, True)
@@ -194,7 +198,7 @@ def check_split(br, fails):
     pg.evaluate("location.hash = 'rome'"); ready(pg); pg.evaluate("location.hash = 'rome-syllabus'"); ready(pg)
     if hits.get('/rome/syllabus.html') != 1: fails.append(f'split: rome/syllabus.html fetched {hits.get("/rome/syllabus.html")} times, expected once')
     # a link into an unopened syllabus (a unit anchor) and into unopened briefs (a brief's card), on a fresh load
-    for h, want in (('rs-u3', 'rome-syllabus'), ('s-m23', 'syllabus'), ('b-a2', 'briefs-a'), ('b-b3', 'briefs-b')):
+    for h, want in (('rs-u3', 'rome-syllabus'), ('s-m23', 'syllabus'), ('b-a2', 'briefs-a'), ('b-b3', 'briefs-b'), ('greece-u3', 'greece'), ('rome-u1', 'rome')):
         pg.goto(URL + '#' + h); pg.reload(); ready(pg); pg.wait_for_timeout(300)
         sec = pg.evaluate(f"(() => {{ const el = document.getElementById('{h}'); const p = [...document.querySelectorAll('.panel')].find(p => !p.hidden); return [p.id, !!el, el ? Math.round(el.getBoundingClientRect().top) : null]; }})()")
         if sec[0] != want or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #{h} on a fresh load gave panel {sec[0]}, element found {sec[1]}, top {sec[2]}')
@@ -206,9 +210,27 @@ def check_split(br, fails):
     fail['on'] = False
     pg.click('#m25 a.hbtn[data-target="m25"]'); ready(pg)
     if not pg.evaluate("document.getElementById('m25').hasAttribute('data-loaded') && !!document.querySelector('#m25 .report')"): fails.append('split: retry after a failed fetch did not load the report')
+    # a course home is a stub too (P22): its continue button and unit cards arrive with the fetch, and a failed fetch is retried
+    stub = pg.evaluate("(() => { const p = document.getElementById('rome'); return [p.getAttribute('data-src'), (p.getAttribute('data-anchors') || '').split(' ').includes('rome-u3')]; })()")
+    if stub != ['rome/home.html', True]: fails.append(f'split: #rome stub is {stub}, expected rome/home.html with its unit-card anchors')
+    pg.evaluate("localStorage.clear()"); pg.goto(URL + '#greece'); pg.reload(); ready(pg); pg.wait_for_timeout(100)
+    hm = pg.evaluate("[document.getElementById('greece').hasAttribute('data-loaded'), document.querySelectorAll('#greece details.ucard').length, document.querySelectorAll('#greece details.ucard[open]').length, document.querySelector('#greece .hbtn.cont').hidden, document.querySelector('#greece .hbtn.start').hidden]")
+    if not (hm[0] and hm[1] >= 10 and hm[2] == 1 and hm[3] and not hm[4]): fails.append(f'split: #greece on a fresh load (loaded, cards, cards open, continue hidden, start shown) = {hm}')
+    n0 = hits.get('/greece/home.html', 0)   # fetched once on this load (earlier fresh loads fetched it too)
+    pg.evaluate("location.hash = 'm23'"); ready(pg); pg.evaluate("location.hash = 'greece'"); ready(pg); pg.wait_for_timeout(50)
+    hm = pg.evaluate("[document.querySelector('#greece .hbtn.cont').hidden, document.querySelector('#greece .hbtn.cont b').textContent, document.querySelector('#greece .hbtn.start').hidden]")
+    if hm[0] or not hm[1].startswith('2.3 ') or not hm[2]: fails.append(f'split: #greece continue after reading 2.3 (continue hidden, label, start hidden) = {hm}')
+    if hits.get('/greece/home.html', 0) != n0: fails.append(f'split: greece/home.html fetched again on a second visit ({hits.get("/greece/home.html")} in all)')
+    fail['home'] = True
+    pg.evaluate("location.hash = 'rome'"); ready(pg)
+    st = pg.evaluate("[document.getElementById('rome').hasAttribute('data-failed'), !!document.querySelector('#rome a.hbtn[data-target=\"rome\"]')]")
+    if st != [True, True]: fails.append(f'split: failed course-home fetch state (failed, retry button) = {st}')
+    fail['home'] = False
+    pg.click('#rome a.hbtn[data-target="rome"]'); ready(pg); pg.wait_for_timeout(50)
+    if not pg.evaluate("document.getElementById('rome').hasAttribute('data-loaded') && document.querySelectorAll('#rome details.ucard').length > 5"): fails.append('split: retry after a failed course-home fetch did not load the home')
     other = [e for e in errs if 'fonts.g' not in e and '503' not in e]
     if other: fails.append('split: console errors: ' + ' | '.join(other[:3]))
-    print('split: stubs empty until opened; fetched once, kept and the next report prefetched; links into an unopened report, syllabus and briefs page; failed fetch and retry')
+    print('split: stubs empty until opened; fetched once, kept and the next report prefetched; links into an unopened report, syllabus, briefs page and course home; failed fetch and retry (report and course home); a course home\'s continue button')
     ctx.close()
 
 def main():
@@ -364,7 +386,7 @@ def main():
         ctx, pg, lay = new_page(p, br, errors, 'tablet', 768, 1024, True)
         if lay[0] != 768: fails.append(f'tablet layout {lay}: expected width 768')
         check_panels(pg, 'tablet', fails)
-        pg.evaluate("location.hash = 'rome'"); pg.wait_for_timeout(50)
+        pg.evaluate("location.hash = 'rome'"); ready(pg); pg.wait_for_timeout(50)
         t = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
           return {off: r.right <= 0, menu: getComputedStyle(document.getElementById('menuB')).display !== 'none',
                   main: document.querySelector('main').getBoundingClientRect().width,

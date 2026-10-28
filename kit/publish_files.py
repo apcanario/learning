@@ -1,4 +1,4 @@
-"""Print the fetched files of the built site (reports, syllabi, briefs and bibliography pages) for the Artifact tool's `files` (docs/academy.md A2).
+"""Print the fetched files of the built site (reports, syllabi, briefs and bibliography pages, history course homes) for the Artifact tool's `files` (docs/academy.md A2).
 
 python3 publish_files.py
 

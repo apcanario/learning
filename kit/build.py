@@ -193,7 +193,7 @@ def course_home(c):
     ticks = ''.join(f'<span style="left:{p}">{t}</span>' for t, p in c['ticks'])
     nunits = len(c['units']) - 1
     return f'''
-<section class="panel home" id="{c['home_id']}" data-ctx="{c['id']}" data-kind="course" data-t="{c['short']}" data-u="COURSE {c['num']}" data-c="{c['color']}" style="--cc:{c['color']}" hidden>
+<section class="panel home" id="{c['home_id']}" data-ctx="{c['id']}" data-kind="course" data-split="home" data-t="{c['short']}" data-u="COURSE {c['num']}" data-c="{c['color']}" style="--cc:{c['color']}" hidden>
   <header class="hero">
     {crumbs(('Academy', 'home'), (THEME[c['theme']]['name'], 'track-' + c['theme']), (f"Course {c['num']} · {c['short']}", None))}
     <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['eyebrow']}</span> · Personal Mythology{' · <span class="u" style="--c:var(--gold)">IN PROGRESS</span>' if c['status'] != 'available' else ' · <span class="u" style="--c:var(--teal)">COMPLETE</span>'}</div>
@@ -518,11 +518,11 @@ for m in MD:
     panels += m['panels']
 
 # A2 · the split: every report panel (a history report, a markdown course's reading page) leaves the shell, and so
-# (P20) does every syllabus and a markdown course's briefs and bibliography pages. A panel that leaves carries
-# data-split="<stem>" from its builder; the shell keeps an empty stub with the panel's attributes and data-src, the
-# file's path relative to the shell (<ctx>/<stem>.html); the panel's inner HTML becomes that file, fetched by shell.js
-# on navigation. A stub that is not a report also carries data-anchors, the ids inside its file, so a link into it
-# (#rs-u3, #b-a2) can load it first.
+# (P20) does every syllabus and a markdown course's briefs and bibliography pages, and (P22) every history course
+# home (<ctx>/home.html). A panel that leaves carries data-split="<stem>" from its builder; the shell keeps an empty
+# stub with the panel's attributes and data-src, the file's path relative to the shell (<ctx>/<stem>.html); the
+# panel's inner HTML becomes that file, fetched by shell.js on navigation. A stub that is not a report also carries
+# data-anchors, the ids inside its file, so a link into it (#rs-u3, #b-a2, #greece-u3) can load it first.
 SITE = R / 'academy'
 REPORTS = {}
 def split(p):
@@ -608,7 +608,7 @@ if OLD.exists():
 # the size table in README.md (between the markers), regenerated on every build; verify.py checks it against the files
 def kb(n):
     return f'{n / 1024:,.0f} KB' if n < 1024 * 1024 else f'{n / 1024 / 1024:.2f} MB'
-rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, course homes, build pages, changelog, backlog')]
+rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, Brand + AI course homes and build pages, changelog, backlog')]
 for ctx, name in [(c['id'], c['short']) for c in HISTORY] + [(m['id'], m['short']) for m in MD]:
     fs = [len(v.encode()) for k, v in REPORTS.items() if k.startswith(ctx + '/')]
     big = max(((len(v.encode()), k) for k, v in REPORTS.items() if k.startswith(ctx + '/')), default=(0, ''))

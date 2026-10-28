@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **P22 (session 21):** the two history course homes are fetched files too (`academy/<course>/home.html`); the shell is 293 KB, down from 366 KB. Site version 60.
 - **P20 (session 20):** the two syllabi and the Brand + AI briefs and bibliography pages are fetched files like the reports (`academy/<course>/syllabus.html`, `briefs.html`, `bibliography.html`); the shell is 366 KB, down from 747 KB. Site version 58.
 - **A2 (session 19):** the site is a shell (747 KB) plus one file per report (143), fetched when a report is opened; `personal-mythology.html` is retired and the build is `academy/`. Site version 55.
 - **A3 (session 18):** the Brand + AI courses are read inside Academy (`mdcourse.py`), each with its units, briefs, build order, audits, bibliography and changelog; the standalone hub is retired. Backlog page, collapsible drawer groups, theme v3 hover states. Site version 50.
@@ -43,6 +44,15 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 18. Brand + AI inside Academy (A3), the Backlog page, collapsible drawer, hover states | 78 | 59 |
 | 28 Oct | 19. The split: a shell plus one file per report (A2) | 78 | 59 |
 | 28 Oct | 20. The syllabi, briefs and bibliographies leave the shell too (P20); SETUP.md off the zips (P21) | 78 | 59 |
+| 28 Oct | 21. The history course homes leave the shell (P22) | 78 | 59 |
+
+## 28 October 2026 · Session 21 · The history course homes leave the shell (P22)
+
+Backlog row P22 of `docs/BACKLOG.md`, Fable 5.1. No report changed and no flag was cleared.
+
+- **P22.** After P20 the two course homes (`#greece`, `#rome`, about 38 KB each) were the shell's largest growing part. Each now carries `data-split="home"` from `course_home()`, so `build.py`'s one split rule writes it to `academy/<course>/home.html` and keeps the stub with `data-src` and `data-anchors` (its unit cards: `#greece-u3`). `shell.js` runs `updateContinue()` again once a course panel's file has landed, because the home's continue and start buttons and its unit cards only exist after the fetch; the failed-fetch message now says "page" rather than "report". `verify.py` requires every numbered (history) course home to be a stub with a file and anchors, lands on `#greece-u3` and `#rome-u1` from a fresh load, checks that a fresh load of `#greece` shows the start button and opens one unit card, that reading 2.3 and returning shows "Continue 2.3 …" without a second fetch, and that a failed home fetch shows the retry button and the retry loads the cards; the tablet pass waits for the Rome home before measuring its card grid. Result: shell 293 KB, 151 fetched files (4.75 MB in all), ALL CHECKS PASSED at the three widths in both themes; a new history course now adds about 1 KB to the shell (its stubs and drawer). The Brand + AI course homes (about 10 KB each) stay in the shell. `README.md`, `publish_files.py`, `deploy.sh`'s comment and `docs/academy.md` A2 note the change.
+
+Shell 293 KB; Greece 80 files, 2.28 MB; Rome 61, 1.76 MB; course A 6, 281 KB; course B 4, 147 KB; site 4.75 MB.
 
 ## 28 October 2026 · Session 20 · The syllabi, briefs and bibliographies leave the shell (P20); SETUP.md off the zips (P21)
 
