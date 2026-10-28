@@ -41,7 +41,7 @@ In `generator/data/brand-ai/` (AD5: `hub.py` stays the course's data file; `kit/
 ## 6. Index and count
 - `courses-index.md`: the unit's row (status "written <date>", model, path to the vault file); for a search-on unit, a row in "Staleness checks due" (written + six months); the hub's audit counter plus one.
 - If the counter reaches four, the reply's first line says: "Audit due before the next unit (audit-units)."
-- Brand + AI: after Audit 1 (28 Oct 2026) every unit gets a fresh check before filing (`audit-units`, "Fresh check of one Brand + AI unit"); a unit without the fresh-check line at the end of its unsure list is not filed.
+- Brand + AI: after Audit 1 (28 Oct 2026) every unit gets a fresh check before filing (`audit-units`, "Fresh check of one Brand + AI unit"). A unit is not filed unless the fresh-check line ends its unsure list, `audits/brand-ai/fresh-check-<code>.md` exists as `audits/README.md` sets out, and that file's `verdict` matches the line (verdict and counts). The path goes on the unit's `courses-index.md` row.
 - Commit and push `apcanario/learning` with the message `<course> <code>: filed`.
 - Re-upload the changed Project knowledge files (`courses-index.md`, `hub.py`, the unit).
 - Reply with what was filed where, the Academy version, and the counter. Nothing else.

@@ -35,8 +35,8 @@ Dropped 28 October 2026: S2 (`generator/build_hub.py` exists; A3 absorbs it).
 
 | # | Task | Why | Suggested place |
 |---|---|---|---|
-| P17 | Fresh-check reports filed as a filing step: `skills/file-unit` §6 and `skills/audit-units` save the checker's final report as `audits/brand-ai/fresh-check-<code>.md` (front matter per `audits/README.md`) in the same chat, so no later chat has to find it | P3 had to recover three reports from chat history; B2's fresh check (3/10/14) exists only in its chat | Before B-1; one line in each skill |
 | P18 | File B2's fresh-check report (28 Oct 2026, Fable 5.1) in `audits/brand-ai/fresh-check-B2.md` from its chat | Same gap as P3, for the one unit written since | Any chat that can read that chat |
+| P19 | `docs/handoffs/2026-10-28-brand-ai-handoff.md` steps 2 and 3, which B-1 sends a chat to, point at `skills/audit-units` §3b and `skills/file-unit` instead of restating them: step 2 has no report save, step 3 still names the retired `build_hub.py`, `check_page.py` and the hub artifact | Found working P17: a chat following the hand-off literally skips the report and builds a retired page | Before B-1 |
 | P13 | A2 note: `check_page.py` and `verify.py` measure the desktop sidebar on a single-file page; once the shell `fetch`es reports, the desktop and tablet passes must load a report through the shell as the phone pass will | The three-width passes were written against the monolith | A2 |
 
 Done rows are in `CHANGELOG.md`.
