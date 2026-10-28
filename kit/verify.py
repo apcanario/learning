@@ -1,6 +1,11 @@
-"""Browser checks for personal-mythology.html, the Academy site (run after build.py).
+"""Browser checks for academy/, the Academy site (run after build.py).
 
 python3 verify.py [--shots DIR] [--page ID ...]
+The site is a shell plus one file per report (docs/academy.md A2), so it is served over local HTTP from academy/, as
+the artifact and Pages serve it, and every pass that measures a report first navigates to it through the shell and
+waits for the fetch. The split itself is checked: every report panel is an empty stub whose data-src file exists, no
+file in academy/ is left unreferenced, a report is fetched once and kept, a section link into an unopened report loads
+it, a failed fetch shows the retry state, the shell is under 1 MB and the size table in README.md matches the files.
 Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800. On every panel of every
 width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
 under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
@@ -11,11 +16,23 @@ Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button,
 its own) and the top bar spans the content column. With --shots, saves dark and light screenshots at the three widths
 of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home).
 """
-import sys, json, pathlib
+import sys, json, pathlib, re, threading, functools
+from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
 
 R = pathlib.Path(__file__).resolve().parent
-URL = (R / 'personal-mythology.html').as_uri()
+SITE = R / 'academy'
+SHELL_MAX = 1024 * 1024   # A2: the shell stays under 1 MB
+class Quiet(SimpleHTTPRequestHandler):
+    def log_message(self, *a): pass
+SERVER = ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(Quiet, directory=str(SITE)))
+threading.Thread(target=SERVER.serve_forever, daemon=True).start()
+URL = f'http://127.0.0.1:{SERVER.server_port}/index.html'
+# the visible panel holds its content: a panel in the shell at once, a report once its fetch has landed (or failed)
+READY_JS = """() => { const p = [...document.querySelectorAll('.panel')].find(p => !p.hidden);
+  return !!p && (!p.hasAttribute('data-src') || p.hasAttribute('data-loaded') || p.hasAttribute('data-failed')); }"""
+def ready(pg):
+    pg.wait_for_function(READY_JS, timeout=15000)
 SHOTS = pathlib.Path(sys.argv[sys.argv.index('--shots') + 1]) if '--shots' in sys.argv else None
 PAGES = [a for i, a in enumerate(sys.argv) if i > 0 and sys.argv[i - 1] == '--page']   # extra panels to screenshot
 GAP = 6
@@ -72,7 +89,8 @@ def check_panels(pg, label, fails):
     ids = pg.eval_on_selector_all('.panel', 'ps => ps.map(p => p.id)')
     worst = []
     for pid in ids:
-        pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
+        pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(30)
+        if pg.evaluate(f"document.getElementById('{pid}').hasAttribute('data-failed')"): fails.append(f'{label} {pid}: the report did not load')
         pg.evaluate("document.querySelectorAll('.panel:not([hidden]) details').forEach(d => d.open = true)")
         sw = pg.evaluate('[document.documentElement.scrollWidth, document.documentElement.clientWidth]')
         if sw[0] > sw[1]: fails.append(f'{label} {pid}: horizontal scroll {sw}')
@@ -97,10 +115,87 @@ def new_page(p, br, errors, name, w, h, mobile):
     lay = pg.evaluate('[document.documentElement.clientWidth, visualViewport.scale]')
     return ctx, pg, lay
 
+def check_files(fails):
+    """The split on disk: every stub's file exists, nothing in academy/ is unreferenced, the shell is under 1 MB, and
+    README.md's size table is the one build.py would write for these files."""
+    shell = (SITE / 'index.html').read_text()
+    srcs = re.findall(r'<section class="panel[^"]*"[^>]* data-kind="report"[^>]* data-src="([^"]+)"', shell)
+    reports = len(re.findall(r'<section class="panel[^"]*"[^>]* data-kind="report"', shell))
+    if len(srcs) != reports: fails.append(f'split: {reports} report panels but {len(srcs)} carry data-src')
+    stubs = re.findall(r'(<section class="panel[^"]*"[^>]* data-src="[^"]+"[^>]*>)(.*?)</section>', shell, re.S)
+    full = [h for h, body in stubs if body.strip()]
+    if full: fails.append(f'split: {len(full)} report stubs still hold content: {full[0][:80]}')
+    on_disk = sorted(str(f.relative_to(SITE)) for f in SITE.rglob('*.html') if f.name != 'index.html')
+    missing = sorted(set(srcs) - set(on_disk)); orphans = sorted(set(on_disk) - set(srcs))
+    if missing: fails.append(f'split: {len(missing)} report files missing: {missing[:3]}')
+    if orphans: fails.append(f'split: {len(orphans)} files in academy/ no stub fetches: {orphans[:3]}')
+    if any(re.search(r'<(style|script|html|body)\b', (SITE / x).read_text(), re.I) for x in on_disk): fails.append('split: a report file carries a style, script or document tag')
+    size = len(shell.encode())
+    if size >= SHELL_MAX: fails.append(f'split: shell is {size:,} bytes, over the 1 MB limit')
+    by = {}
+    for x in on_disk:
+        by.setdefault(x.split('/')[0], []).append((len((SITE / x).read_bytes()), x))
+    table = re.search(r'<!-- sizes:start -->\n(.*?)<!-- sizes:end -->', (R / 'README.md').read_text(), re.S)
+    kb = lambda n: f'{n / 1024:,.0f} KB' if n < 1024 * 1024 else f'{n / 1024 / 1024:.2f} MB'
+    if not table: fails.append('README.md has no size table (sizes:start/sizes:end)')
+    else:
+        rows = {r.split(' | ')[0].strip('| '): r for r in table.group(1).splitlines()}
+        want = {'Shell (`index.html`)': f'| 1 | {kb(size)} | {kb(size)} |'}
+        for ctx, fs in by.items():
+            want[next((k for k in rows if f'(`{ctx}/`)' in k), ctx)] = f'| {len(fs)} | {kb(sum(n for n, _ in fs))} | {kb(max(fs)[0])} | largest `{max(fs)[1]}`'
+        bad = [k for k, v in want.items() if k not in rows or v not in rows[k]]
+        if bad: fails.append(f'README.md size table does not match the files: {bad} (rebuild)')
+    big = max((n, x) for fs in by.values() for n, x in fs)
+    print(f'split: shell {size / 1024:,.0f} KB (limit 1,024 KB), {len(on_disk)} report files in {len(by)} folders, largest {big[1]} {big[0] / 1024:,.0f} KB')
+    for ctx, fs in by.items():
+        print(f'  {ctx + "/":10} {len(fs):3} files {sum(n for n, _ in fs) / 1024:7,.0f} KB, largest {max(fs)[1]} {max(fs)[0] / 1024:,.0f} KB')
+
+def check_split(br, fails):
+    """In the browser: a stub is empty until opened, its file is fetched once and kept, a section link into an unopened
+    report loads it and lands on the section, a failed fetch shows the retry state and the retry loads it."""
+    hits, fail = {}, {'on': False}
+    def handler(route):
+        u = route.request.url.split(str(SERVER.server_port), 1)[1]
+        hits[u] = hits.get(u, 0) + 1
+        if fail['on'] and u == '/greece/r-2.5.html': route.fulfill(status=503, body='down'); return
+        route.continue_()
+    errs = []
+    ctx, pg, _ = new_page(None, br, errs, 'split', 390, 844, True)
+    ctx.route('**/*.html', handler)
+    stub = pg.evaluate("(() => { const p = document.getElementById('m23'); return [p.getAttribute('data-src'), p.innerHTML.length, p.hasAttribute('data-loaded')]; })()")
+    if stub != ['greece/r-2.3.html', 0, False]: fails.append(f'split: #m23 before opening is {stub}, expected an empty stub fetching greece/r-2.3.html')
+    pg.evaluate("location.hash = 'm23'"); ready(pg)
+    got = pg.evaluate("[document.getElementById('m23').hasAttribute('data-loaded'), document.querySelectorAll('#m23 .report h2').length, document.querySelector('#m23 .pager').children.length]")
+    if not (got[0] and got[1] and got[2] == 2): fails.append(f'split: #m23 after opening (loaded, sections, pager links) = {got}')
+    pg.evaluate("location.hash = 'greece'"); ready(pg); pg.evaluate("location.hash = 'm23'"); ready(pg)
+    if hits.get('/greece/r-2.3.html') != 1: fails.append(f'split: greece/r-2.3.html fetched {hits.get("/greece/r-2.3.html")} times, expected once')
+    pg.wait_for_timeout(700)   # the next report is fetched in the background
+    if not pg.evaluate("document.getElementById('m24').hasAttribute('data-loaded')"): fails.append('split: the next report (#m24) was not prefetched')
+    pg.click('#m23 .pager a.next'); ready(pg)
+    if pg.evaluate("location.hash") != '#m24' or hits.get('/greece/r-2.4.html') != 1: fails.append(f'split: pager to #m24: hash {pg.evaluate("location.hash")}, fetched {hits.get("/greece/r-2.4.html")} times')
+    # a section link into a report not yet opened, on a fresh load
+    pg.goto(URL + '#rm12-2'); pg.reload(); ready(pg); pg.wait_for_timeout(300)
+    sec = pg.evaluate("(() => { const el = document.getElementById('rm12-2'); const p = [...document.querySelectorAll('.panel')].find(p => !p.hidden); return [p.id, !!el, el ? Math.round(el.getBoundingClientRect().top) : null]; })()")
+    if sec[0] != 'rm12' or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #rm12-2 on a fresh load gave panel {sec[0]}, section found {sec[1]}, top {sec[2]}')
+    # a failed fetch, then the retry
+    fail['on'] = True
+    pg.evaluate("location.hash = 'm25'"); ready(pg)
+    st = pg.evaluate("[document.getElementById('m25').hasAttribute('data-failed'), !!document.querySelector('#m25 a.hbtn[data-target=\"m25\"]'), document.querySelector('#m25 h1') && document.querySelector('#m25 h1').textContent]")
+    if not (st[0] and st[1] and st[2]): fails.append(f'split: failed fetch state (failed, retry button, title) = {st}')
+    fail['on'] = False
+    pg.click('#m25 a.hbtn[data-target="m25"]'); ready(pg)
+    if not pg.evaluate("document.getElementById('m25').hasAttribute('data-loaded') && !!document.querySelector('#m25 .report')"): fails.append('split: retry after a failed fetch did not load the report')
+    other = [e for e in errs if 'fonts.g' not in e and '503' not in e]
+    if other: fails.append('split: console errors: ' + ' | '.join(other[:3]))
+    print('split: stub empty until opened; fetched once, kept and the next one prefetched; section link into an unopened report; failed fetch and retry')
+    ctx.close()
+
 def main():
     errors, fails = [], []
+    check_files(fails)
     with sync_playwright() as p:
         br = p.chromium.launch()
+        check_split(br, fails)
 
         # ---- phone ------------------------------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)
@@ -124,6 +219,7 @@ def main():
         # navigation context, from a clean slate
         pg.evaluate('localStorage.clear()'); pg.goto(URL + '#home'); pg.reload(); pg.wait_for_timeout(300)
         def state():
+            ready(pg)
             return pg.evaluate('''() => ({id: [...document.querySelectorAll('.panel')].find(p => !p.hidden).id,
               nav: [...document.querySelectorAll('[data-navctx]')].filter(n => !n.hidden).map(n => n.dataset.navctx).join(','),
               u: document.getElementById('curU').textContent, t: document.getElementById('curT').textContent,
@@ -270,14 +366,22 @@ def main():
         if small: fails.append('tablet drawer targets: ' + '; '.join(small[:6]))
         pg.click('#closeB'); pg.wait_for_timeout(300)
         if not pg.evaluate("document.getElementById('drawer').getBoundingClientRect().right <= 0"): fails.append('tablet: drawer did not close')
-        print('tablet: drawer is a drawer (off screen, 360 px with backdrop when open); column', t['main'], 'px')
+        # a report, reached through the shell (P13): the column and measure once the fetch has landed
+        pg.evaluate(f"location.hash = '{rp}'"); ready(pg); pg.wait_for_timeout(50)
+        tr = pg.evaluate(f"""() => ({{loaded: document.getElementById('{rp}').hasAttribute('data-loaded'),
+          main: document.querySelector('main').getBoundingClientRect().width,
+          sw: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+          ps: document.querySelectorAll('#{rp} .report p').length}})""")
+        if not tr['loaded'] or not tr['ps']: fails.append(f'tablet: report {rp} not loaded through the shell: {tr}')
+        if not 740 <= tr['main'] <= 768 or tr['sw'] > 0: fails.append(f'tablet: report {rp} column {tr["main"]}px, horizontal scroll {tr["sw"]}px')
+        print('tablet: drawer is a drawer (off screen, 360 px with backdrop when open); column', t['main'], 'px; report', rp, 'loaded through the shell,', tr['ps'], 'paragraphs')
         ctx.close()
 
         # ---- desktop: persistent sidebar ----------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'desktop', 1280, 800, False)
         if lay[0] != 1280: fails.append(f'desktop layout {lay}: expected width 1280')
         check_panels(pg, 'desktop', fails)
-        pg.evaluate("location.hash = 'm23'"); pg.wait_for_timeout(80)
+        pg.evaluate("location.hash = 'm23'"); ready(pg); pg.wait_for_timeout(80)
         s = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
           const main = document.querySelector('main').getBoundingClientRect(), top = document.querySelector('.top').getBoundingClientRect();
           const act = d.querySelector('[data-navctx]:not([hidden]) .ditem.is-active');
@@ -318,7 +422,7 @@ def main():
                 for theme in ('dark', 'light'):
                     pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
                     for pid in ['home', 'rome', rp] + [x for x in PAGES if x not in ('home', 'rome', rp)]:
-                        pg.goto(URL + '#' + pid); pg.reload(); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
+                        pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
                         pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, clip={'x': 0, 'y': 0, 'width': w, 'height': 2600})
                 ctx.close()
             print('screenshots in', SHOTS)

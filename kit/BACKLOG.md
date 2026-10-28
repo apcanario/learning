@@ -28,14 +28,14 @@ This may be more than one session's work. Publish after every finished unit so n
 
 ## Where the source is
 
-- Clone the private repo `apcanario/learning`; work in `kit/`; this file is `kit/BACKLOG.md`. Read, in this order: `README.md`, `AGENT-SPEC.md`, `WRITER-BRIEF.md`, `reviews/units-9-13/BRIEF.md` (the checker brief), the end of `reviews/units-9-13/log.md` (the maintainer log: what was fixed, confirmed and left open for every report so far), and the last `review_notes` in `provenance.json`. Run `python3 build.py` and confirm it reproduces `personal-mythology.html` byte for byte before changing anything.
+- Clone the private repo `apcanario/learning`; work in `kit/`; this file is `kit/BACKLOG.md`. Read, in this order: `README.md`, `AGENT-SPEC.md`, `WRITER-BRIEF.md`, `reviews/units-9-13/BRIEF.md` (the checker brief), the end of `reviews/units-9-13/log.md` (the maintainer log: what was fixed, confirmed and left open for every report so far), and the last `review_notes` in `provenance.json`. Run `python3 build.py` and confirm it reproduces `academy/` byte for byte (`git status` clean) before changing anything.
 - One kit session at a time: two kits edited in parallel diverge in `provenance.json`, the prompts indexes and the site. End with a commit and push.
 
 Live page: update it, never create a new one.
 - The site: https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH
 - The standalone syllabus artifacts were retired on 28 October 2026; the site's syllabus panels are the only published copy.
 
-**Publishing, as it worked on 25 October.** Delegate the publish to one small agent so the large page stays out of the main context: the agent reads the site with the Artifact tool (the result says the version "counts as viewed"; the full page need not be read), then publishes the local file once with the page's `url` and a short label, and never retries or forces. A refusal right after a successful publish usually means the agent resent its own content; check the local file's time before publishing again.
+**Publishing, as it worked on 25 October.** Delegate the publish to one small agent so the large page stays out of the main context: the agent reads the site with the Artifact tool (the result says the version "counts as viewed"; the full page need not be read), then publishes `academy/index.html` once with the page's `url`, `root` `academy`, the report files `python3 publish_files.py` prints as `files` (since A2 the site is a shell plus one file per report) and a short label, and never retries or forces. A refusal right after a successful publish usually means the agent resent its own content; check the local file's time before publishing again.
 
 ## Already done, don't redo
 

@@ -2,9 +2,9 @@ I'm continuing a self-study project called **Personal Mythology**: a compendium 
 
 ## Where the source is
 
-- Clone the private repo `apcanario/learning` and work in `kit/`; this file is `kit/NEXT-SESSION.md`. Read, in this order: `README.md`, `FABLE-REVIEW.md` (the queue; it opens with the review alert), the last two entries of `review_notes` in `provenance.json`, `audits/greece-13.4-cohorts.md` (the interim cohort decision and why the stratum was split), `audits/AUDIT-BRIEF-GREECE.md` (the brief each auditor agent gets) and one Greek scorecard as a model (`audits/greece-13.2-r-10.8.md`). Run `python3 build.py` and confirm it reproduces `personal-mythology.html` byte for byte before changing anything.
+- Clone the private repo `apcanario/learning` and work in `kit/`; this file is `kit/NEXT-SESSION.md`. Read, in this order: `README.md`, `FABLE-REVIEW.md` (the queue; it opens with the review alert), the last two entries of `review_notes` in `provenance.json`, `audits/greece-13.4-cohorts.md` (the interim cohort decision and why the stratum was split), `audits/AUDIT-BRIEF-GREECE.md` (the brief each auditor agent gets) and one Greek scorecard as a model (`audits/greece-13.2-r-10.8.md`). Run `python3 build.py` and confirm it reproduces `academy/` byte for byte (`git status` clean) before changing anything.
 
-The live artifact is https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (update it, never create a new one; read it with the Artifact tool first). The standalone syllabus artifacts were retired on 28 October 2026; the site's syllabus panels are the only published copy. Publishing works best delegated to one small agent (read the page, publish the local file once with its `url`, never retry or force).
+The live artifact is https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (update it, never create a new one; read it with the Artifact tool first). The standalone syllabus artifacts were retired on 28 October 2026; the site's syllabus panels are the only published copy. Publishing works best delegated to one small agent (read the page, publish `academy/index.html` once with its `url`, `root` `academy` and the report files `python3 publish_files.py` prints as `files`, never retry or force).
 
 ## Done on 27 October 2026 (sessions 1 to 3 of the review): don't redo
 

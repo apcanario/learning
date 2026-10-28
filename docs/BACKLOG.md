@@ -4,13 +4,12 @@ The ordered queue of chats for the Learning Project. One row is one chat. Take t
 
 ## Queue
 
-Order decided 28 October 2026 (`academy.md` AD4, reworked after the Brand + AI hand-off landed in the repo; P4, S1 and A1 with P5 to P7, then P8 to P11 and A0, done the same day). Two lanes: the **Academy lane** (one chat at a time, in order) and the **Brand + AI writing lane** (one unit per chat, per `docs/handoffs/2026-10-28-brand-ai-handoff.md` step 2 and `skills/`). Order decided 28 October 2026 (Pedro, 14:57): the Academy lane runs first, rows 1 to 3 (A2, A4, A5), then the Brand + AI lane (B-1 onward); the history content work (S4, S5, S3, S6) follows after. The lanes no longer run in parallel.
+Order decided 28 October 2026 (`academy.md` AD4, reworked after the Brand + AI hand-off landed in the repo; P4, S1 and A1 with P5 to P7, then P8 to P11 and A0, done the same day). Two lanes: the **Academy lane** (one chat at a time, in order) and the **Brand + AI writing lane** (one unit per chat, per `docs/handoffs/2026-10-28-brand-ai-handoff.md` step 2 and `skills/`). Order decided 28 October 2026 (Pedro, 14:57): the Academy lane runs first, rows 1 to 3 (A2, A4, A5; A2 done the same day), then the Brand + AI lane (B-1 onward); the history content work (S4, S5, S3, S6) follows after. The lanes no longer run in parallel.
 
 ### Academy lane
 
 | # | Spec | Model | Prompt to paste |
 |---|---|---|---|
-| 1 | A2 · Split the monolith | any | Clone `apcanario/learning` and run A2 of `docs/academy.md`: shell page plus one published file per report or unit loaded by `fetch`; hash routing, prev/next and stored progress intact; publish through the Artifact tool's `files`; `verify.py` extended with the size table, and (P13) its tablet and desktop passes load a report through the shell before measuring, as the phone pass does. Commit and push. |
 | 2 | A4 · "How it was built" per course | any | Clone `apcanario/learning` and run A4 of `docs/academy.md`: one generated page per course from `provenance.json`, `review_notes`, `kit/audits/`, the Markdown front matter and the audit log; nothing typed by hand. Publish, commit, push. |
 | 3 | A5 · Vault as source and the method | any | Clone `apcanario/learning` and run A5 of `docs/academy.md`: `build.py` reads Markdown courses from `courses/` (the `generator/data/<slug>/units/` copies go away); `courses-index.md` generated or checked by script; `method.md` §7, `SETUP.md` and the four skills updated; the Project instructions name Academy. Commit and push. |
 | 4 | S4 · Greek 13.2 and 13.5, the six flagged reports | Fable 5.1 | Clone `apcanario/learning`, `cd kit`, and follow `NEXT-SESSION.md` exactly, except: no zip; end with a commit and push. The six reports are 11.1, 11.2, 11.4, 11.5, 11.6, 11.8. |
@@ -35,7 +34,7 @@ Dropped 28 October 2026: S2 (`generator/build_hub.py` exists; A3 absorbs it).
 
 | # | Task | Why | Suggested place |
 |---|---|---|---|
-
-None open (28 Oct 2026, after P13 and P18).
+| P20 | Move the syllabi (and the Brand + AI briefs and bibliography pages) out of the shell as fetched files, the same way as the reports; `verify.py` checks them the same way | Found at A2: the shell is 747 KB, of which the two syllabi are 284 KB; each new history course adds about 180 KB (syllabus and course home), so the 1 MB limit is about four courses away. `shell.js` already fetches any panel that carries `data-src`, so the change is in `build.py` and `verify.py` | Academy lane, after A5 and before the first new history course |
+| P21 | `SETUP.md`: §9 step 1 still says to attach `learning-project.zip`, and the Personal Mythology line of the writing section says to attach `personal-mythology-kit.zip`; both become "clone `apcanario/learning`" | Found at A2 while updating the publish steps; the zips are retired | Housekeeping, with A5 (which rewrites `SETUP.md` anyway) |
 
 Done rows are in `CHANGELOG.md`.

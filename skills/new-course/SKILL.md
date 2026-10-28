@@ -33,7 +33,7 @@ Fill the template in `method.md` §4 once for the course. Reader: copied from `r
 4. If a page needs a component the theme lacks, add it to `design/theme.css` section 5 with a one-line comment and copy it to `kit/shell.css`.
 5. `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED).
 6. Look at the new course once at the three widths: `python3 verify.py --shots <dir> --page <course panel id> --page <its build page id>`, then open the screenshots (phone, tablet, desktop; dark and light) with the Read tool and check by eye what the checks cannot: the course home reads as one page from the hero, the unit cards and build-order table sit inside the column, the drawer shows the course under its track. A fault goes to `design/theme.css` (then `cp design/theme.css kit/shell.css`), never the page; rebuild and verify again.
-7. Publish Academy: the artifact (read first, publish once with its `url`), then `./deploy.sh`.
+7. Publish Academy: the artifact (read first, publish once with its `url`: the shell `kit/academy/index.html` with `root` `kit/academy` and the report files `python3 publish_files.py` prints as `files`), then `./deploy.sh`.
 
 ## 6. Register it in the Project
 - `courses-index.md`: a section for the course with every unit in build order (status "not written", model, search flag, vault path `courses/<slug>/<code>-<slug>.md`); an audit counter at 0.

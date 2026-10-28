@@ -50,7 +50,7 @@ When `courses-index.md` shows four units since the last audit in a hub (Brand + 
 A change to `design/theme.css` reaches a page only when the page is rebuilt and republished.
 1. In a new chat, attach `learning-project.zip` and describe the change. Edit `design/theme.css` only (a token first, a component in section 5 if one is new).
 2. `cp design/theme.css kit/shell.css`, then `cd kit && python3 build.py && python3 verify.py`. Nothing may fail at any width, in dark or light.
-3. Publish Academy: read https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH with the Artifact tool, publish `kit/personal-mythology.html` once with that `url`, then `./deploy.sh` so https://apcanario.github.io/academy/ carries the same build.
+3. Publish Academy: read https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH with the Artifact tool, publish `kit/academy/index.html` once with that `url`, `root` `kit/academy` and the report files `python3 publish_files.py` prints as `files`, then `./deploy.sh` so https://apcanario.github.io/academy/ carries the same build.
 4. Add the session to `kit/CHANGELOG.md` and the version note to `design/README.md`; re-upload `design/theme.css` and `design/README.md` to the Project knowledge; commit and push.
 
 ## 10. A new course

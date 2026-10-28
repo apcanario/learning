@@ -1,6 +1,9 @@
 (function(){
   // Panels carry their own context: data-ctx is the course id (or "root"), data-kind is root/course/syllabus/report,
   // and data-t / data-u / data-c give the top-bar title, label and colour. Report titles come from the drawer.
+  // A report panel arrives as an empty stub with data-src, its file's path relative to this page (docs/academy.md A2):
+  // the first visit fetches the file into the panel, which keeps it for the rest of the visit (data-loaded). Clicks and
+  // copy buttons are delegated, so content that arrives by fetch works like content that was in the page.
   var panels=[].slice.call(document.querySelectorAll('.panel'));
   var ids=panels.map(function(p){return p.id;});
   var ctxOf={},kindOf={},meta={},reportsBy={},courseName={};
@@ -79,16 +82,45 @@
     var seq=seqFor(ctx),k=seq.indexOf(id);
     arrows.hidden=seq.length<2||ctx==='root';
     prevB.disabled=k<=0;nextB.disabled=k>=seq.length-1;
+    if(isReport(id)){put(KEY,id);put(LKEY+ctx,id);}
+    updateContinue();
+    if(scroll)window.scrollTo(0,0);
+    var done=load(id);
+    done.then(function(ok){if(ok&&current===id){pager(id);prefetch(id);}});
+    return done;
+  }
+  function pager(id){
     var pg=document.querySelector('#'+id+' .pager');
     if(pg&&!pg.innerHTML){
-      var rs=reportsBy[ctx]||[],r=rs.indexOf(id),h='';
+      var ctx=ctxOf[id],rs=reportsBy[ctx]||[],r=rs.indexOf(id),h='';
       if(r>0){var p=meta[rs[r-1]];h+='<a href="#'+rs[r-1]+'" class="prev">'+(p.n?'<span>'+p.n+'</span>':'')+p.t+'</a>';}
       if(r>=0&&r<rs.length-1){var n=meta[rs[r+1]];h+='<a href="#'+rs[r+1]+'" class="next">'+n.t+(n.n?'<span>'+n.n+'</span>':'')+'</a>';}
       pg.innerHTML=h;
     }
-    if(isReport(id)){put(KEY,id);put(LKEY+ctx,id);}
-    updateContinue();
-    if(scroll)window.scrollTo(0,0);
+  }
+  // fetch a report into its stub; resolves true when the panel holds its content (at once for a panel in the page)
+  var loading={};
+  function load(id){
+    var p=document.getElementById(id),src=p&&p.getAttribute('data-src');
+    if(!src||p.hasAttribute('data-loaded'))return Promise.resolve(true);
+    if(loading[id])return loading[id];
+    if(!p.innerHTML||p.hasAttribute('data-failed'))p.innerHTML='<p class="hnote">Loading…</p>';
+    p.removeAttribute('data-failed');
+    loading[id]=fetch(src).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text();}).then(function(t){
+      p.innerHTML=t;p.setAttribute('data-loaded','');p.removeAttribute('data-failed');delete loading[id];return true;
+    },function(err){
+      delete loading[id];p.setAttribute('data-failed','');
+      var m=meta[id]||{},esc=function(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+      p.innerHTML='<header class="phead"><h1>'+esc(m.t||'This report')+'</h1></header><p class="prov flag">The report could not be loaded ('+esc(err&&err.message||'network error')+'). Check the connection and try again.</p><div class="hlinks" data-one><a class="hbtn alt" href="#'+id+'" data-target="'+id+'"><span>Try again</span><b>'+esc((m.n?m.n+' ':'')+(m.t||''))+'</b></a></div>';
+      return false;
+    });
+    return loading[id];
+  }
+  // the next report in the course is fetched in the background, so turning the page does not wait
+  function prefetch(id){
+    var rs=reportsBy[ctxOf[id]]||[],r=rs.indexOf(id);
+    if(r<0||r>=rs.length-1)return;
+    setTimeout(function(){load(rs[r+1]);},400);
   }
   // on each course home, open the unit card holding that course's last report (or the first card), once
   function openCards(){
@@ -117,20 +149,23 @@
   prevB.addEventListener('click',function(){var seq=seqFor(ctxOf[current]),k=seq.indexOf(current);if(k>0)go(seq[k-1]);});
   nextB.addEventListener('click',function(){var seq=seqFor(ctxOf[current]),k=seq.indexOf(current);if(k<seq.length-1)go(seq[k+1]);});
   homeB.addEventListener('click',function(e){e.preventDefault();go('home');});
-  [].slice.call(document.querySelectorAll('[data-target]:not(.ditem)')).forEach(function(a){a.addEventListener('click',function(e){var t=a.getAttribute('data-target');if(!t)return;e.preventDefault();go(t);});});
+  document.addEventListener('click',function(e){
+    if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    var a=e.target.closest&&e.target.closest('[data-target]');if(!a||a.classList.contains('ditem'))return;
+    var t=a.getAttribute('data-target');if(!t)return;e.preventDefault();go(t);});
   items.forEach(function(a){a.addEventListener('click',function(e){var t=a.getAttribute('data-target');if(!t){closeDrawer();return;}e.preventDefault();closeDrawer();go(t);});});
 
   var themeB=document.getElementById('themeB');
   function effTheme(){var d=document.documentElement.getAttribute('data-theme');if(d==='light'||d==='dark')return d;return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}
   themeB.addEventListener('click',function(){var next=effTheme()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);put('hellas-theme',next);});
 
-  [].slice.call(document.querySelectorAll('.copy')).forEach(function(bt){
-    bt.addEventListener('click',function(){var pre=bt.closest('.pbox').querySelector('pre');var txt=pre.textContent;
-      var was=bt.textContent;
-      function ok(){bt.textContent='copied';bt.classList.add('ok');setTimeout(function(){bt.textContent=was;bt.classList.remove('ok');},1600);}
-      function fb(){try{var r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);bt.textContent='selected, copy manually';}catch(e){}}
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fb);}else{fb();}});
-  });
+  document.addEventListener('click',function(e){
+    var bt=e.target.closest&&e.target.closest('.copy');if(!bt||bt.classList.contains('ok'))return;
+    var pre=bt.closest('.pbox').querySelector('pre');var txt=pre.textContent;
+    var was=bt.textContent;
+    function ok(){bt.textContent='copied';bt.classList.add('ok');setTimeout(function(){bt.textContent=was;bt.classList.remove('ok');},1600);}
+    function fb(){try{var r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);bt.textContent='selected, copy manually';}catch(e){}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fb);}else{fb();}});
 
   function route(){
     var h=(location.hash||'').slice(1);
@@ -139,6 +174,8 @@
     if(ids.indexOf(h)>=0){show(h,true);return;}
     var el=document.getElementById(h);
     if(el){var p=el.closest('.panel');if(p){show(p.id,false);setTimeout(function(){el.scrollIntoView();},0);return;}}
+    var pid=h.replace(/-\d+$/,'');
+    if(pid!==h&&isReport(pid)){show(pid,false).then(function(){var t=document.getElementById(h);if(t&&current===pid)t.scrollIntoView();});return;}
     show('home',false);
   }
   window.addEventListener('hashchange',route);

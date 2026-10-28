@@ -1,0 +1,264 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#brand-b" data-target="brand-b">Course B · Building with AI</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">B1</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI</span> · B1 <span class="pill live">B1</span></div>
+    <h1>Mental model</h1>
+    <nav class="toc" aria-label="Sections"><a href="#read-b1-0">1 · The context window is the one thing you control</a><a href="#read-b1-1">2 · Tokens: what he pays with and what the model attends with</a><a href="#read-b1-2">3 · What persists: within a chat, across chats</a><a href="#read-b1-3">4 · Three kinds of knowledge: trained, retrieved, in the conversation</a><a href="#read-b1-4">5 · Why the same prompt gives different answers</a><a href="#read-b1-5">6 · System prompt, project instruction, user message</a><a href="#read-b1-6">7 · His setup on one map</a><a href="#read-b1-7">Deliverable · How Claude works, in five minutes</a><a href="#read-b1-8">Sources</a></nav>
+  </header>
+  <p class="lede">Unit B1, written 28 Oct 2026 by Opus 5.5 in its own chat, with live search (Anthropic product facts checked and dated that day; staleness check due 28 Apr 2027). Seven sections in the brief's order, then the deliverable: the five-minute model of how Claude works, as plain prose. Known gaps, from the writer's unsure list: the 200K claude.ai window is taken from an undated help article; the 2.7 characters-per-token figure is arithmetic on Anthropic's glossary, not a measurement; the skill-description cost uses Anthropic's per-skill average; whether claude.ai usage reflects prompt caching, and how much memory a new chat receives, are undocumented; the nondeterminism study was run on Qwen, not Claude.</p>
+  <div class="report"><p>Product facts in this unit (window sizes, prices, cutoffs, how memory and projects behave) were checked against Anthropic's documentation on 28 October 2026. Each is dated where it appears. Statements labelled <em>observed</em> describe what the chat that wrote this unit actually received; they cannot be opened as a source, and nothing in the argument rests on them alone.</p>
+<h2 id="read-b1-0">1 · The context window is the one thing you control</h2>
+<p>Anthropic defines the context window as all the text a language model can reference when generating a response, including the response itself, and separates it from the corpus the model was trained on: the window is the model's "working memory" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Anthropic, <em>Context windows</em></a>). Everything in a request counts against it: the system prompt, every message (tool results, images and documents included), the tool definitions, and the output, extended thinking included (same page).</p>
+<p>That is the whole interface. The model's trained parameters are fixed when he uses it; Anthropic's claude.ai system prompt is written by Anthropic (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/release-notes/system-prompts">Anthropic, <em>System prompts</em> release notes</a>). Everything else that reaches the model reaches it as text placed in that window, and almost all of that text is his choice: the preferences he saved, the project instructions, the files he put in the Project, which skills are installed, whether memory is on, what he pastes, what he attaches, and when he starts a new chat. A better answer comes from a better window. There is no other lever.</p>
+<p><strong>How big the window is (as of 28 Oct 2026).</strong> Two different numbers are in circulation, and the one that applies to him is the smaller.</p>
+<ul>
+<li>On the API, Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.1 all have a 1M-token window with up to 128K output tokens per request (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Anthropic, <em>Context windows</em></a>; <a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/models/overview">Anthropic, <em>Models overview</em></a>).</li>
+<li>On claude.ai paid plans, Anthropic's help centre states that the context window is 200K tokens across all models and paid plans, with some models at 500K on Enterprise (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753">Claude Help Center, usage and length limits</a>).</li>
+</ul>
+<p>His Project runs on claude.ai, so his working budget is 200K tokens, a fifth of the figure on the model page.</p>
+<p><strong>Worked example: what the chat that wrote this unit received</strong> <em>(observed, 28 Oct 2026)</em>. Before the brief arrived, the window already held Anthropic's system prompt; his saved preferences; the Learning Project's instructions; a snapshot of his memory (a profile, a preferences line and a listing of memory file paths with one-line descriptions); and the names and one-line descriptions of his fifteen plugin skills. The brief came next. During the work, a list of the Project's 24 documents arrived by name, then five of them (<code>method.md</code>, <code>sourcing-standard.md</code>, <code>courses-index.md</code>, <code>reader.md</code>, <code>units_data.py</code>) and about twenty web pages were read in. Each of those reads added text to the same window. None of it was "known" to the model before it was placed there.</p>
+<h2 id="read-b1-1">2 · Tokens: what he pays with and what the model attends with</h2>
+<h3>What a token is</h3>
+<p>A token is the smallest unit the model works in: a word, part of a word, a character or a byte. For Claude, the number of characters per token depends on the model and the language. On models before Claude 4.7, a token is about 3.5 English characters; Claude 4.7 and later models use a newer tokenizer that produces about 30 percent more tokens for the same text (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/glossary">Anthropic, <em>Glossary</em></a>). Opus 5.5 is in the later group, so on Anthropic's two figures an English token is roughly 3.5 ÷ 1.3 ≈ 2.7 characters. That is arithmetic on the glossary's numbers; nobody measured it, and the glossary gives no figure for Portuguese; for an exact count Anthropic points to its token-counting endpoint (same page).</p>
+<p>On that arithmetic, a 200K-token window holds roughly 540,000 characters of English. This unit, at about 36,000 characters, would be about 13,000 tokens: around 6 to 7 percent of his window, before anything else is loaded.</p>
+<h3>Tokens as cost</h3>
+<p>On the API, price is per million tokens, with output dearer than input. As of 28 October 2026: Opus 5.5 $4 input / $20 output; Sonnet 5.5 $2 / $10; Haiku 5.5 from $0.10 / $0.50; Fable 5.1 $10 / $50 (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/models/overview">Anthropic, <em>Models overview</em></a>). Which model to route each task to is B2.</p>
+<p>The mechanism that matters more than the price list is that the model keeps nothing between turns. Anthropic's API documentation says the Messages API is stateless and that the full conversation history is sent with every request (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/working-with-messages">Anthropic, <em>Working with messages</em></a>). The context-window page says the same in turn-by-turn terms: each new turn's input contains all previous conversation history plus the new message, and each response becomes part of the input for the next turn (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Anthropic, <em>Context windows</em></a>).</p>
+<p>The consequence is quadratic. Illustrative arithmetic, unmeasured: if every exchange adds about 2,000 tokens, the 30th turn sends about 60,000 tokens of history, and the 30 turns together send about 2,000 × (1 + 2 + … + 30) = 930,000 tokens of input, plus every fixed layer (preferences, project instructions, memory, skill descriptions) once per turn. The thirtieth turn sends thirty times the history of the first, whatever the length of the question itself.</p>
+<p>On claude.ai he does not see token prices; he sees a usage limit. Anthropic says usage depends on the length and complexity of conversations, the features used and the model, that claude.ai, Claude Code and Claude Desktop share one limit, and that tools and connectors are token-intensive (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753">Claude Help Center, usage and length limits</a>). On the API, a repeated prefix can be cached: cache reads on Opus 5.5 are priced at 0.05 times the base input price, with a default five-minute cache lifetime (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">Anthropic, <em>Prompt caching</em></a>). Whether, and how, caching reduces what a claude.ai conversation draws from his usage limit is not stated in the help articles cited here. Treat it as unknown. Usage rules are B8.</p>
+<h3>Tokens as attention</h3>
+<p>The transformer architecture that large language models are built on uses self-attention, a mechanism that relates every position in a sequence to every other position when computing each output (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1706.03762">Vaswani et al., <em>Attention Is All You Need</em>, NeurIPS 2017</a>). Anthropic's engineering team draws the practical consequence: with n tokens there are n² pairwise relationships, so the model has a finite "attention budget" that each new token draws down, and context is "a finite resource with diminishing marginal returns" (<a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic, <em>Effective context engineering for AI agents</em>, 29 Sep 2025</a>). Anthropic's own documentation names the effect: as the token count grows, accuracy and recall degrade, which it calls <em>context rot</em>, and it concludes that what is in context matters as much as how much fits (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Anthropic, <em>Context windows</em></a>).</p>
+<p>Three bodies of evidence stand behind this, and they do not measure the same thing.</p>
+<ul>
+<li><strong>Peer-reviewed.</strong> Liu and colleagues found that models performed best when the relevant information sat at the beginning or the end of a long input, and noticeably worse when it sat in the middle, including models built for long contexts (<a target="_blank" rel="noopener" href="https://aclanthology.org/2024.tacl-1.9/">Liu et al., "Lost in the Middle", <em>TACL</em> 12, 2024, 157–173</a>). The models tested date from 2023.</li>
+<li><strong>Vendor research.</strong> Chroma tested 18 models from four families, Claude Opus 4, Sonnet 4, Sonnet 3.7, Sonnet 3.5 and Haiku 3.5 among them, and found performance growing less reliable as input length grew, even on simple retrieval and copying tasks; distractors (passages similar to the answer) lowered accuracy further, and the degradation was not uniform across positions or tasks (<a target="_blank" rel="noopener" href="https://www.trychroma.com/research/context-rot">Hong, Troynikov and Huber, <em>Context Rot</em>, Chroma, 14 Jul 2025</a>). Chroma publishes this on the site of its own retrieval-database product, so it has an interest in the conclusion; label it vendor data.</li>
+<li><strong>Platform statement.</strong> Anthropic states the degradation as a property of its models generally, without a figure (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Anthropic, <em>Context windows</em></a>).</li>
+</ul>
+<p>Where they differ: Liu et al. report a U-shape by position on 2023 models; Chroma reports that position, similarity and distractors interact and that the curve is not a clean U. None of the three measured Opus 5.5. The direction is consistent across all three: more text in the window, less reliable use of any one piece of it. The size of the effect on his model is unmeasured.</p>
+<p>For his Project this means the 24 documents, the memory snapshot, the preferences, the project instructions and fifteen skill descriptions all draw on the same budget as the brief they are meant to support. Anthropic's guidance for the equivalent file in Claude Code is explicit: target under 200 lines per instruction file, because longer files consume more context and reduce adherence (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>). That guidance is written for <code>CLAUDE.md</code>; applying it to project instructions is my analogy, and the claude.ai help centre states no such limit. What belongs in which layer is B4.</p>
+<h2 id="read-b1-2">3 · What persists: within a chat, across chats</h2>
+<h3>Within a chat</h3>
+<p>Inside one chat, everything persists because everything is re-sent. Previous turns are preserved completely and accumulate in the window (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Anthropic, <em>Context windows</em></a>). On Opus 5.5 that includes its own previous thinking: Opus 4.5 and later Opus models keep earlier thinking blocks by default, and those count against the window like any other input (same page).</p>
+<p>Within a chat, a fact can be lost in two ways.</p>
+<ol>
+<li><strong>It is still in the window but not used.</strong> That is the attention problem in §2. A rule stated in turn 3 of a 40-turn chat is present and competing with everything after it.</li>
+<li><strong>It is summarised away.</strong> On claude.ai, when code execution is enabled, long chats trigger automatic context management: Claude summarises earlier messages to continue. The help centre says the full history is preserved so earlier content can still be referenced, and that such long chats consume more usage, so a new chat may help (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753">Claude Help Center, usage and length limits</a>). In Claude Code the equivalent is compaction: after <code>/compact</code>, the root <code>CLAUDE.md</code> is re-read from disk and re-injected, and an instruction that vanished after compaction had usually been given only in the conversation (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>).</li>
+</ol>
+<h3>Across chats</h3>
+<p>Across chats, nothing persists in the model. A new chat is a new request with a new window, built from whatever the product places in it. Claude Code's documentation states it plainly: each session begins with a fresh context window, and two mechanisms carry knowledge across sessions, the <code>CLAUDE.md</code> files he writes and the auto-memory notes Claude writes, both loaded at the start of every session (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>). claude.ai works on the same principle with more layers:</p>
+<ul>
+<li><strong>Profile preferences</strong> ("Instructions for Claude") are account-wide and applied to all conversations (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10185728">Claude Help Center, personalisation features</a>).</li>
+<li><strong>Project instructions</strong> apply only to chats within that project (same article).</li>
+<li><strong>Project files</strong> sit in project knowledge; when that knowledge approaches the window limit, claude.ai switches the project to retrieval mode and pulls only the most relevant parts into the chat (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11473015">Claude Help Center, RAG for projects, 10 Sep 2026</a>).</li>
+<li><strong>Memory</strong> is written as individual topics while he chats, and an update made in one chat is picked up in the next. Each project has its own memory; inside a project Claude uses that project's memory plus his account memory from non-project chats, never another project's (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11817273">Claude Help Center, chat search and memory</a>). By default it does not store sensitive topics; it never stores government ID numbers, criminal history, financial account numbers or immigration status; deleting a conversation does not delete the memories written from it; incognito chats are excluded (same article).</li>
+<li><strong>Chat search</strong> retrieves past chats by retrieval-augmented search, visible as a tool call; it searches all chats outside projects, and project chats only within their own project (same article).</li>
+</ul>
+<p>Each of these is text that something re-inserts. Remove the re-insertion and the fact is gone.</p>
+<p>One route does run from his chats into a model, and it is slow. Since Anthropic's consumer-terms change of 28 August 2025, Free, Pro and Max users choose whether new or resumed chats may be used to improve Claude; opted-in data is retained for five years, otherwise 30 days (<a target="_blank" rel="noopener" href="https://www.anthropic.com/news/updates-to-our-consumer-terms">Anthropic, <em>Updates to our consumer terms</em>, 28 Aug 2025</a>). That feeds a future training run. None of the documentation cited here describes any path by which a chat changes the model he talks to the next morning.</p>
+<h3>"It forgot" usually means "it was never told"</h3>
+<p>When a new chat ignores something he said last week, the fault is almost always in one of the re-insertion layers: the fact was said in a chat inside another project; memory did not write it, or wrote a different version of it; chat search was not triggered; the project switched to retrieval and pulled other passages. The diagnostic question is: which layer was supposed to carry this into the window, and did it?</p>
+<p>His own rules already encode this. His "Teresa" disambiguation lives in the preferences, the layer present in every conversation. The method's rule of one chat per unit exists because everything earlier in a chat conditions what comes later, which the method describes as leaked context making a course repeat itself (<code>method.md</code> §4). Both are correct applications of the model above.</p>
+<h2 id="read-b1-3">4 · Three kinds of knowledge: trained, retrieved, in the conversation</h2>
+<h3>Trained</h3>
+<p>Claude is built on a model pretrained on a large corpus to predict the next word, then fine-tuned and trained with human feedback to act as an assistant (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/glossary">Anthropic, <em>Glossary</em></a>). What it learned this way stops at a cutoff. As of 28 October 2026, Anthropic lists the reliable knowledge cutoff of Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.1 as June 2026 (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/models/overview">Anthropic, <em>Models overview</em></a>). Today is four months past that.</p>
+<p>The reader profile in his own brief shows the gap. "Ended competitive karate after the WIKF Global Cup (Oct 2026)" describes an event after the cutoff. No amount of training covers it; the model knows it only because the brief and his memory put it in the window. The same holds for any model lineup, price or plan limit dated after June 2026, which is why B2 and B8 are flagged to search before writing.</p>
+<h3>Retrieved</h3>
+<p>Retrieval-augmented generation fetches material at runtime and passes it into the context window with the question, so that the answer is grounded in evidence; the model may fetch it itself through a tool (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/glossary">Anthropic, <em>Glossary</em></a>). In his setup that covers web search, chat search, a Project in retrieval mode, a file pulled in from GitHub, and Claude Code reading a file. Retrieval is selection: the model sees the chunks that were fetched and nothing else. A Project in retrieval mode can hold up to ten times more, because it no longer loads everything (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11473015">Claude Help Center, RAG for projects</a>); the price is that the answer depends on what the search returned.</p>
+<h3>In the conversation</h3>
+<p>Whatever he typed, pasted or attached, plus everything the model itself wrote earlier in the chat. The second half is easy to miss. Each response becomes input to the next turn (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Anthropic, <em>Context windows</em></a>), so a wrong figure the model produced at turn 5 is in the window at turn 25, read on every turn like anything else there.</p>
+<h3>Why the distinction matters</h3>
+<p>The three kinds look identical in the output. A sentence about the 2026 WIKF results reads the same whether it came from a page fetched ten seconds ago, from memory written last week, or from nowhere. The only way to tell is to know what was in the window, which is what the sourcing standard forces: a claim that points to a fetched source can be checked; a claim that points to nothing came from training or was invented. How models fail when they answer from training (confident, specific, wrong) is B6.</p>
+<h2 id="read-b1-4">5 · Why the same prompt gives different answers</h2>
+<h3>Sampling is the design</h3>
+<p>At each step the model produces a probability distribution over possible next tokens, and one is drawn. Temperature controls how random that draw is: higher gives more varied output, lower gives more conservative, more probable phrasing (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/glossary">Anthropic, <em>Glossary</em></a>). Sampling is deliberate. Holtzman and colleagues showed that always choosing the most likely continuation produces bland, repetitive, degenerate text, and that sampling from a truncated distribution ("nucleus sampling") produced text closer to human writing (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1904.09751">Holtzman et al., "The Curious Case of Neural Text Degeneration", ICLR 2020</a>). Temperature is an API parameter; none of the claude.ai help articles cited in this unit offers him a temperature setting.</p>
+<h3>Even fixed settings vary</h3>
+<p>Anthropic states that even with temperature set to 0, results will not be fully deterministic, and identical inputs may produce different outputs across calls, on its own service and through cloud providers (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/glossary">Anthropic, <em>Glossary</em></a>). Anthropic does not give the cause there. A lab study gives one candidate: Horace He at Thinking Machines sampled 1,000 completions at temperature 0 from an open-weights model (Qwen3-235B) and got 80 distinct completions; the most common appeared 78 times, and they first diverged at token 103. He traced the variation to computations whose results depend on batch size, which changes with server load; with batch-invariant kernels all 1,000 were identical (<a target="_blank" rel="noopener" href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference">He, <em>Defeating Nondeterminism in LLM Inference</em>, Thinking Machines Lab, 10 Sep 2025</a>). That is a lab blog post, not peer-reviewed, on a non-Anthropic model and serving stack; whether the same cause dominates on Anthropic's service is not stated by either source.</p>
+<p>The divergence point is the useful detail. Once one token differs, every later token is conditioned on a different history, so a small difference early becomes a different answer.</p>
+<h3>In his setup, the prompt is rarely the same</h3>
+<p>The more common reason two runs differ is that the window differed. Between two chats with the same typed prompt:</p>
+<ul>
+<li>the system prompt carries the current date and is periodically updated (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/release-notes/system-prompts">Anthropic, <em>System prompts</em> release notes</a>);</li>
+<li>memory may have been updated in between (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11817273">Claude Help Center, chat search and memory</a>);</li>
+<li>chat search and project retrieval may return different passages (same; <a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11473015">RAG for projects</a>);</li>
+<li>Opus 5.5 uses adaptive thinking, always on, so the amount of reasoning in the window varies with the request (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/models/overview">Anthropic, <em>Models overview</em></a>).</li>
+</ul>
+<p><strong>What this means for checking.</strong> One good answer is one draw. It shows the window can produce a good answer; how often it does stays unknown until there are more draws. That is the mechanism behind sampling-based audits; the protocol is B6.</p>
+<h2 id="read-b1-5">6 · System prompt, project instruction, user message</h2>
+<p>All three are text in the same window. They differ in who writes them, where they sit and how far they reach.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Written by</th>
+<th>Reaches</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>claude.ai system prompt</td>
+<td>Anthropic</td>
+<td>Every claude.ai chat; not the API</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/release-notes/system-prompts">System prompts</a></td>
+</tr>
+<tr>
+<td>Profile preferences</td>
+<td>Him</td>
+<td>All his conversations</td>
+<td><a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10185728">Personalisation</a></td>
+</tr>
+<tr>
+<td>Project instructions</td>
+<td>Him</td>
+<td>Chats in that Project only</td>
+<td><a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10185728">Personalisation</a></td>
+</tr>
+<tr>
+<td>Skill name + description</td>
+<td>Skill author</td>
+<td>Every chat where installed; body loads on trigger</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Agent Skills</a></td>
+</tr>
+<tr>
+<td>User message</td>
+<td>Him</td>
+<td>This turn, then every later turn of the chat</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The system prompt</strong> sets the frame. Anthropic publishes the claude.ai version and says it supplies current information such as the date at the start of every conversation, encourages certain behaviours, is updated periodically, and does not apply to the API (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/release-notes/system-prompts">Anthropic, <em>System prompts</em> release notes</a>). On the API, the developer writes the system prompt, and a system message added mid-conversation carries the same authority as the one at the start (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/working-with-messages">Anthropic, <em>Working with messages</em></a>). Authority comes from the role the text is given; arrival time leaves it unchanged.</p>
+<p><strong>Project instructions and preferences</strong> are his standing orders at two scopes. Anthropic's help centre says the features can be used "independently or in combination" and states no order of precedence between them (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10185728">Claude Help Center, personalisation features</a>). His preferences and the Learning Project's instructions both set tone rules (no flattery, no filler, no preamble). Repeating a rule in two layers spends tokens twice; two layers that disagree leave the model to resolve the conflict with no documented rule. That is a project-rot risk, and B4 audits it.</p>
+<p><strong>Skills</strong> sit across the layers. Only each skill's name and description load at startup, about 100 tokens a skill, placed in the system prompt; the <code>SKILL.md</code> body (under 5K tokens) enters the window only when a request matches the description, and bundled files only when read (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Anthropic, <em>Agent Skills overview</em></a>). The description is what a request is matched against (same page). His fifteen plugin skills therefore cost about 1,500 tokens in every chat, on Anthropic's per-skill figure, and they fire on their descriptions alone. His decompression skill lists "Netflix" and "dinner" among its triggers <em>(observed)</em>, so it becomes a candidate to load whenever those words appear, whatever the conversation is about.</p>
+<p><strong>The user message</strong> is the request itself, and once sent it is part of the history re-read on every later turn (§3).</p>
+<p><strong>None of these is enforced.</strong> Claude Code's documentation says Claude treats its instruction files as context and that they are not enforced configuration; to block an action regardless of what Claude decides, it points to a hook; and it says the more specific and concise the instructions, the more consistently Claude follows them (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>). Every instruction layer raises the probability of a behaviour. None guarantees it. How to write instructions that hold is B3.</p>
+<h2 id="read-b1-6">7 · His setup on one map</h2>
+<p>Each component of his setup, placed in the model above. Product behaviour as of 28 October 2026.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Lives</th>
+<th>Enters the window</th>
+<th>Paid every turn?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic system prompt</td>
+<td>Anthropic</td>
+<td>Start of every chat</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Preferences</td>
+<td>Account settings</td>
+<td>Every chat</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Learning Project instructions</td>
+<td>The Project</td>
+<td>Every chat in it</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Project documents (24)</td>
+<td>Project knowledge</td>
+<td>Loaded, or retrieved in retrieval mode</td>
+<td>Loaded: yes. Retrieved: only what is fetched</td>
+</tr>
+<tr>
+<td>Memory (account + Project)</td>
+<td>Anthropic's memory store</td>
+<td>In the next chat, as the app inserts it; how much is not documented</td>
+<td>Whatever is inserted</td>
+</tr>
+<tr>
+<td>Chat search</td>
+<td>Past chats</td>
+<td>Only when searched</td>
+<td>Only what is fetched</td>
+</tr>
+<tr>
+<td>Plugin skills (15)</td>
+<td>Installed skills</td>
+<td>Description always; body on trigger</td>
+<td>Descriptions yes; bodies when loaded</td>
+</tr>
+<tr>
+<td>Web search results</td>
+<td>The web</td>
+<td>When searched</td>
+<td>Yes, from then on</td>
+</tr>
+<tr>
+<td>GitHub vault</td>
+<td>GitHub</td>
+<td>Only files selected or cloned</td>
+<td>Yes, once in</td>
+</tr>
+<tr>
+<td>Scheduled task run</td>
+<td>A saved prompt</td>
+<td>Its own new session</td>
+<td>Separate session</td>
+</tr>
+<tr>
+<td>Claude Code session</td>
+<td>His repo</td>
+<td><code>CLAUDE.md</code> + auto memory at start; files as read</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notes on the rows that behave differently from what their names suggest:</p>
+<ul>
+<li><strong>Memory.</strong> Memory is notes written by a model about his chats, then re-inserted. It is subject to every failure in this unit: it can be incomplete, outdated or slightly wrong, and it competes for attention like any other text. Facts said only in another Project's chats are not available here (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11817273">Claude Help Center, chat search and memory</a>).</li>
+<li><strong>GitHub vault.</strong> The vault is the one store that never enters a chat by itself. On claude.ai, files reach a chat or project only when selected; project sync is manual ("Sync now"); and the help centre states the repository must fit within the context window (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10167454">Claude Help Center, GitHub integration</a>). His method already splits on this line: the Project holds the method and the index; the finished units, which no chat needs all at once, stay in the vault and are fetched when a chat needs one. Which file belongs at which temperature is B4.</li>
+<li><strong>Scheduled tasks.</strong> Each run opens as a new session; the saved prompt is the run's assignment, and Anthropic's documentation says that prompt must be self-contained and explicit because the task runs autonomously (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/web-scheduled-tasks">Claude Code docs, <em>Scheduled tasks</em></a>). A scheduled task knows nothing of the chat that created it.</li>
+<li><strong>Claude Code.</strong> Each session starts with a fresh window; <code>CLAUDE.md</code> and the first 200 lines or 25KB of auto memory load every session (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>). His <code>CLAUDE.md</code> in a repo is the Claude Code equivalent of project instructions and preferences combined.</li>
+</ul>
+<h3>Reading a bad output</h3>
+<p>When an answer is wrong, the model above gives four places to look, in this order:</p>
+<ol>
+<li><strong>Was it in the window?</strong> If the fact lives only in a past chat, another Project, the vault or his head, the model never had it (§3, §4).</li>
+<li><strong>Was it buried?</strong> If it was there, how much else was there with it, and where? Long windows degrade recall (§2).</li>
+<li><strong>Did it come from training?</strong> If no source was in the window, the answer came from trained knowledge, which stops at June 2026 (§4).</li>
+<li><strong>Was it one draw?</strong> Run it again in a fresh chat. If the answers differ materially, neither is reliable on its own (§5).</li>
+</ol>
+<p>Each question has a different fix: put the fact into a layer that re-inserts it; trim the window or start a new chat; supply the source; sample before trusting. B3, B4, B6 and B8 take these one at a time.</p>
+<h2 id="read-b1-7">Deliverable · How Claude works, in five minutes</h2>
+<p>Claude doesn't remember anything. Every time I send a message, the app sends Claude a single long piece of text, and Claude writes its reply by reading that text from the top. That text is called the context window. It holds Anthropic's own instructions, my standing instructions, the files in whatever project I'm working in, some notes the app keeps about me, the whole conversation so far, and my new message. Claude reads all of it, writes a reply, and then keeps nothing. When I send the next message, the whole lot is sent again with the new message added at the end.</p>
+<p>So the only way to change what Claude does is to change what's in that text. The model itself is fixed. It was trained on a huge amount of writing to predict the next word, then trained further to behave like an assistant, and what it knows from that training stops around June 2026. Anything that happened after that, it only knows if something puts it in the window: me telling it, a web search it runs, or the notes the app keeps.</p>
+<p>Those notes are what the app calls memory. As I chat, it writes down facts about me and my projects, and at the start of a new chat it puts those notes back into the window. That's the only reason it seems to remember. If something I said never made it into the notes, or I said it inside a different project, a new chat has never heard of it. When it "forgets", it was usually never told.</p>
+<p>The text is measured in tokens, which are chunks of a few letters each. Tokens are what it costs. Because the whole conversation is re-sent every time, a long chat gets more expensive with every message: by the thirtieth message, it is re-reading thirty messages' worth of history to answer one. Tokens are also attention. The more text there is, the less reliably Claude uses any one piece of it, especially things buried in the middle. A short, clean window gives better answers than a long, cluttered one. That's why I start a new chat for each piece of work.</p>
+<p>The same question can get different answers. Claude draws each next word from the likely options, because always picking the single most likely one produces flat, repetitive writing. And even when the settings are fixed, the servers don't give exactly the same result every time. On top of that, two chats are rarely identical: the date has changed, the notes have been updated, a search found different pages. Once one word differs, everything after it can go a different way. So one good answer shows it can get it right; it says nothing about how often. For anything that matters, I check a sample of its claims against the sources before I trust the rest.</p>
+<p>Different instructions sit at different levels. Anthropic writes instructions that go into every chat. I have preferences that go into every chat I have. Each project has its own instructions that go only into chats in that project. Then there's what I type. All of it is just text in the same window. None of it is a hard rule; it makes the behaviour I want more likely, and the shorter and more specific it is, the more reliably it's followed.</p>
+<p>My setup is a set of ways to put the right text in front of it. The course project holds the method and the index, so every chat starts with them. Skills are saved procedures: Claude sees only a one-line description of each, and loads the full instructions when a request matches. The finished units live in a GitHub folder that Claude only sees when I bring files in. Scheduled tasks start a fresh chat each time with a saved prompt and nothing else. Claude Code does the same in a code folder, with an instructions file it reads at the start.</p>
+<p>If it gets something wrong, I ask four things. Was the fact in the text it was given? Was it buried under everything else? Did it answer from its training instead of a source? Did I just get one unlucky draw? Each one has a different fix.</p>
+<h2 id="read-b1-8">Sources</h2>
+<p>All web sources checked 28 October 2026.</p>
+<ul>
+<li>Anthropic. <em>Context windows</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/context-windows</li>
+<li>Anthropic. <em>Glossary</em>. Claude Platform docs. https://platform.claude.com/docs/en/about-claude/glossary</li>
+<li>Anthropic. <em>Models overview</em>. Claude Platform docs. https://platform.claude.com/docs/en/about-claude/models/overview</li>
+<li>Anthropic. <em>Working with messages</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/working-with-messages</li>
+<li>Anthropic. <em>Prompt caching</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/prompt-caching</li>
+<li>Anthropic. <em>Agent Skills overview</em>. Claude Platform docs. https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview</li>
+<li>Anthropic. <em>System prompts</em> (release notes). Claude Platform docs. https://platform.claude.com/docs/en/release-notes/system-prompts</li>
+<li>Anthropic. <em>Effective context engineering for AI agents</em>. Anthropic Engineering, 29 September 2025. https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</li>
+<li>Anthropic. <em>Updates to our consumer terms</em>. Anthropic News, 28 August 2025. https://www.anthropic.com/news/updates-to-our-consumer-terms</li>
+<li>Claude Help Center. <em>Use Claude's chat search and memory to build on previous context</em>. https://support.claude.com/en/articles/11817273</li>
+<li>Claude Help Center. <em>Usage and length limits</em> (article 11647753). https://support.claude.com/en/articles/11647753</li>
+<li>Claude Help Center. <em>Retrieval augmented generation (RAG) for projects</em>, 10 September 2026. https://support.claude.com/en/articles/11473015</li>
+<li>Claude Help Center. <em>Understanding Claude's personalization features</em>. https://support.claude.com/en/articles/10185728</li>
+<li>Claude Help Center. <em>Use the GitHub integration</em>. https://support.claude.com/en/articles/10167454</li>
+<li>Claude Code docs. <em>How Claude remembers your project</em> (Memory). https://code.claude.com/docs/en/memory</li>
+<li>Claude Code docs. <em>Automate work with scheduled tasks</em>. https://code.claude.com/docs/en/web-scheduled-tasks</li>
+<li>Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F. and Liang, P. "Lost in the Middle: How Language Models Use Long Contexts". <em>Transactions of the Association for Computational Linguistics</em> 12 (2024): 157–173. doi:10.1162/tacl_a_00638. https://aclanthology.org/2024.tacl-1.9/</li>
+<li>Vaswani, A. et al. "Attention Is All You Need". <em>Advances in Neural Information Processing Systems</em> 30 (NeurIPS 2017). https://arxiv.org/abs/1706.03762</li>
+<li>Holtzman, A., Buys, J., Du, L., Forbes, M. and Choi, Y. "The Curious Case of Neural Text Degeneration". ICLR 2020. https://arxiv.org/abs/1904.09751</li>
+<li>He, H. and Thinking Machines Lab. <em>Defeating Nondeterminism in LLM Inference</em>. Thinking Machines Lab, 10 September 2025 (lab blog, not peer-reviewed). https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference</li>
+<li>Hong, K., Troynikov, A. and Huber, J. <em>Context Rot: How Increasing Input Tokens Impacts LLM Performance</em>. Chroma, 14 July 2025 (vendor research). https://www.trychroma.com/research/context-rot</li>
+</ul></div>
+  <div class="pager"></div>

@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **A2 (session 19):** the site is a shell (747 KB) plus one file per report (143), fetched when a report is opened; `personal-mythology.html` is retired and the build is `academy/`. Site version 55.
 - **A3 (session 18):** the Brand + AI courses are read inside Academy (`mdcourse.py`), each with its units, briefs, build order, audits, bibliography and changelog; the standalone hub is retired. Backlog page, collapsible drawer groups, theme v3 hover states. Site version 50.
 - **DD-B3 (session 17):** course B is 8 core units and 3 deep dives; Academy shows B 2 of 11. Site version 49.
 - **Navigable (session 16):** breadcrumbs on every page, Start or Continue on every course page; course B is Using AI to Build a Brand. Site version 47.
@@ -39,6 +40,26 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 16. Navigable by others: breadcrumbs, start buttons, course B renamed | 78 | 59 |
 | 28 Oct | 17. Course B gains DD-B3; Academy counts rebuilt | 78 | 59 |
 | 28 Oct | 18. Brand + AI inside Academy (A3), the Backlog page, collapsible drawer, hover states | 78 | 59 |
+| 28 Oct | 19. The split: a shell plus one file per report (A2) | 78 | 59 |
+
+## 28 October 2026 · Session 19 · The split: a shell plus one file per report (A2)
+
+Backlog row A2 of `docs/academy.md`, Opus 5.5. The single page was 4.9 MB against a 16 MB cap with eight history courses still to come. No report changed and no flag was cleared.
+
+### The build
+`build.py` writes `academy/`: `index.html`, the shell (home, drawer, course homes, syllabi, build pages, changelog, backlog), and one file per report, `academy/<course>/r-<id>.html` for Greece and Rome and `academy/brand-<k>/read-<code>.html` for a Brand + AI reading page. A report panel stays in the shell as an empty stub carrying its attributes and `data-src`; the file is the panel's inner HTML. The shell now declares UTF-8 itself. `personal-mythology.html` is deleted. Two builds in a row give the same files.
+
+### The shell
+`shell.js` fetches a report the first time it is opened, keeps it in the panel for the rest of the visit, builds its pager once it has landed, and fetches the next report in the course in the background. Clicks on `data-target` links and copy buttons are delegated, so fetched content behaves like content that was in the page. A section link into an unopened report (`#m23-2`) loads the report, then scrolls to the section. A failed fetch shows the report's title, the reason and a Try again button. Hash routing, prev/next, Continue and stored progress are unchanged.
+
+### Checks
+`verify.py` serves `academy/` over local HTTP, as the artifact and Pages do, and every pass waits for the fetch before measuring a report (P13): phone, light, tablet (which now also measures a Rome report) and desktop. New: the files on disk (every stub has its file, no file is orphaned, no report file carries a style or script, the shell is under 1 MB, `README.md`'s size table matches) and the split in the browser (empty stub until opened, fetched once and kept, the next one prefetched, the pager, a section link on a fresh load, a 503 then the retry). ALL CHECKS PASSED. The published site was also opened in the real artifact viewer and a report fetched and rendered there.
+
+### Sizes
+Shell 747 KB; Greece 78 files, 2.12 MB; Rome 59, 1.58 MB; course A 4, 218 KB; course B 2, 97 KB; site 4.74 MB. The two syllabi are 284 KB of the shell; each new history course adds about 180 KB to it, so the 1 MB line is about four courses away (P20 proposed).
+
+### Publishing
+`publish_files.py` prints the report files as the list the Artifact tool's `files` takes. Publish = the shell as the page, `root` `academy`, that list; then `deploy.sh`, now site-only. The procedure is in `README.md` (Site layout and sizes), `skills/file-unit`, `skills/new-course`, `SETUP.md`, the root README, `generator/README.md`, `docs/project-instructions.md`, `NEXT-SESSION.md` and `BACKLOG.md`. Published as version 55 (144 files), then the shell alone once more after the backlog row was closed (the report files stay on the artifact); Pages pushed after each.
 
 ## 28 October 2026 · Session 18 · Brand + AI inside Academy (A3), the Backlog page, collapsible drawer, hover states
 

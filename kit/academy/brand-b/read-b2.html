@@ -1,0 +1,505 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#brand-b" data-target="brand-b">Course B · Building with AI</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">B2</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI</span> · B2 <span class="pill live">B2</span></div>
+    <h1>Choosing the model</h1>
+    <nav class="toc" aria-label="Sections"><a href="#read-b2-0">1 · The lineup, and what each model is for</a><a href="#read-b2-1">2 · What his plan measures</a><a href="#read-b2-2">3 · API pricing, per model</a><a href="#read-b2-3">4 · The other vendors on the same axes</a><a href="#read-b2-4">5 · Cost per task</a><a href="#read-b2-5">6 · When the cheap model is the right one</a><a href="#read-b2-6">7 · What thinking and effort settings do</a><a href="#read-b2-7">8 · Where the quality differences show, and where they do not</a><a href="#read-b2-8">Deliverable · Model routing table</a><a href="#read-b2-9">Writer's unsure list</a><a href="#read-b2-10">Sources</a></nav>
+  </header>
+  <p class="lede">Unit B2, written 28 Oct 2026 by Opus 5.5 in its own chat, search on (lineup, prices, plan rules and benchmarks dated that day; staleness check due 28 Apr 2027); fresh check the same day (Fable 5.1): fix, 3 errors, 10 should-fix, 14 minor. Deliverable: the model-routing table for his recurring tasks, with effort, the evidence behind each pick and an override trigger per row. Known gaps, from the writer's unsure list: Artificial Analysis's per-task costs differ between its leaderboard and model pages; the per-model rate at which claude.ai usage is drawn is undocumented; the Shōmen token counts are assumptions; whether self-preference bias carries between sibling models is untested.</p>
+  <div class="report"><p>Every current fact in this unit (model lineups, prices, plan limits, effort settings, benchmark scores) was checked against its source on 28 October 2026 and carries that date unless another is given. Benchmark figures come from two kinds of source, labelled where they appear. <strong>Vendor</strong> figures are a model maker reporting its own model against rivals it chose. <strong>Third-party</strong> figures come from Artificial Analysis, a benchmarking company that runs the same tests across vendors; its data is treated here as a vendor dataset in the sourcing standard's sense and labelled as such. None of these benchmarks measured any of his tasks. What a token is, why claude.ai gives him a 200K window, and why each turn of a long chat costs more than the last are in B1 (§1, §2); this unit builds on them and does not restate them.</p>
+<h2 id="read-b2-0">1 · The lineup, and what each model is for</h2>
+<p>Four current Claude models, as Anthropic's model page lists them on 28 October 2026 (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview">Anthropic, <em>Models overview</em></a>); release dates from each launch page.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Released</th>
+<th>API price, input / output per million tokens</th>
+<th>Anthropic's one-line positioning</th>
+<th>Relative speed</th>
+<th>Default effort on the API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fable 5.1</td>
+<td>Sep 2026</td>
+<td>$10 / $50</td>
+<td>"For demanding reasoning and long-horizon agentic work"</td>
+<td>Slower</td>
+<td>high</td>
+</tr>
+<tr>
+<td>Opus 5.5</td>
+<td>22 Sep 2026</td>
+<td>$4 / $20</td>
+<td>"For long-running agentic coding and knowledge work"</td>
+<td>Moderate</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Sonnet 5.5</td>
+<td>28 Sep 2026</td>
+<td>$2 / $10</td>
+<td>"The best combination of speed and intelligence"</td>
+<td>Fast</td>
+<td>high</td>
+</tr>
+<tr>
+<td>Haiku 5.5</td>
+<td>7 Oct 2026</td>
+<td>$0.10 / $0.50 (prompts up to 100K tokens; qualifier from the Pricing page)</td>
+<td>"For high-volume, latency-sensitive tasks such as classification, extraction, and routing"</td>
+<td>Fastest</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table></div>
+<p>All four share a 1M-token window on the API, 128K output tokens and a June 2026 knowledge cutoff (same page; B1 §1 covers the 200K window he gets on claude.ai, B1 §4 the cutoff).</p>
+<p>What each is for, in Anthropic's own launch material (vendor statements):</p>
+<ul>
+<li><strong>Opus 5.5</strong> is the first model of the 5.5 family. Anthropic says it performs at about the level of Fable 5.1 on most work, and that lower per-token prices plus fewer tokens per task cut costs by 40% against Opus 5 (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-opus-5-5">Anthropic, <em>Introducing Claude Opus 5.5</em>, 22 Sep 2026</a>). The model page's own advice is to start with Opus 5.5 when unsure, and to move to Fable 5.1 for demanding reasoning and long-horizon agentic work, or when Opus 5.5 at higher effort still falls short (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview">Anthropic, <em>Models overview</em></a>).</li>
+<li><strong>Fable 5.1</strong> is the same underlying model as Mythos 5.1 with stricter safeguards; Mythos 5.1 is limited to vetted organisations in cybersecurity and life sciences. Fable 5.1 still routes exploit generation and life-sciences R&amp;D queries to Opus models, and Anthropic estimates its cost for typical workloads at about 25% below Fable 5 (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic, <em>Introducing Claude Fable 5.1 and Claude Mythos 5.1</em>, Sep 2026</a>).</li>
+<li><strong>Sonnet 5.5</strong> is described as a faster, cheaper complement to Opus 5.5 for well-scoped everyday tasks, bug fixing, and polished documents, slides and spreadsheets. Anthropic adds that Opus 5.5 stays clearly stronger on complex, open-ended work, and gives no figure for that claim (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-sonnet-5-5">Anthropic, <em>Introducing Claude Sonnet 5.5</em>, 28 Sep 2026</a>).</li>
+<li><strong>Haiku 5.5</strong> is pitched at high-volume, cost-sensitive work: summaries, compactions, database queries, classification, live customer support, browser use, and acting as a subagent beside a larger model (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-haiku-5-5">Anthropic, <em>Introducing Claude Haiku 5.5</em>, 7 Oct 2026</a>).</li>
+</ul>
+<p>The brief's working map (Haiku for triage, Sonnet for drafting, Opus for long-form, Fable for audit) matches Anthropic's positioning for three of the four. The fourth needs a flag now. On the benchmark table Anthropic published with Opus 5.5, Opus 5.5 scores above Fable 5.1 on all nine tests listed, from agentic coding (Terminal-Bench 4.0: 66.4%, Opus at xhigh, against 55.8%) to knowledge work (GDPval-AA v2.1: 1846 against 1735) and reasoning with tools (Humanity's Last Exam: 67.7% against 65.6%) (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-opus-5-5">Anthropic, <em>Introducing Claude Opus 5.5</em></a>; vendor). The case for Fable as his auditor cannot rest on Fable being the stronger model on those tests. §8 sets out what it can rest on.</p>
+<h2 id="read-b2-1">2 · What his plan measures</h2>
+<p>claude.ai shows him no prices. It meters him against limits, and Anthropic publishes the rules but almost no rates.</p>
+<p><strong>Plans and prices (USD; the pricing page shows no euro prices).</strong> Pro is $20 a month billed monthly, or $17 a month billed annually ($200 up front). Max is $100 a month for five times Pro's usage per session and $200 for twenty times (<a target="_blank" rel="noopener" href="https://claude.com/pricing">Claude, <em>Plans &amp; pricing</em></a>; <a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11014257-about-claude-s-max-plan-usage">Claude Help Center, <em>About Claude's Max plan usage</em></a>).</p>
+<p><strong>How usage is counted.</strong> The session limit resets every five hours; paid plans also carry weekly limits, and Anthropic reserves the right to add other caps (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/8324991-about-claude-s-pro-plan-usage">Claude Help Center, <em>About Claude's Pro plan usage</em></a>; <a target="_blank" rel="noopener" href="https://claude.com/pricing">Claude, <em>Plans &amp; pricing</em></a>). Claude Code draws on the same limit as chat (both pages). The only numbers Anthropic gives: about 45 messages per five hours on Pro, defined as about 200 English sentences of 15 to 20 words on a less compute-intensive model; at least 225 on Max 5x and at least 900 on Max 20x for "relatively short" conversations on such a model. The window stays at 200K tokens on every plan (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11014257-about-claude-s-max-plan-usage">Max usage</a>; Claude Help Center, usage and length limits).</p>
+<p><strong>What draws it down.</strong> Anthropic's list, dated 22 September 2026: message length, attachment size, current conversation length, tool use (Research, web search), model choice, effort level, artifacts, and multi-step tasks such as running code or browsing. Project content is cached and counts less when reused (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/9797557-usage-limit-best-practices">Claude Help Center, <em>Usage limit best practices</em></a>). Higher effort spends more tokens and reaches the limit sooner (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/8664678-change-the-model-effort-and-extended-thinking-settings">Claude Help Center, <em>Change the model, effort and extended thinking settings</em></a>).</p>
+<p><strong>How much each model costs him inside the plan is undocumented.</strong> None of these articles gives a per-model rate. The Pro article says only that a less compute-intensive model allows more messages. Fable is the one model with rules of its own (article dated 2 September 2026):</p>
+<ul>
+<li>On Pro, Fable 5.1 sits outside the plan's limits and runs on usage credits.</li>
+<li>On Max, up to half of the weekly limit may go to Fable at no extra cost; this is a cap inside the same pool, and Fable uses the pool faster than other Claude models.</li>
+<li>On Team and seat-based Enterprise, premium seats include Fable; standard seats pay with credits (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan">Claude Help Center, <em>Claude Fable models on your plan</em></a>).</li>
+</ul>
+<p>Usage credits are prepaid and billed at standard API rates once an included limit is used up (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans">Claude Help Center, <em>Manage usage credits for paid Claude plans</em></a>). Anthropic also raised five-hour limits on Pro, Max, Team and seat-based Enterprise when Opus 5.5 launched, without saying by how much (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-opus-5-5">Anthropic, <em>Introducing Claude Opus 5.5</em></a>).</p>
+<p>The consequence for routing: he pays in two currencies. Inside his limits the currency is a share of a five-hour and a weekly allowance, at an exchange rate per model that Anthropic does not publish. Past his limits, and for every Fable run on Pro, the currency is credits at API prices. That second rule is why this unit uses the API price list as the common measure: it is the only published price that applies to him, and, with credits enabled, it is his literal marginal price whenever he runs over.</p>
+<h2 id="read-b2-2">3 · API pricing, per model</h2>
+<p>From Anthropic's pricing page, 28 October 2026, in USD per million tokens (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic, <em>Pricing</em></a>):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Input</th>
+<th>Output</th>
+<th>Cache read</th>
+<th>Batch input / output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fable 5.1</td>
+<td>$10</td>
+<td>$50</td>
+<td>$0.25</td>
+<td>$5 / $25</td>
+</tr>
+<tr>
+<td>Opus 5.5</td>
+<td>$4</td>
+<td>$20</td>
+<td>$0.20</td>
+<td>$2 / $10</td>
+</tr>
+<tr>
+<td>Sonnet 5.5</td>
+<td>$2</td>
+<td>$10</td>
+<td>$0.10</td>
+<td>$1 / $5</td>
+</tr>
+<tr>
+<td>Haiku 5.5, prompt up to 100K</td>
+<td>$0.10</td>
+<td>$0.50</td>
+<td>$0.01</td>
+<td>$0.05 / $0.25</td>
+</tr>
+<tr>
+<td>Haiku 5.5, prompt over 100K</td>
+<td>$0.50</td>
+<td>$2.50</td>
+<td>$0.05</td>
+<td>$0.25 / $1.25</td>
+</tr>
+</tbody>
+</table></div>
+<p>Four rules on the same page change what a task costs:</p>
+<ul>
+<li><strong>Haiku 5.5 has a cliff at 100K.</strong> A request whose prompt exceeds 100,000 tokens pays five times the per-token rate (arithmetic on the table), and the prompt count includes cache reads and writes. Every other current model bills its full 1M window at one rate.</li>
+<li><strong>Batch is half price</strong> for every model, for work that can wait.</li>
+<li><strong>Web search</strong> costs $10 per 1,000 searches plus the tokens the results add.</li>
+<li><strong>Newer tokenizer.</strong> Claude 4.7 and later models produce about 30% more tokens for the same text; all four current models are in that group (B1 §2).</li>
+</ul>
+<p><strong>Thinking is billed as output.</strong> The tokens Claude spends thinking are charged at the output rate, and in full, even when the app shows only a summary or nothing; thinking blocks kept from earlier turns are billed again as input (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost">Anthropic, <em>Steering thinking</em></a>). The pricing page itself does not mention thinking.</p>
+<p>On the price list alone, an output token on Haiku, Sonnet, Opus and Fable costs in the ratio 1 : 20 : 40 : 100 (arithmetic on the table). §5 shows why that ratio misleads.</p>
+<h2 id="read-b2-3">4 · The other vendors on the same axes</h2>
+<p>His Project runs on claude.ai, which runs only Claude models. The other vendors matter to him where he calls a model from his own code, and as a check on whether Anthropic's prices are high or low. This unit compares the other vendors on API price, effort controls and window only; their positioning statements and consumer plan limits were not researched. Per-token prices, 28 October 2026, USD per million tokens unless stated:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Vendor · model</th>
+<th>Input</th>
+<th>Output</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenAI · GPT-6 Astra</td>
+<td>$10.00</td>
+<td>$50.00</td>
+<td>cached input $1.00</td>
+</tr>
+<tr>
+<td>OpenAI · GPT-6.1 Sol</td>
+<td>$2.00</td>
+<td>$10.00</td>
+<td></td>
+</tr>
+<tr>
+<td>OpenAI · GPT-6.1 Terra</td>
+<td>$1.00</td>
+<td>$5.00</td>
+<td></td>
+</tr>
+<tr>
+<td>OpenAI · GPT-6 Luna</td>
+<td>$0.10</td>
+<td>$0.50</td>
+<td></td>
+</tr>
+<tr>
+<td>Google · Gemini 4 Argon</td>
+<td>$2.00</td>
+<td>$10.00</td>
+<td>to 30 Nov 2026; $4 / $20 from 1 Dec 2026</td>
+</tr>
+<tr>
+<td>Google · Gemini 3.8 Flash</td>
+<td>$0.75</td>
+<td>$3.75</td>
+<td>to 31 Dec 2026; $1.50 / $7.50 from 1 Jan 2027</td>
+</tr>
+<tr>
+<td>Google · Gemini 3.5 Flash-Lite</td>
+<td>$0.30</td>
+<td>$2.50</td>
+<td></td>
+</tr>
+<tr>
+<td>DeepSeek · deepseek-flash (V4.1-Flash-1017)</td>
+<td>¥1 off-peak, ¥2 peak (cache miss)</td>
+<td>¥4 off-peak, ¥8 peak</td>
+<td>yuan; peak = Beijing weekdays 9:00–12:00 and 14:00–18:00, excluding Chinese public holidays</td>
+</tr>
+<tr>
+<td>DeepSeek · deepseek-v4-pro</td>
+<td>¥4.5 off-peak, ¥9 peak (cache miss)</td>
+<td>¥13.5 off-peak, ¥27 peak</td>
+<td>yuan</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources: <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/pricing">OpenAI, <em>API pricing</em></a>; <a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/pricing">Google, <em>Gemini API pricing</em></a> (output prices include thinking tokens); <a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing">DeepSeek, <em>模型 &amp; 价格</em></a>.</p>
+<p>Three things line up across vendors.</p>
+<p><strong>The tiers mirror each other price for price.</strong> Astra is priced like Fable ($10 / $50), Sol like Sonnet ($2 / $10), Luna like Haiku ($0.10 / $0.50), and Argon like Sonnet until December and like Opus after it (arithmetic on the two tables). The tier names differ; the price ladder is the same.</p>
+<p><strong>Every vendor exposes an effort control.</strong> Gemini 4 Argon takes low, medium and high thinking levels (<a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/models/gemini-4-argon">Google, <em>Gemini 4 Argon</em> model page, updated 14 Oct 2026</a>); DeepSeek's documented request enables thinking with a <code>reasoning_effort</code> setting (<a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/quick_start/pricing">DeepSeek pricing page, English</a>). OpenAI documents five effort levels for GPT-6.1 Sol, low, medium (the default), high, xhigh and max (<a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/latest-model">OpenAI, <em>Latest model guide</em></a>); The Next Web reports that developers can change effort without losing cached context (<a target="_blank" rel="noopener" href="https://thenextweb.com/news/openai-gpt-6-sol-luna-api-price-cut">The Next Web, 22 Sep 2026</a>). Note that the 22 September models are GPT-6 Sol and Luna; the pricing page and Artificial Analysis now list GPT-6.1 Sol, which OpenAI's guide treats as a separate, later model; this unit's prices and scores are for GPT-6.1 Sol.</p>
+<p><strong>Windows have converged at about a million tokens.</strong> Argon's is 1,048,576 tokens, with 65,536 output tokens by default (<a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/models/gemini-4-argon">Google model page</a>); DeepSeek's is 1M with 384K output (<a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing">DeepSeek</a>); Artificial Analysis lists 1M for each OpenAI model it tests (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis, <em>Leaderboard</em></a>).</p>
+<p>Consumer access differs. Google is rolling Argon out first to vetted cyber defenders, then to paid API customers and Google AI Ultra subscribers (<a target="_blank" rel="noopener" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">Google, <em>Gemini 4 Argon</em>, 30 Sep 2026</a>). The Next Web reports GPT-6 Sol and GPT-6 Luna in ChatGPT Work and Codex for paid accounts, with Luna available to Free and Go users in the desktop app (<a target="_blank" rel="noopener" href="https://thenextweb.com/news/openai-gpt-6-sol-luna-api-price-cut">The Next Web</a>). How the vendors compare per task, which is the measure that matters, is in §5.</p>
+<h2 id="read-b2-4">5 · Cost per task</h2>
+<p>The cost of a task is input tokens times the input price plus output tokens, thinking included, times the output price, summed over every turn, with the whole history re-sent on each turn (B1 §2; §3 above). The price list fixes one factor. The other, how many tokens a model spends to finish the task, varies by model and by effort, and it can swamp the first.</p>
+<p><strong>A small task, by arithmetic.</strong> Assume a Shōmen post takes 4,000 input tokens (instructions, brand notes, the brief) and 1,500 output tokens including thinking. Those token counts are my assumption; nobody measured them. At API prices:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>One post</th>
+<th>A hundred posts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Haiku 5.5</td>
+<td>$0.0012</td>
+<td>$0.12</td>
+</tr>
+<tr>
+<td>Sonnet 5.5</td>
+<td>$0.023</td>
+<td>$2.30</td>
+</tr>
+<tr>
+<td>Opus 5.5</td>
+<td>$0.046</td>
+<td>$4.60</td>
+</tr>
+<tr>
+<td>Fable 5.1</td>
+<td>$0.115</td>
+<td>$11.50</td>
+</tr>
+</tbody>
+</table></div>
+<p>On equal token counts the ratios follow the price list. In practice the counts are unequal.</p>
+<p><strong>A measured comparison.</strong> Artificial Analysis runs its Intelligence Index, a weighted set of agentic, coding, scientific and general tasks (categories from its methodology page), across models and effort levels, and reports a weighted cost per task computed from the model's token counts and prices (third-party vendor dataset; definition from <a target="_blank" rel="noopener" href="https://artificialanalysis.ai/models/claude-opus-5-5">Artificial Analysis, <em>Claude Opus 5.5</em></a>; figures from <a target="_blank" rel="noopener" href="https://artificialanalysis.ai/leaderboards/models">Artificial Analysis, <em>Leaderboard</em></a>, accessed 28 Oct 2026):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Model (effort)</th>
+<th>Index</th>
+<th>Cost per task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opus 5.5 (low / medium / high / xhigh / max)</td>
+<td>42 / 51 / 54 / 56 / 58</td>
+<td>$0.55 / $1.34 / $1.82 / $3.46 / $5.98</td>
+</tr>
+<tr>
+<td>Sonnet 5.5 (low / medium / high / xhigh / max)</td>
+<td>36 / 41 / 47 / 52 / 56</td>
+<td>$0.35 / $0.48 / $0.88 / $2.01 / $5.46</td>
+</tr>
+<tr>
+<td>Haiku 5.5 (low / medium / high / xhigh / max)</td>
+<td>29 / 34 / 38 / 41 / 43</td>
+<td>$0.02 / $0.05 / $0.08 / $0.12 / $0.21</td>
+</tr>
+<tr>
+<td>Fable 5.1 (low / medium / high / xhigh / max)</td>
+<td>47 / 49 / 51 / 53 / 53</td>
+<td>$2.37 / $2.98 / $3.91 / $5.98 / $7.63</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol (high / max)</td>
+<td>50 / 52</td>
+<td>$0.32 / $0.72</td>
+</tr>
+<tr>
+<td>GPT-6 Luna (max)</td>
+<td>38</td>
+<td>$0.07</td>
+</tr>
+<tr>
+<td>Gemini 4 Argon (high)</td>
+<td>53</td>
+<td>$1.62</td>
+</tr>
+<tr>
+<td>Gemini 3.8 Flash (high)</td>
+<td>41</td>
+<td>$3.49</td>
+</tr>
+<tr>
+<td>DeepSeek V4.1 Flash (max)</td>
+<td>45</td>
+<td>$0.26</td>
+</tr>
+</tbody>
+</table></div>
+<p>Four readings, all arithmetic on that table:</p>
+<ol>
+<li><strong>Price per token predicts little at the top of the effort range.</strong> Opus 5.5 costs twice Sonnet 5.5 per token. At medium effort it costs 2.8 times as much per task; at max, Sonnet costs 91% of what Opus costs and scores two points lower. Pushing the cheaper model to maximum effort spends its price advantage.</li>
+<li><strong>A small model at full effort can match a large one at low effort.</strong> Haiku 5.5 at max scores 43 against Opus 5.5 at low's 42, for 38% of the cost.</li>
+<li><strong>A cheaper token can make a dearer task.</strong> At current prices, Gemini 3.8 Flash is 2.7 times cheaper per token than Argon and costs 2.2 times more per task, scoring 12 points lower.</li>
+<li><strong>Across vendors, the same score has very different prices.</strong> Around an index of 50 to 51: GPT-6.1 Sol at high costs $0.32, Opus 5.5 at medium $1.34 (4.2 times Sol), Fable 5.1 at high $3.91 (12 times Sol).</li>
+</ol>
+<p><strong>Where sources disagree.</strong> Artificial Analysis's model page for Opus 5.5 gives $10.04 per task at max effort and names index v5.0 with nine evaluations (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/models/claude-opus-5-5">model page</a>); its leaderboard gives $5.98 for the same configuration (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/leaderboards/models">leaderboard</a>); its methodology page names v4.3.2 with ten evaluations (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/methodology/intelligence-benchmarking">methodology</a>). This unit uses the leaderboard because it reports every model and effort level on one page, so the ratios above are at least internally consistent. The absolute dollar figures should be read as approximate.</p>
+<p>Anthropic's own cost-per-task claims point the same way and are vendor data: at its default (medium) effort, Opus 5.5 beat Opus 5 at max effort on Terminal-Bench 4.0 for about a fifth of the cost, and beat GPT-6 Astra at max effort on GDPval-AA for about a fifth of the cost per task (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-opus-5-5">Anthropic, <em>Introducing Claude Opus 5.5</em></a>).</p>
+<p>None of these tasks is a course unit, a caption or a calendar entry. What transfers is the mechanism: the bill is set by tokens spent per finished job, and effort moves that number as much as the model does.</p>
+<p>One cost no table captures is his own time. A cheap first output that needs a second run, or a correction he has to spot and make, is paid out of 5 to 7 hours a week. No study measures that for him. The deliverable handles it with escalation triggers, so that a model that keeps costing him rework is replaced.</p>
+<h2 id="read-b2-5">6 · When the cheap model is the right one</h2>
+<p>Three bodies of evidence say the cheap model is often enough, and they agree on when.</p>
+<p><strong>Routing research.</strong> FrugalGPT (Chen, Zaharia and Zou, TMLR 2024; first posted on arXiv 2023) found API prices varying by up to two orders of magnitude and reported that a cascade, which learns which models to query for each request, matched GPT-4's performance with up to 98% lower cost (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2305.05176">arXiv 2305.05176</a>). RouteLLM (Ong et al., ICLR 2025) trained routers that send each query to a strong or a weak model and cut costs by more than half in some cases without loss of response quality on the benchmarks they tested (<a target="_blank" rel="noopener" href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html">ICLR 2025 proceedings</a>). The mechanism in both: for a large share of queries the weak model's answer is already as good as the strong model's, and the saving comes from identifying those queries. Both tested 2023–24 models.</p>
+<p><strong>Compute against size.</strong> Snell and colleagues compared spending more inference compute on a smaller model against using a larger one at equal total compute. On problems where the smaller model already had a non-trivial success rate, the smaller model with more compute beat a model 14 times its size (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2408.03314">Snell et al., arXiv 2408.03314</a>; published at <a target="_blank" rel="noopener" href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/1b623663fd9b874366f3ce019fdfdd44-Abstract-Conference.html">ICLR 2025</a> under a slightly changed title). Effort can stand in for model size on tasks within the small model's reach.</p>
+<p><strong>Vendor guidance.</strong> Anthropic positions Haiku 5.5 for classification, extraction and routing (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview">Models overview</a>) and for summaries, compactions and classification (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-haiku-5-5">Haiku 5.5 launch</a>). Its effort documentation says to run Haiku 5.5 at low for chat, short tool tasks and simple high-volume requests, and at high for knowledge work, longer agent tasks and strict instruction following (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort">Anthropic, <em>Effort</em></a>). A Claude Code team post (Lydia Hallie, 7 Jul 2026, before the 5.5 family) gives the general rule: smaller models for more routine tasks; larger models for more complex or ambiguous ones (<a target="_blank" rel="noopener" href="https://www.claude.com/blog/claude-model-and-effort-level-in-claude-code">Claude blog, <em>Choosing a Claude model and effort level in Claude Code</em></a>).</p>
+<p><strong>Where the cheap model falls off.</strong> Anthropic's own table shows the gap widening with task length. On GDPval-AA v2.1, a knowledge-work test, Haiku 5.5 scores 1620 against Sonnet 5.5's 1840; on Terminal-Bench 4.0, long agentic terminal tasks, 39.2% against 70.6% (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-haiku-5-5">Haiku 5.5 launch</a>; vendor).</p>
+<p>Put together, Haiku is the right model when the task is fully specified by its input, its correct output can be recognised at a glance, volume or speed matters, and an error is cheap to catch: classification, extraction to a fixed schema, reformatting, short tool calls. It is the wrong model when the task is open-ended, long or multi-step, or when a mistake hides well (a plausible wrong figure inside a long text). The combination of conditions is my synthesis of the sources above; each condition traces to one of them.</p>
+<p>Two cautions specific to his setup. On the API, Haiku's price quintuples once a prompt passes 100K tokens (§3), so a cheap task loaded with a heavy context loses most of its advantage. On claude.ai, the same applies to his limits in kind: conversation length and attachments draw usage whatever the model (§2), so a small task belongs in a light chat, outside a Project stuffed with course documents.</p>
+<h2 id="read-b2-6">7 · What thinking and effort settings do</h2>
+<p><strong>Thinking is adaptive.</strong> On each request the model judges whether reasoning would improve the answer and how much; a simple factual question may get no thinking at all, a multistep problem gets more (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost">Anthropic, <em>Steering thinking</em></a>). On Opus 5.5 and Fable 5.1 thinking is always on and cannot be switched off; on Haiku 5.5 and Sonnet 5.5 it cannot be switched off in the apps either (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/8664678-change-the-model-effort-and-extended-thinking-settings">Help Center, <em>Change the model, effort and extended thinking settings</em></a>).</p>
+<p><strong>Effort sets how many tokens the whole response may spend.</strong> Anthropic describes it as a behavioural signal, not a strict token budget, covering how often and how deeply Claude thinks, how many tool calls it makes, and how much it explains. The levels are low, medium, high, xhigh and max, with availability varying by model; xhigh is aimed at long-horizon work of more than 30 minutes. At lower effort Claude can skip thinking on easy problems and still thinks, less, on hard ones. On Opus 5.5, effort is the main lever on reasoning because thinking cannot be disabled (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort">Anthropic, <em>Effort</em></a>).</p>
+<p><strong>Defaults.</strong> On the API, Opus 5.5 and Haiku 5.5 default to medium; Sonnet 5.5 and Fable 5.1 to high (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort">Effort</a>; <a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview">Models overview</a>). Opus 5 defaulted to high, so the same request on Opus 5.5 with no effort set runs one level lower than it used to (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort">Effort</a>). In the apps, Sonnet 5.5 defaults to medium (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-sonnet-5-5">Sonnet 5.5 launch</a>) and Fable 5.1 to medium on claude.ai and in Cowork, high in Claude Code (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Fable 5.1 launch</a>). The claude.ai help article marks each model's default in the menu without listing them (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/8664678-change-the-model-effort-and-extended-thinking-settings">Help Center</a>).</p>
+<p><strong>On claude.ai</strong> the effort setting sits inside the model menu next to the send button. Anthropic's labels: low and medium suit routine tasks and stretch his limits; high is the best overall balance; extra high is for long-running coding and agentic work (Opus 4.7 and newer); max is the most thorough. Higher effort means more thorough responses that take longer, use more tokens and reach limits sooner (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/8664678-change-the-model-effort-and-extended-thinking-settings">Help Center</a>).</p>
+<p><strong>What a step of effort costs, measured.</strong> On Artificial Analysis's index (third-party vendor data, §5), Opus 5.5 from low to max costs 10.9 times as much per task for 16 more points; medium to high costs 36% more for 3 points; high to xhigh costs 1.9 times more for 2 points; xhigh to max 1.7 times more for 2 points. Sonnet 5.5 from low to max costs 15.6 times more (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/leaderboards/models">leaderboard</a>; arithmetic on its figures). The Claude Code post's diagram shows a high-effort path using roughly seven times the tokens of a low-effort one, but the post labels its curves illustrative (<a target="_blank" rel="noopener" href="https://www.claude.com/blog/claude-model-and-effort-level-in-claude-code">Claude blog</a>), so that figure is not evidence.</p>
+<p><strong>Extra thinking on easy problems is waste.</strong> Chen and colleagues documented reasoning models spending large amounts of compute on trivially easy problems (the title's example is 2 + 3) and showed the excess could be cut while keeping accuracy (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2412.21187">Chen et al., ICML 2025; arXiv 2412.21187</a>). Anthropic's own guidance says the same in product terms: lower effort before trying to talk the model out of thinking (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost">Steering thinking</a>).</p>
+<p><strong>Model or effort: the diagnostic.</strong> The Claude Code post separates the two: "the model setting is roughly how capable; the effort setting is roughly how thorough." If Claude had full context, clearly tried, and still got it wrong, pick a more capable model; if it skipped files, skipped tests or did not double-check, raise effort (<a target="_blank" rel="noopener" href="https://www.claude.com/blog/claude-model-and-effort-level-in-claude-code">Claude blog</a>). The same post recommends the default effort for most tasks and treating effort as a standing preference more than a per-task dial (same post).</p>
+<p><strong>Keep effort fixed within a chat.</strong> On the API, changing thinking or effort between requests invalidates the prompt cache, with two exceptions the page lists (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost">Steering thinking</a>). Whether the same happens on claude.ai is undocumented, as is the effect of caching on his limits (B1 §2). Setting effort once, before the first message, costs nothing and avoids the question.</p>
+<h2 id="read-b2-7">8 · Where the quality differences show, and where they do not</h2>
+<h3>Long-form synthesis</h3>
+<p>On Anthropic's knowledge-work tests the gap between Opus and Sonnet nearly vanishes. GDPval-AA v2.1: Opus 5.5 1846, Sonnet 5.5 1844; AA-Briefcase v1.1: 1822 against 1811 (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-sonnet-5-5">Sonnet 5.5 launch</a>; vendor). The Haiku launch reports Sonnet at 1840 and 1824 on the same two tests and Haiku 5.5 at 1620 and 1578 (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-haiku-5-5">Haiku 5.5 launch</a>), so Anthropic's own figures for Sonnet move by a few points between pages; the Sonnet page notes those two runs used a pre-release deployment with a since-fixed bug and may understate Sonnet slightly (Sonnet 5.5 launch). Anthropic ran Opus 5.5 at max effort for its table unless noted (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-opus-5-5">Opus 5.5 launch</a>).</p>
+<p>On reasoning with tools (Humanity's Last Exam), Anthropic reports Opus 5.5 at 67.7%, Sonnet 5.5 at 64.5% and Haiku 5.5 at 57.4% (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-sonnet-5-5">Sonnet 5.5 launch</a>; <a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-haiku-5-5">Haiku 5.5 launch</a>; vendor).</p>
+<p>At the efforts he actually gets by default, the third-party index separates Opus and Sonnet: Opus 5.5 at medium scores 51, Sonnet 5.5 at medium 41, and Sonnet needs max effort (56, at $5.46 a task) to come within two points of Opus at max (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/leaderboards/models">leaderboard</a>).</p>
+<p>A course unit is long, open-ended, searched and cited synthesis. The case for Opus there rests on that default-effort gap and on Anthropic's unquantified statement that Opus is stronger on open-ended work (§1). No source here measured anything like a course unit. His own record adds one data point about process: in the Greek review, reports written without a fresh checker scored 4.28 on his rubric, and syllabus unit 12, written with one, scored 4.8 (<code>method.md</code> §1, citing <code>audits/greece-13.4-cohorts.md</code>). That is a small internal sample, and it measures a checking step, which is the subject of B6.</p>
+<h3>Code</h3>
+<p>On agentic coding the top two are level and Haiku falls behind on long tasks. Terminal-Bench 4.0: Sonnet 5.5 70.6%, Opus 5.5 66.4% (at xhigh), Haiku 5.5 39.2%. FrontierCode 1.1: Opus 54.4%, Sonnet 52.1% (at xhigh), Haiku 46.4% (<a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-sonnet-5-5">Sonnet 5.5 launch</a>; <a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-haiku-5-5">Haiku 5.5 launch</a>; vendor). Anthropic still recommends Sonnet or Opus over Haiku for complex agentic coding (Haiku launch). For his generator scripts and parsers, Sonnet is enough on this evidence; the Claude Code diagnostic (§7) says when to move up.</p>
+<h3>Audit</h3>
+<p>No benchmark measures auditing a course unit against its sources. Three pieces of evidence bear on it.</p>
+<ul>
+<li><strong>Knowledge reliability.</strong> On AA-Omniscience v1.1 (3,000 questions across six domains; it rewards correct answers, penalises wrong ones and leaves abstentions unpenalised), Fable 5.1 has the highest accuracy, 68%; Opus 5.5 has the highest overall index, 48, against 46 for Fable 5.1 and Gemini 4 Argon; Gemini 4 Argon has the lowest hallucination rate, 4% (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/evaluations/omniscience">Artificial Analysis, <em>AA-Omniscience</em></a>; third-party vendor data).</li>
+<li><strong>Model judges.</strong> Strong model judges agreed with human preferences more than 80% of the time, the same rate at which humans agree with each other, and showed position, verbosity and self-enhancement biases (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2306.05685">Zheng et al., NeurIPS 2023, arXiv 2306.05685</a>). The judges tested were 2023 models.</li>
+<li><strong>Self-preference.</strong> Model evaluators score their own outputs above others', and the bias grows with the model's ability to recognise its own text (<a target="_blank" rel="noopener" href="https://papers.nips.cc/paper_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html">Panickssery, Bowman and Feng, NeurIPS 2024</a>; <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2404.13076">arXiv 2404.13076</a>).</li>
+</ul>
+<p>So the best-evidenced part of his method is that a different model audits from the one that wrote. Choosing Fable specifically rests on that independence and on a narrow lead in factual accuracy; general capability benchmarks favour Opus 5.5 (§1). Fable and Opus are both Anthropic models, and none of the studies above tested whether self-preference carries across sibling models from one maker. That question stays open.</p>
+<p>His own record is consistent with this. Audit 1 failed 23 of 91 cited claims in the A2/A6/A9 research document and none of the 7 sampled in B1 (<a target="_blank" rel="noopener" href="https://claude.ai/artifact/2uA7uLCuUAGRZuUoywpaRj">Audit 1, 28 Oct 2026</a>); the research document was written by Fable 5.1 research agents and B1 by Opus 5.5 (<code>courses-index.md</code>; the audit notes that its own prompt named Opus 5.5 for all four and that the index record should stand). Two documents on different tasks prove nothing about the models. They do show that the dearer model's output was the one that failed, and that the audit, whatever wrote the text, is what caught it.</p>
+<h3>Reformatting and triage</h3>
+<p>No benchmark isolates reformatting or triage, so the evidence that model size stops mattering here is indirect: the routing results and the compute-against-size result in §6, and Anthropic's positioning of Haiku for exactly these jobs. The reasoning that ties them together is mine: reformatting and triage are tasks whose correct output is fully determined by the input, so a model has nothing to add beyond following the instruction, and capability differences show up where a task needs something the input does not contain (judgement, synthesis, search). The check is cheap, because the output can be compared with the input at a glance; sample it before trusting it (B6).</p>
+<p>One exception. Where the task is arithmetic over numbers, such as totals or averages from an export, the model should write and run code, and the code should produce the numbers. The same input can give a model different outputs even at fixed settings (B1 §5); a script gives the same output every time.</p>
+<h2 id="read-b2-8">Deliverable · Model routing table</h2>
+<p>For his recurring tasks, as of 28 October 2026. Set model and effort before the first message of a chat and leave them. "Escalate" means one step up, once, when the trigger fires. Section numbers point to the evidence in this unit.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Pick</th>
+<th>Effort</th>
+<th>Why</th>
+<th>Override if</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Journal entries</strong> (his notes or a voice transcript into a dated entry in his words)</td>
+<td>Sonnet 5.5</td>
+<td>medium</td>
+<td>Polished writing from given material; Sonnet's knowledge-work score is within a few points of Opus (vendor, §8); about a third of Opus's per-task cost at medium (36%, §5).</td>
+<td>The entry has to synthesise several weeks or several journeys: Opus 5.5, medium. Pure tidy-up of a transcript: Haiku 5.5, low.</td>
+</tr>
+<tr>
+<td><strong>Biometrics parsing</strong> (exports into tables or totals)</td>
+<td>Haiku 5.5 writes and maintains the parsing script; the script does the parsing</td>
+<td>high</td>
+<td>Extraction is Haiku's documented use (§6); high effort is Anthropic's setting for strict instruction following (§6); numbers come from code because model outputs vary run to run (§8, B1 §5).</td>
+<td>The script breaks twice on a new export format: Sonnet 5.5, medium, to rewrite it.</td>
+</tr>
+<tr>
+<td><strong>Course units</strong> (Brand + AI units, history modules)</td>
+<td>Opus 5.5</td>
+<td>high</td>
+<td>The method's writing model; at default effort Opus leads Sonnet by 10 index points (third-party, §8); medium to high adds 3 points for 36% more cost per task (§7); the units still to write number in the dozens (<code>courses-index.md</code>), so the premium is paid rarely.</td>
+<td>Limits run short mid-unit: stay on Opus 5.5 at medium and keep the chat; never switch model inside a unit.</td>
+</tr>
+<tr>
+<td><strong>Audits</strong> (four-unit sample, staleness check, fresh checks)</td>
+<td>Fable 5.1</td>
+<td>high</td>
+<td>A different model from the writer counters self-preference (§8); highest factual accuracy on AA-Omniscience (third-party, §8); the method's audit model. On Pro every Fable run is billed in usage credits at API rates; on Max it competes for half the weekly limit (§2).</td>
+<td>Fable is unavailable or out of budget: Opus 5.5 at high in a fresh chat that has not seen the unit, and record in the audit that the auditor was the writer's model.</td>
+</tr>
+<tr>
+<td><strong>Message drafts, routine</strong> (logistics, replies, short notes)</td>
+<td>Sonnet 5.5</td>
+<td>low</td>
+<td>Short, well-scoped writing; low effort is Anthropic's setting for routine work and stretches limits (§7).</td>
+<td>The draft misreads the situation twice: treat it as high-stakes.</td>
+</tr>
+<tr>
+<td><strong>Message drafts, high-stakes</strong> (manager, board, HR, conflict, performance)</td>
+<td>Opus 5.5</td>
+<td>medium</td>
+<td>Anthropic describes Opus 5.5 as built for complex work requiring careful judgment (Sonnet 5.5 launch; vendor); the cost of one message at any tier is cents (§5); the judgement that this is small next to a bad message is mine.</td>
+<td>Nothing; this row is the escalation.</td>
+</tr>
+<tr>
+<td><strong>Calendar</strong> (creating and editing events with his rules)</td>
+<td>Haiku 5.5</td>
+<td>high</td>
+<td>A short tool task with strict, fixed rules; Anthropic's guidance for Haiku is high effort for strict instruction following (§6); errors are visible at a glance in the event.</td>
+<td>An event breaks one of his calendar rules twice in a month: Sonnet 5.5, medium.</td>
+</tr>
+<tr>
+<td><strong>Research</strong> (questions that need web search and synthesis)</td>
+<td>Opus 5.5</td>
+<td>high</td>
+<td>Multi-step, searched work; on Humanity's Last Exam with tools, Opus 5.5 67.7%, Sonnet 64.5%, Haiku 57.4% (vendor, §8); search draws usage on any model (§2), so a model that needs a second round of searching costs more than one that does it once.</td>
+<td>A single factual lookup: Sonnet 5.5, low.</td>
+</tr>
+<tr>
+<td><strong>Video scripts</strong></td>
+<td>From a finished unit: Sonnet 5.5. Original, with no unit behind it: Opus 5.5</td>
+<td>medium</td>
+<td>A script cut from a sourced unit is derivative work, which the method gives to Sonnet; an original script is synthesis (§8).</td>
+<td>Sonnet's script drops or bends a sourced claim from the unit: redo on Opus 5.5, medium.</td>
+</tr>
+<tr>
+<td><strong>Shōmen posts</strong> (captions, product copy)</td>
+<td>Sonnet 5.5</td>
+<td>low</td>
+<td>Short derivative copy in a public voice; at a hundred posts the cost on Sonnet is about $2.30 by the §5 arithmetic, so the saving from Haiku buys little.</td>
+<td>Twenty or more variants at once: Haiku 5.5, medium, and he picks by hand.</td>
+</tr>
+<tr>
+<td><strong>Reformatting and triage</strong> (brain dumps into lists, tables between formats, tagging, sorting an inbox)</td>
+<td>Haiku 5.5</td>
+<td>low</td>
+<td>Fully specified by its input; Haiku's documented use (§6); routing research shows weak models match strong ones on such queries (§6).</td>
+<td>The triage needs a judgement about priorities: Sonnet 5.5, medium.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rules for using the table</strong></p>
+<ul>
+<li><strong>Escalate by cause.</strong> Wrong with full context and a real attempt: move the model up one step. Skipped steps, missed files, no double-check: raise effort one step (§7).</li>
+<li><strong>Run small tasks in a light chat.</strong> Captions, calendar and reformatting go outside the Learning Project, where the window carries less (§2, §6; B1 §2).</li>
+<li><strong>Never trust a single run on anything that will be published or filed.</strong> Sample its claims against the sources first (§8; B6).</li>
+<li><strong>Keep a one-line log of every escalation</strong> (task, from, to, trigger). Two escalations on the same row in a month change the row.</li>
+<li><strong>Re-read the prices before relying on them.</strong> Two change on dates already announced: Gemini 4 Argon on 1 December 2026, Gemini 3.8 Flash on 1 January 2027 (§4). The whole table is due for the staleness check on 28 April 2027.</li>
+</ul>
+<h2 id="read-b2-9">Writer's unsure list</h2>
+<p>Fresh check 28 Oct 2026 (Fable 5.1): fix · 3 errors, 10 should-fix, 14 minor; all applied; report <code>audits/brand-ai/fresh-check-B2.md</code>.</p>
+<ol>
+<li><strong>Artificial Analysis figures disagree with themselves.</strong> The leaderboard gives Opus 5.5 at max $5.98 per task; the model page gives $10.04. The model page names index v5.0 with nine evaluations; the methodology page names v4.3.2 with ten. The meaning of "with fallback" in the model labels is not explained on the pages read. Every §5 and §7 ratio rests on the leaderboard.</li>
+<li><strong>Gemini 3.8 Flash at $3.49 per task, above Argon's $1.62,</strong> is the most surprising figure in the unit and may be a data artefact. It is reported as the leaderboard shows it.</li>
+<li><strong>OpenAI's announcement page failed to load.</strong> GPT-6 Sol and Luna positioning and ChatGPT availability come from The Next Web (secondary); GPT-6.1 Sol's effort levels come from OpenAI's model guide. Prices come from OpenAI's own pricing page, which lists gpt-6.1-sol where the news coverage says GPT-6 Sol.</li>
+<li><strong>claude.ai defaults for Opus 5.5 and Haiku 5.5</strong> are not stated anywhere I found; the unit gives the API defaults and the app defaults only for Sonnet 5.5 and Fable 5.1.</li>
+<li><strong>The per-model rate at which claude.ai usage is drawn</strong> is undocumented. The claim that API prices are his marginal price holds only for usage credits and for Fable on Pro.</li>
+<li><strong>Anthropic's benchmark figures move between its own pages:</strong> Sonnet 5.5 GDPval-AA 1844 (Sonnet launch) against 1840 (Haiku launch); AA-Briefcase 1811 against 1824; Fable 5.1 GDPval-AA 1853 on v2 (Fable launch) against 1735 on v2.1 (Opus launch).</li>
+<li><strong>FrugalGPT and the overthinking paper were cited from arXiv as preprints;</strong> the fresh check found their venues (TMLR 2024; ICML 2025) and the text now cites them.</li>
+<li><strong>The token counts in the Shōmen example (4,000 in, 1,500 out)</strong> are my assumptions, and the per-post costs are arithmetic on them.</li>
+<li><strong>The self-preference evidence is about a model judging its own output.</strong> Whether it extends to a sibling model from the same maker (Fable auditing Opus) is untested in the sources cited.</li>
+<li><strong>The Claude Code post on model and effort choice</strong> predates the 5.5 family (7 Jul 2026); its advice is general, and its seven-times token figure is labelled illustrative by its author.</li>
+</ol>
+<h2 id="read-b2-10">Sources</h2>
+<p>All web sources checked 28 October 2026.</p>
+<ul>
+<li>Anthropic. <em>Models overview</em>. Claude Platform docs. https://platform.claude.com/docs/en/models/overview</li>
+<li>Anthropic. <em>Pricing</em>. Claude Platform docs. https://platform.claude.com/docs/en/about-claude/pricing</li>
+<li>Anthropic. <em>Effort</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/effort</li>
+<li>Anthropic. <em>Steering thinking</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost</li>
+<li>Anthropic. <em>Introducing Claude Fable 5.1 and Claude Mythos 5.1</em>. September 2026. https://www.anthropic.com/claude-fable-and-mythos-5-1</li>
+<li>Anthropic. <em>Introducing Claude Opus 5.5</em>. 22 September 2026. https://www.anthropic.com/claude-opus-5-5</li>
+<li>Anthropic. <em>Introducing Claude Sonnet 5.5</em>. 28 September 2026. https://www.anthropic.com/claude-sonnet-5-5</li>
+<li>Anthropic. <em>Introducing Claude Haiku 5.5</em>. 7 October 2026. https://www.anthropic.com/claude-haiku-5-5</li>
+<li>Claude. <em>Plans &amp; pricing</em>. https://claude.com/pricing</li>
+<li>Claude Help Center. <em>About Claude's Pro plan usage</em>. https://support.claude.com/en/articles/8324991-about-claude-s-pro-plan-usage</li>
+<li>Claude Help Center. <em>About Claude's Max plan usage</em>. https://support.claude.com/en/articles/11014257-about-claude-s-max-plan-usage</li>
+<li>Claude Help Center. <em>Claude Fable models on your plan</em>. 2 September 2026. https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan</li>
+<li>Claude Help Center. <em>Manage usage credits for paid Claude plans</em>. https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans</li>
+<li>Claude Help Center. <em>Usage limit best practices</em>. 22 September 2026. https://support.claude.com/en/articles/9797557-usage-limit-best-practices</li>
+<li>Claude Help Center. <em>Change the model, effort and extended thinking settings</em>. https://support.claude.com/en/articles/8664678-change-the-model-effort-and-extended-thinking-settings</li>
+<li>Hallie, L. <em>Choosing a Claude model and effort level in Claude Code</em>. Claude blog, 7 July 2026. https://www.claude.com/blog/claude-model-and-effort-level-in-claude-code</li>
+<li>OpenAI. <em>API pricing</em>. https://developers.openai.com/api/docs/pricing</li>
+<li>OpenAI. <em>Latest model guide</em>. https://developers.openai.com/api/docs/guides/latest-model</li>
+<li>The Next Web. <em>OpenAI cuts GPT-6 prices in half with Sol and Luna</em>. 22 September 2026 (secondary report). https://thenextweb.com/news/openai-gpt-6-sol-luna-api-price-cut</li>
+<li>Google. <em>Gemini API pricing</em>. https://ai.google.dev/gemini-api/docs/pricing</li>
+<li>Google. <em>Gemini 4 Argon</em>. Gemini API model page, last updated 14 October 2026. https://ai.google.dev/gemini-api/docs/models/gemini-4-argon</li>
+<li>Google. <em>Gemini 4 Argon: our next era of frontier intelligence</em>. 30 September 2026. https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/</li>
+<li>DeepSeek. <em>模型 &amp; 价格</em> (Models and pricing). API docs. https://api-docs.deepseek.com/zh-cn/quick_start/pricing · English page with the <code>reasoning_effort</code> example: https://api-docs.deepseek.com/quick_start/pricing</li>
+<li>Artificial Analysis. <em>LLM Leaderboard</em>. Accessed 28 October 2026 (vendor dataset). https://artificialanalysis.ai/leaderboards/models</li>
+<li>Artificial Analysis. <em>Claude Opus 5.5</em>. Model page (vendor dataset). https://artificialanalysis.ai/models/claude-opus-5-5</li>
+<li>Artificial Analysis. <em>Intelligence benchmarking methodology</em>. https://artificialanalysis.ai/methodology/intelligence-benchmarking</li>
+<li>Artificial Analysis. <em>AA-Omniscience</em>. v1.1, October 2026 (vendor dataset). https://artificialanalysis.ai/evaluations/omniscience</li>
+<li>Chen, L., Zaharia, M. and Zou, J. "FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance". arXiv 2305.05176, 2023; published in Transactions on Machine Learning Research, 2024. https://arxiv.org/abs/2305.05176 · https://openreview.net/forum?id=cSimKw5p6R</li>
+<li>Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W. and Stoica, I. "RouteLLM: Learning to Route LLMs from Preference Data". ICLR 2025. https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html</li>
+<li>Snell, C., Lee, J., Xu, K. and Kumar, A. "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters". arXiv 2408.03314, 2024; published at ICLR 2025 as "Scaling LLM Test-Time Compute Optimally Can be More Effective than Scaling Parameters for Reasoning". https://arxiv.org/abs/2408.03314 · https://proceedings.iclr.cc/paper_files/paper/2025/hash/1b623663fd9b874366f3ce019fdfdd44-Abstract-Conference.html</li>
+<li>Chen, X. et al. "Do NOT Think That Much for 2+3=? On the Overthinking of o1-Like LLMs". arXiv 2412.21187, 2024; published at ICML 2025 as "Do NOT Think That Much for 2+3=? On the Overthinking of Long Reasoning Models". https://arxiv.org/abs/2412.21187 · https://icml.cc/virtual/2025/poster/45540</li>
+<li>Zheng, L. et al. "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena". NeurIPS 2023 Datasets and Benchmarks Track. arXiv 2306.05685. https://arxiv.org/abs/2306.05685</li>
+<li>Panickssery, A., Bowman, S. R. and Feng, S. "LLM Evaluators Recognize and Favor Their Own Generations". NeurIPS 2024. https://papers.nips.cc/paper_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html · arXiv 2404.13076: https://arxiv.org/abs/2404.13076</li>
+<li>Learning Project. <em>Audit 1: A2 · A6 · A9 and B1</em>. Fable 5.1, 28 October 2026. https://claude.ai/artifact/2uA7uLCuUAGRZuUoywpaRj</li>
+<li>Learning Project files cited by name: <code>method.md</code> §1; <code>courses-index.md</code>; B1 · Mental model (<code>B1-mental-model.md</code>).</li>
+</ul></div>
+  <div class="pager"></div>

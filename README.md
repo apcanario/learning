@@ -18,7 +18,7 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 ## Working in a chat
 
 1. Clone (or be given) this repo. Work in it; never from a zip.
-2. Kit work: `cd kit`, then `python3 build.py` and confirm it reproduces `personal-mythology.html` byte for byte before changing anything (the rule in `kit/NEXT-SESSION.md`).
+2. Kit work: `cd kit`, then `python3 build.py` and confirm it reproduces `academy/` byte for byte (`git status` clean) before changing anything (the rule in `kit/NEXT-SESSION.md`).
 3. End the session with a commit that names the session (`CHANGELOG.md` entry, `review_notes`, the next `NEXT-SESSION.md`), and push.
 
 ## After a theme change
@@ -26,7 +26,7 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 1. Edit `design/theme.css` (a token in section 1 before a component).
 2. Copy it over `kit/shell.css`: `cp design/theme.css kit/shell.css`.
 3. `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED).
-4. Publish Academy: the built page to its existing artifact (link in `docs/courses-index.md`), never a new one; then `./deploy.sh` for GitHub Pages.
+4. Publish Academy: the built site to its existing artifact (link in `docs/courses-index.md`), never a new one: the shell `kit/academy/index.html` with the report files `python3 publish_files.py` lists as `files` (`kit/README.md`, Site layout and sizes); then `./deploy.sh` for GitHub Pages.
 
 ## Where this is going (28 October 2026)
 
