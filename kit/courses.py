@@ -58,6 +58,12 @@ GREECE = dict(
     <p>Secondary, three only: Robin Hard, The Routledge Handbook of Greek Mythology; Walter Burkert, Greek Religion; Robin Osborne, Greece in the Making, with Simon Hornblower, The Greek World 479 to 323.</p>''',
     closing='Greece is the first course. Rome, the second, is in progress; eight more are coming: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese.',
     card='From the Bronze Age palaces to the closing of the Academy, with the gods, the heroes and the Trojan War read against the societies that told them. Ten core units in four parts, three deep dives on Troy, Alexander and Greek philosophy, and a capstone exam.',
+    figure=dict(kind='tree', title='Hesiod\'s line of descent, Chaos to the six Olympian siblings',
+        caption='The first beings and the two generations that follow, as module 2.1 reads them in Hesiod, <em>Theogony</em> 116–138 (Chaos, Gaia, Tartarus, Eros, Erebus, Nyx; Gaia bears Ouranos), 132–138 (the Titans, Kronos last) and 453–458 (the six children of Kronos and Rhea, Zeus last). Erebus and Nyx, the Mountains, Pontos and the other Titans are left out for room.',
+        root=dict(label='Chaos', tone=6, children=[
+            dict(label='Gaia', tone=2, children=[dict(label='Ouranos', tone=4, children=[dict(label='Kronos and Rhea', tone=5, children=[
+                dict(label='Hestia', tone=1), dict(label='Demeter', tone=1), dict(label='Hera', tone=1), dict(label='Hades', tone=1), dict(label='Poseidon', tone=1), dict(label='Zeus', tone=1)])])]),
+            dict(label='Tartarus', tone=2), dict(label='Eros', tone=2)])),
     card_units=13, status='available',
 )
 
@@ -99,6 +105,13 @@ ROME = dict(
     <p>Secondary, three only: T. J. Cornell, The Beginnings of Rome; Mary Beard, John North and Simon Price, Religions of Rome; Mary Beard, SPQR, with Peter Heather, The Fall of the Roman Empire.</p>''',
     closing='Rome is the second course, after Greece. Eight more are coming: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese.',
     card='From the huts on the Palatine to the last emperor in the West, with the gods, the founding legends and the Aeneid read against the city that told them. Eleven core units in four parts, three deep dives on the fall of the Republic, the Aeneid and Roman philosophy, and a capstone exam.',
+    figure=dict(kind='timeline', title='The Struggle of the Orders: what the plebs won, and when', start=-500, end=-160, ticks=[-500, -400, -300, -200],
+        caption='Dates as module 3.1 gives them, from Livy (Varronian years): the tribunate after the secession of 494; the Twelve Tables 451–449; the quaestorship opened in 421 and first held by plebeians in 409; the consulship from the Licinian-Sextian laws, Lucius Sextius consul in 366; the first plebeian dictator 356 and censor 351; the Publilian laws 339; the lex Ogulnia opening the pontificate and augurate in 300; the secession of 287; both consuls plebeian for the first time in 172.',
+        spans=[dict(**{'from': -494, 'to': -449, 'label': 'Tables', 'tone': 6}), dict(**{'from': -449, 'to': -367, 'label': 'consular tribunes', 'tone': 4}), dict(**{'from': -367, 'to': -287, 'label': 'offices open', 'tone': 5})],
+        events=[dict(at=-494, label='Tribunes of the plebs', tone=6), dict(at=-451, label='Twelve Tables', tone=6), dict(at=-421, label='Quaestorship opened', tone=4),
+                dict(at=-409, label='First plebeian quaestors', tone=4), dict(at=-366, label='Sextius consul', tone=5), dict(at=-356, label='First plebeian dictator', tone=5),
+                dict(at=-351, label='First plebeian censor', tone=5), dict(at=-339, label='Publilian laws', tone=5), dict(at=-300, label='Lex Ogulnia: priesthoods', tone=5),
+                dict(at=-287, label='Secession; lex Hortensia', tone=1), dict(at=-172, label='Both consuls plebeian', tone=1)]),
     card_units=14, status='in progress',
     # modules queued for the next writing session: shown with a 'next' pill until written
     next_up=['11.3', '11.4', '11.5', '11.6', '11.7', '11.8', '12.1', '12.2', '12.3', '12.4', '12.5', '12.6', '12.7', '12.8', '13.3', '13.4', '13.5', '13.6', '13.7', '13.8'],

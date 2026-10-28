@@ -46,6 +46,10 @@ A published claude.ai artifact cannot load an external stylesheet. So the genera
 
 Dark accents are the house palette and do not change. No grey is a dominant accent.
 
+## Figures
+
+`kit/viz.py` draws a declared figure (timeline, compare, tree, flow) as inline SVG with classes only; section 4i of the theme gives every class its fill and stroke from the tokens, so a figure follows the theme like any text. A page never styles a figure; a new kind is a function in `viz.py` plus its classes in 4i. The house accents are reachable as tones 1 to 6 (`--viz-1` … `--viz-6`).
+
 ## Rules for pages
 
 - A page's only `<style>` is `theme.css`, inlined by a generator. No `style` attribute except to set a custom property (`--c` item colour, `--cc` course colour, `--hc` callout colour) or a progress width.

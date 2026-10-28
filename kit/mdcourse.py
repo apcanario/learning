@@ -12,6 +12,7 @@ Needs the `markdown` package (pip install markdown).
 """
 import html as H, re
 import markdown
+import viz
 
 
 def _words(n):
@@ -31,10 +32,12 @@ def render_md(src):
     theme-classed HTML. Returns (body html, toc html, links {url: title})."""
     src = re.sub(r'\A---\n.*?\n---\n', '', src, flags=re.S)
     src = re.sub(r'^# .*\n', '', src, count=1, flags=re.M)   # the unit's own title line; the page has its h1
+    src, figs = viz.extract_md(src)     # A8: ```viz fences become drawings
     links = {}
     for t, u in re.findall(r'\[([^\]]+)\]\((https?://[^)]+)\)', src):
         links.setdefault(u, t)
     body = markdown.markdown(src, extensions=['tables'])
+    body = viz.restore_md(body, figs)
     body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
     body = body.replace('<a href=', '<a target="_blank" rel="noopener" href=')
     return body, links

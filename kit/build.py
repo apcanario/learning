@@ -19,6 +19,7 @@ import json, re, html, pathlib, importlib.util
 from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES
 import mdcourse
 import howbuilt
+import viz
 
 R = pathlib.Path(__file__).resolve().parent
 PROV = json.load(open(R / 'provenance.json'))
@@ -83,6 +84,7 @@ def load(c):
     ucol = c['unit_colors']
     for i, meta in c['index'].items():
         frag = (R / c['frags'] / f'r-{i}.html').read_text()
+        frag = viz.render_html(frag)     # A8: a <figure class="viz"> declaration becomes its drawing (before the script strip)
         # strip anything that violates the fragment contract
         frag = re.sub(r'<(/?)(html|head|body|!doctype[^>]*)>', '', frag, flags=re.I)
         frag = re.sub(r'<style.*?</style>|<script.*?</script>', '', frag, flags=re.S | re.I)
@@ -221,6 +223,7 @@ def course_home(c):
     <p class="era-note">{c['era_note']}</p>
     <ul class="legend">{legend}</ul>
   </section>
+  {viz.render(c['figure']) if c.get('figure') else ''}
 
   <details class="howto rules">
     <summary><h2>How to read it</h2><span>{c['rules_count']}</span></summary>

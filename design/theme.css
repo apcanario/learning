@@ -15,12 +15,14 @@
       4a report  4b home and course cards  4c syllabus and prompts
       4d era ribbon  4e rule blocks and parts  4f root home  4g changelog
       4h learner home (resume card, new since, track jump, folded planned lists)
+      4i figures (kit/viz.py: timeline, compare, tree, flow; classes only, no colour attributes)
+   8  Swiss pass (version 5): type scale up, colour as a field, hard corners, rules not shadows
    5  Components added for hubs (the history site has no equivalent)
    6  Responsive: tablet (from 768 px) and desktop (from 1100 px); the phone
       layout below 768 px is the one every rule above describes and does not change
    7  Interaction: hover and pressed states for every clickable thing, on devices
       that can hover; equal-height catalogue cards with the button on one line
-   Version 4, 28 Oct 2026 (4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
+   Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -389,6 +391,33 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 /* one line of totals, the only place the site's counts appear together */
 .totals{color:var(--dim);font-size:11px;margin:0;text-align:center}
 
+/* 4i · figures (A8). The SVG carries classes only; every fill and stroke comes from here, so a figure follows the theme.
+   Tones 1–6 are the house accents in the order red, orange, teal, blue, purple, gold. */
+:root{--viz-1:var(--red);--viz-2:var(--orange);--viz-3:var(--teal);--viz-4:var(--blue);--viz-5:var(--purple);--viz-6:var(--gold)}
+.viz{margin:0 0 20px;background:var(--card);border:1px solid var(--line);padding:14px 14px 10px;min-width:0}
+.viz-title{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.viz-scroll{overflow-x:auto;overflow-y:hidden}
+/* a figure scales to the column but never below the width its type stays legible at; narrower than that it scrolls */
+.viz svg{display:block;width:100%;max-width:none;height:auto;min-width:560px;font-family:var(--sans)}
+.viz-timeline svg,.viz-flow svg{width:auto}
+.viz figcaption{font-size:12.5px;color:var(--muted);margin:10px 0 0;line-height:1.45;max-width:68ch}
+.viz text{fill:var(--fg)}
+.viz-label{font-size:12px}
+.viz-date,.viz-ticklabel,.viz-value,.viz-note{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
+.viz-spanlabel{font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;fill:var(--on-accent)}
+.viz-axis,.viz-tick,.viz-stem,.viz-edge{stroke:var(--line-2);fill:none}
+.viz-axis{stroke-width:2}
+.viz-arrow{stroke:var(--muted);stroke-width:1.5;fill:none;marker-end:url(#vizhead)}
+.viz-head{fill:var(--muted)}
+.viz-track{fill:var(--line)}
+.viz-span,.viz-bar,.viz-dot,.viz-node{fill:var(--c)}
+.viz-node{fill:color-mix(in srgb,var(--c) 18%,var(--card));stroke:var(--c);stroke-width:1.5}
+.viz-nodelabel{font-size:12px;font-weight:600}
+.viz-t1{--c:var(--viz-1)}.viz-t2{--c:var(--viz-2)}.viz-t3{--c:var(--viz-3)}.viz-t4{--c:var(--viz-4)}.viz-t5{--c:var(--viz-5)}.viz-t6{--c:var(--viz-6)}
+.viz-span{opacity:.85}
+.viz-dot{stroke:var(--card);stroke-width:2}
+.panel.home .viz{margin:0}
+
 /* 4g · changelog page: one card per session, newest open */
 .log code{font-family:var(--mono);font-size:.84em;color:var(--fg);overflow-wrap:anywhere;background:none;border:0;padding:0}
 .clsec ul{margin:0;padding-left:20px;display:grid;gap:6px}
@@ -549,3 +578,47 @@ details.clog[open]>summary::after{content:"–"}
 a.course:active{transform:translateY(0);box-shadow:none}
 .hbtn:active,.cgo:active,.copy:active,.ib:active,.toc a:active,.pager a:active{transform:translateY(1px)}
 .hrow:active,.ditem:active,.duh:active,details.ucard>summary:active,details.rules>summary:active{background:var(--hover)}
+
+/* 8 · Swiss pass (A7, 28 Oct 2026) ---------------------------------------------
+   Later in the file, so it wins on equal specificity. Three moves: the type does the work (bigger, tighter
+   headlines; the eyebrow as a graphic), colour as a field (a track sits on a tint of its accent; the course
+   name is a solid chip; the resume card and buttons are flat blocks), rules and hard corners instead of
+   shadows and radii. Tokens and components keep their names; only values change. */
+.hero h1{font-size:44px;line-height:1;letter-spacing:-.03em;margin:0 0 14px}
+.root .hero h1{font-size:52px}
+.phead h1{font-size:32px;letter-spacing:-.025em;line-height:1.08}
+.ptx h2{font-size:28px;letter-spacing:-.02em}
+.thead h2{font-size:34px;letter-spacing:-.025em;line-height:1}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.lede{font-size:17px;line-height:1.5}
+/* hard corners everywhere a radius was decoration; 2 px where a control needs a softened edge */
+.howto,.ucard,.course,.era,.stats div,.viz,.tbl,details.clog,.smod,.pbox,.prompt,.recent .hrows,.carry li,.dispute,pre.tree{border-radius:0}
+.hbtn,.cgo,.copy,.pager a,.toc a,.ib,.duh,.ditem,.dplan>summary,.pill,.meter .bar,details.ucard .bar,.rmeter .bar{border-radius:2px}
+.pill{letter-spacing:.06em}
+/* colour as a field: a track is a band tinted with its accent; its head is a rule, not a box edge */
+.track{background:color-mix(in srgb,var(--c) 7%,var(--bg));padding:18px 16px 20px;gap:16px}
+.thead{border-left:0;border-bottom:2px solid var(--c);padding:0 0 12px}
+.thead .cname{font-size:12px;letter-spacing:.14em}
+.tjump .hbtn{border-left:0;background:color-mix(in srgb,var(--c) 10%,var(--card));border-color:transparent}
+.tjump .hbtn b{color:var(--fg)}
+.tjump .hbtn span{color:var(--c)}
+/* the course card: a solid chip for the name, a 3 px rule on top, the number large */
+.course.live{border-left:0;border-top:3px solid var(--c)}
+.course.live .cname{background:var(--c);color:var(--on-accent);padding:4px 8px;letter-spacing:.1em}
+.ctitle{font-size:24px;letter-spacing:-.02em;line-height:1.1;margin:10px 0 8px}
+.cstats b{font-size:18px}
+.meter span{font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.meter .bar,details.ucard .bar{height:4px}
+/* numbers as graphic elements */
+.stats b{font-size:30px;letter-spacing:-.02em}
+.rmeter .pct{font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.hl-root .hbtn b{font-size:22px;letter-spacing:-.02em;line-height:1.15}
+/* section heads carry a rule to the right edge */
+.hsec{display:flex;align-items:center;gap:12px}
+.hsec::after{content:"";flex:1 1 auto;height:1px;background:var(--line-2)}
+/* rules, not shadows */
+@media (hover:hover){a.course:hover{box-shadow:none;transform:none;border-color:var(--c);background:color-mix(in srgb,var(--c) 6%,var(--card))}}
+.drawer{box-shadow:none;border-right:1px solid var(--line-2)}
+.pnum{font-size:44px;letter-spacing:-.03em}
+.ml .gk{font-size:30px}
+

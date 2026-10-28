@@ -22,6 +22,7 @@ Working directory: the kit folder (it contains `AGENT-SPEC.md`, `check.py`, the 
 - Length: the target in your prompt is a guide, not a limit. Write what the topic needs, whether that is 2,000 words or 6,000; never pad, never cut substance to hit a number. Plan section budgets first and write the file in one pass. `check.py` notes the count against the target; it does not fail on it.
 - No em dashes: the house style uses colons, semicolons and commas. En dashes only in number ranges (1.7–9, 753–509 BC). No emoji.
 - British spelling. No preamble, no closing filler. Begin with the first `<h2>`.
+- A figure is allowed where structure is the content, and only then: a timeline, a comparison of numbers, a line of descent, a sequence of steps. Declare it, never draw it: `<figure class="viz" data-viz="timeline"><script type="application/json">{…}</script><figcaption>…</figcaption></figure>`, the fields as in `viz.py`'s docstring; `build.py` draws it. Every date, number and name in it must already be in your sourced text, and the caption says where. `rome/r-0.3.html` has the worked example (the anchor dates as a timeline).
 - Never use the Artifact tool or any publishing tool: edit your file on disk only. Publishing is the maintainer's job, and a stray publish creates a page on the owner's account.
 - **Lessons from the last quality pass (41 errors in 39 reports):**
   - Name a modern scholar for a view only when you are sure that scholar argued it; otherwise state the view unnamed, or search.
