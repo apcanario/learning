@@ -61,6 +61,6 @@ Done when: every course has the page and no fact on it is typed by hand.
 2. `method.md` §7 (filing) and the `new-course` skill updated: a new course of either family is a folder plus a `courses.py` entry; the Project instructions name Academy.
 Done when: `new-course` can start a Markdown course and a history course and both appear on the Academy home after one build.
 
-## Not decided yet
-- Whether `kit/` is renamed `academy/` in the repo (cosmetic; decide at A2 when paths change anyway).
-- The eight coming courses' order and syllabi (out of scope; `courses.py:NEXT`).
+## Decided 28 October 2026, evening (Pedro)
+- `kit/` keeps its name. A rename to `academy/` gains nothing functional and touches every path in the skills, `SETUP.md`, `method.md`, both backlogs, `courses-index.md` and the "How it was built" links; the built site already lives at `kit/academy/`.
+- The eight coming courses' order and syllabi wait until Rome is complete. `courses.py:NEXT` is a placeholder order, not a decision; the next course's syllabus takes the lessons of the Rome audit, which does not exist yet. The first of them is started with the `new-course` skill in its own chat when Rome closes.
