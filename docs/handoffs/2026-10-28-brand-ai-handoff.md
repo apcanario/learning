@@ -25,13 +25,17 @@ Do this in a new chat in the Learning Project, with the computer linked or GitHu
 
 ## Step 2 · Resume the pipeline (B3)
 
+Rewritten 28 Oct 2026 (P19): the steps point at the skills instead of restating them. The skills are the procedure; this section only says the order and the models. Where a line here and a skill differ, the skill is right.
+
 Clone the repo. One chat per unit, Opus 5.5 High, Auto approval; checker chats on Fable 5.1 High.
 
-1. **Write B3** (Briefing well; search off): new chat, paste the B3 brief from `units_data.py` with the chat instructions used for B2 (one unit per chat; B1 and B2 are in knowledge, point to them; Markdown file with method §7 front matter; sourcing-standard Parts 1 and 2 pass; unsure list at the end of the file).
-2. **Fresh check** in a new Fable 5.1 chat: the checker prompt (`skills/audit-units/SKILL.md`, "Fresh check of one Brand + AI unit") followed by the unit's full text. Apply every finding as an exact replacement (assert each `Current:` string occurs once), keep the unsure list, add a line "Fresh check <date> (Fable 5.1): <verdict> · counts; all applied".
-3. **File** per method §7 and `skills/file-unit`: copy to `generator/data/brand-ai/units/`, add a READINGS entry, WRITTEN, STATUS, NEXT_UNIT, VERSION bump, CHANGELOG row in `hub.py`; `python3 build_hub.py data/brand-ai`; `python3 check_page.py hubs/brand-and-ai-courses.html`; republish to the hub artifact (read first, publish once with `url`); update `courses-index.md`; re-upload `courses-index.md`, `hub.py` and the unit to Project knowledge (remove the old copy first; "Add text content" takes pasted text); commit and push.
+1. **Write B3** (Prompting that holds up; search off): a new Opus 5.5 chat runs `skills/write-unit` with the B3 brief assembled as its §2 says (the Briefs page in Academy, or `PRE` + the course goal + the brief from `units_data.py`); B1 and B2 are in the Project knowledge to point back to. It hands in one Markdown file with the `method.md` §7 front matter and the unsure list at the end.
+2. **Fresh check** in a new Fable 5.1 chat that has not seen the unit written: `skills/audit-units` §3b, the prompt there verbatim, then the unit's full text. The checker reports; it never edits.
+3. **Apply and file** per `skills/audit-units` §3b (maintainer part) and `skills/file-unit`: first save the checker chat's final report verbatim as `audits/brand-ai/fresh-check-B3.md` with the front matter `audits/README.md` sets out; then apply every finding as an exact replacement (each `Current:` string occurs once), add the fresh-check line under the unsure list naming that file; then `file-unit` §1, §2, §4, §5 and §6 (vault, `hub.py` course data, `cd kit && python3 build.py && python3 verify.py`, the screenshot look, publish Academy = the artifact https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH then `./deploy.sh`, `courses-index.md`, knowledge re-upload, commit and push). The retired `build_hub.py`, `check_page.py` and the Brand + AI hub artifact are not used; Academy is the one site (A3, 28 Oct 2026).
 4. Repeat for B4 (search off) and A1 (search off).
-5. **Audit 2**: new Fable 5.1 chat, search on; `skills/audit-units` with the stratified-sample prompt from method §6 over B2, B3, B4, A1. Log it in `hub.py` AUDIT_LOG and `courses-index.md`. No new unit while a REWRITE is open.
+5. **Audit 2**: new Fable 5.1 chat, search on; `skills/audit-units` with the stratified-sample prompt from `method.md` §6 over B2, B3, B4, A1; record per `audit-units` §5. No new unit while a REWRITE is open.
+
+Each of these chats is a `docs/BACKLOG.md` row (B-1 to B-4) and ends per `method.md` §8.
 
 ## Automation notes (what worked this session)
 
