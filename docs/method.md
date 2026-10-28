@@ -207,3 +207,16 @@ Run the `file-unit` skill, or by hand:
 5. **Update `courses-index.md`:** the unit's status, model, date and vault path; the audit count for its hub; for a search-on unit, its staleness date (written + six months).
 6. **Check the count.** If this was the fourth unit since the last audit in its hub, the next chat is the audit (§6), not a unit.
 7. **Commit and push.** The session ends with one commit naming the unit or the audit.
+
+## 8 · Backlog and changelog
+
+`docs/BACKLOG.md` holds every chat still to run, in order, one row each with the model and the prompt to paste. `docs/CHANGELOG.md` holds every chat that has run, newest first. The kit keeps its own `kit/CHANGELOG.md` for the site; a kit session writes both.
+
+At the end of every chat that works a backlog row:
+1. Move the row from the Queue to `docs/CHANGELOG.md`: date, spec, model, one-line result, commit.
+2. Add every task the work uncovered as a new row marked *proposed*, in the place it belongs. Do not work it.
+3. Hand the backlog to Pedro in the reply, as one short list: the row done, the proposed rows, the row next up. He confirms or edits the proposed rows and names the next row; the next chat starts there.
+4. Commit and push.
+
+A chat that finds nothing new still hands the backlog over with the next row named. A row that cannot be finished stays in the Queue with a one-line note of where it stopped.
+

@@ -18,6 +18,8 @@
 
 **Review.** After every four units written in a hub, Fable 5.1 runs the stratified-sample audit (`method.md` §6) before the next unit starts; a unit failing more than one sampled claim in ten is audited in full. Six months after any unit written with live search, run the staleness check. No new unit while a REWRITE verdict is open.
 
+**Backlog and changelog.** `docs/BACKLOG.md` is the one queue of chats; `docs/CHANGELOG.md` is the record. Every chat that works a backlog row ends by: (1) marking the row done and moving it to `docs/CHANGELOG.md` with the date, the model and a one-line result; (2) adding any task the work uncovered as a new row marked *proposed*, placed where it belongs in the order; (3) handing the backlog to Pedro in the reply: the row just done, the proposed rows, and the row that is next up, as one short list; (4) committing. A proposed row is not worked until Pedro confirms it; the next chat starts on the row he confirms as next. Nothing is done that is not a row, and no done row stays in the queue.
+
 **Tone.** Direct. No flattery, no filler, no preamble, no closing pleasantries, no motivational language.
 
 **Completeness.** A unit is written in full, with its deliverable built in full. Never outline it, summarise it or describe what it would contain.

@@ -1,6 +1,6 @@
 # Backlog
 
-The ordered queue of chats for the Learning Project. One row is one chat. Take the top row that is not done; paste its prompt into a new chat in the Project on the model named; when the chat ends, move the row to Done with the date and commit. Specs are in `pm-status-2026-10-28.md`. (`kit/BACKLOG.md` is a different file: the Rome writing prompt with the lane notes, used by S6 and its successors.)
+The ordered queue of chats for the Learning Project. One row is one chat. Take the top row that is not done; paste its prompt into a new chat in the Project on the model named; when the chat ends, move the row to Done with the date and commit. Specs are in `pm-status-2026-10-28.md`; the rule for keeping this file and `CHANGELOG.md` current is `method.md` §8: a finished row moves to the changelog, tasks uncovered are added as *proposed* rows, and the backlog is handed to Pedro at the end of every chat for confirmation of what is next. (`kit/BACKLOG.md` is a different file: the Rome writing prompt with the lane notes, used by S6 and its successors.)
 
 ## Queue
 
@@ -16,8 +16,11 @@ The ordered queue of chats for the Learning Project. One row is one chat. Take t
 
 Brand + AI runs its own queue (the hub's Build order page): Audit 1 ran on 28 October; B2 is next, then B3, B4, A1, Audit 2.
 
-## Done
+## Proposed (awaiting Pedro's confirmation)
 
-| Date | Chat | Result |
-|---|---|---|
-| 28 Oct 2026 | Status review of the kit against the Project | Decisions D1 to D5; five artifacts deleted; repo `apcanario/learning` created and seeded; `pm-status-2026-10-28.md`, this backlog |
+| # | Task | Why | Suggested place |
+|---|---|---|---|
+| P1 | Delete the "Knowledge transfer" artifact (https://claude.ai/artifact/Tgy4URAP8HTf4tPK7GZwfJ) | Its files are in the repo; its own text says delete after use | Pedro, by hand, any time |
+| P2 | Update the Brand + AI Audit 1 row in `courses-index.md` | An audit artifact exists from 28 October; the index says none ran | Folded into S2 |
+
+Done rows are in `CHANGELOG.md`.
