@@ -1,6 +1,6 @@
 # Changelog
 
-Everything that has happened to Personal Mythology, from the first request on 22 October 2026 to now, newest first. Each entry is one working session. It is assembled from the kit's own records (`provenance.json`, the review folders and the maintainer log) and from the session transcripts. Where a session recorded the site's version number, it is given. The exact day of each step in the first, three-day session was not recorded; its entries are in order.
+Everything that has happened to Personal Mythology and, from session 13, to Academy, from the first request on 22 October 2026 to now, newest first. Each entry is one working session. It is assembled from the kit's own records (`provenance.json`, the review folders and the maintainer log) and from the session transcripts. Where a session recorded the site's version number, it is given. The exact day of each step in the first, three-day session was not recorded; its entries are in order.
 
 ## Where things stand
 
@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology, from the first request on 22
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **Academy (session 13):** the site is Academy: its home lists every course of both hubs, Brand + AI as a placeholder panel until A3. `deploy.sh` publishes the built page to GitHub Pages through the public repo `apcanario/academy` (https://apcanario.github.io/academy/).
 
 ## At a glance
 
@@ -27,6 +28,20 @@ Everything that has happened to Personal Mythology, from the first request on 22
 | 27 Oct | 10. Bibliographies for every report; the Greek Opus cohort; the overlap checks | 78 | 59 |
 | 27 Oct | 11. The site moves onto the Learning Project theme | 78 | 59 |
 | 28 Oct | 12. The repo, five artifacts deleted, the kit docs | 78 | 59 |
+| 28 Oct | 13. The site becomes Academy (A1), with GitHub Pages | 78 | 59 |
+
+## 28 October 2026 · Session 13 · The site becomes Academy (A1), with GitHub Pages
+
+The root home is now Academy (`docs/academy.md`, A1): it lists every course of both hubs, the two history courses and the eight to come under Personal Mythology, and Brand + AI as a placeholder course panel. No report changed and no flag was cleared. Work on Fable 5.1.
+
+### Academy
+`courses.py` gives every course a `family` (`history`, `markdown`) and adds `BRAND_AI`, a markdown course whose content is read from `generator/data/brand-ai/hub.py` at build time (courses, goals, outcomes, units, written set, audit log, next unit), so nothing on its panel is typed by hand. `build.py` builds the Academy root home (title, hero, the common rules, the Personal Mythology section with its mythos/logos text and course cards, the Brand + AI card), one drawer context per course as before, and the placeholder `#brand-ai` panel: each written unit links to its reading page on the Brand + AI hub until A3 moves the units in. `shell.js` lets a drawer item without `data-target` follow its link. `biblio.py`, `review_due.py`, `register.py` and `crosscheck.py` iterate the history courses only. `verify.py` checks the Brand + AI drawer, panel, links and the page title. Published as versions 43 and 44 with the title Academy.
+
+### Deterministic bibliography (P5)
+`biblio.py` sorts modern works by surname, year, title and name, and every locator set by a total natural key, so two builds of the same reports write identical `bibliography/` files (`git status` clean between builds; the thirteen files that drifted in session 12 no longer do).
+
+### GitHub Pages (P7)
+`deploy.sh` clones or pulls the public repo `apcanario/academy`, copies the built page in as `index.html` with a `.nojekyll`, commits and pushes to `main`. The page is served at https://apcanario.github.io/academy/ once Pages is enabled on that repo (the Pages API is refused through this session's GitHub proxy; Pedro enables it in the repo settings). `learning` stays private; the public repo holds the build output only.
 
 ## 28 October 2026 · Session 12 · The repo, five artifacts deleted, the kit docs
 

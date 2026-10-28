@@ -98,7 +98,8 @@
   nextB.addEventListener('click',function(){var seq=seqFor(ctxOf[current]),k=seq.indexOf(current);if(k<seq.length-1)go(seq[k+1]);});
   homeB.addEventListener('click',function(e){e.preventDefault();go('home');});
   [].slice.call(document.querySelectorAll('[data-target]:not(.ditem)')).forEach(function(a){a.addEventListener('click',function(e){var t=a.getAttribute('data-target');if(!t)return;e.preventDefault();go(t);});});
-  items.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();closeDrawer();go(a.getAttribute('data-target'));});});
+  // a drawer item without data-target is an external link (a markdown course's own artifact until A3): the browser follows it
+  items.forEach(function(a){a.addEventListener('click',function(e){var t=a.getAttribute('data-target');if(!t){closeDrawer();return;}e.preventDefault();closeDrawer();go(t);});});
 
   var themeB=document.getElementById('themeB');
   function effTheme(){var d=document.documentElement.getAttribute('data-theme');if(d==='light'||d==='dark')return d;return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}

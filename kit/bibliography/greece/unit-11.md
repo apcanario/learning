@@ -131,13 +131,13 @@ Curated bibliography: `bibliography/greece/r-11.4.md`.
 
 ### Modern works
 - Badian (1962): title not given in the report
-- Balsdon, *The 'Divinity' of Alexander* (1950)
 - Balsdon (1950): title not given in the report
+- Balsdon, *The 'Divinity' of Alexander* (1950)
 - Bosworth, *Conquest and Empire* (1988)
 - Bosworth, *Alexander, Euripides and Dionysos* (1996)
 - Fredricksmeyer, *Alexander, Zeus Ammon, and the Conquest of Asia* (1991)
-- Tarn, *Alexander the Great* (1948)
 - Alexander. Tarn (1948): title not given in the report
+- Tarn, *Alexander the Great* (1948)
 
 ## 11.5 The court: Companions, conspiracies and the orientalising policy
 

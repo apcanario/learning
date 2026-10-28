@@ -24,14 +24,14 @@ Curated bibliography: `bibliography/rome/r-6.1.md`.
 - Velleius 2.121.1
 
 ### Modern works
-- Karl Galinsky, *Augustan Culture* (1996)
 - Galinsky (1996): title not given in the report
+- Karl Galinsky, *Augustan Culture* (1996)
 - E. A. Judge, *<em>Res publica restituta</em>: a modern illusion?* (1974)
 - Answer Syme, *The Roman Revolution* (1939)
 - Ronald Syme, *The Roman Revolution* (1939)
 - Syme, *The Crisis of 2 B.C.* (1974)
-- Senate. Andrew Wallace-Hadrill, *Civilis princeps: between citizen and king* (1982)
 - Wallace-Hadrill (1982): title not given in the report
+- Senate. Andrew Wallace-Hadrill, *Civilis princeps: between citizen and king* (1982)
 
 ## 6.2 The city of marble and the restored religion
 
@@ -65,8 +65,8 @@ Curated bibliography: `bibliography/rome/r-6.2.md`.
 - Peter Heslin, *Journal of Roman Studies* (2007)
 - Pax (1990): title not given in the report
 - Price, *Religions of Rome* (1998)
-- Paul Rehak, *Aeneas or Numa?* (2001)
 - Answer Rehak (2001): title not given in the report
+- Paul Rehak, *Aeneas or Numa?* (2001)
 - Venus (1966): title not given in the report
 - Andrew Wallace-Hadrill (1981): title not given in the report
 - Polykleitos' Doryphoros. Paul Zanker, *The Power of Images in the Age of Augustus* (1988)

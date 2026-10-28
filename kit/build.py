@@ -1,11 +1,15 @@
-"""Assemble personal-mythology.html from the course data in courses.py.
+"""Assemble personal-mythology.html, the Academy site, from the course data in courses.py.
+
+The root home is Academy (docs/academy.md, A1): every course of both families. History courses (Greece, Rome) are
+built from their kit folders as before; a markdown course (Brand + AI) is, until A3, a placeholder panel whose
+content comes from its own data file (generator/data/<slug>/hub.py) and which links to its current artifact.
 
 Each course has a syllabus file, a fragments folder, a prompts index (the modules with a written report),
 a colour and a short name. Greece keeps its original panel ids (#greece, #syllabus, #m23); later courses
 are namespaced (#rome, #rome-syllabus, #rm01).
 """
-import json, re, html, pathlib
-from courses import COURSES, NEXT
+import json, re, html, pathlib, importlib.util
+from courses import COURSES, HISTORY, MARKDOWN, NEXT
 
 R = pathlib.Path(__file__).resolve().parent
 PROV = json.load(open(R / 'provenance.json'))
@@ -131,7 +135,7 @@ def drawer(c):
                 pill = PILL_NEXT if mid in c.get('next_up', ()) else '<span class="pill">soon</span>'
                 out += f'<div class="dsoon"><span class="n">{mid}</span><span class="t">{html.escape(t)}</span>{pill}</div>'
         out += '</div></div>'
-    top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">Personal Mythology</span></a>'
+    top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">Academy</span></a>'
            f'<a class="ditem dhome" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span class="n">⌂</span><span class="t">{c["short"]}: course home</span></a>'
            f'<a class="ditem dhome" href="#{c["syl_id"]}" data-target="{c["syl_id"]}"><span class="n">§</span><span class="t">Syllabus and prompts</span></a></div>')
     return f'<nav class="dlist" data-navctx="{c["id"]}" aria-label="{c["short"]} course" hidden>{top}{out}</nav>'
@@ -167,7 +171,7 @@ def course_home(c):
     return f'''
 <section class="panel home" id="{c['home_id']}" data-ctx="{c['id']}" data-kind="course" data-t="{c['short']}" data-u="COURSE {c['num']}" data-c="{c['color']}" style="--cc:{c['color']}" hidden>
   <header class="hero">
-    <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['eyebrow']}</span> · part of Personal Mythology{' · <span class="u" style="--c:var(--gold)">IN PROGRESS</span>' if c['status'] != 'available' else ''}</div>
+    <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['eyebrow']}</span> · Personal Mythology · Academy{' · <span class="u" style="--c:var(--gold)">IN PROGRESS</span>' if c['status'] != 'available' else ''}</div>
     <h1>{c['h1']}</h1>
     <p class="lede">{fill(c['lede'], c)}</p>
     <div class="stats"><div><b>{c['nrep']}</b><span>of {c['content_mods']} reports written</span></div><div><b>{c['words']//1000}k</b><span>words so far</span></div><div><b>{c['units_complete']}</b><span>of {nunits} units complete</span></div></div>
@@ -196,7 +200,7 @@ def course_home(c):
     <summary><h2>The reading spine</h2><span>primary and secondary</span></summary>
     {c['spine']}
   </details>
-  <a class="hbtn alt wide" href="#home" data-target="home"><span>Personal Mythology</span><b>{c['closing']}</b></a>
+  <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>{c['closing']}</b></a>
 </section>'''
 
 
@@ -241,12 +245,80 @@ def root_card(c):
   </a>'''
 
 
-for c in COURSES:
+for c in HISTORY:
     load(c)
 
-ALL_REPORTS = sum(c['nrep'] for c in COURSES)
-ALL_WORDS = sum(c['words'] for c in COURSES)
-G = COURSES[0]
+ALL_REPORTS = sum(c['nrep'] for c in HISTORY)
+ALL_WORDS = sum(c['words'] for c in HISTORY)
+G = HISTORY[0]
+
+
+def load_markdown(c):
+    """A markdown course's data file (generator/data/<slug>/hub.py): its courses, units, written set and status."""
+    spec = importlib.util.spec_from_file_location('hubdata_' + c['id'], R.parent / c['data'])
+    d = importlib.util.module_from_spec(spec); spec.loader.exec_module(d)
+    c['hub'] = d
+    c['subcourses'] = d.COURSES
+    c['written'] = d.WRITTEN
+    c['nunits'] = sum(len(sc['units']) for sc in d.COURSES)
+    c['nwritten'] = sum(1 for sc in d.COURSES for u in sc['units'] if u[0] in d.WRITTEN)
+    c['readings'] = {r['id']: r for r in d.READINGS}
+    return c
+
+
+def markdown_home(c):
+    """Placeholder course panel for a markdown course until A3: the courses, their goals and units, each written unit
+    linking to its reading page on the course's own artifact."""
+    d = c['hub']
+    subs = ''
+    for sc in d.COURSES:
+        done = [u for u in sc['units'] if u[0] in c['written']]
+        rows = ''
+        for code, title, scope, *_ in sc['units']:
+            if code in c['written']:
+                rows += f'<a class="hrow" href="{c["artifact"]}#{c["written"][code]}"><span class="n">{code}</span><span class="t">{html.escape(title)}<small>{html.escape(scope)}</small></span></a>'
+            else:
+                pill = PILL_NEXT if code == d.NEXT_UNIT else '<span class="pill">soon</span>'
+                rows += f'<div class="hrow soon"><span class="n">{code}</span><span class="t">{html.escape(title)}<small>{html.escape(scope)}</small></span>{pill}</div>'
+        pct = round(100 * len(done) / len(sc['units']))
+        subs += f'''<section class="part"><header class="phd"><span class="pnum">{sc['key']}</span><div class="ptx"><div class="pmeta"><span>Course {sc['key']}</span><span>{len(sc['units'])} units</span><span>{len(done)} written</span></div><h2>{html.escape(sc['name'])}</h2><p>{sc['intro']}</p></div></header>
+      <div class="ucards"><details class="ucard" data-mods="" style="--c:{sc['color']}" open><summary class="uch"><span class="un">COURSE {sc['key']}</span><span class="uh">Goal, outcomes and units</span><span class="st">{len(done)} of {len(sc['units'])}</span><span class="bar" aria-hidden="true"><i style="width:{pct}%"></i></span><span class="uwhy">Goal: {html.escape(sc['goal'])}</span>{ICON_CHEV}</summary><div class="report"><ul>{sc['outcomes']}</ul></div><div class="hrows">{rows}</div></details></div></section>'''
+    audits = ''.join(f'<li><strong>{html.escape(dt)}</strong> · {txt}</li>' for dt, txt in d.AUDIT_LOG)
+    return f'''
+<section class="panel home" id="{c['home_id']}" data-ctx="{c['id']}" data-kind="course" data-t="{c['short']}" data-u="COURSES A + B" data-c="{c['color']}" style="--cc:{c['color']}" hidden>
+  <header class="hero">
+    <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['eyebrow']}</span> · part of Academy · <span class="u" style="--c:var(--gold)">IN PROGRESS</span></div>
+    <h1>{html.escape(c['name'])}</h1>
+    <p class="lede">{d.COURSE_NOTE} Two courses, {c['nunits']} units; {c['nwritten']} written so far. {d.HOME_LEDE}</p>
+    <div class="stats"><div><b>{c['nwritten']}</b><span>of {c['nunits']} units written</span></div><div><b>{len(d.AUDIT_LOG)}</b><span>audit{'s' if len(d.AUDIT_LOG) != 1 else ''} run</span></div><div><b>{html.escape(d.NEXT_UNIT)}</b><span>next unit</span></div></div>
+    <div class="hlinks"><a class="hbtn alt" href="{c['artifact']}"><span>Open the Brand + AI hub</span><b>{html.escape(d.VERSION)} · Learn and Build</b></a></div>
+    <p class="prov flag">Placeholder until A3 (docs/academy.md): the units are read on the Brand + AI hub, which stays the course's own artifact. Each written unit below opens there.</p>
+  </header>
+  {subs}
+  <details class="howto rules"><summary><h2>Audits run</h2><span>{len(d.AUDIT_LOG)} · next {html.escape(d.NEXT_AUDIT)}</span></summary><ul>{audits}</ul></details>
+  <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>Brand + AI sits beside Personal Mythology: the same method, the same sourcing standard, a different kind of course.</b></a>
+</section>'''
+
+
+def markdown_nav(c):
+    d = c['hub']
+    out = ''
+    for sc in d.COURSES:
+        out += f'<div class="dsec">Course {sc["key"]} · {html.escape(sc["name"])}</div>'
+        for code, title, *_ in sc['units']:
+            if code in c['written']:
+                out += f'<a class="ditem ext" href="{c["artifact"]}#{c["written"][code]}"><span class="n">{code}</span><span class="t">{html.escape(title)}</span></a>'
+            else:
+                pill = PILL_NEXT if code == d.NEXT_UNIT else '<span class="pill">soon</span>'
+                out += f'<div class="dsoon"><span class="n">{code}</span><span class="t">{html.escape(title)}</span>{pill}</div>'
+    top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">Academy</span></a>'
+           f'<a class="ditem dhome" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span class="n">⌂</span><span class="t">{c["short"]}: course home</span></a>'
+           f'<a class="ditem dhome ext" href="{c["artifact"]}"><span class="n">↗</span><span class="t">The Brand + AI hub (reads there until A3)</span></a></div>')
+    return f'<nav class="dlist" data-navctx="{c["id"]}" aria-label="{c["short"]} courses" hidden>{top}{out}</nav>'
+
+
+for c in MARKDOWN:
+    load_markdown(c)
 
 # the changelog page, built from CHANGELOG.md (the file is the source; the page is a rendering of it)
 def md_inline(t):
@@ -326,7 +398,7 @@ for k, (head, body) in enumerate(cl_sessions):
                  f'<span class="cs">{html.escape(sess)}</span><span class="ct">{md_inline(title)}</span></summary><div class="cb">{md_blocks(body)}</div></details>')
 cl_other = ''.join(f'<section class="howto clsec"><h2>{md_inline(h)}</h2>{md_blocks(b)}</section>' for h, b in cl_secs if (h, b) not in cl_sessions)
 changelog = f"""
-<section class="panel log" id="changelog" data-ctx="root" data-kind="changelog" data-t="{html.escape(cl_title)}" data-u="PERSONAL MYTHOLOGY" data-c="var(--gold)" hidden>
+<section class="panel log" id="changelog" data-ctx="root" data-kind="changelog" data-t="{html.escape(cl_title)}" data-u="ACADEMY" data-c="var(--gold)" hidden>
   <header class="hero">
     <div class="eyebrow"><span class="u" style="--c:var(--gold)">CHANGELOG</span> · {len(cl_sessions)} sessions {cl_since}</div>
     <h1>{html.escape(cl_title)}</h1>
@@ -339,17 +411,41 @@ changelog = f"""
 cl_link = f'<div class="hlinks" data-one><a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {cl_since}, newest first</b></a></div>'
 
 soon_cards = ''.join(f'<details class="course soon" style="--c:{col}"><summary><span class="cname">{html.escape(short)}</span><span class="ctitle">{html.escape(name)}</span><span class="pill">coming soon</span></summary><p class="nscope">{html.escape(scope)}</p><p class="nspine"><span>Spine</span>{html.escape(spine)}</p></details>' for short, name, col, scope, spine in NEXT)
-course_btns = ''.join(f'<a class="hbtn alt" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span>Course {c["num"]}</span><b>{c["short"]} · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"])}</b></a>' for c in COURSES)
+course_btns = ''.join(f'<a class="hbtn alt" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span>Course {c["num"]}</span><b>{c["short"]} · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"])}</b></a>' for c in HISTORY)
+course_btns += ''.join(f'<a class="hbtn alt" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span>{c["short"]}</span><b>{c["nwritten"]} of {c["nunits"]} units</b></a>' for c in MARKDOWN)
+
+
+def markdown_card(c):
+    stats = f'<span><b>{len(c["subcourses"])}</b> courses</span><span><b>{c["nwritten"]}</b> of {c["nunits"]} units</span><span><b>{len(c["hub"].AUDIT_LOG)}</b> audit{"s" if len(c["hub"].AUDIT_LOG) != 1 else ""}</span>'
+    return f'''<a class="course live" href="#{c['home_id']}" data-target="{c['home_id']}" style="--c:{c['color']}">
+    <div class="ctop"><span class="cname">{c['short']}</span><span class="pill prog">{c['status']}</span></div>
+    <span class="ctitle">{html.escape(c['name'])}</span>
+    <p>{c['card']}</p>
+    <div class="cstats">{stats}</div>
+    <span class="cgo">Open the courses</span>
+  </a>'''
 
 roothome = f'''
-<section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Personal Mythology" data-u="HOME" data-c="var(--red)" hidden>
+<section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Academy" data-u="HOME" data-c="var(--red)" hidden>
   <header class="hero">
-    <div class="eyebrow"><span class="u" style="--c:var(--red)">PERSONAL MYTHOLOGY</span> · a compendium of self-study courses</div>
-    <h1>A personal journey towards understanding mythos and logos</h1>
-    <p class="lede">Every culture tells two kinds of story about itself: the stories of gods, heroes and origins, and the accounts of what actually happened. This is a long, self-directed study of both, one civilisation at a time, built so that the gaps get filled in the right order and nothing is taken on trust.</p>
+    <div class="eyebrow"><span class="u" style="--c:var(--red)">ACADEMY</span> · every self-study course, one reader</div>
+    <h1>The courses, in the order they make sense</h1>
+    <p class="lede">One place for every course run here: the ancient-history courses of Personal Mythology, the two Brand + AI courses, and the ones to come. Each is written to the same method and the same sourcing standard, and each shows what it is, what is written, how it was built and where its sources are.</p>
     <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b></a>{course_btns}</div>
   </header>
 
+  <details class="howto rules" open>
+    <summary><h2>How every course works</h2><span>the constants</span></summary>
+    <ol>
+      <li><strong>One reader.</strong> Every course is written for the same person and read in order, on a phone, with the citations checked.</li>
+      <li><strong>Sources first.</strong> A unit names its sources and says where they disagree; a claim that cannot be sourced is marked unsourced or left out.</li>
+      <li><strong>One unit per chat, built in full.</strong> Each unit is written from a published brief or prompt, in its own chat, with its closing artefact: a self-test and carry-forward ideas for the history courses, a shipped deliverable for Brand + AI.</li>
+      <li><strong>Audited every four units.</strong> After every four units written in a hub, a stratified sample of claims is checked against its sources with a second model; a unit that fails gets a full audit. The model that wrote each unit is recorded.</li>
+      <li><strong>An open syllabus.</strong> Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.</li>
+    </ol>
+  </details>
+
+  <h2 class="hsec">Personal Mythology</h2>
   <section class="mythos">
     <div class="ml-grid">
       <div class="ml"><span class="gk">μῦθος</span><b>mythos</b><p>In Homer, simply what someone says with authority: a speech, a command, a tale. By the fifth century it had come to mean the story you cannot check.</p></div>
@@ -357,41 +453,34 @@ roothome = f'''
     </div>
     <p>The Greeks drew that line themselves. Herodotus calls his work a <em>historiē</em>, an inquiry, and still reports what the Persians and Egyptians told him. Thucydides warns that his history leaves out the <em>mythōdes</em>, the storylike, and will seem less pleasant for it (1.22). Plato expels the poets from his ideal city and then ends the <em>Republic</em> with a myth of his own.</p>
     <aside class="dispute"><strong>Where the scholars disagree.</strong> The tidy story of a clean progress "from mythos to logos" (the title of Wilhelm Nestle's book of 1940) is now itself treated as a modern myth. The Greeks never stopped telling myths; their philosophers used them, their historians argued with them, and their cities were governed by them. The two modes ran side by side.</aside>
-    <p>That is the method here. Each course reads a culture's myths and its history together, asks who told each story and what they gained by it, and keeps the evidence in view. The aim is not to debunk the myths but to understand them as well as the history: why they were told, by whom, and why some of them are still told now.</p>
+    <p>That is the method of these courses. Each reads a culture's myths and its history together, asks who told each story and what they gained by it, and keeps the evidence in view. The aim is not to debunk the myths but to understand them as well as the history: why they were told, by whom, and why some of them are still told now. Later courses point back to earlier ones where they touch: Rome to Greece's units 7 and 10, Persia to units 6 and 11, Egypt to units 1 and 7.</p>
   </section>
-
-  <details class="howto rules" open>
-    <summary><h2>How every course works</h2><span>the constants</span></summary>
-    <ol>
-      <li><strong>History and myth together.</strong> The political story is interleaved with the stories the culture told about itself, because neither makes sense alone.</li>
-      <li><strong>Sources first.</strong> Each course opens with a unit on how we know anything: which texts survive, who wrote them, when, and with what agenda.</li>
-      <li><strong>One report per module.</strong> About 3,000 words, headed sections, primary sources named, disagreements in a red-edged box, ten self-test questions and three ideas to carry forward.</li>
-      <li><strong>An open syllabus.</strong> Every report was written to a fixed prompt, and every prompt is published with its course, so any report can be regenerated, extended or checked.</li>
-      <li><strong>Cross-references, not repetition.</strong> Later courses point back to earlier ones where they touch: Rome to Greece's units 7 and 10, Persia to units 6 and 11, Egypt to units 1 and 7.</li>
-    </ol>
-  </details>
-
-  <h2 class="hsec">Courses</h2>
-  {"".join(root_card(c) for c in COURSES)}
+  {"".join(root_card(c) for c in HISTORY)}
   <p class="hnote">Coming next, in the intended order: the two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Tap any course to see its planned scope.</p>
   <div class="soonlist">{soon_cards}</div>
+
+  <h2 class="hsec">Brand + AI</h2>
+  {"".join(markdown_card(c) for c in MARKDOWN)}
   {cl_link}
 </section>'''
 
 panels = [roothome, changelog]
-for c in COURSES:
+for c in HISTORY:
     panels += [course_home(c), syllabus(c)] + c['report_panels']
+for c in MARKDOWN:
+    panels.append(markdown_home(c))
 
-root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a><a class="ditem dhome" href="#changelog" data-target="changelog"><span class="n">≡</span><span class="t">Changelog</span></a></div><div class="dsec">Courses</div>'
-            + ''.join(f'<a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">{c["num"]}</span><span class="t">{c["short"]}<small>{c["card_units"]} units · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"]) + " reports"}</small></span></a>' for c in COURSES)
-            + ''.join(f'<div class="dsoon" style="--c:{col}"><span class="n">{k + len(COURSES) + 1}</span><span class="t">{html.escape(s)}</span><span class="pill">soon</span></div>' for k, (s, _, col, _, _) in enumerate(NEXT))
+root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a><a class="ditem dhome" href="#changelog" data-target="changelog"><span class="n">≡</span><span class="t">Changelog</span></a></div><div class="dsec hub" style="--c:var(--red)">Personal Mythology</div>'
+            + ''.join(f'<a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">{c["num"]}</span><span class="t">{c["short"]}<small>{c["card_units"]} units · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"]) + " reports"}</small></span></a>' for c in HISTORY)
+            + ''.join(f'<div class="dsoon" style="--c:{col}"><span class="n">{k + len(HISTORY) + 1}</span><span class="t">{html.escape(s)}</span><span class="pill">soon</span></div>' for k, (s, _, col, _, _) in enumerate(NEXT))
+            + ''.join(f'<div class="dsec hub" style="--c:{c["color"]}">{c["short"]}</div><a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">A·B</span><span class="t">{c["short"]}<small>{len(c["subcourses"])} courses · {c["nwritten"]} of {c["nunits"]} units</small></span></a>' for c in MARKDOWN)
             + '</nav>')
-navs = root_nav + ''.join(drawer(c) for c in COURSES)
+navs = root_nav + ''.join(drawer(c) for c in HISTORY) + ''.join(markdown_nav(c) for c in MARKDOWN)
 
 CSS = open(R / 'shell.css').read()
 JS = open(R / 'shell.js').read()
 
-page = f'''<title>Personal Mythology</title>
+page = f'''<title>Academy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Gentium+Book+Plus&display=swap">
@@ -400,7 +489,7 @@ page = f'''<title>Personal Mythology</title>
 <header class="top">
   <div class="top-in">
     <button class="ib" id="menuB" type="button" aria-label="Open contents" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <a class="ib" id="homeB" href="#home" aria-label="Personal Mythology home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg></a>
+    <a class="ib" id="homeB" href="#home" aria-label="Academy home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg></a>
     <div class="cur" id="cur"><span class="cur-u" id="curU"></span><span class="cur-t" id="curT"></span></div>
     <button class="ib" id="themeB" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     <div class="arrows" id="arrows">
@@ -411,9 +500,9 @@ page = f'''<title>Personal Mythology</title>
 </header>
 <div class="backdrop" id="backdrop"></div>
 <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Contents">
-  <div class="dhead"><div class="brand">PERSONAL <span>/</span> MYTHOLOGY</div><button class="ib" id="closeB" type="button" aria-label="Close contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dhead"><div class="brand">ACA<span>/</span>DEMY</div><button class="ib" id="closeB" type="button" aria-label="Close contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   {navs}
-  <div class="dfoot mono">{len(COURSES)} courses live · {ALL_REPORTS} reports · {ALL_WORDS:,} words</div>
+  <div class="dfoot mono">{len(HISTORY)} history courses · {ALL_REPORTS} reports · {ALL_WORDS:,} words{"".join(f" · {c['short']} {c['nwritten']} of {c['nunits']} units" for c in MARKDOWN)}</div>
 </aside>
 <main>
 {''.join(panels)}
@@ -429,7 +518,7 @@ REVIEW_DUE, REVIEW_LINE = review_status()
 q += [f'**{REVIEW_LINE}**', '']
 q += ['## Course material other than reports', '', '| Item | Model | What | Review |', '|---|---|---|---|']
 q += [f'| `{k}` | {v["model"]} | {v["what"]} | {v["review"]} |' for k, v in PROV.get('artefacts', {}).items() if flagged(v['model'])]
-for c in COURSES:
+for c in HISTORY:
     fl = [(i, c['prov'].get(i, c['default_model'])) for i in c['index'] if flagged(c['prov'].get(i, c['default_model']))]
     q += ['', f'## {c["short"]} reports ({len(fl)} flagged, audit unit {c["audit_unit"]})', '']
     if fl:
@@ -441,5 +530,6 @@ q += ['', '## Notes for the reviewer', ''] + [f'- {n}' for n in PROV.get('review
 open(R / 'FABLE-REVIEW.md', 'w').write('\n'.join(q) + '\n')
 from biblio import write_all as _biblio
 print(f'bibliography: {_biblio()} unit files')
-print(' · '.join(f"{c['short']}: {c['nrep']}/{c['content_mods']} reports, {c['words']:,} words" for c in COURSES), '· size', len(page))
+print(' · '.join(f"{c['short']}: {c['nrep']}/{c['content_mods']} reports, {c['words']:,} words" for c in HISTORY)
+      + ''.join(f" · {c['short']}: {c['nwritten']}/{c['nunits']} units (placeholder)" for c in MARKDOWN), '· size', len(page))
 print(REVIEW_LINE)

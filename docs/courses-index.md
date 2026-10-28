@@ -1,6 +1,6 @@
 # Courses index
 
-Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 28 October 2026 (Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md` and `academy.md`; Brand + AI v6.4, B2 filed). Update a row whenever a unit is filed or audited (method.md §7).
+Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 28 October 2026 (Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md` and `academy.md`, and A1 done: the site is Academy; Brand + AI v6.4, B2 filed). Update a row whenever a unit is filed or audited (method.md §7).
 
 Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Personal Mythology kit; `vault/` is `courses/`; `gen/` is `generator/`. Units not yet written show the vault path they will be filed at.
 
@@ -8,9 +8,9 @@ Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Pers
 
 | Hub | Page | Link | Built from |
 |---|---|---|---|
-| Personal Mythology | The site: both courses, syllabi, every report, changelog | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH | kit `build.py` with `shell.css` = `design/theme.css` (session 11 the theme, version 41; session 12 the repo and the kit docs, version 42, 28 Oct); becomes Academy at A1 (`academy.md`) |
-| Brand + AI | Brand and AI Courses: Learn and Build | https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT | `gen/build_hub.py data/brand-ai` → `gen/hubs/brand-and-ai-courses.html` (v6.4); absorbed into Academy at A3 |
-| Brand + AI | Audience Growth Across Platforms (standalone research page) | https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw | own CSS; the same report is the hub's reading page for A2 · A6 · A9 |
+| Academy | The one site: the Academy home listing every course; Greece and Rome in full (syllabi, every report, changelog); Brand + AI as a placeholder course panel linking its written units to the Brand + AI hub until A3; the eight history courses to come | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (version 44, 28 Oct) · GitHub Pages: https://apcanario.github.io/academy/ (`kit/deploy.sh` through the public repo `apcanario/academy`) | kit `build.py` from `kit/courses.py` (`family` history or markdown), `shell.css` = `design/theme.css`; A1 of `academy.md` done 28 Oct; A3 folds the Brand + AI hub in, A2 splits the page into fetched files |
+
+Until A3: the Brand + AI units are read on the Brand + AI hub, https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT (`gen/build_hub.py data/brand-ai` → `gen/hubs/brand-and-ai-courses.html`, v6.4), and the Audience Growth research page, https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw, stands as its reading page for the superseded A2 · A6 · A9 research. Both are deleted at A3 (`academy.md`).
 
 Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Syllabus artifacts, and the three stray draft pages (r-3.2, r-3.3, r-11.6). The site's `#syllabus` and `#rome-syllabus` panels are the only published syllabi; `kit/greek-syllabus.html` and `kit/roman-syllabus.html` remain as build inputs.
 

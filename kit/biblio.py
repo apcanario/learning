@@ -11,7 +11,7 @@ one exists, sits beside it as bibliography/<course>/r-<id>.md (see AGENT-SPEC.md
 """
 import sys, re, html, json, pathlib
 from collections import defaultdict
-from courses import COURSES
+from courses import HISTORY as COURSES
 
 R = pathlib.Path(__file__).resolve().parent
 OUT = R / 'bibliography'
@@ -69,6 +69,10 @@ def extract(frag):
             anc[(owners.pop(), w)] |= anc.pop(('', w))
     return anc, bare, mod, corp
 
+def lockey(s):
+    """Natural sort for a locator ('1.2' before '1.10'); the raw string breaks any tie so the order is total."""
+    return ([int(x) if x.isdigit() else x for x in re.split(r'(\d+)', s)], s)
+
 def unit_md(c, u, ids):
     idx = json.load(open(R / c['prompts']))
     lines = [f"# {c['short']} unit {u}: sources cited", '',
@@ -82,12 +86,12 @@ def unit_md(c, u, ids):
         if cur.exists(): lines += [f"Curated bibliography: `bibliography/{c['id']}/r-{i}.md`.", '']
         lines += ['### Ancient works']
         for (a, w), locs in sorted(anc.items(), key=lambda x: (x[0][0] or '~', x[0][1])):
-            lines.append(f"- {(a + ', ') if a else ''}*{w}* {'; '.join(sorted(locs, key=lambda s: [int(x) if x.isdigit() else x for x in re.split(r'(\d+)', s)]))}")
+            lines.append(f"- {(a + ', ') if a else ''}*{w}* {'; '.join(sorted(locs, key=lockey))}")
         if bare:
             lines += ['', '### Ancient authors cited by locator only (work named earlier in the sentence or implied)']
-            for a, locs in sorted(bare.items()): lines.append(f"- {a} {'; '.join(sorted(locs, key=lambda s: [int(x) if x.isdigit() else x for x in re.split(r'(\d+)', s)]))}")
+            for a, locs in sorted(bare.items()): lines.append(f"- {a} {'; '.join(sorted(locs, key=lockey))}")
         lines += ['', '### Modern works']
-        for name, title, year in sorted(mod, key=lambda x: (x[0].split()[-1], x[2])):
+        for name, title, year in sorted(mod, key=lambda x: (x[0].split()[-1], x[2], x[1], x[0])):
             lines.append(f"- {name}, {('*' + title + '* ') if title else ''}({year})" if title else f"- {name} ({year}): title not given in the report")
         if corp:
             lines += ['', '### Corpora and inscriptions', ''] + [f'- {x}' for x in sorted(corp)]

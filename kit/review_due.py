@@ -12,7 +12,7 @@ register.py prints the line after every registration and build.py after every bu
 alert surfaces in any writing session without anyone remembering to look.
 """
 import sys, json, re, pathlib
-from courses import COURSES
+from courses import HISTORY as COURSES
 
 R = pathlib.Path(__file__).resolve().parent
 EVERY = 4

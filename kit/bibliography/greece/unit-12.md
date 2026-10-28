@@ -176,12 +176,12 @@ Curated bibliography: `bibliography/greece/r-12.3.md`.
 - Lutosławski, *The Origin and Growth of Plato's Logic* (1897)
 - Morrow, *Studies in the Platonic Epistles* (1935)
 - Nussbaum, *The Fragility of Goodness* (1986)
-- Kahn. When Owen, *The Place of the <em>Timaeus</em> in Plato's Dialogues* (1953)
 - Owen (1953): title not given in the report
+- Kahn. When Owen, *The Place of the <em>Timaeus</em> in Plato's Dialogues* (1953)
 - Popper, *The Open Society and Its Enemies* (1945)
 - Ryle, *Plato's <em>Parmenides</em>* (1939)
-- Sachs, *A Fallacy in Plato's <em>Republic</em>* (1963)
 - Sachs (1963): title not given in the report
+- Sachs, *A Fallacy in Plato's <em>Republic</em>* (1963)
 - Sayre, *Plato's Late Ontology* (1983)
 - Shorey, *The Unity of Plato's Thought* (1903)
 - Thomas Szlezák, *Platon und die Schriftlichkeit der Philosophie* (1985)
@@ -326,15 +326,15 @@ Curated bibliography: `bibliography/greece/r-12.6.md`.
 - Furley (1967): title not given in the report
 - David Furley, *Two Studies in the Greek Atomists* (1967)
 - Reinhold Glei, *Et invidus et inbecillus: das angebliche Epikurfragment bei Laktanz, De ira dei 13,20–21* (1988)
-- David Konstan, *Epicurus on the gods* (2011)
 - Konstan (2011): title not given in the report
+- David Konstan, *Epicurus on the gods* (2011)
 - Thomas Nagel, *Death* (1970)
 - Boris Nikolsky, *Epicurus on Pleasure* (2001)
 - John Rist, *Epicurus: An Introduction* (1972)
-- David Sedley, *The Hellenistic Philosophers* (1987)
 - Sedley (1987): title not given in the report
-- Sedley, *Epicurus' theological innatism* (2011)
+- David Sedley, *The Hellenistic Philosophers* (1987)
 - Sedley (2011): title not given in the report
+- Sedley, *Epicurus' theological innatism* (2011)
 - Smith, *Diogenes of Oinoanda: The Epicurean Inscription* (1993)
 - C. C. W. Taylor, *The Greeks on Pleasure* (1982)
 - James Warren, *Facing Death: Epicurus and His Critics* (2004)

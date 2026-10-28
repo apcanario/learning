@@ -43,8 +43,8 @@ Curated bibliography: `bibliography/rome/r-5.1.md`.
 - Jerzy Linderski, *The Pontiff and the Tribune* (2002)
 - Rathbone, *Journal of Roman Studies* (1985)
 - Dominic Rathbone, *Poor peasants and silent sherds* (2008)
-- Nathan Rosenstein, *Rome at War* (2004)
 - Answer Rosenstein (2004): title not given in the report
+- Nathan Rosenstein, *Rome at War* (2004)
 - Arnold Toynbee, *Hannibal's Legacy* (1965)
 
 ## 5.2 Marius and Sulla
@@ -243,8 +243,8 @@ Curated bibliography: `bibliography/rome/r-5.6.md`.
 - Benjamin Farrington, *Science and Politics in the Ancient World* (1939)
 - Don Fowler, *Lucretius and Politics* (1989)
 - O. A. M. Lyne, *The Neoteric Poets* (1978)
-- Fergus Millar, *Cornelius Nepos, 'Atticus' and the Roman Revolution* (1988)
 - Millar (1988): title not given in the report
+- Fergus Millar, *Cornelius Nepos, 'Atticus' and the Roman Revolution* (1988)
 - David Sedley, *Lucretius and the Transformation of Greek Wisdom* (1998)
 - Ronald Syme, *Sallust* (1964)
 

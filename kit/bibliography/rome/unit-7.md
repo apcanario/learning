@@ -33,8 +33,8 @@ Curated bibliography: `bibliography/rome/r-7.1.md`.
 ### Modern works
 - Barrett, *Agrippina* (1996)
 - Anthony Barrett, *Caligula: The Corruption of Power* (2015)
-- Barrett, *Rome Is Burning* (2020)
 - Barrett (2020): title not given in the report
+- Barrett, *Rome Is Burning* (2020)
 - Champlin (2003): title not given in the report
 - Champlin, *Nero* (2003)
 - Edward Champlin, *Tiberius and His Age* (2024)
@@ -151,8 +151,8 @@ Curated bibliography: `bibliography/rome/r-7.4.md`.
 ### Modern works
 - Kostas Buraselis, *Theia Dorea* (1989)
 - Varius. Martijn Icks, *The Crimes of Elagabalus* (2011)
-- Geta. Imrie (2018): title not given in the report
 - Alex Imrie (2018): title not given in the report
+- Geta. Imrie (2018): title not given in the report
 - J. Jahn (1984): title not given in the report
 - Myles Lavan, *Past & Present* (2016)
 - Prado (2010): title not given in the report
@@ -184,8 +184,8 @@ Curated bibliography: `bibliography/rome/r-7.5.md`.
 
 ### Modern works
 - Brian Dobson, *Hadrian's Wall* (1976)
-- Richard Duncan-Jones, *Structure and Scale in the Roman Economy* (1990)
 - Duncan-Jones (1990): title not given in the report
+- Richard Duncan-Jones, *Structure and Scale in the Roman Economy* (1990)
 - Thomas Grünewald, *Räuber, Rebellen, Rivalen, Rächer* (2004)
 - Richard Hingley, *Roman Officers and English Gentlemen* (2000)
 - Keith Hopkins, *Rules of Evidence* (1978)

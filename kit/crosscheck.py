@@ -11,7 +11,7 @@ Prints, for the given reports:
 It reports candidates; reading the target and deciding is the maintainer's job.
 """
 import re, sys, html, pathlib, itertools
-from courses import COURSES
+from courses import HISTORY as COURSES
 
 R = pathlib.Path(__file__).resolve().parent
 cid, ids = sys.argv[1], sys.argv[2:]

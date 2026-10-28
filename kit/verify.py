@@ -1,9 +1,9 @@
-"""Browser checks for personal-mythology.html (run after build.py).
+"""Browser checks for personal-mythology.html, the Academy site (run after build.py).
 
 python3 verify.py [--shots DIR]
 Checks, at 390 px wide: no horizontal scroll and no boxed elements closer than 6 px on every panel with every
 <details> opened; the drawer in each context; no console errors; navigation context (drawer, title, arrows,
-continue) across home -> Rome -> report -> home -> Greece -> report. With --shots, saves dark and light screenshots.
+continue) across home -> Rome -> report -> home -> Greece -> report -> Brand + AI placeholder. With --shots, saves dark and light screenshots.
 """
 import sys, json, pathlib
 from playwright.sync_api import sync_playwright
@@ -68,7 +68,7 @@ def main():
             worst.append((res['min'], pid, res['n']))
         print(f'panels checked: {len(ids)}; tightest stacked gap {min(worst)[0]}px ({min(worst)[1]})')
         # drawer in each context, every unit expanded
-        for pid in ['home', 'greece', 'rome']:
+        for pid in ['home', 'greece', 'rome', 'brand-ai']:
             pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
             pg.click('#menuB'); pg.wait_for_timeout(250)
             pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed'))")
@@ -94,7 +94,7 @@ def main():
                 if not ok: fails.append(f'nav {label}: {k} = {s[k]!r}, expected {v if not callable(v) else "check"}')
         step('home', dict(id='home', nav='root', u='HOME', arrows=False))
         pg.click('#home a.hbtn[href="#changelog"]'); pg.wait_for_timeout(80)
-        step('changelog', dict(id='changelog', nav='root', u='PERSONAL MYTHOLOGY', t='Changelog', arrows=False))
+        step('changelog', dict(id='changelog', nav='root', u='ACADEMY', t='Changelog', arrows=False))
         pg.click('#homeB'); pg.wait_for_timeout(80)
         pg.click('#home a.course[href="#rome"]'); pg.wait_for_timeout(80)
         step('rome home', dict(id='rome', nav='rome', u='COURSE 2', t='Rome', arrows=True, prev=False, next=True))
@@ -133,8 +133,20 @@ def main():
             step('rome home resumes rome', dict(id='rome', cont=lambda c: c.startswith('Continue ') and 'Greece' not in c and c != '(hidden)'))
         pg.click('#menuB'); pg.wait_for_timeout(250)
         dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
-        if rome_reps and dr[:3] != ['Personal Mythology', 'Rome: course home', 'Syllabus and prompts']: fails.append(f'rome drawer top: {dr}')
+        if rome_reps and dr[:3] != ['Academy', 'Rome: course home', 'Syllabus and prompts']: fails.append(f'rome drawer top: {dr}')
         pg.click('#closeB'); pg.wait_for_timeout(200)
+        # the Brand + AI placeholder: its own drawer context, no arrows, the home title Academy, written units link out
+        pg.click('#homeB'); pg.wait_for_timeout(80)
+        pg.click('#home a.course[href="#brand-ai"]'); pg.wait_for_timeout(80)
+        step('brand-ai home', dict(id='brand-ai', nav='brand-ai', u='COURSES A + B', t='Brand + AI', arrows=False))
+        ba = pg.evaluate("[...document.querySelectorAll('#brand-ai a.hrow')].map(a => a.getAttribute('href'))")
+        if not ba or not all(h.startswith('https://claude.ai/artifact/') for h in ba): fails.append(f'brand-ai written units do not link to the hub: {ba[:3]}')
+        pg.click('#menuB'); pg.wait_for_timeout(250)
+        dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
+        if dr[:2] != ['Academy', 'Brand + AI: course home']: fails.append(f'brand-ai drawer top: {dr}')
+        pg.click('#closeB'); pg.wait_for_timeout(200)
+        title = pg.title()
+        if title != 'Academy': fails.append(f'page title {title!r}, expected Academy')
         for label, s in log: print(f'  {label:28} {s["id"]:14} nav={s["nav"]:7} {s["u"]} | {s["t"][:40]} | arrows={s["arrows"]} prev={s["prev"]} next={s["next"]} | {s["cont"][:60]}')
 
         if SHOTS:

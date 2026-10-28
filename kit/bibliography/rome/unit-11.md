@@ -41,16 +41,16 @@ Curated bibliography: `bibliography/rome/r-11.1.md`.
 - Matthias Gelzer, *Die Nobilität der römischen Republik* (1912)
 - Hölkeskamp (2004): title not given in the report
 - Karl-Joachim Hölkeskamp, *Reconstructing the Roman Republic* (2010)
-- Robert Morstein-Marx, *Mass Oratory and Political Power in the Late Roman Republic* (2004)
 - Morstein-Marx (2004): title not given in the report
-- Henrik Mouritsen, *Plebs and Politics in the Late Roman Republic* (2001)
+- Robert Morstein-Marx, *Mass Oratory and Political Power in the Late Roman Republic* (2004)
 - Mouritsen (2001): title not given in the report
+- Henrik Mouritsen, *Plebs and Politics in the Late Roman Republic* (2001)
 - Friedrich Münzer, *Römische Adelsparteien und Adelsfamilien* (1920)
 - John North, *Democratic Politics in Republican Rome* (1990)
 - Francisco Pina Polo, *Contra arma verbis* (1996)
 - H. H. Scullard, *Roman Politics 220–150 BC* (1951)
-- Alexander Yakobson, *Petitio et largitio* (1999)
 - Yakobson (1999): title not given in the report
+- Alexander Yakobson, *Petitio et largitio* (1999)
 
 ## 11.2 Generals and their armies
 
@@ -87,7 +87,7 @@ Curated bibliography: `bibliography/rome/r-11.2.md`.
 - Stefan Chrissanthos, *Caesar and the Mutiny of 47 B.C.* (2001)
 - Emilio Gabba's (1976): title not given in the report
 - Erich Gruen, *The Last Generation of the Roman Republic* (1974)
-- Arthur Keaveney, *The Army in the Roman Revolution* (2007)
 - Keaveney (2007): title not given in the report
+- Arthur Keaveney, *The Army in the Roman Revolution* (2007)
 - Anton von Premerstein, *Vom Werden und Wesen des Prinzipats* (1937)
 

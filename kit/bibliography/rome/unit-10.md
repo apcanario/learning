@@ -17,10 +17,10 @@ Curated bibliography: `bibliography/rome/r-10.1.md`.
 
 ### Modern works
 - Edward Courtney (1997): title not given in the report
-- Richard Heinze, *Ovids elegische Erzählung* (1919)
 - Heinze (1919): title not given in the report
-- Stephen Hinds, *The Metamorphosis of Persephone* (1987)
+- Richard Heinze, *Ovids elegische Erzählung* (1919)
 - Hinds (1987): title not given in the report
+- Stephen Hinds, *The Metamorphosis of Persephone* (1987)
 - Karl Lachmann (1848): title not given in the report
 - Brooks Otis, *Ovid as an Epic Poet* (1966)
 - R. J. Tarrant, *The Authenticity of the Letter of Sappho to Phaon* (1981)
@@ -52,13 +52,13 @@ Curated bibliography: `bibliography/rome/r-10.2.md`.
 
 ### Modern works
 - Frederick Ahl, *Lucan: An Introduction* (1976)
-- Susanna Braund, *Beyond Anger* (1988)
 - Braund (1988): title not given in the report
+- Susanna Braund, *Beyond Anger* (1988)
 - Michael Dewar, *Laying It On with a Trowel* (1994)
 - Fehling (1977): title not given in the report
 - Detlev Fehling, *Amor und Psyche* (1977)
-- Gilbert Highet, *Juvenal the Satirist* (1954)
 - Highet (1954): title not given in the report
+- Gilbert Highet, *Juvenal the Satirist* (1954)
 - Johnson, *The Vanity of Human Wishes* (1749)
 - Enzo Marmorale, *La questione petroniana* (1948)
 - K. F. C. Rose, *The Date and Author of the Satyricon* (1971)
@@ -127,8 +127,8 @@ Curated bibliography: `bibliography/rome/r-10.4.md`.
 ### Modern works
 - Addison, *Cato* (1713)
 - The BBC, *I, Claudius* (1976)
-- Bernard Bailyn, *The Ideological Origins of the American Revolution* (1967)
 - Answer Bailyn (1967): title not given in the report
+- Bernard Bailyn, *The Ideological Origins of the American Revolution* (1967)
 - Hans Baron, *The Crisis of the Early Italian Renaissance* (1955)
 - Mary Beard, *SPQR* (2015)
 - Alexander Demandt, *Der Fall Roms* (1984)
@@ -147,12 +147,12 @@ Curated bibliography: `bibliography/rome/r-10.4.md`.
 - Anthony Mann, *The Fall of the Roman Empire* (1964)
 - Charles Martindale, *Redeeming the Text* (1993)
 - Robert Miola, *Shakespeare's Rome* (1983)
-- Montesquieu, *Considerations on the Causes of the Greatness of the Romans and their Decline* (1734)
 - Answer Following Montesquieu (1734): title not given in the report
+- Montesquieu, *Considerations on the Causes of the Greatness of the Romans and their Decline* (1734)
 - Giovanni Pastrone, *Cabiria* (1914)
 - Pompeii (1748): title not given in the report
-- Carl J. Richard, *The Founders and the Classics* (1994)
 - Richard (1994): title not given in the report
+- Carl J. Richard, *The Founders and the Classics* (1994)
 - Rome (2007): title not given in the report
 - Ridley Scott, *Gladiator* (2000)
 - Rome. Jerrold Seigel, *'Civic Humanism' or Ciceronian Rhetoric?* (1966)

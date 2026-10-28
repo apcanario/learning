@@ -25,19 +25,19 @@ Curated bibliography: `bibliography/rome/r-3.1.md`.
 - Livy 1.8.7; 1.33.2; 2.16.4–5; 2.18; 2.41; 2.56–58; 2.58.1; 3.44–52; 3.55; 3.55.13; 3.57.10; 4.1–6; 4.3–5; 6.35.4–5; 7.16.9; 7.17.6; 9.46.5; 40.44.1
 
 ### Modern works
-- Cornell, *The Beginnings of Rome* (1995)
 - Cornell (1995): title not given in the report
+- Cornell, *The Beginnings of Rome* (1995)
 - Crawford, *Roman Statutes* (1996)
-- Forsythe, *A Critical History of Early Rome* (2005)
 - Forsythe (2005): title not given in the report
+- Forsythe, *A Critical History of Early Rome* (2005)
 - Fritz (1950): title not given in the report
 - Gelzer (1912): title not given in the report
-- Jacques Godefroy (1616): title not given in the report
 - Godefroy (1616): title not given in the report
+- Jacques Godefroy (1616): title not given in the report
 - Hölkeskamp, *Die Entstehung der Nobilität* (1987)
 - Lambert (1902): title not given in the report
-- Richard Mitchell, *Patricians and Plebeians* (1990)
 - Mitchell (1990): title not given in the report
+- Richard Mitchell, *Patricians and Plebeians* (1990)
 - Momigliano, *Camillus and Concord* (1942)
 - Raaflaub, *Social Struggles in Archaic Rome* (2005)
 
@@ -107,8 +107,8 @@ Curated bibliography: `bibliography/rome/r-3.3.md`.
 
 ### Modern works
 - Gabriele Cifani, *Architettura romana arcaica* (2008)
-- Cornell, *The Beginnings of Rome* (1995)
 - Cornell (1995): title not given in the report
+- Cornell, *The Beginnings of Rome* (1995)
 - Gary Forsythe, *A Critical History of Early Rome* (2005)
 - Michel Humbert, *Municipium et civitas sine suffragio* (1978)
 - Mommsen, *Die gallische Katastrophe* (1878)

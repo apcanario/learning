@@ -1,11 +1,16 @@
 """Course data for build.py. Each live course is a dict; NEXT lists the courses still to come.
 
+Every course has a `family`: 'history' (Greece, Rome and the eight to come: HTML fragments per module in the kit,
+a syllabus with prompts, provenance.json) or 'markdown' (Brand + AI: units as Markdown in courses/, data under
+generator/data/<slug>/). The root home is Academy and lists every course of both families (docs/academy.md, A1).
+Until A3 lands, a markdown course is a placeholder panel in Academy that links to its own artifact.
+
 Text fields may use these placeholders, filled per course at build time:
 {content_mods} modules excluding the audit unit · {total_mods} all modules · {nrep} reports written · {kwords} thousands of words written
 """
 
 GREECE = dict(
-    id='greece', num=1, short='Greece', label='GREECE', name='Greek history and mythology', color='var(--red)',
+    id='greece', family='history', num=1, short='Greece', label='GREECE', name='Greek history and mythology', color='var(--red)',
     syllabus='greek-syllabus.html', frags='greece', prompts='prompts-greece.json', prefix='m',
     home_id='greece', syl_id='syllabus', syl_anchor='s',
     unit_colors={'0': 'var(--gold)', '1': 'var(--orange)', '2': 'var(--purple)', '3': 'var(--red)', '4': 'var(--orange)', '5': 'var(--teal)', '6': 'var(--blue)', '7': 'var(--purple)', '8': 'var(--gold)', '9': 'var(--teal)', '10': 'var(--red)', '11': 'var(--blue)', '12': 'var(--gold)', '13': 'var(--teal)'},
@@ -46,7 +51,7 @@ GREECE = dict(
 )
 
 ROME = dict(
-    id='rome', num=2, short='Rome', label='ROME', name='Roman history and mythology', color='var(--purple)',
+    id='rome', family='history', num=2, short='Rome', label='ROME', name='Roman history and mythology', color='var(--purple)',
     syllabus='roman-syllabus.html', frags='rome', prompts='prompts-rome.json', prefix='rm',
     home_id='rome', syl_id='rome-syllabus', syl_anchor='rs',
     unit_colors={'0': 'var(--gold)', '1': 'var(--orange)', '2': 'var(--purple)', '3': 'var(--teal)', '4': 'var(--red)', '5': 'var(--orange)', '6': 'var(--purple)', '7': 'var(--blue)', '8': 'var(--teal)', '9': 'var(--gold)', '10': 'var(--blue)', '11': 'var(--red)', '12': 'var(--purple)', '13': 'var(--gold)', '14': 'var(--teal)'},
@@ -88,7 +93,20 @@ ROME = dict(
     next_up=['11.3', '11.4', '11.5', '11.6', '11.7', '11.8', '12.1', '12.2', '12.3', '12.4', '12.5', '12.6', '12.7', '12.8', '13.3', '13.4', '13.5', '13.6', '13.7', '13.8'],
 )
 
-COURSES = [GREECE, ROME]
+BRAND_AI = dict(
+    id='brand-ai', family='markdown', short='Brand + AI', label='BRAND + AI', name='Brand + AI: two courses for one reader', color='var(--teal)',
+    home_id='brand-ai', status='in progress',
+    # content and status come from the hub's own data file; build.py reads it, nothing here is typed by hand
+    data='generator/data/brand-ai/hub.py',
+    # until A3: the units are read on the standalone hub; the Academy panel links there
+    artifact='https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT',
+    eyebrow='BRAND + AI',
+    card='A · Building a Marketable Personal Brand and B · Using AI to Build It. Who pays, for what, how long it takes; which model for which task, how to brief, where the setup leaks. Every unit sourced and ending in a shipped deliverable.',
+)
+
+COURSES = [GREECE, ROME, BRAND_AI]
+HISTORY = [c for c in COURSES if c['family'] == 'history']
+MARKDOWN = [c for c in COURSES if c['family'] == 'markdown']
 
 NEXT = [
  ("Egypt", "Egyptian history and mythology", "var(--gold)",

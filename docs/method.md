@@ -216,7 +216,7 @@ At the end of every chat that works a backlog row:
 1. Move the row from the Queue to `docs/CHANGELOG.md`: date, spec, model, one-line result, commit.
 2. Add every task the work uncovered as a new row marked *proposed*, in the place it belongs. Do not work it.
 3. Hand the backlog to Pedro in the reply, as one short list: the row done, the proposed rows, the row next up. He confirms or edits the proposed rows and names the next row; the next chat starts there.
-4. Commit and push.
+4. Rewrite the Project copies from `docs/`: `claude/BACKLOG-chats.md` from `docs/BACKLOG.md` and `claude/CHANGELOG-chats.md` from `docs/CHANGELOG.md`, each the full file, so the Project knowledge never lags the repo. Then commit and push.
 
 A chat that finds nothing new still hands the backlog over with the next row named. A row that cannot be finished stays in the Queue with a one-line note of where it stopped.
 

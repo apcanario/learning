@@ -4,7 +4,7 @@ python3 register.py rome "Opus 5.5" 0.1 0.2 1.4
 Refuses any id whose fragment is missing or fails check.py.
 """
 import sys, json, re, html, pathlib
-from courses import COURSES
+from courses import HISTORY as COURSES
 from check import check, target_for
 
 R = pathlib.Path(__file__).resolve().parent

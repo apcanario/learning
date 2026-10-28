@@ -84,8 +84,8 @@ Curated bibliography: `bibliography/rome/r-9.2.md`.
 - J. C. Coulston, *The Value of Trajan's Column as a Source for Military Equipment* (1989)
 - Richard Duncan-Jones, *Structure and Scale in the Roman Economy* (1990)
 - Giovanni Forni, *Il reclutamento delle legioni da Augusto a Diocleziano* (1953)
-- Benjamin Isaac, *The Meaning of the Terms <em>Limes</em> and <em>Limitanei</em>* (1988)
 - Isaac (1988): title not given in the report
+- Benjamin Isaac, *The Meaning of the Terms <em>Limes</em> and <em>Limitanei</em>* (1988)
 - A. H. M. Jones, *The Later Roman Empire* (1964)
 
 ## 9.3 Family, women and slaves
@@ -204,8 +204,8 @@ Curated bibliography: `bibliography/rome/r-9.4.md`.
 - Keith Hopkins, *Death and Renewal* (1983)
 - Willem Jongman (1988): title not given in the report
 - Walter Scheidel, *Germs for Rome* (2003)
-- Glenn Storey, *The population of ancient Rome* (1997)
 - Storey (1997): title not given in the report
+- Glenn Storey, *The population of ancient Rome* (1997)
 - Paul Veyne, *Le pain et le cirque* (1976)
 - Andrew Wallace-Hadrill (1991): title not given in the report
 - Wallace-Hadrill, *Houses and Society in Pompeii and Herculaneum* (1994)

@@ -166,8 +166,8 @@ Curated bibliography: `bibliography/rome/r-1.4.md`.
 - Jaan Puhvel (1975): title not given in the report
 - Hermann Strasburger (1968): title not given in the report
 - Lupercus. Wiseman (1993): title not given in the report
-- T. P. Wiseman, *Remus: A Roman Myth* (1995)
 - Wiseman, *Remus* (1995)
+- T. P. Wiseman, *Remus: A Roman Myth* (1995)
 
 ## 1.5 The seven kings
 
@@ -198,8 +198,8 @@ Curated bibliography: `bibliography/rome/r-1.5.md`.
 - Corniculum. Andreas Alföldi, *Early Rome and the Latins* (1965)
 - Carandini, *Reading Carandini* (2001)
 - Andrea Carandini, *La nascita di Roma* (2007)
-- Cornell, *The Beginnings of Rome* (1995)
 - Cornell (1995): title not given in the report
+- Cornell, *The Beginnings of Rome* (1995)
 - Gary Forsythe, *A Critical History of Early Rome* (2005)
 - Plinio Fraccaro (1931): title not given in the report
 - John Hopkins (2016): title not given in the report
