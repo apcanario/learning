@@ -9,7 +9,7 @@ Paths, all in the repo `apcanario/learning`: `kit/` is the Personal Mythology ki
 | Hub | Page | Link | Built from |
 |---|---|---|---|
 | Personal Mythology | The site: both courses, syllabi, every report, changelog | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH | kit `build.py`; `kit/shell.css` must be a copy of `design/theme.css` (S1 of `pm-status-2026-10-28.md`; not yet done as of version 40) |
-| Brand + AI | Brand and AI Courses: Learn and Build | https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT | `gen/build_hub.py data/brand-ai` → `gen/hubs/brand-and-ai-courses.html` (v6; republish to this link) |
+| Brand + AI | Brand and AI Courses: Learn and Build | https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT | v6.3, 28 Oct 2026; content in `generator/data/brand-ai/hub.py`; no builder exists; absorbed into Academy at A3 (`academy.md`) |
 | Brand + AI | Audience Growth Across Platforms (standalone research page) | https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw | own CSS; the same report is the hub's reading page for A2 · A6 · A9 |
 
 Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Syllabus artifacts, and the three stray draft pages (r-3.2, r-3.3, r-11.6). The site's `#syllabus` and `#rome-syllabus` panels are the only published syllabi; `kit/greek-syllabus.html` and `kit/roman-syllabus.html` remain as build inputs.
@@ -36,10 +36,10 @@ Two courses for one reader. **A · Building a Marketable Personal Brand** (9 cor
 
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
-| — | A2 · A6 · A9 | A | Audience and platform economics · How growth works, per platform · What to expect: benchmarks | rewritten 28 Oct 2026 as three units from their briefs after Audit 1's REWRITE; each fresh-checked by Fable 5.1 (A9 fix 2/15/8; A2 fix 3/13/11; A6 fix 1/9/7), all findings applied | research 27 Oct: Fable 5.1 research agents; rewrites: Opus 5.5; checks: Fable 5.1 | on | `gen/data/brand-ai/audience-growth-across-platforms.md` (the research, kept as reading); units at `vault/courses/brand-ai/A9-…`, `A2-…`, `A6-…` |
-| 4 | B1 | B | Mental model | written 28 Oct 2026 (own chat in the Project; vault copy to commit) | Opus 5.5 | on (writer's call: dated product facts) | `vault/courses/brand-ai/B1-mental-model.md` · `gen/data/brand-ai/units/B1-mental-model.md` |
-| ✓ | Audit 1 | A+B | Stratified-sample audit of the last four units | run 28 Oct 2026: B1 PASS, A2·A6·A9 REWRITE | Fable 5.1 | on | hub Audits page; artifact "Brand + AI Audit 1" |
-| 5 | B2 | B | Choosing the model | not written · next | Opus 5.5 | on | `vault/courses/brand-ai/B2-choosing-the-model.md` |
+| — | A2 · A6 · A9 | A | Audience and platform economics · How growth works, per platform · What to expect: benchmarks | rewritten 28 Oct 2026 as three units from their briefs after Audit 1's REWRITE; each fresh-checked by Fable 5.1 (A9 fix 2/15/8; A2 fix 3/13/11; A6 fix 1/9/7), all findings applied | research 27 Oct: Fable 5.1 research agents; rewrites: Opus 5.5; checks: Fable 5.1 | on | `gen/data/brand-ai/audience-growth-across-platforms.md` (the research, kept as reading); units at `courses/brand-ai/A9-…`, `A2-…`, `A6-…` |
+| 4 | B1 | B | Mental model | written 28 Oct 2026; Audit 1 PASS (7 of 7 sampled claims) | Opus 5.5 | on (writer's call: dated product facts) | `courses/brand-ai/B1-mental-model.md` |
+| ✓ | Audit 1 | A+B | Stratified-sample audit of the last four units | run 28 Oct 2026: B1 PASS, A2·A6·A9 REWRITE | Fable 5.1 | on | `audits/brand-ai/audit-1.html` (saved from the artifact) |
+| 5 | B2 | B | Choosing the model | not written · next, after A3 moves Brand + AI into Academy; fresh checker required | Opus 5.5 | on | `vault/courses/brand-ai/B2-choosing-the-model.md` |
 | 6 | B3 | B | Prompting that holds up | not written | Opus 5.5 | off | `vault/courses/brand-ai/B3-prompting-that-holds-up.md` |
 | 7 | B4 | B | Context engineering | not written | Opus 5.5 | off | `vault/courses/brand-ai/B4-context-engineering.md` |
 | 8 | A1 | A | Positioning: the journey as a format | not written | Opus 5.5 | off | `vault/courses/brand-ai/A1-positioning-the-journey-as-a-format.md` |

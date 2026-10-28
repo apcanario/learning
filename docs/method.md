@@ -48,7 +48,7 @@ Override if: you want the kit as the only home for history; then the vault holds
 - With a checker, unit 12 scored 4.8 (`audits/greece-13.4-cohorts.md`).
 - Brand + AI's sample audit will show whether it needs one.
 
-Override if: any unit in Brand + AI's first audit fails more than one sampled claim in ten; then every later Brand + AI unit gets a fresh check too.
+Override if: any unit in Brand + AI's first audit fails more than one sampled claim in ten; then every later Brand + AI unit gets a fresh check too. **Triggered 28 October 2026:** Audit 1 failed A2·A6·A9 (23 of 91 claims); from B2 on, every Brand + AI unit gets a fresh checker in a new chat (§5).
 
 **Audit cadence.** Pick: count units per hub; audit every four with the claim-sample prompt.
 - One trigger the reader can count without a script.
@@ -143,7 +143,7 @@ How each course instantiates it:
 ## 5 · Checking a unit before filing
 
 - **Personal Mythology:** `python3 check.py <course>/r-<id>.html` until it prints OK (structure, 10 self-test answers, 3 carry-forward items, dispute boxes, British spelling, no em dashes). Then one fresh checker in a new chat that has not seen the unit written, briefed with `reviews/units-9-13/BRIEF.md`, the report, its prompt, its neighbours, the targets of its pointers, its lane note and the writer's unsure list; it writes findings and never edits. The maintainer verifies every finding before applying it, with exact-match replacements.
-- **Brand + AI:** the writer's own pass (§4, Before handing in). No fresh checker unless the first audit triggers one (§1).
+- **Brand + AI:** the writer's own pass (§4, Before handing in), then, since 28 October 2026 (§1 override triggered by Audit 1), one fresh checker in a new chat that has not seen the unit written: it checks every cited claim against its source and the deliverable against the brief, writes findings (error / should-fix / minor) and never edits; the maintainer applies each finding as an exact replacement. The `audit-units` skill runs it.
 
 ## 6 · Audit procedure
 

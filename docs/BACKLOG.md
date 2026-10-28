@@ -27,6 +27,6 @@ Dropped 28 October 2026: S2 (a builder for the standalone Brand + AI hub); A1 an
 | # | Task | Why | Suggested place |
 |---|---|---|---|
 | P1 | Delete the "Knowledge transfer" artifact (https://claude.ai/artifact/Tgy4URAP8HTf4tPK7GZwfJ) | Its files are in the repo; its own text says delete after use | Pedro, by hand, any time |
-| P2 | Update the Brand + AI Audit 1 row in `courses-index.md` | An audit artifact exists from 28 October; the index says none ran | Folded into A3 |
+| P3 | File the three fresh-check reports of A2, A6, A9 (28 Oct 2026, Fable 5.1) into `audits/brand-ai/` | They exist only in their chats; the hub summarises them (A9 2/15/8, A2 3/13/11, A6 1/9/7) | Any chat that can read those chats, or paste them in |
 
 Done rows are in `CHANGELOG.md`.
