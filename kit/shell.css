@@ -15,6 +15,9 @@
       4a report  4b home and course cards  4c syllabus and prompts
       4d era ribbon  4e rule blocks and parts  4f root home  4g changelog
    5  Components added for hubs (the history site has no equivalent)
+   6  Responsive: tablet (from 768 px) and desktop (from 1100 px); the phone
+      layout below 768 px is the one every rule above describes and does not change
+   Version 2, 28 Oct 2026 (section 6 added; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -424,3 +427,38 @@ details.clog[open]>summary::after{content:"–"}
 .panel.stack .report>:last-child{margin-bottom:0}
 /* external link rows (bibliography): the domain wraps rather than widening the page */
 .hrow small.url{font-family:var(--mono);font-size:11px;overflow-wrap:anywhere}
+
+/* 6 · Responsive: tablet and desktop ---------------------------------------- */
+/* Phone (under 768 px) is the base and is untouched by this section. Tablet widens the column and
+   puts cards in two columns; desktop turns the drawer into a persistent left sidebar. Breakpoints:
+   768 px (tablet) and 1100 px (desktop). Nothing here changes a token or a component's own style. */
+/* card grid: a plain wrapper around course cards (root home, hub home and Learn page); one column on a phone */
+.cgrid{display:grid}
+.panel.root>.cgrid{gap:24px}
+.panel.root .cgrid>.course{margin:0}
+@media (min-width:768px){
+  /* reading column: 760 px; the top bar follows it */
+  main,.top-in{max-width:760px}
+  /* two columns: course cards, unit cards, coming-soon list; an only card spans both */
+  .cgrid{grid-template-columns:1fr 1fr;column-gap:10px;align-items:start}
+  .panel.root>.cgrid{gap:24px 12px}
+  .cgrid>.course:only-child{grid-column:1 / -1}
+  .ucards,.part .ucards,.smods,.sunit .smods,.soonlist{grid-template-columns:1fr 1fr;align-items:start}
+  .ucards{column-gap:12px}
+  .smods{column-gap:10px}
+  .soonlist{column-gap:8px}
+  /* stat tiles stay 3 or 4 across (two columns would orphan a tile) */
+  .stats[data-n="4"]{grid-template-columns:repeat(4,1fr)}
+}
+@media (min-width:1100px){
+  /* the drawer is a sidebar: always open, no backdrop, no menu or close button; its list scrolls on its own */
+  :root{--side:300px}
+  body{padding-left:var(--side)}
+  .top{left:var(--side)}
+  .drawer{transform:none;width:var(--side);box-shadow:none;transition:none;border-right:1px solid var(--line)}
+  .backdrop{display:none}
+  #menuB,#closeB{display:none}
+  .dhead{padding-right:16px}
+  html.locked{overflow:auto}
+  /* the reading measure is unchanged (68ch on report text); the column itself stays 760 px */
+}

@@ -1,9 +1,13 @@
 """Browser checks for personal-mythology.html, the Academy site (run after build.py).
 
 python3 verify.py [--shots DIR]
-Checks, at 390 px wide: no horizontal scroll and no boxed elements closer than 6 px on every panel with every
-<details> opened; the drawer in each context; no console errors; navigation context (drawer, title, arrows,
-continue) across home -> Rome -> report -> home -> Greece -> report -> Brand + AI placeholder. With --shots, saves dark and light screenshots.
+Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800. On every panel of every
+width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
+under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
+navigation context (drawer, title, arrows, continue) across home -> Rome -> report -> home -> Greece -> report ->
+Brand + AI placeholder. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
+Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
+its own) and the top bar spans the content column. With --shots, saves dark and light screenshots at the three widths.
 """
 import sys, json, pathlib
 from playwright.sync_api import sync_playwright
@@ -12,13 +16,15 @@ R = pathlib.Path(__file__).resolve().parent
 URL = (R / 'personal-mythology.html').as_uri()
 SHOTS = pathlib.Path(sys.argv[sys.argv.index('--shots') + 1]) if '--shots' in sys.argv else None
 GAP = 6
+VIEWPORTS = [('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
+SIDE = 300  # desktop sidebar width (theme.css --side)
 
 BOX_JS = r'''([scope, gap]) => {
   const root = document.querySelector(scope);
   const els = [];
   root.querySelectorAll('*').forEach(el => {
     const cs = getComputedStyle(el);
-    if (cs.display === 'none' || cs.visibility === 'hidden') return;
+    if (cs.display === 'none' || cs.visibility === 'hidden' || cs.display === 'inline') return;  // inline code in running text is not a box
     const r = el.getBoundingClientRect(); if (r.width < 2 || r.height < 2) return;
     const b = ['Top','Bottom','Left','Right'].every(s => parseFloat(cs['border'+s+'Width']) > 0 && cs['border'+s+'Style'] !== 'none');
     const bg = cs.backgroundColor, hasBg = bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent';
@@ -41,32 +47,63 @@ BOX_JS = r'''([scope, gap]) => {
   return {n: els.length, min: Math.round(min * 10) / 10, bad: bad.slice(0, 12), nbad: bad.length};
 }'''
 
+# interactive targets under 44 px tall or 24 px wide, in the visible panel and in the drawer when it is on screen;
+# inline links inside running text are exempt (WCAG 2.5.8 inline exception)
+TARGET_JS = r'''(scope) => {
+  const small = [];
+  const dr = document.getElementById('drawer'), dOn = dr && dr.getBoundingClientRect().left >= 0;
+  const roots = [document.querySelector(scope)]; if (dOn) roots.push(dr);
+  roots.forEach(root => { if (!root) return; root.querySelectorAll('a[href],button,summary,input,select,[role=button]').forEach(el => {
+    const cs = getComputedStyle(el);
+    if (cs.display === 'none' || cs.visibility === 'hidden') return;
+    const r = el.getBoundingClientRect(); if (r.width === 0 && r.height === 0) return;
+    if (el.tagName === 'A' && cs.display === 'inline') return;
+    if (el.closest('.dunit.closed .ditems')) return;
+    if (r.height < 43.5 || r.width < 24) small.push((el.tagName + '.' + el.className + ' "' + (el.textContent || '').trim().slice(0, 24) + '"').slice(0, 80) + ' ' + Math.round(r.width) + 'x' + Math.round(r.height));
+  }); });
+  return [...new Set(small)].slice(0, 15);
+}'''
+
+def check_panels(pg, label, fails):
+    """Every panel, every <details> open: horizontal scroll, 6 px gaps, 44 px targets. Returns (tightest gap, panel count)."""
+    ids = pg.eval_on_selector_all('.panel', 'ps => ps.map(p => p.id)')
+    worst = []
+    for pid in ids:
+        pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
+        pg.evaluate("document.querySelectorAll('.panel:not([hidden]) details').forEach(d => d.open = true)")
+        sw = pg.evaluate('[document.documentElement.scrollWidth, document.documentElement.clientWidth]')
+        if sw[0] > sw[1]: fails.append(f'{label} {pid}: horizontal scroll {sw}')
+        res = pg.evaluate(BOX_JS, [f'#{pid}', GAP])
+        if res['nbad']: fails.append(f'{label} {pid}: {res["nbad"]} boxes closer than {GAP}px: ' + '; '.join(res['bad']))
+        small = pg.evaluate(TARGET_JS, f'#{pid}')
+        if small: fails.append(f'{label} {pid}: {len(small)} targets under 44px: ' + '; '.join(small[:6]))
+        worst.append((res['min'], pid, res['n']))
+    m = min(worst)
+    print(f'{label}: panels checked: {len(ids)}; tightest stacked gap {m[0]}px ({m[1]})')
+    return m[0], len(ids)
+
+def new_page(p, br, errors, name, w, h, mobile):
+    ctx = br.new_context(viewport={'width': w, 'height': h}, device_scale_factor=3 if mobile else 1,
+                         is_mobile=mobile, has_touch=mobile)  # a real phone or tablet honours the viewport tag
+    ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=''))
+    ctx.route('**/fonts.gstatic.com/**', lambda r: r.abort())
+    pg = ctx.new_page()
+    pg.on('console', lambda m: errors.append(f'{name}: {m.text}') if m.type == 'error' else None)
+    pg.on('pageerror', lambda e: errors.append(f'{name}: {e}'))
+    pg.goto(URL + '#home'); pg.wait_for_timeout(300)
+    lay = pg.evaluate('[document.documentElement.clientWidth, visualViewport.scale]')
+    return ctx, pg, lay
+
 def main():
     errors, fails = [], []
     with sync_playwright() as p:
         br = p.chromium.launch()
-        ctx = br.new_context(viewport={'width': 390, 'height': 844}, device_scale_factor=3,
-                             is_mobile=True, has_touch=True)  # a real phone: honours the viewport tag
-        ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=''))
-        ctx.route('**/fonts.gstatic.com/**', lambda r: r.abort())
-        pg = ctx.new_page()
-        pg.on('console', lambda m: errors.append(m.text) if m.type == 'error' else None)
-        pg.on('pageerror', lambda e: errors.append(str(e)))
-        pg.goto(URL + '#home'); pg.wait_for_timeout(300)
-        lay = pg.evaluate('[document.documentElement.clientWidth, visualViewport.scale]')
+
+        # ---- phone ------------------------------------------------------------------------------------------
+        ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)
         if lay != [390, 1]: fails.append(f'phone layout {lay}: expected [390, 1] (missing viewport tag?)')
         else: print('phone layout: 390 px at scale 1')
-        ids = pg.eval_on_selector_all('.panel', 'ps => ps.map(p => p.id)')
-        worst = []
-        for pid in ids:
-            pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
-            pg.evaluate("document.querySelectorAll('.panel:not([hidden]) details').forEach(d => d.open = true)")
-            sw = pg.evaluate('[document.documentElement.scrollWidth, document.documentElement.clientWidth]')
-            if sw[0] > sw[1]: fails.append(f'{pid}: horizontal scroll {sw}')
-            res = pg.evaluate(BOX_JS, [f'#{pid}', GAP])
-            if res['nbad']: fails.append(f'{pid}: {res["nbad"]} boxes closer than {GAP}px: ' + '; '.join(res['bad']))
-            worst.append((res['min'], pid, res['n']))
-        print(f'panels checked: {len(ids)}; tightest stacked gap {min(worst)[0]}px ({min(worst)[1]})')
+        check_panels(pg, 'phone', fails)
         # drawer in each context, every unit expanded
         for pid in ['home', 'greece', 'rome', 'brand-ai']:
             pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
@@ -148,15 +185,87 @@ def main():
         title = pg.title()
         if title != 'Academy': fails.append(f'page title {title!r}, expected Academy')
         for label, s in log: print(f'  {label:28} {s["id"]:14} nav={s["nav"]:7} {s["u"]} | {s["t"][:40]} | arrows={s["arrows"]} prev={s["prev"]} next={s["next"]} | {s["cont"][:60]}')
+        rp = rome_reps[3] if len(rome_reps) > 3 else (rome_reps[0] if rome_reps else 'rome-syllabus')
+        ctx.close()
+
+        # ---- tablet: wider column, two-column cards, the drawer still a drawer -----------------------------------
+        ctx, pg, lay = new_page(p, br, errors, 'tablet', 768, 1024, True)
+        if lay[0] != 768: fails.append(f'tablet layout {lay}: expected width 768')
+        check_panels(pg, 'tablet', fails)
+        pg.evaluate("location.hash = 'rome'"); pg.wait_for_timeout(50)
+        t = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
+          return {off: r.right <= 0, menu: getComputedStyle(document.getElementById('menuB')).display !== 'none',
+                  main: document.querySelector('main').getBoundingClientRect().width,
+                  cols: getComputedStyle(document.querySelector('#rome .ucards')).gridTemplateColumns.split(' ').length,
+                  home: getComputedStyle(document.querySelector('#home .cgrid')).gridTemplateColumns.split(' ').length}; }''')
+        if not t['off']: fails.append('tablet: drawer is on screen before the menu button is pressed')
+        if not t['menu']: fails.append('tablet: menu button hidden')
+        if not 740 <= t['main'] <= 768: fails.append(f'tablet: main column {t["main"]}px, expected about 760')
+        if t['cols'] != 2: fails.append(f'tablet: unit cards in {t["cols"]} column(s), expected 2')
+        if t['home'] != 2: fails.append(f'tablet: course cards in {t["home"]} column(s), expected 2')
+        pg.click('#menuB'); pg.wait_for_timeout(300)
+        d = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
+          return {left: r.left, w: r.width, backdrop: getComputedStyle(document.getElementById('backdrop')).opacity}; }''')
+        if d['left'] != 0 or not 340 <= d['w'] <= 360: fails.append(f'tablet: open drawer at {d}')
+        if float(d['backdrop']) < 0.9: fails.append('tablet: backdrop not shown behind the open drawer')
+        pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed'))")
+        res = pg.evaluate(BOX_JS, ['#drawer', GAP])
+        if res['nbad']: fails.append('tablet drawer: ' + '; '.join(res['bad']))
+        small = pg.evaluate(TARGET_JS, '#rome')
+        if small: fails.append('tablet drawer targets: ' + '; '.join(small[:6]))
+        pg.click('#closeB'); pg.wait_for_timeout(300)
+        if not pg.evaluate("document.getElementById('drawer').getBoundingClientRect().right <= 0"): fails.append('tablet: drawer did not close')
+        print('tablet: drawer is a drawer (off screen, 360 px with backdrop when open); column', t['main'], 'px')
+        ctx.close()
+
+        # ---- desktop: persistent sidebar ----------------------------------------------------------------------
+        ctx, pg, lay = new_page(p, br, errors, 'desktop', 1280, 800, False)
+        if lay[0] != 1280: fails.append(f'desktop layout {lay}: expected width 1280')
+        check_panels(pg, 'desktop', fails)
+        pg.evaluate("location.hash = 'm23'"); pg.wait_for_timeout(80)
+        s = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
+          const main = document.querySelector('main').getBoundingClientRect(), top = document.querySelector('.top').getBoundingClientRect();
+          const act = d.querySelector('[data-navctx]:not([hidden]) .ditem.is-active');
+          const list = d.querySelector('[data-navctx]:not([hidden])');
+          return {left: r.left, w: r.width, h: r.height, vh: innerHeight, hidden: d.getAttribute('aria-hidden'),
+                  menu: getComputedStyle(document.getElementById('menuB')).display, close: getComputedStyle(document.getElementById('closeB')).display,
+                  backdrop: getComputedStyle(document.getElementById('backdrop')).display,
+                  mainLeft: main.left, mainW: main.width, topLeft: top.left, topRight: top.right,
+                  active: act ? act.dataset.target : null, listScroll: list ? getComputedStyle(list).overflowY : null,
+                  measure: getComputedStyle(document.querySelector('#m23 .report p')).maxWidth,
+                  home: getComputedStyle(document.querySelector('#home .cgrid')).gridTemplateColumns.split(' ').length,
+                  ml: getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns.split(' ').length}; }''')
+        if s['left'] != 0 or s['w'] != SIDE or s['h'] < s['vh'] - 1: fails.append(f'desktop: sidebar not at the left edge, {SIDE} px, full height: {s}')
+        if s['hidden'] != 'false': fails.append(f'desktop: sidebar aria-hidden={s["hidden"]}')
+        if s['menu'] != 'none' or s['close'] != 'none': fails.append(f'desktop: menu/close buttons shown ({s["menu"]}, {s["close"]})')
+        if s['backdrop'] != 'none': fails.append('desktop: backdrop present')
+        if s['mainLeft'] < SIDE: fails.append(f'desktop: content starts at {s["mainLeft"]}px, under the sidebar')
+        if not 740 <= s['mainW'] <= 768: fails.append(f'desktop: main column {s["mainW"]}px, expected about 760')
+        if s['topLeft'] != SIDE or s['topRight'] != 1280: fails.append(f'desktop: top bar spans {s["topLeft"]}..{s["topRight"]}, expected {SIDE}..1280')
+        if s['active'] != 'm23': fails.append(f'desktop: sidebar does not highlight the current report ({s["active"]})')
+        if s['listScroll'] != 'auto': fails.append(f'desktop: sidebar list overflow-y {s["listScroll"]}, expected auto')
+        mw = float(s['measure'].replace('px', '')) if s['measure'].endswith('px') else 0  # 68ch resolves to about 690 px
+        if not 560 <= mw <= 720: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch (560 to 720 px)')
+        if s['home'] != 2 or s['ml'] != 2: fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')
+        # the sidebar's own targets and gaps, every unit open
+        pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed'))")
+        res = pg.evaluate(BOX_JS, ['#drawer', GAP])
+        if res['nbad']: fails.append('desktop sidebar: ' + '; '.join(res['bad']))
+        sw = pg.evaluate('document.getElementById("drawer").scrollWidth <= document.getElementById("drawer").clientWidth')
+        if not sw: fails.append('desktop sidebar: horizontal overflow')
+        print(f'desktop: sidebar {s["w"]} px at the left, content column {s["mainW"]} px from {s["mainLeft"]} px, current item {s["active"]}, measure {s["measure"]}')
+        ctx.close()
 
         if SHOTS:
             SHOTS.mkdir(parents=True, exist_ok=True)
-            rp = rome_reps[3] if len(rome_reps) > 3 else (rome_reps[0] if rome_reps else 'rome-syllabus')
-            for theme in ('dark', 'light'):
-                pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
-                for pid in ('home', 'rome', rp):
-                    pg.goto(URL + '#' + pid); pg.reload(); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
-                    pg.screenshot(path=str(SHOTS / f'{pid}-{theme}.png'), full_page=True, clip={'x': 0, 'y': 0, 'width': 390, 'height': 2600})
+            for name, w, h, mobile in VIEWPORTS:
+                ctx, pg, _ = new_page(p, br, [], name, w, h, mobile)
+                for theme in ('dark', 'light'):
+                    pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
+                    for pid in ('home', 'rome', rp):
+                        pg.goto(URL + '#' + pid); pg.reload(); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
+                        pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, clip={'x': 0, 'y': 0, 'width': w, 'height': 2600})
+                ctx.close()
             print('screenshots in', SHOTS)
         br.close()
     errs = [e for e in errors if 'fonts.g' not in e]

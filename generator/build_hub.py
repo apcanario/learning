@@ -118,14 +118,14 @@ def build(data_dir):
     stats = (f'<div class="stats" data-n="4"><div><b>{written}/{total}</b><span>units written</span></div><div><b>{D["AUDITS_RUN"]}</b><span>audits run</span></div>'
              f'<div><b>{until}</b><span>unit{"s" if until != 1 else ""} until next audit</span></div><div><b>{D["NEXT_UNIT"]}</b><span>next to write</span></div></div>')
     P.append(panel('home', f'{bar}', 'Home', LC,
-                   hero(eyebrow((bar, LC), ('Home', None)), D['HOME_H1'], D['HOME_LEDE']) + f'<div>{tiles}</div>' + stats + D['FRAME']))
+                   hero(eyebrow((bar, LC), ('Home', None)), D['HOME_H1'], D['HOME_LEDE']) + f'<div class="cgrid">{tiles}</div>' + stats + D['FRAME']))
 
     # ---- Learn ----------------------------------------------------------------------------
     cards = ''.join(f'<a class="course live" href="#course-{c["k"]}" style="--c:{c["color"]}"><div class="ctop"><span class="cname">Course {c["key"]}</span></div>'
                     f'<span class="ctitle">{e(c["name"])}</span><p>{e(c["tile"])}</p>{meter(c)}</a>' for c in C)
     wm = ''.join(f'<a class="hrow" href="#{r["id"]}" style="--c:{next((c for c in C if c["key"]==r["course"]), {"color":"var(--red)"})["color"]}"><span class="n">{r["course"]}</span><span class="t">{e(r["title"])}<small>{("covers " + " · ".join(r["covers"])) if r["covers"] else "superseded record"}</small></span></a>' for r in readings)
     P.append(panel('learn', f'{bar} · LEARN', 'Courses', LC,
-                   hero(eyebrow(('LEARN', LC)), 'The courses', D['LEARN_LEDE']) + f'<div>{cards}</div>'
+                   hero(eyebrow(('LEARN', LC)), 'The courses', D['LEARN_LEDE']) + f'<div class="cgrid">{cards}</div>'
                    + f'<h2 class="hsec">Written material</h2><div class="hrows">{wm}</div><p class="hnote">{D["LEARN_NOTE"]}</p>'))
 
     for c in C:

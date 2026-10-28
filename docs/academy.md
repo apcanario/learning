@@ -10,6 +10,7 @@ Decided 28 October 2026. One artifact holds every course Pedro runs: the ancient
 | AD2 | The builder is the kit's `build.py`, extended; the separate Brand + AI hub (`generator/build_hub.py`, which exists and works) is absorbed at A3 and retired then | `build.py` is already course-generic (courses as data, one drawer per course, eight queued courses); Brand + AI is content on the same theme; `build_hub.py`'s Markdown renderer and hub pages are the starting material for A3 |
 | AD3 | Academy is a shell page plus the reports as separate published files, fetched on demand | A published artifact page is capped at 16 MB; the site is 4.3 MB with two courses and eight more are planned. An artifact may carry up to 511 files and 256 MB, and a page may `fetch` its own files |
 | AD4 | Order of chats: P4 (kit session 11 in) → A1 → A3 → A2 → A4 → A5, then S4 → S5 → S3 → S6. Brand + AI units keep being written in their own lane meanwhile (B3, B4, A1, Audit 2), filed on the standalone hub until A3 lands and in Academy after | Brand + AI is moving fast (five units on 28 Oct), so its migration comes before the split; the history content work (S4, S5) does not depend on Academy and waits |
+| AD5 | `generator/data/brand-ai/hub.py` stays the Brand + AI data file (`COURSES`, `WRITTEN`, `READINGS`, `AUDIT_LOG`, `NEXT_UNIT`, `ORDER`, `STATUS`, the prose blocks); `kit/courses.py` only points at it (`data=`) and nothing moves into `courses.py`. `build_hub.py` is retired at A3; `hub.py` is not | Decided 28 Oct 2026 (P9). One source already read by both sides: `build.py:load_markdown` imports `hub.py`, and the hub builders A3 imports read the same module as `D[...]` (18 fields, about 200 lines, half of it prose). Moving the fields would rewrite every `D[...]` access, fold a 200-line data file into the course list, and change `file-unit` §4 and SETUP §2, which edit and upload `hub.py`; keeping it changes neither. A5 later decides whether a new Markdown course's data file keeps this shape |
 
 ## What exists to build from (28 October 2026)
 
@@ -26,6 +27,8 @@ Every course page shows the same things: the course home (goal, outcomes, progre
 
 ## Specs (one chat each)
 
+In every spec, "publish Academy" means two steps: publish the built page to the Academy artifact (read it first, publish once with its `url`, never force), then run `kit/deploy.sh`, which pushes the same build to GitHub Pages at https://apcanario.github.io/academy/ through the public repo `apcanario/academy`. A publish that skips `deploy.sh` leaves Pages behind the artifact.
+
 ### A1 · Academy shell
 1. `kit/courses.py`: a course family field (`history`, `markdown`); the root home becomes Academy (title, hero, course cards for every course including Brand + AI as "live, in progress"); `NEXT` keeps the eight coming courses.
 2. `build.py`: the root panel and drawer read as Academy; course panels unchanged for history; a placeholder course panel for Brand + AI that links to its current artifact until A3 lands.
@@ -34,15 +37,15 @@ Done when: the live page is titled Academy, lists both hubs' courses on its home
 
 ### A2 · Split the monolith
 1. `build.py` writes `academy/index.html` (shell: theme, drawer, home, syllabi, changelog) and one file per report under `academy/<course>/r-<id>.html`; the shell loads a report by `fetch` on navigation and caches it in memory; the hash routing, prev/next, continue buttons and stored progress keep working.
-2. The publish step passes the report files through the Artifact tool's `files`; a first publish may need several calls (255 files per publish).
+2. The publish step passes the report files through the Artifact tool's `files`; a first publish may need several calls (255 files per publish). Then `deploy.sh` copies the whole built site, shell plus report files, into `apcanario/academy` (P10: the shell fetches the reports by relative path, so Pages needs the same tree the artifact has; the script already copies `kit/academy/` when it exists).
 3. `verify.py` extended: loads a report through the shell, measures the shell's size and the largest report; a size table per course in `kit/README.md`.
 Done when: the shell is under 1 MB, every report loads by `fetch`, `verify.py` prints ALL CHECKS PASSED on the published artifact's structure.
 
 ### A3 · Brand + AI migration
-1. `kit/build.py` imports the page builders of `generator/build_hub.py` as the `markdown` family: course page (goal, outcomes, progress, unit cards), reading pages (Markdown via the `markdown` package, theme classes), briefs, build order, audits log, bibliography from links, changelog. Data stays where `hub.py` names it (`generator/data/brand-ai/`); `courses/brand-ai/` is the vault copy (A5 makes it the source).
+1. `kit/build.py` imports the page builders of `generator/build_hub.py` as the `markdown` family: course page (goal, outcomes, progress, unit cards), reading pages (Markdown via the `markdown` package, theme classes), briefs, build order, audits log, bibliography from links, changelog. Data source (AD5): `generator/data/brand-ai/hub.py` stays the course's data file and is the one source for both `load_markdown` (already imports it as `c['hub']`) and the migrated builders (they receive that same module as their `D`); `courses.py` keeps only its pointer (`data=`), and `file-unit` §4 keeps editing `hub.py` unchanged. `courses/brand-ai/` is the vault copy (A5 makes it the source).
 2. The hub's Learn/Build split becomes one course context in the Academy drawer: Learn pages first, Build pages under a "How it is built" group; `hub.js`'s back navigation is folded into `shell.js` or dropped.
 3. `verify.py` absorbs `check_page.py`'s checks (44 px targets, both themes, console) so one check covers every page.
-4. Publish; then delete the Brand + AI artifact (https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT) and the Audience Growth page (https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw); `build_hub.py`, `hub.js`, `check_page.py` and `build_history.py` are retired.
+4. Publish Academy (artifact, then `deploy.sh`); then delete the Brand + AI artifact (https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT) and the Audience Growth page (https://claude.ai/artifact/7bK7Pz5BVsEFfGjm8vtpQw); `build_hub.py`, `hub.js`, `check_page.py` and `build_history.py` are retired.
 5. `skills/file-unit` and `skills/new-course` point at Academy's build and publish steps; `SETUP.md` §7 and §9 likewise.
 Done when: every written Brand + AI unit reads in Academy with its brief, audit log and bibliography; filing a Brand + AI unit is one procedure (`file-unit`) ending in an Academy publish; the old artifacts are gone.
 

@@ -28,7 +28,7 @@ Writing the 20 unwritten Rome modules is the backlog (`BACKLOG.md`), not this se
 ## At the end of the session
 
 - `python3 build.py`, then `python3 verify.py`; it must print ALL CHECKS PASSED.
-- Publish to the same artifact.
+- Publish to the same artifact, then `./deploy.sh` (GitHub Pages carries the same build; publishing Academy means both).
 - Update `README.md` ("Where things stand"), add the session to `CHANGELOG.md` (entry, "At a glance" row, "Where things stand"), add a `review_notes` entry, and rewrite this `NEXT-SESSION.md` to say exactly where the next session resumes.
 - Commit and push, and summarise in a few lines: what was reviewed, verdicts, what changed, what is left in the queue.
 

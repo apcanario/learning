@@ -455,12 +455,12 @@ roothome = f'''
     <aside class="dispute"><strong>Where the scholars disagree.</strong> The tidy story of a clean progress "from mythos to logos" (the title of Wilhelm Nestle's book of 1940) is now itself treated as a modern myth. The Greeks never stopped telling myths; their philosophers used them, their historians argued with them, and their cities were governed by them. The two modes ran side by side.</aside>
     <p>That is the method of these courses. Each reads a culture's myths and its history together, asks who told each story and what they gained by it, and keeps the evidence in view. The aim is not to debunk the myths but to understand them as well as the history: why they were told, by whom, and why some of them are still told now. Later courses point back to earlier ones where they touch: Rome to Greece's units 7 and 10, Persia to units 6 and 11, Egypt to units 1 and 7.</p>
   </section>
-  {"".join(root_card(c) for c in HISTORY)}
+  <div class="cgrid">{"".join(root_card(c) for c in HISTORY)}</div>
   <p class="hnote">Coming next, in the intended order: the two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Tap any course to see its planned scope.</p>
   <div class="soonlist">{soon_cards}</div>
 
   <h2 class="hsec">Brand + AI</h2>
-  {"".join(markdown_card(c) for c in MARKDOWN)}
+  <div class="cgrid">{"".join(markdown_card(c) for c in MARKDOWN)}</div>
   {cl_link}
 </section>'''
 

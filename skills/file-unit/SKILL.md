@@ -23,7 +23,7 @@ Save to `courses/<course>/<code>-<slug>.md` (`brand-ai`, `greece` or `rome`; slu
 5. When the syllabus unit is complete: `python3 crosscheck.py <course> <ids>` and check every pointer between its modules.
 6. Make sure the kit's `shell.css` is a copy of `design/theme.css`; if not, copy it.
 7. `python3 build.py`, then `python3 verify.py` (must print ALL CHECKS PASSED).
-8. Publish `personal-mythology.html` to https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH: read it with the Artifact tool first, publish once with that `url`, never as a new artifact, never forced.
+8. Publish `personal-mythology.html` to https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH: read it with the Artifact tool first, publish once with that `url`, never as a new artifact, never forced. Then `./deploy.sh`, which pushes the same build to GitHub Pages (https://apcanario.github.io/academy/). "Publish Academy" always means both: the artifact, then `deploy.sh`.
 9. Add the session to `CHANGELOG.md`, update `README.md` "Where things stand", and send the new kit zip.
 
 ## 4. Brand + AI: the hub data
@@ -35,7 +35,7 @@ In `generator/data/brand-ai/`:
 ## 5. Rebuild, check, republish
 1. From `generator/`: `python3 build_hub.py data/brand-ai` (Brand + AI) or `python3 build_history.py <kit>` (history, if not published from the kit).
 2. `python3 check_page.py hubs/<page>.html`: no overflow, no target under 44 px, no console error, in dark and light. Fix in `design/theme.css` only, then rebuild every hub.
-3. Republish to the hub's existing artifact (links in `courses-index.md`): read it with the Artifact tool first, then publish the built file once with its `url`. Never create a new artifact for an existing hub.
+3. Republish to the hub's existing artifact (links in `courses-index.md`): read it with the Artifact tool first, then publish the built file once with its `url`. Never create a new artifact for an existing hub. If the page is Academy (built from the kit), finish with `kit/deploy.sh` so GitHub Pages carries the same build.
 
 ## 6. Index and count
 - `courses-index.md`: the unit's row (status "written <date>", model, path to the vault file); for a search-on unit, a row in "Staleness checks due" (written + six months); the hub's audit counter plus one.

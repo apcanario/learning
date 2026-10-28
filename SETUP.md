@@ -54,7 +54,7 @@ One new chat per unit, model **Opus 5.5** (the build order names any exception).
 The chat ends by sending the unit file(s). It does not file them.
 
 ## 7. Filing a unit
-A new chat, any writing model. Attach the unit file(s) and `learning-project.zip` (newest); for a history module also the kit zip. The `file-unit` skill saves to the vault, updates the hub data, rebuilds, checks and republishes, updates `courses-index.md`, and commits and pushes to the repository (before the repository exists: sends the new `learning-project.zip` and kit zip). Re-upload the changed knowledge files (step 2).
+A new chat, any writing model. Attach the unit file(s) and `learning-project.zip` (newest); for a history module also the kit zip. The `file-unit` skill saves to the vault, updates the hub data, rebuilds, checks and republishes (for Academy: the artifact, then `kit/deploy.sh` to GitHub Pages), updates `courses-index.md`, and commits and pushes to the repository (before the repository exists: sends the new `learning-project.zip` and kit zip). Re-upload the changed knowledge files (step 2).
 
 ## 8. Audits
 When `courses-index.md` shows four units since the last audit in a hub (Brand + AI: the first is due after B1), or a staleness date has come (A2, A6, A9: 27 April 2027): a new chat on **Fable 5.1** with web search on. Attach the units (vault files) and, for history, the kit zip. Say "Run the audit." The `audit-units` skill uses the prompts in `method.md` §6 verbatim and records the result.
@@ -66,7 +66,7 @@ A change to `design/theme.css` reaches a page only when the page is rebuilt and 
 3. Check each: `python3 check_page.py hubs/<page>.html`. Nothing may fail in dark or light.
 4. Republish each built page to its existing artifact, reading it first and publishing once with its `url`:
    - `hubs/brand-and-ai-courses.html` → https://claude.ai/artifact/XVMtDGuqTLkfuZapXstoMT
-   - Personal Mythology: in the kit, copy the new `theme.css` over `shell.css`, `build.py`, `verify.py`, publish to https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (or publish `hubs/personal-mythology.html` there)
+   - Academy (Personal Mythology): in the kit, copy the new `theme.css` over `shell.css`, `build.py`, `verify.py`, publish to https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH, then `./deploy.sh` so https://apcanario.github.io/academy/ carries the same build
 5. Add a changelog line on each hub (Brand + AI: `CHANGELOG` in `hub.py`; kit: `CHANGELOG.md`), re-upload `design/theme.css` and `design/README.md` to the Project knowledge, and commit and push (before the repository exists: keep the new zips).
 
 ## 10. A new course

@@ -13,11 +13,15 @@
   function put(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 
   function openDrawer(){drawer.classList.add('on');backdrop.classList.add('on');drawer.setAttribute('aria-hidden','false');menuB.setAttribute('aria-expanded','true');root.classList.add('locked');closeB.focus();}
-  function closeDrawer(){drawer.classList.remove('on');backdrop.classList.remove('on');drawer.setAttribute('aria-hidden','true');menuB.setAttribute('aria-expanded','false');root.classList.remove('locked');}
+  function closeDrawer(){drawer.classList.remove('on');backdrop.classList.remove('on');drawer.setAttribute('aria-hidden',(wide&&wide.matches)?'false':'true');menuB.setAttribute('aria-expanded','false');root.classList.remove('locked');}
   menuB.addEventListener('click',openDrawer);
   closeB.addEventListener('click',function(){closeDrawer();menuB.focus();});
   backdrop.addEventListener('click',closeDrawer);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&drawer.classList.contains('on')){closeDrawer();menuB.focus();}});
+  // desktop (theme.css section 6): the drawer is a persistent sidebar, so it is never "closed" or hidden to assistive tech
+  var wide=window.matchMedia?window.matchMedia('(min-width:1100px)'):null;
+  function syncWide(){if(!wide)return;if(wide.matches){closeDrawer();drawer.setAttribute('aria-hidden','false');}}
+  if(wide){if(wide.addEventListener)wide.addEventListener('change',syncWide);else if(wide.addListener)wide.addListener(syncWide);syncWide();}
 
   // top-bar context stays on one line; shortened only when the bar is too narrow
   var full='';

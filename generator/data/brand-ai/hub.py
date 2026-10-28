@@ -16,7 +16,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v6.4 · 28 Oct 2026'
+VERSION = 'v6.5 · 28 Oct 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -195,6 +195,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-10-28 09:30', "v6.5. Rebuilt on theme v2 (design/theme.css section 6, responsive): tablet from 768 px widens the column to 760 px and puts course cards in two columns; desktop from 1100 px turns the drawer into a persistent 300 px sidebar with the current page highlighted, no backdrop and no menu button. The phone layout is unchanged. check_page.py now runs a phone, tablet and desktop pass with the 6 px gap and 44 px target checks. No unit changed."),
     ('2026-10-28 08:20', "v6.4. B2 Choosing the model written (Opus 5.5, own chat, search on), fresh-checked by Fable 5.1 (fix, 3 errors, 10 should-fix, 14 minor; every finding applied) and filed: reading page under Learn, B2 marked written, counters moved. Next: B3. The hub now lives in the learning-project repository (NEXT-SESSION.md)."),
     ('2026-10-28 07:30', "v6.3. A9, A2 and A6 rewritten from their briefs (Opus 5.5, one chat each, search on) and fresh-checked by Fable 5.1 in separate chats (A9: 2 errors, 15 should-fix, 8 minor; A2: 3/13/11; A6: 1/9/7; every finding applied as an exact replacement). Each gets its own reading page under Learn; the 27 Oct research page stays as the superseded record. A2 flags A3's 2–3 Shorts per episode as above AIR's crowding line; one Short per episode is the allocation. Audit gate cleared; B2 next."),
     ('2026-10-28 07:05', "v6.2. Audit 1 logged (Fable 5.1): B1 PASS; A2·A6·A9 full audit, 23 of 91 claims failed, REWRITE for the missing deliverables. Rewrites of A9, A2 and A6 started, A9 first; fresh checker added for every later unit."),

@@ -13,6 +13,8 @@ The standalone Rome and Greek syllabus artifacts were retired on 28 October 2026
 
 ## Where things stand (28 October 2026, after session 13)
 
+- **Session 14 (28 October 2026): tablet and desktop.** `design/theme.css` version 2 (section 6): a 760 px column and two-column cards from 768 px, a persistent 300 px sidebar from 1100 px; the phone layout unchanged. `verify.py` and `generator/check_page.py` check phone, tablet and desktop. `deploy.sh` copies `kit/academy/` whole once A2 splits the page, and is the last step of every publish. No report changed and no flag was cleared. Site version 45.
+
 - **Session 13 (28 October 2026): Academy.** The root home became Academy, listing every course of both hubs; `courses.py` gained the `family` field and the Brand + AI placeholder course; `biblio.py` became deterministic; `deploy.sh` and GitHub Pages added. No report changed and no flag was cleared. Site version 44.
 
 - **Sessions 11 and 12 (27 and 28 October 2026): the theme, the repo, housekeeping.** `shell.css` is now a copy of `design/theme.css` (44 px `.toc a` and `summary` targets, the light palette that meets 4.5:1); site version 41, then 42 with the changelog. The two standalone syllabus artifacts and the three stray draft pages were deleted; the repo `apcanario/learning` became the home of the kit and the zip was retired. No report changed and no flag was cleared.

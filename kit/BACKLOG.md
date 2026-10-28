@@ -68,7 +68,7 @@ A writer starts only when every report named in its lane note is registered. Wit
    - Re-run `check.py`; keep the body inside its band (most reports sit near the top of it, so a fix that adds words may need a cut).
    - Append one paragraph to `reviews/units-9-13/log.md`.
 5. **Register:** `python3 register.py rome "<model that actually wrote it>" X.Y`.
-6. **When a unit is complete:** `python3 crosscheck.py rome <ids>` and check every pointer between the unit's own reports (the early checkers saw their neighbours only as prompts); build, `verify.py`, publish the site; turn the unit's log into a `review_notes` entry; commit.
+6. **When a unit is complete:** `python3 crosscheck.py rome <ids>` and check every pointer between the unit's own reports (the early checkers saw their neighbours only as prompts); build, `verify.py`, publish the site, `./deploy.sh` (publishing Academy means the artifact and then GitHub Pages); turn the unit's log into a `review_notes` entry; commit.
 
 ## Lane notes
 
@@ -123,7 +123,7 @@ Extra files:
 
 ## Job 2: re-check and publish
 
-After every unit: build, `python3 verify.py` (it must print ALL CHECKS PASSED), check each new report's panel (Fable flag, prompt matches the syllabus, crumb, prev and next), publish the site. `register.py` and `build.py` end by printing the Fable review alert (`python3 review_due.py`): **when it reads FABLE REVIEW DUE, finish the unit in hand, do not start another, and tell Pedro in the first line of the reply**; the review (`NEXT-SESSION.md`) runs before writing resumes. At the end: `python3 verify.py --shots <folder>` and look at the Rome course home and one report from each new unit, in dark and light. When Rome is complete, set `status='available'` in `courses.py:ROME` (the value `build.py` treats as complete), check the root card and the Rome home, and update the README.
+After every unit: build, `python3 verify.py` (it must print ALL CHECKS PASSED), check each new report's panel (Fable flag, prompt matches the syllabus, crumb, prev and next), publish the site, `./deploy.sh`. `register.py` and `build.py` end by printing the Fable review alert (`python3 review_due.py`): **when it reads FABLE REVIEW DUE, finish the unit in hand, do not start another, and tell Pedro in the first line of the reply**; the review (`NEXT-SESSION.md`) runs before writing resumes. At the end: `python3 verify.py --shots <folder>` and look at the Rome course home and one report from each new unit, in dark and light. When Rome is complete, set `status='available'` in `courses.py:ROME` (the value `build.py` treats as complete), check the root card and the Rome home, and update the README.
 
 ## Limits and stopping
 - **Agents:** at most four or five running at once, writers and checkers together.
@@ -141,7 +141,7 @@ Everything written with a model other than Fable 5.1 is flagged for later review
 - **Theme:** dark-first, with a working light mode and the sun/moon toggle.
 - **Colours:** page `#0a0a0c`, cards `#131316`, borders `#1e1e24`. Accents `#ff6b6b` (Greece) and `#9b5de5` (Rome), plus `#f4a261`, `#2a9d8f`, `#457b9d`, `#e9c46a`. No grey as a dominant accent.
 - **Fonts:** DM Sans for text, Space Mono for labels, Gentium Book Plus for Greek or Latin display words.
-- **Layout:** mobile-first, max width 700 px, its own viewport meta tag on every page (`build.py` writes it), 44 px touch targets, fixed frosted top bar, full-height slide-out drawer.
+- **Layout:** mobile-first, 700 px column on a phone (760 px from 768 px, with a persistent 300 px sidebar from 1100 px; `design/theme.css` section 6), its own viewport meta tag on every page (`build.py` writes it), 44 px touch targets, fixed frosted top bar, full-height slide-out drawer (a sidebar on a desktop).
 
 ## How to work with me
 - Be direct and terse.

@@ -10,6 +10,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections:** all nine that were waiting (Greek 6.3, 7.2, 7.3, 8.1, 9.3, 9.4; Rome 1.4, 3.1, 6.1) were applied on 27 October. None is waiting.
 - **Theme and home (sessions 11 and 12):** `shell.css` is a copy of the Learning Project's `design/theme.css`. The kit lives in the private repo `apcanario/learning` as `kit/`; the zip is retired. The only published page is the site; the standalone syllabus artifacts and the stray draft pages are deleted.
+- **Responsive (session 14):** `design/theme.css` version 2 adds section 6: tablet from 768 px (760 px column, cards in two columns), desktop from 1100 px (the drawer is a persistent 300 px sidebar). The phone layout is unchanged. `verify.py` runs a phone, tablet and desktop pass. Publishing Academy means the artifact, then `./deploy.sh`.
 - **Academy (session 13):** the site is Academy: its home lists every course of both hubs, Brand + AI as a placeholder panel until A3. `deploy.sh` publishes the built page to GitHub Pages through the public repo `apcanario/academy` (https://apcanario.github.io/academy/).
 
 ## At a glance
@@ -29,6 +30,29 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 27 Oct | 11. The site moves onto the Learning Project theme | 78 | 59 |
 | 28 Oct | 12. The repo, five artifacts deleted, the kit docs | 78 | 59 |
 | 28 Oct | 13. The site becomes Academy (A1), with GitHub Pages | 78 | 59 |
+| 28 Oct | 14. Tablet and desktop layouts (P11), Pages in every publish (P8), the deploy script ready for the split (P10) | 78 | 59 |
+
+## 28 October 2026 · Session 14 · Tablet and desktop layouts (P11), Pages in every publish (P8), the deploy script ready for the split (P10)
+
+Backlog rows P8 to P11 of `docs/BACKLOG.md`, on Fable 5.1. No report changed and no flag was cleared.
+
+### Responsive theme (P11)
+`design/theme.css` is version 2: a section 6 with two breakpoints and no new token or component. Tablet (768 px and up): the reading column and the top bar widen to 760 px; course cards (a new `.cgrid` wrapper written by `build.py` and `build_hub.py` around the cards that already existed), unit cards, hub unit cards and the coming-soon list go to two columns; a lone card spans both; stat tiles stay three or four across. Desktop (1100 px and up): the drawer is a persistent 300 px sidebar (always open, no backdrop, menu and close buttons hidden, its list scrolls on its own, the current item highlighted as before), the body is padded by the sidebar width so the top bar and the column sit beside it, and report text keeps its 68ch measure. Dark and light alike. `shell.js` and `hub.js` sync the sidebar's `aria-hidden` and the scroll lock with the breakpoint. The phone layout at 390 px is the one version 1 described: `verify.py` before and after reports 144 panels and a tightest gap of 6 px (home) both times. `shell.css` is a copy of the new theme.
+
+### Checks at three widths
+`verify.py` runs its panel checks at phone 390×844, tablet 768×1024 and desktop 1280×800: no horizontal scroll, no boxes closer than 6 px, and now no interactive target under 44 px (inline links exempt), no console error; the tablet pass confirms the drawer is still a drawer (off screen, 360 px with a backdrop when open) and the desktop pass the sidebar (300 px at the left, content from 410 px, top bar from 300 px, current item, 68ch measure, home cards and mythos/logos side by side). `--shots DIR` saves dark and light screenshots at the three widths. `generator/check_page.py` runs the same three widths and both themes with the gap and target checks, the drawer or sidebar check and the console, and ends with ALL CHECKS PASSED or FAIL. Both exclude inline elements (inline `code`) from the gap measure.
+
+### GitHub Pages in every publish (P8)
+`./deploy.sh` is the last step of every publish procedure: `skills/file-unit` (§3.8 and §5.3), `NEXT-SESSION.md`, `BACKLOG.md` (the pipeline line and job 2), `SETUP.md` §7 and §9, and the A2 and A3 specs in `docs/academy.md`, where "publish Academy" is defined as the artifact, then `deploy.sh`. The Pages site returned 404 at the start of the session (`has_pages` true, no Pages build run); rechecked after this session's deploy, see the session reply.
+
+### The deploy script after the split (P10)
+`deploy.sh` copies `kit/academy/` whole when it exists (the A2 shell plus one file per report, fetched by relative path), otherwise the single page as before; the published tree is replaced each time so files that leave the build leave the repo. Tested against a local bare remote in both shapes; run once against the live repo (nothing to deploy: the page was current). Recorded in the A2 spec.
+
+### Data source for A3 (P9)
+Decision AD5 in `docs/academy.md`: `generator/data/brand-ai/hub.py` stays the Brand + AI data file and `courses.py` only points at it; `build_hub.py` is retired at A3, `hub.py` is not. One source already read by both `load_markdown` and the hub builders A3 imports; `file-unit` §4 unchanged.
+
+### Published
+Version 45 of the site (theme v2, this changelog), to the Academy artifact and GitHub Pages; the Brand + AI hub as v6.5.
 
 ## 28 October 2026 · Session 13 · The site becomes Academy (A1), with GitHub Pages
 
