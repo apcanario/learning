@@ -1,0 +1,10 @@
+- John the Lydian, On the Months 1.27: army 389,704 confirmed in secondary sources; the fleet figure 45,562 and the section number are from memory.
+- Aurelius Victor section numbers 39.1 (domestici), 39.2–4 (adoration), 39.29 (father or great god), 39.31 (Italy taxed) are from memory; Aper's killing and the kept prefect are cited to "39" only.
+- Epitome de Caesaribus 38.8 (Carinus killed by a wronged husband), 40.10 (Maximian's labouring parents near Sirmium), 40.16 (Galerius from Dacia Ripensis): section numbers and the wording of 40.10 from memory.
+- Historia Augusta, Carus 14–15 for the druidess and the boar: chapter numbers from memory.
+- Panegyric 11(3).11 (adoration of both emperors at Milan, 290–291) and Panegyric 7(6) (Maximian's oath in the Capitoline temple to abdicate, no section given): from memory.
+- Syro-Roman Law Book's iugum equivalences (5 iugera vineyard; 20, 40, 60 iugera arable by grade) and the date 16 March 297 for P.Cair.Isid. 1: from memory.
+- "More rescripts survive from Diocletian than from any other emperor", and the dates of the Gregorian (about 292) and Hermogenian (about 295) codes: standard view, not checked.
+- Lactantius 16.4 naming Hierocles; Eusebius, Ecclesiastical History 8.1.7–8 (lax church), 8.6.8–10 (second and third edicts); Life of Constantine 2.50–51 (Apollo's oracle): chapter numbers from memory.
+- Modern attributions taken from summaries, not the works: Seston 297 and Barnes 293 for the dioceses (from Zuckerman 2002's abstract); Bleicken 1978 (no genuine constitutional transformation, from encyclopedia summary); Kolb 2001 (formalising trends, from BMCR review); Frye and Dignas for 297 and Corcoran and Lieu for 302 on the Manichaean rescript (from a Leiden thesis footnote); Corcoran 1996 on the price edict's limited circulation (from encyclopedia summary).
+- Porphyry Tetrarchs: the foot found near the Bodrum mosque in Istanbul in the 1960s and the Philadelphion location; de Ste. Croix 1954 described only generally ("how unevenly the edicts were applied").

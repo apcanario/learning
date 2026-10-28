@@ -1,0 +1,10 @@
+- Sextus, Against the Mathematicians 7.389–390 (reversal credited to Democritus and Plato) and the sub-ranges 7.66–76, 7.79–80, 7.83–86; MXG 979b (borrowing from Melissus and Zeno) and 980b (one thing not in two minds): from memory, except 7.79 and MXG 980a9–12, which I checked against Caston's paper.
+- Burnyeat (Philosophical Review 1976) and Fine (1998) on relativist vs infallibilist come from MacFarlane's survey ("measure.pdf"), not the originals. Gomperz (1912, jest/parody) and Calogero (1932, serious reading) come from Caston's survey of Gorgias scholarship.
+- P.Oxy. 3647 joining P.Oxy. 1364, and P.Oxy. 1797 as the truthful-witness fragment: from memory. Gagarin 2002 ("exploring problems in nomos") checked only against the BMCR review.
+- Schleiermacher's criterion is given without a date (essay of 1815, published 1818?). Burnet/Taylor thesis and Gigon, Sokrates (1947): standard attributions, not rechecked.
+- Russell's "stupid man's report" quip dated 1945 (US first edition of A History of Western Philosophy; the UK edition is 1946).
+- Irwin, Plato's Moral Theory (1977), taking the Protagoras hedonism as Socrates' own; Vlastos, OSAP 1 (1983), on the elenchus assumption: from memory. Kraut 1984 on "persuade or obey" checked only through a secondary summary.
+- Xenophon section numbers from memory: Memorabilia 1.2.9, 1.2.14–16, 1.2.29–30, 1.2.31–38, 1.2.39, 1.2.40–46, 1.2.56, 4.4.14, 4.4.19–24, 4.8.5; Apology 2, 4, 5–9, 14, 23.
+- Hippias' Collection (DK 86 B6) as "perhaps the first anthology of earlier opinions" is stated unattributed. Aristotle, Rhetoric 1404a14 and 1409a2 on Thrasymachus, and Sophistical Refutations 183b7–8: from memory.
+- Diogenes Laertius 2.61 (Aeschines' seven dialogues), 6.15–18 (Antisthenes' titles) and 2.105–124 (other Socratic writers); Aeschines' Alcibiades "theia moira" passage cited without a fragment number.
+- Gill (CQ 23, 1973) and Bloch (2001, in Plato, the journal of the International Plato Society) checked against a secondary summary. Most (CQ 43, 1993) linking the cock to Plato's illness confirmed via a secondary article (Bieda 2020).

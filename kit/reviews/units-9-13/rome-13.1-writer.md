@@ -1,0 +1,11 @@
+# Rome 13.1 writer: claims I was unsure of or could not verify
+- Gruen, Studies in Greek Culture and Roman Policy (1990), ch. V: chapter confirmed; my one-line summary of his reading (symbolic shows of senatorial authority, not attempts to stop Hellenism) is from memory.
+- Dispute box on the edict of 92: Marx's edition of the Rhetorica ad Herennium dated 1894 from memory; Gelzer's rejection and von Ungern-Sternberg (Chiron 3, 1973) come from that article's own summary (I could not open Gelzer).
+- Athenaeus 6.274: Posidonius naming Rutilius, Tubero and Mucius Scaevola as the only Romans who kept the Fannian law (the passage, the letter range and the third name are from memory).
+- Cicero, On Ends 2.24 (Laelius heard Diogenes of Babylon, then Panaetius) and 4.23 (Panaetius' book to Tubero on enduring pain): section numbers from memory.
+- Strabo 11.1.6 calling Posidonius Pompey's friend (Smith's Dictionary gives "xi p. 492"); Plutarch, Pompey 42 for the talent to each teacher and the written-up lecture.
+- Letters to Atticus 2.20 for Diodotus' death in 59 and his legacy (section not cited; Wikipedia cites only 2.20).
+- Tacitus, Annals 4.43 for Rutilius' exile at Smyrna; On the Orator 1.229–230 for his refusal to plead for pity.
+- Zeller's "eclecticism" label and Dillon and Long (eds.), The Question of "Eclecticism" (1988): title and year from memory.
+- Göransson, Albinus, Alcinous, Arius Didymus (1995): BMCR 1995.12.08 confirms that he challenged the traditional picture of Arius Didymus as the doxographer; I did not verify his position on whether Augustus' Arius is the same man, so the report does not state it.
+- Plutarch, Cicero 3–4 (fear of Sulla as the real motive for 79; plan to retire to Athens) and Cicero 4 (Posidonius at Rhodes): chapter numbers from memory.

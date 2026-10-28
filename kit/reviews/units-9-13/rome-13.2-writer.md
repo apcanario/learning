@@ -1,0 +1,10 @@
+- Tusculan Disputations section numbers from memory: 3.7 for perturbatio over morbus (may be 4.10), 3.6 medicine of the mind, 4.11–14 and 4.12–14, 3.76–77 on consolation methods and Cicero's Consolation.
+- Letters to Atticus 16.11 and 16.14 for Atticus querying officium as the rendering of kathēkon (letters from memory; sections left out on purpose).
+- On Ends from memory: 3.16 (conciliari, commendari), 3.48 (drowning, puppies), 3.52 (court analogy), 3.57 (repute: Chrysippus and Diogenes against their successors), 3.75 (king, Sulla, Crassus), 4.74 (Murena jokes made to an untrained crowd).
+- Hierocles: Gellius 9.5.8; papyrus of the Elements of Ethics published 1906; circles at Stobaeus 4.27.23 = LS 57G.
+- Modern attributions: Nussbaum, "Patriotism and Cosmopolitanism" (1994), using Hierocles' circles (from memory); Sorabji 2000 and Inwood 1993 positions taken from BMCR and NDPR reviews; Gill 1988 as reconstructing a Panaetian original (via Matthew Roller's summary).
+- Seneca's dialogues from memory: On Providence 1.1, 2.1, 2.6, 4.6, 4.7, 2.9–12, 6.7; On Leisure 3.2, 4.1, 6.4, 8; On the Happy Life 17.3, 26.1; On Anger 1.9, 1.17, 2.2, 2.4.1.
+- Seneca's Letters from memory: 42.1 (phoenix), 75 (three classes of progressors), 94.1–2, 95.52–53, 95.65 (Posidonius), 116.5 (Panaetius on love). The claim that the last line of 107.11 has no counterpart in Epictetus' Greek rests on Handbook 53.
+- Cicero, On Fate 1–2, 7–8, 10–11, 23–25, and Gellius 7.2.15 as preserving Cicero's lost verdict on Chrysippus; On the Laws 2.5 (citizenship fatherland first in affection).
+- Plutarch, On Stoic Self-Contradictions 1033b–c (Stoic founders held no office) and Cato Minor 21 (the comic-consul remark); Hippolytus, Refutation 1.21 = SVF 2.975 (dog and cart).
+- Horace line numbers: Satires 1.3.96–98 and 124–139, 2.3.326, Epistles 1.1.106–108; On Duties sections 1.46, 1.53–58, 1.107–124, 3.13–16.

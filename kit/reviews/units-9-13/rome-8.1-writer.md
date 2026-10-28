@@ -1,0 +1,10 @@
+- Ammianus not used; Zosimus chapter numbers follow the Livius divisions (1.18–19 Gordian, 1.21–22 Decius at Verona, 1.23–24 Abritus and Gallus, 1.38 Saloninus, 1.39 Odaenathus, 1.40 Gallienus' murder, 1.42 ships and men, 1.44 Egypt, 1.46 Claudius' death, 1.49 wall, 1.50–56, 1.59–62); 1.46, 1.50, 1.60–62 not checked individually.
+- Aurelius Victor 33.8 (Postumus killed for refusing the sack of Mainz) and 33.34 (Gallienus' edict excluding senators): chapter numbers from memory.
+- Historia Augusta citations from memory: Maximini duo 12 (German campaign), Gallienus 5.5 (5,000 a day), Gallienus 13.8 (Dexippus), Tyranni triginta 30.2 and 30.24–27 (Zenobia), Aurelian 25, 27, 38.2 (7,000 soldiers), 39.2 (nearly fifty miles).
+- Eutropius 9.2 (Gordian killed by Philip's treachery), 9.7 (Valerian's servitude), 9.8 (Gallienus), 9.13 (Tetricus made governor of Lucania), 9.14 (mint workers kill Felicissimus), 9.15 (Dacia): book and chapter from memory.
+- Libelli: "some four dozen" rests on Claytor's Tyche article (47 known after the Luther College piece); date range June to mid-July 250 from the same note; the Petesouchos priestess is W.Chr. 125, left unnamed.
+- Rives 1999 view summarised as a general religious act creating an empire-wide religious community: summary, not quotation.
+- Harl 1996 cited for silver content (about half in 215, a few per cent by the late 260s): figures are approximate and not checked against his tables.
+- Halsberghe 1972 (Elagabal of Emesa) and Hijmans (1996; 2009, continuous Roman Sol) checked only against secondary summaries; Hijmans 1996 title left out because its wording varies ("which" or "that did not rise in the east").
+- Naqsh-e Rustam and Bishapur relief identifications (kneeling Philip, held Valerian, trampled Gordian) given as "usually read"; Odaenathus as "king of kings" in posthumous Palmyrene inscriptions from memory.
+- Liebeschuetz 2007 conclusion (crisis need not be uniform; the word fits the 250s–260s) and Strobel 1993 "accelerated change" given from memory.

@@ -1,0 +1,10 @@
+- Line numbers from memory, not checked against a text: Seneca, Medea 910 ("Medea nunc sum"); Lucan 1.33–66, 1.135–157, 6.507–830, 9.985–986; Juvenal 1.49–50, 15.27 (Iuncus, 127), 10.356; Martial 10.4.10, 1.4.8; Statius, Thebaid 12.811–812; Petronius 35, 40, 49, 139.2.
+- Lucan proem box: Dewar 1994 (CQ, "Laying It On with a Trowel") checked as reading the praise as conventional panegyric (Cambridge abstract). Ahl 1976 as "double-edged" is from memory.
+- Petronius box: Rose 1971 (Neronian date, identification) and Marmorale 1948 (late date argued from the language) are summaries from memory.
+- Zwierlein 1966 (recitation) and Sutton 1986 (performable) are from memory; so is "the Etruscus omits Octavia".
+- Juvenal box: Highet 1954 (biographical reading), Anderson's 1960s persona essays and Braund 1988 (Beyond Anger) are summaries from memory.
+- Cupid and Psyche box: Swahn 1955 checked (Lund, AT 425/428). Fehling 1977 (Apuleius invented it; the folktales derive from him) and Fulgentius, Mythologies 3.6 are from memory.
+- Duff, A Literary History of Rome in the Silver Age, checked (Gutenberg); the 1927 date is from memory. "Early modern philologists" is left unnamed (Funck not checked).
+- Pliny, Natural History preface 17 (20,000 facts, 2,000 volumes, 100 authors) and 33.1–3 (mining as wounding Earth) are from memory. Suetonius, Vespasian 18 (100,000 sesterces) and Jerome's Chronicle on Quintilian are from memory.
+- Photius, Bibliotheca codex 129 is paraphrased cautiously ("one copied the other"); his own view on which came first is not stated.
+- Valerius Flaccus, Jupiter's speech on the passing of empire, cited as "book 1" only. Silius' Scipio at the crossroads is cited as "book 15" only. Tacitus manuscripts are described generally ("one for Annals 1–6", "one from Monte Cassino").

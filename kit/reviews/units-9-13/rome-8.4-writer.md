@@ -1,0 +1,10 @@
+- Paulinus, Life of Ambrose 26 for Eugenius restoring the altar of Victory: chapter from memory (Ambrose, Letter 57 and Sozomen 7.22 cover his grants to pagans generally).
+- McLynn (Ambrose of Milan, 1994) reading the Thessalonica penance as a negotiated ceremony serving the emperor's image: not checked against the book; Brown (Power and Persuasion, 1992) "no confrontation at the door" taken from a secondary summary.
+- Theodoret 5.17–18: the eight-month exclusion (the 7,000 dead at 5.17 is confirmed).
+- Libanius, Oration 18.274–275 as the passage blaming a Christian for Julian's death (Sozomen 6.1–2 confirmed).
+- Orosius 6.15.32 (empty book-chests in the temples) and 7.35.19 (Goths' losses at the Frigidus as a second victory; section taken from a secondary citation).
+- Ammianus 31.4.6 (sands of the Libyan plain) and 25.3.3 (Julian without his breastplate): section numbers from memory; other Ammianus sections checked against a translation.
+- Salzman, The Making of a Christian Aristocracy (2002): "men converting as readily as women" and "several hundred" aristocrats are my characterisation from memory.
+- Symmachus, Letters 2.36 objecting to Coelia Concordia's statue of Praetextatus (from a secondary note to CIL VI 2145); its date given as 384 or 385.
+- Eunapius, Lives of the Sophists page numbers 474–475 (Maximus and Julian) and 472 (monks "who lived like swine").
+- Ambrose, Letters 17 and 18 = 72 and 73 in the CSEL edition; Letter 18 cited without section for Constantius' removal of the altar.

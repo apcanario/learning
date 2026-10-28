@@ -1,0 +1,10 @@
+- The AD 81 pay papyrus: designation P.Gen.Lat. 1, Q. Julius Proculus of Damascus and the list of deductions taken from a secondary summary, not the edition.
+- Brunt box: Mommsen named as the source of the "volunteers from Marius onwards" view on the strength of a summary of Brunt 1974. Tacitus, Annals 4.4 is kept as a separate sentence, not as Brunt's evidence.
+- Coulston, "The Value of Trajan's Column as a Source for Military Equipment": the year 1989 is not verified. "Segmented armour found at auxiliary forts supports him" is from memory. Cichorius as a literal reader rests on Coulston's own account.
+- Beard, The Roman Triumph (2007): the rules as "fragile and changing" and the wait outside the city as the one rule consistently observed are taken from a review of chapter 6, not from the book.
+- Triumph citations: Zonaras 7.21 (from Dio) for the slave with the crown; Pliny, Natural History 28.39 (amulet) and 33.111–112; Suetonius, Julius 49.4, 51; Gellius 5.6.20–23 with Plutarch, Marcellus 22 for the ovation.
+- Josephus section numbers: Jewish War 3.70–109 for the drill epigram (probably 3.75), 3.76–84 for the camp as a city, 7.123–157 for the triumph of 71.
+- Polybius and Livy sub-sections from memory: 6.20.8–9, 6.21.1–3, 6.21.7–8, 6.21.9, 6.24.9, 6.34 (tessera), 6.39.12–15; Livy 2.59.11, 4.59.11, 22.38.1–5. Polybius 11.23.1 for the cohort at Ilipa.
+- Late army citations: Aurelius Victor 40.25 and Zosimus 2.17 (praetorians disbanded); Zosimus 2.33 (magistri) and 2.34; Ammianus 15.12.3 and 16.10.8; Vegetius 1.20 and 2.6; Historia Augusta, Severus Alexander 58.4. Isaac 1988 (limitanei were the troops under a dux) is summarised from secondary notes.
+- "Senatorial legates and tribunes of legions ... last attested in the 260s" is from general knowledge; no specific source checked.
+- Agathias 5.13.7–8 (645,000 and 150,000) and the Duncan-Jones 1990 verdict on Jones's unit strengths come via a summary. Also unchecked: Maxfield 1981 (title and date), Pliny, Letters 10.52 (accession-day oath), Dio 60.24.3, and Breeze, JRS 1969 (Inchtuthil, ten barracks against six).

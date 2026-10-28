@@ -1,0 +1,10 @@
+- Pan. Lat. XII(9).3.3 ("barely a quarter of his army"; a commentary confirms chapter 3, section not checked) and XII(9).2.4–5 (secret with the divine mind): section numbers from memory.
+- Grégoire (1938) described as denying Eusebius the Life "in its present form"; Jones and Skeat (1954), P. Lond. 878, called a "near-contemporary copy" of the letter at Life 2.27–28.
+- Optatus, appendix 3 as Constantine's letter to Aelafius (fear of the highest divinity's anger): appendix number not checked.
+- Philostorgius 2.4 (Fausta caught in adultery) and 2.9 (spear walk round Constantinople); Zosimus 2.30 for the wall fifteen stades beyond the old: chapter numbers from memory.
+- Aurelius Victor, Caesares 40.25 for the abolition of the praetorian guard.
+- Socrates 1.8 as the place Eusebius' letter says Constantine proposed homoousios; Socrates 1.7 as naming Ossius the bearer of the letter to Alexander and Arius.
+- Latin quoted from memory: Lactantius 44.5 "transversa X littera, summo capite circumflexo"; Jerome, Chronicle s.a. 330 "dedicatur Constantinopolis omnium paene urbium nuditate".
+- Modern summaries not checked against the books: Dagron 1974 (New Rome by stages), Evans Grubbs 1995 (marriage laws traditionalist), Drake 2000 (consensus under a Supreme God), Jones 1948 (God of battles), Barnes reading Lactantius 24.9 as pre-312 favour. Lenski 2016 summary checked only against a review.
+- Weiss's halo thesis called "widely followed" with no supporter named: I believe Barnes (2011) adopted it but could not verify, so left him out.
+- Eutropius 10.6 for Licinius killed against the oath, and Ammianus 14.11.20 for Crispus at Pola: from memory.
