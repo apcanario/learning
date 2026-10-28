@@ -1,37 +1,25 @@
 # Setup
 
-**28 October 2026:** the repository exists, https://github.com/apcanario/learning (not `learning-project`). Every session clones it and ends with a commit and push; the zips below are history. `kit/` is the Personal Mythology kit, `courses/` the vault.
+**28 October 2026:** the repository is https://github.com/apcanario/learning. Every session clones it and ends with a commit and push; nothing travels as a zip. `kit/` is Academy's builder with the history courses, `generator/data/` the markdown courses' data, `courses/` the vault, `docs/` the method layer, `skills/` the four account skills.
 
-Exact steps to stand up the Learning Project and run it. Three sources are involved: this folder (`learning-project`), the Personal Mythology kit (`personal-mythology-kit.zip`) and the Brand + AI archive (`brand-and-ai-courses.zip`). Until the GitHub repository exists (`NEXT-SESSION.md`, step 1), keep only the newest zip of each and every session that changes one ends by sending a new one. Once the repository exists, the folder and the kit live there (`learning-project/` and `kit/`), every session starts by cloning it, and a session ends with a commit and push instead of a zip.
+Exact steps to stand up the Learning Project and run it.
 
 ## 1. Create the Project
 1. Go to claude.ai/projects and click **+ New Project**. Name it **Learning**.
 2. Open it, click **Set project instructions**, paste everything in `project-instructions.md` below its title line, and click **Save instructions**.
 
 ## 2. Project knowledge
-In the Project, click **+** in the knowledge panel and upload these files.
+In the Project, click **+** in the knowledge panel and upload these files from the repo. The Project copies are mirrors; the repo is canonical.
 
-From `learning-project`:
-- `method.md`
-- `reader.md`
-- `sourcing-standard.md`
-- `courses-index.md`
-- `design/README.md`
-- `design/theme.css`
-- `generator/data/brand-ai/units_data.py` (every Brand + AI brief and the shared preamble)
-- `generator/data/brand-ai/hub.py` (course goals, build order, audit prompts)
+Method layer (`docs/`): `method.md`, `reader.md`, `sourcing-standard.md`, `courses-index.md`, `project-instructions.md`, `pm-status-2026-10-28.md`, `academy.md`, and the backlog and chats changelog as `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` (`method.md` §8 step 4).
 
-From `brand-and-ai-courses.zip`:
-- `audience-growth-across-platforms.md` (written material for A2, A6, A9)
-- `research_notes/instagram_tiktok.md`, `niche_landscape.md`, `platform_strategy.md`, `retention_conversion.md`, `youtube.md`
+Design: `design/README.md` (uploaded as `design-README.md`), `design/theme.css`.
 
-From `personal-mythology-kit.zip` (folder `personal-mythology/`):
-- `AGENT-SPEC.md`, `WRITER-BRIEF.md`, `BACKLOG.md`
-- `roman-syllabus.html` (every Rome prompt; Greece is complete)
-- `reviews/units-9-13/BRIEF.md` (the fresh-checker brief)
-- `audits/AUDIT-BRIEF.md`, `audits/AUDIT-BRIEF-GREECE.md`, `audits/greece-13.1-rubric.md`, `audits/rome-14.1-rubric.md`
+Brand + AI (`generator/data/brand-ai/`): `units_data.py` (every brief and the shared preamble), `hub.py` (goals, build order, audit log and prompts), `audience-growth-across-platforms.md`, `research/research-*.md` (five files), and each filed unit (`units/<code>-<slug>.md`).
 
-Replace a knowledge file whenever its source changes: `courses-index.md` after every filing or audit, `hub.py` after every Brand + AI filing, `BACKLOG.md` after a kit session.
+Personal Mythology (`kit/`): `AGENT-SPEC.md`, `WRITER-BRIEF.md`, `BACKLOG.md` (the Rome writing prompt with the lane notes), `roman-syllabus.html` (every Rome prompt; Greece is complete), `reviews/units-9-13/BRIEF.md` (uploaded as `CHECKER-BRIEF.md`), `audits/AUDIT-BRIEF.md`, `audits/AUDIT-BRIEF-GREECE.md`, `audits/greece-13.1-rubric.md`, `audits/rome-14.1-rubric.md`.
+
+Replace a knowledge file whenever its source changes: `courses-index.md`, `hub.py` and the unit after every filing; `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` at the end of every chat; `method.md`, `theme.css` and `design-README.md` when they change; `kit/BACKLOG.md` after a kit session. From a chat, the Projects tool's `project_write` with the repo path does it.
 
 ## 3. Install the four skills
 Skills belong to your account, not the Project. For each folder in `skills/` (`write-unit`, `audit-units`, `file-unit`, `new-course`):
