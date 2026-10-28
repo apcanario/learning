@@ -1,0 +1,348 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Brand + AI Audit 1</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Learning · design/theme.css — inlined by the audit page build (28 Oct 2026). No page CSS. */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Gentium+Book+Plus&display=swap");
+:root{
+  --bg:#0a0a0c;--card:#131316;--line:#1e1e24;--line-2:#2a2a32;
+  --fg:#ececf1;--muted:#9a9aa6;--dim:#6b6b78;
+  --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
+  --on-accent:#0a0a0c;
+  --bar-bg:rgba(10,10,12,.78);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
+  --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --serif:"Gentium Book Plus",Georgia,"Times New Roman",serif;
+  --bar:56px;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --bg:#f5f5f7;--card:#ffffff;--line:#e3e3ea;--line-2:#cfcfd9;
+  --fg:#17171c;--muted:#50505b;--dim:#6c6c78;
+  --red:#c23b3b;--orange:#a3580f;--teal:#1b7569;--blue:#3a6a8a;--purple:#7a3fcf;--gold:#7f6308;
+  --on-accent:#ffffff;
+  --bar-bg:rgba(245,245,247,.82);--hover:rgba(0,0,0,.05);--scrim:rgba(20,20,30,.35);--shadow:rgba(0,0,0,.18);--code:#f0f0f3;
+  color-scheme:light;
+}}
+:root[data-theme="light"]{
+  --bg:#f5f5f7;--card:#ffffff;--line:#e3e3ea;--line-2:#cfcfd9;
+  --fg:#17171c;--muted:#50505b;--dim:#6c6c78;
+  --red:#c23b3b;--orange:#a3580f;--teal:#1b7569;--blue:#3a6a8a;--purple:#7a3fcf;--gold:#7f6308;
+  --on-accent:#ffffff;
+  --bar-bg:rgba(245,245,247,.82);--hover:rgba(0,0,0,.05);--scrim:rgba(20,20,30,.35);--shadow:rgba(0,0,0,.18);--code:#f0f0f3;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:var(--bar);overflow-wrap:break-word}
+a{color:var(--teal)}
+.mono{font-family:var(--mono);font-size:.85em}
+button{font:inherit;color:inherit}
+code{font-family:var(--mono);font-size:.84em;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+.top{position:fixed;top:0;left:0;right:0;z-index:20;height:calc(var(--bar) + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px));background:var(--bar-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:4px}
+.top-in{max-width:700px;margin:0 auto;width:100%;display:flex;align-items:center;gap:4px;min-width:0}
+.cur{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:center;line-height:1.2;padding:0 4px}
+.cur-u{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--c,var(--muted));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cur-t{font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:420px){.cur{padding:0 2px}.cur-u{font-size:10px;letter-spacing:0}}
+main{max-width:700px;margin:0 auto;padding-block:22px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.phead{margin-bottom:22px}
+.eyebrow{font-size:12px;color:var(--muted);margin-bottom:8px}
+.eyebrow .u{font-family:var(--mono);color:var(--c)}
+.eyebrow .pill{display:inline-block;vertical-align:1px;margin:0 0 0 4px}
+.phead h1{font-size:28px;line-height:1.12;margin:0 0 14px;letter-spacing:-.01em;text-wrap:balance}
+.toc{display:flex;flex-wrap:wrap;gap:6px}
+.toc a{font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:5px 9px;min-height:44px;display:inline-flex;align-items:center}
+.report h2{font-size:21px;margin:34px 0 10px;letter-spacing:-.01em;text-wrap:balance;padding-top:10px;border-top:1px solid var(--line-2);scroll-margin-top:calc(var(--bar) + env(safe-area-inset-top,0px) + 12px)}
+.report h3{font-size:16.5px;margin:22px 0 6px}
+.report p{margin:0 0 14px;max-width:68ch}
+.report ul,.report ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+.report li{margin-bottom:5px}
+.report blockquote{margin:0 0 14px;padding:4px 0 4px 14px;border-left:2px solid var(--gold);color:var(--muted);font-style:italic}
+.report strong{font-weight:600}
+.report a{overflow-wrap:anywhere}
+.tbl{overflow-x:auto;margin:0 0 16px;border:1px solid var(--line);border-radius:8px}
+.report table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+.report th,.report td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.report th{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--card)}
+.report tr:last-child td{border-bottom:0}
+.dispute{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:8px;padding:12px 14px;margin:0 0 16px;font-size:15px}
+.dispute strong{color:var(--red)}
+.dispute p{margin:0 0 8px}.dispute p:last-child{margin:0}
+.carry{counter-reset:c;padding-left:0}
+.carry li{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:10px 12px 10px 40px;margin-bottom:8px;list-style:none;position:relative}
+.carry li::before{counter-increment:c;content:counter(c);position:absolute;left:12px;top:10px;font-family:var(--mono);color:var(--gold);font-size:13px}
+.prov{font-family:var(--mono);font-size:11px;color:var(--dim);margin:30px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.stats b{font-family:var(--mono);font-size:22px;font-weight:400;color:var(--fg);font-variant-numeric:tabular-nums}
+.stats span{font-size:11.5px;color:var(--muted);line-height:1.3}
+.stats[data-n="4"]{grid-template-columns:repeat(2,1fr)}
+@media (min-width:560px){.stats[data-n="4"]{grid-template-columns:repeat(4,1fr)}}
+.howto{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:0 0 26px}
+.howto h2{font-size:13px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hc,var(--gold));margin:0 0 10px}
+.howto ol{margin:0;padding-left:20px;display:grid;gap:8px}
+.howto p{margin:0 0 10px;color:var(--fg)}.howto p:last-child{margin:0}
+.howto.edge{border-left:3px solid var(--hc,var(--gold))}
+.howto ul{margin:0 0 10px;padding-left:20px;display:grid;gap:6px}
+.howto ul:last-child,.howto ol:last-child{margin-bottom:0}
+.howto .over{color:var(--muted)}
+.howto .warn{color:var(--orange)}
+.howto code{white-space:normal}
+.pill{flex:0 0 auto;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);border:1px solid var(--line-2);border-radius:999px;padding:2px 8px;margin-top:3px}
+.pill.live{color:var(--teal);border-color:var(--teal)}
+.pill.prog{color:var(--gold);border-color:var(--gold)}
+.pill.unck{color:var(--orange);border-color:color-mix(in srgb,var(--orange) 55%,transparent)}
+.pill.next{color:var(--blue);border-color:color-mix(in srgb,var(--blue) 55%,transparent)}
+.logrows{display:grid}
+.logrow{display:grid;grid-template-columns:minmax(88px,118px) minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.logrow:first-child{border-top:0;padding-top:0}
+.logrow .dt{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-top:2px}
+.hrow small.url{font-family:var(--mono);font-size:11px;overflow-wrap:anywhere}
+
+</style>
+<header class="top" style="--c:var(--gold)"><div class="top-in"><div class="cur"><div class="cur-u">BRAND + AI · AUDITS · 28 OCT 2026</div><div class="cur-t">Audit 1 · A2 · A6 · A9 · B1</div></div></div></header>
+<main>
+<div class="phead" style="--c:var(--gold)">
+<div class="eyebrow"><span class="u">AUDIT 1</span> · stratified-sample audit · Fable 5.1 · run 28 October 2026 · method.md §6, prompt verbatim</div>
+<h1>Audit 1: A2 · A6 · A9 and B1</h1>
+<nav class="toc"><a href="#verdicts">Verdicts</a><a href="#sample">Sample</a><a href="#s-a">A2/A6/A9 sample</a><a href="#s-b">B1 sample</a><a href="#full">Full audit</a><a href="#deliv">Deliverables</a><a href="#goal">Goal and standard</a><a href="#top3">Three errors</a><a href="#biblio">Bibliography · changelog</a></nav>
+</div>
+
+<div class="howto edge" style="--hc:var(--gold)">
+<h2>Verdicts</h2>
+<ul>
+<li><strong>B1 · Mental model: PASS.</strong> 7 sampled, 0 FAIL, 0 STALE. Deliverable present in full, plain prose, usable alone, no unsourced claim.</li>
+<li><strong>A2 · A6 · A9 (one document): FULL AUDIT RUN.</strong> Sample 1 of 8 FAIL (12.5%, over the 1-in-10 line). Full audit: <strong>91 cited claims, 23 FAIL, 0 STALE</strong> (15 wrong or unsourced figures or statements; 8 right figure, wrong link or wording). Result: <strong>REWRITE</strong> of the three deliverables (none of the artefacts named in the briefs exists: A2 audience profile and allocation page, A6 playbook and metrics sheet, A9 expectation sheet and quarterly checkpoints), plus <strong>§2 planning table</strong> (two rows rest on figures no source carries) and <strong>§4 checkpoint definition</strong> (Regular viewers). The research body otherwise stands: no conclusion is overturned; the 23 errata below are applied as exact replacements.</li>
+<li><strong>Consequences.</strong> B2 waits until the REWRITE closes. The first-audit override in method.md §1 is triggered: every later Brand + AI unit gets a fresh checker.</li>
+<li class="over">Provenance: the audit prompt says the units were written by Opus 5.5; <code>courses-index.md</code> records A2/A6/A9 as Fable 5.1 research agents (27 Oct). B1 is Opus 5.5. The record, not the prompt, should stand.</li>
+</ul>
+</div>
+
+<div class="stats" data-n="4">
+<div><b>98</b><span>claims checked (sample 15, full audit 83 more)</span></div>
+<div><b>23</b><span>FAIL, all in A2/A6/A9 (B1: none)</span></div>
+<div><b>0</b><span>STALE</span></div>
+<div><b>2</b><span>of 4 unit verdicts: PASS (B1) · REWRITE (A2/A6/A9 deliverables)</span></div>
+</div>
+
+<article class="report">
+
+<h2 id="sample">1 · The sample, recorded before checking</h2>
+<p>One claim per section, chosen for a number, a named source, a mechanism or a recommendation. A2, A6 and A9 are audited as one document (<code>audience-growth-across-platforms.md</code>, nine sections; the Conclusion carries no citation and is skipped). B1 has seven sections and a deliverable.</p>
+<div class="tbl"><table>
+<tr><th>Doc</th><th>Section</th><th>Claim drawn</th><th>Source cited</th></tr>
+<tr><td>A</td><td>Lede</td><td>83% of sub-1K channels uploaded nothing in 360 days</td><td>vidIQ, 32.9M-channel study</td></tr>
+<tr><td>A</td><td>§1 Growth is per-video</td><td>Beaupré, Sept 2026: subscribers skip ~90% of uploads; suggested outranks subscriptions feed</td><td>PPC Land</td></tr>
+<tr><td>A</td><td>§2 Bi-weekly</td><td>448,413 channels; median 180 → 272 views; best-of-ten 1,948; 57.8% / 30.8%</td><td>vidIQ first-10 study</td></tr>
+<tr><td>A</td><td>§3 One home platform</td><td>Transitional cohort lowest in every niche; Ent. 100K–1M: 51,600 vs 72,400 / 73,600</td><td>AIR, 18,000 channels</td></tr>
+<tr><td>A</td><td>§4 Audiences stay</td><td>Health &amp; Fitness median peaks at 2–5/mo (172,000), 77,700 at 10–20/mo</td><td>AIR frequency study</td></tr>
+<tr><td>A</td><td>§5 Conversion</td><td>YPP: 8,000 hours from 1 Feb 2027</td><td>AIR, citing YouTube Help</td></tr>
+<tr><td>A</td><td>§6 Karate thin niche</td><td>WKF 818K subscribers; all majors on YouTube from 2026</td><td>FrancsJeux</td></tr>
+<tr><td>A</td><td>§7 Recommendation</td><td>39% of Instagram creators list a public email vs 4.6% on TikTok</td><td>Click Analytic</td></tr>
+<tr><td>B1</td><td>§1 Context window</td><td>claude.ai paid plans: 200K across models; 500K on some Enterprise</td><td>Help Center 11647753</td></tr>
+<tr><td>B1</td><td>§2 Tokens</td><td>~3.5 chars/token before 4.7; 4.7+ tokenizer ~30% more tokens</td><td>Glossary</td></tr>
+<tr><td>B1</td><td>§3 Persistence</td><td>Consumer terms 28 Aug 2025: opt-in → 5-year retention, else 30 days</td><td>Anthropic news</td></tr>
+<tr><td>B1</td><td>§4 Three knowledges</td><td>Reliable cutoff June 2026 for Opus 5.5, Sonnet 5.5, Haiku 5.5, Fable 5.1</td><td>Models overview</td></tr>
+<tr><td>B1</td><td>§5 Different answers</td><td>1,000 completions at T=0, Qwen3-235B → 80 distinct; top 78; diverge at token 103</td><td>Thinking Machines</td></tr>
+<tr><td>B1</td><td>§6 Three layers</td><td>~100 tokens per skill in the system prompt; body &lt;5K on trigger</td><td>Agent Skills overview</td></tr>
+<tr><td>B1</td><td>§7 Setup map</td><td>Auto memory: first 200 lines or 25KB load each session</td><td>Claude Code: Memory</td></tr>
+</table></div>
+
+<h2 id="s-a">2 · Sample results · A2 / A6 / A9</h2>
+<div class="tbl"><table>
+<tr><th>Section</th><th>Claim</th><th>Verdict</th><th>Note</th></tr>
+<tr><td>Lede</td><td>83% uploaded nothing</td><td><strong>FAIL</strong></td><td>27.36M of 32.93M had an <em>unchanged video count</em> (83.1%). The study states: "No increase in video count does not prove a channel published nothing." The claim is the reading the source disclaims. Fix: "83% showed no net change in video count".</td></tr>
+<tr><td>§1</td><td>Beaupré, ~90%</td><td>PASS</td><td>PPC Land, 2 Sep 2026, reporting the Creator Insider interview of 1 Sep. Title is "senior director of growth and discovery". "About maybe a 10% or less click-through rate" among subscribers; suggested is "the number one place". Secondary source; no sample behind the 10%.</td></tr>
+<tr><td>§2</td><td>vidIQ first-10</td><td>PASS</td><td>All figures exact (28 Jul 2026). 448,413 is distinct channels across both cohorts; the long-form cohort is 137,355. Survivor caveat is on the page.</td></tr>
+<tr><td>§3</td><td>AIR transitional</td><td>PASS</td><td>1,247 channels moved Shorts share &gt;30 points in H2; 51,600 vs 72,400 / 73,600 exact; "consistently poor across every niche and size segment". March 2025–March 2026 snapshot, correlational, as the unit says.</td></tr>
+<tr><td>§4</td><td>AIR 172,000 / 77,700</td><td>PASS</td><td>Exact. Context the unit omits: 100K–1M monthly-views segment, 82 channels in the 2–5 bucket, 63 in 10–20.</td></tr>
+<tr><td>§5</td><td>YPP 8,000 hours</td><td>PASS</td><td>Now verified at the primary: YouTube Help 12843009, "8,000 qualified watch hours in the last 365 days, or 20M qualified Shorts views", from 1 Feb 2027. The hub note "not verified against YouTube Help" can be closed.</td></tr>
+<tr><td>§6</td><td>WKF 818K</td><td>PASS</td><td>FrancsJeux, 8 Jan 2026: 818,000 subscribers; all major WKF events on YouTube. The unit does not date the figure; it is January, not October.</td></tr>
+<tr><td>§7</td><td>39% vs 4.6%</td><td>PASS</td><td>Click Analytic, May 2026, full-year 2025, 15.8M TikTok accounts with ≥10K followers. Sample size not given in the unit.</td></tr>
+</table></div>
+<p><strong>Failure rate: 1 of 8 = 12.5%.</strong> Over one in ten. Full audit run (§4 below).</p>
+
+<h2 id="s-b">3 · Sample results · B1</h2>
+<div class="tbl"><table>
+<tr><th>Section</th><th>Claim</th><th>Verdict</th><th>Note</th></tr>
+<tr><td>§1</td><td>200K / 500K</td><td>PASS</td><td>Verbatim on the help article, which also confirms the shared usage limit, token-intensive tools, and automatic context management with code execution.</td></tr>
+<tr><td>§2</td><td>Tokenizer</td><td>PASS</td><td>Glossary says exactly this; the 2.7-character arithmetic is labelled as the writer's own.</td></tr>
+<tr><td>§3</td><td>Consumer terms</td><td>PASS</td><td>28 Aug 2025 (page modified 14 Oct 2026); Free, Pro, Max; five years opted in, 30 days otherwise.</td></tr>
+<tr><td>§4</td><td>Cutoff June 2026</td><td>PASS</td><td>Models overview table: Jun 2026 for all four; 1M window, 128K output; prices as quoted; adaptive thinking "always on" for Opus 5.5 and Fable 5.1.</td></tr>
+<tr><td>§5</td><td>80 distinct of 1,000</td><td>PASS</td><td>He, 10 Sep 2025: 1,000 at T=0, 80 unique, most common 78, identical for 102 tokens, diverge at the 103rd; batch-invariant kernels gave 1,000 identical.</td></tr>
+<tr><td>§6</td><td>~100 tokens per skill</td><td>PASS</td><td>Table on the page: "~100 tokens per Skill" at startup, "Under 5k tokens" on trigger; description is what requests are matched against.</td></tr>
+<tr><td>§7</td><td>200 lines / 25KB</td><td>PASS</td><td>"The first 200 lines of MEMORY.md, or the first 25KB, whichever comes first." Also confirmed: fresh window per session, CLAUDE.md re-read after /compact, "context, not enforced configuration", hooks for enforcement, target under 200 lines.</td></tr>
+</table></div>
+<p><strong>Failure rate: 0 of 7.</strong> No full audit. Two items worth one line each, neither a fail: the Models overview URL now redirects to <code>/docs/en/models/overview</code>; and the help centre does say "shorten project instructions", which is consistent with B1's "no such limit" but worth a clause.</p>
+
+<h2 id="full">4 · Full audit · A2 / A6 / A9, every cited claim</h2>
+<p>83 further claims, by section of the document; the sampled claim of each section is counted in its section total. Verdict codes: <strong>FAIL·W</strong> wrong, unsupported or invented at the cited source; <strong>FAIL·M</strong> the figure exists but is miscited, unlinked or misworded. Each FAIL carries its fix. PASS rows carry only what a reader should know.</p>
+
+<h3>§1 · Growth is per-video recommendation (14 claims, 4 FAIL)</h3>
+<div class="tbl"><table>
+<tr><th>Claim</th><th>Source</th><th>Verdict</th><th>Note / fix</th></tr>
+<tr><td>No "penalty box"; one weak video no permanent damage; per-video judgement</td><td>Search Engine Journal</td><td>PASS</td><td>4 Mar 2024, quoting Beaupré; the phrase is the article's framing.</td></tr>
+<tr><td>Clickbait = high CTR + low AVD + fewer impressions; recommended less</td><td>YouTube Help 7628154</td><td>PASS</td><td>All three elements on the page.</td></tr>
+<tr><td>Half of channels 2–10% CTR; target 4–6%; 30–45% APV on 15–30 min</td><td>vidIQ AVD blog</td><td><strong>FAIL·W</strong></td><td>Only "30 to 45% viewed" is on the page. The 2–10% figure is YouTube Help 7628154's ("Half of all channels and videos… between 2% and 10%"): re-cite. The 4–6% target is on neither page: mark unsourced or drop.</td></tr>
+<tr><td>Mosseri, Jan 2025: watch time, likes, sends; sends for non-followers</td><td>Social Media Today</td><td>PASS</td><td>22 Jan 2025. Mosseri says "slightly more important" for connected/unconnected content; the follower gloss is the article's.</td></tr>
+<tr><td>Trial Reels non-followers only, requires 1,000 followers; Stories followers only; carousel second chance</td><td>Lia Haberman</td><td><strong>FAIL·W</strong></td><td>Only the carousel point is on the cited post (14 Oct 2025). Haberman's 10 Dec 2024 Trial Reels post says "shown to non-followers first", professional account required, no 1,000 rule. The 1,000 figure and the Stories claim have no source: drop or re-source.</td></tr>
+<tr><td>1–5K: 580 views/Reel, 993/carousel; growth 38% → 22%</td><td>Socialinsider</td><td>PASS</td><td>Exact. Brand accounts only: 131,955 business accounts under 5K, 7.0M posts.</td></tr>
+<tr><td>Creator accounts engage ~3× brand accounts "in Metricool's data"</td><td>none linked</td><td><strong>FAIL·M</strong></td><td>Uncited. The figure exists as "approximately 3 times more likes and comments" in the Metricool + HypeAuditor Instagram Content Playbook 2025 (14 Oct 2025; 700M posts, 28M influencer accounts). Cite it and say likes and comments, not engagement rate.</td></tr>
+<tr><td>TikTok 2020: follower count and past hits "not direct factors"</td><td>TikTok Newsroom</td><td>PASS</td><td>18 Jun 2020, verbatim "neither… nor… are direct factors".</td></tr>
+<tr><td>1–5K TikTok: 350 views/video; +150% followers; output +40%; views −23%</td><td>Socialinsider</td><td><strong>FAIL·W</strong></td><td>350 and 150% hold for the tier (111,402 accounts). +40% and −23% are cross-tier averages given in prose; the tier's own row shows 860 → 350 (−59%) and 6 → 8 posts/month. Say "across all tiers" for 40%; drop the 23%.</td></tr>
+<tr><td>beehiiv: 41.24% open, 3.23% click, 65,000 newsletters</td><td>beehiiv 2026</td><td>PASS</td><td>5 Jan 2026. Open rate framed as across 28B emails; "65,000+ newsletters" is in the conclusion; 3.23% appears only in an image's alt text.</td></tr>
+<tr><td>Patreon 2025: 24% / 32% / 38% of time on followed creators</td><td>Net Influencer</td><td>PASS</td><td>21 Feb 2025; 1,000 creators and 2,000 fans via NewtonX, Aug 2024.</td></tr>
+<tr><td>Substack: recommendations + app = 50% of new subscriptions</td><td>On Substack</td><td>PASS</td><td>22 Feb 2024; also 25% of new paid.</td></tr>
+<tr><td>beehiiv: Recommendations users grew 2.75× faster</td><td>beehiiv 2026</td><td>PASS</td><td>Verbatim.</td></tr>
+</table></div>
+
+<h3>§2 · Bi-weekly long-form (20 claims, 6 FAIL)</h3>
+<div class="tbl"><table>
+<tr><th>Claim</th><th>Source</th><th>Verdict</th><th>Note / fix</th></tr>
+<tr><td>40.6% of channels with any subscriber have crossed 1,000</td><td>vidIQ uploads study</td><td><strong>FAIL·M</strong></td><td>Not on the cited page. It is on vidIQ <em>YouTube Subscriber Benchmarks 2026</em> (20 Jul 2026, 61,186,246 channels with ≥1 public subscriber). Re-cite.</td></tr>
+<tr><td>1.5% crossed in 360 days; 1.86% / 8.65% / 30.77% by band</td><td>vidIQ uploads study</td><td>PASS</td><td>500,409 of 32,926,088 = 1.52%; bands exact. Snapshot 10 Sep 2026.</td></tr>
+<tr><td>~68% of channels reaching 1K had 40+ videos</td><td>vidIQ blog</td><td>PASS</td><td>9 Jun 2025; 5,330,249 channels; page says "more than 40".</td></tr>
+<tr><td>Seven-channel sample: 5–26 months to 1K, 29–36 to 10K</td><td>Social Video Plaza</td><td>PASS</td><td>Ranges rest on 6 and 4 channels respectively; prose and table disagree on two rows; undated page. Already labelled illustrative.</td></tr>
+<tr><td>Table: median growth at 1K–10K +13 subs (0.51%/mo)</td><td>none in table</td><td><strong>FAIL·M</strong></td><td>On the Subscriber Benchmarks 2026 page (90-day growth, 11,752,034 active channels). Cite it in the table.</td></tr>
+<tr><td>Table: 2K–10K channels had the highest tier-up rate (16% in a year)</td><td>none in table</td><td><strong>FAIL·W</strong></td><td>Found on no vidIQ research page (benchmarks, uploads, first-10, frequency, growth-statistics blog, research index). The only vidIQ "16%" is 16.16% of "other gaming" channels in a Minecraft/Roblox study, a different population. Remove the row or mark unsourced.</td></tr>
+<tr><td>Median growth rises monotonically with uploads/month; 10.2M channels</td><td>vidIQ frequency study</td><td>PASS</td><td>8 Jul 2026; 10,210,278 channels, all already ≥1K subscribers.</td></tr>
+<tr><td>Bi-weekly → weekly "roughly doubles the growth rate" (1–3 vs 4–7/month)</td><td>vidIQ frequency study</td><td><strong>FAIL·W</strong></td><td>Views 0.89% → 1.32% (×1.5); subscribers 0.10% → 0.39% (×3.9). Neither doubles. Rewrite with the two figures; this is the unit's main argument for a weekly rhythm.</td></tr>
+<tr><td>Back catalogue out-earns new uploads ~month six, 24–26 videos</td><td>Humble&amp;Brag</td><td>PASS</td><td>9 Mar 2026; it is views, not earnings, and an illustrative one-upload-a-week model. Say "out-views".</td></tr>
+<tr><td>YouTube says videos can gain most of their audience a month or more after upload</td><td>none in sentence</td><td>PASS</td><td>Supported by the already-cited PPC Land Beaupré piece; add the pointer.</td></tr>
+<tr><td>Assistant professor: 88 videos in 52 weeks, 20K subscribers</td><td>Candogan</td><td>PASS</td><td>"First year", not 52 weeks; 20K+.</td></tr>
+<tr><td>beehiiv: median 482 in month one, 8,314 by end of year one</td><td>beehiiv 2026</td><td>PASS</td><td>Verbatim; self-selected cohort, as the unit says.</td></tr>
+<tr><td>100 subscribers after four months, 2,000 at twelve</td><td>Creator Playbook</td><td>PASS</td><td>30 Jul 2025; page also carries a promo line "3,000 in 12 months"; main text says 2,000.</td></tr>
+<tr><td>2,500 after three years alongside a corporate job and family</td><td>Introverted Networker</td><td>PASS</td><td>"Full-time job", not "corporate".</td></tr>
+<tr><td>42,000 after three years full-time; first 1,000 "the slowest"</td><td>Amy Suto</td><td><strong>FAIL·M</strong></td><td>42,000 in three years and the quotation are verbatim (4 Jul 2026). "Full-time" is not on the page: drop the word.</td></tr>
+<tr><td>Metricool 800,000 videos; ~5 Shorts/mo → +46% long-form views; gone above 35</td><td>Metricool</td><td>PASS</td><td>29 Jul 2026; 799,718 videos. The 46% is above the global average, not above zero-Shorts channels (versus those it is ~101%). Say "above the global average".</td></tr>
+<tr><td>Shorts-to-long-form conversion 0.04–0.5% "unsourced"</td><td>AIR</td><td>PASS</td><td>Correct: AIR gives it with no source.</td></tr>
+<tr><td>Welsh: 45-minute issue by recycling his best social posts</td><td>Justin Welsh</td><td><strong>FAIL·W</strong></td><td>He uses the two best-performing posts to pick topics, then writes with a four-step formula. Reword: "picks topics from his best-performing social posts".</td></tr>
+<tr><td>Only 2.7% of TikTok creators with 10K+ link a YouTube account</td><td>Click Analytic</td><td>PASS</td><td>Exact.</td></tr>
+</table></div>
+
+<h3>§3 · One home platform wins (14 claims, 2 FAIL)</h3>
+<div class="tbl"><table>
+<tr><th>Claim</th><th>Source</th><th>Verdict</th><th>Note / fix</th></tr>
+<tr><td>Buffer, 52M posts: no-post penalty; top decile; format varies by network</td><td>Buffer 2026</td><td>PASS</td><td>5 Mar 2026; penalty measured on 4.8M channel-weeks, ~161K profiles, FB/IG/X.</td></tr>
+<tr><td>Failure signature (no niche, cadence 5→0, overcommitting, burnout)</td><td>Creator Playbook; Suto</td><td>PASS</td><td>Both pages carry it; "on your worst week, not your best one" is verbatim Suto.</td></tr>
+<tr><td>25–40% Shorts: Fitness +41%, Business +39%, Education +37%; weakens above ~55%</td><td>AIR Shorts study</td><td>PASS</td><td>Exact; correlational, quality uncontrolled, as the unit says.</td></tr>
+<tr><td>15,160 views/Short at under 5K vs 350 TikTok, 625 Reels</td><td>Socialinsider</td><td>PASS</td><td>5 Aug 2026 (upd. 21 Oct); accounts under 1,000 followers excluded, so "under 5K" means ~1K–5K.</td></tr>
+<tr><td>Portugal excluded from TikTok Creator Rewards</td><td>Quasa</td><td>PASS</td><td>Portugal is absent from the eight markets listed (26 Jul 2026); the page has no exclusion list. Aggregator source.</td></tr>
+<tr><td>EU DSA preliminary findings Feb 2026 may force recommender redesign</td><td>Crowell &amp; Moring</td><td>PASS</td><td>6 Feb 2026; preliminary.</td></tr>
+<tr><td>30–60 minutes of editing per finished minute</td><td>Tasty Edits</td><td>PASS</td><td>Verbatim; updated 17 Sep 2026.</td></tr>
+<tr><td>Buffer IG: 2.1M posts; 3–5/week +0.26%/week vs +0.12%</td><td>Buffer</td><td>PASS</td><td>13 Aug 2025; fixed-effects model, 102K accounts, relative to no-post weeks.</td></tr>
+<tr><td>"Buffer's 2025 data has LinkedIn highest at ~6.2%"</td><td>linked to Metricool</td><td><strong>FAIL·M</strong></td><td>Attribution is right (Buffer key findings say ~6.2%; body text 6.1%); the link is wrong. Point it at the Buffer page.</td></tr>
+<tr><td>Personal 2.60% vs company 1.60%; carousels 1,451 vs 606; links cost 27%</td><td>Metricool LinkedIn</td><td>PASS</td><td>16 Apr 2026; 673,658 posts, 63,108 accounts. The −27% is for personal profiles, "posts with links", not "in the post body".</td></tr>
+<tr><td>Side projects "tend to be more acceptable to employers than strong personal stances"</td><td>Globe and Mail</td><td><strong>FAIL·W</strong></td><td>The quoted phrase does not appear. Closest, Dr Sonia Kang: "much more acceptable to corporations than… 'This is me, and here's my view.'" Paraphrase or quote Kang; cite the canonical theglobeandmail.com URL, not the arc-dev staging host.</td></tr>
+<tr><td>Employer-conflict literature is about politics and company time</td><td>Globe and Mail</td><td>PASS</td><td>Both points on the page.</td></tr>
+<tr><td>"The data never supports adding a third native format"</td><td>synthesis</td><td>PASS</td><td>Follows from AIR and Buffer rows above; no new figure.</td></tr>
+</table></div>
+
+<h3>§4 · Audiences stay for a repeated format (13 claims, 3 FAIL)</h3>
+<div class="tbl"><table>
+<tr><th>Claim</th><th>Source</th><th>Verdict</th><th>Note / fix</th></tr>
+<tr><td>"Regular" = returned six or more times in the past year; introduced July 2025; quoted guidance</td><td>YouTube Help 13615784</td><td><strong>FAIL·W</strong></td><td>The page defines Regulars as viewers who returned "for at least six months in the past year" (companion page: at least once a month for more than six months). Months, not visits. July 2025 is not on the page (Search Engine Journal dates it 2 Jul 2025). The four quotations are verbatim. Fix the definition; cite the date.</td></tr>
+<tr><td>Predictable schedule earns more views per subscriber; 14+-day gaps ×3/yr reduce views; 172,000 / 77,700; Education peaks 2–5</td><td>AIR frequency</td><td>PASS</td><td>Sampled above.</td></tr>
+<tr><td>Regular share &gt;10% excellent for new; 20–40% established; meaningful after ~20 uploads</td><td>Vidpros</td><td><strong>FAIL·M</strong></td><td>Vidpros (25 Jul 2026) gives these for <em>returning viewers</em>, third-hand (Humble&amp;Brag, VidOrange), and notes Regular-tier shares are typically single-digit. The unit and the recommendation apply them to the Regular tier. Re-label as returning-viewer benchmarks or drop the Regular-tier checkpoint.</td></tr>
+<tr><td>Goal Guys 560K since 2015; Mike Boyd 2.7M; Nick Bare Hyrox Prep; Hellah Sidibe</td><td>Social Blade; yespress; Tatler</td><td>PASS</td><td>Live counters, 28 Oct 2026. yespress is a low-authority profile page.</td></tr>
+<tr><td>Patreon 2022 census, 13,000 creators: named community +4–8% retention; daily promoters +75%</td><td>Net Influencer</td><td>PASS</td><td>Verbatim; self-reported survey.</td></tr>
+<tr><td>Newsletters that recommend others are 32× more likely to be recommended back</td><td>beehiiv 2026</td><td>PASS</td><td>Verbatim.</td></tr>
+<tr><td>0.15% unsubscribe per send; 20–30%/year is unsourced aggregator material</td><td>EmailListValidation</td><td>PASS</td><td>The 0.15% is attributed on the page to GetResponse 2024 benchmarks; cite GetResponse directly. "Per send" is an inference. The unit's "unsourced" label for 20–30% is correct.</td></tr>
+<tr><td>Hidayat et al. 2026, n=407: expertise and trustworthiness, not attractiveness, predict parasocial relationship → purchase intention</td><td>Frontiers in Communication</td><td>PASS</td><td>Hidayat, Rahmat and Adilla, vol. 11, 2026; PLS-SEM; Indonesian beauty-influencer followers. Attractiveness did predict purchase intention directly, just not via the parasocial path. The generalisation to his audience is the unit's.</td></tr>
+<tr><td>ASQ 2026, 54 creators, "dysfunctional entanglement", symptoms, coping</td><td>PsyPost</td><td>PASS</td><td>20 Feb 2026; 54 creators, 74 interviews; coping as described.</td></tr>
+<tr><td>Quotation "If I take a break, I'm going to get punished by the algorithm"</td><td>Cornell Chronicle</td><td>PASS</td><td>Verbatim; New Media &amp; Society, Duffy et al.</td></tr>
+<tr><td>"YouTube says it does not over-weight unpredictive history"</td><td>Cornell Chronicle</td><td><strong>FAIL·W</strong></td><td>Nothing on the Cornell page about YouTube's statements. Needs its own source (SEJ "no penalty box" piece may serve) or removal.</td></tr>
+<tr><td>ADHD Chatter 408K, 83K avg views, ~1.2/week; HealthyGamerGG 3.49M, 91% on YouTube</td><td>OutlierKit; CreatorDB</td><td>PASS</td><td>Live stats; 91% is CreatorDB's cross-platform follower split, not viewership.</td></tr>
+<tr><td>Over-disclosure risk: no study found</td><td>—</td><td>PASS</td><td>Stated as a gap.</td></tr>
+</table></div>
+
+<h3>§5 · Conversion and platform money (14 claims, 3 FAIL)</h3>
+<div class="tbl"><table>
+<tr><th>Claim</th><th>Source</th><th>Verdict</th><th>Note / fix</th></tr>
+<tr><td>Substack official 5–10%; median 3%; only 20% above 5%</td><td>Really Good Business Ideas</td><td>PASS</td><td>4 Sep 2026; "hundreds of reports", dataset paywalled.</td></tr>
+<tr><td>~1%: 121 paid of 13,413 free</td><td>Artificial Ignorance</td><td>PASS</td><td>As of 1 Jan 2025 (0.9%).</td></tr>
+<tr><td>Mini-course: 2–3% of an engaged list per launch</td><td>Teachery</td><td>PASS</td><td>"Per launch" is not the page's wording; say "per offer".</td></tr>
+<tr><td>Patreon free → paid ~0.7%/month "by Sacra's estimate"</td><td>Sacra</td><td><strong>FAIL·W</strong></td><td>Page gives 60M free members and ~400,000 monthly conversions, no percentage and no estimate label for either. 0.7% is the writer's arithmetic on two figures the page does not tie to one period. Cite the raw figures and mark the ratio derived.</td></tr>
+<tr><td>Patreon $52/fan/year, $110/paying member</td><td>Net Influencer</td><td>PASS</td><td>Verbatim.</td></tr>
+<tr><td>Merch 0.4–1.2%, $48.50 AOV, "attributed to Spring and Fourthwall it does not link"</td><td>VoxBooster</td><td><strong>FAIL·M</strong></td><td>Figures are there (22 Aug 2026). In-text credits are Linktree (conversion) and Fanjoy (AOV); Spring and Fourthwall appear only in table credits; links go to homepages, no study. Reword the attribution: "attributed variously to Linktree, Spring, Fanjoy, Shopify and Fourthwall, with no study linked".</td></tr>
+<tr><td>Alpha/AC1 ~125K Instagram; 67% returning customers</td><td>Startland News</td><td>PASS</td><td>27 Dec 2022; founder's own figure.</td></tr>
+<tr><td>Enkamp's Seishin built on a 1.6M audience over ~fifteen years</td><td>WKF, 2018</td><td><strong>FAIL·W</strong></td><td>The 2018 WKF page gives no subscriber count and no timeline. 1.6M is on the vidIQ/CreatorDB pages cited in §6; "fifteen years" has no source. Re-cite the count; source or drop the span.</td></tr>
+<tr><td>YPP 8,000 hours from 1 Feb 2027</td><td>AIR / YouTube Help</td><td>PASS</td><td>Sampled; primary verified.</td></tr>
+<tr><td>RPM $1.23 Health &amp; Sport vs $10.22 Education &amp; Science, 300 channels</td><td>AIR RPM</td><td>PASS</td><td>1 Jul 2026; medians; May 2025–May 2026; 3,595 channel-months.</td></tr>
+<tr><td>Instagram Gifts: 22 EU states, not Portugal, Nov 2023</td><td>Meta for Creators</td><td>PASS</td><td>6 Nov 2023, 33 countries, Portugal absent; "22 EU" is a correct count, not the page's framing. Spain and France are absent too.</td></tr>
+<tr><td>Nano $50–500; micro $500–5,000</td><td>ContentGrip</td><td>PASS</td><td>8 May 2026; vendor rate card, no sample.</td></tr>
+<tr><td>Brazilian kata athlete, 85K, $240 post + story</td><td>OpenSponsorship</td><td>PASS</td><td>Figures exact, "estimated pricing". <span class="warn">The profile states the athlete's age as 14 (elsewhere 17). The unit links her by name. Remove the name and link; keep "a kata athlete listed at 85K" or drop the example.</span></td></tr>
+<tr><td>More than half of creators earn under $15,000; 28% full-time; 23% of men under €500</td><td>Influencer Marketing Hub; Kolsquare</td><td>PASS</td><td>IMH: "over 3,000 creators", no exact share. Kolsquare: 783 creators, six markets, May–Jun 2025; Portugal not covered.</td></tr>
+</table></div>
+
+<h3>§6 · Karate is the thin niche (14 claims, 4 FAIL)</h3>
+<div class="tbl"><table>
+<tr><th>Claim</th><th>Source</th><th>Verdict</th><th>Note / fix</th></tr>
+<tr><td>Running: top tier from Total Running Productions 807K, fifteen channels above 100K, tail 13–70K</td><td>FeedSpot running</td><td><strong>FAIL·W</strong></td><td>The list is not sorted by subscribers. Largest is The Running Channel 837K (listed 41st); 23 of the 75 shown exceed 100K; smallest shown is 221. The unit's numbers describe only the first block of 31 entries. Rewrite the sentence from the full page.</td></tr>
+<tr><td>Mark Lewis 399K; −1,000 in 28 days to late Oct 2026</td><td>vidIQ</td><td>PASS</td><td>Exact (30 Sep–27 Oct).</td></tr>
+<tr><td>Hellah Sidibe 294K; Ben Felton 157K</td><td>none linked</td><td>PASS</td><td>Both on the FeedSpot list already cited (HellahGood 294K, Ben Is Running 157K); vidIQ has Felton at 159K. Add the link.</td></tr>
+<tr><td>How to ADHD 1.9M; a dozen above 100K</td><td>FeedSpot ADHD</td><td>PASS</td><td>Exactly 12 (2 Jul 2026).</td></tr>
+<tr><td>ADHD Chatter ~100,000 monthly downloads within about a year</td><td>National Diversity Awards</td><td>PASS</td><td>Verbatim; awards-body text, no launch date.</td></tr>
+<tr><td>Build-in-public with AI saturated on X in generic entrepreneur spaces; a text category, not video</td><td>SoftwareSeni</td><td><strong>FAIL·W</strong></td><td>Page supports only "saturation exists in generic entrepreneur spaces". Nothing on AI, on X specifically, or text-versus-video. Cut to what the page says.</td></tr>
+<tr><td>WKF 818K; all majors on YouTube</td><td>FrancsJeux</td><td>PASS</td><td>Sampled.</td></tr>
+<tr><td>Enkamp 1.62–1.67M, +20–30K/month; Instagram flat to declining</td><td>vidIQ; CreatorDB</td><td>PASS</td><td>Exact; CreatorDB snapshot 25 Jul 2026.</td></tr>
+<tr><td>TEAM KI 117K, Shotokan Karate 52K, tail under 40K; a 10–20K channel in the top ten</td><td>FeedSpot karate</td><td>PASS</td><td>Top ten confirmed (2 Jul 2026): positions 7–10 run 16.1K–24.1K. List is "by popularity", not strictly by subscribers.</td></tr>
+<tr><td>Portugal 7.59M YouTube, 6.35M Instagram</td><td>DataReportal</td><td>PASS</td><td>Ad-reach, "late 2025"; the unit should say so.</td></tr>
+<tr><td>Top PT running profiles 4–40K; six of top eleven post in English; biggest PT-language runner 14.6K; Porto "AI leader, multi-sport" at 6.2K</td><td>Modash</td><td><strong>FAIL·M</strong></td><td>Range, 14.6K (Hugo Barreto) and 6.2K (Tiago Costa Lima, Porto) hold. "Six of eleven post in English" is not on the page and depends on bio versus captions (8 by bio, 2–4 by captions). Live ranking; reword or drop the count.</td></tr>
+<tr><td>Brazil: bodybuilding channels at 1.3–3.9M in Brazilian Portuguese</td><td>HypeAuditor</td><td><strong>FAIL·W</strong></td><td>3.9M top holds; the top ten floor is 1.6M; "bodybuilding" and "Brazilian Portuguese" are inferences, not on the page; page date is inconsistent (Sep 2022 header, Oct 2026 text). Rewrite from the page.</td></tr>
+<tr><td>Brazil 150M YouTube users; Portuguese a top-five YouTube language</td><td>none linked</td><td>PASS</td><td>150M: DataReportal Digital 2026 Brazil (late 2025 ad reach); add the link. "Top five" exists only as translation-vendor estimates (4th or 7th by source); say "an estimated top-five" or cite Brazil's 150M alone.</td></tr>
+<tr><td>Portuguese RPM and AI Overview impact: no data found</td><td>—</td><td>PASS</td><td>Stated as a gap.</td></tr>
+</table></div>
+
+<h3>§7 · Recommendation (1 claim, 0 FAIL)</h3>
+<p>The 39% / 4.6% email-listing figures (Click Analytic) were the sampled claim and pass. Every other number in the recommendation (hours, 25–40% Shorts, 150–300 views, 18–36 months, the 25% APV / 3% CTR triggers) traces to a row above; the APV/CTR triggers inherit the §1 failure (the 4–6% target is unsourced, so the 3% floor is the writer's own) and the Regular-share checkpoint inherits the §4 failure.</p>
+
+<h3>Full-audit totals</h3>
+<div class="tbl"><table>
+<tr><th>Section</th><th>Claims</th><th>FAIL·W</th><th>FAIL·M</th><th>PASS</th></tr>
+<tr><td>Lede (sample)</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>§1</td><td>14</td><td>3</td><td>1</td><td>10</td></tr>
+<tr><td>§2</td><td>20</td><td>3</td><td>3</td><td>14</td></tr>
+<tr><td>§3</td><td>14</td><td>1</td><td>1</td><td>12</td></tr>
+<tr><td>§4</td><td>13</td><td>2</td><td>1</td><td>10</td></tr>
+<tr><td>§5</td><td>14</td><td>2</td><td>1</td><td>11</td></tr>
+<tr><td>§6</td><td>14</td><td>3</td><td>1</td><td>10</td></tr>
+<tr><td>§7</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>91</strong></td><td><strong>15</strong></td><td><strong>8</strong></td><td><strong>68</strong></td></tr>
+</table></div>
+<p><strong>Failure rate 23 of 91 = 25%.</strong> No figure was invented outright; the pattern is numbers read off one page and attached to another, secondary reporting treated as primary, and qualifiers added that the source does not carry ("uploaded nothing", "full-time", "fifteen years", "six or more times", "doubles").</p>
+
+<h2 id="deliv">5 · Deliverables</h2>
+<div class="tbl"><table>
+<tr><th>Unit</th><th>Brief says it ships</th><th>What exists</th><th>Verdict</th></tr>
+<tr><td>A2</td><td>Audience profile + a one-page platform allocation with hours</td><td>No audience profile anywhere in the document (the 30–45, employed, restless-brain reader is never described). Hours per channel appear inside the §7 prose, not as a page.</td><td><strong>Absent</strong></td></tr>
+<tr><td>A6</td><td>Per-platform playbook + metrics sheet</td><td>Mechanics are explained in §1; no playbook and no metrics sheet (no list of what to measure, where, at what threshold).</td><td><strong>Absent</strong></td></tr>
+<tr><td>A9</td><td>Expectation sheet + quarterly checkpoints</td><td>The §2 planning table is an expectation sheet, but two of its three rows carry figures the sources do not (16% tier-up; the weekly "doubling" argument beneath it). No quarterly checkpoints; §7 gives one 20-episode trigger and a 12-month review.</td><td><strong>Partial; table must be patched</strong></td></tr>
+<tr><td>B1</td><td>A one-page model of how Claude works, plain prose, explainable in five minutes</td><td>Present, ~700 words of plain prose, no citations needed, each paragraph traceable to a body section; no claim in it that the body does not source.</td><td><strong>Present, in full</strong></td></tr>
+</table></div>
+<p>The research document was accepted as "the written material for A2, A6 and A9" (hub reading page). The method's deliverable rule ("built in full inside the unit and usable without reading the unit") is not met for A2 and A6 and only half met for A9. That, not the body's error rate, is what makes the verdict REWRITE rather than REVISE.</p>
+
+<h2 id="goal">6 · Course goal and sourcing standard</h2>
+<p><strong>A2/A6/A9 against Goal A</strong> (state who the audience is and what they pay for; run a bi-weekly system inside 5–7 h/week; read metrics against sourced benchmarks). The document moves him on the second and third: the hour budget is specific and sourced, the benchmarks table exists, the platform choice is argued from data with vendor and correlational labels throughout. It does not move him on the first: the audience is named in the brief, not in the unit, and nothing in the text says what that audience pays for. Advice without evidence: the recommendation's 25% APV / 3% CTR triggers (floor not sourced) and the "Regular-viewer share worth measuring" checkpoint (benchmarks are for a different metric) are the two places the reader would act on a number the sources do not support.</p>
+<p><strong>B1 against Goal B</strong> (route tasks without guessing; brief so the first output is usable; keep a project structure that does not rot; verify by sampling). B1 is the ground for all four and says where each is taken up (B2, B3, B4, B6, B8); it ends with a four-question diagnostic he can run today. Every mechanism is sourced to Anthropic documentation or a named paper; the two analogies ("under 200 lines" applied to project instructions; the 2.7-character arithmetic) are flagged as the writer's own. No advice without evidence.</p>
+<p><strong>Sourcing standard, per unit.</strong> B1: all search-on facts dated 28 Oct 2026; every cited source listed and nothing listed uncited. A2/A6/A9: the Sources list is the hub bibliography collected from links, so the unlinked figures (3× engagement, +13 subs, 16%, 150M, top-five language, Sidibe, Felton) are also missing from it; dated facts are dated inconsistently (WKF, DataReportal, Enkamp carry no date in the text).</p>
+
+<h2 id="top3">7 · The three most consequential errors</h2>
+<ol class="carry">
+<li><strong>The weekly-cadence argument rests on a misread number.</strong> §2 says moving from bi-weekly to weekly "roughly doubles the growth rate" in vidIQ's data. The page shows view growth ×1.5 and subscriber growth ×3.9 between the 1–3 and 4–7 uploads-a-month tiers, on channels that already had 1,000 subscribers. The direction holds; the figure he would plan around does not, and the same table's "16% tier-up rate" exists on no vidIQ page.</li>
+<li><strong>The retention checkpoint measures the wrong metric.</strong> "Regular" viewers are defined by YouTube as returning in at least six months of the year, not "six or more times", and the 10% / 20–40% benchmarks the unit tells him to read the Regular share against are third-hand figures for the older returning-viewers metric, whose author notes Regular shares are usually single-digit. Applied as written, the checkpoint at upload 20 would read a healthy channel as failing.</li>
+<li><strong>The thesis sentence states what its source denies.</strong> "83% of sub-1K channels uploaded nothing" is the one line a stranger would repeat; vidIQ's methodology says an unchanged count does not show that. The fix is six words, but the sentence carries the document's whole "most channels just stop" argument, and the same habit (a qualifier the source does not carry) recurs eleven more times: "full-time", "fifteen years", "in Brazilian Portuguese", "on X", "doubles".</li>
+</ol>
+<p>Separate from accuracy, one line to act on before anything else: the OpenSponsorship profile cited in §5 belongs to an athlete who states her age as 14 on the page. Her name should come out of the unit and its bibliography.</p>
+
+<h2 id="biblio">8 · Bibliography and changelog</h2>
+<p><strong>Bibliography.</strong> Add: vidIQ <em>YouTube Subscriber Benchmarks 2026</em> (20 Jul 2026); YouTube Help <em>Changes to the YouTube Partner Program</em> (answer 12843009); YouTube Help <em>Impressions and click-through rate</em> (7628154, for the 2–10% figure); Metricool + HypeAuditor <em>Instagram Content Playbook 2025</em> press release; Haberman, <em>Instagram Trial Reels</em> (10 Dec 2024); GetResponse <em>Email Marketing Benchmarks 2024</em>; Search Engine Journal on Regular viewers (2 Jul 2025); DataReportal <em>Digital 2026 Brazil</em>; Buffer <em>State of Social Media Engagement 2026</em> as the source of the 6.2% figure; the canonical Globe and Mail URL; the FeedSpot running list as the source for Sidibe and Felton. Mark failed for the figure they are cited for: vidIQ upload-frequency study (40.6%, +13 subs, 16%, "doubles"); vidIQ AVD blog (2–10%, 4–6%); Haberman content-formats post (Trial Reels, 1,000, Stories); Socialinsider TikTok study (+40%, −23% as tier figures); Sacra (0.7%); WKF 2018 Enkamp page (1.6M, fifteen years); Cornell Chronicle (YouTube statement); Metricool LinkedIn (6.2%); Globe and Mail (quotation); SoftwareSeni (AI, X, text-not-video); HypeAuditor Brazil (bodybuilding, language, 1.3M); FeedSpot running (fifteen above 100K, 807K top, 13–70K tail). Remove: the OpenSponsorship profile link.</p>
+<p><strong>Changelog.</strong> 28 Oct 2026 · Audit 1 (Fable 5.1): B1 sampled 7/7 PASS; A2/A6/A9 sampled 1/8 FAIL → full audit, 91 claims, 23 FAIL (15 wrong or unsourced, 8 miscited), 0 STALE; verdict REWRITE of the three deliverables plus §2 table and §4 checkpoint, body errata (23); B2 waits; fresh-checker rule now applies to every later Brand + AI unit; YPP Feb 2027 threshold verified at YouTube Help.</p>
+
+<p class="prov">Audit run 28 Oct 2026, Fable 5.1, method.md §6 prompt verbatim. 98 claims, every cited page opened the same day; five parallel checkers for the full audit, each page fetched directly. This page: design/theme.css inlined (sections 0–2, column and top bar, 4a, 5), no page CSS.</p>
+</article>
+</main>
+
+</body></html>
