@@ -57,7 +57,7 @@ BUILD_LEDE = 'Method, model rules, and the pages that hold the briefs, the audit
 BUILD_PICK = ''
 BUILD_BODY = """<div class="report"><h2>Procedure</h2>
   <p>The Learning Project's <code>method.md</code> is the procedure: one chat per unit, brief from Build · Briefs, unit filed to <code>courses/⟨course-slug⟩/&lt;code&gt;-&lt;slug&gt;.md</code>, hub rebuilt, audit every four units.</p></div>"""
-ORDER_LEDE = '⟨n⟩ units. One row per unit in writing order; an audit row every fourth written unit.'
+ORDER_LEDE = 'One row per unit in writing order; an audit row every fourth written unit.'   # the remaining count is derived by kit/mdcourse.py from ORDER and STATUS; do not type it
 ORDER_NOTES = '<div class="report"><ul><li><strong>Why this order:</strong> ⟨reason⟩.</li></ul></div>'
 ORDER_FOOT = 'The count starts at {start}.'
 BRIEFS_LEDE = 'One brief per unit, self-contained: the shared preamble is baked into every open brief. Copy, paste into a new chat in the Learning Project, one unit per chat. The course itself is read in <a href="#course-{k}">Learn · Course {K}</a>.'

@@ -13,6 +13,16 @@ Needs the `markdown` package (pip install markdown).
 import html as H, re
 import markdown
 
+
+def _words(n):
+    """0–99 as an English word, for ledes."""
+    ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen',
+            'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
+    tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+    if n < 20: return ones[n]
+    if n < 100: return tens[n // 10] + ('' if n % 10 == 0 else '-' + ones[n % 10])
+    return str(n)
+
 e = H.escape
 
 
@@ -138,7 +148,10 @@ def build(m, crumbs, theme, pill_next, chev):
   {d.BUILD_PICK}{d.BUILD_BODY}''', t='How it is built', u=ulabel))
 
     # build order (shared across the data file's courses; numbered as docs/courses-index.md numbers the units)
-    start_n = written - sum(1 for cc, _, _ in d.ORDER if cc in d.STATUS)
+    filed = sum(1 for cc, _, _ in d.ORDER if cc in d.STATUS)
+    start_n = written - filed
+    remaining = len(d.ORDER) - filed   # derived from ORDER and STATUS; never typed in the data file (P15)
+    order_lede = f'{_words(remaining).capitalize()} {"unit remains" if remaining == 1 else "units remain"}. {d.ORDER_LEDE}'
     trs, n = [], start_n
     for row in d.DONE_ROWS:
         trs.append('<tr class="done">' + ''.join(f'<td>{x}</td>' for x in row) + '</tr>')
@@ -153,7 +166,7 @@ def build(m, crumbs, theme, pill_next, chev):
     trs.append(f'<tr class="audit"><td>✓</td><td class="code">{f[0]}</td><td>{f[1]}</td><td>{f[2]}</td><td>{f[3]}</td><td>{f[4]}</td></tr>')
     table = ('<div class="report"><div class="tbl"><table class="order"><thead><tr><th>#</th><th>Unit</th><th>Title</th><th>Model</th><th>Search</th><th>Status</th></tr></thead><tbody>' + ''.join(trs) + '</tbody></table></div></div>')
     P.append(panel(f'{ctx}-order', 'build', f'''
-  <header class="hero">{crumbs(*bc, ('Build order', None))}{eyebrow((ulabel, col), ('BUILD ORDER', None))}<h1>Building order, with models</h1><p class="lede">{d.ORDER_LEDE}</p></header>
+  <header class="hero">{crumbs(*bc, ('Build order', None))}{eyebrow((ulabel, col), ('BUILD ORDER', None))}<h1>Building order, with models</h1><p class="lede">{order_lede}</p></header>
   {d.ORDER_NOTES}{table}<p class="hnote">{d.ORDER_FOOT.format(start=start_n + 1)}</p>''', t='Build order', u=ulabel))
 
     # briefs (this course)

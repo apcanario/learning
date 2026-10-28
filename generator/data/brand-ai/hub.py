@@ -133,7 +133,7 @@ BUILD_BODY = """<div class="report">
   <p class="warn">Audit 1 ran 28 Oct: B1 PASS; A2·A6·A9 REWRITE. The three were rewritten the same day from their briefs, each fresh-checked by Fable 5.1 (A9 2 errors, A2 3, A6 1; all fixed). B2 is next; every unit gets a fresh checker.</p>
 </section>"""
 
-ORDER_LEDE = "Seventeen units remain. One row per unit in writing order; an audit row every fourth written unit. Opus 5.5 writes; Fable 5.1 audits and writes the last deep dive, which needs the chat history. \"Search\" means the unit is written with web search on because its facts are current."
+ORDER_LEDE = "One row per unit in writing order; an audit row every fourth written unit. Opus 5.5 writes; Fable 5.1 audits and writes the last deep dive, which needs the chat history. \"Search\" means the unit is written with web search on because its facts are current."
 ORDER_NOTES = """<div class="report"><ul>
   <li><strong>Why this order:</strong> B1–B4 first so every later brief is cheaper; A1 and A3 next because the Athens edit and the half-marathon season need the positioning and the journey system now; DD-B3 between them (added 28 Oct 2026) so B5, B7 and DD-B1 inherit the practitioners' methods it verifies; B5 beside A3 and B7 beside A5 because they build the same pipeline; A7, A8, B6, B8 once there is a channel to measure; deep dives last, DD-B2 last of all.</li>
   <li><strong>Cadence:</strong> one unit per 3–4 days is the sustainable rate alongside the half-marathon block; that is 10–11 weeks to the end, with audits adding an evening each.</li>
