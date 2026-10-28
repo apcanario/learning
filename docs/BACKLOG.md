@@ -19,12 +19,6 @@ Order decided 28 October 2026 (`academy.md` AD4, reworked after the Brand + AI h
 | 7 | S6 · Rome batch 1 | Opus 5.5 | Clone `apcanario/learning`, `cd kit`, and run `BACKLOG.md` for 11.3, 11.4, 11.5 and 11.6 only (writer, `check.py`, fresh checker, maintainer, `register.py`, bibliography file per report). Build, `verify.py`, publish Academy once. Stop when `review_due.py` reads FABLE REVIEW DUE and say so in the first line. Commit and push. |
 | 8 | Fable review of Rome batch 1 | Fable 5.1 | The `method.md` §6 stratified-sample audit on Rome 11.3, 11.4, 11.5, 11.6; a module failing more than one claim in ten gets the kit scorecard audit (`kit/audits/AUDIT-BRIEF.md`). Then batches 2 to 5 as in `docs/courses-index.md`, a review after each. |
 
-### Housekeeping (confirmed 28 October 2026; one chat)
-
-| # | Rows | Model | Prompt to paste |
-|---|---|---|---|
-| H1 | P14, P15, P12, P1, P3 | Fable 5.1, search off | Clone `apcanario/learning` and run the proposed rows P14, P15, P12, P1 and P3 of `docs/BACKLOG.md`, in that order, each as its own commit. P14: decide the deep-dive rule (two or three per course) and make `hub.py` TEMPLATE_BLOCKS, `generator/data/_template/` and `skills/new-course` say the same thing. P15: `kit/mdcourse.py` derives the remaining-unit count from ORDER and STATUS; delete the typed count from `ORDER_LEDE` in `hub.py`. P12: a screenshot step (`verify.py --shots`, look at the new page at the three widths) in `skills/file-unit` and `skills/new-course`. P1: delete the Knowledge-transfer artifact (Pedro confirmed). P3: find the three fresh-check chats of A2, A6 and A9 (28 Oct 2026, Fable 5.1) in this Project's history and file their reports in `audits/brand-ai/`; if a chat cannot be found, say so and leave its row open. Rebuild and verify Academy if any page changed; publish it (artifact, then `deploy.sh`) only then. Move each finished row to `docs/CHANGELOG.md`, rewrite the Project copies, commit and push. |
-
 ### Brand + AI writing lane (parallel; one unit per chat)
 
 | # | Unit | Model | Prompt |
@@ -41,11 +35,8 @@ Dropped 28 October 2026: S2 (`generator/build_hub.py` exists; A3 absorbs it).
 
 | # | Task | Why | Suggested place |
 |---|---|---|---|
-| P1 (confirmed → H1) | Delete the "Knowledge transfer" artifact (https://claude.ai/artifact/Tgy4URAP8HTf4tPK7GZwfJ) | Its files are in the repo; its own text says delete after use. Pedro held it on 28 Oct: the Brand + AI pipeline still uses it to move files into Project knowledge (handoff, Automation notes) | When knowledge uploads come from the repo |
-| P3 (confirmed → H1) | File the three fresh-check reports of A2, A6, A9 (28 Oct 2026, Fable 5.1) into `audits/brand-ai/` | They exist only in their chats; the hub summarises them (A9 2/15/8, A2 3/13/11, A6 1/9/7) | Any chat that can read those chats, or paste them in |
-| P12 (confirmed → H1) | Desktop and tablet screenshots of each new page in `file-unit` and `new-course` (`verify.py --shots`) as a filing step, so a new unit or course is looked at once at the three widths | P11 made the checks automatic; the look is still only checked by eye when someone runs `--shots`, and the two skills do not say to | Any chat |
-| P14 (confirmed → H1) | Decide whether a course may carry three deep dives: `hub.py` TEMPLATE_BLOCKS ("8–10 core units + 2 deep dives"), `generator/data/_template/` and `skills/new-course` say two; course B now has three (DD-B3) | The syllabus rule and the live syllabus disagree; one line each to change, or DD-B3 is the one exception on record | Any chat; before `new-course` is next used |
-| P15 (confirmed → H1) | Derive `ORDER_LEDE`'s remaining-unit count in `kit/mdcourse.py` from ORDER and STATUS instead of typing it in `hub.py` | It read "Eighteen" with 16 remaining and was retyped to "Seventeen" by hand; the audit-row numbering it sits above was wrong the same way (fixed 28 Oct) | Any chat; A5 at the latest |
+| P17 | Fresh-check reports filed as a filing step: `skills/file-unit` §6 and `skills/audit-units` save the checker's final report as `audits/brand-ai/fresh-check-<code>.md` (front matter per `audits/README.md`) in the same chat, so no later chat has to find it | P3 had to recover three reports from chat history; B2's fresh check (3/10/14) exists only in its chat | Before B-1; one line in each skill |
+| P18 | File B2's fresh-check report (28 Oct 2026, Fable 5.1) in `audits/brand-ai/fresh-check-B2.md` from its chat | Same gap as P3, for the one unit written since | Any chat that can read that chat |
 | P13 | A2 note: `check_page.py` and `verify.py` measure the desktop sidebar on a single-file page; once the shell `fetch`es reports, the desktop and tablet passes must load a report through the shell as the phone pass will | The three-width passes were written against the monolith | A2 |
 
 Done rows are in `CHANGELOG.md`.
