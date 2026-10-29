@@ -22,7 +22,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 
 | Hub | Units since last audit | Next audit | Note |
 |---|---|---|---|
-| Brand + AI | 2 of 4 (Audit 1 ran 28 Oct 2026; B2, A1 since) | after two more written units (Audit 2 after B3, B4) | Audit 1: B1 PASS; A2·A6·A9 REWRITE. Rewritten 28 Oct 2026 as three units, each fresh-checked by Fable 5.1 and fixed (A9 2 errors; A2 3; A6 1). Gate cleared; B2 next. Fresh checker required for every Brand + AI unit (method §1 override). |
+| Brand + AI | 3 of 4 (Audit 1 ran 28 Oct 2026; B2, A1, B3 since) | after one more written unit (Audit 2 after B4) | Audit 1: B1 PASS; A2·A6·A9 REWRITE. Rewritten 28 Oct 2026 as three units, each fresh-checked by Fable 5.1 and fixed (A9 2 errors; A2 3; A6 1). Gate cleared; B2 next. Fresh checker required for every Brand + AI unit (method §1 override). |
 | Personal Mythology | 0 of 4 new modules | after the 4th new Rome module (batch 1: 11.3, 11.4, 11.5, 11.6) | Decision of 28 October 2026: strict four-module cadence per method.md §6; `kit/review_due.py` still counts syllabus units and is to be rewritten (S3). Six Greek reports still flagged from the 27 October review: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (`NEXT-SESSION.md`, S4) |
 
 ## Staleness checks due (search-on units)
@@ -37,7 +37,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 
 ## Brand + AI
 
-Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 3 deep dives; DD-B3 added 28 Oct 2026). 6 of 22 written. A unit is written when its file is in `courses/brand-ai/` (A5: Academy reads it from there). Briefs: each course's Briefs page in Academy (`gen/data/brand-ai/units_data.py`). Build order: the Build order page.
+Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 3 deep dives; DD-B3 added 28 Oct 2026). 7 of 22 written. A unit is written when its file is in `courses/brand-ai/` (A5: Academy reads it from there). Briefs: each course's Briefs page in Academy (`gen/data/brand-ai/units_data.py`). Build order: the Build order page.
 
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
@@ -48,8 +48,8 @@ Two courses for one reader. **A · Building a Marketable Personal Brand** (9 cor
 | 4 | B1 | B | Mental model | written 28 Oct 2026 | Opus 5.5 | on (writer's call: dated product facts) | `courses/brand-ai/B1-mental-model.md` |
 | ✓ | Audit 1 | A+B | Stratified-sample audit of the last four units | run 28 Oct 2026: B1 PASS, A2·A6·A9 REWRITE | Fable 5.1 | on | `audits/brand-ai/audit-1.html` (saved from the artifact) |
 | 5 | B2 | B | Choosing the model | written 28 Oct 2026 (own chat; fresh check Fable 5.1 fix, 3 errors, 10 should-fix, 14 minor, applied; report `audits/brand-ai/fresh-check-B2.md`; figure added 28 Oct, P27: output price per model, §3) | Opus 5.5 | on | `courses/brand-ai/B2-choosing-the-model.md` |
-| 6 | B3 | B | Prompting that holds up | not written · next | Opus 5.5 | off | `courses/brand-ai/B3-prompting-that-holds-up.md` |
-| 7 | B4 | B | Context engineering | not written | Opus 5.5 | off | `courses/brand-ai/B4-context-engineering.md` |
+| 6 | B3 | B | Prompting that holds up | written 29 Oct 2026 (own context; fresh check Fable 5.1 fix, 1 error, 4 should-fix, 9 minor, applied; report `audits/brand-ai/fresh-check-B3.md`) | Opus 5.5 | off | `courses/brand-ai/B3-prompting-that-holds-up.md` |
+| 7 | B4 | B | Context engineering | not written · next | Opus 5.5 | off | `courses/brand-ai/B4-context-engineering.md` |
 | 8 | A1 | A | Positioning: the journey as a format | written 29 Oct 2026 (own context, written out of order beside B3; fresh check Fable 5.1 fix, 1 error, 4 should-fix, 6 minor, applied; report `audits/brand-ai/fresh-check-A1.md`; §6 reads the two vlog episodes by title only, re-run due: BACKLOG B-1a) | Opus 5.5 | off | `courses/brand-ai/A1-positioning-the-journey-as-a-format.md` |
 | ✓ | Audit 2 | A+B | Stratified-sample audit of the last four units | due after #8 | Fable 5.1 | on | hub Audits page |
 | 9 | DD-B3 | B | Deep dive: how the best practitioners use the tool | not written (added 28 Oct 2026) | Opus 5.5 | on | `courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md` |

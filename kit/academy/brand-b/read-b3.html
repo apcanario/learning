@@ -1,0 +1,828 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#brand-b" data-target="brand-b">Course B · Building with AI</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">B3</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI</span> · B3 <span class="pill live">B3</span></div>
+    <h1>Prompting that holds up</h1>
+    <nav class="toc" aria-label="Sections"><a href="#read-b3-0">1 · The four parts of a brief that survives</a><a href="#read-b3-1">2 · Why specificity beats length</a><a href="#read-b3-2">3 · Output contracts</a><a href="#read-b3-3">4 · Why his preferences file works, and why one-line asks sometimes do not</a><a href="#read-b3-4">5 · Common failure patterns</a><a href="#read-b3-5">Deliverable · Prompt library</a><a href="#read-b3-6">Writer's unsure list</a><a href="#read-b3-7">Sources</a></nav>
+  </header>
+  <p class="lede">Unit B3, written 28–29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to confirm sources, quotations and venues); fresh check by Fable 5.1 in a separate context: fix, 1 error, 4 should-fix, 9 minor, all applied. Deliverable: the prompt library, ten templates for his recurring tasks, each with a worked example that can be pasted as it stands; the examples repeat their template's lines on purpose, which is most of the unit's length. Known gaps, from the writer's unsure list: Anthropic's 'up to 30 percent' figure for putting the question last publishes no method; the multi-turn and negation studies tested models from 2022 to 2025, none current; the contrastive-examples evidence is a preprint; the model-specific guides are written for the API, and carrying them into claude.ai chat is the writer's inference.</p>
+  <div class="report"><p>The evidence in this unit is of three kinds, labelled where it appears. <strong>Vendor guidance</strong> is a model maker's own documentation on how to prompt its models (Anthropic, OpenAI, Google): it says what the vendor recommends and almost never shows the measurement behind it. <strong>Research</strong> is peer-reviewed work, or a preprint labelled as one; most of it tested models from 2022 to 2025, and none of it tested Opus 5.5. <strong>His setup</strong> is the Learning Project as it stood on 28 October 2026: his saved preferences, the Project's method files and his voice-drafting skill. The unit was written with search off; searches were used only to confirm sources and their URLs, checked 28–29 October 2026. What a context window is, which layers put text into it, and why every instruction raises a probability without guaranteeing anything are in B1 (§1, §6). Which model and effort each task gets is B2's routing table. This unit assumes both.</p>
+<h2 id="read-b3-0">1 · The four parts of a brief that survives</h2>
+<p>A brief survives when someone with no context can act on it without coming back with a question. Anthropic's prompting guide states the test in those terms. It asks the user to think of Claude as "a brilliant but new employee who lacks context on your norms and workflows", and gives a check to run before sending: "Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they'd be confused, Claude will be too." (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Anthropic, <em>Prompting best practices</em></a>; vendor guidance). Between them, the three vendors' guides read for this unit cover all four parts below, each in its own words and with its own emphasis; none of them presents the four as a set.</p>
+<h3>Who the reader is</h3>
+<p>Two different things travel under the word "role". One is a persona given to the model ("You are an expert editor"). Anthropic says a role set in the system prompt "focuses Claude's behavior and tone for your use case" and that a single sentence makes a difference (same page; vendor guidance). Measured on accuracy, personas did nothing: Zheng and colleagues gave four families of models 162 roles across 2,410 factual questions and found that a persona in the system prompt did not improve performance against a control with none; choosing the best persona per question helped, but picking it automatically did little better than chance (<a target="_blank" rel="noopener" href="https://aclanthology.org/2024.findings-emnlp.888/">Zheng et al., Findings of EMNLP 2024</a>). The two sources measured different things, tone and factual accuracy, so they do not contradict each other. Together they place a persona's documented effect in register. Neither shows it making answers more correct.</p>
+<p>The other meaning is the reader of the output: who will read it, what they already know, and what they will do with it. Anthropic's blog lists "Explaining the purpose or audience for the output" among the cases where context improves results (<a target="_blank" rel="noopener" href="https://claude.com/blog/best-practices-for-prompt-engineering">Claude blog, <em>Best practices for prompt engineering for 2026</em>, 10 Nov 2025</a>; vendor guidance). OpenAI's help-centre article asks the user to "Be specific, descriptive and as detailed as possible about the desired context, outcome, length, format, style, etc" (<a target="_blank" rel="noopener" href="https://help.openai.com/en/articles/6654000">OpenAI Help Center, <em>Best practices for prompt engineering with the OpenAI API</em></a>; vendor guidance). Anthropic gives the mechanism: an instruction that carries its reason lets the model apply the reason to cases the instruction did not name. Its example replaces "NEVER use ellipses" with the reason (the output will be read by a text-to-speech engine that cannot pronounce them) and adds that "Claude can generalize from the explanation" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>). A reader line is that kind of reason, given once for the whole output. His course briefs already carry one: every Brand + AI brief has a Reader line drawn from <code>reader.md</code> (<code>method.md</code> §4, Brief template).</p>
+<h3>What the output is</h3>
+<p>The second part names the artefact, its form and where it will live. Anthropic: "Be specific about the output format and constraints you want" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>). OpenAI: "Articulate the desired output format through examples" (<a target="_blank" rel="noopener" href="https://help.openai.com/en/articles/6654000">OpenAI Help Center</a>). §3 turns this part into a contract.</p>
+<h3>Constraints</h3>
+<p>Constraints are the rules the output must satisfy: what it must contain, what it must leave out, its tone and its limits. Two pieces of vendor guidance shape how they are written.</p>
+<p><strong>State the positive.</strong> Anthropic: "Tell Claude what to do instead of what not to do", replacing "Do not use markdown in your response" with "Your response should be composed of smoothly flowing prose paragraphs." (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>). OpenAI says the same: "Instead of just saying what not to do, say what to do instead" (<a target="_blank" rel="noopener" href="https://help.openai.com/en/articles/6654000">OpenAI Help Center</a>).</p>
+<p><strong>When a prohibition is needed, name the pattern.</strong> Anthropic's guide to Opus 5.5 says that a general instruction such as "avoid a generic AI look" "mostly swaps one default for another", and that the model "responds well to instructions that name specific patterns to avoid" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">Anthropic, <em>Prompting Claude Opus 5.5</em></a>; vendor guidance, written about frontend design). Applying it to prose ("no 'I hope this finds you well'" in place of "avoid corporate tone") is my extension.</p>
+<p>Older research gives a reason to be wary of bare negatives. Jang, Ye and Seo found that on tasks phrased with negation, language models performed worse as they grew larger, the reverse of the usual scaling trend (<a target="_blank" rel="noopener" href="https://proceedings.mlr.press/v203/jang23a.html">Jang et al., Transfer Learning for NLP Workshop, PMLR 203, 2023</a>). The paper was first posted in September 2022 and tested models of that period; it says nothing measured about current Claude models. It supports one habit only: pair every "do not" with the "do" that replaces it.</p>
+<h3>Examples, including negative ones</h3>
+<p>The vendors agree that examples help and disagree on how many.</p>
+<ul>
+<li>Anthropic's documentation: "Include 3–5 examples for best results", each relevant, diverse and wrapped in <code>&lt;example&gt;</code> tags so the model can tell them from instructions (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>).</li>
+<li>Anthropic's blog: "Start with one example (one-shot)", adding more only if the output still misses (<a target="_blank" rel="noopener" href="https://claude.com/blog/best-practices-for-prompt-engineering">Claude blog, 10 Nov 2025</a>).</li>
+<li>Google: "We recommend to always include few-shot examples in your prompts", with two warnings: "if you include too many examples, the model may start to overfit the response to the examples", and the examples should share one structure and format (<a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/prompting-strategies">Google, <em>Prompt design strategies</em>, updated 13 Oct 2026</a>).</li>
+<li>Anthropic's engineering team warns against stuffing "a laundry list of edge cases" into a prompt and recommends instead to "curate a set of diverse, canonical examples" (<a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic, <em>Effective context engineering for AI agents</em>, 29 Sep 2025</a>).</li>
+</ul>
+<p>All four are vendor guidance. The range runs from one example to five, and the deciding variable in all of them is whether the output matches.</p>
+<p>Research says what examples teach. Min and colleagues found that randomly replacing the labels in demonstrations "barely hurts performance" on classification and multiple-choice tasks, consistently over 12 models including GPT-3; what drove the effect was the label space, the distribution of the input text and the format of the sequence (<a target="_blank" rel="noopener" href="https://aclanthology.org/2022.emnlp-main.759/">Min et al., EMNLP 2022</a>). On those tasks a demonstration worked mainly by showing the shape of an answer. My reading for his use: choose an example for its shape (length, structure, register), and expect the shape to be copied, which is Google's overfitting warning seen from the other side.</p>
+<p>Negative examples have thin evidence. None of the vendor pages read for this unit advises putting a labelled bad example into a prompt. Anthropic's Fable 5.1 guide recommends the positive form with a reason attached: add "one complete example of a correct response" with "a sentence explaining why the response is correct" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1">Anthropic, <em>Prompting Claude Fable 5.1</em></a>; vendor guidance, written about quoting retrieved sources). One preprint tested the negative form directly: contrastive chain-of-thought gave models valid and invalid reasoning demonstrations side by side and reported gains on reasoning benchmarks; the abstract gives no figure and no venue was found (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2311.09277">Chia et al., arXiv 2311.09277, 2023</a>; preprint). The rule the library follows is my synthesis of these: a bad example appears only beside a good one, labelled as wrong, with the specific pattern named and the reason it fails.</p>
+<h2 id="read-b3-1">2 · Why specificity beats length</h2>
+<p>Length is a cost, and specificity is what the cost buys. Anthropic's blog lists among common mistakes: "Longer, more complex prompts are NOT always better." (<a target="_blank" rel="noopener" href="https://claude.com/blog/best-practices-for-prompt-engineering">Claude blog, 10 Nov 2025</a>). Its engineering team frames the goal as "finding the smallest possible set of high-signal tokens" and adds that "minimal does not necessarily mean short" (<a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering</a>). The same post describes two ways to miss: engineers "hardcoding complex, brittle logic" at one extreme, "vague, high-level guidance" at the other (same post). All vendor guidance.</p>
+<p><strong>Why extra text costs.</strong> B1 §2 sets out the attention budget and the evidence that recall falls as the window fills. Three studies bear on prompts specifically:</p>
+<ul>
+<li>Levy, Jacoby and Goldberg padded the same reasoning questions with extra text of different lengths, types and positions; reasoning performance degraded "at much shorter input lengths than their technical maximum", in every version of their dataset (<a target="_blank" rel="noopener" href="https://aclanthology.org/2024.acl-long.818/">Levy et al., ACL 2024</a>).</li>
+<li>Shi and colleagues built GSM-IC, school arithmetic problems with irrelevant sentences added, and found that performance "is dramatically decreased when irrelevant information is included"; telling the model to ignore irrelevant information was one of the mitigations that helped (<a target="_blank" rel="noopener" href="https://icml.cc/virtual/2023/poster/24255">Shi et al., ICML 2023</a>; <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2302.00093">arXiv 2302.00093</a>).</li>
+<li>Jaroslawicz and colleagues gave 20 models from seven providers up to 500 keyword-inclusion instructions in one report-writing task; the best frontier models reached 68% accuracy at 500, and models showed a bias towards earlier instructions (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2507.11538">Jaroslawicz et al., arXiv 2507.11538, 2025</a>; a workshop poster at <a target="_blank" rel="noopener" href="https://neurips.cc/virtual/2025/122417">NeurIPS 2025</a>, not the main track).</li>
+</ul>
+<p>These tested models of 2022 to 2025 on tasks unlike his. The direction is the same in all three: material that does not serve the task competes with material that does.</p>
+<p><strong>What specificity means.</strong> Claude Code's documentation gives the working definition: write instructions "concrete enough to verify", such as "Use 2-space indentation" instead of "Format code properly", and it states that the more specific and concise the instructions, the more consistently Claude follows them (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>; vendor guidance, written for <code>CLAUDE.md</code> files). Anthropic's evaluation guide applies the same test to success criteria: "Instead of 'good performance,' specify 'accurate sentiment classification.'" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/test-and-evaluate/develop-tests">Anthropic, <em>Define success criteria and build evaluations</em></a>). A specific instruction is one the output can be checked against. It can be short. "Keep it concise" cannot be checked; "up to three reasons of twelve words or fewer", the decision format in his saved preferences, can.</p>
+<p><strong>Where sources disagree.</strong> OpenAI's API guide says that "reasoning models will provide better results on tasks with only high-level guidance", and that this "differs from GPT models, which benefit from very precise instructions" (<a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/prompt-engineering">OpenAI, <em>Prompt engineering</em></a>). Anthropic's general guide points the other way: "The more precisely you explain what you want, the better the result." (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>). Anthropic's Opus 5.5 guide, though, agrees with OpenAI on one point: in chat applications, instructions telling the model to think carefully before answering can be removed, because the model sets its own amount of thinking and effort is the main control (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">Prompting Claude Opus 5.5</a>). Opus 5.5 and Fable 5.1 think adaptively, always on (B2 §7), which makes them reasoning models in OpenAI's sense; that mapping is mine. My reconciliation: be exact about the output (what it is, who reads it, when it is done), which every source endorses, and leave the route to the model, which is where the reasoning-model guidance points. The templates follow that split: they specify artefacts and checks, and none of them scripts the model's reasoning.</p>
+<h2 id="read-b3-2">3 · Output contracts</h2>
+<p>An output contract is the part of a brief that says what will be handed back. It has three clauses.</p>
+<p><strong>Format.</strong> Anthropic's guide gives three levers: say what to do; use XML tags as format indicators; and match the prompt's own style to the output wanted, since "removing markdown from your prompt can reduce the volume of markdown in the output" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>; vendor guidance). A format clause names the container as well as the layout: a Markdown file in the vault, a message ready to paste, a table in the chat. §4 shows why the container matters in his setup.</p>
+<p><strong>Length rule.</strong> Length targets hold for short outputs and fail for long ones. LIFEBench tested 26 widely used models on length instructions from 16 to 8,192 words in English and Chinese and found that "most models reasonably follow short-length instructions but deteriorate sharply beyond a certain threshold"; the preprint adds that almost all fell short of the maximum output lengths their vendors claim (<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/c84f00ccee3d35cee1901acb0e258dc7-Abstract-Datasets_and_Benchmarks_Track.html">Zhang et al., NeurIPS 2025 Datasets and Benchmarks Track</a>; <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2505.16234">arXiv 2505.16234</a>). Anthropic adds that its latest models are less verbose and "Might skip detailed summaries for efficiency unless prompted otherwise" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>). So a word limit is a usable contract for a caption, a message or an email. For a long piece the contract that holds is structural: one section per item of the brief, each answered, none padded. His method already says this, in its own words: the topic decides, never pad, never cut substance (<code>method.md</code> §4, Length rule). The structural form is my synthesis of the method and the LIFEBench result.</p>
+<p><strong>What done looks like.</strong> Anthropic's prompt-engineering overview assumes three things before any prompting starts: "A clear definition of the success criteria for your use case", "Some ways to empirically test against those criteria", and a first draft (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview">Anthropic, <em>Prompt engineering overview</em></a>). For unattended agents, the Opus 5.5 guide offers the option of stating "the completion condition up front" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">Prompting Claude Opus 5.5</a>); the Fable 5.1 guide's suggested system prompt says the request sets the scope and "the scope is the deliverable: don't quietly narrow, widen, or swap it" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1">Prompting Claude Fable 5.1</a>). All vendor guidance, written for API and agent use; carrying it into chat is my inference. In the library, each template ends with a DONE WHEN list: checks he, or Fable, can run on the output line by line.</p>
+<p>One more clause belongs in any contract that touches facts. Anthropic's hallucination guide recommends giving the model explicit permission to say it does not know, asking it to cite a quote or source for each claim, and having it retract any claim it cannot support with a quote (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">Anthropic, <em>Reduce hallucinations</em></a>; vendor guidance, no figure given). His method already works this way: every unit hands in an unsure list and a Sources list (B1, filed before the rule was enforced, has none), so unverified claims have a sanctioned place to go, and the checker starts from that list (<code>method.md</code> §4, Before handing in).</p>
+<h2 id="read-b3-3">4 · Why his preferences file works, and why one-line asks sometimes do not</h2>
+<h3>The preferences file</h3>
+<p>His saved preferences are account-wide; Anthropic's help centre says instructions saved there are "applied to all of your conversations with Claude" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10185728">Claude Help Center, <em>Understanding Claude's personalization features</em></a>). B1 §6 places them in the window: text present in every chat, with no documented order of precedence against project instructions. Four features of his file match the guidance in §1 to §3 (the Learning Project's setup as of 28 October 2026):</p>
+<ol>
+<li><strong>It is always there.</strong> It does not depend on memory writing it down or on retrieval finding it (B1 §3).</li>
+<li><strong>Its strongest rules can be checked.</strong> Decisions come as a single pick, up to three reasons of twelve words or fewer, and one override line; one question per response, and only when blocked. Each can be verified against the output, which is the Claude Code standard of "concrete enough to verify" (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>), and each sets a short length, the range LIFEBench found models follow (<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/c84f00ccee3d35cee1901acb0e258dc7-Abstract-Datasets_and_Benchmarks_Track.html">Zhang et al., NeurIPS 2025</a>).</li>
+<li><strong>Its prohibitions name patterns.</strong> It bans specific openers and praise for ordinary work, by example, which is the form the Opus 5.5 guide says works (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">Prompting Claude Opus 5.5</a>).</li>
+<li><strong>Some rules carry their reason.</strong> The format rule says outputs are mobile-first because he reads on a phone, so the model can apply the reason to cases the rule does not list (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>, the ellipsis example).</li>
+</ol>
+<p>Its weak lines are the ones that cannot be checked: "concise", or sarcasm "when earned", leave the judgement to the model. And it cannot carry the task. No standing file knows who will read today's output, what it is or when it is done.</p>
+<p>It also contains one live conflict. The preferences send anything with three or more sections to a dark-theme HTML artifact. A course unit has many sections and must be a Markdown file in the vault (<code>method.md</code> §7), and the Project instructions name its <code>.md</code> path. Claude Code's documentation states that when two instructions contradict each other, "Claude may pick one arbitrarily" (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>); it is written about <code>CLAUDE.md</code> files, and applying it to claude.ai is my analogy, since the help centre states no precedence at all (B1 §6). Until the layers are reconciled, which is B4's job, every template whose output collides with a preference says so in its OUTPUT line.</p>
+<h3>One-line asks</h3>
+<p>A one-line ask still arrives in a window holding his preferences and Project instructions. What it lacks is the task's own three parts: the reader, the output and the definition of done. Three documented mechanisms explain what happens next.</p>
+<ul>
+<li><strong>The model takes the verb literally.</strong> Anthropic: "If you say 'can you suggest some changes,' Claude will sometimes provide suggestions rather than implementing them, even if making changes might be what you intended." (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>; vendor guidance). The Sonnet 5.5 guide gives the reverse case: an open-ended request "can start building a presentation, report, or video when you only wanted ideas" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5">Anthropic, <em>Prompting Claude Sonnet 5.5</em></a>).</li>
+<li><strong>Gaps get filled with defaults.</strong> The Opus 5.5 guide says the model "tends to get to work quickly", and that on loosely specified tasks it helps to tell it to look through the relevant sources before acting (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">Prompting Claude Opus 5.5</a>; written about multi-app workflows).</li>
+<li><strong>A brief that arrives in pieces does worse than one complete brief.</strong> Laban and colleagues compared the same tasks given fully specified in a single turn against a simulated conversation in which the same instruction arrives in pieces, one per turn, with no corrections from the user. Across more than 200,000 simulated conversations, every top open- and closed-weight model they tested did worse in the multi-turn setting, "an average drop of 39% across six generation tasks"; the models "make assumptions in early turns and prematurely attempt to generate final solutions, on which they overly rely", and when they take a wrong turn "they get lost and do not recover" (<a target="_blank" rel="noopener" href="https://iclr.cc/virtual/2026/oral/10009147">Laban et al., ICLR 2026</a>; <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2505.06120">arXiv 2505.06120</a>). The paper (posted May 2025) tested 15 models, Claude 3.7 Sonnet, GPT-4.1, o3 and Gemini 2.5 Pro among them; none is a current model.</li>
+</ul>
+<p>The practical rule from the third finding, which the paper itself gives its users (§7.4: consolidate the requirements into one instruction and start a new conversation): when a first answer misses, rewrite the brief with what the miss revealed and start a new chat, instead of correcting in place. His method's one-chat-per-unit rule (<code>method.md</code> §4) applies the same logic at the scale of a course.</p>
+<p>A one-liner is enough when the input fully determines the output and the standing layers already carry tone and format: reformatting, triage, a single lookup. B2 §6 and §8 give the evidence that these are the tasks where model differences stop mattering; that the same tasks tolerate a short prompt is my reading.</p>
+<h2 id="read-b3-4">5 · Common failure patterns</h2>
+<h3>Asking for a plan when he wants the thing</h3>
+<p>The verb of the request sets the artefact (§4, first mechanism). "How should I structure the episode?" asks for advice; "Write the script" asks for the script. His preferences push the model towards acting (no menus, deliver first), but they cannot overturn a request that literally asks for options. Anthropic's guide adds the other half: "If you want Claude to do more than the task strictly requires, explicitly request it rather than relying on the model to infer this from vague prompts." (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>). Fix: the first line of every template is a TASK line that opens with the verb of the artefact and names it.</p>
+<h3>Burying the ask</h3>
+<p>The ask is buried when it sits in the middle of a message, after background and before pasted material. Sources disagree on where it belongs.</p>
+<ul>
+<li>OpenAI's help article: "Put instructions at the beginning of the prompt and use ### or """ to separate the instruction and context" (<a target="_blank" rel="noopener" href="https://help.openai.com/en/articles/6654000">OpenAI Help Center</a>).</li>
+<li>Anthropic, for inputs of 20,000 tokens or more: place long documents at the top and the query at the end; "Queries at the end can improve response quality by up to 30 percent in tests, especially with complex, multidocument inputs." (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>). That figure is vendor data; the page publishes no method, task set or model list behind it.</li>
+<li>OpenAI's API guide: context is "usually best positioned near the end of your prompt" (<a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/prompt-engineering">OpenAI, <em>Prompt engineering</em></a>).</li>
+</ul>
+<p>The research agrees on one point only: the middle is the weak position. Liu and colleagues found recall worst in the middle of long inputs (B1 §2), and IFScale found a bias towards earlier instructions (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2507.11538">Jaroslawicz et al., 2025</a>). The library's layout is my synthesis: a one-line TASK first, material inside tags, and, when the material is long, the TASK repeated as the last line.</p>
+<h3>Stacking unrelated tasks</h3>
+<p>"Write the email, fix the calendar, and draft three captions" is three tasks in one window. Google: "Instead of having many instructions in one prompt, create one prompt per instruction", and for multi-step work, "make each step a prompt" (<a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/prompting-strategies">Google, <em>Prompt design strategies</em></a>; vendor guidance). Anthropic says explicit chaining stays useful "when you need to inspect intermediate outputs or enforce a specific pipeline structure" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>). Three findings above explain the cost: each task's material is irrelevant context for the others (Shi et al.), instruction count degrades adherence (IFScale), and a long mixed window degrades reasoning (Levy et al.). B2 adds a fourth from his own routing table: the three tasks want different models and efforts, and one chat runs them all on one. Fix: one artefact per prompt. Where tasks form a pipeline (journal synthesis, then script, then titles, then email), each step is its own prompt and its output is read before it feeds the next; B5 and B7 build that chain.</p>
+<h2 id="read-b3-5">Deliverable · Prompt library</h2>
+<p>Ten templates for his recurring tasks, as of 28 October 2026. Each is usable on its own.</p>
+<p><strong>How the templates are built.</strong> Every template has the same parts in the same order, each traced to the unit: <strong>TASK</strong> (one line, the artefact's verb: §5), <strong>READER</strong> (§1), <strong>OUTPUT</strong> (the contract: §3), <strong>CONSTRAINTS</strong> (positive first, prohibitions as named patterns: §1), <strong>EXAMPLES</strong> (good, and bad only beside good, labelled with why: §1), <strong>MATERIAL</strong> (pasted inside tags: §5), <strong>DONE WHEN</strong> (checks on the output: §3), and <strong>TASK again</strong> as the last line when the material is long (§5).</p>
+<p><strong>Conventions.</strong></p>
+<ul>
+<li><code>&lt;FILL: …&gt;</code> is a slot filled every time the template is used.</li>
+<li><code>&lt;UNKNOWN: …&gt;</code> in a worked example marks a real value this unit does not have. Replace it before sending; never let the model guess it.</li>
+<li>Tags such as <code>&lt;takes&gt;</code> and <code>&lt;/takes&gt;</code> wrap pasted material, so instructions and material cannot be confused (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>).</li>
+<li>The <strong>Model</strong> line comes from B2's routing table; where B2 has no row, the line says so and the pick is my analogy.</li>
+<li>One template per chat. If the first output misses, change the brief and open a new chat (§4).</li>
+<li>The patterns in each avoid-list are starting choices of mine. Extend them from the first outputs, as Anthropic's Opus 5.5 guide advises for named patterns: "check which styles the first result used instead, and extend the list if needed" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">Prompting Claude Opus 5.5</a>).</li>
+<li>Private details stay generic in the templates; they go in only at the moment of use.</li>
+</ul>
+<h3>1 · Course unit</h3>
+<p><strong>Use when:</strong> starting a Brand + AI unit chat. The <code>write-unit</code> skill holds the procedure; this is the opening message that hands it the job. <strong>Model:</strong> Opus 5.5, high (B2, Course units).</p>
+<pre><code>TASK: Write unit &lt;FILL: code&gt; · &lt;FILL: title&gt; of the Learning Project in full, with its deliverable, in this chat.
+
+READER: Pedro, as docs/reader.md describes him. He reads on his phone, in order, and checks every citation.
+
+BRIEF (verbatim; never reword it):
+&lt;brief&gt;
+&lt;FILL: the full text of generator/data/brand-ai/briefs/&lt;code&gt;-brief.txt, pasted unchanged&gt;
+&lt;/brief&gt;
+
+READ FIRST, IN FULL: skills/write-unit/SKILL.md; docs/method.md; docs/sourcing-standard.md (Part 1 and Part 2); docs/reader.md; the Brand + AI section of docs/courses-index.md; &lt;FILL: the filed units this one points back to&gt;.
+
+OUTPUT: one Markdown file, &lt;FILL: code&gt;-&lt;FILL: slug&gt;.md, starting with the front matter in method.md §7 (model: the model you actually are; search: &lt;FILL: on | off&gt;). Then "# &lt;code&gt; · &lt;title&gt;", then numbered sections answering the brief's items in the brief's order, then "## Deliverable · &lt;name&gt;" built in full, then "## Writer's unsure list" (up to ten numbered claims you could not verify), then "## Sources" (every link cited in the text, and nothing else). This is a file. Do not make an HTML artifact; this overrides the artifact rule in my preferences.
+
+CONSTRAINTS:
+- Search &lt;FILL: on: search first and date every fact that can change | off: search only to verify a specific date, figure or contested point, and to find the real URL of every source you cite&gt;.
+- Cite every number, mechanism and recommendation where it is made, with a link. Label vendor guidance, vendor data, correlational data and anecdote as such. Every number says whose it is.
+- A claim you cannot source is called unsourced or left out, and never enters the deliverable.
+- Quotation marks hold the source's exact words.
+- A pointer to another unit says what that unit actually says; open it first.
+- British spelling. Where an em dash would go, use a colon, comma or semicolon. State things directly; no "not X but Y" sentences. Start with the first section; end with Sources.
+- Nothing private: a private detail is described generically.
+
+DONE WHEN:
+- every item in the brief has its own section, in order;
+- the deliverable is complete and usable without reading the unit;
+- every link in the text is in Sources and every Sources entry is cited;
+- the unsure list exists and has at most ten items.
+
+TASK (again): write unit &lt;FILL: code&gt; in full now.
+</code></pre>
+<p><strong>Worked example · B4, the next unit in the build order</strong> (<code>courses-index.md</code>):</p>
+<pre><code>TASK: Write unit B4 · Context engineering of the Learning Project in full, with its deliverable, in this chat.
+
+READER: Pedro, as docs/reader.md describes him. He reads on his phone, in order, and checks every citation.
+
+BRIEF (verbatim; never reword it):
+&lt;brief&gt;
+&lt;the full text of generator/data/brand-ai/briefs/B4-brief.txt, pasted unchanged: the course preamble, then "Unit B4, Context engineering. Cover: …"&gt;
+&lt;/brief&gt;
+
+READ FIRST, IN FULL: skills/write-unit/SKILL.md; docs/method.md; docs/sourcing-standard.md (Part 1 and Part 2); docs/reader.md; the Brand + AI section of docs/courses-index.md; courses/brand-ai/B1-mental-model.md; courses/brand-ai/B2-choosing-the-model.md; courses/brand-ai/B3-prompting-that-holds-up.md; docs/project-instructions.md and the Project's file list as it stands today (the deliverable audits them).
+
+OUTPUT: one Markdown file, B4-context-engineering.md, starting with the front matter in method.md §7 (model: the model you actually are; search: off). Then "# B4 · Context engineering", then numbered sections answering the brief's items in the brief's order, then "## Deliverable · Project-structure audit" built in full, then "## Writer's unsure list" (up to ten numbered claims you could not verify), then "## Sources" (every link cited in the text, and nothing else). This is a file. Do not make an HTML artifact; this overrides the artifact rule in my preferences.
+
+CONSTRAINTS:
+- Search off: search only to verify a specific date, figure or contested point, and to find the real URL of every source you cite.
+- Cite every number, mechanism and recommendation where it is made, with a link. Label vendor guidance, vendor data, correlational data and anecdote as such. Every number says whose it is.
+- A claim you cannot source is called unsourced or left out, and never enters the deliverable.
+- Quotation marks hold the source's exact words.
+- A pointer to another unit says what that unit actually says; open it first. B1 §6 names the tone rules duplicated between my preferences and the Project instructions; B3 §4 names a conflict between them (the HTML-artifact rule); B4 owns the fix for both.
+- British spelling. Where an em dash would go, use a colon, comma or semicolon. State things directly; no "not X but Y" sentences. Start with the first section; end with Sources.
+- Nothing private: a private detail is described generically.
+
+DONE WHEN:
+- every item in the brief has its own section, in order;
+- the audit lists each layer of the Project with what it holds now and what it should hold;
+- the fix list is ranked by effort, each fix with the file it changes;
+- every link in the text is in Sources and every Sources entry is cited;
+- the unsure list exists and has at most ten items.
+
+TASK (again): write unit B4 in full now.
+</code></pre>
+<h3>2 · Fable audit</h3>
+<p><strong>Use when:</strong> a fresh check, a four-unit stratified-sample audit or a staleness check is due. The audit prompts in <code>method.md</code> §6 and in the <code>audit-units</code> skill §3b are used verbatim; this template is the frame around them. <strong>Model:</strong> Fable 5.1, high (B2, Audits).</p>
+<pre><code>TASK: Run &lt;FILL: the stratified-sample audit of units … | the fresh check of unit … | the staleness check of unit …&gt;. Report; do not edit any unit.
+
+READER: Pedro, who applies each finding as an exact text replacement. A finding he cannot apply without checking it again himself is a failed finding.
+
+MODEL CHECK: you must be Fable 5.1. If you are not, say so in your first line and stop.
+
+READ FIRST: skills/audit-units/SKILL.md; docs/method.md §5 and §6; docs/sourcing-standard.md Part 1 and Part 2; &lt;FILL: the units, from their vault paths&gt;; each unit's writer's unsure list; &lt;FILL: earlier audit or fresh-check reports the prompt names&gt;.
+
+THE AUDIT PROMPT (verbatim; only its {placeholders} filled):
+&lt;audit_prompt&gt;
+&lt;FILL: the prompt from method.md §6 or audit-units §3b&gt;
+&lt;/audit_prompt&gt;
+
+OUTPUT: exactly the output the audit prompt specifies, as Markdown in this chat. Do not make an HTML artifact.
+
+CONSTRAINTS:
+- Open every source before you give it a verdict. A source you cannot open is "unverifiable", never FAIL.
+- Every correction quotes the current text exactly (it must occur once in the unit), gives the replacement text, and gives the source URL.
+- Start each unit from its unsure list.
+- No praise and no summary of the units.
+
+DONE WHEN:
+- every sampled claim has a verdict and a source;
+- the decision rule (more than one FAIL in ten sampled claims means a full audit) has been applied to each unit;
+- the last lines give one verdict per unit.
+</code></pre>
+<p><strong>Worked example · Audit 2</strong> (due after B3 and B4; B2 and A1 are already counted: <code>courses-index.md</code>, Audit counters):</p>
+<pre><code>TASK: Run the stratified-sample audit of units B2, B3, B4 and A1. Report; do not edit any unit.
+
+READER: Pedro, who applies each finding as an exact text replacement. A finding he cannot apply without checking it again himself is a failed finding.
+
+MODEL CHECK: you must be Fable 5.1. If you are not, say so in your first line and stop.
+
+READ FIRST: skills/audit-units/SKILL.md; docs/method.md §5 and §6; docs/sourcing-standard.md Part 1 and Part 2; courses/brand-ai/B2-choosing-the-model.md; courses/brand-ai/B3-prompting-that-holds-up.md; courses/brand-ai/B4-context-engineering.md; courses/brand-ai/A1-positioning-the-journey-as-a-format.md; each unit's writer's unsure list; audits/brand-ai/fresh-check-B2.md, fresh-check-B3.md, fresh-check-B4.md and fresh-check-A1.md (B2's and A1's exist; B3's and B4's once those units are filed).
+
+THE AUDIT PROMPT (verbatim; only its {placeholders} filled):
+&lt;audit_prompt&gt;
+You are auditing four units of a self-study course written by Opus 5.5 for one reader. Units: B2 (courses/brand-ai/B2-choosing-the-model.md), B3 (courses/brand-ai/B3-prompting-that-holds-up.md), B4 (courses/brand-ai/B4-context-engineering.md), A1 (courses/brand-ai/A1-positioning-the-journey-as-a-format.md).
+
+Method, in this order:
+1. For each unit, list its sections. From every section draw one claim that carries a number, a named source, a mechanism or a recommendation. That is the sample; record it before checking anything.
+2. Check each sampled claim against the source the unit cites: open the source; confirm the figure, the date, the sample size and that the claim is what the source says, not a stretch of it. Mark each claim PASS, FAIL (wrong, unsupported, miscited, or invented) or STALE (true when written, superseded now, with the newer figure).
+3. For each unit compute the failure rate. If more than one claim in ten is FAIL, audit that unit in full: every cited claim, same procedure.
+4. Check the deliverable: it exists in full inside the unit, it follows from the unit's evidence, and it is usable without reading the unit.
+5. Check against the course goal and sourcing standard (in the unit's preamble): does the unit move the reader toward the stated outcomes, and is anything in it advice without evidence?
+
+Output: a table per unit (section, claim, source, verdict, note); the failure rate; a verdict per unit (PASS / FULL AUDIT RUN, result / REWRITE with the sections named); the three most consequential errors across the four units in plain language; and one line each for the bibliography (new sources to add, sources to mark failed) and the changelog. Do not fix the units; report.
+&lt;/audit_prompt&gt;
+
+OUTPUT: exactly the output the audit prompt specifies, as Markdown in this chat. Do not make an HTML artifact.
+
+CONSTRAINTS:
+- Open every source before you give it a verdict. A source you cannot open is "unverifiable", never FAIL.
+- Every correction quotes the current text exactly (it must occur once in the unit), gives the replacement text, and gives the source URL.
+- Start each unit from its unsure list.
+- No praise and no summary of the units.
+
+DONE WHEN:
+- every sampled claim has a verdict and a source;
+- the decision rule (more than one FAIL in ten sampled claims means a full audit) has been applied to each unit;
+- the last lines give one verdict per unit.
+</code></pre>
+<h3>3 · Journal synthesis</h3>
+<p><strong>Use when:</strong> turning several weeks of journal entries or voice-note transcripts into one dated record, before scripting or writing the weekly email. <strong>Model:</strong> Opus 5.5, medium (B2, Journal entries, override for synthesis across several weeks).</p>
+<pre><code>TASK: Write one dated record that synthesises my journal entries from &lt;FILL: start date&gt; to &lt;FILL: end date&gt;.
+
+READER: me, later, deciding what to keep doing; and the record a script or an email will be cut from. I need to find what happened, in my own words, with dates.
+
+OUTPUT: Markdown in this chat, in five sections:
+1. What happened: dated bullets, oldest first, one line each.
+2. What I said at the time: exact quotations from the entries, each with its date.
+3. What went wrong: every failure or setback the entries record.
+4. What changed between the first entry and the last.
+5. Open questions: what the entries raise and do not settle.
+
+CONSTRAINTS:
+- Use only the entries below. If it is not in them, it is not in the record.
+- Quote my sentences word for word. Mark any sentence you wrote with [C].
+- Keep every failure at the weight the entries give it. Add no lesson to it.
+- Where two entries disagree, give both, with their dates.
+- Leave out: &lt;FILL: topics that stay out of this record&gt;.
+
+EXAMPLE (shape of one bullet in section 1):
+&lt;example&gt;
+- &lt;date&gt; · &lt;what happened, one line&gt; · "&lt;my sentence from that day's entry&gt;"
+&lt;/example&gt;
+
+BAD EXAMPLE (never write this):
+&lt;bad_example&gt;
+This was a period of real growth, and the setbacks taught valuable lessons.
+Why it is wrong: it summarises a feeling, adds a lesson no entry states, and quotes nothing.
+&lt;/bad_example&gt;
+
+MATERIAL:
+&lt;entries&gt;
+&lt;FILL: the entries, each with its date&gt;
+&lt;/entries&gt;
+
+DONE WHEN:
+- every bullet has a date;
+- every quotation appears word for word in the entries;
+- every failure the entries record is in section 3;
+- nothing appears that the entries do not contain, except lines marked [C].
+
+TASK (again): write the dated record from the entries above.
+</code></pre>
+<p><strong>Worked example · the competition season that ended at the WIKF Global Cup (October 2026):</strong></p>
+<pre><code>TASK: Write one dated record that synthesises my journal entries from &lt;UNKNOWN: date of the first entry of the 2026 competition season&gt; to the WIKF Global Cup in October 2026.
+
+READER: me, later, deciding what to carry from competitive karate into the half-marathon season; and the record the retrospective episode and its weekly email will be cut from. I need to find what happened, in my own words, with dates.
+
+OUTPUT: Markdown in this chat, in five sections:
+1. What happened: dated bullets, oldest first, one line each.
+2. What I said at the time: exact quotations from the entries, each with its date.
+3. What went wrong: every failure or setback the entries record.
+4. What changed between the first entry and the last.
+5. Open questions: what the entries raise and do not settle.
+
+CONSTRAINTS:
+- Use only the entries below. If it is not in them, it is not in the record.
+- Quote my sentences word for word. Mark any sentence you wrote with [C].
+- Keep every failure at the weight the entries give it. Add no lesson to it.
+- Where two entries disagree, give both, with their dates.
+- Leave out: anything about other people beyond their role in a session or a bout.
+
+EXAMPLE (shape of one bullet in section 1):
+&lt;example&gt;
+- &lt;date&gt; · &lt;what happened, one line&gt; · "&lt;my sentence from that day's entry&gt;"
+&lt;/example&gt;
+
+BAD EXAMPLE (never write this):
+&lt;bad_example&gt;
+This was a period of real growth, and the setbacks taught valuable lessons.
+Why it is wrong: it summarises a feeling, adds a lesson no entry states, and quotes nothing.
+&lt;/bad_example&gt;
+
+MATERIAL:
+&lt;entries&gt;
+&lt;UNKNOWN: the season's journal entries and voice-note transcripts, each with its date&gt;
+&lt;/entries&gt;
+
+DONE WHEN:
+- every bullet has a date;
+- every quotation appears word for word in the entries;
+- every failure the entries record is in section 3;
+- nothing appears that the entries do not contain, except lines marked [C].
+
+TASK (again): write the dated record from the entries above.
+</code></pre>
+<h3>4 · YouTube script from dictated takes</h3>
+<p><strong>Use when:</strong> two or more dictated takes exist for an episode and the script has to be cut from them. <strong>Model:</strong> Opus 5.5, medium (B2, Video scripts, "original, with no unit behind it").</p>
+<pre><code>TASK: Cut a script for one long-form episode, &lt;FILL: working title&gt;, from the dictated takes below.
+
+READER: a viewer who has never heard of me and arrives through &lt;FILL: search: they typed a problem | browse or suggested: they saw the thumbnail&gt;. They decide in the first 30 seconds whether the title was true.
+
+OUTPUT: Markdown in this chat:
+1. Hook (first 30 seconds): the lines that make the title true.
+2. Chapters: for each, a one-line purpose, then its lines in order.
+3. Ending: the last line, taken from the takes.
+4. Gaps: anything the episode needs that the takes do not contain (a line I must record, a shot I must film, a claim that needs a source before it goes on camera).
+Mark every line with its origin: [T1], [T2] (take number, with the timestamp if the transcript has one) or [NEW] for any line you wrote.
+Target runtime: &lt;FILL: minutes&gt;.
+
+CONSTRAINTS:
+- Use my sentences from the takes. Reorder and cut freely; rewrite none.
+- A [NEW] line is one sentence at most and bridges two take lines; I rewrite every one.
+- Keep the doubts and failures the takes contain.
+- Avoid: jokes you invented; a closing line about believing in yourself; asking viewers to subscribe; any claim of fact not in the takes.
+
+EXAMPLE (shape of one chapter):
+&lt;example&gt;
+Chapter 2 · &lt;purpose in one line&gt;
+[T1 03:12] "&lt;my sentence&gt;"
+[T2 00:45] "&lt;my sentence&gt;"
+[NEW] &lt;one bridging sentence&gt;
+&lt;/example&gt;
+
+MATERIAL:
+&lt;take_1&gt;
+&lt;FILL: transcript of take 1&gt;
+&lt;/take_1&gt;
+&lt;take_2&gt;
+&lt;FILL: transcript of take 2&gt;
+&lt;/take_2&gt;
+
+DONE WHEN:
+- every line carries an origin mark;
+- the hook makes the working title true within 30 seconds of speech;
+- no [NEW] line is longer than one sentence;
+- every gap is listed.
+
+TASK (again): cut the script from the takes above.
+</code></pre>
+<p>The 30-second hook and the search-or-browse reader come from A6 (§1.2; Playbook, YouTube rules 1 and 2): YouTube's Intro metric measures the first 30 seconds, and high click-through with low view duration is the pattern YouTube's help page describes for clickbait.</p>
+<p><strong>Worked example · the half-marathon season opener</strong> (the episode A3's brief schedules after the karate season):</p>
+<pre><code>TASK: Cut a script for one long-form episode, &lt;UNKNOWN: working title of the season opener&gt;, from the dictated takes below.
+
+READER: a viewer who has never heard of me and arrives through browse or suggested: they saw the thumbnail. They decide in the first 30 seconds whether the title was true.
+
+OUTPUT: Markdown in this chat:
+1. Hook (first 30 seconds): the lines that make the title true.
+2. Chapters: for each, a one-line purpose, then its lines in order.
+3. Ending: the last line, taken from the takes.
+4. Gaps: anything the episode needs that the takes do not contain (a line I must record, a shot I must film, a claim that needs a source before it goes on camera).
+Mark every line with its origin: [T1], [T2] (take number, with the timestamp if the transcript has one) or [NEW] for any line you wrote.
+Target runtime: &lt;UNKNOWN: target minutes; A3's brief gives 10–20 minutes per long-form episode&gt;.
+
+CONSTRAINTS:
+- Use my sentences from the takes. Reorder and cut freely; rewrite none.
+- A [NEW] line is one sentence at most and bridges two take lines; I rewrite every one.
+- Keep the doubts and failures the takes contain. The opener starts from the end of competitive karate; that ending stays in.
+- The goal is a sub-1:45 half marathon in spring or summer 2027. State it once, in my words if the takes have them.
+- Avoid: jokes you invented; a closing line about believing in yourself; asking viewers to subscribe; any claim of fact not in the takes; any training advice.
+
+EXAMPLE (shape of one chapter):
+&lt;example&gt;
+Chapter 2 · &lt;purpose in one line&gt;
+[T1 03:12] "&lt;my sentence&gt;"
+[T2 00:45] "&lt;my sentence&gt;"
+[NEW] &lt;one bridging sentence&gt;
+&lt;/example&gt;
+
+MATERIAL:
+&lt;take_1&gt;
+&lt;UNKNOWN: transcript of the first dictated take&gt;
+&lt;/take_1&gt;
+&lt;take_2&gt;
+&lt;UNKNOWN: transcript of the second dictated take&gt;
+&lt;/take_2&gt;
+
+DONE WHEN:
+- every line carries an origin mark;
+- the hook makes the working title true within 30 seconds of speech;
+- no [NEW] line is longer than one sentence;
+- every gap is listed.
+
+TASK (again): cut the script from the takes above.
+</code></pre>
+<h3>5 · Title and thumbnail options</h3>
+<p><strong>Use when:</strong> a script is final and the episode needs packaging for YouTube's Test &amp; Compare, which takes up to three titles or thumbnails and picks the winner on watch time (<a target="_blank" rel="noopener" href="https://support.google.com/youtube/answer/16391400?hl=en">YouTube Help, <em>A/B test titles &amp; thumbnails</em></a>; A6 §1.2). <strong>Model:</strong> B2 has no row for this task; Sonnet 5.5, low, by analogy with B2's Shōmen-posts row (short public copy).</p>
+<pre><code>TASK: Write three title-and-thumbnail pairs for the episode below, for one Test &amp; Compare run.
+
+READER: &lt;FILL: search viewer: they typed a problem | browse viewer: they have never heard of me&gt;.
+
+OUTPUT: a table in this chat with three rows and four columns: Title | Thumbnail text | Thumbnail style (Swiss-grid recap or sci-fi HUD/glitch) | What the first 30 seconds of the script show that makes this title true (quote the line).
+
+CONSTRAINTS:
+- Each title must be true of the script's first 30 seconds. Quote the line that makes it true.
+- The three pairs take three different angles on the same episode.
+- Thumbnail text: &lt;FILL: word limit&gt;, set in Tomorrow; red #FF2A50 and light blue #54C8FF on near-black; one of the two locked Shōmen styles.
+- English. &lt;FILL: whether one Portuguese variant is wanted&gt;.
+- Avoid: a promise the script does not keep; a question the episode does not answer; "you won't believe", "the truth about", "nobody tells you"; whole titles in capitals; emoji.
+
+EXAMPLES (my register: the titles of my two existing episodes):
+&lt;example&gt;Sometimes You Win, Sometimes You Learn. Mostly It Sucks&lt;/example&gt;
+&lt;example&gt;Being a Better Athlete Made Me a Worse Person&lt;/example&gt;
+
+BAD EXAMPLE (never write this):
+&lt;bad_example&gt;
+The ONE Training Secret Nobody Tells You
+Why it is wrong: it promises a secret the episode does not reveal, uses a banned phrase, and capitalises for volume.
+&lt;/bad_example&gt;
+
+MATERIAL:
+&lt;script&gt;
+&lt;FILL: the final script, hook first&gt;
+&lt;/script&gt;
+
+DONE WHEN:
+- three rows, three different angles;
+- each row quotes the hook line that makes its title true;
+- no avoided pattern appears.
+</code></pre>
+<p><strong>Worked example · the half-marathon season opener:</strong></p>
+<pre><code>TASK: Write three title-and-thumbnail pairs for the episode below, for one Test &amp; Compare run.
+
+READER: browse viewer: they have never heard of me.
+
+OUTPUT: a table in this chat with three rows and four columns: Title | Thumbnail text | Thumbnail style (Swiss-grid recap or sci-fi HUD/glitch) | What the first 30 seconds of the script show that makes this title true (quote the line).
+
+CONSTRAINTS:
+- Each title must be true of the script's first 30 seconds. Quote the line that makes it true.
+- The three pairs take three different angles on the same episode: leaving competition, the new goal, the starting point.
+- Thumbnail text: &lt;UNKNOWN: word limit; A5 covers thumbnails&gt;, set in Tomorrow; red #FF2A50 and light blue #54C8FF on near-black; one of the two locked Shōmen styles.
+- English only.
+- Avoid: a promise the script does not keep; a question the episode does not answer; "you won't believe", "the truth about", "nobody tells you"; whole titles in capitals; emoji; any finishing time the script does not state.
+
+EXAMPLES (my register: the titles of my two existing episodes):
+&lt;example&gt;Sometimes You Win, Sometimes You Learn. Mostly It Sucks&lt;/example&gt;
+&lt;example&gt;Being a Better Athlete Made Me a Worse Person&lt;/example&gt;
+
+BAD EXAMPLE (never write this):
+&lt;bad_example&gt;
+The ONE Training Secret Nobody Tells You
+Why it is wrong: it promises a secret the episode does not reveal, uses a banned phrase, and capitalises for volume.
+&lt;/bad_example&gt;
+
+MATERIAL:
+&lt;script&gt;
+&lt;UNKNOWN: the final script of the season opener, from template 4&gt;
+&lt;/script&gt;
+
+DONE WHEN:
+- three rows, three different angles;
+- each row quotes the hook line that makes its title true;
+- no avoided pattern appears.
+</code></pre>
+<h3>6 · Shōmen post in the two locked styles</h3>
+<p><strong>Use when:</strong> Shōmen has something to post. <strong>Model:</strong> Sonnet 5.5, low (B2, Shōmen posts).</p>
+<pre><code>TASK: Write one Shōmen post about &lt;FILL: subject&gt;, in both locked styles.
+
+READER: people who follow a karate apparel brand on Instagram. They know the sport's vocabulary; they scroll past anything that reads like an advert.
+
+OUTPUT: Markdown in this chat, two versions:
+A · Swiss-grid recap. B · Sci-fi HUD/glitch.
+For each version: (1) on-image text for the 1:1 feed post: a headline, then up to &lt;FILL: number&gt; data lines; (2) on-image text for the 9:16 story; (3) caption; (4) alt text describing the image for a screen reader.
+
+CONSTRAINTS:
+- Brand system: Tomorrow typeface; red #FF2A50 and light blue #54C8FF highlights on near-black. Swiss-grid: facts in aligned rows, no decoration. HUD/glitch: the same facts as readouts.
+- Every fact comes from the material below. An athlete is named only as the material names them.
+- English. &lt;FILL: Portuguese line yes or no&gt;.
+- Avoid: "elevate", "unleash", "level up", "game-changer"; strings of exclamation marks; more than &lt;FILL: number&gt; hashtags.
+
+EXAMPLE (shape of a Swiss-grid data line):
+&lt;example&gt;
+&lt;EVENT&gt; · &lt;CATEGORY&gt; · &lt;RESULT&gt;
+&lt;/example&gt;
+
+MATERIAL:
+&lt;facts&gt;
+&lt;FILL: the facts: event, date, results, people and how they are credited&gt;
+&lt;/facts&gt;
+
+DONE WHEN:
+- both styles, each with feed text, story text, caption and alt text;
+- every fact on the image and in the caption is in the material;
+- no avoided word appears.
+</code></pre>
+<p><strong>Worked example · recap of the WIKF Global Cup (October 2026):</strong></p>
+<pre><code>TASK: Write one Shōmen post recapping the WIKF Global Cup, October 2026, in both locked styles.
+
+READER: people who follow a karate apparel brand on Instagram. They know the sport's vocabulary; they scroll past anything that reads like an advert.
+
+OUTPUT: Markdown in this chat, two versions:
+A · Swiss-grid recap. B · Sci-fi HUD/glitch.
+For each version: (1) on-image text for the 1:1 feed post: a headline, then up to &lt;UNKNOWN: number of data lines the grid holds&gt; data lines; (2) on-image text for the 9:16 story; (3) caption; (4) alt text describing the image for a screen reader.
+
+CONSTRAINTS:
+- Brand system: Tomorrow typeface; red #FF2A50 and light blue #54C8FF highlights on near-black. Swiss-grid: facts in aligned rows, no decoration. HUD/glitch: the same facts as readouts.
+- Every fact comes from the material below. An athlete is named only as the material names them.
+- English only.
+- Avoid: "elevate", "unleash", "level up", "game-changer"; strings of exclamation marks; more than &lt;UNKNOWN: hashtag limit&gt; hashtags.
+
+EXAMPLE (shape of a Swiss-grid data line):
+&lt;example&gt;
+&lt;EVENT&gt; · &lt;CATEGORY&gt; · &lt;RESULT&gt;
+&lt;/example&gt;
+
+MATERIAL:
+&lt;facts&gt;
+Event: WIKF Global Cup, October 2026.
+Venue and dates: &lt;UNKNOWN: venue and exact dates&gt;.
+Results: &lt;UNKNOWN: each result, by category&gt;.
+Shōmen-sponsored athletes: &lt;UNKNOWN: each athlete's name exactly as they agreed to be credited, with their category and result&gt;.
+Post angle: the last competition of my own competitive karate; the athletes carry on.
+&lt;/facts&gt;
+
+DONE WHEN:
+- both styles, each with feed text, story text, caption and alt text;
+- every fact on the image and in the caption is in the material;
+- no avoided word appears.
+</code></pre>
+<h3>7 · Research brief</h3>
+<p><strong>Use when:</strong> a question needs search and synthesis before a decision. <strong>Model:</strong> Opus 5.5, high (B2, Research).</p>
+<pre><code>TASK: Research this question and report what the evidence says: &lt;FILL: question&gt;.
+
+WHY: the answer decides &lt;FILL: the decision it feeds&gt;.
+
+READER: me. I check every citation, and I act on the answer within &lt;FILL: timeframe&gt;.
+
+OUTPUT: Markdown in this chat:
+1. Answer: three sentences at most, with the strength of the evidence stated.
+2. Findings table: Claim | Source (author or organisation, title, date, URL) | Source class | Sample or scope | Date you checked it.
+3. Where sources disagree: each side named, with its source.
+4. Not found: what you searched for and could not source.
+5. Unsure list: up to ten claims you could not verify.
+
+CONSTRAINTS:
+- Source classes, strongest first: peer-reviewed work; official documentation or statements from the body concerned; large-sample datasets (named, with sample size and date); documented cases with verifiable numbers. Label vendor data, correlational data and anecdote as such.
+- Every number says whose figure it is.
+- Quotation marks hold the source's exact words.
+- Date every fact that can change.
+- If a claim cannot be sourced, say so and keep it out of the Answer.
+- Out of scope: &lt;FILL: what not to research&gt;.
+
+DONE WHEN:
+- every row of the table has a working URL you opened;
+- the Answer uses only rows of the table;
+- sections 3, 4 and 5 exist, even if one says "none".
+
+TASK (again): research the question above and report.
+</code></pre>
+<p>The source classes and labels are the course's own sourcing standard (<code>sourcing-standard.md</code> Part 2); the unsure list follows Anthropic's advice to give the model a sanctioned place for what it cannot verify (§3).</p>
+<p><strong>Worked example · structuring the half-marathon block:</strong></p>
+<pre><code>TASK: Research this question and report what the evidence says: for a recreational runner aiming at a sub-1:45 half marathon in spring or summer 2027, what does the evidence say about weekly running volume and the share of it run at higher intensity?
+
+WHY: the answer decides how I structure the weekly training block from now to race day.
+
+READER: me. I check every citation, and I act on the answer within &lt;UNKNOWN: start date of the block&gt;.
+
+OUTPUT: Markdown in this chat:
+1. Answer: three sentences at most, with the strength of the evidence stated.
+2. Findings table: Claim | Source (author or organisation, title, date, URL) | Source class | Sample or scope | Date you checked it.
+3. Where sources disagree: each side named, with its source.
+4. Not found: what you searched for and could not source.
+5. Unsure list: up to ten claims you could not verify.
+
+CONSTRAINTS:
+- Source classes, strongest first: peer-reviewed work; official documentation or statements from the body concerned; large-sample datasets (named, with sample size and date); documented cases with verifiable numbers. Label vendor data, correlational data and anecdote as such.
+- Every number says whose figure it is.
+- Quotation marks hold the source's exact words.
+- Date every fact that can change.
+- If a claim cannot be sourced, say so and keep it out of the Answer.
+- Context: I also train karate and coach each week; my current half-marathon time is &lt;UNKNOWN: most recent half-marathon or 10 km time&gt;.
+- Out of scope: nutrition, body weight, injury treatment, supplements, and any brand's training plan sold as a product.
+
+DONE WHEN:
+- every row of the table has a working URL you opened;
+- the Answer uses only rows of the table;
+- sections 3, 4 and 5 exist, even if one says "none".
+
+TASK (again): research the question above and report.
+</code></pre>
+<h3>8 · Message in his texting voice</h3>
+<p><strong>Use when:</strong> a short message to a named person. The voice rules below are his voice-drafting skill's (the Learning Project's setup as of 28 October 2026), except the cap of one emoji, which is mine; when the skill fires, it also triages stakes. <strong>Model:</strong> Sonnet 5.5, low for routine messages; Opus 5.5, medium for high-stakes ones (B2, Message drafts).</p>
+<pre><code>TASK: Draft one message to &lt;FILL: first name&gt; that &lt;FILL: what it must do: ask, confirm, decline, thank&gt;.
+
+READER: &lt;FILL: who they are to me, in a few words&gt;. Register: &lt;FILL: casual | professional&gt;. Stakes: &lt;FILL: low | medium | high&gt;.
+
+OUTPUT: the message, ready to paste, and nothing else. If stakes are medium, add three lines after it on what could be misread. If stakes are high, stop and tell me to use the voice-drafting skill.
+
+CONSTRAINTS (casual register):
+- lowercase throughout, "i" included; contractions always
+- one flowing block, never split into several texts
+- British-casual phrasing ("fancy grabbing", "sort something out")
+- generous exclamation marks; warm closer ("all the best!", "hope you're good!")
+- no full stop at the end of the message
+- very sparing emoji (at most one)
+- energetic, never try-hard
+
+CONSTRAINTS (professional register):
+- standard capitalisation and punctuation; the point in the first sentence
+- light dry wit only if the relationship is established
+- Portuguese only if they are a Portuguese speaker
+- no emoji, except 👀 or 🙏 with a peer in a casual context
+
+FACTS: use only these. If something the message needs is missing, write [?] in its place.
+&lt;facts&gt;
+&lt;FILL: the facts&gt;
+&lt;/facts&gt;
+
+EXAMPLE (casual register; built from the rules above, not a real message):
+&lt;example&gt;
+hey &lt;name&gt;! fancy grabbing a coffee after training thursday? want to pick your brain about something, nothing serious. hope you're good!
+&lt;/example&gt;
+
+BAD EXAMPLE (never write this):
+&lt;bad_example&gt;
+Hi &lt;name&gt;, I hope this message finds you well. I wanted to reach out regarding a quick question.
+Why it is wrong: capitalised, a stock opener, corporate phrasing, and a full stop at the end.
+&lt;/bad_example&gt;
+
+DONE WHEN: the message follows every rule of its register, contains only the facts given, and is one block.
+</code></pre>
+<p><strong>Worked example · asking a training partner about filming</strong> (filming inside a session is A5's capture method; the image rights of training partners are on A8's brief):</p>
+<pre><code>TASK: Draft one message to &lt;UNKNOWN: training partner's first name&gt; that asks whether they're happy to appear in footage I shoot during &lt;UNKNOWN: day&gt; training.
+
+READER: a training partner at the club. Register: casual. Stakes: low.
+
+OUTPUT: the message, ready to paste, and nothing else.
+
+CONSTRAINTS (casual register):
+- lowercase throughout, "i" included; contractions always
+- one flowing block, never split into several texts
+- British-casual phrasing ("fancy grabbing", "sort something out")
+- generous exclamation marks; warm closer ("all the best!", "hope you're good!")
+- no full stop at the end of the message
+- very sparing emoji (at most one)
+- energetic, never try-hard
+
+FACTS: use only these. If something the message needs is missing, write [?] in its place.
+&lt;facts&gt;
+- the footage is for a YouTube episode about the start of my half-marathon season, with some karate in it
+- saying no is completely fine and i'll keep them out of shot
+- &lt;UNKNOWN: anything else I am offering, e.g. seeing the cut before it goes up&gt;
+&lt;/facts&gt;
+
+EXAMPLE (casual register; built from the rules above, not a real message):
+&lt;example&gt;
+hey &lt;name&gt;! fancy grabbing a coffee after training thursday? want to pick your brain about something, nothing serious. hope you're good!
+&lt;/example&gt;
+
+BAD EXAMPLE (never write this):
+&lt;bad_example&gt;
+Hi &lt;name&gt;, I hope this message finds you well. I wanted to reach out regarding a quick question.
+Why it is wrong: capitalised, a stock opener, corporate phrasing, and a full stop at the end.
+&lt;/bad_example&gt;
+
+DONE WHEN: the message follows every rule of its register, contains only the facts given, and is one block.
+</code></pre>
+<h3>9 · Decision memo</h3>
+<p><strong>Use when:</strong> a choice between options needs a recorded answer. The format is his preferences' decision format. <strong>Model:</strong> B2 has no row for this task; Opus 5.5, medium, by analogy with B2's high-stakes message row (judgement work, cents per run).</p>
+<pre><code>TASK: Decide &lt;FILL: the decision&gt; and write the decision memo.
+
+READER: me now, and me in &lt;FILL: months&gt; checking whether the override has fired.
+
+OUTPUT: Markdown in this chat, in this order:
+1. Door: two-way (reversible, low stakes) or one-way (hard to reverse). If one-way, first a pre-mortem: assume the decision failed by &lt;FILL: date&gt;; give the three likeliest causes.
+2. Pick: &lt;one option&gt;.
+3. Reasons: up to three, twelve words or fewer each, each tied to a numbered fact below.
+4. Override if: one line, a condition I can observe.
+5. Missing facts: any fact that would change the pick, and where to find it.
+
+CONSTRAINTS:
+- One recommendation. No neutral pro and con table; no "it depends".
+- Use only the facts below, cited by number.
+- A two-way door gets a fast, good-enough pick.
+
+MATERIAL:
+&lt;options&gt;
+&lt;FILL: the options&gt;
+&lt;/options&gt;
+&lt;facts&gt;
+&lt;FILL: numbered facts, each with its source&gt;
+&lt;/facts&gt;
+
+DONE WHEN: one pick; every reason cites a fact; the override can be observed without asking anyone.
+</code></pre>
+<p><strong>Worked example · claude.ai plan, given the audit load:</strong></p>
+<pre><code>TASK: Decide which claude.ai plan to be on for the rest of the Brand + AI build, and write the decision memo.
+
+READER: me now, and me in three months checking whether the override has fired.
+
+OUTPUT: Markdown in this chat, in this order:
+1. Door: two-way (reversible, low stakes) or one-way (hard to reverse). If one-way, first a pre-mortem: assume the decision failed by 31 January 2027; give the three likeliest causes.
+2. Pick: &lt;one option&gt;.
+3. Reasons: up to three, twelve words or fewer each, each tied to a numbered fact below.
+4. Override if: one line, a condition I can observe.
+5. Missing facts: any fact that would change the pick, and where to find it.
+
+CONSTRAINTS:
+- One recommendation. No neutral pro and con table; no "it depends".
+- Use only the facts below, cited by number.
+- A two-way door gets a fast, good-enough pick.
+
+MATERIAL:
+&lt;options&gt;
+Pro; Max 5x; Max 20x.
+&lt;/options&gt;
+&lt;facts&gt;
+1. Current plan: &lt;UNKNOWN: my current plan&gt;.
+2. Pro is $20 a month billed monthly, $17 a month billed annually; Max is $100 a month for five times Pro's usage per session and $200 for twenty times (B2 §2, from claude.com/pricing and the Max plan help article, 28 Oct 2026).
+3. On Pro, Fable 5.1 sits outside the plan's limits and runs on usage credits, billed at API rates: $10 input and $50 output per million tokens (B2 §2 and §3).
+4. On Max, up to half of the weekly limit may go to Fable at no extra cost; Fable uses the pool faster than other models (B2 §2).
+5. Every Brand + AI unit now gets a Fable fresh check, and every four units a Fable sample audit (method.md §1 and §6).
+6. Units still to write: &lt;UNKNOWN: count from courses-index.md on the day&gt;.
+7. My Fable spend on usage credits last month: &lt;UNKNOWN: from claude.ai billing&gt;.
+&lt;/facts&gt;
+
+DONE WHEN: one pick; every reason cites a fact; the override can be observed without asking anyone.
+</code></pre>
+<h3>10 · Weekly email</h3>
+<p><strong>Use when:</strong> the week's material exists (a journal record from template 3, an episode or post) and the weekly email is due. <strong>Model:</strong> Sonnet 5.5, low. <code>method.md</code> §4 lists "emails from a finished unit" among the derivative work it gives to Sonnet and Haiku; treating an email cut from a finished journal record as the same kind of job is my reading, and low effort is by analogy with B2's Shōmen-posts row.</p>
+<pre><code>TASK: Write this week's email, for &lt;FILL: send date&gt;, from the material below.
+
+READER: subscribers to the list. Some follow one journey only; all of them chose to get this in their inbox.
+
+OUTPUT: in this chat: one subject line and one alternative; then the body, &lt;FILL: word limit&gt; words or fewer; links as plain web links, one per item.
+Body order: (1) the lead journey, &lt;FILL: which&gt;, what happened this week, in my words; (2) one line on each other live journey, only if something moved; (3) this week's episode or post, with its link. Nothing else.
+
+CONSTRAINTS:
+- Everything comes from the material. Quote me where the material has my words.
+- Failures and missed weeks stay in, stated plainly.
+- Avoid: "I hope you're well"; "exciting news"; any line asking for shares; motivational sign-offs; Shōmen promotion beyond &lt;FILL: what, if anything&gt;.
+- British English.
+
+MATERIAL:
+&lt;journal_record&gt;
+&lt;FILL: the week's dated record, from template 3&gt;
+&lt;/journal_record&gt;
+&lt;links&gt;
+&lt;FILL: episode or post URLs&gt;
+&lt;/links&gt;
+
+DONE WHEN: one lead journey; the word limit is met; every link works; every fact is in the material.
+
+TASK (again): write this week's email from the material above.
+</code></pre>
+<p><strong>Worked example · the first email of the half-marathon season:</strong></p>
+<pre><code>TASK: Write this week's email, for &lt;UNKNOWN: send date; A3's brief starts its calendar on 3 November 2026&gt;, from the material below.
+
+READER: subscribers to the list. Some follow one journey only; all of them chose to get this in their inbox.
+
+OUTPUT: in this chat: one subject line and one alternative; then the body, &lt;UNKNOWN: word limit; A3's brief calls it "one short weekly email"&gt; words or fewer; links as plain web links, one per item.
+Body order: (1) the lead journey, the half marathon, what happened this week, in my words; (2) one line on each other live journey (karate coaching, the history course), only if something moved; (3) this week's episode, with its link. Nothing else.
+
+CONSTRAINTS:
+- Everything comes from the material. Quote me where the material has my words.
+- Failures and missed weeks stay in, stated plainly. Competitive karate has ended; say so once if the material does.
+- Avoid: "I hope you're well"; "exciting news"; any line asking for shares; motivational sign-offs; any Shōmen promotion.
+- British English.
+
+MATERIAL:
+&lt;journal_record&gt;
+&lt;UNKNOWN: this week's dated record, from template 3&gt;
+&lt;/journal_record&gt;
+&lt;links&gt;
+&lt;UNKNOWN: URL of the season-opener episode&gt;
+&lt;/links&gt;
+
+DONE WHEN: one lead journey; the word limit is met; every link works; every fact is in the material.
+
+TASK (again): write this week's email from the material above.
+</code></pre>
+<h2 id="read-b3-6">Writer's unsure list</h2>
+<p>Fresh check 29 Oct 2026 (Fable 5.1): fix · 1 error, 4 should-fix, 9 minor; all applied (the rendering finding by a <code>theme.css</code> rule; the optional cut of repeated template lines not taken, so each worked example stays paste-ready); report <code>audits/brand-ai/fresh-check-B3.md</code>.</p>
+<ol>
+<li><strong>Anthropic's "up to 30 percent" figure</strong> for queries placed after long documents is vendor data with no published method, task set or model list on the page; it is reported as such and nothing in the library depends on the number.</li>
+<li><strong>Laban et al.:</strong> the paper names 15 models (Claude 3.7 Sonnet, GPT-4.1, o3, Gemini 2.5 Pro among them) and its multi-turn setting reveals a fixed instruction one piece per turn with no user corrections (fresh check, 29 Oct 2026). Whether the 39% average drop holds for Opus 5.5 or Fable 5.1 is untested.</li>
+<li><strong>Jang et al. (negated prompts)</strong> is a 2023 workshop paper on models of 2022; the inverse-scaling result may not hold for current models. It is used only to support pairing each prohibition with a positive instruction.</li>
+<li><strong>Contrastive chain-of-thought (Chia et al.)</strong> is cited as an arXiv preprint; I found no venue, and the abstract reports no figures. It is the only direct evidence for negative examples in the unit.</li>
+<li><strong>IFScale (Jaroslawicz et al.)</strong> is a NeurIPS 2025 workshop poster, not a main-track paper; its 500 keyword-inclusion instructions are far denser than any of his prompts, so the size of the effect at his scale is unknown.</li>
+<li><strong>The conflict between his preferences' HTML-artifact rule and the Markdown unit format</strong> is observed from the two texts; how the model resolves it in practice is undocumented, and the Claude Code statement that Claude "may pick one arbitrarily" is applied to claude.ai by analogy.</li>
+<li><strong>Anthropic's model-specific prompting pages</strong> (Opus 5.5, Fable 5.1, Sonnet 5.5) are written for API and agent use; carrying their advice into claude.ai chat is my inference throughout.</li>
+<li><strong>OpenAI's help-centre article</strong> shows no publication or update date (only a relative "updated" label), so how current its advice is for OpenAI's present models could not be established.</li>
+<li><strong>Model lines for title options, decision memos and the weekly email's effort level</strong> have no B2 row; they are my analogies from neighbouring rows and are marked as such.</li>
+<li><strong>Rendering:</strong> the templates are indented code blocks so their angle-bracket placeholders survive the Markdown build. <code>design/theme.css</code> has no rule for <code>pre</code> inside <code>.report</code>, so long template lines may scroll sideways on a phone; any fix belongs in <code>theme.css</code> (design rule). Resolved at filing, 29 Oct 2026: <code>theme.css</code> §4a now wraps a unit's code blocks inside the column.</li>
+</ol>
+<h2 id="read-b3-7">Sources</h2>
+<p>All web sources checked 28–29 October 2026.</p>
+<ul>
+<li>Anthropic. <em>Prompting best practices</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices</li>
+<li>Anthropic. <em>Prompt engineering overview</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview</li>
+<li>Anthropic. <em>Prompting Claude Opus 5.5</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5</li>
+<li>Anthropic. <em>Prompting Claude Fable 5.1</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1</li>
+<li>Anthropic. <em>Prompting Claude Sonnet 5.5</em>. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5</li>
+<li>Anthropic. <em>Define success criteria and build evaluations</em>. Claude Platform docs. https://platform.claude.com/docs/en/test-and-evaluate/develop-tests</li>
+<li>Anthropic. <em>Reduce hallucinations</em>. Claude Platform docs. https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations</li>
+<li>Anthropic. <em>Effective context engineering for AI agents</em>. Anthropic Engineering, 29 September 2025. https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</li>
+<li>Claude blog. <em>Best practices for prompt engineering for 2026</em>. 10 November 2025. https://claude.com/blog/best-practices-for-prompt-engineering</li>
+<li>Claude Code docs. <em>How Claude remembers your project</em> (Memory). https://code.claude.com/docs/en/memory</li>
+<li>Claude Help Center. <em>Understanding Claude's personalization features</em>. https://support.claude.com/en/articles/10185728</li>
+<li>OpenAI Help Center. <em>Best practices for prompt engineering with the OpenAI API</em> (article 6654000). https://help.openai.com/en/articles/6654000</li>
+<li>OpenAI. <em>Prompt engineering</em>. OpenAI API docs. https://developers.openai.com/api/docs/guides/prompt-engineering</li>
+<li>Google. <em>Prompt design strategies</em>. Gemini API docs, last updated 13 October 2026. https://ai.google.dev/gemini-api/docs/prompting-strategies</li>
+<li>YouTube Help. <em>A/B test titles &amp; thumbnails</em> (answer 16391400). https://support.google.com/youtube/answer/16391400?hl=en</li>
+<li>Zheng, M., Pei, J., Logeswaran, L., Lee, M. and Jurgens, D. "When 'A Helpful Assistant' Is Not Really Helpful: Personas in System Prompts Do Not Improve Performances of Large Language Models". <em>Findings of the Association for Computational Linguistics: EMNLP 2024</em>, 15126–15154. https://aclanthology.org/2024.findings-emnlp.888/</li>
+<li>Min, S., Lyu, X., Holtzman, A., Artetxe, M., Lewis, M., Hajishirzi, H. and Zettlemoyer, L. "Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?". <em>Proceedings of EMNLP 2022</em>, 11048–11064. https://aclanthology.org/2022.emnlp-main.759/</li>
+<li>Jang, J., Ye, S. and Seo, M. "Can Large Language Models Truly Understand Prompts? A Case Study with Negated Prompts". <em>Proceedings of the 1st Transfer Learning for Natural Language Processing Workshop</em>, PMLR 203 (2023), 52–62. https://proceedings.mlr.press/v203/jang23a.html</li>
+<li>Chia, Y. K., Chen, G., Tuan, L. A., Poria, S. and Bing, L. "Contrastive Chain-of-Thought Prompting". arXiv 2311.09277, 2023 (preprint). https://arxiv.org/abs/2311.09277</li>
+<li>Levy, M., Jacoby, A. and Goldberg, Y. "Same Task, More Tokens: the Impact of Input Length on the Reasoning Performance of Large Language Models". <em>Proceedings of the 62nd Annual Meeting of the ACL (Volume 1: Long Papers)</em>, 2024, 15339–15353. https://aclanthology.org/2024.acl-long.818/</li>
+<li>Shi, F., Chen, X., Misra, K., Scales, N., Dohan, D., Chi, E., Schärli, N. and Zhou, D. "Large Language Models Can Be Easily Distracted by Irrelevant Context". ICML 2023. https://icml.cc/virtual/2023/poster/24255 · arXiv 2302.00093: https://arxiv.org/abs/2302.00093</li>
+<li>Jaroslawicz, D., Whiting, B., Shah, P. and Maamari, K. "How Many Instructions Can LLMs Follow at Once?". arXiv 2507.11538, 2025; poster at the NeurIPS 2025 workshop <em>Evaluating the Evolving LLM Lifecycle</em>. https://arxiv.org/abs/2507.11538 · https://neurips.cc/virtual/2025/122417</li>
+<li>Laban, P., Hayashi, H., Zhou, Y. and Neville, J. "LLMs Get Lost In Multi-Turn Conversation". ICLR 2026 (oral). https://iclr.cc/virtual/2026/oral/10009147 · arXiv 2505.06120: https://arxiv.org/abs/2505.06120</li>
+<li>Zhang, W. et al. "LIFEBench: Evaluating Length Instruction Following in Large Language Models". NeurIPS 2025, Datasets and Benchmarks Track. https://proceedings.neurips.cc/paper_files/paper/2025/hash/c84f00ccee3d35cee1901acb0e258dc7-Abstract-Datasets_and_Benchmarks_Track.html · arXiv 2505.16234: https://arxiv.org/abs/2505.16234</li>
+<li>Learning Project files cited by name: <code>method.md</code> §1, §4, §6, §7; <code>sourcing-standard.md</code> Part 2; <code>reader.md</code>; <code>courses-index.md</code>; <code>skills/write-unit/SKILL.md</code>; <code>skills/audit-units/SKILL.md</code>; B1 · Mental model (<code>B1-mental-model.md</code>) §1, §2, §3, §6; B2 · Choosing the model (<code>B2-choosing-the-model.md</code>) §2, §3, §6, §7, §8 and Deliverable; A6 · How growth works, per platform (<code>A6-how-growth-works-per-platform.md</code>) §1.2 and Deliverable 1. The Learning Project's setup as of 28 October 2026 (saved preferences, voice-drafting skill, Shōmen brand system) is cited as observed, not as a published source.</li>
+</ul></div>
+  <div class="pager"></div>

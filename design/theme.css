@@ -22,7 +22,7 @@
       layout below 768 px is the one every rule above describes and does not change
    7  Interaction: hover and pressed states for every clickable thing, on devices
       that can hover; equal-height catalogue cards with the button on one line
-   Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
+   Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -171,6 +171,9 @@ main{max-width:700px;margin:0 auto;padding-block:22px 60px;padding-left:max(16px
 .report th{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--card)}
 .report tr:last-child td{border-bottom:0}
 pre.tree{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-family:var(--mono);font-size:12.5px;line-height:1.5;margin:0 0 16px}
+/* a Markdown unit's code block (a prompt template, a file listing): wraps inside the column, never widens the page (29 Oct 2026, B3) */
+.report pre:not(.tree){background:var(--code);border:1px solid var(--line);border-radius:0;padding:12px;margin:0 0 16px;white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--mono);font-size:12.5px;line-height:1.55;max-width:100%}
+.report pre:not(.tree) code{background:none;border:0;padding:0;font-size:inherit;white-space:inherit}
 /* disagreement box: red edge, names on both sides */
 .dispute{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:8px;padding:12px 14px;margin:0 0 16px;font-size:15px}
 .dispute strong{color:var(--red)}
