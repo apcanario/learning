@@ -8,7 +8,7 @@
 
 **Publishing.** Academy is one site: `kit/academy/`, a shell page plus one file per report, syllabus, briefs and bibliography page → the artifact https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (read it first, publish once with its url, the shell as the page and the fetched files `kit/publish_files.py` lists as `files`, never a new artifact, never forced), then `kit/deploy.sh` → https://apcanario.github.io/academy/. Both, every time.
 
-**One chat per unit.** Each unit is written in its own new chat, from its brief, with its deliverable in that same chat. Never reuse a chat across units. Audits and filing get their own chats.
+**One chat per unit.** Each unit is written in its own new chat, from its brief, with its deliverable in that same chat. Never reuse a chat across units. Audits and filing get their own chats. An isolated agent context counts as its own chat (decided 29 Oct 2026, P31): one chat may run several units if each is written by a fresh agent on the named model that sees only its brief and the filed units, each fresh check is a separate agent that has not seen the writing, and the chat itself only files; the changelog row says so.
 
 **Models.** Writing: Opus 5.5. Audit: Fable 5.1. Exceptions are named in the build order. Record the model that actually wrote each unit.
 

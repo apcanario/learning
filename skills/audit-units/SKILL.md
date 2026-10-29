@@ -9,7 +9,7 @@ Audits check what Opus wrote. They report; they never edit a unit. The procedure
 
 ## 1. Check you may run
 - The audit runs on Fable 5.1. If you are not Fable 5.1, say so in your first line and stop.
-- This is a new chat, used for nothing else.
+- This is a new chat, or an isolated agent context, used for nothing else (method §4, P31).
 - Open `courses-index.md` and identify the audit:
   - **Stratified-sample audit:** the four units written in one hub since its last audit (Brand + AI counts A and B together; Personal Mythology counts its new modules). Never mix hubs in one audit.
   - **Staleness check:** one search-on unit whose six-month date has come.
@@ -27,7 +27,7 @@ If a unit is missing, ask for it; do not audit from memory.
 - **Staleness check:** use the "Staleness check" prompt in `method.md` §6 exactly as written. Search today for every fact in the unit that can change.
 
 ## 3b. Fresh check of one Brand + AI unit (in force since Audit 1, 28 Oct 2026)
-A new Fable 5.1 chat per unit, before filing, that has not seen the unit written. Paste this prompt, then the unit's full text:
+A new Fable 5.1 chat (or isolated agent context) per unit, before filing, that has not seen the unit written. Paste this prompt, then the unit's full text:
 
 > Fresh check of one Brand + AI unit (method.md §5; the §1 override now requires a fresh checker for every Brand + AI unit). You have not seen this unit written. Do not edit it; report. Read sourcing-standard.md Part 1 and Part 2, the unit's brief in units_data.py, and the Audit 1 report (artifact https://claude.ai/artifact/2uA7uLCuUAGRZuUoywpaRj) for the errata it had to apply. Then: (1) Coverage: every item the brief names, covered / thin / missing. (2) Accuracy: open every source the unit cites for a number, a date, a named dataset or an attribution, with live search; confirm the figure, date, sample size and that the claim is what the source says, not a stretch of it; label each PASS / FAIL / unverifiable. Start from the writer's unsure list at the end of the unit. (3) Figures: every number says whose figure it is. (4) Labels: anecdote, vendor and correlational data labelled. (5) Deliverable: present in full, follows from the evidence, usable alone. (6) Errata applied: each Audit 1 erratum that touches this unit is actually applied; pointers to other written units (B1, B2, A9, A2, A6 in the Project knowledge) say what those units say. Output: a findings list, one per line: [error | should-fix | minor] [accuracy | attribution | figure | label | coverage | deliverable | style] section; Current: exact quoted text; Problem; Fix: exact replacement text; Basis: source with URL. Then Confirmed: claims checked and found right, one per line with source. Then one line: unit code, verdict keep | fix | rewrite (keep = no errors; fix = a list of edits fixes it; rewrite = more than three errors), counts by severity. The unit's full text follows.
 

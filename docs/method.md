@@ -97,7 +97,7 @@ Per course:
 ## 4 · Writing a unit
 
 ### One chat per unit
-Open a new chat in the Learning Project for each unit. Paste the unit's brief (§4, Brief template). Never reuse a chat across units; leaked context is how a course starts repeating itself. The deliverable is written in the same chat as its unit, never separately, so it inherits the unit's reasoning.
+Open a new chat in the Learning Project for each unit. Paste the unit's brief (§4, Brief template). Never reuse a chat across units; leaked context is how a course starts repeating itself. An isolated agent context counts as a new chat (P31, 29 Oct 2026): a chat may orchestrate several units when each is written by a fresh agent on the named model, given only its brief and paths to filed units, each fresh check is a separate agent that has not seen the writing, and the orchestrating chat only files (vault, course data, build, publish). The changelog row names the arrangement. The deliverable is written in the same chat as its unit, never separately, so it inherits the unit's reasoning.
 
 ### Models
 Writing: **Opus 5.5**. Audit: **Fable 5.1**. Exceptions are named in the build order (Brand + AI DD-B2 is written by Fable 5.1 because it reviews the chat history). Sonnet and Haiku are for derivative work only (posts, Shorts lists, emails from a finished unit), never units or audits. The model that actually wrote a unit is recorded in its header and in `courses-index.md`. Personal Mythology's provenance rule still holds inside the kit: `register.py` records the model, and anything not written or reviewed with Fable 5.1 is flagged for Fable review.
