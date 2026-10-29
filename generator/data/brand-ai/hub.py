@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v8.0 · 29 Oct 2026'
+VERSION = 'v8.1 · 29 Oct 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -66,6 +66,9 @@ READINGS = [
     dict(id='read-a1', course='A',
          title='Positioning: the journey as a format', covers=['A1'], name='A1 · Positioning',
          intro="Unit A1, written 28–29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to verify the five creators' counts and About texts, the name and character rules and which handles are taken; each dated); fresh check by Fable 5.1 in a separate context: fix, 1 error, 4 should-fix, 6 minor, all applied. Deliverable: the positioning statement (one sentence and a 60-word expansion), three channel-name options with one pick, and the YouTube description and Instagram bio in full. §6 rewritten on 29 Oct 2026 from the two episodes themselves (channel @apcanario, read in Chrome with YouTube's auto-generated captions; evidence in audits/brand-ai/evidence/), with the pick changed to keep the handle @apcanario; fresh check of the revision by Fable 5.1: fix, 1 error, 1 should-fix, 3 minor, all applied. Known gaps, from the writer's unsure list: §6 rests on machine captions, one stretch of episode 2 unread; Instagram's character limits rest on third-party pages; the method-versus-topic evidence is one vendor's survivor sample and the brand-extension literature."),
+    dict(id='read-b5', course='B',
+         title='Skills and automation', covers=['B5'], name='B5 · Skills and automation',
+         intro="Unit B5, written 29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to verify Anthropic's Agent Skills, Claude Code and Help Center pages, GitHub's file limits and YouTube's title limit); fresh check by Fable 5.1 in a separate context: fix, 1 error, 4 should-fix, 5 minor, all applied (the error: claude.ai skills do reach his cloud sessions and scheduled tasks, by the Claude Code docs, which the developer docs contradict; both are now given). What a skill is, how triggering works and why the description carries it, how his 19 installed skills fire (counts by script), scheduled tasks and their limits, the GitHub vault and pcblueprint as backends, and skill versus saved preference. Deliverable: the journey-chain skill in full (SKILL.md, a quotation-check script, install steps for claude.ai and Claude Code, a 16-request trigger test set, a weekly scheduled task, done-when), following A3 where it revised the brief. Known gaps, from the writer's unsure list: claude.ai's description limit (200 or 1,024 characters) was not tested; trigger reliability has no published figure; pcblueprint's endpoints and exposure are undocumented; the journey repository does not exist yet; scheduled tasks are in research preview."),
     dict(id='read-b3', course='B',
          title='Prompting that holds up', covers=['B3'], name='B3 · Prompting that holds up',
          intro="Unit B3, written 28–29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to confirm sources, quotations and venues); fresh check by Fable 5.1 in a separate context: fix, 1 error, 4 should-fix, 9 minor, all applied. Deliverable: the prompt library, ten templates for his recurring tasks, each with a worked example that can be pasted as it stands; the examples repeat their template's lines on purpose, which is most of the unit's length. Known gaps, from the writer's unsure list: Anthropic's 'up to 30 percent' figure for putting the question last publishes no method; the multi-turn and negation studies tested models from 2022 to 2025, none current; the contrastive-examples evidence is a preprint; the model-specific guides are written for the API, and carrying them into claude.ai chat is the writer's inference."),
@@ -86,11 +89,11 @@ READINGS = [
 # ---- build order -----------------------------------------------------------------------
 DONE_ROWS = [('—', 'A2 · A6 · A9', 'Audience growth research → rewritten as three units after Audit 1', 'research: Fable 5.1 agents; units: Opus 5.5, fresh-checked by Fable 5.1', 'on', 'rewritten 28 Oct')]
 ORDER = [("B1", "Opus 5.5", "off"), ("B2", "Opus 5.5", "on"), ("B3", "Opus 5.5", "off"), ("B4", "Opus 5.5", "off"), ("A1", "Opus 5.5", "off"), ("DD-B3", "Opus 5.5", "on"), ("A3", "Opus 5.5", "off"), ("B5", "Opus 5.5", "off"), ("A4", "Opus 5.5", "off"), ("A5", "Opus 5.5", "off"), ("B7", "Opus 5.5", "off"), ("A7", "Opus 5.5", "off"), ("A8", "Opus 5.5", "on"), ("B6", "Opus 5.5", "off"), ("B8", "Opus 5.5", "on"), ("DD-A1", "Opus 5.5", "on"), ("DD-B1", "Opus 5.5", "off"), ("DD-A2", "Opus 5.5", "off"), ("DD-B2", "Fable 5.1", "off")]
-STATUS = {'B1': 'written 28 Oct', 'A9': 'rewritten 28 Oct', 'A2': 'rewritten 28 Oct', 'A6': 'rewritten 28 Oct', 'B2': 'written 28 Oct', 'A1': 'written 29 Oct', 'B3': 'written 29 Oct', 'B4': 'written 29 Oct', 'DD-B3': 'written 29 Oct', 'A3': 'written 29 Oct'}   # unit code -> status text in the build-order table once filed
+STATUS = {'B1': 'written 28 Oct', 'A9': 'rewritten 28 Oct', 'A2': 'rewritten 28 Oct', 'A6': 'rewritten 28 Oct', 'B2': 'written 28 Oct', 'A1': 'written 29 Oct', 'B3': 'written 29 Oct', 'B4': 'written 29 Oct', 'DD-B3': 'written 29 Oct', 'A3': 'written 29 Oct', 'B5': 'written 29 Oct'}   # unit code -> status text in the build-order table once filed
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
 FINAL_AUDIT = ('Audit 6', 'Final audit of DD-B2 plus a full read of both courses against their goals', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'B5', 2, 'Audit 3 after #12 (DD-B3, A3, B5, A4)'
+NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'A4', 2, 'Audit 3 after #12 (DD-B3, A3, B5, A4)'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_LEDE = "Two courses for one reader, written one unit at a time. <strong>Learn</strong> is where the finished units are read. <strong>Build</strong> is where they get made: method, briefs, audits, sources, history."
@@ -212,6 +215,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-10-29 21:30', "v8.1. B5 Skills and automation written (Opus 5.5, own context, search off), fresh-checked by Fable 5.1 in a separate context (fix, 1 error, 4 should-fix, 5 minor; all applied) and filed: reading page under course B, B5 marked written; A4 next; Audit 3 counter 3 of 4."),
     ('2026-10-29 19:30', "v8.0. A3 The journey system written (Opus 5.5, own context, search off), fresh-checked by Fable 5.1 in a separate context (keep, 0 errors, 1 should-fix, 9 minor; all applied) and filed: reading page under course A, A3 marked written; B5 next; Audit 3 counter 2 of 4."),
     ('2026-10-29 10:45', "v7.9. DD-B3 Deep dive: how the best practitioners use the tool written (Opus 5.5, own context, search on), fresh-checked by Fable 5.1 in a separate context (fix, 1 error, 3 should-fix, 9 minor; all applied) and filed: reading page under course B, DD-B3 marked written; A3 next; Audit 3 counter 1 of 4. B2 erratum P34: the re-read rule names the Artificial Analysis index version."),
     ('2026-10-29 10:30', "v7.8. Audit 2 (Fable 5.1, live search) over B2, B3, B4, A1: all four PASS, 1 incidental FAIL and 10 STALE in B2 (Artificial Analysis Intelligence Index v5.0, announced 27 Oct). Errata applied: B2's leaderboard, Omniscience and deliverable figures updated to v5.0, the seven-times miscite corrected (B2-1 to B2-25); A1 §4 option 3 handle line (A1-1, P33). Report audits/brand-ai/audit-2.md. Gate cleared: DD-B3 next; Audit 3 after #12."),
