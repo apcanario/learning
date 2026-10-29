@@ -1,4 +1,4 @@
-"""Figures for Academy (A8, 28 Oct 2026; seven IA kinds added at V1, 29 Oct 2026): primitives that a unit or a course home declares as data and build.py
+"""Figures for Academy (A8, 28 Oct 2026; seven IA kinds added at V1 and four data kinds at P44, 29 Oct 2026): primitives that a unit or a course home declares as data and build.py
 renders as inline SVG, styled only by design/theme.css section 4i (classes, tokens, no attributes with colours).
 
 The contract a writer uses:
@@ -53,6 +53,35 @@ built by viz_examples.py, shows one of each on Perqo with its block):
              {"bar": 0.6}, {"block": 40}, {"button": "New claim"}]}, ...], "links": [{"from": "home", "to": "spend", "label": "..."}]}
             screens left to right, wrapping; a line is text, a placeholder bar (share of the width), a placeholder
             block (height) or a button; links route as in states.
+
+The data kinds (P44, 29 Oct 2026; one of each on the examples page too):
+
+  line      {"kind": "line", "x": [2019, 2020, ...], "years": true, "unit": "k", "series": [{"name": "App users",
+             "values": [null, 2.5, 9, ...], "tone": 3}, ...], "annotations": [{"at": 2021, "label": "App released"}],
+             "labels": "all"}
+            one or more series over an ordered x (numbers spaced to scale, or strings spaced evenly); null breaks a line;
+            every point labelled with its value ("all", the default up to eight x values), only the first and last
+            ("ends") or none; optional min, max, yticks, xticks, decimals, height (plot, default 240), xlabel, ylabel;
+            a legend when the series are named (a name is required with more than one series).
+  bars      {"kind": "bars", "mode": "grouped", "unit": "%", "series": [{"name": "2024", "tone": 4}, ...],
+             "rows": [{"label": "Instagram", "values": [61, 64]}, ...]}
+            horizontal bars across categories, grouped (one bar per series) or "stacked" (one bar of segments, the
+            total at its end, a segment's value inside it when it fits); values of 0 or more; optional max, decimals.
+  scatter   {"kind": "scatter", "x": {"label": "...", "min": 0, "max": 60, "ticks": [...], "unit": "%"}, "y": {...},
+             "points": [{"label": "Gym pass", "x": 38, "y": 7.9, "tone": 4}, ...],
+             "quadrants": {"x": 25, "y": 7.5, "names": ["top left", "top right", "bottom left", "bottom right"]}}
+            labelled points on two numeric axes with gridlines at the ticks; each label takes the nearest free spot
+            around its point (covering no point, label or quadrant name), and a label with no free spot raises.
+  range     {"kind": "range", "unit": "%", "min": 0, "max": 100, "ticks": [...], "rows": [{"label": "...", "low": 45,
+             "high": 70, "point": 58, "low_src": "Pew 2024", "high_src": "Ofcom 2025", "tone": 4}, ...]}
+            competing estimates: per row a low-to-high bar, an optional point estimate (a diamond, its value above it)
+            and under the bar each end's value with its source tag; one axis for every row.
+  matrix    with "numeric": true: cells are numbers (or null), shaded in five steps of the figure's "tone" between
+            min and max (default the data's); a legend gives each step's range ("scale_label" names it).
+
+On a phone (below 768 px) every figure draws at its natural size, one SVG unit to one CSS pixel, and scrolls sideways
+inside its frame (.viz-scroll), never the page; shell.js fades the edge that has more drawing and shows the line
+"scroll sideways for the whole figure" under a figure only when its drawing is wider than its frame.
 
 Every kind takes "caption" (shown under the figure; keep the source in it) and "title" (optional, drawn above), and
 "tone" (1 to 6, the house accents) on any node, box, lane, step, screen or cell. A kind that cannot draw its data
@@ -729,6 +758,8 @@ def matrix(d):
     cols, rows = d['cols'], d['rows']
     if not cols or not rows:
         _fail(K, 'a matrix needs cols and rows')
+    if d.get('numeric'):
+        return _heat(d)
     LW = min(170, max(90, max(_tw(r['label'], 12) for r in rows) + 20))
     n = len(cols)
     cw = (W - 16 - LW) / n
@@ -1201,9 +1232,534 @@ def swimlanes(d):
     return _svg(_r(Wd), _r(H), bands + links + boxes, 'swimlanes', d.get('title'), d.get('caption'), wide=Wd > W)
 
 
+# ---- the data kinds (P44, 29 Oct 2026): line, bars, scatter, range, and matrix's numeric mode -----------------------
+# Labels that could collide (point labels, legend entries, quadrant names, range tags) sit on plates (<g data-box>, a
+# card-coloured rect first), so verify.py's box checks also prove that no two of them overlap. Placement tries a short
+# list of positions and raises when none is free: a figure whose labels cannot be placed is a bug, not a blank.
+
+T_VAL = ('viz-value', 'mono', 10.5, 0, 13)
+T_TICK = ('viz-ticklabel', 'mono', 10.5, 0, 13)
+T_QUAD = ('viz-quadname', 'mono', 10, 0.4, 12.5)
+T_ONV = ('viz-onvalue', 'mono', 10.5, 0, 13)
+
+
+def _num(v, kind, what):
+    if isinstance(v, bool) or not isinstance(v, (int, float)) or v != v:
+        _fail(kind, f'{what} must be a number, got {v!r}')
+    return v
+
+
+def _fmt(v, dec=None):
+    """A number as the figure prints it: thousands with commas; decimals as given, or as the data carries them."""
+    if dec is not None:
+        return f'{v:,.{dec}f}'
+    if isinstance(v, float):
+        v = round(v, 9)
+        if v.is_integer():
+            v = int(v)
+    return f'{v:,}'
+
+
+def _ticks(lo, hi, n=5):
+    """Round tick values covering lo..hi, about n intervals."""
+    if hi <= lo:
+        hi = lo + 1
+    raw = (hi - lo) / n
+    mag = 10 ** math.floor(math.log10(raw))
+    step = next(m * mag for m in (1, 2, 2.5, 5, 10) if m * mag >= raw)
+    a, b = math.floor(lo / step + 1e-9) * step, math.ceil(hi / step - 1e-9) * step
+    k = round((b - a) / step)
+    return [round(a + i * step, 9) for i in range(k + 1)]
+
+
+def _box(cx, cy, lines, role):
+    """The rect a plate of these lines centred on (cx, cy) occupies."""
+    w, h = _width(lines, role) + 8, len(lines) * role[4] + 4
+    return (cx - w / 2, cy - h / 2, w, h)
+
+
+def _clash(r, rects, pad=2):
+    return any(x < r[0] + r[2] + pad and r[0] < x + w + pad and y < r[1] + r[3] + pad and r[1] < y + h + pad for x, y, w, h in rects)
+
+
+def _plate_at(rect, lines, role):
+    x, y, w, h = rect
+    return _g(f'<rect class="viz-lblbg" x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}"/>' + _text(lines, role, x + w / 2, y + 2, 'middle'))
+
+
+def _legend(items, top, width, kind):
+    """Legend entries left to right, wrapping: a swatch (a bar's square or a line with its point) and the name, each one
+    plate. items: [(name, tone, 'bar' or 'line')]. Returns (svg, height)."""
+    x, y, s, rowh = 8, top, '', 20
+    for name, tone, style in items:
+        lab = _lines(name, T_LABEL, 200)
+        tw = _width(lab, T_LABEL)
+        iw = 8 + (22 if style == 'line' else 12) + 6 + tw + 6
+        ih = max(20, len(lab) * 14 + 6)
+        if x > 8 and x + iw > width - 8:
+            x, y, rowh = 8, y + rowh + 4, 20
+        sw_x, cy = x + 4, y + ih / 2
+        sw = (f'<line class="viz-series viz-t{tone}" x1="{sw_x:.1f}" y1="{cy:.1f}" x2="{sw_x + 22:.1f}" y2="{cy:.1f}"/>'
+              f'<circle class="viz-pt viz-t{tone}" cx="{sw_x + 11:.1f}" cy="{cy:.1f}" r="3.5"/>') if style == 'line' else \
+             f'<rect class="viz-bar viz-t{tone}" x="{sw_x:.1f}" y="{cy - 6:.1f}" width="12" height="12"/>'
+        tx = sw_x + (22 if style == 'line' else 12) + 6
+        s += _g(f'<rect class="viz-lblbg" x="{x:.1f}" y="{y:.1f}" width="{iw:.1f}" height="{ih:.1f}"/>' + sw
+                + _text(lab, T_LABEL, tx, cy - len(lab) * 7))
+        x += iw + 10
+        rowh = max(rowh, ih)
+    return s, (y + rowh) - top
+
+
+def line(d):
+    """One or more named series over an ordered x (years, periods or any ordered labels), each point labelled with its
+    value (or only the first and last), optional annotations as dashed verticals with a note, and a legend."""
+    K = 'line'
+    xs, series = d.get('x'), d.get('series')
+    if not xs or not series:
+        _fail(K, 'a line chart needs x and series')
+    n = len(xs)
+    numeric = all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in xs)
+    if numeric and any(b <= a for a, b in zip(xs, xs[1:])):
+        _fail(K, 'numeric x values must increase')
+    years, unit, dec = d.get('years', False), d.get('unit', ''), d.get('decimals')
+    fx = (lambda v: yr(v)) if (years and numeric) else (lambda v: _fmt(v) if numeric else str(v))
+    vals = []
+    for k, s in enumerate(series):
+        if len(s.get('values', [])) != n:
+            _fail(K, f'series {s.get("name", k)!r} has {len(s.get("values", []))} values for {n} x values')
+        if len(series) > 1 and not s.get('name'):
+            _fail(K, 'with more than one series every series needs a name')
+        s['_t'] = _tone(s, d.get('tone', 1) if len(series) == 1 else k % TONES + 1, K)
+        vals += [_num(v, K, 'a value') for v in s['values'] if v is not None]
+    if not vals:
+        _fail(K, 'no values to draw')
+    lo = d.get('min', min(0, min(vals)))
+    hi = d.get('max', max(vals))
+    yt = d.get('yticks') or _ticks(lo, hi)
+    lo, hi = min(lo, yt[0]), max(hi, yt[-1])
+    ylab = [_fmt(t, dec) + unit for t in yt]
+    L = 8 + max(_tw(t, 10.5, 'mono') for t in ylab) + 8
+    R = W - 24
+    body, plates, top = '', [], 8
+    if d.get('ylabel'):
+        body += _text([d['ylabel']], T_COL, 8, top); top += 18
+    if any(s.get('name') for s in series):
+        lg, lh = _legend([(s.get('name', ''), s['_t'], 'line') for s in series if s.get('name')], top, W, K)
+        body += lg; top += lh + 12
+    if numeric:
+        span = xs[-1] - xs[0]
+        px = lambda v: (L + R) / 2 if span == 0 else L + 14 + (R - L - 28) * (v - xs[0]) / span
+    else:
+        px = lambda i: L + (R - L) * (i + 0.5) / n
+    xpos = [px(v) if numeric else px(i) for i, v in enumerate(xs)]
+    # annotations: their notes in rows above the plot, each row's plates kept apart
+    anns = []
+    for a in d.get('annotations', []):
+        at = a.get('at')
+        if numeric:
+            _num(at, K, 'an annotation\'s at')
+            if not xs[0] <= at <= xs[-1]:
+                _fail(K, f'annotation at {at} is outside the x range')
+            ax = px(at)
+        else:
+            if at not in xs:
+                _fail(K, f'annotation at {at!r} is not one of the x values')
+            ax = xpos[xs.index(at)]
+        lab = _lines(a.get('label', ''), T_LINK, 130)
+        anns.append([ax, lab])
+    arow, rows_used = [], []
+    for ax, lab in anns:
+        w = _width(lab, T_LINK) + 8
+        cx = min(max(ax, 4 + w / 2), W - 4 - w / 2)
+        r = 0
+        while any(rr == r and abs(cx - ox) < (w + ow) / 2 + 6 for rr, ox, ow, _ in arow):
+            r += 1
+        arow.append((r, cx, w, lab))
+    ann_h = 0
+    if arow:
+        rh = max(len(l) for *_, l in arow) * 12.5 + 8
+        ann_h = (max(r for r, *_ in arow) + 1) * rh
+    PT = top + ann_h + 18
+    PH = d.get('height', 240)
+    PB = PT + PH
+    py = lambda v: PB - (v - lo) / (hi - lo) * PH
+    for k, (ax, lab) in enumerate(anns):
+        r, cx, w, _ = arow[k]
+        h = len(lab) * 12.5 + 4
+        rect = (cx - w / 2, top + r * rh, w, h)
+        body += _line([(ax, rect[1] + h), (ax, PB)], 'viz-annot')
+        plates.append(rect)
+        body += _plate_at(rect, lab, T_LINK)
+    grid = ''
+    for t, tl in zip(yt, ylab):
+        yy = py(t)
+        grid += _line([(L, yy), (R, yy)], 'viz-base' if t == 0 else 'viz-grid')
+        grid += f'<text class="viz-ticklabel" x="{L - 6:.1f}" y="{yy + 3.6:.1f}" text-anchor="end">{esc(tl)}</text>'
+    # x tick labels: every x value when they fit, else every k-th (always the first and the last)
+    xl = [fx(v) for v in xs]
+    if numeric:
+        tickx = d.get('xticks') or xs
+        lab_of = {v: fx(v) for v in tickx}
+        wmax = max(_tw(t, 10.5, 'mono') for t in lab_of.values())
+        step = 1
+        if len(tickx) > 1:
+            dmin = min(b - a for a, b in zip(tickx, tickx[1:])) * (R - L - 28) / max(1e-9, xs[-1] - xs[0])
+            step = max(1, math.ceil((wmax + 10) / max(dmin, 1)))
+        show = [v for i, v in enumerate(tickx) if i % step == 0 or i == len(tickx) - 1]
+        if len(show) > 1 and step > 1 and (px(show[-1]) - px(show[-2])) < wmax + 10:
+            show.pop(-2)
+        xlh = 13
+        for v in show:
+            body += f'<line class="viz-grid" x1="{px(v):.1f}" y1="{PB}" x2="{px(v):.1f}" y2="{PB + 4}"/><text class="viz-ticklabel" x="{px(v):.1f}" y="{PB + 16:.1f}" text-anchor="middle">{esc(lab_of[v])}</text>'
+    else:
+        cw = (R - L) / n
+        wrapped = [_wrap(t, 0, px=max(24, cw - 6), size=10.5, font='mono') for t in xl]
+        xlh = max(len(w) for w in wrapped) * 13
+        for x_, w_ in zip(xpos, wrapped):
+            body += _text(w_, T_TICK, x_, PB + 6, 'middle')
+    # series: lines through the values (a null breaks the line), points, then labels
+    segs, pts, marks = [], [], ''
+    for s in series:
+        run = []
+        for x_, v in zip(xpos, s['values']):
+            if v is None:
+                if len(run) > 1:
+                    segs.append((s['_t'], run))
+                run = []
+                continue
+            run.append((x_, py(v)))
+            pts.append((x_, py(v)))
+        if len(run) > 1:
+            segs.append((s['_t'], run))
+    for t, run in segs:
+        marks += _line(run, f'viz-series viz-t{t}')
+    for s in series:
+        for x_, v in zip(xpos, s['values']):
+            if v is not None:
+                marks += f'<circle class="viz-pt viz-t{s["_t"]}" cx="{x_:.1f}" cy="{py(v):.1f}" r="3.5"/>'
+    mode = d.get('labels', 'all' if n <= 8 else 'ends')
+    if mode not in ('all', 'ends', 'none'):
+        _fail(K, 'labels is "all", "ends" or "none"')
+    dots = [(x_ - 5, y_ - 5, 10, 10) for x_, y_ in pts]
+    lines_all = [(a, b) for _, run in segs for a, b in zip(run, run[1:])]
+    labs = ''
+    for s in series:
+        idx = [i for i, v in enumerate(s['values']) if v is not None]
+        if mode == 'ends':
+            idx = sorted({idx[0], idx[-1]}) if idx else []
+        elif mode == 'none':
+            idx = []
+        for i in idx:
+            x_, y_ = xpos[i], py(s['values'][i])
+            lab = [_fmt(s['values'][i], dec) + unit]
+            w, h = _width(lab, T_VAL) + 8, 17
+            cands = [(x_, y_ - 13), (x_, y_ + 13), (x_ + w / 2 + 7, y_), (x_ - w / 2 - 7, y_),
+                     (x_ + w / 2 + 3, y_ - 12), (x_ - w / 2 - 3, y_ - 12), (x_ + w / 2 + 3, y_ + 12), (x_ - w / 2 - 3, y_ + 12),
+                     (x_, y_ - 26), (x_, y_ + 26)]
+            ok = lambda r: L + 2 <= r[0] and r[0] + r[2] <= W - 4 and PT - 16 <= r[1] and r[1] + r[3] <= PB - 1 and not _clash(r, plates + dots, 1)
+            free = [c for c in cands if ok((c[0] - w / 2, c[1] - h / 2, w, h))]
+            clear = [c for c in free if not any(_hits(a, b, (c[0] - w / 2, c[1] - h / 2, w, h), 0) for a, b in lines_all)]
+            if not free:
+                _fail(K, f'no room for the label {lab[0]} at {xl[i]} in {s.get("name", "the series")!r}; use "labels": "ends" or a taller "height"')
+            c = (clear or free)[0]
+            rect = (c[0] - w / 2, c[1] - h / 2, w, h)
+            plates.append(rect)
+            labs += _plate_at(rect, lab, T_VAL)
+    H = PB + 6 + xlh + 8
+    if d.get('xlabel'):
+        body += f'<text class="viz-colhead" x="{R:.1f}" y="{H + 6:.1f}" text-anchor="end">{esc(d["xlabel"])}</text>'
+        H += 16
+    # the figure's class is viz-linechart: viz-line is already the class of a structural line, and would style the figure
+    return _svg(W, _r(H), grid + body + marks + labs, 'linechart', d.get('title'), d.get('caption'))
+
+
+def bars(d):
+    """Grouped or stacked horizontal bars across categories: one bar per series in each row (grouped) or one bar of
+    segments (stacked); values at the bar ends (a stacked bar's total at its end, a segment's value inside it when it
+    fits); a legend names the series."""
+    K = 'bars'
+    series, rows = d.get('series'), d.get('rows')
+    mode = d.get('mode', 'grouped')
+    if mode not in ('grouped', 'stacked'):
+        _fail(K, 'mode is "grouped" or "stacked"')
+    if not series or not rows:
+        _fail(K, 'bars need series and rows')
+    ns = len(series)
+    unit, dec = d.get('unit', ''), d.get('decimals')
+    for k, s in enumerate(series):
+        if not s.get('name'):
+            _fail(K, 'every series needs a name')
+        s['_t'] = _tone(s, k % TONES + 1, K)
+    for r in rows:
+        if len(r.get('values', [])) != ns:
+            _fail(K, f'row {r.get("label")!r} has {len(r.get("values", []))} values for {ns} series')
+        for v in r['values']:
+            if v is not None and _num(v, K, 'a value') < 0:
+                _fail(K, 'bars draw values of 0 or more')
+    tot = [sum(v or 0 for v in r['values']) for r in rows]
+    big = max(tot) if mode == 'stacked' else max(v or 0 for r in rows for v in r['values'])
+    mx = d.get('max') or _ticks(0, big or 1)[-1]
+    labs = [_lines(r['label'], T_LABEL, 160) for r in rows]
+    LW = min(172, max(_width(l, T_LABEL) for l in labs) + 12)
+    vals = [_fmt(v, dec) + unit for r, t in zip(rows, tot) for v in (r['values'] + [t])]
+    VW = max(_tw(v, 10.5, 'mono') for v in vals) + 12
+    bx, bw = 8 + LW, W - 8 - (8 + LW) - VW
+    body, top = '', 8
+    lg, lh = _legend([(s['name'], s['_t'], 'bar') for s in series], top, W, K)
+    body += lg; top += lh + 14
+    y, marks = top, ''
+    BH, BG = (12, 3) if mode == 'grouped' else (20, 0)
+    for r, lab, t in zip(rows, labs, tot):
+        block = ns * BH + (ns - 1) * BG if mode == 'grouped' else BH
+        rh = max(block, len(lab) * 14)
+        by = y + (rh - block) / 2
+        marks += _text(lab, T_LABEL, bx - 10, y + (rh - len(lab) * 14) / 2, 'end')
+        if mode == 'grouped':
+            for k, (s, v) in enumerate(zip(series, r['values'])):
+                yy = by + k * (BH + BG)
+                if v is None:
+                    continue
+                wv = bw * v / mx
+                if wv > 0:
+                    marks += f'<rect class="viz-bar viz-t{s["_t"]}" x="{bx:.1f}" y="{yy:.1f}" width="{wv:.1f}" height="{BH}"/>'
+                marks += f'<text class="viz-value" x="{bx + wv + 6:.1f}" y="{yy + BH / 2 + 3.8:.1f}">{esc(_fmt(v, dec) + unit)}</text>'
+        else:
+            xx = bx
+            for s, v in zip(series, r['values']):
+                if not v:
+                    continue
+                wv = bw * v / mx
+                vt = _fmt(v, dec) + unit
+                rect = f'<rect class="viz-bar viz-t{s["_t"]}" x="{xx:.1f}" y="{by:.1f}" width="{wv:.1f}" height="{BH}"/>'
+                if _tw(vt, 10.5, 'mono') + 10 <= wv:
+                    marks += _g(rect + _text([vt], T_ONV, xx + wv / 2, by + (BH - 13) / 2, 'middle'))
+                else:
+                    marks += rect
+                xx += wv
+            marks += f'<text class="viz-value" x="{xx + 6:.1f}" y="{by + BH / 2 + 3.8:.1f}">{esc(_fmt(t, dec) + unit)}</text>'
+        y += rh + 14
+    base = _line([(bx, top - 4), (bx, y - 10)], 'viz-base')
+    return _svg(W, _r(y - 14 + 8), body + base + marks, 'bars', d.get('title'), d.get('caption'))
+
+
+def scatter(d):
+    """Labelled points on two numeric axes with gridlines at the ticks, optional quadrant lines with a name in each
+    quadrant's outer corner; each label is placed where it covers no point, no other label and no quadrant name."""
+    K = 'scatter'
+    pts = d.get('points')
+    if not pts:
+        _fail(K, 'a scatter needs points')
+    ax = {}
+    for a in ('x', 'y'):
+        o = d.get(a) or {}
+        vs = [_num(p.get(a), K, f'a point\'s {a}') for p in pts]
+        lo, hi = o.get('min', min(vs)), o.get('max', max(vs))
+        t = o.get('ticks') or _ticks(lo, hi)
+        ax[a] = dict(lo=min(lo, t[0]), hi=max(hi, t[-1]), ticks=t, unit=o.get('unit', ''), dec=o.get('decimals'),
+                     label=o.get('label', ''), years=o.get('years', False))
+    tl = lambda a, v: yr(v) if ax[a]['years'] else _fmt(v, ax[a]['dec']) + ax[a]['unit']
+    L = 8 + max(_tw(tl('y', t), 10.5, 'mono') for t in ax['y']['ticks']) + 8
+    R, top = W - 12, 8
+    body = ''
+    if ax['y']['label']:
+        body += _text([ax['y']['label']], T_COL, 8, top); top += 18
+    PT, PH = top + 6, d.get('height', 340)
+    PB = PT + PH
+    X = lambda v: L + (v - ax['x']['lo']) / (ax['x']['hi'] - ax['x']['lo']) * (R - L)
+    Y = lambda v: PB - (v - ax['y']['lo']) / (ax['y']['hi'] - ax['y']['lo']) * PH
+    for t in ax['y']['ticks']:
+        body += _line([(L, Y(t)), (R, Y(t))], 'viz-grid') + f'<text class="viz-ticklabel" x="{L - 6:.1f}" y="{Y(t) + 3.6:.1f}" text-anchor="end">{esc(tl("y", t))}</text>'
+    xt = ax['x']['ticks']
+    for i, t in enumerate(xt):
+        hw_ = _tw(tl('x', t), 10.5, 'mono') / 2
+        anchor = 'start' if X(t) - hw_ < 4 else ('end' if X(t) + hw_ > W - 4 else 'middle')
+        body += _line([(X(t), PT), (X(t), PB)], 'viz-grid') + f'<text class="viz-ticklabel" x="{X(t):.1f}" y="{PB + 16:.1f}" text-anchor="{anchor}">{esc(tl("x", t))}</text>'
+    body += _line([(L, PB), (R, PB)], 'viz-base') + _line([(L, PT), (L, PB)], 'viz-base')
+    plates, marks = [], ''
+    dots = [(X(p['x']) - 5.5, Y(p['y']) - 5.5, 11, 11) for p in pts]
+    q = d.get('quadrants')
+    if q:
+        qx, qy = X(_num(q.get('x'), K, 'quadrants.x')), Y(_num(q.get('y'), K, 'quadrants.y'))
+        body += _line([(qx, PT), (qx, PB)], 'viz-quad') + _line([(L, qy), (R, qy)], 'viz-quad')
+        names = q.get('names') or []
+        corners = [(L + 6, PT + 6, 'l', 't'), (R - 6, PT + 6, 'r', 't'), (L + 6, PB - 6, 'l', 'b'), (R - 6, PB - 6, 'r', 'b')]
+        for name, (cx, cy, hx, vy), (lo_x, hi_x) in zip(names, corners, [(L, qx), (qx, R), (L, qx), (qx, R)]):
+            if not name:
+                continue
+            lab = _lines(name, T_QUAD, max(60, (hi_x - lo_x) / 2))
+            w, h = _width(lab, T_QUAD) + 8, len(lab) * 12.5 + 4
+            rect = (cx if hx == 'l' else cx - w, cy if vy == 't' else cy - h, w, h)
+            if _clash(rect, dots, 1):
+                _fail(K, f'the quadrant name {name!r} would cover a point; shorten it or widen the axis range')
+            plates.append(rect)
+            marks += _plate_at(rect, lab, T_QUAD)
+    for p in pts:
+        marks += f'<circle class="viz-pt viz-t{_tone(p, d.get("tone", 4), K)}" cx="{X(p["x"]):.1f}" cy="{Y(p["y"]):.1f}" r="4.5"/>'
+    # labels, most crowded points first; each takes the first free spot of a ring of candidates, nearest first
+    order = sorted(range(len(pts)), key=lambda i: -sum(1 for j in range(len(pts)) if math.hypot(X(pts[i]['x']) - X(pts[j]['x']), Y(pts[i]['y']) - Y(pts[j]['y'])) < 60))
+    labs = ''
+    for i in order:
+        p = pts[i]
+        if not p.get('label'):
+            continue
+        x_, y_ = X(p['x']), Y(p['y'])
+        lab = _lines(p['label'], T_LABEL, 150)
+        w, h = _width(lab, T_LABEL) + 8, len(lab) * 14 + 4
+        cands = []
+        for dist in (8, 16, 28):
+            cands += [(x_ + dist + w / 2, y_), (x_ - dist - w / 2, y_), (x_, y_ - dist - h / 2), (x_, y_ + dist + h / 2),
+                      (x_ + dist / 2 + w / 2, y_ - dist / 2 - h / 2), (x_ - dist / 2 - w / 2, y_ - dist / 2 - h / 2),
+                      (x_ + dist / 2 + w / 2, y_ + dist / 2 + h / 2), (x_ - dist / 2 - w / 2, y_ + dist / 2 + h / 2)]
+        spot = next((c for c in cands if L + 2 <= c[0] - w / 2 and c[0] + w / 2 <= W - 4 and PT - 4 <= c[1] - h / 2 and c[1] + h / 2 <= PB - 2
+                     and not _clash((c[0] - w / 2, c[1] - h / 2, w, h), plates + dots, 1)), None)
+        if spot is None:
+            _fail(K, f'no room for the label {p["label"]!r}; shorten it, widen an axis range or raise "height"')
+        rect = (spot[0] - w / 2, spot[1] - h / 2, w, h)
+        plates.append(rect)
+        labs += _plate_at(rect, lab, T_LABEL)
+    H = PB + 24
+    if ax['x']['label']:
+        body += f'<text class="viz-colhead" x="{R:.1f}" y="{H + 4:.1f}" text-anchor="end">{esc(ax["x"]["label"])}</text>'
+        H += 16
+    return _svg(W, _r(H), body + marks + labs, 'scatter', d.get('title'), d.get('caption'))
+
+
+def range_(d):
+    """Competing estimates: per row, a label, then a bar from the lowest to the highest estimate with an optional point
+    estimate (its value above it), and under the bar each end's value with a short source tag, aligned to its end of
+    the bar (inside the bar's span when both fit, else outside it). A shared axis with gridlines runs under the rows."""
+    K = 'range'
+    rows = d.get('rows')
+    if not rows:
+        _fail(K, 'a range needs rows')
+    unit, dec = d.get('unit', ''), d.get('decimals')
+    vs = []
+    for r in rows:
+        if not r.get('label'):
+            _fail(K, 'every row needs a label')
+        lo_, hi_ = _num(r.get('low'), K, 'low'), _num(r.get('high'), K, 'high')
+        if hi_ < lo_:
+            _fail(K, f'row {r["label"]!r}: high is below low')
+        if r.get('point') is not None and not lo_ <= _num(r['point'], K, 'point') <= hi_:
+            _fail(K, f'row {r["label"]!r}: the point estimate lies outside its range')
+        vs += [lo_, hi_]
+    lo, hi = d.get('min', min(0, min(vs))), d.get('max', max(vs))
+    ticks = d.get('ticks') or _ticks(lo, hi)
+    lo, hi = min(lo, ticks[0]), max(hi, ticks[-1])
+    PL, PR = 24, W - 24
+    X = lambda v: PL + (v - lo) / (hi - lo) * (PR - PL)
+    tag = lambda v, src: _fmt(v, dec) + unit + (f' · {src}' if src else '')
+    y, marks, plates = 8, '', []
+    for r in rows:
+        t = _tone(r, d.get('tone', 4), K)
+        lab = _lines(r['label'], T_LABEL, W - 16)
+        marks += _text(lab, T_LABEL, 8, y)
+        y += len(lab) * 14 + 4
+        if r.get('point') is not None:
+            pv = [_fmt(r['point'], dec) + unit]
+            pw = _width(pv, T_VAL)
+            px_ = min(max(X(r['point']), 8 + pw / 2), W - 8 - pw / 2)
+            marks += _text(pv, T_VAL, px_, y, 'middle')
+            y += 14
+        x1, x2 = X(r['low']), X(r['high'])
+        marks += f'<rect class="viz-rangebar viz-t{t}" x="{x1:.1f}" y="{y:.1f}" width="{max(x2 - x1, 3):.1f}" height="10"/>'
+        if r.get('point') is not None:
+            cx = X(r['point'])
+            marks += f'<path class="viz-est" d="M{cx:.1f},{y - 2:.1f} L{cx + 7:.1f},{y + 5:.1f} L{cx:.1f},{y + 12:.1f} L{cx - 7:.1f},{y + 5:.1f} z"/>'
+        y += 14
+        lt, ht = [tag(r['low'], r.get('low_src'))], [tag(r['high'], r.get('high_src'))]
+        lw, hw = _width(lt, T_VAL) + 8, _width(ht, T_VAL) + 8
+        if lw + hw + 8 <= x2 - x1 + 8:                        # both tags fit under the bar: each reads inward from its end
+            a, b = (x1 - 4, y, lw, 17), (x2 + 4 - hw, y, hw, 17)
+        else:                                                # else outward: the low one left of the start, the high one right of the end
+            a = (max(4, x1 - lw + 4), y, lw, 17)
+            b = (min(W - 4 - hw, x2 - 4), y, hw, 17)
+        if r['low'] == r['high'] and not r.get('low_src') and not r.get('high_src'):
+            marks += _plate_at(a, lt, T_VAL); plates.append(a); y += 17
+        else:
+            if _clash(a, [b], 2):
+                b = (b[0], y + 18, hw, 17)
+            marks += _plate_at(a, lt, T_VAL) + _plate_at(b, ht, T_VAL)
+            y = max(a[1] + a[3], b[1] + b[3])
+        y += 16
+    grid = ''
+    for tk in ticks:
+        grid += _line([(X(tk), 8), (X(tk), y - 8)], 'viz-grid')
+        grid += f'<text class="viz-ticklabel" x="{X(tk):.1f}" y="{y + 6:.1f}" text-anchor="middle">{esc(_fmt(tk, dec) + unit)}</text>'
+    H = y + 14
+    if d.get('xlabel'):
+        grid += f'<text class="viz-colhead" x="{PR:.1f}" y="{H + 6:.1f}" text-anchor="end">{esc(d["xlabel"])}</text>'
+        H += 16
+    return _svg(W, _r(H), grid + marks, 'range', d.get('title'), d.get('caption'))
+
+
+def _heat(d):
+    """matrix with "numeric": true: each cell a number (or null for blank) on one of five shades of the figure's tone,
+    shaded by value between min and max (default the data's); a legend under the grid gives each shade's range."""
+    K = 'matrix'
+    cols, rows = d['cols'], d['rows']
+    tone = _tone(d, 4, K)
+    unit, dec = d.get('unit', ''), d.get('decimals')
+    vs = []
+    for r in rows:
+        if len(r.get('cells', [])) != len(cols):
+            _fail(K, f'row {r.get("label")!r} has {len(r.get("cells", []))} cells for {len(cols)} columns')
+        vs += [_num(c, K, 'a numeric cell') for c in r['cells'] if c is not None]
+    if not vs:
+        _fail(K, 'a numeric matrix needs numbers')
+    lo, hi = d.get('min', min(vs)), d.get('max', max(vs))
+    if hi <= lo:
+        hi = lo + 1
+    lev = lambda v: min(5, max(1, 1 + int((v - lo) / (hi - lo) * 5 - 1e-9))) if v > lo else 1
+    LW = min(170, max(90, max(_tw(r['label'], 12) for r in rows) + 20))
+    n = len(cols)
+    cw = (W - 16 - LW) / n
+    wide = cw < 64
+    cw = max(cw, 64)
+    Wd = 16 + LW + n * cw
+    heads = [_lines(c, T_COL, cw - 10) for c in cols]
+    hh = max(len(h) for h in heads) * 12 + 12
+    body = ''.join(_text(h, T_COL, 8 + LW + (k + 0.5) * cw, hh - 6 - len(h) * 12, 'middle') for k, h in enumerate(heads))
+    y = 8 + hh
+    for r in rows:
+        lab = _lines(r['label'], T_LABEL, LW - 12)
+        rh = max(32, len(lab) * 14 + 12)
+        body += _text(lab, T_LABEL, 8, y + (rh - len(lab) * 14) / 2)
+        for k, c in enumerate(r['cells']):
+            x = 8 + LW + k * cw
+            if c is None:
+                body += f'<rect class="viz-track" x="{x + 2:.1f}" y="{y + 2:.1f}" width="{cw - 4:.1f}" height="{rh - 4:.1f}"/>'
+                continue
+            lv = lev(c)
+            role = ('viz-markon',) + T_MARK[1:] if lv == 5 else T_MARK
+            m = _lines(_fmt(c, dec) + unit, role, cw - 12)
+            body += _g(f'<rect class="viz-t{tone} viz-h{lv}" x="{x + 2:.1f}" y="{y + 2:.1f}" width="{cw - 4:.1f}" height="{rh - 4:.1f}"/>'
+                       + _text(m, role, x + cw / 2, y + (rh - len(m) * 13) / 2, 'middle'))
+        y += rh
+    # the scale: five shades with the range each one covers
+    y += 14
+    step = (hi - lo) / 5
+    edges = [lo + i * step for i in range(6)]
+    pd = 0 if step >= 5 else 1 if step >= 0.5 else 2
+    fmt = lambda v: _fmt(v, dec) if dec is not None else _fmt(round(v, pd))
+    x = 8
+    body += _text([d.get('scale_label', 'scale')], T_COL, x, y + 6); x += _tw(d.get('scale_label', 'scale'), 10, 'mono', 0.4) + 12
+    for i in range(5):
+        role = ('viz-markon',) + T_MARK[1:] if i == 4 else T_MARK
+        txt = f'{fmt(edges[i])}–{fmt(edges[i + 1])}{unit}'
+        w = _tw(txt, 10.5, 'mono') + 14
+        if x + w > Wd - 8:
+            x, y = 8, y + 30
+        body += _g(f'<rect class="viz-t{tone} viz-h{i + 1}" x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="24"/>' + _text([txt], role, x + w / 2, y + 5.5, 'middle'))
+        x += w + 4
+    y += 24
+    return _svg(_r(Wd), _r(y + 8), body, 'matrix viz-numeric', d.get('title'), d.get('caption'), wide=wide)
+
+
 KINDS = {'timeline': timeline, 'compare': compare, 'tree': tree, 'flow': flow,
          'sitemap': sitemap, 'objects': objects, 'decision': decision, 'matrix': matrix,
-         'states': states, 'swimlanes': swimlanes, 'wireflow': wireflow}
+         'states': states, 'swimlanes': swimlanes, 'wireflow': wireflow,
+         'line': line, 'bars': bars, 'scatter': scatter, 'range': range_}
 
 
 def render(d):

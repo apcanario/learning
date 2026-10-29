@@ -4,7 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
-- **Figures (session 25):** eleven kinds in `viz.py`, the seven for Information Architecture added by V1; the Figure kinds page shows one of each.
+- **Figures (sessions 25 and 27):** fifteen kinds in `viz.py`: the seven for Information Architecture added by V1, four data kinds (line, bars, scatter, range) and a numeric matrix added by P44; the Figure kinds page shows one of each, sixteen figures. On a phone every figure keeps its natural size and scrolls sideways in its own frame, with a fade and a cue line.
 - **User Experience (session 24):** a fourth track and a second markdown family, `generator/data/ux/`; its first course, IA · Information Architecture, is published as coming soon with its frame, syllabus and briefs; nothing written. A markdown course with no unit filed counts as planned, not live.
 - **Greece, course 1:** complete. 78 reports, about 244,000 words: 55 written with Fable 5.1, 23 with Opus 5.5.
 - **Rome, course 2:** 59 of 79 reports, about 180,000 words, all written with Opus 5.5 and all checked. 20 modules are queued: deep dive I (11.3 to 11.8), deep dive II, the Aeneid (12.1 to 12.8), and deep dive III (13.3 to 13.8).
@@ -51,6 +51,12 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 21. The history course homes leave the shell (P22) | 78 | 59 |
 | 28 Oct | 22. "How it was built" for every course (A4) | 78 | 59 |
 | 28 Oct | 23. The vault is the source; a new course is a folder (A5) | 78 | 59 |
+
+## 29 October 2026 · Session 27 · Data figures, and figures on a phone (P44)
+
+Backlog row N1 (P44) of `docs/BACKLOG.md`, Opus 5.5, run unattended overnight. `viz.py` draws four more kinds for data, each with its contract in the docstring: `line` (named series over an ordered x, numbers to scale or labels evenly, years with `yr`; every point labelled with its value or only the ends; dashed annotations with a note; a legend), `bars` (grouped or stacked horizontal bars, values at the bar ends, a stacked segment's value inside it when it fits, a legend), `scatter` (labelled points on two numeric axes with gridlines, optional quadrant lines and names; each label takes the nearest free spot and a label with none stops the build) and `range` (per row a low-to-high bar, an optional point estimate, each end's value with its source tag), and `matrix` gains a numeric mode (numbers shaded in five steps of one tone, a scale legend). Point labels, legend entries, quadrant names and range tags sit on plates, so the box checks also prove they do not overlap. Theme 5.4: the data classes in §4i, and the phone rule: below 768 px a figure draws at its natural size, one SVG unit to one CSS pixel, and scrolls sideways inside its frame, never the page; `shell.js` fades the edge that has more drawing and shows "scroll sideways for the whole figure" under a figure only when it is wider than its frame (on load, on resize, when a fetched panel lands and when a `<details>` opens). The cue is added by the script, so no report's word count moves. The line chart's figure class is `viz-linechart`, because `viz-line` already styles structural lines.
+
+The Figure kinds page has sixteen figures (five new, on Perqo, fictional). `verify.py` checks, at 390 px on every panel, that each figure draws at its natural size and its frame scrolls to the whole drawing, that the cue shows exactly on the frames that overflow, and at desktop width that it shows only on a figure wider than its column. Verified (ALL CHECKS PASSED), published to the artifact and Pages.
 
 ## 29 October 2026 · Session 26 · Figures in the reader's fonts and colours (P39, P40)
 

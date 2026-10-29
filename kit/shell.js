@@ -73,6 +73,19 @@
     var s=lastAny(),hit=null;if(s){var a=root.querySelector('.ditem[data-target="'+ctxOf[s]+'"]');if(a)hit=a.closest('.dunit');}
     setOpen(hit||groups[0],true);})();
 
+  // figure frames (P44, 29 Oct 2026): below 768 px a figure keeps its natural size and scrolls sideways in its .viz-scroll
+  // frame; data-more names the edge(s) with more drawing (the theme fades them) and the cue line under the frame shows
+  // only while the drawing is wider than the frame. Run when a panel is shown, when a fetched panel lands, when a
+  // <details> opens and on resize; a hidden frame measures 0 and so carries no cue until it is shown.
+  function vizEdge(f){var sw=f.scrollWidth,cw=f.clientWidth,l=f.scrollLeft>1,r=f.scrollLeft+cw<sw-1,m=(l?'l':'')+(r?'r':'');
+    if(m)f.setAttribute('data-more',m);else f.removeAttribute('data-more');}
+  function vizFrames(root){if(!root)return;[].slice.call(root.querySelectorAll('.viz-scroll')).forEach(function(f){
+    var cue=f.nextElementSibling;
+    if(!cue||!cue.classList.contains('viz-cue')){cue=document.createElement('p');cue.className='viz-cue';cue.textContent='scroll sideways for the whole figure';f.parentNode.insertBefore(cue,f.nextSibling);}
+    if(!f.hasAttribute('data-sc')){f.setAttribute('data-sc','');f.addEventListener('scroll',function(){vizEdge(f);},{passive:true});}
+    var over=f.clientWidth>0&&f.scrollWidth>f.clientWidth+1;cue.hidden=!over;vizEdge(f);});}
+  window.addEventListener('resize',function(){vizFrames(document.querySelector('.panel:not([hidden])'));});
+  document.addEventListener('toggle',function(e){if(e.target&&e.target.querySelector)vizFrames(e.target);},true);
   function lastAny(){var s=get(KEY);return s&&isReport(s)&&meta[s]?s:null;}
   function lastIn(ctx){var s=get(LKEY+ctx);if(s&&isReport(s)&&ctxOf[s]===ctx&&meta[s])return s;s=lastAny();return s&&ctxOf[s]===ctx?s:null;}
 
@@ -80,6 +93,7 @@
     if(ids.indexOf(id)<0)id='home';
     current=id;var ctx=ctxOf[id];
     panels.forEach(function(p){p.hidden=p.id!==id;});
+    vizFrames(document.getElementById(id));
     navs.forEach(function(n){n.hidden=n.getAttribute('data-navctx')!==ctx;});
     items.forEach(function(a){var on=a.getAttribute('data-target')===id;a.classList.toggle('is-active',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
       if(on){var un=a.closest('.dunit');if(un&&un.classList.contains('closed'))openGroup(un,false);}});
@@ -116,7 +130,7 @@
     if(!p.innerHTML||p.hasAttribute('data-failed'))p.innerHTML='<p class="hnote">Loading…</p>';
     p.removeAttribute('data-failed');
     loading[id]=fetch(src).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text();}).then(function(t){
-      p.innerHTML=t;p.setAttribute('data-loaded','');p.removeAttribute('data-failed');delete loading[id];return true;
+      p.innerHTML=t;p.setAttribute('data-loaded','');p.removeAttribute('data-failed');delete loading[id];vizFrames(p);return true;
     },function(err){
       delete loading[id];p.setAttribute('data-failed','');
       var m=meta[id]||{},esc=function(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};

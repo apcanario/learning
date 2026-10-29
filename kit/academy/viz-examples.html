@@ -1,10 +1,10 @@
 <header class="phead">
     <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">Figure kinds</span></nav>
-    <div class="eyebrow"><span class="u" style="--c:var(--blue)">FIGURES</span> · 11 kinds · kit/viz.py</div>
+    <div class="eyebrow"><span class="u" style="--c:var(--blue)">FIGURES</span> · 15 kinds · kit/viz.py</div>
     <h1>Figure kinds</h1>
-    <nav class="toc" aria-label="Kinds"><a href="#vx-timeline">Timeline</a><a href="#vx-compare">Compare</a><a href="#vx-tree">Tree</a><a href="#vx-flow">Flow</a><a href="#vx-sitemap">Sitemap</a><a href="#vx-objects">Object map</a><a href="#vx-decision">Decision tree</a><a href="#vx-matrix">Matrix</a><a href="#vx-states">State diagram</a><a href="#vx-swimlanes">Swimlanes</a><a href="#vx-wireflow">Wireflow</a></nav>
+    <nav class="toc" aria-label="Kinds"><a href="#vx-timeline">Timeline</a><a href="#vx-compare">Compare</a><a href="#vx-tree">Tree</a><a href="#vx-flow">Flow</a><a href="#vx-sitemap">Sitemap</a><a href="#vx-objects">Object map</a><a href="#vx-decision">Decision tree</a><a href="#vx-matrix">Matrix</a><a href="#vx-states">State diagram</a><a href="#vx-swimlanes">Swimlanes</a><a href="#vx-wireflow">Wireflow</a><a href="#vx-line">Line chart</a><a href="#vx-bars">Bars</a><a href="#vx-scatter">Scatter</a><a href="#vx-range">Range</a><a href="#vx-matrix-numeric">Matrix, numeric</a></nav>
   </header>
-  <p class="lede">Every kind of figure a unit can declare, drawn by the build from a fenced <code>viz</code> block. The four first kinds came with A8; the seven after them were added for the Information Architecture course (V1, 29 October 2026). Each example uses Perqo, the course's fictional benefits platform: its names and numbers are invented for this page. Under each figure, the block that draws it.</p>
+  <p class="lede">Every kind of figure a unit can declare, drawn by the build from a fenced <code>viz</code> block. The four first kinds came with A8; the seven after them were added for the Information Architecture course (V1, 29 October 2026); the last four, and the matrix's numeric mode, are for data (P44, 29 October 2026). On a phone a figure keeps its natural size and scrolls sideways inside its frame. Each example uses Perqo, the course's fictional benefits platform: its names and numbers are invented for this page. Under each figure, the block that draws it.</p>
   <div class="report"><h2 id="vx-timeline">Timeline · <code>timeline</code></h2>
 <p>Dated events on an axis, with spans as bands above it; a dense one widens and scrolls.</p>
 <p>Fields: start, end, ticks [year], events [{at, label, tone}], spans [{from, to, label, tone}]; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
@@ -979,5 +979,317 @@
   }
  ],
  &quot;caption&quot;: &quot;The three core flows of IA6, as one wireflow. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-line">Line chart · <code>line</code></h2>
+<p>One or more named series over an ordered x (years, periods or any ordered labels), each point labelled with its value (or only the ends), optional annotations, a legend.</p>
+<p>Fields: x [value], years (format x as years), series [{name, values [number or null], tone}], unit, decimals, min, max, yticks, xticks, labels ("all", "ends" or "none"), annotations [{at, label}], height, xlabel, ylabel; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-linechart"><p class="viz-title">Perqo users, 2019 to 2026, thousands (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 345.5" width="700" height="345.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perqo users, 2019 to 2026, thousands (fictional)"><path class="viz-base" d="M35.3,318.5 L676.0,318.5"/><text class="viz-ticklabel" x="29.3" y="322.1" text-anchor="end">0k</text><path class="viz-grid" d="M35.3,270.5 L676.0,270.5"/><text class="viz-ticklabel" x="29.3" y="274.1" text-anchor="end">10k</text><path class="viz-grid" d="M35.3,222.5 L676.0,222.5"/><text class="viz-ticklabel" x="29.3" y="226.1" text-anchor="end">20k</text><path class="viz-grid" d="M35.3,174.5 L676.0,174.5"/><text class="viz-ticklabel" x="29.3" y="178.1" text-anchor="end">30k</text><path class="viz-grid" d="M35.3,126.5 L676.0,126.5"/><text class="viz-ticklabel" x="29.3" y="130.1" text-anchor="end">40k</text><path class="viz-grid" d="M35.3,78.5 L676.0,78.5"/><text class="viz-ticklabel" x="29.3" y="82.1" text-anchor="end">50k</text><g data-box=""><rect class="viz-lblbg" x="8.0" y="8.0" width="192.4" height="20.0"/><line class="viz-series viz-t4" x1="12.0" y1="18.0" x2="34.0" y2="18.0"/><circle class="viz-pt viz-t4" cx="23.0" cy="18.0" r="3.5"/><text class="viz-label" x="40.0" y="22.3" text-anchor="start">Employees with a balance</text></g><g data-box=""><rect class="viz-lblbg" x="210.4" y="8.0" width="149.3" height="20.0"/><line class="viz-series viz-t3" x1="214.4" y1="18.0" x2="236.4" y2="18.0"/><circle class="viz-pt viz-t3" cx="225.4" cy="18.0" r="3.5"/><text class="viz-label" x="242.4" y="22.3" text-anchor="start">Monthly app users</text></g><path class="viz-annot" d="M224.3,56.5 L224.3,318.5"/><g data-box=""><rect class="viz-lblbg" x="171.0" y="40.0" width="106.7" height="16.5"/><text class="viz-linklabel" x="224.3" y="52.0" text-anchor="middle">Perqo app released</text></g><path class="viz-annot" d="M486.9,56.5 L486.9,318.5"/><g data-box=""><rect class="viz-lblbg" x="432.4" y="40.0" width="109.1" height="16.5"/><text class="viz-linklabel" x="486.9" y="52.0" text-anchor="middle">Perqo Admin rebuilt</text></g><line class="viz-grid" x1="49.3" y1="318.5" x2="49.3" y2="322.5"/><text class="viz-ticklabel" x="49.3" y="334.5" text-anchor="middle">2019</text><line class="viz-grid" x1="136.8" y1="318.5" x2="136.8" y2="322.5"/><text class="viz-ticklabel" x="136.8" y="334.5" text-anchor="middle">2020</text><line class="viz-grid" x1="224.3" y1="318.5" x2="224.3" y2="322.5"/><text class="viz-ticklabel" x="224.3" y="334.5" text-anchor="middle">2021</text><line class="viz-grid" x1="311.9" y1="318.5" x2="311.9" y2="322.5"/><text class="viz-ticklabel" x="311.9" y="334.5" text-anchor="middle">2022</text><line class="viz-grid" x1="399.4" y1="318.5" x2="399.4" y2="322.5"/><text class="viz-ticklabel" x="399.4" y="334.5" text-anchor="middle">2023</text><line class="viz-grid" x1="486.9" y1="318.5" x2="486.9" y2="322.5"/><text class="viz-ticklabel" x="486.9" y="334.5" text-anchor="middle">2024</text><line class="viz-grid" x1="574.5" y1="318.5" x2="574.5" y2="322.5"/><text class="viz-ticklabel" x="574.5" y="334.5" text-anchor="middle">2025</text><line class="viz-grid" x1="662.0" y1="318.5" x2="662.0" y2="322.5"/><text class="viz-ticklabel" x="662.0" y="334.5" text-anchor="middle">2026</text><path class="viz-series viz-t4" d="M136.8,312.7 L224.3,289.7 L311.9,251.3 L399.4,208.1 L486.9,169.7 L574.5,136.1 L662.0,102.5"/><path class="viz-series viz-t3" d="M224.3,306.5 L311.9,275.3 L399.4,241.7 L486.9,212.9 L574.5,179.3 L662.0,150.5"/><circle class="viz-pt viz-t4" cx="136.8" cy="312.7" r="3.5"/><circle class="viz-pt viz-t4" cx="224.3" cy="289.7" r="3.5"/><circle class="viz-pt viz-t4" cx="311.9" cy="251.3" r="3.5"/><circle class="viz-pt viz-t4" cx="399.4" cy="208.1" r="3.5"/><circle class="viz-pt viz-t4" cx="486.9" cy="169.7" r="3.5"/><circle class="viz-pt viz-t4" cx="574.5" cy="136.1" r="3.5"/><circle class="viz-pt viz-t4" cx="662.0" cy="102.5" r="3.5"/><circle class="viz-pt viz-t3" cx="224.3" cy="306.5" r="3.5"/><circle class="viz-pt viz-t3" cx="311.9" cy="275.3" r="3.5"/><circle class="viz-pt viz-t3" cx="399.4" cy="241.7" r="3.5"/><circle class="viz-pt viz-t3" cx="486.9" cy="212.9" r="3.5"/><circle class="viz-pt viz-t3" cx="574.5" cy="179.3" r="3.5"/><circle class="viz-pt viz-t3" cx="662.0" cy="150.5" r="3.5"/><g data-box=""><rect class="viz-lblbg" x="120.0" y="278.2" width="33.7" height="17.0"/><text class="viz-value" x="136.8" y="290.5" text-anchor="middle">1.2k</text></g><g data-box=""><rect class="viz-lblbg" x="213.9" y="255.2" width="20.9" height="17.0"/><text class="viz-value" x="224.3" y="267.5" text-anchor="middle">6k</text></g><g data-box=""><rect class="viz-lblbg" x="298.2" y="216.8" width="27.3" height="17.0"/><text class="viz-value" x="311.9" y="229.1" text-anchor="middle">14k</text></g><g data-box=""><rect class="viz-lblbg" x="385.8" y="173.6" width="27.3" height="17.0"/><text class="viz-value" x="399.4" y="185.9" text-anchor="middle">23k</text></g><g data-box=""><rect class="viz-lblbg" x="473.3" y="135.2" width="27.3" height="17.0"/><text class="viz-value" x="486.9" y="147.5" text-anchor="middle">31k</text></g><g data-box=""><rect class="viz-lblbg" x="560.8" y="101.6" width="27.3" height="17.0"/><text class="viz-value" x="574.5" y="113.9" text-anchor="middle">38k</text></g><g data-box=""><rect class="viz-lblbg" x="648.4" y="68.0" width="27.3" height="17.0"/><text class="viz-value" x="662.0" y="80.3" text-anchor="middle">45k</text></g><g data-box=""><rect class="viz-lblbg" x="231.3" y="298.0" width="33.7" height="17.0"/><text class="viz-value" x="248.2" y="310.3" text-anchor="middle">2.5k</text></g><g data-box=""><rect class="viz-lblbg" x="301.4" y="292.8" width="20.9" height="17.0"/><text class="viz-value" x="311.9" y="305.1" text-anchor="middle">9k</text></g><g data-box=""><rect class="viz-lblbg" x="385.8" y="259.2" width="27.3" height="17.0"/><text class="viz-value" x="399.4" y="271.5" text-anchor="middle">16k</text></g><g data-box=""><rect class="viz-lblbg" x="473.3" y="178.4" width="27.3" height="17.0"/><text class="viz-value" x="486.9" y="190.7" text-anchor="middle">22k</text></g><g data-box=""><rect class="viz-lblbg" x="560.8" y="144.8" width="27.3" height="17.0"/><text class="viz-value" x="574.5" y="157.1" text-anchor="middle">29k</text></g><g data-box=""><rect class="viz-lblbg" x="648.4" y="116.0" width="27.3" height="17.0"/><text class="viz-value" x="662.0" y="128.3" text-anchor="middle">35k</text></g></svg></div><figcaption>Growth since the first client company, in the dates of the timeline above. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;line&quot;,
+ &quot;title&quot;: &quot;Perqo users, 2019 to 2026, thousands (fictional)&quot;,
+ &quot;years&quot;: true,
+ &quot;unit&quot;: &quot;k&quot;,
+ &quot;x&quot;: [
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024,
+  2025,
+  2026
+ ],
+ &quot;series&quot;: [
+  {
+   &quot;name&quot;: &quot;Employees with a balance&quot;,
+   &quot;values&quot;: [
+    null,
+    1.2,
+    6,
+    14,
+    23,
+    31,
+    38,
+    45
+   ],
+   &quot;tone&quot;: 4
+  },
+  {
+   &quot;name&quot;: &quot;Monthly app users&quot;,
+   &quot;values&quot;: [
+    null,
+    null,
+    2.5,
+    9,
+    16,
+    22,
+    29,
+    35
+   ],
+   &quot;tone&quot;: 3
+  }
+ ],
+ &quot;annotations&quot;: [
+  {
+   &quot;at&quot;: 2021,
+   &quot;label&quot;: &quot;Perqo app released&quot;
+  },
+  {
+   &quot;at&quot;: 2024,
+   &quot;label&quot;: &quot;Perqo Admin rebuilt&quot;
+  }
+ ],
+ &quot;caption&quot;: &quot;Growth since the first client company, in the dates of the timeline above. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-bars">Bars · <code>bars</code></h2>
+<p>Grouped or stacked horizontal bars across categories, a legend, values at the bar ends (and inside a stacked segment when it fits).</p>
+<p>Fields: mode ("grouped" or "stacked"), series [{name, tone}], rows [{label, values [number or null]}], unit, decimals, max; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-bars"><p class="viz-title">Benefit spend by category and channel, 2026 to date, EUR million (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 172" width="700" height="172" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Benefit spend by category and channel, 2026 to date, EUR million (fictional)"><g data-box=""><rect class="viz-lblbg" x="8.0" y="8.0" width="95.9" height="20.0"/><rect class="viz-bar viz-t4" x="12.0" y="12.0" width="12" height="12"/><text class="viz-label" x="30.0" y="22.3" text-anchor="start">Perqo card</text></g><g data-box=""><rect class="viz-lblbg" x="113.9" y="8.0" width="141.8" height="20.0"/><rect class="viz-bar viz-t2" x="117.9" y="12.0" width="12" height="12"/><text class="viz-label" x="135.9" y="22.3" text-anchor="start">Reimbursed claims</text></g><path class="viz-base" d="M76.8,38.0 L76.8,168.0"/><text class="viz-label" x="66.8" y="56.3" text-anchor="end">Food</text><g data-box=""><rect class="viz-bar viz-t4" x="76.8" y="42.0" width="545.0" height="20"/><text class="viz-onvalue" x="349.3" y="55.8" text-anchor="middle">5.6</text></g><rect class="viz-bar viz-t2" x="621.8" y="42.0" width="19.5" height="20"/><text class="viz-value" x="647.3" y="55.8">5.8</text><text class="viz-label" x="66.8" y="90.3" text-anchor="end">Wellbeing</text><g data-box=""><rect class="viz-bar viz-t4" x="76.8" y="76.0" width="408.8" height="20"/><text class="viz-onvalue" x="281.1" y="89.8" text-anchor="middle">4.2</text></g><g data-box=""><rect class="viz-bar viz-t2" x="485.5" y="76.0" width="107.1" height="20"/><text class="viz-onvalue" x="539.1" y="89.8" text-anchor="middle">1.1</text></g><text class="viz-value" x="598.6" y="89.8">5.3</text><text class="viz-label" x="66.8" y="124.3" text-anchor="end">Mobility</text><g data-box=""><rect class="viz-bar viz-t4" x="76.8" y="110.0" width="301.7" height="20"/><text class="viz-onvalue" x="227.6" y="123.8" text-anchor="middle">3.1</text></g><g data-box=""><rect class="viz-bar viz-t2" x="378.5" y="110.0" width="58.4" height="20"/><text class="viz-onvalue" x="407.7" y="123.8" text-anchor="middle">0.6</text></g><text class="viz-value" x="442.9" y="123.8">3.7</text><text class="viz-label" x="66.8" y="158.3" text-anchor="end">Learning</text><g data-box=""><rect class="viz-bar viz-t4" x="76.8" y="144.0" width="87.6" height="20"/><text class="viz-onvalue" x="120.6" y="157.8" text-anchor="middle">0.9</text></g><g data-box=""><rect class="viz-bar viz-t2" x="164.4" y="144.0" width="136.3" height="20"/><text class="viz-onvalue" x="232.5" y="157.8" text-anchor="middle">1.4</text></g><text class="viz-value" x="306.6" y="157.8">2.3</text></svg></div><figcaption>Where the money goes, and how much of it still passes through a claim. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;bars&quot;,
+ &quot;title&quot;: &quot;Benefit spend by category and channel, 2026 to date, EUR million (fictional)&quot;,
+ &quot;mode&quot;: &quot;stacked&quot;,
+ &quot;decimals&quot;: 1,
+ &quot;series&quot;: [
+  {
+   &quot;name&quot;: &quot;Perqo card&quot;,
+   &quot;tone&quot;: 4
+  },
+  {
+   &quot;name&quot;: &quot;Reimbursed claims&quot;,
+   &quot;tone&quot;: 2
+  }
+ ],
+ &quot;rows&quot;: [
+  {
+   &quot;label&quot;: &quot;Food&quot;,
+   &quot;values&quot;: [
+    5.6,
+    0.2
+   ]
+  },
+  {
+   &quot;label&quot;: &quot;Wellbeing&quot;,
+   &quot;values&quot;: [
+    4.2,
+    1.1
+   ]
+  },
+  {
+   &quot;label&quot;: &quot;Mobility&quot;,
+   &quot;values&quot;: [
+    3.1,
+    0.6
+   ]
+  },
+  {
+   &quot;label&quot;: &quot;Learning&quot;,
+   &quot;values&quot;: [
+    0.9,
+    1.4
+   ]
+  }
+ ],
+ &quot;caption&quot;: &quot;Where the money goes, and how much of it still passes through a claim. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-scatter">Scatter · <code>scatter</code></h2>
+<p>Labelled points on two numeric axes, optional quadrant lines and quadrant names; labels placed so that none overlaps a point or another label.</p>
+<p>Fields: x {label, min, max, ticks, unit, decimals, years}, y {the same}, points [{label, x, y, tone}], quadrants {x, y, names [top left, top right, bottom left, bottom right]}, height; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-scatter"><p class="viz-title">Benefits: uptake against satisfaction (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 412" width="700" height="412" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Benefits: uptake against satisfaction (fictional)"><text class="viz-colhead" x="8.0" y="17.6" text-anchor="start">satisfaction, 0 to 10</text><path class="viz-grid" d="M28.9,372.0 L688.0,372.0"/><text class="viz-ticklabel" x="22.9" y="375.6" text-anchor="end">5</text><path class="viz-grid" d="M28.9,304.0 L688.0,304.0"/><text class="viz-ticklabel" x="22.9" y="307.6" text-anchor="end">6</text><path class="viz-grid" d="M28.9,236.0 L688.0,236.0"/><text class="viz-ticklabel" x="22.9" y="239.6" text-anchor="end">7</text><path class="viz-grid" d="M28.9,168.0 L688.0,168.0"/><text class="viz-ticklabel" x="22.9" y="171.6" text-anchor="end">8</text><path class="viz-grid" d="M28.9,100.0 L688.0,100.0"/><text class="viz-ticklabel" x="22.9" y="103.6" text-anchor="end">9</text><path class="viz-grid" d="M28.9,32.0 L688.0,32.0"/><text class="viz-ticklabel" x="22.9" y="35.6" text-anchor="end">10</text><path class="viz-grid" d="M28.9,32.0 L28.9,372.0"/><text class="viz-ticklabel" x="28.9" y="388.0" text-anchor="middle">0%</text><path class="viz-grid" d="M138.7,32.0 L138.7,372.0"/><text class="viz-ticklabel" x="138.7" y="388.0" text-anchor="middle">10%</text><path class="viz-grid" d="M248.6,32.0 L248.6,372.0"/><text class="viz-ticklabel" x="248.6" y="388.0" text-anchor="middle">20%</text><path class="viz-grid" d="M358.4,32.0 L358.4,372.0"/><text class="viz-ticklabel" x="358.4" y="388.0" text-anchor="middle">30%</text><path class="viz-grid" d="M468.3,32.0 L468.3,372.0"/><text class="viz-ticklabel" x="468.3" y="388.0" text-anchor="middle">40%</text><path class="viz-grid" d="M578.1,32.0 L578.1,372.0"/><text class="viz-ticklabel" x="578.1" y="388.0" text-anchor="middle">50%</text><path class="viz-grid" d="M688.0,32.0 L688.0,372.0"/><text class="viz-ticklabel" x="688.0" y="388.0" text-anchor="end">60%</text><path class="viz-base" d="M28.9,372.0 L688.0,372.0"/><path class="viz-base" d="M28.9,32.0 L28.9,372.0"/><path class="viz-quad" d="M303.5,32.0 L303.5,372.0"/><path class="viz-quad" d="M28.9,202.0 L688.0,202.0"/><text class="viz-colhead" x="688.0" y="400.0" text-anchor="end">employees using it, %</text><g data-box=""><rect class="viz-lblbg" x="34.9" y="38.0" width="86.2" height="16.5"/><text class="viz-quadname" x="78.0" y="49.9" text-anchor="middle">loved, niche</text></g><g data-box=""><rect class="viz-lblbg" x="582.7" y="38.0" width="99.3" height="16.5"/><text class="viz-quadname" x="632.4" y="49.9" text-anchor="middle">loved, popular</text></g><g data-box=""><rect class="viz-lblbg" x="34.9" y="349.5" width="79.7" height="16.5"/><text class="viz-quadname" x="74.7" y="361.4" text-anchor="middle">weak, niche</text></g><g data-box=""><rect class="viz-lblbg" x="589.2" y="349.5" width="92.8" height="16.5"/><text class="viz-quadname" x="635.6" y="361.4" text-anchor="middle">popular, weak</text></g><circle class="viz-pt viz-t4" cx="446.3" cy="174.8" r="4.5"/><circle class="viz-pt viz-t4" cx="127.7" cy="127.2" r="4.5"/><circle class="viz-pt viz-t4" cx="512.2" cy="249.6" r="4.5"/><circle class="viz-pt viz-t4" cx="94.8" cy="161.2" r="4.5"/><circle class="viz-pt viz-t4" cx="182.7" cy="290.4" r="4.5"/><circle class="viz-pt viz-t4" cx="259.6" cy="208.8" r="4.5"/><circle class="viz-pt viz-t4" cx="655.0" cy="229.2" r="4.5"/><g data-box=""><rect class="viz-lblbg" x="135.7" y="118.2" width="55.4" height="18.0"/><text class="viz-label" x="163.4" y="131.5" text-anchor="middle">Therapy</text></g><g data-box=""><rect class="viz-lblbg" x="102.8" y="152.2" width="65.2" height="18.0"/><text class="viz-label" x="135.4" y="165.5" text-anchor="middle">Bike lease</text></g><g data-box=""><rect class="viz-lblbg" x="454.3" y="165.8" width="66.0" height="18.0"/><text class="viz-label" x="487.3" y="179.1" text-anchor="middle">Gym pass</text></g><g data-box=""><rect class="viz-lblbg" x="520.2" y="240.6" width="78.2" height="18.0"/><text class="viz-label" x="559.3" y="253.9" text-anchor="middle">Transit pass</text></g><g data-box=""><rect class="viz-lblbg" x="190.7" y="281.4" width="55.7" height="18.0"/><text class="viz-label" x="218.5" y="294.7" text-anchor="middle">Courses</text></g><g data-box=""><rect class="viz-lblbg" x="267.6" y="199.8" width="42.9" height="18.0"/><text class="viz-label" x="289.0" y="213.1" text-anchor="middle">Books</text></g><g data-box=""><rect class="viz-lblbg" x="582.2" y="220.2" width="64.8" height="18.0"/><text class="viz-label" x="614.6" y="233.5" text-anchor="middle">Meal card</text></g></svg></div><figcaption>The benefit categories of the tree above, by uptake and by a satisfaction survey. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;scatter&quot;,
+ &quot;title&quot;: &quot;Benefits: uptake against satisfaction (fictional)&quot;,
+ &quot;x&quot;: {
+  &quot;label&quot;: &quot;employees using it, %&quot;,
+  &quot;min&quot;: 0,
+  &quot;max&quot;: 60,
+  &quot;ticks&quot;: [
+   0,
+   10,
+   20,
+   30,
+   40,
+   50,
+   60
+  ],
+  &quot;unit&quot;: &quot;%&quot;
+ },
+ &quot;y&quot;: {
+  &quot;label&quot;: &quot;satisfaction, 0 to 10&quot;,
+  &quot;min&quot;: 5,
+  &quot;max&quot;: 10,
+  &quot;ticks&quot;: [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ &quot;points&quot;: [
+  {
+   &quot;label&quot;: &quot;Gym pass&quot;,
+   &quot;x&quot;: 38,
+   &quot;y&quot;: 7.9
+  },
+  {
+   &quot;label&quot;: &quot;Therapy&quot;,
+   &quot;x&quot;: 9,
+   &quot;y&quot;: 8.6
+  },
+  {
+   &quot;label&quot;: &quot;Transit pass&quot;,
+   &quot;x&quot;: 44,
+   &quot;y&quot;: 6.8
+  },
+  {
+   &quot;label&quot;: &quot;Bike lease&quot;,
+   &quot;x&quot;: 6,
+   &quot;y&quot;: 8.1
+  },
+  {
+   &quot;label&quot;: &quot;Courses&quot;,
+   &quot;x&quot;: 14,
+   &quot;y&quot;: 6.2
+  },
+  {
+   &quot;label&quot;: &quot;Books&quot;,
+   &quot;x&quot;: 21,
+   &quot;y&quot;: 7.4
+  },
+  {
+   &quot;label&quot;: &quot;Meal card&quot;,
+   &quot;x&quot;: 57,
+   &quot;y&quot;: 7.1
+  }
+ ],
+ &quot;quadrants&quot;: {
+  &quot;x&quot;: 25,
+  &quot;y&quot;: 7.5,
+  &quot;names&quot;: [
+   &quot;loved, niche&quot;,
+   &quot;loved, popular&quot;,
+   &quot;weak, niche&quot;,
+   &quot;popular, weak&quot;
+  ]
+ },
+ &quot;caption&quot;: &quot;The benefit categories of the tree above, by uptake and by a satisfaction survey. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-range">Range · <code>range</code></h2>
+<p>Competing estimates: per row a bar from the lowest to the highest estimate, an optional point estimate, and the source of each end.</p>
+<p>Fields: rows [{label, low, high, point, low_src, high_src, tone}], unit, decimals, min, max, ticks, xlabel; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-range"><p class="viz-title">Adoption of the new claims flow after six months, by client size (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 259" width="700" height="259" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Adoption of the new claims flow after six months, by client size (fictional)"><path class="viz-grid" d="M24.0,8.0 L24.0,237.0"/><text class="viz-ticklabel" x="24.0" y="251.0" text-anchor="middle">0%</text><path class="viz-grid" d="M187.0,8.0 L187.0,237.0"/><text class="viz-ticklabel" x="187.0" y="251.0" text-anchor="middle">25%</text><path class="viz-grid" d="M350.0,8.0 L350.0,237.0"/><text class="viz-ticklabel" x="350.0" y="251.0" text-anchor="middle">50%</text><path class="viz-grid" d="M513.0,8.0 L513.0,237.0"/><text class="viz-ticklabel" x="513.0" y="251.0" text-anchor="middle">75%</text><path class="viz-grid" d="M676.0,8.0 L676.0,237.0"/><text class="viz-ticklabel" x="676.0" y="251.0" text-anchor="middle">100%</text><text class="viz-label" x="8.0" y="19.3" text-anchor="start">Large clients</text><text class="viz-value" x="402.2" y="36.3" text-anchor="middle">58%</text><rect class="viz-rangebar viz-t4" x="317.4" y="40.0" width="163.0" height="10"/><path class="viz-est" d="M402.2,38.0 L409.2,45.0 L402.2,52.0 L395.2,45.0 z"/><g data-box=""><rect class="viz-lblbg" x="229.9" y="54.0" width="91.5" height="17.0"/><text class="viz-value" x="275.6" y="66.3" text-anchor="middle">45% · finance</text></g><g data-box=""><rect class="viz-lblbg" x="476.4" y="54.0" width="91.5" height="17.0"/><text class="viz-value" x="522.2" y="66.3" text-anchor="middle">70% · product</text></g><text class="viz-label" x="8.0" y="98.3" text-anchor="start">Mid-size clients</text><text class="viz-value" x="291.3" y="115.3" text-anchor="middle">41%</text><rect class="viz-rangebar viz-t4" x="219.6" y="119.0" width="208.6" height="10"/><path class="viz-est" d="M291.3,117.0 L298.3,124.0 L291.3,131.0 L284.3,124.0 z"/><g data-box=""><rect class="viz-lblbg" x="215.6" y="133.0" width="91.5" height="17.0"/><text class="viz-value" x="261.4" y="145.3" text-anchor="middle">30% · finance</text></g><g data-box=""><rect class="viz-lblbg" x="340.7" y="133.0" width="91.5" height="17.0"/><text class="viz-value" x="386.5" y="145.3" text-anchor="middle">62% · product</text></g><text class="viz-label" x="8.0" y="177.3" text-anchor="start">Small clients</text><text class="viz-value" x="200.0" y="194.3" text-anchor="middle">27%</text><rect class="viz-rangebar viz-t4" x="141.4" y="198.0" width="208.6" height="10"/><path class="viz-est" d="M200.0,196.0 L207.0,203.0 L200.0,210.0 L193.0,203.0 z"/><g data-box=""><rect class="viz-lblbg" x="137.4" y="212.0" width="91.5" height="17.0"/><text class="viz-value" x="183.1" y="224.3" text-anchor="middle">18% · finance</text></g><g data-box=""><rect class="viz-lblbg" x="275.3" y="212.0" width="78.7" height="17.0"/><text class="viz-value" x="314.7" y="224.3" text-anchor="middle">50% · sales</text></g></svg></div><figcaption>Three teams' forecasts for the IA7 claims redesign; the diamond is the planning figure. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;range&quot;,
+ &quot;title&quot;: &quot;Adoption of the new claims flow after six months, by client size (fictional)&quot;,
+ &quot;unit&quot;: &quot;%&quot;,
+ &quot;min&quot;: 0,
+ &quot;max&quot;: 100,
+ &quot;ticks&quot;: [
+  0,
+  25,
+  50,
+  75,
+  100
+ ],
+ &quot;rows&quot;: [
+  {
+   &quot;label&quot;: &quot;Large clients&quot;,
+   &quot;low&quot;: 45,
+   &quot;high&quot;: 70,
+   &quot;point&quot;: 58,
+   &quot;low_src&quot;: &quot;finance&quot;,
+   &quot;high_src&quot;: &quot;product&quot;
+  },
+  {
+   &quot;label&quot;: &quot;Mid-size clients&quot;,
+   &quot;low&quot;: 30,
+   &quot;high&quot;: 62,
+   &quot;point&quot;: 41,
+   &quot;low_src&quot;: &quot;finance&quot;,
+   &quot;high_src&quot;: &quot;product&quot;
+  },
+  {
+   &quot;label&quot;: &quot;Small clients&quot;,
+   &quot;low&quot;: 18,
+   &quot;high&quot;: 50,
+   &quot;point&quot;: 27,
+   &quot;low_src&quot;: &quot;finance&quot;,
+   &quot;high_src&quot;: &quot;sales&quot;
+  }
+ ],
+ &quot;caption&quot;: &quot;Three teams&#x27; forecasts for the IA7 claims redesign; the diamond is the planning figure. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-matrix-numeric">Matrix, numeric · <code>matrix</code></h2>
+<p>The matrix with numbers: each cell a value shaded in one tone by where it falls between the lowest and the highest, and a legend with the scale.</p>
+<p>Fields: numeric (true), cols [label], rows [{label, cells [number or null]}], tone, unit, decimals, min, max, scale_label; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-matrix viz-numeric"><p class="viz-title">Claims approved within 48 hours, % by client size (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700.0 174" width="700.0" height="174" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Claims approved within 48 hours, % by client size (fictional)"><text class="viz-colhead" x="160.7" y="15.6" text-anchor="middle">2025 Q1</text><text class="viz-colhead" x="242.4" y="15.6" text-anchor="middle">2025 Q2</text><text class="viz-colhead" x="324.1" y="15.6" text-anchor="middle">2025 Q3</text><text class="viz-colhead" x="405.9" y="15.6" text-anchor="middle">2025 Q4</text><text class="viz-colhead" x="487.6" y="15.6" text-anchor="middle">2026 Q1</text><text class="viz-colhead" x="569.4" y="15.6" text-anchor="middle">2026 Q2</text><text class="viz-colhead" x="651.1" y="15.6" text-anchor="middle">2026 Q3</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Large clients</text><g data-box=""><rect class="viz-t3 viz-h3" x="121.8" y="34.0" width="77.7" height="28.0"/><text class="viz-mark" x="160.7" y="51.8" text-anchor="middle">62%</text></g><g data-box=""><rect class="viz-t3 viz-h3" x="203.5" y="34.0" width="77.7" height="28.0"/><text class="viz-mark" x="242.4" y="51.8" text-anchor="middle">64%</text></g><g data-box=""><rect class="viz-t3 viz-h3" x="285.3" y="34.0" width="77.7" height="28.0"/><text class="viz-mark" x="324.1" y="51.8" text-anchor="middle">61%</text></g><g data-box=""><rect class="viz-t3 viz-h3" x="367.0" y="34.0" width="77.7" height="28.0"/><text class="viz-mark" x="405.9" y="51.8" text-anchor="middle">70%</text></g><g data-box=""><rect class="viz-t3 viz-h4" x="448.8" y="34.0" width="77.7" height="28.0"/><text class="viz-mark" x="487.6" y="51.8" text-anchor="middle">78%</text></g><g data-box=""><rect class="viz-t3 viz-h5" x="530.5" y="34.0" width="77.7" height="28.0"/><text class="viz-markon" x="569.4" y="51.8" text-anchor="middle">83%</text></g><g data-box=""><rect class="viz-t3 viz-h5" x="612.3" y="34.0" width="77.7" height="28.0"/><text class="viz-markon" x="651.1" y="51.8" text-anchor="middle">88%</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Mid-size clients</text><g data-box=""><rect class="viz-t3 viz-h2" x="121.8" y="66.0" width="77.7" height="28.0"/><text class="viz-mark" x="160.7" y="83.8" text-anchor="middle">55%</text></g><g data-box=""><rect class="viz-t3 viz-h2" x="203.5" y="66.0" width="77.7" height="28.0"/><text class="viz-mark" x="242.4" y="83.8" text-anchor="middle">57%</text></g><g data-box=""><rect class="viz-t3 viz-h2" x="285.3" y="66.0" width="77.7" height="28.0"/><text class="viz-mark" x="324.1" y="83.8" text-anchor="middle">58%</text></g><g data-box=""><rect class="viz-t3 viz-h3" x="367.0" y="66.0" width="77.7" height="28.0"/><text class="viz-mark" x="405.9" y="83.8" text-anchor="middle">63%</text></g><g data-box=""><rect class="viz-t3 viz-h4" x="448.8" y="66.0" width="77.7" height="28.0"/><text class="viz-mark" x="487.6" y="83.8" text-anchor="middle">71%</text></g><g data-box=""><rect class="viz-t3 viz-h4" x="530.5" y="66.0" width="77.7" height="28.0"/><text class="viz-mark" x="569.4" y="83.8" text-anchor="middle">76%</text></g><g data-box=""><rect class="viz-t3 viz-h5" x="612.3" y="66.0" width="77.7" height="28.0"/><text class="viz-markon" x="651.1" y="83.8" text-anchor="middle">81%</text></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Small clients</text><g data-box=""><rect class="viz-t3 viz-h1" x="121.8" y="98.0" width="77.7" height="28.0"/><text class="viz-mark" x="160.7" y="115.8" text-anchor="middle">44%</text></g><g data-box=""><rect class="viz-t3 viz-h1" x="203.5" y="98.0" width="77.7" height="28.0"/><text class="viz-mark" x="242.4" y="115.8" text-anchor="middle">47%</text></g><g data-box=""><rect class="viz-t3 viz-h1" x="285.3" y="98.0" width="77.7" height="28.0"/><text class="viz-mark" x="324.1" y="115.8" text-anchor="middle">46%</text></g><g data-box=""><rect class="viz-t3 viz-h2" x="367.0" y="98.0" width="77.7" height="28.0"/><text class="viz-mark" x="405.9" y="115.8" text-anchor="middle">52%</text></g><g data-box=""><rect class="viz-t3 viz-h2" x="448.8" y="98.0" width="77.7" height="28.0"/><text class="viz-mark" x="487.6" y="115.8" text-anchor="middle">60%</text></g><rect class="viz-track" x="530.5" y="98.0" width="77.7" height="28.0"/><g data-box=""><rect class="viz-t3 viz-h4" x="612.3" y="98.0" width="77.7" height="28.0"/><text class="viz-mark" x="651.1" y="115.8" text-anchor="middle">72%</text></g><text class="viz-colhead" x="8.0" y="157.6" text-anchor="start">scale</text><g data-box=""><rect class="viz-t3 viz-h1" x="52.6" y="142.0" width="52.6" height="24"/><text class="viz-mark" x="78.9" y="157.8" text-anchor="middle">40–50%</text></g><g data-box=""><rect class="viz-t3 viz-h2" x="109.2" y="142.0" width="52.6" height="24"/><text class="viz-mark" x="135.4" y="157.8" text-anchor="middle">50–60%</text></g><g data-box=""><rect class="viz-t3 viz-h3" x="165.7" y="142.0" width="52.6" height="24"/><text class="viz-mark" x="192.0" y="157.8" text-anchor="middle">60–70%</text></g><g data-box=""><rect class="viz-t3 viz-h4" x="222.3" y="142.0" width="52.6" height="24"/><text class="viz-mark" x="248.5" y="157.8" text-anchor="middle">70–80%</text></g><g data-box=""><rect class="viz-t3 viz-h5" x="278.8" y="142.0" width="52.6" height="24"/><text class="viz-markon" x="305.1" y="157.8" text-anchor="middle">80–90%</text></g></svg></div><figcaption>Approval speed before and after the claims redesign; the blank cell is a quarter with too few claims to report. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;matrix&quot;,
+ &quot;numeric&quot;: true,
+ &quot;title&quot;: &quot;Claims approved within 48 hours, % by client size (fictional)&quot;,
+ &quot;tone&quot;: 3,
+ &quot;unit&quot;: &quot;%&quot;,
+ &quot;min&quot;: 40,
+ &quot;max&quot;: 90,
+ &quot;cols&quot;: [
+  &quot;2025 Q1&quot;,
+  &quot;2025 Q2&quot;,
+  &quot;2025 Q3&quot;,
+  &quot;2025 Q4&quot;,
+  &quot;2026 Q1&quot;,
+  &quot;2026 Q2&quot;,
+  &quot;2026 Q3&quot;
+ ],
+ &quot;rows&quot;: [
+  {
+   &quot;label&quot;: &quot;Large clients&quot;,
+   &quot;cells&quot;: [
+    62,
+    64,
+    61,
+    70,
+    78,
+    83,
+    88
+   ]
+  },
+  {
+   &quot;label&quot;: &quot;Mid-size clients&quot;,
+   &quot;cells&quot;: [
+    55,
+    57,
+    58,
+    63,
+    71,
+    76,
+    81
+   ]
+  },
+  {
+   &quot;label&quot;: &quot;Small clients&quot;,
+   &quot;cells&quot;: [
+    44,
+    47,
+    46,
+    52,
+    60,
+    null,
+    72
+   ]
+  }
+ ],
+ &quot;caption&quot;: &quot;Approval speed before and after the claims redesign; the blank cell is a quarter with too few claims to report. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
 }
 ```</pre></details></div>

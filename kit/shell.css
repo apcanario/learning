@@ -16,14 +16,15 @@
       4d era ribbon  4e rule blocks and parts  4f root home  4g changelog
       4h learner home (resume card, new since, track jump, folded planned lists)
       4i figures (kit/viz.py: timeline, compare, tree, flow; since 5.2 sitemap, objects, decision,
-         matrix, states, swimlanes, wireflow; classes only, no colour attributes)
+         matrix, states, swimlanes, wireflow; since 5.4 line, bars, scatter, range, the numeric matrix
+         and the phone scroll frame; classes only, no colour attributes)
    8  Swiss pass (version 5): type scale up, colour as a field, hard corners, rules not shadows
    5  Components added for hubs (the history site has no equivalent)
    6  Responsive: tablet (from 768 px) and desktop (from 1100 px); the phone
       layout below 768 px is the one every rule above describes and does not change
    7  Interaction: hover and pressed states for every clickable thing, on devices
       that can hover; equal-height catalogue cards with the button on one line
-   Version 5.3, 29 Oct 2026 (P40): 4i's A8 text classes win over .viz text. Version 5.2, 29 Oct 2026 (V1): 4i adds the classes of the seven IA figure kinds. Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
+   Version 5.4, 29 Oct 2026 (P44): 4i adds the data kinds' classes and the phone rule (natural size, sideways scroll in the frame, fade and cue). Version 5.3, 29 Oct 2026 (P40): 4i's A8 text classes win over .viz text. Version 5.2, 29 Oct 2026 (V1): 4i adds the classes of the seven IA figure kinds. Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -443,6 +444,29 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 .viz-screen{fill:var(--card);stroke:var(--c);stroke-width:1.5}                  /* a wireflow screen's frame */
 .viz-ph{fill:var(--line-2)}                                                     /* a content placeholder on a screen */
 .viz-btn{fill:none;stroke:var(--c);stroke-width:1.25}                           /* a button on a screen */
+/* the data kinds (P44, 29 Oct 2026): line (figure class .viz-linechart), bars, scatter, range and the numeric matrix (.viz-numeric on the figure). Their text reuses .viz-label,
+   .viz-value, .viz-ticklabel, .viz-colhead and .viz-note; legends and point labels sit on .viz-lblbg plates. */
+.viz-grid{stroke:var(--line);stroke-width:1;fill:none}                          /* a gridline at an axis tick */
+.viz-base{stroke:var(--line-2);stroke-width:1.25;fill:none}                     /* an axis line or the zero line of a bar chart */
+.viz-series{stroke:var(--c);stroke-width:2;fill:none;stroke-linejoin:round;stroke-linecap:round}  /* one series of a line chart */
+.viz-pt{fill:var(--c);stroke:var(--card);stroke-width:1.5}                      /* a data point: line, scatter */
+.viz-annot{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;fill:none}   /* an annotation's vertical on a line chart */
+.viz-quad{stroke:var(--line-2);stroke-width:1.25;stroke-dasharray:5 4;fill:none}/* a quadrant line on a scatter */
+.viz .viz-quadname{font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;fill:var(--dim)}  /* a quadrant's name */
+.viz .viz-onvalue{font-family:var(--mono);font-size:10.5px;fill:var(--on-accent)} /* a value inside a filled bar segment */
+.viz-rangebar{fill:color-mix(in srgb,var(--c) 45%,var(--card));stroke:var(--c);stroke-width:1.25}  /* a low-to-high range */
+.viz-est{fill:var(--fg);stroke:var(--card);stroke-width:1.5}                    /* a range's point estimate */
+.viz-h1{fill:color-mix(in srgb,var(--c) 10%,var(--card))}.viz-h2{fill:color-mix(in srgb,var(--c) 25%,var(--card))}.viz-h3{fill:color-mix(in srgb,var(--c) 42%,var(--card))}.viz-h4{fill:color-mix(in srgb,var(--c) 60%,var(--card))}.viz-h5{fill:var(--c)}  /* numeric matrix: five shades of one tone, low to high */
+.viz .viz-markon{font-family:var(--mono);font-size:10.5px;fill:var(--on-accent)}  /* a number on the full-tone shade (the four lighter ones take .viz-mark) */
+/* a figure on a phone (P44, Pedro 29 Oct 2026): below 768 px the drawing keeps its natural size, one SVG unit to one CSS
+   pixel, and scrolls sideways inside its frame, never the page; shell.js marks the frame (data-more l, r or lr: a fade on
+   the edge with more drawing) and shows the cue line only when the drawing is wider than its frame */
+.viz-scroll{position:relative;-webkit-overflow-scrolling:touch}
+.viz-scroll[data-more="r"]{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 36px),transparent)}
+.viz-scroll[data-more="l"]{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 36px),transparent)}
+.viz-scroll[data-more="lr"]{-webkit-mask-image:linear-gradient(to right,transparent,#000 36px,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(to right,transparent,#000 36px,#000 calc(100% - 36px),transparent)}
+.viz-cue{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);margin:8px 0 0}  /* "scroll sideways for the whole figure" */
+@media (max-width:767.98px){.viz svg,.viz-timeline svg,.viz-flow svg,.viz-wide svg{width:auto;min-width:0;max-width:none}}
 
 /* 4g · changelog page: one card per session, newest open */
 .log code{font-family:var(--mono);font-size:.84em;color:var(--fg);overflow-wrap:anywhere;background:none;border:0;padding:0}

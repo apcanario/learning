@@ -17,7 +17,8 @@ a Brand + AI course and its reading and build pages, every course's "How it was 
 shell, one row per written report or unit), the drawer groups (tracks open by default, a course's units as an
 accordion) and the Backlog page; the same panel checks again in the light theme. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
-its own) and the top bar spans the content column. With --shots, saves dark and light screenshots at the three widths
+its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
+and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots at the three widths
 of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home).
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
@@ -48,7 +49,8 @@ def ready(pg):
 SHOTS = pathlib.Path(sys.argv[sys.argv.index('--shots') + 1]) if '--shots' in sys.argv else None
 PAGES = [a for i, a in enumerate(sys.argv) if i > 0 and sys.argv[i - 1] == '--page']   # extra panels to screenshot
 GAP = 6
-VX_FIGS = 11   # V1: the examples page carries one figure per kind: four from A8, seven for the IA course
+VX_FIGS = 16   # the examples page carries one figure per kind: four from A8, seven for the IA course (V1), four data kinds
+               # and the numeric matrix (P44)
 VIEWPORTS = [('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
 SIDE = 300  # desktop sidebar width (theme.css --side)
 
@@ -97,10 +99,37 @@ TARGET_JS = r'''(scope) => {
   return [...new Set(small)].slice(0, 15);
 }'''
 
+# P44: at phone width every figure draws at its natural size (one SVG unit to one CSS pixel) inside its .viz-scroll
+# frame; the frame's scroll reaches the whole drawing (scrolled to the end, the drawing's right edge is inside the frame);
+# the cue line under the frame shows exactly when the drawing is wider than the frame, and such a frame starts faded on
+# the right (data-more="r"). At desktop width (figures scale to the column) the cue and the fade show only on a figure
+# wider than its frame and on no other. Runs on the visible panel after its <details> are opened (two frames for shell.js to mark).
+FRAME_JS = r'''async ([scope, phone]) => {
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const bad = []; let n = 0, over = 0;
+  document.querySelectorAll(scope + ' .viz-scroll').forEach(f => {
+    const svg = f.querySelector('svg'); if (!svg || f.clientWidth === 0) return; n++;
+    const fig = f.closest('figure'), kind = [...fig.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide');
+    const nat = svg.viewBox.baseVal.width, w = svg.getBoundingClientRect().width;
+    if (phone && Math.abs(w - nat) > 0.6) bad.push(`${kind}: drawn ${w.toFixed(1)} px wide, natural ${nat}`);
+    f.scrollLeft = f.scrollWidth;
+    const fr = f.getBoundingClientRect(), sr = svg.getBoundingClientRect();
+    if (sr.right > fr.right + 1 || f.scrollWidth < Math.floor(w) - 1) bad.push(`${kind}: scroll ${f.scrollWidth} px does not reach the drawing (${w.toFixed(0)} px)`);
+    f.scrollLeft = 0; f.dispatchEvent(new Event('scroll'));
+    const o = w > f.clientWidth + 1, cue = f.nextElementSibling;
+    const shown = !!cue && cue.classList.contains('viz-cue') && !cue.hidden && cue.offsetHeight > 0;
+    if (o) over++;
+    if (o !== shown) bad.push(`${kind}: drawing ${w.toFixed(0)} px in a ${f.clientWidth} px frame, cue ${shown ? 'shown' : 'not shown'}`);
+    if (o && f.getAttribute('data-more') !== 'r') bad.push(`${kind}: an overflowing frame at its start is marked ${f.getAttribute('data-more')}, expected r`);
+    if (!o && f.hasAttribute('data-more')) bad.push(`${kind}: a frame that fits is marked ${f.getAttribute('data-more')}`);
+  });
+  return {n, over, bad: bad.slice(0, 8)};
+}'''
+
 def check_panels(pg, label, fails):
     """Every panel, every <details> open: horizontal scroll, 6 px gaps, 44 px targets. Returns (tightest gap, panel count)."""
     ids = pg.eval_on_selector_all('.panel', 'ps => ps.map(p => p.id)')
-    worst = []
+    worst, frames = [], [0, 0]
     for pid in ids:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(30)
         if pg.evaluate(f"document.getElementById('{pid}').hasAttribute('data-failed')"): fails.append(f'{label} {pid}: the report did not load')
@@ -109,11 +138,17 @@ def check_panels(pg, label, fails):
         if sw[0] > sw[1]: fails.append(f'{label} {pid}: horizontal scroll {sw}')
         res = pg.evaluate(BOX_JS, [f'#{pid}', GAP])
         if res['nbad']: fails.append(f'{label} {pid}: {res["nbad"]} boxes closer than {GAP}px: ' + '; '.join(res['bad']))
+        if label.startswith('phone') or label == 'desktop':
+            fr = pg.evaluate(FRAME_JS, [f'#{pid}', label.startswith('phone')])
+            frames[0] += fr['n']; frames[1] += fr['over']
+            if fr['bad']: fails.append(f'{label} {pid}: figure frames: ' + '; '.join(fr['bad']))
         small = pg.evaluate(TARGET_JS, f'#{pid}')
         if small: fails.append(f'{label} {pid}: {len(small)} targets under 44px: ' + '; '.join(small[:6]))
         worst.append((res['min'], pid, res['n']))
     m = min(worst)
-    print(f'{label}: panels checked: {len(ids)}; tightest stacked gap {m[0]}px ({m[1]})')
+    print(f'{label}: panels checked: {len(ids)}; tightest stacked gap {m[0]}px ({m[1]})'
+          + (f'; {frames[0]} figure frames at natural size, {frames[1]} scrolling with the cue' if label.startswith('phone') else
+             f'; {frames[0]} figure frames, {frames[1]} wider than their frame with the cue, the rest without' if label == 'desktop' else ''))
     return m[0], len(ids)
 
 FONTS = R / 'fonts'
@@ -266,7 +301,7 @@ def check_split(br, fails):
 FIG_JS = r'''(sel) => {
   const out = []; const figs = [...document.querySelectorAll(sel + ' figure.viz')];
   figs.forEach(f => {
-    const kind = [...f.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide').slice(4);
+    const kind = [...f.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide').slice(4) + (f.classList.contains('viz-numeric') ? '-numeric' : '');
     const svg = f.querySelector('svg'), vb = svg.viewBox.baseVal, T = 0.6;
     [...svg.children].forEach(el => { if (el.tagName === 'defs') return; const b = el.getBBox();
       if (b.width + b.height === 0) return;
@@ -282,11 +317,11 @@ FIG_JS = r'''(sel) => {
       if (w > 0.6 && h > 0.6) out.push(`${kind}: boxes overlap ("${boxes[i][0].textContent.slice(0, 24)}" and "${boxes[j][0].textContent.slice(0, 24)}")`);
     }
   });
-  return {n: figs.length, kinds: figs.map(f => [...f.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide').slice(4)), bad: out};
+  return {n: figs.length, kinds: figs.map(f => [...f.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide').slice(4) + (f.classList.contains('viz-numeric') ? '-numeric' : '')), bad: out};
 }'''
 
 def check_figures(br, fails):
-    """The examples page (V1) through the shell: eleven figures, one per kind, and the geometry of each (FIG_JS)."""
+    """The examples page (V1) through the shell: VX_FIGS figures, one per kind, and the geometry of each (FIG_JS)."""
     errs = []
     ctx, pg, _ = new_page(None, br, errs, 'figures', 390, 844, True)
     pg.evaluate("location.hash = 'viz-examples'"); ready(pg); pg.wait_for_timeout(200)
