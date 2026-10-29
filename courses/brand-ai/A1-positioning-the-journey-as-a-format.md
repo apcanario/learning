@@ -9,7 +9,7 @@ search: off
 
 # A1 · Positioning: the journey as a format
 
-Search was off for this unit. It was used on 28 October 2026 only to verify the creators' numbers and descriptions, the platforms' name and character rules, three academic citations, and whether the two vlog episodes could be found. Channel counts are live figures and carry the date of the page they come from. A2 owns the audience, A6 the platform mechanics and A9 the benchmarks; this unit points to them by section.
+Search was off for this unit. It was used on 28 October 2026 only to verify the creators' numbers and descriptions, the platforms' name and character rules, three academic citations, and whether the two vlog episodes could be found; on 29 October 2026 the two episodes were read in Chrome and §6 rewritten from them (with the deliverable lines that changed). Channel counts are live figures and carry the date of the page they come from. A2 owns the audience, A6 the platform mechanics and A9 the benchmarks; this unit points to them by section.
 
 ## 1 · What a positioning is, and what it is not
 
@@ -123,23 +123,29 @@ How the five, or any of the similar channels listed in DD-A1's brief, grew month
 
 ## 6 · The two vlog episodes against the positioning
 
-The episodes could not be opened. On 28 October 2026 web searches for both exact titles, including searches restricted to youtube.com, returned other videos and, for the first title, John C. Maxwell's book and videos about it; YouTube's own search page refuses automated fetching. The channel name and handle are not known to this unit. What follows is an analysis of the two titles only, and it says nothing about what the episodes contain.
+Both episodes were read on 29 October 2026 in Chrome, which YouTube does not refuse as it refuses the fetch tool: the channel page, each watch page (title, date, length, description) and YouTube's auto-generated English captions, the only caption track on either video. The captions are a machine transcription, with gaps under music. Everything read is kept, verbatim and timestamped, in `audits/brand-ai/evidence/A1-episodes-2026-10-29.md`.
 
-**Episode 1: "Sometimes You Win, Sometimes You Learn. Mostly It Sucks".** The first two clauses are a stock saying: the earliest use Barry Popik records is a tweet of 10 September 2007, and John C. Maxwell published a book titled *Sometimes You Win, Sometimes You Learn* in 2013 ([Barry Popik, The Big Apple](https://barrypopik.com/blog/sometimes_you_win_sometimes_you_learn)). The third clause is his.
+**The channel.** It is "Pedro Canário", handle @apcanario, with the About line "Documenting sports and creative endeavours as I go!"; YouTube's header showed 17 subscribers and 11 videos (owner view, 29 Oct 2026). The Videos tab lists five long-form videos: the two episodes, published two days apart, and three uploads from 11 to 13 years ago. Both descriptions give Instagram as @apcanario. None of the channel's public playlists is the series.
 
-- *Expresses the positioning:* "Mostly It Sucks" is the rule that failures stay in the record, put in the title. It refuses the motivational ending the saying usually carries, which matches the brief's tone.
-- *Contradicts or misses it:* the title names no journey, no syllabus and no artefact, so a stranger cannot tell from it that this is a karate season, or that a method is being run. The first two thirds belong to a book, which is what a search for the title returned (my observation above). On A6's playbook rule 1, it is a browse-shaped title with no words a stranger would type.
+**The titles are not the ones the brief gives.** Episode 1 is published as "Sometimes You Win, Sometimes You Learn To Lose | Karate Vlog: Road to WIKF Global Cup 2026, Ep. 1"; the brief's "Mostly It Sucks" survives in the description ("nobody tells you how much the learning part sucks"). Episode 2 keeps the brief's wording and adds the same suffix. Both titles therefore carry a series name, the sport, the event and an episode number, which the brief's wording does not show.
 
-**Episode 2: "Being a Better Athlete Made Me a Worse Person".** A confession of cost, built on a reversal.
+**Episode 1** (11 October 2026, 4:06; [YouTube](https://www.youtube.com/watch?v=ZzUAtWkMoWo)). Tournament day, his first competition in 17 years: he says the last was at 17 and he is now 34. The stated goal is to have fun and "get the rust out". He loses; the captions have him say his mind was there and his body was not responding, and that he liked being out there but not what he was doing. He names six months of hard practice and closes on pride in the work rather than the result. The description adds the frame: a job, a partner, a family, a comeback two years in, and an audience, "If you're 30–45 and chasing something late". The first two clauses of the title are still a stock saying: the earliest use Barry Popik records is a tweet of 10 September 2007, and John C. Maxwell published a book titled *Sometimes You Win, Sometimes You Learn* in 2013 ([Barry Popik, The Big Apple](https://barrypopik.com/blog/sometimes_you_win_sometimes_you_learn)).
 
-- *Expresses the positioning:* it records what the pursuit cost, which is the record stage at its most honest, and it is the kind of outcome a syllabus never plans for.
-- *Contradicts or misses it:* the subject of the sentence is the person ("made me"); the method is absent. A stranger would repeat "the guy who says sport made him worse", a confessional identity the positioning does not claim and A4's disclosure policy has to govern. Like episode 1, it names no sport and no stage.
+- *Expresses the positioning:* the record stage, fully. The loss is the episode, not a footnote to it, and the miss is named on camera, which is §3's third fixed element in practice. Consumed is there in what he says (six months of practice, the people who rallied round). The constraint the expansion names (a full-time job and the people carrying the cost) is in the description.
+- *Contradicts or misses it:* there is no syllabus. The goal is a feeling ("have fun"), the six months are said, not shown, and nothing says where this tournament sits in a plan or what changes next because of the loss. The series suffix is a season label in all but name (sport, end event, episode number), so the first fixed element is half there: in the title, not in a playlist, and not in the first ten seconds, which open on leaving the house at 7 a.m. On A6's rule 1 the suffix also adds words a stranger would type ("karate vlog", "WIKF Global Cup"), which the brief's version of the title lacked.
 
-**Read together.** Both titles carry the brand's tone and its rule about failure; neither carries its method. They read as the end of the template (record, verdict) with the beginning (consumed, syllabus) missing. That is consistent with a first season that was not yet built as a format; the template in §3 fixes it from the next episode on. For the two episodes already out, A6's rule 5 keeps them public, and the cheapest fix is metadata: add both to a "Season 1 · Karate" playlist and open each description with the season label, so a viewer who arrives from the half-marathon season can place them. That is his rule from YouTube's series tip, untested.
+**Episode 2** (13 October 2026, 5:54; [YouTube](https://www.youtube.com/watch?v=o5fitxW62Ng)). Recorded, the description says, the day before he flew to Poland for the WKF Cadet, Junior and U21 World Championships, ten days before the Global Cup. He is tired, says he snapped at the people around him and has done so more often lately, and asks which matters more, being better physically or worse emotionally; he says he does not have the answer. He sets himself against the "David Goggins mentality" of pushing through regardless (the description: "Not the Goggins version"). The plan for the week is rest. The last minute turns from training to the sudden death of someone he had promised to visit when this was over; the description says the ending is not the one he planned.
+
+- *Expresses the positioning:* the record with nothing taken out. Both the miss (snapping, named as his) and an event no plan contained stay in. It is also the clearest contrast either episode offers a stranger: the opposite of the push-through fitness channel, in one line the description already writes.
+- *Contradicts or misses it:* the method is absent again. No session is shown, no syllabus, no stage; the subject of the title is the person ("made me"), and the episode is a question, not a step in a journey. What it discloses (the cost to his relationships, a bereavement) is published already; how far the channel goes with that kind of material is A4's disclosure policy to set, not this unit's.
+
+**Read together.** The episodes position something coherent, and it is not yet the method. After either one, a stranger would say "a guy in his mid-thirties back in karate competition after 17 years, with a job and a family, honest about what it costs". That passes §1's one-sentence test. It fails §2's: it is a topic and a situation, and it ends with the karate season. Two parts of it carry across to the half marathon unchanged: the honesty about cost, which is the record stage, and the audience line "chasing something late", which names who the method is for without naming a topic. The two missing parts are the two that make the method visible: the syllabus (stage 2) and the artefact (stage 5, which these two episodes could not reach). His rules from this, untested: keep the audience line in every description, and put the syllabus on screen from the next season's first episode (§3).
+
+**For the two already out.** A6's rule 5 keeps them public. The titles already do the labelling, so no rename is needed. What is missing is a public playlist under the series name, "Road to WIKF Global Cup 2026", holding both episodes in order, so a viewer who arrives later from the half-marathon season can find season one as a unit. That is his rule from YouTube's series tip, untested.
 
 ## Deliverable · Positioning statement, channel name and profile copy
 
-Built from §1–§6, 28 October 2026. Nothing below claims an audience size, a growth rate or a name's availability that this unit did not check.
+Built from §1–§6, 28 October 2026; the lines §6 changed were revised on 29 October 2026. Nothing below claims an audience size, a growth rate or a name's availability that this unit did not check.
 
 ### The positioning statement
 
@@ -155,27 +161,27 @@ Built from §1–§6, 28 October 2026. Nothing below claims an audience size, a 
 |---|---|---|---|
 | Consumed | First stage only | Yes | YouTube @Consumed taken; Instagram not checked |
 | Syllabus of One | Its distinctive stage | Yes | @thesyllabus taken; @syllabusofone unconfirmed on YouTube; Instagram not checked |
-| His own name | No; titles and series carry it | Yes | Not checked |
+| His own name | No; titles and series carry it | Yes | In use now: the channel is "Pedro Canário", @apcanario; Instagram @apcanario per the episode descriptions (read 29 Oct 2026) |
 
-**Pick: Syllabus of One.**
+**Pick: Syllabus of One, as the channel name; keep the handle @apcanario.**
 - Names the stage none of the five comparables names.
 - Holds karate, running, weight and history under one method.
-- Change is reversible: YouTube allows two renames per fortnight.
+- Handle stays: YouTube keeps handles "distinct from channel names".
 
-Override if: @syllabusofone is taken on YouTube or Instagram; then use his own name with "Syllabus of One" as the series name.
+Override if: he would rather not put the three 2011–2013 uploads under the new name and will not hide them; then keep "Pedro Canário" and make "Syllabus of One" the series name.
 
-Before renaming: confirm the handle on both platforms by trying to claim it, and note that a rename removes a verification badge if the channel has one.
+Before renaming: decide what happens to the three old uploads on the Videos tab, which sit outside the format; note that YouTube allows two name changes in 14 days and that a rename removes a verification badge if the channel has one ([YouTube Help, answer 2657964](https://support.google.com/youtube/answer/2657964?hl=en)). The handle rule is [YouTube Help, answer 11585688](https://support.google.com/youtube/answer/11585688?hl=en). @syllabusofone no longer has to be free.
 
 ### YouTube channel description
 
-Limit: 1,000 characters for the channel description, per the YouTube Data API documentation ([Channels resource](https://developers.google.com/youtube/v3/docs/channels)); YouTube's Help page on names and descriptions states no limit. The text below is 777 characters including line breaks (counted by script).
+Limit: 1,000 characters for the channel description, per the YouTube Data API documentation ([Channels resource](https://developers.google.com/youtube/v3/docs/channels)); YouTube's Help page on names and descriptions states no limit. The text below is 794 characters including line breaks (counted by script).
 
 ```
 One pursuit at a time, from the first obsession to the finished thing.
 
 I get consumed by something, write myself a syllabus for it, record the whole attempt, and ship what comes out the other end. The failures stay in.
 
-Season 1 was karate: Wado-Ryū and kumite, ending at the WIKF Global Cup in October 2026.
+Season 1 was karate: Road to WIKF Global Cup 2026, Wado-Ryū and kumite, ending in Athens in October 2026.
 Season 2 is the half marathon: under 1:45 in 2027.
 A self-taught history course runs alongside.
 
@@ -201,14 +207,14 @@ Now: sub-1:45 half marathon.
 ADHD · Porto
 ```
 
-Display name for the profile: Syllabus of One (or his own name, under the override).
+Display name for the profile: Syllabus of One (or his own name, under the override); the username stays @apcanario.
 
 ## Writer's unsure list
 
 Fresh check 29 Oct 2026 (Fable 5.1): fix · 1 error, 4 should-fix, 6 minor; all applied (finding 5 needs no text change: §6 waits for the episodes, backlog row B-1a); report `audits/brand-ai/fresh-check-A1.md`.
 
-1. The two vlog episodes and the channel could not be found or opened; §6 analyses the titles only, and the channel's current name is unknown.
-2. Handle availability for @syllabusofone (YouTube) and every Instagram handle is unconfirmed; the fetch tool could not read those pages. @Consumed and @thesyllabus were confirmed in use.
+1. Channel: "Pedro Canário", @apcanario (https://www.youtube.com/@apcanario), read in Chrome on 29 Oct 2026 with both episodes. §6 rests on YouTube's auto-generated captions, a machine transcription with gaps under music; one stretch of episode 2 (about 3:11–3:41) was cut off in the read. The brief's title for episode 1 differs from the published title; §6 uses the published one. Instagram @apcanario is taken from the descriptions; the profile was not opened.
+2. Handle availability for @syllabusofone (YouTube) and every Instagram handle other than @apcanario is unconfirmed; the fetch tool could not read those pages. @Consumed and @thesyllabus were confirmed in use. Since 29 Oct 2026 the pick keeps @apcanario, so @syllabusofone matters only if he wants the handle changed too.
 3. The Instagram 150-character bio and 30-character username limits rest on third-party pages (Bitly, NapoleonCat) that cite no Instagram source; no official Instagram page found states them.
 4. The YouTube 1,000-character description limit comes from the Data API reference for the `description` property; that Studio enforces the same limit is assumed and unconfirmed.
 5. The Ries and Trout definition is paraphrased from the 1981 book; the wording was checked only against Graham Mann's notes; the book was not opened.
