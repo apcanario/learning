@@ -20,7 +20,7 @@ Order decided 28 October 2026 (`academy.md` AD4, reworked after the Brand + AI h
 
 | # | Unit | Model | Prompt |
 |---|---|---|---|
-| B-6 | A3 · The journey system (search off) | Opus 5.5 write · Fable 5.1 fresh check | Next in the hub's build order (#10, named in B-5's prompt). Same procedure as DD-B3 (`docs/CHANGELOG.md`, 29 Oct 2026): `skills/write-unit` with the A3 brief from the hub's Build · Briefs page, a fresh check per `skills/audit-units` §3b, file per `skills/file-unit`. Then B5, A4, then Audit 3. |
+| B-7 | B5 · Skills and automation (search off) | Opus 5.5 write · Fable 5.1 fresh check | Same procedure as B-6 (`docs/CHANGELOG.md`, 29 Oct 2026): `skills/write-unit` with the B5 brief from the hub's Build · Briefs page, a fresh check per `skills/audit-units` §3b, file per `skills/file-unit`. Then A4, then Audit 3. |
 
 Dropped 28 October 2026: S2 (`generator/build_hub.py` exists; A3 absorbs it).
 
