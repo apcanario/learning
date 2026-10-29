@@ -1,6 +1,6 @@
 ---
 name: audit-units
-description: Run a Learning Project audit with Fable 5.1: the four-unit stratified-sample audit, the six-month staleness check, or the per-unit fresh check of a Brand + AI unit. Use when an audit or fresh check is due.
+description: "Run a Learning Project audit with Fable 5.1: the four-unit stratified-sample audit, the six-month staleness check, or the per-unit fresh check of a Brand + AI unit. Use when an audit or fresh check is due."
 ---
 
 # Audit units
