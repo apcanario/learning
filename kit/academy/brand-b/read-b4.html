@@ -1,0 +1,493 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#brand-b" data-target="brand-b">Course B · Building with AI</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">B4</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI</span> · B4 <span class="pill live">B4</span></div>
+    <h1>Context engineering</h1>
+    <nav class="toc" aria-label="Sections"><a href="#read-b4-0">1 · The layers in claude.ai, and what belongs in each</a><a href="#read-b4-1">2 · Hot, warm and cold: why the vault/index split exists</a><a href="#read-b4-2">3 · What loads every turn, what loads on demand, and what each costs</a><a href="#read-b4-3">4 · When to start a new chat, and when not to</a><a href="#read-b4-4">5 · How a project rots, and how to stop it</a><a href="#read-b4-5">Deliverable · Project-structure audit</a><a href="#read-b4-6">Writer's unsure list</a><a href="#read-b4-7">Sources</a></nav>
+  </header>
+  <p class="lede">Unit B4, written 29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to check claude.ai and Claude Code behaviour against Anthropic's help centre and docs, dated that day); fresh check by Fable 5.1 in a separate context: fix, 0 errors, 7 should-fix, 9 minor, all applied. Deliverable: an audit of the Learning Project's own structure, every size and count measured from the repository, seventeen findings with evidence and fix, revised project instructions, a rot check, and the fix list ranked by effort. Known gaps, from the writer's unsure list: whether the Project's knowledge is in retrieval mode is inferred, not observed; connector and memory costs per chat are undocumented; Claude Code guidance is applied to claude.ai by analogy; effort figures are the writer's estimates.</p>
+  <div class="report"><p>The evidence in this unit is of three kinds, labelled where it appears. <strong>Product documentation</strong> is Anthropic's help centre and developer documentation on how claude.ai and Claude Code behave; each page was opened on 29 October 2026 and is cited for that day, since most help-centre pages carry only a relative "updated" label. Where the documentation is silent, the unit says <em>undocumented</em>. <strong>Vendor guidance</strong> is Anthropic's advice on how to use its products, which states what it recommends without publishing a measurement. <strong>His setup</strong> is the Learning Project and its repository as they stood on 29 October 2026, at commit <code>b4fea09</code> of <code>apcanario/learning</code>; every size and count about it was measured from the repository by script, and each says how. A few facts were observed in the session that wrote this unit, which runs attached to the Project; they are labelled <em>observed</em> and cannot be opened as a source. The unit was written with search off; searches were used only to check product behaviour and find the real URL of each source. What a context window is, the 200K window on claude.ai, the 2.7-characters-per-token arithmetic, why every turn re-sends the whole chat, and the layer map of his setup are in B1 (§1, §2, §6, §7). Why a brief that arrives in pieces does worse, and why unrelated tasks belong in separate prompts, are in B3 (§4, §5). This unit assumes them.</p>
+<h2 id="read-b4-0">1 · The layers in claude.ai, and what belongs in each</h2>
+<p>B1 §6 placed each layer in the context window by who writes it and how far it reaches. This section asks the next question: given what each layer is, what should go into it.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Scope</th>
+<th>When it enters the window</th>
+<th>What belongs there</th>
+<th>What does not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Profile preferences</td>
+<td>Every chat on the account</td>
+<td>Every chat</td>
+<td>Rules about him that hold everywhere: tone, format, decision style</td>
+<td>Anything true only in one Project</td>
+</tr>
+<tr>
+<td>Project instructions</td>
+<td>Chats in one Project</td>
+<td>Every chat in the Project</td>
+<td>The few rules that must hold in every chat of the Project, and where everything else is</td>
+<td>Procedures, lists that change, copies of other files</td>
+</tr>
+<tr>
+<td>Project files (knowledge)</td>
+<td>Chats in one Project</td>
+<td>Loaded whole while small; searched once near the window limit</td>
+<td>Reference material every chat in the Project needs whole</td>
+<td>Records, superseded drafts, build inputs, anything a chat can fetch by path</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Account, plus one store per Project</td>
+<td>Carried into new chats; how much is undocumented</td>
+<td>Facts about him that come up unprompted</td>
+<td>Rules, and anything already in a file</td>
+</tr>
+<tr>
+<td>Skills</td>
+<td>Account</td>
+<td>Name and description every chat; body when a request matches</td>
+<td>Multi-step procedures for one kind of task</td>
+<td>Facts and standing rules</td>
+</tr>
+<tr>
+<td>Connectors</td>
+<td>Account</td>
+<td>All at the start, or on demand, by setting</td>
+<td>Live access to an outside service</td>
+<td>Anything a chat never uses</td>
+</tr>
+<tr>
+<td>Scheduled tasks</td>
+<td>Account</td>
+<td>Their own session, run by run</td>
+<td>Unattended, repeatable jobs with a clear outcome</td>
+<td>Work that needs a judgement mid-run</td>
+</tr>
+</tbody>
+</table></div>
+<p>The first three columns are documented; the last two are my synthesis of the sources for each row, as read on 29 October 2026:</p>
+<p><strong>Preferences and project instructions.</strong> Anthropic's help centre says preferences are "applied to all of your conversations with Claude" and that project instructions "only apply to chats within that project"; it states no order of precedence and says the features can be used "independently or in combination" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10185728">Claude Help Center, <em>Understanding Claude's personalization features</em></a>; product documentation). The projects article says "Claude will use these instructions for all the chats within the project" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/9519177">Claude Help Center, <em>How can I create and manage projects?</em></a>). Since no precedence is documented (B1 §6), a rule that the narrower layer must win has to be written into the narrower layer, and ideally into the wider one too. That is the fix in §5.</p>
+<p><strong>Project files.</strong> "Anything you upload to this space will be used across all of your chats within that project" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/9519177">projects article</a>). The same article adds the limit that matters for planning: "Context is not shared across chats within a project unless the information is added into the project knowledge base." Two help pages describe how the files reach a chat, and they do not say the same thing.</p>
+<blockquote>
+<p><strong>Where sources disagree.</strong> Anthropic's skills article (22 September 2026) says projects "provide static background knowledge that's always loaded when you start chats within them" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12512176-what-are-skills">Claude Help Center, <em>What are skills?</em></a>). The retrieval article (10 September 2026) says that "When your project knowledge approaches the context window limit, Claude will automatically enable RAG mode", in which Claude uses a search tool and "retrieves only the most relevant information", and that a project can return to loading everything once its knowledge falls back below the threshold (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11473015">Claude Help Center, <em>Retrieval augmented generation (RAG) for projects</em></a>). Read together: "always loaded" holds only below the threshold. Above it, project files are searched, and a chat sees the passages the search returns.</p>
+</blockquote>
+<p><strong>Memory.</strong> Claude "saves memory as a set of individual topics as you chat"; each project has its own memory, and inside a project "Claude uses the project's memory alongside your memory from chats outside of projects"; a project can be kept fully separate by turning off "Use account memory" on its page (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11817273">Claude Help Center, <em>Use Claude's chat search and memory to build on previous context</em></a>). The article does not say how much of memory enters a given chat. B1 §3 covers what memory stores and excludes.</p>
+<p><strong>Skills.</strong> Anthropic's developer documentation gives the loading rule: a skill's name and description are loaded at startup into the system prompt, at about 100 tokens per skill; the body of <code>SKILL.md</code>, under 5,000 tokens, enters the window only when a request matches the description; bundled files cost nothing until read (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Anthropic, <em>Agent Skills</em></a>; product documentation). The help centre draws the boundary between layers in one sentence each: custom instructions "apply broadly to all your conversations", projects hold "static background knowledge", and skills "are task-specific and only load when relevant, making them better for specialized workflows" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12512176-what-are-skills"><em>What are skills?</em></a>). The help page on using skills says Claude "automatically identifies and loads relevant skills based on your task" and does not say whether a skill can be switched on for one Project only (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12512180-using-skills-in-claude">Claude Help Center, <em>Using skills in Claude</em></a>). On what he can read today, skills are an account-wide layer.</p>
+<p><strong>Connectors.</strong> "Each connector takes up space in a conversation." Three modes are documented. In "Auto", the default, "Claude decides dynamically which connectors to load based on what you're working on". In "Always available" mode, "All your connectors are loaded at the start of every conversation"; in "On demand" mode, "Connectors aren't loaded until Claude searches for the right one based on your request"; on-demand loading is recommended for libraries of ten or more connectors or when conversations hit length limits (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/13730515-manage-claude-s-tool-access">Claude Help Center, <em>Manage Claude's tool access</em>, 16 March 2026</a>). The usage article adds: "Tools and connectors are token-intensive" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753">Claude Help Center, usage and length limits</a>).</p>
+<p><strong>Scheduled tasks.</strong> Anthropic documents several kinds (Cowork, Claude Code cloud, Claude Code desktop and in-session); two matter here. In Cowork, "Each scheduled task runs as its own Cowork session", with connected tools, skills and plugins (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-cowork">Claude Help Center, <em>Schedule recurring tasks in Claude Cowork</em></a>). In Claude Code, a cloud scheduled task is "a saved Claude Code configuration: a prompt, one or more repositories, and a set of connectors"; each repository is cloned at the start of every run; each run opens as a new session; the documentation says "the prompt must be self-contained and explicit about what to do and what success looks like"; runs draw on his subscription usage, and schedules more frequent than hourly are rejected. The feature is labelled research preview (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/web-scheduled-tasks">Claude Code docs, <em>Automate work with scheduled tasks</em></a>; product documentation). B1 §7 drew the consequence: a scheduled task knows nothing of the chat that created it. B5 covers what a task can and cannot touch.</p>
+<p>The Claude Code documentation states the dividing rule for its own equivalent of project instructions in terms that transfer: keep the instruction file "to facts Claude should hold in every session", and "If an entry is a multi-step procedure or only matters for one part of the codebase, move it to a skill" (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>How Claude remembers your project</em></a>; vendor guidance written for <code>CLAUDE.md</code>). Applying it to claude.ai project instructions is my analogy, as B1 §2 applied the same page's size guidance.</p>
+<h2 id="read-b4-1">2 · Hot, warm and cold: why the vault/index split exists</h2>
+<p>The brief's word "temperature" needs a definition before it can be used. In this unit:</p>
+<ul>
+<li><strong>Hot</strong> is text placed in the window at the start of every chat: preferences, project instructions, skill descriptions, connectors in "Always available" mode, and project files while the Project is below the retrieval threshold.</li>
+<li><strong>Warm</strong> is text a search pulls in when a request seems to need it: project files in retrieval mode, memory, chat search, connectors and skills on demand.</li>
+<li><strong>Cold</strong> is text outside the window until a chat fetches it by name: files in the repository, read by path after a clone.</li>
+</ul>
+<p>The labels are mine. Anthropic's engineering team describes the same choice as context loaded up front against context retrieved just in time: an agent can "maintain lightweight identifiers (file paths, stored queries, web links, etc.)" and load the data only when it needs it; its recommended middle course is a hybrid, "retrieving some data up front for speed, and pursuing further autonomous exploration at its discretion"; and Claude Code is its worked example, where "CLAUDE.md files are naively dropped into context up front" while "primitives like glob and grep allow it to navigate its environment and retrieve files just-in-time" (<a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic, <em>Effective context engineering for AI agents</em>, 29 Sep 2025</a>; vendor guidance).</p>
+<p>His method already has that shape, and the reason is size. The method states where things live: everything is in the private repository; the Project "holds mirrors of <code>docs/</code>"; and "A chat clones the repo and ends with a commit" (<code>method.md</code>, Home). The vault, <code>courses/</code>, holds the finished units; <code>courses-index.md</code> holds, for every unit, its status, model, search flag and path. In the engineering post's terms the index is a file of lightweight identifiers, and the vault is what they point to.</p>
+<p>The split is forced by arithmetic. The seven filed Brand + AI units in the vault come to 358,052 characters, and the 137 history reports in <code>kit/greece/</code> and <code>kit/rome/</code> to 3,484,164 (Unicode characters, both counted by script on 29 October 2026). At B1 §2's arithmetic of about 2.7 characters per token, the history reports alone are about 1.3 million tokens, more than six times the 200K window he has on claude.ai (B1 §1). No chat can hold the course; every chat can hold the map to it. B1 §7 put it as the vault being "the one store that never enters a chat by itself", fetched when a chat needs a file, and handed the question of which file belongs at which temperature to this unit.</p>
+<p>The answer the evidence supports:</p>
+<ol>
+<li><strong>Hot: what every chat must obey whole.</strong> The rules (method, sourcing standard, reader), the map (the index) and the queue (the backlog). A checklist read in fragments is a different checklist; these files need to arrive whole, which only happens while the Project stays under the retrieval threshold (§1).</li>
+<li><strong>Warm: facts about him that come up unpredictably.</strong> That is what memory is for (§1).</li>
+<li><strong>Cold: everything a chat can name before it needs it.</strong> Units, reports, syllabi, research, audits, build code, records. The index names each one's path, so a chat that needs a unit can read it after cloning.</li>
+</ol>
+<p>The Deliverable measures how far the Project has drifted from this, and the drift is large: the method says the Project mirrors <code>docs/</code>, while <code>SETUP.md</code> §2 tells him to upload the filed units, the superseded research and its five notes, the history kit's briefs and rubrics, the Rome syllabus, the theme and the Brand + AI data files as well.</p>
+<h2 id="read-b4-2">3 · What loads every turn, what loads on demand, and what each costs</h2>
+<p>B1 §2 gave the mechanism: the model keeps nothing between turns, every turn re-sends the whole chat, and so every hot layer is paid once per turn, on every turn. On claude.ai the payment is drawn from his usage limit, and Anthropic's usage guidance names "Current conversation length" among the factors that draw it down (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/9797557-usage-limit-best-practices">Claude Help Center, <em>Usage limit best practices</em>, 22 Sep 2026</a>). B2 §2 reported the one documented relief: project content is cached and counts less when reused. Anthropic's page adds that caches expire after inactivity, so the first message after a long break counts the content in full again.</p>
+<p>His setup, layer by layer, as measured or documented on 29 October 2026:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Loads</th>
+<th>Size in his setup</th>
+<th>Source of the size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project instructions</td>
+<td>Every turn</td>
+<td>4,421 characters, 675 words, 27 lines; about 1,600 tokens at 2.7 characters per token</td>
+<td><code>docs/project-instructions.md</code>, <code>wc -w</code>, character count by script</td>
+</tr>
+<tr>
+<td>Preferences</td>
+<td>Every turn</td>
+<td>Unmeasured; the text is not in the repository</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Skill descriptions</td>
+<td>Every turn</td>
+<td>About 100 tokens per skill (Anthropic's figure); his 4 repository skills and about 15 personal skills come to about 1,900 tokens, plus Anthropic's built-in skills, which this unit did not count</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Agent Skills</a>; count from the Learning Project's setup as of 28 October 2026</td>
+</tr>
+<tr>
+<td>Connectors</td>
+<td>Every turn in "Always available"; when searched in "On demand"</td>
+<td>Eight connectors plus a linked computer; per-connector size undocumented</td>
+<td><a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/13730515-manage-claude-s-tool-access">Tool access</a></td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Carried into new chats</td>
+<td>Amount undocumented; <em>observed</em>: a listing of memory files with one-line descriptions arrives before the first message</td>
+<td><a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11817273">Memory</a></td>
+</tr>
+<tr>
+<td>Project files</td>
+<td>Whole below the threshold; searched above it</td>
+<td>33 files, 907,260 characters, 127,263 words</td>
+<td>Measured from the 33 repository files the Project mirrors (Deliverable, A)</td>
+</tr>
+<tr>
+<td>Skill bodies</td>
+<td>When a request matches</td>
+<td>Under 5,000 tokens each (Anthropic's stated size); his four repository skills are 724 to 1,110 words</td>
+<td><code>wc -w</code> on <code>skills/*/SKILL.md</code></td>
+</tr>
+<tr>
+<td>Vault files</td>
+<td>When a chat reads them</td>
+<td>358,052 characters for seven units</td>
+<td><code>wc -m</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The project files are no longer hot.</strong> 907,260 characters is about 336,000 tokens at B1's 2.7 characters per token, and about 259,000 at the older 3.5 figure B1 also reports. Both exceed the 200K window. On the retrieval article's rule, a Project of that size runs in retrieval mode (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11473015">RAG for projects</a>). I cannot see the mode from the repository, so this is an inference from the documented rule and the measured size. What was observed is consistent with it but does not test it, since both observations come from Claude Code sessions, which list the Project's documents by name whatever their size (unsure list, 1): in B1's writing session a list of 24 documents arrived by name and five were then read in (B1 §1, observed 28 October); in this unit's session, a list of the Project's 33 documents arrived by name with an instruction to read or search them with a tool (<em>observed</em>, 29 October 2026).</p>
+<p>That changes what the Project knowledge is worth. In retrieval mode the method arrives as whatever passages a search returns for the request at hand. The sourcing checklist, which only works when every item is checked, may arrive as two items out of twelve. And the search runs over everything in the knowledge, including the superseded research that failed Audit 1 on 23 of 91 claims (<code>courses-index.md</code>) and that covers the same topics as the units that replaced it. B1 §2 reported Chroma's vendor finding that distractors, passages similar to the answer, lowered accuracy further; a superseded draft of the same material is a distractor in that exact sense.</p>
+<p><strong>What each kind of loading costs, in his terms:</strong></p>
+<ul>
+<li><strong>Hot</strong> costs tokens on every turn of every chat, and attention (B1 §2). It buys certainty that the text is there. It is worth it for the instructions, which are small, and for files every chat needs whole.</li>
+<li><strong>Warm</strong> costs little until used, and costs reliability: the text is present only if a search or a match brings it in. Skill bodies are warm by design, and a procedure that fires on a recognisable request belongs there. Rules that must hold everywhere do not.</li>
+<li><strong>Cold</strong> costs a deliberate fetch, a tool call that adds the file to the window from then on (B1 §7). It buys a clean window: nothing arrives that the chat did not name.</li>
+</ul>
+<h2 id="read-b4-3">4 · When to start a new chat, and when not to</h2>
+<p>Start a new chat when one of these holds.</p>
+<ol>
+<li><strong>The task changes.</strong> B3 §5 gave the evidence for one artefact per prompt: each task's material is irrelevant context for the others, and the tasks want different models. A new task in an old chat carries the old task's material on every turn (§3).</li>
+<li><strong>The first output missed.</strong> B3 §4 reported Laban and colleagues' finding that a brief arriving in pieces does worse than one complete brief, and the paper's own advice to consolidate the requirements into one instruction and start a new conversation. Rewrite the brief and open a new chat.</li>
+<li><strong>The chat is long.</strong> Every turn re-sends everything before it (B1 §2). Anthropic's advice: "Try starting a new conversation if you're approaching your usage limit in a longer chat" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753">usage and length limits</a>). When code execution is on, long chats are also summarised automatically, and summarising is lossy by definition (B1 §3).</li>
+<li><strong>The next step must not see this one.</strong> A checker or auditor that watched the unit being written is no longer independent. B2 §8 gave the evidence on self-preference, and the method requires a fresh checker "in a new chat that has not seen the unit written" (<code>method.md</code> §5).</li>
+<li><strong>A unit starts.</strong> "Never reuse a chat across units; leaked context is how a course starts repeating itself" (<code>method.md</code> §4).</li>
+</ol>
+<p>Stay in the chat when one of these holds.</p>
+<ol>
+<li><strong>The next step works on material only this chat has.</strong> Applying a checker's findings as exact replacements, finding by finding, needs the current text and the finding list together. Moving them to a new chat means pasting both again, and the paste is the same tokens plus a chance to paste the wrong version.</li>
+<li><strong>The step is a short follow-up on the same artefact,</strong> for example a second pass on a caption, where the earlier output is the material.</li>
+<li><strong>Work has paused briefly.</strong> Anthropic's usage guidance says cached project content counts less when reused and that the cache expires after inactivity (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/9797557-usage-limit-best-practices">usage best practices</a>). Whether starting a new chat in the same Project loses that cache is undocumented.</li>
+</ol>
+<p>Whichever way it goes, a chat ends by writing its state somewhere a later chat can read. Anthropic's engineering post calls this structured note-taking and gives the example of "your custom agent maintaining a NOTES.md file"; its other technique for long work is to give "specialized sub-agents" focused tasks "with clean context windows" (<a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering</a>). His method already does both. The backlog and changelog are the notes file (<code>method.md</code> §8), and one chat per unit, with the checker in its own chat, is the clean window. The weak point is the first: a new chat knows only what the last one wrote down. The Deliverable's finding F10 shows the notes are already a step behind.</p>
+<h2 id="read-b4-4">5 · How a project rots, and how to stop it</h2>
+<p>A project rots when the text the model reads stops matching the work. The three kinds the brief names each have a documented mechanism.</p>
+<p><strong>Stale files.</strong> A file that was right when written and was never retired keeps arriving. Anthropic's usage article recommends removing project files no longer in use (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753">usage and length limits</a>). Claude Code's documentation lists what its own instruction audit looks for, among them "instructions written for older models, references to files or commands that don't exist, and files that contradict each other" (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>; vendor guidance for Claude Code). His repository has all three: a hand-off note headed "Start here" that tells the next session to create a repository that now exists; a data file that still tells a chat to run audits "in the personal-assistant Project"; and two files that still tell the reader to run a build script retired on 28 October (Deliverable, F9).</p>
+<p><strong>Duplicated rules.</strong> A rule written in two places is paid twice where both are hot, and it drifts as soon as one copy is edited. Copies that are identical can be caught by a script. The dangerous ones are paraphrases, because no comparison flags them. His project instructions share only 20 eight-word sequences with <code>method.md</code>, 3% of their own, yet their Review and Backlog paragraphs restate §6 and §8 of the method in other words. The list of which units are written with search on exists in four prose copies, in three different versions (Deliverable, F8). B1 §6 flagged the tone rules repeated in his preferences and his project instructions.</p>
+<p><strong>Instructions that contradict preferences.</strong> Claude Code's documentation: "if two instructions contradict each other, Claude may pick one arbitrarily", followed by the advice to review periodically "to remove outdated or conflicting instructions" (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code docs, <em>Memory</em></a>). The claude.ai help centre states no precedence between preferences and project instructions (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10185728">personalisation features</a>), so the Claude Code sentence is the nearest documented description of what happens; applying it to claude.ai is my analogy, as in B3 §4. B3 §4 named one conflict: the preferences send anything with three or more sections to an HTML artifact, and a unit is a Markdown file. The Deliverable finds two more of the same kind (F5).</p>
+<p>Three habits stop rot, and each traces to the sources above.</p>
+<ol>
+<li><strong>One home per rule, and pointers everywhere else.</strong> The method already applies this to course content ("each anecdote, dispute and self-test question has one home; the others point to it by number", <code>method.md</code> §3). Applied to rules, a fact such as which units search lives in one place (the index's Search column, which <code>kit/index_check.py</code> already checks against the data file) and every other mention points there.</li>
+<li><strong>The narrower layer names its exceptions.</strong> Since no precedence is documented, the Project instructions state where the Project departs from the preferences, in one paragraph.</li>
+<li><strong>A scheduled check.</strong> Rot accumulates between sessions, and nobody reads a file to look for it. The checks in the Deliverable are mechanical, which is the kind of work Anthropic's documentation describes scheduled tasks for: "unattended, repeatable, and tied to a clear outcome" (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/web-scheduled-tasks">scheduled tasks</a>).</li>
+</ol>
+<h2 id="read-b4-5">Deliverable · Project-structure audit</h2>
+<p>The Learning Project and the repository <code>apcanario/learning</code> at commit <code>b4fea09</code>, 29 October 2026. Usable on its own: every finding names its file or layer, the evidence, the fix and an effort estimate. <strong>Every effort figure is my estimate</strong> of his time at the keyboard, with a chat doing the edits where the fix is a file change; it includes the commit and excludes rebuilding and publishing Academy unless the row says so.</p>
+<h3>A · How this was measured</h3>
+<ul>
+<li><strong>Project knowledge.</strong> The 33 files in the Project's knowledge list (the Learning Project's setup as of 28 October 2026; the same 33 names, <em>observed</em> in this session on 29 October) were each mapped to the repository file it mirrors; all 33 exist in the repository. Sizes are Unicode characters counted by a Python script, and words, in the C locale (a UTF-8 locale counts five more in the instructions, 680, because it splits on the middle dot), by <code>wc -w</code>. The Project copies were not opened; the changelog records all 33 re-uploaded from the repository on 28 October, and repository files changed since then may differ from their Project copy.</li>
+<li><strong>Tokens</strong> are B1 §2's arithmetic (about 2.7 characters per English token for Opus 5.5's tokenizer, unmeasured), with the 3.5 figure beside it where the difference matters.</li>
+<li><strong>Duplication.</strong> Every pair of the 20 main method, skill, data and doc files was compared on shared eight-word sequences (lower-cased words, punctuation dropped). The two audit prompts were compared as exact strings. Paraphrase is invisible to this measure, so the semantic duplicates below were found by reading.</li>
+<li><strong>Contradictions</strong> were found by reading the preferences (as reproduced in the context packet), the project instructions, <code>method.md</code>, <code>SETUP.md</code>, <code>docs/BACKLOG.md</code> and <code>hub.py</code> against each other, then confirming each with <code>grep</code>.</li>
+<li><strong>Public build.</strong> The local build <code>kit/academy/</code>, which <code>kit/deploy.sh</code> pushes to the public Pages site, was searched for six private terms. The terms are not reproduced here. The live site was not opened (the fetch was refused).</li>
+<li><strong>Memory</strong> contents were not read into this unit: the course is published, and memory is private.</li>
+</ul>
+<h3>B · The layers: what each holds now, and what it should hold</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Holds now (29 Oct 2026)</th>
+<th>Should hold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Preferences</td>
+<td>Tone, format, decisions, calendar, hard rules; one line (anything with three or more sections goes in a dark-theme HTML artifact) that collides with the Project's files</td>
+<td>The same, with one clause: "unless a Project's instructions say otherwise"</td>
+</tr>
+<tr>
+<td>Project instructions</td>
+<td>13 paragraphs, 675 words: reader, purpose and repo layout, design rule, publishing steps, one chat per unit, models, briefs, output path, sourcing, review cadence, the four-step backlog procedure, tone, completeness</td>
+<td>The rules every chat must obey, the Project's exceptions to the preferences, and pointers; procedures moved to skills and the method (C, F7)</td>
+</tr>
+<tr>
+<td>Project knowledge</td>
+<td>33 files, 907,260 characters, above the window, so in retrieval mode by the documented rule</td>
+<td>5 files, 79,332 characters: <code>method.md</code>, <code>sourcing-standard.md</code>, <code>reader.md</code>, <code>courses-index.md</code>, <code>BACKLOG-chats.md</code> (F1)</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Account memory plus a Project store; account memory feeds this Project</td>
+<td>The Project store only (F13)</td>
+</tr>
+<tr>
+<td>Skills</td>
+<td>4 repository skills, about 15 personal skills, Anthropic's built-ins; account-wide</td>
+<td>No change found. The four repository skills hold the procedures and load on demand, which is the layer's purpose</td>
+</tr>
+<tr>
+<td>Connectors</td>
+<td>Eight plus a linked computer; no procedure in <code>docs/</code>, <code>skills/</code>, <code>SETUP.md</code> or the READMEs uses one (<code>grep</code>; the only mention is the hand-off note's built-in browser)</td>
+<td>Set to load on demand (F14)</td>
+</tr>
+<tr>
+<td>Scheduled tasks</td>
+<td>None</td>
+<td>One weekly rot check on the repository (F16, E)</td>
+</tr>
+<tr>
+<td>Vault and repository</td>
+<td>Canonical; units, reports, records, build</td>
+<td>Unchanged, plus an <code>archive/</code> folder for retired notes (F9)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C · Findings</h3>
+<p><strong>F1 · Project knowledge is too large to load and mostly holds files no chat needs whole.</strong> <em>Layer:</em> Project knowledge. <em>Evidence:</em> 33 files, 907,260 characters (about 336,000 tokens at 2.7 characters per token, about 259,000 at 3.5), against a 200K window. By share of characters: the five filed units in it, 242,926 (26.8%); nine history-kit files, 221,633 (24.4%), of which <code>roman-syllabus.html</code> alone is 153,026; the superseded audience-growth research and its five notes, 197,753 (21.8%); build inputs (<code>hub.py</code>, <code>theme.css</code>, <code>design-README.md</code>, <code>units_data.py</code>), 114,550 (12.6%); records (<code>academy.md</code>, <code>pm-status-2026-10-28.md</code>, <code>CHANGELOG-chats.md</code>), 46,645 (5.1%); rules, map and queue, 79,332 (8.7%); <code>project-instructions.md</code>, 4,421 (0.5%). Filing, audit, kit and theme chats clone the repository first (<code>SETUP.md</code> §6 for history, §7, §8, §9; <code>method.md</code>, Home), so for them every one of the 28 files outside the rules set is already available cold. The exception is a Brand + AI writing chat: <code>SETUP.md</code> §6 says to paste the brief and "Attach nothing else", so today such a chat reads earlier units from the knowledge. <code>method.md</code> (Home) says the Project "holds mirrors of <code>docs/</code>", while <code>SETUP.md</code> §2 lists all 33. <em>Fix:</em> remove 28 files from the knowledge, keeping <code>method.md</code>, <code>sourcing-standard.md</code>, <code>reader.md</code>, <code>courses-index.md</code> and <code>claude/BACKLOG-chats.md</code>. At 79,332 characters (about 29,000 tokens at 2.7, under 15% of the window) the set is below the threshold, and on the retrieval article's rule the Project returns to loading whole files. Rewrite <code>SETUP.md</code> §2 to list the five; change <code>SETUP.md</code> §6 so a Brand + AI writing chat also clones <code>apcanario/learning</code> and reads the units it points back to by path, as the hand-off note's step 2 and this unit's own writing session already do; and change <code>skills/file-unit/SKILL.md</code> §6 to re-upload only <code>courses-index.md</code> after a filing. Nothing is lost: all 28 are in the repository. <em>Effort:</em> 40 minutes.</p>
+<p><strong>F2 · The project instructions are also uploaded as a knowledge file.</strong> <em>Layer:</em> Project knowledge. <em>Evidence:</em> <code>project-instructions.md</code> is in the knowledge list, and the same text is pasted into the instructions field (<code>docs/CHANGELOG.md</code>, row "Academy open questions closed"). The same 4,421 characters reach the Project twice, and the knowledge copy goes stale the moment the field is edited. <em>Fix:</em> remove it from the knowledge (part of F1). <em>Effort:</em> 1 minute.</p>
+<p><strong>F3 · The knowledge mirror already lags the repository.</strong> <em>Layer:</em> Project knowledge. <em>Evidence:</em> A1 and B3 were filed on 29 October (commits <code>a86b664</code>, <code>b4fea09</code>); neither is in the 33-file list <em>observed</em> in this session the same day, although <code>skills/file-unit/SKILL.md</code> §6 requires the re-upload. <em>Fix:</em> F1 removes units from the knowledge, so the lag disappears for them; for the five files that stay, add them through the GitHub integration if GitHub is connected to claude.ai, which adds selected repository files to the project knowledge and refreshes them with "Sync now" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10167454">Claude Help Center, <em>Use the GitHub integration</em></a>). <em>Effort:</em> 15 minutes, if the integration is available.</p>
+<p><strong>F4 · Two different files are called <code>BACKLOG.md</code>.</strong> <em>Layer:</em> repository and knowledge. <em>Evidence:</em> <code>docs/BACKLOG.md</code> is the queue of chats; <code>kit/BACKLOG.md</code> is the Rome writing prompt with the lane notes. The knowledge holds the kit's file under the bare name <code>BACKLOG.md</code> and the queue as <code>claude/BACKLOG-chats.md</code>. Across the repository, 39 references in 16 files say <code>BACKLOG.md</code> with no folder (<code>grep</code>, excluding the built site). The project instructions use the bare name once, for the history lane notes, after calling <code>docs/BACKLOG.md</code> "the one queue". <em>Fix:</em> rename <code>kit/BACKLOG.md</code> to <code>kit/LANES.md</code> and update the bare references. F1 already takes the kit file out of the knowledge. <em>Effort:</em> 45 minutes.</p>
+<p><strong>F5 · Three of the preferences collide with the Project's work.</strong> <em>Layer:</em> preferences and project instructions. <em>Evidence:</em> (a) the preferences send anything with three or more sections to a dark-theme HTML artifact, while a unit is a Markdown file in the vault (<code>method.md</code> §7; B3 §4); (b) the preferences ask for concise output, bullets and bold, with prose only when nuance needs it, while a unit is a long-form report of whatever length the topic needs (<code>method.md</code> §4); (c) the preferences say not to volunteer plans, next steps or reminders he did not ask for, while every chat that works a backlog row must hand over "the row that is next up" (project instructions; <code>method.md</code> §8). No precedence is documented (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/10185728">personalisation features</a>). <em>Fix:</em> the "Scope" paragraph in the revised instructions below, plus one clause at the end of the preferences' format rule: "unless a Project's instructions say otherwise". <em>Effort:</em> 10 minutes.</p>
+<p><strong>F6 · The design preferences and the theme agree.</strong> <em>Layer:</em> preferences and <code>design/theme.css</code>. <em>Evidence:</em> the preferences' fonts and colours (DM Sans, Space Mono, #0a0a0c, #131316, #ff6b6b and the five secondary accents) are the theme's tokens, lines 40 to 46. <em>Fix:</em> none. Recorded so the next audit does not re-check it.</p>
+<p><strong>F7 · The project instructions carry procedures and paraphrase the method.</strong> <em>Layer:</em> project instructions. <em>Evidence:</em> of 675 words (<code>wc -w</code>), the Purpose paragraph (147 words) restates the repository layout in <code>README.md</code>; Publishing (56 words) restates <code>skills/file-unit/SKILL.md</code> §5.3; Backlog and changelog (133 words) restates <code>method.md</code> §8 steps 1 to 4; Review (66 words) restates <code>method.md</code> §6; Tone repeats the preferences (B1 §6). The eight-word comparison finds only 3% shared with <code>method.md</code>, so a change to the method will not be caught by a diff. The instructions are the one Project layer guaranteed in every chat, so this is where pointers pay most. <em>Fix:</em> replace the instructions with the text in D. Procedures stay in the skills and the method, which already hold them. <em>Effort:</em> 20 minutes.</p>
+<p><strong>F8 · Which units search: four prose copies, three versions.</strong> <em>Layer:</em> method, setup, data file. <em>Evidence:</em> <code>method.md</code> §4 (line 114): "A2, A6, A9 (written), A8, B2, B8, DD-A1", which omits DD-B3 and B1 (B1's front matter says <code>search: on</code>); <code>SETUP.md</code> §6 (line 38): "B2, A8, B8, DD-A1, DD-B3"; <code>hub.py</code> line 127: "A8, B2, B8, DD-A1, DD-B3"; <code>hub.py</code> line 139: "A2, A6, A9, A8, B2, B8, DD-B3", which omits DD-A1. The source, <code>hub.py</code> <code>ORDER</code>, gives DD-B3, A8, B8 and DD-A1 for units not yet written, and the vault's front matter gives the written ones; <code>kit/index_check.py</code> already checks the index's Search column against both. <em>Fix:</em> replace each prose list with "the Search column of <code>courses-index.md</code>". <em>Effort:</em> 15 minutes, plus the rebuild in F9b.</p>
+<p><strong>F9 · Stale files and lines still read as current.</strong> <em>Layer:</em> repository docs and the data file. <em>Evidence:</em> (a) <code>docs/handoffs/2026-10-28-brand-ai-handoff.md</code>, headed "Next session" and "Start here. The first job is to move this folder off zip files", tells the reader to create a repository named <code>learning-project</code> and lists a hub artifact retired on 28 October. (b) <code>hub.py</code> <code>BUILD_PICK</code> and <code>BUILD_BODY</code> (lines 116 to 141), labelled on the page as "kept as the v5.1 record", tell the reader to make a separate Project for the two courses and to review "in the personal-assistant Project"; <code>AUDIT_PROMPTS_NOTE</code> (line 156) says the same; all three are rendered into Academy (<code>kit/academy/index.html</code> carries "personal-assistant" four times). (c) <code>SETUP.md</code> §8 (line 47) says the first audit "is due after B1" and gives the staleness date as 27 April 2027, where <code>courses-index.md</code> gives 28 April 2027. (d) <code>docs/BACKLOG.md</code> heads its writing lane "(parallel; one unit per chat)" twelve lines after saying "The lanes no longer run in parallel." (e) Two more files still tell the reader to run <code>build_hub.py</code>, retired on 28 October: <code>design/README.md</code> step 3 and <code>generator/data/_template/hub.py</code> line 3, the template every new markdown course is copied from. <em>Fix:</em> (a) move the hand-off note to <code>docs/archive/</code>, with the status notes <code>docs/pm-status-2026-10-28.md</code> and <code>docs/academy.md</code> once their open rows are closed; (b) delete the three <code>hub.py</code> blocks and leave one line pointing to <code>method.md</code>, then rebuild, verify and publish Academy; (c), (d), (e) correct the lines. <em>Effort:</em> F9a, c, d, e: 20 minutes; F9b: 45 minutes including the rebuild and publish.</p>
+<p><strong>F10 · The queue and the record are behind the work.</strong> <em>Layer:</em> <code>docs/BACKLOG.md</code>, <code>docs/CHANGELOG.md</code>. <em>Evidence:</em> B3 and A1 were filed on 29 October, yet rows B-1 (B3) and B-3 (A1) are still in the queue, and the changelog has no row for either filing. The project instructions require the opposite: "no done row stays in the queue". The next chat reads the queue to know what is next (§4). <em>Fix:</em> move both rows to the changelog with date, model and result; recopy <code>claude/BACKLOG-chats.md</code>; this chat's row B-2 follows when B4 is filed. <em>Effort:</em> 10 minutes.</p>
+<p><strong>F11 · The theme reaches the build through a hand copy.</strong> <em>Layer:</em> build. <em>Evidence:</em> <code>kit/build.py</code> line 733 reads <code>kit/shell.css</code>, and the design rule is that <code>design/theme.css</code> is the stylesheet; six files tell the reader to <code>cp design/theme.css kit/shell.css</code>, and <code>kit/verify.py</code> has no check that the two match. They are identical today (<code>cmp</code>). <em>Fix:</em> have <code>build.py</code> read <code>../design/theme.css</code> directly and delete <code>shell.css</code>, or add a <code>cmp</code> failure to <code>verify.py</code>. <em>Effort:</em> 20 minutes.</p>
+<p><strong>F12 · The two audit prompts live in two files.</strong> <em>Layer:</em> method and data file. <em>Evidence:</em> the stratified-sample prompt (1,547 characters) and the staleness prompt in <code>method.md</code> §6 are identical, by string comparison, to the copies in <code>hub.py</code> <code>AUDIT_PROMPTS</code>; the two files share 384 eight-word sequences in all, 9% of <code>method.md</code>. Identical today, they will diverge at the first edit to either. <em>Fix:</em> the rot check in E compares them weekly. Generating the hub's copy from <code>method.md</code> at build time is the permanent fix. <em>Effort:</em> 5 minutes for the check (inside F16); 1 hour for the build change.</p>
+<p><strong>F13 · Account memory flows into a Project whose output is published.</strong> <em>Layer:</em> memory. <em>Evidence:</em> inside a project, Claude uses the project's memory "alongside your memory from chats outside of projects" unless "Use account memory" is turned off on the project's page (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11817273">memory</a>). Every unit is published on a public site, and the course's binding rule keeps private detail out of units; a writing chat that receives account memory has to apply that rule by hand on every turn. The reader facts a unit needs are in <code>reader.md</code> and the brief. <em>Fix:</em> turn off "Use account memory" for the Learning Project. <em>Effort:</em> 1 minute.</p>
+<p><strong>F14 · Eight connectors are connected, and no Project procedure uses one.</strong> <em>Layer:</em> connectors. <em>Evidence:</em> the Learning Project's setup as of 28 October 2026 lists Gmail, Google Calendar, Google Drive, Spotify, Vercel, Booking.com, Claude Docs and Claude in Chrome, plus a linked computer; a <code>grep</code> of <code>docs/</code>, <code>skills/</code>, <code>SETUP.md</code> and the READMEs finds no procedure that calls one. In "Always available" mode all of them load at the start of every chat (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/13730515-manage-claude-s-tool-access">tool access</a>). Which mode he has set is not visible from the repository; the documented default is "Auto". The article's own table puts fewer than ten frequently used connectors under "Always available" and conversations that hit length limits under "On demand"; the pick below rests on the second row, since no Project procedure uses a connector. <em>Fix:</em> set tool access to "On demand". Pick: On demand. Override if: chats outside this Project start missing a connector they used to call unprompted; then "Auto". <em>Effort:</em> 2 minutes.</p>
+<p><strong>F15 · The public build carries private material.</strong> <em>Layer:</em> the build and the data it reads. <em>Evidence:</em> six private terms (personal names, a club, and lines about his employer) occur in three files of <code>kit/academy/</code>, the folder <code>kit/deploy.sh</code> pushes to the public Pages site: <code>index.html</code> (3 occurrences, from <code>hub.py</code> <code>FRAME</code> and a unit summary in <code>units_data.py</code>), <code>brand-a/briefs.html</code> (6, from the briefs in <code>units_data.py</code>) and <code>brand-b/read-b1.html</code> (1, from B1 §3). The terms are kept out of this unit. Two rules collide here: briefs are never reworded (project instructions, "Briefs"), and Academy is public. Removing the files from the site does not remove them from the public repository's history: GitHub's documentation says commits with sensitive data "may still be accessible elsewhere", in clones, forks and cached views, even after history is rewritten and force-pushed (<a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository">GitHub Docs, <em>Removing sensitive data from a repository</em></a>). <em>Fix:</em> (1) B1 §3: replace the name with "his disambiguation between two people with the same first name", as an erratum; (2) a build-time redaction list kept outside both repositories, which <code>mdcourse.py</code> applies to brief and frame text before rendering, so the briefs stay unreworded at source; (3) <code>verify.py</code> fails if any listed term reaches <code>kit/academy/</code>; (4) Pedro decides whether the public repository's history matters enough to rewrite. B8 sets the general privacy rules. <em>Effort:</em> 2 hours for (1) to (3), plus a rebuild and publish; (4) is his decision first.</p>
+<p><strong>F16 · Nothing checks for rot between sessions.</strong> <em>Layer:</em> scheduled tasks. <em>Evidence:</em> no scheduled task exists (setup as of 28 October 2026). F3, F9 and F10 each come from changes made on 28 or 29 October, the repository's first two days (commit dates). <em>Fix:</em> the weekly scheduled task in E. <em>Effort:</em> 20 minutes.</p>
+<p><strong>F17 · The index, the one file every chat needs, is mostly a finished record.</strong> <em>Layer:</em> <code>docs/courses-index.md</code>. <em>Evidence:</em> 38,595 characters, 268 lines; the complete Greece section is 12,325 characters and the 59 written Rome rows another 9,343, together 56% of the file; <code>kit/index_check.py</code> checks every row, so the tables cannot simply be cut. <em>Fix:</em> move finished courses to <code>docs/courses-index-archive.md</code>, teach <code>index_check.py</code> to read both files, keep the live index (about 17,000 characters) in the Project. <em>Effort:</em> 2 to 3 hours.</p>
+<h3>D · Revised project instructions (for F5 and F7)</h3>
+<p>Pasted into the Project's instructions field in place of the current text; <code>docs/project-instructions.md</code> updated to match. Every rule in the current instructions is kept, by statement or by pointer; two are new and marked.</p>
+<blockquote>
+<p><strong>Reader.</strong> One reader: Pedro, 35, Porto, ADHD; an educated adult who wants genuine depth, reads in order, on his phone, and checks the citations. The full profile is <code>reader.md</code>. Add nothing to it.</p>
+<p><strong>Scope over my preferences</strong> (new). My saved preferences apply here except in three cases. Units, audits and docs are Markdown files in the repo, written in the form <code>method.md</code> sets, long-form where it says so; the HTML-artifact rule and the concise-format rule do not apply to them. Handing over the backlog at the end of a chat, with the next row named, is something I have asked for.</p>
+<p><strong>Where things are.</strong> The private repo <code>apcanario/learning</code> is canonical. <code>method.md</code> is the method; <code>courses-index.md</code> is the map (what is written, what is next, the path of every file); <code>docs/BACKLOG.md</code> is the queue. A chat clones the repo, reads what it needs by path, and ends with a commit and push. Project knowledge holds five mirrors and nothing else.</p>
+<p><strong>Rules for every chat.</strong> One chat per unit, with its deliverable; audits and filing get their own chats. Writing Opus 5.5, audit Fable 5.1, exceptions in the build order; record the model that actually wrote each unit. Use a brief as written (Brand + AI: the course's Briefs page; history: the module's syllabus prompt and lane note, with AGENT-SPEC.md and WRITER-BRIEF.md); never reword it. Apply <code>sourcing-standard.md</code> Part 1 plus the course's part; nothing invented. No unit starts while an audit is due or a REWRITE is open; units written with search on get the six-month staleness check (<code>method.md</code> §3, §6). A finished unit is filed at the vault path <code>method.md</code> §7 gives; a history unit also goes into the kit (§7 step 3). Every page is built by <code>kit/build.py</code> from <code>design/theme.css</code>; no page gets its own CSS. Publishing Academy means the artifact, then <code>deploy.sh</code> (<code>file-unit</code>). A chat that works a backlog row ends as <code>method.md</code> §8 says.</p>
+<p><strong>Public</strong> (new). Academy is public. No private detail goes into a unit, a doc or any data the build renders.</p>
+<p><strong>Tone.</strong> Beyond my preferences: no closing pleasantries, no motivational language.</p>
+<p><strong>Completeness.</strong> A unit is written in full, with its deliverable built in full. Never outline it, summarise it or describe what it would contain.</p>
+</blockquote>
+<h3>E · The rot check, weekly</h3>
+<p>Six checks, each a command run from the repository root; every one was run on 29 October 2026 and its result is the evidence above.</p>
+<ol>
+<li><strong>Filed units still queued</strong> (F10): for each <code>code:</code> in <code>courses/brand-ai/*.md</code>, <code>grep -q "| $c ·" docs/BACKLOG.md</code> must find nothing. On 29 October it found A1 and B3.</li>
+<li><strong>Instructions to use retired things</strong> (F9): <code>grep -rnIF -e "python3 build_hub.py" -e "personal-assistant Project" -e 'named</code>learning-project<code>' SETUP.md README.md design skills generator/data docs/method.md docs/project-instructions.md docs/handoffs</code> must find nothing. It found five lines in four files.</li>
+<li><strong>Theme copy</strong> (F11): <code>cmp design/theme.css kit/shell.css</code> must be silent. It was.</li>
+<li><strong>Audit prompts</strong> (F12): the text from "You are auditing four units" to the end of the block must be identical in <code>docs/method.md</code> and <code>generator/data/brand-ai/hub.py</code>, and likewise for "You are re-checking one unit". Both were.</li>
+<li><strong>Knowledge budget</strong> (F1): the five mirrored files must total under 110,000 characters (about 40,000 tokens at 2.7). They total 79,332.</li>
+<li><strong>Private terms</strong> (F15): <code>grep -rliFf &lt;terms file&gt; kit/academy</code> must list nothing, where the terms file lives outside both repositories. On the terms used for F15 it listed three files.</li>
+</ol>
+<p><strong>Scheduled task</strong> (Claude Code cloud task; repository <code>apcanario/learning</code>; no connectors; weekly). The documentation requires a self-contained prompt that says what success looks like (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/web-scheduled-tasks">scheduled tasks</a>); check 6 needs the terms file; a cloud run could carry the terms as an environment variable, which the documentation says is visible to anyone who uses the environment, so it stays a filing step; the task's connectors, all included by default, are removed at creation. The prompt:</p>
+<blockquote>
+<p>Clone <code>apcanario/learning</code> and change nothing in it. Run these five checks from the repository root and report each as PASS or FAIL with the lines that fail. (1) For every file in <code>courses/brand-ai/</code>, read its <code>code:</code> front matter; FAIL if <code>docs/BACKLOG.md</code> has a row containing "| <code> ·". (2) FAIL if any file under <code>SETUP.md</code>, <code>README.md</code>, <code>design/</code>, <code>skills/</code>, <code>generator/data/</code>, <code>docs/method.md</code>, <code>docs/project-instructions.md</code> or <code>docs/handoffs/</code> contains the text "python3 build_hub.py", "personal-assistant Project" or "named <code>learning-project</code>". (3) FAIL if <code>cmp design/theme.css kit/shell.css</code> reports a difference. (4) FAIL if the block that starts "You are auditing four units" differs between <code>docs/method.md</code> and <code>generator/data/brand-ai/hub.py</code>, or the block that starts "You are re-checking one unit" does. (5) FAIL if <code>docs/method.md</code>, <code>docs/sourcing-standard.md</code>, <code>docs/reader.md</code>, <code>docs/courses-index.md</code> and <code>docs/BACKLOG.md</code> together exceed 110,000 characters. Then list every row of the "Staleness checks due" table in <code>docs/courses-index.md</code> whose due date falls within 30 days of today. Success is a report of five verdicts and the staleness list; make no commit.</p>
+</blockquote>
+<h3>F · Fix list, ranked by effort</h3>
+<p>Effort is my estimate. Severity is my judgement of what each fault costs if left: <strong>high</strong> means it can put wrong or private text in front of a reader or a chat now; <strong>medium</strong> means it misleads a chat that reads the file; <strong>low</strong> means it costs tokens or tidiness.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Fix</th>
+<th>Changes</th>
+<th>Effort (my estimate)</th>
+<th>Severity</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Turn off "Use account memory" for the Project</td>
+<td>Project settings</td>
+<td>1 min</td>
+<td>high</td>
+<td>F13</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Remove <code>project-instructions.md</code> from the knowledge</td>
+<td>Project knowledge</td>
+<td>1 min</td>
+<td>low</td>
+<td>F2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Set tool access to On demand</td>
+<td>Account settings</td>
+<td>2 min</td>
+<td>low</td>
+<td>F14</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Add the Project exceptions to the preferences' format rule; paste the Scope paragraph</td>
+<td>Preferences; Project instructions</td>
+<td>10 min</td>
+<td>medium</td>
+<td>F5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Move the B3 and A1 rows to the changelog; recopy the Project's backlog</td>
+<td><code>docs/BACKLOG.md</code>, <code>docs/CHANGELOG.md</code>, <code>claude/BACKLOG-chats.md</code></td>
+<td>10 min</td>
+<td>medium</td>
+<td>F10</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Archive the hand-off note; fix the <code>SETUP.md</code> §8 line, the backlog lane header and the two <code>build_hub.py</code> instructions</td>
+<td><code>docs/handoffs/…</code>, <code>SETUP.md</code>, <code>docs/BACKLOG.md</code>, <code>design/README.md</code>, <code>generator/data/_template/hub.py</code></td>
+<td>20 min</td>
+<td>medium</td>
+<td>F9a, c, d, e</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Replace the project instructions with D</td>
+<td>Project instructions; <code>docs/project-instructions.md</code></td>
+<td>20 min</td>
+<td>medium</td>
+<td>F7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Create the weekly rot-check task</td>
+<td>Scheduled tasks</td>
+<td>20 min</td>
+<td>medium</td>
+<td>F16, F12</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Make the build read the theme, or make <code>verify.py</code> fail on a mismatch</td>
+<td><code>kit/build.py</code> or <code>kit/verify.py</code></td>
+<td>20 min</td>
+<td>low</td>
+<td>F11</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Cut the knowledge to the five files; rewrite <code>SETUP.md</code> §2 and §6 and <code>file-unit</code> §6</td>
+<td>Project knowledge; <code>SETUP.md</code>; <code>skills/file-unit/SKILL.md</code> (re-save the skill to the account)</td>
+<td>40 min</td>
+<td>high</td>
+<td>F1</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Point the four search-on lists to the index</td>
+<td><code>docs/method.md</code>, <code>SETUP.md</code>, <code>hub.py</code> (rebuilt with rank 12)</td>
+<td>15 min</td>
+<td>medium</td>
+<td>F8</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Delete the v5.1 record blocks from <code>hub.py</code>; rebuild, verify, publish Academy</td>
+<td><code>generator/data/brand-ai/hub.py</code>; Academy</td>
+<td>45 min</td>
+<td>medium</td>
+<td>F9b</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Mirror the five files through the GitHub integration, if connected (sync is manual: "Sync now")</td>
+<td>Project knowledge</td>
+<td>15 min</td>
+<td>low</td>
+<td>F3</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Rename <code>kit/BACKLOG.md</code> and fix the bare references</td>
+<td><code>kit/</code>, 16 files</td>
+<td>45 min</td>
+<td>low</td>
+<td>F4</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Generate the hub's audit prompts from <code>method.md</code></td>
+<td><code>kit/mdcourse.py</code>, <code>hub.py</code></td>
+<td>1 h</td>
+<td>low</td>
+<td>F12</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Redact private terms at build time; B1 erratum; <code>verify.py</code> check; decide on the public history</td>
+<td><code>kit/mdcourse.py</code>, <code>kit/verify.py</code>, B1; Academy</td>
+<td>2 h, plus his decision</td>
+<td>high</td>
+<td>F15</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Split the index into live and archive</td>
+<td><code>docs/courses-index.md</code>, <code>kit/index_check.py</code></td>
+<td>2–3 h</td>
+<td>low</td>
+<td>F17</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ranks 11 and 12 sit together because rank 11's <code>hub.py</code> edit needs rank 12's rebuild; doing them in one chat saves one rebuild and publish. The three high-severity fixes are ranks 1, 10 and 16. If he does nothing else, he should do those three.</p>
+<h2 id="read-b4-6">Writer's unsure list</h2>
+<p>Fresh check 29 Oct 2026 (Fable 5.1): fix · 0 errors, 7 should-fix, 9 minor; all applied; report <code>audits/brand-ai/fresh-check-B4.md</code>.</p>
+<ol>
+<li><strong>Retrieval mode is inferred.</strong> The Project's 907,260 characters exceed the 200K window under either tokens-per-character figure, and the help centre says retrieval switches on near the limit; the mode itself is not visible from the repository, and the "observed" list of documents by name was seen in a Claude Code session attached to the Project, which may receive the knowledge differently from a claude.ai chat.</li>
+<li><strong>The Project copies were not opened.</strong> Sizes come from the repository files they mirror; any copy uploaded before a later repository change differs from what was measured.</li>
+<li><strong>That the five-file set will load whole</strong> rests on the retrieval article's statement that a project returns to in-context processing below the threshold; the threshold itself is not published.</li>
+<li><strong>Claude Code guidance applied to claude.ai.</strong> "May pick one arbitrarily", the procedure-to-skill rule and the instruction-audit checks are written for <code>CLAUDE.md</code>; their use for project instructions is my analogy.</li>
+<li><strong>Connector and memory costs are undocumented.</strong> Anthropic says each connector takes space and gives no figure; how much memory enters a chat is not stated. F13 and F14 rest on the documented direction, without a size.</li>
+<li><strong>The skill count is approximate.</strong> "About 15 personal skills" comes from the setup notes of 28 October; Anthropic's built-in skills were not counted, so the 1,900-token figure is a floor.</li>
+<li><strong>The public site was not opened.</strong> F15 is measured on the local build that <code>deploy.sh</code> pushes; the live Pages site may differ if a deploy was skipped.</li>
+<li><strong>Whether a new chat in the same Project loses the project-content cache</strong> is undocumented (§4).</li>
+<li><strong>Effort and severity figures</strong> are my estimates throughout, with no measurement behind them.</li>
+<li><strong>Scheduled tasks are in research preview</strong> according to the Claude Code documentation; the behaviour the rot-check task relies on may change.</li>
+</ol>
+<h2 id="read-b4-7">Sources</h2>
+<p>All web sources opened 29 October 2026.</p>
+<ul>
+<li>Anthropic. <em>Agent Skills</em>. Claude Platform docs. https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview</li>
+<li>Anthropic. <em>Effective context engineering for AI agents</em>. Anthropic Engineering, 29 September 2025. https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</li>
+<li>Claude Code docs. <em>How Claude remembers your project</em> (Memory). https://code.claude.com/docs/en/memory</li>
+<li>Claude Code docs. <em>Automate work with scheduled tasks</em>. https://code.claude.com/docs/en/web-scheduled-tasks</li>
+<li>Claude Help Center. <em>Understanding Claude's personalization features</em>. https://support.claude.com/en/articles/10185728</li>
+<li>Claude Help Center. <em>How can I create and manage projects?</em> https://support.claude.com/en/articles/9519177</li>
+<li>Claude Help Center. <em>Retrieval augmented generation (RAG) for projects</em>, 10 September 2026. https://support.claude.com/en/articles/11473015</li>
+<li>Claude Help Center. <em>Use Claude's chat search and memory to build on previous context</em>. https://support.claude.com/en/articles/11817273</li>
+<li>Claude Help Center. <em>What are skills?</em>, 22 September 2026. https://support.claude.com/en/articles/12512176-what-are-skills</li>
+<li>Claude Help Center. <em>Using skills in Claude</em>. https://support.claude.com/en/articles/12512180-using-skills-in-claude</li>
+<li>Claude Help Center. <em>Manage Claude's tool access</em>, 16 March 2026. https://support.claude.com/en/articles/13730515-manage-claude-s-tool-access</li>
+<li>Claude Help Center. <em>Usage and length limits</em> (article 11647753). https://support.claude.com/en/articles/11647753</li>
+<li>Claude Help Center. <em>Usage limit best practices</em>, 22 September 2026. https://support.claude.com/en/articles/9797557-usage-limit-best-practices</li>
+<li>Claude Help Center. <em>Schedule recurring tasks in Claude Cowork</em>. https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-cowork</li>
+<li>Claude Help Center. <em>Use the GitHub integration</em>. https://support.claude.com/en/articles/10167454</li>
+<li>GitHub Docs. <em>Removing sensitive data from a repository</em>. https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository</li>
+<li>Learning Project files cited by name, at commit <code>b4fea09</code> of <code>apcanario/learning</code>, 29 October 2026: <code>docs/method.md</code> Home, §3, §4, §5, §6, §7, §8; <code>docs/project-instructions.md</code>; <code>docs/courses-index.md</code>; <code>docs/BACKLOG.md</code>; <code>docs/CHANGELOG.md</code>; <code>docs/handoffs/2026-10-28-brand-ai-handoff.md</code>; <code>SETUP.md</code> §2, §6, §8; <code>README.md</code>; <code>design/README.md</code>; <code>design/theme.css</code>; <code>generator/data/brand-ai/hub.py</code>; <code>generator/data/brand-ai/units_data.py</code>; <code>kit/build.py</code>; <code>kit/verify.py</code>; <code>kit/index_check.py</code>; <code>kit/deploy.sh</code>; <code>kit/academy/</code>; <code>skills/file-unit/SKILL.md</code>; B1 · Mental model (<code>B1-mental-model.md</code>) §1, §2, §3, §6, §7; B2 · Choosing the model (<code>B2-choosing-the-model.md</code>) §2, §8; B3 · Prompting that holds up (<code>B3-prompting-that-holds-up.md</code>) §4, §5. The Learning Project's setup as of 28 October 2026 (preferences, Project knowledge list, skills, connectors, scheduled tasks) is cited as observed, not as a published source.</li>
+</ul></div>
+  <div class="pager"></div>
