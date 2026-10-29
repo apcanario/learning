@@ -130,28 +130,28 @@ The cost of a task is input tokens times the input price plus output tokens, thi
 
 On equal token counts the ratios follow the price list. In practice the counts are unequal.
 
-**A measured comparison.** Artificial Analysis runs its Intelligence Index, a weighted set of agentic, coding, scientific and general tasks (categories from its methodology page), across models and effort levels, and reports a weighted cost per task computed from the model's token counts and prices (third-party vendor dataset; definition from [Artificial Analysis, *Claude Opus 5.5*](https://artificialanalysis.ai/models/claude-opus-5-5); figures from [Artificial Analysis, *Leaderboard*](https://artificialanalysis.ai/leaderboards/models), accessed 28 Oct 2026):
+**A measured comparison.** Artificial Analysis runs its Intelligence Index, a weighted set of agentic, coding, scientific and general tasks (categories from its methodology page), across models and effort levels, and reports a weighted cost per task computed from the model's token counts and prices (third-party vendor dataset; definition from [Artificial Analysis, *Claude Opus 5.5*](https://artificialanalysis.ai/models/claude-opus-5-5); figures from [Artificial Analysis, *Leaderboard*](https://artificialanalysis.ai/leaderboards/models), accessed 28 Oct 2026, figures updated to Intelligence Index v5.0 on 29 Oct 2026 after Audit 2):
 
 | Model (effort) | Index | Cost per task |
 |---|---|---|
-| Opus 5.5 (low / medium / high / xhigh / max) | 42 / 51 / 54 / 56 / 58 | $0.55 / $1.34 / $1.82 / $3.46 / $5.98 |
-| Sonnet 5.5 (low / medium / high / xhigh / max) | 36 / 41 / 47 / 52 / 56 | $0.35 / $0.48 / $0.88 / $2.01 / $5.46 |
-| Haiku 5.5 (low / medium / high / xhigh / max) | 29 / 34 / 38 / 41 / 43 | $0.02 / $0.05 / $0.08 / $0.12 / $0.21 |
-| Fable 5.1 (low / medium / high / xhigh / max) | 47 / 49 / 51 / 53 / 53 | $2.37 / $2.98 / $3.91 / $5.98 / $7.63 |
-| GPT-6.1 Sol (high / max) | 50 / 52 | $0.32 / $0.72 |
-| GPT-6 Luna (max) | 38 | $0.07 |
-| Gemini 4 Argon (high) | 53 | $1.62 |
-| Gemini 3.8 Flash (high) | 41 | $3.49 |
-| DeepSeek V4.1 Flash (max) | 45 | $0.26 |
+| Opus 5.5 (low / medium / high / xhigh / max) | 35 / 48 / 52 / 57 / 58 | $0.98 / $2.45 / $3.46 / $6.05 / $10.04 |
+| Sonnet 5.5 (low / medium / high / xhigh / max) | 25 / 30 / 41 / 50 / 54 | $0.51 / $0.78 / $1.64 / $4.09 / $10.02 |
+| Haiku 5.5 (low / medium / high / xhigh / max) | 19 / 25 / 30 / 34 / 36 | $0.04 / $0.09 / $0.16 / $0.25 / $0.41 |
+| Fable 5.1 (low / medium / high / xhigh / max) | 38 / 43 / 47 / 50 / 49 | $4.49 / $5.58 / $7.56 / $10.89 / $13.04 |
+| GPT-6.1 Sol (high / max) | 50 / 55 | $0.59 / $1.27 |
+| GPT-6 Luna (max) | 28 | $0.15 |
+| Gemini 4 Argon (high) | 50 | $3.84 |
+| Gemini 3.8 Flash (high) | 31 | $7.77 |
+| DeepSeek V4.1 Flash (max) | 32 | $0.60 |
 
 Four readings, all arithmetic on that table:
 
-1. **Price per token predicts little at the top of the effort range.** Opus 5.5 costs twice Sonnet 5.5 per token. At medium effort it costs 2.8 times as much per task; at max, Sonnet costs 91% of what Opus costs and scores two points lower. Pushing the cheaper model to maximum effort spends its price advantage.
-2. **A small model at full effort can match a large one at low effort.** Haiku 5.5 at max scores 43 against Opus 5.5 at low's 42, for 38% of the cost.
-3. **A cheaper token can make a dearer task.** At current prices, Gemini 3.8 Flash is 2.7 times cheaper per token than Argon and costs 2.2 times more per task, scoring 12 points lower.
-4. **Across vendors, the same score has very different prices.** Around an index of 50 to 51: GPT-6.1 Sol at high costs $0.32, Opus 5.5 at medium $1.34 (4.2 times Sol), Fable 5.1 at high $3.91 (12 times Sol).
+1. **Price per token predicts little at the top of the effort range.** Opus 5.5 costs twice Sonnet 5.5 per token. At medium effort it costs 3.1 times as much per task; at max, Sonnet costs the same as Opus (99.8%) and scores four points lower. Pushing the cheaper model to maximum effort spends its price advantage.
+2. **A small model at full effort can match a large one at low effort.** Haiku 5.5 at max scores 36 against Opus 5.5 at low's 35, for 42% of the cost.
+3. **A cheaper token can make a dearer task.** At current prices, Gemini 3.8 Flash is 2.7 times cheaper per token than Argon and costs 2.0 times more per task, scoring 19 points lower.
+4. **Across vendors, the same score has very different prices.** Around an index of 47 to 50: GPT-6.1 Sol at high costs $0.59, Opus 5.5 at medium $2.45 (4.2 times Sol), Gemini 4 Argon at high $3.84 (6.5 times Sol), Fable 5.1 at high $7.56 (12.8 times Sol).
 
-**Where sources disagree.** Artificial Analysis's model page for Opus 5.5 gives $10.04 per task at max effort and names index v5.0 with nine evaluations ([model page](https://artificialanalysis.ai/models/claude-opus-5-5)); its leaderboard gives $5.98 for the same configuration ([leaderboard](https://artificialanalysis.ai/leaderboards/models)); its methodology page names v4.3.2 with ten evaluations ([methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking)). This unit uses the leaderboard because it reports every model and effort level on one page, so the ratios above are at least internally consistent. The absolute dollar figures should be read as approximate.
+**Where sources disagreed.** On 28 October 2026 Artificial Analysis's model page for Opus 5.5 gave $10.04 per task at max effort under index v5.0 with nine evaluations ([model page](https://artificialanalysis.ai/models/claude-opus-5-5)), while its leaderboard still gave $5.98 under the previous index ([leaderboard](https://artificialanalysis.ai/leaderboards/models)) and its methodology page named v4.3.2 with ten evaluations ([methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking)). The disagreement was the changeover to Intelligence Index v5.0, announced on 27 October 2026 ([Artificial Analysis, *Announcing Intelligence Index v5*](https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5)); by 29 October all three pages carried v5.0, and the table above was updated to it in Audit 2. The v5.0 index drops GDPval-AA and adds private coding and science tests, so its scores are not comparable with the figures the unit cited on 28 October. The absolute dollar figures should still be read as approximate; the index will move again.
 
 Anthropic's own cost-per-task claims point the same way and are vendor data: at its default (medium) effort, Opus 5.5 beat Opus 5 at max effort on Terminal-Bench 4.0 for about a fifth of the cost, and beat GPT-6 Astra at max effort on GDPval-AA for about a fifth of the cost per task ([Anthropic, *Introducing Claude Opus 5.5*](https://www.anthropic.com/claude-opus-5-5)).
 
@@ -185,7 +185,7 @@ Two cautions specific to his setup. On the API, Haiku's price quintuples once a 
 
 **On claude.ai** the effort setting sits inside the model menu next to the send button. Anthropic's labels: low and medium suit routine tasks and stretch his limits; high is the best overall balance; extra high is for long-running coding and agentic work (Opus 4.7 and newer); max is the most thorough. Higher effort means more thorough responses that take longer, use more tokens and reach limits sooner ([Help Center](https://support.claude.com/en/articles/8664678-change-the-model-effort-and-extended-thinking-settings)).
 
-**What a step of effort costs, measured.** On Artificial Analysis's index (third-party vendor data, §5), Opus 5.5 from low to max costs 10.9 times as much per task for 16 more points; medium to high costs 36% more for 3 points; high to xhigh costs 1.9 times more for 2 points; xhigh to max 1.7 times more for 2 points. Sonnet 5.5 from low to max costs 15.6 times more ([leaderboard](https://artificialanalysis.ai/leaderboards/models); arithmetic on its figures). The Claude Code post's diagram shows a high-effort path using roughly seven times the tokens of a low-effort one, but the post labels its curves illustrative ([Claude blog](https://www.claude.com/blog/claude-model-and-effort-level-in-claude-code)), so that figure is not evidence.
+**What a step of effort costs, measured.** On Artificial Analysis's index (third-party vendor data, §5), Opus 5.5 from low to max costs 10.2 times as much per task for 23 more points; medium to high costs 41% more for 4 points; high to xhigh costs 1.7 times more for 5 points; xhigh to max 1.7 times more for 1 point. Sonnet 5.5 from low to max costs 19.6 times more ([leaderboard](https://artificialanalysis.ai/leaderboards/models); arithmetic on its figures). The Claude Code post's diagram caption says the high-effort path "generates roughly 7x more tokens" for one prompt; the post gives no measurement behind it, and the only visuals it labels illustrative are its two cost-curve charts ([Claude blog](https://www.claude.com/blog/claude-model-and-effort-level-in-claude-code)), so that figure is one unmeasured example, not evidence.
 
 **Extra thinking on easy problems is waste.** Chen and colleagues documented reasoning models spending large amounts of compute on trivially easy problems (the title's example is 2 + 3) and showed the excess could be cut while keeping accuracy ([Chen et al., ICML 2025; arXiv 2412.21187](https://arxiv.org/abs/2412.21187)). Anthropic's own guidance says the same in product terms: lower effort before trying to talk the model out of thinking ([Steering thinking](https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost)).
 
@@ -201,7 +201,7 @@ On Anthropic's knowledge-work tests the gap between Opus and Sonnet nearly vanis
 
 On reasoning with tools (Humanity's Last Exam), Anthropic reports Opus 5.5 at 67.7%, Sonnet 5.5 at 64.5% and Haiku 5.5 at 57.4% ([Sonnet 5.5 launch](https://www.anthropic.com/claude-sonnet-5-5); [Haiku 5.5 launch](https://www.anthropic.com/claude-haiku-5-5); vendor).
 
-At the efforts he actually gets by default, the third-party index separates Opus and Sonnet: Opus 5.5 at medium scores 51, Sonnet 5.5 at medium 41, and Sonnet needs max effort (56, at $5.46 a task) to come within two points of Opus at max ([leaderboard](https://artificialanalysis.ai/leaderboards/models)).
+At the efforts he actually gets by default, the third-party index separates Opus and Sonnet: Opus 5.5 at medium scores 48, Sonnet 5.5 at medium 30, and Sonnet needs max effort (54, at $10.02 a task) to come within four points of Opus at max ([leaderboard](https://artificialanalysis.ai/leaderboards/models)).
 
 A course unit is long, open-ended, searched and cited synthesis. The case for Opus there rests on that default-effort gap and on Anthropic's unquantified statement that Opus is stronger on open-ended work (§1). No source here measured anything like a course unit. His own record adds one data point about process: in the Greek review, reports written without a fresh checker scored 4.28 on his rubric, and syllabus unit 12, written with one, scored 4.8 (`method.md` §1, citing `audits/greece-13.4-cohorts.md`). That is a small internal sample, and it measures a checking step, which is the subject of B6.
 
@@ -213,7 +213,7 @@ On agentic coding the top two are level and Haiku falls behind on long tasks. Te
 
 No benchmark measures auditing a course unit against its sources. Three pieces of evidence bear on it.
 
-- **Knowledge reliability.** On AA-Omniscience v1.1 (3,000 questions across six domains; it rewards correct answers, penalises wrong ones and leaves abstentions unpenalised), Fable 5.1 has the highest accuracy, 68%; Opus 5.5 has the highest overall index, 48, against 46 for Fable 5.1 and Gemini 4 Argon; Gemini 4 Argon has the lowest hallucination rate, 4% ([Artificial Analysis, *AA-Omniscience*](https://artificialanalysis.ai/evaluations/omniscience); third-party vendor data).
+- **Knowledge reliability.** On AA-Omniscience v1.1 (3,000 questions across six domains; it rewards correct answers, penalises wrong ones and leaves abstentions unpenalised), Fable 5.1 has the highest accuracy, 68%; Gemini 4 Carbon at high, listed by 29 October 2026, has the highest overall index, 54; Opus 5.5 has 48, against 46 for Fable 5.1 and Gemini 4 Argon; Gemini 4 Argon has the lowest hallucination rate, 4% ([Artificial Analysis, *AA-Omniscience*](https://artificialanalysis.ai/evaluations/omniscience); third-party vendor data).
 - **Model judges.** Strong model judges agreed with human preferences more than 80% of the time, the same rate at which humans agree with each other, and showed position, verbosity and self-enhancement biases ([Zheng et al., NeurIPS 2023, arXiv 2306.05685](https://arxiv.org/abs/2306.05685)). The judges tested were 2023 models.
 - **Self-preference.** Model evaluators score their own outputs above others', and the bias grows with the model's ability to recognise its own text ([Panickssery, Bowman and Feng, NeurIPS 2024](https://papers.nips.cc/paper_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html); [arXiv 2404.13076](https://arxiv.org/abs/2404.13076)).
 
@@ -233,9 +233,9 @@ For his recurring tasks, as of 28 October 2026. Set model and effort before the 
 
 | Task | Pick | Effort | Why | Override if |
 |---|---|---|---|---|
-| **Journal entries** (his notes or a voice transcript into a dated entry in his words) | Sonnet 5.5 | medium | Polished writing from given material; Sonnet's knowledge-work score is within a few points of Opus (vendor, §8); about a third of Opus's per-task cost at medium (36%, §5). | The entry has to synthesise several weeks or several journeys: Opus 5.5, medium. Pure tidy-up of a transcript: Haiku 5.5, low. |
+| **Journal entries** (his notes or a voice transcript into a dated entry in his words) | Sonnet 5.5 | medium | Polished writing from given material; Sonnet's knowledge-work score is within a few points of Opus (vendor, §8); about a third of Opus's per-task cost at medium (32%, §5). | The entry has to synthesise several weeks or several journeys: Opus 5.5, medium. Pure tidy-up of a transcript: Haiku 5.5, low. |
 | **Biometrics parsing** (exports into tables or totals) | Haiku 5.5 writes and maintains the parsing script; the script does the parsing | high | Extraction is Haiku's documented use (§6); high effort is Anthropic's setting for strict instruction following (§6); numbers come from code because model outputs vary run to run (§8, B1 §5). | The script breaks twice on a new export format: Sonnet 5.5, medium, to rewrite it. |
-| **Course units** (Brand + AI units, history modules) | Opus 5.5 | high | The method's writing model; at default effort Opus leads Sonnet by 10 index points (third-party, §8); medium to high adds 3 points for 36% more cost per task (§7); the units still to write number in the dozens (`courses-index.md`), so the premium is paid rarely. | Limits run short mid-unit: stay on Opus 5.5 at medium and keep the chat; never switch model inside a unit. |
+| **Course units** (Brand + AI units, history modules) | Opus 5.5 | high | The method's writing model; at default effort Opus leads Sonnet by 18 index points (third-party, §8); medium to high adds 4 points for 41% more cost per task (§7); the units still to write number in the dozens (`courses-index.md`), so the premium is paid rarely. | Limits run short mid-unit: stay on Opus 5.5 at medium and keep the chat; never switch model inside a unit. |
 | **Audits** (four-unit sample, staleness check, fresh checks) | Fable 5.1 | high | A different model from the writer counters self-preference (§8); highest factual accuracy on AA-Omniscience (third-party, §8); the method's audit model. On Pro every Fable run is billed in usage credits at API rates; on Max it competes for half the weekly limit (§2). | Fable is unavailable or out of budget: Opus 5.5 at high in a fresh chat that has not seen the unit, and record in the audit that the auditor was the writer's model. |
 | **Message drafts, routine** (logistics, replies, short notes) | Sonnet 5.5 | low | Short, well-scoped writing; low effort is Anthropic's setting for routine work and stretches limits (§7). | The draft misreads the situation twice: treat it as high-stakes. |
 | **Message drafts, high-stakes** (manager, board, HR, conflict, performance) | Opus 5.5 | medium | Anthropic describes Opus 5.5 as built for complex work requiring careful judgment (Sonnet 5.5 launch; vendor); the cost of one message at any tier is cents (§5); the judgement that this is small next to a bad message is mine. | Nothing; this row is the escalation. |
@@ -257,8 +257,10 @@ For his recurring tasks, as of 28 October 2026. Set model and effort before the 
 
 Fresh check 28 Oct 2026 (Fable 5.1): fix · 3 errors, 10 should-fix, 14 minor; all applied; report `audits/brand-ai/fresh-check-B2.md`.
 
-1. **Artificial Analysis figures disagree with themselves.** The leaderboard gives Opus 5.5 at max $5.98 per task; the model page gives $10.04. The model page names index v5.0 with nine evaluations; the methodology page names v4.3.2 with ten. The meaning of "with fallback" in the model labels is not explained on the pages read. Every §5 and §7 ratio rests on the leaderboard.
-2. **Gemini 3.8 Flash at $3.49 per task, above Argon's $1.62,** is the most surprising figure in the unit and may be a data artefact. It is reported as the leaderboard shows it.
+Audit 2 29 Oct 2026 (Fable 5.1, stratified sample): PASS · 0 of 9 sampled FAIL, 3 STALE; 1 incidental FAIL (§7 seven-times miscite); Artificial Analysis figures moved to Intelligence Index v5.0; errata B2-1 to B2-25 applied; report `audits/brand-ai/audit-2.md`.
+
+1. **Artificial Analysis figures changed the day after writing.** On 28 October the leaderboard gave Opus 5.5 at max $5.98 per task and the model page $10.04; the gap was the changeover to Intelligence Index v5.0, and Audit 2 (29 October) replaced every §5, §7, §8 and deliverable figure with the v5.0 values. The meaning of "with fallback" in the model labels is not explained on the pages read. Every §5 and §7 ratio rests on the leaderboard as read on 29 October 2026.
+2. **Gemini 3.8 Flash at $7.77 per task, above Argon's $3.84,** is the most surprising figure in the unit and may be a data artefact. It is reported as the leaderboard shows it.
 3. **OpenAI's announcement page failed to load.** GPT-6 Sol and Luna positioning and ChatGPT availability come from The Next Web (secondary); GPT-6.1 Sol's effort levels come from OpenAI's model guide. Prices come from OpenAI's own pricing page, which lists gpt-6.1-sol where the news coverage says GPT-6 Sol.
 4. **claude.ai defaults for Opus 5.5 and Haiku 5.5** are not stated anywhere I found; the unit gives the API defaults and the app defaults only for Sonnet 5.5 and Fable 5.1.
 5. **The per-model rate at which claude.ai usage is drawn** is undocumented. The claim that API prices are his marginal price holds only for usage credits and for Fable on Pro.
@@ -266,7 +268,7 @@ Fresh check 28 Oct 2026 (Fable 5.1): fix · 3 errors, 10 should-fix, 14 minor; a
 7. **FrugalGPT and the overthinking paper were cited from arXiv as preprints;** the fresh check found their venues (TMLR 2024; ICML 2025) and the text now cites them.
 8. **The token counts in the Shōmen example (4,000 in, 1,500 out)** are my assumptions, and the per-post costs are arithmetic on them.
 9. **The self-preference evidence is about a model judging its own output.** Whether it extends to a sibling model from the same maker (Fable auditing Opus) is untested in the sources cited.
-10. **The Claude Code post on model and effort choice** predates the 5.5 family (7 Jul 2026); its advice is general, and its seven-times token figure is labelled illustrative by its author.
+10. **The Claude Code post on model and effort choice** predates the 5.5 family (7 Jul 2026); its advice is general, and its seven-times token figure is a single diagram caption with no measurement behind it.
 
 ## Sources
 
@@ -295,7 +297,8 @@ All web sources checked 28 October 2026.
 - Google. *Gemini 4 Argon*. Gemini API model page, last updated 14 October 2026. https://ai.google.dev/gemini-api/docs/models/gemini-4-argon
 - Google. *Gemini 4 Argon: our next era of frontier intelligence*. 30 September 2026. https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/
 - DeepSeek. *模型 & 价格* (Models and pricing). API docs. https://api-docs.deepseek.com/zh-cn/quick_start/pricing · English page with the `reasoning_effort` example: https://api-docs.deepseek.com/quick_start/pricing
-- Artificial Analysis. *LLM Leaderboard*. Accessed 28 October 2026 (vendor dataset). https://artificialanalysis.ai/leaderboards/models
+- Artificial Analysis. *LLM Leaderboard*. Accessed 28 October 2026; figures re-read 29 October 2026 under Intelligence Index v5.0 (vendor dataset). https://artificialanalysis.ai/leaderboards/models
+- Artificial Analysis. *Announcing Artificial Analysis Intelligence Index v5*. 27 October 2026. https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5
 - Artificial Analysis. *Claude Opus 5.5*. Model page (vendor dataset). https://artificialanalysis.ai/models/claude-opus-5-5
 - Artificial Analysis. *Intelligence benchmarking methodology*. https://artificialanalysis.ai/methodology/intelligence-benchmarking
 - Artificial Analysis. *AA-Omniscience*. v1.1, October 2026 (vendor dataset). https://artificialanalysis.ai/evaluations/omniscience

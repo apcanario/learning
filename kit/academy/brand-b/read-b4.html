@@ -457,6 +457,7 @@
 <p>Ranks 11 and 12 sit together because rank 11's <code>hub.py</code> edit needs rank 12's rebuild; doing them in one chat saves one rebuild and publish. The three high-severity fixes are ranks 1, 10 and 16. If he does nothing else, he should do those three.</p>
 <h2 id="read-b4-6">Writer's unsure list</h2>
 <p>Fresh check 29 Oct 2026 (Fable 5.1): fix · 0 errors, 7 should-fix, 9 minor; all applied; report <code>audits/brand-ai/fresh-check-B4.md</code>.</p>
+<p>Audit 2 29 Oct 2026 (Fable 5.1, stratified sample): PASS · 0 of 6 sampled FAIL, 0 of 20 checked; no errata; report <code>audits/brand-ai/audit-2.md</code>.</p>
 <ol>
 <li><strong>Retrieval mode is inferred.</strong> The Project's 907,260 characters exceed the 200K window under either tokens-per-character figure, and the help centre says retrieval switches on near the limit; the mode itself is not visible from the repository, and the "observed" list of documents by name was seen in a Claude Code session attached to the Project, which may receive the knowledge differently from a claude.ai chat.</li>
 <li><strong>The Project copies were not opened.</strong> Sizes come from the repository files they mirror; any copy uploaded before a later repository change differs from what was measured.</li>

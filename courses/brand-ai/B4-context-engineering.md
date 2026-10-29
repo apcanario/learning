@@ -251,6 +251,8 @@ Ranks 11 and 12 sit together because rank 11's `hub.py` edit needs rank 12's reb
 
 Fresh check 29 Oct 2026 (Fable 5.1): fix · 0 errors, 7 should-fix, 9 minor; all applied; report `audits/brand-ai/fresh-check-B4.md`.
 
+Audit 2 29 Oct 2026 (Fable 5.1, stratified sample): PASS · 0 of 6 sampled FAIL, 0 of 20 checked; no errata; report `audits/brand-ai/audit-2.md`.
+
 1. **Retrieval mode is inferred.** The Project's 907,260 characters exceed the 200K window under either tokens-per-character figure, and the help centre says retrieval switches on near the limit; the mode itself is not visible from the repository, and the "observed" list of documents by name was seen in a Claude Code session attached to the Project, which may receive the knowledge differently from a claude.ai chat.
 2. **The Project copies were not opened.** Sizes come from the repository files they mirror; any copy uploaded before a later repository change differs from what was measured.
 3. **That the five-file set will load whole** rests on the retrieval article's statement that a project returns to in-context processing below the threshold; the threshold itself is not published.

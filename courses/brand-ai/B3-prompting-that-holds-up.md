@@ -867,6 +867,8 @@ The source classes and labels are the course's own sourcing standard (`sourcing-
 
 Fresh check 29 Oct 2026 (Fable 5.1): fix · 1 error, 4 should-fix, 9 minor; all applied (the rendering finding by a `theme.css` rule; the optional cut of repeated template lines not taken, so each worked example stays paste-ready); report `audits/brand-ai/fresh-check-B3.md`.
 
+Audit 2 29 Oct 2026 (Fable 5.1, stratified sample): PASS · 0 of 6 sampled FAIL, 0 of 28 checked; no errata; report `audits/brand-ai/audit-2.md`.
+
 1. **Anthropic's "up to 30 percent" figure** for queries placed after long documents is vendor data with no published method, task set or model list on the page; it is reported as such and nothing in the library depends on the number.
 2. **Laban et al.:** the paper names 15 models (Claude 3.7 Sonnet, GPT-4.1, o3, Gemini 2.5 Pro among them) and its multi-turn setting reveals a fixed instruction one piece per turn with no user corrections (fresh check, 29 Oct 2026). Whether the 39% average drop holds for Opus 5.5 or Fable 5.1 is untested.
 3. **Jang et al. (negated prompts)** is a 2023 workshop paper on models of 2022; the inverse-scaling result may not hold for current models. It is used only to support pairing each prohibition with a positive instruction.

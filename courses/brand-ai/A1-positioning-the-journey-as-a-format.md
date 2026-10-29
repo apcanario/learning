@@ -86,7 +86,7 @@ What was checked on 28 October 2026: YouTube About pages were opened for the han
 - Against: "syllabus" can read as a study channel, which a karate or running viewer may not click. @thesyllabus is taken (checked); @syllabusofone is unconfirmed. "Of one" says the plan is personal; it does not say the attempt is recorded.
 
 **3. His own name.** The pattern of three of the five comparables (Mike Boyd, Michelle Khare, Matt D'Avella), each of whom runs the channel under their own name and carries the method in the About text, a series name or the titles (§5).
-- For: survives any change of method or format, needs no rename later, and is the name ADHD is already public under. Handles built on a full name are often free (my inference; not checked).
+- For: survives any change of method or format, needs no rename later, and is the name ADHD is already public under. The handle is already his: @apcanario on YouTube and, per the episode descriptions, on Instagram (§6).
 - Against: the name says nothing about the method. D'Avella's case shows the cost: his About page does not mention the thirty-day format at all, so the method has to be carried entirely by titles. A stranger repeats "that guy" before they repeat the format, which is the weaker position on §1's test.
 
 The recommendation, with its reasons in his decision format, is in the deliverable.
@@ -214,6 +214,8 @@ Display name for the profile: Syllabus of One (or his own name, under the overri
 Fresh check 29 Oct 2026 (Fable 5.1): fix · 1 error, 4 should-fix, 6 minor; all applied (finding 5 closed 29 Oct 2026 by the §6 revision below); report `audits/brand-ai/fresh-check-A1.md`.
 
 Fresh check 29 Oct 2026 (Fable 5.1), §6 revision: fix · 1 error, 1 should-fix, 3 minor; all applied; report `audits/brand-ai/fresh-check-A1-s6.md`.
+
+Audit 2 29 Oct 2026 (Fable 5.1, stratified sample): PASS · 0 of 7 sampled FAIL, 0 of 25 checked, 2 unverifiable; erratum A1-1 (§4 option 3, backlog P33) applied; report `audits/brand-ai/audit-2.md`.
 
 1. Channel: "Pedro Canário", @apcanario (https://www.youtube.com/@apcanario), read in Chrome on 29 Oct 2026 with both episodes. §6 rests on YouTube's auto-generated captions, a machine transcription with gaps under music; one stretch of episode 2 (about 3:11–3:41) was cut off in the read. The brief's title for episode 1 differs from the published title; §6 uses the published one. Instagram @apcanario is taken from the descriptions; the profile was not opened.
 2. Handle availability for @syllabusofone (YouTube) and every Instagram handle other than @apcanario is unconfirmed; the fetch tool could not read those pages. @Consumed and @thesyllabus were confirmed in use. Since 29 Oct 2026 the pick keeps @apcanario, so @syllabusofone matters only if he wants the handle changed too.
