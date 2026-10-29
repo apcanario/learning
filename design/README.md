@@ -48,7 +48,7 @@ Dark accents are the house palette and do not change. No grey is a dominant acce
 
 ## Figures
 
-`kit/viz.py` draws a declared figure (timeline, compare, tree, flow) as inline SVG with classes only; section 4i of the theme gives every class its fill and stroke from the tokens, so a figure follows the theme like any text. A page never styles a figure; a new kind is a function in `viz.py` plus its classes in 4i. The house accents are reachable as tones 1 to 6 (`--viz-1` … `--viz-6`).
+`kit/viz.py` draws a declared figure (timeline, compare, tree, flow; since V1 sitemap, objects, decision, matrix, states, swimlanes, wireflow; Academy's Figure kinds page shows each) as inline SVG with classes only; section 4i of the theme gives every class its fill and stroke from the tokens, so a figure follows the theme like any text. A page never styles a figure; a new kind is a function in `viz.py` plus its classes in 4i. The house accents are reachable as tones 1 to 6 (`--viz-1` … `--viz-6`).
 
 ## Rules for pages
 

@@ -23,7 +23,7 @@
       layout below 768 px is the one every rule above describes and does not change
    7  Interaction: hover and pressed states for every clickable thing, on devices
       that can hover; equal-height catalogue cards with the button on one line
-   Version 5.2, 29 Oct 2026 (V1): 4i adds the classes of the seven IA figure kinds. Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
+   Version 5.3, 29 Oct 2026 (P40): 4i's A8 text classes win over .viz text. Version 5.2, 29 Oct 2026 (V1): 4i adds the classes of the seven IA figure kinds. Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -407,8 +407,9 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 .viz figcaption{font-size:12.5px;color:var(--muted);margin:10px 0 0;line-height:1.45;max-width:68ch}
 .viz text{fill:var(--fg)}
 .viz-label{font-size:12px}
-.viz-date,.viz-ticklabel,.viz-value,.viz-note{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
-.viz-spanlabel{font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;fill:var(--on-accent)}
+/* written .viz .x (P40, 29 Oct 2026): as plain classes they lost to .viz text and drew in the body colour */
+.viz .viz-date,.viz .viz-ticklabel,.viz .viz-value,.viz .viz-note{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
+.viz .viz-spanlabel{font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;fill:var(--on-accent)}
 .viz-axis,.viz-tick,.viz-stem,.viz-edge{stroke:var(--line-2);fill:none}
 .viz-axis{stroke-width:2}
 .viz-arrow{stroke:var(--muted);stroke-width:1.5;fill:none;marker-end:url(#vizhead)}

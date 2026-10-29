@@ -52,6 +52,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 22. "How it was built" for every course (A4) | 78 | 59 |
 | 28 Oct | 23. The vault is the source; a new course is a folder (A5) | 78 | 59 |
 
+## 29 October 2026 · Session 26 · Figures in the reader's fonts and colours (P39, P40)
+
+Backlog rows P39 and P40, Opus 5.5. `verify.py` now loads the theme's own fonts from a vendored copy in `kit/fonts/` instead of stubbing Google Fonts, so every check measures what a reader's phone draws; the measure check is 68ch of the report font inside the column. Theme 5.3: dates, ticks, values and notes in figures draw muted and span labels on their accent, as the theme always meant (the rules had lost to `.viz text`). Timelines place each label so no stem runs through another label, facing right, left or centred: the Rome home's timeline is five rows without a crossing; labels are no longer cut at two lines. Verified, published to the artifact and Pages.
+
 ## 29 October 2026 · Session 25 · The IA figure kinds (V1)
 
 Backlog row V1 of `docs/BACKLOG.md`, Opus 5.5. `viz.py` draws seven more kinds for the Information Architecture course: `sitemap` (top-down, page-type tags, the first level wrapping into rows, deeper levels stacked), `objects` (an object map in a grid, relationships with cardinalities), `decision` (questions, labelled branches, filled outcomes, packed level by level), `matrix` (rows by columns, a mark and a tone per cell, a legend), `states` (rounded states in order, gap arrows, routed transitions, start marker, end rings, loops), `swimlanes` (lanes, steps by column, links through the gaps; widens and scrolls) and `wireflow` (screens with placeholder content, labelled arrows). Text is measured in the theme's fonts and wrapped inside its box; a kind that cannot draw its data stops the build. Theme 5.2: nineteen classes in §4i. The four A8 kinds are unchanged, and so is every page that uses them.

@@ -24,7 +24,7 @@ Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the
 import sys, json, pathlib, re, threading, functools
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
-import index_check
+import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
 from courses import COURSES, THEMES
 # each track and its course cards as the home must show them, from courses.py (A5: a new course needs no edit here)
 HOME_TRACKS = [t['name'] + ':' + ','.join(
@@ -41,7 +41,7 @@ SERVER = ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(Quiet, director
 threading.Thread(target=SERVER.serve_forever, daemon=True).start()
 URL = f'http://127.0.0.1:{SERVER.server_port}/index.html'
 # the visible panel holds its content: a panel in the shell at once, a report once its fetch has landed (or failed)
-READY_JS = """() => { const p = [...document.querySelectorAll('.panel')].find(p => !p.hidden);
+READY_JS = """() => { if (document.fonts.status !== 'loaded') return false; const p = [...document.querySelectorAll('.panel')].find(p => !p.hidden);
   return !!p && (!p.hasAttribute('data-src') || p.hasAttribute('data-loaded') || p.hasAttribute('data-failed')); }"""
 def ready(pg):
     pg.wait_for_function(READY_JS, timeout=15000)
@@ -116,11 +116,21 @@ def check_panels(pg, label, fails):
     print(f'{label}: panels checked: {len(ids)}; tightest stacked gap {m[0]}px ({m[1]})')
     return m[0], len(ids)
 
+FONTS = R / 'fonts'
+FONT_CSS = (FONTS / 'fonts.css').read_text()
+def font_file(route):
+    f = FONTS / route.request.url.rsplit('/', 1)[1]
+    if '/learning-vendored/' in route.request.url and f.suffix == '.woff2' and f.exists():
+        route.fulfill(status=200, content_type='font/woff2', body=f.read_bytes(), headers={'Access-Control-Allow-Origin': '*'})
+    else:
+        route.abort()
+
 def new_page(p, br, errors, name, w, h, mobile):
     ctx = br.new_context(viewport={'width': w, 'height': h}, device_scale_factor=3 if mobile else 1,
                          is_mobile=mobile, has_touch=mobile)  # a real phone or tablet honours the viewport tag
-    ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=''))
-    ctx.route('**/fonts.gstatic.com/**', lambda r: r.abort())
+    # the theme fonts, from the vendored copy in fonts/ (P39): the page measures and draws what a reader's phone does
+    ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=FONT_CSS))
+    ctx.route('**/fonts.gstatic.com/**', font_file)
     pg = ctx.new_page()
     pg.on('console', lambda m: errors.append(f'{name}: {m.text}') if m.type == 'error' else None)
     pg.on('pageerror', lambda e: errors.append(f'{name}: {e}'))
@@ -509,6 +519,9 @@ def main():
                   mainLeft: main.left, mainW: main.width, topLeft: top.left, topRight: top.right,
                   active: act ? act.dataset.target : null, listScroll: list ? getComputedStyle(list).overflowY : null,
                   measure: getComputedStyle(document.querySelector('#m23 .report p')).maxWidth,
+                  ch68: (() => { const p = document.querySelector('#m23 .report p'), t = document.createElement('span');
+                    t.style.whiteSpace = 'nowrap'; t.textContent = '0'.repeat(68); p.appendChild(t); const w = t.getBoundingClientRect().width; t.remove(); return w; })(),
+                  fonts: ['DM Sans', 'Space Mono', 'Gentium Book Plus'].filter(n => ![...document.fonts].some(f => f.family.replace(/"/g, '') === n && f.status === 'loaded')),
                   home: getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns.split(' ').length,
                   ml: getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns.split(' ').length}; }''')
         if s['left'] != 0 or s['w'] != SIDE or s['h'] < s['vh'] - 1: fails.append(f'desktop: sidebar not at the left edge, {SIDE} px, full height: {s}')
@@ -520,8 +533,10 @@ def main():
         if s['topLeft'] != SIDE or s['topRight'] != 1280: fails.append(f'desktop: top bar spans {s["topLeft"]}..{s["topRight"]}, expected {SIDE}..1280')
         if s['active'] != 'm23': fails.append(f'desktop: sidebar does not highlight the current report ({s["active"]})')
         if s['listScroll'] != 'auto': fails.append(f'desktop: sidebar list overflow-y {s["listScroll"]}, expected auto')
-        mw = float(s['measure'].replace('px', '')) if s['measure'].endswith('px') else 0  # 68ch resolves to about 690 px
-        if not 560 <= mw <= 720: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch (560 to 720 px)')
+        # P39: the measure is 68ch of the report's own font (DM Sans, about 744 px), and fits the 760 px column
+        mw = float(s['measure'].replace('px', '')) if s['measure'].endswith('px') else 0
+        if abs(mw - s['ch68']) > 2 or not 560 <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
+        if s['fonts']: fails.append(f'desktop: theme fonts not loaded from fonts/: {s["fonts"]}')
         if s['home'] != 2 or s['ml'] != 2: fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')
         # the sidebar's own targets and gaps, every unit open
         pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed'))")

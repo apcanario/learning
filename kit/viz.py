@@ -158,17 +158,58 @@ def timeline(d):
         tx = x(t)
         anchor = 'start' if tx < L + 20 else ('end' if tx > R - 20 else 'middle')
         body += f'<line class="viz-tick" x1="{tx:.1f}" y1="{axis - 6}" x2="{tx:.1f}" y2="{axis}"/><text class="viz-ticklabel" x="{tx:.1f}" y="{axis - 10}" text-anchor="{anchor}">{esc(yr(t))}</text>'
-    # events: alternate rows below the axis so labels never collide; each event is a dot, a stem and a two-line label
-    rows = 3 if len(events) <= 8 else 4
-    lane_h = 44
+    # events (P40, 29 Oct 2026): each label faces right from its stem, left to it or centres on it, in a row below the
+    # axis. Given the directions, a label sits below every event whose stem it would cover (so that stem ends above it)
+    # and in the first such row its neighbours leave free; the directions are then improved one event at a time until
+    # nothing is gained: first no stem through a label, then as few rows as possible. Each label is the date, then the
+    # text wrapped at 22.
+    lab = {}
     for k, e in enumerate(events):
-        lane = k % rows
-        ex = x(e['at'])
-        ty = axis + 36 + lane * lane_h
+        lines = [yr(e['at'])] + _wrap(e['label'], 22)
+        lab[k] = [x(e['at']), lines, max([_tw(lines[0], 10.5, 'mono')] + [_tw(ln, 12) for ln in lines[1:]])]
+    n = len(events)
+    def span(k, anchor):
+        ex, _, w = lab[k]
+        x0 = ex if anchor == 'start' else (ex - w / 2 if anchor == 'middle' else ex - w)
+        return x0, x0 + w
+    def layout(anch):
+        box = {k: span(k, anch[k]) for k in range(n)}
+        covers = {k: [j for j in range(n) if j != k and box[k][0] - 4 <= lab[j][0] <= box[k][1] + 4] for k in range(n)}
+        rows, left = {}, set(range(n))
+        while left:
+            ready_ = [k for k in left if all(j in rows for j in covers[k])]
+            k = min(ready_ or left, key=lambda k: (sum(j not in rows for j in covers[k]), lab[k][0], k))
+            r = max([rows[j] + 1 for j in covers[k] if j in rows], default=0)
+            while any(rows[j] == r and box[j][0] - 8 < box[k][1] and box[k][0] < box[j][1] + 8 for j in rows):
+                r += 1
+            rows[k] = r; left.discard(k)
+        cross = sum(1 for k in range(n) for j in covers[k] if rows[k] < rows[j])
+        return (cross, max(rows.values(), default=-1) + 1, sum(rows.values())), rows, box
+    fits = lambda k, a: 4 <= span(k, a)[0] and span(k, a)[1] <= W - 4
+    anch = {k: next((a for a in ('middle', 'start', 'end') if fits(k, a)), 'middle') for k in range(n)}
+    best = layout(anch)
+    for _ in range(12):
+        gained = False
+        for k in sorted(range(n), key=lambda k: lab[k][0]):
+            for a in ('start', 'middle', 'end'):
+                if a == anch[k] or not fits(k, a):
+                    continue
+                trial = dict(anch); trial[k] = a
+                got = layout(trial)
+                if got[0] < best[0]:
+                    anch, best, gained = trial, got, True
+        if not gained:
+            break
+    _, lane_of, box = best
+    for k in range(n):
+        lab[k] = (lab[k][0], lab[k][1], anch[k], *box[k])
+    rows = max(lane_of.values(), default=0) + 1
+    lane_h = 13 * max((len(v[1]) for v in lab.values()), default=1) + 5
+    for k, e in enumerate(events):
+        ex, lines, anchor, _, _ = lab[k]
+        ty = axis + 36 + lane_of[k] * lane_h
         body += f'<line class="viz-stem" x1="{ex:.1f}" y1="{axis}" x2="{ex:.1f}" y2="{ty - 12}"/>'
         body += f'<circle class="viz-dot viz-t{e.get("tone", 1)}" cx="{ex:.1f}" cy="{axis}" r="4"/>'
-        anchor = 'start' if ex < L + 60 else ('end' if ex > R - 60 else 'middle')
-        lines = [yr(e['at'])] + _wrap(e['label'], 22)[:2]
         for i, ln in enumerate(lines):
             cls = 'viz-date' if i == 0 else 'viz-label'
             body += f'<text class="{cls}" x="{ex:.1f}" y="{ty + i * 13}" text-anchor="{anchor}">{esc(ln)}</text>'
