@@ -22,7 +22,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 
 | Hub | Units since last audit | Next audit | Note |
 |---|---|---|---|
-| Brand + AI | 0 of 4 (Audit 2 ran 29 Oct 2026) | Audit 3 after #12 (DD-B3, A3, B5, A4) | Audit 1: B1 PASS; A2·A6·A9 REWRITE, rewritten 28 Oct 2026. Audit 2 (29 Oct 2026): B2, B3, B4, A1 all PASS; B2 errata for Intelligence Index v5.0 and one miscite, A1 erratum (P33), applied. DD-B3 next. Fresh checker required for every Brand + AI unit (method §1 override). |
+| Brand + AI | 1 of 4 (Audit 2 ran 29 Oct 2026; DD-B3 since) | Audit 3 after #12 (DD-B3, A3, B5, A4) | Audit 1: B1 PASS; A2·A6·A9 REWRITE, rewritten 28 Oct 2026. Audit 2 (29 Oct 2026): B2, B3, B4, A1 all PASS; B2 errata for Intelligence Index v5.0 and one miscite, A1 erratum (P33), applied. DD-B3 filed 29 Oct 2026; A3 next. Fresh checker required for every Brand + AI unit (method §1 override). |
 | Personal Mythology | 0 of 4 new modules | after the 4th new Rome module (batch 1: 11.3, 11.4, 11.5, 11.6) | Decision of 28 October 2026: strict four-module cadence per method.md §6; `kit/review_due.py` still counts syllabus units and is to be rewritten (S3). Six Greek reports still flagged from the 27 October review: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (`NEXT-SESSION.md`, S4) |
 
 ## Staleness checks due (search-on units)
@@ -34,10 +34,11 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 | A9 | 28 Oct 2026 (rewrite) | 28 Apr 2027 |
 | B1 | 28 Oct 2026 (search on: Anthropic product facts) | 28 Apr 2027 |
 | B2 | 28 Oct 2026 (search on: lineups, prices, plan rules, benchmarks) | 28 Apr 2027 |
+| DD-B3 | 29 Oct 2026 (search on: practitioners' posts, repositories, papers) | 29 Apr 2027 |
 
 ## Brand + AI
 
-Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 3 deep dives; DD-B3 added 28 Oct 2026). 8 of 22 written. A unit is written when its file is in `courses/brand-ai/` (A5: Academy reads it from there). Briefs: each course's Briefs page in Academy (`gen/data/brand-ai/units_data.py`). Build order: the Build order page.
+Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 3 deep dives; DD-B3 added 28 Oct 2026). 9 of 22 written. A unit is written when its file is in `courses/brand-ai/` (A5: Academy reads it from there). Briefs: each course's Briefs page in Academy (`gen/data/brand-ai/units_data.py`). Build order: the Build order page.
 
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
@@ -52,7 +53,7 @@ Two courses for one reader. **A · Building a Marketable Personal Brand** (9 cor
 | 7 | B4 | B | Context engineering | written 29 Oct 2026 (own context; fresh check Fable 5.1 fix, 0 errors, 7 should-fix, 9 minor, applied; report `audits/brand-ai/fresh-check-B4.md`) | Opus 5.5 | off | `courses/brand-ai/B4-context-engineering.md` |
 | 8 | A1 | A | Positioning: the journey as a format | written 29 Oct 2026 (own context, written out of order beside B3; fresh check Fable 5.1 fix, 1 error, 4 should-fix, 6 minor, applied; report `audits/brand-ai/fresh-check-A1.md`; §6 rewritten 29 Oct 2026 from the two episodes (P28), fresh check Fable 5.1 fix, 1 error, 1 should-fix, 3 minor, applied; report `audits/brand-ai/fresh-check-A1-s6.md`; Audit 2 29 Oct: PASS, erratum A1-1 (P33) applied) | Opus 5.5 | off | `courses/brand-ai/A1-positioning-the-journey-as-a-format.md` |
 | ✓ | Audit 2 | A+B | Stratified-sample audit of the last four units | run 29 Oct 2026: B2, B3, B4, A1 PASS (96 claims checked; 1 FAIL, 10 STALE, all B2; errata B2-1 to B2-25 and A1-1 applied) | Fable 5.1 | on | `audits/brand-ai/audit-2.md` |
-| 9 | DD-B3 | B | Deep dive: how the best practitioners use the tool | not written (added 28 Oct 2026) | Opus 5.5 | on | `courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md` |
+| 9 | DD-B3 | B | Deep dive: how the best practitioners use the tool | written 29 Oct 2026 (own context; fresh check Fable 5.1 fix, 1 error, 3 should-fix, 9 minor, applied; report `audits/brand-ai/fresh-check-DD-B3.md`) | Opus 5.5 | on | `courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md` |
 | 10 | A3 | A | The journey system | not written | Opus 5.5 | off | `courses/brand-ai/A3-the-journey-system.md` |
 | 11 | B5 | B | Skills and automation | not written | Opus 5.5 | off | `courses/brand-ai/B5-skills-and-automation.md` |
 | 12 | A4 | A | Voice, disclosure and the record | not written | Opus 5.5 | off | `courses/brand-ai/A4-voice-disclosure-and-the-record.md` |

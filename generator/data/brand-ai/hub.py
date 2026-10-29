@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v7.8 · 29 Oct 2026'
+VERSION = 'v7.9 · 29 Oct 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -66,6 +66,9 @@ READINGS = [
     dict(id='read-b3', course='B',
          title='Prompting that holds up', covers=['B3'], name='B3 · Prompting that holds up',
          intro="Unit B3, written 28–29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to confirm sources, quotations and venues); fresh check by Fable 5.1 in a separate context: fix, 1 error, 4 should-fix, 9 minor, all applied. Deliverable: the prompt library, ten templates for his recurring tasks, each with a worked example that can be pasted as it stands; the examples repeat their template's lines on purpose, which is most of the unit's length. Known gaps, from the writer's unsure list: Anthropic's 'up to 30 percent' figure for putting the question last publishes no method; the multi-turn and negation studies tested models from 2022 to 2025, none current; the contrastive-examples evidence is a preprint; the model-specific guides are written for the API, and carrying them into claude.ai chat is the writer's inference."),
+    dict(id='read-dd-b3', course='B',
+         title='Deep dive: how the best practitioners use the tool', covers=['DD-B3'], name='DD-B3 · How the best practitioners use the tool',
+         intro="Deep dive DD-B3, written 29 Oct 2026 by Opus 5.5 in its own context, search on (every fact dated that day; staleness check due 29 Apr 2027); fresh check by Fable 5.1 in a separate context: fix, 1 error, 3 should-fix, 9 minor, all applied. Karpathy's documented practice rebuilt from his own posts, talks and repositories ('the Karpathy method' is a label others made), then Anthropic, OpenAI, Willison, Mollick and the BCG experiment, spec-driven workflows and the prompting literature, each graded by evidence and tested for transfer to his work. Deliverable: 26 method cards and ten operating rules, each traced to a card. Known gaps, from the writer's unsure list: none of Karpathy's X posts could be opened, so their text comes from named reproductions; the autoresearch run count and the knowledge-base word count are reporters' paraphrases; the Software 3.0 quotes rest on a third-party transcription; the 'How I use LLMs' video and Mollick's book were not opened; the Sequoia summary on his blog is LLM-generated, as he labels it."),
     dict(id='read-b4', course='B',
          title='Context engineering', covers=['B4'], name='B4 · Context engineering',
          intro="Unit B4, written 29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to check claude.ai and Claude Code behaviour against Anthropic's help centre and docs, dated that day); fresh check by Fable 5.1 in a separate context: fix, 0 errors, 7 should-fix, 9 minor, all applied. Deliverable: an audit of the Learning Project's own structure, every size and count measured from the repository, seventeen findings with evidence and fix, revised project instructions, a rot check, and the fix list ranked by effort. Known gaps, from the writer's unsure list: whether the Project's knowledge is in retrieval mode is inferred, not observed; connector and memory costs per chat are undocumented; Claude Code guidance is applied to claude.ai by analogy; effort figures are the writer's estimates."),
@@ -80,11 +83,11 @@ READINGS = [
 # ---- build order -----------------------------------------------------------------------
 DONE_ROWS = [('—', 'A2 · A6 · A9', 'Audience growth research → rewritten as three units after Audit 1', 'research: Fable 5.1 agents; units: Opus 5.5, fresh-checked by Fable 5.1', 'on', 'rewritten 28 Oct')]
 ORDER = [("B1", "Opus 5.5", "off"), ("B2", "Opus 5.5", "on"), ("B3", "Opus 5.5", "off"), ("B4", "Opus 5.5", "off"), ("A1", "Opus 5.5", "off"), ("DD-B3", "Opus 5.5", "on"), ("A3", "Opus 5.5", "off"), ("B5", "Opus 5.5", "off"), ("A4", "Opus 5.5", "off"), ("A5", "Opus 5.5", "off"), ("B7", "Opus 5.5", "off"), ("A7", "Opus 5.5", "off"), ("A8", "Opus 5.5", "on"), ("B6", "Opus 5.5", "off"), ("B8", "Opus 5.5", "on"), ("DD-A1", "Opus 5.5", "on"), ("DD-B1", "Opus 5.5", "off"), ("DD-A2", "Opus 5.5", "off"), ("DD-B2", "Fable 5.1", "off")]
-STATUS = {'B1': 'written 28 Oct', 'A9': 'rewritten 28 Oct', 'A2': 'rewritten 28 Oct', 'A6': 'rewritten 28 Oct', 'B2': 'written 28 Oct', 'A1': 'written 29 Oct', 'B3': 'written 29 Oct', 'B4': 'written 29 Oct'}   # unit code -> status text in the build-order table once filed
+STATUS = {'B1': 'written 28 Oct', 'A9': 'rewritten 28 Oct', 'A2': 'rewritten 28 Oct', 'A6': 'rewritten 28 Oct', 'B2': 'written 28 Oct', 'A1': 'written 29 Oct', 'B3': 'written 29 Oct', 'B4': 'written 29 Oct', 'DD-B3': 'written 29 Oct'}   # unit code -> status text in the build-order table once filed
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
 FINAL_AUDIT = ('Audit 6', 'Final audit of DD-B2 plus a full read of both courses against their goals', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'DD-B3', 2, 'Audit 3 after #12 (DD-B3, A3, B5, A4)'
+NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'A3', 2, 'Audit 3 after #12 (DD-B3, A3, B5, A4)'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_LEDE = "Two courses for one reader, written one unit at a time. <strong>Learn</strong> is where the finished units are read. <strong>Build</strong> is where they get made: method, briefs, audits, sources, history."
@@ -206,6 +209,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-10-29 10:45', "v7.9. DD-B3 Deep dive: how the best practitioners use the tool written (Opus 5.5, own context, search on), fresh-checked by Fable 5.1 in a separate context (fix, 1 error, 3 should-fix, 9 minor; all applied) and filed: reading page under course B, DD-B3 marked written; A3 next; Audit 3 counter 1 of 4. B2 erratum P34: the re-read rule names the Artificial Analysis index version."),
     ('2026-10-29 10:30', "v7.8. Audit 2 (Fable 5.1, live search) over B2, B3, B4, A1: all four PASS, 1 incidental FAIL and 10 STALE in B2 (Artificial Analysis Intelligence Index v5.0, announced 27 Oct). Errata applied: B2's leaderboard, Omniscience and deliverable figures updated to v5.0, the seven-times miscite corrected (B2-1 to B2-25); A1 §4 option 3 handle line (A1-1, P33). Report audits/brand-ai/audit-2.md. Gate cleared: DD-B3 next; Audit 3 after #12."),
     ('2026-10-29 08:30', "v7.7. A1 §6 rewritten from the two vlog episodes, read in Chrome (Opus 5.5; backlog P28): the published title of episode 1 differs from the brief's, both titles already carry the series name 'Road to WIKF Global Cup 2026', and the episodes position a karate comeback rather than the method (syllabus and artefact missing). Deliverable: the pick keeps the handle @apcanario and renames the channel only; Season 1 line names the series. Fresh-checked by Fable 5.1 in a separate context (fix, 1 error, 1 should-fix, 3 minor; all applied). Audit 2 still due before DD-B3."),
     ('2026-10-29 06:30', "v7.6. B4 Context engineering written (Opus 5.5, own context, search off with verification searches), fresh-checked by Fable 5.1 in a separate context (fix, 0 errors, 7 should-fix, 9 minor; every finding applied) and filed: reading page under course B, B4 marked written. Four units since Audit 1 (B2, A1, B3, B4): Audit 2 is due before DD-B3."),

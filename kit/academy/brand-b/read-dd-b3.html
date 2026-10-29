@@ -1,0 +1,510 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#brand-b" data-target="brand-b">Course B · Building with AI</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">DD-B3</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI</span> · DD-B3 <span class="pill live">DD-B3</span></div>
+    <h1>Deep dive: how the best practitioners use the tool</h1>
+    <nav class="toc" aria-label="Sections"><a href="#read-dd-b3-0">1 · Karpathy's documented practice</a><a href="#read-dd-b3-1">2 · The other methods with a primary source and a named author</a><a href="#read-dd-b3-2">3 · Who each method was written for, and whether it leaves code</a><a href="#read-dd-b3-3">4 · What he already does without the name, and what collides</a><a href="#read-dd-b3-4">5 · Flags for B4, B5 and DD-B1</a><a href="#read-dd-b3-5">Deliverable · Method cards and operating rules</a><a href="#read-dd-b3-6">Writer's unsure list</a><a href="#read-dd-b3-7">Sources</a></nav>
+  </header>
+  <p class="lede">Deep dive DD-B3, written 29 Oct 2026 by Opus 5.5 in its own context, search on (every fact dated that day; staleness check due 29 Apr 2027); fresh check by Fable 5.1 in a separate context: fix, 1 error, 3 should-fix, 9 minor, all applied. Karpathy's documented practice rebuilt from his own posts, talks and repositories ('the Karpathy method' is a label others made), then Anthropic, OpenAI, Willison, Mollick and the BCG experiment, spec-driven workflows and the prompting literature, each graded by evidence and tested for transfer to his work. Deliverable: 26 method cards and ten operating rules, each traced to a card. Known gaps, from the writer's unsure list: none of Karpathy's X posts could be opened, so their text comes from named reproductions; the autoresearch run count and the knowledge-base word count are reporters' paraphrases; the Software 3.0 quotes rest on a third-party transcription; the 'How I use LLMs' video and Mollick's book were not opened; the Sequoia summary on his blog is LLM-generated, as he labels it.</p>
+  <div class="report"><p>Every source in this unit was opened, or tried, on 29 October 2026. Three limits shape what follows, and they are stated once here.</p>
+<p><strong>Karpathy's posts on X could not be opened.</strong> X refused the fetch (robots rule) for every status link tried. Where a post matters, the unit quotes it through a named reporter that reproduces it (Simon Willison, The Decoder, TechCrunch, VentureBeat) and says so; the post's date is the one the reporter gives, cross-checked against the date encoded in the status number (my decoding of X's public ID format, not a published source). His blog, his repositories, his gist, his YouTube metadata and the Dwarkesh transcript were opened directly and are cited as primary.</p>
+<p><strong>Evidence grades.</strong> Each method gets one of three grades, as the brief asks. <em>Measured</em>: a controlled comparison with a reported sample or benchmark. <em>Documented practice</em>: a named person or organisation describing what they do, with an artefact that can be inspected (a repository, a log, a leaderboard). <em>Stated opinion</em>: a named person's view with nothing inspectable behind it. Vendor figures and anecdote are labelled where they appear.</p>
+<p><strong>Interests.</strong> This unit was written by an Anthropic model. Three of its methods are Anthropic's own documents, and Karpathy joined Anthropic on 19 May 2026 (§1.9). Nothing here was weighted to favour them; the reader should still know.</p>
+<p>What a context window is and why each turn re-sends the chat is B1; model and effort routing is B2; brief structure and output contracts are B3; the layers of his Project and the knowledge-file audit are B4. This unit assumes them and points back by number.</p>
+<h2 id="read-dd-b3-0">1 · Karpathy's documented practice</h2>
+<h3>1.0 · "The Karpathy method" is a label others made</h3>
+<p>Karpathy has no method by that name. The phrase appears in titles by third parties, among them "Stop Prompting Claude. Use Karpathy's Method Instead." (<a target="_blank" rel="noopener" href="https://sozai.app/transcript/stop-prompting-claude-karpathys-method/index.md">SozAI transcript page</a>) and "The Karpathy Loop: AI Agents Running 700 Experiments Autonomously" (<a target="_blank" rel="noopener" href="https://www.noqta.tn/en/blog/karpathy-autoresearch-autonomous-ai-experiments-loop-2026">Noqta</a>); titles as listed in search results, 29 October 2026. The most-shared artefact under his name, a <code>CLAUDE.md</code> of four coding rules, was written by the developer Forrest Chang, who distilled it from a Karpathy post of 26 January 2026; the reporting article says Karpathy has not explicitly endorsed it, though it adds that he has shared the project (<a target="_blank" rel="noopener" href="https://pasqualepillitteri.it/en/news/1872/karpathy-claude-md-trending-github-llm-coding">Pillitteri, 4 May 2026</a>). One blog cites an "AISN 2026" talk; a search for that name on 29 October 2026 returned no record of any such talk, so nothing attributed to it is used here.</p>
+<p>The rule for the rest of the section: a practice is attributed to him only where his own post, talk, repository or interview states it.</p>
+<h3>1.1 · Vibe coding (February 2025), and what he later separated from it</h3>
+<p><strong>The post.</strong> On 2 February 2025 (date from the status number; Willison's article gives "February 6th" without a year) Karpathy posted: "There's a new kind of coding I call 'vibe coding', where you fully give in to the vibes, embrace exponentials, and forget that the code even exists." He described the practice in his own terms: "I 'Accept All' always, I don't read the diffs anymore"; error messages pasted back "with no comment"; "The code grows beyond my usual comprehension"; and the scope: "It's not too bad for throwaway weekend projects" (post quoted in full by <a target="_blank" rel="noopener" href="https://simonwillison.net/2025/Mar/19/vibe-coding/">Simon Willison, 19 Mar 2025</a>; X original at <a target="_blank" rel="noopener" href="https://twitter.com/karpathy/status/1886192184808149383">status 1886192184808149383</a>, not opened). Grade: stated opinion about his own weekend practice.</p>
+<p><strong>His own test of it.</strong> On 27 April 2025 he wrote up building a small web app this way: "I did not write any code directly; 100% of the code was written by Cursor+Claude." The model "kept hallucinating deprecated APIs, model names, and input/output conventions", most of his time went on configuration and deployment, and his verdict was that "vibe coding full web apps today is kind of messy and not a good idea for anything of actual importance" (<a target="_blank" rel="noopener" href="https://karpathy.bearblog.dev/vibe-coding-menugen/">Karpathy, <em>Vibe coding MenuGen</em>, 27 Apr 2025</a>). Grade: documented practice, one project.</p>
+<p><strong>The later distinction.</strong> The LLM-generated summary of his Sequoia AI Ascent talk that he posted on 30 April 2026 separates two things. Vibe coding "raises the floor" by letting almost anyone build software, and he says "Vibe coding is fine for prototypes and personal tools." Agentic engineering is the professional discipline of coordinating fallible agents while preserving "correctness, security, taste, and maintainability"; it "raises the ceiling" (<a target="_blank" rel="noopener" href="https://karpathy.bearblog.dev/sequoia-ascent-2026/">Karpathy, <em>Sequoia Ascent 2026 summary</em>, 30 Apr 2026</a>). Several outlets date a renaming to a post on the term's first anniversary, around 8 February 2026 (<a target="_blank" rel="noopener" href="https://sdtimes.com/ai/andrej-karpathy-has-renamed-vibe-coding-heres-what-engineering-leaders-need-to-do-about-it/">SD Times, 6 May 2026</a>); none quotes or links his words, and the post could not be found, so the distinction is sourced here to the April blog post only.</p>
+<p><strong>Transfer to his work.</strong> Vibe coding transfers to throwaway scripts: a one-off parser, a test of an idea. It does not transfer to anything filed in the vault or published on Academy, by Karpathy's own verdict ("not a good idea for anything of actual importance") and by the sourcing standard, which requires every claim checked before filing.</p>
+<h3>1.2 · "How I use LLMs" (February 2025)</h3>
+<p>A two-hour video on his own channel, published 27 February 2025 (<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=EWvNQjAaOHw">YouTube, <em>How I use LLMs</em></a>). Its chapter list, from the video's description, covers choosing a model and pricing tier, thinking models and when to use them, search, deep research, file uploads, the Python interpreter, Claude Artifacts, Cursor, voice, images, memory and custom instructions, and custom GPTs. A transcript could not be retrieved, so nothing he says inside the video is used here. Secondary summaries attribute advice to it, such as starting a new chat when the topic changes (<a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2025/03/how-andrej-karpathy-uses-llms/">Analytics Vidhya, Mar 2025</a>); on checking, that article gives the advice as its own paraphrase, without quotation. It stays out.</p>
+<p>What the chapter list does show is the order he teaches in: pick the model and the tier, then decide whether the task needs thinking, then add tools (search, files, code) one at a time. That is B2's routing logic, a year earlier and for a general audience. Grade: documented practice (a recorded demonstration), content unverified here. Transfer: nothing new beyond B2.</p>
+<h3>1.3 · Software 3.0 at YC AI Startup School (June 2025)</h3>
+<p>Talk given in San Francisco on 17 June 2025, published by Y Combinator on 18 June (<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=LCEmiRjPEtQ">YouTube, <em>Andrej Karpathy: Software Is Changing (Again)</em></a>). Quotations below come from a third-party automatic transcription of that video (<a target="_blank" rel="noopener" href="https://cdn.billmill.org/static/yt-transcribe/karpathy/httpswwwyoutubecomwatchvLCEmiRjPEtQ.html">billmill.org transcription</a>), labelled as such.</p>
+<ul>
+<li><strong>The autonomy slider.</strong> In Cursor the user can go from tab completion to whole-repository changes, and "you are in charge of the autonomy slider"; Perplexity runs from quick search to deep research; products should let users "slide that autonomy slider" over time, a lesson he draws from Tesla Autopilot. His summary: "less Iron Man robots and more Iron Man suits."</li>
+<li><strong>The generation–verification loop.</strong> "usually they are doing the generation and we as humans are doing the verification", so it is in the user's interest to make that loop fast; visual review (a GUI) is faster than reading text.</li>
+<li><strong>The leash.</strong> "we have to keep the AI on the leash": oversized changes defeat verification, and narrower, concrete prompts make it more likely to succeed. His own habit: "I always go in small incremental chunks."</li>
+<li><strong>The context window as the lever.</strong> LLMs lack the consolidation by which a human colleague builds expertise, so "context windows are really kind of like working memory", and the developer programs that memory directly.</li>
+</ul>
+<p>Grade: stated opinion from long engineering experience; the Autopilot analogy is documented practice from his earlier job, applied by analogy. Transfer: all four transfer to his work. The slider is a decision he makes per task (B2 routes model and effort; this adds how much to delegate). The verification loop is his audit system. The leash is B3's one-artefact-per-prompt. The working-memory point is B1 §1.</p>
+<h3>1.4 · Context engineering over prompt engineering (June 2025)</h3>
+<p>On 25 June 2025 he posted: "+1 for 'context engineering' over 'prompt engineering'." People associate prompts with short task descriptions; in "every industrial-strength LLM app, context engineering is the delicate art and science of filling the context window with just the right information for the next step", which involves "task descriptions and explanations, few shot examples, RAG, related (possibly multimodal) data, tools, state and history, compacting" (post as quoted by <a target="_blank" rel="noopener" href="https://simonwillison.net/2025/Jun/27/context-engineering/">Simon Willison, 27 Jun 2025</a>; X original at <a target="_blank" rel="noopener" href="https://twitter.com/karpathy/status/1937902205765607626">status 1937902205765607626</a>, not opened). He was agreeing with Tobi Lütke, who had written six days earlier that the term "describes the core skill better" (same page). Grade: stated opinion. Transfer: complete; B4 is built on it.</p>
+<h3>1.5 · Dwarkesh Patel (October 2025), then the turn to agents (January 2026)</h3>
+<p><strong>October 2025: agents "not net useful" on his own repository.</strong> In the interview published 17 October 2025, Karpathy described three ways people work with code: writing from scratch, autocomplete, and agents. Autocomplete was "my sweet spot", because typing the start of what you want is "a very high information bandwidth to specify what you want." On nanochat, agents failed: it is "a fairly unique repository", the models "kept misunderstanding the code because they have too much memory" of common internet patterns, kept inserting a library wrapper he had deliberately avoided, and were "way too over-defensive"; his verdict was "It's just not net useful." Agents did well on boilerplate and on porting his tokenizer to Rust, where he had a Python version he understood and tests, which made him feel "safer." He framed the period as "the decade of agents" (<a target="_blank" rel="noopener" href="https://www.dwarkesh.com/p/andrej-karpathy">Dwarkesh Podcast, <em>Andrej Karpathy</em>, 17 Oct 2025</a>). Grade: documented practice, one codebase, his own account.</p>
+<p><strong>December 2025: the threshold.</strong> In his year-end review he called Claude Code "the first convincing demonstration of what an LLM Agent looks like" (<a target="_blank" rel="noopener" href="https://karpathy.bearblog.dev/year-in-review-2025/">Karpathy, <em>2025 LLM Year in Review</em>, 19 Dec 2025</a>).</p>
+<p><strong>January 2026: about 80% agent-driven.</strong> His post of 26 January 2026 (X <a target="_blank" rel="noopener" href="https://x.com/karpathy/status/2015883857489522876">status 2015883857489522876</a>, not opened; quoted by <a target="_blank" rel="noopener" href="https://the-decoder.com/former-tesla-ai-chief-andrej-karpathy-now-codes-mostly-in-english-just-three-months-after-calling-ai-agents-useless/">The Decoder, 27 Jan 2026</a>) reported that he went from roughly 80% manual coding with 20% agent use in November to about 80% agent use with 20% manual edits in December, calling it, in the article's standfirst quotation, the "biggest change to my basic coding workflow in ~2 decades" and saying "I really am mostly programming in English now." He told readers to "watch them like a hawk", because agents make "subtle conceptual errors that a slightly sloppy, hasty junior dev might do." The failure modes, as The Decoder lists them from the post: wrong assumptions built on without checking; not managing confusion; not seeking clarification; not surfacing inconsistencies; not presenting trade-offs; not pushing back; sycophancy; bloated abstractions; dead code left behind; and constructions of about 1,000 lines that shrink to about 100 when challenged. A second reporter quotes his remedy: "Don't tell it what to do, give it success criteria and watch it go" (<a target="_blank" rel="noopener" href="https://codewithandrea.com/newsletter/january-2026/">Code with Andrea newsletter, 28 Jan 2026</a>). The same newsletter reports, in its own words, that he noticed his manual coding ability declining. On 25 February 2026 he added: "coding agents basically didn't work before December and basically work since" (quoted by <a target="_blank" rel="noopener" href="https://feeds.simonwillison.net/2026/Feb/26/andrej-karpathy/">Simon Willison, 26 Feb 2026</a>). The 80/20 figures are his own report about his own work. Grade: stated opinion with a self-reported number.</p>
+<p><strong>Reviewing as a separate skill.</strong> The brief asks for his point that reviewing is a different skill from writing. The Decoder's report of the post carries it only as paraphrase, without quotation: being good at reviewing code does not mean you can still write it, "since generation and discrimination are different abilities in the brain" (The Decoder's wording, not marked as his). An earlier post (4 June 2025, by status number) makes the point in GAN terms: creation has two modes, generation and discrimination; LLMs "have collapsed (1) to ~instant, but have done very little to address (2)", and "A person still has to stare at the results and discriminate if they are good" (reproduced in a <a target="_blank" rel="noopener" href="https://t.me/s/css_nlp?after=103">Telegram channel</a>; X <a target="_blank" rel="noopener" href="https://x.com/karpathy/status/1930305209747812559">status 1930305209747812559</a>, not opened). This is the weakest-sourced quotation in the unit and is listed as unsure.</p>
+<p><strong>Transfer.</strong> The failure list transfers to prose with one change of vocabulary: "wrong assumptions built on without checking" is a figure taken from memory in a unit; "bloated abstractions" is padding; "dead code" is a superseded paragraph left in place. "Give it success criteria" is B3's DONE WHEN clause. The 80/20 shift transfers to code only: his course units are already 100% model-written and checked by sampling.</p>
+<h3>1.6 · nanochat (October 2025) and autoresearch (March 2026)</h3>
+<p><strong>nanochat.</strong> First committed 13 October 2025; "a full-stack implementation of an LLM like ChatGPT in a single, clean, minimal, hackable, dependency-lite codebase", about 8,000 lines in 45 files, small enough that he recommends packaging the whole repository into one file and pasting it into an LLM to ask questions (<a target="_blank" rel="noopener" href="https://github.com/karpathy/nanochat/commit/3a5e0bc">nanochat, initial README, commit <code>3a5e0bc</code></a>). The current README states its contribution policy: "When submitting a PR, please declare any parts that had substantial LLM contribution and that you have not written or that you do not fully understand" (<a target="_blank" rel="noopener" href="https://github.com/karpathy/nanochat">nanochat README</a>, read at the commit of 3 July 2026). Grade: documented practice. Transfer: two habits. A corpus sized to fit one window can be asked questions whole; disclosure of what one did not write or does not understand is a rule he could adopt for anything published.</p>
+<p><strong>autoresearch.</strong> Repository last committed 25 March 2026 (<a target="_blank" rel="noopener" href="https://github.com/karpathy/autoresearch">karpathy/autoresearch</a>); launched on X on 7 March 2026 by status number. From its README and <code>program.md</code>:</p>
+<ul>
+<li><strong>The loop.</strong> An agent gets a small, real training setup, "modifies the code, trains for 5 minutes, checks if the result improved, keeps or discards, and repeats."</li>
+<li><strong>One file the agent may edit.</strong> <code>train.py</code> is "the single file the agent edits"; <code>prepare.py</code>, which holds the evaluation, is read-only; no new packages. The human edits only <code>program.md</code>, which the README calls "essentially a super lightweight 'skill'." The stated reason for the single file: "This keeps the scope manageable and diffs reviewable."</li>
+<li><strong>The five-minute budget.</strong> Every run trains for exactly five minutes of wall clock, so results are comparable whatever the agent changes; that gives about 12 experiments an hour and about 100 overnight. The downside, in the README's words: results "become not comparable to other people running on other compute platforms."</li>
+<li><strong>The keep-or-revert rule.</strong> One metric, validation bits per byte. If it improved, the commit stays; "If val_bpb is equal or worse, you git reset back to where you started." A simplicity criterion weighs gains against added complexity: an improvement from deleting code is kept; "A 0.001 val_bpb improvement that adds 20 lines of hacky code? Probably not worth it." A run over ten minutes is killed and reverted.</li>
+<li><strong>Never stop.</strong> The agent is told not to ask whether to continue: "The loop runs until the human interrupts you, period."</li>
+</ul>
+<p><strong>The run and its gain.</strong> The press reports that his two-day run made about 700 changes and found about 20 improvements that carried over to a larger model (<a target="_blank" rel="noopener" href="https://venturebeat.com/technology/andrej-karpathys-new-open-source-autoresearch-lets-you-run-hundreds-of-ai">VentureBeat</a>, paraphrasing his X post of 9 March 2026, <a target="_blank" rel="noopener" href="https://x.com/karpathy/status/2031135152349524125">status 2031135152349524125</a>, not opened). The 700 and the 20 are therefore unverified here. The gain is in his own repository: nanochat's "time to GPT-2" leaderboard records run 5 on 9 March 2026 at 1.80 hours, down from 2.02, and says "all of the improvements that went into this commit came from fully autonomous 'research' done by a private version of autoresearch run on a d12 model"; run 6, from a second round, reached 1.65 hours on 14 March (<a target="_blank" rel="noopener" href="https://github.com/karpathy/nanochat/blob/master/dev/LEADERBOARD.md">nanochat, <code>dev/LEADERBOARD.md</code></a>). That is about 11% faster after round one and 18% after round two (my arithmetic on his figures). Grade: documented practice with a self-reported, inspectable result; one task, one metric, his own leaderboard.</p>
+<p><strong>Transfer.</strong> The loop needs three things his writing does not have: a scalar metric computed by a script, a run cheap enough to repeat a hundred times, and a single file whose changes can be reverted. Course units fail all three: their quality is judged by a sampled audit run by another model, at Fable prices (B2 §2). His build scripts pass: <code>kit/verify.py</code> and <code>kit/index_check.py</code> give pass or fail, run in seconds, and live in files that git can revert. The loop transfers to the kit; it does not transfer to the writing.</p>
+<h3>1.7 · LLM Knowledge Bases (April 2026)</h3>
+<p>The X post is dated 2 April 2026 by status number; VentureBeat dates its report 3 April (<a target="_blank" rel="noopener" href="https://venturebeat.com/data/karpathy-shares-llm-knowledge-base-architecture-that-bypasses-rag-with-an">VentureBeat</a>, linking <a target="_blank" rel="noopener" href="https://x.com/karpathy/status/2039805659525644595">status 2039805659525644595</a>, not opened). Two days later he published the method as a gist (created 4 April by the gist page), which was opened (<a target="_blank" rel="noopener" href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Karpathy, <em>llm-wiki.md</em>, gist created 4 Apr 2026</a>). From the gist:</p>
+<ul>
+<li><strong>Three layers.</strong> Raw sources, "immutable": the LLM reads them and never changes them. The wiki, LLM-written Markdown (summaries, entity and concept pages, comparisons): "The LLM owns this layer entirely." A schema file such as <code>CLAUDE.md</code> or <code>AGENTS.md</code> that sets structure and conventions.</li>
+<li><strong>Three operations.</strong> Ingest: a new source is summarised and the index, related pages and log are updated; "a single source might touch 10-15 wiki pages." Query: the LLM answers from the wiki with citations, and good answers can be filed back as pages. Lint: periodic checks for contradictions, stale claims, orphan pages, missing cross-references and gaps.</li>
+<li><strong>Navigation by index.</strong> An <code>index.md</code> lists every page with a one-line summary; the LLM reads it first. An append-only <code>log.md</code> records ingests, queries and lint passes. At "~100 sources, ~hundreds of pages" this "avoids the need for embedding-based RAG infrastructure."</li>
+<li><strong>The human's role.</strong> The human sources material, directs and asks; the gist says the user "never (or rarely)" writes the wiki directly. It contrasts the approach with retrieval, where "the LLM is rediscovering knowledge from scratch on every question."</li>
+</ul>
+<p>The figures the brief names, about 100 articles and 400,000 words, come from the X post as VentureBeat paraphrases it (VentureBeat: "at a scale of ~100 articles and ~400,000 words, the LLM's ability to navigate via summaries and index files" suffices); VentureBeat also quotes him: "You rarely ever write or edit the wiki manually; it's the domain of the LLM." The gist, opened, gives "~100 sources" and "hundreds of pages" and no word count. Grade: documented practice (a shared method file), size self-reported.</p>
+<p><strong>Transfer.</strong> This is the closest of all his methods to the Learning Project, and the match is partial. The vault is Markdown and canonical; <code>courses-index.md</code> is an index of identifiers; the changelog is a log. The differences are in §4.</p>
+<h3>1.8 · Verifiability, and Sequoia AI Ascent 2026</h3>
+<p><strong>Verifiability (November 2025).</strong> A task is verifiable when practice on it is "resettable (you can start a new attempt)", "efficient (a lot attempts can be made)" and "rewardable (there is some automated process to reward any specific attempt that was made)". "Software 1.0 easily automates what you can specify. Software 2.0 easily automates what you can verify"; progress is therefore "jagged": fast in math, code and puzzles, slow in creative, strategic and common-sense work (<a target="_blank" rel="noopener" href="https://karpathy.bearblog.dev/verifiability/">Karpathy, <em>Verifiability</em>, 17 Nov 2025</a>).</p>
+<p><strong>Sequoia AI Ascent 2026.</strong> The talk video was not opened; the summary he posted was, which he labels "AI generated content below for this talk follows", produced by an LLM from the transcript and his earlier posts, and published under his name with a cleaned-up transcript (<a target="_blank" rel="noopener" href="https://karpathy.bearblog.dev/sequoia-ascent-2026/">Karpathy, <em>Sequoia Ascent 2026 summary</em>, 30 Apr 2026</a>). It repeats that traditional software automates what you can specify while LLMs automate what you can verify, with capability spiking where tasks are verifiable and labs train on them. It gives the line he says he keeps returning to: "You can outsource your thinking, but you can't outsource your understanding." Humans still decide what is worth building, which results are suspicious, and how to direct agents. He describes his own work as delegating "macro actions" (features, refactors, tests), writing specs and plans, reviewing diffs and supplying judgement: "The agents fill in the blanks."</p>
+<p>Grade: stated opinion, built on an argument about how models are trained. Transfer: the verifiability test is the most useful single idea in this unit for him, because it says in advance which of his tasks a model will do well and which it will do plausibly. A citation can be checked against its source; a positioning sentence cannot be checked by any script. The first can be delegated with sampling; the second needs his judgement, with the model as drafter.</p>
+<h3>1.9 · The move to Anthropic (May 2026)</h3>
+<p>On 19 May 2026 Karpathy announced he had joined Anthropic's pre-training team; an Anthropic spokesperson said he would also lead a new group using Claude to accelerate pre-training research (<a target="_blank" rel="noopener" href="https://techcrunch.com/2026/05/19/openai-co-founder-andrej-karpathy-joins-anthropics-pre-training-team/">TechCrunch, 19 May 2026</a>; his post at <a target="_blank" rel="noopener" href="https://x.com/karpathy/status/2056753169888334312">status 2056753169888334312</a>, not opened). Everything in §1.1 to §1.8 predates the move; the latest item, the Sequoia summary, is dated 30 April 2026. Statements after 19 May are an Anthropic employee's statements about a field in which his employer sells a product, and the autoresearch line of work is now, by Anthropic's own description, his job. Read his later endorsements of Claude-based workflows with that in mind. The method cards below rest only on pre-move sources.</p>
+<h2 id="read-dd-b3-1">2 · The other methods with a primary source and a named author</h2>
+<h3>2.1 · Anthropic</h3>
+<p><strong>Building effective agents (19 December 2024).</strong> Erik Schluntz and Barry Zhang separate workflows, "systems where LLMs and tools are orchestrated through predefined code paths", from agents, where "LLMs dynamically direct their own processes and tool usage." The advice is "finding the simplest solution possible, and only increasing complexity when needed"; agents suit "open-ended problems where it's difficult or impossible to predict the required number of steps." Five workflow patterns: prompt chaining, routing, parallelisation, orchestrator-workers, evaluator-optimizer. Three principles: simplicity; transparency, "explicitly showing the agent's planning steps"; and careful tool design (<a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic Engineering</a>). Written for developers building on the API. Grade: documented practice (from customer work), with no measurement published. Transfer: the patterns transfer by name to his setup. His course is a prompt chain (brief, unit, fresh check, audit); the fresh check is an evaluator-optimizer with him as the loop. The simplicity rule transfers whole.</p>
+<p><strong>Effective context engineering for AI agents (29 September 2025).</strong> Defines context engineering as "the set of strategies for curating and maintaining the optimal set of tokens" and sets the target as the "smallest possible set of high-signal tokens"; recommends just-in-time loading by "lightweight identifiers (file paths, stored queries, web links, etc.)", compaction, structured note-taking, and sub-agents with "clean context windows" returning condensed summaries of about 1,000 to 2,000 tokens (<a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic Engineering</a>). The post cites no benchmark; its multi-agent claim ("substantial improvement over single-agent systems") has no figure. Grade: documented practice, vendor. B1, B3 and B4 already cite and apply it; nothing new to transfer.</p>
+<p><strong>Claude Code best practices (April 2025, and now).</strong> The original post, "Claude Code: Best practices for agentic coding", appeared on 18 April 2025 (date as later reports give it; Willison noted it the next day) (<a target="_blank" rel="noopener" href="https://simonwillison.net/2025/Apr/19/claude-code-best-practices/">Simon Willison's note, 19 Apr 2025</a>); its URL now redirects to the current Claude Code documentation page, so the April 2025 text could not be opened. Willison's note records one recommendation from it: the words "think", "think hard", "think harder" and "ultrathink" escalated the thinking budget. The current page, read on 29 October 2026, retires most of that advice in a table headed "What you can stop doing": "think hard", "think harder" and "be thorough" "are ordinary prompt text that nudges Claude within its effort setting rather than keywords that raise it", while "ultrathink still works: it asks for deeper reasoning on that single turn without touching your effort setting", and the old rule "The context window is your main constraint, manage it aggressively" is retired because "Most current models have a 1M-token window" (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/best-practices">Claude Code docs, <em>Best practices</em></a>). What the current page keeps:</p>
+<ul>
+<li>"Give Claude something it can run that comes back pass or fail. Once it has that, it can keep going on its own and you don't have to watch."</li>
+<li>An independent reviewer: a second session "reviews … without having watched it being written."</li>
+<li>A brainstorm-to-spec flow: ask Claude to interview you until it can write <code>SPEC.md</code>, then "start a fresh session to build from it."</li>
+<li>After two failed corrections, "<code>/clear</code> plus one new prompt that folds in what you learned works better almost every time."</li>
+<li>Five questions before an unattended run: does it know what done looks like; can it check its own work; what may it touch; what stops it; where does the result go and who signs off.</li>
+</ul>
+<p>Written for developers in Claude Code. Grade: documented practice, vendor; no measurements. Transfer: the reviewer, the pass/fail check, the fresh session after two misses and the five questions all transfer; the 1M-window retirement does not, because his claude.ai window is 200K (B1 §1).</p>
+<h3>2.2 · OpenAI</h3>
+<p><strong>A practical guide to building agents (April 2025).</strong> A 32-page PDF reported on 17 April 2025 (<a target="_blank" rel="noopener" href="https://www.maginative.com/article/how-to-build-ai-agents-a-detailed-practical-guide-from-openai/">Maginative</a>); the PDF shows no date (<a target="_blank" rel="noopener" href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf">OpenAI PDF</a>). It reserves agents for workflows with complex decisions, rules that are hard to maintain, or heavy unstructured data; recommends to "maximize a single agent's capabilities first"; to "build your agent prototype with the most capable model for every task to establish a performance baseline", then try smaller models; to "Set up evals to establish a performance baseline"; to layer guardrails because "a single one is unlikely to provide sufficient protection"; and calls "Human intervention … a critical safeguard" for high-risk actions. Written for product teams. Grade: documented practice, vendor. Transfer: "most capable model first, then step down" is the opposite order to B2's cost-first routing for small tasks and the same order for units; it belongs to DD-B1.</p>
+<p><strong>Model prompting guides.</strong> The GPT-4.1 guide (14 April 2025, Noah MacCallum and Julian Lee) says the model "is trained to follow instructions more closely and more literally than its predecessors"; three reminders in agent prompts (persistence, tool use, planning) "increased our internal SWE-bench Verified score by close to 20%", and "inducing explicit planning increased the pass rate by 4%"; for long inputs, "place your instructions at both the beginning and end of the provided context" (<a target="_blank" rel="noopener" href="https://developers.openai.com/cookbook/examples/gpt4-1_prompting_guide">OpenAI Cookbook</a>, page marked archived). Vendor data, internal benchmark, no method published. B3 §2 and §5 already set OpenAI's later reasoning-model advice against Anthropic's; the one new transferable item is literalness, which B3 §4 already covers for Claude ("The model takes the verb literally").</p>
+<h3>2.3 · Simon Willison</h3>
+<p><strong>Vibe coding against AI-assisted programming (19 March 2025).</strong> Vibe coding is "building software with an LLM without reviewing the code it writes", and "Vibe coding is <em>not</em> the same thing as writing code with the help of LLMs!" His rule: "I won't commit any code to my repository if I couldn't explain exactly what it does to somebody else." Vibe coding is fine where stakes are low; ask "how much harm the code you are writing could cause if it has bugs or security vulnerabilities" (<a target="_blank" rel="noopener" href="https://simonwillison.net/2025/Mar/19/vibe-coding/">Willison</a>). Grade: stated opinion. Transfer: the commit rule transfers to filing: a unit is filed only if he could explain each claim's source.</p>
+<p><strong>How he uses LLMs to write code (11 March 2025).</strong> Headed points include: account for training cut-off dates; "Most of the craft of getting good results out of an LLM comes down to managing its context"; ask for options in research; for production code, "I treat it like a digital intern, hired to type code for me based on my detailed instructions"; and "the one thing you absolutely cannot outsource to the machine is testing that the code actually works" (<a target="_blank" rel="noopener" href="https://simonwillison.net/2025/Mar/11/using-llms-for-code/">Willison</a>). Grade: documented practice (his public projects), stated as opinion. Transfer: cut-off dates are B1 §4; "testing" maps to his audits.</p>
+<p><strong>The lethal trifecta (16 June 2025).</strong> An agent is exposed to data theft when it combines "Access to your private data", "Exposure to untrusted content" and "The ability to externally communicate"; the safe course is to "avoid that lethal trifecta combination entirely", because guardrail products that catch "95% of attacks" are "very much a failing grade" in security (<a target="_blank" rel="noopener" href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">Willison</a>). Grade: stated opinion. Transfer: direct, and it collides with his setup (§4).</p>
+<h3>2.4 · Ethan Mollick</h3>
+<p><strong>Four principles (Co-Intelligence, Portfolio, 2 April 2024).</strong> Publisher and date from <a target="_blank" rel="noopener" href="https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/9780593716724">Penguin Random House</a>. The book was not opened; the principles are quoted from a reader's notes (<a target="_blank" rel="noopener" href="https://jarango.com/readings/co-intelligence/">Arango, reading notes</a>): "Always invite it to the table"; "Be the human in the loop: assume AI will need supervision and guidance; provide it"; "Treat AI like a person, but tell it what kind of person it is"; "Assume this is the worst AI you'll ever use." Written for a general business audience. Grade: stated opinion. Transfer: principle 2 transfers and is already his method. Principle 3 meets B3 §1's evidence: personas in system prompts did not improve factual accuracy across 2,410 questions (Zheng et al., EMNLP Findings 2024, cited there); its documented effect is on register. Principle 1, applied to a 5–7 hour week, collides with B2's cost routing; he leaves it.</p>
+<p><strong>The jagged frontier field experiment (Dell'Acqua et al., September 2023).</strong> A preregistered experiment with 758 Boston Consulting Group consultants, assigned to no AI, GPT-4, or GPT-4 with a prompt-engineering overview. On tasks inside the frontier, AI users completed "12.2% more tasks" and finished "25.1% more quickly", with higher quality; on a task chosen to sit outside it, "consultants using AI were 19 percentage points less likely to produce correct solutions" (<a target="_blank" rel="noopener" href="https://www.hbs.edu/faculty/Pages/item.aspx?num=64700">HBS Working Paper 24-013</a>; percentage-point wording from the <a target="_blank" rel="noopener" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321">SSRN abstract</a>, posted 18 Sep 2023). Mollick's own write-up gives the quality gain as 40% and the outside-frontier correctness as 84% without AI against 60–70% with it (<a target="_blank" rel="noopener" href="https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged">One Useful Thing, 16 Sep 2023</a>). The paper names two working styles: "Centaurs", with a strategic division of labour between human and AI tasks, and "Cyborgs", "completely integrating their task flow with the AI" (SSRN abstract). The HBS page lists the paper as forthcoming in <em>Organization Science</em>. Grade: measured, GPT-4 in 2023, consulting tasks. Transfer: the mechanism transfers; the size does not. Where a task sits outside the frontier, the model's answer is persuasive and wrong, and using it makes a skilled person less accurate. That is Karpathy's jaggedness measured on people.</p>
+<h3>2.5 · Spec-driven development, as practised</h3>
+<p><strong>Harper Reed (16 February 2025).</strong> Three steps: hone the idea with a chat model that asks "one question at a time" until it can write <code>spec.md</code>; have a reasoning model turn the spec into a plan of small, test-driven prompts (<code>prompt_plan.md</code>) and a checklist (<code>todo.md</code>) that keeps state across sessions; then execute prompt by prompt. "The success really depends on how well step 2 went." His caveats: "This is working well NOW, it will probably not work in 2 weeks, or it will work twice as well"; the workflow is "largely a solo endeavor" (<a target="_blank" rel="noopener" href="https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/">Reed, <em>My LLM codegen workflow atm</em></a>). Grade: documented practice, anecdote.</p>
+<p><strong>GitHub Spec Kit (2 September 2025).</strong> Den Delimarsky: "With AI the specification becomes the source of truth and determines what gets built"; commands <code>/specify</code> (what and why), <code>/plan</code> (stack and constraints), <code>/tasks</code> ("small, reviewable chunks"), then implementation; described as "our experiment" (<a target="_blank" rel="noopener" href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/">GitHub Blog</a>). Grade: documented practice, vendor tool.</p>
+<p><strong>AWS Kiro (14 July 2025).</strong> Nikhil Swaminathan and Deepak Singh: requirements as user stories with acceptance criteria in EARS notation, then a design document, then tasks "linked to requirements"; free during preview (<a target="_blank" rel="noopener" href="https://kiro.dev/blog/introducing-kiro/">Kiro blog</a>). Grade: documented practice, vendor tool.</p>
+<p>None of the three publishes a measurement. Transfer: the pattern transfers whole and he already runs it. A brief is a spec; "never reword it" makes the spec the source of truth; the build order is the task list; the DONE WHEN list (B3) is the acceptance criteria. EARS notation and the tooling are for software and stay there.</p>
+<h3>2.6 · The prompting literature, and its limits</h3>
+<ul>
+<li><strong>Chain-of-thought (Wei et al., arXiv 2201.11903, first posted 28 January 2022).</strong> Including worked reasoning steps as examples improved large models on arithmetic, commonsense and symbolic reasoning; a 540B-parameter model with eight such examples reached state of the art on GSM8K (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2201.11903">arXiv</a>). Measured, 2022 models.</li>
+<li><strong>ReAct (Yao et al., ICLR 2023, first posted 6 October 2022).</strong> Interleaving reasoning with actions (here, Wikipedia lookups) reduced hallucination against chain-of-thought on HotpotQA and FEVER, and beat imitation and reinforcement-learning baselines on ALFWorld and WebShop by 34 and 10 absolute points of success rate (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.03629">arXiv</a>). Measured.</li>
+<li><strong>Self-consistency (Wang et al., ICLR 2023, first posted 21 March 2022).</strong> Sample many reasoning paths and keep the most consistent answer; gains over chain-of-thought of 17.9 points on GSM8K, 11.0 on SVAMP, 12.2 on AQuA (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2203.11171">arXiv</a>). Measured.</li>
+<li><strong>Where chain-of-thought does not help (Sprague et al., arXiv 2409.12183, v3 May 2025).</strong> A meta-analysis of over 100 papers and an evaluation of 20 datasets on 14 models: chain-of-thought helps "primarily on tasks involving math or logic"; on MMLU, answering directly is nearly as accurate unless the question or answer contains an equals sign (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2409.12183">arXiv</a>). Measured.</li>
+</ul>
+<p>What survives for him. Opus 5.5 and Fable 5.1 think adaptively and always (B2 §7), so writing "think step by step" into a prompt asks for what the model already does, and Anthropic's current Claude Code page says such phrases do not raise effort. ReAct is how a search-enabled chat already works. Self-consistency survives as a verification habit: for a figure or a verdict, two independent runs that agree are stronger than one (B1 §5, "one good answer is one draw"). Sprague et al. place his main work, long-form synthesis and judgement, outside the tasks where explicit reasoning prompts measurably help.</p>
+<h2 id="read-dd-b3-2">3 · Who each method was written for, and whether it leaves code</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Written for</th>
+<th>Transfers to his work?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vibe coding (Karpathy; Willison's definition)</td>
+<td>Hobby and prototype code</td>
+<td>Throwaway scripts only</td>
+</tr>
+<tr>
+<td>Agentic engineering, failure list</td>
+<td>Professional programmers</td>
+<td>Yes, as a review checklist for any agent output</td>
+</tr>
+<tr>
+<td>Autonomy slider, verification loop, leash</td>
+<td>Product builders</td>
+<td>Yes, whole</td>
+</tr>
+<tr>
+<td>Context engineering (Karpathy; Anthropic)</td>
+<td>App builders</td>
+<td>Yes; B4 applied it</td>
+</tr>
+<tr>
+<td>nanochat habits</td>
+<td>ML engineers</td>
+<td>Corpus-in-one-window and disclosure: yes</td>
+</tr>
+<tr>
+<td>autoresearch loop</td>
+<td>ML research with one scalar metric</td>
+<td>Build scripts only; never units</td>
+</tr>
+<tr>
+<td>LLM knowledge base</td>
+<td>Personal research</td>
+<td>Yes, with three changes (§4)</td>
+</tr>
+<tr>
+<td>Verifiability; understanding stays</td>
+<td>Everyone</td>
+<td>Yes, as the delegation test</td>
+</tr>
+<tr>
+<td>Building effective agents</td>
+<td>API developers</td>
+<td>Patterns by name; simplicity rule</td>
+</tr>
+<tr>
+<td>Claude Code best practices</td>
+<td>Claude Code users</td>
+<td>Reviewer, pass/fail check, two-miss reset, five questions</td>
+</tr>
+<tr>
+<td>OpenAI agents guide</td>
+<td>Product teams</td>
+<td>To DD-B1</td>
+</tr>
+<tr>
+<td>OpenAI prompting guides</td>
+<td>API developers</td>
+<td>Nothing new beyond B3</td>
+</tr>
+<tr>
+<td>Willison's commit rule; testing</td>
+<td>Programmers</td>
+<td>Yes, as a filing rule</td>
+</tr>
+<tr>
+<td>Lethal trifecta</td>
+<td>Anyone giving an agent tools</td>
+<td>Yes, and it collides (§4)</td>
+</tr>
+<tr>
+<td>Mollick's principles</td>
+<td>Business readers</td>
+<td>Principle 2 only</td>
+</tr>
+<tr>
+<td>Jagged frontier experiment</td>
+<td>Knowledge workers</td>
+<td>Mechanism yes; effect size is 2023 GPT-4</td>
+</tr>
+<tr>
+<td>Spec-driven development</td>
+<td>Software teams</td>
+<td>Pattern yes; EARS and tooling no</td>
+</tr>
+<tr>
+<td>CoT, ReAct, self-consistency</td>
+<td>Researchers, 2022 models</td>
+<td>Self-consistency as a check; the rest built in</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="read-dd-b3-3">4 · What he already does without the name, and what collides</h2>
+<h3>Already in his method</h3>
+<ul>
+<li><strong>One chat per unit, a fresh agent per unit (P31).</strong> Anthropic's sub-agents "with clean context windows"; Claude Code's "fresh session to build from" a spec; Karpathy's leash and small chunks.</li>
+<li><strong>The fresh checker in a chat that did not see the writing</strong> (<code>method.md</code> §5). Claude Code's independent second session; Anthropic's evaluator-optimizer; Karpathy's generation–verification split.</li>
+<li><strong>The stratified-sample audit</strong> (<code>method.md</code> §6). Willison's "you cannot outsource … testing"; Mollick's human in the loop; self-consistency's logic that one draw is not evidence.</li>
+<li><strong>Briefs never reworded, a build order, DONE WHEN lists.</strong> Spec-driven development: spec as source of truth, tasks, acceptance criteria; Karpathy's "give it success criteria" (as reported).</li>
+<li><strong>The vault, the index and the changelog.</strong> Karpathy's wiki, <code>index.md</code> and <code>log.md</code>; Anthropic's structured note-taking; Harper Reed's <code>todo.md</code>.</li>
+<li><strong>Skills as procedure files</strong> (<code>skills/*/SKILL.md</code>). Karpathy calls <code>program.md</code> "a super lightweight 'skill'."</li>
+<li><strong>B4's weekly rot check.</strong> Karpathy's lint operation.</li>
+<li><strong>Effort set, not "think harder" in the prompt</strong> (B2 §7, B3 §2). The current Claude Code page's retirement of those phrases.</li>
+</ul>
+<h3>Collisions with his setup as B1 to B4 and A1 describe it</h3>
+<ol>
+<li><strong>Retrieval against index navigation.</strong> Karpathy's pattern navigates by index and avoids embedding retrieval at about a hundred sources. B4 F1 measured his Project knowledge at 907,260 characters, above the 200K window, so in retrieval mode by the documented rule: the arrangement the pattern exists to avoid. B4's fix (five files in the knowledge, everything else read by path after cloning) moves him onto the pattern.</li>
+<li><strong>"The LLM owns the wiki" against "failures stay in the record" and exact-replacement errata.</strong> In the gist, lint may rewrite pages. His method forbids it: auditors "never edit a unit"; they report and errata are exact replacements checked one by one (<code>method.md</code> §6). A lint pass in his vault reports and never edits a filed unit.</li>
+<li><strong>Model-written memory against Markdown he can read.</strong> Karpathy's knowledge lives in files the human can open. claude.ai memory is notes a model writes and re-inserts, whose amount per chat is undocumented (B1 §7, B4 §1). The durable record of facts about the course belongs in the vault; memory is a convenience layer.</li>
+<li><strong>"NEVER STOP" against the audit gate and 5–7 hours a week.</strong> autoresearch runs until interrupted. His method stops at every fourth unit for an audit (<code>method.md</code> §3), and Fable runs cost credits at API rates on Pro (B2 §2). An unattended loop that writes units would breach the gate and the budget.</li>
+<li><strong>The retired 1M-window advice.</strong> Claude Code's page retires context-window management because current models have 1M tokens. On claude.ai he has 200K (B1 §1). The retirement applies to his Claude Code sessions, not to his Project chats.</li>
+<li><strong>The lethal trifecta in one window.</strong> His account has memory and a Gmail connector (private data), web search (untrusted content), and connectors that can send mail or publish (B4 F14 lists Gmail, Google Drive, Vercel and Claude in Chrome). B4 recommended loading connectors on demand to save tokens; on Willison's argument the stronger reason is that a research chat that reads web pages should not also hold a tool that can send.</li>
+<li><strong>"Always invite it to the table" against the routing table.</strong> B2 routes small tasks to small models in light chats to protect his limits; Mollick's principle, written for exploration, would spend them. He leaves it.</li>
+<li><strong>Persona prompting.</strong> Mollick's principle 3 and B3 §1: personas set register and showed no accuracy gain in the one large test cited there. His templates keep a READER line and no persona.</li>
+<li><strong>Interview-me specs against one question per response.</strong> Harper Reed and Claude Code both start with the model asking questions until a spec exists. His saved preferences allow one question per response, only when blocked (B3 §4). An interview has to be requested explicitly in the opening line, which then makes it the task.</li>
+</ol>
+<h2 id="read-dd-b3-4">5 · Flags for B4, B5 and DD-B1</h2>
+<p><strong>B4 (written 29 October 2026).</strong> What it should take: the knowledge-base pattern (raw sources, compiled Markdown, lint, query by index) as the model for his vault and Project memory. What B4 already covers: the hot/warm/cold split with the index as lightweight identifiers (B4 §2), cutting the knowledge to five files so chats read the vault by path (F1), turning off account memory for the Project (F13), and a weekly rot check that reports and never edits (E), which is a lint pass. What it does not cover: (a) a per-unit summary line in the index, so a chat can find which unit holds a claim without opening every file (Karpathy's <code>index.md</code>); (b) filing answers back: a research answer worth keeping becomes a file in the vault, and is never left in chat history or memory; (c) adding the trifecta to F14's reason for on-demand connectors. These are small enough for a proposed backlog row; whether to open one is for the filing chat and for him.</p>
+<p><strong>B5 (Skills and automation).</strong> What it should take: a skill written as an outcome description. autoresearch's <code>program.md</code> names what the agent may change (one file), what it may not (the evaluation), the metric, the budget and the keep-or-revert rule, and leaves the method to the agent. Claude Code's page adds a pass/fail check and the five questions; Karpathy's reported "give it success criteria" says the same. The journey-workflow skill B5 ships should state, for each step, the artefact, the check that says it is done, and what the step may not touch, and should script no reasoning.</p>
+<p><strong>DD-B1 (Agents; DD-B1 owns agents).</strong> What it should take: the autonomy slider as the frame for "how much to delegate" per task; verifiability (resettable, efficient, rewardable) as the delegation test; autoresearch as the reference loop, with its four guards (one editable file, fixed budget, scalar metric, keep-or-revert) and its one unsafe instruction ("NEVER STOP") examined; Claude Code's five questions before an unattended run; OpenAI's "human intervention" for irreversible actions; the lethal trifecta as a hard stop; and Karpathy's failure list from January 2026 as the catalogue of what agents quietly wreck. This unit states them; DD-B1 decides how he uses agents.</p>
+<h2 id="read-dd-b3-5">Deliverable · Method cards and operating rules</h2>
+<h3>A · Method cards</h3>
+<p>One card per method. Grades: <strong>measured</strong>, <strong>documented practice</strong>, <strong>stated opinion</strong>. Every date and figure is from the section cited.</p>
+<p><strong>K1 · Vibe coding</strong>
+- Author: Andrej Karpathy.
+- Primary source: X post, 2 Feb 2025 (via Willison, 19 Mar 2025); <em>Vibe coding MenuGen</em>, 27 Apr 2025 (§1.1).
+- Claim: for throwaway projects you can accept every change without reading the code and steer by results alone.
+- Grade: stated opinion; one documented project.
+- Adopts: vibe coding for scripts that are deleted after use and never touch the vault or Academy.
+- Leaves: everything filed or published, because his own verdict is "not a good idea for anything of actual importance".</p>
+<p><strong>K2 · Agentic engineering</strong>
+- Author: Andrej Karpathy.
+- Primary source: <em>Sequoia Ascent 2026 summary</em>, 30 Apr 2026 (§1.1).
+- Claim: professional work with agents means coordinating fallible agents while keeping correctness, security and maintainability, which vibe coding does not.
+- Grade: stated opinion.
+- Adopts: the distinction as the line between his scripts and his kit.
+- Leaves: nothing.</p>
+<p><strong>K3 · How I use LLMs</strong>
+- Author: Andrej Karpathy.
+- Primary source: YouTube video, 27 Feb 2025; chapter list only (§1.2).
+- Claim: choose model and tier first, then thinking, then tools, one at a time.
+- Grade: documented practice; spoken content unverified here.
+- Adopts: nothing beyond B2's routing table.
+- Leaves: the advice secondary sources attribute to it, which could not be checked.</p>
+<p><strong>K4 · Autonomy slider, verification loop, leash</strong>
+- Author: Andrej Karpathy.
+- Primary source: YC AI Startup School talk, 17 Jun 2025, via a third-party transcription (§1.3).
+- Claim: keep humans verifying model generations in small increments, and decide per task how much autonomy to grant.
+- Grade: stated opinion.
+- Adopts: small increments; a per-task autonomy decision; making his own checking fast.
+- Leaves: the GUI-design advice, which is for product builders.</p>
+<p><strong>K5 · Context engineering</strong>
+- Author: Andrej Karpathy, agreeing with Tobi Lütke.
+- Primary source: X post, 25 Jun 2025 (via Willison, 27 Jun 2025) (§1.4).
+- Claim: the skill is filling the window with just the right information for the next step.
+- Grade: stated opinion.
+- Adopts: already adopted through B1 and B4.
+- Leaves: nothing.</p>
+<p><strong>K6 · Agent-first coding and its failure list</strong>
+- Author: Andrej Karpathy.
+- Primary source: Dwarkesh Podcast, 17 Oct 2025; X post, 26 Jan 2026 (via The Decoder, 27 Jan 2026) (§1.5).
+- Claim: from December 2025 agents wrote about 80% of his code (his own report), and they must be watched for silent wrong assumptions, bloat and sycophancy.
+- Grade: stated opinion with a self-reported figure.
+- Adopts: the failure list as a review checklist for any model output; success criteria in place of steps.
+- Leaves: the 80/20 shift itself, which is about code; his units are already model-written.</p>
+<p><strong>K7 · nanochat habits</strong>
+- Author: Andrej Karpathy.
+- Primary source: nanochat repository, first commit 13 Oct 2025; README read at the 3 Jul 2026 commit (§1.6).
+- Claim: keep a corpus small enough to paste whole into one window, and disclose what a model wrote that you do not fully understand.
+- Grade: documented practice.
+- Adopts: the disclosure habit for published pages.
+- Leaves: the paste-whole habit for the vault, which is far above one window (B4 §2).</p>
+<p><strong>K8 · autoresearch loop</strong>
+- Author: Andrej Karpathy.
+- Primary source: <code>karpathy/autoresearch</code> README and <code>program.md</code>, March 2026; gain in nanochat <code>dev/LEADERBOARD.md</code>, runs 5 and 6, 9 and 14 Mar 2026 (§1.6).
+- Claim: an agent improving one file against one metric under a fixed time budget, keeping only improvements, can find real gains unattended (time to GPT-2 from 2.02 to 1.80 hours, his own record).
+- Grade: documented practice, self-reported result; the "about 700 experiments" figure is press paraphrase.
+- Adopts: the four guards (one editable file, fixed budget, pass/fail metric, keep-or-revert) for any unattended run on the kit.
+- Leaves: "NEVER STOP", and any use on course units, which have no scalar metric and audit at Fable prices.</p>
+<p><strong>K9 · LLM knowledge base</strong>
+- Author: Andrej Karpathy.
+- Primary source: gist <em>llm-wiki.md</em>, 4 Apr 2026; X post, 2 Apr 2026 (via VentureBeat) (§1.7).
+- Claim: an LLM can compile raw sources into a Markdown wiki, navigate it by index without retrieval at about a hundred sources, and keep it healthy by lint.
+- Grade: documented practice; size self-reported.
+- Adopts: Markdown in the vault as the source of truth; an index line per unit; lint that reports; answers worth keeping filed as files.
+- Leaves: the LLM editing filed pages, which breaks his exact-replacement errata.</p>
+<p><strong>K10 · Verifiability</strong>
+- Author: Andrej Karpathy.
+- Primary source: <em>Verifiability</em>, 17 Nov 2025; <em>Sequoia Ascent 2026 summary</em>, 30 Apr 2026 (§1.8).
+- Claim: models get good fastest at what can be verified (resettable, efficient, rewardable), and you can outsource thinking but not understanding.
+- Grade: stated opinion.
+- Adopts: verifiability as the test of what to delegate; reading what he files.
+- Leaves: nothing.</p>
+<p><strong>A1 · Building effective agents</strong>
+- Author: Erik Schluntz and Barry Zhang, Anthropic.
+- Primary source: Anthropic Engineering, 19 Dec 2024 (§2.1).
+- Claim: use the simplest workflow that works, and add agents only for open-ended problems.
+- Grade: documented practice, vendor.
+- Adopts: simplicity first; naming his pipeline as a prompt chain with an evaluator.
+- Leaves: the framework advice, which is for API developers.</p>
+<p><strong>A2 · Effective context engineering</strong>
+- Author: Anthropic.
+- Primary source: Anthropic Engineering, 29 Sep 2025 (§2.1).
+- Claim: aim for the smallest set of high-signal tokens; load by identifier, compact, take notes, use clean sub-agent windows.
+- Grade: documented practice, vendor; no figures.
+- Adopts: already adopted in B1, B3 and B4.
+- Leaves: nothing new.</p>
+<p><strong>A3 · Claude Code best practices</strong>
+- Author: Anthropic.
+- Primary source: original post 18 Apr 2025 (via Willison); current documentation page read 29 Oct 2026 (§2.1).
+- Claim: give the model a pass/fail check, review with a session that did not write, reset after two failed corrections, and answer five questions before running unattended.
+- Grade: documented practice, vendor; no figures.
+- Adopts: all four.
+- Leaves: the retirement of context management, which assumes a 1M window he does not have on claude.ai.</p>
+<p><strong>O1 · A practical guide to building agents</strong>
+- Author: OpenAI.
+- Primary source: PDF, reported 17 Apr 2025 (§2.2).
+- Claim: start with one agent and the most capable model, set evals and layered guardrails, and keep humans on high-risk actions.
+- Grade: documented practice, vendor.
+- Adopts: human sign-off on anything irreversible.
+- Leaves: the rest to DD-B1.</p>
+<p><strong>O2 · GPT-4.1 prompting guide</strong>
+- Author: Noah MacCallum and Julian Lee, OpenAI.
+- Primary source: OpenAI Cookbook, 14 Apr 2025 (§2.2).
+- Claim: newer models follow instructions literally; agent reminders raised an internal benchmark by close to 20%.
+- Grade: vendor data, internal benchmark.
+- Adopts: nothing beyond B3 §4.
+- Leaves: the figures, which are for another vendor's 2025 model.</p>
+<p><strong>W1 · Vibe coding is not AI-assisted programming</strong>
+- Author: Simon Willison.
+- Primary source: blog, 19 Mar 2025 (§2.3).
+- Claim: do not commit code you could not explain to someone else; vibe coding only where harm would be low.
+- Grade: stated opinion.
+- Adopts: the rule, applied to filing.
+- Leaves: nothing.</p>
+<p><strong>W2 · How he uses LLMs to write code</strong>
+- Author: Simon Willison.
+- Primary source: blog, 11 Mar 2025 (§2.3).
+- Claim: manage context, mind the cut-off, give detailed instructions, and always test what it writes.
+- Grade: documented practice.
+- Adopts: "testing cannot be outsourced", which his audits already enforce.
+- Leaves: the library-choice advice, which is for code.</p>
+<p><strong>W3 · The lethal trifecta</strong>
+- Author: Simon Willison.
+- Primary source: blog, 16 Jun 2025 (§2.3).
+- Claim: private data, untrusted content and external communication in one agent make data theft possible, and guardrails do not fix it.
+- Grade: stated opinion.
+- Adopts: never all three in one chat.
+- Leaves: nothing.</p>
+<p><strong>M1 · Four principles of co-intelligence</strong>
+- Author: Ethan Mollick.
+- Primary source: <em>Co-Intelligence</em>, Portfolio, 2 Apr 2024 (book not opened; quoted from reading notes) (§2.4).
+- Claim: invite AI to everything, stay the human in the loop, give it a persona, and assume it will improve.
+- Grade: stated opinion.
+- Adopts: the human in the loop.
+- Leaves: "invite it to everything" (his limits, B2) and personas (no accuracy gain, B3 §1).</p>
+<p><strong>M2 · The jagged frontier</strong>
+- Author: Fabrizio Dell'Acqua, Ethan Mollick and seven others.
+- Primary source: HBS Working Paper 24-013, Sep 2023 (§2.4).
+- Claim: with 758 consultants, GPT-4 raised output and speed inside its frontier and cut correct answers by 19 percentage points outside it.
+- Grade: measured; GPT-4, 2023.
+- Adopts: the expectation that a confident wrong answer is likeliest on judgement tasks, so those get his own decision.
+- Leaves: the effect sizes, which belong to a 2023 model and consulting tasks.</p>
+<p><strong>S1 · Harper Reed's codegen workflow</strong>
+- Author: Harper Reed.
+- Primary source: blog, 16 Feb 2025 (§2.5).
+- Claim: hone the idea one question at a time into a spec, plan it as small test-driven prompts with a checklist, then execute.
+- Grade: documented practice, anecdote.
+- Adopts: the interview-to-spec step, when asked for explicitly.
+- Leaves: the code tooling.</p>
+<p><strong>S2 · GitHub Spec Kit</strong>
+- Author: Den Delimarsky, GitHub.
+- Primary source: GitHub Blog, 2 Sep 2025 (§2.5).
+- Claim: the specification is the source of truth; specify, plan, split into reviewable tasks, implement.
+- Grade: documented practice, vendor tool.
+- Adopts: already in force (briefs, build order).
+- Leaves: the toolkit.</p>
+<p><strong>S3 · AWS Kiro</strong>
+- Author: Nikhil Swaminathan and Deepak Singh, AWS.
+- Primary source: Kiro blog, 14 Jul 2025 (§2.5).
+- Claim: generate requirements with acceptance criteria, then a design, then tasks linked to requirements.
+- Grade: documented practice, vendor tool.
+- Adopts: tracing each task to a requirement, as his DONE WHEN lines do.
+- Leaves: EARS notation and the IDE.</p>
+<p><strong>P1 · Chain-of-thought, and its limit</strong>
+- Author: Jason Wei and others; Zayne Sprague and others.
+- Primary source: arXiv 2201.11903, Jan 2022; arXiv 2409.12183, v3 May 2025 (§2.6).
+- Claim: worked reasoning helps large models mainly on math and symbolic tasks, and little elsewhere.
+- Grade: measured; older models.
+- Adopts: nothing in prompts; effort is the control (B2 §7).
+- Leaves: "think step by step" lines.</p>
+<p><strong>P2 · ReAct</strong>
+- Author: Shunyu Yao and others.
+- Primary source: ICLR 2023 (arXiv 2210.03629) (§2.6).
+- Claim: interleaving reasoning with tool calls reduces hallucination against reasoning alone.
+- Grade: measured; 2022 models.
+- Adopts: nothing to write; search-enabled chats already work this way.
+- Leaves: the prompt format.</p>
+<p><strong>P3 · Self-consistency</strong>
+- Author: Xuezhi Wang and others.
+- Primary source: ICLR 2023 (arXiv 2203.11171) (§2.6).
+- Claim: sampling several reasoning paths and keeping the most consistent answer beats a single path (17.9 points on GSM8K).
+- Grade: measured; 2022 models.
+- Adopts: two independent runs for a figure or verdict that matters.
+- Leaves: running it on prose, where answers cannot be compared by vote.</p>
+<h3>B · Operating rules</h3>
+<p>Ten rules, each traced to its card. Written to be pasted into his way-of-working file.</p>
+<blockquote>
+<p><strong>How I work with AI (from DD-B3, 29 Oct 2026)</strong></p>
+<ol>
+<li><strong>Delegate what can be checked.</strong> Before handing a task to a model, I ask whether something other than my own reading can check the result: a script, a source, or a fresh model. If yes, the model does it and I sample. If no (positioning, strategy, what to cut), the model drafts and I decide. <em>(K10, M2)</em></li>
+<li><strong>Every brief ends with how to tell it is done.</strong> Success criteria a stranger could check, never a script of steps. <em>(K6, A3, S2)</em></li>
+<li><strong>The writer never checks its own work.</strong> Checks run in a chat or agent that did not see the writing. <em>(A3, A1, K4)</em></li>
+<li><strong>I file only what I could explain.</strong> For every claim in a unit or page I publish, I could say where it comes from; anything a model wrote that I do not understand is disclosed or cut. <em>(W1, K7, K10)</em></li>
+<li><strong>Vibe coding is for scripts I will delete.</strong> Nothing produced without reading goes into the vault, the kit or Academy. <em>(K1, K2)</em></li>
+<li><strong>Small pieces, one at a time.</strong> One artefact per chat; after two failed corrections, a new chat with a rewritten brief. <em>(K4, A3)</em></li>
+<li><strong>Unattended runs have four guards.</strong> One file or folder they may change, a fixed time or spend cap, a pass/fail check, and keep-or-revert; I approve the result. Never on course units. <em>(K8, A3, O1)</em></li>
+<li><strong>The vault is the memory.</strong> Markdown in the repo is the source of truth; indexes carry one line per unit; lint reports and never edits a filed unit; an answer worth keeping becomes a file. <em>(K9)</em></li>
+<li><strong>Never the trifecta.</strong> No chat holds my private data, untrusted web content and a tool that can send or publish at the same time. <em>(W3)</em></li>
+<li><strong>No "think harder" in prompts.</strong> Effort is set in the model menu; for a figure or verdict that matters, I run it twice independently and compare. <em>(P1, P3)</em></li>
+</ol>
+</blockquote>
+<h2 id="read-dd-b3-6">Writer's unsure list</h2>
+<p>Fresh check 29 Oct 2026 (Fable 5.1): fix · 1 error, 3 should-fix, 9 minor; all applied (one minor is a note with no fix: the autoresearch last-commit date could not be confirmed); report <code>audits/brand-ai/fresh-check-DD-B3.md</code>.</p>
+<ol>
+<li><strong>Karpathy's X posts were not opened.</strong> Every X status refused the fetch. The vibe-coding text comes from Willison's reproduction, the January 2026 post from The Decoder and Code with Andrea, the context-engineering post from Willison, the knowledge-base post from VentureBeat, the Anthropic move from TechCrunch. Dates for X posts are decoded from status numbers by my own arithmetic and agree with the reporters' dates where they give one.</li>
+<li><strong>autoresearch's "about 700 experiments" and "about 20 improvements"</strong> come only from VentureBeat's paraphrase of the 9 March 2026 post; the gain (2.02 to 1.80 hours) is verified in his repository.</li>
+<li><strong>"About 100 articles and 400,000 words"</strong> is VentureBeat's paraphrase of the April 2026 post; the gist, which was opened, says "~100 sources, ~hundreds of pages" and gives no word count.</li>
+<li><strong>The February 2026 "agentic engineering" anniversary post</strong> was not found in any primary source; the distinction is sourced to his 30 April 2026 blog summary only.</li>
+<li><strong>"Reviewing is a separate skill from writing"</strong> was not found in reachable reproductions of the January 2026 post; the generation–discrimination quotation is from a June 2025 post seen only in a Telegram reproduction.</li>
+<li><strong>Software 3.0 quotations</strong> are from a third-party automatic transcription of the YC video, not a transcript published by YC or Karpathy.</li>
+<li><strong>"How I use LLMs"</strong>: only the chapter list was read; nothing he says in the video is verified.</li>
+<li><strong>Mollick's four principles</strong> are quoted from a reader's notes; the book was not opened.</li>
+<li><strong>Anthropic's April 2025 Claude Code post</strong> could not be opened (its URL redirects to the current documentation); its content is known here only through Willison's note and the current page's list of retired advice.</li>
+<li><strong>Venues and dates not confirmed on the source page</strong>: the arXiv page for Wei et al. gives no venue and none is claimed; Sprague et al. is cited as a preprint; the OpenAI agents PDF carries no date, so April 2025 rests on Maginative's report; the Sequoia talk video itself was not opened.</li>
+</ol>
+<h2 id="read-dd-b3-7">Sources</h2>
+<p>All web sources opened or attempted on 29 October 2026. X posts marked "not opened" refused the fetch and are cited through the reproduction named beside them.</p>
+<ul>
+<li>Karpathy, A. X post on vibe coding, 2 February 2025 (not opened). https://twitter.com/karpathy/status/1886192184808149383</li>
+<li>Karpathy, A. <em>Vibe coding MenuGen</em>. Blog, 27 April 2025. https://karpathy.bearblog.dev/vibe-coding-menugen/</li>
+<li>Karpathy, A. <em>How I use LLMs</em>. YouTube, 27 February 2025. https://www.youtube.com/watch?v=EWvNQjAaOHw</li>
+<li>Y Combinator. <em>Andrej Karpathy: Software Is Changing (Again)</em>. YouTube, 18 June 2025 (talk 17 June 2025). https://www.youtube.com/watch?v=LCEmiRjPEtQ</li>
+<li>Third-party automatic transcription of the YC talk. billmill.org. https://cdn.billmill.org/static/yt-transcribe/karpathy/httpswwwyoutubecomwatchvLCEmiRjPEtQ.html</li>
+<li>Karpathy, A. X post on context engineering, 25 June 2025 (not opened). https://twitter.com/karpathy/status/1937902205765607626</li>
+<li>Karpathy, A. X post on generation and discrimination, 4 June 2025 (not opened). https://x.com/karpathy/status/1930305209747812559</li>
+<li>Telegram channel reproduction of the 4 June 2025 post. https://t.me/s/css_nlp?after=103</li>
+<li>Patel, D. <em>Andrej Karpathy</em> (interview transcript). Dwarkesh Podcast, 17 October 2025. https://www.dwarkesh.com/p/andrej-karpathy</li>
+<li>Karpathy, A. <em>2025 LLM Year in Review</em>. Blog, 19 December 2025. https://karpathy.bearblog.dev/year-in-review-2025/</li>
+<li>Karpathy, A. X post on coding with agents, 26 January 2026 (not opened). https://x.com/karpathy/status/2015883857489522876</li>
+<li>The Decoder. <em>Former Tesla AI chief Andrej Karpathy now codes mostly in English…</em>, 27 January 2026. https://the-decoder.com/former-tesla-ai-chief-andrej-karpathy-now-codes-mostly-in-english-just-three-months-after-calling-ai-agents-useless/</li>
+<li>Code with Andrea. <em>January 2026</em> newsletter, 28 January 2026. https://codewithandrea.com/newsletter/january-2026/</li>
+<li>Willison, S. Quotation of Karpathy on coding agents, 26 February 2026. https://feeds.simonwillison.net/2026/Feb/26/andrej-karpathy/</li>
+<li>SD Times. <em>Andrej Karpathy has renamed vibe coding…</em>, 6 May 2026. https://sdtimes.com/ai/andrej-karpathy-has-renamed-vibe-coding-heres-what-engineering-leaders-need-to-do-about-it/</li>
+<li>Karpathy, A. nanochat repository; initial commit 13 October 2025. https://github.com/karpathy/nanochat · https://github.com/karpathy/nanochat/commit/3a5e0bc</li>
+<li>Karpathy, A. nanochat <code>dev/LEADERBOARD.md</code>. https://github.com/karpathy/nanochat/blob/master/dev/LEADERBOARD.md</li>
+<li>Karpathy, A. autoresearch repository (README, <code>program.md</code>), March 2026. https://github.com/karpathy/autoresearch</li>
+<li>Karpathy, A. X post on autoresearch round 1, 9 March 2026 (not opened). https://x.com/karpathy/status/2031135152349524125</li>
+<li>VentureBeat. <em>Andrej Karpathy's new open source 'autoresearch'…</em>, March 2026. https://venturebeat.com/technology/andrej-karpathys-new-open-source-autoresearch-lets-you-run-hundreds-of-ai</li>
+<li>Karpathy, A. X post on LLM knowledge bases, 2 April 2026 (not opened). https://x.com/karpathy/status/2039805659525644595</li>
+<li>VentureBeat. <em>Karpathy shares LLM knowledge base architecture that bypasses RAG…</em>, 3 April 2026. https://venturebeat.com/data/karpathy-shares-llm-knowledge-base-architecture-that-bypasses-rag-with-an</li>
+<li>Karpathy, A. <em>llm-wiki.md</em>. GitHub gist, created 4 April 2026. https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f</li>
+<li>Karpathy, A. <em>Verifiability</em>. Blog, 17 November 2025. https://karpathy.bearblog.dev/verifiability/</li>
+<li>Karpathy, A. <em>Sequoia Ascent 2026 summary</em>. Blog, 30 April 2026. https://karpathy.bearblog.dev/sequoia-ascent-2026/</li>
+<li>Karpathy, A. X post announcing the move to Anthropic, 19 May 2026 (not opened). https://x.com/karpathy/status/2056753169888334312</li>
+<li>TechCrunch. <em>OpenAI co-founder Andrej Karpathy joins Anthropic's pre-training team</em>, 19 May 2026. https://techcrunch.com/2026/05/19/openai-co-founder-andrej-karpathy-joins-anthropics-pre-training-team/</li>
+<li>SozAI. <em>Stop Prompting Claude. Use Karpathy's Method Instead.</em> (title cited as an example of the label). https://sozai.app/transcript/stop-prompting-claude-karpathys-method/index.md</li>
+<li>Noqta. <em>The Karpathy Loop: AI Agents Running 700 Experiments Autonomously</em> (title cited as an example of the label). https://www.noqta.tn/en/blog/karpathy-autoresearch-autonomous-ai-experiments-loop-2026</li>
+<li>Pillitteri, P. <em>Karpathy CLAUDE.md: the #1 GitHub Trending file…</em>, 4 May 2026. https://pasqualepillitteri.it/en/news/1872/karpathy-claude-md-trending-github-llm-coding</li>
+<li>Analytics Vidhya. <em>This is How Andrej Karpathy Uses LLMs</em>, March 2025. https://www.analyticsvidhya.com/blog/2025/03/how-andrej-karpathy-uses-llms/</li>
+<li>Schluntz, E. and Zhang, B. <em>Building effective agents</em>. Anthropic Engineering, 19 December 2024. https://www.anthropic.com/engineering/building-effective-agents</li>
+<li>Anthropic. <em>Effective context engineering for AI agents</em>. Anthropic Engineering, 29 September 2025. https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</li>
+<li>Willison, S. Note on <em>Claude Code: Best practices for agentic coding</em>, 19 April 2025. https://simonwillison.net/2025/Apr/19/claude-code-best-practices/</li>
+<li>Claude Code docs. <em>Best practices for Claude Code</em> (read 29 October 2026). https://code.claude.com/docs/en/best-practices</li>
+<li>OpenAI. <em>A practical guide to building agents</em> (PDF, undated). https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf</li>
+<li>Maginative. <em>How to Build AI Agents: A Detailed, Practical Guide from OpenAI</em>, 17 April 2025. https://www.maginative.com/article/how-to-build-ai-agents-a-detailed-practical-guide-from-openai/</li>
+<li>MacCallum, N. and Lee, J. <em>GPT-4.1 Prompting Guide</em>. OpenAI Cookbook, 14 April 2025. https://developers.openai.com/cookbook/examples/gpt4-1_prompting_guide</li>
+<li>Willison, S. <em>Not all AI-assisted programming is vibe coding (but vibe coding rocks)</em>, 19 March 2025. https://simonwillison.net/2025/Mar/19/vibe-coding/</li>
+<li>Willison, S. <em>Here's how I use LLMs to help me write code</em>, 11 March 2025. https://simonwillison.net/2025/Mar/11/using-llms-for-code/</li>
+<li>Willison, S. <em>The lethal trifecta for AI agents</em>, 16 June 2025. https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/</li>
+<li>Willison, S. <em>Context engineering</em>, 27 June 2025. https://simonwillison.net/2025/Jun/27/context-engineering/</li>
+<li>Penguin Random House. <em>Co-Intelligence</em> by Ethan Mollick, Portfolio, 2 April 2024. https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/9780593716724</li>
+<li>Arango, J. Reading notes on <em>Co-Intelligence</em>. https://jarango.com/readings/co-intelligence/</li>
+<li>Dell'Acqua, F., McFowland III, E., Mollick, E., Lifshitz-Assaf, H., Kellogg, K. C., Rajendran, S., Krayer, L., Candelon, F. and Lakhani, K. R. <em>Navigating the Jagged Technological Frontier</em>. HBS Working Paper 24-013, September 2023. https://www.hbs.edu/faculty/Pages/item.aspx?num=64700 · SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321</li>
+<li>Mollick, E. <em>Centaurs and Cyborgs on the Jagged Frontier</em>. One Useful Thing, 16 September 2023. https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged</li>
+<li>Reed, H. <em>My LLM codegen workflow atm</em>, 16 February 2025. https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/</li>
+<li>Delimarsky, D. <em>Spec-driven development with AI: Get started with a new open source toolkit</em>. GitHub Blog, 2 September 2025. https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/</li>
+<li>Swaminathan, N. and Singh, D. <em>Introducing Kiro</em>. Kiro blog, 14 July 2025. https://kiro.dev/blog/introducing-kiro/</li>
+<li>Wei, J. et al. "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models". arXiv 2201.11903, 2022. https://arxiv.org/abs/2201.11903</li>
+<li>Yao, S. et al. "ReAct: Synergizing Reasoning and Acting in Language Models". ICLR 2023; arXiv 2210.03629. https://arxiv.org/abs/2210.03629</li>
+<li>Wang, X. et al. "Self-Consistency Improves Chain of Thought Reasoning in Language Models". ICLR 2023; arXiv 2203.11171. https://arxiv.org/abs/2203.11171</li>
+<li>Sprague, Z. et al. "To CoT or not to CoT? Chain-of-thought helps mainly on math and symbolic reasoning". arXiv 2409.12183, v3 May 2025 (preprint). https://arxiv.org/abs/2409.12183</li>
+<li>Learning Project files cited by name: <code>method.md</code> §3, §5, §6; B1 · Mental model §1, §3, §4, §5; B2 · Choosing the model §2, §7; B3 · Prompting that holds up §1, §2, §4; B4 · Context engineering §1, §2, F1, F13, F14, E. His saved preferences are cited as B3 §4 describes them.</li>
+</ul></div>
+  <div class="pager"></div>
