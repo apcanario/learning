@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **User Experience (session 24):** a fourth track and a second markdown family, `generator/data/ux/`; its first course, IA · Information Architecture, is published as coming soon with its frame, syllabus and briefs; nothing written. A markdown course with no unit filed counts as planned, not live.
 - **Greece, course 1:** complete. 78 reports, about 244,000 words: 55 written with Fable 5.1, 23 with Opus 5.5.
 - **Rome, course 2:** 59 of 79 reports, about 180,000 words, all written with Opus 5.5 and all checked. 20 modules are queued: deep dive I (11.3 to 11.8), deep dive II, the Aeneid (12.1 to 12.8), and deep dive III (13.3 to 13.8).
 - **Fable review:** every Rome report is reviewed (session 9). Of the 23 Greek Opus reports, 17 are reviewed (eleven audited in full, six cleared on the sample) and six are still flagged: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (session 10). Rome 14.3 and the Greek 13.3 high-signal pairs are done; every pair passed.
@@ -49,6 +50,14 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 21. The history course homes leave the shell (P22) | 78 | 59 |
 | 28 Oct | 22. "How it was built" for every course (A4) | 78 | 59 |
 | 28 Oct | 23. The vault is the source; a new course is a folder (A5) | 78 | 59 |
+
+## 29 October 2026 · Session 24 · User Experience track and course IA (U-0)
+
+A second markdown family, `generator/data/ux/` (`hub.py`, `units_data.py`), and the `UX` entry in `courses.py` with a new track, User Experience (`var(--blue)`). The first course, IA · Information Architecture, is twelve core units in four parts and three deep dives, one brief each, nothing written; the home, the drawer, the course home, briefs, build order, audits, bibliography, changelog and "How it was built" pages all come from the existing markdown build.
+
+Kit changes for a family that is not Brand + AI: `build.py` gives a markdown course with no unit filed the status coming soon, counts it as planned in the home's totals and the track headers, and labels its card button Open the syllabus; `mdcourse.py` names the course's family and its status in the eyebrow (no longer "Brand + AI · IN PROGRESS" for every markdown course) and shows the frame on a data file's first course; `howbuilt.py` reads a course's `sourcing_part` (`Part 4` for UX) and parses any unit-code prefix in its audit log; `verify.py` derives the root drawer-group check from `THEMES`. Theme: `.ditem .n`, `.dsoon .n` and `.hrow .n` widen to 3.6em so a six-character code (`DD-IA1`) stays on one line; copied to `shell.css`.
+
+`docs/sourcing-standard.md` Part 4 (User Experience). `docs/courses-index.md`: the User Experience section (0 of 15), an audit counter, the hub row. Verified at three widths; published to the artifact and Pages. Before IA1: the IA figure kinds (backlog V1).
 
 ## 28 October 2026 · Session 23 · The vault is the source; a new course is a folder (A5)
 

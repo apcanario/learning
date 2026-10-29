@@ -18,6 +18,8 @@ THEMES = [
          lede='Building a personal brand from the record of what you actually do: audience, platform economics, cadence, benchmarks. Every unit sourced to platform data or peer-reviewed work and ending in a shipped deliverable.'),
     dict(id='technology', name='Technology', color='var(--purple)',
          lede='Working with AI models as tools: which model for which task, how to brief, how to keep a project from rotting, how to verify what the machine wrote before you trust it.'),
+    dict(id='ux', name='User Experience', color='var(--blue)',
+         lede='The practice of UX design, written to be handed to other designers: how to read, build and edit the structure behind a product at any scale, where that work sits in the product cycle and the business, and how to deliver it when the inputs are missing. Every unit sourced to the field\'s standard works and research, rich in figures, ending in a shipped deliverable.'),
 ]
 
 GREECE = dict(
@@ -131,7 +133,19 @@ BRAND_AI = dict(
     card='A · Building a Marketable Personal Brand and B · Using AI to Build a Brand. Who pays, for what, how long it takes; which model for which task, how to brief, where the setup leaks. Every unit sourced and ending in a shipped deliverable.',
 )
 
-COURSES = [GREECE, ROME, BRAND_AI]
+UX = dict(
+    id='ux', family='markdown', short='User Experience', label='USER EXPERIENCE', name='User Experience: courses for other designers', color='var(--blue)',
+    home_id='ux', status='coming soon',
+    # panel ids default to <id>-<key>: ux-ia, ux-ia-briefs, ux-ia-b-ia1 (no prefix, no legacy_ids)
+    tracks={'IA': ('ux', 'Information architecture')},
+    data='generator/data/ux/hub.py',
+    vault='courses/ux',             # the filed units (method.md §7); the folder appears with the first one (A5)
+    sourcing_part='Part 4',         # sourcing-standard.md: this family's own part (howbuilt.py)
+    eyebrow='USER EXPERIENCE',
+    card='IA · Information Architecture, for a mid-level UX designer: what IA is, the shapes it takes, four levels of complexity built on one fictional product, where it sits in the product cycle and the business, how to validate it, and how to deliver it when the research, the content or the stakeholders are missing.',
+)
+
+COURSES = [GREECE, ROME, BRAND_AI, UX]
 HISTORY = [c for c in COURSES if c['family'] == 'history']
 MARKDOWN = [c for c in COURSES if c['family'] == 'markdown']
 

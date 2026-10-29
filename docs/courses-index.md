@@ -1,6 +1,6 @@
 # Courses index
 
-Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 28 October 2026 (Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md` and `academy.md`, and A1 to A5 done: the site is Academy; Brand + AI v7.3, B2 filed, DD-B3 added, P27 figures in A2, A9, B2; Brand + AI v7.8 on 29 Oct 2026, Audit 2 run; v8.0, A3 filed; v8.1, B5 filed). Update a row whenever a unit is filed or audited (method.md §7). `kit/index_check.py` checks every unit row, count line and staleness date against the syllabi, `kit/provenance.json`, the vault and the data files; `kit/verify.py` runs it. The notes, review rows and audit counters are not checked (the counters wait for S3).
+Every course and every unit in the Learning Project, in build order, with status, the model that wrote it, the search flag and where the unit lives. State as of 29 October 2026 (User Experience family and course IA added, nothing written; Personal Mythology: end of the third Fable review session, plus the decisions of 28 October in `pm-status-2026-10-28.md` and `academy.md`, and A1 to A5 done: the site is Academy; Brand + AI v7.3, B2 filed, DD-B3 added, P27 figures in A2, A9, B2; Brand + AI v7.8 on 29 Oct 2026, Audit 2 run; v8.0, A3 filed; v8.1, B5 filed). Update a row whenever a unit is filed or audited (method.md §7). `kit/index_check.py` checks every unit row, count line and staleness date against the syllabi, `kit/provenance.json`, the vault and the data files; `kit/verify.py` runs it. The notes, review rows and audit counters are not checked (the counters wait for S3).
 
 Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Personal Mythology kit; `vault/` is `courses/`; `gen/` is `generator/`. Units not yet written show the vault path they will be filed at.
 
@@ -8,7 +8,7 @@ Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Pers
 
 | Hub | Page | Link | Built from |
 |---|---|---|---|
-| Academy | The one site: the Academy home listing every course by track, with the Changelog and the Backlog; Greece and Rome in full (syllabi, every report); Brand + AI as two courses (A, B), each with its units, briefs, build order, audits, bibliography and changelog; the eight history courses to come | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (version 55 onward, 28 Oct) · GitHub Pages: https://apcanario.github.io/academy/ (`kit/deploy.sh` through the public repo `apcanario/academy`) | kit `build.py` from `kit/courses.py` (`family` history or markdown; markdown through `kit/mdcourse.py`), `shell.css` = `design/theme.css`; A1, A3 and A2 of `academy.md` done 28 Oct: the build is `kit/academy/`, a shell plus one file per report fetched on navigation (sizes in `kit/README.md`); publish with `kit/publish_files.py` |
+| Academy | The one site: the Academy home listing every course by track, with the Changelog and the Backlog; Greece and Rome in full (syllabi, every report); Brand + AI as two courses (A, B), each with its units, briefs, build order, audits, bibliography and changelog; User Experience with its first course IA (coming soon, 29 Oct 2026); the eight history courses to come | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (version 55 onward, 28 Oct) · GitHub Pages: https://apcanario.github.io/academy/ (`kit/deploy.sh` through the public repo `apcanario/academy`) | kit `build.py` from `kit/courses.py` (`family` history or markdown; markdown through `kit/mdcourse.py`), `shell.css` = `design/theme.css`; A1, A3 and A2 of `academy.md` done 28 Oct: the build is `kit/academy/`, a shell plus one file per report fetched on navigation (sizes in `kit/README.md`); publish with `kit/publish_files.py` |
 
 A5 done 28 Oct 2026: the Brand + AI units are read from the vault, `courses/brand-ai/` (no copy under `gen/`); a new course of either family is a folder plus a `kit/courses.py` entry.
 
@@ -23,6 +23,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 | Hub | Units since last audit | Next audit | Note |
 |---|---|---|---|
 | Brand + AI | 3 of 4 (Audit 2 ran 29 Oct 2026; DD-B3, A3, B5 since) | Audit 3 after #12 (DD-B3, A3, B5, A4) | Audit 1: B1 PASS; A2·A6·A9 REWRITE, rewritten 28 Oct 2026. Audit 2 (29 Oct 2026): B2, B3, B4, A1 all PASS; B2 errata for Intelligence Index v5.0 and one miscite, A1 erratum (P33), applied. DD-B3, A3 and B5 filed 29 Oct 2026; A4 next, then Audit 3. Fresh checker required for every Brand + AI unit (method §1 override). |
+| User Experience | 0 of 4 | Audit 1 after IA4 | Course IA created 29 Oct 2026; nothing written; the figure kinds (V1) come first. Fresh checker required for every unit, as for Brand + AI. |
 | Personal Mythology | 0 of 4 new modules | after the 4th new Rome module (batch 1: 11.3, 11.4, 11.5, 11.6) | Decision of 28 October 2026: strict four-module cadence per method.md §6; `kit/review_due.py` still counts syllabus units and is to be rewritten (S3). Six Greek reports still flagged from the 27 October review: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (`NEXT-SESSION.md`, S4) |
 
 ## Staleness checks due (search-on units)
@@ -71,6 +72,32 @@ Two courses for one reader. **A · Building a Marketable Personal Brand** (9 cor
 | 21 | DD-A2 | A | Deep dive: the exit math | not written | Opus 5.5 | off | `courses/brand-ai/DD-A2-deep-dive-the-exit-math.md` |
 | 22 | DD-B2 | B | Deep dive: his unknown unknowns | not written | Fable 5.1 | off | `courses/brand-ai/DD-B2-deep-dive-his-unknown-unknowns.md` |
 | ✓ | Audit 6 | A+B | Final audit of DD-B2 plus a full read of both courses against their goals | after #22 | Fable 5.1 | on | hub Audits page |
+
+## User Experience
+
+The family for courses written to be handed to other designers: the Project's one exception to its single-reader rule (decided 29 Oct 2026); the reader is the persona in each brief's preamble, and `reader.md` is unchanged. First course: **IA · Information Architecture**, twelve core units in four parts (foundations and notation; the four levels of complexity on the fictional Perqo; IA in the lifecycle and across the business; working without the inputs) and three deep dives. 0 of 15 written. Status: coming soon. A unit is written when its file is in `courses/ux/` (the folder appears with the first one). Briefs: the course's Briefs page in Academy (`gen/data/ux/units_data.py`). Build order: the Build order page. Before IA1: the IA figure kinds for `kit/viz.py` (backlog row V1).
+
+| # | Unit | Course | Title | Status | Model | Search | Path |
+|---|---|---|---|---|---|---|---|
+| 1 | IA1 | IA | What information architecture is, and where it sits | not written | Opus 5.5 | off | `courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md` |
+| 2 | IA2 | IA | The shapes IA takes: the artefact catalogue and the course notation | not written | Opus 5.5 | off | `courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md` |
+| 3 | IA3 | IA | How people find and understand things | not written | Opus 5.5 | off | `courses/ux/IA3-how-people-find-and-understand-things.md` |
+| 4 | IA4 | IA | Organisation systems: schemes, structures, objects, taxonomies | not written | Opus 5.5 | off | `courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md` |
+| ✓ | Audit 1 | IA | Stratified-sample audit of the last four units | due after #4 | Fable 5.1 | on | course Audits page |
+| 5 | IA5 | IA | Level 1 · the sales and product website | not written | Opus 5.5 | off | `courses/ux/IA5-level-1-the-sales-and-product-website.md` |
+| 6 | IA6 | IA | Level 2 · the client app | not written | Opus 5.5 | off | `courses/ux/IA6-level-2-the-client-app.md` |
+| 7 | IA7 | IA | Level 3 · the backoffice | not written | Opus 5.5 | off | `courses/ux/IA7-level-3-the-backoffice.md` |
+| 8 | IA8 | IA | Level 4 · the system map | not written | Opus 5.5 | off | `courses/ux/IA8-level-4-the-system-map.md` |
+| ✓ | Audit 2 | IA | Stratified-sample audit of the last four units | due after #8 | Fable 5.1 | on | course Audits page |
+| 9 | IA9 | IA | IA in the product development lifecycle | not written | Opus 5.5 | off | `courses/ux/IA9-ia-in-the-product-development-lifecycle.md` |
+| 10 | IA10 | IA | Touchpoints: what each part of the business needs from the IA | not written | Opus 5.5 | off | `courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md` |
+| 11 | IA11 | IA | Validating an IA: evidence, methods, numbers | not written | Opus 5.5 | off | `courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md` |
+| 12 | IA12 | IA | When the inputs are missing: building the backbone anyway | not written | Opus 5.5 | off | `courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md` |
+| ✓ | Audit 3 | IA | Stratified-sample audit of the last four units | due after #12 | Fable 5.1 | on | course Audits page |
+| 13 | DD-IA1 | IA | Deep dive: five information architectures read closely | not written | Opus 5.5 | on | `courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md` |
+| 14 | DD-IA2 | IA | Deep dive: what IA costs and returns | not written | Opus 5.5 | on | `courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md` |
+| 15 | DD-IA3 | IA | Deep dive: taxonomy and governance at scale | not written | Opus 5.5 | off | `courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md` |
+| ✓ | Audit 4 | IA | Final audit of the three deep dives plus a full read of the course against its goal, and a read-through as the persona | after #15 | Fable 5.1 | on | course Audits page |
 
 ## Personal Mythology
 

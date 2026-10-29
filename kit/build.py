@@ -275,7 +275,7 @@ def card(theme, color, short, title, blurb, meta, done, total, status, href, ext
     """A catalogue card: track chip, title, blurb, meta row, progress meter, status, button. Same shape for every course."""
     pct = round(100 * done / total) if total else 0
     pill = '<span class="pill live">complete</span>' if status == 'available' else f'<span class="pill prog">{status}</span>'
-    label = 'Continue' if status != 'available' else 'Open the course'
+    label = 'Continue' if status == 'in progress' else ('Open the syllabus' if status == 'coming soon' else 'Open the course')
     tgt = '' if external else f' data-target="{href[1:]}"'
     return f'''<a class="course live" href="{href}"{tgt} style="--c:{color}">
     <div class="ctop"><span class="cname">{html.escape(theme)} · {html.escape(short)}</span>{pill}</div>
@@ -367,7 +367,7 @@ def md_courses(c):
         out.append(dict(id=pid, home_id=pid, briefs_id=f'briefs-{sc["k"]}' if legacy else f'{pid}-briefs',
                         brief_anchor='b-' if legacy else f'{pid}-b-', parent=c, sc=sc, theme=theme, short=short, key=sc['key'],
                         name=sc['name'], color=sc['color'], units=sc['units'], done=done, nunits=len(sc['units']), nwritten=len(done),
-                        status='in progress', card=sc['tile']))
+                        status='in progress' if done else 'coming soon', card=sc['tile']))   # a course with no unit filed is coming soon
     return out
 
 
@@ -431,7 +431,7 @@ RECENT = DATED[:5]
 
 
 def totals():
-    return dict(live=len(HISTORY) + len(MD), coming=len(NEXT), reports=sum(c['nrep'] for c in HISTORY),
+    return dict(live=len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon'), coming=len(NEXT) + sum(1 for m in MD if m['status'] == 'coming soon'), reports=sum(c['nrep'] for c in HISTORY),
                 units=sum(m['nwritten'] for m in MD), words=sum(c['words'] for c in HISTORY))
 
 
@@ -587,12 +587,14 @@ for t in THEMES:
     hist = [c for c in HISTORY if c['theme'] == t['id']]
     mds = [m for m in MD if m['theme'] == t['id']]
     cards = ''.join(root_card(c) for c in hist) + ''.join(md_card(m) for m in mds)
-    n = len(hist) + len(mds)
-    count = f'{n} course{"s" if n != 1 else ""}'
+    soon = [m for m in mds if m['status'] == 'coming soon']   # a markdown course with nothing written is planned, not live
+    n = len(hist) + len(mds) - len(soon)
+    count = f'{n} course{"s" if n != 1 else ""}' if n else f'{len(soon)} course{"s" if len(soon) != 1 else ""} coming soon'
     if hist: count += f' · {sum(c["nrep"] for c in hist)} reports'
     if mds: count += f' · {sum(m["nwritten"] for m in mds)} of {sum(m["nunits"] for m in mds)} units'
     if t['id'] == 'history': count += f' · {len(NEXT)} planned'
-    jump = f'{n} live' + (f' · {len(NEXT)} planned' if t['id'] == 'history' else '') if n else 'planned'
+    elif soon and n: count += f' · {len(soon)} coming soon'
+    jump = (f'{n} live' + (f' · {len(NEXT)} planned' if t['id'] == 'history' else '') + (f' · {len(soon)} coming soon' if soon else '')) if n else (f'{len(soon)} coming soon' if soon else 'planned')
     track_jump += f'<a class="hbtn alt" href="#track-{t["id"]}" style="--c:{t["color"]}"><span>Track</span><b>{html.escape(t["name"])}</b><small>{jump}</small></a>'
     extra = ''
     if t['id'] == 'history':
@@ -639,7 +641,7 @@ for d, short, col, code, title, pid, model in RECENT:
 roothome = f"""
 <section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Academy" data-u="HOME" data-c="var(--red)" hidden>
   <header class="hero resume" data-progress='{json.dumps(_prog)}'>
-    <div class="eyebrow"><span class="u" style="--c:var(--red)">ACADEMY</span> · {N_LIVE} courses live · {len(NEXT)} planned · one reader</div>
+    <div class="eyebrow"><span class="u" style="--c:var(--red)">ACADEMY</span> · {N_LIVE} courses live · {TOTALS['coming']} planned · one reader</div>
     <h1>Academy</h1>
     <p class="lede">Every self-study course in one place. Pick up where you left off.</p>
     <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b><span class="rmeter"><span class="bar" aria-hidden="true"><i></i></span><span class="pct mono"></span></span></a>{fallback}</div>

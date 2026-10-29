@@ -376,7 +376,11 @@ def main():
         dr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dtop .ditem .t')].map(t => t.textContent)")
         if dr != ['Home', 'Changelog', 'Backlog']: fails.append(f'root drawer top: {dr}')
         gr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dunit')].map(u => u.querySelector('.ut').textContent + (u.classList.contains('closed') ? ':closed' : ':open'))")
-        if gr != ['History:open', 'Marketing:open', 'Technology:open']: fails.append(f'root drawer groups: {gr}')
+        # a track's group is open once a page in it was visited in this run (shell.js show()); the ones the run above
+        # visited (greece, rome, brand-a, brand-b) are open, any other track from courses.py starts closed
+        seen = {'history', 'marketing', 'technology'}
+        want = [t['name'] + (':open' if t['id'] in seen else ':closed') for t in THEMES]
+        if gr != want: fails.append(f'root drawer groups: {gr}, expected {want}')
         pg.click('[data-navctx="root"] .dunit[data-unit="track:history"] .duh'); pg.wait_for_timeout(50)
         if not pg.evaluate("document.querySelector('[data-navctx=\"root\"] .dunit[data-unit=\"track:history\"]').classList.contains('closed')"): fails.append('root drawer: the History group does not collapse')
         pg.click('[data-navctx="root"] .dunit[data-unit="track:history"] .duh'); pg.wait_for_timeout(50)

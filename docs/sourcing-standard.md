@@ -1,6 +1,6 @@
 # Sourcing standard
 
-One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 and 3 are each course's own rules, taken from its brief preamble and its spec; a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
+One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 4 are each course family's own rules, taken from its brief preamble and its spec; a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
 
 A **checkable claim** is any sentence that carries a number, a date, a named source, an attribution ("X argued Y", "the source says"), a mechanism or a recommendation. The auditor's sample is drawn from these (method.md §6).
 
@@ -50,3 +50,18 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] Every Self-test answer agrees with the body.
 - [ ] The writer leaves `bibliography/<course>/r-<id>.md`: every ancient author and work with passages and the edition or translation relied on where known; every modern work with author, full title, place or journal and year of the edition named.
 - [ ] Web search is used to verify a specific date or contested point the writer is unsure of, not to write from (search flag off).
+
+## Part 4 · User Experience (from the shared preamble of `generator/data/ux/units_data.py`)
+
+- [ ] Every claim that carries a number, a named source, a mechanism or a recommendation is sourced where it is made.
+- [ ] Each source is one of: a standard work of the field cited by author, title, edition and year with the page or chapter the claim is drawn from; a Nielsen Norman Group article or report with author, title, date and URL; peer-reviewed HCI or information-science research with venue and year; platform, standards or vendor documentation labelled as such; a practitioner's article or talk with a named author and date, labelled as practice.
+- [ ] Vendor guidance (a research tool's advice on sample sizes, a platform's own claims) is labelled as vendor guidance, never cited as a study.
+- [ ] Practice is labelled as practice; measured findings are kept separate from craft advice.
+- [ ] A diagram redrawn or adapted from a source credits that source in its caption.
+- [ ] Nothing is asserted about a real company's information architecture beyond what is visible on its public screens (dated) or documented by the company itself (cited).
+- [ ] Every fact about Perqo, the fictional running example, is labelled "(Perqo, fictional)" on its first use in the unit, agrees with the Perqo facts in the filed units, and is never used as evidence for a claim about the world.
+- [ ] Every figure is a fenced `viz` block of a kind `kit/viz.py` draws; its labels and numbers appear in the unit's own sourced text; no screenshot, embedded image or hand-written SVG.
+- [ ] No uncited figures; no invented articles, authors, studies, URLs, names or numbers; a claim that cannot be sourced is said to be unsourced and is left out of the deliverable.
+- [ ] Where the unit's search flag is on (DD-IA1, DD-IA2), every observation of a live product and every published figure carries the date it was checked.
+- [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
+- [ ] Links are given as links, so the course bibliography can collect them.

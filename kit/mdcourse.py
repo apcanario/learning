@@ -107,11 +107,11 @@ def build(m, crumbs, theme, pill_next, chev):
     audits = ''.join(f'<li><strong>{e(dt)}</strong> · {txt}</li>' for dt, txt in d.AUDIT_LOG)
     start = (f'<a class="hbtn start" href="#{read_of[first[0]]["id"]}" data-target="{read_of[first[0]]["id"]}"><span>Start the course</span><b>{e(first[0] + " " + first[1])}</b></a>' if first
              else f'<a class="hbtn start" href="#{BR}" data-target="{BR}"><span>Open the course</span><b>No unit written yet · the briefs</b></a>')
-    frame = getattr(d, 'FRAME', '') if key == 'A' else ''
+    frame = getattr(d, 'FRAME', '') if sc is courses[0] else ''      # the frame is shown on the data file's first course
     P.append(panel(ctx, 'course', f'''
   <header class="hero">
     {crumbs(('Academy', 'home'), (t['name'], 'track-' + m['theme']), (course_crumb[0], None))}
-    {eyebrow((f'COURSE {key}', col), ('Brand + AI', None), ('IN PROGRESS', 'var(--gold)'))}
+    {eyebrow((f'COURSE {key}', col), (c['short'], None), (m['status'].upper(), 'var(--gold)'))}
     <h1>{e(m['name'])}</h1>
     <p class="lede">{sc['intro']}</p>
     <div class="stats" data-n="4"><div><b>{m['nwritten']}</b><span>of {m['nunits']} units written</span></div><div><b>{pct}%</b><span>of the course</span></div><div><b>{len(d.AUDIT_LOG)}</b><span>audit{'s' if len(d.AUDIT_LOG) != 1 else ''} run</span></div><div><b>{e(d.NEXT_UNIT)}</b><span>next unit to write</span></div></div>

@@ -80,12 +80,12 @@ def method_rows(family):
     return [(r[0], r[i], r[j]) for r in body]
 
 
-def sourcing_parts(family):
-    """docs/sourcing-standard.md: [(heading, lines)] for Part 1 and the family's part."""
+def sourcing_parts(family, part=None):
+    """docs/sourcing-standard.md: [(heading, lines)] for Part 1 and the family's part (or the course's own `sourcing_part`)."""
     txt = (DOCS / 'sourcing-standard.md').read_text(encoding='utf-8')
     out = []
     for m in re.finditer(r'^## (Part \d[^\n]*)\n(.*?)(?=^## |\Z)', txt, re.S | re.M):
-        if m.group(1).startswith(('Part 1', SOURCING_PART[family])):
+        if m.group(1).startswith(('Part 1', part or SOURCING_PART[family])):
             out.append((m.group(1), [ln.replace('- [ ] ', '- ') for ln in m.group(2).split('\n')]))
     return out
 
@@ -108,8 +108,8 @@ def method_section(family, md_inline):
             f'<details class="prompt"><summary>The decisions and their overrides</summary><div class="report"><ul>{picks}</ul></div></details></details>')
 
 
-def sources_section(family, md_blocks):
-    parts = ''.join(f'<details class="prompt"><summary>{e(h)}</summary><div class="report">{md_blocks(lines)}</div></details>' for h, lines in sourcing_parts(family))
+def sources_section(family, md_blocks, part=None):
+    parts = ''.join(f'<details class="prompt"><summary>{e(h)}</summary><div class="report">{md_blocks(lines)}</div></details>' for h, lines in sourcing_parts(family, part))
     return (f'<details class="howto rules"><summary><h2>The sources policy</h2><span>sourcing-standard.md</span></summary>'
             f'<p class="hnote">From {gh("docs/sourcing-standard.md")}: Part 1 applies to every course, the second part to this one. A unit must pass both.</p>{parts}</details>')
 
@@ -314,11 +314,11 @@ def _audit_log_units(d):
     for dt, txt in d.AUDIT_LOG:
         name = re.match(r'\s*([^(.]+?)\s*\(', txt)
         seg = re.search(r'Units?:\s*(.*?)\.\s', txt)
-        codes = re.findall(r'(?<![\w-])((?:DD-)?[AB]\d+)(?![\w])', seg.group(1)) if seg else []
+        codes = re.findall(r'(?<![\w-])((?:DD-)?[A-Z]+\d+)(?![\w])', seg.group(1)) if seg else []
         verdicts = {}
         for who, what in re.findall(r'<strong>([^<:]+):(.*?)</strong>', txt):
             v = re.findall(r'\b(PASS|REWRITE|FULL AUDIT)\b', what)
-            for code in re.findall(r'(?:DD-)?[AB]\d+', who):
+            for code in re.findall(r'(?:DD-)?[A-Z]+\d+', who):
                 if v:
                     verdicts[code] = v[-1]
         files = re.findall(r'<code>(audits/[^<]+)</code>', txt)
@@ -401,7 +401,7 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
         flags.append(f'Filed in <code>courses/{slug}/</code> with a front-matter <code>course</code> line that does not name course {e(key)}: {", ".join(misfiled)}.')
 
     # earlier material for this course (DONE_ROWS), and the superseded readings kept as the record
-    earlier = [r for r in d.DONE_ROWS if any(x in codes for x in re.findall(r'(?:DD-)?[AB]\d+', r[1]))]
+    earlier = [r for r in d.DONE_ROWS if any(x in codes for x in re.findall(r'(?:DD-)?[A-Z]+\d+', r[1]))]
     earlier_html = ''.join(f'<li><strong>{e(r[1])}</strong> · {e(r[2])} · {e(r[3])} · search {e(r[4])} · {e(r[5])}</li>' for r in earlier)
     kept = [r for r in d.READINGS if r['course'] == key and not r['covers']]
     earlier_html += ''.join(f'<li>Kept as the record: <a href="#{r["id"]}" data-target="{r["id"]}">{e(r["title"])}</a></li>' for r in kept)
@@ -429,6 +429,6 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
   {f'<section class="howto" style="--hc:var(--orange)"><h2>Earlier material</h2><ul>{earlier_html}</ul></section>' if earlier_html else ''}
   <section class="howto" style="--hc:var(--gold)"><h2>Audits and checks run</h2>{f'<div class="logrows">{arows}</div>' if arows else '<p>None yet.</p>'}</section>
   {method_section('markdown', md_inline)}
-  {sources_section('markdown', md_blocks)}
+  {sources_section('markdown', md_blocks, c.get('sourcing_part'))}
   {footer([f'<code>courses/{e(slug)}/</code> front matter', f'<code>audits/{e(slug)}/</code>', gh(rel(REPO / c['data'])) + ' (AUDIT_LOG, STATUS, DONE_ROWS)', gh('docs/method.md'), gh('docs/sourcing-standard.md')])}'''
     return panel(f'{ctx}-built', ctx, col, label, body)
