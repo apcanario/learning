@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Figures (session 25):** eleven kinds in `viz.py`, the seven for Information Architecture added by V1; the Figure kinds page shows one of each.
 - **User Experience (session 24):** a fourth track and a second markdown family, `generator/data/ux/`; its first course, IA · Information Architecture, is published as coming soon with its frame, syllabus and briefs; nothing written. A markdown course with no unit filed counts as planned, not live.
 - **Greece, course 1:** complete. 78 reports, about 244,000 words: 55 written with Fable 5.1, 23 with Opus 5.5.
 - **Rome, course 2:** 59 of 79 reports, about 180,000 words, all written with Opus 5.5 and all checked. 20 modules are queued: deep dive I (11.3 to 11.8), deep dive II, the Aeneid (12.1 to 12.8), and deep dive III (13.3 to 13.8).
@@ -50,6 +51,12 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 21. The history course homes leave the shell (P22) | 78 | 59 |
 | 28 Oct | 22. "How it was built" for every course (A4) | 78 | 59 |
 | 28 Oct | 23. The vault is the source; a new course is a folder (A5) | 78 | 59 |
+
+## 29 October 2026 · Session 25 · The IA figure kinds (V1)
+
+Backlog row V1 of `docs/BACKLOG.md`, Opus 5.5. `viz.py` draws seven more kinds for the Information Architecture course: `sitemap` (top-down, page-type tags, the first level wrapping into rows, deeper levels stacked), `objects` (an object map in a grid, relationships with cardinalities), `decision` (questions, labelled branches, filled outcomes, packed level by level), `matrix` (rows by columns, a mark and a tone per cell, a legend), `states` (rounded states in order, gap arrows, routed transitions, start marker, end rings, loops), `swimlanes` (lanes, steps by column, links through the gaps; widens and scrolls) and `wireflow` (screens with placeholder content, labelled arrows). Text is measured in the theme's fonts and wrapped inside its box; a kind that cannot draw its data stops the build. Theme 5.2: nineteen classes in §4i. The four A8 kinds are unchanged, and so is every page that uses them.
+
+A new page, Figure kinds (`#viz-examples`, linked from the home): one figure of every kind on the fictional Perqo, each with the block that draws it, written by `viz_examples.py` through the same Markdown path a unit takes. `verify.py` checks it has eleven figures and that every label lies inside its box, no two boxes overlap and nothing leaves its drawing; `--shots` photographs each figure at three widths in both themes. Verified, published to the artifact and Pages. IA1 waits for Pedro's look at the page.
 
 ## 29 October 2026 · Session 24 · User Experience track and course IA (U-0)
 

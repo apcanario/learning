@@ -1,0 +1,983 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">Figure kinds</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--blue)">FIGURES</span> · 11 kinds · kit/viz.py</div>
+    <h1>Figure kinds</h1>
+    <nav class="toc" aria-label="Kinds"><a href="#vx-timeline">Timeline</a><a href="#vx-compare">Compare</a><a href="#vx-tree">Tree</a><a href="#vx-flow">Flow</a><a href="#vx-sitemap">Sitemap</a><a href="#vx-objects">Object map</a><a href="#vx-decision">Decision tree</a><a href="#vx-matrix">Matrix</a><a href="#vx-states">State diagram</a><a href="#vx-swimlanes">Swimlanes</a><a href="#vx-wireflow">Wireflow</a></nav>
+  </header>
+  <p class="lede">Every kind of figure a unit can declare, drawn by the build from a fenced <code>viz</code> block. The four first kinds came with A8; the seven after them were added for the Information Architecture course (V1, 29 October 2026). Each example uses Perqo, the course's fictional benefits platform: its names and numbers are invented for this page. Under each figure, the block that draws it.</p>
+  <div class="report"><h2 id="vx-timeline">Timeline · <code>timeline</code></h2>
+<p>Dated events on an axis, with spans as bands above it; a dense one widens and scrolls.</p>
+<p>Fields: start, end, ticks [year], events [{at, label, tone}], spans [{from, to, label, tone}]; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-timeline"><p class="viz-title">Perqo, 2018 to 2026 (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 248" width="700" height="248" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perqo, 2018 to 2026 (fictional)"><rect class="viz-span viz-t2" x="40.0" y="24" width="137.8" height="18"/><text class="viz-spanlabel" x="108.9" y="37" text-anchor="middle">Seed</text><rect class="viz-span viz-t3" x="177.8" y="24" width="275.6" height="18"/><text class="viz-spanlabel" x="315.6" y="37" text-anchor="middle">Growth</text><rect class="viz-span viz-t4" x="453.3" y="24" width="206.7" height="18"/><text class="viz-spanlabel" x="556.7" y="37" text-anchor="middle">Scale</text><line class="viz-axis" x1="40" y1="76" x2="660" y2="76"/><line class="viz-tick" x1="40.0" y1="70" x2="40.0" y2="76"/><text class="viz-ticklabel" x="40.0" y="66" text-anchor="start">2018</text><line class="viz-tick" x1="177.8" y1="70" x2="177.8" y2="76"/><text class="viz-ticklabel" x="177.8" y="66" text-anchor="middle">2020</text><line class="viz-tick" x1="315.6" y1="70" x2="315.6" y2="76"/><text class="viz-ticklabel" x="315.6" y="66" text-anchor="middle">2022</text><line class="viz-tick" x1="453.3" y1="70" x2="453.3" y2="76"/><text class="viz-ticklabel" x="453.3" y="66" text-anchor="middle">2024</text><line class="viz-tick" x1="591.1" y1="70" x2="591.1" y2="76"/><text class="viz-ticklabel" x="591.1" y="66" text-anchor="middle">2026</text><line class="viz-stem" x1="40.0" y1="76" x2="40.0" y2="100"/><circle class="viz-dot viz-t1" cx="40.0" cy="76" r="4"/><text class="viz-date" x="40.0" y="112" text-anchor="start">2018</text><text class="viz-label" x="40.0" y="125" text-anchor="start">Perqo founded</text><line class="viz-stem" x1="108.9" y1="76" x2="108.9" y2="144"/><circle class="viz-dot viz-t1" cx="108.9" cy="76" r="4"/><text class="viz-date" x="108.9" y="156" text-anchor="middle">2019</text><text class="viz-label" x="108.9" y="169" text-anchor="middle">perqo.com launched</text><line class="viz-stem" x1="177.8" y1="76" x2="177.8" y2="188"/><circle class="viz-dot viz-t1" cx="177.8" cy="76" r="4"/><text class="viz-date" x="177.8" y="200" text-anchor="middle">2020</text><text class="viz-label" x="177.8" y="213" text-anchor="middle">First client company</text><line class="viz-stem" x1="246.7" y1="76" x2="246.7" y2="100"/><circle class="viz-dot viz-t1" cx="246.7" cy="76" r="4"/><text class="viz-date" x="246.7" y="112" text-anchor="middle">2021</text><text class="viz-label" x="246.7" y="125" text-anchor="middle">Perqo app released</text><line class="viz-stem" x1="315.6" y1="76" x2="315.6" y2="144"/><circle class="viz-dot viz-t1" cx="315.6" cy="76" r="4"/><text class="viz-date" x="315.6" y="156" text-anchor="middle">2022</text><text class="viz-label" x="315.6" y="169" text-anchor="middle">Merchant network opens</text><line class="viz-stem" x1="453.3" y1="76" x2="453.3" y2="188"/><circle class="viz-dot viz-t1" cx="453.3" cy="76" r="4"/><text class="viz-date" x="453.3" y="200" text-anchor="middle">2024</text><text class="viz-label" x="453.3" y="213" text-anchor="middle">Perqo Admin rebuilt</text><line class="viz-stem" x1="591.1" y1="76" x2="591.1" y2="100"/><circle class="viz-dot viz-t1" cx="591.1" cy="76" r="4"/><text class="viz-date" x="591.1" y="112" text-anchor="middle">2026</text><text class="viz-label" x="591.1" y="125" text-anchor="middle">Claims redesign</text></svg></div><figcaption>The Perqo company history used across the course. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;timeline&quot;,
+ &quot;title&quot;: &quot;Perqo, 2018 to 2026 (fictional)&quot;,
+ &quot;start&quot;: 2018,
+ &quot;end&quot;: 2027,
+ &quot;ticks&quot;: [
+  2018,
+  2020,
+  2022,
+  2024,
+  2026
+ ],
+ &quot;spans&quot;: [
+  {
+   &quot;from&quot;: 2018,
+   &quot;to&quot;: 2020,
+   &quot;label&quot;: &quot;Seed&quot;,
+   &quot;tone&quot;: 2
+  },
+  {
+   &quot;from&quot;: 2020,
+   &quot;to&quot;: 2024,
+   &quot;label&quot;: &quot;Growth&quot;,
+   &quot;tone&quot;: 3
+  },
+  {
+   &quot;from&quot;: 2024,
+   &quot;to&quot;: 2027,
+   &quot;label&quot;: &quot;Scale&quot;,
+   &quot;tone&quot;: 4
+  }
+ ],
+ &quot;events&quot;: [
+  {
+   &quot;at&quot;: 2018,
+   &quot;label&quot;: &quot;Perqo founded&quot;
+  },
+  {
+   &quot;at&quot;: 2019,
+   &quot;label&quot;: &quot;perqo.com launched&quot;
+  },
+  {
+   &quot;at&quot;: 2020,
+   &quot;label&quot;: &quot;First client company&quot;
+  },
+  {
+   &quot;at&quot;: 2021,
+   &quot;label&quot;: &quot;Perqo app released&quot;
+  },
+  {
+   &quot;at&quot;: 2022,
+   &quot;label&quot;: &quot;Merchant network opens&quot;
+  },
+  {
+   &quot;at&quot;: 2024,
+   &quot;label&quot;: &quot;Perqo Admin rebuilt&quot;
+  },
+  {
+   &quot;at&quot;: 2026,
+   &quot;label&quot;: &quot;Claims redesign&quot;
+  }
+ ],
+ &quot;caption&quot;: &quot;The Perqo company history used across the course. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-compare">Compare · <code>compare</code></h2>
+<p>Horizontal bars, one per row, against a shared maximum.</p>
+<p>Fields: unit, max, rows [{label, value, display, tone}]; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-compare"><p class="viz-title">Perqo app tasks by share of weekly sessions (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 162" width="700" height="162" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perqo app tasks by share of weekly sessions (fictional)"><text class="viz-label" x="170" y="23" text-anchor="end">See a balance</text><rect class="viz-track" x="180" y="13" width="450" height="14"/><rect class="viz-bar viz-t3" x="180" y="13" width="288.0" height="14"/><text class="viz-value" x="476.0" y="24">64%</text><text class="viz-label" x="170" y="53" text-anchor="end">Spend a benefit</text><rect class="viz-track" x="180" y="43" width="450" height="14"/><rect class="viz-bar viz-t3" x="180" y="43" width="184.5" height="14"/><text class="viz-value" x="372.5" y="54">41%</text><text class="viz-label" x="170" y="83" text-anchor="end">Browse the catalogue</text><rect class="viz-track" x="180" y="73" width="450" height="14"/><rect class="viz-bar viz-t4" x="180" y="73" width="121.5" height="14"/><text class="viz-value" x="309.5" y="84">27%</text><text class="viz-label" x="170" y="113" text-anchor="end">Submit a claim</text><rect class="viz-track" x="180" y="103" width="450" height="14"/><rect class="viz-bar viz-t2" x="180" y="103" width="81.0" height="14"/><text class="viz-value" x="269.0" y="114">18%</text><text class="viz-label" x="170" y="143" text-anchor="end">Change a plan</text><rect class="viz-track" x="180" y="133" width="450" height="14"/><rect class="viz-bar viz-t5" x="180" y="133" width="13.5" height="14"/><text class="viz-value" x="201.5" y="144">3%</text></svg></div><figcaption>Task frequency for the app inventory of IA6. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;compare&quot;,
+ &quot;title&quot;: &quot;Perqo app tasks by share of weekly sessions (fictional)&quot;,
+ &quot;unit&quot;: &quot;%&quot;,
+ &quot;max&quot;: 100,
+ &quot;rows&quot;: [
+  {
+   &quot;label&quot;: &quot;See a balance&quot;,
+   &quot;value&quot;: 64,
+   &quot;tone&quot;: 3
+  },
+  {
+   &quot;label&quot;: &quot;Spend a benefit&quot;,
+   &quot;value&quot;: 41,
+   &quot;tone&quot;: 3
+  },
+  {
+   &quot;label&quot;: &quot;Browse the catalogue&quot;,
+   &quot;value&quot;: 27,
+   &quot;tone&quot;: 4
+  },
+  {
+   &quot;label&quot;: &quot;Submit a claim&quot;,
+   &quot;value&quot;: 18,
+   &quot;tone&quot;: 2
+  },
+  {
+   &quot;label&quot;: &quot;Change a plan&quot;,
+   &quot;value&quot;: 3,
+   &quot;tone&quot;: 5
+  }
+ ],
+ &quot;caption&quot;: &quot;Task frequency for the app inventory of IA6. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-tree">Tree · <code>tree</code></h2>
+<p>A top-down hierarchy of labelled boxes; the drawing scales to fit the column.</p>
+<p>Fields: root {label, tone, children [...]}; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-tree"><p class="viz-title">Perqo benefit categories (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 206" width="700" height="206" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perqo benefit categories (fictional)"><path class="viz-edge" d="M370.9,42 C370.9,64.0 95.9,64.0 95.9,86"/><path class="viz-edge" d="M95.9,120 C95.9,142.0 45.9,142.0 45.9,164"/><rect class="viz-node viz-t3" x="0.0" y="164" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="45.9" y="185" text-anchor="middle">Gym pass</text><path class="viz-edge" d="M95.9,120 C95.9,142.0 145.9,142.0 145.9,164"/><rect class="viz-node viz-t3" x="100.0" y="164" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="145.9" y="185" text-anchor="middle">Therapy</text><rect class="viz-node viz-t2" x="50.0" y="86" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="95.9" y="107" text-anchor="middle">Wellbeing</text><path class="viz-edge" d="M370.9,42 C370.9,64.0 295.9,64.0 295.9,86"/><path class="viz-edge" d="M295.9,120 C295.9,142.0 245.9,142.0 245.9,164"/><rect class="viz-node viz-t3" x="200.0" y="164" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="245.9" y="185" text-anchor="middle">Transit pass</text><path class="viz-edge" d="M295.9,120 C295.9,142.0 345.9,142.0 345.9,164"/><rect class="viz-node viz-t3" x="300.0" y="164" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="345.9" y="185" text-anchor="middle">Bike lease</text><rect class="viz-node viz-t2" x="250.0" y="86" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="295.9" y="107" text-anchor="middle">Mobility</text><path class="viz-edge" d="M370.9,42 C370.9,64.0 495.9,64.0 495.9,86"/><path class="viz-edge" d="M495.9,120 C495.9,142.0 445.9,142.0 445.9,164"/><rect class="viz-node viz-t3" x="400.0" y="164" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="445.9" y="185" text-anchor="middle">Courses</text><path class="viz-edge" d="M495.9,120 C495.9,142.0 545.9,142.0 545.9,164"/><rect class="viz-node viz-t3" x="500.0" y="164" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="545.9" y="185" text-anchor="middle">Books</text><rect class="viz-node viz-t2" x="450.0" y="86" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="495.9" y="107" text-anchor="middle">Learning</text><path class="viz-edge" d="M370.9,42 C370.9,64.0 645.9,64.0 645.9,86"/><path class="viz-edge" d="M645.9,120 C645.9,142.0 645.9,142.0 645.9,164"/><rect class="viz-node viz-t3" x="600.0" y="164" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="645.9" y="185" text-anchor="middle">Meal card</text><rect class="viz-node viz-t2" x="600.0" y="86" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="645.9" y="107" text-anchor="middle">Food</text><rect class="viz-node viz-t1" x="325.0" y="8" width="91.8" height="34" rx="2"/><text class="viz-nodelabel" x="370.9" y="29" text-anchor="middle">Benefits</text></svg></div><figcaption>The top of the benefits catalogue that IA4 builds facets for. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;tree&quot;,
+ &quot;title&quot;: &quot;Perqo benefit categories (fictional)&quot;,
+ &quot;root&quot;: {
+  &quot;label&quot;: &quot;Benefits&quot;,
+  &quot;children&quot;: [
+   {
+    &quot;label&quot;: &quot;Wellbeing&quot;,
+    &quot;children&quot;: [
+     {
+      &quot;label&quot;: &quot;Gym pass&quot;
+     },
+     {
+      &quot;label&quot;: &quot;Therapy&quot;
+     }
+    ]
+   },
+   {
+    &quot;label&quot;: &quot;Mobility&quot;,
+    &quot;children&quot;: [
+     {
+      &quot;label&quot;: &quot;Transit pass&quot;
+     },
+     {
+      &quot;label&quot;: &quot;Bike lease&quot;
+     }
+    ]
+   },
+   {
+    &quot;label&quot;: &quot;Learning&quot;,
+    &quot;children&quot;: [
+     {
+      &quot;label&quot;: &quot;Courses&quot;
+     },
+     {
+      &quot;label&quot;: &quot;Books&quot;
+     }
+    ]
+   },
+   {
+    &quot;label&quot;: &quot;Food&quot;,
+    &quot;children&quot;: [
+     {
+      &quot;label&quot;: &quot;Meal card&quot;
+     }
+    ]
+   }
+  ]
+ },
+ &quot;caption&quot;: &quot;The top of the benefits catalogue that IA4 builds facets for. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-flow">Flow · <code>flow</code></h2>
+<p>A sequence of steps left to right, wrapping into rows.</p>
+<p>Fields: steps [{label, note, tone}], per_row; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-flow"><p class="viz-title">Onboarding a client company (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 694 150" width="694" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Onboarding a client company (fictional)"><rect class="viz-node viz-t2" x="8" y="8" width="150" height="54" rx="2"/><text class="viz-nodelabel" x="20" y="30">Contract signed</text><text class="viz-note" x="20" y="48">day 0</text><path class="viz-arrow" d="M162,35.0 L178,35.0"/><rect class="viz-node viz-t1" x="184" y="8" width="150" height="54" rx="2"/><text class="viz-nodelabel" x="196" y="30">Budgets set</text><text class="viz-note" x="196" y="48">HR, finance</text><path class="viz-arrow" d="M338,35.0 L354,35.0"/><rect class="viz-node viz-t1" x="360" y="8" width="150" height="54" rx="2"/><text class="viz-nodelabel" x="372" y="30">Policies set</text><text class="viz-note" x="372" y="48">HR</text><path class="viz-arrow" d="M514,35.0 L530,35.0"/><rect class="viz-node viz-t1" x="536" y="8" width="150" height="54" rx="2"/><text class="viz-nodelabel" x="548" y="30">Employees imported</text><text class="viz-note" x="548" y="48">from payroll</text><path class="viz-arrow" d="M611.0,64 L611.0,82 L83.0,82 L83.0,86"/><rect class="viz-node viz-t1" x="8" y="88" width="150" height="54" rx="2"/><text class="viz-nodelabel" x="20" y="110">Invitations sent</text><text class="viz-note" x="20" y="128">app</text><path class="viz-arrow" d="M162,115.0 L178,115.0"/><rect class="viz-node viz-t3" x="184" y="88" width="150" height="54" rx="2"/><text class="viz-nodelabel" x="196" y="110">First spend</text><text class="viz-note" x="196" y="128">about day 14</text><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>The client side of the purchase lifecycle in IA8. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;flow&quot;,
+ &quot;title&quot;: &quot;Onboarding a client company (fictional)&quot;,
+ &quot;per_row&quot;: 4,
+ &quot;steps&quot;: [
+  {
+   &quot;label&quot;: &quot;Contract signed&quot;,
+   &quot;note&quot;: &quot;day 0&quot;,
+   &quot;tone&quot;: 2
+  },
+  {
+   &quot;label&quot;: &quot;Budgets set&quot;,
+   &quot;note&quot;: &quot;HR, finance&quot;
+  },
+  {
+   &quot;label&quot;: &quot;Policies set&quot;,
+   &quot;note&quot;: &quot;HR&quot;
+  },
+  {
+   &quot;label&quot;: &quot;Employees imported&quot;,
+   &quot;note&quot;: &quot;from payroll&quot;
+  },
+  {
+   &quot;label&quot;: &quot;Invitations sent&quot;,
+   &quot;note&quot;: &quot;app&quot;
+  },
+  {
+   &quot;label&quot;: &quot;First spend&quot;,
+   &quot;note&quot;: &quot;about day 14&quot;,
+   &quot;tone&quot;: 3
+  }
+ ],
+ &quot;caption&quot;: &quot;The client side of the purchase lifecycle in IA8. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-sitemap">Sitemap · <code>sitemap</code></h2>
+<p>Site structure top-down: each node a page with an optional page type (the mono tag) and note; the first level wraps into rows, deeper levels stack under their parent.</p>
+<p>Fields: root {label, type, note, tone, children [...]}, stack_from (depth at which children stack; default 2); every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-sitemap"><p class="viz-title">perqo.com (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 490" width="700" height="490" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="perqo.com (fictional)"><path class="viz-line" d="M63.0,132.0 L63.0,268.0"/><path class="viz-line" d="M63.0,160.0 L73.0,160.0"/><path class="viz-line" d="M63.0,214.0 L73.0,214.0"/><path class="viz-line" d="M63.0,268.0 L73.0,268.0"/><path class="viz-line" d="M119.0,70.0 L119.0,88.0"/><path class="viz-line" d="M285.0,70.0 L285.0,88.0"/><path class="viz-line" d="M431.0,70.0 L431.0,88.0"/><path class="viz-line" d="M521.0,132.0 L521.0,160.0"/><path class="viz-line" d="M521.0,160.0 L531.0,160.0"/><path class="viz-line" d="M577.0,70.0 L577.0,88.0"/><path class="viz-line" d="M146.0,374.0 L146.0,456.0"/><path class="viz-line" d="M146.0,402.0 L156.0,402.0"/><path class="viz-line" d="M146.0,456.0 L156.0,456.0"/><path class="viz-line" d="M202.0,312.0 L202.0,330.0"/><path class="viz-line" d="M368.0,312.0 L368.0,330.0"/><path class="viz-line" d="M514.0,312.0 L514.0,330.0"/><path class="viz-line" d="M350.0,52.0 L350.0,70.0 L45.0,70.0 L45.0,312.0"/><path class="viz-line" d="M45.0,70.0 L577.0,70.0"/><path class="viz-line" d="M45.0,312.0 L514.0,312.0"/><g data-box=""><rect class="viz-node viz-t1" x="284.0" y="8.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="292.0" y="25.4" text-anchor="start">home</text><text class="viz-nodelabel" x="292.0" y="41.3" text-anchor="start">Home</text></g><g data-box=""><rect class="viz-node viz-t2" x="53.0" y="88.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="61.0" y="105.4" text-anchor="start">section</text><text class="viz-nodelabel" x="61.0" y="121.3" text-anchor="start">Product</text></g><g data-box=""><rect class="viz-node viz-t2" x="73.0" y="142.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="81.0" y="159.4" text-anchor="start">product</text><text class="viz-nodelabel" x="81.0" y="175.3" text-anchor="start">How it works</text></g><g data-box=""><rect class="viz-node viz-t2" x="73.0" y="196.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="81.0" y="213.4" text-anchor="start">landing</text><text class="viz-nodelabel" x="81.0" y="229.3" text-anchor="start">For HR teams</text></g><g data-box=""><rect class="viz-node viz-t2" x="73.0" y="250.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="81.0" y="267.4" text-anchor="start">landing</text><text class="viz-nodelabel" x="81.0" y="283.3" text-anchor="start">For finance teams</text></g><g data-box=""><rect class="viz-node viz-t3" x="219.0" y="88.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="227.0" y="105.4" text-anchor="start">listing</text><text class="viz-nodelabel" x="227.0" y="121.3" text-anchor="start">Benefits catalogue</text><text class="viz-small" x="227.0" y="135.8" text-anchor="start">filters from the</text><text class="viz-small" x="227.0" y="148.3" text-anchor="start">IA4 facets</text></g><g data-box=""><rect class="viz-node viz-t4" x="365.0" y="88.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="373.0" y="105.4" text-anchor="start">pricing</text><text class="viz-nodelabel" x="373.0" y="121.3" text-anchor="start">Pricing</text><text class="viz-small" x="373.0" y="135.8" text-anchor="start">per employee per</text><text class="viz-small" x="373.0" y="148.3" text-anchor="start">month</text></g><g data-box=""><rect class="viz-node viz-t5" x="511.0" y="88.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="519.0" y="105.4" text-anchor="start">listing</text><text class="viz-nodelabel" x="519.0" y="121.3" text-anchor="start">Customers</text></g><g data-box=""><rect class="viz-node viz-t5" x="531.0" y="142.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="539.0" y="159.4" text-anchor="start">article</text><text class="viz-nodelabel" x="539.0" y="175.3" text-anchor="start">Case study</text><text class="viz-small" x="539.0" y="189.8" text-anchor="start">one template, many</text><text class="viz-small" x="539.0" y="202.3" text-anchor="start">pages</text></g><g data-box=""><rect class="viz-node viz-t6" x="136.0" y="330.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="144.0" y="347.4" text-anchor="start">section</text><text class="viz-nodelabel" x="144.0" y="363.3" text-anchor="start">Resources</text></g><g data-box=""><rect class="viz-node viz-t6" x="156.0" y="384.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="164.0" y="401.4" text-anchor="start">article</text><text class="viz-nodelabel" x="164.0" y="417.3" text-anchor="start">Blog</text></g><g data-box=""><rect class="viz-node viz-t6" x="156.0" y="438.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="164.0" y="455.4" text-anchor="start">article</text><text class="viz-nodelabel" x="164.0" y="471.3" text-anchor="start">Guides</text></g><g data-box=""><rect class="viz-node viz-t1" x="302.0" y="330.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="310.0" y="347.4" text-anchor="start">form</text><text class="viz-nodelabel" x="310.0" y="363.3" text-anchor="start">Book a demo</text></g><g data-box=""><rect class="viz-node viz-t6" x="448.0" y="330.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="456.0" y="347.4" text-anchor="start">auth</text><text class="viz-nodelabel" x="456.0" y="363.3" text-anchor="start">Log in</text><text class="viz-small" x="456.0" y="377.9" text-anchor="start">hands off to Perqo</text><text class="viz-small" x="456.0" y="390.4" text-anchor="start">Admin or the app</text></g></svg></div><figcaption>The perqo.com sitemap of IA5 in outline: fourteen pages, seven at the first level. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;sitemap&quot;,
+ &quot;title&quot;: &quot;perqo.com (fictional)&quot;,
+ &quot;root&quot;: {
+  &quot;label&quot;: &quot;Home&quot;,
+  &quot;type&quot;: &quot;home&quot;,
+  &quot;children&quot;: [
+   {
+    &quot;label&quot;: &quot;Product&quot;,
+    &quot;type&quot;: &quot;section&quot;,
+    &quot;children&quot;: [
+     {
+      &quot;label&quot;: &quot;How it works&quot;,
+      &quot;type&quot;: &quot;product&quot;
+     },
+     {
+      &quot;label&quot;: &quot;For HR teams&quot;,
+      &quot;type&quot;: &quot;landing&quot;
+     },
+     {
+      &quot;label&quot;: &quot;For finance teams&quot;,
+      &quot;type&quot;: &quot;landing&quot;
+     }
+    ]
+   },
+   {
+    &quot;label&quot;: &quot;Benefits catalogue&quot;,
+    &quot;type&quot;: &quot;listing&quot;,
+    &quot;note&quot;: &quot;filters from the IA4 facets&quot;
+   },
+   {
+    &quot;label&quot;: &quot;Pricing&quot;,
+    &quot;type&quot;: &quot;pricing&quot;,
+    &quot;note&quot;: &quot;per employee per month&quot;
+   },
+   {
+    &quot;label&quot;: &quot;Customers&quot;,
+    &quot;type&quot;: &quot;listing&quot;,
+    &quot;children&quot;: [
+     {
+      &quot;label&quot;: &quot;Case study&quot;,
+      &quot;type&quot;: &quot;article&quot;,
+      &quot;note&quot;: &quot;one template, many pages&quot;
+     }
+    ]
+   },
+   {
+    &quot;label&quot;: &quot;Resources&quot;,
+    &quot;type&quot;: &quot;section&quot;,
+    &quot;children&quot;: [
+     {
+      &quot;label&quot;: &quot;Blog&quot;,
+      &quot;type&quot;: &quot;article&quot;
+     },
+     {
+      &quot;label&quot;: &quot;Guides&quot;,
+      &quot;type&quot;: &quot;article&quot;
+     }
+    ]
+   },
+   {
+    &quot;label&quot;: &quot;Book a demo&quot;,
+    &quot;type&quot;: &quot;form&quot;,
+    &quot;tone&quot;: 1
+   },
+   {
+    &quot;label&quot;: &quot;Log in&quot;,
+    &quot;type&quot;: &quot;auth&quot;,
+    &quot;note&quot;: &quot;hands off to Perqo Admin or the app&quot;,
+    &quot;tone&quot;: 6
+   }
+  ]
+ },
+ &quot;caption&quot;: &quot;The perqo.com sitemap of IA5 in outline: fourteen pages, seven at the first level. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-objects">Object map · <code>objects</code></h2>
+<p>An object map: boxes with a title, attributes and actions in the grid the data gives; lines carry a relationship and a cardinality at each end.</p>
+<p>Fields: objects [{id, title, attrs [], actions [], tone}], rows [[id or null]], links [{from, to, label, from_card, to_card}]; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-objects"><p class="viz-title">The Perqo object map (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 330.0" width="700" height="330.0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Perqo object map (fictional)"><path class="viz-link" d="M198.7,62.2 L254.7,62.2"/><text class="viz-small" x="209.7" y="54.9" text-anchor="middle">1</text><text class="viz-small" x="234.4" y="54.9" text-anchor="middle">1..*</text><g data-box=""><rect class="viz-lblbg" x="211.9" y="66.2" width="29.4" height="16.5"/><text class="viz-linklabel" x="226.7" y="78.3" text-anchor="middle">sets</text></g><path class="viz-link" d="M445.3,62.2 L501.3,62.2"/><text class="viz-small" x="456.4" y="54.9" text-anchor="middle">1</text><text class="viz-small" x="481.1" y="54.9" text-anchor="middle">1..*</text><g data-box=""><rect class="viz-lblbg" x="449.2" y="66.2" width="48.3" height="16.5"/><text class="viz-linklabel" x="473.3" y="78.3" text-anchor="middle">governs</text></g><path class="viz-link" d="M103.3,129.0 L103.3,201.0"/><text class="viz-small" x="89.3" y="148.6" text-anchor="middle">1</text><text class="viz-small" x="80.1" y="188.6" text-anchor="middle">0..*</text><g data-box=""><rect class="viz-lblbg" x="77.7" y="156.8" width="51.2" height="16.5"/><text class="viz-linklabel" x="103.3" y="168.8" text-anchor="middle">employs</text></g><path class="viz-link" d="M350.0,116.5 L350.0,201.0"/><text class="viz-small" x="335.9" y="136.1" text-anchor="middle">1</text><text class="viz-small" x="326.8" y="188.6" text-anchor="middle">0..*</text><g data-box=""><rect class="viz-lblbg" x="306.0" y="150.5" width="87.9" height="16.5"/><text class="viz-linklabel" x="350.0" y="162.5" text-anchor="middle">routes approval</text></g><path class="viz-link" d="M596.7,116.5 L596.7,201.0"/><text class="viz-small" x="573.4" y="136.1" text-anchor="middle">1..*</text><text class="viz-small" x="573.4" y="188.6" text-anchor="middle">0..*</text><g data-box=""><rect class="viz-lblbg" x="578.4" y="150.5" width="36.6" height="16.5"/><text class="viz-linklabel" x="596.7" y="162.5" text-anchor="middle">funds</text></g><path class="viz-link" d="M198.7,261.5 L254.7,261.5"/><text class="viz-small" x="209.7" y="254.1" text-anchor="middle">1</text><text class="viz-small" x="234.4" y="254.1" text-anchor="middle">0..*</text><g data-box=""><rect class="viz-lblbg" x="202.3" y="265.5" width="48.7" height="16.5"/><text class="viz-linklabel" x="226.7" y="277.5" text-anchor="middle">submits</text></g><path class="viz-link" d="M445.3,255.2 L501.3,255.2"/><text class="viz-small" x="465.6" y="247.8" text-anchor="middle">0..*</text><text class="viz-small" x="490.3" y="247.8" text-anchor="middle">1</text><g data-box=""><rect class="viz-lblbg" x="456.7" y="259.2" width="33.2" height="16.5"/><text class="viz-linklabel" x="473.3" y="271.3" text-anchor="middle">is for</text></g><g data-box=""><rect class="viz-node viz-t4" x="8.0" y="8.0" width="190.7" height="121.0" rx="2"/><rect class="viz-solid viz-t4" x="8.0" y="8.0" width="190.7" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="25.3" text-anchor="start">Company</text><text class="viz-attr" x="16.0" y="53.0" text-anchor="start">name</text><text class="viz-attr" x="16.0" y="67.0" text-anchor="start">plan</text><text class="viz-attr" x="16.0" y="81.0" text-anchor="start">renewal date</text><path class="viz-line" d="M16.0,89.0 L190.7,89.0"/><text class="viz-small" x="16.0" y="103.8" text-anchor="start">→ renew</text><text class="viz-small" x="16.0" y="116.3" text-anchor="start">→ add admin</text></g><g data-box=""><rect class="viz-node viz-t5" x="254.7" y="8.0" width="190.7" height="108.5" rx="2"/><rect class="viz-solid viz-t5" x="254.7" y="8.0" width="190.7" height="26.0" rx="2"/><text class="viz-ontone" x="262.7" y="25.3" text-anchor="start">Policy</text><text class="viz-attr" x="262.7" y="53.0" text-anchor="start">eligibility rules</text><text class="viz-attr" x="262.7" y="67.0" text-anchor="start">waiting period</text><text class="viz-attr" x="262.7" y="81.0" text-anchor="start">approval route</text><path class="viz-line" d="M262.7,89.0 L437.3,89.0"/><text class="viz-small" x="262.7" y="103.8" text-anchor="start">→ publish</text></g><g data-box=""><rect class="viz-node viz-t6" x="501.3" y="8.0" width="190.7" height="108.5" rx="2"/><rect class="viz-solid viz-t6" x="501.3" y="8.0" width="190.7" height="26.0" rx="2"/><text class="viz-ontone" x="509.3" y="25.3" text-anchor="start">Budget</text><text class="viz-attr" x="509.3" y="53.0" text-anchor="start">amount per period</text><text class="viz-attr" x="509.3" y="67.0" text-anchor="start">period</text><text class="viz-attr" x="509.3" y="81.0" text-anchor="start">rollover rule</text><path class="viz-line" d="M509.3,89.0 L684.0,89.0"/><text class="viz-small" x="509.3" y="103.8" text-anchor="start">→ top up</text></g><g data-box=""><rect class="viz-node viz-t3" x="8.0" y="201.0" width="190.7" height="121.0" rx="2"/><rect class="viz-solid viz-t3" x="8.0" y="201.0" width="190.7" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="218.3" text-anchor="start">Employee</text><text class="viz-attr" x="16.0" y="246.0" text-anchor="start">name</text><text class="viz-attr" x="16.0" y="260.0" text-anchor="start">contract status</text><text class="viz-attr" x="16.0" y="274.0" text-anchor="start">start date</text><path class="viz-line" d="M16.0,282.0 L190.7,282.0"/><text class="viz-small" x="16.0" y="296.9" text-anchor="start">→ invite</text><text class="viz-small" x="16.0" y="309.4" text-anchor="start">→ offboard</text></g><g data-box=""><rect class="viz-node viz-t2" x="254.7" y="201.0" width="190.7" height="121.0" rx="2"/><rect class="viz-solid viz-t2" x="254.7" y="201.0" width="190.7" height="26.0" rx="2"/><text class="viz-ontone" x="262.7" y="218.3" text-anchor="start">Claim</text><text class="viz-attr" x="262.7" y="246.0" text-anchor="start">amount</text><text class="viz-attr" x="262.7" y="260.0" text-anchor="start">receipt</text><text class="viz-attr" x="262.7" y="274.0" text-anchor="start">status</text><path class="viz-line" d="M262.7,282.0 L437.3,282.0"/><text class="viz-small" x="262.7" y="296.9" text-anchor="start">→ approve</text><text class="viz-small" x="262.7" y="309.4" text-anchor="start">→ reject</text></g><g data-box=""><rect class="viz-node viz-t1" x="501.3" y="201.0" width="190.7" height="108.5" rx="2"/><rect class="viz-solid viz-t1" x="501.3" y="201.0" width="190.7" height="26.0" rx="2"/><text class="viz-ontone" x="509.3" y="218.3" text-anchor="start">Benefit</text><text class="viz-attr" x="509.3" y="246.0" text-anchor="start">category</text><text class="viz-attr" x="509.3" y="260.0" text-anchor="start">merchant</text><text class="viz-attr" x="509.3" y="274.0" text-anchor="start">price</text><path class="viz-line" d="M509.3,282.0 L684.0,282.0"/><text class="viz-small" x="509.3" y="296.9" text-anchor="start">→ spend</text></g></svg></div><figcaption>Six objects of the IA4 object map, with the calls to action on each. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;objects&quot;,
+ &quot;title&quot;: &quot;The Perqo object map (fictional)&quot;,
+ &quot;objects&quot;: [
+  {
+   &quot;id&quot;: &quot;company&quot;,
+   &quot;title&quot;: &quot;Company&quot;,
+   &quot;tone&quot;: 4,
+   &quot;attrs&quot;: [
+    &quot;name&quot;,
+    &quot;plan&quot;,
+    &quot;renewal date&quot;
+   ],
+   &quot;actions&quot;: [
+    &quot;→ renew&quot;,
+    &quot;→ add admin&quot;
+   ]
+  },
+  {
+   &quot;id&quot;: &quot;policy&quot;,
+   &quot;title&quot;: &quot;Policy&quot;,
+   &quot;tone&quot;: 5,
+   &quot;attrs&quot;: [
+    &quot;eligibility rules&quot;,
+    &quot;waiting period&quot;,
+    &quot;approval route&quot;
+   ],
+   &quot;actions&quot;: [
+    &quot;→ publish&quot;
+   ]
+  },
+  {
+   &quot;id&quot;: &quot;budget&quot;,
+   &quot;title&quot;: &quot;Budget&quot;,
+   &quot;tone&quot;: 6,
+   &quot;attrs&quot;: [
+    &quot;amount per period&quot;,
+    &quot;period&quot;,
+    &quot;rollover rule&quot;
+   ],
+   &quot;actions&quot;: [
+    &quot;→ top up&quot;
+   ]
+  },
+  {
+   &quot;id&quot;: &quot;employee&quot;,
+   &quot;title&quot;: &quot;Employee&quot;,
+   &quot;tone&quot;: 3,
+   &quot;attrs&quot;: [
+    &quot;name&quot;,
+    &quot;contract status&quot;,
+    &quot;start date&quot;
+   ],
+   &quot;actions&quot;: [
+    &quot;→ invite&quot;,
+    &quot;→ offboard&quot;
+   ]
+  },
+  {
+   &quot;id&quot;: &quot;claim&quot;,
+   &quot;title&quot;: &quot;Claim&quot;,
+   &quot;tone&quot;: 2,
+   &quot;attrs&quot;: [
+    &quot;amount&quot;,
+    &quot;receipt&quot;,
+    &quot;status&quot;
+   ],
+   &quot;actions&quot;: [
+    &quot;→ approve&quot;,
+    &quot;→ reject&quot;
+   ]
+  },
+  {
+   &quot;id&quot;: &quot;benefit&quot;,
+   &quot;title&quot;: &quot;Benefit&quot;,
+   &quot;tone&quot;: 1,
+   &quot;attrs&quot;: [
+    &quot;category&quot;,
+    &quot;merchant&quot;,
+    &quot;price&quot;
+   ],
+   &quot;actions&quot;: [
+    &quot;→ spend&quot;
+   ]
+  }
+ ],
+ &quot;rows&quot;: [
+  [
+   &quot;company&quot;,
+   &quot;policy&quot;,
+   &quot;budget&quot;
+  ],
+  [
+   &quot;employee&quot;,
+   &quot;claim&quot;,
+   &quot;benefit&quot;
+  ]
+ ],
+ &quot;links&quot;: [
+  {
+   &quot;from&quot;: &quot;company&quot;,
+   &quot;to&quot;: &quot;policy&quot;,
+   &quot;label&quot;: &quot;sets&quot;,
+   &quot;from_card&quot;: &quot;1&quot;,
+   &quot;to_card&quot;: &quot;1..*&quot;
+  },
+  {
+   &quot;from&quot;: &quot;policy&quot;,
+   &quot;to&quot;: &quot;budget&quot;,
+   &quot;label&quot;: &quot;governs&quot;,
+   &quot;from_card&quot;: &quot;1&quot;,
+   &quot;to_card&quot;: &quot;1..*&quot;
+  },
+  {
+   &quot;from&quot;: &quot;company&quot;,
+   &quot;to&quot;: &quot;employee&quot;,
+   &quot;label&quot;: &quot;employs&quot;,
+   &quot;from_card&quot;: &quot;1&quot;,
+   &quot;to_card&quot;: &quot;0..*&quot;
+  },
+  {
+   &quot;from&quot;: &quot;policy&quot;,
+   &quot;to&quot;: &quot;claim&quot;,
+   &quot;label&quot;: &quot;routes approval&quot;,
+   &quot;from_card&quot;: &quot;1&quot;,
+   &quot;to_card&quot;: &quot;0..*&quot;
+  },
+  {
+   &quot;from&quot;: &quot;budget&quot;,
+   &quot;to&quot;: &quot;benefit&quot;,
+   &quot;label&quot;: &quot;funds&quot;,
+   &quot;from_card&quot;: &quot;1..*&quot;,
+   &quot;to_card&quot;: &quot;0..*&quot;
+  },
+  {
+   &quot;from&quot;: &quot;employee&quot;,
+   &quot;to&quot;: &quot;claim&quot;,
+   &quot;label&quot;: &quot;submits&quot;,
+   &quot;from_card&quot;: &quot;1&quot;,
+   &quot;to_card&quot;: &quot;0..*&quot;
+  },
+  {
+   &quot;from&quot;: &quot;claim&quot;,
+   &quot;to&quot;: &quot;benefit&quot;,
+   &quot;label&quot;: &quot;is for&quot;,
+   &quot;from_card&quot;: &quot;0..*&quot;,
+   &quot;to_card&quot;: &quot;1&quot;
+  }
+ ],
+ &quot;caption&quot;: &quot;Six objects of the IA4 object map, with the calls to action on each. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-decision">Decision tree · <code>decision</code></h2>
+<p>A decision tree read top-down: questions as boxes, a labelled arrow per branch, outcomes as filled boxes.</p>
+<p>Fields: root {q, tone, branches [{label, to}]} or {outcome, tone}; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-decision"><p class="viz-title">Is this employee eligible for this benefit? (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 428" width="700" height="428" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Is this employee eligible for this benefit? (fictional)"><path class="viz-link" d="M231.5,52.0 L231.5,64.0 L152.5,64.0 L152.5,93.0"/><path class="viz-head" d="M152.5,100.0 L148.5,93.0 L156.5,93.0 z"/><g data-box=""><rect class="viz-lblbg" x="142.1" y="70.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="152.5" y="82.3" text-anchor="middle">no</text></g><path class="viz-link" d="M231.5,52.0 L231.5,64.0 L310.5,64.0 L310.5,93.0"/><path class="viz-head" d="M310.5,100.0 L306.5,93.0 L314.5,93.0 z"/><g data-box=""><rect class="viz-lblbg" x="297.6" y="70.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="310.5" y="82.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M310.5,144.0 L310.5,156.0 L231.5,156.0 L231.5,185.0"/><path class="viz-head" d="M231.5,192.0 L227.5,185.0 L235.5,185.0 z"/><g data-box=""><rect class="viz-lblbg" x="221.1" y="162.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="231.5" y="174.3" text-anchor="middle">no</text></g><path class="viz-link" d="M310.5,144.0 L310.5,156.0 L389.5,156.0 L389.5,185.0"/><path class="viz-head" d="M389.5,192.0 L385.5,185.0 L393.5,185.0 z"/><g data-box=""><rect class="viz-lblbg" x="376.6" y="162.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="389.5" y="174.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M389.5,236.0 L389.5,248.0 L310.5,248.0 L310.5,277.0"/><path class="viz-head" d="M310.5,284.0 L306.5,277.0 L314.5,277.0 z"/><g data-box=""><rect class="viz-lblbg" x="300.1" y="254.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="310.5" y="266.3" text-anchor="middle">no</text></g><path class="viz-link" d="M389.5,236.0 L389.5,248.0 L468.5,248.0 L468.5,277.0"/><path class="viz-head" d="M468.5,284.0 L464.5,277.0 L472.5,277.0 z"/><g data-box=""><rect class="viz-lblbg" x="455.6" y="254.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="468.5" y="266.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M468.5,328.0 L468.5,340.0 L389.5,340.0 L389.5,369.0"/><path class="viz-head" d="M389.5,376.0 L385.5,369.0 L393.5,369.0 z"/><g data-box=""><rect class="viz-lblbg" x="379.1" y="346.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="389.5" y="358.3" text-anchor="middle">no</text></g><path class="viz-link" d="M468.5,328.0 L468.5,340.0 L547.5,340.0 L547.5,369.0"/><path class="viz-head" d="M547.5,376.0 L543.5,369.0 L551.5,369.0 z"/><g data-box=""><rect class="viz-lblbg" x="534.6" y="346.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="547.5" y="358.3" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-node viz-t4" x="161.5" y="8.0" width="140" height="44.0" rx="2"/><text class="viz-nodelabel" x="231.5" y="27.3" text-anchor="middle">Active employment</text><text class="viz-nodelabel" x="231.5" y="41.3" text-anchor="middle">contract?</text></g><g data-box=""><rect class="viz-solid viz-t1" x="82.5" y="100.0" width="140" height="30.0" rx="2"/><text class="viz-ontone" x="152.5" y="119.3" text-anchor="middle">Not eligible</text></g><g data-box=""><rect class="viz-node viz-t4" x="240.5" y="100.0" width="140" height="44.0" rx="2"/><text class="viz-nodelabel" x="310.5" y="119.3" text-anchor="middle">Past the 30-day</text><text class="viz-nodelabel" x="310.5" y="133.3" text-anchor="middle">waiting period?</text></g><g data-box=""><rect class="viz-solid viz-t2" x="161.5" y="192.0" width="140" height="30.0" rx="2"/><text class="viz-ontone" x="231.5" y="211.3" text-anchor="middle">Eligible from day 31</text></g><g data-box=""><rect class="viz-node viz-t4" x="319.5" y="192.0" width="140" height="44.0" rx="2"/><text class="viz-nodelabel" x="389.5" y="211.3" text-anchor="middle">Benefit in the</text><text class="viz-nodelabel" x="389.5" y="225.3" text-anchor="middle">company policy?</text></g><g data-box=""><rect class="viz-solid viz-t1" x="240.5" y="284.0" width="140" height="30.0" rx="2"/><text class="viz-ontone" x="310.5" y="303.3" text-anchor="middle">Not covered</text></g><g data-box=""><rect class="viz-node viz-t4" x="398.5" y="284.0" width="140" height="44.0" rx="2"/><text class="viz-nodelabel" x="468.5" y="303.3" text-anchor="middle">Budget left this</text><text class="viz-nodelabel" x="468.5" y="317.3" text-anchor="middle">period?</text></g><g data-box=""><rect class="viz-solid viz-t6" x="319.5" y="376.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="389.5" y="395.3" text-anchor="middle">Eligible, waits for</text><text class="viz-ontone" x="389.5" y="409.3" text-anchor="middle">the next period</text></g><g data-box=""><rect class="viz-solid viz-t3" x="477.5" y="376.0" width="140" height="30.0" rx="2"/><text class="viz-ontone" x="547.5" y="395.3" text-anchor="middle">Eligible</text></g></svg></div><figcaption>The eligibility rule that IA8 draws across the three surfaces. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;decision&quot;,
+ &quot;title&quot;: &quot;Is this employee eligible for this benefit? (fictional)&quot;,
+ &quot;root&quot;: {
+  &quot;q&quot;: &quot;Active employment contract?&quot;,
+  &quot;branches&quot;: [
+   {
+    &quot;label&quot;: &quot;no&quot;,
+    &quot;to&quot;: {
+     &quot;outcome&quot;: &quot;Not eligible&quot;,
+     &quot;tone&quot;: 1
+    }
+   },
+   {
+    &quot;label&quot;: &quot;yes&quot;,
+    &quot;to&quot;: {
+     &quot;q&quot;: &quot;Past the 30-day waiting period?&quot;,
+     &quot;branches&quot;: [
+      {
+       &quot;label&quot;: &quot;no&quot;,
+       &quot;to&quot;: {
+        &quot;outcome&quot;: &quot;Eligible from day 31&quot;,
+        &quot;tone&quot;: 2
+       }
+      },
+      {
+       &quot;label&quot;: &quot;yes&quot;,
+       &quot;to&quot;: {
+        &quot;q&quot;: &quot;Benefit in the company policy?&quot;,
+        &quot;branches&quot;: [
+         {
+          &quot;label&quot;: &quot;no&quot;,
+          &quot;to&quot;: {
+           &quot;outcome&quot;: &quot;Not covered&quot;,
+           &quot;tone&quot;: 1
+          }
+         },
+         {
+          &quot;label&quot;: &quot;yes&quot;,
+          &quot;to&quot;: {
+           &quot;q&quot;: &quot;Budget left this period?&quot;,
+           &quot;branches&quot;: [
+            {
+             &quot;label&quot;: &quot;no&quot;,
+             &quot;to&quot;: {
+              &quot;outcome&quot;: &quot;Eligible, waits for the next period&quot;,
+              &quot;tone&quot;: 6
+             }
+            },
+            {
+             &quot;label&quot;: &quot;yes&quot;,
+             &quot;to&quot;: {
+              &quot;outcome&quot;: &quot;Eligible&quot;,
+              &quot;tone&quot;: 3
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  ]
+ },
+ &quot;caption&quot;: &quot;The eligibility rule that IA8 draws across the three surfaces. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-matrix">Matrix · <code>matrix</code></h2>
+<p>A labelled grid: rows by columns, each cell a short mark on a field of its tone; a legend under it.</p>
+<p>Fields: cols [label], rows [{label, tone, cells [mark or {mark, tone} or null]}], legend [{mark, means, tone}]; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-matrix"><p class="viz-title">Perqo Admin: role by section (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700.0 206" width="700.0" height="206" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perqo Admin: role by section (fictional)"><text class="viz-colhead" x="183.9" y="15.6" text-anchor="middle">Employees</text><text class="viz-colhead" x="276.3" y="15.6" text-anchor="middle">Budgets</text><text class="viz-colhead" x="368.7" y="15.6" text-anchor="middle">Policies</text><text class="viz-colhead" x="461.1" y="15.6" text-anchor="middle">Claims</text><text class="viz-colhead" x="553.4" y="15.6" text-anchor="middle">Reports</text><text class="viz-colhead" x="645.8" y="15.6" text-anchor="middle">Settings</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">HR admin</text><g data-box=""><rect class="viz-band viz-t3" x="139.7" y="34.0" width="88.4" height="28.0"/><text class="viz-mark" x="183.9" y="51.8" text-anchor="middle">edit</text></g><g data-box=""><rect class="viz-band viz-t4" x="232.1" y="34.0" width="88.4" height="28.0"/><text class="viz-mark" x="276.3" y="51.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t3" x="324.5" y="34.0" width="88.4" height="28.0"/><text class="viz-mark" x="368.7" y="51.8" text-anchor="middle">edit</text></g><g data-box=""><rect class="viz-band viz-t4" x="416.9" y="34.0" width="88.4" height="28.0"/><text class="viz-mark" x="461.1" y="51.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t6" x="509.2" y="34.0" width="88.4" height="28.0"/><text class="viz-mark" x="553.4" y="51.8" text-anchor="middle">export</text></g><g data-box=""><rect class="viz-band viz-t3" x="601.6" y="34.0" width="88.4" height="28.0"/><text class="viz-mark" x="645.8" y="51.8" text-anchor="middle">edit</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Finance manager</text><g data-box=""><rect class="viz-band viz-t4" x="139.7" y="66.0" width="88.4" height="28.0"/><text class="viz-mark" x="183.9" y="83.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t3" x="232.1" y="66.0" width="88.4" height="28.0"/><text class="viz-mark" x="276.3" y="83.8" text-anchor="middle">edit</text></g><g data-box=""><rect class="viz-band viz-t4" x="324.5" y="66.0" width="88.4" height="28.0"/><text class="viz-mark" x="368.7" y="83.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t2" x="416.9" y="66.0" width="88.4" height="28.0"/><text class="viz-mark" x="461.1" y="83.8" text-anchor="middle">approve</text></g><g data-box=""><rect class="viz-band viz-t6" x="509.2" y="66.0" width="88.4" height="28.0"/><text class="viz-mark" x="553.4" y="83.8" text-anchor="middle">export</text></g><g data-box=""><rect class="viz-track" x="601.6" y="66.0" width="88.4" height="28.0"/></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Line manager</text><g data-box=""><rect class="viz-band viz-t4" x="139.7" y="98.0" width="88.4" height="28.0"/><text class="viz-mark" x="183.9" y="115.8" text-anchor="middle">own team</text></g><g data-box=""><rect class="viz-track" x="232.1" y="98.0" width="88.4" height="28.0"/></g><g data-box=""><rect class="viz-track" x="324.5" y="98.0" width="88.4" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t2" x="416.9" y="98.0" width="88.4" height="28.0"/><text class="viz-mark" x="461.1" y="115.8" text-anchor="middle">approve</text></g><g data-box=""><rect class="viz-track" x="509.2" y="98.0" width="88.4" height="28.0"/></g><g data-box=""><rect class="viz-track" x="601.6" y="98.0" width="88.4" height="28.0"/></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">Auditor (read only)</text><g data-box=""><rect class="viz-band viz-t4" x="139.7" y="130.0" width="88.4" height="28.0"/><text class="viz-mark" x="183.9" y="147.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t4" x="232.1" y="130.0" width="88.4" height="28.0"/><text class="viz-mark" x="276.3" y="147.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t4" x="324.5" y="130.0" width="88.4" height="28.0"/><text class="viz-mark" x="368.7" y="147.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t4" x="416.9" y="130.0" width="88.4" height="28.0"/><text class="viz-mark" x="461.1" y="147.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t6" x="509.2" y="130.0" width="88.4" height="28.0"/><text class="viz-mark" x="553.4" y="147.8" text-anchor="middle">export</text></g><g data-box=""><rect class="viz-track" x="601.6" y="130.0" width="88.4" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="8.0" y="174.0" width="41.7" height="24"/><text class="viz-mark" x="28.9" y="189.8" text-anchor="middle">edit</text></g><text class="viz-attr" x="57.7" y="190.0" text-anchor="start">create, change, delete</text><g data-box=""><rect class="viz-band viz-t4" x="192.9" y="174.0" width="41.7" height="24"/><text class="viz-mark" x="213.8" y="189.8" text-anchor="middle">view</text></g><text class="viz-attr" x="242.6" y="190.0" text-anchor="start">read only</text><g data-box=""><rect class="viz-band viz-t2" x="310.1" y="174.0" width="61.0" height="24"/><text class="viz-mark" x="340.6" y="189.8" text-anchor="middle">approve</text></g><text class="viz-attr" x="379.0" y="190.0" text-anchor="start">act on a work queue</text><g data-box=""><rect class="viz-band viz-t6" x="504.8" y="174.0" width="54.6" height="24"/><text class="viz-mark" x="532.1" y="189.8" text-anchor="middle">export</text></g><text class="viz-attr" x="567.4" y="190.0" text-anchor="start">download reports</text></svg></div><figcaption>The role-by-section matrix of IA7; a blank cell is a section the role cannot reach. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;matrix&quot;,
+ &quot;title&quot;: &quot;Perqo Admin: role by section (fictional)&quot;,
+ &quot;cols&quot;: [
+  &quot;Employees&quot;,
+  &quot;Budgets&quot;,
+  &quot;Policies&quot;,
+  &quot;Claims&quot;,
+  &quot;Reports&quot;,
+  &quot;Settings&quot;
+ ],
+ &quot;rows&quot;: [
+  {
+   &quot;label&quot;: &quot;HR admin&quot;,
+   &quot;cells&quot;: [
+    {
+     &quot;mark&quot;: &quot;edit&quot;,
+     &quot;tone&quot;: 3
+    },
+    {
+     &quot;mark&quot;: &quot;view&quot;,
+     &quot;tone&quot;: 4
+    },
+    {
+     &quot;mark&quot;: &quot;edit&quot;,
+     &quot;tone&quot;: 3
+    },
+    {
+     &quot;mark&quot;: &quot;view&quot;,
+     &quot;tone&quot;: 4
+    },
+    {
+     &quot;mark&quot;: &quot;export&quot;,
+     &quot;tone&quot;: 6
+    },
+    {
+     &quot;mark&quot;: &quot;edit&quot;,
+     &quot;tone&quot;: 3
+    }
+   ]
+  },
+  {
+   &quot;label&quot;: &quot;Finance manager&quot;,
+   &quot;cells&quot;: [
+    {
+     &quot;mark&quot;: &quot;view&quot;,
+     &quot;tone&quot;: 4
+    },
+    {
+     &quot;mark&quot;: &quot;edit&quot;,
+     &quot;tone&quot;: 3
+    },
+    {
+     &quot;mark&quot;: &quot;view&quot;,
+     &quot;tone&quot;: 4
+    },
+    {
+     &quot;mark&quot;: &quot;approve&quot;,
+     &quot;tone&quot;: 2
+    },
+    {
+     &quot;mark&quot;: &quot;export&quot;,
+     &quot;tone&quot;: 6
+    },
+    null
+   ]
+  },
+  {
+   &quot;label&quot;: &quot;Line manager&quot;,
+   &quot;cells&quot;: [
+    {
+     &quot;mark&quot;: &quot;own team&quot;,
+     &quot;tone&quot;: 4
+    },
+    null,
+    null,
+    {
+     &quot;mark&quot;: &quot;approve&quot;,
+     &quot;tone&quot;: 2
+    },
+    null,
+    null
+   ]
+  },
+  {
+   &quot;label&quot;: &quot;Auditor (read only)&quot;,
+   &quot;cells&quot;: [
+    {
+     &quot;mark&quot;: &quot;view&quot;,
+     &quot;tone&quot;: 4
+    },
+    {
+     &quot;mark&quot;: &quot;view&quot;,
+     &quot;tone&quot;: 4
+    },
+    {
+     &quot;mark&quot;: &quot;view&quot;,
+     &quot;tone&quot;: 4
+    },
+    {
+     &quot;mark&quot;: &quot;view&quot;,
+     &quot;tone&quot;: 4
+    },
+    {
+     &quot;mark&quot;: &quot;export&quot;,
+     &quot;tone&quot;: 6
+    },
+    null
+   ]
+  }
+ ],
+ &quot;legend&quot;: [
+  {
+   &quot;mark&quot;: &quot;edit&quot;,
+   &quot;means&quot;: &quot;create, change, delete&quot;,
+   &quot;tone&quot;: 3
+  },
+  {
+   &quot;mark&quot;: &quot;view&quot;,
+   &quot;means&quot;: &quot;read only&quot;,
+   &quot;tone&quot;: 4
+  },
+  {
+   &quot;mark&quot;: &quot;approve&quot;,
+   &quot;means&quot;: &quot;act on a work queue&quot;,
+   &quot;tone&quot;: 2
+  },
+  {
+   &quot;mark&quot;: &quot;export&quot;,
+   &quot;means&quot;: &quot;download reports&quot;,
+   &quot;tone&quot;: 6
+  }
+ ],
+ &quot;caption&quot;: &quot;The role-by-section matrix of IA7; a blank cell is a section the role cannot reach. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-states">State diagram · <code>states</code></h2>
+<p>A state diagram: states in the order given as rounded boxes, labelled transitions, a start marker, end states with an inner ring, loops for self-transitions.</p>
+<p>Fields: states [{id, label, note, tone, end}], start, transitions [{from, to, label}], per_row (default 4); every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-states"><p class="viz-title">A Perqo reimbursement claim (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 212.5" width="700" height="212.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A Perqo reimbursement claim (fictional)"><path class="viz-link" d="M422.5,54.5 L422.5,148.2 L303.5,148.2 L303.5,157.5"/><path class="viz-head" d="M303.5,164.5 L299.5,157.5 L307.5,157.5 z"/><g data-box=""><rect class="viz-lblbg" x="317.9" y="140.0" width="90.2" height="16.5"/><text class="viz-linklabel" x="363.0" y="152.0" text-anchor="middle">ask for a receipt</text></g><path class="viz-link" d="M272.9,164.5 L272.9,117.5 L285.1,117.5 L285.1,58.2"/><path class="viz-head" d="M285.1,51.2 L289.1,58.2 L281.1,58.2 z"/><g data-box=""><rect class="viz-lblbg" x="291.1" y="109.2" width="53.4" height="16.5"/><text class="viz-linklabel" x="317.9" y="121.3" text-anchor="middle">resubmit</text></g><path class="viz-link" d="M441.9,54.5 L441.9,117.5 L464.2,117.5 L464.2,157.5"/><path class="viz-head" d="M464.2,164.5 L460.2,157.5 L468.2,157.5 z"/><g data-box=""><rect class="viz-lblbg" x="434.2" y="109.2" width="37.6" height="16.5"/><text class="viz-linklabel" x="453.0" y="121.3" text-anchor="middle">reject</text></g><path class="viz-link" d="M621.8,51.2 L621.8,117.5 L640.2,117.5 L640.2,157.5"/><path class="viz-head" d="M640.2,164.5 L636.2,157.5 L644.2,157.5 z"/><g data-box=""><rect class="viz-lblbg" x="624.8" y="103.0" width="71.2" height="29.0"/><text class="viz-linklabel" x="660.4" y="115.0" text-anchor="middle">pay out with</text><text class="viz-linklabel" x="660.4" y="127.5" text-anchor="middle">payroll</text></g><path class="viz-link" d="M254.5,51.2 L254.5,117.5 L112.2,117.5 L112.2,157.5"/><path class="viz-head" d="M112.2,164.5 L108.2,157.5 L116.2,157.5 z"/><g data-box=""><rect class="viz-lblbg" x="156.0" y="109.2" width="54.7" height="16.5"/><text class="viz-linklabel" x="183.3" y="121.3" text-anchor="middle">withdraw</text></g><path class="viz-link" d="M161.0,31.2 L214.0,31.2"/><path class="viz-head" d="M221.0,31.2 L214.0,35.2 L214.0,27.2 z"/><text class="viz-linklabel" x="191.0" y="23.8" text-anchor="middle">submit</text><path class="viz-link" d="M337.0,31.2 L390.0,31.2"/><path class="viz-head" d="M397.0,31.2 L390.0,35.2 L390.0,27.2 z"/><text class="viz-linklabel" x="367.0" y="23.8" text-anchor="middle">assign</text><path class="viz-link" d="M513.0,31.2 L566.0,31.2"/><path class="viz-head" d="M573.0,31.2 L566.0,35.2 L566.0,27.2 z"/><text class="viz-linklabel" x="543.0" y="23.8" text-anchor="middle">approve</text><path class="viz-link" d="M481.0,54.5 C481.0,78.5 501.0,78.5 501.0,61.5"/><path class="viz-head" d="M501.0,54.5 L497.0,61.5 L505.0,61.5 z"/><text class="viz-linklabel" x="491.0" y="86.5" text-anchor="middle">reassign</text><circle class="viz-start" cx="18.0" cy="31.2" r="5"/><path class="viz-link" d="M24.0,31.2 L38.0,31.2"/><path class="viz-head" d="M45.0,31.2 L38.0,35.2 L38.0,27.2 z"/><g data-box=""><rect class="viz-node viz-t5" x="45.0" y="11.2" width="116" height="40.0" rx="10"/><text class="viz-nodelabel" x="103.0" y="35.6" text-anchor="middle">Draft</text></g><g data-box=""><rect class="viz-node viz-t4" x="221.0" y="11.2" width="116" height="40.0" rx="10"/><text class="viz-nodelabel" x="279.0" y="35.6" text-anchor="middle">Submitted</text></g><g data-box=""><rect class="viz-node viz-t4" x="397.0" y="8.0" width="116" height="46.5" rx="10"/><text class="viz-nodelabel" x="455.0" y="28.3" text-anchor="middle">In review</text><text class="viz-small" x="455.0" y="42.9" text-anchor="middle">approver queue</text></g><g data-box=""><rect class="viz-node viz-t3" x="573.0" y="11.2" width="116" height="40.0" rx="10"/><text class="viz-nodelabel" x="631.0" y="35.6" text-anchor="middle">Approved</text></g><g data-box=""><rect class="viz-node viz-t6" x="45.0" y="164.5" width="116" height="40.0" rx="10"/><rect class="viz-endring viz-t6" x="48.0" y="167.5" width="110" height="34.0" rx="7"/><text class="viz-nodelabel" x="103.0" y="188.8" text-anchor="middle">Withdrawn</text></g><g data-box=""><rect class="viz-node viz-t2" x="221.0" y="164.5" width="116" height="40.0" rx="10"/><text class="viz-nodelabel" x="279.0" y="188.8" text-anchor="middle">Info requested</text></g><g data-box=""><rect class="viz-node viz-t1" x="397.0" y="164.5" width="116" height="40.0" rx="10"/><rect class="viz-endring viz-t1" x="400.0" y="167.5" width="110" height="34.0" rx="7"/><text class="viz-nodelabel" x="455.0" y="188.8" text-anchor="middle">Rejected</text></g><g data-box=""><rect class="viz-node viz-t3" x="573.0" y="164.5" width="116" height="40.0" rx="10"/><rect class="viz-endring viz-t3" x="576.0" y="167.5" width="110" height="34.0" rx="7"/><text class="viz-nodelabel" x="631.0" y="188.8" text-anchor="middle">Paid</text></g></svg></div><figcaption>The claim-approval lifecycle of IA7. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;states&quot;,
+ &quot;title&quot;: &quot;A Perqo reimbursement claim (fictional)&quot;,
+ &quot;per_row&quot;: 4,
+ &quot;states&quot;: [
+  {
+   &quot;id&quot;: &quot;draft&quot;,
+   &quot;label&quot;: &quot;Draft&quot;,
+   &quot;tone&quot;: 5
+  },
+  {
+   &quot;id&quot;: &quot;submitted&quot;,
+   &quot;label&quot;: &quot;Submitted&quot;
+  },
+  {
+   &quot;id&quot;: &quot;review&quot;,
+   &quot;label&quot;: &quot;In review&quot;,
+   &quot;note&quot;: &quot;approver queue&quot;
+  },
+  {
+   &quot;id&quot;: &quot;approved&quot;,
+   &quot;label&quot;: &quot;Approved&quot;,
+   &quot;tone&quot;: 3
+  },
+  {
+   &quot;id&quot;: &quot;withdrawn&quot;,
+   &quot;label&quot;: &quot;Withdrawn&quot;,
+   &quot;tone&quot;: 6,
+   &quot;end&quot;: true
+  },
+  {
+   &quot;id&quot;: &quot;info&quot;,
+   &quot;label&quot;: &quot;Info requested&quot;,
+   &quot;tone&quot;: 2
+  },
+  {
+   &quot;id&quot;: &quot;rejected&quot;,
+   &quot;label&quot;: &quot;Rejected&quot;,
+   &quot;tone&quot;: 1,
+   &quot;end&quot;: true
+  },
+  {
+   &quot;id&quot;: &quot;paid&quot;,
+   &quot;label&quot;: &quot;Paid&quot;,
+   &quot;tone&quot;: 3,
+   &quot;end&quot;: true
+  }
+ ],
+ &quot;transitions&quot;: [
+  {
+   &quot;from&quot;: &quot;draft&quot;,
+   &quot;to&quot;: &quot;submitted&quot;,
+   &quot;label&quot;: &quot;submit&quot;
+  },
+  {
+   &quot;from&quot;: &quot;submitted&quot;,
+   &quot;to&quot;: &quot;review&quot;,
+   &quot;label&quot;: &quot;assign&quot;
+  },
+  {
+   &quot;from&quot;: &quot;review&quot;,
+   &quot;to&quot;: &quot;approved&quot;,
+   &quot;label&quot;: &quot;approve&quot;
+  },
+  {
+   &quot;from&quot;: &quot;review&quot;,
+   &quot;to&quot;: &quot;review&quot;,
+   &quot;label&quot;: &quot;reassign&quot;
+  },
+  {
+   &quot;from&quot;: &quot;review&quot;,
+   &quot;to&quot;: &quot;info&quot;,
+   &quot;label&quot;: &quot;ask for a receipt&quot;
+  },
+  {
+   &quot;from&quot;: &quot;info&quot;,
+   &quot;to&quot;: &quot;submitted&quot;,
+   &quot;label&quot;: &quot;resubmit&quot;
+  },
+  {
+   &quot;from&quot;: &quot;review&quot;,
+   &quot;to&quot;: &quot;rejected&quot;,
+   &quot;label&quot;: &quot;reject&quot;
+  },
+  {
+   &quot;from&quot;: &quot;approved&quot;,
+   &quot;to&quot;: &quot;paid&quot;,
+   &quot;label&quot;: &quot;pay out with payroll&quot;
+  },
+  {
+   &quot;from&quot;: &quot;submitted&quot;,
+   &quot;to&quot;: &quot;withdrawn&quot;,
+   &quot;label&quot;: &quot;withdraw&quot;
+  }
+ ],
+ &quot;caption&quot;: &quot;The claim-approval lifecycle of IA7. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-swimlanes">Swimlanes · <code>swimlanes</code></h2>
+<p>Lanes per actor or surface, steps placed in lanes by column, connectors across lanes with labels; widens and scrolls.</p>
+<p>Fields: lanes [{id, label, tone}], steps [{id, lane, col, label, note, tone}], links [{from, to, label}]; every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-swimlanes viz-wide"><p class="viz-title">The employee&#x27;s benefit lifecycle across Perqo (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 1484 258.5" width="1484" height="258.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The employee&#x27;s benefit lifecycle across Perqo (fictional)"><rect class="viz-lane viz-t3" x="8" y="8.0" width="1468.0" height="85.0"/><g data-box=""><rect class="viz-band viz-t3" x="8" y="8.0" width="112" height="85.0"/><text class="viz-nodelabel" x="17.0" y="47.8" text-anchor="start">Perqo app ·</text><text class="viz-nodelabel" x="17.0" y="61.8" text-anchor="start">employee</text></g><rect class="viz-lane viz-t4" x="8" y="93.0" width="1468.0" height="72.5"/><g data-box=""><rect class="viz-band viz-t4" x="8" y="93.0" width="112" height="72.5"/><text class="viz-nodelabel" x="17.0" y="126.6" text-anchor="start">Perqo Admin ·</text><text class="viz-nodelabel" x="17.0" y="140.6" text-anchor="start">HR and finance</text></g><path class="viz-line" d="M8.0,93.0 L1476.0,93.0"/><rect class="viz-lane viz-t2" x="8" y="165.5" width="1468.0" height="85.0"/><g data-box=""><rect class="viz-band viz-t2" x="8" y="165.5" width="112" height="85.0"/><text class="viz-nodelabel" x="17.0" y="212.3" text-anchor="start">Merchant</text></g><path class="viz-line" d="M8.0,165.5 L1476.0,165.5"/><path class="viz-link" d="M260.0,129.2 L298.0,129.2 L298.0,50.5 L329.0,50.5"/><path class="viz-head" d="M336.0,50.5 L329.0,54.5 L329.0,46.5 z"/><path class="viz-link" d="M460.0,50.5 L529.0,50.5"/><path class="viz-head" d="M536.0,50.5 L529.0,54.5 L529.0,46.5 z"/><path class="viz-link" d="M660.0,50.5 L729.0,50.5"/><path class="viz-head" d="M736.0,50.5 L729.0,54.5 L729.0,46.5 z"/><path class="viz-link" d="M860.0,57.9 L898.0,57.9 L898.0,208.0 L929.0,208.0"/><path class="viz-head" d="M936.0,208.0 L929.0,212.0 L929.0,204.0 z"/><path class="viz-link" d="M860.0,43.1 L898.0,43.1 L898.0,50.5 L929.0,50.5"/><path class="viz-head" d="M936.0,50.5 L929.0,54.5 L929.0,46.5 z"/><text class="viz-linklabel" x="898.0" y="24.1" text-anchor="middle">pays</text><text class="viz-linklabel" x="898.0" y="36.6" text-anchor="middle">elsewhere</text><path class="viz-link" d="M1060.0,50.5 L1098.0,50.5 L1098.0,129.2 L1129.0,129.2"/><path class="viz-head" d="M1136.0,129.2 L1129.0,133.2 L1129.0,125.2 z"/><path class="viz-link" d="M1060.0,208.0 L1304.0,208.0 L1304.0,60.0 L1329.0,60.0"/><path class="viz-head" d="M1336.0,60.0 L1329.0,64.0 L1329.0,56.0 z"/><path class="viz-link" d="M1260.0,129.2 L1292.0,129.2 L1292.0,41.0 L1329.0,41.0"/><path class="viz-head" d="M1336.0,41.0 L1329.0,45.0 L1329.0,37.0 z"/><g data-box=""><rect class="viz-lblbg" x="277.4" y="81.6" width="41.2" height="16.5"/><text class="viz-linklabel" x="298.0" y="93.7" text-anchor="middle">invites</text></g><g data-box=""><rect class="viz-lblbg" x="873.9" y="118.5" width="48.1" height="29.0"/><text class="viz-linklabel" x="898.0" y="130.5" text-anchor="middle">pays by</text><text class="viz-linklabel" x="898.0" y="143.0" text-anchor="middle">card</text></g><g data-box=""><rect class="viz-lblbg" x="1073.7" y="81.6" width="48.7" height="16.5"/><text class="viz-linklabel" x="1098.0" y="93.7" text-anchor="middle">submits</text></g><g data-box=""><rect class="viz-lblbg" x="1282.8" y="133.8" width="42.4" height="16.5"/><text class="viz-linklabel" x="1304.0" y="145.8" text-anchor="middle">settles</text></g><g data-box=""><rect class="viz-lblbg" x="1223.1" y="76.9" width="64.9" height="16.5"/><text class="viz-linklabel" x="1255.6" y="88.9" text-anchor="middle">reimburses</text></g><g data-box=""><rect class="viz-node viz-t4" x="136.0" y="107.0" width="124" height="44.5" rx="2"/><text class="viz-nodelabel" x="144.0" y="126.3" text-anchor="start">Open enrolment</text><text class="viz-small" x="144.0" y="140.8" text-anchor="start">once a year</text></g><g data-box=""><rect class="viz-node viz-t3" x="336.0" y="28.2" width="124" height="44.5" rx="2"/><text class="viz-nodelabel" x="344.0" y="47.6" text-anchor="start">Enrol</text><text class="viz-small" x="344.0" y="62.1" text-anchor="start">pick a plan</text></g><g data-box=""><rect class="viz-node viz-t3" x="536.0" y="22.0" width="124" height="57.0" rx="2"/><text class="viz-nodelabel" x="544.0" y="41.3" text-anchor="start">Learn</text><text class="viz-small" x="544.0" y="55.9" text-anchor="start">browse the</text><text class="viz-small" x="544.0" y="68.3" text-anchor="start">catalogue</text></g><g data-box=""><rect class="viz-node viz-t3" x="736.0" y="28.2" width="124" height="44.5" rx="2"/><text class="viz-nodelabel" x="744.0" y="47.6" text-anchor="start">Decide</text><text class="viz-small" x="744.0" y="62.1" text-anchor="start">check the balance</text></g><g data-box=""><rect class="viz-node viz-t2" x="936.0" y="179.5" width="124" height="57.0" rx="2"/><text class="viz-nodelabel" x="944.0" y="198.8" text-anchor="start">Spend</text><text class="viz-small" x="944.0" y="213.3" text-anchor="start">Perqo card at a</text><text class="viz-small" x="944.0" y="225.8" text-anchor="start">partner</text></g><g data-box=""><rect class="viz-node viz-t3" x="936.0" y="22.0" width="124" height="57.0" rx="2"/><text class="viz-nodelabel" x="944.0" y="41.3" text-anchor="start">Claim</text><text class="viz-small" x="944.0" y="55.9" text-anchor="start">receipt from</text><text class="viz-small" x="944.0" y="68.3" text-anchor="start">elsewhere</text></g><g data-box=""><rect class="viz-node viz-t4" x="1136.0" y="107.2" width="124" height="44.0" rx="2"/><text class="viz-nodelabel" x="1144.0" y="126.6" text-anchor="start">Approve the</text><text class="viz-nodelabel" x="1144.0" y="140.6" text-anchor="start">claim</text></g><g data-box=""><rect class="viz-node viz-t3" x="1336.0" y="22.0" width="124" height="57.0" rx="2"/><text class="viz-nodelabel" x="1344.0" y="41.3" text-anchor="start">Review</text><text class="viz-small" x="1344.0" y="55.9" text-anchor="start">balance and</text><text class="viz-small" x="1344.0" y="68.3" text-anchor="start">history</text></g></svg></div><figcaption>Enrol, learn, decide, spend, claim, review: the employee lifecycle of IA8 across the app, the backoffice and a merchant. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;swimlanes&quot;,
+ &quot;title&quot;: &quot;The employee&#x27;s benefit lifecycle across Perqo (fictional)&quot;,
+ &quot;lanes&quot;: [
+  {
+   &quot;id&quot;: &quot;app&quot;,
+   &quot;label&quot;: &quot;Perqo app · employee&quot;,
+   &quot;tone&quot;: 3
+  },
+  {
+   &quot;id&quot;: &quot;admin&quot;,
+   &quot;label&quot;: &quot;Perqo Admin · HR and finance&quot;,
+   &quot;tone&quot;: 4
+  },
+  {
+   &quot;id&quot;: &quot;merchant&quot;,
+   &quot;label&quot;: &quot;Merchant&quot;,
+   &quot;tone&quot;: 2
+  }
+ ],
+ &quot;steps&quot;: [
+  {
+   &quot;id&quot;: &quot;open&quot;,
+   &quot;lane&quot;: &quot;admin&quot;,
+   &quot;col&quot;: 0,
+   &quot;label&quot;: &quot;Open enrolment&quot;,
+   &quot;note&quot;: &quot;once a year&quot;
+  },
+  {
+   &quot;id&quot;: &quot;enrol&quot;,
+   &quot;lane&quot;: &quot;app&quot;,
+   &quot;col&quot;: 1,
+   &quot;label&quot;: &quot;Enrol&quot;,
+   &quot;note&quot;: &quot;pick a plan&quot;
+  },
+  {
+   &quot;id&quot;: &quot;learn&quot;,
+   &quot;lane&quot;: &quot;app&quot;,
+   &quot;col&quot;: 2,
+   &quot;label&quot;: &quot;Learn&quot;,
+   &quot;note&quot;: &quot;browse the catalogue&quot;
+  },
+  {
+   &quot;id&quot;: &quot;decide&quot;,
+   &quot;lane&quot;: &quot;app&quot;,
+   &quot;col&quot;: 3,
+   &quot;label&quot;: &quot;Decide&quot;,
+   &quot;note&quot;: &quot;check the balance&quot;
+  },
+  {
+   &quot;id&quot;: &quot;charge&quot;,
+   &quot;lane&quot;: &quot;merchant&quot;,
+   &quot;col&quot;: 4,
+   &quot;label&quot;: &quot;Spend&quot;,
+   &quot;note&quot;: &quot;Perqo card at a partner&quot;
+  },
+  {
+   &quot;id&quot;: &quot;claim&quot;,
+   &quot;lane&quot;: &quot;app&quot;,
+   &quot;col&quot;: 4,
+   &quot;label&quot;: &quot;Claim&quot;,
+   &quot;note&quot;: &quot;receipt from elsewhere&quot;
+  },
+  {
+   &quot;id&quot;: &quot;approve&quot;,
+   &quot;lane&quot;: &quot;admin&quot;,
+   &quot;col&quot;: 5,
+   &quot;label&quot;: &quot;Approve the claim&quot;
+  },
+  {
+   &quot;id&quot;: &quot;review&quot;,
+   &quot;lane&quot;: &quot;app&quot;,
+   &quot;col&quot;: 6,
+   &quot;label&quot;: &quot;Review&quot;,
+   &quot;note&quot;: &quot;balance and history&quot;
+  }
+ ],
+ &quot;links&quot;: [
+  {
+   &quot;from&quot;: &quot;open&quot;,
+   &quot;to&quot;: &quot;enrol&quot;,
+   &quot;label&quot;: &quot;invites&quot;
+  },
+  {
+   &quot;from&quot;: &quot;enrol&quot;,
+   &quot;to&quot;: &quot;learn&quot;
+  },
+  {
+   &quot;from&quot;: &quot;learn&quot;,
+   &quot;to&quot;: &quot;decide&quot;
+  },
+  {
+   &quot;from&quot;: &quot;decide&quot;,
+   &quot;to&quot;: &quot;charge&quot;,
+   &quot;label&quot;: &quot;pays by card&quot;
+  },
+  {
+   &quot;from&quot;: &quot;decide&quot;,
+   &quot;to&quot;: &quot;claim&quot;,
+   &quot;label&quot;: &quot;pays elsewhere&quot;
+  },
+  {
+   &quot;from&quot;: &quot;claim&quot;,
+   &quot;to&quot;: &quot;approve&quot;,
+   &quot;label&quot;: &quot;submits&quot;
+  },
+  {
+   &quot;from&quot;: &quot;charge&quot;,
+   &quot;to&quot;: &quot;review&quot;,
+   &quot;label&quot;: &quot;settles&quot;
+  },
+  {
+   &quot;from&quot;: &quot;approve&quot;,
+   &quot;to&quot;: &quot;review&quot;,
+   &quot;label&quot;: &quot;reimburses&quot;
+  }
+ ],
+ &quot;caption&quot;: &quot;Enrol, learn, decide, spend, claim, review: the employee lifecycle of IA8 across the app, the backoffice and a merchant. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details>
+<h2 id="vx-wireflow">Wireflow · <code>wireflow</code></h2>
+<p>Screens with a title and content placeholders, arrows between them with a label, left to right and wrapping.</p>
+<p>Fields: screens [{id, title, tone, lines [text or {bar} or {block} or {button}]}], links [{from, to, label}], per_row (default 3); every kind also takes <code>title</code>, <code>caption</code> and <code>tone</code> (1 to 6).</p>
+<figure class="viz viz-wireflow"><p class="viz-title">See a balance, spend, claim: the Perqo app (fictional)</p><div class="viz-scroll"><svg viewBox="0 0 700 247.5" width="700" height="247.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="See a balance, spend, claim: the Perqo app (fictional)"><path class="viz-link" d="M95.4,207.0 L95.4,223.2 L579.4,223.2 L579.4,214.0"/><path class="viz-head" d="M579.4,207.0 L583.4,214.0 L575.4,214.0 z"/><g data-box=""><rect class="viz-lblbg" x="297.4" y="215.0" width="79.9" height="16.5"/><text class="viz-linklabel" x="337.4" y="227.0" text-anchor="middle">tap New claim</text></g><path class="viz-link" d="M183.0,100.5 L268.0,100.5"/><path class="viz-head" d="M275.0,100.5 L268.0,104.5 L268.0,96.5 z"/><text class="viz-linklabel" x="229.0" y="80.5" text-anchor="middle">tap Wellbeing,</text><text class="viz-linklabel" x="229.0" y="93.0" text-anchor="middle">then Gym pass</text><path class="viz-link" d="M275.0,114.5 L190.0,114.5"/><path class="viz-head" d="M183.0,114.5 L190.0,110.5 L190.0,118.5 z"/><text class="viz-linklabel" x="229.0" y="129.5" text-anchor="middle">back</text><g data-box=""><rect class="viz-screen viz-t3" x="33.0" y="8.0" width="150" height="199.0" rx="2"/><rect class="viz-band viz-t3" x="35.0" y="10.0" width="146" height="22.0"/><text class="viz-nodelabel" x="43.0" y="24.3" text-anchor="start">Home</text><text class="viz-attr" x="43.0" y="55.0" text-anchor="start">Balance this month</text><text class="viz-attr" x="43.0" y="73.0" text-anchor="start">EUR 412 of 600</text><rect class="viz-ph" x="43.0" y="83.0" width="89.7" height="7"/><text class="viz-attr" x="43.0" y="105.0" text-anchor="start">Wellbeing · Mobility ·</text><text class="viz-attr" x="43.0" y="119.0" text-anchor="start">Food</text><rect class="viz-ph" x="43.0" y="126.0" width="130" height="34.0"/><rect class="viz-btn viz-t3" x="43.0" y="166.0" width="130" height="25.0" rx="2"/><text class="viz-mark" x="108.0" y="182.3" text-anchor="middle">New claim</text></g><g data-box=""><rect class="viz-screen viz-t4" x="275.0" y="8.0" width="150" height="199.0" rx="2"/><rect class="viz-band viz-t4" x="277.0" y="10.0" width="146" height="22.0"/><text class="viz-nodelabel" x="285.0" y="24.3" text-anchor="start">Gym pass</text><text class="viz-attr" x="285.0" y="55.0" text-anchor="start">EUR 45 a month</text><rect class="viz-ph" x="285.0" y="65.0" width="104.0" height="7"/><rect class="viz-ph" x="285.0" y="79.0" width="71.5" height="7"/><text class="viz-attr" x="285.0" y="101.0" text-anchor="start">Partner gyms near you</text><rect class="viz-ph" x="285.0" y="108.0" width="130" height="34.0"/><rect class="viz-btn viz-t4" x="285.0" y="148.0" width="130" height="38.0" rx="2"/><text class="viz-mark" x="350.0" y="164.3" text-anchor="middle">Spend from</text><text class="viz-mark" x="350.0" y="177.3" text-anchor="middle">Wellbeing</text></g><g data-box=""><rect class="viz-screen viz-t2" x="517.0" y="8.0" width="150" height="199.0" rx="2"/><rect class="viz-band viz-t2" x="519.0" y="10.0" width="146" height="22.0"/><text class="viz-nodelabel" x="527.0" y="24.3" text-anchor="start">New claim</text><text class="viz-attr" x="527.0" y="55.0" text-anchor="start">Amount</text><rect class="viz-ph" x="527.0" y="65.0" width="52.0" height="7"/><text class="viz-attr" x="527.0" y="87.0" text-anchor="start">Receipt</text><rect class="viz-ph" x="527.0" y="94.0" width="130" height="40.0"/><rect class="viz-btn viz-t2" x="527.0" y="140.0" width="130" height="25.0" rx="2"/><text class="viz-mark" x="592.0" y="156.3" text-anchor="middle">Submit</text></g></svg></div><figcaption>The three core flows of IA6, as one wireflow. Perqo is fictional; every name and number in this figure is invented for the examples page.</figcaption></figure>
+<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>```viz
+{
+ &quot;kind&quot;: &quot;wireflow&quot;,
+ &quot;title&quot;: &quot;See a balance, spend, claim: the Perqo app (fictional)&quot;,
+ &quot;screens&quot;: [
+  {
+   &quot;id&quot;: &quot;home&quot;,
+   &quot;title&quot;: &quot;Home&quot;,
+   &quot;lines&quot;: [
+    &quot;Balance this month&quot;,
+    &quot;EUR 412 of 600&quot;,
+    {
+     &quot;bar&quot;: 0.69
+    },
+    &quot;Wellbeing · Mobility · Food&quot;,
+    {
+     &quot;block&quot;: 34
+    },
+    {
+     &quot;button&quot;: &quot;New claim&quot;
+    }
+   ]
+  },
+  {
+   &quot;id&quot;: &quot;spend&quot;,
+   &quot;title&quot;: &quot;Gym pass&quot;,
+   &quot;tone&quot;: 4,
+   &quot;lines&quot;: [
+    &quot;EUR 45 a month&quot;,
+    {
+     &quot;bar&quot;: 0.8
+    },
+    {
+     &quot;bar&quot;: 0.55
+    },
+    &quot;Partner gyms near you&quot;,
+    {
+     &quot;block&quot;: 34
+    },
+    {
+     &quot;button&quot;: &quot;Spend from Wellbeing&quot;
+    }
+   ]
+  },
+  {
+   &quot;id&quot;: &quot;claim&quot;,
+   &quot;title&quot;: &quot;New claim&quot;,
+   &quot;tone&quot;: 2,
+   &quot;lines&quot;: [
+    &quot;Amount&quot;,
+    {
+     &quot;bar&quot;: 0.4
+    },
+    &quot;Receipt&quot;,
+    {
+     &quot;block&quot;: 40
+    },
+    {
+     &quot;button&quot;: &quot;Submit&quot;
+    }
+   ]
+  }
+ ],
+ &quot;links&quot;: [
+  {
+   &quot;from&quot;: &quot;home&quot;,
+   &quot;to&quot;: &quot;spend&quot;,
+   &quot;label&quot;: &quot;tap Wellbeing, then Gym pass&quot;
+  },
+  {
+   &quot;from&quot;: &quot;spend&quot;,
+   &quot;to&quot;: &quot;home&quot;,
+   &quot;label&quot;: &quot;back&quot;
+  },
+  {
+   &quot;from&quot;: &quot;home&quot;,
+   &quot;to&quot;: &quot;claim&quot;,
+   &quot;label&quot;: &quot;tap New claim&quot;
+  }
+ ],
+ &quot;caption&quot;: &quot;The three core flows of IA6, as one wireflow. Perqo is fictional; every name and number in this figure is invented for the examples page.&quot;
+}
+```</pre></details></div>

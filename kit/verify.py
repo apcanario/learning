@@ -48,6 +48,7 @@ def ready(pg):
 SHOTS = pathlib.Path(sys.argv[sys.argv.index('--shots') + 1]) if '--shots' in sys.argv else None
 PAGES = [a for i, a in enumerate(sys.argv) if i > 0 and sys.argv[i - 1] == '--page']   # extra panels to screenshot
 GAP = 6
+VX_FIGS = 11   # V1: the examples page carries one figure per kind: four from A8, seven for the IA course
 VIEWPORTS = [('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
 SIDE = 300  # desktop sidebar width (theme.css --side)
 
@@ -137,7 +138,7 @@ def check_files(fails):
     # course panel whose label is a numbered course; Brand + AI homes are lettered and stay) and every course's
     # "How it was built" page leave the shell (A2, P20, P22, A4)
     must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-briefs|[a-z-]+-bibliography|[a-z-]+-built)"', h)
-            or (' data-kind="course"' in h and re.search(r' data-u="COURSE \d', h))]
+            or (' data-kind="course"' in h and re.search(r' data-u="COURSE \d', h)) or ' id="viz-examples"' in h]
     kept = [h[:80] for h in must if ' data-src="' not in h]
     if kept: fails.append(f'split: {len(kept)} panels should be fetched but are in the shell: {kept[:2]}')
     if len(srcs) != len(must): fails.append(f'split: {len(must)} panels should be fetched but {len(srcs)} carry data-src')
@@ -155,7 +156,7 @@ def check_files(fails):
     if size >= SHELL_MAX: fails.append(f'split: shell is {size:,} bytes, over the 1 MB limit')
     by = {}
     for x in on_disk:
-        by.setdefault(x.split('/')[0], []).append((len((SITE / x).read_bytes()), x))
+        by.setdefault(x.split('/')[0] if '/' in x else '.', []).append((len((SITE / x).read_bytes()), x))   # V1: root pages under ./
     table = re.search(r'<!-- sizes:start -->\n(.*?)<!-- sizes:end -->', (R / 'README.md').read_text(), re.S)
     kb = lambda n: f'{n / 1024:,.0f} KB' if n < 1024 * 1024 else f'{n / 1024 / 1024:.2f} MB'
     if not table: fails.append('README.md has no size table (sizes:start/sizes:end)')
@@ -166,6 +167,12 @@ def check_files(fails):
             want[next((k for k in rows if f'(`{ctx}/`)' in k), ctx)] = f'| {len(fs)} | {kb(sum(n for n, _ in fs))} | {kb(max(fs)[0])} | largest `{max(fs)[1]}`'
         bad = [k for k, v in want.items() if k not in rows or v not in rows[k]]
         if bad: fails.append(f'README.md size table does not match the files: {bad} (rebuild)')
+    vx = SITE / 'viz-examples.html'   # V1: the figure examples page, one figure of every kind in viz.py
+    if not vx.exists(): fails.append('viz-examples.html: missing (viz_examples.py, run from build.py)')
+    else:
+        nfig = len(re.findall(r'<figure class="viz ', vx.read_text()))
+        if nfig != VX_FIGS: fails.append(f'viz-examples.html: {nfig} figures, expected {VX_FIGS}')
+        print(f'viz-examples.html: {nfig} figures')
     big = max((n, x) for fs in by.values() for n, x in fs)
     print(f'split: shell {size / 1024:,.0f} KB (limit 1,024 KB), {len(on_disk)} fetched files in {len(by)} folders, largest {big[1]} {big[0] / 1024:,.0f} KB')
     for ctx, fs in by.items():
@@ -243,12 +250,51 @@ def check_split(br, fails):
     print('split: stubs empty until opened; fetched once, kept and the next report prefetched; links into an unopened report, syllabus, briefs page and course home; failed fetch and retry (report and course home); a course home\'s continue button')
     ctx.close()
 
+# V1: inside every figure of the examples page, the geometry the eye would otherwise have to check: every text of a
+# box group (<g data-box>, the box its first child) lies inside that box, no two boxes overlap, and nothing in a
+# drawing leaves its viewBox. Measured in the SVG's own units with getBBox, so the width of the page does not matter.
+FIG_JS = r'''(sel) => {
+  const out = []; const figs = [...document.querySelectorAll(sel + ' figure.viz')];
+  figs.forEach(f => {
+    const kind = [...f.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide').slice(4);
+    const svg = f.querySelector('svg'), vb = svg.viewBox.baseVal, T = 0.6;
+    [...svg.children].forEach(el => { if (el.tagName === 'defs') return; const b = el.getBBox();
+      if (b.width + b.height === 0) return;
+      if (b.x < -T || b.y < -T || b.x + b.width > vb.width + T || b.y + b.height > vb.height + T)
+        out.push(`${kind}: ${el.tagName}.${el.getAttribute('class') || ''} leaves the drawing (${b.x.toFixed(1)},${b.y.toFixed(1)} ${b.width.toFixed(1)}x${b.height.toFixed(1)} in ${vb.width}x${vb.height})`); });
+    const boxes = [...svg.querySelectorAll('g[data-box]')].map(g => [g, g.firstElementChild.getBBox()]);
+    boxes.forEach(([g, r]) => g.querySelectorAll('text').forEach(t => { const b = t.getBBox();
+      if (b.x < r.x - T || b.x + b.width > r.x + r.width + T || b.y < r.y - T || b.y + b.height > r.y + r.height + T)
+        out.push(`${kind}: "${t.textContent}" outside its box (text ${b.x.toFixed(1)}..${(b.x + b.width).toFixed(1)}, ${b.y.toFixed(1)}..${(b.y + b.height).toFixed(1)}; box ${r.x.toFixed(1)}..${(r.x + r.width).toFixed(1)}, ${r.y.toFixed(1)}..${(r.y + r.height).toFixed(1)})`); }));
+    for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
+      const a = boxes[i][1], b = boxes[j][1];
+      const w = Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x), h = Math.min(a.y + a.height, b.y + b.height) - Math.max(a.y, b.y);
+      if (w > 0.6 && h > 0.6) out.push(`${kind}: boxes overlap ("${boxes[i][0].textContent.slice(0, 24)}" and "${boxes[j][0].textContent.slice(0, 24)}")`);
+    }
+  });
+  return {n: figs.length, kinds: figs.map(f => [...f.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide').slice(4)), bad: out};
+}'''
+
+def check_figures(br, fails):
+    """The examples page (V1) through the shell: eleven figures, one per kind, and the geometry of each (FIG_JS)."""
+    errs = []
+    ctx, pg, _ = new_page(None, br, errs, 'figures', 390, 844, True)
+    pg.evaluate("location.hash = 'viz-examples'"); ready(pg); pg.wait_for_timeout(200)
+    res = pg.evaluate(FIG_JS, '#viz-examples')
+    if res['n'] != VX_FIGS: fails.append(f'viz-examples: {res["n"]} figures in the panel, expected {VX_FIGS}')
+    if len(set(res['kinds'])) != res['n']: fails.append(f'viz-examples: a kind appears twice: {res["kinds"]}')
+    fails += ['viz-examples: ' + b for b in res['bad'][:12]]
+    if errs: fails.append('viz-examples: console errors: ' + ' | '.join(errs[:3]))
+    print(f'figures: {res["n"]} kinds on the examples page ({", ".join(res["kinds"])}); {len(res["bad"])} geometry faults')
+    ctx.close()
+
 def main():
     errors, fails = [], []
     check_files(fails)
     with sync_playwright() as p:
         br = p.chromium.launch()
         check_split(br, fails)
+        check_figures(br, fails)
 
         # ---- phone ------------------------------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)
@@ -495,6 +541,29 @@ def main():
                     for pid in ['home', 'rome', rp] + [x for x in PAGES if x not in ('home', 'rome', rp)]:
                         pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
                         pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, clip={'x': 0, 'y': 0, 'width': w, 'height': 2600})
+                ctx.close()
+            # V1: each figure of the examples page as the reader sees it in its frame, then one sheet per width and theme
+            for name, w, h, mobile in VIEWPORTS:
+                ctx, pg, _ = new_page(p, br, [], name, w, h, mobile)
+                for theme in ('dark', 'light'):
+                    pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
+                    pg.goto(URL + '#viz-examples'); pg.reload(); ready(pg); pg.wait_for_timeout(250)
+                    shots = []
+                    for k, fig in enumerate(pg.query_selector_all('#viz-examples figure.viz')):
+                        kind = [c for c in fig.get_attribute('class').split() if c.startswith('viz-') and c != 'viz-wide'][0][4:]
+                        fig.scroll_into_view_if_needed(); pg.wait_for_timeout(30)
+                        path = SHOTS / f'{name}-viz-{k + 1:02d}-{kind}-{theme}.png'
+                        fig.screenshot(path=str(path)); shots.append(path)
+                    try:
+                        from PIL import Image
+                        ims = [Image.open(x) for x in shots]
+                        sheet = Image.new('RGB', (max(i.width for i in ims), sum(i.height for i in ims) + 12 * len(ims)), (10, 10, 12) if theme == 'dark' else (245, 245, 247))
+                        yy = 0
+                        for im in ims:
+                            sheet.paste(im, (0, yy)); yy += im.height + 12
+                        sheet.save(SHOTS / f'{name}-viz-examples-{theme}.png')
+                    except ImportError:
+                        pass
                 ctx.close()
             print('screenshots in', SHOTS)
         br.close()

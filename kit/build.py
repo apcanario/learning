@@ -20,6 +20,7 @@ from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES
 import mdcourse
 import howbuilt
 import viz
+import viz_examples
 
 R = pathlib.Path(__file__).resolve().parent
 PROV = json.load(open(R / 'provenance.json'))
@@ -536,7 +537,8 @@ changelog = f"""
   <div class="clogs">{cl_cards}</div>
 </section>"""
 cl_link = (f'<div class="hlinks"><a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {cl_since}, newest first</b></a>'
-           f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a></div>')
+           f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a>'
+           f'<a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a></div>')
 
 # the backlog page: docs/BACKLOG.md (the queue) and docs/CHANGELOG.md (the chats done), rendered as they are
 def md_sections(path):
@@ -712,6 +714,8 @@ if SITE.exists():
 for src, body in REPORTS.items():
     (SITE / src).parent.mkdir(parents=True, exist_ok=True)
     (SITE / src).write_text(body)
+# V1 · the figure examples page (viz_examples.py): one figure of every kind, fetched like a report from the shell's root
+panels.append(viz_examples.write(SITE, crumbs))
 
 def root_nav_track(t):
     hist = [c for c in HISTORY if c['theme'] == t['id']]
@@ -778,6 +782,9 @@ for ctx, name in [(c['id'], c['short']) for c in HISTORY] + [(m['id'], m['short'
     fs = [len(v.encode()) for k, v in REPORTS.items() if k.startswith(ctx + '/')]
     big = max(((len(v.encode()), k) for k, v in REPORTS.items() if k.startswith(ctx + '/')), default=(0, ''))
     rows.append((f'{name} (`{ctx}/`)', len(fs), sum(fs), big[0], f'largest `{big[1]}`' if big[1] else ''))
+_root = sorted((len(f.read_bytes()), f.name) for f in SITE.glob('*.html') if f.name != 'index.html')   # V1: pages beside the shell
+if _root:
+    rows.append(('Root pages (`./`)', len(_root), sum(n for n, _ in _root), _root[-1][0], f'largest `{_root[-1][1]}`'))
 allb = sum(r[2] for r in rows)
 SIZE_TABLE = ('| Part | Files | Total | Largest file | Note |\n|---|---|---|---|---|\n'
               + ''.join(f'| {a} | {n} | {kb(t)} | {kb(l)} | {note} |\n' for a, n, t, l, note in rows)

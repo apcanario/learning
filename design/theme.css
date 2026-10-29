@@ -15,14 +15,15 @@
       4a report  4b home and course cards  4c syllabus and prompts
       4d era ribbon  4e rule blocks and parts  4f root home  4g changelog
       4h learner home (resume card, new since, track jump, folded planned lists)
-      4i figures (kit/viz.py: timeline, compare, tree, flow; classes only, no colour attributes)
+      4i figures (kit/viz.py: timeline, compare, tree, flow; since 5.2 sitemap, objects, decision,
+         matrix, states, swimlanes, wireflow; classes only, no colour attributes)
    8  Swiss pass (version 5): type scale up, colour as a field, hard corners, rules not shadows
    5  Components added for hubs (the history site has no equivalent)
    6  Responsive: tablet (from 768 px) and desktop (from 1100 px); the phone
       layout below 768 px is the one every rule above describes and does not change
    7  Interaction: hover and pressed states for every clickable thing, on devices
       that can hover; equal-height catalogue cards with the button on one line
-   Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
+   Version 5.2, 29 Oct 2026 (V1): 4i adds the classes of the seven IA figure kinds. Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -420,6 +421,27 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 .viz-span{opacity:.85}
 .viz-dot{stroke:var(--card);stroke-width:2}
 .panel.home .viz{margin:0}
+/* the IA kinds (V1, 29 Oct 2026): sitemap, objects, decision, matrix, states, swimlanes, wireflow. Their text classes are
+   written .viz .x so they win over .viz text; nodes reuse .viz-node and .viz-nodelabel, arrowheads .viz-head. */
+.viz-wide svg{width:auto}                                                       /* a figure wider than the column keeps its size and scrolls in its frame */
+.viz-link{stroke:var(--muted);stroke-width:1.25;fill:none}                      /* a connector: relationship, branch, transition, step link */
+.viz-line{stroke:var(--line-2);stroke-width:1.25;fill:none}                     /* a structural line: sitemap hierarchy, lane divider, object rule */
+.viz-lblbg{fill:var(--card)}                                                    /* the plate under a connector's label, so the line never runs through it */
+.viz .viz-linklabel{font-size:10.5px;fill:var(--muted)}                          /* the words on a connector */
+.viz .viz-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;fill:var(--muted)}  /* a sitemap node's page type */
+.viz .viz-small{font-family:var(--mono);font-size:10px;fill:var(--muted)}        /* a note under a label, a cardinality, an object's action */
+.viz .viz-attr{font-size:11px}                                                  /* an object's attribute, a screen's text line, a legend entry */
+.viz-solid{fill:var(--c)}                                                       /* a filled box: an object's title band, a decision outcome */
+.viz .viz-ontone{font-size:12px;font-weight:600;fill:var(--on-accent)}           /* text on a filled box */
+.viz-band{fill:color-mix(in srgb,var(--c) 24%,var(--card))}                     /* a tinted field: a matrix cell, a lane head, a screen's title bar */
+.viz .viz-mark{font-family:var(--mono);font-size:10.5px}                         /* a matrix cell's mark, a screen's button label */
+.viz .viz-colhead{font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;fill:var(--muted)}  /* a matrix column label */
+.viz-endring{fill:none;stroke:var(--c);stroke-width:1.25}                       /* the inner ring that marks an end state */
+.viz-start{fill:var(--fg)}                                                      /* the start marker of a state diagram */
+.viz-lane{fill:color-mix(in srgb,var(--c) 6%,var(--card))}                      /* a swimlane's band */
+.viz-screen{fill:var(--card);stroke:var(--c);stroke-width:1.5}                  /* a wireflow screen's frame */
+.viz-ph{fill:var(--line-2)}                                                     /* a content placeholder on a screen */
+.viz-btn{fill:none;stroke:var(--c);stroke-width:1.25}                           /* a button on a screen */
 
 /* 4g · changelog page: one card per session, newest open */
 .log code{font-family:var(--mono);font-size:.84em;color:var(--fg);overflow-wrap:anywhere;background:none;border:0;padding:0}
