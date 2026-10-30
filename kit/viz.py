@@ -126,7 +126,10 @@ under the same rule: a label moves or the drawing widens; it is never clipped or
               date to keep a "c.": give the event "date" and keep the label to the event. A figure may set "era": "BCE"
               (default "BC") to print 753 BCE, 14 CE in its ticks and date lines, as a unit that writes BCE/CE does; a
               "date" in the other notation stops the build. Wrapping never parts "c.", "ca.", "by", "after", "before",
-              "from" or "until" from the number after it ("(c. 185)" stays on one line).
+              "from" or "until" from the number after it ("(c. 185)" stays on one line). No event's stem runs through
+              another event's date or label: when the label directions cannot keep every stem clear (events a few years
+              apart beside a wide label), every direction of the events caught is tried, then the drawing widens until
+              none is crossed (to its widest, 2,400 or twice its start).
   range       a row whose low equals its high is one value: it draws as a point (a diamond, no bar) with its value printed
               once under it, with one source tag (both sources, comma-separated, when they differ); a "point" on such a row
               prints nothing above it. Every end label sits under the value it names: its plate spans its end of the bar
@@ -139,11 +142,13 @@ under the same rule: a label moves or the drawing widens; it is never clipped or
               the label's longest word fits with 6 units either side, and when the boxes would fall under 110 the
               drawing widens and scrolls; a word is never cut. A diagonal link's label wraps no narrower than its
               longest word.
-  tree        a tree narrower than the 700-unit drawing (a one-child chain, a short branch) is centred in it.
+  tree        a tree narrower than the 700-unit drawing (a one-child chain, a short branch) is centred in it; its svg
+              carries data-x0, where the drawing starts, and a phone frame (natural size, scrolling) opens there.
 verify.py (P58) also reads every built figure for these: no event label line ending in "c.", "by", "after" (and the
 like) with its number on the next line; no date line that drops a "c." or a split year the label carries; no BC/AD
 in a figure on a page whose prose writes BCE/CE; no value printed twice in one range row, and every range end label
-spanning its end; no "1 <word>s"; every objects link label's lines joining back to whole words; a narrow tree centred.
+spanning its end; no "1 <word>s"; every objects link label's lines joining back to whole words; a narrow tree centred;
+no timeline stem through another event's text.
 verify.py (P55) runs its figure checks on every figure of every page, every kind: nothing outside the drawing, every
 text inside its box (a node, a plate, a bar or span carrying its label), no two boxes overlapping, no two texts
 overlapping and no free text over a box; the examples page carries one hard case per fault above.
@@ -354,86 +359,122 @@ def timeline(d):
     tw_max = max((_tw(t, 10.5, 'mono') for t in tlab), default=0)
     # P55: the drawing widens (and scrolls) until every label fits: a span label beside its bar, every event label inside
     # the drawing, and neighbouring tick labels 8 units apart. It starts at 700, or 64 per event for a dense timeline.
-    W = W0 = max(700, 64 * len(events))
-    for _ in range(40):
-        L, R = 40, W - 40
-        x = lambda y: L + (R - L) * (y - start) / (end - start)
-        txs = sorted(x(t) for t in ticks)
-        need = max([(tw_max + 8) / (b - a) for a, b in zip(txs, txs[1:]) if b > a] + [1])
-        lanes = _span_lanes(spans, x, W) if spans else []
-        ev_w = max((max([_tw(dt, 10.5, 'mono')] + [_tw(ln, 12) for ln in wrap(e['label'])]) for e, dt in zip(events, dates)), default=0)
-        if lanes is not None and need <= 1 and ev_w <= W - 8:
-            break
-        W = math.ceil(W * max(need, 1.15) / 10) * 10
-        if W > max(2400, 2 * W0):                            # past this a reader cannot follow it on a phone
-            if need > 1:
-                a_, b_ = min(((p, q) for p, q in zip(sorted(ticks), sorted(ticks)[1:])), key=lambda pq: pq[1] - pq[0])
-                _fail(K, f'the ticks {a_} and {b_} are too close to label both ({yr(a_)}, {yr(b_)}); drop one or space the ticks out')
-            _fail(K, 'a span or event label does not fit even with the drawing at its widest; shorten it')
-    body = ''
-    y0 = 24
-    if spans:
-        for k, lane, side, l0, l1 in lanes:
-            s = spans[k]
-            tone = _tone(s, k % TONES + 1, K)
-            x1, x2, yy = x(s['from']), x(s['to']), y0 + lane * 24
-            rect = f'<rect class="viz-span viz-t{tone}" x="{x1:.1f}" y="{yy}" width="{x2 - x1:.1f}" height="18"/>'
-            if not s.get('label'):
-                body += _g(rect)
-            elif side == 'in':
-                body += _g(rect + f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{yy + 13}" text-anchor="middle">{esc(s["label"])}</text>')
-            else:
-                body += _g(rect) + f'<text class="viz-colhead" x="{l0:.1f}" y="{yy + 13}">{esc(s["label"])}</text>'
-        y0 += (max(lane for _, lane, *_ in lanes) + 1) * 24 + 6
-    axis = y0 + 22                           # tick labels sit above the axis, events hang below it
-    body += f'<line class="viz-axis" x1="{L}" y1="{axis}" x2="{R}" y2="{axis}"/>'
-    for t, tl in zip(ticks, tlab):
-        tx = x(t)
-        anchor = 'start' if tx < L + 20 else ('end' if tx > R - 20 else 'middle')
-        body += f'<line class="viz-tick" x1="{tx:.1f}" y1="{axis - 6}" x2="{tx:.1f}" y2="{axis}"/><text class="viz-ticklabel" x="{tx:.1f}" y="{axis - 10}" text-anchor="{anchor}">{esc(tl)}</text>'
-    # events (P40, 29 Oct 2026): each label faces right from its stem, left to it or centres on it, in a row below the
-    # axis. Given the directions, a label sits below every event whose stem it would cover (so that stem ends above it)
-    # and in the first such row its neighbours leave free; the directions are then improved one event at a time until
-    # nothing is gained: first no stem through a label, then as few rows as possible. Each label is the date, then the
-    # text wrapped at 22.
-    lab = {}
-    for k, e in enumerate(events):
-        lines = [dates[k]] + wrap(e['label'])
-        lab[k] = [x(e['at']), lines, max([_tw(lines[0], 10.5, 'mono')] + [_tw(ln, 12) for ln in lines[1:]])]
-    n = len(events)
-    def span(k, anchor):
-        ex, _, w = lab[k]
-        x0 = ex if anchor == 'start' else (ex - w / 2 if anchor == 'middle' else ex - w)
-        return x0, x0 + w
-    def layout(anch):
-        box = {k: span(k, anch[k]) for k in range(n)}
-        covers = {k: [j for j in range(n) if j != k and box[k][0] - 4 <= lab[j][0] <= box[k][1] + 4] for k in range(n)}
-        rows, left = {}, set(range(n))
-        while left:
-            ready_ = [k for k in left if all(j in rows for j in covers[k])]
-            k = min(ready_ or left, key=lambda k: (sum(j not in rows for j in covers[k]), lab[k][0], k))
-            r = max([rows[j] + 1 for j in covers[k] if j in rows], default=0)
-            while any(rows[j] == r and box[j][0] - 8 < box[k][1] and box[k][0] < box[j][1] + 8 for j in rows):
-                r += 1
-            rows[k] = r; left.discard(k)
-        cross = sum(1 for k in range(n) for j in covers[k] if rows[k] < rows[j])
-        return (cross, max(rows.values(), default=-1) + 1, sum(rows.values())), rows, box
-    fits = lambda k, a: 4 <= span(k, a)[0] and span(k, a)[1] <= W - 4
-    anch = {k: next((a for a in ('middle', 'start', 'end') if fits(k, a)), 'middle') for k in range(n)}
-    best = layout(anch)
-    for _ in range(12):
-        gained = False
-        for k in sorted(range(n), key=lambda k: lab[k][0]):
-            for a in ('start', 'middle', 'end'):
-                if a == anch[k] or not fits(k, a):
+    # P58 (by eye): when no choice of directions keeps every stem clear of the labels above it (events a few years
+    # apart, near an edge), the drawing widens, as P55 widens it for its labels, until none is crossed or it reaches
+    # its widest; past that it keeps the layout with the fewest crossings.
+    Wmin, tried, final = 0, None, False
+    W0 = max(700, 64 * len(events))
+    while True:
+        W = max(W0, Wmin)
+        for _ in range(40):
+            L, R = 40, W - 40
+            x = lambda y: L + (R - L) * (y - start) / (end - start)
+            txs = sorted(x(t) for t in ticks)
+            need = max([(tw_max + 8) / (b - a) for a, b in zip(txs, txs[1:]) if b > a] + [1])
+            lanes = _span_lanes(spans, x, W) if spans else []
+            ev_w = max((max([_tw(dt, 10.5, 'mono')] + [_tw(ln, 12) for ln in wrap(e['label'])]) for e, dt in zip(events, dates)), default=0)
+            if lanes is not None and need <= 1 and ev_w <= W - 8:
+                break
+            W = math.ceil(W * max(need, 1.15) / 10) * 10
+            if W > max(2400, 2 * W0):                            # past this a reader cannot follow it on a phone
+                if need > 1:
+                    a_, b_ = min(((p, q) for p, q in zip(sorted(ticks), sorted(ticks)[1:])), key=lambda pq: pq[1] - pq[0])
+                    _fail(K, f'the ticks {a_} and {b_} are too close to label both ({yr(a_)}, {yr(b_)}); drop one or space the ticks out')
+                _fail(K, 'a span or event label does not fit even with the drawing at its widest; shorten it')
+        body = ''
+        y0 = 24
+        if spans:
+            for k, lane, side, l0, l1 in lanes:
+                s = spans[k]
+                tone = _tone(s, k % TONES + 1, K)
+                x1, x2, yy = x(s['from']), x(s['to']), y0 + lane * 24
+                rect = f'<rect class="viz-span viz-t{tone}" x="{x1:.1f}" y="{yy}" width="{x2 - x1:.1f}" height="18"/>'
+                if not s.get('label'):
+                    body += _g(rect)
+                elif side == 'in':
+                    body += _g(rect + f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{yy + 13}" text-anchor="middle">{esc(s["label"])}</text>')
+                else:
+                    body += _g(rect) + f'<text class="viz-colhead" x="{l0:.1f}" y="{yy + 13}">{esc(s["label"])}</text>'
+            y0 += (max(lane for _, lane, *_ in lanes) + 1) * 24 + 6
+        axis = y0 + 22                           # tick labels sit above the axis, events hang below it
+        body += f'<line class="viz-axis" x1="{L}" y1="{axis}" x2="{R}" y2="{axis}"/>'
+        for t, tl in zip(ticks, tlab):
+            tx = x(t)
+            anchor = 'start' if tx < L + 20 else ('end' if tx > R - 20 else 'middle')
+            body += f'<line class="viz-tick" x1="{tx:.1f}" y1="{axis - 6}" x2="{tx:.1f}" y2="{axis}"/><text class="viz-ticklabel" x="{tx:.1f}" y="{axis - 10}" text-anchor="{anchor}">{esc(tl)}</text>'
+        # events (P40, 29 Oct 2026): each label faces right from its stem, left to it or centres on it, in a row below the
+        # axis. Given the directions, a label sits below every event whose stem it would cover (so that stem ends above it)
+        # and in the first such row its neighbours leave free; the directions are then improved one event at a time until
+        # nothing is gained: first no stem through a label, then as few rows as possible. Each label is the date, then the
+        # text wrapped at 22.
+        lab = {}
+        for k, e in enumerate(events):
+            lines = [dates[k]] + wrap(e['label'])
+            lab[k] = [x(e['at']), lines, max([_tw(lines[0], 10.5, 'mono')] + [_tw(ln, 12) for ln in lines[1:]])]
+        n = len(events)
+        def span(k, anchor):
+            ex, _, w = lab[k]
+            x0 = ex if anchor == 'start' else (ex - w / 2 if anchor == 'middle' else ex - w)
+            return x0, x0 + w
+        def layout(anch):
+            box = {k: span(k, anch[k]) for k in range(n)}
+            covers = {k: [j for j in range(n) if j != k and box[k][0] - 4 <= lab[j][0] <= box[k][1] + 4] for k in range(n)}
+            rows, left = {}, set(range(n))
+            while left:
+                ready_ = [k for k in left if all(j in rows for j in covers[k])]
+                k = min(ready_ or left, key=lambda k: (sum(j not in rows for j in covers[k]), lab[k][0], k))
+                r = max([rows[j] + 1 for j in covers[k] if j in rows], default=0)
+                while any(rows[j] == r and box[j][0] - 8 < box[k][1] and box[k][0] < box[j][1] + 8 for j in rows):
+                    r += 1
+                rows[k] = r; left.discard(k)
+            cross = sum(1 for k in range(n) for j in covers[k] if rows[k] < rows[j])
+            return (cross, max(rows.values(), default=-1) + 1, sum(rows.values())), rows, box
+        fits = lambda k, a: 4 <= span(k, a)[0] and span(k, a)[1] <= W - 4
+        strict = lambda b: sum(1 for k in range(n) for j in range(n) if j != k and b[2][k][0] + 1 < lab[j][0] < b[2][k][1] - 1 and b[1][k] < b[1][j])
+        anch = {k: next((a for a in ('middle', 'start', 'end') if fits(k, a)), 'middle') for k in range(n)}
+        best = layout(anch)
+        for _ in range(12):
+            gained = False
+            for k in sorted(range(n), key=lambda k: lab[k][0]):
+                for a in ('start', 'middle', 'end'):
+                    if a == anch[k] or not fits(k, a):
+                        continue
+                    trial = dict(anch); trial[k] = a
+                    got = layout(trial)
+                    if got[0] < best[0]:
+                        anch, best, gained = trial, got, True
+            if not gained:
+                break
+        # P58 (by eye): labels that cover each other's stems in a ring (two events a few years apart, a wide label beside
+        # them) defeat a one-at-a-time search: whichever sits lower, its stem runs through another. Search every direction
+        # for the events still caught in a crossing and their neighbours (up to 3^7 layouts), keeping the best
+        if strict(best):
+            b0, bx = best[1], best[2]
+            bad = {k for k in range(n) for j in range(n) if j != k and bx[k][0] - 4 <= lab[j][0] <= bx[k][1] + 4 and b0[k] < b0[j]}
+            near = lambda k, j: j != k and (bx[k][0] - 4 <= lab[j][0] <= bx[k][1] + 4 or bx[j][0] - 4 <= lab[k][0] <= bx[j][1] + 4)
+            for _ in range(2):
+                bad |= {j for k in bad for j in range(n) if near(k, j)}
+            bad = sorted(bad, key=lambda k: lab[k][0])[:7]
+            for combo in itertools.product(('start', 'middle', 'end'), repeat=len(bad)):
+                if not all(fits(k, a) for k, a in zip(bad, combo)):
                     continue
-                trial = dict(anch); trial[k] = a
+                trial = dict(anch); trial.update(zip(bad, combo))
                 got = layout(trial)
                 if got[0] < best[0]:
-                    anch, best, gained = trial, got, True
-        if not gained:
+                    anch, best = trial, got
+                    if not strict(best):
+                        break
+        _, lane_of, box = best
+        if tried is None or strict(best) < tried[0]:
+            tried = (strict(best), W)
+        if not strict(best) or final:
             break
-    _, lane_of, box = best
+        if W >= max(2400, 2 * W0):                           # at its widest: draw the width that crossed least
+            if tried[1] == W:
+                break
+            Wmin, final = tried[1], True
+            continue
+        Wmin = math.ceil(W * 1.15 / 10) * 10
     for k in range(n):
         lab[k] = (lab[k][0], lab[k][1], anch[k], *box[k])
     rows = max(lane_of.values(), default=0) + 1

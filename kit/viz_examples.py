@@ -218,7 +218,7 @@ CASES = [
                 {'from': -149, 'to': -146, 'label': 'Third', 'tone': 4}],
       'events': [{'at': -264, 'label': 'The war begins'}],
       'caption': CASE}),
-    ('timeline-edges', 'Event labels at both ends of the axis, and a BC to AD axis: labels stay inside the drawing, and the year after 1 BC is AD 1 (Rome 6.4, 1.6; a tick at 0 stops the build, see below).',
+    ('timeline-edges', 'Event labels at both ends of the axis, and a BC to AD axis: labels stay inside the drawing, and the year after 1 BC is AD 1 (Rome 6.4, 1.6; a tick at 0 stops the build, see below). P58: two events two years apart at the edge, and neither stem runs through the other’s label (Greek 0.3, 5.2, 10.2, 11.8; Rome 0.3).',
      {'kind': 'timeline', 'title': 'Labels at the edges', 'start': -500, 'end': 200, 'ticks': [-500, -250, 1, 200],
       'events': [{'at': -500, 'label': 'A long event label at the very left edge of the axis'}, {'at': -498, 'label': 'Another long label beside it'},
                  {'at': 199, 'label': 'A long event label at the very right edge'}, {'at': 200, 'label': 'And another at the right'}],

@@ -264,6 +264,15 @@ def figure_rules(page, name):
                     bad.append(f'{where}: the label "{lab}" marks its date approximate because the date line cannot: give the event "date"')
                 if any(g.group(1) in t and '/' not in t for g in re.finditer(r'\b(\d+)/(\d+)', lab)):
                     bad.append(f'{where}: the date line "{t}" drops the split year its label keeps ("{lab}"): give the event "date"')
+        if kind == 'timeline':                               # P58 (by eye): no stem runs through another event's text
+            import viz as V
+            stems = [(float(a), float(b), float(c)) for a, b, c in re.findall(r'<line class="viz-stem" x1="([-\d.]+)" y1="([-\d.]+)" x2="[-\d.]+" y2="([-\d.]+)"', svg)]
+            for c, x, y, a, t in re.findall(r'<text class="viz-(label|date)" x="([-\d.]+)" y="([-\d.]+)" text-anchor="(\w+)">(.*?)</text>', svg):
+                x, y, t = float(x), float(y), H.unescape(re.sub(r'<[^>]+>', '', t))
+                w = V._tw(t, 12, 'sans') if c == 'label' else V._tw(t, 10.5, 'mono')
+                x0 = {'start': x, 'middle': x - w / 2, 'end': x - w}[a]
+                if any(x0 + 1 < sx < x0 + w - 1 and y1 < y - 4 < y2 for sx, y1, y2 in stems):
+                    bad.append(f'{where}: a stem runs through the text "{t}"')
         if bce and kind in ('timeline', 'range') and any(c in ('viz-date', 'viz-ticklabel', 'viz-value') and re.search(r'\b(BC|AD)\b', t) for c, x, y, t in tx):
             bad.append(f'{where}: BC/AD in a figure on a page whose prose writes BCE/CE: set "era": "BCE"')
         if kind == 'range':
