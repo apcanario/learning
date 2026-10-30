@@ -83,7 +83,12 @@
     var cue=f.nextElementSibling;
     if(!cue||!cue.classList.contains('viz-cue')){cue=document.createElement('p');cue.className='viz-cue';cue.textContent='scroll sideways for the whole figure';f.parentNode.insertBefore(cue,f.nextSibling);}
     if(!f.hasAttribute('data-sc')){f.setAttribute('data-sc','');f.addEventListener('scroll',function(){vizEdge(f);},{passive:true});}
-    var over=f.clientWidth>0&&f.scrollWidth>f.clientWidth+1;cue.hidden=!over;vizEdge(f);});}
+    var over=f.clientWidth>0&&f.scrollWidth>f.clientWidth+1;cue.hidden=!over;
+    // P58: a drawing centred in a wider svg (a narrow tree) names where it starts (data-x0); on its first measured
+    // showing a scrolling frame opens there, not on the empty margin
+    var sv=f.querySelector('svg[data-x0]');if(over&&sv&&!f.hasAttribute('data-x0done')){f.setAttribute('data-x0done','');
+      var vb=sv.viewBox&&sv.viewBox.baseVal,k=vb&&vb.width?sv.getBoundingClientRect().width/vb.width:1;f.scrollLeft=Math.max(0,+sv.getAttribute('data-x0')*k-12);}
+    vizEdge(f);});}
   window.addEventListener('resize',function(){vizFrames(document.querySelector('.panel:not([hidden])'));});
   document.addEventListener('toggle',function(e){if(e.target&&e.target.querySelector)vizFrames(e.target);},true);
   function lastAny(){var s=get(KEY);return s&&isReport(s)&&meta[s]?s:null;}

@@ -225,10 +225,10 @@ def _unit(u):
     return ' ' + u if len(u) >= 3 and u[0].isalpha() else u
 
 
-def _svg(w, h, body, cls, title, caption, wide=False):
+def _svg(w, h, body, cls, title, caption, wide=False, x0=None):
     t = f'<p class="viz-title">{esc(title)}</p>' if title else ''
     c = f'<figcaption>{caption}</figcaption>' if caption else ''
-    return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}" '
+    return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''} '
             f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg></div>{c}</figure>')
 
 
@@ -530,9 +530,11 @@ def tree(d):
         return cx
     layout(root, 0)
     width = cursor[0] - gx + 8
+    off = 0
     if width < W:                                            # P58: a tree narrower than the drawing (a one-child chain)
-        off = (W - width) / 2                                # is centred in it, not drawn against its left edge
-        pos = {k: (cx + off, dp) for k, (cx, dp) in pos.items()}
+        off = (W - width) / 2                                # is centred in it, not drawn against its left edge; the svg
+        pos = {k: (cx + off, dp) for k, (cx, dp) in pos.items()}   # carries data-x0, where the drawing starts, so a phone
+                                                             # frame (natural size, scrolling) opens on it, not on the margin
     body = ''
     def draw(n):
         nonlocal body
@@ -548,7 +550,8 @@ def tree(d):
         body += _g(f'<rect class="viz-node viz-t{tone}" x="{x:.1f}" y="{y}" width="{node_w}" height="{h}" rx="2"/>'
                    + _text(lines, T_NODE, cx, y + (h - len(lines) * 14) / 2, 'middle'))
     draw(root)
-    return _svg(max(W, _r(width)), _r(lvl_y[-1] + lvl_h[-1] + 8), body, 'tree', d.get('title'), d.get('caption'), wide=width > W * 1.15)
+    return _svg(max(W, _r(width)), _r(lvl_y[-1] + lvl_h[-1] + 8), body, 'tree', d.get('title'), d.get('caption'), wide=width > W * 1.15,
+                x0=off)
 
 
 def flow(d):
