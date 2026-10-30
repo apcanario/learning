@@ -234,6 +234,75 @@ def check_files(fails):
     for ctx, fs in by.items():
         print(f'  {ctx + "/":10} {len(fs):3} files {sum(n for n, _ in fs) / 1024:7,.0f} KB, largest {max(fs)[1]} {max(fs)[0] / 1024:,.0f} KB')
 
+# P58 (30 Oct 2026): the drawing faults the Greek retrofit's checkers met, read from every built figure on every page
+# (the shell and each fetched file), so a figure that would show one fails the build. See viz.py's P58 contract.
+QUAL = re.compile(r'(?:^|[\s(\[])(c\.|ca\.|by|after|before|from|until)$', re.I)
+TEXT_RE = re.compile(r'<text class="([\w-]+)" x="([-\d.]+)" y="([-\d.]+)"[^>]*>(.*?)</text>', re.S)
+def _texts(svg):
+    import html as H
+    return [(m.group(1), float(m.group(2)), float(m.group(3)), H.unescape(re.sub(r'<[^>]+>', '', m.group(4)))) for m in TEXT_RE.finditer(svg)]
+def figure_rules(page, name):
+    """The P58 faults in one built page's figures, as messages (empty when it has none)."""
+    import html as H
+    bad, n = [], 0
+    prose = re.sub(r'<figure class="viz.*?</figure>', '', page, flags=re.S)
+    bce = len(re.findall(r'\bBCE\b', prose)) > len(re.findall(r'\bBC\b', prose))
+    for m in re.finditer(r'<figure class="viz viz-([\w-]+)[^"]*">(.*?)</figure>', page, re.S):
+        kind, svg = m.group(1), m.group(2); n += 1
+        where, tx = f'{name} figure {n} ({kind})', _texts(svg)
+        if kind == 'timeline':
+            for (c1, x1, y1, t1), (c2, x2, y2, t2) in zip(tx, tx[1:]):
+                if c1 == c2 == 'viz-label' and x1 == x2 and 0 < y2 - y1 < 20 and QUAL.search(t1) and re.match(r'[(\[]?\d', t2):
+                    bad.append(f'{where}: a wrapped event label parts "{t1.split()[-1]}" from its number ("{t1}" / "{t2}")')
+            for i, (c, x, y, t) in enumerate(tx):
+                if c != 'viz-date':
+                    continue
+                lab = ' '.join(t2 for c2, x2, y2, t2 in tx[i + 1:i + 8] if c2 == 'viz-label' and x2 == x and 0 < y2 - y < 100)
+                if any(g.group(1) in t and 'c.' not in t for g in re.finditer(r'\bc\.\s?(\d+)', lab)):
+                    bad.append(f'{where}: the date line "{t}" drops the "c." its label keeps ("{lab}"): give the event "date"')
+                if re.search(r'\(c\.\)|\(date approx', lab) and 'c.' not in t:
+                    bad.append(f'{where}: the label "{lab}" marks its date approximate because the date line cannot: give the event "date"')
+                if any(g.group(1) in t and '/' not in t for g in re.finditer(r'\b(\d+)/(\d+)', lab)):
+                    bad.append(f'{where}: the date line "{t}" drops the split year its label keeps ("{lab}"): give the event "date"')
+        if bce and kind in ('timeline', 'range') and any(c in ('viz-date', 'viz-ticklabel', 'viz-value') and re.search(r'\b(BC|AD)\b', t) for c, x, y, t in tx):
+            bad.append(f'{where}: BC/AD in a figure on a page whose prose writes BCE/CE: set "era": "BCE"')
+        if kind == 'range':
+            rows = re.split(r'<g data-row="\d+">', svg)[1:]
+            if not rows:
+                bad.append(f'{where}: a range drawn without its rows (rebuild with the P58 viz.py)')
+            for r in rows:
+                vals = [t.split(' · ')[0] for c, x, y, t in _texts(r) if c == 'viz-value']
+                dup = sorted({v for v in vals if vals.count(v) > 1})
+                if dup:
+                    bad.append(f'{where}: one range row prints {dup[0]!r} {vals.count(dup[0])} times')
+            for e in re.finditer(r'<g data-end="([-\d.]+)"><g data-box=""><rect class="viz-lblbg" x="([-\d.]+)" y="[-\d.]+" width="([-\d.]+)"', svg):
+                ex, px, pw = map(float, e.groups())
+                if not px - 0.6 <= ex <= px + pw + 0.6:
+                    bad.append(f'{where}: a range end label ({px:.0f} to {px + pw:.0f}) does not sit under its end at {ex:.0f}')
+            bad += [f'{where}: "{t}": a word unit takes the singular for 1' for c, x, y, t in tx if c == 'viz-value' and re.match(r'1 [a-z]*[^s]s\b', t)]
+        if kind == 'objects':
+            if svg.count('class="viz-lblbg"') != len(re.findall(r'<g data-box="" data-text=', svg)):
+                bad.append(f'{where}: a link label drawn without its data-text, so its lines cannot be checked (rebuild with the P58 viz.py)')
+            for g in re.finditer(r'<g data-box="" data-text="([^"]*)">(.*?)</g>', svg, re.S):
+                want = ' '.join(H.unescape(g.group(1)).split())
+                got = ' '.join(t for c, x, y, t in _texts(g.group(2)) if c == 'viz-linklabel')
+                if ' '.join(got.split()) != want:
+                    bad.append(f'{where}: the link label {want!r} is cut across lines as {got!r}')
+        if kind == 'tree':
+            vb = re.search(r'viewBox="0 0 ([\d.]+) ', svg)
+            xs = [(float(a), float(w)) for a, w in re.findall(r'<rect class="viz-node[^"]*" x="([-\d.]+)" y="[-\d.]+" width="([\d.]+)"', svg)]
+            if vb and xs:
+                W_, lo, hi = float(vb.group(1)), min(a for a, w in xs), max(a + w for a, w in xs)
+                if hi - lo < W_ - 24 and abs(lo - (W_ - hi)) > 1.5:
+                    bad.append(f'{where}: a narrow tree is not centred (margins {lo:.0f} and {W_ - hi:.0f})')
+    return bad, n
+def check_figure_rules(fails):
+    bad, n = [], 0
+    for f in [SITE / 'index.html'] + sorted(x for x in SITE.rglob('*.html') if x.name != 'index.html'):
+        b, k = figure_rules(f.read_text(), str(f.relative_to(SITE))); bad += b; n += k
+    fails += ["figure rules: " + b for b in bad[:20]]
+    print(f'figure rules (P58): {n} built figures read, {len(bad)} faults')
+
 # P56 (30 Oct 2026): a link into an unopened panel lands once the fetch is in and the shell has scrolled to the anchor,
 # which can take longer than a fixed wait (#s-m23 once measured at top 7319, then passed on a re-run). SETTLE_JS waits,
 # frame by frame for up to 3 s, until the anchor's top has held still for 5 frames inside the landing band (-5..200),
@@ -396,6 +465,7 @@ def check_figures(br, fails):
 def main():
     errors, fails = [], []
     check_files(fails)
+    check_figure_rules(fails)
     with sync_playwright() as p:
         br = p.chromium.launch()
         check_split(br, fails)

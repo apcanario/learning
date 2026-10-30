@@ -51,6 +51,7 @@ With the whole draft written, go through it section by section and ask of each: 
 
 - **Source.** Every label, date and number in a figure already appears in the unit's text, sourced there. A figure adds no fact.
 - **Place.** Put the figure directly after the paragraph or table it draws, with at most one plain sentence introducing it.
+- **Hidden answers.** No figure draws what a Self-test or exam hides in `<details>` (a model answer, a key): a figure sits at the top level and would show the answer under its question. An exam's figures draw only what its visible questions give.
 - **How many.** One to four figures a unit is a guide, and none where nothing has a shape; a figure is never added for decoration. A brief that names its own number stands (the User Experience briefs ask for three to eight).
 - **Caption.** Say what the figure shows and where its data comes from: the section of this unit and the source it cites there (author, work, line or page; organisation, report, date). A figure redrawn or adapted from a source credits it.
 - **Syntax.** Markdown units (Brand + AI, User Experience): a fenced ` ```viz ` block holding the JSON, `kind` and `caption` inside it. History fragments: `<figure class="viz" data-viz="<kind>"><script type="application/json">{…}</script><figcaption>…</figcaption></figure>` (`kit/WRITER-BRIEF.md`).

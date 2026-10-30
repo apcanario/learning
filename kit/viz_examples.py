@@ -250,6 +250,38 @@ CASES = [
       'rows': [{'label': 'An event dated two ways', 'low': -264, 'high': -241, 'point': -250, 'low_src': 'one source', 'high_src': 'another', 'tone': 4},
                {'label': 'A second event', 'low': -218, 'high': -202, 'low_src': 'one', 'high_src': 'another', 'tone': 2}],
       'caption': CASE}),
+    # P58 (30 Oct 2026): one case per drawing fault the N5 checkers met in the Greek retrofit.
+    ('range-single', 'A row whose low equals its high: one value, drawn as a point and printed once with one source tag; end labels sit under the value they name (Greek 1.1, 1.2, 5.1, 6.1, 8.5, 9.4, 10.10).',
+     {'kind': 'range', 'title': 'One value, and a narrow range', 'years': True, 'min': -1500, 'max': -1300, 'ticks': [-1500, -1450, -1400, -1350, -1300],
+      'rows': [{'label': 'Dated once, by two sources that agree', 'low': -1400, 'high': -1400, 'point': -1400, 'low_src': 'one source', 'high_src': 'one source', 'tone': 4},
+               {'label': 'Dated once, by two sources that differ', 'low': -1375, 'high': -1375, 'low_src': 'one', 'high_src': 'another', 'tone': 2},
+               {'label': 'A range too narrow for both labels under it', 'low': -1430, 'high': -1420, 'low_src': 'a first source', 'high_src': 'a second', 'tone': 3}],
+      'caption': CASE}),
+    ('timeline-circa', 'Event labels that wrap where a "c." meets its year: "c.", "by" and "after" stay with the number (Greek 5.1, 7.1, 7.2, 9.1, 10.2, 12.4).',
+     {'kind': 'timeline', 'title': 'Circa in a wrapped label', 'start': -800, 'end': -300, 'ticks': [-800, -700, -600, -500, -400, -300],
+      'events': [{'at': -670, 'label': 'A long label whose middle words fall at c. 670 when wrapped'},
+                 {'at': -530, 'label': 'Another one, rebuilt by 500 or (c. 530)'},
+                 {'at': -345, 'label': 'A move to an island (from c. 345)'}],
+      'caption': CASE}),
+    ('timeline-dates', 'Events with their own date text (an approximate year, a split year) and a figure in BCE/CE: the date line prints the text, so the label need not repeat it (Greek 3.1, 3.3, 3.7, 10.2; Rome 1.6, 7.4).',
+     {'kind': 'timeline', 'title': 'Dates as the text gives them', 'era': 'BCE', 'start': -700, 'end': 100, 'ticks': [-700, -500, -300, -100, 100],
+      'events': [{'at': -600, 'date': 'c. 600 BCE', 'label': 'An approximate year'}, {'at': -476, 'date': '476/5 BCE', 'label': 'A split year'},
+                 {'at': -500, 'date': 'c. 500, or after 490 BCE', 'label': 'A date given two ways'}, {'at': 14, 'label': 'A plain year in CE'}],
+      'caption': CASE}),
+    ('objects-gap', 'A link label with a long word between two columns: the gap widens until the word fits, never cut mid-word (Greek 5.4, 10.9).',
+     {'kind': 'objects', 'title': 'A long link label',
+      'objects': [{'id': 'a', 'title': 'A city', 'attrs': ['an assembly'], 'tone': 2}, {'id': 'b', 'title': 'A neighbour', 'attrs': ['a council'], 'tone': 4},
+                  {'id': 'c', 'title': 'A third city', 'attrs': ['a king'], 'tone': 3}],
+      'rows': [['a', 'b', 'c']], 'links': [{'from': 'a', 'to': 'b', 'label': 'concedes territory'}, {'from': 'b', 'to': 'c', 'label': 'prepares business'}],
+      'caption': CASE}),
+    ('range-singular', 'A word unit and a value of 1: the unit takes the singular ("1 head", not "1 heads"; Greek 2.6).',
+     {'kind': 'range', 'title': 'One of a word unit', 'unit': 'heads', 'min': 0, 'max': 10, 'ticks': [0, 2, 4, 6, 8, 10],
+      'rows': [{'label': 'Counted from one to nine', 'low': 1, 'high': 9, 'low_src': 'one source', 'high_src': 'another', 'tone': 4}],
+      'caption': CASE}),
+    ('tree-chain', 'A one-child chain: centred in the drawing, not against its left edge (Greek 8.1).',
+     {'kind': 'tree', 'title': 'A chain',
+      'root': {'label': 'A first level', 'children': [{'label': 'A second level', 'children': [{'label': 'A third level'}]}]},
+      'caption': CASE}),
 ]
 # blocks the renderer cannot draw honestly: each stops the build with the message shown (verify.py renders each and checks)
 RAISES = [
@@ -257,6 +289,9 @@ RAISES = [
     ('Ticks too close to label', {'kind': 'timeline', 'start': -100, 'end': 100, 'ticks': [-100, -1, 1, 100]}, 'too close to label both'),
     ('An object\'s attrs as a bare string', {'kind': 'objects', 'objects': [{'id': 'a', 'title': 'Assembly', 'attrs': 'like an aristocracy'}], 'rows': [['a']]}, 'must be a list'),
     ('Negative whole numbers in a range without "years"', {'kind': 'range', 'rows': [{'label': 'A date', 'low': -264, 'high': -241}]}, '"years": true'),
+    ('An event date that does not contain its year (P58)', {'kind': 'timeline', 'start': -700, 'end': -500, 'events': [{'at': -600, 'date': 'c. 650 BC', 'label': 'A date'}]}, 'does not contain the year'),
+    ('An event date in BC/AD in a BCE/CE figure (P58)', {'kind': 'timeline', 'era': 'BCE', 'start': -700, 'end': -500, 'events': [{'at': -600, 'date': 'c. 600 BC', 'label': 'A date'}]}, 'mixes notations'),
+    ('A word unit not ending in s, a value of 1 and no "unit_one" (P58)', {'kind': 'range', 'unit': 'men', 'rows': [{'label': 'A count', 'low': 1, 'high': 5}]}, '"unit_one"'),
 ]
 
 NAMES = {'timeline': 'Timeline', 'compare': 'Compare', 'tree': 'Tree', 'flow': 'Flow', 'sitemap': 'Sitemap', 'objects': 'Object map',
@@ -273,8 +308,8 @@ def fragment(crumbs):
         toc += f'<a href="#{sid}">{NAMES[key]}</a>'
         md.append(f'## {NAMES[key]} · `{kind}`\n\n{what}\n\nFields: {fields.replace("_", chr(92) + "_")}; every kind also takes `title`, `caption` and `tone` (1 to 6).\n\n'
                   f'```viz\n{json.dumps(block, ensure_ascii=False, indent=1)}\n```\n\n{sid}BLOCK\n')
-    md.append('## Hard cases\n\nThe drawing faults the Rome figure checkers met (P55, 30 October 2026), each as the renderer now draws it, '
-              'so the build\'s checks run on it every time. Their data is invented.\n')
+    md.append('## Hard cases\n\nThe drawing faults the Rome figure checkers met (P55, 30 October 2026) and the Greek ones (P58, the same day), '
+              'each as the renderer now draws it, so the build\'s checks run on it every time. Their data is invented.\n')
     for key, what, block in CASES:
         md.append(f'### {block["title"]}\n\n{what}\n\n```viz\n{json.dumps(block, ensure_ascii=False, indent=1)}\n```\n')
     md.append('### Blocks that stop the build\n\nA figure the renderer cannot draw honestly is not drawn: the build stops and says what to change.\n')

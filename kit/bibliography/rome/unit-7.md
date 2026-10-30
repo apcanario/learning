@@ -97,7 +97,7 @@ Curated bibliography: `bibliography/rome/r-7.2.md`.
 Curated bibliography: `bibliography/rome/r-7.3.md`.
 
 ### Ancient works
-- Eusebius, *Church History* 4.6
+- Eusebius, *Church History* 4.2; 4.6
 - Pliny, *Panegyricus* 7.4; 7.4–6; 8; 22
 - Procopius, *Buildings* 4.6.12–13
 - Tacitus, *Annals* 1.11.4

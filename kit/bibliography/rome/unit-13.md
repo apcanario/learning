@@ -74,7 +74,7 @@ Curated bibliography: `bibliography/rome/r-13.2.md`.
 - *Letters to Atticus* 16.11.4, 16.14.3
 - *Meditations* 6.44
 - *On Anger* 2.2; 3.36
-- *On Ends* 3.16; 3.22; 3.48; 3.51–52; 3.52; 3.57; 4; 4.74
+- *On Ends* 3.16; 3.22; 3.48; 3.51–52; 3.52; 3.57; 4.72; 4.74
 - *On Leisure* 4.1; 6.4
 - *On Stoic Self-Contradictions* 1033b
 - *On the Happy Life* 17.3; 26.1

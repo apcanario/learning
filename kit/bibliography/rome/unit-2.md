@@ -172,7 +172,7 @@ Curated bibliography: `bibliography/rome/r-2.4.md`.
 - Plutarch, *Roman Questions* 87
 - Tacitus, *Annals* 2.69; 3.76; 4.16
 - Varro, *On the Latin Language* 5.23
-- Virgil, *Aeneid* 5.84–96
+- Virgil, *Aeneid* 5.84–96; 5.95
 - *Apology* 25–26
 - *Caligula* 59
 - *De die natali* 3.1

@@ -134,7 +134,7 @@ Curated bibliography: `bibliography/rome/r-3.4.md`.
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Diodorus 16.45.8; 19.72; 20.36; 21.6.1
 - Herodotus 7.234
-- Livy 7.19.4; 7.29–31; 8.16; 8.21.11; 8.22–23; 9.2–6; 9.5–11; 9.29; 9.29–34; 10.3–5; 10.7–8; 10.11–12; 10.16–18; 10.27–29; 27.9–10; 27.38
+- Livy 7.19.4; 7.29–31; 8.16; 8.21.11; 8.22–23; 9.2–6; 9.5–11; 9.29; 9.29–34; 10.3–5; 10.7–8; 10.16–18; 10.27–29; 27.9–10; 27.38
 - Polybius 2.19–20; 2.24; 6.19–42; 6.39.15
 
 ### Modern works

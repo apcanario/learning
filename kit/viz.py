@@ -16,6 +16,7 @@ they come from. The kinds and their fields:
 
   timeline  {"kind": "timeline", "start": -1000, "end": 476, "ticks": [-750, -500, ...], "events": [{"at": -753, "label": "Foundation"}, ...],
              "spans": [{"from": -753, "to": -509, "label": "Kings", "tone": 1}, ...]}      years: negative BC, positive AD
+            optional per event "date" (its date line as the unit writes it, P58) and per figure "era": "BCE"
   compare   {"kind": "compare", "unit": "%", "max": 100, "rows": [{"label": "Instagram", "value": 61}, ...]}   horizontal bars
   tree      {"kind": "tree", "root": {"label": "Chaos", "children": [{"label": "Gaia", "children": [...]}]}}    top-down
   flow      {"kind": "flow", "steps": [{"label": "Quaestor", "note": "age 30"}, ...]}                            left to right, wraps
@@ -72,7 +73,7 @@ The data kinds (P44, 29 Oct 2026; one of each on the examples page too):
              "quadrants": {"x": 25, "y": 7.5, "names": ["top left", "top right", "bottom left", "bottom right"]}}
             labelled points on two numeric axes with gridlines at the ticks; each label takes the nearest free spot
             around its point (covering no point, label or quadrant name), and a label with no free spot raises.
-  range     {"kind": "range", "unit": "%", "years": false, "min": 0, "max": 100, "ticks": [...], "rows": [{"label": "...", "low": 45,
+  range     {"kind": "range", "unit": "%", "unit_one": null, "years": false, "era": "BC", "min": 0, "max": 100, "ticks": [...], "rows": [{"label": "...", "low": 45,
              "high": 70, "point": 58, "low_src": "Pew 2024", "high_src": "Ofcom 2025", "tone": 4}, ...]}
             competing estimates: per row a low-to-high bar, an optional point estimate (a diamond, its value above it)
             and under the bar each end's value with its source tag; one axis for every row.
@@ -117,6 +118,32 @@ the renderer cannot draw honestly stops the build with a message that says what 
   range       "years": true prints every value, tick and point as a year; without it, a range whose values are whole
               numbers and include a negative one stops the build (add "years", or "decimals" for real quantities).
               Tick labels at the ends anchor inward so they stay inside the drawing.
+Contract changes at P58 (30 Oct 2026), from the faults the Greek retrofit's checkers met (kit/reviews/p43-greece-notes.md),
+under the same rule: a label moves or the drawing widens; it is never clipped or cut.
+  timeline    an event may carry "date", the date line as the unit writes it ("c. 600 BC", "476/5 BC", "c. 500, or after
+              490 BC"), printed in place of the bare year that "at" gives; "at" stays the year it is placed at (the first,
+              for a split year) and the text must contain that year, or the build stops. So a label no longer repeats its
+              date to keep a "c.": give the event "date" and keep the label to the event. A figure may set "era": "BCE"
+              (default "BC") to print 753 BCE, 14 CE in its ticks and date lines, as a unit that writes BCE/CE does; a
+              "date" in the other notation stops the build. Wrapping never parts "c.", "ca.", "by", "after", "before",
+              "from" or "until" from the number after it ("(c. 185)" stays on one line).
+  range       a row whose low equals its high is one value: it draws as a point (a diamond, no bar) with its value printed
+              once under it, with one source tag (both sources, comma-separated, when they differ); a "point" on such a row
+              prints nothing above it. Every end label sits under the value it names: its plate spans its end of the bar
+              (inward when both fit under the bar, else centred on each end, else meeting at the bar's middle, else the
+              high one a line lower); each label group carries data-end, its end's x, and each row is a <g data-row>.
+              A word unit takes the singular for 1: "unit_one" when given (e.g. "man" for "men"), else the unit less a
+              final "s" ("1 head"); a word unit not ending in "s" with a value of 1 and no "unit_one" stops the build.
+              "era" as for timeline, with "years": true.
+  objects     a link label on a level line wraps in the gap between its columns; the gap widens (all gaps alike) until
+              the label's longest word fits with 6 units either side, and when the boxes would fall under 110 the
+              drawing widens and scrolls; a word is never cut. A diagonal link's label wraps no narrower than its
+              longest word.
+  tree        a tree narrower than the 700-unit drawing (a one-child chain, a short branch) is centred in it.
+verify.py (P58) also reads every built figure for these: no event label line ending in "c.", "by", "after" (and the
+like) with its number on the next line; no date line that drops a "c." or a split year the label carries; no BC/AD
+in a figure on a page whose prose writes BCE/CE; no value printed twice in one range row, and every range end label
+spanning its end; no "1 <word>s"; every objects link label's lines joining back to whole words; a narrow tree centred.
 verify.py (P55) runs its figure checks on every figure of every page, every kind: nothing outside the drawing, every
 text inside its box (a node, a plate, a bar or span carrying its label), no two boxes overlapping, no two texts
 overlapping and no free text over a box; the examples page carries one hard case per fault above.
@@ -136,14 +163,59 @@ def esc(s):
     return H.escape(str(s), quote=True)
 
 
-def yr(y, kind='timeline'):
-    """A year as a figure prints it: 753 BC, AD 14, 1453. There is no year 0 (1 BC is followed by AD 1), so a label at
-    0 cannot be printed honestly and stops the build (P55)."""
+ERAS = ('BC', 'BCE')
+
+
+def yr(y, kind='timeline', era='BC'):
+    """A year as a figure prints it: 753 BC, AD 14, 1453; with era "BCE" (P58), 753 BCE, 14 CE, 1453. There is no
+    year 0 (1 BC is followed by AD 1), so a label at 0 cannot be printed honestly and stops the build (P55)."""
     y = int(y)
     if y == 0:
         _fail(kind, 'a year 0 would be printed, and there is no year 0 (1 BC is followed by AD 1): '
                     'put the tick, event or value at -1 (1 BC) or 1 (AD 1)')
+    if era == 'BCE':
+        return f'{-y} BCE' if y < 0 else f'{y} CE' if y < 1000 else str(y)
     return f'{-y} BC' if y < 0 else f'AD {y}' if y < 1000 else str(y)
+
+
+def _era(d, kind):
+    """A figure's era notation (P58): "BC" (BC/AD, the default) or "BCE" (BCE/CE), as the unit's prose writes it."""
+    e = d.get('era', 'BC')
+    if e not in ERAS:
+        _fail(kind, f'"era" is "BC" (BC/AD) or "BCE" (BCE/CE), got {e!r}')
+    return e
+
+
+# P58: a qualifier that belongs to the number after it ("c. 670", "by 500", "after 490") is never left at the end of a
+# line with the number on the next: the space between them is made unbreakable while the line is wrapped.
+_GLUE = re.compile(r'(?<![^\s(\[])(c\.|ca\.|by|after|before|from|until)\s+(?=[(\[]?\d)', re.I)
+
+
+def _glue(s):
+    return _GLUE.sub(lambda m: m.group(1) + '\u00a0', str(s))
+
+
+def _unglue(lines):
+    return [ln.replace('\u00a0', ' ') for ln in lines]
+
+
+def _date_text(e, era, kind='timeline'):
+    """An event's date line (P58): its own "date" text when it has one, else its year as yr prints it. The text keeps
+    what the unit says (c. 600 BC, 476/5 BC, c. 500, or after 490): it must contain the event's year as a number and
+    use the figure's era notation."""
+    if 'date' not in e:
+        return yr(e['at'], kind, era)
+    t = e['date']
+    if not isinstance(t, str) or not t.strip():
+        _fail(kind, f'the event {e.get("label")!r}: "date" must be the date as the unit writes it, e.g. "c. 600 BC"')
+    if str(abs(int(e['at']))) not in t:
+        _fail(kind, f'the event {e.get("label")!r} at {e["at"]}: its date {t!r} does not contain the year {abs(int(e["at"]))}; '
+                    'set "at" to the year the date names (its first, for a split year)')
+    wrong = r'\b(BC|AD)\b' if era == 'BCE' else r'\b(BCE|CE)\b'
+    if re.search(wrong, t):
+        _fail(kind, f'the event {e.get("label")!r}: its date {t!r} mixes notations; the figure\'s era is {era} '
+                    '(set "era" to "BCE" for BCE/CE)')
+    return t
 
 
 def _unit(u):
@@ -275,7 +347,10 @@ def timeline(d):
     for s in spans:
         if not start <= s['from'] < s['to'] <= end:
             _fail(K, f'the span {s.get("label")!r} ({s["from"]} to {s["to"]}) must run forwards inside start..end ({start}..{end})')
-    tlab = [yr(t) for t in ticks]
+    era = _era(d, K)
+    dates = [_date_text(e, era) for e in events]
+    wrap = lambda s: _unglue(_wrap(_glue(s), 22))
+    tlab = [yr(t, K, era) for t in ticks]
     tw_max = max((_tw(t, 10.5, 'mono') for t in tlab), default=0)
     # P55: the drawing widens (and scrolls) until every label fits: a span label beside its bar, every event label inside
     # the drawing, and neighbouring tick labels 8 units apart. It starts at 700, or 64 per event for a dense timeline.
@@ -286,7 +361,7 @@ def timeline(d):
         txs = sorted(x(t) for t in ticks)
         need = max([(tw_max + 8) / (b - a) for a, b in zip(txs, txs[1:]) if b > a] + [1])
         lanes = _span_lanes(spans, x, W) if spans else []
-        ev_w = max((max([_tw(yr(e['at']), 10.5, 'mono')] + [_tw(ln, 12) for ln in _wrap(e['label'], 22)]) for e in events), default=0)
+        ev_w = max((max([_tw(dt, 10.5, 'mono')] + [_tw(ln, 12) for ln in wrap(e['label'])]) for e, dt in zip(events, dates)), default=0)
         if lanes is not None and need <= 1 and ev_w <= W - 8:
             break
         W = math.ceil(W * max(need, 1.15) / 10) * 10
@@ -323,7 +398,7 @@ def timeline(d):
     # text wrapped at 22.
     lab = {}
     for k, e in enumerate(events):
-        lines = [yr(e['at'])] + _wrap(e['label'], 22)
+        lines = [dates[k]] + wrap(e['label'])
         lab[k] = [x(e['at']), lines, max([_tw(lines[0], 10.5, 'mono')] + [_tw(ln, 12) for ln in lines[1:]])]
     n = len(events)
     def span(k, anchor):
@@ -455,6 +530,9 @@ def tree(d):
         return cx
     layout(root, 0)
     width = cursor[0] - gx + 8
+    if width < W:                                            # P58: a tree narrower than the drawing (a one-child chain)
+        off = (W - width) / 2                                # is centred in it, not drawn against its left edge
+        pos = {k: (cx + off, dp) for k, (cx, dp) in pos.items()}
     body = ''
     def draw(n):
         nonlocal body
@@ -557,16 +635,18 @@ def _g(inner):
     return f'<g data-box="">{inner}</g>'
 
 
-def _plate(lines, role, cx, cy, lo=4, hi=None):
-    """A connector's label on a plate of the card colour, centred on (cx, cy) and kept inside [lo, hi]."""
+def _plate(lines, role, cx, cy, lo=4, hi=None, text=None):
+    """A connector's label on a plate of the card colour, centred on (cx, cy) and kept inside [lo, hi]. With text (the
+    label as given, P58), the group carries it as data-text, so verify.py can check its lines join back to whole words."""
     lh = role[4]
     w, h = _width(lines, role) + 8, len(lines) * lh + 4
     x = cx - w / 2
     if hi is not None:
         x = min(x, hi - w)
     x = max(x, lo)
-    return _g(f'<rect class="viz-lblbg" x="{x:.1f}" y="{cy - h / 2:.1f}" width="{w:.1f}" height="{h:.1f}"/>'
-              + _text(lines, role, x + w / 2, cy - h / 2 + 2, 'middle'))
+    inner = (f'<rect class="viz-lblbg" x="{x:.1f}" y="{cy - h / 2:.1f}" width="{w:.1f}" height="{h:.1f}"/>'
+             + _text(lines, role, x + w / 2, cy - h / 2 + 2, 'middle'))
+    return f'<g data-box="" data-text="{esc(text)}">{inner}</g>' if text is not None else _g(inner)
 
 
 def _arrow(pts, cls='viz-link'):
@@ -748,12 +828,26 @@ def objects(d):
         objs[o['id']] = o
     grid = d['rows']
     cols = max(len(r) for r in grid)
-    GX, GY = 56, 72
-    bw = min(220, (W - 16 - GX * (cols - 1)) / cols)
+    GY = 72
+    # P58: a link label on a level line hangs in the gap between its two columns and wraps at that width; the gap
+    # widens until the label's longest word fits (it was cut mid-word, "conced" / "es", in a 56-unit gap), and the
+    # drawing widens and scrolls when the boxes would get narrower than 110.
+    cell = {oid: (ri, c) for ri, row in enumerate(grid) for c, oid in enumerate(row) if oid is not None}
+    GX = 56
+    for e in d.get('links', []):
+        pa, pb = cell.get(e.get('from')), cell.get(e.get('to'))
+        if e.get('label') and pa and pb and pa[0] == pb[0] and abs(pa[1] - pb[1]) == 1:
+            word = max(_tw(w, T_LINK[2], T_LINK[1]) for w in str(e['label']).split())
+            GX = max(GX, math.ceil(word + 12 + 8))
+    Wd = W
+    bw = min(220, (Wd - 16 - GX * (cols - 1)) / cols)
     if bw < 110:
-        _fail(K, f'{cols} columns leave boxes {bw:.0f} wide; use at most 4 per row')
+        if cols > 4:
+            _fail(K, f'{cols} columns leave boxes {bw:.0f} wide; use at most 4 per row')
+        bw = 110
+        Wd = math.ceil(16 + cols * bw + GX * (cols - 1))
     TXT = bw - 16
-    x0 = (W - (cols * bw + GX * (cols - 1))) / 2
+    x0 = (Wd - (cols * bw + GX * (cols - 1))) / 2
     rects, body, y = {}, '', 8
     for row in grid:
         hs = {}
@@ -830,11 +924,11 @@ def objects(d):
             if abs(uy) < 0.01:                               # a level line: the label hangs under it
                 lab = _lines(e['label'], T_LINK, max(40, L - 12))
                 h = len(lab) * 12.5 + 4
-                links += _plate(lab, T_LINK, (P[0] + Q[0]) / 2, P[1] + 4 + h / 2, 4, W - 4)
+                links += _plate(lab, T_LINK, (P[0] + Q[0]) / 2, P[1] + 4 + h / 2, 4, Wd - 4, e['label'])
             else:
-                lab = _lines(e['label'], T_LINK, min(bw, 150))
-                links += _plate(lab, T_LINK, (P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2, 4, W - 4)
-    return _svg(W, _r(y - GY + 8), links + body, 'objects', d.get('title'), d.get('caption'))
+                lab = _lines(e['label'], T_LINK, max(min(bw, 150), max(_tw(w, T_LINK[2], T_LINK[1]) for w in str(e['label']).split()) + 1))
+                links += _plate(lab, T_LINK, (P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2, 4, Wd - 4, e['label'])
+    return _svg(Wd, _r(y - GY + 8), links + body, 'objects', d.get('title'), d.get('caption'), wide=Wd > W * 1.15)
 
 
 def decision(d):
@@ -1819,6 +1913,13 @@ def range_(d):
     if not rows:
         _fail(K, 'a range needs rows')
     unit, dec, years = _unit(d.get('unit', '')), d.get('decimals'), d.get('years', False)
+    era = _era(d, K)
+    # P58: a word unit takes the singular for 1 ("1 head", not "1 heads"): "unit_one" when given, else the unit less a
+    # final s; a word unit that does not end in s ("men") needs "unit_one" before a value of 1 can print.
+    one = d.get('unit_one')
+    if one is None and unit.startswith(' ') and unit.endswith('s') and not unit.endswith('ss'):
+        one = unit[1:-1]
+    one = _unit(one) if one is not None else None
     vs = []
     for r in rows:
         if not r.get('label'):
@@ -1837,45 +1938,68 @@ def range_(d):
     lo, hi = min(lo, ticks[0]), max(hi, ticks[-1])
     PL, PR = 24, W - 24
     X = lambda v: PL + (v - lo) / (hi - lo) * (PR - PL)
-    num = (lambda v: yr(v, K)) if years else (lambda v: _fmt(v, dec) + unit)
+    def num(v):
+        if years:
+            return yr(v, K, era)
+        u = unit
+        if unit.startswith(' ') and v == 1:
+            if one is None:
+                _fail(K, f'a value of 1 would print as "1{unit}": give "unit_one", the singular of {unit.strip()!r}')
+            u = one
+        return _fmt(v, dec) + u
     tag = lambda v, src: num(v) + (f' · {src}' if src else '')
+    def plate(cx, lines, top):                               # an end label centred under x = cx, kept inside the drawing
+        w = _width(lines, T_VAL) + 8
+        return (min(max(4, cx - w / 2), W - 4 - w), top, w, 17)
+    under = lambda rc, cx: rc[0] - 0.5 <= cx <= rc[0] + rc[2] + 0.5
     y, marks, plates = 8, '', []
-    for r in rows:
+    for k, r in enumerate(rows):
+        row0 = len(marks)
         t = _tone(r, d.get('tone', 4), K)
         lab = _lines(r['label'], T_LABEL, W - 16)
         marks += _text(lab, T_LABEL, 8, y)
         y += len(lab) * 14 + 4
-        if r.get('point') is not None:
+        single = r['low'] == r['high']
+        if r.get('point') is not None and not single:
             pv = [num(r['point'])]
             pw = _width(pv, T_VAL)
             px_ = min(max(X(r['point']), 8 + pw / 2), W - 8 - pw / 2)
             marks += _text(pv, T_VAL, px_, y, 'middle')
             y += 14
         x1, x2 = X(r['low']), X(r['high'])
-        marks += f'<rect class="viz-rangebar viz-t{t}" x="{x1:.1f}" y="{y:.1f}" width="{max(x2 - x1, 3):.1f}" height="10"/>'
-        if r.get('point') is not None:
-            cx = X(r['point'])
+        if not single:
+            marks += f'<rect class="viz-rangebar viz-t{t}" x="{x1:.1f}" y="{y:.1f}" width="{x2 - x1:.1f}" height="10"/>'
+        if r.get('point') is not None or single:                # P58: a single value is drawn as a point
+            cx = X(r['point'] if r.get('point') is not None else r['low'])
             marks += f'<path class="viz-est" d="M{cx:.1f},{y - 2:.1f} L{cx + 7:.1f},{y + 5:.1f} L{cx:.1f},{y + 12:.1f} L{cx - 7:.1f},{y + 5:.1f} z"/>'
         y += 14
-        lt, ht = [tag(r['low'], r.get('low_src'))], [tag(r['high'], r.get('high_src'))]
-        lw, hw = _width(lt, T_VAL) + 8, _width(ht, T_VAL) + 8
-        if lw + hw + 8 <= x2 - x1 + 8:                        # both tags fit under the bar: each reads inward from its end
-            a, b = (x1 - 4, y, lw, 17), (x2 + 4 - hw, y, hw, 17)
-        else:                                                # else outward: the low one left of the start, the high one right of the end
-            a = (max(4, x1 - lw + 4), y, lw, 17)
-            b = (min(W - 4 - hw, x2 - 4), y, hw, 17)
-        if r['low'] == r['high'] and not r.get('low_src') and not r.get('high_src'):
-            marks += _plate_at(a, lt, T_VAL); plates.append(a); y += 17
+        if single:                                            # P58: one value, printed once, with one source tag
+            srcs = list(dict.fromkeys(x for x in (r.get('low_src'), r.get('high_src')) if x))
+            lt = [tag(r['low'], ', '.join(srcs))]
+            a = plate(x1, lt, y)
+            marks += f'<g data-end="{x1:.1f}">' + _plate_at(a, lt, T_VAL) + '</g>'
+            y += 17
         else:
-            if _clash(a, [b], 2):
-                b = (b[0], y + 18, hw, 17)
-            marks += _plate_at(a, lt, T_VAL) + _plate_at(b, ht, T_VAL)
+            # P58: each end's label sits under the value it names (its plate spans the bar's end): reading inward when
+            # both fit under the bar, else centred on each end, else meeting at the bar's middle, else the high one a
+            # line lower, centred on its end.
+            lt, ht = [tag(r['low'], r.get('low_src'))], [tag(r['high'], r.get('high_src'))]
+            lw, hw = _width(lt, T_VAL) + 8, _width(ht, T_VAL) + 8
+            mid = (x1 + x2) / 2
+            tries = [((x1 - 4, y, lw, 17), (x2 + 4 - hw, y, hw, 17)),
+                     (plate(x1, lt, y), plate(x2, ht, y)),
+                     ((max(4, mid - 2 - lw), y, lw, 17), (min(W - 4 - hw, mid + 2), y, hw, 17)),
+                     (plate(x1, lt, y), plate(x2, ht, y + 18))]
+            a, b = next(((a, b) for a, b in tries if not _clash(a, [b], 2) and under(a, x1) and under(b, x2)), tries[-1])
+            marks += (f'<g data-end="{x1:.1f}">' + _plate_at(a, lt, T_VAL) + '</g>'
+                      + f'<g data-end="{x2:.1f}">' + _plate_at(b, ht, T_VAL) + '</g>')
             y = max(a[1] + a[3], b[1] + b[3])
+        marks = marks[:row0] + f'<g data-row="{k}">' + marks[row0:] + '</g>'
         y += 16
     grid = ''
     for tk in ticks:
         grid += _line([(X(tk), 8), (X(tk), y - 8)], 'viz-grid')
-        tl = num(tk)
+        tl = yr(tk, K, era) if years else _fmt(tk, dec) + unit
         hw = _tw(tl, 10.5, 'mono') / 2
         anchor = 'start' if X(tk) - hw < 4 else ('end' if X(tk) + hw > W - 4 else 'middle')
         grid += f'<text class="viz-ticklabel" x="{X(tk):.1f}" y="{y + 6:.1f}" text-anchor="{anchor}">{esc(tl)}</text>'
