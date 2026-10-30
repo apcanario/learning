@@ -182,7 +182,7 @@ EXAMPLES = [
       'quadrants': {'x': 25, 'y': 7.5, 'names': ['loved, niche', 'loved, popular', 'weak, niche', 'popular, weak']},
       'caption': f'The benefit categories of the tree above, by uptake and by a satisfaction survey. {FIC}'}),
     ('range', 'Competing estimates: per row a bar from the lowest to the highest estimate, an optional point estimate, and the source of each end.',
-     'rows [{label, low, high, point, low_src, high_src, tone}], unit, decimals, min, max, ticks, xlabel',
+     'rows [{label, low, high, point, low_src, high_src, tone}], unit, decimals, years (values are years: 264 BC, AD 14), min, max, ticks, xlabel',
      {'kind': 'range', 'title': 'Adoption of the new claims flow after six months, by client size (fictional)', 'unit': '%', 'min': 0, 'max': 100,
       'ticks': [0, 25, 50, 75, 100],
       'rows': [{'label': 'Large clients', 'low': 45, 'high': 70, 'point': 58, 'low_src': 'finance', 'high_src': 'product'},
@@ -200,6 +200,65 @@ EXAMPLES = [
       'caption': f'Approval speed before and after the claims redesign; the blank cell is a quarter with too few claims to report. {FIC}'}),
 ]
 
+# P55 (30 Oct 2026): one case per drawing fault the N4 checkers met in the Rome retrofit, each drawn the way the renderer
+# now draws it, so verify.py's figure checks (text inside its box or bar, nothing outside the drawing, no two labels
+# overlapping) run on it at every build. Invented data, not Perqo: some faults need years BC.
+CASE = 'A test case for the renderer (P55); its names, dates and numbers are invented and claim nothing.'
+CASES = [
+    ('timeline-short-spans', 'Span labels wider than their bars: drawn beside the bar in the muted colour, never across it in the on-accent colour (Rome 1.5, 5.6, 7.4, 8.6).',
+     {'kind': 'timeline', 'title': 'Short spans', 'start': -800, 'end': -100, 'ticks': [-800, -600, -400, -200],
+      'spans': [{'from': -753, 'to': -716, 'label': 'First reign', 'tone': 1}, {'from': -716, 'to': -509, 'label': 'The later reigns', 'tone': 2},
+                {'from': -509, 'to': -500, 'label': 'First magistrates', 'tone': 3}, {'from': -500, 'to': -496, 'label': 'A war', 'tone': 4}],
+      'events': [{'at': -753, 'label': 'A foundation, by one count'}, {'at': -509, 'label': 'A first election'}],
+      'caption': CASE}),
+    ('timeline-overlap', 'Spans that overlap in time: each takes its own lane, abutting spans share one (Rome 5.6, 7.1, 10.2).',
+     {'kind': 'timeline', 'title': 'Overlapping spans', 'start': -300, 'end': -100, 'ticks': [-300, -250, -200, -150, -100],
+      'spans': [{'from': -264, 'to': -241, 'label': 'First war', 'tone': 1}, {'from': -250, 'to': -200, 'label': 'An era across both', 'tone': 2},
+                {'from': -241, 'to': -218, 'label': 'Interval', 'tone': 6}, {'from': -218, 'to': -201, 'label': 'Second war', 'tone': 3},
+                {'from': -149, 'to': -146, 'label': 'Third', 'tone': 4}],
+      'events': [{'at': -264, 'label': 'The war begins'}],
+      'caption': CASE}),
+    ('timeline-edges', 'Event labels at both ends of the axis, and a BC to AD axis: labels stay inside the drawing, and the year after 1 BC is AD 1 (Rome 6.4, 1.6; a tick at 0 stops the build, see below).',
+     {'kind': 'timeline', 'title': 'Labels at the edges', 'start': -500, 'end': 200, 'ticks': [-500, -250, 1, 200],
+      'events': [{'at': -500, 'label': 'A long event label at the very left edge of the axis'}, {'at': -498, 'label': 'Another long label beside it'},
+                 {'at': 199, 'label': 'A long event label at the very right edge'}, {'at': 200, 'label': 'And another at the right'}],
+      'caption': CASE}),
+    ('compare-long', 'A label wider than the old 170-unit column, a large value and a word unit: the column grows and wraps, values take separators and a space before a word (Rome 3.4, 11.1, 1.2).',
+     {'kind': 'compare', 'title': 'Long labels, large values', 'unit': 'men',
+      'rows': [{'label': 'A row label far wider than the old label column allowed', 'value': 1200},
+               {'label': 'A census', 'value': 770000, 'tone': 4}, {'label': 'Short', 'value': 337022, 'tone': 3}],
+      'caption': CASE}),
+    ('bars-long', 'The same in bars, grouped: long labels wrap in a column that grows to fit, values are separated and spaced.',
+     {'kind': 'bars', 'mode': 'grouped', 'title': 'Long labels in bars', 'unit': 'words',
+      'series': [{'name': 'Draft', 'tone': 2}, {'name': 'Final', 'tone': 3}],
+      'rows': [{'label': 'A row label far wider than the old label column allowed', 'values': [770000, 412000]},
+               {'label': 'Another', 'values': [1200, 900]}],
+      'caption': CASE}),
+    ('tree-ten', 'A tree of ten leaves: boxes keep their width and the drawing scrolls; labels wrap whole (they shrank to 64 units and broke mid-word, Rome 9.1, 10.2).',
+     {'kind': 'tree', 'title': 'Ten leaves',
+      'root': {'label': 'A root with ten children', 'children': [{'label': n} for n in
+               ('Constantinople', 'Thessalonica', 'Nicomedia', 'Antioch on the Orontes', 'Alexandria', 'Carthage', 'Mediolanum', 'Treveri', 'Sirmium', 'Ravenna')]},
+      'caption': CASE}),
+    ('objects-long', 'A two-column object map with long attributes: each wraps by words inside its box; attrs given as a bare string stop the build (Rome 4.5, see below).',
+     {'kind': 'objects', 'title': 'Long attributes',
+      'objects': [{'id': 'a', 'title': 'An assembly', 'attrs': ['an attribute long enough to wrap over several lines in its box', 'short'], 'tone': 2},
+                  {'id': 'b', 'title': 'A magistrate', 'attrs': ['another rather long attribute, also wrapped by words'], 'actions': ['-> convenes it'], 'tone': 4}],
+      'rows': [['a', 'b']], 'links': [{'from': 'b', 'to': 'a', 'label': 'presides', 'from_card': '1', 'to_card': '1'}],
+      'caption': CASE}),
+    ('range-bc', 'A range of years BC: with "years": true they print as years, not as negative numbers (Rome 3.5).',
+     {'kind': 'range', 'title': 'Competing dates', 'years': True, 'min': -300, 'max': -100, 'ticks': [-300, -250, -200, -150, -100],
+      'rows': [{'label': 'An event dated two ways', 'low': -264, 'high': -241, 'point': -250, 'low_src': 'one source', 'high_src': 'another', 'tone': 4},
+               {'label': 'A second event', 'low': -218, 'high': -202, 'low_src': 'one', 'high_src': 'another', 'tone': 2}],
+      'caption': CASE}),
+]
+# blocks the renderer cannot draw honestly: each stops the build with the message shown (verify.py renders each and checks)
+RAISES = [
+    ('A tick at year 0', {'kind': 'timeline', 'start': -100, 'end': 100, 'ticks': [-100, 0, 100]}, 'there is no year 0'),
+    ('Ticks too close to label', {'kind': 'timeline', 'start': -100, 'end': 100, 'ticks': [-100, -1, 1, 100]}, 'too close to label both'),
+    ('An object\'s attrs as a bare string', {'kind': 'objects', 'objects': [{'id': 'a', 'title': 'Assembly', 'attrs': 'like an aristocracy'}], 'rows': [['a']]}, 'must be a list'),
+    ('Negative whole numbers in a range without "years"', {'kind': 'range', 'rows': [{'label': 'A date', 'low': -264, 'high': -241}]}, '"years": true'),
+]
+
 NAMES = {'timeline': 'Timeline', 'compare': 'Compare', 'tree': 'Tree', 'flow': 'Flow', 'sitemap': 'Sitemap', 'objects': 'Object map',
          'decision': 'Decision tree', 'matrix': 'Matrix', 'states': 'State diagram', 'swimlanes': 'Swimlanes', 'wireflow': 'Wireflow',
          'line': 'Line chart', 'bars': 'Bars', 'scatter': 'Scatter', 'range': 'Range', 'matrix-numeric': 'Matrix, numeric'}
@@ -214,7 +273,21 @@ def fragment(crumbs):
         toc += f'<a href="#{sid}">{NAMES[key]}</a>'
         md.append(f'## {NAMES[key]} · `{kind}`\n\n{what}\n\nFields: {fields.replace("_", chr(92) + "_")}; every kind also takes `title`, `caption` and `tone` (1 to 6).\n\n'
                   f'```viz\n{json.dumps(block, ensure_ascii=False, indent=1)}\n```\n\n{sid}BLOCK\n')
+    md.append('## Hard cases\n\nThe drawing faults the Rome figure checkers met (P55, 30 October 2026), each as the renderer now draws it, '
+              'so the build\'s checks run on it every time. Their data is invented.\n')
+    for key, what, block in CASES:
+        md.append(f'### {block["title"]}\n\n{what}\n\n```viz\n{json.dumps(block, ensure_ascii=False, indent=1)}\n```\n')
+    md.append('### Blocks that stop the build\n\nA figure the renderer cannot draw honestly is not drawn: the build stops and says what to change.\n')
+    for what, block, _ in RAISES:
+        try:
+            viz.render(json.loads(json.dumps(block)))
+            raise SystemExit(f'viz_examples: the case {what!r} drew; it should stop the build')
+        except SystemExit as e:
+            msg = str(e)
+        md.append(f'- {what}: `{json.dumps(block, ensure_ascii=False)}` stops with: {msg.replace("_", chr(92) + "_")}\n')
     body, _ = render_md('\n'.join(md))
+    toc += '<a href="#vx-cases">Hard cases</a>'
+    body = body.replace('<h2>Hard cases</h2>', '<h2 id="vx-cases">Hard cases</h2>', 1)
     for key, _, _, block in EXAMPLES:
         sid, kind = f'vx-{key}', block['kind']
         body = body.replace(f'<h2>{NAMES[key]} · <code>{kind}</code></h2>', f'<h2 id="{sid}">{NAMES[key]} · <code>{kind}</code></h2>', 1)

@@ -72,7 +72,7 @@ The data kinds (P44, 29 Oct 2026; one of each on the examples page too):
              "quadrants": {"x": 25, "y": 7.5, "names": ["top left", "top right", "bottom left", "bottom right"]}}
             labelled points on two numeric axes with gridlines at the ticks; each label takes the nearest free spot
             around its point (covering no point, label or quadrant name), and a label with no free spot raises.
-  range     {"kind": "range", "unit": "%", "min": 0, "max": 100, "ticks": [...], "rows": [{"label": "...", "low": 45,
+  range     {"kind": "range", "unit": "%", "years": false, "min": 0, "max": 100, "ticks": [...], "rows": [{"label": "...", "low": 45,
              "high": 70, "point": 58, "low_src": "Pew 2024", "high_src": "Ofcom 2025", "tone": 4}, ...]}
             competing estimates: per row a low-to-high bar, an optional point estimate (a diamond, its value above it)
             and under the bar each end's value with its source tag; one axis for every row.
@@ -88,6 +88,38 @@ Every kind takes "caption" (shown under the figure; keep the source in it) and "
 raises SystemExit and stops the build: a figure that cannot draw is a bug, not a blank. The IA kinds measure their text
 in the theme's fonts and wrap it inside its box, which grows to fit; every box and its text are one <g data-box>, which
 verify.py checks on the examples page (text inside its box, no two boxes overlapping, nothing outside the drawing).
+
+Contract changes at P55 (30 Oct 2026), from the faults the Rome retrofit's checkers met (kit/reviews/p43-rome-notes.md).
+The rule: a label that cannot fit moves, or the drawing widens and scrolls; it is never clipped, shrunk or cut; a block
+the renderer cannot draw honestly stops the build with a message that says what to change.
+  every kind  a field that takes a list (events, spans, rows, attrs, actions, lines, cells, children, ...) given a bare
+              string stops the build (an object's attrs as a string drew one letter per line). A year prints as
+              753 BC, AD 14 or 1453, and a year 0 (a tick, an event, a value) stops the build: there is no year 0, so
+              put it at -1 (1 BC) or 1 (AD 1). A unit of three letters or more is a word and prints after a space
+              ("1,200 men"); shorter ones (%, k, m, bn) print against the number ("61%", "1.5m").
+  timeline    a span's label is drawn inside its bar only when it fits there with 6 units either side; otherwise beside
+              the bar, right or left, in the muted mono of a column head. Spans sit in lanes: a span takes the first
+              lane where its bar overlaps no other bar (bars may abut) and its outside label keeps 6 units from
+              everything there, so spans that overlap in time never share a lane. The drawing widens (and scrolls)
+              until every span label fits beside its bar, every event label fits inside it and neighbouring tick
+              labels are 8 units apart; past 2,400 units (or twice its starting width) it stops the build instead,
+              naming the two ticks too close to label both. Ticks, events and spans outside start..end stop the build. Each span is a
+              <g data-box>, with its label when the label is inside it.
+  compare     row labels are measured and wrapped in a column as wide as the widest line (up to 240, LABEL_COL); values
+              take thousands separators (and "decimals" when given) and the value column is measured; values must be
+              0 to max. Each row grows with its label.
+  bars        the same label column as compare (it wrapped at 160 inside a 172 column).
+  tree        boxes keep their size: 112 units, or wider when one word of a label needs it, so no word is broken; every
+              label is wrapped in full (it was cut at two lines) and a level's boxes grow to its longest label. A tree
+              more than 15 % wider than 700 keeps its size on a desktop and scrolls (viz-wide); one just over 700 (six
+              leaves, 738) still scales to the column there. It used to shrink, to 64 units at ten leaves.
+              Every node is a <g data-box>.
+  range       "years": true prints every value, tick and point as a year; without it, a range whose values are whole
+              numbers and include a negative one stops the build (add "years", or "decimals" for real quantities).
+              Tick labels at the ends anchor inward so they stay inside the drawing.
+verify.py (P55) runs its figure checks on every figure of every page, every kind: nothing outside the drawing, every
+text inside its box (a node, a plate, a bar or span carrying its label), no two boxes overlapping, no two texts
+overlapping and no free text over a box; the examples page carries one hard case per fault above.
 """
 import html as H
 import itertools
@@ -104,9 +136,21 @@ def esc(s):
     return H.escape(str(s), quote=True)
 
 
-def yr(y):
+def yr(y, kind='timeline'):
+    """A year as a figure prints it: 753 BC, AD 14, 1453. There is no year 0 (1 BC is followed by AD 1), so a label at
+    0 cannot be printed honestly and stops the build (P55)."""
     y = int(y)
+    if y == 0:
+        _fail(kind, 'a year 0 would be printed, and there is no year 0 (1 BC is followed by AD 1): '
+                    'put the tick, event or value at -1 (1 BC) or 1 (AD 1)')
     return f'{-y} BC' if y < 0 else f'AD {y}' if y < 1000 else str(y)
+
+
+def _unit(u):
+    """A unit as printed after a number (P55): a word (three letters or more: men, words, days, ships) takes a space,
+    "1,200 men"; a symbol or an abbreviation (%, k, m, bn, ×) is printed against the number, "61%", "1.5m"."""
+    u = str(u or '')
+    return ' ' + u if len(u) >= 3 and u[0].isalpha() else u
 
 
 def _svg(w, h, body, cls, title, caption, wide=False):
@@ -165,28 +209,113 @@ def _tw(s, size, font='sans', ls=0.0):
     return sum(t.get(ch) or 900 for ch in s) / 1000 * size * 1.04 + len(s) * ls
 
 
+def _lane_free(o, placed):
+    """A span option clears a lane when its bar overlaps no bar there (bars may abut: one reign ends as the next begins)
+    and its outside label, if any, keeps 6 units from every bar and outside label there."""
+    def apart(p, q, gap):
+        return p[1] <= q[0] + gap or q[1] <= p[0] + gap
+    for q in placed:
+        if not apart(o[1], q[1], 0.5):
+            return False
+        for lab, other in ((o[2], q[1]), (o[2], q[2]), (q[2], o[1])):
+            if lab and other and not (lab[1] + 6 <= other[0] or other[1] + 6 <= lab[0]):
+                return False
+    return True
+
+
+def _span_lanes(spans, x, Wd):
+    """P55: timeline spans in lanes. A span's label is drawn inside its bar when it fits there with 6 units either side,
+    else beside the bar (right or left, the side that sits over fewer other bars) in the page's muted colour; each span
+    takes the first lane _lane_free allows, so spans that overlap in time never share a lane.
+    Returns [(span index, lane, side, label x0, label x1)], or None when a label fits on neither side (the caller widens)."""
+    out, lanes = [], []
+    order = sorted(range(len(spans)), key=lambda k: (spans[k]['from'], spans[k]['to'], k))
+    for k in order:
+        s = spans[k]
+        x1, x2 = x(s['from']), x(s['to'])
+        tw = _tw(str(s.get('label') or '').upper(), 10, 'mono', 0.4)
+        opts = []                                            # (side, bar, outside label or None, label x0, x1)
+        if not s.get('label') or tw + 12 <= x2 - x1:
+            opts.append(('in', (x1, x2), None, (x1 + x2 - tw) / 2, (x1 + x2 + tw) / 2))
+        if x2 + 6 + tw <= Wd - 4:
+            opts.append(('right', (x1, x2), (x2 + 6, x2 + 6 + tw), x2 + 6, x2 + 6 + tw))
+        if x1 - 6 - tw >= 4:
+            opts.append(('left', (x1, x2), (x1 - 6 - tw, x1 - 6), x1 - 6 - tw, x1 - 6))
+        if not opts:
+            return None
+        bars_ = [(x(t['from']), x(t['to'])) for j, t in enumerate(spans) if j != k]
+        blocks = lambda o: sum(1 for a, b in bars_ if a < o[4] + 6 and o[3] - 6 < b)   # bars an outside label would sit over
+        lane = 0
+        while True:
+            if lane == len(lanes):
+                lanes.append([])
+            free = [o for o in opts if _lane_free(o, lanes[lane])]
+            if free:
+                o = min(free, key=lambda o: (o[0] != 'in', blocks(o) if o[0] != 'in' else 0, opts.index(o)))
+                lanes[lane].append(o); out.append((k, lane, o[0], o[3], o[4]))
+                break
+            lane += 1
+    return sorted(out)
+
+
 def timeline(d):
+    K = 'timeline'
     start, end = d['start'], d['end']
     spans, events, ticks = d.get('spans', []), d.get('events', []), d.get('ticks', [])
-    W = max(700, 64 * len(events))          # a dense timeline widens and scrolls sideways inside its figure
-    L, R = 40, W - 40
-    def x(y):
-        return L + (R - L) * (y - start) / (end - start)
+    if not end > start:
+        _fail(K, f'end ({end}) must be later than start ({start})')
+    for t in ticks:
+        if not start <= t <= end:
+            _fail(K, f'the tick {t} lies outside start..end ({start}..{end}); drop it or widen the range')
+        yr(t)
+    for e in events:
+        if not start <= e['at'] <= end:
+            _fail(K, f'the event {e.get("label")!r} at {e["at"]} lies outside start..end ({start}..{end}); widen the range')
+        yr(e['at'])
+    for s in spans:
+        if not start <= s['from'] < s['to'] <= end:
+            _fail(K, f'the span {s.get("label")!r} ({s["from"]} to {s["to"]}) must run forwards inside start..end ({start}..{end})')
+    tlab = [yr(t) for t in ticks]
+    tw_max = max((_tw(t, 10.5, 'mono') for t in tlab), default=0)
+    # P55: the drawing widens (and scrolls) until every label fits: a span label beside its bar, every event label inside
+    # the drawing, and neighbouring tick labels 8 units apart. It starts at 700, or 64 per event for a dense timeline.
+    W = W0 = max(700, 64 * len(events))
+    for _ in range(40):
+        L, R = 40, W - 40
+        x = lambda y: L + (R - L) * (y - start) / (end - start)
+        txs = sorted(x(t) for t in ticks)
+        need = max([(tw_max + 8) / (b - a) for a, b in zip(txs, txs[1:]) if b > a] + [1])
+        lanes = _span_lanes(spans, x, W) if spans else []
+        ev_w = max((max([_tw(yr(e['at']), 10.5, 'mono')] + [_tw(ln, 12) for ln in _wrap(e['label'], 22)]) for e in events), default=0)
+        if lanes is not None and need <= 1 and ev_w <= W - 8:
+            break
+        W = math.ceil(W * max(need, 1.15) / 10) * 10
+        if W > max(2400, 2 * W0):                            # past this a reader cannot follow it on a phone
+            if need > 1:
+                a_, b_ = min(((p, q) for p, q in zip(sorted(ticks), sorted(ticks)[1:])), key=lambda pq: pq[1] - pq[0])
+                _fail(K, f'the ticks {a_} and {b_} are too close to label both ({yr(a_)}, {yr(b_)}); drop one or space the ticks out')
+            _fail(K, 'a span or event label does not fit even with the drawing at its widest; shorten it')
     body = ''
     y0 = 24
     if spans:
-        for k, s in enumerate(spans):
-            tone = s.get('tone', k % TONES + 1)
-            x1, x2 = x(s['from']), x(s['to'])
-            body += f'<rect class="viz-span viz-t{tone}" x="{x1:.1f}" y="{y0}" width="{x2 - x1:.1f}" height="18"/>'
-            body += f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{y0 + 13}" text-anchor="middle">{esc(s["label"])}</text>'
-        y0 += 30
+        for k, lane, side, l0, l1 in lanes:
+            s = spans[k]
+            tone = _tone(s, k % TONES + 1, K)
+            x1, x2, yy = x(s['from']), x(s['to']), y0 + lane * 24
+            rect = f'<rect class="viz-span viz-t{tone}" x="{x1:.1f}" y="{yy}" width="{x2 - x1:.1f}" height="18"/>'
+            if not s.get('label'):
+                body += _g(rect)
+            elif side == 'in':
+                body += _g(rect + f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{yy + 13}" text-anchor="middle">{esc(s["label"])}</text>')
+            else:
+                body += _g(rect) + f'<text class="viz-colhead" x="{l0:.1f}" y="{yy + 13}">{esc(s["label"])}</text>'
+        y0 += (max(lane for _, lane, *_ in lanes) + 1) * 24 + 6
     axis = y0 + 22                           # tick labels sit above the axis, events hang below it
     body += f'<line class="viz-axis" x1="{L}" y1="{axis}" x2="{R}" y2="{axis}"/>'
-    for t in ticks:
+    for t, tl in zip(ticks, tlab):
         tx = x(t)
         anchor = 'start' if tx < L + 20 else ('end' if tx > R - 20 else 'middle')
-        body += f'<line class="viz-tick" x1="{tx:.1f}" y1="{axis - 6}" x2="{tx:.1f}" y2="{axis}"/><text class="viz-ticklabel" x="{tx:.1f}" y="{axis - 10}" text-anchor="{anchor}">{esc(yr(t))}</text>'
+        body += f'<line class="viz-tick" x1="{tx:.1f}" y1="{axis - 6}" x2="{tx:.1f}" y2="{axis}"/><text class="viz-ticklabel" x="{tx:.1f}" y="{axis - 10}" text-anchor="{anchor}">{esc(tl)}</text>'
     # events (P40, 29 Oct 2026): each label faces right from its stem, left to it or centres on it, in a row below the
     # axis. Given the directions, a label sits below every event whose stem it would cover (so that stem ends above it)
     # and in the first such row its neighbours leave free; the directions are then improved one event at a time until
@@ -246,32 +375,74 @@ def timeline(d):
     return _svg(W, h, body, 'timeline', d.get('title'), d.get('caption'))
 
 
+LABEL_COL = 240    # P55: the widest a compare or bars label column grows before its labels wrap
+
+
+def _row_labels(rows, kind):
+    """P55: compare and bars row labels, measured and wrapped at LABEL_COL; the column is as wide as its widest line
+    plus 12, so a label is never clipped and wraps only when it is wider than the column can grow."""
+    labs = [_lines(r['label'], T_LABEL, LABEL_COL) for r in rows]
+    return labs, max(_width(l, T_LABEL) for l in labs) + 12
+
+
 def compare(d):
+    """Horizontal bars against a shared maximum, one per row, on a track. P55: labels wrap in a column that grows to
+    fit them; values print with thousands separators and a word unit after a space; the value column is measured."""
+    K = 'compare'
     rows = d['rows']
+    for r in rows:
+        if _num(r.get('value'), K, f'the value of {r.get("label")!r}') < 0:
+            _fail(K, f'the value of {r["label"]!r} is negative; compare draws values of 0 or more')
     mx = d.get('max') or max(r['value'] for r in rows)
-    unit = d.get('unit', '')
-    lab_w = 170
-    bar_x = lab_w + 10
-    bar_w = W - bar_x - 70
-    rh = 30
-    body = ''
-    for k, r in enumerate(rows):
-        y = 8 + k * rh
+    if not mx > 0:
+        _fail(K, 'max must be above 0')
+    if any(r['value'] > mx for r in rows):
+        _fail(K, f'a value is above max ({mx}); raise max or drop it to use the largest value')
+    unit, dec = _unit(d.get('unit', '')), d.get('decimals')
+    labs, LW = _row_labels(rows, K)
+    vals = [str(r['display']) if r.get('display') is not None else _fmt(r['value'], dec) + unit for r in rows]
+    VW = max(_tw(v, 10.5, 'mono') for v in vals) + 14
+    bar_x = 8 + LW
+    bar_w = W - 8 - bar_x - VW
+    if bar_w < 160:
+        _fail(K, f'the labels and values leave the bars {bar_w:.0f} units; shorten the labels or the "display" values')
+    body, y = '', 8
+    for r, lab, v in zip(rows, labs, vals):
+        rh = max(30, len(lab) * 14 + 12)
         wv = bar_w * float(r['value']) / mx
-        body += f'<text class="viz-label" x="{lab_w}" y="{y + 15}" text-anchor="end">{esc(r["label"])}</text>'
-        body += f'<rect class="viz-track" x="{bar_x}" y="{y + 5}" width="{bar_w}" height="14"/>'
-        body += f'<rect class="viz-bar viz-t{r.get("tone", 1)}" x="{bar_x}" y="{y + 5}" width="{wv:.1f}" height="14"/>'
-        body += f'<text class="viz-value" x="{bar_x + wv + 8:.1f}" y="{y + 16}">{esc(r.get("display", f"{r['value']}{unit}"))}</text>'
-    h = 8 + len(rows) * rh + 4
-    return _svg(W, h, body, 'compare', d.get('title'), d.get('caption'))
+        cy = y + rh / 2
+        body += _text(lab, T_LABEL, bar_x - 10, cy - len(lab) * 7, 'end')
+        body += f'<rect class="viz-track" x="{bar_x}" y="{cy - 7:.1f}" width="{bar_w:.1f}" height="14"/>'
+        body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{cy - 7:.1f}" width="{wv:.1f}" height="14"/>'
+        body += f'<text class="viz-value" x="{bar_x + wv + 8:.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
+        y += rh
+    return _svg(W, _r(y + 4), body, 'compare', d.get('title'), d.get('caption'))
 
 
 def tree(d):
-    """Top-down tree. Each node is a box; leaves are laid out left to right and parents centred over their children."""
-    node_w, node_h, gx, gy = 112, 34, 10, 44
+    """Top-down tree. Each node is a box; leaves are laid out left to right and parents centred over their children.
+    P55: the boxes keep their size (112 units, or wider when one word of a label needs it, so no word is ever broken);
+    each label is measured and wrapped in full inside its box, and a level's boxes grow to its longest label. A tree
+    more than 15 % wider than 700 keeps its size and scrolls in its frame (it used to shrink, to 64 units at ten leaves)."""
+    K = 'tree'
+    gx, gy, pad = 10, 44, 6
     root = d['root']
+    nodes = []
+    def walk(n, depth):
+        if not isinstance(n.get('label'), str) or not n['label'].strip():
+            _fail(K, f'every node needs a label: {json.dumps(n)[:80]}')
+        nodes.append((n, depth))
+        for k in n.get('children', []):
+            walk(k, depth + 1)
+    walk(root, 0)
+    longest = max(_tw(w, 12, 'sansb') for n, _ in nodes for w in n['label'].split())
+    node_w = max(112, math.ceil(longest + 2 * pad + 2))
+    lab = {id(n): _lines(n['label'], T_NODE, node_w - 2 * pad) for n, _ in nodes}
+    depth_max = max(dp for _, dp in nodes)
+    lvl_h = [max(34, max(len(lab[id(n)]) for n, dp in nodes if dp == k) * 14 + 12) for k in range(depth_max + 1)]
+    lvl_y = [8 + sum(lvl_h[:k]) + k * gy for k in range(depth_max + 1)]
     pos = {}
-    cursor = [0]
+    cursor = [8]
     def layout(n, depth):
         kids = n.get('children', [])
         if kids:
@@ -283,27 +454,23 @@ def tree(d):
         pos[id(n)] = (cx, depth)
         return cx
     layout(root, 0)
-    width = max(cursor[0], node_w)
-    depth_max = max(dp for _, dp in pos.values())
-    scale = min(1, W / width)
+    width = cursor[0] - gx + 8
     body = ''
     def draw(n):
+        nonlocal body
         cx, dp = pos[id(n)]
-        x = cx * scale - node_w * scale / 2
-        y = 8 + dp * (node_h + gy)
+        x, y, h = cx - node_w / 2, lvl_y[dp], lvl_h[dp]
         for k in n.get('children', []):
             kx, kd = pos[id(k)]
-            body_add = f'<path class="viz-edge" d="M{cx * scale:.1f},{y + node_h} C{cx * scale:.1f},{y + node_h + gy / 2} {kx * scale:.1f},{y + node_h + gy / 2} {kx * scale:.1f},{y + node_h + gy}"/>'
-            nonlocal body; body += body_add
+            ky = lvl_y[kd]
+            body += f'<path class="viz-edge" d="M{cx:.1f},{y + h} C{cx:.1f},{(y + h + ky) / 2:.1f} {kx:.1f},{(y + h + ky) / 2:.1f} {kx:.1f},{ky}"/>'
             draw(k)
-        tone = n.get('tone', min(dp + 1, TONES))
-        body += f'<rect class="viz-node viz-t{tone}" x="{x:.1f}" y="{y}" width="{node_w * scale:.1f}" height="{node_h}" rx="2"/>'
-        lines = _wrap(n['label'], max(8, int(17 * scale)))[:2]
-        for i, ln in enumerate(lines):
-            body += f'<text class="viz-nodelabel" x="{cx * scale:.1f}" y="{y + (15 if len(lines) == 1 else 13) + i * 13 + (6 if len(lines) == 1 else 0)}" text-anchor="middle">{esc(ln)}</text>'
+        tone = _tone(n, min(dp + 1, TONES), K)
+        lines = lab[id(n)]
+        body += _g(f'<rect class="viz-node viz-t{tone}" x="{x:.1f}" y="{y}" width="{node_w}" height="{h}" rx="2"/>'
+                   + _text(lines, T_NODE, cx, y + (h - len(lines) * 14) / 2, 'middle'))
     draw(root)
-    h = 8 + (depth_max + 1) * (node_h + gy) - gy + 8
-    return _svg(W, h, body, 'tree', d.get('title'), d.get('caption'))
+    return _svg(max(W, _r(width)), _r(lvl_y[-1] + lvl_h[-1] + 8), body, 'tree', d.get('title'), d.get('caption'), wide=width > W * 1.15)
 
 
 def flow(d):
@@ -574,6 +741,10 @@ def objects(d):
             _fail(K, f'every object needs an id and a title: {json.dumps(o)[:80]}')
         if o['id'] in objs:
             _fail(K, f'object {o["id"]!r} is declared twice')
+        for f in ('attrs', 'actions'):                      # P55: a bare string here drew one letter per line
+            v = o.get(f, [])
+            if not isinstance(v, list) or not all(isinstance(a, str) and a.strip() for a in v):
+                _fail(K, f'{o["id"]!r}: {f} must be a list of strings, one per line, e.g. ["amount", "date"]; got {json.dumps(v)[:60]}')
         objs[o['id']] = o
     grid = d['rows']
     cols = max(len(r) for r in grid)
@@ -1332,8 +1503,8 @@ def line(d):
     numeric = all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in xs)
     if numeric and any(b <= a for a, b in zip(xs, xs[1:])):
         _fail(K, 'numeric x values must increase')
-    years, unit, dec = d.get('years', False), d.get('unit', ''), d.get('decimals')
-    fx = (lambda v: yr(v)) if (years and numeric) else (lambda v: _fmt(v) if numeric else str(v))
+    years, unit, dec = d.get('years', False), _unit(d.get('unit', '')), d.get('decimals')
+    fx = (lambda v: yr(v, K)) if (years and numeric) else (lambda v: _fmt(v) if numeric else str(v))
     vals = []
     for k, s in enumerate(series):
         if len(s.get('values', [])) != n:
@@ -1496,7 +1667,7 @@ def bars(d):
     if not series or not rows:
         _fail(K, 'bars need series and rows')
     ns = len(series)
-    unit, dec = d.get('unit', ''), d.get('decimals')
+    unit, dec = _unit(d.get('unit', '')), d.get('decimals')
     for k, s in enumerate(series):
         if not s.get('name'):
             _fail(K, 'every series needs a name')
@@ -1510,11 +1681,12 @@ def bars(d):
     tot = [sum(v or 0 for v in r['values']) for r in rows]
     big = max(tot) if mode == 'stacked' else max(v or 0 for r in rows for v in r['values'])
     mx = d.get('max') or _ticks(0, big or 1)[-1]
-    labs = [_lines(r['label'], T_LABEL, 160) for r in rows]
-    LW = min(172, max(_width(l, T_LABEL) for l in labs) + 12)
+    labs, LW = _row_labels(rows, K)
     vals = [_fmt(v, dec) + unit for r, t in zip(rows, tot) for v in (r['values'] + [t])]
     VW = max(_tw(v, 10.5, 'mono') for v in vals) + 12
     bx, bw = 8 + LW, W - 8 - (8 + LW) - VW
+    if bw < 160:
+        _fail(K, f'the labels and values leave the bars {bw:.0f} units; shorten the labels')
     body, top = '', 8
     lg, lh = _legend([(s['name'], s['_t'], 'bar') for s in series], top, W, K)
     body += lg; top += lh + 14
@@ -1566,9 +1738,9 @@ def scatter(d):
         vs = [_num(p.get(a), K, f'a point\'s {a}') for p in pts]
         lo, hi = o.get('min', min(vs)), o.get('max', max(vs))
         t = o.get('ticks') or _ticks(lo, hi)
-        ax[a] = dict(lo=min(lo, t[0]), hi=max(hi, t[-1]), ticks=t, unit=o.get('unit', ''), dec=o.get('decimals'),
+        ax[a] = dict(lo=min(lo, t[0]), hi=max(hi, t[-1]), ticks=t, unit=_unit(o.get('unit', '')), dec=o.get('decimals'),
                      label=o.get('label', ''), years=o.get('years', False))
-    tl = lambda a, v: yr(v) if ax[a]['years'] else _fmt(v, ax[a]['dec']) + ax[a]['unit']
+    tl = lambda a, v: yr(v, K) if ax[a]['years'] else _fmt(v, ax[a]['dec']) + ax[a]['unit']
     L = 8 + max(_tw(tl('y', t), 10.5, 'mono') for t in ax['y']['ticks']) + 8
     R, top = W - 12, 8
     body = ''
@@ -1638,12 +1810,15 @@ def scatter(d):
 def range_(d):
     """Competing estimates: per row, a label, then a bar from the lowest to the highest estimate with an optional point
     estimate (its value above it), and under the bar each end's value with a short source tag, aligned to its end of
-    the bar (inside the bar's span when both fit, else outside it). A shared axis with gridlines runs under the rows."""
+    the bar (inside the bar's span when both fit, else outside it). A shared axis with gridlines runs under the rows.
+    P55: with "years": true every value is a year and prints as one (264 BC, AD 14; no year 0); without it, a range
+    whose values are all whole numbers and include a negative one stops the build, since it reads as years BC printed
+    as negative numbers: add "years": true, or "decimals" if the values are quantities below zero."""
     K = 'range'
     rows = d.get('rows')
     if not rows:
         _fail(K, 'a range needs rows')
-    unit, dec = d.get('unit', ''), d.get('decimals')
+    unit, dec, years = _unit(d.get('unit', '')), d.get('decimals'), d.get('years', False)
     vs = []
     for r in rows:
         if not r.get('label'):
@@ -1654,12 +1829,16 @@ def range_(d):
         if r.get('point') is not None and not lo_ <= _num(r['point'], K, 'point') <= hi_:
             _fail(K, f'row {r["label"]!r}: the point estimate lies outside its range')
         vs += [lo_, hi_]
-    lo, hi = d.get('min', min(0, min(vs))), d.get('max', max(vs))
+    if not years and dec is None and min(vs) < 0 and all(float(v).is_integer() for v in vs):
+        _fail(K, 'the values include negative whole numbers, which print as "-264": if they are years, add "years": true '
+                 '(they print as 264 BC); if they are quantities, give "decimals"')
+    lo, hi = d.get('min', min(vs) if years else min(0, min(vs))), d.get('max', max(vs))
     ticks = d.get('ticks') or _ticks(lo, hi)
     lo, hi = min(lo, ticks[0]), max(hi, ticks[-1])
     PL, PR = 24, W - 24
     X = lambda v: PL + (v - lo) / (hi - lo) * (PR - PL)
-    tag = lambda v, src: _fmt(v, dec) + unit + (f' · {src}' if src else '')
+    num = (lambda v: yr(v, K)) if years else (lambda v: _fmt(v, dec) + unit)
+    tag = lambda v, src: num(v) + (f' · {src}' if src else '')
     y, marks, plates = 8, '', []
     for r in rows:
         t = _tone(r, d.get('tone', 4), K)
@@ -1667,7 +1846,7 @@ def range_(d):
         marks += _text(lab, T_LABEL, 8, y)
         y += len(lab) * 14 + 4
         if r.get('point') is not None:
-            pv = [_fmt(r['point'], dec) + unit]
+            pv = [num(r['point'])]
             pw = _width(pv, T_VAL)
             px_ = min(max(X(r['point']), 8 + pw / 2), W - 8 - pw / 2)
             marks += _text(pv, T_VAL, px_, y, 'middle')
@@ -1696,7 +1875,10 @@ def range_(d):
     grid = ''
     for tk in ticks:
         grid += _line([(X(tk), 8), (X(tk), y - 8)], 'viz-grid')
-        grid += f'<text class="viz-ticklabel" x="{X(tk):.1f}" y="{y + 6:.1f}" text-anchor="middle">{esc(_fmt(tk, dec) + unit)}</text>'
+        tl = num(tk)
+        hw = _tw(tl, 10.5, 'mono') / 2
+        anchor = 'start' if X(tk) - hw < 4 else ('end' if X(tk) + hw > W - 4 else 'middle')
+        grid += f'<text class="viz-ticklabel" x="{X(tk):.1f}" y="{y + 6:.1f}" text-anchor="{anchor}">{esc(tl)}</text>'
     H = y + 14
     if d.get('xlabel'):
         grid += f'<text class="viz-colhead" x="{PR:.1f}" y="{H + 6:.1f}" text-anchor="end">{esc(d["xlabel"])}</text>'
@@ -1710,7 +1892,7 @@ def _heat(d):
     K = 'matrix'
     cols, rows = d['cols'], d['rows']
     tone = _tone(d, 4, K)
-    unit, dec = d.get('unit', ''), d.get('decimals')
+    unit, dec = _unit(d.get('unit', '')), d.get('decimals')
     vs = []
     for r in rows:
         if len(r.get('cells', [])) != len(cols):
@@ -1773,9 +1955,28 @@ KINDS = {'timeline': timeline, 'compare': compare, 'tree': tree, 'flow': flow,
          'line': line, 'bars': bars, 'scatter': scatter, 'range': range_}
 
 
+_LISTS = {'events', 'spans', 'ticks', 'rows', 'steps', 'objects', 'attrs', 'actions', 'lines', 'cols', 'cells', 'series',
+          'points', 'states', 'transitions', 'screens', 'links', 'lanes', 'children', 'branches', 'legend', 'values',
+          'annotations', 'yticks', 'xticks', 'names'}
+
+
+def _lists(o, kind, path='figure'):
+    """P55: a field that holds a list given a bare string instead was drawn one letter per line (an object's attrs);
+    any such field anywhere in the figure stops the build and says which."""
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k in _LISTS and isinstance(v, str):
+                _fail(kind, f'{path}.{k} must be a list, e.g. ["{v[:20]}"], not the string {v[:40]!r}')
+            _lists(v, kind, f'{path}.{k}')
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            _lists(v, kind, f'{path}[{i}]')
+
+
 def render(d):
     """One figure object to HTML. A kind not in KINDS, or bad data, is an error: a figure that cannot draw is a bug, not a blank."""
     try:
+        _lists(d, d.get('kind'))
         return KINDS[d['kind']](d)
     except KeyError as e:
         raise SystemExit(f'viz: unknown kind or missing field {e} in figure {json.dumps(d)[:120]}')

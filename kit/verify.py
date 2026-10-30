@@ -21,6 +21,10 @@ its own) and the top bar spans the content column. Figures (P44): at phone width
 and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots at the three widths
 of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
 and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png.
+Figure geometry (FIG_JS; V1, every kind since P55): on the examples page (one figure per kind, then one hard case per
+drawing fault P55 fixed, and the blocks that must stop the build) and, in the phone pass, on every panel with figures:
+nothing outside the drawing, text inside its box or bar, no two boxes or labels overlapping, no free label over a box.
+Links into an unopened panel on a fresh load are measured once the anchor has settled, with one retry (P56).
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools
@@ -28,6 +32,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
 from courses import COURSES, THEMES
+import viz, viz_examples   # P55: the examples page's hard cases and the blocks that must stop the build
 # each track and its course cards as the home must show them, from courses.py (A5: a new course needs no edit here)
 HOME_TRACKS = [t['name'] + ':' + ','.join(
     ['#' + c['home_id'] for c in COURSES if c['family'] == 'history' and c['theme'] == t['id']]
@@ -50,8 +55,9 @@ def ready(pg):
 SHOTS = pathlib.Path(sys.argv[sys.argv.index('--shots') + 1]) if '--shots' in sys.argv else None
 PAGES = [a for i, a in enumerate(sys.argv) if i > 0 and sys.argv[i - 1] == '--page']   # extra panels to screenshot
 GAP = 6
-VX_FIGS = 16   # the examples page carries one figure per kind: four from A8, seven for the IA course (V1), four data kinds
+VX_KINDS = 16  # the examples page carries one figure per kind: four from A8, seven for the IA course (V1), four data kinds
                # and the numeric matrix (P44)
+VX_FIGS = VX_KINDS + len(viz_examples.CASES)   # then one hard case per drawing fault P55 fixed
 VIEWPORTS = [('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
 SIDE = 300  # desktop sidebar width (theme.css --side)
 
@@ -130,7 +136,7 @@ FRAME_JS = r'''async ([scope, phone]) => {
 def check_panels(pg, label, fails):
     """Every panel, every <details> open: horizontal scroll, 6 px gaps, 44 px targets. Returns (tightest gap, panel count)."""
     ids = pg.eval_on_selector_all('.panel', 'ps => ps.map(p => p.id)')
-    worst, frames = [], [0, 0]
+    worst, frames, figs = [], [0, 0], [0, 0]
     for pid in ids:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(30)
         if pg.evaluate(f"document.getElementById('{pid}').hasAttribute('data-failed')"): fails.append(f'{label} {pid}: the report did not load')
@@ -143,12 +149,16 @@ def check_panels(pg, label, fails):
             fr = pg.evaluate(FRAME_JS, [f'#{pid}', label.startswith('phone')])
             frames[0] += fr['n']; frames[1] += fr['over']
             if fr['bad']: fails.append(f'{label} {pid}: figure frames: ' + '; '.join(fr['bad']))
+        if label == 'phone':   # P55: the figure geometry (FIG_JS) of every figure on every panel, once (it does not depend on the width)
+            fg = pg.evaluate(FIG_JS, f'#{pid}')
+            figs[0] += fg['n']; figs[1] += fg['n'] > 0
+            if fg['bad']: fails.append(f'{label} {pid}: figure geometry: ' + '; '.join(fg['bad'][:8]))
         small = pg.evaluate(TARGET_JS, f'#{pid}')
         if small: fails.append(f'{label} {pid}: {len(small)} targets under 44px: ' + '; '.join(small[:6]))
         worst.append((res['min'], pid, res['n']))
     m = min(worst)
     print(f'{label}: panels checked: {len(ids)}; tightest stacked gap {m[0]}px ({m[1]})'
-          + (f'; {frames[0]} figure frames at natural size, {frames[1]} scrolling with the cue' if label.startswith('phone') else
+          + (f'; {frames[0]} figure frames at natural size, {frames[1]} scrolling with the cue' + (f'; geometry of {figs[0]} figures on {figs[1]} panels checked' if label == 'phone' else '') if label.startswith('phone') else
              f'; {frames[0]} figure frames, {frames[1]} wider than their frame with the cue, the rest without' if label == 'desktop' else ''))
     return m[0], len(ids)
 
@@ -224,6 +234,29 @@ def check_files(fails):
     for ctx, fs in by.items():
         print(f'  {ctx + "/":10} {len(fs):3} files {sum(n for n, _ in fs) / 1024:7,.0f} KB, largest {max(fs)[1]} {max(fs)[0] / 1024:,.0f} KB')
 
+# P56 (30 Oct 2026): a link into an unopened panel lands once the fetch is in and the shell has scrolled to the anchor,
+# which can take longer than a fixed wait (#s-m23 once measured at top 7319, then passed on a re-run). SETTLE_JS waits,
+# frame by frame for up to 3 s, until the anchor's top has held still for 5 frames inside the landing band (-5..200),
+# and returns [panel, found, top]; fresh_land() measures that way and, if it is still off, reloads and measures once more.
+SETTLE_JS = '''async (id) => { let last = null, same = 0; const t0 = performance.now();
+  while (performance.now() - t0 < 3000) { await new Promise(r => requestAnimationFrame(r));
+    const el = document.getElementById(id), t = el ? Math.round(el.getBoundingClientRect().top) : null;
+    same = (t !== null && t === last) ? same + 1 : 0; last = t;
+    if (same >= 5 && t >= -5 && t <= 200) break; }
+  const el = document.getElementById(id), p = [...document.querySelectorAll('.panel')].find(p => !p.hidden);
+  return [p && p.id, !!el, el ? Math.round(el.getBoundingClientRect().top) : null]; }'''
+
+def fresh_land(pg, h, retried):
+    """Open URL#h on a fresh load and return [visible panel, anchor found, anchor top] once the anchor has settled;
+    one retry (a second fresh load) when it has not landed, recorded in retried."""
+    for attempt in (0, 1):
+        pg.goto(URL + '#' + h); pg.reload(); ready(pg)
+        sec = pg.evaluate(SETTLE_JS, h)
+        if sec[1] and sec[2] is not None and -5 <= sec[2] <= 200:
+            return sec
+        if attempt == 0: retried.append(f'#{h} (top {sec[2]})')
+    return sec
+
 def check_split(br, fails):
     """In the browser: a stub is empty until opened, its file is fetched once and kept, a section link into an unopened
     report loads it and lands on the section, a failed fetch shows the retry state and the retry loads it."""
@@ -249,8 +282,8 @@ def check_split(br, fails):
     pg.click('#m23 .pager a.next'); ready(pg)
     if pg.evaluate("location.hash") != '#m24' or hits.get('/greece/r-2.4.html') != 1: fails.append(f'split: pager to #m24: hash {pg.evaluate("location.hash")}, fetched {hits.get("/greece/r-2.4.html")} times')
     # a section link into a report not yet opened, on a fresh load
-    pg.goto(URL + '#rm12-2'); pg.reload(); ready(pg); pg.wait_for_timeout(300)
-    sec = pg.evaluate("(() => { const el = document.getElementById('rm12-2'); const p = [...document.querySelectorAll('.panel')].find(p => !p.hidden); return [p.id, !!el, el ? Math.round(el.getBoundingClientRect().top) : null]; })()")
+    retried = []
+    sec = fresh_land(pg, 'rm12-2', retried)
     if sec[0] != 'rm12' or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #rm12-2 on a fresh load gave panel {sec[0]}, section found {sec[1]}, top {sec[2]}')
     # a syllabus is a stub too (P20): empty until opened, fetched once, its prompts and copy buttons present
     stub = pg.evaluate("(() => { const p = document.getElementById('rome-syllabus'); return [p.getAttribute('data-src'), p.innerHTML.length, (p.getAttribute('data-anchors') || '').split(' ').includes('rs-u3')]; })()")
@@ -262,8 +295,7 @@ def check_split(br, fails):
     if hits.get('/rome/syllabus.html') != 1: fails.append(f'split: rome/syllabus.html fetched {hits.get("/rome/syllabus.html")} times, expected once')
     # a link into an unopened syllabus (a unit anchor) and into unopened briefs (a brief's card), on a fresh load
     for h, want in (('rs-u3', 'rome-syllabus'), ('s-m23', 'syllabus'), ('b-a2', 'briefs-a'), ('b-b3', 'briefs-b'), ('greece-u3', 'greece'), ('rome-u1', 'rome')):
-        pg.goto(URL + '#' + h); pg.reload(); ready(pg); pg.wait_for_timeout(300)
-        sec = pg.evaluate(f"(() => {{ const el = document.getElementById('{h}'); const p = [...document.querySelectorAll('.panel')].find(p => !p.hidden); return [p.id, !!el, el ? Math.round(el.getBoundingClientRect().top) : null]; }})()")
+        sec = fresh_land(pg, h, retried)
         if sec[0] != want or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #{h} on a fresh load gave panel {sec[0]}, element found {sec[1]}, top {sec[2]}')
     # a failed fetch, then the retry
     fail['on'] = True
@@ -293,32 +325,52 @@ def check_split(br, fails):
     if not pg.evaluate("document.getElementById('rome').hasAttribute('data-loaded') && document.querySelectorAll('#rome details.ucard').length > 5"): fails.append('split: retry after a failed course-home fetch did not load the home')
     other = [e for e in errs if 'fonts.g' not in e and '503' not in e]
     if other: fails.append('split: console errors: ' + ' | '.join(other[:3]))
+    if retried: print(f'split: fresh-load anchors that landed only on the retry: {", ".join(retried)}')
     print('split: stubs empty until opened; fetched once, kept and the next report prefetched; links into an unopened report, syllabus, briefs page and course home; failed fetch and retry (report and course home); a course home\'s continue button')
     ctx.close()
 
-# V1: inside every figure of the examples page, the geometry the eye would otherwise have to check: every text of a
-# box group (<g data-box>, the box its first child) lies inside that box, no two boxes overlap, and nothing in a
-# drawing leaves its viewBox. Measured in the SVG's own units with getBBox, so the width of the page does not matter.
+# V1, every kind since P55 (30 Oct 2026): inside every figure, the geometry the eye would otherwise have to check.
+#  1. nothing leaves the drawing: no child of the SVG and no text outside its viewBox;
+#  2. every text of a box group (<g data-box>, the box its first child: a node, a plate, a bar or a span carrying its
+#     label) lies inside that box;
+#  3. no two boxes overlap;
+#  4. no two texts overlap, and no text outside a box group overlaps a box: a label is never drawn over another label,
+#     a bar or a node. A text's box is its em box, which is taller than its ink, so it is inset vertically by a fifth
+#     of its height (at most 3 units) on each side before it is compared: two lines of one label sit 13 to 14 apart.
+# Measured in the SVG's own units with getBBox, so the width of the page does not matter. Run on the examples page
+# (every kind and every fault case P55 added) and, in the phone pass, on every panel that carries figures.
 FIG_JS = r'''(sel) => {
   const out = []; const figs = [...document.querySelectorAll(sel + ' figure.viz')];
+  const kindOf = f => [...f.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide' && c !== 'viz-numeric').slice(4) + (f.classList.contains('viz-numeric') ? '-numeric' : '');
+  const ov = (a, b) => [Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x), Math.min(a.y + a.height, b.y + b.height) - Math.max(a.y, b.y)];
+  const ink = b => { const i = Math.min(3, b.height / 5); return {x: b.x + 0.5, y: b.y + i, width: Math.max(0, b.width - 1), height: Math.max(0, b.height - 2 * i)}; };
+  const f1 = v => v.toFixed(1), say = s => `"${s.slice(0, 28)}"`;
   figs.forEach(f => {
-    const kind = [...f.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide').slice(4) + (f.classList.contains('viz-numeric') ? '-numeric' : '');
+    const kind = kindOf(f);
     const svg = f.querySelector('svg'), vb = svg.viewBox.baseVal, T = 0.6;
+    const outside = b => b.x < -T || b.y < -T || b.x + b.width > vb.width + T || b.y + b.height > vb.height + T;
     [...svg.children].forEach(el => { if (el.tagName === 'defs') return; const b = el.getBBox();
       if (b.width + b.height === 0) return;
-      if (b.x < -T || b.y < -T || b.x + b.width > vb.width + T || b.y + b.height > vb.height + T)
-        out.push(`${kind}: ${el.tagName}.${el.getAttribute('class') || ''} leaves the drawing (${b.x.toFixed(1)},${b.y.toFixed(1)} ${b.width.toFixed(1)}x${b.height.toFixed(1)} in ${vb.width}x${vb.height})`); });
+      if (outside(b)) out.push(`${kind}: ${el.tagName}.${el.getAttribute('class') || ''} ${say(el.textContent)} leaves the drawing (${f1(b.x)},${f1(b.y)} ${f1(b.width)}x${f1(b.height)} in ${vb.width}x${vb.height})`); });
+    const texts = [...svg.querySelectorAll('text')].filter(t => t.textContent.trim()).map(t => [t, t.getBBox()]);
+    texts.forEach(([t, b]) => { if (outside(b) && t.parentNode !== svg) out.push(`${kind}: ${say(t.textContent)} leaves the drawing (${f1(b.x)}..${f1(b.x + b.width)} in ${vb.width})`); });
     const boxes = [...svg.querySelectorAll('g[data-box]')].map(g => [g, g.firstElementChild.getBBox()]);
-    boxes.forEach(([g, r]) => g.querySelectorAll('text').forEach(t => { const b = t.getBBox();
+    boxes.forEach(([g, r]) => g.querySelectorAll('text').forEach(t => { if (!t.textContent.trim()) return; const b = t.getBBox();
       if (b.x < r.x - T || b.x + b.width > r.x + r.width + T || b.y < r.y - T || b.y + b.height > r.y + r.height + T)
-        out.push(`${kind}: "${t.textContent}" outside its box (text ${b.x.toFixed(1)}..${(b.x + b.width).toFixed(1)}, ${b.y.toFixed(1)}..${(b.y + b.height).toFixed(1)}; box ${r.x.toFixed(1)}..${(r.x + r.width).toFixed(1)}, ${r.y.toFixed(1)}..${(r.y + r.height).toFixed(1)})`); }));
+        out.push(`${kind}: ${say(t.textContent)} outside its box (text ${f1(b.x)}..${f1(b.x + b.width)}, ${f1(b.y)}..${f1(b.y + b.height)}; box ${f1(r.x)}..${f1(r.x + r.width)}, ${f1(r.y)}..${f1(r.y + r.height)})`); }));
     for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
-      const a = boxes[i][1], b = boxes[j][1];
-      const w = Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x), h = Math.min(a.y + a.height, b.y + b.height) - Math.max(a.y, b.y);
-      if (w > 0.6 && h > 0.6) out.push(`${kind}: boxes overlap ("${boxes[i][0].textContent.slice(0, 24)}" and "${boxes[j][0].textContent.slice(0, 24)}")`);
+      const [w, h] = ov(boxes[i][1], boxes[j][1]);
+      if (w > 0.6 && h > 0.6) out.push(`${kind}: boxes overlap (${say(boxes[i][0].textContent)} and ${say(boxes[j][0].textContent)})`);
     }
+    const inks = texts.map(([t, b]) => [t, ink(b), t.closest('g[data-box]')]);
+    for (let i = 0; i < inks.length; i++) for (let j = i + 1; j < inks.length; j++) {
+      const [w, h] = ov(inks[i][1], inks[j][1]);
+      if (w > 0.6 && h > 0.6) out.push(`${kind}: labels overlap (${say(inks[i][0].textContent)} and ${say(inks[j][0].textContent)})`);
+    }
+    inks.forEach(([t, b, g]) => { if (g) return; boxes.forEach(([bg, r]) => { const [w, h] = ov(b, r);
+      if (w > 0.6 && h > 0.6) out.push(`${kind}: ${say(t.textContent)} is drawn over the box ${say(bg.textContent)}`); }); });
   });
-  return {n: figs.length, kinds: figs.map(f => [...f.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide').slice(4) + (f.classList.contains('viz-numeric') ? '-numeric' : '')), bad: out};
+  return {n: figs.length, kinds: figs.map(kindOf), bad: out};
 }'''
 
 def check_figures(br, fails):
@@ -328,10 +380,17 @@ def check_figures(br, fails):
     pg.evaluate("location.hash = 'viz-examples'"); ready(pg); pg.wait_for_timeout(200)
     res = pg.evaluate(FIG_JS, '#viz-examples')
     if res['n'] != VX_FIGS: fails.append(f'viz-examples: {res["n"]} figures in the panel, expected {VX_FIGS}')
-    if len(set(res['kinds'])) != res['n']: fails.append(f'viz-examples: a kind appears twice: {res["kinds"]}')
+    if len(set(res['kinds'][:VX_KINDS])) != VX_KINDS: fails.append(f'viz-examples: a kind appears twice among the kinds: {res["kinds"][:VX_KINDS]}')
+    # P55: every block the renderer cannot draw honestly stops the build, with a message that says what to change
+    for what, block, want in viz_examples.RAISES:
+        try:
+            viz.render(json.loads(json.dumps(block))); fails.append(f'viz-examples: {what!r} drew; it must stop the build')
+        except SystemExit as e:
+            if want not in str(e): fails.append(f'viz-examples: {what!r} stopped with {e!s}, which does not say {want!r}')
     fails += ['viz-examples: ' + b for b in res['bad'][:12]]
     if errs: fails.append('viz-examples: console errors: ' + ' | '.join(errs[:3]))
-    print(f'figures: {res["n"]} kinds on the examples page ({", ".join(res["kinds"])}); {len(res["bad"])} geometry faults')
+    print(f'figures: {VX_KINDS} kinds and {res["n"] - VX_KINDS} hard cases on the examples page ({", ".join(res["kinds"])}); {len(res["bad"])} geometry faults; '
+          f'{len(viz_examples.RAISES)} blocks stop the build as they should')
     ctx.close()
 
 def main():
