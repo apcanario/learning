@@ -15,6 +15,7 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] A view is attached to a named person only when that person is known to have argued it; otherwise it is stated without a name.
 - [ ] Words in quotation marks are the source's exact words.
 - [ ] Nothing is invented: no citation, name, handle, number or quotation that the writer cannot point to.
+- [ ] A figure adds no fact: every label, date and number in it appears in the unit's own sourced text, and its caption says what it shows and where its data comes from (section, author, line).
 
 **Per unit**
 - [ ] A claim that cannot be sourced is said to be unsourced or uncertain, or is left out.

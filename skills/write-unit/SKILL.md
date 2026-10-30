@@ -29,12 +29,40 @@ Read the unit's search flag in `courses-index.md`.
   - **Personal Mythology:** an HTML fragment exactly as `AGENT-SPEC.md` specifies (6–10 `h2`, dispute boxes with a named side each, `Self-test` with 10 questions and answers in `details`, `Carry forward` with exactly 3 items); British spelling; no em dashes; no preamble. Never use the Artifact tool or any publishing tool.
 - Begin with the first section. No preamble, no summary of what follows, no closing filler, no motivational language.
 
+## 4b. Figure pass (after the draft)
+With the whole draft written, go through it section by section and ask of each: does this content have a shape? Where it does, declare the matching figure kind from `kit/viz.py`'s docstring; where it does not, declare nothing. A figure is drawn from the unit's own sourced text, never the other way round.
+
+| The content is | Kind |
+|---|---|
+| dated events | `timeline` |
+| a sequence of steps or stages | `flow` |
+| a hierarchy or a line of descent | `tree`, or `sitemap` for a site's pages |
+| numbers compared across items | `compare` (one value each) or `bars` (several series, grouped or stacked) |
+| a trend over time | `line` |
+| two measures of the same items | `scatter` |
+| competing estimates of one quantity | `range` |
+| a rule with branches | `decision` |
+| roles or items by sections (who may do what, what sits where) | `matrix` |
+| a grid of numbers (rows by columns) | `matrix` with `"numeric": true` |
+| a lifecycle | `states` |
+| a journey across actors | `swimlanes` |
+| screens and the moves between them | `wireflow` |
+| things and their relationships | `objects` |
+
+- **Source.** Every label, date and number in a figure already appears in the unit's text, sourced there. A figure adds no fact.
+- **Place.** Put the figure directly after the paragraph or table it draws, with at most one plain sentence introducing it.
+- **How many.** One to four figures a unit is a guide, and none where nothing has a shape; a figure is never added for decoration. A brief that names its own number stands (the User Experience briefs ask for three to eight).
+- **Caption.** Say what the figure shows and where its data comes from: the section of this unit and the source it cites there (author, work, line or page; organisation, report, date). A figure redrawn or adapted from a source credits it.
+- **Syntax.** Markdown units (Brand + AI, User Experience): a fenced ` ```viz ` block holding the JSON, `kind` and `caption` inside it. History fragments: `<figure class="viz" data-viz="<kind>"><script type="application/json">{…}</script><figcaption>…</figcaption></figure>` (`kit/WRITER-BRIEF.md`).
+- **Draw it.** Before handing in, render every figure with `viz.render` (from `kit/`: `python3 -c "import json, viz; viz.render(json.load(open('fig.json')))"`, or `python3 check.py <course>/r-<id>.html` for a history fragment). A figure that raises is fixed or dropped, never left to break the build.
+
 ## 5. Check before handing in
 - Run `sourcing-standard.md` Part 1 and the course's part over every checkable claim. Fix what fails; a claim you cannot source is said to be unsourced or removed (and never enters the deliverable).
 - Confirm the closing artefact agrees with the body and the deliverable (or Self-test) is complete.
+- Check every figure against the text: each label and number is in the unit, the caption names the section and the source, the kind fits the shape (§4b).
 - Write the unsure list: up to ten claims you could not verify, one per line.
 
 ## 6. Hand in
 - **Brand + AI:** one file `<code>-<slug>.md` (code, then the title lower-cased, hyphenated, accents and punctuation dropped), starting with the front matter from `method.md` §7 (code, title, course, model, written date, search flag).
 - **Personal Mythology:** three files: `<id>-<slug>.md` (front matter, then the fragment unchanged), `r-<id>.html` (the fragment alone), and `bibliography-r-<id>.md` (the curated bibliography: ancient sources with passages and edition where known; modern works with author, full title, place or journal, year of the edition named).
-- Send the files. Reply with one line (unit, word count, search used or not) and the unsure list. Filing is a separate step (`file-unit`).
+- Send the files. Reply with one line (unit, word count, search used or not), one line per figure (kind, section, what it draws) and the unsure list. Filing is a separate step (`file-unit`).

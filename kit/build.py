@@ -27,8 +27,13 @@ PROV = json.load(open(R / 'provenance.json'))
 ICON_CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'
 
 
+FIGBLOCK = re.compile(r'<figure class="viz[ "].*?</figure>', re.S)
+
+
 def wc(frag):
-    body = re.split(r'<h2>\s*Self-test', frag)[0]
+    """Words in a report's body (before the Self-test). Figure blocks, declared or drawn, are left out (P41): adding a
+    figure never changes a report's word count."""
+    body = re.split(r'<h2>\s*Self-test', FIGBLOCK.sub(' ', frag))[0]
     return len(re.sub(r'<[^>]+>', ' ', body).split())
 
 

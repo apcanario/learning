@@ -19,7 +19,8 @@ accordion) and the Backlog page; the same panel checks again in the light theme.
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
 its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
 and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots at the three widths
-of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home).
+of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
+and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools
@@ -591,6 +592,12 @@ def main():
                     for pid in ['home', 'rome', rp] + [x for x in PAGES if x not in ('home', 'rome', rp)]:
                         pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
                         pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, clip={'x': 0, 'y': 0, 'width': w, 'height': 2600})
+                        if pid in PAGES:   # P41: each figure of a --page panel, as the reader sees it in its frame
+                            for k, fig in enumerate(pg.query_selector_all(f'[id="{pid}"] figure.viz')):
+                                kind = ([c for c in fig.get_attribute('class').split() if c.startswith('viz-') and c != 'viz-wide'] or ['viz-figure'])[0][4:]
+                                fig.scroll_into_view_if_needed(); pg.wait_for_timeout(30)
+                                fig.screenshot(path=str(SHOTS / f'{name}-{pid}-fig-{k + 1:02d}-{kind}-{theme}.png'))
+                            pg.evaluate('window.scrollTo(0, 0)')
                 ctx.close()
             # V1: each figure of the examples page as the reader sees it in its frame, then one sheet per width and theme
             for name, w, h, mobile in VIEWPORTS:

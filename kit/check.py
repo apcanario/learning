@@ -3,9 +3,15 @@
 Usage: python3 check.py rome/r-1.4.html [more files]   (target taken from the prompt in the syllabus)
        python3 check.py --target 2500 path/to/file.html
 Exit code 1 if any hard check fails. Length against the target is advisory (a soft note), never a failure.
+
+Figures (P41, 29 Oct 2026): a figure declaration is allowed, exactly in the form of WRITER-BRIEF.md,
+  <figure class="viz" data-viz="<kind>"><script type="application/json">{...}</script><figcaption>...</figcaption></figure>
+its JSON must parse and viz.render must draw it; any other <figure>, <script>, <figcaption> or <style> is still a hard
+failure. Figure blocks are left out of the word count, so adding a figure never changes a report's count.
 """
-import re, sys, html, pathlib
+import re, sys, html, json, pathlib
 from html.parser import HTMLParser
+import viz
 
 R = pathlib.Path(__file__).resolve().parent
 ALLOWED = {'h2', 'h3', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'blockquote', 'table', 'thead', 'tbody', 'tr', 'th', 'td',
@@ -73,9 +79,42 @@ def check_capstone(t, nq, hard, soft):
     return len(h2) - 1
 
 
+FIG = re.compile(r'<figure class="viz" data-viz="([\w-]+)">\s*<script type="application/json">(.*?)</script>\s*<figcaption>(.*?)</figcaption>\s*</figure>', re.S)
+
+
+def strip_figures(t):
+    """The fragment with every figure declaration removed: what the word count and the element checks see."""
+    return FIG.sub(' ', t)
+
+
+def check_figures(t, hard):
+    """Each declaration: the JSON parses, its kind matches data-viz, the caption is not empty, and viz.render draws it."""
+    n = 0
+    for m in FIG.finditer(t):
+        n += 1
+        try:
+            d = json.loads(m.group(2))
+        except ValueError as e:
+            hard.append(f'figure {n}: JSON does not parse ({e})'); continue
+        if d.get('kind', m.group(1)) != m.group(1):
+            hard.append(f'figure {n}: kind {d.get("kind")!r} does not match data-viz {m.group(1)!r}')
+        d.setdefault('kind', m.group(1))
+        if not m.group(3).strip() and not d.get('caption'):
+            hard.append(f'figure {n}: empty caption (the caption says what the figure shows and where its data comes from)')
+        d.setdefault('caption', m.group(3))
+        try:
+            viz.render(d)
+        except SystemExit as e:
+            hard.append(f'figure {n}: {e}')
+    return n
+
+
 def check(path, target=None):
-    t = path.read_text()
+    raw = path.read_text()
     hard, soft = [], []
+    nfig = check_figures(raw, hard)
+    t = strip_figures(raw)
+    if nfig: soft.append(f'{nfig} figure{"s" if nfig > 1 else ""} declared and drawn (left out of the word count)')
     p = P(); p.feed(t); p.close()
     hard += p.errs
     if p.stack: hard.append(f'unclosed tags: {p.stack}')
