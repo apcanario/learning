@@ -957,12 +957,15 @@ def objects(d):
         nx, ny = -uy, ux
         if ny > 0 or (ny == 0 and nx > 0):
             nx, ny = -nx, -ny                                # cardinalities above the line, or left of a vertical one
-        for end, pt, sgn in (('from_card', P, 1), ('to_card', Q, -1)):
+        for end, pt, sgn, own in (('from_card', P, 1, a), ('to_card', Q, -1, b)):
             if e.get(end):
                 tw = _tw(e[end], 10, 'mono')
                 along = 8 + abs(ux) * tw / 2 + abs(uy) * 8
                 off = 11 + abs(uy) * tw / 2
                 cx, cy = pt[0] + sgn * ux * along + nx * off, pt[1] + sgn * uy * along + ny * off
+                ox, oy, ow, oh = own                         # N7: on a slanted line near a box's corner the
+                if (ox - tw / 2 - 2 < cx < ox + ow + tw / 2 + 2 and oy - 9 < cy < oy + oh + 9):   # count fell on the
+                    cx, cy = cx - 2 * nx * off, cy - 2 * ny * off                                    # box: other side
                 links += f'<text class="viz-small" x="{cx:.1f}" y="{cy + 3.6:.1f}" text-anchor="middle">{esc(e[end])}</text>'
         if e.get('label'):
             if abs(uy) < 0.01:                               # a level line: the label hangs under it

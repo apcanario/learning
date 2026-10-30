@@ -18,7 +18,7 @@ BAR = 'USER EXPERIENCE'
 BRAND_HTML = 'USER <span>/</span> EXPERIENCE'
 OUT = 'user-experience-courses.html'
 THEME_KEY = 'ux-theme'
-VERSION = 'v2 · 30 Oct 2026'
+VERSION = 'v3 · 30 Oct 2026'
 LEARN_C, BUILD_C = 'var(--blue)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -46,6 +46,9 @@ READINGS = [
     dict(id='read-ia1', course='IA',
          title='What information architecture is, and where it sits', covers=['IA1'], name='IA1 · What IA is',
          intro="Unit IA1, written 30 Oct 2026 by Opus 5.5 in an isolated agent context that saw only its brief (P31), search off (used only to verify editions, chapters, dates and URLs); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: keep, 0 errors, 4 should-fix, 7 minor, all applied (a Fable 5.1 fresh check is owed, row P49). Four definitions (Rosenfeld, Morville and Arango; Covert; Arango; Garrett), the four lines between IA and navigation, the interface, content strategy and the data model, the discipline's history, what an IA deliverable is for, and a first look at Perqo's three surfaces; six figures. Deliverables: a one-page definition sheet for a product team and the Perqo surfaces map later units build on. Known gaps: About Face's argument is from knowledge of the section, not a re-read; Wurman's 1975 coinage is reported secondhand (Resmini and Rosati, from Morville)."),
+    dict(id='read-ia2', course='IA',
+         title='The shapes IA takes: the artefact catalogue and the course notation', covers=['IA2'], name='IA2 · The shapes IA takes',
+         intro="Unit IA2, written 30 Oct 2026 by Opus 5.5 in an isolated agent context that saw only its brief, the writing skill, sourcing Parts 1 and 4, the figure kinds and IA1 (P31), search off (used only to verify editions, chapters, dates and URLs); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 3 errors (three figures that read backwards or added labels the text lacked), 10 should-fix, 17 minor, all applied (a Fable 5.1 fresh check is owed, row P49). The catalogue of ten IA artefacts, each with the question it answers, its readers, its fidelity by stage and what it must not be mistaken for; Garrett's visual vocabulary and Brown's site maps and flowcharts, and what each standardises; the five faults to look for first in someone else's artefact; editing without breaking what others rely on; and the course notation every later figure uses; eight figures, one per artefact family plus the legend. Deliverables: the course notation sheet and the artefact decision table. Known gaps: Brown's chapters and the Polar Bear book's navigation and vocabulary chapters were read only at their openings and headings; Garrett's Quick Reference is undated; Shostack 1984 and Harel 1987 from their abstracts and summaries; UML multiplicity from knowledge."),
 ]
 
 # ---- build order -----------------------------------------------------------------------
@@ -54,11 +57,11 @@ ORDER = [("IA1", "Opus 5.5", "off"), ("IA2", "Opus 5.5", "off"), ("IA3", "Opus 5
          ("IA5", "Opus 5.5", "off"), ("IA6", "Opus 5.5", "off"), ("IA7", "Opus 5.5", "off"), ("IA8", "Opus 5.5", "off"),
          ("IA9", "Opus 5.5", "off"), ("IA10", "Opus 5.5", "off"), ("IA11", "Opus 5.5", "off"), ("IA12", "Opus 5.5", "off"),
          ("DD-IA1", "Opus 5.5", "on"), ("DD-IA2", "Opus 5.5", "on"), ("DD-IA3", "Opus 5.5", "off")]
-STATUS = {'IA1': 'written 30 Oct'}
+STATUS = {'IA1': 'written 30 Oct', 'IA2': 'written 30 Oct'}
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
 FINAL_AUDIT = ('Audit 4', 'Final audit of the three deep dives plus a full read of the course against its goal, and a read-through as the persona', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'IA2', 0, 'Audit 1 after #4 (IA1, IA2, IA3, IA4)'
+NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'IA3', 0, 'Audit 1 after #4 (IA1, IA2, IA3, IA4)'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_H1 = "User Experience: the courses"
@@ -149,6 +152,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-10-30 23:50', "v3. IA2 The shapes IA takes: the artefact catalogue and the course notation written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 10 should-fix, 17 minor; all applied; Fable 5.1 fresh check owed, P49) and filed: reading page under course IA, IA2 marked written, eight figures; the course notation is set for every later figure; IA3 next; Audit 1 counter 2 of 4 (deferred by Pedro, P49)."),
     ('2026-10-30 19:30', "v2. IA1 What information architecture is, and where it sits written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Opus 5.5 agent (keep, 0 errors, 4 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed, P49) and filed: reading page under course IA, IA1 marked written, six figures; IA2 next; Audit 1 counter 1 of 4 (deferred by Pedro, P49)."),
     ('2026-10-29 22:30', "v1. Course IA · Information Architecture created from the template on design/theme.css: the frame, the syllabus (twelve core units in four parts, three deep dives), the shared preamble with the reader persona and the fictional Perqo, one brief per unit, the build order with an audit after each part. Status coming soon; nothing written. The figure kinds the course needs are a backlog row before IA1."),
 ]

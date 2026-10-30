@@ -1,0 +1,880 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#ux-ia" data-target="ux-ia">Course IA · Information architecture</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">IA2</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--blue)">INFORMATION ARCHITECTURE</span> · IA2 <span class="pill live">IA2</span></div>
+    <h1>The shapes IA takes: the artefact catalogue and the course notation</h1>
+    <nav class="toc" aria-label="Sections"><a href="#read-ia2-0">1 · The catalogue: ten artefacts and the question each answers</a><a href="#read-ia2-1">2 · The published notations, and what they standardise</a><a href="#read-ia2-2">3 · Reading an artefact someone else made: the five faults to look for first</a><a href="#read-ia2-3">4 · Editing an artefact without breaking what others rely on</a><a href="#read-ia2-4">5 · The course notation</a><a href="#read-ia2-5">Deliverable · The course notation sheet</a><a href="#read-ia2-6">Deliverable · The artefact decision table</a><a href="#read-ia2-7">Sources</a><a href="#read-ia2-8">Unsure list</a></nav>
+  </header>
+  <p class="lede">Unit IA2, written 30 Oct 2026 by Opus 5.5 in an isolated agent context that saw only its brief, the writing skill, sourcing Parts 1 and 4, the figure kinds and IA1 (P31), search off (used only to verify editions, chapters, dates and URLs); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 3 errors (three figures that read backwards or added labels the text lacked), 10 should-fix, 17 minor, all applied (a Fable 5.1 fresh check is owed, row P49). The catalogue of ten IA artefacts, each with the question it answers, its readers, its fidelity by stage and what it must not be mistaken for; Garrett's visual vocabulary and Brown's site maps and flowcharts, and what each standardises; the five faults to look for first in someone else's artefact; editing without breaking what others rely on; and the course notation every later figure uses; eight figures, one per artefact family plus the legend. Deliverables: the course notation sheet and the artefact decision table. Known gaps: Brown's chapters and the Polar Bear book's navigation and vocabulary chapters were read only at their openings and headings; Garrett's Quick Reference is undated; Shostack 1984 and Harel 1987 from their abstracts and summaries; UML multiplicity from knowledge.</p>
+  <div class="report"><h2 id="read-ia2-0">1 · The catalogue: ten artefacts and the question each answers</h2>
+<p>IA1 set the rule this unit builds on: an IA deliverable is one view, chosen for a decision, with named readers, and it states on its face what it leaves out (IA1, section 4; Brown, <em>Communicating Design</em>, 2nd ed., 2011, ch. 5; Tankala, NN/g, 2023). The field's own lists of those views are short. Rosenfeld, Morville and Arango's chapter on documentation calls sitemaps and wireframes "the two most common types of IA diagrams", and goes on to content mapping and inventory, content models, controlled vocabularies and style guides (<em>Information Architecture: For the Web and Beyond</em>, 4th ed., O'Reilly, 2015, ch. 13). Dan Brown's book gives a chapter each to personas, concept models, site maps, flowcharts and wireframes (Brown 2011, chs 3 to 7). A product team with a backoffice and an app needs more than either list: it also has objects, rules and lifecycles to draw, and journeys that cross surfaces.</p>
+<p>This unit catalogues ten artefacts, in six families. A family is a set of artefacts that answer the same kind of question and are drawn with the same figure kind in this course's notation (section 5).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Artefacts</th>
+<th>The kind of question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventories and vocabularies</td>
+<td>content inventory and audit; taxonomy and controlled vocabulary</td>
+<td>What do we have, and what is each thing called?</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>sitemap; navigation model</td>
+<td>Where does each thing live, and how do people get there?</td>
+</tr>
+<tr>
+<td>Objects</td>
+<td>object map; object-relationship map</td>
+<td>What is the system made of, and how do its parts relate?</td>
+</tr>
+<tr>
+<td>Flows</td>
+<td>user flow, task flow, wireflow</td>
+<td>What steps does a person take, on which screens?</td>
+</tr>
+<tr>
+<td>Rules and lifecycles</td>
+<td>decision tree; state diagram</td>
+<td>What does the system decide, and what states can a thing be in?</td>
+</tr>
+<tr>
+<td>Journeys across actors and surfaces</td>
+<td>service blueprint; cross-surface interaction map</td>
+<td>Who does what, where, and what crosses between them?</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.0 · Three fidelities</h3>
+<p>Each entry below says what fidelity the artefact needs at which stage. This course uses three levels. They are a course convention, set here so later units can name them; the published sources distinguish fidelity per artefact (Rosenfeld, Morville and Arango separate "High-Level Architecture Sitemaps" from "Detailed Sitemaps", 2015, ch. 13) but do not give one scale for all of them.</p>
+<ul>
+<li><strong>F1, sketch.</strong> The shape and the main names only. Every assumption is marked. Made in hours, to argue about.</li>
+<li><strong>F2, working.</strong> Complete for its stated scope; labels in the product's own vocabulary; conditions and exceptions shown. Made to agree on.</li>
+<li><strong>F3, specification.</strong> Every element has a stable identifier, every condition and state is shown, and the artefact carries an owner, a version and a date. Made to build from and to keep.</li>
+</ul>
+<p>The readers named below are the six touchpoints of the course goal, as IA1 section 4 first described what each reads for: product management, engineering, content, sales, support and the client.</p>
+<h3>1.1 · Content inventory and content audit</h3>
+<p><strong>The question.</strong> What content exists, where, who owns it, and is it any good?</p>
+<p>Anna Kaley's NN/g article separates the two halves. An inventory is "a list of every piece of digital content you currently have, captured at either the page or asset level"; an audit "examines, assesses, and evaluates the quality of the content listed in the inventory". She recommends inventory fields (title, URL, owner, topic, format, last-modified date, metadata, location of source files) and an audit outcome per item of keep, update or remove, with an owner for each update ("Content Inventory and Auditing 101", Nielsen Norman Group, 27 September 2020, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/content-audits/">nngroup.com/articles/content-audits</a>). Rosenfeld, Morville and Arango treat content mapping and inventory as part of IA documentation (2015, ch. 13).</p>
+<ul>
+<li><strong>Readers.</strong> Content and support, first; product management for scope; the client when their own content is migrated.</li>
+<li><strong>Fidelity.</strong> F2 at the start of any redesign of an existing surface (an inventory is only useful when complete for its scope); F3 when it becomes the migration list engineering builds from.</li>
+<li><strong>Not to be mistaken for:</strong> a sitemap. An inventory lists what exists today, item by item; a sitemap proposes where things will live. An inventory sorted by URL looks like a hierarchy and is read as one, which carries today's structure into tomorrow's without anyone deciding to.</li>
+</ul>
+<h3>1.2 · Taxonomy and controlled vocabulary</h3>
+<p><strong>The question.</strong> What is each thing called, which other words mean the same, and how do the terms nest?</p>
+<p>The US standard for controlled vocabularies, ANSI/NISO Z39.19-2005 (R2010), <em>Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies</em>, names four kinds of controlled vocabulary: lists, synonym rings, taxonomies and thesauri (<a target="_blank" rel="noopener" href="https://niso.org/publications/ansiniso-z3919-2005-r2010">niso.org</a>). Rosenfeld, Morville and Arango's chapter 10 covers synonym rings, authority files, classification schemes and thesauri, the three semantic relationships (equivalence, hierarchical, associative) and preferred terms, and says that "In many large metadata-driven products, controlled vocabularies have become the glue that holds the systems together" (2015, ch. 10). Page Laubheimer defines a taxonomy as "A closed list of acceptable terms that are arranged hierarchically and are used to describe and classify content", and places it backstage: the taxonomy maps the concepts used to describe content, where the IA structure maps where content lives and the navigation is the frontstage layer people see ("Taxonomy 101: Definition, Best Practices, and How It Complements Other IA Work", Nielsen Norman Group, 3 July 2022, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/taxonomy-101/">nngroup.com/articles/taxonomy-101</a>). Heather Hedden's <em>The Accidental Taxonomist</em> (3rd ed., Information Today, 2022) is a book-length guide to building one.</p>
+<ul>
+<li><strong>Readers.</strong> Content and engineering (the terms become metadata, filters and search synonyms); support (the variant terms are the words customers use); sales (the preferred terms are the words on the website).</li>
+<li><strong>Fidelity.</strong> F1 as a word list in discovery; F2 once the labels are agreed; F3 when engineering builds search, filters or tagging on it.</li>
+<li><strong>Not to be mistaken for:</strong> the navigation. A taxonomy may hold far more terms than any menu shows, and its hierarchy is for classifying, so it need not match the order people browse in (Laubheimer 2022). IA1's mapping of one data-model entity to two labels (section 2.4) is a small controlled vocabulary.</li>
+</ul>
+<h3>1.3 · Sitemap (structural)</h3>
+<p><strong>The question.</strong> What exists on this surface, how is it grouped, and what sits under what?</p>
+<p>Brown defines a site map as "A visual representation of the relationships between different pages on a web site", lists its other names ("Also known as a structural model, taxonomy, hierarchy, navigation model, or site structure"), and notes that "site maps increasingly represent page types or templates in addition to (or instead of) specific pages" (Brown 2011, ch. 5). Garrett said the same of his own practice in 2003: he often uses his notation "to diagram navigational relationships between abstract classes of pages" (interview by Dan Brown, Boxes and Arrows, 11 December 2003, <a target="_blank" rel="noopener" href="https://boxesandarrows.com/the-visual-vocabulary-three-years-later-an-interview-with-jesse-james-garrett/">boxesandarrows.com</a>). The structural sitemap this course uses follows them: a box is a page type or a group, and many pages of one type are one box. A page-by-page sitemap of a help centre with four hundred articles has four hundred boxes and shows less structure than one with twelve.</p>
+<ul>
+<li><strong>Readers.</strong> Product management (scope), engineering (templates and routes), content (where each piece goes), sales (how the website is shown to buyers).</li>
+<li><strong>Fidelity.</strong> F1 in discovery, top two levels only; F2 in design, every group and page type; F3 for build, with identifiers that engineering and content can cite.</li>
+<li><strong>Not to be mistaken for:</strong> the navigation. A sitemap "is only a visual display of the hierarchy and organization of your content" (Tankala, NN/g, 2023); the navigation is the interface built on the IA, and on this unit's reading it shows part of the hierarchy at a time and adds routes the hierarchy does not have, such as the "Related Link" lists that Cardello says IA metadata can generate (Cardello, NN/g, 2014). Nor is it the XML file a website publishes for search engines under the Sitemaps protocol (<a target="_blank" rel="noopener" href="https://www.sitemaps.org/protocol.html">sitemaps.org/protocol.html</a>), which shares only the name.</li>
+</ul>
+<h3>1.4 · Navigation model</h3>
+<p><strong>The question.</strong> By which routes can a person reach each thing, from where?</p>
+<p>Rosenfeld, Morville and Arango split navigation into embedded systems (global, local and contextual navigation) and supplemental systems (sitemaps, indexes, guides, configurators and search) (2015, ch. 8, section headings). In this course's words: global navigation is present everywhere on a surface; local navigation moves within one area; contextual navigation is a link inside content to related content; supplemental navigation stands outside the main structure and lets people reach things another way. A navigation model records which of these routes exist and where each leads. Its natural form is a table: rows are the routes, columns the surfaces.</p>
+<ul>
+<li><strong>Readers.</strong> Engineering (which components and routes to build), content (which items need contextual links), support (how a customer got somewhere).</li>
+<li><strong>Fidelity.</strong> F2 in design, before navigation components are chosen; Cardello's recommendation is a first pass at the IA before choosing the components that must hold it (Cardello 2014). F3 is rarely needed: by build time the routes live in the sitemap's identifiers and the screens.</li>
+<li><strong>Not to be mistaken for:</strong> the menu design. The model says which routes exist; whether a route is a tab bar, a drawer or a link is navigation design (IA1, section 2.1).</li>
+</ul>
+<h3>1.5 · Object map and object-relationship map</h3>
+<p><strong>The question.</strong> What things does the system hold, what does each carry, what can people do to it, and how are the things related?</p>
+<p>Sophia V. Prater, writing in <em>A List Apart</em>, describes object-oriented UX as "putting object design before procedural action design": the objects come from the user's mental model, and the actions are defined after them ("Object-Oriented UX", A List Apart, 20 October 2015, <a target="_blank" rel="noopener" href="https://alistapart.com/article/object-oriented-ux/">alistapart.com/article/object-oriented-ux</a>; practice). Her object-mapping method runs in four steps: extract the objects from the nouns in the goals, define each object's core content, nest objects inside each other to find the cross-links (which, she argues, define contextual navigation), and rank each object's elements (same article). Rosenfeld, Morville and Arango's chapter 13 covers a related artefact, content models, for "connecting and managing granular content" (2015, ch. 13). This course draws two grades of the same artefact. An <em>object map</em> lists the objects with their attributes and actions. An <em>object-relationship map</em> adds the lines between them, each with a verb and a count at each end. The counts use the multiplicity notation of UML, the modelling standard engineering teams already read (Object Management Group, <em>Unified Modeling Language</em>, version 2.5.1, December 2017, <a target="_blank" rel="noopener" href="https://www.omg.org/spec/UML/2.5.1">omg.org/spec/UML/2.5.1</a>): 1 is exactly one, 0..<em> any number including none, 1..</em> at least one.</p>
+<ul>
+<li><strong>Readers.</strong> Engineering first (it is the conversation about the data model, held in the user's terms); product management (what the product is made of); the client (whether their own structure, groups, policies and approval chains, fits).</li>
+<li><strong>Fidelity.</strong> F1 in discovery, nouns and the main lines; F2 in design, every attribute that a screen shows and every action; F3 when it is the agreed mapping to the data model, with each object's model name beside its label.</li>
+<li><strong>Not to be mistaken for:</strong> the database schema. The map uses the names people meet; the schema uses engineering's names and may split or join things for storage (IA1, section 2.4; Cooper and others, <em>About Face</em>, 4th ed., 2014, ch. 1).</li>
+</ul>
+<h3>1.6 · User flow, task flow and wireflow</h3>
+<p><strong>The question.</strong> What steps does a person take to reach a goal, and on which screens?</p>
+<p>Kate Kaplan defines a user flow as "A set of interactions that describe the typical or ideal set of steps needed to accomplish a common task", performed with a product, and separates it from a user journey, "A scenario-based sequence of the steps that a user takes in order to accomplish a high-level goal" across channels and over time ("User Journeys vs. User Flows", Nielsen Norman Group, 16 April 2023, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/user-journeys-vs-user-flows/">nngroup.com/articles/user-journeys-vs-user-flows</a>). Brown's chapter title is Flowcharts, and he gives the other names: "Also known as flows, user flows, process charts"; a flowchart "may not reveal all the details of the interactions, but it does offer a comprehensive view of the user experience for a particular objective" (Brown 2011, ch. 6). Page Laubheimer describes the wireflow: "Wireflows are a combination of wireframes and flowcharts", "well suited for representing dynamic changes on one or few pages inside an app" ("Wireflows: A UX Deliverable for Workflows and Apps", Nielsen Norman Group, 4 December 2016, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/wireflows/">nngroup.com/articles/wireflows</a>).</p>
+<p>The terms "user flow" and "task flow" are used loosely in practice, and Brown's list of aliases shows that the published sources treat them as one family. This course separates them by scope, as a convention: a <strong>user flow</strong> follows one kind of user from an entry point to a goal, with the branches that kind of user can meet; a <strong>task flow</strong> follows one task along its main path, with no entry points and no branches by user type; a <strong>wireflow</strong> draws a task flow as the screens themselves, when what changes on the screen is the point.</p>
+<ul>
+<li><strong>Readers.</strong> Engineering and design (what to build, screen by screen); support (where a person can get stuck); product management (where the task starts and ends).</li>
+<li><strong>Fidelity.</strong> F1 task flows in discovery; F2 user flows in design, with the failure paths; wireflows at F2 to F3 for build of a dynamic screen sequence.</li>
+<li><strong>Not to be mistaken for:</strong> a journey map, which covers a goal over time and across channels (Kaplan 2023), nor for a decision tree. Kaplan's definition says "typical or ideal": a user flow is the expected path, and the rules that send a person elsewhere belong in a decision tree.</li>
+</ul>
+<h3>1.7 · Decision tree</h3>
+<p><strong>The question.</strong> Given these facts, which outcome does the system produce?</p>
+<p>Garrett's notation has a symbol for this: the conditional branch, "when the system (not based on user action) must select one path" (Garrett, <em>Visual Vocabulary Quick Reference</em>, <a target="_blank" rel="noopener" href="http://www.jjg.net/ia/visvocab/files/garrett_ia_quickref.pdf">jjg.net</a>). In a flow, the branch is one diamond and its outcomes are lines leaving it. A decision tree is that branch drawn out in full: every question the system asks, in order, and every outcome. This course makes it a separate artefact because a benefits platform's hardest IA questions are rules (who may claim what, when an approval is needed), and those rules are invisible in the flow until a person hits one.</p>
+<ul>
+<li><strong>Readers.</strong> Engineering (the rule to implement); product management and the client (whether the rule is the one they mean); support (why a customer got the outcome they got).</li>
+<li><strong>Fidelity.</strong> F2 in design; F3 for build, where every branch is complete and every outcome is named as the screen names it.</li>
+<li><strong>Not to be mistaken for:</strong> a flow. A decision tree has no screens; it is the system's logic, and where that logic waits on a person's decision (HR's approval in section 5.3), that decision is one question box in the person's tone, Garrett's decision point beside his conditional branch. Nor is it a state diagram: a tree decides once; a lifecycle records where a thing is over time.</li>
+</ul>
+<h3>1.8 · State diagram</h3>
+<p><strong>The question.</strong> What states can a thing be in, and what moves it from one to the next?</p>
+<p>The diagram is older than the web. David Harel's statecharts "extend conventional state-transition diagrams with essentially three elements", which add nested states, parallel components and communication between them ("Statecharts: A Visual Formalism for Complex Systems", <em>Science of Computer Programming</em> 8, 1987, pp. 231 to 274). This course uses the plain state-transition diagram: states as boxes, transitions as labelled arrows, a marked start and marked end states. IA1 named the states of a Perqo claim (Perqo, fictional): submitted, approved, rejected, paid (IA1, section 5).</p>
+<ul>
+<li><strong>Readers.</strong> Engineering (the status field and its allowed changes); content and support (what each status is called on each surface, and what a person can do in it); the client (when money moves).</li>
+<li><strong>Fidelity.</strong> F2 in design, every state a person can see; F3 for build, every transition with who or what triggers it.</li>
+<li><strong>Not to be mistaken for:</strong> a flow. A flow is what a person does; a lifecycle is what happens to a thing, whoever acts on it. A claim stays submitted while the employee who made it is asleep.</li>
+</ul>
+<h3>1.9 · Service blueprint</h3>
+<p><strong>The question.</strong> For one journey, who does what, in front of the customer and behind, and what supports it?</p>
+<p>Sarah Gibbons defines it for NN/g: "A service blueprint is a diagram that visualizes the relationships between different service components", "people, props (physical or digital evidence), and processes", "directly tied to touchpoints in a specific customer journey". Her blueprint has lanes of customer actions, frontstage actions, backstage actions and processes, with evidence as a further layer, separated by the line of interaction, the line of visibility and the line of internal interaction ("Service Blueprints: Definition", Nielsen Norman Group, 27 August 2017, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/service-blueprints-definition/">nngroup.com/articles/service-blueprints-definition</a>). The technique goes back to G. Lynn Shostack's "Designing Services That Deliver" (<em>Harvard Business Review</em>, January 1984, <a target="_blank" rel="noopener" href="https://hbr.org/1984/01/designing-services-that-deliver">hbr.org</a>); James Kalbach gives it a chapter as one of the primary diagram types (<em>Mapping Experiences</em>, 2nd ed., O'Reilly, 2020, ch. 10).</p>
+<ul>
+<li><strong>Readers.</strong> Support and operations (the backstage work); product management; the client (their own staff are backstage actors).</li>
+<li><strong>Fidelity.</strong> F1 in discovery, to find where the backstage breaks; F2 when a change to the service is designed. It rarely needs F3; its build detail moves into flows, rules and lifecycles.</li>
+<li><strong>Not to be mistaken for:</strong> an IA artefact in the narrow sense. It shows people and processes more than structure. It is in this catalogue because it is where the structure's seams show: every crossing of the line of visibility is a place where a label or a status has to mean the same thing on both sides.</li>
+</ul>
+<h3>1.10 · Cross-surface interaction map</h3>
+<p><strong>The question.</strong> Across all the surfaces, which things are shared, what does each surface call them, and what passes between surfaces?</p>
+<p>This is the course's own artefact, named in the course goal; no standard work defines it under this name. Its ground is the cross-channel problem that the fourth edition of the Polar Bear book wrote into its definition ("digital, physical, and cross-channel ecosystems", Rosenfeld, Morville and Arango 2015, ch. 2) and that Resmini and Rosati made the subject of <em>Pervasive Information Architecture</em> (Morgan Kaufmann, 2011). IA1's Perqo surfaces map was its first draft (IA1, Deliverable). The map joins the surfaces to the objects they share: each surface is a box with its top-level areas, each shared object is a box with its name on each surface, and the lines say what crosses. Later units join it to the decision trees and lifecycles, as the course goal says.</p>
+<ul>
+<li><strong>Readers.</strong> All six: it is the one artefact every touchpoint reads, each for its own row of the vocabulary.</li>
+<li><strong>Fidelity.</strong> F1 at the start of any work that touches more than one surface; F2 kept current through design; F3 as the canonical vocabulary engineering maps to.</li>
+<li><strong>Not to be mistaken for:</strong> a sitemap of everything. It holds the top level of each surface and nothing below; the sitemaps hold the rest.</li>
+</ul>
+<h2 id="read-ia2-1">2 · The published notations, and what they standardise</h2>
+<p>A notation is a fixed set of shapes, lines and label rules with a fixed meaning each, so that a reader who has never met the author can read the diagram. Two have standing in this field.</p>
+<h3>2.1 · Garrett's visual vocabulary</h3>
+<p>Jesse James Garrett's <em>A visual vocabulary for describing information architecture and interaction design</em> was first released in October 2000 and revised since (<a target="_blank" rel="noopener" href="http://www.jjg.net/ia/visvocab/">jjg.net/ia/visvocab</a>; Brown 2003). Its one-page <em>Quick Reference</em> names its elements. The units: "Pages are the fundamental unit of presentation on the Web, not (necessarily) a unit of implementation", and a file is content delivered for use outside the browser. The groups: "A page stack indicates a group of functionally identical pages whose navigational properties are immaterial"; a file stack; "An area is used to identify a group of pages that share one or more common attributes"; conditional areas, flow areas and iterative areas. The logic: "A decision point is used to model when one user action may generate one of a number of results"; "A conditional branch is when the system (not based on user action) must select one path"; conditional selectors, concurrent sets and clusters. The connections: "Relationships between elements are depicted with simple lines"; "Connectors use arrows to convey directionality, indicating how the user will move through the system"; "We use a crossbar on the opposite end of the arrow to prohibit upstream movement"; "A conditional connector is used when a path may or may not be presented to the user"; and "Continuation points allow us to separate our diagrams into easily digestible sections" (Garrett, <em>Quick Reference</em>).</p>
+<p>What it standardises, then: the units of a structure and a flow, how they group, where the logic branches, and which way a person may move. In the 2003 interview Garrett named two of its properties. It "treats the page as something of a black box": what happens inside a page cannot be drawn. And "the complexity of the representation is proportional to the complexity of the system being described"; he said, "I haven't ever encountered a system I couldn't describe in the vocabulary". He did not ask for conformance: "Take the parts that can help you do your job, don't worry about the rest" (Brown 2003). The article introducing the interview describes the vocabulary as tool-independent, adaptable to any diagramming software and medium (Brown 2003).</p>
+<p>What it leaves out, on this unit's reading of the <em>Quick Reference</em>: objects and their relationships (it has no element for a thing with attributes), lifecycles (it has decision points but no state), and actors (it has no lane). Those are the three families a product with a backoffice needs most, which is why this course takes its object, state and lane conventions from elsewhere (UML's multiplicities, Harel's state diagrams, Gibbons's blueprint lanes).</p>
+<h3>2.2 · Brown's site maps and flowcharts</h3>
+<p>Dan Brown's <em>Communicating Design</em> (2nd ed., New Riders, 2011, published September 2010) standardises the framing of each artefact: what it is for and whom it serves. Its chapter 2, "Diagram Basics", opens with a section on the "Anatomy of a Design Diagram" and says it "lays a theoretical foundation from which you can build all the diagrams in the first half of this book" (Brown 2011, ch. 2). Each artefact chapter then opens the same way, with an at-a-glance summary and a section on purpose: for site maps, "A site map shows how all the information on a web site fits together. It provides the project team with one view of how the site will be constructed" (ch. 5); for flowcharts, "Flowcharts visualize a process, usually centered around a specific task or function" and, on the web, "often represent a series of screens that collect and display information to the users" (ch. 6).</p>
+<p>Two things in those openings matter to a reader of other people's artefacts. Brown's list of other names for a site map, "a structural model, taxonomy, hierarchy, navigation model, or site structure" (ch. 5), puts three of this unit's separate artefacts (sitemap, taxonomy, navigation model) under one name: a team that says "sitemap" may mean any of them. And his note that site maps "increasingly represent page types or templates in addition to (or instead of) specific pages" (ch. 5) means a reader has to find out, for each box, which of the two it is. Section 3 makes both of those into faults to check (faults 1 and 3).</p>
+<h3>2.3 · What the two give this course</h3>
+<p>Garrett gives the course its symbols for structure and flow, and the principle that a notation is a means to communicate with colleagues. Brown gives it the framing: each artefact says what it is for and for whom, and is one view. Neither covers objects, lifecycles or lanes. Neither covers colour, which matters here because the course's figures use six tones; the accessibility standard sets the constraint: "Color is not used as the only visual means of conveying information", in the words of WCAG 2.2, Success Criterion 1.4.1 (W3C Recommendation, 12 December 2024, <a target="_blank" rel="noopener" href="https://www.w3.org/TR/WCAG22/">w3.org/TR/WCAG22</a>). In this notation every tone's meaning is also carried by words: a lane name, a type tag, a caption.</p>
+<h2 id="read-ia2-2">3 · Reading an artefact someone else made: the five faults to look for first</h2>
+<p>An artefact handed over by another designer, a consultancy or a product manager claims something about the system. The reader's job is to say what it claims and what it leaves out (the course goal). Five faults are the ones to look for first. The list is this unit's synthesis, and each fault is tied to the source that makes it a fault; it is craft practice, not a measured finding.</p>
+<ol>
+<li><strong>No stated decision, reader, scope or date.</strong> Brown's "one view" and Tankala's point that a sitemap deliberately leaves detail out (Brown 2011, ch. 5; Tankala 2023) mean an artefact without a stated purpose cannot be judged complete or incomplete. Check first which artefact it is (Brown's aliases mean "sitemap" can name a taxonomy or a navigation model), the decision it supports, its readers, what it leaves out and when it was last true. An undated sitemap of a live product is a claim about some past version of it.</li>
+<li><strong>An undeclared or inconsistent notation.</strong> A notation exists so readers share "a common language" (Garrett, in Brown 2003). Look for a legend. Then check that one shape means one thing throughout: a box that is a page in one corner and a feature in another, or an arrow that is a click in one place and a data feed in another, makes every line of the diagram ambiguous.</li>
+<li><strong>Mixed levels.</strong> Pages beside page types (Brown 2011, ch. 5), screens beside objects, one area drawn to its leaves beside another drawn to its first level. Garrett's page stack exists to make the level explicit ("functionally identical pages", <em>Quick Reference</em>). Mixed levels make a diagram look balanced when the system is not, and make counts meaningless.</li>
+<li><strong>Missing conditions and unhappy paths.</strong> Kaplan's definition of a user flow says "typical or ideal" (Kaplan 2023), and a flow drawn to that definition shows only that path. Garrett gave conditions their own symbols (conditional connectors, conditional areas, conditional branches) because whether a path is shown depends on who the user is and what holds. Check what happens to each kind of user, at each rule, and when something fails. If no arrow ends anywhere unpleasant, the artefact has left something out.</li>
+<li><strong>Labels that drift from the vocabulary.</strong> The diagram calls a thing one name, the screens another, the help article a third. IA1 set the rule that one thing with two labels is safe only when the mapping is written down (IA1, section 2.4), and Rosenfeld, Morville and Arango write that in many large metadata-driven products controlled vocabularies "have become the glue that holds the systems together" (2015, ch. 10). Check each label against the product and the vocabulary; an unmapped synonym is a defect to report.</li>
+</ol>
+<h2 id="read-ia2-3">4 · Editing an artefact without breaking what others rely on</h2>
+<p>An artefact that has been handed around is depended on: engineering tickets cite its nodes, the content inventory cites its sections, support's articles name its screens, a client has signed off a version of it. Rosenfeld, Morville and Arango describe IA style guides as "capturing your past decisions and guiding your future ones" (2015, ch. 13); an artefact in use is part of that record. The rules below are this course's practice, each with the dependency it protects.</p>
+<ul>
+<li><strong>Keep identifiers stable.</strong> At F3 every node has an identifier (section 1.0). A moved node keeps it; a removed node's identifier is retired, never reused. Protects: engineering tickets and the content inventory, which cite nodes by identifier.</li>
+<li><strong>Mark changes as proposed until agreed.</strong> Add the word "proposed" to a new or changed element's note, and leave the current element visible until the change is accepted. Protects: every reader who has already agreed to the current version, including the client.</li>
+<li><strong>Rename through the vocabulary.</strong> Change a label in the controlled vocabulary first, with the old term kept as a variant, then in the diagrams. Protects: support and search, which still meet the old word from customers; taxonomy terms reach users through search suggestions and filters (Laubheimer 2022).</li>
+<li><strong>Split rather than cram.</strong> When an addition would double a diagram's size, move a part into its own figure and leave a continuation point to it, Garrett's device for "easily digestible sections" (<em>Quick Reference</em>). Protects: the readers who used the diagram at its old size.</li>
+<li><strong>Keep the notation; extend the legend.</strong> If a new symbol is needed, add it to the legend with its meaning before using it. Garrett's own advice is to take what helps (Brown 2003); the course's rule is that what is taken is declared. Protects: everyone reading section 3's fault 2.</li>
+<li><strong>Re-stamp the face.</strong> Update the version, the date, the owner and the line saying what the artefact leaves out (IA1, section 4). Protects: the reader who arrives a year later.</li>
+</ul>
+<h2 id="read-ia2-4">5 · The course notation</h2>
+<h3>5.1 · How it is derived, and what it is reduced to</h3>
+<p>The course notation takes Garrett's units, groups, logic and connections, Brown's framing, UML's multiplicities, Harel's states and Gibbons's lanes, and reduces them to what the course's figure kinds can draw. Every figure in this course is declared as data and drawn at build time by one of a fixed set of kinds: sitemap, tree, objects, flow, wireflow, decision, states, swimlanes and matrix for structure, and further kinds for dates and numbers. A symbol the kinds cannot draw becomes a label rule. The reductions are these:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Garrett element</th>
+<th>In the course notation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page</td>
+<td>a box in a sitemap, with a type tag (section 5.2)</td>
+</tr>
+<tr>
+<td>File</td>
+<td>a box tagged <code>file</code></td>
+</tr>
+<tr>
+<td>Page stack, file stack, iterative area</td>
+<td>one box tagged <code>stack</code>, with a note saying what repeats</td>
+</tr>
+<tr>
+<td>Area</td>
+<td>a box tagged <code>section</code> with its children, or a lane</td>
+</tr>
+<tr>
+<td>Conditional area</td>
+<td>a box whose note opens with the condition in square brackets</td>
+</tr>
+<tr>
+<td>Decision point, conditional branch</td>
+<td>a question box in a decision tree, or a bracketed condition on a flow arrow</td>
+</tr>
+<tr>
+<td>Connector</td>
+<td>a line without a head where it means contains or relates; an arrow where it means movement</td>
+</tr>
+<tr>
+<td>Arrow with crossbar</td>
+<td>an arrow labelled "(no way back)"</td>
+</tr>
+<tr>
+<td>Conditional connector</td>
+<td>an arrow whose label is the condition in square brackets</td>
+</tr>
+<tr>
+<td>Continuation point</td>
+<td>a note "→ see" and the name of the figure or node it continues in</td>
+</tr>
+<tr>
+<td>Concurrent set, cluster, conditional selector, flow area, flow reference</td>
+<td>not drawn; written in the figure's note or the caption</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two things are added that Garrett did not need: tones, each tied to a surface or a role, and a caption rule.</p>
+<h3>5.2 · The rules</h3>
+<p><strong>Tones.</strong> Six tones, each with one meaning, the same in every figure. Tone 1: perqo.com. Tone 2: the merchant side and anything outside Perqo. Tone 3: the Perqo app and the employee. Tone 4: Perqo Admin and the HR and finance managers who use it. Tone 5: shared, meaning the data model, the Perqo system, and any object or term that lives on more than one surface; in a figure of one surface, every box takes that surface's tone, as in the sitemap and the object-relationship map below. Tone 6: a stop, meaning a path that ends without success, or a fault found in a review. Tones are set explicitly wherever a kind would otherwise colour by position (a sitemap gives each first-level branch its own tone by default), because position means nothing in this notation; children inherit their parent's tone. No tone is the only carrier of its meaning (WCAG 2.2, 1.4.1): the surface is also named in the lane, the box or the caption. These six tones keep IA1's assignments for the three surfaces (1, 4 and 3); IA1's other figures predate the notation.</p>
+<p><strong>Shapes.</strong> Each kind's shapes have one meaning. A square-cornered box with a small type tag is a page or page type (sitemap). A box with a filled title band is an object; its attributes sit below the title and its actions after a rule line (objects). An outlined box with branches leaving it is a question; a filled box is an outcome (decision). A rounded box is a state; an inner ring marks an end state; a dot with an arrow marks the start (states). A frame with a title bar is a screen; its bars and blocks are placeholder text and areas, and a button is a control (wireflow). A band across the figure is a lane: one actor or surface, and the steps in it are theirs (swimlanes). A plain box in a tree is a term or a group. In a matrix, a row is an item, a column a dimension, and a marked cell the value where they meet.</p>
+<p><strong>Lines.</strong> A line without a head means contains (sitemap, tree) or relates (objects). An arrow means movement or change: a person moves, the system acts, a state changes. An arrow from a box back to itself is an action that leaves the thing as it was. Nothing is drawn dashed; a condition is written.</p>
+<p><strong>Labels.</strong> Box labels are the product's own words, as they appear on the surface, in sentence case. Page-type tags come from a fixed list: <code>home</code>, <code>section</code> (a landing page for a group), <code>index</code> (a list of items), <code>detail</code> (one item), <code>stack</code> (many pages of one type), <code>form</code>, <code>file</code>, <code>external</code> (leaves this surface). An arrow's label in a flow is the person's action ("tap Submit") or the system's event ("pay out"). A relationship's label is a verb that reads from left to right on a level line and from top to bottom otherwise ("submits"), with a count at each end; the boxes are placed so that every label reads that way. An object's action reads "-&gt; verb". A condition is written in square brackets. In decision trees the branch labels are "yes" and "no", "yes" always on the left. Status words go in a note: "assumed" for a fact not yet evidenced, "proposed" for a change not yet agreed. On a shared object, the data-model name is the title, in lower case, and each surface's name is a line "Surface: Label", which is IA1's vocabulary mapping drawn (IA1, section 2.4).</p>
+<p><strong>Captions.</strong> Every figure's caption names the artefact, says what it shows and the decision it supports, names the section of the unit it draws and the sources cited there, and for Perqo says that Perqo is fictional.</p>
+<p>The legend, drawn in the notation's own matrix kind:</p>
+<figure class="viz viz-matrix"><div class="viz-scroll"><svg viewBox="0 0 700.0 1154" width="700.0" height="1154" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="279.7" y="15.6" text-anchor="middle">Drawn as</text><text class="viz-colhead" x="554.6" y="15.6" text-anchor="middle">Means</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Tone 1</text><g data-box=""><rect class="viz-band viz-t1" x="144.3" y="34.0" width="270.8" height="28.0"/><text class="viz-mark" x="279.7" y="51.8" text-anchor="middle">tone 1</text></g><g data-box=""><rect class="viz-band viz-t1" x="419.2" y="34.0" width="270.8" height="28.0"/><text class="viz-mark" x="554.6" y="51.8" text-anchor="middle">perqo.com</text></g><text class="viz-label" x="8.0" y="88.3" text-anchor="start">Tone 2</text><g data-box=""><rect class="viz-band viz-t2" x="144.3" y="66.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="87.8" text-anchor="middle">tone 2</text></g><g data-box=""><rect class="viz-band viz-t2" x="419.2" y="66.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="81.3" text-anchor="middle">the merchant side and anything outside</text><text class="viz-mark" x="554.6" y="94.3" text-anchor="middle">Perqo</text></g><text class="viz-label" x="8.0" y="124.3" text-anchor="start">Tone 3</text><g data-box=""><rect class="viz-band viz-t3" x="144.3" y="106.0" width="270.8" height="28.0"/><text class="viz-mark" x="279.7" y="123.8" text-anchor="middle">tone 3</text></g><g data-box=""><rect class="viz-band viz-t3" x="419.2" y="106.0" width="270.8" height="28.0"/><text class="viz-mark" x="554.6" y="123.8" text-anchor="middle">the Perqo app and the employee</text></g><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Tone 4</text><g data-box=""><rect class="viz-band viz-t4" x="144.3" y="138.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="159.8" text-anchor="middle">tone 4</text></g><g data-box=""><rect class="viz-band viz-t4" x="419.2" y="138.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="153.3" text-anchor="middle">Perqo Admin and the HR and finance</text><text class="viz-mark" x="554.6" y="166.3" text-anchor="middle">managers who use it</text></g><text class="viz-label" x="8.0" y="213.3" text-anchor="start">Tone 5</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="178.0" width="270.8" height="62.0"/><text class="viz-mark" x="279.7" y="212.8" text-anchor="middle">tone 5</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="178.0" width="270.8" height="62.0"/><text class="viz-mark" x="554.6" y="193.3" text-anchor="middle">shared: the data model, the Perqo</text><text class="viz-mark" x="554.6" y="206.3" text-anchor="middle">system, any object or term on more than</text><text class="viz-mark" x="554.6" y="219.3" text-anchor="middle">one surface; in a figure of one surface,</text><text class="viz-mark" x="554.6" y="232.3" text-anchor="middle">every box takes that surface&#x27;s tone</text></g><text class="viz-label" x="8.0" y="266.3" text-anchor="start">Tone 6</text><g data-box=""><rect class="viz-band viz-t6" x="144.3" y="244.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="265.8" text-anchor="middle">tone 6</text></g><g data-box=""><rect class="viz-band viz-t6" x="419.2" y="244.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="259.3" text-anchor="middle">a stop: a path that ends without</text><text class="viz-mark" x="554.6" y="272.3" text-anchor="middle">success, or a fault found in a review</text></g><text class="viz-label" x="8.0" y="306.3" text-anchor="start">Page or page type</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="284.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="305.8" text-anchor="middle">square-cornered box with a type tag</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="284.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="299.3" text-anchor="middle">one page, or one type of page; the tag</text><text class="viz-mark" x="554.6" y="312.3" text-anchor="middle">names the type</text></g><text class="viz-label" x="8.0" y="346.3" text-anchor="start">Object</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="324.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="345.8" text-anchor="middle">box with a filled title band</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="324.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="339.3" text-anchor="middle">a thing the system holds; attributes</text><text class="viz-mark" x="554.6" y="352.3" text-anchor="middle">below, actions after the rule line</text></g><text class="viz-label" x="8.0" y="386.3" text-anchor="start">Surface</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="364.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="379.3" text-anchor="middle">box with a filled title band, in a</text><text class="viz-mark" x="279.7" y="392.3" text-anchor="middle">surface&#x27;s tone</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="364.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="379.3" text-anchor="middle">one surface in a cross-surface map; its</text><text class="viz-mark" x="554.6" y="392.3" text-anchor="middle">top-level areas below the title</text></g><text class="viz-label" x="8.0" y="426.3" text-anchor="start">Question</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="404.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="425.8" text-anchor="middle">outlined box with branches</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="404.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="419.3" text-anchor="middle">a question the system asks, or a</text><text class="viz-mark" x="554.6" y="432.3" text-anchor="middle">decision a named person makes</text></g><text class="viz-label" x="8.0" y="462.3" text-anchor="start">Outcome</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="444.0" width="270.8" height="28.0"/><text class="viz-mark" x="279.7" y="461.8" text-anchor="middle">filled box</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="444.0" width="270.8" height="28.0"/><text class="viz-mark" x="554.6" y="461.8" text-anchor="middle">where a decision ends</text></g><text class="viz-label" x="8.0" y="498.3" text-anchor="start">State</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="476.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="497.8" text-anchor="middle">rounded box</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="476.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="491.3" text-anchor="middle">a state; inner ring: an end state; dot</text><text class="viz-mark" x="554.6" y="504.3" text-anchor="middle">and arrow: the start</text></g><text class="viz-label" x="8.0" y="538.3" text-anchor="start">Screen</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="516.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="537.8" text-anchor="middle">frame with a title bar</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="516.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="531.3" text-anchor="middle">one screen; bars and blocks are</text><text class="viz-mark" x="554.6" y="544.3" text-anchor="middle">placeholders</text></g><text class="viz-label" x="8.0" y="578.3" text-anchor="start">Lane</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="556.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="577.8" text-anchor="middle">band across the figure</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="556.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="571.3" text-anchor="middle">one actor or surface; the steps in it</text><text class="viz-mark" x="554.6" y="584.3" text-anchor="middle">are theirs</text></g><text class="viz-label" x="8.0" y="614.3" text-anchor="start">Term or group</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="596.0" width="270.8" height="28.0"/><text class="viz-mark" x="279.7" y="613.8" text-anchor="middle">plain box in a tree</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="596.0" width="270.8" height="28.0"/><text class="viz-mark" x="554.6" y="613.8" text-anchor="middle">a term or a group in a hierarchy</text></g><text class="viz-label" x="8.0" y="650.3" text-anchor="start">Row, column, cell</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="628.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="649.8" text-anchor="middle">matrix</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="628.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="643.3" text-anchor="middle">an item, a dimension, the value where</text><text class="viz-mark" x="554.6" y="656.3" text-anchor="middle">they meet</text></g><text class="viz-label" x="8.0" y="686.3" text-anchor="start">Line without a head</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="668.0" width="270.8" height="28.0"/><text class="viz-mark" x="279.7" y="685.8" text-anchor="middle">plain line</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="668.0" width="270.8" height="28.0"/><text class="viz-mark" x="554.6" y="685.8" text-anchor="middle">contains or relates</text></g><text class="viz-label" x="8.0" y="722.3" text-anchor="start">Arrow</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="700.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="721.8" text-anchor="middle">line with a head</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="700.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="715.3" text-anchor="middle">movement or change: a person moves, the</text><text class="viz-mark" x="554.6" y="728.3" text-anchor="middle">system acts, a state changes</text></g><text class="viz-label" x="8.0" y="762.3" text-anchor="start">Arrow to itself</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="740.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="761.8" text-anchor="middle">arrow from a box back to itself</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="740.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="755.3" text-anchor="middle">an action that leaves the thing as it</text><text class="viz-mark" x="554.6" y="768.3" text-anchor="middle">was</text></g><text class="viz-label" x="8.0" y="802.3" text-anchor="start">Type tag</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="780.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="795.3" text-anchor="middle">home, section, index, detail, stack,</text><text class="viz-mark" x="279.7" y="808.3" text-anchor="middle">form, file, external</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="780.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="801.8" text-anchor="middle">the page&#x27;s type</text></g><text class="viz-label" x="8.0" y="842.3" text-anchor="start">Relationship label</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="820.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="841.8" text-anchor="middle">verb on a line</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="820.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="835.3" text-anchor="middle">reads from left to right on a level</text><text class="viz-mark" x="554.6" y="848.3" text-anchor="middle">line, from top to bottom otherwise</text></g><text class="viz-label" x="8.0" y="878.3" text-anchor="start">yes, no</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="860.0" width="270.8" height="28.0"/><text class="viz-mark" x="279.7" y="877.8" text-anchor="middle">branch labels</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="860.0" width="270.8" height="28.0"/><text class="viz-mark" x="554.6" y="877.8" text-anchor="middle">yes always on the left</text></g><text class="viz-label" x="8.0" y="914.3" text-anchor="start">Surface: Label</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="892.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="913.8" text-anchor="middle">line in a shared object</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="892.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="907.3" text-anchor="middle">that surface&#x27;s name for it; the title is</text><text class="viz-mark" x="554.6" y="920.3" text-anchor="middle">the data-model name</text></g><text class="viz-label" x="8.0" y="954.3" text-anchor="start">[condition]</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="932.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="953.8" text-anchor="middle">square brackets</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="932.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="947.3" text-anchor="middle">the path or the box exists only when</text><text class="viz-mark" x="554.6" y="960.3" text-anchor="middle">this holds</text></g><text class="viz-label" x="8.0" y="994.3" text-anchor="start">1, 0..*, 1..*</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="972.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="993.8" text-anchor="middle">count at a line&#x27;s end</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="972.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="987.3" text-anchor="middle">exactly one; any number including none;</text><text class="viz-mark" x="554.6" y="1000.3" text-anchor="middle">at least one</text></g><text class="viz-label" x="8.0" y="1030.3" text-anchor="start">-&gt; verb</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="1012.0" width="270.8" height="28.0"/><text class="viz-mark" x="279.7" y="1029.8" text-anchor="middle">line in an object box</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="1012.0" width="270.8" height="28.0"/><text class="viz-mark" x="554.6" y="1029.8" text-anchor="middle">an action someone can take on the object</text></g><text class="viz-label" x="8.0" y="1062.3" text-anchor="start">→ see</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="1044.0" width="270.8" height="28.0"/><text class="viz-mark" x="279.7" y="1061.8" text-anchor="middle">note</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="1044.0" width="270.8" height="28.0"/><text class="viz-mark" x="554.6" y="1061.8" text-anchor="middle">continues in another figure or node</text></g><text class="viz-label" x="8.0" y="1098.3" text-anchor="start">(no way back)</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="1076.0" width="270.8" height="36.0"/><text class="viz-mark" x="279.7" y="1097.8" text-anchor="middle">arrow label</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="1076.0" width="270.8" height="36.0"/><text class="viz-mark" x="554.6" y="1091.3" text-anchor="middle">the person cannot return along this</text><text class="viz-mark" x="554.6" y="1104.3" text-anchor="middle">arrow</text></g><text class="viz-label" x="8.0" y="1134.3" text-anchor="start">assumed, proposed</text><g data-box=""><rect class="viz-band viz-t5" x="144.3" y="1116.0" width="270.8" height="28.0"/><text class="viz-mark" x="279.7" y="1133.8" text-anchor="middle">word in a note</text></g><g data-box=""><rect class="viz-band viz-t5" x="419.2" y="1116.0" width="270.8" height="28.0"/><text class="viz-mark" x="554.6" y="1133.8" text-anchor="middle">not yet evidenced; not yet agreed</text></g></svg></div><figcaption>The course notation: legend (section 5.2); supports reading and drawing every figure from IA3 on. Tones, shapes, lines and label rules as set in section 5.2, derived from Garrett's Visual Vocabulary Quick Reference, Brown, Communicating Design, 2nd ed., 2011, chs 5 and 6, UML 2.5.1 multiplicities, Harel 1987 and Gibbons 2017. Perqo is fictional. The six tone rows show each tone; the rows below them are drawn in tone 5 only because the figure kind colours every cell, and there the tone carries no meaning.</figcaption></figure>
+<h3>5.3 · The notation at work: one example per family</h3>
+<p>Each example below is small on purpose: one Perqo fragment (Perqo, fictional) per family, enough to show the rules. Later units build each artefact in full.</p>
+<p><strong>Inventories and vocabularies.</strong> This family is drawn as tables, and the notation's rules for it are the table rules in the notation sheet below: one row per item, a stable identifier first, the product's own words in the label column, status words in the last column. A slice of the perqo.com Help centre inventory with its audit (Perqo, fictional), using Kaley's fields and her keep, update or remove outcome (Kaley 2020). The Help centre is split by audience and then by task, as IA1 set it (IA1, section 2.3); support owns the articles.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>URL</th>
+<th>Owner</th>
+<th>Topic</th>
+<th>Format</th>
+<th>Last modified</th>
+<th>Audit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H-2.1.1</td>
+<td>How to claim back a receipt</td>
+<td>perqo.com/help/employees/claims/claim-a-receipt</td>
+<td>Support</td>
+<td>Claims</td>
+<td>article</td>
+<td>2026-09-14</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-2.1.2</td>
+<td>Why was my claim rejected?</td>
+<td>perqo.com/help/employees/claims/claim-rejected</td>
+<td>Support</td>
+<td>Claims</td>
+<td>article</td>
+<td>2025-11-03</td>
+<td>update: says "refund", the app says Claim</td>
+</tr>
+<tr>
+<td>H-2.2.1</td>
+<td>Your balance explained</td>
+<td>perqo.com/help/employees/balance</td>
+<td>Support</td>
+<td>Balance</td>
+<td>article</td>
+<td>2026-02-20</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.1.1</td>
+<td>Setting a budget for an employee group</td>
+<td>perqo.com/help/hr-finance/budgets/set-a-budget</td>
+<td>Support</td>
+<td>Budgets</td>
+<td>article</td>
+<td>2026-06-01</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.2.4</td>
+<td>Approval rules</td>
+<td>perqo.com/help/hr-finance/policies/approval-rules.pdf</td>
+<td>Product</td>
+<td>Policies</td>
+<td>file</td>
+<td>2024-05-10</td>
+<td>remove: replaced by an article</td>
+</tr>
+</tbody>
+</table></div>
+<p>And a slice of the controlled vocabulary (Perqo, fictional): the preferred term in each surface's words, the variant terms people use, and the hierarchy of the benefit categories. The four categories are IA1's; the narrower terms are new here.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Preferred term (app)</th>
+<th>Admin term</th>
+<th>Variant terms</th>
+<th>Broader term</th>
+<th>Narrower terms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claim</td>
+<td>Claim</td>
+<td>refund, reimbursement, expense</td>
+<td>transaction (data model)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Balance</td>
+<td>Budget</td>
+<td>allowance, credit</td>
+<td>allocation (data model)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Health</td>
+<td>Health</td>
+<td>wellbeing</td>
+<td>Benefit category</td>
+<td>Fitness, Therapy</td>
+</tr>
+<tr>
+<td>Learning</td>
+<td>Learning</td>
+<td>education, training</td>
+<td>Benefit category</td>
+<td>Courses, Books</td>
+</tr>
+<tr>
+<td>Mobility</td>
+<td>Mobility</td>
+<td>transport, commuting</td>
+<td>Benefit category</td>
+<td>Public transport, Bike</td>
+</tr>
+<tr>
+<td>Meals</td>
+<td>Meals</td>
+<td>food</td>
+<td>Benefit category</td>
+<td>Restaurants, Groceries</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Structure.</strong> The perqo.com sitemap at F2 (Perqo, fictional). Home leads to Product, Pricing, Customers, Help centre, Book a demo and Sign in. Product has one page each for Perqo Admin, Perqo app and Perqo card. Customers is an index over Customer stories, one page per client. The Help centre splits into For HR and finance teams and For employees, then by task, as the inventory's URLs show: Budgets and Policies under For HR and finance teams, Claims and Balance under For employees, each a stack of its articles (Budget articles, Policy articles, Claim articles, Balance articles). Sign in leaves the website for Perqo Admin. Every box is tone 1, because the whole map is one surface.</p>
+<figure class="viz viz-sitemap"><div class="viz-scroll"><svg viewBox="0 0 700 936" width="700" height="936" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="sitemap"><path class="viz-line" d="M136.0,132.0 L136.0,268.0"/><path class="viz-line" d="M136.0,160.0 L146.0,160.0"/><path class="viz-line" d="M136.0,214.0 L146.0,214.0"/><path class="viz-line" d="M136.0,268.0 L146.0,268.0"/><path class="viz-line" d="M192.0,70.0 L192.0,88.0"/><path class="viz-line" d="M358.0,70.0 L358.0,88.0"/><path class="viz-line" d="M448.0,132.0 L448.0,160.0"/><path class="viz-line" d="M448.0,160.0 L458.0,160.0"/><path class="viz-line" d="M504.0,70.0 L504.0,88.0"/><path class="viz-line" d="M126.0,374.0 L126.0,686.0"/><path class="viz-line" d="M146.0,442.0 L146.0,578.0"/><path class="viz-line" d="M166.0,496.0 L166.0,524.0"/><path class="viz-line" d="M166.0,524.0 L176.0,524.0"/><path class="viz-line" d="M146.0,470.0 L156.0,470.0"/><path class="viz-line" d="M166.0,604.0 L166.0,632.0"/><path class="viz-line" d="M166.0,632.0 L176.0,632.0"/><path class="viz-line" d="M146.0,578.0 L156.0,578.0"/><path class="viz-line" d="M126.0,402.0 L136.0,402.0"/><path class="viz-line" d="M146.0,712.0 L146.0,848.0"/><path class="viz-line" d="M166.0,766.0 L166.0,794.0"/><path class="viz-line" d="M166.0,794.0 L176.0,794.0"/><path class="viz-line" d="M146.0,740.0 L156.0,740.0"/><path class="viz-line" d="M166.0,874.0 L166.0,902.0"/><path class="viz-line" d="M166.0,902.0 L176.0,902.0"/><path class="viz-line" d="M146.0,848.0 L156.0,848.0"/><path class="viz-line" d="M126.0,686.0 L136.0,686.0"/><path class="viz-line" d="M182.0,312.0 L182.0,330.0"/><path class="viz-line" d="M388.0,312.0 L388.0,330.0"/><path class="viz-line" d="M534.0,312.0 L534.0,330.0"/><path class="viz-line" d="M350.0,52.0 L350.0,70.0 L108.0,70.0 L108.0,312.0"/><path class="viz-line" d="M108.0,70.0 L504.0,70.0"/><path class="viz-line" d="M108.0,312.0 L534.0,312.0"/><g data-box=""><rect class="viz-node viz-t1" x="284.0" y="8.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="292.0" y="25.4" text-anchor="start">home</text><text class="viz-nodelabel" x="292.0" y="41.3" text-anchor="start">Home</text></g><g data-box=""><rect class="viz-node viz-t1" x="126.0" y="88.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="134.0" y="105.4" text-anchor="start">section</text><text class="viz-nodelabel" x="134.0" y="121.3" text-anchor="start">Product</text></g><g data-box=""><rect class="viz-node viz-t1" x="146.0" y="142.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="154.0" y="159.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="154.0" y="175.3" text-anchor="start">Perqo Admin</text></g><g data-box=""><rect class="viz-node viz-t1" x="146.0" y="196.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="154.0" y="213.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="154.0" y="229.3" text-anchor="start">Perqo app</text></g><g data-box=""><rect class="viz-node viz-t1" x="146.0" y="250.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="154.0" y="267.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="154.0" y="283.3" text-anchor="start">Perqo card</text></g><g data-box=""><rect class="viz-node viz-t1" x="292.0" y="88.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="300.0" y="105.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="300.0" y="121.3" text-anchor="start">Pricing</text></g><g data-box=""><rect class="viz-node viz-t1" x="438.0" y="88.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="446.0" y="105.4" text-anchor="start">index</text><text class="viz-nodelabel" x="446.0" y="121.3" text-anchor="start">Customers</text></g><g data-box=""><rect class="viz-node viz-t1" x="458.0" y="142.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="466.0" y="159.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="466.0" y="175.3" text-anchor="start">Customer stories</text><text class="viz-small" x="466.0" y="189.8" text-anchor="start">one page per</text><text class="viz-small" x="466.0" y="202.3" text-anchor="start">client</text></g><g data-box=""><rect class="viz-node viz-t1" x="116.0" y="330.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="124.0" y="347.4" text-anchor="start">index</text><text class="viz-nodelabel" x="124.0" y="363.3" text-anchor="start">Help centre</text></g><g data-box=""><rect class="viz-node viz-t1" x="136.0" y="384.0" width="132" height="58.0" rx="2"/><text class="viz-tag" x="144.0" y="401.4" text-anchor="start">section</text><text class="viz-nodelabel" x="144.0" y="417.3" text-anchor="start">For HR and finance</text><text class="viz-nodelabel" x="144.0" y="431.3" text-anchor="start">teams</text></g><g data-box=""><rect class="viz-node viz-t1" x="156.0" y="452.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="164.0" y="469.4" text-anchor="start">section</text><text class="viz-nodelabel" x="164.0" y="485.3" text-anchor="start">Budgets</text></g><g data-box=""><rect class="viz-node viz-t1" x="176.0" y="506.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="184.0" y="523.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="184.0" y="539.3" text-anchor="start">Budget articles</text></g><g data-box=""><rect class="viz-node viz-t1" x="156.0" y="560.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="164.0" y="577.4" text-anchor="start">section</text><text class="viz-nodelabel" x="164.0" y="593.3" text-anchor="start">Policies</text></g><g data-box=""><rect class="viz-node viz-t1" x="176.0" y="614.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="184.0" y="631.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="184.0" y="647.3" text-anchor="start">Policy articles</text></g><g data-box=""><rect class="viz-node viz-t1" x="136.0" y="668.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="144.0" y="685.4" text-anchor="start">section</text><text class="viz-nodelabel" x="144.0" y="701.3" text-anchor="start">For employees</text></g><g data-box=""><rect class="viz-node viz-t1" x="156.0" y="722.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="164.0" y="739.4" text-anchor="start">section</text><text class="viz-nodelabel" x="164.0" y="755.3" text-anchor="start">Claims</text></g><g data-box=""><rect class="viz-node viz-t1" x="176.0" y="776.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="184.0" y="793.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="184.0" y="809.3" text-anchor="start">Claim articles</text></g><g data-box=""><rect class="viz-node viz-t1" x="156.0" y="830.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="164.0" y="847.4" text-anchor="start">section</text><text class="viz-nodelabel" x="164.0" y="863.3" text-anchor="start">Balance</text></g><g data-box=""><rect class="viz-node viz-t1" x="176.0" y="884.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="184.0" y="901.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="184.0" y="917.3" text-anchor="start">Balance articles</text></g><g data-box=""><rect class="viz-node viz-t1" x="322.0" y="330.0" width="132" height="44.0" rx="2"/><text class="viz-tag" x="330.0" y="347.4" text-anchor="start">form</text><text class="viz-nodelabel" x="330.0" y="363.3" text-anchor="start">Book a demo</text></g><g data-box=""><rect class="viz-node viz-t1" x="468.0" y="330.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="476.0" y="347.4" text-anchor="start">external</text><text class="viz-nodelabel" x="476.0" y="363.3" text-anchor="start">Sign in</text><text class="viz-small" x="476.0" y="377.9" text-anchor="start">→ see Perqo Admin</text></g></svg></div><figcaption>Sitemap (structure family): the perqo.com structure at F2, page types tagged and many-of-a-kind pages drawn as one stack; supports the decision on where a new page belongs (section 5.3). Perqo is fictional; Help centre split from IA1, section 2.3; page-type and stack conventions from Brown 2011, ch. 5, and Garrett's Quick Reference.</figcaption></figure>
+<p>The navigation model for the same fragment is a table (Perqo, fictional; route types from Rosenfeld, Morville and Arango 2015, ch. 8):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Route type</th>
+<th>perqo.com</th>
+<th>Perqo Admin</th>
+<th>Perqo app</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global</td>
+<td>Product, Pricing, Customers, Help centre, Book a demo, Sign in, on every page</td>
+<td>Employees, Budgets, Policies, Approvals, Reports, Settings</td>
+<td>Home, Benefits, Claims, Card, Account</td>
+</tr>
+<tr>
+<td>Local</td>
+<td>the audience sections inside the Help centre</td>
+<td>the policies inside Policies, one per employee group</td>
+<td>the four categories inside Benefits</td>
+</tr>
+<tr>
+<td>Contextual</td>
+<td>from a help article to the related task's articles</td>
+<td>from an employee's record to the claims they made</td>
+<td>from the Claims screen to the claim articles in the Help centre</td>
+</tr>
+<tr>
+<td>Supplemental</td>
+<td>search inside the Help centre</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<p>The global routes are IA1's top-level areas, with Book a demo added on perqo.com; the contextual routes from an employee's record to their claims and from the app's Claims screen to the Help centre are IA1's (sections 2.2 and 2.3); the rest are new here.</p>
+<p><strong>Objects.</strong> The core objects of Perqo Admin as an object-relationship map at F2 (Perqo, fictional). An employee group follows one policy, and the policy belongs to that group. The group contains its employees. Finance sets budgets per employee group and period (IA1, section 5), and each employee holds one per open category and period: the allocation that IA1 mapped to Budget in Admin and Balance in the app (IA1, section 2.4). An employee submits claims; each claim is checked against the group's policy and spends from a budget. The policy carries its open categories and an auto-approve limit: a claim at or under the limit is approved without HR, a claim over it waits in Approvals. An employee group carries its name; an employee, a name and a work email; a budget, an amount for one category and period; a claim, an amount, a category, a receipt and a status. A group contains one or more employees (1..<em>); an employee submits any number of claims, including none (0..</em>); and any number of claims are checked against one policy and spend from one budget. The actions are the ones HR and finance take: edit a policy, invite employees, move an employee to a group, set a budget, approve or reject a claim.</p>
+<figure class="viz viz-objects"><div class="viz-scroll"><svg viewBox="0 0 700 484.0" width="700" height="484.0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="objects"><path class="viz-link" d="M100.7,88.5 L100.7,381.5"/><text class="viz-small" x="86.6" y="108.1" text-anchor="middle">1</text><text class="viz-small" x="86.6" y="369.1" text-anchor="middle">1</text><g data-box="" data-text="follows"><rect class="viz-lblbg" x="79.0" y="226.8" width="43.3" height="16.5"/><text class="viz-linklabel" x="100.7" y="238.8" text-anchor="middle">follows</text></g><path class="viz-link" d="M193.3,48.2 L257.3,48.2"/><text class="viz-small" x="204.4" y="40.9" text-anchor="middle">1</text><text class="viz-small" x="237.1" y="40.9" text-anchor="middle">1..*</text><g data-box="" data-text="contains"><rect class="viz-lblbg" x="199.5" y="52.2" width="51.6" height="16.5"/><text class="viz-linklabel" x="225.3" y="64.3" text-anchor="middle">contains</text></g><path class="viz-link" d="M350.0,102.5 L350.0,174.5"/><text class="viz-small" x="335.9" y="122.1" text-anchor="middle">1</text><text class="viz-small" x="326.8" y="162.1" text-anchor="middle">0..*</text><g data-box="" data-text="submits"><rect class="viz-lblbg" x="325.7" y="130.2" width="48.7" height="16.5"/><text class="viz-linklabel" x="350.0" y="142.3" text-anchor="middle">submits</text></g><path class="viz-link" d="M259.9,309.5 L163.8,381.5"/><text class="viz-small" x="230.8" y="312.0" text-anchor="middle">0..*</text><text class="viz-small" x="168.3" y="365.7" text-anchor="middle">1</text><g data-box="" data-text="is checked against"><rect class="viz-lblbg" x="160.8" y="337.2" width="102.1" height="16.5"/><text class="viz-linklabel" x="211.8" y="349.3" text-anchor="middle">is checked against</text></g><path class="viz-link" d="M442.7,228.8 L506.7,228.8"/><text class="viz-small" x="462.9" y="221.3" text-anchor="middle">0..*</text><text class="viz-small" x="495.6" y="221.3" text-anchor="middle">1</text><g data-box="" data-text="spends from"><rect class="viz-lblbg" x="452.1" y="232.8" width="45.1" height="29.0"/><text class="viz-linklabel" x="474.7" y="244.8" text-anchor="middle">spends</text><text class="viz-linklabel" x="474.7" y="257.3" text-anchor="middle">from</text></g><path class="viz-link" d="M417.9,102.5 L521.4,174.5"/><text class="viz-small" x="423.0" y="125.2" text-anchor="middle">1</text><text class="viz-small" x="513.1" y="150.4" text-anchor="middle">1..*</text><g data-box="" data-text="holds"><rect class="viz-lblbg" x="451.9" y="130.2" width="35.5" height="16.5"/><text class="viz-linklabel" x="469.6" y="142.3" text-anchor="middle">holds</text></g><g data-box=""><rect class="viz-node viz-t4" x="8.0" y="8.0" width="185.3" height="80.5" rx="2"/><rect class="viz-solid viz-t4" x="8.0" y="8.0" width="185.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="25.3" text-anchor="start">Employee group</text><text class="viz-attr" x="16.0" y="53.0" text-anchor="start">name</text><path class="viz-line" d="M16.0,61.0 L185.3,61.0"/><text class="viz-small" x="16.0" y="75.8" text-anchor="start">-&gt; invite employees</text></g><g data-box=""><rect class="viz-node viz-t4" x="257.3" y="8.0" width="185.3" height="94.5" rx="2"/><rect class="viz-solid viz-t4" x="257.3" y="8.0" width="185.3" height="26.0" rx="2"/><text class="viz-ontone" x="265.3" y="25.3" text-anchor="start">Employee</text><text class="viz-attr" x="265.3" y="53.0" text-anchor="start">name</text><text class="viz-attr" x="265.3" y="67.0" text-anchor="start">work email</text><path class="viz-line" d="M265.3,75.0 L434.7,75.0"/><text class="viz-small" x="265.3" y="89.8" text-anchor="start">-&gt; move to group</text></g><g data-box=""><rect class="viz-node viz-t4" x="257.3" y="174.5" width="185.3" height="135.0" rx="2"/><rect class="viz-solid viz-t4" x="257.3" y="174.5" width="185.3" height="26.0" rx="2"/><text class="viz-ontone" x="265.3" y="191.8" text-anchor="start">Claim</text><text class="viz-attr" x="265.3" y="219.5" text-anchor="start">amount</text><text class="viz-attr" x="265.3" y="233.5" text-anchor="start">category</text><text class="viz-attr" x="265.3" y="247.5" text-anchor="start">receipt</text><text class="viz-attr" x="265.3" y="261.5" text-anchor="start">status</text><path class="viz-line" d="M265.3,269.5 L434.7,269.5"/><text class="viz-small" x="265.3" y="284.4" text-anchor="start">-&gt; approve</text><text class="viz-small" x="265.3" y="296.9" text-anchor="start">-&gt; reject</text></g><g data-box=""><rect class="viz-node viz-t4" x="506.7" y="174.5" width="185.3" height="108.5" rx="2"/><rect class="viz-solid viz-t4" x="506.7" y="174.5" width="185.3" height="26.0" rx="2"/><text class="viz-ontone" x="514.7" y="191.8" text-anchor="start">Budget</text><text class="viz-attr" x="514.7" y="219.5" text-anchor="start">amount</text><text class="viz-attr" x="514.7" y="233.5" text-anchor="start">category</text><text class="viz-attr" x="514.7" y="247.5" text-anchor="start">period</text><path class="viz-line" d="M514.7,255.5 L684.0,255.5"/><text class="viz-small" x="514.7" y="270.4" text-anchor="start">-&gt; set</text></g><g data-box=""><rect class="viz-node viz-t4" x="8.0" y="381.5" width="185.3" height="94.5" rx="2"/><rect class="viz-solid viz-t4" x="8.0" y="381.5" width="185.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="398.8" text-anchor="start">Policy</text><text class="viz-attr" x="16.0" y="426.5" text-anchor="start">open categories</text><text class="viz-attr" x="16.0" y="440.5" text-anchor="start">auto-approve limit</text><path class="viz-line" d="M16.0,448.5 L185.3,448.5"/><text class="viz-small" x="16.0" y="463.4" text-anchor="start">-&gt; edit</text></g></svg></div><figcaption>Object-relationship map (objects family): the core objects of Perqo Admin with attributes, actions and counts at F2, every box in tone 4 because the figure shows one surface; supports the decision on what Admin holds and how its parts relate (section 5.3). Each relationship reads from left to right on a level line, from top to bottom otherwise. Perqo is fictional; relationships and attributes from this section and IA1, section 5; counts in UML 2.5.1 multiplicity notation; object-first method from Prater 2015.</figcaption></figure>
+<p><strong>Flows.</strong> Submitting a claim in the Perqo app as a wireflow at F2 (Perqo, fictional). From the Claims screen, which lists claims by status (Submitted, Paid), the employee taps New claim. The New claim screen asks for a category (only the categories open to their group appear), an amount and a receipt; they tap Continue. Check and submit shows the category and amount and the balance after the claim; from there they can tap Edit, which returns to New claim, or tap Submit, after which there is no way back to edit. Claim submitted shows the status, Submitted. What happens next is the claim's lifecycle, drawn below.</p>
+<figure class="viz viz-wireflow viz-wide"><div class="viz-scroll"><svg viewBox="0 0 892 211.0" width="892" height="211.0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="wireflow"><path class="viz-link" d="M158.0,105.5 L243.0,105.5"/><path class="viz-head" d="M250.0,105.5 L243.0,109.5 L243.0,101.5 z"/><text class="viz-linklabel" x="204.0" y="98.0" text-anchor="middle">tap New claim</text><path class="viz-link" d="M400.0,98.5 L485.0,98.5"/><path class="viz-head" d="M492.0,98.5 L485.0,102.5 L485.0,94.5 z"/><text class="viz-linklabel" x="446.0" y="91.0" text-anchor="middle">tap Continue</text><path class="viz-link" d="M492.0,112.5 L407.0,112.5"/><path class="viz-head" d="M400.0,112.5 L407.0,108.5 L407.0,116.5 z"/><text class="viz-linklabel" x="446.0" y="127.5" text-anchor="middle">tap Edit</text><path class="viz-link" d="M642.0,105.5 L727.0,105.5"/><path class="viz-head" d="M734.0,105.5 L727.0,109.5 L727.0,101.5 z"/><text class="viz-linklabel" x="688.0" y="85.5" text-anchor="middle">tap Submit (no</text><text class="viz-linklabel" x="688.0" y="98.0" text-anchor="middle">way back)</text><g data-box=""><rect class="viz-screen viz-t3" x="8.0" y="8.0" width="150" height="195.0" rx="2"/><rect class="viz-band viz-t3" x="10.0" y="10.0" width="146" height="22.0"/><text class="viz-nodelabel" x="18.0" y="24.3" text-anchor="start">Claims</text><text class="viz-attr" x="18.0" y="55.0" text-anchor="start">Submitted</text><rect class="viz-ph" x="18.0" y="65.0" width="104.0" height="7"/><text class="viz-attr" x="18.0" y="87.0" text-anchor="start">Paid</text><rect class="viz-ph" x="18.0" y="97.0" width="78.0" height="7"/><rect class="viz-btn viz-t3" x="18.0" y="108.0" width="130" height="25.0" rx="2"/><text class="viz-mark" x="83.0" y="124.3" text-anchor="middle">New claim</text></g><g data-box=""><rect class="viz-screen viz-t3" x="250.0" y="8.0" width="150" height="195.0" rx="2"/><rect class="viz-band viz-t3" x="252.0" y="10.0" width="146" height="22.0"/><text class="viz-nodelabel" x="260.0" y="24.3" text-anchor="start">New claim</text><text class="viz-attr" x="260.0" y="55.0" text-anchor="start">Category</text><rect class="viz-ph" x="260.0" y="65.0" width="91.0" height="7"/><text class="viz-attr" x="260.0" y="87.0" text-anchor="start">Amount</text><rect class="viz-ph" x="260.0" y="97.0" width="52.0" height="7"/><text class="viz-attr" x="260.0" y="119.0" text-anchor="start">Receipt</text><rect class="viz-ph" x="260.0" y="126.0" width="130" height="30.0"/><rect class="viz-btn viz-t3" x="260.0" y="162.0" width="130" height="25.0" rx="2"/><text class="viz-mark" x="325.0" y="178.3" text-anchor="middle">Continue</text></g><g data-box=""><rect class="viz-screen viz-t3" x="492.0" y="8.0" width="150" height="195.0" rx="2"/><rect class="viz-band viz-t3" x="494.0" y="10.0" width="146" height="22.0"/><text class="viz-nodelabel" x="502.0" y="24.3" text-anchor="start">Check and submit</text><text class="viz-attr" x="502.0" y="55.0" text-anchor="start">Category and amount</text><rect class="viz-ph" x="502.0" y="65.0" width="91.0" height="7"/><text class="viz-attr" x="502.0" y="87.0" text-anchor="start">Balance after</text><rect class="viz-ph" x="502.0" y="97.0" width="65.0" height="7"/><rect class="viz-btn viz-t3" x="502.0" y="108.0" width="130" height="25.0" rx="2"/><text class="viz-mark" x="567.0" y="124.3" text-anchor="middle">Edit</text><rect class="viz-btn viz-t3" x="502.0" y="139.0" width="130" height="25.0" rx="2"/><text class="viz-mark" x="567.0" y="155.3" text-anchor="middle">Submit</text></g><g data-box=""><rect class="viz-screen viz-t3" x="734.0" y="8.0" width="150" height="195.0" rx="2"/><rect class="viz-band viz-t3" x="736.0" y="10.0" width="146" height="22.0"/><text class="viz-nodelabel" x="744.0" y="24.3" text-anchor="start">Claim submitted</text><text class="viz-attr" x="744.0" y="55.0" text-anchor="start">Status: Submitted</text><text class="viz-attr" x="744.0" y="73.0" text-anchor="start">→ see claim lifecycle</text></g></svg></div><figcaption>Wireflow (flows family): an employee submits a claim in the Perqo app, F2; supports the decision on which screens the task needs and where it cannot be undone (section 5.3). Perqo is fictional; wireflow form from Laubheimer, NN/g, 2016; the no-way-back label stands for Garrett's crossbar (Quick Reference).</figcaption></figure>
+<p><strong>Rules.</strong> What the Perqo system decides when a claim is submitted, as a decision tree at F2 (Perqo, fictional). First: is the amount within the employee's balance? If not, the claim is rejected, over balance. If it is: is the amount at or under the policy's auto-approve limit? If so, it is approved automatically. If not, it waits in Approvals, where HR decides: if HR approves, it is approved; if not, it is rejected by HR. The questions the system asks and the approvals are tone 5, the Perqo system; HR's question is tone 4, Admin; the two rejections are tone 6, the stops.</p>
+<figure class="viz viz-decision"><div class="viz-scroll"><svg viewBox="0 0 700 350" width="700" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="decision"><path class="viz-link" d="M389.5,66.0 L389.5,78.0 L310.5,78.0 L310.5,107.0"/><path class="viz-head" d="M310.5,114.0 L306.5,107.0 L314.5,107.0 z"/><g data-box=""><rect class="viz-lblbg" x="297.6" y="84.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="310.5" y="96.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M310.5,172.0 L310.5,184.0 L231.5,184.0 L231.5,213.0"/><path class="viz-head" d="M231.5,220.0 L227.5,213.0 L235.5,213.0 z"/><g data-box=""><rect class="viz-lblbg" x="218.6" y="190.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="231.5" y="202.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M310.5,172.0 L310.5,184.0 L389.5,184.0 L389.5,213.0"/><path class="viz-head" d="M389.5,220.0 L385.5,213.0 L393.5,213.0 z"/><g data-box=""><rect class="viz-lblbg" x="379.1" y="190.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="389.5" y="202.3" text-anchor="middle">no</text></g><path class="viz-link" d="M389.5,264.0 L389.5,276.0 L310.5,276.0 L310.5,305.0"/><path class="viz-head" d="M310.5,312.0 L306.5,305.0 L314.5,305.0 z"/><g data-box=""><rect class="viz-lblbg" x="297.6" y="282.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="310.5" y="294.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M389.5,264.0 L389.5,276.0 L468.5,276.0 L468.5,305.0"/><path class="viz-head" d="M468.5,312.0 L464.5,305.0 L472.5,305.0 z"/><g data-box=""><rect class="viz-lblbg" x="458.1" y="282.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="468.5" y="294.3" text-anchor="middle">no</text></g><path class="viz-link" d="M389.5,66.0 L389.5,78.0 L468.5,78.0 L468.5,107.0"/><path class="viz-head" d="M468.5,114.0 L464.5,107.0 L472.5,107.0 z"/><g data-box=""><rect class="viz-lblbg" x="458.1" y="84.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="468.5" y="96.3" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-node viz-t5" x="319.5" y="8.0" width="140" height="58.0" rx="2"/><text class="viz-nodelabel" x="389.5" y="27.3" text-anchor="middle">Amount within the</text><text class="viz-nodelabel" x="389.5" y="41.3" text-anchor="middle">employee&#x27;s</text><text class="viz-nodelabel" x="389.5" y="55.3" text-anchor="middle">balance?</text></g><g data-box=""><rect class="viz-node viz-t5" x="240.5" y="114.0" width="140" height="58.0" rx="2"/><text class="viz-nodelabel" x="310.5" y="133.3" text-anchor="middle">At or under the</text><text class="viz-nodelabel" x="310.5" y="147.3" text-anchor="middle">policy&#x27;s</text><text class="viz-nodelabel" x="310.5" y="161.3" text-anchor="middle">auto-approve limit?</text></g><g data-box=""><rect class="viz-solid viz-t5" x="161.5" y="220.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="231.5" y="239.3" text-anchor="middle">Approved</text><text class="viz-ontone" x="231.5" y="253.3" text-anchor="middle">automatically</text></g><g data-box=""><rect class="viz-node viz-t4" x="319.5" y="220.0" width="140" height="44.0" rx="2"/><text class="viz-nodelabel" x="389.5" y="239.3" text-anchor="middle">Waits in Approvals:</text><text class="viz-nodelabel" x="389.5" y="253.3" text-anchor="middle">HR approves?</text></g><g data-box=""><rect class="viz-solid viz-t5" x="240.5" y="312.0" width="140" height="30.0" rx="2"/><text class="viz-ontone" x="310.5" y="331.3" text-anchor="middle">Approved</text></g><g data-box=""><rect class="viz-solid viz-t6" x="398.5" y="312.0" width="140" height="30.0" rx="2"/><text class="viz-ontone" x="468.5" y="331.3" text-anchor="middle">Rejected by HR</text></g><g data-box=""><rect class="viz-solid viz-t6" x="398.5" y="114.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="468.5" y="133.3" text-anchor="middle">Rejected, over</text><text class="viz-ontone" x="468.5" y="147.3" text-anchor="middle">balance</text></g></svg></div><figcaption>Decision tree (rules family): how the Perqo system routes a submitted claim, F2; supports the decision on which claims need HR (section 5.3). Perqo is fictional; the auto-approve limit as set in this section; a decision tree is Garrett's conditional branch drawn out in full (Quick Reference).</figcaption></figure>
+<p><strong>Lifecycles.</strong> The same claim as a state diagram at F2 (Perqo, fictional), with IA1's four states. A claim starts as Submitted; a claim over the auto-approve limit stays there while it waits in Approvals. It moves to Approved when it is approved, by the rule or by HR, and from Approved to Paid when Perqo pays out. From Submitted it can instead move to Rejected, by the rule or by HR. Paid and Rejected are end states. Submitted, Approved and Paid are tone 5, because a claim's status is shown on both Admin and the app; Rejected is tone 6, a stop.</p>
+<figure class="viz viz-states"><div class="viz-scroll"><svg viewBox="0 0 700 181.2" width="700" height="181.2" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="states"><path class="viz-link" d="M181.8,88.2 L181.8,110.8 L200.2,110.8 L200.2,126.2"/><path class="viz-head" d="M200.2,133.2 L196.2,126.2 L204.2,126.2 z"/><g data-box=""><rect class="viz-lblbg" x="206.2" y="96.2" width="77.3" height="29.0"/><text class="viz-linklabel" x="244.8" y="108.3" text-anchor="middle">reject, by rule</text><text class="viz-linklabel" x="244.8" y="120.8" text-anchor="middle">or HR</text></g><path class="viz-link" d="M249.0,52.5 L302.0,52.5"/><path class="viz-head" d="M309.0,52.5 L302.0,56.5 L302.0,48.5 z"/><text class="viz-linklabel" x="279.0" y="20.0" text-anchor="middle">approve,</text><text class="viz-linklabel" x="279.0" y="32.5" text-anchor="middle">by rule or</text><text class="viz-linklabel" x="279.0" y="45.0" text-anchor="middle">HR</text><path class="viz-link" d="M425.0,52.5 L478.0,52.5"/><path class="viz-head" d="M485.0,52.5 L478.0,56.5 L478.0,48.5 z"/><text class="viz-linklabel" x="455.0" y="45.0" text-anchor="middle">pay out</text><circle class="viz-start" cx="106.0" cy="52.5" r="5"/><path class="viz-link" d="M112.0,52.5 L126.0,52.5"/><path class="viz-head" d="M133.0,52.5 L126.0,56.5 L126.0,48.5 z"/><g data-box=""><rect class="viz-node viz-t5" x="133.0" y="16.8" width="116" height="71.5" rx="10"/><text class="viz-nodelabel" x="191.0" y="37.1" text-anchor="middle">Submitted</text><text class="viz-small" x="191.0" y="51.6" text-anchor="middle">[over limit]</text><text class="viz-small" x="191.0" y="64.1" text-anchor="middle">waits in</text><text class="viz-small" x="191.0" y="76.6" text-anchor="middle">Approvals</text></g><g data-box=""><rect class="viz-node viz-t5" x="309.0" y="32.5" width="116" height="40.0" rx="10"/><text class="viz-nodelabel" x="367.0" y="56.8" text-anchor="middle">Approved</text></g><g data-box=""><rect class="viz-node viz-t5" x="485.0" y="32.5" width="116" height="40.0" rx="10"/><rect class="viz-endring viz-t5" x="488.0" y="35.5" width="110" height="34.0" rx="7"/><text class="viz-nodelabel" x="543.0" y="56.8" text-anchor="middle">Paid</text></g><g data-box=""><rect class="viz-node viz-t6" x="133.0" y="133.2" width="116" height="40.0" rx="10"/><rect class="viz-endring viz-t6" x="136.0" y="136.2" width="110" height="34.0" rx="7"/><text class="viz-nodelabel" x="191.0" y="157.6" text-anchor="middle">Rejected</text></g></svg></div><figcaption>State diagram (rules and lifecycles family): the lifecycle of a Perqo claim, F2; supports the decision on which statuses each surface shows and what moves a claim between them (section 5.3). Perqo is fictional; the four states from IA1, section 5; the plain state-transition form that Harel 1987 extends.</figcaption></figure>
+<p><strong>Journeys across actors and surfaces: the service blueprint.</strong> One claim over the auto-approve limit, as a blueprint at F1 (Perqo, fictional), in Gibbons's four lanes (Gibbons 2017). In the employee actions lane, the employee pays for a course and keeps the receipt (the evidence), then submits the claim. Frontstage, the Perqo app's New claim form is what they use. Backstage, out of the employee's sight, HR approves in Approvals. Under both, the Perqo system checks policy and balance, sends the claim to HR when it is over the limit, pays out once it is approved, and the app shows Paid. The line of visibility runs between the frontstage and backstage lanes; the swimlanes kind draws every lane boundary alike, so the lane names carry it.</p>
+<figure class="viz viz-swimlanes viz-wide"><div class="viz-scroll"><svg viewBox="0 0 1284 296.5" width="1284" height="296.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="swimlanes"><rect class="viz-lane viz-t3" x="8" y="8.0" width="1268.0" height="72.5"/><g data-box=""><rect class="viz-band viz-t3" x="8" y="8.0" width="112" height="72.5"/><text class="viz-nodelabel" x="17.0" y="41.6" text-anchor="start">Employee</text><text class="viz-nodelabel" x="17.0" y="55.6" text-anchor="start">actions</text></g><rect class="viz-lane viz-t3" x="8" y="80.5" width="1268.0" height="64.0"/><g data-box=""><rect class="viz-band viz-t3" x="8" y="80.5" width="112" height="64.0"/><text class="viz-nodelabel" x="17.0" y="109.8" text-anchor="start">Frontstage:</text><text class="viz-nodelabel" x="17.0" y="123.8" text-anchor="start">Perqo app</text></g><path class="viz-line" d="M8.0,80.5 L1276.0,80.5"/><rect class="viz-lane viz-t4" x="8" y="144.5" width="1268.0" height="72.0"/><g data-box=""><rect class="viz-band viz-t4" x="8" y="144.5" width="112" height="72.0"/><text class="viz-nodelabel" x="17.0" y="177.8" text-anchor="start">Backstage: HR</text><text class="viz-nodelabel" x="17.0" y="191.8" text-anchor="start">in Perqo Admin</text></g><path class="viz-line" d="M8.0,144.5 L1276.0,144.5"/><rect class="viz-lane viz-t5" x="8" y="216.5" width="1268.0" height="72.0"/><g data-box=""><rect class="viz-band viz-t5" x="8" y="216.5" width="112" height="72.0"/><text class="viz-nodelabel" x="17.0" y="249.8" text-anchor="start">Processes:</text><text class="viz-nodelabel" x="17.0" y="263.8" text-anchor="start">Perqo system</text></g><path class="viz-line" d="M8.0,216.5 L1276.0,216.5"/><path class="viz-link" d="M260.0,44.2 L329.0,44.2"/><path class="viz-head" d="M336.0,44.2 L329.0,48.2 L329.0,40.2 z"/><path class="viz-link" d="M398.0,62.2 L398.0,87.5"/><path class="viz-head" d="M398.0,94.5 L394.0,87.5 L402.0,87.5 z"/><path class="viz-link" d="M460.0,112.5 L498.0,112.5 L498.0,252.5 L529.0,252.5"/><path class="viz-head" d="M536.0,252.5 L529.0,256.5 L529.0,248.5 z"/><path class="viz-link" d="M660.0,252.5 L698.0,252.5 L698.0,180.5 L729.0,180.5"/><path class="viz-head" d="M736.0,180.5 L729.0,184.5 L729.0,176.5 z"/><path class="viz-link" d="M860.0,180.5 L898.0,180.5 L898.0,252.5 L929.0,252.5"/><path class="viz-head" d="M936.0,252.5 L929.0,256.5 L929.0,248.5 z"/><path class="viz-link" d="M1060.0,252.5 L1098.0,252.5 L1098.0,112.5 L1129.0,112.5"/><path class="viz-head" d="M1136.0,112.5 L1129.0,116.5 L1129.0,108.5 z"/><g data-box=""><rect class="viz-lblbg" x="382.3" y="70.1" width="31.4" height="16.5"/><text class="viz-linklabel" x="398.0" y="82.2" text-anchor="middle">uses</text></g><g data-box=""><rect class="viz-lblbg" x="476.4" y="174.2" width="43.2" height="16.5"/><text class="viz-linklabel" x="498.0" y="186.3" text-anchor="middle">submit</text></g><g data-box=""><rect class="viz-lblbg" x="667.0" y="208.2" width="61.9" height="16.5"/><text class="viz-linklabel" x="698.0" y="220.3" text-anchor="middle">[over limit]</text></g><g data-box=""><rect class="viz-lblbg" x="873.0" y="208.2" width="50.1" height="16.5"/><text class="viz-linklabel" x="898.0" y="220.3" text-anchor="middle">approve</text></g><g data-box=""><rect class="viz-lblbg" x="1065.8" y="174.2" width="64.4" height="16.5"/><text class="viz-linklabel" x="1098.0" y="186.3" text-anchor="middle">status Paid</text></g><g data-box=""><rect class="viz-node viz-t3" x="136.0" y="22.0" width="124" height="44.5" rx="2"/><text class="viz-nodelabel" x="144.0" y="41.3" text-anchor="start">Pays for a course</text><text class="viz-small" x="144.0" y="55.9" text-anchor="start">evidence: receipt</text></g><g data-box=""><rect class="viz-node viz-t3" x="336.0" y="26.2" width="124" height="36.0" rx="2"/><text class="viz-nodelabel" x="344.0" y="48.6" text-anchor="start">Submits claim</text></g><g data-box=""><rect class="viz-node viz-t3" x="336.0" y="94.5" width="124" height="36.0" rx="2"/><text class="viz-nodelabel" x="344.0" y="116.8" text-anchor="start">New claim form</text></g><g data-box=""><rect class="viz-node viz-t5" x="536.0" y="230.5" width="124" height="44.0" rx="2"/><text class="viz-nodelabel" x="544.0" y="249.8" text-anchor="start">Checks policy</text><text class="viz-nodelabel" x="544.0" y="263.8" text-anchor="start">and balance</text></g><g data-box=""><rect class="viz-node viz-t4" x="736.0" y="158.5" width="124" height="44.0" rx="2"/><text class="viz-nodelabel" x="744.0" y="177.8" text-anchor="start">Approves in</text><text class="viz-nodelabel" x="744.0" y="191.8" text-anchor="start">Approvals</text></g><g data-box=""><rect class="viz-node viz-t5" x="936.0" y="234.5" width="124" height="36.0" rx="2"/><text class="viz-nodelabel" x="944.0" y="256.8" text-anchor="start">Pays out</text></g><g data-box=""><rect class="viz-node viz-t3" x="1136.0" y="94.5" width="124" height="36.0" rx="2"/><text class="viz-nodelabel" x="1144.0" y="116.8" text-anchor="start">Shows Paid</text></g></svg></div><figcaption>Service blueprint (journeys family): one Perqo claim over the auto-approve limit, F1; supports the decision on where the backstage work sits and where it crosses the line of visibility (section 5.3). Perqo is fictional; lanes from Gibbons, 'Service Blueprints: Definition', NN/g, 2017.</figcaption></figure>
+<p><strong>Journeys across actors and surfaces: the cross-surface interaction map.</strong> IA1's Perqo surfaces map, redrawn in the notation, with three of the five shared objects in IA1's vocabulary table (allocation, transaction of type claim, and policy) added as boxes of their own (IA1, Deliverable). The three surfaces keep their top-level areas and their actions. IA1's single line from Admin to the app, "budgets, policies, invites, decisions", is split: invites and decisions still pass directly; budgets and policies now pass through the shared objects that carry them. Admin sets the allocation, which the app shows as Balance; Admin sets the policy, which the app does not show as such; the app shows its effect as open categories and approval rules. The app submits claims; a claim is checked against the policy and spends from the allocation, and Admin approves in Approvals the claims over the limit. Each shared box lists its name on each surface, in tone 5. This is the start of the course's cross-surface interaction map; later units add the decision trees and lifecycles to it.</p>
+<figure class="viz viz-objects"><div class="viz-scroll"><svg viewBox="0 0 700 741.0" width="700" height="741.0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="objects"><path class="viz-link" d="M350.0,183.5 L350.0,489.0"/><g data-box="" data-text="approves in Approvals"><rect class="viz-lblbg" x="289.3" y="328.0" width="121.3" height="16.5"/><text class="viz-linklabel" x="350.0" y="340.0" text-anchor="middle">approves in Approvals</text></g><path class="viz-link" d="M192.0,82.5 L258.0,82.5"/><g data-box="" data-text="contract, sign in"><rect class="viz-lblbg" x="198.1" y="86.5" width="53.8" height="29.0"/><text class="viz-linklabel" x="225.0" y="98.5" text-anchor="middle">contract,</text><text class="viz-linklabel" x="225.0" y="111.0" text-anchor="middle">sign in</text></g><path class="viz-link" d="M100.0,157.0 L100.0,255.5"/><g data-box="" data-text="download, help"><rect class="viz-lblbg" x="57.9" y="198.0" width="84.3" height="16.5"/><text class="viz-linklabel" x="100.0" y="210.0" text-anchor="middle">download, help</text></g><path class="viz-link" d="M258.8,183.5 L183.9,255.5"/><g data-box="" data-text="invites, decisions"><rect class="viz-lblbg" x="174.2" y="211.2" width="94.4" height="16.5"/><text class="viz-linklabel" x="221.4" y="223.3" text-anchor="middle">invites, decisions</text></g><path class="viz-link" d="M192.0,408.3 L295.1,489.0"/><g data-box="" data-text="submits"><rect class="viz-lblbg" x="219.2" y="440.4" width="48.7" height="16.5"/><text class="viz-linklabel" x="243.5" y="452.4" text-anchor="middle">submits</text></g><path class="viz-link" d="M282.0,575.0 L168.0,647.0"/><g data-box="" data-text="is checked against"><rect class="viz-lblbg" x="174.0" y="602.8" width="102.1" height="16.5"/><text class="viz-linklabel" x="225.0" y="614.8" text-anchor="middle">is checked against</text></g><path class="viz-link" d="M442.0,532.0 L508.0,532.0"/><g data-box="" data-text="spends from"><rect class="viz-lblbg" x="452.4" y="536.0" width="45.1" height="29.0"/><text class="viz-linklabel" x="475.0" y="548.0" text-anchor="middle">spends</text><text class="viz-linklabel" x="475.0" y="560.5" text-anchor="middle">from</text></g><path class="viz-link" d="M400.3,183.5 L575.4,489.0"/><g data-box="" data-text="sets"><rect class="viz-lblbg" x="473.1" y="328.0" width="29.4" height="16.5"/><text class="viz-linklabel" x="487.8" y="340.0" text-anchor="middle">sets</text></g><path class="viz-link" d="M313.1,183.5 L118.1,647.0"/><g data-box="" data-text="sets"><rect class="viz-lblbg" x="200.9" y="407.0" width="29.4" height="16.5"/><text class="viz-linklabel" x="215.6" y="419.0" text-anchor="middle">sets</text></g><path class="viz-link" d="M192.0,372.3 L508.0,496.0"/><g data-box="" data-text="shows as Balance"><rect class="viz-lblbg" x="301.6" y="425.9" width="96.9" height="16.5"/><text class="viz-linklabel" x="350.0" y="437.9" text-anchor="middle">shows as Balance</text></g><path class="viz-link" d="M100.0,417.0 L100.0,647.0"/><g data-box="" data-text="shows its effect as open categories and approval rules"><rect class="viz-lblbg" x="34.2" y="511.2" width="131.6" height="41.5"/><text class="viz-linklabel" x="100.0" y="523.3" text-anchor="middle">shows its effect as open</text><text class="viz-linklabel" x="100.0" y="535.8" text-anchor="middle">categories and approval</text><text class="viz-linklabel" x="100.0" y="548.3" text-anchor="middle">rules</text></g><g data-box=""><rect class="viz-node viz-t1" x="8.0" y="8.0" width="184.0" height="149.0" rx="2"/><rect class="viz-solid viz-t1" x="8.0" y="8.0" width="184.0" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="25.3" text-anchor="start">perqo.com</text><text class="viz-attr" x="16.0" y="53.0" text-anchor="start">Product</text><text class="viz-attr" x="16.0" y="67.0" text-anchor="start">Pricing</text><text class="viz-attr" x="16.0" y="81.0" text-anchor="start">Customers</text><text class="viz-attr" x="16.0" y="95.0" text-anchor="start">Help centre</text><text class="viz-attr" x="16.0" y="109.0" text-anchor="start">Sign in</text><path class="viz-line" d="M16.0,117.0 L184.0,117.0"/><text class="viz-small" x="16.0" y="131.8" text-anchor="start">-&gt; book a demo</text><text class="viz-small" x="16.0" y="144.3" text-anchor="start">-&gt; find help</text></g><g data-box=""><rect class="viz-node viz-t4" x="258.0" y="8.0" width="184.0" height="175.5" rx="2"/><rect class="viz-solid viz-t4" x="258.0" y="8.0" width="184.0" height="26.0" rx="2"/><text class="viz-ontone" x="266.0" y="25.3" text-anchor="start">Perqo Admin</text><text class="viz-attr" x="266.0" y="53.0" text-anchor="start">Employees</text><text class="viz-attr" x="266.0" y="67.0" text-anchor="start">Budgets</text><text class="viz-attr" x="266.0" y="81.0" text-anchor="start">Policies</text><text class="viz-attr" x="266.0" y="95.0" text-anchor="start">Approvals</text><text class="viz-attr" x="266.0" y="109.0" text-anchor="start">Reports</text><text class="viz-attr" x="266.0" y="123.0" text-anchor="start">Settings</text><path class="viz-line" d="M266.0,131.0 L434.0,131.0"/><text class="viz-small" x="266.0" y="145.8" text-anchor="start">-&gt; configure</text><text class="viz-small" x="266.0" y="158.3" text-anchor="start">-&gt; approve</text><text class="viz-small" x="266.0" y="170.8" text-anchor="start">-&gt; report</text></g><g data-box=""><rect class="viz-node viz-t3" x="8.0" y="255.5" width="184.0" height="161.5" rx="2"/><rect class="viz-solid viz-t3" x="8.0" y="255.5" width="184.0" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="272.8" text-anchor="start">Perqo app</text><text class="viz-attr" x="16.0" y="300.5" text-anchor="start">Home</text><text class="viz-attr" x="16.0" y="314.5" text-anchor="start">Benefits</text><text class="viz-attr" x="16.0" y="328.5" text-anchor="start">Claims</text><text class="viz-attr" x="16.0" y="342.5" text-anchor="start">Card</text><text class="viz-attr" x="16.0" y="356.5" text-anchor="start">Account</text><path class="viz-line" d="M16.0,364.5 L184.0,364.5"/><text class="viz-small" x="16.0" y="379.4" text-anchor="start">-&gt; see balance</text><text class="viz-small" x="16.0" y="391.9" text-anchor="start">-&gt; spend</text><text class="viz-small" x="16.0" y="404.4" text-anchor="start">-&gt; claim</text></g><g data-box=""><rect class="viz-node viz-t5" x="258.0" y="489.0" width="184.0" height="86.0" rx="2"/><rect class="viz-solid viz-t5" x="258.0" y="489.0" width="184.0" height="26.0" rx="2"/><text class="viz-ontone" x="266.0" y="506.3" text-anchor="start">transaction, type claim</text><text class="viz-attr" x="266.0" y="534.0" text-anchor="start">Admin: Claim</text><text class="viz-attr" x="266.0" y="548.0" text-anchor="start">app: Claim</text><text class="viz-attr" x="266.0" y="562.0" text-anchor="start">perqo.com: Claims</text></g><g data-box=""><rect class="viz-node viz-t5" x="508.0" y="489.0" width="184.0" height="86.0" rx="2"/><rect class="viz-solid viz-t5" x="508.0" y="489.0" width="184.0" height="26.0" rx="2"/><text class="viz-ontone" x="516.0" y="506.3" text-anchor="start">allocation</text><text class="viz-attr" x="516.0" y="534.0" text-anchor="start">Admin: Budget</text><text class="viz-attr" x="516.0" y="548.0" text-anchor="start">app: Balance</text><text class="viz-attr" x="516.0" y="562.0" text-anchor="start">perqo.com: Benefits budget</text></g><g data-box=""><rect class="viz-node viz-t5" x="8.0" y="647.0" width="184.0" height="86.0" rx="2"/><rect class="viz-solid viz-t5" x="8.0" y="647.0" width="184.0" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="664.3" text-anchor="start">policy</text><text class="viz-attr" x="16.0" y="692.0" text-anchor="start">Admin: Policy</text><text class="viz-attr" x="16.0" y="706.0" text-anchor="start">app: not shown</text><text class="viz-attr" x="16.0" y="720.0" text-anchor="start">perqo.com: Policies</text></g></svg></div><figcaption>Cross-surface interaction map (journeys family): IA1's Perqo surfaces map redrawn in the course notation, with three shared objects and their names on each surface, F1; supports the decision on which surface and under which name a thing belongs (section 5.3). Each line reads from left to right on a level line, from top to bottom otherwise. Perqo is fictional; surfaces, areas and vocabulary from IA1, section 5 and Deliverable.</figcaption></figure>
+<h2 id="read-ia2-5">Deliverable · The course notation sheet</h2>
+<p><em>One page. Every figure in this course from IA3 on uses it. Put it beside any artefact you hand over, or cite it in the artefact's caption.</em></p>
+<p><strong>Tones</strong> (section 5.2). One meaning each; set on every element; never the only carrier of the meaning (WCAG 2.2, 1.4.1).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Tone</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>perqo.com</td>
+</tr>
+<tr>
+<td>2</td>
+<td>the merchant side and anything outside Perqo</td>
+</tr>
+<tr>
+<td>3</td>
+<td>the Perqo app and the employee</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Perqo Admin and the HR and finance managers who use it</td>
+</tr>
+<tr>
+<td>5</td>
+<td>shared: the data model, the Perqo system, any object or term on more than one surface; in a figure of one surface, every box takes that surface's tone</td>
+</tr>
+<tr>
+<td>6</td>
+<td>a stop: a path that ends without success, or a fault found in a review</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shapes</strong> (section 5.2; units from Garrett's <em>Quick Reference</em>).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Kind</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Square-cornered box with a type tag</td>
+<td>sitemap</td>
+<td>one page or one type of page (Garrett: page)</td>
+</tr>
+<tr>
+<td>Box tagged <code>stack</code>, note says what repeats</td>
+<td>sitemap</td>
+<td>many pages of one type (Garrett: page stack, iterative area)</td>
+</tr>
+<tr>
+<td>Box tagged <code>section</code> with children</td>
+<td>sitemap</td>
+<td>a group of pages that share something (Garrett: area)</td>
+</tr>
+<tr>
+<td>Plain box</td>
+<td>tree</td>
+<td>a term or a group in a hierarchy</td>
+</tr>
+<tr>
+<td>Box with a filled title band</td>
+<td>objects</td>
+<td>a thing the system holds; attributes below the title</td>
+</tr>
+<tr>
+<td>Line after the attributes, then "-&gt; verb" lines</td>
+<td>objects</td>
+<td>the actions someone can take on it</td>
+</tr>
+<tr>
+<td>Box with a filled title band, in a surface's tone</td>
+<td>objects</td>
+<td>one surface in a cross-surface map; its top-level areas below the title</td>
+</tr>
+<tr>
+<td>Outlined box with branches</td>
+<td>decision</td>
+<td>a question the system asks, or a decision a named person makes (Garrett: conditional branch; decision point)</td>
+</tr>
+<tr>
+<td>Filled box</td>
+<td>decision</td>
+<td>an outcome, where the decision ends</td>
+</tr>
+<tr>
+<td>Rounded box</td>
+<td>states</td>
+<td>a state</td>
+</tr>
+<tr>
+<td>Rounded box with an inner ring</td>
+<td>states</td>
+<td>an end state</td>
+</tr>
+<tr>
+<td>Dot with an arrow</td>
+<td>states</td>
+<td>the start</td>
+</tr>
+<tr>
+<td>Frame with a title bar</td>
+<td>wireflow</td>
+<td>one screen</td>
+</tr>
+<tr>
+<td>Bar, block, button inside a frame</td>
+<td>wireflow</td>
+<td>placeholder text, placeholder area, a control</td>
+</tr>
+<tr>
+<td>Band across the figure with a name</td>
+<td>swimlanes</td>
+<td>one actor or surface; the steps in it are theirs</td>
+</tr>
+<tr>
+<td>Box in a lane</td>
+<td>swimlanes</td>
+<td>one step by that actor or on that surface</td>
+</tr>
+<tr>
+<td>Row, column, marked cell</td>
+<td>matrix</td>
+<td>an item, a dimension, the value where they meet</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Lines</strong> (section 5.2; connectors from Garrett's <em>Quick Reference</em>).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Line without a head (sitemap, tree)</td>
+<td>contains: the lower box is inside the upper</td>
+</tr>
+<tr>
+<td>Line without a head (objects)</td>
+<td>relates; read its label from left to right on a level line, from top to bottom otherwise</td>
+</tr>
+<tr>
+<td>Arrow</td>
+<td>movement or change: a person moves, the system acts, a state changes (Garrett: connector with arrow)</td>
+</tr>
+<tr>
+<td>Arrow from a box back to itself</td>
+<td>the action leaves the thing in the same state</td>
+</tr>
+<tr>
+<td>No dashed lines</td>
+<td>a condition is written, never drawn</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Labels</strong> (section 5.2).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box label in the product's own words, sentence case</td>
+<td>what the person sees on that surface</td>
+</tr>
+<tr>
+<td>Type tag: <code>home</code>, <code>section</code>, <code>index</code>, <code>detail</code>, <code>stack</code>, <code>form</code>, <code>file</code>, <code>external</code></td>
+<td>the page's type: home page; landing page of a group; list of items; one item; many pages of one type; form; file for use outside the browser; leaves this surface</td>
+</tr>
+<tr>
+<td>Flow arrow label: an action or an event</td>
+<td>what the person does ("tap Submit") or what the system does ("pay out")</td>
+</tr>
+<tr>
+<td>Relationship label: a verb, read from left to right on a level line, from top to bottom otherwise</td>
+<td>how the two objects relate ("submits")</td>
+</tr>
+<tr>
+<td>1, 0..<em>, 1..</em> at a line's end</td>
+<td>exactly one; any number including none; at least one (UML multiplicity)</td>
+</tr>
+<tr>
+<td>[condition]</td>
+<td>the path or the box exists only when this holds (Garrett: conditional connector, conditional area)</td>
+</tr>
+<tr>
+<td>"yes" left, "no" right</td>
+<td>branch order in every decision tree</td>
+</tr>
+<tr>
+<td>(no way back)</td>
+<td>the person cannot return along this arrow (Garrett: crossbar)</td>
+</tr>
+<tr>
+<td>→ see <em>name</em></td>
+<td>continues in that figure or node (Garrett: continuation point)</td>
+</tr>
+<tr>
+<td>"assumed" in a note</td>
+<td>a fact not yet evidenced</td>
+</tr>
+<tr>
+<td>"proposed" in a note</td>
+<td>a change not yet agreed</td>
+</tr>
+<tr>
+<td>Data-model name in lower case, surface names as "Surface: Label"</td>
+<td>the vocabulary mapping on a shared object (IA1, section 2.4)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Tables</strong> (inventories and vocabularies; section 5.3).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stable identifier in the first column</td>
+<td>the item's address; kept when the item moves, retired when it is removed</td>
+</tr>
+<tr>
+<td>Label column in the product's own words</td>
+<td>what the person sees</td>
+</tr>
+<tr>
+<td>Status in the last column: keep, update, remove (inventories)</td>
+<td>the audit outcome (Kaley 2020); an update names what changes</td>
+</tr>
+<tr>
+<td>Preferred term, variant terms, broader term, narrower terms (vocabularies)</td>
+<td>equivalence and hierarchy (Rosenfeld, Morville and Arango 2015, ch. 10)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The face of every artefact</strong> (IA1, section 4; section 4 of this unit).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artefact name and family</td>
+<td>what kind of view this is</td>
+</tr>
+<tr>
+<td>Decision it supports</td>
+<td>the question it answers</td>
+</tr>
+<tr>
+<td>Readers</td>
+<td>which of the six touchpoints it is for</td>
+</tr>
+<tr>
+<td>Leaves out</td>
+<td>what a reader must not look for in it</td>
+</tr>
+<tr>
+<td>Fidelity</td>
+<td>F1 sketch, F2 working, F3 specification (section 1.0)</td>
+</tr>
+<tr>
+<td>Owner, version, date</td>
+<td>who keeps it, and when it was last true</td>
+</tr>
+<tr>
+<td>Sources and the Perqo label</td>
+<td>where its facts come from; "Perqo is fictional" for the running example</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="read-ia2-6">Deliverable · The artefact decision table</h2>
+<p><em>Start from the question you have been asked. Fidelity is given by stage (section 1.0: F1 sketch, F2 working, F3 specification). The last column gives this unit's example, then the unit of this course that builds the artefact in full. Where no unit ships the artefact under its own name, the unit that ships its nearest form is named, with that form in brackets.</em></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Question asked</th>
+<th>Artefact</th>
+<th>Figure kind</th>
+<th>Fidelity by stage</th>
+<th>Reader</th>
+<th>Example · built in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What content do we have, and is it any good?</td>
+<td>Content inventory and audit</td>
+<td>table</td>
+<td>F2 before any redesign; F3 as the migration list</td>
+<td>content, support, product management, client</td>
+<td>§5.3 inventory · IA5</td>
+</tr>
+<tr>
+<td>What is each thing called, and which words mean the same?</td>
+<td>Controlled vocabulary</td>
+<td>table</td>
+<td>F1 word list in discovery; F2 once labels agreed; F3 for search, filters, tagging</td>
+<td>content, engineering, support, sales</td>
+<td>§5.3 vocabulary · DD-IA3</td>
+</tr>
+<tr>
+<td>How do the terms nest?</td>
+<td>Taxonomy</td>
+<td>tree, or table</td>
+<td>F2 in design; F3 when built into metadata</td>
+<td>content, engineering</td>
+<td>§5.3 vocabulary · IA4</td>
+</tr>
+<tr>
+<td>What exists on this surface, and what sits under what?</td>
+<td>Sitemap (structural)</td>
+<td>sitemap</td>
+<td>F1 top two levels in discovery; F2 every group and page type in design; F3 with identifiers for build</td>
+<td>product management, engineering, content, sales</td>
+<td>§5.3 sitemap · IA5</td>
+</tr>
+<tr>
+<td>By which routes can a person reach each thing?</td>
+<td>Navigation model</td>
+<td>table or matrix</td>
+<td>F2 before navigation components are chosen</td>
+<td>engineering, content, support</td>
+<td>§5.3 navigation table · IA7</td>
+</tr>
+<tr>
+<td>What does the system hold, and what can people do to it?</td>
+<td>Object map</td>
+<td>objects</td>
+<td>F1 nouns in discovery; F2 attributes and actions in design</td>
+<td>engineering, product management</td>
+<td>§5.3 object map · IA4</td>
+</tr>
+<tr>
+<td>How are the system's things related, and how many of each?</td>
+<td>Object-relationship map</td>
+<td>objects</td>
+<td>F2 in design; F3 as the agreed mapping to the data model</td>
+<td>engineering, product management, client</td>
+<td>§5.3 object map · IA7</td>
+</tr>
+<tr>
+<td>What steps does one kind of user take to a goal, branches included?</td>
+<td>User flow</td>
+<td>flow or wireflow</td>
+<td>F2 in design, with failure paths</td>
+<td>design, engineering, support, product management</td>
+<td>none here · IA6 (as wireflows)</td>
+</tr>
+<tr>
+<td>What is the main path of one task?</td>
+<td>Task flow</td>
+<td>flow</td>
+<td>F1 in discovery</td>
+<td>design, product management</td>
+<td>none here · IA6 (as wireflows)</td>
+</tr>
+<tr>
+<td>Which screens does a task need, and what changes on them?</td>
+<td>Wireflow</td>
+<td>wireflow</td>
+<td>F2 in design; F3 for build of a dynamic sequence</td>
+<td>design, engineering, support</td>
+<td>§5.3 wireflow · IA6</td>
+</tr>
+<tr>
+<td>Given these facts, which outcome does the system produce?</td>
+<td>Decision tree</td>
+<td>decision</td>
+<td>F2 in design; F3 for build, every branch complete</td>
+<td>engineering, product management, client, support</td>
+<td>§5.3 decision tree · IA8</td>
+</tr>
+<tr>
+<td>What states can a thing be in, and what moves it?</td>
+<td>State diagram</td>
+<td>states</td>
+<td>F2 every visible state in design; F3 every trigger for build</td>
+<td>engineering, content, support, client</td>
+<td>§5.3 state diagram · IA7</td>
+</tr>
+<tr>
+<td>For one journey, who does what, front and back, and what supports it?</td>
+<td>Service blueprint</td>
+<td>swimlanes</td>
+<td>F1 in discovery; F2 when the service changes</td>
+<td>support, product management, client</td>
+<td>§5.3 blueprint · IA8 (as lifecycle swimlanes)</td>
+</tr>
+<tr>
+<td>Across surfaces, what is shared, what is it called on each, and what crosses?</td>
+<td>Cross-surface interaction map</td>
+<td>objects (with swimlanes for a journey)</td>
+<td>F1 at the start of cross-surface work; F2 kept current; F3 as the canonical vocabulary</td>
+<td>all six touchpoints</td>
+<td>§5.3 cross-surface map · IA8</td>
+</tr>
+<tr>
+<td>Is this artefact someone handed me sound?</td>
+<td>none: review it</td>
+<td>the five faults (section 3)</td>
+<td>at every handover</td>
+<td>the designer receiving it</td>
+<td>§3</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="read-ia2-7">Sources</h2>
+<ul>
+<li>Brown, Dan M. <em>Communicating Design: Developing Web Site Documentation for Design and Planning</em>. 2nd ed. New Riders, 2011 (published September 2010). Chs 2, 3 to 7; ch. 5, Site Maps; ch. 6, Flowcharts. Contents at <a target="_blank" rel="noopener" href="https://www.informit.com/store/communicating-design-developing-web-site-documentation-9780321712462">informit.com</a>.</li>
+<li>Brown, Dan. "The Visual Vocabulary Three Years Later: An Interview with Jesse James Garrett". Boxes and Arrows, 11 December 2003. <a target="_blank" rel="noopener" href="https://boxesandarrows.com/the-visual-vocabulary-three-years-later-an-interview-with-jesse-james-garrett/">boxesandarrows.com/the-visual-vocabulary-three-years-later-an-interview-with-jesse-james-garrett</a> (interview; practice).</li>
+<li>Cardello, Jen. "The Difference Between Information Architecture (IA) and Navigation". Nielsen Norman Group, 22 June 2014. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/ia-vs-navigation/">nngroup.com/articles/ia-vs-navigation</a></li>
+<li>Cooper, Alan, Robert Reimann, David Cronin and Christopher Noessel. <em>About Face: The Essentials of Interaction Design</em>. 4th ed. Wiley, 2014. Ch. 1.</li>
+<li>Garrett, Jesse James. "A visual vocabulary for describing information architecture and interaction design". First released October 2000, revised since. <a target="_blank" rel="noopener" href="http://www.jjg.net/ia/visvocab/">jjg.net/ia/visvocab</a></li>
+<li>Garrett, Jesse James. <em>Visual Vocabulary Quick Reference</em>. Undated one-page PDF. <a target="_blank" rel="noopener" href="http://www.jjg.net/ia/visvocab/files/garrett_ia_quickref.pdf">jjg.net/ia/visvocab/files/garrett_ia_quickref.pdf</a></li>
+<li>Gibbons, Sarah. "Service Blueprints: Definition". Nielsen Norman Group, 27 August 2017. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/service-blueprints-definition/">nngroup.com/articles/service-blueprints-definition</a></li>
+<li>Harel, David. "Statecharts: A Visual Formalism for Complex Systems". <em>Science of Computer Programming</em> 8 (1987): 231 to 274.</li>
+<li>Hedden, Heather. <em>The Accidental Taxonomist</em>. 3rd ed. Information Today, 2022. <a target="_blank" rel="noopener" href="https://books.infotoday.com/Ebooks/489_The-Accidental-Taxonomist-Third-Edition.htm">books.infotoday.com</a></li>
+<li>Kaley, Anna. "Content Inventory and Auditing 101". Nielsen Norman Group, 27 September 2020. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/content-audits/">nngroup.com/articles/content-audits</a></li>
+<li>Kalbach, James. <em>Mapping Experiences: A Complete Guide to Customer Alignment Through Journeys, Blueprints, and Diagrams</em>. 2nd ed. O'Reilly, 2020. Ch. 10, Service Blueprints. <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/mapping-experiences-2nd/9781492076629/">oreilly.com</a></li>
+<li>Kaplan, Kate. "User Journeys vs. User Flows". Nielsen Norman Group, 16 April 2023. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/user-journeys-vs-user-flows/">nngroup.com/articles/user-journeys-vs-user-flows</a></li>
+<li>Laubheimer, Page. "Wireflows: A UX Deliverable for Workflows and Apps". Nielsen Norman Group, 4 December 2016. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/wireflows/">nngroup.com/articles/wireflows</a></li>
+<li>Laubheimer, Page. "Taxonomy 101: Definition, Best Practices, and How It Complements Other IA Work". Nielsen Norman Group, 3 July 2022. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/taxonomy-101/">nngroup.com/articles/taxonomy-101</a></li>
+<li>NISO. <em>ANSI/NISO Z39.19-2005 (R2010): Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies</em>. National Information Standards Organization, 2005, reaffirmed 2010 (standard). <a target="_blank" rel="noopener" href="https://niso.org/publications/ansiniso-z3919-2005-r2010">niso.org/publications/ansiniso-z3919-2005-r2010</a></li>
+<li>Object Management Group. <em>Unified Modeling Language</em>, version 2.5.1. December 2017 (standard). <a target="_blank" rel="noopener" href="https://www.omg.org/spec/UML/2.5.1">omg.org/spec/UML/2.5.1</a></li>
+<li>Prater, Sophia V. "Object-Oriented UX". A List Apart, 20 October 2015. <a target="_blank" rel="noopener" href="https://alistapart.com/article/object-oriented-ux/">alistapart.com/article/object-oriented-ux</a> (practice).</li>
+<li>Resmini, Andrea, and Luca Rosati. <em>Pervasive Information Architecture: Designing Cross-Channel User Experiences</em>. Morgan Kaufmann, 2011.</li>
+<li>Rosenfeld, Louis, Peter Morville and Jorge Arango. <em>Information Architecture: For the Web and Beyond</em>. 4th ed. O'Reilly, 2015. Chs 2, 8, 10, 13. Contents at <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/information-architecture-4th/9781491913529/">oreilly.com</a>.</li>
+<li>Shostack, G. Lynn. "Designing Services That Deliver". <em>Harvard Business Review</em>, January 1984. <a target="_blank" rel="noopener" href="https://hbr.org/1984/01/designing-services-that-deliver">hbr.org/1984/01/designing-services-that-deliver</a></li>
+<li>Sitemaps.org. "Sitemaps XML format" (protocol documentation, page dated 21 November 2016). <a target="_blank" rel="noopener" href="https://www.sitemaps.org/protocol.html">sitemaps.org/protocol.html</a></li>
+<li>Tankala, Samhita. "Information Architecture vs. Sitemaps". Nielsen Norman Group, 3 September 2023. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/information-architecture-sitemaps/">nngroup.com/articles/information-architecture-sitemaps</a></li>
+<li>W3C. <em>Web Content Accessibility Guidelines (WCAG) 2.2</em>. W3C Recommendation, 12 December 2024 (standard). Success Criterion 1.4.1, Use of Color. <a target="_blank" rel="noopener" href="https://www.w3.org/TR/WCAG22/">w3.org/TR/WCAG22</a></li>
+</ul>
+<h2 id="read-ia2-8">Unsure list</h2>
+<ul>
+<li>Garrett's vocabulary dated 2002 in the course brief: the revision history on jjg.net could not be fetched (robots blocked); the unit says only "first released October 2000, revised since".</li>
+<li>Garrett's Quick Reference quotations were read through a text extraction of the PDF; the PDF is undated, so the version it represents is not known.</li>
+<li>That the Quick Reference has no element for objects, states or actors is this unit's reading of the seventeen elements in that extraction.</li>
+<li>Brown, Communicating Design, chs 2, 5, 6: only the chapter openings (at-a-glance, purpose, the opening of "Anatomy of a Design Diagram") were seen; claims are kept to them.</li>
+<li>Rosenfeld, Morville and Arango, chs 8, 10, 13: section headings and chapter introductions seen; the glosses of global, local, contextual and supplemental navigation are this unit's, not the book's wording.</li>
+<li>UML 2.5.1 as the source of the 1, 0..<em>, 1..</em> multiplicity notation: from knowledge; the clause of the specification was not checked.</li>
+<li>Prater 2015: the A List Apart page now names the author Sophia V. Prater; that she published it as Sophia Voychehovski is inferred from the site's author URL and is left out of the text.</li>
+<li>Shostack 1984 as the origin of the service blueprint: the HBR page and a summary were seen, not the article's text; volume and pages omitted.</li>
+<li>Harel 1987: the three added elements (nested states, parallel components, communication) paraphrased from the abstract.</li>
+<li>The "unit that builds it" column of the decision table: codes from the course's units list (IA4 to IA8, DD-IA3); where no unit ships the artefact by name, the unit that ships its nearest form is named, with that form in brackets.</li>
+<li>Fresh check 2026-10-30 (Opus 5.5; a Fable 5.1 fresh check is owed, row P49): fix · 3 errors, 10 should-fix, 17 minor; all applied; report <code>audits/ux/fresh-check-IA2.md</code></li>
+</ul></div>
+  <div class="pager"></div>
