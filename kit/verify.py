@@ -591,12 +591,12 @@ def main():
                     pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
                     for pid in ['home', 'rome', rp] + [x for x in PAGES if x not in ('home', 'rome', rp)]:
                         pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
-                        pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, clip={'x': 0, 'y': 0, 'width': w, 'height': 2600})
+                        pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, clip={'x': 0, 'y': 0, 'width': w, 'height': 2600}, timeout=120000)   # N3: a long reading page needs more than 30 s
                         if pid in PAGES:   # P41: each figure of a --page panel, as the reader sees it in its frame
                             for k, fig in enumerate(pg.query_selector_all(f'[id="{pid}"] figure.viz')):
                                 kind = ([c for c in fig.get_attribute('class').split() if c.startswith('viz-') and c != 'viz-wide'] or ['viz-figure'])[0][4:]
                                 fig.scroll_into_view_if_needed(); pg.wait_for_timeout(30)
-                                fig.screenshot(path=str(SHOTS / f'{name}-{pid}-fig-{k + 1:02d}-{kind}-{theme}.png'))
+                                fig.screenshot(path=str(SHOTS / f'{name}-{pid}-fig-{k + 1:02d}-{kind}-{theme}.png'), timeout=120000)
                             pg.evaluate('window.scrollTo(0, 0)')
                 ctx.close()
             # V1: each figure of the examples page as the reader sees it in its frame, then one sheet per width and theme
