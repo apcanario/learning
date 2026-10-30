@@ -54,6 +54,37 @@ Anthropic's best-practice page says so directly: "The description is critical fo
 
 > **Where sources disagree.** The developer documentation allows 1,024 characters ([Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)). The claude.ai help page on creating custom skills gives "200 characters maximum" ([Claude Help Center, *How to create custom skills*](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)). Claude Code truncates "the combined `description` and `when_to_use` text" at 1,536 characters in its skill listing, and when a user has many skills it "drops some descriptions to fit the listing's character budget", which "scales at 1% of the model's context window" ([Claude Code docs, *Skills*](https://code.claude.com/docs/en/skills)). Read together: a description that must work on claude.ai is kept to 200 characters, with the trigger words first, because that is the strictest limit and the first words are the ones every surface keeps.
 
+```viz
+{
+ "kind": "compare",
+ "title": "Description length limits, in characters",
+ "unit": "",
+ "rows": [
+  {
+   "label": "journey-chain description",
+   "value": 186,
+   "tone": 2
+  },
+  {
+   "label": "claude.ai help page",
+   "value": 200,
+   "tone": 4
+  },
+  {
+   "label": "Developer docs",
+   "value": 1024,
+   "tone": 3
+  },
+  {
+   "label": "Claude Code listing",
+   "value": 1536,
+   "tone": 3
+  }
+ ],
+ "caption": "The limits on a skill's description by surface, against the Deliverable's own description. §2, from Anthropic, <a href=\"https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview\"><em>Agent Skills</em></a> (1,024), Claude Help Center, <a href=\"https://support.claude.com/en/articles/12512198-how-to-create-custom-skills\"><em>How to create custom skills</em></a> (200) and Claude Code docs, <a href=\"https://code.claude.com/docs/en/skills\"><em>Skills</em></a> (1,536, description and when_to_use combined); all opened 29 Oct 2026. The 186 is this unit's Deliverable A."
+}
+```
+
 > **Where sources disagree.** The developer documentation says custom skills do not sync and that Claude Code skills are "filesystem-based and separate from both claude.ai and the API". The Claude Code documentation says the opposite for his account's skills: "In a Cowork or cloud session, Claude Code loads the skills enabled for your claude.ai account", and terminal sessions signed in with the account download them too ([Claude Code docs, *Skills*, "Skills synced from claude.ai"](https://code.claude.com/docs/en/skills)). Read together: a skill uploaded to claude.ai reaches his cloud sessions and scheduled tasks; committing it to the repository's `.claude/skills/` is a second route the same page documents for "cloud sessions other than project threads", and the one that does not depend on the sync.
 
 **What a description cannot do.** It cannot force a skill to run every time. The Claude Code page's own troubleshooting for a skill that does not trigger begins with "Check the description includes keywords users would naturally say" and "Try rephrasing your request to match the description more closely", and ends with invoking it by name ([Claude Code docs, *Skills*](https://code.claude.com/docs/en/skills)); the claude.ai help page suggests the same: "Try being more explicit in your request", for example "Use my brand guidelines skill to create a presentation" ([*Using skills in Claude*](https://support.claude.com/en/articles/12512180-using-skills-in-claude)). The reliable trigger is a fixed opening word he always types. The skill in the Deliverable is built on one: every session note starts with "Take".
@@ -75,6 +106,43 @@ His account lists 19 installed skills with their descriptions (his installed ski
 **4. Five fire on the clock.** `shutdown-ritual` ("after 18:00 Lisbon on a workday"), `decompression-mode` ("after 21:30 Lisbon time"), `sunday-three` ("between Sunday 18:00–22:00 Lisbon time"), `friday-fifteen` ("Friday 16:00–19:00 Lisbon") and `hyperfocus-rider` ("crosses meal times … or the 22:30 sleep window"). A time condition can only work if the current time is in the window. The model has no clock of its own; in his session the current time is available through a tool the model has to call (observed in his claude.ai session, 29 Oct 2026). Whether the time is inserted into every claude.ai chat is undocumented. A clock trigger is therefore a request for the model to check the time first, on every message, before it knows whether the skill matters. The phrase triggers in the same descriptions are the dependable half.
 
 **5. Three depend on another skill firing them.** `pre-mortem` ("Auto-trigger when the Reversibility Classifier flags one-way door") and `weighted-matrix` ("Auto-suppressed by the Reversibility Classifier") refer to a classifier, and no skill of that name is installed (his installed skill list, 29 Oct 2026). `trip-frame` says "Pre-mortem auto-fires for trips >€2000 or >7 days". No page read for this unit documents a way for one skill to fire or suppress another; each loads on its own description (§2). The classifier clauses cost tokens and fire nothing; the `trip-frame` clause works only if the model reads it as an instruction to load `pre-mortem` as well, which is undocumented. The fix is to write the condition into the description that should fire, in words a request would contain ("hard-to-reverse", "over €2000").
+
+```viz
+{
+ "kind": "compare",
+ "title": "Of his 19 installed skills",
+ "unit": "",
+ "max": 19,
+ "rows": [
+  {
+   "label": "Over 200 characters",
+   "value": 16,
+   "tone": 4
+  },
+  {
+   "label": "Quote the words he says",
+   "value": 11,
+   "tone": 2
+  },
+  {
+   "label": "Written to over-fire",
+   "value": 6,
+   "tone": 5
+  },
+  {
+   "label": "Fire on the clock",
+   "value": 5,
+   "tone": 5
+  },
+  {
+   "label": "Depend on another skill",
+   "value": 3,
+   "tone": 5
+  }
+ ],
+ "caption": "How many of his 19 installed skills show each of the five features read against §2. §3, counted by script on the descriptions in his installed skill list in claude.ai, 29 Oct 2026 (observed; not a published source)."
+}
+```
 
 **The decision cluster.** Four skills claim decisions: `pedro-decision-forcer` (any "should I", 2 or more options), `weighted-matrix` (3 or more options and 3 or more criteria), `decision-council` (an "important decision", no trigger phrase) and `pre-mortem` (irreversible ones). Their descriptions separate them by thresholds the model has to judge, and `decision-council`'s description, the shortest at 170 characters, names no trigger at all. Which of the four fires on a given request is undocumented and untested. The test set method in §2 is how he would find out: ten near-miss requests across the four, run once, with the model's choice recorded.
 
@@ -184,6 +252,43 @@ Two corollaries. A rule about tone, format or decision style is a preference, ho
 ## Deliverable · The journey-chain skill, with install steps
 
 Built for the chain A3 fixed: dictated takes after each session, a weekly journal entry, a fortnightly record, the episode script, titles, the Short and the weekly email. Each step is one of B3's templates turned into an outcome description: the artefact, the check that says it is done, and what the step may not touch, with no reasoning scripted (DD-B3 §5).
+
+```viz
+{
+ "kind": "flow",
+ "steps": [
+  {
+   "label": "1 · Take",
+   "note": "After each session"
+  },
+  {
+   "label": "2 · Journal entry",
+   "note": "After the week's last session"
+  },
+  {
+   "label": "3 · Record",
+   "note": "Friday, week A"
+  },
+  {
+   "label": "4 · Script",
+   "note": "Friday, week A"
+  },
+  {
+   "label": "5 · Titles",
+   "note": "Tuesday, week A"
+  },
+  {
+   "label": "6 · Shorts cut list",
+   "note": "Wednesday, week A"
+  },
+  {
+   "label": "7 · Weekly email",
+   "note": "Thursday, every week"
+  }
+ ],
+ "caption": "The seven steps of the journey chain and when each runs; each reads the files the step before it wrote. Drawn from this unit's Deliverable A (the skill's step table, §0), built on the chain A3 fixed (A3, checklists D and E)."
+}
+```
 
 **Where it follows the filed units over the brief.** The brief names the chain; A3 revised three of its numbers, and the skill takes A3's:
 

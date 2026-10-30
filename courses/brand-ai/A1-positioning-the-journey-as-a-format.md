@@ -57,6 +57,10 @@ The thesis already contains the method: he gets consumed by a journey, builds a 
 4. **Record.** The log of what happened, misses included. "Failures stay in the record" is a rule of the brand, and the record is what makes the misses usable later.
 5. **Artefact.** The finished thing goes out: a race result, an edited season, a written course.
 
+```viz
+{"kind": "flow", "caption": "The five stages of the method, in order. From §3, the unit's own reading of the course thesis.", "steps": [{"label": "Consumed", "note": "a target is set"}, {"label": "Syllabus", "note": "the plan, before starting"}, {"label": "Process", "note": "recorded as they happen"}, {"label": "Record", "note": "misses included"}, {"label": "Artefact", "note": "the finished thing goes out"}]}
+```
+
 Stages become a format only when a viewer can see them. On the evidence in §2 and §5, a method is recognisable when it shows up in the same places every time. In the cases checked, that place is the title or the series name: Mike Boyd's "Learn Quick" round-ups, Matt D'Avella's "for 30 days" titles, Michelle Khare's series name "Challenge Accepted" (§5). For this channel the equivalent is a small set of fixed elements, his rules derived from YouTube's series tip and the cases:
 
 - **The season label.** Each journey is a numbered season (karate was season one, per the course's Frame), named in the title, the playlist and the first ten seconds.
@@ -141,6 +145,12 @@ Both episodes were read on 29 October 2026 in Chrome, which YouTube does not ref
 
 **Read together.** The episodes position something coherent, and it is not yet the method. After either one, a stranger would say "a guy in his mid-thirties back in karate competition after 17 years, with a job and a family, honest about what it costs". That passes §1's one-sentence test. It fails §2's: it is a topic and a situation, and it ends with the karate season. Two parts of it carry across to the half marathon unchanged: the honesty about cost, which is the record stage, and the audience line "chasing something late", which names who the method is for without naming a topic. The two missing parts are the two that make the method visible: the syllabus (stage 2) and the artefact (stage 5, which these two episodes could not reach). His rules from this, untested: keep the audience line in every description, and put the syllabus on screen from the next season's first episode (§3).
 
+Against §3's four fixed elements, the two episodes read as follows.
+
+```viz
+{"kind": "matrix", "caption": "§3's four fixed elements in the two published episodes. From §6, the unit's reading of <a href=\"https://www.youtube.com/watch?v=ZzUAtWkMoWo\">episode 1</a> (11 Oct 2026) and <a href=\"https://www.youtube.com/watch?v=o5fitxW62Ng\">episode 2</a> (13 Oct 2026) on YouTube, read in Chrome 29 Oct 2026.", "cols": ["Season label", "Syllabus on screen", "Miss named", "Artefact at end"], "rows": [{"label": "Ep. 1", "cells": [{"mark": "in title", "tone": 4}, {"mark": "no", "tone": 1}, {"mark": "yes", "tone": 2}, {"mark": "not reached", "tone": 1}]}, {"label": "Ep. 2", "cells": [{"mark": "in title", "tone": 4}, {"mark": "no", "tone": 1}, {"mark": "yes", "tone": 2}, {"mark": "not reached", "tone": 1}]}], "legend": [{"mark": "in title", "means": "in the title; not in a playlist", "tone": 4}, {"mark": "yes", "means": "named on camera", "tone": 2}, {"mark": "no", "means": "absent", "tone": 1}, {"mark": "not reached", "means": "these two episodes could not reach it", "tone": 1}]}
+```
+
 **For the two already out.** A6's rule 5 keeps them public. The titles already do the labelling, so no rename is needed. What is missing is a public playlist under the series name, "Road to WIKF Global Cup 2026", holding both episodes in order, so a viewer who arrives later from the half-marathon season can find season one as a unit. That is his rule from YouTube's series tip, untested.
 
 ## Deliverable · Positioning statement, channel name and profile copy
@@ -169,6 +179,10 @@ Built from §1–§6, 28 October 2026; the lines §6 changed were revised on 29 
 - Handle stays: YouTube keeps handles "distinct from channel names".
 
 Override if: he would rather not put the three uploads from 11 to 13 years ago under the new name and will not hide them; then keep "Pedro Canário" and make "Syllabus of One" the series name.
+
+```viz
+{"kind": "decision", "caption": "The name pick and its override. From the Deliverable, the unit's own recommendation; the handle rule in <a href=\"https://support.google.com/youtube/answer/11585688?hl=en\">YouTube Help, answer 11585688</a>.", "root": {"q": "Willing to put the three old uploads under the new name, or hide them?", "tone": 4, "branches": [{"label": "yes", "to": {"outcome": "Syllabus of One as the channel name; handle stays @apcanario", "tone": 2}}, {"label": "no", "to": {"outcome": "Keep \"Pedro Canário\"; Syllabus of One as the series name", "tone": 3}}]}}
+```
 
 Before renaming: decide what happens to the three old uploads on the Videos tab, which sit outside the format; note that YouTube allows two name changes in 14 days and that a rename removes a verification badge if the channel has one ([YouTube Help, answer 2657964](https://support.google.com/youtube/answer/2657964?hl=en)). The handle rule is [YouTube Help, answer 11585688](https://support.google.com/youtube/answer/11585688?hl=en). @syllabusofone no longer has to be free.
 

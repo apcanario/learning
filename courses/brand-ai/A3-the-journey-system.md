@@ -24,6 +24,17 @@ A take has three fixed prompts, his rule: what I did; what did not work; what ch
 
 **Journal entries.** Once a week the takes become one dated entry. B2's routing table gives this job to Sonnet 5.5 at medium effort ("his notes or a voice transcript into a dated entry in his words"), with Haiku 5.5 for a pure tidy-up of a transcript (B2, Deliverable, row "Journal entries"). Every fortnight the entries become one record with B3's template 3, journal synthesis, on Opus 5.5 at medium (B3, Deliverable, template 3; B2's override for synthesis across several weeks). That record is what the episode script and the emails are cut from. B3's template 4 cuts the script from the takes and marks every line with its origin; B3's template 10 writes the email from the record. The chain from take to email is the workflow B5's skill automates; this unit fixes what goes into it and when.
 
+```viz
+{"kind": "flow", "title": "From take to email",
+ "steps": [
+  {"label": "Take", "note": "after each session, by voice"},
+  {"label": "Journal entry", "note": "weekly · Sonnet 5.5 medium"},
+  {"label": "Record", "note": "fortnightly · B3 template 3, Opus 5.5 medium"},
+  {"label": "Script and email", "note": "B3 templates 4 and 10"}
+ ],
+ "caption": "The chain from take to email that B5's skill automates, as §1 sets it: the takes become a weekly journal entry (B2, Deliverable, row \"Journal entries\"), the entries a fortnightly record (B3, Deliverable, template 3), and the script and the emails are cut from it (B3 templates 4 and 10). Drawn from this unit's own text, §1."}
+```
+
 **Biometric screenshots.** After a session he screenshots the watch app's summary of that session. The screenshot is for the screen: a split, a heart-rate trace, a weight on a date. The numbers that go into the record or a script come from the app's export, parsed by a script, because B2 assigns biometrics parsing to a script that Haiku 5.5 writes and maintains, on the ground that model outputs vary from run to run while code gives the same answer every time (B2 §8 and Deliverable, row "Biometrics parsing"; B1 §5). How much of his weight and health data is published is a disclosure question for A4; until A4 is filed, screenshots are captured and filed, and published only where the episode already names the number.
 
 **Phone footage.** Short clips filmed inside a session: the start, a moment that went wrong, the finish, a view of the watch. How to film without breaking the session (tripod, microphone, the six-shot b-roll list) is A5's job. Two platform rules shape capture now:
@@ -58,6 +69,16 @@ The recap layer is the long-form episode: the home format on YouTube, the journe
 Everything in this layer is cut from the capture layer and the episode. None of it has material of its own (§1).
 
 **Shorts: one per episode, where the brief says two or three.** This is the explicit departure from the brief. A2 §4 sets out the two vendor datasets. AIR Media-Tech's Shorts study (18,000 channels, March 2025 to March 2026) put "the optimal Shorts ratio" at 25% to 40% of uploads and found Shorts "crowding out" long-form above 55%; Metricool's 799,718 videos found long-form views per video highest at around five Shorts a month and back near the no-Shorts level at 35 or more ([AIR Media-Tech, 28 May 2026](https://air.io/en/audience-growth/do-youtube-shorts-help-your-long-form-videos-grow-data-from-18000-channels); [Metricool, 29 Jul 2026](https://metricool.com/youtube-trends/); both vendor and correlational, as A2 reports them). At one episode a fortnight, two Shorts per episode make Shorts 67% of uploads and three make 75%, both above AIR's crowding line; one Short per episode is 50%, under it (A2 §4, my arithmetic there). A2 concludes that "A3 should take the one-Short figure from here", and this unit does. A9 adds a reason to hold the ratio once set: channels that shifted their Shorts share by more than 30 points had lower median subscribers (A9 §8, AIR, correlational, cause unresolved), so the share is fixed at the start of the season and not changed mid-season.
+
+```viz
+{"kind": "compare", "title": "Shorts as a share of uploads, one episode a fortnight", "unit": "%", "max": 100,
+ "rows": [
+  {"label": "1 Short per episode", "value": 50, "tone": 1},
+  {"label": "2 Shorts per episode", "value": 67, "tone": 4},
+  {"label": "3 Shorts per episode", "value": 75, "tone": 4}
+ ],
+ "caption": "The Shorts share at each option, §3 (A2 §4's arithmetic): only one Short per episode stays under the 55% above which <a href=\"https://air.io/en/audience-growth/do-youtube-shorts-help-your-long-form-videos-grow-data-from-18000-channels\">AIR Media-Tech's Shorts study (28 May 2026)</a> found Shorts crowding out long-form; AIR put the optimal ratio at 25% to 40%. Vendor and correlational data, as A2 reports it."}
+```
 
 The Short is the episode's strongest 30 to 60 seconds, recut vertical, with the episode set as its related video. YouTube's related-video option "allows you to showcase your Videos, Shorts, and Live in the Shorts player"; it is chosen from the creator's own channel, needs advanced feature access, and the linked video must be public or unlisted ([YouTube Help, Add a related video to your YouTube Shorts](https://support.google.com/youtube/answer/14075157?hl=en)). No source found measures how many Short viewers follow that link (A2 §2 found none for TikTok to YouTube either), so the Short's views are recorded and no decision rests on them in year one (A2, Deliverable 2).
 
@@ -128,6 +149,45 @@ The brief asks for two fixed windows a fortnight: one to film, one to edit. No s
 - **Scheduling removes the publishing moment from the edit.** YouTube lets a private video be scheduled to go public at a set date and time from the upload page ([YouTube Help, Schedule video publish time](https://support.google.com/youtube/answer/1270709?hl=en)); Instagram schedules posts up to 75 days ahead (§3). Publication happens at the planned hour whether or not he is at a desk.
 - **Studio stays closed between checkpoints** (A9, Deliverable 2, "How to run them"; A6's metrics sheet). The windows are for making things; numbers are read four times a year.
 - **The worst week is planned for.** Amy Suto's rule is a cadence you can hit "on your worst week, not your best one" (anecdote, as A2 §6 reports it); A2's cut order (Instagram, then the Short, then the off-week email shrinks, then the episode shortens) keeps the date. The calendar applies the fourth cut in advance to the Christmas fortnight.
+
+```viz
+{
+ "kind": "matrix",
+ "title": "The pipeline overlaps by one fortnight",
+ "cols": [
+  "Week A",
+  "Week B",
+  "Next week A"
+ ],
+ "rows": [
+  {
+   "label": "This episode",
+   "tone": 1,
+   "cells": [
+    "outline, film",
+    {
+     "mark": "edit",
+     "tone": 2
+    },
+    {
+     "mark": "publish",
+     "tone": 3
+    }
+   ]
+  },
+  {
+   "label": "Next episode",
+   "tone": 4,
+   "cells": [
+    null,
+    null,
+    "outline, film"
+   ]
+  }
+ ],
+ "caption": "Where each episode sits across a fortnight and the start of the next, §6: filmed in week A, edited in week B and published on the Tuesday that starts the next week A, while the next episode is outlined and filmed. His rule, from this unit's design in §6; no source sets it."
+}
+```
 
 **What this costs, per fortnight, against A2.** A2's allocation is 12.0 planned hours a fortnight and gives no hours to capture. Capture and the weekly journal entry are real work: about a quarter-hour of takes and screenshots across a week's sessions and a quarter-hour to read and correct the week's entry (my estimate). This unit adds 1.0 hour a fortnight for them, so the planned fortnight is 13.0 hours, 6.5 a week, inside 5–7 with less slack than A2 had. Every other line is A2's. The hours log at A9's checkpoints tests every estimate.
 

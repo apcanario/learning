@@ -105,6 +105,49 @@ The practical rule from the third finding, which the paper itself gives its user
 
 A one-liner is enough when the input fully determines the output and the standing layers already carry tone and format: reformatting, triage, a single lookup. B2 §6 and §8 give the evidence that these are the tasks where model differences stop mattering; that the same tasks tolerate a short prompt is my reading.
 
+```viz
+{
+  "kind": "decision",
+  "caption": "When a one-line ask is enough, as §4 states it: both conditions must hold; otherwise the ask needs the task's own three parts. The rule is this unit's own reading (§4), resting on B2 §6 and §8 for the tasks where model differences stop mattering.",
+  "root": {
+    "q": "Input fully determines the output?",
+    "tone": 4,
+    "branches": [
+      {
+        "label": "no",
+        "to": {
+          "outcome": "Give the reader, the output and done",
+          "tone": 1
+        }
+      },
+      {
+        "label": "yes",
+        "to": {
+          "q": "Standing layers carry tone and format?",
+          "tone": 4,
+          "branches": [
+            {
+              "label": "no",
+              "to": {
+                "outcome": "Give the reader, the output and done",
+                "tone": 1
+              }
+            },
+            {
+              "label": "yes",
+              "to": {
+                "outcome": "A one-liner is enough",
+                "tone": 2
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
 ## 5 · Common failure patterns
 
 ### Asking for a plan when he wants the thing
@@ -121,6 +164,68 @@ The ask is buried when it sits in the middle of a message, after background and 
 
 The research agrees on one point only: the middle is the weak position. Liu and colleagues found recall worst in the middle of long inputs (B1 §2), and IFScale found a bias towards earlier instructions ([Jaroslawicz et al., 2025](https://arxiv.org/abs/2507.11538)). The library's layout is my synthesis: a one-line TASK first, material inside tags, and, when the material is long, the TASK repeated as the last line.
 
+```viz
+{
+  "kind": "matrix",
+  "caption": "What each source places at the beginning, middle or end of a prompt, as §5 reports it: <a href=\"https://help.openai.com/en/articles/6654000\">OpenAI Help Center, <em>Best practices for prompt engineering with the OpenAI API</em></a>; <a href=\"https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices\">Anthropic, <em>Prompting best practices</em></a> (inputs of 20,000 tokens or more); <a href=\"https://developers.openai.com/api/docs/guides/prompt-engineering\">OpenAI, <em>Prompt engineering</em></a>; Liu and colleagues via B1 §2. The library row is this unit's own synthesis (§5); its closing TASK is added only when the material is long.",
+  "cols": [
+    "Beginning",
+    "Middle",
+    "End"
+  ],
+  "rows": [
+    {
+      "label": "OpenAI Help Center",
+      "tone": 3,
+      "cells": [
+        "instructions",
+        null,
+        null
+      ]
+    },
+    {
+      "label": "Anthropic, 20,000+ tokens",
+      "tone": 3,
+      "cells": [
+        "long documents",
+        null,
+        "query"
+      ]
+    },
+    {
+      "label": "OpenAI API guide",
+      "tone": 3,
+      "cells": [
+        null,
+        null,
+        "context"
+      ]
+    },
+    {
+      "label": "Liu et al. (B1 §2)",
+      "tone": 5,
+      "cells": [
+        null,
+        {
+          "mark": "recall worst",
+          "tone": 1
+        },
+        null
+      ]
+    },
+    {
+      "label": "The library",
+      "tone": 2,
+      "cells": [
+        "TASK",
+        "material in tags",
+        "TASK again"
+      ]
+    }
+  ]
+}
+```
+
 ### Stacking unrelated tasks
 
 "Write the email, fix the calendar, and draft three captions" is three tasks in one window. Google: "Instead of having many instructions in one prompt, create one prompt per instruction", and for multi-step work, "make each step a prompt" ([Google, *Prompt design strategies*](https://ai.google.dev/gemini-api/docs/prompting-strategies); vendor guidance). Anthropic says explicit chaining stays useful "when you need to inspect intermediate outputs or enforce a specific pipeline structure" ([Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)). Three findings above explain the cost: each task's material is irrelevant context for the others (Shi et al.), instruction count degrades adherence (IFScale), and a long mixed window degrades reasoning (Levy et al.). B2 adds a fourth from his own routing table: the three tasks want different models and efforts, and one chat runs them all on one. Fix: one artefact per prompt. Where tasks form a pipeline (journal synthesis, then script, then titles, then email), each step is its own prompt and its output is read before it feeds the next; B5 and B7 build that chain.
@@ -130,6 +235,47 @@ The research agrees on one point only: the middle is the weak position. Liu and 
 Ten templates for his recurring tasks, as of 28 October 2026. Each is usable on its own.
 
 **How the templates are built.** Every template has the same parts in the same order, each traced to the unit: **TASK** (one line, the artefact's verb: §5), **READER** (§1), **OUTPUT** (the contract: §3), **CONSTRAINTS** (positive first, prohibitions as named patterns: §1), **EXAMPLES** (good, and bad only beside good, labelled with why: §1), **MATERIAL** (pasted inside tags: §5), **DONE WHEN** (checks on the output: §3), and **TASK again** as the last line when the material is long (§5).
+
+```viz
+{
+  "kind": "flow",
+  "caption": "The parts of every template in the prompt library, in order, each with the section of this unit it is traced to. From the Deliverable's \"How the templates are built\"; the unit's own synthesis.",
+  "steps": [
+    {
+      "label": "TASK",
+      "note": "the artefact's verb · §5"
+    },
+    {
+      "label": "READER",
+      "note": "§1"
+    },
+    {
+      "label": "OUTPUT",
+      "note": "the contract · §3"
+    },
+    {
+      "label": "CONSTRAINTS",
+      "note": "positive first · §1"
+    },
+    {
+      "label": "EXAMPLES",
+      "note": "bad only beside good · §1"
+    },
+    {
+      "label": "MATERIAL",
+      "note": "inside tags · §5"
+    },
+    {
+      "label": "DONE WHEN",
+      "note": "checks on the output · §3"
+    },
+    {
+      "label": "TASK again",
+      "note": "when the material is long · §5"
+    }
+  ]
+}
+```
 
 **Conventions.**
 

@@ -17,6 +17,55 @@ Anthropic defines the context window as all the text a language model can refere
 
 That is the whole interface. The model's trained parameters are fixed when he uses it; Anthropic's claude.ai system prompt is written by Anthropic ([Anthropic, *System prompts* release notes](https://platform.claude.com/docs/en/release-notes/system-prompts)). Everything else that reaches the model reaches it as text placed in that window, and almost all of that text is his choice: the preferences he saved, the project instructions, the files he put in the Project, which skills are installed, whether memory is on, what he pastes, what he attaches, and when he starts a new chat. A better answer comes from a better window. There is no other lever.
 
+```viz
+{
+  "kind": "tree",
+  "caption": "What reaches the context window and who chooses it, from §1 of this unit, on <a href=\"https://platform.claude.com/docs/en/release-notes/system-prompts\">Anthropic, <em>System prompts</em> release notes</a> and the unit's own analysis of his setup.",
+  "root": {
+    "label": "Context window",
+    "tone": 1,
+    "children": [
+      {
+        "label": "Anthropic",
+        "tone": 2,
+        "children": [
+          {
+            "label": "System prompt"
+          }
+        ]
+      },
+      {
+        "label": "His choice",
+        "tone": 3,
+        "children": [
+          {
+            "label": "Preferences"
+          },
+          {
+            "label": "Project instructions"
+          },
+          {
+            "label": "Project files"
+          },
+          {
+            "label": "Skills"
+          },
+          {
+            "label": "Memory"
+          },
+          {
+            "label": "What he pastes"
+          },
+          {
+            "label": "What he attaches"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 **How big the window is (as of 28 Oct 2026).** Two different numbers are in circulation, and the one that applies to him is the smaller.
 
 - On the API, Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.1 all have a 1M-token window with up to 128K output tokens per request ([Anthropic, *Context windows*](https://platform.claude.com/docs/en/build-with-claude/context-windows); [Anthropic, *Models overview*](https://platform.claude.com/docs/en/about-claude/models/overview)).
@@ -37,6 +86,56 @@ On that arithmetic, a 200K-token window holds roughly 540,000 characters of Engl
 ### Tokens as cost
 
 On the API, price is per million tokens, with output dearer than input. As of 28 October 2026: Opus 5.5 $4 input / $20 output; Sonnet 5.5 $2 / $10; Haiku 5.5 from $0.10 / $0.50; Fable 5.1 $10 / $50 ([Anthropic, *Models overview*](https://platform.claude.com/docs/en/about-claude/models/overview)). Which model to route each task to is B2.
+
+```viz
+{
+  "kind": "bars",
+  "mode": "grouped",
+  "caption": "API price per million tokens, input and output, as of 28 October 2026 (Haiku 5.5 is a starting price), from §2 of this unit, on <a href=\"https://platform.claude.com/docs/en/about-claude/models/overview\">Anthropic, <em>Models overview</em></a>.",
+  "series": [
+    {
+      "name": "Input",
+      "tone": 3
+    },
+    {
+      "name": "Output",
+      "tone": 4
+    }
+  ],
+  "rows": [
+    {
+      "label": "Opus 5.5",
+      "values": [
+        4,
+        20
+      ]
+    },
+    {
+      "label": "Sonnet 5.5",
+      "values": [
+        2,
+        10
+      ]
+    },
+    {
+      "label": "Haiku 5.5 (from)",
+      "values": [
+        0.1,
+        0.5
+      ]
+    },
+    {
+      "label": "Fable 5.1",
+      "values": [
+        10,
+        50
+      ]
+    }
+  ],
+  "decimals": 2,
+  "title": "$ per million tokens"
+}
+```
 
 The mechanism that matters more than the price list is that the model keeps nothing between turns. Anthropic's API documentation says the Messages API is stateless and that the full conversation history is sent with every request ([Anthropic, *Working with messages*](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)). The context-window page says the same in turn-by-turn terms: each new turn's input contains all previous conversation history plus the new message, and each response becomes part of the input for the next turn ([Anthropic, *Context windows*](https://platform.claude.com/docs/en/build-with-claude/context-windows)).
 
@@ -189,6 +288,31 @@ When an answer is wrong, the model above gives four places to look, in this orde
 4. **Was it one draw?** Run it again in a fresh chat. If the answers differ materially, neither is reliable on its own (§5).
 
 Each question has a different fix: put the fact into a layer that re-inserts it; trim the window or start a new chat; supply the source; sample before trusting. B3, B4, B6 and B8 take these one at a time.
+
+```viz
+{
+ "kind": "flow",
+ "caption": "The four places to look when an answer is wrong, in order, each with its fix, from the unit's own reasoning in §7 (drawing on §2 to §5).",
+ "steps": [
+  {
+   "label": "Was it in the window?",
+   "note": "Put it in a layer that re-inserts it"
+  },
+  {
+   "label": "Was it buried?",
+   "note": "Trim the window or start a new chat"
+  },
+  {
+   "label": "Did it come from training?",
+   "note": "Supply the source"
+  },
+  {
+   "label": "Was it one draw?",
+   "note": "Sample before trusting"
+  }
+ ]
+}
+```
 
 ## Deliverable · How Claude works, in five minutes
 

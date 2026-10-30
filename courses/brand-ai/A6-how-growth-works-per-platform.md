@@ -36,6 +36,41 @@ The page says results may also use the viewer's search and watch history, and th
 
 **How big each source is for a channel like his is unmeasured.** The only large split found is Metricool's 2026 study of 799,718 videos from 71,177 accounts (published 29 July 2026): the Shorts feed carried more than 61% of organic views, subscribers 11%, YouTube search 9%, related videos 5.77%, playlists 5.05% and channel visits about 3% ([Metricool, YouTube Trends 2026](https://metricool.com/youtube-trends/)). That is vendor data from Metricool's users, dominated by Shorts volume, and it is not a long-form or small-channel split. No source found gives the traffic mix of a small long-form channel, so his own Studio split is the only figure he can use, and it is a baseline to watch, with nothing to compare it against.
 
+```viz
+{
+ "kind": "compare",
+ "unit": "%",
+ "max": 100,
+ "caption": "Share of organic YouTube views by traffic source across Metricool's sample of 799,718 videos from 71,177 accounts (Shorts feed more than 61%; channel visits about 3%). Vendor data from Metricool's users, Shorts-heavy, not a long-form or small-channel split. §1.1; <a href=\"https://metricool.com/youtube-trends/\">Metricool, YouTube Trends 2026</a>, 29 Jul 2026.",
+ "rows": [
+  {
+   "label": "Shorts feed",
+   "value": 61
+  },
+  {
+   "label": "Subscribers",
+   "value": 11
+  },
+  {
+   "label": "YouTube search",
+   "value": 9
+  },
+  {
+   "label": "Related videos",
+   "value": 5.77
+  },
+  {
+   "label": "Playlists",
+   "value": 5.05
+  },
+  {
+   "label": "Channel visits",
+   "value": 3
+  }
+ ]
+}
+```
+
 What the mechanics imply for a journey channel (my reading, from the definitions above): an episode can be built to be found by a query (the title and description carry the words a stranger would type, and the video holds that searcher), or built to be picked by the per-viewer prediction on Home and the watch page (packaging and retention). The two are scored on different evidence, so the traffic-source report is where he learns which kind each episode turned out to be.
 
 ### 1.2 Click-through rate and retention: the two numbers YouTube says it uses
@@ -108,7 +143,54 @@ Two follower-side and stranger-side mechanics are sourced to Instagram or to rep
 
 The best small-account figures are brand data. Socialinsider's sample (published 20 February 2026, updated 22 October 2026; its "2026" columns are 2025 values relabelled; 131,955 business accounts and 7,032,675 posts under 5,000 followers) gives the 1,000–5,000 tier 580 views per Reel, 993 per carousel and 417 per image, and annual audience growth falling from 38.0% in 2024 to 22.0% in 2025; the 5,000–10,000 tier fell from 35.0% to 20.3% ([Socialinsider](https://www.socialinsider.io/instagram-benchmarks)). Personal accounts may do better on interaction: in the Metricool and HypeAuditor data, influencer posts get "approximately 3 times more likes and comments than brand accounts" ([Metricool, 14 Oct 2025](https://metricool.com/press-release-instagram-content-playbook/)). That multiple is for likes and comments; no source gives one for views or growth, so the brand figures are the only sourced floor.
 
+```viz
+{
+ "kind": "compare",
+ "caption": "Average views per post by format for business accounts with 1,000–5,000 followers in 2025. Brand data, not personal accounts; the influencer dataset in §2.1 finds Reels reach furthest. §2.3; <a href=\"https://www.socialinsider.io/instagram-benchmarks\">Socialinsider, Instagram benchmarks</a>, updated 22 Oct 2026.",
+ "rows": [
+  {
+   "label": "Carousels",
+   "value": 993
+  },
+  {
+   "label": "Reels",
+   "value": 580
+  },
+  {
+   "label": "Images",
+   "value": 417
+  }
+ ]
+}
+```
+
 Frequency is the one lever with within-account evidence. Buffer's study of about 2.1 million feed posts from 102,000-plus accounts (published 13 August 2025) used a fixed-effects model comparing each account's weeks with itself: against weeks with no posts, weekly follower growth rose 0.12% in weeks with 1–2 posts, 0.26% with 3–5, 0.44% with 6–9 and 0.66% with 10 or more; reach per post was about 12% higher at 3–5 posts a week than at 1–2. Stories were excluded, and results were not split by account size ([Buffer, How often to post on Instagram](https://buffer.com/library/how-often-to-post-on-instagram/)). Vendor data on Buffer's users. How many of his 5–7 hours go to Instagram is A2's allocation.
+
+```viz
+{
+ "kind": "compare",
+ "unit": "%",
+ "caption": "Rise in weekly follower growth against weeks with no posts, by feed posts a week, from a fixed-effects model comparing each account's weeks with itself (about 2.1 million feed posts, 102,000-plus accounts; Stories excluded; not split by account size). Vendor data on Buffer's users. §2.3; <a href=\"https://buffer.com/library/how-often-to-post-on-instagram/\">Buffer, How often to post on Instagram</a>, 13 Aug 2025.",
+ "rows": [
+  {
+   "label": "1–2 posts",
+   "value": 0.12
+  },
+  {
+   "label": "3–5 posts",
+   "value": 0.26
+  },
+  {
+   "label": "6–9 posts",
+   "value": 0.44
+  },
+  {
+   "label": "10 or more",
+   "value": 0.66
+  }
+ ]
+}
+```
 
 ## 3 · Substack and his own site
 

@@ -51,6 +51,114 @@ The brief's word "temperature" needs a definition before it can be used. In this
 - **Warm** is text a search pulls in when a request seems to need it: project files in retrieval mode, memory, chat search, connectors and skills on demand.
 - **Cold** is text outside the window until a chat fetches it by name: files in the repository, read by path after a clone.
 
+Layer by layer, the three temperatures fall like this.
+
+```viz
+{
+ "kind": "matrix",
+ "caption": "Where each layer sits by temperature, as §2 defines hot, warm and cold (the labels are this unit's). Two layers change temperature with a setting or a size: connectors by tool-access mode (<a href=\"https://support.claude.com/en/articles/13730515-manage-claude-s-tool-access\">Claude Help Center, <em>Manage Claude's tool access</em></a>) and project files at the retrieval threshold (<a href=\"https://support.claude.com/en/articles/11473015\">Claude Help Center, <em>Retrieval augmented generation (RAG) for projects</em></a>); both as cited in §1.",
+ "cols": [
+  "Hot",
+  "Warm",
+  "Cold"
+ ],
+ "rows": [
+  {
+   "label": "Preferences",
+   "cells": [
+    "●",
+    null,
+    null
+   ]
+  },
+  {
+   "label": "Project instructions",
+   "cells": [
+    "●",
+    null,
+    null
+   ]
+  },
+  {
+   "label": "Skill descriptions",
+   "cells": [
+    "●",
+    null,
+    null
+   ]
+  },
+  {
+   "label": "Connectors",
+   "tone": 4,
+   "cells": [
+    {
+     "mark": "Always available",
+     "tone": 4
+    },
+    {
+     "mark": "On demand",
+     "tone": 4
+    },
+    null
+   ]
+  },
+  {
+   "label": "Project files",
+   "tone": 4,
+   "cells": [
+    {
+     "mark": "below threshold",
+     "tone": 4
+    },
+    {
+     "mark": "retrieval mode",
+     "tone": 4
+    },
+    null
+   ]
+  },
+  {
+   "label": "Skill bodies",
+   "cells": [
+    null,
+    "●",
+    null
+   ]
+  },
+  {
+   "label": "Memory",
+   "cells": [
+    null,
+    "●",
+    null
+   ]
+  },
+  {
+   "label": "Chat search",
+   "cells": [
+    null,
+    "●",
+    null
+   ]
+  },
+  {
+   "label": "Repository files",
+   "cells": [
+    null,
+    null,
+    "by path"
+   ]
+  }
+ ],
+ "legend": [
+  {
+   "mark": "●",
+   "means": "the temperature §2 gives this layer"
+  }
+ ]
+}
+```
+
 The labels are mine. Anthropic's engineering team describes the same choice as context loaded up front against context retrieved just in time: an agent can "maintain lightweight identifiers (file paths, stored queries, web links, etc.)" and load the data only when it needs it; its recommended middle course is a hybrid, "retrieving some data up front for speed, and pursuing further autonomous exploration at its discretion"; and Claude Code is its worked example, where "CLAUDE.md files are naively dropped into context up front" while "primitives like glob and grep allow it to navigate its environment and retrieve files just-in-time" ([Anthropic, *Effective context engineering for AI agents*, 29 Sep 2025](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents); vendor guidance).
 
 His method already has that shape, and the reason is size. The method states where things live: everything is in the private repository; the Project "holds mirrors of `docs/`"; and "A chat clones the repo and ends with a commit" (`method.md`, Home). The vault, `courses/`, holds the finished units; `courses-index.md` holds, for every unit, its status, model, search flag and path. In the engineering post's terms the index is a file of lightweight identifiers, and the vault is what they point to.
@@ -84,6 +192,33 @@ His setup, layer by layer, as measured or documented on 29 October 2026:
 
 **The project files are no longer hot.** 907,260 characters is about 336,000 tokens at B1's 2.7 characters per token, and about 259,000 at the older 3.5 figure B1 also reports. Both exceed the 200K window. On the retrieval article's rule, a Project of that size runs in retrieval mode ([RAG for projects](https://support.claude.com/en/articles/11473015)). I cannot see the mode from the repository, so this is an inference from the documented rule and the measured size. What was observed is consistent with it but does not test it, since both observations come from Claude Code sessions, which list the Project's documents by name whatever their size (unsure list, 1): in B1's writing session a list of 24 documents arrived by name and five were then read in (B1 §1, observed 28 October); in this unit's session, a list of the Project's 33 documents arrived by name with an instruction to read or search them with a tool (*observed*, 29 October 2026).
 
+Against the window, the knowledge looks like this.
+
+```viz
+{
+ "kind": "compare",
+ "unit": "k tokens",
+ "caption": "Project knowledge against the window, in thousands of tokens (the knowledge figures are approximate): 907,260 characters at B1's 2.7 and its older 3.5 characters per token, against the 200K window on claude.ai (B1 §1). From §3; the size was measured by script from the 33 repository files the Project mirrors, at commit <code>b4fea09</code>, 29 October 2026 (Deliverable, A).",
+ "rows": [
+  {
+   "label": "200K window",
+   "value": 200,
+   "tone": 3
+  },
+  {
+   "label": "Knowledge at 3.5",
+   "value": 259,
+   "tone": 1
+  },
+  {
+   "label": "Knowledge at 2.7",
+   "value": 336,
+   "tone": 1
+  }
+ ]
+}
+```
+
 That changes what the Project knowledge is worth. In retrieval mode the method arrives as whatever passages a search returns for the request at hand. The sourcing checklist, which only works when every item is checked, may arrive as two items out of twelve. And the search runs over everything in the knowledge, including the superseded research that failed Audit 1 on 23 of 91 claims (`courses-index.md`) and that covers the same topics as the units that replaced it. B1 §2 reported Chroma's vendor finding that distractors, passages similar to the answer, lowered accuracy further; a superseded draft of the same material is a distractor in that exact sense.
 
 **What each kind of loading costs, in his terms:**
@@ -101,6 +236,99 @@ Start a new chat when one of these holds.
 3. **The chat is long.** Every turn re-sends everything before it (B1 §2). Anthropic's advice: "Try starting a new conversation if you're approaching your usage limit in a longer chat" ([usage and length limits](https://support.claude.com/en/articles/11647753)). When code execution is on, long chats are also summarised automatically, and summarising is lossy by definition (B1 §3).
 4. **The next step must not see this one.** A checker or auditor that watched the unit being written is no longer independent. B2 §8 gave the evidence on self-preference, and the method requires a fresh checker "in a new chat that has not seen the unit written" (`method.md` §5).
 5. **A unit starts.** "Never reuse a chat across units; leaked context is how a course starts repeating itself" (`method.md` §4).
+
+The five conditions, read as one rule.
+
+```viz
+{
+ "kind": "decision",
+ "caption": "§4's rule for starting a new chat: any one of the five conditions means a new chat. Drawn from this unit's §4, which rests on B3 §4 and §5, B1 §2 and §3, B2 §8, <code>method.md</code> §4 and §5, and <a href=\"https://support.claude.com/en/articles/11647753\">Claude Help Center, usage and length limits</a>.",
+ "root": {
+  "q": "The task changes?",
+  "tone": 4,
+  "branches": [
+   {
+    "label": "yes",
+    "to": {
+     "outcome": "New chat",
+     "tone": 2
+    }
+   },
+   {
+    "label": "no",
+    "to": {
+     "q": "The first output missed?",
+     "tone": 4,
+     "branches": [
+      {
+       "label": "yes",
+       "to": {
+        "outcome": "Rewrite the brief, new chat",
+        "tone": 2
+       }
+      },
+      {
+       "label": "no",
+       "to": {
+        "q": "The chat is long?",
+        "tone": 4,
+        "branches": [
+         {
+          "label": "yes",
+          "to": {
+           "outcome": "New chat",
+           "tone": 2
+          }
+         },
+         {
+          "label": "no",
+          "to": {
+           "q": "The next step must not see this one?",
+           "tone": 4,
+           "branches": [
+            {
+             "label": "yes",
+             "to": {
+              "outcome": "New chat",
+              "tone": 2
+             }
+            },
+            {
+             "label": "no",
+             "to": {
+              "q": "A unit starts?",
+              "tone": 4,
+              "branches": [
+               {
+                "label": "yes",
+                "to": {
+                 "outcome": "New chat",
+                 "tone": 2
+                }
+               },
+               {
+                "label": "no",
+                "to": {
+                 "outcome": "Stay in the chat",
+                 "tone": 3
+                }
+               }
+              ]
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  ]
+ }
+}
+```
 
 Stay in the chat when one of these holds.
 
@@ -155,6 +383,53 @@ The Learning Project and the repository `apcanario/learning` at commit `b4fea09`
 ### C · Findings
 
 **F1 · Project knowledge is too large to load and mostly holds files no chat needs whole.** *Layer:* Project knowledge. *Evidence:* 33 files, 907,260 characters (about 336,000 tokens at 2.7 characters per token, about 259,000 at 3.5), against a 200K window. By share of characters: the five filed units in it, 242,926 (26.8%); nine history-kit files, 221,633 (24.4%), of which `roman-syllabus.html` alone is 153,026; the superseded audience-growth research and its five notes, 197,753 (21.8%); build inputs (`hub.py`, `theme.css`, `design-README.md`, `units_data.py`), 114,550 (12.6%); records (`academy.md`, `pm-status-2026-10-28.md`, `CHANGELOG-chats.md`), 46,645 (5.1%); rules, map and queue, 79,332 (8.7%); `project-instructions.md`, 4,421 (0.5%). Filing, audit, kit and theme chats clone the repository first (`SETUP.md` §6 for history, §7, §8, §9; `method.md`, Home), so for them every one of the 28 files outside the rules set is already available cold. The exception is a Brand + AI writing chat: `SETUP.md` §6 says to paste the brief and "Attach nothing else", so today such a chat reads earlier units from the knowledge. `method.md` (Home) says the Project "holds mirrors of `docs/`", while `SETUP.md` §2 lists all 33. *Fix:* remove 28 files from the knowledge, keeping `method.md`, `sourcing-standard.md`, `reader.md`, `courses-index.md` and `claude/BACKLOG-chats.md`. At 79,332 characters (about 29,000 tokens at 2.7, under 15% of the window) the set is below the threshold, and on the retrieval article's rule the Project returns to loading whole files. Rewrite `SETUP.md` §2 to list the five; change `SETUP.md` §6 so a Brand + AI writing chat also clones `apcanario/learning` and reads the units it points back to by path, as the hand-off note's step 2 and this unit's own writing session already do; and change `skills/file-unit/SKILL.md` §6 to re-upload only `courses-index.md` after a filing. Nothing is lost: all 28 are in the repository. *Effort:* 40 minutes.
+
+F1's shares, side by side.
+
+```viz
+{
+ "kind": "compare",
+ "unit": "%",
+ "caption": "Project knowledge by share of its 907,260 characters, in the groups of finding F1 (Deliverable, C). Measured by script from the 33 repository files the Project mirrors, at commit <code>b4fea09</code>, 29 October 2026 (Deliverable, A).",
+ "rows": [
+  {
+   "label": "Filed units",
+   "value": 26.8,
+   "tone": 1
+  },
+  {
+   "label": "History-kit files",
+   "value": 24.4,
+   "tone": 1
+  },
+  {
+   "label": "Superseded research",
+   "value": 21.8,
+   "tone": 1
+  },
+  {
+   "label": "Build inputs",
+   "value": 12.6,
+   "tone": 1
+  },
+  {
+   "label": "Rules, map, queue",
+   "value": 8.7,
+   "tone": 3
+  },
+  {
+   "label": "Records",
+   "value": 5.1,
+   "tone": 1
+  },
+  {
+   "label": "Project instructions",
+   "value": 0.5,
+   "tone": 1
+  }
+ ]
+}
+```
 
 **F2 · The project instructions are also uploaded as a knowledge file.** *Layer:* Project knowledge. *Evidence:* `project-instructions.md` is in the knowledge list, and the same text is pasted into the instructions field (`docs/CHANGELOG.md`, row "Academy open questions closed"). The same 4,421 characters reach the Project twice, and the knowledge copy goes stale the moment the field is edited. *Fix:* remove it from the knowledge (part of F1). *Effort:* 1 minute.
 

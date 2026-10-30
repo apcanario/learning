@@ -63,6 +63,48 @@ The brief names a *Frontiers in Communication* 2026 study. It is Muhmin, Syah an
 
 The brief's version, that expertise and trustworthiness "not attractiveness, predict parasocial trust and purchase intention", is half right. Attractiveness did not predict the parasocial bond. It did predict purchase intention directly, with a coefficient about the size of expertise's and trustworthiness's own direct paths. The study's distinction is between two routes: the bond runs through competence and honesty, and attractiveness reaches purchase intention without the bond. The largest single path in the model is from the bond to purchase intention.
 
+```viz
+{
+ "kind": "bars",
+ "mode": "grouped",
+ "decimals": 3,
+ "series": [
+  {
+   "name": "To parasocial relationship",
+   "tone": 3
+  },
+  {
+   "name": "Direct to purchase intention",
+   "tone": 4
+  }
+ ],
+ "rows": [
+  {
+   "label": "Expertise",
+   "values": [
+    0.128,
+    0.127
+   ]
+  },
+  {
+   "label": "Trustworthiness",
+   "values": [
+    0.225,
+    0.129
+   ]
+  },
+  {
+   "label": "Attractiveness",
+   "values": [
+    0.075,
+    0.124
+   ]
+  }
+ ],
+ "caption": "Standardised path coefficients from each influencer trait to the parasocial relationship and, directly, to purchase intention; attractiveness to the parasocial relationship (0.075, p = 0.135) is the one path not supported. Data: §2, Muhmin, Syah and Anggraeni, <a href=\"https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2026.1723759/full\"><em>Frontiers in Communication</em> 11, 5 Feb 2026</a>."
+}
+```
+
 What transfers to him, all my inference, from a correlational survey of young Indonesian women about beauty influencers, which is far from a 35-year-old man's running and karate channel:
 
 1. The two cues that went with the bond are the two his format produces. "Real experience using the products" is what a recorded attempt is; "shows honesty" and "genuine and authentic" are what a named miss is. The journey record is a long, dated demonstration of both.
@@ -81,6 +123,51 @@ Pillemer, Harrison, Murphy and Park, "Audience Entanglement: How Independent Cre
 - **Findings.** After a creator reaches a large audience, "audience entanglement" sets in: a deep interrelatedness with the audience that shapes how the creator works. It usually begins as *dysfunctional entanglement*: oppressive dependence on audience reactions, metrics as the main source of validation, distress at platform volatility, and a view of the work as unsustainable, with many wanting to quit. Some creators reach *functional entanglement*, a balanced dependence in which they draw meaning from the audience and see the work as sustainable. Creators cycle between the two; a platform change or a wave of harassment can push them back.
 - **The guardrails.** Three management strategies: *distancing* from audience input (PsyPost's examples: not reading comments for 24 hours after posting; a trusted friend or partner filtering messages); *depersonalising* critique (reading it as being about one piece of work, or about the commenter's day, and not as a verdict on the person); and *distilling personal standards* (returning to one's own ideals and why one started, ahead of trends).
 - **Limits** (PsyPost's list). Self-report; visual artists and musicians only, so creators "in the fitness, beauty, or gaming sectors" may differ; two platforms, Instagram and YouTube, whose feedback mechanisms may differ from TikTok's or Twitch's.
+
+```viz
+{
+ "kind": "states",
+ "per_row": 3,
+ "start": "audience",
+ "states": [
+  {
+   "id": "audience",
+   "label": "Large audience",
+   "tone": 1
+  },
+  {
+   "id": "dys",
+   "label": "Dysfunctional entanglement",
+   "note": "metrics as validation",
+   "tone": 5
+  },
+  {
+   "id": "fun",
+   "label": "Functional entanglement",
+   "note": "balanced dependence",
+   "tone": 3
+  }
+ ],
+ "transitions": [
+  {
+   "from": "audience",
+   "to": "dys",
+   "label": "usually begins"
+  },
+  {
+   "from": "dys",
+   "to": "fun",
+   "label": "some creators reach"
+  },
+  {
+   "from": "fun",
+   "to": "dys",
+   "label": "platform change or harassment"
+  }
+ ],
+ "caption": "Audience entanglement as the cycle the study describes: it usually begins dysfunctional, some creators reach the functional state, and a platform change or a wave of harassment can push them back. Data: §3, Pillemer, Harrison, Murphy and Park, <a href=\"https://journals.sagepub.com/doi/10.1177/00018392251399652\"><em>Administrative Science Quarterly</em> 71(1), online 18 Dec 2025</a>, as summarised in the abstract and by <a href=\"https://www.psypost.org/new-study-sheds-light-on-the-psychological-burden-of-having-a-massive-social-media-audience\">PsyPost, 20 Feb 2026</a>."
+}
+```
 
 ### New Media & Society: burnout as "unspeakable"
 
@@ -129,6 +216,33 @@ The brief states the fact: "ADHD is public under his name." A1's deliverable alr
 ### What the evidence bears on
 
 - **ADHD content is crowded and often wrong.** Yeung, Ng and Abi-Jaoude rated the top 100 TikTok videos under #adhd (collected 18 July 2021) with a psychiatrist and a psychiatry resident: 52% misleading, 27% personal experience, 21% scientifically correct; 11% were uploaded by health-care professionals, whose videos were more likely to be accurate; each video averaged almost 3 million views (*The Canadian Journal of Psychiatry* 67(12), 899–906, 2022, doi:10.1177/07067437221082854, volume and pages from the Crossref record; reported by [PsyPost, 10 Mar 2022](https://www.psypost.org/misleading-videos-about-adhd-are-being-widely-disseminated-on-tiktok-study-finds/); the journal page was not opened). The category "personal experience" is the honest one open to him; "misleading" is where an unhedged general claim lands.
+
+```viz
+{
+ "kind": "compare",
+ "unit": "%",
+ "max": 100,
+ "rows": [
+  {
+   "label": "Misleading",
+   "value": 52,
+   "tone": 5
+  },
+  {
+   "label": "Personal experience",
+   "value": 27,
+   "tone": 3
+  },
+  {
+   "label": "Scientifically correct",
+   "value": 21,
+   "tone": 4
+  }
+ ],
+ "caption": "How a psychiatrist and a psychiatry resident rated the top 100 TikTok videos under #adhd, collected 18 July 2021. Data: §5, Yeung, Ng and Abi-Jaoude, <em>The Canadian Journal of Psychiatry</em> 67(12), 2022, as reported by <a href=\"https://www.psypost.org/misleading-videos-about-adhd-are-being-widely-disseminated-on-tiktok-study-finds/\">PsyPost, 10 Mar 2022</a>."
+}
+```
+
 - **A health fact, once he publishes it, is his to lose control of.** The GDPR treats "data concerning health" as a special category whose processing "shall be prohibited", and lifts that prohibition where the processing "relates to personal data which are manifestly made public by the data subject" (Regulation (EU) 2016/679, Art. 9(1) and 9(2)(e); text as reproduced by [gdpr-info.eu](https://gdpr-info.eu/art-9-gdpr/), an unofficial copy). On the plain text, a published diagnosis loses part of the protection it had. What that means in practice, and whether body weight counts as health data, is a legal question for A8; this unit treats it as a reason to publish health facts narrowly.
 - **A disclosure can become the identity.** Hank Green's line in §1 is one creator's account of it. The brand's register is plurality, "each piece leads with one journey" (brief); A1 §2's working claim is that a fixed, visible method is the best-supported way to keep returning viewers across a change of topic; a channel that came to be about ADHD would trade its method for a topic.
 
@@ -184,6 +298,35 @@ Built from §1–§5, 29 October 2026. Usable without the unit. Every clause mar
 5. It reaches the public first in an episode, which the pipeline puts at least ten days after its take: the record and outline are made on Friday of week A, the episode is edited on Saturday of week B and published the following Tuesday (A3 §6). The email and Instagram carry it only once the episode is out. Nothing under this clause is posted the same day it happened.
 
 **(his rule;** basis: §1's definitions; Mills's own "very impulsive"; ASQ's distancing strategy; A3's pipeline**)**
+
+```viz
+{
+ "kind": "flow",
+ "steps": [
+  {
+   "label": "Take",
+   "note": "made at the time"
+  },
+  {
+   "label": "Record and outline",
+   "note": "Friday, week A"
+  },
+  {
+   "label": "Episode edited",
+   "note": "Saturday, week B"
+  },
+  {
+   "label": "Episode published",
+   "note": "the following Tuesday"
+  },
+  {
+   "label": "Email and Instagram",
+   "note": "once the episode is out"
+  }
+ ],
+ "caption": "The path a case-by-case disclosure takes to the public under question 5, at least ten days after its take. Data: the Deliverable, disclosure policy clause 4, built on the pipeline in A3 §6."
+}
+```
 
 **5. Titles and thumbnails lead with the journey.** Never with a diagnosis, a crisis, a loss or a verdict on myself. The two published titles stay as they are (record rule 3). **(his rule;** basis: §1, Haushofer's meta-failure; §3, confession feeds entanglement**)**
 

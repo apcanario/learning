@@ -307,27 +307,38 @@ def tree(d):
 
 
 def flow(d):
+    """P42: each step's label and note are measured and wrapped to the box (as the IA kinds are), and the boxes of a row
+    grow to its tallest step, so a long note never runs out of its box on a phone."""
     steps = d['steps']
     per_row = d.get('per_row', 4)
-    bw, bh, gap, rowh = 150, 54, 26, 80
+    bw, gap, pad, vgap = 150, 26, 12, 26
+    T_NOTE = ('viz-note', 'mono', 10.5, 0, 13)
+    inner = bw - 2 * pad
+    laid = [(_lines(s['label'], T_NODE, inner), _lines(s['note'], T_NOTE, inner) if s.get('note') else []) for s in steps]
+    def bh_of(lab, note):
+        return pad + len(lab) * T_NODE[4] + (4 + len(note) * T_NOTE[4] if note else 0) + pad
+    rows = (len(steps) + per_row - 1) // per_row
+    rh = [max(bh_of(*laid[k]) for k in range(r * per_row, min(len(steps), (r + 1) * per_row))) for r in range(rows)]
+    ry = [8 + sum(rh[:r]) + r * vgap for r in range(rows)]
     body = ''
     for k, s in enumerate(steps):
         r, c = divmod(k, per_row)
-        x = 8 + c * (bw + gap)
-        y = 8 + r * rowh
+        x, y, bh = 8 + c * (bw + gap), ry[r], rh[r]
         tone = s.get('tone', 1)
-        body += f'<rect class="viz-node viz-t{tone}" x="{x}" y="{y}" width="{bw}" height="{bh}" rx="2"/>'
-        body += f'<text class="viz-nodelabel" x="{x + 12}" y="{y + 22}">{esc(s["label"])}</text>'
-        if s.get('note'):
-            body += f'<text class="viz-note" x="{x + 12}" y="{y + 40}">{esc(s["note"])}</text>'
+        lab, note = laid[k]
+        box = f'<rect class="viz-node viz-t{tone}" x="{x}" y="{y}" width="{bw}" height="{bh}" rx="2"/>'
+        box += _text(lab, T_NODE, x + pad, y + pad)
+        if note:
+            box += _text(note, T_NOTE, x + pad, y + pad + len(lab) * T_NODE[4] + 4)
+        body += _g(box)
         if k < len(steps) - 1:
             if c < per_row - 1:
                 body += f'<path class="viz-arrow" d="M{x + bw + 4},{y + bh / 2} L{x + bw + gap - 6},{y + bh / 2}"/>'
             else:
-                body += f'<path class="viz-arrow" d="M{x + bw / 2},{y + bh + 2} L{x + bw / 2},{y + rowh - 6} L{8 + bw / 2},{y + rowh - 6} L{8 + bw / 2},{y + rowh - 2}"/>'
-    rows = (len(steps) + per_row - 1) // per_row
+                ym = y + bh + vgap / 2
+                body += f'<path class="viz-arrow" d="M{x + bw / 2},{y + bh + 2} L{x + bw / 2},{ym} L{8 + bw / 2},{ym} L{8 + bw / 2},{ry[r + 1] - 4}"/>'
     w = 8 + min(len(steps), per_row) * (bw + gap) - gap + 8
-    h = 8 + rows * rowh - (rowh - bh) + 8
+    h = ry[-1] + rh[-1] + 8
     return _svg(max(w, 320), h, body + '<defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs>', 'flow', d.get('title'), d.get('caption'))
 
 

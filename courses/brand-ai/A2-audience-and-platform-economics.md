@@ -80,6 +80,18 @@ Instagram is also where creator commerce makes contact. Click Analytic found 39%
 
 **TikTok** reaches 45% of the age band and 4.11 million Portuguese adults. Its following feeds carry 38% of what fans watch ([Patreon, State of Create](https://stateofcreate.co/)). Small brand accounts under 5,000 followers averaged 350 views a video on TikTok, against 625 on Reels and 15,160 on YouTube Shorts, across 145,444 accounts from January 2025 to June 2026; accounts under 1,000 followers were excluded ([Socialinsider, updated 21 Oct 2026](https://www.socialinsider.io/blog/tiktok-vs-instagram-reels/)). Vendor data, brand accounts. Only 2.7% of TikTok creators with 10,000 or more followers list a YouTube account ([Click Analytic](https://www.clickanalytic.com/creator-economy-report/tiktok/)), and no source found measures how many TikTok viewers go on to a creator's YouTube channel. Whether Portugal is in TikTok's Creator Rewards Program is unconfirmed: TikTok's own eligibility page could not be read, and two aggregator pages from July 2026 give conflicting country lists, neither of which includes Portugal ([Quasa, 27 Jul 2026](https://quasa.io/media/tiktok-creator-rewards-program-eligible-countries-in-2026); [TT Calculator, 9 Jul 2026](https://ttcalculator.net/learn/creator-fund-countries)).
 
+Patreon's following-feed shares for the three platforms, side by side:
+
+```viz
+{"kind": "compare", "title": "Share of consumption from following feeds", "unit": "%", "max": 100,
+ "rows": [
+  {"label": "TikTok", "value": 38, "tone": 3},
+  {"label": "YouTube", "value": 32, "tone": 1},
+  {"label": "Instagram", "value": 25, "tone": 5}
+ ],
+ "caption": "§2: share of what fans consume on each platform that comes from following or subscription feeds; the rest comes from outside them. <a href=\"https://stateofcreate.co/\">Patreon, State of Create, fieldwork Aug 2024</a>, 2,002 US fans; company-sponsored."}
+```
+
 **LinkedIn** reaches 37% of the age band and 51% of college graduates, the highest education skew in Pew's table. In Metricool's study (vendor data) of 673,658 posts from 63,108 accounts, personal profiles had 2.60% engagement against 1.60% for company pages, carousels averaged 1,451 impressions a post against 606 for video, and posts with links on personal profiles got 27% fewer impressions ([Metricool, LinkedIn study, 16 Apr 2026](https://metricool.com/linkedin-trends/)). Buffer's key findings put LinkedIn's median engagement at about 6.2%, the highest of the seven networks it ranks by engagement rate (Buffer measured ten; three use other metrics), though its own body text gives about 6.1%, it measures only posts published through Buffer, and platforms define engagement differently ([Buffer, State of Social Media Engagement 2026, 5 Mar 2026](https://buffer.com/resources/state-of-social-media-engagement-2026/)). For a senior director the open question is the employer. Sonia Kang, quoted on brands built alongside a job, put the line this way: an Etsy side gig "is probably much more acceptable to corporations than something like, 'This is me, and here's my view'" ([The Globe and Mail](https://www.theglobeandmail.com/business/article-building-a-personal-brand-even-if-your-employer-doesnt-want-you-to/); page undated). Contract terms are A8's.
 
 **Email** is the channel where a follower count means delivered attention. beehiiv reports open rates rising from 37.98% in 2024 to 41.24% in 2025 across a base of 65,000-plus newsletters and 28 billion emails ([beehiiv, State of Newsletters 2026, 5 Jan 2026](https://www.beehiiv.com/blog/the-state-of-newsletters-2026.md)). That is platform data. It is the only figure in this unit that measures the share of an audience reached per item sent.
@@ -197,6 +209,19 @@ Override if: paid revenue passes about $3,480 a year while the list is within Gh
 | Comments and replies | Retention; YouTube's own advice | Two fixed 30-minute slots a fortnight, outside them closed | 1.0 | 0.5 | — |
 | **Planned total** | | | **12.0** | **6.0** | |
 | Slack | Overruns, mostly editing | — | up to 2.0 | up to 1.0 | Weeks over 7 h logged (A9 load rule) |
+
+```viz
+{"kind": "bars", "mode": "stacked", "unit": " h", "decimals": 1, "title": "Planned hours a fortnight",
+ "series": [
+  {"name": "Episode", "tone": 1},
+  {"name": "Email", "tone": 4},
+  {"name": "Instagram", "tone": 5},
+  {"name": "Comments", "tone": 2},
+  {"name": "Short", "tone": 3}
+ ],
+ "rows": [{"label": "Fortnight", "values": [8.0, 1.5, 1.0, 1.0, 0.5]}],
+ "caption": "Deliverable 2: the allocation's planned hours per fortnight by item, 12.0 in all, before up to 2.0 hours of slack. This unit's own estimates, except the editing time inside the episode, which follows <a href=\"https://www.tastyedits.com/how-long-does-it-take-to-edit-a-video/\">Tasty Edits' vendor rule of thumb with no stated method (updated 17 Sep 2026)</a> at its low end (§6)."}
+```
 
 **At zero hours, with the reason:**
 - **TikTok.** A separate native format, Creator Rewards unconfirmed for Portugal, no measured flow to YouTube.

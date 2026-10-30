@@ -27,6 +27,36 @@ One mechanism frames how to read all of it. YouTube ranks videos per viewer and 
 
 **Views.** vidIQ tracked 137,355 long-form channels created between January and June 2025 that posted at least ten long-form uploads in their first 90 days. The median 30-day view count was about 180 for the first upload, 211 for the fifth and 272 for the tenth; the median of each channel's best video among its first ten was 1,948. Of those channels, 57.8% had at least one of the first ten past 1,000 views and 30.8% had one past 10,000 ([vidIQ, First 10 Videos, 28 Jul 2026](https://vidiq.com/research/youtube-first-10-videos-study/)). Two corrections apply before he uses these. The cohort posted ten videos in 90 days, about one and a half times his cadence: at 26 uploads a year his tenth video lands around week 18. And the cohort excludes channels that quit early, so the true medians are lower. Read the other way, 42.2% of channels that did keep posting (100 minus 57.8) had no video past 1,000 views in their first ten. That outcome is common among channels that continued, so on its own it says nothing about whether to stop.
 
+```viz
+{
+ "kind": "compare",
+ "title": "Median 30-day views, first ten long-form uploads",
+ "rows": [
+  {
+   "label": "Upload 1",
+   "value": 180,
+   "tone": 2
+  },
+  {
+   "label": "Upload 5",
+   "value": 211,
+   "tone": 2
+  },
+  {
+   "label": "Upload 10",
+   "value": 272,
+   "tone": 2
+  },
+  {
+   "label": "Best of first ten",
+   "value": 1948,
+   "tone": 2
+  }
+ ],
+ "caption": "Median 30-day views at the first (about 180), fifth and tenth upload, and the median of each channel's best video among its first ten, §2. 137,355 long-form channels created January–June 2025 that posted at least ten long-form uploads in their first 90 days. <a href=\"https://vidiq.com/research/youtube-first-10-videos-study/\">vidIQ, First 10 Videos, 28 Jul 2026</a>; vendor data, survivor sample, so true medians are lower."
+}
+```
+
 **Click-through rate.** YouTube's own guidance is that "half of all channels and videos on YouTube have an impressions CTR that can range between 2% and 10%", and that new videos or channels, or videos with fewer than 100 views, "can see an even wider range" ([YouTube Help, Impressions and click-through rate](https://support.google.com/youtube/answer/7628154?hl=en-GB)). The same page says YouTube recommends a video when it is relevant to the viewer and its average view duration suggests viewers find it interesting, and that a high CTR combined with low view duration and lower-than-expected impressions can indicate clickbait. YouTube publishes no "good" CTR target. Vendor CTR targets of 4–6% circulate widely (A5's brief carries one), but none found carries a dataset, so this unit uses none of them.
 
 **Average percentage viewed (APV).** vidIQ publishes target bands it labels "vidIQ guidance", without a sample: 50–70% for videos under 5 minutes, 40–55% for 5–15 minutes, 30–45% for 15–30 minutes, 25–35% above 30 minutes ([vidIQ, average view duration, reviewed 21 Jul 2026](https://vidiq.com/blog/post/average-view-duration/)). For a 10–20 minute episode, the 5–15 and 15–30 bands bracket it. These are vendor heuristics and are labelled that way in the deliverable.
@@ -75,7 +105,28 @@ The median growth rate in the 1,000–9,999 band, across 6,192,753 channels that
 
 Cadence moves that tail. vidIQ's frequency study of 10,210,278 channels that already had 1,000 subscribers (April 2025 to March 2026, Shorts and long-form counted together) found median monthly growth of 0.89% in views and 0.10% in subscribers for channels posting 1–3 times a month, against 1.32% and 0.39% for channels posting 4–7 times ([vidIQ, Upload Frequency Study, 8 Jul 2026](https://vidiq.com/research/youtube-upload-frequency-study/)). Moving from the bi-weekly tier to the weekly tier goes with about 1.5 times the view growth and 3.9 times the subscriber growth (my division). At the bi-weekly tier's median of 0.10% a month, a 1,000-subscriber channel gains about one subscriber a month. vidIQ states the relationship is correlational and that larger, healthier channels may simply have the resources to post more.
 
+```viz
+{"kind": "bars", "mode": "grouped", "unit": "%", "decimals": 2, "title": "Median monthly growth at 1,000+ subscribers, by cadence", "series": [{"name": "1–3 a month", "tone": 2}, {"name": "4–7 a month", "tone": 3}],
+ "rows": [
+  {"label": "Views", "values": [0.89, 1.32]},
+  {"label": "Subscribers", "values": [0.1, 0.39]}
+ ],
+ "caption": "Median monthly growth in views and subscribers for channels posting 1–3 and 4–7 times a month, §4. 10,210,278 channels that already had 1,000 subscribers, April 2025 to March 2026, Shorts and long-form counted together. <a href=\"https://vidiq.com/research/youtube-upload-frequency-study/\">vidIQ, Upload Frequency Study, 8 Jul 2026</a>; vendor data, correlational."}
+```
+
 Metricool's 2026 YouTube report (799,718 videos from 71,177 accounts in its dataset, published 29 July 2026) gives the only tier-transition rates found: comparing 2025 with 2026 (the report does not define the window), 16.01% of accounts in its 2,000–10,000 band moved up a tier, the highest of any band, against 9.59% of accounts under 2,000, 7.01% at 10,000–100,000 and 2.11% at 100,000–1,000,000; 10.08% overall ([Metricool, YouTube Trends 2026](https://metricool.com/youtube-trends/)). This is vendor data from accounts using Metricool, not a random sample. The same report found that channels under 2,000 subscribers saw long-form views rise 267% year on year while average view duration fell more than 58%, which the report calls "thinner" views.
+
+```viz
+{"kind": "compare", "title": "Accounts that moved up a tier, 2025 to 2026", "unit": "%",
+ "rows": [
+  {"label": "Under 2,000", "value": 9.59, "tone": 2},
+  {"label": "2,000–10,000", "value": 16.01, "tone": 3},
+  {"label": "10,000–100,000", "value": 7.01, "tone": 2},
+  {"label": "100,000–1M", "value": 2.11, "tone": 2},
+  {"label": "Overall", "value": 10.08, "tone": 6}
+ ],
+ "caption": "Share of accounts in each subscriber band that moved up a tier comparing 2025 with 2026 (the report does not define the window), §4. 71,177 accounts in Metricool's dataset. <a href=\"https://metricool.com/youtube-trends/\">Metricool, YouTube Trends 2026, 29 Jul 2026</a>; vendor data from Metricool users, not a random sample."}
+```
 
 Durations exist only as anecdote. In the Social Video Plaza table, the four channels that reached 10,000 did so at 29, 31, 32 and 36 months, which is 9 to 14 months after each crossed 1,000 (my subtraction from the table) ([Social Video Plaza](https://www.socialvideoplaza.com/en/articles/how-long-does-it-take-to-get-1000-subscribers-on-youtube)). Those four are the survivors of a small, self-reported, undated sample. No sourced figure gives the typical months from 1,000 to 10,000, and the expectation sheet says so.
 
@@ -137,6 +188,42 @@ What the sound figures support: on an owned list, the documented cases sit aroun
 **Where the stall sits.** The largest group in any dataset is the channel that has stopped adding videos: 83.1% of sub-1,000 channels showed no net change in video count over 360 days, and they crossed 1,000 at 0.20% ([vidIQ, 11 Sep 2026](https://vidiq.com/research/youtube-uploads-1000-subscribers/)). The first plateau is below 1,000, and its most common form is a channel with no new uploads.
 
 **Growth slows with size.** Median monthly subscriber growth falls from 1.26% in the 1–99 band to 0.51% at 1,000–9,999, 0.48% at 10,000–99,999, 0.30% at 100,000–999,999 and 0.24% above a million ([vidIQ, Subscriber Benchmarks 2026](https://vidiq.com/research/youtube-subscriber-benchmarks-2026/)). Metricool's tier-up rate falls from 16.01% at 2,000–10,000 to 7.01% and then 2.11% ([Metricool](https://metricool.com/youtube-trends/)). Mature channels stall too: Mark Lewis lost 1,000 subscribers in the four weeks to 27 October 2026 ([vidIQ](https://vidiq.com/youtube-stats/channel/UC6dr32gbapkzgw_Eyr6VsJw)), and HellahGood added about 18,000 in the four years after September 2022 (from the two sources in §5). In percentage terms every channel is on a flattening curve; in absolute terms the curve can still rise.
+
+```viz
+{
+ "kind": "compare",
+ "title": "Median monthly subscriber growth, by channel size",
+ "unit": "%",
+ "rows": [
+  {
+   "label": "1–99",
+   "value": 1.26,
+   "tone": 2
+  },
+  {
+   "label": "1,000–9,999",
+   "value": 0.51,
+   "tone": 2
+  },
+  {
+   "label": "10,000–99,999",
+   "value": 0.48,
+   "tone": 2
+  },
+  {
+   "label": "100,000–999,999",
+   "value": 0.3,
+   "tone": 2
+  },
+  {
+   "label": "1M+",
+   "value": 0.24,
+   "tone": 2
+  }
+ ],
+ "caption": "Median monthly subscriber growth by subscriber band, §8. <a href=\"https://vidiq.com/research/youtube-subscriber-benchmarks-2026/\">vidIQ, Subscriber Benchmarks 2026, 20 Jul 2026</a>; vendor data, medians, not paths."
+}
+```
 
 **Why creators say they stop.** No study found records the subscriber count or month at which creators quit, so "most quit at the plateau" is an inference from where the stall concentrates, not a measured fact. Surveys give reasons, with the usual weaknesses (self-report, sponsor interest):
 
