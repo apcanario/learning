@@ -135,7 +135,7 @@ BRAND_AI = dict(
 
 UX = dict(
     id='ux', family='markdown', short='User Experience', label='USER EXPERIENCE', name='User Experience: courses for other designers', color='var(--blue)',
-    home_id='ux', status='coming soon',
+    home_id='ux', status='in progress',
     # panel ids default to <id>-<key>: ux-ia, ux-ia-briefs, ux-ia-b-ia1 (no prefix, no legacy_ids)
     tracks={'IA': ('ux', 'Information architecture')},
     data='generator/data/ux/hub.py',

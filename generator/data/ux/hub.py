@@ -18,7 +18,7 @@ BAR = 'USER EXPERIENCE'
 BRAND_HTML = 'USER <span>/</span> EXPERIENCE'
 OUT = 'user-experience-courses.html'
 THEME_KEY = 'ux-theme'
-VERSION = 'v1 · 29 Oct 2026'
+VERSION = 'v2 · 30 Oct 2026'
 LEARN_C, BUILD_C = 'var(--blue)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -42,7 +42,11 @@ COURSE_NOTE = "Every unit is sourced to the field's standard works, Nielsen Norm
 
 # ---- written material (reading pages) ---------------------------------------------------
 # A unit is written when its file is in the vault, courses/ux/ (A5); kit/build.py derives WRITTEN from it.
-READINGS = []
+READINGS = [
+    dict(id='read-ia1', course='IA',
+         title='What information architecture is, and where it sits', covers=['IA1'], name='IA1 · What IA is',
+         intro="Unit IA1, written 30 Oct 2026 by Opus 5.5 in an isolated agent context that saw only its brief (P31), search off (used only to verify editions, chapters, dates and URLs); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: keep, 0 errors, 4 should-fix, 7 minor, all applied (a Fable 5.1 fresh check is owed, row P49). Four definitions (Rosenfeld, Morville and Arango; Covert; Arango; Garrett), the four lines between IA and navigation, the interface, content strategy and the data model, the discipline's history, what an IA deliverable is for, and a first look at Perqo's three surfaces; six figures. Deliverables: a one-page definition sheet for a product team and the Perqo surfaces map later units build on. Known gaps: About Face's argument is from knowledge of the section, not a re-read; Wurman's 1975 coinage is reported secondhand (Resmini and Rosati, from Morville)."),
+]
 
 # ---- build order -----------------------------------------------------------------------
 DONE_ROWS = []
@@ -50,11 +54,11 @@ ORDER = [("IA1", "Opus 5.5", "off"), ("IA2", "Opus 5.5", "off"), ("IA3", "Opus 5
          ("IA5", "Opus 5.5", "off"), ("IA6", "Opus 5.5", "off"), ("IA7", "Opus 5.5", "off"), ("IA8", "Opus 5.5", "off"),
          ("IA9", "Opus 5.5", "off"), ("IA10", "Opus 5.5", "off"), ("IA11", "Opus 5.5", "off"), ("IA12", "Opus 5.5", "off"),
          ("DD-IA1", "Opus 5.5", "on"), ("DD-IA2", "Opus 5.5", "on"), ("DD-IA3", "Opus 5.5", "off")]
-STATUS = {}
+STATUS = {'IA1': 'written 30 Oct'}
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
 FINAL_AUDIT = ('Audit 4', 'Final audit of the three deep dives plus a full read of the course against its goal, and a read-through as the persona', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'IA1', 0, 'Audit 1 after #4 (IA1, IA2, IA3, IA4)'
+NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'IA2', 0, 'Audit 1 after #4 (IA1, IA2, IA3, IA4)'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_H1 = "User Experience: the courses"
@@ -145,5 +149,6 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-10-30 19:30', "v2. IA1 What information architecture is, and where it sits written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Opus 5.5 agent (keep, 0 errors, 4 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed, P49) and filed: reading page under course IA, IA1 marked written, six figures; IA2 next; Audit 1 counter 1 of 4 (deferred by Pedro, P49)."),
     ('2026-10-29 22:30', "v1. Course IA · Information Architecture created from the template on design/theme.css: the frame, the syllabus (twelve core units in four parts, three deep dives), the shared preamble with the reader persona and the fictional Perqo, one brief per unit, the build order with an audit after each part. Status coming soon; nothing written. The figure kinds the course needs are a backlog row before IA1."),
 ]
