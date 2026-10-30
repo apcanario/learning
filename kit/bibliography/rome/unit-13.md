@@ -42,6 +42,7 @@ Curated bibliography: `bibliography/rome/r-13.1.md`.
 - *Sayings of Kings and Commanders* 207c
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Athenaeus 12.547
 - Dio 51.16
 - Diogenes Laertius 7.34
 - Gellius 15.11.1; 15.11.2

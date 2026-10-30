@@ -122,7 +122,7 @@ Curated bibliography: `bibliography/rome/r-5.3.md`.
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Appian 1.116–117
 - Dio 37.26–28; 37.49–50
-- Velleius 2.31.2; 2.40.3; 2.44.1
+- Velleius 2.30.5; 2.31.2; 2.40.3; 2.44.1
 
 ### Modern works
 - Keith Bradley, *Slavery and Rebellion in the Roman World* (1989)

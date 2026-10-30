@@ -135,7 +135,7 @@ Curated bibliography: `bibliography/rome/r-8.4.md`.
 - *Oration* 16; 18.274–275; 30
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Ammianus 14.11; 16.10; 16.12; 22.5.2; 22.13.1–2; 23.2.6; 26.4.3
+- Ammianus 14.11; 16.10; 16.12; 22.5.2; 22.13.1–2; 23.2.6; 26.4.3; 31.2–3
 - Dio 51.22.1–2
 - Eutropius 10.9
 - Zosimus 2.40
@@ -177,15 +177,21 @@ Curated bibliography: `bibliography/rome/r-8.5.md`.
 - Zosimus 5.7; 5.11; 5.29; 5.41.1–3; 5.48–50
 
 ### Modern works
+- Late Antiquity (1971): title not given in the report
 - Joerg Baten, *European Review of Economic History* (2005)
 - Peter Brown, *The World of Late Antiquity* (1971)
 - Alan Cameron, *Claudian* (1970)
+- Charlemagne (1937): title not given in the report
+- Halsall (2007): title not given in the report
 - Guy Halsall, *Barbarian Migrations and the Roman West, 376–568* (2007)
 - Michael Kulikowski, *Barbarians in Gaul, usurpers in Britain* (2000)
 - Markus (1970): title not given in the report
 - R. A. Markus, *Saeculum* (1970)
+- McCormick (2001): title not given in the report
 - Michael McCormick, *Origins of the European Economy* (2001)
+- Whitehouse (1983): title not given in the report
 - David Whitehouse, *Mohammed, Charlemagne and the Origins of Europe* (1983)
+- Wickham (2005): title not given in the report
 - Chris Wickham, *Framing the Early Middle Ages* (2005)
 
 ## 8.6 The Rome that did not fall

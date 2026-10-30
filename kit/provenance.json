@@ -221,6 +221,11 @@
    "model": "Sonnet 5.5",
    "what": "curated per-report bibliographies for all 137 existing reports (59 Rome, 78 Greece), written 27 October 2026 by Sonnet 5.5 agents to bibliography/BIBLIO-BRIEF.md from the reports' inline citations; many modern references completed from memory and marked \"(not verified)\", \"(partly verified)\" or \"(identified from context)\"; unresolved citations listed per file",
    "review": "FLAGGED: spot-check of about three units by Fable 5.1 (open the \"(not verified)\" references of one Rome and two Greek units; fix or confirm), then set model to \"Sonnet 5.5, spot-checked with Fable 5.1 (sampled)\""
+  },
+  "rome figures (P43)": {
+   "model": "Opus 5.5, checked with Opus 5.5",
+   "what": "figure declarations added to the 59 written Rome reports kit/rome/r-<id>.html by backlog row N4 (P43, 30 October 2026): a fresh Opus 5.5 agent per report added figures only (seeing its report, viz.py's docstring and skills/write-unit §4b), a separate fresh Opus 5.5 agent checked each new figure without the adder's report, every FIX was applied and re-checked by another fresh agent, and a figure that failed twice was dropped. 177 figures kept, by module: unit 0: 0.1 3, 0.2 3, 0.3 2 (beside its earlier anchor-dates timeline); unit 1: 1.1 3, 1.2 1, 1.3 4, 1.4 3, 1.5 2, 1.6 3; unit 2: 2.1 4, 2.2 2, 2.3 3, 2.4 4, 2.5 3; unit 3: 3.1 3, 3.2 3, 3.3 4, 3.4 3, 3.5 2; unit 4: 4.1 3, 4.2 3, 4.3 4, 4.4 3, 4.5 4; unit 5: 5.1 3, 5.2 3, 5.3 4, 5.4 3, 5.5 3, 5.6 2; unit 6: 6.1 3, 6.2 2, 6.3 2, 6.4 4; unit 7: 7.1 4, 7.2 4, 7.3 3, 7.4 3, 7.5 3; unit 8: 8.1 3, 8.2 3, 8.3 3, 8.4 4, 8.5 3, 8.6 4; unit 9: 9.1 3, 9.2 3, 9.3 4, 9.4 4, 9.5 2; unit 10: 10.1 4, 10.2 2, 10.3 2, 10.4 4, 10.5 1; 11.1 3, 11.2 2; 13.1 3, 13.2 2. 18 dropped (8 after failing twice, 10 on the checker's verdict). Prose, citations and word counts unchanged; the reports' own models unchanged",
+   "review": "P48"
   }
  },
  "review_notes": [

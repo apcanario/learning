@@ -40,6 +40,7 @@ Curated bibliography: `bibliography/rome/r-2.1.md`.
 - Bruce MacBain, *Prodigy and Expiation* (1982)
 - Momigliano, *History and Theory* (1984)
 - Price, *Religions of Rome* (1998)
+- Jupiter Mars Quirinus (1941): title not given in the report
 - Susanne Rasmussen, *Public Portents in Republican Rome* (2003)
 - H. J. Rose, *Numen inest* (1935)
 - Veit Rosenberger, *Gezähmte Götter* (1998)
@@ -268,4 +269,8 @@ Curated bibliography: `bibliography/rome/r-2.5.md`.
 - Walsh (1996): title not given in the report
 - Winkler, *Auctor and Actor* (1985)
 - Wissowa, *Religion und Kultus der Römer* (1912)
+
+### Corpora and inscriptions
+
+- CIL X 846
 

@@ -132,7 +132,9 @@ Curated bibliography: `bibliography/rome/r-10.4.md`.
 - Hans Baron, *The Crisis of the Early Italian Renaissance* (1955)
 - Mary Beard, *SPQR* (2015)
 - Alexander Demandt, *Der Fall Roms* (1984)
+- North's English (1579): title not given in the report
 - Lindsey Davis's Falco (1989): title not given in the report
+- Amyot's French (1559): title not given in the report
 - Jacques Amyot's French (1559): title not given in the report
 - Johannes Fried, *Donation of Constantine and Constitutum Constantini* (2007)
 - Enrico Guazzoni, *Quo Vadis* (1913)
@@ -147,6 +149,7 @@ Curated bibliography: `bibliography/rome/r-10.4.md`.
 - Anthony Mann, *The Fall of the Roman Empire* (1964)
 - Charles Martindale, *Redeeming the Text* (1993)
 - Robert Miola, *Shakespeare's Rome* (1983)
+- The Machiavellian Moment (1975): title not given in the report
 - Answer Following Montesquieu (1734): title not given in the report
 - Montesquieu, *Considerations on the Causes of the Greatness of the Romans and their Decline* (1734)
 - Giovanni Pastrone, *Cabiria* (1914)

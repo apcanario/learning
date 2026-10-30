@@ -107,8 +107,10 @@ Curated bibliography: `bibliography/rome/r-0.3.md`.
 - *Tiberius Gracchus* 20.1
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Dio 53.17
 - Livy 7.3.5–7
 - Polybius 3.22.1–2
+- Velleius 2.1
 
 ### Modern works
 - Peter Brown, *The World of Late Antiquity* (1971)

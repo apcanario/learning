@@ -29,7 +29,7 @@ Curated bibliography: `bibliography/rome/r-11.1.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Gellius 13.16; 14.7
-- Livy 27.11.9–12; 31.6–8; 32.27.6; 40.19.11; 40.44.1
+- Livy 4.25.13; 27.11.9–12; 31.6–8; 32.27.6; 40.19.11; 40.44.1
 - Polybius 6.19.4; 6.56.4
 - Valerius Maximus 7.5
 
@@ -85,9 +85,12 @@ Curated bibliography: `bibliography/rome/r-11.2.md`.
 - P. A. Brunt, *Italian Manpower* (1971)
 - Brunt (1988): title not given in the report
 - Stefan Chrissanthos, *Caesar and the Mutiny of 47 B.C.* (2001)
+- Christ (1987): title not given in the report
 - Emilio Gabba's (1976): title not given in the report
 - Erich Gruen, *The Last Generation of the Roman Republic* (1974)
 - Keaveney (2007): title not given in the report
 - Arthur Keaveney, *The Army in the Roman Revolution* (2007)
 - Anton von Premerstein, *Vom Werden und Wesen des Prinzipats* (1937)
+- Roman Republic (1974): title not given in the report
+- Roman Revolution (2007): title not given in the report
 

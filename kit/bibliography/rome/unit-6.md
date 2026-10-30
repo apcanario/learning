@@ -20,6 +20,7 @@ Curated bibliography: `bibliography/rome/r-6.1.md`.
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Dio 49.38.1; 53.12–13; 53.28.3; 53.30.1–2; 53.32.5; 54.1; 54.3; 54.10.5; 54.12; 55.10.15; 55.32.2
 - Pliny 7.149
+- Res Gestae 5.1–3; 35.1
 - Strabo 17.3.25
 - Velleius 2.121.1
 
@@ -55,6 +56,7 @@ Curated bibliography: `bibliography/rome/r-6.2.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Dio 51.19.2; 51.19.7; 51.20.6–7; 53.27.3; 54.16.1–2; 54.27.3; 56.10.3; 56.46.2
+- Res Gestae 12.2
 - Velleius 2.81.3; 2.100.2
 - Zosimus 2.1–3; 2.4.2
 
@@ -143,8 +145,8 @@ Curated bibliography: `bibliography/rome/r-6.4.md`.
 - *Tiberius* 16.1
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Dio 51.24; 53.12; 53.23; 53.25; 53.26.3; 54.11; 54.22; 54.25.6; 54.34.4; 55.10.10; 55.23.1; 55.25.5; 56.23
-- Strabo 17.1.54
+- Dio 51.24; 53.12; 53.23; 53.25; 53.26.3; 54.11; 54.22; 54.25.6; 54.34.4; 55.1.4; 55.10.10; 55.23.1; 55.25.5; 56.23
+- Strabo 4.6.7; 17.1.54
 - Velleius 2.95; 2.96; 2.97.1; 2.118.2; 2.120.1
 
 ### Modern works

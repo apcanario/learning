@@ -63,10 +63,11 @@ Curated bibliography: `bibliography/rome/r-3.2.md`.
 - *Tusculan Disputations* 1.89
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Curtius 5.6.2
 - Dionysius 8.55–56; 8.57–59; 9.15.3; 11.28–37; 12.4.2–5
 - Gellius 9.13
 - Herodotus 7.202
-- Livy 1.13; 2.40.10–11; 2.41.1–3; 2.48–49; 2.50; 3.44–48; 4.13–16; 7.2; 7.6.1–5; 7.9–10; 10.23.1–10
+- Livy 1.13; 2.40.10–11; 2.41; 2.41.1–3; 2.48–49; 2.50; 3.44–48; 4.13–16; 7.2; 7.6; 7.6.1–5; 7.9–10; 10.23.1–10
 - Thucydides 1.136–137; 1.138.4
 - Valerius Maximus 1.8.4; 5.8.3
 
@@ -99,9 +100,9 @@ Curated bibliography: `bibliography/rome/r-3.3.md`.
 - *Tiberius* 3.2
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Diodorus 14.93.2; 14.93.3–5; 14.113; 14.116; 14.116.8–9
+- Diodorus 14.93; 14.93.2; 14.93.3–5; 14.113; 14.116; 14.116.8–9
 - Dionysius 6.95
-- Livy 2.33; 2.41; 3.15–18; 4.59–60; 5.30.8; 5.32.7–9; 5.35–36; 5.51–54; 6.1.11; 6.2; 8.14
+- Livy 2.33; 2.41; 3.15–18; 4.17–20; 4.59–60; 5.30.8; 5.32.7–9; 5.34–35; 5.35–36; 5.51–54; 6.1.11; 6.2; 6.25–26; 8.14
 - Pliny 3.57
 - Polybius 3.24
 
@@ -131,10 +132,10 @@ Curated bibliography: `bibliography/rome/r-3.4.md`.
 - *Syll.* 3
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Diodorus 16.45.8; 20.36; 21.6.1
+- Diodorus 16.45.8; 19.72; 20.36; 21.6.1
 - Herodotus 7.234
-- Livy 7.19.4; 8.16; 8.21.11; 9.2–6; 9.5–11; 9.29; 9.29–34; 10.3–5; 10.7–8; 10.11–12; 10.16–18; 10.27–29; 27.9–10; 27.38
-- Polybius 2.19–20; 2.24; 6.39.15
+- Livy 7.19.4; 7.29–31; 8.16; 8.21.11; 8.22–23; 9.2–6; 9.5–11; 9.29; 9.29–34; 10.3–5; 10.7–8; 10.11–12; 10.16–18; 10.27–29; 27.9–10; 27.38
+- Polybius 2.19–20; 2.24; 6.19–42; 6.39.15
 
 ### Modern works
 - Edward Bispham (2006): title not given in the report
@@ -187,7 +188,9 @@ Curated bibliography: `bibliography/rome/r-3.5.md`.
 
 ### Modern works
 - Andrew Burnett, *The first Roman silver coins* (1978)
+- Roman Republican Coinage (1974): title not given in the report
 - Simon Hornblower (2015): title not given in the report
+- Italy (2001): title not given in the report
 - Patrick Kent, *A History of the Pyrrhic War* (2020)
 - Arnaldo Momigliano, *Terra marique* (1942)
 

@@ -116,7 +116,7 @@ Curated bibliography: `bibliography/rome/r-7.3.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Ammianus 23.6.24; 29.6.1
-- Dio 56.33; 67.7; 68.1.2; 68.3.3; 68.3.4; 68.13; 68.14.5; 69.2; 69.9; 69.13.2; 69.13–14; 69.20; 70.1.1; 71.2
+- Dio 56.33; 67.7; 68.1.2; 68.3.3; 68.3.4; 68.13; 68.14.5; 68.32; 69.1; 69.2; 69.9; 69.13.2; 69.13–14; 69.20; 70.1.1; 71.2
 - Eutropius 8.3.2; 8.5.3; 8.6.2
 
 ### Modern works
@@ -146,7 +146,7 @@ Curated bibliography: `bibliography/rome/r-7.4.md`.
 - *Severus Alexander* 29.2; 55–57
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Herodian 2.13; 2.15; 3.2–4; 3.11–12; 4.4.7; 4.9; 4.13; 5.3; 6.7
+- Herodian 2.6; 2.13; 2.15; 3.2–4; 3.11–12; 4.3.5–9; 4.4.7; 4.9; 4.13; 5.3; 6.1.2; 6.7; 6.8–9
 
 ### Modern works
 - Kostas Buraselis, *Theia Dorea* (1989)

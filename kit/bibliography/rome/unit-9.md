@@ -73,6 +73,7 @@ Curated bibliography: `bibliography/rome/r-9.2.md`.
 - Dio 49.38; 60.24.3
 - Gellius 5.6.20–23
 - Pliny 28.39
+- Polybius 6.20.8–9
 - Zonaras 7.21
 - Zosimus 2.17; 2.33
 
@@ -135,6 +136,7 @@ Curated bibliography: `bibliography/rome/r-9.3.md`.
 - Harris, *Demography, Geography and the Sources of Roman Slaves* (1999)
 - Keith Hopkins, *The Age of Roman Girls at Marriage* (1965)
 - Nicholas Horsfall (1983): title not given in the report
+- Italian Manpower (1971): title not given in the report
 - Dale Martin, *The Construction of the Ancient Family* (1996)
 - Josiah Osgood, *Turia: A Roman Woman's Civil War* (2014)
 - Beryl Rawson, *The Family in Ancient Rome* (1986)
@@ -191,7 +193,8 @@ Curated bibliography: `bibliography/rome/r-9.4.md`.
 - Dio 49.43.2; 54.17.5; 55.26.4–5; 60.11
 - Juvenal 3.190–202
 - Livy 23.30.15
-- Martial 1.59; 2.14
+- Martial 1.59; 2.14; 4.8
+- Res Gestae 15.2
 - Strabo 5.3.7
 
 ### Modern works
@@ -203,7 +206,9 @@ Curated bibliography: `bibliography/rome/r-9.4.md`.
 - Keith Hopkins, *Conquerors and Slaves* (1978)
 - Keith Hopkins, *Death and Renewal* (1983)
 - Willem Jongman (1988): title not given in the report
+- Italian Manpower (1971): title not given in the report
 - Walter Scheidel, *Germs for Rome* (2003)
+- Slaves (1978): title not given in the report
 - Storey (1997): title not given in the report
 - Glenn Storey, *The population of ancient Rome* (1997)
 - Paul Veyne, *Le pain et le cirque* (1976)
