@@ -42,3 +42,26 @@ None stops the build; each made a figure unreadable at phone width until the fig
 - **tree:** with nine or ten leaves the boxes shrink to about 64 units and labels break mid-word (9.1, 10.2); a narrow tree draws in the left half of the 700-unit frame (2.1, the P50 family).
 - **objects:** a long attribute in a two-column grid wraps letter by letter (4.5).
 - **range:** years BC print as negative numbers (3.5).
+
+## P57: what was restored and what was kept (30 October 2026)
+
+Backlog row P57 revisited the 14 reports above whose figures N4 reshaped or dropped around these drawing faults, all fixed by P55 (content drops were left alone). For each, a fresh Opus 5.5 agent read the report, a note of which fault had touched which figure, the figure contract and `skills/write-unit` §4b, and decided from the report's own text whether the original shape was the better figure; where it was, it redrew it from the text (no original spec survived). A separate fresh agent checked every change; the two FIXes (7.4, 10.2) were re-checked and passed. None failed twice. The prose of every report is byte-identical and no word count moved.
+
+Restored in the original shape (12 figures):
+
+- **1.5** figure 1: the seven kings as seven reigns from the section's table, Romulus to Ancus in one tone and the Tarquins and Servius in another, against the four narrators, in place of one span "The seven kings".
+- **1.6** figure 1: the axis ends at a tick at 1 BC in place of the year-0 workaround that left Livy and Dionysius in an unmarked stretch.
+- **3.5** figure 2: the two datings of the first ROMANO didrachm (Burnett and *HN Italy* about 310–300; Crawford, *RRC* 13, 280–276) as a range, `"years": true`, in place of timeline spans.
+- **4.5** figure 4: Terence's six plays as a span 166–160 beside Plautus, in place of the event N4 made of it.
+- **5.6** figure 1: the 45–44 span labelled as the text words it, "The great burst" (cut to "Burst" for the old renderer), and the event "Brutus and Orator".
+- **7.1** figure 1: where the sources survive as overlapping spans under the reigns (Annals 1–6, 14–37; Annals 11–16, 47–66; Dio 57–63, 14–68), the gaps drawn as gaps.
+- **7.4** figure 3: Macrinus (217–218) and Elagabalus (218–222) as named spans in place of blank bars and two stand-in accession events; the checker's FIX relabelled Ardashir's c. 224 "Ardashir (date approx.)", since the event's date line cannot show "c.".
+- **8.6** figures 1, 2 and 4: the text's periods as spans (Vandal Africa 533–534; Alexandria 641–642 and the Arab siege 717–718; the civil wars 1321–1328 and 1341–1347) in place of events at their first years.
+- **10.2** figure 1: Tacitus' life (about 56 to about 120) against the Annals (14–68) and Histories (69–96); the checker's FIX took out Suetonius' life, which the next paragraph gives, not the one the figure follows.
+- **11.1** figure 3: the compare's labels as the section words them ("Comitium held some 3,600 to 3,800", "Forum held perhaps", "Electoral assemblies seldom exceeded", "Census of citizens in 164"), values unchanged.
+
+Written back (3 figures N4 dropped): **3.4** the compare of the infantry on Polybius' lists of 225 (2.24), six rows from the table; **9.1** the tree of Gaius' scheme (persons, things, actions; nine leaves, 1,104 units wide, scrolling); **10.2** the tree of the ten plays under Seneca's name (eight accepted, *Hercules Oetaeus* doubted, *Octavia* after 68; 1,226 units wide, scrolling).
+
+Kept as they were: **1.2** the text-lengths figure stays dropped (the three word counts are approximate and the section cites no source for them, so a compare would need a caption source the text does not give); **6.4** both figures (the Bastarnae campaign is already the 29–28 span the text gives; the 20 BC start only pads); **7.1** figure 4 (its two spans do not overlap); **8.6** figure 3 (every date in it is a point).
+
+Rome now carries 180 P43 figures (177 + 3): timeline 74, flow 54, matrix 14, tree 14, compare 9, decision 5, bars 5, range 4, objects 1. The P57 checkers' prose notes repeat leads already listed above; one drawing note is new: a timeline event's date line prints a bare year and cannot mark it "c." (1.6, 7.4; the Greek checkers met the same, proposed row P58).

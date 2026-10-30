@@ -8,12 +8,12 @@ Curated bibliography: `bibliography/greece/r-9.1.md`.
 
 ### Ancient works
 - Arrian, *Anabasis* 3.16.7
+- Pliny, *Natural History* 34.55–56; 36.18
 - Plutarch, *Alexander* 4
 - Plutarch, *Pericles* 13
-- *De architectura* 4.1
+- Vitruvius, *De architectura* 4.1
 - *De placitis Hippocratis et Platonis* 5
 - *Helen* 262–3
-- *Natural History* 34.55–56
 - *Republic* 420c
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)

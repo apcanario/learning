@@ -43,6 +43,7 @@ Curated bibliography: `bibliography/greece/r-5.1.md`.
 - Catherine Morgan, *Athletes and Oracles* (1990)
 - Ian Morris, *Burial and Ancient Society* (1987)
 - Joseph Naveh (1973): title not given in the report
+- Naveh (1973): title not given in the report
 - François de Polignac (1984): title not given in the report
 - Barry Powell, *Homer and the Origin of the Greek Alphabet* (1991)
 - Snodgrass, *Archaic Greece* (1980)
@@ -59,13 +60,13 @@ Curated bibliography: `bibliography/greece/r-5.2.md`.
 
 ### Ancient works
 - Aristotle, *Constitution of the Athenians* 6; 7; 21
+- Aristotle, *Politics* 1252b; 1275a
 - Arrian, *Periplus* 21–23
 - Homer, *Odyssey* 6.262–272
 - Pindar, *Pythian* 9.5–70
 - *Iliad* 2.362–363; 2.684; 18.497–508
 - *Laws* 708b, 740e
 - *Natural History* 5.112
-- *Politics* 1252b; 1275a
 - *Works and Days* 405
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
@@ -74,10 +75,11 @@ Curated bibliography: `bibliography/greece/r-5.2.md`.
 - Justin 43.3; 43.3.8–12
 - Livy 8.22.5–6
 - Strabo 5.4.4; 5.4.9; 6.1.12; 6.1.13; 6.3.2; 6.3.2–3; 7.6.2
-- Thucydides 1.13.6; 1.24–55; 6.2.6; 6.3.1; 6.3.2; 6.3–4; 7.77.7
+- Thucydides 1.13.6; 1.24–55; 6.2.6; 6.3.1; 6.3.1–2; 6.3.2; 6.3–4; 7.77.7
 
 ### Modern works
 - Graham, *Colony and Mother City* (1964)
+- Osborne (1998): title not given in the report
 - Robin Osborne (1998): title not given in the report
 - Denis Roussel (1976): title not given in the report
 
@@ -122,22 +124,22 @@ Curated bibliography: `bibliography/greece/r-5.3.md`.
 Curated bibliography: `bibliography/greece/r-5.4.md`.
 
 ### Ancient works
+- Aristotle, *Politics* 1269b; 1270a; 1270b; 1271a; 1313a
 - Cicero, *Tusculan Disputations* 2.34
 - Lycurgus, *Against Leocrates* 106–107
 - Pindar, *Nemean* 10.55–59
 - Plato, *Laws* 629a; 633b; 633c
 - Plutarch, *Agesilaus* 20
+- Plutarch, *Agis* 5
 - Plutarch, *Greek Questions* 5
 - Plutarch, *Lycurgus* 1; 6; 7; 8, 16; 12; 14–15; 16–18; 17–18; 28; 31
 - Plutarch, *Lysander* 17
 - Plutarch, *On Brotherly Love* 478a
 - Xenophon, *Constitution* 1.3–9; 2.1–9; 2–4; 5; 8, 15; 14; 15
 - Xenophon, *Hellenica* 3.3.4–11; 3.3.6; 4.5.11; 6.4.15; 6.4.16
-- *Agis* 5
 - *Constitution of the Lacedaemonians* 10.8
 - *Onomasticon* 3.83
 - *Palatine Anthology* 7.18, 7.709
-- *Politics* 1269b; 1270a; 1270b; 1271a; 1313a
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Athenaeus 4.139; 4.141; 14.630
@@ -166,7 +168,7 @@ Curated bibliography: `bibliography/greece/r-5.5.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Demosthenes 20.18
-- Herodotus 1.29; 1.30–33; 1.59; 1.59–64; 1.60; 1.62–63; 3.80; 5.55; 5.55–56; 5.64–65; 5.66; 5.70–73; 5.71; 5.72; 5.73; 5.74–77; 6.43; 6.123; 6.131
+- Herodotus 1.29; 1.30–33; 1.59; 1.59–64; 1.60; 1.62–63; 3.80; 5.55; 5.55–56; 5.64–65; 5.64–77; 5.66; 5.70–73; 5.71; 5.72; 5.73; 5.74–77; 6.43; 6.123; 6.131
 - Pausanias 1.14.1; 7.26.13
 - Thucydides 1.126; 6.54.5; 6.54.6; 6.54.6–7; 6.56–57; 6.59
 
@@ -197,7 +199,7 @@ Curated bibliography: `bibliography/greece/r-5.6.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Diogenes Laertius 8.69; 10.13
-- Herodotus 7.228
+- Herodotus 1.74; 7.228
 
 ### Modern works
 - Burkert, *Lore and Science in Ancient Pythagoreanism* (1972)

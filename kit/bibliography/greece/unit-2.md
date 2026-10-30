@@ -8,10 +8,11 @@ Curated bibliography: `bibliography/greece/r-2.1.md`.
 
 ### Ancient works
 - Apollodorus, *Library* 1.1.2–1.2.1; 1.1.6; 1.2.1; 1.6.1–2; 1.6.3
+- Damascius, *De principiis* 123
+- Hesiod, *Theogony* 116; 116–122; 116–132; 132–200
 - Pindar, *Pythian* 1.15–28; 4.291
 - *Birds* 693–702
 - *Cratylus* 402b
-- *De principiis* 123
 - *Homeric Hymn to Aphrodite* 22–23
 - *Homeric Hymn to Apollo* 305–355
 - *Hymn to Zeus* 4–9
@@ -22,7 +23,6 @@ Curated bibliography: `bibliography/greece/r-2.1.md`.
 - *Odes* 3.4
 - *Odyssey* 7.59
 - *Symposium* 178b
-- *Theogony* 116; 116–122
 - *Works and Days* 635–640
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
@@ -48,7 +48,7 @@ Curated bibliography: `bibliography/greece/r-2.2.md`.
 - Euripides, *Bacchae* 1–42, 88–104
 - Euripides, *Hippolytus* 1–57
 - Euripides, *Iphigenia at Aulis* 1581–1595
-- Hesiod, *Theogony* 454
+- Hesiod, *Theogony* 453–942; 454
 - Homer, *Iliad* 1; 1.578; 1.590–594; 4.51–52; 5.370; 5.370–417; 5.385–391; 5.855–909; 5.890; 13.355, 15.166; 14; 14.323–325; 15.18–24; 15.166; 15.187–193; 15.187–199; 16.233–235; 18.395–405; 18.468–617; 21.470; 24.334–467; 24.602–617
 - Phoebe. Euripides, *Iphigenia among the Taurians* 1234–1283
 - Plutarch, *Isis and Osiris* 365a
@@ -63,7 +63,7 @@ Curated bibliography: `bibliography/greece/r-2.2.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Apollodorus 1.5.2; 2.1.3; 3.4.3; 3.4.4; 3.14.1; 3.14.2; 3.14.6
-- Herodotus 8.55
+- Herodotus 2.53; 8.55
 - Pausanias 1.20.3; 2.17; 3.14.9; 3.16.7–11; 5.11; 5.16.2; 8.42.1–4
 - Thucydides 1.126.6; 6.27; 6.54.6–7
 
@@ -97,14 +97,14 @@ Curated bibliography: `bibliography/greece/r-2.3.md`.
 - Plutarch, *Theseus* 20.2
 - Sophocles, *Antigone* 1200
 - Theocritus, *Idyll* 2
-- Virgil, *Aeneid* 6; 6.298–304; 6.432; 6.550–551; 6.601; 6.713–715
+- Virgil, *Aeneid* 6; 6.273–751; 6.298–304; 6.432; 6.432, 6.566–569; 6.550–551; 6.601; 6.713–715
 - Virgil, *Georgics* 4.453–527
 - Xenophon, *Anabasis* 7.8.4–5
 - *Cratylus* 403a
 - *Eumenides* 46–56, 321–322
 - *Fasti* 4; 4.613–614
 - *Homeric Hymn to Demeter* 17; 495
-- *Odyssey* 4.561–569; 4.564; 10.508–515; 10.508–515, 11.13–22; 10.513; 10.514; 11; 11.23–36; 11.23–50, 147–149; 11.539, 573; 11.568–571; 11.576–581; 11.576–600; 11.582–592; 11.593–600; 11.631
+- *Odyssey* 4.561–569; 4.564; 10.508–515; 10.508–515, 11.13–22; 10.513; 10.514; 10.527–529, 11.23–36; 11; 11.23–36; 11.23–50, 147–149; 11.539, 573; 11.568–571; 11.576–581; 11.576–600; 11.582–592; 11.593–600; 11.631
 - *Phaedo* 107d–115a; 112e–113c
 - *Works and Days* 167–173
 
@@ -133,13 +133,13 @@ Curated bibliography: `bibliography/greece/r-2.3.md`.
 Curated bibliography: `bibliography/greece/r-2.4.md`.
 
 ### Ancient works
+- Apollodorus, *Library* 1.7.1; 1.7.2; 1.7.3
 - Feature, *Theogony* 570–612
-- Hesiod, *Theogony* 535–560
+- Hesiod, *Theogony* 521–567; 535–560
 - Hesiod's, *Works and Days* 42–105; 57–105; 106–201; 276–280
 - Pindar, *Olympian* 9; 9.41–56
 - *Fable* 58
 - *Iliad* 2.684
-- *Library* 1.7.1; 1.7.2
 - *Metamorphoses* 1.313–415
 - *Theogony* 507–616; 526–534; 551; 901–903
 - *Timaeus* 22a
@@ -223,7 +223,7 @@ Curated bibliography: `bibliography/greece/r-2.6.md`.
 - Euripides, *Alcestis* 5–7
 - Euripides, *Helen* 167–169
 - Gaia, *Theogony* 233–239
-- Hesiod, *Theogony* 233–336
+- Hesiod, *Theogony* 233–336; 310–312
 - Hesiod. Apollodorus, *Epitome* 1.1
 - Homer, *Iliad* 6.179–183
 - Horace, *Odes* 3.4

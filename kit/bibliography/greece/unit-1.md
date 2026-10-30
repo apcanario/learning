@@ -48,7 +48,7 @@ Curated bibliography: `bibliography/greece/r-1.3.md`.
 
 ### Ancient works
 - Apollodorus, *Library* 2.8.2–5
-- Hesiod, *Works and Days* 156–173
+- Hesiod, *Works and Days* 150–151; 156–173
 - *Iliad* 2.494–759; 6.168–169; 10.261–265; 11.632–637; 23; 23.826–835
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
@@ -63,19 +63,23 @@ Curated bibliography: `bibliography/greece/r-1.3.md`.
 - Eric Cline, *1177 B.C.* (2014)
 - Nicolas Coldstream (1976): title not given in the report
 - Cyprus (2013): title not given in the report
+- Desborough, *The Greek Dark Ages* (1972)
 - Vincent Desborough, *The Greek Dark Ages* (1972)
+- Dickinson (2006): title not given in the report
 - Oliver Dickinson (2006): title not given in the report
 - Hattusa. Robert Drews, *The End of the Bronze Age* (1993)
 - Minyas. Moses Finley, *The World of Odysseus* (1954)
 - Galilee (2013): title not given in the report
 - Jonathan Hall, *Ethnic Identity in Greek Antiquity* (1997)
 - Irene Lemos, *The Protogeometric Aegean* (2002)
+- Lemos, *The Protogeometric Aegean* (2002)
 - Sturt Manning (2016): title not given in the report
 - Guy Middleton (2017): title not given in the report
 - Ian Morris (1986): title not given in the report
 - Pylos (2017): title not given in the report
 - Colin Renfrew (1979): title not given in the report
 - Anthony Snodgrass, *The Dark Age of Greece* (1971)
+- Snodgrass, *The Dark Age of Greece* (1971)
 - Snodgrass (1974): title not given in the report
 - Naoise Mac Sweeney, *Foundation Myths and Politics in Ancient Ionia* (2013)
 - Joseph Tainter, *The Collapse of Complex Societies* (1988)

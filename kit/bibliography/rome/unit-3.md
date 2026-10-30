@@ -187,6 +187,7 @@ Curated bibliography: `bibliography/rome/r-3.5.md`.
 - Zonaras 8.2; 8.6; 8.7
 
 ### Modern works
+- Burnett (1978): title not given in the report
 - Andrew Burnett, *The first Roman silver coins* (1978)
 - Roman Republican Coinage (1974): title not given in the report
 - Simon Hornblower (2015): title not given in the report

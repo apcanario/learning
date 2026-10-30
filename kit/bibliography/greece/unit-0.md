@@ -60,4 +60,5 @@ Curated bibliography: `bibliography/greece/r-0.3.md`.
 - Thucydides 1.12; 2.2; 6.3–5
 
 ### Modern works
+- Early Bronze Age (2000): title not given in the report
 

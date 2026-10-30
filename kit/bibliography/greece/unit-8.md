@@ -87,6 +87,7 @@ Curated bibliography: `bibliography/greece/r-8.2.md`.
 - *Cratylus* 400c
 - *De abstinentia* 4.16
 - *De antro nympharum* 6
+- *Homeric Hymn to Demeter* 208–209
 - *I.Magnesia* 215
 - *IGUR* 160
 - *Iliad* 16.233–235
@@ -165,7 +166,7 @@ Curated bibliography: `bibliography/greece/r-8.3.md`.
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Athenaeus 4.139
 - Demosthenes 59.73–78
-- Pausanias 1.27.3; 3.8.1; 3.16.9–11; 5.6.7; 5.6.7–8; 5.9.4–6; 5.16; 5.16.2–8; 5.24.9; 6.7.1–7; 6.11.2–9; 6.13.1; 6.14.5–8; 6.20.9; 10.7.1; 10.7.2
+- Pausanias 1.27.3; 3.8.1; 3.16.9–11; 5.6.7; 5.6.7–8; 5.8.6–5.9.2; 5.9.4–6; 5.16; 5.16.2–8; 5.24.9; 6.7.1–7; 6.11.2–9; 6.13.1; 6.14.5–8; 6.20.9; 10.7.1; 10.7.2
 - Strabo 6.1.12
 - Thucydides 5.49–50
 
@@ -186,6 +187,7 @@ Curated bibliography: `bibliography/greece/r-8.4.md`.
 - Cicero, *De legibus* 2.64
 - Erechtheus, *Iliad* 2.550–551; 16.856, 22.362; 23.71–74; 23.99–101; 23.166–177; 23–24; 24.723–776
 - Hesiod, *Works and Days* 167–173
+- Pindar, *Olympian* 2.56–80; 2.68–80
 - Pindar, *Pythian* 5.93–95
 - Plato, *Cratylus* 400c
 - Plato, *Phaedo* 81c; 114d
@@ -195,7 +197,6 @@ Curated bibliography: `bibliography/greece/r-8.4.md`.
 - *Cimon* 8
 - *Letter to Menoeceus* 124–127
 - *Odyssey* 4.561–569; 11; 11.51–80
-- *Olympian* 2.56–80; 2.68–80
 - *Persians* 619–842
 - *Principal Doctrines* 2
 
@@ -207,6 +208,7 @@ Curated bibliography: `bibliography/greece/r-8.4.md`.
 - Thucydides 2.34; 2.43; 5.11
 
 ### Modern works
+- Ekroth (2002): title not given in the report
 - Gunnel Ekroth (2002): title not given in the report
 
 ### Corpora and inscriptions
@@ -239,7 +241,7 @@ Curated bibliography: `bibliography/greece/r-8.5.md`.
 - *Solon* 20.2
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Athenaeus 2.36; 4.138; 13.569; 15.695
+- Athenaeus 2.36; 4.138; 6.272; 13.569; 15.695
 - Demosthenes 20.31–32; 57.30–35; 59.52
 - Herodotus 6.57; 6.130
 - Lysias 1.9; 24.20

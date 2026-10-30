@@ -17,7 +17,7 @@ Curated bibliography: `bibliography/greece/r-7.1.md`.
 - Plutarch, *Agis* 5–20
 - Plutarch, *Aratus* 18–24
 - Plutarch, *Cleomenes* 7–11
-- Plutarch, *Demetrius* 10–13; 17–18; 28; 28–29; 29; 36–37; 38; 42; 44–52
+- Plutarch, *Demetrius* 10–13; 17–18; 28; 28–29; 28–29, 36–37; 29; 36–37; 38; 42; 44–52
 - Plutarch, *Eumenes* 5–7; 13; 16–19
 - Plutarch, *Lysander* 18
 - Plutarch, *On Isis and Osiris* 28
@@ -50,6 +50,7 @@ Curated bibliography: `bibliography/greece/r-7.2.md`.
 - Cicero, *Academica* 2.99–104
 - Cicero, *On Fate* 22; 42–43
 - Cicero, *On the Republic* 1.21–22; 3
+- Cleomedes, *On the Heavens* 1.7
 - Eusebius, *Preparation for the Gospel* 14.18
 - Plutarch, *On the Face in the Moon* 6
 - Sextus, *Against the Mathematicians* 7.158
@@ -67,13 +68,13 @@ Curated bibliography: `bibliography/greece/r-7.2.md`.
 - *On Tranquillity* 9.5
 - *On the Doctrines of Hippocrates and Plato* 4–5
 - *On the Fortune of Alexander* 329a
-- *On the Heavens* 1.7
 - *On the Nature of the Gods* 2.88
 - *On the Soul* 10
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Aulus Gellius 7.17.3
 - Diogenes Laertius 6.63; 7.183; 10.136
+- Gellius 7.17.3
 - Livy 25.31
 - Lucretius 2.216–293
 
@@ -96,7 +97,7 @@ Curated bibliography: `bibliography/greece/r-7.3.md`.
 - Horace, *Odes* 1.37
 - Livy, *Periochae* 58–59
 - Pliny, *Natural History* 35.24
-- Plutarch, *Aemilius* 17; 20; 32–33
+- Plutarch, *Aemilius* 17; 17–20; 20; 32–33
 - Plutarch, *Antony* 54; 62–68; 86
 - Plutarch, *Cato Maior* 22
 - Plutarch, *Flamininus* 10–12
@@ -139,8 +140,9 @@ Curated bibliography: `bibliography/greece/r-7.4.md`.
 - Answer, *Codex Theodosianus* 16.10.10
 - Apuleius, *Metamorphoses* 11
 - Aratus, *Phaenomena* 5
+- Eunapius, *Lives of the Sophists* 476
 - Marinus', *Life of Proclus* 30
-- Philostratus, *Lives of the Sophists* 476; 566
+- Philostratus, *Lives of the Sophists* 566
 - Suetonius, *Claudius* 25
 - Tacitus, *Annals* 1.76
 - *Cod. Just.* 1.11.10
@@ -151,6 +153,7 @@ Curated bibliography: `bibliography/greece/r-7.4.md`.
 - *Epistles* 2.2.45
 - *HE* 7.15
 - *Life* 10
+- *Lives of the Sophists* 476
 - *Odyssey* 13
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)

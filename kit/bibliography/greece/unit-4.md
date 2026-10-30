@@ -8,12 +8,13 @@ Curated bibliography: `bibliography/greece/r-4.1.md`.
 
 ### Ancient works
 - Achilles, *Iliad* 21.34–135
-- Aeschylus, *Agamemnon* 114–138; 184–247; 1202–1212
+- Aeschylus, *Agamemnon* 114–138; 114–138, 184–247; 184–247; 1202–1212
 - Aphrodite Helen. Apollodorus, *Epitome* 3.2
 - Apollodorus, *Epit.* 3.32
-- Apollodorus, *Epitome* 3.3; 3.7; 3.8; 3.16; 3.17; 3.20; 3.21; 3.26; 3.29
+- Apollodorus, *Epitome* 3.3; 3.7; 3.8; 3.11–14; 3.16; 3.17; 3.20; 3.21; 3.26; 3.29
 - Apollodorus, *Library* 3.12.1–3
 - Euripides, *Helen* 17–21
+- Euripides, *Iphigenia among the Taurians* 20–24
 - Euripides, *Trojan Women* 924–931
 - Hyginus, *Fabulae* 91
 - Isocrates, *Helen* 64
@@ -21,7 +22,7 @@ Curated bibliography: `bibliography/greece/r-4.1.md`.
 - Lucian, *Dialogues of the Gods* 20
 - Lucian, *On the Dance* 46
 - Ovid, *Metamorphoses* 12.72–145; 13.162–170
-- Penelope. Euripides, *Iphigenia at Aulis* 49–71
+- Penelope. Euripides, *Iphigenia at Aulis* 49–71; 1532–1629
 - Pindar, *Isthmian* 8.26–48; 8.49–50
 - Pindar, *Nemean* 10.55–90
 - Pindar, *Paean* 8a
@@ -45,6 +46,7 @@ Curated bibliography: `bibliography/greece/r-4.1.md`.
 - Apollodorus 2.6.4; 3.10.7; 3.10.9; 3.12.3; 3.12.5; 3.13.5; 3.13.8
 - Athenaeus 8.334
 - Dionysius of Halicarnassus 1.61
+- Epitome 3.11–14; 3.21
 - Herodotus 2.113–120; 2.117; 7.33
 - Lucretius 1.84–101
 - Pausanias 1.22.6; 2.22.6; 3.19.11–13; 10.31.2
@@ -65,7 +67,9 @@ Curated bibliography: `bibliography/greece/r-4.2.md`.
 - *hyper moron* 20.30, 21.517
 
 ### Modern works
+- Arend (1933): title not given in the report
 - Walter Arend (1933): title not given in the report
+- Janko (1982): title not given in the report
 - Lord, *The Singer of Tales* (1960)
 - Leonard Muellner, *The Anger of Achilles* (1996)
 - Wolfgang Schadewaldt, *Iliasstudien* (1938)
@@ -143,27 +147,31 @@ Curated bibliography: `bibliography/greece/r-4.4.md`.
 Curated bibliography: `bibliography/greece/r-4.5.md`.
 
 ### Ancient works
+- Aeschylus, *Ag.* 1372–1398; 1372–1398, 1528
+- Aeschylus, *Eum.* 280–283; 280–283, 470–489, 681–710, 752–753; 470–489, 681–710; 657–666; 696; 704–706; 734–741
 - Answer Pindar, *Pythian* 11.22–25
 - Apollodorus, *Epit.* 6.14; 6.28
+- Aristotle, *Ath. Pol.* 25
 - Aristotle, *Constitution of the Athenians* 25
 - Aristotle, *Problems* 29.13
 - Delphi. Answer Pindar, *Nemean* 7; 7.34–47
 - Erinyes. Pindar, *Pythian* 11.17–37
+- Euripides, *El.* 86–87
 - Euripides, *Iphigenia among the Taurians* 940–986
-- *Ag.* 1372–1398
+- Homer, *Od.* 3.254–312; 4.512–537; 4.512–537, 11.405–434; 11.405–434
+- Pindar, *Pyth.* 11.17; 11.17–37
+- Sicily, *El.* 1347–1348
+- Sophocles, *El.* 97–99
 - *Andr.* 993–1008, 1085–1165
-- *Cho.* 164–234; 269–296; 734–765; 896–898; 1048–1062
+- *Cho.* 164–234; 269–296; 734–765; 889; 896–898; 1048–1062
 - *Choephori* 889
 - *El.* 32–37; 86–87; 97–99; 99; 524–544; 680–763; 1244; 1347–1348
 - *Epitome* 6.25
-- *Eum.* 280–283; 470–489, 681–710; 657–666; 696; 704–706; 734–741
 - *Fabulae* 122
 - *IT* 970–978; 1446–1467
 - *Il.* 9.144–145
-- *Od.* 3.254–312; 4.512–537; 4.512–537, 11.405–434; 11.405–434
 - *Or.* 491–525; 1653–1659
 - *Paean* 6; 6.117–120
-- *Pyth.* 11.17
 - *Varia Historia* 4.26
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)

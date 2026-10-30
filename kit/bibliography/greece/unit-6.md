@@ -16,7 +16,7 @@ Curated bibliography: `bibliography/greece/r-6.1.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Diodorus 11.29
-- Herodotus 1.84–86; 3.70–88; 5.30–35; 5.105; 6.106; 7.22–24; 7.141–143; 7.144; 7.152; 8.144
+- Herodotus 1.84–86; 3.70–88; 5.30–35; 5.105; 6.106; 6.111–117; 7.22–24; 7.60; 7.141–143; 7.144; 7.152; 8.144
 - Pausanias 10.13.9
 - Thucydides 1.93; 1.95–96; 1.132
 
@@ -33,7 +33,7 @@ Curated bibliography: `bibliography/greece/r-6.2.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Diodorus 12.4
-- Thucydides 1.89–118; 1.95; 1.96; 1.102; 1.102–103; 1.113–114; 1.115.1; 1.115–117; 8.48
+- Thucydides 1.89–118; 1.95; 1.95–117; 1.96; 1.102; 1.102–103; 1.102–115; 1.113–114; 1.115.1; 1.115–117; 8.48
 - Xenophon 1.1–9
 
 ### Modern works
@@ -54,7 +54,8 @@ Curated bibliography: `bibliography/greece/r-6.3.md`.
 ### Ancient works
 - Aristotle's, *Constitution of the Athenians* 29–33
 - Thirty, *Constitution of the Athenians* 34–35
-- Xenophon, *Hellenica* 1.7; 2.2.3; 2.2.20
+- Thucydides, *History* 1.24–8.109
+- Xenophon, *Hellenica* 1.1.23–2.4.43; 1.7; 2.1.20–32; 2.2.3; 2.2.20
 - *Acharnians* 515–539
 - *Apology* 32b
 - *Constitution of the Athenians* 35.4
@@ -174,7 +175,7 @@ Curated bibliography: `bibliography/greece/r-6.5.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Diodorus 12.53
-- Diogenes Laertius 2.40; 2.75; 2.106; 5.5; 6.3; 9.50; 9.54
+- Diogenes Laertius 2.40; 2.75; 2.106; 2.108; 5.5; 6.3; 7.2; 9.50; 9.54
 - Herodotus 1.29
 - Sextus 9.18
 - Strabo 13.1.54
@@ -216,7 +217,7 @@ Curated bibliography: `bibliography/greece/r-6.6.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Athenaeus 13.557
-- Diodorus 15.66; 15.72; 15.78–79; 15.84–87; 16.8.6–7; 16.23–30; 16.35; 16.53; 16.59–60; 16.84–85; 16.87; 16.89; 16.91–94
+- Diodorus 15.66; 15.72; 15.78–79; 15.84–87; 16.3–94; 16.8.6–7; 16.23–30; 16.35; 16.53; 16.59–60; 16.84–85; 16.85–86; 16.87; 16.89; 16.91–94
 - Pausanias 4.26–27; 8.27; 9.40.10
 
 ### Modern works
@@ -233,7 +234,7 @@ Curated bibliography: `bibliography/greece/r-6.7.md`.
 - Plutarch, *Alexander* 2–3; 5; 7; 9; 10; 27; 33; 38; 45; 47; 48–49; 50–51; 54; 55; 60; 66; 72; 76; 77
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Arrian 1.7; 1.8; 1.9; 1.11; 1.15.8; 2.3; 2.6–11; 2.14; 2.14.5; 2.18–24; 3.11–15; 3.16; 3.19.5; 3.21; 3.26.3–4; 4.5–6; 4.8–9; 4.10–12; 4.13–14; 5.8–19; 6.9–11; 6.22–26; 7.4; 7.6; 7.11.9; 7.14; 7.14.7; 7.14.8; 7.16–17; 7.27
+- Arrian 1.7; 1.7–9; 1.8; 1.9; 1.11; 1.13–16; 1.15.8; 2.3; 2.6–11; 2.14; 2.14.5; 2.18–24; 3.7.6; 3.11–15; 3.16; 3.19.5; 3.21; 3.26.3–4; 4.5–6; 4.8–9; 4.10–12; 4.13–14; 5.8–19; 5.8–29; 6.9–11; 6.22–26; 7.4; 7.6; 7.11.9; 7.14; 7.14.7; 7.14.8; 7.16–17; 7.27
 - Athenaeus 12.538
 - Curtius 3.8–12; 5.8–13; 8.1–2; 8.6–8; 8.13–14; 9.2–3; 10.6–10
 - Diodorus 16.86; 16.93–94; 17.12; 17.14; 17.17; 17.40–46; 17.70; 17.74.3; 17.77; 17.93–95; 17.108; 17.108.6; 17.115; 18.2; 18.4; 18.8
@@ -243,5 +244,7 @@ Curated bibliography: `bibliography/greece/r-6.7.md`.
 
 ### Modern works
 - A. B. Bosworth, *Conquest and Empire* (1988)
+- Bosworth, *Conquest and Empire* (1988)
 - Christianity. W. W. Tarn, *Alexander the Great* (1948)
+- Tarn, *Alexander the Great* (1948)
 

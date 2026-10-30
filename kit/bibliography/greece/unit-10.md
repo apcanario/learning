@@ -19,6 +19,8 @@ Curated bibliography: `bibliography/greece/r-10.1.md`.
 - Blest. Xenophon, *Symposium* 8.31
 - Euripides, *Andromache* 1259–1262
 - Euripides, *Hecuba* 37–41
+- Fulgentius, *Mythologiae* 3.7
+- Homer, *Iliad* 9; 9.410–416; 9.485–495; 9.667–668; 16.143–144; 21.166–167; 24.59–63
 - Hyginus, *Fabulae* 96; 107
 - In Plato, *Symposium* 179e–180b
 - Lycophron, *Alexandra* 178–179
@@ -35,8 +37,6 @@ Curated bibliography: `bibliography/greece/r-10.1.md`.
 - Xenophon, *Symposium* 8.31
 - *Aeneid* 6.57
 - *Homeric Hymn to Demeter* 231–262
-- *Iliad* 9; 9.410–416; 9.485–495; 9.667–668; 16.143–144; 21.166–167; 24.59–63
-- *Mythologiae* 3.7
 - *Nemean* 4.49–50
 - *Odyssey* 11; 11.467–540; 11.488–491; 11.506–509; 24.36–94; 24.76–77
 - *Olympian* 2.79–80
@@ -69,11 +69,12 @@ Curated bibliography: `bibliography/greece/r-10.2.md`.
 
 ### Ancient works
 - Apollodorus, *Epitome* 2.10–15; 5.1
+- Euripides, *IT* 354–377
 - Euripides, *Orestes* 46
 - Sophocles, *Electra* 99
 - *Alexandra* 1369
-- *IA* 1148–1156
-- *Iliad* 2.100–108
+- *IA* 1148–1156; 1368–1401, 1532–1629
+- *Iliad* 2.100–108; 2.494–759
 - *Odyssey* 11
 - *Poetics* 1454a
 - *Pythian* 11.22–25
@@ -105,14 +106,14 @@ Curated bibliography: `bibliography/greece/r-10.3.md`.
 - Euripides, *Andromache* 173–176; 1243–1252
 - Euripides, *Hecuba* 3; 518–582
 - Euripides, *Trojan Women* 721–725; 919–922
-- Homer, *Iliad* 24.495–497
+- Homer, *Iliad* 20.215–240; 24.495–497
 - Pindar, *Paean* 6; 6.112–117; 8a
 - Plautus, *Bacchides* 953–954
 - Quintus Smyrnaeus, *Posthomerica* 1
 - Sophocles, *Philoctetes* 604–613
 - Suetonius, *Divus Julius* 6; 6.1
 - Virgil, *Aeneid* 1.267–288; 2.506–558; 3.294–355; 6.494–534
-- *Iliad* 3.203–224; 16.718–719; 24.495–497
+- *Iliad* 3.203–224; 16.718–719; 21.84–91; 24.495–497
 - *Nemean* 7.40–47
 - *Odyssey* 8.517–520; 11.421–423
 - *atasthaliai* 22.104
@@ -160,11 +161,13 @@ Curated bibliography: `bibliography/greece/r-10.4.md`.
 - Epitome 3.8
 
 ### Modern works
+- Adorno (1944): title not given in the report
 - Adorno, *Dialectic of Enlightenment* (1944)
 - Atwood, *The Penelopiad* (2005)
 - C. M. Bowra, *Sophoclean Tragedy* (1944)
 - Malcolm Davies, *The Greek Epic Cycle* (1989)
 - Timothy Gantz, *Early Greek Myth* (1993)
+- Kazantzakis (1938): title not given in the report
 - Bernard Knox, *The <em>Ajax</em> of Sophocles* (1961)
 - Nagy, *The Best of the Achaeans* (1979)
 - W. B. Stanford, *The Ulysses Theme* (1954)
@@ -247,7 +250,9 @@ Curated bibliography: `bibliography/greece/r-10.8.md`.
 ### Ancient works
 - Apollodorus, *Epitome* 5.22; 6.9; 6.10
 - Aristotle, *On Marvellous Things Heard* 107
-- Homer, *Iliad* 1.69–72; 1.250–2; 2.527–30; 2.557–8; 2.558; 2.645–52; 2.721–5; 2.729–33; 5; 7.219; 8.266–72; 10.1; 11.786–7; 18.1–21; 19.326–7
+- Euripides, *Andromache* 1085–165; 1243–9
+- Euripides, *Helen* 87–150
+- Homer, *Iliad* 1.69–72; 1.250–2; 2.527–30; 2.557–8; 2.558; 2.645–52; 2.721–5; 2.729–33; 5; 7.219; 8.266–72; 10.1; 11.786–7; 16.786–857; 18.1–21; 19.326–7
 - Isocrates, *Evagoras* 18
 - Lycophron, *Alexandra* 348–64; 1141–73
 - Ovid, *Metamorphoses* 14.457–511
@@ -257,7 +262,6 @@ Curated bibliography: `bibliography/greece/r-10.8.md`.
 - *Aeneid* 3.121; 3.400–1; 3.401–2; 11.243–95
 - *Agamemnon* 104–257
 - *American Journal of Archaeology* 112, 2008
-- *Andromache* 1085–165
 - *Classical Antiquity* 15, 1996
 - *Nemean* 4.46–7; 7; 7.20–30, 8.23–34; 10.7
 - *Odes* 1.7.21–32
@@ -271,7 +275,7 @@ Curated bibliography: `bibliography/greece/r-10.8.md`.
 - Apollodorus 1.8.5–6
 - Herodotus 5.66; 5.94–5; 6.35; 6.61; 7.159–61; 8.64
 - Pausanias 10.24.6
-- Strabo 6.1.3; 6.1.15; 9.1.10; 14.5.10
+- Strabo 6.1.3; 6.1.15; 6.3.9; 9.1.10; 14.5.10
 
 ### Modern works
 - W. M. Clarke, *Achilles and Patroclus in Love* (1978)
@@ -321,7 +325,7 @@ Curated bibliography: `bibliography/greece/r-10.10.md`.
 - *Studia Troica* 9, 1999
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Herodotus 1.1–5; 7.43
+- Herodotus 1.1–5; 2.145; 7.43
 
 ### Modern works
 - William Calder, *Schliemann on Schliemann* (1972)
@@ -332,6 +336,7 @@ Curated bibliography: `bibliography/greece/r-10.10.md`.
 - Penelope Mountjoy, *Studia Troica* (1999)
 - Susan Sherratt, *Troy in recent perspective* (2002)
 - David Traill (1995): title not given in the report
+- Troy VIIa (1999): title not given in the report
 
 ## 10.11 Homeric society and Homeric warfare
 
@@ -340,7 +345,7 @@ Curated bibliography: `bibliography/greece/r-10.11.md`.
 ### Ancient works
 - *Iliad* 1; 1.37–42; 1.447–474; 2.100–108; 3.125–128; 4.297–309; 6.119–236; 6.145–211; 6.168–170; 6.433–439; 9; 9.128–140; 10.261–265; 11.241–245; 12.310–321; 13.130–133; 15.679–684; 18.497–508
 - *Journal of Hellenic Studies* 85, 1965; 94, 1974
-- *Museum Helveticum* 52, 1995
+- *Museum Helveticum* 52; 52, 1995
 - *Odyssey* 1.356–359; 1.394–396; 2.26–27; 3.418–463; 4.219–232; 6.7–10; 6.273–288; 8.317–320; 8.523–531; 9.270–271; 11; 15.403–484; 19.177
 - *Works and Days* 38–39, 263–264
 

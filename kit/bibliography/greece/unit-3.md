@@ -29,7 +29,7 @@ Curated bibliography: `bibliography/greece/r-3.1.md`.
 - *Theogony* 270–283; 276–277; 278–279; 280–283
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Apollodorus 2.2.1; 2.4.1; 2.4.2; 2.4.3; 2.4.4; 2.4.5
+- Apollodorus 2.2.1; 2.4.1; 2.4.1–5; 2.4.2; 2.4.3; 2.4.4; 2.4.5
 - Herodotus 1.67–68; 2.44; 2.91; 5.67; 6.53–54; 7.61
 - Ovid 4.782–786
 - Pausanias 2.16.2; 2.16.3; 2.18.1; 5.13.4–6; 6.6.7–11
@@ -54,7 +54,7 @@ Curated bibliography: `bibliography/greece/r-3.2.md`.
 
 ### Ancient works
 - Answer Sophocles, *Women of Trachis* 930–931
-- Apollodorus, *Library* 2.4.6; 2.5.1–12
+- Apollodorus, *Library* 2.4.6; 2.4.6–8; 2.5.1–12
 - Euripides, *Heracles* 394–399
 - Euripides', *Heracles* 1322–1337
 - Hesiod, *Theogony* 287–294; 313–318; 950–955
@@ -100,7 +100,7 @@ Curated bibliography: `bibliography/greece/r-3.3.md`.
 - Euripides, *Suppliant Women* 403–408
 - Ovid, *Heroides* 10
 - Ovid, *Metamorphoses* 12
-- Plutarch, *Theseus* 36.1; 36.2
+- Plutarch, *Theseus* 8–11; 35.5; 36.1; 36.2
 - *Cimon* 8.5–7
 - *Helen* 18–20; 35–37
 - *Iliad* 1.265; 2.552; 3.144
@@ -142,12 +142,13 @@ Curated bibliography: `bibliography/greece/r-3.5.md`.
 - Aeschylus, *Seven* 375–652; 423–456; 742; 742–757; 752–757; 782–783; 805–820
 - Answer, *Odyssey* 11.260–265; 15.244–247
 - Apolline. In Aeschylus, *Seven against Thebes* 742–757
-- Apollodorus, *Library* 3.1.1
+- Apollodorus, *Library* 3.1.1; 3.5.6
 - Callimachus, *Hymn* 5; 5.107–118
 - Euripides, *Bacchae* 1–42, 88–104; 26–31; 337–340; 1330–1339
 - Euripides, *Phoenician Women* 657–675, 931–944; 1627–1766
 - Euripides, *Suppliants* 131–150
 - Hesiod, *Theogony* 326–327; 937, 975–978; 940–942
+- Homer, *Iliad* 4.382–398; 14.321–322; 23.346–347; 23.679; 24.602–617
 - Hyginus, *Fabulae* 7–8
 - Ovid, *Met.* 3; 3.1–130; 3.138–252; 3.253–315; 3.511–733; 4.563–603; 6.146–312
 - Ovid, *Metamorphoses* 2.833–875
@@ -156,7 +157,6 @@ Curated bibliography: `bibliography/greece/r-3.5.md`.
 - *Antigone* 49–52
 - *Homeric Hymn* 1
 - *Idyll* 26
-- *Iliad* 4.382–398; 14.321–322; 23.346–347; 23.679; 24.602–617
 - *Laws* 836c
 - *OC* 91; 1313–1325
 - *OT* 718, 1034; 733–734
@@ -237,11 +237,12 @@ Curated bibliography: `bibliography/greece/r-3.7.md`.
 - Conon, *Narrations* 24
 - Euripides, *Alcestis* 357–362
 - Euripides, *Helen* 1469–1475
+- Homer, *Iliad* 20.231–235; 24; 24.602–617
 - Isocrates, *Busiris* 8
 - Leda. Euripides, *Helen* 17–21
 - Longus, *Daphnis and Chloe* 3.23
 - Lucian, *Dialogues of the Gods* 14
-- Ovid, *Met.* 1.163–252; 1.452–567; 1.750–2.400; 2.401–530; 3.316–338; 3.339–510; 6.1–145; 6.146–312; 6.382–400; 8.183–235; 8.611–724; 10.155–161; 10.162–219; 10.243–297; 10.503–739; 11.85–145
+- Ovid, *Met.* 1.163–252; 1.452–567; 1.750–2.400; 2.401–530; 3.316–338; 3.339–510; 6.1–145; 6.146–312; 6.382–400; 8.183–235; 8.611–724; 10.1–85; 10.155–161; 10.162–219; 10.243–297; 10.503–739; 11.85–145
 - Parthenius, *Erotika Pathemata* 15
 - Plato, *Laws* 636c
 - Plato, *Republic* 565d
@@ -254,7 +255,6 @@ Curated bibliography: `bibliography/greece/r-3.7.md`.
 - *Ars Amatoria* 2.21–96
 - *Frogs* 911–920
 - *Homeric Hymn to Aphrodite* 202–217
-- *Iliad* 20.231–235; 24; 24.602–617
 - *Isthmian* 5.14
 - *Lament for Bion* 123–124
 - *Odyssey* 11.298–304; 17.485–487

@@ -10,9 +10,9 @@ Curated bibliography: `bibliography/greece/r-12.1.md`.
 - Aristotle, *Physics* 1.4, 187a; 186a; 198b; 204b; 209a; 233a
 - Plutarch, *Against Colotes* 1108
 - Plutarch, *Pericles* 26
+- Simplicius, *Commentary on the Physics* 24.26–25.1
 - *Against the Mathematicians* 7.49; 7.135–139
 - *Commentary on Aristotle's Physics* 144.25–28
-- *Commentary on the Physics* 24.26–25.1
 - *Empédocle* 1965–69
 - *Metaphysics* 983b; 984b; 985a; 985b; 986a; 986b; 1005b; 1009b
 - *Natural History* 2.149
@@ -49,6 +49,7 @@ Curated bibliography: `bibliography/greece/r-12.1.md`.
 - G. E. L. Owen, *Zeno and the Mathematicians* (1958)
 - Karl Reinhardt, *Parmenides und die Geschichte der griechischen Philosophie* (1916)
 - David Runia, *Aëtiana* (1997)
+- Runia, *Aëtiana* (1997)
 - Bertrand Russell, *The Principles of Mathematics* (1903)
 - Paul Tannery (1885): title not given in the report
 - Simon Trépanier, *Empedocles on the Ultimate Symmetry of the World* (2003)
@@ -74,7 +75,10 @@ Curated bibliography: `bibliography/greece/r-12.2.md`.
 
 ### Ancient works
 - Cicero, *On Invention* 1.51–53
+- Plato, *Apology* 21a, 34a, 38b, 40c–41c
+- Plato, *Theaetetus* 151e–183c; 161c; 177c–179b
 - Sextus, *Against the Mathematicians* 7.60; 7.65–87; 7.79–80; 7.389–390
+- Xenophon, *Apology* 2, 5–9, 14, 23
 - *Apology* 2; 4; 14; 31c; 33e
 - *Busiris* 5
 - *Clouds* 449
@@ -97,7 +101,6 @@ Curated bibliography: `bibliography/greece/r-12.2.md`.
 - *Sophistical Refutations* 34, 183b
 - *Symposium* 1.1; 216e
 - *The Gay Science* 340
-- *Theaetetus* 161c; 177c–179b
 - *paignion* 21
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
@@ -151,7 +154,7 @@ Curated bibliography: `bibliography/greece/r-12.3.md`.
 - *Politics* 1264b
 - *Republic* 10; 506d; 621b
 - *Seventh Letter* 327a
-- *Timaeus* 20d–25d; 26e
+- *Timaeus* 20d–25d; 26e; 53c–57c
 - *eikōs mythos* 29d
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
@@ -203,27 +206,28 @@ Curated bibliography: `bibliography/greece/r-12.3.md`.
 Curated bibliography: `bibliography/greece/r-12.4.md`.
 
 ### Ancient works
+- Aristotle, *On the Soul* 2.3; 3.5
+- Halicarnassus, *First Letter to Ammaeus* 5
+- Plutarch, *Sulla* 26
 - *Academica* 2.119
-- *First Letter to Ammaeus* 5
 - *History of Animals* 491a
 - *Inferno* 4.131, 4.144
 - *Life of Plotinus* 24
 - *Metaphysics* 1028a
 - *Nicomachean Ethics* 9.9; 1102a; 1145b
 - *On the Heavens* 1.2–3
-- *On the Soul* 3.5
 - *Physics* 8.10; 200a
 - *Politics* 1256b; 1278b
 - *Posterior Analytics* 71b
 - *Prior Analytics* 25b
 - *Sophistical Refutations* 34, 184b
-- *Sulla* 26
 - *Topics* 100b
 - *Varia Historia* 14.1
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Athenaeus 1.3
 - Diogenes Laertius 5.1–35; 5.2; 5.3; 5.7–8; 5.11–16
-- Strabo 13.1.57
+- Strabo 13.1.54; 13.1.57
 
 ### Modern works
 - J. L. Ackrill, *Aristotle on Eudaimonia* (1974)
@@ -281,7 +285,7 @@ Curated bibliography: `bibliography/greece/r-12.5.md`.
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Athenaeus 9.401
-- Diogenes Laertius 6.22
+- Diogenes Laertius 1.15; 2.86–99; 6.22
 
 ### Modern works
 - Branham (1996): title not given in the report
@@ -318,7 +322,7 @@ Curated bibliography: `bibliography/greece/r-12.6.md`.
 - *Vigiliae Christianae* 42, 1988
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Diogenes Laertius 10.1; 10.31; 10.31–32; 10.136; 10.137
+- Diogenes Laertius 10.1; 10.2; 10.31; 10.31–32; 10.136; 10.136–137; 10.137
 - Lucretius 2.216–293
 
 ### Modern works
@@ -354,9 +358,10 @@ Curated bibliography: `bibliography/greece/r-12.7.md`.
 - Cicero, *Academica* 2.77; 2.126
 - Cicero, *On Divination* 1.125–127; 2.88, 1.6
 - Cicero, *On Duties* 3.50–57
+- Cicero, *On Ends* 3.16–22
 - Cicero, *On Fate* 28–30; 39
 - Cicero, *On the Nature of the Gods* 2; 2.21; 2.57; 2.118
-- Cicero's, *On Ends* 3; 3.16–22; 3.22; 4; 4.79
+- Cicero's, *On Ends* 4
 - Clement, *Stromateis* 2.21
 - Epictetus, *Discourses* 2.19.2–4
 - Galen, *On the Doctrines of Hippocrates and Plato* 4.2; 4–5
@@ -371,16 +376,17 @@ Curated bibliography: `bibliography/greece/r-12.7.md`.
 - *Bryn Mawr Classical Review* 2025.01.21
 - *Handbook* 53
 - *Letters to Atticus* 16.11.4
+- *On Ends* 3; 3.16–22; 3.22; 4; 4.79
 - *Outlines* 2.111
 - *Physics* 205a
 - *Tusculan Disputations* 1.79
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Athenaeus 5.211; 13.561
-- Diogenes Laertius 7.2–3; 7.32–33; 7.34; 7.85–86; 7.134; 7.142; 7.168–170; 7.183
+- Diogenes Laertius 7.2–3; 7.32–33; 7.34; 7.85–86; 7.87; 7.87–88; 7.88; 7.134; 7.142; 7.168–170; 7.183
 - Gellius 7.1
 - Pausanias 1.15
-- Stobaeus 2.76
+- Stobaeus 2.75–76; 2.76
 - Strabo 4.4.5
 
 ### Modern works
@@ -409,14 +415,15 @@ Curated bibliography: `bibliography/greece/r-12.8.md`.
 - Cicero, *Brutus* 306
 - Cicero, *On Fate* 23
 - Eusebius, *Preparation for the Gospel* 14.18.1–5; 14.18.29
+- Malalas, *Chronicle* 18.47
 - Mode, *Outlines* 1
+- Plato, *Republic* 509b
 - Porphyry, *Life of Plotinus* 3
 - Sextus, *Outlines* 1.235
 - *Academica* 1.13; 1.15–42; 1.45; 2.11–12; 2.77; 2.78, 2.139; 2.98–104
 - *Against Colotes* 1122a
 - *Against the Mathematicians* 1–6; 7.49–52; 7.150–157; 7.166–189; 8.481
 - *Bibliotheca* 212
-- *Chronicle* 18.47
 - *Church History* 7.15
 - *City of God* 10.9
 - *Codex Justinianus* 1.11.10
@@ -425,11 +432,11 @@ Curated bibliography: `bibliography/greece/r-12.8.md`.
 - *On the Mysteries* 2.11
 - *Outlines* 1.8; 1.13; 1.180–186; 1.224–225; 1.235
 - *Outlines of Pyrrhonism* 1.232–234
-- *Republic* 509b
 - *Stromateis* 1.22
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Diogenes Laertius 4.28–45; 4.62; 4.67; 9.61–108; 9.62
+- Agathias 2.30–31
+- Diogenes Laertius 4.28–45; 4.62; 4.67; 9.61–108; 9.61–112; 9.62; 9.109–112
 
 ### Modern works
 - Barnes (1982): title not given in the report

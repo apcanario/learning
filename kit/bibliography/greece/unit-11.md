@@ -13,11 +13,13 @@ Curated bibliography: `bibliography/greece/r-11.1.md`.
 - Plutarch, *Alexander* 2; 9.6–11; 10.1–4; 10.6–7; 51.6
 - Plutarch, *Demetrius* 42
 - Plutarch, *Moralia* 292e
-- Thebes Plutarch, *Pelopidas* 26; 26.5
+- Plutarch, *Pelopidas* 26
+- Thebes Plutarch, *Pelopidas* 26
 - Theophrastus, *Historia Plantarum* 3.12.2
 - Xenophon, *Hellenica* 5.2.13
 - *A History of Macedonia* 1972–88
 - *Gorgias* 470d–471d
+- *Pelopidas* 26.5
 - *Politics* 5.1311b; 7.1324b
 - *Strategemata* 4.1.6
 - *Syrian Wars* 63
@@ -28,7 +30,7 @@ Curated bibliography: `bibliography/greece/r-11.1.md`.
 - Athenaeus 1.18; 13.557
 - Curtius 6.8.25; 6.9.34–36
 - Demosthenes 2.17; 9.48–50
-- Diodorus 15.71; 16.2; 16.2.4–5; 16.3; 16.8.6–7; 16.92.5; 16.93; 16.93–94; 17.2.4–6; 17.16.3–4; 17.57.2
+- Diodorus 15.71; 16.2; 16.2.4–5; 16.3; 16.3.1–2; 16.8.6–7; 16.92.5; 16.93; 16.93–94; 17.2.4–6; 17.16.3–4; 17.57.2
 - Herodotus 1.56; 5.22
 - Livy 40.6
 - Pausanias 5.20.9–10
@@ -65,7 +67,7 @@ Curated bibliography: `bibliography/greece/r-11.2.md`.
 - Xenophon, *Hellenica* 6.4.12
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Arrian 1.7.5; 1.11.3; 1.12.9–10; 1.14.4; 1.15.8; 1.16.4; 1.21.1; 2.4.8–11; 2.7.1; 2.7.2; 2.8.8; 2.10.7; 2.11.8; 2.15.7–16.8; 2.20; 2.25; 3.8.6; 3.11.3; 3.12.5; 3.13.5–6; 3.15.6; 4.3.3; 4.18.4–19.4; 4.28–30; 5.9–11; 5.14.1; 5.15.4; 5.18.3; 5.19.3
+- Arrian 1.7.5; 1.11.3; 1.12.9–10; 1.14.4; 1.15.8; 1.16.4; 1.21.1; 2.4.8–11; 2.7.1; 2.7.2; 2.8.8; 2.10.7; 2.11.8; 2.15.7–16.8; 2.19; 2.19–23; 2.20; 2.25; 3.8.6; 3.11.3; 3.12.5; 3.13.5–6; 3.15.6; 4.3.3; 4.18.4–19.4; 4.28–30; 5.9–11; 5.14.1; 5.15.4; 5.18.3; 5.19.3
 - Curtius 3.11.27; 7.11
 - Diodorus 16.3; 16.86; 17.89
 - Livy 35.14
@@ -95,7 +97,7 @@ Curated bibliography: `bibliography/greece/r-11.3.md`.
 - Athenaeus 12.514; 13.576
 - Curtius 3.2.10–19; 4.10.18–34; 5.1.17–23; 5.4.33–34; 5.7; 5.7.2–7
 - Diodorus 16.40–51; 17.5.3–6; 17.18.2–3; 17.23.5; 17.30; 17.71.1; 17.72
-- Herodotus 1.114; 5.52–54; 8.98
+- Herodotus 1.114; 3.89–97; 5.52–54; 8.98
 
 ### Modern works
 - Ernst Badian, *Darius III* (2000)
@@ -115,16 +117,16 @@ Curated bibliography: `bibliography/greece/r-11.4.md`.
 - Arrian, *Anabasis* 2.15.7–16.7
 - Dinarchus, *Against Demosthenes* 1.94
 - Isocrates, *Panegyricus* 151
+- Plutarch, *Alexander* 2.1; 15.8
 - Plutarch, *Lysander* 18
 - Plutarch, *Moralia* 219e; 842d
-- *Alexander* 2.1; 15.8
 - *Iliad* 5.340
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Arrian 1.11.5; 1.11.7–8; 1.11.8; 1.12.1; 2.26.4–27.2; 3.3.4–6; 3.16.4–5; 4.8.1–2; 4.14.3; 5.1.1–2.7; 5.3.1–4; 6.10.2; 7.14.4; 7.16.5–17.6; 7.23.2
+- Arrian 1.11.5; 1.11.7–8; 1.11.8; 1.11–12; 1.12.1; 2.26.4–27.2; 3.3.4–6; 3.3–4; 3.16.4–5; 4.8.1–2; 4.10–12; 4.14.3; 5.1.1–2.7; 5.3.1–4; 6.10.2; 7.14; 7.14.4; 7.16.5–17.6; 7.23.2
 - Athenaeus 6.251; 6.253
 - Diodorus 16.92.5; 17.115; 18.8.2–5
-- Herodotus 1.134; 7.136
+- Herodotus 1.134; 5.22; 7.136
 - Pausanias 5.20.9–10
 - Plutarch 2.5; 27.8; 33.1
 - Strabo 17.1.43
@@ -146,14 +148,14 @@ Curated bibliography: `bibliography/greece/r-11.5.md`.
 ### Ancient works
 - Arrian, *Anabasis* 3.6.5
 - Cicero, *Tusculan Disputations* 3.21
-- Plutarch, *Alexander* 10; 21; 39; 45; 47; 48–49; 50–51; 52; 54; 55; 68; 70; 72; 74; 77
+- Plutarch, *Alexander* 10; 21; 39; 45; 47; 48–49; 50–51; 50–52; 52; 54; 55; 68; 70; 72; 74; 77
 - Plutarch, *Demosthenes* 25–26
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Arrian 3.6.4–7; 3.19.5; 3.26.3–4; 3.27.4; 3.27.5; 4.8.2–3; 4.8.9; 4.9.7; 4.13–14; 4.14.3; 5.27; 6.2.1; 6.27.3–5; 6.29–30; 6.30.3; 7.4.4; 7.6.1; 7.6.3–5; 7.8.3; 7.9–10; 7.11.1–4; 7.11.8–9; 7.12.5–7; 7.13.1; 7.14.7; 7.14.10; 7.27
+- Arrian 3.6.4–7; 3.19.5; 3.26; 3.26.3–4; 3.27.4; 3.27.5; 4.8.2–3; 4.8.9; 4.8–9; 4.9.7; 4.13–14; 4.14.3; 5.27; 6.2.1; 6.27.3–5; 6.29–30; 6.30.3; 7.4.4; 7.5.3; 7.6.1; 7.6.3–5; 7.8.3; 7.9–10; 7.11.1–4; 7.11.8–9; 7.12.5–7; 7.13.1; 7.14.7; 7.14.10; 7.27
 - Athenaeus 1.18; 12.539; 13.595
-- Curtius 3.12.15–17; 6.8.25; 7.2; 8.4.21–30; 8.6–8; 10.1.1–8
-- Diodorus 17.37.5–6; 17.77.4–7; 17.80; 17.80.4; 17.99.5–6; 17.106.3; 17.108.1–3; 17.108.3; 17.108.6; 17.115; 18.8.2–5; 18.60–61; 20.28
+- Curtius 3.12.15–17; 6.7–7.2; 6.8.25; 7.2; 8.4.21–30; 8.6–8; 10.1.1–8
+- Diodorus 17.37.5–6; 17.77.4–7; 17.79–80; 17.80; 17.80.4; 17.99.5–6; 17.106.3; 17.108.1–3; 17.108.3; 17.108.6; 17.109.2; 17.115; 18.8.2–5; 18.60–61; 20.28
 
 ### Modern works
 - Badian, *Alexander the Great and the Unity of Mankind* (1958)
@@ -168,7 +170,7 @@ Curated bibliography: `bibliography/greece/r-11.5.md`.
 Curated bibliography: `bibliography/greece/r-11.6.md`.
 
 ### Ancient works
-- Arrian, *Anabasis* 3.21.10
+- Arrian, *Anabasis* 3.21.10; 5.15.4
 - Plutarch, *Alexander* 47.7–8; 59.6–7; 62; 66.4–5; 67
 - *Indica* 19.7
 - *Meteorologica* 1.13
@@ -207,6 +209,7 @@ Curated bibliography: `bibliography/greece/r-11.7.md`.
 
 ### Modern works
 - Badian, *The Eunuch Bagoas* (1958)
+- Baynham (1998): title not given in the report
 - Elizabeth Baynham, *Alexander the Great: The Unique History of Quintus Curtius* (1998)
 - A. B. Bosworth, *The Death of Alexander the Great: Rumour and Propaganda* (1971)
 - Bosworth, *From Arrian to Alexander* (1988)
@@ -214,6 +217,7 @@ Curated bibliography: `bibliography/greece/r-11.7.md`.
 - Claudia Ciancaglini (2001): title not given in the report
 - R. M. Errington, *Bias in Ptolemy's History of Alexander* (1969)
 - J. R. Hamilton, *Plutarch, Alexander: A Commentary* (1969)
+- Hamilton’s (1988): title not given in the report
 - N. G. L. Hammond, *The Royal Journal of Alexander* (1988)
 - Hammond, *Three Historians of Alexander the Great* (1993)
 - Waldemar Heckel, *The Last Days and Testament of Alexander the Great* (1988)
@@ -231,6 +235,7 @@ Curated bibliography: `bibliography/greece/r-11.8.md`.
 ### Ancient works
 - Appian, *Mithridatic Wars* 117
 - Arrian, *Anabasis* 7.14
+- Libanius, *Oration* 49.12
 - Pliny, *Natural History* 37.10
 - Plutarch, *Alexander* 72; 76
 - Plutarch, *Antony* 54
@@ -244,17 +249,17 @@ Curated bibliography: `bibliography/greece/r-11.8.md`.
 - *Epistles* 94.62
 - *Geschichte des Hellenismus* 1836–43
 - *Jewish Antiquities* 11.317–345
-- *Oration* 49.12
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Arrian 7.11.9; 7.16.5–17.6; 7.16–17; 7.19.3–6; 7.22; 7.24; 7.25; 7.26.3; 7.27
-- Curtius 9.8.22; 10.2.4; 10.5.4; 10.10.14–17
+- Curtius 9.8.22; 10.2.4; 10.5.4; 10.10.9–13; 10.10.14–17
 - Dio 68.29–30; 76.13.2; 78.7–9
-- Diodorus 17.112; 17.116; 17.117.4; 17.118; 18.3.5; 18.4.4–6; 18.8.2–5; 18.28; 18.60–61
+- Diodorus 17.112; 17.116; 17.117.4; 17.118; 18.3.5; 18.4.4–6; 18.8.2–5; 18.26–28; 18.28; 18.60–61
 - Herodian 4.8; 4.8.9
 - Justin 12.13–14; 12.15
 - Livy 26.19
-- Pausanias 1.6.2; 1.6.3
+- Lucan 10.14–52
+- Pausanias 1.6.2; 1.6.3; 1.7.1
 - Strabo 17.1.8
 
 ### Modern works
