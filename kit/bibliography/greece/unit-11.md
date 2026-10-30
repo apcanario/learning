@@ -8,6 +8,7 @@ Curated bibliography: `bibliography/greece/r-11.1.md`.
 
 ### Ancient works
 - Aelian, *Varia Historia* 14.17
+- Aristotle, *Politics* 5.1311b; 7.1324b
 - Aristotle, *Rhetoric* 2.23, 1398a
 - Hyginus, *Fabulae* 219
 - Plutarch, *Alexander* 2; 9.6–11; 10.1–4; 10.6–7; 51.6
@@ -20,7 +21,6 @@ Curated bibliography: `bibliography/greece/r-11.1.md`.
 - *A History of Macedonia* 1972–88
 - *Gorgias* 470d–471d
 - *Pelopidas* 26.5
-- *Politics* 5.1311b; 7.1324b
 - *Strategemata* 4.1.6
 - *Syrian Wars* 63
 - *Tactica* 16.6
@@ -150,12 +150,13 @@ Curated bibliography: `bibliography/greece/r-11.5.md`.
 - Cicero, *Tusculan Disputations* 3.21
 - Plutarch, *Alexander* 10; 21; 39; 45; 47; 48–49; 50–51; 50–52; 52; 54; 55; 68; 70; 72; 74; 77
 - Plutarch, *Demosthenes* 25–26
+- *Moralia* 329
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Arrian 3.6.4–7; 3.19.5; 3.26; 3.26.3–4; 3.27.4; 3.27.5; 4.8.2–3; 4.8.9; 4.8–9; 4.9.7; 4.13–14; 4.14.3; 5.27; 6.2.1; 6.27.3–5; 6.29–30; 6.30.3; 7.4.4; 7.5.3; 7.6.1; 7.6.3–5; 7.8.3; 7.9–10; 7.11.1–4; 7.11.8–9; 7.12.5–7; 7.13.1; 7.14.7; 7.14.10; 7.27
 - Athenaeus 1.18; 12.539; 13.595
-- Curtius 3.12.15–17; 6.7–7.2; 6.8.25; 7.2; 8.4.21–30; 8.6–8; 10.1.1–8
-- Diodorus 17.37.5–6; 17.77.4–7; 17.79–80; 17.80; 17.80.4; 17.99.5–6; 17.106.3; 17.108.1–3; 17.108.3; 17.108.6; 17.109.2; 17.115; 18.8.2–5; 18.60–61; 20.28
+- Curtius 3.12.15–17; 6.7–7.2; 6.8.25; 8.4.21–30; 8.6–8; 10.1.1–8
+- Diodorus 17.37.5–6; 17.77.4–7; 17.79–80; 17.80.4; 17.99.5–6; 17.106.3; 17.108.1–3; 17.108.3; 17.108.6; 17.109.2; 17.115; 18.8.2–5; 18.60–61; 20.28
 
 ### Modern works
 - Badian, *Alexander the Great and the Unity of Mankind* (1958)

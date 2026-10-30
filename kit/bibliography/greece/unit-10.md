@@ -32,7 +32,7 @@ Curated bibliography: `bibliography/greece/r-10.1.md`.
 - Pindar, *Nemean* 8.23–34
 - Plato, *Apology* 28c
 - Plato, *Symposium* 179e–180b
-- Plutarch, *Alexander* 15; 15.8–9
+- Plutarch, *Alexander* 15.8–9
 - Statius, *Achilleid* 1.133–134; 1.207–960; 2.96–167
 - Xenophon, *Symposium* 8.31
 - *Aeneid* 6.57
@@ -111,7 +111,7 @@ Curated bibliography: `bibliography/greece/r-10.3.md`.
 - Plautus, *Bacchides* 953–954
 - Quintus Smyrnaeus, *Posthomerica* 1
 - Sophocles, *Philoctetes* 604–613
-- Suetonius, *Divus Julius* 6; 6.1
+- Suetonius, *Divus Julius* 6.1
 - Virgil, *Aeneid* 1.267–288; 2.506–558; 3.294–355; 6.494–534
 - *Iliad* 3.203–224; 16.718–719; 21.84–91; 24.495–497
 - *Nemean* 7.40–47
@@ -252,7 +252,7 @@ Curated bibliography: `bibliography/greece/r-10.8.md`.
 - Aristotle, *On Marvellous Things Heard* 107
 - Euripides, *Andromache* 1085–165; 1243–9
 - Euripides, *Helen* 87–150
-- Homer, *Iliad* 1.69–72; 1.250–2; 2.527–30; 2.557–8; 2.558; 2.645–52; 2.721–5; 2.729–33; 5; 7.219; 8.266–72; 10.1; 11.786–7; 16.786–857; 18.1–21; 19.326–7
+- Homer, *Iliad* 1.69–72; 1.250–2; 2.527–30; 2.557–8; 2.645–52; 2.721–5; 2.729–33; 5; 7.219; 8.266–72; 10.1; 11.786–7; 16.786–857; 18.1–21; 19.326–7
 - Isocrates, *Evagoras* 18
 - Lycophron, *Alexandra* 348–64; 1141–73
 - Ovid, *Metamorphoses* 14.457–511
@@ -306,7 +306,6 @@ Curated bibliography: `bibliography/greece/r-10.9.md`.
 ### Modern works
 - W. C. Greene, *Moira* (1944)
 - Earth. Jasper Griffin, *Homer on Life and Death* (1980)
-- Janko (1992): title not given in the report
 - Kirk, *The Iliad: A Commentary* (1985)
 - Kullmann, *Gods and Men in the Iliad and the Odyssey* (1985)
 - Lloyd-Jones, *The Justice of Zeus* (1971)
@@ -375,10 +374,10 @@ Curated bibliography: `bibliography/greece/r-10.12.md`.
 - Isidore, *Etymologies* 1.42.1
 - *Aeneid* 1.242–249; 2.49; 5.370; 5.545–603; 12
 - *Annals* 15.39
-- *Augustus* 43; 43.2
+- *Augustus* 43.2
 - *De rerum natura* 1.117–126
-- *Julius* 39; 39.2
-- *Nero* 38; 38.2
+- *Julius* 39.2
+- *Nero* 38.2
 - *Odyssey* 4; 22
 - *Roman Antiquities* 1.72
 - *Satyricon* 89

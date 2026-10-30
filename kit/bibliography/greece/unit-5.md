@@ -21,7 +21,7 @@ Curated bibliography: `bibliography/greece/r-5.1.md`.
 - *Iliad* 2.684; 7.86–91; 9.404–405; 11.632–637; 11.709
 - *Odyssey* 6.162; 9.116–141
 - *Theogony* 22–34
-- *Works and Days* 156–173; 528; 633–640; 650–662
+- *Works and Days* 27–41; 156–173; 528; 633–640; 650–662
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Diogenes Laertius 1.57

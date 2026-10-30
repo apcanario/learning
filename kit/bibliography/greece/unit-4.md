@@ -59,7 +59,6 @@ Curated bibliography: `bibliography/greece/r-4.1.md`.
 Curated bibliography: `bibliography/greece/r-4.2.md`.
 
 ### Ancient works
-- *Odyssey* 8.492–520
 - *Poetics* 23
 - *Symposium* 8.31
 - *aidōs* 6.441–446

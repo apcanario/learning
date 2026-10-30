@@ -10,9 +10,8 @@ Curated bibliography: `bibliography/greece/r-12.1.md`.
 - Aristotle, *Physics* 1.4, 187a; 186a; 198b; 204b; 209a; 233a
 - Plutarch, *Against Colotes* 1108
 - Plutarch, *Pericles* 26
-- Simplicius, *Commentary on the Physics* 24.26–25.1
+- Simplicius, *Commentary on the Physics* 24.26–25.1; 144.25–28
 - *Against the Mathematicians* 7.49; 7.135–139
-- *Commentary on Aristotle's Physics* 144.25–28
 - *Empédocle* 1965–69
 - *Metaphysics* 983b; 984b; 985a; 985b; 986a; 986b; 1005b; 1009b
 - *Natural History* 2.149
@@ -372,7 +371,7 @@ Curated bibliography: `bibliography/greece/r-12.7.md`.
 - Plutarch, *On Stoic Self-Contradictions* 1034d; 1044d
 - Sextus, *Against the Mathematicians* 10.218
 - Sextus, *Outlines of Pyrrhonism* 2.157–158
-- *Anthology* 1.1.12
+- *Anthology* 1.1.12; 2.7
 - *Bryn Mawr Classical Review* 2025.01.21
 - *Handbook* 53
 - *Letters to Atticus* 16.11.4

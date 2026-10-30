@@ -135,12 +135,12 @@ Curated bibliography: `bibliography/greece/r-2.4.md`.
 ### Ancient works
 - Apollodorus, *Library* 1.7.1; 1.7.2; 1.7.3
 - Feature, *Theogony* 570–612
-- Hesiod, *Theogony* 521–567; 535–560
+- Hesiod, *Theogony* 521–567; 551–557
 - Hesiod's, *Works and Days* 42–105; 57–105; 106–201; 276–280
-- Pindar, *Olympian* 9; 9.41–56
 - *Fable* 58
 - *Iliad* 2.684
 - *Metamorphoses* 1.313–415
+- *Olympian* 9.41–56
 - *Theogony* 507–616; 526–534; 551; 901–903
 - *Timaeus* 22a
 - *entechnos sophia* 321d
@@ -153,7 +153,7 @@ Curated bibliography: `bibliography/greece/r-2.4.md`.
 ### Modern works
 - Answer Griffith (1977): title not given in the report
 - Mark Griffith, *The Authenticity of Prometheus Bound* (1977)
-- Jonathan Hall, *Ethnic Identity in Greek Antiquity* (1997)
+- Athenian Creusa. Jonathan Hall, *Ethnic Identity in Greek Antiquity* (1997)
 - Friedrich Solmsen, *Hesiod and Aeschylus* (1949)
 - Jean-Pierre Vernant, *Le mythe hésiodique des races* (1960)
 - M. L. West (1990): title not given in the report
@@ -215,7 +215,7 @@ Curated bibliography: `bibliography/greece/r-2.5.md`.
 Curated bibliography: `bibliography/greece/r-2.6.md`.
 
 ### Ancient works
-- Apollodorus, *Epitome* 1.20; 7.18–19; 7.19
+- Apollodorus, *Epitome* 1.20; 7.18–19
 - Apollodorus, *Library* 2.4.2
 - Apollonius, *Argonautica* 2.178–300; 4.1396–1407
 - Echidna Killed Theseus Apollodorus, *Epit.* 1.1

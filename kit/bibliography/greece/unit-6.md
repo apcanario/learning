@@ -113,7 +113,7 @@ Curated bibliography: `bibliography/greece/r-6.4.md`.
 - *Odyssey* 9
 - *Onomasticon* 4.133–54
 - *Peace* 174–6
-- *Poetics* 1449a; 1453a
+- *Poetics* 1448a; 1449a; 1453a
 - *Politics* 8.1341b–1342a
 - *Solon* 29.6
 - *Symposium* 175e
@@ -134,7 +134,6 @@ Curated bibliography: `bibliography/greece/r-6.4.md`.
 - Halliwell, *Aristotle's Poetics* (1986)
 - Malcolm Heath, *Political Comedy in Aristophanes* (1987)
 - Jeffrey Henderson (1990): title not given in the report
-- Nussbaum, *The Fragility of Goodness* (1986)
 - Ritchie (1964): title not given in the report
 - Scott Scullion, *Nothing to do with Dionysus* (2002)
 - Scott Scullion, *Euripides and Macedon* (2003)
@@ -164,7 +163,6 @@ Curated bibliography: `bibliography/greece/r-6.5.md`.
 - *Metaphysics* 1.6, 13.4; 1.6, 987b; 1.9
 - *NE* 1106b
 - *Nicomachean Ethics* 1096a
-- *Parmenides* 132a
 - *Parts of Animals* 1.5
 - *Phaedo* 58a; 59c
 - *Physics* 2.3, 194b; 209b

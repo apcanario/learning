@@ -7,9 +7,11 @@ Machine-extracted by `biblio.py` from the inline citations of the 3 reports in u
 Curated bibliography: `bibliography/greece/r-0.1.md`.
 
 ### Ancient works
+- Answer Pindar, *Olympian* 1; 1.28–29; 1.36–53; 9.35–41
 - Cicero, *On the Orator* 3.137
 - Fowler, *Early Greek Mythography* 2000–2013
-- Hesiod, *Theogony* 188–206; 278–279
+- Hesiod, *Theogony* 27–28; 188–206; 278–279
+- Plato, *Phaedrus* 243a
 - *Iliad* 5.370; 8; 24; 24.25–30
 - *Medea* 264
 - *Metamorphoses* 4.790–803

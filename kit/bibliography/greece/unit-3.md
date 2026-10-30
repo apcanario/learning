@@ -78,7 +78,7 @@ Curated bibliography: `bibliography/greece/r-3.2.md`.
 - Apollodorus 1.6.1–2; 1.9.19; 2.5.11; 2.5.12; 2.6.1; 2.6.1–2; 2.6.4; 2.7.3; 2.7.6; 2.7.7; 2.8.1; 2.8.2–5
 - Arrian 2.15.7–16.8; 4.28.1–4
 - Diodorus 4.9.6; 4.11–26; 4.14.3; 4.18.5; 4.27.2–3; 4.37.3–4; 4.38.3; 4.38.4–5; 4.39.2; 4.57–58
-- Herodotus 1.7; 1.60; 2.44; 2.45; 5.72; 6.108; 7.193; 8.137–139; 9.26; 9.27
+- Herodotus 1.7; 1.60; 2.44; 2.45; 5.72; 6.108; 6.116; 7.193; 8.137–139; 9.26; 9.27
 - Pausanias 2.37.4; 3.1.5–6; 4.2.2–3
 - Thucydides 1.12.3
 
@@ -104,13 +104,12 @@ Curated bibliography: `bibliography/greece/r-3.3.md`.
 - *Cimon* 8.5–7
 - *Helen* 18–20; 35–37
 - *Iliad* 1.265; 2.552; 3.144
-- *Odyssey* 11.321–325; 11.631; 21.295–304
+- *Odyssey* 11; 11.321–325; 11.631; 21.295–304
 - *Theogony* 947–949
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Apollodorus 3.15.6–7; 3.15.7
 - Diodorus 4.59–63
-- Epitome 1.5–6
 - Herodotus 1.67–68; 6.108; 9.27; 9.73
 - Pausanias 1.15.3; 1.17.6; 1.22.5; 1.27.10; 2.32.1–4; 2.33.1
 - Plutarch 10.2–3; 17.3; 17.5; 26.1–2
