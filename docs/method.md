@@ -225,6 +225,7 @@ At the end of every chat that works a backlog row:
 2. Add every task the work uncovered as a new row marked *proposed*, in the place it belongs. Do not work it.
 3. Hand the backlog to Pedro in the reply, as one short list: the row done, the proposed rows, the row next up. He confirms or edits the proposed rows and names the next row; the next chat starts there.
 4. Rewrite the Project copies from `docs/`: `claude/BACKLOG-chats.md` from `docs/BACKLOG.md` and `claude/CHANGELOG-chats.md` from `docs/CHANGELOG.md`, each the full file, so the Project knowledge never lags the repo. Then commit and push.
+5. Write the next prompt (Pedro, 31 Oct 2026): the paste-ready prompt for the next row in the Queue that Pedro has confirmed, self-contained, to the standard of the one this chat was given (the clone, the agent rules, each step, every check, the publish, and this step 5, so each prompt asks for the next). Save it in that row's prompt column of `docs/BACKLOG.md` before step 4, and end the reply with it in a code block. A row Pedro does by hand is skipped; the prompt is for the next row a chat runs.
 
 A chat that finds nothing new still hands the backlog over with the next row named. A row that cannot be finished stays in the Queue with a one-line note of where it stopped.
 
