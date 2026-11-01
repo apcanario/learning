@@ -221,7 +221,6 @@ Curated bibliography: `bibliography/rome/r-11.5.md`.
 - *Letters to Quintus* 3
 - *On Duties* 1.77
 - *On the Consular Provinces* 56
-- *Philippics* 2
 - *Suasoriae* 6; 6.15
 
 ### Modern works
