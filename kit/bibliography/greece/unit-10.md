@@ -69,11 +69,10 @@ Curated bibliography: `bibliography/greece/r-10.2.md`.
 
 ### Ancient works
 - Apollodorus, *Epitome* 2.10–15; 5.1
-- Euripides, *IT* 354–377
 - Euripides, *Orestes* 46
 - Sophocles, *Electra* 99
 - *Alexandra* 1369
-- *IA* 1148–1156; 1368–1401, 1532–1629
+- *IA* 1148–1156
 - *Iliad* 2.100–108; 2.494–759
 - *Odyssey* 11
 - *Poetics* 1454a
