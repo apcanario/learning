@@ -270,7 +270,7 @@ In progress: 63 of 79 content reports; 85 modules with the audit unit. Written i
 | ✓ | Review | Rome | Fable review of batch 2 | after #67 | Fable 5.1 | off | `kit/audits/` |
 | 68 | 13.5 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Seneca | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.5.html` (+ `courses/rome/13.5-seneca.md`) |
 | 69 | 13.6 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Musonius Rufus and Epictetus | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.6.html` (+ `courses/rome/13.6-musonius-rufus-and-epictetus.md`) |
-| 70 | 13.7 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Marcus Aurelius: a life | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.7-marcus-aurelius-a-life.md` (+ `kit/rome/r-13.7.html`) |
+| 70 | 13.7 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Marcus Aurelius: a life | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.7.html` (+ `courses/rome/13.7-marcus-aurelius-a-life.md`) |
 | 71 | 13.8 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The Meditations and the afterlife of Roman Stoicism | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.8.html` (+ `courses/rome/13.8-the-meditations-and-the-afterlife-of-roman-stoicism.md`) |
 | ✓ | Review | Rome | Fable review of batch 3 | after #71 | Fable 5.1 | off | `kit/audits/` |
 | 72 | 12.1 | 12 · Deep dive II: the Aeneid | Virgil and the making of the poem | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.1.html` (+ `courses/rome/12.1-virgil-and-the-making-of-the-poem.md`) |
