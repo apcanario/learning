@@ -275,7 +275,7 @@ In progress: 73 of 79 content reports; 85 modules with the audit unit. Written i
 | ✓ | Review | Rome | Fable review of batch 3 | after #71 | Fable 5.1 | off | `kit/audits/` |
 | 72 | 12.1 | 12 · Deep dive II: the Aeneid | Virgil and the making of the poem | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.1.html` (+ `courses/rome/12.1-virgil-and-the-making-of-the-poem.md`) |
 | 73 | 12.2 | 12 · Deep dive II: the Aeneid | Books 1 to 6: the Odyssean Aeneid | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.2.html` (+ `courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md`) |
-| 74 | 12.3 | 12 · Deep dive II: the Aeneid | Books 7 to 12: the Iliadic Aeneid | not written · batch 4 | Opus 5.5 | off | `courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md` (+ `kit/rome/r-12.3.html`) |
+| 74 | 12.3 | 12 · Deep dive II: the Aeneid | Books 7 to 12: the Iliadic Aeneid | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.3.html` (+ `courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md`) |
 | 75 | 12.4 | 12 · Deep dive II: the Aeneid | Dido | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.4.html` (+ `courses/rome/12.4-dido.md`) |
 | ✓ | Review | Rome | Fable review of batch 4 | after #75 | Fable 5.1 | off | `kit/audits/` |
 | 76 | 12.5 | 12 · Deep dive II: the Aeneid | Book 6: the underworld and the parade of heroes | not written · batch 5 | Opus 5.5 | off | `courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md` (+ `kit/rome/r-12.5.html`) |
