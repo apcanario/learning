@@ -33,7 +33,8 @@ built by viz_examples.py, shows one of each on Perqo with its block):
              "actions": ["-> approve", ...], "tone": 2}, ...], "rows": [["company", "policy", null], ...],
              "links": [{"from": "company", "to": "policy", "label": "sets", "from_card": "1", "to_card": "1..*"}]}
             boxes placed in the grid "rows" gives (null is an empty cell; at most 4 columns); a link is a line with a
-            label and a cardinality at each end; a link that would cross a third box raises (move a box).
+            label and a cardinality at each end; a link that would cross a third box raises (move a box); optional
+            per link "dir": "to" or "from" (P66), the end its label reads towards, drawn as a small triangle.
   decision  {"kind": "decision", "root": {"q": "Active contract?", "tone": 4, "branches": [{"label": "no",
              "to": {"outcome": "Not eligible", "tone": 1}}, {"label": "yes", "to": {"q": ...}}]}}
             questions are boxes, outcomes filled boxes, read top-down; branches keep their order left to right.
@@ -149,6 +150,13 @@ Contract change at P63 (1 Nov 2026), under the same rule:
               century", "late eighth century BC", "c. 670–640"): it prints as written and is drawn at "at", which must
               lie inside the century or span it names (date_names), or the build stops. The year is never printed
               where the text gives none. verify.py checks every built date line against the year its dot stands at.
+Contract change at P66 (1 Nov 2026):
+  objects     a link may carry "dir": "to" or "from": a small solid triangle at the end of its label, pointing at the
+              object the label reads towards (UML's reading-direction mark), for a label that cannot read left to right
+              on a level line or top to bottom otherwise. Every line is drawn before any label, and each label sits on its
+              own line at the point nearest the middle whose plate is at least 14 units clear of every crossing and every
+              other line (else the clearest), and covers no box, count or other label; when every point covers a
+              crossing, a box or a label, the build stops (move a box). A level gap widens for a mark as for a long word.
 Contract change at P53 (1 Nov 2026):
   matrix      each column is as wide as its widest cell (a mark on one line, up to 220 units) or its header (its longest
               word, or the whole header up to 140), at least 56, not an equal share of the 700-unit width; columns that
@@ -929,6 +937,42 @@ def _hits(p, q, rect, pad=4):
     return t0 < t1
 
 
+def _cross(p, q, r, s, end=6):
+    """Where segments p-q and r-s cross, away from their ends (two lines meeting at a box are not a crossing)."""
+    d = (q[0] - p[0]) * (s[1] - r[1]) - (q[1] - p[1]) * (s[0] - r[0])
+    if abs(d) < 1e-9:
+        return None
+    t = ((r[0] - p[0]) * (s[1] - r[1]) - (r[1] - p[1]) * (s[0] - r[0])) / d
+    u = ((r[0] - p[0]) * (q[1] - p[1]) - (r[1] - p[1]) * (q[0] - p[0])) / d
+    L1, L2 = math.hypot(q[0] - p[0], q[1] - p[1]), math.hypot(s[0] - r[0], s[1] - r[1])
+    if end / L1 < t < 1 - end / L1 and end / L2 < u < 1 - end / L2:
+        return (p[0] + t * (q[0] - p[0]), p[1] + t * (q[1] - p[1]))
+    return None
+
+
+def _dist_rect(pt, r):
+    """How far a point lies from a rectangle (0 inside it)."""
+    dx = max(r[0] - pt[0], 0, pt[0] - r[0] - r[2])
+    dy = max(r[1] - pt[1], 0, pt[1] - r[1] - r[3])
+    return math.hypot(dx, dy)
+
+
+def _seg_rect(p, q, r):
+    """How far a segment passes from a rectangle (0 when it crosses it), sampled along the segment."""
+    if _hits(p, q, r, 0):
+        return 0
+    n = max(2, int(math.hypot(q[0] - p[0], q[1] - p[1]) / 4))
+    return min(_dist_rect((p[0] + (q[0] - p[0]) * k / n, p[1] + (q[1] - p[1]) * k / n), r) for k in range(n + 1))
+
+
+def _inside(pt, r, pad=0):
+    return r[0] - pad <= pt[0] <= r[0] + r[2] + pad and r[1] - pad <= pt[1] <= r[1] + r[3] + pad
+
+
+def _overlap(r, o, pad=0):
+    return r[0] < o[0] + o[2] + pad and o[0] < r[0] + r[2] + pad and r[1] < o[1] + o[3] + pad and o[1] < r[1] + r[3] + pad
+
+
 def objects(d):
     """An object map: each object a box with a title band, attributes and optional actions, placed in the grid that
     "rows" gives (a row is a list of object ids; null leaves a cell empty); relationships are lines between boxes with
@@ -957,7 +1001,7 @@ def objects(d):
         pa, pb = cell.get(e.get('from')), cell.get(e.get('to'))
         if e.get('label') and pa and pb and pa[0] == pb[0] and abs(pa[1] - pb[1]) == 1:
             word = max(_tw(w, T_LINK[2], T_LINK[1]) for w in str(e['label']).split())
-            GX = max(GX, math.ceil(word + 12 + 8))
+            GX = max(GX, math.ceil(word + 12 + 8 + (12 if e.get('dir') else 0)))   # P66: room for the direction mark
     Wd = W
     bw = min(220, (Wd - 16 - GX * (cols - 1)) / cols)
     if bw < 110:
@@ -1007,11 +1051,17 @@ def objects(d):
             for a in acts:
                 s += _text(a[:1], T_SMALL, x + 8, yy) + _text(a[1:], T_SMALL, x + 18, yy + 12.5); yy += len(a) * 12.5
         body += _g(s)
-    links = ''
+    # P66 (1 Nov 2026): every line first, so each label can be placed knowing where the lines cross. A label sits on
+    # its own line at the first of a few points from the middle outwards where its plate covers no crossing, no other
+    # line, no box, no count and no other label; a link may carry "dir": "to" or "from", a small solid triangle at the
+    # end of its label that points at the object the label reads towards (the reading-direction mark of UML).
+    segs = []
     for e in d.get('links', []):
         a, b = rects.get(e.get('from')), rects.get(e.get('to'))
         if not a or not b or a == b:
             _fail(K, f'a link needs two different objects: {json.dumps(e)[:80]}')
+        if e.get('dir') not in (None, 'to', 'from'):
+            _fail(K, f'a link\'s "dir" is "to" or "from" (the end its label reads towards), got {e.get("dir")!r}')
         if abs(a[1] - b[1]) < 0.5:                          # same row: a level line through the shorter box's middle
             yy = a[1] + min(a[3], b[3]) / 2
             P, Q = ((a[0] + a[2], yy), (b[0], yy)) if a[0] < b[0] else ((a[0], yy), (b[0] + b[2], yy))
@@ -1026,6 +1076,11 @@ def objects(d):
         for oid, rc in rects.items():
             if rc not in (a, b) and _hits(P, Q, rc):
                 _fail(K, f'the link {e["from"]} - {e["to"]} would cross {oid}; move one of the boxes')
+        segs.append((e, a, b, P, Q))
+    cross = [pt for i, s1 in enumerate(segs) for s2 in segs[i + 1:] for pt in [_cross(s1[3], s1[4], s2[3], s2[4])] if pt]
+    links, taken = '', [r for r in rects.values()]
+    plates = []
+    for e, a, b, P, Q in segs:
         links += _line([P, Q], 'viz-link')
         L = math.hypot(Q[0] - P[0], Q[1] - P[1])
         ux, uy = (Q[0] - P[0]) / L, (Q[1] - P[1]) / L
@@ -1042,14 +1097,40 @@ def objects(d):
                 if (ox - tw / 2 - 2 < cx < ox + ow + tw / 2 + 2 and oy - 9 < cy < oy + oh + 9):   # count fell on the
                     cx, cy = cx - 2 * nx * off, cy - 2 * ny * off                                    # box: other side
                 links += f'<text class="viz-small" x="{cx:.1f}" y="{cy + 3.6:.1f}" text-anchor="middle">{esc(e[end])}</text>'
+                taken.append((cx - tw / 2, cy - 6, tw, 12))
         if e.get('label'):
-            if abs(uy) < 0.01:                               # a level line: the label hangs under it
-                lab = _lines(e['label'], T_LINK, max(40, L - 12))
-                h = len(lab) * 12.5 + 4
-                links += _plate(lab, T_LINK, (P[0] + Q[0]) / 2, P[1] + 4 + h / 2, 4, Wd - 4, e['label'])
+            level = abs(uy) < 0.01
+            if level:                                        # a level line: the label hangs under it
+                lab = _lines(e['label'], T_LINK, max(40, L - 12 - (12 if e.get('dir') else 0)))
             else:
                 lab = _lines(e['label'], T_LINK, max(min(bw, 150), max(_tw(w, T_LINK[2], T_LINK[1]) for w in str(e['label']).split()) + 1))
-                links += _plate(lab, T_LINK, (P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2, 4, Wd - 4, e['label'])
+            pw, ph = _width(lab, T_LINK) + 8 + (12 if e.get('dir') else 0), len(lab) * 12.5 + 4
+            best = None
+            for t in (0.5, 0.42, 0.58, 0.34, 0.66, 0.27, 0.73, 0.2, 0.8):
+                mx, my = P[0] + (Q[0] - P[0]) * t, P[1] + (Q[1] - P[1]) * t
+                cx, cy = (mx, my + 4 + ph / 2) if level else (mx, my)
+                x = max(4, min(cx - pw / 2, Wd - 4 - pw))
+                r = (x, cy - ph / 2, pw, ph)
+                hard = sum(1 for c in cross if _inside(c, r, 6)) + sum(1 for o in taken + plates if _overlap(r, o, 2))
+                soft = sum(1 for e2, _, _, P2, Q2 in segs if e2 is not e and _hits(P2, Q2, r, 2))
+                clear = min([_dist_rect(c, r) for c in cross] + [_seg_rect(P2, Q2, r) for e2, _, _, P2, Q2 in segs if e2 is not e] + [99])
+                score = (hard, soft, clear < 14, -min(clear, 14), abs(t - 0.5))   # 14 units clear of other lines, then the middle
+                if best is None or score < best[0]:
+                    best = (score, r)
+            if best[0][0]:
+                _fail(K, f'the label of {e["from"]} - {e["to"]} ({e["label"]!r}) has no place on its line clear of every crossing, '
+                         'box and other label; move a box')
+            x, top, pw, ph = best[1]
+            plates.append(best[1])
+            mark = ''
+            if e.get('dir'):                                 # the reading-direction mark, at the plate's right end
+                sx, sy = (ux, uy) if e['dir'] == 'to' else (-ux, -uy)
+                tx, ty = x + pw - 9, top + ph / 2
+                mark = (f'<path class="viz-head" d="M{tx + sx * 4.5:.1f},{ty + sy * 4.5:.1f} L{tx - sx * 3.5 - sy * 4:.1f},{ty - sy * 3.5 + sx * 4:.1f} '
+                        f'L{tx - sx * 3.5 + sy * 4:.1f},{ty - sy * 3.5 - sx * 4:.1f} z"/>')
+            tw_ = pw - (12 if e.get('dir') else 0)
+            links += (f'<g data-box="" data-text="{esc(e["label"])}"><rect class="viz-lblbg" x="{x:.1f}" y="{top:.1f}" width="{pw:.1f}" height="{ph:.1f}"/>'
+                      + _text(lab, T_LINK, x + tw_ / 2, top + 2, 'middle') + mark + '</g>')
     return _svg(Wd, _r(y - GY + 8), links + body, 'objects', d.get('title'), d.get('caption'), wide=Wd > W * 1.15)
 
 

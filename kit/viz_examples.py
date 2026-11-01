@@ -68,7 +68,7 @@ EXAMPLES = [
           {'label': 'Log in', 'type': 'auth', 'note': 'hands off to Perqo Admin or the app', 'tone': 6}]},
       'caption': f'The perqo.com sitemap of IA5 in outline: fourteen pages, seven at the first level. {FIC}'}),
     ('objects', 'An object map: boxes with a title, attributes and actions in the grid the data gives; lines carry a relationship and a cardinality at each end.',
-     'objects [{id, title, attrs [], actions [], tone}], rows [[id or null]], links [{from, to, label, from_card, to_card}]',
+     'objects [{id, title, attrs [], actions [], tone}], rows [[id or null]], links [{from, to, label, from_card, to_card, dir}]',
      {'kind': 'objects', 'title': 'The Perqo object map (fictional)',
       'objects': [
           {'id': 'company', 'title': 'Company', 'tone': 4, 'attrs': ['name', 'plan', 'renewal date'], 'actions': ['→ renew', '→ add admin']},
@@ -282,6 +282,15 @@ CASES = [
      {'kind': 'tree', 'title': 'A chain',
       'root': {'label': 'A first level', 'children': [{'label': 'A second level', 'children': [{'label': 'A third level'}]}]},
       'caption': CASE}),
+    # P66 (1 Nov 2026): labels kept off crossings, and the reading-direction mark.
+    ('objects-crossing', 'Two lines that cross: each label sits on its own line where its plate covers no crossing and no other line, never on the crossing (IA2). A link may carry "dir": "to" or "from", a small solid triangle at the end of its label pointing at the object the label reads towards, for a label that cannot read left to right or top to bottom.',
+     {'kind': 'objects', 'title': 'Crossing lines and a direction mark',
+      'objects': [{'id': 'a', 'title': 'A council', 'attrs': ['members'], 'tone': 4}, {'id': 'b', 'title': 'An assembly', 'attrs': ['citizens'], 'tone': 2},
+                  {'id': 'c', 'title': 'A magistrate', 'attrs': ['a term'], 'tone': 3}, {'id': 'd', 'title': 'A law', 'attrs': ['a text'], 'tone': 5}],
+      'rows': [['a', 'b'], ['c', 'd']],
+      'links': [{'from': 'a', 'to': 'd', 'label': 'drafts'}, {'from': 'b', 'to': 'c', 'label': 'elects'},
+                {'from': 'd', 'to': 'c', 'label': 'binds', 'dir': 'to'}, {'from': 'b', 'to': 'a', 'label': 'advises', 'dir': 'from'}],
+      'caption': CASE}),
     # P63 (1 Nov 2026): a date the text gives only by century or span.
     ('timeline-century', 'Events the text dates only by a century or a span: the date line prints the century or span as the text gives it, never a year the text does not give, and the dot stands at "at", inside it (Greek 5.4).',
      {'kind': 'timeline', 'title': 'Dated by century', 'start': -800, 'end': -400, 'ticks': [-800, -700, -600, -500, -400],
@@ -297,6 +306,7 @@ RAISES = [
     ('Negative whole numbers in a range without "years"', {'kind': 'range', 'rows': [{'label': 'A date', 'low': -264, 'high': -241}]}, '"years": true'),
     ('An event date that does not contain its year (P58)', {'kind': 'timeline', 'start': -700, 'end': -500, 'events': [{'at': -600, 'date': 'c. 650 BC', 'label': 'A date'}]}, 'does not contain the year'),
     ('An event date naming a century that does not contain its year (P63)', {'kind': 'timeline', 'start': -700, 'end': -500, 'events': [{'at': -550, 'date': 'mid-seventh century', 'label': 'A date'}]}, 'does not contain the year'),
+    ('A link "dir" that names neither end (P66)', {'kind': 'objects', 'objects': [{'id': 'a', 'title': 'A'}, {'id': 'b', 'title': 'B'}], 'rows': [['a', 'b']], 'links': [{'from': 'a', 'to': 'b', 'label': 'x', 'dir': 'up'}]}, '"dir" is "to" or "from"'),
     ('An event date in BC/AD in a BCE/CE figure (P58)', {'kind': 'timeline', 'era': 'BCE', 'start': -700, 'end': -500, 'events': [{'at': -600, 'date': 'c. 600 BC', 'label': 'A date'}]}, 'mixes notations'),
     ('A word unit not ending in s, a value of 1 and no "unit_one" (P58)', {'kind': 'range', 'unit': 'men', 'rows': [{'label': 'A count', 'low': 1, 'high': 5}]}, '"unit_one"'),
 ]
@@ -315,7 +325,7 @@ def fragment(crumbs):
         toc += f'<a href="#{sid}">{NAMES[key]}</a>'
         md.append(f'## {NAMES[key]} · `{kind}`\n\n{what}\n\nFields: {fields.replace("_", chr(92) + "_")}; every kind also takes `title`, `caption` and `tone` (1 to 6).\n\n'
                   f'```viz\n{json.dumps(block, ensure_ascii=False, indent=1)}\n```\n\n{sid}BLOCK\n')
-    md.append('## Hard cases\n\nThe drawing faults the Rome figure checkers met (P55, 30 October 2026) and the Greek ones (P58, the same day; P63, 1 November 2026), '
+    md.append('## Hard cases\n\nThe drawing faults the Rome figure checkers met (P55, 30 October 2026) and the Greek ones (P58, the same day; P63 and P66, 1 November 2026), '
               'each as the renderer now draws it, so the build\'s checks run on it every time. Their data is invented.\n')
     for key, what, block in CASES:
         md.append(f'### {block["title"]}\n\n{what}\n\n```viz\n{json.dumps(block, ensure_ascii=False, indent=1)}\n```\n')
