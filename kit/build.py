@@ -31,6 +31,13 @@ ICON_CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentCo
 FIGBLOCK = re.compile(r'<figure class="viz[ "].*?</figure>', re.S)
 
 
+
+def eyebrow_segs(*parts):
+    """P72 (1 Nov 2026): an eyebrow line as segments that wrap whole (theme 4a .seg): a segment moves to the next line
+    rather than breaking inside ("2,796 / WORDS", "UNIT / 5"), and the dot after it stays on its line."""
+    segs = [f'<span class="seg">{p}&nbsp;·</span>' for p in parts[:-1]] + [f'<span class="seg">{parts[-1]}</span>']
+    return ' '.join(segs)
+
 def wc(frag):
     """Words in a report's body (before the Self-test). Figure blocks, declared or drawn, are left out (P41): adding a
     figure never changes a report's word count."""
@@ -147,7 +154,7 @@ def load(c):
 <section class="panel" id="{sl}" data-unit="{u}" data-ctx="{c['id']}" data-kind="report" data-split="r-{i}" style="--cc:{c['color']}" hidden>
   <header class="phead">
     {crumbs(('Academy', 'home'), (c['short'], c['home_id']), (f'Unit {u}', f'{c["home_id"]}-u{u}'), (i, None))}
-    <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['label']}</span> · <span class="u" style="--c:{ucol[u]}">UNIT {u}</span> · {c['umap'][u][0]} · <span class="mono">{i}</span> · {n:,} words{' ' + PILL_UNCK if unchecked(model) else ''}</div>
+    <div class="eyebrow">{eyebrow_segs(f'<span class="u" style="--c:{c["color"]}">{c["label"]}</span>', f'<span class="u" style="--c:{ucol[u]}">UNIT {u}</span>', c['umap'][u][0], f'<span class="mono">{i}</span>', f'{n:,} words')}{' ' + PILL_UNCK if unchecked(model) else ''}</div>
     <h1>{html.escape(meta['title'])}</h1>
     {scope}
   </header>

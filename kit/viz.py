@@ -1249,7 +1249,7 @@ def matrix(d):
         _fail(K, 'a matrix needs cols and rows')
     if d.get('numeric'):
         return _heat(d)
-    LW = min(170, max(90, max(_tw(r['label'], 12) for r in rows) + 20))
+    LW = min(240, max(90, max(_tw(r['label'], 12) for r in rows) + 20))   # H-2: a row label keeps to one line up to 240
     n = len(cols)
     # P53 (1 Nov 2026): each column is as wide as its widest cell (a mark on one line) or its header (its longest word,
     # or the whole header up to 140), not a share of the 700-unit width; when the columns need more than the width
@@ -1271,11 +1271,18 @@ def matrix(d):
         cws, left, rest = list(nat), avail, sorted(range(n), key=lambda k: nat[k])
         while rest and nat[rest[0]] <= left / len(rest):
             left -= nat[rest[0]]; rest.pop(0)
+        tot = sum(nat[k] for k in rest)                      # the long ones share what is left in proportion to their text
         for k in rest:
-            cws[k] = left / len(rest)
+            cws[k] = left * nat[k] / tot
     wide = min(cws) < 70 and sum(nat) > avail
     cws = [max(c, 70) if wide else c for c in cws]
-    # the row-label column takes any width the columns leave, up to its longest label on one line
+    # what the columns leave goes first to headers that would wrap, until each sits on one line, then to the row
+    # labels (H-2: a header or label was left with one word on a line of its own beside empty width)
+    slack = W - 16 - LW - sum(cws)
+    for k, c in enumerate(cols):
+        grow = min(max(0, math.ceil(_tw(str(c), 10, 'mono', 0.4) + 14) - cws[k]), slack)
+        if 0 < grow and slack > 0:
+            cws[k] += grow; slack -= grow
     LW = max(LW, min(max(_tw(r['label'], 12) for r in rows) + 20, W - 16 - sum(cws)))
     leg = [_tw(i.get('mark', ''), 10.5, 'mono') + 16 + 8 + min(220, _tw(i.get('means', ''), 11)) + 18 for i in d.get('legend') or []]
     Wd = max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)
