@@ -7,7 +7,7 @@ description: File a finished Learning Project unit, then update its course data 
 
 Turns a written unit into a filed one: vault, course data, Academy, index. The procedure is `method.md` §7. The design rule holds throughout: Academy is rebuilt by `kit/build.py` from `design/theme.css`; nothing is styled by hand.
 
-**The course's entry.** Every course is one entry in `kit/courses.py`. For a markdown course (Brand + AI, User Experience, any new one) the entry gives the paths used below: `id` (its audit reports go in `audits/<id>/`), `data` (the course's `hub.py`), `vault` (the folder the unit is filed in) and `sourcing_part` (its own part of `sourcing-standard.md`). Below, `<id>`, `<data>` and `<vault>` mean those values for the unit's course; no step names one course's folders.
+**The course's entry.** Every course is one entry in `kit/courses.py`. For a markdown course (Brand + AI, User Experience, any new one) the entry gives the paths used below: `id` (its audit reports go in `audits/<id>/`), `data` (the course's `hub.py`), `vault` (the folder the unit is filed in) and `sourcing_part` (its own part of `sourcing-standard.md`; Part 2 for a markdown course without the key). Below, `<id>`, `<data>` and `<vault>` mean those values for the unit's course; no step names one course's folders.
 
 ## 1. Check the unit
 - It is complete: every brief item covered, the deliverable (a markdown course) or Self-test and Carry forward (history) built in full, a Sources list or bibliography file present.
@@ -16,7 +16,7 @@ Turns a written unit into a filed one: vault, course data, Academy, index. The p
 - If anything is missing, stop and say what; do not file a partial unit.
 
 ## 2. Vault
-Save to `<vault>/<code>-<slug>.md` for a markdown course, `courses/<course>/<id>-<slug>.md` for a history course (`greece` or `rome`); slug = the title lower-cased, hyphenated, accents and punctuation dropped. If the vault is connected (GitHub), commit it there with the message `<course> <code>: <title>`; otherwise send the file and say where it goes.
+Save to `<vault>/<code>-<slug>.md` for a markdown course, `courses/<course>/<id>-<slug>.md` for a history course (`greece` or `rome`); slug = the title lower-cased, hyphenated, accents and punctuation dropped. If the vault is connected (GitHub), commit it there with the message `<id> <code>: <title>` (`<id>`: the course entry's id, `greece` or `rome` for history); otherwise send the file and say where it goes.
 
 ## 3. Personal Mythology: the kit (`kit/` in the repo)
 1. Save the fragment without front matter as `<course>/r-<id>.html`; the bibliography as `bibliography/<course>/r-<id>.md`; the writer's unsure list as `reviews/<session folder>/<course>-<id>-writer.md`.
@@ -45,6 +45,6 @@ The vault file saved in §2 is the unit Academy renders (A5): there is no copy u
 - `courses-index.md`: the unit's row (status "written <date>", model, path to the vault file); for a search-on unit, a row in "Staleness checks due" (written + six months); the hub's audit counter plus one; the "N of M" line above the course's table. `python3 kit/index_check.py` until it prints "courses-index.md matches the sources" (§5 runs it again through `verify.py`).
 - If the counter reaches four, the reply's first line says: "Audit due before the next unit (audit-units)."
 - Markdown course: every unit gets a fresh check before filing (`audit-units` §3b, "Fresh check of one markdown-course unit"; Brand + AI since Audit 1, 28 Oct 2026). A unit is not filed unless the fresh-check line ends its unsure list, `audits/<id>/fresh-check-<code>.md` exists as `audits/README.md` sets out, and that file's `verdict` matches the line (verdict and counts). The path goes on the unit's `courses-index.md` row.
-- Commit and push `apcanario/learning` with the message `<course> <code>: filed`.
+- Commit and push `apcanario/learning` with the message `<id> <code>: filed`.
 - Re-upload the changed Project knowledge files (`courses-index.md`, the course's `hub.py`, the unit from its vault folder).
 - Reply with what was filed where, the Academy version, and the counter. Nothing else.
