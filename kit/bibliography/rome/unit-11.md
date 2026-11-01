@@ -1,6 +1,6 @@
 # Rome unit 11: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
 
 ## 11.1 How the Republic worked at its height
 
@@ -129,7 +129,7 @@ Curated bibliography: `bibliography/rome/r-11.3.md`.
 - *Roman Antiquities* 4.24.5
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Dio 36.42; 38.13; 39.24; 40.45–46; 40.49; 42.29–32
+- Dio 36.42; 38.13; 39.24; 40.45–46; 40.49; 40.54; 42.29–32
 - Dionysius 4.24.5
 - Velleius 2.4.4; 2.45.1
 
@@ -236,4 +236,34 @@ Curated bibliography: `bibliography/rome/r-11.5.md`.
 - Answer Mommsen (1856): title not given in the report
 - Mommsen (1856): title not given in the report
 - Rawson (1975): title not given in the report
+
+## 11.6 
+
+Curated bibliography: `bibliography/rome/r-11.6.md`.
+
+### Ancient works
+- Plutarch, *Sulla* 37
+- Suetonius, *Julius* 54.2; 56; 56.1; 56.4
+- *Brutus* 262
+- *Caesar* 18; 27
+- *Germania* 28
+- *Letters to Atticus* 2.1.1–2; 4.16.7
+- *Natural History* 7.92
+
+### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Dio 43.19
+
+### Modern works
+- Bartholdi (1903): title not given in the report
+- Delacroix (1855): title not given in the report
+- David Henige (1998): title not given in the report
+- Jullian (1901): title not given in the report
+- Camille Jullian, *Vercingétorix* (1901)
+- Kurt Raaflaub, *Caesar and Genocide: Confronting the Dark Side of Caesar's Gallic Wars* (2021)
+- Michel Rambaud, *L'art de la déformation historique dans les Commentaires de César* (1953)
+- Andrew Riggsby, *Caesar in Gaul and Rome: War in Words* (2006)
+- Schnurbein (2001): title not given in the report
+- Tristan Taylor, *Caesar's Gallic Genocide? A Case Study in Ancient Mass Violence* (2023)
+- Thierry (1828): title not given in the report
+- Amédée Thierry, *Histoire des Gaulois* (1828)
 
