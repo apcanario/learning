@@ -309,7 +309,7 @@ Curated bibliography: `bibliography/rome/r-11.7.md`.
 - Barry Strauss, *The Death of Caesar* (2015)
 - Ioannis Ziogas, *Famous Last Words: Caesar's Prophecy on the Ides of March* (2016)
 
-## 11.8 
+## 11.8 Why the Republic fell
 
 Curated bibliography: `bibliography/rome/r-11.8.md`.
 
@@ -321,16 +321,18 @@ Curated bibliography: `bibliography/rome/r-11.8.md`.
 - *Histories* 2.38
 - *Jugurtha* 41; 41.2–5
 - *Julius* 54.2
+- *Letters to Atticus* 5.21.10–13
 - *On the Republic* 5.2
 - *Periochae* 60; 98
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Dio 44.2
-- Lucan 1.67–182
+- Lucan 1.70–82
 - Polybius 6.57
 
 ### Modern works
 - Brunt (1988): title not given in the report
+- Brunt, *The Fall of the Roman Republic and Related Essays* (1988)
 - Harriet Flower, *Roman Republics* (2010)
 - Gruen (1974): title not given in the report
 - Erich Gruen, *The Last Generation of the Roman Republic* (1974)

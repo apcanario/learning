@@ -163,7 +163,7 @@ Curated bibliography: `bibliography/rome/r-13.4.md`.
 - Epictetus, *Discourses* 1.2.19–21
 - Pliny, *Letters* 3.11.2; 3.11.2–3; 3.11.3; 3.12.3; 3.16; 3.16.2; 3.16.3–5; 3.16.6; 7.19.4–6; 11.10; 73.1
 - Plutarch, *Cato Minor* 4; 10; 11; 25; 25, 37; 66–70
-- Suetonius, *Domitian* 10.3; 10.4
+- Suetonius, *Domitian* 10.3; 10.3–4; 10.4
 - Suetonius, *Julius* 56.5
 - Tacitus, *Agricola* 2; 2.1; 2.1–2; 2.2; 42.4; 45.1
 - Tacitus, *Annals* 14.12.1; 14.57; 14.57, 16.22; 16.22; 16.34–35
@@ -309,16 +309,12 @@ Curated bibliography: `bibliography/rome/r-13.8.md`.
 - Arnold (1863): title not given in the report
 - Brunt (1974): title not given in the report
 - P. A. Brunt, *Marcus Aurelius in his <em>Meditations</em>* (1974)
-- Casaubon (1634): title not given in the report
 - Christianity (2011): title not given in the report
-- Gataker (1652): title not given in the report
 - Christianity. Hadot (1992): title not given in the report
 - Hadot (1992): title not given in the report
 - Hadot, *The Inner Citadel* (1998)
-- Hanselman (2016): title not given in the report
 - Stephen Hanselman, *The Daily Stoic* (2016)
 - Kamtekar (1998): title not given in the report
-- Lipsius (1584): title not given in the report
 - R. B. Rutherford, *The Meditations of Marcus Aurelius: A Study* (1989)
 - Sellars (2025): title not given in the report
 
