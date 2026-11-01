@@ -714,11 +714,11 @@ roothome = f"""
     <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b><span class="rmeter"><span class="bar" aria-hidden="true"><i></i></span><span class="pct mono"></span></span></a>{fallback}</div>
   </header>
 
-  <section class="recent">
+{f'''  <section class="recent">
     <h2 class="hsec">New since</h2>
     <div class="hrows">{recent_rows}</div>
   </section>
-
+''' if recent_rows else ''}
   <nav class="tjump" aria-label="Tracks">{track_jump}</nav>
   {tracks}
 
@@ -732,7 +732,7 @@ roothome = f"""
       <li><strong>An open syllabus.</strong> Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.</li>
     </ol>
   </details>
-  <p class="totals mono">{N_LIVE} course{"s" if N_LIVE != 1 else ""} · {TOTALS['reports']} reports · {TOTALS['units']} units · {TOTALS['words']:,} words · {hours(TOTALS['words'])} h of reading</p>
+  <p class="totals mono">{N_LIVE} course{"s" if N_LIVE != 1 else ""}{f" · {TOTALS['reports']} reports" if HISTORY else ""}{f" · {TOTALS['units']} units" if MD else ""} · {TOTALS['words']:,} words · {hours(TOTALS['words'])} h of reading</p>
   {cl_link}
 </section>"""
 

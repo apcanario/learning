@@ -1021,7 +1021,7 @@ def main():
                             pg.evaluate('window.scrollTo(0, 0)')
                 ctx.close()
             # V1: each figure of the examples page as the reader sees it in its frame, then one sheet per width and theme
-            for name, w, h, mobile in VIEWPORTS:
+            for name, w, h, mobile in (VIEWPORTS if 'figures' not in OMIT else []):
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile)
                 for theme in ('dark', 'light'):
                     pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
