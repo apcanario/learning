@@ -143,7 +143,7 @@ Curated bibliography: `bibliography/rome/r-12.5.md`.
 - Palinurus, *Aeneid* 6.337–383
 - Tiresias, *Odyssey* 11.121–137
 - Was, *Odyssey* 11
-- *Aeneid* 6; 6.264–267; 6.300; 6.440–449; 6.450–476; 6.756–886
+- *Aeneid* 6; 6.264–267; 6.300; 6.440–444; 6.450–476; 6.756–886
 - *Carmen Saeculare* 51–52
 - *Charmides* 173a
 - *City of God* 14.5; 21.13
