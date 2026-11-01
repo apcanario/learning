@@ -1291,7 +1291,10 @@ def matrix(d):
         for k in rest:
             cws[k] = left * nat[k] / tot
     wide = min(cws) < 70 and sum(nat) > avail
-    cws = [max(c, 70) if wide else c for c in cws]
+    if wide:                                                 # too many columns for the width: each takes the narrowest width
+        words = lambda t, f, sz, ls=0: max([_tw(w, sz, f, ls) for w in str(t).split()] or [0])   # that breaks no word
+        cws = [max(70, math.ceil(max([words(c, 'mono', 10, 0.4) + 14] + [words(mark(r['cells'][k]), 'mono', 10.5) + 18 for r in rows])))
+               for k, c in enumerate(cols)]
     # what the columns leave goes first to headers that would wrap, until each sits on one line, then to the row
     # labels (H-2: a header or label was left with one word on a line of its own beside empty width)
     slack = W - 16 - LW - sum(cws)
@@ -1310,6 +1313,32 @@ def matrix(d):
         tot = sum(short.values())
         for k, v in short.items():
             cws[k] += min(v, free * v / tot)
+    # when the columns share the width and a cell runs to more lines than its row's others need, width moves to its
+    # column from columns that can give it without adding a line anywhere (H-2: "dentils" alone on a third line)
+    if not wide and sum(nat) > avail:
+        def nlines(k, w):
+            return max([len(_balanced(mark(r['cells'][k]), T_MARK, w - 14)) for r in rows if mark(r['cells'][k])] or [1])
+        for _ in range(12):
+            cur = [nlines(k, cws[k]) for k in range(n)]
+            k = max(range(n), key=lambda j: cur[j])
+            if cur[k] <= 1:
+                break
+            lo, hi = cws[k], nat[k]
+            while hi - lo > 2:                               # the narrowest width that saves this column a line
+                mid = (lo + hi) / 2
+                lo, hi = (mid, hi) if nlines(k, mid) >= cur[k] else (lo, mid)
+            need, spare = hi - cws[k], {}
+            for j in range(n):
+                if j != k:
+                    w = cws[j]
+                    while w - 2 >= 56 and nlines(j, w - 2) <= cur[j] and cws[j] - (w - 2) < need:
+                        w -= 2
+                    spare[j] = cws[j] - w
+            if sum(spare.values()) < need:
+                break
+            for j, v in spare.items():
+                take = min(v, need); cws[j] -= take; need -= take
+            cws[k] = hi
     leg = [_tw(i.get('mark', ''), 10.5, 'mono') + 16 + 8 + min(220, _tw(i.get('means', ''), 11)) + 18 for i in d.get('legend') or []]
     Wd = max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)
     xs = [8 + LW + sum(cws[:k]) for k in range(n)]
