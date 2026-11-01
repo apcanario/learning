@@ -1390,8 +1390,10 @@ Output: a table per unit (section, claim, source, verdict, note); the failure ra
     // P58: a drawing centred in a wider svg (a narrow tree) names where it starts (data-x0); on its first measured
     // showing a scrolling frame opens there, not on the empty margin; P50: the left fade shows only past that point, since
     // to its left there is margin, not drawing
-    var sv=f.querySelector('svg[data-x0]');if(over&&sv&&!f.hasAttribute('data-x0done')){f.setAttribute('data-x0done','');
-      var vb=sv.viewBox&&sv.viewBox.baseVal,k=vb&&vb.width?sv.getBoundingClientRect().width/vb.width:1;f.scrollLeft=Math.max(0,+sv.getAttribute('data-x0')*k-12);f.setAttribute('data-x0px',f.scrollLeft);}
+    // P79: a tree also names its root's right edge (data-xr); the frame opens no further left than puts it in view
+    var sv=f.querySelector('svg[data-x0], svg[data-xr]');if(over&&sv&&!f.hasAttribute('data-x0done')){f.setAttribute('data-x0done','');
+      var vb=sv.viewBox&&sv.viewBox.baseVal,k=vb&&vb.width?sv.getBoundingClientRect().width/vb.width:1,a=Math.max(0,(+sv.getAttribute('data-x0')||0)*k-12);
+      f.scrollLeft=Math.max(a,(+sv.getAttribute('data-xr')||0)*k-f.clientWidth);f.setAttribute('data-x0px',a);}
     vizEdge(f);});}
   window.addEventListener('resize',function(){vizFrames(document.querySelector('.panel:not([hidden])'));});
   document.addEventListener('toggle',function(e){if(e.target&&e.target.querySelector)vizFrames(e.target);},true);

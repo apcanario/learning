@@ -31,6 +31,8 @@ was made before the text; each reads one section at a time, every section reache
 made" are closed accordions after the text, and Sources opens from its links; on one page of each course a deep link
 to a section and to Sources lands on a fresh load, and Continue and a reload resume at the section last read. The
 panel checks measure each reading page whole.
+Opening trees (P79): every tree wider than its 358-unit phone frame opens (at data-x0 or data-xr, as shell.js does)
+with its root box whole and a box of a lower level in view.
 Centred drawings (P50): every sitemap, objects, decision, states and wireflow figure whose drawing starts more than 12 units
 in carries data-x0 where it starts, so a phone frame opens on it.
 Figure keys (P52): every viz block in the vault, every history figure declaration, every course home figure and every
@@ -287,6 +289,7 @@ def _year(t):
     """A tick label as a signed year (P63): 750 BC or 750 BCE is -750, AD 14 or 14 CE is 14, 1453 is 1453."""
     m = re.fullmatch(r'(\d+) (BC|BCE)', t.strip()) or re.fullmatch(r'(?:AD )?(\d+)(?: CE)?', t.strip())
     return None if not m else -int(m.group(1)) if m.re.pattern.endswith('BCE)') else int(m.group(1))
+PHONE_FRAME = 358                                      # P79: a 390 px phone's figure frame (16 px gutters)
 def figure_rules(page, name):
     """The P58 faults (and P63's date lines) in one built page's figures, as messages (empty when it has none)."""
     import html as H
@@ -330,6 +333,18 @@ def figure_rules(page, name):
                 x0 = {'start': x, 'middle': x - w / 2, 'end': x - w}[a]
                 if any(x0 + 1 < sx < x0 + w - 1 and y1 < y - 4 < y2 for sx, y1, y2 in stems):
                     bad.append(f'{where}: a stem runs through the text "{t}"')
+        if kind == 'tree':                                   # P79: a tree wider than its phone frame opens on its root
+            wv = float(re.search(r'viewBox="0 0 ([\d.]+)', svg).group(1))
+            if wv > PHONE_FRAME:
+                nodes = [tuple(map(float, r)) for r in re.findall(r'<rect class="viz-node[^"]*" x="([-\d.]+)" y="([-\d.]+)" width="([\d.]+)"', svg)]
+                rx, ry, rw = min(nodes, key=lambda r: (r[1], r[0]))
+                x0 = re.search(r'<svg [^>]*?data-x0="([\d.]+)"', svg); xr = re.search(r'<svg [^>]*?data-xr="([\d.]+)"', svg)
+                at = min(wv - PHONE_FRAME, max(0, float(x0.group(1)) - 12 if x0 else 0, float(xr.group(1)) - PHONE_FRAME if xr else 0))
+                if not (at - 0.5 <= rx and rx + rw <= at + PHONE_FRAME + 0.5):
+                    bad.append(f'{where}: a {wv:.0f}-unit tree opens its {PHONE_FRAME}-unit phone frame at {at:.0f}, but its root box spans '
+                               f'{rx:.0f} to {rx + rw:.0f}: the first screen shows no root (P79: data-xr)')
+                elif not any(at < x + w and x < at + PHONE_FRAME for x, y, w in nodes if y > ry):
+                    bad.append(f'{where}: the phone frame opens on the root alone, with no box of a lower level in view')
         if kind in viz.X0_KINDS:                             # P50: a centred drawing names where it starts
             lft, x0 = viz._left(svg), re.search(r'<svg [^>]*?data-x0="([\d.]+)"', svg)
             if lft is not None and lft - 8 > 12 and (not x0 or abs(float(x0.group(1)) - (lft - 8)) > 2):

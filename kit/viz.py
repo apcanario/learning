@@ -150,10 +150,15 @@ Contract change at P63 (1 Nov 2026), under the same rule:
               century", "late eighth century BC", "c. 670–640"): it prints as written and is drawn at "at", which must
               lie inside the century or span it names (date_names), or the build stops. The year is never printed
               where the text gives none. verify.py checks every built date line against the year its dot stands at.
+Contract change at P79 (1 Nov 2026):
+  tree        the svg carries data-xr, the root box's right edge plus 8; a phone frame narrower than the drawing opens at
+              the further right of data-x0 (P58) and the point that puts its right edge at data-xr, so the root is in
+              view on the first screen. verify.py checks that every tree wider than its phone frame opens with its root whole.
 Contract change at P78 (1 Nov 2026):
   objects     the "dir" mark is a narrow isosceles triangle (14 units base to tip, 6 across the base), so it reads towards
-              its object on a line at any angle at 390 px; a plate keeps 18 units for it (was 12), and a level gap widens by
-              as much. The P66 mark was 8 by 8 and on a slanted line read as pointing either way (IA2's cross-surface map).
+              its object on a line at any angle at 390 px. On a level line it sits at the label plate's right end (the plate
+              keeps 18 units for it, was 12, and a level gap widens by as much); on a slanted or vertical line it sits on the
+              line itself, just past the plate on the side of its object, and plate and mark are kept clear as one. The P66 mark was 8 by 8 and on a slanted line read as pointing either way (IA2's cross-surface map).
 Contract change at P66 (1 Nov 2026):
   objects     a link may carry "dir": "to" or "from": a small solid triangle at the end of its label, pointing at the
               object the label reads towards (UML's reading-direction mark), for a label that cannot read left to right
@@ -314,7 +319,7 @@ def _left(body):
     return min(xs) if xs else None
 
 
-def _svg(w, h, body, cls, title, caption, wide=False, x0=None):
+def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None):
     if x0 is None and cls in X0_KINDS:
         lft = _left(body)
         x0 = max(0, lft - 8) if lft is not None and lft - 8 > 4 else None
@@ -322,7 +327,7 @@ def _svg(w, h, body, cls, title, caption, wide=False, x0=None):
     if caption:                                              # H-2: a number range never breaks at its dash (141–150)
         caption = re.sub(r'>([^<]*)<', lambda m: '>' + re.sub(r'(\d)([–-])(?=\d)', '\\1\u2060\\2\u2060', m.group(1)) + '<', f'>{caption}<')[1:-1]
     c = f'<figcaption>{caption}</figcaption>' if caption else ''
-    return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''} '
+    return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''}{f' data-xr="{xr:.0f}"' if xr else ''} '
             f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg></div>{c}</figure>')
 
 
@@ -681,8 +686,11 @@ def tree(d):
         body += _g(f'<rect class="viz-node viz-t{tone}" x="{x:.1f}" y="{y}" width="{node_w}" height="{h}" rx="2"/>'
                    + _text(lines, T_NODE, cx, y + (h - len(lines) * 14) / 2, 'middle'))
     draw(root)
+    # P79 (1 Nov 2026): the svg also carries data-xr, the root box's right edge plus 8: a phone frame narrower than the
+    # drawing opens with the root in view (the frame's right edge at data-xr, or at data-x0 if that is further right), so
+    # a wide tree whose root stands over the middle (Greece's Hesiod tree) opens on its boxes, not on empty upper rows.
     return _svg(max(W, _r(width)), _r(lvl_y[-1] + lvl_h[-1] + 8), body, 'tree', d.get('title'), d.get('caption'), wide=width > W * 1.15,
-                x0=off)
+                x0=off, xr=pos[id(root)][0] + node_w / 2 + 8)
 
 
 def flow(d):
@@ -1141,35 +1149,68 @@ def objects(d):
                 lab = _lines(e['label'], T_LINK, max(40, L - 12 - (DIRW if e.get('dir') else 0)))
             else:
                 lab = _lines(e['label'], T_LINK, max(min(bw, 150), max(_tw(w, T_LINK[2], T_LINK[1]) for w in str(e['label']).split()) + 1))
-            pw, ph = _width(lab, T_LINK) + 8 + (DIRW if e.get('dir') else 0), len(lab) * 12.5 + 4
+            onl = bool(e.get('dir')) and not level           # P78: on a slanted or vertical line the mark sits on the line
+            pw, ph = _width(lab, T_LINK) + 8 + (DIRW if e.get('dir') and level else 0), len(lab) * 12.5 + 4
+            sx, sy = ((ux, uy) if e.get('dir') == 'to' else (-ux, -uy)) if e.get('dir') else (0, 0)
+            def variants(mx, my, r):
+                """For a label plate r on its line at (mx, my): [(plate drawn, area kept clear, text box, mark centre)].
+                Without a mark, or on a level line, the plate itself (the level mark at its right end). On any other line,
+                the mark on the line just past the plate on its object's side ('out'), or, where that has no room, inside
+                the plate grown along the line's steeper axis on that side, still on the line ('in')."""
+                if not onl:
+                    return [(r, [r], r, (r[0] + r[2] - DIRW / 2 - 2, r[1] + r[3] / 2) if e.get('dir') else None)]
+                out = []
+                ts = [t for v, lo, hi, c in ((sx, r[0], r[0] + r[2], mx), (sy, r[1], r[1] + r[3], my)) if abs(v) > 1e-6
+                      for t in [((hi if v > 0 else lo) - c) / v] if t >= 0]
+                inside = r[0] <= mx <= r[0] + r[2] and r[1] <= my <= r[1] + r[3]
+                k = (min(ts) if inside and ts else 0) + 3 + DIR_BACK
+                tx, ty = mx + sx * k, my + sy * k
+                mb = (min(tx + sx * DIR_TIP, tx - sx * DIR_BACK) - DIR_HALF, min(ty + sy * DIR_TIP, ty - sy * DIR_BACK) - DIR_HALF)
+                mb = mb + (abs(sx) * (DIR_TIP + DIR_BACK) + 2 * DIR_HALF, abs(sy) * (DIR_TIP + DIR_BACK) + 2 * DIR_HALF)
+                out.append((r, [r, mb], r, (tx, ty)))
+                if abs(sy) >= abs(sx):                       # steep: the plate grows up or down by DIRW
+                    g = (r[0], r[1] - DIRW if sy < 0 else r[1], r[2], r[3] + DIRW)
+                    ty = g[1] + DIRW / 2 + 1 if sy < 0 else g[1] + g[3] - DIRW / 2 - 1
+                    tx = mx + (ty - my) * sx / sy
+                    tb = (r[0], r[1] if sy > 0 else r[1], r[2], r[3])
+                    if g[0] + DIR_HALF + 1 <= tx <= g[0] + g[2] - DIR_HALF - 1:
+                        out.append((g, [g], tb, (tx, ty)))
+                else:                                        # shallow: the plate grows left or right by DIRW
+                    g = (r[0] - DIRW if sx < 0 else r[0], r[1], r[2] + DIRW, r[3])
+                    tx = g[0] + DIRW / 2 + 1 if sx < 0 else g[0] + g[2] - DIRW / 2 - 1
+                    ty = my + (tx - mx) * sy / sx
+                    if g[1] + DIR_HALF + 1 <= ty <= g[1] + g[3] - DIR_HALF - 1:
+                        out.append((g, [g], r, (tx, ty)))
+                return out
             best = None
             for t in (0.5, 0.42, 0.58, 0.34, 0.66, 0.27, 0.73, 0.2, 0.8):
                 mx, my = P[0] + (Q[0] - P[0]) * t, P[1] + (Q[1] - P[1]) * t
                 cx, cy = (mx, my + 4 + ph / 2) if level else (mx, my)
                 x = max(4, min(cx - pw / 2, Wd - 4 - pw))
-                r = (x, cy - ph / 2, pw, ph)
-                hard = sum(1 for c in cross if _inside(c, r, 6)) + sum(1 for o in taken + plates if _overlap(r, o, 2))
-                soft = sum(1 for e2, _, _, P2, Q2 in segs if e2 is not e and _hits(P2, Q2, r, 2))
-                clear = min([_dist_rect(c, r) for c in cross] + [_seg_rect(P2, Q2, r) for e2, _, _, P2, Q2 in segs if e2 is not e]
-                            + [_rect_gap(r, o) for o in plates] + [99])    # and from every label already placed
-                score = (hard, soft, clear < 14, -min(clear, 14), abs(t - 0.5))   # 14 units clear of other lines, then the middle
-                if best is None or score < best[0]:
-                    best = (score, r)
-            if best[0][0]:
+                for vi, (plate, Rs, tb, mc) in enumerate(variants(mx, my, (x, cy - ph / 2, pw, ph))):
+                    if any(R[0] < 2 or R[0] + R[2] > Wd - 2 for R in Rs):
+                        continue                             # the plate and its mark, each kept clear (P78)
+                    hard = sum(1 for R in Rs for c in cross if _inside(c, R, 6)) + sum(1 for R in Rs for o in taken + plates if _overlap(R, o, 2))
+                    soft = sum(1 for R in Rs for e2, _, _, P2, Q2 in segs if e2 is not e and _hits(P2, Q2, R, 2))
+                    clear = min([_dist_rect(c, R) for R in Rs for c in cross] + [_seg_rect(P2, Q2, R) for R in Rs for e2, _, _, P2, Q2 in segs if e2 is not e]
+                                + [_rect_gap(R, o) for R in Rs for o in plates] + [99])    # and from every label already placed
+                    score = (hard, soft, clear < 14, -min(clear, 14), abs(t - 0.5), vi)   # 14 units clear of other lines, then the middle
+                    if best is None or score < best[0]:
+                        best = (score, plate, Rs, tb, mc)
+            if best is None or best[0][0]:
                 _fail(K, f'the label of {e["from"]} - {e["to"]} ({e["label"]!r}) has no place on its line clear of every crossing, '
                          'box and other label; move a box')
-            x, top, pw, ph = best[1]
-            plates.append(best[1])
+            _, (x, top, pw, ph), Rs, tb, mc = best
+            plates += Rs
             mark = ''
-            if e.get('dir'):                                 # the reading-direction mark, at the plate's right end
-                sx, sy = (ux, uy) if e['dir'] == 'to' else (-ux, -uy)
-                tx, ty = x + pw - DIRW / 2 - 2, top + ph / 2   # P78: a narrow isosceles, tip DIR_TIP ahead of its centre,
-                mark = (f'<path class="viz-head" d="M{tx + sx * DIR_TIP:.1f},{ty + sy * DIR_TIP:.1f} '   # base DIR_BACK behind,
-                        f'L{tx - sx * DIR_BACK - sy * DIR_HALF:.1f},{ty - sy * DIR_BACK + sx * DIR_HALF:.1f} '   # 2 x DIR_HALF wide
+            if mc:                                           # the reading-direction mark (P78): a narrow isosceles, tip
+                tx, ty = mc                                  # DIR_TIP ahead of its centre, base DIR_BACK behind, 2 x DIR_HALF wide
+                mark = (f'<path class="viz-head" d="M{tx + sx * DIR_TIP:.1f},{ty + sy * DIR_TIP:.1f} '
+                        f'L{tx - sx * DIR_BACK - sy * DIR_HALF:.1f},{ty - sy * DIR_BACK + sx * DIR_HALF:.1f} '
                         f'L{tx - sx * DIR_BACK + sy * DIR_HALF:.1f},{ty - sy * DIR_BACK - sx * DIR_HALF:.1f} z"/>')
-            tw_ = pw - (DIRW if e.get('dir') else 0)
+            tw_ = tb[2] - (DIRW if e.get('dir') and level else 0)
             links += (f'<g data-box="" data-text="{esc(e["label"])}"><rect class="viz-lblbg" x="{x:.1f}" y="{top:.1f}" width="{pw:.1f}" height="{ph:.1f}"/>'
-                      + _text(lab, T_LINK, x + tw_ / 2, top + 2, 'middle') + mark + '</g>')
+                      + _text(lab, T_LINK, tb[0] + tw_ / 2, tb[1] + 2, 'middle') + mark + '</g>')
     return _svg(Wd, _r(y - GY + 8), links + body, 'objects', d.get('title'), d.get('caption'), wide=Wd > W * 1.15)
 
 
