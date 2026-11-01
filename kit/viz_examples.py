@@ -20,7 +20,7 @@ FIC = 'Perqo is fictional; every name and number in this figure is invented for 
 # (kind, what it draws, its fields, the example block)
 EXAMPLES = [
     ('timeline', 'Dated events on an axis, with spans as bands above it; a dense one widens and scrolls.',
-     'start, end, ticks [year], events [{at, label, tone}], spans [{from, to, label, tone}]',
+     'start, end, ticks [year], events [{at, label, date, tone}], spans [{from, to, label, tone}]',
      {'kind': 'timeline', 'title': 'Perqo, 2018 to 2026 (fictional)', 'start': 2018, 'end': 2027,
       'ticks': [2018, 2020, 2022, 2024, 2026],
       'spans': [{'from': 2018, 'to': 2020, 'label': 'Seed', 'tone': 2}, {'from': 2020, 'to': 2024, 'label': 'Growth', 'tone': 3},

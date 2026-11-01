@@ -149,10 +149,14 @@ like) with its number on the next line; no date line that drops a "c." or a spli
 in a figure on a page whose prose writes BCE/CE; no value printed twice in one range row, and every range end label
 spanning its end; no "1 <word>s"; every objects link label's lines joining back to whole words; a narrow tree centred;
 no timeline stem through another event's text.
+Contract change at P52 (1 Nov 2026): render draws a deep copy of the block it is given, so the renderer's working keys
+(_t, _h, ...) never reach a unit; VIZ_KEYS lists every kind's documented keys at every level, and verify.py reads every
+```viz block in the vault, every history figure declaration, every course home figure and every examples block against it.
 verify.py (P55) runs its figure checks on every figure of every page, every kind: nothing outside the drawing, every
 text inside its box (a node, a plate, a bar or span carrying its label), no two boxes overlapping, no two texts
 overlapping and no free text over a box; the examples page carries one hard case per fault above.
 """
+import copy
 import html as H
 import itertools
 import json
@@ -2144,8 +2148,78 @@ def _lists(o, kind, path='figure'):
             _lists(v, kind, f'{path}[{i}]')
 
 
+# P52 (1 Nov 2026): the documented keys of every kind, at every level of a block. A block is data a writer declares;
+# the renderer works on a copy (render's deepcopy), so its working keys (_t, _h, ...) never reach a unit, and verify.py
+# (check_viz_keys) reads every ```viz block and every history figure declaration against this table. A key in a block
+# that is not here is either undocumented or a typo: either way the figure does not draw what the block says.
+# Each kind maps a node's name to its keys; a key whose value is an object or a list of objects names the node it holds
+# in NODE_OF (per kind, falling back to the key itself), and the top level is ".".
+COMMON = {'kind', 'caption', 'title'}
+_TREE = {'label', 'tone', 'children'}
+VIZ_KEYS = {
+    'timeline': {'.': {'start', 'end', 'ticks', 'events', 'spans', 'era'},
+                 'events': {'at', 'label', 'date', 'tone'}, 'spans': {'from', 'to', 'label', 'tone'}},
+    'compare': {'.': {'unit', 'max', 'decimals', 'rows'}, 'rows': {'label', 'value', 'display', 'tone'}},
+    'tree': {'.': {'root'}, 'root': _TREE, 'children': _TREE},
+    'flow': {'.': {'steps', 'per_row'}, 'steps': {'label', 'note', 'tone'}},
+    'sitemap': {'.': {'root', 'stack_from'}, 'root': {'label', 'type', 'note', 'tone', 'children'},
+                'children': {'label', 'type', 'note', 'tone', 'children'}},
+    'objects': {'.': {'objects', 'rows', 'links'}, 'objects': {'id', 'title', 'attrs', 'actions', 'tone'},
+                'links': {'from', 'to', 'label', 'from_card', 'to_card', 'dir'}},
+    'decision': {'.': {'root'}, 'root': {'q', 'outcome', 'tone', 'branches'}, 'branches': {'label', 'to'},
+                 'to': {'q', 'outcome', 'tone', 'branches'}},
+    'matrix': {'.': {'cols', 'rows', 'legend', 'numeric', 'tone', 'min', 'max', 'decimals', 'unit', 'scale_label'},
+               'rows': {'label', 'tone', 'cells'}, 'cells': {'mark', 'tone'}, 'legend': {'mark', 'means', 'tone'}},
+    'states': {'.': {'states', 'transitions', 'per_row', 'start'}, 'states': {'id', 'label', 'note', 'tone', 'end'},
+               'transitions': {'from', 'to', 'label'}},
+    'swimlanes': {'.': {'lanes', 'steps', 'links'}, 'lanes': {'id', 'label', 'tone'},
+                  'steps': {'id', 'lane', 'col', 'label', 'note', 'tone'}, 'links': {'from', 'to', 'label'}},
+    'wireflow': {'.': {'screens', 'links', 'per_row'}, 'screens': {'id', 'title', 'tone', 'lines'},
+                 'lines': {'bar', 'block', 'button'}, 'links': {'from', 'to', 'label'}},
+    'line': {'.': {'x', 'years', 'era', 'unit', 'series', 'annotations', 'labels', 'min', 'max', 'yticks', 'xticks',
+                   'decimals', 'height', 'xlabel', 'ylabel'},
+             'series': {'name', 'values', 'tone'}, 'annotations': {'at', 'label'}},
+    'bars': {'.': {'mode', 'unit', 'series', 'rows', 'max', 'decimals'}, 'series': {'name', 'tone'},
+             'rows': {'label', 'values'}},
+    'scatter': {'.': {'x', 'y', 'points', 'quadrants', 'height'},
+                'axis': {'label', 'min', 'max', 'ticks', 'unit', 'decimals', 'years'},
+                'points': {'label', 'x', 'y', 'tone'}, 'quadrants': {'x', 'y', 'names'}},
+    'range': {'.': {'unit', 'unit_one', 'years', 'era', 'min', 'max', 'ticks', 'decimals', 'xlabel', 'rows'},
+              'rows': {'label', 'low', 'high', 'point', 'low_src', 'high_src', 'tone'}},
+}
+NODE_OF = {'scatter': {('.', 'x'): 'axis', ('.', 'y'): 'axis'}}
+
+
+def check_keys(d, kind=None):
+    """P52: every key in a figure block that the table above does not document, as messages (empty when none)."""
+    kind = kind or (d.get('kind') if isinstance(d, dict) else None)
+    if kind not in VIZ_KEYS:
+        return [f'unknown kind {kind!r}']
+    spec, bad = VIZ_KEYS[kind], []
+
+    def walk(o, node, path):
+        if isinstance(o, list):
+            for i, v in enumerate(o):
+                walk(v, node, f'{path}[{i}]')
+            return
+        if not isinstance(o, dict):
+            return
+        allowed = spec[node] | (COMMON if node == '.' else set())
+        for k, v in o.items():
+            if k not in allowed:
+                bad.append(f'{path}.{k}: not a documented key of {kind}' + (f' {node}' if node != '.' else ''))
+                continue
+            sub = NODE_OF.get(kind, {}).get((node, k), k)
+            if sub in spec and (isinstance(v, dict) or (isinstance(v, list) and any(isinstance(x, (dict, list)) for x in v))):
+                walk(v, sub, f'{path}.{k}')
+    walk(d, '.', 'figure')
+    return bad
+
+
 def render(d):
-    """One figure object to HTML. A kind not in KINDS, or bad data, is an error: a figure that cannot draw is a bug, not a blank."""
+    """One figure object to HTML. A kind not in KINDS, or bad data, is an error: a figure that cannot draw is a bug, not a blank.
+    P52: it draws a deep copy, so the renderer's working keys never reach the block it was given (a unit, a course entry)."""
+    d = copy.deepcopy(d)
     try:
         _lists(d, d.get('kind'))
         return KINDS[d['kind']](d)

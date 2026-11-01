@@ -31,6 +31,8 @@ was made before the text; each reads one section at a time, every section reache
 made" are closed accordions after the text, and Sources opens from its links; on one page of each course a deep link
 to a section and to Sources lands on a fresh load, and Continue and a reload resume at the section last read. The
 panel checks measure each reading page whole.
+Figure keys (P52): every viz block in the vault, every history figure declaration, every course home figure and every
+examples block uses only the keys viz.VIZ_KEYS documents for its kind, and viz.render leaves the block it draws unchanged.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools
@@ -327,6 +329,34 @@ def figure_rules(page, name):
                 if hi - lo < W_ - 24 and abs(lo - (W_ - hi)) > 1.5:
                     bad.append(f'{where}: a narrow tree is not centred (margins {lo:.0f} and {W_ - hi:.0f})')
     return bad, n
+def check_viz_keys(fails):
+    """P52 (1 Nov 2026): every ```viz block in the vault of each markdown course, every figure declaration in a history
+    report, every course home figure in courses.py and every block on the examples page carries only the keys
+    viz.VIZ_KEYS documents for its kind (a typo or an undocumented key is a figure that does not draw what it says),
+    and rendering a block leaves it as it was (viz.render works on a copy)."""
+    bad, n = [], 0
+    def one(where, d, kind=None):
+        nonlocal n
+        n += 1
+        if kind: d.setdefault('kind', kind)
+        bad.extend(f'{where}: {b}' for b in viz.check_keys(d))
+    for c in COURSES:
+        if c['family'] == 'markdown' and (R.parent / c['vault']).is_dir():
+            for f in sorted((R.parent / c['vault']).glob('*.md')):
+                for i, m in enumerate(viz._FENCE.finditer(f.read_text()), 1):
+                    one(f'{c["vault"]}/{f.name} block {i}', json.loads(m.group(1)))
+        elif c['family'] == 'history':
+            for f in sorted((R / c['id']).glob('r-*.html')):
+                for i, m in enumerate(viz._FIG.finditer(f.read_text()), 1):
+                    one(f'{c["id"]}/{f.name} figure {i}', json.loads(m.group(2)), m.group(1))
+        if c.get('figure'): one(f'courses.py {c["id"]} figure', json.loads(json.dumps(c['figure'])))
+    for key, *_, block in viz_examples.EXAMPLES + [(k, w, b) for k, w, b in viz_examples.CASES]:
+        before = json.dumps(block, sort_keys=True)
+        one(f'viz-examples {key}', json.loads(before)); viz.render(block)
+        if json.dumps(block, sort_keys=True) != before: bad.append(f'viz-examples {key}: viz.render changed the block it was given')
+    fails += ['figure keys: ' + b for b in bad[:20]]
+    print(f'figure keys (P52): {n} blocks read, {len(bad)} undocumented keys')
+
 def check_figure_rules(fails):
     bad, n = [], 0
     for f in [SITE / 'index.html'] + sorted(x for x in SITE.rglob('*.html') if x.name != 'index.html'):
@@ -616,6 +646,7 @@ def check_figures(br, fails):
 def main():
     errors, fails = [], []
     check_files(fails)
+    check_viz_keys(fails)
     check_figure_rules(fails)
     with sync_playwright() as p:
         br = p.chromium.launch()
