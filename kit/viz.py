@@ -748,6 +748,22 @@ def _lines(s, role, px):
     return _wrap(s, 0, px=px, size=size, font=font, ls=ls)
 
 
+def _balanced(s, role, px):
+    """H-2: the lines of _lines(s, role, px), wrapped at the narrowest width that keeps their number, so a wrapped
+    text ends on a fair line rather than one word alone ("in / smoke")."""
+    lines = _lines(s, role, px)
+    if len(lines) < 2:
+        return lines
+    lo, hi = px * 0.4, px
+    while hi - lo > 2:
+        mid = (lo + hi) / 2
+        if len(_lines(s, role, mid)) == len(lines) and max(_tw(w, role[2], role[1], role[3]) for w in str(s).split()) <= mid:
+            hi = mid
+        else:
+            lo = mid
+    return _lines(s, role, hi)
+
+
 def _width(lines, role):
     _, font, size, ls, _ = role
     return max((_tw(ln, size, font, ls) for ln in lines), default=0)
@@ -1287,7 +1303,7 @@ def matrix(d):
     leg = [_tw(i.get('mark', ''), 10.5, 'mono') + 16 + 8 + min(220, _tw(i.get('means', ''), 11)) + 18 for i in d.get('legend') or []]
     Wd = max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)
     xs = [8 + LW + sum(cws[:k]) for k in range(n)]
-    heads = [_lines(c, T_COL, cws[k] - 10) for k, c in enumerate(cols)]
+    heads = [_balanced(c, T_COL, cws[k] - 10) for k, c in enumerate(cols)]
     hh = max(len(h) for h in heads) * 12 + 12
     body = ''.join(_text(h, T_COL, xs[k] + cws[k] / 2, hh - 6 - len(h) * 12, 'middle') for k, h in enumerate(heads))
     y = 8 + hh
@@ -1298,10 +1314,10 @@ def matrix(d):
             if c is None or c == '':
                 cells.append(([], rt))
             elif isinstance(c, str):
-                cells.append((_lines(c, T_MARK, cws[k] - 14), rt))
+                cells.append((_balanced(c, T_MARK, cws[k] - 14), rt))
             else:
-                cells.append((_lines(c.get('mark', ''), T_MARK, cws[k] - 14) if c.get('mark') else [], _tone(c, rt, K)))
-        lab = _lines(r['label'], T_LABEL, LW - 12)
+                cells.append((_balanced(c.get('mark', ''), T_MARK, cws[k] - 14) if c.get('mark') else [], _tone(c, rt, K)))
+        lab = _balanced(r['label'], T_LABEL, LW - 12)
         rh = max(32, max(len(m) for m, _ in cells) * 13 + 14, len(lab) * 14 + 12)
         body += _text(lab, T_LABEL, 8, y + (rh - len(lab) * 14) / 2)
         for k, (m, t) in enumerate(cells):

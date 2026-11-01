@@ -125,6 +125,18 @@ def band(sid, head, k):
             f'<span class="bh">{f"<span class=bk>{kick}</span>" if kick else ""}<span class="bt">{title}</span></span></h2>'), kick, title
 
 
+_URL = re.compile(r'(?:https?://|www\.)[^\s<>"]+')
+
+
+def url_breaks(h):
+    """P72 (1 Nov 2026): in the text of an html fragment (never inside a tag), a URL written out in full gets break
+    points: after each slash and before each dot, so on a phone it wraps there rather than at an arbitrary letter."""
+    def brk(m):
+        u = m.group(0)
+        return re.sub(r'(?<=/)(?=[^/])', '<wbr>', re.sub(r'(?<=[^.])\.(?=[^.\s])', '<wbr>.', u))
+    return re.sub(r'>([^<]+)<', lambda m: '>' + _URL.sub(brk, m.group(1)) + '<', f'>{h}<')[1:-1]
+
+
 def reading(pid, body, scope, sources, made, nsrc=None, chev=''):
     """The reading layout for one page. body: the unit's HTML with ids on its h2s and the process sections already
     taken out; scope: the one-line scope (html, may be empty); sources: the Sources list (html, may be empty);
@@ -156,7 +168,7 @@ def reading(pid, body, scope, sources, made, nsrc=None, chev=''):
            f'<button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div>')
     head = f'<p class="scope">{scope}</p>' if scope else ''
     cnt = f'<span class="an">{nsrc}</span>' if nsrc else ''
-    src = (f'<details class="acc src" id="{pid}-sources"><summary><span class="at">Sources</span>{cnt}</summary><div class="accb">{sources or "<p>No source list on file for this page.</p>"}</div></details>')
+    src = (f'<details class="acc src" id="{pid}-sources"><summary><span class="at">Sources</span>{cnt}</summary><div class="accb">{url_breaks(sources) if sources else "<p>No source list on file for this page.</p>"}</div></details>')
     mk = ''.join((f'<h3 id="{i}">' if i else '<h3>') + f'{h}</h3>{x}' for h, x, i in made if x)
     howm = (f'<details class="acc made" id="{pid}-made"><summary><span class="at">How this unit was made</span>'
             f'<span class="an">{len([1 for _, x, _ in made if x])} parts</span></summary><div class="accb">{mk}</div></details>')
