@@ -11,6 +11,7 @@ Write ONE file: the path you are given, as an HTML FRAGMENT (no doctype, html, h
 - `<p>`, `<ul>`, `<ol>`, `<li>`, `<strong>`, `<em>`, `<blockquote>` for short quoted ancient text (under 15 words).
 - `<table>` with `<thead>`/`<tbody>` for genuinely tabular material (chronologies, lists of names with attributes). Wrap every table in `<div class="tbl">`.
 - `<pre class="tree">` for a text family tree or mental map if the prompt asks for one.
+- `<figure class="viz" data-viz="…"><script type="application/json">…</script><figcaption>…</figcaption></figure>` for a figure where the content has a shape (kinds and data in `kit/viz.py`, when to declare one in `WRITER-BRIEF.md`); the JSON `<script>` inside this declaration is the only script allowed.
 - `<aside class="dispute">` — a short block, used wherever ancient sources or modern scholars disagree. Start it with `<strong>Where sources disagree.</strong>` Use this several times across the report; it is required.
 - Final two sections, in this order, with these exact headings:
   - `<h2>Self-test</h2>` containing `<ol class="quiz">` with 10 `<li>`; each li holds the question as text, then `<details><summary>Answer</summary><p>…</p></details>`.
