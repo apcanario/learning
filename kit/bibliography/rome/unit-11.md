@@ -1,6 +1,6 @@
 # Rome unit 11: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 7 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
 
 ## 11.1 How the Republic worked at its height
 
@@ -270,4 +270,42 @@ Curated bibliography: `bibliography/rome/r-11.6.md`.
 - Tristan Taylor, *Caesar's Gallic Genocide? A Case Study in Ancient Mass Violence* (2023)
 - Thierry (1828): title not given in the report
 - Amédée Thierry, *Histoire des Gaulois* (1828)
+
+## 11.7 The Ides of March
+
+Curated bibliography: `bibliography/rome/r-11.7.md`.
+
+### Ancient works
+- Caesar, *Gallic War* 3.11
+- Cicero, *Letters to Atticus* 14.1.1; 14.4.2; 14.10.1; 14–15
+- Cicero, *Philippics* 2; 2.28; 2.34; 2.90–91
+- Plutarch, *Antony* 11; 11–14; 13; 14
+- Plutarch, *Brutus* 2; 7; 7–21; 8; 9; 12; 13; 16; 17; 18; 18, 20; 20; 29; 36; 37
+- Plutarch, *Caesar* 60; 63; 64; 65; 66; 68
+- Plutarch's, *Caesar* 66
+- Suetonius, *Julius* 76.1; 76–89; 78.1; 79.3; 80.3; 80.4; 81.1; 81.3; 81.4; 82.1; 82.1–2; 82.2; 82.3; 82.4; 83.1–2; 83.2; 84.2; 84.3–5; 85; 87; 88; 89
+- *Caesar* 56, 61; 60; 60–69; 61; 62; 63; 63–64; 64; 66; 68
+- *Civil Wars* 2.107–154
+- *Galba* 4.1
+- *Julius Caesar* 3.1
+- *Letters to Friends* 10.28.1
+- *Life of Augustus* 19–27
+- *On Divination* 1.119
+- *Res Gestae* 2
+
+### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Appian 2.116; 2.117; 2.119–120; 2.144–145
+- Dio 44.19
+- Valerius Maximus 8.11.2
+
+### Modern works
+- Andreas Alföldi, *Caesar in 44 v. Chr.* (1985)
+- Nicholas Horsfall, *The Ides of March: Some New Problems* (1974)
+- Robert Morstein-Marx, *Julius Caesar and the Roman People* (2021)
+- John North, *Caesar at the Lupercalia* (2008)
+- James Russell, *Julius Caesar's Last Words: A Reinterpretation* (1980)
+- David Sedley, *The Ethics of Brutus and Cassius* (1997)
+- Aldo Setaioli, *Antony's speech in Shakespeare's <em>Julius Caesar</em> and the ancient sources* (2017)
+- Barry Strauss, *The Death of Caesar* (2015)
+- Ioannis Ziogas, *Famous Last Words: Caesar's Prophecy on the Ides of March* (2016)
 

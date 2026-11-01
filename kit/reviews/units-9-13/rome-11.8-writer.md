@@ -1,0 +1,11 @@
+# Rome 11.8 writer's unsure list (Opus 5.5)
+- Syme, *The Roman Revolution* (1939): the quotation "The Roman constitution was a screen and a sham" is from memory, not checked against the edition.
+- Gruen (1974): his judgement given unquoted as "civil war caused the fall of the Republic, not the reverse"; the exact wording and page in the book not checked. The quoted title is Morstein-Marx's 2024 Berkeley paper (conference programme, ahma.berkeley.edu).
+- Meier: *Krise ohne Alternative* attributed to Meier without a date; whether the phrase first appears in *Res publica amissa* (1966) or later (e.g. the 1980 edition's preface) not established.
+- Flower (2010): dates from the BMCR 2010.02.69 review; the laws of 180 (lex Villia) and 139 (ballot law) as the dividers of republics 3/4 and 4/5 are my inference from the dates, not checked in Flower.
+- Lucan 1.84–93 and 1.70–82: line numbers from Riley's line-numbered translation, not the Latin text.
+- Polybius 6.57 and Tacitus, *Histories* 2.38: content from memory, not checked against a text.
+- Dio book 52: the Agrippa–Maecenas debate set in 29 BC, from memory.
+- Watts, *Mortal Republic* (2018): title, date and the "erosion of norms" summary from memory.
+- Brunt (1971, 1988): summary of *Social Conflicts* and the 1988 title essay from memory; "with arms in their hands" is the phrase deep dive module 11.2 cites from Brunt 1962.
+- A Cambridge page for Morstein-Marx 2021's conclusion failed to fetch (server error): not checked.
