@@ -18,13 +18,11 @@ This session has two jobs, in this order:
 
 This may be more than one session's work. Publish after every finished unit so nothing registered is ever unpublished, and stop at a clean point when the session runs short.
 
-## Where things stand (end of the session of 25 October 2026)
+## Where things stand (1 November 2026, after session 40)
 
 - **Greece:** complete, 78 reports. Nothing to write.
-- **Rome:** 59 of 79 content reports registered (about 180,000 words), every one checked: nothing is unchecked. Units 0 to 10 complete; deep dive I has 11.1 and 11.2; deep dive III has 13.1 and 13.2; deep dive II has none.
-- **To write (job 1), 20 modules:** Rome 11.3 to 11.8, 13.3 to 13.8, 12.1 to 12.8. They show a blue "next" pill (`next_up` in `courses.py:ROME`). 11.3 and 11.4 were started on 25 October but nothing reached disk: write them from scratch.
-- **Published:** the site with everything registered (the last publish of 25 October, after the checks of 10.5, 13.1 and 13.2, has no unchecked pills and carries the next pills); the Greek syllabus (version 7, unit 13 naming unit 12). The Rome syllabus is unchanged.
-- **Open corrections to Fable-written Greek reports** (7.2's Epicurean gods box, 9.3's Ovide moralisé date, 7.3's two, 9.4's exam timings) are in `review_notes` for the Fable review: don't apply them in a writing session. Three small corrections to Opus-written Rome reports (1.4, 3.1, 6.1), found by the 10.5 checker, are in `review_notes` with exact replacements; they were left unapplied in the checks session.
+- **Rome:** complete, 79 of 79 content reports (about 264,000 words), every one checked by a fresh agent. The last 20 (11.3 to 11.8, 12.1 to 12.8, 13.3 to 13.8) were written on 1 November 2026 (R-1, R-2) and are flagged for the Fable review, deferred to stage 5. `next_up` is empty. Nothing is left to write; this file stays as the record of the lanes and the lessons.
+- **Published:** Academy with every report registered (artifact and GitHub Pages, end of session 40).
 
 ## Where the source is
 
