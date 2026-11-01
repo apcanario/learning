@@ -119,6 +119,10 @@ Extra files:
 - **Duplication.** Self-test questions repeated a neighbour's question; dispute boxes restated a neighbour's box. Each has one home.
 - **Self-test answers** must agree with the body after fixes.
 - **Philosophy:** quote fragments from the edition cited; keep the doxographer separate from the claim; don't grade a neighbouring report inside a report (log its error instead).
+- **Figures: the text's own words (R-1, 1 Nov 2026).** Every date, number and name in a figure is in the text and carries the text's qualifiers: "c.", "some", "or", a month.
+- **Figures: the caption (R-1).** A caption claims only what the figure shows, names item by item the passage the text cites for each, and says which dates the text gives without a passage.
+- **Figures: spans (R-1).** A span's label carries its years ("Perusine war, 41–40 BC"), so it reads as a period, not a legend key.
+- **Figures: whose number (R-1).** A figure names whose figure a number is, as the text does ("Caesar's 80,000", "Plutarch's figure").
 - **Usage limits.** Agents stopped three times on usage limits (session and monthly). Stopped agents keep their work: resume them with `SendMessage` after the reset, never restart them. Record the pipeline state in the log before a likely stop.
 
 ## Job 2: re-check and publish
