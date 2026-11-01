@@ -194,3 +194,5 @@ Agents per P31: each module written by a fresh Opus 5.5 agent that saw only its 
 12.6 third figure check (new agent; `rome-12.6-figures-3.md`): the tree PASS. 12.6 keeps both figures.
 
 12.2 third figure check (new agent; `rome-12.2-figures-3.md`): the book matrix PASS; the route failed a third time (its "Carthage" box carried the lines of the Libyan harbour, 1.157–169, where the text reaches Carthage only at 1.430–437) and is dropped under the rule. 12.2 keeps two figures, the book matrix and the games matrix.
+
+11.8 figure re-check (new agent; `rome-11.8-figures-2.md`): the matrix and the modern timeline passed; Flower's republics failed a second time, fixed against both reports: the three republics of the nobles labelled third, fourth and fifth, as the text numbers them, and the checker's caption giving module 0.3 for the 88 point and saying the text gives Flower's dates without a passage. Third check queued.
