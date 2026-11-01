@@ -62,6 +62,8 @@ Curated bibliography: `bibliography/rome/r-12.2.md`.
 
 ## 12.3 
 
+Curated bibliography: `bibliography/rome/r-12.3.md`.
+
 ### Ancient works
 - Doloneia, *Iliad* 10
 - Hector, *Iliad* 22.213
@@ -76,6 +78,7 @@ Curated bibliography: `bibliography/rome/r-12.2.md`.
 - August. Denis Feeney, *Caesar's Calendar* (2007)
 - G. Karl Galinsky, *The Hercules-Cacus Episode in <em>Aeneid</em> VIII* (1966)
 - Philip Hardie, *Virgil's Aeneid: Cosmos and Imperium* (1986)
+- Lessing, *Laokoon* (1766)
 - O. A. M. Lyne, *Lavinia's Blush* (1983)
 - Michael Putnam, *The Poetry of the Aeneid* (1965)
 - Pallas. Putnam, *Virgil's Danaid Ekphrasis* (1994)
