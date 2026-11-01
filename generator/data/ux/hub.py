@@ -18,7 +18,7 @@ BAR = 'USER EXPERIENCE'
 BRAND_HTML = 'USER <span>/</span> EXPERIENCE'
 OUT = 'user-experience-courses.html'
 THEME_KEY = 'ux-theme'
-VERSION = 'v3 · 30 Oct 2026'
+VERSION = 'v4 · 1 Nov 2026'
 LEARN_C, BUILD_C = 'var(--blue)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -152,6 +152,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-01 14:00', "v4. Errata (backlog row H-3; Opus 5.5, own agent contexts, P31: one drafter, one checker before anything was applied, one fresh figure-checker per changed figure). IA2 (P74, P75): the notation gains the reading-direction mark, a small triangle by a relationship label that cannot read left to right or top to bottom, pointing at the object it reads towards (section 5.2 Lines and Labels, the legend, the notation sheet); the legend's Screen row says a button is a control, its Surface: Label row says the title is in lower case, a row says nothing is drawn dashed, and its caption names WCAG 2.2, 1.4.1 and says the tones were added; the cross-surface map is redrawn on a grid with two crossings and every label clear, two labels marked, its surface-to-surface labels made verbs from IA1's table (the paragraph before it changed with them), a count at each end of the object lines, approves in Approvals [over the limit], and its caption's fidelity and citations brought to the text. IA1 (P76): figure 2's caption says what it places and why the structure row is shaded. The Fable 5.1 checks owed (P49) cover both."),
     ('2026-10-30 23:50', "v3. IA2 The shapes IA takes: the artefact catalogue and the course notation written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 10 should-fix, 17 minor; all applied; Fable 5.1 fresh check owed, P49) and filed: reading page under course IA, IA2 marked written, eight figures; the course notation is set for every later figure; IA3 next; Audit 1 counter 2 of 4 (deferred by Pedro, P49)."),
     ('2026-10-30 19:30', "v2. IA1 What information architecture is, and where it sits written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Opus 5.5 agent (keep, 0 errors, 4 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed, P49) and filed: reading page under course IA, IA1 marked written, six figures; IA2 next; Audit 1 counter 1 of 4 (deferred by Pedro, P49)."),
     ('2026-10-29 22:30', "v1. Course IA · Information Architecture created from the template on design/theme.css: the frame, the syllabus (twelve core units in four parts, three deep dives), the shared preamble with the reader persona and the fictional Perqo, one brief per unit, the build order with an audit after each part. Status coming soon; nothing written. The figure kinds the course needs are a backlog row before IA1."),
