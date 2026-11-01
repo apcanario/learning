@@ -1,0 +1,11 @@
+# Rome 11.7 writer's unsure list (Opus 5.5)
+- Appian 2.114: the conspirators weighed other places and chose the Senate because uninvolved senators would join; from memory, not checked.
+- Pelling, *Plutarch: Caesar* (2011) as the place that weighs Pollio as common source of Plutarch, Appian and Suetonius; attribution from memory.
+- Nicolaus' chapter numbers (19, 21, 23–24, 26) follow C. M. Hall's translation as given on the CSUN page; other editions number the excerpts differently (FGrHist 90 F 130).
+- Cicero, *On Divination* 2.36–37 for Marcus' reply on the heartless victim; section numbers from memory.
+- Plutarch, *Caesar* 63: the paraphrase of his opening remark on fate, and Livy cited there for the pediment; from memory.
+- Plutarch, *Brutus* 18 (Brutus addresses the people) and 20 (seventy-five drachmas, Cinna); chapter numbers from memory.
+- Russell (1980) appears in B. Marshall (ed.), *Vindex Humanitatis* (Armidale), pp. 123–128; place of publication not checked.
+- Strauss's view on whether the Republic could survive is taken from a review (G. Matthew Adkins, Washington Independent Review of Books), not from the book.
+- Booth's shout and diary, and the benefit performance of November 1864: from memory, not checked.
+- Monterroso's 2012 concrete block: from the CSIC press release as reported (ScienceDaily, HeritageDaily); scholarly reception not checked.

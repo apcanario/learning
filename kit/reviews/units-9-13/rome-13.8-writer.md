@@ -1,0 +1,11 @@
+# Rome 13.8 writer: claims I was unsure of or could not verify
+- Place notes: whether "among the Quadi on the Granua" closes book 1 or heads book 2 (and "at Carnuntum" likewise) is given as disputed; Haines' Loeb (1916, Wikisource) prints Carnuntum at the end of book 2 with a note; Sellars (2025 excerpt) gives both as titles of books 2 and 3. Not checked against a critical apparatus.
+- Meditations passage numbers for the themes and book 1 (2.2, 3.1, 4.32, 4.33, 4.41, 4.43, 6.13, 6.30, 8.9, 8.48, 9.3, 9.6, 9.30, 11.33–38, 12.36; 1.1–17 entries) are from memory of the standard text; only 2.17's place was seen (Haines).
+- Historia Augusta, Avidius Cassius 3 and Marcus 27.7, and Themistius, Orations 6: chapter and oration numbers from memory and Wikipedia's account; not opened.
+- Rutherford (1989): my one-line summary of his reading (style and rhetorical training as part of the moral purpose, Fronto's pupil persuading himself) is from memory; I could not open a review or abstract.
+- Africa (1961): journal, volume and first page confirmed (PhilArchive); my summary of the argument (theriac prepared by Galen, opium shaping the visions of flux) is from memory.
+- Mill, On Liberty ch. 2: that the passage sets Marcus beside his persecution of Christians is from memory; Behlman's abstract confirms only a Mill passage comparing Stoic and Christian ethics that prompted Arnold.
+- Arnold (1863): the melancholy against Christian joy is from victorianweb (DeLaura); I could not open the essay's text (Gutenberg copy truncated), so no wording is quoted and the first venue is not named.
+- Frederick the Great: every detail (busts at Sanssouci, letters to Wilhelmine, "morality for statues", 1762 remark, Voltaire 1775) rests on one online essay by Kevin Kennedy (Modern Stoicism); not checked against the correspondence.
+- Gill: his position is taken from the description of an Oxford podcast lecture, not from a publication; Stothard's review is cited from the Times Higher Education page, undated there.
+- Arethas' letter (before 907, "most profitable book", copy falling to pieces): from Wikipedia's Meditations article, not from an edition of the letter.

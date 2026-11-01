@@ -269,7 +269,7 @@ In progress: 63 of 79 content reports; 85 modules with the audit unit. Written i
 | 67 | 13.4 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Cato and the Stoic opposition | not written · batch 2 | Opus 5.5 | off | `courses/rome/13.4-cato-and-the-stoic-opposition.md` (+ `kit/rome/r-13.4.html`) |
 | ✓ | Review | Rome | Fable review of batch 2 | after #67 | Fable 5.1 | off | `kit/audits/` |
 | 68 | 13.5 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Seneca | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.5-seneca.md` (+ `kit/rome/r-13.5.html`) |
-| 69 | 13.6 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Musonius Rufus and Epictetus | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.6-musonius-rufus-and-epictetus.md` (+ `kit/rome/r-13.6.html`) |
+| 69 | 13.6 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Musonius Rufus and Epictetus | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.6.html` (+ `courses/rome/13.6-musonius-rufus-and-epictetus.md`) |
 | 70 | 13.7 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Marcus Aurelius: a life | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.7-marcus-aurelius-a-life.md` (+ `kit/rome/r-13.7.html`) |
 | 71 | 13.8 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The Meditations and the afterlife of Roman Stoicism | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.8-the-meditations-and-the-afterlife-of-roman-stoicism.md` (+ `kit/rome/r-13.8.html`) |
 | ✓ | Review | Rome | Fable review of batch 3 | after #71 | Fable 5.1 | off | `kit/audits/` |
