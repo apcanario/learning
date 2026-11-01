@@ -1,6 +1,6 @@
 # Rome unit 11: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 2 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
 
 ## 11.1 How the Republic worked at its height
 
@@ -93,4 +93,147 @@ Curated bibliography: `bibliography/rome/r-11.2.md`.
 - Anton von Premerstein, *Vom Werden und Wesen des Prinzipats* (1937)
 - Roman Republic (1974): title not given in the report
 - Roman Revolution (2007): title not given in the report
+
+## 11.3 Politics in the street
+
+Curated bibliography: `bibliography/rome/r-11.3.md`.
+
+### Ancient works
+- Appian, *Civil Wars* 1.29–30
+- Caesar, *Civil War* 1.5; 1.5.3; 3.20–22
+- Cicero, *Against Catiline* 1.4
+- Cicero, *Against Piso* 9; 14
+- Cicero, *Verrines* 1.54; 2.3.163
+- Plutarch, *Pompey* 49
+- Plutarch, *Sulla* 8
+- Sallust, *Catiline* 29.2; 29.3
+- Sallust, *Histories* 1.77; 3.48.19
+- Suetonius, *Julius* 41.3; 42.3
+- *Caesar* 8; 55
+- *Cato Minor* 26
+- *Cicero* 35
+- *Commentariolum petitionis* 30–31
+- *De domo sua* 25; 54
+- *De lege agraria* 2.6–10
+- *Letters to Atticus* 1.1.2; 1.16.11; 4.1.4; 4.1.6–7; 4.3.2–3
+- *Letters to Quintus* 2.3.2; 2.3.5
+- *Marius* 35
+- *Natural History* 36.104
+- *On Duties* 2.72
+- *On the Laws* 3.19–26
+- *Periochae* 60; 84; 98; 115
+- *Pro Milone* 10; 10–11, 28–29; 28–29; 87
+- *Pro Rabirio perduellionis reo* 20
+- *Pro Sestio* 33; 34; 55; 75–77; 86–90; 103; 104–106; 106
+- *Rhetorica ad Herennium* 1.21
+- *Roman Antiquities* 4.24.5
+
+### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Dio 36.42; 38.13; 39.24; 40.45–46; 40.49; 42.29–32
+- Dionysius 4.24.5
+- Velleius 2.4.4; 2.45.1
+
+### Modern works
+- P. A. Brunt, *The Roman Mob* (1966)
+- Pompey. Erich Gruen, *P. Clodius: Instrument or Independent Agent?* (1966)
+- Lintott (1968): title not given in the report
+- Andrew Lintott, *Violence in Republican Rome* (1999)
+- Christian Meier, *Populares* (1965)
+- Fergus Millar, *The Crowd in Rome in the Late Republic* (1998)
+- Morstein-Marx (2004): title not given in the report
+- Mouritsen (2001): title not given in the report
+- Mouritsen, *Plebs and Politics in the Late Roman Republic* (2001)
+- Wilfried Nippel, *Public Order in Ancient Rome* (1995)
+- W. Jeffrey Tatum, *The Patrician Tribune: Publius Clodius Pulcher* (1999)
+- Lily Ross Taylor, *The Voting Districts of the Roman Republic* (1960)
+- Vanderbroeck (1987): title not given in the report
+- Paul Vanderbroeck, *Popular Leadership and Collective Behavior in the Late Roman Republic* (1987)
+
+## 11.4 
+
+Curated bibliography: `bibliography/rome/r-11.4.md`.
+
+### Ancient works
+- Cicero, *On the Orator* 2.44
+- Plutarch, *Antony* 10; 30; 31
+- Plutarch, *Gaius Gracchus* 4.2–3; 4.3; 19
+- Suetonius, *Augustus* 62.1; 62.2
+- Suetonius, *Tiberius* 6
+- Tacitus, *Annals* 5.1
+- *Apology* 10
+- *Brutus* 5; 211
+- *Cato Minor* 24
+- *Cicero* 20; 29; 41
+- *Civil Wars* 5.19
+- *Julius* 50.2
+- *Letters to Atticus* 2.9.1; 15.11
+- *Letters to Brutus* 1.18
+- *Natural History* 7.158; 34.31
+
+### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Appian 4.32; 4.32–33; 4.32–34
+- Dio 48.44; 49.38.1
+- Quintilian 1.1.6
+- Valerius Maximus 4.4; 8.3.3
+- Velleius 2.71; 2.75
+
+### Modern works
+- Charles Babcock, *The Early Career of Fulvia* (1965)
+- Richard Bauman, *Women and Politics in Ancient Rome* (1992)
+- Barbara Weiden Boyd, *Virtus Effeminata and Sallust's Sempronia* (1987)
+- Coarelli (1978): title not given in the report
+- Filippo Coarelli, *La statue de Cornélie, mère des Gracques, et la crise politique à Rome au temps de Saturninus* (1978)
+- Delia (1991): title not given in the report
+- Diana Delia, *Fulvia Reconsidered* (1991)
+- Dixon (1983): title not given in the report
+- Suzanne Dixon, *A family business: women's role in patronage and politics at Rome, 80–44 BC* (1983)
+- Judith Hallett, *Perusinae glandes and the changing image of Augustus* (1977)
+- Emily Hemelrijk, *Matrona Docta* (1999)
+- Tom Hillard, *On the Stage, Behind the Curtain: Images of Politically Active Women in the Late Roman Republic* (1992)
+- Matthew Loar, *Histos* (2019)
+- Ronald Syme, *Sallust* (1964)
+- Ides. Syme, *No Son for Caesar?* (1980)
+- Rufus. Wiseman (1969): title not given in the report
+- T. P. Wiseman, *Catullan Questions* (1969)
+
+### Corpora and inscriptions
+
+- CIL VI 10043
+- CIL XI 6721
+- ILS 68
+
+## 11.5 
+
+Curated bibliography: `bibliography/rome/r-11.5.md`.
+
+### Ancient works
+- Caesar, *Civil War* 3.20–22
+- Luca, *Letters to Friends* 1.9; 1.9.8–10; 2.11.2; 4.5.4; 5.6.2; 5.7.3; 5.12.3; 8.1.1; 8.16; 11.28; 14.1–4; 15.5
+- Petrarch, *Letters on Familiar Matters* 24.3
+- Plutarch, *Cicero* 24; 38; 39; 47–48
+- *Atticus* 6–11; 16.3
+- *Letters* 21.4
+- *Letters to Atticus* 1.1; 1.5; 1.13.4; 2.1.1–2; 2.19.5; 3.4; 4.1; 4.5; 4.5.1; 4.5.1–2; 4.15.7; 4.17.2; 5.20; 5.21, 6.1; 5.21.10–13, 6.1.5–7, 6.2.7–9; 7.2.7; 7.8.5; 8.7.2; 8.11; 9.6; 9.18.1; 13.52; 16; 16.5; 16.5.5; 16.11.1–2
+- *Letters to Brutus* 2; 2.3.4
+- *Letters to Quintus* 3
+- *On Duties* 1.77
+- *On the Consular Provinces* 56
+- *Philippics* 2
+- *Suasoriae* 6; 6.15
+
+### Modern works
+- Shackleton Bailey (1971): title not given in the report
+- D. R. Shackleton Bailey, *Epistulae ad Quintum fratrem et M. Brutum* (1980)
+- P. V. D. Balsdon, *The Commentariolum Petitionis* (1963)
+- Boissier (1865): title not given in the report
+- France. Gaston Boissier, *Cicéron et ses amis* (1865)
+- Carcopino (1947): title not given in the report
+- Jérôme Carcopino, *Les secrets de la correspondance de Cicéron* (1947)
+- M. I. Henderson, *De commentariolo petitionis* (1950)
+- Markland (1745): title not given in the report
+- Mitchell (1991): title not given in the report
+- John Moles (1997): title not given in the report
+- Answer Mommsen (1856): title not given in the report
+- Mommsen (1856): title not given in the report
+- Rawson (1975): title not given in the report
 
