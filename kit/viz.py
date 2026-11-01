@@ -1300,6 +1300,16 @@ def matrix(d):
         if 0 < grow and slack > 0:
             cws[k] += grow; slack -= grow
     LW = max(LW, min(max(_tw(r['label'], 12) for r in rows) + 20, W - 16 - sum(cws)))
+    # a label column whose labels wrap keeps only the width its balanced lines need; what it frees goes to the columns
+    # whose cells wrap, up to their one-line width
+    labs = [_balanced(r['label'], T_LABEL, LW - 12) for r in rows]
+    need = max(90, math.ceil(max(_width(l, T_LABEL) for l in labs)) + 20)
+    if need < LW:
+        free, LW = LW - need, need
+        short = {k: nat[k] - cws[k] for k in range(n) if nat[k] > cws[k] + 1}
+        tot = sum(short.values())
+        for k, v in short.items():
+            cws[k] += min(v, free * v / tot)
     leg = [_tw(i.get('mark', ''), 10.5, 'mono') + 16 + 8 + min(220, _tw(i.get('means', ''), 11)) + 18 for i in d.get('legend') or []]
     Wd = max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)
     xs = [8 + LW + sum(cws[:k]) for k in range(n)]
@@ -1317,7 +1327,7 @@ def matrix(d):
                 cells.append((_balanced(c, T_MARK, cws[k] - 14), rt))
             else:
                 cells.append((_balanced(c.get('mark', ''), T_MARK, cws[k] - 14) if c.get('mark') else [], _tone(c, rt, K)))
-        lab = _balanced(r['label'], T_LABEL, LW - 12)
+        lab = labs[rows.index(r)]
         rh = max(32, max(len(m) for m, _ in cells) * 13 + 14, len(lab) * 14 + 12)
         body += _text(lab, T_LABEL, 8, y + (rh - len(lab) * 14) / 2)
         for k, (m, t) in enumerate(cells):
