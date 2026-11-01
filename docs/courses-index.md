@@ -273,7 +273,7 @@ In progress: 63 of 79 content reports; 85 modules with the audit unit. Written i
 | 70 | 13.7 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Marcus Aurelius: a life | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.7-marcus-aurelius-a-life.md` (+ `kit/rome/r-13.7.html`) |
 | 71 | 13.8 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The Meditations and the afterlife of Roman Stoicism | not written · batch 3 | Opus 5.5 | off | `courses/rome/13.8-the-meditations-and-the-afterlife-of-roman-stoicism.md` (+ `kit/rome/r-13.8.html`) |
 | ✓ | Review | Rome | Fable review of batch 3 | after #71 | Fable 5.1 | off | `kit/audits/` |
-| 72 | 12.1 | 12 · Deep dive II: the Aeneid | Virgil and the making of the poem | not written · batch 4 | Opus 5.5 | off | `courses/rome/12.1-virgil-and-the-making-of-the-poem.md` (+ `kit/rome/r-12.1.html`) |
+| 72 | 12.1 | 12 · Deep dive II: the Aeneid | Virgil and the making of the poem | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.1.html` (+ `courses/rome/12.1-virgil-and-the-making-of-the-poem.md`) |
 | 73 | 12.2 | 12 · Deep dive II: the Aeneid | Books 1 to 6: the Odyssean Aeneid | not written · batch 4 | Opus 5.5 | off | `courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md` (+ `kit/rome/r-12.2.html`) |
 | 74 | 12.3 | 12 · Deep dive II: the Aeneid | Books 7 to 12: the Iliadic Aeneid | not written · batch 4 | Opus 5.5 | off | `courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md` (+ `kit/rome/r-12.3.html`) |
 | 75 | 12.4 | 12 · Deep dive II: the Aeneid | Dido | not written · batch 4 | Opus 5.5 | off | `courses/rome/12.4-dido.md` (+ `kit/rome/r-12.4.html`) |
