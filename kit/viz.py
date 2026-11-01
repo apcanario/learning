@@ -329,8 +329,9 @@ def _wrap(s, n, px=None, size=12, font='sans', ls=0.0):
         return textwrap.wrap(str(s), n) or ['']
     lines, cur = [], ''
     for word in str(s).split():
-        while _tw(word, size, font, ls) > px:                      # a word too long for the line: break it
-            k = max(1, max(i for i in range(1, len(word) + 1) if _tw(word[:i], size, font, ls) <= px or i == 1))
+        while _tw(word, size, font, ls) > px:                      # a word too long for the line: break it, after a
+            hy = [i + 1 for i, ch in enumerate(word[:-1]) if ch == '-' and _tw(word[:i + 1], size, font, ls) <= px]
+            k = hy[-1] if hy else max(1, max(i for i in range(1, len(word) + 1) if _tw(word[:i], size, font, ls) <= px or i == 1))   # hyphen first
             if cur:
                 lines.append(cur); cur = ''
             lines.append(word[:k]); word = word[k:]
@@ -1291,8 +1292,8 @@ def matrix(d):
         for k in rest:
             cws[k] = left * nat[k] / tot
     wide = min(cws) < 70 and sum(nat) > avail
+    words = lambda t, f, sz, ls=0: max([_tw(w, sz, f, ls) for w in str(t).split()] or [0])   # the widest word, unbroken
     if wide:                                                 # too many columns for the width: each takes the narrowest width
-        words = lambda t, f, sz, ls=0: max([_tw(w, sz, f, ls) for w in str(t).split()] or [0])   # that breaks no word
         cws = [max(70, math.ceil(max([words(c, 'mono', 10, 0.4) + 14] + [words(mark(r['cells'][k]), 'mono', 10.5) + 18 for r in rows])))
                for k, c in enumerate(cols)]
     # what the columns leave goes first to headers that would wrap, until each sits on one line, then to the row
@@ -1318,27 +1319,32 @@ def matrix(d):
     if not wide and sum(nat) > avail:
         def nlines(k, w):
             return max([len(_balanced(mark(r['cells'][k]), T_MARK, w - 14)) for r in rows if mark(r['cells'][k])] or [1])
-        for _ in range(12):
-            cur = [nlines(k, cws[k]) for k in range(n)]
-            k = max(range(n), key=lambda j: cur[j])
-            if cur[k] <= 1:
-                break
+        def relieve(k, cur):                                 # try to save column k one line; True if done
             lo, hi = cws[k], nat[k]
+            if hi - lo < 1:
+                return False
             while hi - lo > 2:                               # the narrowest width that saves this column a line
                 mid = (lo + hi) / 2
                 lo, hi = (mid, hi) if nlines(k, mid) >= cur[k] else (lo, mid)
+            if nlines(k, hi) >= cur[k]:
+                return False
             need, spare = hi - cws[k], {}
             for j in range(n):
                 if j != k:
-                    w = cws[j]
-                    while w - 2 >= 56 and nlines(j, w - 2) <= cur[j] and cws[j] - (w - 2) < need:
+                    w, hmin = cws[j], max(56, words(cols[j], 'mono', 10, 0.4) + 14)   # never below its header's longest word
+                    while w - 2 >= hmin and nlines(j, w - 2) <= cur[j] and cws[j] - (w - 2) < need:
                         w -= 2
                     spare[j] = cws[j] - w
             if sum(spare.values()) < need:
-                break
+                return False
             for j, v in spare.items():
                 take = min(v, need); cws[j] -= take; need -= take
             cws[k] = hi
+            return True
+        for _ in range(16):
+            cur = [nlines(k, cws[k]) for k in range(n)]
+            if not any(relieve(k, cur) for k in sorted(range(n), key=lambda j: -cur[j]) if cur[k] > 1):
+                break
     leg = [_tw(i.get('mark', ''), 10.5, 'mono') + 16 + 8 + min(220, _tw(i.get('means', ''), 11)) + 18 for i in d.get('legend') or []]
     Wd = max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)
     xs = [8 + LW + sum(cws[:k]) for k in range(n)]
