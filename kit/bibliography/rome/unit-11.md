@@ -333,6 +333,7 @@ Curated bibliography: `bibliography/rome/r-11.8.md`.
 ### Modern works
 - Brunt (1988): title not given in the report
 - Brunt, *The Fall of the Roman Republic and Related Essays* (1988)
+- Flower, *Roman Republics* (2010)
 - Harriet Flower, *Roman Republics* (2010)
 - Gruen (1974): title not given in the report
 - Erich Gruen, *The Last Generation of the Roman Republic* (1974)

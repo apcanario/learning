@@ -135,9 +135,15 @@ Curated bibliography: `bibliography/rome/r-12.4.md`.
 Curated bibliography: `bibliography/rome/r-12.5.md`.
 
 ### Ancient works
+- Ajax, *Odyssey* 11.563–564
+- Anchises, *Aeneid* 6.700–702
+- Anticleia, *Odyssey* 11.204–208
 - Cicero, *Tusculan Disputations* 4
-- Was, *Odyssey* 4.561–569; 11; 11.51–80; 11.204–208; 11.225–332; 11.489–491; 11.563–564; 19.560–567
-- *Aeneid* 6; 6.300
+- Elpenor, *Odyssey* 11.51–80
+- Palinurus, *Aeneid* 6.337–383
+- Tiresias, *Odyssey* 11.121–137
+- Was, *Odyssey* 11
+- *Aeneid* 6; 6.264–267; 6.300; 6.440–449; 6.450–476; 6.756–886
 - *Carmen Saeculare* 51–52
 - *Charmides* 173a
 - *City of God* 14.5; 21.13
@@ -146,6 +152,7 @@ Curated bibliography: `bibliography/rome/r-12.5.md`.
 - *Inferno* 2; 2.13–32; 2.32; 3.109; 4.106–111; 5.4–12; 5.61–62; 6.25–27
 - *Library* 2.5.12
 - *Metamorphoses* 14; 15
+- *Odyssey* 4.561–569; 11; 11.51–80; 11.204–208; 11.225–332; 11.489–491; 11.563–564; 19.560–567
 - *On Duties* 1.35
 - *On the Republic* 6.13
 - *Phaedo* 113e
@@ -209,11 +216,11 @@ Curated bibliography: `bibliography/rome/r-12.6.md`.
 Curated bibliography: `bibliography/rome/r-12.7.md`.
 
 ### Ancient works
+- Aristotle, *Nicomachean Ethics* 1125b
 - Donatus, *Life* 21; 32
 - *Aeneid* 10.524
 - *Divine Institutes* 5.10
 - *Heroides* 7
-- *Nicomachean Ethics* 1125b
 - *Saturnalia* 5.17.4–6
 - *Tristia* 2; 2.533–536
 - *te nemus Angitiae, vitrea te Fucinus unda* 7.759–760
@@ -238,6 +245,7 @@ Curated bibliography: `bibliography/rome/r-12.7.md`.
 - Putnam (1965): title not given in the report
 - Michael Putnam, *The Poetry of the Aeneid* (1965)
 - Putnam, *The Poetry of the Aeneid* (2011)
+- Putnam's, *The Poetry of the Aeneid* (2011)
 - Pöschl (1950): title not given in the report
 - Stahl (2016): title not given in the report
 - Hans-Peter Stahl, *Poetry Underpinning Power* (2016)

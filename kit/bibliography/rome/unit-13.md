@@ -195,9 +195,9 @@ Curated bibliography: `bibliography/rome/r-13.4.md`.
 Curated bibliography: `bibliography/rome/r-13.5.md`.
 
 ### Ancient works
-- Tacitus, *Annals* 12.8.2; 13.2; 13.15–17; 13.42; 13.42.3; 13.42–43, 14.52; 14.7; 14.52; 14.53–56; 15.22.2; 15.60; 15.60–64; 15.62–64; 15.63; 16.17
+- Tacitus, *Annals* 12.8.2; 13.2; 13.15–17; 13.42; 13.42.3; 13.42–43, 14.52; 14.7; 14.52; 14.52–56; 14.53–56; 14.55–56; 15.22.2; 15.45.3; 15.60; 15.60–64; 15.62–64; 15.63; 16.17
 - *Caligula* 53.2
-- *Consolation to Helvia* 17.3–4; 19.2
+- *Consolation to Helvia* 17.3–4; 19.2; 19.4–7
 - *Consolation to Polybius* 13.2
 - *Controversiae* 1
 - *Divine Institutes* 6.24
@@ -207,7 +207,7 @@ Curated bibliography: `bibliography/rome/r-13.5.md`.
 - *Natural Questions* 4a; 7
 - *On Anger* 3; 3.36; 3.36.1
 - *On Benefits* 7
-- *On Clemency* 1.11.3
+- *On Clemency* 1.9.1; 1.11.3
 - *On Illustrious Men* 12
 - *On Providence* 6.7
 - *On the Happy Life* 3.2; 13.1–2
@@ -263,8 +263,10 @@ Curated bibliography: `bibliography/rome/r-13.6.md`.
 Curated bibliography: `bibliography/rome/r-13.7.md`.
 
 ### Ancient works
+- Eleusis, *Marcus* 27.1
 - Eusebius, *Church History* 4.26.5–6; 5; 5.1.47; 5.5; 5.5.1–6
 - Fronto, *Ad M. Caesarem* 4.13
+- Halala, *Marcus* 26.4
 - Tertullian, *Apology* 5
 - *Commodus* 1.2; 12.4–5
 - *First Apology* 1
