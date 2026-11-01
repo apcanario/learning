@@ -15,7 +15,7 @@ fact in it that has a source is checked here, so it cannot drift from what the b
                           Fable review, from provenance (build.py's rule: flagged when it does not mention Fable 5.1);
                           markdown: starts "written" (or "rewritten") once filed, "not written" before
   search                  markdown: front matter, or ORDER before writing; history: off
-  path                    written: the vault file (markdown) or the kit fragment (history), and every path the cell
+  path                    written: the vault file (both families since P71-3), and every path the cell
                           names exists; not written: the vault path it will be filed at (method.md §7 slug)
   counts                  the "N of M" line above each course's table
   staleness table         one row per filed search-on unit, written date and due date (written + six months)
@@ -133,9 +133,9 @@ def history(c, secs, fails):
                    'flagged' if 'flagged' in st else '')
             if not st.startswith('written') or got != want:
                 fails.append(f'{L}: status "{st}", provenance "{pv}" means "written{" · " + want if want else ""}"')
-            frag = f'kit/{c["frags"]}/r-{a}.html'
-            if f'`{frag}`' not in path:
-                fails.append(f'{L}: path should name `{frag}`')
+            want = f'{c["vault"]}/{a}-{slug(title)}.md'          # P71-3: the report is its vault file
+            if f'`{want}`' not in path:
+                fails.append(f'{L}: path should name `{want}`')
         else:
             if not st.startswith('not written'):
                 fails.append(f'{L}: status "{st}", but the module is not in {c["prompts"]}')

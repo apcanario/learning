@@ -109,84 +109,84 @@ Complete: 78 of 78 content reports; 83 modules with the audit unit. Written in s
 
 | # | Module | Syllabus unit | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.1 | 0 · Foundations | How we know anything: the sources | written | Fable 5.1 | off | `kit/greece/r-0.1.html` |
-| 2 | 0.2 | 0 · Foundations | Geography, dialects and the shape of Greece | written | Fable 5.1 | off | `kit/greece/r-0.2.html` |
-| 3 | 0.3 | 0 · Foundations | The timeline spine, 3000 BC to AD 529 | written | Fable 5.1 | off | `kit/greece/r-0.3.html` |
-| 4 | 1.1 | 1 · The Bronze Age and the long dark | Minoan Crete | written | Fable 5.1 | off | `kit/greece/r-1.1.html` |
-| 5 | 1.2 | 1 · The Bronze Age and the long dark | Mycenaean Greece | written | Fable 5.1 | off | `kit/greece/r-1.2.html` |
-| 6 | 1.3 | 1 · The Bronze Age and the long dark | The collapse of 1200 and the Dark Age | written | Fable 5.1 | off | `kit/greece/r-1.3.html` |
-| 7 | 2.1 | 2 · Mythology I: the cosmos and the gods | Cosmogony: Chaos to Zeus | written | Fable 5.1 | off | `kit/greece/r-2.1.html` |
-| 8 | 2.2 | 2 · Mythology I: the cosmos and the gods | The Twelve Olympians | written | Fable 5.1 | off | `kit/greece/r-2.2.html` |
-| 9 | 2.3 | 2 · Mythology I: the cosmos and the gods | The underworld and the chthonic gods | written | Fable 5.1 | off | `kit/greece/r-2.3.html` |
-| 10 | 2.4 | 2 · Mythology I: the cosmos and the gods | Prometheus, Pandora, the Five Ages and the Flood | written | Fable 5.1 | off | `kit/greece/r-2.4.html` |
-| 11 | 2.5 | 2 · Mythology I: the cosmos and the gods | The lesser divinities and personifications | written | Fable 5.1 | off | `kit/greece/r-2.5.html` |
-| 12 | 2.6 | 2 · Mythology I: the cosmos and the gods | The monsters and their genealogy | written | Fable 5.1 | off | `kit/greece/r-2.6.html` |
-| 13 | 3.1 | 3 · Mythology II: the heroes | What a hero is, and Perseus | written | Fable 5.1 | off | `kit/greece/r-3.1.html` |
-| 14 | 3.2 | 3 · Mythology II: the heroes | Heracles | written | Fable 5.1 | off | `kit/greece/r-3.2.html` |
-| 15 | 3.3 | 3 · Mythology II: the heroes | Theseus and Athens | written | Fable 5.1 | off | `kit/greece/r-3.3.html` |
-| 16 | 3.4 | 3 · Mythology II: the heroes | Jason, the Argonauts and Medea | written | Fable 5.1 | off | `kit/greece/r-3.4.html` |
-| 17 | 3.5 | 3 · Mythology II: the heroes | The Theban cycle: Cadmus to Antigone | written | Fable 5.1 | off | `kit/greece/r-3.5.html` |
-| 18 | 3.6 | 3 · Mythology II: the heroes | The other heroes: Bellerophon, Meleager, Atalanta, Pelops, Tantalus | written | Fable 5.1 | off | `kit/greece/r-3.6.html` |
-| 19 | 3.7 | 3 · Mythology II: the heroes | Love, hubris and metamorphosis | written | Fable 5.1 | off | `kit/greece/r-3.7.html` |
-| 20 | 4.1 | 4 · Mythology III: the Trojan cycle | Causes of the war and the gathering at Aulis | written | Fable 5.1 | off | `kit/greece/r-4.1.html` |
-| 21 | 4.2 | 4 · Mythology III: the Trojan cycle | The Iliad | written | Fable 5.1 | off | `kit/greece/r-4.2.html` |
-| 22 | 4.3 | 4 · Mythology III: the Trojan cycle | The fall of Troy: the lost Epic Cycle | written | Fable 5.1 | off | `kit/greece/r-4.3.html` |
-| 23 | 4.4 | 4 · Mythology III: the Trojan cycle | The Returns and the Odyssey | written | Fable 5.1 | off | `kit/greece/r-4.4.html` |
-| 24 | 4.5 | 4 · Mythology III: the Trojan cycle | The house of Atreus after Troy | written | Fable 5.1 | off | `kit/greece/r-4.5.html` |
-| 25 | 5.1 | 5 · The Archaic age, 800 to 480 BC | The eighth-century renaissance | written | Fable 5.1 | off | `kit/greece/r-5.1.html` |
-| 26 | 5.2 | 5 · The Archaic age, 800 to 480 BC | The polis and colonisation | written | Fable 5.1 | off | `kit/greece/r-5.2.html` |
-| 27 | 5.3 | 5 · The Archaic age, 800 to 480 BC | Hoplites, lawgivers and tyrants | written | Fable 5.1 | off | `kit/greece/r-5.3.html` |
-| 28 | 5.4 | 5 · The Archaic age, 800 to 480 BC | Sparta | written | Fable 5.1 | off | `kit/greece/r-5.4.html` |
-| 29 | 5.5 | 5 · The Archaic age, 800 to 480 BC | Athens from Solon to Cleisthenes | written | Fable 5.1 | off | `kit/greece/r-5.5.html` |
-| 30 | 5.6 | 5 · The Archaic age, 800 to 480 BC | Lyric poets and the first philosophers | written | Fable 5.1 | off | `kit/greece/r-5.6.html` |
-| 31 | 6.1 | 6 · The Classical age, 480 to 323 BC | The Persian Wars | written | Fable 5.1 | off | `kit/greece/r-6.1.html` |
-| 32 | 6.2 | 6 · The Classical age, 480 to 323 BC | The Athenian empire and the radical democracy | written | Fable 5.1 | off | `kit/greece/r-6.2.html` |
-| 33 | 6.3 | 6 · The Classical age, 480 to 323 BC | The Peloponnesian War | written | Fable 5.1 | off | `kit/greece/r-6.3.html` |
-| 34 | 6.4 | 6 · The Classical age, 480 to 323 BC | Tragedy and comedy | written | Fable 5.1 | off | `kit/greece/r-6.4.html` |
-| 35 | 6.5 | 6 · The Classical age, 480 to 323 BC | The Sophists, Socrates, Plato and Aristotle | written | Fable 5.1 | off | `kit/greece/r-6.5.html` |
-| 36 | 6.6 | 6 · The Classical age, 480 to 323 BC | The fourth century: Sparta, Thebes, Philip | written | Fable 5.1 | off | `kit/greece/r-6.6.html` |
-| 37 | 6.7 | 6 · The Classical age, 480 to 323 BC | Alexander | written | Fable 5.1 | off | `kit/greece/r-6.7.html` |
-| 38 | 7.1 | 7 · Hellenistic and Roman Greece, 323 BC to AD 529 | The Successors and the kingdoms | written | Fable 5.1 | off | `kit/greece/r-7.1.html` |
-| 39 | 7.2 | 7 · Hellenistic and Roman Greece, 323 BC to AD 529 | Alexandria: science, scholarship and the new philosophies | written | Fable 5.1 | off | `kit/greece/r-7.2.html` |
-| 40 | 7.3 | 7 · Hellenistic and Roman Greece, 323 BC to AD 529 | Rome conquers Greece | written | Fable 5.1 | off | `kit/greece/r-7.3.html` |
-| 41 | 7.4 | 7 · Hellenistic and Roman Greece, 323 BC to AD 529 | Greece under the Empire and the end of antiquity | written | Fable 5.1 | off | `kit/greece/r-7.4.html` |
-| 42 | 8.1 | 8 · Religion and daily life | Ritual practice: sacrifice, temples, priests, pollution | written | Fable 5.1 | off | `kit/greece/r-8.1.html` |
-| 43 | 8.2 | 8 · Religion and daily life | Oracles and mystery cults | written | Fable 5.1 | off | `kit/greece/r-8.2.html` |
-| 44 | 8.3 | 8 · Religion and daily life | Festivals and the games | written | Fable 5.1 | off | `kit/greece/r-8.3.html` |
-| 45 | 8.4 | 8 · Religion and daily life | Death, the afterlife and hero cult | written | Fable 5.1 | off | `kit/greece/r-8.4.html` |
-| 46 | 8.5 | 8 · Religion and daily life | Households, women, slaves, the symposium and sexuality | written | Fable 5.1 | off | `kit/greece/r-8.5.html` |
-| 47 | 9.1 | 9 · Art, the ground, and the afterlife of it all | Reading Greek art: temples, sculpture, vases | written | Fable 5.1 | off | `kit/greece/r-9.1.html` |
-| 48 | 9.2 | 9 · Art, the ground, and the afterlife of it all | Reading a site: Athens on foot | written | Fable 5.1 | off | `kit/greece/r-9.2.html` |
-| 49 | 9.3 | 9 · Art, the ground, and the afterlife of it all | Reception: how it all reached you | written | Fable 5.1 | off | `kit/greece/r-9.3.html` |
-| 50 | 9.4 | 9 · Art, the ground, and the afterlife of it all | Capstone: the whole thing in one sitting | written | Fable 5.1 | off | `kit/greece/r-9.4.html` |
-| 51 | 10.1 | 10 · Deep dive I: the Trojan War | Achilles | written | Fable 5.1 | off | `kit/greece/r-10.1.html` |
-| 52 | 10.2 | 10 · Deep dive I: the Trojan War | Agamemnon and the kingship of the Atreids | written | Fable 5.1 | off | `kit/greece/r-10.2.html` |
-| 53 | 10.3 | 10 · Deep dive I: the Trojan War | Hector, Priam and the Trojan side | written | Fable 5.1 | off | `kit/greece/r-10.3.html` |
-| 54 | 10.4 | 10 · Deep dive I: the Trojan War | Odysseus | written · reviewed | Opus 5.5 | off | `kit/greece/r-10.4.html` |
-| 55 | 10.5 | 10 · Deep dive I: the Trojan War | Helen, Menelaus and Sparta | written | Fable 5.1 | off | `kit/greece/r-10.5.html` |
-| 56 | 10.6 | 10 · Deep dive I: the Trojan War | Reading the Iliad closely: Books 1, 6, 9, 16, 18, 22, 24 | written | Fable 5.1 | off | `kit/greece/r-10.6.html` |
-| 57 | 10.7 | 10 · Deep dive I: the Trojan War | Reading the Odyssey closely: the Telemachy, the Apologoi, the Nekyia, the recognitions | written · reviewed | Opus 5.5 | off | `kit/greece/r-10.7.html` |
-| 58 | 10.8 | 10 · Deep dive I: the Trojan War | The other Greeks at Troy | written · reviewed | Opus 5.5 | off | `kit/greece/r-10.8.html` |
-| 59 | 10.9 | 10 · Deep dive I: the Trojan War | The gods at Troy | written · reviewed | Opus 5.5 | off | `kit/greece/r-10.9.html` |
-| 60 | 10.10 | 10 · Deep dive I: the Trojan War | Troy the place: Hisarlik and the historicity question | written · reviewed | Opus 5.5 | off | `kit/greece/r-10.10.html` |
-| 61 | 10.11 | 10 · Deep dive I: the Trojan War | Homeric society and Homeric warfare | written · reviewed | Opus 5.5 | off | `kit/greece/r-10.11.html` |
-| 62 | 10.12 | 10 · Deep dive I: the Trojan War | Troy after antiquity | written · reviewed | Opus 5.5 | off | `kit/greece/r-10.12.html` |
-| 63 | 11.1 | 11 · Deep dive II: Alexander | Macedon before Alexander | written · flagged for Fable review | Opus 5.5 | off | `kit/greece/r-11.1.html` |
-| 64 | 11.2 | 11 · Deep dive II: Alexander | Alexander's generalship: the battles and sieges | written · flagged for Fable review | Opus 5.5 | off | `kit/greece/r-11.2.html` |
-| 65 | 11.3 | 11 · Deep dive II: Alexander | The Achaemenid side | written · reviewed | Opus 5.5 | off | `kit/greece/r-11.3.html` |
-| 66 | 11.4 | 11 · Deep dive II: Alexander | Alexander and the gods | written · flagged for Fable review | Opus 5.5 | off | `kit/greece/r-11.4.html` |
-| 67 | 11.5 | 11 · Deep dive II: Alexander | The court: Companions, conspiracies and the orientalising policy | written · flagged for Fable review | Opus 5.5 | off | `kit/greece/r-11.5.html` |
-| 68 | 11.6 | 11 · Deep dive II: Alexander | The eastern campaign: Bactria, Sogdiana, India and the return | written · flagged for Fable review | Opus 5.5 | off | `kit/greece/r-11.6.html` |
-| 69 | 11.7 | 11 · Deep dive II: Alexander | The sources for Alexander | written · reviewed | Opus 5.5 | off | `kit/greece/r-11.7.html` |
-| 70 | 11.8 | 11 · Deep dive II: Alexander | Death, body and afterlives | written · flagged for Fable review | Opus 5.5 | off | `kit/greece/r-11.8.html` |
-| 71 | 12.1 | 12 · Deep dive III: Greek philosophy | The Presocratics | written · reviewed | Opus 5.5 | off | `kit/greece/r-12.1.html` |
-| 72 | 12.2 | 12 · Deep dive III: Greek philosophy | The Sophists and Socrates | written · reviewed (sampled) | Opus 5.5 | off | `kit/greece/r-12.2.html` |
-| 73 | 12.3 | 12 · Deep dive III: Greek philosophy | Plato | written · reviewed (sampled) | Opus 5.5 | off | `kit/greece/r-12.3.html` |
-| 74 | 12.4 | 12 · Deep dive III: Greek philosophy | Aristotle | written · reviewed (sampled) | Opus 5.5 | off | `kit/greece/r-12.4.html` |
-| 75 | 12.5 | 12 · Deep dive III: Greek philosophy | Cynics, Cyrenaics and the other Socratic schools | written · reviewed (sampled) | Opus 5.5 | off | `kit/greece/r-12.5.html` |
-| 76 | 12.6 | 12 · Deep dive III: Greek philosophy | Epicurus and the Garden | written · reviewed | Opus 5.5 | off | `kit/greece/r-12.6.html` |
-| 77 | 12.7 | 12 · Deep dive III: Greek philosophy | The Stoa from Zeno to Posidonius | written · reviewed (sampled) | Opus 5.5 | off | `kit/greece/r-12.7.html` |
-| 78 | 12.8 | 12 · Deep dive III: Greek philosophy | Sceptics and Neoplatonists: the late schools to 529 | written · reviewed (sampled) | Opus 5.5 | off | `kit/greece/r-12.8.html` |
+| 1 | 0.1 | 0 · Foundations | How we know anything: the sources | written | Fable 5.1 | off | `courses/greece/0.1-how-we-know-anything-the-sources.md` |
+| 2 | 0.2 | 0 · Foundations | Geography, dialects and the shape of Greece | written | Fable 5.1 | off | `courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md` |
+| 3 | 0.3 | 0 · Foundations | The timeline spine, 3000 BC to AD 529 | written | Fable 5.1 | off | `courses/greece/0.3-the-timeline-spine-3000-bc-to-ad-529.md` |
+| 4 | 1.1 | 1 · The Bronze Age and the long dark | Minoan Crete | written | Fable 5.1 | off | `courses/greece/1.1-minoan-crete.md` |
+| 5 | 1.2 | 1 · The Bronze Age and the long dark | Mycenaean Greece | written | Fable 5.1 | off | `courses/greece/1.2-mycenaean-greece.md` |
+| 6 | 1.3 | 1 · The Bronze Age and the long dark | The collapse of 1200 and the Dark Age | written | Fable 5.1 | off | `courses/greece/1.3-the-collapse-of-1200-and-the-dark-age.md` |
+| 7 | 2.1 | 2 · Mythology I: the cosmos and the gods | Cosmogony: Chaos to Zeus | written | Fable 5.1 | off | `courses/greece/2.1-cosmogony-chaos-to-zeus.md` |
+| 8 | 2.2 | 2 · Mythology I: the cosmos and the gods | The Twelve Olympians | written | Fable 5.1 | off | `courses/greece/2.2-the-twelve-olympians.md` |
+| 9 | 2.3 | 2 · Mythology I: the cosmos and the gods | The underworld and the chthonic gods | written | Fable 5.1 | off | `courses/greece/2.3-the-underworld-and-the-chthonic-gods.md` |
+| 10 | 2.4 | 2 · Mythology I: the cosmos and the gods | Prometheus, Pandora, the Five Ages and the Flood | written | Fable 5.1 | off | `courses/greece/2.4-prometheus-pandora-the-five-ages-and-the-flood.md` |
+| 11 | 2.5 | 2 · Mythology I: the cosmos and the gods | The lesser divinities and personifications | written | Fable 5.1 | off | `courses/greece/2.5-the-lesser-divinities-and-personifications.md` |
+| 12 | 2.6 | 2 · Mythology I: the cosmos and the gods | The monsters and their genealogy | written | Fable 5.1 | off | `courses/greece/2.6-the-monsters-and-their-genealogy.md` |
+| 13 | 3.1 | 3 · Mythology II: the heroes | What a hero is, and Perseus | written | Fable 5.1 | off | `courses/greece/3.1-what-a-hero-is-and-perseus.md` |
+| 14 | 3.2 | 3 · Mythology II: the heroes | Heracles | written | Fable 5.1 | off | `courses/greece/3.2-heracles.md` |
+| 15 | 3.3 | 3 · Mythology II: the heroes | Theseus and Athens | written | Fable 5.1 | off | `courses/greece/3.3-theseus-and-athens.md` |
+| 16 | 3.4 | 3 · Mythology II: the heroes | Jason, the Argonauts and Medea | written | Fable 5.1 | off | `courses/greece/3.4-jason-the-argonauts-and-medea.md` |
+| 17 | 3.5 | 3 · Mythology II: the heroes | The Theban cycle: Cadmus to Antigone | written | Fable 5.1 | off | `courses/greece/3.5-the-theban-cycle-cadmus-to-antigone.md` |
+| 18 | 3.6 | 3 · Mythology II: the heroes | The other heroes: Bellerophon, Meleager, Atalanta, Pelops, Tantalus | written | Fable 5.1 | off | `courses/greece/3.6-the-other-heroes-bellerophon-meleager-atalanta-pelops-tantalus.md` |
+| 19 | 3.7 | 3 · Mythology II: the heroes | Love, hubris and metamorphosis | written | Fable 5.1 | off | `courses/greece/3.7-love-hubris-and-metamorphosis.md` |
+| 20 | 4.1 | 4 · Mythology III: the Trojan cycle | Causes of the war and the gathering at Aulis | written | Fable 5.1 | off | `courses/greece/4.1-causes-of-the-war-and-the-gathering-at-aulis.md` |
+| 21 | 4.2 | 4 · Mythology III: the Trojan cycle | The Iliad | written | Fable 5.1 | off | `courses/greece/4.2-the-iliad.md` |
+| 22 | 4.3 | 4 · Mythology III: the Trojan cycle | The fall of Troy: the lost Epic Cycle | written | Fable 5.1 | off | `courses/greece/4.3-the-fall-of-troy-the-lost-epic-cycle.md` |
+| 23 | 4.4 | 4 · Mythology III: the Trojan cycle | The Returns and the Odyssey | written | Fable 5.1 | off | `courses/greece/4.4-the-returns-and-the-odyssey.md` |
+| 24 | 4.5 | 4 · Mythology III: the Trojan cycle | The house of Atreus after Troy | written | Fable 5.1 | off | `courses/greece/4.5-the-house-of-atreus-after-troy.md` |
+| 25 | 5.1 | 5 · The Archaic age, 800 to 480 BC | The eighth-century renaissance | written | Fable 5.1 | off | `courses/greece/5.1-the-eighth-century-renaissance.md` |
+| 26 | 5.2 | 5 · The Archaic age, 800 to 480 BC | The polis and colonisation | written | Fable 5.1 | off | `courses/greece/5.2-the-polis-and-colonisation.md` |
+| 27 | 5.3 | 5 · The Archaic age, 800 to 480 BC | Hoplites, lawgivers and tyrants | written | Fable 5.1 | off | `courses/greece/5.3-hoplites-lawgivers-and-tyrants.md` |
+| 28 | 5.4 | 5 · The Archaic age, 800 to 480 BC | Sparta | written | Fable 5.1 | off | `courses/greece/5.4-sparta.md` |
+| 29 | 5.5 | 5 · The Archaic age, 800 to 480 BC | Athens from Solon to Cleisthenes | written | Fable 5.1 | off | `courses/greece/5.5-athens-from-solon-to-cleisthenes.md` |
+| 30 | 5.6 | 5 · The Archaic age, 800 to 480 BC | Lyric poets and the first philosophers | written | Fable 5.1 | off | `courses/greece/5.6-lyric-poets-and-the-first-philosophers.md` |
+| 31 | 6.1 | 6 · The Classical age, 480 to 323 BC | The Persian Wars | written | Fable 5.1 | off | `courses/greece/6.1-the-persian-wars.md` |
+| 32 | 6.2 | 6 · The Classical age, 480 to 323 BC | The Athenian empire and the radical democracy | written | Fable 5.1 | off | `courses/greece/6.2-the-athenian-empire-and-the-radical-democracy.md` |
+| 33 | 6.3 | 6 · The Classical age, 480 to 323 BC | The Peloponnesian War | written | Fable 5.1 | off | `courses/greece/6.3-the-peloponnesian-war.md` |
+| 34 | 6.4 | 6 · The Classical age, 480 to 323 BC | Tragedy and comedy | written | Fable 5.1 | off | `courses/greece/6.4-tragedy-and-comedy.md` |
+| 35 | 6.5 | 6 · The Classical age, 480 to 323 BC | The Sophists, Socrates, Plato and Aristotle | written | Fable 5.1 | off | `courses/greece/6.5-the-sophists-socrates-plato-and-aristotle.md` |
+| 36 | 6.6 | 6 · The Classical age, 480 to 323 BC | The fourth century: Sparta, Thebes, Philip | written | Fable 5.1 | off | `courses/greece/6.6-the-fourth-century-sparta-thebes-philip.md` |
+| 37 | 6.7 | 6 · The Classical age, 480 to 323 BC | Alexander | written | Fable 5.1 | off | `courses/greece/6.7-alexander.md` |
+| 38 | 7.1 | 7 · Hellenistic and Roman Greece, 323 BC to AD 529 | The Successors and the kingdoms | written | Fable 5.1 | off | `courses/greece/7.1-the-successors-and-the-kingdoms.md` |
+| 39 | 7.2 | 7 · Hellenistic and Roman Greece, 323 BC to AD 529 | Alexandria: science, scholarship and the new philosophies | written | Fable 5.1 | off | `courses/greece/7.2-alexandria-science-scholarship-and-the-new-philosophies.md` |
+| 40 | 7.3 | 7 · Hellenistic and Roman Greece, 323 BC to AD 529 | Rome conquers Greece | written | Fable 5.1 | off | `courses/greece/7.3-rome-conquers-greece.md` |
+| 41 | 7.4 | 7 · Hellenistic and Roman Greece, 323 BC to AD 529 | Greece under the Empire and the end of antiquity | written | Fable 5.1 | off | `courses/greece/7.4-greece-under-the-empire-and-the-end-of-antiquity.md` |
+| 42 | 8.1 | 8 · Religion and daily life | Ritual practice: sacrifice, temples, priests, pollution | written | Fable 5.1 | off | `courses/greece/8.1-ritual-practice-sacrifice-temples-priests-pollution.md` |
+| 43 | 8.2 | 8 · Religion and daily life | Oracles and mystery cults | written | Fable 5.1 | off | `courses/greece/8.2-oracles-and-mystery-cults.md` |
+| 44 | 8.3 | 8 · Religion and daily life | Festivals and the games | written | Fable 5.1 | off | `courses/greece/8.3-festivals-and-the-games.md` |
+| 45 | 8.4 | 8 · Religion and daily life | Death, the afterlife and hero cult | written | Fable 5.1 | off | `courses/greece/8.4-death-the-afterlife-and-hero-cult.md` |
+| 46 | 8.5 | 8 · Religion and daily life | Households, women, slaves, the symposium and sexuality | written | Fable 5.1 | off | `courses/greece/8.5-households-women-slaves-the-symposium-and-sexuality.md` |
+| 47 | 9.1 | 9 · Art, the ground, and the afterlife of it all | Reading Greek art: temples, sculpture, vases | written | Fable 5.1 | off | `courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md` |
+| 48 | 9.2 | 9 · Art, the ground, and the afterlife of it all | Reading a site: Athens on foot | written | Fable 5.1 | off | `courses/greece/9.2-reading-a-site-athens-on-foot.md` |
+| 49 | 9.3 | 9 · Art, the ground, and the afterlife of it all | Reception: how it all reached you | written | Fable 5.1 | off | `courses/greece/9.3-reception-how-it-all-reached-you.md` |
+| 50 | 9.4 | 9 · Art, the ground, and the afterlife of it all | Capstone: the whole thing in one sitting | written | Fable 5.1 | off | `courses/greece/9.4-capstone-the-whole-thing-in-one-sitting.md` |
+| 51 | 10.1 | 10 · Deep dive I: the Trojan War | Achilles | written | Fable 5.1 | off | `courses/greece/10.1-achilles.md` |
+| 52 | 10.2 | 10 · Deep dive I: the Trojan War | Agamemnon and the kingship of the Atreids | written | Fable 5.1 | off | `courses/greece/10.2-agamemnon-and-the-kingship-of-the-atreids.md` |
+| 53 | 10.3 | 10 · Deep dive I: the Trojan War | Hector, Priam and the Trojan side | written | Fable 5.1 | off | `courses/greece/10.3-hector-priam-and-the-trojan-side.md` |
+| 54 | 10.4 | 10 · Deep dive I: the Trojan War | Odysseus | written · reviewed | Opus 5.5 | off | `courses/greece/10.4-odysseus.md` |
+| 55 | 10.5 | 10 · Deep dive I: the Trojan War | Helen, Menelaus and Sparta | written | Fable 5.1 | off | `courses/greece/10.5-helen-menelaus-and-sparta.md` |
+| 56 | 10.6 | 10 · Deep dive I: the Trojan War | Reading the Iliad closely: Books 1, 6, 9, 16, 18, 22, 24 | written | Fable 5.1 | off | `courses/greece/10.6-reading-the-iliad-closely-books-1-6-9-16-18-22-24.md` |
+| 57 | 10.7 | 10 · Deep dive I: the Trojan War | Reading the Odyssey closely: the Telemachy, the Apologoi, the Nekyia, the recognitions | written · reviewed | Opus 5.5 | off | `courses/greece/10.7-reading-the-odyssey-closely-the-telemachy-the-apologoi-the-nekyia-the-recognitions.md` |
+| 58 | 10.8 | 10 · Deep dive I: the Trojan War | The other Greeks at Troy | written · reviewed | Opus 5.5 | off | `courses/greece/10.8-the-other-greeks-at-troy.md` |
+| 59 | 10.9 | 10 · Deep dive I: the Trojan War | The gods at Troy | written · reviewed | Opus 5.5 | off | `courses/greece/10.9-the-gods-at-troy.md` |
+| 60 | 10.10 | 10 · Deep dive I: the Trojan War | Troy the place: Hisarlik and the historicity question | written · reviewed | Opus 5.5 | off | `courses/greece/10.10-troy-the-place-hisarlik-and-the-historicity-question.md` |
+| 61 | 10.11 | 10 · Deep dive I: the Trojan War | Homeric society and Homeric warfare | written · reviewed | Opus 5.5 | off | `courses/greece/10.11-homeric-society-and-homeric-warfare.md` |
+| 62 | 10.12 | 10 · Deep dive I: the Trojan War | Troy after antiquity | written · reviewed | Opus 5.5 | off | `courses/greece/10.12-troy-after-antiquity.md` |
+| 63 | 11.1 | 11 · Deep dive II: Alexander | Macedon before Alexander | written · flagged for Fable review | Opus 5.5 | off | `courses/greece/11.1-macedon-before-alexander.md` |
+| 64 | 11.2 | 11 · Deep dive II: Alexander | Alexander's generalship: the battles and sieges | written · flagged for Fable review | Opus 5.5 | off | `courses/greece/11.2-alexanders-generalship-the-battles-and-sieges.md` |
+| 65 | 11.3 | 11 · Deep dive II: Alexander | The Achaemenid side | written · reviewed | Opus 5.5 | off | `courses/greece/11.3-the-achaemenid-side.md` |
+| 66 | 11.4 | 11 · Deep dive II: Alexander | Alexander and the gods | written · flagged for Fable review | Opus 5.5 | off | `courses/greece/11.4-alexander-and-the-gods.md` |
+| 67 | 11.5 | 11 · Deep dive II: Alexander | The court: Companions, conspiracies and the orientalising policy | written · flagged for Fable review | Opus 5.5 | off | `courses/greece/11.5-the-court-companions-conspiracies-and-the-orientalising-policy.md` |
+| 68 | 11.6 | 11 · Deep dive II: Alexander | The eastern campaign: Bactria, Sogdiana, India and the return | written · flagged for Fable review | Opus 5.5 | off | `courses/greece/11.6-the-eastern-campaign-bactria-sogdiana-india-and-the-return.md` |
+| 69 | 11.7 | 11 · Deep dive II: Alexander | The sources for Alexander | written · reviewed | Opus 5.5 | off | `courses/greece/11.7-the-sources-for-alexander.md` |
+| 70 | 11.8 | 11 · Deep dive II: Alexander | Death, body and afterlives | written · flagged for Fable review | Opus 5.5 | off | `courses/greece/11.8-death-body-and-afterlives.md` |
+| 71 | 12.1 | 12 · Deep dive III: Greek philosophy | The Presocratics | written · reviewed | Opus 5.5 | off | `courses/greece/12.1-the-presocratics.md` |
+| 72 | 12.2 | 12 · Deep dive III: Greek philosophy | The Sophists and Socrates | written · reviewed (sampled) | Opus 5.5 | off | `courses/greece/12.2-the-sophists-and-socrates.md` |
+| 73 | 12.3 | 12 · Deep dive III: Greek philosophy | Plato | written · reviewed (sampled) | Opus 5.5 | off | `courses/greece/12.3-plato.md` |
+| 74 | 12.4 | 12 · Deep dive III: Greek philosophy | Aristotle | written · reviewed (sampled) | Opus 5.5 | off | `courses/greece/12.4-aristotle.md` |
+| 75 | 12.5 | 12 · Deep dive III: Greek philosophy | Cynics, Cyrenaics and the other Socratic schools | written · reviewed (sampled) | Opus 5.5 | off | `courses/greece/12.5-cynics-cyrenaics-and-the-other-socratic-schools.md` |
+| 76 | 12.6 | 12 · Deep dive III: Greek philosophy | Epicurus and the Garden | written · reviewed | Opus 5.5 | off | `courses/greece/12.6-epicurus-and-the-garden.md` |
+| 77 | 12.7 | 12 · Deep dive III: Greek philosophy | The Stoa from Zeno to Posidonius | written · reviewed (sampled) | Opus 5.5 | off | `courses/greece/12.7-the-stoa-from-zeno-to-posidonius.md` |
+| 78 | 12.8 | 12 · Deep dive III: Greek philosophy | Sceptics and Neoplatonists: the late schools to 529 | written · reviewed (sampled) | Opus 5.5 | off | `courses/greece/12.8-sceptics-and-neoplatonists-the-late-schools-to-529.md` |
 | ✓ | 13.1 | 13 · Quality audit | Calibrate the rubric | run 27 Oct 2026 (`kit/audits/greece-13.1-rubric.md`) | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 13.2 | 13 · Quality audit | Audit one report | in progress: 17 of 23 Opus reports cleared (11 audited, 6 on the sample); 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 remain (S4) | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 13.3 | 13 · Quality audit | Deep-dive overlap check | partly run: six repeated disputes homed, six pairs read; 32 pairs measured mechanically only | Fable 5.1 | off | `kit/audits/` |
@@ -199,89 +199,89 @@ Complete: 79 of 79 content reports; 85 modules with the audit unit. Written in s
 
 | # | Module | Syllabus unit | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.1 | 0 · Foundations | How we know anything: the sources | written · reviewed | Opus 5.5 | off | `kit/rome/r-0.1.html` |
-| 2 | 0.2 | 0 · Foundations | Italy and the Mediterranean: the shape of Rome's world | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-0.2.html` |
-| 3 | 0.3 | 0 · Foundations | The timeline spine, 1000 BC to AD 476 | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-0.3.html` |
-| 4 | 1.1 | 1 · Italy before Rome and the founding legends | The peoples of Iron Age Italy | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-1.1.html` |
-| 5 | 1.2 | 1 · Italy before Rome and the founding legends | The Etruscans | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-1.2.html` |
-| 6 | 1.3 | 1 · Italy before Rome and the founding legends | Before Romulus: Evander, Hercules and Aeneas | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-1.3.html` |
-| 7 | 1.4 | 1 · Italy before Rome and the founding legends | Romulus and Remus | written · reviewed | Opus 5.5 | off | `kit/rome/r-1.4.html` |
-| 8 | 1.5 | 1 · Italy before Rome and the founding legends | The seven kings | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-1.5.html` |
-| 9 | 1.6 | 1 · Italy before Rome and the founding legends | The fall of the monarchy: Lucretia, Brutus and Porsenna | written · reviewed | Opus 5.5 | off | `kit/rome/r-1.6.html` |
-| 10 | 2.1 | 2 · The gods of Rome | What Roman religion was | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-2.1.html` |
-| 11 | 2.2 | 2 · The gods of Rome | The gods of Rome and their Greek doubles | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-2.2.html` |
-| 12 | 2.3 | 2 · The gods of Rome | Priests, augury and the calendar | written · reviewed | Opus 5.5 | off | `kit/rome/r-2.3.html` |
-| 13 | 2.4 | 2 · The gods of Rome | House, family and the dead | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-2.4.html` |
-| 14 | 2.5 | 2 · The gods of Rome | New gods: Cybele, Bacchus, Isis, Mithras and the Christians | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-2.5.html` |
-| 15 | 3.1 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | The Struggle of the Orders | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-3.1.html` |
-| 16 | 3.2 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | The legends of the early Republic | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-3.2.html` |
-| 17 | 3.3 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | Veii, the Gauls and Camillus | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-3.3.html` |
-| 18 | 3.4 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | The Samnite Wars and the Roman system in Italy | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-3.4.html` |
-| 19 | 3.5 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | Pyrrhus and the Greek south | written · reviewed | Opus 5.5 | off | `kit/rome/r-3.5.html` |
-| 20 | 4.1 | 4 · Carthage and the Mediterranean, 264 to 133 BC | Carthage and Dido | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-4.1.html` |
-| 21 | 4.2 | 4 · Carthage and the Mediterranean, 264 to 133 BC | The First Punic War | written · reviewed | Opus 5.5 | off | `kit/rome/r-4.2.html` |
-| 22 | 4.3 | 4 · Carthage and the Mediterranean, 264 to 133 BC | Hannibal and the Second Punic War | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-4.3.html` |
-| 23 | 4.4 | 4 · Carthage and the Mediterranean, 264 to 133 BC | East and West: Macedon, Spain and the year 146 | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-4.4.html` |
-| 24 | 4.5 | 4 · Carthage and the Mediterranean, 264 to 133 BC | Polybius, Cato and the Greek invasion of Rome | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-4.5.html` |
-| 25 | 5.1 | 5 · The fall of the Republic, 133 to 30 BC | The Gracchi | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-5.1.html` |
-| 26 | 5.2 | 5 · The fall of the Republic, 133 to 30 BC | Marius and Sulla | written · reviewed | Opus 5.5 | off | `kit/rome/r-5.2.html` |
-| 27 | 5.3 | 5 · The fall of the Republic, 133 to 30 BC | Pompey, Crassus, Cicero and Catiline | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-5.3.html` |
-| 28 | 5.4 | 5 · The fall of the Republic, 133 to 30 BC | Caesar | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-5.4.html` |
-| 29 | 5.5 | 5 · The fall of the Republic, 133 to 30 BC | Antony, Octavian and Cleopatra | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-5.5.html` |
-| 30 | 5.6 | 5 · The fall of the Republic, 133 to 30 BC | Writing in a falling Republic | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-5.6.html` |
-| 31 | 6.1 | 6 · Augustus, 31 BC to AD 14 | From Octavian to Augustus | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-6.1.html` |
-| 32 | 6.2 | 6 · Augustus, 31 BC to AD 14 | The city of marble and the restored religion | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-6.2.html` |
-| 33 | 6.3 | 6 · Augustus, 31 BC to AD 14 | Virgil, Horace, Livy and Ovid: the Augustan myth | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-6.3.html` |
-| 34 | 6.4 | 6 · Augustus, 31 BC to AD 14 | Empire without end | written · reviewed | Opus 5.5 | off | `kit/rome/r-6.4.html` |
-| 35 | 7.1 | 7 · The Principate, AD 14 to 235 | The Julio-Claudians | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-7.1.html` |
-| 36 | 7.2 | 7 · The Principate, AD 14 to 235 | The year of four emperors and the Flavians | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-7.2.html` |
-| 37 | 7.3 | 7 · The Principate, AD 14 to 235 | The adoptive emperors | written · reviewed | Opus 5.5 | off | `kit/rome/r-7.3.html` |
-| 38 | 7.4 | 7 · The Principate, AD 14 to 235 | The Severans and the citizenship of 212 | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-7.4.html` |
-| 39 | 7.5 | 7 · The Principate, AD 14 to 235 | How the empire worked | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-7.5.html` |
-| 40 | 8.1 | 8 · Crisis and the late empire, AD 235 to 476 | The third-century crisis | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-8.1.html` |
-| 41 | 8.2 | 8 · Crisis and the late empire, AD 235 to 476 | Diocletian and the Tetrarchy | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-8.2.html` |
-| 42 | 8.3 | 8 · Crisis and the late empire, AD 235 to 476 | Constantine | written · reviewed | Opus 5.5 | off | `kit/rome/r-8.3.html` |
-| 43 | 8.4 | 8 · Crisis and the late empire, AD 235 to 476 | Julian, Theodosius and the end of the old gods | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-8.4.html` |
-| 44 | 8.5 | 8 · Crisis and the late empire, AD 235 to 476 | The fall of the West, 395 to 476 | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-8.5.html` |
-| 45 | 8.6 | 8 · Crisis and the late empire, AD 235 to 476 | The Rome that did not fall | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-8.6.html` |
-| 46 | 9.1 | 9 · Law, army and daily life | Roman law | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-9.1.html` |
-| 47 | 9.2 | 9 · Law, army and daily life | The army | written · reviewed | Opus 5.5 | off | `kit/rome/r-9.2.html` |
-| 48 | 9.3 | 9 · Law, army and daily life | Family, women and slaves | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-9.3.html` |
-| 49 | 9.4 | 9 · Law, army and daily life | Bread, baths and games | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-9.4.html` |
-| 50 | 9.5 | 9 · Law, army and daily life | Reading a site: Rome on foot | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-9.5.html` |
-| 51 | 10.1 | 10 · Literature, myth-making and reception | Ovid and the Roman remaking of Greek myth | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-10.1.html` |
-| 52 | 10.2 | 10 · Literature, myth-making and reception | Imperial literature, Seneca to Apuleius | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-10.2.html` |
-| 53 | 10.3 | 10 · Literature, myth-making and reception | Reading Roman art and architecture | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-10.3.html` |
-| 54 | 10.4 | 10 · Literature, myth-making and reception | Reception: how Rome reached you | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-10.4.html` |
-| 55 | 10.5 | 10 · Literature, myth-making and reception | Capstone: the whole thing in one sitting | written · reviewed | Opus 5.5 | off | `kit/rome/r-10.5.html` |
-| 56 | 11.1 | 11 · Deep dive I: the fall of the Republic | How the Republic worked at its height | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-11.1.html` |
-| 57 | 11.2 | 11 · Deep dive I: the fall of the Republic | Generals and their armies | written · reviewed | Opus 5.5 | off | `kit/rome/r-11.2.html` |
-| 58 | 13.1 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Philosophy comes to Rome | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-13.1.html` |
-| 59 | 13.2 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Stoicism made Roman | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-13.2.html` |
-| 60 | 11.3 | 11 · Deep dive I: the fall of the Republic | Politics in the street | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.3.html` (+ `courses/rome/11.3-politics-in-the-street.md`) |
-| 61 | 11.4 | 11 · Deep dive I: the fall of the Republic | Women and the late Republic | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.4.html` (+ `courses/rome/11.4-women-and-the-late-republic.md`) |
-| 62 | 11.5 | 11 · Deep dive I: the fall of the Republic | Cicero through his letters | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.5.html` (+ `courses/rome/11.5-cicero-through-his-letters.md`) |
-| 63 | 11.6 | 11 · Deep dive I: the fall of the Republic | Caesar's Commentaries and Gaul | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.6.html` (+ `courses/rome/11.6-caesars-commentaries-and-gaul.md`) |
+| 1 | 0.1 | 0 · Foundations | How we know anything: the sources | written · reviewed | Opus 5.5 | off | `courses/rome/0.1-how-we-know-anything-the-sources.md` |
+| 2 | 0.2 | 0 · Foundations | Italy and the Mediterranean: the shape of Rome's world | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/0.2-italy-and-the-mediterranean-the-shape-of-romes-world.md` |
+| 3 | 0.3 | 0 · Foundations | The timeline spine, 1000 BC to AD 476 | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/0.3-the-timeline-spine-1000-bc-to-ad-476.md` |
+| 4 | 1.1 | 1 · Italy before Rome and the founding legends | The peoples of Iron Age Italy | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/1.1-the-peoples-of-iron-age-italy.md` |
+| 5 | 1.2 | 1 · Italy before Rome and the founding legends | The Etruscans | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/1.2-the-etruscans.md` |
+| 6 | 1.3 | 1 · Italy before Rome and the founding legends | Before Romulus: Evander, Hercules and Aeneas | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/1.3-before-romulus-evander-hercules-and-aeneas.md` |
+| 7 | 1.4 | 1 · Italy before Rome and the founding legends | Romulus and Remus | written · reviewed | Opus 5.5 | off | `courses/rome/1.4-romulus-and-remus.md` |
+| 8 | 1.5 | 1 · Italy before Rome and the founding legends | The seven kings | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/1.5-the-seven-kings.md` |
+| 9 | 1.6 | 1 · Italy before Rome and the founding legends | The fall of the monarchy: Lucretia, Brutus and Porsenna | written · reviewed | Opus 5.5 | off | `courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md` |
+| 10 | 2.1 | 2 · The gods of Rome | What Roman religion was | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/2.1-what-roman-religion-was.md` |
+| 11 | 2.2 | 2 · The gods of Rome | The gods of Rome and their Greek doubles | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/2.2-the-gods-of-rome-and-their-greek-doubles.md` |
+| 12 | 2.3 | 2 · The gods of Rome | Priests, augury and the calendar | written · reviewed | Opus 5.5 | off | `courses/rome/2.3-priests-augury-and-the-calendar.md` |
+| 13 | 2.4 | 2 · The gods of Rome | House, family and the dead | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/2.4-house-family-and-the-dead.md` |
+| 14 | 2.5 | 2 · The gods of Rome | New gods: Cybele, Bacchus, Isis, Mithras and the Christians | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/2.5-new-gods-cybele-bacchus-isis-mithras-and-the-christians.md` |
+| 15 | 3.1 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | The Struggle of the Orders | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/3.1-the-struggle-of-the-orders.md` |
+| 16 | 3.2 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | The legends of the early Republic | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/3.2-the-legends-of-the-early-republic.md` |
+| 17 | 3.3 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | Veii, the Gauls and Camillus | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/3.3-veii-the-gauls-and-camillus.md` |
+| 18 | 3.4 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | The Samnite Wars and the Roman system in Italy | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/3.4-the-samnite-wars-and-the-roman-system-in-italy.md` |
+| 19 | 3.5 | 3 · The early Republic and the conquest of Italy, 509 to 264 BC | Pyrrhus and the Greek south | written · reviewed | Opus 5.5 | off | `courses/rome/3.5-pyrrhus-and-the-greek-south.md` |
+| 20 | 4.1 | 4 · Carthage and the Mediterranean, 264 to 133 BC | Carthage and Dido | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/4.1-carthage-and-dido.md` |
+| 21 | 4.2 | 4 · Carthage and the Mediterranean, 264 to 133 BC | The First Punic War | written · reviewed | Opus 5.5 | off | `courses/rome/4.2-the-first-punic-war.md` |
+| 22 | 4.3 | 4 · Carthage and the Mediterranean, 264 to 133 BC | Hannibal and the Second Punic War | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/4.3-hannibal-and-the-second-punic-war.md` |
+| 23 | 4.4 | 4 · Carthage and the Mediterranean, 264 to 133 BC | East and West: Macedon, Spain and the year 146 | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/4.4-east-and-west-macedon-spain-and-the-year-146.md` |
+| 24 | 4.5 | 4 · Carthage and the Mediterranean, 264 to 133 BC | Polybius, Cato and the Greek invasion of Rome | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/4.5-polybius-cato-and-the-greek-invasion-of-rome.md` |
+| 25 | 5.1 | 5 · The fall of the Republic, 133 to 30 BC | The Gracchi | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/5.1-the-gracchi.md` |
+| 26 | 5.2 | 5 · The fall of the Republic, 133 to 30 BC | Marius and Sulla | written · reviewed | Opus 5.5 | off | `courses/rome/5.2-marius-and-sulla.md` |
+| 27 | 5.3 | 5 · The fall of the Republic, 133 to 30 BC | Pompey, Crassus, Cicero and Catiline | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/5.3-pompey-crassus-cicero-and-catiline.md` |
+| 28 | 5.4 | 5 · The fall of the Republic, 133 to 30 BC | Caesar | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/5.4-caesar.md` |
+| 29 | 5.5 | 5 · The fall of the Republic, 133 to 30 BC | Antony, Octavian and Cleopatra | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/5.5-antony-octavian-and-cleopatra.md` |
+| 30 | 5.6 | 5 · The fall of the Republic, 133 to 30 BC | Writing in a falling Republic | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/5.6-writing-in-a-falling-republic.md` |
+| 31 | 6.1 | 6 · Augustus, 31 BC to AD 14 | From Octavian to Augustus | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/6.1-from-octavian-to-augustus.md` |
+| 32 | 6.2 | 6 · Augustus, 31 BC to AD 14 | The city of marble and the restored religion | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/6.2-the-city-of-marble-and-the-restored-religion.md` |
+| 33 | 6.3 | 6 · Augustus, 31 BC to AD 14 | Virgil, Horace, Livy and Ovid: the Augustan myth | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/6.3-virgil-horace-livy-and-ovid-the-augustan-myth.md` |
+| 34 | 6.4 | 6 · Augustus, 31 BC to AD 14 | Empire without end | written · reviewed | Opus 5.5 | off | `courses/rome/6.4-empire-without-end.md` |
+| 35 | 7.1 | 7 · The Principate, AD 14 to 235 | The Julio-Claudians | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/7.1-the-julio-claudians.md` |
+| 36 | 7.2 | 7 · The Principate, AD 14 to 235 | The year of four emperors and the Flavians | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/7.2-the-year-of-four-emperors-and-the-flavians.md` |
+| 37 | 7.3 | 7 · The Principate, AD 14 to 235 | The adoptive emperors | written · reviewed | Opus 5.5 | off | `courses/rome/7.3-the-adoptive-emperors.md` |
+| 38 | 7.4 | 7 · The Principate, AD 14 to 235 | The Severans and the citizenship of 212 | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/7.4-the-severans-and-the-citizenship-of-212.md` |
+| 39 | 7.5 | 7 · The Principate, AD 14 to 235 | How the empire worked | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/7.5-how-the-empire-worked.md` |
+| 40 | 8.1 | 8 · Crisis and the late empire, AD 235 to 476 | The third-century crisis | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/8.1-the-third-century-crisis.md` |
+| 41 | 8.2 | 8 · Crisis and the late empire, AD 235 to 476 | Diocletian and the Tetrarchy | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/8.2-diocletian-and-the-tetrarchy.md` |
+| 42 | 8.3 | 8 · Crisis and the late empire, AD 235 to 476 | Constantine | written · reviewed | Opus 5.5 | off | `courses/rome/8.3-constantine.md` |
+| 43 | 8.4 | 8 · Crisis and the late empire, AD 235 to 476 | Julian, Theodosius and the end of the old gods | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/8.4-julian-theodosius-and-the-end-of-the-old-gods.md` |
+| 44 | 8.5 | 8 · Crisis and the late empire, AD 235 to 476 | The fall of the West, 395 to 476 | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/8.5-the-fall-of-the-west-395-to-476.md` |
+| 45 | 8.6 | 8 · Crisis and the late empire, AD 235 to 476 | The Rome that did not fall | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/8.6-the-rome-that-did-not-fall.md` |
+| 46 | 9.1 | 9 · Law, army and daily life | Roman law | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/9.1-roman-law.md` |
+| 47 | 9.2 | 9 · Law, army and daily life | The army | written · reviewed | Opus 5.5 | off | `courses/rome/9.2-the-army.md` |
+| 48 | 9.3 | 9 · Law, army and daily life | Family, women and slaves | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/9.3-family-women-and-slaves.md` |
+| 49 | 9.4 | 9 · Law, army and daily life | Bread, baths and games | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/9.4-bread-baths-and-games.md` |
+| 50 | 9.5 | 9 · Law, army and daily life | Reading a site: Rome on foot | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/9.5-reading-a-site-rome-on-foot.md` |
+| 51 | 10.1 | 10 · Literature, myth-making and reception | Ovid and the Roman remaking of Greek myth | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/10.1-ovid-and-the-roman-remaking-of-greek-myth.md` |
+| 52 | 10.2 | 10 · Literature, myth-making and reception | Imperial literature, Seneca to Apuleius | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/10.2-imperial-literature-seneca-to-apuleius.md` |
+| 53 | 10.3 | 10 · Literature, myth-making and reception | Reading Roman art and architecture | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/10.3-reading-roman-art-and-architecture.md` |
+| 54 | 10.4 | 10 · Literature, myth-making and reception | Reception: how Rome reached you | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/10.4-reception-how-rome-reached-you.md` |
+| 55 | 10.5 | 10 · Literature, myth-making and reception | Capstone: the whole thing in one sitting | written · reviewed | Opus 5.5 | off | `courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md` |
+| 56 | 11.1 | 11 · Deep dive I: the fall of the Republic | How the Republic worked at its height | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/11.1-how-the-republic-worked-at-its-height.md` |
+| 57 | 11.2 | 11 · Deep dive I: the fall of the Republic | Generals and their armies | written · reviewed | Opus 5.5 | off | `courses/rome/11.2-generals-and-their-armies.md` |
+| 58 | 13.1 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Philosophy comes to Rome | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/13.1-philosophy-comes-to-rome.md` |
+| 59 | 13.2 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Stoicism made Roman | written · reviewed (sampled) | Opus 5.5 | off | `courses/rome/13.2-stoicism-made-roman.md` |
+| 60 | 11.3 | 11 · Deep dive I: the fall of the Republic | Politics in the street | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/11.3-politics-in-the-street.md` (+ `courses/rome/11.3-politics-in-the-street.md`) |
+| 61 | 11.4 | 11 · Deep dive I: the fall of the Republic | Women and the late Republic | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/11.4-women-and-the-late-republic.md` (+ `courses/rome/11.4-women-and-the-late-republic.md`) |
+| 62 | 11.5 | 11 · Deep dive I: the fall of the Republic | Cicero through his letters | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/11.5-cicero-through-his-letters.md` (+ `courses/rome/11.5-cicero-through-his-letters.md`) |
+| 63 | 11.6 | 11 · Deep dive I: the fall of the Republic | Caesar's Commentaries and Gaul | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/11.6-caesars-commentaries-and-gaul.md` (+ `courses/rome/11.6-caesars-commentaries-and-gaul.md`) |
 | ✓ | Review | Rome | Fable review of batch 1 (method.md §6) | after #63 | Fable 5.1 | off | `kit/audits/` |
-| 64 | 11.7 | 11 · Deep dive I: the fall of the Republic | The Ides of March | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.7.html` (+ `courses/rome/11.7-the-ides-of-march.md`) |
-| 65 | 11.8 | 11 · Deep dive I: the fall of the Republic | Why the Republic fell | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.8.html` (+ `courses/rome/11.8-why-the-republic-fell.md`) |
-| 66 | 13.3 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The rival schools at Rome | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.3.html` (+ `courses/rome/13.3-the-rival-schools-at-rome.md`) |
-| 67 | 13.4 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Cato and the Stoic opposition | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.4.html` (+ `courses/rome/13.4-cato-and-the-stoic-opposition.md`) |
+| 64 | 11.7 | 11 · Deep dive I: the fall of the Republic | The Ides of March | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/11.7-the-ides-of-march.md` (+ `courses/rome/11.7-the-ides-of-march.md`) |
+| 65 | 11.8 | 11 · Deep dive I: the fall of the Republic | Why the Republic fell | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/11.8-why-the-republic-fell.md` (+ `courses/rome/11.8-why-the-republic-fell.md`) |
+| 66 | 13.3 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The rival schools at Rome | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/13.3-the-rival-schools-at-rome.md` (+ `courses/rome/13.3-the-rival-schools-at-rome.md`) |
+| 67 | 13.4 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Cato and the Stoic opposition | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/13.4-cato-and-the-stoic-opposition.md` (+ `courses/rome/13.4-cato-and-the-stoic-opposition.md`) |
 | ✓ | Review | Rome | Fable review of batch 2 | after #67 | Fable 5.1 | off | `kit/audits/` |
-| 68 | 13.5 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Seneca | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.5.html` (+ `courses/rome/13.5-seneca.md`) |
-| 69 | 13.6 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Musonius Rufus and Epictetus | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.6.html` (+ `courses/rome/13.6-musonius-rufus-and-epictetus.md`) |
-| 70 | 13.7 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Marcus Aurelius: a life | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.7.html` (+ `courses/rome/13.7-marcus-aurelius-a-life.md`) |
-| 71 | 13.8 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The Meditations and the afterlife of Roman Stoicism | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.8.html` (+ `courses/rome/13.8-the-meditations-and-the-afterlife-of-roman-stoicism.md`) |
+| 68 | 13.5 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Seneca | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/13.5-seneca.md` (+ `courses/rome/13.5-seneca.md`) |
+| 69 | 13.6 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Musonius Rufus and Epictetus | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/13.6-musonius-rufus-and-epictetus.md` (+ `courses/rome/13.6-musonius-rufus-and-epictetus.md`) |
+| 70 | 13.7 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Marcus Aurelius: a life | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/13.7-marcus-aurelius-a-life.md` (+ `courses/rome/13.7-marcus-aurelius-a-life.md`) |
+| 71 | 13.8 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The Meditations and the afterlife of Roman Stoicism | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/13.8-the-meditations-and-the-afterlife-of-roman-stoicism.md` (+ `courses/rome/13.8-the-meditations-and-the-afterlife-of-roman-stoicism.md`) |
 | ✓ | Review | Rome | Fable review of batch 3 | after #71 | Fable 5.1 | off | `kit/audits/` |
-| 72 | 12.1 | 12 · Deep dive II: the Aeneid | Virgil and the making of the poem | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.1.html` (+ `courses/rome/12.1-virgil-and-the-making-of-the-poem.md`) |
-| 73 | 12.2 | 12 · Deep dive II: the Aeneid | Books 1 to 6: the Odyssean Aeneid | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.2.html` (+ `courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md`) |
-| 74 | 12.3 | 12 · Deep dive II: the Aeneid | Books 7 to 12: the Iliadic Aeneid | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.3.html` (+ `courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md`) |
-| 75 | 12.4 | 12 · Deep dive II: the Aeneid | Dido | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.4.html` (+ `courses/rome/12.4-dido.md`) |
+| 72 | 12.1 | 12 · Deep dive II: the Aeneid | Virgil and the making of the poem | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/12.1-virgil-and-the-making-of-the-poem.md` (+ `courses/rome/12.1-virgil-and-the-making-of-the-poem.md`) |
+| 73 | 12.2 | 12 · Deep dive II: the Aeneid | Books 1 to 6: the Odyssean Aeneid | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md` (+ `courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md`) |
+| 74 | 12.3 | 12 · Deep dive II: the Aeneid | Books 7 to 12: the Iliadic Aeneid | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md` (+ `courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md`) |
+| 75 | 12.4 | 12 · Deep dive II: the Aeneid | Dido | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/12.4-dido.md` (+ `courses/rome/12.4-dido.md`) |
 | ✓ | Review | Rome | Fable review of batch 4 | after #75 | Fable 5.1 | off | `kit/audits/` |
-| 76 | 12.5 | 12 · Deep dive II: the Aeneid | Book 6: the underworld and the parade of heroes | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.5.html` (+ `courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md`) |
-| 77 | 12.7 | 12 · Deep dive II: the Aeneid | Augustan or anti-Augustan? | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.7.html` (+ `courses/rome/12.7-augustan-or-anti-augustan.md`) |
-| 78 | 12.8 | 12 · Deep dive II: the Aeneid | The Aeneid after Rome | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.8.html` (+ `courses/rome/12.8-the-aeneid-after-rome.md`) |
-| 79 | 12.6 | 12 · Deep dive II: the Aeneid | The gods of the Aeneid | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.6.html` (+ `courses/rome/12.6-the-gods-of-the-aeneid.md`) |
+| 76 | 12.5 | 12 · Deep dive II: the Aeneid | Book 6: the underworld and the parade of heroes | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md` (+ `courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md`) |
+| 77 | 12.7 | 12 · Deep dive II: the Aeneid | Augustan or anti-Augustan? | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/12.7-augustan-or-anti-augustan.md` (+ `courses/rome/12.7-augustan-or-anti-augustan.md`) |
+| 78 | 12.8 | 12 · Deep dive II: the Aeneid | The Aeneid after Rome | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/12.8-the-aeneid-after-rome.md` (+ `courses/rome/12.8-the-aeneid-after-rome.md`) |
+| 79 | 12.6 | 12 · Deep dive II: the Aeneid | The gods of the Aeneid | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `courses/rome/12.6-the-gods-of-the-aeneid.md` (+ `courses/rome/12.6-the-gods-of-the-aeneid.md`) |
 | ✓ | Review | Rome | Fable review of batch 5; then 14.2 to 14.5 rerun over the 20 new reports as the course audit | after #79 | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 14.1 | 14 · Quality audit | Calibrate the rubric for Rome | run 27 Oct 2026 (calibrated on 0.1 and 1.4) | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 14.2 | 14 · Quality audit | Audit one report | run on a sample of 12 and the capstone; reruns on the 20 new reports when Rome is complete | Fable 5.1 | off | `kit/audits/` |

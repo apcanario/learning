@@ -1,7 +1,12 @@
-"""Check report fragments against AGENT-SPEC.md.
+"""Check reports against AGENT-SPEC.md.
 
-Usage: python3 check.py rome/r-1.4.html [more files]   (target taken from the prompt in the syllabus)
-       python3 check.py --target 2500 path/to/file.html
+Usage: python3 check.py ../courses/rome/1.4-romulus-and-remus.md [more files]   (target taken from the prompt in the syllabus)
+       python3 check.py --target 2500 path/to/file.md
+
+P71-3 (1 Nov 2026): a report is a Markdown file in the vault (courses/<course>/<id>-<slug>.md). It must open with its
+front matter (method.md §7), and its text may hold no HTML but <sup> and <sub>, which Markdown has no form for, and the
+inline HTML of a figure's caption; it is rendered with mdcourse.history_html (figures left as declarations) and every
+check below runs on that render, as it ran on the HTML fragments before. An old HTML fragment is still read as one.
 Exit code 1 if any hard check fails. Length against the target is advisory (a soft note), never a failure.
 
 Figures (P41, 29 Oct 2026): a figure declaration is allowed, exactly in the form of WRITER-BRIEF.md,
@@ -12,6 +17,7 @@ failure. Figure blocks are left out of the word count, so adding a figure never 
 import re, sys, html, json, pathlib
 from html.parser import HTMLParser
 import viz
+import mdcourse
 
 R = pathlib.Path(__file__).resolve().parent
 ALLOWED = {'h2', 'h3', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'blockquote', 'table', 'thead', 'tbody', 'tr', 'th', 'td',
@@ -19,12 +25,17 @@ ALLOWED = {'h2', 'h3', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'blockquote', 'tab
 VOID = {'br'}
 US = r'\b(?:color|honor|favor|labor|behavior|center|theater|defense|offense|catalog(?!ue)|traveled|traveling|modeled|fulfill(?!ed)|\w+?(?<!s)(?<!pr)(?<!se)iz(?:e|ed|es|ing|ation|ations))\b'
 
+def report_id(path):
+    """The module id of a report file: <id>-<slug>.md in the vault, or the old r-<id>.html."""
+    m = re.match(r'r-([\d.]+)\.html$', path.name) or re.match(r'(\d+\.\d+)-.*\.md$', path.name)
+    return m.group(1) if m else None
+
 def prompt_for(path):
-    m = re.match(r'r-([\d.]+)\.html$', path.name)
+    m = report_id(path)
     course = {'greece': 'greek-syllabus.html', 'rome': 'roman-syllabus.html'}.get(path.parent.name)
     if not (m and course):
         return None
-    pm = re.search(r'data-id="%s">.*?<pre>(.*?)</pre>' % re.escape(m.group(1)), (R / course).read_text(), re.S)
+    pm = re.search(r'data-id="%s">.*?<pre>(.*?)</pre>' % re.escape(m), (R / course).read_text(), re.S)
     return html.unescape(pm.group(1)) if pm else None
 
 def capstone_for(path):
@@ -36,12 +47,12 @@ def capstone_for(path):
     return int(n.group(1)) if n else 40
 
 def target_for(path):
-    m = re.match(r'r-([\d.]+)\.html$', path.name)
+    m = report_id(path)
     course = {'greece': 'greek-syllabus.html', 'rome': 'roman-syllabus.html'}.get(path.parent.name)
     if not (m and course):
         return None
     syl = (R / course).read_text()
-    pm = re.search(r'data-id="%s">.*?<pre>(.*?)</pre>' % re.escape(m.group(1)), syl, re.S)
+    pm = re.search(r'data-id="%s">.*?<pre>(.*?)</pre>' % re.escape(m), syl, re.S)
     t = re.search(r'about (\d+) words', html.unescape(pm.group(1))) if pm else None
     return int(t.group(1)) if t else None
 
@@ -109,9 +120,22 @@ def check_figures(t, hard):
     return n
 
 
+def check_markdown(src, hard):
+    """A vault report: front matter first, and no HTML in its text but <sup>, <sub> (outside the ```viz and ```tree
+    blocks, whose captions and drawings are data)."""
+    if not re.match(r'---\ncode: [\d.]+\n', src):
+        hard.append('no front matter (method.md §7) opening the file')
+    body = re.sub(r'^( *)```(viz|tree)\n.*?\n\1```[ \t]*$', '', src, flags=re.S | re.M)
+    for m in re.finditer(r'</?([A-Za-z][\w-]*)[^<>]*>', body):
+        if m.group(1).lower() not in ('sup', 'sub'):
+            hard.append(f'HTML in the Markdown: {m.group(0)[:40]}')
+
 def check(path, target=None):
     raw = path.read_text()
     hard, soft = [], []
+    if path.suffix == '.md':
+        check_markdown(raw, hard)
+        raw = mdcourse.history_html(raw, draw=False)
     nfig = check_figures(raw, hard)
     t = strip_figures(raw)
     if nfig: soft.append(f'{nfig} figure{"s" if nfig > 1 else ""} declared and drawn (left out of the word count)')

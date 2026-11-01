@@ -1,8 +1,8 @@
 """Course data for build.py. Each live course is a dict; NEXT lists the courses still to come.
 
-Every course has a `family`: 'history' (Greece, Rome and the eight to come: HTML fragments per module in the kit,
-a syllabus with prompts, provenance.json) or 'markdown' (Brand + AI: units as Markdown in the vault, `vault`, read
-directly since A5; the course data under generator/data/<slug>/, `data`). The root home is Academy and lists every
+Every course has a `family`: 'history' (Greece, Rome and the eight to come: one Markdown report per module in the vault,
+`vault`, since P71-3 (1 Nov 2026; vault.py, mdcourse.history_html), a syllabus with prompts, provenance.json) or
+'markdown' (Brand + AI: units as Markdown in the vault, `vault`, read directly since A5; the course data under generator/data/<slug>/, `data`). The root home is Academy and lists every
 course of both families (docs/academy.md, A1). A markdown course is built by mdcourse.py from its data file into one
 Academy course per course in that file (A3). A new course of either family is a folder plus an entry here (A5).
 
@@ -24,7 +24,7 @@ THEMES = [
 
 GREECE = dict(
     id='greece', family='history', theme='history', num=1, short='Greece', label='GREECE', name='Greek history and mythology', color='var(--red)',
-    syllabus='greek-syllabus.html', frags='greece', prompts='prompts-greece.json', prefix='m',
+    syllabus='greek-syllabus.html', vault='courses/greece', prompts='prompts-greece.json', prefix='m',
     home_id='greece', syl_id='syllabus', syl_anchor='s',
     unit_colors={'0': 'var(--gold)', '1': 'var(--orange)', '2': 'var(--purple)', '3': 'var(--red)', '4': 'var(--orange)', '5': 'var(--teal)', '6': 'var(--blue)', '7': 'var(--purple)', '8': 'var(--gold)', '9': 'var(--teal)', '10': 'var(--red)', '11': 'var(--blue)', '12': 'var(--gold)', '13': 'var(--teal)'},
     sections={'0': 'Core course', '10': 'Deep dives', '13': 'Quality'},
@@ -71,7 +71,7 @@ GREECE = dict(
 
 ROME = dict(
     id='rome', family='history', theme='history', num=2, short='Rome', label='ROME', name='Roman history and mythology', color='var(--purple)',
-    syllabus='roman-syllabus.html', frags='rome', prompts='prompts-rome.json', prefix='rm',
+    syllabus='roman-syllabus.html', vault='courses/rome', prompts='prompts-rome.json', prefix='rm',
     home_id='rome', syl_id='rome-syllabus', syl_anchor='rs',
     unit_colors={'0': 'var(--gold)', '1': 'var(--orange)', '2': 'var(--purple)', '3': 'var(--teal)', '4': 'var(--red)', '5': 'var(--orange)', '6': 'var(--purple)', '7': 'var(--blue)', '8': 'var(--teal)', '9': 'var(--gold)', '10': 'var(--blue)', '11': 'var(--red)', '12': 'var(--purple)', '13': 'var(--gold)', '14': 'var(--teal)'},
     sections={'0': 'Core course', '11': 'Deep dives', '14': 'Quality'},

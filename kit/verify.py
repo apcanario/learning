@@ -393,14 +393,10 @@ def check_viz_keys(fails):
         if kind: d.setdefault('kind', kind)
         bad.extend(f'{where}: {b}' for b in viz.check_keys(d))
     for c in COURSES:
-        if c['family'] == 'markdown' and (R.parent / c['vault']).is_dir():
+        if (R.parent / c['vault']).is_dir():     # P71-3: a history course's reports are vault Markdown too
             for f in sorted((R.parent / c['vault']).glob('*.md')):
                 for i, m in enumerate(viz._FENCE.finditer(f.read_text()), 1):
                     one(f'{c["vault"]}/{f.name} block {i}', json.loads(m.group(1)))
-        elif c['family'] == 'history':
-            for f in sorted((R / c['id']).glob('r-*.html')):
-                for i, m in enumerate(viz._FIG.finditer(f.read_text()), 1):
-                    one(f'{c["id"]}/{f.name} figure {i}', json.loads(m.group(2)), m.group(1))
         if c.get('figure'): one(f'courses.py {c["id"]} figure', json.loads(json.dumps(c['figure'])))
     for key, *_, block in viz_examples.EXAMPLES + [(k, w, b) for k, w, b in viz_examples.CASES]:
         before = json.dumps(block, sort_keys=True)

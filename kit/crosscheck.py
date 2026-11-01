@@ -12,19 +12,19 @@ It reports candidates; reading the target and deciding is the maintainer's job.
 """
 import re, sys, html, pathlib, itertools
 from courses import HISTORY as COURSES
+import vault
 
 R = pathlib.Path(__file__).resolve().parent
 cid, ids = sys.argv[1], sys.argv[2:]
 course = next(c for c in COURSES if c['id'] == cid)
 other = next((c for c in COURSES if c['id'] != cid), None)
-key = lambda p: [int(x) for x in p.stem[2:].split('.')]
-reps = {p.stem[2:]: p for p in sorted((R / course['frags']).glob('r-*.html'), key=key)}
+reps = {i: i for i in vault.report_ids(course)}          # P71-3: the reports are the vault files (vault.py)
 mine = ids or list(reps)
-other_written = {p.stem[2:] for p in (R / other['frags']).glob('r-*.html')} if other else set()
+other_written = set(vault.report_ids(other)) if other else set()
 other_name = ({'greece': 'Greek'}.get(other['id'], other['id'].capitalize())) if other else ''
 
-def text(p, body_only=False):
-    s = p.read_text(encoding='utf8')
+def text(i, body_only=False):
+    s = vault.report_html(course, i, draw=False)
     if body_only:
         s = s.split('<h2>Self-test</h2>')[0]
     return html.unescape(re.sub(r'<[^>]+>', ' ', s))
@@ -61,7 +61,7 @@ stop = {'Where', 'Some', 'Most', 'Both', 'None', 'That', 'This', 'Whether', 'The
         'Journal', 'Studies', 'History', 'Livy', 'Plutarch', 'Polybius', 'Appian', 'Cicero', 'Dionysius', 'Caesar', 'Velleius', 'Sallust',
         'Suetonius', 'Tacitus', 'Annals', 'Pliny', 'Augustus', 'Diodorus', 'Varro', 'Ovid', 'Virgil', 'Herodotus', 'Thucydides', 'Natural'}
 def boxes(k):
-    s = reps[k].read_text(encoding='utf8')
+    s = vault.report_html(course, k, draw=False)
     for m in re.finditer(r'<aside class="dispute">(.*?)</aside>', s, re.S):
         t = html.unescape(re.sub(r'<[^>]+>', '', m.group(1)))
         yield set(re.findall(r'\b([A-Z][a-z]{3,})\b', t)) - stop, t[:140]

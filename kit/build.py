@@ -11,7 +11,7 @@ built from their kit folders; a markdown course (Brand + AI) is built by mdcours
 reading page per written unit, and the "How it is built" pages (method, build order, briefs, audits, bibliography,
 changelog). The site also renders the Project's backlog and chat changelog (docs/) as a Backlog page.
 
-Each course has a syllabus file, a fragments folder, a prompts index (the modules with a written report),
+Each course has a syllabus file, its reports in the vault (courses/<course>/, Markdown since P71-3; vault.py), a prompts index (the modules with a written report),
 a colour and a short name. Greece keeps its original panel ids (#greece, #syllabus, #m23); later courses
 are namespaced (#rome, #rome-syllabus, #rm01).
 """
@@ -36,6 +36,7 @@ if ED['courses'] is not None:
 if 'planned' in OMIT:
     NEXT = []
 import mdcourse
+import vault
 import howbuilt
 import viz
 import viz_examples
@@ -124,8 +125,7 @@ def load(c):
     panels, total = [], 0
     ucol = c['unit_colors']
     for i, meta in c['index'].items():
-        frag = (R / c['frags'] / f'r-{i}.html').read_text()
-        frag = viz.render_html(frag)     # A8: a <figure class="viz"> declaration becomes its drawing (before the script strip)
+        frag = vault.report_html(c, i)   # P71-3: the report's Markdown in the vault, rendered to its fragment, figures drawn
         # strip anything that violates the fragment contract
         frag = re.sub(r'<(/?)(html|head|body|!doctype[^>]*)>', '', frag, flags=re.I)
         frag = re.sub(r'<style.*?</style>|<script.*?</script>', '', frag, flags=re.S | re.I)
@@ -901,7 +901,7 @@ for c in HISTORY:
     if fl:
         q += ['| Module | Title | Model | Words |', '|---|---|---|---|']
         for i, mdl in fl:
-            n = wc((R / c['frags'] / f'r-{i}.html').read_text())
+            n = wc(vault.report_html(c, i))
             q.append(f'| {i} | {c["index"][i]["title"]} | {mdl} | {n:,} |')
 q += ['', '## Notes for the reviewer', ''] + [f'- {n}' for n in PROV.get('review_notes', [])]
 if EDITION == 'academy':

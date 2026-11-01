@@ -2,7 +2,7 @@
 writes `editions/<edition>.epub` from the same sources, so the same files can be read as an ebook.
 
 What goes in, per course of the edition, in syllabus or build order:
-  history course    each written report: its fragment (kit/<course>/r-<id>.html), every figure declaration drawn to SVG
+  history course    each written report: its vault file (courses/<course>/<id>-<slug>.md, P71-3), every ```viz block drawn to SVG
                     by viz.py, then its Sources (the curated bibliography/<course>/r-<id>.md, as the site's Sources)
   markdown course   each filed unit from its vault: the text from the first heading on, every ```viz block drawn by
                     viz.py; its own ## Sources section ends it
@@ -17,6 +17,7 @@ variables. The theme's fonts (kit/fonts, SIL OFL) are embedded.
 import re, html, json, uuid, zipfile, pathlib, datetime, shutil
 import markdown
 import viz
+import vault
 
 R = pathlib.Path(__file__).resolve().parent
 THEME = R.parent / 'design' / 'theme.css'
@@ -106,7 +107,7 @@ def chapters(courses, md_units):
             for mid, title, w in mods:
                 if mid not in c['index']:
                     continue
-                frag = viz.render_html((R / c['frags'] / f'r-{mid}.html').read_text())
+                frag = vault.report_html(c, mid)     # P71-3: the report's Markdown in the vault, figures drawn
                 frag = re.sub(r'<(/?)(html|head|body|!doctype[^>]*)>', '', frag, flags=re.I)
                 frag = re.sub(r'<style.*?</style>|<script.*?</script>', '', frag, flags=re.S | re.I)
                 frag = re.sub(r'\sstyle="[^"]*"', '', frag)

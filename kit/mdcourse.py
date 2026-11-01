@@ -10,7 +10,7 @@ One Academy course per entry in the data file's COURSES (AD6), each its own draw
 The hub pages of generator/build_hub.py (retired at A3) are the origin of these; the data file is unchanged.
 Needs the `markdown` package (pip install markdown).
 """
-import html as H, re
+import html as H, json, re
 import markdown
 import viz
 
@@ -82,6 +82,92 @@ def render_md(src):
     body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
     body = body.replace('<a href=', '<a target="_blank" rel="noopener" href=')
     return body, links
+
+
+# ---- P71-3 · a history report in Markdown (1 Nov 2026) --------------------------------------------------------------
+# Greece and Rome moved into the vault as Markdown (docs/p71-3.md). A report's file holds its text, its figure
+# declarations (```viz) and its trees (```tree); history_html turns it into the fragment build.py and epub.py lay out,
+# the same HTML the kit's r-<id>.html fragments held before. The forms (and what each becomes):
+#   ## / ###                       h2 / h3
+#   a paragraph opening **Where sources disagree.**     the dispute box, <aside class="dispute">
+#   > quotation                     <blockquote>, its text not wrapped in a paragraph; consecutive quoted paragraphs,
+#                                   which Markdown joins into one quotation, are one <blockquote> each
+#   a pipe table                    <div class="tbl"><table>
+#   1. question, then indented paragraphs, the first opening "Answer:" or "Model answer:"
+#                                   a Self-test item: the question, then the answer in a closed <details> whose summary
+#                                   is that label; a list of such items is <ol class="quiz">
+#   the numbered list under ## Carry forward           <ol class="carry">
+#   ```tree … ```                   <pre class="tree">, the drawing kept character for character (indented under a list
+#                                   item, it belongs to that item)
+#   ```viz … ```                    the figure, drawn by viz.py ("caption" holds the caption, inline HTML as in Brand + AI)
+# History lists are tight: an item's paragraphs are not wrapped in <p> (an indented block keeps the item together in the
+# source and is joined back into it). <sup> and <sub>, which Markdown has no form for, stay inline as written.
+HIST_ANSWER = re.compile(r'^<p>(Answer|Model answer):\s*', re.S)
+HIST_TREE = re.compile(r'^( *)```tree\n(.*?)\n\1```[ \t]*$', re.S | re.M)
+
+
+def _declare(src):
+    """```viz fences as the history figure declarations check.py reads (draw=False): each block's JSON, its caption
+    moved into the figcaption."""
+    figs = {}
+    def sub(m):
+        d = json.loads(m.group(1))
+        cap = d.pop('caption', '') or ''
+        tok = f'VIZFIG{len(figs)}VIZ'
+        figs[tok] = (f'<figure class="viz" data-viz="{H.escape(str(d.get("kind", "")))}"><script type="application/json">'
+                     f'{json.dumps(d, ensure_ascii=False)}</script><figcaption>{cap}</figcaption></figure>')
+        return f'\n\n{tok}\n\n'
+    return viz._FENCE.sub(sub, src), figs
+
+
+def history_html(src, draw=True):
+    """A history report's vault file (front matter, Markdown) to its fragment HTML: figures drawn, or with draw=False
+    left as declarations (<figure class="viz" data-viz><script type="application/json">, check.py's form)."""
+    src = re.sub(r'\A---\n.*?\n---\n', '', src, flags=re.S)
+    src = re.sub(r'\A\s*# .*\n', '', src, count=1)
+    src, figs = viz.extract_md(src) if draw else _declare(src)
+    trees = {}
+
+    def tree(m):
+        ind, body = m.group(1), m.group(2)
+        body = '\n'.join(ln[len(ind):] if ln.startswith(ind) else ln for ln in body.split('\n'))
+        tok = f'TREEPRE{len(trees)}TREE'
+        trees[tok] = f'<pre class="tree">{H.escape(body, quote=False)}</pre>'
+        return f'{ind}{tok}'
+    src = HIST_TREE.sub(tree, src)
+    src = literal_brackets(src)
+    body = markdown.markdown(src, extensions=['tables'])
+    for tok, h in trees.items():
+        body = body.replace(f'<p>{tok}</p>', h).replace(tok, h)
+    body = viz.restore_md(body, figs)
+    body = re.sub(r'<p>(<strong>Where sources disagree\.</strong>.*?)</p>', r'<aside class="dispute">\1</aside>', body, flags=re.S)
+    body = re.sub(r'<blockquote>\s*((?:<p>.*?</p>\s*)+)</blockquote>',
+                  lambda m: '\n'.join(f'<blockquote>{p}</blockquote>' for p in re.findall(r'<p>(.*?)</p>', m.group(1), re.S)), body, flags=re.S)
+
+    def lst(m):
+        tag, inner = m.group(1), m.group(2)
+        quiz = False
+        items = []
+        for li in re.findall(r'<li>(.*?)</li>', inner, re.S):
+            li = li.strip()
+            blocks = re.findall(r'<p>.*?</p>|<blockquote>.*?</blockquote>|<pre class="tree">.*?</pre>', li, re.S) if li.startswith('<') else []
+            if blocks and len(blocks) > 1 and HIST_ANSWER.match(blocks[1]):
+                quiz = True
+                lab = HIST_ANSWER.match(blocks[1]).group(1)
+                ans = [HIST_ANSWER.sub('<p>', blocks[1], count=1)] + blocks[2:]
+                items.append(f'<li>{blocks[0][3:-4]}<details><summary>{lab}</summary>{"".join(ans)}</details></li>')
+            elif blocks:
+                items.append('<li>' + '\n'.join(b[3:-4] if b.startswith('<p>') else b for b in blocks) + '</li>')
+            else:
+                items.append(f'<li>{li}</li>')
+        cls = ' class="quiz"' if quiz else ''
+        return f'<{tag}{cls}>\n' + '\n'.join(items) + f'\n</{tag}>'
+    body = re.sub(r'<(ol|ul)>(.*?)</\1>', lst, body, flags=re.S)
+    body = re.sub(r'(<h2>Carry forward</h2>\s*)<ol>', r'\1<ol class="carry">', body)
+    body = re.sub(r'(<(?:thead|tr)>|</t[hd]>)\n(?=<(?:tr|t[hd]|/tr)\b)', r'\1', body)      # a table row on one line, as written
+    body = re.sub(r'</tr>\n</thead>', '</tr></thead>', body)
+    body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
+    return body
 
 
 # ---- P68 · the reading layout (1 Nov 2026) -------------------------------------------------------------------------
