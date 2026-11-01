@@ -28,7 +28,7 @@ Read the unit's search flag in `courses-index.md`.
 - List the brief's items in order; give each a section and a rough word budget. The topic decides the length: never pad, never cut substance to a number.
 - Write the whole unit, in the course's format (`method.md` §2):
   - **Markdown course:** Markdown long-form report; headed sections answering the brief in order; claims sourced in place with links; anecdote, vendor and correlational data labelled; then the deliverable named in the unit's "Ships" line, **built in full** (the actual statement, table, calendar, skill, model; never a description of it); then a `## Sources` list of every link cited.
-  - **Personal Mythology:** an HTML fragment exactly as `AGENT-SPEC.md` specifies (6–10 `h2`, dispute boxes with a named side each, `Self-test` with 10 questions and answers in `details`, `Carry forward` with exactly 3 items); British spelling; no em dashes; no preamble. Never use the Artifact tool or any publishing tool.
+  - **Personal Mythology:** a Markdown report exactly as `AGENT-SPEC.md` specifies (since P71-3, 1 Nov 2026: front matter and title, then 6–10 `## ` sections, dispute boxes opening `**Where sources disagree.**` with a named side each, `## Self-test` with 10 numbered questions each followed by its indented `Answer:` paragraph, `## Carry forward` with exactly 3 numbered items; no HTML); British spelling; no em dashes; no preamble. Never use the Artifact tool or any publishing tool.
 - Begin with the first section. No preamble, no summary of what follows, no closing filler, no motivational language.
 
 ## 4b. Figure pass (after the draft)
@@ -53,11 +53,11 @@ With the whole draft written, go through it section by section and ask of each: 
 
 - **Source.** Every label, date and number in a figure already appears in the unit's text, sourced there. A figure adds no fact.
 - **Place.** Put the figure directly after the paragraph or table it draws, with at most one plain sentence introducing it.
-- **Hidden answers.** No figure draws what a Self-test or exam hides in `<details>` (a model answer, a key): a figure sits at the top level and would show the answer under its question. An exam's figures draw only what its visible questions give.
+- **Hidden answers.** No figure draws what a Self-test or exam hides behind its answer box (a model answer, a key): a figure sits at the top level and would show the answer under its question. An exam's figures draw only what its visible questions give.
 - **How many.** One to four figures a unit is a guide, and none where nothing has a shape; a figure is never added for decoration. A brief that names its own number stands (the User Experience briefs ask for three to eight).
 - **Caption.** Say what the figure shows and where its data comes from: the section of this unit and the source it cites there (author, work, line or page; organisation, report, date). A figure redrawn or adapted from a source credits it.
-- **Syntax.** Markdown units (Brand + AI, User Experience): a fenced ` ```viz ` block holding the JSON, `kind` and `caption` inside it. History fragments: `<figure class="viz" data-viz="<kind>"><script type="application/json">{…}</script><figcaption>…</figcaption></figure>` (`kit/WRITER-BRIEF.md`).
-- **Draw it.** Before handing in, render every figure with `viz.render` (from `kit/`: `python3 -c "import json, viz; viz.render(json.load(open('fig.json')))"`, or `python3 check.py <course>/r-<id>.html` for a history fragment). A figure that raises is fixed or dropped, never left to break the build.
+- **Syntax.** Every course (history too, since P71-3): a fenced ` ```viz ` block holding the JSON, `kind` and `caption` inside it (`kit/WRITER-BRIEF.md`).
+- **Draw it.** Before handing in, render every figure with `viz.render` (from `kit/`: `python3 -c "import json, viz; viz.render(json.load(open('fig.json')))"`, or `python3 check.py ../courses/<course>/<id>-<slug>.md` for a history report). A figure that raises is fixed or dropped, never left to break the build.
 
 ## 5. Check before handing in
 - Run `sourcing-standard.md` Part 1 and `<sourcing part>` over every checkable claim. Fix what fails; a claim you cannot source is said to be unsourced or removed (and never enters the deliverable).
@@ -67,5 +67,5 @@ With the whole draft written, go through it section by section and ask of each: 
 
 ## 6. Hand in
 - **Markdown course:** one file `<code>-<slug>.md`, filed later in `<vault>` (code, then the title lower-cased, hyphenated, accents and punctuation dropped), starting with the front matter from `method.md` §7 (code, title, course, model, written date, search flag).
-- **Personal Mythology:** three files: `<id>-<slug>.md` (front matter, then the fragment unchanged), `r-<id>.html` (the fragment alone), and `bibliography-r-<id>.md` (the curated bibliography: ancient sources with passages and edition where known; modern works with author, full title, place or journal, year of the edition named).
+- **Personal Mythology:** two files: `<id>-<slug>.md` (front matter, title, then the report in Markdown; the only copy, since P71-3), and `bibliography-r-<id>.md` (the curated bibliography: ancient sources with passages and edition where known; modern works with author, full title, place or journal, year of the edition named).
 - Send the files. Reply with one line (unit, word count, search used or not), one line per figure (kind, section, what it draws) and the unsure list. Filing is a separate step (`file-unit`).

@@ -2,15 +2,15 @@
 
 Sessions from 25 October 2026, run with Opus 5.5. Each new report gets one fresh checker that has not seen it written. This is not the Fable review and clears no flag. Checkers never edit reports: the maintainer verifies each finding before applying it, because checkers can be wrong.
 
-Working directory: the kit folder (`AGENT-SPEC.md`, `WRITER-BRIEF.md`, `roman-syllabus.html`, `greek-syllabus.html`, `prompts-rome.json`, `prompts-greece.json`, `greece/`, `rome/`). Do not edit any file except your own findings file. Never use the Artifact tool or any publishing tool.
+Working directory: the kit folder (`AGENT-SPEC.md`, `WRITER-BRIEF.md`, `roman-syllabus.html`, `greek-syllabus.html`, `prompts-rome.json`, `prompts-greece.json`). The reports are Markdown files in the vault beside it, `../courses/greece/<id>-<slug>.md` and `../courses/rome/<id>-<slug>.md` (P71-3, 1 November 2026); read them there. Do not edit any file except your own findings file. Never use the Artifact tool or any publishing tool.
 
 ## Read first
 
 1. `AGENT-SPEC.md`: the writing spec, the content rules and the citation conventions for the report's course (Rome, or Greece with the philosophy conventions: Diels–Kranz, Stephanus, Bekker, *SVF*, Diogenes Laertius by book and section).
-2. The quality bar, in full: `greece/r-2.1.html`, `greece/r-4.2.html`, `greece/r-6.3.html`, `greece/r-8.1.html` (for Greek philosophy also `greece/r-6.5.html` and `greece/r-7.2.html`). Note their register: dense, declarative prose; precise citations; dispute boxes of two to four sentences with named sources or scholars on each side; self-test questions that test understanding, with answers of one to three sentences; carry-forward items that are transferable ideas.
+2. The quality bar, in full: Greek 2.1, 4.2, 6.3 and 8.1 (`../courses/greece/2.1-*.md` and so on; for Greek philosophy also 6.5 and 7.2). Note their register: dense, declarative prose; precise citations; dispute boxes of two to four sentences with named sources or scholars on each side; self-test questions that test understanding, with answers of one to three sentences; carry-forward items that are transferable ideas.
 3. For the report you check:
    - its prompt: the `<pre>` of its `data-id` in the course syllabus (`roman-syllabus.html` for Rome, `greek-syllabus.html` for Greece);
-   - the report in full;
+   - the report in full (its vault file);
    - the prompts of its neighbours in the unit, and the written neighbours themselves;
    - every report it points to ("module X.Y", "Greek module X.Y", "Rome module X.Y", "deep dive module X.Y"): open the target and check that it says what the pointer claims. A pointer to an unwritten module is checked against that module's prompt;
    - the lane note in your task: the hand-offs written reports make to this module. Check that the report keeps each one (covers what was handed to it, and does not retell what the earlier report already told);
@@ -41,7 +41,7 @@ Body words: N (target T)
 - item: covered / thin / missing (one line each)
 
 ## Findings
-1. [error | should-fix | minor] [accuracy | attribution | figure | pointer | lane | register | style] Section "<h2 heading>".
+1. [error | should-fix | minor] [accuracy | attribution | figure | pointer | lane | register | style] Section "<## heading>".
    Current: "<exact quoted text, short, copied from the file>"
    Problem: <one or two sentences>
    Fix: "<exact replacement text>" (or: delete; or: add after "<anchor>": "<text>")
@@ -53,6 +53,6 @@ Body words: N (target T)
 
 Severity: **error** = wrong fact, misattribution, false pointer, wrong citation; **should-fix** = unsourced figure, duplication, lane breach, weak or wrong self-test answer, thin coverage; **minor** = style. Verdict: **keep** = no errors; **fix** = a list of edits fixes it; **rewrite** = more than three errors or two of the six checks badly failed.
 
-Proposed fixes must follow the house style (British spelling, no em dashes) and keep the report within its length band (−10 to +15 percent of target; `python3 check.py <path>` prints the count). Quote current text exactly as it stands in the file, including any HTML tags inside the span, so the maintainer can find it with an exact match.
+Proposed fixes must follow the house style (British spelling, no em dashes) and keep the report within its length band (−10 to +15 percent of target; `python3 check.py <path>` prints the count). Quote current text exactly as it stands in the file, including any Markdown inside the span (`*Aeneid*`, `**Where sources disagree.**`), so the maintainer can find it with an exact match.
 
 Reply with one line: id, verdict, and the count of findings by severity. Nothing else.

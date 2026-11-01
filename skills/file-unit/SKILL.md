@@ -19,8 +19,8 @@ Turns a written unit into a filed one: vault, course data, Academy, index. The p
 Save to `<vault>/<code>-<slug>.md` for a markdown course, `courses/<course>/<id>-<slug>.md` for a history course (`greece` or `rome`); slug = the title lower-cased, hyphenated, accents and punctuation dropped. If the vault is connected (GitHub), commit it there with the message `<id> <code>: <title>` (`<id>`: the course entry's id, `greece` or `rome` for history); otherwise send the file and say where it goes.
 
 ## 3. Personal Mythology: the kit (`kit/` in the repo)
-1. Save the fragment without front matter as `<course>/r-<id>.html`; the bibliography as `bibliography/<course>/r-<id>.md`; the writer's unsure list as `reviews/<session folder>/<course>-<id>-writer.md`.
-2. `python3 check.py <course>/r-<id>.html` until OK.
+1. The report itself is its vault file (§2; since P71-3, 1 Nov 2026, there is no copy in the kit: `build.py` reads the vault through `vault.py`). Save the bibliography as `bibliography/<course>/r-<id>.md`; the writer's unsure list as `reviews/<session folder>/<course>-<id>-writer.md`.
+2. `python3 check.py ../courses/<course>/<id>-<slug>.md` until OK.
 3. Fresh check: a new agent or chat that has not seen the unit written, briefed with `reviews/units-9-13/BRIEF.md`; it writes findings and never edits. Verify every finding before applying it, as exact replacements; log a paragraph in the session's `log.md`.
 4. `python3 register.py <course> "<model>" <id>`; read the `review_due.py` line it prints.
 5. When the syllabus unit is complete: `python3 crosscheck.py <course> <ids>` and check every pointer between its modules.

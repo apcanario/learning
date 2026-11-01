@@ -4,18 +4,33 @@ You are writing one module of a self-study course in the Personal Mythology comp
 
 ## Output
 
-Write ONE file: the path you are given, as an HTML FRAGMENT (no doctype, html, head, body, style or script tags; no inline styles; no emoji). Use only these elements and classes:
+Write ONE file: the path you are given, a Markdown file in the vault, `courses/<course>/<id>-<slug>.md` (P71-3, 1 November 2026: Greece and Rome are Markdown courses; `docs/p71-3.md`). It holds the report's text, its trees and its figure declarations, nothing else: no HTML (but `<sup>` and `<sub>`, which Markdown has no form for), no class, no style, no emoji, nothing about layout. The build adds the page (the section bands, the boxes, the answers' accordions, the Sources and the prompt) and the ebook. It opens with its front matter and title:
 
-- `<h2>` for the report's main sections (6–10 of them). No `<h1>`.
-- `<h3>` for sub-sections where needed.
-- `<p>`, `<ul>`, `<ol>`, `<li>`, `<strong>`, `<em>`, `<blockquote>` for short quoted ancient text (under 15 words).
-- `<table>` with `<thead>`/`<tbody>` for genuinely tabular material (chronologies, lists of names with attributes). Wrap every table in `<div class="tbl">`.
-- `<pre class="tree">` for a text family tree or mental map if the prompt asks for one.
-- `<figure class="viz" data-viz="…"><script type="application/json">…</script><figcaption>…</figcaption></figure>` for a figure where the content has a shape (kinds and data in `kit/viz.py`, when to declare one in `WRITER-BRIEF.md`); the JSON `<script>` inside this declaration is the only script allowed.
-- `<aside class="dispute">` — a short block, used wherever ancient sources or modern scholars disagree. Start it with `<strong>Where sources disagree.</strong>` Use this several times across the report; it is required.
+```
+---
+code: 4.2
+title: <the module's title, as in the syllabus>
+course: rome · Personal Mythology · Rome
+model: <the model that wrote it>
+written: <YYYY-MM-DD>
+search: off
+---
+
+# <the module's title>
+```
+
+Then use only these forms (`kit/mdcourse.py`, `history_html`, reads each one):
+
+- `## ` for the report's main sections (6–10 of them). No other `# ` line after the title.
+- `### ` for sub-sections where needed.
+- Paragraphs, `- ` and `1. ` lists, `**bold**`, `*italic*` (`_italic_` inside bold), and `> ` for short quoted ancient text (under 15 words), one quotation per `> ` paragraph.
+- A pipe table (header row, `|---|` row, then the rows) for genuinely tabular material (chronologies, lists of names with attributes). A `|` inside a cell is written `\|`.
+- A ```` ```tree ```` fenced block for a text family tree or mental map if the prompt asks for one; it is drawn exactly as typed.
+- A ```` ```viz ```` fenced block for a figure where the content has a shape: the figure's JSON, `"kind"` first and `"caption"` last (kinds and fields in `kit/viz.py`, when to declare one in `WRITER-BRIEF.md`).
+- The dispute box: a paragraph that opens with `**Where sources disagree.**` — a short block, used wherever ancient sources or modern scholars disagree. Use it several times across the report; it is required.
 - Final two sections, in this order, with these exact headings:
-  - `<h2>Self-test</h2>` containing `<ol class="quiz">` with 10 `<li>`; each li holds the question as text, then `<details><summary>Answer</summary><p>…</p></details>`.
-  - `<h2>Carry forward</h2>` containing `<ol class="carry">` with exactly 3 `<li>`, the three ideas the reader must keep for later modules.
+  - `## Self-test`, then a numbered list of 10 items; each item is the question, then a blank line and the answer as an indented paragraph (four spaces) that opens with `Answer:`. The build puts the answer in its closed box.
+  - `## Carry forward`, then a numbered list of exactly 3 items, the three ideas the reader must keep for later modules.
 
 ## Sources and bibliography (Pedro's rule, 27 October 2026)
 Every report keeps its sources for future checks. The report itself cites inline, as below. Beside it the writer leaves `bibliography/<course>/r-<id>.md`: every ancient author and work cited, with the passages used and the edition or translation relied on where known; every modern work cited, with author, full title, place or journal and year of the edition named. `biblio.py` (run by `build.py`) also extracts a machine-made list per unit from the inline citations, `bibliography/<course>/unit-<n>.md`, as a check aid; where the curated file exists the unit file links to it. Reports written before this rule have the machine list only until a curated file is made for them.
@@ -25,7 +40,7 @@ Every report keeps its sources for future checks. The report itself cites inline
 - Length: the word count the prompt asks for is a guide, not a law (Pedro's rule, 27 October 2026). Give the topic the words it needs: some need 2,000, some 6,000. Plan the section budget before writing and write in one pass; do not pad to reach the target and do not cut substance to meet it. `check.py` reports the count against the target as a note only.
 - Name specific primary sources by author and work (e.g. Hesiod, Theogony 453–506; Apollodorus, Library 1.1.5; Herodotus 7.204; Livy 1.7.3; Dionysius of Halicarnassus, Roman Antiquities 1.79; Plutarch, Romulus 9). Book, chapter and line numbers where you are confident; otherwise author and work only. Never invent a citation.
 - Flag disagreements between ancient sources and between modern scholars honestly, with names on each side. Say "uncertain" when it is.
-- Plain, direct prose. No preamble ("In this report I will…"), no summary of what you are about to say, no closing pleasantries. Begin directly with the first `<h2>`.
+- Plain, direct prose. No preamble ("In this report I will…"), no summary of what you are about to say, no closing pleasantries. Begin directly with the first `## ` section after the title.
 - British spelling.
 - Every number (dead, troops, money, people, distances) says whose figure it is: an ancient author with a citation, or a named modern estimate.
 - Every "X argued Y" about a modern scholar must be something you are sure X argued; otherwise state the view without a name, or search. Give a modern book the date and title of the edition you name (the original's title with its date, or the translation's with its own).
