@@ -1,0 +1,11 @@
+# Rome 11.4 writer: unsure list
+- Cornelia's base: "found in 1878 in the area of the portico of Octavia" (via a Catalan article citing Ferri 1946), CIL VI 10043 = 31610, ILS 68. The view that the surviving lettering is Augustan is left unnamed. I could not open Kajava's Arctos article.
+- Coarelli 1978: the Sullan-reaction dating of the re-cutting is reported second-hand (Coarelli 1996 reprint, via a summary), not read.
+- Dixon, "A family business", Classica et Mediaevalia 1983: title and journal from memory.
+- Bauman, Women and Politics in Ancient Rome (1992), and Hillard, "On the Stage, Behind the Curtain" (1992): both positions as summarised from memory; Hillard's volume (Garlick, Dixon and Allen, eds, Stereotypes of Women in Power) not checked.
+- Wiseman 1969: I added poem 83 (Lesbia's husband alive) to his objections myself; the excerpt I read gives only the mid-50s dating and the three sisters.
+- Appian, Civil Wars 5.19 for Manius persuading Fulvia: section number from memory.
+- Dio 47.8.4 (Cicero's tongue and hairpins): Loeb numbering from memory; the RE cites 47.8.2 for the passage.
+- Dio 49.38.1: "honours no Roman woman had held before" is my inference, not Dio's words.
+- Eumeneia renamed Fulvia, and the coin head possibly hers: no ancient passage cited, and the claim is hedged.
+- Plutarch, Cicero 20 (Terentia brings the Vestals' sign), Valerius Maximus 4.4 preface (jewels, from Pomponius Rufus) and Pliny 7.158 (Terentia at 103): from memory, not rechecked.
