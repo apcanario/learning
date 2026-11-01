@@ -150,6 +150,10 @@ Contract change at P63 (1 Nov 2026), under the same rule:
               century", "late eighth century BC", "c. 670–640"): it prints as written and is drawn at "at", which must
               lie inside the century or span it names (date_names), or the build stops. The year is never printed
               where the text gives none. verify.py checks every built date line against the year its dot stands at.
+Contract change at P78 (1 Nov 2026):
+  objects     the "dir" mark is a narrow isosceles triangle (14 units base to tip, 6 across the base), so it reads towards
+              its object on a line at any angle at 390 px; a plate keeps 18 units for it (was 12), and a level gap widens by
+              as much. The P66 mark was 8 by 8 and on a slanted line read as pointing either way (IA2's cross-surface map).
 Contract change at P66 (1 Nov 2026):
   objects     a link may carry "dir": "to" or "from": a small solid triangle at the end of its label, pointing at the
               object the label reads towards (UML's reading-direction mark), for a label that cannot read left to right
@@ -999,6 +1003,13 @@ def _overlap(r, o, pad=0):
     return r[0] < o[0] + o[2] + pad and o[0] < r[0] + r[2] + pad and r[1] < o[1] + o[3] + pad and o[1] < r[1] + r[3] + pad
 
 
+# P78 (1 Nov 2026): the reading-direction mark is a narrow isosceles triangle, 14 units from base to tip and 6 across
+# the base, so its tip reads towards its object on a line at any angle at 390 px (the P66 mark, 8 by 8, read as no
+# direction on a slant). A plate keeps DIRW units at its right end for it.
+DIR_TIP, DIR_BACK, DIR_HALF = 7.5, 6.5, 3
+DIRW = 18
+
+
 def objects(d):
     """An object map: each object a box with a title band, attributes and optional actions, placed in the grid that
     "rows" gives (a row is a list of object ids; null leaves a cell empty); relationships are lines between boxes with
@@ -1027,7 +1038,7 @@ def objects(d):
         pa, pb = cell.get(e.get('from')), cell.get(e.get('to'))
         if e.get('label') and pa and pb and pa[0] == pb[0] and abs(pa[1] - pb[1]) == 1:
             word = max(_tw(w, T_LINK[2], T_LINK[1]) for w in str(e['label']).split())
-            GX = max(GX, math.ceil(word + 12 + 8 + (12 if e.get('dir') else 0)))   # P66: room for the direction mark
+            GX = max(GX, math.ceil(word + 12 + 8 + (DIRW if e.get('dir') else 0)))   # P66: room for the direction mark
     Wd = W
     bw = min(220, (Wd - 16 - GX * (cols - 1)) / cols)
     if bw < 110:
@@ -1127,10 +1138,10 @@ def objects(d):
         if e.get('label'):
             level = abs(uy) < 0.01
             if level:                                        # a level line: the label hangs under it
-                lab = _lines(e['label'], T_LINK, max(40, L - 12 - (12 if e.get('dir') else 0)))
+                lab = _lines(e['label'], T_LINK, max(40, L - 12 - (DIRW if e.get('dir') else 0)))
             else:
                 lab = _lines(e['label'], T_LINK, max(min(bw, 150), max(_tw(w, T_LINK[2], T_LINK[1]) for w in str(e['label']).split()) + 1))
-            pw, ph = _width(lab, T_LINK) + 8 + (12 if e.get('dir') else 0), len(lab) * 12.5 + 4
+            pw, ph = _width(lab, T_LINK) + 8 + (DIRW if e.get('dir') else 0), len(lab) * 12.5 + 4
             best = None
             for t in (0.5, 0.42, 0.58, 0.34, 0.66, 0.27, 0.73, 0.2, 0.8):
                 mx, my = P[0] + (Q[0] - P[0]) * t, P[1] + (Q[1] - P[1]) * t
@@ -1152,10 +1163,11 @@ def objects(d):
             mark = ''
             if e.get('dir'):                                 # the reading-direction mark, at the plate's right end
                 sx, sy = (ux, uy) if e['dir'] == 'to' else (-ux, -uy)
-                tx, ty = x + pw - 9, top + ph / 2
-                mark = (f'<path class="viz-head" d="M{tx + sx * 4.5:.1f},{ty + sy * 4.5:.1f} L{tx - sx * 3.5 - sy * 4:.1f},{ty - sy * 3.5 + sx * 4:.1f} '
-                        f'L{tx - sx * 3.5 + sy * 4:.1f},{ty - sy * 3.5 - sx * 4:.1f} z"/>')
-            tw_ = pw - (12 if e.get('dir') else 0)
+                tx, ty = x + pw - DIRW / 2 - 2, top + ph / 2   # P78: a narrow isosceles, tip DIR_TIP ahead of its centre,
+                mark = (f'<path class="viz-head" d="M{tx + sx * DIR_TIP:.1f},{ty + sy * DIR_TIP:.1f} '   # base DIR_BACK behind,
+                        f'L{tx - sx * DIR_BACK - sy * DIR_HALF:.1f},{ty - sy * DIR_BACK + sx * DIR_HALF:.1f} '   # 2 x DIR_HALF wide
+                        f'L{tx - sx * DIR_BACK + sy * DIR_HALF:.1f},{ty - sy * DIR_BACK - sx * DIR_HALF:.1f} z"/>')
+            tw_ = pw - (DIRW if e.get('dir') else 0)
             links += (f'<g data-box="" data-text="{esc(e["label"])}"><rect class="viz-lblbg" x="{x:.1f}" y="{top:.1f}" width="{pw:.1f}" height="{ph:.1f}"/>'
                       + _text(lab, T_LINK, x + tw_ / 2, top + 2, 'middle') + mark + '</g>')
     return _svg(Wd, _r(y - GY + 8), links + body, 'objects', d.get('title'), d.get('caption'), wide=Wd > W * 1.15)

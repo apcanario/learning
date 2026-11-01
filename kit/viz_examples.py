@@ -291,6 +291,14 @@ CASES = [
       'links': [{'from': 'a', 'to': 'd', 'label': 'drafts'}, {'from': 'b', 'to': 'c', 'label': 'elects'},
                 {'from': 'd', 'to': 'c', 'label': 'binds', 'dir': 'to'}, {'from': 'b', 'to': 'a', 'label': 'advises', 'dir': 'from'}],
       'caption': CASE}),
+    # P78 (1 Nov 2026): the reading-direction mark on slanted lines.
+    ('objects-dir-slant', 'Direction marks on slanted lines, one "to" and one "from", at two angles: each is a narrow triangle whose tip points along its line at the object its label reads towards, so its direction reads at 390 px (IA2).',
+     {'kind': 'objects', 'title': 'Direction marks on a slant',
+      'objects': [{'id': 'a', 'title': 'A province', 'attrs': ['a governor'], 'tone': 2}, {'id': 'b', 'title': 'A legion', 'attrs': ['a legate'], 'tone': 3},
+                  {'id': 'c', 'title': 'A colony', 'attrs': ['veterans'], 'tone': 5}],
+      'rows': [['a', None, None], [None, None, 'b'], ['c', None, None]],
+      'links': [{'from': 'b', 'to': 'a', 'label': 'is posted to', 'dir': 'to'}, {'from': 'b', 'to': 'c', 'label': 'is settled by', 'dir': 'from'}],
+      'caption': CASE}),
     # P63 (1 Nov 2026): a date the text gives only by century or span.
     ('timeline-century', 'Events the text dates only by a century or a span: the date line prints the century or span as the text gives it, never a year the text does not give, and the dot stands at "at", inside it (Greek 5.4).',
      {'kind': 'timeline', 'title': 'Dated by century', 'start': -800, 'end': -400, 'ticks': [-800, -700, -600, -500, -400],
