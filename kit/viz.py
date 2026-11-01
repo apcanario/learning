@@ -154,13 +154,13 @@ Contract change at P66 (1 Nov 2026):
   objects     a link may carry "dir": "to" or "from": a small solid triangle at the end of its label, pointing at the
               object the label reads towards (UML's reading-direction mark), for a label that cannot read left to right
               on a level line or top to bottom otherwise. Every line is drawn before any label, and each label sits on its
-              own line at the point nearest the middle whose plate is at least 14 units clear of every crossing and every
-              other line (else the clearest), and covers no box, count or other label; when every point covers a
+              own line at the point nearest the middle whose plate is at least 14 units clear of every crossing, every
+              other line and every label placed before it (else the clearest), and covers no box, count or other label; when every point covers a
               crossing, a box or a label, the build stops (move a box). A level gap widens for a mark as for a long word.
 Contract change at P53 (1 Nov 2026):
-  matrix      each column is as wide as its widest cell (a mark on one line, up to 220 units) or its header (its longest
+  matrix      each column is as wide as its widest cell (a mark on one line) or its header (its longest
               word, or the whole header up to 140), at least 56, not an equal share of the 700-unit width; columns that
-              need more than the width share it, the narrower keeping their size, and under 70 each the drawing widens
+              need more than the width share it, the narrower keeping their size and the wider wrapping, and under 70 each the drawing widens
               and scrolls as before. A matrix narrower than the width draws at its own width (class viz-fit: natural size
               at every width, never stretched to the column), at least 320 units and wide enough for its widest legend item.
 Contract change at P50 (1 Nov 2026): sitemap, objects, decision, states and wireflow centre their drawing in the
@@ -315,6 +315,8 @@ def _svg(w, h, body, cls, title, caption, wide=False, x0=None):
         lft = _left(body)
         x0 = max(0, lft - 8) if lft is not None and lft - 8 > 4 else None
     t = f'<p class="viz-title">{esc(title)}</p>' if title else ''
+    if caption:                                              # H-2: a number range never breaks at its dash (141–150)
+        caption = re.sub(r'>([^<]*)<', lambda m: '>' + re.sub(r'(\d)([–-])(?=\d)', '\\1\u2060\\2\u2060', m.group(1)) + '<', f'>{caption}<')[1:-1]
     c = f'<figcaption>{caption}</figcaption>' if caption else ''
     return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''} '
             f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg></div>{c}</figure>')
@@ -957,6 +959,13 @@ def _dist_rect(pt, r):
     return math.hypot(dx, dy)
 
 
+def _rect_gap(r, o):
+    """The gap between two rectangles (0 when they touch or overlap)."""
+    dx = max(o[0] - (r[0] + r[2]), r[0] - (o[0] + o[2]), 0)
+    dy = max(o[1] - (r[1] + r[3]), r[1] - (o[1] + o[3]), 0)
+    return math.hypot(dx, dy)
+
+
 def _seg_rect(p, q, r):
     """How far a segment passes from a rectangle (0 when it crosses it), sampled along the segment."""
     if _hits(p, q, r, 0):
@@ -1113,7 +1122,8 @@ def objects(d):
                 r = (x, cy - ph / 2, pw, ph)
                 hard = sum(1 for c in cross if _inside(c, r, 6)) + sum(1 for o in taken + plates if _overlap(r, o, 2))
                 soft = sum(1 for e2, _, _, P2, Q2 in segs if e2 is not e and _hits(P2, Q2, r, 2))
-                clear = min([_dist_rect(c, r) for c in cross] + [_seg_rect(P2, Q2, r) for e2, _, _, P2, Q2 in segs if e2 is not e] + [99])
+                clear = min([_dist_rect(c, r) for c in cross] + [_seg_rect(P2, Q2, r) for e2, _, _, P2, Q2 in segs if e2 is not e]
+                            + [_rect_gap(r, o) for o in plates] + [99])    # and from every label already placed
                 score = (hard, soft, clear < 14, -min(clear, 14), abs(t - 0.5))   # 14 units clear of other lines, then the middle
                 if best is None or score < best[0]:
                     best = (score, r)
@@ -1241,9 +1251,9 @@ def matrix(d):
         return _heat(d)
     LW = min(170, max(90, max(_tw(r['label'], 12) for r in rows) + 20))
     n = len(cols)
-    # P53 (1 Nov 2026): each column is as wide as its widest cell (a mark on one line, up to 220) or its header (its
-    # longest word, or the whole header up to 140), not a share of the 700-unit width; when the columns need more than
-    # the width they share it, the narrow ones keeping their size, and below 70 each the drawing widens and scrolls.
+    # P53 (1 Nov 2026): each column is as wide as its widest cell (a mark on one line) or its header (its longest word,
+    # or the whole header up to 140), not a share of the 700-unit width; when the columns need more than the width
+    # they share it, the narrow ones keeping their size and the long ones wrapping, and below 70 each the drawing widens.
     # A matrix narrower than the width is drawn at its own width (viz-fit), so on a phone it does not scroll for margin.
     for r in rows:
         if len(r.get('cells', [])) != n:
@@ -1252,7 +1262,7 @@ def matrix(d):
     nat = []
     for k, c in enumerate(cols):
         hw = max(max(_tw(w, 10, 'mono', 0.4) for w in str(c).split()), min(_tw(str(c), 10, 'mono', 0.4), 140)) + 14
-        cl = max([min(_tw(mark(r['cells'][k]), 10.5, 'mono'), 220) + 18 for r in rows if mark(r['cells'][k])] or [0])
+        cl = max([_tw(mark(r['cells'][k]), 10.5, 'mono') + 18 for r in rows if mark(r['cells'][k])] or [0])
         nat.append(math.ceil(max(56, hw, cl)))
     avail = W - 16 - LW
     if sum(nat) <= avail:
@@ -1265,6 +1275,8 @@ def matrix(d):
             cws[k] = left / len(rest)
     wide = min(cws) < 70 and sum(nat) > avail
     cws = [max(c, 70) if wide else c for c in cws]
+    # the row-label column takes any width the columns leave, up to its longest label on one line
+    LW = max(LW, min(max(_tw(r['label'], 12) for r in rows) + 20, W - 16 - sum(cws)))
     leg = [_tw(i.get('mark', ''), 10.5, 'mono') + 16 + 8 + min(220, _tw(i.get('means', ''), 11)) + 18 for i in d.get('legend') or []]
     Wd = max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)
     xs = [8 + LW + sum(cws[:k]) for k in range(n)]
@@ -1297,7 +1309,8 @@ def matrix(d):
         for item in d['legend']:
             m, means = item.get('mark', ''), item.get('means', '')
             mw = _tw(m, 10.5, 'mono') + 16
-            txt = _lines(means, T_ATTR, min(220, Wd - 16 - mw - 8 - 18))
+            room = Wd - 16 - mw - 8 - 18                     # a key's text keeps to one line when the drawing has room
+            txt = _lines(means, T_ATTR, room if _tw(means, 11) <= room else min(220, room))
             iw = mw + 8 + _width(txt, T_ATTR) + 18
             if x > 8 and x + iw > Wd - 8:
                 x, y, lrow = 8, y + lrow + 8, 24
