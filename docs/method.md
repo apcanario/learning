@@ -75,7 +75,7 @@ Common to every unit:
 5. **Closing artefact:** the course's deliverable, built in full (§4).
 6. **Sources:** the unit leaves its source list (Brand + AI: a Sources list of links at the end of the file; history: `bibliography/<course>/r-<id>.md`).
 
-**Every new course is a markdown course (P71, decided by Pedro 31 Oct 2026).** A unit holds only its text, its sources and its figure declarations (` ```viz ` blocks, data only): one Markdown file in the course's vault, front matter first (§7). Everything visual is the build's: the layout, the section bands and steps, the accordions, the drawing of every figure (`kit/viz.py`), the styling (`design/theme.css`). The same files make the site and the ebook (`python3 build.py --epub <edition>`). Greece and Rome stay HTML fragments until they are converted after Rome is finished (P71 (3)); no new course is started in that format.
+**Every new course is a markdown course (P71, decided by Pedro 31 Oct 2026).** A unit holds only its text, its sources and its figure declarations (` ```viz ` blocks, data only): one Markdown file in the course's vault, front matter first (§7). Everything visual is the build's: the layout, the section bands and steps, the accordions, the drawing of every figure (`kit/viz.py`), the styling (`design/theme.css`). The same files make the site and the ebook (`python3 build.py --epub <edition>`). Greece and Rome were converted to Markdown in the vault on 1 November 2026 (P71-3, `docs/p71-3.md`); no course is in the fragment format now.
 
 Per course:
 
