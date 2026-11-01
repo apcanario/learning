@@ -18,7 +18,7 @@ shell, one row per written report or unit), the drawer groups (tracks open by de
 accordion) and the Backlog page; the same panel checks again in the light theme. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
 its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
-and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots at the three widths
+and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35) at the three widths
 of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
 and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png.
 Figure geometry (FIG_JS; V1, every kind since P55): on the examples page (one figure per kind, then one hard case per
@@ -132,6 +132,16 @@ FRAME_JS = r'''async ([scope, phone]) => {
   });
   return {n, over, bad: bad.slice(0, 8)};
 }'''
+
+SHOT_H = 2600
+def shoot(pg, path, w, h):
+    """The top SHOT_H px of the page (P35, 1 Nov 2026). A full-page capture renders the whole document before it clips,
+    which on a long unit at device scale 3 took 80 s (DD-B3, about 10,300 words) and failed past the timeout on longer
+    pages; the viewport is made SHOT_H tall and captured as it is, then put back, so the time no longer grows with the
+    page."""
+    pg.set_viewport_size({'width': w, 'height': SHOT_H}); pg.wait_for_timeout(120)
+    pg.screenshot(path=str(path), full_page=False, timeout=60000)
+    pg.set_viewport_size({'width': w, 'height': h}); pg.wait_for_timeout(60)
 
 def check_panels(pg, label, fails):
     """Every panel, every <details> open: horizontal scroll, 6 px gaps, 44 px targets. Returns (tightest gap, panel count)."""
@@ -729,7 +739,7 @@ def main():
                     pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
                     for pid in ['home', 'rome', rp] + [x for x in PAGES if x not in ('home', 'rome', rp)]:
                         pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
-                        pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, clip={'x': 0, 'y': 0, 'width': w, 'height': 2600}, timeout=120000)   # N3: a long reading page needs more than 30 s
+                        shoot(pg, SHOTS / f'{name}-{pid}-{theme}.png', w, h)
                         if pid in PAGES:   # P41: each figure of a --page panel, as the reader sees it in its frame
                             for k, fig in enumerate(pg.query_selector_all(f'[id="{pid}"] figure.viz')):
                                 kind = ([c for c in fig.get_attribute('class').split() if c.startswith('viz-') and c != 'viz-wide'] or ['viz-figure'])[0][4:]
