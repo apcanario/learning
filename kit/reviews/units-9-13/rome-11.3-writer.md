@@ -1,0 +1,11 @@
+# Rome 11.3 writer: claims I was unsure of (Opus 5.5, no web search)
+- Periochae 98: census of 70 given as 910,000; some texts of the epitome may read 900,000 (Phlegon has 910,000).
+- Rhetorica ad Herennium 1.21: "semis and triens" read as five-sixths of an as a modius; the price's meaning and whether the law passed (and in 103 or 100) are disputed.
+- Valerius Maximus 6.2.3 for Scipio's "brought them in chains" retort; Velleius 2.4.4 for the stepmother line: section numbers from memory.
+- Pro Milone 72–80 for the "tyrannicide" argument (extra causam section may run to 91); Pro Sestio 86–90 for Milo's resort to force (may run to 92).
+- Asconius cited by speech only (on Against Piso; on Pro Milone), no page of Clark: Bovillae details (thirty slaves, Birria, inn), the jury split 12–6, 13–4, 13–3, the 64 dissolution and the collegia masters' games.
+- Plutarch, Pompey 49: Pompey staying at home "while Clodius remained in office" is my paraphrase of the dagger episode's sequel.
+- Lily Ross Taylor (1960) attributed the view that freeborn city residents kept rural tribes; check the strength of her claim.
+- Meier, "Populares" (RE Suppl. 10, 1965) for popularis ratio as method, not party; Gruen (Phoenix 1966) for Clodius as independent agent: both from memory.
+- Nippel (1995) and Vanderbroeck (1987) characterised in one sentence each from memory.
+- Cato's grain extension dated "late 63 or early 62"; Plutarch's sums (1,250 talents, Cato Minor 26; 7,500,000 drachmas, Caesar 8) from memory.
