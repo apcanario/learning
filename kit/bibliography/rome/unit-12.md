@@ -35,7 +35,7 @@ Curated bibliography: `bibliography/rome/r-12.1.md`.
 - W. W. Tarn, *Alexander Helios and the Golden Age* (1932)
 - L. P. Wilkinson, *The Georgics of Virgil* (1969)
 
-## 12.2 
+## 12.2 Books 1 to 6: the Odyssean Aeneid
 
 Curated bibliography: `bibliography/rome/r-12.2.md`.
 
@@ -57,31 +57,32 @@ Curated bibliography: `bibliography/rome/r-12.2.md`.
 - Bowie (1990): title not given in the report
 - Pacuvius. A. M. Bowie, *The Death of Priam: Allegory and History in the <em>Aeneid</em>* (1990)
 - George Duckworth, *Structural Patterns and Proportions in Vergil's Aeneid* (1962)
-- Augustus. Stephen Harrison, *Vergil on Kingship: the first simile of the <em>Aeneid</em>* (1988)
+- Stephen Harrison, *Vergil on Kingship: the first simile of the <em>Aeneid</em>* (1988)
 - Viktor Pöschl, *Die Dichtkunst Virgils* (1950)
 
 ## 12.4 
 
+Curated bibliography: `bibliography/rome/r-12.4.md`.
+
 ### Ancient works
 - Appian, *Punica* 136
 - Dante, *Monarchia* 2.3
-- Macrobius, *Saturnalia* 5.17.5–6; 5.19
-- Ovid, *Tristia* 2.533–536; 2.536
-- *Aeneid* 1; 1.265–266; 4.126–339; 4.607–629; 4.682
+- Ovid, *Tristia* 2.533–536
+- *Aeneid* 1; 1.265–266; 4; 4.126–339; 4.607–629; 4.682
 - *City of God* 9.4
 - *Confessions* 1.13.20–21
 - *Heroides* 7
 - *Iliad* 16.33–35
 - *Inferno* 5.61–62; 5.61–63
 - *Italiam non sponte sequor* 4.361
-- *Odes* 1.37
+- *Odes* 1.37; 1.37.9–10
 - *Odyssey* 11
+- *Saturnalia* 5.17.5–6; 5.19
 - *agnosco veteris vestigia flammae* 4.23
 - *at pius Aeneas* 4.393
 - *colei che s'ancise amorosa, / e ruppe fede al cener di Sicheo* 5.61–62
 - *coniugium vocat, hoc praetexit nomine culpam* 4.172
 - *conscia* 4.608
-- *errans* 4.211
 - *hic amor, haec patria est* 4.347
 - *ille Paris cum semiviro comitatu* 4.215
 - *invitus, regina, tuo de litore cessi* 6.460
@@ -108,7 +109,7 @@ Curated bibliography: `bibliography/rome/r-12.2.md`.
 - Bruce Wood, *'Unscarr'd by turning times'?: the dating of Purcell's <em>Dido and Aeneas</em>* (1992)
 - Wood, *Early Music* (1992)
 
-## 12.6 
+## 12.6 The gods of the Aeneid
 
 Curated bibliography: `bibliography/rome/r-12.6.md`.
 

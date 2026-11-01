@@ -1,6 +1,6 @@
 # Rome unit 11: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 7 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
 
 ## 11.1 How the Republic worked at its height
 
@@ -308,4 +308,37 @@ Curated bibliography: `bibliography/rome/r-11.7.md`.
 - Aldo Setaioli, *Antony's speech in Shakespeare's <em>Julius Caesar</em> and the ancient sources* (2017)
 - Barry Strauss, *The Death of Caesar* (2015)
 - Ioannis Ziogas, *Famous Last Words: Caesar's Prophecy on the Ides of March* (2016)
+
+## 11.8 
+
+Curated bibliography: `bibliography/rome/r-11.8.md`.
+
+### Ancient works
+- Appian, *Civil Wars* 1.1–6
+- Augustine, *City of God* 2.21
+- Sallust, *Catiline* 10
+- *Cato Maior* 27
+- *Histories* 2.38
+- *Jugurtha* 41; 41.2–5
+- *Julius* 54.2
+- *On the Republic* 5.2
+- *Periochae* 60; 98
+
+### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Dio 44.2
+- Lucan 1.67–182
+- Polybius 6.57
+
+### Modern works
+- Brunt (1988): title not given in the report
+- Harriet Flower, *Roman Republics* (2010)
+- Gruen (1974): title not given in the report
+- Erich Gruen, *The Last Generation of the Roman Republic* (1974)
+- Arthur Keaveney, *The Army in the Roman Revolution* (2007)
+- Meier (1966): title not given in the report
+- Christian Meier, *Res publica amissa* (1966)
+- Morstein-Marx, *Julius Caesar and the Roman People* (2021)
+- Henrik Mouritsen, *Italian Unification* (1998)
+- Syme, *The Roman Revolution* (1939)
+- Edward Watts, *Mortal Republic* (2018)
 

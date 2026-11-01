@@ -195,7 +195,7 @@ Complete: 78 of 78 content reports; 83 modules with the audit unit. Written in s
 
 ### Rome (course 2)
 
-In progress: 71 of 79 content reports; 85 modules with the audit unit. Written in syllabus order to 10.5, with 11.1 to 11.7, 12.1, 13.1 to 13.8 (batch 1, 11.3 to 11.6, written 1 Nov 2026, R-1; the rest written 1 Nov 2026, R-2). The 16 still to write go in batches of four, a Fable review after each (decision of 28 October 2026; `pm-status-2026-10-28.md` S3): batch 1 = 11.3, 11.4, 11.5, 11.6; batch 2 = 11.7, 11.8, 13.3, 13.4; batch 3 = 13.5, 13.6, 13.7, 13.8; batch 4 = 12.1, 12.2, 12.3, 12.4; batch 5 = 12.5, 12.7, 12.8, 12.6. The dependency rules of `kit/BACKLOG.md` hold inside the batches (11.8 last in its unit; 12.6 after 13.2).
+In progress: 73 of 79 content reports; 85 modules with the audit unit. Written in syllabus order to 10.5, with 11.1 to 11.7, 12.1, 12.2, 12.6, 13.1 to 13.8 (batch 1, 11.3 to 11.6, written 1 Nov 2026, R-1; the rest written 1 Nov 2026, R-2). The 16 still to write go in batches of four, a Fable review after each (decision of 28 October 2026; `pm-status-2026-10-28.md` S3): batch 1 = 11.3, 11.4, 11.5, 11.6; batch 2 = 11.7, 11.8, 13.3, 13.4; batch 3 = 13.5, 13.6, 13.7, 13.8; batch 4 = 12.1, 12.2, 12.3, 12.4; batch 5 = 12.5, 12.7, 12.8, 12.6. The dependency rules of `kit/BACKLOG.md` hold inside the batches (11.8 last in its unit; 12.6 after 13.2).
 
 | # | Module | Syllabus unit | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
