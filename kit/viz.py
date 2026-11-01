@@ -158,7 +158,9 @@ Contract change at P78 (1 Nov 2026):
   objects     the "dir" mark is a narrow isosceles triangle (14 units base to tip, 6 across the base), so it reads towards
               its object on a line at any angle at 390 px. On a level line it sits at the label plate's right end (the plate
               keeps 18 units for it, was 12, and a level gap widens by as much); on a slanted or vertical line it sits on the
-              line itself, just past the plate on the side of its object, and plate and mark are kept clear as one. The P66 mark was 8 by 8 and on a slanted line read as pointing either way (IA2's cross-surface map).
+              line itself, past the plate on the side of its object with 12 units of line between them (4 where a short line
+              has no room), so the line runs on both sides of it and it never reads as the arrowhead of a line cut by the
+              plate; plate and mark are each kept clear. The P66 mark was 8 by 8 and on a slanted line read as pointing either way (IA2's cross-surface map).
 Contract change at P66 (1 Nov 2026):
   objects     a link may carry "dir": "to" or "from": a small solid triangle at the end of its label, pointing at the
               object the label reads towards (UML's reading-direction mark), for a label that cannot read left to right
@@ -1016,6 +1018,7 @@ def _overlap(r, o, pad=0):
 # direction on a slant). A plate keeps DIRW units at its right end for it.
 DIR_TIP, DIR_BACK, DIR_HALF = 7.5, 6.5, 3
 DIRW = 18
+DIR_GAP = 12                                             # P78: the line runs at least this far between plate and mark
 
 
 def objects(d):
@@ -1163,11 +1166,12 @@ def objects(d):
                 ts = [t for v, lo, hi, c in ((sx, r[0], r[0] + r[2], mx), (sy, r[1], r[1] + r[3], my)) if abs(v) > 1e-6
                       for t in [((hi if v > 0 else lo) - c) / v] if t >= 0]
                 inside = r[0] <= mx <= r[0] + r[2] and r[1] <= my <= r[1] + r[3]
-                k = (min(ts) if inside and ts else 0) + 3 + DIR_BACK
-                tx, ty = mx + sx * k, my + sy * k
-                mb = (min(tx + sx * DIR_TIP, tx - sx * DIR_BACK) - DIR_HALF, min(ty + sy * DIR_TIP, ty - sy * DIR_BACK) - DIR_HALF)
-                mb = mb + (abs(sx) * (DIR_TIP + DIR_BACK) + 2 * DIR_HALF, abs(sy) * (DIR_TIP + DIR_BACK) + 2 * DIR_HALF)
-                out.append((r, [r, mb], r, (tx, ty)))
+                for gap in (DIR_GAP, 4):                     # line on both sides of the mark; 4 only where 12 has no room
+                    k = (min(ts) if inside and ts else 0) + gap + DIR_BACK
+                    tx, ty = mx + sx * k, my + sy * k
+                    mb = (min(tx + sx * DIR_TIP, tx - sx * DIR_BACK) - DIR_HALF, min(ty + sy * DIR_TIP, ty - sy * DIR_BACK) - DIR_HALF)
+                    mb = mb + (abs(sx) * (DIR_TIP + DIR_BACK) + 2 * DIR_HALF, abs(sy) * (DIR_TIP + DIR_BACK) + 2 * DIR_HALF)
+                    out.append((r, [r, mb], r, (tx, ty)))
                 if abs(sy) >= abs(sx):                       # steep: the plate grows up or down by DIRW
                     g = (r[0], r[1] - DIRW if sy < 0 else r[1], r[2], r[3] + DIRW)
                     ty = g[1] + DIRW / 2 + 1 if sy < 0 else g[1] + g[3] - DIRW / 2 - 1
@@ -1194,7 +1198,7 @@ def objects(d):
                     soft = sum(1 for R in Rs for e2, _, _, P2, Q2 in segs if e2 is not e and _hits(P2, Q2, R, 2))
                     clear = min([_dist_rect(c, R) for R in Rs for c in cross] + [_seg_rect(P2, Q2, R) for R in Rs for e2, _, _, P2, Q2 in segs if e2 is not e]
                                 + [_rect_gap(R, o) for R in Rs for o in plates] + [99])    # and from every label already placed
-                    score = (hard, soft, clear < 14, -min(clear, 14), abs(t - 0.5), vi)   # 14 units clear of other lines, then the middle
+                    score = (hard, soft, vi, clear < 14, -min(clear, 14), abs(t - 0.5))   # the mark's own line first (P78), then 14 clear, then the middle
                     if best is None or score < best[0]:
                         best = (score, plate, Rs, tb, mc)
             if best is None or best[0][0]:
