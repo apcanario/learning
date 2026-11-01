@@ -1,0 +1,11 @@
+# Rome 11.5 writer: unsure list
+- Letter totals per collection (426, 435, 27, 26; ~90 to Cicero) are Shackleton Bailey's counts as I recall them; Wikipedia gives 454 to Atticus on another count. Not checked against the editions.
+- Letters to Atticus 4.17.2 for the Memmius–Domitius compact (older editions number it 4.18); the 400,000 sesterces per consul is from memory.
+- Letters to Atticus 7.8.5 for the debt to Caesar, and Letters to Friends 5.6.2 for Crassus' house at 3,500,000 sesterces: section numbers not checked.
+- Pompey's letters of February 49 cited as Letters to Atticus 8.11A, 8.11C, 8.12A–D: lettered sub-numbers from memory.
+- Laurentianus 49.9 as the Vercelli manuscript copied for Salutati in 1392: checked only against Wikipedia.
+- Moles (1997) defending Letters to Brutus 1.16–17: name and year from an SCS abstract; title and journal not seen, so left out of the bibliography detail.
+- Henderson (JRS 1950) and Balsdon (CQ 1963) on the Commentariolum: checked only against Wikipedia's reference list.
+- Mommsen quotations are from Dickson's translation via ellopos.net (book 5, chapter 12); German wording not checked.
+- Seneca the Elder, Suasoriae 6.15, 6.22, 6.24 for Pollio's and Livy's verdicts: section numbers from memory.
+- Cato "spoke against" the thanksgiving (Letters to Friends 15.5, answering 15.4): his exact vote is uncertain.
