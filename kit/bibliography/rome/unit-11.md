@@ -149,7 +149,7 @@ Curated bibliography: `bibliography/rome/r-11.3.md`.
 - Vanderbroeck (1987): title not given in the report
 - Paul Vanderbroeck, *Popular Leadership and Collective Behavior in the Late Roman Republic* (1987)
 
-## 11.4 
+## 11.4 Women and the late Republic
 
 Curated bibliography: `bibliography/rome/r-11.4.md`.
 
@@ -163,7 +163,7 @@ Curated bibliography: `bibliography/rome/r-11.4.md`.
 - *Apology* 10
 - *Brutus* 5; 211
 - *Cato Minor* 24
-- *Cicero* 20; 29; 41
+- *Cicero* 20.3; 29; 41
 - *Civil Wars* 5.19
 - *Julius* 50.2
 - *Letters to Atticus* 2.9.1; 15.11
@@ -190,6 +190,8 @@ Curated bibliography: `bibliography/rome/r-11.4.md`.
 - Judith Hallett, *Perusinae glandes and the changing image of Augustus* (1977)
 - Emily Hemelrijk, *Matrona Docta* (1999)
 - Tom Hillard, *On the Stage, Behind the Curtain: Images of Politically Active Women in the Late Roman Republic* (1992)
+- Kajava (1989): title not given in the report
+- Mika Kajava, *Cornelia Africani f. Gracchorum* (1989)
 - Matthew Loar, *Histos* (2019)
 - Ronald Syme, *Sallust* (1964)
 - Ides. Syme, *No Son for Caesar?* (1980)
@@ -201,6 +203,7 @@ Curated bibliography: `bibliography/rome/r-11.4.md`.
 - CIL VI 10043
 - CIL XI 6721
 - ILS 68
+- RPC I 3140
 
 ## 11.5 
 
@@ -237,7 +240,7 @@ Curated bibliography: `bibliography/rome/r-11.5.md`.
 - Mommsen (1856): title not given in the report
 - Rawson (1975): title not given in the report
 
-## 11.6 
+## 11.6 Caesar's Commentaries and Gaul
 
 Curated bibliography: `bibliography/rome/r-11.6.md`.
 
@@ -256,6 +259,7 @@ Curated bibliography: `bibliography/rome/r-11.6.md`.
 ### Modern works
 - Bartholdi (1903): title not given in the report
 - Delacroix (1855): title not given in the report
+- Matthias Gelzer, *Caesar: Politician and Statesman* (1968)
 - David Henige (1998): title not given in the report
 - Jullian (1901): title not given in the report
 - Camille Jullian, *Vercingétorix* (1901)
