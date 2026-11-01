@@ -211,17 +211,16 @@ Curated bibliography: `bibliography/rome/r-11.5.md`.
 
 ### Ancient works
 - Caesar, *Civil War* 3.20–22
-- Luca, *Letters to Friends* 1.9; 1.9.8–10; 2.11.2; 4.5.4; 5.6.2; 5.7.3; 5.12.3; 8.1.1; 8.16; 11.28; 14.1–4; 14.4; 15.4
 - Petrarch, *Letters on Familiar Matters* 24.3
 - Plutarch, *Cicero* 24; 32; 38; 39; 46
 - *Atticus* 6–11; 16.3
 - *Letters* 21.4
-- *Letters to Atticus* 1.1; 1.5; 1.13.4; 2.1.1–2; 2.19.5; 3.4; 4.1; 4.5; 4.5.1; 4.5.1–2; 4.15.7; 4.17.2; 5.20; 5.21, 6.1; 5.21.10–13, 6.1.5–7, 6.2.7–9; 7.2.7; 7.8.5; 8.7.2; 8.11; 9.6; 9.18.1; 13.52; 16; 16.5; 16.5.5; 16.11.1–2
+- *Letters to Atticus* 1.1; 1.5; 1.13.4; 2.1.1–2; 2.19.5; 3.4; 4.1; 4.5.1; 4.5.1–2; 4.15.7; 4.17.2; 5.20; 5.21, 6.1; 5.21.10–13, 6.1.5–7, 6.2.7–9; 7.2.7; 7.8.5; 8.7.2; 8.11; 9.6; 9.18.1; 13.52; 16; 16.5; 16.5.5; 16.11.1–2
 - *Letters to Brutus* 2; 2.3.4
+- *Letters to Friends* 1.9; 1.9.8–10; 2.11.2; 4.5.4; 5.6.2; 5.7.3; 5.12.3; 8.1.1; 8.16; 11.28; 14.1–4; 14.4; 15.4
 - *Letters to Quintus* 3
 - *On Duties* 1.77
 - *On the Consular Provinces* 56
-- *Philippics* 2
 - *Suasoriae* 6; 6.15
 
 ### Modern works
