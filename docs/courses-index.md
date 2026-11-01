@@ -265,7 +265,7 @@ In progress: 63 of 79 content reports; 85 modules with the audit unit. Written i
 | ✓ | Review | Rome | Fable review of batch 1 (method.md §6) | after #63 | Fable 5.1 | off | `kit/audits/` |
 | 64 | 11.7 | 11 · Deep dive I: the fall of the Republic | The Ides of March | not written · batch 2 | Opus 5.5 | off | `courses/rome/11.7-the-ides-of-march.md` (+ `kit/rome/r-11.7.html`) |
 | 65 | 11.8 | 11 · Deep dive I: the fall of the Republic | Why the Republic fell | not written · batch 2, last in unit 11 | Opus 5.5 | off | `courses/rome/11.8-why-the-republic-fell.md` (+ `kit/rome/r-11.8.html`) |
-| 66 | 13.3 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The rival schools at Rome | not written · batch 2 | Opus 5.5 | off | `courses/rome/13.3-the-rival-schools-at-rome.md` (+ `kit/rome/r-13.3.html`) |
+| 66 | 13.3 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | The rival schools at Rome | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.3.html` (+ `courses/rome/13.3-the-rival-schools-at-rome.md`) |
 | 67 | 13.4 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Cato and the Stoic opposition | not written · batch 2 | Opus 5.5 | off | `courses/rome/13.4-cato-and-the-stoic-opposition.md` (+ `kit/rome/r-13.4.html`) |
 | ✓ | Review | Rome | Fable review of batch 2 | after #67 | Fable 5.1 | off | `kit/audits/` |
 | 68 | 13.5 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Seneca | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-13.5.html` (+ `courses/rome/13.5-seneca.md`) |

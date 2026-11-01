@@ -71,9 +71,9 @@ Body words: 3800 (target 2500; the target is a guide, no cut asked)
    Basis: `greece/r-12.6.html`, section "Friendship, and justice as a compact"; `rome/r-13.2.html` (*On Leisure* 3.2).
 
 9. [minor] [style] Section "Nigidius, the Sextii and the Pythagoreans".
-   Current: "Claudianus Mamertus, a Christian writer of the fifth century, says the Sextii taught"
+   Current: "says the Sextii taught that the soul is incorporeal and without place,"
    Problem: There is no citation. The passage names Sextius father and son together, so "the Sextii" is right.
-   Fix: "Claudianus Mamertus, a Christian writer of the fifth century, says the Sextii taught" → add after "without place,": " (<em>On the State of the Soul</em> 2.8)" so that it reads "says the Sextii taught that the soul is incorporeal and without place (<em>On the State of the Soul</em> 2.8),"
+   Fix: "says the Sextii taught that the soul is incorporeal and without place (<em>On the State of the Soul</em> 2.8),"
    Basis: Wikipedia, "Sextius Niger", quoting *De statu animae* 2.8: "apud quos Sextius pater, Sextius filius ... philosophati sunt". The incorporeality wording is not checked against the Latin.
 
 10. [minor] [register] Section "Self-test", question 4.
