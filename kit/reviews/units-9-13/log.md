@@ -184,3 +184,7 @@ Agents per P31: each module written by a fresh Opus 5.5 agent that saw only its 
 13.4 figure re-check (new agent; `rome-13.4-figures-2.md`): the tree passed; the timeline failed a second time, fixed against both reports with the checker's caption: the 93 date ("after Agricola's death in August") declared as given without a passage, Suetonius *Domitian* 10.3–4 as the text cites it, and "Arria the Elder" on the label at 42, since the younger Arria is also in the story. Third check of the timeline queued.
 
 12.2 figure re-check (new agent; `rome-12.2-figures-2.md`): the games matrix passed; the book matrix and the route failed a second time, fixed against both reports with the checker's captions: the Cyclic poems "lost except for Proclus' summaries and fragments", as the text says; the route's last three stages carry the lines the text cites (1.157–169, 5.8–41, 6.1–101), on the boxes and in the caption. Third check of both queued.
+
+13.4 third figure check (new agent; `rome-13.4-figures-3.md`): the timeline PASS. 13.4 keeps both figures.
+
+12.6 figure re-check (new agent; `rome-12.6-figures-2.md`): the flow passed; the agents tree failed a second time, fixed against both reports: Mercury's third scene (4.554–570), which the text cites, added to the node and the caption; "Aeolus, bribed" and "Juturna, urged", the text's verbs, so they no longer read as sent. Third check queued.
