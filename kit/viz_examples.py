@@ -282,6 +282,12 @@ CASES = [
      {'kind': 'tree', 'title': 'A chain',
       'root': {'label': 'A first level', 'children': [{'label': 'A second level', 'children': [{'label': 'A third level'}]}]},
       'caption': CASE}),
+    # P63 (1 Nov 2026): a date the text gives only by century or span.
+    ('timeline-century', 'Events the text dates only by a century or a span: the date line prints the century or span as the text gives it, never a year the text does not give, and the dot stands at "at", inside it (Greek 5.4).',
+     {'kind': 'timeline', 'title': 'Dated by century', 'start': -800, 'end': -400, 'ticks': [-800, -700, -600, -500, -400],
+      'events': [{'at': -650, 'date': 'mid-seventh century', 'label': 'A revolt'}, {'at': -730, 'date': 'late eighth century BC', 'label': 'A conquest'},
+                 {'at': -520, 'date': 'c. 530–510 BC', 'label': 'A span of years'}, {'at': -464, 'date': '464 BC', 'label': 'A year'}],
+      'caption': CASE}),
 ]
 # blocks the renderer cannot draw honestly: each stops the build with the message shown (verify.py renders each and checks)
 RAISES = [
@@ -290,6 +296,7 @@ RAISES = [
     ('An object\'s attrs as a bare string', {'kind': 'objects', 'objects': [{'id': 'a', 'title': 'Assembly', 'attrs': 'like an aristocracy'}], 'rows': [['a']]}, 'must be a list'),
     ('Negative whole numbers in a range without "years"', {'kind': 'range', 'rows': [{'label': 'A date', 'low': -264, 'high': -241}]}, '"years": true'),
     ('An event date that does not contain its year (P58)', {'kind': 'timeline', 'start': -700, 'end': -500, 'events': [{'at': -600, 'date': 'c. 650 BC', 'label': 'A date'}]}, 'does not contain the year'),
+    ('An event date naming a century that does not contain its year (P63)', {'kind': 'timeline', 'start': -700, 'end': -500, 'events': [{'at': -550, 'date': 'mid-seventh century', 'label': 'A date'}]}, 'does not contain the year'),
     ('An event date in BC/AD in a BCE/CE figure (P58)', {'kind': 'timeline', 'era': 'BCE', 'start': -700, 'end': -500, 'events': [{'at': -600, 'date': 'c. 600 BC', 'label': 'A date'}]}, 'mixes notations'),
     ('A word unit not ending in s, a value of 1 and no "unit_one" (P58)', {'kind': 'range', 'unit': 'men', 'rows': [{'label': 'A count', 'low': 1, 'high': 5}]}, '"unit_one"'),
 ]
@@ -308,7 +315,7 @@ def fragment(crumbs):
         toc += f'<a href="#{sid}">{NAMES[key]}</a>'
         md.append(f'## {NAMES[key]} · `{kind}`\n\n{what}\n\nFields: {fields.replace("_", chr(92) + "_")}; every kind also takes `title`, `caption` and `tone` (1 to 6).\n\n'
                   f'```viz\n{json.dumps(block, ensure_ascii=False, indent=1)}\n```\n\n{sid}BLOCK\n')
-    md.append('## Hard cases\n\nThe drawing faults the Rome figure checkers met (P55, 30 October 2026) and the Greek ones (P58, the same day), '
+    md.append('## Hard cases\n\nThe drawing faults the Rome figure checkers met (P55, 30 October 2026) and the Greek ones (P58, the same day; P63, 1 November 2026), '
               'each as the renderer now draws it, so the build\'s checks run on it every time. Their data is invented.\n')
     for key, what, block in CASES:
         md.append(f'### {block["title"]}\n\n{what}\n\n```viz\n{json.dumps(block, ensure_ascii=False, indent=1)}\n```\n')

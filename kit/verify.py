@@ -264,8 +264,12 @@ TEXT_RE = re.compile(r'<text class="([\w-]+)" x="([-\d.]+)" y="([-\d.]+)"[^>]*>(
 def _texts(svg):
     import html as H
     return [(m.group(1), float(m.group(2)), float(m.group(3)), H.unescape(re.sub(r'<[^>]+>', '', m.group(4)))) for m in TEXT_RE.finditer(svg)]
+def _year(t):
+    """A tick label as a signed year (P63): 750 BC or 750 BCE is -750, AD 14 or 14 CE is 14, 1453 is 1453."""
+    m = re.fullmatch(r'(\d+) (BC|BCE)', t.strip()) or re.fullmatch(r'(?:AD )?(\d+)(?: CE)?', t.strip())
+    return None if not m else -int(m.group(1)) if m.re.pattern.endswith('BCE)') else int(m.group(1))
 def figure_rules(page, name):
-    """The P58 faults in one built page's figures, as messages (empty when it has none)."""
+    """The P58 faults (and P63's date lines) in one built page's figures, as messages (empty when it has none)."""
     import html as H
     bad, n = [], 0
     prose = re.sub(r'<figure class="viz.*?</figure>', '', page, flags=re.S)
@@ -288,6 +292,16 @@ def figure_rules(page, name):
                     bad.append(f'{where}: the label "{lab}" marks its date approximate because the date line cannot: give the event "date"')
                 if any(g.group(1) in t and '/' not in t for g in re.finditer(r'\b(\d+)/(\d+)', lab)):
                     bad.append(f'{where}: the date line "{t}" drops the split year its label keeps ("{lab}"): give the event "date"')
+            # P63 (1 Nov 2026): a date line names the year its dot stands at (read from the tick labels), or a century or
+            # span of years that contains it; the year is never printed where the text gives only a century.
+            ticks = [(x, _year(t)) for c, x, y, t in tx if c == 'viz-ticklabel' and _year(t) is not None]
+            if len({x for x, _ in ticks}) >= 2:
+                (xa, ya), (xb, yb) = ticks[0], ticks[-1]
+                for cx, t in re.findall(r'<circle class="viz-dot[^"]*" cx="([-\d.]+)"[^>]*/>\s*<text class="viz-date"[^>]*>(.*?)</text>', svg):
+                    at = ya + (float(cx) - xa) * (yb - ya) / (xb - xa)
+                    t = H.unescape(re.sub(r'<[^>]+>', '', t))
+                    if not any(viz.date_names(t, round(at) + k) for k in (-1, 0, 1) if round(at) + k):
+                        bad.append(f'{where}: the date line "{t}" names neither the year its dot stands at ({round(at)}) nor a century or span that contains it')
         if kind == 'timeline':                               # P58 (by eye): no stem runs through another event's text
             import viz as V
             stems = [(float(a), float(b), float(c)) for a, b, c in re.findall(r'<line class="viz-stem" x1="([-\d.]+)" y1="([-\d.]+)" x2="[-\d.]+" y2="([-\d.]+)"', svg)]

@@ -144,6 +144,11 @@ under the same rule: a label moves or the drawing widens; it is never clipped or
               longest word.
   tree        a tree narrower than the 700-unit drawing (a one-child chain, a short branch) is centred in it; its svg
               carries data-x0, where the drawing starts, and a phone frame (natural size, scrolling) opens there.
+Contract change at P63 (1 Nov 2026), under the same rule:
+  timeline    an event's "date" may name a century or a span without its year, as the unit gives it ("mid-seventh
+              century", "late eighth century BC", "c. 670–640"): it prints as written and is drawn at "at", which must
+              lie inside the century or span it names (date_names), or the build stops. The year is never printed
+              where the text gives none. verify.py checks every built date line against the year its dot stands at.
 verify.py (P58) also reads every built figure for these: no event label line ending in "c.", "by", "after" (and the
 like) with its number on the next line; no date line that drops a "c." or a split year the label carries; no BC/AD
 in a figure on a page whose prose writes BCE/CE; no value printed twice in one range row, and every range end label
@@ -208,6 +213,37 @@ def _unglue(lines):
     return [ln.replace('\u00a0', ' ') for ln in lines]
 
 
+# P63 (1 Nov 2026): a date the unit gives only by century or span ("mid-seventh century", "late eighth century BC",
+# "c. 670–640") is printed as the unit writes it, drawn at "at", which must lie inside what it names.
+_ORD = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth',
+        'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth', 'twentieth']
+_ORDS = {w: i + 1 for i, w in enumerate(_ORD)} | {'twenty-first': 21}
+_CENT = re.compile(r'\b(twenty-first|' + '|'.join(_ORD) + r'|\d{1,2}(?:st|nd|rd|th))\b(?!\s+(?:half|quarter|third)\b)(?=[^.;,]*?\bcentur(?:y|ies)\b)', re.I)
+_SPAN = re.compile(r'(\d{2,4})\s*(?:–|-|to)\s*(\d{1,4})')
+
+
+def date_names(t, at):
+    """P63: whether a date line names the year "at": it contains the year as a number, or names a century (or a run of
+    centuries: "seventh to sixth century") or a span of years ("c. 670–640", "670 to 640") that contains it. The
+    centuries count backwards before AD 1: the seventh century BC is 700 to 601 BC."""
+    at = int(at)
+    if str(abs(at)) in t:
+        return True
+    cs = [_ORDS.get(m.lower(), None) or int(re.match(r'\d+', m).group()) for m in _CENT.findall(t)]
+    if cs:
+        lo, hi = min(cs), max(cs)
+        if at < 0:
+            return -100 * hi <= at <= -100 * (lo - 1) - 1
+        return 100 * (lo - 1) + 1 <= at <= 100 * hi
+    for a, b in _SPAN.findall(t):
+        a, b = int(a), int(b)
+        if b < 100 <= a:                                    # an abbreviated end: 670–40 is 670 to 640
+            b = int(str(a)[:len(str(a)) - len(str(b))] + str(b))
+        if min(a, b) <= abs(at) <= max(a, b):
+            return True
+    return False
+
+
 def _date_text(e, era, kind='timeline'):
     """An event's date line (P58): its own "date" text when it has one, else its year as yr prints it. The text keeps
     what the unit says (c. 600 BC, 476/5 BC, c. 500, or after 490): it must contain the event's year as a number and
@@ -217,9 +253,10 @@ def _date_text(e, era, kind='timeline'):
     t = e['date']
     if not isinstance(t, str) or not t.strip():
         _fail(kind, f'the event {e.get("label")!r}: "date" must be the date as the unit writes it, e.g. "c. 600 BC"')
-    if str(abs(int(e['at']))) not in t:
-        _fail(kind, f'the event {e.get("label")!r} at {e["at"]}: its date {t!r} does not contain the year {abs(int(e["at"]))}; '
-                    'set "at" to the year the date names (its first, for a split year)')
+    if not date_names(t, e['at']):
+        _fail(kind, f'the event {e.get("label")!r} at {e["at"]}: its date {t!r} does not contain the year {abs(int(e["at"]))}, '
+                    'nor name a century or a span of years that contains it; set "at" to the year the date names (its first, '
+                    'for a split year), or inside the century or span it names')
     wrong = r'\b(BC|AD)\b' if era == 'BCE' else r'\b(BCE|CE)\b'
     if re.search(wrong, t):
         _fail(kind, f'the event {e.get("label")!r}: its date {t!r} mixes notations; the figure\'s era is {era} '
