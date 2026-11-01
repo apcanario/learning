@@ -10,7 +10,7 @@ Trace, row by row:
 - Sallust. "about 42–40 BC": §1. "146 BC": "when Carthage was destroyed in 146 ... (Catiline 10)". Cause "fear removed: money, then power": "Fear of the enemy ... the desire for money grew and then the desire for power (Catiline 10)"; "fear removed" is the text's own phrase in §1. Holds.
 - Lucan. "under Nero": §1. Cause "fate, shared power, luxury and debt": 1.70–82, 1.84–93, 1.158–182. Holds. **Turning point "Rome shared by three masters" is wrong.** The text gives the three masters as Lucan's second, political *cause* ("Rome was ruined by becoming the common property of three masters", 1.84–93), and the cause cell already carries it as "shared power". Putting it in the turning-point column duplicates the cause and reads as a date-like turning point the text does not give. The one turning point the text attaches to Lucan is "a liberty lost at Pharsalus" (no passage, no date).
 - Appian. "about AD 160": §1. "133 BC": the text gives the turn as the killing of Tiberius Gracchus (1.1–5) and the date through "module 5.1 has his thesis on 133". Cause "violence escalating to monarchy": "violence that grew with each generation ... to Octavian", "concord and monarchy (1.6)". Holds.
-- Cassius Dio. "about AD 220": §1. Cause "an empire too large for democracy": §1 "an empire too large" and 44.2 "moderation under a democracy is impossible" for a city ruling most of the known world. Holds. **Turning point "none: monarchy necessary" says more than the text.** The text nowhere says Dio names no turning point; it is silent. "Monarchy necessary" is a cause, not a turning point; the text's own phrase for Dio's verdict is "monarchy the remedy (44.2)".
+- Cassius Dio. "about AD 220": §1. Cause "an empire too large for democracy": §1 "an empire too large" and 44.2 "moderation under a democracy is impossible" for a city ruling most of the known world. Holds. **Turning point "none: monarchy necessary" says more than the text.** The text nowhere says Dio names no turning point; it is silent. "Monarchy necessary" is a verdict, not a turning point, and paraphrases the section heading "Monarchy as necessity"; the cell should say the text gives none and use the heading's words.
 
 Caption faults:
 - "the turning point each names": two rows have none in the text.
@@ -20,7 +20,7 @@ Caption faults:
 Fixes:
 - Polybius, turning point: **none: a prediction**
 - Lucan, turning point: **liberty lost at Pharsalus**
-- Cassius Dio, turning point: **none given: monarchy the remedy**
+- Cassius Dio, turning point: **not given: monarchy as necessity**
 - Replacement caption:
 
 > Five ancient explanations of the Republic's fall: when each author wrote, the turning point he names where the text gives one, and the cause he gives. The dates of writing are from the opening section, Which republic, and what counts as an explanation, which gives them without a cited passage. Turning points and causes are from the sections Decline and the wheel, Civil war as the story and Monarchy as necessity: Polybius 6.57; Sallust, *Catiline* 10 (146; money, then power) and *Jugurtha* 41; Lucan 1.70–82, 1.84–93 and 1.158–182 for the causes, with liberty lost at Pharsalus given without a passage; Appian, *Civil Wars* 1.1–6, with 133 from module 5.1; Dio 44.2.
