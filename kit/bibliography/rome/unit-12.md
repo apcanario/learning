@@ -1,6 +1,6 @@
 # Rome unit 12: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 4 reports in unit 12 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 12 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
 
 ## 12.1 Virgil and the making of the poem
 
@@ -59,6 +59,28 @@ Curated bibliography: `bibliography/rome/r-12.2.md`.
 - George Duckworth, *Structural Patterns and Proportions in Vergil's Aeneid* (1962)
 - Stephen Harrison, *Vergil on Kingship: the first simile of the <em>Aeneid</em>* (1988)
 - Viktor Pöschl, *Die Dichtkunst Virgils* (1950)
+
+## 12.3 
+
+### Ancient works
+- Doloneia, *Iliad* 10
+- Hector, *Iliad* 22.213
+- *Aeneid* 7
+- *Iliad* 2; 2.1–40; 2.1–40, 2.484–493; 2.484–493; 2.816–877; 3; 3, 4; 4; 4.141–147; 5; 5.449–453; 7; 7.132–157, 11.670–761; 8.306–308; 10; 10, 12.127–194; 12.127–194; 14.153–351; 16, 21.26–32; 16.102–111; 16.249–252; 16–17; 18; 18.249–313; 18.369–617; 19.15–17; 19.400–403; 20.164–175; 20.285–287; 21.26–32; 21.26–32, 23.175–176; 21.34–135; 22; 22.189–193; 22.199–201; 22.213; 22.338–343; 23; 23–24
+- *Life* 21
+- *Odyssey* 13–24
+- *Saturnalia* 5.15.4
+
+### Modern works
+- Gian Biagio Conte, *Il balteo di Pallante* (1986)
+- August. Denis Feeney, *Caesar's Calendar* (2007)
+- G. Karl Galinsky, *The Hercules-Cacus Episode in <em>Aeneid</em> VIII* (1966)
+- Philip Hardie, *Virgil's Aeneid: Cosmos and Imperium* (1986)
+- O. A. M. Lyne, *Lavinia's Blush* (1983)
+- Michael Putnam, *The Poetry of the Aeneid* (1965)
+- Pallas. Putnam, *Virgil's Danaid Ekphrasis* (1994)
+- Williams (1961): title not given in the report
+- R. D. Williams, *The Function and Structure of Virgil's Catalogue in <em>Aeneid</em> 7* (1961)
 
 ## 12.4 
 
