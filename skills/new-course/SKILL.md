@@ -1,6 +1,6 @@
 ---
 name: new-course
-description: Start a new course in the Learning Project, its syllabus, briefs and Academy course pages, from the template on design/theme.css. A course of either family is a folder plus a kit/courses.py entry. Use when asked to add a course or plan a new syllabus.
+description: Start a new Learning Project course, its syllabus, briefs and Academy pages on design/theme.css (a folder plus a kit/courses.py entry). Use when asked to add a course or plan a new syllabus.
 ---
 
 # Start a new course
