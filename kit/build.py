@@ -17,7 +17,24 @@ are namespaced (#rome, #rome-syllabus, #rm01).
 """
 import json, re, html, pathlib, importlib.util
 import markdown
-from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES
+from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES, EDITIONS
+import sys
+# P70: an edition filters the course list here, before anything renders; the full Academy is the edition 'academy'
+EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else 'academy'
+if '--epub' in sys.argv:   # P71 (2): `--epub <edition>` builds that edition, then its EPUB (epub.py)
+    EDITION = sys.argv[sys.argv.index('--epub') + 1]
+if EDITION not in EDITIONS:
+    raise SystemExit(f'no edition {EDITION!r} in courses.py EDITIONS: {", ".join(EDITIONS)}')
+ED = EDITIONS[EDITION]
+OMIT = set(ED['omit'])
+if ED['courses'] is not None:
+    COURSES = [c for c in COURSES if c['id'] in ED['courses']]
+    HISTORY = [c for c in HISTORY if c['id'] in ED['courses']]
+    MARKDOWN = [c for c in MARKDOWN if c['id'] in ED['courses']]
+    _tracks = {c['theme'] for c in HISTORY} | {tr for c in MARKDOWN for tr, _ in c['tracks'].values()}
+    THEMES = [t for t in THEMES if t['id'] in _tracks]
+if 'planned' in OMIT:
+    NEXT = []
 import mdcourse
 import howbuilt
 import viz
@@ -206,7 +223,7 @@ def drawer(c):
     top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">Academy</span></a>'
            f'<a class="ditem dhome" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span class="n">⌂</span><span class="t">{c["short"]}: course home</span></a>'
            f'<a class="ditem dhome" href="#{c["syl_id"]}" data-target="{c["syl_id"]}"><span class="n">§</span><span class="t">Syllabus and prompts</span></a>'
-           f'<a class="ditem dhome" href="#{c["home_id"]}-built" data-target="{c["home_id"]}-built"><span class="n">✓</span><span class="t">How it was built</span></a></div>')
+           + ('' if 'build' in OMIT else f'<a class="ditem dhome" href="#{c["home_id"]}-built" data-target="{c["home_id"]}-built"><span class="n">✓</span><span class="t">How it was built</span></a>') + '</div>')
     return f'<nav class="dlist" data-navctx="{c["id"]}" data-accordion aria-label="{c["short"]} course" hidden>{top}{out}</nav>'
 
 
@@ -582,9 +599,10 @@ changelog = f"""
   <h2 class="hsec">Sessions, newest first</h2>
   <div class="clogs">{cl_cards}</div>
 </section>"""
-cl_link = (f'<div class="hlinks"><a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {cl_since}, newest first</b></a>'
-           f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a>'
-           f'<a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a></div>')
+cl_link = ''.join(([] if 'changelog' in OMIT else [f'<a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {cl_since}, newest first</b></a>'])
+                  + ([] if 'backlog' in OMIT else [f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a>'])
+                  + ([] if 'figures' in OMIT else [f'<a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a>']))
+cl_link = f'<div class="hlinks">{cl_link}</div>' if cl_link else ''
 
 # the backlog page: docs/BACKLOG.md (the queue) and docs/CHANGELOG.md (the chats done), rendered as they are
 def md_sections(path):
@@ -640,12 +658,18 @@ for t in THEMES:
     count = f'{n} course{"s" if n != 1 else ""}' if n else f'{len(soon)} course{"s" if len(soon) != 1 else ""} coming soon'
     if hist: count += f' · {sum(c["nrep"] for c in hist)} reports'
     if mds: count += f' · {sum(m["nwritten"] for m in mds)} of {sum(m["nunits"] for m in mds)} units'
-    if t['id'] == 'history': count += f' · {len(NEXT)} planned'
+    if t['id'] == 'history' and NEXT: count += f' · {len(NEXT)} planned'
     elif soon and n: count += f' · {len(soon)} coming soon'
-    jump = (f'{n} live' + (f' · {len(NEXT)} planned' if t['id'] == 'history' else '') + (f' · {len(soon)} coming soon' if soon else '')) if n else (f'{len(soon)} coming soon' if soon else 'planned')
+    jump = (f'{n} live' + (f' · {len(NEXT)} planned' if t['id'] == 'history' and NEXT else '') + (f' · {len(soon)} coming soon' if soon else '')) if n else (f'{len(soon)} coming soon' if soon else 'planned')
     track_jump += f'<a class="hbtn alt" href="#track-{t["id"]}" style="--c:{t["color"]}"><span>Track</span><b>{html.escape(t["name"])}</b><small>{jump}</small></a>'
     extra = ''
     if t['id'] == 'history':
+        planned = '' if not NEXT else f"""
+  <details class="howto rules planned">
+    <summary><h2>Planned</h2><span>{len(NEXT)} courses, in the intended order</span></summary>
+    <p class="hnote">The two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Open a course to see its scope and spine.</p>
+    <div class="soonlist">{soon_cards}</div>
+  </details>"""
         extra = f"""
   <details class="howto rules">
     <summary><h2>Why history and myth together</h2><span>the method of the track</span></summary>
@@ -655,12 +679,7 @@ for t in THEMES:
     </div>
     <p>The Greeks drew that line themselves. Herodotus calls his work a <em>historiē</em>, an inquiry, and still reports what the Persians and Egyptians told him. Thucydides warns that his history leaves out the <em>mythōdes</em>, the storylike, and will seem less pleasant for it (1.22). Plato expels the poets from his ideal city and then ends the <em>Republic</em> with a myth of his own.</p>
     <p>The tidy story of a clean progress "from mythos to logos" (the title of Wilhelm Nestle's book of 1940) is now itself treated as a modern myth: the Greeks never stopped telling myths; their philosophers used them, their historians argued with them, and their cities were governed by them. So each course reads a culture's myths and its history together, asks who told each story and what they gained by it, and keeps the evidence in view. The aim is not to debunk the myths but to understand them as well as the history. Later courses point back to earlier ones where they touch: Rome to Greece's units 7 and 10, Persia to units 6 and 11, Egypt to units 1 and 7.</p>
-  </details>
-  <details class="howto rules planned">
-    <summary><h2>Planned</h2><span>{len(NEXT)} courses, in the intended order</span></summary>
-    <p class="hnote">The two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Open a course to see its scope and spine.</p>
-    <div class="soonlist">{soon_cards}</div>
-  </details>"""
+  </details>{planned}"""
     tracks += f"""
   <section class="track" id="track-{t['id']}" style="--c:{t['color']}">
     <header class="thead"><div class="ttx"><span class="cname">Track</span><h2>{html.escape(t['name'])}</h2><p>{html.escape(t['lede'])}</p></div><span class="tmeta">{count}</span></header>
@@ -680,7 +699,7 @@ else:
 
 # new since: the dated units, newest first, and the latest kit session
 recent_rows = ''
-if cl_sessions:
+if cl_sessions and 'changelog' not in OMIT:
     _head = cl_sessions[0][0].split(' · ')
     _date, _sess, _title = (_head + ['', ''])[:3]
     recent_rows += f'<a class="hrow" href="#changelog" data-target="changelog"><span class="n">{html.escape(re.sub(r'(\w{3})\w* \d{4}$', r'\1', _date))}</span><span class="t">{md_inline(_title)}<small>{html.escape(_sess)} · the kit changelog</small></span><span class="pill prog">session</span></a>'
@@ -689,7 +708,7 @@ for d, short, col, code, title, pid, model in RECENT:
 roothome = f"""
 <section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Academy" data-u="HOME" data-c="var(--red)" hidden>
   <header class="hero resume" data-progress='{json.dumps(_prog)}'>
-    <div class="eyebrow"><span class="u" style="--c:var(--red)">ACADEMY</span> · {N_LIVE} courses live · {TOTALS['coming']} planned · one reader</div>
+    <div class="eyebrow"><span class="u" style="--c:var(--red)">ACADEMY</span> · {N_LIVE} course{"s" if N_LIVE != 1 else ""} live{f" · {TOTALS['coming']} planned" if TOTALS['coming'] else ""} · one reader</div>
     <h1>Academy</h1>
     <p class="lede">Every self-study course in one place. Pick up where you left off.</p>
     <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b><span class="rmeter"><span class="bar" aria-hidden="true"><i></i></span><span class="pct mono"></span></span></a>{fallback}</div>
@@ -713,7 +732,7 @@ roothome = f"""
       <li><strong>An open syllabus.</strong> Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.</li>
     </ol>
   </details>
-  <p class="totals mono">{N_LIVE} courses · {TOTALS['reports']} reports · {TOTALS['units']} units · {TOTALS['words']:,} words · {hours(TOTALS['words'])} h of reading</p>
+  <p class="totals mono">{N_LIVE} course{"s" if N_LIVE != 1 else ""} · {TOTALS['reports']} reports · {TOTALS['units']} units · {TOTALS['words']:,} words · {hours(TOTALS['words'])} h of reading</p>
   {cl_link}
 </section>"""
 
@@ -728,6 +747,8 @@ for c in HISTORY:
     panels += [course_home(c), c['built'], syllabus(c)] + c['report_panels']
 for m in MD:
     panels += m['panels']
+if OMIT:   # P70: an edition leaves out these panel kinds
+    panels = [p for p in panels if re.search(r' data-kind="([^"]+)"', p).group(1) not in OMIT]
 
 # A2 · the split: every report panel (a history report, a markdown course's reading page) leaves the shell, and so
 # (P20) does every syllabus and a markdown course's briefs and bibliography pages, and (P22) every history course
@@ -735,7 +756,7 @@ for m in MD:
 # stub with the panel's attributes and data-src, the file's path relative to the shell (<ctx>/<stem>.html); the
 # panel's inner HTML becomes that file, fetched by shell.js on navigation. A stub that is not a report also carries
 # data-anchors, the ids inside its file, so a link into it (#rs-u3, #b-a2, #greece-u3) can load it first.
-SITE = R / 'academy'
+SITE = R / ED['site']
 REPORTS = {}
 def split(p):
     s = p.strip()
@@ -761,7 +782,8 @@ for src, body in REPORTS.items():
     (SITE / src).parent.mkdir(parents=True, exist_ok=True)
     (SITE / src).write_text(body)
 # V1 · the figure examples page (viz_examples.py): one figure of every kind, fetched like a report from the shell's root
-panels.append(viz_examples.write(SITE, crumbs))
+if 'figures' not in OMIT:
+    panels.append(viz_examples.write(SITE, crumbs))
 
 def root_nav_track(t):
     hist = [c for c in HISTORY if c['theme'] == t['id']]
@@ -778,7 +800,9 @@ def root_nav_track(t):
     return (f'<div class="dunit closed" data-unit="track:{t["id"]}" data-ulabel="{html.escape(t["name"]).upper()}" style="--c:{t["color"]}">'
             f'<button class="duh" type="button" aria-expanded="false"><span class="un">■</span><span class="ut">{html.escape(t["name"])}</span><span class="cnt">{n}</span>{ICON_CHEV}</button><div class="ditems">{out}</div></div>')
 
-root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a><a class="ditem dhome" href="#changelog" data-target="changelog"><span class="n">≡</span><span class="t">Changelog</span></a><a class="ditem dhome" href="#backlog" data-target="backlog"><span class="n">☐</span><span class="t">Backlog</span></a></div>'
+root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a>'
+            + ('' if 'changelog' in OMIT else '<a class="ditem dhome" href="#changelog" data-target="changelog"><span class="n">≡</span><span class="t">Changelog</span></a>')
+            + ('' if 'backlog' in OMIT else '<a class="ditem dhome" href="#backlog" data-target="backlog"><span class="n">☐</span><span class="t">Backlog</span></a>') + '</div>'
             + ''.join(root_nav_track(t) for t in THEMES) + '</nav>')
 navs = root_nav + ''.join(drawer(c) for c in HISTORY) + ''.join(m['nav'] for m in MD)
 
@@ -786,7 +810,7 @@ CSS = open(R / 'shell.css').read()
 JS = open(R / 'shell.js').read()
 
 page = f'''<meta charset="utf-8">
-<title>Academy</title>
+<title>{ED['title']}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Gentium+Book+Plus&display=swap">
@@ -814,7 +838,22 @@ page = f'''<meta charset="utf-8">
 </main>
 <script>{JS}</script>
 '''
-SITE.mkdir(exist_ok=True)
+# P70: in an edition, a link to a page it lacks is not a link: a navigation button or row to it is dropped, any other
+# link (a pointer in a report's text into a course the edition does not hold) is kept as its plain text
+if EDITION != 'academy':
+    _ids = set(re.findall(r' id="([^"]+)"', page)) | {i for b in REPORTS.values() for i in re.findall(r' id="([^"]+)"', b)}
+    _nav = re.compile(r'<a class="(?:[^"]*\b(?:hbtn|ditem|hrow)\b[^"]*)"[^>]* href="#([^"]+)"[^>]*>.*?</a>', re.S)
+    _any = re.compile(r'<a\b[^>]* href="#([^"]+)"[^>]*>(.*?)</a>', re.S)
+    def _unlink(s):   # the markup only: the shell's scripts build links of their own and are left as they are
+        parts = re.split(r'(<script\b.*?</script>)', s, flags=re.S)
+        for k in range(0, len(parts), 2):
+            parts[k] = _nav.sub(lambda mm: mm.group(0) if mm.group(1) in _ids else '', parts[k])
+            parts[k] = _any.sub(lambda mm: mm.group(0) if mm.group(1) in _ids else mm.group(2), parts[k])
+        return ''.join(parts)
+    page = _unlink(page)
+    for src, body in REPORTS.items():
+        (SITE / src).write_text(_unlink(body))
+SITE.mkdir(parents=True, exist_ok=True)
 (SITE / 'index.html').write_text(page)
 OLD = R / 'personal-mythology.html'   # the single-file page before the split (A2); gone for good
 if OLD.exists():
@@ -837,7 +876,8 @@ SIZE_TABLE = ('| Part | Files | Total | Largest file | Note |\n|---|---|---|---|
               + f'| Whole site | {sum(r[1] for r in rows)} | {kb(allb)} | | the artifact page is capped at 16 MB; the shell must stay under 1 MB |\n')
 readme = (R / 'README.md').read_text(encoding='utf-8')
 readme = re.sub(r'(<!-- sizes:start -->\n).*?(<!-- sizes:end -->)', lambda mm: mm.group(1) + SIZE_TABLE + mm.group(2), readme, flags=re.S)
-(R / 'README.md').write_text(readme, encoding='utf-8')
+if EDITION == 'academy':   # P70: the repo's files are the full Academy's; an edition writes only its folder
+    (R / 'README.md').write_text(readme, encoding='utf-8')
 
 # the Fable review queue, regenerated from provenance.json on every build so it never goes stale
 q = ['# Fable review queue', '', 'Generated by `build.py` from `provenance.json`; do not edit by hand. Everything below was written with a model other than Fable 5.1 and is flagged for review with Fable 5.1. Run the reviews with Fable 5.1 through each course\'s audit unit. When an item has been reviewed and fixed, change its entry in `provenance.json` to `"Opus 5.5, reviewed with Fable 5.1"` (or to `"Fable 5.1"` if it was regenerated); anything that mentions Fable 5.1 drops off this list and loses its flag on the site.', '']
@@ -855,9 +895,20 @@ for c in HISTORY:
             n = wc((R / c['frags'] / f'r-{i}.html').read_text())
             q.append(f'| {i} | {c["index"][i]["title"]} | {mdl} | {n:,} |')
 q += ['', '## Notes for the reviewer', ''] + [f'- {n}' for n in PROV.get('review_notes', [])]
-open(R / 'FABLE-REVIEW.md', 'w').write('\n'.join(q) + '\n')
-from biblio import write_all as _biblio
-print(f'bibliography: {_biblio()} unit files')
+if EDITION == 'academy':
+    open(R / 'FABLE-REVIEW.md', 'w').write('\n'.join(q) + '\n')
+    from biblio import write_all as _biblio
+    print(f'bibliography: {_biblio()} unit files')
+else:
+    print(f'edition {EDITION}: {SITE.relative_to(R)}')
 print(' · '.join(f"{c['short']}: {c['nrep']}/{c['content_mods']} reports, {c['words']:,} words" for c in HISTORY)
       + ''.join(f" · {c['short']}: {c['nwritten']}/{c['nunits']} units" for c in MARKDOWN), f'· shell {kb(len(page.encode()))}, {len(REPORTS)} fetched files, site {kb(allb)}')
 print(REVIEW_LINE)
+if '--epub' in sys.argv:
+    import epub
+    _mdu = []
+    for c in MARKDOWN:
+        _order = [u[0] if isinstance(u, (tuple, list)) else u for u in getattr(c['hub'], 'ORDER', [])]
+        for code, (f, fm) in sorted(c['vault_units'].items(), key=lambda kv: _order.index(kv[0]) if kv[0] in _order else 999):
+            _mdu.append((c, code, fm.get('title', code), f))
+    epub.write(EDITION, ED, HISTORY, _mdu)

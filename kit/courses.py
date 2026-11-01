@@ -146,6 +146,17 @@ UX = dict(
 )
 
 COURSES = [GREECE, ROME, BRAND_AI, UX]
+
+# Editions (P70, 1 Nov 2026): a build of Academy with only some courses, from the same sources, theme, shell and rules.
+# `courses`: the ids of the courses it holds (None: every course); `omit`: what it leaves out, by panel kind
+# ('changelog', 'backlog', 'build': a course's "How it was built" and build pages, 'figures': the Figure kinds page)
+# and 'planned' (the planned courses on the home); `site`: the folder build.py writes, relative to kit/.
+# `python3 build.py --edition <name>` builds one; the full Academy is the edition 'academy' and the default.
+EDITIONS = {
+    'academy': dict(title='Academy', courses=None, omit=(), site='academy'),
+    'greece': dict(title='Academy · Greece', courses=('greece',), omit=('changelog', 'backlog', 'build', 'figures', 'planned'),
+                   site='editions/greece'),
+}
 HISTORY = [c for c in COURSES if c['family'] == 'history']
 MARKDOWN = [c for c in COURSES if c['family'] == 'markdown']
 
