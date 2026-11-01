@@ -31,6 +31,8 @@ was made before the text; each reads one section at a time, every section reache
 made" are closed accordions after the text, and Sources opens from its links; on one page of each course a deep link
 to a section and to Sources lands on a fresh load, and Continue and a reload resume at the section last read. The
 panel checks measure each reading page whole.
+Centred drawings (P50): every sitemap, objects, decision, states and wireflow figure whose drawing starts more than 12 units
+in carries data-x0 where it starts, so a phone frame opens on it.
 Figure keys (P52): every viz block in the vault, every history figure declaration, every course home figure and every
 examples block uses only the keys viz.VIZ_KEYS documents for its kind, and viz.render leaves the block it draws unchanged.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
@@ -311,6 +313,10 @@ def figure_rules(page, name):
                 x0 = {'start': x, 'middle': x - w / 2, 'end': x - w}[a]
                 if any(x0 + 1 < sx < x0 + w - 1 and y1 < y - 4 < y2 for sx, y1, y2 in stems):
                     bad.append(f'{where}: a stem runs through the text "{t}"')
+        if kind in viz.X0_KINDS:                             # P50: a centred drawing names where it starts
+            lft, x0 = viz._left(svg), re.search(r'<svg [^>]*?data-x0="([\d.]+)"', svg)
+            if lft is not None and lft - 8 > 12 and (not x0 or abs(float(x0.group(1)) - (lft - 8)) > 2):
+                bad.append(f'{where}: the drawing starts at {lft:.0f} but the svg ' + (f'names data-x0="{x0.group(1)}"' if x0 else 'carries no data-x0') + ', so a phone frame opens on the margin')
         if bce and kind in ('timeline', 'range') and any(c in ('viz-date', 'viz-ticklabel', 'viz-value') and re.search(r'\b(BC|AD)\b', t) for c, x, y, t in tx):
             bad.append(f'{where}: BC/AD in a figure on a page whose prose writes BCE/CE: set "era": "BCE"')
         if kind == 'range':

@@ -77,7 +77,7 @@
   // frame; data-more names the edge(s) with more drawing (the theme fades them) and the cue line under the frame shows
   // only while the drawing is wider than the frame. Run when a panel is shown, when a fetched panel lands, when a
   // <details> opens and on resize; a hidden frame measures 0 and so carries no cue until it is shown.
-  function vizEdge(f){var sw=f.scrollWidth,cw=f.clientWidth,l=f.scrollLeft>1,r=f.scrollLeft+cw<sw-1,m=(l?'l':'')+(r?'r':'');
+  function vizEdge(f){var sw=f.scrollWidth,cw=f.clientWidth,l=f.scrollLeft>(+f.getAttribute('data-x0px')||0)+1,r=f.scrollLeft+cw<sw-1,m=(l?'l':'')+(r?'r':'');
     if(m)f.setAttribute('data-more',m);else f.removeAttribute('data-more');}
   // P68: a wide table's frame (.tbl) gets the same fade and cue, so a reader knows it scrolls
   function vizFrames(root){if(!root)return;[].slice.call(root.querySelectorAll('.viz-scroll, .report .tbl')).forEach(function(f){
@@ -86,9 +86,10 @@
     if(!f.hasAttribute('data-sc')){f.setAttribute('data-sc','');f.addEventListener('scroll',function(){vizEdge(f);},{passive:true});}
     var over=f.clientWidth>0&&f.scrollWidth>f.clientWidth+1;cue.hidden=!over;
     // P58: a drawing centred in a wider svg (a narrow tree) names where it starts (data-x0); on its first measured
-    // showing a scrolling frame opens there, not on the empty margin
+    // showing a scrolling frame opens there, not on the empty margin; P50: the left fade shows only past that point, since
+    // to its left there is margin, not drawing
     var sv=f.querySelector('svg[data-x0]');if(over&&sv&&!f.hasAttribute('data-x0done')){f.setAttribute('data-x0done','');
-      var vb=sv.viewBox&&sv.viewBox.baseVal,k=vb&&vb.width?sv.getBoundingClientRect().width/vb.width:1;f.scrollLeft=Math.max(0,+sv.getAttribute('data-x0')*k-12);}
+      var vb=sv.viewBox&&sv.viewBox.baseVal,k=vb&&vb.width?sv.getBoundingClientRect().width/vb.width:1;f.scrollLeft=Math.max(0,+sv.getAttribute('data-x0')*k-12);f.setAttribute('data-x0px',f.scrollLeft);}
     vizEdge(f);});}
   window.addEventListener('resize',function(){vizFrames(document.querySelector('.panel:not([hidden])'));});
   document.addEventListener('toggle',function(e){if(e.target&&e.target.querySelector)vizFrames(e.target);},true);

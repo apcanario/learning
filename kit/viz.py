@@ -149,6 +149,10 @@ Contract change at P63 (1 Nov 2026), under the same rule:
               century", "late eighth century BC", "c. 670–640"): it prints as written and is drawn at "at", which must
               lie inside the century or span it names (date_names), or the build stops. The year is never printed
               where the text gives none. verify.py checks every built date line against the year its dot stands at.
+Contract change at P50 (1 Nov 2026): sitemap, objects, decision, states and wireflow centre their drawing in the
+  700-unit width; their svg carries data-x0 (where the drawing starts, less 8) as a narrow tree's does since P58, so a
+  phone frame opens on the drawing. Desktop scaling is unchanged. verify.py checks that every figure of these kinds
+  whose drawing starts more than 12 units in carries data-x0 within 2 units of it.
 verify.py (P58) also reads every built figure for these: no event label line ending in "c.", "by", "after" (and the
 like) with its number on the next line; no date line that drops a "c." or a split year the label carries; no BC/AD
 in a figure on a page whose prose writes BCE/CE; no value printed twice in one range row, and every range end label
@@ -271,7 +275,31 @@ def _unit(u):
     return ' ' + u if len(u) >= 3 and u[0].isalpha() else u
 
 
+# P50 (1 Nov 2026): the kinds that centre a narrower drawing in the 700-unit width (as a narrow tree does since P58)
+# name where the drawing starts, data-x0, so a phone frame (natural size, scrolling) opens on it, not on the margin.
+X0_KINDS = ('sitemap', 'objects', 'decision', 'states', 'wireflow')
+_TXT_RE = re.compile(r'<text class="([\w-]+)" x="([-\d.]+)"[^>]*?(?:text-anchor="(\w+)")?[^>]*>(.*?)</text>', re.S)
+
+
+def _left(body):
+    """The leftmost x anything in a drawing reaches: a rect's x, a line's or path's points, a circle's edge, a text's
+    left end (its anchor and measured width, at the widest of the theme's text roles). None for an empty body."""
+    xs = [float(v) for v in re.findall(r'<rect[^>]*? x="([-\d.]+)"', body)]
+    xs += [float(v) for v in re.findall(r' x[12]="([-\d.]+)"', body)]
+    xs += [float(c) - float(r) for c, r in re.findall(r'<circle[^>]*? cx="([-\d.]+)"[^>]*? r="([\d.]+)"', body)]
+    for dd in re.findall(r' (?:d|points)="([^"]*)"', body):
+        xs += [float(a) for a in re.findall(r'(-?[\d.]+),-?[\d.]+', dd)]
+    for m in _TXT_RE.finditer(body):
+        t = H.unescape(re.sub(r'<[^>]+>', '', m.group(4)))
+        w = _tw(t, 12, 'sansb') if 'mono' not in m.group(1) else _tw(t, 10.5, 'mono')
+        xs.append(float(m.group(2)) - {'middle': w / 2, 'end': w}.get(m.group(3) or 'start', 0))
+    return min(xs) if xs else None
+
+
 def _svg(w, h, body, cls, title, caption, wide=False, x0=None):
+    if x0 is None and cls in X0_KINDS:
+        lft = _left(body)
+        x0 = max(0, lft - 8) if lft is not None and lft - 8 > 4 else None
     t = f'<p class="viz-title">{esc(title)}</p>' if title else ''
     c = f'<figcaption>{caption}</figcaption>' if caption else ''
     return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''} '
