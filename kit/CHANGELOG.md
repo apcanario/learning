@@ -9,7 +9,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - **Figures (sessions 25 and 27):** fifteen kinds in `viz.py`: the seven for Information Architecture added by V1, four data kinds (line, bars, scatter, range) and a numeric matrix added by P44; the Figure kinds page shows one of each, sixteen figures. On a phone every figure keeps its natural size and scrolls sideways in its own frame, with a fade and a cue line. Figures added after writing (sessions 29, 30 and 32): 38 in the Brand + AI units, 180 in the Rome reports (177, then 3 written back by P57), 260 in the Greek reports, each checked by a separate Opus 5.5 agent; a Fable 5.1 check is owed (P48). Since session 31 (P55) the renderer moves or widens a label that cannot fit instead of clipping it, stops the build on what it cannot draw honestly (a year 0, a list given as a string, years BC without `years`), and `verify.py` checks the geometry of every figure on every page. Since session 37 (H-2) it draws a copy of each block and checks every block's keys, a timeline date may name a century, matrices size their columns to their contents, centred drawings open on the drawing on a phone, and object-map labels keep clear of crossings.
 - **User Experience (sessions 24, 34 and 35):** a fourth track and a second markdown family, `generator/data/ux/`; its first course, IA · Information Architecture, has its frame, syllabus and briefs, IA1 (session 34, six figures) and IA2 (session 35, eight figures, the course notation every later figure uses) filed in `courses/ux/`; the course reads "in progress", 2 of 15. Its fresh checks run on Opus 5.5 until Pedro has Fable again (Fable 5.1 checks owed, row P49).
 - **Greece, course 1:** complete. 78 reports, about 244,000 words: 55 written with Fable 5.1, 23 with Opus 5.5.
-- **Rome, course 2:** 63 of 79 reports, about 198,000 words, all written with Opus 5.5 and all checked (11.3 to 11.6 in session 39, flagged for the Fable review, due and deferred). 16 modules are queued: deep dive I (11.7, 11.8), deep dive II, the Aeneid (12.1 to 12.8), and deep dive III (13.3 to 13.8).
+- **Rome, course 2:** complete, 79 of 79 reports, about 264,000 words, all written with Opus 5.5 and all checked by a fresh agent. The last 20 (11.3 to 11.6 in session 39; 11.7, 11.8, 12.1 to 12.8 and 13.3 to 13.8 in session 40) are flagged for the Fable review, due and deferred to stage 5.
 - **Fable review:** every Rome report is reviewed (session 9). Of the 23 Greek Opus reports, 17 are reviewed (eleven audited in full, six cleared on the sample) and six are still flagged: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (session 10). Rome 14.3 and the Greek 13.3 high-signal pairs are done; every pair passed.
 - **Bibliography:** every report has a machine-extracted unit list and a curated `r-<id>.md` (session 10; the curated files are flagged until Fable spot-checks three units).
 - **Corrections (session 33):** the figure checkers' Prose and Self-test leads were worked on 30 October: 25 Rome and 78 Greek reports corrected (`reviews/corrections-2026-10-30.md`). Faults found outside the leads wait as proposed row P61.
@@ -53,6 +53,34 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 28 Oct | 21. The history course homes leave the shell (P22) | 78 | 59 |
 | 28 Oct | 22. "How it was built" for every course (A4) | 78 | 59 |
 | 28 Oct | 23. The vault is the source; a new course is a folder (A5) | 78 | 59 |
+| 1 Nov | 39. Rome batch 1: 11.3 to 11.6 (R-1) | 78 | 63 |
+| 1 Nov | 40. Rome complete: 11.7, 11.8, 12.1 to 12.8, 13.3 to 13.8 (R-2) | 78 | 79 |
+
+## 1 November 2026 · Session 40 · Rome complete: 11.7, 11.8, 12.1 to 12.8, 13.3 to 13.8 (R-2)
+
+Backlog row R-2 of `docs/BACKLOG.md`, Part A, one chat, Opus 5.5 throughout (P31): each module written by its own fresh agent that saw only its writer's material; each fresh check by a separate agent briefed with `reviews/units-9-13/BRIEF.md` that had not seen the writing or the writer's reply; each module's figures checked by another agent given only the text with its figures taken out, the captions and the figures as drawn at desktop and in 390 px phone frames, dark and light, with a new agent for each re-check; at most eight agents at a time; this chat only filed. Every finding was verified before it was applied as an exact replacement; the maintainer log (`reviews/units-9-13/log.md`) has a paragraph per module. The four figure lessons of R-1 went into `BACKLOG.md` first. `review_due.py` printed FABLE REVIEW DUE throughout; the review is deferred to the Fable stage (Pedro, 31 October 2026), and the count stands at 20.
+
+**The modules** (words after fixes; fresh check: errors, should-fix, minor; figures kept).
+- 11.7 The Ides of March: 4,390; fix (4, 2, 5); the source matrix (the flow of the Ides dropped after three failed checks).
+- 11.8 Why the Republic fell: 3,523; fix (1, 5, 4); the ancient matrix and the modern timeline (Flower's timeline dropped). Written last in its unit.
+- 12.1 Virgil and the making of the poem: 3,741; fix (1, 4, 5); the life timeline and the making flow (the pairing matrix dropped).
+- 12.2 Books 1 to 6, the Odyssean Aeneid: 4,842; fix (2, 2, 4); the book matrix and the games matrix (the route of book 3 dropped).
+- 12.3 Books 7 to 12, the Iliadic Aeneid: 5,596; keep (0, 0, 8); none (both matrices dropped).
+- 12.4 Dido: 4,725; fix (2, 4, 5); the flow and two matrices (the reception timeline dropped).
+- 12.5 Book 6, the underworld and the parade of heroes: 5,287; fix (2, 2, 10); the parade flow and the route flow (the matrix against *Odyssey* 11 dropped).
+- 12.6 The gods of the Aeneid: 3,749; fix (1, 5, 6); the flow and the tree. Written after 13.2.
+- 12.7 Augustan or anti-Augustan?: 3,162; keep (0, 3, 3); the critics' timeline (the test-case matrix dropped).
+- 12.8 The Aeneid after Rome: 3,872; fix (3, 3, 5); the English flow and the twentieth-century timeline (the reception matrix dropped).
+- 13.3 The rival schools at Rome: 3,863; fix (3, 5, 6); none (the schools matrix and the timeline dropped).
+- 13.4 Cato and the Stoic opposition: 3,589; fix (3, 4, 10); the tree and the timeline.
+- 13.5 Seneca: 4,246; fix (2, 2, 4); the flow of his death (the timeline dropped).
+- 13.6 Musonius Rufus and Epictetus: 3,503; keep (0, 1, 4); the timeline, the tree and the flow.
+- 13.7 Marcus Aurelius, a life: 4,122; fix (2, 4, 6); the tree and the timeline (the revolt flow dropped).
+- 13.8 The Meditations and the afterlife of Roman Stoicism: 3,312; fix (1, 2, 8); the flow and the tree (the timeline dropped).
+
+**Units closed.** Units 11, 12 and 13 each closed with `crosscheck.py` over the unit and every pointer opened against its target: 11.7's Sedley box became a pointer to 13.3, and 12.4's paragraph retelling 4.1's Dido became a one-sentence pointer. Logged for others and not applied here: Rome 7.2 cites Dio 66.13, which exists only in Boissevain's numbering; 13.5's Dio 61(62).12.1; Greek 10.12 dates Otis's *Virgil* to 1964 where the Clarendon title page has 1963 (both circulate); the renderer notes the figure checkers raised (bars and captions past a phone frame, tick overlaps, the year-0 scale, faint connectors, light-mode contrast of span labels, wide desktop timelines) go to P83 and P84.
+
+**Rome is complete:** 79 of 79 content reports, about 264,000 words, all Opus 5.5. `ROME['next_up']` is empty and Rome's status is available. Academy rebuilt, verified (ALL CHECKS PASSED, both builds) and published; GitHub Pages deployed once at the end. Part B of R-2, P71-3 (Greece and Rome to Markdown), stays in the queue.
 
 ## 1 November 2026 · Session 39 · Rome batch 1: 11.3 to 11.6, with P78, P79 and P80 (R-1)
 
