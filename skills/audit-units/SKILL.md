@@ -25,7 +25,7 @@ If a unit is missing, ask for it; do not audit from memory.
 
 ## 3. Run
 - **Sample audit:** use the "Stratified-sample audit" prompt in `method.md` §6 exactly as written, with the four codes and paths filled in. Record the sample (one checkable claim per section per unit: a number, a named source, a mechanism or a recommendation) before checking anything. Check each against its source with live search; mark PASS, FAIL or STALE; a source you cannot open is "unverifiable", not FAIL.
-- **Decision rule:** a unit with more than one claim in ten FAIL is audited in full, same chat. For a Personal Mythology module the full audit is the kit's scorecard (`audits/AUDIT-BRIEF.md` for Rome, `audits/AUDIT-BRIEF-GREECE.md` for Greece; rubric in `audits/greece-13.1-rubric.md` and `audits/rome-14.1-rubric.md`), with exact-replacement errata. If the sample splits by provenance (units written with and without a checker), say so: the stratum is split and the weaker side is audited in full.
+- **Decision rule:** a unit with more than one claim in ten FAIL is audited in full, same chat. For a Personal Mythology module the full audit is the kit's scorecard (`kit/audits/AUDIT-BRIEF.md` for Rome, `kit/audits/AUDIT-BRIEF-GREECE.md` for Greece; rubric in `kit/audits/greece-13.1-rubric.md` and `kit/audits/rome-14.1-rubric.md`), with exact-replacement errata. If the sample splits by provenance (units written with and without a checker), say so: the stratum is split and the weaker side is audited in full.
 - **Staleness check:** use the "Staleness check" prompt in `method.md` §6 exactly as written. Search today for every fact in the unit that can change.
 
 ## 3b. Fresh check of one markdown-course unit (Brand + AI since Audit 1, 28 Oct 2026; User Experience from IA1)
