@@ -433,6 +433,7 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 /* the IA kinds (V1, 29 Oct 2026): sitemap, objects, decision, matrix, states, swimlanes, wireflow. Their text classes are
    written .viz .x so they win over .viz text; nodes reuse .viz-node and .viz-nodelabel, arrowheads .viz-head. */
 .viz-wide svg{width:auto}                                                       /* a figure wider than the column keeps its size and scrolls in its frame */
+.viz-fit svg{width:auto;min-width:0}                                            /* P53: a matrix sized to its cells keeps its own width, never stretched to the column */
 .viz-link{stroke:var(--muted);stroke-width:1.25;fill:none}                      /* a connector: relationship, branch, transition, step link */
 .viz-line{stroke:var(--line-2);stroke-width:1.25;fill:none}                     /* a structural line: sitemap hierarchy, lane divider, object rule */
 .viz-lblbg{fill:var(--card)}                                                    /* the plate under a connector's label, so the line never runs through it */

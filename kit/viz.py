@@ -149,6 +149,12 @@ Contract change at P63 (1 Nov 2026), under the same rule:
               century", "late eighth century BC", "c. 670–640"): it prints as written and is drawn at "at", which must
               lie inside the century or span it names (date_names), or the build stops. The year is never printed
               where the text gives none. verify.py checks every built date line against the year its dot stands at.
+Contract change at P53 (1 Nov 2026):
+  matrix      each column is as wide as its widest cell (a mark on one line, up to 220 units) or its header (its longest
+              word, or the whole header up to 140), at least 56, not an equal share of the 700-unit width; columns that
+              need more than the width share it, the narrower keeping their size, and under 70 each the drawing widens
+              and scrolls as before. A matrix narrower than the width draws at its own width (class viz-fit: natural size
+              at every width, never stretched to the column), at least 320 units and wide enough for its widest legend item.
 Contract change at P50 (1 Nov 2026): sitemap, objects, decision, states and wireflow centre their drawing in the
   700-unit width; their svg carries data-x0 (where the drawing starts, less 8) as a narrow tree's does since P58, so a
   phone frame opens on the drawing. Desktop scaling is unchanged. verify.py checks that every figure of these kinds
@@ -1154,31 +1160,52 @@ def matrix(d):
         return _heat(d)
     LW = min(170, max(90, max(_tw(r['label'], 12) for r in rows) + 20))
     n = len(cols)
-    cw = (W - 16 - LW) / n
-    wide = cw < 70
-    cw = max(cw, 70)
-    Wd = 16 + LW + n * cw
-    heads = [_lines(c, T_COL, cw - 10) for c in cols]
-    hh = max(len(h) for h in heads) * 12 + 12
-    body = ''.join(_text(h, T_COL, 8 + LW + (k + 0.5) * cw, hh - 6 - len(h) * 12, 'middle') for k, h in enumerate(heads))
-    y = 8 + hh
+    # P53 (1 Nov 2026): each column is as wide as its widest cell (a mark on one line, up to 220) or its header (its
+    # longest word, or the whole header up to 140), not a share of the 700-unit width; when the columns need more than
+    # the width they share it, the narrow ones keeping their size, and below 70 each the drawing widens and scrolls.
+    # A matrix narrower than the width is drawn at its own width (viz-fit), so on a phone it does not scroll for margin.
     for r in rows:
         if len(r.get('cells', [])) != n:
             _fail(K, f'row {r.get("label")!r} has {len(r.get("cells", []))} cells for {n} columns')
+    mark = lambda c: c if isinstance(c, str) else (c or {}).get('mark', '') if isinstance(c, dict) else ''
+    nat = []
+    for k, c in enumerate(cols):
+        hw = max(max(_tw(w, 10, 'mono', 0.4) for w in str(c).split()), min(_tw(str(c), 10, 'mono', 0.4), 140)) + 14
+        cl = max([min(_tw(mark(r['cells'][k]), 10.5, 'mono'), 220) + 18 for r in rows if mark(r['cells'][k])] or [0])
+        nat.append(math.ceil(max(56, hw, cl)))
+    avail = W - 16 - LW
+    if sum(nat) <= avail:
+        cws = nat
+    else:
+        cws, left, rest = list(nat), avail, sorted(range(n), key=lambda k: nat[k])
+        while rest and nat[rest[0]] <= left / len(rest):
+            left -= nat[rest[0]]; rest.pop(0)
+        for k in rest:
+            cws[k] = left / len(rest)
+    wide = min(cws) < 70 and sum(nat) > avail
+    cws = [max(c, 70) if wide else c for c in cws]
+    leg = [_tw(i.get('mark', ''), 10.5, 'mono') + 16 + 8 + min(220, _tw(i.get('means', ''), 11)) + 18 for i in d.get('legend') or []]
+    Wd = max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)
+    xs = [8 + LW + sum(cws[:k]) for k in range(n)]
+    heads = [_lines(c, T_COL, cws[k] - 10) for k, c in enumerate(cols)]
+    hh = max(len(h) for h in heads) * 12 + 12
+    body = ''.join(_text(h, T_COL, xs[k] + cws[k] / 2, hh - 6 - len(h) * 12, 'middle') for k, h in enumerate(heads))
+    y = 8 + hh
+    for r in rows:
         rt = _tone(r, 4, K)
         cells = []
-        for c in r['cells']:
+        for k, c in enumerate(r['cells']):
             if c is None or c == '':
                 cells.append(([], rt))
             elif isinstance(c, str):
-                cells.append((_lines(c, T_MARK, cw - 14), rt))
+                cells.append((_lines(c, T_MARK, cws[k] - 14), rt))
             else:
-                cells.append((_lines(c.get('mark', ''), T_MARK, cw - 14) if c.get('mark') else [], _tone(c, rt, K)))
+                cells.append((_lines(c.get('mark', ''), T_MARK, cws[k] - 14) if c.get('mark') else [], _tone(c, rt, K)))
         lab = _lines(r['label'], T_LABEL, LW - 12)
         rh = max(32, max(len(m) for m, _ in cells) * 13 + 14, len(lab) * 14 + 12)
         body += _text(lab, T_LABEL, 8, y + (rh - len(lab) * 14) / 2)
         for k, (m, t) in enumerate(cells):
-            x = 8 + LW + k * cw
+            x, cw = xs[k], cws[k]
             cls = f'viz-band viz-t{t}' if m else 'viz-track'
             body += _g(f'<rect class="{cls}" x="{x + 2:.1f}" y="{y + 2:.1f}" width="{cw - 4:.1f}" height="{rh - 4:.1f}"/>'
                        + _text(m, T_MARK, x + cw / 2, y + (rh - len(m) * 13) / 2, 'middle'))
@@ -1189,7 +1216,7 @@ def matrix(d):
         for item in d['legend']:
             m, means = item.get('mark', ''), item.get('means', '')
             mw = _tw(m, 10.5, 'mono') + 16
-            txt = _lines(means, T_ATTR, min(220, W - 16 - mw - 8))
+            txt = _lines(means, T_ATTR, min(220, Wd - 16 - mw - 8 - 18))
             iw = mw + 8 + _width(txt, T_ATTR) + 18
             if x > 8 and x + iw > Wd - 8:
                 x, y, lrow = 8, y + lrow + 8, 24
@@ -1198,7 +1225,7 @@ def matrix(d):
             x += iw
             lrow = max(lrow, len(txt) * 14)
         y += lrow
-    return _svg(_r(Wd), _r(y + 8), body, 'matrix', d.get('title'), d.get('caption'), wide=wide)
+    return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide)
 
 
 def _gridflow(K, items, edges, per_row, bw, gap, gap_px, start=None):
