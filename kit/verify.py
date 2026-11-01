@@ -383,8 +383,10 @@ STEP_JS = r'''(pid) => {
   want(+p.dataset.step || 0, 'on opening');
   if (+p.dataset.step) [...bar.querySelectorAll('.seclist a')][0].click();
   want(0, 'menu to 1');
+  if (n > 1 && (proc.offsetHeight > 0 || p.querySelector(':scope > .pager').offsetHeight > 0)) out.push('the accordions or the next-unit cards show before the last section');
   for (let k = 1; k < n; k++) { secs[k - 1].querySelector(':scope > .secnav .snext').click(); want(k, `next to ${k + 1}`); }
   if (secs[n - 1].querySelector(':scope > .secnav .snext:not(.send)')) out.push('the last section has a next-section button');
+  if (proc.offsetHeight === 0) out.push('the accordions are not shown after the last section');
   for (let k = n - 2; k >= 0; k--) { secs[k + 1].querySelector(':scope > .secnav .sprev').click(); want(k, `previous to ${k + 1}`); }
   [...bar.querySelectorAll('.seclist a')].forEach((a, k) => { a.click(); want(k, `menu item ${k + 1}`); });
   bar.querySelector('.whole').click(); if (vis().length !== n) out.push(`"Whole unit" shows ${vis().length} of ${n} sections`);
@@ -408,13 +410,15 @@ SRC_JS = r'''async (pid) => {
 
 # P68: with --shots, a --page reading page is also shot in the states its top does not show, one viewport each: the
 # section menu open, the end of section 1 (its next button), section 2 just opened by it, the end of the last section
-# with the two accordions closed, the two accordions open, and "Whole unit" mid-page
+# with the two accordions closed, the two accordions open (at Sources, then at "How this unit was made"), and
+# "Whole unit" mid-page
 READING_SHOTS = [
     ('2-menu', "(pid) => { window.scrollTo(0, 0); document.querySelector('#' + pid + ' .secmenu').open = true; }"),
     ('3-end-of-1', "(pid) => { const p = document.getElementById(pid); p.querySelector('.secmenu').open = false; p.querySelector('.sec.on .secnav').scrollIntoView({block: 'end'}); }"),
     ('4-section-2', "(pid) => { const a = document.querySelector('#' + pid + ' .sec.on .snext'); if (a) a.click(); }"),
     ('5-last-end', "(pid) => { const p = document.getElementById(pid); [...p.querySelectorAll('.seclist a')].pop().click(); window.scrollTo(0, document.documentElement.scrollHeight); }"),
     ('6-process-open', "(pid) => { const p = document.getElementById(pid); p.querySelectorAll('.process details').forEach(d => d.open = true); document.getElementById(pid + '-sources').scrollIntoView(); }"),
+    ('6b-made-open', "(pid) => { document.getElementById(pid + '-made').scrollIntoView(); }"),
     ('7-whole', "(pid) => { const p = document.getElementById(pid); p.querySelectorAll('.process details').forEach(d => d.open = false); p.querySelector('.stepbar .whole').click(); window.scrollTo(0, document.documentElement.scrollHeight * 0.4); }"),
 ]
 
@@ -495,7 +499,7 @@ def check_split(br, fails):
     if hits.get('/greece/r-2.3.html') != 1: fails.append(f'split: greece/r-2.3.html fetched {hits.get("/greece/r-2.3.html")} times, expected once')
     pg.wait_for_timeout(700)   # the next report is fetched in the background
     if not pg.evaluate("document.getElementById('m24').hasAttribute('data-loaded')"): fails.append('split: the next report (#m24) was not prefetched')
-    pg.click('#m23 .pager a.next'); ready(pg)
+    pg.evaluate("document.querySelector('#m23 .pager a.next').click()"); ready(pg)   # P68: the cards show after the last section; clicked as a link
     if pg.evaluate("location.hash") != '#m24' or hits.get('/greece/r-2.4.html') != 1: fails.append(f'split: pager to #m24: hash {pg.evaluate("location.hash")}, fetched {hits.get("/greece/r-2.4.html")} times')
     # a section link into a report not yet opened, on a fresh load
     retried = []

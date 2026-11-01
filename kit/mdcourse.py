@@ -142,18 +142,18 @@ def reading(pid, body, scope, sources, made, nsrc=None, chev=''):
         b = band(sid, head, k)[0] if head else ''
         nav = ''
         if k > 0:
-            nav += f'<a class="sprev" href="#{items[k - 1][0]}" data-step="{k - 1}"><span>Previous section</span><b>{e(plain(items[k - 1][2]))}</b></a>'
+            nav += f'<a class="sprev" href="#{items[k - 1][0]}" data-step="{k - 1}"><span>Previous · {k} of {n}</span><b>{e(plain(items[k - 1][2]))}</b></a>'
         if k < n - 1:
-            nav += f'<a class="snext" href="#{items[k + 1][0]}" data-step="{k + 1}"><span>Next section · {k + 2} of {n}</span><b>{e(plain(items[k + 1][2]))}</b></a>'
+            nav += f'<a class="snext" href="#{items[k + 1][0]}" data-step="{k + 1}"><span>Next · {k + 2} of {n}</span><b>{e(plain(items[k + 1][2]))}</b></a>'
         else:
             nav += f'<a class="snext send" href="#{pid}-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a>'
         steps.append(f'<section class="sec" data-step="{k}">{pre if k == 0 else ""}{b}{html_}<nav class="secnav" aria-label="Sections">{nav}</nav></section>')
     menu = ''.join(f'<li><a href="#{sid}" data-step="{k}"><span class="n">{k + 1:02d}</span><span class="t">{(e(plain(kick)) + " · ") if kick else ""}{e(plain(t))}</span></a></li>'
                    for k, (sid, kick, t) in enumerate(items))
-    bar = (f'<div class="stepbar" data-n="{n}"><details class="secmenu"><summary><span class="sof">Section <b>1</b> of {n}</span>'
-           f'<span class="stt">{e(plain(items[0][2]))}</span>{chev}</summary><ol class="seclist">{menu}</ol>'
-           f'<div class="secx"><a href="#{pid}-sources" data-acc>Sources</a><a href="#{pid}-made" data-acc>How this unit was made</a></div></details>'
-           f'<button class="whole" type="button" aria-pressed="false">Whole unit</button><div class="sprog" aria-hidden="true"><i></i></div></div>')
+    bar = (f'<div class="stepbar" data-n="{n}"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of {n}</span>'
+           f'<span class="stt">{e(plain(items[0][2]))}</span></span>{chev}</summary><ol class="seclist">{menu}</ol>'
+           f'<div class="secx"><a href="#{pid}-sources" data-acc>Sources</a><a href="#{pid}-made" data-acc>How this unit was made</a>'
+           f'<button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div>')
     head = f'<p class="scope">{scope}</p>' if scope else ''
     cnt = f'<span class="an">{nsrc}</span>' if nsrc else ''
     src = (f'<details class="acc src" id="{pid}-sources"><summary><span class="at">Sources</span>{cnt}</summary><div class="accb">{sources or "<p>No source list on file for this page.</p>"}</div></details>')

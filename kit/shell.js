@@ -79,9 +79,10 @@
   // <details> opens and on resize; a hidden frame measures 0 and so carries no cue until it is shown.
   function vizEdge(f){var sw=f.scrollWidth,cw=f.clientWidth,l=f.scrollLeft>1,r=f.scrollLeft+cw<sw-1,m=(l?'l':'')+(r?'r':'');
     if(m)f.setAttribute('data-more',m);else f.removeAttribute('data-more');}
-  function vizFrames(root){if(!root)return;[].slice.call(root.querySelectorAll('.viz-scroll')).forEach(function(f){
+  // P68: a wide table's frame (.tbl) gets the same fade and cue, so a reader knows it scrolls
+  function vizFrames(root){if(!root)return;[].slice.call(root.querySelectorAll('.viz-scroll, .report .tbl')).forEach(function(f){
     var cue=f.nextElementSibling;
-    if(!cue||!cue.classList.contains('viz-cue')){cue=document.createElement('p');cue.className='viz-cue';cue.textContent='scroll sideways for the whole figure';f.parentNode.insertBefore(cue,f.nextSibling);}
+    if(!cue||!cue.classList.contains('viz-cue')){cue=document.createElement('p');cue.className='viz-cue';cue.textContent='scroll sideways for the whole '+(f.classList.contains('tbl')?'table':'figure');f.parentNode.insertBefore(cue,f.nextSibling);}
     if(!f.hasAttribute('data-sc')){f.setAttribute('data-sc','');f.addEventListener('scroll',function(){vizEdge(f);},{passive:true});}
     var over=f.clientWidth>0&&f.scrollWidth>f.clientWidth+1;cue.hidden=!over;
     // P58: a drawing centred in a wider svg (a narrow tree) names where it starts (data-x0); on its first measured
@@ -112,7 +113,9 @@
     links.forEach(function(a,i){if(i===k)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
     var tt=links[k]&&links[k].querySelector('.t');bar.querySelector('.stt').textContent=tt?tt.textContent:'';
     bar.querySelector('.sprog i').style.width=(100*(k+1)/n).toFixed(2)+'%';
-    p.setAttribute('data-step',k);}
+    p.setAttribute('data-step',k);
+    // the process accordions and the next unit show at the end of the last section (or when a link opens them)
+    if(k===n-1||isWhole(p))p.setAttribute('data-end','');else p.removeAttribute('data-end');}
   function setStep(p,k,scroll){
     var secs=stepsOf(p);if(!secs.length)return;k=Math.max(0,Math.min(secs.length-1,k));
     if(!isWhole(p))secs.forEach(function(s,i){s.classList.toggle('on',i===k);});
@@ -123,6 +126,7 @@
     var r=p.querySelector('.report.steps'),b=p.querySelector('.stepbar .whole');if(!r)return;
     var k=+(p.getAttribute('data-step')||0),secs=stepsOf(p);
     r.classList.toggle('whole',on);if(b)b.setAttribute('aria-pressed',on?'true':'false');
+    var mn=p.querySelector('.secmenu[open]');if(mn)mn.open=false;if(on)p.setAttribute('data-end','');
     if(on){secs.forEach(function(s){s.classList.add('on');});vizFrames(r);if(k>0)(secs[k].querySelector('h2.band')||secs[k]).scrollIntoView();}
     else{k=inView(p);setStep(p,k,true);}}
   // the section whose band is the last one above the bar's lower edge
@@ -134,6 +138,7 @@
   function reveal(el){
     var p=el.closest('.panel'),sec=el.closest('.sec');
     if(p&&sec&&!isWhole(p)){var k=stepsOf(p).indexOf(sec);if(k>=0&&!sec.classList.contains('on'))setStep(p,k,false);}
+    if(p&&el.closest('.process'))p.setAttribute('data-end','');
     for(var d=el.closest('details');d;d=d.parentElement&&d.parentElement.closest('details'))d.open=true;
     var m=p&&p.querySelector('.secmenu[open]');if(m)m.open=false;
     el.scrollIntoView();}
@@ -180,8 +185,9 @@
     var pg=document.querySelector('#'+id+' .pager');
     if(pg&&!pg.innerHTML){
       var ctx=ctxOf[id],rs=reportsBy[ctx]||[],r=rs.indexOf(id),h='';
-      if(r>0){var p=meta[rs[r-1]];h+='<a href="#'+rs[r-1]+'" class="prev">'+(p.n?'<span>'+p.n+'</span>':'')+p.t+'</a>';}
-      if(r>=0&&r<rs.length-1){var n=meta[rs[r+1]];h+='<a href="#'+rs[r+1]+'" class="next">'+n.t+(n.n?'<span>'+n.n+'</span>':'')+'</a>';}
+      // P68: each card says which way it goes, then the code and the title
+      if(r>0){var p=meta[rs[r-1]];h+='<a href="#'+rs[r-1]+'" class="prev"><span>Previous unit'+(p.n?' · '+p.n:'')+'</span><b>'+p.t+'</b></a>';}
+      if(r>=0&&r<rs.length-1){var n=meta[rs[r+1]];h+='<a href="#'+rs[r+1]+'" class="next"><span>Next unit'+(n.n?' · '+n.n:'')+'</span><b>'+n.t+'</b></a>';}
       pg.innerHTML=h;
     }
   }
