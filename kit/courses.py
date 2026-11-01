@@ -116,7 +116,7 @@ ROME = dict(
                 dict(at=-287, label='Secession; lex Hortensia', tone=1), dict(at=-172, label='Both consuls plebeian', tone=1)]),
     card_units=14, status='in progress',
     # modules queued for the next writing session: shown with a 'next' pill until written
-    next_up=['11.7', '11.8', '12.1', '12.2', '12.3', '12.4', '12.5', '12.6', '12.7', '12.8'],
+    next_up=['12.1', '12.2', '12.3', '12.4', '12.5', '12.6', '12.7', '12.8'],
 )
 
 BRAND_AI = dict(
