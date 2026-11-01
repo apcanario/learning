@@ -161,12 +161,12 @@ Curated bibliography: `bibliography/rome/r-13.4.md`.
 
 ### Ancient works
 - Epictetus, *Discourses* 1.2.19–21
-- Pliny, *Letters* 3.11; 3.11.2; 3.11.2–3; 3.11.3; 3.12.3; 3.16; 3.16.2; 3.16.3–5; 7.19.4–6; 11.10; 73.1
+- Pliny, *Letters* 3.11.2; 3.11.2–3; 3.11.3; 3.12.3; 3.16; 3.16.2; 3.16.3–5; 3.16.6; 7.19.4–6; 11.10; 73.1
 - Plutarch, *Cato Minor* 4; 10; 11; 25; 25, 37; 66–70
 - Suetonius, *Domitian* 10.3; 10.4
 - Suetonius, *Julius* 56.5
 - Tacitus, *Agricola* 2; 2.1; 2.1–2; 2.2; 42.4; 45.1
-- Tacitus, *Annals* 14.12, 15.60–64; 14.12.1; 14.57; 14.57, 16.22; 16.22; 16.34–35
+- Tacitus, *Annals* 14.12.1; 14.57; 14.57, 16.22; 16.22; 16.34–35
 - *Caesar* 54
 - *Cicero* 39
 - *City of God* 1.23
@@ -179,7 +179,7 @@ Curated bibliography: `bibliography/rome/r-13.4.md`.
 - *Vespasian* 13; 15
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Dio 67.13
+- Dio 60.16; 67.13
 - Gellius 15.11
 
 ### Modern works
