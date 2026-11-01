@@ -280,7 +280,7 @@ In progress: 73 of 79 content reports; 85 modules with the audit unit. Written i
 | ✓ | Review | Rome | Fable review of batch 4 | after #75 | Fable 5.1 | off | `kit/audits/` |
 | 76 | 12.5 | 12 · Deep dive II: the Aeneid | Book 6: the underworld and the parade of heroes | not written · batch 5 | Opus 5.5 | off | `courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md` (+ `kit/rome/r-12.5.html`) |
 | 77 | 12.7 | 12 · Deep dive II: the Aeneid | Augustan or anti-Augustan? | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.7.html` (+ `courses/rome/12.7-augustan-or-anti-augustan.md`) |
-| 78 | 12.8 | 12 · Deep dive II: the Aeneid | The Aeneid after Rome | not written · batch 5 | Opus 5.5 | off | `courses/rome/12.8-the-aeneid-after-rome.md` (+ `kit/rome/r-12.8.html`) |
+| 78 | 12.8 | 12 · Deep dive II: the Aeneid | The Aeneid after Rome | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.8.html` (+ `courses/rome/12.8-the-aeneid-after-rome.md`) |
 | 79 | 12.6 | 12 · Deep dive II: the Aeneid | The gods of the Aeneid | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-12.6.html` (+ `courses/rome/12.6-the-gods-of-the-aeneid.md`) |
 | ✓ | Review | Rome | Fable review of batch 5; then 14.2 to 14.5 rerun over the 20 new reports as the course audit | after #79 | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 14.1 | 14 · Quality audit | Calibrate the rubric for Rome | run 27 Oct 2026 (calibrated on 0.1 and 1.4) | Fable 5.1 | off | `kit/audits/` |
