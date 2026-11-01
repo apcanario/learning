@@ -72,7 +72,7 @@ Curated bibliography: `bibliography/rome/r-7.2.md`.
 - *Vitellius* 15.3
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Dio 66.13; 66.15
+- Dio 66.15
 
 ### Modern works
 - T. D. Barnes, *The Fragments of Tacitus' Histories* (1977)

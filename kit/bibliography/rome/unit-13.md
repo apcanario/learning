@@ -195,7 +195,7 @@ Curated bibliography: `bibliography/rome/r-13.4.md`.
 Curated bibliography: `bibliography/rome/r-13.5.md`.
 
 ### Ancient works
-- Tacitus, *Annals* 12.8.2; 13.2; 13.15–17; 13.42; 13.42.3; 13.42–43, 14.52; 14.7; 14.52; 14.52–56; 14.53–56; 14.55–56; 15.22.2; 15.45.3; 15.60; 15.60–64; 15.62–64; 15.63; 16.17
+- Tacitus, *Annals* 12.8.2; 13.2; 13.15–17; 13.42; 13.42.3; 13.42–43, 14.52; 14.7; 14.52; 14.52–56; 14.53–56; 14.55–56; 15.22.2; 15.45; 15.60; 15.60–64; 15.62–64; 15.63; 16.17
 - *Caligula* 53.2
 - *Consolation to Helvia* 17.3–4; 19.2; 19.4–7
 - *Consolation to Polybius* 13.2
@@ -312,11 +312,15 @@ Curated bibliography: `bibliography/rome/r-13.8.md`.
 - Brunt (1974): title not given in the report
 - P. A. Brunt, *Marcus Aurelius in his <em>Meditations</em>* (1974)
 - Christianity (2011): title not given in the report
+- Casaubon's English (1634): title not given in the report
+- Guevara, *Libro áureo* (1528)
 - Christianity. Hadot (1992): title not given in the report
 - Hadot (1992): title not given in the report
+- Hadot, *La Citadelle intérieure* (1992)
 - Hadot, *The Inner Citadel* (1998)
 - Stephen Hanselman, *The Daily Stoic* (2016)
 - Kamtekar (1998): title not given in the report
+- Mill, *On Liberty* (1859)
 - R. B. Rutherford, *The Meditations of Marcus Aurelius: A Study* (1989)
 - Sellars (2025): title not given in the report
 

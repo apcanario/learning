@@ -259,21 +259,25 @@ Curated bibliography: `bibliography/rome/r-12.7.md`.
 Curated bibliography: `bibliography/rome/r-12.8.md`.
 
 ### Ancient works
+- Augustine, *City of God* 1.3; 10.27
+- Dante, *Inferno* 1.70–72; 1.85–87; 4.39–42
 - Her, *Cento* 694
+- Lactantius, *Divine Institutes* 7.24
+- Suetonius, *On Grammarians* 16
 - *Aeneid* 4.9; 4.23; 9.447; 9.473
-- *City of God* 10.27
-- *Divine Institutes* 7.24
 - *Etymologies* 1.39.26
 - *Hadrian* 2.8
-- *Inferno* 1.70–72; 1.85–87; 4.39–42
 - *Letters* 53.7
-- *On Grammarians* 16
 - *Paradiso* 20.67–69
 - *Policraticus* 1.4
-- *Purgatorio* 21.97–98; 22.67–73; 30.48
+- *Purgatorio* 21.97–98; 22.67–73; 30.21; 30.48
 - *Severus Alexander* 14.5
 - *Tab. Vindol.* 118
 - *Vergilium cecinisse loquar pia munera Christi* 23
+
+### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Juvenal 7.226–227
+- Quintilian 1.8.5
 
 ### Modern works
 - Erich Auerbach, *Figura* (1938)
@@ -288,6 +292,7 @@ Curated bibliography: `bibliography/rome/r-12.8.md`.
 - Kermode (1975): title not given in the report
 - Frank Kermode, *The Classic* (1975)
 - Ricchieri (2016): title not given in the report
+- Ricchieri, *Studi storici* (2016)
 - Tommaso Ricchieri, *Studi storici* (2016)
 - Isidore. Danuta Shanzer (1994): title not given in the report
 
