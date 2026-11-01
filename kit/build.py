@@ -705,6 +705,19 @@ if cl_sessions and 'changelog' not in OMIT:
     recent_rows += f'<a class="hrow" href="#changelog" data-target="changelog"><span class="n">{html.escape(re.sub(r'(\w{3})\w* \d{4}$', r'\1', _date))}</span><span class="t">{md_inline(_title)}<small>{html.escape(_sess)} · the kit changelog</small></span><span class="pill prog">session</span></a>'
 for d, short, col, code, title, pid, model in RECENT:
     recent_rows += f'<a class="hrow" href="#{pid}" data-target="{pid}" style="--c:{col}"><span class="n">{short_date(d).replace(" 2026", "")}</span><span class="t">{html.escape(code)} · {html.escape(title)}<small>{html.escape(short)}{" · " + html.escape(model) if model else ""}</small></span><span class="pill live">unit</span></a>'
+# "How every course works": the constants. P80 (1 Nov 2026): an edition replaces any line that names a course it does
+# not hold with its own (EDITIONS[...]['rules'], keyed by the line's bold head); the full Academy keeps these as written.
+RULE_LINES = [
+    ('One reader.', 'Every course is written for the same person and read in order, on a phone, with the citations checked.'),
+    ('Sources first.', 'A unit names its sources and says where they disagree; a claim that cannot be sourced is marked unsourced or left out.'),
+    ('One unit per chat, built in full.', 'Each unit is written from a published brief or prompt, in its own chat, with its closing artefact: a self-test and carry-forward ideas for the history courses, a shipped deliverable for Brand + AI.'),
+    ('Audited every four units.', 'After every four units written in a hub, a stratified sample of claims is checked against its sources with a second model; a unit that fails gets a full audit. The model that wrote each unit is recorded.'),
+    ('An open syllabus.', 'Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.'),
+]
+_own = ED.get('rules', {})
+if set(_own) - {h for h, _ in RULE_LINES}:
+    raise SystemExit(f'EDITIONS[{EDITION!r}] rules name no constants line: {sorted(set(_own) - {h for h, _ in RULE_LINES})}')
+RULES = '\n'.join(f'      <li><strong>{h}</strong> {_own.get(h, t)}</li>' for h, t in RULE_LINES)
 roothome = f"""
 <section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Academy" data-u="HOME" data-c="var(--red)" hidden>
   <header class="hero resume" data-progress='{json.dumps(_prog)}'>
@@ -725,11 +738,7 @@ roothome = f"""
   <details class="howto rules">
     <summary><h2>How every course works</h2><span>the constants</span></summary>
     <ol>
-      <li><strong>One reader.</strong> Every course is written for the same person and read in order, on a phone, with the citations checked.</li>
-      <li><strong>Sources first.</strong> A unit names its sources and says where they disagree; a claim that cannot be sourced is marked unsourced or left out.</li>
-      <li><strong>One unit per chat, built in full.</strong> Each unit is written from a published brief or prompt, in its own chat, with its closing artefact: a self-test and carry-forward ideas for the history courses, a shipped deliverable for Brand + AI.</li>
-      <li><strong>Audited every four units.</strong> After every four units written in a hub, a stratified sample of claims is checked against its sources with a second model; a unit that fails gets a full audit. The model that wrote each unit is recorded.</li>
-      <li><strong>An open syllabus.</strong> Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.</li>
+{RULES}
     </ol>
   </details>
   <p class="totals mono">{N_LIVE} course{"s" if N_LIVE != 1 else ""}{f" · {TOTALS['reports']} reports" if HISTORY else ""}{f" · {TOTALS['units']} units" if MD else ""} · {TOTALS['words']:,} words · {hours(TOTALS['words'])} h of reading</p>
