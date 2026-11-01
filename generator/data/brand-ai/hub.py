@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v8.3 · 30 Oct 2026'
+VERSION = 'v8.4 · 1 Nov 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -218,6 +218,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-11-01 13:00', "v8.4. DD-B3 erratum (backlog row H-3, P77; decided by Pedro 1 Nov 2026): the opening's \"Evidence grades\" paragraph, which defines the three grades every later section labels by, moved unchanged to the top of §1.0, so it is read before the methods; the X-fetch and interests paragraphs and the pointer to B1 to B4 stay in the opening, read in \"The writer's opening note\". A fresh Opus 5.5 agent read the unit after the move: one sentence counted the grades among the opening's limits, now \"Two limits shape this unit, and they are stated once here.\" No other text changed."),
     ('2026-10-30 09:00', "v8.3. figures added (P42), backlog row N3: the figure pass of skills/write-unit run over all twelve filed units, each by a fresh Opus 5.5 agent that saw only its unit, viz.py's docstring and the figure pass, then checked by a separate fresh Opus 5.5 agent not shown the adder's report (Fable 5.1 check owed, P48). 38 figures kept: A1 3, A2 2, A3 3, A4 4, A6 3, A9 4, B1 3, B2 4, B3 3, B4 4, B5 3, DD-B3 2; 4 dropped after failing the check twice (A2 §2 Socialinsider views by format, A6 §3.4 Ahrefs click-through, B5 §6 preference-template-skill rule, DD-B3 §1.6 nanochat time to GPT-2). Prose, citations, front matter, written dates and word counts unchanged; the audit counter does not move. The flow kind now wraps its notes inside the box (viz.py)."),
     ('2026-10-29 22:30', "v8.2. A4 Voice, disclosure and the record written (Opus 5.5, own context, search off), fresh-checked by Fable 5.1 in a separate context (fix, 2 errors, 3 should-fix, 8 minor; all applied) and filed: reading page under course A, A4 marked written; Audit 3 counter 4 of 4: Audit 3 (DD-B3, A3, B5, A4) runs before A5."),
     ('2026-10-29 21:30', "v8.1. B5 Skills and automation written (Opus 5.5, own context, search off), fresh-checked by Fable 5.1 in a separate context (fix, 1 error, 4 should-fix, 5 minor; all applied) and filed: reading page under course B, B5 marked written; A4 next; Audit 3 counter 3 of 4."),

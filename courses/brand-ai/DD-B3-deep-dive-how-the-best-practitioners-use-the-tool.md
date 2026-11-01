@@ -9,11 +9,9 @@ search: on
 
 # DD-B3 · Deep dive: how the best practitioners use the tool
 
-Every source in this unit was opened, or tried, on 29 October 2026. Three limits shape what follows, and they are stated once here.
+Every source in this unit was opened, or tried, on 29 October 2026. Two limits shape this unit, and they are stated once here.
 
 **Karpathy's posts on X could not be opened.** X refused the fetch (robots rule) for every status link tried. Where a post matters, the unit quotes it through a named reporter that reproduces it (Simon Willison, The Decoder, TechCrunch, VentureBeat) and says so; the post's date is the one the reporter gives, cross-checked against the date encoded in the status number (my decoding of X's public ID format, not a published source). His blog, his repositories, his gist, his YouTube metadata and the Dwarkesh transcript were opened directly and are cited as primary.
-
-**Evidence grades.** Each method gets one of three grades, as the brief asks. *Measured*: a controlled comparison with a reported sample or benchmark. *Documented practice*: a named person or organisation describing what they do, with an artefact that can be inspected (a repository, a log, a leaderboard). *Stated opinion*: a named person's view with nothing inspectable behind it. Vendor figures and anecdote are labelled where they appear.
 
 **Interests.** This unit was written by an Anthropic model. Three of its methods are Anthropic's own documents, and Karpathy joined Anthropic on 19 May 2026 (§1.9). Nothing here was weighted to favour them; the reader should still know.
 
@@ -22,6 +20,8 @@ What a context window is and why each turn re-sends the chat is B1; model and ef
 ## 1 · Karpathy's documented practice
 
 ### 1.0 · "The Karpathy method" is a label others made
+
+**Evidence grades.** Each method gets one of three grades, as the brief asks. *Measured*: a controlled comparison with a reported sample or benchmark. *Documented practice*: a named person or organisation describing what they do, with an artefact that can be inspected (a repository, a log, a leaderboard). *Stated opinion*: a named person's view with nothing inspectable behind it. Vendor figures and anecdote are labelled where they appear.
 
 Karpathy has no method by that name. The phrase appears in titles by third parties, among them "Stop Prompting Claude. Use Karpathy's Method Instead." ([SozAI transcript page](https://sozai.app/transcript/stop-prompting-claude-karpathys-method/index.md)) and "The Karpathy Loop: AI Agents Running 700 Experiments Autonomously" ([Noqta](https://www.noqta.tn/en/blog/karpathy-autoresearch-autonomous-ai-experiments-loop-2026)); titles as listed in search results, 29 October 2026. The most-shared artefact under his name, a `CLAUDE.md` of four coding rules, was written by the developer Forrest Chang, who distilled it from a Karpathy post of 26 January 2026; the reporting article says Karpathy has not explicitly endorsed it, though it adds that he has shared the project ([Pillitteri, 4 May 2026](https://pasqualepillitteri.it/en/news/1872/karpathy-claude-md-trending-github-llm-coding)). One blog cites an "AISN 2026" talk; a search for that name on 29 October 2026 returned no record of any such talk, so nothing attributed to it is used here.
 
