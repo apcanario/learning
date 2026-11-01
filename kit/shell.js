@@ -272,8 +272,8 @@
     var el=document.getElementById(h);
     if(el){var p=el.closest('.panel');if(p){show(p.id,false).then(function(){if(current===p.id)reveal(el);});return;}}
     // an id inside a file not yet fetched: a report section (#m23-2) by its numbering, its accordions (#m23-sources,
-    // #m23-made, P68) by their suffix, any other (#rs-u3) by data-anchors
-    var pid=h.replace(/-(\d+|sources|made)$/,'');
+    // #m23-made, P68; #m23-note, P73) by their suffix, any other (#rs-u3) by data-anchors
+    var pid=h.replace(/-(\d+|sources|made|note)$/,'');
     if(pid===h||!isReport(pid)){pid=null;panels.some(function(p){if((' '+(p.getAttribute('data-anchors')||'')+' ').indexOf(' '+h+' ')>=0){pid=p.id;return true;}});}
     if(pid){show(pid,false).then(function(){var t=document.getElementById(h);if(t&&current===pid)reveal(t);});return;}
     show('home',false);

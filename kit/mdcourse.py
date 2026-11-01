@@ -137,12 +137,19 @@ def url_breaks(h):
     return re.sub(r'>([^<]+)<', lambda m: '>' + _URL.sub(brk, m.group(1)) + '<', f'>{h}<')[1:-1]
 
 
-def reading(pid, body, scope, sources, made, nsrc=None, chev=''):
+def reading(pid, body, scope, sources, made, nsrc=None, chev='', note=False):
     """The reading layout for one page. body: the unit's HTML with ids on its h2s and the process sections already
     taken out; scope: the one-line scope (html, may be empty); sources: the Sources list (html, may be empty);
     made: [(heading, html, id or None)] for "How this unit was made". Returns (the scope line for the header, the
-    sticky bar and the stepped text, which follow the header, and the two accordions)."""
+    sticky bar and the stepped text, which follow the header, and the two accordions).
+    P73 (1 Nov 2026; Pedro: "put the method text at the end like the sources, collapsed in its own section"): with
+    note, the text a unit puts before its first h2 leaves section 1 and becomes a third closed accordion after the
+    text, "The writer's opening note" (id <pid>-note), between Sources and "How this unit was made". The words are the
+    unit's own, unchanged; only where they are read moves."""
     pre, secs = sections(body)
+    opening = ''
+    if note and secs and re.sub(r'<[^>]+>|\s', '', pre):
+        opening, pre = pre, ''
     if not secs:                                  # a page with no h2 is one section
         secs, pre = [(f'{pid}-0', '', pre)], ''
     n = len(secs)
@@ -164,15 +171,19 @@ def reading(pid, body, scope, sources, made, nsrc=None, chev=''):
                    for k, (sid, kick, t) in enumerate(items))
     bar = (f'<div class="stepbar" data-n="{n}"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of {n}</span>'
            f'<span class="stt">{e(plain(items[0][2]))}</span></span>{chev}</summary><ol class="seclist">{menu}</ol>'
-           f'<div class="secx"><a href="#{pid}-sources" data-acc>Sources</a><a href="#{pid}-made" data-acc>How this unit was made</a>'
+           f'<div class="secx"><a href="#{pid}-sources" data-acc>Sources</a>'
+           + (f'<a href="#{pid}-note" data-acc>The writer\'s opening note</a>' if opening else '')
+           + f'<a href="#{pid}-made" data-acc>How this unit was made</a>'
            f'<button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div>')
     head = f'<p class="scope">{scope}</p>' if scope else ''
     cnt = f'<span class="an">{nsrc}</span>' if nsrc else ''
     src = (f'<details class="acc src" id="{pid}-sources"><summary><span class="at">Sources</span>{cnt}</summary><div class="accb">{url_breaks(sources) if sources else "<p>No source list on file for this page.</p>"}</div></details>')
+    opn = (f'<details class="acc note" id="{pid}-note"><summary><span class="at">The writer\'s opening note</span></summary>'
+           f'<div class="accb">{opening}</div></details>') if opening else ''
     mk = ''.join((f'<h3 id="{i}">' if i else '<h3>') + f'{h}</h3>{x}' for h, x, i in made if x)
     howm = (f'<details class="acc made" id="{pid}-made"><summary><span class="at">How this unit was made</span>'
             f'<span class="an">{len([1 for _, x, _ in made if x])} parts</span></summary><div class="accb">{mk}</div></details>')
-    return head, bar + f'<div class="report steps">{"".join(steps)}</div>', f'<div class="process">{src}{howm}</div>'
+    return head, bar + f'<div class="report steps">{"".join(steps)}</div>', f'<div class="process">{src}{opn}{howm}</div>'
 
 
 def brief_box(text, label='Copy brief'):
@@ -288,7 +299,7 @@ def build(m, crumbs, theme, pill_next, chev):
                     fresh.append(('Fresh check', lines, None))
         u = unit_of.get(code)
         made = [('Provenance', f'<p>{r["intro"]}</p>', None)] + unsure + fresh + ([('The brief', brief_box(u[4]), None)] if u else [])
-        head, steps, end = reading(r['id'], pre + ''.join(text), e(u[2]) if u else '', src, made, src.count('<li>'), chev)
+        head, steps, end = reading(r['id'], pre + ''.join(text), e(u[2]) if u else '', src, made, src.count('<li>'), chev, note=True)
         if src_id:            # the Sources heading's old id still lands, on the accordion's title
             end = end.replace('<span class="at">Sources</span>', f'<span class="at" id="{src_id}">Sources</span>', 1)
         P.append(panel(r['id'], 'report', f'''

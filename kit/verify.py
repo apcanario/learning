@@ -35,9 +35,11 @@ Centred drawings (P50): every sitemap, objects, decision, states and wireflow fi
 in carries data-x0 where it starts, so a phone frame opens on it.
 Figure keys (P52): every viz block in the vault, every history figure declaration, every course home figure and every
 examples block uses only the keys viz.VIZ_KEYS documents for its kind, and viz.render leaves the block it draws unchanged.
+Opening notes (P73): a markdown unit's text before its first heading is a closed accordion after Sources, "The writer's
+opening note", on every unit that has one and on none that has not; section 1 opens on its heading; a deep link lands.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
-import sys, json, pathlib, re, threading, functools
+import sys, json, pathlib, re, threading, functools, html as H
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
@@ -377,6 +379,44 @@ def check_viz_keys(fails):
     fails += ['figure keys: ' + b for b in bad[:20]]
     print(f'figure keys (P52): {n} blocks read, {len(bad)} undocumented keys')
 
+def check_notes(fails):
+    """P73 (1 Nov 2026): a markdown unit's text before its first heading is read at the end, in its own closed accordion,
+    "The writer's opening note" (#<pid>-note), between Sources and "How this unit was made": present, closed and
+    holding that text on every unit that has an opening, absent on one that has none; section 1 no longer carries it."""
+    import mdcourse
+    bad, have, none = [], 0, 0
+    for c in COURSES:
+        if c['family'] != 'markdown' or not (R.parent / c['vault']).is_dir(): continue
+        for f in sorted((R.parent / c['vault']).glob('*.md')):
+            src = f.read_text()
+            m = re.match(r'---\n(.*?)\n---\n', src, re.S)
+            if not m: continue
+            code = re.search(r'^code:\s*(\S+)', m.group(1), re.M)
+            if not code: continue
+            built = list(SITE.glob(f'*/read-{code.group(1).lower()}.html'))
+            if not built: continue
+            pid, page = 'read-' + code.group(1).lower(), built[0].read_text()
+            opening = re.sub(r'^#\s.*$', '', src[m.end():].split('\n## ', 1)[0], flags=re.M).strip()
+            words = ' '.join(re.sub(r'[*_`\[\]()]', '', opening).split()[:6])
+            note = re.search(rf'<details class="acc note"( open)? id="{pid}-note">(.*?)</details>', page, re.S)
+            order = [x for x in re.findall(r'<details class="acc (src|note|made)"', page)]
+            if opening:
+                have += 1
+                if not note: bad.append(f'{pid}: the opening note is missing'); continue
+                if note.group(1): bad.append(f'{pid}: the opening note is open by default')
+                if order != ['src', 'note', 'made']: bad.append(f'{pid}: the accordions run {order}, expected Sources, the note, How this unit was made')
+                body = re.sub(r'<[^>]+>', '', note.group(2))
+                if words and ' '.join(re.sub(r'[*_`\[\]()]', '', H.unescape(body)).split()).find(words.split()[0]) < 0:
+                    bad.append(f'{pid}: the opening note does not hold the unit\'s opening ("{words}…")')
+                sec0 = re.search(r'<section class="sec" data-step="0">(.*?)</section>', page, re.S)
+                if sec0 and not sec0.group(1).lstrip().startswith('<h2'):
+                    bad.append(f'{pid}: section 1 still opens on text before its heading')
+            else:
+                none += 1
+                if note: bad.append(f'{pid}: an opening note on a unit with no opening')
+    fails += ['opening note: ' + b for b in bad]
+    print(f'opening notes (P73): {have} units with an opening, each with its closed note after Sources; {none} without, none shown')
+
 def check_figure_rules(fails):
     bad, n = [], 0
     for f in [SITE / 'index.html'] + sorted(x for x in SITE.rglob('*.html') if x.name != 'index.html'):
@@ -428,8 +468,8 @@ STEP_JS = r'''(pid) => {
   if (p.querySelector('.phead .prov, .phead .lede, .phead + .lede, .report .prov, .phead .toc')) out.push('process text or the old chips before the text');
   if (+bar.dataset.n !== n || bar.querySelectorAll('.seclist a').length !== n) out.push(`menu ${bar.querySelectorAll('.seclist a').length} items, bar ${bar.dataset.n}, sections ${n}`);
   if (secs.some(s => !s.querySelector(':scope > h2.band .bn'))) out.push('a section without its numbered band');
-  const acc = proc ? [...proc.children].map(d => (d.classList.contains('src') ? 'src' : d.classList.contains('made') ? 'made' : d.tagName) + (d.open ? ' open' : '')) : [];
-  if (!proc || kids.indexOf(proc) !== kids.indexOf(r) + 1 || acc.join() !== 'src,made') out.push(`after the text: ${acc.join() || 'nothing'}, expected Sources then How this unit was made, both closed`);
+  const acc = proc ? [...proc.children].map(d => (d.classList.contains('src') ? 'src' : d.classList.contains('note') ? 'note' : d.classList.contains('made') ? 'made' : d.tagName) + (d.open ? ' open' : '')) : [];
+  if (!proc || kids.indexOf(proc) !== kids.indexOf(r) + 1 || !['src,made', 'src,note,made'].includes(acc.join())) out.push(`after the text: ${acc.join() || 'nothing'}, expected Sources, the opening note where there is one, then How this unit was made, all closed`);
   want(+p.dataset.step || 0, 'on opening');
   if (+p.dataset.step) [...bar.querySelectorAll('.seclist a')][0].click();
   want(0, 'menu to 1');
@@ -468,6 +508,7 @@ READING_SHOTS = [
     ('4-section-2', "(pid) => { const a = document.querySelector('#' + pid + ' .sec.on .snext'); if (a) a.click(); }"),
     ('5-last-end', "(pid) => { const p = document.getElementById(pid); [...p.querySelectorAll('.seclist a')].pop().click(); window.scrollTo(0, document.documentElement.scrollHeight); }"),
     ('6-process-open', "(pid) => { const p = document.getElementById(pid); p.querySelectorAll('.process details').forEach(d => d.open = true); document.getElementById(pid + '-sources').scrollIntoView(); }"),
+    ('6a-note-open', "(pid) => { const n = document.getElementById(pid + '-note'); if (n) n.scrollIntoView(); }"),
     ('6b-made-open', "(pid) => { document.getElementById(pid + '-made').scrollIntoView(); }"),
     ('7-whole', "(pid) => { const p = document.getElementById(pid); p.querySelectorAll('.process details').forEach(d => d.open = false); p.querySelector('.stepbar .whole').click(); window.scrollTo(0, document.documentElement.scrollHeight * 0.4); }"),
 ]
@@ -493,7 +534,7 @@ def check_reading(br, fails):
         for cx in ctxs:
             rs = [i for i in ids if pg.evaluate(f"document.getElementById('{i}').dataset.ctx") == cx]
             if rs: sample.append((cx, rs[len(rs) // 2]))
-    retried, landed = [], 0
+    retried, landed, notes = [], 0, 0
     for cx, pid in sample:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
         n = pg.evaluate(f"document.querySelectorAll('#{pid} .report.steps > .sec').length")
@@ -509,6 +550,14 @@ def check_reading(br, fails):
         pg.goto(URL + f'#{pid}-sources'); pg.reload(); ready(pg); sec = pg.evaluate(SETTLE_JS, f'{pid}-sources')
         op = pg.evaluate(f"!!document.getElementById('{pid}-sources') && document.getElementById('{pid}-sources').open")
         if sec[0] != pid or not op or sec[2] is None or not -5 <= sec[2] <= 844 - 60: fails.append(f'reading: deep link #{pid}-sources gave panel {sec[0]}, top {sec[2]}, the accordion open {op}')
+        # P73: the writer's opening note, where the page has one, is closed until a link opens it, and a deep link lands
+        if pg.evaluate(f"!!document.getElementById('{pid}-note')"):
+            pg.goto(URL + f'#{pid}'); pg.reload(); ready(pg)
+            if pg.evaluate(f"document.getElementById('{pid}-note').open"): fails.append(f'reading: #{pid}-note is open before any link opens it')
+            pg.goto(URL + f'#{pid}-note'); pg.reload(); ready(pg); sec = pg.evaluate(SETTLE_JS, f'{pid}-note')
+            op = pg.evaluate(f"document.getElementById('{pid}-note').open")
+            if sec[0] != pid or not op or sec[2] is None or not -5 <= sec[2] <= 844 - 60: fails.append(f'reading: deep link #{pid}-note gave panel {sec[0]}, top {sec[2]}, the note open {op}')
+            else: notes += 1
         # Continue: read to section n, leave for the course home, come back through its Continue button; then a reload
         j = n - 1
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
@@ -523,7 +572,7 @@ def check_reading(br, fails):
     if errs: fails.append('reading: console errors: ' + ' | '.join(errs[:3]))
     if retried: print(f'reading: fresh-load anchors that landed only on the retry: {", ".join(retried)}')
     print(f'reading: {len(ids)} units and reports, {nsec} sections, each reached by next, previous and the menu, "Whole unit" on and off, '
-          f'both accordions closed after the text and Sources opened by its links; deep links to a section ({landed} of {len(sample)}) and to Sources, '
+          f'both accordions closed after the text and Sources opened by its links; deep links to a section ({landed} of {len(sample)}), to Sources and to the opening note ({notes}), '
           f'and Continue and a reload resuming at the section, on one page of each course ({", ".join(p for _, p in sample)})')
     ctx.close()
 
@@ -667,6 +716,7 @@ def main():
     errors, fails = [], []
     check_files(fails)
     check_viz_keys(fails)
+    check_notes(fails)
     check_figure_rules(fails)
     with sync_playwright() as p:
         br = p.chromium.launch()
