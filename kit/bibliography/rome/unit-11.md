@@ -171,7 +171,7 @@ Curated bibliography: `bibliography/rome/r-11.4.md`.
 - *Natural History* 7.158; 34.31
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Appian 4.32; 4.32–33; 4.32–34
+- Appian 4.32; 4.32–33
 - Dio 48.44; 49.38.1
 - Quintilian 1.1.6
 - Valerius Maximus 4.4; 8.3.3
