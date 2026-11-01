@@ -248,3 +248,35 @@ Figures dropped in this session after three failed checks (15): 11.7 the flow of
 **Rome 7.2, Dio on the philosophers.** A fresh drafter found, on LacusCurtius (Cary's Loeb, vol. 8), Vespasian's expulsion of the philosophers in the Loeb's Book 65, chapter 13, under the margin number LXVI, and proposed "(Dio 66.13)" → "(Dio 65(66).13)", the chapter only, since the page's section markers in chapter 13 are out of order. A separate fresh checker, which had not seen the drafter's work, confirmed it against its own search (the Loeb's Book 65 pages, Cary's introduction, the Commodus book's 73/LXXII layout matching the spec's example) and the chapter-only form. Applied as an exact replacement in the vault file and in `bibliography/rome/r-7.2.md`. Two things found and not applied, because the row named only 66.13: the same paragraph's "Dio 66.15" (Berenice) is the traditional number too and would become 65(66).15 (66.25, Titus' games, already agrees); and the checker reads Cary's introduction as saying the Loeb follows Boissevain's books, so the bracketed number is the traditional (Reimarus) one, not Boissevain's, which makes `AGENT-SPEC.md`'s wording ("with Boissevain's in brackets") wrong while its example (73(72)) is right. Both are proposed rows.
 
 **Greek 10.12, Otis's *Virgil*.** A fresh drafter found catalogues giving the Clarendon first edition as "1963 [i.e. 1964]" and a 1967 corrected reprint as "cop. 1964": the title page is dated 1963, the book and its copyright are 1964. It proposed keeping the report's 1964 and replacing the bibliography's "no titles or years given" line with full entries for Otis and Cairns. A separate fresh checker confirmed both from its own search (Zenon, Chester and Nantes catalogues; Penn's record and the *Classical Review* notice for Cairns) and changed only the lines' layout to the file's form. Applied: the report unchanged; `bibliography/greece/r-10.12.md` gains Cairns (Cambridge University Press, 1989) and Otis (Clarendon Press, 1964, title page dated 1963) under Modern works and loses the unresolved line. Neither report's Fable flag changes.
+
+## P85 · the 15 Rome figures R-2 dropped, restored (1 Nov 2026, row P71-3, Opus 5.5)
+
+Each module's figures were written by a fresh writer that saw only the module's vault text, the Lessons list of `kit/BACKLOG.md` and the kinds in `kit/viz.py`, as ```viz blocks at the place the old ones stood; no word of any module's text changed (checked after every edit against the text at `faf5a53`). Each figure was checked by a fresh figure-checker given only the text with its figures taken out, the captions and the drawings, and every re-check by a new one. From the second round on, the drawings were every frame a reader scrolls across, desktop and phone, dark and light, since `verify.py --shots` holds only a figure's first frame and the first-round checkers could not see the right of a wide figure. Every FIX was a wording or citation fix in a label, cell or caption, or one tone for spans the renderer had coloured one by one; none needed a redrawing. Renderer notes the checkers raised (the label column scrolling away on a phone, crowded dots, titles not in italic inside a figure, a capital I read as l, faint axes in the dark theme) go to P83 and P84 and were not counted. Reports: `rome-<id>-figures-p85-<n>.md`.
+
+**11.7, the flow of the Ides.** Check 1 FIX (the plan to drag the body to the Tiber made the conspirators'); check 2 PASS.
+
+**11.8, Flower's timeline.** Check 1 FIX (eleven spans in seven meaningless colours, now one tone); check 2 PASS.
+
+**12.1, the pairing matrix.** Check 1 FIX (poem 10 gives Gallus a farewell, not "Gallus' farewell"); check 2 PASS, all ten columns now in the frames.
+
+**12.2, the route of book 3.** Check 1 FIX (the Crete box gives Hesperia as the Penates' word in a dream); check 2 PASS.
+
+**12.3, the book matrix and the duel matrix.** The book matrix PASS at check 1. The duel matrix: check 1 FIX (the caption gave the three circuits of the walls a passage the text does not give); check 2 PASS.
+
+**12.4, the reception timeline.** Check 1 FIX (two span tones with no meaning); check 2 FIX (Confessions 1.13.20–21 and 1.13.22 cited apart, as the text does); check 3 PASS.
+
+**12.5, the matrix against *Odyssey* 11.** Check 1 FIX (6.440–444, not 6.440–449); check 2 PASS.
+
+**12.7, the test-case matrix.** Check 1 FIX (the Dido cell's Augustan reading given its subjects, as the text has it); check 2 PASS.
+
+**12.8, the reception matrix.** Check 1 FIX (the Bernard Silvestris commentary "read them the same way"); check 2 FIX (the Roman d'Eneas's second half; Proba's proem cited for what it says; the sortes' cases out of a figure that shows only the practice; the list of items without a passage completed); check 3 PASS.
+
+**13.3, the schools matrix and the timeline.** The schools matrix PASS at check 1. The timeline: check 1 FIX ("Selected dated events"); check 2 FIX (Marcus gives teachers to every branch of learning, with a salary); check 3 PASS.
+
+**13.5, the timeline.** Check 1 FIX (Suillius attacks Seneca openly, not his fortune); check 2 PASS.
+
+**13.7, the revolt flow.** Check 1 FIX (he asked the Senate; Egypt and most of Syria); check 2 FIX (the journey east and the return by Athens carry the text's citations); check 3 PASS.
+
+**13.8, the timeline.** Check 1 FIX (placed by date, not in the section's order); check 2 FIX (the afterlife of Marcus and the Meditations); check 3 PASS.
+
+All 15 restored; none dropped.
