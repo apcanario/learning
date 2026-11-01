@@ -155,7 +155,7 @@ COURSES = [GREECE, ROME, BRAND_AI, UX]
 EDITIONS = {
     'academy': dict(title='Academy', courses=None, omit=(), site='academy'),
     'greece': dict(title='Academy · Greece', courses=('greece',), omit=('changelog', 'backlog', 'build', 'figures', 'planned'),
-                   site='editions/greece',
+                   site='editions/greece', artifact='https://claude.ai/artifact/M9g881qokC98jC5VEo1Tk3',   # P80: its own private artifact
                    # P80: the edition's own constants where the shared line names a course it does not hold (Brand + AI)
                    rules={'One unit per chat, built in full.': 'Each report is written from its published prompt, in its own chat, with its closing artefact: a ten-question self-test and three ideas to carry forward.'}),
 }
