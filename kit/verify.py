@@ -25,6 +25,12 @@ Figure geometry (FIG_JS; V1, every kind since P55): on the examples page (one fi
 drawing fault P55 fixed, and the blocks that must stop the build) and, in the phone pass, on every panel with figures:
 nothing outside the drawing, text inside its box or bar, no two boxes or labels overlapping, no free label over a box.
 Links into an unopened panel on a fresh load are measured once the anchor has settled, with one retry (P56).
+Reading layout (P68): every unit and report opens on its scope, then the bar and the text, with nothing about how it
+was made before the text; each reads one section at a time, every section reached by next, previous and the menu, with
+"Section n of N" and the progress bar right at each step; "Whole unit" shows them all; Sources and "How this unit was
+made" are closed accordions after the text, and Sources opens from its links; on one page of each course a deep link
+to a section and to Sources lands on a fresh load, and Continue and a reload resume at the section last read. The
+panel checks measure each reading page whole.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools
@@ -44,7 +50,10 @@ SITE = R / 'academy'
 SHELL_MAX = 1024 * 1024   # A2: the shell stays under 1 MB
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self, *a): pass
-SERVER = ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(Quiet, directory=str(SITE)))
+class Server(ThreadingHTTPServer):
+    def handle_error(self, request, client_address):   # a fetch the browser dropped on navigating away is not a fault
+        if not isinstance(sys.exc_info()[1], (BrokenPipeError, ConnectionResetError)): super().handle_error(request, client_address)
+SERVER = Server(('127.0.0.1', 0), functools.partial(Quiet, directory=str(SITE)))
 threading.Thread(target=SERVER.serve_forever, daemon=True).start()
 URL = f'http://127.0.0.1:{SERVER.server_port}/index.html'
 # the visible panel holds its content: a panel in the shell at once, a report once its fetch has landed (or failed)
@@ -150,6 +159,8 @@ def check_panels(pg, label, fails):
     for pid in ids:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(30)
         if pg.evaluate(f"document.getElementById('{pid}').hasAttribute('data-failed')"): fails.append(f'{label} {pid}: the report did not load')
+        # P68: a reading page is measured whole (its "Whole unit" toggle), so every section is checked as before
+        pg.evaluate("document.querySelectorAll('.panel:not([hidden]) .stepbar .whole[aria-pressed=\"false\"]').forEach(b => b.click())")
         pg.evaluate("document.querySelectorAll('.panel:not([hidden]) details').forEach(d => d.open = true)")
         sw = pg.evaluate('[document.documentElement.scrollWidth, document.documentElement.clientWidth]')
         if sw[0] > sw[1]: fails.append(f'{label} {pid}: horizontal scroll {sw}')
@@ -256,6 +267,7 @@ def figure_rules(page, name):
     import html as H
     bad, n = [], 0
     prose = re.sub(r'<figure class="viz.*?</figure>', '', page, flags=re.S)
+    prose = re.sub(r'<div class="process">.*?<div class="pager">', '', prose, flags=re.S)   # P68: the text, not its sources
     bce = len(re.findall(r'\bBCE\b', prose)) > len(re.findall(r'\bBC\b', prose))
     for m in re.finditer(r'<figure class="viz viz-([\w-]+)[^"]*">(.*?)</figure>', page, re.S):
         kind, svg = m.group(1), m.group(2); n += 1
@@ -344,6 +356,122 @@ def fresh_land(pg, h, retried):
             return sec
         if attempt == 0: retried.append(f'#{h} (top {sec[2]})')
     return sec
+
+# P68 · the reading layout, on one reading page (a unit or a report) already shown: content first (the header with its
+# scope, then the bar, then the text; nothing about how the page was made before the text), process last (the two
+# accordions after the text, Sources then "How this unit was made", both closed), and the stepper: one section shown
+# at a time, "Section n of N" and the progress bar right at every step, next from the first section to the last and
+# previous back, the menu reaching every section, "Whole unit" showing all of them and returning to one.
+STEP_JS = r'''(pid) => {
+  const p = document.getElementById(pid), out = [];
+  const r = p.querySelector('.report.steps'), bar = p.querySelector('.stepbar');
+  if (!r || !bar || !r.classList.contains('stepping')) return {n: 0, bad: ['no stepper on the page']};
+  const secs = [...r.children].filter(s => s.classList.contains('sec')), n = secs.length;
+  const vis = () => secs.map((s, i) => s.offsetHeight > 0 ? i : -1).filter(i => i >= 0);
+  const want = (k, how) => { const v = vis();
+    if (v.length !== 1 || v[0] !== k) out.push(`${how}: sections shown [${v}], expected [${k}]`);
+    const sof = bar.querySelector('.sof').textContent.trim(); if (sof !== `Section ${k + 1} of ${n}`) out.push(`${how}: the bar reads "${sof}"`);
+    const w = parseFloat(bar.querySelector('.sprog i').style.width); if (!(Math.abs(w - 100 * (k + 1) / n) < 0.1)) out.push(`${how}: progress ${w}%`); };
+  const kids = [...p.children], ph = p.querySelector('.phead'), proc = p.querySelector('.process');
+  if (kids.indexOf(bar) !== kids.indexOf(ph) + 1 || kids.indexOf(r) !== kids.indexOf(bar) + 1) out.push('not header, bar, text in that order');
+  if (!ph.querySelector('h1 + .scope') && (!pid.startsWith('read-') || ph.querySelector('.eyebrow .pill.live'))) out.push('no scope line under the title');
+  if (p.querySelector('.phead .prov, .phead .lede, .phead + .lede, .report .prov, .phead .toc')) out.push('process text or the old chips before the text');
+  if (+bar.dataset.n !== n || bar.querySelectorAll('.seclist a').length !== n) out.push(`menu ${bar.querySelectorAll('.seclist a').length} items, bar ${bar.dataset.n}, sections ${n}`);
+  if (secs.some(s => !s.querySelector(':scope > h2.band .bn'))) out.push('a section without its numbered band');
+  const acc = proc ? [...proc.children].map(d => (d.classList.contains('src') ? 'src' : d.classList.contains('made') ? 'made' : d.tagName) + (d.open ? ' open' : '')) : [];
+  if (!proc || kids.indexOf(proc) !== kids.indexOf(r) + 1 || acc.join() !== 'src,made') out.push(`after the text: ${acc.join() || 'nothing'}, expected Sources then How this unit was made, both closed`);
+  want(+p.dataset.step || 0, 'on opening');
+  if (+p.dataset.step) [...bar.querySelectorAll('.seclist a')][0].click();
+  want(0, 'menu to 1');
+  for (let k = 1; k < n; k++) { secs[k - 1].querySelector(':scope > .secnav .snext').click(); want(k, `next to ${k + 1}`); }
+  if (secs[n - 1].querySelector(':scope > .secnav .snext:not(.send)')) out.push('the last section has a next-section button');
+  for (let k = n - 2; k >= 0; k--) { secs[k + 1].querySelector(':scope > .secnav .sprev').click(); want(k, `previous to ${k + 1}`); }
+  [...bar.querySelectorAll('.seclist a')].forEach((a, k) => { a.click(); want(k, `menu item ${k + 1}`); });
+  bar.querySelector('.whole').click(); if (vis().length !== n) out.push(`"Whole unit" shows ${vis().length} of ${n} sections`);
+  bar.querySelector('.whole').click(); if (vis().length !== 1) out.push(`after "Whole unit" off, ${vis().length} sections shown`);
+  [...bar.querySelectorAll('.seclist a')][0].click();
+  return {n, bad: out};
+}'''
+# a link into Sources (the menu's, then the one at the end of the last section) opens its accordion and brings it into view
+SRC_JS = r'''async (pid) => {
+  const p = document.getElementById(pid), d = document.getElementById(pid + '-sources'), out = [];
+  const seen = async () => { await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); const t = d.getBoundingClientRect().top; return d.open && t > -5 && t < innerHeight - 40; };
+  p.querySelector('.secmenu').open = true; p.querySelector('.secx a[href="#' + pid + '-sources"]').click();
+  if (!await seen()) out.push(`the menu's Sources link: open ${d.open}, top ${Math.round(d.getBoundingClientRect().top)}`);
+  d.open = false; const secs = p.querySelectorAll('.report.steps > .sec');
+  [...p.querySelectorAll('.seclist a')].pop().click();
+  secs[secs.length - 1].querySelector('.secnav .send').click();
+  if (!await seen()) out.push(`the last section's Sources link: open ${d.open}, top ${Math.round(d.getBoundingClientRect().top)}`);
+  d.open = false; [...p.querySelectorAll('.seclist a')][0].click(); window.scrollTo(0, 0);
+  return out;
+}'''
+
+# P68: with --shots, a --page reading page is also shot in the states its top does not show, one viewport each: the
+# section menu open, the end of section 1 (its next button), section 2 just opened by it, the end of the last section
+# with the two accordions closed, the two accordions open, and "Whole unit" mid-page
+READING_SHOTS = [
+    ('2-menu', "(pid) => { window.scrollTo(0, 0); document.querySelector('#' + pid + ' .secmenu').open = true; }"),
+    ('3-end-of-1', "(pid) => { const p = document.getElementById(pid); p.querySelector('.secmenu').open = false; p.querySelector('.sec.on .secnav').scrollIntoView({block: 'end'}); }"),
+    ('4-section-2', "(pid) => { const a = document.querySelector('#' + pid + ' .sec.on .snext'); if (a) a.click(); }"),
+    ('5-last-end', "(pid) => { const p = document.getElementById(pid); [...p.querySelectorAll('.seclist a')].pop().click(); window.scrollTo(0, document.documentElement.scrollHeight); }"),
+    ('6-process-open', "(pid) => { const p = document.getElementById(pid); p.querySelectorAll('.process details').forEach(d => d.open = true); document.getElementById(pid + '-sources').scrollIntoView(); }"),
+    ('7-whole', "(pid) => { const p = document.getElementById(pid); p.querySelectorAll('.process details').forEach(d => d.open = false); p.querySelector('.stepbar .whole').click(); window.scrollTo(0, document.documentElement.scrollHeight * 0.4); }"),
+]
+
+def check_reading(br, fails):
+    """P68 on every unit and report of every course, at phone width: STEP_JS and SRC_JS on each; then, on one page of
+    each course, a deep link to a section and to Sources on a fresh load, and Continue resuming at the section."""
+    errs = []
+    ctx, pg, _ = new_page(None, br, errs, 'reading', 390, 844, True)
+    pg.evaluate('localStorage.clear()')
+    ids = pg.eval_on_selector_all('.panel[data-kind="report"]', 'ps => ps.map(p => p.id)')
+    nsec, bad = 0, []
+    for pid in ids:
+        pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(20)
+        res = pg.evaluate(STEP_JS, pid); nsec += res['n']
+        bad += [f'{pid}: {b}' for b in res['bad'][:4]]
+        bad += [f'{pid}: {b}' for b in pg.evaluate(SRC_JS, pid)]
+    fails += ['reading ' + b for b in bad[:20]]
+    # one page per course: deep links and Continue
+    sample = []
+    for c in COURSES:
+        ctxs = [c['home_id']] if c['family'] == 'history' else [f"{c.get('prefix', c['id'])}-{k.lower()}" for k in c['tracks']]
+        for cx in ctxs:
+            rs = [i for i in ids if pg.evaluate(f"document.getElementById('{i}').dataset.ctx") == cx]
+            if rs: sample.append((cx, rs[len(rs) // 2]))
+    retried, landed = [], 0
+    for cx, pid in sample:
+        pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
+        n = pg.evaluate(f"document.querySelectorAll('#{pid} .report.steps > .sec').length")
+        if n < 2: continue
+        k = min(2, n - 1)
+        sid = pg.evaluate(f"document.querySelectorAll('#{pid} .report.steps > .sec')[{k}].querySelector('h2').id")
+        pg.evaluate('localStorage.clear()')
+        sec = fresh_land(pg, sid, retried)
+        st = pg.evaluate(f"[+document.getElementById('{pid}').dataset.step, [...document.querySelectorAll('#{pid} .report.steps > .sec')].filter(s => s.offsetHeight > 0).length]")
+        if sec[0] != pid or not sec[1] or not -5 <= sec[2] <= 200 or st != [k, 1]: fails.append(f'reading: deep link #{sid} gave panel {sec[0]}, top {sec[2]}, step and sections shown {st}, expected {pid} at section {k + 1}')
+        else: landed += 1
+        # the accordion is at the page's end, so on a short section it lands in view rather than at the top
+        pg.goto(URL + f'#{pid}-sources'); pg.reload(); ready(pg); sec = pg.evaluate(SETTLE_JS, f'{pid}-sources')
+        op = pg.evaluate(f"!!document.getElementById('{pid}-sources') && document.getElementById('{pid}-sources').open")
+        if sec[0] != pid or not op or sec[2] is None or not -5 <= sec[2] <= 844 - 60: fails.append(f'reading: deep link #{pid}-sources gave panel {sec[0]}, top {sec[2]}, the accordion open {op}')
+        # Continue: read to section n, leave for the course home, come back through its Continue button; then a reload
+        j = n - 1
+        pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
+        pg.evaluate(f"[...document.querySelectorAll('#{pid} .seclist a')][{j}].click()")
+        pg.evaluate(f"location.hash = '{cx}'"); ready(pg); pg.wait_for_timeout(50)
+        pg.click(f'#{cx} .hbtn.cont'); ready(pg); pg.wait_for_timeout(50)
+        st = pg.evaluate(f"[[...document.querySelectorAll('.panel')].find(p => !p.hidden).id, +document.getElementById('{pid}').dataset.step, [...document.querySelectorAll('#{pid} .report.steps > .sec')].findIndex(s => s.offsetHeight > 0)]")
+        if st != [pid, j, j]: fails.append(f'reading: Continue on {cx} after reading section {j + 1} of {pid} gave (panel, step, section shown) {st}')
+        pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(50)
+        st = pg.evaluate(f"[+document.getElementById('{pid}').dataset.step, [...document.querySelectorAll('#{pid} .report.steps > .sec')].findIndex(s => s.offsetHeight > 0)]")
+        if st != [j, j]: fails.append(f'reading: reloading #{pid} after section {j + 1} gave (step, section shown) {st}')
+    if errs: fails.append('reading: console errors: ' + ' | '.join(errs[:3]))
+    if retried: print(f'reading: fresh-load anchors that landed only on the retry: {", ".join(retried)}')
+    print(f'reading: {len(ids)} units and reports, {nsec} sections, each reached by next, previous and the menu, "Whole unit" on and off, '
+          f'both accordions closed after the text and Sources opened by its links; deep links to a section ({landed} of {len(sample)}) and to Sources, '
+          f'and Continue and a reload resuming at the section, on one page of each course ({", ".join(p for _, p in sample)})')
+    ctx.close()
 
 def check_split(br, fails):
     """In the browser: a stub is empty until opened, its file is fetched once and kept, a section link into an unopened
@@ -489,6 +617,7 @@ def main():
         br = p.chromium.launch()
         check_split(br, fails)
         check_figures(br, fails)
+        check_reading(br, fails)
 
         # ---- phone ------------------------------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)
@@ -738,11 +867,18 @@ def main():
                 for theme in ('dark', 'light'):
                     pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
                     for pid in ['home', 'rome', rp] + [x for x in PAGES if x not in ('home', 'rome', rp)]:
+                        pg.evaluate(f"localStorage.removeItem('pm-sec-{pid}')")   # P68: each shot opens on section 1
                         pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
                         shoot(pg, SHOTS / f'{name}-{pid}-{theme}.png', w, h)
+                        if pid in PAGES and pg.query_selector(f'[id="{pid}"] .report.steps'):   # P68: the reading states the top does not show
+                            for state, js in READING_SHOTS:
+                                pg.evaluate(js, pid); pg.wait_for_timeout(200)
+                                pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{state}-{theme}.png'))
+                            pg.evaluate("(pid) => { const p = document.getElementById(pid); p.querySelectorAll('details').forEach(d => d.open = false); const w = p.querySelector('.stepbar .whole'); if (w.getAttribute('aria-pressed') === 'true') w.click(); [...p.querySelectorAll('.seclist a')][0].click(); window.scrollTo(0, 0); }", pid)
                         if pid in PAGES:   # P41: each figure of a --page panel, as the reader sees it in its frame
                             for k, fig in enumerate(pg.query_selector_all(f'[id="{pid}"] figure.viz')):
                                 kind = ([c for c in fig.get_attribute('class').split() if c.startswith('viz-') and c != 'viz-wide'] or ['viz-figure'])[0][4:]
+                                fig.evaluate("f => { const s = f.closest('.sec'), p = f.closest('.panel'); if (s && !s.classList.contains('on')) p.querySelector('.seclist a[data-step=\"' + s.dataset.step + '\"]').click(); }")   # P68: its section shown first
                                 fig.scroll_into_view_if_needed(); pg.wait_for_timeout(30)
                                 fig.screenshot(path=str(SHOTS / f'{name}-{pid}-fig-{k + 1:02d}-{kind}-{theme}.png'), timeout=120000)
                             pg.evaluate('window.scrollTo(0, 0)')

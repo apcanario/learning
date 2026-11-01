@@ -672,3 +672,77 @@ a.course:active{transform:translateY(0);box-shadow:none}
 .pnum{font-size:44px;letter-spacing:-.03em}
 .ml .gk{font-size:30px}
 
+
+/* 9 · Reading layout (P68, 1 Nov 2026) -----------------------------------------
+   Every unit and report (mdcourse.reading, for both families): the one-line scope under the title; a sticky bar
+   under the top bar with "Section n of N", the section menu, the "Whole unit" toggle and a progress bar; one section
+   shown at a time (shell.js adds .stepping), each opened by a full-width numbered band; next and previous at the end
+   of each section; Sources and "How this unit was made" as two closed accordions after the text. Without script
+   every section shows; in print every section shows and the controls do not. */
+:root{--stepbar:54px}
+.phead .scope{font-size:17px;line-height:1.5;color:var(--muted);max-width:62ch;margin:4px 0 0}
+.phead:has(+ .stepbar){margin-bottom:18px}
+/* the bar: the column's full width, opaque so the text never shows through, stuck just under the top bar */
+.stepbar{position:sticky;top:calc(var(--bar) + env(safe-area-inset-top,0px));z-index:12;display:flex;flex-wrap:wrap;align-items:flex-start;column-gap:8px;margin:0 -16px 16px;padding:2px 16px 0;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.secmenu{flex:1 1 0;min-width:0}
+.secmenu>summary{list-style:none;display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer;min-width:0}
+.secmenu>summary::-webkit-details-marker{display:none}
+.secmenu .sof{flex:0 0 auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--cc,var(--red))}
+.secmenu .sof b{font-weight:700}
+.secmenu .stt{flex:1 1 auto;min-width:0;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.secmenu .chev{flex:0 0 16px;width:16px;height:16px;color:var(--muted);transition:transform .15s}
+.secmenu[open] .chev{transform:rotate(180deg)}
+.seclist{list-style:none;margin:0;padding:2px 0 6px;max-height:min(60vh,520px);overflow-y:auto;overscroll-behavior:contain;border-top:1px solid var(--line)}
+.seclist a{display:flex;align-items:center;gap:10px;min-height:44px;padding:4px 2px;text-decoration:none;color:var(--muted);font-size:14px;line-height:1.3}
+.seclist .n{flex:0 0 2.2em;font-family:var(--mono);font-size:11.5px;color:var(--cc,var(--red))}
+.seclist .t{flex:1 1 auto;min-width:0}
+.seclist a[aria-current]{color:var(--fg);font-weight:600}
+.secx{display:flex;flex-wrap:wrap;column-gap:18px;border-top:1px solid var(--line);padding:2px 0 6px}
+.secx a{min-height:44px;display:inline-flex;align-items:center;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--teal);text-decoration:none}
+.stepbar .whole{flex:0 0 auto;min-height:44px;margin:2px 0;padding:0 10px;border:1px solid var(--line-2);border-radius:2px;background:transparent;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.stepbar .whole[aria-pressed="true"]{background:var(--cc,var(--red));border-color:var(--cc,var(--red));color:var(--on-accent)}
+.sprog{flex:0 0 calc(100% + 32px);height:3px;margin:0 -16px;background:var(--line)}
+.sprog i{display:block;height:100%;width:0;background:var(--cc,var(--red))}
+@media (prefers-reduced-motion:no-preference){.sprog i{transition:width .25s}}
+/* one section at a time; "Whole unit" shows them all */
+.report.stepping:not(.whole)>.sec:not(.on){display:none}
+.report.whole .secnav{display:none}
+.report.whole>.sec+.sec{margin-top:34px}
+/* each h2 opens on a full-width numbered band, the break between sections; h3 lighter */
+.report h2.band{display:flex;align-items:flex-start;gap:14px;margin:0 -16px 20px;padding:18px 16px 18px;border-top:3px solid var(--cc,var(--red));background:color-mix(in srgb,var(--cc,var(--red)) 11%,var(--bg))}
+.report>.sec>*:not(h2)~h2.band{margin-top:30px}
+.band .bn{flex:0 0 auto;font-family:var(--mono);font-size:30px;line-height:1;letter-spacing:-.02em;color:var(--cc,var(--red));padding-top:1px}
+.band .bh{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:4px}
+.band .bk{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.band .bt{font-size:22px;line-height:1.15;letter-spacing:-.015em;font-weight:700;text-wrap:balance}
+.report.steps h3{font-size:16.5px;font-weight:600;letter-spacing:0;margin:26px 0 6px}
+.panel[data-kind="report"] [id]{scroll-margin-top:calc(var(--bar) + env(safe-area-inset-top,0px) + var(--stepbar) + 10px)}
+/* next and previous at the end of each section; next is the filled one */
+.secnav{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0}
+.secnav a{flex:1 1 40%;min-width:0;min-height:56px;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:10px 14px;border:1px solid var(--line-2);border-radius:2px;text-decoration:none;color:var(--fg);font-size:14px;line-height:1.3}
+.secnav a span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.secnav a b{font-weight:600}
+.secnav a.snext{margin-left:auto;align-items:flex-end;text-align:right;background:var(--cc,var(--red));border-color:var(--cc,var(--red));color:var(--on-accent)}
+.secnav a.snext span{color:var(--on-accent);opacity:.85}
+.secnav a.send{background:transparent;border-color:var(--line-2);color:var(--fg)}
+.secnav a.send span{color:var(--muted);opacity:1}
+/* process last: two closed accordions after the text */
+.process{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:40px}
+details.acc{background:var(--card);border:1px solid var(--line-2)}
+details.acc>summary{list-style:none;display:flex;align-items:center;gap:10px;min-height:52px;padding:0 16px;cursor:pointer}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::after{content:"+";font-family:var(--mono);color:var(--muted);font-size:16px}
+details.acc[open]>summary::after{content:"–"}
+.acc .at{flex:1 1 auto;font-weight:600;font-size:15px}
+.acc .an{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.accb{padding:4px 16px 16px;border-top:1px solid var(--line);font-size:14px;line-height:1.55;overflow-wrap:anywhere}
+.accb h3{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.accb p,.accb ul,.accb ol{margin:0 0 10px;max-width:68ch}
+.accb ul,.accb ol{padding-left:20px}
+.accb li{margin-bottom:6px}
+.accb a{overflow-wrap:anywhere}
+.accb .pbox{margin:0 0 4px}
+@media (hover:hover){.seclist a:hover,.secx a:hover{color:var(--fg)}.secnav a:hover{border-color:var(--muted);background:var(--hover)}.secnav a.snext:not(.send):hover{filter:brightness(1.1);background:var(--cc,var(--red))}.stepbar .whole:hover{border-color:var(--muted);color:var(--fg)}details.acc>summary:hover{background:var(--hover)}}
+.secnav a:active,.stepbar .whole:active{transform:translateY(1px)}
+.secmenu>summary:focus-visible,.seclist a:focus-visible,.secx a:focus-visible,.secnav a:focus-visible,.stepbar .whole:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media print{.top,.drawer,.backdrop,.stepbar,.secnav,.pager{display:none!important}.report.stepping>.sec{display:block!important}body{padding:0}}

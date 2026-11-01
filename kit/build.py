@@ -16,6 +16,7 @@ a colour and a short name. Greece keeps its original panel ids (#greece, #syllab
 are namespaced (#rome, #rome-syllabus, #rm01).
 """
 import json, re, html, pathlib, importlib.util
+import markdown
 from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES
 import mdcourse
 import howbuilt
@@ -63,6 +64,16 @@ def yr(y):
     return f'{-y} BC' if y < 0 else f'AD {y}'
 
 
+# P68: the review folders and audits a report's "How this unit was made" lists (read as howbuilt.py reads them)
+REVIEW_FOLDERS = howbuilt._review_folders()
+AUDITS = {}
+for _c in HISTORY:
+    for _a in howbuilt._audits(_c['id']):
+        for _i in _a['reports']:
+            AUDITS.setdefault(_c['id'], {}).setdefault(_i, []).append(_a)
+    AUDITS.setdefault(_c['id'], {})
+
+
 def load(c):
     """Parse a course's syllabus and prompts index; build its report panels."""
     syl = (R / c['syllabus']).read_text()
@@ -105,20 +116,43 @@ def load(c):
             frag_ids.append((sid, t))
             return f'<h2 id="{sid}">{t}</h2>'
         frag = re.sub(r'<h2>(.*?)</h2>', addid, frag)
-        toc = ''.join(f'<a href="#{sid}">{t}</a>' for sid, t in frag_ids)
         model = c['prov'].get(i, c['default_model'])
         audit = f' · flagged for Fable 5.1 review (unit {c["audit_unit"]} audit)' if flagged(model) else ''
+        # P68: the reading layout (mdcourse.reading): the module's syllabus line as the scope, its curated bibliography
+        # as Sources, and its provenance, the writer's unsure list, its checks and audits and its prompt as
+        # "How this unit was made"
+        why = next((w for mid, _, w in c['umap'][u][2] if mid == i), '')
+        bib = R / 'bibliography' / c['id'] / f'r-{i}.md'
+        src, nsrc = '', 0
+        if bib.exists():
+            bt = re.sub(r'\A# .*\n', '', bib.read_text(encoding='utf-8'))
+            nsrc = len(re.findall(r'^\s*- ', bt, re.M))
+            src = markdown.markdown(bt).replace('<h2>', '<h3>').replace('</h2>', '</h3>').replace('<a href=', '<a target="_blank" rel="noopener" href=')
+        checks = []
+        for fo in REVIEW_FOLDERS:
+            f = fo['path'] / f'{c["id"]}-{i}.md'
+            if f.exists():
+                v = re.search(r'^Verdict:\s*(\w+)', f.read_text(encoding='utf-8'), re.M)
+                checks.append(f'<li>{html.escape(fo["label"])} ({html.escape(fo["model"])}, {html.escape(fo["date"])}): {html.escape(v.group(1)) if v else "no verdict line"} · {howbuilt.gh(f.relative_to(R.parent).as_posix())}</li>')
+        for a in AUDITS[c['id']].get(i, []):
+            sc = a['scorecard']
+            what = (': ' + ', '.join(x for x in [sc[0], f'mean {sc[1]}' if sc[1] else '', (f'{sc[2]} factual error{"s" if sc[2] != 1 else ""}' if sc[2] is not None else '')] if x)) if sc else ''
+            checks.append(f'<li>Audit {html.escape(a["id"])} ({html.escape(a["model"])}, {html.escape(a["date"])}){html.escape(what)} · {howbuilt.gh(a["path"].relative_to(R.parent).as_posix())}</li>')
+        unsure = ''.join(markdown.markdown(f.read_text(encoding='utf-8')) for fo in REVIEW_FOLDERS for f in [fo['path'] / f'{c["id"]}-{i}-writer.md'] if f.exists())
+        made = [('Provenance', f'<p>Written with {html.escape(model)}{audit}.</p>', None), ("Writer's unsure list", unsure, None),
+                ('Checks and audits', f'<ul>{"".join(checks)}</ul>' if checks else '', None),
+                ('The prompt this answers', mdcourse.brief_box(meta['prompt'], 'Copy prompt'), None)]
+        scope, steps, end = mdcourse.reading(sl, frag, html.escape(why), src, made, nsrc, ICON_CHEV)
         panels.append(f'''
-<section class="panel" id="{sl}" data-unit="{u}" data-ctx="{c['id']}" data-kind="report" data-split="r-{i}" hidden>
+<section class="panel" id="{sl}" data-unit="{u}" data-ctx="{c['id']}" data-kind="report" data-split="r-{i}" style="--cc:{c['color']}" hidden>
   <header class="phead">
     {crumbs(('Academy', 'home'), (c['short'], c['home_id']), (f'Unit {u}', f'{c["home_id"]}-u{u}'), (i, None))}
     <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['label']}</span> · <span class="u" style="--c:{ucol[u]}">UNIT {u}</span> · {c['umap'][u][0]} · <span class="mono">{i}</span> · {n:,} words{' ' + PILL_UNCK if unchecked(model) else ''}</div>
     <h1>{html.escape(meta['title'])}</h1>
-    <nav class="toc" aria-label="Sections">{toc}</nav>
+    {scope}
   </header>
-  <div class="report">{frag}</div>
-  <p class="prov">Written with {model}{audit}</p>
-  <details class="prompt"><summary>The prompt this answers</summary><pre>{html.escape(meta['prompt'])}</pre></details>
+  {steps}
+  {end}
   <div class="pager"></div>
 </section>''')
     c['report_panels'] = panels

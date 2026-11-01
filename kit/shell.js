@@ -91,6 +91,65 @@
     vizEdge(f);});}
   window.addEventListener('resize',function(){vizFrames(document.querySelector('.panel:not([hidden])'));});
   document.addEventListener('toggle',function(e){if(e.target&&e.target.querySelector)vizFrames(e.target);},true);
+  // P68 · the reading layout (1 Nov 2026). A unit or report (built by mdcourse.reading) reads one section at a time:
+  // .report.steps holds one .sec per h2; the sticky .stepbar shows "Section n of N", the progress bar, the section
+  // menu and the "Whole unit" toggle. The section last read is kept per page (SKEY+id), so Continue, a drawer item or a
+  // reload reopens it there. A link to an id inside the page (the menu, a section's next and previous, a deep link
+  // #m54-3, a link into the Sources or "How this unit was made" accordion) shows that section or opens that accordion
+  // first, then scrolls to it. "Whole unit" shows every section for search and print; the bar then follows the scroll.
+  var SKEY='pm-sec-';
+  function stepsOf(p){var r=p&&p.querySelector('.report.steps');return r?[].slice.call(r.children).filter(function(s){return s.classList.contains('sec');}):[];}
+  function isWhole(p){var r=p&&p.querySelector('.report.steps');return !!r&&r.classList.contains('whole');}
+  function initSteps(p){
+    var r=p&&p.querySelector('.report.steps');if(!r||r.hasAttribute('data-ready'))return;
+    r.setAttribute('data-ready','');r.classList.add('stepping');
+    var k=parseInt(get(SKEY+p.id),10),n=stepsOf(p).length;if(!(k>=0&&k<n))k=0;
+    setStep(p,k,false);}
+  function barState(p,k){
+    var bar=p.querySelector('.stepbar');if(!bar)return;var n=+bar.getAttribute('data-n')||1;
+    var links=[].slice.call(bar.querySelectorAll('.seclist a'));
+    bar.querySelector('.sof b').textContent=k+1;
+    links.forEach(function(a,i){if(i===k)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
+    var tt=links[k]&&links[k].querySelector('.t');bar.querySelector('.stt').textContent=tt?tt.textContent:'';
+    bar.querySelector('.sprog i').style.width=(100*(k+1)/n).toFixed(2)+'%';
+    p.setAttribute('data-step',k);}
+  function setStep(p,k,scroll){
+    var secs=stepsOf(p);if(!secs.length)return;k=Math.max(0,Math.min(secs.length-1,k));
+    if(!isWhole(p))secs.forEach(function(s,i){s.classList.toggle('on',i===k);});
+    barState(p,k);put(SKEY+p.id,String(k));
+    vizFrames(secs[k]);
+    if(scroll){if(k===0&&!isWhole(p))window.scrollTo(0,0);else{var h=secs[k].querySelector('h2.band')||secs[k];h.scrollIntoView();}}}
+  function setWhole(p,on){
+    var r=p.querySelector('.report.steps'),b=p.querySelector('.stepbar .whole');if(!r)return;
+    var k=+(p.getAttribute('data-step')||0),secs=stepsOf(p);
+    r.classList.toggle('whole',on);if(b)b.setAttribute('aria-pressed',on?'true':'false');
+    if(on){secs.forEach(function(s){s.classList.add('on');});vizFrames(r);if(k>0)(secs[k].querySelector('h2.band')||secs[k]).scrollIntoView();}
+    else{k=inView(p);setStep(p,k,true);}}
+  // the section whose band is the last one above the bar's lower edge
+  function inView(p){var secs=stepsOf(p),bar=p.querySelector('.stepbar'),y=(bar?bar.getBoundingClientRect().bottom:0)+40,k=0;
+    secs.forEach(function(s,i){if(s.getBoundingClientRect().top<=y)k=i;});return k;}
+  window.addEventListener('scroll',function(){var p=current&&document.getElementById(current);
+    if(p&&isWhole(p)){var k=inView(p);if(k!==+p.getAttribute('data-step')){barState(p,k);put(SKEY+p.id,String(k));}}},{passive:true});
+  // show what an id inside a reading page sits in (its section, the accordions round it), then scroll to it
+  function reveal(el){
+    var p=el.closest('.panel'),sec=el.closest('.sec');
+    if(p&&sec&&!isWhole(p)){var k=stepsOf(p).indexOf(sec);if(k>=0&&!sec.classList.contains('on'))setStep(p,k,false);}
+    for(var d=el.closest('details');d;d=d.parentElement&&d.parentElement.closest('details'))d.open=true;
+    var m=p&&p.querySelector('.secmenu[open]');if(m)m.open=false;
+    el.scrollIntoView();}
+  document.addEventListener('click',function(e){
+    if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    var b=e.target.closest&&e.target.closest('.stepbar .whole');
+    if(b){var pw=b.closest('.panel');setWhole(pw,!isWhole(pw));return;}
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a||a.hasAttribute('data-target'))return;
+    var p=a.closest('.panel[data-kind="report"]');if(!p)return;
+    var el=document.getElementById(a.getAttribute('href').slice(1));if(!el||!p.contains(el))return;
+    e.preventDefault();
+    if(a.hasAttribute('data-step')){var mm=p.querySelector('.secmenu[open]');if(mm)mm.open=false;
+      if(isWhole(p))reveal(el);else setStep(p,+a.getAttribute('data-step'),true);}
+    else reveal(el);});
+  // a click outside an open section menu closes it
+  document.addEventListener('click',function(e){var m=document.querySelector('.panel:not([hidden]) .secmenu[open]');if(m&&!m.contains(e.target))m.open=false;});
   function lastAny(){var s=get(KEY);return s&&isReport(s)&&meta[s]?s:null;}
   function lastIn(ctx){var s=get(LKEY+ctx);if(s&&isReport(s)&&ctxOf[s]===ctx&&meta[s])return s;s=lastAny();return s&&ctxOf[s]===ctx?s:null;}
 
@@ -114,7 +173,7 @@
     if(scroll)window.scrollTo(0,0);
     var done=load(id);
     // a fetched panel's continue button and unit cards (a course home, P22) only exist once its file has landed
-    done.then(function(ok){if(ok&&current===id){pager(id);prefetch(id);if(kindOf[id]==='course')updateContinue();}});
+    done.then(function(ok){if(ok&&current===id){initSteps(document.getElementById(id));pager(id);prefetch(id);if(kindOf[id]==='course')updateContinue();}});
     return done;
   }
   function pager(id){
@@ -204,11 +263,12 @@
     if(!h){show('home',false);return;}
     if(ids.indexOf(h)>=0){show(h,true);return;}
     var el=document.getElementById(h);
-    if(el){var p=el.closest('.panel');if(p){show(p.id,false);setTimeout(function(){el.scrollIntoView();},0);return;}}
-    // an id inside a file not yet fetched: a report section (#m23-2) by its numbering, any other (#rs-u3) by data-anchors
-    var pid=h.replace(/-\d+$/,'');
+    if(el){var p=el.closest('.panel');if(p){show(p.id,false).then(function(){if(current===p.id)reveal(el);});return;}}
+    // an id inside a file not yet fetched: a report section (#m23-2) by its numbering, its accordions (#m23-sources,
+    // #m23-made, P68) by their suffix, any other (#rs-u3) by data-anchors
+    var pid=h.replace(/-(\d+|sources|made)$/,'');
     if(pid===h||!isReport(pid)){pid=null;panels.some(function(p){if((' '+(p.getAttribute('data-anchors')||'')+' ').indexOf(' '+h+' ')>=0){pid=p.id;return true;}});}
-    if(pid){show(pid,false).then(function(){var t=document.getElementById(h);if(t&&current===pid)t.scrollIntoView();});return;}
+    if(pid){show(pid,false).then(function(){var t=document.getElementById(h);if(t&&current===pid)reveal(t);});return;}
     show('home',false);
   }
   window.addEventListener('hashchange',route);

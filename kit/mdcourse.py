@@ -27,12 +27,53 @@ def _words(n):
 e = H.escape
 
 
+HTML_TAGS = {'a', 'abbr', 'b', 'br', 'cite', 'code', 'del', 'dfn', 'em', 'i', 'ins', 'kbd', 'mark', 'q', 's', 'small', 'span',
+             'strong', 'sub', 'sup', 'u', 'var', 'img', 'wbr'}
+VOID = {'br', 'img', 'wbr'}
+TAG = re.compile(r'<(/?)([A-Za-z][\w-]*)([^<>]*)>')
+
+
+def literal_brackets(src):
+    """A placeholder written in angle brackets in running text (B4's "| <code> ·", B5's <date>) is text, not a tag:
+    left raw, Markdown passes it to the page as an element, which hides it and (an unclosed <code>) swallows the rest
+    of the unit (found 1 Nov 2026, P68). Outside fenced blocks and code spans, a bracketed word that is not an inline
+    HTML element, or an element opened without its close in the same paragraph, or closed without its opening, is
+    escaped so the reader sees it as written. Real inline HTML (<em>...</em>) is left alone, and so is every indented
+    line (Markdown already shows an indented code block's brackets as text)."""
+    def fix(par):
+        parts = re.split(r'(`+[^`]*?`+)', par)          # code spans stay as written
+        txt = '\x00'.join(parts[0::2])
+        def esc(m):
+            close, name = m.group(1), m.group(2).lower()
+            if name in HTML_TAGS and (name in VOID or (re.search(rf'<{name}[\s>]', txt[:m.start()], re.I) if close
+                                                        else re.search(rf'</{name}\s*>', txt[m.end():], re.I))):
+                return m.group(0)
+            return '&lt;' + m.group(0)[1:]
+        txt = TAG.sub(esc, txt).split('\x00')
+        parts[0::2] = txt
+        return ''.join(parts)
+    out, par, fence = [], [], False
+    for ln in src.split('\n'):
+        if re.match(r'\s*(```|~~~)', ln) or fence or not ln.strip() or re.match(r'( {4}|\t)', ln):   # indented code too
+            if par:
+                out.append(fix('\n'.join(par))); par = []
+            if re.match(r'\s*(```|~~~)', ln):
+                fence = not fence
+            out.append(ln)
+        else:
+            par.append(ln)
+    if par:
+        out.append(fix('\n'.join(par)))
+    return '\n'.join(out)
+
+
 def render_md(src):
     """A unit file (method.md §7: front matter, then Markdown ending with the deliverable and a Sources list) to
     theme-classed HTML. Returns (body html, toc html, links {url: title})."""
     src = re.sub(r'\A---\n.*?\n---\n', '', src, flags=re.S)
     src = re.sub(r'^# .*\n', '', src, count=1, flags=re.M)   # the unit's own title line; the page has its h1
     src, figs = viz.extract_md(src)     # A8: ```viz fences become drawings
+    src = literal_brackets(src)
     links = {}
     for t, u in re.findall(r'\[([^\]]+)\]\((https?://[^)]+)\)', src):
         links.setdefault(u, t)
@@ -41,6 +82,89 @@ def render_md(src):
     body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
     body = body.replace('<a href=', '<a target="_blank" rel="noopener" href=')
     return body, links
+
+
+# ---- P68 · the reading layout (1 Nov 2026) -------------------------------------------------------------------------
+# One rule for every unit and report of every course (this family's reading pages and build.py's history reports):
+# content first (the one-line scope, then section 1), one section at a time (a sticky bar with "Section n of N", a
+# progress bar, the section menu and a "Whole unit" toggle; next and previous at each section's end), each h2 a numbered
+# band, and process last (Sources, then "How this unit was made", two closed accordions after the text). The text is
+# never changed: the sections are the h2s the unit already has, cut where they stand; shell.js does the stepping.
+PROCESS_H2 = re.compile(r'^(?:sources|(?:writer.s )?unsure list|fresh check\b.*)$', re.I)
+H2 = re.compile(r'<h2 id="([^"]+)">(.*?)</h2>', re.S)
+FRESH = re.compile(r'<(li|p)>(Fresh check\b.*?)</\1>\s*', re.S)
+
+
+def plain(h):
+    return H.unescape(re.sub(r'<[^>]+>', '', h)).strip()
+
+
+def sections(body):
+    """A body whose top-level h2s carry ids, cut at each h2: (text before the first h2, [(id, heading html, html after
+    it up to the next h2)]). Each piece must close every block it opens, or the cut was not at the top level."""
+    cuts = list(H2.finditer(body))
+    pre = body[:cuts[0].start()] if cuts else body
+    out = []
+    for k, m in enumerate(cuts):
+        end = cuts[k + 1].start() if k + 1 < len(cuts) else len(body)
+        out.append((m.group(1), m.group(2), body[m.end():end]))
+    for _, _, x in out + [('', '', pre)]:
+        for tag in ('div', 'section', 'details', 'figure', 'ul', 'ol', 'table', 'blockquote'):
+            assert len(re.findall(rf'<{tag}[\s>]', x)) == len(re.findall(rf'</{tag}>', x)), f'P68: an h2 inside a <{tag}>; the section cut would break it'
+    return pre, out
+
+
+def band(sid, head, k):
+    """An h2 drawn as a numbered band: the numeral is the section's place (01, 02 ...); a heading 'X · title' shows X
+    as the kicker above its title, except a bare number equal to the place, which the numeral already shows."""
+    m = re.match(r'^(.*?)\s+·\s+(.*)$', head, re.S)
+    kick, title = (m.group(1).strip(), m.group(2)) if m else ('', head)
+    if kick.isdigit() and int(kick) == k + 1:
+        kick = ''
+    return (f'<h2 id="{sid}" class="band"><span class="bn" aria-hidden="true">{k + 1:02d}</span>'
+            f'<span class="bh">{f"<span class=bk>{kick}</span>" if kick else ""}<span class="bt">{title}</span></span></h2>'), kick, title
+
+
+def reading(pid, body, scope, sources, made, nsrc=None, chev=''):
+    """The reading layout for one page. body: the unit's HTML with ids on its h2s and the process sections already
+    taken out; scope: the one-line scope (html, may be empty); sources: the Sources list (html, may be empty);
+    made: [(heading, html, id or None)] for "How this unit was made". Returns (the scope line for the header, the
+    sticky bar and the stepped text, which follow the header, and the two accordions)."""
+    pre, secs = sections(body)
+    if not secs:                                  # a page with no h2 is one section
+        secs, pre = [(f'{pid}-0', '', pre)], ''
+    n = len(secs)
+    items, steps = [], []
+    for k, (sid, head, html_) in enumerate(secs):
+        b, kick, title = band(sid, head, k) if head else ('', '', 'The unit')
+        items.append((sid, kick, title))
+    for k, (sid, head, html_) in enumerate(secs):
+        b = band(sid, head, k)[0] if head else ''
+        nav = ''
+        if k > 0:
+            nav += f'<a class="sprev" href="#{items[k - 1][0]}" data-step="{k - 1}"><span>Previous section</span><b>{e(plain(items[k - 1][2]))}</b></a>'
+        if k < n - 1:
+            nav += f'<a class="snext" href="#{items[k + 1][0]}" data-step="{k + 1}"><span>Next section · {k + 2} of {n}</span><b>{e(plain(items[k + 1][2]))}</b></a>'
+        else:
+            nav += f'<a class="snext send" href="#{pid}-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a>'
+        steps.append(f'<section class="sec" data-step="{k}">{pre if k == 0 else ""}{b}{html_}<nav class="secnav" aria-label="Sections">{nav}</nav></section>')
+    menu = ''.join(f'<li><a href="#{sid}" data-step="{k}"><span class="n">{k + 1:02d}</span><span class="t">{(e(plain(kick)) + " · ") if kick else ""}{e(plain(t))}</span></a></li>'
+                   for k, (sid, kick, t) in enumerate(items))
+    bar = (f'<div class="stepbar" data-n="{n}"><details class="secmenu"><summary><span class="sof">Section <b>1</b> of {n}</span>'
+           f'<span class="stt">{e(plain(items[0][2]))}</span>{chev}</summary><ol class="seclist">{menu}</ol>'
+           f'<div class="secx"><a href="#{pid}-sources" data-acc>Sources</a><a href="#{pid}-made" data-acc>How this unit was made</a></div></details>'
+           f'<button class="whole" type="button" aria-pressed="false">Whole unit</button><div class="sprog" aria-hidden="true"><i></i></div></div>')
+    head = f'<p class="scope">{scope}</p>' if scope else ''
+    cnt = f'<span class="an">{nsrc}</span>' if nsrc else ''
+    src = (f'<details class="acc src" id="{pid}-sources"><summary><span class="at">Sources</span>{cnt}</summary><div class="accb">{sources or "<p>No source list on file for this page.</p>"}</div></details>')
+    mk = ''.join((f'<h3 id="{i}">' if i else '<h3>') + f'{h}</h3>{x}' for h, x, i in made if x)
+    howm = (f'<details class="acc made" id="{pid}-made"><summary><span class="at">How this unit was made</span>'
+            f'<span class="an">{len([1 for _, x, _ in made if x])} parts</span></summary><div class="accb">{mk}</div></details>')
+    return head, bar + f'<div class="report steps">{"".join(steps)}</div>', f'<div class="process">{src}{howm}</div>'
+
+
+def brief_box(text, label='Copy brief'):
+    return f'<div class="pbox"><pre>{e(text)}</pre><div class="pbar"><button class="copy" type="button">{label}</button></div></div>'
 
 
 def build(m, crumbs, theme, pill_next, chev):
@@ -127,18 +251,43 @@ def build(m, crumbs, theme, pill_next, chev):
   <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>Back to every course.</b></a>''', t=m['short'], u=f'COURSE {key}', cls='home'))
 
     # ---- reading pages ----------------------------------------------------------------------
+    unit_of = {u[0]: u for x in courses for u in x['units']}
     for r in readings:
         pills = ''.join(f'<span class="pill live">{x}</span>' for x in r['covers'])
         code = r['covers'][0] if r['covers'] else ''
+        # P68: the process sections leave the text for the end: Sources to its accordion; the unsure list, any fresh
+        # check (its own h2, or the line the writer added to the unsure list), the provenance paragraph and the brief
+        # to "How this unit was made"
+        pre, secs = sections(r['body'])
+        text, src, src_id, unsure, fresh = [], '', None, [], []
+        for sid, head, x in secs:
+            ph = plain(head)
+            if not PROCESS_H2.match(ph):
+                text.append(f'<h2 id="{sid}">{head}</h2>{x}')
+            elif ph.lower() == 'sources':
+                src, src_id = x, sid
+            elif ph.lower().startswith('fresh check'):
+                fresh.append((head, x, sid))
+            else:
+                lines = ''.join(f'<p>{ln}</p>' for _, ln in FRESH.findall(x))
+                x = re.sub(r'<(ul|ol)>\s*</\1>', '', FRESH.sub('', x))
+                unsure.append((head, x, sid))
+                if lines:
+                    fresh.append(('Fresh check', lines, None))
+        u = unit_of.get(code)
+        made = [('Provenance', f'<p>{r["intro"]}</p>', None)] + unsure + fresh + ([('The brief', brief_box(u[4]), None)] if u else [])
+        head, steps, end = reading(r['id'], pre + ''.join(text), e(u[2]) if u else '', src, made, src.count('<li>'), chev)
+        if src_id:            # the Sources heading's old id still lands, on the accordion's title
+            end = end.replace('<span class="at">Sources</span>', f'<span class="at" id="{src_id}">Sources</span>', 1)
         P.append(panel(r['id'], 'report', f'''
   <header class="phead">
     {crumbs(('Academy', 'home'), course_crumb, (code or r['name'], None))}
     {(eyebrow((ulabel, col), (code, None)) if code else eyebrow((ulabel, col))).replace('</div>', ' ' + pills + '</div>') if pills else (eyebrow((ulabel, col), (code, None)) if code else eyebrow((ulabel, col)))}
     <h1>{e(r['title'])}</h1>
-    <nav class="toc" aria-label="Sections">{r['toc']}</nav>
+    {head}
   </header>
-  <p class="lede">{r['intro']}</p>
-  <div class="report">{r['body']}</div>
+  {steps}
+  {end}
   <div class="pager"></div>''', cls='', split=r['id']))
 
     # ---- How it is built ----------------------------------------------------------------------
