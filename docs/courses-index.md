@@ -24,7 +24,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 |---|---|---|---|
 | Brand + AI | 4 of 4 (Audit 2 ran 29 Oct 2026; DD-B3, A3, B5, A4 since) | Audit 3 now (DD-B3, A3, B5, A4), before A5 | Audit 1: B1 PASS; A2·A6·A9 REWRITE, rewritten 28 Oct 2026. Audit 2 (29 Oct 2026): B2, B3, B4, A1 all PASS; B2 errata for Intelligence Index v5.0 and one miscite, A1 erratum (P33), applied. DD-B3, A3, B5 and A4 filed 29 Oct 2026; Audit 3 next, before A5. Fresh checker required for every Brand + AI unit (method §1 override). |
 | User Experience | 2 of 4 (IA1, IA2 since) | Audit 1 after IA4 (deferred by Pedro 29 Oct 2026, row P49) | Course IA created 29 Oct 2026; IA1 and IA2 filed 30 Oct 2026. Fresh checker required for every unit, as for Brand + AI (Opus 5.5 for IA1 to IA3; Fable 5.1 checks owed, P49). |
-| Personal Mythology | 0 of 4 modules (Greece and Rome pooled; `kit/review_due.py`) | after the 4th new module (batch 1: 11.3, 11.4, 11.5, 11.6; batch plan in `kit/BACKLOG.md`) | Decision of 28 October 2026: strict four-module cadence per method.md §6; `kit/review_due.py` counts modules since S3 (1 Nov 2026), from the `review_mark` in `kit/provenance.json`. Six Greek reports still flagged from the 27 October review and carried by that mark, so not counted: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (`NEXT-SESSION.md`, S4) |
+| Personal Mythology | 4 of 4 modules (Rome 11.3, 11.4, 11.5, 11.6; Greece and Rome pooled; `kit/review_due.py`) | due now (FABLE REVIEW DUE), deferred to the Fable stage at the end of the queue (Pedro, 31 Oct 2026); batch 2 goes on (batch plan in `kit/BACKLOG.md`) | Decision of 28 October 2026: strict four-module cadence per method.md §6; `kit/review_due.py` counts modules since S3 (1 Nov 2026), from the `review_mark` in `kit/provenance.json`. Six Greek reports still flagged from the 27 October review and carried by that mark, so not counted: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (`NEXT-SESSION.md`, S4) |
 
 ## Staleness checks due (search-on units)
 
@@ -195,7 +195,7 @@ Complete: 78 of 78 content reports; 83 modules with the audit unit. Written in s
 
 ### Rome (course 2)
 
-In progress: 59 of 79 content reports; 85 modules with the audit unit. Written in syllabus order to 10.5, with 11.1, 11.2, 13.1, 13.2. The 20 still to write go in batches of four, a Fable review after each (decision of 28 October 2026; `pm-status-2026-10-28.md` S3): batch 1 = 11.3, 11.4, 11.5, 11.6; batch 2 = 11.7, 11.8, 13.3, 13.4; batch 3 = 13.5, 13.6, 13.7, 13.8; batch 4 = 12.1, 12.2, 12.3, 12.4; batch 5 = 12.5, 12.7, 12.8, 12.6. The dependency rules of `kit/BACKLOG.md` hold inside the batches (11.8 last in its unit; 12.6 after 13.2).
+In progress: 63 of 79 content reports; 85 modules with the audit unit. Written in syllabus order to 10.5, with 11.1 to 11.6, 13.1, 13.2 (batch 1, 11.3 to 11.6, written 1 Nov 2026, R-1). The 16 still to write go in batches of four, a Fable review after each (decision of 28 October 2026; `pm-status-2026-10-28.md` S3): batch 1 = 11.3, 11.4, 11.5, 11.6; batch 2 = 11.7, 11.8, 13.3, 13.4; batch 3 = 13.5, 13.6, 13.7, 13.8; batch 4 = 12.1, 12.2, 12.3, 12.4; batch 5 = 12.5, 12.7, 12.8, 12.6. The dependency rules of `kit/BACKLOG.md` hold inside the batches (11.8 last in its unit; 12.6 after 13.2).
 
 | # | Module | Syllabus unit | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
@@ -258,10 +258,10 @@ In progress: 59 of 79 content reports; 85 modules with the audit unit. Written i
 | 57 | 11.2 | 11 · Deep dive I: the fall of the Republic | Generals and their armies | written · reviewed | Opus 5.5 | off | `kit/rome/r-11.2.html` |
 | 58 | 13.1 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Philosophy comes to Rome | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-13.1.html` |
 | 59 | 13.2 | 13 · Deep dive III: Roman philosophy, the Stoics and Marcus Aurelius | Stoicism made Roman | written · reviewed (sampled) | Opus 5.5 | off | `kit/rome/r-13.2.html` |
-| 60 | 11.3 | 11 · Deep dive I: the fall of the Republic | Politics in the street | not written · batch 1 | Opus 5.5 | off | `courses/rome/11.3-politics-in-the-street.md` (+ `kit/rome/r-11.3.html`) |
-| 61 | 11.4 | 11 · Deep dive I: the fall of the Republic | Women and the late Republic | not written · batch 1 | Opus 5.5 | off | `courses/rome/11.4-women-and-the-late-republic.md` (+ `kit/rome/r-11.4.html`) |
-| 62 | 11.5 | 11 · Deep dive I: the fall of the Republic | Cicero through his letters | not written · batch 1 | Opus 5.5 | off | `courses/rome/11.5-cicero-through-his-letters.md` (+ `kit/rome/r-11.5.html`) |
-| 63 | 11.6 | 11 · Deep dive I: the fall of the Republic | Caesar's Commentaries and Gaul | not written · batch 1 | Opus 5.5 | off | `courses/rome/11.6-caesars-commentaries-and-gaul.md` (+ `kit/rome/r-11.6.html`) |
+| 60 | 11.3 | 11 · Deep dive I: the fall of the Republic | Politics in the street | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.3.html` (+ `courses/rome/11.3-politics-in-the-street.md`) |
+| 61 | 11.4 | 11 · Deep dive I: the fall of the Republic | Women and the late Republic | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.4.html` (+ `courses/rome/11.4-women-and-the-late-republic.md`) |
+| 62 | 11.5 | 11 · Deep dive I: the fall of the Republic | Cicero through his letters | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.5.html` (+ `courses/rome/11.5-cicero-through-his-letters.md`) |
+| 63 | 11.6 | 11 · Deep dive I: the fall of the Republic | Caesar's Commentaries and Gaul | written 1 Nov 2026 · flagged for Fable review | Opus 5.5 | off | `kit/rome/r-11.6.html` (+ `courses/rome/11.6-caesars-commentaries-and-gaul.md`) |
 | ✓ | Review | Rome | Fable review of batch 1 (method.md §6) | after #63 | Fable 5.1 | off | `kit/audits/` |
 | 64 | 11.7 | 11 · Deep dive I: the fall of the Republic | The Ides of March | not written · batch 2 | Opus 5.5 | off | `courses/rome/11.7-the-ides-of-march.md` (+ `kit/rome/r-11.7.html`) |
 | 65 | 11.8 | 11 · Deep dive I: the fall of the Republic | Why the Republic fell | not written · batch 2, last in unit 11 | Opus 5.5 | off | `courses/rome/11.8-why-the-republic-fell.md` (+ `kit/rome/r-11.8.html`) |
