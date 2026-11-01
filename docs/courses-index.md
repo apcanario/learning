@@ -24,7 +24,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 |---|---|---|---|
 | Brand + AI | 4 of 4 (Audit 2 ran 29 Oct 2026; DD-B3, A3, B5, A4 since) | Audit 3 now (DD-B3, A3, B5, A4), before A5 | Audit 1: B1 PASS; A2·A6·A9 REWRITE, rewritten 28 Oct 2026. Audit 2 (29 Oct 2026): B2, B3, B4, A1 all PASS; B2 errata for Intelligence Index v5.0 and one miscite, A1 erratum (P33), applied. DD-B3, A3, B5 and A4 filed 29 Oct 2026; Audit 3 next, before A5. Fresh checker required for every Brand + AI unit (method §1 override). |
 | User Experience | 2 of 4 (IA1, IA2 since) | Audit 1 after IA4 (deferred by Pedro 29 Oct 2026, row P49) | Course IA created 29 Oct 2026; IA1 and IA2 filed 30 Oct 2026. Fresh checker required for every unit, as for Brand + AI (Opus 5.5 for IA1 to IA3; Fable 5.1 checks owed, P49). |
-| Personal Mythology | 4 of 4 modules (Rome 11.3, 11.4, 11.5, 11.6; Greece and Rome pooled; `kit/review_due.py`) | due now (FABLE REVIEW DUE), deferred to the Fable stage at the end of the queue (Pedro, 31 Oct 2026); batch 2 goes on (batch plan in `kit/BACKLOG.md`) | Decision of 28 October 2026: strict four-module cadence per method.md §6; `kit/review_due.py` counts modules since S3 (1 Nov 2026), from the `review_mark` in `kit/provenance.json`. Six Greek reports still flagged from the 27 October review and carried by that mark, so not counted: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (`NEXT-SESSION.md`, S4) |
+| Personal Mythology | 20 of 4 modules (Rome 11.3 to 11.8, 12.1 to 12.8, 13.3 to 13.8; Greece and Rome pooled; `kit/review_due.py`) | due (FABLE REVIEW DUE since 11.6), deferred to the Fable stage at the end of the queue (Pedro, 31 Oct 2026); Rome finished on 1 Nov 2026 (R-2) with the review still deferred | Decision of 28 October 2026: strict four-module cadence per method.md §6; `kit/review_due.py` counts modules since S3 (1 Nov 2026), from the `review_mark` in `kit/provenance.json`. Six Greek reports still flagged from the 27 October review and carried by that mark, so not counted: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (`NEXT-SESSION.md`, S4) |
 
 ## Staleness checks due (search-on units)
 
@@ -195,7 +195,7 @@ Complete: 78 of 78 content reports; 83 modules with the audit unit. Written in s
 
 ### Rome (course 2)
 
-In progress: 73 of 79 content reports; 85 modules with the audit unit. Written in syllabus order to 10.5, with 11.1 to 11.7, 12.1, 12.2, 12.6, 13.1 to 13.8 (batch 1, 11.3 to 11.6, written 1 Nov 2026, R-1; the rest written 1 Nov 2026, R-2). The 16 still to write go in batches of four, a Fable review after each (decision of 28 October 2026; `pm-status-2026-10-28.md` S3): batch 1 = 11.3, 11.4, 11.5, 11.6; batch 2 = 11.7, 11.8, 13.3, 13.4; batch 3 = 13.5, 13.6, 13.7, 13.8; batch 4 = 12.1, 12.2, 12.3, 12.4; batch 5 = 12.5, 12.7, 12.8, 12.6. The dependency rules of `kit/BACKLOG.md` hold inside the batches (11.8 last in its unit; 12.6 after 13.2).
+Complete: 79 of 79 content reports; 85 modules with the audit unit. Written in syllabus order to 10.5, then 11.1 to 13.8 (batch 1, 11.3 to 11.6, written 1 Nov 2026, R-1; the other 16, 11.7, 11.8, 12.1 to 12.8 and 13.3 to 13.8, written 1 Nov 2026, R-2, by fresh Opus 5.5 agents, each with a fresh check and figure checks). All 20 written since the last review are flagged for the Fable review, deferred to the Fable stage (Pedro, 31 Oct 2026).
 
 | # | Module | Syllabus unit | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
