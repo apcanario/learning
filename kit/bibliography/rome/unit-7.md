@@ -26,7 +26,7 @@ Curated bibliography: `bibliography/rome/r-7.1.md`.
 - *On the Spectacles* 2
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
-- Dio 58.9–11; 59.8–10; 59.14.7; 59.29; 60.19–23; 63.17.5–6
+- Dio 58.9–11; 59.8–10; 59.14.7; 59.29; 60.19–23
 - Juvenal 10.71
 - Velleius 2.124–131
 
@@ -131,6 +131,7 @@ Curated bibliography: `bibliography/rome/r-7.3.md`.
 Curated bibliography: `bibliography/rome/r-7.4.md`.
 
 ### Ancient works
+- April, *Severus* 1.2; 1.3; 3.9
 - Eusebius, *Church History* 6.21.3–4
 - Giessen, *P.Giss.* 40
 - Suetonius, *Domitian* 7.3
@@ -139,10 +140,10 @@ Curated bibliography: `bibliography/rome/r-7.4.md`.
 - *Didius Julianus* 3.2; 3.8
 - *Digest* 1.5.17; 12.1.40; 50.15.1
 - *Novel* 78.5
-- *Severus* 1.2; 3.9
 - *Severus Alexander* 29.2; 55–57
 
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
+- Dio 80.3–4
 - Herodian 2.6; 2.13; 2.15; 3.2–4; 3.11–12; 4.3.5–9; 4.4.7; 4.9; 4.13; 5.3; 6.1.2; 6.7; 6.8–9
 
 ### Modern works

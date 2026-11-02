@@ -254,7 +254,7 @@ Curated bibliography: `bibliography/greece/r-11.8.md`.
 ### Ancient authors cited by locator only (work named earlier in the sentence or implied)
 - Arrian 7.11.9; 7.16.5–17.6; 7.16–17; 7.19.3–6; 7.22; 7.24; 7.25; 7.26.3; 7.27
 - Curtius 9.8.22; 10.2.4; 10.5.4; 10.10.9–13; 10.10.14–17
-- Dio 68.29–30; 76.13.2; 78.7–9
+- Dio 68.29–30
 - Diodorus 17.112; 17.116; 17.117.4; 17.118; 18.3.5; 18.4.4–6; 18.8.2–5; 18.26–28; 18.28; 18.60–61
 - Herodian 4.8; 4.8.9
 - Justin 12.13–14; 12.15
