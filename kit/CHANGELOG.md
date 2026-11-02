@@ -76,6 +76,8 @@ Backlog row A-3 of `docs/BACKLOG.md` (B-11 bundled in by Pedro, 08:02), one chat
 
 **Records:** Brand + AI v8.9, 17 of 22; Audit 4 (A5, B7, A7, A8) reaches 4 of 4 and joins Audit 3 at the Fable 5.1 stage (row P49); Audit 5 opens at 1 of 4 (B6); B8 next. The writers' process notes are in the fresh-check files: A8's writer fetched a copy of a statute after a refused fetch and followed three server redirects (every claim on that copy re-verified); B6's writer's context carried the memory snapshot block automatically (it says it did not open it).
 
+Academy rebuilt, verified (ALL CHECKS PASSED, both pages shot and every figure's frames sheet looked at, phone and desktop, dark and light) and published once (artifact version 109, after reading the live page and the eight fetched files the first publish named, each byte-identical to the starting build's); GitHub Pages deployed once (`apcanario/academy` `945150f`, Actions run 41431524830, success). No history report changed, so the Greece edition was not republished. Project knowledge re-uploaded with the Projects tool (A-2's pending uploads included).
+
 ## 2 November 2026 · Session 43 · Brand + AI A7 (A-2)
 
 Backlog row A-2 of `docs/BACKLOG.md`, one chat, Opus 5.5 throughout, under P31: the unit written by a fresh agent that saw only its brief, the write-unit skill, the sourcing standard, the figure kinds and the filed units, and told not to use memory, past-chat or connector tools; the check by a separate fresh agent that had not seen the writing; the chat filed, built, applied verified findings and recorded. Started from `d07e070` (build and verify ALL CHECKS PASSED).
