@@ -391,6 +391,6 @@ No quarter before quarter 8 uses subscriber count as grounds to stop. Basis: row
 9. Billion Dollar Boy survey: the page names no outside research partner and gives no fieldwork dates.
 10. Patreon's sample ("1,000 US creators and 2,000 US fans via NewtonX") rests on Net Influencer's summary; Patreon's primary page was not opened.
 
-## Fresh check (28 Oct 2026, Opus 5.5)
+## Fresh check (28 Oct 2026, Fable 5.1)
 
 Verdict: fix (2 errors, 15 should-fix, 8 minor); every finding applied as an exact replacement before filing. The checker confirmed every vidIQ, Metricool, YouTube Help, PPC Land and Search Engine Journal figure at source.
