@@ -156,25 +156,71 @@ B1 §7 closed with the fix for a buried fact, "trim the window or start a new ch
   "q": "Does the next step need this chat's history?",
   "tone": 4,
   "branches": [
-   {"label": "no", "to": {"outcome": "New chat (Claude Code: /clear)", "tone": 2}},
-   {"label": "yes", "to": {
-    "q": "Back after the cache expired?",
-    "tone": 4,
-    "branches": [
-     {"label": "yes", "to": {"outcome": "New chat with a handoff note", "tone": 2}},
-     {"label": "no", "to": {
-      "q": "Abandoning a wrong path?",
-      "tone": 4,
-      "branches": [
-       {"label": "yes", "to": {"outcome": "Claude Code: /rewind. claude.ai: new chat", "tone": 2}},
-       {"label": "no", "to": {"outcome": "Stay; /compact only between tasks", "tone": 3}}
-      ]
-     }}
-    ]
-   }}
+   {
+    "label": "no",
+    "to": {
+     "outcome": "New chat (Claude Code: /clear)",
+     "tone": 2
+    }
+   },
+   {
+    "label": "yes",
+    "to": {
+     "q": "Back after the cache expired (over an hour)?",
+     "tone": 4,
+     "branches": [
+      {
+       "label": "yes",
+       "to": {
+        "outcome": "New chat with a handoff note",
+        "tone": 2
+       }
+      },
+      {
+       "label": "no",
+       "to": {
+        "q": "Abandoning a wrong path?",
+        "tone": 4,
+        "branches": [
+         {
+          "label": "yes",
+          "to": {
+           "q": "Which tool?",
+           "tone": 4,
+           "branches": [
+            {
+             "label": "Claude Code",
+             "to": {
+              "outcome": "/rewind",
+              "tone": 3
+             }
+            },
+            {
+             "label": "claude.ai",
+             "to": {
+              "outcome": "New chat",
+              "tone": 2
+             }
+            }
+           ]
+          }
+         },
+         {
+          "label": "no",
+          "to": {
+           "outcome": "Stay (Claude Code: /compact only between tasks)",
+           "tone": 3
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
   ]
  },
- "caption": "Continue, trim or start again, the rule in §3 of this unit, synthesised from <a href=\"https://code.claude.com/docs/en/prompt-caching\">Claude Code docs, <em>How Claude Code uses prompt caching</em></a>, <a href=\"https://code.claude.com/docs/en/costs\"><em>Manage costs effectively</em></a> and <a href=\"https://support.claude.com/en/articles/9797557-usage-limit-best-practices\">Claude Help Center, <em>Usage limit best practices</em></a>, read 2 Nov 2026; B4 §4 gives the quality reasons for a new chat."
+ "caption": "Continue, trim or start again, the rule in §3 of this unit (orange: a new chat; teal: the same chat, kept or cut back), synthesised from <a href=\"https://code.claude.com/docs/en/prompt-caching\">Claude Code docs, <em>How Claude Code uses prompt caching</em></a>, <a href=\"https://code.claude.com/docs/en/costs\"><em>Manage costs effectively</em></a>, <a href=\"https://support.claude.com/en/articles/9797557-usage-limit-best-practices\">Claude Help Center, <em>Usage limit best practices</em></a> and <a href=\"https://support.claude.com/en/articles/11647753-understanding-usage-and-length-limits\"><em>Understanding usage and length limits</em></a> (article 11647753), read 2 Nov 2026; the hour is Claude Code's documented subscription cache, applied to claude.ai by analogy (rule 13); B4 §4 gives the quality reasons for a new chat."
 }
 ```
 
