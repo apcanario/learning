@@ -17,7 +17,7 @@ Search was off for this unit. It was used on 2 November 2026 only to verify spec
 
 The brief says vlog episode 2 was scripted from two dictated takes. The filed units record the episode and say nothing of how it was made. A1 §6 read it on 29 October 2026 as published on 13 October, 5 minutes 54 seconds long, recorded the day before he flew to Poland, an episode about the cost of training to the people around him that "asks which matters more, being better physically or worse emotionally" and ends on a bereavement. A1's reading of it against the format: the miss is named, the record has nothing taken out, and "the method is absent again": no session, no syllabus, no stage. The route from takes to script is therefore taken from the brief as his account, and the filed units say what the route lacked.
 
-What it lacked is what the chain now adds. B3 template 4 cuts a script from two or more takes and marks every line with its origin ([T1], [T2] with timestamp, or [NEW]); B5 step 4 turns that template into a skill step with A3's numbers: a hook in the first 30 seconds, the season label said once, "week n of N", at least three chapters, exactly one miss, the ending from the takes, about 10 minutes and 12 at most (B5 §A, step 4; A3 §2). Episode 2 at 5:54 sits below A3's floor; A3 set that length after the episode was published, so the gap says nothing about the episode.
+What it lacked is what the chain now adds. B3 template 4 cuts a script from two or more takes and marks every line with its origin ([T1], [T2] with timestamp, or [NEW]); B5 step 4 turns that template into a skill step with A3's numbers: a hook in the first 30 seconds, the season label said once, "week <n> of <total>", at least three chapters, exactly one miss, the ending from the takes, about 10 minutes and 12 at most (B5 §A, step 4; A3 §2). Episode 2 at 5:54 sits below A3's floor; A3 set that length after the episode was published, so the gap says nothing about the episode.
 
 ### The two inputs the script needs, and why a record sits between them
 
@@ -59,7 +59,7 @@ Two filed units shape the choice. A5 §3 puts the episode's strongest moment in 
 
 The channel's Instagram posts are cut from the episode's footage and stills, four a fortnight, two a week, Reels for strangers and carousels for followers, exported from his own editor, nothing shot separately (A3 §3 and checklist D; A2, Deliverable 2; A6, Instagram rules 1–3). The two locked styles are Shōmen's, and B3 template 6 is the only template written for them; it asks, per style, for on-image text for the 1:1 feed post, on-image text for the 9:16 story, a caption and alt text. B5 §6 kept it a template outside the skill, because "the check is his eye on two locked styles". This unit keeps that decision and adapts the template from a Shōmen subject to an episode (Deliverable A, step 7).
 
-Two of the template's open slots can now be filled from Instagram's own statements, both checked 2 November 2026:
+Two of the template's open slots can now be filled, one from Instagram's Help Center and one from a report of an Instagram announcement, both checked 2 November 2026:
 
 - **Hashtags: five at most.** Instagram's @creators account announced that it "will gradually update the number of hashtags that you can include in a caption for a reel or post to five" ([Social Media Today, 18 Dec 2025](https://www.socialmediatoday.com/news/instagram-implements-new-limits-on-hashtag-use/808309/), reporting a Threads post; the Threads post itself was not opened). Whether the rollout has reached his account was not checked.
 - **Carousel size: up to 20.** "You can upload up to 20 photos and videos and share them as a single post in Instagram Feed" ([Instagram Help Center, Share a post with multiple photos or videos](https://help.instagram.com/iphone-app/269314186824048)). The template's data-line count stays his choice, under that ceiling of 20.
@@ -68,7 +68,7 @@ A6's rules apply to each post as they stand: the first three seconds of a Reel a
 
 ## 6 · The weekly email
 
-The email is the last step of the chain, and every filed unit that touches it agrees on its shape. Weekly, on Thursday; 300 words or fewer (his rule, A3 §3); in an episode week the lead journey in his words with one lesson he stated in the record, one line on each other live journey only if something moved, then the episode's link; British English; no Shōmen promotion unless he asks; no request for shares (B5 step 7; B3 template 10; A2, Deliverable 2). A4 adds two lines it must carry: a failure or missed week stated plainly (A4 §4), and, in the footer, that "a model drafts scripts and emails from my dictated words and that every quotation is checked against the source" (A4, disclosure policy clause 8). The check is mechanical: `check_quotes.py --max-words 300` passes (B5 §9).
+The email is the last step of the chain, and every filed unit that touches it agrees on its shape. Weekly, on Thursday; 300 words or fewer (his rule, A3 §3); in an episode week the lead journey in his words with one lesson he stated in the record, one line on each other live journey only if something moved, then the episode's link; British English; no Shōmen promotion unless he asks; no request for shares (B5 step 7; B3 template 10; A2, Deliverable 2). A4 and B5 add two lines it must carry: a failure or missed week stated plainly (B5 step 7; A4 §4), and, in the footer, that "a model drafts scripts and emails from my dictated words and that every quotation is checked against the source" (A4, disclosure policy clause 8). The check is mechanical: `check_quotes.py --max-words 300` passes (B5 §9).
 
 The email is also where the journeys that do not lead the season stay in the record (A3 §3). In the Athens finale's week the lead journey is season one, closing; the others are the first half-marathon sessions, the weight, the history course and coaching (A3 §4).
 
@@ -76,7 +76,7 @@ The email is also where the journeys that do not lead the season stay in the rec
 
 B2's routing table sets the model for every step that has a row; B3 and B5 filled the gaps by analogy and said so. B5's unsure list left two of those analogies for this unit to confirm or change: titles and the Short, both Sonnet 5.5 at low effort (B5, unsure item 9). This unit keeps both, for the reasons in the table: in each, the input is a finished script, the output is short, and its correctness can be checked by code and by him in minutes, which is B2 §6's description of a task where a smaller model is enough, without being so mechanical that Haiku's documented use (classification, extraction, routing) fits it.
 
-| Step | Model, effort | Why (filed unit) | Escalate if (B2's rule: one step up, by cause) |
+| Step | Model, effort | Why (filed unit) | Change if (B2's rule: one step up, by cause, unless B2's own override says otherwise) |
 |---|---|---|---|
 | File a take | Haiku 5.5, low | Pure tidy-up of a transcript (B2, Journal entries override); B5 step 1 | A heading is filled from inference twice: Sonnet 5.5, medium |
 | Weekly entry | Sonnet 5.5, medium | B2, Journal entries; B5 step 2 | Synthesis across several weeks: Opus 5.5, medium |
@@ -90,7 +90,7 @@ B2's routing table sets the model for every step that has a row; B3 and B5 fille
 
 Three of B2's rules govern every row. Set model and effort before the first message and leave them; run small tasks in a light chat outside the Learning Project; never trust a single run on anything that will be published (B2, rules for using the table). B5 adds a fourth: one step per chat, each reading the file the step before it wrote (B5, skill §0). Nothing in the chain is checked by the model that wrote it: the checks are code and him, which is DD-B3's operating rule 3 ("The writer never checks its own work") in its cheapest form.
 
-**What the routing saves, and what it does not.** The only measured saving from writing with a model in the evidence found is Noy and Zhang's: 453 college-educated professionals given occupation-specific writing tasks, half with ChatGPT; "The average time taken decreased by 40% and output quality rose by 18%" ([Noy and Zhang, *Science*, 2023, doi:10.1126/science.adh2586](https://scale.stanford.edu/publications/experimental-evidence-productivity-effects-generative-artificial-intelligence)). Those were occupation-specific writing tasks done with a 2023 model. No source found measures time saved on a script, a title or an email for a creator, and A3's slots (Friday outline hour, Tuesday packaging hour, Wednesday half-hours, Thursday 0.75 hours) already assume the drafts exist. The hours log is what tests them (A9, read 2).
+**What the routing saves, and what it does not.** The only measured saving from writing with a model in the evidence found is Noy and Zhang's: 453 college-educated professionals given occupation-specific writing tasks, half with ChatGPT; "The average time taken decreased by 40% and output quality rose by 18%" ([Noy and Zhang, *Science*, 2023, doi:10.1126/science.adh2586](https://scale.stanford.edu/publications/experimental-evidence-productivity-effects-generative-artificial-intelligence)). Those were occupation-specific writing tasks done with a 2023 model. No source found measures time saved on a script, a title or an email for a creator, and A3's slots (Friday outline hour, Tuesday packaging hour, Wednesday's half-hour Short and hour of Instagram, Thursday 0.75 hours) already assume the drafts exist. The hours log is what tests them (A9, read 2).
 
 ## 8 · Where AI helps his voice, and where it flattens it
 
@@ -107,9 +107,9 @@ The brief names three helps (structure, cuts, options) and three places where AI
 Four studies point the same way: text the model writes pulls a writer's work toward the model's average.
 
 - **The reduction comes from the model's text.** Padmakumar and He had people write essays with GPT-3 and with InstructGPT. Writing with InstructGPT "(but not the GPT3) results in a statistically significant reduction in diversity", it "increases the similarity between the writings of different authors", and the effect "is mainly attributable to InstructGPT contributing less diverse text to co-written essays"; "the user-contributed text remains unaffected by model collaboration" ([Padmakumar and He, ICLR 2024, pp. 642–669](https://proceedings.iclr.cc/paper_files/paper/2024/hash/02dec8877fb7c6aa9a79f81661baca7c-Abstract-Conference.html)). Peer-reviewed; GPT-3 and InstructGPT.
-- **Options converge too.** In Doshi and Hauser's experiment, stories written with one AI idea were 10.7% more similar to each other than stories written with none ([University of Exeter, 15 Jul 2024](https://news.exeter.ac.uk/?p=13749)). The authors call it a social dilemma: each writer is better off using the ideas, and "the collective novelty of stories may be reduced further" (same release).
-- **Professional writers rewrite model prose heavily.** Chakrabarty, Laban and Wu had 18 MFA-trained writers edit 1,057 paragraphs from three models, gathering 8,035 edits, "about 8 edits per paragraph", sorted into seven kinds of fault; in a preference test, writer-edited paragraphs were preferred "65% of the time" and unedited model paragraphs were "least preferred 60% of the time". The authors warn of "a reduction in linguistic diversity and individual voice" (§7.4) ([Chakrabarty, Laban and Wu, *Can AI writing be salvaged?*, arXiv 2409.14509](https://arxiv.org/pdf/2409.14509); preprint, venue not confirmed on the copy read).
-- **The model's style wins against a writer's own.** Agarwal, Naaman and Vashistha ran 118 participants from India and the United States through culturally grounded writing tasks with and without a Western-centric model's suggestions; "AI suggestions led Indian participants to adopt Western writing styles", "altering not just what is written but also how it is written" ([Agarwal, Naaman and Vashistha, arXiv 2409.11360 v3, 12 Mar 2025, doi:10.1145/3706598.3713564](https://arxiv.org/abs/2409.11360); the arXiv page names no venue).
+- **Options converge too.** In Doshi and Hauser's experiment, stories written with one AI idea were more similar to each other than stories written with none, by 10.7% as the release puts it (the paper gives it as a share of the similarity score's range) ([University of Exeter, 15 Jul 2024](https://news.exeter.ac.uk/?p=13749)). The authors call it a social dilemma: each writer is better off using the ideas, and "the collective novelty of stories may be reduced further" (same release).
+- **Professional writers rewrite model prose heavily.** Chakrabarty, Laban and Wu had 18 MFA-trained writers edit 1,057 paragraphs from three models, gathering 8,035 edits, "about 8 edits per paragraph", sorted into seven kinds of fault, the commonest being awkward word choice and phrasing (28% of edits), poor sentence structure (20%), unnecessary or redundant exposition (18%) and cliché (17%) (§5.1); in a preference test, writer-edited paragraphs were preferred "65% of the time" and unedited model paragraphs were "least preferred 60% of the time". The authors warn of "a reduction in linguistic diversity and individual voice" (§7.4) ([Chakrabarty, Laban and Wu, *Can AI writing be salvaged?*, arXiv 2409.14509](https://arxiv.org/pdf/2409.14509); preprint, venue not confirmed on the copy read).
+- **The model's style wins against a writer's own.** Agarwal, Naaman and Vashistha ran 118 participants from India and the United States through culturally grounded writing tasks with and without a Western-centric model's suggestions; "AI suggestions led Indian participants to adopt Western writing styles", "altering not just what is written but also how it is written" ([Agarwal, Naaman and Vashistha, arXiv 2409.11360 v3, 12 Mar 2025, doi:10.1145/3706598.3713564](https://arxiv.org/abs/2409.11360); the abstract page names no venue, and the v3 paper's ACM reference line names CHI '25, Yokohama, 2025).
 
 The kinds of edit the professional writers made, by share of all edits:
 
@@ -124,7 +124,7 @@ The kinds of edit the professional writers made, by share of all edits:
  "caption": "§8: the four commonest of seven categories in 8,035 edits that 18 MFA-trained writers made to 1,057 paragraphs from three models. Chakrabarty, Laban and Wu, <a href=\"https://arxiv.org/pdf/2409.14509\">Can AI writing be salvaged?</a>, arXiv 2409.14509 (preprint; venue not confirmed), §5.1, read 2 Nov 2026."}
 ```
 
-What the four have in common, read together: the model's own sentences carry the flattening, and a writer's sentences used as they are do not (Padmakumar and He's result stated directly). That is the mechanism behind B5's first rule, "His words stay his", and behind the limit on [NEW] lines: one sentence, marked, bridging two of his lines, and rewritten by him every time (B3 template 4; B5 step 4). The transfer to a vlog script is mine; none of the studies used spoken scripts. For Portuguese lines, B5's rule to quote in the language he spoke and mark any translation [TR] keeps the model's English out of them; Agarwal and colleagues' result is about Indian English against American English, and its relevance to Portuguese is my inference.
+What the four have in common, read together: the model's own sentences carry the flattening, and a writer's sentences used as they are do not (Padmakumar and He's result stated directly). That is the mechanism behind B5's first rule, "His words stay his", and behind the limit on [NEW] lines: one sentence, marked, bridging two of his lines, and rewritten by him every time (B3 template 4; B5 step 4). The transfer to a vlog script is mine; none of the studies used spoken scripts. For Portuguese lines, B5's rule to quote in the language he spoke and mark any translation [TR] keeps the model's English out of them; Agarwal and colleagues' result is about Indian participants writing in English and drifting toward Western, American-centred styles, and its relevance to Portuguese is my inference.
 
 ### Where it flattens: jokes
 
@@ -132,7 +132,7 @@ What the four have in common, read together: the model's own sentences carry the
 
 ### Where it flattens: the ending
 
-The ending is where a model's text would do most to his meaning, and the filed units already close it. B5 step 4: "Ending: the last line, from the takes." A5 §3: the episode ends on that line with "no wind-down", no recap and no subscribe request. B3 template 3 and B5 step 3: "Add no lesson, no reframing, no encouragement." The evidence for keeping the model out of the ending concerns opinion. Jakesch and colleagues had more than 1,500 participants write about whether social media is good for society, with an assistant steered for or against it; those using a biased assistant were twice as likely to write a paragraph agreeing with it, were more likely to state its opinion afterwards, and a majority did not notice the bias ([Cornell Chronicle, 15 May 2023](https://news.cornell.edu/node/326526), reporting Jakesch, Bhat, Buschek, Zalmanson and Naaman, CHI 2023, doi:10.1145/3544548.3581196; the paper itself was not opened). An ending is where an episode states what the season meant. A model that drafts it supplies the conclusion, and that study suggests he would not notice. That application is mine.
+The ending is where a model's text would do most to his meaning, and the filed units already close it. B5 step 4: "Ending: the last line, from the takes." A5 §3: the episode ends on that line with "no wind-down", no recap and no subscribe request. B3 template 3: "Add no lesson to it"; B5's rules for every step: "Add no lesson, no reframing, no encouragement." The evidence for keeping the model out of the ending concerns opinion. Jakesch and colleagues had more than 1,500 participants write about whether social media is good for society, with an assistant steered for or against it; those using a biased assistant were twice as likely to write a paragraph agreeing with it, were more likely to state its opinion afterwards, and a majority did not notice the bias ([Cornell Chronicle, 15 May 2023](https://news.cornell.edu/node/326526), reporting Jakesch, Bhat, Buschek, Zalmanson and Naaman, CHI 2023, doi:10.1145/3544548.3581196; the paper itself was not opened). An ending is where an episode states what the season meant. A model that drafts it supplies the conclusion, and that study suggests he would not notice. That application is mine.
 
 The division of the work that follows from the evidence above:
 
@@ -170,7 +170,7 @@ The rule: nothing in the pipeline is published until he has made the last pass o
 - every personal line passes the five-question test (A4 clause 4);
 - the AI line is in the description and the email footer (A4 clause 8).
 
-**What it costs.** It sits inside the slots A3 already has: the script pass in Friday's outline hour, the package pass in Tuesday's hour, the Short and Instagram in Wednesday's, the email in Thursday's 0.75 hours (A3, checklist D). No new hours are added; whether the slots hold with the pass inside them is for the hours log (A9, read 2).
+**What it costs.** It sits inside the slots A3 already has: the script pass in Friday's outline hour, the package pass in Tuesday's hour, the Short and Instagram in Wednesday's, the email in Thursday's 0.75 hours (A3, checklists C and D). No new hours are added; whether the slots hold with the pass inside them is for the hours log (A9, read 2).
 
 ## Deliverable · The content pipeline, and the Athens finale run through it
 
@@ -185,30 +185,7 @@ Built from §1–§9 on 2 November 2026; web facts checked that day. Usable with
 - [ ] Each step below runs in its own new chat, outside the Learning Project, with the model and effort set before the first message (B2, rules for using the table; B5 skill §0).
 
 ```viz
-{"kind": "swimlanes",
- "lanes": [
-  {"id": "model", "label": "Model", "tone": 3},
-  {"id": "code", "label": "Code", "tone": 4},
-  {"id": "him", "label": "Him", "tone": 1}
- ],
- "steps": [
-  {"id": "takes", "lane": "him", "col": 0, "label": "Two takes", "note": "dictated, dated"},
-  {"id": "script", "lane": "model", "col": 1, "label": "Script", "note": "Opus 5.5, medium"},
-  {"id": "q1", "lane": "code", "col": 2, "label": "check_quotes.py", "note": "PASS or fix"},
-  {"id": "pass1", "lane": "him", "col": 3, "label": "Script pass", "note": "every [NEW] rewritten"},
-  {"id": "pack", "lane": "model", "col": 4, "label": "Titles, thumbnail, Short, Instagram, email", "note": "Sonnet 5.5, low"},
-  {"id": "q2", "lane": "code", "col": 5, "label": "Counts and quotes", "note": "characters, words"},
-  {"id": "final", "lane": "him", "col": 6, "label": "Final pass", "note": "then he publishes"}
- ],
- "links": [
-  {"from": "takes", "to": "script"},
-  {"from": "script", "to": "q1"},
-  {"from": "q1", "to": "pass1"},
-  {"from": "pass1", "to": "pack"},
-  {"from": "pack", "to": "q2"},
-  {"from": "q2", "to": "final"}
- ],
- "caption": "Who does each step of the pipeline: the model drafts, code checks, he rewrites and publishes. Drawn from the Deliverable, part A, which rests on B2's routing table, B5's skill (steps 4–7 and check_quotes.py) and DD-B3's operating rules 1 and 4; the split is this unit's procedure."}
+{"kind": "swimlanes", "lanes": [{"id": "model", "label": "Model", "tone": 3}, {"id": "code", "label": "Code", "tone": 4}, {"id": "him", "label": "Him", "tone": 1}], "steps": [{"id": "takes", "lane": "him", "col": 0, "label": "Takes", "note": "dictated, dated"}, {"id": "record", "lane": "model", "col": 1, "label": "Record", "note": "Opus 5.5, medium"}, {"id": "script", "lane": "model", "col": 2, "label": "Script", "note": "Opus 5.5, medium"}, {"id": "q1", "lane": "code", "col": 3, "label": "check_quotes.py", "note": "PASS or fix"}, {"id": "pass1", "lane": "him", "col": 4, "label": "Script pass", "note": "every [NEW] rewritten"}, {"id": "edit", "lane": "him", "col": 5, "label": "Frame and edit", "note": "no model"}, {"id": "pack", "lane": "model", "col": 6, "label": "Titles, thumbnail, Short, Instagram, email", "note": "Sonnet 5.5, low"}, {"id": "q2", "lane": "code", "col": 7, "label": "Counts and quotes", "note": "characters, words"}, {"id": "final", "lane": "him", "col": 8, "label": "Final pass", "note": "then he publishes"}], "links": [{"from": "takes", "to": "record"}, {"from": "record", "to": "script"}, {"from": "script", "to": "q1"}, {"from": "q1", "to": "pass1"}, {"from": "pass1", "to": "edit"}, {"from": "edit", "to": "pack"}, {"from": "pack", "to": "q2"}, {"from": "q2", "to": "final"}], "caption": "Who does each step of the pipeline: the model drafts, code checks, he rewrites, edits and publishes. Drawn from the Deliverable, part A, steps 1–9, which rest on B2's routing table, B5's skill (steps 1–7 and check_quotes.py) and DD-B3's operating rules 1 and 4; the script is cut from the record and the takes together (§1); the split is this unit's procedure."}
 ```
 
 #### Step 1 · Takes, after each session
@@ -460,7 +437,7 @@ Season one, all three episodes: `<FILL: playlist URL>`
 
 ## Sources
 
-- Agarwal, Dhruv, Mor Naaman and Aditya Vashistha, "AI Suggestions Homogenize Writing Toward Western Styles and Diminish Cultural Nuances", arXiv 2409.11360 v3, 12 Mar 2025, doi:10.1145/3706598.3713564, read 2 Nov 2026. https://arxiv.org/abs/2409.11360
+- Agarwal, Dhruv, Mor Naaman and Aditya Vashistha, "AI Suggestions Homogenize Writing Toward Western Styles and Diminish Cultural Nuances", arXiv 2409.11360 v3, 12 Mar 2025, doi:10.1145/3706598.3713564 (CHI '25, as the v3 paper's ACM reference line states), read 2 Nov 2026. https://arxiv.org/abs/2409.11360
 - Chakrabarty, Tuhin, Philippe Laban and Chien-Sheng Wu, "Can AI writing be salvaged? Mitigating Idiosyncrasies and Improving Human-AI Alignment in the Writing Process through Edits", arXiv 2409.14509 (preprint; venue not confirmed), read 2 Nov 2026. https://arxiv.org/pdf/2409.14509
 - Cornell Chronicle (Patricia Waldron), "Writing with AI help can shift your opinions" (Jakesch, Bhat, Buschek, Zalmanson and Naaman, "Co-Writing with Opinionated Language Models Affects Users' Views", CHI 2023, doi:10.1145/3544548.3581196), 15 May 2023. https://news.cornell.edu/node/326526
 - Gorenz, Drew and Norbert Schwarz, "How funny is ChatGPT? A comparison of human- and A.I.-produced jokes", *PLOS ONE* 19(7), e0305364, 3 Jul 2024, doi:10.1371/journal.pone.0305364 (PubMed Central copy). https://pmc.ncbi.nlm.nih.gov/articles/PMC11221738/
@@ -479,9 +456,11 @@ Season one, all three episodes: `<FILL: playlist URL>`
 2. **Doshi and Hauser (2024)** was read through two releases (Exeter, ScienceDaily); the PubMed Central copy refused the fetch. ScienceDaily's text appears to garble the usefulness and enjoyment figures; the unit uses only figures the Exeter release states.
 3. **Chakrabarty, Laban and Wu** is cited as an arXiv preprint; the copy read carries an unfilled ACM template line, and no venue was confirmed. The 28/20/18/17% category shares and the 65%/60% preference figures are from its §5.1 and the preference study as the fetch tool reported them.
 4. **Jakesch et al. (CHI 2023)** was read through the Cornell Chronicle report only; the doubling and the share who did not notice the bias are the report's account and were not checked against the paper.
-5. **Agarwal, Naaman and Vashistha:** the arXiv page names no venue; the ACM DOI suggests a 2025 ACM conference, unconfirmed. Its relevance to his Portuguese lines is an inference.
+5. **Agarwal, Naaman and Vashistha:** the arXiv abstract page names no venue; the v3 paper's ACM reference line names CHI '25 (Yokohama, 2025), not checked against the ACM Digital Library. Its relevance to his Portuguese lines is an inference.
 6. **Instagram's five-hashtag limit** rests on Social Media Today's report of a Threads post from @creators (18 Dec 2025); the post was not opened, and whether the gradual rollout has reached his account was not checked.
 7. **No study tested spoken scripts, vlog titles or a current model.** Every transfer in §8 from essays, micro-stories, paragraphs and jokes written with 2022–24 models to his pipeline is this unit's inference.
 8. **Sonnet 5.5 at low for titles and the Short** remains an analogy with B2's Shōmen-posts row; no source measures model quality on either task.
-9. **The time saved by the pipeline** is unmeasured for his tasks; Noy and Zhang's 40% is for 2023 business writing. The slots in A3 are estimates the hours log tests.
+9. **The time saved by the pipeline** is unmeasured for his tasks; Noy and Zhang's 40% is for occupation-specific writing tasks done with ChatGPT in 2023. The slots in A3 are estimates the hours log tests.
 10. **The Athens run** uses no fact about Athens beyond the filed units: the result, the miss, the takes and the footage are slots, and title 4 and its thumbnail exist only if the result is not a loss.
+
+Fresh check 2026-11-02 (Opus 5.5; a Fable 5.1 fresh check is owed): fix · 1 error, 4 should-fix, 8 minor; all applied; report `audits/brand-ai/fresh-check-B7.md`.
