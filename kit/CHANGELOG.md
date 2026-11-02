@@ -76,7 +76,7 @@ Backlog row B-12 of `docs/BACKLOG.md`, one chat, Opus 5.5 throughout, under P31:
 
 **Records:** Brand + AI v9.0, 18 of 22; Audit 5 at 2 of 4 (B6, B8); Audits 3 and 4 at the Fable 5.1 stage (row P49); B8's staleness check due 2 May 2027; DD-A1 next.
 
-Academy rebuilt, verified (ALL CHECKS PASSED, the page shot and every figure's frames sheet looked at, phone and desktop, dark and light) and published once to the artifact, after reading the live page, which was the starting build's; GitHub Pages deployed once. The backlog and changelog moves were made before the publishing build, so the published Backlog and Changelog pages are current. No history report changed, so the Greece edition was not republished.
+Academy rebuilt, verified (ALL CHECKS PASSED, the page shot and every figure's frames sheet looked at, phone and desktop, dark and light) and published once to the artifact (version 110, after reading the live page, which was the starting build's, and the seven fetched files the first publish named, each byte-identical to the starting build's); GitHub Pages deployed once (`apcanario/academy` `49bc250`, Actions run 41448012426, success). The backlog and changelog moves were made before the publishing build, so the published Backlog and Changelog pages are current. No history report changed, so the Greece edition was not republished.
 
 ## 2 November 2026 · Session 44 · Brand + AI A8 and B6 (A-3)
 
