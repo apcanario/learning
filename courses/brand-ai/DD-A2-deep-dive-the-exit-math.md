@@ -38,13 +38,13 @@ where **C** is spending the household has agreed in writing to cut if his salary
 
 **The default is the sole-earner case.** The brief asks how much runway a sole earner needs, so every number in this unit sets V_min = 0 and C = 0 until he enters his own. At those defaults F_s = €4,370 from September 2027. Every €100 of V_min or C lowers F_s by €100 and the side-income target by €100 ÷ 0.8502 = €117.62 a month (my arithmetic).
 
-**What the state does not cover.** The unemployment benefit is no part of any exit path. The Social Security Institute's practical guide requires unemployment "por razões alheias à sua vontade", lists a worker's own termination of the contract ("denúncia do contrato de trabalho/demissão por iniciativa do trabalhador") as voluntary, and accepts a termination by mutual agreement only in cases of restructuring or economic difficulty at the employer ([ISS, *Guia prático: subsídio de desemprego*, 6001 v4.72, 20 Feb 2025](https://seg-social.pt/documents/10152/15007/6001_subsidio_desemprego/1867b682-64f2-4b1a-8f39-ca008602a16b); official guidance, read 2 Nov 2026). Leaving to build an independent income is a resignation. The same guide caps the benefit at two and a half times the IAS, which it states as €1,306.25 a month, which would be 27.2% of €4,800 in any case (my arithmetic). Every month of an exit is paid from savings or from side income.
+**What the state does not cover.** The unemployment benefit is no part of any exit path. The Social Security Institute's practical guide requires unemployment "por razões alheias à sua vontade", lists a worker's own termination of the contract ("denúncia do contrato de trabalho/demissão por iniciativa do trabalhador") as voluntary, and accepts a termination by mutual agreement only in cases of restructuring or economic difficulty at the employer ([ISS, *Guia prático: subsídio de desemprego*, 6001 v4.72, 20 Feb 2025](https://seg-social.pt/documents/10152/15007/6001_subsidio_desemprego/1867b682-64f2-4b1a-8f39-ca008602a16b); official guidance, read 2 Nov 2026). Leaving to build an independent income is a resignation. The same guide caps the benefit at two and a half times the IAS, which it states as €1,306.25 a month, the 2025 figure; at the 2026 IAS of €537.13 (A8 §3) the cap is €1,342.83, which would be 28.0% of €4,800 in any case (my arithmetic). Every month of an exit is paid from savings or from side income.
 
 ## 3 · How many months of runway a sole earner needs
 
 **What the sources say.** No study among the filed units, and none found on 2 November 2026, measures how long an employee who leaves to build creator or freelance income takes to replace a salary, which is the quantity a runway has to cover. The one source opened is a bank's consumer guidance, without a dataset: Caixa Geral de Depósitos says an emergency fund should equal "pelo menos, seis meses de despesas", and that under current uncertainty the margin should be "pelo menos, um ano de despesas" ([CGD, Saldo Positivo, *Constituir um fundo de emergência*, 9 Apr 2026](https://www.cgd.pt/Site/Saldo-Positivo/protecao/Pages/fundo-emergencia.aspx); bank guidance, read 2 Nov 2026). It does not distinguish one-income households or variable incomes.
 
-**Why this unit uses twelve months (his rule).** Three facts from the sources push to the top of the bank's range. There is no state bridge after a resignation (§2). Three of the four lines the brief names (brand deals, consulting, courses) have no sourced time to first income at all (§4). And A9's checkpoints read the channel once a quarter, so a test that needs two readings to pass needs about six months just to be read twice; a six-month runway would be spent by the time the second reading arrives. The model carries six months as the sensitivity.
+**Why this unit uses twelve months (his rule).** Three facts from the sources push to the bank's longer figure, at least a year. There is no state bridge after a resignation (§2). Three of the four lines the brief names (brand deals, consulting, courses) have no sourced time to first income at all (§4). And A9's checkpoints read the channel once a quarter, so a test that needs two readings to pass needs about six months just to be read twice; a six-month runway would be spent by the time the second reading arrives. The model carries six months as the sensitivity.
 
 **What twelve months costs.** 12 × €4,370 = **€52,440**; six months is €26,220 (my arithmetic).
 
@@ -84,7 +84,7 @@ New Partner Program applicants need 1,000 subscribers and 8,000 qualified watch 
 
 ### 4.4 · Shōmen margin: sourced revenue, no sourced margin
 
-**What A7 found.** A7's model gives 2027 merch revenue of $388.00, $2,328.00 and $11,640.00 in its three scenarios, gross sales before any cost, and says that no filed unit gives Shōmen's costs, so none of it is profit yet (A7, Deliverable B, B2, a16 and B4). That holds here. Converted at $1.1172, the three are €347.30, €2,083.78 and €10,418.90 for the year, €28.94, €173.65 and €868.24 a month (my arithmetic). The rate under them, 0.40–1.20% of followers per drop and a $48.50 order, is VoxBooster's ([VoxBooster, 22 Aug 2026](https://voxbooster.com/blog/merch-sales-creator-statistics-2026)), which A9 called the weakest-sourced figure in its unit (A9 §7; A7 §1).
+**What A7 found.** A7's model gives 2027 merch revenue of $388.00, $2,328.00 and $11,640.00 in its three scenarios, gross sales before any cost, and says that no filed unit gives Shōmen's costs, so none of it is profit yet (A7, Deliverable B, B2, a16 and B4). That holds here. Converted at $1.1172, the three are €347.30, €2,083.78 and €10,418.90 for the year, €28.94, €173.65 and €868.24 a month (my arithmetic). The rate under them, 0.40–1.20% of followers (read per drop, as A7 reads it; VoxBooster does not say per drop or per year, A7 §1) and a $48.50 order, is VoxBooster's ([VoxBooster, 22 Aug 2026](https://voxbooster.com/blog/merch-sales-creator-statistics-2026)), which A9 called the weakest-sourced figure in its unit (A9 §7; A7 §1).
 
 **What else comes off.** On sales of goods, social security takes 4.28% of the sale value (§1). Above €15,000 of turnover a year the IVA exemption ends (A8 R6), so part of every order is IVA. Whether Shōmen's sales are his turnover at all depends on its legal form, which is open (A8 R10).
 
@@ -125,9 +125,9 @@ The gap between the sourced lines and the target is what B, K and Q would have t
 
 ## 5 · Against A7, A9, A2 and DD-A1
 
-**A7, Deliverable B.** The three totals ($388.00, $2,500.20, $13,666.92) recompute exactly, and so do the paid-tier lines (Base: 50 member-months × $52 ÷ 12 = $216.67, fees $29.47 and $15.00; High: 266 × $110 ÷ 12 = $2,438.33, fees $331.61 and $79.80). Merch is 93.1% of Base and 85.2% of High, as A7 B4 says. A7's treatment of the margin stands and is carried into this model: merch enters as revenue times an unfilled m, and nothing in the model treats it as profit. One addition: A8 §2 left open whether A7's totals cross €15,000. At the ECB rate of 30 October 2026, the High total is €12,233.19, and across the range the ECB page shows from July to October 2026 ($1.1130 to $1.1699) it is €11,682.13 to €12,279.35, under €15,000 throughout (my arithmetic). Whose turnover it is stays open (A8 R10).
+**A7, Deliverable B.** The three totals ($388.00, $2,500.20, $13,666.92) recompute exactly, and so do the paid-tier lines (Base: 50 member-months × $52 ÷ 12 = $216.67, fees $29.47 and $15.00; High: 266 × $110 ÷ 12 = $2,438.33, fees $331.61 and $79.80). Merch is 93.1% of Base and 85.2% of High, as A7 B4 says. A7's treatment of the margin stands and is carried into this model: merch enters as revenue times an unfilled m, and nothing in the model treats it as profit. One addition: A8 §2 left open whether A7's totals cross €15,000. At the ECB rate of 30 October 2026, the High total is €12,233.19, and across the range the ECB page shows from July to October 2026 ($1.1130 to $1.1699) it is €11,682.13 to €12,279.35, under €15,000 throughout (my arithmetic). Those totals carry the paid tier net of fees; turnover counts it gross, $11,640.00 + $2,438.33 = $14,078.33, which is €12,601.44 at $1.1172 and €12,033.79 to €12,648.99 across the range, still under €15,000 (my arithmetic on A7 B2). Whose turnover it is stays open (A8 R10).
 
-**A9 §8, the expectation sheet and the checkpoints.** This unit agrees with all three and depends on them. The model reads only on A9's checkpoint dates as A3 shifts them (A3 §5), which continue every 91 days: 16 February, 18 May, 17 August and 16 November 2027, 15 February 2028, and A9's two-year review of 31 October 2028 falls on Tuesday 14 November 2028 (my arithmetic). A9 §8's plateau bears on Path A by analogy: on YouTube, median monthly subscriber growth falls with size at every band (vidIQ, vendor data), and A9 says the median rates describe no actual path to a large audience. No filed unit measures how list growth changes with size. Path A's list grows linearly at an anecdote's pace for four years, so it is the optimistic case, and A9's plateau is the reason to read its date as the earliest possible.
+**A9 §8, the expectation sheet and the checkpoints.** This unit agrees with all three and depends on them. The model reads only on A9's checkpoint dates as A3 shifts them (A3 §5), which continue every 91 days: 16 February, 18 May, 17 August and 16 November 2027, 15 February 2028, and A9's two-year review of 31 October 2028 falls on Tuesday 14 November 2028 (my arithmetic). A9 §8's plateau bears on Path A by analogy: on YouTube, median monthly subscriber growth falls with size at every band, from 1.26% a month at 1–99 subscribers to 0.24% above a million ([vidIQ, Subscriber Benchmarks 2026, 20 Jul 2026](https://vidiq.com/research/youtube-subscriber-benchmarks-2026/), as A9 §8 cites it; vendor data), and A9 says the median rates describe no actual path to a large audience (A9 §4, §5). No filed unit measures how list growth changes with size. Path A's list grows linearly at an anecdote's pace for four years, so it is the optimistic case, and A9's plateau is the reason to read its date as the earliest possible.
 
 **A2 §3.** No source measures the share of viewers or followers who join a list; the platform's network is the only measured source of subscribers (Substack's claim of 50% of new subscriptions, [On Substack, 22 Feb 2024](https://on.substack.com/p/substacks-recommendations-network); platform claim). So the list growth that Path A needs cannot be derived from channel numbers; it is read directly, as list size, at every checkpoint (A9 read 7).
 
@@ -170,7 +170,7 @@ Version 1, 2 November 2026. Euros unless marked; dollars converted at $1.1172 pe
 | i27 | Q: course income, a month | Unfilled | Only figure below the standard (§4.6) |
 | i28 | YouTube ads | 0 | A9 rows 11–12 (§4.2) |
 | i29 | Checkpoints | Every 91 days from Tue 16 Feb 2027 | A9, Deliverable 2, on A3 §5's dates; later dates my arithmetic |
-| i30 | Pass rule | Side income over the trailing twelve full months ≥ 12 × T, at two checkpoints running | **His rule**; basis: A9's fixed-date reads; A7 Deliverable A, part 7 (a trigger must hold twice) |
+| i30 | Pass rule | Side income over the trailing twelve full months ≥ 12 × T, at two checkpoints running, each with twelve full months of side income behind it | **His rule**; basis: A9's fixed-date reads; A7 Deliverable A, part 7 (a trigger must hold twice) |
 
 ### D2 · The thresholds, line by line
 
@@ -250,6 +250,7 @@ Each €100 a month of B, K or Q he can show from contracts lowers the members n
 | m = 100%, 1.20% per drop | Tue 3 Feb 2037 |
 | m = 50% (110,167 followers on drop day) | Tue 29 Jan 2041 |
 | m = 100%, 0.40% per drop | Tue 29 Jul 2042 |
+| m = 100%, rate read per year (0.60% per drop; A7 B3, T1), 105,167 followers on drop day | Tue 31 Jul 2040 |
 
 **What has to be true.**
 
@@ -280,12 +281,12 @@ Each €100 a month of B, K or Q he can show from contracts lowers the members n
 ```viz
 {"kind": "timeline", "start": 2027, "end": 2038, "ticks": [2027, 2029, 2031, 2033, 2035, 2037],
  "events": [
-  {"at": 2027, "date": "Aug 2027", "label": "Car credit ends; saving can start", "tone": 4},
-  {"at": 2028, "date": "14 Nov 2028", "label": "A9 two-year review", "tone": 6},
-  {"at": 2031, "date": "11 Feb 2031", "label": "Path A: tier carries the floor", "tone": 1},
-  {"at": 2032, "date": "9 Nov 2032", "label": "Six-month runway, zero savings", "tone": 2},
-  {"at": 2037, "date": "3 Feb 2037", "label": "Path B, at 100% margin", "tone": 3},
-  {"at": 2037, "date": "3 Nov 2037", "label": "Path C bound: twelve-month runway", "tone": 5}
+  {"at": 2027.62, "date": "Aug 2027", "label": "Last car-credit month; saving from Sep 2027", "tone": 4},
+  {"at": 2028.87, "date": "14 Nov 2028", "label": "A9 two-year review", "tone": 6},
+  {"at": 2031.11, "date": "11 Feb 2031", "label": "Path A: tier carries the floor", "tone": 1},
+  {"at": 2032.86, "date": "9 Nov 2032", "label": "Six-month runway, zero savings", "tone": 2},
+  {"at": 2037.09, "date": "3 Feb 2037", "label": "Path B, at 100% margin", "tone": 3},
+  {"at": 2037.84, "date": "3 Nov 2037", "label": "Path C bound: twelve-month runway", "tone": 5}
  ],
  "caption": "Deliverable, D3 to D5: the earliest honest date on each path, with the end of the car credit (brief), A9's two-year review on A3's dates, and the runway dates at zero savings. Path A at Amy Suto's list growth (anecdote) and the 1.6% paid share (documented case); Path B at VoxBooster's weakly sourced top rate and an impossible 100% margin; Path C has no sourced income date, so its date is the runway's. Dates are this unit's arithmetic on the filed figures."}
 ```
@@ -323,6 +324,7 @@ Each €100 a month of B, K or Q he can show from contracts lowers the members n
 - The Introverted Networker, "How I grew my newsletter to 2,500", charts as of 28 May 2025, as cited in A9 §6. https://theintrovertednetworker.substack.com/p/how-i-grew-my-newsletter-to-2500
 - vidIQ Research, "Uploads and reaching 1,000 subscribers", 11 Sep 2026, as cited in A9 §3. https://vidiq.com/research/youtube-uploads-1000-subscribers/
 - vidIQ, "How many videos to get 1,000 subscribers", 9 Jun 2025, as cited in A9 §3. https://vidiq.com/blog/post/how-many-videos-to-get-1000-subscribers/
+- vidIQ Research, "YouTube Subscriber Benchmarks 2026", 20 Jul 2026, as cited in A9 §8. https://vidiq.com/research/youtube-subscriber-benchmarks-2026/
 - VoxBooster, "Merch sales creator statistics 2026", 22 Aug 2026, as cited in A7 §1 (weakly sourced). https://voxbooster.com/blog/merch-sales-creator-statistics-2026
 - YouTube Help, "Changes to the YouTube Partner Program" (answer 12843009), as cited in A9 §6. https://support.google.com/youtube/answer/12843009?hl=en
 - Filed units cited by section: A2 (§3); A3 (§5); A7 (§1, §2, Deliverable A part 4 and part 7, Deliverable B: B1 a1–a12, a16, B2, B4); A8 (§1, §2, §3, §4, §11; register R1, R3, R5, R6, R9, R10, R11, R13, R18); A9 (§6, §7, §8; Deliverable 1 rows 1, 5, 6, 11, 12, 13; Deliverable 2); DD-A1 (§2, §3, §4; deliverable, pattern 3).
@@ -333,7 +335,7 @@ Each €100 a month of B, K or Q he can show from contracts lowers the members n
 2. The ECB rate of $1.1172 on 30 October 2026 and the July–October range ($1.1130 to $1.1699) come from the fetch tool's reading of the ECB's Italian-language US dollar page; the table's date was read as "30" in the October 2026 table.
 3. The ISS guide (v4.72, 20 February 2025) was read through the fetch tool; whether a later version changes the voluntary-unemployment rule or the cap was not checked. The gov.pt service page for the benefit failed at its site and was not opened.
 4. CGD's six-months-to-a-year guidance is a bank's consumer advice without a dataset; no source meeting the standard was found for the runway length, so twelve months is his rule.
-5. Social security on side income after an exit uses the 2018 regime's 21.4% on 70% (services) and 20% (goods) as A8 §3 gives it; whether a first-year exemption or another regime applies to a newly independent worker was not checked here (A8 R12 is open on enrolment timing).
+5. Social security on side income after an exit uses the 2018 regime's 21.4% on 70% (services) and 20% (goods) as A8 §3 gives it; A8 §3 gives the one first-year rule found: first enrolment takes effect on the first day of the 12th month after the activity starts (CRC art. 145.º); with the activity opened while employed (A8 R1), that period has run before any exit date in this model, so the 14.98% applies from the exit; whether any other regime applies was not checked (A8 R12 is open on enrolment timing).
 6. IRS is not modelled; every threshold is before income tax, so every date in the deliverable is earlier than the true one by an amount the accountant sets.
 7. Path A treats members as an instant 1.6% of the list with no churn, and the list as linear at Amy Suto's pace for four years; both favour an early date, and Suto's figure is an anecdote.
 8. Path B repeats A7's two drop dates every year and applies Socialinsider's 22.0% growth (brand accounts at 1,000–5,000 in 2025) to accounts far above that tier for nine years.
