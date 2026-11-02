@@ -185,7 +185,7 @@ Built from §1–§9 on 2 November 2026; web facts checked that day. Usable with
 - [ ] Each step below runs in its own new chat, outside the Learning Project, with the model and effort set before the first message (B2, rules for using the table; B5 skill §0).
 
 ```viz
-{"kind": "swimlanes", "lanes": [{"id": "model", "label": "Model", "tone": 3}, {"id": "code", "label": "Code", "tone": 4}, {"id": "him", "label": "Him", "tone": 1}], "steps": [{"id": "takes", "lane": "him", "col": 0, "label": "Takes", "note": "dictated, dated"}, {"id": "record", "lane": "model", "col": 1, "label": "Record", "note": "Opus 5.5, medium"}, {"id": "script", "lane": "model", "col": 2, "label": "Script", "note": "Opus 5.5, medium"}, {"id": "q1", "lane": "code", "col": 3, "label": "check_quotes.py", "note": "PASS or fix"}, {"id": "pass1", "lane": "him", "col": 4, "label": "Script pass", "note": "every [NEW] rewritten"}, {"id": "edit", "lane": "him", "col": 5, "label": "Frame and edit", "note": "no model"}, {"id": "pack", "lane": "model", "col": 6, "label": "Titles, thumbnail, Short, Instagram, email", "note": "Sonnet 5.5, low"}, {"id": "q2", "lane": "code", "col": 7, "label": "Counts and quotes", "note": "characters, words"}, {"id": "final", "lane": "him", "col": 8, "label": "Final pass", "note": "then he publishes"}], "links": [{"from": "takes", "to": "record"}, {"from": "record", "to": "script"}, {"from": "script", "to": "q1"}, {"from": "q1", "to": "pass1"}, {"from": "pass1", "to": "edit"}, {"from": "edit", "to": "pack"}, {"from": "pack", "to": "q2"}, {"from": "q2", "to": "final"}], "caption": "Who does each step of the pipeline: the model drafts, code checks, he rewrites, edits and publishes. Drawn from the Deliverable, part A, steps 1–9, which rest on B2's routing table, B5's skill (steps 1–7 and check_quotes.py) and DD-B3's operating rules 1 and 4; the script is cut from the record and the takes together (§1); the split is this unit's procedure."}
+{"kind": "swimlanes", "lanes": [{"id": "model", "label": "Model", "tone": 3}, {"id": "code", "label": "Code", "tone": 4}, {"id": "him", "label": "Him", "tone": 1}], "steps": [{"id": "takes", "lane": "him", "col": 0, "label": "Takes", "note": "dictated, dated"}, {"id": "file", "lane": "model", "col": 1, "label": "File a take", "note": "Haiku 5.5, low"}, {"id": "record", "lane": "model", "col": 2, "label": "Record", "note": "Opus 5.5, medium"}, {"id": "script", "lane": "model", "col": 3, "label": "Script", "note": "Opus 5.5, medium"}, {"id": "q1", "lane": "code", "col": 4, "label": "check_quotes.py", "note": "against takes and record"}, {"id": "pass1", "lane": "him", "col": 5, "label": "Script pass", "note": "[NEW] rewritten or cut"}, {"id": "edit", "lane": "him", "col": 6, "label": "Frame and edit", "note": "no model"}, {"id": "pack", "lane": "model", "col": 7, "label": "Titles, thumbnail, Short, Instagram, email", "note": "Sonnet 5.5, low"}, {"id": "q2", "lane": "code", "col": 8, "label": "Counts and quotes", "note": "characters, words"}, {"id": "final", "lane": "him", "col": 9, "label": "Final pass", "note": "then he publishes"}], "links": [{"from": "takes", "to": "file"}, {"from": "file", "to": "record"}, {"from": "record", "to": "script"}, {"from": "takes", "to": "script"}, {"from": "script", "to": "q1"}, {"from": "q1", "to": "pass1"}, {"from": "pass1", "to": "edit"}, {"from": "edit", "to": "pack"}, {"from": "pack", "to": "q2"}, {"from": "q2", "to": "final"}], "caption": "Who does each step of the pipeline: the model drafts, code checks, he rewrites, edits and publishes. Drawn from the Deliverable, part A, steps 1–9, which rest on B2's routing table, B5's skill (steps 1–7 and check_quotes.py) and DD-B3's operating rules 1 and 4; the script is cut from the record and the takes together (§1); the split is this unit's procedure."}
 ```
 
 #### Step 1 · Takes, after each session
@@ -218,7 +218,7 @@ Built from §1–§9 on 2 November 2026; web facts checked that day. Usable with
 
 Filming window Saturday of week A, editing window Saturday of week B, by A5's checklist and edit template. The edit hands on: the chapter list, the Short's timestamps and two or three thumbnail frames (A5, Deliverable B3).
 
-#### Step 5 · Titles and thumbnail copy, Tuesday of week A
+#### Step 5 · Titles and thumbnail copy, Tuesday of the next week A
 
 - **Input:** the final script, hook first.
 - **Model:** Sonnet 5.5, low (no B2 row; analogy with B2's Shōmen-posts row, as B3 and B5 set it; confirmed here, §7).
@@ -234,7 +234,7 @@ Thumbnail text: one line of at most four words, plus at most one number, taken f
 - **Code check:** every title 100 characters or fewer including the label, counted in code (B5 step 5).
 - **His check:** A5's clickbait list on every row; no title or thumbnail leads with a diagnosis, crisis, loss or verdict on himself (A4 clause 5); he picks up to three for Test & Compare and pairs the thumbnail styles by A5 rule 4.
 
-#### Step 6 · Shorts cut list, Wednesday of week A
+#### Step 6 · Shorts cut list, Wednesday of the next week A
 
 - **Input:** the final script with the edit's timestamps.
 - **Model:** Sonnet 5.5, low (no B2 row; analogy, §7).
@@ -243,7 +243,7 @@ Thumbnail text: one line of at most four words, plus at most one number, taken f
 - **Code check:** quotations pass `check_quotes.py`; each cut 30–60 seconds by its timestamps.
 - **His check:** crop check in the editor (subject in the centre third in every shot; A5 §1); every claim in the cut is first-person (A4, pre-mortem 4); everyone in frame agreed (A4 clause 2).
 
-#### Step 7 · Instagram, four posts in the two locked styles, Wednesday of week A
+#### Step 7 · Instagram, four posts in the two locked styles, Wednesday of the next week A
 
 - **Input:** the final script and the chapter list; stills and clips exported from his own editor.
 - **Model:** Sonnet 5.5, low (B2, Shōmen posts).
