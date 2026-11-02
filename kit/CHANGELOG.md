@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Brand + AI A7 (session 43, A-2):** 15 of 22 Brand + AI units written; A7 Monetisation through Shōmen filed with its integration plan and 2027 revenue model; A8 is next and closes Audit 4's four (A5, B7, A7, A8), which, like Audit 3, waits for the Fable 5.1 stage.
 - **Dio and every frame of a figure (session 42, A-1: P87, P88, P89):** Cassius Dio is cited by the Loeb's book (Boissevain's division) with the traditional number of the Loeb's margin in brackets where they differ, and every history citation now follows it (`reviews/units-9-13/log.md`, P87 and P88). `verify.py --shots <dir> --page <id>` saves, for each figure of the page, its opening frame and a sheet of every frame a reader scrolls it across, half a frame apart, phone, tablet and desktop, dark and light; `p85_frames.py` is retired. Brand + AI has 14 of 22 units (A5 and B7 filed).
 - **Greece and Rome in Markdown (session 41, P71-3):** all 157 history reports are Markdown files in the vault, `courses/greece/` and `courses/rome/`, read through `vault.py` and rendered by `mdcourse.history_html`; the kit's HTML fragments are retired. Every page renders the same text and figures as before. A history writer writes Markdown to the vault (`AGENT-SPEC.md`).
 - **Editions and the ebook (session 38, P70, P71):** `build.py --edition greece` builds a Greece-only Academy in `editions/greece/`, `verify.py --edition greece` checks it, and `build.py --epub greece` writes an EPUB of it; neither is published. Every new course is a markdown course.
@@ -59,6 +60,15 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 1 Nov | 40. Rome complete: 11.7, 11.8, 12.1 to 12.8, 13.3 to 13.8 (R-2) | 78 | 79 |
 | 1 Nov | 41. Greece and Rome to Markdown (P71-3), two errata (P86), the 15 dropped Rome figures restored (P85) | 78 | 79 |
 | 1 to 2 Nov | 42. Brand + AI A5 and B7 (A-1), the Dio citations (P87, P88), every frame of a figure (P89) | 78 | 79 |
+| 2 Nov | 43. Brand + AI A7 (A-2) | 78 | 79 |
+
+## 2 November 2026 · Session 43 · Brand + AI A7 (A-2)
+
+Backlog row A-2 of `docs/BACKLOG.md`, one chat, Opus 5.5 throughout, under P31: the unit written by a fresh agent that saw only its brief, the write-unit skill, the sourcing standard, the figure kinds and the filed units, and told not to use memory, past-chat or connector tools; the check by a separate fresh agent that had not seen the writing; the chat filed, built, applied verified findings and recorded. Started from `d07e070` (build and verify ALL CHECKS PASSED).
+
+**A7 · Monetisation through Shōmen** (Brand + AI course A), 7,960 words with Sources and the unsure list (7,153 before Sources), three figures (a range of orders per drop, the override's decision rule, the three scenarios as stacked bars). Deliverables: a Shōmen integration plan (what appears where and how, the five-part sponsorship series on Shōmen's own Instagram, disclosure by pointer to A4 and A5, drop and stock rules, reads S1 to S5 on A9's checkpoint dates, owners, the override's three-part trigger, read from 15 Feb 2028) and a 2027 revenue model in three scenarios, sixteen assumptions in one table and every line of arithmetic shown: $388.00, $2,500.20 and $13,666.92, mostly gross merch sales, with sensitivity tests for VoxBooster's rate read per year and for 3% and 5% paid shares. Nothing about the three SC Braga athletes beyond their number and the sponsorship's end in December 2027; everything else is left to A8. The writer used search (the flag stays off) only to verify VoxBooster, YouTube's paid-promotion page and the two pages that name Enkamp as Seishin's founder. Fresh check (Opus 5.5; Fable 5.1 owed): keep, 0 errors, 3 should-fix, 6 minor, every one verified (VoxBooster and Social Media Today by a fresh search and fetch, the rest against the filed units) and applied; the one change to a Fix: VoxBooster's Fanjoy citation closes a sentence that also gives a repeat-purchase figure, and the applied text says so. All three figures passed; their frame sheets at phone and desktop, dark and light, were looked at. No other filed unit needed a fix.
+
+**Records:** `docs/courses-index.md`'s header now names v8.5 to v8.7 (it had stopped at v8.2).
 
 ## 2 November 2026 · Session 42 · Brand + AI A5 and B7, the Dio citations (P87, P88), every frame of a figure (P89)
 
