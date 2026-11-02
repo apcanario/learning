@@ -139,11 +139,11 @@ The three routes on one axis, from the Anthropic post's own figures:
    }
   ]
  },
- "caption": "The routing rule in §1, this unit's synthesis of its sources: the cutoff from B1 §4; the fit conditions and the roughly fifteen-fold token cost from Hadfield et al., <a href=\"https://www.anthropic.com/engineering/multi-agent-research-system\"><em>How we built our multi-agent research system</em></a>, Anthropic Engineering, 13 Jun 2025 (vendor). Every route that ends in something published, filed or acted on then goes through the sampling rule (Deliverable, C)."
+ "caption": "The routing rule in §1, this unit's synthesis of its sources: the cutoff from B1 §4; the fit conditions and the roughly fifteen-fold token cost from Hadfield et al., <a href=\"https://www.anthropic.com/engineering/multi-agent-research-system\"><em>How we built our multi-agent research system</em></a>, Anthropic Engineering, 13 Jun 2025 (vendor). Every route that ends in something published, filed or acted on then goes through the sampling rule (Deliverable C)."
 }
 ```
 
-The routing rule decides how to get an answer; whether to trust it is §4's question. Every route ends in the same place: anything that will be published, filed or acted on goes through the sampling rule argued in §4 (Deliverable, C).
+The routing rule decides how to get an answer; whether to trust it is §4's question. Every route ends in the same place: anything that will be published, filed or acted on goes through the sampling rule argued in §4 (Deliverable C).
 
 ## 2 · How models fail
 
@@ -221,7 +221,7 @@ A report that passes all four questions on a sample of its claims can be used. �
 
 Three design choices sit inside that rule, and each one generalises.
 
-- **Strata.** One claim per section guarantees that every part of the unit is looked at. Errors cluster: one bad source feeds every claim drawn from it, and one stale index moved B2's figures in four sections at once (§2). A simple random sample of the same size can miss whole sections; a stratified sample cannot.
+- **Strata.** One claim per section guarantees that every part of the unit is looked at. Errors cluster: one bad source feeds every claim drawn from it, and one stale index moved B2's figures in three sections and the deliverable at once (§2). A simple random sample of the same size can miss whole sections; a stratified sample cannot.
 - **The sample is recorded before checking.** That stops the checker from swapping a claim that turned out hard for one that is easy.
 - **The sample decides.** It is a trigger. A sample that fails sends the whole unit to a full check; a sample that passes lets the rest stand.
 
@@ -445,3 +445,5 @@ All web sources opened 2 November 2026.
 8. **The thresholds of the generalised rule** (census at 10 or fewer, minimum samples of 10 and 7, the PASS re-check of three or one in five, the early stop on an invented claim) are my design, argued from the arithmetic in §4 and his method; no source sets them.
 9. **The count of eleven units out of fourteen** with an error-severity finding at fresh check is from the lines filed at the end of each unit; three of the fourteen checks (A5, A7, B7) were run by Opus 5.5 with a Fable 5.1 check owed, and the two models' severity scales may differ.
 10. **Audit 1's Metricool finding** is contested by A9's writer and not yet settled by an audit; this unit reports it as the writer's record.
+
+Fresh check 2026-11-02 (Opus 5.5; a Fable 5.1 fresh check is owed): fix · 3 errors, 8 should-fix, 12 minor; all applied; report `audits/brand-ai/fresh-check-B6.md`.
