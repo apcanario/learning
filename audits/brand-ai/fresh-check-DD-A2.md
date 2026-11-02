@@ -256,3 +256,88 @@ No untraced number.
 None.
 
 DD-A2, verdict fix, 0 errors, 5 should-fix, 5 minor
+
+**Maintainer's note (2 Nov 2026, the orchestrating chat of row A-5).** The checker's transcript was checked by script: no memory, Projects, past-chat, connector, Artifact or `mcp__*` tool; all 21 WebFetch calls on URLs a WebSearch in its own context had returned, copied exactly; no redirect met; nothing opened under the writer's packet, the prompts folder, its hand-back or any agent transcript. Every finding was verified before it was applied, each as an exact replacement whose Current occurred once in the unit (Python `str.count`), all ten by one script reading the pairs from this report (a Fix given as two backticked parts "then on a new line" was applied as the two lines). How each was verified:
+
+- **1 (the benefit cap):** a search and a fetch of the ISS guide 6001 v4.72 the search returned: the cap is "duas vezes e meia o valor do IAS (1.306,25€)", the 2025 IAS; A8 §3 gives the 2026 IAS as €537.13 (Portaria 480-A/2025/1); 2.5 × 537.13 = €1,342.83, 28.0% of €4,800, by script. The same search returned an ECO report of 29 Nov 2025 putting the 2026 maximum at about €1,343. Holds.
+- **2 (per drop):** a search and a fetch of VoxBooster's page: the 0.40–1.20% sentence gives no window; A7 §1 says the page does not say per drop or longer and follows its brief's per-drop reading. Holds.
+- **3 (Path B per year):** Path B rebuilt by script from D1 (10,000 followers in 2027, 22.0% a year from 1 Jan 2028, drops on 4 Mar and 16 Sep, $48.50 at $1.1172, the 91-day checkpoints, two running): the existing rows come out at 3 Feb 2037, 29 Jan 2041 and 29 Jul 2042, and a per-drop rate of 0.60% (A7 B3's T1, the rate read per year) first passes at 1 May 2040, so two running at 31 Jul 2040; 631 ÷ 0.006 = 105,167. Holds; the row went in after the 0.40% row, as the Fix places it.
+- **4 and 5 (vidIQ banding):** a search and a fetch of vidIQ's Subscriber Benchmarks 2026: 1.26%, 0.59%, 0.53%, 0.51%, 0.48%, 0.30%, 0.24%, published 20 Jul 2026; A9 §8 cites it with these figures and lists it in its Sources; A9 §4 and §5 carry the "not a route anyone takes" and "describes no actual path" lines. Hold.
+- **6 (IVA turnover gross):** A7 B2 High line 8 is $2,438.33 gross; 11,640.00 + 2,438.33 = 14,078.33, ÷ 1.1172 = €12,601.44, ÷ 1.1699 = €12,033.79, ÷ 1.1130 = €12,648.99, by script. Holds.
+- **7 (the pass rule):** D6 already states that no path passes before twelve months of side income stand behind two checkpoints running, and D3's 5% row (13 Feb 2029) holds only under it; i30 now says so. Holds.
+- **8 (CGD):** a search and a fetch of CGD's page: "pelo menos, seis meses de despesas" and "pelo menos, um ano de despesas", dated 09-04-2026; two minimums, not a range. Holds.
+- **9 (timeline label):** §1 says nothing is saved before September 2027. Holds.
+- **10 (first enrolment):** A8 §3 quotes art. 145.º ("no primeiro dia do 12.º mês posterior ao do início de atividade"), and R12 carries it. Holds.
+
+**Found by the chat, before the fix:** `verify.py`'s figure rules failed figure 3 (a stem ran through the text "3 Feb 2037" and "Path B, at 100% margin"), because every event sat at a whole year and the two 2037 events shared one. Each event's `at` is now its date as a fraction of the year (2027.62, 2028.87, 2031.11, 2032.86, 2037.09, 2037.84), no label or date changed; verify's figure rules then passed.
+
+## Figure re-check 1 (2 Nov 2026, a separate Opus 5.5 agent given the unit without its figures, the captions and figure 3's frames sheets at phone, tablet and desktop, dark and light; report verbatim)
+
+**Figure 3 re-check, DD-A2 "Deep dive: the exit math": PASS**
+
+I opened only the files in /tmp/claude-0/a5/recheck-DD-A2-f3/. That was unit-without-figures.md, captions.md and all six sheets: desktop, tablet and phone, each in dark and light. The phone sheets have 4 frames each and were read frame by frame. To measure the dot and stem positions I wrote zoomed crops to the scratchpad. I edited nothing in the folder.
+
+**Kind and place.** It is a timeline of six dated events. It sits in §D6 "The three dates together" (`[Figure 3 (timeline) stands here; its caption is in captions.md]`). Dated events suit a timeline.
+
+**The fix.**
+- The label now reads `Aug 2027` / `Last car-credit month; saving from Sep 2027`. This now agrees with the unit:
+  - §1: `a car credit of €430 a month until August 2027` and `nothing is saved before September 2027 unless spending is cut`
+  - i3: `€430 a month to August 2027`
+  - §3: `From September 2027 the household can save the €430 the car credit frees`
+  - D3 line 7: `salary saving from September 2027`
+- The August 2027 / September 2027 contradiction is gone.
+- Events now sit at their dates. On every sheet, the 3 Nov 2037 stem runs clear of the `3 Feb 2037` / `Path B, at 100% margin` label. It is to the right of the label's last character and only reaches the axis above its own label.
+
+**Every label traced to the unit's text**
+- `Aug 2027` · `Last car-credit month; saving from Sep 2027`: §1 and i3, quoted above.
+- `14 Nov 2028` · `A9 two-year review`: §5, `A9's two-year review of 31 October 2028 falls on Tuesday 14 November 2028`.
+- `11 Feb 2031` · `Path A: tier carries the floor`: D3, `Earliest honest date: Tuesday 11 February 2031`, and §4.1, `The earliest date the tier could carry the floor ... Tuesday 11 February 2031, at Suto's pace`.
+- `9 Nov 2032` · `Six-month runway, zero savings`: §3, `The six-month runway takes €26,220 ÷ €430 = 60.98, so 61 months, to September 2032, first read at the checkpoint of Tuesday 9 November 2032`. D5 says `or Tuesday 9 November 2032 on a six-month runway`, and S0 = 0 is the default (i7).
+- `3 Feb 2037` · `Path B, at 100% margin`: D4, `Earliest honest date: Tuesday 3 February 2037, and only at a margin of 100%`.
+- `3 Nov 2037` · `Path C bound: twelve-month runway`: D5, `The only dated bound is the runway at k = 0: Tuesday 3 November 2037`. D2 line 6 says `first read **Tue 3 Nov 2037**`.
+- The axis years run 2027 to 2037, every two years, with ticks only. No label or number in the figure is missing from the text.
+
+I rebuilt the 91-day checkpoint chain from Tue 16 Feb 2027. Each dated event lands on a Tuesday in that chain: 14 Nov 2028, 11 Feb 2031, 9 Nov 2032, 3 Feb 2037 and 3 Nov 2037.
+
+**Caption.** It says what the figure shows: the earliest honest date on each path, the end of the car credit, A9's review and the runway dates at zero savings. It names the sections ("Deliverable, D3 to D5") and the sources: the brief, A9 on A3's dates, Suto (anecdote), the 1.6% documented case, and VoxBooster (weakly sourced). Each basis it describes matches i13, i16, i19, i20, D4 and D5. "the end of the car credit (brief)" fits the new label. No should-fix.
+
+**Drawing, from the sheets**
+- **Placement.** On the tablet sheet the axis runs about 154.4 px a year from the 2027 tick at x≈150. The predicted dot positions match the drawn ones within 1–2 px:
+  - Aug 2027 ≈ 246
+  - 14 Nov 2028 ≈ 439
+  - 11 Feb 2031 ≈ 785
+  - 9 Nov 2032 ≈ 1055
+  - 3 Feb 2037 ≈ 1708
+  - 3 Nov 2037 ≈ 1824
+
+  The phone frame 1 sheet matches at about 168.75 px a year: Aug 2027 at 269 and Nov 2028 at 481. Desktop matches in proportion.
+- **No overlaps, no stem through text.**
+  - The 14 Nov 2028 stem is the closest call. It passes to the right of "Last car-credit month;". On the phone sheet the label ends at x=447 and the stem is at x=480–481, about 11 CSS px of clear space. Desktop and tablet are also clear.
+  - The A9 label (second row) does not touch "Path A: tier carries / the floor" (first row).
+  - "Six-month runway, zero savings" and "Path B, at 100% margin" are well apart.
+  - "twelve-" / "month runway" breaks at the word's own hyphen.
+- **Legibility and wholeness.** Every label is whole and readable at desktop and tablet, in both themes, where one frame holds the whole figure.
+  - On the phone, each label is whole in at least one frame:
+    - Aug 2027 and 14 Nov 2028: frame 1
+    - 11 Feb 2031: frames 1 and 2
+    - 9 Nov 2032: frame 2
+    - 3 Feb 2037: frames 3 and 4
+    - 3 Nov 2037: frame 4
+  - The faded "Six-", "Pa" and "3 Nov 2037" at the frame edges are the scroll fade, and each is whole in the next frame.
+  - The axis is continuous across frames 1–4. The "scroll sideways for the whole figure" hint is present.
+  - In dark and light, the dots, stems, labels and mono dates all keep adequate contrast.
+
+No replacement JSON or caption is needed.
+
+**Notes on the unit's text**
+
+I found no errors. The month counts and dates I recomputed hold:
+- 122 months from Sep 2027 ends Oct 2037; 61 months ends Sep 2032.
+- 41 months from Sep 2027 to Jan 2031; 113 months to Jan 2037.
+- Path A's list reaches 47,125 in March 2030.
+
+Optional, no fix needed: in the figure only the six-month label says "zero savings", while the twelve-month Path C label does not. The caption's "runway dates at zero savings" covers both.
+
+Nothing in this report came from memory.
+
+**Maintainer's note on the figure re-check (2 Nov 2026).** The re-checker's transcript was checked by script: no web, memory, Projects, connector or Artifact tool. It read every file of its folder and nothing else of the row's; to measure positions it wrote zoomed crops of its own frames sheets to the session scratchpad and to a sibling folder, and read back only those crops, outside the folder it was told to keep to; nothing it read there was other than its own sheets. Figure 3 passed (no finding). Its one optional note (only the six-month label says "zero savings") needs no change, as it says: the caption covers both runway dates. Figures 1 (compare) and 2 (decision) passed the fresh check; figure 3 (timeline) was fixed and passed its re-check. None dropped. At phone width the compare figure's values scroll away from their row labels: that is the renderer change already queued as P83, recorded on that row.
