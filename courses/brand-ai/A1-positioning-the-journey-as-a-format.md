@@ -123,7 +123,7 @@ What each case adds, beyond the row:
 
 **What the five have in common, read off the table and the notes:** each runs on a sentence a stranger could repeat after one video; in every case the sentence names what is done, and none names a single topic; four of the five put that sentence in the About text, and the fifth carries it in the titles. None of their About texts, nor the titles cited here, names a syllabus or written plan as a stage of the method (my reading), which is the gap option 2 in §4 would occupy. What they cannot show is covered in §2: they are winners, and the channels that tried the same thing and stalled are not in any source.
 
-How the five, or any of the similar channels listed in DD-A1's brief, grew month by month and what they stopped doing is DD-A1's job; Mike Boyd and Goal Guys are on that brief's list.
+How the five, or any of the similar channels listed in DD-A1's brief, grew month by month and what they stopped doing is DD-A1's job; Mike Boyd and Goal Guys are on that brief's list. DD-A1 (2 Nov 2026) covers Mike Boyd (no month-by-month series found; counts agree with the table above, vidIQ 28 Oct 2026) and leaves Goal Guys out (two people; no dated growth source found).
 
 ## 6 · The two vlog episodes against the positioning
 

@@ -223,3 +223,24 @@ The checker's final report follows verbatim, extracted by script from its hand-b
 
 ## Verdict
 DD-A1 · fix · 3 errors (four entries above; the two "three videos a week" lines are one fact in two places), 6 should-fix (including the matrix figure), 6 minor. Against filed units: A9, 1 should-fix and 1 minor; A1, 1 minor.
+---
+
+**Maintainer's note (2 Nov 2026, the orchestrating chat of row A-4).** The checker's transcript was checked by script: no memory, Projects, past-chat or connector tool; every WebFetch on a URL a WebSearch in its own context had returned; the two Creator Science redirects not followed; nothing opened under the writer's packet, its report or any agent transcript. Every finding was verified before it was applied, each as an exact replacement whose Current occurred once in its file (Python `str.count`), all 23 by one script reading the pairs from this report. How each was verified:
+
+- **Errors 1 (Boyd's business side) and minor 2 ("creative partner"):** search, then a fetch of the Net Influencer profile the search returned (4 Mar 2026): Mike says he is "really bad at that stuff" and that the unseen work, including management at Ziggurat XYZ, is Kim's; no outside company runs it; "his wife and creative partner Kim" is the article's narration. Held; applied as given.
+- **Errors 2 and 3 (three videos a week in October 2020):** one fact in two places. Search, then a fetch of Every's article (24 Sep 2020): three a week in his last three months as a doctor; "down to only one or two videos a week" since. The unit's own §2 cadence paragraph already said so. Held; applied as given.
+- **Error 4 (fifteen points):** the unit's own arithmetic (five creators, two points each) and its §6 (Partridge's claims at about 22 and 36 months in other measures) and §2 (Abdaal's million at 39 months). Held; applied as given.
+- **Should-fix 1 (Abdaal's platform mix):** search, then a fetch of his about page: it names a website, PTYA's first cohort (November 2020), the Deep Dive podcast and a hired team; no studio, Skillshare, blog or newsletter. The replacement's other sources (Summify, Kagan, Mark Ellis) are already cited elsewhere in §2 and in the deliverable; Mark Ellis's article itself was not returned to the maintainer's search and was not re-read. Held; applied as given.
+- **Should-fix 2 and 3 (Sidibe's most-watched videos):** search, then a fetch of NAZ Elite's interview: the sentence is the interviewer's question 2. Held; applied as given.
+- **Should-fix 4 (the book):** searches, then fetches of The Bookseller (2 Jul 2024: no title, no publication date) and Entrepreneur UK (27 Feb 2025: "out now, published by Sheldon Press"). Held; applied as given.
+- **Should-fix 5, 6 and 7 (Sidibe's other income):** search, then a fetch of InsideHook (10 Aug 2021): it describes his routine at the time (running, soccer personal training, coaching youth athletes) in the present tense and dates no earlier work. Held; applied as given (the pattern count becomes two of five).
+- **Should-fix 8 (A6's "minor"):** A6's Deliverable 1 heading reads "Instagram · the rented shop window"; "minor" is not A6's. Held; applied as given.
+- **Minor 1 (ten years):** 20 Nov 2007 to January 2017 is about nine years. Held in part: the replacement's "(4 January 2017)" gives a day the unit does not state and the maintainer did not re-read on Kagan's page, so it was applied as "(January 2017)".
+- **Minor 3 and 4 (Gazette and Black Belt wording):** searches, then fetches: "more than 165,000 followers on YouTube and Instagram" (Gazette, undated) and "more than 800,000 subscribers on YouTube" (Black Belt, updated 31 Jan 2024). Held; applied as given.
+- **Minor 5 (18 months):** 20 Mar 2023 to 4 Sep 2024 is 17.5 months (script). Held; applied as given.
+- **Minor 6 (Lewis's top five):** search, then a fetch of vidIQ's Lewis page (data 1 Nov 2026): all five top videos date from 15 Feb 2022 to 13 Dec 2023. Held; applied as given.
+- **Against A9 (should-fix: "instant hit"; minor: Felton's year):** searches, then fetches of Skydio (24 Feb 2021: "months later it started catching on") and Zwift Insider (21 Sep 2026: "During the 2020 lockdown"). Held; both applied to A9 §5 as given, each pointing to DD-A1.
+- **Against A1 (minor: the pointer):** the pointer still read true; the replacement adds what DD-A1 did with Boyd and Goal Guys, dated. Applied as given.
+- **Figure 4 (matrix, FIX):** the caption and the legend's "partial" meaning, applied as given; the figure was rebuilt and re-checked by a new agent (below).
+
+**Verdict as recorded.** Four error entries by count, two of them one fact in two places (Abdaal's October 2020 cadence), so three distinct errors and a list of edits fixes the unit: fix, as the checker itself read it.
