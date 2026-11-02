@@ -85,7 +85,7 @@ Haiku, because the job is extraction, the work Anthropic positions Haiku 5.5 for
 
 ## 3 · His cases: pcblueprint, AIssistant, Strider
 
-The filed units say little about the three, and this section says no more than they do.
+The filed units say little about the three; this section adds nothing to them except what it marks as its own reading or rule, and a hypothetical for Strider.
 
 ### pcblueprint
 
@@ -131,7 +131,7 @@ For Strider to be worked for real, he would write down the answer to each line a
 For comparison, B5's weekly scheduled task holds one leg only: his takes, which are private drafts (B8 §5), with no web content and no connector, pushing only to a branch in his private repository (B5 §4 and §D).
 
 ```viz
-{"kind": "matrix", "cols": ["Private data", "Untrusted content", "Can send or publish"], "rows": [{"label": "B5 weekly scheduled task", "cells": [{"mark": "yes (takes)", "tone": 4}, {"mark": "no", "tone": 3}, {"mark": "no (own branch)", "tone": 3}]}, {"label": "pcblueprint connector (route 1), chat with search and a send connector", "tone": 1, "cells": [{"mark": "yes", "tone": 1}, {"mark": "yes", "tone": 1}, {"mark": "yes", "tone": 1}]}, {"label": "AIssistant", "cells": [{"mark": "yes (pcblueprint)", "tone": 4}, "undocumented", {"mark": "yes (Telegram)", "tone": 4}]}, {"label": "Strider", "cells": ["undocumented", "undocumented", "undocumented"]}], "caption": "The three legs of the lethal trifecta for each case in §3 of this unit. The trifecta is Willison's (16 Jun 2025, via DD-B3 §2.3); the B5 task from B5 §4 and §D; route 1 and AIssistant from B5 §5, with the connector-loading rule from B4 §1; Telegram counted as a way out is this unit's reading; Strider's row is undocumented in every cell, since no filed unit documents it; §3 works it only as a hypothetical."}
+{"kind": "matrix", "cols": ["Private data", "Untrusted content", "Can send or publish"], "rows": [{"label": "B5 weekly scheduled task", "cells": [{"mark": "yes (takes)", "tone": 4}, {"mark": "no", "tone": 3}, {"mark": "no (own branch)", "tone": 3}]}, {"label": "pcblueprint connector (route 1), chat with search and a send connector", "tone": 1, "cells": [{"mark": "yes", "tone": 1}, {"mark": "yes", "tone": 1}, {"mark": "yes", "tone": 1}]}, {"label": "AIssistant", "cells": [{"mark": "yes (pcblueprint)", "tone": 4}, "undocumented", {"mark": "likely (Telegram)", "tone": 4}]}, {"label": "Strider", "cells": ["undocumented", "undocumented", "undocumented"]}], "caption": "The three legs of the lethal trifecta for each case in §3 of this unit. The trifecta is Willison's (16 Jun 2025, via DD-B3 §2.3); the B5 task from B5 §4 and §D, its takes as private data from B8 §5; route 1 and AIssistant from B5 §5, the account's search and send connectors from DD-B3 §4 (collision 6, from B4 F14), and the connector-loading rule from B4 §1 and §3; Telegram counted as a way out is this unit's reading; Strider's row is undocumented in every cell, since no filed unit documents it; §3 works it only as a hypothetical. Red marks a case that holds all three legs; green marks a leg that is absent."}
 ```
 
 ## 4 · What agents do well
