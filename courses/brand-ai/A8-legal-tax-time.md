@@ -38,18 +38,18 @@ Two rules in the same article bear on him. Under n.º 13, the 0.75 and 0.35 coef
 
 **Payers outside Portugal.** YouTube, Substack and Meta pay from abroad. Substack lets writers configure Stripe Tax so that "taxes correctly calculated for subscribers in relevant tax jurisdictions" ([Substack, 6 Feb 2023](https://on.substack.com/p/product-news-dispatch-jan-23)); the post does not say whether Substack itself collects or remits VAT. How IVA applies to each foreign payer, and whether any registration in the EU VAT system is needed for income received, was not settled by any primary source found. Open, for the accountant.
 
-The registration rule as a decision, from this section's sources:
+The registration rule as a decision, from the sources of this section and §2:
 
 ```viz
 {"kind": "decision",
  "root": {"q": "Income from an activity that repeats?", "tone": 4, "branches": [
   {"label": "no", "to": {"outcome": "Ato isolado: one invoice, no activity opened (no IVA value limit since 1 Jul 2025)", "tone": 2}},
   {"label": "yes", "to": {"q": "Declaração de início de atividade filed before the first income", "tone": 4, "branches": [
-   {"label": "turnover last year (if new, this year's estimate) ≤ €15,000", "to": {"outcome": "IVA exempt, art. 53.º CIVA; past €15,000 in the year, normal regime from 1 January; past €18,750, IVA from the crossing invoice", "tone": 3}},
-   {"label": "turnover last year > €15,000", "to": {"outcome": "Normal IVA regime", "tone": 1}}
+   {"label": "turnover last year (if new, this year's estimate) ≤ €15,000", "to": {"outcome": "IVA exempt, art. 53.º CIVA; past €15,000 in the year, normal regime from 1 January next year; past €18,750, IVA from the crossing invoice", "tone": 3}},
+   {"label": "turnover last year (if new, this year's estimate) > €15,000", "to": {"outcome": "Normal IVA regime", "tone": 1}}
   ]}}
  ]},
- "caption": "§1, drawn: when creator or brand income needs registration, and which IVA regime follows. Registration before starting: CIRS art. 112.º and the AT leaflet <em>Início de Atividade</em> (March 2026); ato isolado: OCC technical opinions PT23308 (26 Aug 2019) and PT27834 (December 2023), and AT Ofício-Circulado 25066 (15 Apr 2025), no value limit since 1 July 2025; €15,000: CIVA art. 53.º on the AT site, and €18,750: AT Newsletter 39 (January 2026), both read 2 Nov 2026. Information, not tax advice; the accountant confirms."}
+ "caption": "§1 and §2, drawn: when creator or brand income needs registration, and which IVA regime follows. Registration before starting: CIRS art. 112.º and the AT leaflet <em>Início de Atividade</em> (March 2026); ato isolado: OCC technical opinions PT23308 (26 Aug 2019) and PT27834 (December 2023), and AT Ofício-Circulado 25066 (15 Apr 2025), no value limit since 1 July 2025; €15,000: CIVA art. 53.º on the AT site, and €18,750: CIVA art. 58.º and AT Newsletter 39 (January 2026), both read 2 Nov 2026. Information, not tax advice; the accountant confirms."}
 ```
 
 ## 2 · IVA: the 2026 exemption threshold
@@ -292,6 +292,8 @@ All web sources opened on 2 November 2026 unless another date is given.
 - AT, Newsletter 39, January 2026. https://info.portaldasfinancas.gov.pt/pt/at/Divulgacao/publicacoes_internas/Newsletter_AT/Documents/Newsletter-39-janeiro-2026.pdf
 - AT, *Início de Atividade: Rendimentos empresariais e profissionais – IRS e IVA*, March 2026. https://info.portaldasfinancas.gov.pt/pt/apoio_contribuinte/folhetos_informativos/documents/inicio_atividade.pdf
 - AT, ficha doutrinária, proc. 3870/2018, 21 Dec 2018. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/informacoes_vinculativas/rendimento/cirs/Documents/PIV_14810.pdf
+- AT, Ofício-Circulado 25066, 15 Apr 2025. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/instrucoes_administrativas/Documents/Oficio_circulado_25066_2025.pdf
+- AT, Ofício-Circulado 25062, 26 Mar 2025. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/instrucoes_administrativas/Documents/Oficio_circulado_25062_2025.pdf
 - Bird & Bird, Children in the Digital World, Portugal (undated). https://childreninthedigitalworld.twobirds.com/home/portugal
 - Cesa e Silva, Thaís N., "A Revogação da Limitação ao Direito à Imagem", *Julgar Online*, October 2021. https://julgar.pt/wp-content/uploads/2021/10/20211026-JULGAR-Revogação-da-Limitação-ao-Direito-à-Imagem-Thaís-Cesa-e-Silva-1.pdf
 - Coach, "Here's how much half marathon training you have to do to break two hours", 5 Sep 2017. https://www.coachweb.com/half-marathon-training/6884/here-s-how-much-half-marathon-training-you-have-to-do-to-break-two-hours
@@ -321,8 +323,6 @@ All web sources opened on 2 November 2026 unless another date is given.
 - Nikolaidis, Pantelis T. and Beat Knechtle, "Predictors of half-marathon performance in male recreational athletes", *EXCLI Journal* 22, 22 Jun 2023. https://excli.de/excli/article/view/6198
 - OCC (Ordem dos Contabilistas Certificados), "Ato isolado", technical opinion PT23308, 26 Aug 2019. https://www.occ.pt/noticias/ato-isolado
 - OCC, "Enquadramento em IVA e IRS de ato isolado", technical opinion PT27834, December 2023, published 29 Jan 2024. https://occ.pt/pt-pt/noticias/enquadramento-em-iva-e-irs-de-ato-isolado
-- AT, Ofício-Circulado 25066, 15 Apr 2025. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/instrucoes_administrativas/Documents/Oficio_circulado_25066_2025.pdf
-- AT, Ofício-Circulado 25062, 26 Mar 2025. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/legislacao/instrucoes_administrativas/Documents/Oficio_circulado_25062_2025.pdf
 - OCC, "Segurança Social: trabalhador dependente e independente", 8 Feb 2019. https://www.occ.pt/index.php/pt-pt/noticias/seguranca-social-trabalhador-dependente-e-independente
 - Osborne Clarke, "Use of music on social media platforms: what businesses and creators need to know", 27 Mar 2026. https://www.osborneclarke.com/insights/use-music-social-media-platforms-what-businesses-and-creators-need-know-about-usage
 - Portaria 480-A/2025/1, 30 Dec 2025 (IAS for 2026), copy on the Madeira regional government site. https://www.madeira.gov.pt//Portals/35/Users/116/72/372/10.%20Portaria%20n.%20480-A_2025_1%2C%20de%2030%20de%20dezembro.pdf
@@ -349,7 +349,7 @@ All web sources opened on 2 November 2026 unless another date is given.
 ## Writer's unsure list
 
 1. **Creator income's activity code and coefficient** (R3): no AT page or binding ruling found says whether YouTube ad revenue, paid subscriptions or brand deals take 0.35, 0.75 or 0.95; the table in §1 gives the coefficients only.
-2. **The 25% IVA exit rule** is in CIVA art. 58.º, n.º 2, al. b), read on the AT site on 2 Nov 2026, and is restated in the AT's January 2026 newsletter and March 2026 leaflet.
+2. **The 25% IVA exit rule** (resolved at the fresh check of 2 Nov 2026) is in CIVA art. 58.º, n.º 2, al. b), read on the AT site on 2 Nov 2026, and is restated in the AT's January 2026 newsletter and March 2026 leaflet.
 3. **The Segurança Social exemption**: whether it is requested or automatic, and whether quarterly declarations are still due while exempt, were not confirmed; the CRC article text with conditions i) to iii) was read through the OCC and gov.pt, since the full article on informador.pt is behind a paywall.
 4. **Código do Trabalho** art. 128.º was read in an unofficial reproduction, and art. 129.º, n.º 1, al. k) only as the STJ quotes it; the Diário da República consolidated text did not load. Art. 136.º (non-compete) was not opened.
 5. **Código da Publicidade** was read in a municipal compilation carrying amendments to 1997; later amendments to arts. 3.º, 8.º, 9.º and 14.º were not checked, and art. 14.º beyond n.º 1 was not read.
