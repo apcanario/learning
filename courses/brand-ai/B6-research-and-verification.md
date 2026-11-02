@@ -72,7 +72,7 @@ The three routes on one axis, from the Anthropic post's own figures:
 {
  "kind": "decision",
  "root": {
-  "q": "Needs a fact after June 2026, or a number, name, date, quotation or citation?",
+  "q": "Needs, from outside the chat, a fact after June 2026, or a specific number, name, date, quotation or citation he will publish, file or act on?",
   "tone": 4,
   "branches": [
    {"label": "no", "to": {"outcome": "Ask directly", "tone": 3}},
@@ -86,7 +86,7 @@ The three routes on one axis, from the Anthropic post's own figures:
       "tone": 4,
       "branches": [
        {"label": "yes", "to": {"outcome": "Search, one step at a time", "tone": 2}},
-       {"label": "no", "to": {"outcome": "Deep research", "tone": 1}}
+       {"label": "no", "to": {"outcome": "Deep research, if worth about fifteen chats of tokens plus checking every claim", "tone": 1}}
       ]
      }}
     ]
@@ -287,6 +287,7 @@ Use for anything AI-written that will be published, filed or acted on: posts, ca
   - an **invented** source, quotation or number in the sample → **full check**, at once;
   - **tier P** and any FAIL → **full check**;
   - **tier I** and more than one FAIL in ten sampled (with fewer than 10 sampled, any FAIL) → **full check**;
+  - **tier I** and a single FAIL with ten or more sampled → fix that claim by D, then use it, and log it, after the sweep below if there is any STALE (`method.md` §6: at or under one in ten, no full audit, and the errata are applied);
   - any **STALE** → **sweep**: re-check and date every fact in the piece that can change (prices, rules, limits, lineups, benchmarks);
   - **all PASS** → use it, and log it.
 - [ ] **C7 · Remember what a clean sample means.** A clean 7 is consistent with up to about 35% failing; a clean 10, up to about 26%; a clean 30, up to about 10% (§4, 1 − 0.05^(1/n)). It is permission to proceed with known risk, and certifies nothing.
@@ -295,17 +296,42 @@ Use for anything AI-written that will be published, filed or acted on: posts, ca
 {
  "kind": "decision",
  "root": {
-  "q": "What did the sample find?",
+  "q": "Anything invented, or a FAIL over the tier's line (P: any; I: more than one in ten, any under 10 sampled)?",
   "tone": 4,
   "branches": [
-   {"label": "an invented source, quotation or number", "to": {"outcome": "Full check", "tone": 1}},
-   {"label": "tier P and any FAIL", "to": {"outcome": "Full check", "tone": 1}},
-   {"label": "tier I and more than one FAIL in ten (any FAIL with fewer than 10 sampled)", "to": {"outcome": "Full check", "tone": 1}},
-   {"label": "any STALE", "to": {"outcome": "Sweep", "tone": 2}},
-   {"label": "all PASS", "to": {"outcome": "Use it, and log it", "tone": 3}}
+   {
+    "label": "yes",
+    "to": {
+     "outcome": "Full check",
+     "tone": 1
+    }
+   },
+   {
+    "label": "no",
+    "to": {
+     "q": "Any STALE?",
+     "tone": 4,
+     "branches": [
+      {
+       "label": "yes",
+       "to": {
+        "outcome": "Sweep, fix a single FAIL if any, use it and log it",
+        "tone": 2
+       }
+      },
+      {
+       "label": "no",
+       "to": {
+        "outcome": "Fix a single FAIL if any, use it and log it",
+        "tone": 3
+       }
+      }
+     ]
+    }
+   }
   ]
  },
- "caption": "Rule C6 of the Deliverable: what each sample result triggers. Generalised from the stratified-sample audit in <code>method.md</code> §6 (more than one in ten FAIL, full audit) with the tier and early-stop rules argued in §4 of this unit."
+ "caption": "Rule C6 of the Deliverable read as two questions: what each sample result triggers. Generalised from the stratified-sample audit in <code>method.md</code> §6 (more than one in ten FAIL, full audit; at or under one in ten, the errata are applied) with the tier and early-stop rules argued in §4 of this unit."
 }
 ```
 
