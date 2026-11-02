@@ -66,7 +66,7 @@ The three routes on one axis, from the Anthropic post's own figures:
 }
 ```
 
-**The routing rule.** Put together: ask directly when nothing in the answer needs a source; search when one answer needs one; deep research when several independent directions need covering and the result is worth roughly fifteen chats of tokens plus the checking of the claims it returns. The rule is my synthesis of the sources above; each branch traces to one of them.
+**The routing rule.** Put together: ask directly when nothing in the answer needs a source; search when one answer needs one; deep research when several independent directions need covering and the result is worth roughly fifteen chats of tokens plus the checking of the claims it returns; when it is not worth that, search each direction in turn, one chat each (my rule). The rule is my synthesis of the sources above; each branch traces to one of them.
 
 ```viz
 {
@@ -86,7 +86,7 @@ The three routes on one axis, from the Anthropic post's own figures:
       "tone": 4,
       "branches": [
        {"label": "yes", "to": {"outcome": "Search, one step at a time", "tone": 2}},
-       {"label": "no", "to": {"outcome": "Deep research, if worth about fifteen chats of tokens plus checking its claims", "tone": 1}}
+       {"label": "no", "to": {"outcome": "Deep research, if worth about fifteen chats of tokens plus checking its claims; if not, search each direction in turn", "tone": 1}}
       ]
      }}
     ]
@@ -97,7 +97,7 @@ The three routes on one axis, from the Anthropic post's own figures:
 }
 ```
 
-The routing rule decides how to get an answer; whether to trust it is §4's question. Every route ends in the same place: anything that will be published, filed or acted on goes through the sampling rule in §4.
+The routing rule decides how to get an answer; whether to trust it is §4's question. Every route ends in the same place: anything that will be published, filed or acted on goes through the sampling rule argued in §4 (Deliverable, C).
 
 ## 2 · How models fail
 
@@ -274,7 +274,7 @@ Use for anything AI-written that will be published, filed or acted on: posts, ca
 
 ### C · The sampling rule
 
-- [ ] **C1 · Census if small.** If N is 10 or fewer, check every claim by D, give each a verdict as in C5, and decide as in C6; skip C2 to C4.
+- [ ] **C1 · Census if small.** If N is 10 or fewer, check every claim by D, give each a verdict as in C5, and decide as in C6; skip C2 to C4. A census has already checked every claim, so where C6 says full check it goes straight to F.
 - [ ] **C2 · Sample size.** One claim per stratum; then extra draws from the largest strata until the sample is at least **10 (tier P)** or **7 (tier I)**.
 - [ ] **C3 · Draw.** Within each stratum, number its claims and pick by a random number. Never pick by eye.
 - [ ] **C4 · Record the sample** (claim, stratum, cited source) before opening any source.
@@ -288,7 +288,7 @@ Use for anything AI-written that will be published, filed or acted on: posts, ca
   - **tier P** and any FAIL → **full check**;
   - **tier I** and more than one FAIL in ten sampled (with fewer than 10 sampled, any FAIL) → **full check**;
   - **tier I** and FAILs at or under one in ten, with ten or more sampled → fix each FAIL by D, then use it, and log it, after the sweep below if there is any STALE (`method.md` §6: at or under one in ten, no full audit, and the errata are applied);
-  - any **STALE** → **sweep**: re-check and date every fact in the piece that can change (prices, rules, limits, lineups, benchmarks);
+  - any **STALE** → **sweep**: re-check and date every fact in the piece that can change (prices, rules, limits, lineups, benchmarks), then use it, and log it, unless a line above sends it to a full check;
   - **all PASS** → use it, and log it.
 - [ ] **C7 · Remember what a clean sample means.** A clean 7 is consistent with up to about 35% failing; a clean 10, up to about 26%; a clean 30, up to about 10% (§4, 1 − 0.05^(1/n)). It is permission to proceed with known risk, and certifies nothing.
 
