@@ -226,7 +226,7 @@ For the chain it is the source of numbers: a session's distance, pace or a weigh
 - Nothing in his archive faces the internet for this.
 - The record shows exactly which numbers the episode used.
 
-Override if: DD-B1, which owns agents, recommends a connector with a reasoned threat model; then route 1, with the connector added to chats only, never to the scheduled task.
+Override if: DD-B1, which owns agents, recommends a connector with a reasoned threat model; then route 1, with the connector added to chats only, never to the scheduled task. (DD-B1 §3, 2 Nov 2026, set out the threat model and does not recommend one; route 3 stands.)
 
 The export script is B2's: Haiku 5.5 writes and maintains it; the script does the parsing. Which numbers are published is A4's question (A3 §1), and until A4 is filed the skill publishes none (its `publish_numbers` list starts empty).
 
