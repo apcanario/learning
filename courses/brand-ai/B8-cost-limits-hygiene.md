@@ -147,82 +147,7 @@ B1 §7 closed with the fix for a buried fact, "trim the window or start a new ch
 
 **Model and effort.** In Claude Code, "each model has its own cache", so a model switch mid-session "recomputes the entire request even when the content is identical"; an effort change does the same "on most models", but on Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.1 with a Claude subscription "the cache stays intact by default". The page's tip is still to "Pick your model and effort level at the top of a session" (*How Claude Code uses prompt caching*). On claude.ai, Anthropic says he "can change the model, effort level, or thinking setting at any point in a conversation" (effort-settings article) and says nothing about the cache. B2 §7 called the claude.ai effect undocumented; it still is. The Claude Code rule costs nothing to apply on claude.ai too.
 
-**The rule, put together** (my synthesis; each branch traces to a source above): when the next step does not need this chat's history, a new chat (in Claude Code, `/clear`). When it does, and he is coming back after the cache has expired, a new chat with a handoff note, since the next message pays the full history anyway and the note is smaller. When it does and the cache is warm, stay; in Claude Code, `/rewind` off a wrong path and `/compact` only between tasks; on claude.ai, where no help article read describes a way to trim a chat by hand, a wrong path means a new chat. The cache lifetime on claude.ai is unpublished; Claude Code's documented one hour on a subscription is the only figure for his plan, and using it for claude.ai is an analogy.
-
-```viz
-{
- "kind": "decision",
- "root": {
-  "q": "Does the next step need this chat's history?",
-  "tone": 4,
-  "branches": [
-   {
-    "label": "no",
-    "to": {
-     "outcome": "New chat (Claude Code: /clear)",
-     "tone": 2
-    }
-   },
-   {
-    "label": "yes",
-    "to": {
-     "q": "Back after the cache expired (over an hour)?",
-     "tone": 4,
-     "branches": [
-      {
-       "label": "yes",
-       "to": {
-        "outcome": "New chat with a handoff note",
-        "tone": 2
-       }
-      },
-      {
-       "label": "no",
-       "to": {
-        "q": "Abandoning a wrong path?",
-        "tone": 4,
-        "branches": [
-         {
-          "label": "yes",
-          "to": {
-           "q": "Which tool?",
-           "tone": 4,
-           "branches": [
-            {
-             "label": "Claude Code",
-             "to": {
-              "outcome": "/rewind",
-              "tone": 3
-             }
-            },
-            {
-             "label": "claude.ai",
-             "to": {
-              "outcome": "New chat",
-              "tone": 2
-             }
-            }
-           ]
-          }
-         },
-         {
-          "label": "no",
-          "to": {
-           "outcome": "Stay (Claude Code: /compact only between tasks)",
-           "tone": 3
-          }
-         }
-        ]
-       }
-      }
-     ]
-    }
-   }
-  ]
- },
- "caption": "Continue, trim or start again, the rule in §3 of this unit (orange: a new chat; teal: the same chat, kept or cut back), synthesised from <a href=\"https://code.claude.com/docs/en/prompt-caching\">Claude Code docs, <em>How Claude Code uses prompt caching</em></a>, <a href=\"https://code.claude.com/docs/en/costs\"><em>Manage costs effectively</em></a>, <a href=\"https://support.claude.com/en/articles/9797557-usage-limit-best-practices\">Claude Help Center, <em>Usage limit best practices</em></a> and <a href=\"https://support.claude.com/en/articles/11647753-understanding-usage-and-length-limits\"><em>Understanding usage and length limits</em></a> (article 11647753), read 2 Nov 2026; the hour is Claude Code's documented subscription cache, applied to claude.ai by analogy (rule 13); B4 §4 gives the quality reasons for a new chat."
-}
-```
+**The rule, put together** (my synthesis; each branch traces to a source above): when the next step does not need this chat's history, a new chat (in Claude Code, `/clear`). When it does, and he is coming back after the cache has expired, a new chat with a handoff note, since the next message pays the full history anyway and the note is smaller. When it does and the cache is warm, stay; in Claude Code, `/rewind` off a wrong path and `/compact` only between tasks; on claude.ai, where no help article read describes a way to trim a chat by hand, a wrong path means a new chat. The cache lifetime on claude.ai is unpublished; Claude Code's documented one hour on a subscription, within the plan's included usage, is the only figure for his plan; a session that draws on usage credits, as Fable does on Pro, drops to five minutes; using the hour for claude.ai is an analogy.
 
 This rule refines B4 §4's third "stay" condition ("Work has paused briefly"): a brief pause is one inside the cache lifetime.
 
@@ -303,7 +228,7 @@ Paste after DD-B3's ten operating rules. Each rule names its source; where it re
 >
 > 11. **Model and effort are set before the first message and never changed inside a chat.** To change either, I start a new chat. In Claude Code a model switch recomputes the whole request, and an effort switch does too on most models, though not on the 5.5 models or Fable 5.1 on a subscription; on claude.ai the effect is undocumented, and the rule costs nothing. *(Refines DD-B3 rule 10 and B2's rules for the routing table. [Claude Code docs, How Claude Code uses prompt caching](https://code.claude.com/docs/en/prompt-caching).)*
 > 12. **One task per chat; a new task gets a new chat** (in Claude Code, `/clear`). Stale context is paid on every later message. *(Refines DD-B3 rule 6. [Claude Code docs, Manage costs effectively](https://code.claude.com/docs/en/costs); B4 §4.)*
-> 13. **Back to a long chat after a break, I start a new chat with a handoff note.** The first message after the cache expires pays for the whole history again; a note costs only itself. Claude Code's cache lasts one hour on a subscription; claude.ai publishes no lifetime, so I treat a break over an hour the same way (analogy). A short pause inside the hour: I stay. *([Claude Help Center, Usage limit best practices](https://support.claude.com/en/articles/9797557-usage-limit-best-practices); Claude Code docs, Manage costs effectively and How Claude Code uses prompt caching; B8 §3.)*
+> 13. **Back to a long chat after a break, I start a new chat with a handoff note.** The first message after the cache expires pays for the whole history again; a note costs only itself. Claude Code's cache lasts one hour on a subscription within the plan's included usage, and five minutes on usage credits, as Fable runs on Pro; claude.ai publishes no lifetime, so I treat a break over an hour the same way (analogy). A short pause inside the hour: I stay. *([Claude Help Center, Usage limit best practices](https://support.claude.com/en/articles/9797557-usage-limit-best-practices); Claude Code docs, Manage costs effectively and How Claude Code uses prompt caching; B8 §3.)*
 > 14. **A handoff note carries decisions, open items and file paths, never the transcript, and lives in the vault.** *(DD-B3 rule 8; B4 §4, Anthropic's structured note-taking.)*
 > 15. **In Claude Code: `/rewind` to abandon a wrong path, `/compact` only between tasks, `/clear` for a fresh start.** Rewind returns to a cached prefix; compacting reads the whole conversation; clearing costs nothing. *(Claude Code docs, How Claude Code uses prompt caching and Manage costs effectively.)*
 > 16. **I never paste what a chat can read by path, and never re-upload a file in the same chat.** A paste or a file is re-sent on every later turn. What the task needs, I give once, whole, in the first message. *([Claude Help Center, About Claude's Pro plan usage](https://support.claude.com/en/articles/8324991-about-claude-s-pro-plan-usage); Usage limit best practices; B3 §4.)*
@@ -374,4 +299,4 @@ All web sources read on 2 November 2026 unless a date of their own is given.
 9. **The 930,000 against 370,000 comparison** is uncached illustrative arithmetic; with a warm cache the gap in cost is smaller by an unpublished amount on his plan.
 10. **Whether usage-credit billing on claude.ai applies cache rates** is unpublished; the $0.85 per uncached pass for a four-unit Fable audit is list-price arithmetic.
 
-Fresh check 2026-11-02 (Opus 5.5, own agent context; a Fable 5.1 fresh check is owed): rewrite by the count rule (4 errors), 4 should-fix, 4 minor; two of the errors share one cause (the effort-level cache), so three distinct errors, each a one-sentence replacement, read as fix; all verified and applied, two in part; report `audits/brand-ai/fresh-check-B8.md`
+Fresh check 2026-11-02 (Opus 5.5, own agent context; a Fable 5.1 fresh check is owed): rewrite by the count rule (4 errors), 4 should-fix, 4 minor; two of the errors share one cause (the effort-level cache), so three distinct errors, each a one-sentence replacement, read as fix; all verified and applied, two in part; figures 1, 2 and 4 passed; figure 3 (the decision rule in §3) dropped after failing its third check, and the figure checkers' notes on the text applied; report `audits/brand-ai/fresh-check-B8.md`

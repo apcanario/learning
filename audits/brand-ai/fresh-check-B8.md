@@ -309,3 +309,41 @@ Checks passed:
 - The unit's text near the figure has no errors and does not contradict the figure. The paragraph that follows ("a brief pause is one inside the cache lifetime") agrees with the cache branch and with rule 13.
 
 Figure 3 (decision, §3): FIX. 1 error, 0 should-fix, 3 minor.
+
+---
+
+## Figure re-check 2 (2 Nov 2026, a third separate Opus 5.5 agent, same packet after the fix against both reports; report verbatim)
+
+A Fable 5.1 check of this figure is still owed. The method calls for Fable 5.1, and this is a fresh Opus 5.5 check in its own agent context, standing in until the deferred Fable checks are run.
+
+Scope: I read only `unit-without-figures.md`, `captions.md` and the six frames sheets of figure 3 (desktop, tablet and phone, each in dark and light). To read the phone sheets at full size I cropped them into the scratchpad at /tmp/claude-0/-home-claude/99c868df-1cd8-58bb-aad4-e3f3b227555d/scratchpad/fig3-crops/.
+
+**(a) Every label traced to the unit's text** (§3, "The rule, put together", unless marked otherwise):
+- "Does the next step need this chat's history?" → no → "New chat (Claude Code: /clear)". Text: "when the next step does not need this chat's history, a new chat (in Claude Code, `/clear`)."
+- yes → "Back after the cache expired (over an hour)?" → yes → "New chat with a handoff note". Text: "When it does, and he is coming back after the cache has expired, a new chat with a handoff note". For the hour: "Claude Code's documented one hour on a subscription is the only figure for his plan, and using it for claude.ai is an analogy." Rule 13 says the same: "I treat a break over an hour the same way (analogy)".
+- no → "Abandoning a wrong path?" → yes → "Which tool?":
+  - "Claude Code" → "/rewind". Text: "in Claude Code, `/rewind` off a wrong path".
+  - "claude.ai" → "New chat". Text: "on claude.ai, where no help article read describes a way to trim a chat by hand, a wrong path means a new chat."
+- "Abandoning a wrong path?" → no → "Stay (Claude Code: /compact only between tasks)". Text: "When it does and the cache is warm, stay; in Claude Code … `/compact` only between tasks".
+- Colours: the caption gives "orange: a new chat; teal: the same chat, kept or cut back". The three new-chat outcomes are orange; /rewind and Stay are teal. These match.
+- Nothing in the drawing is missing from the text.
+
+**(b) Caption:** it says what the figure shows ("Continue, trim or start again"), names §3, and names its sources (prompt caching, Manage costs effectively, Usage limit best practices, article 11647753, B4 §4). It also flags the hour as an analogy. It passes, apart from the minor finding below.
+
+**(c) Kind:** decision fits a rule with branches. Passes.
+
+**(d) Drawing:**
+- Desktop and tablet, both themes: one frame each, whole. All text sits inside its box, nothing overlaps, and the caption sits under the drawing.
+- Phone, both themes: 3 frames. Every node and branch label is whole and readable in at least one frame, and the caption sits under every frame.
+- One minor margin issue on phone, listed below.
+
+**Findings**
+- [should-fix] [text] §3, the paragraph beginning "**The rule, put together**", last sentence. Current: "Claude Code's documented one hour on a subscription is the only figure for his plan, and using it for claude.ai is an analogy." Problem: the unit says elsewhere that Claude Code requests the one-hour cache "only on a Claude subscription within your plan's included usage" and "drops it to five minutes once the session draws on usage credits" (§1). It also says that on Pro, Fable is "Paid with usage credits" (§1 table and §4 audit row). So one hour is not the only figure for his plan: a Fable session in Claude Code on Pro has a five-minute cache. Under this rule he would stay in a chat whose cache has already expired. Rule 13 ("Claude Code's cache lasts one hour on a subscription") has the same gap. Fix: "Claude Code's documented one hour on a subscription, within the plan's included usage, is the only figure for his plan; a session that draws on usage credits, as Fable does on Pro, drops to five minutes; using the hour for claude.ai is an analogy."
+- [minor] [figure] Caption. Current: "the hour is Claude Code's documented subscription cache, applied to claude.ai by analogy (rule 13)". Problem: the node "Back after the cache expired (over an hour)?" reads as one hour for every Claude Code session. It is five minutes for a session on usage credits (§1), which covers Fable on Pro. Fix: "the hour is Claude Code's documented subscription cache within included usage (five minutes once a session draws on usage credits, as Fable does on Pro), applied to claude.ai by analogy (rule 13)".
+- [minor] [drawing] Phone sheets, dark and light. Current: the drawing's canvas keeps the desktop width (about 730 CSS px), with about 135 CSS px of empty margin on each side of the tree. The tree spans roughly x 137 to 593 at desktop scale. The figure "opens at 102" and scrolls 372 px. Problem: frame 3 (scrolled to 372) adds no node that frame 2 does not already show whole; about half of it is blank. The phone reader scrolls through empty space, though nothing is lost. Fix: crop the drawing's width (its viewBox) to the tree's edges (about x 137 to 593 plus a 16 px margin) so the phone scroll range falls to about 100 px and the figure opens at 0.
+
+Figure 3 (decision, §3): FIX (0 error, 1 should-fix, 2 minor)
+
+---
+
+**Maintainer's note on the figure re-checks (2 Nov 2026).** Re-check 1 (FIX, 1 error, 3 minor) was verified against the unit's §3 and its sources and applied: `/compact` scoped to Claude Code; the hour named in the cache question; article 11647753 added to the caption; `/rewind` split from the claude.ai new chat under a "Which tool?" question, with the colours named in the caption. The figure was rendered, rebuilt and its frames sheets looked at (phone, dark: whole across three frames), and a third separate agent checked it from the same kind of packet. Re-check 2 returned FIX (0 errors, 1 should-fix, 2 minor). Under the rule (a figure that fails its third check is dropped), figure 3 is dropped; the unit keeps figures 1 (matrix), 2 (compare) and 4 (matrix). Re-check 2's should-fix on the unit's text was verified (the prompt-caching page's TTL table gives five minutes on usage credits; Help Center article 15424964, fetched after a search: on Pro, "Fable models run on usage credits rather than your plan's usage limits") and applied to §3 and rule 13. Its caption minor fell with the figure. Its drawing minor (the decision canvas keeps the 700-unit drawing width, so a narrow tree leaves blank margin on a phone) describes the documented contract for centred drawings (`kit/viz.py`, P50: a drawing narrower than 700 units is centred and its phone frame opens at data-x0); it touched only the dropped figure, so nothing was changed.
