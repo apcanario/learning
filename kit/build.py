@@ -408,6 +408,10 @@ def load_markdown(c):
                      intro=f'Unit {code}, written {fm.get("written", "(date not recorded)")} by {fm.get("model", "(model not recorded)")}, search {fm.get("search", "not recorded")}.')
             readings.append(r)
             by_code[code] = r['id']
+    # A-4 (2 Nov 2026): reading pages in the course's own unit order, research pages after them, as the sidebar
+    # lists them; the pager's Previous unit and Next unit follow this order (it followed the data file's order before)
+    pos = {u[0]: i for sc in d.COURSES for i, u in enumerate(sc['units'])}
+    readings.sort(key=lambda r: ('md' in r, pos.get(r['covers'][0], len(pos)) if r.get('covers') else len(pos)))
     d.READINGS[:] = readings
     d.WRITTEN = {code: by_code[code] for code in vault}
     c['subcourses'] = d.COURSES

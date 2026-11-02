@@ -38,7 +38,7 @@ The brief lists nine. The test applied to each was two-part. First, evidence: at
 
 **Platform mix.** YouTube first; then a cohort course (Part-Time YouTuber Academy, first cohort November 2020), a podcast (Deep Dive) and a larger team (his about page, above); Skillshare classes by 2020 (Summify summary, below); an email list (Kagan, below); and, by 2023, an expensive London studio, since given up (Mark Ellis, below). Kagan gives more than 130,000 email subscribers in January 2022, and among the tactics that worked lists starting narrow and widening the topics later, and an email list kept as a backup to YouTube (author's account).
 
-**Cadence.** On Creator Science (15 December 2020) he says he set himself at least one video a week at first, then one to three a week, which he treated as non-negotiable, and that he made about two a week over a nine-month stretch ([Creator Science #37, 15 Dec 2020](https://podcast.creatorscience.com/ali-abdaal/); his words, paraphrased). In September 2020 he told Every that over his last three months as a full-time doctor he made three videos a week, and one or two after leaving ([Every, Superorganizers, 23 Sep 2020](https://every.to/superorganizers/the-double-life-of-productivitys-3842641)). vidIQ counts 1,503 videos on 1 November 2026.
+**Cadence.** On Creator Science (15 December 2020) he says he set himself at least one video a week at first, then one to three a week, which he treated as non-negotiable, and that he made about two a week over a nine-month stretch ([Creator Science #37, 15 Dec 2020](https://podcast.creatorscience.com/ali-abdaal/); his words, paraphrased). In September 2020 he told Every that over his last three months as a full-time doctor he made three videos a week, and one or two after leaving ([Every, Superorganizers, 24 Sep 2020](https://every.to/superorganizers/the-double-life-of-productivitys-3842641)). vidIQ counts 1,503 videos on 1 November 2026.
 
 **Hours a week.** The only creator of the five with any figure, and it is not in his own words. Creator Science's show notes say the channel earned over £100,000 a month on 5 to 10 hours of his effort a week as of October 2020 (the show's summary). In the transcript he puts his clinical week at about 40 to 44 hours and describes editing in hour-long blocks before hospital shifts. By October 2020 he had editors and a small team, so the 5–10 hours is his share of a team's output; by his account to Every in September 2020 he was then making one or two videos a week, down from three in his last three months as a doctor. Nothing documents his hours in 2017 and 2018, when he edited alone.
 
@@ -56,7 +56,7 @@ The brief lists nine. The test applied to each was two-part. First, evidence: at
 
 **How he monetised.** Ads first: monetisation was switched on 17 April 2018, at £5 to £15 a day by his account (Creator Science). Then affiliate links, sponsorships, Skillshare, cohort courses. A third-party summary of his video of 28 December 2020 gives AdSense of about £1 in 2017, £12,329 in 2018, £33,186 in 2019 and £106,950 in 2020, and a 2020 total of about £1,013,000, of which Skillshare £350,000 and the first Academy cohort £220,000; the summary's own figures disagree in places ([Summify, video of 28 Dec 2020](https://summify.io/discover/how-much-money-i-earn-as-a-doctor-youtuber-VTTp5A/); third-party summary). A summary of his video of 5 January 2023 gives 2022 revenue of $4,600,593, costs of $2,527,356 and profit of $2,073,237, down from $2,525,714 in 2021 and says Skillshare revenue fell because of pricing changes ([Summify, video of 5 Jan 2023](https://summify.io/discover/how-much-money-i-made-as-a-youtuber-entrepreneur-2022-KvDHMe/); third-party summary). Ads were about a tenth of 2020 income on those figures (my division: £106,950 of about £1,013,000).
 
-**What he says he got wrong.** On repurposing videos into other formats: "I kind of wish I'd done that from day one" (Creator Science, 15 Dec 2020). On his sabbatical in 2020: "I thought I'd be way more productive than I've been so far" (Every, 23 Sep 2020). The 2023 cuts are reported as acknowledged setbacks by Ellis, not quoted as Ali's verdict, so they are not entered here as his words.
+**What he says he got wrong.** On repurposing videos into other formats: "I kind of wish I'd done that from day one" (Creator Science, 15 Dec 2020). On his sabbatical in 2020: "I thought I'd be way more productive than I've been so far" (Every, 24 Sep 2020). The 2023 cuts are reported as acknowledged setbacks by Ellis, not quoted as Ali's verdict, so they are not entered here as his words.
 
 ## 3 · Mike Boyd
 
@@ -286,9 +286,10 @@ What is documented and what is not, item by item:
 ### Per creator
 
 **Ali Abdaal** · productivity and study, own name.
+
 - *Start:* 2017 (own site); first medical video June 2017 (Kagan, 25 Jan 2022, author's account).
 - *Platforms:* YouTube; newsletter (130,000+, Kagan, Jan 2022); Skillshare; cohort courses from Nov 2020; podcast.
-- *Cadence:* at least 1 a week, later 1–3, non-negotiable; 3 a week in his last three months as a doctor (Creator Science, 15 Dec 2020; Every, 23 Sep 2020).
+- *Cadence:* at least 1 a week, later 1–3, non-negotiable; 3 a week in his last three months as a doctor (Creator Science, 15 Dec 2020; Every, 24 Sep 2020).
 - *Hours:* 5–10 a week as of Oct 2020 (Creator Science show notes, not his words), with editors; clinical week 40–44 hours (his words).
 - *12 / 24 / 36 months:* ~4,000 at ~9 months and 100K "in 2018" (own words, own site) / unpub. / 1M at 39 months, Sep 2020 (own site).
 - *Breakout:* iPad note-taking video, June 2018 (own words).
@@ -297,6 +298,7 @@ What is documented and what is not, item by item:
 - *Got wrong:* not repurposing from the start: "I kind of wish I'd done that from day one" (Creator Science, 15 Dec 2020).
 
 **Mike Boyd** · learn a skill from zero, own name.
+
 - *Start:* channel 23 Oct 2008 (vidIQ); format from the kickflip, by 11 Nov 2015 (MetaFilter).
 - *Platforms:* YouTube; Mike Boyd Climbs from about 2023; Skillshare; no TikTok (Net Influencer, 4 Mar 2026).
 - *Cadence:* "every month" promised (About text, A1 §5); about 0.3 a week (OutlierKit, 11 Jul 2026).
@@ -308,6 +310,7 @@ What is documented and what is not, item by item:
 - *Got wrong:* no statement found.
 
 **Hellah Sidibe** · the run streak, HellahGood.
+
 - *Start:* streak 15 May 2017; first streak video day 163, 24 Oct 2017 (CNN, 22 Sep 2022; date my arithmetic); channel 5 Dec 2016 (vidIQ).
 - *Platforms:* YouTube; Instagram, more than 20,000 (Shorty entry, c. 2019); named a "Gymshark Athlete" (Gymshark Central, Mar 2021).
 - *Cadence:* daily run; about 48 uploads a year (my arithmetic, vidIQ).
@@ -319,6 +322,7 @@ What is documented and what is not, item by item:
 - *Got wrong:* no statement found; "I give myself permission to quit every day" (CNN, 2022).
 
 **Mark Lewis** · above-average generalist, midlife.
+
 - *Start:* 11 Sep 2018 (vidIQ); came from financial services (YouTube Creators Hub, undated).
 - *Platforms:* YouTube; Instagram; own site (Mature Muscle Podcast, 4 Nov 2022).
 - *Cadence:* unpub.; about 63 videos a year (my arithmetic, vidIQ).
@@ -330,6 +334,7 @@ What is documented and what is not, item by item:
 - *Got wrong:* no statement found.
 
 **Alex Partridge** · ADHD Chatter, weekly interviews, ADHD in public.
+
 - *Start:* episode 1, 20 Mar 2023 (Pod Engine); diagnosed at 34 (BusinessCloud, 19 Jan 2025).
 - *Platforms:* audio on Acast; YouTube; Instagram, 1M+ (speaker bio, 23 Mar 2026); book (Sheldon Press, deal Jul 2024); Patreon (unread).
 - *Cadence:* weekly (Apple Podcasts; Pod Engine); YouTube about 1.2 a week, Shorts 57% of lifetime views (OutlierKit, 21 Sep 2026).
@@ -352,7 +357,7 @@ What is documented and what is not, item by item:
 - Creator Science (Jay Clouse), #37 "Making a living as a part-time YouTuber" with Ali Abdaal, 15 Dec 2020. https://podcast.creatorscience.com/ali-abdaal/
 - Ali Abdaal, about page, aliabdaal.com, read 2 Nov 2026. https://aliabdaal.com/?p=222
 - Entrepreneur UK (Patricia Cullen), "How ADHD shaped Alex Partridge's entrepreneurial journey", 27 Feb 2025. https://uk.entrepreneur.com/?p=1293
-- Every, Superorganizers (Dan Shipper), "The double life of productivity's most famous doctor", 23 Sep 2020. https://every.to/superorganizers/the-double-life-of-productivitys-3842641
+- Every, Superorganizers (Dan Shipper), "The double life of productivity's most famous doctor", 24 Sep 2020. https://every.to/superorganizers/the-double-life-of-productivitys-3842641
 - G.I. Jobs (Ethan Merritt), "Veteran Nick Bare, fitness entrepreneur", 25 Apr 2019. https://www.gijobs.com/military-to-civilian-transition/veteran-nick-bare-fitness-entrepreneur/
 - Gazette (Colchester), Ben Felton profile, undated. https://www.gazette-news.co.uk/news/24124243.ben-running-colchester-runner-ben-felton/
 - Gymshark Central, "Hellah Sidibe's transcontinental run across America", 1 Mar 2021, updated 16 Aug 2021. https://www.central.gymshark.com/article/hellah-sidibes-transcontinental-run-across-america
