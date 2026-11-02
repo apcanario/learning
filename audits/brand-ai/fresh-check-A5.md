@@ -113,3 +113,7 @@ Confirmed
 - Deliverable: present in full (checklist A pre/during/post; template B1–B4). It follows from §1–§5 and can be used on its own. Apart from the edits above, it adds no unsourced claim without a label.
 
 A5 · verdict: fix. 1 error, 4 should-fix, 8 minor.
+
+---
+
+**Maintainer's note (2 Nov 2026, the orchestrating chat of row A-1).** Every finding was verified before it was applied: the eight that rest on filed units and on the unit's own tables against those files (A1 §6, A2 Deliverable 2, A3 Deliverable 1 G and §6, A6 rule 8, B5, the unit's B1 and B2 tables), and the four that rest on outside pages by a search and a fetch of each (Tasty Edits: "skimming through the raw footage", no "reviewing"; Sennheiser manual 05/2026: no "outdoor" or "windscreen", the windshield sentence in the ME 4, MKE Essential, MKE 2 and MKE 40 sections, the MZC 1-2 sentence in the MKE 1 section; Google India blog: the definition names breaking news and current events; Production Advice: TD1008 is for "streaming services like YouTube"). All 13 held and were applied as exact replacements, each current string occurring once. The four figures passed; none was re-drawn. The checker disclosed one fetch of a URL no search had returned (ScienceDaily) and did not use its result; the unit's ScienceDaily date stays as the writer gave it, and the quotation it carries is confirmed on ANU's release.
