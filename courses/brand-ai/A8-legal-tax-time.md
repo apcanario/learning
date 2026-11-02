@@ -1,0 +1,355 @@
+---
+code: A8
+title: Legal, tax, time
+course: brand-ai · A · Building a Marketable Personal Brand
+model: Opus 5.5
+written: 2026-11-02
+search: on
+---
+
+# A8 · Legal, tax, time
+
+This unit is information, not legal or tax advice. It reads the Portuguese and EU texts as published, the Autoridade Tributária's and Segurança Social's own pages, and the platforms' help pages, all opened on 2 November 2026 unless another date is given; where only a secondary source was found, it says so. Each line of the closing register says whether it needs a contabilista certificado (an accountant), a lawyer, or neither. Five filed units left questions here; each is answered by name in the section where it falls and again as a register line.
+
+## 1 · Creator income for an employee: when he must register, and what is taxed
+
+**Registration comes before the income.** The Código do IRS requires that "Antes de iniciar alguma atividade suscetível de produzir rendimentos da categoria B", the taxpayer files a declaração de início de atividade ([CIRS art. 112.º, n.º 1, AT site](https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs112.aspx)). The AT's own leaflet (March 2026) says the same in plain words: an individual who intends to carry on a business or professional activity files it "antes de começar a trabalhar por conta própria", online on the Portal das Finanças, choosing activity codes from "lista de atividades do art.º 151.º do CIRS" ([AT, *Início de Atividade*, March 2026](https://info.portaldasfinancas.gov.pt/pt/apoio_contribuinte/folhetos_informativos/documents/inicio_atividade.pdf)). Being employed does not change this: the article applies to anyone whose activity can produce category B income, and the leaflet names no exception for employees. Recibos verdes are the invoices issued once the activity is open.
+
+**The one-off exception.** A single payment that will not repeat can be invoiced as an ato isolado without opening an activity. The Ordem dos Contabilistas Certificados reads the IRS concept as income that does not come from a foreseeable or repeated practice ("não resultem de uma prática previsível ou reiterada", CIRS art. 3.º, n.º 3), sets an IVA ceiling of €25,000 for it, and concludes that three payments for continuing work are "difícil" to treat as one act ([OCC, technical opinion PT23308, 26 Aug 2019](https://www.occ.pt/noticias/ato-isolado); professional body, secondary to the code). The plan in A2, A3 and A7 is recurring by design: a weekly email, a paid tier from September 2027 if the list allows (A7, table B1, a8), and two Shōmen drops a year. Recurring income fails the ato-isolado test as the OCC reads it, so the first recurring payment needs the activity opened first.
+
+**Category B is taxed together with the salary.** IRS taxable income "resulta do englobamento dos rendimentos das várias categorias auferidos em cada ano" ([CIRS art. 22.º, n.º 1, AT site](https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs22.aspx)). Creator income is added to employment income and taxed at his marginal rate. This unit does not state the 2026 rate brackets; they were not opened.
+
+**Simplified regime and coefficients.** The regime simplificado applies while category B gross income did not exceed €200,000 in the previous year, and the taxpayer may opt for organised accounts instead ([CIRS art. 28.º, n.os 2 and 3, AT site](https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs28.aspx)). Under it, taxable income is gross income multiplied by a coefficient ([CIRS art. 31.º, n.º 1, AT site](https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs31.aspx), read 2 Nov 2026):
+
+| Coefficient | What it applies to (art. 31.º, n.º 1) | Where his streams might fall |
+|---|---|---|
+| 0.15 | Sales of goods and products | Shōmen merch, if sold under his own activity |
+| 0.35 | Services not covered by another item | The AT treats code 1519, "Outros prestadores de serviços", as the residual code at 0.35 ([AT, ficha doutrinária, proc. 3870/2018, 21 Dec 2018](https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/informacoes_vinculativas/rendimento/cirs/Documents/PIV_14810.pdf)) |
+| 0.75 | Professional activities in the art. 151.º table | Applies only if his code is on that table |
+| 0.95 | Among others, licensing of intellectual property | A question for ad revenue and paid subscriptions |
+
+No AT page or binding ruling found on 2 November 2026 says which code or coefficient applies to YouTube ad revenue, a paid newsletter or a brand deal. That choice is the accountant's.
+
+Two rules in the same article bear on him. Under n.º 13, the 0.75 and 0.35 coefficients assume expenses: where 15% of gross service income exceeds the listed deductible items, "a diferença positiva entre 15 % dos rendimentos brutos das prestações de serviços" is added back to taxable income. Under n.os 10 and 11, the start-of-activity reductions of 50% and 25% to those coefficients require that the taxpayer earn no category A or H income in those periods; as an employee he earns category A, so on the text the reduction does not reach him (my reading; the accountant confirms).
+
+**Withholding.** A category B earner below the IVA exemption threshold can opt out of withholding by writing on the receipt "Sem retenção, nos termos do n.º 1 do artigo 101.º-B do Código do IRS"; the option ends the month after the threshold is reached ([CIRS art. 101.º-B, AT site](https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs101B.aspx)).
+
+**Gifts from brands.** In June 2026 two news outlets reported an AT alert to influencers that income in kind must be declared ([ECO, 28 Jun 2026](https://eco.sapo.pt/2026/06/28/e-influencer-e-recebe-produtos-de-marcas-tem-de-declarar-no-irs/); [Pplware, 24 Jun 2026](https://pplware.sapo.pt/?p=1126296)); neither links an AT document, and none was found. ECO quotes a software vendor's view that a product is taxed through "a contrapartida paga pela divulgação desse produto". Both are secondary; the treatment of a gifted product is the accountant's question, and until it is answered his rule is to accept no product in exchange for a mention.
+
+**Payers outside Portugal.** YouTube, Substack and Meta pay from abroad. Substack lets writers configure Stripe Tax so that "taxes correctly calculated for subscribers in relevant tax jurisdictions" ([Substack, 6 Feb 2023](https://on.substack.com/p/product-news-dispatch-jan-23)); the post does not say whether Substack itself collects or remits VAT. How IVA applies to each foreign payer, and whether any registration in the EU VAT system is needed for income received, was not settled by any primary source found. Open, for the accountant.
+
+The registration rule as a decision, from this section's sources:
+
+```viz
+{"kind": "decision",
+ "root": {"q": "Income from an activity that repeats?", "tone": 4, "branches": [
+  {"label": "no", "to": {"outcome": "Ato isolado: one invoice, no activity opened (OCC: up to €25,000)", "tone": 2}},
+  {"label": "yes", "to": {"q": "Declaração de início de atividade filed before the first income", "tone": 4, "branches": [
+   {"label": "turnover last year ≤ €15,000", "to": {"outcome": "IVA exempt, art. 53.º CIVA; leave it once the year passes €18,750", "tone": 3}},
+   {"label": "turnover last year > €15,000", "to": {"outcome": "Normal IVA regime", "tone": 1}}
+  ]}}
+ ]},
+ "caption": "§1, drawn: when creator or brand income needs registration, and which IVA regime follows. Registration before starting: CIRS art. 112.º and the AT leaflet <em>Início de Atividade</em> (March 2026); ato isolado and its €25,000 ceiling: OCC technical opinion PT23308 (26 Aug 2019); €15,000: CIVA art. 53.º on the AT site, and €18,750: AT Newsletter 39 (January 2026), both read 2 Nov 2026. Information, not tax advice; the accountant confirms."}
+```
+
+## 2 · IVA: the 2026 exemption threshold
+
+The regime de isenção covers taxpayers who "não tenham atingido, no ano civil anterior, um volume de negócios anual em território nacional superior a 15 000 €" ([CIVA art. 53.º, n.º 1, AT site](https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/civa_rep/Pages/artigo-53-o-do-civa.aspx), as amended by Decreto-Lei 35/2025, read 2 Nov 2026). An exempt taxpayer charges no IVA and deducts none. A new activity uses its estimated turnover for the current year (n.º 5), so the declaração de início sets the regime from his own estimate; the AT leaflet confirms the regime follows "em função dos elementos constantes da declaração de início de atividade".
+
+The exit rule is on the AT's January 2026 newsletter: a taxpayer who passes €15,000 "em mais de 25%", that is, past €18,750, must charge IVA on the invoice that crosses €18,750, moves to the normal regime, and files a change declaration "no prazo de 15 dias úteis" ([AT, Newsletter 39, January 2026](https://info.portaldasfinancas.gov.pt/pt/at/Divulgacao/publicacoes_internas/Newsletter_AT/Documents/Newsletter-39-janeiro-2026.pdf)). The article's own text, read the same day, gives the 25% only in its transitional notes; the newsletter is the AT's statement of the running rule.
+
+Two figures from A7 bear on this. A7's revenue model gives gross 2027 totals of $388.00, $2,500.20 and $13,666.92 (A7, Deliverable B, B2), in dollars and before costs. Whether any of them crosses €15,000 of his turnover depends on the exchange rate and on whose turnover Shōmen's sales are, and A7's scenarios say Shōmen's legal form and costs are in no filed unit (A7, table B1, a16). Both questions go to the accountant before the activity is opened.
+
+## 3 · Segurança Social for an employee with independent income
+
+**The general rule.** An independent worker contributes at "21,4 %" on relevant income, which for services is "70 % do valor total de prestação de serviços" and for goods 20%, measured over the three months before each quarterly declaration ([Decreto-Lei 2/2018, arts. 162.º and 168.º of the Código dos Regimes Contributivos, Segurança Social site](https://seg-social.pt/documents/10152/15523435/DL_2_2018/9a9cffcd-29c6-44a4-b1fc-72c5aceedcd6)). First enrolment takes effect "no primeiro dia do 12.º mês posterior ao do início de atividade" (art. 145.º, same text). Quarterly declarations are due "até ao último dia dos meses de abril, julho, outubro e janeiro" ([DGSS, *Folha informativa*, on the 2018 regime, undated](https://sisscontent.seg-social.pt/documents/10152/113014/folha_informativa.pdf/3190c94f-2c7a-4d12-b123-94a849917ef8)).
+
+**The exemption for employees.** An independent worker who is also employed is exempt when average monthly relevant income, averaged by quarter, is below four times the IAS, and all three of these hold: the two activities are for different employers with no relationship of domain or group between them; the employment brings mandatory cover by another regime for the same contingencies; and the monthly pay from employment is at least one IAS ([gov.pt, *Requerer a isenção do pagamento de contribuições*, updated 3 Sep 2026](https://www.gov.pt/servicos/requerer-a-isencao-do-pagamento-de-contribuicoes-para-a-seguranca-social)). The OCC quotes the same three conditions from art. 157.º, including "prestados a entidades empregadoras distintas e que não tenham entre si uma relação de domínio ou de grupo" ([OCC, 8 Feb 2019](https://www.occ.pt/index.php/pt-pt/noticias/seguranca-social-trabalhador-dependente-e-independente)).
+
+**The 2026 figures.** "O valor do IAS para o ano de 2026 é de € 537,13" ([Portaria 480-A/2025/1, 30 Dec 2025, art. 2.º](https://www.madeira.gov.pt//Portals/35/Users/116/72/372/10.%20Portaria%20n.%20480-A_2025_1%2C%20de%2030%20de%20dezembro.pdf)). Four times that is €2,148.52 of monthly relevant income; at the 70% rule for services that is about €3,069 of gross service income a month, averaged over the quarter (my arithmetic). The employment condition needs pay of at least €537.13 a month.
+
+**What is not settled.** The gov.pt service is titled "Pedir a isenção", which suggests the exemption is requested; the page does not say whether it is ever applied automatically. Whether he still files quarterly declarations while exempt was not confirmed on any page opened. Both are for the accountant.
+
+## 4 · The employment contract: what the law allows, what to check
+
+**Open question 1, from A2 and A4.** A2's LinkedIn override says: "first check the employment contract (A8)" (A2, Deliverable 2), and A2 §2 ends its LinkedIn paragraph with "Contract terms are A8's". A4's pre-mortem, failure 8, "Work leaked into the record", gives as its why that "contract terms are A8's". This section sets what he checks, and in what order; it does not say what his contract contains, because no filed unit does.
+
+**The Code's default.** Every Portuguese employment contract carries a duty of loyalty: "Guardar lealdade ao empregador, nomeadamente não negociando por conta própria ou alheia em concorrência com ele, nem divulgando informações referentes à sua organização, métodos de produção ou negócios" (Código do Trabalho, art. 128.º, n.º 1, al. f), as reproduced by [informador.pt](https://informador.pt/?p=161378); the Diário da República consolidated text did not load). The Supremo Tribunal de Justiça, in February 2025, read that duty as taking shape "no dever de não concorrência e no dever de sigilo", weighing more heavily the more senior the worker ([STJ, proc. 14603/23.1T8LSB.L1.S1, 12 Feb 2025](https://jurisprudencia.pt/acordao/231502)). The same judgment cites art. 129.º, n.º 1, al. k), which bars an employer from blocking another professional activity "salvo com base em fundamentos objetivos".
+
+**What a contract can add.** The STJ upheld an exclusivity clause that allowed outside paid work only with prior written authorisation, holding such a clause valid when it is "indispensável à proteção de interesses legítimos" and proportionate, and that the Code requires no specific compensation for it (same judgment). A wider restriction than loyalty therefore exists only if the contract or a document it incorporates states one. No dataset was found on how common such clauses are in Portuguese contracts, so this unit says nothing about what a typical contract por tempo indeterminado contains. A post-employment non-compete is a separate pact in the Code; its article was not opened.
+
+**What the record already does.** A4's disclosure policy keeps "My employer's internal matters and my colleagues" off the record (A4, Deliverable A, clause 2), and publishes the job only "as a constraint ('a full-time job'); never the employer's business" (clause 1). That covers the disclosure limb of art. 128.º, n.º 1, al. f) as written. The competition limb is untouched by a channel about running, karate and history, on the plain words; his employer's business is outside any filed unit, and the reading stays his.
+
+**The checklist** (his rule; basis: art. 128.º, the STJ's 2025 reading of exclusivity and objective grounds):
+
+1. Any clause on exclusivity, accumulation of activities or outside work: does it require notice or prior written authorisation, and for what kinds of activity?
+2. Any clause on conflicts of interest, and any duty to declare outside income or shareholdings (Shōmen included).
+3. Any confidentiality clause, and any document it points to (a code of conduct, a handbook).
+4. Any social-media or public-communication policy: does it cover personal accounts, the use of his job title, or LinkedIn in particular?
+5. Any clause assigning to the employer rights in work he creates, and whether it reaches work made outside working hours or on his own equipment.
+6. Any post-employment non-compete.
+7. Working-time and availability terms that would collide with the fixed windows A3 sets (Saturday filming and editing, Tuesday packaging).
+
+If items 1, 2 or 4 require notice or authorisation, he gives notice in writing before the first paid income and before the LinkedIn override fires, and keeps the reply. If the wording is unclear, a labour lawyer reads it. For LinkedIn the checklist matters most: A2 §2 reports higher engagement for personal profiles than for company pages there (Metricool, vendor data), and LinkedIn is the platform where his job title appears beside every post.
+
+## 5 · Health data: is body weight "data concerning health", and what "manifestly made public" means
+
+**Open question 2, from A4.** A4 §5 says that "whether body weight counts as health data, is a legal question for A8", and its unsure item 7 notes that the GDPR was read "in an unofficial reproduction". The text below comes from EUR-Lex, read 2 November 2026, where it loaded; where EUR-Lex returned only part of a provision, the as-adopted text on legislation.gov.uk (the UK National Archives' reproduction of the EU text) supplies the rest, and says so.
+
+**The definition.** "'data concerning health' means personal data related to the physical or mental health of a natural person" ([GDPR art. 4(15), EUR-Lex](https://www.eur-lex.europa.eu/eli/reg/2016/679)), continuing "including the provision of health care services, which reveal information about his or her health status" ([as adopted, legislation.gov.uk](https://www.legislation.gov.uk/eur/2016/679/article/4/adopted/data.html)). The Court of Justice in October 2024 held that order data from an online pharmacy were health data because they were "capable of revealing information about the health status of an identified or identifiable data subject", reading the category broadly ([CJEU, C-21/23 *Lindenapotheke*, press release, 4 Oct 2024](https://curia.europa.eu/jcms/upload/docs/application/pdf/2024-10/cp240159en.pdf)). The Article 29 Working Party's 2015 criteria for lifestyle data, as a law firm summarises them, include raw data that can be used "to draw conclusions about an individual's actual health status or health risks" ([Hunton, 9 Feb 2015](https://www.hunton.com/privacy-and-cybersecurity-law-blog/article-29-working-party-clarifies-scope-health-data-processed-lifestyle-wellbeing-apps); secondary; the annex itself was not opened).
+
+**The answer for weight.** No source found rules on body weight by name. On the definition and the Court's test, a weight figure attached to a named person, published in a journey framed as losing 15 kg, is capable of revealing information about health status; the cautious reading treats it as health data. That reading is mine, and a data-protection lawyer could confirm it. It supports A4's choice to publish weight change and never absolute weight (A4, Deliverable A, clauses 2 and 3).
+
+**What Art. 9(2)(e) means in practice.** Art. 9(1) prohibits processing data concerning health; the prohibition does not apply where "processing relates to personal data which are manifestly made public by the data subject" ([GDPR art. 9(2)(e), EUR-Lex](https://www.eur-lex.europa.eu/eli/reg/2016/679)). The Court of Justice has said what "manifestly" requires: the data subject must have "explicitly made the choice beforehand", with "full knowledge of the facts", to make the data "publicly accessible to an unlimited number of persons" ([CJEU, C-252/21 *Meta Platforms v Bundeskartellamt*, 4 July 2023, FRA case summary](https://fra.europa.eu/en/node/44533)). A public YouTube episode in which he states his weight change meets those words: he chose it, knowing it, for an unlimited audience. In practice, once a figure is in a public episode, a third party who processes it no longer meets the special-category prohibition for that figure. What stays protected is what he never published: absolute weight, clinical measures and the rest of A4's clause 2. So A4's rule to "publish health facts narrowly" is the only control he keeps (my reading of the text and the judgment).
+
+**The other direction.** The same law reaches his channel when it shows other people. The GDPR does not apply to processing "in the course of a purely personal or household activity" (art. 2(2)(c), EUR-Lex), and in *Buivids* the Court held that a video published on YouTube without access restrictions, reaching "an indefinite number of people", falls outside that exemption ([SCL commentary on C-345/17, 15 Feb 2019](https://www.scl.org/10433-buivids-a-further-over-extension-of-the-domestic-purposes-exemption/); secondary). Training partners and the sponsored athletes in his footage are therefore personal data he processes, which §6 and §8 use.
+
+## 6 · Commercial disclosure under Portuguese and EU law
+
+**Open question 3, from A4.** A4's unsure item 9: "Portuguese and EU rules (the Unfair Commercial Practices Directive) were not opened and are A8's." A4 clause 7 and A7 §4 both deferred the Portuguese and EU rules here.
+
+**Portuguese advertising law.** The Código da Publicidade defines advertising as "qualquer forma de comunicação feita por entidades de natureza pública ou privada" in the course of an economic or professional activity to promote goods or services (art. 3.º, n.º 1), requires that "A publicidade tem de ser inequivocamente identificada como tal, qualquer que seja o meio de difusão utilizado" (art. 8.º, n.º 1), and prohibits "imagens subliminares ou outros meios dissimuladores" (art. 9.º, n.º 1) ([Código da Publicidade, municipal compilation incorporating amendments to 1997](https://cm-viladerei.pt/images/investir/industria/Codigo%20da%20Publicidade.pdf); the Diário da República consolidated text did not load, so later amendments to these articles were not checked). A post in which he shows or names Shōmen to sell it is communication in the course of an economic activity; on art. 3.º it is advertising, and art. 8.º requires it to be identifiable as such (my reading).
+
+**Unfair commercial practices.** Decreto-Lei 57/2008 transposes Directive 2005/29/EC. It lists as misleading in every case "Utilizar um conteúdo editado nos meios de comunicação social para promover um bem ou serviço" where the trader paid and that is not clear (art. 8.º, al. n)), and "Alegar falsamente ou dar a impressão de que o profissional não está a agir para fins" of his trade (al. ab)); and treats as a misleading omission a practice "Em que o profissional não refere a intenção comercial da prática, se tal não se puder depreender do contexto" (art. 9.º, n.º 1, al. c)). ASAE is the general enforcer; for advertising, "é a Direcção-Geral do Consumidor (DGC)" (art. 19.º) ([Decreto-Lei 57/2008, consolidated text on the Banco de Portugal site](https://www.bportugal.pt/sites/default/files/anexos/legislacoes/459417805_1.doc.pdf)). The Directive's matching provisions are Annex I point 11 (advertorial) and point 22, and art. 7(2): a practice is a misleading omission where a trader "fails to identify the commercial intent of the commercial practice if not already apparent from the context" ([Directive 2005/29/EC, as adopted, Annex I](https://www.legislation.gov.uk/eudr/2005/29/annex/I/adopted); [Chapter 2](https://www.legislation.gov.uk/eudr/2005/29/chapter/2/adopted/data.htm)). The government's consumer guide, updated 11 May 2026, restates the omission rule ([gov.pt, *Práticas comerciais desleais*](https://www.gov.pt/guias/praticas-comerciais-desleais-em-portugal)).
+
+**How the DGC applies it to creators.** The DGC's note on the Commission's Influencer Legal Hub says influencers with regular commercial activity are traders under EU consumer law and "são obrigados a fazer publicidade de maneira transparente" ([DGC, Informação 34/2023, 16 Aug 2023](https://www.cm-borba.pt/wp-content/uploads/2023/10/Comissao-Europeia-lancou-hoje-o-Influencer-Legal-Hub-Informacao-DGC-n.-34-2023.pdf)). In February 2024 the DGC reported checking 366 Instagram messages from 20 influencers promoting 137 brands; 102 messages were irregular, the commercial relationship with 76 brands was not identified, and it opened administrative-offence proceedings ([ECO, 9 Feb 2024](https://eco.sapo.pt/2024/02/09/direcao-geral-do-consumidor-deteta-irregularidades-em-publicidade-de-influenciadores/); press report). The government's 2019 good-practice guide said "a identificação da publicidade é obrigatória em qualquer circunstância" ([Governo, 29 Mar 2019](https://portugal.gov.pt/gc21/comunicacao/noticias/guia-de-boas-praticas-sobre-publicidade-no-meio-digital)); the guide itself was not found. No Portuguese primary source opened prescribes a hashtag or a set wording, and no ERC guidance on influencers was found.
+
+**What that means for the filed rules.** The law asks that the commercial intent be identifiable, at once and without inference. A4 clause 7 ("Every mention of Shōmen says it is my brand"), A7's caption first line ("Shōmen is my brand"), A5's rule that a product in frame is a mention, and A7's use of YouTube's paid-promotion setting on any upload that shows Shōmen meet that on the words of art. 8.º and art. 9.º, n.º 1, al. c), as I read them. Instagram's own policy adds a tool for third-party deals: for branded content, "our branded content policies require that you use the paid partnership label to tag the brand" ([Instagram Help, branded content](https://help.instagram.com/android-app/1109894795810258)); the page is silent on a creator's own brand. Any future deal with a brand other than Shōmen uses that label, YouTube's setting and a spoken line, as A4 clause 7 already sets.
+
+## 7 · Image rights of training partners
+
+**Open question 4, from A5 and B3.** A5's rule 3: "Training partners are asked in advance (B3's worked example for template 8 drafts that message; image rights are A8's)"; its checklist: "Ask every training partner who might be in frame, before the season, whether they agree to appear ... Image rights are A8's." B3's worked example for template 8 notes that "the image rights of training partners are on A8's brief".
+
+**The rule in Portuguese law.** "O retrato de uma pessoa não pode ser exposto, reproduzido ou lançado no comércio sem o seu consentimento" (Código Civil, art. 79.º, n.º 1, as the Tribunal da Relação de Lisboa quotes it, [proc. 127/12.6TAOER.L1, 26 Oct 2016](https://pgdlisboa.pt/jurel/jur_mostra_doc.php?codarea=57&nid=5135)). Consent is not needed, under n.º 2 as the same court sets it out, where notoriety or office justifies it, for police, justice, scientific, teaching or cultural purposes, or "quando a reprodução da imagem vier enquadrada na de lugares públicos, ou na de factos de interesse público ou que hajam decorrido publicamente". A session in a club is not a public place, and on a run on public roads the partner is the subject of the shot, where the exception speaks of an image framed within a public place; the channel will also carry Shōmen. Consent is the safe basis (my reading; a court could read the public-place exception more widely). The person pictured may authorise others to commercialise the image ([Tribunal da Relação de Coimbra, proc. 2918/19.8T8VIS.C1, 16 Sep 2025, summary](https://trc.pt/direito-a-imagem-cedencia-do-direito-de-utilizacao-da-imagem-retrato-utilizacao-nao-autorizada-de-fotografia-ilegitimidade-ativa/)).
+
+**Consent can be withdrawn.** A voluntary limitation of a personality right is "sempre revogável", with an "obrigação de indemnizar os prejuízos causados às legítimas expectativas da outra parte" (Código Civil, art. 81.º, n.º 2, as quoted by [Cesa e Silva, *Julgar Online*, October 2021](https://julgar.pt/wp-content/uploads/2021/10/20211026-JULGAR-Revogação-da-Limitação-ao-Direito-à-Imagem-Thaís-Cesa-e-Silva-1.pdf)). Under the GDPR, where consent is the basis, "The data subject shall have the right to withdraw his or her consent at any time", and "It shall be as easy to withdraw as to give consent" (art. 7(3), EUR-Lex). Consent itself must be "freely given, specific, informed and unambiguous" (art. 4(11), as adopted).
+
+**What B3's message needs, then.** B3's worked example asks one casual question and offers "saying no is completely fine and i'll keep them out of shot". It covers freely given and the no. To be specific and informed it also needs, in the same casual register: where the footage goes (YouTube, Instagram, the email, Shōmen's account if any), that it stays up (A4 record rule 3: nothing published is withdrawn), and how to change their mind. A4 record rule 3 already holds the exception: material exposing a third party is blurred or cut with a dated note. A partner who withdraws consent falls under that exception (his rule; basis: art. 81.º, n.º 2 and GDPR art. 7(3)). The agreement is kept in writing: the reply to the message is enough, kept in the season folder.
+
+## 8 · The sponsored athletes: image rights for minors, club policy, disclosure
+
+**Open question 5, from A7.** A7 §4 says the athletes' "image rights, consent, credit lines and anything about them as people belong to A8", its episode rule 7 that "The athletes appear only as A8 settles: by name, by role or not at all", Deliverable A part 2 that "No instalment goes out before A8's terms exist in writing", part 3 that "Sponsorship disclosures by the athletes themselves, and Portuguese and EU advertising rules: settled in A8", and its task table lists "A8's terms for the athletes in writing ... Before Thu 18 Feb 2027". The brief says the three sponsored athletes are minors. This section sets the rule and what the written terms must cover. It says nothing about the athletes themselves.
+
+**Why the bar is higher for minors.** Art. 79.º applies to them as to anyone. Who consents for a minor is a matter of parental responsibilities in the Código Civil; those articles were not opened, so who must sign is a lawyer's question. The courts treat publication of minors' images as a protective matter: the Tribunal da Relação de Évora upheld an order that both parents refrain from posting photos or information that could identify their daughter, held that "os filhos não são coisas ou objectos pertencentes aos pais", and endorsed the view that there is a "perigo sério e real adveniente da divulgação de fotografias e informações de menores nas redes sociais" ([TRE, proc. 789/13.7TMSTB-B.E1, 25 Jun 2015](https://jurisprudencia.pt/acordao/51482/)). Portugal set the age of digital consent at 13 (Lei 58/2019, art. 16.º, as [Bird & Bird](https://childreninthedigitalworld.twobirds.com/home/portugal) summarise it); that rule governs a child's consent to online services and does not by itself authorise a third party to publish the child. YouTube's child-safety policy says videos featuring minors "may have some features disabled", comments among them, and that the minor should be supervised by an adult ([YouTube Help, Child safety policy](https://support.google.com/youtube/answer/2801999?hl=en)). The Código da Publicidade requires that advertising "especialmente dirigida a menores deve ter sempre em conta a sua vulnerabilidade psicológica" (art. 14.º, n.º 1, compilation cited in §6); the rest of art. 14.º, which may bear on minors appearing in advertising, was not opened.
+
+**Club policy.** No SC Braga policy on filming or images of athletes was found on 2 November 2026. Open; the club states it.
+
+**The rule** (his rule; basis: art. 79.º and 81.º, the Évora judgment, GDPR art. 4(11) and 7(3)):
+
+- Until the written terms exist and are signed, the athletes appear **not at all**: no name, no face, no voice, no result. The series runs on what Shōmen did (A7's instalment rules 3 to 5 already centre the brand).
+- Once signed, they appear only to the extent the terms say, and **by role** is the default the terms start from ("three SC Braga athletes", as A7 already writes). By name, face or result is added only where the terms say yes to each, separately.
+- A withdrawal is honoured within a week: the material is cut or blurred with A4 record rule 3's dated note, on every platform where it ran.
+
+**What the written terms cover** (a checklist; a lawyer reviews the template once before first use):
+
+1. Parties: Shōmen (and him, if the channel uses the material), the holders of parental responsibilities for each athlete, who sign, and the athlete's own agreement, recorded.
+2. The club's position: its policy, if one exists, and its agreement where club premises, kit or name appear.
+3. What is covered, item by item, each with its own yes or no: image (photo, video), voice, first name, full name, competition results, category.
+4. Where: Shōmen's Instagram; his YouTube channel, Instagram and email; any other place, named.
+5. Purpose: the sponsorship instalments of "Shōmen × SC Braga, 2027" and Shōmen promotion; nothing else without new consent.
+6. Duration: until 31 December 2027 for new material, and what happens to published material after that (it stays up under A4 record rule 3 unless consent is withdrawn).
+7. Preview: whether the parents see each instalment before it is published, and how long they have.
+8. Withdrawal: how to withdraw (one message to a named address), what happens (cut or blur within a week, with a dated note), and that withdrawal is as easy as consent (GDPR art. 7(3)).
+9. The sponsorship itself: what kit Shōmen supplies, for how long, and that the athletes' sporting choices are theirs.
+10. The athletes' own posts: if an athlete posts about Shōmen kit, the post says it was supplied by Shōmen, so the commercial relationship is identifiable (Decreto-Lei 57/2008, art. 9.º, n.º 1, al. c); Código da Publicidade art. 8.º); where the athlete's account is on Instagram, the paid-partnership label tagging Shōmen is used. Whether a minor's own account is a "trader" under the DGC's reading was not established; the rule applies either way.
+11. Data protection: who holds the material, for what, and who to contact.
+12. Safety: no location, school, schedule or home detail is ever published, in line with A4 clause 2's location rule and the Évora court's concern.
+
+## 9 · Pre-orders: withdrawal, cancellation and delivery
+
+A7 §2 rule 4 says "Pre-order terms (delivery dates, cancellation, the right of withdrawal) are a matter of Portuguese and EU consumer law; they are settled in A8", and A7's inventory rules sell new products "on pre-order or made to order". Decreto-Lei 24/2014 governs distance sales in Portugal ([consolidated text with Lei 47/2014, as printed in 2016, Faculdade de Direito de Lisboa](https://www.fd.ulisboa.pt/wp-content/uploads/2023/03/Decreto-Lei-24-2014-contratos-celebrados-a-distancia-e-fora-do-estabelecimento-comercial.pdf); amendments after 2016 were not checked):
+
+- Before the order, the trader states "a data-limite em que o profissional se compromete a entregar o bem" and "a existência do direito de livre resolução do contrato, o respetivo prazo" (art. 4.º, n.º 1, als. i) and j)).
+- The consumer has 14 days to withdraw, running for goods from the day the consumer takes physical possession (art. 10.º, n.º 1, al. b)); if the withdrawal information was not given, the period is "de 12 meses a contar da data do termo do prazo inicial" (art. 10.º, n.º 2).
+- The trader refunds "No prazo de 14 dias a contar da data em que for informado da decisão de resolução" (art. 12.º, n.º 1).
+- There is no right of withdrawal for "bens confecionados de acordo com especificações do consumidor ou manifestamente personalizados" (art. 17.º, n.º 1, al. c)).
+- The trader fulfils the order "no prazo máximo de 30 dias" from the day after the contract, unless the parties agree otherwise (art. 19.º, n.º 1).
+
+The Directive behind it says the same: "a period of 14 days to withdraw from a distance or off-premises contract, without giving any reason", with the exception for "goods made to the consumer's specifications or clearly personalised" ([Directive 2011/83/EU, art. 9(1)](https://www.legislation.gov.uk/eudr/2011/83/article/9/data.htm); [art. 16(c)](https://www.legislation.gov.uk/eudr/2011/83/article/16/data.htm)).
+
+**For Shōmen's pre-orders** (his rules; basis: arts. 4.º, 10.º, 12.º, 17.º and 19.º): every pre-order page states a latest delivery date; where that date is more than 30 days away, the page says so and the buyer agrees to it at checkout; the page states the 14-day withdrawal right and the 14-day refund; and a standard-size garment made after the order is treated as carrying the right of withdrawal. Whether a standard garment produced to order counts as "made to the consumer's specifications" is a lawyer's question; offering withdrawal is the side that cannot breach art. 17.º.
+
+## 10 · Music and competition footage on YouTube and Instagram
+
+**Music.** YouTube's Content ID lets an owner of "a substantial body of original material" set what happens to a matching video: it "Blocks a video from being viewed", "Monetizes the video by running ads against it and sometimes sharing revenue with the uploader", or "Tracks the video's viewership statistics" ([YouTube Help, How Content ID works](https://support.google.com/youtube/answer/2797370?p=cid_what_is&rd=1)). A claim typically does not bring a strike; a valid legal removal request does, and three strikes within 90 days make the account "subject to termination" ([YouTube Help, Copyright strike basics](https://support.google.com/youtube/answer/2814000?hl=en)). Tracks from YouTube's Audio Library can be used in monetised videos and "won't be claimed by a rights holder through the Content ID system"; Creative Commons tracks require crediting the artist in the description ([YouTube Help, Audio Library](https://support.google.com/youtube/answer/3376882?hl=en)). Fair use is a US concept; YouTube says other countries use different standards, the EU specific permitted categories, and "Giving credit to the owner of a copyrighted work won't by itself turn a non-transformative copy" fair ([YouTube Help, Fair use](https://support.google.com/youtube/answer/9783148?hl=en)).
+
+On Instagram, Meta's 2020 guidance permits "traditional live music performances" and warns that "The greater the number of full-length recorded tracks in a video, the more likely it may be limited" ([Instagram, 20 May 2020](https://about.instagram.com/blog/announcements/updates-and-guidelines-for-including-music-in-video)). A law firm's March 2026 note says the platforms' music libraries are "licensed only for private use" and "not ... intended for commercial influencers, corporate accounts or paid collaborations", with Meta's Sound Collection as the royalty-free option for business accounts ([Osborne Clarke, 27 Mar 2026](https://www.osborneclarke.com/insights/use-music-social-media-platforms-what-businesses-and-creators-need-know-about-usage); secondary; Meta's own music terms were not opened).
+
+His rules (basis: the pages above): no music from a speaker during a filmed session, since a background track can match in Content ID (my inference from how matching is described); episode music only from YouTube's Audio Library with "Attribution not required", or a licence in writing; Shōmen's account and every sponsorship instalment use only Meta's Sound Collection or a written licence.
+
+**Competition footage.** From January 2026 the World Karate Federation says "all major WKF competitions will be completely available" on its YouTube channel, produced by Grup Mediapro, with medal bouts also sold to television networks in 30 territories ([WKF, 21 Nov 2025](https://www.wkf.net/news-center/article/!/3021/world-karate-federation-announces-extension-of-agreement-with-grup-mediapro-and-new-youtube-strategy)); the page says nothing about third parties using the footage. YouTube's terms forbid users to "access, reproduce, download, distribute, transmit, broadcast, display, sell" content except as the service permits or with permission, and say "the Content you submit must not include third-party intellectual property" without permission ([YouTube Terms of Service, effective 5 Jan 2022, Portugal version](https://www.youtube.com/static?gl=PT&template=terms)). Monetisation excludes reused content uploaded "without adding significant original commentary, substantive modifications, or educational or entertainment value", while "Using clips for a critical review" is listed as allowed ([YouTube Help, channel monetisation policies](https://support.google.com/youtube/answer/1311392?hl=en)). The WIKF Global Cup bulletin for 2024 says nothing on filming or media rights ([WIKF, 2024 bulletin](https://wikf.com/downloads/WIKF%20Global%20Cup%202024%20bulletin_rev3.pdf)); no 2026 bulletin was found.
+
+His rules: no WKF stream footage in an episode or post without the WKF's written permission; footage of his own bouts filmed by someone else is used with that person's agreement; other competitors in his own footage appear only where art. 79.º, n.º 2's "factos ... que hajam decorrido publicamente" plausibly covers a public tournament, and any minor in the frame is blurred (his rule, from §8).
+
+## 11 · The time budget: 5–7 hours against the half-marathon block and SC Braga
+
+**What the filed units set.** A2 planned 12.0 hours a fortnight, 6.0 a week, with up to 2.0 of slack (A2, Deliverable 2). A3 added capture and the journal, 13.0 a fortnight: 6.75 in week A and 6.25 in week B (A3, Deliverable 1, F). A5's edit template fits A3's five-hour editing window at 225 minutes with 75 minutes of margin (A5 §5). B7 puts every pipeline step inside a slot A3 already budgets (B7, Deliverable, A). A9's read 2 logs hours per week against the 5–7 budget, and three weeks over 7 in a quarter trigger "cut the load" (A9, Deliverable 2). Shōmen's operating work sits outside the 5–7 hours (A7 §2).
+
+**What a half-marathon block costs.** In a cohort of 556 Dutch half-marathon runners, 23.2% trained under 20 km a week, 42.0% 20–32 km and 34.8% over 32 km; the over-32 group finished 4.19 minutes faster than the 20–32 group after adjustment, with unadjusted means of 2:05:32, 2:02:03 and 1:55:26, and training volume was not significantly associated with new running injuries ([Fokkema et al., *Scand J Med Sci Sports*, 2020](https://repub.eur.nl/pub/127621/Repub_127621_O-A.pdf); observational, peer-reviewed). Among 134 male recreational half-marathoners, weekly running distance correlated with race time at r = −0.53 ([Nikolaidis and Knechtle, *EXCLI Journal*, 2023](https://excli.de/excli/article/view/6198); correlational). In hours, Strava's data on 6,725 users of the 2016 Great North Run, as a magazine reports it, put men finishing under two hours at about two hours a week, peaking at 2½ ten weeks out, and men under 90 minutes at "three to 4 ½ hours of training each week in the three months before" ([Coach, 5 Sep 2017](https://www.coachweb.com/half-marathon-training/6884/here-s-how-much-half-marathon-training-you-have-to-do-to-break-two-hours); company data, men only, secondary report). No source found gives hours for a 1:45 finish. His target sits between those two groups: 1:45 is about 4:59 a kilometre, and 32 km at that pace is 2.65 hours (my arithmetic); at slower training paces it is more, by an amount no source opened here measures.
+
+**Added together.** Publishing (6.25 to 6.75) plus running at the published figures either side of his target (2.5 to 4.5) comes to 8.75 to 11.25 hours a week (my arithmetic), before karate training, coaching, SC Braga, Shōmen and the history course. The brief names SC Braga as a claim on the same week; no filed unit gives its hours, or those of karate, coaching or Shōmen. Those totals are unsourced and left out of the arithmetic.
+
+```viz
+{"kind": "range", "unit": "h", "min": 0, "max": 12, "ticks": [0, 2, 4, 6, 8, 10, 12], "decimals": 2,
+ "title": "Hours a week: publishing plus half-marathon running",
+ "rows": [
+  {"label": "Publishing (A3: week B to week A)", "low": 6.25, "high": 6.75, "low_src": "A3 week B", "high_src": "A3 week A", "tone": 4},
+  {"label": "Running, Strava sub-2:00 men", "low": 2.0, "high": 2.5, "low_src": "Strava 2016", "high_src": "Strava 2016", "tone": 2},
+  {"label": "Running, Strava sub-1:30 men", "low": 3.0, "high": 4.5, "low_src": "Strava 2016", "high_src": "Strava 2016", "tone": 2},
+  {"label": "Publishing plus running", "low": 8.75, "high": 11.25, "low_src": "6.25 + 2.5", "high_src": "6.75 + 4.5", "tone": 1}
+ ],
+ "caption": "§11, drawn: the publishing week from A3's checklist F, the weekly running time that Strava reported for 6,725 users of the 2016 Great North Run in the groups either side of sub-1:45 (Coach, 5 Sep 2017; company data as a magazine reports it, men only), and the two added together (my arithmetic, taking the published peak of 2.5 h for the lower group). Karate, coaching, SC Braga, Shōmen and the history course are not drawn: no filed unit gives their hours."}
+```
+
+**What the constraint means** (his rules; basis: A3 §6, A9 read 2, the figures above):
+
+1. Training sessions are journey time and sit outside the 5–7 hours, as A3 already sets for capture and for writing the syllabus. The plan's sessions are fixed first, since the season's episodes are its steps (A3 §2); publishing cuts follow A2's order.
+2. From the first checkpoint, Tuesday 16 February 2027, the hours log records running hours from his watch and SC Braga, karate and coaching hours beside publishing hours, so that the next season's budget rests on his own figures.
+3. If three weeks in a quarter go over 7 publishing hours and the cause is the running block or SC Braga, A9's "cut the load" verdict applies to publishing, and the next cut is A2's: Instagram, the Short, the off-week email, then the episode length.
+
+## Deliverable · Constraints register
+
+Version 1, 2 November 2026. Status is settled (the source answers it), to check (an action is needed), or open (no source answered it), each with its date. "Accountant" means a contabilista certificado; "lawyer" a lawyer in the named field; "neither" means the line needs no professional. **(his rule)** marks a rule set in this unit that no source sets.
+
+| # | Constraint | Source | Status (date) | Owner | Professional |
+|---|---|---|---|---|---|
+| R1 | File the declaração de início de atividade before the first recurring payment from the channel, the email or a brand | CIRS art. 112.º, n.º 1; AT leaflet, March 2026 | To check: before the first paid income (2 Nov 2026) | Him | Accountant |
+| R2 | A one-off payment that will not repeat may be invoiced as an ato isolado; the plan's recurring income may not | OCC PT23308, 26 Aug 2019 | Settled as the OCC reads it (2 Nov 2026) | Him | Accountant confirms |
+| R3 | Choose the activity code(s) from the art. 151.º list; the coefficient follows (0.15 goods, 0.35 other services, 0.75 listed professions, 0.95 IP licensing) | CIRS art. 31.º, n.º 1; AT proc. 3870/2018 | Open: no AT source on creator income (2 Nov 2026) | Accountant | Accountant |
+| R4 | Regime simplificado while category B gross ≤ €200,000 in the prior year; 15% of service income must be matched by listed expenses or the gap is added back | CIRS art. 28.º, n.º 2; art. 31.º, n.º 13 | Settled (2 Nov 2026) | Him | Accountant |
+| R5 | Category B is aggregated with salary (englobamento); the start-of-activity coefficient reduction does not apply while he earns category A | CIRS art. 22.º, n.º 1; art. 31.º, n.os 10–11 | Settled on the text (2 Nov 2026) | Him | Accountant confirms |
+| R6 | IVA exemption while prior-year turnover ≤ €15,000 (2026); past €18,750 in the year, charge IVA on the crossing invoice and file within 15 working days | CIVA art. 53.º, n.os 1 and 5 (AT site); AT Newsletter 39, Jan 2026 | Settled for 2026; recheck each January (2 Nov 2026) | Him | Accountant |
+| R7 | Withholding dispensation below the art. 53.º threshold, with the note "Sem retenção, nos termos do n.º 1 do artigo 101.º-B do Código do IRS" | CIRS art. 101.º-B | Settled (2 Nov 2026) | Him | Accountant |
+| R8 | IVA and registration for payments from YouTube, Substack (Stripe Tax) and Meta | Substack, 6 Feb 2023; no AT source found | Open (2 Nov 2026) | Accountant | Accountant |
+| R9 | Gifted products: accept none in exchange for a mention until the treatment of income in kind is confirmed **(his rule)** | ECO, 28 Jun 2026; Pplware, 24 Jun 2026 (secondary; no AT document found) | Open (2 Nov 2026) | Him | Accountant |
+| R10 | Shōmen's legal form, whose turnover its sales are, and how the sponsorship's cost is treated | A7, table B1, a16; CIRS art. 31.º (0.15 for goods) | Open (2 Nov 2026) | Him | Accountant |
+| R11 | Segurança Social exemption for an employee: relevant income < 4 × IAS (€2,148.52 a month in 2026), different employers with no group link, mandatory cover from the job, job pay ≥ €537.13; otherwise 21.4% on 70% of service income | gov.pt, updated 3 Sep 2026; Portaria 480-A/2025/1; DL 2/2018 (CRC arts. 157.º, 162.º, 168.º); OCC, 8 Feb 2019 | To check: request the exemption and confirm the conditions (2 Nov 2026) | Him | Accountant |
+| R12 | First enrolment takes effect on the first day of the 12th month after the start; quarterly declarations by the last day of January, April, July, October; whether they are due while exempt | CRC art. 145.º (DL 2/2018); DGSS folha informativa | To check (2 Nov 2026) | Him | Accountant |
+| R13 | **Open question 1 (A2 LinkedIn override; A4 failure 8).** Read the contract against §4's seven-item checklist; give written notice where items 1, 2 or 4 require it, before the first paid income and before any LinkedIn post | Código do Trabalho art. 128.º, n.º 1, al. f) (reproduction); STJ, 12 Feb 2025 | To check: before Tue 16 Feb 2027, the first checkpoint, and before R1 (2 Nov 2026) | Him | Labour lawyer if the wording is unclear |
+| R14 | Nothing about the employer's organisation, methods or business is published; the job appears only as a constraint | CT art. 128.º, n.º 1, al. f); A4 clauses 1 and 2 | Settled (2 Nov 2026) | Him | Neither |
+| R15 | **Open question 2a (A4 unsure 7).** Treat body weight as "data concerning health": publish change only, never absolute weight | GDPR art. 4(15) (EUR-Lex; as adopted); CJEU C-21/23, 4 Oct 2024; WP29 criteria via Hunton (secondary) | Settled as a cautious reading; no ruling on weight by name (2 Nov 2026) | Him | Data-protection lawyer, optional |
+| R16 | **Open question 2b (A4 unsure 7).** A figure in a public episode is "manifestly made public" (explicit prior choice, full knowledge, unlimited audience); the only control kept is not publishing | GDPR art. 9(1), 9(2)(e) (EUR-Lex); CJEU C-252/21, 4 Jul 2023 (FRA summary) | Settled on the text and the judgment (2 Nov 2026) | Him | Data-protection lawyer, optional |
+| R17 | **Open question 3 (A4 unsure 9).** Every promotion of Shōmen identifies itself as his brand, at once and without inference; the filed rules (A4 clause 7, A5 rule 6, A7 caption line and paid-promotion setting) meet this on the words | Código da Publicidade arts. 3.º, 8.º, 9.º (1997 compilation); DL 57/2008 arts. 8.º n), ab), 9.º n.º 1 c), 19.º; Directive 2005/29/EC Annex I 11, 22, art. 7(2); DGC 34/2023 | Settled; later amendments to the Código da Publicidade not checked (2 Nov 2026) | Him | Neither; lawyer if the DGC writes |
+| R18 | A deal with any brand other than Shōmen uses Instagram's paid-partnership label, YouTube's paid-promotion setting and a spoken line | Instagram Help, branded content; A4 clause 7 | Settled (2 Nov 2026) | Him | Neither |
+| R19 | **Open question 4 (A5 rule 3 and checklist; B3 template 8).** Written consent from each training partner before the season, specific about where the footage goes and that it stays up | Código Civil art. 79.º, n.os 1–2 (TRL, 26 Oct 2016); TRC, 16 Sep 2025; GDPR arts. 4(11), 6(1)(a); *Buivids* (secondary) | To check: before each season's first filmed session (2 Nov 2026) | Him | Neither; lawyer optional |
+| R20 | A partner who withdraws is cut or blurred with A4 record rule 3's dated note **(his rule)** | Código Civil art. 81.º, n.º 2 (via *Julgar*, 2021); GDPR art. 7(3) | Settled (2 Nov 2026) | Him | Neither |
+| R21 | **Open question 5a (A7 §4, rule 7; Deliverable A parts 2 and 6).** The athletes appear not at all until written terms are signed; then by role by default, and by name, face or result only where the terms say yes to each **(his rule)** | Código Civil arts. 79.º, 81.º; TRE, 25 Jun 2015 | Settled as the rule (2 Nov 2026) | Him | Neither |
+| R22 | **Open question 5b.** Written terms covering §8's twelve items, signed by the holders of parental responsibilities, with the athlete's own agreement recorded | §8 checklist; TRE, 25 Jun 2015; GDPR art. 7(3) | To check: before Thu 18 Feb 2027, instalment 1 (2 Nov 2026) | Him, the athletes' parents | Lawyer reviews the template once; who must sign is the lawyer's question |
+| R23 | SC Braga's policy on filming and images of athletes | None found | Open (2 Nov 2026) | The club | Neither |
+| R24 | **Open question 5c.** Results appear only where the terms say yes; until then instalments report Shōmen's record only | A7 instalment rules 3–5; R21 | Settled (2 Nov 2026) | Him | Neither |
+| R25 | **Open question 5d.** The athletes' own posts about Shōmen kit say the kit was supplied by Shōmen, with Instagram's paid-partnership label where they post there | DL 57/2008 art. 9.º, n.º 1, al. c); Código da Publicidade art. 8.º; Instagram Help | To check: written into the terms (2 Nov 2026) | The athletes' parents; Shōmen | Lawyer, with R22 |
+| R26 | **Open question 5e.** Pre-orders: latest delivery date stated; over 30 days agreed at checkout; 14-day withdrawal from receipt and 14-day refund; a standard garment made to order keeps the withdrawal right **(his rule** for the last**)** | DL 24/2014 arts. 4.º, 10.º, 12.º, 17.º, 19.º (2016 consolidation); Directive 2011/83/EU arts. 9(1), 16(c) | To check: before Thu 4 Mar 2027, the first drop; post-2016 amendments not checked (2 Nov 2026) | Him (Shōmen) | Lawyer reviews the pre-order page once |
+| R27 | Music: Audio Library tracks marked "Attribution not required" or a written licence on YouTube; Meta's Sound Collection or a written licence on Shōmen's account; no speaker music in filmed sessions **(his rule)** | YouTube Help 2797370, 2814000, 3376882, 9783148; Instagram, 20 May 2020; Osborne Clarke, 27 Mar 2026 (secondary) | Settled (2 Nov 2026) | Him | Neither |
+| R28 | No WKF stream footage without written permission; others' footage of his bouts with the filmer's agreement; minors in competition footage blurred **(his rule)** | WKF, 21 Nov 2025; YouTube Terms (5 Jan 2022); YouTube Help 1311392; WIKF 2024 bulletin | Settled (2 Nov 2026) | Him | Neither |
+| R29 | Clips of others' footage are monetised only with commentary that adds to them | YouTube Help 1311392 | Settled (2 Nov 2026) | The platform enforces | Neither |
+| R30 | Publishing stays at 6.25–6.75 hours a week (A3), inside 5–7; three weeks over 7 in a quarter trigger "cut the load" | A2, Deliverable 2; A3, Deliverable 1, F; A5 §5; B7; A9 read 2 | Settled (2 Nov 2026) | Him | Neither |
+| R31 | The half-marathon block adds about 2.5 to 4.5 hours a week of running by the nearest published figures; sessions come first, publishing cuts follow A2's order **(his rule)** | Coach/Strava, 5 Sep 2017 (secondary); Fokkema et al., 2020; Nikolaidis and Knechtle, 2023 | To check: his own hours at the 16 Feb 2027 checkpoint (2 Nov 2026) | Him | Neither |
+| R32 | SC Braga, karate and coaching hours are unknown; logged beside publishing hours from 16 Feb 2027 **(his rule)** | Brief; no filed unit gives them | Open (2 Nov 2026) | Him | Neither |
+
+Who acts on each block of lines, drawn from the owner and professional columns:
+
+```viz
+{"kind": "matrix",
+ "cols": ["Him", "Accountant", "Lawyer", "Club", "Parents", "Platform"],
+ "rows": [
+  {"label": "Tax and social security (R1–R12)", "tone": 4, "cells": ["owns", "confirms", null, null, null, null]},
+  {"label": "Employment contract (R13–R14)", "tone": 4, "cells": ["owns", null, "if unclear", null, null, null]},
+  {"label": "Health data (R15–R16)", "tone": 4, "cells": ["owns", null, "optional", null, null, null]},
+  {"label": "Disclosure (R17–R18)", "tone": 4, "cells": ["owns", null, null, null, null, "label"]},
+  {"label": "Training partners (R19–R20)", "tone": 4, "cells": ["owns", null, "optional", null, null, null]},
+  {"label": "Sponsored athletes (R21–R25)", "tone": 4, "cells": ["owns", null, "reviews", "policy", "sign", "label"]},
+  {"label": "Pre-orders (R26)", "tone": 4, "cells": ["owns", null, "reviews", null, null, null]},
+  {"label": "Music and footage (R27–R29)", "tone": 4, "cells": ["owns", null, null, null, null, "enforces"]},
+  {"label": "Time (R30–R32)", "tone": 4, "cells": ["owns", null, null, null, null, null]}
+ ],
+ "legend": [
+  {"mark": "owns", "means": "he acts on it or chases it", "tone": 3},
+  {"mark": "confirms", "means": "a contabilista certificado confirms it", "tone": 2},
+  {"mark": "reviews", "means": "a lawyer reviews the document before first use", "tone": 1},
+  {"mark": "if unclear", "means": "a lawyer only if the contract's wording is unclear", "tone": 5},
+  {"mark": "optional", "means": "a lawyer only if he wants the reading confirmed", "tone": 5},
+  {"mark": "policy", "means": "the club states its filming and image policy", "tone": 6},
+  {"mark": "sign", "means": "the holders of parental responsibilities sign the terms", "tone": 6},
+  {"mark": "label", "means": "the platform's own disclosure label is used", "tone": 2},
+  {"mark": "enforces", "means": "the platform's copyright systems apply", "tone": 2}
+ ],
+ "caption": "The Deliverable's owner and professional columns, grouped by area: who acts on each block of register lines R1–R32. Every assignment is the register's own, set in this unit from the sources each line cites."}
+```
+
+**Order of work** (his rule; basis: the register's dates): R13 and R10 first, since the contract and Shōmen's structure decide R1; then one meeting with an accountant for R1 to R12; R22 and R23 before Thursday 18 February 2027; R26 before Thursday 4 March 2027; R19 before each season's first filmed session. The register is re-read at every A9 checkpoint, and R6 and R11 each January, when the threshold and the IAS can change.
+
+## Sources
+
+All web sources opened on 2 November 2026 unless another date is given.
+
+- AT (Autoridade Tributária e Aduaneira), Código do IRS, art. 22.º. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs22.aspx
+- AT, Código do IRS, art. 28.º. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs28.aspx
+- AT, Código do IRS, art. 31.º. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs31.aspx
+- AT, Código do IRS, art. 101.º-B. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs101B.aspx
+- AT, Código do IRS, art. 112.º. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cirs_rep/Pages/irs112.aspx
+- AT, Código do IVA, art. 53.º (as amended by Decreto-Lei 35/2025). https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/civa_rep/Pages/artigo-53-o-do-civa.aspx
+- AT, Newsletter 39, January 2026. https://info.portaldasfinancas.gov.pt/pt/at/Divulgacao/publicacoes_internas/Newsletter_AT/Documents/Newsletter-39-janeiro-2026.pdf
+- AT, *Início de Atividade: Rendimentos empresariais e profissionais – IRS e IVA*, March 2026. https://info.portaldasfinancas.gov.pt/pt/apoio_contribuinte/folhetos_informativos/documents/inicio_atividade.pdf
+- AT, ficha doutrinária, proc. 3870/2018, 21 Dec 2018. https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/informacoes_vinculativas/rendimento/cirs/Documents/PIV_14810.pdf
+- Bird & Bird, Children in the Digital World, Portugal (undated). https://childreninthedigitalworld.twobirds.com/home/portugal
+- Cesa e Silva, Thaís N., "A Revogação da Limitação ao Direito à Imagem", *Julgar Online*, October 2021. https://julgar.pt/wp-content/uploads/2021/10/20211026-JULGAR-Revogação-da-Limitação-ao-Direito-à-Imagem-Thaís-Cesa-e-Silva-1.pdf
+- Coach, "Here's how much half marathon training you have to do to break two hours", 5 Sep 2017. https://www.coachweb.com/half-marathon-training/6884/here-s-how-much-half-marathon-training-you-have-to-do-to-break-two-hours
+- Código da Publicidade (Decreto-Lei 330/90), municipal compilation with amendments to Decreto-Lei 61/97. https://cm-viladerei.pt/images/investir/industria/Codigo%20da%20Publicidade.pdf
+- Código do Trabalho, art. 128.º, reproduced by informador.pt. https://informador.pt/?p=161378
+- CJEU, C-21/23 *Lindenapotheke*, press release 159/24, 4 Oct 2024. https://curia.europa.eu/jcms/upload/docs/application/pdf/2024-10/cp240159en.pdf
+- CJEU, C-252/21 *Meta Platforms v Bundeskartellamt*, 4 Jul 2023, case summary by the EU Agency for Fundamental Rights. https://fra.europa.eu/en/node/44533
+- Decreto-Lei 2/2018 (amending the Código dos Regimes Contributivos), Segurança Social site. https://seg-social.pt/documents/10152/15523435/DL_2_2018/9a9cffcd-29c6-44a4-b1fc-72c5aceedcd6
+- Decreto-Lei 24/2014, consolidated with Lei 47/2014, printed 3 Feb 2016, Faculdade de Direito da Universidade de Lisboa. https://www.fd.ulisboa.pt/wp-content/uploads/2023/03/Decreto-Lei-24-2014-contratos-celebrados-a-distancia-e-fora-do-estabelecimento-comercial.pdf
+- Decreto-Lei 57/2008, consolidated text, Banco de Portugal site. https://www.bportugal.pt/sites/default/files/anexos/legislacoes/459417805_1.doc.pdf
+- DGC (Direção-Geral do Consumidor), Informação 34/2023, 16 Aug 2023 (copy on the Borba municipal site). https://www.cm-borba.pt/wp-content/uploads/2023/10/Comissao-Europeia-lancou-hoje-o-Influencer-Legal-Hub-Informacao-DGC-n.-34-2023.pdf
+- DGSS, *Folha informativa* on the independent workers' regime (Decreto-Lei 2/2018), undated. https://sisscontent.seg-social.pt/documents/10152/113014/folha_informativa.pdf/3190c94f-2c7a-4d12-b123-94a849917ef8
+- Directive 2005/29/EC, Annex I, as adopted (legislation.gov.uk). https://www.legislation.gov.uk/eudr/2005/29/annex/I/adopted
+- Directive 2005/29/EC, Chapter 2, as adopted (legislation.gov.uk). https://www.legislation.gov.uk/eudr/2005/29/chapter/2/adopted/data.htm
+- Directive 2011/83/EU, art. 9 (legislation.gov.uk). https://www.legislation.gov.uk/eudr/2011/83/article/9/data.htm
+- Directive 2011/83/EU, art. 16 (legislation.gov.uk). https://www.legislation.gov.uk/eudr/2011/83/article/16/data.htm
+- ECO, "Direção-Geral do Consumidor deteta irregularidades em publicidade de influenciadores", 9 Feb 2024. https://eco.sapo.pt/2024/02/09/direcao-geral-do-consumidor-deteta-irregularidades-em-publicidade-de-influenciadores/
+- ECO (Mariana Bandeira), "É influencer e recebe produtos de marcas? Tem de declarar no IRS", 28 Jun 2026. https://eco.sapo.pt/2026/06/28/e-influencer-e-recebe-produtos-de-marcas-tem-de-declarar-no-irs/
+- Fokkema, T. et al., "Training for a (half-)marathon: Training volume and longest endurance run related to performance and running injuries", *Scandinavian Journal of Medicine & Science in Sports*, 2020 (author version, Erasmus repository). https://repub.eur.nl/pub/127621/Repub_127621_O-A.pdf
+- gov.pt, *Requerer a isenção do pagamento de contribuições para a Segurança Social*, updated 3 Sep 2026. https://www.gov.pt/servicos/requerer-a-isencao-do-pagamento-de-contribuicoes-para-a-seguranca-social
+- gov.pt, *Práticas comerciais desleais em Portugal*, updated 11 May 2026. https://www.gov.pt/guias/praticas-comerciais-desleais-em-portugal
+- Governo de Portugal, "Guia de boas práticas sobre publicidade no meio digital", 29 Mar 2019. https://portugal.gov.pt/gc21/comunicacao/noticias/guia-de-boas-praticas-sobre-publicidade-no-meio-digital
+- Hunton, "Article 29 Working Party clarifies scope of health data processed by lifestyle and wellbeing apps", 9 Feb 2015. https://www.hunton.com/privacy-and-cybersecurity-law-blog/article-29-working-party-clarifies-scope-health-data-processed-lifestyle-wellbeing-apps
+- Instagram, "Updates and guidelines for including music in video", 20 May 2020. https://about.instagram.com/blog/announcements/updates-and-guidelines-for-including-music-in-video
+- Instagram Help Center, branded content and the paid partnership label. https://help.instagram.com/android-app/1109894795810258
+- Nikolaidis, Pantelis T. and Beat Knechtle, "Predictors of half-marathon performance in male recreational athletes", *EXCLI Journal* 22, 22 Jun 2023. https://excli.de/excli/article/view/6198
+- OCC (Ordem dos Contabilistas Certificados), "Ato isolado", technical opinion PT23308, 26 Aug 2019. https://www.occ.pt/noticias/ato-isolado
+- OCC, "Segurança Social: trabalhador dependente e independente", 8 Feb 2019. https://www.occ.pt/index.php/pt-pt/noticias/seguranca-social-trabalhador-dependente-e-independente
+- Osborne Clarke, "Use of music on social media platforms: what businesses and creators need to know", 27 Mar 2026. https://www.osborneclarke.com/insights/use-music-social-media-platforms-what-businesses-and-creators-need-know-about-usage
+- Portaria 480-A/2025/1, 30 Dec 2025 (IAS for 2026), copy on the Madeira regional government site. https://www.madeira.gov.pt//Portals/35/Users/116/72/372/10.%20Portaria%20n.%20480-A_2025_1%2C%20de%2030%20de%20dezembro.pdf
+- Pplware, "Autoridade Tributária e Aduaneira lança alerta para 'influencers'", 24 Jun 2026. https://pplware.sapo.pt/?p=1126296
+- Regulation (EU) 2016/679 (GDPR), EUR-Lex. https://www.eur-lex.europa.eu/eli/reg/2016/679
+- Regulation (EU) 2016/679, art. 4, as adopted (legislation.gov.uk). https://www.legislation.gov.uk/eur/2016/679/article/4/adopted/data.html
+- SCL (Society for Computers and Law), "Buivids: a further over-extension of the domestic purposes exemption?", 15 Feb 2019. https://www.scl.org/10433-buivids-a-further-over-extension-of-the-domestic-purposes-exemption/
+- STJ (Supremo Tribunal de Justiça), proc. 14603/23.1T8LSB.L1.S1, 12 Feb 2025. https://jurisprudencia.pt/acordao/231502
+- Substack, "Product news for writers", 6 Feb 2023. https://on.substack.com/p/product-news-dispatch-jan-23
+- TRC (Tribunal da Relação de Coimbra), proc. 2918/19.8T8VIS.C1, 16 Sep 2025 (summary). https://trc.pt/direito-a-imagem-cedencia-do-direito-de-utilizacao-da-imagem-retrato-utilizacao-nao-autorizada-de-fotografia-ilegitimidade-ativa/
+- TRE (Tribunal da Relação de Évora), proc. 789/13.7TMSTB-B.E1, 25 Jun 2015. https://jurisprudencia.pt/acordao/51482/
+- TRL (Tribunal da Relação de Lisboa), proc. 127/12.6TAOER.L1, 26 Oct 2016. https://pgdlisboa.pt/jurel/jur_mostra_doc.php?codarea=57&nid=5135
+- WIKF, Global Cup 2024 bulletin, rev. 3. https://wikf.com/downloads/WIKF%20Global%20Cup%202024%20bulletin_rev3.pdf
+- WKF, "World Karate Federation announces extension of agreement with Grup Mediapro and new YouTube strategy", 21 Nov 2025. https://www.wkf.net/news-center/article/!/3021/world-karate-federation-announces-extension-of-agreement-with-grup-mediapro-and-new-youtube-strategy
+- YouTube Help, "How Content ID works" (answer 2797370). https://support.google.com/youtube/answer/2797370?p=cid_what_is&rd=1
+- YouTube Help, "Copyright strike basics" (answer 2814000). https://support.google.com/youtube/answer/2814000?hl=en
+- YouTube Help, "Use music and sound effects from the Audio Library" (answer 3376882). https://support.google.com/youtube/answer/3376882?hl=en
+- YouTube Help, "Fair use on YouTube" (answer 9783148). https://support.google.com/youtube/answer/9783148?hl=en
+- YouTube Help, "YouTube channel monetization policies" (answer 1311392). https://support.google.com/youtube/answer/1311392?hl=en
+- YouTube Help, "Child safety policy" (answer 2801999). https://support.google.com/youtube/answer/2801999?hl=en
+- YouTube, Terms of Service, effective 5 Jan 2022 (Portugal). https://www.youtube.com/static?gl=PT&template=terms
+- Filed units cited by section: A2 · Audience and platform economics (§2, §6, Deliverable 2); A3 · The journey system (§2, §6, Deliverable 1 A and F, Deliverable 2); A4 · Voice, disclosure and the record (§5, Deliverable A clauses 1, 2, 3 and 7, B failure 8, C record rule 3, unsure items 7 and 9); A5 · Production craft (§1 rule 3, §4 rule 6, §5, Deliverable A); A7 · Monetisation through Shōmen (§2, §4, Deliverable A parts 2, 3, 4 and 6, Deliverable B tables B1 and B2); A9 · What to expect: benchmarks (Deliverable 2, read 2 and the verdicts); B3 · Prompting that holds up (template 8, worked example); B7 · Content pipeline (Deliverable, A).
+
+## Writer's unsure list
+
+1. **Creator income's activity code and coefficient** (R3): no AT page or binding ruling found says whether YouTube ad revenue, paid subscriptions or brand deals take 0.35, 0.75 or 0.95; the table in §1 gives the coefficients only.
+2. **The 25% IVA exit rule** comes from the AT's January 2026 newsletter; the art. 53.º text read the same day states it only in transitional notes for 2025, so the running rule rests on the AT's statement.
+3. **The Segurança Social exemption**: whether it is requested or automatic, and whether quarterly declarations are still due while exempt, were not confirmed; the CRC article text with conditions i) to iii) was read through the OCC and gov.pt, since the full article on informador.pt is behind a paywall.
+4. **Código do Trabalho** art. 128.º was read in an unofficial reproduction, and art. 129.º, n.º 1, al. k) only as the STJ quotes it; the Diário da República consolidated text did not load. Art. 136.º (non-compete) was not opened.
+5. **Código da Publicidade** was read in a municipal compilation carrying amendments to 1997; later amendments to arts. 3.º, 8.º, 9.º and 14.º were not checked, and art. 14.º beyond n.º 1 was not read.
+6. **Código Civil** arts. 79.º and 81.º were read as courts and a journal quote them; the parental-responsibilities articles that say who consents for a minor were not opened (R22 marks it for a lawyer).
+7. **Body weight as health data** (R15) is my reading of art. 4(15) and *Lindenapotheke*; no ruling on weight by name was found, and the WP29 criteria were read through a law firm's summary.
+8. **Decreto-Lei 24/2014** was read in a 2016 consolidation; later amendments, and whether a standard garment made to order is "made to the consumer's specifications", were not checked.
+9. **Music licences on Instagram** rest on a 2020 Meta post and a 2026 law-firm note; Meta's current music terms and the Sound Collection's licence were not opened.
+10. **Half-marathon hours** for a 1:45 target are unsourced: the Strava hours are a 2017 magazine report of 2016 data for men under 2:00 and under 1:30, and the Dutch cohort reports kilometres, not hours.
