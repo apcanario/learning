@@ -22,7 +22,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 
 | Hub | Units since last audit | Next audit | Note |
 |---|---|---|---|
-| Brand + AI | 4 of 4 (Audit 2 ran 29 Oct 2026; DD-B3, A3, B5, A4 since) | Audit 3 now (DD-B3, A3, B5, A4), before A5 | Audit 1: B1 PASS; A2·A6·A9 REWRITE, rewritten 28 Oct 2026. Audit 2 (29 Oct 2026): B2, B3, B4, A1 all PASS; B2 errata for Intelligence Index v5.0 and one miscite, A1 erratum (P33), applied. DD-B3, A3, B5 and A4 filed 29 Oct 2026; Audit 3 next, before A5. Fresh checker required for every Brand + AI unit (method §1 override). |
+| Brand + AI | Audit 3: 4 of 4 (DD-B3, A3, B5, A4), owed to the Fable 5.1 stage; Audit 4: 1 of 4 (A5 since) | Audit 3 at the Fable 5.1 stage (row B-9); Audit 4 after A8 (A5, B7, A7, A8) | Audit 1: B1 PASS; A2·A6·A9 REWRITE, rewritten 28 Oct 2026. Audit 2 (29 Oct 2026): B2, B3, B4, A1 all PASS; B2 errata for Intelligence Index v5.0 and one miscite, A1 erratum (P33), applied. DD-B3, A3, B5 and A4 filed 29 Oct 2026; Audit 3 deferred by Pedro (31 Oct 2026) to the Fable 5.1 stage, gating nothing until then. A5 filed 2 Nov 2026 (row A-1). Fresh checker required for every Brand + AI unit (method §1 override); Opus 5.5 runs it until the Fable 5.1 stage, each owing a Fable 5.1 check. |
 | User Experience | 2 of 4 (IA1, IA2 since) | Audit 1 after IA4 (deferred by Pedro 29 Oct 2026, row P49) | Course IA created 29 Oct 2026; IA1 and IA2 filed 30 Oct 2026. Fresh checker required for every unit, as for Brand + AI (Opus 5.5 for IA1 to IA3; Fable 5.1 checks owed, P49). |
 | Personal Mythology | 20 of 4 modules (Rome 11.3 to 11.8, 12.1 to 12.8, 13.3 to 13.8; Greece and Rome pooled; `kit/review_due.py`) | due (FABLE REVIEW DUE since 11.6), deferred to the Fable stage at the end of the queue (Pedro, 31 Oct 2026); Rome finished on 1 Nov 2026 (R-2) with the review still deferred | Decision of 28 October 2026: strict four-module cadence per method.md §6; `kit/review_due.py` counts modules since S3 (1 Nov 2026), from the `review_mark` in `kit/provenance.json`. Six Greek reports still flagged from the 27 October review and carried by that mark, so not counted: 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 (`NEXT-SESSION.md`, S4) |
 
@@ -39,7 +39,7 @@ Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Sylla
 
 ## Brand + AI
 
-Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 3 deep dives; DD-B3 added 28 Oct 2026). 12 of 22 written. A unit is written when its file is in `courses/brand-ai/` (A5: Academy reads it from there). Briefs: each course's Briefs page in Academy (`gen/data/brand-ai/units_data.py`). Build order: the Build order page.
+Two courses for one reader. **A · Building a Marketable Personal Brand** (9 core units, 2 deep dives) and **B · Using AI to Build a Brand** (8 core, 3 deep dives; DD-B3 added 28 Oct 2026). 13 of 22 written. A unit is written when its file is in `courses/brand-ai/` (A5: Academy reads it from there). Briefs: each course's Briefs page in Academy (`gen/data/brand-ai/units_data.py`). Build order: the Build order page.
 
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
@@ -58,8 +58,8 @@ Two courses for one reader. **A · Building a Marketable Personal Brand** (9 cor
 | 10 | A3 | A | The journey system | written 29 Oct 2026 (own context; fresh check Fable 5.1 keep, 0 errors, 1 should-fix, 9 minor, applied; report `audits/brand-ai/fresh-check-A3.md`) | Opus 5.5 | off | `courses/brand-ai/A3-the-journey-system.md` |
 | 11 | B5 | B | Skills and automation | written 29 Oct 2026 (own context; fresh check Fable 5.1 fix, 1 error, 4 should-fix, 5 minor, applied; report `audits/brand-ai/fresh-check-B5.md`) | Opus 5.5 | off | `courses/brand-ai/B5-skills-and-automation.md` |
 | 12 | A4 | A | Voice, disclosure and the record | written 29 Oct 2026 (own context; fresh check Fable 5.1 fix, 2 errors, 3 should-fix, 8 minor, applied; report `audits/brand-ai/fresh-check-A4.md`) | Opus 5.5 | off | `courses/brand-ai/A4-voice-disclosure-and-the-record.md` |
-| ✓ | Audit 3 | A+B | Stratified-sample audit of the last four units | due now (DD-B3, A3, B5, A4), before #13 | Fable 5.1 | on | hub Audits page |
-| 13 | A5 | A | Production craft | not written | Opus 5.5 | off | `courses/brand-ai/A5-production-craft.md` |
+| ✓ | Audit 3 | A+B | Stratified-sample audit of the last four units | owed (DD-B3, A3, B5, A4); deferred by Pedro (31 Oct 2026) to the Fable 5.1 stage, row B-9 | Fable 5.1 | on | hub Audits page |
+| 13 | A5 | A | Production craft | written 1 Nov 2026 (own agent context, row A-1; fresh check Opus 5.5 fix, 1 error, 4 should-fix, 8 minor, applied; Fable 5.1 fresh check owed; report `audits/brand-ai/fresh-check-A5.md`) | Opus 5.5 | off | `courses/brand-ai/A5-production-craft.md` |
 | 14 | B7 | B | Content pipeline | not written | Opus 5.5 | off | `courses/brand-ai/B7-content-pipeline.md` |
 | 15 | A7 | A | Monetisation through Shōmen | not written | Opus 5.5 | off | `courses/brand-ai/A7-monetisation-through-shomen.md` |
 | 16 | A8 | A | Legal, tax, time | not written | Opus 5.5 | on | `courses/brand-ai/A8-legal-tax-time.md` |
