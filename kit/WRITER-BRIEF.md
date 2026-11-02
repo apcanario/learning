@@ -29,7 +29,7 @@ Working directory: the kit folder (it contains `AGENT-SPEC.md`, `check.py` and t
   - Every number of dead, troops, money or people names its source.
   - Neighbours must not repeat each other's dispute boxes and anecdotes: each has one home, the others point to it.
   - Open a report before writing "module X covers Y".
-  - Recurring slips: a modern book's year or title not matching the edition named; an ancient author cited for what only a later author says; a Self-test answer contradicting the body; a dispute box with nobody named on one side; Dio's Loeb and Boissevain book numbers confused.
+  - Recurring slips: a modern book's year or title not matching the edition named; an ancient author cited for what only a later author says; a Self-test answer contradicting the body; a dispute box with nobody named on one side; Dio's Loeb and margin (traditional) book numbers confused.
   - Philosophy: quote fragments only from the edition you cite, and keep the reporter separate from the claim ("Aristotle says Thales held …").
 - Other writers share your scratch folder. Name any temporary file after your module (`tmp-2.3-body.md`, never `body.md`), and before you finish confirm that your report's Self-test and Carry forward are about your module.
 
