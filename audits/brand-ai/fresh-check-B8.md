@@ -275,3 +275,37 @@ B8 · verdict rewrite (more than three errors: 4; two share one cause, and every
 **Verdict as recorded.** The count rule gives rewrite (four errors). Errors 1 and 2 are one fact in two places, so the unit has three distinct errors, each a one-sentence replacement, and a list of edits fixes it, which is the method's definition of fix. The maintainer took that reading (the brief for this row: where a choice is open, take the most reasonable reading and record it); Pedro may overrule it, in which case B8 goes back to a new writing chat from its brief.
 
 **Figures.** Figures 1, 2 and 4 PASS (figure 4's caption minor applied). Figure 3 (decision) FIX: fixed in the prose and re-checked by a separate agent given only the unit's text without its figures, the captions and figure 3's frames sheets at phone, tablet and desktop, dark and light (P89).
+
+---
+
+## Figure re-check 1 (2 Nov 2026, a separate Opus 5.5 agent given the unit without its figures, the captions and figure 3's frames sheets; report verbatim)
+
+A Fable 5.1 check of this figure is still owed. This check was run by Opus 5.5 in its own agent context, which did not see the writing or any earlier check.
+
+Trace of the drawing to the unit's text (§3, "**The rule, put together**"):
+- "Does the next step need this chat's history?" comes from "when the next step does not need this chat's history". Traced.
+- no → "New chat (Claude Code: /clear)" comes from "a new chat (in Claude Code, `/clear`)". Traced.
+- yes → "Back after the cache expired?" comes from "When it does, and he is coming back after the cache has expired". Traced.
+- yes → "New chat with a handoff note" comes from "a new chat with a handoff note". Traced.
+- no → "Abandoning a wrong path?" comes from "`/rewind` off a wrong path" and "a wrong path means a new chat". Traced.
+- yes → "Claude Code: /rewind. claude.ai: new chat" comes from "in Claude Code, `/rewind` off a wrong path" and "on claude.ai, where no help article read describes a way to trim a chat by hand, a wrong path means a new chat". Traced.
+- no → "Stay; /compact only between tasks" comes from "When it does and the cache is warm, stay; in Claude Code, ... `/compact` only between tasks". It is traced, but the box drops the "in Claude Code" scope (first finding below).
+
+Findings:
+[error] [figure] The /compact advice is shown for every product. Current: outcome box "Stay; /compact only between tasks". Problem: the text limits `/compact` to Claude Code ("in Claude Code, `/rewind` off a wrong path and `/compact` only between tasks") and says claude.ai has no way to trim a chat by hand. The next box over names its product ("Claude Code: /rewind. claude.ai: new chat"), so this box, with no product named, reads as if /compact works on claude.ai too, which the text does not say. Fix: "Stay (Claude Code: /compact only between tasks)".
+[minor] [figure] The cache question gives no time. Current: decision box "Back after the cache expired?". Problem: the reader cannot tell when the cache has expired. The text gives the only figure available and its limit: "Claude Code's documented one hour on a subscription is the only figure for his plan, and using it for claude.ai is an analogy". Rule 13 turns this into "a break over an hour". Fix: "Back after the cache expired (over an hour)?"
+[minor] [figure] The caption misses one source. Current: caption sources "Claude Code docs, *How Claude Code uses prompt caching*, *Manage costs effectively* and Claude Help Center, *Usage limit best practices*". Problem: the claude.ai branch ("claude.ai: new chat" on a wrong path) rests on the finding that the only claude.ai trim is automatic context management. The text sources that to article 11647753, and the caption does not cite it. Fix: after "*Usage limit best practices*", add ", and *Understanding usage and length limits* (article 11647753)" before ", read 2 Nov 2026".
+[minor] [drawing] One box mixes a trim and a new chat in the new-chat colour. Current: the leaf "Claude Code: /rewind. claude.ai: new chat" is filled orange, the same as the two new-chat outcomes. Problem: `/rewind` keeps the chat and cuts it back to a cached point. It trims; it does not start again. The caption names three outcomes ("Continue, trim or start again") but the drawing uses two colours and has no legend, so this trim is coloured as a new chat. Fix: split the leaf into two nodes under the "yes" branch, "Claude Code: /rewind" in the stay (teal) fill and "claude.ai: new chat" in the new-chat (orange) fill.
+
+Checks passed:
+- (b) Apart from the missing source above, the caption says what the figure shows, names §3 and its sources, and gives the read date.
+- (c) The kind fits: a decision drawing suits a rule with three nested branches.
+- (d) On the desktop and tablet sheets, dark and light, the figure fits in one frame. All text sits inside its boxes, nothing overlaps, and the caption sits under the drawing.
+- (d) On phone, dark and light, the figure takes 3 frames with a "scroll sideways for the whole figure" hint. Every box and every yes/no label can be read whole in at least one frame:
+  - frame 1: the root question, the /clear box, the handoff box and the /rewind box;
+  - frame 2: "Back after…", "Abandoning…", the /rewind box and the Stay box;
+  - frame 3: "Abandoning…" and the Stay box.
+  The fade at the scroll edge sits over the edges of some boxes but hides no text. The caption sits under the drawing in every frame.
+- The unit's text near the figure has no errors and does not contradict the figure. The paragraph that follows ("a brief pause is one inside the cache lifetime") agrees with the cache branch and with rule 13.
+
+Figure 3 (decision, §3): FIX. 1 error, 0 should-fix, 3 minor.
