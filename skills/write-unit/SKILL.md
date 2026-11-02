@@ -57,7 +57,7 @@ With the whole draft written, go through it section by section and ask of each: 
 - **How many.** One to four figures a unit is a guide, and none where nothing has a shape; a figure is never added for decoration. A brief that names its own number stands (the User Experience briefs ask for three to eight).
 - **Caption.** Say what the figure shows and where its data comes from: the section of this unit and the source it cites there (author, work, line or page; organisation, report, date). A figure redrawn or adapted from a source credits it.
 - **Syntax.** Every course (history too, since P71-3): a fenced ` ```viz ` block holding the JSON, `kind` and `caption` inside it (`kit/WRITER-BRIEF.md`).
-- **Draw it.** Before handing in, render every figure with `viz.render` (from `kit/`: `python3 -c "import json, viz; viz.render(json.load(open('fig.json')))"`, or `python3 check.py ../courses/<course>/<id>-<slug>.md` for a history report). A figure that raises is fixed or dropped, never left to break the build.
+- **Draw it.** Before handing in, render every figure with `viz.render` (from `kit/`: `python3 -c "import json, viz; viz.render(json.load(open('fig.json')))"`, or `python3 check.py ../courses/<course>/<id>-<slug>.md` for a history report). A figure that raises is fixed or dropped, never left to break the build. Filing then draws each figure as the reader meets it, every frame of a figure wider than its column stacked in one sheet (`verify.py --shots`, P89).
 
 ## 5. Check before handing in
 - Run `sourcing-standard.md` Part 1 and `<sourcing part>` over every checkable claim. Fix what fails; a claim you cannot source is said to be unsourced or removed (and never enters the deliverable).

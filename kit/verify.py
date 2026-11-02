@@ -20,7 +20,9 @@ Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button,
 its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
 and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35) at the three widths
 of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
-and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png.
+and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png, the figure as its frame
+opens; and (P89, p85_frames.py folded in) every frame a reader scrolls that figure across, stacked and numbered in one
+sheet: <width>-<panel>-fig-<nn>-<kind>-frames-<theme>.png, at each width, dark and light.
 Figure geometry (FIG_JS; V1, every kind since P55): on the examples page (one figure per kind, then one hard case per
 drawing fault P55 fixed, and the blocks that must stop the build) and, in the phone pass, on every panel with figures:
 nothing outside the drawing, text inside its box or bar, no two boxes or labels overlapping, no free label over a box.
@@ -171,6 +173,49 @@ def shoot(pg, path, w, h):
     pg.set_viewport_size({'width': w, 'height': SHOT_H}); pg.wait_for_timeout(120)
     pg.screenshot(path=str(path), full_page=False, timeout=60000)
     pg.set_viewport_size({'width': w, 'height': h}); pg.wait_for_timeout(60)
+
+def frames(pg, fig, path, label):
+    """P89 (2 Nov 2026; p85_frames.py folded in): every frame a reader scrolls a figure across, shot in turn and stacked
+    top to bottom with its number, so a checker sees the whole drawing as the reader meets it. The frames run from where
+    the drawing starts (data-x0px, set by shell.js on a centred drawing, else 0) to its right edge, each half a frame
+    on from the last, so anything up to half a frame wide (a box, a label) is whole in at least one frame, as it is to a
+    reader who scrolls on; a figure that fits its frame is one frame. While they are shot,
+    sticky bars are made static (they keep their place in the flow) and fixed ones hidden, so none covers the figure;
+    both are put back after and the frame is scrolled back to where it opened. Returns the number of frames."""
+    from PIL import Image, ImageDraw, ImageFont
+    sc = fig.query_selector('.viz-scroll')
+    if not sc:
+        return 0
+    pg.evaluate("""() => { for (const el of document.querySelectorAll('body *')) { const p = getComputedStyle(el).position;
+      if (p === 'sticky') { el.dataset.p89 = 's'; el.style.setProperty('position', 'static', 'important'); }
+      else if (p === 'fixed') { el.dataset.p89 = 'f'; el.style.setProperty('visibility', 'hidden', 'important'); } } }""")
+    fig.scroll_into_view_if_needed(); pg.wait_for_timeout(60)
+    sw, cw, x_open, x0 = sc.evaluate("s => [s.scrollWidth, s.clientWidth, s.scrollLeft, +s.getAttribute('data-x0px') || 0]")
+    x, xs, shots = min(x0, x_open), [], []
+    while True:
+        sc.evaluate(f's => {{ s.scrollLeft = {x}; }}'); pg.wait_for_timeout(120)
+        x = sc.evaluate('s => s.scrollLeft'); xs.append(x)
+        tmp = path.with_name(f'_{path.stem}-{len(shots)}.png')
+        fig.screenshot(path=str(tmp), timeout=120000); shots.append(tmp)
+        if x + cw >= sw - 1 or len(shots) >= 60:
+            break
+        x = min(x + max(cw // 2, 1), sw - cw)
+    sc.evaluate(f's => {{ s.scrollLeft = {x_open}; }}')
+    pg.evaluate("() => { for (const el of document.querySelectorAll('[data-p89]')) { el.style.removeProperty(el.dataset.p89 === 's' ? 'position' : 'visibility'); delete el.dataset.p89; } }")
+    ims = [Image.open(s) for s in shots]
+    scale = max(1, round(ims[0].width / fig.evaluate('f => f.getBoundingClientRect().width')))   # the device scale
+    font, band = ImageFont.load_default(size=12 * scale), 40 * scale
+    sheet = Image.new('RGB', (max(i.width for i in ims), sum(i.height + band for i in ims)), (128, 128, 128))
+    d, y, n = ImageDraw.Draw(sheet), 0, len(ims)
+    for k, (im, xk) in enumerate(zip(ims, xs)):
+        note = 'the whole figure fits' if n == 1 else f'scrolled to {xk} of {sw - cw} px; opens at {x_open}'
+        d.text((6 * scale, y + 4 * scale), label, fill=(0, 0, 0), font=font)
+        d.text((6 * scale, y + 21 * scale), f'frame {k + 1} of {n} ({note})', fill=(0, 0, 0), font=font)
+        y += band; sheet.paste(im, (0, y)); y += im.height
+    sheet.save(path)
+    for s in shots:
+        s.unlink()
+    return n
 
 def check_panels(pg, label, fails):
     """Every panel, every <details> open: horizontal scroll, 6 px gaps, 44 px targets. Returns (tightest gap, panel count)."""
@@ -1029,6 +1074,8 @@ def main():
                                 fig.evaluate("f => { const s = f.closest('.sec'), p = f.closest('.panel'); if (s && !s.classList.contains('on')) p.querySelector('.seclist a[data-step=\"' + s.dataset.step + '\"]').click(); }")   # P68: its section shown first
                                 fig.scroll_into_view_if_needed(); pg.wait_for_timeout(30)
                                 fig.screenshot(path=str(SHOTS / f'{name}-{pid}-fig-{k + 1:02d}-{kind}-{theme}.png'), timeout=120000)
+                                nf = frames(pg, fig, SHOTS / f'{name}-{pid}-fig-{k + 1:02d}-{kind}-frames-{theme}.png', f'{name} · {pid} · figure {k + 1} · {theme}')   # P89
+                                print(f'shots: {name} {pid} figure {k + 1} ({kind}) {theme}: {nf} frame' + ('s' if nf != 1 else ''))
                             pg.evaluate('window.scrollTo(0, 0)')
                 ctx.close()
             # V1: each figure of the examples page as the reader sees it in its frame, then one sheet per width and theme
