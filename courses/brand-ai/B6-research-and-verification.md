@@ -66,7 +66,7 @@ The three routes on one axis, from the Anthropic post's own figures:
 }
 ```
 
-**The routing rule.** Put together: ask directly when nothing in the answer needs a source; search when one answer needs one; deep research when several independent directions need covering and the result is worth roughly fifteen chats of tokens plus the checking of the claims it returns; when it is not worth that, search each direction in turn, one chat each (my rule). The rule is my synthesis of the sources above; each branch traces to one of them.
+**The routing rule.** Put together: ask directly when nothing in the answer needs a source; search when one answer needs one; deep research when several independent directions need covering and the result is worth roughly fifteen chats of tokens plus the checking of the claims it returns; when the directions depend on each other, search one step at a time, in one chat; when they are independent but the result is not worth that, search each direction in turn, one chat each (my rule). The rule is my synthesis of the sources above; each branch traces to one of them.
 
 ```viz
 {
@@ -75,25 +75,71 @@ The three routes on one axis, from the Anthropic post's own figures:
   "q": "Needs, from outside the chat, a fact after June 2026, or a specific number, name, date, quotation or citation he will publish, file or act on?",
   "tone": 4,
   "branches": [
-   {"label": "no", "to": {"outcome": "Ask directly", "tone": 3}},
-   {"label": "yes", "to": {
-    "q": "Several directions at once?",
-    "tone": 4,
-    "branches": [
-     {"label": "no", "to": {"outcome": "Search", "tone": 2}},
-     {"label": "yes", "to": {
-      "q": "Does each direction need the others' findings?",
-      "tone": 4,
-      "branches": [
-       {"label": "yes", "to": {"outcome": "Search, one step at a time", "tone": 2}},
-       {"label": "no", "to": {"outcome": "Deep research, if worth about fifteen chats of tokens plus checking its claims; if not, search each direction in turn", "tone": 1}}
-      ]
-     }}
-    ]
-   }}
+   {
+    "label": "no",
+    "to": {
+     "outcome": "Ask directly",
+     "tone": 3
+    }
+   },
+   {
+    "label": "yes",
+    "to": {
+     "q": "Several directions at once?",
+     "tone": 4,
+     "branches": [
+      {
+       "label": "no",
+       "to": {
+        "outcome": "Search",
+        "tone": 2
+       }
+      },
+      {
+       "label": "yes",
+       "to": {
+        "q": "Are the directions independent of each other?",
+        "tone": 4,
+        "branches": [
+         {
+          "label": "no",
+          "to": {
+           "outcome": "Search, one step at a time, in one chat",
+           "tone": 2
+          }
+         },
+         {
+          "label": "yes",
+          "to": {
+           "q": "Worth about fifteen chats of tokens plus checking its claims?",
+           "tone": 4,
+           "branches": [
+            {
+             "label": "no",
+             "to": {
+              "outcome": "Search each direction in turn, one chat each",
+              "tone": 2
+             }
+            },
+            {
+             "label": "yes",
+             "to": {
+              "outcome": "Deep research",
+              "tone": 1
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
   ]
  },
- "caption": "The routing rule in §1: the cutoff from B1 §4, the fit conditions from Hadfield et al., <a href=\"https://www.anthropic.com/engineering/multi-agent-research-system\"><em>How we built our multi-agent research system</em></a>, Anthropic Engineering, 13 Jun 2025 (vendor). Every route that ends in something published, filed or acted on then goes through the sampling rule (Deliverable, C)."
+ "caption": "The routing rule in §1, this unit's synthesis of its sources: the cutoff from B1 §4; the fit conditions and the roughly fifteen-fold token cost from Hadfield et al., <a href=\"https://www.anthropic.com/engineering/multi-agent-research-system\"><em>How we built our multi-agent research system</em></a>, Anthropic Engineering, 13 Jun 2025 (vendor). Every route that ends in something published, filed or acted on then goes through the sampling rule (Deliverable, C)."
 }
 ```
 
