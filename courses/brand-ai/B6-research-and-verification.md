@@ -9,7 +9,7 @@ search: off
 
 # B6 · Research and verification
 
-Search was off for this unit. It was used only to check specific figures: the token and time figures for multi-agent research, the citation-fabrication rates, the industry-sponsorship meta-analysis, and the wording of the sources on causation, self-correction and zero numerators. Every web source was opened on 2 November 2026. Product facts already recorded by B1 and B2 are cited from those units with the date they were checked, and are not re-derived. Three kinds of evidence carry the unit, labelled where they appear: **peer-reviewed** work; **vendor** material (a company describing or measuring its own product, or a dataset from a company with an interest in the result); and **his record**, meaning the audit and fresh-check lines filed at the end of the course's own units, which anyone with the repository can open and nobody else can. The sampling arithmetic is shown in the text so it can be checked by hand.
+Search was off for the writing of this unit; it was used only to check specific figures: the token and time figures for multi-agent research, the citation-fabrication rates, the industry-sponsorship meta-analysis, and the wording of the sources on causation, self-correction and zero numerators. Every web source was opened on 2 November 2026. Product facts already recorded by B1 and B2 are cited from those units with the date they were checked, and are not re-derived. Three kinds of evidence carry the unit, labelled where they appear: **peer-reviewed** work; **vendor** material (a company describing or measuring its own product, or a dataset from a company with an interest in the result); and **his record**, meaning the audit and fresh-check lines filed at the end of the course's own units, which anyone with the repository can open and nobody else can. The sampling arithmetic is shown in the text so it can be checked by hand.
 
 ## 1 · Ask, search or deep research
 
@@ -66,7 +66,7 @@ The three routes on one axis, from the Anthropic post's own figures:
 }
 ```
 
-**The routing rule.** Put together: ask directly when nothing in the answer needs a source; search when one answer needs one; deep research when several independent directions need covering and the result is worth roughly fifteen chats of tokens plus the checking of the claims it returns; when the directions depend on each other, search one step at a time, in one chat; when they are independent but the result is not worth that, search each direction in turn, one chat each (my rule). The rule is my synthesis of the sources above; each branch traces to one of them.
+**The routing rule.** Put together: ask directly when nothing in the answer needs a source (a specific that turns up anyway is checked before use, Deliverable A); search when one answer needs one; deep research when several independent directions need covering and the result is worth roughly fifteen chats of tokens plus the checking of the claims it returns; when the directions depend on each other, search one step at a time, in one chat; when they are independent but the result is not worth that, search each direction in turn, one chat each (my rule). The rule is my synthesis of the sources above; each branch traces to one of them.
 
 ```viz
 {
@@ -85,7 +85,7 @@ The three routes on one axis, from the Anthropic post's own figures:
    {
     "label": "yes",
     "to": {
-     "q": "Several directions at once?",
+     "q": "Several directions to cover?",
      "tone": 4,
      "branches": [
       {
@@ -272,7 +272,7 @@ So a sample is a tripwire for bad pieces. A clean sample is permission to procee
 
 Everything AI-written that he publishes, files or acts on has checkable claims, in the sourcing standard's sense: any sentence carrying a number, a date, a named source, an attribution, a mechanism or a recommendation (`sourcing-standard.md`, opening). The rule generalises in four moves. The thresholds below are my design, chosen with the arithmetic above; each says what it rests on.
 
-**1. Count first. Small pieces are checked in full.** A caption, a title set, a weekly email or a post usually carries a handful of checkable claims. Below about ten, a census costs little more than a sample and leaves no residual risk, so every claim is checked. That covers most of Shōmen's copy and every title set.
+**1. Count first. Small pieces are checked in full.** A caption, a title set, a weekly email or a post usually carries a handful of checkable claims. At ten or fewer, a census costs little more than a sample and leaves no residual risk, so every claim is checked. That covers most of Shōmen's copy and every title set.
 
 **2. Tier by consequence.** A piece published under his name or filed as course material is tier **P**. A research note for himself, a draft, or a decision memo is tier **I**. The difference is what an error costs. Under his brand, published work changes only in the open: a corrected figure after publication is listed in the description with its date and reason (A4, Deliverable C, rule 2). A public error therefore stays public. Tier P triggers a full check on any FAIL; tier I keeps the method's "more than one in ten".
 
@@ -302,6 +302,7 @@ Use for anything AI-written that will be published, filed or acted on: posts, ca
 | A concept or mechanism settled before June 2026; drafting, reformatting or summarising material already in the chat | Ask directly | Tokens only. B2 §5: about $0.046 on Opus 5.5 for an assumed 4,000 in / 1,500 out (API prices, 28 Oct 2026). On claude.ai, drawn from his limit by message and conversation length (B2 §2) | No source gives a figure | Any number, name, date or quotation it gives is checked in full (C1) before use |
 | One current fact, price, rule or citation | Search | $10 per 1,000 searches plus the result tokens on the API (B2 §3, 28 Oct 2026); tool use draws his claude.ai limit (B2 §2); an agent with tools uses about 4× a chat's tokens (Anthropic, 13 Jun 2025; vendor) | No source gives a figure | Open the cited page yourself; date the fact |
 | Several independent directions at once, worth a report | Deep research (Research) | About 15× a chat's tokens (Anthropic, 13 Jun 2025; vendor, 2025 system); "can use up your limits faster" (Claude Help Center, read 2 Nov 2026) | "In minutes" (Anthropic, 15 Apr 2025); 5 to 45 minutes, most in 5 to 15 (Anthropic, 1 May 2025; vendor, 2025 feature) | Sampling rule (C) on the whole report; brief it with B3 template 7 |
+| Several independent directions, not worth a report | Search each direction in turn, one chat each | As search, once per direction | As search, once per direction | As search |
 | Several directions that each need the others' findings | Search, one step at a time, in one chat | As search | As search | As search |
 
 - [ ] I asked for a source behind each claim and gave permission to say "I do not know" (B3 §3).
