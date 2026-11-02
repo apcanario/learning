@@ -873,6 +873,8 @@ The source classes and labels are the course's own sourcing standard (`sourcing-
     <facts>
     - the footage is for a YouTube episode about the start of my half-marathon season, with some karate in it
     - saying no is completely fine and i'll keep them out of shot
+    - it goes on youtube, instagram and the weekly email, and stays up once it's out
+    - they can change their mind any time with one message and i'll blur or cut them out, with a dated note
     - <UNKNOWN: anything else I am offering, e.g. seeing the cut before it goes up>
     </facts>
 

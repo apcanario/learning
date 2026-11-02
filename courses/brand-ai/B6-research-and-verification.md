@@ -66,7 +66,7 @@ The three routes on one axis, from the Anthropic post's own figures:
 }
 ```
 
-**The routing rule.** Put together: ask directly when nothing in the answer needs a source; search when one answer needs one; deep research when several independent directions need covering and the result is worth roughly fifteen chats of tokens plus the checking of every claim it returns. The rule is my synthesis of the sources above; each branch traces to one of them.
+**The routing rule.** Put together: ask directly when nothing in the answer needs a source; search when one answer needs one; deep research when several independent directions need covering and the result is worth roughly fifteen chats of tokens plus the checking of the claims it returns. The rule is my synthesis of the sources above; each branch traces to one of them.
 
 ```viz
 {
@@ -86,14 +86,14 @@ The three routes on one axis, from the Anthropic post's own figures:
       "tone": 4,
       "branches": [
        {"label": "yes", "to": {"outcome": "Search, one step at a time", "tone": 2}},
-       {"label": "no", "to": {"outcome": "Deep research, if worth about fifteen chats of tokens plus checking every claim", "tone": 1}}
+       {"label": "no", "to": {"outcome": "Deep research, if worth about fifteen chats of tokens plus checking its claims", "tone": 1}}
       ]
      }}
     ]
    }}
   ]
  },
- "caption": "The routing rule in §1: the cutoff from B1 §4, the fit conditions from Hadfield et al., <a href=\"https://www.anthropic.com/engineering/multi-agent-research-system\"><em>How we built our multi-agent research system</em></a>, Anthropic Engineering, 13 Jun 2025 (vendor). Every route that ends in something published or filed then goes through the sampling rule (Deliverable, C)."
+ "caption": "The routing rule in §1: the cutoff from B1 §4, the fit conditions from Hadfield et al., <a href=\"https://www.anthropic.com/engineering/multi-agent-research-system\"><em>How we built our multi-agent research system</em></a>, Anthropic Engineering, 13 Jun 2025 (vendor). Every route that ends in something published, filed or acted on then goes through the sampling rule (Deliverable, C)."
 }
 ```
 
@@ -287,7 +287,7 @@ Use for anything AI-written that will be published, filed or acted on: posts, ca
   - an **invented** source, quotation or number in the sample → **full check**, at once;
   - **tier P** and any FAIL → **full check**;
   - **tier I** and more than one FAIL in ten sampled (with fewer than 10 sampled, any FAIL) → **full check**;
-  - **tier I** and a single FAIL with ten or more sampled → fix that claim by D, then use it, and log it, after the sweep below if there is any STALE (`method.md` §6: at or under one in ten, no full audit, and the errata are applied);
+  - **tier I** and FAILs at or under one in ten, with ten or more sampled → fix each FAIL by D, then use it, and log it, after the sweep below if there is any STALE (`method.md` §6: at or under one in ten, no full audit, and the errata are applied);
   - any **STALE** → **sweep**: re-check and date every fact in the piece that can change (prices, rules, limits, lineups, benchmarks);
   - **all PASS** → use it, and log it.
 - [ ] **C7 · Remember what a clean sample means.** A clean 7 is consistent with up to about 35% failing; a clean 10, up to about 26%; a clean 30, up to about 10% (§4, 1 − 0.05^(1/n)). It is permission to proceed with known risk, and certifies nothing.
@@ -315,14 +315,14 @@ Use for anything AI-written that will be published, filed or acted on: posts, ca
       {
        "label": "yes",
        "to": {
-        "outcome": "Sweep, fix a single FAIL if any, use it and log it",
+        "outcome": "Sweep, fix any FAIL, use it and log it",
         "tone": 2
        }
       },
       {
        "label": "no",
        "to": {
-        "outcome": "Fix a single FAIL if any, use it and log it",
+        "outcome": "Fix any FAIL, use it and log it",
         "tone": 3
        }
       }
