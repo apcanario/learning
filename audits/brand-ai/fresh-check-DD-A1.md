@@ -244,3 +244,54 @@ DD-A1 · fix · 3 errors (four entries above; the two "three videos a week" line
 - **Figure 4 (matrix, FIX):** the caption and the legend's "partial" meaning, applied as given; the figure was rebuilt and re-checked by a new agent (below).
 
 **Verdict as recorded.** Four error entries by count, two of them one fact in two places (Abdaal's October 2020 cadence), so three distinct errors and a list of edits fixes the unit: fix, as the checker itself read it.
+
+## Figure re-check 1 (2 Nov 2026, a separate Opus 5.5 agent given the unit without its figures, the captions and figure 4's frames sheets at phone, tablet and desktop, dark and light; report verbatim)
+
+Figure 4 now passes, with three minor findings and no errors or should-fix items. I checked all 25 cells against the unit's text, and each one matches it.
+
+Findings:
+
+[minor] [drawing] The legend's definition of 'partial' is shorter than the caption's. Current: `approximate date, another measure, a secondary source, or a statement about earlier work`. Problem: the caption reads "a secondary or summary source", and the Abdaal hours cell is a summary source: "Creator Science's show notes say … 5 to 10 hours of his effort a week as of October 2020 (the show's summary)". The legend leaves out "summary", so that cell is covered only if a show's summary is read as a secondary source. Fix: `approximate date, another measure, a secondary or summary source, or a statement about earlier work`
+
+[minor] [drawing] At phone width (390 px), the creator names scroll out of view. In frames 2 and 3 (scrolled to 164 and 184 px) the row labels are gone, so a reader looking at the 24 MONTHS, 36 MONTHS and GOT WRONG columns can't see which creator a row belongs to. Nothing is lost: the names are in frame 1 and the "scroll sideways for the whole figure" note is there. Current: row-label column scrolls with the grid. Problem: across five rows the reader has to remember the row order. Fix: `make the row-label column sticky (position: sticky; left: 0) inside the scroll frame`
+
+[minor] [text] The per-creator list for Abdaal disagrees with the figure and with the other summaries. Current: `- *12 / 24 / 36 months:* unpub. / unpub. / unpub.; ~4,000 at ~9 months; 100K in 2018; 1M Sep 2020 (own words and own site).` Problem: the figure marks his 12- and 36-month points as partial. In the same list, Sidibe's count with an approximate date goes into its slot ("unpub. / 125K+ between May 2019 and Jan 2020 (own Shorty entry) / unpub."). Abdaal's counts of the same kind are pushed after three "unpub."s instead, so the list is applying two rules. Fix: `- *12 / 24 / 36 months:* ~4,000 at ~9 months and 100K "in 2018" (own words, own site) / unpub. / 1M at 39 months, Sep 2020 (own site).`
+
+Checks:
+
+1. **Labels and cells.** All 25 cells match the text.
+   - **Abdaal:**
+     - Hours, partial: "5 to 10 hours of his effort a week as of October 2020 (the show's summary)".
+     - 12 months, partial: "~4,000 at ~9 months … 100K 'in 2018'".
+     - 24 months, unpub.: "*At 24 months (June 2019):* unpublished."
+     - 36 months, partial: "1M at 39 months, Sep 2020".
+     - Got wrong, own words: "I kind of wish I'd done that from day one" (Creator Science, 15 Dec 2020).
+   - **Boyd:**
+     - Hours, unpub.: "Unpublished."
+     - 12, 24 and 36 months, all unpub.: "All three unpublished."
+     - Got wrong, none found: "No statement found."
+   - **Sidibe:**
+     - Hours, 12 months and 36 months, all unpub.: "Unpublished." and "unpublished".
+     - 24 months, partial: "So the count was taken between May 2019 and January 2020".
+     - Got wrong, none found: "No statement found about the channel."
+     - 264K at about 46 months is left as unpub. §7.3 supports this: "Abdaal's one million came at 39 months, and the rest are unpublished".
+   - **Lewis:** every cell is unpub. or none found: "Unpublished.", "All three unpublished.", "No statement found."
+   - **Partridge:**
+     - Hours, unpub.: "Unpublished."
+     - 12, 24 and 36 months, partial (another measure): "the figures that exist are listening and following claims, each in a different measure".
+     - Got wrong, partial (earlier work): "About the businesses before UNILAD, not the podcast … 'I was starting them on short-term dopamine'".
+   - The column headers match the five items named in the caption.
+2. **Caption.** It says what the figure shows, names the sections ("§2 to §6 and the deliverable's table"), states the source ("a source opened in this unit") and defines 'partial'. It sits under the figure. No issue.
+3. **Kind.** Creators by items, each cell a category: a matrix fits.
+4. **Legend.** The four marks are used as the legend defines them. own words appears once, a dated quote. none found appears only in GOT WRONG where the text says "No statement found". unpub. appears only where the text says unpublished. partial covers approximate dates, other measures, the show's summary and a statement about earlier work. The one gap is "summary" missing from the legend (minor 1).
+5. **Drawing.**
+   - At desktop and tablet the whole figure fits in one frame, in both themes.
+   - At phone width it scrolls 184 px across 3 frames. Taken together the frames show every column, every cell and the full legend. The "no statement found" text cut off in frame 1 is whole in frame 2.
+   - All text sits inside its box and nothing overlaps.
+   - The caption is under the figure.
+   - Both themes are readable. Every cell carries a text label, so colour is not the only way to tell the marks apart, which matters most for the dark theme's brown own words against the maroon unpub.
+   - The only problem is that the row names scroll off (minor 2).
+6. **Unit text.** §7.3 ("only Abdaal has an hours figure"; "of the ten 24- and 36-month points … the rest are unpublished") agrees with the figure. One inconsistency in the per-creator list for Abdaal (minor 3).
+
+Figure 4: PASS (errors 0, should-fix 0, minor 3)
+**Maintainer's note on the figure re-check (2 Nov 2026).** The re-checker's transcript was checked by script: no web, memory, Projects or connector tool; every file it opened inside its packet. Figure 4 passed (0 errors, 0 should-fix, 3 minor). Minor 1 (the legend's "partial" lacked "summary", which the caption has and the Abdaal hours cell needs) verified against the caption and §2 and applied as given. Minor 3 (the deliverable's Abdaal line put three "unpub." where §2 gives approximate counts at about 9 and 39 months, while Sidibe's line puts his in their slot) verified against §2 and applied as given; the figure was rendered again. Minor 2 (the row labels scroll out of view at phone width) is the renderer change already queued as P83 (a sticky label column for a matrix at phone width), a proposed row awaiting Pedro's confirmation, which a chat does not work; it is recorded there. Figures 1 (line), 2 (timeline) and 3 (compare) passed the fresh check; figure 4 (matrix) passed after one fix. None dropped.
