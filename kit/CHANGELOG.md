@@ -70,6 +70,8 @@ Backlog row A-2 of `docs/BACKLOG.md`, one chat, Opus 5.5 throughout, under P31: 
 
 **Records:** `docs/courses-index.md`'s header now names v8.5 to v8.7 (it had stopped at v8.2).
 
+Academy rebuilt, verified (ALL CHECKS PASSED) and published once (artifact version 108, after reading the live page and the three fetched files the publish named, each byte-identical to the starting build's); GitHub Pages deployed once (`apcanario/academy` `d521353`, Actions run 41409638522, success). No history report changed, so the Greece edition was not republished. The session had no Projects tool: the Project knowledge uploads joined Pedro's by-hand row P81.
+
 ## 2 November 2026 · Session 42 · Brand + AI A5 and B7, the Dio citations (P87, P88), every frame of a figure (P89)
 
 Backlog row A-1 of `docs/BACKLOG.md`, one chat, Opus 5.5 throughout, run unattended overnight (Pedro asleep from 23:48 on 1 Nov; at 00:52 he added: fix everything found, propose nothing). P31 throughout: every unit written by a fresh agent that saw only its brief and the filed units, every check by a separate fresh agent that had not seen the work it checked; the chat filed, built, applied verified findings and recorded. Started from `482eeb4` (build and verify ALL CHECKS PASSED). A container restart lost B7's first fresh check and the Dio inventory; both were run again from the start.
