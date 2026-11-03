@@ -86,7 +86,7 @@ The two senses answer different questions, on this unit's reading. Young's model
 
 ### 2.3 · The gap at Perqo
 
-In the Perqo data model (Perqo, fictional), an employee's money is an allocation per benefit category per period (IA1, section 2.4): four allocations, one per open category and period, for an employee whose group has all four open, and when a claim is submitted the system asks whether the amount is within the employee's balance (IA2, section 5.3). This unit extends that rule by fixing which balance the question reads (Perqo, fictional): the balance of the category the employee chose on the New claim form. The app's Home screen (Perqo, fictional) shows one Balance total on Home, the sum of the four category balances. The system image therefore says "one pot of money", and the designer's model says "four pots". An employee with money left in Meals and none in Learning who claims a course is rejected, over balance: a course claim is rejected while Home shows money left. From inside the employee's model, the rejection is arbitrary.
+In the Perqo data model (Perqo, fictional), an employee's money is an allocation per benefit category per period (IA1, section 2.4): four allocations, one per open category and period, for an employee whose group has all four open, and when a claim is submitted the system asks whether the amount is within the employee's balance (IA2, section 5.3). This unit extends that rule by fixing which balance the question reads (Perqo, fictional): the balance of the category the employee chose on the New claim form. The app (Perqo, fictional) shows one Balance total on Home, the sum of the four category balances. The system image therefore says "one pot of money", and the designer's model says "four pots". An employee with money left in Meals and none in Learning who claims a course is rejected, over balance. The gap: a course claim is rejected while Home shows money left. From inside the employee's model, the rejection is arbitrary.
 
 The claim lifecycle shows a second gap. The system has four states, Submitted, Approved, Rejected and Paid (IA1, section 5). The Claims screen lists claims in two groups, Submitted and Paid (IA2, section 5.3); in the app as it stands (Perqo, fictional), an approved claim stays in the Submitted group until it is paid (IA2's state diagram assumed the app shows Approved; the as-is here does not, and the Deliverable's fix for B2 restores it), and a rejected claim leaves the list and appears only as a message in Notifications. An employee who reasons from the list (assumed: untested) concludes that a claim missing from the list is lost. The gap is that rejected claims cannot be found where claims are listed. Set side by side, the Perqo system, the app screens and the employee (assumed) differ on two things, money and claim status:
 
@@ -223,7 +223,7 @@ Steve Krug's *Don't Make Me Think, Revisited* (3rd ed., New Riders, 2014) is the
 
 The navigation below is the Perqo app as it stands before IA6 (Perqo, fictional). It keeps everything IA1 and IA2 set: the tab bar, which carries the app's global routes, with its five tabs Home, Benefits, Claims, Card and Account; the four categories inside Benefits; the Claims screen grouped Submitted and Paid; New claim and Check and submit; the contextual route from the Claims screen to the claim articles; no search (IA1, section 5; IA2, section 5.3). It adds, as faults for the checklist to catch:
 
-- **Home.** One Balance total, the sum of the four category balances, with a "Learn more" link under it to H-2.2.1 on perqo.com. A list of recent activity that mixes purchases and claims and shows a submitted claim as "Pending" (a claim shown as Pending). A banner labelled "Discover" that opens a list of offers. A "+" icon, with no text, that opens New claim.
+- **Home.** One Balance total, the sum of the four category balances, with a "Learn more" link under it to H-2.2.1 on perqo.com. A list of recent activity that mixes purchases and claims and shows a submitted claim as "Pending". A banner labelled "Discover" that opens a list of offers. A "+" icon, with no text, that opens New claim.
 - **Offers: the first merchant fact in the course.** Merchants that accept the Perqo card can publish offers (discounts for Perqo cardholders), which the app lists. The list is reached from Home's "Discover" banner, with a second "Learn more" under the banner, and again from the Benefits tab, where it sits as a fifth item labelled "Perks" below the four categories. The partnerships team asked for both placings.
 - **Benefits.** Health, Learning, Mobility, Meals, then Perks. Each category screen shows its balance and a "What's covered" list of its narrower terms, with no examples.
 - **Claims.** The Submitted and Paid groups; approved claims stay in Submitted until paid; rejected claims are not listed and appear only in Notifications. New claim asks for a category, an amount and a receipt; Check and submit follows. A link "Help with claims" opens the claim articles in the Help centre.
@@ -237,14 +237,14 @@ The as-is sitemap, in the notation: square-cornered boxes with type tags, every 
  {"label": "Home", "type": "home", "tone": 3, "children": [
   {"label": "Balance", "type": "detail", "note": "one total; fails B1", "tone": 6},
   {"label": "Learn more", "type": "external", "note": "→ see H-2.2.1; fails A1, A2, A3, A5, F1", "tone": 6},
-  {"label": "Recent activity", "type": "index", "note": "claim shown as Pending; fails D2", "tone": 6},
-  {"label": "Discover", "type": "index", "note": "offers; a second Learn more under it; fails A1, A5, D1, D2, F1", "tone": 6},
+  {"label": "Recent activity", "type": "index", "note": "a submitted claim as Pending; fails D2", "tone": 6},
+  {"label": "Discover", "type": "index", "note": "offers; fails A1, C4, D1, D2, F1; a second Learn more under it fails A1, A2, A5, F1", "tone": 6},
   {"label": "+", "type": "form", "note": "→ see New claim; fails A4, F1", "tone": 6}]},
  {"label": "Benefits", "type": "index", "tone": 3, "children": [
   {"label": "Health", "type": "detail", "note": "What's covered: no examples; fails C2, C3", "tone": 6},
-  {"label": "Learning", "type": "detail", "note": "as Health", "tone": 6},
-  {"label": "Mobility", "type": "detail", "note": "as Health", "tone": 6},
-  {"label": "Meals", "type": "detail", "note": "as Health", "tone": 6},
+  {"label": "Learning", "type": "detail", "note": "What's covered: no examples; fails C2, C3", "tone": 6},
+  {"label": "Mobility", "type": "detail", "note": "What's covered: no examples; fails C2", "tone": 6},
+  {"label": "Meals", "type": "detail", "note": "What's covered: no examples; fails C2, C3", "tone": 6},
   {"label": "Perks", "type": "index", "note": "offers again; fails C1, C4, D1, D2, F1", "tone": 6}]},
  {"label": "Claims", "type": "index", "note": "Submitted, Paid; no rejected; fails B2, F2", "tone": 6, "children": [
   {"label": "New claim", "type": "form", "tone": 3, "children": [{"label": "Check and submit", "type": "form", "tone": 3}]},
@@ -256,7 +256,7 @@ The as-is sitemap, in the notation: square-cornered boxes with type tags, every 
  {"label": "Account", "type": "section", "tone": 3, "children": [
   {"label": "Profile", "type": "detail", "tone": 3},
   {"label": "Notifications", "type": "index", "tone": 3},
-  {"label": "Documents", "type": "index", "note": "fails A1, C4, D1, F2", "tone": 6, "children": [{"label": "Approval rules", "type": "file", "note": "H-1.2.4, for HR", "tone": 6}]},
+  {"label": "Documents", "type": "index", "note": "fails A1, C4, D1, F2", "tone": 6, "children": [{"label": "Approval rules", "type": "file", "note": "H-1.2.4, for HR; fails C4, F2", "tone": 6}]},
   {"label": "Help", "type": "external", "note": "→ see Help centre home; fails A3", "tone": 6}]}]}}
 ```
 
@@ -295,7 +295,7 @@ The as-is sitemap, in the notation: square-cornered boxes with type tags, every 
 | ID | Verdict | What in the as-is decides it | Fix (for IA6) |
 |---|---|---|---|
 | A1 | **Fail** | "Learn more" (Home, twice), "Discover" (Home) and "Documents" (Account) name nothing behind them | Rename the balance link "Your balance explained"; rename the offers list "Card offers"; remove Documents (see C4) |
-| A2 | **Fail** | "Learn more" opens with no subject; every other label passes (Home, Benefits, Claims, Card, Account, the four categories, Balance, Recent activity, New claim, Check and submit, Help with claims, Card details, Purchases, Freeze card, Profile, Notifications, Help; Discover, Perks and Documents pass A2 as single words and fail on A1, C1 and D1) | "Your balance explained" starts with the subject; the other labels need no change under A2 |
+| A2 | **Fail** | "Learn more" opens with no subject; every other label passes (Home, Benefits, Claims, Card, Account, the four categories, Balance, Recent activity, New claim, Check and submit, Help with claims, Card details, Purchases, Freeze card, Profile, Notifications, Help; Discover, Perks and Documents pass A2 as single words; Discover and Documents fail on A1 and D1, Perks on C1 and D1) | "Your balance explained" starts with the subject; the other labels need no change under A2 |
 | A3 | **Fail** | "Learn more" opens a page titled "Your balance explained"; Account's Help opens the Help centre home, where the employee must first choose an audience | The renamed link matches its page; Help opens For employees directly |
 | A4 | **Fail** | The "+" on Home has no text | Label it "New claim", the same words as the Claims screen's button |
 | A5 | **Fail** | Two "Learn more" links on Home open two destinations | Each link carries its own destination's name (A1) |
@@ -311,7 +311,7 @@ The as-is sitemap, in the notation: square-cornered boxes with type tags, every 
 | E1 | **Pass, with a watch** | The app has no search, and every task in the as-is is reachable by browsing; the faults above weaken scent on those routes without removing them | No search in the app for now; the decision is revisited when the Help centre log (E2) shows employees searching for things the app holds |
 | E2 | **Fail** | The Help centre logs searches, and nobody reads them; the five queries in section 5.2 were found only for this review | Support reads the For employees log each quarter, groups the top queries, and records each finding as a hypothesis for IA11 and IA12 |
 | E3 | **Pass** | Claims lists past claims; Purchases lists past purchases; Notifications holds past messages | Keep |
-| F1 | **Fail** | On Home, three of five elements are ambiguous ("Learn more", "Discover", "+"); in Benefits, the fifth item is of another kind | Fixed by A1, A4 and C1; the tabs themselves pass and stay |
+| F1 | **Fail** | On Home, three of five elements are ambiguous ("Learn more", "Discover" with the second "Learn more" under it, "+"); in Benefits, the fifth item is of another kind | Fixed by A1, A4 and C1; the tabs themselves pass and stay |
 | F2 | **Fail** | The approval rule that decides a claim is reachable only through Account, Documents, a PDF written for HR; a rejected claim is reachable only through Notifications | Fixed by C4 and B2: the rule shows on New claim, rejected claims show in Claims |
 
 **What IA6 keeps.** Every label that passes: the five tabs Home, Benefits, Claims, Card and Account; Balance as the app's preferred term; the four categories Health, Learning, Mobility and Meals and their narrower terms; New claim; Check and submit; Help with claims; Card details, Purchases and Freeze card; Profile, Notifications and Help; and the status names Submitted and Paid, joined by Approved and Rejected.

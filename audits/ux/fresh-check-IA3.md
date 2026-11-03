@@ -143,3 +143,140 @@ The report above was saved before any finding was applied. Each finding was veri
 - Approved in the app (minor): verified against IA2 §5.3's state-diagram paragraph ("Submitted, Approved and Paid are tone 5, because a claim's status is shown on both Admin and the app"). Applied with one change: "B2's fix" became "the Deliverable's fix for B2", since the reader meets B2 only in the Deliverable.
 
 Figure 5 (FIX) was fixed and re-checked by a new agent given only the unit's text with its figures taken out, the captions and figure 5's frames sheets (`verify.py --shots`, page `read-ux-ia3`); its report follows below when it is in. Figures 1 to 4 passed.
+
+## Figure 5, re-check 1 (fresh Opus 5.5 agent; given only the unit without its figures, the captions and figure 5's frames sheets): report verbatim
+
+# Figure 5 (sitemap) re-check: IA3, Deliverable
+
+I checked all six sheets: phone, tablet and desktop, each in dark and light. On desktop and tablet the figure fits in one frame. On phone it takes 3 frames of sideways scroll.
+
+## (a) Labels, notes, type tags and checklist IDs against the unit's text
+
+### Labels and notes that are correct
+
+- **Root, "Perqo app" / "tab bar: global routes".** Source: "the tab bar, which carries the app's global routes, with its five tabs Home, Benefits, Claims, Card and Account". It has no type tag, as the caption says. Tone 3.
+- **The five tabs, Home, Benefits, Claims, Card and Account.** Same line. Tone 3, except Claims (see below).
+- **Balance, "one total; fails B1".** Source: "One Balance total, the sum of the four category balances". Row B1: "Home shows one Balance total". Tone 6.
+- **Learn more, EXTERNAL, "→ see H-2.2.1; fails A1, A2, A3, A5, F1".** Source: "with a "Learn more" link under it to H-2.2.1 on perqo.com". The rows that name it:
+  - A1: "Learn more" (Home, twice)
+  - A2: "Learn more" opens with no subject
+  - A3: "Learn more" opens a page titled "Your balance explained"
+  - A5: Two "Learn more" links
+  - F1: "Learn more"
+
+  All five IDs are present.
+- **Recent activity, "claim shown as Pending; fails D2".** Source: "A list of recent activity ... shows a submitted claim as "Pending"". Row D2: "A submitted claim is "Pending" on Home".
+- **"+", FORM, "→ see New claim; fails A4, F1".** Source: "A "+" icon, with no text, that opens New claim". Rows A4 and F1 both name it.
+- **Health, "What's covered: no examples; fails C2, C3".** Source: "Each category screen shows its balance and a "What's covered" list of its narrower terms, with no examples". Row C2 names Health ("(Fitness, Therapy)"). Row C3 names the yoga class, whose second place is Learning, and the bike helmet, whose second place is Health.
+- **Perks, "offers again; fails C1, C4, D1, D2, F1".** All five IDs are correct:
+  - C1: "Perks ... sits in the list of benefit categories"
+  - C4: "Offers appear twice because the partnerships team asked"
+  - D1: "Perks"
+  - D2: "Perks" in Benefits
+  - F1: "in Benefits, the fifth item is of another kind"
+- **Claims, "Submitted, Paid; no rejected; fails B2, F2".** Source: "The Submitted and Paid groups; ... rejected claims are not listed". Rows B2 and F2 both name it. Tone 6.
+- **New claim and Check and submit, FORM, tone 3.** Source: "New claim asks for a category, an amount and a receipt; Check and submit follows". No row's "what decides it" column names either one.
+- **Help with claims, EXTERNAL, "→ see Claim articles", tone 3.** Source: "A link "Help with claims" opens the claim articles in the Help centre". It is kept ("What IA6 keeps").
+- **The Card children, Card details, Purchases and Freeze card, tone 3.** Source: "Card details, Purchases, Freeze card". All are kept.
+- **Profile and Notifications, tone 3.** Both are kept.
+- **Documents, INDEX, "fails A1, C4, D1, F2".** Rows A1, C4, D1 and F2 all name it.
+- **Approval rules, FILE, "H-1.2.4, for HR".** Source: "Documents (which holds the "Approval rules" PDF, H-1.2.4 ...)". F2 says "a PDF written for HR".
+- **Help, EXTERNAL, "→ see Help centre home; fails A3".** Row A3: "Account's Help opens the Help centre home".
+
+### Errors
+
+1. **Discover is missing C4, and its note mixes two elements.**
+   - Row C4 says "Offers appear twice because the partnerships team asked". The text adds "The partnerships team asked for both placings". So both placings fail C4: Discover on Home and Perks in Benefits. Perks carries C4. Discover does not.
+   - The note puts the second "Learn more" inside the Discover box. It then lists one set of IDs ("fails A1, A5, D1, D2, F1") after "under it". The reader cannot tell which IDs belong to Discover and which to the second Learn more.
+   - A5 belongs only to the Learn more ("Two "Learn more" links on Home open two destinations").
+   - A2 is missing for the second Learn more. Row A2 says ""Learn more" opens with no subject", and the A2 row says Discover itself passes A2.
+2. **Approval rules is drawn in tone 6 but its note has no IDs.** The caption says tone 6 "marks each element that fails an item of the checklist (item IDs in the notes)". Two rows name this file:
+   - C4: "approval rules sit in Documents because Product holds them as a PDF for HR"
+   - F2: "reachable only through Account, Documents, a PDF written for HR"
+3. **Mobility's note "as Health" gives it C3, which no row supports.**
+   - Row C3 says "A cookery course, a yoga class and a bike helmet have no route from the second category an employee is assumed to look in". Section 3.3 names those second categories: Meals for the cookery course ("sits near Meals"), Learning for the yoga class ("pulls it towards Learning") and Health for the bike helmet ("pulls towards Health").
+   - Mobility is no item's second category, so it fails C2 only. "as Health" stands for Health's "fails C2, C3", so it is wrong for Mobility.
+   - "as Health" is also open to misreading as "classed as Health". Learning and Meals do fail C2 and C3, so their notes are correct in substance. Writing the IDs out removes the ambiguity.
+
+### Elements a row names without failing them (no change)
+
+Four elements appear in a failing row only as the place a fault shows, or as the correct term:
+- Notifications, in B2 and F2.
+- Account, in F2.
+- Home, in A1, A5 and F1.
+- Claims' "Submitted", in D2.
+
+The fix column keeps each of them ("What IA6 keeps" lists the five tabs and Notifications, and D2's fix says "Use Submitted everywhere"). Leaving them in tone 3 with no ID is correct.
+
+### Observation on a type tag (no change needed for PASS on its own)
+
+Balance is tagged DETAIL. The text describes Balance only as a figure on Home ("One Balance total ... with a "Learn more" link under it"), and nothing says it opens a page. The tag claims a page the text does not describe. The notation sheet's tag set (IA2) is not in this folder, so I cannot name the right tag. The writer should confirm that DETAIL is IA2's tag for an on-screen element, or change it.
+
+## (b) Caption
+
+The caption says what the figure shows: as-is navigation, F2, page types tagged, root without a type tag, the five tabs as its children. It names the section (Deliverable) and the sources: "from IA1, section 5, and IA2, section 5.3; every other element from this Deliverable". This matches the text: "It keeps everything IA1 and IA2 set ... (IA1, section 5; IA2, section 5.3). It adds, as faults ...".
+
+On tones, the caption is correct for every box except Approval rules: it is tone 6 with no IDs in its note. Error 2's fix brings the drawing into line with the caption. The caption itself needs no change.
+
+## (c) Kind
+
+A sitemap tree is the right kind for a hierarchy of screens. It follows the text: "square-cornered boxes with type tags, every box in the app's tone 3, the faults ... in tone 6, and every route that leaves the app tagged `external` with a "→ see" note". All three exits (Learn more, Help with claims, Help) are EXTERNAL and have "→ see" notes.
+
+## (d) Drawing as read
+
+- **Desktop and tablet, dark and light.** One frame holds the whole figure. No text overlaps or is cut, and all text sits inside its box. The caption is under the figure.
+- **Phone, dark and light.** Three frames of sideways scroll, with a "scroll sideways for the whole figure" hint. Every box appears whole in at least one frame:
+  - Frame 1: the Home column, Benefits and Card.
+  - Frame 2: Benefits, Claims and Account.
+  - Frame 3: Claims, its children and Account.
+
+  The faded right edge is the scroll affordance, and no box is clipped in every frame. The caption sits under the figure in each frame. The monospace notes are legible at phone width.
+- Tones show clearly in both themes: teal for tone 3 and ochre for tone 6.
+
+No rendering faults.
+
+## FIX: exact replacements (figure notes)
+
+1. **Discover box.**
+   - Current: "offers; a second Learn more under it; fails A1, A5, D1, D2, F1"
+   - Replacement: "offers; fails A1, C4, D1, D2, F1; a second Learn more under it fails A1, A2, A5, F1"
+2. **Approval rules box.**
+   - Current: "H-1.2.4, for HR"
+   - Replacement: "H-1.2.4, for HR; fails C4, F2"
+3. **Mobility box.**
+   - Current: "as Health"
+   - Replacement: "What's covered: no examples; fails C2"
+4. **Learning box.**
+   - Current: "as Health"
+   - Replacement: "What's covered: no examples; fails C2, C3"
+5. **Meals box.**
+   - Current: "as Health"
+   - Replacement: "What's covered: no examples; fails C2, C3"
+
+Fixes 4 and 5 are for clarity. Their substance is already correct.
+
+The caption needs no change.
+
+## The unit's own text (outside the figure)
+
+1. **Section 2.3 repeats "on Home" in one sentence.**
+   - Current: "The app's Home screen (Perqo, fictional) shows one Balance total on Home, the sum of the four category balances."
+   - Replacement: "The app's Home screen (Perqo, fictional) shows one Balance total, the sum of the four category balances."
+2. **Section 2.3 says the same thing twice.**
+   - Current: "An employee with money left in Meals and none in Learning who claims a course is rejected, over balance: a course claim is rejected while Home shows money left."
+   - Replacement: "An employee with money left in Meals and none in Learning who claims a course is rejected, over balance, while Home shows money left."
+3. **Deliverable, as-is navigation, Home bullet: the parenthesis repeats the clause before it.**
+   - Current: "shows a submitted claim as "Pending" (a claim shown as Pending)."
+   - Replacement: "shows a submitted claim as "Pending"."
+4. **Checklist applied, row A2: the grouped list makes each label seem to fail all three items.** In fact Perks does not fail A1, and Discover and Documents do not fail C1.
+   - Current: "Discover, Perks and Documents pass A2 as single words and fail on A1, C1 and D1"
+   - Replacement: "Discover, Perks and Documents pass A2 as single words; Discover and Documents fail on A1 and D1, Perks on C1 and D1"
+5. **Checklist applied, row F1: the count leaves out the second "Learn more".** Row A1 and the as-is list count two "Learn more" links on Home. The figure folds the second one into Discover, so its five Home children match the "five". The text should still say what it counts.
+   - Current: "On Home, three of five elements are ambiguous ("Learn more", "Discover", "+")"
+   - Replacement: "On Home, three of five elements are ambiguous ("Learn more", "Discover" with the second "Learn more" under it, "+")"
+
+Figure 5: FIX
+
+### Maintainer's note on re-check 1
+
+FIX. Verified against the unit's applied table, the as-is list and section 3.3 (second places: cookery course Meals, yoga class Learning, bike helmet Health). Applied as given: the Discover note (C4 added; the second Learn more's IDs, A1, A2, A5, F1, split out), Approval rules' IDs (C4, F2), the Learning, Mobility and Meals notes written out (Mobility fails C2 only), and text notes 3, 4 and 5. Held in part: text note 1 (the repeated "on Home") and note 2 (the repeated clause in 2.3) quote the lines figure 3's cells are traced to ("one Balance total on Home"; "a course claim is rejected while Home shows money left"), so the cells' wording was kept and the sentences reworded around it: "The app (Perqo, fictional) shows one Balance total on Home, the sum" and "who claims a course is rejected, over balance. The gap: a course claim is rejected while Home shows money left." Removing "(a claim shown as Pending)" (note 3) took away the line figure 5's Recent activity note was traced to, so that note became "a submitted claim as Pending; fails D2", the text's own words. The observation on Balance's `detail` tag was checked against IA2's fixed tag list (§5.2: `detail`, one item); Balance shows one item, the employee's total, so the tag stands. Re-check 2 follows.
