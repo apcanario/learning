@@ -7,7 +7,7 @@ A fact here is a course convention, never evidence for a claim about the world. 
 ## The product (IA1 §2, §5)
 
 - A flexible-benefits platform in the technology space. Client companies give each employee a benefits budget to spend across categories.
-- Three surfaces: **perqo.com** (the sales and product website), **Perqo Admin** (the backoffice where a client's HR and finance managers configure budgets, policies, approvals and reports), **the Perqo app** (the employee app for seeing balances and spending benefits). A merchant side exists where a unit needs it; none has yet.
+- Three surfaces: **perqo.com** (the sales and product website), **Perqo Admin** (the backoffice where a client's HR and finance managers configure budgets, policies, approvals and reports), **the Perqo app** (the employee app for seeing balances and spending benefits). A merchant side exists where a unit needs it; IA3 set its first fact (card offers, below).
 - Money moves two ways: a card payment, or a claim (a receipt the employee asks to be reimbursed for). Claims are their own object, separate from card purchases (IA1 §2.1).
 
 ## Surfaces and their top-level areas (IA1, deliverable: the surfaces map)
@@ -67,6 +67,20 @@ A fact here is a course convention, never evidence for a claim about the world. 
 
 - Global, local, contextual and supplemental routes per surface as in the table above; Admin's local routes are the policies inside Policies, one per employee group; Admin's contextual route runs from an employee's record to the claims they made; Admin and the app have no supplemental route.
 
+## Set by IA3 (3 Nov 2026)
+
+- **The claim rule reads one category's balance** (§2.3, extending IA2 §5.3's rule): "within the employee's balance" is the balance of the category chosen on New claim. An employee with all four categories open holds four allocations.
+- **The as-is Perqo app** (§2.3, §3.3, Deliverable): the app as it stands before IA6, the structure IA6 replaces. It keeps every fact above and adds, as faults for IA3's checklist:
+  - Home: one Balance total (the sum of the four category balances) with a "Learn more" link under it to H-2.2.1; a Recent activity list mixing purchases and claims that shows a submitted claim as "Pending"; a "Discover" banner opening the offers list, with a second "Learn more" under it; a "+" icon with no text that opens New claim.
+  - Benefits: Health, Learning, Mobility, Meals, then a fifth item, "Perks" (the offers list again). Each category screen shows its balance and a "What's covered" list of its narrower terms, with no examples.
+  - Claims: the Submitted and Paid groups; approved claims stay in Submitted until paid; rejected claims are not listed and appear only in Notifications (IA2 §5.3's state diagram assumed the app shows Approved; the as-is does not, and IA3's fix for B2 restores it). A link "Help with claims" opens the claim articles.
+  - Card: Card details, Purchases, Freeze card. Account: Profile, Notifications, Documents (holding the "Approval rules" PDF, H-1.2.4) and Help (the Help centre's home page, where both audiences start).
+- **The first merchant fact** (Deliverable): merchants that accept the Perqo card can publish offers (discounts for Perqo cardholders), which the app lists; reached from Home's "Discover" and again as "Perks" in Benefits, both placings asked for by the partnerships team.
+- **Each client's policy lists what is covered under each category** (§3.3). The example client's policy: gym membership → Health, Fitness; train pass → Mobility, Public transport; coding course → Learning, Courses; cookery course → Learning, Courses; yoga class → Health, Fitness; bike helmet → Mobility, Bike. Assumed second places an employee looks (untested): cookery course → Meals; yoga class → Learning; bike helmet → Health.
+- **The Help centre's search log** (§5.2, Deliverable E2): the For employees log for one quarter, top five queries in rank order: "refund" (returns H-2.1.2), "allowance" (zero results), "rejected claim" (H-2.1.2), "gym" (zero results), "approval" (H-1.2.4); no counts. The Help centre logs searches and nobody reads the logs.
+- **Frequency of use, assumed** (§6.2): Perqo Admin is used daily by the same HR and finance managers; the employee app is opened a few times a month.
+- **Proposed for IA6, not facts yet** (Deliverable): rename the offers list "Card offers" and give it one placing; show the four category balances on Home; group Claims by all four states; label the "+" "New claim"; "Your balance explained" for the balance link; Help opens For employees; the rule "Claims over the limit need HR approval" on New claim, the limit read from the group's policy; Documents removed. IA6 keeps the labels IA3's checklist passes (its "What IA6 keeps").
+
 ## Not yet set (free for the unit that needs it)
 
-The merchant side; pages below the top level on any surface beyond the fragments above; roles inside Admin beyond HR manager and finance manager; volumes; the purchase lifecycle of a client company; the employee's enrolment; any number (budgets, limits, counts); any named person or client company (none may be real).
+The merchant side beyond IA3's card offers; pages below the top level on any surface beyond the fragments above; roles inside Admin beyond HR manager and finance manager; volumes (IA3 assumes frequencies of use only); the purchase lifecycle of a client company; the employee's enrolment; any number (budgets, limits, counts); any named person or client company (none may be real).
