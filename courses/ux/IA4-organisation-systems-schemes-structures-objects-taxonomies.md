@@ -213,7 +213,7 @@ One decision traced through the four (Perqo, fictional): the benefit-category fa
 
 **Fidelity and departure.** IA2's decision table gives the object map F1 in discovery and F2 in design, and puts the lines with counts in a separate grade, the object-relationship map, built for Perqo Admin in IA7 (IA2, Deliverable). The brief for this unit asks for relationships across the whole product, so this map draws them at F2, with counts in UML multiplicity notation (IA2, section 1.5). It departs from IA2's table there, and only there. It does not reach F3: data-model names are given where the course has set them, and IA7 adds the full mapping for Admin.
 
-**What IA7 may do with it.** Add Admin objects, attributes, relationships and calls to action, and take the Admin part to F3. It renames nothing here: every object, attribute and relationship label below is meant to last, and a rename goes through the vocabulary first, with the old label kept as a variant (IA2, section 4).
+**What IA7 may do with it.** Add Admin objects, attributes, relationships and calls to action, and take the Admin part to F3. It renames nothing here: every object, attribute and relationship label below is meant to last, and a rename goes through the vocabulary first, with the old label kept as a variant (IA2, section 4). (Note, 3 November 2026: IA7 does this in its Deliverable A, renaming nothing: it takes the Admin objects to F3 with model names, roles, volumes, lifecycles and work queues, adds the audit entry (O-17) and R-21 to R-24, gives Admin's names for card (Perqo card, status only) and notification (not shown) in its section 2.3, and gives the two calls to action whose role was not set here to the account owner in its section 3.4; the cells above say so.)
 
 ### A.1 · Objects
 
@@ -229,8 +229,8 @@ Every object below is invented for the running example (Perqo, fictional). New f
 | O-06 | allocation | 5 | Budget | Balance | Benefits budget | not shown | category; period; amount; spent *new*; remaining *new* |
 | O-07 | transaction, type claim | 5 | Claim | Claim | Claims | not shown | amount; category; receipt; status (Submitted, Approved, Rejected, Paid); date submitted *new* |
 | O-08 | transaction, type card payment | 5 | Card payment | Purchase | Card payments | the sale *new* | amount; date; merchant; category *new* |
-| O-09 | card *new* | 5 | not set (IA7) | Card | Perqo card | accepted at the till | last four digits; status (Active, Frozen) *new* |
-| O-10 | notification *new* | 3 | not set (IA7) | Notifications, in Account | not shown | not shown | message; date; the claim it is about |
+| O-09 | card *new* | 5 | Perqo card, on the employee's record: status only (IA7) | Card | Perqo card | accepted at the till | last four digits; status (Active, Frozen) *new* |
+| O-10 | notification *new* | 3 | not shown (IA7) | Notifications, in Account | not shown | not shown | message; date; the claim it is about |
 | O-11 | merchant *new* | 2 | not shown | merchant name on a Purchase *new* | not shown | the merchant | name; benefit category (one narrower term, assigned by Perqo) *new*; accepts the Perqo card |
 | O-12 | offer *new* | 5 | not shown | Card offers (as-is: Perks and Discover; IA3's proposed label) | not shown | published by the merchant | title; discount; valid until; catalogue item; merchant |
 | O-13 | catalogue item *new* | 5 | Covered items, in Policies *new* | What's covered, on each category screen | not shown | not shown | ID; name; the four facet values (Deliverable B); variant terms |
@@ -273,8 +273,8 @@ Each object's calls to action, with who triggers each and where it lives, in the
 
 | Object | Call to action | Who | Where |
 |---|---|---|---|
-| client | -> edit company details *new* | admin user (role not set: IA7) | Admin, Settings |
-| admin user | -> add *new* | admin user (role not set: IA7) | Admin, Settings |
+| client | -> edit company details *new* | account owner (IA7, section 3.4) | Admin, Settings |
+| admin user | -> add *new* | account owner (IA7, section 3.4) | Admin, Settings |
 | employee group | -> create *new*; -> invite employees | HR manager | Admin, Employees |
 | policy | -> edit; -> add covered items *new* | HR manager | Admin, Policies |
 | employee | -> invite; -> move to group | HR manager | Admin, Employees |

@@ -227,7 +227,7 @@ Where a product lets visitors sign up on the website, the website's last page an
 - **Sign in** leaves for Perqo Admin, for HR and finance managers (IA1, section 5; IA2, section 5.3).
 - **Get the Perqo app** (S-6) gives employees the download links, which IA1 listed among what crosses from perqo.com to the app (IA1, Deliverable). Employees do not sign in on perqo.com; they join from the invitation HR sends from Admin (IA1, Deliverable).
 
-One assumption sits on this boundary (Perqo, fictional; assumed): an employee who wants the app may press Sign in and land on Admin's sign-in screen. Whether they do is testable from Admin's failed sign-ins and from the Help centre's search log (IA3, section 5.2); until it is tested, the fix belongs to Admin's surface, a line on its sign-in screen pointing employees to Get the Perqo app, and is passed to IA7 as proposed.
+One assumption sits on this boundary (Perqo, fictional; assumed): an employee who wants the app may press Sign in and land on Admin's sign-in screen. Whether they do is testable from Admin's failed sign-ins and from the Help centre's search log (IA3, section 5.2); until it is tested, the fix belongs to Admin's surface, a line on its sign-in screen pointing employees to Get the Perqo app, and is passed to IA7 as proposed. (Note, 3 November 2026: IA7 takes the proposal with one change, in its Deliverable C, C.5: Admin's Sign in (AD-0) carries the line "Looking for your benefits? Get the Perqo app", linking to S-6, for everyone from the first view; the assumption itself stays untested.)
 
 ## 6 · How the sitemap is read, and the fidelity each reader needs
 
@@ -566,7 +566,7 @@ Every fact below is a course convention (Perqo, fictional), never evidence about
 | Perqo has two plans, each with a published price per employee per month | section 5.4 | plan names and amounts |
 | Perqo has no self-serve sign-up and no free trial; a client starts after a contract | section 5.5 | the contract's terms |
 | Get the Perqo app (S-6), owned by support, holds the download links; employees join from HR's invitation and do not sign in on perqo.com | section 5.5; Deliverable A | the app stores named |
-| Assumed, untested: an employee may press Sign in and land on Admin's sign-in screen; proposed for IA7: a line there pointing employees to Get the Perqo app | section 5.5 | the test's result; IA7's decision |
+| Assumed, untested: an employee may press Sign in and land on Admin's sign-in screen; proposed for IA7: a line there pointing employees to Get the Perqo app | section 5.5 | the test's result; IA7's decision (taken with one change, IA7, C.5, 3 Nov 2026) |
 | perqo.com is published in English only today | section 5.3 | which markets and languages come next (DD-IA3) |
 | Campaign pages live under /lp/, are noindex, appear in no navigation, use T-12, carry an owner and an end date, and redirect at the end; L-01 "Learning budgets for engineering teams" is live | section 5.2; Deliverable A | campaign dates and channels |
 | Help centre additions: Approvals topic under For HR and finance teams (H-1.3, H-1.3.1); Card topic under For employees (H-2.3, two articles); articles H-1.2.5 (replaces the PDF, listed under both audiences), H-2.1.3, H-2.1.4 (tagged CAT-HEA-FIT, answers "gym"), H-2.2.2; Balance gets its own topic page at /help/employees/balance and H-2.2.1 moves with a redirect; H-0.1 search results page, noindex | Deliverable A | the articles' text |

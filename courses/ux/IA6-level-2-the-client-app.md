@@ -257,9 +257,9 @@ Every label below is the app's (Perqo, fictional). The objects and their surface
 | Claim; New claim; Submitted, Approved, Rejected, Paid | transaction, type claim, O-07 | Claim; the same states | Claims | Help with claims (H-2.1); Why was my claim rejected?, H-2.1.2 |
 | Claims over the limit need HR approval | policy, O-04 (auto-approve limit) | Policy | Policies | How approval rules work, H-1.2.5 (listed under both audiences) |
 | Purchase; Purchases | transaction, type card payment, O-08 | Card payment | Card payments | Where you can pay with the Perqo card, H-2.3.2 |
-| Card; Card details; Freeze card | card, O-09 | not set (IA7) | Perqo card | Freezing and unfreezing your card, H-2.3.1 |
+| Card; Card details; Freeze card | card, O-09 | Perqo card, status only (IA7) | Perqo card | Freezing and unfreezing your card, H-2.3.1 |
 | Card offers | offer, O-12 | not shown | not shown | none |
-| Notifications | notification, O-10 | not set (IA7) | not shown | none |
+| Notifications | notification, O-10 | not shown (IA7) | not shown | none |
 | Profile | employee, O-05 | Employees | not shown | none |
 | Help | help article, O-14 | not shown | Help centre | For employees, H-2 |
 
@@ -453,7 +453,7 @@ Every way into the app, where it lands and its address (Perqo, fictional; rules 
 | E-6 | A link to a category | for example What you can claim in each category, H-2.1.3 | the category screen | perqo.com/app/benefits/cat-lea/learning (identifier, then term, as IA5's /product/benefits/cat-lea/learning) |
 | E-7 | A link to offers in a category | a category screen, or a Help centre article | Card offers, filtered | perqo.com/app/card/offers?category=cat-mea |
 
-The app's ways in start where IA5 left them: employees get the app from S-6 and join from HR's invitation, and they do not sign in on perqo.com (IA5, section 5.5). IA5's assumption that an employee may press perqo.com's Sign in and land on Admin's sign-in screen stays with IA7, which owns that screen; the app adds no route to it. The other screens' addresses follow the same form: /app/benefits, /app/claims, /app/card, /app/card/purchases/{purchase ID}, /app/account. A screen that moves keeps a redirect from its old address (IA4, section 5).
+The app's ways in start where IA5 left them: employees get the app from S-6 and join from HR's invitation, and they do not sign in on perqo.com (IA5, section 5.5). IA5's assumption that an employee may press perqo.com's Sign in and land on Admin's sign-in screen stays with IA7, which owns that screen; the app adds no route to it. (Note, 3 November 2026: IA7 takes IA5's proposal with one change, in its Deliverable C, C.5, and sets Admin's names for card and notification in its section 2.3, which the table in section 6.2 now gives.) The other screens' addresses follow the same form: /app/benefits, /app/claims, /app/card, /app/card/purchases/{purchase ID}, /app/account. A screen that moves keeps a redirect from its old address (IA4, section 5).
 
 ### B.5 · Screen states
 
