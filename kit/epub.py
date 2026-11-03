@@ -82,7 +82,7 @@ SVG_PROPS = ['fill', 'stroke', 'stroke-width', 'stroke-dasharray', 'stroke-linej
 INLINE_JS = r'''(props) => {
   document.querySelectorAll('figure.viz').forEach((f, k) => {
     const svg = f.querySelector('svg'); if (!svg) return;
-    f.querySelectorAll('.viz-stick').forEach(e => e.remove());   // P83: the phone-only label column has no place in a reader
+    f.querySelectorAll('.viz-stick, svg.viz-alt').forEach(e => e.remove());   // P83: the phone-only label column and phone drawing have no place in a reader
     const mk = svg.querySelector('marker'); let mid = null;
     if (mk) { mid = 'vizhead-' + f.dataset.fig; }
     svg.querySelectorAll('*').forEach(el => {

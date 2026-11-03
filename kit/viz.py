@@ -322,11 +322,13 @@ def _left(body):
     return min(xs) if xs else None
 
 
-def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=None):
+def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=None, alt=None):
     """stick (P83, 3 Nov 2026): (width, svg body) of the label column a matrix, a numeric matrix or a compare keeps in
     view while a phone frame scrolls: a copy of the labels on a card-coloured plate, drawn after the main svg in a
     .viz-stick holder that the theme shows only below 768 px, sticky at the frame's left edge (aria-hidden: the
-    main svg carries the same labels). The frame carries --stick so the left fade starts past the column."""
+    main svg carries the same labels). The frame carries --stick so the left fade starts past the column.
+    alt (P83): (width, height, body) of a second drawing of the same data for a phone, emitted after the main svg as
+    svg.viz-alt; the theme shows it below 768 px and the main svg above (the frame carries data-alt)."""
     if x0 is None and cls in X0_KINDS:
         lft = _left(body)
         x0 = max(0, lft - 8) if lft is not None and lft - 8 > 4 else None
@@ -340,8 +342,13 @@ def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=No
         st = f' style="--stick:{sw}px"'
         sv = (f'<div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 {sw} {h}" width="{sw}" height="{h}" xmlns="http://www.w3.org/2000/svg">'
               f'<rect class="viz-lblbg" x="0" y="0" width="{sw}" height="{sh}"/>{stick[1]}</svg></div>')
+    av = ''
+    if alt:
+        aw, ah, ab = alt
+        st += ' data-alt=""'
+        av = f'<svg class="viz-alt" viewBox="0 0 {aw} {ah}" width="{aw}" height="{ah}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{ab}</svg>'
     return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"{st}><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''}{f' data-xr="{xr:.0f}"' if xr else ''} '
-            f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg>{sv}</div>{c}</figure>')
+            f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg>{av}{sv}</div>{c}</figure>')
 
 
 def _wrap(s, n, px=None, size=12, font='sans', ls=0.0):
@@ -2128,7 +2135,79 @@ def line(d):
     return _svg(W, _r(H), grid + body + marks + labs, 'linechart', d.get('title'), d.get('caption'))
 
 
-def bars(d):
+def _bars_wide(d):
+    """Grouped or stacked horizontal bars across categories: one bar per series in each row (grouped) or one bar of
+    segments (stacked); values at the bar ends (a stacked bar's total at its end, a segment's value inside it when it
+    fits); a legend names the series."""
+    K = 'bars'
+    series, rows = d.get('series'), d.get('rows')
+    mode = d.get('mode', 'grouped')
+    if mode not in ('grouped', 'stacked'):
+        _fail(K, 'mode is "grouped" or "stacked"')
+    if not series or not rows:
+        _fail(K, 'bars need series and rows')
+    ns = len(series)
+    unit, dec = _unit(d.get('unit', '')), d.get('decimals')
+    for k, s in enumerate(series):
+        if not s.get('name'):
+            _fail(K, 'every series needs a name')
+        s['_t'] = _tone(s, k % TONES + 1, K)
+    for r in rows:
+        if len(r.get('values', [])) != ns:
+            _fail(K, f'row {r.get("label")!r} has {len(r.get("values", []))} values for {ns} series')
+        for v in r['values']:
+            if v is not None and _num(v, K, 'a value') < 0:
+                _fail(K, 'bars draw values of 0 or more')
+    tot = [sum(v or 0 for v in r['values']) for r in rows]
+    big = max(tot) if mode == 'stacked' else max(v or 0 for r in rows for v in r['values'])
+    mx = d.get('max') or _ticks(0, big or 1)[-1]
+    labs, LW = _row_labels(rows, K)
+    vals = [_fmt(v, dec) + unit for r, t in zip(rows, tot) for v in (r['values'] + [t])]
+    VW = max(_tw(v, 10.5, 'mono') for v in vals) + 12
+    bx, bw = 8 + LW, W - 8 - (8 + LW) - VW
+    if bw < 160:
+        _fail(K, f'the labels and values leave the bars {bw:.0f} units; shorten the labels')
+    body, top = '', 8
+    lg, lh = _legend([(s['name'], s['_t'], 'bar') for s in series], top, W, K)
+    body += lg; top += lh + 14
+    y, marks = top, ''
+    BH, BG = (12, 3) if mode == 'grouped' else (20, 0)
+    for r, lab, t in zip(rows, labs, tot):
+        block = ns * BH + (ns - 1) * BG if mode == 'grouped' else BH
+        rh = max(block, len(lab) * 14)
+        by = y + (rh - block) / 2
+        marks += _text(lab, T_LABEL, bx - 10, y + (rh - len(lab) * 14) / 2, 'end')
+        if mode == 'grouped':
+            for k, (s, v) in enumerate(zip(series, r['values'])):
+                yy = by + k * (BH + BG)
+                if v is None:
+                    continue
+                wv = bw * v / mx
+                if wv > 0:
+                    marks += f'<rect class="viz-bar viz-t{s["_t"]}" x="{bx:.1f}" y="{yy:.1f}" width="{wv:.1f}" height="{BH}"/>'
+                marks += f'<text class="viz-value" x="{bx + wv + 6:.1f}" y="{yy + BH / 2 + 3.8:.1f}">{esc(_fmt(v, dec) + unit)}</text>'
+        else:
+            xx = bx
+            for s, v in zip(series, r['values']):
+                if not v:
+                    continue
+                wv = bw * v / mx
+                vt = _fmt(v, dec) + unit
+                rect = f'<rect class="viz-bar viz-t{s["_t"]}" x="{xx:.1f}" y="{by:.1f}" width="{wv:.1f}" height="{BH}"/>'
+                if _tw(vt, 10.5, 'mono') + 10 <= wv:
+                    marks += _g(rect + _text([vt], T_ONV, xx + wv / 2, by + (BH - 13) / 2, 'middle'))
+                else:
+                    marks += rect
+                xx += wv
+            marks += f'<text class="viz-value" x="{xx + 6:.1f}" y="{by + BH / 2 + 3.8:.1f}">{esc(_fmt(t, dec) + unit)}</text>'
+        y += rh + 14
+    base = _line([(bx, top - 4), (bx, y - 10)], 'viz-base')
+    return body + base + marks, W, _r(y - 14 + 8)
+
+
+
+
+def _bars_phone(d):
     """Grouped or stacked horizontal bars across categories: one bar per series in each row (grouped) or one bar of
     segments (stacked); values at the bar ends (a stacked bar's total at its end, a segment's value inside it when it
     fits); a legend names the series. P83 (3 Nov 2026): the row label sits above its bars and the drawing is as wide as
@@ -2198,7 +2277,20 @@ def bars(d):
             block = BH
         y = by + block + 14
     base = _line([(bx, top - 2), (bx, y - 12)], 'viz-base')
-    return _svg(Wd, _r(y - 14 + 8), body + base + marks, 'bars viz-fit', d.get('title'), d.get('caption'))
+    return body + base + marks, Wd, _r(y - 14 + 8)
+
+
+
+
+def bars(d):
+    """Grouped or stacked horizontal bars. Two drawings (P83, 3 Nov 2026, Pedro: "it should be responsive"): the wide one,
+    labels in a column at the left, 700 units, scaled to the column at 768 px and up; and the phone one, the row label
+    above its bars, as wide as the phone frame (PHONE_FRAME), shown below 768 px so the chart never scrolls there. Both
+    are drawn from the same data by _bars_wide and _bars_phone; the theme shows one at a time."""
+    import copy as _c
+    body, w, h = _bars_wide(_c.deepcopy(d))
+    pb, pw, ph = _bars_phone(_c.deepcopy(d))
+    return _svg(w, h, body, 'bars', d.get('title'), d.get('caption'), alt=(pw, ph, pb))
 
 
 def scatter(d):

@@ -146,7 +146,7 @@ FRAME_JS = r'''async ([scope, phone]) => {
   await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
   const bad = []; let n = 0, over = 0;
   document.querySelectorAll(scope + ' .viz-scroll').forEach(f => {
-    const svg = f.querySelector('svg'); if (!svg || f.clientWidth === 0) return; n++;
+    const svg = [...f.querySelectorAll(':scope > svg')].find(s => s.getBoundingClientRect().width > 0); if (!svg || f.clientWidth === 0) return; n++;   // P83: the drawing shown at this width
     const fig = f.closest('figure'), kind = [...fig.classList].find(c => c.startsWith('viz-') && c !== 'viz-wide');
     const nat = svg.viewBox.baseVal.width, w = svg.getBoundingClientRect().width;
     if (phone && Math.abs(w - nat) > 0.6) bad.push(`${kind}: drawn ${w.toFixed(1)} px wide, natural ${nat}`);
@@ -754,7 +754,7 @@ FIG_JS = r'''(sel) => {
   const f1 = v => v.toFixed(1), say = s => `"${s.slice(0, 28)}"`;
   figs.forEach(f => {
     const kind = kindOf(f);
-    const svg = f.querySelector('svg'), vb = svg.viewBox.baseVal, T = 0.6;
+    const sc = f.querySelector('.viz-scroll'), svg = [...sc.querySelectorAll(':scope > svg')].find(s => s.getBoundingClientRect().width > 0) || sc.querySelector('svg'), vb = svg.viewBox.baseVal, T = 0.6;   // P83: the drawing shown at this width
     const outside = b => b.x < -T || b.y < -T || b.x + b.width > vb.width + T || b.y + b.height > vb.height + T;
     [...svg.children].forEach(el => { if (el.tagName === 'defs') return; const b = el.getBBox();
       if (b.width + b.height === 0) return;

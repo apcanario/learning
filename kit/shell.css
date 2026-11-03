@@ -26,7 +26,7 @@
       that can hover; equal-height catalogue cards with the button on one line
    9  Reading layout (P68): scope line, sticky section bar, one section at a time,
       numbered section bands, next and previous, Sources and "How this unit was made"
-   Version 6.2, 3 Nov 2026 (P83): 4i's .viz-stick, the label column a matrix or compare keeps in view on a phone, and the left fade that starts past it. Version 6.1, 1 Nov 2026 (H-2: P53 .viz-fit, figure text without ligatures, base-width timelines and flows fit the desktop frame in 4i; P72 the eyebrow and Sources URLs in 4a and 9). Version 6, 1 Nov 2026 (P68): section 9, the reading layout of every unit and report. Version 5.4, 29 Oct 2026 (P44): 4i adds the data kinds' classes and the phone rule (natural size, sideways scroll in the frame, fade and cue). Version 5.3, 29 Oct 2026 (P40): 4i's A8 text classes win over .viz text. Version 5.2, 29 Oct 2026 (V1): 4i adds the classes of the seven IA figure kinds. Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
+   Version 6.2, 3 Nov 2026 (P83): 4i's .viz-stick, the label column a matrix or compare keeps in view on a phone, the left fade that starts past it, and svg.viz-alt, a bars figure's phone drawing shown in place of its wide one below 768 px. Version 6.1, 1 Nov 2026 (H-2: P53 .viz-fit, figure text without ligatures, base-width timelines and flows fit the desktop frame in 4i; P72 the eyebrow and Sources URLs in 4a and 9). Version 6, 1 Nov 2026 (P68): section 9, the reading layout of every unit and report. Version 5.4, 29 Oct 2026 (P44): 4i adds the data kinds' classes and the phone rule (natural size, sideways scroll in the frame, fade and cue). Version 5.3, 29 Oct 2026 (P40): 4i's A8 text classes win over .viz text. Version 5.2, 29 Oct 2026 (V1): 4i adds the classes of the seven IA figure kinds. Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -478,7 +478,12 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
    card-coloured plate in .viz-stick after the main svg (aria-hidden); below 768 px it is a zero-height sticky block at the
    frame's left edge whose svg rises over the main drawing; at 768 px and up it is not shown and the main svg's own labels serve */
 .viz-stick{display:none}
+/* P83: a bars figure carries two drawings of the same data, the wide one for 768 px and up and svg.viz-alt (the row label above its
+   bars, as wide as the phone frame) below; the frame carries data-alt. One is shown at a time */
+.viz-scroll > svg.viz-alt{display:none}
 @media (max-width:767.98px){
+  .viz-scroll[data-alt] > svg:not(.viz-alt){display:none}
+  .viz-scroll > svg.viz-alt{display:block}
   .viz-scroll{--stick-m:var(--stick,0px)}
   .viz-stick{display:block;position:sticky;left:0;width:var(--stick,0px);height:0;z-index:1;pointer-events:none}
   .viz-stick svg{position:absolute;left:0;bottom:0;display:block;width:auto;min-width:0;max-width:none}
