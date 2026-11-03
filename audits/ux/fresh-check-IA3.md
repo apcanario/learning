@@ -128,3 +128,18 @@ No personal fact about the reader beyond the brief's profile; no private person 
 ## Verdict
 
 IA3 · keep · 0 error · 2 should-fix · 6 minor. (Zero errors; the two should-fix edits and six minor edits above are a short errata list, each Current occurring exactly once in the filed file, checked with grep -F -c.)
+
+## Maintainer's note (N8, 3 Nov 2026, Opus 5.5)
+
+The report above was saved before any finding was applied. Each finding was verified before it was applied, as an exact replacement by script (each Current occurring once in the unit):
+
+- Figure 5 F1 notes (should-fix): verified against the unit's applied table (rows A5 and F1) and its as-is list ("with a second "Learn more" under the banner"); applied as given, four notes.
+- Row A2's list (should-fix): verified against the as-is list and "What IA6 keeps". Holds in part: the proposed parenthesis said Discover, Perks and Documents "fail A1", but the A1 row fails Discover and Documents and not Perks, which fails C1 and D1. Applied as: "Discover, Perks and Documents pass A2 as single words and fail on A1, C1 and D1"; Balance and Recent activity added to the passing list as the finding asked; the row's fix column "keep every other label as it is" became "the other labels need no change under A2", since Discover, Perks and Documents are changed by other rows.
+- McCloskey label (minor): verified by WebSearch and a fetch of https://www.nngroup.com/articles/writing-links/ (a URL the search returned): only the first-words point cites NN/g eyetracking research. Applied as given.
+- Young's comment (minor): verified by WebSearch and a fetch of https://boxesandarrows.com/what-is-your-mental-model/: comment 3, 15 February 2008, posted as "Anonymous", signed in its text as the book's author. Applied, then widened by one more replacement so the sentence names the interview it comments on: "A comment on Chris Baum's interview with Young, posted anonymously and signed as the book's author, describes the diagram as one that".
+- Rosch and others 1976 (minor): verified by WebSearch and a fetch of the cns.nyu.edu PDF: the abstract reads "most codable, most coded, and most necessary in language". Applied as given.
+- Nielsen 1997 URL (minor): verified by WebSearch (extended), which returned https://www.nngroup.com/articles/search-and-you-may-find/, and a fetch of it: title, author, date and all three quotations verbatim. Applied in the text and in Sources.
+- Frequencies in 6.2 (minor): verified against perqo-facts.md ("volumes" not yet set; no frequency of use set by IA1 or IA2). Applied as given.
+- Approved in the app (minor): verified against IA2 §5.3's state-diagram paragraph ("Submitted, Approved and Paid are tone 5, because a claim's status is shown on both Admin and the app"). Applied with one change: "B2's fix" became "the Deliverable's fix for B2", since the reader meets B2 only in the Deliverable.
+
+Figure 5 (FIX) was fixed and re-checked by a new agent given only the unit's text with its figures taken out, the captions and figure 5's frames sheets (`verify.py --shots`, page `read-ux-ia3`); its report follows below when it is in. Figures 1 to 4 passed.
