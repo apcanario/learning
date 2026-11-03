@@ -46,5 +46,6 @@ The vault file saved in §2 is the unit Academy renders (A5): there is no copy u
 - If the counter reaches four, the reply's first line says: "Audit due before the next unit (audit-units)."
 - Markdown course: every unit gets a fresh check before filing (`audit-units` §3b, "Fresh check of one markdown-course unit"; Brand + AI since Audit 1, 28 Oct 2026). A unit is not filed unless the fresh-check line ends its unsure list, `audits/<id>/fresh-check-<code>.md` exists as `audits/README.md` sets out, and that file's `verdict` matches the line (verdict and counts). The path goes on the unit's `courses-index.md` row.
 - Commit and push `apcanario/learning` with the message `<id> <code>: filed`.
+- Where the course keeps a register of its invented facts (`generator/data/ux/perqo-facts.md`, S-1): append every fact the unit set, with its section, and list what the unit left free; a fact the unit changed is a fix to the earlier unit, made in the same chat.
 - Re-upload the changed Project knowledge files (`courses-index.md`, the course's `hub.py`, the unit from its vault folder).
 - Reply with what was filed where, the Academy version, and the counter. Nothing else.

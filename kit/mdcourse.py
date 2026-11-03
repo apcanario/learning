@@ -272,6 +272,24 @@ def reading(pid, body, scope, sources, made, nsrc=None, chev='', note=False):
     return head, bar + f'<div class="report steps">{"".join(steps)}</div>', f'<div class="process">{src}{opn}{howm}</div>'
 
 
+def aims_text(d, code):
+    """S-1 (3 Nov 2026): the unit's aim and dependency lines from the course data's AIMS, or '' where a course has none."""
+    a = getattr(d, 'AIMS', {}).get(code)
+    return f'Aim: {a[0]}\nTakes: {a[1]}.\nGives: {a[2]}.' if a else ''
+
+
+def aims_html(d, code):
+    a = getattr(d, 'AIMS', {}).get(code)
+    return (f'<p class="why"><b>Aim</b> {e(a[0])}</p><p class="why"><b>Takes</b> {e(a[1])}. <b>Gives</b> {e(a[2])}.</p>') if a else ''
+
+
+def open_brief(d, sc, u):
+    """The copyable brief of an unwritten unit: PRE with the course goal, the aim lines where the course has them, the unit's brief.
+    Built here and nowhere else; a chat that stages a writer's brief calls this (S-1)."""
+    lines = aims_text(d, u[0])
+    return d.PRE.replace('{GOAL}', sc['goal']) + '\n\n' + (lines + '\n\n' if lines else '') + u[4]
+
+
 def brief_box(text, label='Copy brief'):
     return f'<div class="pbox"><pre>{e(text)}</pre><div class="pbar"><button class="copy" type="button">{label}</button></div></div>'
 
@@ -384,7 +402,7 @@ def build(m, crumbs, theme, pill_next, chev):
                 if lines:
                     fresh.append(('Fresh check', lines, None))
         u = unit_of.get(code)
-        made = [('Provenance', f'<p>{r["intro"]}</p>', None)] + unsure + fresh + ([('The brief', brief_box(u[4]), None)] if u else [])
+        made = [('Provenance', f'<p>{r["intro"]}</p>', None)] + unsure + fresh + ([('The brief', brief_box((aims_text(d, code) + '\n\n' + u[4]) if aims_text(d, code) else u[4]), None)] if u else [])
         head, steps, end = reading(r['id'], pre + ''.join(text), e(u[2]) if u else '', src, made, src.count('<li>'), chev, note=True)
         if src_id:            # the Sources heading's old id still lands, on the accordion's title
             end = end.replace('<span class="at">Sources</span>', f'<span class="at" id="{src_id}">Sources</span>', 1)
@@ -441,10 +459,10 @@ def build(m, crumbs, theme, pill_next, chev):
         is_done = done(u); deep = code.startswith('DD')
         ucol = 'var(--gold)' if deep else col
         pill = '<span class="pill live">written</span>' if is_done else '<span class="pill">not written</span>'
-        full = brief if is_done else d.PRE.replace('{GOAL}', sc['goal']) + '\n\n' + brief
+        full = brief if is_done else open_brief(d, sc, u)
         read = f'<a class="rlink" href="#{read_of[code]["id"]}" data-target="{read_of[code]["id"]}">Read the unit →</a>' if code in read_of else ''
         cards += (f'<article class="smod{" deep" if deep else ""}" id="{BP}{code.lower()}" style="--c:{ucol}"><div class="smod-top"><span class="code">{code}</span><h3>{e(title)}</h3>{pill}</div>'
-                  f'<p class="why">{e(scope)}</p><p class="ships"><b>Ships</b>{e(ships)}</p>{read}'
+                  f'<p class="why">{e(scope)}</p>{aims_html(d, code)}<p class="ships"><b>Ships</b>{e(ships)}</p>{read}'
                   f'<details class="prompt"><summary>{e(d.BRIEF_LABEL)}</summary><div class="pbox"><pre>{e(full)}</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></details></article>')
     lede = d.BRIEFS_LEDE.format(k=k, K=key).replace(f'Learn · Course {key}', f'Course {key}').replace(f'href="#course-{k}" data-target="course-{k}"', f'href="#{ctx}" data-target="{ctx}"')
     P.append(panel(BR, 'build', f'''

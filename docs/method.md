@@ -142,7 +142,7 @@ treat, in order>. Deliverable: <the artefact, named precisely>.
 ```
 
 How each course instantiates it:
-- **Brand + AI** (and every markdown course, from its `kit/courses.py` entry's `data` folder): the preamble is `PRE` in `generator/data/brand-ai/units_data.py`, with `{GOAL}` replaced by course A's or B's goal; the unit brief is the fifth field of the unit's entry. The hub's Briefs pages show the joined text, ready to copy. Written units show their note instead.
+- **Brand + AI** (and every markdown course, from its `kit/courses.py` entry's `data` folder): the preamble is `PRE` in `generator/data/brand-ai/units_data.py`, with `{GOAL}` replaced by course A's or B's goal; the unit brief is the fifth field of the unit's entry. The hub's Briefs pages show the joined text, ready to copy. Written units show their note instead. Where a course's data has `AIMS` (User Experience since S-1, 3 Nov 2026), three lines sit between the preamble and the unit brief: Aim (what the reader can do after the unit), Takes (the filed units it builds on) and Gives (what later units take from it); `kit/mdcourse.py`'s `open_brief` joins all of it, and a chat builds a brief with nothing else.
 - **Personal Mythology:** the preamble is `AGENT-SPEC.md` plus `WRITER-BRIEF.md` (attached to the chat); the unit brief is the module's `<pre>` prompt in the course syllabus (the prompt is the contract) plus its lane note from `BACKLOG.md` and the extra files the lane note names.
 
 ## 5 · Checking a unit before filing

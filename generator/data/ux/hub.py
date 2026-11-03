@@ -18,13 +18,13 @@ BAR = 'USER EXPERIENCE'
 BRAND_HTML = 'USER <span>/</span> EXPERIENCE'
 OUT = 'user-experience-courses.html'
 THEME_KEY = 'ux-theme'
-VERSION = 'v4 · 1 Nov 2026'
+VERSION = 'v5 · 3 Nov 2026'
 LEARN_C, BUILD_C = 'var(--blue)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
 _ns = {}
 exec((HERE / 'units_data.py').read_text(), _ns)
-PRE, IA = _ns['PRE'], _ns['IA']
+PRE, IA, AIMS = _ns['PRE'], _ns['IA'], _ns['AIMS']   # AIMS (S-1, 3 Nov 2026): aim, takes, gives per unit
 
 GOAL_IA = ("by the end of the course the reader can read any information-architecture artefact a team hands them and say what it claims and what it leaves out; "
            "choose and build the right artefact for a system of a given complexity, from a website's sitemap to a cross-surface interaction map that joins the product map to its decision trees and lifecycles; "
@@ -36,7 +36,7 @@ COURSES = [
     dict(key='IA', name=NAME_IA, color='var(--blue)', units=IA, goal=GOAL_IA, slug='ia',
          tile="How to read, build and edit the structure behind a product, from a sitemap to a system map, and how to deliver it when the inputs are missing.",
          intro="For a mid-level UX designer, written to be handed on: what information architecture is, the shapes it takes, how to build it at four levels of complexity on one fictional product (Perqo: a website, an employee app, a backoffice), where it sits in the product cycle and in the business, how to validate it, and how to deliver it anyway when the research, the content or the stakeholders are missing. Twelve core units in four parts and three deep dives.",
-         outcomes="<li><strong>Outcome 1</strong> — reads and draws every artefact in the catalogue in one notation, chosen by the question it answers (IA1, IA2, IA3, IA4).</li><li><strong>Outcome 2</strong> — delivers the four Perqo IAs at rising complexity, ending in the interaction map that joins product map, decision trees and lifecycles (IA5, IA6, IA7, IA8).</li><li><strong>Outcome 3</strong> — runs IA inside a product cycle: a touchpoint matrix, a validation plan with evidence, and an incomplete-inputs playbook with an assumption register (IA9, IA10, IA11, IA12, DD-IA3).</li>"),
+         outcomes="<li><strong>Outcome 1</strong> — reads any IA artefact and draws one in the course notation, chooses an organisation system, and judges a structure by the behavioural evidence on scent, mental models, categories and labels (IA1, IA2, IA3, IA4; DD-IA1 reads five real products this way).</li><li><strong>Outcome 2</strong> — delivers the four Perqo IAs at rising complexity, ending in the interaction map that joins product map, decision trees and lifecycles (IA5, IA6, IA7, IA8).</li><li><strong>Outcome 3</strong> — runs IA inside a product cycle and keeps it whole: a touchpoint matrix, a validation plan with evidence, an incomplete-inputs playbook with an assumption register, and the measurement, governance and shared vocabulary that follow (IA9, IA10, IA11, IA12; DD-IA2, DD-IA3).</li>"),
 ]
 COURSE_NOTE = "Every unit is sourced to the field's standard works, Nielsen Norman Group research or peer-reviewed studies, labels vendor guidance and practice as such, carries its figures as drawings built from the unit's own content, and ends with a shipped deliverable built on the fictional Perqo."
 
@@ -87,7 +87,7 @@ FRAME = """<h2 class="hsec">Frame</h2>
 </ul></div>"""
 
 LEARN_LEDE = "Read here. Everything about how the units get written lives in Build."
-LEARN_NOTE = "Order of writing: the four parts in order (IA1 to IA12), an audit after each part, then the three deep dives, DD-IA1 and DD-IA2 with search on."
+LEARN_NOTE = "Order of writing: the four parts in order (IA1 to IA12), an audit after Part 1, after Part 2 and after Part 4 (IA4, IA8, IA12; Parts 3 and 4 share one), then the three deep dives, DD-IA1 and DD-IA2 with search on, and the final audit."
 LEARNING_NOTE = ''
 
 BUILD_LEDE = "Method, model rules, and the pages that hold the briefs, the audits and the sources. Nothing here is course content."
@@ -152,6 +152,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-03 07:30', "v5. Syllabus review (backlog row S-1; Pedro, 3 Nov 2026, 06:35: IA3 'should make sense before IA4 and after IA2 and as a part of the course'; Fable 5.1 reviewed, Pedro approved every edit). Every unit gains an Aim (what the reader can do after it), Takes (the filed units it builds on) and Gives (what later units take from it), printed in every open brief between the preamble and the unit brief and on every unit card (units_data.py AIMS; kit/mdcourse.py open_brief). Four briefs gain one closing sentence each to close two seams: IA3's as-is Perqo app navigation is the structure IA6 replaces, and IA6 keeps the labels IA3's checklist passed; IA4's object map covers the whole product and IA7 extends it for Admin, renaming nothing. IA9's brief points forward to IA11 rather than back. IA3's scope line reads 'the behavioural research a structure is judged by' (its old line described IA11's job). Spencer (2nd ed., 2014) and Hedden (3rd ed., 2022) get their edition and year in the preamble. The three outcomes are rewritten so each unit, the deep dives included, sits under the outcome it serves. The order note says where the audits fall (after Parts 1, 2 and 4; Parts 3 and 4 share one). A register of Perqo's invented facts, generator/data/ux/perqo-facts.md, starts from IA1 and IA2 and is appended at every filing. IA1 and IA2 are unchanged; IA3 is next, from its brief as it now reads."),
     ('2026-11-01 14:00', "v4. Errata (backlog row H-3; Opus 5.5, own agent contexts, P31: one drafter, one checker before anything was applied, one fresh figure-checker per changed figure). IA2 (P74, P75): the notation gains the reading-direction mark, a small triangle by a relationship label that cannot read left to right or top to bottom, pointing at the object it reads towards (section 5.2 Lines and Labels, the legend, the notation sheet); the legend's Screen row says a button is a control, its Surface: Label row says the title is in lower case, a row says nothing is drawn dashed, and its caption names WCAG 2.2, 1.4.1 and says the tones were added; the cross-surface map is redrawn on a grid with two crossings and every label clear, two labels marked, its surface-to-surface labels made verbs from IA1's table (the paragraph before it changed with them), a count at each end of the object lines, approves in Approvals [over the limit], and its caption's fidelity and citations brought to the text. IA1 (P76): figure 2's caption says what it places and why the structure row is shaded. The Fable 5.1 checks owed (P49) cover both."),
     ('2026-10-30 23:50', "v3. IA2 The shapes IA takes: the artefact catalogue and the course notation written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 10 should-fix, 17 minor; all applied; Fable 5.1 fresh check owed, P49) and filed: reading page under course IA, IA2 marked written, eight figures; the course notation is set for every later figure; IA3 next; Audit 1 counter 2 of 4 (deferred by Pedro, P49)."),
     ('2026-10-30 19:30', "v2. IA1 What information architecture is, and where it sits written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Opus 5.5 agent (keep, 0 errors, 4 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed, P49) and filed: reading page under course IA, IA1 marked written, six figures; IA2 next; Audit 1 counter 1 of 4 (deferred by Pedro, P49)."),
