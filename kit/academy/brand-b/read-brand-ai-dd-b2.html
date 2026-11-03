@@ -1,0 +1,294 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#brand-b" data-target="brand-b">Course B · Building with AI</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">DD-B2</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI</span> · DD-B2 <span class="pill live">DD-B2</span></div>
+    <h1>Deep dive: his unknown unknowns</h1>
+    <p class="scope">Written last. A review of 90 days of chats in this project: where he asked badly, where the tool was wrong for the job, where he did by hand what a skill already does.</p>
+  </header>
+  <div class="stepbar" data-n="9"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 9</span><span class="stt">Method, and what it cannot see</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-brand-ai-dd-b2-0" data-step="0"><span class="n">01</span><span class="t">Method, and what it cannot see</span></a></li><li><a href="#read-brand-ai-dd-b2-1" data-step="1"><span class="n">02</span><span class="t">What he asked for, on what, and how it went</span></a></li><li><a href="#read-brand-ai-dd-b2-2" data-step="2"><span class="n">03</span><span class="t">Where he asked badly</span></a></li><li><a href="#read-brand-ai-dd-b2-3" data-step="3"><span class="n">04</span><span class="t">Where the tool was wrong for the job</span></a></li><li><a href="#read-brand-ai-dd-b2-4" data-step="4"><span class="n">05</span><span class="t">Where he did by hand what a skill already does</span></a></li><li><a href="#read-brand-ai-dd-b2-5" data-step="5"><span class="n">06</span><span class="t">Where he paid for research he did not need</span></a></li><li><a href="#read-brand-ai-dd-b2-6" data-step="6"><span class="n">07</span><span class="t">The filed rules, tested against the history</span></a></li><li><a href="#read-brand-ai-dd-b2-7" data-step="7"><span class="n">08</span><span class="t">What this reading can and cannot carry</span></a></li><li><a href="#read-brand-ai-dd-b2-8" data-step="8"><span class="n">09</span><span class="t">Deliverable · Personal gap report: ten changes, ranked</span></a></li></ol><div class="secx"><a href="#read-brand-ai-dd-b2-sources" data-acc>Sources</a><a href="#read-brand-ai-dd-b2-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-brand-ai-dd-b2-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">Method, and what it cannot see</span></span></h2>
+<p><strong>The evidence is this Project's own chat history, read through three past-chat tools.</strong> <code>recent_chats</code> lists chats by when they were last updated, with each chat's title, its first message, a stretch of its opening or closing turns and, for some chats, a summary. <code>conversation_search</code> finds a spot by topic, across the Project or inside one chat. <code>read_conversation</code> opens one chat at a spot and returns a few turns with the chat's total turn count. The tools see only chats in this Project. Nothing else was used: no usage page, no settings screen, no repository. Every count below comes from a script (<code>count.py</code> and <code>count2.py</code>, run over a working table of the chats typed from the tool results) and says what it is over. The working files are not published.</p>
+<p><strong>The brief asked for "by Fable"; the course owner set that aside on 31 October 2026 and ran every row of stages 1 to 4 on Opus 5.5, DD-B2 included, with a Fable 5.1 fresh check and the final audit (Audit 6) owed to the later Fable stage; the chat history stays the evidence because the brief's point is a reading of what he did, which the past-chat tools give any model.</strong> The evidence was gathered across two agent runs before this one, the first lost to a container restart; the second run's working files were taken over, its count script re-run and its figures checked against those files, two model fields corrected from commit trailers in its saved reads, and a few more spots opened where a count needed it.</p>
+<p><strong>The window holds six days.</strong> The brief asks for 4 August to 2 November 2026. Listing backwards from 2 November, the list stops at a chat whose first message was sent at 05:42 on 28 October; a further call for anything updated before that returned nothing, and a call for anything after 17:00 on 2 November returned only the last chat already listed. Three listing calls of twenty chats each (the second run's) covered the window, and two more in this run found nothing outside it. So the list is complete for the Project, and the Project's history in the window is <strong>53 chats, first message 28 October 05:42 to last update 2 November 17:51 (local time)</strong>. Work done before 28 October, including the history courses' writing, is not in these tools' reach. Every rate in this unit is a six-day rate, from a week of heavy building, and none should be read as a habit over a season.</p>
+<p><strong>What was read, and what was inferred.</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>How it was obtained</th>
+<th>Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date, first message</td>
+<td>Listing (first human message, with its timestamp)</td>
+<td>53 of 53</td>
+</tr>
+<tr>
+<td>Task type</td>
+<td>Read from the first message and the visible turns, labelled by hand into seven types</td>
+<td>53 of 53</td>
+</tr>
+<tr>
+<td>Turns</td>
+<td>The total turn count the tools report</td>
+<td>53 of 53</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>Read only: a commit trailer naming the model, the ask itself naming it, or the filed unit's front matter; never guessed</td>
+<td>40 of 53; 13 "not recorded"</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>Nothing in the history records it</td>
+<td>0 of 53</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>The last visible reply reports the row done, or the unit is in the vault</td>
+<td>39 of 53; 14 "not read"</td>
+</tr>
+<tr>
+<td>Opened beyond the listing</td>
+<td><code>read_conversation</code> on 16 chats (the first nine in time and seven later ones picked because a count needed them); search hits inside 7 more</td>
+<td>23 of 53</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 16 chats opened are not a random sample: they are the early chats, where whole asks were visible, plus chats opened to settle one field. For the 30 neither opened nor searched, every field comes from the listing's title, first message and snippet, and for 19 chats in all from the tool's summary. A <strong>turn</strong> is one message on either side; a two-turn chat is one ask and one answer. In a chat that runs agents, each agent's completion notice arrives as a turn, so a high turn count there measures agent traffic, not his messages: chat 39 reports 134 turns with one visible message from him. <strong>Accepted</strong> cannot be read: the history records no verdict of his. The proxy is that a unit was filed (7 chats) or that the chat's last reply reports its row done and no later message from him in it corrects it (32 chats); 14 chats' endings were not seen. Of the 12 follow-up messages from him visible across all chats, one redirects the order of work (site rows before units) and none rejects an output.</p>
+<nav class="secnav" aria-label="Sections"><a class="snext" href="#read-brand-ai-dd-b2-1" data-step="1"><span>Next · 2 of 9</span><b>What he asked for, on what, and how it went</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-brand-ai-dd-b2-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">What he asked for, on what, and how it went</span></span></h2>
+<p><strong>Seven task types.</strong> Unit writing (Brand + AI and User Experience units, and orchestrator chats whose agents write them) 15 chats; infrastructure (the Academy build, the repository, publishing, the method and skill files) 15; figure passes 7; audits and fresh checks 6; status questions 6; syllabus design 2; history-module writing 2 (<code>count.py</code>, over 53 chats).</p>
+<figure class="viz viz-compare"><div class="viz-scroll"><svg viewBox="0 0 700 222" width="700" height="222" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="149.6" y="27.3" text-anchor="end">Unit writing</text><rect class="viz-track" x="159.63872" y="16.0" width="505.5" height="14"/><rect class="viz-bar viz-t3" x="159.63872" y="16.0" width="505.5" height="14"/><text class="viz-value" x="673.1" y="26.8">15</text><text class="viz-label" x="149.6" y="57.3" text-anchor="end">Infrastructure</text><rect class="viz-track" x="159.63872" y="46.0" width="505.5" height="14"/><rect class="viz-bar viz-t4" x="159.63872" y="46.0" width="505.5" height="14"/><text class="viz-value" x="673.1" y="56.8">15</text><text class="viz-label" x="149.6" y="87.3" text-anchor="end">Figure passes</text><rect class="viz-track" x="159.63872" y="76.0" width="505.5" height="14"/><rect class="viz-bar viz-t4" x="159.63872" y="76.0" width="235.9" height="14"/><text class="viz-value" x="403.5" y="86.8">7</text><text class="viz-label" x="149.6" y="117.3" text-anchor="end">Audits and fresh checks</text><rect class="viz-track" x="159.63872" y="106.0" width="505.5" height="14"/><rect class="viz-bar viz-t2" x="159.63872" y="106.0" width="202.2" height="14"/><text class="viz-value" x="369.8" y="116.8">6</text><text class="viz-label" x="149.6" y="147.3" text-anchor="end">Status questions</text><rect class="viz-track" x="159.63872" y="136.0" width="505.5" height="14"/><rect class="viz-bar viz-t5" x="159.63872" y="136.0" width="202.2" height="14"/><text class="viz-value" x="369.8" y="146.8">6</text><text class="viz-label" x="149.6" y="177.3" text-anchor="end">Syllabus design</text><rect class="viz-track" x="159.63872" y="166.0" width="505.5" height="14"/><rect class="viz-bar viz-t5" x="159.63872" y="166.0" width="67.4" height="14"/><text class="viz-value" x="235.0" y="176.8">2</text><text class="viz-label" x="149.6" y="207.3" text-anchor="end">History-module writing</text><rect class="viz-track" x="159.63872" y="196.0" width="505.5" height="14"/><rect class="viz-bar viz-t3" x="159.63872" y="196.0" width="67.4" height="14"/><text class="viz-value" x="235.0" y="206.8">2</text></svg></div><figcaption>Chats by task type, 28 October to 2 November 2026. §2 of this unit; the writer's tally (count.py) over the Project's 53 chats, task type labelled by hand from each chat's first message and visible turns.</figcaption></figure>
+<p><strong>Models.</strong> Of the 53 chats, 23 show Opus 5.5, 16 Fable 5.1, one both (its commits carry an Opus trailer, then a Fable one), and 13 show nothing. No chat whose model can be read ran on Sonnet 5.5 or Haiku 5.5 (0 of 40). Effort is recorded in none.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Task type</th>
+<th>Opus 5.5</th>
+<th>Fable 5.1</th>
+<th>Switched</th>
+<th>Not recorded</th>
+<th>Median turns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit writing (15)</td>
+<td>11</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Infrastructure (15)</td>
+<td>3</td>
+<td>7</td>
+<td>1</td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Figure passes (7)</td>
+<td>6</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr>
+<td>Audits (6)</td>
+<td>0</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td>Status (6)</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Syllabus (2)</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>10</td>
+</tr>
+<tr>
+<td>History writing (2)</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>50.5</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(<code>count.py</code> crosstab and median turns by task, over 53 chats; model read from commit trailers in 24 chats, the filed unit in 9, the ask in 6, another chat's record in 1.)</em></p>
+<figure class="viz viz-bars"><div class="viz-scroll"><svg viewBox="0 0 700 274" width="700" height="274" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="bars"><g data-box=""><rect class="viz-lblbg" x="8.0" y="8.0" width="83.9" height="20.0"/><rect class="viz-bar viz-t3" x="12.0" y="12.0" width="12" height="12"/><text class="viz-label" x="30.0" y="22.3" text-anchor="start">Opus 5.5</text></g><g data-box=""><rect class="viz-lblbg" x="101.9" y="8.0" width="80.4" height="20.0"/><rect class="viz-bar viz-t2" x="105.9" y="12.0" width="12" height="12"/><text class="viz-label" x="123.9" y="22.3" text-anchor="start">Fable 5.1</text></g><g data-box=""><rect class="viz-lblbg" x="192.4" y="8.0" width="85.9" height="20.0"/><rect class="viz-bar viz-t4" x="196.4" y="12.0" width="12" height="12"/><text class="viz-label" x="214.4" y="22.3" text-anchor="start">Switched</text></g><g data-box=""><rect class="viz-lblbg" x="288.2" y="8.0" width="109.8" height="20.0"/><rect class="viz-bar viz-t5" x="292.2" y="12.0" width="12" height="12"/><text class="viz-label" x="310.2" y="22.3" text-anchor="start">Not recorded</text></g><path class="viz-base" d="M104.1,38.0 L104.1,270.0"/><text class="viz-label" x="94.1" y="56.3" text-anchor="end">Unit writing</text><g data-box=""><rect class="viz-bar viz-t3" x="104.1" y="42.0" width="412.9" height="20"/><text class="viz-onvalue" x="310.5" y="55.8" text-anchor="middle">11</text></g><g data-box=""><rect class="viz-bar viz-t2" x="517.0" y="42.0" width="37.5" height="20"/><text class="viz-onvalue" x="535.8" y="55.8" text-anchor="middle">1</text></g><g data-box=""><rect class="viz-bar viz-t5" x="554.5" y="42.0" width="112.6" height="20"/><text class="viz-onvalue" x="610.8" y="55.8" text-anchor="middle">3</text></g><text class="viz-value" x="673.1" y="55.8">15</text><text class="viz-label" x="94.1" y="90.3" text-anchor="end">Infrastructure</text><g data-box=""><rect class="viz-bar viz-t3" x="104.1" y="76.0" width="112.6" height="20"/><text class="viz-onvalue" x="160.4" y="89.8" text-anchor="middle">3</text></g><g data-box=""><rect class="viz-bar viz-t2" x="216.7" y="76.0" width="262.8" height="20"/><text class="viz-onvalue" x="348.1" y="89.8" text-anchor="middle">7</text></g><g data-box=""><rect class="viz-bar viz-t4" x="479.5" y="76.0" width="37.5" height="20"/><text class="viz-onvalue" x="498.2" y="89.8" text-anchor="middle">1</text></g><g data-box=""><rect class="viz-bar viz-t5" x="517.0" y="76.0" width="150.2" height="20"/><text class="viz-onvalue" x="592.1" y="89.8" text-anchor="middle">4</text></g><text class="viz-value" x="673.1" y="89.8">15</text><text class="viz-label" x="94.1" y="124.3" text-anchor="end">Figure passes</text><g data-box=""><rect class="viz-bar viz-t3" x="104.1" y="110.0" width="225.2" height="20"/><text class="viz-onvalue" x="216.7" y="123.8" text-anchor="middle">6</text></g><g data-box=""><rect class="viz-bar viz-t2" x="329.3" y="110.0" width="37.5" height="20"/><text class="viz-onvalue" x="348.1" y="123.8" text-anchor="middle">1</text></g><text class="viz-value" x="372.8" y="123.8">7</text><text class="viz-label" x="94.1" y="158.3" text-anchor="end">Audits</text><g data-box=""><rect class="viz-bar viz-t2" x="104.1" y="144.0" width="187.7" height="20"/><text class="viz-onvalue" x="197.9" y="157.8" text-anchor="middle">5</text></g><g data-box=""><rect class="viz-bar viz-t5" x="291.8" y="144.0" width="37.5" height="20"/><text class="viz-onvalue" x="310.5" y="157.8" text-anchor="middle">1</text></g><text class="viz-value" x="335.3" y="157.8">6</text><text class="viz-label" x="94.1" y="192.3" text-anchor="end">Status</text><g data-box=""><rect class="viz-bar viz-t3" x="104.1" y="178.0" width="112.6" height="20"/><text class="viz-onvalue" x="160.4" y="191.8" text-anchor="middle">3</text></g><g data-box=""><rect class="viz-bar viz-t2" x="216.7" y="178.0" width="37.5" height="20"/><text class="viz-onvalue" x="235.5" y="191.8" text-anchor="middle">1</text></g><g data-box=""><rect class="viz-bar viz-t5" x="254.2" y="178.0" width="75.1" height="20"/><text class="viz-onvalue" x="291.8" y="191.8" text-anchor="middle">2</text></g><text class="viz-value" x="335.3" y="191.8">6</text><text class="viz-label" x="94.1" y="226.3" text-anchor="end">Syllabus</text><g data-box=""><rect class="viz-bar viz-t2" x="104.1" y="212.0" width="37.5" height="20"/><text class="viz-onvalue" x="122.8" y="225.8" text-anchor="middle">1</text></g><g data-box=""><rect class="viz-bar viz-t5" x="141.6" y="212.0" width="37.5" height="20"/><text class="viz-onvalue" x="160.4" y="225.8" text-anchor="middle">1</text></g><text class="viz-value" x="185.2" y="225.8">2</text><text class="viz-label" x="94.1" y="260.3" text-anchor="end">History writing</text><g data-box=""><rect class="viz-bar viz-t5" x="104.1" y="246.0" width="75.1" height="20"/><text class="viz-onvalue" x="141.6" y="259.8" text-anchor="middle">2</text></g><text class="viz-value" x="185.2" y="259.8">2</text></svg></div><figcaption>The model each chat ran on, by task type. §2 of this unit; the writer's tally (count.py) over 53 chats, model read from commit trailers, the ask, or the filed unit, never guessed.</figcaption></figure>
+<p><strong>Turns.</strong> 872 turns in all; median 8, from 2 to 134. Eleven chats took two turns, one ask and one usable answer: four unit drafts (B1, A9, A6, B2), three fresh checks or audits, four infrastructure rows. Ten took 30 turns or more, and seven of those ten ran agents or are history writing; the figure passes' median is 33 (<code>count.py</code>, over 53 chats).</p>
+<p><strong>How long chats stayed open.</strong> From first message to last update, the median chat was open 0.9 hours; nine were open three hours or more, the longest 20.2 hours (a unit-writing orchestrator, 43 turns), then 9.9 hours (a figure pass, 40 turns) and 8.6 hours (three units by agents, 20 turns) (<code>count2.py</code>, over 53 chats; open time is not active time).</p>
+<p><strong>What the record of first drafts adds.</strong> Twenty of the 21 filed units carry a fresh-check record (B1 has none). Fifteen of those twenty had at least one finding of error severity at their first fresh check. Fable 5.1 ran 11 of the checks and found an error in 9; Opus 5.5 ran 9 and found an error in 6. All nine Opus checks are dated 2 November 2026 and say a Fable 5.1 check is owed (<code>count.py</code>, over the vault's fresh-check lines). That updates B6 §2's count (eleven of fourteen) with six more units, and keeps its conclusion: a careful first draft is rarely clean.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-brand-ai-dd-b2-0" data-step="0"><span>Previous · 1 of 9</span><b>Method, and what it cannot see</b></a><a class="snext" href="#read-brand-ai-dd-b2-2" data-step="2"><span>Next · 3 of 9</span><b>Where he asked badly</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-brand-ai-dd-b2-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">Where he asked badly</span></span></h2>
+<p><strong>Terse asks that named a code, and codes that collided.</strong> Six asks were one line naming a row ("Execute" and a code), all in the first 33 chats. Two of them named a code that meant two things. In chat 23 (28 Oct), "A4" was both a Brand + AI unit and an Academy-lane row; the model ran the Academy row and said that if he meant the unit, it gets its own chat. In chat 27 (28–29 Oct), "B1, B2 and B3" were backlog rows B-1 to B-3, which were units B3, B4 and A1: three units in one chat, by agents, after which the one-chat-per-unit rule was rewritten (P31) to allow it. The backlog now names rows with a hyphen (B-13, A-5), which keeps them apart from unit codes. <strong>Already fixed:</strong> asks that were terse or opened with a status question number 11 in chats 1 to 33 and none in chats 34 to 53, where every ask is a full specification or a pasted prompt (<code>count2.py</code>).</p>
+<p><strong>Asking "what's next" in the chat that then does the work.</strong> Five chats opened with a status question (median 10 turns); in two of them the answer turned into work in the same chat, one on a three-word "do it here". DD-B3 rule 6 and B8 rule 12 put one task in a chat. The last status-opened chat began on 29 October at 19:04 (<code>count.py</code>); after it, chats end by writing the paste-ready prompt for the next row into the backlog and the reply; 13 chats' listing blocks carry such a prompt (<code>count2.py</code>, listing blocks). The habit has already changed.</p>
+<p><strong>Several rows in one ask.</strong> Sixteen asks name two or more backlog rows; their chats' median is 11.5 turns, against 8 for the 31 chats that name one (<code>count.py</code>; correlational, small numbers, and multi-row chats are also the agent chats, so the turn gap is partly agent notices). Since P31, several units in one chat are allowed when each is written by a fresh agent; the asks that bundle a unit with unrelated infrastructure rows (a renderer fix, a skill change, a site layout) are the ones B8 rule 12 still argues against.</p>
+<p><strong>Model and effort never stated as effort.</strong> The model can be read in 40 of 53 chats; effort in none (<code>count.py</code>). No ask contains "think hard" or a similar phrase, so DD-B3 rule 10's first half holds; its second half, effort set in the menu, cannot be checked because nothing records the setting. B2's routing table gives an effort for every row and B8 rule 11 sets both before the first message. Without a record, a later audit cannot tell whether the table was followed.</p>
+<p><strong>What the asks did well.</strong> Eight of the 17 asks visible at length (1,000 characters or more) set the build's pass line, <code>verify.py</code> "ALL CHECKS PASSED", as the test of done: DD-B3 rule 2, a criterion a stranger could check. Four figure-chat asks give the agents an attempt cap ("fails twice" and the figure is dropped): DD-B1 rule 25. The adder agents' brief in chat 39, opened at a search hit, names the three files the agent may read, says it may read nothing else, states the rules and asks for a reply under 120 words: DD-B1 rule 26, a subagent brief complete because it cannot ask (<code>count2.py</code>; search inside chat 39).</p>
+<p><strong>Restating the procedure in every prompt.</strong> Thirteen of the 16 row asks read in full restate the publish procedure step by step: read the artifact, publish once with its url, the files list, then <code>deploy.sh</code>; seven of the asks visible at length carry the words "publish once". Those quoted in the listing (chats 36, 39, 45 and 49 among them) also say "End per <code>docs/method.md</code> §8", which already holds the closing steps (<code>count.py</code>, <code>count2.py</code>, listing snippets). Each copy is about a paragraph of every 4,000-character prompt, and each copy can drift from the others and from the method, the failure B4 F7 found in the project instructions.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-brand-ai-dd-b2-1" data-step="1"><span>Previous · 2 of 9</span><b>What he asked for, on what, and how it went</b></a><a class="snext" href="#read-brand-ai-dd-b2-3" data-step="3"><span>Next · 4 of 9</span><b>Where the tool was wrong for the job</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-brand-ai-dd-b2-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">Where the tool was wrong for the job</span></span></h2>
+<p><strong>Fable 5.1 spent on infrastructure.</strong> Seventeen chats ran on Fable 5.1 in whole or part. Five were audits or fresh checks; the other twelve were infrastructure (8, counting the switch), a syllabus, a status question, a figure pass and an orchestrator (<code>count.py</code>, <code>count2.py</code>). Fourteen of the 17 began on 28 October. B2's routing table gives Fable one row, audits, because a model other than the writer's counters self-preference and because "On Pro every Fable run is billed in usage credits at API rates; on Max it competes for half the weekly limit" (B2 Deliverable; B8 §1 re-read the plans on 2 November 2026). The sequence the history shows: an ask confirmed on 29 October for an overnight figure pass (sent on 30 October, chat 36) records that he is low on Fable and moves the Fable check to a later row; the Fable work was deferred to one row (P49); and the nine fresh checks run on 2 November all ran on Opus with a Fable check owed (§2). The history gives the order of events and no measured cause: it shows no usage figures, and B8 §1 says no page publishes how many tokens a window holds.</p>
+<figure class="viz viz-compare"><div class="viz-scroll"><svg viewBox="0 0 700 162" width="700" height="162" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="50.9" y="27.3" text-anchor="end">28 Oct</text><rect class="viz-track" x="60.92192" y="16.0" width="604.2" height="14"/><rect class="viz-bar viz-t2" x="60.92192" y="16.0" width="604.2" height="14"/><text class="viz-value" x="673.1" y="26.8">14</text><text class="viz-label" x="50.9" y="57.3" text-anchor="end">29 Oct</text><rect class="viz-track" x="60.92192" y="46.0" width="604.2" height="14"/><rect class="viz-bar viz-t2" x="60.92192" y="46.0" width="0.0" height="14"/><text class="viz-value" x="68.9" y="56.8">0</text><text class="viz-label" x="50.9" y="87.3" text-anchor="end">30 Oct</text><rect class="viz-track" x="60.92192" y="76.0" width="604.2" height="14"/><rect class="viz-bar viz-t2" x="60.92192" y="76.0" width="0.0" height="14"/><text class="viz-value" x="68.9" y="86.8">0</text><text class="viz-label" x="50.9" y="117.3" text-anchor="end">1 Nov</text><rect class="viz-track" x="60.92192" y="106.0" width="604.2" height="14"/><rect class="viz-bar viz-t2" x="60.92192" y="106.0" width="86.3" height="14"/><text class="viz-value" x="155.2" y="116.8">2</text><text class="viz-label" x="50.9" y="147.3" text-anchor="end">2 Nov</text><rect class="viz-track" x="60.92192" y="136.0" width="604.2" height="14"/><rect class="viz-bar viz-t2" x="60.92192" y="136.0" width="43.2" height="14"/><text class="viz-value" x="112.1" y="146.8">1</text></svg></div><figcaption>Chats run on Fable 5.1, in whole or part, by the day they began. §4 of this unit; the writer's tally (count2.py) over the 17 Fable chats among the Project's 53, model read from commit trailers, the ask, or the filed unit.</figcaption></figure>
+<p><strong>No routing row for most of the work.</strong> Thirty of the 53 chats are of task types B2's routing table has no row for: infrastructure 15, figure passes 7, status 6, syllabus 2 (<code>count.py</code>). B2 was written for his recurring brand tasks (journal entries, units, audits, messages, posts) and says of code only that "For his generator scripts and parsers, Sonnet is enough on this evidence" (B2 §8, vendor benchmarks). In the history, the infrastructure went to whichever model the chat was opened on: Fable in 7 of 15, Opus in 3, unknown in 4. One reply, writing the prompt for a skill-and-method row, put in it "Model: any (Fable 5.1 or Sonnet 5.5 is enough; no search)"; no chat that can be read ran on Sonnet. This is the unknown unknown the brief asked for: the routing table looks complete because it covers the brand, and most of the six days went to the machine that publishes it.</p>
+<p><strong>Fan-outs kept on the first model after the check had passed.</strong> DD-B1's decision rule, box 6: "A new loop runs first on Opus 5.5 with its check. It moves to Sonnet 5.5 once the check passes on repeat runs." The figure pass ran over the filed Brand + AI units on 30 October (chat 36), the 59 Rome reports (chat 37) and the 78 Greek reports (chat 39), with an adder, a checker and a re-checker per report. In chat 39 alone the Greek pass ran 78 adders, 78 checkers and 59 re-checkers; 266 figures were proposed, 166 passed the first check, 95 got a fix, 94 of those passed the re-check, and 6 were dropped (search inside chat 39). The agents named in the saved reads ran on Opus: 199 agent calls in chat 40 (a figure chat) and 37 in chat 45 (an infrastructure chat), every one with model "opus" (saved reads of chats 40 and 45). By the Greek pass the same adder-and-checker loop had already run over two sets of reports; box 6 says that is when the workers move to Sonnet with the checker kept, and the drop rate (6 of 266) is the measure to watch when they do.</p>
+<p><strong>Where the routing held.</strong> Audits: five of six ran on Fable, the sixth unrecorded, median 2.5 turns. Unit writing: 11 of 15 on Opus, and the one Fable chat in the type is an orchestrator that filed a unit whose front matter records Opus 5.5. On the rows B2 covers, he followed B2.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-brand-ai-dd-b2-2" data-step="2"><span>Previous · 3 of 9</span><b>Where he asked badly</b></a><a class="snext" href="#read-brand-ai-dd-b2-4" data-step="4"><span>Next · 5 of 9</span><b>Where he did by hand what a skill already does</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-brand-ai-dd-b2-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">Where he did by hand what a skill already does</span></span></h2>
+<p><strong>The closing procedure, typed into every prompt.</strong> B5 §6's test for a skill is four questions: not needed in every chat; more than one sentence of procedure in order; recurring at least weekly the same way; each step checkable by something other than his taste. The publish-and-close sequence passes all four: it is nine ordered steps (build, verify, read the artifact, publish once, deploy, move the row, propose rows, rewrite the Project copies, write the next prompt), 13 of the 16 row asks read in full spell it out within six days, and each step has a check (<code>verify.py</code>, the publish result, <code>gh run</code>, the diff of the mirrors). A skill named <code>file-unit</code> already exists for filing a unit (B5 §3); the infrastructure rows have no equivalent and carry the steps as prose instead.</p>
+<p><strong>The next prompt, written by hand by a model.</strong> Thirteen chats' listing blocks carry a paste-ready prompt for the next row, saved into the backlog (<code>count2.py</code>). That is good practice by DD-B3 rule 8 (the vault is the memory), and it is a template filled from the same parts each time: the row, the model, the files, the done test, the closing procedure. A template file in the repository, with the closing procedure kept once in a skill and pointed to, would leave each new prompt with only what is new.</p>
+<p><strong>Pasting what a chat can read by path.</strong> Seven chats on 28 October carried a whole unit pasted into the ask (the five measured run from 49,594 to 53,516 characters); the last began at 07:48 that day, and every later chat clones the repository and reads the files by path (<code>count.py</code>). B8 rule 16 says never paste what a chat can read by path, because a paste is re-sent on every later turn. In these seven the cost was smaller than that rule's mechanism suggests: four of them were two-turn chats, so the paste was sent once. The cost that applied was the window: some 50,000 characters of unit beside the method files, which B1 §2's attention mechanism says competes for the model's attention. Already fixed.</p>
+<p><strong>Account memory in a published Project.</strong> In six chats the visible turns show the model calling the memory tool (<code>count.py</code>, over the saved reads and snippets). B8 rule 22 says "Use account memory" stays off in the Learning Project, whose output is published, and B4 F13 found account memory flowing into it. Whether the setting is off now cannot be read from the history.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-brand-ai-dd-b2-3" data-step="3"><span>Previous · 4 of 9</span><b>Where the tool was wrong for the job</b></a><a class="snext" href="#read-brand-ai-dd-b2-5" data-step="5"><span>Next · 6 of 9</span><b>Where he paid for research he did not need</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-brand-ai-dd-b2-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">Where he paid for research he did not need</span></span></h2>
+<p><strong>Re-fetching what an audit had just checked.</strong> On the morning of 28 October, Audit 1 (chat 2) opened 81 distinct source URLs while checking the A2, A6 and A9 material in full. The A9 rewrite that followed (chat 3) opened 43 distinct URLs, 34 of them among Audit 1's; the A6 rewrite (chat 5) opened 45, 15 of them Audit 1's (<code>count2.py</code>, over the URLs in the saved reads of chats 1 to 9). The rewrites' asks told them to re-verify by search any figure carried over. B8 rule 18 says a fact is searched once, filed with its source and date, and searched again only at its staleness check. An audit that has just confirmed a claim at its source has done that search; the rewrite needed only the failed claims and the new ones.</p>
+<p><strong>Re-fetching that is not waste.</strong> The A6 fresh checker (chat 7) opened 46 URLs, 37 of them already opened by the A6 writer. That overlap is the design: DD-B3 rule 3 has the check run in a context that did not see the writing, and B6 Deliverable D has the checker open the cited page itself. Cutting it would cut the check that found an error in 15 of 20 first drafts (§2).</p>
+<p><strong>Parallel research agents.</strong> Four early chats ran five or six parallel agents for research or fact-checking: an audit, two fresh checks and one unit draft (saved reads and summaries of chats 2, 6, 8 and 10). DD-B1's rule sends reading across many sources with a summary as the result to read-only subagents (box 5c), and puts an agent run at about four times a chat's tokens and a multi-agent run at about fifteen (DD-B1 §8, citing Anthropic's 2025 figures; vendor). For a fresh check of one unit, the fan-out bought speed at that multiple; for Audit 1's full check of 91 claims it fits the rule. The history does not show what any of these runs cost, so this finding stays out of the ranked changes.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-brand-ai-dd-b2-4" data-step="4"><span>Previous · 5 of 9</span><b>Where he did by hand what a skill already does</b></a><a class="snext" href="#read-brand-ai-dd-b2-6" data-step="6"><span>Next · 7 of 9</span><b>The filed rules, tested against the history</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-brand-ai-dd-b2-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class="bt">The filed rules, tested against the history</span></span></h2>
+<p><strong>DD-B3's ten operating rules.</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Verdict from the history</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Delegate what can be checked</td>
+<td>Agrees</td>
+<td>Checks named in the asks; fresh checks on 20 of 21 units</td>
+</tr>
+<tr>
+<td>2 Every brief ends with how to tell it is done</td>
+<td>Agrees for row asks</td>
+<td>8 of 17 asks seen at length set <code>verify.py</code>'s pass as the test</td>
+</tr>
+<tr>
+<td>3 The writer never checks its own work</td>
+<td>Agrees</td>
+<td>20 of 21 units fresh-checked in another context</td>
+</tr>
+<tr>
+<td>4 File only what I could explain</td>
+<td>Not testable</td>
+<td>Nothing in the history records his reading</td>
+</tr>
+<tr>
+<td>5 Vibe coding for scripts I delete</td>
+<td>Not testable</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>6 Small pieces, one at a time</td>
+<td>Partly contradicted</td>
+<td>16 multi-row asks; one-row asks are shorter (correlational)</td>
+</tr>
+<tr>
+<td>7 Unattended runs have four guards; never on course units</td>
+<td>Contradicted in plan</td>
+<td>The figure passes over filed units were confirmed on 29 Oct as an overnight run (asks of chats 36, 37); a later reply calls that line "now just history", and the two ran on the morning of 30 Oct, chat 36 with a message from him in it</td>
+</tr>
+<tr>
+<td>8 The vault is the memory</td>
+<td>Agrees</td>
+<td>The row asks seen in full open by cloning the repository; 13 chats save the next prompt into its row</td>
+</tr>
+<tr>
+<td>9 Never the trifecta</td>
+<td>Not tested</td>
+<td>The history does not show which tools each chat held</td>
+</tr>
+<tr>
+<td>10 No "think harder"; effort in the menu</td>
+<td>First half agrees; second untestable</td>
+<td>No such phrase in any ask; effort never recorded</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>B8's usage rules 11 to 24.</strong> Rule 11 (model and effort before the first message): one chat's commits carry two models, and effort is never recorded. Rule 12 (one task per chat): partly contradicted, as rule 6. Rule 13 (a long chat after a break becomes a new chat with a handoff note): nine chats stayed open three hours or more, one 20.2 hours; open time is not active time, so this is a flag, not a finding. Rule 16 (never paste what a chat can read by path): contradicted on 28 October, followed since. Rule 18 (a fact searched once): contradicted by the A9 rewrite (§6). Rules 21 and 28 (check usage first; the week's unit and audit before optional agent runs): the history shows Fable running short on 29 October and the Fable checks deferred while optional figure passes ran on 30 October; whether the figure passes, on Opus, drew the same pool as Fable depends on the plan (B8 §1). Rule 22 (memory off in this Project): the memory tool was called in six chats. Rules 14, 15, 17, 19, 20, 23 and 24 cannot be tested from the history.</p>
+<p><strong>DD-B1's rules 25 to 28, and its decision rule.</strong> Rule 25 (a stop in every agent prompt) agrees: four figure-chat asks drop a figure that fails twice. Rule 26 (a complete subagent brief) agrees on the one adder brief seen. Rule 27 (commit, then a branch or worktree) is contradicted: of the 39 chats whose asks are held as text, one names a branch and none a worktree; ten chats began while an earlier one was still open (14 overlapping pairs by first-message and last-update times, an upper bound); on 2 November one chat reverted its own merge because another session was alive and mid-unit on the same repository, and on 29 October one found that "another chat beat this one to it" (<code>count.py</code>, <code>count2.py</code>; listing snippets of chats 34 and 52). Rule 28 is discussed under B8.</p>
+<p>The decision rule, applied to the 20 chats that ran agents (unit writing 9, audits 4, figure passes 4, infrastructure 2, history 1; <code>count2.py</code>): box 3 (a pass/fail check) and box 5 (shape) fit what he did, a read-only fan-out for checking and a same-change fan-out for figures, staged one course after another, which is box 5d's "two or three files first" at the scale of courses. Box 6 was not followed (§4). Box 8 would have failed on its line "The result lands on a branch he merges or deletes", and a failed line sends the run to a session he watches; the two passes planned for the night ran on the morning of 30 October instead, in sessions that handed back to him. Box 2 says publishing and deploying are actions he does himself, because no checkpoint or git revert can undo them; in the history, 13 of the 16 row asks read in full have the session publish and deploy to the public Pages site. The code of a deploy can be reverted; what a public page showed cannot be unshown, and B4 F15 found six private terms in the build that <code>deploy.sh</code> pushes (29 Oct). The history contradicts box 2, and B4 F15 shows what the box guards against. Whether <code>verify.py</code> now runs B4's private-terms check before a deploy cannot be read from the history.</p>
+<p><strong>B2, B1, B5 and B6.</strong> B2's table held on its rows and has none for 30 of 53 chats (§4). B1's mental model predicted both costs seen: a long chat re-sends its history every turn, and a 50,000-character paste crowds the window. B5's skills were used where they exist; the closing procedure and the next prompt are the by-hand work (§5). B6's fresh checks earned their place (15 of 20 first drafts with an error); the research paid twice was the rewrite re-searching what an audit had confirmed (§6).</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-brand-ai-dd-b2-5" data-step="5"><span>Previous · 6 of 9</span><b>Where he paid for research he did not need</b></a><a class="snext" href="#read-brand-ai-dd-b2-7" data-step="7"><span>Next · 8 of 9</span><b>What this reading can and cannot carry</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-brand-ai-dd-b2-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">What this reading can and cannot carry</span></span></h2>
+<p>Beyond §1's limits: the six days were a week spent building the course machine, so the mix of tasks will not be a normal week's; a second reader could label a few chats differently, most likely between infrastructure and figure passes; the URL counts cover only the parts of the nine early chats whose saved reads hold their tool calls; and no count is a cost, since the history holds no usage figures. The ten changes are ranked by the size of the count each rests on and the share of the work it touches, which is the writer's judgement on those counts.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-brand-ai-dd-b2-6" data-step="6"><span>Previous · 7 of 9</span><b>The filed rules, tested against the history</b></a><a class="snext" href="#read-brand-ai-dd-b2-8" data-step="8"><span>Next · 9 of 9</span><b>Personal gap report: ten changes, ranked</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-brand-ai-dd-b2-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">Personal gap report: ten changes, ranked</span></span></h2>
+<p>Over the Project's 53 chats, 28 October to 2 November 2026; counts by the writer's scripts over the working table, model and outcome read where shown and otherwise recorded as not recorded. Each change names its count, what the count is over, the rule it bears on, the change in words to act on, and what would show it worked.</p>
+<p><strong>1 · Fable only for checking.</strong>
+<em>Count:</em> 12 of the 17 chats run on Fable 5.1 were not audits or fresh checks; 14 of the 17 began on 28 October; an ask confirmed on 29 October records him low on Fable, and all 9 fresh checks run on 2 November ran on Opus with a Fable check owed. <em>Bears on:</em> B2's routing table, Audits row; B8 rules 21 and 28.
+<em>Change:</em> Open a Fable chat only for an audit, a fresh check or a staleness check. Every other row, whatever is open, runs on Opus or Sonnet by change 2. Clear the nine owed Fable checks before any new Fable use.
+<em>Worked if:</em> over the next four weeks every Fable chat is an audit or a check, and no new fresh check is recorded as "Opus, Fable owed".</p>
+<p><strong>2 · A routing row for the machine.</strong>
+<em>Count:</em> 30 of 53 chats are of task types B2's table has no row for (infrastructure 15, figure passes 7, status 6, syllabus 2); the 15 infrastructure chats ran on Fable 7, Opus 3, switched 1, unknown 4; no chat that records a model ran on Sonnet or Haiku (0 of 40). <em>Bears on:</em> B2's routing table and its §8 on code.
+<em>Change:</em> Add three rows to the routing table. Build and site rows with a <code>verify.py</code> pass as their test: Sonnet 5.5, medium; escalate to Opus once if verify fails twice on the same cause. Method, skill and design-decision rows: Opus 5.5, high. Figure and other fan-out agents: as change 3.
+<em>Worked if:</em> every infrastructure prompt names its row's model and effort, and B2's one-line escalation log shows how often Sonnet had to hand up.</p>
+<p><strong>3 · Move a fan-out down once its check has passed.</strong>
+<em>Count:</em> 7 figure chats, median 33 turns, 6 on Opus; in the Greek pass alone 215 agents (78 adders, 78 checkers, 59 re-checkers), after the same loop had run over the Brand + AI units and the 59 Rome reports; every agent call in the two saved reads that show one (199 and 37) ran on Opus; 6 of 266 figures dropped. <em>Bears on:</em> DD-B1's decision rule, box 6.
+<em>Change:</em> After a fan-out's loop has run over two sets with its check passing, run its workers on Sonnet 5.5 and keep the checker on Opus. Compare the drop and fix rates with the Opus run before moving more.
+<em>Worked if:</em> the next fan-out on Sonnet drops no more than about 2% of its proposals (6 of 266 on Opus) and its checker's fix rate does not rise.</p>
+<p><strong>4 · No session deploys to the public site without the private-terms check.</strong>
+<em>Count:</em> 13 of the 16 row asks read in full have the session publish and deploy to the public Pages site; B4 F15 found six private terms in the build <code>deploy.sh</code> pushes. <em>Bears on:</em> DD-B1's decision rule, box 2; B4 F15 and its check 6.
+<em>Change:</em> Make B4's private-terms check a step of <code>verify.py</code> that fails the build, with the terms file kept outside both repositories. A session may run <code>deploy.sh</code> only after ALL CHECKS PASSED with that step in it; until the step exists, he runs the deploy himself after looking at the diff.
+<em>Worked if:</em> the next deploy's verify output names the private-terms step and its pass, and a planted test term makes the build fail.</p>
+<p><strong>5 · One writer to <code>main</code> at a time.</strong>
+<em>Count:</em> 10 of 53 chats began while an earlier one was still open (14 overlapping pairs, an upper bound); one chat reverted its own merge because another session was mid-unit; one found another chat had already done its work; of the 39 asks held as text, one names a branch and none a worktree. <em>Bears on:</em> DD-B1 rule 27; DD-B3 rule 6.
+<em>Change:</em> Before opening a second session on the repository, check the first has pushed its last commit. When two must run together, the second works on a branch named for its row and its last step is a rebase and merge after the other has landed.
+<em>Worked if:</em> no revert of another session's work and no "already done by another chat" in the next month.</p>
+<p><strong>6 · Model and effort in the first line, and in the changelog.</strong>
+<em>Count:</em> the model can be read in 40 of 53 chats and effort in 0 of 53; 13 chats record no model at all. <em>Bears on:</em> B8 rule 11; B2's effort column; the method's rule to record the model that actually wrote each unit.
+<em>Change:</em> Every prompt opens with one line, "Model: X, effort: Y", set in the menu before sending; every changelog row records both, and every agent call names its model.
+<em>Worked if:</em> a re-run of this count reads model and effort for every chat after the change.</p>
+<p><strong>7 · The closing procedure in one skill, pointed to.</strong>
+<em>Count:</em> 13 of the 16 row asks read in full restate the publish procedure; 7 carry "publish once"; those quoted in the listing also point to the method's §8; 13 chats end by writing the next prompt by hand. <em>Bears on:</em> B5 §6's four questions (all four pass); B4 F7 on paraphrased procedure.
+<em>Change:</em> Put build, verify, publish, deploy, row close, mirror rewrite and next-prompt writing in one skill in the repository, with a template for the next prompt. Every prompt then ends with one line: "Close per the skill." Keep in the prompt only what this row changes.
+<em>Worked if:</em> the next prompts lose the restated paragraph, and no publish in the next month is forced, doubled or sent to a new artifact.</p>
+<p><strong>8 · Carry an audit's confirmed claims forward instead of re-searching them.</strong>
+<em>Count:</em> the A9 rewrite opened 43 distinct URLs, 34 of them already opened by Audit 1 that morning; the A6 rewrite 45, 15 of them Audit 1's; the rewrite asks told the writer to re-verify by search any figure carried over. <em>Bears on:</em> B8 rule 18; B6 Deliverable A.
+<em>Change:</em> In a rewrite brief after an audit, list the claims the audit confirmed with its date and tell the writer to carry them over unchanged; search only the claims it failed and any new ones. Leave the fresh checker's own re-opening of sources alone.
+<em>Worked if:</em> the next post-audit rewrite opens only URLs outside the audit's confirmed list, and its fresh check finds no error in a carried-over claim.</p>
+<p><strong>9 · No overnight plan without a branch.</strong>
+<em>Count:</em> two figure-pass asks were written for an overnight run over filed course units; of the 39 asks held as text, one names a branch; both runs went ahead on the morning of 30 October instead. <em>Bears on:</em> DD-B3 rule 7 ("Never on course units"); DD-B1 box 8.
+<em>Change:</em> An unattended run is planned only for work outside filed units, and only when its prompt names the branch it lands on, its attempt cap and its pass line. A pass over filed units runs where he watches it.
+<em>Worked if:</em> every unattended run in the next month names a branch, and none touches a filed unit.</p>
+<p><strong>10 · Account memory off in this Project.</strong>
+<em>Count:</em> the model called the memory tool in 6 of 53 chats, all in the parts of the chats that were read. <em>Bears on:</em> B8 rule 22; B4 F13.
+<em>Change:</em> Turn off "Use account memory" for the Learning Project now, and say in the project instructions that no chat reads memory.
+<em>Worked if:</em> no memory call appears in the next ten chats opened at their first turns.</p>
+<p><strong>Flagged, not ranked:</strong> nine of 53 chats stayed open three hours or more, one 20.2 hours over 43 turns (<code>count2.py</code>); open time is not active time, so this bears on B8 rules 13 and 14 only if a re-count with activity times confirms it.</p>
+<p><strong>Already fixed in the window, so not ranked:</strong> terse and status-opened asks (11 in chats 1 to 33, none in 34 to 53); whole units pasted into asks (7, the last at 07:48 on 28 October); row codes that collided with unit codes (2, before the hyphenated row names).</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-brand-ai-dd-b2-7" data-step="7"><span>Previous · 8 of 9</span><b>What this reading can and cannot carry</b></a><a class="snext send" href="#read-brand-ai-dd-b2-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-brand-ai-dd-b2-sources"><summary><span class="at" id="read-brand-ai-dd-b2-9">Sources</span><span class="an">3</span></summary><div class="accb">
+<p>All sources are this Project's chat history, read through the past-chat tools on 2 and 3 November 2026 across three agent runs, and the course's filed units. No web source was used (search off; no search made).</p>
+<ul>
+<li>The Project's chat history, 28 October 2026 05:42 to 2 November 2026 17:51 local time: 53 chats listed with <code>recent_chats</code>; 16 opened with <code>read_conversation</code>; spots inside 7 more found with <code>conversation_search</code>. Chats are referred to by the writer's index number (1 to 53, in order of first message) and date; the history is private.</li>
+<li>The writer's tallies: <code>count.py</code> and <code>count2.py</code> over the working table of the 53 chats and the fresh-check lines of the filed units (working files, not published).</li>
+<li>Filed units used: B1 · Mental model (§2, §5); B2 · Choosing the model (§2, §8, Deliverable); B4 · Context engineering (F7, F13, F15 and its check 6); B5 · Skills and automation (§3, §6); B6 · Research and verification (§2, Deliverables A and D); B8 · Cost, limits, hygiene (§1, Deliverable rules 11 to 24); DD-B1 · Deep dive: agents (§8, rules 25 to 28, Deliverable); DD-B3 · Deep dive: how the best practitioners use the tool (Deliverable B, rules 1 to 10); and the fresh-check records of the 20 filed units that carry one.</li>
+</ul>
+</div></details><details class="acc made" id="read-brand-ai-dd-b2-made"><summary><span class="at">How this unit was made</span><span class="an">3 parts</span></summary><div class="accb"><h3>Provenance</h3><p>Unit DD-B2, written 2026-11-02 by Opus 5.5, search off.</p><h3 id="read-brand-ai-dd-b2-10">Writer's unsure list</h3>
+<ol>
+<li>Turn counts are the tools' total_turns, recorded by the second run; their definition (one message either side, agent notices included) is inferred from chats where both sides can be counted.</li>
+<li>Task type is a hand label; infrastructure and figure passes overlap in about three chats.</li>
+<li>"Accepted" is a proxy (filed, or reported done and not corrected); 14 chats' endings were not seen.</li>
+<li>The 13 chats with no recorded model may include Sonnet or Haiku chats; "0 of 40" is over recorded chats only.</li>
+<li>The 10 overlapping chats are counted from first message to last update, which overstates overlap when a chat sat idle.</li>
+<li>URL overlaps come from the parts of chats 1 to 9 that were read, not their full tool histories.</li>
+<li>That every agent call in chats 40 and 45 ran on "opus" rests on the saved reads, which cover one turn range each.</li>
+<li>Whether Fable on his plan draws usage credits or a share of the weekly limit is not stated in any filed unit for his account; §4 and change 1 hold either way.</li>
+<li>The memory-tool count (6) comes from visible turns only; chats not opened may hold more.</li>
+<li>Chat 48's two commit trailers may come from a Fable agent inside an Opus chat rather than a switch of the chat's model.</li>
+</ol><h3>The brief</h3><div class="pbox"><pre>Deep dive B2, Unknown unknowns. Written last, by Fable, with access to the project&#x27;s chat history. Review 90 days of conversations: classify each ask by task type, model used, whether the output was accepted, how many turns it took; find where he asked badly, where the tool was wrong for the job, where he did by hand what a skill already does, where he paid for research he did not need. Deliverable: a personal gap report with the ten highest-leverage changes.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>
