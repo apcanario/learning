@@ -344,7 +344,7 @@ def build(m, crumbs, theme, pill_next, chev):
     P.append(panel(ctx, 'course', f'''
   <header class="hero">
     {crumbs(('Academy', 'home'), (t['name'], 'track-' + m['theme']), (course_crumb[0], None))}
-    {eyebrow((f'COURSE {key}', col), (c['short'], None), (m['status'].upper(), 'var(--gold)'))}
+    {eyebrow((f'COURSE {key}', col), (c['short'], None), (('COMPLETE', 'var(--teal)') if m['status'] == 'available' else (m['status'].upper(), 'var(--gold)')))}
     <h1>{e(m['name'])}</h1>
     <p class="lede">{sc['intro']}</p>
     <div class="stats" data-n="4"><div><b>{m['nwritten']}</b><span>of {m['nunits']} units written</span></div><div><b>{pct}%</b><span>of the course</span></div><div><b>{len(d.AUDIT_LOG)}</b><span>audit{'s' if len(d.AUDIT_LOG) != 1 else ''} run</span></div><div><b>{e(d.NEXT_UNIT)}</b><span>next unit to write</span></div></div>

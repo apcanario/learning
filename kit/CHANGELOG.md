@@ -92,6 +92,8 @@ DD-A2's filing published once to the artifact (version 113, after reading the li
 
 **Fixes to other filed units:** B6 §2 carries a dated note with DD-B2's count (fifteen of twenty first drafts with an error at fresh check, nine of the twenty checks by Opus 5.5). The method's §4 and the write-unit skill's §1 no longer say DD-B2 is written by Fable 5.1; the build order records Opus 5.5 for it, and its lede says why. The skill's copy in the Project is re-uploaded; its upload in Customize > Skills joins P81.
 
+**Found by looking at the built page, fixed here:** a markdown course with every unit filed still read IN PROGRESS on its home and its catalogue card; `build.py` now marks it complete (`available`, as a finished history course is) and `mdcourse.py` prints COMPLETE in teal on its home, so courses A and B both read complete.
+
 **Records:** Brand + AI v9.4, 22 of 22, both courses complete; `NEXT_UNIT` reads "—" (the course home's "next unit to write" tile, which `mdcourse.py` prints as given; the reading that builds); Audits 3, 4, 5 and 6 owed to the Fable 5.1 stage (row P49). One of DD-B2's figure notes joined P83 (a long compare's value away from its label at 390 px), as did DD-A2's compare.
 
 ## 2 November 2026 · Session 47 · Brand + AI DD-B1 (B-13)

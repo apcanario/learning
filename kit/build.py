@@ -435,7 +435,7 @@ def md_courses(c):
         out.append(dict(id=pid, home_id=pid, briefs_id=f'briefs-{sc["k"]}' if legacy else f'{pid}-briefs',
                         brief_anchor='b-' if legacy else f'{pid}-b-', parent=c, sc=sc, theme=theme, short=short, key=sc['key'],
                         name=sc['name'], color=sc['color'], units=sc['units'], done=done, nunits=len(sc['units']), nwritten=len(done),
-                        status='in progress' if done else 'coming soon', card=sc['tile']))   # a course with no unit filed is coming soon
+                        status=('available' if len(done) == len(sc['units']) else 'in progress') if done else 'coming soon', card=sc['tile']))   # a course with no unit filed is coming soon; every unit filed is complete ('available', as a finished history course is; A-5, 3 Nov 2026)
     return out
 
 
