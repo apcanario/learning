@@ -111,3 +111,252 @@ IA4 · **fix** · 2 errors (one wrong edition date, in two places), 18 should-fi
 
 ---
 Working files left in C: `report/fresh-check-IA4.md` (this report), `work/rendered/` (the eight figures as rendered), `work/png/` (rasterised figures and the test renders of the fixes: `test-fig2b.png`, `test-fig7.png`). Nothing from memory was used; nothing in memory bears on this task beyond the Project's own rules, which came from the task's files.
+---
+
+## Maintainer's note (U-4 chat, Opus 5.5, 3 Nov 2026)
+
+**How the check was set up.** The checker ran on model fable, confirmed `claude-fable-5-1` from its transcript, so no Fable 5.1 fresh check is owed for IA4. Its prompt carried `skills/audit-units` §3b and its figures paragraph verbatim (braces filled: Part 4; `generator/data/ux`; "no audit report yet: skip it"), checked by script before launch and again in its first message. It was given the unit as a file in its own folder with a read-only second copy and the sha256, and confirmed both. Transcript check, by script: no `mcp__*`, Projects, Artifact or connector tool; every Read, Write and Bash path inside its folder (the flagged `/style`, `/svg` and `/-2` are a CSS string and the "7±2" in a quoted title); no file under `/root/.claude/`. **One fetch broke the web rule:** it fetched `https://www.oreilly.com/library/view/information-architecture-4th/9781491913529/ch10.html`, a URL printed in the unit, which no search in its context had returned. The maintainer re-searched, fetched the URL its own search returned (`https://oreilly.com/library/view/information-architecture-4th/9781491913529/ch10.html`) and confirmed the chapter title and headings the unit lists, so the confirmation stands. Its closing line mentions memory: it used none (no memory tool in its transcript).
+
+**Verified before applying.** Every finding was checked against the unit, the filed units and its source. Outside sources, each by a search in this chat and a fetch of a URL that search returned: the third edition of Dix and others dated 30 September 2003 (Goodreads editions page; tenlong.com.tw; the Lancaster page redirected and was not followed; the Pearson page gave no date), the companion page's "© 2010" and that the doubling-versus-level comparison is Dix's own Hick's-law analysis (hcibook.com); Whitenton 2013 cites no study (nngroup.com); Prater 2016 takes the object map as given and workshops the CTA brainstorm (alistapart.com); Woods 2019's title "Book Review: Information Anxiety" and "five ultimate hat racks", with Continuum as the fifth (uxmatters.com; the page implies rather than states the later rename to Hierarchy, which the fix words as "later renamed"); Hearst 2006's sentence beginning "But by far the greatest drawback" (flamenco.ischool.berkeley.edu); the SIGCHI Bulletin abstract naming Snowberry and others (unpaywall.org); Prater's "tough question" being where the map lives and which copy is the source of truth (infoq.com); the third edition's ambiguous schemes as four, Hybrids in a section of their own (computerworld.com excerpt); chapter 10's headings (oreilly.com). The pointer findings were checked against `units_data.py`'s IA5, IA6 and IA7 briefs and AIMS; the notation findings against IA2 §5.2 (tone 6) and §5.3 (the sitemap's Sign in as `external`; the inventory's columns, which have no audience field); the figure findings against the unit's A.1 to A.3 and B.2 tables.
+
+**Applied.** All 29 findings held and were applied as exact replacements by script (each Current occurring once), with the caption half of the help-article finding: 30 replacements. Both errors are one fact (the edition's date) in two places; the verdict is fix.
+
+**Also changed, from what the check settled.** Four unsure-list items now say what the check confirmed: chapters 6 and 10 (the exact and ambiguous schemes confirmed in the third edition's excerpt), Cooper's chapter 13 title (re-verified by the maintainer from the kinokuniya.co.jp contents listing a search returned: ch. 13, p. 299), Zaphiris's table mapping, and Prater 2015's steps and quotation.
+
+**Figures.** 1, 3, 4 and 8 passed the fresh check; 2, 5, 6 and 7 were fixed from its findings and re-checked by fresh Opus 5.5 agents given only the unit without its figures, the captions and that figure's opening frames and frames sheets (`verify.py --shots`, page `read-ux-ia4`, phone, tablet and desktop, dark and light). Their transcripts: no web, no forbidden tool, every path inside their folders (figure 6's first checker's flagged paths are its loop variable `$t` over the themes). Re-check 1: figure 2 PASS, figure 7 PASS, figure 5 FIX (the notification box lacked "the claim it is about"), figure 6 FIX (R-18's line to catalogue item not drawn; the text note that O-14's "audience" should be marked new, since the caption says it was added). Both fixed as the reports gave them; the second drawn "explains" line goes from help article up to catalogue item with its triangle. Re-check 2: figure 5 PASS (its optional note applied: the caption states the line-reading rule, as figure 4's does), figure 6 PASS (its optional note applied: "-> read (anyone)", as A.3 gives it). Each figure check took: figures 2 and 7, two checks (the fresh check and re-check 1); figures 5 and 6, three (the fresh check and two re-checks). The six re-check reports follow, verbatim from their hand-backs.
+
+### Figure re-check reports
+
+#### Figure 2, re-check 1
+
+Figure 2 re-check (compare, section 2.1). The report folder was empty when I started, so no earlier run had been lost. Report written to /tmp/claude-0/-home-claude/10850973-ac9a-5db0-a57c-7cad09fcefe3/scratchpad/u4/fig2-r1/report/figure-2.md
+
+(a) Labels and numbers: PASS. The figure draws five rows, and each label with its value appears exactly once (grep -F -c = 1) in line 67 of the unit: "His mean task times, in seconds: 2 links a page, 6 levels, 36.0; 4 links a page, 3 levels, 32.2; 16 then 4, 2 levels, 32.4; 4 then 16, 2 levels, 21.0; 8 links a page, 2 levels, 20.3." The drawn values 36.0s, 32.2s, 32.4s, 21.0s and 20.3s match. No other label, date or number is drawn.
+
+(b) Scope: PASS. All five structures are there, in the text's order. The bars start at zero and are to scale: on desktop, 32.2/36.0 is about 0.89 and 21.0/36.0 is about 0.58, and the measured bar lengths match both. The slowest bar is the deepest structure, as the caption says. The "over the same 64 pages", "17 participants" and "times significant, errors not" points are in the caption and match line 67. Nothing the text gives for this figure is missing or wrong.
+
+(c) Caption: PASS. It says what the figure shows (mean task time across five link structures over 64 pages), names section 2.1 and names the source: Zaphiris, 'Depth Vs Breadth in the Arrangement of Web Links', HFES 44th Annual Meeting, 2000.
+
+(d) Kind: PASS. The data is numbers being compared, so compare fits.
+
+(e) As drawn: PASS.
+- Desktop and tablet, dark and light: one frame each ("the whole figure fits"). Labels sit clear of the bars, value tags sit at the bar ends without overlapping, nothing is cut, and the caption is under the figure.
+- Phone, dark and light: the figure scrolls across 4 frames (0, 164, 328 and 372 of 372 px), with the cue line "scroll sideways for the whole figure" below the drawing. The label column stays in view in every frame, as the 3 Nov 2026 rule requires. Taken together, the frames show the whole drawing, and every value tag (20.3s, 21.0s, 32.2s, 32.4s, 36.0s) shows in full in at least one frame. Frames 3 and 4 show empty tracks for the two short bars because those bars have already ended, which is correct. The edge fades show the content scrolls and hide no text.
+
+Text notes: none. No sentence contradicts the figure or its caption. Line 75's "Zaphiris's two 2-level structures with the same 64 pages differed by eleven seconds" agrees with 32.4 versus 21.0 (11.4 s).
+
+Figure 2: PASS
+
+#### Figure 7, re-check 1
+
+Figure 7 passes all five checks, with no faults and no notes on the unit's text. I opened all 12 images (phone, tablet and desktop; dark and light; opening frames and frames sheets) and edited nothing. No earlier report was in D/report. The report is at /tmp/claude-0/-home-claude/10850973-ac9a-5db0-a57c-7cad09fcefe3/scratchpad/u4/fig7-r1/report/figure-7.md.
+
+(a) Labels: PASS. All 13 boxes are in the unit's text.
+- The root "Benefit category (F-CAT)" is at line 301: "| F-CAT | Benefit category | ...".
+- The 12 values are at lines 314 to 325, each preferred term with its ID:
+  - "| CAT-HEA | Health |", "| CAT-HEA-FIT | Fitness | Health |", "| CAT-HEA-THE | Therapy | Health |"
+  - "| CAT-LEA | Learning |", "| CAT-LEA-COU | Courses | Learning |", "| CAT-LEA-BOO | Books | Learning |"
+  - "| CAT-MOB | Mobility |", "| CAT-MOB-PUB | Public transport | Mobility |", "| CAT-MOB-BIK | Bike | Mobility |"
+  - "| CAT-MEA | Meals |", "| CAT-MEA-RES | Restaurants | Meals |", "| CAT-MEA-GRO | Groceries | Meals |"
+- The figure draws no dates or numbers.
+
+(b) Scope: PASS.
+- It has 4 top-level categories with 2 narrower terms each, which matches the Broader term column.
+- It has two levels under the facet, which matches line 301 ("hierarchy, two levels") and rule R7.
+- No box is missing or misplaced, and every box is tone 5, as the caption says.
+- Variant terms and scope notes are not drawn, and the caption does not say they are.
+
+(c) Caption: PASS.
+- It says what the figure shows: the benefit-category facet, two levels, with value identifiers, F2.
+- It names the section: Deliverable B.
+- It names the sources: IA1, Deliverable, and IA2, section 5.3; identifiers set in Deliverable B; Rosenfeld, Morville and Arango, 4th ed., 2015, ch. 10.
+- It sits under the figure at every width and in both themes.
+
+(d) Kind: PASS. The data is a hierarchy (a facet, its categories and their narrower terms), so a tree fits.
+
+(e) As drawn: PASS.
+- Text stays inside every box at every width and in both themes, and nothing overlaps.
+- The connectors are distinct curves from each parent to its two children.
+- Scrolling:
+  - Desktop and tablet scroll in 2 frames (0 to 332 px).
+  - The phone scrolls in 6 frames (0 to 702 px, opening at 254).
+  - The cue line "scroll sideways for the whole figure" shows in every frame.
+- Every box is seen whole in at least one frame. The left end (Health, Fitness, Therapy) is whole in phone frame 1. The right end (Meals, Groceries) is whole in phone frame 6 and in desktop and tablet frame 2.
+- The only clipping is the scroll frame's fade at the edges.
+- Contrast is good in both themes.
+- The 3 Nov 2026 rule on label columns and phone fit covers matrix, compare, bars and two-a-row flow figures, not trees, so it does not apply here.
+
+Text notes: none. No sentence contradicts the figure or the caption.
+
+Figure 7: PASS
+
+#### Figure 5, re-check 1
+
+Figure 5 re-check. I'm a fresh agent and found no earlier report in the folder. My report is at /tmp/claude-0/-home-claude/10850973-ac9a-5db0-a57c-7cad09fcefe3/scratchpad/u4/fig5-r1/report/figure-5.md. I opened all 12 images: phone, tablet and desktop widths, opening frames and frames sheets, dark and light themes.
+
+(a) **Pass.** Every label and number in the drawing is in the unit's text.
+- Objects and their surface label lines match A.1, rows O-05 to O-11. Example: "| O-09 | card *new* | 5 | not set (IA7) | Card | Perqo card | accepted at the till | last four digits; status (Active, Frozen) *new* |".
+- Lines and counts match A.2, R-08 to R-15:
+  - "| employee | submits | transaction, type claim | 1, 0..* |"
+  - R-09 "is checked against | policy | 0..*, 1"
+  - R-10 "spends from | allocation | 0..*, 1"
+  - R-11 "holds | card | 1, 0..1"
+  - R-12 "is used for | transaction, type card payment | 1, 0..*"
+  - R-13 "spends from | allocation | 0..*, 1"
+  - R-14 "merchant | takes | … | 1, 0..*"
+  - R-15 "triggers | notification | 1, 0..*"
+- The actions match A.3: submit, approve and reject (claim); view (employee) and view in a report (finance) (card payment); view card details, freeze and unfreeze (card); publish offer (merchant); open (notification).
+- The "→ see figure 1" and "→ see figure 3" lines follow A.4: "with "→ see" lines where an object continues in another figure".
+
+(b) **One fault.**
+- These are right: all eight relationships R-08 to R-15, their direction and counts, and the triangle on R-13's "spends from", which reads right to left.
+- The tones are right: tone 5 for employee, card, claim, allocation, card payment and policy; tone 3 for notification; tone 2 for merchant.
+- The surface label lines are right. The merchant-side labels are left off, which agrees with the deliverable's own description, which leaves out "the merchant side's own surface".
+- **Missing:** A.1 gives notification the attributes "message; date; the claim it is about". The box draws only "message" and "date". The card payment box, by contrast, draws its "merchant" attribute as well as the R-14 line, so the attribute lists are otherwise drawn in full.
+
+(c) **Pass.** The caption says what the figure shows, names Deliverable A and gives the sources: R-08 to R-10 from IA2, section 5.3, and the rest set in Deliverable A. It also explains the tones, the triangle and the UML multiplicity notation. It sits under the figure.
+
+(d) **Pass.** The data is things and relationships, and the figure is an objects figure.
+
+(e) **Pass.**
+- On desktop and tablet, in both themes, the whole figure fits in one frame. Text stays inside its boxes, nothing overlaps or is cut, and the line labels can be told apart.
+- On phone, in both themes, there are four frames: scrolled to 0, 164, 328 and 372 of 372 px. The cue line "scroll sideways for the whole figure" is present, and the drawing is whole across the frames. Edges only fade at the scroll edge.
+
+Text notes: none. Line 279 of the unit, "(R-08 to R-15)", matches the figure.
+
+Figure 5: FIX
+- **Fault:** the notification box is missing the attribute "the claim it is about". It shows at every width and in both themes: desktop frame 1, tablet frame 1, phone frames 1 and 2.
+  - **Change to the drawing:** add the line "the claim it is about" under "date" in the notification box's attribute list, above the "-> open" divider.
+  - **Caption:** no change.
+  - **Unit text:** no change. The A.1 row it should match occurs once in the unit (grep -F -c gives 1): "| O-10 | notification *new* | 3 | not set (IA7) | Notifications, in Account | not shown | not shown | message; date; the claim it is about |".
+
+#### Figure 6, re-check 1
+
+Figure 6 needs one fix. This was a fresh run: there was no earlier report in D/report. The working file is /tmp/claude-0/-home-claude/10850973-ac9a-5db0-a57c-7cad09fcefe3/scratchpad/u4/fig6-r1/report/figure-6.md.
+
+**Checks**
+- **(a) Labels: PASS.** Every label, count and call to action drawn is in the unit's own text:
+  - **Objects and tones** come from the A.1 table:
+    - policy, catalogue item, offer and client are tone 5.
+    - merchant is tone 2.
+    - help article, customer story and demo request are tone 1.
+  - **Relationships** come from A.2:
+    - "R-07 | policy | covers | catalogue item | 0..*, 0..*"
+    - "R-16 | merchant | publishes | offer | 1, 0..*"
+    - "R-17 | offer | is for | catalogue item | 0..*, 1"
+    - "R-18 | help article | explains | … | 0..*, 0..*"
+    - "R-19 | customer story | is about | client | 0..1, 1"
+    - "R-20 | demo request | leads to | client | 0..*, 0..1"
+  - **Attributes** come from O-12 to O-16. Offer: "title; discount; valid until", with "Card offers". Catalogue item: "ID; name; the four facet values (Deliverable B); variant terms", with "Covered items" and "What's covered". Help article: "ID; title; URL; audience; topic; owner; format; last modified". Customer story: "title; URL; client". Demo request: "name; work email; company; number of employees".
+  - **Calls to action** come from A.3, for example "-> add item; -> edit item *new* | Perqo content team", "help article | -> update | support" and "demo request | -> follow up *new* | sales".
+- **(b) Scope: FAULT.** The text has "R-18 | help article | explains | policy, allocation, claim, card, catalogue item | 0..*, 0..*". The drawing has an "explains" line only from help article to policy. Catalogue item is in this figure, but the drawing gives it only the in-box line "→ see claim, allocation, card, catalogue item". A.4 says "→ see" lines are for an object that "continues in another figure", and catalogue item does not. So the R-18 link to catalogue item is not drawn. Everything else in the A.4 scope is present and correct ("R-07, R-16 to R-20").
+- **(c) Caption: PASS.** It says what the figure shows (object map, figure 3 of 3, catalogue, merchants and perqo.com). It names the section (Deliverable A) and the sources: Deliverable A, IA2 section 5.3, and Deliverable B. It explains the tones and the triangles. Its words "with audience added" are not matched in the unit's text; see the text note.
+- **(d) Kind: PASS.** Objects suits things and their relationships.
+- **(e) As drawn: PASS** at every width in both themes:
+  - Text sits inside its boxes, nothing overlaps or is cut, and the line labels can be told apart from the lines.
+  - Triangles show on is for, publishes, leads to and explains.
+  - The caption sits under the figure.
+  - On phone the figure scrolls across 4 frames (0, 164, 328 and 389 of 389 px) with the cue line "scroll sideways for the whole figure", and the drawing is whole across those frames.
+  - Desktop and tablet each fit in 1 frame.
+  - The sticky page header that covers the top of the figure in the desktop and phone opening frames is page chrome, not a figure fault.
+
+**Text note**
+- Current: `ID; title; URL; audience; topic; owner; format; last modified (IA2, section 5.3)` (grep -F -c gives 1)
+- Fix: `ID; title; URL; audience *new*; topic; owner; format; last modified (IA2, section 5.3)`
+- Reason: the caption says the attributes are from IA2 "with audience added", but the O-14 row in the text cites IA2 for the whole list and does not mark audience as new.
+
+**Figure 6: FIX**
+- **Fault:** the R-18 link from help article to catalogue item is not drawn. It shows at every width (phone, tablet, desktop), in both themes and in every frame.
+- **Change to the drawing:**
+  - Add a second "explains" line from help article to catalogue item, with counts 0..* at the help article end and 0..* at the catalogue item end. If it reads right to left or bottom to top, give it a triangle.
+  - Change the help article's see line from "→ see claim, allocation, card, catalogue item" to "→ see claim, allocation, card".
+- **Caption:** no change needed. If the text note is not applied, change "with audience added" to "with audience set in Deliverable A" so the caption no longer claims something the text does not mark.
+
+#### Figure 5, re-check 2
+
+Figure 5 passes all five checks, with no faults and no notes on the unit's text.
+
+No earlier report was in the report folder, so this was a fresh run. The report is at /tmp/claude-0/-home-claude/10850973-ac9a-5db0-a57c-7cad09fcefe3/scratchpad/u4/fig5-r2/report/figure-5.md.
+
+(a) Labels: PASS. Every label in the drawing is in the unit's text.
+- **Objects and attributes** are in the A.1 table:
+  - O-05 employee, O-06 allocation, O-04 policy.
+  - O-07 "transaction, type claim | 5 | Claim | Claim | Claims | ... amount; category; receipt; status (...); date submitted".
+  - O-08 "transaction, type card payment | 5 | Card payment | Purchase | Card payments | ... amount; date; merchant; category".
+  - O-09 "card *new* | 5 | not set (IA7) | Card | Perqo card | ... last four digits; status".
+  - O-10 "notification *new* | 3 | ... Notifications, in Account | ... message; date; the claim it is about".
+  - O-11 "merchant ... name; benefit category (...); accepts the Perqo card".
+- **Relationship names and counts** are in the A.2 table, R-08 to R-15:
+  - submits 1, 0..*
+  - is checked against 0..*, 1
+  - spends from 0..*, 1 (claim)
+  - holds 1, 0..1
+  - is used for 1, 0..*
+  - spends from 0..*, 1 (card payment)
+  - takes 1, 0..*
+  - triggers 1, 0..*
+- **Calls to action** are in A.3: submit (employee), approve and reject (HR), view card details, freeze, unfreeze, view (employee), view in a report (finance), open, publish offer.
+- **Pointers** are right. "see figure 1" is on employee, allocation and policy, which are set up in figure 4 (R-01 to R-06). "see figure 3" is on merchant, which continues in figure 6 (offer).
+
+(b) Scope: PASS. The text says: "The second holds spending: the employee's card, card payments and claims, the allocation they spend from, the merchant that takes card payments, the policy a claim is checked against and the notifications a claim triggers (R-08 to R-15)."
+- All 8 objects and all 8 relationships are drawn, with the right direction and the right count at each end.
+- Tones are right: tone 5 for the shared objects, tone 3 for notification, tone 2 for merchant.
+- R-13 reads right to left, and the triangle marks it, as the caption says.
+- The merchant-side labels "the sale" and "accepted at the till" are left out of the drawing. That fits the artefact's face, which leaves out "the merchant side's own surface", so it is not a fault.
+
+(c) Caption: PASS. It says what the figure shows and names the section (Deliverable A). It explains the tones and the triangle. Its sources ("R-08 to R-10 from IA2, section 5.3; the rest set in Deliverable A") match the text: "R-03, R-04, R-05, R-08, R-09 and R-10 are IA2's". One optional change, not a fault: unlike figure 4's caption, it does not state the rule for which way lines read.
+
+(d) Kind: PASS. The data is things and their relationships, so objects fits.
+
+(e) As drawn: PASS.
+- **Desktop and tablet, dark and light:** the whole figure fits in one frame. Text stays inside its boxes, nothing overlaps or is cut, lines and their labels and counts can be told apart, and the caption sits under the figure.
+- **Phone, dark and light:** the figure scrolls across 4 frames (0, 164, 328 and 372 of 372 px), with the "scroll sideways for the whole figure" cue under it. Every box appears whole across the frames; the right-hand edges show in frame 4. Edges are clipped only while scrolling.
+- **3 Nov 2026 rules:** these cover matrix, compare, bars and flow figures, so they do not apply to an objects figure.
+
+Text notes: none. Nothing in the text contradicts the figure or the caption.
+
+Figure 5: PASS
+
+#### Figure 6, re-check 2
+
+Figure 6 re-check (objects, Deliverable A.4, figure 3 of 3). The report is at /tmp/claude-0/-home-claude/10850973-ac9a-5db0-a57c-7cad09fcefe3/scratchpad/u4/fig6-r2/report/figure-6.md. No earlier report was in the folder, so this was a fresh run. To read the phone frames sheets I cut them into four images each, saved in /tmp/claude-0/-home-claude/10850973-ac9a-5db0-a57c-7cad09fcefe3/scratchpad/u4/fig6-r2/report/crops/.
+
+(a) Every label and number is in the unit's text. No error.
+- **Objects and attributes** match A.1:
+  - offer (O-12): "title; discount; valid until; catalogue item; merchant", drawn with its app label Card offers.
+  - catalogue item (O-13): "Covered items, in Policies *new* | What's covered, on each category screen | ... | ID; name; the four facet values (Deliverable B); variant terms".
+  - help article (O-14): "ID; title; URL; audience *new*; topic; owner; format; last modified".
+  - customer story (O-15): "title; URL; client".
+  - demo request (O-16): "name; work email; company; number of employees *new*".
+- **Relationships and counts** match A.2. Each line occurs once (checked with grep -F -c):
+  - "| R-07 | policy | covers | catalogue item | 0..*, 0..* |"
+  - "| R-16 | merchant | publishes | offer | 1, 0..* |"
+  - "| R-17 | offer | is for | catalogue item | 0..*, 1 |"
+  - "| R-18 | help article | explains | policy, allocation, claim, card, catalogue item | 0..*, 0..* |"
+  - "| R-19 | customer story | is about | client | 0..1, 1 |"
+  - "| R-20 | demo request | leads to | client | 0..*, 0..1 |"
+- **Count placement** is correct: 1 sits by catalogue item and 0..* by offer on "is for"; 1 by merchant on "publishes"; 0..1 by client on "leads to".
+- **Calls to action** match A.3: add item and edit item (content team), view (employee), read and update (support), read (buyer), submit (buyer), follow up (sales).
+- **"→ see figure 1/2" lines** follow A.4's "→ see" rule.
+
+(b) Nothing is missing or wrong. A.4 gives the scope as "the policy's covered items, the offers merchants publish for them, the help articles, and the customer stories and demo requests that relate to clients (R-07, R-16 to R-20)".
+- All six relationships are drawn. R-18's other targets are carried as "→ see claim, allocation, card" in the help article box.
+- The reading-direction triangles (right to left on is for, publishes and leads to) and the arrowheads on both explains lines (bottom to top) are correct.
+- Tones match A.1: tone 5 for policy, catalogue item, offer and client; tone 2 for merchant; tone 1 for help article, customer story and demo request.
+- Optional, not a fault: the help article's "-> read" names nobody, while A.3 has "| help article | -> read | anyone | perqo.com, Help centre |". Adding "(anyone)" under it would match the other calls to action, which all name who.
+
+(c) Pass. The caption says what the figure shows (catalogue, merchants and perqo.com, F2), names the section (Deliverable A) and names the sources (Deliverable A; IA2, section 5.3; Deliverable B).
+
+(d) Pass. Objects fits the data: things with attributes and relationships.
+
+(e) Pass at every width and in both themes.
+- **Desktop and tablet**, light and dark: frame 1 of 1, the whole figure fits, and the caption sits under it.
+- **Phone**, light and dark: the figure scrolls in its frame (0 to 389 px) with the cue line "scroll sideways for the whole figure". Frames 1 to 4 together show the whole drawing, ending with merchant and demo request in full in frame 4.
+- **Drawing**: text sits inside its boxes, nothing overlaps or is cut, the two explains lines and their labels can be told apart, and the counts are legible in both themes.
+- The page's sticky header covers the top of the opening-frame captures. That is the page's own header bar, not part of the figure.
+- The 3 Nov rules for matrix, compare, bars and two-a-row flow do not apply to an objects figure.
+
+Text notes: none. No sentence in the unit contradicts the figure or its caption.
+
+Figure 6: PASS
+

@@ -350,7 +350,7 @@ The third holds the catalogue, the merchant side and perqo.com: the policy's cov
  {"id": "item", "title": "catalogue item", "tone": 5, "attrs": ["Admin: Covered items", "app: What's covered", "ID", "name", "facet values", "variant terms"], "actions": ["-> add item (content team)", "-> edit item (content team)"]},
  {"id": "offer", "title": "offer", "tone": 5, "attrs": ["app: Card offers", "title", "discount", "valid until"], "actions": ["-> view (employee)"]},
  {"id": "merchant", "title": "merchant", "tone": 2, "attrs": ["→ see figure 2"]},
- {"id": "article", "title": "help article", "tone": 1, "attrs": ["ID", "title", "URL", "audience", "topic", "owner", "format", "last modified", "→ see claim, allocation, card"], "actions": ["-> read", "-> update (support)"]},
+ {"id": "article", "title": "help article", "tone": 1, "attrs": ["ID", "title", "URL", "audience", "topic", "owner", "format", "last modified", "→ see claim, allocation, card"], "actions": ["-> read (anyone)", "-> update (support)"]},
  {"id": "story", "title": "customer story", "tone": 1, "attrs": ["title", "URL"], "actions": ["-> read (buyer)"]},
  {"id": "client", "title": "client", "tone": 5, "attrs": ["→ see figure 1"]},
  {"id": "demo", "title": "demo request", "tone": 1, "attrs": ["name", "work email", "company", "number of employees"], "actions": ["-> submit (buyer)", "-> follow up (sales)"]}],
@@ -517,3 +517,4 @@ A value is added, renamed or retired only by the content team, as a proposed cha
 - Hedden 2022: the third edition's chapter contents were not seen; only the publisher's description.
 - Yee and others 2003: authors from knowledge; the figures from the abstract on the DOI page. Dix's page is tied to the 3rd edition of his textbook by its URL; its own date is its copyright line, 2010. Woods's review: its title, "Book Review: Information Anxiety", confirmed at the fresh check.
 - Not checked: Spencer, A Practical Guide to Information Architecture, 2nd ed. (the page redirected and was not followed); Google's documentation on faceted navigation URLs (page body not returned); neither is cited.
+- Fresh check 2026-11-03 (Fable 5.1; no Fable 5.1 fresh check is owed): fix · 2 errors, 18 should-fix, 9 minor; all applied; figures 2 and 7 fixed from the check and passed re-check 1; figures 5 and 6 fixed again after re-check 1 and passed re-check 2; figures 1, 3, 4 and 8 passed; report `audits/ux/fresh-check-IA4.md`
