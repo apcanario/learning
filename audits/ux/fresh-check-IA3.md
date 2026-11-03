@@ -466,3 +466,7 @@ Figure 5: PASS
 ### Maintainer's note on re-check 3
 
 PASS. Figure 5 kept. No text finding. The figure-checkers' notes on phone width (matrix label columns, the flow's 14 px scroll, seen on the frames sheets) are a renderer change already queued and are recorded on row P83.
+
+## Maintainer's note on the filing (N8, 3 Nov 2026)
+
+One link changed outside the findings: the Search Analytics book's link (§5.2 and Sources) was the URL the writer fetched with a slash it had added to the one its search returned (a URL built by editing another, recorded in the changelog); the checker could not confirm it as a link. A WebSearch by the maintainer returned https://rosenfeldmedia.com/books/search-analytics, and a fetch of it shows the page for *Search Analytics for Your Site: Conversations with Your Customers* by Louis Rosenfeld; both occurrences now use that URL.
