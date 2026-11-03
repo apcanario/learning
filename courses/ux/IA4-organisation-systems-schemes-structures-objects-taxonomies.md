@@ -234,7 +234,7 @@ Every object below is invented for the running example (Perqo, fictional). New f
 | O-11 | merchant *new* | 2 | not shown | merchant name on a Purchase *new* | not shown | the merchant | name; benefit category (one narrower term, assigned by Perqo) *new*; accepts the Perqo card |
 | O-12 | offer *new* | 5 | not shown | Card offers (as-is: Perks and Discover; IA3's proposed label) | not shown | published by the merchant | title; discount; valid until; catalogue item; merchant |
 | O-13 | catalogue item *new* | 5 | Covered items, in Policies *new* | What's covered, on each category screen | not shown | not shown | ID; name; the four facet values (Deliverable B); variant terms |
-| O-14 | help article | 1 | not shown | Help with claims and Help open it | Help centre article | not shown | ID; title; URL; audience; topic; owner; format; last modified (IA2, section 5.3) |
+| O-14 | help article | 1 | not shown | Help with claims and Help open it | Help centre article | not shown | ID; title; URL; audience *new*; topic; owner; format; last modified (IA2, section 5.3) |
 | O-15 | customer story *new* | 1 | not shown | not shown | Customer stories | not shown | title; URL; client |
 | O-16 | demo request *new* | 1 | not shown | not shown | Book a demo | not shown | name; work email; company; number of employees *new* |
 
@@ -328,7 +328,7 @@ The second holds spending: the employee's card, card payments and claims, the al
  {"id": "claim", "title": "transaction, type claim", "tone": 5, "attrs": ["Admin: Claim", "app: Claim", "perqo.com: Claims", "amount", "category", "receipt", "status", "date submitted"], "actions": ["-> submit (employee)", "-> approve (HR)", "-> reject (HR)"]},
  {"id": "alloc", "title": "allocation", "tone": 5, "attrs": ["→ see figure 1"]},
  {"id": "payment", "title": "transaction, type card payment", "tone": 5, "attrs": ["Admin: Card payment", "app: Purchase", "perqo.com: Card payments", "amount", "date", "merchant", "category"], "actions": ["-> view (employee)", "-> view in a report (finance)"]},
- {"id": "notif", "title": "notification", "tone": 3, "attrs": ["app: Notifications", "message", "date"], "actions": ["-> open"]},
+ {"id": "notif", "title": "notification", "tone": 3, "attrs": ["app: Notifications", "message", "date", "the claim it is about"], "actions": ["-> open"]},
  {"id": "policy", "title": "policy", "tone": 5, "attrs": ["→ see figure 1"]}],
  "rows": [["employee", "card", "merchant"], ["claim", "alloc", "payment"], ["notif", "policy", null]],
  "links": [
@@ -350,7 +350,7 @@ The third holds the catalogue, the merchant side and perqo.com: the policy's cov
  {"id": "item", "title": "catalogue item", "tone": 5, "attrs": ["Admin: Covered items", "app: What's covered", "ID", "name", "facet values", "variant terms"], "actions": ["-> add item (content team)", "-> edit item (content team)"]},
  {"id": "offer", "title": "offer", "tone": 5, "attrs": ["app: Card offers", "title", "discount", "valid until"], "actions": ["-> view (employee)"]},
  {"id": "merchant", "title": "merchant", "tone": 2, "attrs": ["→ see figure 2"]},
- {"id": "article", "title": "help article", "tone": 1, "attrs": ["ID", "title", "URL", "audience", "topic", "owner", "format", "last modified", "→ see claim, allocation, card, catalogue item"], "actions": ["-> read", "-> update (support)"]},
+ {"id": "article", "title": "help article", "tone": 1, "attrs": ["ID", "title", "URL", "audience", "topic", "owner", "format", "last modified", "→ see claim, allocation, card"], "actions": ["-> read", "-> update (support)"]},
  {"id": "story", "title": "customer story", "tone": 1, "attrs": ["title", "URL"], "actions": ["-> read (buyer)"]},
  {"id": "client", "title": "client", "tone": 5, "attrs": ["→ see figure 1"]},
  {"id": "demo", "title": "demo request", "tone": 1, "attrs": ["name", "work email", "company", "number of employees"], "actions": ["-> submit (buyer)", "-> follow up (sales)"]}],
@@ -359,7 +359,7 @@ The third holds the catalogue, the merchant side and perqo.com: the policy's cov
   {"from": "policy", "to": "item", "label": "covers", "from_card": "0..*", "to_card": "0..*"},
   {"from": "offer", "to": "item", "label": "is for", "from_card": "0..*", "to_card": "1", "dir": "to"},
   {"from": "merchant", "to": "offer", "label": "publishes", "from_card": "1", "to_card": "0..*", "dir": "to"},
-  {"from": "article", "to": "policy", "label": "explains", "from_card": "0..*", "to_card": "0..*", "dir": "to"},
+  {"from": "article", "to": "policy", "label": "explains", "from_card": "0..*", "to_card": "0..*", "dir": "to"}, {"from": "article", "to": "item", "label": "explains", "from_card": "0..*", "to_card": "0..*", "dir": "to"},
   {"from": "story", "to": "client", "label": "is about", "from_card": "0..1", "to_card": "1"},
   {"from": "demo", "to": "client", "label": "leads to", "from_card": "0..*", "to_card": "0..1", "dir": "to"}]}
 ```
