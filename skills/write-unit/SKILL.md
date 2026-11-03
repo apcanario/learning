@@ -11,7 +11,7 @@ One chat writes one unit. The method is `method.md` (§2 anatomy, §3 order, §4
 
 ## 1. Check you may start
 - This chat must be new, or an isolated agent context started for this unit alone (method §4, P31). If it already holds another unit's work, stop and say: "One chat per unit: start a new chat for <code>."
-- Check the model you are running as. Units are written with Opus 5.5 unless `courses-index.md` names another model for this unit (Brand + AI DD-B2: Fable 5.1). If they differ, say so in your first line and stop.
+- Check the model you are running as. Units are written with Opus 5.5 unless `courses-index.md` names another model for this unit. If they differ, say so in your first line and stop.
 - Open `courses-index.md`. If the unit's hub shows four units since the last audit, or an open REWRITE, stop and say in your first line that the audit comes first (`audit-units`).
 - Every unit this one points back to must be filed (history: every report its lane note names is registered). If one is not, stop and name it.
 

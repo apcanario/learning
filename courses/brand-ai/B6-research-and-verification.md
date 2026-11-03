@@ -179,7 +179,7 @@ His record has one checker error and one contested verdict. Audit 1 cited the au
 
 ### What his record says about first drafts
 
-Fourteen of the fifteen filed Brand + AI units carry a fresh-check line (B1 has none). Of those fourteen, eleven had at least one finding of error severity at their first fresh check: A1, A2, A4, A5, A6, A9, B2, B3, B5, B7 and DD-B3 (count from the fresh-check lines at the end of each unit; three of the fourteen checks, A5's, A7's and B7's, were run by Opus 5.5, with a Fable 5.1 check still owed). Those units were written with the sourcing standard in the brief, all by Opus 5.5, five of the eleven with live search (each unit's front matter). It is what B1 §5's mechanism leads one to expect: a careful first draw is usually close and rarely clean.
+Fourteen of the fifteen filed Brand + AI units carry a fresh-check line (B1 has none). Of those fourteen, eleven had at least one finding of error severity at their first fresh check: A1, A2, A4, A5, A6, A9, B2, B3, B5, B7 and DD-B3 (count from the fresh-check lines at the end of each unit; three of the fourteen checks, A5's, A7's and B7's, were run by Opus 5.5, with a Fable 5.1 check still owed). Those units were written with the sourcing standard in the brief, all by Opus 5.5, five of the eleven with live search (each unit's front matter). It is what B1 §5's mechanism leads one to expect: a careful first draw is usually close and rarely clean. *Note, 3 Nov 2026 (DD-B2 §2):* with the units filed since, twenty of the twenty-one filed units carry a fresh-check line and fifteen of the twenty had an error at their first check; nine of the twenty checks were run by Opus 5.5, all with a Fable 5.1 check owed.
 
 ## 3 · How to read a research report
 
