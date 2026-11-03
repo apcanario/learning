@@ -199,6 +199,7 @@ import re
 import textwrap
 
 W = 700            # drawing width in user units; the SVG scales to the column
+PHONE_FRAME = 328  # P83 (3 Nov 2026): the scroll frame of a figure on a 390 px phone (16 px gutters, the figure's 14 px padding and 1 px border); a drawing this wide or narrower never scrolls there
 TONES = 6          # --viz-1 … --viz-6 map to the house accents in theme.css
 
 
@@ -321,7 +322,11 @@ def _left(body):
     return min(xs) if xs else None
 
 
-def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None):
+def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=None):
+    """stick (P83, 3 Nov 2026): (width, svg body) of the label column a matrix, a numeric matrix or a compare keeps in
+    view while a phone frame scrolls: a copy of the labels on a card-coloured plate, drawn after the main svg in a
+    .viz-stick holder that the theme shows only below 768 px, sticky at the frame's left edge (aria-hidden: the
+    main svg carries the same labels). The frame carries --stick so the left fade starts past the column."""
     if x0 is None and cls in X0_KINDS:
         lft = _left(body)
         x0 = max(0, lft - 8) if lft is not None and lft - 8 > 4 else None
@@ -329,8 +334,14 @@ def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None):
     if caption:                                              # H-2: a number range never breaks at its dash (141–150)
         caption = re.sub(r'>([^<]*)<', lambda m: '>' + re.sub(r'(\d)([–-])(?=\d)', '\\1\u2060\\2\u2060', m.group(1)) + '<', f'>{caption}<')[1:-1]
     c = f'<figcaption>{caption}</figcaption>' if caption else ''
-    return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''}{f' data-xr="{xr:.0f}"' if xr else ''} '
-            f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg></div>{c}</figure>')
+    st, sv = '', ''
+    if stick and stick[0] > 0:
+        sw, sh = _r(stick[0]), _r(stick[2]) if len(stick) > 2 and stick[2] else h   # the plate covers the rows only, never a legend under them
+        st = f' style="--stick:{sw}px"'
+        sv = (f'<div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 {sw} {h}" width="{sw}" height="{h}" xmlns="http://www.w3.org/2000/svg">'
+              f'<rect class="viz-lblbg" x="0" y="0" width="{sw}" height="{sh}"/>{stick[1]}</svg></div>')
+    return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"{st}><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''}{f' data-xr="{xr:.0f}"' if xr else ''} '
+            f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg>{sv}</div>{c}</figure>')
 
 
 def _wrap(s, n, px=None, size=12, font='sans', ls=0.0):
@@ -619,17 +630,18 @@ def compare(d):
     bar_w = W - 8 - bar_x - VW
     if bar_w < 160:
         _fail(K, f'the labels and values leave the bars {bar_w:.0f} units; shorten the labels or the "display" values')
-    body, y = '', 8
+    body, y, stick = '', 8, ''
     for r, lab, v in zip(rows, labs, vals):
         rh = max(30, len(lab) * 14 + 12)
         wv = bar_w * float(r['value']) / mx
         cy = y + rh / 2
-        body += _text(lab, T_LABEL, bar_x - 10, cy - len(lab) * 7, 'end')
+        lt = _text(lab, T_LABEL, bar_x - 10, cy - len(lab) * 7, 'end')
+        body += lt; stick += lt
         body += f'<rect class="viz-track" x="{bar_x}" y="{cy - 7:.1f}" width="{bar_w:.1f}" height="14"/>'
         body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{cy - 7:.1f}" width="{wv:.1f}" height="14"/>'
         body += f'<text class="viz-value" x="{bar_x + wv + 8:.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
         y += rh
-    return _svg(W, _r(y + 4), body, 'compare', d.get('title'), d.get('caption'))
+    return _svg(W, _r(y + 4), body, 'compare', d.get('title'), d.get('caption'), stick=(bar_x - 4, stick))
 
 
 def tree(d):
@@ -701,6 +713,8 @@ def flow(d):
     steps = d['steps']
     per_row = d.get('per_row', 4)
     bw, gap, pad, vgap = 150, 26, 12, 26
+    if per_row <= 2:                                         # P83: a flow laid out for a phone (per_row 1 or 2) fits its frame
+        bw = (PHONE_FRAME - 16 + gap) // per_row - gap       # 143 at two a row (8 + 2 × 143 + 26 + 8 = 328)
     T_NOTE = ('viz-note', 'mono', 10.5, 0, 13)
     inner = bw - 2 * pad
     laid = [(_lines(s['label'], T_NODE, inner), _lines(s['note'], T_NOTE, inner) if s.get('note') else []) for s in steps]
@@ -1408,7 +1422,7 @@ def matrix(d):
     heads = [_balanced(c, T_COL, cws[k] - 10) for k, c in enumerate(cols)]
     hh = max(len(h) for h in heads) * 12 + 12
     body = ''.join(_text(h, T_COL, xs[k] + cws[k] / 2, hh - 6 - len(h) * 12, 'middle') for k, h in enumerate(heads))
-    y = 8 + hh
+    y, stick = 8 + hh, ''
     for r in rows:
         rt = _tone(r, 4, K)
         cells = []
@@ -1421,13 +1435,15 @@ def matrix(d):
                 cells.append((_balanced(c.get('mark', ''), T_MARK, cws[k] - 14) if c.get('mark') else [], _tone(c, rt, K)))
         lab = labs[rows.index(r)]
         rh = max(32, max(len(m) for m, _ in cells) * 13 + 14, len(lab) * 14 + 12)
-        body += _text(lab, T_LABEL, 8, y + (rh - len(lab) * 14) / 2)
+        lt = _text(lab, T_LABEL, 8, y + (rh - len(lab) * 14) / 2)
+        body += lt; stick += lt
         for k, (m, t) in enumerate(cells):
             x, cw = xs[k], cws[k]
             cls = f'viz-band viz-t{t}' if m else 'viz-track'
             body += _g(f'<rect class="{cls}" x="{x + 2:.1f}" y="{y + 2:.1f}" width="{cw - 4:.1f}" height="{rh - 4:.1f}"/>'
                        + _text(m, T_MARK, x + cw / 2, y + (rh - len(m) * 13) / 2, 'middle'))
         y += rh
+    grid_h = y + 2
     if d.get('legend'):
         y += 14
         x, lrow = 8, 24
@@ -1444,7 +1460,8 @@ def matrix(d):
             x += iw
             lrow = max(lrow, len(txt) * 14)
         y += lrow
-    return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide)
+    return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide,
+                stick=(8 + LW, stick, grid_h) if Wd > PHONE_FRAME else None)
 
 
 def _gridflow(K, items, edges, per_row, bw, gap, gap_px, start=None):
@@ -2114,7 +2131,9 @@ def line(d):
 def bars(d):
     """Grouped or stacked horizontal bars across categories: one bar per series in each row (grouped) or one bar of
     segments (stacked); values at the bar ends (a stacked bar's total at its end, a segment's value inside it when it
-    fits); a legend names the series."""
+    fits); a legend names the series. P83 (3 Nov 2026): the row label sits above its bars and the drawing is as wide as
+    a phone's figure frame (PHONE_FRAME), so on a phone a bar, its value and its label are always in view together; on a
+    wider screen the drawing keeps that size (viz-fit) instead of stretching to the column."""
     K = 'bars'
     series, rows = d.get('series'), d.get('rows')
     mode = d.get('mode', 'grouped')
@@ -2137,22 +2156,21 @@ def bars(d):
     tot = [sum(v or 0 for v in r['values']) for r in rows]
     big = max(tot) if mode == 'stacked' else max(v or 0 for r in rows for v in r['values'])
     mx = d.get('max') or _ticks(0, big or 1)[-1]
-    labs, LW = _row_labels(rows, K)
-    vals = [_fmt(v, dec) + unit for r, t in zip(rows, tot) for v in (r['values'] + [t])]
+    Wd = PHONE_FRAME
+    labs = [_lines(r['label'], T_LABEL, Wd - 16) for r in rows]
+    vals = [_fmt(v, dec) + unit for r, t in zip(rows, tot) for v in (r['values'] + [t]) if v is not None]
     VW = max(_tw(v, 10.5, 'mono') for v in vals) + 12
-    bx, bw = 8 + LW, W - 8 - (8 + LW) - VW
-    if bw < 160:
-        _fail(K, f'the labels and values leave the bars {bw:.0f} units; shorten the labels')
+    bx, bw = 8, Wd - 8 - 8 - VW
+    if bw < 120:
+        _fail(K, f'the values leave the bars {bw:.0f} units; shorten the "unit" or drop decimals')
     body, top = '', 8
-    lg, lh = _legend([(s['name'], s['_t'], 'bar') for s in series], top, W, K)
-    body += lg; top += lh + 14
+    lg, lh = _legend([(s['name'], s['_t'], 'bar') for s in series], top, Wd, K)
+    body += lg; top += lh + 12
     y, marks = top, ''
     BH, BG = (12, 3) if mode == 'grouped' else (20, 0)
     for r, lab, t in zip(rows, labs, tot):
-        block = ns * BH + (ns - 1) * BG if mode == 'grouped' else BH
-        rh = max(block, len(lab) * 14)
-        by = y + (rh - block) / 2
-        marks += _text(lab, T_LABEL, bx - 10, y + (rh - len(lab) * 14) / 2, 'end')
+        marks += _text(lab, T_LABEL, bx, y)
+        by = y + len(lab) * 14 + 4
         if mode == 'grouped':
             for k, (s, v) in enumerate(zip(series, r['values'])):
                 yy = by + k * (BH + BG)
@@ -2162,6 +2180,7 @@ def bars(d):
                 if wv > 0:
                     marks += f'<rect class="viz-bar viz-t{s["_t"]}" x="{bx:.1f}" y="{yy:.1f}" width="{wv:.1f}" height="{BH}"/>'
                 marks += f'<text class="viz-value" x="{bx + wv + 6:.1f}" y="{yy + BH / 2 + 3.8:.1f}">{esc(_fmt(v, dec) + unit)}</text>'
+            block = ns * BH + (ns - 1) * BG
         else:
             xx = bx
             for s, v in zip(series, r['values']):
@@ -2176,9 +2195,10 @@ def bars(d):
                     marks += rect
                 xx += wv
             marks += f'<text class="viz-value" x="{xx + 6:.1f}" y="{by + BH / 2 + 3.8:.1f}">{esc(_fmt(t, dec) + unit)}</text>'
-        y += rh + 14
-    base = _line([(bx, top - 4), (bx, y - 10)], 'viz-base')
-    return _svg(W, _r(y - 14 + 8), body + base + marks, 'bars', d.get('title'), d.get('caption'))
+            block = BH
+        y = by + block + 14
+    base = _line([(bx, top - 2), (bx, y - 12)], 'viz-base')
+    return _svg(Wd, _r(y - 14 + 8), body + base + marks, 'bars viz-fit', d.get('title'), d.get('caption'))
 
 
 def scatter(d):
@@ -2399,11 +2419,12 @@ def _heat(d):
     heads = [_lines(c, T_COL, cw - 10) for c in cols]
     hh = max(len(h) for h in heads) * 12 + 12
     body = ''.join(_text(h, T_COL, 8 + LW + (k + 0.5) * cw, hh - 6 - len(h) * 12, 'middle') for k, h in enumerate(heads))
-    y = 8 + hh
+    y, stick = 8 + hh, ''
     for r in rows:
         lab = _lines(r['label'], T_LABEL, LW - 12)
         rh = max(32, len(lab) * 14 + 12)
-        body += _text(lab, T_LABEL, 8, y + (rh - len(lab) * 14) / 2)
+        lt = _text(lab, T_LABEL, 8, y + (rh - len(lab) * 14) / 2)
+        body += lt; stick += lt
         for k, c in enumerate(r['cells']):
             x = 8 + LW + k * cw
             if c is None:
@@ -2415,6 +2436,7 @@ def _heat(d):
             body += _g(f'<rect class="viz-t{tone} viz-h{lv}" x="{x + 2:.1f}" y="{y + 2:.1f}" width="{cw - 4:.1f}" height="{rh - 4:.1f}"/>'
                        + _text(m, role, x + cw / 2, y + (rh - len(m) * 13) / 2, 'middle'))
         y += rh
+    grid_h = y + 2
     # the scale: five shades with the range each one covers
     y += 14
     step = (hi - lo) / 5
@@ -2432,7 +2454,8 @@ def _heat(d):
         body += _g(f'<rect class="viz-t{tone} viz-h{i + 1}" x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="24"/>' + _text([txt], role, x + w / 2, y + 5.5, 'middle'))
         x += w + 4
     y += 24
-    return _svg(_r(Wd), _r(y + 8), body, 'matrix viz-numeric', d.get('title'), d.get('caption'), wide=wide)
+    return _svg(_r(Wd), _r(y + 8), body, 'matrix viz-numeric', d.get('title'), d.get('caption'), wide=wide,
+                stick=(8 + LW, stick, grid_h) if Wd > PHONE_FRAME else None)
 
 
 KINDS = {'timeline': timeline, 'compare': compare, 'tree': tree, 'flow': flow,

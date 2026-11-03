@@ -160,6 +160,18 @@ FRAME_JS = r'''async ([scope, phone]) => {
     if (o !== shown) bad.push(`${kind}: drawing ${w.toFixed(0)} px in a ${f.clientWidth} px frame, cue ${shown ? 'shown' : 'not shown'}`);
     if (o && f.getAttribute('data-more') !== 'r') bad.push(`${kind}: an overflowing frame at its start is marked ${f.getAttribute('data-more')}, expected r`);
     if (!o && f.hasAttribute('data-more')) bad.push(`${kind}: a frame that fits is marked ${f.getAttribute('data-more')}`);
+    // P83 (3 Nov 2026): on a phone a bars figure and a one- or two-a-row flow fit their frame; a matrix or compare wider than
+    // its frame keeps its label column (.viz-stick) at the frame's left edge however far it is scrolled
+    if (phone && o && (kind === 'viz-bars' || kind === 'viz-flow' && [...svg.querySelectorAll('rect.viz-node')].filter(r => +r.getAttribute('y') === 8).length <= 2))
+      bad.push(`${kind}: ${w.toFixed(0)} px wide, so it scrolls a ${f.clientWidth} px phone frame (P83: it fits)`);
+    const st = f.querySelector('.viz-stick');
+    if (phone && o && (kind === 'viz-matrix' || kind === 'viz-compare') && !st) bad.push(`${kind}: scrolls with no label column (.viz-stick) to keep in view (P83)`);
+    if (phone && st && getComputedStyle(st).display !== 'none') {
+      f.scrollLeft = f.scrollWidth; const sr2 = st.getBoundingClientRect(), fr2 = f.getBoundingClientRect(), ss = st.querySelector('svg');
+      if (Math.abs(sr2.left - fr2.left) > 1) bad.push(`${kind}: the label column sits ${(sr2.left - fr2.left).toFixed(0)} px from the frame edge when scrolled to the end (P83: sticky)`);
+      if (ss && Math.abs(ss.getBoundingClientRect().height - svg.getBoundingClientRect().height) > 1) bad.push(`${kind}: the label column is not as tall as the drawing`);
+      f.scrollLeft = 0; f.dispatchEvent(new Event('scroll'));
+    }
   });
   return {n, over, bad: bad.slice(0, 8)};
 }'''
@@ -187,7 +199,7 @@ def frames(pg, fig, path, label):
     if not sc:
         return 0
     pg.evaluate("""() => { for (const el of document.querySelectorAll('body *')) { const p = getComputedStyle(el).position;
-      if (p === 'sticky') { el.dataset.p89 = 's'; el.style.setProperty('position', 'static', 'important'); }
+      if (p === 'sticky' && !el.closest('.viz-scroll')) { el.dataset.p89 = 's'; el.style.setProperty('position', 'static', 'important'); }   // P83: a figure's own label column stays sticky, so the sheets show it as the reader sees it
       else if (p === 'fixed') { el.dataset.p89 = 'f'; el.style.setProperty('visibility', 'hidden', 'important'); } } }""")
     fig.scroll_into_view_if_needed(); pg.wait_for_timeout(60)
     sw, cw, x_open, x0 = sc.evaluate("s => [s.scrollWidth, s.clientWidth, s.scrollLeft, +s.getAttribute('data-x0px') || 0]")
