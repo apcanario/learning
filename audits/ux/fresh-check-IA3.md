@@ -470,3 +470,7 @@ PASS. Figure 5 kept. No text finding. The figure-checkers' notes on phone width 
 ## Maintainer's note on the filing (N8, 3 Nov 2026)
 
 One link changed outside the findings: the Search Analytics book's link (§5.2 and Sources) was the URL the writer fetched with a slash it had added to the one its search returned (a URL built by editing another, recorded in the changelog); the checker could not confirm it as a link. A WebSearch by the maintainer returned https://rosenfeldmedia.com/books/search-analytics, and a fetch of it shows the page for *Search Analytics for Your Site: Conversations with Your Customers* by Louis Rosenfeld; both occurrences now use that URL.
+
+## Maintainer's note on the unsure list (N8, 3 Nov 2026, 10:15, Fable 5.1)
+
+Pedro asked whether every fault was fixed; four unsure-list items the checker had confirmed were still written as unverified. Each re-verified under the web rule (a search, then a fetch of a returned URL): Bates 1989, 13(5), 407–424 (bibliographic record); Morville's three-part definition on p. 4 (Tonkin's review, Ariadne 49); Katz and Byrne, TOCHI 10(3), 198–220 (a reference list; the body of that page once dates it 2004, the list 2003, and the ACM record says September 2003); Rosch 1976's furniture, chair, kitchen chair in Table 1. Applied: Bates's pages added in §5.1 and Sources; the four unsure lines reworded to say what was confirmed and how; the reading page's "Known gaps" shortened to the gaps that remain.
