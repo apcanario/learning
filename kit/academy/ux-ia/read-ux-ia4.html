@@ -1,0 +1,1176 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#ux-ia" data-target="ux-ia">Course IA · Information architecture</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">IA4</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--blue)">INFORMATION ARCHITECTURE</span> · IA4 <span class="pill live">IA4</span></div>
+    <h1>Organisation systems: schemes, structures, objects, taxonomies</h1>
+    <p class="scope">Exact and ambiguous schemes, hierarchy and polyhierarchy, faceted classification, object-oriented UX, taxonomy versus folksonomy.</p>
+  </header>
+  <div class="stepbar" data-n="7"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 7</span><span class="stt">Organisation schemes</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-ux-ia4-0" data-step="0"><span class="n">01</span><span class="t">Organisation schemes</span></a></li><li><a href="#read-ux-ia4-1" data-step="1"><span class="n">02</span><span class="t">Organisation structures</span></a></li><li><a href="#read-ux-ia4-2" data-step="2"><span class="n">03</span><span class="t">Faceted classification, controlled vocabularies and the taxonomy</span></a></li><li><a href="#read-ux-ia4-3" data-step="3"><span class="n">04</span><span class="t">Object-oriented UX: the nouns before the pages</span></a></li><li><a href="#read-ux-ia4-4" data-step="4"><span class="n">05</span><span class="t">Where an organisation system shows up</span></a></li><li><a href="#read-ux-ia4-5" data-step="5"><span class="n">06</span><span class="t">Deliverable · A · The Perqo object map</span></a></li><li><a href="#read-ux-ia4-6" data-step="6"><span class="n">07</span><span class="t">Deliverable · B · The Perqo benefits catalogue taxonomy</span></a></li></ol><div class="secx"><a href="#read-ux-ia4-sources" data-acc>Sources</a><a href="#read-ux-ia4-note" data-acc>The writer's opening note</a><a href="#read-ux-ia4-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-ux-ia4-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">Organisation schemes</span></span></h2>
+<h3>1.1 · Exact and ambiguous</h3>
+<p>The Polar Bear book's chapter 6, "Organization Systems", divides organisation schemes into two kinds under two headings, "Exact Organization Schemes" and "Ambiguous Organization Schemes", and then treats organisation structures separately, under "The Hierarchy: A Top-Down Approach", "The Database Model: A Bottom-Up Approach" and "Hypertext", followed by "Social Classification" (Rosenfeld, Morville and Arango, <em>Information Architecture: For the Web and Beyond</em>, 4th ed., O'Reilly, 2015, ch. 6, <a target="_blank" rel="noopener" href="https://oreilly.com/library/view/information-architecture-4th/9781491913529/ch06.html">oreilly.com</a>). The distinction matters because it separates two decisions a team often makes as one. A scheme is the rule that decides which items share a group (by name, by date, by subject). A structure is the shape the groups are arranged in (a tree, a set of independent facets, a web of links). This section covers schemes, section 2 structures.</p>
+<p>In this course's words: an <strong>exact</strong> scheme divides content into groups that do not overlap, by a property every item has exactly one value of, so that placing an item needs no judgement. An <strong>ambiguous</strong> scheme divides content by meaning, so that placing an item is a judgement, and different people judge differently. IA3 already set out why meaning-based grouping is hard: the chapter's four challenges, Ambiguity, Heterogeneity, Differences in Perspectives and Internal Politics (IA3, section 3.2), and the prototype structure of categories, which makes central members easy to place and far members easy to miss (IA3, sections 3.1 and 3.3). This unit builds on those and does not repeat them.</p>
+<p>The exact schemes the chapter names are three. Richard Saul Wurman had proposed a similar short list in <em>Information Anxiety</em> (Doubleday, 1989): his "five ultimate hat racks", later abbreviated LATCH, for location, alphabet, time, category and continuum, the last later renamed hierarchy; a reviewer notes their resemblance to the facets of Ranganathan's colon classification (D. Ben Woods, review of <em>Information Anxiety</em>, UXmatters, 18 March 2019, <a target="_blank" rel="noopener" href="https://uxmatters.com/mt/archives/2019/03/book-review-information-anxiety.php">uxmatters.com</a>; a review, cited for its description of the book). Location, alphabet and time are the exact three.</p>
+<ul>
+<li><strong>Alphabetical.</strong> Items in the order of their names. It works when the person knows the item's name, and in the word the list uses. Furnas and colleagues found that two people chose the same term for an object with a probability under 0.20 (Furnas, Landauer, Gomez and Dumais, <em>Communications of the ACM</em> 30, no. 11, 1987; IA3, section 4.2), so an alphabetical list is exact for the system and ambiguous for the person who has to guess the first letter. An A to Z index works when its entries include the variants people use.</li>
+<li><strong>Chronological.</strong> Items in date order. It suits content whose date is what people ask about: news, a history, a statement of transactions. It is exact because every item has one date; it answers "what happened recently" and fails "where is the thing about X".</li>
+<li><strong>Geographical.</strong> Items by place. It suits content that differs by place (a branch, a law, a delivery area) and people who know where they are.</li>
+</ul>
+<p>On ordering inside a menu, one result reported from early menu research is that alphabetical ordering of selections beat functional ("logical") ordering, which beat random ordering (Card 1982, as reported in the abstract of "Menu Structure and Ordering of Menu Selection: Independent or Interactive Effects?", <em>ACM SIGCHI Bulletin</em> 18, no. 2, October 1986, <a target="_blank" rel="noopener" href="https://unpaywall.org/10.1145%2F15683.1044100">unpaywall.org</a>; the 1982 study itself was not seen). The same abstract reports that Snowberry and others (1983) found breadth superior "only with consistent ordering of selections within levels" (same abstract). The finding is about selecting a known target from a menu, the case alphabetical order is built for.</p>
+<p>The ambiguous schemes are four, with the hybrid, which the chapter treats in its own section, as a fifth here.</p>
+<ul>
+<li><strong>Topic.</strong> Items by subject. Perqo's four benefit categories, Health, Learning, Mobility and Meals (Perqo, fictional), are a topic scheme (IA3, section 3.2). It is the scheme people expect for browsing a subject they cannot yet name, and the one most exposed to the ambiguity and prototype effects IA3 described.</li>
+<li><strong>Task.</strong> Items by what the person is trying to do. It suits a product used for a small set of recurring jobs. Its risk is that tasks overlap and are phrased as actions; Laubheimer counts conversational "I want to…" labels among the low-scent faults ("3 Common IA Mistakes", Nielsen Norman Group, 16 April 2023, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/3-ia-mistakes/">nngroup.com/articles/3-ia-mistakes</a>; IA3, section 1.2).</li>
+<li><strong>Audience.</strong> Items by who they are for. It works when the audiences are distinct, know which one they belong to, and want different content. It fails when content serves both, because the item must then be duplicated or one audience must cross into the other's area.</li>
+<li><strong>Metaphor.</strong> Items arranged after something familiar from elsewhere (a desktop, a shop, a wallet). Cooper and his co-authors argue that metaphors rarely scale beyond their first few features and that most interface conventions are learned idioms whose value does not depend on resembling anything (<em>About Face</em>, 4th ed., Wiley, 2014, ch. 13, "Metaphors, Idioms, and Affordances"). On that argument a metaphor is a scheme for a small surface or a single screen, chosen for orientation, and retired when the content outgrows it.</li>
+<li><strong>Hybrid.</strong> Two or more schemes mixed in one set of choices. The fault is the mixing within one list: a person scanning a list must first work out what kind of list it is, which is IA3's heterogeneity point (IA3, section 3.3, C1). Layering schemes at different levels (audience first, then task, as the Help centre does) is a combination of schemes, each level of one kind, and passes C1.</li>
+</ul>
+<p>The catalogue, as a tree, with the place each scheme is used at Perqo (Perqo, fictional). The examples: Perqo Admin's Employees list is ordered alphabetically by name, and the Perqo app's Purchases and Claims lists are ordered newest first (both set here); geographical and metaphor schemes are not used at Perqo; the four benefit categories in the app's Benefits are the topic scheme; the Help centre on perqo.com is split first by audience (For HR and finance teams, For employees) and then by task (IA1, section 2.3); and the app's as-is Benefits list, four categories with "Perks" as a fifth item, is a hybrid that fails C1 (IA3, Deliverable).</p>
+<figure class="viz viz-tree viz-wide"><div class="viz-scroll"><svg viewBox="0 0 982 324" width="982" height="324" data-xr="494" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="tree"><path class="viz-edge" d="M430.0,48 C430.0,70.0 186.0,70.0 186.0,92"/><path class="viz-edge" d="M186.0,126 C186.0,148.0 64.0,148.0 64.0,170"/><path class="viz-edge" d="M64.0,204 C64.0,226.0 64.0,226.0 64.0,248"/><g data-box=""><rect class="viz-node viz-t4" x="8.0" y="248" width="112" height="68" rx="2"/><text class="viz-nodelabel" x="64.0" y="272.3" text-anchor="middle">Admin:</text><text class="viz-nodelabel" x="64.0" y="286.3" text-anchor="middle">Employees, by</text><text class="viz-nodelabel" x="64.0" y="300.3" text-anchor="middle">name</text></g><g data-box=""><rect class="viz-node viz-t5" x="8.0" y="170" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="64.0" y="191.3" text-anchor="middle">Alphabetical</text></g><path class="viz-edge" d="M186.0,126 C186.0,148.0 186.0,148.0 186.0,170"/><path class="viz-edge" d="M186.0,204 C186.0,226.0 186.0,226.0 186.0,248"/><g data-box=""><rect class="viz-node viz-t3" x="130.0" y="248" width="112" height="68" rx="2"/><text class="viz-nodelabel" x="186.0" y="272.3" text-anchor="middle">App: Purchases</text><text class="viz-nodelabel" x="186.0" y="286.3" text-anchor="middle">and Claims,</text><text class="viz-nodelabel" x="186.0" y="300.3" text-anchor="middle">newest first</text></g><g data-box=""><rect class="viz-node viz-t5" x="130.0" y="170" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="186.0" y="191.3" text-anchor="middle">Chronological</text></g><path class="viz-edge" d="M186.0,126 C186.0,148.0 308.0,148.0 308.0,170"/><g data-box=""><rect class="viz-node viz-t5" x="252.0" y="170" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="308.0" y="191.3" text-anchor="middle">Geographical</text></g><g data-box=""><rect class="viz-node viz-t5" x="130.0" y="92" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="186.0" y="113.3" text-anchor="middle">Exact</text></g><path class="viz-edge" d="M430.0,48 C430.0,70.0 674.0,70.0 674.0,92"/><path class="viz-edge" d="M674.0,126 C674.0,148.0 430.0,148.0 430.0,170"/><path class="viz-edge" d="M430.0,204 C430.0,226.0 430.0,226.0 430.0,248"/><g data-box=""><rect class="viz-node viz-t3" x="374.0" y="248" width="112" height="68" rx="2"/><text class="viz-nodelabel" x="430.0" y="272.3" text-anchor="middle">App: Health,</text><text class="viz-nodelabel" x="430.0" y="286.3" text-anchor="middle">Learning,</text><text class="viz-nodelabel" x="430.0" y="300.3" text-anchor="middle">Mobility, Meals</text></g><g data-box=""><rect class="viz-node viz-t5" x="374.0" y="170" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="430.0" y="191.3" text-anchor="middle">Topic</text></g><path class="viz-edge" d="M674.0,126 C674.0,148.0 552.0,148.0 552.0,170"/><path class="viz-edge" d="M552.0,204 C552.0,226.0 552.0,226.0 552.0,248"/><g data-box=""><rect class="viz-node viz-t1" x="496.0" y="248" width="112" height="68" rx="2"/><text class="viz-nodelabel" x="552.0" y="279.3" text-anchor="middle">Help centre: by</text><text class="viz-nodelabel" x="552.0" y="293.3" text-anchor="middle">task</text></g><g data-box=""><rect class="viz-node viz-t5" x="496.0" y="170" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="552.0" y="191.3" text-anchor="middle">Task</text></g><path class="viz-edge" d="M674.0,126 C674.0,148.0 674.0,148.0 674.0,170"/><path class="viz-edge" d="M674.0,204 C674.0,226.0 674.0,226.0 674.0,248"/><g data-box=""><rect class="viz-node viz-t1" x="618.0" y="248" width="112" height="68" rx="2"/><text class="viz-nodelabel" x="674.0" y="265.3" text-anchor="middle">Help centre: For</text><text class="viz-nodelabel" x="674.0" y="279.3" text-anchor="middle">HR and finance</text><text class="viz-nodelabel" x="674.0" y="293.3" text-anchor="middle">teams, For</text><text class="viz-nodelabel" x="674.0" y="307.3" text-anchor="middle">employees</text></g><g data-box=""><rect class="viz-node viz-t5" x="618.0" y="170" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="674.0" y="191.3" text-anchor="middle">Audience</text></g><path class="viz-edge" d="M674.0,126 C674.0,148.0 796.0,148.0 796.0,170"/><g data-box=""><rect class="viz-node viz-t5" x="740.0" y="170" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="796.0" y="191.3" text-anchor="middle">Metaphor</text></g><path class="viz-edge" d="M674.0,126 C674.0,148.0 918.0,148.0 918.0,170"/><path class="viz-edge" d="M918.0,204 C918.0,226.0 918.0,226.0 918.0,248"/><g data-box=""><rect class="viz-node viz-t6" x="862.0" y="248" width="112" height="68" rx="2"/><text class="viz-nodelabel" x="918.0" y="272.3" text-anchor="middle">As-is Benefits:</text><text class="viz-nodelabel" x="918.0" y="286.3" text-anchor="middle">four categories</text><text class="viz-nodelabel" x="918.0" y="300.3" text-anchor="middle">and Perks</text></g><g data-box=""><rect class="viz-node viz-t5" x="862.0" y="170" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="918.0" y="191.3" text-anchor="middle">Hybrid</text></g><g data-box=""><rect class="viz-node viz-t5" x="618.0" y="92" width="112" height="34" rx="2"/><text class="viz-nodelabel" x="674.0" y="113.3" text-anchor="middle">Ambiguous</text></g><g data-box=""><rect class="viz-node viz-t5" x="374.0" y="8" width="112" height="40" rx="2"/><text class="viz-nodelabel" x="430.0" y="25.3" text-anchor="middle">Organisation</text><text class="viz-nodelabel" x="430.0" y="39.3" text-anchor="middle">schemes</text></g></svg></div><figcaption>Tree: the catalogue of organisation schemes, with where each is used at Perqo; supports the decision on which scheme a content set gets (section 1.1). Scheme names and the exact and ambiguous split from Rosenfeld, Morville and Arango, Information Architecture: For the Web and Beyond, 4th ed., 2015, ch. 6, headings; examples from this section, IA1, section 2.3, and IA3, Deliverable. Tone 5 marks the scheme terms, which apply on every surface; each example takes its surface's tone (1 perqo.com, 3 the Perqo app, 4 Perqo Admin) and tone 6 marks a fault found in a review. Geographical and Metaphor have no example because Perqo uses neither. Perqo is fictional.</figcaption></figure>
+<h3>1.2 · Choosing a scheme by C1 to C4</h3>
+<p>The criteria IA3 handed on are questions about the person, so they do not all favour one kind of scheme. C1 (one kind of thing per group) and C4 (the person's perspective) favour exact schemes wherever the person thinks in the exact property: an employee looking for last month's claim thinks in dates. C2 and C3 apply only to ambiguous schemes, where they set the price of choosing one: an ambiguous scheme is right only if the team will also supply the examples (C2) and the second routes (C3) it needs. A working rule follows, and it is this unit's synthesis of IA3's evidence: use an exact scheme when the person already knows the property and wants an item they can name (Spencer's known-item seeking, IA3, section 5.1); use an ambiguous scheme when the person comes with a need and not a name, and budget for C2 and C3 when you do.</p>
+<p>Applied to six Perqo content sets (Perqo, fictional):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Content set</th>
+<th>Scheme chosen</th>
+<th>C1</th>
+<th>C2</th>
+<th>C3</th>
+<th>C4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Benefits in the app</td>
+<td>Topic: the four categories</td>
+<td>pass once Perks leaves the list (IA3, C1 fix)</td>
+<td>needs the catalogue's examples under each narrower term (Deliverable B)</td>
+<td>needs the cross-listings for far members (Deliverable B, rule R6)</td>
+<td>pass: categories are how the policy covers spending</td>
+</tr>
+<tr>
+<td>Claims in the app</td>
+<td>Exact: by state (Submitted, Approved, Rejected, Paid), newest first in each</td>
+<td>pass</td>
+<td>not applicable</td>
+<td>not applicable</td>
+<td>pass: IA3's B2 fix groups by all four states</td>
+</tr>
+<tr>
+<td>Purchases in the app</td>
+<td>Chronological, newest first</td>
+<td>pass</td>
+<td>not applicable</td>
+<td>not applicable</td>
+<td>pass: a purchase is remembered by when it happened</td>
+</tr>
+<tr>
+<td>Help centre on perqo.com</td>
+<td>Audience, then task</td>
+<td>pass: each level one kind</td>
+<td>not applicable at the audience level</td>
+<td>articles both audiences need are listed in both (set here)</td>
+<td>pass: an HR manager and an employee know which they are</td>
+</tr>
+<tr>
+<td>Employees in Perqo Admin</td>
+<td>Alphabetical by name, filtered by employee group</td>
+<td>pass</td>
+<td>not applicable</td>
+<td>not applicable</td>
+<td>pass: HR looks people up by name</td>
+</tr>
+<tr>
+<td>Card offers in the app (the label IA3 proposed)</td>
+<td>Topic: the same benefit categories, through the catalogue (Deliverable B)</td>
+<td>pass</td>
+<td>the offer names the item it is for</td>
+<td>an offer is filed under its item's one category</td>
+<td>named as a business request: the partnerships team asked for offers to be shown (IA3, C4)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The last row reuses the benefits taxonomy for a second content set. That is the strongest argument for building the taxonomy as a separate artefact: one classification serves the benefits screens, the offers list, the Help centre's search synonyms and Admin's policy editor (section 5).</p>
+<nav class="secnav" aria-label="Sections"><a class="snext" href="#read-ux-ia4-1" data-step="1"><span>Next · 2 of 7</span><b>Organisation structures</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-ux-ia4-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">Organisation structures</span></span></h2>
+<h3>2.1 · Hierarchy, and the breadth-versus-depth evidence</h3>
+<p>The chapter calls the hierarchy "a top-down approach" (Rosenfeld, Morville and Arango 2015, ch. 6, heading): groups are designed first and items are placed into them. Every hierarchy has a shape, the number of choices at each level (breadth) against the number of levels (depth), and that shape is one of the few IA questions with a long run of experiments behind it.</p>
+<p>The menu studies of the 1980s set the direction. Miller tested 64 target items arranged in four structures and reported that "as depth increased so did response time to select the desired item"; Kiger repeated the work with five structures of 64 items and found time and errors rising with depth, with a structure of 4 choices then 16 the fastest and least error-prone; Snowberry, Parkinson and Sisson found search time improving as depth fell and breadth rose (Miller 1981, Kiger 1984 and Snowberry, Parkinson and Sisson 1983, all as reported by Zaphiris 2000, below; the original papers were not seen). Landauer and Nachbar's experiments showed selection time rising with the logarithm of breadth, which on Dix's analysis means that doubling the choices on a screen costs much less than adding a level (Landauer and Nachbar, CHI '85, as reported by Alan Dix, "Menu Breadth: Not a Case of Miller's 7+/-2", companion page to <em>Human-Computer Interaction</em>, 3rd ed., 2003; page dated 2010, <a target="_blank" rel="noopener" href="https://hcibook.com/e3/online/menu-breadth">hcibook.com</a>; a textbook author's page, labelled as such). Dix adds that George Miller's "seven plus or minus two", often quoted as a limit on menu length, does not apply, because a person scanning a menu does not have to remember the items: "they are there in front of you" (Dix 2010).</p>
+<p>The web studies followed. Panayiotis Zaphiris tested five link hierarchies, each over the same 64 end pages, with 17 participants, and found that "task completion time increases as the depth of the web site structure increases" ("Depth Vs Breadth in the Arrangement of Web Links", <em>Proceedings of the Human Factors and Ergonomics Society 44th Annual Meeting</em>, 2000, pp. 139 to 144, <a target="_blank" rel="noopener" href="https://ktisis.cut.ac.cy/bitstream/20.500.14279/2872/6/Zaphiris2000-Depth_Vs_Breath.pdf">ktisis.cut.ac.cy</a>). His mean task times, in seconds: 2 links a page, 6 levels, 36.0; 4 links a page, 3 levels, 32.2; 16 then 4, 2 levels, 32.4; 4 then 16, 2 levels, 21.0; 8 links a page, 2 levels, 20.3. The difference in time was significant; the difference in errors was not, because there were very few errors (Zaphiris 2000). The spread was wide (the standard deviations run from 11.3 to 27.9 seconds), and the sample is small, so the result is a direction more than a measurement.</p>
+<figure class="viz viz-compare"><div class="viz-scroll" style="--stick:143.4px"><svg viewBox="0 0 700 162" width="700" height="162" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="137.4" y="27.3" text-anchor="end">2 links a page, 6 levels</text><rect class="viz-track" x="147.4208" y="16.0" width="498.4" height="14"/><rect class="viz-bar viz-t5" x="147.4208" y="16.0" width="448.6" height="14"/><text class="viz-value" x="604.0" y="26.8">36.0s</text><text class="viz-label" x="137.4" y="57.3" text-anchor="end">4 links a page, 3 levels</text><rect class="viz-track" x="147.4208" y="46.0" width="498.4" height="14"/><rect class="viz-bar viz-t5" x="147.4208" y="46.0" width="401.3" height="14"/><text class="viz-value" x="556.7" y="56.8">32.2s</text><text class="viz-label" x="137.4" y="87.3" text-anchor="end">16 then 4, 2 levels</text><rect class="viz-track" x="147.4208" y="76.0" width="498.4" height="14"/><rect class="viz-bar viz-t5" x="147.4208" y="76.0" width="403.7" height="14"/><text class="viz-value" x="559.2" y="86.8">32.4s</text><text class="viz-label" x="137.4" y="117.3" text-anchor="end">4 then 16, 2 levels</text><rect class="viz-track" x="147.4208" y="106.0" width="498.4" height="14"/><rect class="viz-bar viz-t5" x="147.4208" y="106.0" width="261.7" height="14"/><text class="viz-value" x="417.1" y="116.8">21.0s</text><text class="viz-label" x="137.4" y="147.3" text-anchor="end">8 links a page, 2 levels</text><rect class="viz-track" x="147.4208" y="136.0" width="498.4" height="14"/><rect class="viz-bar viz-t5" x="147.4208" y="136.0" width="253.0" height="14"/><text class="viz-value" x="408.4" y="146.8">20.3s</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 143.4 162" width="143.4" height="162" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="143.4" height="162"/><text class="viz-label" x="137.4" y="27.3" text-anchor="end">2 links a page, 6 levels</text><text class="viz-label" x="137.4" y="57.3" text-anchor="end">4 links a page, 3 levels</text><text class="viz-label" x="137.4" y="87.3" text-anchor="end">16 then 4, 2 levels</text><text class="viz-label" x="137.4" y="117.3" text-anchor="end">4 then 16, 2 levels</text><text class="viz-label" x="137.4" y="147.3" text-anchor="end">8 links a page, 2 levels</text></svg></div></div><figcaption>Compare: breadth versus depth, mean task time to reach a target in five link structures over the same 64 pages; supports the decision on how many levels a hierarchy gets (section 2.1). Data from Zaphiris, 'Depth Vs Breadth in the Arrangement of Web Links', Proceedings of the HFES 44th Annual Meeting, 2000, 17 participants; times differed significantly, errors did not. Every bar is tone 5, since the figure is about structures on any surface; the deepest structure, 2 links a page over 6 levels, is the slowest.</figcaption></figure>
+<p>Kevin Larson and Mary Czerwinski tested 512 documents in three structures: three levels of 8 links each; 16 links at the top and 32 at the second level; and 32 at the top and 16 at the second. Users "performed reliably slowest and were most lost when the number of links was held to 8", and were "fastest and least lost with the website with 16 top-level items", though not reliably faster than with 32 (Mary P. Czerwinski and Kevin Larson, "Cognition and the Web: Moving from Theory to Web Design", Microsoft Research, <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2002/01/HFandtheWebChapter.pdf">microsoft.com</a>, reporting their CHI 98 study). The CHI 98 abstract puts the result in one line: "increased depth did harm search performance on the web", and "a medium condition of depth and breadth outperformed the broadest shallow web structure overall" ("Web Page Design: Implications of Memory, Structure and Scent for Information Retrieval", <em>CHI 98</em>, ACM, 1998, pp. 25 to 32, <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/publication/web-page-design-implications-memory-structure-scent-information-retrieval/">microsoft.com/research</a>; IA3, section 6.2). Katz and Byrne found that on novel sites browsing depended on both the breadth and the scent of the menus (IA3, section 5.1).</p>
+<p>Kathryn Whitenton's NN/g article turns the evidence into guidance: "All other things being equal, deep hierarchies are more difficult to use"; flat hierarchies "tend to work well if you have distinct, recognizable categories"; but when a level has few categories, "they tend to be more generic and, thus, more confusing", while "users can also become overwhelmed with long, cluttered menus"; and "going too far to either extreme will backfire" ("Flat vs. Deep Website Hierarchies", Nielsen Norman Group, 10 November 2013, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/flat-vs-deep-hierarchy/">nngroup.com/articles/flat-vs-deep-hierarchy</a>). NN/g guidance; the article cites no study, and the studies above are this unit's grounding for it.</p>
+<p>What the evidence supports, and what it does not. It supports a default: prefer breadth to depth, up to the point where a level's labels stop being distinct, because each added level is one more choice that must carry scent (IA3, section 6.2). It does not support any fixed number of items per level. The studies used lists of known targets on desktop screens, and Larson and Czerwinski's best case was a medium one; Zaphiris's two 2-level structures with the same 64 pages differed by eleven seconds depending on which level was broad. On a phone, breadth costs scrolling, which none of these studies measured; that is a gap, and this unit leaves it unsourced. The Perqo app's tab bar of five, with the four categories one level below (Perqo, fictional), is shallow by every one of these measures; its faults were scent faults (IA3), and a deeper structure would not have fixed them.</p>
+<h3>2.2 · Polyhierarchy</h3>
+<p>A strict hierarchy gives every item one parent. Page Laubheimer defines the alternative: "A polyhierarchy refers to a graph structure in which at least some child nodes have more than one parent nodes" ("Polyhierarchies Improve Findability for Ambiguous IA Categories", Nielsen Norman Group, 13 May 2018, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/polyhierarchy/">nngroup.com/articles/polyhierarchy</a>). The Polar Bear book places polyhierarchy in its chapter on thesauri and controlled vocabularies, beside faceted classification (Rosenfeld, Morville and Arango 2015, ch. 10, headings, <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/information-architecture-4th/9781491913529/ch10.html">oreilly.com</a>). Laubheimer gives the benefit, that "having the same product category appear in multiple places supports several different mental models", and three costs: breadcrumbs, which show one canonical path that may not be the one the person took; disorientation in hierarchies deeper than a few levels if breadcrumbs are dropped; and cognitive load, since "too many parents for any given node increase cognitive load and make navigation difficult". His recommendation, NN/g guidance: add a second parent only where research such as closed card sorting, tree testing or usability testing shows people reasonably expect the item there, and for large collections with heavy overlap, use faceted search instead (Laubheimer 2018).</p>
+<p>Polyhierarchy is the structural form of IA3's C3 fix. The cookery course, the yoga class and the bike helmet (Perqo, fictional) are far members of their categories, each with an assumed second place an employee looks (IA3, section 3.3). Listing each in both places is a polyhierarchy of display. One constraint at Perqo keeps the money single-parented: a claim is checked against the balance of one category (IA3, section 2.3), so each item has one home category, and the second listing only points to it ("Cookery course: covered under Learning", IA3, C3). Deliverable B writes that as rule R6.</p>
+<h3>2.3 · The database model and faceted structures</h3>
+<p>The chapter's second structure is "The Database Model: A Bottom-Up Approach" (Rosenfeld, Morville and Arango 2015, ch. 6, heading). In this course's words: items are described by fields (metadata), and the groups are made at the time of asking, by selecting and sorting on those fields. Admin's Employees list, ordered by name and filtered by employee group (Perqo, fictional), is a database structure: no one designs a page for "employees in the Engineering group"; the filter produces it.</p>
+<p>A faceted structure is the database model with its fields designed as independent classifications. The idea is older than the web: S. R. Ranganathan's Colon Classification, first published in 1933, built subjects by combining values from separate facets, and its fourth edition (1952) named five fundamental categories, "personality, matter, energy, space, and time, famously known as PMEST" (M. P. Satija, "Colon Classification (CC)", <em>ISKO Encyclopedia of Knowledge Organization</em>, version 2.0, 2017, <a target="_blank" rel="noopener" href="https://isko.org/cyclo/colon_classification">isko.org</a>). Marti Hearst describes its interface form: "a set of category hierarchies each of which corresponds to a different facet (dimension or feature type)", where "each item in the collection can be assigned many labels from the hierarchies", and choosing values "builds up a complex query that is a conjunction of disjunctions over subhierarchies"; for browsing tasks, such interfaces are "overwhelmingly preferred" over keyword search and result lists, and they show "previews of where to go next" while "avoiding empty results sets" ("Clustering versus Faceted Categories for Information Exploration", <em>Communications of the ACM</em> 49, no. 4, 2006, pp. 59 to 61, <a target="_blank" rel="noopener" href="https://flamenco.ischool.berkeley.edu/papers/cacm06.pdf">flamenco.ischool.berkeley.edu</a>). The measured study behind that preference: 32 art history students explored 35,000 fine-arts images, and 90% preferred the faceted metadata interface overall, 97% said it helped them learn more about the collection, 75% found it more flexible and 72% found it easier to use than a standard baseline (Ka-Ping Yee, Kirsten Swearingen, Kevin Li and Marti Hearst, "Faceted Metadata for Image Search and Browsing", <em>CHI 2003</em>, ACM, 2003, abstract, <a target="_blank" rel="noopener" href="https://unpaywall.org/10.1145%2F642611.642681">unpaywall.org</a>). Hearst names the drawback: "by far the greatest drawback is the fact that in most cases the category hierarchies are built by hand" (Hearst 2006). A faceted structure is a taxonomy someone has to maintain, which is why Deliverable B carries rules.</p>
+<h3>2.4 · Hypertext</h3>
+<p>The chapter's third structure is "Hypertext" (Rosenfeld, Morville and Arango 2015, ch. 6, heading): items joined by links that cross the groups. It is the structure of contextual navigation, and its strength is that it follows the person's associations; its weakness is that a web of links has no shape a person can hold, so it is used on top of a hierarchy or a database, rarely alone. Prater's object mapping produces hypertext directly: nesting objects inside each other finds the cross-links, which, she argues, define contextual navigation (Prater 2015; IA2, section 1.5). A Help centre article that links to the task's other articles, and the route from an employee's record in Admin to the claims they made (IA2, section 5.3), are both hypertext.</p>
+<h3>2.5 · How real systems combine them</h3>
+<p>No surface of any size uses one structure. The combinations at Perqo (Perqo, fictional), each a structure chosen for one content set:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Where at Perqo</th>
+<th>Why this structure there</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hierarchy</td>
+<td>the app's tab bar and the four categories under Benefits; perqo.com's top level; the Help centre's audience and task levels</td>
+<td>few, distinct groups that people browse (Whitenton 2013)</td>
+</tr>
+<tr>
+<td>Polyhierarchy</td>
+<td>far members of a category listed in a second category (Deliverable B, R6)</td>
+<td>ambiguous items with an assumed second place (Laubheimer 2018; IA3, C3)</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>Admin's Employees and Approvals lists; the app's Claims and Purchases lists</td>
+<td>many items of one kind, each with fields people sort and filter by</td>
+</tr>
+<tr>
+<td>Faceted</td>
+<td>the benefits catalogue (Deliverable B)</td>
+<td>items described on several independent dimensions (Hearst 2006)</td>
+</tr>
+<tr>
+<td>Hypertext</td>
+<td>contextual routes: an employee's record to their claims; the Claims screen to the claim articles; article to article</td>
+<td>routes that follow the relationships between objects (Prater 2015)</td>
+</tr>
+</tbody>
+</table></div>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia4-0" data-step="0"><span>Previous · 1 of 7</span><b>Organisation schemes</b></a><a class="snext" href="#read-ux-ia4-2" data-step="2"><span>Next · 3 of 7</span><b>Faceted classification, controlled vocabularies and the taxonomy</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-ux-ia4-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">Faceted classification, controlled vocabularies and the taxonomy</span></span></h2>
+<h3>3.1 · Metadata and the controlled vocabulary underneath</h3>
+<p>A database or faceted structure is only as good as the values in its fields. The Polar Bear book's chapter 10 opens with metadata, then controlled vocabularies (with sections on synonym rings, authority files and classification schemes), then thesauri, the three semantic relationships (equivalence, hierarchical, associative), preferred terms (with sections on term form, selection, definition and specificity), polyhierarchy and faceted classification (Rosenfeld, Morville and Arango 2015, ch. 10, headings). IA2 introduced the relationships and the US standard for controlled vocabularies, ANSI/NISO Z39.19 (IA2, section 1.2), and built a first slice of Perqo's vocabulary on them (IA2, section 5.3). This unit adds what IA2 did not cover: a faceted classification is a set of controlled vocabularies, one per facet, and every rule that keeps a vocabulary sound (one preferred term per concept, variants recorded, a defined scope) applies to each facet separately.</p>
+<p>Heather Hedden's <em>The Accidental Taxonomist</em> is the practitioner's book-length guide. Its third edition shifts its emphasis from the traditional thesaurus model of terms to the SKOS model of concepts and adds a chapter on ontologies (publisher's description, Information Today, November 2022, <a target="_blank" rel="noopener" href="https://books.infotoday.com/Ebooks/489_The-Accidental-Taxonomist-Third-Edition.htm">books.infotoday.com</a>). The shift matters for a product team in one way: a concept has an identifier and several labels, which is exactly IA1's mapping of one data-model entity to a label per surface (IA1, section 2.4). The chapter contents of the third edition were not checked, so this unit cites the book for its scope and no chapter-level claim.</p>
+<h3>3.2 · What makes a facet sound</h3>
+<p>The rules below are the ones Deliverable B applies. Each is tied to its source; together they are this unit's synthesis, and they are practice, not a measured finding.</p>
+<ul>
+<li><strong>A facet answers one question about the item.</strong> Hearst's facets are each "a different facet (dimension or feature type)", and her recipe example has four: dish type, ingredient type, cooking method and cuisine type (Hearst 2006). A facet that answers two questions ("type and price") cannot be combined freely with the others.</li>
+<li><strong>A facet is a property of the item.</strong> A value that depends on who is asking or on another object (which client covers it, how much was spent) belongs to that other object. This is this unit's rule, from the database model: the field must be on the record it describes.</li>
+<li><strong>Each facet declares whether an item takes one value or several.</strong> Hearst's items carry "many labels from the hierarchies" (Hearst 2006); whether a given facet allows several is a design decision, and at Perqo the benefit-category facet allows one, because money moves by it (section 2.2).</li>
+<li><strong>No value is shown that holds no items.</strong> Faceted interfaces earn their preference partly by "avoiding empty results sets" (Hearst 2006).</li>
+<li><strong>Values are in the users' words, with the variants mapped.</strong> Two people rarely choose the same word, and unlimited aliasing gives several-fold improvements (Furnas and others 1987); employees' words arrive in the search log (IA3, section 5.2).</li>
+</ul>
+<h3>3.3 · Taxonomy and folksonomy</h3>
+<p>IA2 gave Laubheimer's definition of a taxonomy, "A closed list of acceptable terms that are arranged hierarchically and are used to describe and classify content" (Laubheimer, "Taxonomy 101", Nielsen Norman Group, 3 July 2022, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/taxonomy-101/">nngroup.com/articles/taxonomy-101</a>; IA2, section 1.2). The word "closed" is the difference from a folksonomy. Thomas Vander Wal, who proposed the word on 24 July 2004 in a discussion on an information architects' mailing list, defines it: "Folksonomy is the result of personal free tagging of information and objects (anything with a URL) for one's own retrieval" (Thomas Vander Wal, "Folksonomy", vanderwal.net, 2 February 2007, <a target="_blank" rel="noopener" href="https://vanderwal.net/folksonomy.html">vanderwal.net/folksonomy.html</a>; the author's own account). The Polar Bear book treats the phenomenon under "Social Classification" (2015, ch. 6, heading).</p>
+<p>The differences, side by side:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>Taxonomy</th>
+<th>Folksonomy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who assigns terms</td>
+<td>the organisation, by rules</td>
+<td>each person, for their own retrieval (Vander Wal 2007)</td>
+</tr>
+<tr>
+<td>Term list</td>
+<td>closed: a term is added by a decision (Laubheimer 2022)</td>
+<td>open: any tag a person types</td>
+</tr>
+<tr>
+<td>Variants</td>
+<td>mapped to one preferred term</td>
+<td>left as they are</td>
+</tr>
+<tr>
+<td>Hierarchy</td>
+<td>yes</td>
+<td>none, beyond what patterns emerge</td>
+</tr>
+<tr>
+<td>What it is good for</td>
+<td>consistent filters, navigation, search, reporting</td>
+<td>showing the words people actually use</td>
+</tr>
+</tbody>
+</table></div>
+<p>A folksonomy is not chaos. Scott Golder and Bernardo Huberman, studying a collaborative bookmarking system, "discovered regularities in user activity, tag frequencies, kinds of tags used" and "a remarkable stability in the relative proportions of tags within a given URL" ("Usage Patterns of Collaborative Tagging Systems", <em>Journal of Information Science</em> 32, no. 2, 2006, pp. 198 to 208, <a target="_blank" rel="noopener" href="https://journals.sagepub.com/doi/10.1177/0165551506062337">doi.org/10.1177/0165551506062337</a>). Stable tag proportions mean a folksonomy converges on the words a community uses for a thing, which is what a taxonomist needs for preferred and variant terms.</p>
+<p>Perqo has no tagging (Perqo, fictional), and a benefits product should not hand its money-moving classification to free tags: a claim needs one category. It does have a folk vocabulary: the Help centre's search log, where employees type "refund", "allowance" and "gym" (IA3, section 5.2). The working arrangement this unit sets is a closed taxonomy fed by the open vocabulary: the search log and support's tickets are read for words, and those words enter the taxonomy as variant terms under Deliverable B's rules (R3 and R4).</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia4-1" data-step="1"><span>Previous · 2 of 7</span><b>Organisation structures</b></a><a class="snext" href="#read-ux-ia4-3" data-step="3"><span>Next · 4 of 7</span><b>Object-oriented UX: the nouns before the pages</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-ux-ia4-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">Object-oriented UX: the nouns before the pages</span></span></h2>
+<h3>4.1 · The method</h3>
+<p>IA2 introduced Sophia V. Prater's object-oriented UX: "putting object design before procedural action design", with objects drawn from the user's mental model, in four steps: extract the objects from the nouns in the goals, define each object's core content, nest objects to find the cross-links, and rank each object's elements (Prater, "Object-Oriented UX", A List Apart, 20 October 2015, <a target="_blank" rel="noopener" href="https://alistapart.com/article/object-oriented-ux/">alistapart.com/article/object-oriented-ux</a>; IA2, section 1.5). Her follow-up article takes the object map from the first as given, each object's core content, metadata and nested objects marked on it and ranked, and adds the actions in a workshop run object by object. Calls to action are "the main entry points to interaction flows", and "A CTA Inventory is just a fancy list of potential CTAs organized around your objects", which serves as "a bridge from big-picture OOUX to detailed interaction design"; the team brainstorms the actions object by object, then records for each one why it exists, who triggers it, where it lives, its complexity, its priority and its open questions (Prater, "OOUX: A Foundation for Interaction Design", A List Apart, 19 April 2016, <a target="_blank" rel="noopener" href="https://alistapart.com/article/ooux-a-foundation-for-interaction-design/">alistapart.com/article/ooux-a-foundation-for-interaction-design</a>; practice). She later named the whole sequence: "ORCA stands for objects, relationships, calls to actions, and attributes" (interview by Thomas Betts, "Object-Oriented UX with Sophia Prater", InfoQ podcast, 6 May 2024, <a target="_blank" rel="noopener" href="https://www.infoq.com/podcasts/object-oriented-ux-sophia-prater/">infoq.com</a>; interview, practice). The 2015 article defines content before nesting; the ORCA acronym puts relationships second. The order is a working order, and the figure follows the 2015 article with the 2016 CTA step added.</p>
+<figure class="viz viz-flow"><div class="viz-scroll"><svg viewBox="0 0 328 355" width="328" height="355" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="flow"><g data-box=""><rect class="viz-node viz-t5" x="8" y="8" width="143" height="109" rx="2"/><text class="viz-nodelabel" x="20.0" y="31.3" text-anchor="start">Extract objects</text><text class="viz-nodelabel" x="20.0" y="45.3" text-anchor="start">from the nouns in</text><text class="viz-nodelabel" x="20.0" y="59.3" text-anchor="start">the goals</text><text class="viz-note" x="20.0" y="76.3" text-anchor="start">claim, allocation,</text><text class="viz-note" x="20.0" y="89.3" text-anchor="start">policy, card,</text><text class="viz-note" x="20.0" y="102.3" text-anchor="start">offer</text></g><path class="viz-arrow" d="M155,62.5 L171,62.5"/><g data-box=""><rect class="viz-node viz-t5" x="177" y="8" width="143" height="109" rx="2"/><text class="viz-nodelabel" x="189.0" y="31.3" text-anchor="start">Define core</text><text class="viz-nodelabel" x="189.0" y="45.3" text-anchor="start">content and</text><text class="viz-nodelabel" x="189.0" y="59.3" text-anchor="start">metadata</text><text class="viz-note" x="189.0" y="76.3" text-anchor="start">the attributes of</text><text class="viz-note" x="189.0" y="89.3" text-anchor="start">each object</text></g><path class="viz-arrow" d="M248.5,119 L248.5,130.0 L79.5,130.0 L79.5,139"/><g data-box=""><rect class="viz-node viz-t5" x="8" y="143" width="143" height="96" rx="2"/><text class="viz-nodelabel" x="20.0" y="166.3" text-anchor="start">Nest objects in</text><text class="viz-nodelabel" x="20.0" y="180.3" text-anchor="start">each other</text><text class="viz-note" x="20.0" y="197.3" text-anchor="start">the relationships,</text><text class="viz-note" x="20.0" y="210.3" text-anchor="start">and the contextual</text><text class="viz-note" x="20.0" y="223.3" text-anchor="start">routes</text></g><path class="viz-arrow" d="M155,191.0 L171,191.0"/><g data-box=""><rect class="viz-node viz-t5" x="177" y="143" width="143" height="96" rx="2"/><text class="viz-nodelabel" x="189.0" y="166.3" text-anchor="start">List the calls to</text><text class="viz-nodelabel" x="189.0" y="180.3" text-anchor="start">action on each</text><text class="viz-nodelabel" x="189.0" y="194.3" text-anchor="start">object</text><text class="viz-note" x="189.0" y="211.3" text-anchor="start">who triggers each,</text><text class="viz-note" x="189.0" y="224.3" text-anchor="start">and where it lives</text></g><path class="viz-arrow" d="M248.5,241 L248.5,252.0 L79.5,252.0 L79.5,261"/><g data-box=""><rect class="viz-node viz-t5" x="8" y="265" width="143" height="82" rx="2"/><text class="viz-nodelabel" x="20.0" y="288.3" text-anchor="start">Rank attributes and</text><text class="viz-nodelabel" x="20.0" y="302.3" text-anchor="start">calls to action</text><text class="viz-note" x="20.0" y="319.3" text-anchor="start">→ see interaction</text><text class="viz-note" x="20.0" y="332.3" text-anchor="start">design (IA6)</text></g><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>Flow: object mapping, the steps, with Perqo's first nouns; supports the decision on what a product holds before any page is drawn (section 4.1). Steps from Prater, 'Object-Oriented UX', A List Apart, 2015 (objects from nouns, core content, nesting, ranking) and 'OOUX: A Foundation for Interaction Design', A List Apart, 2016 (CTA inventory); ORCA from Prater's interview, InfoQ, 2024. Every step is tone 5 because the objects it finds are shared across Perqo's surfaces. Perqo is fictional.</figcaption></figure>
+<h3>4.2 · Finding Perqo's nouns</h3>
+<p>The nouns come from goal statements, one per role and surface. This unit's (Perqo, fictional), with the nouns marked:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Role and surface</th>
+<th>Goal</th>
+<th>Nouns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buyer, perqo.com</td>
+<td>See what Perqo covers, read a <strong>customer story</strong>, send a <strong>demo request</strong></td>
+<td>customer story, demo request</td>
+</tr>
+<tr>
+<td>HR manager, Admin</td>
+<td>Create <strong>employee groups</strong>, give each a <strong>policy</strong> with its open categories and <strong>covered items</strong>, invite <strong>employees</strong>, approve <strong>claims</strong> over the limit</td>
+<td>employee group, policy, catalogue item, employee, claim</td>
+</tr>
+<tr>
+<td>Finance manager, Admin</td>
+<td>Set each group's <strong>budget</strong> per category and period, read spend in <strong>reports</strong></td>
+<td>allocation (Admin: Budget), report</td>
+</tr>
+<tr>
+<td>Employee, app</td>
+<td>See my <strong>balance</strong> per category, pay with my <strong>card</strong>, claim back a <strong>receipt</strong>, see my <strong>purchases</strong>, read <strong>notifications</strong>, find <strong>card offers</strong></td>
+<td>allocation (app: Balance), card, claim, card payment (app: Purchase), notification, offer</td>
+</tr>
+<tr>
+<td>Merchant</td>
+<td>Accept the <strong>card</strong>, publish <strong>offers</strong></td>
+<td>merchant, offer, card payment</td>
+</tr>
+<tr>
+<td>Support, perqo.com</td>
+<td>Keep the <strong>help articles</strong> current</td>
+<td>help article</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two words in that table are labels and not objects: Budget and Balance are the same allocation (IA1, section 2.4), and Purchase is a card payment. The object map uses the data-model name as the title and each surface's label as a line, as IA2's notation requires (IA2, section 5.2). Receipt is a noun and stays an attribute of claim: this unit's test is whether anyone finds, lists or acts on the thing apart from its parent, and nobody browses receipts. Report is a noun and is left off the map, for the reason in section 4.3.</p>
+<h3>4.3 · Where it stops</h3>
+<p>Prater's own article names the first limit: "OOUX and a CTA Inventory will not help you design the interactions themselves" (Prater 2016). In the interview she places the method's strength in core concepts, "these concepts that don't change", and calls the question of where the map lives and which copy is the source of truth once the design changes "a tough question" (Prater, in Betts 2024). Four further limits show on Perqo, on this unit's reading.</p>
+<ul>
+<li><strong>Views are not objects.</strong> Admin's Reports and the app's Home are arrangements of objects (allocations and transactions summed by group and period; balances and recent activity). Mapping them as objects puts a screen on the object map; they belong in the app map and the wireflows (IA6) and Admin's navigation model (IA7).</li>
+<li><strong>Rules and lifecycles sit outside it.</strong> The map can give a claim a status attribute and a policy an auto-approve limit; it cannot show which claims wait for HR or what moves a claim from Submitted to Paid. Those are IA2's decision tree and state diagram (IA2, section 5.3), joined to the map in IA8.</li>
+<li><strong>Terms are not objects.</strong> A benefit category has a screen in the app, but it is a value the allocation, the catalogue item and the offer are classified by. Modelled as an object, it would duplicate the taxonomy and invite two sources of truth. It stays in the taxonomy (Deliverable B), and the objects carry it as an attribute.</li>
+<li><strong>The nouns are a hypothesis.</strong> Prater draws objects from the user's mental model (Prater 2015), and IA3 showed the gap between what the system holds and what people believe (IA3, section 2.3). A map written at a desk, as this one is, records the team's model. Its objects are labelled assumed until a test (IA11) confirms that people name and group them this way.</li>
+</ul>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia4-2" data-step="2"><span>Previous · 3 of 7</span><b>Faceted classification, controlled vocabularies and the taxonomy</b></a><a class="snext" href="#read-ux-ia4-4" data-step="4"><span>Next · 5 of 7</span><b>Where an organisation system shows up</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-ux-ia4-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">Where an organisation system shows up</span></span></h2>
+<p>The same organisation decision appears in four places, and a reader of any IA artefact should be able to trace it through all four.</p>
+<ul>
+<li><strong>Navigation.</strong> The top of a hierarchy becomes the global routes, its next level the local routes, and the object relationships the contextual routes (Rosenfeld, Morville and Arango 2015, ch. 8, headings; IA2, section 1.4 and the navigation model in section 5.3).</li>
+<li><strong>Filters.</strong> Each facet becomes a filter, each value an option, and the rule against empty values becomes the rule that an option with no items is hidden or shown with zero (Hearst 2006). A single-valued facet suits a single-choice filter; a multi-valued one, a multi-choice filter.</li>
+<li><strong>Search.</strong> The controlled vocabulary becomes the synonym list (Furnas and others 1987; IA3, D3), and the facets refine the results, the "conjunction of disjunctions" Hearst describes (Hearst 2006).</li>
+<li><strong>URLs.</strong> A path that names groups records the classification. Tim Berners-Lee's advice, published by the W3C: "Cool URIs don't change", and "when you use a topic name in a URI you are binding yourself to some classification"; he lists subject, status, author and file extension among the things to leave out (Tim Berners-Lee, "Cool URIs Don't Change", W3C, 1998, <a target="_blank" rel="noopener" href="https://w3.org/Provider/Style/URI">w3.org/Provider/Style/URI</a>; W3C style guidance). The Help centre's URLs, such as perqo.com/help/employees/claims/claim-a-receipt (IA2, section 5.3), bind the audience-then-task scheme into every address, so a change to the scheme is a change to the URLs. This unit's rule for Perqo (Perqo, fictional): catalogue pages and filters address values by their stable identifiers (Deliverable B), and a renamed or moved Help centre page keeps a redirect from its old address.</li>
+</ul>
+<p>One decision traced through the four (Perqo, fictional): the benefit-category facet. Navigation: the four categories are the local routes inside Benefits. Filters: Admin's policy editor and the app's Card offers list filter by category. Search: "gym" in the Help centre maps to Fitness, under Health. URLs: a category is addressed by its identifier, CAT-HEA, so renaming its label does not break a link.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia4-3" data-step="3"><span>Previous · 4 of 7</span><b>Object-oriented UX: the nouns before the pages</b></a><a class="snext" href="#read-ux-ia4-5" data-step="5"><span>Next · 6 of 7</span><b>A · The Perqo object map</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-ux-ia4-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A · The Perqo object map</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): object map of the whole Perqo product, with relationships and counts, so at IA2's object-relationship grade, at fidelity F2; decision: what Perqo holds, what each thing carries, what people can do to it and how the things relate, before any page is drawn; readers: engineering, product management, the client, content (for the labels); leaves out: rules and lifecycles (IA2, section 5.3; IA8), screens and views (IA5, IA6), Admin's permissions and its data-model mapping at F3 (IA7), the merchant side's own surface; owner: the IA designer; version 1, dated 3 November 2026; every object is assumed until tested (section 4.3); Perqo is fictional.</em></p>
+<p><strong>Fidelity and departure.</strong> IA2's decision table gives the object map F1 in discovery and F2 in design, and puts the lines with counts in a separate grade, the object-relationship map, built for Perqo Admin in IA7 (IA2, Deliverable). The brief for this unit asks for relationships across the whole product, so this map draws them at F2, with counts in UML multiplicity notation (IA2, section 1.5). It departs from IA2's table there, and only there. It does not reach F3: data-model names are given where the course has set them, and IA7 adds the full mapping for Admin.</p>
+<p><strong>What IA7 may do with it.</strong> Add Admin objects, attributes, relationships and calls to action, and take the Admin part to F3. It renames nothing here: every object, attribute and relationship label below is meant to last, and a rename goes through the vocabulary first, with the old label kept as a variant (IA2, section 4).</p>
+<h3>A.1 · Objects</h3>
+<p>Every object below is invented for the running example (Perqo, fictional). New facts are marked <em>new</em>; the others come from IA1 to IA3 and the register. Tones: 1 perqo.com only, 2 the merchant side, 3 the app only, 4 Admin only, 5 shared across surfaces (IA2, section 5.2).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Object (data-model name)</th>
+<th>Tone</th>
+<th>Admin</th>
+<th>App</th>
+<th>perqo.com</th>
+<th>Merchant side</th>
+<th>Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O-01</td>
+<td>client <em>new</em></td>
+<td>5</td>
+<td>Company, in Settings <em>new</em></td>
+<td>not shown</td>
+<td>Customers (as customer stories)</td>
+<td>not shown</td>
+<td>name; contract start date <em>new</em></td>
+</tr>
+<tr>
+<td>O-02</td>
+<td>admin user <em>new</em></td>
+<td>4</td>
+<td>Admins, in Settings <em>new</em></td>
+<td>not shown</td>
+<td>not shown (signs in through Sign in)</td>
+<td>not shown</td>
+<td>name; work email; role (HR manager or finance manager)</td>
+</tr>
+<tr>
+<td>O-03</td>
+<td>employee group</td>
+<td>5</td>
+<td>Employee group</td>
+<td>not shown</td>
+<td>Teams and groups</td>
+<td>not shown</td>
+<td>name</td>
+</tr>
+<tr>
+<td>O-04</td>
+<td>policy</td>
+<td>5</td>
+<td>Policy</td>
+<td>not shown; its effect shows as open categories and approval rules</td>
+<td>Policies</td>
+<td>not shown</td>
+<td>open categories; auto-approve limit; covered items <em>new</em></td>
+</tr>
+<tr>
+<td>O-05</td>
+<td>employee</td>
+<td>5</td>
+<td>Employees</td>
+<td>Profile, in Account</td>
+<td>not shown</td>
+<td>not shown</td>
+<td>name; work email</td>
+</tr>
+<tr>
+<td>O-06</td>
+<td>allocation</td>
+<td>5</td>
+<td>Budget</td>
+<td>Balance</td>
+<td>Benefits budget</td>
+<td>not shown</td>
+<td>category; period; amount; spent <em>new</em>; remaining <em>new</em></td>
+</tr>
+<tr>
+<td>O-07</td>
+<td>transaction, type claim</td>
+<td>5</td>
+<td>Claim</td>
+<td>Claim</td>
+<td>Claims</td>
+<td>not shown</td>
+<td>amount; category; receipt; status (Submitted, Approved, Rejected, Paid); date submitted <em>new</em></td>
+</tr>
+<tr>
+<td>O-08</td>
+<td>transaction, type card payment</td>
+<td>5</td>
+<td>Card payment</td>
+<td>Purchase</td>
+<td>Card payments</td>
+<td>the sale <em>new</em></td>
+<td>amount; date; merchant; category <em>new</em></td>
+</tr>
+<tr>
+<td>O-09</td>
+<td>card <em>new</em></td>
+<td>5</td>
+<td>not set (IA7)</td>
+<td>Card</td>
+<td>Perqo card</td>
+<td>accepted at the till</td>
+<td>last four digits; status (Active, Frozen) <em>new</em></td>
+</tr>
+<tr>
+<td>O-10</td>
+<td>notification <em>new</em></td>
+<td>3</td>
+<td>not set (IA7)</td>
+<td>Notifications, in Account</td>
+<td>not shown</td>
+<td>not shown</td>
+<td>message; date; the claim it is about</td>
+</tr>
+<tr>
+<td>O-11</td>
+<td>merchant <em>new</em></td>
+<td>2</td>
+<td>not shown</td>
+<td>merchant name on a Purchase <em>new</em></td>
+<td>not shown</td>
+<td>the merchant</td>
+<td>name; benefit category (one narrower term, assigned by Perqo) <em>new</em>; accepts the Perqo card</td>
+</tr>
+<tr>
+<td>O-12</td>
+<td>offer <em>new</em></td>
+<td>5</td>
+<td>not shown</td>
+<td>Card offers (as-is: Perks and Discover; IA3's proposed label)</td>
+<td>not shown</td>
+<td>published by the merchant</td>
+<td>title; discount; valid until; catalogue item; merchant</td>
+</tr>
+<tr>
+<td>O-13</td>
+<td>catalogue item <em>new</em></td>
+<td>5</td>
+<td>Covered items, in Policies <em>new</em></td>
+<td>What's covered, on each category screen</td>
+<td>not shown</td>
+<td>not shown</td>
+<td>ID; name; the four facet values (Deliverable B); variant terms</td>
+</tr>
+<tr>
+<td>O-14</td>
+<td>help article</td>
+<td>1</td>
+<td>not shown</td>
+<td>Help with claims and Help open it</td>
+<td>Help centre article</td>
+<td>not shown</td>
+<td>ID; title; URL; audience; topic; owner; format; last modified (IA2, section 5.3)</td>
+</tr>
+<tr>
+<td>O-15</td>
+<td>customer story <em>new</em></td>
+<td>1</td>
+<td>not shown</td>
+<td>not shown</td>
+<td>Customer stories</td>
+<td>not shown</td>
+<td>title; URL; client</td>
+</tr>
+<tr>
+<td>O-16</td>
+<td>demo request <em>new</em></td>
+<td>1</td>
+<td>not shown</td>
+<td>not shown</td>
+<td>Book a demo</td>
+<td>not shown</td>
+<td>name; work email; company; number of employees <em>new</em></td>
+</tr>
+</tbody>
+</table></div>
+<p>The facts set here, in prose (Perqo, fictional). Finance sets the allocation for every employee in a group at once, by category and period, which is what IA1 called setting "budgets per employee group and period"; the object is still one allocation per employee, category and period (IA1, section 2.4). Each merchant that accepts the Perqo card is assigned one narrower term of the benefit-category facet by Perqo, and a card payment at that merchant spends from the employee's allocation in that term's category. The Perqo card can be frozen and unfrozen by the employee. A notification is about one claim. An offer is for one catalogue item, published by one merchant. The catalogue's content is owned by Perqo's content team; a policy covers items from it. Book a demo creates a demo request that the sales team follows up; demo requests are not in Admin.</p>
+<h3>A.2 · Relationships</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>From</th>
+<th>Relationship</th>
+<th>To</th>
+<th>Counts (from, to)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-01</td>
+<td>client</td>
+<td>has</td>
+<td>admin user</td>
+<td>1, 1..*</td>
+</tr>
+<tr>
+<td>R-02</td>
+<td>client</td>
+<td>has</td>
+<td>employee group</td>
+<td>1, 1..*</td>
+</tr>
+<tr>
+<td>R-03</td>
+<td>employee group</td>
+<td>follows</td>
+<td>policy</td>
+<td>1, 1</td>
+</tr>
+<tr>
+<td>R-04</td>
+<td>employee group</td>
+<td>contains</td>
+<td>employee</td>
+<td>1, 1..*</td>
+</tr>
+<tr>
+<td>R-05</td>
+<td>employee</td>
+<td>holds</td>
+<td>allocation</td>
+<td>1, 1..*</td>
+</tr>
+<tr>
+<td>R-06</td>
+<td>policy</td>
+<td>opens the categories of</td>
+<td>allocation</td>
+<td>1, 0..*</td>
+</tr>
+<tr>
+<td>R-07</td>
+<td>policy</td>
+<td>covers</td>
+<td>catalogue item</td>
+<td>0..<em>, 0..</em></td>
+</tr>
+<tr>
+<td>R-08</td>
+<td>employee</td>
+<td>submits</td>
+<td>transaction, type claim</td>
+<td>1, 0..*</td>
+</tr>
+<tr>
+<td>R-09</td>
+<td>transaction, type claim</td>
+<td>is checked against</td>
+<td>policy</td>
+<td>0..*, 1</td>
+</tr>
+<tr>
+<td>R-10</td>
+<td>transaction, type claim</td>
+<td>spends from</td>
+<td>allocation</td>
+<td>0..*, 1</td>
+</tr>
+<tr>
+<td>R-11</td>
+<td>employee</td>
+<td>holds</td>
+<td>card</td>
+<td>1, 0..1</td>
+</tr>
+<tr>
+<td>R-12</td>
+<td>card</td>
+<td>is used for</td>
+<td>transaction, type card payment</td>
+<td>1, 0..*</td>
+</tr>
+<tr>
+<td>R-13</td>
+<td>transaction, type card payment</td>
+<td>spends from</td>
+<td>allocation</td>
+<td>0..*, 1</td>
+</tr>
+<tr>
+<td>R-14</td>
+<td>merchant</td>
+<td>takes</td>
+<td>transaction, type card payment</td>
+<td>1, 0..*</td>
+</tr>
+<tr>
+<td>R-15</td>
+<td>transaction, type claim</td>
+<td>triggers</td>
+<td>notification</td>
+<td>1, 0..*</td>
+</tr>
+<tr>
+<td>R-16</td>
+<td>merchant</td>
+<td>publishes</td>
+<td>offer</td>
+<td>1, 0..*</td>
+</tr>
+<tr>
+<td>R-17</td>
+<td>offer</td>
+<td>is for</td>
+<td>catalogue item</td>
+<td>0..*, 1</td>
+</tr>
+<tr>
+<td>R-18</td>
+<td>help article</td>
+<td>explains</td>
+<td>policy, allocation, claim, card, catalogue item</td>
+<td>0..<em>, 0..</em></td>
+</tr>
+<tr>
+<td>R-19</td>
+<td>customer story</td>
+<td>is about</td>
+<td>client</td>
+<td>0..1, 1</td>
+</tr>
+<tr>
+<td>R-20</td>
+<td>demo request</td>
+<td>leads to</td>
+<td>client</td>
+<td>0..*, 0..1</td>
+</tr>
+</tbody>
+</table></div>
+<p>R-03, R-04, R-05, R-08, R-09 and R-10 are IA2's (IA2, section 5.3); R-06 follows from IA1's rule that HR switches categories on per group (IA1, Deliverable); the rest are new. R-11's 0..1 allows an employee whose card has not been issued.</p>
+<h3>A.3 · Calls to action</h3>
+<p>Each object's calls to action, with who triggers each and where it lives, in the columns of Prater's CTA inventory (Prater 2016). Complexity and priority are left to IA6, which designs the flows.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Call to action</th>
+<th>Who</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client</td>
+<td>-&gt; edit company details <em>new</em></td>
+<td>admin user (role not set: IA7)</td>
+<td>Admin, Settings</td>
+</tr>
+<tr>
+<td>admin user</td>
+<td>-&gt; add <em>new</em></td>
+<td>admin user (role not set: IA7)</td>
+<td>Admin, Settings</td>
+</tr>
+<tr>
+<td>employee group</td>
+<td>-&gt; create <em>new</em>; -&gt; invite employees</td>
+<td>HR manager</td>
+<td>Admin, Employees</td>
+</tr>
+<tr>
+<td>policy</td>
+<td>-&gt; edit; -&gt; add covered items <em>new</em></td>
+<td>HR manager</td>
+<td>Admin, Policies</td>
+</tr>
+<tr>
+<td>employee</td>
+<td>-&gt; invite; -&gt; move to group</td>
+<td>HR manager</td>
+<td>Admin, Employees</td>
+</tr>
+<tr>
+<td>employee</td>
+<td>-&gt; view profile</td>
+<td>employee</td>
+<td>App, Account</td>
+</tr>
+<tr>
+<td>allocation</td>
+<td>-&gt; set for a group</td>
+<td>finance manager</td>
+<td>Admin, Budgets</td>
+</tr>
+<tr>
+<td>allocation</td>
+<td>-&gt; see balance</td>
+<td>employee</td>
+<td>App, Home and Benefits</td>
+</tr>
+<tr>
+<td>transaction, type claim</td>
+<td>-&gt; submit</td>
+<td>employee</td>
+<td>App, Claims (New claim)</td>
+</tr>
+<tr>
+<td>transaction, type claim</td>
+<td>-&gt; approve; -&gt; reject</td>
+<td>HR manager</td>
+<td>Admin, Approvals</td>
+</tr>
+<tr>
+<td>transaction, type card payment</td>
+<td>-&gt; view</td>
+<td>employee</td>
+<td>App, Card (Purchases)</td>
+</tr>
+<tr>
+<td>transaction, type card payment</td>
+<td>-&gt; view in a report</td>
+<td>finance manager</td>
+<td>Admin, Reports</td>
+</tr>
+<tr>
+<td>card</td>
+<td>-&gt; view card details; -&gt; freeze; -&gt; unfreeze <em>new</em></td>
+<td>employee</td>
+<td>App, Card</td>
+</tr>
+<tr>
+<td>notification</td>
+<td>-&gt; open</td>
+<td>employee</td>
+<td>App, Account (Notifications)</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td>-&gt; publish offer</td>
+<td>merchant</td>
+<td>merchant side (surface not set)</td>
+</tr>
+<tr>
+<td>offer</td>
+<td>-&gt; view</td>
+<td>employee</td>
+<td>App, Card offers</td>
+</tr>
+<tr>
+<td>catalogue item</td>
+<td>-&gt; add item; -&gt; edit item <em>new</em></td>
+<td>Perqo content team</td>
+<td>catalogue (internal; surface not set)</td>
+</tr>
+<tr>
+<td>help article</td>
+<td>-&gt; read</td>
+<td>anyone</td>
+<td>perqo.com, Help centre</td>
+</tr>
+<tr>
+<td>help article</td>
+<td>-&gt; update</td>
+<td>support</td>
+<td>perqo.com, Help centre</td>
+</tr>
+<tr>
+<td>customer story</td>
+<td>-&gt; read</td>
+<td>buyer</td>
+<td>perqo.com, Customers</td>
+</tr>
+<tr>
+<td>demo request</td>
+<td>-&gt; submit</td>
+<td>buyer</td>
+<td>perqo.com, Book a demo</td>
+</tr>
+<tr>
+<td>demo request</td>
+<td>-&gt; follow up <em>new</em></td>
+<td>sales</td>
+<td>outside Perqo's surfaces</td>
+</tr>
+</tbody>
+</table></div>
+<h3>A.4 · The map, drawn</h3>
+<p>Split in three figures, as IA2's rule "split rather than cram" requires (IA2, section 4), with "→ see" lines where an object continues in another figure. The first holds the setup that HR and finance do in Admin: client, admin users, employee groups, policies, employees and allocations (R-01 to R-06).</p>
+<figure class="viz viz-objects"><div class="viz-scroll"><svg viewBox="0 0 700 649.0" width="700" height="649.0" data-x0="94" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="objects"><path class="viz-link" d="M322.0,69.2 L378.0,69.2"/><text class="viz-small" x="333.1" y="61.9" text-anchor="middle">1</text><text class="viz-small" x="357.8" y="61.9" text-anchor="middle">1..*</text><g data-box="" data-text="has"><rect class="viz-lblbg" x="337.1" y="73.2" width="25.7" height="16.5"/><text class="viz-linklabel" x="350.0" y="85.3" text-anchor="middle">has</text></g><path class="viz-link" d="M212.0,130.5 L212.0,202.5"/><text class="viz-small" x="197.9" y="150.1" text-anchor="middle">1</text><text class="viz-small" x="188.8" y="190.1" text-anchor="middle">1..*</text><g data-box="" data-text="has"><rect class="viz-lblbg" x="199.1" y="158.2" width="25.7" height="16.5"/><text class="viz-linklabel" x="212.0" y="170.3" text-anchor="middle">has</text></g><path class="viz-link" d="M322.0,263.0 L378.0,263.0"/><text class="viz-small" x="333.1" y="255.6" text-anchor="middle">1</text><text class="viz-small" x="366.9" y="255.6" text-anchor="middle">1</text><g data-box="" data-text="follows"><rect class="viz-lblbg" x="328.3" y="267.0" width="43.3" height="16.5"/><text class="viz-linklabel" x="350.0" y="279.0" text-anchor="middle">follows</text></g><path class="viz-link" d="M212.0,323.5 L212.0,437.5"/><text class="viz-small" x="197.9" y="343.1" text-anchor="middle">1</text><text class="viz-small" x="188.8" y="425.1" text-anchor="middle">1..*</text><g data-box="" data-text="contains"><rect class="viz-lblbg" x="186.2" y="372.2" width="51.6" height="16.5"/><text class="viz-linklabel" x="212.0" y="384.3" text-anchor="middle">contains</text></g><path class="viz-link" d="M322.0,517.5 L378.0,517.5"/><text class="viz-small" x="333.1" y="510.1" text-anchor="middle">1</text><text class="viz-small" x="357.8" y="510.1" text-anchor="middle">1..*</text><g data-box="" data-text="holds"><rect class="viz-lblbg" x="332.2" y="521.5" width="35.5" height="16.5"/><text class="viz-linklabel" x="350.0" y="533.5" text-anchor="middle">holds</text></g><path class="viz-link" d="M488.0,365.5 L488.0,437.5"/><text class="viz-small" x="473.9" y="385.1" text-anchor="middle">1</text><text class="viz-small" x="464.8" y="425.1" text-anchor="middle">0..*</text><g data-box="" data-text="opens the categories of"><rect class="viz-lblbg" x="423.7" y="393.2" width="128.5" height="16.5"/><text class="viz-linklabel" x="488.0" y="405.3" text-anchor="middle">opens the categories of</text></g><g data-box=""><rect class="viz-node viz-t5" x="102.0" y="8.0" width="220.0" height="122.5" rx="2"/><rect class="viz-solid viz-t5" x="102.0" y="8.0" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="110.0" y="25.3" text-anchor="start">client</text><text class="viz-attr" x="110.0" y="53.0" text-anchor="start">Admin: Company</text><text class="viz-attr" x="110.0" y="67.0" text-anchor="start">perqo.com: Customers</text><text class="viz-attr" x="110.0" y="81.0" text-anchor="start">name</text><text class="viz-attr" x="110.0" y="95.0" text-anchor="start">contract start date</text><path class="viz-line" d="M110.0,103.0 L314.0,103.0"/><text class="viz-small" x="110.0" y="117.8" text-anchor="start">-&gt; edit company details</text></g><g data-box=""><rect class="viz-node viz-t4" x="378.0" y="8.0" width="220.0" height="122.5" rx="2"/><rect class="viz-solid viz-t4" x="378.0" y="8.0" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="386.0" y="25.3" text-anchor="start">admin user</text><text class="viz-attr" x="386.0" y="53.0" text-anchor="start">Admin: Admins</text><text class="viz-attr" x="386.0" y="67.0" text-anchor="start">name</text><text class="viz-attr" x="386.0" y="81.0" text-anchor="start">work email</text><text class="viz-attr" x="386.0" y="95.0" text-anchor="start">role</text><path class="viz-line" d="M386.0,103.0 L590.0,103.0"/><text class="viz-small" x="386.0" y="117.8" text-anchor="start">-&gt; add</text></g><g data-box=""><rect class="viz-node viz-t5" x="102.0" y="202.5" width="220.0" height="121.0" rx="2"/><rect class="viz-solid viz-t5" x="102.0" y="202.5" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="110.0" y="219.8" text-anchor="start">employee group</text><text class="viz-attr" x="110.0" y="247.5" text-anchor="start">Admin: Employee group</text><text class="viz-attr" x="110.0" y="261.5" text-anchor="start">perqo.com: Teams and groups</text><text class="viz-attr" x="110.0" y="275.5" text-anchor="start">name</text><path class="viz-line" d="M110.0,283.5 L314.0,283.5"/><text class="viz-small" x="110.0" y="298.4" text-anchor="start">-&gt; create (HR)</text><text class="viz-small" x="110.0" y="310.9" text-anchor="start">-&gt; invite employees (HR)</text></g><g data-box=""><rect class="viz-node viz-t5" x="378.0" y="202.5" width="220.0" height="163.0" rx="2"/><rect class="viz-solid viz-t5" x="378.0" y="202.5" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="386.0" y="219.8" text-anchor="start">policy</text><text class="viz-attr" x="386.0" y="247.5" text-anchor="start">Admin: Policy</text><text class="viz-attr" x="386.0" y="261.5" text-anchor="start">app: not shown</text><text class="viz-attr" x="386.0" y="275.5" text-anchor="start">perqo.com: Policies</text><text class="viz-attr" x="386.0" y="289.5" text-anchor="start">open categories</text><text class="viz-attr" x="386.0" y="303.5" text-anchor="start">auto-approve limit</text><text class="viz-attr" x="386.0" y="317.5" text-anchor="start">covered items</text><path class="viz-line" d="M386.0,325.5 L590.0,325.5"/><text class="viz-small" x="386.0" y="340.4" text-anchor="start">-&gt; edit (HR)</text><text class="viz-small" x="386.0" y="352.9" text-anchor="start">-&gt; add covered items (HR)</text></g><g data-box=""><rect class="viz-node viz-t5" x="102.0" y="437.5" width="220.0" height="160.0" rx="2"/><rect class="viz-solid viz-t5" x="102.0" y="437.5" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="110.0" y="454.8" text-anchor="start">employee</text><text class="viz-attr" x="110.0" y="482.5" text-anchor="start">Admin: Employees</text><text class="viz-attr" x="110.0" y="496.5" text-anchor="start">app: Profile</text><text class="viz-attr" x="110.0" y="510.5" text-anchor="start">name</text><text class="viz-attr" x="110.0" y="524.5" text-anchor="start">work email</text><path class="viz-line" d="M110.0,532.5 L314.0,532.5"/><text class="viz-small" x="110.0" y="547.4" text-anchor="start">-&gt; invite (HR)</text><text class="viz-small" x="110.0" y="559.9" text-anchor="start">-&gt; move to group (HR)</text><text class="viz-small" x="110.0" y="572.4" text-anchor="start">-&gt; view profile (employee)</text><text class="viz-small" x="110.0" y="584.9" text-anchor="start">→ see figure 2</text></g><g data-box=""><rect class="viz-node viz-t5" x="378.0" y="437.5" width="220.0" height="203.5" rx="2"/><rect class="viz-solid viz-t5" x="378.0" y="437.5" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="386.0" y="454.8" text-anchor="start">allocation</text><text class="viz-attr" x="386.0" y="482.5" text-anchor="start">Admin: Budget</text><text class="viz-attr" x="386.0" y="496.5" text-anchor="start">app: Balance</text><text class="viz-attr" x="386.0" y="510.5" text-anchor="start">perqo.com: Benefits budget</text><text class="viz-attr" x="386.0" y="524.5" text-anchor="start">category</text><text class="viz-attr" x="386.0" y="538.5" text-anchor="start">period</text><text class="viz-attr" x="386.0" y="552.5" text-anchor="start">amount</text><text class="viz-attr" x="386.0" y="566.5" text-anchor="start">spent</text><text class="viz-attr" x="386.0" y="580.5" text-anchor="start">remaining</text><path class="viz-line" d="M386.0,588.5 L590.0,588.5"/><text class="viz-small" x="386.0" y="603.4" text-anchor="start">-&gt; set for a group (finance)</text><text class="viz-small" x="386.0" y="615.9" text-anchor="start">-&gt; see balance (employee)</text><text class="viz-small" x="386.0" y="628.4" text-anchor="start">→ see figure 2</text></g></svg></div><figcaption>Object map, figure 1 of 3, setup: the objects HR and finance configure, with attributes, calls to action and counts (UML multiplicity), F2; supports the decision on what Perqo holds before any page is drawn (Deliverable A). Tones as in IA2, section 5.2: 5 shared, 4 Perqo Admin only. Shared objects carry the data-model name as title and a 'Surface: Label' line per surface. Lines read left to right on a level line, top to bottom otherwise. Perqo is fictional; R-03 to R-05 from IA2, section 5.3; the rest set in Deliverable A; object-first method from Prater, A List Apart, 2015 and 2016.</figcaption></figure>
+<p>The second holds spending: the employee's card, card payments and claims, the allocation they spend from, the merchant that takes card payments, the policy a claim is checked against and the notifications a claim triggers (R-08 to R-15).</p>
+<figure class="viz viz-objects"><div class="viz-scroll"><svg viewBox="0 0 700 619.5" width="700" height="619.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="objects"><path class="viz-link" d="M185.3,37.0 L261.3,37.0"/><text class="viz-small" x="196.4" y="29.6" text-anchor="middle">1</text><text class="viz-small" x="241.1" y="29.6" text-anchor="middle">0..1</text><g data-box="" data-text="holds"><rect class="viz-lblbg" x="205.6" y="41.0" width="35.5" height="16.5"/><text class="viz-linklabel" x="223.3" y="53.0" text-anchor="middle">holds</text></g><path class="viz-link" d="M96.7,66.0 L96.7,227.5"/><text class="viz-small" x="82.6" y="85.6" text-anchor="middle">1</text><text class="viz-small" x="73.4" y="215.1" text-anchor="middle">0..*</text><g data-box="" data-text="submits"><rect class="viz-lblbg" x="72.3" y="138.5" width="48.7" height="16.5"/><text class="viz-linklabel" x="96.7" y="150.5" text-anchor="middle">submits</text></g><path class="viz-link" d="M185.3,256.5 L261.3,256.5"/><text class="viz-small" x="205.6" y="249.1" text-anchor="middle">0..*</text><text class="viz-small" x="250.3" y="249.1" text-anchor="middle">1</text><g data-box="" data-text="spends from"><rect class="viz-lblbg" x="187.3" y="260.5" width="72.0" height="16.5"/><text class="viz-linklabel" x="223.3" y="272.5" text-anchor="middle">spends from</text></g><path class="viz-link" d="M514.7,256.5 L438.7,256.5"/><text class="viz-small" x="494.4" y="249.1" text-anchor="middle">0..*</text><text class="viz-small" x="449.7" y="249.1" text-anchor="middle">1</text><g data-box="" data-text="spends from"><rect class="viz-lblbg" x="445.1" y="260.5" width="63.1" height="29.0"/><text class="viz-linklabel" x="467.7" y="272.5" text-anchor="middle">spends</text><text class="viz-linklabel" x="467.7" y="285.0" text-anchor="middle">from</text><path class="viz-head" d="M489.7,275.0 L503.7,272.0 L503.7,278.0 z"/></g><path class="viz-link" d="M425.5,155.5 L514.7,242.6"/><text class="viz-small" x="446.0" y="160.7" text-anchor="middle">1</text><text class="viz-small" x="512.3" y="216.6" text-anchor="middle">0..*</text><g data-box="" data-text="is used for"><rect class="viz-lblbg" x="432.5" y="183.8" width="60.9" height="16.5"/><text class="viz-linklabel" x="462.9" y="195.9" text-anchor="middle">is used for</text></g><path class="viz-link" d="M603.3,129.0 L603.3,227.5"/><text class="viz-small" x="589.3" y="148.6" text-anchor="middle">1</text><text class="viz-small" x="580.1" y="215.1" text-anchor="middle">0..*</text><g data-box="" data-text="takes"><rect class="viz-lblbg" x="585.6" y="170.0" width="35.4" height="16.5"/><text class="viz-linklabel" x="603.3" y="182.0" text-anchor="middle">takes</text></g><path class="viz-link" d="M96.7,431.0 L96.7,503.0"/><text class="viz-small" x="82.6" y="450.6" text-anchor="middle">1</text><text class="viz-small" x="73.4" y="490.6" text-anchor="middle">0..*</text><g data-box="" data-text="triggers"><rect class="viz-lblbg" x="73.2" y="458.8" width="46.9" height="16.5"/><text class="viz-linklabel" x="96.7" y="470.8" text-anchor="middle">triggers</text></g><path class="viz-link" d="M185.3,400.2 L313.8,503.0"/><text class="viz-small" x="214.6" y="403.3" text-anchor="middle">0..*</text><text class="viz-small" x="309.8" y="486.9" text-anchor="middle">1</text><g data-box="" data-text="is checked against"><rect class="viz-lblbg" x="198.5" y="443.4" width="102.1" height="16.5"/><text class="viz-linklabel" x="249.5" y="455.4" text-anchor="middle">is checked against</text></g><g data-box=""><rect class="viz-node viz-t5" x="8.0" y="8.0" width="177.3" height="58.0" rx="2"/><rect class="viz-solid viz-t5" x="8.0" y="8.0" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="25.3" text-anchor="start">employee</text><text class="viz-attr" x="16.0" y="53.0" text-anchor="start">→ see figure 1</text></g><g data-box=""><rect class="viz-node viz-t5" x="261.3" y="8.0" width="177.3" height="147.5" rx="2"/><rect class="viz-solid viz-t5" x="261.3" y="8.0" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="269.3" y="25.3" text-anchor="start">card</text><text class="viz-attr" x="269.3" y="53.0" text-anchor="start">app: Card</text><text class="viz-attr" x="269.3" y="67.0" text-anchor="start">perqo.com: Perqo card</text><text class="viz-attr" x="269.3" y="81.0" text-anchor="start">last four digits</text><text class="viz-attr" x="269.3" y="95.0" text-anchor="start">status</text><path class="viz-line" d="M269.3,103.0 L430.7,103.0"/><text class="viz-small" x="269.3" y="117.8" text-anchor="start">-&gt; view card details</text><text class="viz-small" x="269.3" y="130.3" text-anchor="start">-&gt; freeze</text><text class="viz-small" x="269.3" y="142.8" text-anchor="start">-&gt; unfreeze</text></g><g data-box=""><rect class="viz-node viz-t2" x="514.7" y="8.0" width="177.3" height="121.0" rx="2"/><rect class="viz-solid viz-t2" x="514.7" y="8.0" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="522.7" y="25.3" text-anchor="start">merchant</text><text class="viz-attr" x="522.7" y="53.0" text-anchor="start">name</text><text class="viz-attr" x="522.7" y="67.0" text-anchor="start">benefit category</text><text class="viz-attr" x="522.7" y="81.0" text-anchor="start">accepts the Perqo card</text><path class="viz-line" d="M522.7,89.0 L684.0,89.0"/><text class="viz-small" x="522.7" y="103.8" text-anchor="start">-&gt; publish offer</text><text class="viz-small" x="522.7" y="116.3" text-anchor="start">→ see figure 3</text></g><g data-box=""><rect class="viz-node viz-t5" x="8.0" y="227.5" width="177.3" height="203.5" rx="2"/><rect class="viz-solid viz-t5" x="8.0" y="227.5" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="244.8" text-anchor="start">transaction, type claim</text><text class="viz-attr" x="16.0" y="272.5" text-anchor="start">Admin: Claim</text><text class="viz-attr" x="16.0" y="286.5" text-anchor="start">app: Claim</text><text class="viz-attr" x="16.0" y="300.5" text-anchor="start">perqo.com: Claims</text><text class="viz-attr" x="16.0" y="314.5" text-anchor="start">amount</text><text class="viz-attr" x="16.0" y="328.5" text-anchor="start">category</text><text class="viz-attr" x="16.0" y="342.5" text-anchor="start">receipt</text><text class="viz-attr" x="16.0" y="356.5" text-anchor="start">status</text><text class="viz-attr" x="16.0" y="370.5" text-anchor="start">date submitted</text><path class="viz-line" d="M16.0,378.5 L177.3,378.5"/><text class="viz-small" x="16.0" y="393.4" text-anchor="start">-&gt; submit (employee)</text><text class="viz-small" x="16.0" y="405.9" text-anchor="start">-&gt; approve (HR)</text><text class="viz-small" x="16.0" y="418.4" text-anchor="start">-&gt; reject (HR)</text></g><g data-box=""><rect class="viz-node viz-t5" x="261.3" y="227.5" width="177.3" height="58.0" rx="2"/><rect class="viz-solid viz-t5" x="261.3" y="227.5" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="269.3" y="244.8" text-anchor="start">allocation</text><text class="viz-attr" x="269.3" y="272.5" text-anchor="start">→ see figure 1</text></g><g data-box=""><rect class="viz-node viz-t5" x="514.7" y="227.5" width="177.3" height="203.5" rx="2"/><rect class="viz-solid viz-t5" x="514.7" y="227.5" width="177.3" height="40.0" rx="2"/><text class="viz-ontone" x="522.7" y="244.8" text-anchor="start">transaction, type card</text><text class="viz-ontone" x="522.7" y="258.8" text-anchor="start">payment</text><text class="viz-attr" x="522.7" y="286.5" text-anchor="start">Admin: Card payment</text><text class="viz-attr" x="522.7" y="300.5" text-anchor="start">app: Purchase</text><text class="viz-attr" x="522.7" y="314.5" text-anchor="start">perqo.com: Card payments</text><text class="viz-attr" x="522.7" y="328.5" text-anchor="start">amount</text><text class="viz-attr" x="522.7" y="342.5" text-anchor="start">date</text><text class="viz-attr" x="522.7" y="356.5" text-anchor="start">merchant</text><text class="viz-attr" x="522.7" y="370.5" text-anchor="start">category</text><path class="viz-line" d="M522.7,378.5 L684.0,378.5"/><text class="viz-small" x="522.7" y="393.4" text-anchor="start">-&gt; view (employee)</text><text class="viz-small" x="522.7" y="405.9" text-anchor="start">-&gt; view in a report</text><text class="viz-small" x="532.7" y="418.4" text-anchor="start">(finance)</text></g><g data-box=""><rect class="viz-node viz-t3" x="8.0" y="503.0" width="177.3" height="108.5" rx="2"/><rect class="viz-solid viz-t3" x="8.0" y="503.0" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="520.3" text-anchor="start">notification</text><text class="viz-attr" x="16.0" y="548.0" text-anchor="start">app: Notifications</text><text class="viz-attr" x="16.0" y="562.0" text-anchor="start">message</text><text class="viz-attr" x="16.0" y="576.0" text-anchor="start">date</text><path class="viz-line" d="M16.0,584.0 L177.3,584.0"/><text class="viz-small" x="16.0" y="598.9" text-anchor="start">-&gt; open</text></g><g data-box=""><rect class="viz-node viz-t5" x="261.3" y="503.0" width="177.3" height="58.0" rx="2"/><rect class="viz-solid viz-t5" x="261.3" y="503.0" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="269.3" y="520.3" text-anchor="start">policy</text><text class="viz-attr" x="269.3" y="548.0" text-anchor="start">→ see figure 1</text></g></svg></div><figcaption>Object map, figure 2 of 3, spending: the objects an employee spends and claims with, and the merchant that takes card payments, F2; supports the decision on what the app and the merchant side hold and how money moves between objects (Deliverable A). Tones as in IA2, section 5.2: 5 shared, 3 the Perqo app only, 2 the merchant side. A triangle by a label marks a label that reads right to left. Perqo is fictional; R-08 to R-10 from IA2, section 5.3; the rest set in Deliverable A; counts in UML multiplicity notation.</figcaption></figure>
+<p>The third holds the catalogue, the merchant side and perqo.com: the policy's covered items, the offers merchants publish for them, the help articles, and the customer stories and demo requests that relate to clients (R-07, R-16 to R-20).</p>
+<figure class="viz viz-objects"><div class="viz-scroll"><svg viewBox="0 0 717 820.5" width="717" height="820.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="objects"><path class="viz-link" d="M118.0,37.0 L205.0,37.0"/><text class="viz-small" x="138.2" y="29.6" text-anchor="middle">0..*</text><text class="viz-small" x="184.8" y="29.6" text-anchor="middle">0..*</text><g data-box="" data-text="covers"><rect class="viz-lblbg" x="140.4" y="41.0" width="42.2" height="16.5"/><text class="viz-linklabel" x="161.5" y="53.0" text-anchor="middle">covers</text></g><path class="viz-link" d="M402.0,82.5 L315.0,82.5"/><text class="viz-small" x="381.8" y="75.1" text-anchor="middle">0..*</text><text class="viz-small" x="326.1" y="75.1" text-anchor="middle">1</text><g data-box="" data-text="is for"><rect class="viz-lblbg" x="332.9" y="86.5" width="51.2" height="16.5"/><text class="viz-linklabel" x="349.5" y="98.5" text-anchor="middle">is for</text><path class="viz-head" d="M365.6,94.8 L379.6,91.8 L379.6,97.8 z"/></g><path class="viz-link" d="M599.0,37.0 L512.0,37.0"/><text class="viz-small" x="587.9" y="29.6" text-anchor="middle">1</text><text class="viz-small" x="532.2" y="29.6" text-anchor="middle">0..*</text><g data-box="" data-text="publishes"><rect class="viz-lblbg" x="518.3" y="41.0" width="74.4" height="16.5"/><text class="viz-linklabel" x="546.5" y="53.0" text-anchor="middle">publishes</text><path class="viz-head" d="M574.2,49.2 L588.2,46.2 L588.2,52.2 z"/></g><path class="viz-link" d="M63.0,321.0 L63.0,66.0"/><text class="viz-small" x="39.8" y="308.6" text-anchor="middle">0..*</text><text class="viz-small" x="39.8" y="85.6" text-anchor="middle">0..*</text><g data-box="" data-text="explains"><rect class="viz-lblbg" x="38.4" y="185.2" width="49.2" height="16.5"/><text class="viz-linklabel" x="63.0" y="197.3" text-anchor="middle">explains</text><path class="viz-head" d="M63.0,159.2 L66.0,173.2 L60.0,173.2 z"/></g><path class="viz-link" d="M118.0,667.5 L205.0,667.5"/><text class="viz-small" x="138.2" y="660.1" text-anchor="middle">0..1</text><text class="viz-small" x="193.9" y="660.1" text-anchor="middle">1</text><g data-box="" data-text="is about"><rect class="viz-lblbg" x="137.1" y="671.5" width="48.8" height="16.5"/><text class="viz-linklabel" x="161.5" y="683.5" text-anchor="middle">is about</text></g><path class="viz-link" d="M402.0,667.5 L315.0,667.5"/><text class="viz-small" x="381.8" y="660.1" text-anchor="middle">0..*</text><text class="viz-small" x="335.2" y="660.1" text-anchor="middle">0..1</text><g data-box="" data-text="leads to"><rect class="viz-lblbg" x="325.2" y="671.5" width="66.6" height="16.5"/><text class="viz-linklabel" x="349.5" y="683.5" text-anchor="middle">leads to</text><path class="viz-head" d="M373.3,679.8 L387.3,676.8 L387.3,682.8 z"/></g><g data-box=""><rect class="viz-node viz-t5" x="8.0" y="8.0" width="110.0" height="58.0" rx="2"/><rect class="viz-solid viz-t5" x="8.0" y="8.0" width="110.0" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="25.3" text-anchor="start">policy</text><text class="viz-attr" x="16.0" y="53.0" text-anchor="start">→ see figure 1</text></g><g data-box=""><rect class="viz-node viz-t5" x="205.0" y="8.0" width="110.0" height="241.0" rx="2"/><rect class="viz-solid viz-t5" x="205.0" y="8.0" width="110.0" height="26.0" rx="2"/><text class="viz-ontone" x="213.0" y="25.3" text-anchor="start">catalogue item</text><text class="viz-attr" x="213.0" y="53.0" text-anchor="start">Admin:</text><text class="viz-attr" x="223.0" y="67.0" text-anchor="start">Covered items</text><text class="viz-attr" x="213.0" y="81.0" text-anchor="start">app: What&#x27;s</text><text class="viz-attr" x="223.0" y="95.0" text-anchor="start">covered</text><text class="viz-attr" x="213.0" y="109.0" text-anchor="start">ID</text><text class="viz-attr" x="213.0" y="123.0" text-anchor="start">name</text><text class="viz-attr" x="213.0" y="137.0" text-anchor="start">facet values</text><text class="viz-attr" x="213.0" y="151.0" text-anchor="start">variant terms</text><path class="viz-line" d="M213.0,159.0 L307.0,159.0"/><text class="viz-small" x="213.0" y="173.8" text-anchor="start">-&gt; add item</text><text class="viz-small" x="223.0" y="186.3" text-anchor="start">(content</text><text class="viz-small" x="223.0" y="198.8" text-anchor="start">team)</text><text class="viz-small" x="213.0" y="211.3" text-anchor="start">-&gt; edit item</text><text class="viz-small" x="223.0" y="223.8" text-anchor="start">(content</text><text class="viz-small" x="223.0" y="236.3" text-anchor="start">team)</text></g><g data-box=""><rect class="viz-node viz-t5" x="402.0" y="8.0" width="110.0" height="149.0" rx="2"/><rect class="viz-solid viz-t5" x="402.0" y="8.0" width="110.0" height="26.0" rx="2"/><text class="viz-ontone" x="410.0" y="25.3" text-anchor="start">offer</text><text class="viz-attr" x="410.0" y="53.0" text-anchor="start">app: Card</text><text class="viz-attr" x="420.0" y="67.0" text-anchor="start">offers</text><text class="viz-attr" x="410.0" y="81.0" text-anchor="start">title</text><text class="viz-attr" x="410.0" y="95.0" text-anchor="start">discount</text><text class="viz-attr" x="410.0" y="109.0" text-anchor="start">valid until</text><path class="viz-line" d="M410.0,117.0 L504.0,117.0"/><text class="viz-small" x="410.0" y="131.8" text-anchor="start">-&gt; view</text><text class="viz-small" x="420.0" y="144.3" text-anchor="start">(employee)</text></g><g data-box=""><rect class="viz-node viz-t2" x="599.0" y="8.0" width="110.0" height="58.0" rx="2"/><rect class="viz-solid viz-t2" x="599.0" y="8.0" width="110.0" height="26.0" rx="2"/><text class="viz-ontone" x="607.0" y="25.3" text-anchor="start">merchant</text><text class="viz-attr" x="607.0" y="53.0" text-anchor="start">→ see figure 2</text></g><g data-box=""><rect class="viz-node viz-t1" x="8.0" y="321.0" width="110.0" height="245.5" rx="2"/><rect class="viz-solid viz-t1" x="8.0" y="321.0" width="110.0" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="338.3" text-anchor="start">help article</text><text class="viz-attr" x="16.0" y="366.0" text-anchor="start">ID</text><text class="viz-attr" x="16.0" y="380.0" text-anchor="start">title</text><text class="viz-attr" x="16.0" y="394.0" text-anchor="start">URL</text><text class="viz-attr" x="16.0" y="408.0" text-anchor="start">audience</text><text class="viz-attr" x="16.0" y="422.0" text-anchor="start">topic</text><text class="viz-attr" x="16.0" y="436.0" text-anchor="start">owner</text><text class="viz-attr" x="16.0" y="450.0" text-anchor="start">format</text><text class="viz-attr" x="16.0" y="464.0" text-anchor="start">last modified</text><text class="viz-attr" x="16.0" y="478.0" text-anchor="start">→ see claim,</text><text class="viz-attr" x="26.0" y="492.0" text-anchor="start">allocation, card,</text><text class="viz-attr" x="26.0" y="506.0" text-anchor="start">catalogue item</text><path class="viz-line" d="M16.0,514.0 L110.0,514.0"/><text class="viz-small" x="16.0" y="528.9" text-anchor="start">-&gt; read</text><text class="viz-small" x="16.0" y="541.4" text-anchor="start">-&gt; update</text><text class="viz-small" x="26.0" y="553.9" text-anchor="start">(support)</text></g><g data-box=""><rect class="viz-node viz-t1" x="8.0" y="638.5" width="110.0" height="107.0" rx="2"/><rect class="viz-solid viz-t1" x="8.0" y="638.5" width="110.0" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="655.8" text-anchor="start">customer story</text><text class="viz-attr" x="16.0" y="683.5" text-anchor="start">title</text><text class="viz-attr" x="16.0" y="697.5" text-anchor="start">URL</text><path class="viz-line" d="M16.0,705.5 L110.0,705.5"/><text class="viz-small" x="16.0" y="720.4" text-anchor="start">-&gt; read</text><text class="viz-small" x="26.0" y="732.9" text-anchor="start">(buyer)</text></g><g data-box=""><rect class="viz-node viz-t5" x="205.0" y="638.5" width="110.0" height="58.0" rx="2"/><rect class="viz-solid viz-t5" x="205.0" y="638.5" width="110.0" height="26.0" rx="2"/><text class="viz-ontone" x="213.0" y="655.8" text-anchor="start">client</text><text class="viz-attr" x="213.0" y="683.5" text-anchor="start">→ see figure 1</text></g><g data-box=""><rect class="viz-node viz-t1" x="402.0" y="638.5" width="110.0" height="174.0" rx="2"/><rect class="viz-solid viz-t1" x="402.0" y="638.5" width="110.0" height="26.0" rx="2"/><text class="viz-ontone" x="410.0" y="655.8" text-anchor="start">demo request</text><text class="viz-attr" x="410.0" y="683.5" text-anchor="start">name</text><text class="viz-attr" x="410.0" y="697.5" text-anchor="start">work email</text><text class="viz-attr" x="410.0" y="711.5" text-anchor="start">company</text><text class="viz-attr" x="410.0" y="725.5" text-anchor="start">number of</text><text class="viz-attr" x="420.0" y="739.5" text-anchor="start">employees</text><path class="viz-line" d="M410.0,747.5 L504.0,747.5"/><text class="viz-small" x="410.0" y="762.4" text-anchor="start">-&gt; submit</text><text class="viz-small" x="420.0" y="774.9" text-anchor="start">(buyer)</text><text class="viz-small" x="410.0" y="787.4" text-anchor="start">-&gt; follow up</text><text class="viz-small" x="420.0" y="799.9" text-anchor="start">(sales)</text></g></svg></div><figcaption>Object map, figure 3 of 3, catalogue, merchants and perqo.com, F2; supports the decision on how the benefits catalogue, merchant offers and website content attach to the product's objects (Deliverable A). Tones as in IA2, section 5.2: 5 shared, 2 the merchant side, 1 perqo.com only. A triangle by a label marks a label that reads right to left or bottom to top. Perqo is fictional; every object and relationship set in Deliverable A; the help article's attributes from IA2, section 5.3, with audience added; the catalogue item's facets from Deliverable B.</figcaption></figure>
+<p><strong>What the map hands on.</strong> IA6 designs the app's flows from the calls to action on claim, card, allocation, offer and notification. IA7 extends the Admin objects (client, admin user, employee group, policy, employee, allocation, claim, card payment) to F3 with permissions and model names. IA8 joins the claim's status attribute to its state diagram and decision tree, and the policy's auto-approve limit to the rule that reads it.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia4-4" data-step="4"><span>Previous · 5 of 7</span><b>Where an organisation system shows up</b></a><a class="snext" href="#read-ux-ia4-6" data-step="6"><span>Next · 7 of 7</span><b>B · The Perqo benefits catalogue taxonomy</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-ux-ia4-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">B · The Perqo benefits catalogue taxonomy</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): faceted taxonomy of the Perqo benefits catalogue, at fidelity F2 with F3's stable identifiers on every facet, value and item; decision: how catalogue items are classified, filtered, searched and addressed, and what it takes to add a value; readers: content (owner), engineering (filters, search synonyms, identifiers), support (variant terms), sales (the preferred terms on perqo.com), product management; leaves out: which client covers which item (that is the policy, Deliverable A, R-07), prices, approval (decided by the policy's limit), and the full item list beyond the twelve sample items; owner: Perqo content team; version 1, dated 3 November 2026; Perqo is fictional.</em></p>
+<p><strong>What the catalogue is (Perqo, fictional).</strong> The benefits catalogue is Perqo's list of the things an employee can spend benefits on, each a catalogue item (O-13). A client's policy covers items from it (R-07). The catalogue's classification is the one place an item's benefit category is decided; the example client's placings in IA3 (gym membership under Health, Fitness, and so on) are the catalogue's (IA3, section 3.3). Its uses: the examples on each category screen in the app (IA3's C2 fix), the variant terms for the Help centre search (IA3's D3 fix), the covered-items picker in Admin's Policies, the filter on Card offers, and the category of each merchant (O-11).</p>
+<p><strong>Fidelity and departure.</strong> IA2's decision table gives a taxonomy F2 in design and F3 when built into metadata (IA2, Deliverable). This one is F2, and departs in one respect: every facet, value and item already carries a stable identifier, an F3 element, because IA5 and DD-IA3 will cite them and IA2's rule is that identifiers are kept when things move (IA2, section 4).</p>
+<h3>B.1 · Facets</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Facet</th>
+<th>The question it answers</th>
+<th>Values per item</th>
+<th>Shape</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F-CAT</td>
+<td>Benefit category</td>
+<td>Which allocation pays for it?</td>
+<td>exactly one narrower term (and so one category)</td>
+<td>hierarchy, two levels</td>
+<td>app Benefits, Admin Policies, Card offers, merchants, claim category</td>
+</tr>
+<tr>
+<td>F-PAY</td>
+<td>Usual way to pay</td>
+<td>Can the employee usually pay with the Perqo card, or do they claim it back?</td>
+<td>one or both</td>
+<td>flat</td>
+<td>app What's covered; Help centre</td>
+</tr>
+<tr>
+<td>F-TYP</td>
+<td>Purchase type</td>
+<td>How is it bought?</td>
+<td>one or more</td>
+<td>flat</td>
+<td>app What's covered; Admin Policies filter</td>
+</tr>
+<tr>
+<td>F-CHN</td>
+<td>Channel</td>
+<td>Where is it bought?</td>
+<td>one or both</td>
+<td>flat</td>
+<td>app What's covered; Card offers filter</td>
+</tr>
+</tbody>
+</table></div>
+<p>Considered and not made facets, with the reason (section 3.2): approval (decided by the policy's auto-approve limit and the amount, so it belongs to the policy); price (varies by merchant); which clients cover the item (a relationship, R-07); merchant (a relationship, through offers, R-17).</p>
+<h3>B.2 · Values</h3>
+<p>The benefit-category facet. The four categories and their narrower terms are IA1's and IA2's, with IA2's variant terms; the identifiers and the variants marked <em>new</em> are set here.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Preferred term</th>
+<th>Broader term</th>
+<th>Variant terms</th>
+<th>Scope note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAT-HEA</td>
+<td>Health</td>
+<td>none (top level)</td>
+<td>wellbeing</td>
+<td>physical and mental health</td>
+</tr>
+<tr>
+<td>CAT-HEA-FIT</td>
+<td>Fitness</td>
+<td>Health</td>
+<td>gym, sport <em>new</em></td>
+<td>exercise: memberships, classes, entries</td>
+</tr>
+<tr>
+<td>CAT-HEA-THE</td>
+<td>Therapy</td>
+<td>Health</td>
+<td>counselling <em>new</em></td>
+<td>sessions with a therapist</td>
+</tr>
+<tr>
+<td>CAT-LEA</td>
+<td>Learning</td>
+<td>none (top level)</td>
+<td>education, training</td>
+<td>learning anything, work-related or not</td>
+</tr>
+<tr>
+<td>CAT-LEA-COU</td>
+<td>Courses</td>
+<td>Learning</td>
+<td>none: "class" is excluded (rule R4)</td>
+<td>taught courses, online or in person</td>
+</tr>
+<tr>
+<td>CAT-LEA-BOO</td>
+<td>Books</td>
+<td>Learning</td>
+<td>e-books <em>new</em></td>
+<td>books in any format</td>
+</tr>
+<tr>
+<td>CAT-MOB</td>
+<td>Mobility</td>
+<td>none (top level)</td>
+<td>transport, commuting</td>
+<td>getting around</td>
+</tr>
+<tr>
+<td>CAT-MOB-PUB</td>
+<td>Public transport</td>
+<td>Mobility</td>
+<td>train, bus <em>new</em></td>
+<td>tickets and passes for public transport</td>
+</tr>
+<tr>
+<td>CAT-MOB-BIK</td>
+<td>Bike</td>
+<td>Mobility</td>
+<td>cycling <em>new</em></td>
+<td>bikes, their equipment and repair</td>
+</tr>
+<tr>
+<td>CAT-MEA</td>
+<td>Meals</td>
+<td>none (top level)</td>
+<td>food</td>
+<td>food and eating</td>
+</tr>
+<tr>
+<td>CAT-MEA-RES</td>
+<td>Restaurants</td>
+<td>Meals</td>
+<td>eating out <em>new</em></td>
+<td>meals bought ready to eat</td>
+</tr>
+<tr>
+<td>CAT-MEA-GRO</td>
+<td>Groceries</td>
+<td>Meals</td>
+<td>supermarket <em>new</em></td>
+<td>food bought to cook</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="viz viz-tree viz-wide"><div class="viz-scroll"><svg viewBox="0 0 1030 224" width="1030" height="224" data-xr="582" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="tree"><path class="viz-edge" d="M515.0,48 C515.0,70.0 131.0,70.0 131.0,92"/><path class="viz-edge" d="M131.0,132 C131.0,154.0 67.0,154.0 67.0,176"/><g data-box=""><rect class="viz-node viz-t5" x="8.0" y="176" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="67.0" y="193.3" text-anchor="middle">Fitness</text><text class="viz-nodelabel" x="67.0" y="207.3" text-anchor="middle">(CAT-HEA-FIT)</text></g><path class="viz-edge" d="M131.0,132 C131.0,154.0 195.0,154.0 195.0,176"/><g data-box=""><rect class="viz-node viz-t5" x="136.0" y="176" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="195.0" y="193.3" text-anchor="middle">Therapy</text><text class="viz-nodelabel" x="195.0" y="207.3" text-anchor="middle">(CAT-HEA-THE)</text></g><g data-box=""><rect class="viz-node viz-t5" x="72.0" y="92" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="131.0" y="109.3" text-anchor="middle">Health</text><text class="viz-nodelabel" x="131.0" y="123.3" text-anchor="middle">(CAT-HEA)</text></g><path class="viz-edge" d="M515.0,48 C515.0,70.0 387.0,70.0 387.0,92"/><path class="viz-edge" d="M387.0,132 C387.0,154.0 323.0,154.0 323.0,176"/><g data-box=""><rect class="viz-node viz-t5" x="264.0" y="176" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="323.0" y="193.3" text-anchor="middle">Courses</text><text class="viz-nodelabel" x="323.0" y="207.3" text-anchor="middle">(CAT-LEA-COU)</text></g><path class="viz-edge" d="M387.0,132 C387.0,154.0 451.0,154.0 451.0,176"/><g data-box=""><rect class="viz-node viz-t5" x="392.0" y="176" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="451.0" y="193.3" text-anchor="middle">Books</text><text class="viz-nodelabel" x="451.0" y="207.3" text-anchor="middle">(CAT-LEA-BOO)</text></g><g data-box=""><rect class="viz-node viz-t5" x="328.0" y="92" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="387.0" y="109.3" text-anchor="middle">Learning</text><text class="viz-nodelabel" x="387.0" y="123.3" text-anchor="middle">(CAT-LEA)</text></g><path class="viz-edge" d="M515.0,48 C515.0,70.0 643.0,70.0 643.0,92"/><path class="viz-edge" d="M643.0,132 C643.0,154.0 579.0,154.0 579.0,176"/><g data-box=""><rect class="viz-node viz-t5" x="520.0" y="176" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="579.0" y="193.3" text-anchor="middle">Public transport</text><text class="viz-nodelabel" x="579.0" y="207.3" text-anchor="middle">(CAT-MOB-PUB)</text></g><path class="viz-edge" d="M643.0,132 C643.0,154.0 707.0,154.0 707.0,176"/><g data-box=""><rect class="viz-node viz-t5" x="648.0" y="176" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="707.0" y="193.3" text-anchor="middle">Bike</text><text class="viz-nodelabel" x="707.0" y="207.3" text-anchor="middle">(CAT-MOB-BIK)</text></g><g data-box=""><rect class="viz-node viz-t5" x="584.0" y="92" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="643.0" y="109.3" text-anchor="middle">Mobility</text><text class="viz-nodelabel" x="643.0" y="123.3" text-anchor="middle">(CAT-MOB)</text></g><path class="viz-edge" d="M515.0,48 C515.0,70.0 899.0,70.0 899.0,92"/><path class="viz-edge" d="M899.0,132 C899.0,154.0 835.0,154.0 835.0,176"/><g data-box=""><rect class="viz-node viz-t5" x="776.0" y="176" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="835.0" y="193.3" text-anchor="middle">Restaurants</text><text class="viz-nodelabel" x="835.0" y="207.3" text-anchor="middle">(CAT-MEA-RES)</text></g><path class="viz-edge" d="M899.0,132 C899.0,154.0 963.0,154.0 963.0,176"/><g data-box=""><rect class="viz-node viz-t5" x="904.0" y="176" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="963.0" y="193.3" text-anchor="middle">Groceries</text><text class="viz-nodelabel" x="963.0" y="207.3" text-anchor="middle">(CAT-MEA-GRO)</text></g><g data-box=""><rect class="viz-node viz-t5" x="840.0" y="92" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="899.0" y="109.3" text-anchor="middle">Meals</text><text class="viz-nodelabel" x="899.0" y="123.3" text-anchor="middle">(CAT-MEA)</text></g><g data-box=""><rect class="viz-node viz-t5" x="456.0" y="8" width="118" height="40" rx="2"/><text class="viz-nodelabel" x="515.0" y="25.3" text-anchor="middle">Benefit category</text><text class="viz-nodelabel" x="515.0" y="39.3" text-anchor="middle">(F-CAT)</text></g></svg></div><figcaption>Taxonomy: the benefit-category facet of the Perqo benefits catalogue, two levels, with value identifiers, F2; supports the decision on which category and allocation an item belongs to (Deliverable B). Every box is tone 5 because the terms are shared across Admin, the app and perqo.com. Categories and narrower terms from IA1, Deliverable, and IA2, section 5.3; identifiers set in Deliverable B; relationships per Rosenfeld, Morville and Arango, 4th ed., 2015, ch. 10. Perqo is fictional.</figcaption></figure>
+<p>The flat facets (all new here):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Facet</th>
+<th>Preferred term</th>
+<th>Variant terms</th>
+<th>Scope note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAY-CRD</td>
+<td>Usual way to pay</td>
+<td>Perqo card</td>
+<td>card</td>
+<td>merchants selling it usually accept the Perqo card</td>
+</tr>
+<tr>
+<td>PAY-CLM</td>
+<td>Usual way to pay</td>
+<td>Claim</td>
+<td>refund, reimbursement, expense (IA2)</td>
+<td>usually paid another way and claimed back</td>
+</tr>
+<tr>
+<td>TYP-SUB</td>
+<td>Purchase type</td>
+<td>Subscription</td>
+<td>membership</td>
+<td>paid again each period</td>
+</tr>
+<tr>
+<td>TYP-SIN</td>
+<td>Purchase type</td>
+<td>Single purchase</td>
+<td>one-off</td>
+<td>paid once, used once or kept</td>
+</tr>
+<tr>
+<td>TYP-PAS</td>
+<td>Purchase type</td>
+<td>Pass</td>
+<td>ticket, season ticket</td>
+<td>prepaid for a period or a number of uses</td>
+</tr>
+<tr>
+<td>CHN-INP</td>
+<td>Channel</td>
+<td>In person</td>
+<td>in store</td>
+<td>bought at a place</td>
+</tr>
+<tr>
+<td>CHN-ONL</td>
+<td>Channel</td>
+<td>Online</td>
+<td>internet</td>
+<td>bought on a website or app</td>
+</tr>
+</tbody>
+</table></div>
+<h3>B.3 · The catalogue items, classified</h3>
+<p>Twelve sample items (Perqo, fictional). The six from IA3 keep the categories IA3 gave them; the other six are new. "Also listed under" is the polyhierarchy of display: it adds a route, while the home category still decides which allocation pays (rule R6); each one is IA3's assumed second place, untested.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Item</th>
+<th>Benefit category</th>
+<th>Narrower term</th>
+<th>Usual way to pay</th>
+<th>Purchase type</th>
+<th>Channel</th>
+<th>Also listed under</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BI-001</td>
+<td>Gym membership</td>
+<td>Health</td>
+<td>Fitness</td>
+<td>Perqo card, Claim</td>
+<td>Subscription</td>
+<td>In person</td>
+<td>none</td>
+</tr>
+<tr>
+<td>BI-002</td>
+<td>Yoga class</td>
+<td>Health</td>
+<td>Fitness</td>
+<td>Perqo card, Claim</td>
+<td>Single purchase, Pass</td>
+<td>In person, Online</td>
+<td>Learning (assumed)</td>
+</tr>
+<tr>
+<td>BI-003</td>
+<td>Therapy session</td>
+<td>Health</td>
+<td>Therapy</td>
+<td>Claim</td>
+<td>Single purchase</td>
+<td>In person, Online</td>
+<td>none</td>
+</tr>
+<tr>
+<td>BI-004</td>
+<td>Coding course</td>
+<td>Learning</td>
+<td>Courses</td>
+<td>Perqo card, Claim</td>
+<td>Single purchase</td>
+<td>Online, In person</td>
+<td>none</td>
+</tr>
+<tr>
+<td>BI-005</td>
+<td>Cookery course</td>
+<td>Learning</td>
+<td>Courses</td>
+<td>Perqo card, Claim</td>
+<td>Single purchase</td>
+<td>In person</td>
+<td>Meals (assumed)</td>
+</tr>
+<tr>
+<td>BI-006</td>
+<td>Book</td>
+<td>Learning</td>
+<td>Books</td>
+<td>Perqo card, Claim</td>
+<td>Single purchase</td>
+<td>In person, Online</td>
+<td>none</td>
+</tr>
+<tr>
+<td>BI-007</td>
+<td>Train pass</td>
+<td>Mobility</td>
+<td>Public transport</td>
+<td>Perqo card, Claim</td>
+<td>Pass</td>
+<td>In person, Online</td>
+<td>none</td>
+</tr>
+<tr>
+<td>BI-008</td>
+<td>Bike helmet</td>
+<td>Mobility</td>
+<td>Bike</td>
+<td>Perqo card, Claim</td>
+<td>Single purchase</td>
+<td>In person, Online</td>
+<td>Health (assumed)</td>
+</tr>
+<tr>
+<td>BI-009</td>
+<td>Bike repair</td>
+<td>Mobility</td>
+<td>Bike</td>
+<td>Perqo card</td>
+<td>Single purchase</td>
+<td>In person</td>
+<td>none</td>
+</tr>
+<tr>
+<td>BI-010</td>
+<td>Restaurant meal</td>
+<td>Meals</td>
+<td>Restaurants</td>
+<td>Perqo card</td>
+<td>Single purchase</td>
+<td>In person</td>
+<td>none</td>
+</tr>
+<tr>
+<td>BI-011</td>
+<td>Groceries</td>
+<td>Meals</td>
+<td>Groceries</td>
+<td>Perqo card</td>
+<td>Single purchase</td>
+<td>In person, Online</td>
+<td>none</td>
+</tr>
+<tr>
+<td>BI-012</td>
+<td>Swimming pool entry</td>
+<td>Health</td>
+<td>Fitness</td>
+<td>Perqo card, Claim</td>
+<td>Single purchase, Pass</td>
+<td>In person</td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="viz viz-matrix"><div class="viz-scroll" style="--stick:149.9px"><svg viewBox="0 0 700.0 570" width="700.0" height="570" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="183.9" y="27.6" text-anchor="middle">Category</text><text class="viz-colhead" x="276.7" y="27.6" text-anchor="middle">Narrower term</text><text class="viz-colhead" x="378.1" y="15.6" text-anchor="middle">Usual way</text><text class="viz-colhead" x="378.1" y="27.6" text-anchor="middle">to pay</text><text class="viz-colhead" x="473.0" y="27.6" text-anchor="middle">Purchase type</text><text class="viz-colhead" x="564.9" y="27.6" text-anchor="middle">Channel</text><text class="viz-colhead" x="648.2" y="15.6" text-anchor="middle">Also listed</text><text class="viz-colhead" x="648.2" y="27.6" text-anchor="middle">under</text><text class="viz-label" x="8.0" y="68.3" text-anchor="start">Gym membership</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="46.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="67.8" text-anchor="middle">Health</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="46.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="67.8" text-anchor="middle">Fitness</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="46.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="61.3" text-anchor="middle">Perqo card,</text><text class="viz-mark" x="378.1" y="74.3" text-anchor="middle">Claim</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="46.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="67.8" text-anchor="middle">Subscription</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="46.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="67.8" text-anchor="middle">In person</text></g><g data-box=""><rect class="viz-track" x="606.4" y="46.0" width="83.6" height="36.0"/></g><text class="viz-label" x="8.0" y="108.3" text-anchor="start">Yoga class</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="86.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="107.8" text-anchor="middle">Health</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="86.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="107.8" text-anchor="middle">Fitness</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="86.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="101.3" text-anchor="middle">Perqo card,</text><text class="viz-mark" x="378.1" y="114.3" text-anchor="middle">Claim</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="86.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="101.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="114.3" text-anchor="middle">purchase, Pass</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="86.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="101.3" text-anchor="middle">In person,</text><text class="viz-mark" x="564.9" y="114.3" text-anchor="middle">Online</text></g><g data-box=""><rect class="viz-band viz-t3" x="606.4" y="86.0" width="83.6" height="36.0"/><text class="viz-mark" x="648.2" y="101.3" text-anchor="middle">Learning</text><text class="viz-mark" x="648.2" y="114.3" text-anchor="middle">(assumed)</text></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">Therapy session</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="126.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="147.8" text-anchor="middle">Health</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="126.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="147.8" text-anchor="middle">Therapy</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="126.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="147.8" text-anchor="middle">Claim</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="126.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="141.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="154.3" text-anchor="middle">purchase</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="126.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="141.3" text-anchor="middle">In person,</text><text class="viz-mark" x="564.9" y="154.3" text-anchor="middle">Online</text></g><g data-box=""><rect class="viz-track" x="606.4" y="126.0" width="83.6" height="36.0"/></g><text class="viz-label" x="8.0" y="188.3" text-anchor="start">Coding course</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="166.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="187.8" text-anchor="middle">Learning</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="166.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="187.8" text-anchor="middle">Courses</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="166.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="181.3" text-anchor="middle">Perqo card,</text><text class="viz-mark" x="378.1" y="194.3" text-anchor="middle">Claim</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="166.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="181.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="194.3" text-anchor="middle">purchase</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="166.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="181.3" text-anchor="middle">Online,</text><text class="viz-mark" x="564.9" y="194.3" text-anchor="middle">In person</text></g><g data-box=""><rect class="viz-track" x="606.4" y="166.0" width="83.6" height="36.0"/></g><text class="viz-label" x="8.0" y="228.3" text-anchor="start">Cookery course</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="206.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="227.8" text-anchor="middle">Learning</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="206.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="227.8" text-anchor="middle">Courses</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="206.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="221.3" text-anchor="middle">Perqo card,</text><text class="viz-mark" x="378.1" y="234.3" text-anchor="middle">Claim</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="206.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="221.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="234.3" text-anchor="middle">purchase</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="206.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="227.8" text-anchor="middle">In person</text></g><g data-box=""><rect class="viz-band viz-t3" x="606.4" y="206.0" width="83.6" height="36.0"/><text class="viz-mark" x="648.2" y="221.3" text-anchor="middle">Meals</text><text class="viz-mark" x="648.2" y="234.3" text-anchor="middle">(assumed)</text></g><text class="viz-label" x="8.0" y="268.3" text-anchor="start">Book</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="246.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="267.8" text-anchor="middle">Learning</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="246.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="267.8" text-anchor="middle">Books</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="246.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="261.3" text-anchor="middle">Perqo card,</text><text class="viz-mark" x="378.1" y="274.3" text-anchor="middle">Claim</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="246.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="261.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="274.3" text-anchor="middle">purchase</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="246.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="261.3" text-anchor="middle">In person,</text><text class="viz-mark" x="564.9" y="274.3" text-anchor="middle">Online</text></g><g data-box=""><rect class="viz-track" x="606.4" y="246.0" width="83.6" height="36.0"/></g><text class="viz-label" x="8.0" y="308.3" text-anchor="start">Train pass</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="286.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="307.8" text-anchor="middle">Mobility</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="286.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="307.8" text-anchor="middle">Public transport</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="286.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="301.3" text-anchor="middle">Perqo card,</text><text class="viz-mark" x="378.1" y="314.3" text-anchor="middle">Claim</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="286.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="307.8" text-anchor="middle">Pass</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="286.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="301.3" text-anchor="middle">In person,</text><text class="viz-mark" x="564.9" y="314.3" text-anchor="middle">Online</text></g><g data-box=""><rect class="viz-track" x="606.4" y="286.0" width="83.6" height="36.0"/></g><text class="viz-label" x="8.0" y="348.3" text-anchor="start">Bike helmet</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="326.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="347.8" text-anchor="middle">Mobility</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="326.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="347.8" text-anchor="middle">Bike</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="326.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="341.3" text-anchor="middle">Perqo card,</text><text class="viz-mark" x="378.1" y="354.3" text-anchor="middle">Claim</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="326.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="341.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="354.3" text-anchor="middle">purchase</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="326.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="341.3" text-anchor="middle">In person,</text><text class="viz-mark" x="564.9" y="354.3" text-anchor="middle">Online</text></g><g data-box=""><rect class="viz-band viz-t3" x="606.4" y="326.0" width="83.6" height="36.0"/><text class="viz-mark" x="648.2" y="341.3" text-anchor="middle">Health</text><text class="viz-mark" x="648.2" y="354.3" text-anchor="middle">(assumed)</text></g><text class="viz-label" x="8.0" y="388.3" text-anchor="start">Bike repair</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="366.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="387.8" text-anchor="middle">Mobility</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="366.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="387.8" text-anchor="middle">Bike</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="366.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="387.8" text-anchor="middle">Perqo card</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="366.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="381.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="394.3" text-anchor="middle">purchase</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="366.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="387.8" text-anchor="middle">In person</text></g><g data-box=""><rect class="viz-track" x="606.4" y="366.0" width="83.6" height="36.0"/></g><text class="viz-label" x="8.0" y="428.3" text-anchor="start">Restaurant meal</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="406.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="427.8" text-anchor="middle">Meals</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="406.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="427.8" text-anchor="middle">Restaurants</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="406.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="427.8" text-anchor="middle">Perqo card</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="406.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="421.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="434.3" text-anchor="middle">purchase</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="406.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="427.8" text-anchor="middle">In person</text></g><g data-box=""><rect class="viz-track" x="606.4" y="406.0" width="83.6" height="36.0"/></g><text class="viz-label" x="8.0" y="468.3" text-anchor="start">Groceries</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="446.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="467.8" text-anchor="middle">Meals</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="446.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="467.8" text-anchor="middle">Groceries</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="446.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="467.8" text-anchor="middle">Perqo card</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="446.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="461.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="474.3" text-anchor="middle">purchase</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="446.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="461.3" text-anchor="middle">In person,</text><text class="viz-mark" x="564.9" y="474.3" text-anchor="middle">Online</text></g><g data-box=""><rect class="viz-track" x="606.4" y="446.0" width="83.6" height="36.0"/></g><text class="viz-label" x="8.0" y="508.3" text-anchor="start">Swimming pool entry</text><g data-box=""><rect class="viz-band viz-t5" x="151.9" y="486.0" width="64.0" height="36.0"/><text class="viz-mark" x="183.9" y="507.8" text-anchor="middle">Health</text></g><g data-box=""><rect class="viz-band viz-t5" x="219.9" y="486.0" width="113.7" height="36.0"/><text class="viz-mark" x="276.7" y="507.8" text-anchor="middle">Fitness</text></g><g data-box=""><rect class="viz-band viz-t5" x="337.6" y="486.0" width="81.0" height="36.0"/><text class="viz-mark" x="378.1" y="501.3" text-anchor="middle">Perqo card,</text><text class="viz-mark" x="378.1" y="514.3" text-anchor="middle">Claim</text></g><g data-box=""><rect class="viz-band viz-t5" x="422.6" y="486.0" width="100.8" height="36.0"/><text class="viz-mark" x="473.0" y="501.3" text-anchor="middle">Single</text><text class="viz-mark" x="473.0" y="514.3" text-anchor="middle">purchase, Pass</text></g><g data-box=""><rect class="viz-band viz-t5" x="527.4" y="486.0" width="75.0" height="36.0"/><text class="viz-mark" x="564.9" y="507.8" text-anchor="middle">In person</text></g><g data-box=""><rect class="viz-track" x="606.4" y="486.0" width="83.6" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="8.0" y="538.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="553.8" text-anchor="middle">tone 5</text></g><text class="viz-attr" x="70.6" y="554.0" text-anchor="start">a catalogue term, shared across surfaces</text><g data-box=""><rect class="viz-band viz-t3" x="306.9" y="538.0" width="54.6" height="24"/><text class="viz-mark" x="334.2" y="553.8" text-anchor="middle">tone 3</text></g><text class="viz-attr" x="369.4" y="554.0" text-anchor="start">a cross-listing in the app, assumed</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 149.9 570" width="149.9" height="570" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="149.9" height="526"/><text class="viz-label" x="8.0" y="68.3" text-anchor="start">Gym membership</text><text class="viz-label" x="8.0" y="108.3" text-anchor="start">Yoga class</text><text class="viz-label" x="8.0" y="148.3" text-anchor="start">Therapy session</text><text class="viz-label" x="8.0" y="188.3" text-anchor="start">Coding course</text><text class="viz-label" x="8.0" y="228.3" text-anchor="start">Cookery course</text><text class="viz-label" x="8.0" y="268.3" text-anchor="start">Book</text><text class="viz-label" x="8.0" y="308.3" text-anchor="start">Train pass</text><text class="viz-label" x="8.0" y="348.3" text-anchor="start">Bike helmet</text><text class="viz-label" x="8.0" y="388.3" text-anchor="start">Bike repair</text><text class="viz-label" x="8.0" y="428.3" text-anchor="start">Restaurant meal</text><text class="viz-label" x="8.0" y="468.3" text-anchor="start">Groceries</text><text class="viz-label" x="8.0" y="508.3" text-anchor="start">Swimming pool entry</text></svg></div></div><figcaption>Facet grid: twelve Perqo catalogue items against the catalogue's facets, F2; supports the decision on how each item is filtered, searched and shown, and where a far member gets a second route (Deliverable B). Rows tone 5, shared terms; tone 3 marks a cross-listing shown in the app, assumed and untested (IA3, section 3.3; rule R6). Faceted structure from Hearst, CACM 49(4), 2006; polyhierarchy from Laubheimer, NN/g, 2018. Perqo is fictional; the first six items' categories from IA3, section 3.3, the rest from Deliverable B.</figcaption></figure>
+<h3>B.4 · The rules for adding a value</h3>
+<p>A value is added, renamed or retired only by the content team, as a proposed change reviewed with support and engineering (IA2, section 4: mark changes as proposed until agreed). Each rule carries its source.</p>
+<ul>
+<li><strong>R1 · The value answers its facet's question.</strong> A proposed value is tested against the question in B.1; a value that answers another question is a new facet or nothing (Hearst 2006; section 3.2).</li>
+<li><strong>R2 · In F-CAT, values do not overlap.</strong> A new narrower term must not hold items an existing term already holds, because every item has exactly one narrower term and a claim reads one category's balance (IA3, section 2.3). An item that seems to belong to two is placed in one and cross-listed under R6.</li>
+<li><strong>R3 · The preferred term is the employee's word, at the basic level where it can be.</strong> It is checked against the Help centre search log and support's tickets before it is adopted (Nielsen 2006 and Rosch and others 1976, both as applied in IA3, sections 3.1 and 4.2; Farrell 2017, IA3, section 5.2).</li>
+<li><strong>R4 · Every value carries its variants, and each variant points to one value.</strong> Variants go to the Help centre search as synonyms (Furnas and others 1987; IA3, D3). A word that would pull an item into another category is not made a variant: "class" is excluded from Courses because "yoga class" is a Fitness item (IA3, section 3.3).</li>
+<li><strong>R5 · A value is added only when items hold it.</strong> It needs at least two catalogue items at the time it is added (Perqo, fictional: the content team's threshold), and a value that loses its last item is hidden from filters, so no option leads to an empty result (Hearst 2006).</li>
+<li><strong>R6 · A second listing needs evidence, and points to the home.</strong> An item is listed under a second category only when a test shows people look for it there (Laubheimer 2018); until then it is marked "assumed" (IA3, C3). The listing names the home category ("Cookery course: covered under Learning", IA3, C3) and never changes which allocation pays.</li>
+<li><strong>R7 · F-CAT keeps two levels.</strong> A new narrower term is added beside its siblings; no third level is added, because each level is one more choice that must carry scent, and depth slowed people in every study in section 2.1 (Zaphiris 2000; Larson and Czerwinski 1998; Whitenton 2013).</li>
+<li><strong>R8 · A new top-level category is a product decision.</strong> It creates a new allocation for every employee in every group that opens it (Deliverable A, R-05 and R-06), so it goes to product management, finance and the client, not only to the content team (this unit's rule, from the object map).</li>
+<li><strong>R9 · Identifiers are stable.</strong> A value keeps its identifier when it is renamed or moved; a retired value's identifier is never reused; a rename keeps the old term as a variant (IA2, section 4). URLs and filters address values by identifier (section 5; Berners-Lee 1998).</li>
+<li><strong>R10 · A new facet passes the not-a-facet test.</strong> A property that depends on the policy, the amount, the merchant or the client is not a facet of the catalogue (section 3.2; B.1).</li>
+</ul>
+<p><strong>What IA5 and DD-IA3 take.</strong> IA5 builds the perqo.com content inventory and sitemap on these identifiers, with the Help centre's articles tagged with F-CAT values; IA6 puts the catalogue items on each category screen as its examples (IA3, C2). DD-IA3 takes the controlled vocabulary further, from these preferred and variant terms. Neither renames a value except under R9.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia4-5" data-step="5"><span>Previous · 6 of 7</span><b>A · The Perqo object map</b></a><a class="snext send" href="#read-ux-ia4-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-ux-ia4-sources"><summary><span class="at" id="read-ux-ia4-7">Sources</span><span class="an">25</span></summary><div class="accb">
+<ul>
+<li>Berners-Lee, Tim. "Cool URIs Don't Change". W3C, 1998 (W3C style guidance). <a target="_blank" rel="noopener" href="https://w3.org/Provider/Style/URI">w3.org/Provider/Style/URI</a></li>
+<li>Betts, Thomas. "Object-Oriented UX with Sophia Prater" (podcast interview). InfoQ, 6 May 2024. <a target="_blank" rel="noopener" href="https://www.infoq.com/podcasts/object-oriented-ux-sophia-prater/">infoq.com/podcasts/object-oriented-ux-sophia-prater</a> (interview; practice).</li>
+<li>Cooper, Alan, Robert Reimann, David Cronin and Christopher Noessel. <em>About Face: The Essentials of Interaction Design</em>. 4th ed. Wiley, 2014. Ch. 13, "Metaphors, Idioms, and Affordances".</li>
+<li>Czerwinski, Mary P., and Kevin Larson. "Cognition and the Web: Moving from Theory to Web Design". Microsoft Research, undated chapter manuscript. <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2002/01/HFandtheWebChapter.pdf">microsoft.com</a></li>
+<li>Dix, Alan. "Menu Breadth: Not a Case of Miller's 7+/-2". Companion page to Dix, Finlay, Abowd and Beale, <em>Human-Computer Interaction</em>, 3rd ed., 2003 (page dated 2010). <a target="_blank" rel="noopener" href="https://hcibook.com/e3/online/menu-breadth">hcibook.com/e3/online/menu-breadth</a> (textbook author's page).</li>
+<li>Furnas, George W., Thomas K. Landauer, Louis M. Gomez and Susan T. Dumais. "The Vocabulary Problem in Human-System Communication". <em>Communications of the ACM</em> 30, no. 11 (1987): 964 to 971. <a target="_blank" rel="noopener" href="https://cacm.acm.org/research/the-vocabulary-problem-in-human-system-communication">cacm.acm.org</a></li>
+<li>Golder, Scott A., and Bernardo A. Huberman. "Usage Patterns of Collaborative Tagging Systems". <em>Journal of Information Science</em> 32, no. 2 (2006): 198 to 208. <a target="_blank" rel="noopener" href="https://journals.sagepub.com/doi/10.1177/0165551506062337">journals.sagepub.com/doi/10.1177/0165551506062337</a></li>
+<li>Hearst, Marti A. "Clustering versus Faceted Categories for Information Exploration". <em>Communications of the ACM</em> 49, no. 4 (2006): 59 to 61. <a target="_blank" rel="noopener" href="https://flamenco.ischool.berkeley.edu/papers/cacm06.pdf">flamenco.ischool.berkeley.edu/papers/cacm06.pdf</a></li>
+<li>Hedden, Heather. <em>The Accidental Taxonomist</em>. 3rd ed. Information Today, November 2022. Publisher's description at <a target="_blank" rel="noopener" href="https://books.infotoday.com/Ebooks/489_The-Accidental-Taxonomist-Third-Edition.htm">books.infotoday.com</a>.</li>
+<li>Larson, Kevin, and Mary Czerwinski. "Web Page Design: Implications of Memory, Structure and Scent for Information Retrieval". <em>CHI 98</em>, ACM, 1998, pp. 25 to 32. <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/publication/web-page-design-implications-memory-structure-scent-information-retrieval/">microsoft.com/en-us/research</a></li>
+<li>Laubheimer, Page. "Polyhierarchies Improve Findability for Ambiguous IA Categories". Nielsen Norman Group, 13 May 2018. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/polyhierarchy/">nngroup.com/articles/polyhierarchy</a></li>
+<li>Laubheimer, Page. "Taxonomy 101: Definition, Best Practices, and How It Complements Other IA Work". Nielsen Norman Group, 3 July 2022. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/taxonomy-101/">nngroup.com/articles/taxonomy-101</a></li>
+<li>Laubheimer, Page. "3 Common IA Mistakes (that Are All Due to Low Information Scent)". Nielsen Norman Group, 16 April 2023. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/3-ia-mistakes/">nngroup.com/articles/3-ia-mistakes</a></li>
+<li>"Menu Structure and Ordering of Menu Selection: Independent or Interactive Effects?" <em>ACM SIGCHI Bulletin</em> 18, no. 2 (October 1986), abstract. <a target="_blank" rel="noopener" href="https://unpaywall.org/10.1145%2F15683.1044100">unpaywall.org/10.1145/15683.1044100</a> (authors not checked; cited for its report of Card 1982 and Snowberry and others 1983).</li>
+<li>Prater, Sophia V. "Object-Oriented UX". A List Apart, 20 October 2015. <a target="_blank" rel="noopener" href="https://alistapart.com/article/object-oriented-ux/">alistapart.com/article/object-oriented-ux</a> (practice).</li>
+<li>Prater, Sophia V. "OOUX: A Foundation for Interaction Design". A List Apart, 19 April 2016. <a target="_blank" rel="noopener" href="https://alistapart.com/article/ooux-a-foundation-for-interaction-design/">alistapart.com/article/ooux-a-foundation-for-interaction-design</a> (practice).</li>
+<li>Rosenfeld, Louis, Peter Morville and Jorge Arango. <em>Information Architecture: For the Web and Beyond</em>. 4th ed. O'Reilly, 2015. Chs 6, 8 and 10. Ch. 6 at <a target="_blank" rel="noopener" href="https://oreilly.com/library/view/information-architecture-4th/9781491913529/ch06.html">oreilly.com</a>; ch. 10 at <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/information-architecture-4th/9781491913529/ch10.html">oreilly.com</a>.</li>
+<li>Satija, M. P. "Colon Classification (CC)". <em>ISKO Encyclopedia of Knowledge Organization</em>, version 2.0, 2017. <a target="_blank" rel="noopener" href="https://isko.org/cyclo/colon_classification">isko.org/cyclo/colon_classification</a></li>
+<li>Vander Wal, Thomas. "Folksonomy". vanderwal.net, 2 February 2007. <a target="_blank" rel="noopener" href="https://vanderwal.net/folksonomy.html">vanderwal.net/folksonomy.html</a> (the author's own account; practice).</li>
+<li>Whitenton, Kathryn. "Flat vs. Deep Website Hierarchies". Nielsen Norman Group, 10 November 2013. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/flat-vs-deep-hierarchy/">nngroup.com/articles/flat-vs-deep-hierarchy</a></li>
+<li>Woods, D. Ben. "Book Review: Information Anxiety". UXmatters, 18 March 2019. <a target="_blank" rel="noopener" href="https://uxmatters.com/mt/archives/2019/03/book-review-information-anxiety.php">uxmatters.com</a> (review; cited for its description of Wurman 1989).</li>
+<li>Wurman, Richard Saul. <em>Information Anxiety</em>. Doubleday, 1989.</li>
+<li>Yee, Ka-Ping, Kirsten Swearingen, Kevin Li and Marti Hearst. "Faceted Metadata for Image Search and Browsing". <em>CHI 2003</em>, ACM, 2003. <a target="_blank" rel="noopener" href="https://unpaywall.org/10.1145%2F642611.642681">unpaywall.org/10.1145/642611.642681</a></li>
+<li>Zaphiris, Panayiotis. "Depth Vs Breadth in the Arrangement of Web Links". <em>Proceedings of the Human Factors and Ergonomics Society 44th Annual Meeting</em>, 2000, pp. 139 to 144. <a target="_blank" rel="noopener" href="https://ktisis.cut.ac.cy/bitstream/20.500.14279/2872/6/Zaphiris2000-Depth_Vs_Breath.pdf">ktisis.cut.ac.cy</a> (also the source for Miller 1981, Kiger 1984 and Snowberry, Parkinson and Sisson 1983 as reported).</li>
+<li>Cited through the filed units, for claims made there: Farrell 2017; Katz and Byrne 2003; Nielsen 2006; Rosch and others 1976; Rosch and Mervis 1975; Spencer 2006 (IA3, Sources); NISO Z39.19-2005 (R2010); Object Management Group, UML 2.5.1 (IA2, Sources).</li>
+</ul>
+</div></details><details class="acc note" id="read-ux-ia4-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>IA1 named the organisation system as the first of the four systems of an information architecture: how content is grouped, and by which scheme (IA1, section 1.1). IA3 gave the evidence a grouping is judged by, and handed this unit four of its checklist items as the criteria for choosing one: C1, is each group one kind of thing; C2, where a group's label is a superordinate term, does the group show basic-level examples; C3, does every far member have a route from the other group people are expected to look in; C4, is each group organised from the person's perspective, with any group that exists for an internal reason named as such (IA3, Deliverable). This unit uses those four, by their codes, to choose schemes and structures. It then builds the two artefacts IA2's decision table assigned to it: the object map ("What does the system hold, and what can people do to it?") and the taxonomy ("How do the terms nest?") (IA2, Deliverable, the artefact decision table). Every figure uses IA2's notation (IA2, section 5 and the notation sheet).</p>
+</div></details><details class="acc made" id="read-ux-ia4-made"><summary><span class="at">How this unit was made</span><span class="an">3 parts</span></summary><div class="accb"><h3>Provenance</h3><p>Unit IA4, written 2026-11-03 by Opus 5.5, search off.</p><h3 id="read-ux-ia4-8">Unsure list</h3>
+<ul>
+<li>Rosenfeld, Morville and Arango 2015, chs 6 and 10: only the section headings were seen; the glosses of exact and ambiguous schemes and of the database model are this unit's, from knowledge of the chapter. At the fresh check the three exact and four ambiguous schemes, with Hybrids in a section of their own, were confirmed in the 3rd edition's published excerpt; the database model's gloss was not checked against the text.</li>
+<li>Cooper and others 2014: the chapter number (13) and title "Metaphors, Idioms, and Affordances" were confirmed at the fresh check from a bookseller's contents listing; the argument is paraphrased, not re-read.</li>
+<li>Miller 1981, Kiger 1984 and Snowberry, Parkinson and Sisson 1983 are cited as reported by Zaphiris 2000; the originals were not seen.</li>
+<li>Landauer and Nachbar 1985 is cited as reported by Dix 2010; Card 1982 as reported in a 1986 SIGCHI Bulletin abstract whose authors were not checked.</li>
+<li>Zaphiris 2000: the matching of the five mean times to their structures was made from a text extraction of the paper's table, whose column headings were garbled; the fresh check confirmed the matching against the paper's discussion.</li>
+<li>Larson and Czerwinski 1998: the structures (8 by 8 by 8, 16 by 32, 32 by 16 over 512 documents) are from the authors' later chapter manuscript, not from the CHI paper itself.</li>
+<li>Prater 2015: the four steps and the quotation were taken from IA2's reading of the article; the fresh check re-read the article and confirmed both.</li>
+<li>Hedden 2022: the third edition's chapter contents were not seen; only the publisher's description.</li>
+<li>Yee and others 2003: authors from knowledge; the figures from the abstract on the DOI page. Dix's page is tied to the 3rd edition of his textbook by its URL; its own date is its copyright line, 2010. Woods's review: its title, "Book Review: Information Anxiety", confirmed at the fresh check.</li>
+<li>Not checked: Spencer, A Practical Guide to Information Architecture, 2nd ed. (the page redirected and was not followed); Google's documentation on faceted navigation URLs (page body not returned); neither is cited.</li>
+</ul><h3>The brief</h3><div class="pbox"><pre>Aim: After this unit the reader can choose an organisation scheme and structure for a given content set, find a product&#x27;s objects before its pages, and build a faceted taxonomy with its rules.
+Takes: IA3&#x27;s categorisation and labelling evidence; IA1&#x27;s surfaces map.
+Gives: the Perqo object map (IA6, IA7 extends it, IA8); the benefits taxonomy (IA5, DD-IA3).
+
+Unit IA4, Organisation systems: schemes, structures, objects, taxonomies. Cover: organisation schemes (exact: alphabetical, chronological, geographical; ambiguous: topic, task, audience, metaphor, hybrid) and when each is right, with the Polar Bear book as the spine; organisation structures (hierarchy, its breadth-versus-depth trade-off and the evidence on it; polyhierarchy; database and faceted models; hypertext) and how real systems combine them; faceted classification and controlled vocabularies (Hedden; Rosenfeld, Morville and Arango on metadata and thesauri) and the difference between a taxonomy and a folksonomy; object-oriented UX (Sophia Prater&#x27;s object mapping, cited to her published articles) as a way to find the nouns before the pages, and where it stops; how an organisation system shows up in navigation, filters, search and URLs. Figures: the scheme catalogue as a tree; breadth versus depth; a facet grid; the Perqo object map. Deliverable: the Perqo object map (objects, attributes, relationships, the calls to action on each object, Perqo facts invented and labelled) and a faceted taxonomy for the Perqo benefits catalogue (facets, values, the rules for adding a value), built in full. The object map covers the whole product, every surface, at the level of objects, attributes and relationships; IA7 extends it for Perqo Admin and renames nothing in it.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>
