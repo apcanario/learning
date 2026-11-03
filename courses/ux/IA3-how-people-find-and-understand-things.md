@@ -375,3 +375,4 @@ The as-is sitemap, in the notation: square-cornered boxes with type tags, every 
 - Furnas and others 1987: the abstract was read; volume, issue and pages from knowledge.
 - Bates 1989: volume and issue from the journal's issue listing; pages not checked, so omitted.
 - Rosch and others 1976: the furniture, chair, kitchen chair example of the three levels is from knowledge of the paper; the abstract does not give it.
+- Fresh check 2026-11-03 (Fable 5.1; no Fable 5.1 fresh check is owed): keep · 0 errors, 2 should-fix, 6 minor; all applied (A2's list and two wordings adjusted, as the report's maintainer's note says); figure 5 fixed after two FIX re-checks and passed its third; figures 1 to 4 passed; report `audits/ux/fresh-check-IA3.md`

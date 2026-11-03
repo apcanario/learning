@@ -393,3 +393,76 @@ Figure 5: FIX
 ### Maintainer's note on re-check 2
 
 FIX (the second). Fixed against both reports. Verified and applied as given: the caption sentence on Home's children; text note 1 (tones in the sentence before the figure) and note 2 (Help kept, its destination changing under A3). The F2 clash holds: the caption's and face line's F2 is IA2's fidelity level (IA2 §1, "This course uses three levels"), the checklist's F2 is an item; applied as "at fidelity F2 (IA2, section 1)" in the caption and "at fidelity F2" in the face line, IA2's own "at F2" form with the word added. The re-checker's note on the root bracket running beside Home's spine is a drawing matter the caption settles; no change. Re-check 3 follows; a third FIX drops the figure.
+
+## Figure 5, re-check 3 (a third fresh Opus 5.5 agent, same inputs): report verbatim
+
+# Figure 5 re-check (IA3, Deliverable, sitemap of the as-is Perqo app)
+
+Read: unit-without-figures.md (Deliverable in full, sections 2.3 and 3.1 to 3.3), captions.md, all six sheets (phone, tablet and desktop, each in dark and light; I cut the phone and tablet sheets into crops so I could read them; the crops are in report/crops/).
+
+## (a) Labels, notes, type tags and checklist IDs against the text
+
+Each drawn element, with the line it comes from (line numbers are those of unit-without-figures.md):
+
+| Element (tag) | Note as drawn | Source in the text | IDs against the applied-checklist table |
+|---|---|---|---|
+| Perqo app (no tag) | tab bar: global routes | l.196 "the tab bar, which carries the app's global routes" | none; tabs pass (A2 row; F1 row "the tabs themselves pass") |
+| Home (HOME) | none | l.196 "five tabs Home, Benefits, Claims, Card and Account" | none |
+| Balance (DETAIL) | one total; fails B1 | l.198 "One Balance total, the sum of the four category balances" | B1 row: "Home shows one Balance total". Correct |
+| Learn more (EXTERNAL) | → see H-2.2.1; fails A1, A2, A3, A5, F1 | l.198 "a 'Learn more' link under it to H-2.2.1 on perqo.com" | A1, A2, A3 ("'Learn more' opens a page titled 'Your balance explained'"), A5, F1. Correct |
+| Recent activity (INDEX) | a submitted claim as Pending; fails D2 | l.198 "A list of recent activity ... shows a submitted claim as 'Pending'" | D2 row: "'Pending' on Home". Correct |
+| Discover (INDEX) | offers; fails A1, C4, D1, D2, F1; a second Learn more under it fails A1, A2, A5, F1 | l.198 "A banner labelled 'Discover' that opens a list of offers"; l.199 "with a second 'Learn more' under the banner" | A1, C4 ("Offers appear twice"), D1, D2, F1. Second Learn more: A1 ("Home, twice"), A2, A5 ("Two 'Learn more' links"), F1; correctly no A3 (the A3 row names only the balance link). Correct |
+| + (FORM) | → see New claim; fails A4, F1 | l.198 "A '+' icon, with no text, that opens New claim" | A4, F1. Correct |
+| Benefits (INDEX) | none | l.200 "Health, Learning, Mobility, Meals, then Perks" | none (see note 1) |
+| Health, Learning, Meals (DETAIL) | What's covered: no examples; fails C2, C3 | l.200 "a 'What's covered' list of its narrower terms, with no examples" | C2 all four categories; C3 for the second places only: Meals (cookery course), Learning (yoga class), Health (bike helmet), l.109 and C3 row. Correct |
+| Mobility (DETAIL) | What's covered: no examples; fails C2 | l.200 | C2 only; Mobility is no far member's second place (l.109). Correct |
+| Perks (INDEX) | offers again; fails C1, C4, D1, D2, F1 | l.199 "a fifth item labelled 'Perks' below the four categories" | C1, C4, D1, D2, F1 ("in Benefits, the fifth item is of another kind"). Correct |
+| Claims (INDEX) | Submitted, Paid; no rejected; fails B2, F2 | l.201 "The Submitted and Paid groups ... rejected claims are not listed" | B2, F2 ("a rejected claim is reachable only through Notifications"). Correct (see note 2) |
+| New claim (FORM) → Check and submit (FORM) | none | l.201 "New claim asks for a category, an amount and a receipt; Check and submit follows" | none |
+| Help with claims (EXTERNAL, tone 3) | → see Claim articles | l.201 "A link 'Help with claims' opens the claim articles in the Help centre"; l.203 Help centre "on perqo.com" | none |
+| Card (SECTION): Card details (DETAIL), Purchases (INDEX), Freeze card (FORM) | none | l.202 "Card details, Purchases, Freeze card"; l.259 "Purchases lists past purchases" | none |
+| Account (SECTION): Profile (DETAIL), Notifications (INDEX) | none | l.203; l.259 "Notifications holds past messages" | none |
+| Documents (INDEX) | fails A1, C4, D1, F2 | l.203 "Documents (which holds the 'Approval rules' PDF, H-1.2.4 ...)" | A1, C4, D1, F2. Correct |
+| Approval rules (FILE) | H-1.2.4, for HR; fails C4, F2 | l.203; l.253 "Product holds them as a PDF for HR" | C4, F2 ("a PDF written for HR"). Correct |
+| Help (EXTERNAL) | → see Help centre home; fails A3 | l.203 "Help, which opens the Help centre's home page on perqo.com" | A3 ("Account's Help opens the Help centre home"). Correct |
+
+Every failing row (A1 to A5, B1, B2, C1 to C4, D1 to D3, E2, F1, F2) was checked against the figure. D3 and E2 concern the Help centre's search and its log, which are not elements of the app, so no box carries them; that is correct. E1 and E3 pass and no box carries them. No ID appears on an element whose row does not name it.
+
+Type tags. The text gives no tag vocabulary, but it does say "square-cornered boxes with type tags" (l.205) and "Every figure here uses IA2's notation" (l.12). Where the text describes a page, the tag matches it: lists are INDEX (l.198 to l.201, l.259), "the 'Approval rules' PDF" is FILE, New claim "asks for a category, an amount and a receipt" (FORM), and the routes to perqo.com are EXTERNAL, as l.205 requires. DETAIL on Card details and Profile and FORM on Freeze card are not stated in the text. They are the notation's nearest kinds and the text does not contradict them, so they are not errors.
+
+Notes on judgement calls. Neither is an error.
+1. C1 is drawn on Perks, the item of the other kind, and not on Benefits. The C1 row's subject is Perks, and its fix keeps Benefits ("Benefits holds the four categories only"), so this is consistent.
+2. D2 is drawn on Recent activity, Discover and Perks, but not on Claims, although the D2 row mentions "Submitted on Claims". The fix keeps Claims' term ("Use Submitted everywhere"; "What IA6 keeps ... the status names Submitted and Paid"). So the element at fault is Recent activity, while Discover and Perks both have their labels replaced. This is consistent.
+
+Result: no error.
+
+## (b) Caption
+
+The caption says what the figure shows: the as-is navigation, at fidelity F2, with page types tagged. It names the section ("(Deliverable)") and the sources of its data: "from IA1, section 5, and IA2, section 5.3; every other element from this Deliverable". The tones match the drawing. Tone 3 (teal) is on every passing box, including the external Help with claims. Tone 6 (ochre) is on every box with "fails ...". The IDs are in the notes, as the caption says. As the caption states, the root carries no type tag and the five tabs are its children. Balance and Recent activity sit under Home with tags that describe their content, and Learn more, Discover and + are drawn as routes. The sources it credits to IA1 and IA2 match l.196. It also sits in line with l.267, "at fidelity F2". Result: no error.
+
+## (c) Kind
+
+The data is a hierarchy of screens, and the figure draws it as a sitemap tree: root, five tabs, then their children, with Check and submit under New claim and Approval rules under Documents. The kind fits.
+
+## (d) Drawing as read
+
+- Desktop (light and dark): one frame holds the whole figure, and all 30 boxes are present.
+- Tablet (light and dark): one frame holds the whole figure.
+- Phone (light and dark): three frames, scrolled to 78, 242 and 372 of 372 px. Together they show every column: Home with its five children, Benefits with its five, Claims with its three, Card with its three, and Account with its four plus Approval rules. The right-edge fade appears only at the scroll edge and hides nothing that another frame does not show whole. The "scroll sideways for the whole figure" hint sits under the figure.
+- In every sheet, all text sits inside its box. Nothing overlaps, and no line is cut; the longest notes (Discover, Claims, Learn more) wrap inside their boxes. The caption sits under the figure. On the phone, the labels, the notes in monospace and the caption are readable at the rendered size. Both themes keep the tone 3 and tone 6 distinction clear.
+
+Result: no error.
+
+## The unit's own text (outside the figure)
+
+No error found in the parts I read: the Deliverable in full (the as-is navigation, the checklist, the applied checklist, What IA6 keeps, What this hands on, the face line) and sections 2.3 and 3.1 to 3.3. The applied-checklist rows agree with the as-is list at l.196 to l.203. For example, F1's "three of five elements" matches Home's five elements at l.198.
+
+## Verdict
+
+All IDs, notes, labels and tags are supported by the text and agree with the applied-checklist table. The caption is accurate, the kind fits the data, and the drawing is whole and legible at every width and theme. No replacement text is needed.
+
+Figure 5: PASS
+
+### Maintainer's note on re-check 3
+
+PASS. Figure 5 kept. No text finding. The figure-checkers' notes on phone width (matrix label columns, the flow's 14 px scroll, seen on the frames sheets) are a renderer change already queued and are recorded on row P83.
