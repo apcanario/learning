@@ -364,3 +364,60 @@ Problem: This lead-in is garbled and no longer matches its paragraph, which now 
 Fix: `**Effort never recorded.**`
 
 **Maintainer's note on figure re-check 1 (3 Nov 2026).** The re-checker's transcript was checked by script: no web, memory, Projects, connector or Artifact tool; every file it opened, and its scratch crops, inside its folder. Figure 2 passed. Figure 3 was a second FIX and each finding was verified before it was applied: the writer's table dates every chat's first message, and none falls on 31 October (27, 8, 7, 0, 7 and 4 by day), so the figure gains a 31 Oct row at 0 and §4 says "none on 30 or 31 October"; the table's divider row did carry six columns against five, left by the maintainer's removal of the empty column (an error of this chat's own edit), now five; the §3 lead-in, which no longer matched its paragraph, now reads "Effort never recorded." Figure 3 goes to a third check, against both reports, as the drop rule sets.
+
+## Figure re-check 2, figure 3's third check (3 Nov 2026, a separate Opus 5.5 agent given the unit without its figures, the captions and figure 3's frames sheets at phone, tablet and desktop, dark and light; report verbatim)
+
+## Figure 3 recheck (third and last) — DD-B2 "Deep dive: his unknown unknowns"
+
+**Verdict: PASS.** Keep the figure. No replacement JSON or caption is needed.
+
+I opened only the files in /tmp/claude-0/a5/recheck-DD-B2-f3b/: unit-without-figures.md, captions.md, and all six frames sheets (phone, tablet and desktop, each dark and light).
+
+### Kind and placement
+- **Kind:** compare. It shows a count of chats for each day across six days. That is numbers compared side by side, so compare is the right kind. A timeline would suit dated events, which this is not.
+- **Section:** §4 "Where the tool was wrong for the job". The marker `[Figure 3 (compare) stands here…]` comes straight after the paragraph that states the values.
+
+### Every label, date and number, traced to the text
+Source line, §4: `Eighteen of the 22 began on 28 October; one began on 29 October, two on 1 November and one on 2 November, none on 30 or 31 October.`
+
+| Figure row | Value | Text |
+|---|---|---|
+| 28 Oct | 18 | "Eighteen of the 22 began on 28 October" |
+| 29 Oct | 1 | "one began on 29 October" |
+| 30 Oct | 0 | "none on 30 or 31 October" |
+| 31 Oct | 0 | "none on 30 or 31 October" |
+| 1 Nov | 2 | "two on 1 November" |
+| 2 Nov | 1 | "one on 2 November" |
+
+- **Sum:** 18 + 1 + 0 + 0 + 2 + 1 = 22. This matches `Twenty-two chats ran on Fable 5.1 in whole or part` (§4).
+- **Against §2:** §2 gives `18 Fable 5.1 and four both`, and 18 + 4 = 22. The §2 table adds up the same way. Fable-only: Infrastructure 8 + Figure 1 + Audits 5 + Status 2 + Syllabus 2 = 18. Switched: 1 + 2 + 1 = 4.
+- **The window:** the six rows run from 28 Oct to 2 Nov. That matches §1: `53 chats, first message 28 October 05:42 to last update 2 November 17:51`. No day is missing; the 31 Oct row is there.
+- **Result:** every label, date and number is in the text. No errors.
+
+### Caption
+The caption reads: `Figure 3 (compare): Chats run on Fable 5.1, in whole or part, by the day they began. §4 of this unit; the 22 Fable chats among the Project's 53, model read from the commit trailers a search inside each chat returns and those in the saved reads.`
+- **What it shows:** it says what the figure shows.
+- **Section:** it names §4, which is where the figure sits.
+- **Source:** it names the data source, the commit-trailer search plus the saved reads. That is the same wording §4 uses: `(a search inside each chat for its commit trailers, with the saved reads)`.
+- **Numbers:** "22" and "53" both appear in the text.
+- **Result:** nothing to fix.
+
+### Rendering (from the sheets)
+- **Desktop and tablet, dark and light:** each is one frame, and the whole figure fits.
+  - All six day labels are whole and legible.
+  - The values 18, 1, 0, 0, 2 and 1 are next to their bars, and nothing overlaps.
+  - Bar lengths match the values. The 28 Oct bar fills the track; the 1 Nov bar is about twice the 29 Oct and 2 Nov bars. The 30 and 31 Oct rows have an empty track with a 0.
+  - The caption is whole. Contrast is fine in both themes.
+- **Phone, dark and light:** four frames, scrolled to 0, 164, 328 and 372 of 372 px.
+  - Frame 1 shows all six labels, the values 1, 0, 0, 2 and 1, and the start of the 28 Oct bar. The right edge fades and a "scroll sideways for the whole figure" hint appears.
+  - Frames 2 and 3 show the 28 Oct bar continuing, with fades at both edges.
+  - Frame 4 shows the end of the 28 Oct bar with its value "18".
+  - Taken together, the frames show the whole drawing, and nothing is clipped or overlapping.
+  - Both themes render the same.
+
+**One minor point, not a FIX:** on a phone, the day labels scroll out of view, so "18" appears in frame 4 with no label beside it. It is still unambiguous, because only one bar reaches that far and frame 1 shows that it is 28 Oct. This comes from the renderer's horizontal-scroll layout, not from this figure's data, so there is nothing to change here.
+
+### Notes on the unit's text
+I found no errors in the text around this figure. In §4, the breakdown of the 17 non-audit Fable chats adds up: infrastructure 10 (8 + 2 switches), status 3, syllabus 2, figure pass 1 and unit writing 1 make 17, and adding the 5 audits gives 22. All of these agree with the §2 table. The Greek-pass counts in §4 also agree with each other: 166 passed the first check, 94 passed after a fix and 6 were dropped, which makes 266 proposed. And 78 + 78 + 62 = 218 agents, as change 3 says.
+
+**Maintainer's note on figure re-check 2 (3 Nov 2026).** The checker's transcript was checked by script: no web, memory, Projects, connector or Artifact tool; every file it opened inside its folder. Figure 3 passed its third check. Its one minor point (on a phone the day labels scroll out of view, so "18" shows in its last frame without its label) is the renderer change already queued as P83, recorded on that row, no new row. Figures: 1 (compare) passed the fresh check; 2 (bars) fixed and passed re-check 1; 3 (compare) fixed twice and passed its third check. None dropped.
