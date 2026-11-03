@@ -280,3 +280,116 @@ Figure 5: FIX
 ### Maintainer's note on re-check 1
 
 FIX. Verified against the unit's applied table, the as-is list and section 3.3 (second places: cookery course Meals, yoga class Learning, bike helmet Health). Applied as given: the Discover note (C4 added; the second Learn more's IDs, A1, A2, A5, F1, split out), Approval rules' IDs (C4, F2), the Learning, Mobility and Meals notes written out (Mobility fails C2 only), and text notes 3, 4 and 5. Held in part: text note 1 (the repeated "on Home") and note 2 (the repeated clause in 2.3) quote the lines figure 3's cells are traced to ("one Balance total on Home"; "a course claim is rejected while Home shows money left"), so the cells' wording was kept and the sentences reworded around it: "The app (Perqo, fictional) shows one Balance total on Home, the sum" and "who claims a course is rejected, over balance. The gap: a course claim is rejected while Home shows money left." Removing "(a claim shown as Pending)" (note 3) took away the line figure 5's Recent activity note was traced to, so that note became "a submitted claim as Pending; fails D2", the text's own words. The observation on Balance's `detail` tag was checked against IA2's fixed tag list (§5.2: `detail`, one item); Balance shows one item, the employee's total, so the tag stands. Re-check 2 follows.
+
+## Figure 5, re-check 2 (a second fresh Opus 5.5 agent, same inputs): report verbatim
+
+# Figure 5 re-check (IA3, sitemap, Deliverable)
+
+Sheets read: desktop light/dark (1 frame each), tablet light/dark (1 frame each), phone light/dark (3 frames each, sideways scroll at 78, 242, 372 px).
+
+## (a) Labels, notes, tags and checklist IDs against the text
+
+**Labels and notes.** Each comes from the Deliverable's as-is list (lines 196 to 203) unless stated otherwise.
+
+| Box | Drawn | Source line |
+|---|---|---|
+| Perqo app (root) | "tab bar: global routes" | "the tab bar, which carries the app's global routes, with its five tabs Home, Benefits, Claims, Card and Account" |
+| Home, Benefits, Claims, Card, Account | tab labels | same line |
+| Balance | "one total; fails B1" | "One Balance total, the sum of the four category balances" |
+| Learn more | "→ see H-2.2.1; fails A1, A2, A3, A5, F1" | "with a "Learn more" link under it to H-2.2.1 on perqo.com" |
+| Recent activity | "a submitted claim as Pending; fails D2" | "A list of recent activity that mixes purchases and claims and shows a submitted claim as "Pending"" |
+| Discover | "offers; fails A1, C4, D1, D2, F1; a second Learn more under it fails A1, A2, A5, F1" | "A banner labelled "Discover" that opens a list of offers"; "with a second "Learn more" under the banner" |
+| + | "→ see New claim; fails A4, F1" | "A "+" icon, with no text, that opens New claim" |
+| Health, Learning, Mobility, Meals | "What's covered: no examples" | "Each category screen shows its balance and a "What's covered" list of its narrower terms, with no examples" |
+| Perks | "offers again; fails C1, C4, D1, D2, F1" | "again from the Benefits tab, where it sits as a fifth item labelled "Perks"" |
+| Claims | "Submitted, Paid; no rejected; fails B2, F2" | "The Submitted and Paid groups; ... rejected claims are not listed" |
+| New claim, Check and submit | labels; Check and submit as child of New claim | "New claim asks for a category, an amount and a receipt; Check and submit follows" |
+| Help with claims | "→ see Claim articles" | "A link "Help with claims" opens the claim articles in the Help centre" |
+| Card details, Purchases, Freeze card | labels | "Card details, Purchases, Freeze card" |
+| Profile, Notifications | labels | "Profile, Notifications, Documents ... and Help" |
+| Documents | "fails A1, C4, D1, F2" | same line |
+| Approval rules | "H-1.2.4, for HR; fails C4, F2" | "Documents (which holds the "Approval rules" PDF, H-1.2.4 ..." and "a PDF written for HR" (F2 row) |
+| Help | "→ see Help centre home; fails A3" | "Help, which opens the Help centre's home page on perqo.com" |
+
+No element in the text is missing from the drawing, and nothing is drawn that the text does not hold.
+
+**Checklist IDs, row by row** (table "The checklist applied to the as-is Perqo app"):
+
+- A1 Fail: "Learn more" (Home, twice), "Discover" (Home) and "Documents" (Account). Drawn: Learn more, the second Learn more (in Discover's note), Discover, Documents. Match.
+- A2 Fail: "Learn more" opens with no subject. Drawn: both Learn mores. Match.
+- A3 Fail: "Learn more" opens a page titled "Your balance explained"; Account's Help opens the Help centre home. Drawn: first Learn more and Help. The second Learn more correctly does not carry A3. Match.
+- A4 Fail: the "+". Drawn: +. Match.
+- A5 Fail: two Learn mores, two destinations. Drawn: both. Match.
+- B1 Fail: Home shows one Balance total. Drawn: Balance. Match.
+- B2 Fail: approved claims hide in Submitted; rejected claims only in Notifications. Drawn: Claims. Notifications is named only as where rejected claims end up. It is not at fault, and the fix lands in Claims, so it rightly stays tone 3. Match.
+- C1 Fail: Perks. Drawn: Perks. Match.
+- C2 Fail: "What's covered" with no examples, which is all four category screens. Drawn: Health, Learning, Mobility, Meals. Match.
+- C3 Fail: no route from the second category people look in. From section 3.3 those are cookery course → Meals, yoga class → Learning and bike helmet → Health. Drawn: Health, Learning and Meals carry C3, Mobility does not. Match.
+- C4 Fail: offers twice (Discover, Perks); approval rules in Documents. Drawn: Discover, Perks, Documents, Approval rules. Match.
+- D1 Fail: "Documents", "Perks" and "Discover". Drawn: all three. Match.
+- D2 Fail: "Pending" on Home, which is Recent activity; "Discover" against "Perks". Drawn: Recent activity, Discover, Perks. Claims uses the right word (Submitted), so it rightly does not carry D2. Match.
+- D3, E2 Fail: both concern the Help centre's search and logs, which are not app elements and are not drawn. Nothing to carry them. Match.
+- E1 Pass (with a watch), E3 Pass: no IDs drawn. Match.
+- F1 Fail: on Home, "Learn more", "Discover" with the second "Learn more" under it, and "+"; in Benefits, the fifth item. Drawn: Learn more, Discover, second Learn more, +, Perks. Home has exactly five children, so "three of five" agrees. Match.
+- F2 Fail: approval rule only through Account → Documents → PDF; rejected claim only through Notifications. Drawn: Documents, Approval rules, Claims. Account and Notifications are route segments and are not at fault. This agrees with the row's fix ("rejected claims show in Claims"). Match.
+
+Reverse check: every ID drawn on every box goes back to a failing row that names that element. Nothing is extra.
+
+**Type tags.** HOME, INDEX, DETAIL, FORM, SECTION, FILE and EXTERNAL. The text sets only that boxes carry type tags and that routes leaving the app are tagged `external` with a "→ see" note. Learn more, Help with claims and Help satisfy this. The tag vocabulary and most tag choices rest on IA2's notation, which is not in this folder, so they cannot be checked here. Most fit what the text says: Claims and Benefits are lists, so INDEX; the category screens are DETAIL; New claim and Check and submit are FORM; the Approval rules PDF is FILE.
+
+One tag set does not fit the text. Balance is tagged DETAIL and Recent activity INDEX, which draws them as screens under Home. The text describes both as things shown on the Home screen itself: "One Balance total ... A list of recent activity". Learn more, Discover and + are routes from Home. The caption never says that Home's children are elements on the screen rather than pages under it. **This is the FIX below.**
+
+## (b) Caption
+
+The caption says what the figure shows ("the Perqo app's navigation as it stands (as-is) ... page types tagged") and names the section ("(Deliverable)"). It also names its sources: "from IA1, section 5, and IA2, section 5.3; every other element from this Deliverable", which matches the text's line "(IA1, section 5; IA2, section 5.3)".
+
+- Tones agree with the drawing. Every box carrying IDs is tone 6 (gold), every box without IDs is tone 3 (teal), in both themes.
+- "The root names the surface and carries no type tag" agrees: "Perqo app" has no tag.
+- "the five tabs are its children" agrees: Card and Account hang from the root's bracket on a second row.
+
+Two problems:
+1. "page types tagged" and the DETAIL/INDEX tags on Balance and Recent activity present on-screen elements as pages (see (a)). This is fixed below.
+2. Advisory, no replacement proposed. The caption's "(as-is), F2," uses "F2" in a figure whose notes also use F2 as the checklist's findability item, so a reader can take one for the other. The unit's face line has the same "as-is, F2". What F2 means there (presumably IA2's fidelity or face level) is not defined in this folder. If IA2 has a spelled-out name for it, using that name in the caption would remove the clash.
+
+## (c) Kind
+
+A sitemap fits a hierarchy of an app's screens. Drawing Home's on-screen elements as children is a reasonable choice so that their checklist IDs have somewhere to sit, provided the caption says so (the FIX).
+
+## (d) Drawing as read
+
+- **Desktop and tablet, light and dark:** the whole figure fits in one frame. No text overlaps or is cut, every label and note sits inside its box, connectors are clean, and the caption sits under the figure.
+- **Phone, light and dark:** three sideways frames (78, 242 and 372 of 372 px) with a "scroll sideways for the whole figure" hint, and the caption under it. Every box is seen whole in at least one frame:
+  - frame 1: Home's column and Card's column;
+  - frame 2: root, Benefits' column and Account's column;
+  - frame 3: Claims' column and Approval rules.
+
+  Text clipped at the frame edges is the scroll fade only. The mono notes are small but legible at phone width.
+- **Minor layout observation, no change proposed:** on every width, the root's bracket line down to Card and Account runs a few pixels left of, and parallel to, Home's child spine. A quick reader could take Card and Account for children of Home. The caption's "the five tabs are its children" settles it.
+
+## FIX for the figure
+
+Caption. Current text, exactly as it appears in captions.md and on the sheets:
+
+> The root names the surface and carries no type tag, because the tab bar is not a page; the five tabs are its children.
+
+Replacement:
+
+> The root names the surface and carries no type tag, because the tab bar is not a page; the five tabs are its children. Home's children are what the Home screen holds: Balance and Recent activity sit on Home itself, and Learn more, Discover and + are routes from it; their tags give the kind of content each shows or opens.
+
+(The other route is to retag Balance and Recent activity in the figure JSON. The replacement tag would have to come from IA2's notation sheet, which is not available here, so the caption change is the fix given.)
+
+## The unit's own text (outside the figure)
+
+1. Line 205 contradicts itself: every box is tone 3, then the faults are tone 6.
+   - Current: "square-cornered boxes with type tags, every box in the app's tone 3, the faults the checklist finds in tone 6,"
+   - Proposed: "square-cornered boxes with type tags, every box that passes in the app's tone 3, every box that fails an item of the checklist in tone 6,"
+2. Line 263, "What IA6 keeps", opens "Every label that passes" and lists Help, but the A3 row fails Account's Help (its destination does not confirm it). The label stays and the destination changes.
+   - Current: "Profile, Notifications and Help;"
+   - Proposed: "Profile, Notifications and Help (its destination changes under A3);"
+3. Line 267, face line, has the same F2 clash as the caption: "the Perqo app as-is, F2;". If IA2 names this level, spell it out (for example "as-is, face F2" or IA2's own term). No exact replacement is proposed, because the term is not defined in this folder.
+
+Figure 5: FIX
+
+### Maintainer's note on re-check 2
+
+FIX (the second). Fixed against both reports. Verified and applied as given: the caption sentence on Home's children; text note 1 (tones in the sentence before the figure) and note 2 (Help kept, its destination changing under A3). The F2 clash holds: the caption's and face line's F2 is IA2's fidelity level (IA2 §1, "This course uses three levels"), the checklist's F2 is an item; applied as "at fidelity F2 (IA2, section 1)" in the caption and "at fidelity F2" in the face line, IA2's own "at F2" form with the word added. The re-checker's note on the root bracket running beside Home's spine is a drawing matter the caption settles; no change. Re-check 3 follows; a third FIX drops the figure.
