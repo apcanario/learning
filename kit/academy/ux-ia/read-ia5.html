@@ -1,0 +1,1650 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#ux-ia" data-target="ux-ia">Course IA · Information architecture</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">IA5</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--blue)">INFORMATION ARCHITECTURE</span> · IA5 <span class="pill live">IA5</span></div>
+    <h1>Level 1 · the sales and product website</h1>
+    <p class="scope">From content inventory to sitemap for perqo.com: page types, audiences, depth, and the constraints marketing and search bring.</p>
+  </header>
+  <div class="stepbar" data-n="10"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 10</span><span class="stt">Running a content inventory and audit</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-ia5-0" data-step="0"><span class="n">01</span><span class="t">Running a content inventory and audit</span></a></li><li><a href="#read-ia5-1" data-step="1"><span class="n">02</span><span class="t">Audience, task or topic: three structures for a B2B software site</span></a></li><li><a href="#read-ia5-2" data-step="2"><span class="n">03</span><span class="t">Page types, pages and templates</span></a></li><li><a href="#read-ia5-3" data-step="3"><span class="n">04</span><span class="t">Depth, breadth, and the home-page and landing-page problem</span></a></li><li><a href="#read-ia5-4" data-step="4"><span class="n">05</span><span class="t">What other functions bring, and how the sitemap records it</span></a></li><li><a href="#read-ia5-5" data-step="5"><span class="n">06</span><span class="t">How the sitemap is read, and the fidelity each reader needs</span></a></li><li><a href="#read-ia5-6" data-step="6"><span class="n">07</span><span class="t">Deliverable · A · The perqo.com content inventory</span></a></li><li><a href="#read-ia5-7" data-step="7"><span class="n">08</span><span class="t">Deliverable · B · The perqo.com sitemap</span></a></li><li><a href="#read-ia5-8" data-step="8"><span class="n">09</span><span class="t">Deliverable · C · The perqo.com page-template catalogue</span></a></li><li><a href="#read-ia5-10" data-step="9"><span class="n">10</span><span class="t">Perqo facts set by this unit</span></a></li></ol><div class="secx"><a href="#read-ia5-sources" data-acc>Sources</a><a href="#read-ia5-note" data-acc>The writer's opening note</a><a href="#read-ia5-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-ia5-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">Running a content inventory and audit</span></span></h2>
+<h3>1.1 · Two passes over the same list</h3>
+<p>IA2 set the distinction and the outcome per item: an inventory lists what exists, an audit judges it, and each item ends as keep, update or remove (Anna Kaley, "Content Inventory and Auditing 101", Nielsen Norman Group, 27 September 2020, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/content-audits/">nngroup.com/articles/content-audits</a>; IA2, section 1.1). The two standard works on the method make the same split, and both follow the audit with a further step.</p>
+<p>Kristina Halvorson and Melissa Rach give the audit its own chapter, "Audit: Take a close-up look at your current content", followed by one on "Analysis: Your content lives in a complicated world" (<em>Content Strategy for the Web</em>, 2nd ed., New Riders, 2012, chs 5 and 6; contents and index in the publisher's sample, <a target="_blank" rel="noopener" href="https://ptgmedia.pearsoncmg.com/images/9780321808301/samplepages/0321808304.pdf">ptgmedia.pearsoncmg.com</a>). The book's index separates "quantitative inventories" from "qualitative audits", the latter with two subtypes, "best practices assessment" and "strategic assessment"; lists "content sampling" with the factors that decide a sample (objectives, depth, maintenance frequency, updates, users, traffic); and has an entry for "rolling audits" (same index). Under the quantitative inventory's audit data the index names IDs, formats, language, last update date, technical home, title and topics, traffic, URLs and usage statistics; among the qualitative audit's factors it names accuracy, actionability, branding, business value, findability, knowledge level, messaging, target audience, usability, and voice and tone (same index). The chapters' text was not read for this unit, so it cites the book for this structure and these field names only.</p>
+<p>Donna Spencer's <em>A Practical Guide to Information Architecture</em> (2nd ed., UX Mastery, 2014, <a target="_blank" rel="noopener" href="https://uxmastery.com/coming-soon-a-practical-guide-to-information-architecture-second-edition/">uxmastery.com</a>) puts the same division into its part 3, "Understanding content", where chapter 11 is "Content You Have" and chapter 12 "Content You Need", before "Communicating About Content", "Content Planning" and "Classification Schemes" (chs 13 to 15; contents from the edition's front matter). The order is the point a team can use: what exists, then what is missing, then how it will be classified. An inventory that stops at what exists cannot propose a structure, because the structure has to hold the content the site still lacks.</p>
+<p>So a working method has three passes, each with its own question:</p>
+<ol>
+<li><strong>Inventory (quantitative).</strong> What is there? One row per page or file, with the fields below, filled from the live site. No judgement yet.</li>
+<li><strong>Audit (qualitative).</strong> Is each item any good, for whom, and against what? Each row gets keep, update or remove, with the reason and an owner for each update (Kaley 2020).</li>
+<li><strong>Gap analysis.</strong> What does the site need that it does not have? New rows, marked with a fourth status, <em>new</em>, so the list becomes the migration list engineering builds from (IA2, section 1.1: F3 as the migration list). The status is an addition to IA2's three, declared here as IA2's rule "Keep the notation; extend the legend" requires (IA2, section 4).</li>
+</ol>
+<p>Kaley gives two working rules for scope: choose one that "fits your organization's needs and your team's capacity", and if the volume is too large, "start with a manageable yet impactful subset", for example the content most used or supporting top tasks; she adds that "spreadsheets tend to work best for content inventories and audits" (Kaley 2020). Halvorson and Rach's "content sampling" and "rolling audits" are the same answer for large sites: audit a defined sample now and the rest on a schedule (index, as above). perqo.com is small enough for a full inventory, and the deliverable is one.</p>
+<h3>1.2 · What to record per item</h3>
+<p>The fields below are the union of Kaley's list (title, URL, owner, topic, format, last-modified date, metadata, location of source files), Halvorson and Rach's quantitative fields, and the fields this course needs for the structure work that follows. The last group is the course's addition, and each field in it is tied to the unit that requires it.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Pass</th>
+<th>Why it is recorded</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>inventory</td>
+<td>the item's address in every later artefact; kept when the item moves</td>
+<td>Halvorson and Rach 2012, index; IA2, section 4</td>
+</tr>
+<tr>
+<td>Title, as the page shows it</td>
+<td>inventory</td>
+<td>the label people meet</td>
+<td>Kaley 2020</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>inventory</td>
+<td>where it lives now; the redirect source if it moves</td>
+<td>Kaley 2020; Halvorson and Rach 2012, index</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>inventory</td>
+<td>page or file (IA2's <code>file</code> tag)</td>
+<td>Kaley 2020</td>
+</tr>
+<tr>
+<td>Last modified</td>
+<td>inventory</td>
+<td>how stale it is</td>
+<td>Kaley 2020; Halvorson and Rach 2012, index</td>
+</tr>
+<tr>
+<td>Traffic</td>
+<td>inventory</td>
+<td>which items matter first when time is short</td>
+<td>Halvorson and Rach 2012, index; Kaley 2020 (scope)</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>inventory</td>
+<td>who updates it, and who is asked</td>
+<td>Kaley 2020</td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>audit</td>
+<td>whom it is written for</td>
+<td>Halvorson and Rach 2012, index ("target audience")</td>
+</tr>
+<tr>
+<td>Audit outcome and reason</td>
+<td>audit</td>
+<td>keep, update, remove, new</td>
+<td>Kaley 2020; this unit (new)</td>
+</tr>
+<tr>
+<td>Page type</td>
+<td>structure</td>
+<td>its place in the hierarchy: IA2's tags</td>
+<td>IA2, section 5.2</td>
+</tr>
+<tr>
+<td>Template</td>
+<td>structure</td>
+<td>which layout of modules builds it (section 3)</td>
+<td>this unit</td>
+</tr>
+<tr>
+<td>F-CAT tags</td>
+<td>structure</td>
+<td>which benefit categories it is about</td>
+<td>IA4, Deliverable B</td>
+</tr>
+<tr>
+<td>Redirect to</td>
+<td>structure</td>
+<td>where its old URL points when it moves or goes</td>
+<td>IA4, section 5</td>
+</tr>
+<tr>
+<td>Indexed</td>
+<td>structure</td>
+<td>whether search engines may list it (section 5.1)</td>
+<td>Google documentation, section 5.1</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="viz viz-matrix viz-fit"><div class="viz-scroll" style="--stick:114.7px"><svg viewBox="0 0 447.7 488" width="447.7" height="488" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-fit"><text class="viz-colhead" x="152.7" y="15.6" text-anchor="middle">Pass</text><text class="viz-colhead" x="264.2" y="15.6" text-anchor="middle">F2 audit</text><text class="viz-colhead" x="388.7" y="15.6" text-anchor="middle">F3 migration</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">ID</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="34.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="51.8" text-anchor="middle">inventory</text></g><g data-box=""><rect class="viz-band viz-t1" x="192.7" y="34.0" width="143.0" height="28.0"/><text class="viz-mark" x="264.2" y="51.8" text-anchor="middle">record</text></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="34.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="51.8" text-anchor="middle">stable</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Title</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="66.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="83.8" text-anchor="middle">inventory</text></g><g data-box=""><rect class="viz-band viz-t1" x="192.7" y="66.0" width="143.0" height="28.0"/><text class="viz-mark" x="264.2" y="83.8" text-anchor="middle">record</text></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="66.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="83.8" text-anchor="middle">final label</text></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">URL</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="98.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="115.8" text-anchor="middle">inventory</text></g><g data-box=""><rect class="viz-band viz-t1" x="192.7" y="98.0" width="143.0" height="28.0"/><text class="viz-mark" x="264.2" y="115.8" text-anchor="middle">record</text></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="98.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="115.8" text-anchor="middle">final address</text></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">Format</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="130.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="147.8" text-anchor="middle">inventory</text></g><g data-box=""><rect class="viz-band viz-t1" x="192.7" y="130.0" width="143.0" height="28.0"/><text class="viz-mark" x="264.2" y="147.8" text-anchor="middle">record</text></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="130.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="147.8" text-anchor="middle">record</text></g><text class="viz-label" x="8.0" y="180.3" text-anchor="start">Last modified</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="162.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="179.8" text-anchor="middle">inventory</text></g><g data-box=""><rect class="viz-band viz-t1" x="192.7" y="162.0" width="143.0" height="28.0"/><text class="viz-mark" x="264.2" y="179.8" text-anchor="middle">record</text></g><g data-box=""><rect class="viz-track" x="339.7" y="162.0" width="98.0" height="28.0"/></g><text class="viz-label" x="8.0" y="212.3" text-anchor="start">Traffic</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="194.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="211.8" text-anchor="middle">inventory</text></g><g data-box=""><rect class="viz-band viz-t1" x="192.7" y="194.0" width="143.0" height="28.0"/><text class="viz-mark" x="264.2" y="211.8" text-anchor="middle">record</text></g><g data-box=""><rect class="viz-track" x="339.7" y="194.0" width="98.0" height="28.0"/></g><text class="viz-label" x="8.0" y="244.3" text-anchor="start">Owner</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="226.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="243.8" text-anchor="middle">inventory</text></g><g data-box=""><rect class="viz-band viz-t1" x="192.7" y="226.0" width="143.0" height="28.0"/><text class="viz-mark" x="264.2" y="243.8" text-anchor="middle">record</text></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="226.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="243.8" text-anchor="middle">named</text></g><text class="viz-label" x="8.0" y="276.3" text-anchor="start">Audience</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="258.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="275.8" text-anchor="middle">audit</text></g><g data-box=""><rect class="viz-band viz-t1" x="192.7" y="258.0" width="143.0" height="28.0"/><text class="viz-mark" x="264.2" y="275.8" text-anchor="middle">judge</text></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="258.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="275.8" text-anchor="middle">record</text></g><text class="viz-label" x="8.0" y="308.3" text-anchor="start">Audit outcome</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="290.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="307.8" text-anchor="middle">audit</text></g><g data-box=""><rect class="viz-band viz-t1" x="192.7" y="290.0" width="143.0" height="28.0"/><text class="viz-mark" x="264.2" y="307.8" text-anchor="middle">keep, update, remove</text></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="290.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="307.8" text-anchor="middle">plus new</text></g><text class="viz-label" x="8.0" y="340.3" text-anchor="start">Page type</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="322.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="339.8" text-anchor="middle">structure</text></g><g data-box=""><rect class="viz-track" x="192.7" y="322.0" width="143.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="322.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="339.8" text-anchor="middle">tag</text></g><text class="viz-label" x="8.0" y="372.3" text-anchor="start">Template</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="354.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="371.8" text-anchor="middle">structure</text></g><g data-box=""><rect class="viz-track" x="192.7" y="354.0" width="143.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="354.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="371.8" text-anchor="middle">T-ID</text></g><text class="viz-label" x="8.0" y="404.3" text-anchor="start">F-CAT tags</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="386.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="403.8" text-anchor="middle">structure</text></g><g data-box=""><rect class="viz-track" x="192.7" y="386.0" width="143.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="386.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="403.8" text-anchor="middle">CAT-ID</text></g><text class="viz-label" x="8.0" y="436.3" text-anchor="start">Redirect to</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="418.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="435.8" text-anchor="middle">structure</text></g><g data-box=""><rect class="viz-track" x="192.7" y="418.0" width="143.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="418.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="435.8" text-anchor="middle">ID</text></g><text class="viz-label" x="8.0" y="468.3" text-anchor="start">Indexed</text><g data-box=""><rect class="viz-band viz-t1" x="116.7" y="450.0" width="72.0" height="28.0"/><text class="viz-mark" x="152.7" y="467.8" text-anchor="middle">structure</text></g><g data-box=""><rect class="viz-track" x="192.7" y="450.0" width="143.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="339.7" y="450.0" width="98.0" height="28.0"/><text class="viz-mark" x="388.7" y="467.8" text-anchor="middle">yes or no</text></g></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 114.7 488" width="114.7" height="488" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="114.7" height="482"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">ID</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Title</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">URL</text><text class="viz-label" x="8.0" y="148.3" text-anchor="start">Format</text><text class="viz-label" x="8.0" y="180.3" text-anchor="start">Last modified</text><text class="viz-label" x="8.0" y="212.3" text-anchor="start">Traffic</text><text class="viz-label" x="8.0" y="244.3" text-anchor="start">Owner</text><text class="viz-label" x="8.0" y="276.3" text-anchor="start">Audience</text><text class="viz-label" x="8.0" y="308.3" text-anchor="start">Audit outcome</text><text class="viz-label" x="8.0" y="340.3" text-anchor="start">Page type</text><text class="viz-label" x="8.0" y="372.3" text-anchor="start">Template</text><text class="viz-label" x="8.0" y="404.3" text-anchor="start">F-CAT tags</text><text class="viz-label" x="8.0" y="436.3" text-anchor="start">Redirect to</text><text class="viz-label" x="8.0" y="468.3" text-anchor="start">Indexed</text></svg></div></div><figcaption>Inventory structure: the fields of one inventory row, grouped by the pass that fills each, with the status a field takes at F2 (the audit before redesign) and F3 (the migration list); supports the decision on which columns a perqo.com inventory carries (section 1.2). Fields from Kaley, 'Content Inventory and Auditing 101', NN/g, 2020; Halvorson and Rach, Content Strategy for the Web, 2nd ed., 2012, index to ch. 5; the structure fields from IA2, section 5.2, IA4, Deliverable B and section 5, and this unit. Every row is tone 1, perqo.com, the one surface inventoried. Perqo is fictional.</figcaption></figure>
+<p>The fidelity decides which fields are filled. At F2, before the redesign, the inventory and audit fields are recorded and the audience is judged; the structure fields stay empty, because no structure has been chosen yet. At F3, the migration list, the ID is stable, the title and URL are the final ones, the owner is named, the outcome may also be new, and the structure fields carry a page-type tag, a template ID, CAT identifiers, a redirect target's ID and yes or no for indexing; format and audience are carried over as recorded; traffic and last-modified dates are dropped, because the migration needs neither.</p>
+<p>Two things follow for the reader of someone else's inventory. An inventory without an owner column cannot be acted on, because every update needs a person (Kaley 2020). And an inventory sorted by URL reads as a sitemap and carries today's structure into tomorrow's without anyone deciding to (IA2, section 1.1); the structure fields are filled after the structure is chosen, never copied from the URLs.</p>
+<h3>1.3 · What the perqo.com audit found</h3>
+<p>Deliverable A is the full inventory. Read as an audit, it shows four kinds of finding, each a pattern a reader can look for in any marketing site's inventory (Perqo, fictional):</p>
+<ul>
+<li><strong>Vocabulary drift.</strong> The Perqo app product page (S-1.2) calls the allocation "allowance", a variant term; perqo.com's preferred term is Benefits budget (IA1, Deliverable). "Why was my claim rejected?" (H-2.1.2) says "refund" where the app says Claim (IA2, section 5.3). Both fail IA3's D2.</li>
+<li><strong>Duplicates and orphans.</strong> A Features page (S-1.6) and a PDF brochure (S-1.7) repeat the three product pages in older words. A campaign page from an ended campaign (L-02) is still live.</li>
+<li><strong>Facts out of date.</strong> A customer story (S-3.4) is about a company that is no longer a Perqo client; a customer story is about a client (IA4, Deliverable A, R-19).</li>
+<li><strong>Gaps.</strong> The Help centre has no article on the card and none on what each category covers, though the search log's top queries include "gym" with zero results (IA3, section 5.2); there is no buyer page for the benefit categories at all.</li>
+</ul>
+<nav class="secnav" aria-label="Sections"><a class="snext" href="#read-ia5-1" data-step="1"><span>Next · 2 of 10</span><b>Audience, task or topic: three structures for a B2B software site</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-ia5-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">Audience, task or topic: three structures for a B2B software site</span></span></h2>
+<p>IA4 catalogued the schemes and the criteria for choosing one (IA4, sections 1.1 and 1.2). A marketing site's top level is usually built on one of three ambiguous schemes: by audience, by task or by topic. Each has a case on a B2B software site, and each has evidence against it.</p>
+<h3>2.1 · Audience-based</h3>
+<p>The structure asks the visitor who they are: For HR teams, For finance teams, For employees, For merchants. Before choosing a page, the visitor must pick a role. Its case on a B2B site is that buyers in different roles want different arguments: at Perqo, a buyer is "typically someone in HR or finance" (IA1, section 5), and finance cares about budgets and reports where HR cares about policies and approvals.</p>
+<p>The evidence against it is direct. Katie Sherwin's NN/g article gives five problems: "people don't always fall neatly into a single category, nor are they able to quickly self-identify"; a bare group label such as "Faculty" does not say whether the content is about the group or for it (she notes that adding "for" clarifies it); self-identifying adds a step and pulls people out of their task; people worry that "the information they see might be incomplete or incorrect", wondering whether another group gets a better offer; and content that applies to several groups is either duplicated or linked from several places, leaving people to check whether the versions differ ("Audience-Based Navigation: 5 Reasons to Avoid It", Nielsen Norman Group, 7 September 2015, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/audience-based-navigation/">nngroup.com/articles/audience-based-navigation</a>). Its labels name a role and leave the content behind them unsaid, which fails IA3's A1. Her recommendation, NN/g guidance: "Only use audience-based navigation when the content truly justifies it", that is, when the content is unique to the group, the groups are mutually exclusive and named in plain words, and preferably as secondary navigation (Sherwin 2015). GOV.UK's team reported the same from its own research: users did not map neatly onto groups, a label such as "professionals" was read in more than one way, and people skipped content they needed because it was labelled for someone else; it settled on labels that describe a topic's content (Cath Richardson, "'Hey, you there': the trouble with audience-based navigation", Inside GOV.UK blog, 18 July 2014, <a target="_blank" rel="noopener" href="https://insidegovuk.blog.gov.uk/2014/07/18/hey-you-there-the-trouble-with-audience-based-navigation/">insidegovuk.blog.gov.uk</a>; a government team's account of qualitative research, practice).</p>
+<p>On perqo.com the duplication problem is concrete, and it is the comparison's deciding row below. Pricing and the customer stories matter to both HR and finance buyers, so an audience top level would carry them twice, and IA1's buyer is one person who may be in either role.</p>
+<h3>2.2 · Task-based</h3>
+<p>The structure names what the visitor came to do: See how it works, Check the price, Read customer stories, Get help, Book a demo. The visitor reads a phrase and matches it to their need. Its case comes from top-tasks practice. Gerry McGovern defines top tasks as "the small set of tasks (usually less than 10, often less than five) that matter most to your customers", found by gathering a long list, shortlisting it with stakeholders, and asking customers to vote; in his Cisco example "three tasks got as much of the vote as the bottom 44", and he reports the same concentration in every one of the 400-plus such projects he has run ("What Really Matters: Focusing on Top Tasks", A List Apart, April 2015, republished by Center Centre, 20 January 2016, <a target="_blank" rel="noopener" href="https://articles.centercentre.com/?p=877">articles.centercentre.com</a>; practice, a consultant's own data). The European Commission's web guide states the institutional version: it adopted a task-based architecture in 2014, arguing that it "avoids making users think" and avoids "content duplication and unnecessary maintenance costs" (European Commission, "Reasons for building a task-based information architecture", Europa Web Guide, undated, <a target="_blank" rel="noopener" href="https://commission.europa.eu/resources-partners/europa-web-guide/planning-your-web-presence/architecture-and-navigation/task-based-information-architecture_en">commission.europa.eu</a>; institutional guidance).</p>
+<p>The case against it on a sales site is in the labels. A buyer's tasks are few and close together (understand, compare, trust, contact), so task labels tend to start with verbs of the same kind, and IA3 found conversational "I want to…" and call-to-action labels among the low-scent faults (Laubheimer, "3 Common IA Mistakes", NN/g, 2023; IA3, section 1.2). "See how it works" and "Check the price" start with words that do not tell them apart, which fails IA3's A2 (Nielsen, "First 2 Words", NN/g, 2009; IA3, section 1.2). Two of the tasks, booking a demo and signing in, are single actions, and they work well as task labels because each is one destination.</p>
+<h3>2.3 · Topic-based</h3>
+<p>The structure names the subjects a buyer asks about: Product, Pricing, Customers, Help centre, with Book a demo and Sign in beside them. The visitor picks a subject. Its case on a B2B software site is that a buyer researching a product moves between a small number of subjects that every product in the category shares, and arrives at each from search with a subject in mind (section 4.2). Its risk is the one IA3 named for every topic label: internal or branded words that a newcomer does not know (Nielsen, "Use Old Words When Writing for Findability", NN/g, 2006; Farrell, "Search-Log Analysis", NN/g, 2017; IA3, section 4.2). A topic called "Features" or named after an internal product line has that fault; "Pricing" and "Customers" do not.</p>
+<figure class="viz viz-matrix"><div class="viz-scroll" style="--stick:161.0px"><svg viewBox="0 0 700.0 250" width="700.0" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="241.5" y="15.6" text-anchor="middle">Audience</text><text class="viz-colhead" x="425.1" y="15.6" text-anchor="middle">Task</text><text class="viz-colhead" x="610.2" y="15.6" text-anchor="middle">Topic</text><text class="viz-label" x="8.0" y="69.3" text-anchor="start">Top level</text><g data-box=""><rect class="viz-band viz-t1" x="163.0" y="34.0" width="156.9" height="62.0"/><text class="viz-mark" x="241.5" y="49.3" text-anchor="middle">For HR teams, For</text><text class="viz-mark" x="241.5" y="62.3" text-anchor="middle">finance teams,</text><text class="viz-mark" x="241.5" y="75.3" text-anchor="middle">For employees,</text><text class="viz-mark" x="241.5" y="88.3" text-anchor="middle">For merchants</text></g><g data-box=""><rect class="viz-band viz-t1" x="323.9" y="34.0" width="202.4" height="62.0"/><text class="viz-mark" x="425.1" y="55.8" text-anchor="middle">See how it works, Check the</text><text class="viz-mark" x="425.1" y="68.8" text-anchor="middle">price, Read customer stories,</text><text class="viz-mark" x="425.1" y="81.8" text-anchor="middle">Get help, Book a demo</text></g><g data-box=""><rect class="viz-band viz-t1" x="530.3" y="34.0" width="159.7" height="62.0"/><text class="viz-mark" x="610.2" y="55.8" text-anchor="middle">Product, Pricing,</text><text class="viz-mark" x="610.2" y="68.8" text-anchor="middle">Customers, Help centre,</text><text class="viz-mark" x="610.2" y="81.8" text-anchor="middle">Book a demo, Sign in</text></g><text class="viz-label" x="8.0" y="118.3" text-anchor="start">Visitor must first</text><g data-box=""><rect class="viz-band viz-t6" x="163.0" y="100.0" width="156.9" height="28.0"/><text class="viz-mark" x="241.5" y="117.8" text-anchor="middle">pick a role</text></g><g data-box=""><rect class="viz-band viz-t1" x="323.9" y="100.0" width="202.4" height="28.0"/><text class="viz-mark" x="425.1" y="117.8" text-anchor="middle">read a phrase</text></g><g data-box=""><rect class="viz-band viz-t1" x="530.3" y="100.0" width="159.7" height="28.0"/><text class="viz-mark" x="610.2" y="117.8" text-anchor="middle">pick a subject</text></g><text class="viz-label" x="8.0" y="154.3" text-anchor="start">Pricing and stories</text><g data-box=""><rect class="viz-band viz-t6" x="163.0" y="132.0" width="156.9" height="36.0"/><text class="viz-mark" x="241.5" y="147.3" text-anchor="middle">repeated under</text><text class="viz-mark" x="241.5" y="160.3" text-anchor="middle">HR and finance</text></g><g data-box=""><rect class="viz-band viz-t1" x="323.9" y="132.0" width="202.4" height="36.0"/><text class="viz-mark" x="425.1" y="153.8" text-anchor="middle">one place each</text></g><g data-box=""><rect class="viz-band viz-t1" x="530.3" y="132.0" width="159.7" height="36.0"/><text class="viz-mark" x="610.2" y="153.8" text-anchor="middle">one place each</text></g><text class="viz-label" x="8.0" y="190.3" text-anchor="start">Label scent (A1, A2)</text><g data-box=""><rect class="viz-band viz-t6" x="163.0" y="172.0" width="156.9" height="28.0"/><text class="viz-mark" x="241.5" y="189.8" text-anchor="middle">names a role</text></g><g data-box=""><rect class="viz-band viz-t6" x="323.9" y="172.0" width="202.4" height="28.0"/><text class="viz-mark" x="425.1" y="189.8" text-anchor="middle">verbs first: weak first words</text></g><g data-box=""><rect class="viz-band viz-t1" x="530.3" y="172.0" width="159.7" height="28.0"/><text class="viz-mark" x="610.2" y="189.8" text-anchor="middle">names content</text></g><text class="viz-label" x="8.0" y="226.3" text-anchor="start">Used on perqo.com for</text><g data-box=""><rect class="viz-band viz-t1" x="163.0" y="204.0" width="156.9" height="36.0"/><text class="viz-mark" x="241.5" y="219.3" text-anchor="middle">Help centre,</text><text class="viz-mark" x="241.5" y="232.3" text-anchor="middle">For merchants</text></g><g data-box=""><rect class="viz-band viz-t1" x="323.9" y="204.0" width="202.4" height="36.0"/><text class="viz-mark" x="425.1" y="225.8" text-anchor="middle">Book a demo, Sign in</text></g><g data-box=""><rect class="viz-band viz-t1" x="530.3" y="204.0" width="159.7" height="36.0"/><text class="viz-mark" x="610.2" y="225.8" text-anchor="middle">the top level</text></g></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 161.0 250" width="161.0" height="250" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="161.0" height="244"/><text class="viz-label" x="8.0" y="69.3" text-anchor="start">Top level</text><text class="viz-label" x="8.0" y="118.3" text-anchor="start">Visitor must first</text><text class="viz-label" x="8.0" y="154.3" text-anchor="start">Pricing and stories</text><text class="viz-label" x="8.0" y="190.3" text-anchor="start">Label scent (A1, A2)</text><text class="viz-label" x="8.0" y="226.3" text-anchor="start">Used on perqo.com for</text></svg></div></div><figcaption>Three candidate structures for perqo.com's top level compared; supports the decision on which scheme the top level uses (section 2). Audience-based problems from Sherwin, 'Audience-Based Navigation: 5 Reasons to Avoid It', NN/g, 2015, and Richardson, Inside GOV.UK, 2014; task-based case from McGovern, 'What Really Matters', 2015 (practice); label tests from IA3's checklist, A1 and A2 (Nielsen, 'First 2 Words', NN/g, 2009). Rows tone 1, perqo.com; tone 6 marks a fault found in this comparison. Perqo is fictional.</figcaption></figure>
+<h3>2.4 · The choice for perqo.com</h3>
+<p>IA4 separated a hybrid that mixes schemes in one list, which fails C1, from schemes layered by level, each level of one kind, which passes (IA4, section 1.1). perqo.com uses the layered form (Perqo, fictional):</p>
+<ul>
+<li><strong>The top level is by topic</strong>: Product, Pricing, Customers, Help centre, the areas IA1 set (IA1, Deliverable).</li>
+<li><strong>Two utility routes are by task</strong>: Book a demo and Sign in, which IA2 added to the global routes and IA1 placed (IA2, section 5.3). Each is a single destination, so its label is the action and passes A1.</li>
+<li><strong>Audience is used only where the content is unique to one audience</strong>, which is Sherwin's condition: inside the Help centre, where IA1 split For HR and finance teams from For employees (IA1, section 2.3), and on one footer page, For merchants (section 2.5).</li>
+</ul>
+<p>That keeps IA1's top-level areas exactly as set. The top level is one kind of thing (C1); the task routes sit apart from it in the header, as IA2's navigation model already drew them (IA2, section 5.3).</p>
+<h3>2.5 · The one audience page outside the Help centre</h3>
+<p>The merchant side exists, and IA3 and IA4 gave it its first facts: merchants accept the Perqo card and can publish offers (IA3, Deliverable; IA4, Deliverable A). A merchant has questions no buyer, HR manager or employee has: how to accept the card, how to publish an offer. The content is unique to the group and the group knows itself, which meets Sherwin's condition, so perqo.com has one page, For merchants (Perqo, fictional), owned by the partnerships team and reached from the footer. Its label passes the test GOV.UK's research failed for "professionals" (Richardson 2014): nobody who is not a merchant reads "For merchants" as theirs.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia5-0" data-step="0"><span>Previous · 1 of 10</span><b>Running a content inventory and audit</b></a><a class="snext" href="#read-ia5-2" data-step="2"><span>Next · 3 of 10</span><b>Page types, pages and templates</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-ia5-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">Page types, pages and templates</span></span></h2>
+<h3>3.1 · Page types versus pages</h3>
+<p>IA2 set the rule that a structural sitemap's box is a page type or a group, with many pages of one type drawn as one stack, after Brown's note that site maps "increasingly represent page types or templates in addition to (or instead of) specific pages" (Brown, <em>Communicating Design</em>, 2nd ed., 2011, ch. 5; Garrett's page stack, <em>Quick Reference</em>; IA2, section 1.3). The inventory is the other side of that rule: it lists pages, one row each, and the sitemap draws types. The two meet in one column, the page type, which IA2 fixed as a closed list of tags: <code>home</code>, <code>section</code>, <code>index</code>, <code>detail</code>, <code>stack</code>, <code>form</code>, <code>file</code>, <code>external</code> (IA2, section 5.2).</p>
+<p>A page type says where a page sits and what it does in the structure: a section page lands a group, an index lists items, a detail page is one item. It does not say what is on the page. Two detail pages, the Perqo card product page and a help article, share a tag and share almost nothing else.</p>
+<h3>3.2 · Templates as the unit of IA on a site</h3>
+<p>A template is the layout of modules that builds every page of one kind. Brad Frost's <em>Atomic Design</em> draws the distinction a team needs: templates are "page-level documents" that focus on content structure, and pages are "specific instances of a template" that replace that structure "with real representative content" (Brad Frost, <em>Atomic Design</em>, 2016, ch. 2, "Atomic Design Methodology"; outline at <a target="_blank" rel="noopener" href="https://atomicdesign.bradfrost.com/outline">atomicdesign.bradfrost.com</a>). The Polar Bear book covers the content-side artefact, content models, for "connecting and managing granular content" (Rosenfeld, Morville and Arango, 4th ed., 2015, ch. 13; IA2, section 1.5).</p>
+<p>On this unit's reading, the template is where most IA decisions on a website take effect, for four reasons. Each module a template requires is a decision of one of the four systems, made once and repeated on every page built from it:</p>
+<ul>
+<li><strong>Organisation.</strong> A template fixes which metadata fields a page carries. If the help-article template has an F-CAT field, every article is classified; if it does not, none is, whatever the taxonomy says.</li>
+<li><strong>Labelling.</strong> A template fixes which headings and fixed labels appear. The page heading that must confirm the link that led to it (IA3, A3; Budiu, NN/g, 2020) is a template rule.</li>
+<li><strong>Navigation.</strong> A template fixes the routes: whether a page carries the global header, a breadcrumb, related articles. Contextual navigation on a site is mostly template modules filled from metadata, the "Related Link" lists Cardello says IA metadata can generate (Cardello, NN/g, 2014; IA2, section 1.3).</li>
+<li><strong>Search.</strong> A template fixes what is indexed and what a result shows.</li>
+</ul>
+<p>That is why the template catalogue is a deliverable of its own, with a different reader from the sitemap: engineering builds templates, and content fills pages. A site of 52 inventory rows and 17 templates (Deliverables A and C) has 17 places where a structural decision is built, and up to 52 where it is repeated.</p>
+<h3>3.3 · Templates and IA4's objects</h3>
+<p>IA4's object map gave perqo.com four objects: the help article, the customer story, the demo request and, through customer stories, the client (IA4, Deliverable A, O-14 to O-16 and O-01). The template catalogue follows them. Each object that has many instances gets a detail template whose required modules are the object's attributes: the help-article template (T-16) shows the article's audience and its last-modified date, two of O-14's attributes (IA4, Deliverable A.1), and the F-CAT tags IA4 asked IA5 to give every article (IA4, Deliverable B); the customer-story template (T-08) carries the client it is about (R-19) and, new here, F-CAT tags, so the Customers index can be filtered by category. The demo request is a form (T-09) whose fields are O-16's attributes: name, work email, company, number of employees. No object is renamed: the labels on perqo.com are IA1's perqo.com column (Benefits budget, Card payments, Claims, Policies, Teams and groups) and IA4's (Customers, Perqo card, Book a demo). The benefit categories stay taxonomy terms, as IA4 required (IA4, section 4.3): they appear on perqo.com as pages built from one template, T-04, each bound to its F-CAT identifier, and never as an object.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia5-1" data-step="1"><span>Previous · 2 of 10</span><b>Audience, task or topic: three structures for a B2B software site</b></a><a class="snext" href="#read-ia5-3" data-step="3"><span>Next · 4 of 10</span><b>Depth, breadth, and the home-page and landing-page problem</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-ia5-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">Depth, breadth, and the home-page and landing-page problem</span></span></h2>
+<h3>4.1 · Depth and breadth on a marketing site</h3>
+<p>IA4 set out the evidence: deeper link hierarchies took longer in Zaphiris's five structures over 64 pages and in Larson and Czerwinski's over 512 documents, a medium breadth beat the broadest shallow structure, and no study supports a fixed number of items per level (IA4, section 2.1). Applied to perqo.com, the evidence says little the site needs: its deepest path is four levels below Home (Home, Help centre, For employees, Claims, an article), and every buyer page is within three. The decisions it does bear on are two. The four benefit categories go one level below a Benefits page under Product, which keeps Product's own list at five short items, where flat lists "tend to work well if you have distinct, recognizable categories" (Whitenton, NN/g, 2013; IA4, section 2.1). And the Help centre keeps IA1's two levels, audience then task, above its articles, and adds no third grouping level, because each added level is one more choice that must carry scent (IA3, section 6.2).</p>
+<h3>4.2 · The home-page problem</h3>
+<p>Steve Krug gives the home page a chapter of its own, "The Big Bang Theory of Web Design", and treats it as the page that has to tell a first-time visitor what the site is and what it is for (<em>Don't Make Me Think, Revisited</em>, 3rd ed., New Riders, 2014, ch. 7; practice). The structural problem it creates is the one IA3 called internal politics: a structure decides which teams and offers are visible (Rosenfeld, Morville and Arango 2015, ch. 6; IA3, section 3.2), and the home page is the most visible place on the site. On perqo.com, marketing wants the campaign, partnerships want the merchant offers, support wants the Help centre and sales wants Book a demo (Perqo, fictional; the partnerships team's request for placings is IA3's, Deliverable).</p>
+<p>The structural answer is to give the home page a template with fixed slots, each tied to a route the sitemap already holds, so a request for home-page space becomes a request for a module in a slot. The home template (T-01) requires one statement of what Perqo is and whom it is for, the three surfaces, the four categories and the Book a demo route; a campaign gets an optional slot that links to its landing page and is removed when the campaign ends. The audit finding on the current home page (S-0) is that its opening line says neither what Perqo is nor who buys it, so it gets an update.</p>
+<h3>4.3 · The landing-page problem</h3>
+<p>Most visitors to a marketing site do not start at Home. Mark Baker's book on topic-based writing puts it in one line: "People don't arrive at your site, they arrive at your pages" (<em>Every Page Is Page One: Topic-Based Writing for Technical Communication and the Web</em>, XML Press, 2013; the line from the book's site, <a target="_blank" rel="noopener" href="https://everypageispageone.com/the-book">everypageispageone.com</a>; practice). Jakob Nielsen's foraging account adds the mechanism: each site is a patch, and people leave it when the scent falls (Nielsen, NN/g, 2003; IA3, section 1.1).</p>
+<p>So every page on perqo.com is a landing page for someone, and every template has to do part of the home page's job. The catalogue enforces three modules on every template a visitor can arrive at from outside: the global header, which shows the site's top level and its two task routes; a page heading that says what the page is in the visitor's words (IA3, A1 and A3); and, on every indexed page except Home and the Help centre's home, a breadcrumb, which shows where the page sits. A help article reached from a search engine therefore tells an employee it is in the Help centre, under For employees, under Claims, before they read a word of it.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia5-2" data-step="2"><span>Previous · 3 of 10</span><b>Page types, pages and templates</b></a><a class="snext" href="#read-ia5-4" data-step="4"><span>Next · 5 of 10</span><b>What other functions bring, and how the sitemap records it</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-ia5-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">What other functions bring, and how the sitemap records it</span></span></h2>
+<p>A sitemap drawn only from the content and the users will be overruled by constraints it did not record. Five come from other functions on a sales site. For each: what the constraint is, the source that sets it, and where the sitemap or the inventory records it.</p>
+<h3>5.1 · Search-engine structure</h3>
+<p>Google's documentation for site owners asks for URLs that use "readable words rather than long ID numbers", hyphens between words, and "words in your audience's language", with unnecessary parameters trimmed ("URL Structure Best Practices for Google Search", Google Search Central, page updated 21 October 2026, <a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/crawling-indexing/url-structure">developers.google.com</a>; vendor documentation, checked 3 November 2026). When a page's URL changes, it recommends "a permanent server-side redirect whenever possible", which the indexing pipeline uses "as a signal that the redirect target should be canonical" ("Redirects and Google Search", page updated 14 April 2026, <a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/crawling-indexing/301-redirects">developers.google.com</a>; vendor documentation). A page marked <code>noindex</code> is dropped "entirely from Google Search results, regardless of whether other sites link to it" ("Block Search Indexing with noindex", page updated 10 December 2025, <a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/crawling-indexing/block-indexing">developers.google.com</a>; vendor documentation). Berners-Lee's older rule sits under all three: "Cool URIs don't change", and a topic name in a URI binds it to a classification (W3C, 1998; IA4, section 5).</p>
+<p>IA4 set the Perqo rule that meets these: catalogue pages and filters address values by stable identifier, and a renamed or moved Help centre page keeps a redirect from its old address (IA4, section 5). On perqo.com the two requirements meet in the benefit-category pages. Google asks for readable words; IA4 asks that a category be addressed by its identifier so a rename breaks no link. The category page's URL carries both, the identifier first and the preferred term after it: perqo.com/product/benefits/cat-hea/health (Perqo, fictional). The identifier decides which page opens; if the term is renamed under IA4's R9, the old address redirects to the new one, and the identifier never changes.</p>
+<p>How the artefacts record it: the inventory carries URL, Redirect to and Indexed for every row (section 1.2); the sitemap at F3 carries each box's ID, and the ID carries the URL in the inventory. The XML file the Sitemaps protocol describes, which shares only the name with this artefact (IA2, section 1.3), is generated from the inventory's indexed rows, so engineering never maintains a second list.</p>
+<h3>5.2 · Campaign landing pages</h3>
+<p>Marketing runs campaigns, and a campaign wants its own page: one message, one call to action, reached from an advert or an email. The structural risk is that each campaign leaves a page behind, and the audit found one (L-02). The Perqo rule (Perqo, fictional): a campaign page lives under perqo.com/lp/, is <code>noindex</code>, appears in no navigation, uses the campaign template (T-12), and carries an owner and an end date in the inventory; at the end date it is removed and its address redirects to the page that answers the same question. It keeps the global header, because a visitor from an advert has arrived at one page with no view of the rest of the site (Baker 2013).</p>
+<p>The sitemap records campaign pages as a conditional stack, IA2's conditional area: one box tagged <code>stack</code> whose note opens with the condition in square brackets, "[campaign live]" (IA2, section 5.1). The decision whether a request becomes a campaign page, a new page in the sitemap or an addition to a page that exists is a rule, so it is drawn as a decision tree. First: will the page outlive one campaign? If not, it is a campaign page under /lp/, noindex, in no navigation, with an owner and an end date. If it will: does it answer a question no live page answers? If not, it is added to the page that answers it, which is how the audit's duplicates (section 1.3) are avoided. If it does: is its content unique to one audience? If so, it is an audience page, from the footer or inside the Help centre (section 2.1's condition); if not, it is a new page under its topic, with an ID and a template.</p>
+<figure class="viz viz-decision"><div class="viz-scroll"><svg viewBox="0 0 700 392" width="700" height="392" data-x0="114" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="decision"><path class="viz-link" d="M429.0,52.0 L429.0,64.0 L350.0,64.0 L350.0,93.0"/><path class="viz-head" d="M350.0,100.0 L346.0,93.0 L354.0,93.0 z"/><g data-box=""><rect class="viz-lblbg" x="337.1" y="70.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="350.0" y="82.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M350.0,158.0 L350.0,184.0 L271.0,184.0 L271.0,213.0"/><path class="viz-head" d="M271.0,220.0 L267.0,213.0 L275.0,213.0 z"/><g data-box=""><rect class="viz-lblbg" x="258.1" y="190.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="271.0" y="202.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M271.0,264.0 L271.0,276.0 L192.0,276.0 L192.0,305.0"/><path class="viz-head" d="M192.0,312.0 L188.0,305.0 L196.0,305.0 z"/><g data-box=""><rect class="viz-lblbg" x="179.1" y="282.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="192.0" y="294.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M271.0,264.0 L271.0,276.0 L350.0,276.0 L350.0,305.0"/><path class="viz-head" d="M350.0,312.0 L346.0,305.0 L354.0,305.0 z"/><g data-box=""><rect class="viz-lblbg" x="339.6" y="282.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="350.0" y="294.3" text-anchor="middle">no</text></g><path class="viz-link" d="M350.0,158.0 L350.0,184.0 L429.0,184.0 L429.0,213.0"/><path class="viz-head" d="M429.0,220.0 L425.0,213.0 L433.0,213.0 z"/><g data-box=""><rect class="viz-lblbg" x="418.6" y="190.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="429.0" y="202.3" text-anchor="middle">no</text></g><path class="viz-link" d="M429.0,52.0 L429.0,64.0 L508.0,64.0 L508.0,93.0"/><path class="viz-head" d="M508.0,100.0 L504.0,93.0 L512.0,93.0 z"/><g data-box=""><rect class="viz-lblbg" x="497.6" y="70.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="508.0" y="82.3" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-node viz-t1" x="359.0" y="8.0" width="140" height="44.0" rx="2"/><text class="viz-nodelabel" x="429.0" y="27.3" text-anchor="middle">Will the page outlive</text><text class="viz-nodelabel" x="429.0" y="41.3" text-anchor="middle">one campaign?</text></g><g data-box=""><rect class="viz-node viz-t1" x="280.0" y="100.0" width="140" height="58.0" rx="2"/><text class="viz-nodelabel" x="350.0" y="119.3" text-anchor="middle">Does it answer a</text><text class="viz-nodelabel" x="350.0" y="133.3" text-anchor="middle">question no live</text><text class="viz-nodelabel" x="350.0" y="147.3" text-anchor="middle">page answers?</text></g><g data-box=""><rect class="viz-node viz-t1" x="201.0" y="220.0" width="140" height="44.0" rx="2"/><text class="viz-nodelabel" x="271.0" y="239.3" text-anchor="middle">Is its content unique</text><text class="viz-nodelabel" x="271.0" y="253.3" text-anchor="middle">to one audience?</text></g><g data-box=""><rect class="viz-solid viz-t1" x="122.0" y="312.0" width="140" height="72.0" rx="2"/><text class="viz-ontone" x="192.0" y="331.3" text-anchor="middle">Audience page,</text><text class="viz-ontone" x="192.0" y="345.3" text-anchor="middle">from the footer or</text><text class="viz-ontone" x="192.0" y="359.3" text-anchor="middle">inside the Help</text><text class="viz-ontone" x="192.0" y="373.3" text-anchor="middle">centre</text></g><g data-box=""><rect class="viz-solid viz-t1" x="280.0" y="312.0" width="140" height="58.0" rx="2"/><text class="viz-ontone" x="350.0" y="331.3" text-anchor="middle">New page under its</text><text class="viz-ontone" x="350.0" y="345.3" text-anchor="middle">topic, with an ID and</text><text class="viz-ontone" x="350.0" y="359.3" text-anchor="middle">a template</text></g><g data-box=""><rect class="viz-solid viz-t1" x="359.0" y="220.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="429.0" y="239.3" text-anchor="middle">Add it to the page</text><text class="viz-ontone" x="429.0" y="253.3" text-anchor="middle">that answers it</text></g><g data-box=""><rect class="viz-solid viz-t1" x="438.0" y="100.0" width="140" height="72.0" rx="2"/><text class="viz-ontone" x="508.0" y="119.3" text-anchor="middle">Campaign page</text><text class="viz-ontone" x="508.0" y="133.3" text-anchor="middle">under /lp/: noindex,</text><text class="viz-ontone" x="508.0" y="147.3" text-anchor="middle">no navigation,</text><text class="viz-ontone" x="508.0" y="161.3" text-anchor="middle">owner and end date</text></g></svg></div><figcaption>Decision tree: where a request for a new perqo.com page goes; supports the decision on whether a page enters the sitemap (section 5.2). Questions and outcomes tone 1, perqo.com. Campaign rule from this section; the audience condition from Sherwin, NN/g, 2015 (section 2.1); the merge rule from the audit's duplicates (section 1.3). Perqo is fictional.</figcaption></figure>
+<h3>5.3 · Localisation</h3>
+<p>perqo.com is published in one language today, English (Perqo, fictional); which markets come next is DD-IA3's to set. The constraint a sitemap has to anticipate now is the one Google's documentation sets for localised versions: each version "must list itself as well as all other language versions", and "If two pages don't both point to each other, the tags will be ignored"; an <code>x-default</code> value names the page for visitors no version matches ("Localized Versions of your Pages", Google Search Central, page updated 21 September 2026, <a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/specialty/international/localized-versions">developers.google.com</a>; vendor documentation, checked 3 November 2026). The URL documentation gives a country subdirectory, example.com/de/, as one structure for a multi-regional site (Google, "URL Structure Best Practices", 2026).</p>
+<p>Every version of a page must point to every other, so the site needs one key that is the same in every language. The inventory's ID is that key: S-1.4.2 is the Learning page in every language, whatever its title and its slug become. Two rules follow, and the deliverables apply them. Identifiers carry no words of any language. And the template catalogue marks the modules whose content differs by market as well as by language (prices, legal text, app-store links), because those are the modules a translator cannot fill (Deliverable C, the localisation column). DD-IA3 takes both.</p>
+<h3>5.4 · The pricing page</h3>
+<p>A sales team may prefer to keep prices off the site and route buyers to a call. The NN/g evidence is against it. Hoa Loranger reports that business customers name pricing as the information they most need online and that "In our studies, we watch participants go to competitors' sites when websites do not show prices"; where exact prices are hard to show she recommends sample prices, typical scenarios or ranges ("State the Price to Give B2B Sites a Competitive Advantage", Nielsen Norman Group, 1 December 2013, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/show-price/">nngroup.com/articles/show-price</a>). Therese Fessenden's recommendation is "Show the price; and if the price is variable, offer common pricing scenarios", adding that "the first site to show a price can anchor users' expectations" ("What B2B Designers Can Learn from B2C About Building Trust", Nielsen Norman Group, 1 September 2019, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/b2b-trust-from-b2c/">nngroup.com/articles/b2b-trust-from-b2c</a>). Loranger's article reports observations from NN/g's usability studies without figures; both are NN/g guidance built on observation.</p>
+<p>The audit found the current Pricing page (S-2) saying "Contact us for pricing" (Perqo, fictional). The structural decision is that Pricing stays a level-1 page in the global header, as IA1 set it, never behind the demo form, and its template (T-05) requires a plan comparison and a worked pricing scenario. Perqo has two plans, each with a published price per employee per month (Perqo, fictional; the plan names and the amounts are left free). The sitemap records the decision by where Pricing sits; the template records it by its required modules.</p>
+<h3>5.5 · The sign-up and log-in boundary</h3>
+<p>Where a product lets visitors sign up on the website, the website's last page and the product's first screen meet in the middle of a flow, and the sitemap has to show who owns each side. Perqo has no self-serve sign-up and no free trial (Perqo, fictional): a client starts after a contract, which IA1 drew as the line from perqo.com to Admin (IA1, Deliverable). Three routes cross the boundary. The one that leaves the site, Sign in, is drawn with IA2's <code>external</code> tag and a "→ see" note (IA2, section 5.2); the other two stay on perqo.com and are drawn as its pages:</p>
+<ul>
+<li><strong>Book a demo</strong>, the conversion route, stays on perqo.com: a form (S-4) and a confirmation page (S-4.1). The demo request goes to sales and does not reach Admin (IA4, Deliverable A, O-16). Fessenden's advice applies to the form: say why each field is asked, because people trust a request that comes with a reason (Fessenden 2019). The template (T-09) requires a reason line.</li>
+<li><strong>Sign in</strong> leaves for Perqo Admin, for HR and finance managers (IA1, section 5; IA2, section 5.3).</li>
+<li><strong>Get the Perqo app</strong> (S-6) gives employees the download links, which IA1 listed among what crosses from perqo.com to the app (IA1, Deliverable). Employees do not sign in on perqo.com; they join from the invitation HR sends from Admin (IA1, Deliverable).</li>
+</ul>
+<p>One assumption sits on this boundary (Perqo, fictional; assumed): an employee who wants the app may press Sign in and land on Admin's sign-in screen. Whether they do is testable from Admin's failed sign-ins and from the Help centre's search log (IA3, section 5.2); until it is tested, the fix belongs to Admin's surface, a line on its sign-in screen pointing employees to Get the Perqo app, and is passed to IA7 as proposed.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia5-3" data-step="3"><span>Previous · 4 of 10</span><b>Depth, breadth, and the home-page and landing-page problem</b></a><a class="snext" href="#read-ia5-5" data-step="5"><span>Next · 6 of 10</span><b>How the sitemap is read, and the fidelity each reader needs</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-ia5-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">How the sitemap is read, and the fidelity each reader needs</span></span></h2>
+<p>IA1 set the rule that every deliverable names its readers and the decision it supports; IA2 set three fidelities, F1 sketch, F2 working and F3 specification, and gave the sitemap F1 in discovery (top two levels), F2 in design (every group and page type) and F3 for build (identifiers) (IA1, section 4; IA2, sections 1.0 and 1.3). On a sales site the three readers who use the sitemap most are marketing, engineering and the content writer. They read the same drawing for different things, and each needs a different fidelity.</p>
+<p><strong>Marketing</strong> reads the sitemap for what a buyer sees and where the conversion routes sit: the top level and its labels, the place of Pricing, Customers and Book a demo, and where campaigns go. F1 or F2 is enough; marketing argues about the top two levels, and the page-by-page detail would hide the argument. What it also needs is the label table (B.2), because the labels are what it argues about. Tankala's point that a sitemap leaves detail out on purpose so the discussion stays manageable fits this reader (Tankala, NN/g, 2023; IA1, section 4).</p>
+<p><strong>Engineering</strong> reads it for what to build and route: every box's ID, page type and template, the URLs, the redirects, which pages are indexed, and every <code>external</code> box, because each one is a hand-off to another system. Only F3 serves, and the drawing is never enough alone: the inventory carries the URL, redirect and index columns the drawing has no room for. A box without an ID cannot be cited in a ticket (IA2, section 4).</p>
+<p><strong>The content writer</strong> reads it for where a piece goes and what surrounds it: the page's parent (which sets its breadcrumb and its context), its template (which sets the modules to fill), its owner and audience, its F-CAT tags, and the word the site uses for each thing (IA1, Deliverable, the perqo.com column). F2 is the drawing's level; the writer's real document is the inventory row plus the template entry.</p>
+<figure class="viz viz-matrix"><div class="viz-scroll" style="--stick:112.6px"><svg viewBox="0 0 700.0 160" width="700.0" height="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="251.8" y="15.6" text-anchor="middle">Reads for</text><text class="viz-colhead" x="426.0" y="15.6" text-anchor="middle">Fidelity</text><text class="viz-colhead" x="576.5" y="15.6" text-anchor="middle">Also needs</text><text class="viz-label" x="8.0" y="56.3" text-anchor="start">Marketing</text><g data-box=""><rect class="viz-band viz-t1" x="114.6" y="34.0" width="274.4" height="36.0"/><text class="viz-mark" x="251.8" y="49.3" text-anchor="middle">top level, labels, Pricing,</text><text class="viz-mark" x="251.8" y="62.3" text-anchor="middle">Customers, Book a demo, campaigns</text></g><g data-box=""><rect class="viz-band viz-t1" x="393.0" y="34.0" width="66.0" height="36.0"/><text class="viz-mark" x="426.0" y="55.8" text-anchor="middle">F1 or F2</text></g><g data-box=""><rect class="viz-band viz-t1" x="463.0" y="34.0" width="227.0" height="36.0"/><text class="viz-mark" x="576.5" y="55.8" text-anchor="middle">the label table (B.2)</text></g><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Engineering</text><g data-box=""><rect class="viz-band viz-t1" x="114.6" y="74.0" width="274.4" height="36.0"/><text class="viz-mark" x="251.8" y="89.3" text-anchor="middle">IDs, page types,</text><text class="viz-mark" x="251.8" y="102.3" text-anchor="middle">templates, external boxes</text></g><g data-box=""><rect class="viz-band viz-t1" x="393.0" y="74.0" width="66.0" height="36.0"/><text class="viz-mark" x="426.0" y="95.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t1" x="463.0" y="74.0" width="227.0" height="36.0"/><text class="viz-mark" x="576.5" y="95.8" text-anchor="middle">inventory: URL, redirect, indexed</text></g><text class="viz-label" x="8.0" y="136.3" text-anchor="start">Content writer</text><g data-box=""><rect class="viz-band viz-t1" x="114.6" y="114.0" width="274.4" height="36.0"/><text class="viz-mark" x="251.8" y="129.3" text-anchor="middle">parent, template, owner, audience,</text><text class="viz-mark" x="251.8" y="142.3" text-anchor="middle">F-CAT tags, site&#x27;s words</text></g><g data-box=""><rect class="viz-band viz-t1" x="393.0" y="114.0" width="66.0" height="36.0"/><text class="viz-mark" x="426.0" y="135.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t1" x="463.0" y="114.0" width="227.0" height="36.0"/><text class="viz-mark" x="576.5" y="135.8" text-anchor="middle">inventory row and template entry</text></g></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 112.6 160" width="112.6" height="160" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="112.6" height="154"/><text class="viz-label" x="8.0" y="56.3" text-anchor="start">Marketing</text><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Engineering</text><text class="viz-label" x="8.0" y="136.3" text-anchor="start">Content writer</text></svg></div></div><figcaption>Readers of the perqo.com sitemap: what each reads for, the fidelity each needs, and the artefact that carries what the drawing cannot; supports the decision on which version of the sitemap goes to whom (section 6). Fidelities from IA2, sections 1.0 and 1.3; detail left out on purpose from Tankala, NN/g, 2023. Every row tone 1, perqo.com. Perqo is fictional.</figcaption></figure>
+<p>Brown's phrase for a sitemap is "one view" (Brown 2011, ch. 5). On a sales site the useful consequence is that the team ships one sitemap at three fidelities from one source: the F3 drawing with its IDs is the source, and the F1 or F2 version for marketing is the same drawing cut to two levels, so the three readers never argue from three different maps.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia5-4" data-step="4"><span>Previous · 5 of 10</span><b>What other functions bring, and how the sitemap records it</b></a><a class="snext" href="#read-ia5-6" data-step="6"><span>Next · 7 of 10</span><b>A · The perqo.com content inventory</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-ia5-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A · The perqo.com content inventory</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): content inventory and audit of perqo.com, every page and file, at fidelity F3 as the migration list (IA2, Deliverable: F2 before redesign, F3 as the migration list); decision: what the redesigned site keeps, changes, removes and adds, and where each removed address points; readers: content and support (owners), engineering (IDs, URLs, redirects, indexing), marketing, product management; leaves out: traffic and last-modified dates (recorded in the working spreadsheet, not set for the course), page copy, Perqo Admin and the Perqo app; owner: the IA designer with marketing; version 1, dated 3 November 2026; Perqo is fictional.</em></p>
+<p>Every page and owner below is invented for the running example (Perqo, fictional); rows marked "(IA2)" or "(IA3)" keep facts set there. Status is the audit outcome (Kaley 2020), with <em>new</em> for pages the gap analysis adds (section 1.1). Audience: Buyer (a buyer at a prospective client, IA1, section 5), HR and finance (managers at a client), Employee, Merchant, Everyone. F-CAT gives the benefit-category identifiers a page is about (IA4, Deliverable B); "all" means all four top-level values; a dash means none. Indexed is yes unless the row says no. Removed rows redirect to the ID given.</p>
+<h3>A.1 · Site pages</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Page</th>
+<th>URL (perqo.com)</th>
+<th>Type</th>
+<th>Template</th>
+<th>Audience</th>
+<th>Owner</th>
+<th>F-CAT</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S-0</td>
+<td>Home</td>
+<td>/</td>
+<td>home</td>
+<td>T-01</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>all</td>
+<td>update: opening line says neither what Perqo is nor who buys it</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>Product</td>
+<td>/product</td>
+<td>section</td>
+<td>T-02</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>–</td>
+<td>update: add Benefits and Security to its list</td>
+</tr>
+<tr>
+<td>S-1.1</td>
+<td>Perqo Admin</td>
+<td>/product/admin</td>
+<td>detail</td>
+<td>T-03</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-1.2</td>
+<td>Perqo app</td>
+<td>/product/app</td>
+<td>detail</td>
+<td>T-03</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>–</td>
+<td>update: says "allowance"; the site's term is Benefits budget</td>
+</tr>
+<tr>
+<td>S-1.3</td>
+<td>Perqo card</td>
+<td>/product/card</td>
+<td>detail</td>
+<td>T-03</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-1.4</td>
+<td>Benefits</td>
+<td>/product/benefits</td>
+<td>section</td>
+<td>T-02</td>
+<td>Buyer</td>
+<td>Content team</td>
+<td>all</td>
+<td>new</td>
+</tr>
+<tr>
+<td>S-1.4.1</td>
+<td>Health</td>
+<td>/product/benefits/cat-hea/health</td>
+<td>detail</td>
+<td>T-04</td>
+<td>Buyer</td>
+<td>Content team</td>
+<td>CAT-HEA</td>
+<td>new</td>
+</tr>
+<tr>
+<td>S-1.4.2</td>
+<td>Learning</td>
+<td>/product/benefits/cat-lea/learning</td>
+<td>detail</td>
+<td>T-04</td>
+<td>Buyer</td>
+<td>Content team</td>
+<td>CAT-LEA</td>
+<td>new</td>
+</tr>
+<tr>
+<td>S-1.4.3</td>
+<td>Mobility</td>
+<td>/product/benefits/cat-mob/mobility</td>
+<td>detail</td>
+<td>T-04</td>
+<td>Buyer</td>
+<td>Content team</td>
+<td>CAT-MOB</td>
+<td>new</td>
+</tr>
+<tr>
+<td>S-1.4.4</td>
+<td>Meals</td>
+<td>/product/benefits/cat-mea/meals</td>
+<td>detail</td>
+<td>T-04</td>
+<td>Buyer</td>
+<td>Content team</td>
+<td>CAT-MEA</td>
+<td>new</td>
+</tr>
+<tr>
+<td>S-1.5</td>
+<td>Security</td>
+<td>/product/security</td>
+<td>detail</td>
+<td>T-06</td>
+<td>Buyer</td>
+<td>Product</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-1.6</td>
+<td>Features</td>
+<td>/features</td>
+<td>detail</td>
+<td>none</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>–</td>
+<td>remove: repeats S-1.1 to S-1.3; redirect to S-1</td>
+</tr>
+<tr>
+<td>S-1.7</td>
+<td>Perqo brochure</td>
+<td>/files/perqo-brochure.pdf</td>
+<td>file</td>
+<td>none</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>–</td>
+<td>remove: out of date, content in S-1.1 to S-1.3; redirect to S-1</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>Pricing</td>
+<td>/pricing</td>
+<td>detail</td>
+<td>T-05</td>
+<td>Buyer</td>
+<td>Marketing, with Sales</td>
+<td>–</td>
+<td>update: says "Contact us for pricing"; show both plans' prices and a worked scenario</td>
+</tr>
+<tr>
+<td>S-3</td>
+<td>Customers</td>
+<td>/customers</td>
+<td>index</td>
+<td>T-07</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-3.1</td>
+<td>Customer story: a software consultancy</td>
+<td>/customers/software-consultancy</td>
+<td>detail</td>
+<td>T-08</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>CAT-LEA</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-3.2</td>
+<td>Customer story: a logistics group</td>
+<td>/customers/logistics-group</td>
+<td>detail</td>
+<td>T-08</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>CAT-MOB</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-3.3</td>
+<td>Customer story: a design studio</td>
+<td>/customers/design-studio</td>
+<td>detail</td>
+<td>T-08</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>CAT-HEA</td>
+<td>update: ends with no Book a demo route</td>
+</tr>
+<tr>
+<td>S-3.4</td>
+<td>Customer story: a retail chain</td>
+<td>/customers/retail-chain</td>
+<td>detail</td>
+<td>T-08</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>CAT-MEA</td>
+<td>remove: no longer a Perqo client; redirect to S-3</td>
+</tr>
+<tr>
+<td>S-4</td>
+<td>Book a demo</td>
+<td>/demo</td>
+<td>form</td>
+<td>T-09</td>
+<td>Buyer</td>
+<td>Sales</td>
+<td>–</td>
+<td>update: drop the phone field sales does not use; add the reason line</td>
+</tr>
+<tr>
+<td>S-4.1</td>
+<td>Demo request received</td>
+<td>/demo/thanks</td>
+<td>detail</td>
+<td>T-10</td>
+<td>Buyer</td>
+<td>Sales</td>
+<td>–</td>
+<td>keep; indexed: no</td>
+</tr>
+<tr>
+<td>S-5</td>
+<td>Sign in</td>
+<td>leaves for Perqo Admin</td>
+<td>external</td>
+<td>none</td>
+<td>HR and finance</td>
+<td>Product</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-6</td>
+<td>Get the Perqo app</td>
+<td>/app</td>
+<td>detail</td>
+<td>T-06</td>
+<td>Employee</td>
+<td>Support</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-7</td>
+<td>For merchants</td>
+<td>/merchants</td>
+<td>detail</td>
+<td>T-06</td>
+<td>Merchant</td>
+<td>Partnerships</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-8</td>
+<td>About Perqo</td>
+<td>/about</td>
+<td>detail</td>
+<td>T-06</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-9</td>
+<td>Contact</td>
+<td>/contact</td>
+<td>form</td>
+<td>T-09</td>
+<td>Everyone</td>
+<td>Marketing</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-10</td>
+<td>Privacy policy</td>
+<td>/privacy</td>
+<td>detail</td>
+<td>T-11</td>
+<td>Everyone</td>
+<td>Legal</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-11</td>
+<td>Terms of service</td>
+<td>/terms</td>
+<td>detail</td>
+<td>T-11</td>
+<td>Everyone</td>
+<td>Legal</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>S-12</td>
+<td>Cookie policy</td>
+<td>/cookies</td>
+<td>detail</td>
+<td>T-11</td>
+<td>Everyone</td>
+<td>Legal</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+</tbody>
+</table></div>
+<h3>A.2 · Campaign pages</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Page</th>
+<th>URL (perqo.com)</th>
+<th>Type</th>
+<th>Template</th>
+<th>Audience</th>
+<th>Owner</th>
+<th>F-CAT</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L-01</td>
+<td>Learning budgets for engineering teams</td>
+<td>/lp/learning-budgets</td>
+<td>detail</td>
+<td>T-12</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>CAT-LEA</td>
+<td>keep until the campaign's end date, then redirect to S-1.4.2; indexed: no</td>
+</tr>
+<tr>
+<td>L-02</td>
+<td>Benefits for hybrid teams</td>
+<td>/lp/hybrid-teams</td>
+<td>detail</td>
+<td>T-12</td>
+<td>Buyer</td>
+<td>Marketing</td>
+<td>all</td>
+<td>remove: campaign ended; redirect to S-1.4; indexed: no</td>
+</tr>
+</tbody>
+</table></div>
+<h3>A.3 · Help centre</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Page</th>
+<th>URL (perqo.com/help)</th>
+<th>Type</th>
+<th>Template</th>
+<th>Audience</th>
+<th>Owner</th>
+<th>F-CAT</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H-0</td>
+<td>Help centre</td>
+<td>/</td>
+<td>index</td>
+<td>T-13</td>
+<td>HR and finance; Employee</td>
+<td>Support</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-0.1</td>
+<td>Search results</td>
+<td>/search</td>
+<td>index</td>
+<td>T-14</td>
+<td>HR and finance; Employee</td>
+<td>Support</td>
+<td>–</td>
+<td>update: map IA4's variant terms as synonyms (IA3, D3); indexed: no</td>
+</tr>
+<tr>
+<td>H-1</td>
+<td>For HR and finance teams</td>
+<td>/hr-finance</td>
+<td>section</td>
+<td>T-15</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.1</td>
+<td>Budgets</td>
+<td>/hr-finance/budgets</td>
+<td>section</td>
+<td>T-15</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>all</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.1.1</td>
+<td>Setting a budget for an employee group (IA2)</td>
+<td>/hr-finance/budgets/set-a-budget</td>
+<td>detail</td>
+<td>T-16</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>all</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.1.2</td>
+<td>Budget periods explained</td>
+<td>/hr-finance/budgets/budget-periods</td>
+<td>detail</td>
+<td>T-16</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>all</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.2</td>
+<td>Policies</td>
+<td>/hr-finance/policies</td>
+<td>section</td>
+<td>T-15</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>all</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.2.1</td>
+<td>Creating an employee group and its policy</td>
+<td>/hr-finance/policies/create-a-group</td>
+<td>detail</td>
+<td>T-16</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.2.2</td>
+<td>Choosing which categories are open</td>
+<td>/hr-finance/policies/open-categories</td>
+<td>detail</td>
+<td>T-16</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>all</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.2.3</td>
+<td>Setting the auto-approve limit</td>
+<td>/hr-finance/policies/auto-approve-limit</td>
+<td>detail</td>
+<td>T-16</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-1.2.4</td>
+<td>Approval rules (IA2)</td>
+<td>/hr-finance/policies/approval-rules.pdf</td>
+<td>file</td>
+<td>none</td>
+<td>HR and finance</td>
+<td>Product</td>
+<td>–</td>
+<td>remove: replaced by H-1.2.5; redirect to H-1.2.5</td>
+</tr>
+<tr>
+<td>H-1.2.5</td>
+<td>How approval rules work</td>
+<td>/hr-finance/policies/how-approval-rules-work</td>
+<td>detail</td>
+<td>T-16</td>
+<td>HR and finance; Employee</td>
+<td>Support</td>
+<td>–</td>
+<td>new; also listed under H-2.1</td>
+</tr>
+<tr>
+<td>H-1.3</td>
+<td>Approvals</td>
+<td>/hr-finance/approvals</td>
+<td>section</td>
+<td>T-15</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>–</td>
+<td>new</td>
+</tr>
+<tr>
+<td>H-1.3.1</td>
+<td>Approving and rejecting claims</td>
+<td>/hr-finance/approvals/approve-or-reject</td>
+<td>detail</td>
+<td>T-16</td>
+<td>HR and finance</td>
+<td>Support</td>
+<td>–</td>
+<td>new</td>
+</tr>
+<tr>
+<td>H-2</td>
+<td>For employees</td>
+<td>/employees</td>
+<td>section</td>
+<td>T-15</td>
+<td>Employee</td>
+<td>Support</td>
+<td>–</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-2.1</td>
+<td>Claims</td>
+<td>/employees/claims</td>
+<td>section</td>
+<td>T-15</td>
+<td>Employee</td>
+<td>Support</td>
+<td>all</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-2.1.1</td>
+<td>How to claim back a receipt (IA2)</td>
+<td>/employees/claims/claim-a-receipt</td>
+<td>detail</td>
+<td>T-16</td>
+<td>Employee</td>
+<td>Support</td>
+<td>all</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>H-2.1.2</td>
+<td>Why was my claim rejected? (IA2)</td>
+<td>/employees/claims/claim-rejected</td>
+<td>detail</td>
+<td>T-16</td>
+<td>Employee</td>
+<td>Support</td>
+<td>–</td>
+<td>update: says "refund"; the app says Claim</td>
+</tr>
+<tr>
+<td>H-2.1.3</td>
+<td>What you can claim in each category</td>
+<td>/employees/claims/what-you-can-claim</td>
+<td>detail</td>
+<td>T-16</td>
+<td>Employee</td>
+<td>Support, with Content team</td>
+<td>all</td>
+<td>new: examples from the catalogue</td>
+</tr>
+<tr>
+<td>H-2.1.4</td>
+<td>Claiming fitness: gym, classes and pool entry</td>
+<td>/employees/claims/claiming-fitness</td>
+<td>detail</td>
+<td>T-16</td>
+<td>Employee</td>
+<td>Support</td>
+<td>CAT-HEA-FIT</td>
+<td>new: answers the zero-result query "gym" (IA3)</td>
+</tr>
+<tr>
+<td>H-2.2</td>
+<td>Balance</td>
+<td>/employees/balance</td>
+<td>section</td>
+<td>T-15</td>
+<td>Employee</td>
+<td>Support</td>
+<td>all</td>
+<td>new: takes the address H-2.2.1 held</td>
+</tr>
+<tr>
+<td>H-2.2.1</td>
+<td>Your balance explained (IA2)</td>
+<td>/employees/balance/your-balance-explained</td>
+<td>detail</td>
+<td>T-16</td>
+<td>Employee</td>
+<td>Support</td>
+<td>all</td>
+<td>update: moves from /employees/balance; redirect kept</td>
+</tr>
+<tr>
+<td>H-2.2.2</td>
+<td>Why can't I use money from another category?</td>
+<td>/employees/balance/one-category</td>
+<td>detail</td>
+<td>T-16</td>
+<td>Employee</td>
+<td>Support</td>
+<td>all</td>
+<td>new</td>
+</tr>
+<tr>
+<td>H-2.3</td>
+<td>Card</td>
+<td>/employees/card</td>
+<td>section</td>
+<td>T-15</td>
+<td>Employee</td>
+<td>Support</td>
+<td>–</td>
+<td>new</td>
+</tr>
+<tr>
+<td>H-2.3.1</td>
+<td>Freezing and unfreezing your card</td>
+<td>/employees/card/freeze</td>
+<td>detail</td>
+<td>T-16</td>
+<td>Employee</td>
+<td>Support</td>
+<td>–</td>
+<td>new</td>
+</tr>
+<tr>
+<td>H-2.3.2</td>
+<td>Where you can pay with the Perqo card</td>
+<td>/employees/card/where-to-pay</td>
+<td>detail</td>
+<td>T-16</td>
+<td>Employee</td>
+<td>Support</td>
+<td>all</td>
+<td>new</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two rows record a move IA4's rules govern. As the site stands, the Balance topic has one article, and the topic link opens it at the address IA2 gave it, perqo.com/help/employees/balance (IA2, section 5.3). With a second article (H-2.2.2) the topic needs its own page, so H-2.2 takes that address and H-2.2.1 moves, keeping a redirect from its old one (IA4, section 5). And H-1.2.5, which replaces IA2's PDF, is an article both audiences need, so it is listed under both, as IA4 set for such articles (IA4, section 1.2): its address stays under Policies, and the Claims section lists it, so one page has one URL and two routes.</p>
+<h3>A.4 · The audit in numbers</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Keep</th>
+<th>Update</th>
+<th>Remove</th>
+<th>New</th>
+<th>Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Site pages (A.1)</td>
+<td>15</td>
+<td>6</td>
+<td>3</td>
+<td>5</td>
+<td>29</td>
+</tr>
+<tr>
+<td>Campaign pages (A.2)</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Help centre (A.3)</td>
+<td>12</td>
+<td>3</td>
+<td>1</td>
+<td>10</td>
+<td>26</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>28</td>
+<td>9</td>
+<td>5</td>
+<td>15</td>
+<td>57</td>
+</tr>
+</tbody>
+</table></div>
+<p>Of the 42 rows on the site today (pages, files and the Sign in route), 28 stay as they are, 9 change and 5 go; 15 are added, so the redesigned site has 52.</p>
+<figure class="viz viz-matrix viz-numeric"><div class="viz-scroll" style="--stick:124.8px"><svg viewBox="0 0 700.0 174" width="700.0" height="174" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-numeric"><text class="viz-colhead" x="195.7" y="15.6" text-anchor="middle">Keep</text><text class="viz-colhead" x="337.5" y="15.6" text-anchor="middle">Update</text><text class="viz-colhead" x="479.3" y="15.6" text-anchor="middle">Remove</text><text class="viz-colhead" x="621.1" y="15.6" text-anchor="middle">New</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Site pages</text><g data-box=""><rect class="viz-t1 viz-h5" x="126.8" y="34.0" width="137.8" height="28.0"/><text class="viz-markon" x="195.7" y="51.8" text-anchor="middle">15</text></g><g data-box=""><rect class="viz-t1 viz-h2" x="268.6" y="34.0" width="137.8" height="28.0"/><text class="viz-mark" x="337.5" y="51.8" text-anchor="middle">6</text></g><g data-box=""><rect class="viz-t1 viz-h1" x="410.4" y="34.0" width="137.8" height="28.0"/><text class="viz-mark" x="479.3" y="51.8" text-anchor="middle">3</text></g><g data-box=""><rect class="viz-t1 viz-h2" x="552.2" y="34.0" width="137.8" height="28.0"/><text class="viz-mark" x="621.1" y="51.8" text-anchor="middle">5</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Campaign pages</text><g data-box=""><rect class="viz-t1 viz-h1" x="126.8" y="66.0" width="137.8" height="28.0"/><text class="viz-mark" x="195.7" y="83.8" text-anchor="middle">1</text></g><g data-box=""><rect class="viz-t1 viz-h1" x="268.6" y="66.0" width="137.8" height="28.0"/><text class="viz-mark" x="337.5" y="83.8" text-anchor="middle">0</text></g><g data-box=""><rect class="viz-t1 viz-h1" x="410.4" y="66.0" width="137.8" height="28.0"/><text class="viz-mark" x="479.3" y="83.8" text-anchor="middle">1</text></g><g data-box=""><rect class="viz-t1 viz-h1" x="552.2" y="66.0" width="137.8" height="28.0"/><text class="viz-mark" x="621.1" y="83.8" text-anchor="middle">0</text></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Help centre</text><g data-box=""><rect class="viz-t1 viz-h4" x="126.8" y="98.0" width="137.8" height="28.0"/><text class="viz-mark" x="195.7" y="115.8" text-anchor="middle">12</text></g><g data-box=""><rect class="viz-t1 viz-h1" x="268.6" y="98.0" width="137.8" height="28.0"/><text class="viz-mark" x="337.5" y="115.8" text-anchor="middle">3</text></g><g data-box=""><rect class="viz-t1 viz-h1" x="410.4" y="98.0" width="137.8" height="28.0"/><text class="viz-mark" x="479.3" y="115.8" text-anchor="middle">1</text></g><g data-box=""><rect class="viz-t1 viz-h4" x="552.2" y="98.0" width="137.8" height="28.0"/><text class="viz-mark" x="621.1" y="115.8" text-anchor="middle">10</text></g><text class="viz-colhead" x="8.0" y="157.6" text-anchor="start">pages</text><g data-box=""><rect class="viz-t1 viz-h1" x="52.6" y="142.0" width="33.3" height="24"/><text class="viz-mark" x="69.2" y="157.8" text-anchor="middle">0–3</text></g><g data-box=""><rect class="viz-t1 viz-h2" x="89.9" y="142.0" width="33.3" height="24"/><text class="viz-mark" x="106.5" y="157.8" text-anchor="middle">3–6</text></g><g data-box=""><rect class="viz-t1 viz-h3" x="127.2" y="142.0" width="33.3" height="24"/><text class="viz-mark" x="143.8" y="157.8" text-anchor="middle">6–9</text></g><g data-box=""><rect class="viz-t1 viz-h4" x="164.4" y="142.0" width="39.7" height="24"/><text class="viz-mark" x="184.3" y="157.8" text-anchor="middle">9–12</text></g><g data-box=""><rect class="viz-t1 viz-h5" x="208.1" y="142.0" width="46.1" height="24"/><text class="viz-markon" x="231.2" y="157.8" text-anchor="middle">12–15</text></g></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 124.8 174" width="124.8" height="174" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="124.8" height="130"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Site pages</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Campaign pages</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Help centre</text></svg></div></div><figcaption>Audit summary: the perqo.com inventory's rows by area and audit outcome, shaded by count; supports the decision on where the redesign's work lies (Deliverable A, A.4). Outcomes keep, update and remove from Kaley, 'Content Inventory and Auditing 101', NN/g, 2020; new added in section 1.1. Tone 1, perqo.com. Perqo is fictional; every count from the tables A.1 to A.3.</figcaption></figure>
+<p><strong>What the inventory hands on.</strong> IA8 takes the crossing rows (S-5, the one <code>external</code> row, and S-6, whose download links leave for the app stores) as perqo.com's crossings in its surface layer; IA10 takes the owner column as the content touchpoint; DD-IA3 takes the IDs as the key every language version shares (section 5.3).</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia5-5" data-step="5"><span>Previous · 6 of 10</span><b>How the sitemap is read, and the fidelity each reader needs</b></a><a class="snext" href="#read-ia5-7" data-step="7"><span>Next · 8 of 10</span><b>B · The perqo.com sitemap</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-ia5-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">B · The perqo.com sitemap</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): structural sitemap of perqo.com, the redesigned site, at fidelity F3, with an ID on every box and a template on every box but the external one; decision: what exists on perqo.com, under what, built from which template; readers: marketing (cut to two levels, F1 or F2), engineering (F3), content (F2), product management, sales; leaves out: removed pages (Deliverable A), URLs, redirects and indexing (Deliverable A), page content, the navigation components, Perqo Admin and the Perqo app beyond the routes into them; owner: the IA designer; version 1, dated 3 November 2026; Perqo is fictional.</em></p>
+<h3>B.1 · The sitemap</h3>
+<p>It extends IA2's F2 sitemap and keeps everything in it (IA2, section 5.3): Home over Product, Pricing, Customers, Help centre, Book a demo and Sign in; Product's three surface pages; Customers over a stack of customer stories, one page per client (IA2, section 5.3); the Help centre split by audience and then by task; Sign in leaving for Perqo Admin. It adds what this unit sets: the Benefits section with its four category pages and Security under Product; the demo confirmation; the footer pages; the Approvals and Card topics in the Help centre; search results; and campaign pages as a conditional stack. Each box's note gives its ID and template (Sign in, the external box, has no template), so engineering can cite it. Footer pages are marked "footer" in their notes: the footer is a route, outside the levels; the word extends IA2's note vocabulary under its rule "Keep the notation; extend the legend" (IA2, section 4), and the caption declares it, since the sitemap kind carries no legend of its own. The three legal pages are drawn as one stack, Legal pages, and each Help centre topic's articles as one stack named for the topic (Budget articles, Policy articles, Claim articles, Balance articles, Card articles).</p>
+<figure class="viz viz-sitemap"><div class="viz-scroll"><svg viewBox="0 0 700 2324.5" width="700" height="2324.5" data-x0="17" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="sitemap"><path class="viz-line" d="M126.0,161.0 L126.0,787.0"/><path class="viz-line" d="M126.0,189.0 L136.0,189.0"/><path class="viz-line" d="M126.0,257.5 L136.0,257.5"/><path class="viz-line" d="M126.0,326.0 L136.0,326.0"/><path class="viz-line" d="M146.0,435.0 L146.0,706.0"/><path class="viz-line" d="M146.0,463.0 L156.0,463.0"/><path class="viz-line" d="M146.0,544.0 L156.0,544.0"/><path class="viz-line" d="M146.0,625.0 L156.0,625.0"/><path class="viz-line" d="M146.0,706.0 L156.0,706.0"/><path class="viz-line" d="M126.0,394.5 L136.0,394.5"/><path class="viz-line" d="M126.0,787.0 L136.0,787.0"/><path class="viz-line" d="M182.0,84.5 L182.0,102.5"/><path class="viz-line" d="M368.0,84.5 L368.0,102.5"/><path class="viz-line" d="M458.0,161.0 L458.0,189.0"/><path class="viz-line" d="M458.0,189.0 L468.0,189.0"/><path class="viz-line" d="M514.0,84.5 L514.0,102.5"/><path class="viz-line" d="M43.0,922.0 L43.0,1588.5"/><path class="viz-line" d="M43.0,950.0 L53.0,950.0"/><path class="viz-line" d="M63.0,1073.0 L63.0,1437.5"/><path class="viz-line" d="M83.0,1141.5 L83.0,1169.5"/><path class="viz-line" d="M83.0,1169.5 L93.0,1169.5"/><path class="viz-line" d="M63.0,1101.0 L73.0,1101.0"/><path class="viz-line" d="M83.0,1291.0 L83.0,1319.0"/><path class="viz-line" d="M83.0,1319.0 L93.0,1319.0"/><path class="viz-line" d="M63.0,1250.5 L73.0,1250.5"/><path class="viz-line" d="M83.0,1478.0 L83.0,1506.0"/><path class="viz-line" d="M83.0,1506.0 L93.0,1506.0"/><path class="viz-line" d="M63.0,1437.5 L73.0,1437.5"/><path class="viz-line" d="M43.0,1018.5 L53.0,1018.5"/><path class="viz-line" d="M63.0,1629.0 L63.0,1968.5"/><path class="viz-line" d="M83.0,1697.5 L83.0,1725.5"/><path class="viz-line" d="M83.0,1725.5 L93.0,1725.5"/><path class="viz-line" d="M63.0,1657.0 L73.0,1657.0"/><path class="viz-line" d="M83.0,1859.5 L83.0,1887.5"/><path class="viz-line" d="M83.0,1887.5 L93.0,1887.5"/><path class="viz-line" d="M63.0,1819.0 L73.0,1819.0"/><path class="viz-line" d="M83.0,2009.0 L83.0,2037.0"/><path class="viz-line" d="M83.0,2037.0 L93.0,2037.0"/><path class="viz-line" d="M63.0,1968.5 L73.0,1968.5"/><path class="viz-line" d="M43.0,1588.5 L53.0,1588.5"/><path class="viz-line" d="M99.0,845.5 L99.0,863.5"/><path class="viz-line" d="M249.0,922.0 L249.0,950.0"/><path class="viz-line" d="M249.0,950.0 L259.0,950.0"/><path class="viz-line" d="M305.0,845.5 L305.0,863.5"/><path class="viz-line" d="M471.0,845.5 L471.0,863.5"/><path class="viz-line" d="M617.0,845.5 L617.0,863.5"/><path class="viz-line" d="M139.0,2108.0 L139.0,2126.0"/><path class="viz-line" d="M285.0,2108.0 L285.0,2126.0"/><path class="viz-line" d="M431.0,2108.0 L431.0,2126.0"/><path class="viz-line" d="M577.0,2108.0 L577.0,2126.0"/><path class="viz-line" d="M358.0,2215.0 L358.0,2233.0"/><path class="viz-line" d="M350.0,66.5 L350.0,84.5 L25.0,84.5 L25.0,2215.0"/><path class="viz-line" d="M25.0,84.5 L514.0,84.5"/><path class="viz-line" d="M25.0,845.5 L617.0,845.5"/><path class="viz-line" d="M25.0,2108.0 L577.0,2108.0"/><path class="viz-line" d="M25.0,2215.0 L358.0,2215.0"/><g data-box=""><rect class="viz-node viz-t1" x="284.0" y="8.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="292.0" y="25.4" text-anchor="start">home</text><text class="viz-nodelabel" x="292.0" y="41.3" text-anchor="start">Home</text><text class="viz-small" x="292.0" y="55.9" text-anchor="start">S-0 · T-01</text></g><g data-box=""><rect class="viz-node viz-t1" x="116.0" y="102.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="124.0" y="119.9" text-anchor="start">section</text><text class="viz-nodelabel" x="124.0" y="135.8" text-anchor="start">Product</text><text class="viz-small" x="124.0" y="150.3" text-anchor="start">S-1 · T-02</text></g><g data-box=""><rect class="viz-node viz-t1" x="136.0" y="171.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="144.0" y="188.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="144.0" y="204.3" text-anchor="start">Perqo Admin</text><text class="viz-small" x="144.0" y="218.8" text-anchor="start">S-1.1 · T-03</text></g><g data-box=""><rect class="viz-node viz-t1" x="136.0" y="239.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="144.0" y="256.9" text-anchor="start">detail</text><text class="viz-nodelabel" x="144.0" y="272.8" text-anchor="start">Perqo app</text><text class="viz-small" x="144.0" y="287.4" text-anchor="start">S-1.2 · T-03</text></g><g data-box=""><rect class="viz-node viz-t1" x="136.0" y="308.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="144.0" y="325.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="144.0" y="341.3" text-anchor="start">Perqo card</text><text class="viz-small" x="144.0" y="355.9" text-anchor="start">S-1.3 · T-03</text></g><g data-box=""><rect class="viz-node viz-t1" x="136.0" y="376.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="144.0" y="393.9" text-anchor="start">section</text><text class="viz-nodelabel" x="144.0" y="409.8" text-anchor="start">Benefits</text><text class="viz-small" x="144.0" y="424.4" text-anchor="start">S-1.4 · T-02</text></g><g data-box=""><rect class="viz-node viz-t1" x="156.0" y="445.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="164.0" y="462.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="164.0" y="478.3" text-anchor="start">Health</text><text class="viz-small" x="164.0" y="492.9" text-anchor="start">S-1.4.1 · T-04 ·</text><text class="viz-small" x="164.0" y="505.4" text-anchor="start">CAT-HEA</text></g><g data-box=""><rect class="viz-node viz-t1" x="156.0" y="526.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="164.0" y="543.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="164.0" y="559.3" text-anchor="start">Learning</text><text class="viz-small" x="164.0" y="573.9" text-anchor="start">S-1.4.2 · T-04 ·</text><text class="viz-small" x="164.0" y="586.4" text-anchor="start">CAT-LEA</text></g><g data-box=""><rect class="viz-node viz-t1" x="156.0" y="607.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="164.0" y="624.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="164.0" y="640.3" text-anchor="start">Mobility</text><text class="viz-small" x="164.0" y="654.9" text-anchor="start">S-1.4.3 · T-04 ·</text><text class="viz-small" x="164.0" y="667.4" text-anchor="start">CAT-MOB</text></g><g data-box=""><rect class="viz-node viz-t1" x="156.0" y="688.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="164.0" y="705.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="164.0" y="721.3" text-anchor="start">Meals</text><text class="viz-small" x="164.0" y="735.9" text-anchor="start">S-1.4.4 · T-04 ·</text><text class="viz-small" x="164.0" y="748.4" text-anchor="start">CAT-MEA</text></g><g data-box=""><rect class="viz-node viz-t1" x="136.0" y="769.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="144.0" y="786.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="144.0" y="802.3" text-anchor="start">Security</text><text class="viz-small" x="144.0" y="816.9" text-anchor="start">S-1.5 · T-06</text></g><g data-box=""><rect class="viz-node viz-t1" x="302.0" y="102.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="310.0" y="119.9" text-anchor="start">detail</text><text class="viz-nodelabel" x="310.0" y="135.8" text-anchor="start">Pricing</text><text class="viz-small" x="310.0" y="150.3" text-anchor="start">S-2 · T-05</text></g><g data-box=""><rect class="viz-node viz-t1" x="448.0" y="102.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="456.0" y="119.9" text-anchor="start">index</text><text class="viz-nodelabel" x="456.0" y="135.8" text-anchor="start">Customers</text><text class="viz-small" x="456.0" y="150.3" text-anchor="start">S-3 · T-07</text></g><g data-box=""><rect class="viz-node viz-t1" x="468.0" y="171.0" width="132" height="83.5" rx="2"/><text class="viz-tag" x="476.0" y="188.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="476.0" y="204.3" text-anchor="start">Customer stories</text><text class="viz-small" x="476.0" y="218.8" text-anchor="start">S-3.1 to S-3.3 ·</text><text class="viz-small" x="476.0" y="231.3" text-anchor="start">T-08 · one per</text><text class="viz-small" x="476.0" y="243.8" text-anchor="start">client</text></g><g data-box=""><rect class="viz-node viz-t1" x="33.0" y="863.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="41.0" y="880.9" text-anchor="start">index</text><text class="viz-nodelabel" x="41.0" y="896.8" text-anchor="start">Help centre</text><text class="viz-small" x="41.0" y="911.4" text-anchor="start">H-0 · T-13</text></g><g data-box=""><rect class="viz-node viz-t1" x="53.0" y="932.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="61.0" y="949.4" text-anchor="start">index</text><text class="viz-nodelabel" x="61.0" y="965.3" text-anchor="start">Search results</text><text class="viz-small" x="61.0" y="979.9" text-anchor="start">H-0.1 · T-14</text></g><g data-box=""><rect class="viz-node viz-t1" x="53.0" y="1000.5" width="132" height="72.5" rx="2"/><text class="viz-tag" x="61.0" y="1017.9" text-anchor="start">section</text><text class="viz-nodelabel" x="61.0" y="1033.8" text-anchor="start">For HR and finance</text><text class="viz-nodelabel" x="61.0" y="1047.8" text-anchor="start">teams</text><text class="viz-small" x="61.0" y="1062.3" text-anchor="start">H-1 · T-15</text></g><g data-box=""><rect class="viz-node viz-t1" x="73.0" y="1083.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="81.0" y="1100.4" text-anchor="start">section</text><text class="viz-nodelabel" x="81.0" y="1116.3" text-anchor="start">Budgets</text><text class="viz-small" x="81.0" y="1130.8" text-anchor="start">H-1.1 · T-15</text></g><g data-box=""><rect class="viz-node viz-t1" x="93.0" y="1151.5" width="132" height="71.0" rx="2"/><text class="viz-tag" x="101.0" y="1168.9" text-anchor="start">stack</text><text class="viz-nodelabel" x="101.0" y="1184.8" text-anchor="start">Budget articles</text><text class="viz-small" x="101.0" y="1199.3" text-anchor="start">H-1.1.1, H-1.1.2 ·</text><text class="viz-small" x="101.0" y="1211.8" text-anchor="start">T-16</text></g><g data-box=""><rect class="viz-node viz-t1" x="73.0" y="1232.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="81.0" y="1249.9" text-anchor="start">section</text><text class="viz-nodelabel" x="81.0" y="1265.8" text-anchor="start">Policies</text><text class="viz-small" x="81.0" y="1280.3" text-anchor="start">H-1.2 · T-15</text></g><g data-box=""><rect class="viz-node viz-t1" x="93.0" y="1301.0" width="132" height="108.5" rx="2"/><text class="viz-tag" x="101.0" y="1318.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="101.0" y="1334.3" text-anchor="start">Policy articles</text><text class="viz-small" x="101.0" y="1348.8" text-anchor="start">H-1.2.1 to</text><text class="viz-small" x="101.0" y="1361.3" text-anchor="start">H-1.2.3, H-1.2.5 ·</text><text class="viz-small" x="101.0" y="1373.8" text-anchor="start">T-16; H-1.2.5 also</text><text class="viz-small" x="101.0" y="1386.3" text-anchor="start">listed under</text><text class="viz-small" x="101.0" y="1398.8" text-anchor="start">Claims</text></g><g data-box=""><rect class="viz-node viz-t1" x="73.0" y="1419.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="81.0" y="1436.9" text-anchor="start">section</text><text class="viz-nodelabel" x="81.0" y="1452.8" text-anchor="start">Approvals</text><text class="viz-small" x="81.0" y="1467.3" text-anchor="start">H-1.3 · T-15</text></g><g data-box=""><rect class="viz-node viz-t1" x="93.0" y="1488.0" width="132" height="72.5" rx="2"/><text class="viz-tag" x="101.0" y="1505.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="101.0" y="1521.3" text-anchor="start">Approving and</text><text class="viz-nodelabel" x="101.0" y="1535.3" text-anchor="start">rejecting claims</text><text class="viz-small" x="101.0" y="1549.8" text-anchor="start">H-1.3.1 · T-16</text></g><g data-box=""><rect class="viz-node viz-t1" x="53.0" y="1570.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="61.0" y="1587.9" text-anchor="start">section</text><text class="viz-nodelabel" x="61.0" y="1603.8" text-anchor="start">For employees</text><text class="viz-small" x="61.0" y="1618.3" text-anchor="start">H-2 · T-15</text></g><g data-box=""><rect class="viz-node viz-t1" x="73.0" y="1639.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="81.0" y="1656.4" text-anchor="start">section</text><text class="viz-nodelabel" x="81.0" y="1672.3" text-anchor="start">Claims</text><text class="viz-small" x="81.0" y="1686.8" text-anchor="start">H-2.1 · T-15</text></g><g data-box=""><rect class="viz-node viz-t1" x="93.0" y="1707.5" width="132" height="83.5" rx="2"/><text class="viz-tag" x="101.0" y="1724.9" text-anchor="start">stack</text><text class="viz-nodelabel" x="101.0" y="1740.8" text-anchor="start">Claim articles</text><text class="viz-small" x="101.0" y="1755.3" text-anchor="start">H-2.1.1 to H-2.1.4</text><text class="viz-small" x="101.0" y="1767.8" text-anchor="start">· T-16; also lists</text><text class="viz-small" x="101.0" y="1780.3" text-anchor="start">H-1.2.5</text></g><g data-box=""><rect class="viz-node viz-t1" x="73.0" y="1801.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="81.0" y="1818.4" text-anchor="start">section</text><text class="viz-nodelabel" x="81.0" y="1834.3" text-anchor="start">Balance</text><text class="viz-small" x="81.0" y="1848.8" text-anchor="start">H-2.2 · T-15</text></g><g data-box=""><rect class="viz-node viz-t1" x="93.0" y="1869.5" width="132" height="71.0" rx="2"/><text class="viz-tag" x="101.0" y="1886.9" text-anchor="start">stack</text><text class="viz-nodelabel" x="101.0" y="1902.8" text-anchor="start">Balance articles</text><text class="viz-small" x="101.0" y="1917.3" text-anchor="start">H-2.2.1, H-2.2.2 ·</text><text class="viz-small" x="101.0" y="1929.8" text-anchor="start">T-16</text></g><g data-box=""><rect class="viz-node viz-t1" x="73.0" y="1950.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="81.0" y="1967.9" text-anchor="start">section</text><text class="viz-nodelabel" x="81.0" y="1983.8" text-anchor="start">Card</text><text class="viz-small" x="81.0" y="1998.3" text-anchor="start">H-2.3 · T-15</text></g><g data-box=""><rect class="viz-node viz-t1" x="93.0" y="2019.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="101.0" y="2036.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="101.0" y="2052.3" text-anchor="start">Card articles</text><text class="viz-small" x="101.0" y="2066.8" text-anchor="start">H-2.3.1, H-2.3.2 ·</text><text class="viz-small" x="101.0" y="2079.3" text-anchor="start">T-16</text></g><g data-box=""><rect class="viz-node viz-t1" x="239.0" y="863.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="247.0" y="880.9" text-anchor="start">form</text><text class="viz-nodelabel" x="247.0" y="896.8" text-anchor="start">Book a demo</text><text class="viz-small" x="247.0" y="911.4" text-anchor="start">S-4 · T-09</text></g><g data-box=""><rect class="viz-node viz-t1" x="259.0" y="932.0" width="132" height="72.5" rx="2"/><text class="viz-tag" x="267.0" y="949.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="267.0" y="965.3" text-anchor="start">Demo request</text><text class="viz-nodelabel" x="267.0" y="979.3" text-anchor="start">received</text><text class="viz-small" x="267.0" y="993.9" text-anchor="start">S-4.1 · T-10</text></g><g data-box=""><rect class="viz-node viz-t1" x="405.0" y="863.5" width="132" height="71.0" rx="2"/><text class="viz-tag" x="413.0" y="880.9" text-anchor="start">external</text><text class="viz-nodelabel" x="413.0" y="896.8" text-anchor="start">Sign in</text><text class="viz-small" x="413.0" y="911.4" text-anchor="start">S-5 · → see Perqo</text><text class="viz-small" x="413.0" y="923.9" text-anchor="start">Admin</text></g><g data-box=""><rect class="viz-node viz-t1" x="551.0" y="863.5" width="132" height="71.0" rx="2"/><text class="viz-tag" x="559.0" y="880.9" text-anchor="start">detail</text><text class="viz-nodelabel" x="559.0" y="896.8" text-anchor="start">Get the Perqo app</text><text class="viz-small" x="559.0" y="911.4" text-anchor="start">S-6 · T-06 ·</text><text class="viz-small" x="559.0" y="923.9" text-anchor="start">footer</text></g><g data-box=""><rect class="viz-node viz-t1" x="73.0" y="2126.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="81.0" y="2143.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="81.0" y="2159.3" text-anchor="start">For merchants</text><text class="viz-small" x="81.0" y="2173.8" text-anchor="start">S-7 · T-06 ·</text><text class="viz-small" x="81.0" y="2186.3" text-anchor="start">footer</text></g><g data-box=""><rect class="viz-node viz-t1" x="219.0" y="2126.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="227.0" y="2143.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="227.0" y="2159.3" text-anchor="start">About Perqo</text><text class="viz-small" x="227.0" y="2173.8" text-anchor="start">S-8 · T-06 ·</text><text class="viz-small" x="227.0" y="2186.3" text-anchor="start">footer</text></g><g data-box=""><rect class="viz-node viz-t1" x="365.0" y="2126.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="373.0" y="2143.4" text-anchor="start">form</text><text class="viz-nodelabel" x="373.0" y="2159.3" text-anchor="start">Contact</text><text class="viz-small" x="373.0" y="2173.8" text-anchor="start">S-9 · T-09 ·</text><text class="viz-small" x="373.0" y="2186.3" text-anchor="start">footer</text></g><g data-box=""><rect class="viz-node viz-t1" x="511.0" y="2126.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="519.0" y="2143.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="519.0" y="2159.3" text-anchor="start">Legal pages</text><text class="viz-small" x="519.0" y="2173.8" text-anchor="start">S-10 to S-12 ·</text><text class="viz-small" x="519.0" y="2186.3" text-anchor="start">T-11 · footer</text></g><g data-box=""><rect class="viz-node viz-t1" x="292.0" y="2233.0" width="132" height="83.5" rx="2"/><text class="viz-tag" x="300.0" y="2250.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="300.0" y="2266.3" text-anchor="start">Campaign pages</text><text class="viz-small" x="300.0" y="2280.8" text-anchor="start">[campaign live]</text><text class="viz-small" x="300.0" y="2293.3" text-anchor="start">L-01 · T-12 · no</text><text class="viz-small" x="300.0" y="2305.8" text-anchor="start">navigation</text></g></svg></div><figcaption>Sitemap: perqo.com as redesigned, F3, page types tagged, an ID in every note and a template in every note but Sign in's, many pages of one type drawn as one stack; supports the decision on what exists on the site and what builds each page (Deliverable B). Every box is tone 1, perqo.com. The bracketed note on Campaign pages is IA2's conditional area; the one external box, Sign in, leaves the site, with '→ see' to its destination; 'footer' in a note marks a page reached from the footer, outside the levels (a word added under IA2's rule 'Keep the notation; extend the legend', IA2, section 4); the five footer boxes (seven pages, the three legal pages drawn as one stack) are Home's children like the six global routes, since the sitemap kind draws one set of rows under the root, and only their notes tell them apart. The Campaign pages stack hangs from Home for the same reason; its note, 'no navigation', marks it as off the hierarchy. Removed pages are not drawn. Perqo is fictional; Home, its six global routes, Product's three pages, Customers and the Help centre's audience and task levels from IA1, section 2.3, and IA2, section 5.3; the rest from Deliverable A.</figcaption></figure>
+<h3>B.2 · The labels, judged by IA3's checklist</h3>
+<p>IA3's labelling checklist is the test for every label above (IA3, Deliverable). The labels this unit sets or keeps at the top two levels, item by item:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Label</th>
+<th>A1 names what is behind it</th>
+<th>A2 first word tells it apart</th>
+<th>D1 users' words</th>
+<th>D2 one label, one thing</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product</td>
+<td>yes: the three surfaces and the categories</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>keep (IA1)</td>
+</tr>
+<tr>
+<td>Pricing</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>keep (IA1)</td>
+</tr>
+<tr>
+<td>Customers</td>
+<td>yes: the customer stories</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>keep (IA1)</td>
+</tr>
+<tr>
+<td>Help centre</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>keep (IA1)</td>
+</tr>
+<tr>
+<td>Book a demo</td>
+<td>yes: the one form</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>keep (IA2)</td>
+</tr>
+<tr>
+<td>Sign in</td>
+<td>yes for HR and finance; assumed: an employee may read it as theirs (section 5.5)</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>keep; test</td>
+</tr>
+<tr>
+<td>Benefits</td>
+<td>yes: the four categories</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes: the app's Benefits tab holds the same four once IA3's C1 fix removes Perks</td>
+<td>new</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>Get the Perqo app</td>
+<td>yes</td>
+<td>yes: "Get" is the only verb in the footer</td>
+<td>yes</td>
+<td>yes</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>For merchants</td>
+<td>yes: the content is for merchants (Sherwin 2015)</td>
+<td>yes: no other footer label starts with "For"</td>
+<td>yes</td>
+<td>yes</td>
+<td>keep</td>
+</tr>
+<tr>
+<td>Features (removed)</td>
+<td>no: repeats Product</td>
+<td>yes</td>
+<td>no: an internal word for the product list</td>
+<td>no: a second name for Product</td>
+<td>remove (S-1.6)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Help centre's audience and topic labels are IA1's and IA2's and are kept; the topics added here, Approvals and Card, are the names Admin and the app already use for the same areas (IA1, Deliverable), which passes D2 across surfaces.</p>
+<h3>B.3 · How the organisation system shows up on perqo.com</h3>
+<p>IA4 asked that one organisation decision be traceable through navigation, filters, search and URLs (IA4, section 5). The benefit-category facet, F-CAT, on perqo.com (Perqo, fictional):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>How F-CAT shows up</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Navigation</td>
+<td>the four category pages under Product, Benefits (S-1.4.1 to S-1.4.4)</td>
+<td>IA4, section 5: hierarchy to routes</td>
+</tr>
+<tr>
+<td>Filters</td>
+<td>the Customers index filters stories by F-CAT; a value with no story is hidden</td>
+<td>Hearst 2006 (IA4, section 3.2); IA4, B.4, R5</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>the Help centre's search maps every variant term in IA4's B.2 to its value, so "gym" finds CAT-HEA-FIT's articles</td>
+<td>Furnas and others 1987 (IA3, section 4.2); IA3, D3</td>
+</tr>
+<tr>
+<td>URLs</td>
+<td>each category page's address carries its identifier, then its term: /product/benefits/cat-hea/health</td>
+<td>IA4, section 5; Google, URL structure (section 5.1)</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td>every help article and customer story carries F-CAT tags, a template field (T-08, T-16)</td>
+<td>IA4, "What IA5 and DD-IA3 take"</td>
+</tr>
+</tbody>
+</table></div>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia5-6" data-step="6"><span>Previous · 7 of 10</span><b>A · The perqo.com content inventory</b></a><a class="snext" href="#read-ia5-8" data-step="8"><span>Next · 9 of 10</span><b>C · The perqo.com page-template catalogue</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-ia5-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">C · The perqo.com page-template catalogue</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): page-template catalogue for perqo.com, F3, every template with its purpose, page type, required and optional modules and the pages it builds; decision: what engineering builds once and content fills many times; readers: engineering (build), content (what to fill), marketing (what each page can hold), DD-IA3 (what localisation changes); leaves out: visual design, the modules' internal layout, copy; owner: the IA designer with engineering; version 1, dated 3 November 2026; Perqo is fictional.</em></p>
+<h3>C.1 · The modules</h3>
+<p>Every template is built from these modules (Perqo, fictional). A module is named once and used by ID; a change to a module changes every template that uses it.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Module</th>
+<th>What it holds</th>
+<th>Rule it carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-01</td>
+<td>Global header</td>
+<td>Product, Pricing, Customers, Help centre, Book a demo, Sign in</td>
+<td>global routes, on every page a visitor can arrive at (section 4.3)</td>
+</tr>
+<tr>
+<td>M-02</td>
+<td>Footer</td>
+<td>Get the Perqo app, For merchants, About Perqo, Contact, the three legal pages</td>
+<td>the footer routes (Deliverable B)</td>
+</tr>
+<tr>
+<td>M-03</td>
+<td>Breadcrumb</td>
+<td>the path from Home</td>
+<td>shows where a landed-on page sits (section 4.3)</td>
+</tr>
+<tr>
+<td>M-04</td>
+<td>Page heading and summary</td>
+<td>the page's title, the same words as the label that led to it, and one sentence</td>
+<td>IA3, A1 and A3</td>
+</tr>
+<tr>
+<td>M-05</td>
+<td>Book a demo</td>
+<td>the route to S-4</td>
+<td>the conversion route</td>
+</tr>
+<tr>
+<td>M-06</td>
+<td>Surface tiles</td>
+<td>Perqo Admin, Perqo app, Perqo card</td>
+<td>IA1's surfaces, in perqo.com's words</td>
+</tr>
+<tr>
+<td>M-07</td>
+<td>Category tiles</td>
+<td>the four F-CAT top-level values</td>
+<td>F-CAT by identifier (IA4, Deliverable B)</td>
+</tr>
+<tr>
+<td>M-08</td>
+<td>Catalogue examples</td>
+<td>the catalogue items under one F-CAT value, in basic-level words</td>
+<td>IA3, C2; hidden when no item holds the value (IA4, R5)</td>
+</tr>
+<tr>
+<td>M-09</td>
+<td>Story teaser</td>
+<td>one customer story, chosen by F-CAT</td>
+<td>R-19: a story is about a client</td>
+</tr>
+<tr>
+<td>M-10</td>
+<td>Plan comparison</td>
+<td>the two plans and their prices per employee per month</td>
+<td>Loranger 2013; Fessenden 2019</td>
+</tr>
+<tr>
+<td>M-11</td>
+<td>Pricing scenario</td>
+<td>one worked example of a client's cost</td>
+<td>Fessenden 2019: "common pricing scenarios"</td>
+</tr>
+<tr>
+<td>M-12</td>
+<td>Questions and answers</td>
+<td>short answers on the page's subject</td>
+<td>none beyond the page's own</td>
+</tr>
+<tr>
+<td>M-13</td>
+<td>Related help articles</td>
+<td>articles sharing the page's F-CAT tags or topic</td>
+<td>contextual routes from metadata (Cardello 2014)</td>
+</tr>
+<tr>
+<td>M-14</td>
+<td>Story body</td>
+<td>the client, what they set up, the outcome</td>
+<td>R-19</td>
+</tr>
+<tr>
+<td>M-15</td>
+<td>Form with reasons</td>
+<td>O-16's fields, each with why it is asked</td>
+<td>Fessenden 2019</td>
+</tr>
+<tr>
+<td>M-16</td>
+<td>Next steps</td>
+<td>what happens after a form is sent, and when</td>
+<td>none beyond the page's own</td>
+</tr>
+<tr>
+<td>M-17</td>
+<td>Audience chooser</td>
+<td>For HR and finance teams, For employees</td>
+<td>IA1, section 2.3</td>
+</tr>
+<tr>
+<td>M-18</td>
+<td>Help search box</td>
+<td>search inside the Help centre only</td>
+<td>IA2, section 5.3</td>
+</tr>
+<tr>
+<td>M-19</td>
+<td>Topic list</td>
+<td>a section's topics or articles</td>
+<td>the hierarchy's local routes</td>
+</tr>
+<tr>
+<td>M-20</td>
+<td>Article body</td>
+<td>the article's text</td>
+<td>none beyond the page's own</td>
+</tr>
+<tr>
+<td>M-21</td>
+<td>Article facts</td>
+<td>audience, F-CAT tags, last updated</td>
+<td>O-14's attributes (IA4, Deliverable A)</td>
+</tr>
+<tr>
+<td>M-22</td>
+<td>Also listed under</td>
+<td>the second section that lists the article</td>
+<td>IA4, section 1.2; one URL, two routes</td>
+</tr>
+<tr>
+<td>M-23</td>
+<td>Was this helpful</td>
+<td>a yes-or-no question sent to the owner</td>
+<td>Perqo's own feedback route; no effect is claimed</td>
+</tr>
+<tr>
+<td>M-24</td>
+<td>App download links</td>
+<td>the app-store links</td>
+<td>IA1: perqo.com passes the download link to the app</td>
+</tr>
+<tr>
+<td>M-25</td>
+<td>Legal text with version date</td>
+<td>the policy and the date it took effect</td>
+<td>none beyond the page's own</td>
+</tr>
+<tr>
+<td>M-26</td>
+<td>Results list</td>
+<td>search results, with a zero-result message that offers the topic lists</td>
+<td>Farrell 2017 (IA3, section 5.2)</td>
+</tr>
+<tr>
+<td>M-27</td>
+<td>Campaign message</td>
+<td>one offer and one route</td>
+<td>section 5.2</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C.2 · The templates</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Template</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Required modules</th>
+<th>Optional modules</th>
+<th>Builds</th>
+<th>Localisation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T-01</td>
+<td>Home</td>
+<td>home</td>
+<td>say what Perqo is and for whom; route to every area</td>
+<td>M-01, M-04, M-06, M-07, M-05, M-02</td>
+<td>M-09; one campaign slot linking to an L- page</td>
+<td>S-0</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-02</td>
+<td>Section landing</td>
+<td>section</td>
+<td>land a group and list what is in it</td>
+<td>M-01, M-03, M-04, M-19, M-02</td>
+<td>M-06 or M-07 (by section), M-05</td>
+<td>S-1, S-1.4</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-03</td>
+<td>Product page</td>
+<td>detail</td>
+<td>sell one surface</td>
+<td>M-01, M-03, M-04, M-05, M-02</td>
+<td>M-09, M-12, M-13</td>
+<td>S-1.1 to S-1.3</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-04</td>
+<td>Benefit category</td>
+<td>detail</td>
+<td>show a buyer what one category covers, bound to its F-CAT identifier</td>
+<td>M-01, M-03, M-04, M-08, M-05, M-02</td>
+<td>M-09, M-12</td>
+<td>S-1.4.1 to S-1.4.4</td>
+<td>language; M-08's items may differ by market</td>
+</tr>
+<tr>
+<td>T-05</td>
+<td>Pricing</td>
+<td>detail</td>
+<td>show what Perqo costs</td>
+<td>M-01, M-03, M-04, M-10, M-11, M-05, M-02</td>
+<td>M-12</td>
+<td>S-2</td>
+<td>market: M-10 and M-11</td>
+</tr>
+<tr>
+<td>T-06</td>
+<td>Standard page</td>
+<td>detail</td>
+<td>one page of company or practical information</td>
+<td>M-01, M-03, M-04, M-02</td>
+<td>M-24 (required on S-6), M-05, M-12</td>
+<td>S-1.5, S-6, S-7, S-8</td>
+<td>language; M-24 by market</td>
+</tr>
+<tr>
+<td>T-07</td>
+<td>Story index</td>
+<td>index</td>
+<td>list customer stories, filtered by F-CAT</td>
+<td>M-01, M-03, M-04, M-19, M-02</td>
+<td>M-05</td>
+<td>S-3</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-08</td>
+<td>Customer story</td>
+<td>detail</td>
+<td>one client's story, tagged with F-CAT</td>
+<td>M-01, M-03, M-04, M-14, M-05, M-02</td>
+<td>M-13</td>
+<td>S-3.1 to S-3.3</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-09</td>
+<td>Form</td>
+<td>form</td>
+<td>collect one request</td>
+<td>M-01, M-03, M-04, M-15, M-02</td>
+<td>none</td>
+<td>S-4, S-9</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-10</td>
+<td>Confirmation</td>
+<td>detail</td>
+<td>confirm a request and say what happens next</td>
+<td>M-01, M-04, M-16, M-02</td>
+<td>M-13</td>
+<td>S-4.1</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-11</td>
+<td>Legal</td>
+<td>detail</td>
+<td>one policy</td>
+<td>M-01, M-03, M-04, M-25, M-02</td>
+<td>none</td>
+<td>S-10 to S-12</td>
+<td>market: M-25</td>
+</tr>
+<tr>
+<td>T-12</td>
+<td>Campaign landing</td>
+<td>detail</td>
+<td>one campaign message; off the hierarchy, noindex</td>
+<td>M-01, M-04, M-27, M-05, M-02</td>
+<td>M-09, M-07</td>
+<td>L-01</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-13</td>
+<td>Help centre home</td>
+<td>index</td>
+<td>send each audience to its section</td>
+<td>M-01, M-04, M-18, M-17, M-02</td>
+<td>none</td>
+<td>H-0</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-14</td>
+<td>Help search results</td>
+<td>index</td>
+<td>show results for a query; noindex</td>
+<td>M-01, M-04, M-18, M-26, M-02</td>
+<td>none</td>
+<td>H-0.1</td>
+<td>language; synonyms per language (DD-IA3)</td>
+</tr>
+<tr>
+<td>T-15</td>
+<td>Help section</td>
+<td>section</td>
+<td>list an audience's topics or a topic's articles</td>
+<td>M-01, M-03, M-04, M-18, M-19, M-02</td>
+<td>none</td>
+<td>H-1, H-1.1 to H-1.3, H-2, H-2.1 to H-2.3</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-16</td>
+<td>Help article</td>
+<td>detail</td>
+<td>answer one question for one audience</td>
+<td>M-01, M-03, M-04, M-18, M-20, M-21, M-13, M-23, M-02</td>
+<td>M-22 (required when cross-listed)</td>
+<td>every H-x.y.z article</td>
+<td>language only</td>
+</tr>
+<tr>
+<td>T-17</td>
+<td>Page not found</td>
+<td>none</td>
+<td>tell a visitor the address is gone and give the routes on</td>
+<td>M-01, M-04, M-02</td>
+<td>M-18</td>
+<td>no inventory row: shown for any address with no page and no redirect</td>
+<td>language only</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="viz viz-matrix viz-fit"><div class="viz-scroll" style="--stick:167.5px"><svg viewBox="0 0 662.5 622" width="662.5" height="622" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-fit"><text class="viz-colhead" x="195.5" y="15.6" text-anchor="middle">Header</text><text class="viz-colhead" x="253.5" y="15.6" text-anchor="middle">Heading</text><text class="viz-colhead" x="323.5" y="15.6" text-anchor="middle">Breadcrumb</text><text class="viz-colhead" x="391.5" y="15.6" text-anchor="middle">Demo</text><text class="viz-colhead" x="466.0" y="15.6" text-anchor="middle">Related help</text><text class="viz-colhead" x="555.5" y="15.6" text-anchor="middle">Help search</text><text class="viz-colhead" x="626.5" y="15.6" text-anchor="middle">Footer</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">T-01 Home</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="34.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="51.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="34.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="51.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="285.5" y="34.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="365.5" y="34.0" width="52.0" height="28.0"/><text class="viz-mark" x="391.5" y="51.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="421.5" y="34.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="514.5" y="34.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="34.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="51.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">T-02 Section landing</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="66.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="83.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="66.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="83.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="66.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="83.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="365.5" y="66.0" width="52.0" height="28.0"/><text class="viz-mark" x="391.5" y="83.8" text-anchor="middle">opt</text></g><g data-box=""><rect class="viz-track" x="421.5" y="66.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="514.5" y="66.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="66.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="83.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">T-03 Product page</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="98.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="115.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="98.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="115.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="98.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="115.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="365.5" y="98.0" width="52.0" height="28.0"/><text class="viz-mark" x="391.5" y="115.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="421.5" y="98.0" width="89.0" height="28.0"/><text class="viz-mark" x="466.0" y="115.8" text-anchor="middle">opt</text></g><g data-box=""><rect class="viz-track" x="514.5" y="98.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="98.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="115.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">T-04 Benefit category</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="130.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="147.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="130.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="147.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="130.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="147.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="365.5" y="130.0" width="52.0" height="28.0"/><text class="viz-mark" x="391.5" y="147.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="421.5" y="130.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="514.5" y="130.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="130.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="147.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="180.3" text-anchor="start">T-05 Pricing</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="162.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="179.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="162.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="179.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="162.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="179.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="365.5" y="162.0" width="52.0" height="28.0"/><text class="viz-mark" x="391.5" y="179.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="421.5" y="162.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="514.5" y="162.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="162.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="179.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="212.3" text-anchor="start">T-06 Standard page</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="194.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="211.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="194.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="211.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="194.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="211.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="365.5" y="194.0" width="52.0" height="28.0"/><text class="viz-mark" x="391.5" y="211.8" text-anchor="middle">opt</text></g><g data-box=""><rect class="viz-track" x="421.5" y="194.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="514.5" y="194.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="194.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="211.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="244.3" text-anchor="start">T-07 Story index</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="226.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="243.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="226.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="243.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="226.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="243.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="365.5" y="226.0" width="52.0" height="28.0"/><text class="viz-mark" x="391.5" y="243.8" text-anchor="middle">opt</text></g><g data-box=""><rect class="viz-track" x="421.5" y="226.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="514.5" y="226.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="226.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="243.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="276.3" text-anchor="start">T-08 Customer story</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="258.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="275.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="258.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="275.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="258.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="275.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="365.5" y="258.0" width="52.0" height="28.0"/><text class="viz-mark" x="391.5" y="275.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="421.5" y="258.0" width="89.0" height="28.0"/><text class="viz-mark" x="466.0" y="275.8" text-anchor="middle">opt</text></g><g data-box=""><rect class="viz-track" x="514.5" y="258.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="258.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="275.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="308.3" text-anchor="start">T-09 Form</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="290.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="307.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="290.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="307.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="290.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="307.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="365.5" y="290.0" width="52.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="421.5" y="290.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="514.5" y="290.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="290.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="307.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="340.3" text-anchor="start">T-10 Confirmation</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="322.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="339.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="322.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="339.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="285.5" y="322.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="365.5" y="322.0" width="52.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="421.5" y="322.0" width="89.0" height="28.0"/><text class="viz-mark" x="466.0" y="339.8" text-anchor="middle">opt</text></g><g data-box=""><rect class="viz-track" x="514.5" y="322.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="322.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="339.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="372.3" text-anchor="start">T-11 Legal</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="354.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="371.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="354.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="371.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="354.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="371.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="365.5" y="354.0" width="52.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="421.5" y="354.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="514.5" y="354.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="354.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="371.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="404.3" text-anchor="start">T-12 Campaign landing</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="386.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="403.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="386.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="403.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="285.5" y="386.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="365.5" y="386.0" width="52.0" height="28.0"/><text class="viz-mark" x="391.5" y="403.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="421.5" y="386.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="514.5" y="386.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="386.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="403.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="436.3" text-anchor="start">T-13 Help centre home</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="418.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="435.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="418.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="435.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="285.5" y="418.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="365.5" y="418.0" width="52.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="421.5" y="418.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="514.5" y="418.0" width="82.0" height="28.0"/><text class="viz-mark" x="555.5" y="435.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="418.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="435.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="468.3" text-anchor="start">T-14 Help search results</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="450.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="467.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="450.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="467.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="285.5" y="450.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="365.5" y="450.0" width="52.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="421.5" y="450.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="514.5" y="450.0" width="82.0" height="28.0"/><text class="viz-mark" x="555.5" y="467.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="450.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="467.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="500.3" text-anchor="start">T-15 Help section</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="482.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="499.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="482.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="499.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="482.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="499.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="365.5" y="482.0" width="52.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="421.5" y="482.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="514.5" y="482.0" width="82.0" height="28.0"/><text class="viz-mark" x="555.5" y="499.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="482.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="499.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="532.3" text-anchor="start">T-16 Help article</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="514.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="531.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="514.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="531.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="285.5" y="514.0" width="76.0" height="28.0"/><text class="viz-mark" x="323.5" y="531.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="365.5" y="514.0" width="52.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="421.5" y="514.0" width="89.0" height="28.0"/><text class="viz-mark" x="466.0" y="531.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="514.5" y="514.0" width="82.0" height="28.0"/><text class="viz-mark" x="555.5" y="531.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="514.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="531.8" text-anchor="middle">req</text></g><text class="viz-label" x="8.0" y="564.3" text-anchor="start">T-17 Page not found</text><g data-box=""><rect class="viz-band viz-t1" x="169.5" y="546.0" width="52.0" height="28.0"/><text class="viz-mark" x="195.5" y="563.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="225.5" y="546.0" width="56.0" height="28.0"/><text class="viz-mark" x="253.5" y="563.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-track" x="285.5" y="546.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="365.5" y="546.0" width="52.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="421.5" y="546.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="514.5" y="546.0" width="82.0" height="28.0"/><text class="viz-mark" x="555.5" y="563.8" text-anchor="middle">opt</text></g><g data-box=""><rect class="viz-band viz-t1" x="600.5" y="546.0" width="52.0" height="28.0"/><text class="viz-mark" x="626.5" y="563.8" text-anchor="middle">req</text></g><g data-box=""><rect class="viz-band viz-t1" x="8.0" y="590.0" width="35.3" height="24"/><text class="viz-mark" x="25.6" y="605.8" text-anchor="middle">req</text></g><text class="viz-attr" x="51.3" y="606.0" text-anchor="start">required on every page the template builds</text><g data-box=""><rect class="viz-band viz-t1" x="299.5" y="590.0" width="35.3" height="24"/><text class="viz-mark" x="317.1" y="605.8" text-anchor="middle">opt</text></g><text class="viz-attr" x="342.7" y="606.0" text-anchor="start">optional</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 167.5 622" width="167.5" height="622" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="167.5" height="578"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">T-01 Home</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">T-02 Section landing</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">T-03 Product page</text><text class="viz-label" x="8.0" y="148.3" text-anchor="start">T-04 Benefit category</text><text class="viz-label" x="8.0" y="180.3" text-anchor="start">T-05 Pricing</text><text class="viz-label" x="8.0" y="212.3" text-anchor="start">T-06 Standard page</text><text class="viz-label" x="8.0" y="244.3" text-anchor="start">T-07 Story index</text><text class="viz-label" x="8.0" y="276.3" text-anchor="start">T-08 Customer story</text><text class="viz-label" x="8.0" y="308.3" text-anchor="start">T-09 Form</text><text class="viz-label" x="8.0" y="340.3" text-anchor="start">T-10 Confirmation</text><text class="viz-label" x="8.0" y="372.3" text-anchor="start">T-11 Legal</text><text class="viz-label" x="8.0" y="404.3" text-anchor="start">T-12 Campaign landing</text><text class="viz-label" x="8.0" y="436.3" text-anchor="start">T-13 Help centre home</text><text class="viz-label" x="8.0" y="468.3" text-anchor="start">T-14 Help search results</text><text class="viz-label" x="8.0" y="500.3" text-anchor="start">T-15 Help section</text><text class="viz-label" x="8.0" y="532.3" text-anchor="start">T-16 Help article</text><text class="viz-label" x="8.0" y="564.3" text-anchor="start">T-17 Page not found</text></svg></div></div><figcaption>Template catalogue: perqo.com's seventeen templates against the seven modules most of them share, required or optional; supports the decision on what engineering builds once and what each page must carry (Deliverable C). Templates as page-level structure from Frost, Atomic Design, 2016, ch. 2; the header, heading and breadcrumb on every arrival page from Baker, Every Page Is Page One, 2013, and IA3, A1 and A3; Book a demo and the pricing modules from Fessenden, NN/g, 2019. Rows tone 1, perqo.com. Perqo is fictional; every mark from the table C.2.</figcaption></figure>
+<p><strong>What the catalogue hands on.</strong> Engineering builds seventeen templates and twenty-seven modules for the redesigned site's 52 rows. Content fills pages by inventory row and template. DD-IA3 takes the localisation column: the modules marked by market (M-10, M-11, M-24, M-25) need a decision per market, the rest a translation. IA8 takes the external routes, IA10 the owners. A new page goes through the decision tree in section 5.2 and enters the inventory with an ID, a template and an owner before it enters the sitemap.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia5-7" data-step="7"><span>Previous · 8 of 10</span><b>B · The perqo.com sitemap</b></a><a class="snext" href="#read-ia5-10" data-step="9"><span>Next · 10 of 10</span><b>Perqo facts set by this unit</b></a></nav></section><section class="sec" data-step="9"><h2 id="read-ia5-10" class="band"><span class="bn" aria-hidden="true">10</span><span class="bh"><span class="bt">Perqo facts set by this unit</span></span></h2>
+<p>Every fact below is a course convention (Perqo, fictional), never evidence about the world. Each keeps every registered fact; none renames an IA1 to IA4 label.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Set in</th>
+<th>Left free</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>perqo.com's top level is by topic (Product, Pricing, Customers, Help centre), with Book a demo and Sign in as task routes in the header; audience is used only inside the Help centre and on For merchants</td>
+<td>section 2.4</td>
+<td>the navigation components and header design</td>
+</tr>
+<tr>
+<td>For merchants (S-7), a footer page owned by the partnerships team</td>
+<td>section 2.5; Deliverable A</td>
+<td>its content; the merchant side's own surface</td>
+</tr>
+<tr>
+<td>Product holds Perqo Admin, Perqo app, Perqo card (IA2), plus a Benefits section with one page per F-CAT top-level value (S-1.4.1 to S-1.4.4, owned by the content team) and Security (S-1.5, owned by Product)</td>
+<td>Deliverables A and B</td>
+<td>category pages for narrower terms (none: R7 keeps two levels; no page per narrower term is set)</td>
+</tr>
+<tr>
+<td>A category page's URL carries its identifier, then its preferred term: /product/benefits/cat-hea/health; a rename under R9 redirects the old address</td>
+<td>section 5.1; Deliverable B, B.3</td>
+<td>the URL form in other languages (DD-IA3)</td>
+</tr>
+<tr>
+<td>perqo.com page IDs: S- for site pages, L- for campaign pages, H- for the Help centre (IA2's scheme kept); the full inventory of 57 rows, 42 pages and files today and 52 after the redesign, with the type, template, audience, owner, F-CAT tags and status of each</td>
+<td>Deliverable A</td>
+<td>traffic and last-modified dates for all but IA2's rows</td>
+</tr>
+<tr>
+<td>Owners on perqo.com: Marketing, Sales, Support, Product, Partnerships, Legal, Content team</td>
+<td>Deliverable A</td>
+<td>named people (none may be named)</td>
+</tr>
+<tr>
+<td>Audit findings: S-1.2 says "allowance"; a Features page (S-1.6) and a brochure PDF (S-1.7) duplicate Product; Pricing says "Contact us for pricing"; the home page's opening line says neither what Perqo is nor who buys it; Book a demo asks for a phone number sales does not use; customer story S-3.4 is about a former client; campaign page L-02 outlived its campaign</td>
+<td>section 1.3; Deliverable A</td>
+<td>the pages' copy</td>
+</tr>
+<tr>
+<td>Four customer stories today (a software consultancy, a logistics group, a design studio, a retail chain), three after the audit; each tagged with one F-CAT value</td>
+<td>Deliverable A</td>
+<td>client names; the stories' content</td>
+</tr>
+<tr>
+<td>Perqo has two plans, each with a published price per employee per month</td>
+<td>section 5.4</td>
+<td>plan names and amounts</td>
+</tr>
+<tr>
+<td>Perqo has no self-serve sign-up and no free trial; a client starts after a contract</td>
+<td>section 5.5</td>
+<td>the contract's terms</td>
+</tr>
+<tr>
+<td>Get the Perqo app (S-6), owned by support, holds the download links; employees join from HR's invitation and do not sign in on perqo.com</td>
+<td>section 5.5; Deliverable A</td>
+<td>the app stores named</td>
+</tr>
+<tr>
+<td>Assumed, untested: an employee may press Sign in and land on Admin's sign-in screen; proposed for IA7: a line there pointing employees to Get the Perqo app</td>
+<td>section 5.5</td>
+<td>the test's result; IA7's decision</td>
+</tr>
+<tr>
+<td>perqo.com is published in English only today</td>
+<td>section 5.3</td>
+<td>which markets and languages come next (DD-IA3)</td>
+</tr>
+<tr>
+<td>Campaign pages live under /lp/, are noindex, appear in no navigation, use T-12, carry an owner and an end date, and redirect at the end; L-01 "Learning budgets for engineering teams" is live</td>
+<td>section 5.2; Deliverable A</td>
+<td>campaign dates and channels</td>
+</tr>
+<tr>
+<td>Help centre additions: Approvals topic under For HR and finance teams (H-1.3, H-1.3.1); Card topic under For employees (H-2.3, two articles); articles H-1.2.5 (replaces the PDF, listed under both audiences), H-2.1.3, H-2.1.4 (tagged CAT-HEA-FIT, answers "gym"), H-2.2.2; Balance gets its own topic page at /help/employees/balance and H-2.2.1 moves with a redirect; H-0.1 search results page, noindex</td>
+<td>Deliverable A</td>
+<td>the articles' text</td>
+</tr>
+<tr>
+<td>New attributes: a help article (O-14) and a customer story (O-15) carry F-CAT tags</td>
+<td>section 3.3</td>
+<td>how many tags an item may carry</td>
+</tr>
+<tr>
+<td>The template catalogue: seventeen templates, T-01 to T-17, and twenty-seven modules, M-01 to M-27, with the required and optional modules of each; the Customers index filters stories by F-CAT; help articles carry a "Was this helpful" question sent to the owner</td>
+<td>Deliverable C</td>
+<td>visual design; module layout</td>
+</tr>
+<tr>
+<td>New status value <em>new</em> in inventories, beside keep, update and remove</td>
+<td>section 1.1</td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia5-8" data-step="8"><span>Previous · 9 of 10</span><b>C · The perqo.com page-template catalogue</b></a><a class="snext send" href="#read-ia5-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-ia5-sources"><summary><span class="at" id="read-ia5-9">Sources</span><span class="an">32</span></summary><div class="accb">
+<ul>
+<li>Baker, Mark. <em>Every Page Is Page One: Topic-Based Writing for Technical Communication and the Web</em>. XML Press, 2013. Book site at <a target="_blank" rel="noopener" href="https://everypageispageone.com/the-book">everypageispageone.com/the-book</a> (practice).</li>
+<li>Berners-Lee, Tim. "Cool URIs Don't Change". W3C, 1998 (W3C style guidance). <a target="_blank" rel="noopener" href="https://w3.org/Provider/Style/URI">w3.org/Provider/Style/URI</a></li>
+<li>Brown, Dan M. <em>Communicating Design: Developing Web Site Documentation for Design and Planning</em>. 2nd ed. New Riders, 2011. Ch. 5.</li>
+<li>Budiu, Raluca. "Information Scent: How Users Decide Where to Go Next". Nielsen Norman Group, 2 February 2020. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/information-scent/">nngroup.com/articles/information-scent</a></li>
+<li>Cardello, Jen. "The Difference Between Information Architecture (IA) and Navigation". Nielsen Norman Group, 22 June 2014. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/ia-vs-navigation/">nngroup.com/articles/ia-vs-navigation</a></li>
+<li>European Commission. "Reasons for building a task-based information architecture". Europa Web Guide, undated (institutional guidance). <a target="_blank" rel="noopener" href="https://commission.europa.eu/resources-partners/europa-web-guide/planning-your-web-presence/architecture-and-navigation/task-based-information-architecture_en">commission.europa.eu</a></li>
+<li>Farrell, Susan. "Search-Log Analysis: The Most Overlooked Opportunity in Web UX Research". Nielsen Norman Group, 30 July 2017. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/search-log-analysis/">nngroup.com/articles/search-log-analysis</a></li>
+<li>Fessenden, Therese. "What B2B Designers Can Learn from B2C About Building Trust". Nielsen Norman Group, 1 September 2019. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/b2b-trust-from-b2c/">nngroup.com/articles/b2b-trust-from-b2c</a></li>
+<li>Frost, Brad. <em>Atomic Design</em>. 2016. Ch. 2, "Atomic Design Methodology". Outline at <a target="_blank" rel="noopener" href="https://atomicdesign.bradfrost.com/outline">atomicdesign.bradfrost.com/outline</a></li>
+<li>Furnas, George W., Thomas K. Landauer, Louis M. Gomez and Susan T. Dumais. "The Vocabulary Problem in Human-System Communication". <em>Communications of the ACM</em> 30, no. 11 (1987): 964 to 971. <a target="_blank" rel="noopener" href="https://cacm.acm.org/research/the-vocabulary-problem-in-human-system-communication">cacm.acm.org</a></li>
+<li>Garrett, Jesse James. <em>Visual Vocabulary Quick Reference</em>. Undated one-page PDF. <a target="_blank" rel="noopener" href="http://www.jjg.net/ia/visvocab/files/garrett_ia_quickref.pdf">jjg.net/ia/visvocab/files/garrett_ia_quickref.pdf</a></li>
+<li>Google Search Central. "Block Search Indexing with noindex". Page updated 10 December 2025 (vendor documentation, checked 3 November 2026). <a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/crawling-indexing/block-indexing">developers.google.com/search/docs/crawling-indexing/block-indexing</a></li>
+<li>Google Search Central. "Localized Versions of your Pages". Page updated 21 September 2026 (vendor documentation, checked 3 November 2026). <a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/specialty/international/localized-versions">developers.google.com/search/docs/specialty/international/localized-versions</a></li>
+<li>Google Search Central. "Redirects and Google Search". Page updated 14 April 2026 (vendor documentation, checked 3 November 2026). <a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/crawling-indexing/301-redirects">developers.google.com/search/docs/crawling-indexing/301-redirects</a></li>
+<li>Google Search Central. "URL Structure Best Practices for Google Search". Page updated 21 October 2026 (vendor documentation, checked 3 November 2026). <a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/crawling-indexing/url-structure">developers.google.com/search/docs/crawling-indexing/url-structure</a></li>
+<li>Halvorson, Kristina, and Melissa Rach. <em>Content Strategy for the Web</em>. 2nd ed. New Riders, 2012. Chs 5, "Audit", and 6, "Analysis"; contents and index in the publisher's sample at <a target="_blank" rel="noopener" href="https://ptgmedia.pearsoncmg.com/images/9780321808301/samplepages/0321808304.pdf">ptgmedia.pearsoncmg.com</a>.</li>
+<li>Hearst, Marti A. "Clustering versus Faceted Categories for Information Exploration". <em>Communications of the ACM</em> 49, no. 4 (2006): 59 to 61. <a target="_blank" rel="noopener" href="https://flamenco.ischool.berkeley.edu/papers/cacm06.pdf">flamenco.ischool.berkeley.edu/papers/cacm06.pdf</a></li>
+<li>Kaley, Anna. "Content Inventory and Auditing 101". Nielsen Norman Group, 27 September 2020. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/content-audits/">nngroup.com/articles/content-audits</a></li>
+<li>Krug, Steve. <em>Don't Make Me Think, Revisited: A Common Sense Approach to Web Usability</em>. 3rd ed. New Riders, 2014. Ch. 7, "The Big Bang Theory of Web Design". Contents at <a target="_blank" rel="noopener" href="https://oreilly.com/library/view/dont-make-me/9780133597271">oreilly.com</a> (practice).</li>
+<li>Laubheimer, Page. "3 Common IA Mistakes (that Are All Due to Low Information Scent)". Nielsen Norman Group, 16 April 2023. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/3-ia-mistakes/">nngroup.com/articles/3-ia-mistakes</a></li>
+<li>Loranger, Hoa. "State the Price to Give B2B Sites a Competitive Advantage". Nielsen Norman Group, 1 December 2013. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/show-price/">nngroup.com/articles/show-price</a></li>
+<li>McGovern, Gerry. "What Really Matters: Focusing on Top Tasks". A List Apart, April 2015; republished by Center Centre, 20 January 2016. <a target="_blank" rel="noopener" href="https://articles.centercentre.com/?p=877">articles.centercentre.com/?p=877</a> (practice).</li>
+<li>Nielsen, Jakob. "Information Foraging: Why Google Makes People Leave Your Site Faster". Nielsen Norman Group, 29 June 2003. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/information-foraging-leave-site/">nngroup.com/articles/information-foraging-leave-site</a></li>
+<li>Nielsen, Jakob. "Use Old Words When Writing for Findability". Nielsen Norman Group, 27 August 2006. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/web-writing-use-search-keywords/">nngroup.com/articles/web-writing-use-search-keywords</a></li>
+<li>Nielsen, Jakob. "First 2 Words: A Signal for the Scanning Eye". Nielsen Norman Group, 6 April 2009. <a target="_blank" rel="noopener" href="https://nngroup.com/articles/first-2-words-a-signal-for-scanning">nngroup.com/articles/first-2-words-a-signal-for-scanning</a></li>
+<li>Richardson, Cath. "'Hey, you there': the trouble with audience-based navigation". Inside GOV.UK blog, 18 July 2014. <a target="_blank" rel="noopener" href="https://insidegovuk.blog.gov.uk/2014/07/18/hey-you-there-the-trouble-with-audience-based-navigation/">insidegovuk.blog.gov.uk</a> (a government team's account; practice).</li>
+<li>Rosenfeld, Louis, Peter Morville and Jorge Arango. <em>Information Architecture: For the Web and Beyond</em>. 4th ed. O'Reilly, 2015. Chs 6 and 13. Contents at <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/information-architecture-4th/9781491913529/">oreilly.com</a>.</li>
+<li>Sherwin, Katie. "Audience-Based Navigation: 5 Reasons to Avoid It". Nielsen Norman Group, 7 September 2015. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/audience-based-navigation/">nngroup.com/articles/audience-based-navigation</a></li>
+<li>Spencer, Donna. <em>A Practical Guide to Information Architecture</em>. 2nd ed. UX Mastery, 2014. Part 3, chs 11 to 15. Publisher's announcement at <a target="_blank" rel="noopener" href="https://uxmastery.com/coming-soon-a-practical-guide-to-information-architecture-second-edition/">uxmastery.com</a>.</li>
+<li>Tankala, Samhita. "Information Architecture vs. Sitemaps". Nielsen Norman Group, 3 September 2023. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/information-architecture-sitemaps/">nngroup.com/articles/information-architecture-sitemaps</a></li>
+<li>Whitenton, Kathryn. "Flat vs. Deep Website Hierarchies". Nielsen Norman Group, 10 November 2013. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/flat-vs-deep-hierarchy/">nngroup.com/articles/flat-vs-deep-hierarchy</a></li>
+<li>Cited through the filed units, for claims made there: Larson and Czerwinski 1998; Zaphiris 2000 (IA4, Sources); Sitemaps.org protocol (IA2, Sources).</li>
+</ul>
+</div></details><details class="acc note" id="read-ia5-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>The first four units built the tools: IA1 the surfaces map and the shared vocabulary, IA2 the artefact catalogue and the notation, IA3 the evidence a structure is judged by and the labelling checklist, IA4 the organisation schemes, the object map and the benefits taxonomy. This unit spends them on the simplest of Perqo's three surfaces, perqo.com, the one IA1 called a shallow website hierarchy (IA1, section 5). It inventories and audits the site, chooses its structure, and hands three artefacts to the people who build and fill it: the content inventory, the sitemap and the page-template catalogue. Every figure uses IA2's notation (IA2, section 5 and the notation sheet); on a figure of one surface every box takes that surface's tone, so every perqo.com box is tone 1.</p>
+<p>The filed units handed this one five questions by name. Where each is answered:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Handed on by</th>
+<th>The question</th>
+<th>Answered in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IA1, Deliverable (surfaces map); IA2, section 5.3</td>
+<td>perqo.com's top-level areas, Book a demo among the global routes, and what crosses to Admin and the app</td>
+<td>sections 2.4 and 5.5; Deliverable B</td>
+</tr>
+<tr>
+<td>IA2, Deliverable (decision table); IA2, section 5.3</td>
+<td>the inventory at F2 before any redesign and at F3 as the migration list; the sitemap at F1, F2 and F3; IA2's inventory and sitemap slices extended</td>
+<td>section 1; section 6; Deliverables A and B</td>
+</tr>
+<tr>
+<td>IA3, Deliverable (checklist)</td>
+<td>IA5's labels judged by the labelling checklist</td>
+<td>Deliverable B, B.2</td>
+</tr>
+<tr>
+<td>IA4, section 5 (addressing rules)</td>
+<td>one organisation system traced through navigation, filters, search and URLs on perqo.com</td>
+<td>section 5.1; Deliverables B and C</td>
+</tr>
+<tr>
+<td>IA4, Deliverable A (object map) and B ("What IA5 and DD-IA3 take")</td>
+<td>inventory and templates built on IA4's objects and the benefits taxonomy's identifiers, Help centre articles tagged with F-CAT values, nothing renamed except under R9</td>
+<td>section 3.3; Deliverables A and C</td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="acc made" id="read-ia5-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>Unit IA5, written 3 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 4, the figure kinds, the Perqo register and IA1 to IA4 (P31), search off (used only to verify editions, chapters, dates, quotations and URLs); fresh check the same day by a separate Fable 5.1 agent that had not seen the writing: fix, 2 errors (one attribution reversed, one sentence contradicting its own deliverable), 3 should-fix, 5 minor, all applied; figure 4 passed its first re-check, figure 6 fixed twice and passed on its third check. The content inventory and audit as two passes (Kaley, NN/g; Halvorson and Rach; Spencer) and the fourteen fields to record per item; audience-, task- and topic-based structures for a B2B software site, with the evidence against audience navigation (Sherwin, NN/g; GOV.UK) and McGovern's top tasks, and the topic choice for perqo.com; page types, pages and templates (Brown; Frost); depth, breadth and the home-page and landing-page problems (Krug; Baker); the constraints search, campaigns, localisation, the pricing page and the sign-in boundary bring, and how the sitemap records each (Google's documentation, dated; Loranger and Fessenden, NN/g); how marketing, engineering and a content writer read a sitemap and the fidelity each needs. Seven figures in the course notation. Deliverables: the perqo.com content inventory (57 rows across site, campaign and Help centre pages, with type, template, audience, owner, F-CAT tags and status; 42 on the site today, 52 after the redesign), the structural sitemap at F3 with an ID and template in every note, and the page-template catalogue (seventeen templates, twenty-seven modules, required and optional). Known gaps: Halvorson and Rach's chapters and Spencer's part 3 seen at their contents; Krug's chapter 7 from knowledge of the book; Baker's quoted line unverified at his site; the Google pages' 'updated' dates as printed on 3 Nov 2026. About 6,500 words of prose, within the brief's guide; the deliverables' tables make the file about 13,600 words.</p><h3 id="read-ia5-11">Unsure list</h3>
+<ul>
+<li>Halvorson and Rach 2012, chs 5 and 6: chapter titles and the audit field names are from the publisher's sample (contents and index); the chapters' text was not read.</li>
+<li>Spencer 2014: chapter titles and order from the edition's front matter in an excerpt; the content of chs 11 to 15 was not seen, so no claim is made about what they recommend beyond their order.</li>
+<li>Krug 2014, ch. 7: the chapter title is checked from the contents; that it treats the home page as the page that must say what the site is and is for is from knowledge of the book, not re-read.</li>
+<li>Baker 2013: the year is from the publisher's announcement URL in a search result, not from the book; the quoted line is from the book's own site.</li>
+<li>Frost 2016: the template and page definitions are from the book's online outline; the chapter number for them (ch. 2) is inferred from the outline's chapter list.</li>
+<li>McGovern: the A List Apart original's date (April 2015) is as the Center Centre republication states it; the A List Apart page was not opened.</li>
+<li>European Commission web guide: undated page; the 2014 adoption year is the page's own statement.</li>
+<li>Loranger 2013: reports NN/g usability-study observations without sample sizes; the claim that business customers rank pricing as the most needed information is NN/g's, with no study figure given.</li>
+<li>NN/g "Homepage design principles" could not be read (rate-limited); nothing from it is cited.</li>
+<li>Google Search Central pages: "updated" dates as printed on each page when fetched on 3 November 2026; they change.</li>
+</ul><h3>Fresh check</h3><p>Fresh check 2026-11-03 (Fable 5.1; no Fable 5.1 fresh check is owed): fix · 2 errors, 3 should-fix, 5 minor; all applied; figure 4 fixed from the check and passed re-check 1; figure 6 fixed from the check, from re-check 1 and from re-check 2, and passed on re-check 3, its fourth check; figures 1, 2, 3, 5 and 7 passed; report <code>audits/ux/fresh-check-IA5.md</code>.</p><h3>The brief</h3><div class="pbox"><pre>Aim: After this unit the reader can inventory a marketing site, choose its structure, and hand marketing, engineering and content a sitemap and template catalogue each can read.
+Takes: IA1&#x27;s surfaces map; IA2&#x27;s inventory and sitemap entries; IA3&#x27;s labelling; IA4&#x27;s schemes.
+Gives: the perqo.com sitemap and templates (IA8&#x27;s surface layer; IA10&#x27;s content touchpoint; DD-IA3&#x27;s localisation).
+
+Unit IA5, Level 1: the sales and product website. Cover: how to run a content inventory and audit (Halvorson and Rach; Spencer) and what to record per item; audience-based, task-based and topic-based structures for a marketing site and the case for each with a B2B software product; page types versus pages, and templates as the unit of IA on a site; depth, breadth and the home-page and landing-page problem; the constraints other functions bring (search-engine structure, campaign landing pages, localisation, the pricing page, the sign-up and log-in boundary between the site and the product) and how the sitemap records them; how a sitemap is read by marketing, by engineering and by a content writer, and the fidelity each needs. Figures: the inventory structure; three candidate structures for perqo.com compared; the chosen sitemap; the template catalogue. Deliverable: the perqo.com content inventory (every page, with type, audience, owner, status; Perqo facts invented and labelled), the sitemap in the course notation, and the page-template catalogue (each template, its purpose, its required and optional modules).</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>
