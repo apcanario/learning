@@ -279,3 +279,88 @@ DD-B2, verdict fix, 3 errors, 4 should-fix, 5 minor
 - **Minors:** the last status-opened chat (17:43, its opener a "what's next?") applied as the checker read it; the efforts in change 2 flagged "by analogy with B2's rows; untested" applied; the memory-call count (5 found, 6 claimed) left as the unsure list already states its limit; the two minors without a Current needed nothing.
 
 The verdict stands as fix: three errors, one of them in part.
+
+## Figure re-check 1 (3 Nov 2026, a separate Opus 5.5 agent given the unit without its figures, the captions and the frames sheets of figures 2 and 3 at phone, tablet and desktop, dark and light; report verbatim)
+
+## DD-B2 figure re-check: figures 2 and 3 (A-5, Opus 5.5, isolated context)
+
+I opened only the files in /tmp/claude-0/a5/recheck-DD-B2/. I read all 12 sheets and also cut the phone sheets into frames. I made scratch crops (crop-*.png) in that folder and edited nothing.
+
+### Figure 2: PASS
+
+**Kind and section.** A stacked bar chart in §2, placed after the crosstab table and its note. Stacked bars suit a breakdown of each task type's chats by model.
+
+**Labels traced to the text:**
+- The task names come from the §2 table rows: `Unit writing (15)`, `Infrastructure (15)`, `Figure passes (7)`, `Audits (6)`, `Status (6)`, `Syllabus (2)`, `History writing (2)`.
+- The series names come from the table header `| Task type | Opus 5.5 | Fable 5.1 | Switched | Median turns |`.
+- The series is called "Switched" because of the note line `a chat with trailers of both models counts as switched`.
+
+**Values against the table.** Every segment matches its table row:
+
+| Task type | Opus | Fable | Switched | Total |
+|---|---|---|---|---|
+| Unit writing | 14 | 0 | 1 | 15 |
+| Infrastructure | 5 | 8 | 2 | 15 |
+| Figure passes | 6 | 1 | 0 | 7 |
+| Audits | 1 | 5 | 0 | 6 |
+| Status | 3 | 2 | 1 | 6 |
+| Syllabus | 0 | 2 | 0 | 2 |
+| History writing | 2 | 0 | 0 | 2 |
+
+There is no "Not recorded" series left in the legend or the bars.
+
+**Caption.** It says what the chart shows, names §2, and names the source: the tally over 53 chats, with the model read from commit trailers. It meets the rule.
+
+**Drawing:**
+- **Desktop and tablet, dark and light:** one frame each. Everything is whole, legible and not overlapping.
+- **Phone, dark and light:** four frames, scrolled from 0 to 372 px. Each segment value and each total is whole in at least one frame: "14" in frame 2, Infrastructure's "2" in frame 3, both "15" totals in frame 4. The fades at the frame edges are the scroll cue, not clipping.
+- Light mode has white labels on teal and brown; dark mode has dark labels on lighter fills. Both are legible.
+
+### Figure 3: FIX (should-fix)
+
+**Kind and section.** A comparison bar chart in §4. It is a count per day, so the kind fits.
+
+**Values traced to the text.** All five values are in §4: `Eighteen of the 22 began on 28 October; one began on 29 October, two on 1 November and one on 2 November, none on 30 October.` The figure draws 28 Oct 18, 29 Oct 1, 30 Oct 0, 1 Nov 2, 2 Nov 1. These add up to 22, which matches `Twenty-two chats ran on Fable 5.1 in whole or part`.
+
+**Caption.** It says what the chart shows, names §4, and names the source and the 22-of-53 base. It meets the rule.
+
+**Drawing.** Every width and theme is whole, legible and has no overlap. On phone, the 28 Oct value "18" appears only in frame 4, at full scroll. That is inherent to the scroll design and not a defect.
+
+**What is wrong.** The chart steps through days but leaves out 31 October: it goes 30 Oct (0) straight to 1 Nov (2). §1 sets the window as six days, 28 October to 2 November. 31 October is a day in that window, and its count is 0 (22 minus 18, 1, 2 and 1). Showing 30 Oct at zero but dropping 31 Oct makes a gap a reader takes for continuity. The text doesn't state the 31 October zero, so the text has to change too.
+
+**Fix, in two parts:**
+
+1. **Figure data.** Insert a row between the "30 Oct" entry and the "1 Nov" entry. I have not seen the figure's JSON, so the key names below are assumed; copy whatever keys the neighbouring entries use: `{"label": "31 Oct", "value": 0}`
+2. **§4 text.**
+   - Current: `none on 30 October.`
+   - Replacement: `none on 30 or 31 October.`
+
+The caption needs no change.
+
+### Do the §2 table, figure 2's bars, the §4 prose and figure 3 agree?
+
+Yes.
+- **Table and §2 prose:** the column totals are Opus 31, Fable 18, Switched 4, which add to 53. They match `31 show Opus 5.5, 18 Fable 5.1 and four both`.
+- **Table and figure 2:** the bars match the table row by row and total by total.
+- **§4's 22 Fable chats:** 18 Fable-only plus 4 switched make 22. The split `Five were audits or fresh checks; the other seventeen were infrastructure (10, counting two switches), three status questions (one a switch), two syllabus chats, a figure pass and a unit-writing orchestrator (a switch)` matches the table's Fable and Switched columns (8+2, 2+1, 2, 1, 0+1, 5).
+- **Other §4 and Deliverable counts:** `Fable in 8 of 15, Opus in 5, both in 2`, `five of six ran on Fable`, `14 of 15 on Opus; the fifteenth (chat 52)`, and Deliverable changes 1 to 3 all agree with the table.
+- **Figure 3:** its five values add to 22, and 18 of them are on 28 Oct, as change 1 says.
+
+### Findings on the unit's text
+
+[error] §2
+Current: `|---|---|---|---|---|---|`
+Problem: The divider row under the model table's header has 6 columns, but the header and every data row have 5. It looks left over from the removed "Not recorded" column. Under GitHub-style markdown rules, a header and divider whose column counts differ are not read as a table, so the crosstab may show as plain text with pipes.
+Fix: `|---|---|---|---|---|`
+
+[should-fix] §4 (same fix as figure 3)
+Current: `none on 30 October.`
+Problem: The 31 October zero is implied by the arithmetic but never stated, and figure 3 needs it stated.
+Fix: `none on 30 or 31 October.`
+
+[minor] §3
+Current: `**Model and effort never stated as effort.**`
+Problem: This lead-in is garbled and no longer matches its paragraph, which now says the model can be read in all 53 chats.
+Fix: `**Effort never recorded.**`
+
+**Maintainer's note on figure re-check 1 (3 Nov 2026).** The re-checker's transcript was checked by script: no web, memory, Projects, connector or Artifact tool; every file it opened, and its scratch crops, inside its folder. Figure 2 passed. Figure 3 was a second FIX and each finding was verified before it was applied: the writer's table dates every chat's first message, and none falls on 31 October (27, 8, 7, 0, 7 and 4 by day), so the figure gains a 31 Oct row at 0 and §4 says "none on 30 or 31 October"; the table's divider row did carry six columns against five, left by the maintainer's removal of the empty column (an error of this chat's own edit), now five; the §3 lead-in, which no longer matched its paragraph, now reads "Effort never recorded." Figure 3 goes to a third check, against both reports, as the drop rule sets.
