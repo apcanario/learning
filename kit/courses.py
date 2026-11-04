@@ -6,6 +6,10 @@ Every course has a `family`: 'history' (Greece, Rome and the eight to come: one 
 course of both families (docs/academy.md, A1). A markdown course is built by mdcourse.py from its data file into one
 Academy course per course in that file (A3). A new course of either family is a folder plus an entry here (A5).
 
+The home card (P90, 4 Nov 2026) carries one sentence per course, two lines at most: a history course's `tile`, a
+markdown course's `tiles` keyed like its `tracks` (the data file's own tile stays on the course's pages). The longer
+`card` text the home carried before is gone with it.
+
 Text fields may use these placeholders, filled per course at build time:
 {content_mods} modules excluding the audit unit · {total_mods} all modules · {nrep} reports written · {kwords} thousands of words written
 """
@@ -59,7 +63,7 @@ GREECE = dict(
     spine='''<p>The reports keep naming these. Read the primary ones at least once each, in this order, any decent translation: Hesiod (Theogony, Works and Days) · Homer (Iliad, then Odyssey) · Apollodorus, The Library (Robin Hard's Oxford translation; keep it open through Part II) · Aeschylus' Oresteia, Sophocles' Theban plays, Euripides' Medea and Bacchae · Herodotus · Thucydides · Plato (Apology, Symposium, Republic; with unit 6 and deep dive 12) · Diogenes Laertius, books 6, 7 and 10 (with deep dive 12) · Plutarch's Lives as each name comes up · Pausanias, book 1.</p>
     <p>Secondary, three only: Robin Hard, The Routledge Handbook of Greek Mythology; Walter Burkert, Greek Religion; Robin Osborne, Greece in the Making, with Simon Hornblower, The Greek World 479 to 323.</p>''',
     closing='Greece is the first course. Rome, the second, is in progress; eight more are coming: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese.',
-    card='From the Bronze Age palaces to the closing of the Academy, with the gods, the heroes and the Trojan War read against the societies that told them. Ten core units in four parts, three deep dives on Troy, Alexander and Greek philosophy, and a capstone exam.',
+    tile='Bronze Age palaces to the closing of the Academy, myth read against history.',   # P90: the home card's one sentence, two lines at most
     figure=dict(kind='tree', title='Hesiod\'s line of descent, Chaos to the six Olympian siblings',
         caption='The first beings and the two generations that follow, as module 2.1 reads them in Hesiod, <em>Theogony</em> 116–138 (Chaos, Gaia, Tartarus, Eros, Erebus, Nyx; Gaia bears Ouranos), 132–138 (the Titans, Kronos last) and 453–458 (the six children of Kronos and Rhea, Zeus last). Erebus and Nyx, the Mountains, Pontos and the other Titans are left out for room.',
         root=dict(label='Chaos', tone=6, children=[
@@ -106,7 +110,7 @@ ROME = dict(
     spine='''<p>The reports keep naming these. Read the primary ones at least once each, in this order, any decent translation: Livy, books 1 to 5 and then 21 to 30 · Polybius, books 1 to 6 · Virgil, Aeneid (book 8 with module 1.3) · Ovid, Fasti, then Metamorphoses · Sallust, The War with Catiline · Caesar, The Gallic War · Cicero, selected letters (Shackleton Bailey's translation) and the Second Philippic · Plutarch's Roman Lives as each name comes up · Augustus, Res Gestae · Tacitus, Annals · Suetonius, The Twelve Caesars · Seneca, Letters to Lucilius (a selection), Epictetus, Handbook, and Marcus Aurelius, Meditations (with deep dive 13) · Ammianus Marcellinus, books 14 to 31.</p>
     <p>Secondary, three only: T. J. Cornell, The Beginnings of Rome; Mary Beard, John North and Simon Price, Religions of Rome; Mary Beard, SPQR, with Peter Heather, The Fall of the Roman Empire.</p>''',
     closing='Rome is the second course, after Greece. Eight more are coming: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese.',
-    card='From the huts on the Palatine to the last emperor in the West, with the gods, the founding legends and the Aeneid read against the city that told them. Eleven core units in four parts, three deep dives on the fall of the Republic, the Aeneid and Roman philosophy, and a capstone exam.',
+    tile='The Palatine huts to the last emperor in the West, myth read against history.',
     figure=dict(kind='timeline', title='The Struggle of the Orders: what the plebs won, and when', start=-500, end=-160, ticks=[-500, -400, -300, -200],
         caption='Dates as module 3.1 gives them, from Livy (Varronian years): the tribunate after the secession of 494; the Twelve Tables 451–449; the quaestorship opened in 421 and first held by plebeians in 409; the consulship from the Licinian-Sextian laws, Lucius Sextius consul in 366; the first plebeian dictator 356 and censor 351; the Publilian laws 339; the lex Ogulnia opening the pontificate and augurate in 300; the secession of 287; both consuls plebeian for the first time in 172.',
         spans=[dict(**{'from': -494, 'to': -449, 'label': 'Tables', 'tone': 6}), dict(**{'from': -449, 'to': -367, 'label': 'consular tribunes', 'tone': 4}), dict(**{'from': -367, 'to': -287, 'label': 'offices open', 'tone': 5})],
@@ -126,11 +130,13 @@ BRAND_AI = dict(
     legacy_ids=True,              # keeps #briefs-a and #b-a2 from A3; a new course gets #<id>-<key>-briefs, #<id>-<key>-b-<code>
     # each course in the data file's COURSES becomes its own Academy course: key -> (track, short name for the top bar and drawer)
     tracks={'A': ('marketing', 'Personal brand'), 'B': ('technology', 'Building with AI')},
+    # P90: each course's one sentence on the home card, two lines at most (the data file's longer tile stays on its pages)
+    tiles={'A': 'Who pays, for what, how long it takes, and what the record-as-brand changes.',
+           'B': 'Which model for which task, how to brief, and where the setup leaks.'},
     # content and status come from the hub's own data file; build.py reads it, nothing here is typed by hand
     data='generator/data/brand-ai/hub.py',
     vault='courses/brand-ai',     # the filed units (method.md §7); a unit is written when its file is here (A5)
     eyebrow='BRAND + AI',
-    card='A · Building a Marketable Personal Brand and B · Using AI to Build a Brand. Who pays, for what, how long it takes; which model for which task, how to brief, where the setup leaks. Every unit sourced and ending in a shipped deliverable.',
 )
 
 UX = dict(
@@ -138,11 +144,11 @@ UX = dict(
     home_id='ux', status='in progress',
     # panel ids default to <id>-<key>: ux-ia, ux-ia-briefs, ux-ia-b-ia1 (no prefix, no legacy_ids)
     tracks={'IA': ('ux', 'Information architecture')},
+    tiles={'IA': "How to read, build and edit a product's structure, from sitemap to system map."},
     data='generator/data/ux/hub.py',
     vault='courses/ux',             # the filed units (method.md §7); the folder appears with the first one (A5)
     sourcing_part='Part 4',         # sourcing-standard.md: this family's own part (howbuilt.py)
     eyebrow='USER EXPERIENCE',
-    card='IA · Information Architecture, for a mid-level UX designer: what IA is, the shapes it takes, four levels of complexity built on one fictional product, where it sits in the product cycle and the business, how to validate it, and how to deliver it when the research, the content or the stakeholders are missing.',
 )
 
 COURSES = [GREECE, ROME, BRAND_AI, UX]

@@ -19,7 +19,7 @@
    4  Components from Personal Mythology
       4a report  4b home and course cards  4c syllabus and prompts
       4d era ribbon  4e rule blocks and parts  4f root home  4g changelog
-      4h learner home (resume card, new since, track jump, folded planned lists)
+      4h learner home (the hero map and Continue button, two-line course tiles, new since, folded planned lists)
       4i figures (kit/viz.py: timeline, compare, tree, flow; since 5.2 sitemap, objects, decision,
          matrix, states, swimlanes, wireflow; since 5.4 line, bars, scatter, range, the numeric matrix
          and the phone scroll frame; classes only, no colour attributes)
@@ -31,7 +31,7 @@
       that can hover; equal-height catalogue cards with the button on one line
    9  Reading layout (P68): scope line, sticky section bar, one section at a time,
       numbered section bands, next and previous, Sources and "How this unit was made"
-   Version 6.2, 3 Nov 2026 (P83): 4i's .viz-stick, the label column a matrix or compare keeps in view on a phone, the left fade that starts past it, and svg.viz-alt, a bars figure's phone drawing shown in place of its wide one below 768 px. Version 6.1, 1 Nov 2026 (H-2: P53 .viz-fit, figure text without ligatures, base-width timelines and flows fit the desktop frame in 4i; P72 the eyebrow and Sources URLs in 4a and 9). Version 6, 1 Nov 2026 (P68): section 9, the reading layout of every unit and report. Version 5.4, 29 Oct 2026 (P44): 4i adds the data kinds' classes and the phone rule (natural size, sideways scroll in the frame, fade and cue). Version 5.3, 29 Oct 2026 (P40): 4i's A8 text classes win over .viz text. Version 5.2, 29 Oct 2026 (V1): 4i adds the classes of the seven IA figure kinds. Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
+   Version 6.3, 4 Nov 2026 (P90): the light palette is e-ink paper (warm grey-cream page, cards barely lighter, near-black ink, no white; accents at full saturation within 4.5:1); 4h is the new home (the hero map, the Continue button, two-line tiles; the resume card, track tiles and totals line gone); 4i adds the sitemap's dashed and linked boxes; 6 keeps a track's only card half-width. Version 6.2, 3 Nov 2026 (P83): 4i's .viz-stick, the label column a matrix or compare keeps in view on a phone, the left fade that starts past it, and svg.viz-alt, a bars figure's phone drawing shown in place of its wide one below 768 px. Version 6.1, 1 Nov 2026 (H-2: P53 .viz-fit, figure text without ligatures, base-width timelines and flows fit the desktop frame in 4i; P72 the eyebrow and Sources URLs in 4a and 9). Version 6, 1 Nov 2026 (P68): section 9, the reading layout of every unit and report. Version 5.4, 29 Oct 2026 (P44): 4i adds the data kinds' classes and the phone rule (natural size, sideways scroll in the frame, fade and cue). Version 5.3, 29 Oct 2026 (P40): 4i's A8 text classes win over .viz text. Version 5.2, 29 Oct 2026 (V1): 4i adds the classes of the seven IA figure kinds. Version 5.1, 29 Oct 2026: 4a adds .report pre for Markdown units' code blocks. Version 5, 28 Oct 2026 (8 Swiss pass and 4i figures; 4 added 4h learner home and the drawer's folded planned list; 3 added section 7; 2 section 6; 1 was the 27 Oct extraction).
    Fixes made in the theme (were broken in shell.css, satisfied by the hub):
    - 44 px targets: section links (.toc a), every <summary>, syllabus jump links
    - light mode: accents and tertiary text retuned to >= 4.5:1 on page and card
@@ -57,24 +57,26 @@
   --bar:56px;
   color-scheme:dark;
 }
-/* Light: its own palette. Page a cool off-white, cards white, accents darkened so every
-   accent and the tertiary text reach 4.5:1 on both page and card, text on accent buttons
-   turns white, shadows and scrim lighten. Defined twice: once for the system setting,
+/* Light: its own palette, e-ink paper (P90, Pedro 4 Nov 2026): the page a warm grey-cream, cards barely lighter,
+   lines a shade darker than the paper, ink near-black, no pure white anywhere. Each accent is its house hue at full
+   saturation, as light as keeps 4.6:1 on its own track band (7% of it over the paper, the darkest surface it is text
+   on), so every accent, the tertiary text and the cream text on a filled accent reach 4.5:1 (kit/contrast.py measures
+   it; verify.py checks the built page). Shadows and scrim are warm. Defined twice: once for the system setting,
    once for the toggle. Keep the two blocks identical. */
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
-  --bg:#f5f5f7;--card:#ffffff;--line:#e3e3ea;--line-2:#cfcfd9;
-  --fg:#17171c;--muted:#50505b;--dim:#6c6c78;
-  --red:#c23b3b;--orange:#a3580f;--teal:#1b7569;--blue:#3a6a8a;--purple:#7a3fcf;--gold:#7f6308;
-  --on-accent:#ffffff;
-  --bar-bg:rgba(245,245,247,.94);--hover:rgba(0,0,0,.05);--scrim:rgba(20,20,30,.35);--shadow:rgba(0,0,0,.18);--code:#f0f0f3;
+  --bg:#e8e4dc;--card:#f0ede6;--line:#d7d1c5;--line-2:#c4bdae;
+  --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
+  --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
+  --on-accent:#f5f2eb;
+  --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }}
 :root[data-theme="light"]{
-  --bg:#f5f5f7;--card:#ffffff;--line:#e3e3ea;--line-2:#cfcfd9;
-  --fg:#17171c;--muted:#50505b;--dim:#6c6c78;
-  --red:#c23b3b;--orange:#a3580f;--teal:#1b7569;--blue:#3a6a8a;--purple:#7a3fcf;--gold:#7f6308;
-  --on-accent:#ffffff;
-  --bar-bg:rgba(245,245,247,.94);--hover:rgba(0,0,0,.05);--scrim:rgba(20,20,30,.35);--shadow:rgba(0,0,0,.18);--code:#f0f0f3;
+  --bg:#e8e4dc;--card:#f0ede6;--line:#d7d1c5;--line-2:#c4bdae;
+  --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
+  --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
+  --on-accent:#f5f2eb;
+  --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }
 
@@ -150,6 +152,9 @@ a.ib{text-decoration:none}
 
 /* reading column: 700 px max, 16 px gutters, one panel visible at a time */
 main{max-width:700px;margin:0 auto;padding-block:22px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+/* P90: a page opened from a link with its panel's id (#home, #rome) lands at the top, its title clear of the fixed bar: the
+   browser's own jump to the panel stops where the column starts, not with the panel under the bar */
+.panel{scroll-margin-top:calc(var(--bar) + 22px)}
 /* vertical rhythm: top-level blocks of a home, syllabus, changelog or hub page never touch */
 .panel.root:not([hidden]),.panel.home:not([hidden]),.panel.syl:not([hidden]),.panel.log:not([hidden]),.panel.stack:not([hidden]){display:flex;flex-direction:column;gap:24px}
 .panel.root>*,.panel.home>*,.panel.syl>*,.panel.log>*,.panel.stack>*{margin-top:0!important;margin-bottom:0!important}
@@ -266,8 +271,6 @@ details.ucard[open]>summary{padding-bottom:10px}
 /* 4c · syllabus, prompt boxes, buttons */
 .hlinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .hlinks[data-one]{grid-template-columns:1fr}
-.hlinks.hl-root,.hlinks.hl-root[data-one]{grid-template-columns:1fr 1fr}
-.hl-root .cont{grid-column:1 / -1}
 .hbtn{display:flex;flex-direction:column;gap:2px;min-height:44px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--on-accent);background:var(--cc,var(--red));border:1px solid var(--cc,var(--red));min-width:0}
 .hbtn span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
 .hbtn b{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -370,30 +373,25 @@ details.course.soon .nscope{font-size:14px;margin:0 0 10px;line-height:1.5}
 details.course.soon .nspine{font-size:12.5px;color:var(--muted);margin:0 0 14px}
 details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-right:8px}
 
-/* 4h · learner home (Academy root, 28 Oct 2026): the page opens on one resume card, then what is new, then the tracks.
-   The resume card is the root Continue button (shell.js fills it) grown to a card; while nothing has been read the
-   Start button stands in. Both span the column at every width. */
-.hlinks.hl-root,.hlinks.hl-root[data-one]{grid-template-columns:1fr}
-.hl-root .hbtn{padding:14px 16px;gap:6px}
-.hl-root .hbtn b{white-space:normal;font-size:18px;line-height:1.25;text-wrap:balance}
+/* 4h · learner home (Academy root; P90, 4 Nov 2026): the hero (headline, lede, the map of Academy, the Continue button),
+   the track sections, then what is new. The map is a sitemap figure (viz.py, from the course data) on the card surface;
+   its course boxes link to the course homes. The Continue button is the reader's last page (shell.js, from
+   localStorage) or, on a fresh visit, the newest written unit (.start); one shows at a time. */
+.hero .viz{margin:20px 0 0}
+.hlinks.hl-root,.hlinks.hl-root[data-one]{grid-template-columns:1fr;margin-top:14px}
+.hl-root .hbtn{padding:12px 14px;gap:4px}
+.hl-root .hbtn b{white-space:normal;font-size:16px;line-height:1.3;text-wrap:balance}
 .hl-root .hbtn span{opacity:1}
-.hl-root .cont span:first-child::before{content:"▶ ";font-size:9px;vertical-align:1px}
-.rmeter{display:grid;gap:6px;margin-top:6px;text-transform:none;letter-spacing:0;opacity:.9!important}
-.rmeter .bar{height:3px;border-radius:2px;background:color-mix(in srgb,var(--on-accent) 25%,transparent);overflow:hidden;display:block}
-.rmeter .bar i{display:block;height:100%;background:var(--on-accent)}
-.rmeter span{text-transform:none;letter-spacing:0}
-.rmeter .pct{font-size:11px;font-family:var(--mono);opacity:.85}
-/* new since: dated rows; the date column is wider than a module number */
+.hl-root .hbtn span:first-child::before{content:"▶ ";font-size:9px;vertical-align:1px}
+/* a course card on the home: the one-sentence tile line, two lines at most */
+.panel.root .course.live p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+/* new since: dated rows; the date column is wider than a module number; the changelog link under it */
+.recent{margin-top:4px}
 .recent .hrows{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 14px}
 .recent .hrow{color:var(--fg)}
 .recent .hrow:first-child{border-top:0}
 .recent .hrow .n{flex:0 0 4.6em;color:var(--c,var(--muted))}
 .recent .hnote{margin:10px 0 0}
-/* track jump: one tile per track, three across from 560 px */
-.tjump{display:grid;gap:8px}
-.tjump .hbtn{border-left:3px solid var(--c)}
-.tjump .hbtn small{font-family:var(--mono);font-size:11px;color:var(--muted)}
-@media (min-width:560px){.tjump{grid-template-columns:repeat(3,1fr)}}
 /* the planned courses fold into a rule block on the home and a row in the drawer */
 details.rules.planned>.hnote,details.rules.planned>.soonlist{padding:0 16px}
 details.rules.planned>.hnote{margin:0 0 10px}
@@ -403,8 +401,6 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 .dplan>summary .chev{flex:0 0 16px;width:16px;height:16px;color:var(--dim);transform:rotate(-90deg);transition:transform .15s}
 .dplan[open]>summary .chev{transform:none}
 .dplan>div.dsoon{padding-left:22px}
-/* one line of totals, the only place the site's counts appear together */
-.totals{color:var(--dim);font-size:11px;margin:0;text-align:center}
 
 /* 4i · figures (A8). The SVG carries classes only; every fill and stroke comes from here, so a figure follows the theme.
    Tones 1–6 are the house accents in the order red, orange, teal, blue, purple, gold. */
@@ -429,6 +425,10 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 .viz-span,.viz-bar,.viz-dot,.viz-node{fill:var(--c)}
 .viz-node{fill:color-mix(in srgb,var(--c) 18%,var(--card));stroke:var(--c);stroke-width:1.5}
 .viz-nodelabel{font-size:12px;font-weight:600}
+.viz-node.viz-dash{fill:var(--card);stroke-dasharray:5 4}                       /* P90: a planned page or course, drawn dashed and untinted */
+.viz a.viz-a{cursor:pointer}                                                    /* P90: a box that links to a panel (sitemap "href") */
+.viz a.viz-a:focus{outline:none}.viz a.viz-a:focus-visible .viz-node{stroke-width:3}
+@media (hover:hover){.viz a.viz-a:hover .viz-node{fill:color-mix(in srgb,var(--c) 34%,var(--card))}}
 .viz-t1{--c:var(--viz-1)}.viz-t2{--c:var(--viz-2)}.viz-t3{--c:var(--viz-3)}.viz-t4{--c:var(--viz-4)}.viz-t5{--c:var(--viz-5)}.viz-t6{--c:var(--viz-6)}
 .viz-span{opacity:.85}
 .viz-dot{stroke:var(--card);stroke-width:2}
@@ -609,6 +609,7 @@ details.clog[open]>summary::after{content:"–"}
   .cgrid{grid-template-columns:1fr 1fr;column-gap:10px;align-items:stretch}
   .panel.root>.cgrid{gap:24px 12px}
   .cgrid>.course:only-child{grid-column:1 / -1}
+  .track .cgrid>.course:only-child{grid-column:auto}   /* P90: on the home a track with one course keeps a half-width card */
   .ucards,.part .ucards,.smods,.sunit .smods,.soonlist{grid-template-columns:1fr 1fr;align-items:start}
   .ucards{column-gap:12px}
   .smods{column-gap:10px}
@@ -660,7 +661,7 @@ a.course:active{transform:translateY(0);box-shadow:none}
 /* 8 · Swiss pass (A7, 28 Oct 2026) ---------------------------------------------
    Later in the file, so it wins on equal specificity. Three moves: the type does the work (bigger, tighter
    headlines; the eyebrow as a graphic), colour as a field (a track sits on a tint of its accent; the course
-   name is a solid chip; the resume card and buttons are flat blocks), rules and hard corners instead of
+   name is a solid chip; buttons are flat blocks), rules and hard corners instead of
    shadows and radii. Tokens and components keep their names; only values change. */
 .hero h1{font-size:44px;line-height:1;letter-spacing:-.03em;margin:0 0 14px}
 .root .hero h1{font-size:52px}
@@ -671,15 +672,12 @@ a.course:active{transform:translateY(0);box-shadow:none}
 .lede{font-size:17px;line-height:1.5}
 /* hard corners everywhere a radius was decoration; 2 px where a control needs a softened edge */
 .howto,.ucard,.course,.era,.stats div,.viz,.tbl,details.clog,.smod,.pbox,.prompt,.recent .hrows,.carry li,.dispute,pre.tree{border-radius:0}
-.hbtn,.cgo,.copy,.pager a,.toc a,.ib,.duh,.ditem,.dplan>summary,.pill,.meter .bar,details.ucard .bar,.rmeter .bar{border-radius:2px}
+.hbtn,.cgo,.copy,.pager a,.toc a,.ib,.duh,.ditem,.dplan>summary,.pill,.meter .bar,details.ucard .bar{border-radius:2px}
 .pill{letter-spacing:.06em}
 /* colour as a field: a track is a band tinted with its accent; its head is a rule, not a box edge */
 .track{background:color-mix(in srgb,var(--c) 7%,var(--bg));padding:18px 16px 20px;gap:16px}
 .thead{border-left:0;border-bottom:2px solid var(--c);padding:0 0 12px}
 .thead .cname{font-size:12px;letter-spacing:.14em}
-.tjump .hbtn{border-left:0;background:color-mix(in srgb,var(--c) 10%,var(--card));border-color:transparent}
-.tjump .hbtn b{color:var(--fg)}
-.tjump .hbtn span{color:var(--c)}
 /* the course card: a solid chip for the name, a 3 px rule on top, the number large */
 .course.live{border-left:0;border-top:3px solid var(--c)}
 .course.live .cname{background:var(--c);color:var(--on-accent);padding:4px 8px;letter-spacing:.1em}
@@ -689,8 +687,6 @@ a.course:active{transform:translateY(0);box-shadow:none}
 .meter .bar,details.ucard .bar{height:4px}
 /* numbers as graphic elements */
 .stats b{font-size:30px;letter-spacing:-.02em}
-.rmeter .pct{font-size:12px;letter-spacing:.06em;text-transform:uppercase}
-.hl-root .hbtn b{font-size:22px;letter-spacing:-.02em;line-height:1.15}
 /* section heads carry a rule to the right edge */
 .hsec{display:flex;align-items:center;gap:12px}
 .hsec::after{content:"";flex:1 1 auto;height:1px;background:var(--line-2)}
@@ -811,34 +807,27 @@ details.acc[open]>summary::after{content:"–"}
 <main>
 
 <section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Academy" data-u="HOME" data-c="var(--red)" hidden>
-  <header class="hero resume" data-progress='{"greece": {"pct": 100, "done": 78, "of": 78, "what": "reports"}, "rome": {"pct": 100, "done": 79, "of": 79, "what": "reports"}, "brand-a": {"pct": 100, "done": 11, "of": 11, "what": "units"}, "brand-b": {"pct": 100, "done": 11, "of": 11, "what": "units"}, "ux-ia": {"pct": 47, "done": 7, "of": 15, "what": "units"}}'>
-    <div class="eyebrow"><span class="u" style="--c:var(--red)">ACADEMY</span> · 5 courses live · 8 planned · one reader</div>
+  <header class="hero">
     <h1>Academy</h1>
     <p class="lede">Every self-study course in one place. Pick up where you left off.</p>
-    <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b><span class="rmeter"><span class="bar" aria-hidden="true"><i></i></span><span class="pct mono"></span></span></a><a class="hbtn start" href="#read-ia3" data-target="read-ia3"><span>Start here · newest unit</span><b>Information architecture · IA3 How people find and understand things</b></a></div>
+    <figure class="viz viz-sitemap"><div class="viz-scroll" data-alt=""><svg viewBox="0 0 700 289.0" width="700" height="289.0" data-x0="17" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="sitemap"><path class="viz-line" d="M35.0,104.0 L35.0,266.0"/><path class="viz-line" d="M35.0,132.0 L45.0,132.0"/><path class="viz-line" d="M35.0,200.5 L45.0,200.5"/><path class="viz-line" d="M35.0,266.0 L45.0,266.0"/><path class="viz-line" d="M91.0,56.0 L91.0,74.0"/><path class="viz-line" d="M201.0,104.0 L201.0,132.0"/><path class="viz-line" d="M201.0,132.0 L211.0,132.0"/><path class="viz-line" d="M257.0,56.0 L257.0,74.0"/><path class="viz-line" d="M367.0,104.0 L367.0,132.0"/><path class="viz-line" d="M367.0,132.0 L377.0,132.0"/><path class="viz-line" d="M423.0,56.0 L423.0,74.0"/><path class="viz-line" d="M533.0,104.0 L533.0,132.0"/><path class="viz-line" d="M533.0,132.0 L543.0,132.0"/><path class="viz-line" d="M589.0,56.0 L589.0,74.0"/><path class="viz-line" d="M350.0,38.0 L350.0,56.0"/><path class="viz-line" d="M91.0,56.0 L589.0,56.0"/><g data-box=""><rect class="viz-node viz-t6" x="284.0" y="8.0" width="132" height="30.0" rx="2"/><text class="viz-nodelabel" x="292.0" y="27.3" text-anchor="start">Academy</text></g><g data-box=""><rect class="viz-node viz-t1" x="25.0" y="74.0" width="132" height="30.0" rx="2"/><text class="viz-nodelabel" x="33.0" y="93.3" text-anchor="start">History</text></g><a class="viz-a" href="#greece" data-target="greece" aria-label="Greek history and mythology"><g data-box=""><rect class="viz-node viz-t1" x="45.0" y="114.0" width="132" height="58.5" rx="2"/><text class="viz-nodelabel" x="53.0" y="133.3" text-anchor="start">Greek history and</text><text class="viz-nodelabel" x="53.0" y="147.3" text-anchor="start">mythology</text><text class="viz-small" x="53.0" y="161.8" text-anchor="start">13 of 13 units</text></g></a><a class="viz-a" href="#rome" data-target="rome" aria-label="Roman history and mythology"><g data-box=""><rect class="viz-node viz-t1" x="45.0" y="182.5" width="132" height="58.5" rx="2"/><text class="viz-nodelabel" x="53.0" y="201.8" text-anchor="start">Roman history and</text><text class="viz-nodelabel" x="53.0" y="215.8" text-anchor="start">mythology</text><text class="viz-small" x="53.0" y="230.3" text-anchor="start">14 of 14 units</text></g></a><g data-box=""><rect class="viz-node viz-t1 viz-dash" x="45.0" y="251.0" width="132" height="30.0" rx="2"/><text class="viz-nodelabel" x="53.0" y="270.3" text-anchor="start">8 planned</text></g><g data-box=""><rect class="viz-node viz-t3" x="191.0" y="74.0" width="132" height="30.0" rx="2"/><text class="viz-nodelabel" x="199.0" y="93.3" text-anchor="start">Marketing</text></g><a class="viz-a" href="#brand-a" data-target="brand-a" aria-label="Personal brand"><g data-box=""><rect class="viz-node viz-t3" x="211.0" y="114.0" width="132" height="44.5" rx="2"/><text class="viz-nodelabel" x="219.0" y="133.3" text-anchor="start">Personal brand</text><text class="viz-small" x="219.0" y="147.8" text-anchor="start">11 of 11 units</text></g></a><g data-box=""><rect class="viz-node viz-t5" x="357.0" y="74.0" width="132" height="30.0" rx="2"/><text class="viz-nodelabel" x="365.0" y="93.3" text-anchor="start">Technology</text></g><a class="viz-a" href="#brand-b" data-target="brand-b" aria-label="Building with AI"><g data-box=""><rect class="viz-node viz-t5" x="377.0" y="114.0" width="132" height="44.5" rx="2"/><text class="viz-nodelabel" x="385.0" y="133.3" text-anchor="start">Building with AI</text><text class="viz-small" x="385.0" y="147.8" text-anchor="start">11 of 11 units</text></g></a><g data-box=""><rect class="viz-node viz-t4" x="523.0" y="74.0" width="132" height="30.0" rx="2"/><text class="viz-nodelabel" x="531.0" y="93.3" text-anchor="start">User Experience</text></g><a class="viz-a" href="#ux-ia" data-target="ux-ia" aria-label="Information architecture"><g data-box=""><rect class="viz-node viz-t4" x="543.0" y="114.0" width="132" height="58.5" rx="2"/><text class="viz-nodelabel" x="551.0" y="133.3" text-anchor="start">Information</text><text class="viz-nodelabel" x="551.0" y="147.3" text-anchor="start">architecture</text><text class="viz-small" x="551.0" y="161.8" text-anchor="start">7 of 15 units</text></g></a></svg><svg class="viz-alt" viewBox="0 0 328 518.5" width="328" height="518.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="sitemap"><path class="viz-line" d="M18.0,38.0 L18.0,441.0"/><path class="viz-line" d="M38.0,78.0 L38.0,212.0"/><path class="viz-line" d="M38.0,106.0 L48.0,106.0"/><path class="viz-line" d="M38.0,160.5 L48.0,160.5"/><path class="viz-line" d="M38.0,212.0 L48.0,212.0"/><path class="viz-line" d="M18.0,63.0 L28.0,63.0"/><path class="viz-line" d="M38.0,267.0 L38.0,295.0"/><path class="viz-line" d="M38.0,295.0 L48.0,295.0"/><path class="viz-line" d="M18.0,252.0 L28.0,252.0"/><path class="viz-line" d="M38.0,361.5 L38.0,389.5"/><path class="viz-line" d="M38.0,389.5 L48.0,389.5"/><path class="viz-line" d="M18.0,346.5 L28.0,346.5"/><path class="viz-line" d="M38.0,456.0 L38.0,484.0"/><path class="viz-line" d="M38.0,484.0 L48.0,484.0"/><path class="viz-line" d="M18.0,441.0 L28.0,441.0"/><g data-box=""><rect class="viz-node viz-t6" x="8.0" y="8.0" width="272" height="30.0" rx="2"/><text class="viz-nodelabel" x="16.0" y="27.3" text-anchor="start">Academy</text></g><g data-box=""><rect class="viz-node viz-t1" x="28.0" y="48.0" width="272" height="30.0" rx="2"/><text class="viz-nodelabel" x="36.0" y="67.3" text-anchor="start">History</text></g><a class="viz-a" href="#greece" data-target="greece" aria-label="Greek history and mythology"><g data-box=""><rect class="viz-node viz-t1" x="48.0" y="88.0" width="272" height="44.5" rx="2"/><text class="viz-nodelabel" x="56.0" y="107.3" text-anchor="start">Greek history and mythology</text><text class="viz-small" x="56.0" y="121.8" text-anchor="start">13 of 13 units</text></g></a><a class="viz-a" href="#rome" data-target="rome" aria-label="Roman history and mythology"><g data-box=""><rect class="viz-node viz-t1" x="48.0" y="142.5" width="272" height="44.5" rx="2"/><text class="viz-nodelabel" x="56.0" y="161.8" text-anchor="start">Roman history and mythology</text><text class="viz-small" x="56.0" y="176.3" text-anchor="start">14 of 14 units</text></g></a><g data-box=""><rect class="viz-node viz-t1 viz-dash" x="48.0" y="197.0" width="272" height="30.0" rx="2"/><text class="viz-nodelabel" x="56.0" y="216.3" text-anchor="start">8 planned</text></g><g data-box=""><rect class="viz-node viz-t3" x="28.0" y="237.0" width="272" height="30.0" rx="2"/><text class="viz-nodelabel" x="36.0" y="256.3" text-anchor="start">Marketing</text></g><a class="viz-a" href="#brand-a" data-target="brand-a" aria-label="Personal brand"><g data-box=""><rect class="viz-node viz-t3" x="48.0" y="277.0" width="272" height="44.5" rx="2"/><text class="viz-nodelabel" x="56.0" y="296.3" text-anchor="start">Personal brand</text><text class="viz-small" x="56.0" y="310.9" text-anchor="start">11 of 11 units</text></g></a><g data-box=""><rect class="viz-node viz-t5" x="28.0" y="331.5" width="272" height="30.0" rx="2"/><text class="viz-nodelabel" x="36.0" y="350.8" text-anchor="start">Technology</text></g><a class="viz-a" href="#brand-b" data-target="brand-b" aria-label="Building with AI"><g data-box=""><rect class="viz-node viz-t5" x="48.0" y="371.5" width="272" height="44.5" rx="2"/><text class="viz-nodelabel" x="56.0" y="390.8" text-anchor="start">Building with AI</text><text class="viz-small" x="56.0" y="405.4" text-anchor="start">11 of 11 units</text></g></a><g data-box=""><rect class="viz-node viz-t4" x="28.0" y="426.0" width="272" height="30.0" rx="2"/><text class="viz-nodelabel" x="36.0" y="445.3" text-anchor="start">User Experience</text></g><a class="viz-a" href="#ux-ia" data-target="ux-ia" aria-label="Information architecture"><g data-box=""><rect class="viz-node viz-t4" x="48.0" y="466.0" width="272" height="44.5" rx="2"/><text class="viz-nodelabel" x="56.0" y="485.3" text-anchor="start">Information architecture</text><text class="viz-small" x="56.0" y="499.9" text-anchor="start">7 of 15 units</text></g></a></svg></div><figcaption>The map of Academy: each track, its live courses with their units written of the total, and the courses planned. Drawn by kit/viz.py from the course data (kit/courses.py, each course's counts, provenance.json) when the site is built. This build: 4 Nov 2026.</figcaption></figure>
+    <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b></a><a class="hbtn start" href="#read-ia7" data-target="read-ia7"><span>Newest unit</span><b>Information architecture · IA7 Level 3 · the backoffice</b></a></div>
   </header>
-
-  <section class="recent">
-    <h2 class="hsec">New since</h2>
-    <div class="hrows"><a class="hrow" href="#changelog" data-target="changelog"><span class="n">3 to 4 Nov</span><span class="t">User Experience IA7 (U-7)<small>Session 54 · the kit changelog</small></span><span class="pill prog">session</span></a><a class="hrow" href="#read-ia3" data-target="read-ia3" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA3 · How people find and understand things<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia4" data-target="read-ia4" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA4 · Organisation systems: schemes, structures, objects, taxonomies<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia5" data-target="read-ia5" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA5 · Level 1 · the sales and product website<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia6" data-target="read-ia6" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA6 · Level 2 · the client app<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia7" data-target="read-ia7" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA7 · Level 3 · the backoffice<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a></div>
-  </section>
-
-  <nav class="tjump" aria-label="Tracks"><a class="hbtn alt" href="#track-history" style="--c:var(--red)"><span>Track</span><b>History</b><small>2 live · 8 planned</small></a><a class="hbtn alt" href="#track-marketing" style="--c:var(--teal)"><span>Track</span><b>Marketing</b><small>1 live</small></a><a class="hbtn alt" href="#track-technology" style="--c:var(--purple)"><span>Track</span><b>Technology</b><small>1 live</small></a><a class="hbtn alt" href="#track-ux" style="--c:var(--blue)"><span>Track</span><b>User Experience</b><small>1 live</small></a></nav>
   
   <section class="track" id="track-history" style="--c:var(--red)">
     <header class="thead"><div class="ttx"><span class="cname">Track</span><h2>History</h2><p>The history and mythology of one culture at a time, read together: who told each story, what they gained by it, and what the evidence says. Long sourced reports with disputes named, a self-test and a syllabus you can rerun.</p></div><span class="tmeta">2 courses · 157 reports · 8 planned</span></header>
     <div class="cgrid"><a class="course live" href="#greece" data-target="greece" style="--c:var(--red)">
     <div class="ctop"><span class="cname">History · Course 1</span><span class="pill live">complete</span></div>
     <span class="ctitle">Greek history and mythology</span>
-    <p>From the Bronze Age palaces to the closing of the Academy, with the gods, the heroes and the Trojan War read against the societies that told them. Ten core units in four parts, three deep dives on Troy, Alexander and Greek philosophy, and a capstone exam.</p>
-    <div class="cstats"><span><b>13</b> units</span><span><b>78</b> reports</span><span><b>246k</b> words</span><span><b>18</b> h reading</span></div>
+    <p>Bronze Age palaces to the closing of the Academy, myth read against history.</p>
+    <div class="cstats"><span><b>13</b> units written</span><span><b>13</b> in all</span><span><b>16</b> h of reading</span></div>
     <div class="meter"><span class="bar" aria-hidden="true"><i style="width:100%"></i></span><span>100% written</span></div>
     <span class="cgo">Open the course</span>
   </a><a class="course live" href="#rome" data-target="rome" style="--c:var(--purple)">
     <div class="ctop"><span class="cname">History · Course 2</span><span class="pill live">complete</span></div>
     <span class="ctitle">Roman history and mythology</span>
-    <p>From the huts on the Palatine to the last emperor in the West, with the gods, the founding legends and the Aeneid read against the city that told them. Eleven core units in four parts, three deep dives on the fall of the Republic, the Aeneid and Roman philosophy, and a capstone exam.</p>
-    <div class="cstats"><span><b>14</b> units</span><span><b>79</b> reports</span><span><b>263k</b> words</span><span><b>19</b> h reading</span></div>
+    <p>The Palatine huts to the last emperor in the West, myth read against history.</p>
+    <div class="cstats"><span><b>14</b> units written</span><span><b>14</b> in all</span><span><b>18</b> h of reading</span></div>
     <div class="meter"><span class="bar" aria-hidden="true"><i style="width:100%"></i></span><span>100% written</span></div>
     <span class="cgo">Open the course</span>
   </a></div>
@@ -862,8 +851,8 @@ details.acc[open]>summary::after{content:"–"}
     <div class="cgrid"><a class="course live" href="#brand-a" data-target="brand-a" style="--c:var(--teal)">
     <div class="ctop"><span class="cname">Marketing · Course A</span><span class="pill live">complete</span></div>
     <span class="ctitle">Building a Marketable Personal Brand</span>
-    <p>Who pays, for what, how long it takes, what it costs in hours, and what the record-as-brand changes.</p>
-    <div class="cstats"><span><b>11</b> units</span><span><b>11</b> written</span><span><b>2</b> audits</span></div>
+    <p>Who pays, for what, how long it takes, and what the record-as-brand changes.</p>
+    <div class="cstats"><span><b>11</b> units written</span><span><b>11</b> in all</span><span><b>5.0</b> h of reading</span></div>
     <div class="meter"><span class="bar" aria-hidden="true"><i style="width:100%"></i></span><span>100% written</span></div>
     <span class="cgo">Open the course</span>
   </a></div>
@@ -873,8 +862,8 @@ details.acc[open]>summary::after{content:"–"}
     <div class="cgrid"><a class="course live" href="#brand-b" data-target="brand-b" style="--c:var(--purple)">
     <div class="ctop"><span class="cname">Technology · Course B</span><span class="pill live">complete</span></div>
     <span class="ctitle">Using AI to Build a Brand</span>
-    <p>Which model for which task, how to brief, where the setup leaks, and what he doesn&#x27;t know he&#x27;s doing badly.</p>
-    <div class="cstats"><span><b>11</b> units</span><span><b>11</b> written</span><span><b>2</b> audits</span></div>
+    <p>Which model for which task, how to brief, and where the setup leaks.</p>
+    <div class="cstats"><span><b>11</b> units written</span><span><b>11</b> in all</span><span><b>5.5</b> h of reading</span></div>
     <div class="meter"><span class="bar" aria-hidden="true"><i style="width:100%"></i></span><span>100% written</span></div>
     <span class="cgo">Open the course</span>
   </a></div>
@@ -884,8 +873,8 @@ details.acc[open]>summary::after{content:"–"}
     <div class="cgrid"><a class="course live" href="#ux-ia" data-target="ux-ia" style="--c:var(--blue)">
     <div class="ctop"><span class="cname">User Experience · Course IA</span><span class="pill prog">in progress</span></div>
     <span class="ctitle">Information Architecture</span>
-    <p>How to read, build and edit the structure behind a product, from a sitemap to a system map, and how to deliver it when the inputs are missing.</p>
-    <div class="cstats"><span><b>15</b> units</span><span><b>7</b> written</span><span><b>0</b> audits</span></div>
+    <p>How to read, build and edit a product&#x27;s structure, from sitemap to system map.</p>
+    <div class="cstats"><span><b>7</b> units written</span><span><b>15</b> in all</span><span><b>4.5</b> h of reading</span></div>
     <div class="meter"><span class="bar" aria-hidden="true"><i style="width:47%"></i></span><span>47% written</span></div>
     <span class="cgo">Continue</span>
   </a></div>
@@ -901,7 +890,11 @@ details.acc[open]>summary::after{content:"–"}
       <li><strong>An open syllabus.</strong> Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.</li>
     </ol>
   </details>
-  <p class="totals mono">5 courses · 157 reports · 29 units · 510,493 words · 37 h of reading</p>
+
+  <section class="recent">
+    <h2 class="hsec">New since</h2>
+    <div class="hrows"><a class="hrow" href="#changelog" data-target="changelog"><span class="n">3 to 4 Nov</span><span class="t">User Experience IA7 (U-7)<small>Session 54 · the kit changelog</small></span><span class="pill prog">session</span></a><a class="hrow" href="#read-ia7" data-target="read-ia7" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA7 · Level 3 · the backoffice<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia6" data-target="read-ia6" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA6 · Level 2 · the client app<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia5" data-target="read-ia5" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA5 · Level 1 · the sales and product website<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia4" data-target="read-ia4" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA4 · Organisation systems: schemes, structures, objects, taxonomies<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia3" data-target="read-ia3" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA3 · How people find and understand things<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a></div>
+  </section>
   <div class="hlinks"><a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>54 sessions since 22 October 2026, newest first</b></a><a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a><a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a></div>
 </section>
 <section class="panel log" id="changelog" data-ctx="root" data-kind="changelog" data-t="Changelog" data-u="ACADEMY" data-c="var(--gold)" hidden>
@@ -1585,12 +1578,10 @@ Output: a table per unit (section, claim, source, verdict, note); the failure ra
     [].slice.call(document.querySelectorAll('.hbtn.cont')).forEach(function(b){
       var long=b.hasAttribute('data-long'),s=long?lastAny():lastIn(b.getAttribute('data-course'));
       var t=b.querySelector('b');
-      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(long?(courseName[ctxOf[s]]||'')+' · ':'')+(meta[s].n?meta[s].n+' ':'')+meta[s].t;
-        // the root resume card carries the course's progress meter (data-progress on the hero, from build.py)
-        var mt=b.querySelector('.rmeter');if(mt){var pr=null;try{pr=JSON.parse(b.closest('[data-progress]').getAttribute('data-progress'))[ctxOf[s]];}catch(e){}
-          if(pr){mt.hidden=false;mt.querySelector('i').style.width=pr.pct+'%';mt.querySelector('.pct').textContent=pr.done+' of '+pr.of+' '+pr.what+' written';}else mt.hidden=true;}}
+      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(long?(courseName[ctxOf[s]]||'')+' · ':'')+(meta[s].n?meta[s].n+' ':'')+meta[s].t;}
       else{b.hidden=true;}
-      // "Start the course" shows only while there is nothing to continue; data-one when a single button is left
+      // the fresh-visit button (the home's newest unit, a course's first) shows only while there is nothing to
+      // continue (P90: the home's resume card and its progress meter are gone); data-one when a single button is left
       var st=b.parentNode.querySelector('.hbtn.start');if(st)st.hidden=!!s;
       var vis=[].filter.call(b.parentNode.querySelectorAll('.hbtn'),function(x){return !x.hidden;}).length;
       if(vis===1)b.parentNode.setAttribute('data-one','');else b.parentNode.removeAttribute('data-one');

@@ -29,6 +29,9 @@ built by viz_examples.py, shows one of each on Perqo with its block):
             top-down; "type" is the page type, drawn as a small mono tag; the root's children sit in rows that wrap
             when wider than the drawing; from depth stack_from children stack under their parent; depth unlimited.
             Default tones: the root 1, each first-level branch its own (2 to 6), inherited below it.
+            P90 (4 Nov 2026): optional per node "href" (a panel id: the box is a link to it) and "dashed": true (a
+            dashed, untinted box: a planned page); optional "phone": {"stack_from": 1}, a second drawing of the same
+            root as wide as a phone frame (PHONE_FRAME), shown below 768 px in place of the wide one (svg.viz-alt).
   objects   {"kind": "objects", "objects": [{"id": "claim", "title": "Claim", "attrs": ["amount", ...],
              "actions": ["-> approve", ...], "tone": 2}, ...], "rows": [["company", "policy", null], ...],
              "links": [{"from": "company", "to": "policy", "label": "sets", "from_card": "1", "to_card": "1..*"}]}
@@ -852,11 +855,41 @@ def _r(v):
 def sitemap(d):
     """Top-down site structure. The root's children sit in a row that wraps into further rows when wider than the
     drawing (a trunk in a left gutter feeds each row); from depth stack_from (default 2) children stack under their
-    parent, indented on a spine, which keeps a deep site legible at phone width. Depth is unlimited."""
+    parent, indented on a spine, which keeps a deep site legible at phone width. Depth is unlimited.
+    P90 (4 Nov 2026): a node's optional "href" (a panel id) draws its box as a link to that panel, an <a> with
+    data-target as the drawer's links are (shell.js delegates the click); "dashed": true draws a dashed, untinted box
+    (a planned page or course). An optional top-level "phone": {"stack_from": n} adds a second drawing of the same root
+    for a phone, PHONE_FRAME units wide with its boxes as wide as that allows, emitted as svg.viz-alt (the frame carries
+    data-alt; the theme shows it below 768 px and the wide drawing from 768 px), so it never scrolls there."""
     K = 'sitemap'
-    NW, GX, GY, IND, SG, G = 132, 14, 36, 20, 10, 16       # box width, sibling gap, level gap, stack indent, stack gap, gutter
+    root = d['root']
+    body, h = _sitemap_body(root, d.get('stack_from', 2), W, 132)
+    alt = None
+    ph = d.get('phone')
+    if ph is not None:
+        if not isinstance(ph, dict):
+            _fail(K, 'phone must be an object, e.g. {"stack_from": 1}')
+        sf = ph.get('stack_from', 1)
+        depth = _sitemap_depth(root)
+        nw = PHONE_FRAME - 16 - 20 * max(0, depth - max(sf, 1) + 1)   # each stacked level indents 20 units
+        if nw < 132:
+            _fail(K, f'the phone drawing needs boxes {nw} units wide; stack fewer levels or lower phone.stack_from')
+        ab, ah = _sitemap_body(root, sf, PHONE_FRAME, nw)
+        alt = (PHONE_FRAME, ah, ab)
+    return _svg(W, h, body, 'sitemap', d.get('title'), d.get('caption'), alt=alt)
+
+
+def _sitemap_depth(n, depth=0):
+    """The depth of the deepest node under n (the root is 0)."""
+    return max([depth] + [_sitemap_depth(c, depth + 1) for c in (n.get('children') or [])])
+
+
+def _sitemap_body(root, stack_from, Wd, NW):
+    """The sitemap drawing of root, Wd units wide with boxes NW wide: (body, height). The working keys go on a copy."""
+    K = 'sitemap'
+    root = copy.deepcopy(root)
+    GX, GY, IND, SG, G = 14, 36, 20, 10, 16                # sibling gap, level gap, stack indent, stack gap, gutter
     TXT = NW - 16
-    stack_from = d.get('stack_from', 2)
     if not isinstance(stack_from, int) or stack_from < 1:
         _fail(K, 'stack_from must be a whole number of at least 1')
 
@@ -914,14 +947,21 @@ def sitemap(d):
 
     def box(n, bx, by):
         tag, lab, note = n['_txt']
-        s = f'<rect class="viz-node viz-t{n["_t"]}" x="{bx:.1f}" y="{by:.1f}" width="{NW}" height="{n["_h"]:.1f}" rx="2"/>'
+        dash = ' viz-dash' if n.get('dashed') else ''
+        s = f'<rect class="viz-node viz-t{n["_t"]}{dash}" x="{bx:.1f}" y="{by:.1f}" width="{NW}" height="{n["_h"]:.1f}" rx="2"/>'
         yy = by + 8
         if tag:
             s += _text(tag, T_TAG, bx + 8, yy); yy += len(tag) * 12 + 2
         s += _text(lab, T_NODE, bx + 8, yy); yy += len(lab) * 14
         if note:
             s += _text(note, T_SMALL, bx + 8, yy + 2)
-        return _g(s)
+        g = _g(s)
+        if n.get('href'):                                    # P90: the box links to a panel, as the drawer's items do
+            t = str(n['href']).lstrip('#')
+            if not re.fullmatch(r'[\w-]+', t):
+                _fail(K, f'href must be a panel id, got {n["href"]!r}')
+            g = f'<a class="viz-a" href="#{t}" data-target="{t}" aria-label="{esc(n["label"])}">{g}</a>'
+        return g
 
     def draw(n, x, y):
         bx = boxx(n, x)
@@ -959,11 +999,10 @@ def sitemap(d):
                 lines += _line([(tx, bus), (max(cxs + ([pcx] if k == 0 else [])), bus)])
         return lines, boxes
 
-    root = d['root']
     prep(root, 0, 1)
-    measure(root, 0, W - 16)
-    lines, boxes = draw(root, (W - root['_w']) / 2, 8)
-    return _svg(W, _r(8 + root['_bh'] + 8), lines + boxes, 'sitemap', d.get('title'), d.get('caption'))
+    measure(root, 0, Wd - 16)
+    lines, boxes = draw(root, (Wd - root['_w']) / 2, 8)
+    return lines + boxes, _r(8 + root['_bh'] + 8)
 
 
 def _clip(cx, cy, dx, dy, rect):
@@ -2588,8 +2627,9 @@ VIZ_KEYS = {
     'compare': {'.': {'unit', 'max', 'decimals', 'rows'}, 'rows': {'label', 'value', 'display', 'tone'}},
     'tree': {'.': {'root'}, 'root': _TREE, 'children': _TREE},
     'flow': {'.': {'steps', 'per_row'}, 'steps': {'label', 'note', 'tone'}},
-    'sitemap': {'.': {'root', 'stack_from'}, 'root': {'label', 'type', 'note', 'tone', 'children'},
-                'children': {'label', 'type', 'note', 'tone', 'children'}},
+    'sitemap': {'.': {'root', 'stack_from', 'phone'}, 'phone': {'stack_from'},
+                'root': {'label', 'type', 'note', 'tone', 'children', 'href', 'dashed'},
+                'children': {'label', 'type', 'note', 'tone', 'children', 'href', 'dashed'}},
     'objects': {'.': {'objects', 'rows', 'links'}, 'objects': {'id', 'title', 'attrs', 'actions', 'tone'},
                 'links': {'from', 'to', 'label', 'from_card', 'to_card', 'dir'}},
     'decision': {'.': {'root'}, 'root': {'q', 'outcome', 'tone', 'branches'}, 'branches': {'label', 'to'},

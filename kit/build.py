@@ -253,8 +253,9 @@ def crumbs(*items):
     return '<nav class="crumbs" aria-label="You are here">' + '<span class="sep" aria-hidden="true">›</span>'.join(out) + '</nav>'
 
 def hours(words):
-    """Reading time at about 230 words a minute, as a short label."""
-    h = words / 230 / 60
+    """Reading time at 250 words a minute (P90, 4 Nov 2026: one rate for every course, history and markdown), as a
+    short label."""
+    h = words / 250 / 60
     return f'{h:.0f}' if h >= 10 else f'{h:.1f}'
 
 
@@ -335,8 +336,12 @@ def syllabus(c):
 </section>'''
 
 
-def card(theme, color, short, title, blurb, meta, done, total, status, href, external=False):
-    """A catalogue card: track chip, title, blurb, meta row, progress meter, status, button. Same shape for every course."""
+def card(theme, color, short, title, blurb, done, total, words, status, href, external=False):
+    """A catalogue card on the home: track chip, title, the one-sentence tile (two lines at most), the same three stats
+    for every course (units written, of the total, hours of reading at 250 words a minute; P90, 4 Nov 2026), progress
+    meter, status, button. Same shape for every course; reports and words stay on the course home."""
+    meta = (f'<span><b>{done}</b> units written</span><span><b>{total}</b> in all</span>'
+            f'<span><b>{hours(words)}</b> h of reading</span>')
     pct = round(100 * done / total) if total else 0
     pill = '<span class="pill live">complete</span>' if status == 'available' else f'<span class="pill prog">{status}</span>'
     label = 'Continue' if status == 'in progress' else ('Open the syllabus' if status == 'coming soon' else 'Open the course')
@@ -352,18 +357,12 @@ def card(theme, color, short, title, blurb, meta, done, total, status, href, ext
 
 
 def root_card(c):
-    meta = f'<span><b>{c["card_units"]}</b> units</span>'
-    meta += f'<span><b>{c["nrep"]}</b> reports</span>' if c['status'] == 'available' else f'<span><b>{c["nrep"]}</b> of {c["content_mods"]} reports</span>'
-    meta += f'<span><b>{c["words"]//1000}k</b> words</span><span><b>{hours(c["words"])}</b> h reading</span>'
-    return card(THEME[c['theme']]['name'], c['color'], f'Course {c["num"]}', c['name'], c['card'], meta, c['nrep'], c['content_mods'], c['status'], f'#{c["home_id"]}')
+    return card(THEME[c['theme']]['name'], c['color'], f'Course {c["num"]}', c['name'], html.escape(c['tile']), c['units_complete'], c['card_units'], c['words'], c['status'], f'#{c["home_id"]}')
 
 
 for c in HISTORY:
     load(c)
 
-ALL_REPORTS = sum(c['nrep'] for c in HISTORY)
-ALL_WORDS = sum(c['words'] for c in HISTORY)
-G = HISTORY[0]
 
 
 def load_markdown(c):
@@ -435,7 +434,8 @@ def md_courses(c):
         out.append(dict(id=pid, home_id=pid, briefs_id=f'briefs-{sc["k"]}' if legacy else f'{pid}-briefs',
                         brief_anchor='b-' if legacy else f'{pid}-b-', parent=c, sc=sc, theme=theme, short=short, key=sc['key'],
                         name=sc['name'], color=sc['color'], units=sc['units'], done=done, nunits=len(sc['units']), nwritten=len(done),
-                        status=('available' if len(done) == len(sc['units']) else 'in progress') if done else 'coming soon', card=sc['tile']))   # a course with no unit filed is coming soon; every unit filed is complete ('available', as a finished history course is; A-5, 3 Nov 2026)
+                        status=('available' if len(done) == len(sc['units']) else 'in progress') if done else 'coming soon',
+                        tile=c.get('tiles', {}).get(sc['key'], sc['tile'])))   # P90: courses.py's one sentence for the home card   # a course with no unit filed is coming soon; every unit filed is complete ('available', as a finished history course is; A-5, 3 Nov 2026)
     return out
 
 
@@ -444,6 +444,12 @@ for c in MARKDOWN:
 MD = [m for c in MARKDOWN for m in md_courses(c)]
 for m in MD:
     m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV)
+    # P90 (4 Nov 2026): a markdown course's words, as a history course's are counted (wc, figures left out): the text of
+    # each written unit's reading page, from its first section to the end of the text (Sources and "How this unit was
+    # made" after it are left out), for the hours of reading on its home card
+    _rid = {m['parent']['written'][u[0]] for u in m['done']}
+    m['words'] = sum(wc(p.split('<div class="report', 1)[1].split('<div class="process"', 1)[0])
+                     for p in m['panels'] if re.search(r' id="([^"]+)"', p).group(1) in _rid and '<div class="report' in p)
 
 
 # Derived fields (backlog row "Academy build: derived fields", 28 Oct 2026). Every number the home, the drawer and the
@@ -478,32 +484,30 @@ for m in MD:
 def dated_units():
     """Every written unit with a recorded date, newest first: a markdown unit's `written` front-matter field; a history
     report's date from provenance.json's `written` map ({course: {module: ISO date}}), which P23 fills (none yet).
-    Each entry: (date, course short, colour, code, title, panel id, model)."""
+    Each entry: (date, course short, colour, code, title, panel id, model).
+    P90 (4 Nov 2026): units filed on the same day are ordered by the course's build order (a markdown course's ORDER in
+    its data file, else its unit order; a history course's syllabus order), the later first, so the newest filed unit
+    leads (four IA units share 2026-11-03, and the sort, stable on the vault's file order, put IA3 first)."""
     out = []
     for m in MD:
         vault = m['parent']['vault_units']
-        for u in m['units']:
+        order = [o[0] if isinstance(o, (tuple, list)) else o for o in getattr(m['parent']['hub'], 'ORDER', [])]
+        for k, u in enumerate(m['units']):
             if u[0] in vault:
                 fm = vault[u[0]][1]
                 if fm.get('written'):
-                    out.append((fm['written'], m['short'], m['color'], u[0], fm.get('title', u[1]), m['parent']['written'][u[0]], fm.get('model', '')))
+                    rank = order.index(u[0]) if u[0] in order else len(order) + k
+                    out.append((str(fm['written']), rank, m['short'], m['color'], u[0], fm.get('title', u[1]), m['parent']['written'][u[0]], fm.get('model', '')))
     for c in HISTORY:
+        pos = list(c['index'])
         for i, d in PROV.get('written', {}).get(c['id'], {}).items():
             if i in c['index']:
-                out.append((d, c['short'], c['color'], i, c['index'][i]['title'], c['slug'](i), c['prov'].get(i, c['default_model'])))
-    return sorted(out, key=lambda x: x[0], reverse=True)
+                out.append((d, pos.index(i), c['short'], c['color'], i, c['index'][i]['title'], c['slug'](i), c['prov'].get(i, c['default_model'])))
+    return [x[:1] + x[2:] for x in sorted(out, key=lambda x: (x[0], x[1]), reverse=True)]
 
 
 DATED = dated_units()
-RECENT = DATED[:5]
-
-
-def totals():
-    return dict(live=len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon'), coming=len(NEXT) + sum(1 for m in MD if m['status'] == 'coming soon'), reports=sum(c['nrep'] for c in HISTORY),
-                units=sum(m['nwritten'] for m in MD), words=sum(c['words'] for c in HISTORY))
-
-
-TOTALS = totals()
+RECENT = DATED[:6]
 
 
 def short_date(iso):
@@ -645,14 +649,10 @@ soon_cards = ''.join(f'<details class="course soon" style="--c:{col}"><summary><
 
 
 def md_card(m):
-    meta = f'<span><b>{m["nunits"]}</b> units</span><span><b>{m["nwritten"]}</b> written</span><span><b>{len(m["parent"]["hub"].AUDIT_LOG)}</b> audit{"s" if len(m["parent"]["hub"].AUDIT_LOG) != 1 else ""}</span>'
-    return card(THEME[m['theme']]['name'], m['color'], f'Course {m["key"]}', m['name'], html.escape(m['card']), meta, m['nwritten'], m['nunits'], m['status'], f'#{m["home_id"]}')
+    return card(THEME[m['theme']]['name'], m['color'], f'Course {m["key"]}', m['name'], html.escape(m['tile']), m['nwritten'], m['nunits'], m['words'], m['status'], f'#{m["home_id"]}')
 
 
-ALL_UNITS = TOTALS['units']
-N_LIVE = TOTALS['live']
 tracks = ''
-track_jump = ''
 for t in THEMES:
     hist = [c for c in HISTORY if c['theme'] == t['id']]
     mds = [m for m in MD if m['theme'] == t['id']]
@@ -664,8 +664,6 @@ for t in THEMES:
     if mds: count += f' · {sum(m["nwritten"] for m in mds)} of {sum(m["nunits"] for m in mds)} units'
     if t['id'] == 'history' and NEXT: count += f' · {len(NEXT)} planned'
     elif soon and n: count += f' · {len(soon)} coming soon'
-    jump = (f'{n} live' + (f' · {len(NEXT)} planned' if t['id'] == 'history' and NEXT else '') + (f' · {len(soon)} coming soon' if soon else '')) if n else (f'{len(soon)} coming soon' if soon else 'planned')
-    track_jump += f'<a class="hbtn alt" href="#track-{t["id"]}" style="--c:{t["color"]}"><span>Track</span><b>{html.escape(t["name"])}</b><small>{jump}</small></a>'
     extra = ''
     if t['id'] == 'history':
         planned = '' if not NEXT else f"""
@@ -690,24 +688,51 @@ for t in THEMES:
     <div class="cgrid">{cards}</div>{extra}
   </section>"""
 
-# the resume card: the reader's last report (shell.js, from localStorage) or, until there is one, the newest dated unit
-# (else the first report of the first course in progress). data-progress carries each course's progress for the meter.
-_prog = {c['home_id']: dict(pct=c['pct'], done=c['nrep'], of=c['content_mods'], what='reports') for c in HISTORY}
-_prog.update({m['home_id']: dict(pct=m['pct'], done=m['nwritten'], of=m['nunits'], what='units') for m in MD})
+# P90 (4 Nov 2026) · the map of Academy in the hero: a sitemap figure drawn by viz.py from the course data at build time.
+# The root, one box per track in the track's tone, under each track one box per live course (its name and units written
+# of its total) linking to the course home, and under a track with planned courses one dashed box with their count; a
+# second drawing for a phone (viz.py's "phone": every level stacked, as wide as the phone frame). Dated by the newest
+# session in the kit changelog, the session that made this build.
+_TONE = {'var(--red)': 1, 'var(--orange)': 2, 'var(--teal)': 3, 'var(--blue)': 4, 'var(--purple)': 5, 'var(--gold)': 6}
+def academy_map():
+    kids = []
+    for t in THEMES:
+        boxes = [dict(label=c['name'], note=f'{c["units_complete"]} of {c["card_units"]} units', href=c['home_id'])
+                 for c in HISTORY if c['theme'] == t['id']]
+        boxes += [dict(label=m['short'], note=f'{m["nwritten"]} of {m["nunits"]} units', href=m['home_id'])
+                  for m in MD if m['theme'] == t['id'] and m['status'] != 'coming soon']
+        planned = (len(NEXT) if t['id'] == 'history' else 0) + sum(1 for m in MD if m['theme'] == t['id'] and m['status'] == 'coming soon')
+        if planned:
+            boxes.append(dict(label=f'{planned} planned', dashed=True))
+        kids.append(dict(label=t['name'], tone=_TONE[t['color']], **({'children': boxes} if boxes else {})))
+    _when = re.findall(r'(\d{1,2}) (\w{3})\w* (\d{4})', cl_sessions[0][0]) if cl_sessions else []
+    when = f' This build: {_when[-1][0]} {_when[-1][1]} {_when[-1][2]}.' if _when else ''
+    cap = ('The map of Academy: each track, its live courses with their units written of the total, and the courses '
+           f'planned. Drawn by kit/viz.py from the course data (kit/courses.py, each course\'s counts, provenance.json) '
+           f'when the site is built.{when}')
+    return dict(kind='sitemap', stack_from=2, phone=dict(stack_from=1), caption=cap,
+                root=dict(label='Academy', tone=6, children=kids))
+MAP = academy_map()
+hero_map = viz.render(MAP)
+
+# the Continue button: the reader's last page (shell.js, from localStorage) or, on a fresh visit, the newest dated unit
+# (else the first report of the first course in progress)
 if RECENT:
     _d, _short, _col, _code, _title, _pid, _model = RECENT[0]
-    fallback = f'<a class="hbtn start" href="#{_pid}" data-target="{_pid}"><span>Start here · newest unit</span><b>{html.escape(_short)} · {html.escape(_code)} {html.escape(_title)}</b></a>'
+    fallback = f'<a class="hbtn start" href="#{_pid}" data-target="{_pid}"><span>Newest unit</span><b>{html.escape(_short)} · {html.escape(_code)} {html.escape(_title)}</b></a>'
 else:
     _c = next((c for c in HISTORY if c['status'] != 'available' and c['first']), HISTORY[0])
-    fallback = f'<a class="hbtn start" href="#{_c["slug"](_c["first"])}" data-target="{_c["slug"](_c["first"])}"><span>Start here</span><b>{_c["short"]} · {_c["first"]} {html.escape(_c["index"][_c["first"]]["title"])}</b></a>'
+    fallback = f'<a class="hbtn start" href="#{_c["slug"](_c["first"])}" data-target="{_c["slug"](_c["first"])}"><span>Begin</span><b>{_c["short"]} · {_c["first"]} {html.escape(_c["index"][_c["first"]]["title"])}</b></a>'
 
-# new since: the dated units, newest first, and the latest kit session
+# new since, at the foot of the home: the latest kit session and the newest dated units, six rows in all, newest first
 recent_rows = ''
+_nrows = 0
 if cl_sessions and 'changelog' not in OMIT:
     _head = cl_sessions[0][0].split(' · ')
     _date, _sess, _title = (_head + ['', ''])[:3]
     recent_rows += f'<a class="hrow" href="#changelog" data-target="changelog"><span class="n">{html.escape(re.sub(r'(\w{3})\w* \d{4}$', r'\1', _date))}</span><span class="t">{md_inline(_title)}<small>{html.escape(_sess)} · the kit changelog</small></span><span class="pill prog">session</span></a>'
-for d, short, col, code, title, pid, model in RECENT:
+    _nrows = 1
+for d, short, col, code, title, pid, model in RECENT[:6 - _nrows]:
     recent_rows += f'<a class="hrow" href="#{pid}" data-target="{pid}" style="--c:{col}"><span class="n">{short_date(d).replace(" 2026", "")}</span><span class="t">{html.escape(code)} · {html.escape(title)}<small>{html.escape(short)}{" · " + html.escape(model) if model else ""}</small></span><span class="pill live">unit</span></a>'
 # "How every course works": the constants. P80 (1 Nov 2026): an edition replaces any line that names a course it does
 # not hold with its own (EDITIONS[...]['rules'], keyed by the line's bold head); the full Academy keeps these as written.
@@ -724,19 +749,12 @@ if set(_own) - {h for h, _ in RULE_LINES}:
 RULES = '\n'.join(f'      <li><strong>{h}</strong> {_own.get(h, t)}</li>' for h, t in RULE_LINES)
 roothome = f"""
 <section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Academy" data-u="HOME" data-c="var(--red)" hidden>
-  <header class="hero resume" data-progress='{json.dumps(_prog)}'>
-    <div class="eyebrow"><span class="u" style="--c:var(--red)">ACADEMY</span> · {N_LIVE} course{"s" if N_LIVE != 1 else ""} live{f" · {TOTALS['coming']} planned" if TOTALS['coming'] else ""} · one reader</div>
+  <header class="hero">
     <h1>Academy</h1>
     <p class="lede">Every self-study course in one place. Pick up where you left off.</p>
-    <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b><span class="rmeter"><span class="bar" aria-hidden="true"><i></i></span><span class="pct mono"></span></span></a>{fallback}</div>
+    {hero_map}
+    <div class="hlinks hl-root"><a class="hbtn cont" href="#home" data-long hidden><span>Continue reading</span><b></b></a>{fallback}</div>
   </header>
-
-{f'''  <section class="recent">
-    <h2 class="hsec">New since</h2>
-    <div class="hrows">{recent_rows}</div>
-  </section>
-''' if recent_rows else ''}
-  <nav class="tjump" aria-label="Tracks">{track_jump}</nav>
   {tracks}
 
   <details class="howto rules">
@@ -745,7 +763,11 @@ roothome = f"""
 {RULES}
     </ol>
   </details>
-  <p class="totals mono">{N_LIVE} course{"s" if N_LIVE != 1 else ""}{f" · {TOTALS['reports']} reports" if HISTORY else ""}{f" · {TOTALS['units']} units" if MD else ""} · {TOTALS['words']:,} words · {hours(TOTALS['words'])} h of reading</p>
+{f'''
+  <section class="recent">
+    <h2 class="hsec">New since</h2>
+    <div class="hrows">{recent_rows}</div>
+  </section>''' if recent_rows else ''}
   {cl_link}
 </section>"""
 
