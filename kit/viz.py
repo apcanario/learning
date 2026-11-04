@@ -32,8 +32,9 @@ built by viz_examples.py, shows one of each on Perqo with its block):
             P90 (4 Nov 2026): optional per node "href" (a panel id: the box is a link to it) and "dashed": true (a
             dashed, untinted box: a planned page); optional "phone": {"stack_from": 1}, a second drawing of the same
             root as wide as a phone frame (PHONE_FRAME), shown below 768 px in place of the wide one (svg.viz-alt).
-            P91 (4 Nov 2026): the Academy home no longer draws its map with them (the bookshelf took its place); the
-            three keys stay, documented, for any unit's sitemap that links its boxes, marks a planned page or needs a phone drawing.
+            P91 (4 Nov 2026): the Academy home no longer draws its map with them (P91's bookshelf, then P92's
+            topography, took its place); the three keys stay, documented, for any unit's sitemap that links its boxes,
+            marks a planned page or needs a phone drawing.
   objects   {"kind": "objects", "objects": [{"id": "claim", "title": "Claim", "attrs": ["amount", ...],
              "actions": ["-> approve", ...], "tone": 2}, ...], "rows": [["company", "policy", null], ...],
              "links": [{"from": "company", "to": "policy", "label": "sets", "from_card": "1", "to_card": "1..*"}]}
@@ -86,24 +87,31 @@ The data kinds (P44, 29 Oct 2026; one of each on the examples page too):
   matrix    with "numeric": true: cells are numbers (or null), shaded in five steps of the figure's "tone" between
             min and max (default the data's); a legend gives each step's range ("scale_label" names it).
 
-The home kind (P91, 4 Nov 2026), drawn as HTML, not SVG, so that it reflows at any width and never scrolls; it is the
-Academy home's bookshelf, declared by build.py from the course data, and not one of the figure kinds a unit declares
-(the Figure kinds page shows those):
+The home kind (P92, 4 Nov 2026; it replaced P91's bookshelf, `shelf`, whose kind, keys and classes are gone): the
+Academy home's topography, declared by build.py from the course data and drawn as SVG at build time, not one of the
+figure kinds a unit declares (the Figure kinds page shows those):
 
-  shelf     {"kind": "shelf", "caption": "...", "tracks": [{"label": "History", "tone": 1, "courses": [
-             {"label": "Greece", "note": "13 of 13 units", "tone": 1, "spines": [{"code": "U3", "title": "Heroes",
-              "href": "greece-u3", "words": 21400, "planned": false, "lit": "Newest · IA7 · 3 Nov", "lit_href": "new"}, ...]},
-             {"label": "8 planned", "volume": true, "title": "Egypt, Persia, ..."}]}, ...]}
-            one spine per unit, in the order given, grouped by track and course, each course's label (and note) under
-            its spines; a spine is a link to "href" (a panel id or an anchor inside one; shell.js routes either) with the
-            unit's code and title as its title and aria-label; written spines are solid in the course's tone, a
-            "planned": true spine is ghosted (a dashed outline, no fill); a spine's height is its words' place between
-            the fewest and the most words on the shelf (--h, 0 to 1; the theme sets the range), and a planned spine
-            without "words" takes the mean of its course's written spines; "lit" (one spine at most) glows in its tone
-            with its text as a link to "lit_href" beside it, the two one item that wraps as one; a "volume": true course
-            is one ghosted volume with its label on it, the planned courses ("title" names them; "href" makes it a link).
-            Each spine carries --i, its place on the shelf, for the theme's
-            staggered rise. A spine without a code, title or href, two lit spines, or a tone outside 1 to 6 raises.
+  contours  {"kind": "contours", "interval": 22000, "patch": false,
+             "rises": [{"label": "History", "words": 510493, "tone": 1}, {"label": "IA8", "tone": 4, "planned": true}, ...],
+             "layouts": [{"name": "tall", "width": 1000, "height": 1000, "spread": 0.095, "grid": 5, "simplify": 0.6,
+                          "at": [[0.5, 0.52], [0.26, 0.22], ...]}, ...]}
+            one rise per written entry of "rises", its height its "words": the field is a sum of smooth bumps (a
+            Gaussian whose outline two angular harmonics push in and out, the phases from the label, so the drawing is
+            the same on every build), each bump's peak exactly its words and its spread "spread" times the layout's
+            width times the cube root of its words over the largest's (a bigger rise is also wider); the field is
+            sampled every "grid" units, cut at every multiple of "interval" words by marching squares, each line
+            simplified to within "simplify" units and written in whole-unit relative steps; each stretch of a line is
+            drawn in the tone of the rise that dominates it there (<g class="ct-rise ct-t{tone}"> per rise, with
+            data-label, data-words and data-rings, the levels its peak stands above). A "planned": true entry needs no
+            words: it is flat, a small dashed ring (<g class="ct-plan">), in no line. Each layout is one <svg
+            class="topo-l topo-{name}" data-layout="{name}"> (preserveAspectRatio slice: it covers its frame); "at"
+            places each rise (fractions of the width and height, one per rise, in order); without it the rises stand in
+            order along the width, 6% clear at each side, evenly spaced, alternately above and below the middle. The layer is <div class="topo">
+            ("patch": true adds topo-patch), aria-hidden, with no text in it; the theme (4h, 4i) gives every stroke and
+            opacity, shows one layout per width and drifts the hero's, never a patch's. The hero declares two layouts
+            (tall below 1100 px, wide from it), one rise per area of knowledge (its words written); each course tile one
+            layout, "patch", one rise per unit of the course, a planned unit flat. A rise without a label or tone, a
+            written rise without words, an "at" that does not give one point per rise, or no written rise raises.
 
 On a phone (below 768 px) every figure draws at its natural size, one SVG unit to one CSS pixel, and scrolls sideways
 inside its frame (.viz-scroll), never the page; shell.js fades the edge that has more drawing and shows the line
@@ -221,6 +229,7 @@ import json
 import math
 import re
 import textwrap
+import zlib
 
 W = 700            # drawing width in user units; the SVG scales to the column
 PHONE_FRAME = 328  # P83 (3 Nov 2026): the scroll frame of a figure on a 390 px phone (16 px gutters, the figure's 14 px padding and 1 px border); a drawing this wide or narrower never scrolls there
@@ -2610,101 +2619,217 @@ def _heat(d):
                 stick=(8 + LW, stick, grid_h) if Wd > PHONE_FRAME else None)
 
 
-# P91 (4 Nov 2026) · the Academy home's bookshelf: HTML, not SVG, so it reflows at any width and never scrolls sideways
-SHELF_CLASS = 'shelf'
-def shelf(d):
-    """The bookshelf of every unit (the module docstring, "The home kind"). Every value a spine shows is the block's;
-    the theme (section 4i) gives every size and colour: --c is the course's tone, --h the spine's height between the
-    theme's --shelf-lo and --shelf-hi, --i its place for the staggered rise."""
-    K = 'shelf'
-    tracks = d.get('tracks')
-    if not tracks:
-        _fail(K, 'tracks must be a non-empty list of {"label", "tone", "courses"}')
-    def tone(o, where):
-        t = o.get('tone')
-        if t is None:
-            return None
-        if not isinstance(t, int) or not 1 <= t <= TONES:
-            _fail(K, f'{where}: tone must be 1 to {TONES}, not {t!r}')
-        return t
-    spines = [s for t in tracks for c in t.get('courses', []) if not c.get('volume') for s in c.get('spines', [])]
-    if not spines:
-        _fail(K, 'no spines: a shelf needs at least one unit')
-    lit = [s for s in spines if s.get('lit')]
-    if len(lit) > 1:
-        _fail(K, f'{len(lit)} lit spines ({", ".join(s.get("code", "?") for s in lit)}); one at most')
-    # a planned spine without words takes its course's mean of written spines, then the shelf's mean
-    known = [s['words'] for s in spines if isinstance(s.get('words'), (int, float))]
-    if not known:
-        _fail(K, 'no spine carries words')
-    for t in tracks:
-        for c in t.get('courses', []):
-            ws = [s['words'] for s in c.get('spines', []) if isinstance(s.get('words'), (int, float)) and not s.get('planned')]
-            for s in c.get('spines', []):
-                if not isinstance(s.get('words'), (int, float)):
-                    s['_w'] = sum(ws) / len(ws) if ws else sum(known) / len(known)
-                else:
-                    s['_w'] = s['words']
-    lo, hi = min(s['_w'] for s in spines), max(s['_w'] for s in spines)
-    i = 0
-    out = ''
-    for k, t in enumerate(tracks):
-        tt = tone(t, f'tracks[{k}]')
-        groups = ''
-        for j, c in enumerate(t.get('courses', [])):
-            ct = tone(c, f'tracks[{k}].courses[{j}]') or tt
-            cs = f' style="--c:var(--viz-{ct})"' if ct else ''
-            if c.get('volume'):
-                lab = c.get('label')
-                if not lab:
-                    _fail(K, f'tracks[{k}].courses[{j}]: a volume needs its label')
-                tip = esc(lab + (' courses: ' + c['title'] if c.get('title') else ''))
-                tag, at = ('a', f' href="#{esc(c["href"])}" data-target="{esc(c["href"])}"') if c.get('href') else ('div', ' role="img"')
-                groups += (f'<div class="shelf-group shelf-vol"{cs}><div class="shelf-books"><{tag} class="spine ghost vol"{at} '
-                           f'title="{tip}" aria-label="{tip}" style="--i:{i}"><span class="sc" aria-hidden="true">{esc(lab)}</span></{tag}></div>'
-                           f'<p class="shelf-label">Planned</p></div>')
-                i += 1
-                continue
-            books = ''
-            for n, s in enumerate(c.get('spines', [])):
-                for key in ('code', 'title', 'href'):
-                    if not s.get(key):
-                        _fail(K, f'tracks[{k}].courses[{j}].spines[{n}]: no {key}')
-                st = tone(s, f'tracks[{k}].courses[{j}].spines[{n}]')
-                h = (s['_w'] - lo) / (hi - lo) if hi > lo else 1.0
-                cls = 'spine' + (' ghost' if s.get('planned') else '') + (' lit' if s.get('lit') else '')
-                tip = f'{s["code"]} · {s["title"]}' + (' (planned)' if s.get('planned') else '')
-                sty = (f'--c:var(--viz-{st});' if st else '') + f'--h:{h:.3f};--i:{i}'
-                one = (f'<a class="{cls}" href="#{esc(s["href"])}" data-target="{esc(s["href"])}" title="{esc(tip)}" aria-label="{esc(tip)}" '
-                       f'data-code="{esc(s["code"])}" data-words="{round(s["_w"])}" style="{sty}"><span class="sc" aria-hidden="true">{esc(s["code"])}</span></a>')
-                if s.get('lit'):
-                    lh = s.get('lit_href')
-                    if not lh:
-                        _fail(K, f'{s["code"]}: a lit spine needs its lit_href')
-                    # P91 check 1: the spine and its label are one item, so the label never wraps away from the spine
-                    one = (f'<span class="shelf-pair">{one}<a class="shelf-lit" href="#{esc(lh)}" data-target="{esc(lh)}"'
-                           f'{f' style="--c:var(--viz-{st})"' if st else ''}><span aria-hidden="true">←</span> {esc(s["lit"])}</a></span>')
-                books += one
-                i += 1
-            lab = esc(c.get('label', ''))
-            note = f' <span class="shelf-note">{esc(c["note"])}</span>' if c.get('note') else ''
-            groups += f'<div class="shelf-group"{cs}><div class="shelf-books">{books}</div><p class="shelf-label">{lab}{note}</p></div>'
-        ts = f' style="--c:var(--viz-{tt})"' if tt else ''
-        out += f'<section class="shelf-track"{ts}><p class="shelf-tname">{esc(t.get("label", ""))}</p><div class="shelf-row">{groups}</div></section>'
-    cap = f'<figcaption>{d["caption"]}</figcaption>' if d.get('caption') else ''
-    t = f'<p class="shelf-title">{esc(d["title"])}</p>' if d.get('title') else ''
-    return f'<figure class="shelf" aria-label="{esc(d.get("title") or "The shelf: every unit of every course")}">{t}<div class="shelf-tracks">{out}</div>{cap}</figure>'
+# P92 (4 Nov 2026) · the Academy home's topography: contour lines drawn from the course data (the module docstring, "The
+# home kind"). Pure Python, so the build needs nothing installed: a sum of smooth bumps sampled on a grid, its contour
+# lines found by marching squares, each line simplified (Ramer-Douglas-Peucker) and written with whole-unit relative
+# path steps, each stretch of a line in the tone of the rise that dominates it.
+CT_RIPPLE = (.16, .09)   # the bump's outline: two angular harmonics, so a rise reads as land, not a target; its peak is unchanged
 
+
+def _ct_bump(r, cx, cy, sx, sy):
+    """One rise as a function of (x, y): its words at its centre, falling off as a Gaussian whose outline is pushed in
+    and out by two harmonics of the angle, their phases from the rise's label (the same drawing on every build)."""
+    seed = zlib.crc32(str(r.get('label', '')).encode())
+    p1, p2 = (seed % 628) / 100, ((seed // 628) % 628) / 100
+    h, (a1, a2) = float(r['words']), CT_RIPPLE
+    def f(x, y):
+        dx, dy = (x - cx) / sx, (y - cy) / sy
+        q = dx * dx + dy * dy
+        if q > 40:
+            return 0.0
+        t = math.atan2(dy, dx)
+        m = 1 + a1 * math.sin(2 * t + p1) + a2 * math.sin(3 * t + p2)
+        return h * math.exp(-q / (2 * m * m))
+    return f
+
+
+def _ct_march(F, nx, ny, g, L):
+    """Marching squares at level L over F[j][i] (the point (i*g, j*g)): the contour as polylines [(points, closed)].
+    Points sit on grid edges, interpolated linearly; a saddle is resolved by the cell's mean; segments are joined by
+    the grid edge they share, so each line is continuous."""
+    def ip(ax, ay, bx, by, va, vb):
+        t = (L - va) / (vb - va) if vb != va else .5
+        return (ax + (bx - ax) * t, ay + (by - ay) * t)
+    PAIRS = {1: (('l', 't'),), 2: (('t', 'r'),), 3: (('l', 'r'),), 4: (('r', 'b'),), 6: (('t', 'b'),), 7: (('l', 'b'),),
+             8: (('b', 'l'),), 9: (('b', 't'),), 11: (('b', 'r'),), 12: (('r', 'l'),), 13: (('r', 't'),), 14: (('t', 'l'),)}
+    adj, pts = {}, {}
+    for j in range(ny - 1):
+        r0, r1 = F[j], F[j + 1]
+        for i in range(nx - 1):
+            v0, v1, v2, v3 = r0[i], r0[i + 1], r1[i + 1], r1[i]          # top left, top right, bottom right, bottom left
+            c = (v0 > L) | (v1 > L) << 1 | (v2 > L) << 2 | (v3 > L) << 3
+            if c == 0 or c == 15:
+                continue
+            x0, y0, x1, y1 = i * g, j * g, (i + 1) * g, (j + 1) * g
+            def e(k):
+                if k == 't': key, p = ('h', i, j), (lambda: ip(x0, y0, x1, y0, v0, v1))
+                elif k == 'r': key, p = ('v', i + 1, j), (lambda: ip(x1, y0, x1, y1, v1, v2))
+                elif k == 'b': key, p = ('h', i, j + 1), (lambda: ip(x0, y1, x1, y1, v3, v2))
+                else: key, p = ('v', i, j), (lambda: ip(x0, y0, x0, y1, v0, v3))
+                if key not in pts:
+                    pts[key] = p()
+                return key
+            if c in (5, 10):
+                mid = (v0 + v1 + v2 + v3) / 4 > L
+                pr = ((('l', 't'), ('r', 'b')) if not mid else (('l', 'b'), ('r', 't'))) if c == 5 else \
+                     ((('t', 'r'), ('b', 'l')) if not mid else (('t', 'l'), ('b', 'r')))
+            else:
+                pr = PAIRS[c]
+            for a, b in pr:
+                ka, kb = e(a), e(b)
+                adj.setdefault(ka, []).append(kb); adj.setdefault(kb, []).append(ka)
+    seen, lines = set(), []
+    def walk(start):
+        line, cur, prev = [start], start, None
+        seen.add(start)
+        while True:
+            nb = [k for k in adj[cur] if k != prev and k not in seen]
+            if not nb:
+                return line
+            prev, cur = cur, nb[0]; seen.add(cur); line.append(cur)
+    for k in adj:                                   # open lines first, from an end (they meet the drawing's edge)
+        if len(adj[k]) == 1 and k not in seen:
+            lines.append(([pts[x] for x in walk(k)], False))
+    for k in adj:
+        if k not in seen:
+            lines.append(([pts[x] for x in walk(k)], True))
+    return lines
+
+
+def _ct_rdp(p, eps):
+    if len(p) < 3:
+        return p
+    (ax, ay), (bx, by) = p[0], p[-1]
+    dx, dy = bx - ax, by - ay
+    n = math.hypot(dx, dy)
+    best, k = -1.0, 0
+    for i in range(1, len(p) - 1):
+        x, y = p[i]
+        dd = abs(dy * x - dx * y + bx * ay - by * ax) / n if n > 1e-9 else math.hypot(x - ax, y - ay)
+        if dd > best:
+            best, k = dd, i
+    if best <= eps:
+        return [p[0], p[-1]]
+    return _ct_rdp(p[:k + 1], eps)[:-1] + _ct_rdp(p[k:], eps)
+
+
+def _ct_simplify(p, closed, eps):
+    if not closed:
+        return _ct_rdp(p, eps)
+    k = max(range(len(p)), key=lambda i: (p[i][0] - p[0][0]) ** 2 + (p[i][1] - p[0][1]) ** 2)   # a ring split at its far point
+    return _ct_rdp(p[:k + 1], eps)[:-1] + _ct_rdp(p[k:] + [p[0]], eps)[:-1]
+
+
+def _ct_d(runs):
+    """Polylines as one path's d: an absolute move, then whole-unit relative steps (rounded on the absolute points,
+    so no error builds up), z for a closed ring."""
+    out = []
+    for p, closed in runs:
+        q = [(round(x), round(y)) for x, y in p]
+        r = [q[0]] + [b for a, b in zip(q, q[1:]) if b != a]
+        if len(r) < 2:
+            continue
+        out.append((f'M{r[0][0]} {r[0][1]}l' + ' '.join(f'{b[0] - a[0]} {b[1] - a[1]}' for a, b in zip(r, r[1:]))).replace(' -', '-') + ('z' if closed else ''))
+    return ''.join(out)
+
+
+def _ct_layout(d, K, lay, n):
+    """Where each rise stands in a layout: its "at" list (fractions of the width and height, one per rise), or, without
+    one, the rises in order along the width (6% kept clear at each side), evenly spaced, alternately a little above and below
+    the middle."""
+    at = lay.get('at')
+    if at is None:
+        return [(.06 + .88 * (k + .5) / n, .5 + (.14 if k % 2 else -.14)) for k in range(n)]   # 6% kept clear at each side
+    if not isinstance(at, list) or len(at) != n or not all(isinstance(a, list) and len(a) == 2 and all(0 <= v <= 1 for v in a) for a in at):
+        _fail(K, f'layout {lay.get("name")!r}: "at" must give one [x, y] (0 to 1) per rise, {n} of them')
+    return at
+
+
+def contours(d):
+    """The topography (the module docstring, "The home kind"): one rise per entry of "rises", its height its words, in
+    every layout; returns the layer's HTML. A written rise is a <g class="ct-rise ct-t{tone}"> holding every stretch of
+    contour line it dominates, with data-label, data-words and data-rings (the contour levels its peak stands above);
+    a planned one ("planned": true) a dashed ring, <g class="ct-plan">, flat (no height, in no line)."""
+    K = 'contours'
+    rises, iv, lays = d.get('rises'), d.get('interval'), d.get('layouts')
+    if not rises:
+        _fail(K, 'rises must be a non-empty list of {"label", "words", "tone"}')
+    if not isinstance(iv, (int, float)) or iv <= 0:
+        _fail(K, '"interval" (the words between two contour levels) must be a positive number')
+    if not lays:
+        _fail(K, '"layouts" must list at least one {"name", "width", "height", "spread"}')
+    for k, r in enumerate(rises):
+        if not r.get('label'):
+            _fail(K, f'rises[{k}]: no label')
+        _tone(r, None, K)
+        if not r.get('planned') and not (isinstance(r.get('words'), (int, float)) and r['words'] > 0):
+            _fail(K, f'rises[{k}] ({r["label"]}): a written rise needs its words, more than 0')
+    live = [k for k, r in enumerate(rises) if not r.get('planned')]
+    if not live:
+        _fail(K, 'no written rise: nothing to draw')
+    wmax = max(rises[k]['words'] for k in live)
+    svgs = []
+    for lay in lays:
+        W, H, g = lay.get('width'), lay.get('height'), lay.get('grid', 5)
+        if not all(isinstance(v, (int, float)) and v > 0 for v in (W, H, g, lay.get('spread'))):
+            _fail(K, f'layout {lay.get("name")!r}: width, height, spread and grid must be positive numbers')
+        at = _ct_layout(d, K, lay, len(rises))
+        sp, eps = lay['spread'], lay.get('simplify', .6)
+        # a rise's spread grows with the cube root of its words (a bigger hill is wider), the same in x and y
+        fs = {k: _ct_bump(rises[k], at[k][0] * W, at[k][1] * H, sp * W * (rises[k]['words'] / wmax) ** (1 / 3),
+                          sp * W * (rises[k]['words'] / wmax) ** (1 / 3)) for k in live}
+        nx, ny = int(W // g) + 1, int(H // g) + 1
+        C = {k: [[f(i * g, j * g) for i in range(nx)] for j in range(ny)] for k, f in fs.items()}
+        F = [[sum(C[k][j][i] for k in live) for i in range(nx)] for j in range(ny)]
+        top = max(max(row) for row in F)
+        per = {k: [] for k in live}
+        def dom(p):
+            i, j = min(nx - 1, max(0, round(p[0] / g))), min(ny - 1, max(0, round(p[1] / g)))
+            return max(live, key=lambda k: C[k][j][i])
+        for lv in range(1, int(top // iv) + 1):
+            for p, closed in _ct_march(F, nx, ny, g, lv * iv):
+                p = _ct_simplify(p, closed, eps)
+                if len(p) < 2:
+                    continue
+                ds = [dom(x) for x in p]
+                if len(set(ds)) == 1:
+                    per[ds[0]].append((p, closed)); continue
+                seq, dd = (p + [p[0]], ds + [ds[0]]) if closed else (p, ds)
+                run, who = [seq[0]], dd[0]
+                for x, w in zip(seq[1:], dd[1:]):   # a stretch per dominating rise; neighbours share their boundary point
+                    run.append(x)
+                    if w != who:
+                        per[who].append((run, False)); run, who = [x], w
+                per[who].append((run, False))
+        body = ''
+        for k, r in enumerate(rises):
+            t = r.get('tone')
+            tc = f' ct-t{t}' if t else ''
+            if r.get('planned'):
+                rr = max(2.0, sp * W * .55)
+                body += (f'<g class="ct-plan{tc}" data-label="{esc(r["label"])}"><circle cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" '
+                         f'r="{rr:.0f}"/></g>')
+                continue
+            i, j = min(nx - 1, round(at[k][0] * W / g)), min(ny - 1, round(at[k][1] * H / g))
+            rings = int(F[j][i] // iv)
+            body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{rings}">'
+                     f'<path d="{_ct_d(per[k])}"/></g>')
+        nm = esc(lay.get('name', ''))
+        svgs.append(f'<svg class="topo-l topo-{nm}" data-layout="{nm}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid slice" '
+                    f'xmlns="http://www.w3.org/2000/svg" focusable="false">{body}</svg>')
+    cls = 'topo' + (' topo-patch' if d.get('patch') else '')
+    return f'<div class="{cls}" aria-hidden="true">{"".join(svgs)}</div>'
 
 KINDS = {'timeline': timeline, 'compare': compare, 'tree': tree, 'flow': flow,
          'sitemap': sitemap, 'objects': objects, 'decision': decision, 'matrix': matrix,
          'states': states, 'swimlanes': swimlanes, 'wireflow': wireflow,
          'line': line, 'bars': bars, 'scatter': scatter, 'range': range_}
-# P91: the home kind, HTML not SVG, not on the Figure kinds page (viz_examples.py shows one example of every kind in KINDS)
-HOME_KINDS = {'shelf': shelf}
+# P92: the home kind, the topography (P91's shelf is gone), not on the Figure kinds page (viz_examples.py shows one
+# example of every kind in KINDS)
+HOME_KINDS = {'contours': contours}
 
 
-_LISTS = {'tracks', 'courses', 'spines', 'events', 'spans', 'ticks', 'rows', 'steps', 'objects', 'attrs', 'actions', 'lines', 'cols', 'cells', 'series',
+_LISTS = {'rises', 'layouts', 'at', 'events', 'spans', 'ticks', 'rows', 'steps', 'objects', 'attrs', 'actions', 'lines', 'cols', 'cells', 'series',
           'points', 'states', 'transitions', 'screens', 'links', 'lanes', 'children', 'branches', 'legend', 'values',
           'annotations', 'yticks', 'xticks', 'names'}
 
@@ -2761,9 +2886,9 @@ VIZ_KEYS = {
                 'points': {'label', 'x', 'y', 'tone'}, 'quadrants': {'x', 'y', 'names'}},
     'range': {'.': {'unit', 'unit_one', 'years', 'era', 'min', 'max', 'ticks', 'decimals', 'xlabel', 'rows'},
               'rows': {'label', 'low', 'high', 'point', 'low_src', 'high_src', 'tone'}},
-    # P91: the home's bookshelf (HOME_KINDS)
-    'shelf': {'.': {'tracks'}, 'tracks': {'label', 'tone', 'courses'}, 'courses': {'label', 'note', 'tone', 'spines', 'volume', 'title', 'href'},
-              'spines': {'code', 'title', 'href', 'words', 'planned', 'lit', 'lit_href', 'tone'}},
+    # P92: the home's topography (HOME_KINDS), the hero's and each course tile's
+    'contours': {'.': {'interval', 'rises', 'layouts', 'patch'}, 'rises': {'label', 'words', 'tone', 'planned'},
+                 'layouts': {'name', 'width', 'height', 'spread', 'grid', 'simplify', 'at'}},
 }
 NODE_OF = {'scatter': {('.', 'x'): 'axis', ('.', 'y'): 'axis'}}
 

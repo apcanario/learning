@@ -123,7 +123,7 @@ def load(c):
     c['slug'] = lambda i, p=c['prefix']: p + i.replace('.', '')
 
     panels, total = [], 0
-    c['wby'] = {}   # P91: each report's words, for its unit's spine on the home's shelf
+    c['wby'] = {}   # P91: each report's words (P92: for its unit's rise in the course tile's contour patch)
     ucol = c['unit_colors']
     for i, meta in c['index'].items():
         frag = vault.report_html(c, i)   # P71-3: the report's Markdown in the vault, rendered to its fragment, figures drawn
@@ -337,11 +337,13 @@ def syllabus(c):
 </section>'''
 
 
-def card(theme, color, short, title, blurb, done, total, words, status, href, external=False):
+def card(theme, color, short, title, blurb, done, total, words, status, href, external=False, patch=''):
     """A catalogue card on the home: the chip row (track and course, status pill), the title, the one-sentence tile
     (two lines at most) and the same three stats for every course (units written, of the total, hours of reading at
     250 words a minute; P90, 4 Nov 2026); the whole card is the link. P91 (4 Nov 2026, Pedro: "title, tile line, three
-    stats, no button"): the progress meter and the button are gone."""
+    stats, no button"): the progress meter and the button are gone. P92 (4 Nov 2026, Pedro: "each tile with the same
+    information displayed, with each course's respective content"): under the stats, the course's own contour patch
+    (`tile_patch`: one rise per written unit by its words, a planned unit flat), aria-hidden."""
     meta = (f'<span><b>{done}</b> units written</span><span><b>{total}</b> in all</span>'
             f'<span><b>{hours(words)}</b> h of reading</span>')
     pill = '<span class="pill live">complete</span>' if status == 'available' else f'<span class="pill prog">{status}</span>'
@@ -350,12 +352,12 @@ def card(theme, color, short, title, blurb, done, total, words, status, href, ex
     <div class="ctop"><span class="cname"><span class="cpart">{html.escape(theme)} ·</span> <span class="cpart">{html.escape(short)}</span></span>{pill}</div>
     <span class="ctitle">{html.escape(title)}</span>
     <p>{blurb}</p>
-    <div class="cstats">{meta}</div>
+    <div class="cstats">{meta}</div>{patch}
   </a>'''
 
 
 def root_card(c):
-    return card(THEME[c['theme']]['name'], c['color'], f'Course {c["num"]}', c['name'], html.escape(c['tile']), c['units_complete'], c['card_units'], c['words'], c['status'], f'#{c["home_id"]}')
+    return card(THEME[c['theme']]['name'], c['color'], f'Course {c["num"]}', c['name'], html.escape(c['tile']), c['units_complete'], c['card_units'], c['words'], c['status'], f'#{c["home_id"]}', patch=tile_patch(c))
 
 
 for c in HISTORY:
@@ -447,7 +449,7 @@ for m in MD:
     # made" after it are left out), for the hours of reading on its home card
     _pw = {re.search(r' id="([^"]+)"', p).group(1): wc(p.split('<div class="report', 1)[1].split('<div class="process"', 1)[0])
            for p in m['panels'] if '<div class="report' in p}
-    m['wby'] = {u[0]: _pw[m['parent']['written'][u[0]]] for u in m['done'] if m['parent']['written'][u[0]] in _pw}   # P91: per unit, for its spine
+    m['wby'] = {u[0]: _pw[m['parent']['written'][u[0]]] for u in m['done'] if m['parent']['written'][u[0]] in _pw}   # P91: per unit (P92: for its rise in the tile's patch)
     m['words'] = sum(_pw[r] for r in {m['parent']['written'][u[0]] for u in m['done']} if r in _pw)
 
 
@@ -672,11 +674,64 @@ backlog = f"""
   {dc_body}
 </section>"""
 
+# P92 (4 Nov 2026) · the home's topography (Pedro, 13:16: "SVG contours from the data, each area a rise by its words").
+# viz.py's home kind "contours", declared here from the course data and drawn when the site is built. The hero: one
+# rise per area of knowledge (THEMES, in order), its height the words written in its live courses (a history course's
+# reports, a markdown course's reading pages, as the cards count them), a contour every HERO_INTERVAL words, in two
+# fixed layouts: tall (below 1100 px; every rise inside the part of the square drawing a phone's hero shows) and wide
+# (from 1100 px, across the full width beside the sidebar). Each course tile: one rise per unit of the course in its
+# order (a history course's syllabus units, the audit unit left out; a markdown course's units), a written unit by its
+# words, a planned one flat (a dashed ring), a contour every fifth of the course's largest unit, so every tile reads at
+# the same density; the tile's numbers say the rest.
+_TONE = {'var(--red)': 1, 'var(--orange)': 2, 'var(--teal)': 3, 'var(--blue)': 4, 'var(--purple)': 5, 'var(--gold)': 6}
+NEWEST = DATED[0] if DATED else None
+HERO_INTERVAL = 22000   # words between two of the hero's contour levels: History's 510k words stand 23 levels up, an area of 67k three
+HERO_AT = {             # where each area's rise stands, in THEMES order (fractions of the layout's width and height)
+    'tall': [[.50, .52], [.26, .22], [.76, .27], [.70, .80]],
+    'wide': [[.42, .52], [.08, .24], [.80, .26], [.74, .80]],
+}
+if any(len(v) != len(THEMES) for v in HERO_AT.values()):
+    raise SystemExit(f'build.py HERO_AT places {len(HERO_AT["tall"])} rises; courses.py has {len(THEMES)} areas: give each a place')
+AREA_WORDS = {t['id']: sum(c['words'] for c in HISTORY if c['theme'] == t['id']) + sum(m['words'] for m in MD if m['theme'] == t['id'] and m['status'] != 'coming soon')
+              for t in THEMES}
+HERO_TOPO = dict(kind='contours', interval=HERO_INTERVAL,
+                 rises=[dict(label=t['name'], tone=_TONE[t['color']], **(dict(words=AREA_WORDS[t['id']]) if AREA_WORDS[t['id']] else dict(planned=True))) for t in THEMES],
+                 layouts=[dict(name='tall', width=1000, height=1000, spread=.095, at=HERO_AT['tall']),
+                          dict(name='wide', width=1000, height=571, spread=.095, at=HERO_AT['wide'])])
+hero_topo = viz.render(HERO_TOPO)
+
+
+def unit_rises(c):
+    """A course's units in order for its tile's patch: (code, words or None when the unit is not written)."""
+    if 'units' in c and 'umap' in c:                    # a history course: its syllabus units, the audit unit left out
+        out = []
+        for u, name, why, mods in c['units']:
+            if u == c['audit_unit']:
+                continue
+            done = all(m[0] in c['done'] for m in mods)
+            out.append((f'U{u}', sum(c['wby'].get(m[0], 0) for m in mods) if done else None))
+        return out
+    return [(u[0], m_w) for u in c['units'] for m_w in [c['wby'].get(u[0]) if u[0] in c['parent']['written'] else None]]
+
+
+def tile_patch(c):
+    """The course tile's contour patch, drawn by viz.py's contours kind (patch: static, one layout)."""
+    us = unit_rises(c)
+    tone = _TONE[c['color']]
+    top = max((w for _, w in us if w), default=0)
+    if not top:
+        return ''
+    blk = dict(kind='contours', patch=True, interval=top / 5.5,
+               rises=[dict(label=k, tone=tone, **(dict(words=w) if w else dict(planned=True))) for k, w in us],
+               layouts=[dict(name='patch', width=720, height=180, spread=round(.48 / len(us), 4), grid=6, simplify=.5)])
+    return viz.render(blk)
+
+
 soon_cards = ''.join(f'<details class="course soon" style="--c:{col}"><summary><span class="cname">{html.escape(short)}</span><span class="ctitle">{html.escape(name)}</span><span class="pill">coming soon</span></summary><p class="nscope">{html.escape(scope)}</p><p class="nspine"><span>Spine</span>{html.escape(spine)}</p></details>' for short, name, col, scope, spine in NEXT)
 
 
 def md_card(m):
-    return card(THEME[m['theme']]['name'], m['color'], f'Course {m["key"]}', m['name'], html.escape(m['tile']), m['nwritten'], m['nunits'], m['words'], m['status'], f'#{m["home_id"]}')
+    return card(THEME[m['theme']]['name'], m['color'], f'Course {m["key"]}', m['name'], html.escape(m['tile']), m['nwritten'], m['nunits'], m['words'], m['status'], f'#{m["home_id"]}', patch=tile_patch(m))
 
 
 tracks = ''
@@ -714,78 +769,6 @@ for t in THEMES:
     <header class="thead"><div class="ttx"><span class="cname">Track</span><h2>{html.escape(t['name'])}</h2><p>{html.escape(t['lede'])}</p></div><span class="tmeta">{count}</span></header>
     <div class="cgrid">{cards}</div>{extra}
   </section>"""
-
-# P91 (4 Nov 2026) · the bookshelf, the home's hero (Pedro: a bookshelf of every unit, the newest lit). A shelf block
-# (viz.py's home kind "shelf", drawn as HTML so it reflows and never scrolls sideways) declared from the course data:
-# one spine per unit of every live course, in course and unit order, grouped by track and course; a history course's
-# syllabus units (the audit unit left out, as its card counts them), a markdown course's units; a spine is written when
-# its unit is filed (a history unit when every module in it is) and links to the unit (a markdown unit's reading page,
-# a history unit's card on its course home, #greece-u3), a planned spine to the course's briefs at the unit (a history
-# unit to its syllabus section); its words give its height; the newest dated unit (the first of DATED) is lit, its label
-# "Newest · IA7 · 3 Nov" a link to What's new; the eight planned history courses are one ghosted volume.
-_TONE = {'var(--red)': 1, 'var(--orange)': 2, 'var(--teal)': 3, 'var(--blue)': 4, 'var(--purple)': 5, 'var(--gold)': 6}
-NEWEST = DATED[0] if DATED else None
-def _newest_in(home, codes):
-    return NEWEST is not None and NEWEST['home'] == home and NEWEST['code'] in codes
-def _lit(sp):
-    sp['lit'] = f'Newest · {NEWEST["code"]} · {short_date(NEWEST["date"]).rsplit(" ", 1)[0]}'
-    sp['lit_href'] = 'new'
-def shelf_block():
-    tracks = []
-    for t in THEMES:
-        courses = []
-        for c in HISTORY:
-            if c['theme'] != t['id']:
-                continue
-            sp = []
-            for u, name, why, mods in c['units']:
-                if u == c['audit_unit']:
-                    continue
-                done = all(m[0] in c['done'] for m in mods)
-                x = dict(code=f'U{u}', title=f'{c["short"]} unit {u}: {name}', tone=_TONE[c['color']],
-                         href=f'{c["home_id"]}-u{u}' if done else f'{c["syl_anchor"]}-u{u}')
-                ws = [c['wby'][m[0]] for m in mods if m[0] in c['wby']]
-                if ws and done:
-                    x['words'] = sum(ws)
-                if not done:
-                    x['planned'] = True
-                if _newest_in(c['home_id'], [m[0] for m in mods]):
-                    _lit(x)
-                sp.append(x)
-            courses.append(dict(label=c['short'], note=f'{sum(1 for x in sp if not x.get("planned"))} of {len(sp)}', tone=_TONE[c['color']], spines=sp))
-        for m in MD:
-            if m['theme'] != t['id'] or m['status'] == 'coming soon':
-                continue
-            sp = []
-            for u in m['units']:
-                done = u[0] in m['parent']['written']
-                x = dict(code=u[0], title=f'{m["short"]}: {u[1]}', tone=_TONE[m['color']],
-                         href=m['parent']['written'][u[0]] if done else f'{m["brief_anchor"]}{u[0].lower()}')
-                if done and u[0] in m['wby']:
-                    x['words'] = m['wby'][u[0]]
-                if not done:
-                    x['planned'] = True
-                if _newest_in(m['home_id'], [u[0]]):
-                    _lit(x)
-                sp.append(x)
-            courses.append(dict(label=m['short'], note=f'{m["nwritten"]} of {m["nunits"]}', tone=_TONE[m['color']], spines=sp))
-        planned = (len(NEXT) if t['id'] == 'history' else 0)
-        if planned:
-            courses.append(dict(label=f'{planned} planned', volume=True, title=', '.join(n[0] for n in NEXT), href='planned-courses'))
-        if courses:
-            tracks.append(dict(label=t['name'], tone=_TONE[t['color']], courses=courses))
-    cap = ('One spine per unit: solid is written, outlined is planned, the height is its length in words (a planned unit takes its course\'s average). '
-           'Drawn from the course data when the site is built.')
-    return dict(kind='shelf', caption=cap, tracks=tracks)
-SHELF = shelf_block()
-hero_shelf = viz.render(SHELF)
-# the live totals beside the headline on the desktop (theme 6): units written on the shelf, hours of reading at 250
-# words a minute, courses live; every number from the data at build time
-_sp = [x for t in SHELF['tracks'] for c in t['courses'] if not c.get('volume') for x in c['spines']]
-TOT = dict(units=sum(1 for x in _sp if not x.get('planned')), words=sum(c['words'] for c in HISTORY) + sum(m['words'] for m in MD),
-           live=len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon'))
-hero_totals = (f'<div class="htot" aria-label="Academy in numbers"><div><b>{TOT["units"]}</b><span>units written</span></div>'
-               f'<div><b>{hours(TOT["words"])}</b><span>hours of reading</span></div><div><b>{TOT["live"]}</b><span>courses live</span></div></div>')
 
 # What's new (P91): every unit filed and every course started, newest first, grouped by day; and its first six rows
 # as New since at the foot of the home
@@ -829,6 +812,14 @@ whatsnew = f"""
   </header>
   {''.join(f'<section class="newday" data-day="{d}"><h2 class="hsec">{short_date(d)}</h2><div class="hrows">{"".join(new_row(x) for x in xs)}</div></section>' for d, xs in _days)}
 </section>"""
+# P92 (4 Nov 2026) · the hero's area line (Pedro: the area word cycling under "Academy", each in its colour): the four
+# areas of knowledge stacked in one cell, shown in turn by the theme's keyframes (opacity and transform, no script),
+# hidden from a screen reader, which reads the static line after it; under reduced motion the static line shows and
+# nothing moves. And the quiet link to What's new, naming the newest unit and its day, as P91's shelf label did.
+hero_areas = ('<p class="harea" aria-hidden="true">' + ''.join(f'<span class="harea-w" style="--c:{t["color"]};--k:{k}">{html.escape(t["name"])}</span>' for k, t in enumerate(THEMES)) + '</p>'
+              + '<p class="harea-all">' + '<span class="harea-dot">&nbsp;· </span>'.join(f'<span style="--c:{t["color"]}">{html.escape(t["name"])}</span>' for t in THEMES) + '</p>')
+hero_new = (f'<a class="hnew" href="#new" data-target="new"><span>What\'s new · {html.escape(NEWEST["code"])} · {short_date(NEWEST["date"]).rsplit(" ", 1)[0]}</span>'
+            '<span class="hnew-a" aria-hidden="true">→</span></a>') if NEWEST else ''
 new_link = '<div class="hlinks" data-one><a class="hbtn alt" href="#new" data-target="new"><span>What\'s new</span><b>Every unit and report filed and every course started, by day</b></a></div>'
 # "How every course works": the constants. P80 (1 Nov 2026): an edition replaces any line that names a course it does
 # not hold with its own (EDITIONS[...]['rules'], keyed by the line's bold head); the full Academy keeps these as written.
@@ -845,10 +836,14 @@ if set(_own) - {h for h, _ in RULE_LINES}:
 RULES = '\n'.join(f'      <li><strong>{h}</strong> {_own.get(h, t)}</li>' for h, t in RULE_LINES)
 roothome = f"""
 <section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Academy" data-u="HOME" data-c="var(--red)" hidden>
-  <header class="hero">
-    <div class="htop"><h1>Academy</h1>{hero_totals}</div>
-    <p class="lede">Every self-study course in one place. Pick up where you left off.</p>
-    {hero_shelf}
+  <header class="hero hhome">
+    {hero_topo}
+    <div class="hcopy">
+      <h1>Academy</h1>
+      {hero_areas}
+      <p class="lede">Every self-study course in one place. Pick up where you left off.</p>
+      {hero_new}
+    </div>
   </header>
   {tracks}
 

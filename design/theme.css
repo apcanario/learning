@@ -14,11 +14,13 @@
    4  Components from Personal Mythology
       4a report  4b home and course cards  4c syllabus and prompts
       4d era ribbon  4e rule blocks and parts  4f root home  4g changelog
-      4h learner home (the headline and, on the desktop, the live totals; slim course cards; new since and What's new;
-         folded planned lists)
+      4h learner home (since 6.5 the hero: the topography behind the headline, the areas cycling under it, the
+         lede, the quiet link to What's new; the area headers; slim course tiles; new since and What's new; folded
+         planned lists)
       4i figures (kit/viz.py: timeline, compare, tree, flow; since 5.2 sitemap, objects, decision,
          matrix, states, swimlanes, wireflow; since 5.4 line, bars, scatter, range, the numeric matrix
-         and the phone scroll frame; classes only, no colour attributes; since 6.4 the home's bookshelf, HTML)
+         and the phone scroll frame; classes only, no colour attributes; since 6.5 the home's contours, the hero's
+         and each tile's patch; 6.4's bookshelf is gone)
    8  Swiss pass (version 5): type scale up, colour as a field, hard corners, rules not shadows
    5  Components added for hubs (the history site has no equivalent)
    6  Responsive: tablet (from 768 px) and desktop (from 1100 px); the phone
@@ -27,6 +29,13 @@
       that can hover; equal-height catalogue cards with the button on one line
    9  Reading layout (P68): scope line, sticky section bar, one section at a time,
       numbered section bands, next and previous, Sources and "How this unit was made"
+   Version 6.5, 4 Nov 2026 (P92): the home's hero is type first over a topography drawn from the data (4h: the contour
+   layer full width beside the sidebar, drifting a few pixels over 30 s by transform where motion is welcome, still
+   otherwise; the four areas cycling under "Academy" in their tones, opacity and transform only, the static line under
+   reduced motion; the quiet outlined link to What's new; the hero 70% of a phone's screen, so the first area peeks);
+   4i: the contour classes and each course tile's static patch; the area header is the name only below 768 px (6: the
+   lede and count from it); body is the inline-size container the hero's full bleed is measured against; the
+   bookshelf, .htop and .htot and the hero's 1100 px full-bleed rule are gone.
    Version 6.4, 4 Nov 2026 (P91): the home's hero is the bookshelf (4i: one spine per unit, solid written, dashed planned,
    the newest lit; the rise on load where motion is welcome), full-bleed on the desktop with the live totals big beside the
    headline (6); What's new (4h); the card's meter and button gone; ids inside a page stop clear of the top bar (3); the
@@ -50,6 +59,7 @@
   --fg:#ececf1;--muted:#9a9aa6;--dim:#6b6b78;
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
+  --topo-a:.3;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page) and a tile's patch */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
   --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -68,6 +78,7 @@
   --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
   --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
   --on-accent:#f5f2eb;
+  --topo-a:.26;--topo-p:.6;
   --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }}
@@ -76,6 +87,7 @@
   --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
   --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
   --on-accent:#f5f2eb;
+  --topo-a:.26;--topo-p:.6;
   --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }
@@ -150,12 +162,15 @@ a.ib{text-decoration:none}
   .backdrop{transition:opacity .2s}
 }
 
+/* P92: the body is an inline-size container, so 100cqw is the width beside the sidebar less any scrollbar, the width
+   the home's hero bleeds to (4h); it is not a containing block for the fixed bar and drawer */
+body{container-type:inline-size}
 /* reading column: 700 px max, 16 px gutters, one panel visible at a time */
 main{max-width:700px;margin:0 auto;padding-block:22px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 /* P90: a page opened from a link with its panel's id (#home, #rome) lands at the top, its title clear of the fixed bar: the
    browser's own jump to the panel stops where the column starts, not with the panel under the bar */
 .panel{scroll-margin-top:calc(var(--bar) + 22px)}
-/* P91: so does any id inside a page that a link or a shelf spine opens (a unit card #greece-u3, a brief #ux-ia-b-ia8, a
+/* P91: so does any id inside a page that a link opens (a unit card #greece-u3, a brief #ux-ia-b-ia8, a
    syllabus unit): it stops clear of the bar, not under it (a reading page's own ids keep section 9's margin) */
 .panel [id]{scroll-margin-top:calc(var(--bar) + env(safe-area-inset-top,0px) + 12px)}
 /* vertical rhythm: top-level blocks of a home, syllabus, changelog or hub page never touch */
@@ -377,18 +392,43 @@ details.course.soon .nscope{font-size:14px;margin:0 0 10px;line-height:1.5}
 details.course.soon .nspine{font-size:12.5px;color:var(--muted);margin:0 0 14px}
 details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-right:8px}
 
-/* 4h · learner home (Academy root; P90, 4 Nov 2026; P91, 4 Nov 2026): the hero (the headline, on the desktop the live
-   totals beside it, the lede, the bookshelf: 4i), the track sections with their slim cards, the constants, the site
-   pages, then New since and the one link to What's new. No Continue on the home (P91): each course home keeps its own. */
-.htop{display:flex;align-items:flex-end;justify-content:space-between;gap:12px 28px;flex-wrap:wrap;margin:0 0 14px}
-.hero .htop h1{margin:0}
-/* the live totals: hidden below 1100 px (the phone's first screen is the headline, the lede and the shelf); set big beside
-   the headline on the desktop (section 6) */
-.htot{display:none}
-.htot div{display:flex;flex-direction:column;gap:6px;padding-top:8px;border-top:3px solid var(--c)}
-.htot div:nth-child(1){--c:var(--red)}.htot div:nth-child(2){--c:var(--teal)}.htot div:nth-child(3){--c:var(--gold)}
-.htot b{font-family:var(--mono);font-weight:400;font-size:56px;line-height:.95;letter-spacing:-.04em;color:var(--fg);font-variant-numeric:tabular-nums}
-.htot span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+/* 4h · learner home (Academy root; P90, 4 Nov 2026; P91, 4 Nov 2026; P92, 4 Nov 2026): the hero, the area sections
+   with their course tiles, the constants, the site pages, then New since and the one link to What's new. No Continue
+   on the home (P91): each course home keeps its own.
+   The hero (P92, Pedro 4 Nov 2026 from 13:16, after research into 2026 heroes: type first, the action in view, motion
+   beside the headline, never heavy motion behind it, a still fallback for every animation): the topography (.topo,
+   4i) behind the headline "Academy"; under it the four areas cycling (.harea: the words stacked in one cell, each in
+   its area's tone, shown in turn by opacity and transform, hidden from a screen reader) and the static line that names
+   all four (.harea-all: read by a screen reader, and the line a reader sees under reduced motion, when nothing moves);
+   the lede; the quiet link to What's new (.hnew: outlined, text weight, not a filled button). It bleeds to the full
+   width beside the sidebar (100cqw of the body, section 3) with its text kept in the column, and stands 70% of the
+   screen tall, so on a phone the first area's heading peeks at the bottom. */
+.panel.root>.hero.hhome{position:relative;isolation:isolate;margin-inline:calc((100% - 100cqw) / 2);padding:0 calc((100cqw - 100%) / 2) 24px;
+  min-height:70svh;display:flex;flex-direction:column;justify-content:center}
+.hcopy{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.hhome h1{margin:0 0 10px}
+/* the area line: large text (28 px), so a tone is read at 3:1 (the dark blue gives 4.31 on the page) */
+.harea,.harea-all{margin:0 0 18px;font-size:28px;line-height:1.15;font-weight:600;letter-spacing:-.02em}
+.harea{display:none}
+.harea-w,.harea-all>span{color:var(--c)}
+.harea-all{text-wrap:balance}
+.harea-all>.harea-dot{color:var(--muted)}
+.hhome .lede{margin:0 0 18px}
+.hnew{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border:1px solid var(--line-2);border-radius:2px;background:transparent;color:var(--fg);text-decoration:none;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em}
+.hnew-a{color:var(--muted)}
+@media (hover:hover){.hnew:hover{border-color:var(--muted);background:var(--hover)}}
+.hnew:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){
+  .harea{display:grid}
+  .harea-w{grid-area:1 / 1;opacity:0;animation:harea 12s linear calc(var(--k,0) * 3s - .4s) infinite both}
+  .harea-all{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0}   /* for a screen reader only */
+}
+/* each word in for a quarter of the cycle (three seconds), the next crossing as it goes */
+@keyframes harea{0%{opacity:0;transform:translateY(.3em)}3%,22%{opacity:1;transform:none}25%,100%{opacity:0;transform:translateY(-.3em)}}
+/* the area sections: on a phone the header is the area's name only (Pedro: the lede "on the desktop only, and on mobile
+   also ignore the count"); from 768 px it holds the "Track" label, the name, the lede and the count (section 6) */
+.panel.root .thead .cname,.panel.root .thead p,.panel.root .tmeta{display:none}
+.panel.root .thead h2{margin:0}
 .panel.root>.hlinks .hbtn b{white-space:normal;text-wrap:balance}   /* P90: the home's page links wrap on a phone, never cut short */
 .panel.root>.hlinks:not([data-one]){grid-template-columns:1fr}   /* P91: the three site links one to a row on a phone, three across from 768 px (6) */
 /* a course card on the home: the one-sentence tile line, two lines at most */
@@ -440,45 +480,27 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 .viz{margin:0 0 20px;background:var(--card);border:1px solid var(--line);padding:14px 14px 10px;min-width:0}
 .viz-title{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
 .viz-scroll{overflow-x:auto;overflow-y:hidden}
-/* the bookshelf (P91, 4 Nov 2026): the home's hero, viz.py's home kind "shelf", drawn as HTML so it reflows at any width
-   and never scrolls. One spine per unit, grouped by track (.shelf-track, its name in the track's tone) and course
-   (.shelf-group: its spines standing on a rule in the course's tone, its name and count under them). A written spine is
-   solid in its course's tone, a planned one a dashed outline with no fill (.ghost); the planned courses are one ghosted
-   volume (.vol). A spine's height is --h (0 to 1, its words' place on the shelf, from viz.py) between --shelf-lo and
-   --shelf-hi; it is never under 44 px tall or 24 px wide (section 6's tap targets). The newest spine is lit (.lit), a
-   glow in its tone, with its label beside it (.shelf-lit), a link to What's new. The spines rise on load, staggered by
-   --i, only where motion is welcome. */
-:root{--spine-w:24px;--spine-gap:4px;--shelf-lo:44px;--shelf-hi:104px}
-.shelf{margin:22px 0 0;min-width:0}
-.shelf-tracks{display:flex;flex-direction:column;gap:20px}
-.shelf-track{min-width:0;display:flex;flex-direction:column}
-.shelf-track>.shelf-row{flex:1 1 auto}   /* side by side, two tracks' shelves stand on one line: the row fills the track, its groups at the bottom */
-.shelf-tname{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin:0 0 10px}
-.shelf-tname::before{content:"";flex:0 0 10px;height:10px;background:var(--c)}   /* the track's tone as a mark, not as the text's colour (dark blue text is under 4.5:1) */
-.shelf-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 24px}
-.shelf-group{min-width:0;max-width:100%}
-.shelf-books{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px var(--spine-gap)}
-.spine{flex:0 0 var(--spine-w);box-sizing:border-box;width:var(--spine-w);height:max(44px,calc(var(--shelf-lo) + (var(--shelf-hi) - var(--shelf-lo)) * var(--h,0)));display:flex;align-items:flex-end;justify-content:center;padding:0 0 6px;background:var(--c);border:1px solid var(--c);color:var(--on-accent);text-decoration:none}
-.spine .sc{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:10px;font-weight:700;line-height:1;letter-spacing:.04em;white-space:nowrap}
-.spine.ghost{background:transparent;border-style:dashed;color:var(--muted)}
-/* the lit spine and its label are one item: the label wraps with the spine, never away from it */
-.shelf-pair{display:inline-flex;align-items:flex-end;flex:0 0 auto}
-.spine.vol{flex:0 0 calc(var(--spine-w) * 2);width:calc(var(--spine-w) * 2);height:calc((var(--shelf-lo) + var(--shelf-hi)) / 2)}
-.spine.vol .sc{font-size:11px}
-.spine.lit{position:relative;z-index:1;box-shadow:0 0 22px 5px color-mix(in srgb,var(--c) 65%,transparent),0 0 6px 1px var(--c)}
-.shelf-lit{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-left:6px;padding:0 4px;color:var(--fg);font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
-.shelf-lit>span{color:var(--c);font-size:14px}   /* the arrow points at the lit spine, in its tone */
-.shelf-label{margin:10px 0 0;padding-top:6px;border-top:2px solid var(--c);font-size:13.5px;font-weight:600;line-height:1.3;color:var(--fg)}
-.shelf-note{margin-left:6px;font-family:var(--mono);font-size:11px;font-weight:400;color:var(--muted);white-space:nowrap}
-.shelf figcaption{font-size:12.5px;color:var(--muted);margin:18px 0 0;line-height:1.45;max-width:68ch}
-@media (hover:hover){.spine:hover{filter:brightness(1.12)}.spine.ghost:hover{background:color-mix(in srgb,var(--c) 14%,transparent);filter:none}.shelf-lit:hover{text-decoration:underline}}
-.spine:focus-visible,.shelf-lit:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-@media (prefers-reduced-motion:no-preference){
-  .spine{transform-origin:50% 100%;animation:shelf-rise .45s cubic-bezier(.2,.75,.25,1) both;animation-delay:calc(var(--i,0) * 8ms)}
-  .shelf-lit{animation:shelf-fade .3s ease-out .7s both}
-}
-@keyframes shelf-rise{from{transform:scaleY(.04);opacity:0}to{transform:none;opacity:1}}
-@keyframes shelf-fade{from{opacity:0}to{opacity:1}}
+/* the topography (P92, 4 Nov 2026): viz.py's home kind "contours", the hero's layer and each course tile's patch. The
+   SVG carries classes only: a rise is g.ct-rise.ct-t{tone}, its contour lines one path; a planned unit g.ct-plan, a
+   dashed ring. Lines are 1 px at any scale, in the rise's tone, at --topo-a in the hero (low enough that every text
+   over the densest lines keeps its contrast: verify.py measures it on the built page, contrast.py on the tokens) and
+   --topo-p in a patch. The hero's layer (.topo) runs from the top bar to the hero's foot across its full width, its
+   drawings 12 px larger every way so the drift never shows an edge; one layout shows at a time (tall below 1100 px,
+   wide from it); it drifts (section 4h: transform only, 8 x 6 px over 30 s, alternating) where motion is welcome. A
+   patch (.topo-patch) is the tile's own drawing, the full width of its content at a 4:1 ratio, and never moves. */
+.ct-t1{--c:var(--viz-1)}.ct-t2{--c:var(--viz-2)}.ct-t3{--c:var(--viz-3)}.ct-t4{--c:var(--viz-4)}.ct-t5{--c:var(--viz-5)}.ct-t6{--c:var(--viz-6)}
+.topo{position:absolute;top:-22px;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}   /* the lines fade out at the hero's foot, not cut */
+.topo-l{display:none;position:absolute;top:-12px;left:-12px;width:calc(100% + 24px);height:calc(100% + 24px)}
+.topo-tall{display:block}
+.topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.topo .ct-rise path{stroke:var(--c);stroke-opacity:var(--topo-a)}
+.topo .ct-plan circle{stroke:var(--c);stroke-opacity:var(--topo-a);stroke-dasharray:3 3}
+.topo.topo-patch{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;margin:14px 0 0;aspect-ratio:4 / 1;overflow:hidden;-webkit-mask-image:none;mask-image:none}
+.topo-patch .topo-l{display:block;top:0;left:0;width:100%;height:100%}
+.topo-patch .ct-rise path{stroke-opacity:var(--topo-p)}
+.topo-patch .ct-plan circle{stroke-opacity:var(--topo-p)}
+@media (prefers-reduced-motion:no-preference){.hhome .topo-l{animation:topo-drift 30s ease-in-out infinite alternate}}
+@keyframes topo-drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-8px,6px,0)}}
 /* a figure scales to the column but never below the width its type stays legible at; narrower than that it scrolls */
 .viz svg{display:block;width:100%;max-width:none;height:auto;min-width:560px;font-family:var(--sans)}
 .viz-timeline svg,.viz-flow svg{width:auto}
@@ -687,9 +709,10 @@ details.clog[open]>summary::after{content:"–"}
   /* stat tiles stay 3 or 4 across (two columns would orphan a tile) */
   .stats[data-n="4"]{grid-template-columns:repeat(4,1fr)}
   .panel.root>.hlinks:not([data-one]){grid-template-columns:repeat(3,1fr)}
-  /* P91: from 768 px the shelf's tracks sit side by side where they fit (Marketing and Technology on the tablet) */
-  .shelf-tracks{flex-direction:row;flex-wrap:wrap;gap:28px 56px}
-  .shelf-row{column-gap:20px}
+  /* P92: from 768 px an area's header holds its "Track" label, its name, its one-paragraph lede and its count (P90, P91) */
+  .panel.root .thead .cname,.panel.root .thead p{display:block}
+  .panel.root .tmeta{display:inline}
+  .panel.root .thead h2{margin:0 0 6px}
 }
 @media (min-width:1100px){
   /* the drawer is a sidebar: always open, no backdrop, no menu or close button; its list scrolls on its own */
@@ -702,13 +725,11 @@ details.clog[open]>summary::after{content:"–"}
   .dhead{padding-right:16px}
   html.locked{overflow:auto}
   /* the reading measure is unchanged (68ch on report text); the column itself stays 760 px */
-  /* P91: the home's hero (the headline with the live totals big beside it, the lede, the shelf) runs full-bleed, the
-     whole width beside the sidebar less a --bleed margin each side, out of the 760 px column (the column is centred in
-     that width, so the hero's left edge is half the difference to its left); the spines grow, and the tracks sit side
-     by side where they fit */
-  :root{--bleed:32px;--spine-w:26px;--spine-gap:4px;--shelf-lo:60px;--shelf-hi:210px}
-  .panel.root>.hero{width:calc(100vw - var(--side) - 2 * var(--bleed));margin-left:calc(50% - (100vw - var(--side)) / 2 + var(--bleed));max-width:none}
-  .htot{display:flex;gap:28px;padding-bottom:6px}
+  /* P92: the hero's wide drawing, across the full width beside the sidebar (the hero bleeds to it at every width, 4h);
+     the area line a step larger */
+  .topo-tall{display:none}
+  .topo-wide{display:block}
+  .harea,.harea-all{font-size:34px}
 }
 
 /* 7 · Interaction ------------------------------------------------------------ */
