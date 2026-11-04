@@ -1,5 +1,5 @@
 viz-examples.html: 33 figures
-split: shell 766 KB (limit 1,024 KB), 204 fetched files in 6 folders, largest ux-ia/read-ia6.html 193 KB
+split: shell 763 KB (limit 1,024 KB), 204 fetched files in 6 folders, largest ux-ia/read-ia6.html 193 KB
   brand-a/    15 files   1,021 KB, largest brand-a/read-a8.html 112 KB
   brand-b/    14 files     966 KB, largest brand-b/read-b3.html 101 KB
   greece/     81 files   4,270 KB, largest greece/syllabus.html 134 KB
@@ -18,7 +18,7 @@ phone light: panels checked: 222; tightest stacked gap 6px (home); 655 figure fr
 home phone: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [358, 390] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1472 px; page [390, 390]
 what's new phone: 186 unit rows, 5 course rows, 81 approximate, on 9 days
 home phone light: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [358, 390] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1472 px; page [390, 390]
-contrast (light, phone): 8035 texts on 14 panels and the drawer, lowest 4.29:1 (rm01 span.bn)
+contrast (light, phone): 7995 texts on 14 panels and the drawer, lowest 4.29:1 (rm01 span.bn)
   home                         home           nav=root    HOME | Academy | arrows=False prev=False next=True | 
   changelog                    changelog      nav=root    ACADEMY | Changelog | arrows=False prev=True next=True | 
   rome home                    rome           nav=rome    COURSE 2 | Rome | arrows=True prev=False next=True | (hidden)
@@ -82,6 +82,6 @@ home desktop: a.spine:not(.ghost)[data-target^="read-"] opens #read-a1 on read-a
 home desktop: a.spine.ghost:not(.vol) opens #ux-ia-b-ia8 on ux-ia-briefs, at 68 px
 home desktop: a.spine.vol opens #planned-courses on home, at 68 px, its card open
 home desktop: a.shelf-lit opens #new on new, at 78 px
-screenshots in /tmp/claude-0/-home-claude/5f6706f6-e265-5756-81be-81a7bb944c5f/scratchpad/after4
+screenshots in /tmp/claude-0/-home-claude/5f6706f6-e265-5756-81be-81a7bb944c5f/scratchpad/after5
 courses-index.md: matches the sources
 ALL CHECKS PASSED

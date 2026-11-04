@@ -820,10 +820,10 @@ nu = sum(1 for x in WHATSNEW if x['kind'] == 'unit' and not x['hist'])
 nr = sum(1 for x in WHATSNEW if x['kind'] == 'unit' and x['hist'])
 nc = sum(1 for x in WHATSNEW if x['kind'] == 'course')
 whatsnew = f"""
-<section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="ACADEMY" data-c="var(--teal)" hidden>
+<section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="ACADEMY" data-c="var(--gold)" hidden>
   <header class="hero">
     {crumbs(('Academy', 'home'), ("What's new", None))}
-    <div class="eyebrow">{eyebrow_segs(*['<span class="u" style="--c:var(--teal)">WHAT\'S NEW</span>', f'{nr} history reports', f'{nu} units', f'{nc} courses'] + ([f'since {short_date(WHATSNEW[-1]["date"])}'] if WHATSNEW else []))}</div>
+    <div class="eyebrow">{eyebrow_segs(*['<span class="u" style="--c:var(--gold)">WHAT\'S NEW</span>', f'{nr} history reports', f'{nu} units', f'{nc} courses'] + ([f'since {howbuilt.date_long(WHATSNEW[-1]["date"])}'] if WHATSNEW else []))}</div>
     <h1>What's new</h1>
     <p class="lede">Every unit and every history report filed, and every course started, newest first, by the day it was filed. A history report is dated by the work session that filed it; where that session ran over several days, by its first day, marked ≈. The work sessions themselves are in the Changelog.</p>
   </header>
