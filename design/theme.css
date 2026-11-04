@@ -424,7 +424,7 @@ details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter
 @media (max-width:400px){.panel.root .track{padding-left:12px;padding-right:12px}.course.live{padding:14px 12px}.course.live>p,.course.live>summary>p{font-size:13.5px}.course.live .cstats{gap:4px 12px}}
 /* the tile's chip breaks only between its two parts, the track and the course (or the course and the unit) */
 .cname .cpart{white-space:nowrap}
-.course.live .cname{white-space:nowrap}   /* the chip on one line; the status pill drops under it */
+.course.live .cname{max-width:100%}   /* the chip on one line where it fits; where it does not (Information architecture · DD-IA1/2/3 at 320 px, P93 check) it breaks between its two parts, never widening the tile; the status pill under it */
 .course.live .ctop{flex-direction:column;align-items:flex-start;row-gap:8px}   /* the pill under the chip on every tile, so no tile's row differs */
 @media (max-width:340px){.course.live>p,.course.live>summary>p{font-size:12.5px;line-height:1.45}}
 /* P91: on a narrow phone the three stats stand in three columns, each number over its label; P93 check: on every tile
@@ -709,7 +709,7 @@ details.clog[open]>summary::after{content:"–"}
    768 px (tablet) and 1100 px (desktop). Nothing here changes a token or a component's own style. */
 /* tile grid (P93: every list of tiles: the home's areas and planned courses, a course home's units; and the hub pages'
    cards): one column on a phone */
-.cgrid{display:grid;gap:12px}
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}   /* minmax(0,…): a column is never widened past its grid by a part that does not wrap */
 .panel.root>.cgrid{gap:24px}
 .panel.root .cgrid>.course{margin:0}
 @media (min-width:768px){
@@ -717,7 +717,7 @@ details.clog[open]>summary::after{content:"–"}
   main,.top-in{max-width:760px}
   /* two columns of tiles, side by side the same height (P90: a lone tile keeps half the width; P93: on every page);
      the briefs' and syllabi's cards too */
-  .cgrid{grid-template-columns:1fr 1fr;column-gap:12px;align-items:stretch}
+  .cgrid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px;align-items:stretch}
   .panel.root>.cgrid{gap:24px 12px}
   .cgrid:has(>details.course.live[open]){align-items:start}   /* P93: while a unit tile is open its row's tiles take their own heights: the open one grows in its column, its neighbour does not stretch */
   .smods,.sunit .smods{grid-template-columns:1fr 1fr;align-items:start}

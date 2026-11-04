@@ -677,6 +677,8 @@ TILES_JS = r"""(pid) => {
   });
   P.querySelectorAll('.cgrid').forEach(g => { if (!vis(g)) return;
     const ts = [...g.children].filter(e => e.classList.contains('course')), gw = g.getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
+    const gr = g.getBoundingClientRect();
+    ts.forEach(t => { const r = t.getBoundingClientRect(); if (r.left < gr.left - .5 || r.right > gr.right + .5) out.bad.push(`${t.querySelector('.ctitle') ? t.querySelector('.ctitle').textContent.trim() : t.className}: the tile runs ${Math.round(Math.max(gr.left - r.left, r.right - gr.right))} px past its grid`); });   // P93 check 3: a column widened past its grid by a part that would not wrap
     out.grids.push([getComputedStyle(g).gridTemplateColumns.split(' ').length, ts.length, ts.length === 1 ? Math.round(ts[0].getBoundingClientRect().width) : null, Math.round((gw - gap) / 2)]); });
   const de = document.documentElement; out.scroll = [de.scrollWidth, de.clientWidth];
   return out;
