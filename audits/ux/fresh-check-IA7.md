@@ -75,3 +75,97 @@ All eight blocks render (0 errors). Every caption names the artefact, the sectio
 ## Verdict
 
 IA7 · fix · errors 0, should-fix 6, minor 3.
+
+## Figure 6 re-check 1 (Opus 5.5 agent, 3 November 2026; the second check of figure 6, sitemap: Admin's pages; given the unit without its figures, the captions and the frames sheets, nothing of the earlier reports; verbatim hand-back; the harness refused its `report.md` write, so the hand-back is the one copy)
+
+Figure 6 (sitemap) of IA7 needs fixes. Nothing in it is wrong: every label, ID and note traces to a line of the unit. Four should-fixes remain: the FORM tag on Covered items, a [condition] the text promises but the figure never uses, type tags the text never names, and two sections missing from the caption's sources. I could not save the report as F/report.md (the write was refused), so this reply is the only copy. I opened all 12 sheets; the tall phone frame sheets I cut into pieces in F/crops/ to read them.
+
+## (a) Findings
+
+- **[should-fix] The Covered items page (AD-3.1.2) is tagged FORM, but it is not a form.**
+  - The unit's rule for forms (line 169) is a name "that starts with the verb the call to action uses: Create group, Invite employees, Set budgets, Add admin user, Edit policy". "Covered items" has no verb.
+  - Every role views the page: "catalogue item | -> view *new* in Admin | HR manager, finance manager | Policies, Covered items (AD-3.1.2)" (line 349), and O-13 is seen by "all" (line 282). It is a list with an HR add action.
+  - Change the tag to `INDEX`.
+  - The note says "HR edits", but the call to action is "-> add covered items" (line 340). New note: `AD-3.1.2 · HR adds; all view`.
+
+- **[should-fix] Unit text line 396 says the notes carry "a [condition]", but no note uses square brackets, and the caption does not mention conditions.** Either use the brackets where the text gives a condition, or remove the promise:
+  - Not joined note: `AD-1.4 · queue [Invited over 14 days]; HR` (the condition is in C.4, line 444: "invited more than 14 days ago").
+  - Budgets note: `AD-2 · by group and period; queue [no budget for next period]`.
+  - Or delete "a [condition]," from line 396.
+
+- **[should-fix] Line 396 says "IA2's type tags" but this unit never names them.** The five tags drawn (SECTION, INDEX, STACK, DETAIL, FORM) appear nowhere in the unit as tags. In line 396, replace "a sitemap at F2 with identifiers, IA2's type tags and notation" with `a sitemap at F2 with identifiers, IA2's type tags (section, index, stack for one page per instance, detail, form) and notation`. I cannot check IA2's own definitions of the tags from this folder.
+
+- **[should-fix] The caption's source list leaves out two sections.**
+  - The account owner, and with it Admins, Add admin user and Company's "owner edits", is set in section 3.4 (line 126).
+  - The Activity log and History are set in section 5.3 (line 227).
+  - New end of the caption: `the rest set in sections 3.4, 4.2 to 4.6 and 5.3 and Deliverable C, C.4 and C.5. Perqo is fictional.`
+
+- **[minor] The root note "global routes by role" sits above Sign in (AD-0), which is not a global route.** C.2 lists only the six areas as global routes (line 410). New root note: `the surface; AD-1 to AD-6 are global routes, by role`.
+
+- **[minor] Line 396 says "Approvals, Reports and the Activity log open it there", but only Approvals has the note "opens claims → see AD-1.1.1".** Either add `AD-5.4 · opens claims → see AD-1.1.1` to Claims by status and `AD-6.3 · owner; opens records` to Activity log, or narrow line 396 to Approvals.
+
+- **[minor] Not joined's "HR" comes from the queue's owner (line 444).** The text never says finance cannot reach the page, and finance can view Employees (line 373). If "owner" is meant as "reaches", add to C.2's local routes: `Not joined (HR)`.
+
+- **[minor, unit text] The unit contradicts itself on who sees Company (AD-6.1).**
+  - A.1 says Company is seen by "all" (line 272).
+  - B.2 hides only Admins and the Activity log from everyone but the owner (line 386).
+  - B.1 gives HR's and finance's Settings cell as "profile: Your profile" only (line 373).
+  - The figure follows A.1. New B.1 Settings cells for HR and finance: `view: Company; profile: Your profile`.
+
+## (b) Confirmed (label, then the line it comes from)
+
+- **Root:** "Perqo Admin" with no tag (line 396: "the root names the surface and carries no type tag"); "global routes by role" (lines 146 and 410).
+- **Sign in:** AD-0, "Looking for your benefits? Get the Perqo app → see S-6" (lines 400 and 453).
+- **Employees and its pages:**
+  - Employees, AD-1: by name; filter by group; find (lines 165, 187, 427).
+  - Employee, AD-1.1: one per employee; claims, budgets, Perqo card status, History (lines 148, 167, 402).
+  - Claim, AD-1.1.1: sits under the employee's record (lines 396, 402); "modal: Reject claim (HR)" (lines 173, 468).
+  - Employee groups, AD-1.2 (lines 400, 428).
+  - Employee group, AD-1.2.1: its policy, employees, budgets (line 148).
+  - Create group, AD-1.2.2, HR (line 339).
+  - Invite employees, AD-1.3, HR (lines 339, 341, 447).
+  - Not joined, AD-1.4: queue, Invited over 14 days, HR (lines 157, 429, 444).
+- **Budgets and its pages:**
+  - Budgets, AD-2: by group and period; queue No budget for next period (lines 431, 445).
+  - Budget, AD-2.1: one group, one period (line 402).
+  - Set budgets, AD-2.2, finance (line 343).
+- **Policies and its pages:**
+  - Policies, AD-3: one per employee group (lines 144, 411).
+  - Policy, AD-3.1: open categories, auto-approve limit, covered items, History (lines 274, 296).
+  - Edit policy, AD-3.1.1, HR (line 340).
+  - Covered items, AD-3.1.2 (lines 282, 340, 349; see the tag finding).
+- **Approvals:** AD-4: queue; HR; by policy, oldest first; opens claims → see AD-1.1.1 (lines 110, 396, 433, 443).
+- **Reports and its pages:**
+  - Reports, AD-5: views (lines 191, 396).
+  - AD-5.1 Spend by category, finance; AD-5.2 Spend by employee group, finance; AD-5.3 Budget use; AD-5.4 Claims by status; AD-5.5 Card payments, finance (line 191: "Finance sees all five. HR sees Budget use and Claims by status").
+- **Settings and its pages:**
+  - Settings, AD-6 (line 400).
+  - Company, AD-6.1: owner edits (lines 272, 336).
+  - Admins, AD-6.2: owner (lines 273, 386).
+  - Add admin user, AD-6.2.1: owner (line 337).
+  - Activity log, AD-6.3: owner (lines 227, 386).
+  - Your profile, AD-6.4: every admin user (lines 268, 373).
+- **Identifiers:** all 29 match the list in line 400, with the same labels and the same parents.
+- **Tone:** one tone throughout, tone 4, named in lines 14 and 396.
+- **Caption:** it says what the figure shows, names Deliverable C, C.1, gives its sources and says "Perqo is fictional". Only the source list is incomplete (finding above).
+- **Kind:** the data is a hierarchy of pages, so a sitemap fits.
+
+## (c) Renderer notes
+
+- **Rows are not levels.** The renderer wraps the root's seven children into three rows by width: (Sign in, Employees, Budgets), (Policies, Approvals, Reports), (Settings). All seven are on one level. The left trunk that joins rows 2 and 3 runs straight down past Sign in, a page with no children, so at a glance it can read as Sign in's branch. This happens at every width. The declaration can fix it: list Sign in last and Employees first. That also keeps IA1's six areas in their order.
+- **Desktop and tablet opening frames** are clipped by the sticky section bar, around the Employee group page. The figure is taller than the viewport, and the frames sheet ("frame 1 of 1") shows it whole. This is not a figure fault.
+- **Phone (390 px):**
+  - The figure is wider than its frame. It scrolls sideways inside the frame, and the cue line "scroll sideways for the whole figure" sits above the caption.
+  - There are three frames, scrolled to 88, 252 and 372 of 372 px. Every box appears whole in at least one:
+    - frame 1: Sign in, Employees, Policies, Policy, Edit policy, Covered items
+    - frame 2: the root, the Employees subtree, Approvals, Settings and its children
+    - frame 3: the Budgets and Reports subtrees
+- **Legibility:** at desktop, tablet and phone, in both dark and light, all text sits inside its boxes, nothing overlaps, and the caption is under the figure.
+
+## (d) Verdict
+
+Figure 6: **FIX**, for the four should-fixes above.
+
+Files are in /tmp/claude-0/-home-claude/523bc694-bc8b-5dd5-bdd8-2b916401be73/scratchpad/f6r1/crops/:
+- phone-dark-0.png to phone-dark-5.png
+- phone-light-0.png to phone-light-5.png

@@ -432,8 +432,8 @@ Roles as rows, Admin's six areas as columns, IA1's order (Perqo, fictional). A b
 
 | Role | Employees | Budgets | Policies | Approvals | Reports | Settings |
 |---|---|---|---|---|---|---|
-| HR manager | edit: create groups, invite, resend, move, mark as left | view | edit: policy, covered items | decide: approve, reject, approve selected, except their own claims | some: Budget use, Claims by status | profile: Your profile |
-| Finance manager | view | set: set budgets for a group | view | (not in navigation) | all five reports | profile: Your profile |
+| HR manager | edit: create groups, invite, resend, move, mark as left | view | edit: policy, covered items | decide: approve, reject, approve selected, except their own claims | some: Budget use, Claims by status | profile: Company read only, Your profile |
+| Finance manager | view | set: set budgets for a group | view | (not in navigation) | all five reports | profile: Company read only, Your profile |
 | Account owner | as role | as role | as role | as role | as role | manage: Company, Admins, Activity log, Your profile |
 
 The figure draws the same matrix with a mark per cell and a legend. Its rows take tone 4, Perqo Admin.
@@ -450,7 +450,7 @@ The figure draws the same matrix with a mark per cell and a legend. Its rows tak
   {"mark": "view", "means": "read only", "tone": 4},
   {"mark": "all", "means": "all five reports", "tone": 4},
   {"mark": "some", "means": "Budget use and Claims by status only", "tone": 4},
-  {"mark": "profile", "means": "Your profile only", "tone": 4},
+  {"mark": "profile", "means": "Company read only, and Your profile", "tone": 4},
   {"mark": "manage", "means": "Company, Admins, Activity log, Your profile", "tone": 4},
   {"mark": "as role", "means": "what the holder's HR or finance role gives", "tone": 4}]}
 ```
@@ -471,11 +471,10 @@ The three rules of section 3.2, applied (Perqo, fictional):
 
 #### C.1 · Admin's pages
 
-Admin's structure as a sitemap at F2 with identifiers, IA2's type tags and notation (Perqo, fictional). Notes carry the page ID, the roles that reach the page when not all do, a [condition], "queue" for a work queue, "view" for a report, and "→ see" for a route drawn elsewhere. A claim's page sits under its employee's record (section 4.2), and Approvals, Reports and the Activity log open it there. Every box is tone 4, Perqo Admin; the root names the surface and carries no type tag, because the global navigation is not a page.
+Admin's structure as a sitemap at F2 with identifiers, IA2's type tags (section, a landing page for a group; index, a list of items; stack, many pages of one type; detail, one item; form; IA2, section 5.2) and notation (Perqo, fictional). Notes carry the page ID, the roles that reach the page when not all do or the owner of its work queue, "queue" with the queue's [condition], "views" for the reports, and "→ see" for a route drawn elsewhere. A claim's page sits under its employee's record (section 4.2); Approvals and Claims by status open it there, and each entry of the Activity log opens its record. The six areas keep IA1's order, and Sign in comes last. Every box is tone 4, Perqo Admin; the root names the surface and carries no type tag, because the global navigation is not a page.
 
 ```viz
-{"kind": "sitemap", "stack_from": 2, "caption": "Sitemap: Perqo Admin's pages at F2, with an identifier on every page (AD-0 to AD-6) and IA2's type tags; the structure the navigation model's routes run through; supports the decision on where each object's list, detail, create form, queue and view lives (Deliverable C, C.1). Every box tone 4, Perqo Admin. Notes give the page ID, roles where not all reach it, 'queue' and 'view'; '→ see' points to a page or surface drawn elsewhere. Six areas from IA1's surfaces map, kept; Policies one per employee group from IA2, section 5.3; Reports as views from IA4, section 4.3; the rest set in sections 4.2 to 4.6 and Deliverable C, C.4 and C.5. Perqo is fictional.", "root": {"label": "Perqo Admin", "note": "global routes by role", "tone": 4, "children": [
- {"label": "Sign in", "type": "form", "note": "AD-0 · Looking for your benefits? Get the Perqo app → see S-6", "tone": 4},
+{"kind": "sitemap", "stack_from": 2, "caption": "Sitemap: Perqo Admin's pages at F2, with an identifier on every page (AD-0 to AD-6) and IA2's type tags; the structure the navigation model's routes run through; supports the decision on where each object's list, detail, create form, queue and view lives (Deliverable C, C.1). Every box tone 4, Perqo Admin. Notes give the page ID, roles where not all reach it or the owner of a queue, 'queue' with its [condition], and 'views'; '→ see' points to a page or surface drawn elsewhere. Six areas from IA1's surfaces map, kept; Policies one per employee group from IA2, section 5.3; Reports as views from IA4, section 4.3; the rest set in sections 3.4, 4.2 to 4.6 and 5.3 and Deliverable C, C.4 and C.5. Perqo is fictional.", "root": {"label": "Perqo Admin", "note": "the surface; AD-1 to AD-6 are global routes, by role", "tone": 4, "children": [
  {"label": "Employees", "type": "index", "note": "AD-1 · by name; filter by group; find", "tone": 4, "children": [
   {"label": "Employee", "type": "stack", "note": "AD-1.1 · one per employee; claims, budgets, Perqo card status, History", "tone": 4, "children": [
    {"label": "Claim", "type": "stack", "note": "AD-1.1.1 · one per claim; modal: Reject claim (HR)", "tone": 4}]},
@@ -483,27 +482,28 @@ Admin's structure as a sitemap at F2 with identifiers, IA2's type tags and notat
    {"label": "Employee group", "type": "stack", "note": "AD-1.2.1 · its policy, employees, budgets", "tone": 4},
    {"label": "Create group", "type": "form", "note": "AD-1.2.2 · HR", "tone": 4}]},
   {"label": "Invite employees", "type": "form", "note": "AD-1.3 · HR", "tone": 4},
-  {"label": "Not joined", "type": "index", "note": "AD-1.4 · queue: Invited over 14 days; HR", "tone": 4}]},
- {"label": "Budgets", "type": "index", "note": "AD-2 · by group and period; queue: No budget for next period", "tone": 4, "children": [
+  {"label": "Not joined", "type": "index", "note": "AD-1.4 · queue [invited more than 14 days ago], owned by HR", "tone": 4}]},
+ {"label": "Budgets", "type": "index", "note": "AD-2 · by group and period; queue [no budgets set for the next period]", "tone": 4, "children": [
   {"label": "Budget", "type": "stack", "note": "AD-2.1 · one group, one period", "tone": 4},
   {"label": "Set budgets", "type": "form", "note": "AD-2.2 · finance", "tone": 4}]},
  {"label": "Policies", "type": "index", "note": "AD-3 · one per employee group", "tone": 4, "children": [
   {"label": "Policy", "type": "stack", "note": "AD-3.1 · open categories, auto-approve limit, covered items, History", "tone": 4, "children": [
    {"label": "Edit policy", "type": "form", "note": "AD-3.1.1 · HR", "tone": 4},
-   {"label": "Covered items", "type": "form", "note": "AD-3.1.2 · HR edits; all view", "tone": 4}]}]},
+   {"label": "Covered items", "type": "index", "note": "AD-3.1.2 · HR adds; all view", "tone": 4}]}]},
  {"label": "Approvals", "type": "index", "note": "AD-4 · queue; HR; by policy, oldest first; opens claims → see AD-1.1.1", "tone": 4},
  {"label": "Reports", "type": "section", "note": "AD-5 · views", "tone": 4, "children": [
   {"label": "Spend by category", "type": "index", "note": "AD-5.1 · finance", "tone": 4},
   {"label": "Spend by employee group", "type": "index", "note": "AD-5.2 · finance", "tone": 4},
   {"label": "Budget use", "type": "index", "note": "AD-5.3", "tone": 4},
-  {"label": "Claims by status", "type": "index", "note": "AD-5.4", "tone": 4},
+  {"label": "Claims by status", "type": "index", "note": "AD-5.4 · opens claims → see AD-1.1.1", "tone": 4},
   {"label": "Card payments", "type": "index", "note": "AD-5.5 · finance", "tone": 4}]},
  {"label": "Settings", "type": "section", "note": "AD-6", "tone": 4, "children": [
   {"label": "Company", "type": "detail", "note": "AD-6.1 · owner edits", "tone": 4},
   {"label": "Admins", "type": "index", "note": "AD-6.2 · owner", "tone": 4, "children": [
    {"label": "Add admin user", "type": "form", "note": "AD-6.2.1 · owner", "tone": 4}]},
-  {"label": "Activity log", "type": "index", "note": "AD-6.3 · owner", "tone": 4},
-  {"label": "Your profile", "type": "detail", "note": "AD-6.4 · every admin user", "tone": 4}]}]}}
+  {"label": "Activity log", "type": "index", "note": "AD-6.3 · owner; each entry opens its record", "tone": 4},
+  {"label": "Your profile", "type": "detail", "note": "AD-6.4 · every admin user", "tone": 4}]},
+ {"label": "Sign in", "type": "form", "note": "AD-0 · Looking for your benefits? Get the Perqo app → see S-6", "tone": 4}]}}
 ```
 
 The identifiers, for citing (Perqo, fictional): AD-0 Sign in; AD-1 Employees, AD-1.1 Employee, AD-1.1.1 Claim, AD-1.2 Employee groups, AD-1.2.1 Employee group, AD-1.2.2 Create group, AD-1.3 Invite employees, AD-1.4 Not joined; AD-2 Budgets, AD-2.1 Budget, AD-2.2 Set budgets; AD-3 Policies, AD-3.1 Policy, AD-3.1.1 Edit policy, AD-3.1.2 Covered items; AD-4 Approvals; AD-5 Reports, AD-5.1 Spend by category, AD-5.2 Spend by employee group, AD-5.3 Budget use, AD-5.4 Claims by status, AD-5.5 Card payments; AD-6 Settings, AD-6.1 Company, AD-6.2 Admins, AD-6.2.1 Add admin user, AD-6.3 Activity log, AD-6.4 Your profile.
@@ -532,7 +532,7 @@ The same model as a matrix, one row per area. Its rows take tone 4, Perqo Admin.
  {"label": "Policies", "tone": 4, "cells": ["one per employee group", null, "policy to its employee group", "HR edit; finance view"]},
  {"label": "Approvals", "tone": 4, "cells": ["none: one list, grouped by policy", "Approvals", "claim to employee, policy, budget", "HR decide"]},
  {"label": "Reports", "tone": 4, "cells": ["the five reports", null, "report row to the records it sums", "finance all five; HR two"]},
- {"label": "Settings", "tone": 4, "cells": ["Company, Admins, Activity log, Your profile", null, "audit entry to its record", "owner all; others Your profile"]}]}
+ {"label": "Settings", "tone": 4, "cells": ["Company, Admins, Activity log, Your profile", null, "audit entry to its record", "owner all; others Company read only and Your profile"]}]}
 ```
 
 #### C.3 · Lists: order, filters, find, bulk actions
