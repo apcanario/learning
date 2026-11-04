@@ -234,8 +234,10 @@ HOME_JS = r'''(phone) => {
     const u = [...rows].find(r => r.querySelector('.pill.live'));
     out.newest = u ? u.getAttribute('data-target') : null;
     const nx = rec.nextElementSibling, cl = nx && nx.querySelectorAll('a[href="#changelog"]');
-    if (!nx || nx !== kids[kids.length - 1] || !cl || cl.length !== 1) bad.push('New since is not followed, last on the page, by its one link to the changelog');
+    if (!nx || nx !== kids[kids.length - 1] || !cl || cl.length !== 1 || nx.querySelectorAll('a').length !== 1) bad.push('New since is not followed, last on the page, by one link, to the changelog');
+    [...rows].forEach(r => { if (!r.querySelector('.t small') || !r.querySelector('.pill') || !r.querySelector('.n')) bad.push('a New since row without its date, its track and model line or its pill'); });
   }
+  h.querySelectorAll('.hbtn b, .hbtn span').forEach(el => { if (el.getBoundingClientRect().width > 0 && el.scrollWidth > el.clientWidth + 1) bad.push(`a button's text is cut short: "${el.textContent.trim().slice(0, 40)}"`); });
   out.order = kids.map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ');
   const cards = [...h.querySelectorAll('.track .cgrid > a.course.live')];
   out.cards = cards.length;

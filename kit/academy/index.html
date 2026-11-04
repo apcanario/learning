@@ -385,6 +385,7 @@ details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter
 .hl-root .hbtn b{white-space:normal;font-size:16px;line-height:1.3;text-wrap:balance}
 .hl-root .hbtn span{opacity:1}
 .hl-root .hbtn span:first-child::before{content:"▶ ";font-size:9px;vertical-align:1px}
+.panel.root>.hlinks .hbtn b{white-space:normal;text-wrap:balance}   /* P90: the home's page links wrap on a phone, never cut short */
 /* a course card on the home: the one-sentence tile line, two lines at most */
 .panel.root .course.live p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
 /* new since: dated rows; the date column is wider than a module number; the changelog link under it */
@@ -878,7 +879,7 @@ details.acc[open]>summary::after{content:"–"}
     <p>How to read, build and edit a product&#x27;s structure, from sitemap to system map.</p>
     <div class="cstats"><span><b>7</b> units written</span><span><b>15</b> in all</span><span><b>4.5</b> h of reading</span></div>
     <div class="meter"><span class="bar" aria-hidden="true"><i style="width:47%"></i></span><span>47% written</span></div>
-    <span class="cgo">Continue</span>
+    <span class="cgo">Open the course</span>
   </a></div>
   </section>
 
@@ -892,12 +893,13 @@ details.acc[open]>summary::after{content:"–"}
       <li><strong>An open syllabus.</strong> Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.</li>
     </ol>
   </details>
+  <div class="hlinks"><a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a><a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a></div>
 
   <section class="recent">
     <h2 class="hsec">New since</h2>
-    <div class="hrows"><a class="hrow" href="#changelog" data-target="changelog"><span class="n">3 to 4 Nov</span><span class="t">User Experience IA7 (U-7)<small>Session 54 · the kit changelog</small></span><span class="pill prog">session</span></a><a class="hrow" href="#read-ia7" data-target="read-ia7" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA7 · Level 3 · the backoffice<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia6" data-target="read-ia6" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA6 · Level 2 · the client app<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia5" data-target="read-ia5" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA5 · Level 1 · the sales and product website<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia4" data-target="read-ia4" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA4 · Organisation systems: schemes, structures, objects, taxonomies<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia3" data-target="read-ia3" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA3 · How people find and understand things<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a></div>
+    <div class="hrows"><a class="hrow" href="#changelog" data-target="changelog"><span class="n">3 to 4 Nov</span><span class="t">User Experience IA7 (U-7)<small>Session 54 · Academy · Opus 5.5</small></span><span class="pill prog">session</span></a><a class="hrow" href="#read-ia7" data-target="read-ia7" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA7 · Level 3 · the backoffice<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia6" data-target="read-ia6" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA6 · Level 2 · the client app<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia5" data-target="read-ia5" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA5 · Level 1 · the sales and product website<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia4" data-target="read-ia4" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA4 · Organisation systems: schemes, structures, objects, taxonomies<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a><a class="hrow" href="#read-ia3" data-target="read-ia3" style="--c:var(--blue)"><span class="n">3 Nov</span><span class="t">IA3 · How people find and understand things<small>Information architecture · Opus 5.5</small></span><span class="pill live">unit</span></a></div>
   </section>
-  <div class="hlinks"><a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>54 sessions since 22 October 2026, newest first</b></a><a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a><a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a></div>
+  <div class="hlinks" data-one><a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>54 sessions since 22 October 2026, newest first</b></a></div>
 </section>
 <section class="panel log" id="changelog" data-ctx="root" data-kind="changelog" data-t="Changelog" data-u="ACADEMY" data-c="var(--gold)" hidden>
   <header class="hero">

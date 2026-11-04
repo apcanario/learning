@@ -344,7 +344,7 @@ def card(theme, color, short, title, blurb, done, total, words, status, href, ex
             f'<span><b>{hours(words)}</b> h of reading</span>')
     pct = round(100 * done / total) if total else 0
     pill = '<span class="pill live">complete</span>' if status == 'available' else f'<span class="pill prog">{status}</span>'
-    label = 'Continue' if status == 'in progress' else ('Open the syllabus' if status == 'coming soon' else 'Open the course')
+    label = 'Open the syllabus' if status == 'coming soon' else 'Open the course'   # P90: "Continue" is the hero's button only
     tgt = '' if external else f' data-target="{href[1:]}"'
     return f'''<a class="course live" href="{href}"{tgt} style="--c:{color}">
     <div class="ctop"><span class="cname">{html.escape(theme)} · {html.escape(short)}</span>{pill}</div>
@@ -607,10 +607,13 @@ changelog = f"""
   <h2 class="hsec">Sessions, newest first</h2>
   <div class="clogs">{cl_cards}</div>
 </section>"""
-cl_link = ''.join(([] if 'changelog' in OMIT else [f'<a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {cl_since}, newest first</b></a>'])
-                  + ([] if 'backlog' in OMIT else [f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a>'])
+cl_link = ''.join([] if 'changelog' in OMIT else [f'<a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {cl_since}, newest first</b></a>'])
+# P90: the home's other site pages (the backlog; the figure kinds, which has no drawer row) sit above New since, so the
+# changelog's is the one link under it
+site_links = ''.join(([] if 'backlog' in OMIT else [f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a>'])
                   + ([] if 'figures' in OMIT else [f'<a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a>']))
-cl_link = f'<div class="hlinks">{cl_link}</div>' if cl_link else ''
+site_links = f'<div class="hlinks">{site_links}</div>' if site_links else ''
+cl_link = f'<div class="hlinks" data-one>{cl_link}</div>' if cl_link else ''
 
 # the backlog page: docs/BACKLOG.md (the queue) and docs/CHANGELOG.md (the chats done), rendered as they are
 def md_sections(path):
@@ -730,7 +733,11 @@ _nrows = 0
 if cl_sessions and 'changelog' not in OMIT:
     _head = cl_sessions[0][0].split(' · ')
     _date, _sess, _title = (_head + ['', ''])[:3]
-    recent_rows += f'<a class="hrow" href="#changelog" data-target="changelog"><span class="n">{html.escape(re.sub(r'(\w{3})\w* \d{4}$', r'\1', _date))}</span><span class="t">{md_inline(_title)}<small>{html.escape(_sess)} · the kit changelog</small></span><span class="pill prog">session</span></a>'
+    # P90: the session row's second line names its track and model as a unit row's does: Academy, and the model the
+    # session's entry says it ran on (its first "on <model>")
+    _m = re.search(r'\bon ((?:Opus|Fable|Sonnet|Haiku) \d+(?:\.\d+)?)\b', ' '.join(cl_sessions[0][1]))
+    _sess = f'{_sess} · Academy' + (f' · {_m.group(1)}' if _m else '')
+    recent_rows += f'<a class="hrow" href="#changelog" data-target="changelog"><span class="n">{html.escape(re.sub(r'(\w{3})\w* \d{4}$', r'\1', _date))}</span><span class="t">{md_inline(_title)}<small>{html.escape(_sess)}</small></span><span class="pill prog">session</span></a>'
     _nrows = 1
 for d, short, col, code, title, pid, model in RECENT[:6 - _nrows]:
     recent_rows += f'<a class="hrow" href="#{pid}" data-target="{pid}" style="--c:{col}"><span class="n">{short_date(d).replace(" 2026", "")}</span><span class="t">{html.escape(code)} · {html.escape(title)}<small>{html.escape(short)}{" · " + html.escape(model) if model else ""}</small></span><span class="pill live">unit</span></a>'
@@ -763,6 +770,7 @@ roothome = f"""
 {RULES}
     </ol>
   </details>
+  {site_links}
 {f'''
   <section class="recent">
     <h2 class="hsec">New since</h2>

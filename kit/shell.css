@@ -380,6 +380,7 @@ details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter
 .hl-root .hbtn b{white-space:normal;font-size:16px;line-height:1.3;text-wrap:balance}
 .hl-root .hbtn span{opacity:1}
 .hl-root .hbtn span:first-child::before{content:"▶ ";font-size:9px;vertical-align:1px}
+.panel.root>.hlinks .hbtn b{white-space:normal;text-wrap:balance}   /* P90: the home's page links wrap on a phone, never cut short */
 /* a course card on the home: the one-sentence tile line, two lines at most */
 .panel.root .course.live p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
 /* new since: dated rows; the date column is wider than a module number; the changelog link under it */

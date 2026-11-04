@@ -1,6 +1,6 @@
 # design/
 
-**Version 6, 1 November 2026** (section 9, the reading layout, P68: every unit and report opens on its one-line scope and reads one section at a time under a sticky bar with "Section n of N", the section menu, a progress bar and a "Whole unit" toggle; each h2 is a full-width numbered band; Sources and "How this unit was made" are closed accordions after the text). Versions 4 to 5.4 are in the theme's header. **Version 3, 28 October 2026** (section 7, interaction: hover and pressed states on every clickable thing where a pointer can hover, transitions that respect reduced motion, and equal-height catalogue cards with the button on one line). Version 2, the same day, added section 6 (responsive: tablet from 768 px, desktop from 1100 px; the phone layout is version 1's, unchanged). Version 1 was the extraction of 27 October 2026.
+**Version 6.3, 4 November 2026** (P90: the light palette is e-ink paper, a warm grey-cream page with cards barely lighter, near-black ink and no pure white anywhere, its accents at full saturation in their house hues as far as 4.5:1 allows, measured by `kit/contrast.py` and checked on the built page by `kit/verify.py`; section 4h is the new Academy home, its hero carrying the map of Academy and the Continue button; 4i adds the sitemap's dashed and linked boxes). **Version 6, 1 November 2026** (section 9, the reading layout, P68: every unit and report opens on its one-line scope and reads one section at a time under a sticky bar with "Section n of N", the section menu, a progress bar and a "Whole unit" toggle; each h2 is a full-width numbered band; Sources and "How this unit was made" are closed accordions after the text). Versions 4 to 5.4 are in the theme's header. **Version 3, 28 October 2026** (section 7, interaction: hover and pressed states on every clickable thing where a pointer can hover, transitions that respect reduced motion, and equal-height catalogue cards with the button on one line). Version 2, the same day, added section 6 (responsive: tablet from 768 px, desktop from 1100 px; the phone layout is version 1's, unchanged). Version 1 was the extraction of 27 October 2026.
 
 `theme.css` is the only place style is defined in the Learning Project. It is the Personal Mythology visual system (the history site's `shell.css` of 27 October 2026), with three fixes and the few components the hubs need that the history pages lack. Every page in the Project is built from it; no page carries its own stylesheet.
 
@@ -21,7 +21,7 @@ A published claude.ai artifact cannot load an external stylesheet. So the genera
 | Section | Holds |
 |---|---|
 | 0 Fonts | DM Sans (text), Space Mono (labels, codes), Gentium Book Plus (Greek and Latin display words), from Google Fonts |
-| 1 Tokens | Dark (default) and the light palette, which is defined twice (system setting and toggle) and must stay identical in both places |
+| 1 Tokens | Dark (default) and the light palette (e-ink paper since 6.3), which is defined twice (system setting and toggle) and must stay identical in both places |
 | 2 Base and type | Body, links, inline `code` |
 | 3 Layout | Fixed frosted top bar (`.top`, `.ib`, `.cur`), slide-out drawer (`.drawer`, `.dlist`, `.ditem`, `.dunit`, `.dsec`), 700 px reading column, panel rhythm (`.panel.root/.home/.syl/.log/.stack`) |
 | 4 Components (history) | Report (`.report`, `.toc`, `.dispute`, `.quiz`, `.carry`, `.prompt`, `.pager`, `.tbl`), home (`.hero`, `.lede`, `.stats`, `.howto`, `.ucard`, `.hrow`, `.pill`), syllabus (`.smod`, `.pbox`, `.copy`, `.rlink`, `.hbtn`), era ribbon, rule blocks and parts, root home (`.course`, `.ml`), changelog (`.clog`) |
@@ -32,23 +32,23 @@ A published claude.ai artifact cannot load an external stylesheet. So the genera
 
 | Token | Dark | Light | Role |
 |---|---|---|---|
-| `--bg` | `#0a0a0c` | `#f5f5f7` | page |
-| `--card` | `#131316` | `#ffffff` | cards, drawer |
-| `--line` / `--line-2` | `#1e1e24` / `#2a2a32` | `#e3e3ea` / `#cfcfd9` | borders |
-| `--fg` / `--muted` / `--dim` | `#ececf1` / `#9a9aa6` / `#6b6b78` | `#17171c` / `#50505b` / `#6c6c78` | text, secondary, tertiary |
-| `--red` | `#ff6b6b` | `#c23b3b` | Greece, Learn, disputes |
-| `--purple` | `#9b5de5` | `#7a3fcf` | Rome, course B |
-| `--orange` | `#f4a261` | `#a3580f` | Build, "unchecked" |
-| `--teal` | `#2a9d8f` | `#1b7569` | links, course A, "written" |
-| `--blue` | `#457b9d` | `#3a6a8a` | goals, "next" |
-| `--gold` | `#e9c46a` | `#7f6308` | deep dives, labels, audits |
-| `--on-accent` | `#0a0a0c` | `#ffffff` | text on a filled accent button |
+| `--bg` | `#0a0a0c` | `#e8e4dc` | page (light: e-ink paper, a warm grey-cream) |
+| `--card` | `#131316` | `#f0ede6` | cards, drawer (light: barely lighter than the paper) |
+| `--line` / `--line-2` | `#1e1e24` / `#2a2a32` | `#d7d1c5` / `#c4bdae` | borders (light: a shade darker than the paper) |
+| `--fg` / `--muted` / `--dim` | `#ececf1` / `#9a9aa6` / `#6b6b78` | `#1b1915` / `#4a463f` / `#5e5950` | text, secondary, tertiary (light: warm near-black and warm greys) |
+| `--red` | `#ff6b6b` | `#bd0000` | Greece, Learn, disputes |
+| `--purple` | `#9b5de5` | `#7400fe` | Rome, course B |
+| `--orange` | `#f4a261` | `#9c4500` | Build, "unchecked" |
+| `--teal` | `#2a9d8f` | `#006b5e` | links, course A, "written" |
+| `--blue` | `#457b9d` | `#0062a0` | goals, "next" |
+| `--gold` | `#e9c46a` | `#7c5800` | deep dives, labels, audits |
+| `--on-accent` | `#0a0a0c` | `#f5f2eb` | text on a filled accent button (light: cream, not white) |
 
-Dark accents are the house palette and do not change. No grey is a dominant accent.
+Dark accents are the house palette and do not change. No grey is a dominant accent. The light accents (6.3, P90, Pedro 4 Nov 2026: e-ink, bright accents within contrast) keep each house hue at 100% saturation and take the highest lightness that holds 4.6:1 on the darkest surface the accent is text on, its own track band (7% of it over the paper); `kit/contrast.py` prints every pair (the accent on the paper, on a card, cream text on the accent, the eyebrow's `.u`, the accent on its band), before and after in `kit/reviews/p90/`. In light a filled button's label (`.hbtn span`) is at full opacity, since at .85 it measured 4.49:1 on red and purple. No pure white is used anywhere in light mode.
 
 ## Figures
 
-`kit/viz.py` draws a declared figure (timeline, compare, tree, flow; since V1 sitemap, objects, decision, matrix, states, swimlanes, wireflow; Academy's Figure kinds page shows each) as inline SVG with classes only; section 4i of the theme gives every class its fill and stroke from the tokens, so a figure follows the theme like any text. A page never styles a figure; a new kind is a function in `viz.py` plus its classes in 4i. The house accents are reachable as tones 1 to 6 (`--viz-1` … `--viz-6`).
+`kit/viz.py` draws a declared figure (timeline, compare, tree, flow; since V1 sitemap, objects, decision, matrix, states, swimlanes, wireflow; Academy's Figure kinds page shows each) as inline SVG with classes only; section 4i of the theme gives every class its fill and stroke from the tokens, so a figure follows the theme like any text. Since P90 a sitemap node may carry `href` (a panel id: its box is an `<a class="viz-a">` with `data-target`, as the drawer's links are, which `shell.js` follows) and `dashed` (a dashed, untinted box, `.viz-dash`: a planned page), and the block may carry `phone` (`{"stack_from": 1}`: a second drawing of the same root as wide as the phone frame, `svg.viz-alt`, shown below 768 px in place of the wide one). The Academy home's map is such a figure, declared by `build.py` from the course data. A page never styles a figure; a new kind is a function in `viz.py` plus its classes in 4i. The house accents are reachable as tones 1 to 6 (`--viz-1` … `--viz-6`).
 
 ## Rules for pages
 
@@ -70,6 +70,6 @@ Checked on 27 October 2026 with Chromium at 400 px, dark and light, every panel 
 
 ## Checks before republishing
 
-At 390 or 400 px, 768 px and 1280 px wide, in dark and in light, on every page with every `<details>` open: the document is not wider than the viewport; no two boxed elements are closer than 6 px; no button, summary or block link is under 44 px tall; no console error; on the tablet the drawer is off screen until the menu button and 360 px with a backdrop when open; on the desktop it is a 300 px sidebar at the left, the content column starts beside it, the top bar spans the column, the current page is highlighted and report text keeps its 68ch measure; text tokens keep at least 4.5:1 against `--bg` and `--card`. `python3 generator/check_page.py generator/hubs/<page>.html` (hubs) and `python3 kit/verify.py` (Academy) measure all but the contrast for every panel at every width in both themes and end with ALL CHECKS PASSED or FAIL (Playwright with Chromium); `--shots DIR` saves the three widths.
+At 390 or 400 px, 768 px and 1280 px wide, in dark and in light, on every page with every `<details>` open: the document is not wider than the viewport; no two boxed elements are closer than 6 px; no button, summary or block link is under 44 px tall; no console error; on the tablet the drawer is off screen until the menu button and 360 px with a backdrop when open; on the desktop it is a 300 px sidebar at the left, the content column starts beside it, the top bar spans the column, the current page is highlighted and report text keeps its 68ch measure; text tokens keep at least 4.5:1 against `--bg` and `--card`. `python3 generator/check_page.py generator/hubs/<page>.html` (hubs) and `python3 kit/verify.py` (Academy) measure all of it for every panel at every width in both themes (`verify.py` measures contrast since P90: every text of the home, the drawer, the changelog, the backlog, each course home and one reading page per course in the light theme, against the background it actually sits on) and end with ALL CHECKS PASSED or FAIL (Playwright with Chromium); `--shots DIR` saves the three widths.
 
 The responsive rules (section 6) add no component and change no token: a breakpoint only widens the column, puts cards side by side or pins the drawer open. Phone layout is checked against the previous build's panel count and tightest gap before and after any theme change (28 October 2026: 144 panels, 6 px, unchanged).

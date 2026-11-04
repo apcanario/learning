@@ -1,0 +1,76 @@
+viz-examples.html: 33 figures
+split: shell 727 KB (limit 1,024 KB), 203 fetched files in 6 folders, largest ux-ia/read-ia6.html 193 KB
+  brand-a/    15 files   1,021 KB, largest brand-a/read-a8.html 112 KB
+  brand-b/    14 files     966 KB, largest brand-b/read-b3.html 101 KB
+  greece/     81 files   4,263 KB, largest greece/syllabus.html 134 KB
+  rome/       82 files   4,465 KB, largest rome/syllabus.html 144 KB
+  ux-ia/      10 files   1,142 KB, largest ux-ia/read-ia6.html 193 KB
+  ./           1 files     160 KB, largest viz-examples.html 160 KB
+figure keys (P52): 655 blocks read, 0 undocumented keys
+opening notes (P73): 26 units with an opening, each with its closed note after Sources; 3 without, none shown
+figure rules (P58): 656 built figures read, 0 faults
+split: stubs empty until opened; fetched once, kept and the next report prefetched; links into an unopened report, syllabus, briefs page and course home; failed fetch and retry (report and course home); a course home's continue button
+figures: 16 kinds and 17 hard cases on the examples page (timeline, compare, tree, flow, sitemap, objects, decision, matrix, states, swimlanes, wireflow, linechart, bars, scatter, range, matrix-numeric, timeline, timeline, timeline, compare, bars, tree, objects, range, range, timeline, timeline, objects, range, tree, objects, objects, timeline); 0 geometry faults; 9 blocks stop the build as they should
+reading: 187 units and reports, 1922 sections, each reached by next, previous and the menu, "Whole unit" on and off, both accordions closed after the text and Sources opened by its links; deep links to a section (5 of 5), to Sources and to the opening note (3), and Continue and a reload resuming at the section, on one page of each course (m73, rm81, read-a7, read-b6, read-ia4)
+phone layout: 390 px at scale 1
+phone: panels checked: 221; tightest stacked gap 6px (home); 656 figure frames at natural size, 625 scrolling with the cue; geometry of 656 figures on 190 panels checked
+phone light: panels checked: 221; tightest stacked gap 6px (home); 656 figure frames at natural size, 625 scrolling with the cue
+home phone: map phone drawing [328, 328, 328], 5 course links, dashed ['8 planned']; 5 cards; New since 6 rows; Continue names read-ia7
+home phone light: map phone drawing [328, 328, 328], 5 course links, dashed ['8 planned']; 5 cards; New since 6 rows; Continue names read-ia7
+contrast (light, phone): 6952 texts on 13 panels and the drawer, lowest 4.29:1 (rm01 span.bn)
+  home                         home           nav=root    HOME | Academy | arrows=False prev=False next=True | (hidden)
+  changelog                    changelog      nav=root    ACADEMY | Changelog | arrows=False prev=True next=True | 
+  rome home                    rome           nav=rome    COURSE 2 | Rome | arrows=True prev=False next=True | (hidden)
+  rome report                  rm12           nav=rome    ROME · UNIT 1 · 1.2 | The Etruscans | arrows=True prev=True next=True | 
+  rome next                    rm13           nav=rome    ROME · UNIT 1 · 1.3 | Before Romulus: Evander, Hercules and Ae | arrows=True prev=True next=True | 
+  rome last report             rm138          nav=rome    ROME · UNIT 13 · 13.8 | The Meditations and the afterlife of Rom | arrows=True prev=True next=False | 
+  rome prev from first report  rome-syllabus  nav=rome    ROME | Syllabus and prompts | arrows=True prev=True next=True | 
+  greece how it was built      greece-built   nav=greece  GREECE | How it was built | arrows=True prev=True next=True | 
+  rome how it was built        rome-built     nav=rome    ROME | How it was built | arrows=True prev=True next=True | 
+  home again                   home           nav=root    HOME | Academy | arrows=False prev=False next=True | Continue reading Rome · 1.2 The Etruscans
+  greece home                  greece         nav=greece  COURSE 1 | Greece | arrows=True prev=False next=True | (hidden)
+  greek report                 m23            nav=greece  GREECE · UNIT 2 · 2.3 | The underworld and the chthonic gods | arrows=True prev=True next=True | 
+  greek next                   m24            nav=greece  GREECE · UNIT 2 · 2.4 | Prometheus, Pandora, the Five Ages and t | arrows=True prev=True next=True | 
+  greek last                   m128           nav=greece  GREECE · U12 · 12.8 | Sceptics and Neoplatonists: the late sch | arrows=True prev=True next=False | 
+  home last                    home           nav=root    HOME | Academy | arrows=False prev=False next=True | Continue reading Greece · 2.4 Prometheus, Pandora, the Five 
+  rome home resumes rome       rome           nav=rome    COURSE 2 | Rome | arrows=True prev=False next=True | Continue 1.2 The Etruscans
+  brand-a home                 brand-a        nav=brand-a COURSE A | Personal brand | arrows=True prev=False next=True | (hidden)
+  brand-a reading              read-a1        nav=brand-a PERSONAL BRAND · A1 | Positioning: the journey as a format | arrows=True prev=True next=True | 
+  brand-a How it is built      brand-a-build  nav=brand-a PERSONAL BRAND | How it is built | arrows=True prev=True next=True | 
+  brand-a Build order          brand-a-order  nav=brand-a PERSONAL BRAND | Build order | arrows=True prev=True next=True | 
+  brand-a Briefs               briefs-a       nav=brand-a PERSONAL BRAND | Briefs | arrows=True prev=True next=True | 
+  brand-a Audits               brand-a-audits nav=brand-a PERSONAL BRAND | Audits | arrows=True prev=True next=True | 
+  brand-a Bibliography         brand-a-bibliography nav=brand-a PERSONAL BRAND | Bibliography | arrows=True prev=True next=True | 
+  brand-a Changelog            brand-a-changelog nav=brand-a PERSONAL BRAND | Changelog | arrows=True prev=True next=True | 
+  brand-a How it was built     brand-a-built  nav=brand-a PERSONAL BRAND | How it was built | arrows=True prev=True next=False | 
+  home after brand-a           home           nav=root    HOME | Academy | arrows=False prev=False next=True | Continue reading Personal brand · A1 Positioning: the journe
+  brand-a home resumes         brand-a        nav=brand-a COURSE A | Personal brand | arrows=True prev=False next=True | Continue A1 Positioning: the journey as a format
+  brand-b home                 brand-b        nav=brand-b COURSE B | Building with AI | arrows=True prev=False next=True | (hidden)
+  brand-b reading              read-b1        nav=brand-b BUILDING WITH AI · B1 | Mental model | arrows=True prev=True next=True | 
+  brand-b How it is built      brand-b-build  nav=brand-b BUILDING WITH AI | How it is built | arrows=True prev=True next=True | 
+  brand-b Build order          brand-b-order  nav=brand-b BUILDING WITH AI | Build order | arrows=True prev=True next=True | 
+  brand-b Briefs               briefs-b       nav=brand-b BUILDING WITH AI | Briefs | arrows=True prev=True next=True | 
+  brand-b Audits               brand-b-audits nav=brand-b BUILDING WITH AI | Audits | arrows=True prev=True next=True | 
+  brand-b Bibliography         brand-b-bibliography nav=brand-b BUILDING WITH AI | Bibliography | arrows=True prev=True next=True | 
+  brand-b Changelog            brand-b-changelog nav=brand-b BUILDING WITH AI | Changelog | arrows=True prev=True next=True | 
+  brand-b How it was built     brand-b-built  nav=brand-b BUILDING WITH AI | How it was built | arrows=True prev=True next=False | 
+  home after brand-b           home           nav=root    HOME | Academy | arrows=False prev=False next=True | Continue reading Building with AI · B1 Mental model
+  brand-b home resumes         brand-b        nav=brand-b COURSE B | Building with AI | arrows=True prev=False next=True | Continue B1 Mental model
+  backlog                      backlog        nav=root    ACADEMY | Backlog | arrows=False prev=True next=True | 
+tablet: panels checked: 221; tightest stacked gap 6px (home)
+tablet: drawer is a drawer (off screen, 360 px with backdrop when open); column 760 px; report rm11 loaded through the shell, 33 paragraphs
+desktop: panels checked: 221; tightest stacked gap 6px (home); 656 figure frames, 56 wider than their frame with the cue, the rest without
+desktop: sidebar 300 px at the left, content column 760 px from 410 px, current item m23, measure 744.193px
+home tablet: map wide drawing [698, 698, 698], 5 course links, dashed ['8 planned']; 5 cards; New since 6 rows; Continue names read-ia7
+home tablet light: map wide drawing [698, 698, 698], 5 course links, dashed ['8 planned']; 5 cards; New since 6 rows; Continue names read-ia7
+home desktop: map wide drawing [698, 698, 698], 5 course links, dashed ['8 planned']; 5 cards; New since 6 rows; Continue names read-ia7
+home desktop light: map wide drawing [698, 698, 698], 5 course links, dashed ['8 planned']; 5 cards; New since 6 rows; Continue names read-ia7
+shots: phone home figure 1 (sitemap) dark: 1 frame
+shots: phone home figure 1 (sitemap) light: 1 frame
+shots: tablet home figure 1 (sitemap) dark: 1 frame
+shots: tablet home figure 1 (sitemap) light: 1 frame
+shots: desktop home figure 1 (sitemap) dark: 1 frame
+shots: desktop home figure 1 (sitemap) light: 1 frame
+screenshots in /tmp/claude-0/-home-claude/9033cf43-182e-5b83-a362-b6759dc893bc/scratchpad/after
+courses-index.md: matches the sources
+ALL CHECKS PASSED
