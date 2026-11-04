@@ -506,11 +506,11 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
   display:none;position:absolute;left:calc(-1 * var(--ox));top:calc(-1 * var(--oy));width:calc(100% + 2 * var(--ox));height:calc(100% + 2 * var(--oy));transform-origin:50% 50%}
 .topo-tall{display:block}
 .topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:butt}   /* butt: where one rise's stretch of a line hands over to the next, the two ends abut, never overlap (round caps doubled the line there) */
-.topo .ct-rise path{stroke:var(--c);stroke-opacity:var(--topo-a)}
+.topo .ct-rise path,.topo .ct-spot{stroke:var(--c);stroke-opacity:var(--topo-a)}   /* P93 check: .ct-spot, the ring that marks a written part under one level, as a map marks a spot height */
 .topo .ct-plan circle{stroke:var(--c);stroke-opacity:var(--topo-a);stroke-dasharray:3 3}
 .topo.topo-patch{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;margin:14px 0 0;aspect-ratio:4 / 1;overflow:hidden;-webkit-mask-image:none;mask-image:none}
 .topo-patch .topo-l{display:block;--ox:0px;--oy:0px}   /* a patch's drawing fits its frame (meet) and is transparent: it needs no overscan; its rings are placed clear of the frame at every pose (build.py turned_inside) */
-.topo-patch .ct-rise path{stroke-opacity:var(--topo-p)}
+.topo-patch .ct-rise path,.topo-patch .ct-spot{stroke-opacity:var(--topo-p)}
 .topo-patch .ct-plan circle{stroke-opacity:var(--topo-p)}
 @media (prefers-reduced-motion:no-preference){.topo-l{animation:topo-turn var(--topo-cycle) ease-in-out calc(var(--ph,0) * -1 * var(--topo-cycle)) infinite alternate both}}
 @keyframes topo-turn{from{transform:rotate(calc(-1 * var(--topo-turn))) scale(1)}to{transform:rotate(var(--topo-turn)) scale(var(--topo-grow))}}

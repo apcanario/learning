@@ -658,10 +658,12 @@ TILES_JS = r"""(pid) => {
     const sv = patch && patch.querySelector('svg');
     const name = (box.querySelector('.ctitle') || {}).textContent || '?';
     const r = {name, kind: t.classList.contains('ghost') ? 'ghost' : disc ? 'disc' : t.tagName === 'A' ? 'link' : 'other', cls: [...t.classList].filter(c => !['ghost', 'pending'].includes(c)).join(' '),
+      mods: [...t.classList].filter(c => ['ghost', 'pending'].includes(c)), spots: sv ? [...sv.querySelectorAll('g.ct-rise')].filter(g => g.querySelector('.ct-spot')).map(g => g.getAttribute('data-label')) : null,
+      unseen: sv ? [...sv.querySelectorAll('g.ct-rise')].filter(g => +g.getAttribute('data-rings') === 0 && !g.querySelector('.ct-spot')).map(g => g.getAttribute('data-label')) : null,
       kids, chip: [...box.querySelectorAll('.ctop > .cname > .cpart')].map(x => x.textContent), pill: box.querySelector('.ctop > .pill') ? box.querySelector('.ctop > .pill').textContent : null,
       stats: [...box.querySelectorAll('.cstats > span')].map(x => [x.querySelector('b') ? x.querySelector('b').textContent : null, x.textContent.replace(x.querySelector('b') ? x.querySelector('b').textContent : '', '').trim()]),
-      lines: p ? Math.round(p.getBoundingClientRect().height / lh) : 0,   /* as painted (P93 check: a stretched line showed a third line under its clamp) */ clipped: p ? p.scrollHeight > p.clientHeight + 1 : false, open: disc ? t.open : null,
-      href: t.getAttribute('href'), target: t.getAttribute('data-target'), mods: t.getAttribute('data-mods'),
+      lines: p ? Math.round(p.getBoundingClientRect().height / lh) : 0, ids: t.getAttribute('data-mods'),   /* as painted (P93 check: a stretched line showed a third line under its clamp) */ clipped: p ? p.scrollHeight > p.clientHeight + 1 : false, open: disc ? t.open : null,
+      href: t.getAttribute('href'), target: t.getAttribute('data-target'),
       rows: disc ? t.querySelectorAll(':scope > .hrows > .hrow').length : null,
       rises: sv ? [...sv.querySelectorAll('g.ct-rise')].map(g => [g.getAttribute('data-label'), +g.getAttribute('data-words')]) : null,
       plan: sv ? [...sv.querySelectorAll('g.ct-plan')].map(g => g.getAttribute('data-label')) : null,
@@ -835,6 +837,8 @@ def check_tiles(pg, pid, label, fails, expect):
         if t['aria'] != 'true': fails.append(f'{pid} {label}: {nm}: its patch is not aria-hidden')
         if not t['pin'] or abs(t['pw'] / max(t['ph'], 1) - 4) > .06: fails.append(f'{pid} {label}: {nm}: its patch is {t["pw"]} x {t["ph"]}, not 4:1 inside the tile')
         if t['sw']: fails.append(f'{pid} {label}: {nm}: the tile scrolls sideways')
+        if t['unseen']: fails.append(f'{pid} {label}: {nm}: the written parts {t["unseen"]} draw no ring of their own (P93 check: a part under one level takes a spot ring)')
+        if (t['kind'] == 'ghost') != ('ghost' in t['mods']): fails.append(f'{pid} {label}: {nm}: a ghost tile without the ghost class, or the reverse')
     for cols, n, lone, half in r['grids']:
         if w < 768 and cols != 1: fails.append(f'{pid} {label}: a tile grid in {cols} columns below 768 px')
         if w >= 768 and cols != 2: fails.append(f'{pid} {label}: a tile grid in {cols} column(s) from 768 px')
@@ -859,6 +863,7 @@ def check_tiles(pg, pid, label, fails, expect):
                 ww = sum(parts or [])
                 if [x[0] for x in t['stats']] != [str(len(parts or [])), f'{ww:,}', f'{ww / 250 / 60:.1f}']: fails.append(f'{pid} {label}: {code}: its stats read {t["stats"]}')
             if [tuple(x) for x in t['rises'] or []] != want_r: fails.append(f'{pid} {label}: {code}: its patch gives {t["rises"]}, the sources {want_r}')
+            if ('pending' in t['mods']) != (not want_r): fails.append(f'{pid} {label}: {code}: marked pending {"pending" in t["mods"]}, but {len(want_r)} of its parts are written')
             if (t['plan'] or []) != want_p: fails.append(f'{pid} {label}: {code}: its patch marks {t["plan"]} planned, the sources {want_p}')
     if pid == 'home':
         gh = [t for t in ts if t['kind'] == 'ghost']

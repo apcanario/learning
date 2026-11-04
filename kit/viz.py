@@ -102,7 +102,8 @@ figure kinds a unit declares (the Figure kinds page shows those):
             sampled every "grid" units, cut at every multiple of "interval" words by marching squares, each line
             simplified to within "simplify" units and written in whole-unit relative steps; each stretch of a line is
             drawn in the tone of the rise that dominates it there (<g class="ct-rise ct-t{tone}"> per rise, with
-            data-label, data-words and data-rings, the levels its own words stand above; P93: each peak on a grid node). A "planned": true entry needs no
+            data-label, data-words and data-rings, the levels its own words stand above; P93: each peak on a grid node, and a
+            written rise under one level marked by a spot ring, <circle class="ct-spot">, so every written part shows). A "planned": true entry needs no
             words: it is flat, a small dashed ring (<g class="ct-plan">), in no line. Each layout is one <svg
             class="topo-l topo-{name}" data-layout="{name}"> (preserveAspectRatio slice: it covers its frame); "at"
             places each rise (fractions of the width and height, one per rise, in order); without it the rises stand in
@@ -2813,10 +2814,19 @@ def _ct_field(d, lay, rises, iv, live):
         lv_of[k] = int(rises[k]['words'] // iv)   # P93 check: its own height in levels, one count for every layout (with the field at its peak Rome's U11, 4.996 levels, read 4 in one layout and 5 in the other)
         rings = [p for p, closed in per[k] if closed]
         own[k] = len([1 for p in rings if len({(round(x), round(y)) for x, y in p}) >= 2])
+        if lv_of[k] == 0:   # P93 check: a part under one level is marked by a spot ring at its peak (spot_r), its box that ring's
+            sr = _ct_spot_r(rises[k], sp, W, wmax)
+            rings = [[(at[k][0] * W - sr, at[k][1] * H - sr), (at[k][0] * W + sr, at[k][1] * H + sr)]]
         xs = [x for p in rings for x, _ in p] or [at[k][0] * W]
         ys = [y for p in rings for _, y in p] or [at[k][1] * H]
         box[k] = (min(xs), min(ys), max(xs), max(ys))
     return W, H, at, sp, per, lv_of, own, box, edge
+
+
+def _ct_spot_r(r, sp, W, wmax):
+    """P93 check: the radius of the spot ring that marks a written rise standing under one level (its words below the
+    interval, so no contour passes round it): half its spread, at least 3 units; as a map marks a spot height."""
+    return max(3.0, .5 * sp * W * (r['words'] / wmax) ** (1 / 3))
 
 
 def contours_rings(d):
@@ -2859,8 +2869,10 @@ def contours(d):
                          f'r="{rr:.0f}"/></g>')
                 continue
             bx = ' '.join(f'{v:.0f}' for v in box[k])
+            spot = (f'<circle class="ct-spot" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" r="{_ct_spot_r(r, sp, W, max(rises[j]["words"] for j in live)):.0f}"/>'
+                    if lv_of[k] == 0 else '')   # P93 check: a written part under one level still shows, as a spot ring
             body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{lv_of[k]}" '
-                     f'data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"><path d="{_ct_d(per[k])}"/></g>')
+                     f'data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"><path d="{_ct_d(per[k])}"/>{spot}</g>')
         nm = esc(lay.get('name', ''))
         fit = 'meet' if d.get('patch') else 'slice'
         svgs.append(f'<svg class="topo-l topo-{nm}" data-layout="{nm}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid {fit}" '

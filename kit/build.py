@@ -353,7 +353,7 @@ def ct_fit(rises, iv, specs, maxbytes=19500):
 TOPO_TURN, TOPO_GROW = 3, 1.06   # theme.css --topo-turn and --topo-grow: the move every drawing makes (verify.py reads them from the theme)
 
 
-def turned_inside(b, W, H, pad=3, view=None):
+def turned_inside(b, W, H, pad=6, view=None):   # P93 check: 6 units (about 2.5 px on a 320 px phone's patch; at 3 the closest came to 1.1 px)
     """Whether a box (x0, y0, x1, y1) in a W x H drawing stays inside it, pad units clear (or inside view, fractions of
     the drawing: a hero's window), at both ends of the move: the drawing turned by -TOPO_TURN at scale 1 and by
     +TOPO_TURN at TOPO_GROW (and the two other corners of that range), about its centre. A ring near the end of a 4:1
