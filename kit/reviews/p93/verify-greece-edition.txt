@@ -168,9 +168,9 @@ new phone430 motion light pose 0.25 (430 px): hero texts over the contours, 11 m
 new phone430 motion light pose 0.5 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
 new phone430 motion light pose 0.75 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
 new phone430 motion light pose 1 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
-home phone motion: LCP 80 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
-greece phone motion: LCP 116 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
-new phone motion: LCP 96 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+home phone motion: LCP 68 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+greece phone motion: LCP 152 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+new phone motion: LCP 108 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
 home phone motion: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 711 px; New since 6 rows; animations 3; page [390, 390]
 home phone motion (pose 0 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
 home phone motion (pose 0.25 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3

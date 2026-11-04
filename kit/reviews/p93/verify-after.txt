@@ -1,5 +1,5 @@
 viz-examples.html: 33 figures
-split: shell 789 KB (limit 1,024 KB), 207 fetched files in 6 folders, largest ux-ia/read-ia6.html 193 KB
+split: shell 791 KB (limit 1,024 KB), 207 fetched files in 6 folders, largest ux-ia/read-ia6.html 193 KB
   brand-a/    16 files   1,074 KB, largest brand-a/read-a8.html 112 KB
   brand-b/    15 files   1,014 KB, largest brand-b/read-b3.html 101 KB
   greece/     81 files   4,317 KB, largest greece/syllabus.html 134 KB
@@ -20,7 +20,7 @@ home phone (390 px): hero texts over the contours, 11 measured pixel by pixel, l
 what's new phone: 186 unit rows, 5 course rows, 81 approximate, on 9 days
 home phone light: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History', 'Marketing', 'Technology', 'User Experience'], shown False, static shown True; link ["What's new · IA7 · 3 Nov", '#new', 'new', 44]; contours 14252 B, layout ['tall'], rises [('History', 23, 22), ('Marketing', 3, 2), ('Technology', 3, 2), ('User Experience', 2, 2)]; tiles [('greece', 13, 0), ('rome', 14, 0), ('brand-a', 11, 0), ('brand-b', 11, 0), ('ux-ia', 7, 8)]; heads [[False, True, False, False]]; first area at 711 px; New since 6 rows; animations 0; page [390, 390]
 home phone light (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 3.77:1 (span "Marketing"); each (lowest/needed): Academy 10.29/3; History 3.89/3; ·, 5.50/3; Marketing 3.77/3; ·, 5.50/3; Technology 3.88/3; ·, 5.50/3; User Experience 3.78/3; Every self-study c 5.50/4.5; What's new ·, IA7  13.84/4.5; → 7.40/4.5
-contrast (light, phone): 8647 texts on 14 panels and the drawer, lowest 4.29:1 (rm01 span.bn)
+contrast (light, phone): 8657 texts on 14 panels and the drawer, lowest 4.29:1 (rm01 span.bn)
   home                         home           nav=root    HOME | Academy | arrows=False prev=False next=True | 
   changelog                    changelog      nav=root    ACADEMY | Changelog | arrows=False prev=True next=True | 
   rome home                    rome           nav=rome    COURSE 2 | Rome | arrows=True prev=False next=True | (hidden)
@@ -445,9 +445,9 @@ new phone430 motion light pose 0.25 (430 px): hero texts over the contours, 11 m
 new phone430 motion light pose 0.5 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.22:1 (lede "Every unit and eve")
 new phone430 motion light pose 0.75 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.29:1 (lede "Every unit and eve")
 new phone430 motion light pose 1 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.14:1 (lede "Every unit and eve")
-home phone motion: LCP 120 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
-greece phone motion: LCP 172 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
-new phone motion: LCP 128 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+home phone motion: LCP 116 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+greece phone motion: LCP 176 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+new phone motion: LCP 220 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
 home phone motion: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History', 'Marketing', 'Technology', 'User Experience'], shown True, static shown False; link ["What's new · IA7 · 3 Nov", '#new', 'new', 44]; contours 14252 B, layout ['tall'], rises [('History', 23, 22), ('Marketing', 3, 2), ('Technology', 3, 2), ('User Experience', 2, 2)]; tiles [('greece', 13, 0), ('rome', 14, 0), ('brand-a', 11, 0), ('brand-b', 11, 0), ('ux-ia', 7, 8)]; heads [[False, True, False, False]]; first area at 711 px; New since 6 rows; animations 18; page [390, 390]
 home phone motion (pose 0 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, IA7  16.80/4.5; → 7.11/4.5; History 5.89/3
 home phone motion (pose 0 of the sweep, Marketing shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 4.91:1 (harea-w "Marketing"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, IA7  16.80/4.5; → 7.11/4.5; Marketing 4.91/3
@@ -766,7 +766,7 @@ shots: desktop greece motion sheet, dark
 shots: desktop greece motion sheet, light
 shots: desktop ux-ia motion sheet, dark
 shots: desktop ux-ia motion sheet, light
-screenshots in /tmp/claude-0/-home-claude/92170b0b-14e0-5344-8975-6831f10866c3/scratchpad/after-raw7
+screenshots in /tmp/claude-0/-home-claude/92170b0b-14e0-5344-8975-6831f10866c3/scratchpad/after-raw8
 courses-index.md: matches the sources
 ALL CHECKS PASSED
 exit 0
