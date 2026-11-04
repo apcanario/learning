@@ -158,6 +158,7 @@ From IA7's table "Perqo facts set by this unit", verbatim but for the layout (th
 - Relationships R-21 (admin user is also employee), R-22 (claim is decided by admin user), R-23 (audit entry records a change to), R-24 (audit entry is made by admin user) (Deliverable A, A.3).
 - Admin's name for the card is "Perqo card", status only (Active, Frozen, Not issued), on the employee's record; Admin does not show notifications (section 2.3). Free: whether Admin sends HR messages of its own.
 - Roles cover the whole client; the role-by-section matrix and the calls to action with their roles in Deliverables A and B; finance does not see Approvals; HR sees Budget use and Claims by status only (section 3; Deliverables A, B). Free: scoping roles to employee groups.
+- Every admin user sees Company (AD-6.1) read only; only the account owner edits it, and only the account owner reaches Admins and the Activity log (Deliverable A, A.1; Deliverable B).
 - Admin's pages AD-0 to AD-6 as in C.1; addresses identifier first (Deliverable C, C.1). Free: Admin's domain; the identifiers' format.
 - Reports holds five views: Spend by category, Spend by employee group, Budget use, Claims by status, Card payments (section 4.6). Free: the reports' columns beyond those named.
 - Work queues: Approvals (HR), Not joined (HR, Invited over 14 days), No budget for next period (finance) (Deliverable C, C.4).
