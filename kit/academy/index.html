@@ -351,6 +351,7 @@ details.rules>summary{list-style:none;display:flex;align-items:center;justify-co
 details.rules>summary::-webkit-details-marker{display:none}
 details.rules>summary h2{margin:0}
 details.rules>summary span{font-family:var(--mono);font-size:11px;color:var(--dim)}
+details.rules>summary>span{margin-left:auto;text-align:right;text-wrap:balance}   /* P92 check: the sub-label beside the +, at one place on every block (between the title and the + it floated by their widths, so two blocks stacked did not align) */
 details.rules>summary::after{content:"+";font-family:var(--mono);color:var(--muted);font-size:16px;margin-left:8px}
 details.rules[open]>summary::after{content:"–"}
 details.rules>ol,details.rules>ul,details.rules>p{padding:0 16px}
@@ -454,7 +455,7 @@ details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter
 @media (max-width:400px){.panel.root .cstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 10px}.panel.root .cstats>span{display:flex;flex-direction:column;line-height:1.3}}
 /* P92: below 768 px (430 px too, where the title and its sub-label each wrapped to two lines side by side) a closed
    rule block's sub-label sits under its title */
-@media (max-width:767.98px){.panel.root details.rules>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;row-gap:2px;padding:10px 16px}.panel.root details.rules>summary>span{grid-column:1}.panel.root details.rules>summary::after{grid-column:2;grid-row:1 / span 2;margin:0}}
+@media (max-width:767.98px){.panel.root details.rules>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;row-gap:2px;padding:10px 16px}.panel.root details.rules>summary>span{grid-column:1;margin-left:0;text-align:left}.panel.root details.rules>summary::after{grid-column:2;grid-row:1 / span 2;margin:0}}
 /* new since: dated rows; the date column is wider than a module number; the link to What's new under it. What's new
    (#new, P91): the same rows, one card per day under the day's heading, the unit code in the first column; an
    approximate date (a work session of several days) is marked "≈" */
