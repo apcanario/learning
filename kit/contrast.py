@@ -109,14 +109,14 @@ if __name__ == '__main__':
     for name, t in (('light', tok), ('dark', dark_tokens(css))):
         bg, card, fg, mu, on = (rgb(t[k]) for k in ('bg', 'card', 'fg', 'muted', 'on-accent'))
         a = alpha(css, 'topo-a', blocks[name]); a2 = 1 - (1 - a) ** 2
-        print(f"P93 pairs, {name} (contour lines at --topo-a {a}; two stacked {a2:.3f}):")
+        print(f"P93 pairs, {name} (contour lines at --topo-a {a}; two stacked {a2:.3f}). The bar is over one line; two lines stacked in one pixel is a worst case printed for the record, not a pass criterion: verify.py measures every hero text on the built page, pixel by pixel, at five poses of the move, and that is the authority:")
         hero = [('crumb link, separator (muted)', mu, 4.5), ('crumb here (fg)', fg, 4.5), ('eyebrow (muted)', mu, 4.5), ('headline (fg, large)', fg, 3),
                 ('lede (muted)', mu, 4.5), ('outlined button label (muted)', mu, 4.5), ('outlined button title (fg)', fg, 4.5), ('flag (muted)', mu, 4.5)]
         hero += [(f'eyebrow course label ({c}: .u, 78% with fg)', mix(rgb(t[c]), fg, .78), 4.5) for c in ACCENTS]
         for what, c, bar in hero:
             one = min(ratio(c, mix(rgb(t[tn]), bg, a)) for tn in ACCENTS)
             two = min(ratio(c, mix(rgb(t[tn]), bg, a2)) for tn in ACCENTS)
-            print(f'  {what:44} on the page {ratio(c, bg):5.2f}; over one line {one:5.2f}; over two stacked {two:5.2f}' + ('' if one >= bar else f'  UNDER {bar}:1'))
+            print(f'  {what:44} on the page {ratio(c, bg):5.2f}; over one line {one:5.2f}; over two stacked {two:5.2f} (record)' + ('' if one >= bar else f'  UNDER {bar}:1'))
             if one < bar: low93.append(f'{name} {what} {one:.2f}')
         tiles = [(f'chip on {c} (on-accent)', on, rgb(t[c]), 4.5) for c in ACCENTS]
         tiles += [('ghost chip on card (fg)', fg, card, 4.5), ('ghost chip on page (fg)', fg, bg, 4.5), ('ghost line on card (muted)', mu, card, 4.5), ('ghost line on page (muted)', mu, bg, 4.5),

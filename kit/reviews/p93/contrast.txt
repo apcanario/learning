@@ -32,21 +32,21 @@ P92 hero pairs, dark (--bg #0a0a0c, contour lines at --topo-a 0.16):
   What's new link (fg)                 on the page 16.80; lowest over a line 13.78 (a red line at 0.16)
   What's new arrow (muted)             on the page  7.11; lowest over a line  5.83 (a red line at 0.16)
 P92: ALL HOME PAIRS PASS
-P93 pairs, light (contour lines at --topo-a 0.16; two stacked 0.294):
-  crumb link, separator (muted)                on the page  7.40; over one line  5.56; over two stacked  4.28
-  crumb here (fg)                              on the page 13.84; over one line 10.40; over two stacked  8.01
-  eyebrow (muted)                              on the page  7.40; over one line  5.56; over two stacked  4.28
-  headline (fg, large)                         on the page 13.84; over one line 10.40; over two stacked  8.01
-  lede (muted)                                 on the page  7.40; over one line  5.56; over two stacked  4.28
-  outlined button label (muted)                on the page  7.40; over one line  5.56; over two stacked  4.28
-  outlined button title (fg)                   on the page 13.84; over one line 10.40; over two stacked  8.01
-  flag (muted)                                 on the page  7.40; over one line  5.56; over two stacked  4.28
-  eyebrow course label (red: .u, 78% with fg)  on the page  6.96; over one line  5.23; over two stacked  4.03
-  eyebrow course label (orange: .u, 78% with fg) on the page  6.51; over one line  4.89; over two stacked  3.76
-  eyebrow course label (teal: .u, 78% with fg) on the page  6.50; over one line  4.89; over two stacked  3.76
-  eyebrow course label (blue: .u, 78% with fg) on the page  6.54; over one line  4.91; over two stacked  3.79
-  eyebrow course label (purple: .u, 78% with fg) on the page  6.95; over one line  5.22; over two stacked  4.02
-  eyebrow course label (gold: .u, 78% with fg) on the page  6.47; over one line  4.86; over two stacked  3.75
+P93 pairs, light (contour lines at --topo-a 0.16; two stacked 0.294). The bar is over one line; two lines stacked in one pixel is a worst case printed for the record, not a pass criterion: verify.py measures every hero text on the built page, pixel by pixel, at five poses of the move, and that is the authority:
+  crumb link, separator (muted)                on the page  7.40; over one line  5.56; over two stacked  4.28 (record)
+  crumb here (fg)                              on the page 13.84; over one line 10.40; over two stacked  8.01 (record)
+  eyebrow (muted)                              on the page  7.40; over one line  5.56; over two stacked  4.28 (record)
+  headline (fg, large)                         on the page 13.84; over one line 10.40; over two stacked  8.01 (record)
+  lede (muted)                                 on the page  7.40; over one line  5.56; over two stacked  4.28 (record)
+  outlined button label (muted)                on the page  7.40; over one line  5.56; over two stacked  4.28 (record)
+  outlined button title (fg)                   on the page 13.84; over one line 10.40; over two stacked  8.01 (record)
+  flag (muted)                                 on the page  7.40; over one line  5.56; over two stacked  4.28 (record)
+  eyebrow course label (red: .u, 78% with fg)  on the page  6.96; over one line  5.23; over two stacked  4.03 (record)
+  eyebrow course label (orange: .u, 78% with fg) on the page  6.51; over one line  4.89; over two stacked  3.76 (record)
+  eyebrow course label (teal: .u, 78% with fg) on the page  6.50; over one line  4.89; over two stacked  3.76 (record)
+  eyebrow course label (blue: .u, 78% with fg) on the page  6.54; over one line  4.91; over two stacked  3.79 (record)
+  eyebrow course label (purple: .u, 78% with fg) on the page  6.95; over one line  5.22; over two stacked  4.02 (record)
+  eyebrow course label (gold: .u, 78% with fg) on the page  6.47; over one line  4.86; over two stacked  3.75 (record)
   chip on red (on-accent)                       5.94
   chip on orange (on-accent)                    5.75
   chip on teal (on-accent)                      5.75
@@ -65,21 +65,21 @@ P93 pairs, light (contour lines at --topo-a 0.16; two stacked 0.294):
   pill next on card (blue, 78% with fg)         7.09
   plain pill on card (muted: soon, not run yet)  8.02
   plain pill on page (muted)                    7.40
-P93 pairs, dark (contour lines at --topo-a 0.16; two stacked 0.294):
-  crumb link, separator (muted)                on the page  7.11; over one line  5.26; over two stacked  3.60
-  crumb here (fg)                              on the page 16.80; over one line 12.42; over two stacked  8.52
-  eyebrow (muted)                              on the page  7.11; over one line  5.26; over two stacked  3.60
-  headline (fg, large)                         on the page 16.80; over one line 12.42; over two stacked  8.52
-  lede (muted)                                 on the page  7.11; over one line  5.26; over two stacked  3.60
-  outlined button label (muted)                on the page  7.11; over one line  5.26; over two stacked  3.60
-  outlined button title (fg)                   on the page 16.80; over one line 12.42; over two stacked  8.52
-  flag (muted)                                 on the page  7.11; over one line  5.26; over two stacked  3.60
-  eyebrow course label (red: .u, 78% with fg)  on the page  8.40; over one line  6.22; over two stacked  4.26
-  eyebrow course label (orange: .u, 78% with fg) on the page 10.80; over one line  7.98; over two stacked  5.47
-  eyebrow course label (teal: .u, 78% with fg) on the page  7.52; over one line  5.56; over two stacked  3.81
-  eyebrow course label (blue: .u, 78% with fg) on the page  6.09; over one line  4.51; over two stacked  3.09
-  eyebrow course label (purple: .u, 78% with fg) on the page  6.43; over one line  4.75; over two stacked  3.26
-  eyebrow course label (gold: .u, 78% with fg) on the page 12.80; over one line  9.46; over two stacked  6.49
+P93 pairs, dark (contour lines at --topo-a 0.16; two stacked 0.294). The bar is over one line; two lines stacked in one pixel is a worst case printed for the record, not a pass criterion: verify.py measures every hero text on the built page, pixel by pixel, at five poses of the move, and that is the authority:
+  crumb link, separator (muted)                on the page  7.11; over one line  5.26; over two stacked  3.60 (record)
+  crumb here (fg)                              on the page 16.80; over one line 12.42; over two stacked  8.52 (record)
+  eyebrow (muted)                              on the page  7.11; over one line  5.26; over two stacked  3.60 (record)
+  headline (fg, large)                         on the page 16.80; over one line 12.42; over two stacked  8.52 (record)
+  lede (muted)                                 on the page  7.11; over one line  5.26; over two stacked  3.60 (record)
+  outlined button label (muted)                on the page  7.11; over one line  5.26; over two stacked  3.60 (record)
+  outlined button title (fg)                   on the page 16.80; over one line 12.42; over two stacked  8.52 (record)
+  flag (muted)                                 on the page  7.11; over one line  5.26; over two stacked  3.60 (record)
+  eyebrow course label (red: .u, 78% with fg)  on the page  8.40; over one line  6.22; over two stacked  4.26 (record)
+  eyebrow course label (orange: .u, 78% with fg) on the page 10.80; over one line  7.98; over two stacked  5.47 (record)
+  eyebrow course label (teal: .u, 78% with fg) on the page  7.52; over one line  5.56; over two stacked  3.81 (record)
+  eyebrow course label (blue: .u, 78% with fg) on the page  6.09; over one line  4.51; over two stacked  3.09 (record)
+  eyebrow course label (purple: .u, 78% with fg) on the page  6.43; over one line  4.75; over two stacked  3.26 (record)
+  eyebrow course label (gold: .u, 78% with fg) on the page 12.80; over one line  9.46; over two stacked  6.49 (record)
   chip on red (on-accent)                       7.57
   chip on orange (on-accent)                   10.19
   chip on teal (on-accent)                      6.32
