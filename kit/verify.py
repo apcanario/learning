@@ -18,7 +18,7 @@ shell, one row per written report or unit), the drawer groups (tracks open by de
 accordion) and the Backlog page; the same panel checks again in the light theme. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
 its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
-and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35) at the three widths
+and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35; the home whole, P90) at the three widths
 of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
 and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png, the figure as its frame
 opens; and (P89, p85_frames.py folded in) every frame a reader scrolls that figure across, stacked and numbered in one
@@ -1260,7 +1260,10 @@ def main():
                         if pid == 'home':   # P90: the home is shot as a fresh visit, its Continue button naming the newest unit
                             pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')")
                         pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
-                        shoot(pg, SHOTS / f'{name}-{pid}-{theme}.png', w, h)
+                        if pid == 'home':   # P90: the home whole, to New since and the changelog link at its foot (it is a few screens long)
+                            pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, timeout=120000)
+                        else:
+                            shoot(pg, SHOTS / f'{name}-{pid}-{theme}.png', w, h)
                         if pid in PAGES and pg.query_selector(f'[id="{pid}"] .report.steps'):   # P68: the reading states the top does not show
                             for state, js in READING_SHOTS:
                                 pg.evaluate(js, pid); pg.wait_for_timeout(200)
