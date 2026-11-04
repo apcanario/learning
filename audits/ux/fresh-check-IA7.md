@@ -1107,3 +1107,285 @@ Figure 7 (matrix, IA7 the backoffice, Deliverable C, C.2) checked. The verdict i
 Figure 7: **FIX**, for the Settings roles cell. Replace it with `owner manage; others profile: Company read only, Your profile`. The two minor items are optional.
 
 Files read: everything in /tmp/claude-0/-home-claude/523bc694-bc8b-5dd5-bdd8-2b916401be73/scratchpad/f7r4/ (unit-without-figures.md, captions.md and all 12 sheets). I also wrote three working crops in that folder (crop-phone-f2-dark.png, crop-phone-f3-dark.png, crop-phone-f4-dark.png).
+
+## Figure 5 re-check 5 (Opus 5.5 agent, 4 November 2026; the sixth check of figure 5, matrix: the role-by-section matrix; given the unit without its figures, the captions and the frames sheets, nothing of the earlier reports; verbatim hand-back; the harness refused its `report.md` write, so the hand-back is the one copy)
+
+# Fresh figure check · IA7 · figure 5 (matrix)
+
+The harness refused the write to F/report.md, so this reply is the only copy.
+
+## (a) Findings
+
+- **[minor]** The legend does not always do what the caption says it does.
+  - The caption and Deliverable B's face (line 364) say the legend names, "for each mark, the calls to action in Deliverable A, A.4 or the pages and reports it opens".
+  - Two marks name neither:
+    - `view` ("read only")
+    - `as role` ("what the holder's HR or finance role gives")
+  - Both legend texts trace to the unit, so this is not an error.
+  - Fix, either:
+    - Change the caption and line 364's face to: `with a legend saying, for each mark, the calls to action in Deliverable A, A.4 or the pages and reports it opens, or what it stands for`
+    - Or give `view` B.2's fuller wording: `read only: no edit actions`.
+
+No errors. No should-fix.
+
+## (b) Confirmed
+
+**Columns** (shown in capitals by the renderer): Employees, Budgets, Policies, Approvals, Reports, Settings.
+- B.1 table header, line 370.
+- "Roles as rows, Admin's six areas as columns, IA1's order", line 368.
+- The six areas named, line 144.
+
+**Rows:** HR manager, Finance manager, Account owner. B.1, lines 372 to 374.
+
+**Cells** (B.1, lines 372 to 374):
+- **HR manager:** edit / view / edit / decide / some / profile.
+  - Line 372: "edit: create groups, invite, resend, move, mark as left | view | edit: policy, covered items | decide: approve, reject, approve selected, never on their own claim | some: Budget use, Claims by status | profile: Company read only, Your profile".
+- **Finance manager:** view / set / view / blank / all / profile.
+  - Line 373: "view | set: set budgets for a group | view | (not in navigation) | all five reports | profile: …".
+- **Account owner:** "as role" in five columns, then manage.
+  - Line 374: "as role … | manage: Company, Admins, Activity log, Your profile".
+- **The blank cell:**
+  - Line 368: "A blank cell means the area is not in that role's navigation".
+  - Line 110: "Approvals is not in the finance manager's global navigation".
+
+**Legend:**
+- **edit:** "employee group -> create, -> invite employees; employee -> invite, -> move to group, -> resend invitation, -> mark as left; policy -> edit, -> add covered items". A.4, lines 339 to 342.
+- **decide:** "-> approve, -> reject, -> approve selected [never on their own claim]".
+  - A.4, lines 344 to 345: "HR manager, never on their own claim".
+  - The square brackets for a condition follow the unit's own convention: "'queue' with the queue's [condition]", line 396.
+- **set:** "-> set for a group (Set budgets)".
+  - A.4, line 343: "allocation | -> set for a group | finance manager | Budgets (AD-2.2)".
+  - Line 400: "AD-2.2 Set budgets".
+- **view:** "read only".
+  - B.2, line 388: "read only: no edit actions | Policies and Employees for a finance manager; Budgets for an HR manager".
+  - Line 112: "What a role may see but not change is shown read only".
+- **all:** "all five reports".
+  - Line 373.
+  - Line 191: "Finance sees all five".
+- **some:** "Budget use and Claims by status only".
+  - Line 372.
+  - Line 191: "HR sees two, Budget use and Claims by status".
+- **profile:** "Company read only, and Your profile". Lines 372 to 373.
+- **manage:** "client -> edit company details; admin user -> add, -> remove, -> change role, -> make account owner; Activity log, Your profile".
+  - A.4, lines 336 to 338.
+  - Line 374.
+  - Line 126: "edits the company details, adds and removes admin users, changes an admin user's role, reads the Activity log, and hands the ownership … (-> make account owner)".
+- **as role:** "what the holder's HR or finance role gives".
+  - Line 368: "The account owner holds the HR manager or the finance manager role as well, so its row reads 'as role' except in Settings".
+  - Line 128.
+
+**Caption (check b).** It says what the figure shows, names where it sits in the unit and its sources, and says Perqo is fictional.
+- **What it shows:** "role-by-section matrix … each of Admin's six areas, F2, one mark per cell". Lines 136 and 364.
+- **Where it sits in the unit:** Deliverable B, and sections 3.2 to 3.4 and 4.6.
+  - Hidden route: line 110.
+  - Separation of duty on own claims: line 120.
+  - Account owner: line 126.
+  - The two reports HR sees: line 191.
+- **Sources:**
+  - IA1's surfaces map: line 27.
+  - IA1, section 5: line 12.
+  - IA4, A.1 role attribute: line 294.
+  - Ferraiolo and others, *ACM TISSEC* 4(3), 2001, and NIST's RBAC FAQ: line 96.
+  - NIST glossary for least privilege and separation of duty: line 118.
+- **"Rows tone 4, Perqo Admin":** line 376.
+- **"A blank cell is an area not in that role's navigation":** line 368.
+- **"Perqo is fictional":** present.
+
+**Kind (check c).** Roles by sections is items by sections, so matrix is the right kind. The unit's own catalogue row, line 136, also says "matrix".
+
+**Notation (check d):**
+- The only tone drawn is tone 4: blue-grey cells in light, dark slate in dark. Tone 4 is named at lines 14 and 376.
+- The blank cell is a neutral empty fill, not a tone, and line 368 states it.
+- Calls to action use "-> verb", and the condition sits in square brackets.
+- Page-type tags and counts do not apply to this kind.
+
+## (c) Renderer notes
+
+**Desktop and tablet, light and dark:**
+- The whole figure fits in one frame (frame 1 of 1).
+- Text sits inside its boxes, nothing overlaps, and the caption is under the figure.
+- The desktop opening frame is clipped by the sticky section bar ("Deliverable · The Perqo Admin IA"), which half covers the column headers. The frames sheet shows them whole. This is renderer layout only.
+
+**Phone (390 px), light and dark:**
+- The figure is 213 px wider than its frame. It scrolls sideways in its frame, and the cue line "scroll sideways for the whole figure" is present.
+- Row labels stay pinned while the cells scroll.
+- The opening frame is clipped by the sticky section bar: the column headers and the HR manager row are hidden. Frames 1 to 3 show them.
+- Every cell and every legend word can be read in full in at least one frame:
+  - Settings, profile and manage in frame 3.
+  - "[never on their own claim]" across frames 2 and 3.
+  - "read only" in frame 3.
+
+**Phone, renderer quirk:**
+- The fade at the edge of the pinned row-label column runs the full height of the figure, through the legend as well as the matrix.
+- In frames 2 and 3 it dims legend text that passes under it ("[never", "read only", "their") in the middle of the frame, not at the frame's edge.
+- Each dimmed word is clear in another frame, so nothing is lost.
+- The declaration could only reduce this by shortening the widest legend lines: the `decide` line, and the `set` / `view` / `all` entries that the renderer packs onto one line. That is not needed, because the six columns force the sideways scroll anyway.
+
+**Dark theme:** the blank cell (near-black fill) can be told apart from the filled cells and from the background. All text contrast is adequate.
+
+## (d) Verdict
+
+**Figure 5 PASS.** One minor caption note, optional; nothing blocks filing.
+
+## Figure 6 re-check 6 (Opus 5.5 agent, 4 November 2026; the seventh check of figure 6, sitemap: Admin's pages; given the unit without its figures, the captions and the frames sheets, nothing of the earlier reports; verbatim hand-back; the harness refused its `report.md` write, so the hand-back is the one copy)
+
+Figure 6 (sitemap) of IA7 passes. I found no error and no should-fix. Every label, ID and note in the drawing traces to the unit's text. There is one minor fix to the unit's own text (A.4) and one optional minor change to the figure. The harness refused the write to F/report.md, so this reply is the only copy.
+
+## (a) Findings
+- [minor] **Unit text, Deliverable A, A.4, the row "transaction, type claim | -> view *new* in Admin" (line 346).** It gives the employee's record the claim page's ID, AD-1.1.1. In the figure and in line 400, AD-1.1 is the Employee page and AD-1.1.1 is the Claim page. Replace `employee's record (AD-1.1.1); Reports, Claims by status (AD-5.4)` with `the claim, under the employee's record (AD-1.1.1); Reports, Claims by status (AD-5.4)`.
+- [minor, optional] **AD-1 Employees note.** It names one filter, "filter by group". C.3 (line 427) gives two filters: "employee group; status". The note is not wrong. If the figure should match C.3: `AD-1 · by name; filter by group, status; find`.
+
+## (b) Confirmed (drawing to unit text, by line)
+
+**Root and order**
+- **Root "Perqo Admin", no type tag:** line 396, "the root names the surface and carries no type tag, because the global navigation is not a page".
+- **Root note "the surface; AD-1 to AD-6 are global routes, by role":** line 410, "Global | Employees, … Settings (IA1); by role *new*"; line 146; IDs from line 400.
+- **Order Employees, Budgets, Policies, Approvals, Reports, Settings, then Sign in:** line 396, "The six areas keep IA1's order, and Sign in comes last".
+- **Completeness:** all 30 IDs in line 400 are drawn, each under its parent, and nothing extra is drawn.
+
+**Employees**
+- **INDEX Employees, "AD-1 · by name; filter by group; find":** line 427; line 165.
+- **STACK Employee, "AD-1.1 · one per employee; claims, budgets, Perqo card status (HR), History":** line 148 ("leads to their claims (R-08), their budgets (R-05) and their Perqo card's status (R-11)"); line 280 (card seen by "HR *new*"); line 348; History at lines 167 and 227.
+- **STACK Claim, "AD-1.1.1 · one per claim; modal: Reject claim (HR)":**
+  - line 173, "Reject opens a modal … Reject claim moves it to Rejected";
+  - line 344, the HR manager;
+  - lines 156 and 396, the claim page sits under the employee.
+- **INDEX Employee groups, "AD-1.2":** lines 400 and 428.
+- **STACK Employee group, "AD-1.2.1 · its policy, employees, budgets":** line 148.
+- **FORM Create group, "AD-1.2.2 · HR":** line 339.
+- **FORM Invite employees, "AD-1.3 · HR":** lines 339, 341 and 447.
+- **INDEX Not joined, "AD-1.4 · queue [invited more than 14 days ago], owned by HR":** line 444.
+
+**Budgets**
+- **INDEX Budgets, "AD-2 · by group and period; queue No budget for next period [no budgets set for the next period], owned by finance":** lines 431 and 445 ("top of AD-2").
+- **STACK Budget, "AD-2.1 · one group, one period":** line 402, "/budgets/{employee group ID}/{period}"; line 411.
+- **FORM Set budgets, "AD-2.2 · finance":** line 343.
+
+**Policies**
+- **INDEX Policies, "AD-3 · one per employee group":** lines 411 and 432.
+- **STACK Policy, "AD-3.1 · open categories, auto-approve limit, covered items, History":** line 296 (the O-04 attributes); line 275.
+- **FORM Edit policy, "AD-3.1.1 · HR":** line 340.
+- **INDEX Covered items, "AD-3.1.2 · HR adds; all view":** line 340; line 282 (seen by "all"); line 349.
+
+**Approvals**
+- **INDEX Approvals, "AD-4 · HR only; queue [over the policy's auto-approve limit]; by policy, oldest first; count on the global route; opens claims → see AD-1.1.1":**
+  - line 443 gives the condition, the owner, "AD-4; count on the global route" and "grouped by policy, oldest first";
+  - lines 110 and 373 support "HR only";
+  - line 396, "Approvals and Claims by status open it there".
+
+**Reports**
+- **SECTION Reports, "AD-5 · views":** lines 191 and 146.
+- **The finance tags on AD-5.1 Spend by category, AD-5.2 Spend by employee group and AD-5.5 Card payments, and AD-5.3 Budget use untagged:** line 191 ("Finance sees all five. HR sees two, Budget use and Claims by status"); line 386.
+- **INDEX Claims by status, "AD-5.4 · opens claims → see AD-1.1.1":** line 396.
+
+**Settings**
+- **SECTION Settings, "AD-6":** line 400.
+- **DETAIL Company, "AD-6.1 · owner edits":** lines 527 and 336.
+- **INDEX Admins, "AD-6.2 · owner":** lines 386 and 338.
+- **FORM Add admin user, "AD-6.2.1 · owner":** line 337.
+- **INDEX Activity log, "AD-6.3 · owner; each entry opens its record":** lines 396 and 350.
+- **DETAIL Your profile, "AD-6.4 · own profile":** line 273, "all see their own profile"; lines 372 and 411.
+
+**Sign in**
+- **FORM Sign in, "AD-0 · line "Looking for your benefits? Get the Perqo app" → see S-6":** line 453.
+
+**Notation and tone**
+- **Type tags SECTION, INDEX, STACK, DETAIL, FORM:** all defined at line 396.
+- **Note conventions "queue" with [condition], "views", "→ see":** line 396.
+- **Tone:** one tone throughout, tone 4, named in lines 14 and 396.
+
+**Caption**
+- It says what the figure shows.
+- It names the section, Deliverable C, C.1.
+- It names the sources, matching lines 144, 191 and 400 to 453.
+- It ends "Perqo is fictional."
+- It sits under the figure at every width and theme.
+
+**Kind**
+- Sitemap, for a hierarchy of pages. It fits.
+
+## (c) Renderer notes
+- **Rows are not levels.** The renderer wraps the root's seven children into two rows by width: Employees, Budgets and Policies, then Approvals, Reports, Settings and Sign in, placed below the Employees subtree. The trunk line still reaches every child, so all seven read as children of the root. The declaration cannot change this without breaking IA1's order, which the text fixes.
+- **The sticky bars clip the opening frame** at every width and theme. On desktop and tablet the frame sheets show the whole figure in one frame.
+- **On phone the figure scrolls sideways** across 4 frames, with the cue line "scroll sideways for the whole figure" in both themes.
+  - The opening frame shows only part of the root, because the root is centred over the three-column first row.
+  - Every box is whole in at least one frame.
+- **On phone, frames 3 and 4 have a tall blank band** above the second row. It is caused by the height of the Employees subtree and is layout only. No shorter label would fix it while IA1's order holds.
+- **Legibility:** at all three widths and in both themes, all text is inside its box and nothing overlaps.
+
+## (d) Verdict
+Figure 6 PASS.
+
+## Figure 7 re-check 5 (Opus 5.5 agent, 4 November 2026; the sixth check of figure 7, matrix: the navigation model; given the unit without its figures, the captions and the frames sheets, nothing of the earlier reports; verbatim hand-back; the harness refused its `report.md` write, so the hand-back is the one copy)
+
+I checked figure 7 (the navigation matrix in IA7, Deliverable C, C.2) against the unit text and all 12 sheets: phone, tablet and desktop, dark and light. It passes. There are no errors and no should-fix items, only two minor notes. The harness refused my write to F/report.md, so this reply is the only copy of the report.
+
+## (a) Findings
+
+- [minor] Roles column, Settings row: the cell says `owner manage`, but the unit's role name is "account owner" (sections 3.4 and B.1). In this unit "owner" also means a queue's owner (the C.4 "Owner" column) and the deliverable's owner ("owner: the IA designer"), so the short form is ambiguous. Replace the cell with `account owner manage; others profile: Company read only, Your profile`. The cell gets one word longer and still wraps inside its box at tablet and desktop width.
+- [minor] Contextual routes, Approvals row: `claim to employee, policy, budget` sits in the Approvals row. But C.1 places a claim's page under its employee's record, and every other row puts a route under its object's home area. The placement is defensible, because the claim opens beside the Approvals list (section 4.3), but the unit never states the rule. A note on the unit's own text: in C.2, after "An area with no work queue has a blank cell (C.4).", add `A contextual route sits in the row of the area where it is followed most: a claim's routes are in Approvals, where HR opens claims, although the claim's page sits under Employees (C.1).`
+
+## (b) Confirmed (each label traced to its line)
+
+**Headings**
+- Column heads LOCAL ROUTES / WORK QUEUE / CONTEXTUAL ROUTES / ROLES: C.2, "its local routes, its work queue, its contextual routes, and the roles that reach it with what each does there".
+- Rows Employees, Budgets, Policies, Approvals, Reports, Settings, in IA1's order: C.2 Global row, "Employees, Budgets, Policies, Approvals, Reports, Settings (IA1)".
+
+**Local routes**, from C.2's Local row: "inside Employees, All employees (the Employees list, AD-1), Employee groups and Not joined; inside Budgets, the current and the next period; inside Reports, the five reports; inside Settings, Company, Admins, Activity log and Your profile; inside Approvals, none: it is one list, grouped by policy (IA1)", and "the policies inside Policies, one per employee group (IA2)".
+- `All employees, Employee groups, Not joined`
+- `current period, next period`
+- `one per employee group`
+- `none: one list, grouped by policy`
+- `the five reports`
+- `Company, Admins, Activity log, Your profile`
+
+**Work queue**, from the C.4 table:
+- `Not joined`: "Not joined | employee, Invited | … | AD-1.4"
+- `No budget for next period`: "No budget for next period | employee group | … | top of AD-2"
+- `Approvals, count on the global route`: "Approvals | claim, Submitted | … | AD-4; count on the global route"
+- The blank cells for Policies, Reports and Settings are the areas with no row in C.4. C.2 says: "An area with no work queue has a blank cell (C.4)."
+
+**Contextual routes**, from C.2's Contextual row: "from an employee's record to the claims they made (IA2); new: from an employee's record to their budgets and their Perqo card's status; from a claim to its employee, its policy and its budget; from an employee group to its policy, its employees and its budgets; from a budget to its employee group; from a policy to its employee group; from a report row to the records it sums; from an audit entry to the record it changed".
+- `employee to claims, budgets, Perqo card status; group to policy, employees, budgets`
+- `budget to its employee group`
+- `policy to its employee group`
+- `claim to employee, policy, budget`
+- `report row to the records it sums`
+- `audit entry to its record`
+- Every route listed in C.2 is drawn, and nothing beyond them.
+
+**Roles**, from the B.1 table and section 4.6:
+- Employees, `HR edit; finance view`: HR "edit: …", finance "view".
+- Budgets, `finance set; HR view`: finance "set: set budgets for a group", HR "view".
+- Policies, `HR edit; finance view`: HR "edit: policy, covered items", finance "view".
+- Approvals, `HR decide; not in finance's navigation`: HR "decide: …", finance "(not in navigation)". C.2 also says "a finance manager's navigation has no Approvals".
+- Reports, `finance all five; HR some (two)`: finance "all five reports", HR "some: Budget use, Claims by status". Section 4.6: "Finance sees all five. HR sees two".
+- Settings, `owner manage; others profile: Company read only, Your profile`: account owner "manage: Company, Admins, Activity log, Your profile"; HR and finance "profile: Company read only, Your profile".
+
+**Tone.** The rows are tone 4. C.2: "Its rows take tone 4, Perqo Admin". Line 14: "Admin's boxes take tone 4, Perqo Admin". No other tone is drawn.
+
+**Caption (check b).** It says what the figure shows, gives F2, and names the decision and the section (Deliverable C, C.2). It ends "Perqo is fictional." Its sources all trace to the text:
+- Rosenfeld, Morville and Arango 2015, ch. 8, via IA2, section 1.4: section 4.1.
+- IA1's surfaces map: the register line 27 and section 4.1.
+- "IA2, section 5.3's Admin column kept": C.2, "IA2's entries are kept".
+- Deliverable A, A.3, following Prater 2015: section 4.1.
+- C.4 and Deliverable B: as traced above.
+
+**Kind (check c).** Areas by route types and roles is items by sections, so matrix is the right kind.
+
+**Notation (check d).** A matrix carries no page-type tags, `-> verb` or [conditions]. The one count is given in a cell ("count on the global route"), as C.4 states it.
+
+## (c) Renderer notes
+
+- **Desktop and tablet, dark and light:** the whole figure fits in one frame. All text sits inside its boxes, nothing overlaps, and the caption is under the figure.
+- **Phone (390 px), dark and light:** the figure is wider than its frame and scrolls sideways inside it. The cue "scroll sideways for the whole figure" is present in every frame. The four sampled frames (offsets 0, 164, 328 and 372 px) together show every cell in full.
+- **Phone, partial columns:** this note rests only on how the renderer sizes columns and on the sampled offsets.
+  - No single phone frame shows the Contextual routes column whole: it is cut at the right in frame 2 and at the left in frame 3.
+  - The Approvals work-queue cell fades at the right edge of frame 1 ("count o") and is complete across frames 1 and 2.
+  - A reader scrolling by hand can stop anywhere, and shorter labels could not fit five columns into 390 px. No change to the declaration is needed or could fully fix it.
+- **Phone, opening frame:** the sticky section bar ("Deliverable · The Perqo Admin IA") overlaps only the figure's top padding. The column heads are visible just below it, and nothing is clipped.
+- **Blank cells:** the renderer draws them as a neutral empty fill (light grey in light theme, near-background in dark), not as a tone. They are clearly different from the tone-4 cells in both themes, and the caption explains them.
+
+## (d) Verdict
+
+Figure 7: **PASS**. The two minor notes are optional.
