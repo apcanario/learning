@@ -1463,7 +1463,7 @@ def matrix(d):
             if x > 8 and x + iw > Wd - 8:
                 x, y, lrow = 8, y + lrow + 8, 24
             body += _g(f'<rect class="viz-band viz-t{_tone(item, 4, K)}" x="{x:.1f}" y="{y:.1f}" width="{mw:.1f}" height="24"/>'
-                       + _text([m], T_MARK, x + mw / 2, y + 5.5, 'middle')) + _text(txt, T_ATTR, x + mw + 8, y + 12 - len(txt) * 7)
+                       + _text([m], T_MARK, x + mw / 2, y + 5.5, 'middle')) + _text(txt, T_ATTR, x + mw + 8, y + 12 - min(len(txt), 3) * 7)   # U-7: a key of four lines or more hangs down from where a three-line key starts, never up over the grid
             x += iw
             lrow = max(lrow, len(txt) * 14)
         y += lrow

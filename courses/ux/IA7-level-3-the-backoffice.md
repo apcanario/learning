@@ -444,14 +444,14 @@ The figure draws the same matrix with a mark per cell and a legend. Its rows tak
  {"label": "Finance manager", "tone": 4, "cells": ["view", "set", "view", null, "all", "profile"]},
  {"label": "Account owner", "tone": 4, "cells": ["as role", "as role", "as role", "as role", "as role", "manage"]}],
  "legend": [
-  {"mark": "edit", "means": "-> create group, -> invite, -> move to group, -> resend invitation, -> mark as left; -> edit, -> add covered items", "tone": 4},
+  {"mark": "edit", "means": "employee group -> create, -> invite employees; employee -> invite, -> move to group, -> resend invitation, -> mark as left; policy -> edit, -> add covered items", "tone": 4},
   {"mark": "decide", "means": "-> approve, -> reject, -> approve selected [never on their own claim]", "tone": 4},
   {"mark": "set", "means": "-> set for a group (Set budgets)", "tone": 4},
   {"mark": "view", "means": "read only", "tone": 4},
   {"mark": "all", "means": "all five reports", "tone": 4},
   {"mark": "some", "means": "Budget use and Claims by status only", "tone": 4},
   {"mark": "profile", "means": "Company read only, and Your profile", "tone": 4},
-  {"mark": "manage", "means": "-> edit company details, -> add, -> remove, -> change role, -> make account owner; Activity log, Your profile", "tone": 4},
+  {"mark": "manage", "means": "client -> edit company details; admin user -> add, -> remove, -> change role, -> make account owner; Activity log, Your profile", "tone": 4},
   {"mark": "as role", "means": "what the holder's HR or finance role gives", "tone": 4}]}
 ```
 
@@ -502,7 +502,7 @@ Admin's structure as a sitemap at F2 with identifiers, IA2's type tags (section,
   {"label": "Admins", "type": "index", "note": "AD-6.2 · owner", "tone": 4, "children": [
    {"label": "Add admin user", "type": "form", "note": "AD-6.2.1 · owner", "tone": 4}]},
   {"label": "Activity log", "type": "index", "note": "AD-6.3 · owner; each entry opens its record", "tone": 4},
-  {"label": "Your profile", "type": "detail", "note": "AD-6.4 · every admin user", "tone": 4}]},
+  {"label": "Your profile", "type": "detail", "note": "AD-6.4 · own profile", "tone": 4}]},
  {"label": "Sign in", "type": "form", "note": "AD-0 · line \"Looking for your benefits? Get the Perqo app\" → see S-6", "tone": 4}]}}
 ```
 
@@ -523,7 +523,7 @@ IA2's navigation table, Admin's column, at F2 (IA2, section 5.3; route types fro
 
 Where each person lands after signing in (*new*, Perqo, fictional): an HR manager on Approvals, a finance manager on Budgets, an account owner where their role lands them. The placing follows frequency, the rule IA6 took from Sears and Shneiderman's split menus and Nielsen's progressive disclosure (IA6, section 1.2): the most frequent work of each role is deciding claims for HR and setting budgets for finance (IA4, A.3), assumed until measured.
 
-The same model as a matrix, one row per area of the global navigation: its local routes, its work queue, its contextual routes, and the roles that reach it with what each does there, from the role matrix (the supplemental row, none, is left out). Its rows take tone 4, Perqo Admin.
+The same model as a matrix, one row per area of the global navigation: its local routes, its work queue, its contextual routes, and the roles that reach it with what each does there, from the role matrix (the supplemental row, none, is left out). An area with no work queue has a blank cell (C.4). Its rows take tone 4, Perqo Admin.
 
 ```viz
 {"kind": "matrix", "caption": "Navigation model: Perqo Admin's six areas with their local routes, work queues, contextual routes, and the roles that reach each with their marks from Deliverable B, F2; supports the decision on which routes the navigation components must carry, for which role (Deliverable C, C.2). Rows tone 4, Perqo Admin. A blank cell is an area with no work queue (Deliverable C, C.4). The supplemental route, none, is left out (Deliverable C, C.2). Route types from Rosenfeld, Morville and Arango, 2015, ch. 8, through IA2, section 1.4; areas from IA1's surfaces map; IA2, section 5.3's Admin column kept; contextual routes from the relationships in Deliverable A, A.3, following Prater 2015; queues from Deliverable C, C.4; roles from Deliverable B. Perqo is fictional.", "cols": ["Local routes", "Work queue", "Contextual routes", "Roles"], "rows": [
@@ -531,8 +531,8 @@ The same model as a matrix, one row per area of the global navigation: its local
  {"label": "Budgets", "tone": 4, "cells": ["current period, next period", "No budget for next period", "budget to its employee group", "finance set; HR view"]},
  {"label": "Policies", "tone": 4, "cells": ["one per employee group", null, "policy to its employee group", "HR edit; finance view"]},
  {"label": "Approvals", "tone": 4, "cells": ["none: one list, grouped by policy", "Approvals, count on the global route", "claim to employee, policy, budget", "HR decide; not in finance's navigation"]},
- {"label": "Reports", "tone": 4, "cells": ["the five reports", null, "report row to the records it sums", "finance all five; HR two"]},
- {"label": "Settings", "tone": 4, "cells": ["Company, Admins, Activity log, Your profile", null, "audit entry to its record", "owner all; others Company read only and Your profile"]}]}
+ {"label": "Reports", "tone": 4, "cells": ["the five reports", null, "report row to the records it sums", "finance all five; HR some (two)"]},
+ {"label": "Settings", "tone": 4, "cells": ["Company, Admins, Activity log, Your profile", null, "audit entry to its record", "owner manage; others profile: Company read only, Your profile"]}]}
 ```
 
 #### C.3 · Lists: order, filters, find, bulk actions
