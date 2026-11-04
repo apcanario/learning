@@ -207,6 +207,11 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
         for mid, t, w in written:
             model = prov.get(mid, c['default_model'])
             models[model] = models.get(model, 0) + 1
+            # P91 (4 Nov 2026): the report's written date, from provenance.json's `written` map (p91_dates.py: the work
+            # session that filed it, from CHANGELOG.md); a session that ran over several days gives its first day, marked
+            when = PROV.get('written', {}).get(cid, {}).get(mid)
+            approx = mid in PROV.get('written_approx', {}).get(cid, [])
+            when = f'<br><small>{e(date_long(when))}{" (approximate: its session ran over several days)" if approx else ""}</small>' if when else '<br><small>date not recorded</small>'
             pills = (' <span class="pill unck">unchecked</span>' if unchecked(model) else '') + (' <span class="pill">flagged</span>' if flagged(model) else '')
             checks = []
             for fo in folders:
@@ -228,11 +233,11 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
             b = KIT / 'bibliography' / cid / f'r-{mid}.md'
             if b.exists():
                 files.append(f'bibliography {gh(rel(b))}')
-            rows += (f'<tr data-mod="{e(mid)}"><td><a href="#{c["slug"](mid)}" data-target="{c["slug"](mid)}">{e(mid)}</a> {e(t)}</td><td>{e(model)}{pills}</td>'
+            rows += (f'<tr data-mod="{e(mid)}"><td><a href="#{c["slug"](mid)}" data-target="{c["slug"](mid)}">{e(mid)}</a> {e(t)}</td><td>{e(model)}{pills}{when}</td>'
                      f'<td>{"<br>".join(checks) if checks else "none on file"}</td><td>{"<br>".join(files) if files else "none"}</td></tr>')
         nf = sum(1 for m in written if flagged(prov.get(m[0], c['default_model'])))
         groups += (f'<details class="prompt"><summary>Unit {e(u)} · {e(name)} · {len(written)} of {len(mods)} written{f" · {nf} flagged" if nf else ""}</summary>'
-                   f'<div class="report"><div class="tbl"><table><thead><tr><th>Report</th><th>Written with</th><th>Checks and audits</th><th>Files</th></tr></thead>'
+                   f'<div class="report"><div class="tbl"><table><thead><tr><th>Report</th><th>Written with, and when</th><th>Checks and audits</th><th>Files</th></tr></thead>'
                    f'<tbody>{rows}</tbody></table></div></div></details>')
 
     # the course's own material other than reports, and the kit-wide material, from provenance.json artefacts
@@ -291,7 +296,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
   </header>
   {flags_section(flags)}
   <h2 class="hsec">Who wrote what, and the checks run</h2>
-  <p class="hnote">One table per syllabus unit. "Written with" is the report's entry in {gh("kit/provenance.json")}: an entry that does not name Fable 5.1 is flagged. Checks come from the review folders ({", ".join(gh(rel(fo["path"] / "BRIEF.md"), fo["label"].lower() + " brief") for fo in folders)}) and the Fable audits in <code>kit/audits/</code>. The provenance file records no writing date per report; the review notes below and the Changelog give the sessions.</p>
+  <p class="hnote">One table per syllabus unit. "Written with" is the report's entry in {gh("kit/provenance.json")}: an entry that does not name Fable 5.1 is flagged. Checks come from the review folders ({", ".join(gh(rel(fo["path"] / "BRIEF.md"), fo["label"].lower() + " brief") for fo in folders)}) and the Fable audits in <code>kit/audits/</code>. Under the model is the date the report was filed, from the same file's <code>written</code> map: the date of the work session that filed it, read from the Changelog (P91); where that session ran over several days, its first day, marked approximate.</p>
   <div>{groups}</div>
   <section class="howto" style="--hc:var(--gold)"><h2>Audits and checks run</h2>{f'<div class="logrows">{arows}</div>' if arows else '<p>None yet.</p>'}</section>
   <details class="howto rules"><summary><h2>Course material other than reports</h2><span>{len(own_keys)} item{"s" if len(own_keys) != 1 else ""}</span></summary>

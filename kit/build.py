@@ -483,7 +483,8 @@ for m in MD:
 
 def dated_units():
     """Every written unit with a recorded date, newest first: a markdown unit's `written` front-matter field; a history
-    report's date from provenance.json's `written` map ({course: {module: ISO date}}), which P23 fills (none yet).
+    report's date from provenance.json's `written` map ({course: {module: ISO date}}), filled by p91_dates.py from the
+    work session that filed it (P91, 4 Nov 2026; its `written_approx` lists the reports whose session ran over several days).
     Each entry: (date, course short, colour, code, title, panel id, model).
     P90 (4 Nov 2026): units filed on the same day are ordered by the course's build order (a markdown course's ORDER in
     its data file, else its unit order; a history course's syllabus order), the later first, so the newest filed unit
