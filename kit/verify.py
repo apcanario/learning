@@ -50,8 +50,8 @@ and a tile of at most two lines, none clipped; below 768 px the map shows its ph
 which does not scroll; from 768 px the wide drawing, every track's cards in two columns, a track's only card half the
 width. Contrast (P90): in the light theme, every text in the home, the drawer, the changelog and backlog, each course
 home and one reading page of each course, at phone width with every <details> open, reaches 4.5:1 against the
-background it sits on (3:1 for large text), the text's opacity and every tint it sits on composited; figures are
-left to the figure checks.
+background it sits on (3:1 for large text), the text's opacity and every tint it sits on composited, and no text
+and no background under it is pure white; figures are left to the figure checks.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools, html as H
@@ -319,6 +319,8 @@ CONTRAST_JS = r'''(scope) => {
     const d = el.tagName.toLowerCase() + (typeof el.className === 'string' && el.className.trim() ? '.' + el.className.trim().split(/\s+/).join('.') : '');
     if (k < min) { min = k; minAt = d; }
     if (k < need - 0.005) bad.push(`${d} "${el.textContent.trim().slice(0, 24)}" ${hex(col)} on ${hex(bg)} ${k.toFixed(2)}:1`);
+    if (fg[0] > 254.5 && fg[1] > 254.5 && fg[2] > 254.5) bad.push(`${d} "${el.textContent.trim().slice(0, 24)}" is pure white text (P90: none in light)`);
+    if (bgs.some(c => c[0] > 254.5 && c[1] > 254.5 && c[2] > 254.5 && c[3] > 0)) bad.push(`${d} "${el.textContent.trim().slice(0, 24)}" sits on pure white (P90: none in light)`);
   }));
   return {n, min: Math.round(min * 100) / 100, minAt, bad: [...new Set(bad)].slice(0, 12), nbad: new Set(bad).size};
 }'''
