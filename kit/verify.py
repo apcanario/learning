@@ -624,7 +624,7 @@ def check_files(fails):
     # course panel whose label is a numbered course; Brand + AI homes are lettered and stay) and every course's
     # "How it was built" page leave the shell (A2, P20, P22, A4)
     must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-briefs|[a-z-]+-bibliography|[a-z-]+-built)"', h)
-            or (' data-kind="course"' in h and re.search(r' data-u="COURSE \d', h)) or ' id="viz-examples"' in h]
+            or (' data-kind="course"' in h and re.search(r' data-u="COURSE \d', h)) or ' id="viz-examples"' in h or ' id="new"' in h]   # P91: What's new is fetched too
     kept = [h[:80] for h in must if ' data-src="' not in h]
     if kept: fails.append(f'split: {len(kept)} panels should be fetched but are in the shell: {kept[:2]}')
     if len(srcs) != len(must): fails.append(f'split: {len(must)} panels should be fetched but {len(srcs)} carry data-src')

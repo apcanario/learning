@@ -2658,7 +2658,7 @@ def shelf(d):
                 ttl = f' title="{esc(c["title"])}"' if c.get('title') else ''
                 groups += (f'<div class="shelf-group shelf-vol"{cs}><div class="shelf-books"><div class="spine ghost vol" role="img" '
                            f'aria-label="{esc(lab)}{": " + esc(c["title"]) if c.get("title") else ""}"{ttl} style="--i:{i}"><span class="sc">{esc(lab)}</span></div></div>'
-                           f'<p class="shelf-label">Planned courses</p></div>')
+                           f'<p class="shelf-label">Planned</p></div>')
                 i += 1
                 continue
             books = ''
