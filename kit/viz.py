@@ -2745,17 +2745,11 @@ def _ct_layout(d, K, lay, n):
     return at
 
 
-def contours(d):
-    """The topography (the module docstring, "The home kind"): one rise per entry of "rises", its height its words, in
-    every layout; returns the layer's HTML. A written rise is a <g class="ct-rise ct-t{tone}"> holding every stretch of
-    contour line it dominates, with data-label, data-words and data-rings (the contour levels its peak stands above);
-    a planned one ("planned": true) a dashed ring, <g class="ct-plan">, flat (no height, in no line)."""
+def _ct_check(d):
     K = 'contours'
     rises, iv, lays = d.get('rises'), d.get('interval'), d.get('layouts')
     if not rises:
         _fail(K, 'rises must be a non-empty list of {"label", "words", "tone"}')
-    if not isinstance(iv, (int, float)) or iv <= 0:
-        _fail(K, '"interval" (the words between two contour levels) must be a positive number')
     if not lays:
         _fail(K, '"layouts" must list at least one {"name", "width", "height", "spread"}')
     for k, r in enumerate(rises):
@@ -2765,60 +2759,111 @@ def contours(d):
         if not r.get('planned') and not (isinstance(r.get('words'), (int, float)) and r['words'] > 0):
             _fail(K, f'rises[{k}] ({r["label"]}): a written rise needs its words, more than 0')
     live = [k for k, r in enumerate(rises) if not r.get('planned')]
+    if live and (not isinstance(iv, (int, float)) or iv <= 0):
+        _fail(K, '"interval" (the words between two contour levels) must be a positive number')
+    if not live and not d.get('patch'):
+        _fail(K, 'no written rise: nothing to draw (only a patch may be all planned: a ghost tile)')
+    return rises, iv, lays, live
+
+
+def _ct_field(d, lay, rises, iv, live):
+    """One layout's field and lines: (W, H, at, sp, per-rise runs, levels per rise, own closed rings per rise, box of
+    each rise's own rings, whether a line reaches the layout's edge). P93: split out of contours() so build.py can size and place rises from these numbers."""
+    K = 'contours'
+    W, H, g = lay.get('width'), lay.get('height'), lay.get('grid', 5)
+    if not all(isinstance(v, (int, float)) and v > 0 for v in (W, H, g, lay.get('spread'))):
+        _fail(K, f'layout {lay.get("name")!r}: width, height, spread and grid must be positive numbers')
+    at = _ct_layout(d, K, lay, len(rises))
+    sp, eps = lay['spread'], lay.get('simplify', .6)
+    per = {k: [] for k in live}
+    lv_of, own, box = {}, {}, {}
     if not live:
-        _fail(K, 'no written rise: nothing to draw')
+        return W, H, at, sp, per, lv_of, own, box, False
     wmax = max(rises[k]['words'] for k in live)
+    # a rise's spread grows with the cube root of its words (a bigger hill is wider), the same in x and y
+    fs = {k: _ct_bump(rises[k], at[k][0] * W, at[k][1] * H, sp * W * (rises[k]['words'] / wmax) ** (1 / 3),
+                      sp * W * (rises[k]['words'] / wmax) ** (1 / 3)) for k in live}
+    nx, ny = int(W // g) + 1, int(H // g) + 1
+    C = {k: [[f(i * g, j * g) for i in range(nx)] for j in range(ny)] for k, f in fs.items()}
+    F = [[sum(C[k][j][i] for k in live) for i in range(nx)] for j in range(ny)]
+    top = max(max(row) for row in F)
+    edge = max(F[0] + F[-1] + [r[0] for r in F] + [r[-1] for r in F]) >= iv   # P93: a contour reaches the layout's edge
+    def dom(p):
+        i, j = min(nx - 1, max(0, round(p[0] / g))), min(ny - 1, max(0, round(p[1] / g)))
+        return max(live, key=lambda k: C[k][j][i])
+    for lv in range(1, int(top // iv) + 1):
+        for p, closed in _ct_march(F, nx, ny, g, lv * iv):
+            p = _ct_simplify(p, closed, eps)
+            if len(p) < 2:
+                continue
+            ds = [dom(x) for x in p]
+            if len(set(ds)) == 1:
+                per[ds[0]].append((p, closed)); continue
+            seq, dd = (p + [p[0]], ds + [ds[0]]) if closed else (p, ds)
+            run, who = [seq[0]], dd[0]
+            for x, w in zip(seq[1:], dd[1:]):   # a stretch per dominating rise; neighbours share their boundary point
+                run.append(x)
+                if w != who:
+                    per[who].append((run, False)); run, who = [x], w
+            per[who].append((run, False))
+    for k in live:
+        i, j = min(nx - 1, round(at[k][0] * W / g)), min(ny - 1, round(at[k][1] * H / g))
+        lv_of[k] = int(F[j][i] // iv)
+        rings = [p for p, closed in per[k] if closed]
+        own[k] = len([1 for p in rings if len({(round(x), round(y)) for x, y in p}) >= 2])
+        xs = [x for p in rings for x, _ in p] or [at[k][0] * W]
+        ys = [y for p in rings for _, y in p] or [at[k][1] * H]
+        box[k] = (min(xs), min(ys), max(xs), max(ys))
+    return W, H, at, sp, per, lv_of, own, box, edge
+
+
+def contours_rings(d):
+    """P93: for each layout, each written rise's (label, levels its peak stands above, own closed rings, box of its own
+    rings in the layout's units), so a declaration can be checked before it is drawn (build.py sizes and places the
+    course homes' and What's new's rises with it: every written rise closing min(2, levels) rings of its own; and a
+    tile's patch, its lines clear of the frame); and under the key (name, 'edge') whether any line reaches the edge."""
+    rises, iv, lays, live = _ct_check(d)
+    out = {}
+    for lay in lays:
+        W, H, at, sp, per, lv_of, own, box, edge = _ct_field(d, lay, rises, iv, live)
+        out[lay.get('name')] = [(rises[k]['label'], lv_of[k], own[k], box[k]) for k in live]
+        out[(lay.get('name'), 'edge')] = edge
+    return out
+
+
+def contours(d):
+    """The topography (the module docstring, "The home kind"): one rise per entry of "rises", its height its words, in
+    every layout; returns the layer's HTML. A written rise is a <g class="ct-rise ct-t{tone}"> holding every stretch of
+    contour line it dominates, with data-label, data-words, data-rings (the contour levels its peak stands above),
+    data-at (its peak, in the layout's units) and data-box (the box of its own closed rings, P93: verify.py maps both
+    to the screen to check every rise in view); a planned one ("planned": true) a dashed ring, <g class="ct-plan">, flat
+    (no height, in no line). P93: a patch may be all planned (a planned course's ghost tile, a planned unit), its rings
+    only; a patch's layout is fitted whole inside its frame (meet), so the frame's overscan for the turn never crops a
+    rise, where the hero's layouts cover theirs (slice)."""
+    rises, iv, lays, live = _ct_check(d)
     svgs = []
     for lay in lays:
-        W, H, g = lay.get('width'), lay.get('height'), lay.get('grid', 5)
-        if not all(isinstance(v, (int, float)) and v > 0 for v in (W, H, g, lay.get('spread'))):
-            _fail(K, f'layout {lay.get("name")!r}: width, height, spread and grid must be positive numbers')
-        at = _ct_layout(d, K, lay, len(rises))
-        sp, eps = lay['spread'], lay.get('simplify', .6)
-        # a rise's spread grows with the cube root of its words (a bigger hill is wider), the same in x and y
-        fs = {k: _ct_bump(rises[k], at[k][0] * W, at[k][1] * H, sp * W * (rises[k]['words'] / wmax) ** (1 / 3),
-                          sp * W * (rises[k]['words'] / wmax) ** (1 / 3)) for k in live}
-        nx, ny = int(W // g) + 1, int(H // g) + 1
-        C = {k: [[f(i * g, j * g) for i in range(nx)] for j in range(ny)] for k, f in fs.items()}
-        F = [[sum(C[k][j][i] for k in live) for i in range(nx)] for j in range(ny)]
-        top = max(max(row) for row in F)
-        per = {k: [] for k in live}
-        def dom(p):
-            i, j = min(nx - 1, max(0, round(p[0] / g))), min(ny - 1, max(0, round(p[1] / g)))
-            return max(live, key=lambda k: C[k][j][i])
-        for lv in range(1, int(top // iv) + 1):
-            for p, closed in _ct_march(F, nx, ny, g, lv * iv):
-                p = _ct_simplify(p, closed, eps)
-                if len(p) < 2:
-                    continue
-                ds = [dom(x) for x in p]
-                if len(set(ds)) == 1:
-                    per[ds[0]].append((p, closed)); continue
-                seq, dd = (p + [p[0]], ds + [ds[0]]) if closed else (p, ds)
-                run, who = [seq[0]], dd[0]
-                for x, w in zip(seq[1:], dd[1:]):   # a stretch per dominating rise; neighbours share their boundary point
-                    run.append(x)
-                    if w != who:
-                        per[who].append((run, False)); run, who = [x], w
-                per[who].append((run, False))
+        W, H, at, sp, per, lv_of, own, box, edge = _ct_field(d, lay, rises, iv, live)
         body = ''
         for k, r in enumerate(rises):
             t = r.get('tone')
             tc = f' ct-t{t}' if t else ''
             if r.get('planned'):
-                rr = max(2.0, sp * W * .55)
-                body += (f'<g class="ct-plan{tc}" data-label="{esc(r["label"])}"><circle cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" '
+                rr = max(2.0, min(sp * W * .55, .22 * min(W, H)))   # P93: a lone planned ring (spread over one rise) stays inside a 4:1 patch
+                body += (f'<g class="ct-plan{tc}" data-label="{esc(r["label"])}" data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}"><circle cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" '
                          f'r="{rr:.0f}"/></g>')
                 continue
-            i, j = min(nx - 1, round(at[k][0] * W / g)), min(ny - 1, round(at[k][1] * H / g))
-            rings = int(F[j][i] // iv)
-            body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{rings}">'
-                     f'<path d="{_ct_d(per[k])}"/></g>')
+            bx = ' '.join(f'{v:.0f}' for v in box[k])
+            body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{lv_of[k]}" '
+                     f'data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"><path d="{_ct_d(per[k])}"/></g>')
         nm = esc(lay.get('name', ''))
-        svgs.append(f'<svg class="topo-l topo-{nm}" data-layout="{nm}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid slice" '
+        fit = 'meet' if d.get('patch') else 'slice'
+        svgs.append(f'<svg class="topo-l topo-{nm}" data-layout="{nm}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid {fit}" '
                     f'xmlns="http://www.w3.org/2000/svg" focusable="false">{body}</svg>')
     cls = 'topo' + (' topo-patch' if d.get('patch') else '')
-    return f'<div class="{cls}" aria-hidden="true">{"".join(svgs)}</div>'
+    ph = d.get('phase')
+    st = f' style="--ph:{ph:g}"' if isinstance(ph, (int, float)) else ''
+    return f'<div class="{cls}" aria-hidden="true"{st}>{"".join(svgs)}</div>'
 
 KINDS = {'timeline': timeline, 'compare': compare, 'tree': tree, 'flow': flow,
          'sitemap': sitemap, 'objects': objects, 'decision': decision, 'matrix': matrix,
@@ -2887,7 +2932,7 @@ VIZ_KEYS = {
     'range': {'.': {'unit', 'unit_one', 'years', 'era', 'min', 'max', 'ticks', 'decimals', 'xlabel', 'rows'},
               'rows': {'label', 'low', 'high', 'point', 'low_src', 'high_src', 'tone'}},
     # P92: the home's topography (HOME_KINDS), the hero's and each course tile's
-    'contours': {'.': {'interval', 'rises', 'layouts', 'patch'}, 'rises': {'label', 'words', 'tone', 'planned'},
+    'contours': {'.': {'interval', 'rises', 'layouts', 'patch', 'phase'}, 'rises': {'label', 'words', 'tone', 'planned'},
                  'layouts': {'name', 'width', 'height', 'spread', 'grid', 'simplify', 'at'}},
 }
 NODE_OF = {'scatter': {('.', 'x'): 'axis', ('.', 'y'): 'axis'}}

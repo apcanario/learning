@@ -15,7 +15,7 @@ Each course has a syllabus file, its reports in the vault (courses/<course>/, Ma
 a colour and a short name. Greece keeps its original panel ids (#greece, #syllabus, #m23); later courses
 are namespaced (#rome, #rome-syllabus, #rm01).
 """
-import json, re, html, pathlib, importlib.util
+import json, re, html, pathlib, importlib.util, math
 import markdown
 from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES, EDITIONS
 import sys
@@ -228,9 +228,13 @@ def drawer(c):
     return f'<nav class="dlist" data-navctx="{c["id"]}" data-accordion aria-label="{c["short"]} course" hidden>{top}{out}</nav>'
 
 
-def ucard(c, u):
+def unit_tile(c, u, phase=None):
+    """A history unit on its course home (P93: a tile, Pedro "make this new tile style propagate across the site"): the
+    chip (the course and the unit) with its status pill, the unit's name, its why in two lines, three stats (modules
+    written, in all, hours of reading) and its patch (its modules as rises by their words, one not yet written flat);
+    the tile is the summary of a disclosure that opens to the unit's module rows, as the unit card did."""
     name, why, mods = c['umap'][u]; col = c['unit_colors'][u]
-    have = [m for m in mods if m[0] in c['done']]; pct = round(100 * len(have) / len(mods))
+    have = [m for m in mods if m[0] in c['done']]
     queued = any(m[0] in c.get('next_up', ()) for m in mods)
     status = 'complete' if len(have) == len(mods) else ('in progress' if have else ('not run yet' if u == c['audit_unit'] else ('next session' if queued else 'coming soon')))
     rows = ''
@@ -242,7 +246,11 @@ def ucard(c, u):
             pill = PILL_NEXT if mid in c.get('next_up', ()) else '<span class="pill">soon</span>'
             rows += f'<div class="hrow soon"><span class="n">{mid}</span><span class="t">{html.escape(t)}<small>{html.escape(w)}</small></span>{pill}</div>'
     ids = ' '.join(c['slug'](m[0]) for m in mods)
-    return f'<details class="ucard{"" if have else " pending"}" id="{c["home_id"]}-u{u}" data-mods="{ids}" style="--c:{col}"><summary class="uch"><span class="un">UNIT {u}</span><span class="uh">{html.escape(name)}</span><span class="st">{status}</span><span class="bar" aria-hidden="true"><i style="width:{pct}%"></i></span><span class="uwhy">{html.escape(why)}</span>{ICON_CHEV}</summary><div class="hrows">{rows}</div></details>'
+    words = sum(c['wby'].get(m[0], 0) for m in have)
+    patch = patch_block([(m[0], c['wby'].get(m[0]) if m[0] in c['done'] else None) for m in mods], _TONE.get(col, _TONE[c['color']]), phase)
+    return tile([c['short'], f'Unit {u}'], col, name, html.escape(why), stats=[(len(have), 'modules written'), (len(mods), 'in all'), (hours(words), 'h of reading')],
+                pill=status_pill(status), patch=patch, disclosure=f'<div class="hrows">{rows}</div>', cls='' if have else ' pending',
+                attrs=f' id="{c["home_id"]}-u{u}" data-mods="{ids}"')
 
 
 THEME = {t['id']: t for t in THEMES}
@@ -260,11 +268,170 @@ def hours(words):
     return f'{h:.1f}'   # P92 check: one decimal on every tile and course home (16.4 beside 5.0, not 16 beside 5.0)
 
 
+# P93 (4 Nov 2026) · the topographies across the site (Pedro, on P92's home: "Can we animate that topographical
+# illustration, very slow, expanding and rotating movements, across the board, and expand that to other pages"). Every
+# drawing is viz.py's home kind `contours`, declared here from the data: the home's hero (HERO_TOPO, P92), each course
+# home's hero (one rise per unit of the course), What's new's hero (one rise per day it lists), and the patch of every
+# tile (a course's units, a history unit's modules, a markdown unit's sections; a planned course one dashed ring). The
+# theme (4i) turns and grows each one slowly; `phase` starts each drawing of a page at its own point of the cycle.
+_TONE = {'var(--red)': 1, 'var(--orange)': 2, 'var(--teal)': 3, 'var(--blue)': 4, 'var(--purple)': 5, 'var(--gold)': 6}
+
+
+def phases(n):
+    """The starting points of the cycle (0 to 1, as a fraction of one sweep) for the n drawings of one page: k/n of the
+    way, taken in a stride order so that neighbours on the page differ by more than 1/n; no two drawings of a page
+    start at the same point, so none moves in lockstep with another."""
+    if n <= 1:
+        return [0.0] * n
+    st = max(1, round(n * .382))
+    while math.gcd(st, n) != 1:
+        st += 1
+    return [((k * st) % n) / n for k in range(n)]
+
+
+def ct_lattice(n, box, W, H):
+    """n places in a box (fractions of the layout), in order: rows of cells as square as the box allows, every other
+    row shifted half a cell and read the other way (a serpentine), so each unit stands beside the one before it."""
+    x0, y0, x1, y1 = box
+    bw, bh = (x1 - x0) * W, (y1 - y0) * H
+    best = None
+    for c in range(1, n + 1):
+        r = -(-n // c)
+        cw, ch = bw / (c + (.5 if r > 1 else 0)), bh / r
+        if best is None or min(cw, ch) > best[0] + 1e-9:
+            best = (min(cw, ch), c, r, cw, ch)
+    _, c, r, cw, ch = best
+    out = []
+    for k in range(n):
+        row, col = divmod(k, c)
+        if row % 2:
+            col = c - 1 - col
+        x = x0 * W + (col + .5 + (.5 if row % 2 else 0)) * cw
+        y = y0 * H + (row + .5) * ch
+        out.append([round(x / W, 4), round(y / H, 4)])
+    return out
+
+
+def ct_ridge(n, box, W, H):
+    """n places in order along a ridge across a box: evenly from left to right, swinging gently above and below its
+    middle (What's new's days, oldest at the left)."""
+    x0, y0, x1, y1 = box
+    return [[round(x0 + (x1 - x0) * (k + .5) / n, 4), round((y0 + y1) / 2 + (y1 - y0) * .32 * math.sin(k * 1.9), 4)] for k in range(n)]
+
+
+def ct_fit(rises, iv, specs, maxbytes=19500):
+    """The layouts for a hero's layer: for each spec (name, width, height, box, place), the rises placed by `place`, then
+    the widest spread (from under half the distance between the two nearest places, stepping down by a tenth) at which every
+    written rise closes min(2, its levels) rings of its own and its own rings stand inside the spec's view (the part of
+    the layout every width it serves shows, above the fade; verify.py checks each on the built page); then the lines simplified a step
+    further until the whole layer is at most maxbytes. Returns the layouts; stops the build if no spread holds."""
+    lays = []
+    for sp in specs:
+        W, H, box = sp['width'], sp['height'], sp['box']
+        at = sp['place'](len(rises), box, W, H)
+        near = min((math.hypot((a[0] - b[0]) * W, (a[1] - b[1]) * H) for i, a in enumerate(at) for b in at[i + 1:]), default=W / 4)
+        s = near / 2.2 / W
+        for _ in range(24):
+            lay = dict(name=sp['name'], width=W, height=H, spread=round(s, 4), grid=sp.get('grid', 5), simplify=.8, at=at)
+            rr = viz.contours_rings(dict(kind='contours', interval=iv, rises=rises, layouts=[lay]))[sp['name']]
+            vx0, vy0, vx1, vy1 = sp['view']
+            inside = all(b[0] >= vx0 * W and b[1] >= vy0 * H and b[2] <= vx1 * W and b[3] <= vy1 * H for _, _, _, b in rr)
+            if inside and all(own >= min(2, lv) for _, lv, own, _ in rr):
+                break
+            s *= .9
+        else:
+            raise SystemExit(f'build.py ct_fit: no spread lets every rise close its own rings in layout {sp["name"]} ({[r["label"] for r in rises][:3]}...)')
+        lays.append(lay)
+    blk = dict(kind='contours', interval=iv, rises=rises, layouts=lays)
+    while len(viz.render(blk).encode()) > maxbytes:
+        for lay in lays:
+            lay['simplify'] = round(lay['simplify'] * 1.25, 3)
+        if lays[0]['simplify'] > 6:
+            raise SystemExit('build.py ct_fit: the layer stays over its byte limit even simplified')
+    return lays
+
+
+TOPO_TURN, TOPO_GROW = 3, 1.06   # theme.css --topo-turn and --topo-grow: the move every drawing makes (verify.py reads them from the theme)
+
+
+def turned_inside(b, W, H, pad=3):
+    """Whether a box (x0, y0, x1, y1) in a W x H drawing stays inside it, pad units clear, at both ends of the move: the
+    drawing turned by -TOPO_TURN at scale 1 and by +TOPO_TURN at TOPO_GROW (and the two other corners of that range),
+    about its centre. A ring near the end of a 4:1 patch rises and falls by a tenth of its height; one at the centre
+    does not move."""
+    cx, cy = W / 2, H / 2
+    for a in (-TOPO_TURN, TOPO_TURN):
+        ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
+        for g in (1, TOPO_GROW):
+            for x, y in ((b[0], b[1]), (b[2], b[1]), (b[0], b[3]), (b[2], b[3])):
+                dx, dy = x - cx, y - cy
+                u, v = cx + g * (dx * ca - dy * sa), cy + g * (dx * sa + dy * ca)
+                if not (pad <= u <= W - pad and pad <= v <= H - pad):
+                    return False
+    return True
+
+
+def patch_block(rises, tone, phase=None):
+    """A tile's contour patch (a course's units, a history unit's modules, a markdown unit's sections; P92 for a course):
+    rises [(label, words or None)], one per part in order, a written part by its words, a planned one flat (a dashed
+    ring); a contour every 5.5th part of the largest, so every patch reads at one density (the stats give the size);
+    4:1, the tile's width. P93: the spread .40 over the parts, narrowed by a tenth until no line reaches the patch's
+    edge and every part's rings stay inside the frame at every pose of the move (turned_inside); a planned course (no
+    part written) is one dashed ring at the patch's centre."""
+    top = max((w for _, w in rises if w), default=0)
+    lay = dict(name='patch', width=720, height=180, spread=round(.40 / len(rises), 4), grid=6, simplify=.5,
+               **(dict(at=[[.5, .5]]) if len(rises) == 1 else {}))
+    blk = dict(kind='contours', patch=True, rises=[dict(label=k, tone=tone, **(dict(words=w) if w else dict(planned=True))) for k, w in rises], layouts=[lay])
+    if top:
+        blk['interval'] = top / 5.5
+        for _ in range(30):
+            rr = viz.contours_rings(blk)
+            if not rr[('patch', 'edge')] and all(turned_inside(b, 720, 180) for _, _, _, b in rr['patch']):
+                break
+            lay['spread'] = round(lay['spread'] * .9, 4)
+        else:
+            raise SystemExit(f'build.py patch_block: no spread keeps the patch of {rises[0][0]}... clear of its frame')
+    if phase is not None:
+        blk['phase'] = round(phase, 3)
+    return viz.render(blk)
+
+
+# A course home's hero layer (P93): the tall layout a square, its rises (box) and their own rings (view) where both a
+# phone's portrait hero (390 px: about 390 x 590 to 760 with the 22 px above it) and the tablet's landscape one (768 x
+# 400 to 480) show them, above the fade (the phone's window is x .24 to .76 on the tallest hero, the tablet's y .19 to
+# .81, faded from .75); the wide one 2:1, as wide as the 1280 px hero (980 x 400 to 480), its rises above the stat
+# boxes as far as their number allows. What's new's hero is flatter (about 390 x 360 on a phone, 980 x 260 from 768
+# px), so its tall layout is 1.6:1 (a phone shows x .16 to .84, the tablet y .22 to .78, faded from .72) and its wide
+# one 3.7:1.
+COURSE_TOPO = [dict(name='tall', width=1000, height=1000, box=(.28, .22, .72, .7), view=(.25, .2, .75, .75), place=ct_lattice),
+               dict(name='wide', width=1000, height=500, box=(.1, .12, .9, .66), view=(.04, .06, .96, .84), place=ct_lattice)]
+NEW_TOPO = [dict(name='tall', width=1000, height=625, box=(.24, .3, .76, .64), view=(.18, .23, .82, .7), place=ct_ridge),
+            dict(name='wide', width=1000, height=270, box=(.12, .26, .88, .66), view=(.1, .06, .9, .86), place=ct_ridge)]
+NEW_INTERVAL = 12000    # words between two of What's new's contour levels (its largest day, 22 Oct 2026, stands 10 to 25 levels; verify.py checks it)
+
+
+def hero_layer(rises, tone, iv, specs, phase=0.0):
+    """A hero's topography (a course home's, What's new's): rises [(label, words or None)], one tone; the layer with its
+    two layouts (tall below 1100 px, wide from it), placed and sized by ct_fit."""
+    rs = [dict(label=k, tone=tone, **(dict(words=w) if w else dict(planned=True))) for k, w in rises]
+    lays = ct_fit(rs, iv, specs)
+    return viz.render(dict(kind='contours', interval=iv, rises=rs, layouts=lays, phase=round(phase, 3)))
+
+
 def course_home(c):
-    parts = ''
+    # P93: the hero's topography (one rise per unit of the course, as its tile's patch) and every unit a tile, each
+    # drawing of the page starting at its own point of the cycle
+    rises = unit_rises(c)
+    top = max((w for _, w in rises if w), default=0)
+    ph = phases(1 + sum(len(us) for _, _, us, _, _ in c['parts']))
+    layer = hero_layer(rises, _TONE[c['color']], top / 5.5, COURSE_TOPO, ph[0]) if top else ''
+    parts, k = '', 1
     for num, title, us, when, ctx in c['parts']:
         nmods = sum(len(c['umap'][u][2]) for u in us)
-        parts += f'<section class="part{" deep" if num == "+" else ""}"><header class="phd"><span class="pnum">{num}</span><div class="ptx"><div class="pmeta"><span>{"Unit " + us[0] if len(us) == 1 else "Units " + us[0] + "–" + us[-1]}</span><span>{nmods} modules</span><span>{when}</span></div><h2>{title}</h2><p>{ctx}</p></div></header><div class="ucards">{"".join(ucard(c, u) for u in us)}</div></section>'
+        tiles = ''
+        for u in us:
+            tiles += unit_tile(c, u, ph[k]); k += 1
+        parts += f'<section class="part{" deep" if num == "+" else ""}"><header class="phd"><span class="pnum">{num}</span><div class="ptx"><div class="pmeta"><span>{"Unit " + us[0] if len(us) == 1 else "Units " + us[0] + "–" + us[-1]}</span><span>{nmods} modules</span><span>{when}</span></div><h2>{title}</h2><p>{ctx}</p></div></header><div class="cgrid">{tiles}</div></section>'
     E = c['eras']
     ribbon = ''.join(f'<span class="seg" style="flex-grow:{e[2]-e[1]};--c:{e[3]}" title="{e[0]}"></span>' for e in E)
     legend = ''.join(f'<li style="--c:{e[3]}"><i></i><b>{e[0]}</b><span class="yr">{yr(e[1])} – {yr(e[2])}</span><span class="un2">{e[4]}</span></li>' for e in E)
@@ -272,7 +439,8 @@ def course_home(c):
     nunits = len(c['units']) - 1
     return f'''
 <section class="panel home" id="{c['home_id']}" data-ctx="{c['id']}" data-kind="course" data-split="home" data-t="{c['short']}" data-u="COURSE {c['num']}" data-c="{c['color']}" style="--cc:{c['color']}" hidden>
-  <header class="hero">
+  <header class="hero has-topo">
+    {layer}
     {crumbs(('Academy', 'home'), (THEME[c['theme']]['name'], 'track-' + c['theme']), (f"Course {c['num']} · {c['short']}", None))}
     <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['eyebrow']}</span> · Personal Mythology{' · <span class="u" style="--c:var(--gold)">IN PROGRESS</span>' if c['status'] != 'available' else ' · <span class="u" style="--c:var(--teal)">COMPLETE</span>'}</div>
     <h1>{c['h1']}</h1>
@@ -337,27 +505,42 @@ def syllabus(c):
 </section>'''
 
 
+def tile(parts, color, title, line, stats=None, pill='', patch='', href=None, disclosure=None, cls='', attrs=''):
+    """P93 (4 Nov 2026, Pedro: "make this new tile style propagate across the site"): the one tile, everywhere a course
+    or a unit is listed: the chip (its parts, a break allowed only between them) with the status pill under it, the
+    title, a two-line line, three stats (or none: a planned course's ghost), its own contour patch, and either the whole
+    tile the link (href) or, for a history unit, a disclosure whose summary is the tile and which opens to its module
+    rows (disclosure: the html under the summary). cls adds a modifier: ' ghost' (a planned course or unit, dashed),
+    ' pending' (a unit not yet written). Every field is a class of theme 4f and 4h (.course.live and its children)."""
+    chip = '<span class="cname">' + ' '.join(f'<span class="cpart">{html.escape(x)}{" ·" if k < len(parts) - 1 else ""}</span>' for k, x in enumerate(parts)) + '</span>'
+    stats = f'<div class="cstats">{"".join(f"<span><b>{v}</b> {html.escape(l)}</span>" for v, l in stats)}</div>' if stats else ''
+    inner = f'<div class="ctop">{chip}{pill}</div><span class="ctitle">{html.escape(title)}</span><p>{line}</p>{stats}{patch}'
+    st = f' style="--c:{color}"'
+    if disclosure is not None:
+        return f'<details class="course live{cls}"{attrs}{st}><summary>{inner}{ICON_CHEV}</summary>{disclosure}</details>'
+    if href:
+        tgt = f' data-target="{href[1:]}"' if href.startswith('#') else ''
+        return f'<a class="course live{cls}" href="{href}"{tgt}{attrs}{st}>{inner}</a>'
+    return f'<div class="course live{cls}"{attrs}{st}>{inner}</div>'
+
+
+def status_pill(status):
+    return {'complete': '<span class="pill live">complete</span>', 'available': '<span class="pill live">complete</span>',
+            'written': '<span class="pill live">written</span>', 'in progress': '<span class="pill prog">in progress</span>',
+            'next session': PILL_NEXT, 'next': PILL_NEXT}.get(status, f'<span class="pill">{html.escape(status)}</span>')
+
+
 def card(theme, color, short, title, blurb, done, total, words, status, href, external=False, patch=''):
-    """A catalogue card on the home: the chip row (track and course, status pill), the title, the one-sentence tile
-    (two lines at most) and the same three stats for every course (units written, of the total, hours of reading at
-    250 words a minute; P90, 4 Nov 2026); the whole card is the link. P91 (4 Nov 2026, Pedro: "title, tile line, three
-    stats, no button"): the progress meter and the button are gone. P92 (4 Nov 2026, Pedro: "each tile with the same
-    information displayed, with each course's respective content"): under the stats, the course's own contour patch
-    (`tile_patch`: one rise per written unit by its words, a planned unit flat), aria-hidden."""
-    meta = (f'<span><b>{done}</b> units written</span><span><b>{total}</b> in all</span>'
-            f'<span><b>{hours(words)}</b> h of reading</span>')
-    pill = '<span class="pill live">complete</span>' if status == 'available' else f'<span class="pill prog">{status}</span>'
-    tgt = '' if external else f' data-target="{href[1:]}"'
-    return f'''<a class="course live" href="{href}"{tgt} style="--c:{color}">
-    <div class="ctop"><span class="cname"><span class="cpart">{html.escape(theme)} ·</span> <span class="cpart">{html.escape(short)}</span></span>{pill}</div>
-    <span class="ctitle">{html.escape(title)}</span>
-    <p>{blurb}</p>
-    <div class="cstats">{meta}</div>{patch}
-  </a>'''
+    """A course's tile on the home (P90, P91, P92; P93: built by tile()): the chip (track and course) with the status
+    pill, the title, the one-sentence tile line (two lines at most), the same three stats for every course (units
+    written, of the total, hours of reading at 250 words a minute) and the course's own contour patch (tile_patch);
+    the whole tile is the link."""
+    return tile([theme, short], color, title, blurb, stats=[(done, 'units written'), (total, 'in all'), (hours(words), 'h of reading')],
+                pill=status_pill('available' if status == 'available' else status), patch=patch, href=href)
 
 
-def root_card(c):
-    return card(THEME[c['theme']]['name'], c['color'], f'Course {c["num"]}', c['name'], html.escape(c['tile']), c['units_complete'], c['card_units'], c['words'], c['status'], f'#{c["home_id"]}', patch=tile_patch(c))
+def root_card(c, phase=None):
+    return card(THEME[c['theme']]['name'], c['color'], f'Course {c["num"]}', c['name'], html.escape(c['tile']), c['units_complete'], c['card_units'], c['words'], c['status'], f'#{c["home_id"]}', patch=tile_patch(c, phase))
 
 
 for c in HISTORY:
@@ -442,15 +625,16 @@ def md_courses(c):
 for c in MARKDOWN:
     load_markdown(c)
 MD = [m for c in MARKDOWN for m in md_courses(c)]
+MDKIT = dict(wc=wc, tile=tile, patch=patch_block, hero=hero_layer, hours=hours, phases=phases, tone=_TONE, topo=COURSE_TOPO, pill=status_pill)
 for m in MD:
-    m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV)
-    # P90 (4 Nov 2026): a markdown course's words, as a history course's are counted (wc, figures left out): the text of
-    # each written unit's reading page, from its first section to the end of the text (Sources and "How this unit was
-    # made" after it are left out), for the hours of reading on its home card
-    _pw = {re.search(r' id="([^"]+)"', p).group(1): wc(p.split('<div class="report', 1)[1].split('<div class="process"', 1)[0])
-           for p in m['panels'] if '<div class="report' in p}
-    m['wby'] = {u[0]: _pw[m['parent']['written'][u[0]]] for u in m['done'] if m['parent']['written'][u[0]] in _pw}   # P91: per unit (P92: for its rise in the tile's patch)
-    m['words'] = sum(_pw[r] for r in {m['parent']['written'][u[0]] for u in m['done']} if r in _pw)
+    m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV, MDKIT)
+    # P90 (4 Nov 2026): a markdown course's words, as a history course's are counted (wc, figures left out), for the
+    # hours of reading on its home card. P93: each written unit's words are its reading page's sections, each counted
+    # as its text alone (mdcourse.section_text: not its next and previous buttons or its band's numeral, which P90's
+    # count from the report's opening tag took in, with the tag's own `steps">`), set by mdcourse.build as m['wby']
+    # and m['secw'] (the sections in order, for the unit tile's patch)
+    m['wby'] = {u[0]: m['wby'][u[0]] for u in m['done']}
+    m['words'] = sum(m['wby'].values())
 
 
 # Derived fields (backlog row "Academy build: derived fields", 28 Oct 2026). Every number the home, the drawer and the
@@ -502,14 +686,15 @@ def dated_units():
                 if fm.get('written'):
                     rank = order.index(u[0]) if u[0] in order else len(order) + k
                     out.append(dict(date=str(fm['written']), rank=rank, course=m['short'], cname=m['name'], color=m['color'], code=u[0],
-                                    title=fm.get('title', u[1]), pid=m['parent']['written'][u[0]], model=fm.get('model', ''), approx=False, home=m['home_id'], hist=False))
+                                    title=fm.get('title', u[1]), pid=m['parent']['written'][u[0]], model=fm.get('model', ''), approx=False, home=m['home_id'], hist=False,
+                                    words=m['wby'].get(u[0], 0)))   # P93: for What's new's topography, as the cards count them
     for c in HISTORY:
         pos = list(c['index'])
         ap = set(PROV.get('written_approx', {}).get(c['id'], []))
         for i, d in PROV.get('written', {}).get(c['id'], {}).items():
             if i in c['index']:
                 out.append(dict(date=d, rank=pos.index(i), course=c['short'], cname=c['name'], color=c['color'], code=i, title=c['index'][i]['title'],
-                                pid=c['slug'](i), model=c['prov'].get(i, c['default_model']), approx=i in ap, home=c['home_id'], hist=True))
+                                pid=c['slug'](i), model=c['prov'].get(i, c['default_model']), approx=i in ap, home=c['home_id'], hist=True, words=c['wby'].get(i, 0)))
     return sorted(out, key=lambda x: (x['date'], x['rank']), reverse=True)
 
 
@@ -684,7 +869,6 @@ backlog = f"""
 # words, a planned one flat (a dashed ring), a contour every 5.5th part of the course's largest unit, so every tile reads at
 # the same density (the spread keeps a neighbour's tail under a level, so a unit's rings rise with its words); the tile's
 # numbers say the rest.
-_TONE = {'var(--red)': 1, 'var(--orange)': 2, 'var(--teal)': 3, 'var(--blue)': 4, 'var(--purple)': 5, 'var(--gold)': 6}
 NEWEST = DATED[0] if DATED else None
 HERO_INTERVAL = 22000   # words between two of the hero's contour levels: History's 510k words stand 23 levels up, an area of 67k three
 HERO_AT = {             # where each area's rise stands, in THEMES order (fractions of the layout's width and height)
@@ -701,7 +885,6 @@ HERO_TOPO = dict(kind='contours', interval=HERO_INTERVAL,
                  rises=[dict(label=t['name'], tone=_TONE[t['color']], **(dict(words=AREA_WORDS[t['id']]) if AREA_WORDS[t['id']] else dict(planned=True))) for t in THEMES],
                  layouts=[dict(name='tall', width=1000, height=1000, spread=.095, at=HERO_AT['tall']),
                           dict(name='wide', width=1000, height=571, spread=.095, at=HERO_AT['wide'])])
-hero_topo = viz.render(HERO_TOPO)
 
 
 def unit_rises(c):
@@ -717,31 +900,38 @@ def unit_rises(c):
     return [(u[0], m_w) for u in c['units'] for m_w in [c['wby'].get(u[0]) if u[0] in c['parent']['written'] else None]]
 
 
-def tile_patch(c):
-    """The course tile's contour patch, drawn by viz.py's contours kind (patch: static, one layout)."""
+def tile_patch(c, phase=None):
+    """The course tile's contour patch: its units in order (unit_rises), by patch_block."""
     us = unit_rises(c)
-    tone = _TONE[c['color']]
-    top = max((w for _, w in us if w), default=0)
-    if not top:
+    if not any(w for _, w in us):
         return ''
-    blk = dict(kind='contours', patch=True, interval=top / 5.5,
-               rises=[dict(label=k, tone=tone, **(dict(words=w) if w else dict(planned=True))) for k, w in us],
-               layouts=[dict(name='patch', width=720, height=180, spread=round(.40 / len(us), 4), grid=6, simplify=.5)])
-    return viz.render(blk)
+    return patch_block(us, _TONE[c['color']], phase)
 
 
-soon_cards = ''.join(f'<details class="course soon" style="--c:{col}"><summary><span class="cname">{html.escape(short)}</span><span class="ctitle">{html.escape(name)}</span><span class="pill">coming soon</span></summary><p class="nscope">{html.escape(scope)}</p><p class="nspine"><span>Spine</span>{html.escape(spine)}</p></details>' for short, name, col, scope, spine in NEXT)
+def ghost_tile(theme, short, name, col, scope, spine, phase=None):
+    """P93: a planned course on the home, a ghost tile (the chip, the title, its scope in two lines, no stats, a
+    dashed patch: one flat ring, nothing written), the summary of a disclosure that opens to its whole scope and spine,
+    as the planned course's row did."""
+    return tile([theme, short], col, name, html.escape(scope), patch=patch_block([(short, None)], _TONE[col], phase),
+                disclosure=f'<p class="nscope">{html.escape(scope)}</p><p class="nspine"><span>Spine</span>{html.escape(spine)}</p>', cls=' ghost')
 
 
-def md_card(m):
-    return card(THEME[m['theme']]['name'], m['color'], f'Course {m["key"]}', m['name'], html.escape(m['tile']), m['nwritten'], m['nunits'], m['words'], m['status'], f'#{m["home_id"]}', patch=tile_patch(m))
+def md_card(m, phase=None):
+    return card(THEME[m['theme']]['name'], m['color'], f'Course {m["key"]}', m['name'], html.escape(m['tile']), m['nwritten'], m['nunits'], m['words'], m['status'], f'#{m["home_id"]}', patch=tile_patch(m, phase))
 
 
+# P93: the home's drawings in page order (the hero, each live course's tile, History's eight planned courses), each
+# starting at its own point of the cycle
+HOME_PH = iter(phases(1 + len(HISTORY) + len(MD) + len(NEXT)))
+HERO_TOPO['phase'] = round(next(HOME_PH), 3)
+hero_topo = viz.render(HERO_TOPO)
 tracks = ''
 for t in THEMES:
     hist = [c for c in HISTORY if c['theme'] == t['id']]
     mds = [m for m in MD if m['theme'] == t['id']]
-    cards = ''.join(root_card(c) for c in hist) + ''.join(md_card(m) for m in mds)
+    cards = ''.join(root_card(c, next(HOME_PH)) for c in hist)
+    soon_cards = ''.join(ghost_tile(t['name'], short, name, col, scope, spine, next(HOME_PH)) for short, name, col, scope, spine in NEXT) if t['id'] == 'history' else ''
+    cards += ''.join(md_card(m, next(HOME_PH)) for m in mds)
     soon = [m for m in mds if m['status'] == 'coming soon']   # a markdown course with nothing written is planned, not live
     n = len(hist) + len(mds) - len(soon)
     count = f'{n} course{"s" if n != 1 else ""}' if n else f'{len(soon)} course{"s" if len(soon) != 1 else ""} coming soon'
@@ -755,7 +945,7 @@ for t in THEMES:
   <details class="howto rules planned" id="planned-courses">
     <summary><h2>Planned</h2><span>{len(NEXT)} courses, in the intended order</span></summary>
     <p class="hnote">The two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Open a course to see its scope and spine.</p>
-    <div class="soonlist">{soon_cards}</div>
+    <div class="cgrid">{soon_cards}</div>
   </details>"""
         extra = f"""
   <details class="howto rules">
@@ -805,9 +995,15 @@ for x in WHATSNEW:
 nu = sum(1 for x in WHATSNEW if x['kind'] == 'unit' and not x['hist'])
 nr = sum(1 for x in WHATSNEW if x['kind'] == 'unit' and x['hist'])
 nc = sum(1 for x in WHATSNEW if x['kind'] == 'course')
+# P93: What's new's topography (Pedro: "expand that to other pages"): one rise per day it lists, oldest at the left,
+# its height the words filed that day (the units' and reports' words, as the cards count them), a contour every
+# NEW_INTERVAL words, along a ridge
+NEW_DAYS = [(d, sum(x['words'] for x in xs if x['kind'] == 'unit')) for d, xs in reversed(_days)]
+new_layer = hero_layer(NEW_DAYS, _TONE['var(--gold)'], NEW_INTERVAL, NEW_TOPO) if NEW_DAYS else ''
 whatsnew = f"""
 <section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="ACADEMY" data-c="var(--gold)" hidden>
-  <header class="hero">
+  <header class="hero has-topo">
+    {new_layer}
     {crumbs(('Academy', 'home'), ("What's new", None))}
     <div class="eyebrow">{eyebrow_segs(*['<span class="u" style="--c:var(--gold)">WHAT\'S NEW</span>', f'{nr} history reports', f'{nu} units', f'{nc} courses'] + ([f'since {howbuilt.date_long(WHATSNEW[-1]["date"])}'] if WHATSNEW else []))}</div>
     <h1>What's new</h1>

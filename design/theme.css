@@ -15,12 +15,13 @@
       4a report  4b home and course cards  4c syllabus and prompts
       4d era ribbon  4e rule blocks and parts  4f root home  4g changelog
       4h learner home (since 6.5 the hero: the topography behind the headline, the areas cycling under it, the
-         lede, the quiet link to What's new; the area headers; slim course tiles; new since and What's new; folded
-         planned lists)
+         lede, the quiet link to What's new; the area headers; new since and What's new; folded planned lists) and,
+         since 6.6, the tile: every course, unit and planned course on every page (.course.live and its modifiers)
       4i figures (kit/viz.py: timeline, compare, tree, flow; since 5.2 sitemap, objects, decision,
          matrix, states, swimlanes, wireflow; since 5.4 line, bars, scatter, range, the numeric matrix
          and the phone scroll frame; classes only, no colour attributes; since 6.5 the home's contours, the hero's
-         and each tile's patch; 6.4's bookshelf is gone)
+         and each tile's patch; 6.4's bookshelf is gone; since 6.6 every contour drawing turns and grows slowly, and
+         each course home and What's new has its own behind its hero)
    8  Swiss pass (version 5): type scale up, colour as a field, hard corners, rules not shadows
    5  Components added for hubs (the history site has no equivalent)
    6  Responsive: tablet (from 768 px) and desktop (from 1100 px); the phone
@@ -29,6 +30,15 @@
       that can hover; equal-height catalogue cards with the button on one line
    9  Reading layout (P68): scope line, sticky section bar, one section at a time,
       numbered section bands, next and previous, Sources and "How this unit was made"
+   Version 6.6, 4 Nov 2026 (P93): every contour drawing moves very slowly where motion is welcome (4i: one move, a scale
+   from 1 to 1.06 and a turn from -3 to +3 degrees over 120 s, alternating, eased, transform only, about each drawing's
+   centre; each drawing of a page starts at its own point of the cycle, --ph from build.py; each layer stands out of its
+   frame by the overscan the turn needs for the frame's own aspect, from the tokens; still under reduced motion); each
+   course home and What's new has a topography behind its hero (.hero.has-topo, the layer the full width beside the
+   sidebar, the hero its own height); the home's tile is every unit's and every planned course's too (4h, 6: a
+   history unit's tile is the summary of its disclosure, a markdown unit's the link to its page, a planned course a
+   ghost; two columns from 768 px, a lone tile half the width, an opened tile in its own column); the unit cards (.ucard,
+   .ucards, .uch, .uwhy, .ncard) and the planned rows (details.course.soon, .soonlist) are gone.
    Version 6.5, 4 Nov 2026 (P92): the home's hero is type first over a topography drawn from the data (4h: the contour
    layer full width beside the sidebar, drifting a few pixels over 30 s by transform where motion is welcome, still
    otherwise; the four areas cycling under "Academy" in their tones, opacity and transform only, the static line under
@@ -60,6 +70,7 @@
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
   --topo-a:.2;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page) and a tile's patch */
+  --topo-turn:3deg;--topo-grow:1.06;--topo-cycle:120s;   /* P93: the contours' one slow move, both themes: a turn of +/- 3 degrees and a growth to 1.06, over 120 s each way */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
   --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -245,14 +256,6 @@ pre.tree{background:var(--card);border:1px solid var(--line);border-radius:8px;p
 .howto p{margin:0 0 10px;color:var(--fg)}.howto p:last-child{margin:0}
 .hsec{font-size:13px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
 .hnote{color:var(--muted);font-size:14px;margin:-6px 0 12px}
-.ucards{display:grid;gap:12px;margin-bottom:28px}
-.ucard{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--c);border-radius:12px;padding:14px 14px 8px;min-width:0}
-.ucard.pending{border-left-style:dashed}
-.uch{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.uch .un{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--c)}
-.uch h3{font-size:17px;margin:0;flex:1 1 auto;min-width:0;text-wrap:balance}
-.uch .st{font-family:var(--mono);font-size:10.5px;color:var(--dim);white-space:nowrap}
-.uwhy{color:var(--muted);font-size:14px;margin:6px 0 10px}
 .hrows{display:grid}
 .hrow{display:flex;align-items:flex-start;gap:10px;min-height:44px;padding:8px 4px;border-top:1px solid var(--line);text-decoration:none;color:var(--fg);font-size:14.5px;line-height:1.3}
 .hrow .n{font-family:var(--mono);font-size:11.5px;color:var(--c);flex:0 0 3.6em;padding-top:2px}
@@ -267,24 +270,6 @@ pre.tree{background:var(--card);border:1px solid var(--line);border-radius:8px;p
 .pill.prog{color:var(--gold);border-color:var(--gold)}
 .pill.unck{color:var(--orange);border-color:color-mix(in srgb,var(--orange) 55%,transparent)}
 .pill.next{color:var(--blue);border-color:color-mix(in srgb,var(--blue) 55%,transparent)}
-/* home unit card as a disclosure */
-details.ucard{padding:0}
-details.ucard>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;column-gap:10px;row-gap:6px;align-items:baseline;padding:14px 14px 12px;position:relative}
-details.ucard>summary::-webkit-details-marker{display:none}
-details.ucard .un{grid-column:1;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--c)}
-details.ucard .uh{grid-column:2;font-size:16.5px;font-weight:600;line-height:1.25;text-wrap:balance;min-width:0}
-details.ucard .st{grid-column:3;font-family:var(--mono);font-size:10.5px;color:var(--dim);white-space:nowrap}
-details.ucard .bar{grid-column:1 / 4;height:3px;border-radius:2px;background:var(--line);overflow:hidden;margin-top:2px}
-details.ucard .bar i{display:block;height:100%;background:var(--c)}
-details.ucard .uwhy{grid-column:1 / 4;margin:2px 28px 0 0;font-size:14px;color:var(--muted)}
-details.ucard .chev{position:absolute;right:12px;bottom:14px;width:18px;height:18px;color:var(--dim);transition:transform .15s}
-details.ucard[open] .chev{transform:rotate(180deg)}
-details.ucard .hrows{padding:0 14px 8px}
-details.ucard[open]>summary{padding-bottom:10px}
-.ncard .nscope{color:var(--fg);font-size:14.5px;margin:8px 0 10px;line-height:1.5}
-.ncard .nspine{font-size:13px;color:var(--muted);margin:0 0 6px;line-height:1.5}
-.ncard .nspine span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-right:8px}
-.ucard.ncard{padding-bottom:12px}
 
 /* 4c · syllabus, prompt boxes, buttons */
 .hlinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
@@ -361,7 +346,7 @@ details.rules>p:last-child{padding-bottom:16px}
 .pmeta{display:flex;flex-wrap:wrap;gap:4px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
 .ptx h2{font-size:24px;margin:0 0 6px;letter-spacing:-.01em;line-height:1.1}
 .ptx p{margin:0;color:var(--muted);font-size:14.5px;max-width:58ch}
-.part .ucards{gap:10px;margin:0}
+.part .cgrid{margin:0}
 
 /* 4f · root home: mythos/logos cards, course cards, coming-soon list */
 .root .hero h1{font-size:30px}
@@ -381,17 +366,11 @@ details.rules>p:last-child{padding-bottom:16px}
 .course.live p{margin:0 0 12px;color:var(--muted);font-size:14.5px}
 .cstats{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-bottom:12px}
 .cstats b{font-family:var(--mono);font-weight:400;color:var(--fg);font-size:15px;margin-right:3px}
-.soonlist{display:grid;gap:6px;margin-bottom:28px}
-details.course.soon{padding:0;margin:0;border-left-style:dashed}
-details.course.soon>summary{list-style:none;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:10px;min-height:52px;padding:8px 14px;cursor:pointer}
-details.course.soon>summary::-webkit-details-marker{display:none}
-details.course.soon .cname{min-width:5.5em}
-details.course.soon .ctitle{font-size:14.5px;font-weight:500;margin:0;color:var(--muted)}
-details.course.soon[open] .ctitle{color:var(--fg)}
-details.course.soon .nscope,details.course.soon .nspine{padding:0 14px}
-details.course.soon .nscope{font-size:14px;margin:0 0 10px;line-height:1.5}
-details.course.soon .nspine{font-size:12.5px;color:var(--muted);margin:0 0 14px}
-details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-right:8px}
+/* P93: a ghost tile's disclosure (a planned course): its whole scope and its spine under the tile */
+details.course.live>.nscope,details.course.live>.nspine{padding:0 16px}
+details.course.live>.nscope{font-size:14px;margin:0 0 10px;line-height:1.5;color:var(--fg)}
+details.course.live>.nspine{font-size:12.5px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg);margin-right:8px}
 
 /* 4h · learner home (Academy root; P90, 4 Nov 2026; P91, 4 Nov 2026; P92, 4 Nov 2026): the hero, the area sections
    with their course tiles, the constants, the site pages, then New since and the one link to What's new. No Continue
@@ -435,23 +414,42 @@ details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter
 .panel.root .thead{border-bottom:0;padding-bottom:0}   /* on a phone the first tile's 3 px rule in the tone closes the header; the header's own rule doubled it 30 px above */
 .panel.root>.hlinks .hbtn b{white-space:normal;text-wrap:balance}   /* P90: the home's page links wrap on a phone, never cut short */
 .panel.root>.hlinks:not([data-one]){grid-template-columns:1fr}   /* P91: the three site links one to a row on a phone, three across from 768 px (6) */
-/* a course card on the home: the one-sentence tile line, two lines at most */
-.panel.root .course.live p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-/* the slim card (P91): the chip row, the title, the tile and the three stats; nothing under the stats */
-.panel.root .course.live .cstats{margin-bottom:0}
-/* P91: on a narrow phone (320 and 360 px) the track band and the card give the tile the width its two lines need */
-@media (max-width:400px){.panel.root .track{padding-left:12px;padding-right:12px}.panel.root .course.live{padding:14px 12px}.panel.root .course.live p{font-size:13.5px}.panel.root .cstats{gap:4px 12px}}
-/* the card's chip breaks only between its two parts, the track and the course */
+/* the tile (P90, P91, P92 on the home; P93, Pedro 4 Nov 2026: "make this new tile style propagate across the site"):
+   every course, unit and planned course on every page is one tile, .course.live: the chip (.cname, two parts that
+   break only between them) with the status pill under it, the title (.ctitle), a line of two lines at most, three
+   stats (.cstats) and its own contour patch (.topo-patch, 4i). A course's and a markdown unit's tile is the link (an
+   a); a history unit's is the summary of a disclosure that opens to its module rows (details, its chevron at the top
+   right); a planned course's is a ghost (.ghost: no stats, dashed, the chip outlined), the summary of a disclosure
+   that opens to its scope and spine; a unit not yet written is .pending (its rule dashed). */
+.course.live>p,.course.live>summary>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.course.live .cstats{margin-bottom:0}
+/* P91: on a narrow phone (320 and 360 px) the track band and the tile give the line the width its two lines need */
+@media (max-width:400px){.panel.root .track{padding-left:12px;padding-right:12px}.course.live{padding:14px 12px}.course.live>p,.course.live>summary>p{font-size:13.5px}.course.live .cstats{gap:4px 12px}}
+/* the tile's chip breaks only between its two parts, the track and the course (or the course and the unit) */
 .cname .cpart{white-space:nowrap}
-.panel.root .course.live .cname{white-space:nowrap}   /* the chip on one line; the status pill drops under it when the two do not fit */
-.panel.root .course.live .ctop{flex-direction:column;align-items:flex-start;row-gap:8px}   /* the pill under the chip on every card, so no card's row differs */
-@media (max-width:340px){.panel.root .course.live p{font-size:12.5px;line-height:1.45}}
-/* P91: on a narrow phone the three stats stand in three columns, each number over its label, alike on every card; and a
-   closed rule block's sub-label sits under its title, not squeezing it */
-@media (max-width:400px){.panel.root .cstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 10px}.panel.root .cstats>span{display:flex;flex-direction:column;line-height:1.3}}
-/* P92: below 768 px (430 px too, where the title and its sub-label each wrapped to two lines side by side) a closed
-   rule block's sub-label sits under its title */
-@media (max-width:767.98px){.panel.root details.rules>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;row-gap:2px;padding:10px 16px}.panel.root details.rules>summary>span{grid-column:1;margin-left:0;text-align:left}.panel.root details.rules>summary::after{grid-column:2;grid-row:1 / span 2;margin:0}}
+.course.live .cname{white-space:nowrap}   /* the chip on one line; the status pill drops under it */
+.course.live .ctop{flex-direction:column;align-items:flex-start;row-gap:8px}   /* the pill under the chip on every tile, so no tile's row differs */
+@media (max-width:340px){.course.live>p,.course.live>summary>p{font-size:12.5px;line-height:1.45}}
+/* P91: on a narrow phone the three stats stand in three columns, each number over its label, alike on every tile */
+@media (max-width:400px){.course.live .cstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 10px}.course.live .cstats>span{display:flex;flex-direction:column;line-height:1.3}}
+/* P93: the tile as a disclosure (a history unit, a planned course): the summary is the tile, laid out as the linked
+   one is; the chevron at its top right turns when it opens; the module rows (or the scope and spine) under it */
+details.course.live{padding:0}
+details.course.live>summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;padding:16px 44px 16px 16px;position:relative;min-height:44px;height:100%}
+details.course.live[open]>summary{height:auto}
+details.course.live>summary::-webkit-details-marker{display:none}
+details.course.live>summary>.chev{position:absolute;top:16px;right:14px;width:18px;height:18px;color:var(--muted)}
+details.course.live[open]>summary>.chev{transform:rotate(180deg)}
+details.course.live>.hrows{padding:0 16px 8px}
+details.course.live>summary>.topo-patch{margin-right:-28px}   /* the patch the tile's full content width, past the chevron's column */
+@media (max-width:400px){details.course.live>summary{padding:14px 40px 14px 12px}details.course.live>summary>.chev{right:12px}details.course.live>summary>.topo-patch{margin-right:-28px}details.course.live>.hrows{padding:0 12px 8px}}
+/* a unit not yet written: its rule dashed */
+.course.live.pending{border-top-style:dashed}
+/* a planned course: a ghost, the tile's outline and rule dashed on the surface under it, the chip outlined, the text in
+   the body's colours (a tone as small text is under 4.5:1 in the dark theme) */
+.course.live.ghost{background:transparent;border-style:dashed;border-color:var(--line-2);border-top-color:var(--c);border-top-style:dashed}
+.course.live.ghost .cname{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--c)}
+.course.live.ghost>summary>p{color:var(--muted)}
 /* new since: dated rows; the date column is wider than a module number; the link to What's new under it. What's new
    (#new, P91): the same rows, one card per day under the day's heading, the unit code in the first column; an
    approximate date (a work session of several days) is marked "≈" */
@@ -471,9 +469,9 @@ details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter
 .hrow small .approx{display:block}   /* the mark on a line of its own, never read as part of the model */
 .hrow .approx{font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--muted);white-space:nowrap}
 /* the planned courses fold into a rule block on the home and a row in the drawer */
-details.rules.planned>.hnote,details.rules.planned>.soonlist{padding:0 16px}
+details.rules.planned>.hnote,details.rules.planned>.cgrid{padding:0 16px}
 details.rules.planned>.hnote{margin:0 0 10px}
-details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
+details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
 .dplan>summary{list-style:none;cursor:pointer;min-height:44px;border-radius:8px}
 .dplan>summary::-webkit-details-marker{display:none}
 .dplan>summary .chev{flex:0 0 16px;width:16px;height:16px;color:var(--dim);transform:rotate(-90deg);transition:transform .15s}
@@ -486,27 +484,42 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 .viz{margin:0 0 20px;background:var(--card);border:1px solid var(--line);padding:14px 14px 10px;min-width:0}
 .viz-title{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
 .viz-scroll{overflow-x:auto;overflow-y:hidden}
-/* the topography (P92, 4 Nov 2026): viz.py's home kind "contours", the hero's layer and each course tile's patch. The
-   SVG carries classes only: a rise is g.ct-rise.ct-t{tone}, its contour lines one path; a planned unit g.ct-plan, a
-   dashed ring. Lines are 1 px at any scale, in the rise's tone, at --topo-a in the hero (low enough that every text
-   over the densest lines keeps its contrast: verify.py measures it on the built page, contrast.py on the tokens) and
-   --topo-p in a patch. The hero's layer (.topo) runs from the top bar to the hero's foot across its full width, its
-   drawings 12 px larger every way so the drift never shows an edge; one layout shows at a time (tall below 1100 px,
-   wide from it); it drifts (section 4h: transform only, 8 x 6 px over 30 s, alternating) where motion is welcome. A
-   patch (.topo-patch) is the tile's own drawing, the full width of its content at a 4:1 ratio, and never moves. */
+/* the topography (P92, 4 Nov 2026; P93, 4 Nov 2026): viz.py's home kind "contours", the home's hero layer, each course
+   home's and What's new's (P93) and every tile's patch. The SVG carries classes only: a rise is g.ct-rise.ct-t{tone},
+   its contour lines one path; a planned unit g.ct-plan, a dashed ring. Lines are 1 px at any scale, in the rise's
+   tone, at --topo-a behind a hero (low enough that every text over the densest lines keeps its contrast: verify.py
+   measures it on the built page at five points of the move, contrast.py on the tokens) and --topo-p in a patch. A
+   hero's layer (.topo) runs from the top bar to the hero's foot across the full width beside the sidebar; one layout
+   shows at a time (tall below 1100 px, wide from it). A patch (.topo-patch) is the tile's own drawing, the full width
+   of its content at 4:1.
+   The move (P93, Pedro: "very slow, expanding and rotating movements, across the board"): where motion is welcome
+   every drawing turns from -3 to +3 degrees and grows from 1 to 1.06 about its centre, over 120 s each way, eased at
+   both ends, alternating; transform only (the compositor's work, nothing on the main thread); each drawing of a page
+   starts at its own point of the cycle (--ph, 0 to 1, set by build.py), so none moves in lockstep with another; under
+   reduced motion nothing moves. The overscan: a frame W x H turned by a is covered by a layer about its centre W + H
+   sin a wide and H + W sin a tall (a scale over 1 only adds), so each layout stands out of its frame by half of that
+   on each side, plus a pixel, measured on the frame itself (.topo is a size container: 100cqw and 100cqh are its
+   width and height), so no edge or corner of a drawing ever shows; a hero's layout covers its box (slice), a patch's
+   fits inside it (meet), its rings clear of the frame at every pose (verify.py checks both). */
 .ct-t1{--c:var(--viz-1)}.ct-t2{--c:var(--viz-2)}.ct-t3{--c:var(--viz-3)}.ct-t4{--c:var(--viz-4)}.ct-t5{--c:var(--viz-5)}.ct-t6{--c:var(--viz-6)}
-.topo{position:absolute;top:-22px;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(#000 90%,transparent);mask-image:linear-gradient(#000 90%,transparent)}   /* the lines fade out over the hero's last 10%, not cut */
-.topo-l{display:none;position:absolute;top:-12px;left:-12px;width:calc(100% + 24px);height:calc(100% + 24px)}
+.topo{position:absolute;top:-22px;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;pointer-events:none;container-type:size;-webkit-mask-image:linear-gradient(#000 90%,transparent);mask-image:linear-gradient(#000 90%,transparent)}   /* the lines fade out over the hero's last 10%, not cut */
+.topo-l{--ox:calc(100cqh * sin(var(--topo-turn)) / 2 + 1px);--oy:calc(100cqw * sin(var(--topo-turn)) / 2 + 1px);
+  display:none;position:absolute;left:calc(-1 * var(--ox));top:calc(-1 * var(--oy));width:calc(100% + 2 * var(--ox));height:calc(100% + 2 * var(--oy));transform-origin:50% 50%}
 .topo-tall{display:block}
 .topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:butt}   /* butt: where one rise's stretch of a line hands over to the next, the two ends abut, never overlap (round caps doubled the line there) */
 .topo .ct-rise path{stroke:var(--c);stroke-opacity:var(--topo-a)}
 .topo .ct-plan circle{stroke:var(--c);stroke-opacity:var(--topo-a);stroke-dasharray:3 3}
 .topo.topo-patch{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;margin:14px 0 0;aspect-ratio:4 / 1;overflow:hidden;-webkit-mask-image:none;mask-image:none}
-.topo-patch .topo-l{display:block;top:0;left:0;width:100%;height:100%}
+.topo-patch .topo-l{display:block}
 .topo-patch .ct-rise path{stroke-opacity:var(--topo-p)}
 .topo-patch .ct-plan circle{stroke-opacity:var(--topo-p)}
-@media (prefers-reduced-motion:no-preference){.hhome .topo-l{animation:topo-drift 30s ease-in-out infinite alternate}}
-@keyframes topo-drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-8px,6px,0)}}
+@media (prefers-reduced-motion:no-preference){.topo-l{animation:topo-turn var(--topo-cycle) ease-in-out calc(var(--ph,0) * -1 * var(--topo-cycle)) infinite alternate both}}
+@keyframes topo-turn{from{transform:rotate(calc(-1 * var(--topo-turn))) scale(1)}to{transform:rotate(var(--topo-turn)) scale(var(--topo-grow))}}
+/* P93: a course home's and What's new's hero over its topography: the layer the full width beside the sidebar (it
+   bleeds out of the column to 100cqw of the body, section 3), from the top bar to the hero's foot; the hero keeps its
+   own height (a course home's holds its stats and buttons, whose boxes are opaque, so the lines pass under them) */
+.hero.has-topo{position:relative;isolation:isolate}
+.hero.has-topo>.topo{left:calc((100% - 100cqw) / 2);right:calc((100% - 100cqw) / 2)}
 /* a figure scales to the column but never below the width its type stays legible at; narrower than that it scrolls */
 .viz svg{display:block;width:100%;max-width:none;height:auto;min-width:560px;font-family:var(--sans)}
 .viz-timeline svg,.viz-flow svg{width:auto}
@@ -685,8 +698,7 @@ details.clog[open]>summary::after{content:"–"}
 .thead p{margin:0;color:var(--muted);font-size:14.5px;max-width:62ch}
 .tmeta{font-family:var(--mono);font-size:11px;color:var(--dim);white-space:nowrap;padding-bottom:2px}
 .track .cgrid{gap:12px}
-.track .cgrid>.course{margin:0}
-.track .soonlist{margin:0}
+.cgrid>.course{margin:0}   /* P93: a tile in a grid takes the grid's gap, not its own margin */
 .track .hnote{margin:0}
 .track>.howto{margin:0}   /* P91: the track's gap spaces its rule blocks; their own bottom margin doubled it */
 /* external link rows (bibliography): the domain wraps rather than widening the page */
@@ -696,22 +708,21 @@ details.clog[open]>summary::after{content:"–"}
 /* Phone (under 768 px) is the base and is untouched by this section. Tablet widens the column and
    puts cards in two columns; desktop turns the drawer into a persistent left sidebar. Breakpoints:
    768 px (tablet) and 1100 px (desktop). Nothing here changes a token or a component's own style. */
-/* card grid: a plain wrapper around course cards (root home, hub home and Learn page); one column on a phone */
-.cgrid{display:grid}
+/* tile grid (P93: every list of tiles: the home's areas and planned courses, a course home's units; and the hub pages'
+   cards): one column on a phone */
+.cgrid{display:grid;gap:12px}
 .panel.root>.cgrid{gap:24px}
 .panel.root .cgrid>.course{margin:0}
 @media (min-width:768px){
   /* reading column: 760 px; the top bar follows it */
   main,.top-in{max-width:760px}
-  /* two columns: course cards, unit cards, coming-soon list; an only card spans both */
-  .cgrid{grid-template-columns:1fr 1fr;column-gap:10px;align-items:stretch}
+  /* two columns of tiles, side by side the same height (P90: a lone tile keeps half the width; P93: on every page);
+     the briefs' and syllabi's cards too */
+  .cgrid{grid-template-columns:1fr 1fr;column-gap:12px;align-items:stretch}
   .panel.root>.cgrid{gap:24px 12px}
-  .cgrid>.course:only-child{grid-column:1 / -1}
-  .track .cgrid>.course:only-child{grid-column:auto}   /* P90: on the home a track with one course keeps a half-width card */
-  .ucards,.part .ucards,.smods,.sunit .smods,.soonlist{grid-template-columns:1fr 1fr;align-items:start}
-  .ucards{column-gap:12px}
+  .cgrid:has(>details.course.live[open]){align-items:start}   /* P93: while a unit tile is open its row's tiles take their own heights: the open one grows in its column, its neighbour does not stretch */
+  .smods,.sunit .smods{grid-template-columns:1fr 1fr;align-items:start}
   .smods{column-gap:10px}
-  .soonlist{column-gap:8px}
   /* stat tiles stay 3 or 4 across (two columns would orphan a tile) */
   .stats[data-n="4"]{grid-template-columns:repeat(4,1fr)}
   .panel.root>.hlinks:not([data-one]){grid-template-columns:repeat(3,1fr)}
@@ -740,30 +751,31 @@ details.clog[open]>summary::after{content:"–"}
 }
 
 /* 7 · Interaction ------------------------------------------------------------ */
-/* A card is a flex column so that side-by-side cards share a height and their stats sit on one line at the bottom
-   (the tile takes the slack; P91: the meter and the button are gone). */
-.course.live{display:flex;flex-direction:column}
-.course.live p{flex:1 1 auto}
+/* A tile is a flex column so that side-by-side tiles share a height and their stats and patches sit level at the
+   bottom (the line takes the slack; P91: the meter and the button are gone; P93: a disclosure tile's summary is the
+   column, the full height of its box while it is closed). */
+.course.live:not(details){display:flex;flex-direction:column}
+.course.live>p,.course.live>summary>p{flex:1 1 auto}
 /* transitions on the properties the states below change; respects reduced motion */
 @media (prefers-reduced-motion:no-preference){
-  .course,.ucard,.smod,.hrow,.ditem,.duh,.hbtn,.ib,.toc a,.pager a,.copy,.rlink,.crumbs a,details.ucard>summary,details.rules>summary,details.clog>summary,details.course.soon>summary,.prompt summary,.quiz summary{transition:background-color .15s,border-color .15s,color .15s,box-shadow .15s,transform .15s}
+  .course,.smod,.hrow,.ditem,.duh,.hbtn,.ib,.toc a,.pager a,.copy,.rlink,.crumbs a,details.course.live>summary,details.course.live>summary>.chev,details.rules>summary,details.clog>summary,.prompt summary,.quiz summary{transition:background-color .15s,border-color .15s,color .15s,box-shadow .15s,transform .15s}
 }
 /* hover: only where a pointer can hover (touch screens keep the pressed state below) */
 @media (hover:hover){
   a.course:hover{border-color:var(--c);box-shadow:0 2px 12px var(--shadow);transform:translateY(-1px)}
-  .hrow:not(.soon):hover,.ditem:hover,.duh:hover,details.ucard>summary:hover,details.rules>summary:hover,details.clog>summary:hover,details.course.soon>summary:hover{background:var(--hover)}
+  .hrow:not(.soon):hover,.ditem:hover,.duh:hover,details.rules>summary:hover,details.clog>summary:hover{background:var(--hover)}
   .ditem:hover{color:var(--fg)}
   .ib:not(:disabled):hover{background:var(--hover)}
   .hbtn:hover{filter:brightness(1.1)}
   .hbtn.alt:hover{filter:none;border-color:var(--muted);background:var(--hover)}
   .toc a:hover,.pager a:hover,.copy:hover{border-color:var(--muted);color:var(--fg);background:var(--hover)}
   .rlink:hover,.crumbs a:hover,.report a:hover,.prompt summary:hover,.quiz summary:hover{text-decoration:underline}
-  .smod:hover,.ucard:not(details):hover{border-color:var(--line-2)}
+  .smod:hover{border-color:var(--line-2)}
 }
 /* pressed: every device */
 a.course:active{transform:translateY(0);box-shadow:none}
 .hbtn:active,.copy:active,.ib:active,.toc a:active,.pager a:active{transform:translateY(1px)}
-.hrow:active,.ditem:active,.duh:active,details.ucard>summary:active,details.rules>summary:active{background:var(--hover)}
+.hrow:active,.ditem:active,.duh:active,details.course.live>summary:active,details.rules>summary:active{background:var(--hover)}
 
 /* 8 · Swiss pass (A7, 28 Oct 2026) ---------------------------------------------
    Later in the file, so it wins on equal specificity. Three moves: the type does the work (bigger, tighter
@@ -778,8 +790,8 @@ a.course:active{transform:translateY(0);box-shadow:none}
 .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
 .lede{font-size:17px;line-height:1.5}
 /* hard corners everywhere a radius was decoration; 2 px where a control needs a softened edge */
-.howto,.ucard,.course,.era,.stats div,.viz,.tbl,details.clog,.smod,.pbox,.prompt,.recent .hrows,.newday .hrows,.carry li,.dispute,pre.tree{border-radius:0}
-.hbtn,.copy,.pager a,.toc a,.ib,.duh,.ditem,.dplan>summary,.pill,.meter .bar,details.ucard .bar{border-radius:2px}
+.howto,.course,.era,.stats div,.viz,.tbl,details.clog,.smod,.pbox,.prompt,.recent .hrows,.newday .hrows,.carry li,.dispute,pre.tree{border-radius:0}
+.hbtn,.copy,.pager a,.toc a,.ib,.duh,.ditem,.dplan>summary,.pill,.meter .bar{border-radius:2px}
 .pill{letter-spacing:.06em}
 /* colour as a field: a track is a band tinted with its accent; its head is a rule, not a box edge */
 .track{background:color-mix(in srgb,var(--c) 7%,var(--bg));padding:18px 16px 20px;gap:16px}
@@ -791,14 +803,14 @@ a.course:active{transform:translateY(0);box-shadow:none}
 .ctitle{font-size:24px;letter-spacing:-.02em;line-height:1.1;margin:10px 0 8px}
 .cstats b{font-size:18px}
 .meter span{font-size:11px;letter-spacing:.06em;text-transform:uppercase}
-.meter .bar,details.ucard .bar{height:4px}
+.meter .bar{height:4px}
 /* numbers as graphic elements */
 .stats b{font-size:30px;letter-spacing:-.02em}
 /* section heads carry a rule to the right edge */
 .hsec{display:flex;align-items:center;gap:12px}
 .hsec::after{content:"";flex:1 1 auto;height:1px;background:var(--line-2)}
 /* rules, not shadows */
-@media (hover:hover){a.course:hover{box-shadow:none;transform:none;border-color:var(--c);background:color-mix(in srgb,var(--c) 6%,var(--card))}}
+@media (hover:hover){a.course:hover,details.course.live:has(>summary:hover){box-shadow:none;transform:none;border-color:var(--c);background:color-mix(in srgb,var(--c) 6%,var(--card))}}
 .drawer{box-shadow:none;border-right:1px solid var(--line-2)}
 .pnum{font-size:44px;letter-spacing:-.03em}
 .ml .gk{font-size:30px}

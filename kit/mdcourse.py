@@ -294,9 +294,18 @@ def brief_box(text, label='Copy brief'):
     return f'<div class="pbox"><pre>{e(text)}</pre><div class="pbar"><button class="copy" type="button">{label}</button></div></div>'
 
 
-def build(m, crumbs, theme, pill_next, chev):
+def section_text(x):
+    """P93: a reading page's section as its text: without its next and previous buttons (nav.secnav) and its band's
+    numeral (span.bn, aria-hidden), which are the page's, not the unit's words."""
+    return re.sub(r'<span class="bn"[^>]*>.*?</span>', ' ', re.sub(r'<nav class="secnav".*?</nav>', ' ', x, flags=re.S), flags=re.S)
+
+
+def build(m, crumbs, theme, pill_next, chev, kit):
     """Panels and the drawer nav for one markdown Academy course. m is a course dict from build.py:md_courses
-    (parent = the data file's course with .hub = the module). Returns (panels list, nav html, bibliography size)."""
+    (parent = the data file's course with .hub = the module). kit (P93): build.py's tile, patch, hero layer, word count,
+    hours, phases and tones, so a markdown course's home draws its tiles and topography as every other page does.
+    Sets m['secw'] (each written unit's section words, in order) and m['wby'] (its words, their sum). Returns (panels
+    list, nav html, bibliography size)."""
     c, sc, d = m['parent'], m['sc'], m['parent']['hub']
     ctx, k, col, key = m['id'], sc['k'], m['color'], sc['key']
     courses = d.COURSES
@@ -345,38 +354,6 @@ def build(m, crumbs, theme, pill_next, chev):
     course_crumb = (f"Course {key} · {m['short']}", ctx)
     P = []
 
-    # ---- course home ------------------------------------------------------------------------
-    rows = ''
-    for code, title, scope, *_ in sc['units']:
-        if code in read_of:
-            rid = read_of[code]['id']
-            rows += f'<a class="hrow" href="#{rid}" data-target="{rid}"><span class="n">{code}</span><span class="t">{e(title)}<small>{e(scope)}</small></span></a>'
-        else:
-            pill = pill_next if code == d.NEXT_UNIT else '<span class="pill">soon</span>'
-            rows += f'<div class="hrow soon"><span class="n">{code}</span><span class="t">{e(title)}<small>{e(scope)}</small></span>{pill}</div>'
-    pct = round(100 * m['nwritten'] / m['nunits'])
-    audits = ''.join(f'<li><strong>{e(dt)}</strong> · {txt}</li>' for dt, txt in d.AUDIT_LOG)
-    start = (f'<a class="hbtn start" href="#{read_of[first[0]]["id"]}" data-target="{read_of[first[0]]["id"]}"><span>Start the course</span><b>{e(first[0] + " " + first[1])}</b></a>' if first
-             else f'<a class="hbtn start" href="#{BR}" data-target="{BR}"><span>Open the course</span><b>No unit written yet · the briefs</b></a>')
-    frame = getattr(d, 'FRAME', '') if sc is courses[0] else ''      # the frame is shown on the data file's first course
-    P.append(panel(ctx, 'course', f'''
-  <header class="hero">
-    {crumbs(('Academy', 'home'), (t['name'], 'track-' + m['theme']), (course_crumb[0], None))}
-    {eyebrow((f'COURSE {key}', col), (c['short'], None), (('COMPLETE', 'var(--teal)') if m['status'] == 'available' else (m['status'].upper(), 'var(--gold)')))}
-    <h1>{e(m['name'])}</h1>
-    <p class="lede">{sc['intro']}</p>
-    <div class="stats" data-n="4"><div><b>{m['nwritten']}</b><span>of {m['nunits']} units written</span></div><div><b>{pct}%</b><span>of the course</span></div><div><b>{len(d.AUDIT_LOG)}</b><span>audit{'s' if len(d.AUDIT_LOG) != 1 else ''} run</span></div><div><b>{e(d.NEXT_UNIT)}</b><span>next unit to write</span></div></div>
-    <div class="hlinks"><a class="hbtn cont" href="#{ctx}" data-course="{ctx}" hidden><span>Continue</span><b></b></a>{start}<a class="hbtn alt" href="#{BR}" data-target="{BR}"><span>Briefs</span><b>Every unit's brief, copyable</b></a></div>
-  </header>
-  <section class="howto edge" style="--hc:var(--blue)"><h2>What you will be able to do</h2><p>{e(sc['goal'][0].upper() + sc['goal'][1:])}</p><ul>{sc['outcomes']}</ul><p class="over">{d.COURSE_NOTE}</p></section>
-  <h2 class="hsec">Units, in writing order</h2>
-  <div class="hrows">{rows}</div>
-  <details class="howto rules"><summary><h2>Audits run</h2><span>{len(d.AUDIT_LOG)} · next {e(d.NEXT_AUDIT)}</span></summary><ul>{audits}</ul></details>
-  {frame}
-  <a class="hbtn alt wide" href="#{ctx}-build" data-target="{ctx}-build"><span>How it is built</span><b>Method, build order, briefs, audits, sources, changelog.</b></a>
-  <a class="hbtn alt wide" href="#{ctx}-built" data-target="{ctx}-built"><span>How it was built</span><b>The model behind each unit, every check and audit with its verdict, the flags still open.</b></a>
-  <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>Back to every course.</b></a>''', t=m['short'], u=f'COURSE {key}', cls='home'))
-
     # ---- reading pages ----------------------------------------------------------------------
     unit_of = {u[0]: u for x in courses for u in x['units']}
     for r in readings:
@@ -404,6 +381,9 @@ def build(m, crumbs, theme, pill_next, chev):
         u = unit_of.get(code)
         made = [('Provenance', f'<p>{r["intro"]}</p>', None)] + unsure + fresh + ([('The brief', brief_box((aims_text(d, code) + '\n\n' + u[4]) if aims_text(d, code) else u[4]), None)] if u else [])
         head, steps, end = reading(r['id'], pre + ''.join(text), e(u[2]) if u else '', src, made, src.count('<li>'), chev, note=True)
+        if code:   # P93: each section's own words (its text, not its next and previous buttons or its band's numeral)
+            m.setdefault('secw', {})[code] = [kit['wc'](section_text(x)) for x in re.findall(r'<section class="sec" data-step="\d+">(.*?)</section>(?=<section class="sec"|</div>$)', steps.split('<div class="report steps">', 1)[1] + '', re.S)]
+            m.setdefault('wby', {})[code] = sum(m['secw'][code])
         if src_id:            # the Sources heading's old id still lands, on the accordion's title
             end = end.replace('<span class="at">Sources</span>', f'<span class="at" id="{src_id}">Sources</span>', 1)
         P.append(panel(r['id'], 'report', f'''
@@ -416,6 +396,52 @@ def build(m, crumbs, theme, pill_next, chev):
   {steps}
   {end}
   <div class="pager"></div>''', cls='', split=r['id']))
+
+    # ---- course home (P93: after the reading pages, whose sections give each unit's words) --------------------
+    # each unit a tile (Pedro: "make this new tile style propagate across the site"): the chip (the course and the
+    # unit) with its status pill, the title, its scope in two lines, three stats (sections, words, hours of reading)
+    # and its patch (its sections as rises by their words; a unit not yet written one flat ring), the whole tile the
+    # link to its reading page (a unit not yet written: to its brief); the hero's topography, one rise per unit
+    pt = lambda col: kit['tone'].get(col, 4)
+    ph = kit['phases'](1 + len(sc['units']))
+    hero_rises = [(code, m['wby'].get(code)) for code, *_ in sc['units']]
+    top = max((w for _, w in hero_rises if w), default=0)
+    layer = kit['hero'](hero_rises, pt(col), top / 5.5, kit['topo'], ph[0]) if top else ''
+    tiles = ''
+    for k, (code, title, scope, *_) in enumerate(sc['units']):
+        if code in read_of:
+            sw = m['secw'][code]
+            tiles += kit['tile']([m['short'], code], col, title, e(scope), stats=[(len(sw), 'sections'), (f'{sum(sw):,}', 'words'), (kit['hours'](sum(sw)), 'h of reading')],
+                                 pill=kit['pill']('written'), patch=kit['patch']([(f'{code} §{j + 1}', w) for j, w in enumerate(sw)], pt(col), ph[k + 1]),
+                                 href='#' + read_of[code]['id'])
+        else:
+            tiles += kit['tile']([m['short'], code], col, title, e(scope), stats=[(0, 'sections'), (0, 'words'), (kit['hours'](0), 'h of reading')],
+                                 pill=pill_next if code == d.NEXT_UNIT else '<span class="pill">soon</span>',
+                                 patch=kit['patch']([(code, None)], pt(col), ph[k + 1]), href=f'#{BP}{code.lower()}', cls=' pending')
+    pct = round(100 * m['nwritten'] / m['nunits'])
+    audits = ''.join(f'<li><strong>{e(dt)}</strong> · {txt}</li>' for dt, txt in d.AUDIT_LOG)
+    start = (f'<a class="hbtn start" href="#{read_of[first[0]]["id"]}" data-target="{read_of[first[0]]["id"]}"><span>Start the course</span><b>{e(first[0] + " " + first[1])}</b></a>' if first
+             else f'<a class="hbtn start" href="#{BR}" data-target="{BR}"><span>Open the course</span><b>No unit written yet · the briefs</b></a>')
+    frame = getattr(d, 'FRAME', '') if sc is courses[0] else ''      # the frame is shown on the data file's first course
+    P.insert(0, panel(ctx, 'course', f'''
+  <header class="hero has-topo">
+    {layer}
+    {crumbs(('Academy', 'home'), (t['name'], 'track-' + m['theme']), (course_crumb[0], None))}
+    {eyebrow((f'COURSE {key}', col), (c['short'], None), (('COMPLETE', 'var(--teal)') if m['status'] == 'available' else (m['status'].upper(), 'var(--gold)')))}
+    <h1>{e(m['name'])}</h1>
+    <p class="lede">{sc['intro']}</p>
+    <div class="stats" data-n="4"><div><b>{m['nwritten']}</b><span>of {m['nunits']} units written</span></div><div><b>{pct}%</b><span>of the course</span></div><div><b>{len(d.AUDIT_LOG)}</b><span>audit{'s' if len(d.AUDIT_LOG) != 1 else ''} run</span></div><div><b>{e(d.NEXT_UNIT)}</b><span>next unit to write</span></div></div>
+    <div class="hlinks"><a class="hbtn cont" href="#{ctx}" data-course="{ctx}" hidden><span>Continue</span><b></b></a>{start}<a class="hbtn alt" href="#{BR}" data-target="{BR}"><span>Briefs</span><b>Every unit's brief, copyable</b></a></div>
+  </header>
+  <section class="howto edge" style="--hc:var(--blue)"><h2>What you will be able to do</h2><p>{e(sc['goal'][0].upper() + sc['goal'][1:])}</p><ul>{sc['outcomes']}</ul><p class="over">{d.COURSE_NOTE}</p></section>
+  <h2 class="hsec">Units, in writing order</h2>
+  <div class="cgrid">{tiles}</div>
+  <details class="howto rules"><summary><h2>Audits run</h2><span>{len(d.AUDIT_LOG)} · next {e(d.NEXT_AUDIT)}</span></summary><ul>{audits}</ul></details>
+  {frame}
+  <a class="hbtn alt wide" href="#{ctx}-build" data-target="{ctx}-build"><span>How it is built</span><b>Method, build order, briefs, audits, sources, changelog.</b></a>
+  <a class="hbtn alt wide" href="#{ctx}-built" data-target="{ctx}-built"><span>How it was built</span><b>The model behind each unit, every check and audit with its verdict, the flags still open.</b></a>
+  <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>Back to every course.</b></a>''', t=m['short'], u=f'COURSE {key}', cls='home', split='home'))   # P93: fetched, as a history course home is (P22), so its tiles and topography never weigh on the shell
+
 
     # ---- How it is built ----------------------------------------------------------------------
     bid = f'{ctx}-build'

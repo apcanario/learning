@@ -221,7 +221,7 @@
   function openCards(){
     [].slice.call(document.querySelectorAll('.panel[data-kind="course"]')).forEach(function(home){
       var ctx=home.getAttribute('data-ctx'),s=lastIn(ctx)||(reportsBy[ctx]||[])[0];
-      var cards=[].slice.call(home.querySelectorAll('details.ucard')),hit=null;
+      var cards=[].slice.call(home.querySelectorAll('details[data-mods]')),hit=null;   // P93: a history unit's tile, the summary of its disclosure
       if(s)cards.forEach(function(c){if((' '+c.getAttribute('data-mods')+' ').indexOf(' '+s+' ')>=0)hit=c;});
       if(!hit)hit=cards[0];
       if(hit&&!hit.dataset.auto){hit.open=true;hit.dataset.auto='1';}
