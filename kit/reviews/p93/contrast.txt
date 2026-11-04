@@ -63,6 +63,8 @@ P93 pairs, light (contour lines at --topo-a 0.16; two stacked 0.294):
   pill prog on card (gold, 78% with fg)         7.02
   pill unck on card (orange, 78% with fg)       7.06
   pill next on card (blue, 78% with fg)         7.09
+  plain pill on card (muted: soon, not run yet)  8.02
+  plain pill on page (muted)                    7.40
 P93 pairs, dark (contour lines at --topo-a 0.16; two stacked 0.294):
   crumb link, separator (muted)                on the page  7.11; over one line  5.26; over two stacked  3.60
   crumb here (fg)                              on the page 16.80; over one line 12.42; over two stacked  8.52
@@ -94,4 +96,6 @@ P93 pairs, dark (contour lines at --topo-a 0.16; two stacked 0.294):
   pill prog on card (gold, 78% with fg)        12.00
   pill unck on card (orange, 78% with fg)      10.12
   pill next on card (blue, 78% with fg)         5.71
+  plain pill on card (muted: soon, not run yet)  6.66
+  plain pill on page (muted)                    7.11
 P93: ALL NEW PAIRS PASS
