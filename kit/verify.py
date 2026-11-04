@@ -19,7 +19,7 @@ accordion) and the Backlog page; the same panel checks again in the light theme.
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
 its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
 and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35; the home whole, P90) at the three widths
-of home, Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
+of home, What's new (P91; the home and What's new at 320, 360 and 430 px too), Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
 and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png, the figure as its frame
 opens; and (P89, p85_frames.py folded in) every frame a reader scrolls that figure across, stacked and numbered in one
 sheet: <width>-<panel>-fig-<nn>-<kind>-frames-<theme>.png, at each width, dark and light.
@@ -41,14 +41,25 @@ Figure keys (P52): every viz block in the vault, every history figure declaratio
 examples block uses only the keys viz.VIZ_KEYS documents for its kind, and viz.render leaves the block it draws unchanged.
 Opening notes (P73): a markdown unit's text before its first heading is a closed accordion after Sources, "The writer's
 opening note", on every unit that has one and on none that has not; section 1 opens on its heading; a deep link lands.
-Home (P90, 4 Nov 2026), at each width on a fresh visit: the hero holds the headline, the lede, the map of Academy (a
-sitemap figure with one linked box per live course, each link to an existing course home, and History's dashed box
-counting the planned courses) and the Continue button, which names the newest unit (the first unit row of New since);
-no eyebrow, no resume card, no track tiles (.tjump), no totals line; the track sections follow, then the constants,
-then New since (at most six rows) with one link to the changelog under it; every course card has exactly three stats
-and a tile of at most two lines, none clipped; below 768 px the map shows its phone drawing, no wider than its frame,
-which does not scroll; from 768 px the wide drawing, every track's cards in two columns, a track's only card half the
-width. Contrast (P90): in the light theme, every text in the home, the drawer, the changelog and backlog, each course
+Home (P91, 4 Nov 2026; P90's map and Continue gone), at 320, 360, 390, 430, 768 and 1280 px, dark and light, with
+reduced motion emulated in every pass (so the shelf is measured and shot at rest): the hero holds the headline (and,
+from 1100 px only, the live totals beside it, set big, its units written and courses live as the sources give them),
+the lede and the bookshelf, nothing else; the shelf has one spine per unit of every live course, grouped by course in
+courses.py's track order, written (solid) and planned (dashed, unfilled) as the sources say (home_expect: the
+syllabi, the prompts indexes, the data files and the vault, not the build), each at least 24 x 44 px, its href its
+data-target, resolving to a panel or an anchor in one, its title and aria-label naming its code; heights in word
+order; one lit spine, the newest dated unit, its label "Newest · <code> · <day>" beside it, a link to #new; the planned
+volume reads "8 planned"; nothing on the shelf runs out of it or off the screen and no page scrolls sideways; from
+1100 px the shelf is wider than the 760 px column, below it never; below 768 px the first track starts below the first
+screen. No Continue button, no map, no meter, no card button; every card holds the chip row, the title, a tile of at
+most two lines and three stats; one card style; one column below 768 px, two from 768, a track's only card half the
+width; the order hero, tracks, the constants, the site links (Backlog, Figure kinds, Changelog), New since (What's
+new's first six rows) and one link to #new, last. On the desktop a written history spine, a written markdown spine, a
+planned spine and the lit label are clicked and each lands on its page (a unit card open). What's new (P91), at the
+same widths: every dated unit and every course start once, newest first, as home_expect orders them, grouped by day
+under its heading, each row linking to a page that exists, the approximate dates (provenance.json's written_approx)
+marked and no other; its breadcrumbs and title. The root drawer's top rows: Home, What's new, Changelog, Backlog.
+Contrast (P90): in the light theme, every text in the home, What's new (P91), the drawer, the changelog and backlog, each course
 home and one reading page of each course, at phone width with every <details> open, reaches 4.5:1 against the
 background it sits on (3:1 for large text), the text's opacity and every tint it sits on composited, and no text
 and no background under it is pure white; figures are left to the figure checks.
@@ -101,6 +112,10 @@ VX_KINDS = 16  # the examples page carries one figure per kind: four from A8, se
                # and the numeric matrix (P44)
 VX_FIGS = VX_KINDS + len(viz_examples.CASES)   # then one hard case per drawing fault P55 fixed
 VIEWPORTS = [('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
+HOME_WIDTHS = [('phone320', 320, 640, True), ('phone360', 360, 780, True), ('phone430', 430, 932, True)]   # P91: the home only
+# P91: where a tapped spine landed: [visible panel, its target inside it, the target's top, a <details> target open, the viewport height]
+LAND_JS = '''(t) => { const v = [...document.querySelectorAll('.panel')].find(p => !p.hidden), e = document.getElementById(t);
+  return [v && v.id, !!e && !!v && v.contains(e), e ? Math.round(e.getBoundingClientRect().top) : null, e && e.tagName === 'DETAILS' ? e.open : null, innerHeight]; }'''
 SIDE = 300  # desktop sidebar width (theme.css --side)
 
 BOX_JS = r'''([scope, gap]) => {
@@ -187,69 +202,161 @@ FRAME_JS = r'''async ([scope, phone]) => {
   return {n, over, bad: bad.slice(0, 8)};
 }'''
 
-# P90 (4 Nov 2026): the home's layout, read on the visible home panel. phone: below 768 px. Returns what was found and
-# the faults (bad); the caller compares the map's links with courses.py.
-HOME_JS = r'''(phone) => {
+# P91 (4 Nov 2026): what the home and What's new must show, read here from the sources, not from the build: each live
+# course's units in order (a history course's syllabus units, the audit unit left out, written when every module is in
+# its prompts index; a markdown course's units from its data file, written when its vault file is filed), every dated
+# unit (vault front matter `written`; provenance.json's `written` map for a history report, `written_approx` marking an
+# approximate one) and each course's start (its first dated unit), newest first, ties on a day by build order.
+def home_expect():
+    import importlib.util
+    prov = json.load(open(R / 'provenance.json'))
+    from howbuilt import front
+    shelf, dated = {}, []
+    for t in THEMES:
+        for c in COURSES:
+            if c['family'] == 'history' and c['theme'] == t['id']:
+                syl = (R / c['syllabus']).read_text()
+                idx = json.load(open(R / c['prompts']))
+                units = [(u, re.findall(r'data-id="([\d.]+)">', body)) for u, body in re.findall(r'<section class="unit" id="u(\d+)"[^>]*>(.*?)</section>', syl, re.S)]
+                order = [m for _, ms in units for m in ms]
+                shelf[c['short']] = [(f'U{u}', all(m in idx for m in ms), f'{c["home_id"]}-u{u}' if all(m in idx for m in ms) else f'{c["syl_anchor"]}-u{u}')
+                                     for u, ms in units if u != c['audit_unit']]
+                ap = set(prov.get('written_approx', {}).get(c['id'], []))
+                for m, d in prov.get('written', {}).get(c['id'], {}).items():
+                    if m in idx:
+                        dated.append(dict(date=d, rank=order.index(m), home=c['home_id'], code=m, pid=c['prefix'] + m.replace('.', ''), approx=m in ap, course=c['short']))
+        for c in COURSES:
+            if c['family'] != 'markdown':
+                continue
+            spec = importlib.util.spec_from_file_location('hubv_' + c['id'], R.parent / c['data'])
+            d = importlib.util.module_from_spec(spec); spec.loader.exec_module(d)
+            vault = {}
+            for f in (sorted((R.parent / c['vault']).glob('*.md')) if (R.parent / c['vault']).is_dir() else []):
+                fm = front(f)
+                if fm.get('code'): vault[fm['code']] = fm
+            rid = {r['covers'][0]: r['id'] for r in d.READINGS if 'md' not in r and r.get('covers')}
+            order = [o[0] if isinstance(o, (tuple, list)) else o for o in getattr(d, 'ORDER', [])]
+            for sc in d.COURSES:
+                tr, short = c['tracks'][sc['key']]
+                if tr != t['id'] or not any(u[0] in vault for u in sc['units']):
+                    continue                                   # a course with nothing filed is not live: no shelf group
+                pid = f'{c.get("prefix", c["id"])}-{sc["key"].lower()}'
+                anc = 'b-' if c.get('legacy_ids') else f'{pid}-b-'
+                read = lambda code: rid.get(code, f'read-{c["id"]}-{code.lower()}')
+                shelf[short] = [(u[0], u[0] in vault, read(u[0]) if u[0] in vault else f'{anc}{u[0].lower()}') for u in sc['units']]
+                for k, u in enumerate(sc['units']):
+                    if u[0] in vault and vault[u[0]].get('written'):
+                        dated.append(dict(date=str(vault[u[0]]['written']), rank=order.index(u[0]) if u[0] in order else len(order) + k, home=pid,
+                                          code=u[0], pid=read(u[0]), approx=False, course=short))
+    dated.sort(key=lambda x: (x['date'], x['rank']), reverse=True)
+    rows = [dict(x, kind='unit') for x in dated]
+    for home in dict.fromkeys(x['home'] for x in dated):
+        f = min((x for x in dated if x['home'] == home), key=lambda x: (x['date'], x['rank']))
+        k = next(i for i, r in enumerate(rows) if r['kind'] == 'unit' and r['home'] == home and r['code'] == f['code'])
+        rows.insert(k, dict(f, kind='course', pid=home))
+    return dict(shelf=shelf, newest=dated[0] if dated else None, rows=rows, planned=len(NEXT) if 'planned' not in OMIT else 0,
+                units=sum(1 for v in shelf.values() for x in v if x[1]), live=len(shelf))
+
+# P91 (4 Nov 2026): the home's layout, read on the visible home panel at one width. Returns what was found and the
+# faults (bad); check_home compares the shelf, the lit spine and New since with home_expect().
+HOME_JS = r'''() => {
   const h = document.getElementById('home'), bad = [], out = {bad};
+  const phone = innerWidth < 768, desk = innerWidth >= 1100;
   const hero = h.querySelector(':scope > header.hero');
   if (!hero) { bad.push('no hero'); return out; }
+  const resolves = t => !!document.getElementById(t) || [...document.querySelectorAll('.panel[data-anchors]')].some(p => (' ' + p.getAttribute('data-anchors') + ' ').includes(' ' + t + ' '));
   if (hero.querySelector('.eyebrow')) bad.push('the hero still has its eyebrow line');
-  if (h.querySelector('.resume, .rmeter')) bad.push('the resume card is still on the home');
-  if (h.querySelector('.tjump')) bad.push('the track tiles (.tjump) are still on the home');
-  if (h.querySelector('.totals')) bad.push('the totals line is still on the home');
-  const hk = [...hero.children].map(e => e.tagName.toLowerCase() + (e.classList.length ? '.' + [...e.classList].join('.') : ''));
-  out.hero = hk.join(' ');
-  const fig = hero.querySelector(':scope > figure.viz-sitemap');
-  if (!fig) bad.push('no map (a sitemap figure) in the hero');
-  else {
-    const f = fig.querySelector('.viz-scroll'), svgs = [...f.querySelectorAll(':scope > svg')];
-    out.links = svgs.map(sv => [...sv.querySelectorAll('a.viz-a')].map(a => a.getAttribute('data-target')));
-    out.hrefs = svgs.map(sv => [...sv.querySelectorAll('a.viz-a')].every(a => a.getAttribute('href') === '#' + a.getAttribute('data-target')));
-    out.dead = [...new Set(out.links.flat())].filter(t => { const e = document.getElementById(t); return !e || !e.classList.contains('panel'); });
-    const vis = svgs.filter(sv => sv.getBoundingClientRect().width > 0);
-    if (vis.length !== 1) bad.push(`${vis.length} map drawings shown, expected one`);
-    else {
-      const v = vis[0];
-      out.alt = v.classList.contains('viz-alt');
-      out.w = [Math.round(v.getBoundingClientRect().width), f.clientWidth, f.scrollWidth];
-      out.dashed = [...v.querySelectorAll('rect.viz-dash')].map(r => r.parentNode.textContent.trim());
-      if (phone !== out.alt) bad.push(`the map shows its ${out.alt ? 'phone' : 'wide'} drawing at this width`);
-      if (phone && (out.w[0] > out.w[1] || out.w[2] > out.w[1] + 1)) bad.push(`the phone map is ${out.w[0]} px in a ${out.w[1]} px frame that scrolls to ${out.w[2]} px`);
-    }
-    if (!fig.querySelector('figcaption') || !/build/i.test(fig.querySelector('figcaption').textContent)) bad.push('the map caption does not say it is drawn at build time');
-  }
-  if (hero.scrollWidth > hero.clientWidth + 1) bad.push(`the hero scrolls sideways (${hero.scrollWidth} in ${hero.clientWidth} px)`);
-  const st = hero.querySelector('.hlinks .hbtn.start'), ct = hero.querySelector('.hlinks .hbtn.cont');
-  out.start = st ? [!st.hidden, st.getAttribute('data-target'), st.textContent.trim()] : null;
-  out.cont = ct ? !ct.hidden : null;
-  const kids = [...h.children];
-  const tracks = kids.filter(e => e.classList.contains('track')), rec = h.querySelector(':scope > .recent');
-  if (!tracks.length) bad.push('no track sections');
+  for (const [sel, what] of [['.hbtn.cont, .hbtn.start, [data-long]', 'a Continue button'], ['figure.viz', 'the map (a figure)'], ['.resume, .rmeter', 'the resume card'],
+                             ['.tjump', 'the track tiles'], ['.totals', 'the totals line'], ['.meter', 'a progress meter'], ['.cgo', 'a card button']])
+    if (h.querySelector(sel)) bad.push(`the home still has ${what} (${sel})`);
+  out.hero = [...hero.children].map(e => e.tagName.toLowerCase() + (e.classList.length ? '.' + [...e.classList].join('.') : '')).join(' ');
+  if (out.hero !== 'div.htop p.lede figure.shelf') bad.push(`the hero holds ${out.hero}, expected the headline row, the lede and the shelf`);
+  const h1 = hero.querySelector('.htop h1'); if (!h1 || h1.textContent !== 'Academy') bad.push('the headline is not "Academy"');
+  // the live totals: beside the headline on the desktop only
+  const tot = hero.querySelector('.htop .htot'), tv = !!tot && tot.getBoundingClientRect().width > 0;
+  out.totals = tot ? [...tot.querySelectorAll(':scope > div')].map(d => [d.querySelector('b').textContent, d.querySelector('span').textContent]) : null;
+  if (desk && !tv) bad.push('the live totals are not shown beside the headline on the desktop');
+  if (!desk && tv) bad.push('the live totals show below 1100 px (the phone\'s first screen is the headline, the lede and the shelf)');
+  if (desk && tv && h1) { const hb = h1.getBoundingClientRect(), tb = tot.getBoundingClientRect();
+    if (tb.left < hb.right || Math.abs(tb.bottom - hb.bottom) > 40) bad.push('the live totals are not beside the headline');
+    const fs = parseFloat(getComputedStyle(tot.querySelector('b')).fontSize); out.totfont = fs; if (fs < 40) bad.push(`the totals are set at ${fs} px, not big`); }
+  // the shelf
+  const sh = hero.querySelector(':scope > figure.shelf');
+  if (!sh) { bad.push('no shelf in the hero'); return out; }
+  out.groups = [...sh.querySelectorAll('.shelf-group:not(.shelf-vol)')].map(g => ({label: g.querySelector('.shelf-label').firstChild.textContent.trim(),
+    track: g.closest('.shelf-track').querySelector('.shelf-tname').textContent,
+    spines: [...g.querySelectorAll('a.spine')].map(a => { const r = a.getBoundingClientRect(), cs = getComputedStyle(a); return {code: a.getAttribute('data-code'), ghost: a.classList.contains('ghost'),
+      lit: a.classList.contains('lit'), t: a.getAttribute('data-target'), href: a.getAttribute('href'), title: a.getAttribute('title'), aria: a.getAttribute('aria-label'),
+      words: +a.getAttribute('data-words'), w: r.width, h: r.height, fill: cs.backgroundColor, bs: cs.borderTopStyle}; })}));
+  out.vol = [...sh.querySelectorAll('.spine.vol')].map(v => v.textContent.trim());
+  const sp = out.groups.flatMap(g => g.spines);
+  sp.forEach(s => {
+    if (s.w < 23.5 || s.h < 43.5) bad.push(`spine ${s.code}: ${s.w.toFixed(0)}x${s.h.toFixed(0)} px, under 24x44`);
+    if (s.href !== '#' + s.t) bad.push(`spine ${s.code}: href ${s.href} is not its data-target`);
+    if (!resolves(s.t)) bad.push(`spine ${s.code}: its link #${s.t} is no panel and no anchor in one`);
+    if (!s.title || !s.title.includes(s.code) || s.title !== s.aria) bad.push(`spine ${s.code}: its title and aria-label do not name it (${s.title})`);
+    const filled = s.fill !== 'rgba(0, 0, 0, 0)' && s.fill !== 'transparent';
+    if (s.ghost && (filled || s.bs !== 'dashed')) bad.push(`spine ${s.code}: planned, but drawn ${filled ? 'filled' : 'unfilled'} and ${s.bs}`);
+    if (!s.ghost && (!filled || s.bs === 'dashed')) bad.push(`spine ${s.code}: written, but not solid`);
+  });
+  // heights in word order: more words, never a shorter spine
+  const byw = [...sp].sort((a, b) => a.words - b.words);
+  for (let i = 1; i < byw.length; i++) if (byw[i].h + 0.6 < byw[i - 1].h && byw[i].words > byw[i - 1].words) { bad.push(`spine ${byw[i].code} (${byw[i].words} words) is shorter than ${byw[i - 1].code} (${byw[i - 1].words})`); break; }
+  const lit = sp.filter(s => s.lit); out.lit = lit.map(s => s.code);
+  const lab = sh.querySelector('a.shelf-lit');
+  out.litlabel = lab ? [lab.textContent.trim(), lab.getAttribute('href'), lab.getAttribute('data-target')] : null;
+  if (lit.length !== 1) bad.push(`${lit.length} lit spines, expected one`);
+  else if (lab) { const a = sh.querySelector('a.spine.lit').getBoundingClientRect(), l = lab.getBoundingClientRect();
+    const near = Math.abs(l.bottom - a.bottom) < 4 && Math.abs(l.left - a.right) < 30;           // beside it on its row
+    const under = l.top >= a.bottom - 1 && l.top - a.bottom < 120 && Math.abs(l.left - a.left) < 200;   // or wrapped just under it
+    out.litpos = [Math.round(a.right), Math.round(a.bottom), Math.round(l.left), Math.round(l.bottom)];
+    if (!near && !under) bad.push(`the lit spine's label is not beside it (spine right ${a.right.toFixed(0)}, bottom ${a.bottom.toFixed(0)}; label left ${l.left.toFixed(0)}, bottom ${l.bottom.toFixed(0)})`); }
+  if (!lab || lab.getAttribute('href') !== '#new' || lab.getAttribute('data-target') !== 'new') bad.push('the lit spine\'s label does not link to What\'s new (#new)');
+  if (lab && lab.getBoundingClientRect().height < 43.5) bad.push('the lit label is under 44 px tall');
+  // nothing sideways, nothing cut
+  const de = document.documentElement;
+  out.scroll = [de.scrollWidth, de.clientWidth];
+  if (de.scrollWidth > de.clientWidth) bad.push(`the page scrolls sideways (${de.scrollWidth} in ${de.clientWidth} px)`);
+  const sr = sh.getBoundingClientRect();
+  if (sr.left < -0.5 || sr.right > de.clientWidth + 0.5) bad.push(`the shelf runs off the screen (${sr.left.toFixed(0)}..${sr.right.toFixed(0)} of ${de.clientWidth})`);
+  sh.querySelectorAll('a.spine, .shelf-lit, .shelf-label, .spine.vol').forEach(e => { const r = e.getBoundingClientRect(); if (r.right > sr.right + 0.5 || r.left < sr.left - 0.5) bad.push(`${e.className} "${e.textContent.trim().slice(0, 20)}" runs out of the shelf`); });
+  sh.querySelectorAll('.sc').forEach(e => { const p = e.parentElement.getBoundingClientRect(), r = e.getBoundingClientRect(); if (r.height > p.height + 0.5 || r.width > p.width + 0.5) bad.push(`the label "${e.textContent}" does not fit its spine`); });
+  const main = document.querySelector('main').getBoundingClientRect();
+  out.shelfw = [Math.round(sr.width), Math.round(main.width)];
+  if (desk && sr.width <= main.width + 1) bad.push(`the desktop shelf is ${sr.width.toFixed(0)} px, not wider than the ${main.width.toFixed(0)} px column`);
+  if (!desk && sr.width > main.width) bad.push('the shelf is wider than the column below 1100 px');
+  // the phone's first screen: the headline, the lede and the shelf, nothing else
+  const kids = [...h.children], tracks = kids.filter(e => e.classList.contains('track'));
+  out.first = tracks.length ? Math.round(tracks[0].getBoundingClientRect().top + window.scrollY) : null;
+  if (phone && tracks.length && out.first < innerHeight) bad.push(`the first track starts at ${out.first} px, inside the first screen (${innerHeight} px)`);
+  // the order: hero, the track sections, the constants, the site pages, New since, its one link
+  out.order = kids.map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ');
+  const want = ['header.hero', ...tracks.map(() => 'section.track'), 'details.howto.rules', 'div.hlinks', 'section.recent', 'div.hlinks'].join(' ');
+  if (out.order !== want) bad.push(`the home runs ${out.order}`);
+  const site = kids[kids.length - 3], rec = h.querySelector(':scope > .recent'), last = kids[kids.length - 1];
+  out.site = site ? [...site.querySelectorAll('a')].map(a => a.getAttribute('href')) : [];
   if (!rec) bad.push('no New since');
   else {
-    if (!tracks.length || !(tracks[tracks.length - 1].compareDocumentPosition(rec) & Node.DOCUMENT_POSITION_FOLLOWING)) bad.push('New since is not after the last track section');
-    const rows = rec.querySelectorAll('.hrow');
-    out.rows = rows.length;
-    if (rows.length < 1 || rows.length > 6) bad.push(`New since has ${rows.length} rows, expected 1 to 6`);
-    const u = [...rows].find(r => r.querySelector('.pill.live'));
-    out.newest = u ? u.getAttribute('data-target') : null;
-    const nx = rec.nextElementSibling, cl = nx && nx.querySelectorAll('a[href="#changelog"]');
-    if (!nx || nx !== kids[kids.length - 1] || !cl || cl.length !== 1 || nx.querySelectorAll('a').length !== 1) bad.push('New since is not followed, last on the page, by one link, to the changelog');
-    [...rows].forEach(r => { if (!r.querySelector('.t small') || !r.querySelector('.pill') || !r.querySelector('.n')) bad.push('a New since row without its date, its track and model line or its pill'); });
+    out.rows = [...rec.querySelectorAll('.hrow')].map(r => [r.getAttribute('data-kind'), r.getAttribute('data-target')]);
+    [...rec.querySelectorAll('.hrow')].forEach(r => { if (!r.querySelector('.t small') || !r.querySelector('.pill') || !r.querySelector('.n')) bad.push('a New since row without its date, its course and model line or its pill');
+      if (!resolves(r.getAttribute('data-target'))) bad.push(`a New since row links to #${r.getAttribute('data-target')}, no page`); });
+    const ln = last && last.querySelectorAll('a');
+    if (!ln || ln.length !== 1 || ln[0].getAttribute('href') !== '#new') bad.push('New since is not followed, last on the page, by one link, to What\'s new');
   }
   h.querySelectorAll('.hbtn b, .hbtn span').forEach(el => { if (el.getBoundingClientRect().width > 0 && el.scrollWidth > el.clientWidth + 1) bad.push(`a button's text is cut short: "${el.textContent.trim().slice(0, 40)}"`); });
-  out.order = kids.map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ');
   const cards = [...h.querySelectorAll('.track .cgrid > a.course.live')];
   out.cards = cards.length;
   cards.forEach(c => {
     const name = c.querySelector('.ctitle').textContent;
+    const kidc = [...c.children].map(e => e.tagName.toLowerCase() + (e.className ? '.' + e.className : '')).join(' ');
+    if (kidc !== 'div.ctop span.ctitle p div.cstats') bad.push(`${name}: the card holds ${kidc}, expected the chip row, the title, the tile and the stats`);
     const n = c.querySelectorAll('.cstats > span').length; if (n !== 3) bad.push(`${name}: ${n} stats, expected 3`);
     const pp = c.querySelector(':scope > p'), lh = parseFloat(getComputedStyle(pp).lineHeight);
     if (pp.scrollHeight > pp.clientHeight + 1) bad.push(`${name}: the tile is clipped (${pp.scrollHeight} px of ${pp.clientHeight})`);
     if (Math.round(pp.clientHeight / lh) > 2) bad.push(`${name}: the tile runs to ${Math.round(pp.clientHeight / lh)} lines`);
     if (c.scrollWidth > c.clientWidth + 1) bad.push(`${name}: the card scrolls sideways`);
   });
-  if (new Set(cards.map(c => c.className)).size > 1) bad.push('the course cards are not one style: ' + [...new Set(cards.map(c => c.className))].join(' | '));
+  if (new Set(cards.map(c => c.className)).size > 1) bad.push('the course cards are not one style');
   tracks.forEach(t => {
     const g = t.querySelector('.cgrid'), cs = [...g.querySelectorAll(':scope > a.course')];
     const cols = getComputedStyle(g).gridTemplateColumns.split(' ').length;
@@ -262,26 +369,75 @@ HOME_JS = r'''(phone) => {
   });
   return out;
 }'''
-HOME_LINKS = sorted(x[1:] for t in HOME_TRACKS for x in t.split(':', 1)[1].split(',') if x)
+MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-def check_home(pg, label, fails, phone, fresh):
-    """P90: the home's layout at one width (HOME_JS), its map's links against courses.py; on a fresh visit the Continue
-    button names the newest unit."""
-    pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(120)
-    r = pg.evaluate(HOME_JS, phone)
+def check_home(pg, label, fails, expect):
+    """P91: the home's layout at one width (HOME_JS): the shelf against the sources (home_expect), the lit spine the
+    newest unit and its label, the planned volume's count, the totals, New since as What's new's first six rows."""
+    pg.evaluate("location.hash = 'home'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(120)
+    r = pg.evaluate(HOME_JS)
     fails += [f'home {label}: {b}' for b in r['bad']]
-    for k, ls in enumerate(r.get('links', [])):
-        if sorted(ls) != HOME_LINKS: fails.append(f'home {label}: map drawing {k + 1} links to {sorted(ls)}, courses.py gives {HOME_LINKS}')
-    if r.get('links') is not None and len(r['links']) != 2: fails.append(f'home {label}: the map has {len(r["links"])} drawings, expected the wide one and the phone one')
-    if not all(r.get('hrefs', [True])): fails.append(f'home {label}: a map link whose href is not its data-target')
-    if r.get('dead'): fails.append(f'home {label}: map links to no panel: {r["dead"]}')
-    if NEXT and 'dashed' in r and r['dashed'] != [f'{len(NEXT)} planned']: fails.append(f'home {label}: the map\'s dashed boxes read {r["dashed"]}, expected ["{len(NEXT)} planned"]')
-    if fresh:
-        if r['cont'] or not r['start'] or not r['start'][0]: fails.append(f'home {label}: on a fresh visit the Continue button is {r["start"]}, the resume button shown: {r["cont"]}')
-        elif r['start'][1] != r.get('newest'): fails.append(f'home {label}: on a fresh visit the Continue button opens {r["start"][1]}, the newest unit in New since is {r.get("newest")}')
-    print(f'home {label}: map {"phone" if r.get("alt") else "wide"} drawing {r.get("w")}, {len(HOME_LINKS)} course links, dashed {r.get("dashed")}; '
-          f'{r.get("cards")} cards; New since {r.get("rows")} rows' + (f'; Continue names {r["start"][1]}' if fresh and r.get('start') else ''))
+    got = {g['label']: [(s['code'], not s['ghost'], s['t']) for s in g['spines']] for g in r.get('groups', [])}
+    if list(got) != list(expect['shelf']): fails.append(f'home {label}: the shelf groups are {list(got)}, the sources give {list(expect["shelf"])}')
+    for k, v in expect['shelf'].items():
+        if got.get(k) != [tuple(x) for x in v]: fails.append(f'home {label}: {k} on the shelf is {got.get(k)}, the sources give {v}')
+    nw = expect['newest']
+    if nw and r.get('lit') != [f'U{nw["code"].split(".")[0]}' if '.' in nw['code'] else nw['code']]: fails.append(f'home {label}: the lit spine is {r.get("lit")}, the newest unit is {nw["code"]}')
+    if nw and r.get('litlabel') and not r['litlabel'][0].endswith(f'Newest · {nw["code"]} · {int(nw["date"][8:])} {MON3[int(nw["date"][5:7]) - 1]}'):
+        fails.append(f'home {label}: the lit label reads {r["litlabel"][0]!r}')
+    if expect['planned'] and r.get('vol') != [f'{expect["planned"]} planned']: fails.append(f'home {label}: the planned volume reads {r.get("vol")}, expected "{expect["planned"]} planned"')
+    if r.get('totals') and (r['totals'][0][0] != str(expect['units']) or r['totals'][2][0] != str(expect['live'])):
+        fails.append(f'home {label}: the totals read {r["totals"]}, the sources give {expect["units"]} units written and {expect["live"]} courses live')
+    want_rows = [[x['kind'], x['pid']] for x in expect['rows'][:6]]
+    if r.get('rows') != want_rows: fails.append(f'home {label}: New since lists {r.get("rows")}, What\'s new leads with {want_rows}')
+    want_site = [x for x, k in (('#backlog', 'backlog'), ('#viz-examples', 'figures'), ('#changelog', 'changelog')) if k not in OMIT]
+    if r.get('site') != want_site: fails.append(f'home {label}: the site links above New since are {r.get("site")}, expected {want_site}')
+    print(f'home {label}: shelf {sum(len(g["spines"]) for g in r.get("groups", []))} spines in {len(r.get("groups", []))} courses, lit {r.get("lit")} '
+          f'({r.get("litlabel") and r["litlabel"][0]}), planned {r.get("vol")}; shelf {r.get("shelfw")} px (shelf, column); totals {r.get("totals") and [t[0] for t in r["totals"]]}; '
+          f'{r.get("cards")} cards; New since {len(r.get("rows") or [])} rows; first track at {r.get("first")} px; page {r.get("scroll")}')
     return r
+
+# P91: What's new (#new), fetched through the shell: every dated unit and every course start once, newest first,
+# grouped by day under the day's heading, each row linking to a page that exists, approximate dates marked
+NEW_JS = r'''() => {
+  const p = document.getElementById('new'), bad = [], out = {bad};
+  const resolves = t => !!document.getElementById(t) || [...document.querySelectorAll('.panel[data-anchors]')].some(q => (' ' + q.getAttribute('data-anchors') + ' ').includes(' ' + t + ' '));
+  const crumbs = p.querySelector('.hero .crumbs'), cr = crumbs ? [...crumbs.children].filter(e => !e.classList.contains('sep')).map(e => e.textContent).join(' › ') : '';
+  if (cr !== "Academy › What's new") bad.push(`the breadcrumbs read "${cr}", not Academy › What's new`);
+  if (!p.querySelector('.hero h1') || p.querySelector('.hero h1').textContent !== "What's new") bad.push('no "What\'s new" title');
+  const days = [...p.querySelectorAll(':scope > section.newday')];
+  out.days = days.map(d => d.getAttribute('data-day'));
+  out.rows = [];
+  days.forEach(d => { const day = d.getAttribute('data-day'), hd = d.querySelector(':scope > h2');
+    if (!hd || !hd.textContent.trim()) bad.push(`the day ${day} has no heading`);
+    d.querySelectorAll('a.hrow').forEach(r => { const t = r.getAttribute('data-target');
+      out.rows.push([r.getAttribute('data-kind'), t, r.getAttribute('data-date'), r.hasAttribute('data-approx'), !!r.querySelector('.approx'), r.getAttribute('href') === '#' + t]);
+      if (r.getAttribute('data-date') !== day) bad.push(`#${t} sits under ${day} but is dated ${r.getAttribute('data-date')}`);
+      if (!resolves(t)) bad.push(`a row links to #${t}, no page`);
+      if (!r.querySelector('.pill') || !r.querySelector('.t small')) bad.push(`#${t}: a row without its pill or its course and model line`); }); });
+  if (new Set(out.days).size !== out.days.length) bad.push('a day appears twice');
+  for (let i = 1; i < out.days.length; i++) if (out.days[i] >= out.days[i - 1]) { bad.push(`the days are not newest first (${out.days[i - 1]} then ${out.days[i]})`); break; }
+  const de = document.documentElement; if (de.scrollWidth > de.clientWidth) bad.push(`the page scrolls sideways (${de.scrollWidth} in ${de.clientWidth} px)`);
+  return out;
+}'''
+
+def check_new(pg, label, fails, expect):
+    """P91: What's new against home_expect()'s rows: each once, in order, grouped by day, approximate dates marked."""
+    pg.evaluate("location.hash = 'new'"); ready(pg); pg.wait_for_timeout(80)
+    r = pg.evaluate(NEW_JS)
+    fails += [f"what's new {label}: {b}" for b in r['bad']]
+    got = [(k, t) for k, t, *_ in r['rows']]
+    want = [(x['kind'], x['pid']) for x in expect['rows']]
+    if len(set(got)) != len(got): fails.append(f"what's new {label}: a row appears twice")
+    if got != want: fails.append(f"what's new {label}: {len(got)} rows, first {got[:4]}; the sources give {len(want)}, first {want[:4]}")
+    ap = {x['pid'] for x in expect['rows'] if x['approx'] and x['kind'] == 'unit'}
+    apc = {x['pid'] for x in expect['rows'] if x['approx'] and x['kind'] == 'course'}
+    for k, t, d, da, mark, hr in r['rows']:
+        if (t in (ap if k == 'unit' else apc)) != da: fails.append(f"what's new {label}: #{t} ({k}) marked approximate {da}, the sources say {not da}")
+        if da != mark: fails.append(f"what's new {label}: #{t} carries data-approx {da} but its ≈ mark {mark}")
+        if not hr: fails.append(f"what's new {label}: #{t}'s href is not its target")
+    print(f"what's new {label}: {sum(1 for x in r['rows'] if x[0] == 'unit')} unit rows, {sum(1 for x in r['rows'] if x[0] == 'course')} course rows, "
+          f"{sum(1 for x in r['rows'] if x[3])} approximate, on {len(r['days'])} days")
 
 # P90: WCAG contrast of every text against the background it sits on, the light theme's tokens in use. A text's colour
 # is composited with its alpha and the opacity of its ancestors; its background is every background colour under it
@@ -332,7 +488,7 @@ def check_contrast(pg, fails):
     firsts = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => {
       const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
     homes = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"course\"]')].map(p => p.id)")
-    pids = [x for x in ['home', 'changelog', 'backlog'] if x not in OMIT] + homes + firsts
+    pids = [x for x in ['home', 'new', 'changelog', 'backlog'] if x not in OMIT] + homes + firsts   # P91: What's new
     worst, total = [99, ''], 0
     for pid in pids:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(40)
@@ -446,7 +602,8 @@ def font_file(route):
 
 def new_page(p, br, errors, name, w, h, mobile):
     ctx = br.new_context(viewport={'width': w, 'height': h}, device_scale_factor=3 if mobile else 1,
-                         is_mobile=mobile, has_touch=mobile)  # a real phone or tablet honours the viewport tag
+                         is_mobile=mobile, has_touch=mobile,  # a real phone or tablet honours the viewport tag
+                         reduced_motion='reduce')             # P91: every measure and shot sees the home's shelf at rest
     # the theme fonts, from the vendored copy in fonts/ (P39): the page measures and draws what a reader's phone does
     ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=FONT_CSS))
     ctx.route('**/fonts.gstatic.com/**', font_file)
@@ -1011,9 +1168,11 @@ def main():
 
         # navigation context, from a clean slate
         pg.evaluate('localStorage.clear()'); pg.goto(URL + '#home'); pg.reload(); pg.wait_for_timeout(300)
-        check_home(pg, 'phone', fails, True, True)
+        EXPECT = home_expect()
+        check_home(pg, 'phone', fails, EXPECT)
+        check_new(pg, 'phone', fails, EXPECT)
         pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
-        check_home(pg, 'phone light', fails, True, True)
+        check_home(pg, 'phone light', fails, EXPECT)
         check_contrast(pg, fails)
         pg.evaluate('localStorage.clear()'); pg.goto(URL + '#home'); pg.reload(); pg.wait_for_timeout(300)
         def state():
@@ -1065,7 +1224,7 @@ def main():
         if 'build' in OMIT and pg.evaluate("!!document.querySelector('[id$=\"-built\"], a[href$=\"-built\"]')"): fails.append(f'edition {EDITION}: a "How it was built" page or link is built')
         pg.evaluate(f"location.hash = '{first}'" if rome_reps else ("location.hash = 'rome'" if ROME else "location.hash = 'home'")); pg.wait_for_timeout(50)
         pg.click('#homeB'); pg.wait_for_timeout(80)
-        step('home again', dict(id='home', nav='root', arrows=False, cont=(lambda c: c.startswith('Continue reading Rome · ')) if rome_reps else (lambda c: True)))
+        step('home again', dict(id='home', nav='root', arrows=False, cont=''))   # P91: no Continue on the home
         pg.click('#home a.course[href="#greece"]'); pg.wait_for_timeout(80)
         step('greece home', dict(id='greece', nav='greece', u='COURSE 1', t='Greece', prev=False, cont='(hidden)'))
         pg.evaluate("document.querySelectorAll('#greece details.ucard').forEach(d => d.open = true)")
@@ -1078,7 +1237,7 @@ def main():
         step('greek last', dict(id=greek_last, nav='greece', next=False))
         pg.evaluate("location.hash = 'm24'"); pg.wait_for_timeout(50)
         pg.click('#homeB'); pg.wait_for_timeout(80)
-        step('home last', dict(id='home', cont=lambda c: c.startswith('Continue reading Greece · 2.4')))
+        step('home last', dict(id='home', cont=''))
         if rome_reps:
             pg.click('#home a.course[href="#rome"]'); pg.wait_for_timeout(80)
             step('rome home resumes rome', dict(id='rome', cont=lambda c: c.startswith('Continue ') and 'Greece' not in c and c != '(hidden)'))
@@ -1114,7 +1273,7 @@ def main():
             if nrow != len(ba) or not pg.evaluate(f"document.getElementById('{bid}-built').hasAttribute('data-loaded')"):
                 fails.append(f'{bid}-built: {nrow} unit rows for {len(ba)} written units, or not fetched through the shell')
             pg.click('#homeB'); pg.wait_for_timeout(80)
-            step(f'home after {bid}', dict(id='home', cont=lambda c: c.startswith('Continue reading ' + short + ' · ')))
+            step(f'home after {bid}', dict(id='home', cont=''))
             pg.click(f'#home a.course[href="#{bid}"]'); pg.wait_for_timeout(80)
             step(f'{bid} home resumes', dict(id=bid, cont=lambda c: c.startswith('Continue ') and c != '(hidden)'))
             pg.click('#menuB'); pg.wait_for_timeout(250)
@@ -1125,7 +1284,7 @@ def main():
         pg.click('#homeB'); pg.wait_for_timeout(80)
         pg.click('#menuB'); pg.wait_for_timeout(250)
         dr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dtop .ditem .t')].map(t => t.textContent)")
-        want_top = ['Home'] + [n for n, k in (('Changelog', 'changelog'), ('Backlog', 'backlog')) if k not in OMIT]
+        want_top = ['Home', "What's new"] + [n for n, k in (('Changelog', 'changelog'), ('Backlog', 'backlog')) if k not in OMIT]   # P91: What's new
         if dr != want_top: fails.append(f'root drawer top: {dr}, expected {want_top}')
         gr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dunit')].map(u => u.querySelector('.ut').textContent + (u.classList.contains('closed') ? ':closed' : ':open'))")
         # a track's group is open once a page in it was visited in this run (shell.js show()); the ones the run above
@@ -1245,23 +1404,38 @@ def main():
         print(f'desktop: sidebar {s["w"]} px at the left, content column {s["mainW"]} px from {s["mainLeft"]} px, current item {s["active"]}, measure {s["measure"]}')
         ctx.close()
 
-        # P90: the home at tablet and desktop width on a fresh visit, dark and light
-        for name, w, h, mobile in VIEWPORTS[1:]:
+        # P91: the home and What's new at 320, 360 and 430 px (390 is the phone pass above), tablet and desktop, dark and
+        # light; on the desktop a spine of each kind opens its page: a history unit's card on its course home, a markdown
+        # unit's reading page, a planned unit's brief, and the lit label What's new
+        for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS[1:]:
             ctx, pg, _ = new_page(p, br, errors, name, w, h, mobile)
-            check_home(pg, name, fails, False, True)
+            check_home(pg, name, fails, EXPECT)
+            check_new(pg, name, fails, EXPECT)
             pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
-            check_home(pg, name + ' light', fails, False, True)
+            check_home(pg, name + ' light', fails, EXPECT)
+            if name == 'desktop':
+                for sel in ('a.spine:not(.ghost)', 'a.spine:not(.ghost)[data-target^="read-"]', 'a.spine.ghost', 'a.shelf-lit'):
+                    pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(60)
+                    t = pg.evaluate(f"(() => {{ const a = document.querySelector('#home {sel}'); return a && a.getAttribute('data-target'); }})()")
+                    if not t:
+                        continue
+                    pg.click(f'#home {sel}'); pg.wait_for_timeout(300); ready(pg); pg.wait_for_timeout(300)
+                    land = pg.evaluate(LAND_JS, t)
+                    if not land[1] or (land[2] is not None and not (-5 if land[0] == t else 56) <= land[2] <= land[4]) or land[3] is False:   # an id inside a page stops clear of the 56 px bar
+                        fails.append(f'home desktop: tapping {sel} (#{t}) lands on {land}')
+                    else:
+                        print(f'home desktop: {sel} opens #{t} on {land[0]}, at {land[2]} px' + (', its card open' if land[3] else ''))
             ctx.close()
 
         if SHOTS:
             SHOTS.mkdir(parents=True, exist_ok=True)
-            for name, w, h, mobile in VIEWPORTS:
+            for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:   # P91: the home and What's new at 320, 360 and 430 px too
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile)
                 for theme in ('dark', 'light'):
                     pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
-                    for pid in ['home', TAB, rp] + [x for x in PAGES if x not in ('home', TAB, rp)]:
+                    for pid in (['home', 'new'] if name.startswith('phone3') or name == 'phone430' else ['home', 'new', TAB, rp] + [x for x in PAGES if x not in ('home', 'new', TAB, rp)]):
                         pg.evaluate(f"localStorage.removeItem('pm-sec-{pid}')")   # P68: each shot opens on section 1
-                        if pid == 'home':   # P90: the home is shot as a fresh visit, its Continue button naming the newest unit
+                        if pid == 'home':   # P90: the home is shot as a fresh visit (P91: nothing on it depends on the visit, but the shot stays clean)
                             pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')")
                         pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
                         if pid == 'home':   # P90: the home whole, to New since and the changelog link at its foot (it is a few screens long)
@@ -1273,7 +1447,7 @@ def main():
                                 pg.evaluate(js, pid); pg.wait_for_timeout(200)
                                 pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{state}-{theme}.png'))
                             pg.evaluate("(pid) => { const p = document.getElementById(pid); p.querySelectorAll('details').forEach(d => d.open = false); const w = p.querySelector('.stepbar .whole'); if (w.getAttribute('aria-pressed') === 'true') w.click(); [...p.querySelectorAll('.seclist a')][0].click(); window.scrollTo(0, 0); }", pid)
-                        if pid in PAGES or pid == 'home':   # P41: each figure of a --page panel, as the reader sees it in its frame (P90: and the home's map)
+                        if pid in PAGES:   # P41: each figure of a --page panel, as the reader sees it in its frame (P91: the home has no figure; its shelf is in the home shot)
                             for k, fig in enumerate(pg.query_selector_all(f'[id="{pid}"] figure.viz')):
                                 kind = ([c for c in fig.get_attribute('class').split() if c.startswith('viz-') and c != 'viz-wide'] or ['viz-figure'])[0][4:]
                                 fig.evaluate("f => { const s = f.closest('.sec'), p = f.closest('.panel'); if (s && !s.classList.contains('on')) p.querySelector('.seclist a[data-step=\"' + s.dataset.step + '\"]').click(); }")   # P68: its section shown first

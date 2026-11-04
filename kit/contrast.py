@@ -5,7 +5,13 @@ Reads the light block of section 1 and prints, for every accent token and --dim 
 (the paper) and on --card, and for the accents the contrast of --on-accent text on the accent (a filled button), plus
 the eyebrow's .u (the accent mixed 78% with --fg, theme 4a) on both surfaces, and the accent on its own track band
 (theme 8: 7% of it over the paper, the darkest surface an accent is text on: the band's "Track" label). Exits 1 if any pair is under 4.5:1.
-verify.py runs the same pairs on the built page's computed colours; this is the quick check used to pick the values."""
+verify.py runs the same pairs on the built page's computed colours; this is the quick check used to pick the values.
+P91 (4 Nov 2026): then the home's new pairs in both themes: a written spine's code (--on-accent on each accent), a
+planned spine's code and the volume's label (--muted on --bg), the lit label (--fg on --bg; its arrow, a symbol, the
+accent on --bg at 3:1), the shelf's course labels (--fg) and notes (--muted), the live totals (--fg, their labels
+--muted), What's new's approximate mark (--muted on --card). Exits 1 if any of these is under its bar either. The dark
+accents as text on the page are printed for the record (the house palette, which does not change: blue gives 4.31:1,
+so the shelf names its tracks in --fg with the tone as a mark)."""
 import re, sys, pathlib
 
 def rgb(h):
@@ -25,6 +31,10 @@ def ratio(a, b):
 
 def mix(a, b, p):   # color-mix(in srgb, a p, b)
     return tuple(round(x * p + y * (1 - p)) for x, y in zip(a, b))
+
+def dark_tokens(css):
+    blk = re.search(r'\n:root\{(.*?)\}', css, re.S).group(1)
+    return dict(re.findall(r'--([\w-]+):(#[0-9a-fA-F]{3,6})', blk))
 
 def light_tokens(css):
     blk = re.search(r':root\[data-theme="light"\]\{(.*?)\}', css, re.S).group(1)
@@ -55,4 +65,19 @@ if __name__ == '__main__':
         print(f'{r[0]:8} {r[1]:8} {cells}')
         low += [f'{r[0]} {v:.2f}' for v in r[2:] if v < 4.5]
     print('ALL PAIRS >= 4.5:1' if not low else 'UNDER 4.5:1: ' + ', '.join(low))
+    # P91: the home's new pairs, light and dark
+    for name, t in (('light', tok), ('dark', dark_tokens(css))):
+        bg, card, fg, mu, on = (rgb(t[k]) for k in ('bg', 'card', 'fg', 'muted', 'on-accent'))
+        print(f"P91 shelf pairs, {name} (--bg {t['bg']}, --on-accent {t['on-accent']}):")
+        pairs = [(f'spine code on {a}', ratio(on, rgb(t[a])), 4.5) for a in ACCENTS]
+        pairs += [('planned code, volume label (muted on bg)', ratio(mu, bg), 4.5), ('lit label, course labels, totals (fg on bg)', ratio(fg, bg), 4.5),
+                  ('notes, totals labels (muted on bg)', ratio(mu, bg), 4.5), ("What's new approximate mark (muted on card)", ratio(mu, card), 4.5)]
+        pairs += [(f'lit arrow, {a} on bg (a symbol)', ratio(rgb(t[a]), bg), 3) for a in ACCENTS]
+        for what, v, bar in pairs:
+            print(f'  {what:46} {v:6.2f}' + ('' if v >= bar else f'  UNDER {bar}:1'))
+            if v < bar:
+                low.append(f'{name} {what} {v:.2f}')
+        if name == 'dark':
+            print('  (record) dark accents as text on --bg: ' + ', '.join(f'{a} {ratio(rgb(t[a]), bg):.2f}' for a in ACCENTS))
+    print('P91: ALL HOME PAIRS PASS' if not low else 'UNDER THE BAR: ' + ', '.join(low))
     sys.exit(1 if low else 0)

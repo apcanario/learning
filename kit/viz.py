@@ -84,6 +84,24 @@ The data kinds (P44, 29 Oct 2026; one of each on the examples page too):
   matrix    with "numeric": true: cells are numbers (or null), shaded in five steps of the figure's "tone" between
             min and max (default the data's); a legend gives each step's range ("scale_label" names it).
 
+The home kind (P91, 4 Nov 2026), drawn as HTML, not SVG, so that it reflows at any width and never scrolls; it is the
+Academy home's bookshelf, declared by build.py from the course data, and not one of the figure kinds a unit declares
+(the Figure kinds page shows those):
+
+  shelf     {"kind": "shelf", "caption": "...", "tracks": [{"label": "History", "tone": 1, "courses": [
+             {"label": "Greece", "note": "13 of 13 units", "tone": 1, "spines": [{"code": "U3", "title": "Heroes",
+              "href": "greece-u3", "words": 21400, "planned": false, "lit": "Newest · IA7 · 3 Nov", "lit_href": "new"}, ...]},
+             {"label": "8 planned", "volume": true, "title": "Egypt, Persia, ..."}]}, ...]}
+            one spine per unit, in the order given, grouped by track and course, each course's label (and note) under
+            its spines; a spine is a link to "href" (a panel id or an anchor inside one; shell.js routes either) with the
+            unit's code and title as its title and aria-label; written spines are solid in the course's tone, a
+            "planned": true spine is ghosted (a dashed outline, no fill); a spine's height is its words' place between
+            the fewest and the most words on the shelf (--h, 0 to 1; the theme sets the range), and a planned spine
+            without "words" takes the mean of its course's written spines; "lit" (one spine at most) glows in its tone
+            with its text as a link to "lit_href" beside it; a "volume": true course is one ghosted volume with its
+            label on it (the planned courses). Each spine carries --i, its place on the shelf, for the theme's
+            staggered rise. A spine without a code, title or href, two lit spines, or a tone outside 1 to 6 raises.
+
 On a phone (below 768 px) every figure draws at its natural size, one SVG unit to one CSS pixel, and scrolls sideways
 inside its frame (.viz-scroll), never the page; shell.js fades the edge that has more drawing and shows the line
 "scroll sideways for the whole figure" under a figure only when its drawing is wider than its frame.
@@ -2589,13 +2607,97 @@ def _heat(d):
                 stick=(8 + LW, stick, grid_h) if Wd > PHONE_FRAME else None)
 
 
+# P91 (4 Nov 2026) · the Academy home's bookshelf: HTML, not SVG, so it reflows at any width and never scrolls sideways
+SHELF_CLASS = 'shelf'
+def shelf(d):
+    """The bookshelf of every unit (the module docstring, "The home kind"). Every value a spine shows is the block's;
+    the theme (section 4i) gives every size and colour: --c is the course's tone, --h the spine's height between the
+    theme's --shelf-lo and --shelf-hi, --i its place for the staggered rise."""
+    K = 'shelf'
+    tracks = d.get('tracks')
+    if not tracks:
+        _fail(K, 'tracks must be a non-empty list of {"label", "tone", "courses"}')
+    def tone(o, where):
+        t = o.get('tone')
+        if t is None:
+            return None
+        if not isinstance(t, int) or not 1 <= t <= TONES:
+            _fail(K, f'{where}: tone must be 1 to {TONES}, not {t!r}')
+        return t
+    spines = [s for t in tracks for c in t.get('courses', []) if not c.get('volume') for s in c.get('spines', [])]
+    if not spines:
+        _fail(K, 'no spines: a shelf needs at least one unit')
+    lit = [s for s in spines if s.get('lit')]
+    if len(lit) > 1:
+        _fail(K, f'{len(lit)} lit spines ({", ".join(s.get("code", "?") for s in lit)}); one at most')
+    # a planned spine without words takes its course's mean of written spines, then the shelf's mean
+    known = [s['words'] for s in spines if isinstance(s.get('words'), (int, float))]
+    if not known:
+        _fail(K, 'no spine carries words')
+    for t in tracks:
+        for c in t.get('courses', []):
+            ws = [s['words'] for s in c.get('spines', []) if isinstance(s.get('words'), (int, float)) and not s.get('planned')]
+            for s in c.get('spines', []):
+                if not isinstance(s.get('words'), (int, float)):
+                    s['_w'] = sum(ws) / len(ws) if ws else sum(known) / len(known)
+                else:
+                    s['_w'] = s['words']
+    lo, hi = min(s['_w'] for s in spines), max(s['_w'] for s in spines)
+    i = 0
+    out = ''
+    for k, t in enumerate(tracks):
+        tt = tone(t, f'tracks[{k}]')
+        groups = ''
+        for j, c in enumerate(t.get('courses', [])):
+            ct = tone(c, f'tracks[{k}].courses[{j}]') or tt
+            cs = f' style="--c:var(--viz-{ct})"' if ct else ''
+            if c.get('volume'):
+                lab = c.get('label')
+                if not lab:
+                    _fail(K, f'tracks[{k}].courses[{j}]: a volume needs its label')
+                ttl = f' title="{esc(c["title"])}"' if c.get('title') else ''
+                groups += (f'<div class="shelf-group shelf-vol"{cs}><div class="shelf-books"><div class="spine ghost vol" role="img" '
+                           f'aria-label="{esc(lab)}{": " + esc(c["title"]) if c.get("title") else ""}"{ttl} style="--i:{i}"><span class="sc">{esc(lab)}</span></div></div>'
+                           f'<p class="shelf-label">Planned courses</p></div>')
+                i += 1
+                continue
+            books = ''
+            for n, s in enumerate(c.get('spines', [])):
+                for key in ('code', 'title', 'href'):
+                    if not s.get(key):
+                        _fail(K, f'tracks[{k}].courses[{j}].spines[{n}]: no {key}')
+                st = tone(s, f'tracks[{k}].courses[{j}].spines[{n}]')
+                h = (s['_w'] - lo) / (hi - lo) if hi > lo else 1.0
+                cls = 'spine' + (' ghost' if s.get('planned') else '') + (' lit' if s.get('lit') else '')
+                tip = f'{s["code"]} · {s["title"]}' + (' (planned)' if s.get('planned') else '')
+                sty = (f'--c:var(--viz-{st});' if st else '') + f'--h:{h:.3f};--i:{i}'
+                books += (f'<a class="{cls}" href="#{esc(s["href"])}" data-target="{esc(s["href"])}" title="{esc(tip)}" aria-label="{esc(tip)}" '
+                          f'data-code="{esc(s["code"])}" data-words="{round(s["_w"])}" style="{sty}"><span class="sc" aria-hidden="true">{esc(s["code"])}</span></a>')
+                if s.get('lit'):
+                    lh = s.get('lit_href')
+                    if not lh:
+                        _fail(K, f'{s["code"]}: a lit spine needs its lit_href')
+                    books += f'<a class="shelf-lit" href="#{esc(lh)}" data-target="{esc(lh)}"{f' style="--c:var(--viz-{st})"' if st else ''}><span aria-hidden="true">←</span> {esc(s["lit"])}</a>'
+                i += 1
+            lab = esc(c.get('label', ''))
+            note = f' <span class="shelf-note">{esc(c["note"])}</span>' if c.get('note') else ''
+            groups += f'<div class="shelf-group"{cs}><div class="shelf-books">{books}</div><p class="shelf-label">{lab}{note}</p></div>'
+        ts = f' style="--c:var(--viz-{tt})"' if tt else ''
+        out += f'<section class="shelf-track"{ts}><p class="shelf-tname">{esc(t.get("label", ""))}</p><div class="shelf-row">{groups}</div></section>'
+    cap = f'<figcaption>{d["caption"]}</figcaption>' if d.get('caption') else ''
+    t = f'<p class="shelf-title">{esc(d["title"])}</p>' if d.get('title') else ''
+    return f'<figure class="shelf" aria-label="{esc(d.get("title") or "The shelf: every unit of every course")}">{t}<div class="shelf-tracks">{out}</div>{cap}</figure>'
+
+
 KINDS = {'timeline': timeline, 'compare': compare, 'tree': tree, 'flow': flow,
          'sitemap': sitemap, 'objects': objects, 'decision': decision, 'matrix': matrix,
          'states': states, 'swimlanes': swimlanes, 'wireflow': wireflow,
          'line': line, 'bars': bars, 'scatter': scatter, 'range': range_}
+# P91: the home kind, HTML not SVG, not on the Figure kinds page (viz_examples.py shows one example of every kind in KINDS)
+HOME_KINDS = {'shelf': shelf}
 
 
-_LISTS = {'events', 'spans', 'ticks', 'rows', 'steps', 'objects', 'attrs', 'actions', 'lines', 'cols', 'cells', 'series',
+_LISTS = {'tracks', 'courses', 'spines', 'events', 'spans', 'ticks', 'rows', 'steps', 'objects', 'attrs', 'actions', 'lines', 'cols', 'cells', 'series',
           'points', 'states', 'transitions', 'screens', 'links', 'lanes', 'children', 'branches', 'legend', 'values',
           'annotations', 'yticks', 'xticks', 'names'}
 
@@ -2652,6 +2754,9 @@ VIZ_KEYS = {
                 'points': {'label', 'x', 'y', 'tone'}, 'quadrants': {'x', 'y', 'names'}},
     'range': {'.': {'unit', 'unit_one', 'years', 'era', 'min', 'max', 'ticks', 'decimals', 'xlabel', 'rows'},
               'rows': {'label', 'low', 'high', 'point', 'low_src', 'high_src', 'tone'}},
+    # P91: the home's bookshelf (HOME_KINDS)
+    'shelf': {'.': {'tracks'}, 'tracks': {'label', 'tone', 'courses'}, 'courses': {'label', 'note', 'tone', 'spines', 'volume', 'title'},
+              'spines': {'code', 'title', 'href', 'words', 'planned', 'lit', 'lit_href', 'tone'}},
 }
 NODE_OF = {'scatter': {('.', 'x'): 'axis', ('.', 'y'): 'axis'}}
 
@@ -2688,7 +2793,7 @@ def render(d):
     d = copy.deepcopy(d)
     try:
         _lists(d, d.get('kind'))
-        return KINDS[d['kind']](d)
+        return (HOME_KINDS.get(d['kind']) or KINDS[d['kind']])(d)
     except KeyError as e:
         raise SystemExit(f'viz: unknown kind or missing field {e} in figure {json.dumps(d)[:120]}')
     except (TypeError, ValueError, IndexError, AttributeError, ZeroDivisionError) as e:

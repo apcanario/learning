@@ -1,0 +1,48 @@
+light surfaces: --bg #e8e4dc · --card #f0ede6 · --line #d7d1c5 · --line-2 #c4bdae · --on-accent #f5f2eb
+token    value     on bg on card button  .u bg .u card   band
+red      #bd0000    5.23   5.68    5.94   6.96   7.55   4.62
+orange   #9c4500    5.07   5.50    5.75   6.51   7.06   4.62
+teal     #006b5e    5.07   5.50    5.75   6.50   7.05   4.62
+blue     #0062a0    5.09   5.52    5.77   6.54   7.09   4.62
+purple   #7400fe    5.22   5.66    5.92   6.95   7.54   4.61
+gold     #7c5800    5.09   5.52    5.77   6.47   7.02   4.64
+dim      #5e5950    5.48   5.95
+muted    #4a463f    7.40   8.02
+fg       #1b1915   13.84  15.01
+ALL PAIRS >= 4.5:1
+P91 shelf pairs, light (--bg #e8e4dc, --on-accent #f5f2eb):
+  spine code on red                                5.94
+  spine code on orange                             5.75
+  spine code on teal                               5.75
+  spine code on blue                               5.77
+  spine code on purple                             5.92
+  spine code on gold                               5.77
+  planned code, volume label (muted on bg)         7.40
+  lit label, course labels, totals (fg on bg)     13.84
+  notes, totals labels (muted on bg)               7.40
+  What's new approximate mark (muted on card)      8.02
+  lit arrow, red on bg (a symbol)                  5.23
+  lit arrow, orange on bg (a symbol)               5.07
+  lit arrow, teal on bg (a symbol)                 5.07
+  lit arrow, blue on bg (a symbol)                 5.09
+  lit arrow, purple on bg (a symbol)               5.22
+  lit arrow, gold on bg (a symbol)                 5.09
+P91 shelf pairs, dark (--bg #0a0a0c, --on-accent #000):
+  spine code on red                                7.57
+  spine code on orange                            10.19
+  spine code on teal                               6.32
+  spine code on blue                               4.57
+  spine code on purple                             5.09
+  spine code on gold                              12.57
+  planned code, volume label (muted on bg)         7.11
+  lit label, course labels, totals (fg on bg)     16.80
+  notes, totals labels (muted on bg)               7.11
+  What's new approximate mark (muted on card)      6.66
+  lit arrow, red on bg (a symbol)                  7.13
+  lit arrow, orange on bg (a symbol)               9.60
+  lit arrow, teal on bg (a symbol)                 5.95
+  lit arrow, blue on bg (a symbol)                 4.31
+  lit arrow, purple on bg (a symbol)               4.80
+  lit arrow, gold on bg (a symbol)                11.84
+  (record) dark accents as text on --bg: red 7.13, orange 9.60, teal 5.95, blue 4.31, purple 4.80, gold 11.84
+P91: ALL HOME PAIRS PASS

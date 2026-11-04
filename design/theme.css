@@ -44,7 +44,7 @@
   --bg:#0a0a0c;--card:#131316;--line:#1e1e24;--line-2:#2a2a32;
   --fg:#ececf1;--muted:#9a9aa6;--dim:#6b6b78;
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
-  --on-accent:#0a0a0c;
+  --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
   --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -150,6 +150,9 @@ main{max-width:700px;margin:0 auto;padding-block:22px 60px;padding-left:max(16px
 /* P90: a page opened from a link with its panel's id (#home, #rome) lands at the top, its title clear of the fixed bar: the
    browser's own jump to the panel stops where the column starts, not with the panel under the bar */
 .panel{scroll-margin-top:calc(var(--bar) + 22px)}
+/* P91: so does any id inside a page that a link or a shelf spine opens (a unit card #greece-u3, a brief #ux-ia-b-ia8, a
+   syllabus unit): it stops clear of the bar, not under it (a reading page's own ids keep section 9's margin) */
+.panel [id]{scroll-margin-top:calc(var(--bar) + env(safe-area-inset-top,0px) + 12px)}
 /* vertical rhythm: top-level blocks of a home, syllabus, changelog or hub page never touch */
 .panel.root:not([hidden]),.panel.home:not([hidden]),.panel.syl:not([hidden]),.panel.log:not([hidden]),.panel.stack:not([hidden]){display:flex;flex-direction:column;gap:24px}
 .panel.root>*,.panel.home>*,.panel.syl>*,.panel.log>*,.panel.stack>*{margin-top:0!important;margin-bottom:0!important}
@@ -357,7 +360,6 @@ details.rules>p:last-child{padding-bottom:16px}
 .course.live p{margin:0 0 12px;color:var(--muted);font-size:14.5px}
 .cstats{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-bottom:12px}
 .cstats b{font-family:var(--mono);font-weight:400;color:var(--fg);font-size:15px;margin-right:3px}
-.cgo{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:10px;background:var(--c,var(--red));color:var(--on-accent);font-weight:600;font-size:14px}
 .soonlist{display:grid;gap:6px;margin-bottom:28px}
 details.course.soon{padding:0;margin:0;border-left-style:dashed}
 details.course.soon>summary{list-style:none;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:10px;min-height:52px;padding:8px 14px;cursor:pointer}
@@ -370,26 +372,41 @@ details.course.soon .nscope{font-size:14px;margin:0 0 10px;line-height:1.5}
 details.course.soon .nspine{font-size:12.5px;color:var(--muted);margin:0 0 14px}
 details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-right:8px}
 
-/* 4h · learner home (Academy root; P90, 4 Nov 2026): the hero (headline, lede, the map of Academy, the Continue button),
-   the track sections, then what is new. The map is a sitemap figure (viz.py, from the course data) on the card surface;
-   its course boxes link to the course homes. The Continue button is the reader's last page (shell.js, from
-   localStorage) or, on a fresh visit, the newest written unit (.start); one shows at a time. */
-.hero .viz{margin:20px 0 0}
-.hlinks.hl-root,.hlinks.hl-root[data-one]{grid-template-columns:1fr;margin-top:14px}
-.hl-root .hbtn{padding:12px 14px;gap:4px}
-.hl-root .hbtn b{white-space:normal;font-size:16px;line-height:1.3;text-wrap:balance}
-.hl-root .hbtn span{opacity:1}
-.hl-root .hbtn span:first-child::before{content:"▶ ";font-size:9px;vertical-align:1px}
+/* 4h · learner home (Academy root; P90, 4 Nov 2026; P91, 4 Nov 2026): the hero (the headline, on the desktop the live
+   totals beside it, the lede, the bookshelf: 4i), the track sections with their slim cards, the constants, the site
+   pages, then New since and the one link to What's new. No Continue on the home (P91): each course home keeps its own. */
+.htop{display:flex;align-items:flex-end;justify-content:space-between;gap:12px 28px;flex-wrap:wrap;margin:0 0 14px}
+.hero .htop h1{margin:0}
+/* the live totals: hidden below 1100 px (the phone's first screen is the headline, the lede and the shelf); set big beside
+   the headline on the desktop (section 6) */
+.htot{display:none}
+.htot div{display:flex;flex-direction:column;gap:6px;padding-top:8px;border-top:3px solid var(--c)}
+.htot div:nth-child(1){--c:var(--red)}.htot div:nth-child(2){--c:var(--teal)}.htot div:nth-child(3){--c:var(--gold)}
+.htot b{font-family:var(--mono);font-weight:400;font-size:56px;line-height:.95;letter-spacing:-.04em;color:var(--fg);font-variant-numeric:tabular-nums}
+.htot span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .panel.root>.hlinks .hbtn b{white-space:normal;text-wrap:balance}   /* P90: the home's page links wrap on a phone, never cut short */
 /* a course card on the home: the one-sentence tile line, two lines at most */
 .panel.root .course.live p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-/* new since: dated rows; the date column is wider than a module number; the changelog link under it */
+/* the slim card (P91): the chip row, the title, the tile and the three stats; nothing under the stats */
+.panel.root .course.live .cstats{margin-bottom:0}
+/* P91: on a narrow phone (320 and 360 px) the track band and the card give the tile the width its two lines need */
+@media (max-width:400px){.panel.root .track{padding-left:12px;padding-right:12px}.panel.root .course.live{padding:14px 12px}.panel.root .course.live p{font-size:13.5px}}
+@media (max-width:340px){.panel.root .course.live p{font-size:12.5px;line-height:1.45}}
+/* new since: dated rows; the date column is wider than a module number; the link to What's new under it. What's new
+   (#new, P91): the same rows, one card per day under the day's heading, the unit code in the first column; an
+   approximate date (a work session of several days) is marked "≈" */
 .recent{margin-top:4px}
-.recent .hrows{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 14px}
-.recent .hrow{color:var(--fg)}
-.recent .hrow:first-child{border-top:0}
-.recent .hrow .n{flex:0 0 4.6em;color:var(--c,var(--muted))}
+.recent .hrows,.newday .hrows{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 14px}
+.recent .hrow,.newday .hrow{color:var(--fg)}
+.recent .hrow:first-child,.newday .hrow:first-child{border-top:0}
+.recent .hrow .n,.newday .hrow .n{flex:0 0 4.6em;color:var(--fg)}
+/* the course's tone as a rule at the row's left edge, not as the text's colour (P91: the dark blue measures 4.31:1 on the
+   page and less on a card, under 4.5:1 for small text) */
+.recent .hrow,.newday .hrow{box-shadow:inset 3px 0 0 var(--c,var(--line-2));padding-left:12px}
 .recent .hnote{margin:10px 0 0}
+.newday{display:flex;flex-direction:column;gap:12px}
+.newday .hsec{margin:0}
+.hrow .approx{font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--muted);white-space:nowrap}
 /* the planned courses fold into a rule block on the home and a row in the drawer */
 details.rules.planned>.hnote,details.rules.planned>.soonlist{padding:0 16px}
 details.rules.planned>.hnote{margin:0 0 10px}
@@ -406,6 +423,42 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 .viz{margin:0 0 20px;background:var(--card);border:1px solid var(--line);padding:14px 14px 10px;min-width:0}
 .viz-title{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
 .viz-scroll{overflow-x:auto;overflow-y:hidden}
+/* the bookshelf (P91, 4 Nov 2026): the home's hero, viz.py's home kind "shelf", drawn as HTML so it reflows at any width
+   and never scrolls. One spine per unit, grouped by track (.shelf-track, its name in the track's tone) and course
+   (.shelf-group: its spines standing on a rule in the course's tone, its name and count under them). A written spine is
+   solid in its course's tone, a planned one a dashed outline with no fill (.ghost); the planned courses are one ghosted
+   volume (.vol). A spine's height is --h (0 to 1, its words' place on the shelf, from viz.py) between --shelf-lo and
+   --shelf-hi; it is never under 44 px tall or 24 px wide (section 6's tap targets). The newest spine is lit (.lit), a
+   glow in its tone, with its label beside it (.shelf-lit), a link to What's new. The spines rise on load, staggered by
+   --i, only where motion is welcome. */
+:root{--spine-w:24px;--spine-gap:4px;--shelf-lo:44px;--shelf-hi:104px}
+.shelf{margin:22px 0 0;min-width:0}
+.shelf-tracks{display:flex;flex-direction:column;gap:20px}
+.shelf-track{min-width:0}
+.shelf-tname{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin:0 0 10px}
+.shelf-tname::before{content:"";flex:0 0 10px;height:10px;background:var(--c)}   /* the track's tone as a mark, not as the text's colour (dark blue text is under 4.5:1) */
+.shelf-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 24px}
+.shelf-group{min-width:0;max-width:100%}
+.shelf-books{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px var(--spine-gap)}
+.spine{flex:0 0 var(--spine-w);box-sizing:border-box;width:var(--spine-w);height:max(44px,calc(var(--shelf-lo) + (var(--shelf-hi) - var(--shelf-lo)) * var(--h,0)));display:flex;align-items:flex-end;justify-content:center;padding:0 0 6px;background:var(--c);border:1px solid var(--c);color:var(--on-accent);text-decoration:none}
+.spine .sc{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:10px;line-height:1;letter-spacing:.04em;white-space:nowrap}
+.spine.ghost{background:transparent;border-style:dashed;color:var(--muted)}
+.spine.vol{flex:0 0 calc(var(--spine-w) * 2);width:calc(var(--spine-w) * 2);height:calc((var(--shelf-lo) + var(--shelf-hi)) / 2)}
+.spine.vol .sc{font-size:11px}
+.spine.lit{position:relative;z-index:1;box-shadow:0 0 22px 5px color-mix(in srgb,var(--c) 65%,transparent),0 0 6px 1px var(--c)}
+.shelf-lit{align-self:flex-end;display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-left:6px;padding:0 4px;color:var(--fg);font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
+.shelf-lit>span{color:var(--c);font-size:14px}   /* the arrow points at the lit spine, in its tone */
+.shelf-label{margin:10px 0 0;padding-top:6px;border-top:2px solid var(--c);font-size:13.5px;font-weight:600;line-height:1.3;color:var(--fg)}
+.shelf-note{margin-left:6px;font-family:var(--mono);font-size:11px;font-weight:400;color:var(--muted);white-space:nowrap}
+.shelf figcaption{font-size:12.5px;color:var(--muted);margin:18px 0 0;line-height:1.45;max-width:68ch}
+@media (hover:hover){.spine:hover{filter:brightness(1.12)}.spine.ghost:hover{background:color-mix(in srgb,var(--c) 14%,transparent);filter:none}.shelf-lit:hover{text-decoration:underline}}
+.spine:focus-visible,.shelf-lit:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){
+  .spine{transform-origin:50% 100%;animation:shelf-rise .55s cubic-bezier(.2,.75,.25,1) both;animation-delay:calc(var(--i,0) * 14ms)}
+  .shelf-lit{animation:shelf-fade .4s ease-out 1s both}
+}
+@keyframes shelf-rise{from{transform:scaleY(.04);opacity:0}to{transform:none;opacity:1}}
+@keyframes shelf-fade{from{opacity:0}to{opacity:1}}
 /* a figure scales to the column but never below the width its type stays legible at; narrower than that it scrolls */
 .viz svg{display:block;width:100%;max-width:none;height:auto;min-width:560px;font-family:var(--sans)}
 .viz-timeline svg,.viz-flow svg{width:auto}
@@ -587,8 +640,6 @@ details.clog[open]>summary::after{content:"–"}
 .track .cgrid>.course{margin:0}
 .track .soonlist{margin:0}
 .track .hnote{margin:0}
-/* catalogue card: the progress meter sits above the button */
-.course.live .meter{margin:0 0 14px}
 /* external link rows (bibliography): the domain wraps rather than widening the page */
 .hrow small.url{font-family:var(--mono);font-size:11px;overflow-wrap:anywhere}
 
@@ -626,22 +677,29 @@ details.clog[open]>summary::after{content:"–"}
   .dhead{padding-right:16px}
   html.locked{overflow:auto}
   /* the reading measure is unchanged (68ch on report text); the column itself stays 760 px */
+  /* P91: the home's hero (the headline with the live totals big beside it, the lede, the shelf) runs full-bleed, the
+     whole width beside the sidebar less a --bleed margin each side, out of the 760 px column (the column is centred in
+     that width, so the hero's left edge is half the difference to its left); the spines grow, and the tracks sit side
+     by side where they fit */
+  :root{--bleed:32px;--spine-w:26px;--spine-gap:4px;--shelf-lo:60px;--shelf-hi:210px}
+  .panel.root>.hero{width:calc(100vw - var(--side) - 2 * var(--bleed));margin-left:calc(50% - (100vw - var(--side)) / 2 + var(--bleed));max-width:none}
+  .shelf-tracks{flex-direction:row;flex-wrap:wrap;gap:28px 56px}
+  .shelf-row{column-gap:20px}
+  .htot{display:flex;gap:28px;padding-bottom:6px}
 }
 
 /* 7 · Interaction ------------------------------------------------------------ */
-/* A card is a flex column so that side-by-side cards share a height and their buttons sit on one
-   line at the bottom (the meter and the button are pushed down; the blurb takes the slack). */
+/* A card is a flex column so that side-by-side cards share a height and their stats sit on one line at the bottom
+   (the tile takes the slack; P91: the meter and the button are gone). */
 .course.live{display:flex;flex-direction:column}
 .course.live p{flex:1 1 auto}
-.course.live .cgo{align-self:flex-start;margin-top:auto}
 /* transitions on the properties the states below change; respects reduced motion */
 @media (prefers-reduced-motion:no-preference){
-  .course,.ucard,.smod,.hrow,.ditem,.duh,.hbtn,.cgo,.ib,.toc a,.pager a,.copy,.rlink,.crumbs a,details.ucard>summary,details.rules>summary,details.clog>summary,details.course.soon>summary,.prompt summary,.quiz summary{transition:background-color .15s,border-color .15s,color .15s,box-shadow .15s,transform .15s}
+  .course,.ucard,.smod,.hrow,.ditem,.duh,.hbtn,.ib,.toc a,.pager a,.copy,.rlink,.crumbs a,details.ucard>summary,details.rules>summary,details.clog>summary,details.course.soon>summary,.prompt summary,.quiz summary{transition:background-color .15s,border-color .15s,color .15s,box-shadow .15s,transform .15s}
 }
 /* hover: only where a pointer can hover (touch screens keep the pressed state below) */
 @media (hover:hover){
   a.course:hover{border-color:var(--c);box-shadow:0 2px 12px var(--shadow);transform:translateY(-1px)}
-  a.course:hover .cgo{filter:brightness(1.1)}
   .hrow:not(.soon):hover,.ditem:hover,.duh:hover,details.ucard>summary:hover,details.rules>summary:hover,details.clog>summary:hover,details.course.soon>summary:hover{background:var(--hover)}
   .ditem:hover{color:var(--fg)}
   .ib:not(:disabled):hover{background:var(--hover)}
@@ -653,7 +711,7 @@ details.clog[open]>summary::after{content:"–"}
 }
 /* pressed: every device */
 a.course:active{transform:translateY(0);box-shadow:none}
-.hbtn:active,.cgo:active,.copy:active,.ib:active,.toc a:active,.pager a:active{transform:translateY(1px)}
+.hbtn:active,.copy:active,.ib:active,.toc a:active,.pager a:active{transform:translateY(1px)}
 .hrow:active,.ditem:active,.duh:active,details.ucard>summary:active,details.rules>summary:active{background:var(--hover)}
 
 /* 8 · Swiss pass (A7, 28 Oct 2026) ---------------------------------------------
@@ -669,8 +727,8 @@ a.course:active{transform:translateY(0);box-shadow:none}
 .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
 .lede{font-size:17px;line-height:1.5}
 /* hard corners everywhere a radius was decoration; 2 px where a control needs a softened edge */
-.howto,.ucard,.course,.era,.stats div,.viz,.tbl,details.clog,.smod,.pbox,.prompt,.recent .hrows,.carry li,.dispute,pre.tree{border-radius:0}
-.hbtn,.cgo,.copy,.pager a,.toc a,.ib,.duh,.ditem,.dplan>summary,.pill,.meter .bar,details.ucard .bar{border-radius:2px}
+.howto,.ucard,.course,.era,.stats div,.viz,.tbl,details.clog,.smod,.pbox,.prompt,.recent .hrows,.newday .hrows,.carry li,.dispute,pre.tree{border-radius:0}
+.hbtn,.copy,.pager a,.toc a,.ib,.duh,.ditem,.dplan>summary,.pill,.meter .bar,details.ucard .bar{border-radius:2px}
 .pill{letter-spacing:.06em}
 /* colour as a field: a track is a band tinted with its accent; its head is a rule, not a box edge */
 .track{background:color-mix(in srgb,var(--c) 7%,var(--bg));padding:18px 16px 20px;gap:16px}

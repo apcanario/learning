@@ -9,13 +9,12 @@
   // in the page.
   var panels=[].slice.call(document.querySelectorAll('.panel'));
   var ids=panels.map(function(p){return p.id;});
-  var ctxOf={},kindOf={},meta={},reportsBy={},courseName={};
+  var ctxOf={},kindOf={},meta={},reportsBy={};
   panels.forEach(function(p){
     var ctx=p.getAttribute('data-ctx')||'root',kind=p.getAttribute('data-kind')||'';
     ctxOf[p.id]=ctx;kindOf[p.id]=kind;
     if(p.hasAttribute('data-t'))meta[p.id]={t:p.getAttribute('data-t'),u:p.getAttribute('data-u')||'',c:p.getAttribute('data-c')||''};
     if(kind==='report')(reportsBy[ctx]=reportsBy[ctx]||[]).push(p.id);
-    if(kind==='course')courseName[ctx]=p.getAttribute('data-t');
   });
   var items=[].slice.call(document.querySelectorAll('.ditem'));
   var navs=[].slice.call(document.querySelectorAll('[data-navctx]'));
@@ -228,21 +227,23 @@
       if(hit&&!hit.dataset.auto){hit.open=true;hit.dataset.auto='1';}
     });
   }
-  // continue buttons: the root one (data-long) resumes any course and names it; a course one resumes within its course
+  // continue buttons: each course home's resumes within its course (P91, 4 Nov 2026: the home has none; Pedro: one
+  // state across every course is "kind of useless until we create a login system")
   function updateContinue(){
     [].slice.call(document.querySelectorAll('.hbtn.cont')).forEach(function(b){
-      var long=b.hasAttribute('data-long'),s=long?lastAny():lastIn(b.getAttribute('data-course'));
+      var s=lastIn(b.getAttribute('data-course'));
       var t=b.querySelector('b');
-      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(long?(courseName[ctxOf[s]]||'')+' · ':'')+(meta[s].n?meta[s].n+' ':'')+meta[s].t;}
+      if(s){b.hidden=false;b.href='#'+s;b.setAttribute('data-target',s);t.textContent=(meta[s].n?meta[s].n+' ':'')+meta[s].t;}
       else{b.hidden=true;}
-      // the fresh-visit button (the home's newest unit, a course's first) shows only while there is nothing to
-      // continue (P90: the home's resume card and its progress meter are gone); data-one when a single button is left
+      // the course's Start button shows only while there is nothing to continue; data-one when a single button is left
       var st=b.parentNode.querySelector('.hbtn.start');if(st)st.hidden=!!s;
       var vis=[].filter.call(b.parentNode.querySelectorAll('.hbtn'),function(x){return !x.hidden;}).length;
       if(vis===1)b.parentNode.setAttribute('data-one','');else b.parentNode.removeAttribute('data-one');
     });
     openCards();}
-  function go(id){history.replaceState(null,'','#'+id);show(id,true);}
+  // P91: a target that is not a panel but an id inside one (a shelf spine's #greece-u3, a unit's breadcrumb) is routed
+  // as a link to it would be: its panel is shown (fetched first if need be) and the id revealed
+  function go(id){history.replaceState(null,'','#'+id);if(ids.indexOf(id)<0){route();return;}show(id,true);}
   prevB.addEventListener('click',function(){var seq=seqFor(ctxOf[current]),k=seq.indexOf(current);if(k>0)go(seq[k-1]);});
   nextB.addEventListener('click',function(){var seq=seqFor(ctxOf[current]),k=seq.indexOf(current);if(k<seq.length-1)go(seq[k+1]);});
   homeB.addEventListener('click',function(e){e.preventDefault();go('home');});
