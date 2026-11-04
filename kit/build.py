@@ -681,8 +681,9 @@ backlog = f"""
 # fixed layouts: tall (below 1100 px; every rise inside the part of the square drawing a phone's hero shows) and wide
 # (from 1100 px, across the full width beside the sidebar). Each course tile: one rise per unit of the course in its
 # order (a history course's syllabus units, the audit unit left out; a markdown course's units), a written unit by its
-# words, a planned one flat (a dashed ring), a contour every fifth of the course's largest unit, so every tile reads at
-# the same density; the tile's numbers say the rest.
+# words, a planned one flat (a dashed ring), a contour every 5.5th part of the course's largest unit, so every tile reads at
+# the same density (the spread keeps a neighbour's tail under a level, so a unit's rings rise with its words); the tile's
+# numbers say the rest.
 _TONE = {'var(--red)': 1, 'var(--orange)': 2, 'var(--teal)': 3, 'var(--blue)': 4, 'var(--purple)': 5, 'var(--gold)': 6}
 NEWEST = DATED[0] if DATED else None
 HERO_INTERVAL = 22000   # words between two of the hero's contour levels: History's 510k words stand 23 levels up, an area of 67k three
@@ -723,7 +724,7 @@ def tile_patch(c):
         return ''
     blk = dict(kind='contours', patch=True, interval=top / 5.5,
                rises=[dict(label=k, tone=tone, **(dict(words=w) if w else dict(planned=True))) for k, w in us],
-               layouts=[dict(name='patch', width=720, height=180, spread=round(.48 / len(us), 4), grid=6, simplify=.5)])
+               layouts=[dict(name='patch', width=720, height=180, spread=round(.40 / len(us), 4), grid=6, simplify=.5)])
     return viz.render(blk)
 
 

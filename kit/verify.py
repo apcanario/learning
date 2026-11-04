@@ -382,6 +382,7 @@ HOME_JS = r'''(tones) => {
   out.cards = cards.map(c => { const p = c.querySelector(':scope > .topo.topo-patch'), s = p && p.querySelector('svg');
     return {home: c.getAttribute('data-target'), href: c.getAttribute('href'),
             rises: p ? [...p.querySelectorAll('g.ct-rise')].map(g => [g.getAttribute('data-label'), +g.getAttribute('data-words')]) : null,
+            rings: p ? [...p.querySelectorAll('g.ct-rise')].map(g => [+g.getAttribute('data-words'), +g.getAttribute('data-rings')]) : null,
             plan: p ? [...p.querySelectorAll('g.ct-plan')].map(g => g.getAttribute('data-label')) : null,
             aria: p && p.getAttribute('aria-hidden'), stroke: p && p.querySelector('path') ? getComputedStyle(p.querySelector('path')).stroke : null,
             tone: getComputedStyle(c).getPropertyValue('--c').trim(), pw: p ? Math.round(p.getBoundingClientRect().width) : 0, cw: Math.round(c.querySelector('.ctitle').parentElement.clientWidth),
@@ -444,7 +445,7 @@ def hero_contrast(pg, label, fails):
     def lum(c):
         f = lambda v: (v / 255) / 12.92 if v / 255 <= 0.04045 else ((v / 255 + 0.055) / 1.055) ** 2.4
         return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2])
-    worst = [99, '']
+    worst, each = [99, ''], []
     for it in items:
         fg = [float(v) for v in re.findall(r'[\d.]+', it['color'])[:3]]
         lf = lum(fg)
@@ -455,8 +456,9 @@ def hero_contrast(pg, label, fails):
             lo = min(lo, r)
         need = 3 if it['large'] else 4.5
         if lo < worst[0]: worst = [round(lo, 2), it['what']]
+        each.append(f'{it["what"].split(chr(34))[1] if chr(34) in it["what"] else it["what"]} {lo:.2f}/{need:g}')
         if lo < need - .005: fails.append(f'home {label}: {it["what"]} reaches {lo:.2f}:1 over the contours under it (needs {need}:1)')
-    print(f'home {label}: hero texts over the contours, {len(items)} measured pixel by pixel, lowest {worst[0]}:1 ({worst[1]})')
+    print(f'home {label}: hero texts over the contours, {len(items)} measured pixel by pixel, lowest {worst[0]}:1 ({worst[1]}); each (lowest/needed): ' + '; '.join(each))
 
 def check_home(pg, label, fails, expect, motion=False):
     """P92: the home's layout at one width (HOME_JS): the hero (the headline, the area line and its static line, the
@@ -497,6 +499,8 @@ def check_home(pg, label, fails, expect, motion=False):
         if [tuple(x) for x in (c['rises'] or [])] != want_r: fails.append(f'home {label}: {e["short"]}\'s patch has the rises {c["rises"]}, the sources give its written units {want_r}')
         if (c['plan'] or []) != [k for k, w in e['units'] if not w]: fails.append(f'home {label}: {e["short"]}\'s patch marks {c["plan"]} planned, the sources {[k for k, w in e["units"] if not w]}')
         if c['aria'] != 'true': fails.append(f'home {label}: {e["short"]}\'s patch is not aria-hidden')
+        byw = [k for _, k in sorted(c['rings'] or [])]
+        if byw != sorted(byw): fails.append(f'home {label}: {e["short"]}\'s patch rises stand {[k for _, k in c["rings"]]} levels high, not in the order of their words')
         if c['href'] != '#' + home: fails.append(f'home {label}: {e["short"]}\'s tile links to {c["href"]}')
     want_rows = [[x['kind'], x['pid']] for x in expect['rows'][:6]]
     if r.get('rows') != want_rows: fails.append(f'home {label}: New since lists {r.get("rows")}, What\'s new leads with {want_rows}')

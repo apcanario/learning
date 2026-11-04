@@ -11,16 +11,16 @@ muted    #4a463f    7.40   8.02
 fg       #1b1915   13.84  15.01
 ALL PAIRS >= 4.5:1
 (record) dark accents as text on --bg: red 7.13, orange 9.60, teal 5.95, blue 4.31, purple 4.80, gold 11.84
-P92 hero pairs, light (--bg #e8e4dc, contour lines at --topo-a 0.26):
-  area word History (red, large)       on the page  5.23; lowest over a line  3.25 (a red line at 0.26)
-  area word Marketing (teal, large)    on the page  5.07; lowest over a line  3.15 (a red line at 0.26)
-  area word Technology (purple, large) on the page  5.22; lowest over a line  3.24 (a red line at 0.26)
-  area word User Experience (blue, large) on the page  5.09; lowest over a line  3.16 (a red line at 0.26)
-  headline Academy (fg, large)         on the page 13.84; lowest over a line  8.59 (a red line at 0.26)
-  static line dots (muted)             on the page  7.40; lowest over a line  4.59 (a red line at 0.26)
-  lede (muted)                         on the page  7.40; lowest over a line  4.59 (a red line at 0.26)
-  What's new link (fg)                 on the page 13.84; lowest over a line  8.59 (a red line at 0.26)
-  What's new arrow (muted)             on the page  7.40; lowest over a line  4.59 (a red line at 0.26)
+P92 hero pairs, light (--bg #e8e4dc, contour lines at --topo-a 0.2):
+  area word History (red, large)       on the page  5.23; lowest over a line  3.62 (a red line at 0.2)
+  area word Marketing (teal, large)    on the page  5.07; lowest over a line  3.51 (a red line at 0.2)
+  area word Technology (purple, large) on the page  5.22; lowest over a line  3.61 (a red line at 0.2)
+  area word User Experience (blue, large) on the page  5.09; lowest over a line  3.52 (a red line at 0.2)
+  headline Academy (fg, large)         on the page 13.84; lowest over a line  9.57 (a red line at 0.2)
+  static line dots (muted)             on the page  7.40; lowest over a line  5.12 (a red line at 0.2)
+  lede (muted)                         on the page  7.40; lowest over a line  5.12 (a red line at 0.2)
+  What's new link (fg)                 on the page 13.84; lowest over a line  9.57 (a red line at 0.2)
+  What's new arrow (muted)             on the page  7.40; lowest over a line  5.12 (a red line at 0.2)
 P92 hero pairs, dark (--bg #0a0a0c, contour lines at --topo-a 0.22):
   area word History (red, large)       on the page  7.13; lowest over a line  5.27 (a red line at 0.22)
   area word Marketing (teal, large)    on the page  5.95; lowest over a line  4.40 (a red line at 0.22)
