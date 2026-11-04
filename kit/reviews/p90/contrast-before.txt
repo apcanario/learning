@@ -1,0 +1,12 @@
+light surfaces: --bg #f5f5f7 · --card #ffffff · --line #e3e3ea · --line-2 #cfcfd9 · --on-accent #ffffff
+token    value     on bg on card button  .u bg .u card
+red      #c23b3b    4.84   5.27    5.27   6.57   7.15
+orange   #a3580f    4.87   5.30    5.30   6.50   7.07
+teal     #1b7569    5.08   5.53    5.53   6.75   7.35
+blue     #3a6a8a    5.34   5.82    5.82   6.95   7.57
+purple   #7a3fcf    5.61   6.11    6.11   7.32   7.97
+gold     #7f6308    5.23   5.69    5.69   6.89   7.50
+dim      #6c6c78    4.76   5.18
+muted    #50505b    7.31   7.96
+fg       #17171c   16.40  17.86
+ALL PAIRS >= 4.5:1
