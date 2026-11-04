@@ -273,6 +273,8 @@ details.ucard[open]>summary{padding-bottom:10px}
 .hlinks[data-one]{grid-template-columns:1fr}
 .hbtn{display:flex;flex-direction:column;gap:2px;min-height:44px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--on-accent);background:var(--cc,var(--red));border:1px solid var(--cc,var(--red));min-width:0}
 .hbtn span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+:root[data-theme="light"] .hbtn span{opacity:1}   /* P90: the label at full strength on the light accents, 4.5:1 (at .85 it measured 4.49 on red and purple) */
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .hbtn span{opacity:1}}
 .hbtn b{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hbtn.alt{background:transparent;border-color:var(--line-2);color:var(--fg)}
 .hbtn.alt span{color:var(--muted)}

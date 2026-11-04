@@ -41,13 +41,24 @@ Figure keys (P52): every viz block in the vault, every history figure declaratio
 examples block uses only the keys viz.VIZ_KEYS documents for its kind, and viz.render leaves the block it draws unchanged.
 Opening notes (P73): a markdown unit's text before its first heading is a closed accordion after Sources, "The writer's
 opening note", on every unit that has one and on none that has not; section 1 opens on its heading; a deep link lands.
+Home (P90, 4 Nov 2026), at each width on a fresh visit: the hero holds the headline, the lede, the map of Academy (a
+sitemap figure with one linked box per live course, each link to an existing course home, and History's dashed box
+counting the planned courses) and the Continue button, which names the newest unit (the first unit row of New since);
+no eyebrow, no resume card, no track tiles (.tjump), no totals line; the track sections follow, then the constants,
+then New since (at most six rows) with one link to the changelog under it; every course card has exactly three stats
+and a tile of at most two lines, none clipped; below 768 px the map shows its phone drawing, no wider than its frame,
+which does not scroll; from 768 px the wide drawing, every track's cards in two columns, a track's only card half the
+width. Contrast (P90): in the light theme, every text in the home, the drawer, the changelog and backlog, each course
+home and one reading page of each course, at phone width with every <details> open, reaches 4.5:1 against the
+background it sits on (3:1 for large text), the text's opacity and every tint it sits on composited; figures are
+left to the figure checks.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools, html as H
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
-from courses import COURSES, THEMES, EDITIONS
+from courses import COURSES, THEMES, EDITIONS, NEXT
 # P70: --edition checks an edition's folder the same way, over the courses and pages it holds (default: the full Academy)
 EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else 'academy'
 if EDITION not in EDITIONS:
@@ -175,6 +186,166 @@ FRAME_JS = r'''async ([scope, phone]) => {
   });
   return {n, over, bad: bad.slice(0, 8)};
 }'''
+
+# P90 (4 Nov 2026): the home's layout, read on the visible home panel. phone: below 768 px. Returns what was found and
+# the faults (bad); the caller compares the map's links with courses.py.
+HOME_JS = r'''(phone) => {
+  const h = document.getElementById('home'), bad = [], out = {bad};
+  const hero = h.querySelector(':scope > header.hero');
+  if (!hero) { bad.push('no hero'); return out; }
+  if (hero.querySelector('.eyebrow')) bad.push('the hero still has its eyebrow line');
+  if (h.querySelector('.resume, .rmeter')) bad.push('the resume card is still on the home');
+  if (h.querySelector('.tjump')) bad.push('the track tiles (.tjump) are still on the home');
+  if (h.querySelector('.totals')) bad.push('the totals line is still on the home');
+  const hk = [...hero.children].map(e => e.tagName.toLowerCase() + (e.classList.length ? '.' + [...e.classList].join('.') : ''));
+  out.hero = hk.join(' ');
+  const fig = hero.querySelector(':scope > figure.viz-sitemap');
+  if (!fig) bad.push('no map (a sitemap figure) in the hero');
+  else {
+    const f = fig.querySelector('.viz-scroll'), svgs = [...f.querySelectorAll(':scope > svg')];
+    out.links = svgs.map(sv => [...sv.querySelectorAll('a.viz-a')].map(a => a.getAttribute('data-target')));
+    out.hrefs = svgs.map(sv => [...sv.querySelectorAll('a.viz-a')].every(a => a.getAttribute('href') === '#' + a.getAttribute('data-target')));
+    out.dead = [...new Set(out.links.flat())].filter(t => { const e = document.getElementById(t); return !e || !e.classList.contains('panel'); });
+    const vis = svgs.filter(sv => sv.getBoundingClientRect().width > 0);
+    if (vis.length !== 1) bad.push(`${vis.length} map drawings shown, expected one`);
+    else {
+      const v = vis[0];
+      out.alt = v.classList.contains('viz-alt');
+      out.w = [Math.round(v.getBoundingClientRect().width), f.clientWidth, f.scrollWidth];
+      out.dashed = [...v.querySelectorAll('rect.viz-dash')].map(r => r.parentNode.textContent.trim());
+      if (phone !== out.alt) bad.push(`the map shows its ${out.alt ? 'phone' : 'wide'} drawing at this width`);
+      if (phone && (out.w[0] > out.w[1] || out.w[2] > out.w[1] + 1)) bad.push(`the phone map is ${out.w[0]} px in a ${out.w[1]} px frame that scrolls to ${out.w[2]} px`);
+    }
+    if (!fig.querySelector('figcaption') || !/build/i.test(fig.querySelector('figcaption').textContent)) bad.push('the map caption does not say it is drawn at build time');
+  }
+  if (hero.scrollWidth > hero.clientWidth + 1) bad.push(`the hero scrolls sideways (${hero.scrollWidth} in ${hero.clientWidth} px)`);
+  const st = hero.querySelector('.hlinks .hbtn.start'), ct = hero.querySelector('.hlinks .hbtn.cont');
+  out.start = st ? [!st.hidden, st.getAttribute('data-target'), st.textContent.trim()] : null;
+  out.cont = ct ? !ct.hidden : null;
+  const kids = [...h.children];
+  const tracks = kids.filter(e => e.classList.contains('track')), rec = h.querySelector(':scope > .recent');
+  if (!tracks.length) bad.push('no track sections');
+  if (!rec) bad.push('no New since');
+  else {
+    if (!tracks.length || !(tracks[tracks.length - 1].compareDocumentPosition(rec) & Node.DOCUMENT_POSITION_FOLLOWING)) bad.push('New since is not after the last track section');
+    const rows = rec.querySelectorAll('.hrow');
+    out.rows = rows.length;
+    if (rows.length < 1 || rows.length > 6) bad.push(`New since has ${rows.length} rows, expected 1 to 6`);
+    const u = [...rows].find(r => r.querySelector('.pill.live'));
+    out.newest = u ? u.getAttribute('data-target') : null;
+    const nx = rec.nextElementSibling, cl = nx && nx.querySelectorAll('a[href="#changelog"]');
+    if (!nx || nx !== kids[kids.length - 1] || !cl || cl.length !== 1) bad.push('New since is not followed, last on the page, by its one link to the changelog');
+  }
+  out.order = kids.map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ');
+  const cards = [...h.querySelectorAll('.track .cgrid > a.course.live')];
+  out.cards = cards.length;
+  cards.forEach(c => {
+    const name = c.querySelector('.ctitle').textContent;
+    const n = c.querySelectorAll('.cstats > span').length; if (n !== 3) bad.push(`${name}: ${n} stats, expected 3`);
+    const pp = c.querySelector(':scope > p'), lh = parseFloat(getComputedStyle(pp).lineHeight);
+    if (pp.scrollHeight > pp.clientHeight + 1) bad.push(`${name}: the tile is clipped (${pp.scrollHeight} px of ${pp.clientHeight})`);
+    if (Math.round(pp.clientHeight / lh) > 2) bad.push(`${name}: the tile runs to ${Math.round(pp.clientHeight / lh)} lines`);
+    if (c.scrollWidth > c.clientWidth + 1) bad.push(`${name}: the card scrolls sideways`);
+  });
+  if (new Set(cards.map(c => c.className)).size > 1) bad.push('the course cards are not one style: ' + [...new Set(cards.map(c => c.className))].join(' | '));
+  tracks.forEach(t => {
+    const g = t.querySelector('.cgrid'), cs = [...g.querySelectorAll(':scope > a.course')];
+    const cols = getComputedStyle(g).gridTemplateColumns.split(' ').length;
+    if (phone && cols !== 1) bad.push(`${t.id}: ${cols} columns below 768 px`);
+    if (!phone && cols !== 2) bad.push(`${t.id}: ${cols} column(s) from 768 px, expected 2`);
+    if (!phone && cs.length === 1) {
+      const gw = g.getBoundingClientRect().width, cw = cs[0].getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
+      if (Math.abs(cw - (gw - gap) / 2) > 2) bad.push(`${t.id}: its only card is ${cw.toFixed(0)} px of a ${gw.toFixed(0)} px grid, expected half`);
+    }
+  });
+  return out;
+}'''
+HOME_LINKS = sorted(x[1:] for t in HOME_TRACKS for x in t.split(':', 1)[1].split(',') if x)
+
+def check_home(pg, label, fails, phone, fresh):
+    """P90: the home's layout at one width (HOME_JS), its map's links against courses.py; on a fresh visit the Continue
+    button names the newest unit."""
+    pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(120)
+    r = pg.evaluate(HOME_JS, phone)
+    fails += [f'home {label}: {b}' for b in r['bad']]
+    for k, ls in enumerate(r.get('links', [])):
+        if sorted(ls) != HOME_LINKS: fails.append(f'home {label}: map drawing {k + 1} links to {sorted(ls)}, courses.py gives {HOME_LINKS}')
+    if r.get('links') is not None and len(r['links']) != 2: fails.append(f'home {label}: the map has {len(r["links"])} drawings, expected the wide one and the phone one')
+    if not all(r.get('hrefs', [True])): fails.append(f'home {label}: a map link whose href is not its data-target')
+    if r.get('dead'): fails.append(f'home {label}: map links to no panel: {r["dead"]}')
+    if NEXT and 'dashed' in r and r['dashed'] != [f'{len(NEXT)} planned']: fails.append(f'home {label}: the map\'s dashed boxes read {r["dashed"]}, expected ["{len(NEXT)} planned"]')
+    if fresh:
+        if r['cont'] or not r['start'] or not r['start'][0]: fails.append(f'home {label}: on a fresh visit the Continue button is {r["start"]}, the resume button shown: {r["cont"]}')
+        elif r['start'][1] != r.get('newest'): fails.append(f'home {label}: on a fresh visit the Continue button opens {r["start"][1]}, the newest unit in New since is {r.get("newest")}')
+    print(f'home {label}: map {"phone" if r.get("alt") else "wide"} drawing {r.get("w")}, {len(HOME_LINKS)} course links, dashed {r.get("dashed")}; '
+          f'{r.get("cards")} cards; New since {r.get("rows")} rows' + (f'; Continue names {r["start"][1]}' if fresh and r.get('start') else ''))
+    return r
+
+# P90: WCAG contrast of every text against the background it sits on, the light theme's tokens in use. A text's colour
+# is composited with its alpha and the opacity of its ancestors; its background is every background colour under it
+# (a tint over a card over the page) composited from the page up. SVG text (figures) is left out.
+CONTRAST_JS = r'''(scope) => {
+  const parse = c => {
+    let m = c.match(/^rgba?\(([^)]+)\)/);
+    if (m) { const v = m[1].split(/[\s,\/]+/).filter(Boolean).map(Number); return [v[0], v[1], v[2], v.length > 3 ? v[3] : 1]; }
+    m = c.match(/^color\(srgb ([^)]+)\)/);
+    if (m) { const v = m[1].split(/[\s\/]+/).filter(Boolean).map(Number); return [v[0] * 255, v[1] * 255, v[2] * 255, v.length > 3 ? v[3] : 1]; }
+    return null; };
+  const over = (a, b) => [0, 1, 2].map(i => a[i] * a[3] + b[i] * (1 - a[3])).concat([1]);
+  const lum = c => { const f = v => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }; return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2]); };
+  const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+  const hex = c => '#' + c.slice(0, 3).map(v => Math.round(v).toString(16).padStart(2, '0')).join('');
+  const roots = [...document.querySelectorAll(scope)];
+  const bad = []; let n = 0, min = 99, minAt = '';
+  roots.forEach(root => root.querySelectorAll('*').forEach(el => {
+    if (el.closest('svg')) return;
+    if (![...el.childNodes].some(t => t.nodeType === 3 && t.textContent.trim())) return;
+    const cs = getComputedStyle(el); if (cs.visibility !== 'visible') return;
+    const r = el.getBoundingClientRect(); if (r.width < 1 || r.height < 1) return;
+    if (el.closest('[disabled]')) return;
+    let fg = parse(cs.color); if (!fg) return;
+    let op = 1, bgs = [];
+    for (let e = el; e; e = e.parentElement) {
+      const s = getComputedStyle(e); op *= parseFloat(s.opacity);
+      const b = parse(s.backgroundColor); if (b && b[3] > 0) { bgs.push(b); if (b[3] >= 1) break; }
+    }
+    let bg = [255, 255, 255, 1];
+    for (let i = bgs.length - 1; i >= 0; i--) bg = i === bgs.length - 1 && bgs[i][3] >= 1 ? bgs[i] : over(bgs[i], bg);
+    const col = over([fg[0], fg[1], fg[2], fg[3] * op], bg);
+    const size = parseFloat(cs.fontSize), large = size >= 24 || (size >= 18.66 && parseInt(cs.fontWeight) >= 700);
+    const k = ratio(col, bg), need = large ? 3 : 4.5; n++;
+    const d = el.tagName.toLowerCase() + (typeof el.className === 'string' && el.className.trim() ? '.' + el.className.trim().split(/\s+/).join('.') : '');
+    if (k < min) { min = k; minAt = d; }
+    if (k < need - 0.005) bad.push(`${d} "${el.textContent.trim().slice(0, 24)}" ${hex(col)} on ${hex(bg)} ${k.toFixed(2)}:1`);
+  }));
+  return {n, min: Math.round(min * 100) / 100, minAt, bad: [...new Set(bad)].slice(0, 12), nbad: new Set(bad).size};
+}'''
+
+def check_contrast(pg, fails):
+    """P90: the light theme's contrast on the home, the drawer, the changelog and backlog, each course home and the
+    first reading page of each course, at phone width, every <details> open."""
+    pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')"); pg.wait_for_timeout(50)
+    firsts = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => {
+      const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
+    homes = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"course\"]')].map(p => p.id)")
+    pids = [x for x in ['home', 'changelog', 'backlog'] if x not in OMIT] + homes + firsts
+    worst, total = [99, ''], 0
+    for pid in pids:
+        pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(40)
+        pg.evaluate("document.querySelectorAll('.panel:not([hidden]) .stepbar .whole[aria-pressed=\"false\"]').forEach(b => b.click())")
+        pg.evaluate("document.querySelectorAll('.panel:not([hidden]) details').forEach(d => d.open = true)"); pg.wait_for_timeout(40)
+        r = pg.evaluate(CONTRAST_JS, f'#{pid}')
+        total += r['n']
+        if r['min'] < worst[0]: worst = [r['min'], f'{pid} {r["minAt"]}']
+        if r['nbad']: fails.append(f'contrast light {pid}: {r["nbad"]} texts under 4.5:1 (3:1 large): ' + '; '.join(r['bad']))
+    pg.click('#menuB'); pg.wait_for_timeout(250)
+    pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed')); document.querySelectorAll('#drawer details').forEach(d => d.open = true)")
+    r = pg.evaluate(CONTRAST_JS, '#drawer'); total += r['n']
+    if r['min'] < worst[0]: worst = [r['min'], f'drawer {r["minAt"]}']
+    if r['nbad']: fails.append(f'contrast light drawer: {r["nbad"]} texts under 4.5:1: ' + '; '.join(r['bad']))
+    pg.click('#closeB'); pg.wait_for_timeout(250)
+    pg.evaluate("localStorage.removeItem('hellas-theme'); document.documentElement.removeAttribute('data-theme')")
+    print(f'contrast (light, phone): {total} texts on {len(pids)} panels and the drawer, lowest {worst[0]}:1 ({worst[1]})')
 
 SHOT_H = 2600
 def shoot(pg, path, w, h):
@@ -836,6 +1007,11 @@ def main():
 
         # navigation context, from a clean slate
         pg.evaluate('localStorage.clear()'); pg.goto(URL + '#home'); pg.reload(); pg.wait_for_timeout(300)
+        check_home(pg, 'phone', fails, True, True)
+        pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+        check_home(pg, 'phone light', fails, True, True)
+        check_contrast(pg, fails)
+        pg.evaluate('localStorage.clear()'); pg.goto(URL + '#home'); pg.reload(); pg.wait_for_timeout(300)
         def state():
             ready(pg)
             return pg.evaluate('''() => ({id: [...document.querySelectorAll('.panel')].find(p => !p.hidden).id,
@@ -1065,6 +1241,14 @@ def main():
         print(f'desktop: sidebar {s["w"]} px at the left, content column {s["mainW"]} px from {s["mainLeft"]} px, current item {s["active"]}, measure {s["measure"]}')
         ctx.close()
 
+        # P90: the home at tablet and desktop width on a fresh visit, dark and light
+        for name, w, h, mobile in VIEWPORTS[1:]:
+            ctx, pg, _ = new_page(p, br, errors, name, w, h, mobile)
+            check_home(pg, name, fails, False, True)
+            pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+            check_home(pg, name + ' light', fails, False, True)
+            ctx.close()
+
         if SHOTS:
             SHOTS.mkdir(parents=True, exist_ok=True)
             for name, w, h, mobile in VIEWPORTS:
@@ -1073,6 +1257,8 @@ def main():
                     pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
                     for pid in ['home', TAB, rp] + [x for x in PAGES if x not in ('home', TAB, rp)]:
                         pg.evaluate(f"localStorage.removeItem('pm-sec-{pid}')")   # P68: each shot opens on section 1
+                        if pid == 'home':   # P90: the home is shot as a fresh visit, its Continue button naming the newest unit
+                            pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')")
                         pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
                         shoot(pg, SHOTS / f'{name}-{pid}-{theme}.png', w, h)
                         if pid in PAGES and pg.query_selector(f'[id="{pid}"] .report.steps'):   # P68: the reading states the top does not show
@@ -1080,7 +1266,7 @@ def main():
                                 pg.evaluate(js, pid); pg.wait_for_timeout(200)
                                 pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{state}-{theme}.png'))
                             pg.evaluate("(pid) => { const p = document.getElementById(pid); p.querySelectorAll('details').forEach(d => d.open = false); const w = p.querySelector('.stepbar .whole'); if (w.getAttribute('aria-pressed') === 'true') w.click(); [...p.querySelectorAll('.seclist a')][0].click(); window.scrollTo(0, 0); }", pid)
-                        if pid in PAGES:   # P41: each figure of a --page panel, as the reader sees it in its frame
+                        if pid in PAGES or pid == 'home':   # P41: each figure of a --page panel, as the reader sees it in its frame (P90: and the home's map)
                             for k, fig in enumerate(pg.query_selector_all(f'[id="{pid}"] figure.viz')):
                                 kind = ([c for c in fig.get_attribute('class').split() if c.startswith('viz-') and c != 'viz-wide'] or ['viz-figure'])[0][4:]
                                 fig.evaluate("f => { const s = f.closest('.sec'), p = f.closest('.panel'); if (s && !s.classList.contains('on')) p.querySelector('.seclist a[data-step=\"' + s.dataset.step + '\"]').click(); }")   # P68: its section shown first
@@ -1105,7 +1291,7 @@ def main():
                     try:
                         from PIL import Image
                         ims = [Image.open(x) for x in shots]
-                        sheet = Image.new('RGB', (max(i.width for i in ims), sum(i.height for i in ims) + 12 * len(ims)), (10, 10, 12) if theme == 'dark' else (245, 245, 247))
+                        sheet = Image.new('RGB', (max(i.width for i in ims), sum(i.height for i in ims) + 12 * len(ims)), (10, 10, 12) if theme == 'dark' else (232, 228, 220))   # the page colour of each theme (P90: the light paper)
                         yy = 0
                         for im in ims:
                             sheet.paste(im, (0, yy)); yy += im.height + 12
