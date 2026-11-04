@@ -98,7 +98,7 @@ With --shots: the home, What's new and the five course homes at the six widths, 
 Greece and Information architecture at the five poses, 390 and 1280 px.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
-import sys, json, pathlib, re, threading, functools, html as H
+import sys, json, pathlib, re, threading, functools, math, html as H
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
@@ -1956,6 +1956,18 @@ def main():
                     PERF[pid] = perf_of(pg, pid)
                     print(f"{pid} phone motion: LCP {PERF[pid]['lcp']:.0f} ms, longest task {PERF[pid]['lt']:.0f} ms ({PERF[pid]['n']} long tasks over 50 ms), on a fresh load from the local server")
                 pg.evaluate("location.hash = 'home'"); ready(pg)
+                # P93 follow-up (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile"): at 120 s a sweep the
+                # move ran, at 0.6 px/s at most, and read as still. The move must be seen and still be slow: the peak speed of a
+                # corner of the home's layer at 390 px, from the tokens (turn, growth, cycle; CSS ease-in-out peaks at 1.6 times
+                # the average), between 2 and 8 px/s; and the layer must have moved between two reads 2 s apart
+                fw, fh = pg.evaluate("(() => { const t = document.querySelector('#home .hhome > .topo'); return [t.clientWidth, t.clientHeight]; })()")
+                rc = math.hypot(fw, fh) / 2
+                v = 1.6 * rc * math.hypot(math.radians(2 * TURN), GROW - 1) / (CYCLE / 1000)
+                m0 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform"); pg.wait_for_timeout(2000)
+                m1 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform")
+                print(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners ({fw} x {fh} px frame, {2 * TURN:g} degrees and {GROW - 1:.2f} growth over {CYCLE / 1000:g} s); moved in 2 s: {m0 != m1}")
+                if not 2 <= v <= 8: fails.append(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners, outside 2 to 8 px/s (seen, and very slow)")
+                if m0 == m1: fails.append('home phone motion: the layer did not move in 2 s')
             for theme in ('dark', 'light'):
                 if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                 pg.evaluate("location.hash = 'new'"); ready(pg); pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(200)   # the home shown afresh, each drawing at its own phase, before any pose

@@ -31,7 +31,7 @@
    9  Reading layout (P68): scope line, sticky section bar, one section at a time,
       numbered section bands, next and previous, Sources and "How this unit was made"
    Version 6.6, 4 Nov 2026 (P93): every contour drawing moves very slowly where motion is welcome (4i: one move, a scale
-   from 1 to 1.06 and a turn from -3 to +3 degrees over 120 s, alternating, eased, transform only, about each drawing's
+   from 1 to 1.06 and a turn from -3 to +3 degrees over 20 s, alternating, eased, transform only, about each drawing's
    centre; each drawing of a page starts at its own point of the cycle, --ph from build.py; each layer stands out of its
    frame by the overscan the turn needs for the frame's own aspect, from the tokens; still under reduced motion); each
    course home and What's new has a topography behind its hero (.hero.has-topo, the layer the full width beside the
@@ -70,7 +70,7 @@
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
   --topo-a:.16;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page; P93: .16, from .2, so the course homes' and What's new's texts, which stand over the lines, keep theirs at every pose of the move) and a tile's patch */
-  --topo-turn:3deg;--topo-grow:1.06;--topo-cycle:120s;   /* P93: the contours' one slow move, both themes: a turn of +/- 3 degrees and a growth to 1.06, over 120 s each way */
+  --topo-turn:3deg;--topo-grow:1.06;--topo-cycle:20s;   /* P93: the contours' one slow move, both themes: a turn of +/- 3 degrees and a growth to 1.06, over 20 s each way (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile": at 120 s a corner of the home's layer moved 0.6 px/s at most, and the move read as still) */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
   --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -493,7 +493,7 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
    shows at a time (tall below 1100 px, wide from it). A patch (.topo-patch) is the tile's own drawing, the full width
    of its content at 4:1.
    The move (P93, Pedro: "very slow, expanding and rotating movements, across the board"): where motion is welcome
-   every drawing turns from -3 to +3 degrees and grows from 1 to 1.06 about its centre, over 120 s each way, eased at
+   every drawing turns from -3 to +3 degrees and grows from 1 to 1.06 about its centre, over 20 s each way, eased at
    both ends, alternating; transform only (the compositor's work, nothing on the main thread); each drawing of a page
    starts at its own point of the cycle (--ph, 0 to 1, set by build.py), so none moves in lockstep with another; under
    reduced motion nothing moves. The overscan: a frame W x H turned by a is covered by a layer about its centre W + H
