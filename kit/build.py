@@ -386,7 +386,8 @@ def patch_block(rises, tone, phase=None):
         blk['interval'] = top / 5.5
         for _ in range(30):
             rr = viz.contours_rings(blk)
-            if not rr[('patch', 'edge')] and all(turned_inside(b, 720, 180) for _, _, _, b in rr['patch']):
+            ext = rr[('patch', 'extent')]
+            if not rr[('patch', 'edge')] and (ext is None or turned_inside(ext, 720, 180)) and all(turned_inside(b, 720, 180) for _, _, _, b in rr['patch']):
                 break
             lay['spread'] = round(lay['spread'] * .9, 4)
         else:
@@ -398,22 +399,23 @@ def patch_block(rises, tone, phase=None):
 
 # A course home's hero layer (P93): the tall layout a square, its rises (box) and their own rings (view) where both a
 # phone's portrait hero (390 px: about 390 x 590 to 760 with the 22 px above it) and the tablet's landscape one (768 x
-# 400 to 480) show them, above the fade (the phone's window is x .24 to .76 on the tallest hero, the tablet's y .19 to
-# .81, faded from .75); the wide one 2:1, as wide as the 1280 px hero (980 x 400 to 480), its rises above the stat
+# 400 to 480) show them, above the fade (the phone's window is x .24 to .76 on the tallest hero, the tablet's, on the shortest hero
+# (Building with AI, 376 + 22 px), y .24 to .76, faded from .71); the wide one 2:1, as wide as the 1280 px hero (980 x 400 to 480), its rises above the stat
 # boxes as far as their number allows. What's new's hero is flatter (about 390 x 360 on a phone, 980 x 260 from 768
 # px), so its tall layout is 1.6:1 (a phone shows x .16 to .84, the tablet y .22 to .78, faded from .72) and its wide
 # one 3.7:1.
-COURSE_TOPO = [dict(name='tall', width=1000, height=1000, box=(.28, .22, .72, .7), view=(.25, .2, .75, .75), place=ct_lattice),
+COURSE_TOPO = [dict(name='tall', width=1000, height=1000, box=(.29, .27, .71, .67), view=(.25, .25, .75, .7), place=ct_lattice),
                dict(name='wide', width=1000, height=500, box=(.1, .12, .9, .66), view=(.04, .06, .96, .84), place=ct_lattice)]
 NEW_TOPO = [dict(name='tall', width=1000, height=625, box=(.24, .3, .76, .64), view=(.18, .23, .82, .7), place=ct_ridge),
             dict(name='wide', width=1000, height=270, box=(.12, .26, .88, .66), view=(.1, .06, .9, .86), place=ct_ridge)]
-NEW_INTERVAL = 12000    # words between two of What's new's contour levels (its largest day, 22 Oct 2026, stands 10 to 25 levels; verify.py checks it)
+NEW_INTERVAL = 14000    # words between two of What's new's contour levels: its largest day (22 Oct 2026, 221,673 words) stands 15, inside the 10 to 25 the row sets (verify.py checks it), and its smallest (30 Oct, 14,178) still one, so no day it lists is flat
 
 
 def hero_layer(rises, tone, iv, specs, phase=0.0):
-    """A hero's topography (a course home's, What's new's): rises [(label, words or None)], one tone; the layer with its
-    two layouts (tall below 1100 px, wide from it), placed and sized by ct_fit."""
-    rs = [dict(label=k, tone=tone, **(dict(words=w) if w else dict(planned=True))) for k, w in rises]
+    """A hero's topography (a course home's, What's new's): rises [(label, words or None)] and their tone (one for all,
+    or one per rise); the layer with its two layouts (tall below 1100 px, wide from it), placed and sized by ct_fit."""
+    tones = tone if isinstance(tone, list) else [tone] * len(rises)
+    rs = [dict(label=k, tone=t, **(dict(words=w) if w else dict(planned=True))) for (k, w), t in zip(rises, tones)]
     lays = ct_fit(rs, iv, specs)
     return viz.render(dict(kind='contours', interval=iv, rises=rs, layouts=lays, phase=round(phase, 3)))
 
@@ -910,10 +912,10 @@ def tile_patch(c, phase=None):
 
 def ghost_tile(theme, short, name, col, scope, spine, phase=None):
     """P93: a planned course on the home, a ghost tile (the chip, the title, its scope in two lines, no stats, a
-    dashed patch: one flat ring, nothing written), the summary of a disclosure that opens to its whole scope and spine,
-    as the planned course's row did."""
+    dashed patch: one flat ring, nothing written), the summary of a disclosure that opens to its spine, its scope then
+    shown whole (theme 4h), as the planned course's row showed both."""
     return tile([theme, short], col, name, html.escape(scope), patch=patch_block([(short, None)], _TONE[col], phase),
-                disclosure=f'<p class="nscope">{html.escape(scope)}</p><p class="nspine"><span>Spine</span>{html.escape(spine)}</p>', cls=' ghost')
+                disclosure=f'<p class="nspine"><span>Spine</span>{html.escape(spine)}</p>', cls=' ghost')
 
 
 def md_card(m, phase=None):
@@ -997,9 +999,17 @@ nr = sum(1 for x in WHATSNEW if x['kind'] == 'unit' and x['hist'])
 nc = sum(1 for x in WHATSNEW if x['kind'] == 'course')
 # P93: What's new's topography (Pedro: "expand that to other pages"): one rise per day it lists, oldest at the left,
 # its height the words filed that day (the units' and reports' words, as the cards count them), a contour every
-# NEW_INTERVAL words, along a ridge
+# NEW_INTERVAL words, along a ridge; each day's rise in the tone of the course that filed the most words that day, as
+# its rows carry their courses' tones
 NEW_DAYS = [(d, sum(x['words'] for x in xs if x['kind'] == 'unit')) for d, xs in reversed(_days)]
-new_layer = hero_layer(NEW_DAYS, _TONE['var(--gold)'], NEW_INTERVAL, NEW_TOPO) if NEW_DAYS else ''
+def _day_tone(xs):
+    by = {}
+    for x in xs:
+        if x['kind'] == 'unit':
+            by[x['color']] = by.get(x['color'], 0) + x['words']
+    return _TONE[max(by, key=by.get)]
+NEW_TONES = [_day_tone(xs) for d, xs in reversed(_days)]
+new_layer = hero_layer(NEW_DAYS, NEW_TONES, NEW_INTERVAL, NEW_TOPO) if NEW_DAYS else ''
 whatsnew = f"""
 <section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="ACADEMY" data-c="var(--gold)" hidden>
   <header class="hero has-topo">

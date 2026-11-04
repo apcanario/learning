@@ -55,15 +55,17 @@ phone the hero is 60 to 80% of the screen and the first area's heading starts in
 Continue, no map, no eyebrow; the area headers from 768 px the label, the name, the lede and the count, below it the
 name only; every tile the chip row with its pill, the title, a tile line of at most two lines, three stats and its own
 contour patch (aria-hidden, 4:1, inside the tile; one rise per written unit with its words as the sources give them,
-each planned unit marked planned), the whole tile the link and no other link in it; one tile style; one column below
+each planned unit marked planned), the whole tile the link and no other link in it; one tile style (P93: History's
+planned courses are ghost tiles, checked with every tile by check_tiles); one column below
 768 px, two from 768, a track's only tile half the width; History's two folded blocks; the order hero, the area
 sections, the constants, the site links (Backlog, Figure kinds, Changelog), New since (What's new's first six rows, its
 heading naming its oldest day) and one link to #new, last; no sideways scroll. Every text of the hero is measured
 against the pixels under it (the contour lines and the page, shot with the texts made transparent): 4.5:1, 3:1 for
-large text. With motion allowed the hero's texts are measured at both ends and the middle of the drift with each area word shown
-in turn. With
+large text. With motion allowed the hero's texts are measured at the five poses of the move (P93; P92's drift, at both
+ends and the middle, is gone) with each area word shown in turn. With
 reduced motion no animation runs on the home; with motion allowed only transform and opacity animate
-(document.getAnimations(), each effect's keyframes), the four area words and the shown contour layout, none on a tile.
+(document.getAnimations(), each effect's keyframes), the four area words, the shown contour layout and (P93) every shown
+tile's patch.
 At 390 px with motion allowed the fresh load's LCP and longest task are printed. On the desktop a history tile, a
 markdown tile, the IA tile and the What's new link are clicked and each lands on its page. What's new (P91), at the
 same widths: every dated unit and every course start once, newest first, as home_expect orders them, grouped by day
@@ -73,6 +75,27 @@ Contrast (P90): in the light theme, every text in the home, What's new (P91), th
 home and one reading page of each course, at phone width with every <details> open, reaches 4.5:1 against the
 background it sits on (3:1 for large text), the text's opacity and every tint it sits on composited, and no text
 and no background under it is pure white; figures are left to the figure checks.
+Topographies and tiles (P93, 4 Nov 2026), at 320, 360, 390, 430, 768 and 1280 px, dark and light: each course home and
+What's new carries a contour layer behind its hero (check_topo), against the sources (home_expect: a course home one
+rise per unit of the course in its order, a written unit by its words, a planned unit flat; What's new one rise per
+day it lists, oldest first, its words the units' and reports' filed that day, the largest day 10 to 25 levels high),
+aria-hidden, textless, at most 20 KB, one layout shown, each written rise closing min(2, its levels) rings of its own,
+each rise's own rings inside the frame and above its fade, the frame covered by the turned layout; every tile patch
+4:1 with its lines inside its frame; no topography on the Changelog, the Backlog, the Figure kinds page or a reading
+page. Every tile on every page (check_tiles) has the same classes and fields (the chip of two parts, the status pill,
+the title, a line of at most two lines while closed and whole when opened, three stats, its own patch; a planned
+course's ghost no stats and one dashed ring), a history unit's tile opens to its module rows with its modules, words
+and hours from the vault, a markdown unit's links to its reading page (its brief while it is not written) with its
+sections and words from that page, each section's own text counted; one column below 768 px, two from it, a lone tile
+half the width; nothing past an edge, no sideways scroll. With motion allowed, on every one of these pages and the
+home, every running animation animates only transform or opacity, every shown contour drawing moves (the theme's
+topo-turn: a turn of --topo-turn each way and a growth to --topo-grow over --topo-cycle, read from shell.css), each at
+its own point of the cycle, and at five poses of the sweep (its two ends, its quarters and its middle; on the home with
+each area word shown in turn) every layer covers its frame, every rise and patch stays inside it and every text over
+a topography keeps 4.5:1 (3:1 large) against the pixels under it; under reduced motion no animation runs on any of
+them. At 390 px with motion allowed, LCP and the longest task are printed for the home, Greece's home and What's new.
+With --shots: the home, What's new and the five course homes at the six widths, and the motion sheets of the home,
+Greece and Information architecture at the five poses, 390 and 1280 px.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools, html as H
@@ -242,18 +265,19 @@ def home_expect():
                     f = re.sub(r'<(/?)(html|head|body|!doctype[^>]*)>', '', f, flags=re.I)
                     f = re.sub(r'<style.*?</style>|<script.*?</script>', '', f, flags=re.S | re.I)
                     return _wc(re.sub(r'\sstyle="[^"]*"', '', f))
-                us = []
+                us, tiles = [], []
                 for u, ms in units:
+                    tiles.append((f'U{u}', [(m, rw(m) if m in idx else None) for m in ms]))   # P93: every unit's tile, the audit unit's too
                     if u == c['audit_unit']:
                         continue
                     done = all(m in idx for m in ms)
                     us.append((f'U{u}', sum(rw(m) for m in ms) if done else None))
                 aw += sum(rw(m) for m in idx if m in order)
-                courses[c['home_id']] = dict(short=c['short'], units=us)
+                courses[c['home_id']] = dict(short=c['short'], units=us, tiles=tiles, family='history', tone=c['color'])
                 ap = set(prov.get('written_approx', {}).get(c['id'], []))
                 for m, d in prov.get('written', {}).get(c['id'], {}).items():
                     if m in idx:
-                        dated.append(dict(date=d, rank=order.index(m), home=c['home_id'], code=m, pid=c['prefix'] + m.replace('.', ''), approx=m in ap, course=c['short']))
+                        dated.append(dict(date=d, rank=order.index(m), home=c['home_id'], code=m, pid=c['prefix'] + m.replace('.', ''), approx=m in ap, course=c['short'], words=rw(m)))
         for c in COURSES:
             if c['family'] != 'markdown':
                 continue
@@ -271,17 +295,21 @@ def home_expect():
                     continue                                   # a course with nothing filed is not live: no tile
                 pid = f'{c.get("prefix", c["id"])}-{sc["key"].lower()}'
                 read = lambda code: rid.get(code, f'read-{c["id"]}-{code.lower()}')
-                def pw(code):
+                def secs(code):   # P93: each section's own text (not its next and previous buttons or its band's numeral)
                     page = (SITE / pid / f'{read(code)}.html')
                     page = page if page.exists() else next(SITE.glob(f'*/{read(code)}.html'))
-                    return _wc(page.read_text(encoding='utf-8').split('<div class="report', 1)[1].split('<div class="process"', 1)[0])
-                us = [(u[0], pw(u[0]) if u[0] in vlt else None) for u in sc['units']]
+                    body = page.read_text(encoding='utf-8').split('<div class="report steps">', 1)[1].split('<div class="process"', 1)[0]
+                    parts = re.findall(r'<section class="sec" data-step="\d+">(.*?)</section>(?=<section class="sec"|</div>)', body, re.S)
+                    return [_wc(re.sub(r'<span class="bn"[^>]*>.*?</span>', ' ', re.sub(r'<nav class="secnav".*?</nav>', ' ', x, flags=re.S), flags=re.S)) for x in parts]
+                sw = {u[0]: secs(u[0]) for u in sc['units'] if u[0] in vlt}
+                us = [(u[0], sum(sw[u[0]]) if u[0] in vlt else None) for u in sc['units']]
                 aw += sum(w for _, w in us if w)
-                courses[pid] = dict(short=short, units=us)
+                courses[pid] = dict(short=short, units=us, tiles=[(u[0], sw.get(u[0])) for u in sc['units']], family='markdown', tone=sc['color'],
+                                    pages={u[0]: read(u[0]) for u in sc['units'] if u[0] in vlt}, briefs={u[0]: (f'{pid}-b-' if not c.get('legacy_ids') else 'b-') + u[0].lower() for u in sc['units']})
                 for k, u in enumerate(sc['units']):
                     if u[0] in vlt and vlt[u[0]].get('written'):
                         dated.append(dict(date=str(vlt[u[0]]['written']), rank=order.index(u[0]) if u[0] in order else len(order) + k, home=pid,
-                                          code=u[0], pid=read(u[0]), approx=False, course=short))
+                                          code=u[0], pid=read(u[0]), approx=False, course=short, words=sum(sw[u[0]])))
         areas.append(dict(name=t['name'], color=t['color'], words=aw))
     dated.sort(key=lambda x: (x['date'], x['rank']), reverse=True)
     rows = [dict(x, kind='unit') for x in dated]
@@ -289,7 +317,13 @@ def home_expect():
         f = min((x for x in dated if x['home'] == home), key=lambda x: (x['date'], x['rank']))
         k = next(i for i, r in enumerate(rows) if r['kind'] == 'unit' and r['home'] == home and r['code'] == f['code'])
         rows.insert(k + 1, dict(f, kind='course', pid=home))   # below its first unit
-    return dict(courses=courses, areas=areas, newest=dated[0] if dated else None, rows=rows)
+    days, dom = {}, {}
+    tone_of = {h: e['tone'] for h, e in courses.items()}
+    for x in dated:
+        days[x['date']] = days.get(x['date'], 0) + x['words']
+        dom.setdefault(x['date'], {}); dom[x['date']][tone_of[x['home']]] = dom[x['date']].get(tone_of[x['home']], 0) + x['words']
+    return dict(courses=courses, areas=areas, newest=dated[0] if dated else None, rows=rows, days=sorted(days.items()),
+                day_tones=[max(dom[d], key=dom[d].get) for d in sorted(days)])
 
 # P92 (4 Nov 2026): the home's layout, read on the visible home panel at one width. Returns what was found and the
 # faults (bad); check_home compares the hero, the tiles and New since with home_expect().
@@ -422,7 +456,7 @@ HOME_JS = r'''(tones) => {
     if (t.id === 'track-history' && (!t.querySelector('details.howto.rules:not(.planned)') || !t.querySelector('details.planned#planned-courses'))) bad.push('History lost "Why history and myth together" or its folded Planned list');
   });
   // what runs: with reduced motion nothing on the home; with motion allowed only transform and opacity, none on a tile
-  out.anims = document.getAnimations().filter(a => a.effect && a.effect.target && h.contains(a.effect.target)).map(a => {
+  out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && h.contains(a.effect.target)).map(a => {   // P93: animations; the transitions of a hover or the theme switch are not
     const t = a.effect.target, props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(k => !['offset', 'computedOffset', 'easing', 'composite'].includes(k)))];
     return [t.className && typeof t.className === 'string' ? t.className : (t.getAttribute('class') || t.tagName), props, a.playState, !!t.closest('.course')]; });
   return out;
@@ -439,17 +473,16 @@ HERO_TEXTS_JS = r'''() => { const out = [], copy = document.querySelector('#home
     out.push({what: (e.className || e.tagName.toLowerCase()) + ' "' + e.textContent.trim().slice(0, 18) + '"', color: cs.color, large, x: r.left, y: r.top, w: r.width, h: r.height}); });
   return out; }'''
 def hero_contrast(pg, label, fails, motion=False):
-    """P92: with motion allowed, every moment that matters: the drift at both ends and the middle of its sweep (0, 15 and 30 s) and, at
-    each, each area word in turn (its animation set to the middle of its showing), every animation paused there."""
+    """P92: with motion allowed, every moment that matters; P93: at the five poses of the slow move (POSES: its two ends,
+    its quarters and its middle) and, at each, each area word in turn (its animation set to the middle of its showing),
+    every animation paused there."""
     if not motion:
         return _hero_contrast(pg, label, fails)
     names = pg.evaluate("[...document.querySelectorAll('#home .harea-w')].map(w => w.textContent)")
-    for td in (0, 15000, 30000):
+    for p in POSES:
         for k, nm in enumerate(names):
-            ta = k * 3000 + 1500
-            pg.evaluate(f'''() => document.getAnimations().forEach(a => {{ a.pause(); a.currentTime = a.animationName === 'topo-drift' ? {td} : {ta}; }})''')
-            pg.wait_for_timeout(80)
-            _hero_contrast(pg, f'{label} (drift {td / 1000:.0f} s, {nm} shown)', fails, only=k)
+            pose(pg, p, k * 3000 + 1500)
+            _hero_contrast(pg, f'{label} (pose {p:g} of the sweep, {nm} shown)', fails, only=k)
     pg.evaluate("() => document.getAnimations().forEach(a => a.play())")
 
 def _hero_contrast(pg, label, fails, only=None):
@@ -460,7 +493,7 @@ def _hero_contrast(pg, label, fails, only=None):
     if only is not None:   # the cycling words: only the one shown at this moment
         ws = [i for i in items if i['what'].startswith('harea-w')]
         items = [i for i in items if not i['what'].startswith('harea-w')] + ws[only:only + 1]
-    pg.evaluate("""() => { const s = document.createElement('style'); s.id = 'p92hide'; s.textContent = '#home .hcopy, #home .hcopy * {color: transparent !important; border-color: transparent !important}'; document.head.appendChild(s); }""")
+    pg.evaluate("""() => { const s = document.createElement('style'); s.id = 'p92hide'; s.textContent = '#home .hcopy, #home .hcopy * {color: transparent !important; border-color: transparent !important; transition: none !important}'; document.head.appendChild(s); }""")
     pg.wait_for_timeout(60)
     img = Image.open(io.BytesIO(pg.screenshot())).convert('RGB')
     pg.evaluate("document.getElementById('p92hide').remove()")
@@ -537,15 +570,301 @@ def check_home(pg, label, fails, expect, motion=False):
     an = r.get('anims', [])
     if motion:
         if [a for a in an if any(p not in ('transform', 'opacity') for p in a[1])]: fails.append(f'home {label}: an animation runs on more than transform and opacity: {[a for a in an if any(p not in ("transform", "opacity") for p in a[1])]}')
-        if [a for a in an if a[3]]: fails.append(f'home {label}: an animation runs on a tile: {[a for a in an if a[3]][:3]}')
         kinds = sorted({a[0].split()[0] for a in an})
-        if kinds != ['harea-w', 'topo-l'] or sum(1 for a in an if a[0].startswith('harea-w')) != len(names): fails.append(f'home {label}: with motion allowed the animations are {[(a[0], a[1]) for a in an]}, expected the {len(names)} area words and the shown contour layout')
+        npatch = pg.evaluate("[...document.querySelectorAll('#home .topo-patch')].filter(t => t.getBoundingClientRect().width > 0).length")
+        if kinds != ['harea-w', 'topo-l'] or sum(1 for a in an if a[0].startswith('harea-w')) != len(names) or sum(1 for a in an if a[0].startswith('topo-l')) != 1 + npatch:
+            fails.append(f'home {label}: with motion allowed the animations are {[(a[0], a[1]) for a in an]}, expected the {len(names)} area words, the shown contour layout and every shown tile\'s patch ({npatch}; P93)')
     elif an: fails.append(f'home {label}: under reduced motion {len(an)} animations run: {an[:3]}')
     print(f'home {label}: hero {r.get("heroH")} (px, screen, %), copy {r.get("copy")!r}; area line {[w for w, _ in r.get("words", [])]}, shown {r.get("lineShown")}, static shown {r.get("staticShown")}; '
           f'link {r.get("link") and r["link"][:4]}; contours {r.get("topoBytes")} B, layout {r.get("layout")}, rises {[(l, k, z) for _, rs in r.get("layouts", [])[:1] for l, _, k, _, z in rs]}; '
           f'tiles {[(c["home"], len(c["rises"] or []), len(c["plan"] or [])) for c in r.get("cards", [])]}; heads {[x[1:] for x in r.get("heads", [])][:1]}; '
           f'first area at {r.get("first")} px; New since {len(r.get("rows") or [])} rows; animations {len(an)}; page {r.get("scroll")}')
     hero_contrast(pg, label, fails, motion)
+    return r
+
+# P93 (4 Nov 2026): a page's topography at the pose it is in: its hero's layer (header.hero > .topo) and every visible
+# tile patch. For each: bytes, aria-hidden, no text, the layouts shown, each layout's rises (label, words or null for a
+# planned one, levels, stroke, own closed rings) and, on the shown layout, (a) whether the frame is covered: each corner of
+# the frame mapped back through the layout's transform (its computed matrix about its origin) into the layout's own box;
+# (b) for a hero, which rises' own rings (data-box, through the SVG's screen matrix) leave the frame or reach into its
+# fade (its last 10%); (c) for a patch, whether every line stays inside its frame. And every animation on the page with
+# its properties and its directed progress.
+TOPO_JS = r"""(pid) => {
+  const P = document.getElementById(pid), out = {pid, patches: []};
+  if (!P) return out;
+  const vis = e => !!e && getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0;
+  const covered = (svg, frame) => {
+    const cs = getComputedStyle(svg), fr = frame.getBoundingClientRect();
+    const lx = parseFloat(cs.left), ly = parseFloat(cs.top), lw = parseFloat(cs.width), lh = parseFloat(cs.height);
+    const o = cs.transformOrigin.split(' ').map(parseFloat);
+    const M = cs.transform === 'none' ? new DOMMatrix() : new DOMMatrix(cs.transform), I = M.inverse();
+    const bad = [];
+    for (const [qx, qy] of [[0, 0], [fr.width, 0], [0, fr.height], [fr.width, fr.height]]) {
+      const v = I.transformPoint(new DOMPoint(qx - lx - o[0], qy - ly - o[1]));
+      const x = v.x + o[0], y = v.y + o[1];
+      if (x < -0.5 || y < -0.5 || x > lw + 0.5 || y > lh + 0.5) bad.push([Math.round(qx), Math.round(qy), Math.round(x), Math.round(y)]);
+    }
+    return {bad, size: [Math.round(lw), Math.round(lh), Math.round(fr.width), Math.round(fr.height)], m: cs.transform};
+  };
+  const rises = svg => [...svg.querySelectorAll('g.ct-rise, g.ct-plan')].map(g => { const pa = g.querySelector('path, circle');
+    return [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-rings'),
+            getComputedStyle(pa).stroke, g.classList.contains('ct-plan') ? 0 : (g.querySelector('path').getAttribute('d').split('z').length - 1)]; });
+  const one = (t, hero) => {
+    const r = {bytes: new Blob([t.outerHTML]).size, aria: t.getAttribute('aria-hidden'), text: !!(t.querySelector('text, title, desc') || t.textContent.trim()),
+               shown: [...t.querySelectorAll(':scope > svg.topo-l')].filter(vis).map(x => x.getAttribute('data-layout')),
+               layouts: [...t.querySelectorAll(':scope > svg.topo-l')].map(x => [x.getAttribute('data-layout'), rises(x)]), ph: getComputedStyle(t).getPropertyValue('--ph').trim()};
+    const sv = [...t.querySelectorAll(':scope > svg.topo-l')].find(vis);
+    if (sv) {
+      r.cover = covered(sv, t);
+      const fr = t.getBoundingClientRect(), m = sv.getScreenCTM();
+      if (hero) {
+        r.outside = [];
+        sv.querySelectorAll('g.ct-rise[data-box]').forEach(g => { const b = g.getAttribute('data-box').split(' ').map(Number);
+          for (const [x, y] of [[b[0], b[1]], [b[2], b[1]], [b[0], b[3]], [b[2], b[3]]]) { const q = new DOMPoint(x, y).matrixTransform(m);
+            if (q.x < fr.left - .5 || q.x > fr.right + .5 || q.y < fr.top - .5 || q.y > fr.top + .9 * fr.height + .5) { r.outside.push(g.getAttribute('data-label')); break; } } });
+        r.frame = [Math.round(fr.left), Math.round(fr.right), Math.round(fr.top + scrollY), Math.round(fr.height)];
+      } else {
+        let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+        sv.querySelectorAll('path, circle').forEach(e => { const b = e.getBoundingClientRect(); if (!b.width && !b.height) return; x0 = Math.min(x0, b.left); y0 = Math.min(y0, b.top); x1 = Math.max(x1, b.right); y1 = Math.max(y1, b.bottom); });
+        r.lines = [x0 - fr.left, y0 - fr.top, fr.right - x1, fr.bottom - y1].map(v => Math.round(v * 10) / 10);
+        r.ratio = Math.round(fr.width / fr.height * 1000) / 1000;
+      }
+    }
+    return r;
+  };
+  const hl = P.querySelector(':scope > header.hero > .topo');
+  out.hero = hl ? one(hl, true) : null;
+  out.anyTopo = P.querySelectorAll('.topo').length;
+  P.querySelectorAll('.topo.topo-patch').forEach(t => { if (vis(t)) out.patches.push(one(t, false)); });
+  out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && P.contains(a.effect.target)).map(a => {   // animations, not the transitions of a hover or the theme switch
+    const t = a.effect.target, props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(k => !['offset', 'computedOffset', 'easing', 'composite'].includes(k)))];
+    return [(t.getAttribute('class') || t.tagName).split(' ')[0], props, a.playState, a.animationName || '', a.effect.getComputedTiming().progress, !!t.closest('.topo-patch')]; });
+  return out;
+}"""
+
+# P93: every tile of a page (.course.live): its kind (a link, a disclosure, a ghost), its fields, its patch, its link or
+# its rows, the grid it stands in, and anything cut
+TILES_JS = r"""(pid) => {
+  const P = document.getElementById(pid), out = {tiles: [], grids: [], bad: []};
+  if (!P) return out;
+  const vis = e => !!e && getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0;
+  const phone = innerWidth < 768;
+  P.querySelectorAll('.course.live').forEach(t => {
+    if (!vis(t)) return;
+    const disc = t.tagName === 'DETAILS', box = disc ? t.querySelector(':scope > summary') : t;
+    const kids = [...box.children].map(e => e.tagName.toLowerCase() + ((e.getAttribute('class') || '') ? '.' + e.getAttribute('class').split(' ').join('.') : '')).join(' ');
+    const p = box.querySelector(':scope > p'), lh = p ? parseFloat(getComputedStyle(p).lineHeight) : 1;
+    const patch = box.querySelector(':scope > .topo.topo-patch'), pr = patch && patch.getBoundingClientRect(), tr = t.getBoundingClientRect();
+    const sv = patch && patch.querySelector('svg');
+    const name = (box.querySelector('.ctitle') || {}).textContent || '?';
+    const r = {name, kind: t.classList.contains('ghost') ? 'ghost' : disc ? 'disc' : t.tagName === 'A' ? 'link' : 'other', cls: [...t.classList].filter(c => !['ghost', 'pending'].includes(c)).join(' '),
+      kids, chip: [...box.querySelectorAll('.ctop > .cname > .cpart')].map(x => x.textContent), pill: box.querySelector('.ctop > .pill') ? box.querySelector('.ctop > .pill').textContent : null,
+      stats: [...box.querySelectorAll('.cstats > span')].map(x => [x.querySelector('b') ? x.querySelector('b').textContent : null, x.textContent.replace(x.querySelector('b') ? x.querySelector('b').textContent : '', '').trim()]),
+      lines: p ? (getComputedStyle(p).webkitLineClamp === '2' ? 2 : Math.round(p.scrollHeight / lh)) : 0, clipped: p ? p.scrollHeight > p.clientHeight + 1 : false, open: disc ? t.open : null,
+      href: t.getAttribute('href'), target: t.getAttribute('data-target'), mods: t.getAttribute('data-mods'),
+      rows: disc ? t.querySelectorAll(':scope > .hrows > .hrow').length : null,
+      rises: sv ? [...sv.querySelectorAll('g.ct-rise')].map(g => [g.getAttribute('data-label'), +g.getAttribute('data-words')]) : null,
+      plan: sv ? [...sv.querySelectorAll('g.ct-plan')].map(g => g.getAttribute('data-label')) : null,
+      aria: patch && patch.getAttribute('aria-hidden'), stroke: sv && sv.querySelector('path, circle') ? getComputedStyle(sv.querySelector('path, circle')).stroke : null,
+      tone: getComputedStyle(t).getPropertyValue('--c').trim(),
+      pw: pr ? Math.round(pr.width) : 0, ph: pr ? Math.round(pr.height) : 0, pin: pr ? (pr.left >= tr.left - .5 && pr.right <= tr.right + .5) : false,
+      sw: t.scrollWidth > t.clientWidth + 1, w: Math.round(tr.width)};
+    box.querySelectorAll('.ctitle, .cname, .cstats > span').forEach(e => { if (e.getBoundingClientRect().right > tr.right + .5) out.bad.push(`${name}: ${e.className || e.tagName} runs past the tile's edge`); });
+    if (t.querySelector('a') && !disc) out.bad.push(`${name}: a link inside a linked tile`);
+    out.tiles.push(r);
+  });
+  P.querySelectorAll('.cgrid').forEach(g => { if (!vis(g)) return;
+    const ts = [...g.children].filter(e => e.classList.contains('course')), gw = g.getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
+    out.grids.push([getComputedStyle(g).gridTemplateColumns.split(' ').length, ts.length, ts.length === 1 ? Math.round(ts[0].getBoundingClientRect().width) : null, Math.round((gw - gap) / 2)]); });
+  const de = document.documentElement; out.scroll = [de.scrollWidth, de.clientWidth];
+  return out;
+}"""
+
+_TM = re.search(r'--topo-turn:([\d.]+)deg;--topo-grow:([\d.]+);--topo-cycle:([\d.]+)s', (R / 'shell.css').read_text())
+TURN, GROW, CYCLE = float(_TM.group(1)), float(_TM.group(2)), float(_TM.group(3)) * 1000   # P93: the move, from the theme
+POSES = (0, .25, .5, .75, 1)   # the two ends of the sweep, its quarters and its middle
+def eased(p):
+    """CSS ease-in-out, cubic-bezier(.42, 0, .58, 1), at the point p of the sweep: the share of the move made."""
+    lo, hi = 0.0, 1.0
+    for _ in range(60):
+        t = (lo + hi) / 2
+        x = 3 * (1 - t) ** 2 * t * .42 + 3 * (1 - t) * t * t * .58 + t ** 3
+        lo, hi = (t, hi) if x < p else (lo, t)
+    t = (lo + hi) / 2
+    return 3 * (1 - t) * t * t + t ** 3
+POSE_JS = r"""([p, ta, cyc]) => { document.getAnimations().forEach(a => { if (!a.animationName) { a.finish(); return; }   // a transition (a hover, the theme switch) is let run out: paused half-way it would outrank every rule
+  a.pause();
+  if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let t = p * cyc + d; if (t < 0) t = 2 * cyc - p * cyc + d; a.currentTime = t; }
+  else if (ta !== null) a.currentTime = ta; }); }"""
+def pose(pg, p, ta=None):
+    """Every contour drawing on the page paused at the point p (0 to 1) of its sweep, its own phase taken into account;
+    the area words (the home) at ta ms of their cycle."""
+    pg.evaluate(POSE_JS, [p, ta, CYCLE]); pg.wait_for_timeout(80)
+
+# the texts of a hero over a topography (a course home's, What's new's), as the eye reads them: every element of the
+# hero with a text of its own, its colour, the opacity it is drawn at and whether it is large text
+HERO_ALL_JS = r"""(pid) => { const h = document.querySelector('#' + pid + ' > header.hero'), out = [];
+  h.querySelectorAll('*').forEach(e => { if (e.closest('.topo')) return;
+    if (![...e.childNodes].some(t => t.nodeType === 3 && t.textContent.trim())) return;
+    const cs = getComputedStyle(e), r = e.getBoundingClientRect(); if (!r.width || cs.display === 'none' || cs.visibility !== 'visible' || e.closest('[hidden]')) return;
+    let op = 1; for (let x = e; x && x !== h; x = x.parentElement) op *= parseFloat(getComputedStyle(x).opacity);
+    const size = parseFloat(cs.fontSize), large = size >= 24 || (size >= 18.66 && parseInt(cs.fontWeight) >= 700);
+    out.push({what: (e.getAttribute('class') || e.tagName.toLowerCase()) + ' "' + e.textContent.trim().slice(0, 18) + '"', color: cs.color, op, large,
+              sep: !!e.closest('[aria-hidden="true"]'), x: r.left, y: r.top, w: r.width, h: r.height}); });
+  return out; }"""
+
+def _lum(c):
+    f = lambda v: (v / 255) / 12.92 if v / 255 <= 0.04045 else ((v / 255 + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2])
+
+def texts_contrast(pg, pid, label, fails, tag=''):
+    """P93: a hero's texts against the pixels under them, as on the home (P92): every text made transparent, the hero
+    shot, each text's colour (at the opacity it is drawn with) measured against every pixel in its box: 4.5:1, 3:1 for
+    large text. Returns the lowest ratio."""
+    from PIL import Image
+    import io
+    pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(40)
+    items = pg.evaluate(HERO_ALL_JS, pid)
+    pg.evaluate("""(pid) => { const s = document.createElement('style'); s.id = 'p93hide'; s.textContent = '#' + pid + ' > header.hero *:not(.topo):not(.topo *) {color: transparent !important; text-decoration-color: transparent !important; transition: none !important}'; document.head.appendChild(s); }""", pid)
+    pg.wait_for_timeout(50)
+    hb = pg.evaluate(f"(() => {{ const r = document.querySelector('#{pid} > header.hero').getBoundingClientRect(); return Math.ceil(r.bottom + scrollY); }})()")
+    img = Image.open(io.BytesIO(pg.screenshot(full_page=True, clip=dict(x=0, y=0, width=pg.evaluate('innerWidth'), height=hb)))).convert('RGB')   # the hero whole, past the screen's foot on a short phone
+    pg.evaluate("document.getElementById('p93hide').remove()")
+    k = img.width / pg.evaluate('innerWidth')
+    worst, each = [99, ''], []
+    for it in items:
+        nums = [float(v) for v in re.findall(r'[\d.]+', it['color'])]
+        fg = [v * 255 for v in nums[:3]] if it['color'].startswith('color(') else nums[:3]   # a color-mix() computes as color(srgb r g b), 0 to 1
+        a = it['op'] * (nums[3] if len(nums) > 3 else 1)
+        box = img.crop((int(it['x'] * k), int(it['y'] * k), int((it['x'] + it['w']) * k), int((it['y'] + it['h']) * k)))
+        lo = 99
+        for _, c in box.getcolors(box.width * box.height or 1) or []:
+            col = [fg[i] * a + c[i] * (1 - a) for i in range(3)]
+            l1, l2 = _lum(col), _lum(c)
+            lo = min(lo, (max(l1, l2) + .05) / (min(l1, l2) + .05))
+        need = 3 if it['large'] else 4.5
+        if lo < worst[0]: worst = [round(lo, 2), it['what']]
+        each.append(f'{it["what"][:28]} {lo:.2f}/{need:g}')
+        if lo < need - .005:
+            fails.append(f'{pid} {label}{tag}: {it["what"]} reaches {lo:.2f}:1 over the contours under it (needs {need}:1)')
+    print(f'{pid} {label}{tag} ({pg.evaluate("innerWidth")} px): hero texts over the contours, {len(items)} measured pixel by pixel, lowest {worst[0]}:1 ({worst[1]})')
+    return worst[0]
+
+def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
+    """P93: one page's topography against the sources: the hero's layer (a course home: one rise per unit of the course
+    in its order, a written unit by its words, a planned one flat; What's new: one rise per day it lists, oldest first,
+    its words that day's; the largest day standing 10 to 25 levels), aria-hidden, no text, at most 20 KB, one layout
+    shown (tall below 1100 px, wide from it), each written rise closing min(2, levels) rings of its own, in its tone,
+    the frame covered at the pose it is in, each rise's own rings inside the frame and above the fade (at 390 px: inside
+    the phone's view); every patch 4:1, its lines inside its frame; with motion allowed only transform or opacity
+    animating, every drawing at its own point of the cycle; under reduced motion nothing running. Returns the layer's
+    info."""
+    r = pg.evaluate(TOPO_JS, pid)
+    w = pg.evaluate('innerWidth')
+    desk = w >= 1100
+    h = r.get('hero')
+    want = None
+    if pid == 'new':
+        want = [(d, wd) for d, wd in expect['days']]
+    elif pid in expect['courses']:
+        want = [(k, wd) for k, wd in expect['courses'][pid]['units']]
+    if want is not None:
+        if not h: fails.append(f'{pid} {label}: no topography behind the hero')
+        else:
+            if h['aria'] != 'true': fails.append(f'{pid} {label}: the hero\'s layer is not aria-hidden')
+            if h['text']: fails.append(f'{pid} {label}: the hero\'s layer holds text')
+            if h['bytes'] > 20 * 1024: fails.append(f'{pid} {label}: the hero\'s layer is {h["bytes"]} bytes, over 20 KB')
+            if h['shown'] != (['wide'] if desk else ['tall']): fails.append(f'{pid} {label}: the layout shown is {h["shown"]}, expected {"wide" if desk else "tall"}')
+            for name, rs in h['layouts']:
+                got = [(l, wd) for l, wd, _, _, _ in rs]
+                if got != want: fails.append(f'{pid} {label}: the {name} layout gives the rises {got[:4]}..., the sources {want[:4]}...')
+                for l, wd, k, _, z in rs:
+                    if wd and z < min(2, k): fails.append(f'{pid} {label}: the {name} rise {l} closes {z} ring(s) of its own, under {min(2, k)}')
+                strokes = [st for _, _, _, st, _ in rs]
+                want_t = expect['day_tones'] if pid == 'new' else None
+                if pid != 'new' and len(set(strokes)) != 1: fails.append(f'{pid} {label}: the {name} rises are drawn in {set(strokes)}, not the course\'s one tone')
+                if pid == 'new' and len(strokes) == len(want_t) and any(pg.evaluate(f"(() => {{ const e = document.createElement('i'); e.style.color = '{c}'; document.body.appendChild(e); const v = getComputedStyle(e).color; e.remove(); return v; }})()") != st for c, st in zip(want_t, strokes)):
+                    fails.append(f'{pid} {label}: the days are drawn in {strokes}, not each in the tone of the course that filed the most words that day ({want_t})')
+                if pid == 'new':
+                    top = max(rs, key=lambda x: x[1] or 0)
+                    if not 10 <= top[2] <= 25: fails.append(f'{pid} {label}: its largest day ({top[0]}) stands {top[2]} levels, not 10 to 25')
+            c = h.get('cover') or {}
+            if c.get('bad'): fails.append(f'{pid} {label}: the frame\'s corners {c["bad"]} fall outside the turned layout {c.get("size")}: an edge of the drawing shows')
+            if h.get('outside') and w >= 390: fails.append(f'{pid} {label}: the rises {h["outside"]} have rings outside the frame or in its fade')
+            elif h.get('outside') and not motion: print(f'{pid} {label}: below 390 px the rises {h["outside"]} reach past the narrower window (the row sets 390 px)')
+    for k, pt in enumerate(r['patches']):
+        if pt['aria'] != 'true' or pt['text']: fails.append(f'{pid} {label}: patch {k + 1} is not aria-hidden or holds text')
+        if pt.get('lines') and min(pt['lines']) < -.5: fails.append(f'{pid} {label}: patch {k + 1}\'s lines leave its frame by {[-x for x in pt["lines"] if x < 0]} px')
+        if pt.get('ratio') and abs(pt['ratio'] - 4) > .05: fails.append(f'{pid} {label}: patch {k + 1} is {pt["ratio"]}:1, not 4:1')
+    an = r['anims']
+    if motion:
+        odd = [a for a in an if any(x not in ('transform', 'opacity') for x in a[1])]
+        if odd: fails.append(f'{pid} {label}: an animation runs on more than transform and opacity: {odd[:3]}')
+        tp = [a for a in an if a[3] == 'topo-turn']
+        nt = (1 if h else 0) + len(r['patches'])
+        if len(tp) != nt: fails.append(f'{pid} {label}: {len(tp)} contour drawings move, {nt} are shown')
+        prog = sorted(a[4] for a in tp)
+        close = [(round(a, 3), round(b, 3)) for a, b in zip(prog, prog[1:]) if b - a < .02]
+        if phase and close: fails.append(f'{pid} {label}: drawings move in step (directed progress {close[:3]})')
+    elif an: fails.append(f'{pid} {label}: under reduced motion {len(an)} animations run: {an[:2]}')
+    if want is None and pid != 'home' and r['anyTopo']: fails.append(f'{pid} {label}: a topography on a page that has none')
+    return r
+
+def check_tiles(pg, pid, label, fails, expect):
+    """P93: every tile of a page the same fields and its own patch, against the sources: a history unit's tile (its
+    modules as rises by their words, the modules written, in all and its hours) opens to its module rows; a markdown
+    unit's (its sections by their words; sections, words, hours) links to its reading page, or its brief while it is not
+    written; a planned course's ghost (the chip, the title, its scope, no stats, one dashed ring); one class set; a line
+    of two lines at most while closed; one column below 768 px, two from it, a lone tile half the width; nothing past
+    an edge, no sideways scroll."""
+    r = pg.evaluate(TILES_JS, pid)
+    w = pg.evaluate('innerWidth')
+    fails += [f'{pid} {label}: {b}' for b in r['bad']]
+    if r['scroll'][0] > r['scroll'][1]: fails.append(f'{pid} {label}: the page scrolls sideways {r["scroll"]}')
+    ts = r['tiles']
+    if len({t['cls'] for t in ts}) > 1: fails.append(f'{pid} {label}: the tiles are not one style: {sorted({t["cls"] for t in ts})}')
+    for t in ts:
+        nm = t['name']
+        base = 'div.ctop span.ctitle p' + ('' if t['kind'] == 'ghost' else ' div.cstats') + ' div.topo.topo-patch' + (' svg.chev' if t['kind'] in ('disc', 'ghost') else '')
+        if t['kids'] != base: fails.append(f'{pid} {label}: {nm}: the tile holds {t["kids"]}, expected {base}')
+        if len(t['chip']) != 2: fails.append(f'{pid} {label}: {nm}: its chip has {len(t["chip"])} parts')
+        if t['kind'] != 'ghost' and not t['pill']: fails.append(f'{pid} {label}: {nm}: no status pill')
+        if t['kind'] != 'ghost' and len(t['stats']) != 3: fails.append(f'{pid} {label}: {nm}: {len(t["stats"])} stats, expected 3')
+        if not t['open'] and t['lines'] > 2: fails.append(f'{pid} {label}: {nm}: its line runs to {t["lines"]} lines')
+        if t['open'] and t['clipped']: fails.append(f'{pid} {label}: {nm}: opened, its line is still cut short')
+        if t['aria'] != 'true': fails.append(f'{pid} {label}: {nm}: its patch is not aria-hidden')
+        if not t['pin'] or abs(t['pw'] / max(t['ph'], 1) - 4) > .06: fails.append(f'{pid} {label}: {nm}: its patch is {t["pw"]} x {t["ph"]}, not 4:1 inside the tile')
+        if t['sw']: fails.append(f'{pid} {label}: {nm}: the tile scrolls sideways')
+    for cols, n, lone, half in r['grids']:
+        if w < 768 and cols != 1: fails.append(f'{pid} {label}: a tile grid in {cols} columns below 768 px')
+        if w >= 768 and cols != 2: fails.append(f'{pid} {label}: a tile grid in {cols} column(s) from 768 px')
+        if w >= 768 and lone is not None and abs(lone - half) > 2: fails.append(f'{pid} {label}: a lone tile {lone} px wide, half the grid is {half}')
+    e = expect['courses'].get(pid)
+    if e:
+        units = [t for t in ts if t['kind'] in ('disc', 'link') or (t['kind'] == 'other')]
+        if len(units) != len(e['tiles']): fails.append(f'{pid} {label}: {len(units)} unit tiles, the sources give {len(e["tiles"])} units')
+        for t, (code, parts) in zip(units, e['tiles']):
+            if e['family'] == 'history':
+                want_r = [(m, wd) for m, wd in parts if wd]
+                want_p = [m for m, wd in parts if wd is None]
+                done = len(want_r)
+                if t['kind'] != 'disc': fails.append(f'{pid} {label}: {code}: a history unit tile that is not a disclosure')
+                if t['rows'] != len(parts): fails.append(f'{pid} {label}: {code}: {t["rows"]} module rows, {len(parts)} modules')
+                if [x[0] for x in t['stats']] != [str(done), str(len(parts)), f'{sum(wd for _, wd in want_r) / 250 / 60:.1f}']: fails.append(f'{pid} {label}: {code}: its stats read {t["stats"]}')
+            else:
+                want_r = [(f'{code} §{j + 1}', wd) for j, wd in enumerate(parts or [])]
+                want_p = [] if parts else [code]
+                href = '#' + (e['pages'][code] if parts else e['briefs'][code])
+                if t['kind'] != 'link' or t['href'] != href: fails.append(f'{pid} {label}: {code}: the tile links to {t["href"]}, expected {href}')
+                ww = sum(parts or [])
+                if [x[0] for x in t['stats']] != [str(len(parts or [])), f'{ww:,}', f'{ww / 250 / 60:.1f}']: fails.append(f'{pid} {label}: {code}: its stats read {t["stats"]}')
+            if [tuple(x) for x in t['rises'] or []] != want_r: fails.append(f'{pid} {label}: {code}: its patch gives {t["rises"]}, the sources {want_r}')
+            if (t['plan'] or []) != want_p: fails.append(f'{pid} {label}: {code}: its patch marks {t["plan"]} planned, the sources {want_p}')
+    if pid == 'home':
+        gh = [t for t in ts if t['kind'] == 'ghost']
+        if gh and [t['name'] for t in gh] != [n[1] for n in NEXT]: fails.append(f'home {label}: the ghost tiles are {[t["name"] for t in gh]}, courses.py plans {[n[1] for n in NEXT]}')
+        for t in gh:
+            if t['stats'] or t['rises'] or len(t['plan'] or []) != 1: fails.append(f'home {label}: the ghost {t["name"]} shows stats {t["stats"]} or rises, or not one dashed ring ({t["plan"]})')
     return r
 
 # P91: What's new (#new), fetched through the shell: every dated unit and every course start once, newest first,
@@ -772,11 +1091,11 @@ def check_files(fails):
     shell = (SITE / 'index.html').read_text()
     heads = re.findall(r'<section class="panel[^"]*"[^>]*>', shell)
     srcs = [m.group(1) for h in heads for m in [re.search(r' data-src="([^"]+)"', h)] if m]
-    # every report and syllabus panel, a markdown course's briefs and bibliography pages, a history course home (a
-    # course panel whose label is a numbered course; Brand + AI homes are lettered and stay) and every course's
-    # "How it was built" page leave the shell (A2, P20, P22, A4)
+    # every report and syllabus panel, a markdown course's briefs and bibliography pages, every course home (P22 the
+    # history homes; P93 the markdown ones, whose unit tiles and topography would have filled the shell) and every
+    # course's "How it was built" page leave the shell (A2, P20, P22, A4, P93)
     must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-briefs|[a-z-]+-bibliography|[a-z-]+-built)"', h)
-            or (' data-kind="course"' in h and re.search(r' data-u="COURSE \d', h)) or ' id="viz-examples"' in h or ' id="new"' in h]   # P91: What's new is fetched too
+            or ' data-kind="course"' in h or ' id="viz-examples"' in h or ' id="new"' in h]   # P91: What's new is fetched too; P93: every course home, a markdown course's too
     kept = [h[:80] for h in must if ' data-src="' not in h]
     if kept: fails.append(f'split: {len(kept)} panels should be fetched but are in the shell: {kept[:2]}')
     if len(srcs) != len(must): fails.append(f'split: {len(must)} panels should be fetched but {len(srcs)} carry data-src')
@@ -1198,7 +1517,7 @@ def check_split(br, fails):
     stub = pg.evaluate("(() => { const p = document.getElementById('rome'); return p && [p.getAttribute('data-src'), (p.getAttribute('data-anchors') || '').split(' ').includes('rome-u3')]; })()") if ROME else ['rome/home.html', True]
     if stub != ['rome/home.html', True]: fails.append(f'split: #rome stub is {stub}, expected rome/home.html with its unit-card anchors')
     pg.evaluate("localStorage.clear()"); pg.goto(URL + '#greece'); pg.reload(); ready(pg); pg.wait_for_timeout(100)
-    hm = pg.evaluate("[document.getElementById('greece').hasAttribute('data-loaded'), document.querySelectorAll('#greece details.ucard').length, document.querySelectorAll('#greece details.ucard[open]').length, document.querySelector('#greece .hbtn.cont').hidden, document.querySelector('#greece .hbtn.start').hidden]")
+    hm = pg.evaluate("[document.getElementById('greece').hasAttribute('data-loaded'), document.querySelectorAll('#greece details[data-mods]').length, document.querySelectorAll('#greece details[data-mods][open]').length, document.querySelector('#greece .hbtn.cont').hidden, document.querySelector('#greece .hbtn.start').hidden]")
     if not (hm[0] and hm[1] >= 10 and hm[2] == 1 and hm[3] and not hm[4]): fails.append(f'split: #greece on a fresh load (loaded, cards, cards open, continue hidden, start shown) = {hm}')
     n0 = hits.get('/greece/home.html', 0)   # fetched once on this load (earlier fresh loads fetched it too)
     pg.evaluate("location.hash = 'm23'"); ready(pg); pg.evaluate("location.hash = 'greece'"); ready(pg); pg.wait_for_timeout(50)
@@ -1213,7 +1532,7 @@ def check_split(br, fails):
         if st != [True, True]: fails.append(f'split: failed course-home fetch state (failed, retry button) = {st}')
         fail['home'] = False
         pg.click('#rome a.hbtn[data-target="rome"]'); ready(pg); pg.wait_for_timeout(50)
-        if not pg.evaluate("document.getElementById('rome').hasAttribute('data-loaded') && document.querySelectorAll('#rome details.ucard').length > 5"): fails.append('split: retry after a failed course-home fetch did not load the home')
+        if not pg.evaluate("document.getElementById('rome').hasAttribute('data-loaded') && document.querySelectorAll('#rome details[data-mods]').length > 5"): fails.append('split: retry after a failed course-home fetch did not load the home')
     other = [e for e in errs if 'fonts.g' not in e and '503' not in e]
     if other: fails.append('split: console errors: ' + ' | '.join(other[:3]))
     if retried: print(f'split: fresh-load anchors that landed only on the retry: {", ".join(retried)}')
@@ -1353,7 +1672,7 @@ def main():
             step('rome home', dict(id='rome', nav='rome', u='COURSE 2', t='Rome', arrows=True, prev=False, next=True))
             rome_reps = pg.eval_on_selector_all('#rome a.hrow', 'as => as.map(a => a.dataset.target)')
         if rome_reps:
-            pg.evaluate("document.querySelectorAll('#rome details.ucard').forEach(d => d.open = true)")
+            pg.evaluate("document.querySelectorAll('#rome details[data-mods]').forEach(d => d.open = true)")
             first = rome_reps[min(4, len(rome_reps) - 1)]
             pg.click(f'#rome a.hrow[data-target="{first}"]'); pg.wait_for_timeout(80)
             step('rome report', dict(id=first, nav='rome', u=lambda u: u.startswith('ROME · UNIT ') and u.count(' · ') == 2, arrows=True))
@@ -1379,7 +1698,7 @@ def main():
         step('home again', dict(id='home', nav='root', arrows=False, cont=''))   # P91: no Continue on the home
         pg.click('#home a.course[href="#greece"]'); pg.wait_for_timeout(80)
         step('greece home', dict(id='greece', nav='greece', u='COURSE 1', t='Greece', prev=False, cont='(hidden)'))
-        pg.evaluate("document.querySelectorAll('#greece details.ucard').forEach(d => d.open = true)")
+        pg.evaluate("document.querySelectorAll('#greece details[data-mods]').forEach(d => d.open = true)")
         pg.click('#greece a.hrow[data-target="m23"]'); pg.wait_for_timeout(80)
         step('greek report', dict(id='m23', nav='greece', u='GREECE · UNIT 2 · 2.3', arrows=True, prev=True, next=True))
         pg.click('#nextB'); pg.wait_for_timeout(50)
@@ -1408,12 +1727,12 @@ def main():
             gr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dunit')].map(u => u.querySelector('.ut').textContent + (u.classList.contains('closed') ? ':closed' : ':open'))")
             if gr != ['Units:open', 'How it is built:closed']: fails.append(f'{bid} drawer groups on arrival: {gr}')
             pg.click('#closeB'); pg.wait_for_timeout(200)
-            ba = pg.evaluate(f"[...document.querySelectorAll('#{bid} a.hrow')].map(a => a.getAttribute('href'))")
+            ba = pg.evaluate(f"[...document.querySelectorAll('#{bid} a.course.live')].map(a => a.getAttribute('href'))")   # P93: the unit tiles
             if not ba or not all(h.startswith('#read-') for h in ba): fails.append(f'{bid} written units do not open reading pages: {ba[:3]}')
             # navigation never leaves the site: no artifact link in a hero, a button row or the drawer (a unit's own citations may cite one)
             ext = pg.evaluate(f"[...document.querySelectorAll('.panel[data-ctx=\"{bid}\"] .hero a, .panel[data-ctx=\"{bid}\"] .hlinks a, .panel[data-ctx=\"{bid}\"] .hrows a.hrow:not([target]), [data-navctx=\"{bid}\"] a')].filter(a => a.getAttribute('href').startsWith('http')).map(a => a.href)")
             if ext: fails.append(f'{bid} navigation links out of the site: {ext[:3]}')
-            pg.click(f'#{bid} a.hrow[href="{ba[0]}"]'); pg.wait_for_timeout(80)
+            pg.click(f'#{bid} a.course.live[href="{ba[0]}"]'); pg.wait_for_timeout(80)
             step(f'{bid} reading', dict(id=ba[0][1:], nav=bid, u=lambda u: u.startswith(short.upper() + ' · '), arrows=True, prev=True))
             for pid, t in ((f'{bid}-build', 'How it is built'), (f'{bid}-order', 'Build order'), (f'briefs-{key.lower()}', 'Briefs'), (f'{bid}-audits', 'Audits'), (f'{bid}-bibliography', 'Bibliography'), (f'{bid}-changelog', 'Changelog')):
                 pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(50)
@@ -1483,7 +1802,7 @@ def main():
         t = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
           return {off: r.right <= 0, menu: getComputedStyle(document.getElementById('menuB')).display !== 'none',
                   main: document.querySelector('main').getBoundingClientRect().width,
-                  cols: getComputedStyle(document.querySelector('#''' + TAB + ''' .ucards')).gridTemplateColumns.split(' ').length,
+                  cols: getComputedStyle(document.querySelector('#''' + TAB + ''' .part .cgrid')).gridTemplateColumns.split(' ').length,
                   home: getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns.split(' ').length}; }''')
         if not t['off']: fails.append('tablet: drawer is on screen before the menu button is pressed')
         if not t['menu']: fails.append('tablet: menu button hidden')
@@ -1579,26 +1898,75 @@ def main():
                         print(f'home desktop: {sel} opens #{t} on {land[0]}, at {land[2]} px' + (', its card open' if land[3] else ''))
             ctx.close()
 
-        # P92: with motion allowed, at every width, dark and light: only transform and opacity animate, none on a
-        # tile, the cycling area line shows and the static line is for a screen reader only; the hero's texts over the
-        # contours as they drift; and at 390 px the hero's weight on a fresh load (LCP and the longest task, from the
-        # browser's performance entries)
+        # P93: the course homes, What's new and the pages without a topography, at every width, dark and light, under
+        # reduced motion: each page's topography and tiles against the sources (check_topo, check_tiles), two history
+        # unit tiles opened (their rows, their line whole); the home's tiles too
+        TOPO_PAGES = [x for x in ('greece', 'rome', 'brand-a', 'brand-b', 'ux-ia') if x in HAS or x in EXPECT['courses']] + ['new']
+        NONE_PAGES = [x for x in ('changelog', 'backlog', 'viz-examples') if (x != 'viz-examples' or 'figures' not in OMIT) and (x not in ('changelog', 'backlog') or x not in OMIT)]
+        for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:
+            ctx, pg, _ = new_page(p, br, errors, name + ' pages', w, h, mobile)
+            reads = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => { const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
+            for theme in ('dark', 'light'):
+                if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(120)
+                pg.evaluate("document.querySelectorAll('#planned-courses').forEach(d => d.open = true)"); pg.wait_for_timeout(60)
+                check_topo(pg, 'home', f'{name} {theme}', fails, EXPECT); check_tiles(pg, 'home', f'{name} {theme}', fails, EXPECT)
+                pg.evaluate("document.querySelectorAll('#planned-courses').forEach(d => d.open = false)")
+                for pid in TOPO_PAGES + NONE_PAGES + reads:
+                    pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(120)
+                    t = check_topo(pg, pid, f'{name} {theme}', fails, EXPECT)
+                    if pid in TOPO_PAGES and pid != 'new':
+                        pg.evaluate(f"document.querySelectorAll('#{pid} details[data-mods]').forEach((d, k) => d.open = k < 2)"); pg.wait_for_timeout(60)
+                        tl = check_tiles(pg, pid, f'{name} {theme}', fails, EXPECT)
+                        pg.evaluate(f"document.querySelectorAll('#{pid} details[data-mods]').forEach(d => d.open = false)")
+                        if theme == 'dark': print(f"{pid} {name}: layer {t['hero'] and t['hero']['bytes']} B, layout {t['hero'] and t['hero']['shown']}, frame {t['hero'] and t['hero'].get('frame')}; {len(tl['tiles'])} tiles, {len(t['patches'])} patches, grids {tl['grids'][:2]}")
+                    elif pid == 'new' and theme == 'dark':
+                        print(f"new {name}: layer {t['hero'] and t['hero']['bytes']} B, layout {t['hero'] and t['hero']['shown']}, frame {t['hero'] and t['hero'].get('frame')}, days {[(l, k) for l, _, k, _, _ in t['hero']['layouts'][0][1]] if t['hero'] else None}")
+            ctx.close()
+
+        # P92: with motion allowed, at every width, dark and light: only transform and opacity animate, the cycling area
+        # line shows and the static line is for a screen reader only; the hero's texts over the contours; and at 390 px
+        # the weight of a fresh load (LCP and the longest task, from the browser's performance entries). P93: on every
+        # page: every contour drawing moves (the hero's layer and every tile's patch, transform only, each at its own
+        # point of the cycle; nothing else on a page without one), and at the five poses of the sweep every layer covers
+        # its frame, every rise and patch stays inside it, and every text over a topography keeps its contrast; LCP and
+        # the longest task on the home, a course home and What's new
+        def perf_of(pg, pid):
+            pg.evaluate(f"localStorage.clear(); location.hash = '{pid}'")
+            pg.evaluate('''() => { window.__p92 = {lcp: 0, lt: 0, n: 0}; }''')
+            pg.reload(); pg.wait_for_timeout(100)
+            pg.evaluate('''() => { window.__p92 = {lcp: 0, lt: 0, n: 0};
+              new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lcp = Math.max(window.__p92.lcp, e.startTime); })).observe({type: 'largest-contentful-paint', buffered: true});
+              new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lt = Math.max(window.__p92.lt, e.duration); window.__p92.n++; })).observe({type: 'longtask', buffered: true}); }''')
+            pg.wait_for_timeout(3000)
+            return pg.evaluate('window.__p92')
+        PERF = {}
         for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:   # P92 check: every width, not two
             ctx, pg, _ = new_page(p, br, errors, name + ' motion', w, h, mobile, motion=True)
             if name == 'phone':
-                pg.evaluate('''() => { window.__p92 = {lcp: 0, lt: 0, n: 0};
-                  new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lcp = Math.max(window.__p92.lcp, e.startTime); })).observe({type: 'largest-contentful-paint', buffered: true});
-                  new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lt = Math.max(window.__p92.lt, e.duration); window.__p92.n++; })).observe({type: 'longtask', buffered: true}); }''')
-                pg.reload(); pg.wait_for_timeout(200)
-                pg.evaluate('''() => { window.__p92 = {lcp: 0, lt: 0, n: 0};
-                  new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lcp = Math.max(window.__p92.lcp, e.startTime); })).observe({type: 'largest-contentful-paint', buffered: true});
-                  new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lt = Math.max(window.__p92.lt, e.duration); window.__p92.n++; })).observe({type: 'longtask', buffered: true}); }''')
-                pg.wait_for_timeout(3000)
-                perf = pg.evaluate('window.__p92')
-                print(f"home phone motion: LCP {perf['lcp']:.0f} ms, longest task {perf['lt']:.0f} ms ({perf['n']} long tasks over 50 ms), on a fresh load from the local server")
-            check_home(pg, name + ' motion', fails, EXPECT, motion=True)
-            pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
-            check_home(pg, name + ' motion light', fails, EXPECT, motion=True)
+                for pid in ('home', 'greece', 'new'):
+                    PERF[pid] = perf_of(pg, pid)
+                    print(f"{pid} phone motion: LCP {PERF[pid]['lcp']:.0f} ms, longest task {PERF[pid]['lt']:.0f} ms ({PERF[pid]['n']} long tasks over 50 ms), on a fresh load from the local server")
+                pg.evaluate("location.hash = 'home'"); ready(pg)
+            for theme in ('dark', 'light'):
+                if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                check_home(pg, name + (' motion' if theme == 'dark' else ' motion light'), fails, EXPECT, motion=True)
+                pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(200)
+                check_topo(pg, 'home', f'{name} motion {theme}', fails, EXPECT, motion=True)
+                for p_ in POSES:
+                    pose(pg, p_, 1500)
+                    check_topo(pg, 'home', f'{name} motion {theme} pose {p_:g}', fails, EXPECT, motion=True, phase=False)
+                pg.evaluate("() => document.getAnimations().forEach(a => a.play())")
+                for pid in TOPO_PAGES + NONE_PAGES:
+                    pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(250)
+                    check_topo(pg, pid, f'{name} motion {theme}', fails, EXPECT, motion=True)
+                    if pid in TOPO_PAGES:
+                        lows = []
+                        for p_ in POSES:
+                            pose(pg, p_)
+                            check_topo(pg, pid, f'{name} motion {theme} pose {p_:g}', fails, EXPECT, motion=True, phase=False)
+                            lows.append(texts_contrast(pg, pid, f'{name} motion {theme}', fails, f' pose {p_:g}'))
+                        pg.evaluate("() => document.getAnimations().forEach(a => a.play())")
             ctx.close()
 
         if SHOTS:
@@ -1607,7 +1975,8 @@ def main():
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile)
                 for theme in ('dark', 'light'):
                     pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
-                    for pid in (['home', 'new'] if name.startswith('phone3') or name == 'phone430' else ['home', 'new', TAB, rp] + [x for x in PAGES if x not in ('home', 'new', TAB, rp)]):
+                    COURSE_SHOTS = ['home', 'new'] + TOPO_PAGES[:-1]   # P93: the home, What's new and every course home at every width
+                    for pid in ((COURSE_SHOTS + [x for x in PAGES if x not in COURSE_SHOTS]) if name.startswith('phone3') or name == 'phone430' else COURSE_SHOTS + [x for x in [TAB, rp] + PAGES if x not in COURSE_SHOTS]):
                         pg.evaluate(f"localStorage.removeItem('pm-sec-{pid}')")   # P68: each shot opens on section 1
                         if pid == 'home':   # P90: the home is shot as a fresh visit (P91: nothing on it depends on the visit, but the shot stays clean)
                             pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')")
@@ -1631,30 +2000,33 @@ def main():
                                 print(f'shots: {name} {pid} figure {k + 1} ({kind}) {theme}: {nf} frame' + ('s' if nf != 1 else ''))
                             pg.evaluate('window.scrollTo(0, 0)')
                 ctx.close()
-            # P92: the hero at five moments across one cycle of the area line (12 s) and one sweep of the drift (30 s), at
-            # 390 and 1280 px with motion allowed, dark and light: every animation paused and set to the moment, the hero
-            # shot, the five stacked with their times in one sheet
+            # P92: the hero at five moments; P93: at the five poses of the slow move (POSES: the two ends of the sweep,
+            # its quarters and its middle; the home's area line at 0, 3, 6, 9 and 12 s of its cycle), at 390 and 1280 px
+            # with motion allowed, dark and light, for the home, a history course home (Greece) and a markdown course
+            # home (Information architecture): every animation paused and set to the pose, the hero shot, the five
+            # stacked with their times in one sheet (<width>-<page>-motion-<theme>.png)
             from PIL import Image, ImageDraw, ImageFont
             for name, w, h, mobile in (('phone', 390, 844, True), ('desktop', 1280, 800, False)):
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile, motion=True)
-                for theme in ('dark', 'light'):
-                    pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')"); pg.goto(URL + '#home'); pg.reload(); ready(pg); pg.wait_for_timeout(400)
-                    ims, tags = [], []
-                    for k in range(5):
-                        ta, td = k * 3000, k * 7500
-                        pg.evaluate(f'''() => document.getAnimations().forEach(a => {{ a.pause(); a.currentTime = a.animationName === 'topo-drift' ? {td} : {ta}; }})''')
-                        pg.wait_for_timeout(120)
-                        tmp = SHOTS / f'_{name}-hero-{k}.png'
-                        pg.locator('#home .hhome').screenshot(path=str(tmp), animations='allow')
-                        ims.append(Image.open(tmp)); tags.append(f'{name} · {theme} · moment {k + 1} of 5: area line at {ta / 1000:.0f} s of its 12 s cycle, drift at {td / 1000:.1f} s of its 30 s sweep'); tmp.unlink()
-                    sc = max(1, round(ims[0].width / pg.evaluate("document.querySelector('#home .hhome').getBoundingClientRect().width")))
-                    font, band = ImageFont.load_default(size=12 * sc), 26 * sc
-                    sheet = Image.new('RGB', (ims[0].width, sum(i.height + band for i in ims)), (128, 128, 128))
-                    d, y = ImageDraw.Draw(sheet), 0
-                    for im, tg in zip(ims, tags):
-                        d.text((6 * sc, y + 6 * sc), tg, fill=(0, 0, 0), font=font); y += band; sheet.paste(im, (0, y)); y += im.height
-                    sheet.save(SHOTS / f'{name}-hero-motion-{theme}.png')
-                    print(f'shots: {name} hero motion sheet, {theme}')
+                for pid in [x for x in ('home', 'greece', 'ux-ia') if x == 'home' or x in TOPO_PAGES]:
+                    sel = '#home .hhome' if pid == 'home' else f'#{pid} > header.hero'
+                    for theme in ('dark', 'light'):
+                        pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')"); pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(500)
+                        ims, tags = [], []
+                        for k, p_ in enumerate(POSES):
+                            pose(pg, p_, k * 3000); pg.wait_for_timeout(60)
+                            tmp = SHOTS / f'_{name}-{pid}-{k}.png'
+                            pg.locator(sel).screenshot(path=str(tmp), animations='allow')
+                            ims.append(Image.open(tmp)); tmp.unlink()
+                            tags.append(f'{name} · {pid} · {theme} · pose {k + 1} of 5: {p_:g} of the sweep ({p_ * CYCLE / 1000:.0f} s of {CYCLE / 1000:.0f} s: turn {-TURN + 2 * TURN * eased(p_):+.2f}°, scale {1 + (GROW - 1) * eased(p_):.3f})' + (f'; area line at {k * 3:.0f} s of its 12 s cycle' if pid == 'home' else ''))
+                        sc = max(1, round(ims[0].width / pg.evaluate(f"document.querySelector('{sel}').getBoundingClientRect().width")))
+                        font, band = ImageFont.load_default(size=12 * sc), 26 * sc
+                        sheet = Image.new('RGB', (ims[0].width, sum(i.height + band for i in ims)), (128, 128, 128))
+                        d, y = ImageDraw.Draw(sheet), 0
+                        for im, tg in zip(ims, tags):
+                            d.text((6 * sc, y + 6 * sc), tg, fill=(0, 0, 0), font=font); y += band; sheet.paste(im, (0, y)); y += im.height
+                        sheet.save(SHOTS / f'{name}-{pid}-motion-{theme}.png')
+                        print(f'shots: {name} {pid} motion sheet, {theme}')
                 ctx.close()
             # V1: each figure of the examples page as the reader sees it in its frame, then one sheet per width and theme
             for name, w, h, mobile in (VIEWPORTS if 'figures' not in OMIT else []):

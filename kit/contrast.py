@@ -18,7 +18,12 @@ blue) on the page (--bg: dark, the page; light, the paper), large text (28 px, 6
 (--muted); the headline (--fg, large); the lede (--muted) and the quiet What's new link (--fg, its arrow --muted) at
 4.5:1; and every one of them over a contour line of each area's tone at the hero's opacity (--topo-a composited over
 --bg, the densest a line gets: two crossing lines never share a pixel at 1 px and full coverage), at the same bars.
-verify.py measures the same texts on the built page, pixel by pixel, over the lines actually under them."""
+verify.py measures the same texts on the built page, pixel by pixel, over the lines actually under them.
+P93 (4 Nov 2026): a course home's and What's new's hero texts (the crumbs, the eyebrow and its course label, the
+headline, the lede, the outlined button, the flag) over a line of every tone at --topo-a, one line and two stacked in a
+pixel, in both themes; and the tile's texts (its chip on each tone, a ghost's outlined chip and line, its title, line
+and stats on a card, the status pills on a card). Exits 1 if any is under its bar. verify.py measures the heroes on
+the built page at five poses of the move, which is the authority: two rings rarely pass within a pixel."""
 import re, sys, pathlib
 
 def rgb(h):
@@ -96,4 +101,30 @@ if __name__ == '__main__':
             if worst[1] < bar:
                 low.append(f'{name} {what} {worst[1]:.2f} ({worst[0]})')
     print('P92: ALL HOME PAIRS PASS' if not low else 'UNDER THE BAR: ' + ', '.join(low))
-    sys.exit(1 if low else 0)
+    # P93: a course home's and What's new's hero texts over the contour lines of every tone at --topo-a (one line, and
+    # two lines stacked in one pixel, where two rings pass within a pixel of each other: alpha 1 - (1 - a)^2), and the
+    # tile's texts: the chip (--on-accent on the tone), a ghost's outlined chip (--fg on --card and --bg), a ghost's line
+    # (--muted), a tile's title, stats and line (--fg, --muted on --card), the status pills on a tile (on --card)
+    low93 = []
+    for name, t in (('light', tok), ('dark', dark_tokens(css))):
+        bg, card, fg, mu, on = (rgb(t[k]) for k in ('bg', 'card', 'fg', 'muted', 'on-accent'))
+        a = alpha(css, 'topo-a', blocks[name]); a2 = 1 - (1 - a) ** 2
+        print(f"P93 pairs, {name} (contour lines at --topo-a {a}; two stacked {a2:.3f}):")
+        hero = [('crumb link, separator (muted)', mu, 4.5), ('crumb here (fg)', fg, 4.5), ('eyebrow (muted)', mu, 4.5), ('headline (fg, large)', fg, 3),
+                ('lede (muted)', mu, 4.5), ('outlined button label (muted)', mu, 4.5), ('outlined button title (fg)', fg, 4.5), ('flag (muted)', mu, 4.5)]
+        hero += [(f'eyebrow course label ({c}: .u, 78% with fg)', mix(rgb(t[c]), fg, .78), 4.5) for c in ACCENTS]
+        for what, c, bar in hero:
+            one = min(ratio(c, mix(rgb(t[tn]), bg, a)) for tn in ACCENTS)
+            two = min(ratio(c, mix(rgb(t[tn]), bg, a2)) for tn in ACCENTS)
+            print(f'  {what:44} on the page {ratio(c, bg):5.2f}; over one line {one:5.2f}; over two stacked {two:5.2f}' + ('' if one >= bar else f'  UNDER {bar}:1'))
+            if one < bar: low93.append(f'{name} {what} {one:.2f}')
+        tiles = [(f'chip on {c} (on-accent)', on, rgb(t[c]), 4.5) for c in ACCENTS]
+        tiles += [('ghost chip on card (fg)', fg, card, 4.5), ('ghost chip on page (fg)', fg, bg, 4.5), ('ghost line on card (muted)', mu, card, 4.5), ('ghost line on page (muted)', mu, bg, 4.5),
+                  ('tile title on card (fg)', fg, card, 4.5), ('tile line and stat labels on card (muted)', mu, card, 4.5)]
+        tiles += [(f'pill {k} on card ({c}, 78% with fg)', mix(rgb(t[c]), fg, .78), card, 4.5) for k, c in (('live', 'teal'), ('prog', 'gold'), ('unck', 'orange'), ('next', 'blue'))]
+        for what, c, b, bar in tiles:
+            r = ratio(c, b)
+            print(f'  {what:44} {r:5.2f}' + ('' if r >= bar else f'  UNDER {bar}:1'))
+            if r < bar: low93.append(f'{name} {what} {r:.2f}')
+    print('P93: ALL NEW PAIRS PASS' if not low93 else 'P93 UNDER THE BAR: ' + ', '.join(low93))
+    sys.exit(1 if low or low93 else 0)

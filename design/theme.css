@@ -69,7 +69,7 @@
   --fg:#ececf1;--muted:#9a9aa6;--dim:#6b6b78;
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
-  --topo-a:.2;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page) and a tile's patch */
+  --topo-a:.16;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page; P93: .16, from .2, so the course homes' and What's new's texts, which stand over the lines, keep theirs at every pose of the move) and a tile's patch */
   --topo-turn:3deg;--topo-grow:1.06;--topo-cycle:120s;   /* P93: the contours' one slow move, both themes: a turn of +/- 3 degrees and a growth to 1.06, over 120 s each way */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
   --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
@@ -89,7 +89,7 @@
   --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
   --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
   --on-accent:#f5f2eb;
-  --topo-a:.2;--topo-p:.6;
+  --topo-a:.16;--topo-p:.6;
   --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }}
@@ -98,7 +98,7 @@
   --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
   --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
   --on-accent:#f5f2eb;
-  --topo-a:.2;--topo-p:.6;
+  --topo-a:.16;--topo-p:.6;
   --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }
@@ -194,11 +194,9 @@ main{max-width:700px;margin:0 auto;padding-block:22px 60px;padding-left:max(16px
 /* 4a · report page */
 .phead{margin-bottom:22px}
 .eyebrow{font-size:12px;color:var(--muted);margin-bottom:8px}
-.eyebrow .u{font-family:var(--mono);color:var(--c)}
+.eyebrow .u{font-family:var(--mono);color:color-mix(in srgb,var(--c) 78%,var(--fg))}   /* P93: the light theme's mix (P72) in both themes: the dark blue course label measured 4.31:1 on the page, under 4.5:1 before any contour line passed under it */
 .eyebrow .pill{display:inline-block;vertical-align:1px;margin:0 0 0 4px}
 .eyebrow .seg{display:inline-block;max-width:100%}                          /* P72: a segment wraps whole, never mid-phrase */
-:root[data-theme="light"] .eyebrow .u{color:color-mix(in srgb,var(--c) 78%,var(--fg))}   /* P72: course and unit labels at 11 px reach 4.5:1 with margin */
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .eyebrow .u{color:color-mix(in srgb,var(--c) 78%,var(--fg))}}
 .phead h1{font-size:28px;line-height:1.12;margin:0 0 14px;letter-spacing:-.01em;text-wrap:balance}
 .toc{display:flex;flex-wrap:wrap;gap:6px}
 /* fix: 44 px targets (was 32) */
@@ -266,18 +264,18 @@ pre.tree{background:var(--card);border:1px solid var(--line);border-radius:8px;p
 .hrow.soon small{color:var(--dim)}
 /* status pills */
 .pill{flex:0 0 auto;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);border:1px solid var(--line-2);border-radius:999px;padding:2px 8px;margin-top:3px}
-.pill.live{color:var(--teal);border-color:var(--teal)}
-.pill.prog{color:var(--gold);border-color:var(--gold)}
-.pill.unck{color:var(--orange);border-color:color-mix(in srgb,var(--orange) 55%,transparent)}
-.pill.next{color:var(--blue);border-color:color-mix(in srgb,var(--blue) 55%,transparent)}
+/* P93: a pill's word is its tone mixed 78% with --fg, as the eyebrow's course label (4a), so it reads at 4.5:1 on a tile's
+   card in both themes (the dark blue "next" measured about 4.1:1 there in its own tone); its outline stays the tone */
+.pill.live{color:color-mix(in srgb,var(--teal) 78%,var(--fg));border-color:var(--teal)}
+.pill.prog{color:color-mix(in srgb,var(--gold) 78%,var(--fg));border-color:var(--gold)}
+.pill.unck{color:color-mix(in srgb,var(--orange) 78%,var(--fg));border-color:color-mix(in srgb,var(--orange) 55%,transparent)}
+.pill.next{color:color-mix(in srgb,var(--blue) 78%,var(--fg));border-color:color-mix(in srgb,var(--blue) 55%,transparent)}
 
 /* 4c · syllabus, prompt boxes, buttons */
 .hlinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .hlinks[data-one]{grid-template-columns:1fr}
 .hbtn{display:flex;flex-direction:column;gap:2px;min-height:44px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--on-accent);background:var(--cc,var(--red));border:1px solid var(--cc,var(--red));min-width:0}
-.hbtn span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
-:root[data-theme="light"] .hbtn span{opacity:1}   /* P90: the label at full strength on the light accents, 4.5:1 (at .85 it measured 4.49 on red and purple) */
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .hbtn span{opacity:1}}
+.hbtn span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}   /* P90: at full strength (at .85 it measured 4.49:1 on the light red and purple); P93: in the dark theme too, where black at .85 gave 4.1:1 on the blue accent */
 .hbtn b{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hbtn.alt{background:transparent;border-color:var(--line-2);color:var(--fg)}
 .hbtn.alt span{color:var(--muted)}
@@ -366,10 +364,8 @@ details.rules>p:last-child{padding-bottom:16px}
 .course.live p{margin:0 0 12px;color:var(--muted);font-size:14.5px}
 .cstats{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-bottom:12px}
 .cstats b{font-family:var(--mono);font-weight:400;color:var(--fg);font-size:15px;margin-right:3px}
-/* P93: a ghost tile's disclosure (a planned course): its whole scope and its spine under the tile */
-details.course.live>.nscope,details.course.live>.nspine{padding:0 16px}
-details.course.live>.nscope{font-size:14px;margin:0 0 10px;line-height:1.5;color:var(--fg)}
-details.course.live>.nspine{font-size:12.5px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+/* P93: a ghost tile's disclosure (a planned course): its spine under the tile, whose scope then shows whole (4h) */
+details.course.live>.nspine{padding:0 16px;font-size:12.5px;color:var(--muted);margin:0 0 16px;line-height:1.5}
 details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg);margin-right:8px}
 
 /* 4h · learner home (Academy root; P90, 4 Nov 2026; P91, 4 Nov 2026; P92, 4 Nov 2026): the hero, the area sections
@@ -437,6 +433,7 @@ details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter
 details.course.live{padding:0}
 details.course.live>summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;padding:16px 44px 16px 16px;position:relative;min-height:44px;height:100%}
 details.course.live[open]>summary{height:auto}
+details.course.live[open]>summary>p{display:block;-webkit-line-clamp:none;line-clamp:none}   /* opened, the tile's line shows whole: a unit's why, a planned course's scope */
 details.course.live>summary::-webkit-details-marker{display:none}
 details.course.live>summary>.chev{position:absolute;top:16px;right:14px;width:18px;height:18px;color:var(--muted)}
 details.course.live[open]>summary>.chev{transform:rotate(180deg)}
@@ -510,7 +507,7 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
 .topo .ct-rise path{stroke:var(--c);stroke-opacity:var(--topo-a)}
 .topo .ct-plan circle{stroke:var(--c);stroke-opacity:var(--topo-a);stroke-dasharray:3 3}
 .topo.topo-patch{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;margin:14px 0 0;aspect-ratio:4 / 1;overflow:hidden;-webkit-mask-image:none;mask-image:none}
-.topo-patch .topo-l{display:block}
+.topo-patch .topo-l{display:block;--ox:0px;--oy:0px}   /* a patch's drawing fits its frame (meet) and is transparent: it needs no overscan; its rings are placed clear of the frame at every pose (build.py turned_inside) */
 .topo-patch .ct-rise path{stroke-opacity:var(--topo-p)}
 .topo-patch .ct-plan circle{stroke-opacity:var(--topo-p)}
 @media (prefers-reduced-motion:no-preference){.topo-l{animation:topo-turn var(--topo-cycle) ease-in-out calc(var(--ph,0) * -1 * var(--topo-cycle)) infinite alternate both}}
@@ -688,7 +685,7 @@ details.clog[open]>summary::after{content:"–"}
 .crumbs a{color:var(--muted);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
 .crumbs a:hover{color:var(--fg)}
 .crumbs span[aria-current]{color:var(--fg)}
-.crumbs .sep{color:var(--dim)}
+.crumbs .sep{color:var(--muted)}   /* P93: the separator as its links (in --dim it measured 3.7:1 on the dark page, before any contour line passed under it) */
 /* track banner on the Academy home: a subject heading over a group of course cards, carrying the track colour */
 .track{display:flex;flex-direction:column;gap:14px;scroll-margin-top:calc(var(--bar) + env(safe-area-inset-top,0px) + 12px)}
 .thead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 0 10px 14px;border-left:4px solid var(--c);border-bottom:1px solid var(--line)}

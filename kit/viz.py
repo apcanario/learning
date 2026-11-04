@@ -2828,6 +2828,8 @@ def contours_rings(d):
         W, H, at, sp, per, lv_of, own, box, edge = _ct_field(d, lay, rises, iv, live)
         out[lay.get('name')] = [(rises[k]['label'], lv_of[k], own[k], box[k]) for k in live]
         out[(lay.get('name'), 'edge')] = edge
+        xy = [pt for k in live for run, _ in per[k] for pt in run]
+        out[(lay.get('name'), 'extent')] = (min(x for x, _ in xy), min(y for _, y in xy), max(x for x, _ in xy), max(y for _, y in xy)) if xy else None   # P93: every line's box
     return out
 
 
