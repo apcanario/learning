@@ -406,8 +406,8 @@ def patch_block(rises, tone, phase=None):
 # one 3.7:1.
 COURSE_TOPO = [dict(name='tall', width=1000, height=1000, box=(.29, .27, .71, .67), view=(.25, .25, .75, .7), place=ct_lattice),
                dict(name='wide', width=1000, height=500, box=(.1, .12, .9, .66), view=(.04, .06, .96, .84), place=ct_lattice)]
-NEW_TOPO = [dict(name='tall', width=1000, height=625, box=(.24, .3, .76, .64), view=(.18, .23, .82, .7), place=ct_ridge),
-            dict(name='wide', width=1000, height=270, box=(.12, .26, .88, .66), view=(.1, .06, .9, .86), place=ct_ridge)]
+NEW_TOPO = [dict(name='tall', width=1000, height=625, box=(.24, .3, .76, .64), view=(.18, .27, .82, .67), place=ct_ridge),
+            dict(name='wide', width=1000, height=270, box=(.12, .26, .88, .66), view=(.1, .12, .9, .8), place=ct_ridge)]   # views with a margin for a shorter hero (an edition's eyebrow is a line shorter)
 NEW_INTERVAL = 14000    # words between two of What's new's contour levels: its largest day (22 Oct 2026, 221,673 words) stands 15, inside the 10 to 25 the row sets (verify.py checks it), and its smallest (30 Oct, 14,178) still one, so no day it lists is flat
 
 
@@ -1208,7 +1208,7 @@ if OLD.exists():
 # the size table in README.md (between the markers), regenerated on every build; verify.py checks it against the files
 def kb(n):
     return f'{n / 1024:,.0f} KB' if n < 1024 * 1024 else f'{n / 1024 / 1024:.2f} MB'
-rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, the markdown courses' build pages, changelog, backlog')]
+rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, the build pages of the markdown courses, changelog, backlog')]
 for ctx, name in [(c['id'], c['short']) for c in HISTORY] + [(m['id'], m['short']) for m in MD]:
     fs = [len(v.encode()) for k, v in REPORTS.items() if k.startswith(ctx + '/')]
     big = max(((len(v.encode()), k) for k, v in REPORTS.items() if k.startswith(ctx + '/')), default=(0, ''))

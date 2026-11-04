@@ -327,7 +327,7 @@ def home_expect():
 
 # P92 (4 Nov 2026): the home's layout, read on the visible home panel at one width. Returns what was found and the
 # faults (bad); check_home compares the hero, the tiles and New since with home_expect().
-HOME_JS = r'''(tones) => {
+HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an edition may omit the planned courses and the site links)
   const h = document.getElementById('home'), bad = [], out = {bad};
   const phone = innerWidth < 768, desk = innerWidth >= 1100, de = document.documentElement;
   const vis = e => !!e && getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0;
@@ -399,7 +399,7 @@ HOME_JS = r'''(tones) => {
     const r = e.getBoundingClientRect(); if (r.width && (r.right > de.clientWidth + .5 || r.left < -.5)) bad.push(`${e.className || e.tagName} on the hero runs off the screen`); });
   // the order: hero, the area sections, the constants, the site pages, New since, its one link
   out.order = kids.map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ');
-  const want = ['header.hero.hhome', ...tracks.map(() => 'section.track'), 'details.howto.rules', 'div.hlinks', 'section.recent', 'div.hlinks'].join(' ');
+  const want = ['header.hero.hhome', ...tracks.map(() => 'section.track'), 'details.howto.rules', ...(opt.site ? ['div.hlinks'] : []), 'section.recent', 'div.hlinks'].join(' ');
   if (out.order !== want) bad.push(`the home runs ${out.order}`);
   // the area headers: from 768 px the label, the name, the lede and the count; below it the name only
   out.heads = tracks.map(t => { const hd = t.querySelector('.thead'); return [t.id, vis(hd.querySelector('.cname')), vis(hd.querySelector('h2')), vis(hd.querySelector('p')), vis(hd.querySelector('.tmeta'))]; });
@@ -453,7 +453,7 @@ HOME_JS = r'''(tones) => {
       const gw = g.getBoundingClientRect().width, cw = cs[0].getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
       if (Math.abs(cw - (gw - gap) / 2) > 2) bad.push(`${t.id}: its only tile is ${cw.toFixed(0)} px of a ${gw.toFixed(0)} px grid, expected half`);
     }
-    if (t.id === 'track-history' && (!t.querySelector('details.howto.rules:not(.planned)') || !t.querySelector('details.planned#planned-courses'))) bad.push('History lost "Why history and myth together" or its folded Planned list');
+    if (t.id === 'track-history' && (!t.querySelector('details.howto.rules:not(.planned)') || (opt.planned && !t.querySelector('details.planned#planned-courses')))) bad.push('History lost "Why history and myth together" or its folded Planned list');
   });
   // what runs: with reduced motion nothing on the home; with motion allowed only transform and opacity, none on a tile
   out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && h.contains(a.effect.target)).map(a => {   // P93: animations; the transitions of a hover or the theme switch are not
@@ -523,7 +523,7 @@ def check_home(pg, label, fails, expect, motion=False):
     pg.evaluate("location.hash = 'home'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(160)
     # a theme switched by the test fades the tiles' colours (section 7's .15 s transitions): read the page once they are done
     pg.wait_for_function("() => !document.getAnimations().some(a => typeof CSSTransition !== 'undefined' && a instanceof CSSTransition && a.playState === 'running')", timeout=5000)
-    r = pg.evaluate(HOME_JS, [a['color'] for a in expect['areas']])
+    r = pg.evaluate(HOME_JS, [[a['color'] for a in expect['areas']], {'planned': 'planned' not in OMIT, 'site': any(k not in OMIT for k in ('backlog', 'figures', 'changelog'))}])
     fails += [f'home {label}: {b}' for b in r['bad']]
     names = [a['name'] for a in expect['areas']]
     if [w for w, _ in r.get('words', [])] != names: fails.append(f'home {label}: the area line reads {[w for w, _ in r.get("words", [])]}, THEMES gives {names}')
