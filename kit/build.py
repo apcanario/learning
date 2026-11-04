@@ -257,7 +257,7 @@ def hours(words):
     """Reading time at 250 words a minute (P90, 4 Nov 2026: one rate for every course, history and markdown), as a
     short label."""
     h = words / 250 / 60
-    return f'{h:.0f}' if h >= 10 else f'{h:.1f}'
+    return f'{h:.1f}'   # P92 check: one decimal on every tile and course home (16.4 beside 5.0, not 16 beside 5.0)
 
 
 def course_home(c):
@@ -688,8 +688,10 @@ _TONE = {'var(--red)': 1, 'var(--orange)': 2, 'var(--teal)': 3, 'var(--blue)': 4
 NEWEST = DATED[0] if DATED else None
 HERO_INTERVAL = 22000   # words between two of the hero's contour levels: History's 510k words stand 23 levels up, an area of 67k three
 HERO_AT = {             # where each area's rise stands, in THEMES order (fractions of the layout's width and height)
-    'tall': [[.50, .52], [.33, .20], [.66, .22], [.72, .68]],   # every rise inside a 390 px phone's view (x .27 to .73)
-    'wide': [[.42, .52], [.12, .22], [.80, .26], [.76, .66]],   # P92 check: Marketing clear of the sidebar, User Experience above the fade
+    # P92 checks: every rise inside a 390 px phone's view (x .27 to .73) and above the fade, each small rise closing two
+    # rings of its own (verify.py checks it), Marketing clear of the sidebar at both ends of the drift
+    'tall': [[.50, .48], [.33, .16], [.66, .18], [.66, .82]],
+    'wide': [[.46, .55], [.14, .18], [.81, .26], [.78, .68]],
 }
 if any(len(v) != len(THEMES) for v in HERO_AT.values()):
     raise SystemExit(f'build.py HERO_AT places {len(HERO_AT["tall"])} rises; courses.py has {len(THEMES)} areas: give each a place')
@@ -818,7 +820,7 @@ whatsnew = f"""
 # hidden from a screen reader, which reads the static line after it; under reduced motion the static line shows and
 # nothing moves. And the quiet link to What's new, naming the newest unit and its day, as P91's shelf label did.
 hero_areas = ('<p class="harea" aria-hidden="true">' + ''.join(f'<span class="harea-w" style="--c:{t["color"]};--k:{k}">{html.escape(t["name"])}</span>' for k, t in enumerate(THEMES)) + '</p>'
-              + '<p class="harea-all">' + '<span class="harea-dot">&nbsp;· </span>'.join(f'<span style="--c:{t["color"]}">{html.escape(t["name"])}</span>' for t in THEMES) + '</p>')
+              + '<p class="harea-all">' + '<span class="harea-dot"><span aria-hidden="true">&nbsp;·</span><span class="harea-sr">,</span> </span>'.join(f'<span style="--c:{t["color"]}">{html.escape(t["name"])}</span>' for t in THEMES) + '</p>')
 hero_new = (f'<a class="hnew" href="#new" data-target="new"><span>What\'s new · {html.escape(NEWEST["code"])} · {short_date(NEWEST["date"]).rsplit(" ", 1)[0]}</span>'
             '<span class="hnew-a" aria-hidden="true">→</span></a>') if NEWEST else ''
 new_link = '<div class="hlinks" data-one><a class="hbtn alt" href="#new" data-target="new"><span>What\'s new</span><b>Every unit and report filed and every course started, by day</b></a></div>'

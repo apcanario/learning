@@ -317,7 +317,8 @@ HOME_JS = r'''(tones) => {
   out.tones = tones.map(tone); probe.remove();
   if (!al || al.getAttribute('aria-hidden') !== 'true') bad.push('the cycling area line is not hidden from a screen reader');
   if (al && [...al.querySelectorAll('a, button, [tabindex]')].length) bad.push('the area line holds a link or a focus stop');
-  out.static = st ? st.textContent : null;
+  out.static = st ? (() => { const c = st.cloneNode(true); c.querySelectorAll('.harea-sr').forEach(x => x.remove()); return c.textContent; })() : null;   // as seen; the screen reader's commas left out
+  out.staticSr = st ? [...st.querySelectorAll('.harea-dot')].map(d => [d.querySelector('[aria-hidden="true"]') ? 1 : 0, d.querySelector('.harea-sr') ? d.querySelector('.harea-sr').textContent : null]) : [];
   out.staticTones = st ? [...st.children].filter(e => !e.classList.contains('harea-dot')).map(e => getComputedStyle(e).color) : [];
   out.staticAria = st ? st.getAttribute('aria-hidden') : 'missing';
   out.lineShown = vis(al); out.staticShown = !!st && st.getBoundingClientRect().width > 2 && getComputedStyle(st).clipPath === 'none';
@@ -340,7 +341,7 @@ HOME_JS = r'''(tones) => {
     const shown = [...topo.querySelectorAll('svg.topo-l')].filter(vis);
     out.layout = shown.map(s => s.getAttribute('data-layout'));
     if (out.layout.join() !== (desk ? 'wide' : 'tall')) bad.push(`the contour layout shown is ${out.layout}, expected ${desk ? 'wide' : 'tall'}`);
-    out.layouts = [...topo.querySelectorAll('svg.topo-l')].map(s => [s.getAttribute('data-layout'), [...s.querySelectorAll('g.ct-rise, g.ct-plan')].map(g => [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), +g.getAttribute('data-rings'), getComputedStyle(g.querySelector('path, circle')).stroke])]);
+    out.layouts = [...topo.querySelectorAll('svg.topo-l')].map(s => [s.getAttribute('data-layout'), [...s.querySelectorAll('g.ct-rise, g.ct-plan')].map(g => [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), +g.getAttribute('data-rings'), getComputedStyle(g.querySelector('path, circle')).stroke, ((g.querySelector('path') || {}).getAttribute ? g.querySelector('path').getAttribute('d') : '').split('z').length - 1])]);
     const tr = topo.getBoundingClientRect(), m = document.querySelector('main').getBoundingClientRect(), cr = copy.getBoundingClientRect();
     out.topoBox = [Math.round(tr.left), Math.round(tr.right), Math.round(cr.left), Math.round(cr.right), Math.round(m.left), Math.round(m.right)];
     if (Math.abs(tr.left - (desk ? 300 : 0)) > 1 || Math.abs(tr.right - de.clientWidth) > 1) bad.push(`the contour layer spans ${tr.left.toFixed(0)}..${tr.right.toFixed(0)}, not the full width beside the sidebar (${desk ? 300 : 0}..${de.clientWidth})`);
@@ -492,6 +493,7 @@ def check_home(pg, label, fails, expect, motion=False):
     if [c for _, c in r.get('words', [])] != r.get('tones'): fails.append(f'home {label}: the area words are coloured {[c for _, c in r.get("words", [])]}, their tones are {r.get("tones")}')
     if r.get('static') != ' · '.join(names).replace(' · ', ' · '): fails.append(f'home {label}: the static line reads {r.get("static")!r}')
     if r.get('staticTones') != r.get('tones'): fails.append(f'home {label}: the static line\'s words are coloured {r.get("staticTones")}, not their tones')
+    if r.get('staticSr') != [[1, ',']] * (len(names) - 1): fails.append(f'home {label}: the static line\'s dots are not aria-hidden with a comma for a screen reader: {r.get("staticSr")}')
     if r.get('staticAria') is not None: fails.append(f'home {label}: the static line is hidden from a screen reader ({r.get("staticAria")})')
     if motion and (not r.get('lineShown') or r.get('staticShown')): fails.append(f'home {label}: with motion allowed the cycling line shows {r.get("lineShown")} and the static line {r.get("staticShown")}, expected the cycling line only')
     if not motion and (r.get('lineShown') or not r.get('staticShown')): fails.append(f'home {label}: under reduced motion the cycling line shows {r.get("lineShown")} and the static line {r.get("staticShown")}, expected the static line only')
@@ -501,13 +503,15 @@ def check_home(pg, label, fails, expect, motion=False):
     if r.get('link') and r['link'][0] != want_link: fails.append(f'home {label}: the What\'s new link reads {r["link"][0]!r}, expected {want_link!r}')
     if (r.get('topoBytes') or 0) > 20 * 1024: fails.append(f'home {label}: the hero\'s contour SVG is {r["topoBytes"]} bytes, over 20 KB')
     for name, rs in r.get('layouts', []):
-        got = [(l, w) for l, w, _, _ in rs]
+        got = [(l, w) for l, w, _, _, _ in rs]
         want = [(a['name'], a['words'] or None) for a in expect['areas']]
         if got != want: fails.append(f'home {label}: the {name} contours give the rises {got}, the sources give {want}')
-        rings = [k for _, w, k, _ in rs if w]
-        byw = [k for _, k in sorted((w, k) for _, w, k, _ in rs if w)]
+        rings = [k for _, w, k, _, _ in rs if w]
+        byw = [k for _, k in sorted((w, k) for _, w, k, _, _ in rs if w)]
+        for l, w, k, _, z in rs:   # P92 check: every rise reads as a rise, its own top rings closed, not only a stretch of another's
+            if w and z < min(2, k): fails.append(f'home {label}: the {name} rise {l} closes {z} ring(s) of its own, under {min(2, k)}')
         if byw != sorted(byw): fails.append(f'home {label}: the {name} rises stand {rings} levels high, not in the order of their words')
-        if [s for _, _, _, s in rs] != r.get('tones'): fails.append(f'home {label}: the {name} rises are drawn in {[s for *_, s in rs]}, not their areas\' tones')
+        if [s for _, _, _, s, _ in rs] != r.get('tones'): fails.append(f'home {label}: the {name} rises are drawn in {[x[3] for x in rs]}, not their areas\' tones')
     got = {c['home']: c for c in r.get('cards', [])}
     if list(got) != list(expect['courses']): fails.append(f'home {label}: the tiles are {list(got)}, the sources give {list(expect["courses"])}')
     for home, e in expect['courses'].items():
@@ -534,7 +538,7 @@ def check_home(pg, label, fails, expect, motion=False):
         if kinds != ['harea-w', 'topo-l'] or sum(1 for a in an if a[0].startswith('harea-w')) != len(names): fails.append(f'home {label}: with motion allowed the animations are {[(a[0], a[1]) for a in an]}, expected the {len(names)} area words and the shown contour layout')
     elif an: fails.append(f'home {label}: under reduced motion {len(an)} animations run: {an[:3]}')
     print(f'home {label}: hero {r.get("heroH")} (px, screen, %), copy {r.get("copy")!r}; area line {[w for w, _ in r.get("words", [])]}, shown {r.get("lineShown")}, static shown {r.get("staticShown")}; '
-          f'link {r.get("link") and r["link"][:4]}; contours {r.get("topoBytes")} B, layout {r.get("layout")}, rises {[(l, k) for _, rs in r.get("layouts", [])[:1] for l, _, k, _ in rs]}; '
+          f'link {r.get("link") and r["link"][:4]}; contours {r.get("topoBytes")} B, layout {r.get("layout")}, rises {[(l, k, z) for _, rs in r.get("layouts", [])[:1] for l, _, k, _, z in rs]}; '
           f'tiles {[(c["home"], len(c["rises"] or []), len(c["plan"] or [])) for c in r.get("cards", [])]}; heads {[x[1:] for x in r.get("heads", [])][:1]}; '
           f'first area at {r.get("first")} px; New since {len(r.get("rows") or [])} rows; animations {len(an)}; page {r.get("scroll")}')
     hero_contrast(pg, label, fails, motion)
