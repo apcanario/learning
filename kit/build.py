@@ -347,7 +347,7 @@ def card(theme, color, short, title, blurb, done, total, words, status, href, ex
     pill = '<span class="pill live">complete</span>' if status == 'available' else f'<span class="pill prog">{status}</span>'
     tgt = '' if external else f' data-target="{href[1:]}"'
     return f'''<a class="course live" href="{href}"{tgt} style="--c:{color}">
-    <div class="ctop"><span class="cname">{html.escape(theme)} · {html.escape(short)}</span>{pill}</div>
+    <div class="ctop"><span class="cname"><span class="cpart">{html.escape(theme)} ·</span> <span class="cpart">{html.escape(short)}</span></span>{pill}</div>
     <span class="ctitle">{html.escape(title)}</span>
     <p>{blurb}</p>
     <div class="cstats">{meta}</div>
@@ -500,14 +500,14 @@ def dated_units():
                 if fm.get('written'):
                     rank = order.index(u[0]) if u[0] in order else len(order) + k
                     out.append(dict(date=str(fm['written']), rank=rank, course=m['short'], cname=m['name'], color=m['color'], code=u[0],
-                                    title=fm.get('title', u[1]), pid=m['parent']['written'][u[0]], model=fm.get('model', ''), approx=False, home=m['home_id']))
+                                    title=fm.get('title', u[1]), pid=m['parent']['written'][u[0]], model=fm.get('model', ''), approx=False, home=m['home_id'], hist=False))
     for c in HISTORY:
         pos = list(c['index'])
         ap = set(PROV.get('written_approx', {}).get(c['id'], []))
         for i, d in PROV.get('written', {}).get(c['id'], {}).items():
             if i in c['index']:
                 out.append(dict(date=d, rank=pos.index(i), course=c['short'], cname=c['name'], color=c['color'], code=i, title=c['index'][i]['title'],
-                                pid=c['slug'](i), model=c['prov'].get(i, c['default_model']), approx=i in ap, home=c['home_id']))
+                                pid=c['slug'](i), model=c['prov'].get(i, c['default_model']), approx=i in ap, home=c['home_id'], hist=True))
     return sorted(out, key=lambda x: (x['date'], x['rank']), reverse=True)
 
 
@@ -517,7 +517,8 @@ DATED = dated_units()
 def whats_new():
     """P91 (4 Nov 2026) · What's new (Pedro: "units and courses"): every dated unit (DATED) and every course started,
     newest first. A course starts on the day its first unit was filed (the earliest date; on that day the first in its
-    build order); its row sits directly above that unit's row, and is approximate when that unit's date is."""
+    build order); its row sits directly below that unit's row (read newest first, the course begins with it), and is
+    approximate when that unit's date is."""
     rows = [dict(x, kind='unit') for x in DATED]
     firsts = {}
     for x in DATED:
@@ -526,7 +527,7 @@ def whats_new():
             firsts[x['home']] = x
     for home, f in firsts.items():
         k = next(i for i, r in enumerate(rows) if r is not None and r['kind'] == 'unit' and r['home'] == home and r['code'] == f['code'])
-        rows.insert(k, dict(f, kind='course', title=f['cname'], first=f['code']))
+        rows.insert(k + 1, dict(f, kind='course', title=f['cname'], first=f['code']))   # P91 check: below its first unit, the older event
     return rows
 
 
@@ -693,7 +694,7 @@ for t in THEMES:
     extra = ''
     if t['id'] == 'history':
         planned = '' if not NEXT else f"""
-  <details class="howto rules planned">
+  <details class="howto rules planned" id="planned-courses">
     <summary><h2>Planned</h2><span>{len(NEXT)} courses, in the intended order</span></summary>
     <p class="hnote">The two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Open a course to see its scope and spine.</p>
     <div class="soonlist">{soon_cards}</div>
@@ -741,7 +742,7 @@ def shelf_block():
                 if u == c['audit_unit']:
                     continue
                 done = all(m[0] in c['done'] for m in mods)
-                x = dict(code=f'U{u}', title=f'{c["short"]} · unit {u} · {name}', tone=_TONE[c['color']],
+                x = dict(code=f'U{u}', title=f'{c["short"]} unit {u}: {name}', tone=_TONE[c['color']],
                          href=f'{c["home_id"]}-u{u}' if done else f'{c["syl_anchor"]}-u{u}')
                 ws = [c['wby'][m[0]] for m in mods if m[0] in c['wby']]
                 if ws and done:
@@ -758,7 +759,7 @@ def shelf_block():
             sp = []
             for u in m['units']:
                 done = u[0] in m['parent']['written']
-                x = dict(code=u[0], title=f'{m["short"]} · {u[0]} · {u[1]}', tone=_TONE[m['color']],
+                x = dict(code=u[0], title=f'{m["short"]}: {u[1]}', tone=_TONE[m['color']],
                          href=m['parent']['written'][u[0]] if done else f'{m["brief_anchor"]}{u[0].lower()}')
                 if done and u[0] in m['wby']:
                     x['words'] = m['wby'][u[0]]
@@ -770,7 +771,7 @@ def shelf_block():
             courses.append(dict(label=m['short'], note=f'{m["nwritten"]} of {m["nunits"]}', tone=_TONE[m['color']], spines=sp))
         planned = (len(NEXT) if t['id'] == 'history' else 0)
         if planned:
-            courses.append(dict(label=f'{planned} planned', volume=True, title=', '.join(n[0] for n in NEXT)))
+            courses.append(dict(label=f'{planned} planned', volume=True, title=', '.join(n[0] for n in NEXT), href='planned-courses'))
         if courses:
             tracks.append(dict(label=t['name'], tone=_TONE[t['color']], courses=courses))
     cap = ('One spine per unit: solid is written, outlined is planned, the height is its length in words. '
@@ -788,6 +789,11 @@ hero_totals = (f'<div class="htot" aria-label="Academy in numbers"><div><b>{TOT[
 
 # What's new (P91): every unit filed and every course started, newest first, grouped by day; and its first six rows
 # as New since at the foot of the home
+def _model(m):
+    """A model's name with its version held to it (Opus 5.5 never breaks as Opus / 5.5); a long provenance still wraps."""
+    return re.sub(r'\b(Opus|Fable|Sonnet|Haiku) (\d)', r'\1&nbsp;\2', html.escape(m))
+
+
 def new_row(x, home=False):
     """One row of What's new (home=False: the code in the first column, the day is the group's heading) or of New
     since (home=True: the day in the first column). A unit row links to its page, a course row to the course home."""
@@ -795,13 +801,13 @@ def new_row(x, home=False):
     day = ('≈ ' if x['approx'] else '') + short_date(x['date']).rsplit(' ', 1)[0]
     if x['kind'] == 'course':
         tgt, n = x['home'], (day if home else 'Start')
-        t = f'{html.escape(x["title"])}<small>Course started · first unit {html.escape(x["first"])}{" · " + html.escape(x["model"]) if x["model"] else ""}{ap}</small>'
+        t = f'{html.escape(x["title"])}<small>Course started · first {"report" if x["hist"] else "unit"} {html.escape(x["first"])}{" · " + _model(x["model"]) if x["model"] else ""}{ap}</small>'
         pill = '<span class="pill prog">course</span>'
     else:
         tgt, n = x['pid'], (day if home else html.escape(x['code']))
         t = (f'{html.escape(x["code"]) + " · " if home else ""}{html.escape(x["title"])}'
-             f'<small>{html.escape(x["course"])}{" · " + html.escape(x["model"]) if x["model"] else ""}{ap}</small>')
-        pill = '<span class="pill live">unit</span>'
+             f'<small>{html.escape(x["course"])}{" · " + _model(x["model"]) if x["model"] else ""}{ap}</small>')
+        pill = f'<span class="pill live">{"report" if x["hist"] else "unit"}</span>'   # P91 check: a history course's units hold reports
     return (f'<a class="hrow" href="#{tgt}" data-target="{tgt}" data-kind="{x["kind"]}" data-date="{x["date"]}"{" data-approx" if x["approx"] else ""} '
             f'style="--c:{x["color"]}"><span class="n">{n}</span><span class="t">{t}</span>{pill}</a>')
 recent_rows = ''.join(new_row(x, True) for x in RECENT)
@@ -810,19 +816,20 @@ for x in WHATSNEW:
     if not _days or _days[-1][0] != x['date']:
         _days.append((x['date'], []))
     _days[-1][1].append(x)
-nu = sum(1 for x in WHATSNEW if x['kind'] == 'unit')
-nc = len(WHATSNEW) - nu
+nu = sum(1 for x in WHATSNEW if x['kind'] == 'unit' and not x['hist'])
+nr = sum(1 for x in WHATSNEW if x['kind'] == 'unit' and x['hist'])
+nc = sum(1 for x in WHATSNEW if x['kind'] == 'course')
 whatsnew = f"""
 <section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="ACADEMY" data-c="var(--teal)" hidden>
   <header class="hero">
     {crumbs(('Academy', 'home'), ("What's new", None))}
-    <div class="eyebrow">{eyebrow_segs(*['<span class="u" style="--c:var(--teal)">WHAT\'S NEW</span>', f'{nu} units', f'{nc} courses'] + ([f'since {short_date(WHATSNEW[-1]["date"])}'] if WHATSNEW else []))}</div>
+    <div class="eyebrow">{eyebrow_segs(*['<span class="u" style="--c:var(--teal)">WHAT\'S NEW</span>', f'{nr} history reports', f'{nu} units', f'{nc} courses'] + ([f'since {short_date(WHATSNEW[-1]["date"])}'] if WHATSNEW else []))}</div>
     <h1>What's new</h1>
-    <p class="lede">Every unit filed and every course started, newest first, by the day it was filed. A history report is dated by the work session that filed it; where that session ran over several days, by its first day, marked ≈. The work sessions themselves are in the Changelog.</p>
+    <p class="lede">Every unit and every history report filed, and every course started, newest first, by the day it was filed. A history report is dated by the work session that filed it; where that session ran over several days, by its first day, marked ≈. The work sessions themselves are in the Changelog.</p>
   </header>
   {''.join(f'<section class="newday" data-day="{d}"><h2 class="hsec">{short_date(d)}</h2><div class="hrows">{"".join(new_row(x) for x in xs)}</div></section>' for d, xs in _days)}
 </section>"""
-new_link = '<div class="hlinks" data-one><a class="hbtn alt" href="#new" data-target="new"><span>What\'s new</span><b>Every unit filed and every course started, by day</b></a></div>'
+new_link = '<div class="hlinks" data-one><a class="hbtn alt" href="#new" data-target="new"><span>What\'s new</span><b>Every unit and report filed and every course started, by day</b></a></div>'
 # "How every course works": the constants. P80 (1 Nov 2026): an edition replaces any line that names a course it does
 # not hold with its own (EDITIONS[...]['rules'], keyed by the line's bold head); the full Academy keeps these as written.
 RULE_LINES = [
@@ -854,7 +861,7 @@ roothome = f"""
   {site_links}
 {f'''
   <section class="recent">
-    <h2 class="hsec">New since</h2>
+    <h2 class="hsec">New since {short_date(RECENT[-1]['date']).rsplit(' ', 1)[0] if RECENT else ''}</h2>
     <div class="hrows">{recent_rows}</div>
   </section>
   {new_link}''' if recent_rows else ''}

@@ -253,7 +253,7 @@ def home_expect():
     for home in dict.fromkeys(x['home'] for x in dated):
         f = min((x for x in dated if x['home'] == home), key=lambda x: (x['date'], x['rank']))
         k = next(i for i, r in enumerate(rows) if r['kind'] == 'unit' and r['home'] == home and r['code'] == f['code'])
-        rows.insert(k, dict(f, kind='course', pid=home))
+        rows.insert(k + 1, dict(f, kind='course', pid=home))   # below its first unit
     return dict(shelf=shelf, newest=dated[0] if dated else None, rows=rows, planned=len(NEXT) if 'planned' not in OMIT else 0,
                 units=sum(1 for v in shelf.values() for x in v if x[1]), live=len(shelf))
 
@@ -289,6 +289,7 @@ HOME_JS = r'''() => {
       lit: a.classList.contains('lit'), t: a.getAttribute('data-target'), href: a.getAttribute('href'), title: a.getAttribute('title'), aria: a.getAttribute('aria-label'),
       words: +a.getAttribute('data-words'), w: r.width, h: r.height, fill: cs.backgroundColor, bs: cs.borderTopStyle}; })}));
   out.vol = [...sh.querySelectorAll('.spine.vol')].map(v => v.textContent.trim());
+  sh.querySelectorAll('a.spine.vol').forEach(v => { if (!resolves(v.getAttribute('data-target'))) bad.push(`the planned volume links to #${v.getAttribute('data-target')}, no anchor`); });
   const sp = out.groups.flatMap(g => g.spines);
   sp.forEach(s => {
     if (s.w < 23.5 || s.h < 43.5) bad.push(`spine ${s.code}: ${s.w.toFixed(0)}x${s.h.toFixed(0)} px, under 24x44`);
@@ -1414,7 +1415,7 @@ def main():
             pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
             check_home(pg, name + ' light', fails, EXPECT)
             if name == 'desktop':
-                for sel in ('a.spine:not(.ghost)', 'a.spine:not(.ghost)[data-target^="read-"]', 'a.spine.ghost', 'a.shelf-lit'):
+                for sel in ('a.spine:not(.ghost)', 'a.spine:not(.ghost)[data-target^="read-"]', 'a.spine.ghost:not(.vol)', 'a.spine.vol', 'a.shelf-lit'):
                     pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(60)
                     t = pg.evaluate(f"(() => {{ const a = document.querySelector('#home {sel}'); return a && a.getAttribute('data-target'); }})()")
                     if not t:

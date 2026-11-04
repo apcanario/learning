@@ -32,6 +32,8 @@ built by viz_examples.py, shows one of each on Perqo with its block):
             P90 (4 Nov 2026): optional per node "href" (a panel id: the box is a link to it) and "dashed": true (a
             dashed, untinted box: a planned page); optional "phone": {"stack_from": 1}, a second drawing of the same
             root as wide as a phone frame (PHONE_FRAME), shown below 768 px in place of the wide one (svg.viz-alt).
+            P91 (4 Nov 2026): the Academy home no longer draws its map with them (the bookshelf took its place); the
+            three keys stay, documented, for any unit's sitemap that links its boxes, marks a planned page or needs a phone drawing.
   objects   {"kind": "objects", "objects": [{"id": "claim", "title": "Claim", "attrs": ["amount", ...],
              "actions": ["-> approve", ...], "tone": 2}, ...], "rows": [["company", "policy", null], ...],
              "links": [{"from": "company", "to": "policy", "label": "sets", "from_card": "1", "to_card": "1..*"}]}
@@ -98,8 +100,9 @@ Academy home's bookshelf, declared by build.py from the course data, and not one
             "planned": true spine is ghosted (a dashed outline, no fill); a spine's height is its words' place between
             the fewest and the most words on the shelf (--h, 0 to 1; the theme sets the range), and a planned spine
             without "words" takes the mean of its course's written spines; "lit" (one spine at most) glows in its tone
-            with its text as a link to "lit_href" beside it; a "volume": true course is one ghosted volume with its
-            label on it (the planned courses). Each spine carries --i, its place on the shelf, for the theme's
+            with its text as a link to "lit_href" beside it, the two one item that wraps as one; a "volume": true course
+            is one ghosted volume with its label on it, the planned courses ("title" names them; "href" makes it a link).
+            Each spine carries --i, its place on the shelf, for the theme's
             staggered rise. A spine without a code, title or href, two lit spines, or a tone outside 1 to 6 raises.
 
 On a phone (below 768 px) every figure draws at its natural size, one SVG unit to one CSS pixel, and scrolls sideways
@@ -2655,9 +2658,10 @@ def shelf(d):
                 lab = c.get('label')
                 if not lab:
                     _fail(K, f'tracks[{k}].courses[{j}]: a volume needs its label')
-                ttl = f' title="{esc(c["title"])}"' if c.get('title') else ''
-                groups += (f'<div class="shelf-group shelf-vol"{cs}><div class="shelf-books"><div class="spine ghost vol" role="img" '
-                           f'aria-label="{esc(lab)}{": " + esc(c["title"]) if c.get("title") else ""}"{ttl} style="--i:{i}"><span class="sc">{esc(lab)}</span></div></div>'
+                tip = esc(lab + (' courses: ' + c['title'] if c.get('title') else ''))
+                tag, at = ('a', f' href="#{esc(c["href"])}" data-target="{esc(c["href"])}"') if c.get('href') else ('div', ' role="img"')
+                groups += (f'<div class="shelf-group shelf-vol"{cs}><div class="shelf-books"><{tag} class="spine ghost vol"{at} '
+                           f'title="{tip}" aria-label="{tip}" style="--i:{i}"><span class="sc" aria-hidden="true">{esc(lab)}</span></{tag}></div>'
                            f'<p class="shelf-label">Planned</p></div>')
                 i += 1
                 continue
@@ -2671,13 +2675,16 @@ def shelf(d):
                 cls = 'spine' + (' ghost' if s.get('planned') else '') + (' lit' if s.get('lit') else '')
                 tip = f'{s["code"]} · {s["title"]}' + (' (planned)' if s.get('planned') else '')
                 sty = (f'--c:var(--viz-{st});' if st else '') + f'--h:{h:.3f};--i:{i}'
-                books += (f'<a class="{cls}" href="#{esc(s["href"])}" data-target="{esc(s["href"])}" title="{esc(tip)}" aria-label="{esc(tip)}" '
-                          f'data-code="{esc(s["code"])}" data-words="{round(s["_w"])}" style="{sty}"><span class="sc" aria-hidden="true">{esc(s["code"])}</span></a>')
+                one = (f'<a class="{cls}" href="#{esc(s["href"])}" data-target="{esc(s["href"])}" title="{esc(tip)}" aria-label="{esc(tip)}" '
+                       f'data-code="{esc(s["code"])}" data-words="{round(s["_w"])}" style="{sty}"><span class="sc" aria-hidden="true">{esc(s["code"])}</span></a>')
                 if s.get('lit'):
                     lh = s.get('lit_href')
                     if not lh:
                         _fail(K, f'{s["code"]}: a lit spine needs its lit_href')
-                    books += f'<a class="shelf-lit" href="#{esc(lh)}" data-target="{esc(lh)}"{f' style="--c:var(--viz-{st})"' if st else ''}><span aria-hidden="true">←</span> {esc(s["lit"])}</a>'
+                    # P91 check 1: the spine and its label are one item, so the label never wraps away from the spine
+                    one = (f'<span class="shelf-pair">{one}<a class="shelf-lit" href="#{esc(lh)}" data-target="{esc(lh)}"'
+                           f'{f' style="--c:var(--viz-{st})"' if st else ''}><span aria-hidden="true">←</span> {esc(s["lit"])}</a></span>')
+                books += one
                 i += 1
             lab = esc(c.get('label', ''))
             note = f' <span class="shelf-note">{esc(c["note"])}</span>' if c.get('note') else ''
@@ -2755,7 +2762,7 @@ VIZ_KEYS = {
     'range': {'.': {'unit', 'unit_one', 'years', 'era', 'min', 'max', 'ticks', 'decimals', 'xlabel', 'rows'},
               'rows': {'label', 'low', 'high', 'point', 'low_src', 'high_src', 'tone'}},
     # P91: the home's bookshelf (HOME_KINDS)
-    'shelf': {'.': {'tracks'}, 'tracks': {'label', 'tone', 'courses'}, 'courses': {'label', 'note', 'tone', 'spines', 'volume', 'title'},
+    'shelf': {'.': {'tracks'}, 'tracks': {'label', 'tone', 'courses'}, 'courses': {'label', 'note', 'tone', 'spines', 'volume', 'title', 'href'},
               'spines': {'code', 'title', 'href', 'words', 'planned', 'lit', 'lit_href', 'tone'}},
 }
 NODE_OF = {'scatter': {('.', 'x'): 'axis', ('.', 'y'): 'axis'}}
