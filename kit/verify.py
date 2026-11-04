@@ -446,7 +446,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
   if (new Set(cards.map(c => c.className)).size > 1) bad.push('the course tiles are not one style');
   tracks.forEach(t => {
     const g = t.querySelector('.cgrid'), cs = [...g.querySelectorAll(':scope > a.course')];
-    const cols = getComputedStyle(g).gridTemplateColumns.split(' ').length;
+    const cols = (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(g).gridTemplateColumns);
     if (phone && cols !== 1) bad.push(`${t.id}: ${cols} columns below 768 px`);
     if (!phone && cols !== 2) bad.push(`${t.id}: ${cols} column(s) from 768 px, expected 2`);
     if (!phone && cs.length === 1) {
@@ -679,7 +679,7 @@ TILES_JS = r"""(pid) => {
     const ts = [...g.children].filter(e => e.classList.contains('course')), gw = g.getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
     const gr = g.getBoundingClientRect();
     ts.forEach(t => { const r = t.getBoundingClientRect(); if (r.left < gr.left - .5 || r.right > gr.right + .5) out.bad.push(`${t.querySelector('.ctitle') ? t.querySelector('.ctitle').textContent.trim() : t.className}: the tile runs ${Math.round(Math.max(gr.left - r.left, r.right - gr.right))} px past its grid`); });   // P93 check 3: a column widened past its grid by a part that would not wrap
-    out.grids.push([getComputedStyle(g).gridTemplateColumns.split(' ').length, ts.length, ts.length === 1 ? Math.round(ts[0].getBoundingClientRect().width) : null, Math.round((gw - gap) / 2)]); });
+    out.grids.push([(t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(g).gridTemplateColumns), ts.length, ts.length === 1 ? Math.round(ts[0].getBoundingClientRect().width) : null, Math.round((gw - gap) / 2)]); });
   const de = document.documentElement; out.scroll = [de.scrollWidth, de.clientWidth];
   return out;
 }"""
@@ -1809,8 +1809,8 @@ def main():
         t = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
           return {off: r.right <= 0, menu: getComputedStyle(document.getElementById('menuB')).display !== 'none',
                   main: document.querySelector('main').getBoundingClientRect().width,
-                  cols: getComputedStyle(document.querySelector('#''' + TAB + ''' .part .cgrid')).gridTemplateColumns.split(' ').length,
-                  home: getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns.split(' ').length}; }''')
+                  cols: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#''' + TAB + ''' .part .cgrid')).gridTemplateColumns),
+                  home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns)}; }''')
         if not t['off']: fails.append('tablet: drawer is on screen before the menu button is pressed')
         if not t['menu']: fails.append('tablet: menu button hidden')
         if not 740 <= t['main'] <= 768: fails.append(f'tablet: main column {t["main"]}px, expected about 760')
@@ -1857,8 +1857,8 @@ def main():
                   ch68: (() => { const p = document.querySelector('#m23 .report p'), t = document.createElement('span');
                     t.style.whiteSpace = 'nowrap'; t.textContent = '0'.repeat(68); p.appendChild(t); const w = t.getBoundingClientRect().width; t.remove(); return w; })(),
                   fonts: ['DM Sans', 'Space Mono', 'Gentium Book Plus'].filter(n => ![...document.fonts].some(f => f.family.replace(/"/g, '') === n && f.status === 'loaded')),
-                  home: getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns.split(' ').length,
-                  ml: getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns.split(' ').length}; }''')
+                  home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns),
+                  ml: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns)}; }''')
         if s['left'] != 0 or s['w'] != SIDE or s['h'] < s['vh'] - 1: fails.append(f'desktop: sidebar not at the left edge, {SIDE} px, full height: {s}')
         if s['hidden'] != 'false': fails.append(f'desktop: sidebar aria-hidden={s["hidden"]}')
         if s['menu'] != 'none' or s['close'] != 'none': fails.append(f'desktop: menu/close buttons shown ({s["menu"]}, {s["close"]})')
