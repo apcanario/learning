@@ -268,7 +268,7 @@
 <nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia4-3" data-step="3"><span>Previous · 4 of 7</span><b>Object-oriented UX: the nouns before the pages</b></a><a class="snext" href="#read-ia4-5" data-step="5"><span>Next · 6 of 7</span><b>A · The Perqo object map</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-ia4-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A · The Perqo object map</span></span></h2>
 <p><em>Face of this artefact (IA2, the notation sheet): object map of the whole Perqo product, with relationships and counts, so at IA2's object-relationship grade, at fidelity F2; decision: what Perqo holds, what each thing carries, what people can do to it and how the things relate, before any page is drawn; readers: engineering, product management, the client, content (for the labels); leaves out: rules and lifecycles (IA2, section 5.3; IA8), screens and views (IA5, IA6), Admin's permissions and its data-model mapping at F3 (IA7), the merchant side's own surface; owner: the IA designer; version 1, dated 3 November 2026; every object is assumed until tested (section 4.3); Perqo is fictional.</em></p>
 <p><strong>Fidelity and departure.</strong> IA2's decision table gives the object map F1 in discovery and F2 in design, and puts the lines with counts in a separate grade, the object-relationship map, built for Perqo Admin in IA7 (IA2, Deliverable). The brief for this unit asks for relationships across the whole product, so this map draws them at F2, with counts in UML multiplicity notation (IA2, section 1.5). It departs from IA2's table there, and only there. It does not reach F3: data-model names are given where the course has set them, and IA7 adds the full mapping for Admin.</p>
-<p><strong>What IA7 may do with it.</strong> Add Admin objects, attributes, relationships and calls to action, and take the Admin part to F3. It renames nothing here: every object, attribute and relationship label below is meant to last, and a rename goes through the vocabulary first, with the old label kept as a variant (IA2, section 4).</p>
+<p><strong>What IA7 may do with it.</strong> Add Admin objects, attributes, relationships and calls to action, and take the Admin part to F3. It renames nothing here: every object, attribute and relationship label below is meant to last, and a rename goes through the vocabulary first, with the old label kept as a variant (IA2, section 4). (Note, 3 November 2026: IA7 does this in its Deliverable A, renaming nothing: it takes the Admin objects to F3 with model names, roles, volumes, lifecycles and work queues, adds the audit entry (O-17) and R-21 to R-24, gives Admin's names for card (Perqo card, status only) and notification (not shown) in its section 2.3, and gives the two calls to action whose role was not set here to the account owner in its section 3.4; the cells above say so.)</p>
 <h3>A.1 · Objects</h3>
 <p>Every object below is invented for the running example (Perqo, fictional). New facts are marked <em>new</em>; the others come from IA1 to IA3 and the register. Tones: 1 perqo.com only, 2 the merchant side, 3 the app only, 4 Admin only, 5 shared across surfaces (IA2, section 5.2).</p>
 <div class="tbl"><table>
@@ -369,7 +369,7 @@
 <td>O-09</td>
 <td>card <em>new</em></td>
 <td>5</td>
-<td>not set (IA7)</td>
+<td>Perqo card, on the employee's record: status only (IA7)</td>
 <td>Card</td>
 <td>Perqo card</td>
 <td>accepted at the till</td>
@@ -379,7 +379,7 @@
 <td>O-10</td>
 <td>notification <em>new</em></td>
 <td>3</td>
-<td>not set (IA7)</td>
+<td>not shown (IA7)</td>
 <td>Notifications, in Account</td>
 <td>not shown</td>
 <td>not shown</td>
@@ -618,13 +618,13 @@
 <tr>
 <td>client</td>
 <td>-&gt; edit company details <em>new</em></td>
-<td>admin user (role not set: IA7)</td>
+<td>account owner (IA7, section 3.4)</td>
 <td>Admin, Settings</td>
 </tr>
 <tr>
 <td>admin user</td>
 <td>-&gt; add <em>new</em></td>
-<td>admin user (role not set: IA7)</td>
+<td>account owner (IA7, section 3.4)</td>
 <td>Admin, Settings</td>
 </tr>
 <tr>

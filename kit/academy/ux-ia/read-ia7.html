@@ -1,0 +1,1399 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#ux-ia" data-target="ux-ia">Course IA · Information architecture</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">IA7</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--blue)">INFORMATION ARCHITECTURE</span> · IA7 <span class="pill live">IA7</span></div>
+    <h1>Level 3 · the backoffice</h1>
+    <p class="scope">Multi-entity enterprise IA for Perqo Admin: objects, roles and permissions, list-and-detail patterns, workflows and states.</p>
+  </header>
+  <div class="stepbar" data-n="9"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 9</span><span class="stt">What makes a backoffice different</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-ia7-0" data-step="0"><span class="n">01</span><span class="t">What makes a backoffice different</span></a></li><li><a href="#read-ia7-1" data-step="1"><span class="n">02</span><span class="t">Object-relationship mapping for a backoffice</span></a></li><li><a href="#read-ia7-2" data-step="2"><span class="n">03</span><span class="t">Roles and permissions as an IA layer</span></a></li><li><a href="#read-ia7-3" data-step="3"><span class="n">04</span><span class="t">Enterprise navigation</span></a></li><li><a href="#read-ia7-4" data-step="4"><span class="n">05</span><span class="t">Workflows and states</span></a></li><li><a href="#read-ia7-5" data-step="5"><span class="n">06</span><span class="t">The IA and the engineering data model</span></a></li><li><a href="#read-ia7-6" data-step="6"><span class="n">07</span><span class="t">Deliverable · The Perqo Admin IA</span></a></li><li><a href="#read-ia7-7" data-step="7"><span class="n">08</span><span class="t">What IA8 and later units take</span></a></li><li><a href="#read-ia7-8" data-step="8"><span class="n">09</span><span class="t">Perqo facts set by this unit</span></a></li></ol><div class="secx"><a href="#read-ia7-sources" data-acc>Sources</a><a href="#read-ia7-note" data-acc>The writer's opening note</a><a href="#read-ia7-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-ia7-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">What makes a backoffice different</span></span></h2>
+<h3>1.1 · Five differences</h3>
+<p>A sales website is read by visitors who may never come back; an employee app is opened a few times a month (IA3, section 6.2, assumed). A backoffice is the tool someone uses to do their job. Kate Kaplan's NN/g guidelines for complex applications start from a definition NN/g had given before: "any application supporting the broad, unstructured goals or nonlinear workflows of highly trained users in specialized domains". Such applications "support highly trained users with specialized knowledge", help them "navigate and manage large underlying data sets", and have end users "relying on them for their work"; some users spend "years or even decades using the same system", and "users often do not follow a known, sequential set of subtasks" to reach their goal ("8 Design Guidelines for Complex Applications", Nielsen Norman Group, 8 November 2020, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/complex-application-design/">nngroup.com, complex applications</a>; NN/g guidance).</p>
+<p>Read for its IA consequences, that definition gives five differences. Each is set against the app here, because IA6 is the unit the reader has just finished.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Difference</th>
+<th>Perqo app (IA6)</th>
+<th>Perqo Admin (Perqo, fictional)</th>
+<th>What it changes in the IA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Many entity types</td>
+<td>eight objects with the employee's calls to action (IA6, Deliverable A, A.2)</td>
+<td>ten of IA4's objects shown, one not shown, and one added here (Deliverable A)</td>
+<td>the object-relationship map is the main artefact; a sitemap misses most of the structure (IA1, section 5)</td>
+</tr>
+<tr>
+<td>Roles and permissions</td>
+<td>one role, the employee</td>
+<td>HR manager, finance manager and, from this unit, account owner</td>
+<td>a role layer decides what each person sees, does and reaches (section 3)</td>
+</tr>
+<tr>
+<td>Volumes</td>
+<td>one person's own claims and purchases</td>
+<td>every employee, claim and allocation of a client (section 2.2)</td>
+<td>lists with filters, find and bulk actions; work queues (section 4)</td>
+</tr>
+<tr>
+<td>Workflows</td>
+<td>short tasks, begun from Home or a notification (IA6, section 3.2)</td>
+<td>decisions that wait on a person, and changes many people depend on</td>
+<td>a state diagram per lifecycle; approvals, exceptions and an audit trail (section 5)</td>
+</tr>
+<tr>
+<td>Users paid to be there</td>
+<td>an employee who opens the app a few times a month (IA3, section 6.2, assumed)</td>
+<td>managers who use Admin daily (IA3, section 6.2, assumed)</td>
+<td>the IA can ask more learning of its users, in exchange for speed on repeated work (section 1.2)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.2 · Sovereign posture, and the people paid to be there</h3>
+<p>Alan Cooper and his co-authors give the last difference a name. Their chapter "Platform and Posture" describes a product's posture as its behavioural stance: how much of a person's attention it asks for and for how long (<em>About Face: The Essentials of Interaction Design</em>, 4th ed., Wiley, 2014, ch. 9, pp. 205 to 236, sections "Product Postures" and "Postures for the Desktop"; contents at <a target="_blank" rel="noopener" href="https://wiley-vch.e-bookshelf.de/about-face-2765056.html">e-bookshelf.de</a>). A sovereign-posture product holds a person's attention for long, continuous stretches and is the main tool of their working day; a transient-posture product is called up for one function and put away. In the chapter's argument, the users of a sovereign product spend so long in it that they stop being beginners quickly, so the design can favour efficiency for people who know it: the whole screen, dense information, a restrained visual style (ch. 9). The next chapter, "Optimizing for Intermediates", makes the general point: most people who use a product regularly become and stay intermediates, neither beginners nor experts, and a product should be built for them (ch. 10, section "Perpetual Intermediates", p. 238).</p>
+<p>Perqo's two product surfaces sit at opposite ends (Perqo, fictional). The app, opened a few times a month, is transient: IA6 built it on a tab bar, with everything needed reachable from where the person is and a direct route to the task that usually follows (IA6, sections 3.5 and 1.2). Admin, used daily by the same HR and finance managers (IA3, section 6.2, assumed), is sovereign. IA3 already drew the consequence for labels: Krug's case for labels that need no thought was made about websites met by occasional visitors, and a backoffice "can ask more of its users' learning" (IA3, section 6.2). Cooper's argument is practice from a standard work, not a measured finding, and this unit uses it as practice.</p>
+<h3>1.3 · What sovereign posture does not license</h3>
+<p>Two limits keep the argument honest. The first: a user who learns a structure still needed it to be learnable. Admin's users are domain experts in HR and finance, not in Perqo, so its labels must be the client's own words for its own things (employee group, policy, budget), which is what IA1's vocabulary already set (IA1, Deliverable). The second: posture is about attention and screen, and it says nothing about who may see what. A sovereign product with many users in different jobs needs the role layer of section 3 more than a transient one does, because the person spending all day in it will reach every route it shows them.</p>
+<nav class="secnav" aria-label="Sections"><a class="snext" href="#read-ia7-1" data-step="1"><span>Next · 2 of 9</span><b>Object-relationship mapping for a backoffice</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-ia7-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">Object-relationship mapping for a backoffice</span></span></h2>
+<h3>2.1 · From the object map to the object-relationship map</h3>
+<p>IA2 drew two grades of the same artefact: an object map lists the objects with their attributes and actions; an object-relationship map adds the lines between them, each with a verb and a count at each end, in UML's multiplicity notation (IA2, section 1.5; Object Management Group, <em>Unified Modeling Language</em> 2.5.1, 2017). Its decision table gives the object-relationship map F2 in design and F3 "as the agreed mapping to the data model", and assigns it to this unit (IA2, Deliverable). IA4 drew Perqo's map across every surface at F2 with counts, from Sophia V. Prater's object-oriented UX method (nouns into objects, core content, nesting, calls to action; Prater, "Object-Oriented UX", A List Apart, 2015, and "OOUX: A Foundation for Interaction Design", A List Apart, 2016, both practice; IA4, section 4.1), and handed this unit the Admin part to take to F3 with permissions and model names (IA4, Deliverable A).</p>
+<p>A backoffice asks four more things of each object than an app does, and the brief names them: roles, volumes, lifecycles and work queues. They are this unit's columns, added to IA4's, and each answers a design question the map cannot otherwise answer.</p>
+<ul>
+<li><strong>Roles: who may see it and who may change it.</strong> The answer is the role layer (section 3), recorded on the object so that every screen showing the object inherits it.</li>
+<li><strong>Volumes: how many there are, and how fast they arrive.</strong> A thing with three instances is a short page; a thing with a thousand is a list that needs order, filters and find (this unit's rule; the table guidance is Laubheimer 2022, section 4.3). Volumes are assumptions until measured, and are labelled so.</li>
+<li><strong>Lifecycle: whether it changes state.</strong> An object with states gets a state diagram (section 5.1); one without needs only its attributes.</li>
+<li><strong>Work queue: whether anyone must act on some of them.</strong> A queue is a list of one object filtered by state and owned by a role (section 4.2). Recording it on the object says where the work for that object waits.</li>
+</ul>
+<p>F3 adds two things IA2 set for the grade: a stable identifier on every element, and each object's model name beside its label (IA2, sections 1.0 and 1.5). IA4's identifiers, O-01 to O-16 and R-01 to R-20, are kept; this unit's additions continue from O-17 and R-21.</p>
+<h3>2.2 · What this unit adds to the Admin objects</h3>
+<p>Every object below keeps its IA4 label, attributes and relationships; nothing is renamed (IA4, "What IA7 may do with it"). The additions, each invented for the running example (Perqo, fictional):</p>
+<ul>
+<li><strong>Volumes, for a sizing client.</strong> Volumes are given for one client used here and by DD-IA2 to size Admin: 1,200 employees in 14 employee groups, with three admin users (two HR managers and one finance manager). It is not the example client of IA3 and IA6, whose policy those units described; that client's size is left free. From IA6's assumed frequency of one claim per employee a month (IA6, Deliverable A), the sizing client sees about 1,200 claims a month; from eight card payments per employee a month (same), about 9,600 card payments. Assuming 15% of claims are over the policy's auto-approve limit, about 180 a month wait in Approvals, about 9 a working day over 20 working days. Each employee holds one allocation per open category and period (IA3, section 2.3), so up to 4,800 allocations a period with all four categories open. Every volume here is assumed.</li>
+<li><strong>Employee status.</strong> An employee is Invited when HR invites them, Active once they join in the app (Join, A-0.1; IA6, Deliverable B, B.4, E-2), and Left when HR marks them as left. It is a new attribute on O-05, with its own lifecycle (section 5.1).</li>
+<li><strong>Account owner.</strong> One admin user per client is its account owner, a power held beside the HR manager or finance manager role (section 3.4). It is a new attribute on O-02, and IA4's role attribute keeps its two values.</li>
+<li><strong>Admin user status.</strong> Active or Removed. A removed admin user can no longer sign in, and their name stays on every decision and change they made (section 5.3).</li>
+<li><strong>Two claim attributes for the decision.</strong> Decided by (the admin user who decided, or the rule) and rejection note (HR's words to the employee when HR rejects), beside IA6's rejection reason (over the balance, or by HR).</li>
+<li><strong>One new object, the audit entry (O-17).</strong> One record per change to an Admin object: who made it, what action, on which object, when, and the values before and after (section 5.3).</li>
+<li><strong>Four new relationships.</strong> R-21: an admin user is also an employee (0..1 to 0..1), matched by work email, because HR and finance managers are employees of the client and may claim too. R-22: a claim is decided by an admin user (0..<em> to 0..1; none when the rule decides). R-23: an audit entry records a change to one object of Admin (0..</em> to 1). R-24: an audit entry is made by an admin user (0..* to 0..1; none when the Perqo system made the change).</li>
+</ul>
+<h3>2.3 · Card and notification: the two names IA4 left unset</h3>
+<p>IA4 left Admin's name for two objects unset, for this unit (IA4, A.1), and IA6 repeated the gap in its labels table (IA6, section 6.2); since 3 November 2026 both give the decisions below, with a dated note. The test for each is IA4's: does anyone in Admin find, list or act on the thing (IA4, section 4.2)?</p>
+<ul>
+<li><strong>Card (O-09): shown, as "Perqo card", status only.</strong> HR is the person an employee asks why a payment was declined, and IA6 set that a payment is declined at the till when the card is Frozen or the payment is over the category's balance (IA6, Deliverable C, C.2). So the employee's record in Admin shows "Perqo card" with its status: Active, Frozen, or Not issued when the employee holds no card (R-11 allows 0..1). The label is perqo.com's (IA4, A.1), so no new term enters the vocabulary. The last four digits are not shown, and Admin cannot change the card: HR's one call to action on it is -&gt; view status (Deliverable A, A.4), and freezing and unfreezing stay the employee's (IA4, A.3). Showing only what HR needs to answer the question applies least privilege to an attribute (section 3.3).</li>
+<li><strong>Notification (O-10): not shown.</strong> A notification is a message to the employee about one claim (IA4, A.1). What HR needs to know about that claim is its status and history, which the claim and its audit entries hold (section 5.3). Showing the employee's messages in Admin would put a person's inbox in their employer's backoffice and add nothing HR acts on. Whether Admin sends HR any message of its own (a daily email of waiting claims, say) is left free.</li>
+</ul>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia7-0" data-step="0"><span>Previous · 1 of 9</span><b>What makes a backoffice different</b></a><a class="snext" href="#read-ia7-2" data-step="2"><span>Next · 3 of 9</span><b>Roles and permissions as an IA layer</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-ia7-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">Roles and permissions as an IA layer</span></span></h2>
+<h3>3.1 · Role-based access control, in the IA's terms</h3>
+<p>Engineering has a standard model for who may do what. David Ferraiolo, Ravi Sandhu, Serban Gavrila, Richard Kuhn and Ramaswamy Chandramouli's article opens: "In this article we propose a standard for role-based access control (RBAC)" ("Proposed NIST Standard for Role-Based Access Control", <em>ACM Transactions on Information and System Security</em> 4, no. 3, 2001, pp. 224 to 274, <a target="_blank" rel="noopener" href="https://doi.org/10.1145/501978.501980">doi.org, Ferraiolo 2001</a>). NIST's own summary of the model, as standards documentation: "all access is through roles"; "A role is essentially a collection of permissions"; and "all users receive permissions only through the roles to which they are assigned". The proposal was adopted as an American national standard, INCITS 359-2004, in four components: Core RBAC, Hierarchical RBAC, and static and dynamic separation of duty (NIST, "Role Based Access Control: Frequently Asked Questions", archived 2008, <a target="_blank" rel="noopener" href="https://webarchive.library.unt.edu/eot2008/20080917093055/http:/csrc.nist.gov/groups/SNS/rbac/faq.html">NIST RBAC FAQ, archived</a>).</p>
+<p>The IA does not design the access-control system; engineering and security do. What the IA owns is the layer people meet: which roles exist and what they are called, and what each role sees, does and reaches in the structure. On this unit's reading of the RBAC model, the two meet at one point. A permission in RBAC is an operation on an object; a call to action in Prater's inventory is an action on an object with "who triggers it" recorded beside it (Prater 2016; IA4, A.3). The object map's calls to action, each with its role, are the permissions written in the user's words. That is why this unit records roles on the map itself (Deliverable A, A.4) and draws the role-by-section matrix from it.</p>
+<h3>3.2 · See, do, reach</h3>
+<p>A role decides three things in the IA, and each lands in a different artefact.</p>
+<ul>
+<li><strong>See: which objects and attributes the role's screens show.</strong> It lands on the object-relationship map, as each object's "seen by" (Deliverable A, A.1). The Perqo card's last four digits are an attribute no Admin role sees (section 2.3).</li>
+<li><strong>Do: which calls to action the role holds.</strong> It lands on the calls-to-action table, as "who" (Deliverable A, A.4).</li>
+<li><strong>Reach: which routes the role's navigation shows.</strong> It lands in the navigation model, as a route that exists for some roles and not others (Deliverable C).</li>
+</ul>
+<p>The three need not agree, and the IA decision is where they differ. IA6 set the rule for a thing a person cannot use: the choice is between hiding it, showing it disabled and showing it with an explanation, and the deciding question is whether the person can act on the explanation (IA6, section 4.4). Applied to roles, at Perqo (Perqo, fictional):</p>
+<ul>
+<li><strong>A route a role can never use is hidden.</strong> Approvals is not in the finance manager's global navigation: no finance manager decides a claim (IA4, A.3), so the route would only ever lead to a list they cannot act on. What finance needs to know about waiting claims, their number and value, is in Reports, Claims by status.</li>
+<li><strong>An action a role holds but cannot take now is shown disabled, with the reason.</strong> An HR manager looking at their own claim sees Approve and Reject unavailable, with the line "Another HR manager decides your own claim" (section 3.3). The person can act on that: they know who will decide.</li>
+<li><strong>What a role may see but not change is shown read only.</strong> Finance sees policies and employees, without edit actions, because finance sets budgets per employee group and needs to know which categories each group's policy opens (R-06).</li>
+</ul>
+<p>Each role also has a scope: which records it covers. At Perqo, every role covers its whole client (Perqo, fictional); scoping a role to some employee groups is a common enterprise need that this unit leaves free, because nothing in the brief or the filed units calls for it.</p>
+<h3>3.3 · Least privilege and separation of duty</h3>
+<p>Two security principles shape the role layer, and both have standard definitions. Least privilege: "a system should restrict the access privileges of users (or processes acting on behalf of users) to the minimum necessary to accomplish assigned tasks" (CNSSI 4009-2022, as given in NIST's glossary, <a target="_blank" rel="noopener" href="https://csrc.nist.gov/glossary/term/least_privilege">csrc.nist.gov, least privilege</a>; standards documentation). Separation of duty "refers to the principle that no user should be given enough privileges to misuse the system on their own" (NIST SP 800-192, as given in NIST's glossary, <a target="_blank" rel="noopener" href="https://csrc.nist.gov/glossary/term/Separation_of_Duty">csrc.nist.gov, separation of duty</a>).</p>
+<p>Each gives the IA a test. Least privilege asks of every cell of the role matrix whether the role needs it for its job, and it decided three Perqo cells (Perqo, fictional): HR does not see the Card payments report, which lists each employee's purchases, because no HR task needs individual purchases; no role sees the card's last four digits; and only the account owner manages admin users (section 3.4). Separation of duty asks where one person could both make and approve a request, and at Perqo that place is a claim: HR managers are employees too (R-21), and an HR manager who decided their own claim over the limit would approve their own spending. The rule (Perqo, fictional): an HR manager cannot decide their own claim; it waits in Approvals for another HR manager. Because the rule needs a second HR manager, every client has at least two admin users with the HR manager role. The rule is an exception in the claim's lifecycle (EX-1, Deliverable D).</p>
+<h3>3.4 · The account owner: who edits the company and adds admin users</h3>
+<p>IA4 left two calls to action without a role: client -&gt; edit company details and admin user -&gt; add, both in Settings (IA4, A.3). The choice is between giving them to an existing role and adding a power.</p>
+<p>Giving them to every HR manager fails least privilege: an HR manager able to add admin users can add one with any role, so the power to approve claims (HR) and the power to set budgets (finance) could be joined in one person by that person's own act, which is what separation of duty exists to prevent (section 3.3). Giving them to finance has the same fault in the other direction. The decision (Perqo, fictional): each client has exactly one <strong>account owner</strong>, an admin user who also holds the HR manager or the finance manager role. The account owner, and only the account owner, edits the company details, adds and removes admin users, changes an admin user's role, reads the Activity log, and hands the ownership to another admin user (-&gt; make account owner). At the start of a contract Perqo sets up the client's first admin user as account owner; the rest of a client's onboarding is left free.</p>
+<p>Account owner is a power held beside a role: the person still does HR's or finance's work under their role. It is recorded as an attribute of the admin user (account owner, yes or no), which leaves IA4's role attribute with its two values. In RBAC's terms it is a third role a user can hold together with one of the others (NIST, RBAC FAQ); in the IA's terms it is one more row in the role matrix, and that is how the matrix draws it.</p>
+<h3>3.5 · The role-by-section matrix</h3>
+<p>The role-by-section matrix is the artefact that shows the layer: rows are roles, columns are the surface's sections, and each cell says what the role can see, do and reach there. IA2's catalogue has no entry for it, so this unit adds one, under IA2's rule "Keep the notation; extend the legend" (IA2, section 4):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Question asked</th>
+<th>Artefact</th>
+<th>Figure kind</th>
+<th>Fidelity by stage</th>
+<th>Reader</th>
+<th>Built in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who can see, do and reach what, section by section?</td>
+<td>Role-by-section matrix</td>
+<td>matrix</td>
+<td>F2 in design, one mark per cell; F3 for build, each mark traced to calls to action on the object map</td>
+<td>engineering and security, the client, support, product management</td>
+<td>IA7, Deliverable B</td>
+</tr>
+</tbody>
+</table></div>
+<p>The matrix is built in Deliverable B. Its readers read different things from it: engineering and security the permissions to build; the client whether its own people can do their jobs and only their jobs; support why a manager says a button is missing.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia7-1" data-step="1"><span>Previous · 2 of 9</span><b>Object-relationship mapping for a backoffice</b></a><a class="snext" href="#read-ia7-3" data-step="3"><span>Next · 4 of 9</span><b>Enterprise navigation</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-ia7-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">Enterprise navigation</span></span></h2>
+<h3>4.1 · Global, local and contextual routes in a backoffice</h3>
+<p>IA2 took the Polar Bear book's route types for the navigation model: global routes present everywhere on a surface, local routes within one area, contextual routes from one item to related items, and supplemental routes outside the main structure, among them search (Rosenfeld, Morville and Arango, <em>Information Architecture: For the Web and Beyond</em>, 4th ed., O'Reilly, 2015, ch. 8, headings; IA2, section 1.4). Its table gave Admin's global routes as IA1's six areas, Employees, Budgets, Policies, Approvals, Reports and Settings; its local routes as the policies inside Policies, one per employee group; its contextual route as the one from an employee's record to the claims they made; and no supplemental route (IA2, section 5.3).</p>
+<p>This unit keeps all of that. The six areas stay as they are, in IA1's order, with no area added or renamed: each is either an object area (Employees, Budgets, Policies), a queue (Approvals), a set of views (Reports) or the client's own setup (Settings), and the objects of Deliverable A each have a home among them. Two things change around them, and both are extensions. The global routes a person sees depend on their role (section 3.2): a finance manager's navigation has five areas, without Approvals. And Approvals shows its count, the number of claims waiting for the person viewing it, because the count is what HR looks at the area for.</p>
+<p>In a backoffice the contextual routes carry most of the movement. Prater argues that nesting objects inside each other finds the cross-links, and that the cross-links define contextual navigation (Prater 2015; IA4, section 2.4). Admin's relationships (Deliverable A, A.3) become its contextual routes almost one for one: an employee's record leads to their claims (R-08), their budgets (R-05) and their Perqo card's status (R-11); a claim leads to its employee, its policy (R-09) and its budget (R-10); an employee group leads to its policy (R-03), its employees (R-04) and its budgets; an audit entry leads to the record it changed (R-23). A relationship with no route is a question to ask: either nobody follows it, or a route is missing.</p>
+<h3>4.2 · Organised by objects and work queues</h3>
+<p>A website is organised around pages, because a visitor comes to read. A backoffice user comes to work through records: Kaplan's users manage "large underlying data sets" and do not follow "a known, sequential set of subtasks" (Kaplan 2020). Page Laubheimer's NN/g article on data tables names the four things people do with a table of records: "Find record(s) that fit specific criteria", "Compare data", "View, edit or add a single row's data" and "Take action(s) on records" ("Data Tables: Four Major User Tasks", Nielsen Norman Group, 3 April 2022, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/data-tables/">nngroup.com, data tables</a>; NN/g guidance). None of the four is "read a page". Each is an act on objects of one kind.</p>
+<p>Two structures follow, and together they are how this unit organises Admin.</p>
+<ul>
+<li><strong>Every object type gets a list and a detail.</strong> The list is IA4's database structure: items described by fields, the groups made at the time of asking by filtering and sorting (IA4, section 2.3). The detail is the object's own page, with its attributes, its calls to action and its contextual routes, and one address. A detail page belongs to its object, so it has one place in the structure and many routes to it: a claim's page sits under its employee's record (a claim belongs to one employee, R-08), and Approvals, Reports and the Activity log all open the same page. The cost is the one Laubheimer gives for any item with more than one parent: a breadcrumb shows one canonical path, which may not be the path the person took (Laubheimer, NN/g, 2018; IA4, section 2.2). Admin's answer is that a detail opened from a list opens beside the list, so the person's place stays in view (section 4.3).</li>
+<li><strong>Work that waits gets a queue.</strong> A work queue is a list of one object type, filtered to the state in which someone must act, owned by the role that acts, ordered by what should be done first, and showing its count. Approvals is IA1's: every claim awaiting a decision, grouped by policy (IA1, section 2.2). Deliverable C, C.4 adds two: Not joined (employees still Invited after 14 days, for HR) and No budget for next period (employee groups with no budgets set for the coming period, for finance). A queue is a view, like a report: it holds no object of its own, so it is in the navigation model and nowhere on the object map (IA4, section 4.3).</li>
+</ul>
+<p>The case for this organisation is a synthesis. Kaplan's definition and Laubheimer's four tasks are NN/g guidance built on observation; Prater's method is practice; the database structure is the Polar Bear book's (IA4, section 2.3). This unit knows of no controlled study comparing an object-and-queue backoffice with a page-organised one on the same content, so the organisation is argued, and the test of it is IA11's (what IA8 and later units take).</p>
+<h3>4.3 · List, detail, create and edit</h3>
+<p>Each object type's screens follow one pattern, so a person who has learnt one area has learnt the others: Cooper's intermediates (section 1.2) gain most from a pattern that repeats.</p>
+<p><strong>List.</strong> A table of the object, each row one record, showing the few attributes the person sorts, filters and recognises it by; the rest wait on the detail, as IA6 ranked the app's attributes (IA6, Deliverable A, A.2; Prater 2016). Laubheimer's guidance applies directly: "Filters need to be discoverable, quick, and powerful", and on a table larger than the screen, "Freeze header rows and header columns" (Laubheimer 2022). Each list has one default order, chosen by IA4's rule of the property the person thinks in: employees alphabetically by name, filtered by employee group (IA4, section 1.1), claims in Approvals oldest first.</p>
+<p><strong>Detail.</strong> The object's page: its attributes, its calls to action, its contextual routes and its History (section 5.3). On a wide window a detail opened from a list opens beside it. Laubheimer's guidance names the form, "A nonmodal side panel allows for the full display (and editing) of a single record" (Laubheimer 2022), and Android's platform documentation describes the same list-detail layout: on expanded widths "Selection of a list item updates the detail pane to show the related content for the selected item", and on medium and compact widths the window shows "either the list or the detail", with back returning to the list (Android Developers, "Canonical layouts", page updated 22 October 2026, <a target="_blank" rel="noopener" href="https://developer.android.com/develop/adaptive-apps/guides/canonical-layouts">developer.android.com, canonical layouts</a>; platform documentation). Admin is used in a desktop browser (Perqo, fictional; assumed), and the narrow-window behaviour is its fallback.</p>
+<p><strong>Create.</strong> A form page reached from the list, with a name that starts with the verb the call to action uses: Create group, Invite employees, Set budgets, Add admin user, Edit policy. It ends on the new object's detail.</p>
+<p><strong>Edit.</strong> The detail's Edit opens the same form, filled. A change to a policy applies to claims submitted after it; claims already waiting keep the rule they were submitted under (Perqo, fictional), so that HR does not see a claim's route change after it has entered the queue. Every change is recorded in the object's History.</p>
+<p>The list-detail pattern in Admin's busiest place, Approvals, drawn as a wireflow at F2 (Perqo, fictional). The Approvals list opens on "Waiting for you" with its count (9, the sizing client's working day, section 2.2), and shows the claims waiting, grouped by policy, oldest first, each with a box to select it (Select), a find field (Find in list) and Approve selected. Clicking a claim opens it beside the list: status, employee and employee group, amount, category, date submitted, the receipt, what remains in the category's budget, the policy's auto-approve limit, Approve and Reject, its History and a route to the employee's record. Approve moves the claim to Approved with no way back, and the next waiting claim opens. Reject opens a modal that asks for a note to the employee; Reject claim moves it to Rejected, with no way back. The HR manager's own claim opens in a state where Approve and Reject are unavailable, with "Another HR manager decides your own claim". Admin's screens take tone 4; the Rejected claim takes tone 6, a path that ends without success.</p>
+<figure class="viz viz-wireflow"><div class="viz-scroll"><svg viewBox="0 0 700 1312.0" width="700" height="1312.0" data-x0="146" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="wireflow"><path class="viz-link" d="M195.4,406.0 L195.4,459.2 L241.6,459.2 L241.6,468.5"/><path class="viz-head" d="M241.6,475.5 L237.6,468.5 L245.6,468.5 z"/><g data-box=""><rect class="viz-lblbg" x="183.6" y="451.0" width="69.8" height="16.5"/><text class="viz-linklabel" x="218.5" y="463.0" text-anchor="middle">click a claim</text></g><path class="viz-link" d="M237.4,406.0 L237.4,428.5 L483.6,428.5 L483.6,468.5"/><path class="viz-head" d="M483.6,475.5 L479.6,468.5 L487.6,468.5 z"/><g data-box=""><rect class="viz-lblbg" x="277.3" y="414.0" width="166.4" height="29.0"/><text class="viz-linklabel" x="360.5" y="426.0" text-anchor="middle">[claims selected] click Approve</text><text class="viz-linklabel" x="360.5" y="438.5" text-anchor="middle">selected (no way back)</text></g><path class="viz-link" d="M216.4,873.5 L216.4,889.8 L241.6,889.8 L241.6,899.0"/><path class="viz-head" d="M241.6,906.0 L237.6,899.0 L245.6,899.0 z"/><g data-box=""><rect class="viz-lblbg" x="196.0" y="881.5" width="66.0" height="16.5"/><text class="viz-linklabel" x="229.0" y="893.5" text-anchor="middle">click Reject</text></g><path class="viz-link" d="M304.0,207.0 L389.0,207.0"/><path class="viz-head" d="M396.0,207.0 L389.0,211.0 L389.0,203.0 z"/><text class="viz-linklabel" x="350.0" y="187.0" text-anchor="middle">[your own</text><text class="viz-linklabel" x="350.0" y="199.5" text-anchor="middle">claim] click it</text><path class="viz-link" d="M304.0,674.5 L389.0,674.5"/><path class="viz-head" d="M396.0,674.5 L389.0,678.5 L389.0,670.5 z"/><text class="viz-linklabel" x="350.0" y="654.5" text-anchor="middle">click Approve</text><text class="viz-linklabel" x="350.0" y="667.0" text-anchor="middle">(no way back)</text><path class="viz-link" d="M304.0,1105.0 L389.0,1105.0"/><path class="viz-head" d="M396.0,1105.0 L389.0,1109.0 L389.0,1101.0 z"/><text class="viz-linklabel" x="350.0" y="1072.5" text-anchor="middle">click Reject</text><text class="viz-linklabel" x="350.0" y="1085.0" text-anchor="middle">claim (no way</text><text class="viz-linklabel" x="350.0" y="1097.5" text-anchor="middle">back)</text><g data-box=""><rect class="viz-screen viz-t4" x="154.0" y="8.0" width="150" height="398.0" rx="2"/><rect class="viz-band viz-t4" x="156.0" y="10.0" width="146" height="22.0"/><text class="viz-nodelabel" x="164.0" y="24.3" text-anchor="start">Approvals</text><text class="viz-attr" x="164.0" y="55.0" text-anchor="start">Waiting for you: 9</text><text class="viz-attr" x="164.0" y="73.0" text-anchor="start">Grouped by policy,</text><text class="viz-attr" x="164.0" y="87.0" text-anchor="start">oldest first</text><text class="viz-attr" x="164.0" y="105.0" text-anchor="start">Select</text><rect class="viz-ph" x="164.0" y="115.0" width="104.0" height="7"/><text class="viz-attr" x="164.0" y="137.0" text-anchor="start">Select</text><rect class="viz-ph" x="164.0" y="147.0" width="91.0" height="7"/><text class="viz-attr" x="164.0" y="169.0" text-anchor="start">Select</text><rect class="viz-ph" x="164.0" y="179.0" width="78.0" height="7"/><text class="viz-attr" x="164.0" y="201.0" text-anchor="start">Find in list</text><rect class="viz-btn viz-t4" x="164.0" y="208.0" width="130" height="25.0" rx="2"/><text class="viz-mark" x="229.0" y="224.3" text-anchor="middle">Approve selected</text></g><g data-box=""><rect class="viz-screen viz-t4" x="396.0" y="8.0" width="150" height="398.0" rx="2"/><rect class="viz-band viz-t4" x="398.0" y="10.0" width="146" height="36.0"/><text class="viz-nodelabel" x="406.0" y="24.3" text-anchor="start">Claim [your own</text><text class="viz-nodelabel" x="406.0" y="38.3" text-anchor="start">claim]</text><text class="viz-attr" x="406.0" y="69.0" text-anchor="start">Status: Submitted</text><text class="viz-attr" x="406.0" y="87.0" text-anchor="start">Approve and Reject</text><text class="viz-attr" x="406.0" y="101.0" text-anchor="start">unavailable</text><text class="viz-attr" x="406.0" y="119.0" text-anchor="start">Another HR manager</text><text class="viz-attr" x="406.0" y="133.0" text-anchor="start">decides your own claim</text></g><g data-box=""><rect class="viz-screen viz-t4" x="154.0" y="475.5" width="150" height="398.0" rx="2"/><rect class="viz-band viz-t4" x="156.0" y="477.5" width="146" height="22.0"/><text class="viz-nodelabel" x="164.0" y="491.8" text-anchor="start">Claim</text><text class="viz-attr" x="164.0" y="522.5" text-anchor="start">Status: Submitted</text><text class="viz-attr" x="164.0" y="540.5" text-anchor="start">Employee and</text><text class="viz-attr" x="164.0" y="554.5" text-anchor="start">employee group</text><rect class="viz-ph" x="164.0" y="564.5" width="78.0" height="7"/><text class="viz-attr" x="164.0" y="586.5" text-anchor="start">Amount, category, date</text><text class="viz-attr" x="164.0" y="600.5" text-anchor="start">submitted</text><rect class="viz-ph" x="164.0" y="610.5" width="91.0" height="7"/><text class="viz-attr" x="164.0" y="632.5" text-anchor="start">Receipt</text><rect class="viz-ph" x="164.0" y="639.5" width="130" height="28.0"/><text class="viz-attr" x="164.0" y="684.5" text-anchor="start">Remaining in the</text><text class="viz-attr" x="164.0" y="698.5" text-anchor="start">category&#x27;s budget</text><rect class="viz-ph" x="164.0" y="708.5" width="52.0" height="7"/><text class="viz-attr" x="164.0" y="730.5" text-anchor="start">Policy&#x27;s auto-approve</text><text class="viz-attr" x="164.0" y="744.5" text-anchor="start">limit</text><rect class="viz-btn viz-t4" x="164.0" y="751.5" width="130" height="25.0" rx="2"/><text class="viz-mark" x="229.0" y="767.8" text-anchor="middle">Approve</text><rect class="viz-btn viz-t4" x="164.0" y="782.5" width="130" height="25.0" rx="2"/><text class="viz-mark" x="229.0" y="798.8" text-anchor="middle">Reject</text><text class="viz-attr" x="164.0" y="824.5" text-anchor="start">History</text><text class="viz-attr" x="164.0" y="842.5" text-anchor="start">Employee&#x27;s record →</text><text class="viz-attr" x="164.0" y="856.5" text-anchor="start">see AD-1.1</text></g><g data-box=""><rect class="viz-screen viz-t4" x="396.0" y="475.5" width="150" height="398.0" rx="2"/><rect class="viz-band viz-t4" x="398.0" y="477.5" width="146" height="22.0"/><text class="viz-nodelabel" x="406.0" y="491.8" text-anchor="start">Claim [Approved]</text><text class="viz-attr" x="406.0" y="522.5" text-anchor="start">Status: Approved</text><text class="viz-attr" x="406.0" y="540.5" text-anchor="start">Decided by: you</text><text class="viz-attr" x="406.0" y="558.5" text-anchor="start">Then Paid → see</text><text class="viz-attr" x="406.0" y="572.5" text-anchor="start">Deliverable D</text><text class="viz-attr" x="406.0" y="590.5" text-anchor="start">The next waiting claim</text><text class="viz-attr" x="406.0" y="604.5" text-anchor="start">opens</text></g><g data-box=""><rect class="viz-screen viz-t4" x="154.0" y="906.0" width="150" height="398.0" rx="2"/><rect class="viz-band viz-t4" x="156.0" y="908.0" width="146" height="22.0"/><text class="viz-nodelabel" x="164.0" y="922.3" text-anchor="start">Reject claim (modal)</text><text class="viz-attr" x="164.0" y="953.0" text-anchor="start">Note to the employee</text><text class="viz-attr" x="164.0" y="967.0" text-anchor="start">(required)</text><rect class="viz-ph" x="164.0" y="974.0" width="130" height="36.0"/><rect class="viz-btn viz-t4" x="164.0" y="1016.0" width="130" height="25.0" rx="2"/><text class="viz-mark" x="229.0" y="1032.3" text-anchor="middle">Reject claim</text><rect class="viz-btn viz-t4" x="164.0" y="1047.0" width="130" height="25.0" rx="2"/><text class="viz-mark" x="229.0" y="1063.3" text-anchor="middle">Cancel</text></g><g data-box=""><rect class="viz-screen viz-t6" x="396.0" y="906.0" width="150" height="398.0" rx="2"/><rect class="viz-band viz-t6" x="398.0" y="908.0" width="146" height="22.0"/><text class="viz-nodelabel" x="406.0" y="922.3" text-anchor="start">Claim [Rejected]</text><text class="viz-attr" x="406.0" y="953.0" text-anchor="start">Status: Rejected</text><text class="viz-attr" x="406.0" y="971.0" text-anchor="start">Reason: by HR, with your</text><text class="viz-attr" x="406.0" y="985.0" text-anchor="start">note</text><text class="viz-attr" x="406.0" y="1003.0" text-anchor="start">The next waiting claim</text><text class="viz-attr" x="406.0" y="1017.0" text-anchor="start">opens</text></g></svg></div><figcaption>List-detail pattern: Approvals in Perqo Admin as a wireflow, F2; supports the decision on how HR moves through the queue of waiting claims, one by one or several at once, and where a decision cannot be undone (section 4.3). Tone 4 Perqo Admin; tone 6 a path that ends without success. List and detail beside each other from Laubheimer, 'Data Tables: Four Major User Tasks', NN/g, 2022, and Android Developers, 'Canonical layouts', 2026 (platform documentation); selection for batch actions from Laubheimer 2022; grouping by policy from IA1, section 2.2; the own-claim state from section 3.3; the no-way-back label stands for Garrett's crossbar (IA2, section 5.1); screen IDs from Deliverable C. Perqo is fictional.</figcaption></figure>
+<h3>4.4 · Bulk actions</h3>
+<p>Laubheimer's fourth task, acting on records, includes acting on several at once: "Batch actions usually involve a mechanism for selecting records (e.g., a checkbox for each record)", and "it's a convenient shortcut to have a single-click option to Select All" (Laubheimer 2022). In the IA a bulk action is a call to action on a set of objects, so it is recorded on the object map like any other, with its role. The question for each is whether every object in the set can take the same action with the same input.</p>
+<p>At Perqo (Perqo, fictional) three bulk actions pass that test, each a new call to action: claim -&gt; approve selected (HR, in Approvals); employee -&gt; move to group, for selected employees (HR, in Employees); and employee -&gt; resend invitation, for selected employees (HR, in Not joined). One fails it: rejection, because each rejection needs its own note to the employee, so claims are rejected one at a time. One bulk action was there from the start: finance sets the allocations of a whole group at once (IA4, Deliverable A), so Set budgets acts on up to hundreds of allocations in one form. A bulk approval runs the same checks as a single one on each claim, so one claim in a selection can end otherwise than the rest (T5, Deliverable D).</p>
+<h3>4.5 · Search inside the system</h3>
+<p>The first question the Polar Bear book asks of a search system is whether the product needs one ("Does Your Product Need Search?", Rosenfeld, Morville and Arango 2015, ch. 9, heading; IA3, section 5.1). IA2 gave Admin no supplemental route, and so no search (IA2, section 5.3). This unit keeps that, and gives every long list a find field instead.</p>
+<p>The reasoning (Perqo, fictional). Most finding in Admin is known-item seeking, in Donna Spencer's term: the person knows what they want and the words for it (Spencer, Boxes and Arrows, 2006, practice; IA3, section 5.1). HR looks an employee up by name, from a question or a support conversation (IA4, section 1.2). That is served by a find field on the list that holds the item: Employees finds by name or work email, Approvals by employee name, Admins by name, the Activity log by person, object and date. Each find narrows its own list, which makes it part of the list's database structure (IA4, section 2.3); it adds no supplemental system. A search across every object type would be the supplemental route IA2 left out; at the sizing client's volumes (1,200 employees, 14 groups) the lists and their find fields serve, and the change is named for the day they do not: a global search over employees and claims, with results grouped by object type and shown only for the objects the person's role may see (section 3.2). Whether in-list find is enough is a test for IA11.</p>
+<h3>4.6 · Reports as views</h3>
+<p>IA4 kept Reports off the object map: a report is an arrangement of objects, "allocations and transactions summed by group and period", and belongs in Admin's navigation model (IA4, section 4.3). Here it is. Reports holds five views (Perqo, fictional): Spend by category, Spend by employee group, Budget use (each group's budgets against what has been spent), Claims by status, and Card payments (each card payment with its employee, merchant, category, amount and date). Each is a page with an identifier and an address, and no object ID. Every row of a report is a contextual route to the records it sums, so a number in a report can always be traced to the claims, card payments or allocations behind it. Finance sees all five. HR sees two, Budget use and Claims by status, and not the other three: Card payments lists individual spending, which no HR task needs (section 3.3), and the two spend reports serve finance's work alone.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia7-2" data-step="2"><span>Previous · 3 of 9</span><b>Roles and permissions as an IA layer</b></a><a class="snext" href="#read-ia7-4" data-step="4"><span>Next · 5 of 9</span><b>Workflows and states</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-ia7-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">Workflows and states</span></span></h2>
+<h3>5.1 · A state diagram for each object that has a lifecycle</h3>
+<p>IA2 drew the claim's lifecycle as a plain state-transition diagram, the form David Harel's statecharts extend ("Statecharts: A Visual Formalism for Complex Systems", <em>Science of Computer Programming</em> 8, 1987, pp. 231 to 274; IA2, section 1.8), and gave it F2 in design and F3 for build, "every transition with who or what triggers it" (IA2, Deliverable). In a backoffice, more than one object has a lifecycle, and each one gets its own diagram. The test for whether an object needs one is this unit's: draw a state diagram where a status decides what someone can do with the object, and where the object can leave a state by more than one route; record a status that has one way out as an attribute and a sentence. Applied to Admin's objects (Perqo, fictional):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Object</th>
+<th>States</th>
+<th>Diagram?</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>claim (O-07)</td>
+<td>Submitted, Approved, Rejected, Paid (IA1; IA2)</td>
+<td>yes, Deliverable D</td>
+<td>four states, two end states, decisions by the rule and by HR, exceptions</td>
+</tr>
+<tr>
+<td>employee (O-05)</td>
+<td>Invited, Active, Left (this unit)</td>
+<td>yes, below</td>
+<td>what HR can do differs by state, and Invited has three ways out</td>
+</tr>
+<tr>
+<td>card (O-09)</td>
+<td>Active, Frozen (IA4)</td>
+<td>no</td>
+<td>the employee's own toggle; Admin only shows it (section 2.3)</td>
+</tr>
+<tr>
+<td>admin user (O-02)</td>
+<td>Active, Removed (this unit)</td>
+<td>no</td>
+<td>one transition, by the account owner</td>
+</tr>
+<tr>
+<td>allocation, policy, employee group, client</td>
+<td>none</td>
+<td>no</td>
+<td>they change values, not states; History records each change (section 5.3)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The employee's lifecycle (Perqo, fictional). HR's invite creates the employee as Invited and sends HR's invitation, the email IA6 set as the app's entry E-2: to the employee's work email, with a link that opens Join (A-0.1), or Get the Perqo app (S-6) without the app; Join confirms the employer's name and the work email (IA6, Deliverable B, B.4). Admin's side agrees with it: HR invites from Employees, either one employee (employee -&gt; invite) or several into one group (employee group -&gt; invite employees), giving each one's name and work email; the employer's name the email carries is the client's name from Company (O-01). While Invited, HR can resend the invitation, which leaves the employee Invited; the employee joining in the app makes them Active. HR marks an employee as left, from Invited or from Active, and Left is an end state: the person can no longer sign in to the app. Claims they submitted before leaving are still decided; what happens to their remaining allocations and their card is left free, a cross-surface question for IA8. Admin's boxes take tone 4.</p>
+<figure class="viz viz-states"><div class="viz-scroll"><svg viewBox="0 0 700 181.8" width="700" height="181.8" data-x0="93" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="states"><path class="viz-link" d="M168.2,88.2 L168.2,157.5 L533.8,157.5 L533.8,95.2"/><path class="viz-head" d="M533.8,88.2 L537.8,95.2 L529.8,95.2 z"/><g data-box=""><rect class="viz-lblbg" x="306.3" y="149.2" width="89.4" height="16.5"/><text class="viz-linklabel" x="351.0" y="161.3" text-anchor="middle">HR marks as left</text></g><path class="viz-link" d="M249.0,52.5 L302.0,52.5"/><path class="viz-head" d="M309.0,52.5 L302.0,56.5 L302.0,48.5 z"/><text class="viz-linklabel" x="279.0" y="20.0" text-anchor="middle">employee</text><text class="viz-linklabel" x="279.0" y="32.5" text-anchor="middle">joins</text><text class="viz-linklabel" x="279.0" y="45.0" text-anchor="middle">(A-0.1)</text><path class="viz-link" d="M425.0,52.5 L478.0,52.5"/><path class="viz-head" d="M485.0,52.5 L478.0,56.5 L478.0,48.5 z"/><text class="viz-linklabel" x="455.0" y="32.5" text-anchor="middle">HR marks</text><text class="viz-linklabel" x="455.0" y="45.0" text-anchor="middle">as left</text><path class="viz-link" d="M217.0,88.2 C217.0,112.2 237.0,112.2 237.0,95.2"/><path class="viz-head" d="M237.0,88.2 L233.0,95.2 L241.0,95.2 z"/><text class="viz-linklabel" x="227.0" y="120.3" text-anchor="middle">HR resends the</text><text class="viz-linklabel" x="227.0" y="132.8" text-anchor="middle">invitation</text><circle class="viz-start" cx="106.0" cy="52.5" r="5"/><path class="viz-link" d="M112.0,52.5 L126.0,52.5"/><path class="viz-head" d="M133.0,52.5 L126.0,56.5 L126.0,48.5 z"/><g data-box=""><rect class="viz-node viz-t4" x="133.0" y="16.8" width="116" height="71.5" rx="10"/><text class="viz-nodelabel" x="191.0" y="37.1" text-anchor="middle">Invited</text><text class="viz-small" x="191.0" y="51.6" text-anchor="middle">[after 14 days]</text><text class="viz-small" x="191.0" y="64.1" text-anchor="middle">in the Not</text><text class="viz-small" x="191.0" y="76.6" text-anchor="middle">joined queue</text></g><g data-box=""><rect class="viz-node viz-t4" x="309.0" y="32.5" width="116" height="40.0" rx="10"/><text class="viz-nodelabel" x="367.0" y="56.8" text-anchor="middle">Active</text></g><g data-box=""><rect class="viz-node viz-t4" x="485.0" y="16.8" width="116" height="71.5" rx="10"/><rect class="viz-endring viz-t4" x="488.0" y="19.8" width="110" height="65.5" rx="7"/><text class="viz-nodelabel" x="543.0" y="37.1" text-anchor="middle">Left</text><text class="viz-small" x="543.0" y="51.6" text-anchor="middle">can no longer</text><text class="viz-small" x="543.0" y="64.1" text-anchor="middle">sign in to the</text><text class="viz-small" x="543.0" y="76.6" text-anchor="middle">app</text></g></svg></div><figcaption>State diagram: the lifecycle of an employee in Perqo Admin, F3, every transition with who triggers it; supports the decision on what HR can do with an employee in each state and which state the Not joined queue holds (section 5.1). Tone 4 Perqo Admin. Plain state-transition form as Harel 1987 extends it (IA2, section 1.8); the invitation and Join from IA6, Deliverable B, B.4, E-2; the states, the queue and the 14 days from this section and Deliverable C, C.4. Perqo is fictional.</figcaption></figure>
+<h3>5.2 · Approvals and exceptions</h3>
+<p>An approval is a state in which an object waits on a person's decision. Three things make it an IA question: where the waiting objects are listed (the queue, section 4.2), who may decide (the role layer, section 3), and what can happen to the object other than the decision (the exceptions). IA2's state diagram and decision tree drew the main path of a Perqo claim (IA2, section 5.3): on submission, a claim over the employee's balance is rejected; one at or under the policy's auto-approve limit is approved automatically; any other waits in Approvals, where HR approves or rejects it. Approved claims become Paid when Perqo pays out. The balance is the chosen category's (IA3, section 2.3), and a Rejected claim carries its reason, over the balance or by HR (IA6, Deliverable B).</p>
+<p>Taking that diagram to F3 means writing each transition with its trigger, its actor and its condition (IA2, section 1.8), and then asking what else can happen. Three exceptions turn up at Perqo (Perqo, fictional), each an extension of IA2's diagram that adds a trigger or a condition and removes nothing:</p>
+<ul>
+<li><strong>EX-1, the claimant is an HR manager.</strong> The claim waits in Approvals and only another HR manager may decide it (section 3.3). No new state: a condition on who may trigger the HR transitions.</li>
+<li><strong>EX-2, the balance has changed while the claim waited.</strong> A claim waiting in Approvals does not reserve its amount: a category's spent counts approved and paid claims and card payments, not waiting claims (Perqo, fictional). So by the time HR approves, a card payment in the same category may have used the money. When an HR manager approves, the Perqo system checks the balance again, and a claim now over it moves to Rejected, over the balance. IA6 set the same check at the employee's end, between Check and submit and Submit (IA6, Deliverable C, C.3); this extends it to the moment of approval. It is a new trigger on IA2's Submitted-to-Rejected transition, T5.</li>
+<li><strong>EX-3, a claim waits too long.</strong> A claim waiting more than five working days is marked Overdue in Approvals. Overdue is not a state: it changes the queue's order and look, and nothing anyone can do with the claim. Drawing it as a state would put a display rule into the lifecycle, and the diagram's readers (IA2, section 1.8: engineering, content, support, the client) would read a status field that does not exist.</li>
+</ul>
+<p>The full transitions and exceptions are Deliverable D. Every decision is final in Admin: no transition leaves Approved except to Paid, and none leaves Rejected or Paid, as IA2's end states require.</p>
+<h3>5.3 · Audit trails</h3>
+<p>A backoffice where several people change records that money depends on needs to say who changed what. NIST's definition of an audit trail, as standards documentation: "A chronological record that reconstructs and examines the sequence of activities" surrounding or leading to an operation, procedure or event (NIST SP 800-53 Rev. 5, as given in NIST's glossary, <a target="_blank" rel="noopener" href="https://csrc.nist.gov/glossary/term/audit_trail">csrc.nist.gov, audit trail</a>).</p>
+<p>For the IA, an audit trail is an object, with attributes, relationships and routes, so it goes on the map (Perqo, fictional): the audit entry, O-17, records one change: who (an admin user, or the Perqo system), the action, the object and its ID, the date and time, and the values before and after. Every transition in Deliverable D writes one, and so does every create, edit and removal in Admin. It is shown in two places, each a view: History, on every object's detail page, listing that object's entries newest first, seen by any role that may see the object; and the Activity log in Settings, listing every entry of the client, seen by the account owner. The audit entry is why decided by and the admin user's Removed status exist: a decision must keep its decider's name after the decider has left the client (section 2.2).</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia7-3" data-step="3"><span>Previous · 4 of 9</span><b>Enterprise navigation</b></a><a class="snext" href="#read-ia7-5" data-step="5"><span>Next · 6 of 9</span><b>The IA and the engineering data model</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-ia7-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">The IA and the engineering data model</span></span></h2>
+<h3>6.1 · Where the line runs</h3>
+<p>IA1 drew the line: the data model is how engineering stores the system, chosen for integrity and performance; the IA is how people meet it; and Cooper and his co-authors name the cost of an interface that follows the implementation model, where the represented model should sit close to the person's mental model (IA1, section 2.4; Cooper and others 2014, ch. 1, p. 16). In a backoffice the two sit closer than anywhere else, because the users manage the records themselves, and the temptation is to draw the IA as the schema with nicer names. Perqo's map shows where they part (Perqo, fictional):</p>
+<ul>
+<li><strong>One table, two objects.</strong> The model stores every movement of money in one table of transactions with a type field (IA1, section 2.4); the IA has two objects, Claim and Card payment, because people do different things with them.</li>
+<li><strong>One action, many records.</strong> Finance's Set budgets is one call to action on an employee group; in the model it writes one allocation per employee, category and period (IA4, Deliverable A).</li>
+<li><strong>Computed attributes.</strong> Remaining is an attribute people read on the allocation; in the model it is computed from amount and spent, and stored nowhere.</li>
+<li><strong>Views with no table.</strong> Reports and work queues are in the IA's navigation and nowhere in the model's tables; they are queries (sections 4.2 and 4.6).</li>
+<li><strong>Fields with no screen.</strong> The model holds keys, foreign keys and the transaction's type field, which no screen shows.</li>
+</ul>
+<h3>6.2 · Evans's ubiquitous language</h3>
+<p>The idea that keeps the two aligned without making them one comes from Eric Evans's <em>Domain-Driven Design: Tackling Complexity in the Heart of Software</em> (Addison-Wesley, 2003), ch. 2, "Communication and the Use of Language" (contents at <a target="_blank" rel="noopener" href="https://www.pearson.com/en-gb/subject-catalog/p/domain-driven-design-tackling-complexity-in-the-heart-of-software/P200000009375">pearson.com, contents</a>). Evans's later summary of the pattern, published under an open licence, states it in a few lines: "Use the model as the backbone of a language"; "Commit the team to exercising that language relentlessly in all communication within the team and in the code"; "Within a bounded context, use the same language in diagrams, writing, and especially speech"; and "Recognize that a change in the language is a change to the model" (Eric Evans, <em>Domain-Driven Design Reference: Definitions and Pattern Summaries</em>, Domain Language, 2015, <a target="_blank" rel="noopener" href="https://domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf">domainlanguage.com, DDD Reference</a>). A bounded context is the limit of one model and its language: "Explicitly define the context within which a model applies" (same, "Bounded Context"; Evans 2003, ch. 14, "Maintaining Model Integrity"). Martin Fowler's gloss of the term is "building up a common, rigorous language between developers and users" ("Ubiquitous Language", martinfowler.com, 31 October 2006, <a target="_blank" rel="noopener" href="https://martinfowler.com/bliki/UbiquitousLanguage.html">martinfowler.com, ubiquitous language</a>; practice).</p>
+<p>Evans's book is about software design, and it addresses the language a team speaks with domain experts; it does not discuss the labels on a user interface. Bringing it to the IA is this unit's reading, and it has one tension at Perqo that the reader should see. Evans asks for one language within a bounded context, in diagrams, writing and speech. Perqo has three labels for one allocation: allocation in the model, Budget in Admin, Balance in the app (IA1, section 2.4). On this unit's reading the two are compatible if the team holds to one rule: the model name is the team's word, used in the code, the tickets, the F3 object map and the conversation between design and engineering; the surface labels are recorded translations of that word for each surface's readers, kept in the vocabulary and in the map's "Surface: Label" lines (IA2, section 5.2), and never a second concept. Where a surface label starts to mean something the model name does not, the language has changed, and by Evans's rule so has the model, and the vocabulary is where the change starts (IA2, section 4).</p>
+<p>Admin sharpens the tension, because its users are the domain experts Evans means: HR and finance say "budget" for what finance sets. Whether engineering should take Budget as the model's name is a question for engineering and the IA designer together; this unit renames nothing (IA4, "What IA7 may do with it"), and records the question for IA8, which owns the vocabulary across surfaces.</p>
+<p>Admin and the app read and write the same allocations, claims and policies, so on this unit's reading they are one bounded context with two presentations. The benefits catalogue, which Perqo's content team owns and classifies (IA4, Deliverable B), and the merchant side are candidates for contexts of their own; that is for engineering to decide, and the object map marks the joins (R-07, R-14, R-16, R-17) where a boundary would run.</p>
+<h3>6.3 · Keeping the two aligned</h3>
+<p>Four practices hold the line, each with the dependency it protects.</p>
+<ul>
+<li><strong>The F3 object map carries the model name of every object and attribute</strong> (Deliverable A, A.2). Protects: engineering, which builds from it, and the IA, whose labels it maps (IA2, section 1.5).</li>
+<li><strong>A change of term goes through the vocabulary first</strong>, with the old term kept as a variant, then into the map, the model and the screens (IA2, section 4). Protects: support and search, and Evans's rule that a change in the language is a change to the model.</li>
+<li><strong>Every deliberate divergence is written down</strong>: one model table shown as two objects, a computed attribute, a view with no table (section 6.1). Protects: the next engineer, who would otherwise "fix" the IA to match the schema (IA1, section 2.4).</li>
+<li><strong>Permissions are written once, on the calls to action</strong>, and both the role matrix and the access-control configuration are read from them (section 3.1). Protects: the client, who signs off what each role can do, and security, who build it.</li>
+</ul>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia7-4" data-step="4"><span>Previous · 5 of 9</span><b>Workflows and states</b></a><a class="snext" href="#read-ia7-6" data-step="6"><span>Next · 7 of 9</span><b>The Perqo Admin IA</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-ia7-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">The Perqo Admin IA</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): the information architecture of Perqo Admin, in four parts: A, the object-relationship map at F3 (IA2's decision table: F3 as the agreed mapping to the data model); B, the role-by-section matrix at F2, one mark per cell, with a legend saying, for each mark, its calls to action, the pages and reports it opens, or what it stands for; C, the navigation model at F2 (IA2: before navigation components are chosen), with F3's identifiers on every page; D, the claim-approval state diagram at F3 (IA2: every trigger for build). Decision: what Admin holds, who may see, do and reach what, by which routes, and how a claim moves; readers: engineering and security (objects, model names, permissions, transitions), product management (scope), the client (whether its roles fit its people), support (where a manager is and what they can do), content (labels); leaves out: visual design and layout, the sign-in method, the merchant side and the catalogue's own surface, perqo.com and the app beyond the routes into them, measured volumes (every volume is assumed); owner: the IA designer; version 1, dated 3 November 2026; every object and placement is assumed until tested (IA4, section 4.3); Perqo is fictional.</em></p>
+<h3>Deliverable A · The object-relationship map</h3>
+<h4>A.1 · Objects</h4>
+<p>Every Admin object of IA4's map, with IA4's label kept and this unit's columns added (Perqo, fictional). <em>New</em> marks a fact set by this unit. Volumes are for the sizing client (section 2.2) and assumed. "Seen by" and "changed by" name roles: HR (HR manager), finance (finance manager), owner (account owner); "all" means every admin user.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Object (model name)</th>
+<th>Admin label and place</th>
+<th>Volume, sizing client</th>
+<th>Lifecycle</th>
+<th>Work queue</th>
+<th>Seen by</th>
+<th>Changed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O-01</td>
+<td>client (<code>client</code>)</td>
+<td>Company, in Settings</td>
+<td>1</td>
+<td>none</td>
+<td>none</td>
+<td>all</td>
+<td>owner <em>new</em></td>
+</tr>
+<tr>
+<td>O-02</td>
+<td>admin user (<code>admin_user</code>)</td>
+<td>Admins, in Settings</td>
+<td>3 <em>new</em></td>
+<td>Active, Removed <em>new</em></td>
+<td>none</td>
+<td>owner (all see their own profile) <em>new</em></td>
+<td>owner <em>new</em></td>
+</tr>
+<tr>
+<td>O-03</td>
+<td>employee group (<code>employee_group</code>)</td>
+<td>Employee group, in Employees</td>
+<td>14 <em>new</em></td>
+<td>none</td>
+<td>No budget for next period <em>new</em></td>
+<td>all</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>O-04</td>
+<td>policy (<code>policy</code>)</td>
+<td>Policy, in Policies</td>
+<td>14, one per group (R-03)</td>
+<td>none; History records each change</td>
+<td>none</td>
+<td>all</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>O-05</td>
+<td>employee (<code>employee</code>)</td>
+<td>Employees</td>
+<td>1,200 <em>new</em></td>
+<td>Invited, Active, Left <em>new</em></td>
+<td>Not joined <em>new</em></td>
+<td>all</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>O-06</td>
+<td>allocation (<code>allocation</code>)</td>
+<td>Budget, in Budgets</td>
+<td>up to 4,800 a period <em>new</em></td>
+<td>none</td>
+<td>none</td>
+<td>all</td>
+<td>finance</td>
+</tr>
+<tr>
+<td>O-07</td>
+<td>transaction, type claim (<code>transaction</code>, type claim)</td>
+<td>Claim, on the employee's record; listed in Approvals</td>
+<td>about 1,200 a month, about 180 waiting <em>new</em></td>
+<td>Submitted, Approved, Rejected, Paid (Deliverable D)</td>
+<td>Approvals</td>
+<td>all</td>
+<td>HR (decision); Perqo system</td>
+</tr>
+<tr>
+<td>O-08</td>
+<td>transaction, type card payment (<code>transaction</code>, type card payment)</td>
+<td>Card payment, in Reports</td>
+<td>about 9,600 a month <em>new</em></td>
+<td>none</td>
+<td>none</td>
+<td>finance <em>new</em></td>
+<td>nobody in Admin</td>
+</tr>
+<tr>
+<td>O-09</td>
+<td>card (<code>card</code>)</td>
+<td>Perqo card, on the employee's record <em>new</em>: status only</td>
+<td>up to 1,200</td>
+<td>Active, Frozen (IA4)</td>
+<td>none</td>
+<td>HR <em>new</em></td>
+<td>nobody in Admin (the employee, in the app)</td>
+</tr>
+<tr>
+<td>O-10</td>
+<td>notification</td>
+<td>not shown <em>new</em> (section 2.3)</td>
+<td>not applicable</td>
+<td>none</td>
+<td>none</td>
+<td>nobody in Admin</td>
+<td>nobody in Admin</td>
+</tr>
+<tr>
+<td>O-13</td>
+<td>catalogue item (<code>catalogue_item</code>)</td>
+<td>Covered items, in Policies</td>
+<td>12 in the sample (IA4)</td>
+<td>none</td>
+<td>none</td>
+<td>all</td>
+<td>Perqo content team (outside Admin)</td>
+</tr>
+<tr>
+<td>O-17</td>
+<td>audit entry (<code>audit_entry</code>) <em>new</em></td>
+<td>History, on each detail page; Activity log, in Settings</td>
+<td>one per change</td>
+<td>none</td>
+<td>none</td>
+<td>History: any role that sees the record; Activity log: owner</td>
+<td>nobody: written by the system</td>
+</tr>
+</tbody>
+</table></div>
+<p>O-11, O-12 and O-14 to O-16 are not in Admin (IA4, A.1), and are left as IA4 set them.</p>
+<h4>A.2 · Attributes and model names</h4>
+<p>Each attribute with IA4's label (or this unit's, marked <em>new</em>) and its model field (Perqo, fictional; the model names are invented here). Values are written as the model stores them.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Attribute → model field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O-01 client</td>
+<td>name → <code>name</code>; contract start date → <code>contract_start_date</code></td>
+</tr>
+<tr>
+<td>O-02 admin user</td>
+<td>name → <code>name</code>; work email → <code>work_email</code>; role (HR manager or finance manager) → <code>role</code> (<code>hr_manager</code>, <code>finance_manager</code>); account owner <em>new</em> → <code>is_account_owner</code>; status <em>new</em> → <code>status</code> (<code>active</code>, <code>removed</code>)</td>
+</tr>
+<tr>
+<td>O-03 employee group</td>
+<td>name → <code>name</code></td>
+</tr>
+<tr>
+<td>O-04 policy</td>
+<td>open categories → <code>open_categories</code> (F-CAT identifiers, IA4, Deliverable B); auto-approve limit → <code>auto_approve_limit</code>; covered items → <code>covered_items</code> (catalogue item IDs, R-07)</td>
+</tr>
+<tr>
+<td>O-05 employee</td>
+<td>name → <code>name</code>; work email → <code>work_email</code>; status <em>new</em> → <code>status</code> (<code>invited</code>, <code>active</code>, <code>left</code>)</td>
+</tr>
+<tr>
+<td>O-06 allocation</td>
+<td>category → <code>category</code> (F-CAT identifier); period → <code>period</code>; amount → <code>amount</code>; spent → <code>spent</code> (approved and paid claims and card payments; waiting claims excluded, section 5.2); remaining → computed as amount less spent, not stored</td>
+</tr>
+<tr>
+<td>O-07 claim</td>
+<td>amount → <code>amount</code>; category → <code>category</code>; receipt → <code>receipt_file</code>; status → <code>status</code> (<code>submitted</code>, <code>approved</code>, <code>rejected</code>, <code>paid</code>); date submitted → <code>submitted_at</code>; rejection reason (IA6) → <code>rejection_reason</code> (<code>over_balance</code>, <code>by_hr</code>); decided by <em>new</em> → <code>decided_by</code> (an admin user ID, or <code>rule</code>); rejection note <em>new</em> → <code>rejection_note</code></td>
+</tr>
+<tr>
+<td>O-08 card payment</td>
+<td>amount → <code>amount</code>; date → <code>occurred_at</code>; merchant → <code>merchant_id</code>; category → <code>category</code></td>
+</tr>
+<tr>
+<td>O-09 card</td>
+<td>status → <code>status</code> (<code>active</code>, <code>frozen</code>); last four digits → <code>last_four</code> (not shown in Admin)</td>
+</tr>
+<tr>
+<td>O-13 catalogue item</td>
+<td>ID → <code>id</code>; name → <code>name</code>; the four facet values → <code>facets</code> (IA4, Deliverable B)</td>
+</tr>
+<tr>
+<td>O-17 audit entry <em>new</em></td>
+<td>who → <code>actor_id</code> (an admin user ID, or <code>system</code>); action → <code>action</code>; object and its ID → <code>object_type</code>, <code>object_id</code>; date and time → <code>occurred_at</code>; before and after → <code>before</code>, <code>after</code></td>
+</tr>
+</tbody>
+</table></div>
+<h4>A.3 · Relationships</h4>
+<p>IA4's relationships that touch Admin, with their labels and counts as IA4 set them, and this unit's four (Perqo, fictional).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>From</th>
+<th>Relationship</th>
+<th>To</th>
+<th>Counts (from, to)</th>
+<th>In Admin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-01</td>
+<td>client</td>
+<td>has</td>
+<td>admin user</td>
+<td>1, 1..*</td>
+<td>Settings, Admins; at least two HR managers per client <em>new</em> (section 3.3)</td>
+</tr>
+<tr>
+<td>R-02</td>
+<td>client</td>
+<td>has</td>
+<td>employee group</td>
+<td>1, 1..*</td>
+<td>Employees, Employee groups</td>
+</tr>
+<tr>
+<td>R-03</td>
+<td>employee group</td>
+<td>follows</td>
+<td>policy</td>
+<td>1, 1</td>
+<td>group to policy and back</td>
+</tr>
+<tr>
+<td>R-04</td>
+<td>employee group</td>
+<td>contains</td>
+<td>employee</td>
+<td>1, 1..*</td>
+<td>group to its employees; Employees filtered by group</td>
+</tr>
+<tr>
+<td>R-05</td>
+<td>employee</td>
+<td>holds</td>
+<td>allocation</td>
+<td>1, 1..*</td>
+<td>employee's record, Budgets</td>
+</tr>
+<tr>
+<td>R-06</td>
+<td>policy</td>
+<td>opens the categories of</td>
+<td>allocation</td>
+<td>1, 0..*</td>
+<td>Set budgets offers only the group's open categories</td>
+</tr>
+<tr>
+<td>R-07</td>
+<td>policy</td>
+<td>covers</td>
+<td>catalogue item</td>
+<td>0..<em>, 0..</em></td>
+<td>Policy, Covered items</td>
+</tr>
+<tr>
+<td>R-08</td>
+<td>employee</td>
+<td>submits</td>
+<td>transaction, type claim</td>
+<td>1, 0..*</td>
+<td>employee's record, Claims; a claim's page sits under it</td>
+</tr>
+<tr>
+<td>R-09</td>
+<td>transaction, type claim</td>
+<td>is checked against</td>
+<td>policy</td>
+<td>0..*, 1</td>
+<td>claim to its policy; Approvals grouped by policy</td>
+</tr>
+<tr>
+<td>R-10</td>
+<td>transaction, type claim</td>
+<td>spends from</td>
+<td>allocation</td>
+<td>0..*, 1</td>
+<td>claim shows what remains in its category's budget</td>
+</tr>
+<tr>
+<td>R-11</td>
+<td>employee</td>
+<td>holds</td>
+<td>card</td>
+<td>1, 0..1</td>
+<td>employee's record, Perqo card status</td>
+</tr>
+<tr>
+<td>R-12</td>
+<td>card</td>
+<td>is used for</td>
+<td>transaction, type card payment</td>
+<td>1, 0..*</td>
+<td>not shown in Admin</td>
+</tr>
+<tr>
+<td>R-13</td>
+<td>transaction, type card payment</td>
+<td>spends from</td>
+<td>allocation</td>
+<td>0..*, 1</td>
+<td>Reports, Card payments and Budget use</td>
+</tr>
+<tr>
+<td>R-15</td>
+<td>transaction, type claim</td>
+<td>triggers</td>
+<td>notification</td>
+<td>1, 0..*</td>
+<td>not shown in Admin</td>
+</tr>
+<tr>
+<td>R-21 <em>new</em></td>
+<td>admin user</td>
+<td>is also</td>
+<td>employee</td>
+<td>0..1, 0..1</td>
+<td>matched by work email; decides EX-1</td>
+</tr>
+<tr>
+<td>R-22 <em>new</em></td>
+<td>transaction, type claim</td>
+<td>is decided by</td>
+<td>admin user</td>
+<td>0..*, 0..1</td>
+<td>claim, Decided by; none when the rule decides</td>
+</tr>
+<tr>
+<td>R-23 <em>new</em></td>
+<td>audit entry</td>
+<td>records a change to</td>
+<td>client, admin user, employee group, policy, employee, allocation, claim</td>
+<td>0..*, 1</td>
+<td>History on each record; Activity log</td>
+</tr>
+<tr>
+<td>R-24 <em>new</em></td>
+<td>audit entry</td>
+<td>is made by</td>
+<td>admin user</td>
+<td>0..*, 0..1</td>
+<td>none when the Perqo system made the change</td>
+</tr>
+</tbody>
+</table></div>
+<h4>A.4 · Calls to action, with roles</h4>
+<p>Every Admin call to action, IA4's kept and this unit's added, with the role that triggers it and where it lives (Perqo, fictional). Page IDs are Deliverable C's. The two rows IA4 left without a role are the first two.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Call to action</th>
+<th>Who</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client</td>
+<td>-&gt; edit company details</td>
+<td>account owner <em>new</em> (section 3.4)</td>
+<td>Settings, Company (AD-6.1)</td>
+</tr>
+<tr>
+<td>admin user</td>
+<td>-&gt; add</td>
+<td>account owner <em>new</em> (section 3.4)</td>
+<td>Settings, Admins (AD-6.2.1)</td>
+</tr>
+<tr>
+<td>admin user</td>
+<td>-&gt; remove <em>new</em>; -&gt; change role <em>new</em>; -&gt; make account owner <em>new</em></td>
+<td>account owner</td>
+<td>Settings, Admins (AD-6.2)</td>
+</tr>
+<tr>
+<td>employee group</td>
+<td>-&gt; create; -&gt; invite employees</td>
+<td>HR manager</td>
+<td>Employees (AD-1.2.2; AD-1.3)</td>
+</tr>
+<tr>
+<td>policy</td>
+<td>-&gt; edit; -&gt; add covered items</td>
+<td>HR manager</td>
+<td>Policies (AD-3.1.1; AD-3.1.2)</td>
+</tr>
+<tr>
+<td>employee</td>
+<td>-&gt; invite; -&gt; move to group</td>
+<td>HR manager</td>
+<td>Employees (AD-1.3; AD-1, for one or selected employees)</td>
+</tr>
+<tr>
+<td>employee</td>
+<td>-&gt; resend invitation <em>new</em>; -&gt; mark as left <em>new</em></td>
+<td>HR manager</td>
+<td>Employees (AD-1.1; AD-1.4, for one or selected employees)</td>
+</tr>
+<tr>
+<td>allocation</td>
+<td>-&gt; set for a group</td>
+<td>finance manager</td>
+<td>Budgets (AD-2.2)</td>
+</tr>
+<tr>
+<td>transaction, type claim</td>
+<td>-&gt; approve; -&gt; reject</td>
+<td>HR manager, never on their own claim</td>
+<td>Approvals (AD-4), on the claim (AD-1.1.1)</td>
+</tr>
+<tr>
+<td>transaction, type claim</td>
+<td>-&gt; approve selected <em>new</em></td>
+<td>HR manager, never on their own claim</td>
+<td>Approvals (AD-4)</td>
+</tr>
+<tr>
+<td>transaction, type claim</td>
+<td>-&gt; view <em>new</em> in Admin</td>
+<td>HR manager, finance manager</td>
+<td>the claim, under the employee's record (AD-1.1.1); Reports, Claims by status (AD-5.4)</td>
+</tr>
+<tr>
+<td>transaction, type card payment</td>
+<td>-&gt; view in a report</td>
+<td>finance manager</td>
+<td>Reports, Card payments (AD-5.5)</td>
+</tr>
+<tr>
+<td>card</td>
+<td>-&gt; view status <em>new</em></td>
+<td>HR manager</td>
+<td>employee's record (AD-1.1)</td>
+</tr>
+<tr>
+<td>catalogue item</td>
+<td>-&gt; view <em>new</em> in Admin</td>
+<td>HR manager, finance manager</td>
+<td>Policies, Covered items (AD-3.1.2)</td>
+</tr>
+<tr>
+<td>audit entry <em>new</em></td>
+<td>-&gt; view</td>
+<td>any role that may see the record; account owner for the Activity log</td>
+<td>History on each detail page; Settings, Activity log (AD-6.3)</td>
+</tr>
+</tbody>
+</table></div>
+<h4>A.5 · The map, drawn</h4>
+<p>Split in two figures, IA2's rule "split rather than cram" (IA2, section 4), with "→ see" lines where an object continues in the other. Every box is tone 4, Perqo Admin, because the map shows one surface; each title is the model name in lower case and the "Admin: Label" line gives the label people see (IA2, section 5.2). Each box carries its ID, its volume and its work queue; model names of attributes are in A.2, and every relationship, drawn or not, is in A.3. The first figure holds the setup: client, admin users, employee groups, employees, policies and the catalogue items policies cover (R-01 to R-04, R-07, R-21).</p>
+<figure class="viz viz-objects"><div class="viz-scroll"><svg viewBox="0 0 700 769.0" width="700" height="769.0" data-x0="90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="objects"><path class="viz-link" d="M318.0,76.2 L382.0,76.2"/><text class="viz-small" x="329.1" y="68.8" text-anchor="middle">1</text><text class="viz-small" x="361.8" y="68.8" text-anchor="middle">1..*</text><g data-box="" data-text="has"><rect class="viz-lblbg" x="337.1" y="80.2" width="25.7" height="16.5"/><text class="viz-linklabel" x="350.0" y="92.3" text-anchor="middle">has</text></g><path class="viz-link" d="M208.0,144.5 L208.0,296.0"/><text class="viz-small" x="193.9" y="164.1" text-anchor="middle">1</text><text class="viz-small" x="184.8" y="283.6" text-anchor="middle">1..*</text><g data-box="" data-text="has"><rect class="viz-lblbg" x="195.1" y="212.0" width="25.7" height="16.5"/><text class="viz-linklabel" x="208.0" y="224.0" text-anchor="middle">has</text></g><path class="viz-link" d="M492.0,224.0 L492.0,296.0"/><text class="viz-small" x="468.8" y="243.6" text-anchor="middle">0..1</text><text class="viz-small" x="468.8" y="283.6" text-anchor="middle">0..1</text><g data-box="" data-text="is also"><rect class="viz-lblbg" x="472.3" y="251.8" width="39.3" height="16.5"/><text class="viz-linklabel" x="492.0" y="263.8" text-anchor="middle">is also</text></g><path class="viz-link" d="M318.0,370.5 L382.0,370.5"/><text class="viz-small" x="329.1" y="363.1" text-anchor="middle">1</text><text class="viz-small" x="361.8" y="363.1" text-anchor="middle">1..*</text><g data-box="" data-text="contains"><rect class="viz-lblbg" x="324.2" y="374.5" width="51.6" height="16.5"/><text class="viz-linklabel" x="350.0" y="386.5" text-anchor="middle">contains</text></g><path class="viz-link" d="M208.0,445.0 L208.0,584.0"/><text class="viz-small" x="193.9" y="464.6" text-anchor="middle">1</text><text class="viz-small" x="193.9" y="571.6" text-anchor="middle">1</text><g data-box="" data-text="follows"><rect class="viz-lblbg" x="186.3" y="506.2" width="43.3" height="16.5"/><text class="viz-linklabel" x="208.0" y="518.3" text-anchor="middle">follows</text></g><path class="viz-link" d="M318.0,659.2 L382.0,659.2"/><text class="viz-small" x="338.2" y="651.9" text-anchor="middle">0..*</text><text class="viz-small" x="361.8" y="651.9" text-anchor="middle">0..*</text><g data-box="" data-text="covers"><rect class="viz-lblbg" x="328.9" y="663.2" width="42.2" height="16.5"/><text class="viz-linklabel" x="350.0" y="675.3" text-anchor="middle">covers</text></g><g data-box=""><rect class="viz-node viz-t4" x="98.0" y="8.0" width="220.0" height="136.5" rx="2"/><rect class="viz-solid viz-t4" x="98.0" y="8.0" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="106.0" y="25.3" text-anchor="start">client</text><text class="viz-attr" x="106.0" y="53.0" text-anchor="start">O-01</text><text class="viz-attr" x="106.0" y="67.0" text-anchor="start">Admin: Company, in Settings</text><text class="viz-attr" x="106.0" y="81.0" text-anchor="start">name</text><text class="viz-attr" x="106.0" y="95.0" text-anchor="start">contract start date</text><text class="viz-attr" x="106.0" y="109.0" text-anchor="start">volume: 1</text><path class="viz-line" d="M106.0,117.0 L310.0,117.0"/><text class="viz-small" x="106.0" y="131.8" text-anchor="start">-&gt; edit company details (owner)</text></g><g data-box=""><rect class="viz-node viz-t4" x="382.0" y="8.0" width="220.0" height="216.0" rx="2"/><rect class="viz-solid viz-t4" x="382.0" y="8.0" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="390.0" y="25.3" text-anchor="start">admin user</text><text class="viz-attr" x="390.0" y="53.0" text-anchor="start">O-02</text><text class="viz-attr" x="390.0" y="67.0" text-anchor="start">Admin: Admins, in Settings</text><text class="viz-attr" x="390.0" y="81.0" text-anchor="start">name</text><text class="viz-attr" x="390.0" y="95.0" text-anchor="start">work email</text><text class="viz-attr" x="390.0" y="109.0" text-anchor="start">role</text><text class="viz-attr" x="390.0" y="123.0" text-anchor="start">account owner</text><text class="viz-attr" x="390.0" y="137.0" text-anchor="start">status</text><text class="viz-attr" x="390.0" y="151.0" text-anchor="start">volume: 3</text><path class="viz-line" d="M390.0,159.0 L594.0,159.0"/><text class="viz-small" x="390.0" y="173.8" text-anchor="start">-&gt; add (owner)</text><text class="viz-small" x="390.0" y="186.3" text-anchor="start">-&gt; remove (owner)</text><text class="viz-small" x="390.0" y="198.8" text-anchor="start">-&gt; change role (owner)</text><text class="viz-small" x="390.0" y="211.3" text-anchor="start">-&gt; make account owner (owner)</text></g><g data-box=""><rect class="viz-node viz-t4" x="98.0" y="296.0" width="220.0" height="149.0" rx="2"/><rect class="viz-solid viz-t4" x="98.0" y="296.0" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="106.0" y="313.3" text-anchor="start">employee group</text><text class="viz-attr" x="106.0" y="341.0" text-anchor="start">O-03</text><text class="viz-attr" x="106.0" y="355.0" text-anchor="start">Admin: Employee group</text><text class="viz-attr" x="106.0" y="369.0" text-anchor="start">name</text><text class="viz-attr" x="106.0" y="383.0" text-anchor="start">volume: 14</text><text class="viz-attr" x="106.0" y="397.0" text-anchor="start">queue: No budget for next period</text><path class="viz-line" d="M106.0,405.0 L310.0,405.0"/><text class="viz-small" x="106.0" y="419.9" text-anchor="start">-&gt; create (HR)</text><text class="viz-small" x="106.0" y="432.4" text-anchor="start">-&gt; invite employees (HR)</text></g><g data-box=""><rect class="viz-node viz-t4" x="382.0" y="296.0" width="220.0" height="216.0" rx="2"/><rect class="viz-solid viz-t4" x="382.0" y="296.0" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="390.0" y="313.3" text-anchor="start">employee</text><text class="viz-attr" x="390.0" y="341.0" text-anchor="start">O-05</text><text class="viz-attr" x="390.0" y="355.0" text-anchor="start">Admin: Employees</text><text class="viz-attr" x="390.0" y="369.0" text-anchor="start">name</text><text class="viz-attr" x="390.0" y="383.0" text-anchor="start">work email</text><text class="viz-attr" x="390.0" y="397.0" text-anchor="start">status</text><text class="viz-attr" x="390.0" y="411.0" text-anchor="start">volume: 1,200</text><text class="viz-attr" x="390.0" y="425.0" text-anchor="start">queue: Not joined</text><text class="viz-attr" x="390.0" y="439.0" text-anchor="start">→ see figure 2</text><path class="viz-line" d="M390.0,447.0 L594.0,447.0"/><text class="viz-small" x="390.0" y="461.9" text-anchor="start">-&gt; invite (HR)</text><text class="viz-small" x="390.0" y="474.4" text-anchor="start">-&gt; resend invitation (HR)</text><text class="viz-small" x="390.0" y="486.9" text-anchor="start">-&gt; move to group (HR)</text><text class="viz-small" x="390.0" y="499.4" text-anchor="start">-&gt; mark as left (HR)</text></g><g data-box=""><rect class="viz-node viz-t4" x="98.0" y="584.0" width="220.0" height="177.0" rx="2"/><rect class="viz-solid viz-t4" x="98.0" y="584.0" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="106.0" y="601.3" text-anchor="start">policy</text><text class="viz-attr" x="106.0" y="629.0" text-anchor="start">O-04</text><text class="viz-attr" x="106.0" y="643.0" text-anchor="start">Admin: Policy</text><text class="viz-attr" x="106.0" y="657.0" text-anchor="start">open categories</text><text class="viz-attr" x="106.0" y="671.0" text-anchor="start">auto-approve limit</text><text class="viz-attr" x="106.0" y="685.0" text-anchor="start">covered items</text><text class="viz-attr" x="106.0" y="699.0" text-anchor="start">volume: 14</text><text class="viz-attr" x="106.0" y="713.0" text-anchor="start">→ see figure 2</text><path class="viz-line" d="M106.0,721.0 L310.0,721.0"/><text class="viz-small" x="106.0" y="735.9" text-anchor="start">-&gt; edit (HR)</text><text class="viz-small" x="106.0" y="748.4" text-anchor="start">-&gt; add covered items (HR)</text></g><g data-box=""><rect class="viz-node viz-t4" x="382.0" y="584.0" width="220.0" height="150.5" rx="2"/><rect class="viz-solid viz-t4" x="382.0" y="584.0" width="220.0" height="26.0" rx="2"/><text class="viz-ontone" x="390.0" y="601.3" text-anchor="start">catalogue item</text><text class="viz-attr" x="390.0" y="629.0" text-anchor="start">O-13</text><text class="viz-attr" x="390.0" y="643.0" text-anchor="start">Admin: Covered items, in Policies</text><text class="viz-attr" x="390.0" y="657.0" text-anchor="start">ID</text><text class="viz-attr" x="390.0" y="671.0" text-anchor="start">name</text><text class="viz-attr" x="390.0" y="685.0" text-anchor="start">facet values</text><text class="viz-attr" x="390.0" y="699.0" text-anchor="start">volume: 12 in the sample</text><path class="viz-line" d="M390.0,707.0 L594.0,707.0"/><text class="viz-small" x="390.0" y="721.9" text-anchor="start">-&gt; view (HR, finance)</text></g></svg></div><figcaption>Object-relationship map, figure 1 of 2, setup: the Admin objects HR and the account owner configure, with IDs, Admin labels, attributes, volumes for the sizing client (assumed), work queues, calls to action with their roles and counts in UML multiplicity notation, F3 (model names in A.2); supports the decision on what Admin holds and who changes it (Deliverable A). Every box tone 4, Perqo Admin, because the figure shows one surface. Lines read left to right on a level line, top to bottom otherwise. R-01 to R-04 and R-07 from IA4, Deliverable A, labels and counts kept; R-21, the account owner, employee status and the volumes set in section 2.2 and section 3.4; object-first method from Prater, A List Apart, 2015 and 2016. Perqo is fictional.</figcaption></figure>
+<p>The second holds money, decisions and the record of them: the employee's card, claims and allocations, card payments, the admin user who decides a claim, the policy a claim is checked against, and the audit entry (R-05, R-08 to R-13, R-22 to R-24). R-06 and R-23's other objects are in A.3 only.</p>
+<figure class="viz viz-objects"><div class="viz-scroll"><svg viewBox="0 0 700 745.5" width="700" height="745.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="objects"><path class="viz-link" d="M185.3,44.0 L261.3,44.0"/><text class="viz-small" x="196.4" y="36.6" text-anchor="middle">1</text><text class="viz-small" x="241.1" y="36.6" text-anchor="middle">0..1</text><g data-box="" data-text="holds"><rect class="viz-lblbg" x="205.6" y="48.0" width="35.5" height="16.5"/><text class="viz-linklabel" x="223.3" y="60.0" text-anchor="middle">holds</text></g><path class="viz-link" d="M96.7,80.0 L96.7,216.5"/><text class="viz-small" x="82.6" y="99.6" text-anchor="middle">1</text><text class="viz-small" x="73.4" y="204.1" text-anchor="middle">0..*</text><g data-box="" data-text="submits"><rect class="viz-lblbg" x="72.3" y="140.0" width="48.7" height="16.5"/><text class="viz-linklabel" x="96.7" y="152.0" text-anchor="middle">submits</text></g><path class="viz-link" d="M129.8,80.0 L261.3,222.7"/><text class="viz-small" x="130.9" y="104.3" text-anchor="middle">1</text><text class="viz-small" x="261.0" y="196.5" text-anchor="middle">1..*</text><g data-box="" data-text="holds"><rect class="viz-lblbg" x="177.8" y="143.1" width="35.5" height="16.5"/><text class="viz-linklabel" x="195.6" y="155.2" text-anchor="middle">holds</text></g><path class="viz-link" d="M185.3,319.0 L261.3,319.0"/><text class="viz-small" x="205.6" y="311.6" text-anchor="middle">0..*</text><text class="viz-small" x="250.3" y="311.6" text-anchor="middle">1</text><g data-box="" data-text="spends from"><rect class="viz-lblbg" x="187.3" y="323.0" width="72.0" height="16.5"/><text class="viz-linklabel" x="223.3" y="335.0" text-anchor="middle">spends from</text></g><path class="viz-link" d="M514.7,319.0 L438.7,319.0"/><text class="viz-small" x="494.4" y="311.6" text-anchor="middle">0..*</text><text class="viz-small" x="449.7" y="311.6" text-anchor="middle">1</text><g data-box="" data-text="spends from"><rect class="viz-lblbg" x="445.1" y="323.0" width="63.1" height="29.0"/><text class="viz-linklabel" x="467.7" y="335.0" text-anchor="middle">spends</text><text class="viz-linklabel" x="467.7" y="347.5" text-anchor="middle">from</text><path class="viz-head" d="M489.7,337.5 L503.7,334.5 L503.7,340.5 z"/></g><path class="viz-link" d="M421.2,144.5 L514.7,234.0"/><text class="viz-small" x="423.5" y="168.5" text-anchor="middle">1</text><text class="viz-small" x="512.0" y="208.1" text-anchor="middle">0..*</text><g data-box="" data-text="is used for"><rect class="viz-lblbg" x="430.0" y="173.9" width="60.9" height="16.5"/><text class="viz-linklabel" x="460.5" y="185.9" text-anchor="middle">is used for</text></g><path class="viz-link" d="M96.7,488.5 L96.7,560.5"/><text class="viz-small" x="73.4" y="508.1" text-anchor="middle">0..*</text><text class="viz-small" x="82.6" y="548.1" text-anchor="middle">1</text><g data-box="" data-text="is checked against"><rect class="viz-lblbg" x="45.6" y="516.2" width="102.1" height="16.5"/><text class="viz-linklabel" x="96.7" y="528.3" text-anchor="middle">is checked against</text></g><path class="viz-link" d="M185.3,395.2 L528.6,560.5"/><text class="viz-small" x="212.7" y="393.9" text-anchor="middle">0..*</text><text class="viz-small" x="515.4" y="539.6" text-anchor="middle">0..1</text><g data-box="" data-text="is decided by"><rect class="viz-lblbg" x="318.6" y="469.6" width="76.6" height="16.5"/><text class="viz-linklabel" x="357.0" y="481.6" text-anchor="middle">is decided by</text></g><path class="viz-link" d="M274.4,560.5 L185.3,456.3"/><text class="viz-small" x="275.5" y="534.2" text-anchor="middle">0..*</text><text class="viz-small" x="205.9" y="463.4" text-anchor="middle">1</text><g data-box="" data-text="records a change to"><rect class="viz-lblbg" x="175.0" y="500.1" width="109.8" height="16.5"/><text class="viz-linklabel" x="229.9" y="512.2" text-anchor="middle">records a change to</text><path class="viz-head" d="M205.9,480.4 L217.3,489.1 L212.7,493.0 z"/></g><path class="viz-link" d="M438.7,596.5 L514.7,596.5"/><text class="viz-small" x="458.9" y="589.1" text-anchor="middle">0..*</text><text class="viz-small" x="494.4" y="589.1" text-anchor="middle">0..1</text><g data-box="" data-text="is made by"><rect class="viz-lblbg" x="444.9" y="600.5" width="63.5" height="16.5"/><text class="viz-linklabel" x="476.7" y="612.5" text-anchor="middle">is made by</text></g><g data-box=""><rect class="viz-node viz-t4" x="8.0" y="8.0" width="177.3" height="72.0" rx="2"/><rect class="viz-solid viz-t4" x="8.0" y="8.0" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="25.3" text-anchor="start">employee</text><text class="viz-attr" x="16.0" y="53.0" text-anchor="start">O-05</text><text class="viz-attr" x="16.0" y="67.0" text-anchor="start">→ see figure 1</text></g><g data-box=""><rect class="viz-node viz-t4" x="261.3" y="8.0" width="177.3" height="136.5" rx="2"/><rect class="viz-solid viz-t4" x="261.3" y="8.0" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="269.3" y="25.3" text-anchor="start">card</text><text class="viz-attr" x="269.3" y="53.0" text-anchor="start">O-09</text><text class="viz-attr" x="269.3" y="67.0" text-anchor="start">Admin: Perqo card, status</text><text class="viz-attr" x="279.3" y="81.0" text-anchor="start">only</text><text class="viz-attr" x="269.3" y="95.0" text-anchor="start">status</text><text class="viz-attr" x="269.3" y="109.0" text-anchor="start">volume: up to 1,200</text><path class="viz-line" d="M269.3,117.0 L430.7,117.0"/><text class="viz-small" x="269.3" y="131.8" text-anchor="start">-&gt; view status (HR)</text></g><g data-box=""><rect class="viz-node viz-t4" x="8.0" y="216.5" width="177.3" height="272.0" rx="2"/><rect class="viz-solid viz-t4" x="8.0" y="216.5" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="233.8" text-anchor="start">transaction, type claim</text><text class="viz-attr" x="16.0" y="261.5" text-anchor="start">O-07</text><text class="viz-attr" x="16.0" y="275.5" text-anchor="start">Admin: Claim</text><text class="viz-attr" x="16.0" y="289.5" text-anchor="start">amount</text><text class="viz-attr" x="16.0" y="303.5" text-anchor="start">category</text><text class="viz-attr" x="16.0" y="317.5" text-anchor="start">receipt</text><text class="viz-attr" x="16.0" y="331.5" text-anchor="start">status</text><text class="viz-attr" x="16.0" y="345.5" text-anchor="start">date submitted</text><text class="viz-attr" x="16.0" y="359.5" text-anchor="start">rejection reason</text><text class="viz-attr" x="16.0" y="373.5" text-anchor="start">decided by</text><text class="viz-attr" x="16.0" y="387.5" text-anchor="start">rejection note</text><text class="viz-attr" x="16.0" y="401.5" text-anchor="start">volume: 1,200 a month</text><text class="viz-attr" x="16.0" y="415.5" text-anchor="start">queue: Approvals</text><path class="viz-line" d="M16.0,423.5 L177.3,423.5"/><text class="viz-small" x="16.0" y="438.4" text-anchor="start">-&gt; approve (HR)</text><text class="viz-small" x="16.0" y="450.9" text-anchor="start">-&gt; reject (HR)</text><text class="viz-small" x="16.0" y="463.4" text-anchor="start">-&gt; approve selected (HR)</text><text class="viz-small" x="16.0" y="475.9" text-anchor="start">-&gt; view (HR, finance)</text></g><g data-box=""><rect class="viz-node viz-t4" x="261.3" y="216.5" width="177.3" height="205.0" rx="2"/><rect class="viz-solid viz-t4" x="261.3" y="216.5" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="269.3" y="233.8" text-anchor="start">allocation</text><text class="viz-attr" x="269.3" y="261.5" text-anchor="start">O-06</text><text class="viz-attr" x="269.3" y="275.5" text-anchor="start">Admin: Budget</text><text class="viz-attr" x="269.3" y="289.5" text-anchor="start">category</text><text class="viz-attr" x="269.3" y="303.5" text-anchor="start">period</text><text class="viz-attr" x="269.3" y="317.5" text-anchor="start">amount</text><text class="viz-attr" x="269.3" y="331.5" text-anchor="start">spent</text><text class="viz-attr" x="269.3" y="345.5" text-anchor="start">remaining</text><text class="viz-attr" x="269.3" y="359.5" text-anchor="start">volume: up to 4,800 a</text><text class="viz-attr" x="279.3" y="373.5" text-anchor="start">period</text><path class="viz-line" d="M269.3,381.5 L430.7,381.5"/><text class="viz-small" x="269.3" y="396.4" text-anchor="start">-&gt; set for a group</text><text class="viz-small" x="279.3" y="408.9" text-anchor="start">(finance)</text></g><g data-box=""><rect class="viz-node viz-t4" x="514.7" y="216.5" width="177.3" height="205.0" rx="2"/><rect class="viz-solid viz-t4" x="514.7" y="216.5" width="177.3" height="40.0" rx="2"/><text class="viz-ontone" x="522.7" y="233.8" text-anchor="start">transaction, type card</text><text class="viz-ontone" x="522.7" y="247.8" text-anchor="start">payment</text><text class="viz-attr" x="522.7" y="275.5" text-anchor="start">O-08</text><text class="viz-attr" x="522.7" y="289.5" text-anchor="start">Admin: Card payment, in</text><text class="viz-attr" x="532.7" y="303.5" text-anchor="start">Reports</text><text class="viz-attr" x="522.7" y="317.5" text-anchor="start">amount</text><text class="viz-attr" x="522.7" y="331.5" text-anchor="start">date</text><text class="viz-attr" x="522.7" y="345.5" text-anchor="start">merchant</text><text class="viz-attr" x="522.7" y="359.5" text-anchor="start">category</text><text class="viz-attr" x="522.7" y="373.5" text-anchor="start">volume: 9,600 a month</text><path class="viz-line" d="M522.7,381.5 L684.0,381.5"/><text class="viz-small" x="522.7" y="396.4" text-anchor="start">-&gt; view in a report</text><text class="viz-small" x="532.7" y="408.9" text-anchor="start">(finance)</text></g><g data-box=""><rect class="viz-node viz-t4" x="8.0" y="560.5" width="177.3" height="72.0" rx="2"/><rect class="viz-solid viz-t4" x="8.0" y="560.5" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="577.8" text-anchor="start">policy</text><text class="viz-attr" x="16.0" y="605.5" text-anchor="start">O-04</text><text class="viz-attr" x="16.0" y="619.5" text-anchor="start">→ see figure 1</text></g><g data-box=""><rect class="viz-node viz-t4" x="261.3" y="560.5" width="177.3" height="177.0" rx="2"/><rect class="viz-solid viz-t4" x="261.3" y="560.5" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="269.3" y="577.8" text-anchor="start">audit entry</text><text class="viz-attr" x="269.3" y="605.5" text-anchor="start">O-17</text><text class="viz-attr" x="269.3" y="619.5" text-anchor="start">Admin: History; Activity log</text><text class="viz-attr" x="269.3" y="633.5" text-anchor="start">who</text><text class="viz-attr" x="269.3" y="647.5" text-anchor="start">action</text><text class="viz-attr" x="269.3" y="661.5" text-anchor="start">object and its ID</text><text class="viz-attr" x="269.3" y="675.5" text-anchor="start">date and time</text><text class="viz-attr" x="269.3" y="689.5" text-anchor="start">before and after</text><path class="viz-line" d="M269.3,697.5 L430.7,697.5"/><text class="viz-small" x="269.3" y="712.4" text-anchor="start">-&gt; view (as the record;</text><text class="viz-small" x="279.3" y="724.9" text-anchor="start">owner for the log)</text></g><g data-box=""><rect class="viz-node viz-t4" x="514.7" y="560.5" width="177.3" height="72.0" rx="2"/><rect class="viz-solid viz-t4" x="514.7" y="560.5" width="177.3" height="26.0" rx="2"/><text class="viz-ontone" x="522.7" y="577.8" text-anchor="start">admin user</text><text class="viz-attr" x="522.7" y="605.5" text-anchor="start">O-02</text><text class="viz-attr" x="522.7" y="619.5" text-anchor="start">→ see figure 1</text></g></svg></div><figcaption>Object-relationship map, figure 2 of 2, money, decisions and the audit trail: the Admin objects money moves through, who decides a claim and what records each change, with IDs, Admin labels, attributes, volumes for the sizing client (assumed), work queues, calls to action with their roles and counts, F3 (model names in A.2); supports the decision on what Admin shows about spending and who answers for each decision (Deliverable A). Every box tone 4, Perqo Admin. Lines read left to right on a level line, top to bottom otherwise; a triangle by a label marks a label that reads right to left or bottom to top. R-05, R-08 to R-13 from IA4, Deliverable A, labels and counts kept; rejection reason from IA6, Deliverable B; R-22 to R-24, the audit entry (O-17), decided by, rejection note and the Perqo card label set in sections 2.2, 2.3 and 5.3. Perqo is fictional.</figcaption></figure>
+<h3>Deliverable B · The role-by-section matrix</h3>
+<p><em>Face: role-by-section matrix of Perqo Admin, F2, one mark per cell, with a legend saying, for each mark, the calls to action in A.4, the pages and reports it opens, or what it stands for; decision: what each role sees, does and reaches in each section; readers: engineering and security, the client, support, product management; leaves out: scoping a role to some employee groups (left free, section 3.2), the sign-in method; owner: the IA designer; version 1, dated 3 November 2026; Perqo is fictional.</em></p>
+<h4>B.1 · The matrix</h4>
+<p>Roles as rows, Admin's six areas as columns, IA1's order (Perqo, fictional). A blank cell in the figure, "(not in navigation)" in the table, means the area is not in that role's navigation. The account owner holds the HR manager or the finance manager role as well, so its row reads "as role" except in Settings.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Employees</th>
+<th>Budgets</th>
+<th>Policies</th>
+<th>Approvals</th>
+<th>Reports</th>
+<th>Settings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR manager</td>
+<td>edit: create groups, invite, resend, move, mark as left</td>
+<td>view</td>
+<td>edit: policy, covered items</td>
+<td>decide: approve, reject, approve selected, never on their own claim</td>
+<td>some: Budget use, Claims by status</td>
+<td>profile: Company read only, Your profile</td>
+</tr>
+<tr>
+<td>Finance manager</td>
+<td>view</td>
+<td>set: set budgets for a group</td>
+<td>view</td>
+<td>(not in navigation)</td>
+<td>all five reports</td>
+<td>profile: Company read only, Your profile</td>
+</tr>
+<tr>
+<td>Account owner</td>
+<td>as role</td>
+<td>as role</td>
+<td>as role</td>
+<td>as role</td>
+<td>as role</td>
+<td>manage: Company, Admins, Activity log, Your profile</td>
+</tr>
+</tbody>
+</table></div>
+<p>The figure draws the same matrix with a mark per cell and a legend. Its rows take tone 4, Perqo Admin.</p>
+<figure class="viz viz-matrix viz-fit"><div class="viz-scroll" style="--stick:126.9px"><svg viewBox="0 0 540.9 430" width="540.9" height="430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-fit"><text class="viz-colhead" x="163.4" y="15.6" text-anchor="middle">Employees</text><text class="viz-colhead" x="231.4" y="15.6" text-anchor="middle">Budgets</text><text class="viz-colhead" x="296.4" y="15.6" text-anchor="middle">Policies</text><text class="viz-colhead" x="366.4" y="15.6" text-anchor="middle">Approvals</text><text class="viz-colhead" x="434.4" y="15.6" text-anchor="middle">Reports</text><text class="viz-colhead" x="499.4" y="15.6" text-anchor="middle">Settings</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">HR manager</text><g data-box=""><rect class="viz-band viz-t4" x="128.9" y="34.0" width="69.0" height="28.0"/><text class="viz-mark" x="163.4" y="51.8" text-anchor="middle">edit</text></g><g data-box=""><rect class="viz-band viz-t4" x="201.9" y="34.0" width="59.0" height="28.0"/><text class="viz-mark" x="231.4" y="51.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t4" x="264.9" y="34.0" width="63.0" height="28.0"/><text class="viz-mark" x="296.4" y="51.8" text-anchor="middle">edit</text></g><g data-box=""><rect class="viz-band viz-t4" x="331.9" y="34.0" width="69.0" height="28.0"/><text class="viz-mark" x="366.4" y="51.8" text-anchor="middle">decide</text></g><g data-box=""><rect class="viz-band viz-t4" x="404.9" y="34.0" width="59.0" height="28.0"/><text class="viz-mark" x="434.4" y="51.8" text-anchor="middle">some</text></g><g data-box=""><rect class="viz-band viz-t4" x="467.9" y="34.0" width="63.0" height="28.0"/><text class="viz-mark" x="499.4" y="51.8" text-anchor="middle">profile</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Finance manager</text><g data-box=""><rect class="viz-band viz-t4" x="128.9" y="66.0" width="69.0" height="28.0"/><text class="viz-mark" x="163.4" y="83.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-band viz-t4" x="201.9" y="66.0" width="59.0" height="28.0"/><text class="viz-mark" x="231.4" y="83.8" text-anchor="middle">set</text></g><g data-box=""><rect class="viz-band viz-t4" x="264.9" y="66.0" width="63.0" height="28.0"/><text class="viz-mark" x="296.4" y="83.8" text-anchor="middle">view</text></g><g data-box=""><rect class="viz-track" x="331.9" y="66.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t4" x="404.9" y="66.0" width="59.0" height="28.0"/><text class="viz-mark" x="434.4" y="83.8" text-anchor="middle">all</text></g><g data-box=""><rect class="viz-band viz-t4" x="467.9" y="66.0" width="63.0" height="28.0"/><text class="viz-mark" x="499.4" y="83.8" text-anchor="middle">profile</text></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Account owner</text><g data-box=""><rect class="viz-band viz-t4" x="128.9" y="98.0" width="69.0" height="28.0"/><text class="viz-mark" x="163.4" y="115.8" text-anchor="middle">as role</text></g><g data-box=""><rect class="viz-band viz-t4" x="201.9" y="98.0" width="59.0" height="28.0"/><text class="viz-mark" x="231.4" y="115.8" text-anchor="middle">as role</text></g><g data-box=""><rect class="viz-band viz-t4" x="264.9" y="98.0" width="63.0" height="28.0"/><text class="viz-mark" x="296.4" y="115.8" text-anchor="middle">as role</text></g><g data-box=""><rect class="viz-band viz-t4" x="331.9" y="98.0" width="69.0" height="28.0"/><text class="viz-mark" x="366.4" y="115.8" text-anchor="middle">as role</text></g><g data-box=""><rect class="viz-band viz-t4" x="404.9" y="98.0" width="59.0" height="28.0"/><text class="viz-mark" x="434.4" y="115.8" text-anchor="middle">as role</text></g><g data-box=""><rect class="viz-band viz-t4" x="467.9" y="98.0" width="63.0" height="28.0"/><text class="viz-mark" x="499.4" y="115.8" text-anchor="middle">manage</text></g><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="142.0" width="41.7" height="24"/><text class="viz-mark" x="28.9" y="157.8" text-anchor="middle">edit</text></g><text class="viz-attr" x="57.7" y="151.0" text-anchor="start">employee group -&gt; create, -&gt; invite</text><text class="viz-attr" x="57.7" y="165.0" text-anchor="start">employees; employee -&gt; invite, -&gt; move</text><text class="viz-attr" x="57.7" y="179.0" text-anchor="start">to group, -&gt; resend invitation, -&gt; mark as</text><text class="viz-attr" x="57.7" y="193.0" text-anchor="start">left; policy -&gt; edit, -&gt; add covered items</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="206.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="221.8" text-anchor="middle">decide</text></g><text class="viz-attr" x="70.6" y="222.0" text-anchor="start">-&gt; approve, -&gt; reject, -&gt; approve selected [never on their own claim]</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="238.0" width="35.3" height="24"/><text class="viz-mark" x="25.6" y="253.8" text-anchor="middle">set</text></g><text class="viz-attr" x="51.3" y="254.0" text-anchor="start">-&gt; set for a group (Set budgets)</text><g data-box=""><rect class="viz-band viz-t4" x="239.1" y="238.0" width="41.7" height="24"/><text class="viz-mark" x="260.0" y="253.8" text-anchor="middle">view</text></g><text class="viz-attr" x="288.8" y="254.0" text-anchor="start">read only: no edit actions</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="270.0" width="35.3" height="24"/><text class="viz-mark" x="25.6" y="285.8" text-anchor="middle">all</text></g><text class="viz-attr" x="51.3" y="286.0" text-anchor="start">all five reports</text><g data-box=""><rect class="viz-band viz-t4" x="145.0" y="270.0" width="41.7" height="24"/><text class="viz-mark" x="165.8" y="285.8" text-anchor="middle">some</text></g><text class="viz-attr" x="194.7" y="286.0" text-anchor="start">Budget use and Claims by status only</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="302.0" width="61.0" height="24"/><text class="viz-mark" x="38.5" y="317.8" text-anchor="middle">profile</text></g><text class="viz-attr" x="77.0" y="318.0" text-anchor="start">Company read only, and Your profile</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="334.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="349.8" text-anchor="middle">manage</text></g><text class="viz-attr" x="70.6" y="343.0" text-anchor="start">client -&gt; edit company details; admin</text><text class="viz-attr" x="70.6" y="357.0" text-anchor="start">user -&gt; add, -&gt; remove, -&gt; change role,</text><text class="viz-attr" x="70.6" y="371.0" text-anchor="start">-&gt; make account owner; Activity log,</text><text class="viz-attr" x="70.6" y="385.0" text-anchor="start">Your profile</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="398.0" width="61.0" height="24"/><text class="viz-mark" x="38.5" y="413.8" text-anchor="middle">as role</text></g><text class="viz-attr" x="77.0" y="414.0" text-anchor="start">what the holder&#x27;s HR or finance role gives</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 126.9 430" width="126.9" height="430" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="126.9" height="130"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">HR manager</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Finance manager</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Account owner</text></svg></div></div><figcaption>Role-by-section matrix: what each Perqo Admin role sees, does and reaches in each of Admin's six areas, F2, one mark per cell, with a legend saying, for each mark, the calls to action in Deliverable A, A.4, the pages and reports it opens, or what it stands for; supports the decision on what each role's navigation and screens hold (Deliverable B). Rows tone 4, Perqo Admin; a blank cell is an area not in that role's navigation. Areas from IA1's surfaces map; roles HR manager and finance manager from IA1, section 5, and IA4, A.1; account owner, the hidden Approvals route and separation of duty on own claims set in sections 3.2 to 3.4; the two reports HR sees set in section 4.6; role model from Ferraiolo and others, ACM Transactions on Information and System Security 4(3), 2001, and NIST's RBAC FAQ; least privilege and separation of duty from NIST's glossary. Perqo is fictional.</figcaption></figure>
+<h4>B.2 · How each mark is shown</h4>
+<p>The three rules of section 3.2, applied (Perqo, fictional):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Shown as</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The role can never act or see there</td>
+<td>hidden: no route</td>
+<td>Approvals for a finance manager; the Card payments report for an HR manager; Admins and Activity log for anyone but the account owner</td>
+</tr>
+<tr>
+<td>The role holds the action but cannot take it now</td>
+<td>disabled, with the reason beside it</td>
+<td>Approve and Reject on an HR manager's own claim: "Another HR manager decides your own claim"</td>
+</tr>
+<tr>
+<td>The role may see but not change</td>
+<td>read only: no edit actions</td>
+<td>Policies and Employees for a finance manager; Budgets for an HR manager</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Deliverable C · The navigation model</h3>
+<p><em>Face: navigation model of Perqo Admin, F2 (IA2's decision table), with F3's identifiers on every page, AD-0 to AD-6, beside IA5's S-, L- and H- and IA6's A-; decision: by which routes each role reaches each object, list, queue and view; readers: engineering (routes and addresses), content (labels), support (where a manager is); leaves out: the components that carry the routes (navigation design, IA1, section 2.1), visual layout, Admin's domain; owner: the IA designer; version 1, dated 3 November 2026; Perqo is fictional.</em></p>
+<h4>C.1 · Admin's pages</h4>
+<p>Admin's structure as a sitemap at F2 with identifiers, IA2's type tags (section, a landing page for a group; index, a list of items; stack, many pages of one type; detail, one item; form; IA2, section 5.2) and notation (Perqo, fictional). Notes carry the page ID, the roles that reach the page when not all do or the owner of its work queue, "queue" with the queue's [condition], "views" for the reports, "→ see" for a route drawn elsewhere, and, where it decides the page, what the page holds or how its list is ordered. A claim's page sits under its employee's record (section 4.2); Approvals and Claims by status open it there, and each entry of the Activity log opens its record. The six areas keep IA1's order, and Sign in comes last. Every box is tone 4, Perqo Admin; the root names the surface and carries no type tag, because the global navigation is not a page.</p>
+<figure class="viz viz-sitemap"><div class="viz-scroll"><svg viewBox="0 0 700 1309.0" width="700" height="1309.0" data-x0="27" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="sitemap"><path class="viz-line" d="M106.0,197.0 L106.0,736.0"/><path class="viz-line" d="M126.0,315.5 L126.0,343.5"/><path class="viz-line" d="M126.0,343.5 L136.0,343.5"/><path class="viz-line" d="M106.0,225.0 L116.0,225.0"/><path class="viz-line" d="M126.0,477.5 L126.0,599.0"/><path class="viz-line" d="M126.0,505.5 L136.0,505.5"/><path class="viz-line" d="M126.0,599.0 L136.0,599.0"/><path class="viz-line" d="M106.0,437.0 L116.0,437.0"/><path class="viz-line" d="M106.0,667.5 L116.0,667.5"/><path class="viz-line" d="M106.0,736.0 L116.0,736.0"/><path class="viz-line" d="M162.0,95.5 L162.0,113.5"/><path class="viz-line" d="M292.0,247.0 L292.0,356.0"/><path class="viz-line" d="M292.0,275.0 L302.0,275.0"/><path class="viz-line" d="M292.0,356.0 L302.0,356.0"/><path class="viz-line" d="M348.0,95.5 L348.0,113.5"/><path class="viz-line" d="M458.0,184.5 L458.0,212.5"/><path class="viz-line" d="M478.0,303.0 L478.0,399.5"/><path class="viz-line" d="M478.0,331.0 L488.0,331.0"/><path class="viz-line" d="M478.0,399.5 L488.0,399.5"/><path class="viz-line" d="M458.0,212.5 L468.0,212.5"/><path class="viz-line" d="M514.0,95.5 L514.0,113.5"/><path class="viz-line" d="M109.0,832.0 L109.0,850.0"/><path class="viz-line" d="M199.0,908.5 L199.0,1249.5"/><path class="viz-line" d="M199.0,936.5 L209.0,936.5"/><path class="viz-line" d="M199.0,1005.0 L209.0,1005.0"/><path class="viz-line" d="M199.0,1087.5 L209.0,1087.5"/><path class="viz-line" d="M199.0,1156.0 L209.0,1156.0"/><path class="viz-line" d="M199.0,1249.5 L209.0,1249.5"/><path class="viz-line" d="M255.0,832.0 L255.0,850.0"/><path class="viz-line" d="M365.0,908.5 L365.0,1248.0"/><path class="viz-line" d="M365.0,936.5 L375.0,936.5"/><path class="viz-line" d="M385.0,1058.0 L385.0,1086.0"/><path class="viz-line" d="M385.0,1086.0 L395.0,1086.0"/><path class="viz-line" d="M365.0,1017.5 L375.0,1017.5"/><path class="viz-line" d="M365.0,1154.5 L375.0,1154.5"/><path class="viz-line" d="M365.0,1248.0 L375.0,1248.0"/><path class="viz-line" d="M421.0,832.0 L421.0,850.0"/><path class="viz-line" d="M607.0,832.0 L607.0,850.0"/><path class="viz-line" d="M350.0,77.5 L350.0,95.5 L35.0,95.5 L35.0,832.0"/><path class="viz-line" d="M35.0,95.5 L514.0,95.5"/><path class="viz-line" d="M35.0,832.0 L607.0,832.0"/><g data-box=""><rect class="viz-node viz-t4" x="284.0" y="8.0" width="132" height="69.5" rx="2"/><text class="viz-nodelabel" x="292.0" y="27.3" text-anchor="start">Perqo Admin</text><text class="viz-small" x="292.0" y="41.9" text-anchor="start">the surface; AD-1</text><text class="viz-small" x="292.0" y="54.4" text-anchor="start">to AD-6 are global</text><text class="viz-small" x="292.0" y="66.8" text-anchor="start">routes, by role</text></g><g data-box=""><rect class="viz-node viz-t4" x="96.0" y="113.5" width="132" height="83.5" rx="2"/><text class="viz-tag" x="104.0" y="130.9" text-anchor="start">index</text><text class="viz-nodelabel" x="104.0" y="146.8" text-anchor="start">Employees</text><text class="viz-small" x="104.0" y="161.3" text-anchor="start">AD-1 · by name;</text><text class="viz-small" x="104.0" y="173.8" text-anchor="start">filter by group,</text><text class="viz-small" x="104.0" y="186.3" text-anchor="start">status; find</text></g><g data-box=""><rect class="viz-node viz-t4" x="116.0" y="207.0" width="132" height="108.5" rx="2"/><text class="viz-tag" x="124.0" y="224.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="124.0" y="240.3" text-anchor="start">Employee</text><text class="viz-small" x="124.0" y="254.8" text-anchor="start">AD-1.1 · one per</text><text class="viz-small" x="124.0" y="267.4" text-anchor="start">employee; claims,</text><text class="viz-small" x="124.0" y="279.9" text-anchor="start">budgets, Perqo</text><text class="viz-small" x="124.0" y="292.4" text-anchor="start">card status (HR),</text><text class="viz-small" x="124.0" y="304.9" text-anchor="start">History</text></g><g data-box=""><rect class="viz-node viz-t4" x="136.0" y="325.5" width="132" height="83.5" rx="2"/><text class="viz-tag" x="144.0" y="342.9" text-anchor="start">stack</text><text class="viz-nodelabel" x="144.0" y="358.8" text-anchor="start">Claim</text><text class="viz-small" x="144.0" y="373.4" text-anchor="start">AD-1.1.1 · one per</text><text class="viz-small" x="144.0" y="385.9" text-anchor="start">claim; modal:</text><text class="viz-small" x="144.0" y="398.4" text-anchor="start">Reject claim (HR)</text></g><g data-box=""><rect class="viz-node viz-t4" x="116.0" y="419.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="124.0" y="436.4" text-anchor="start">index</text><text class="viz-nodelabel" x="124.0" y="452.3" text-anchor="start">Employee groups</text><text class="viz-small" x="124.0" y="466.9" text-anchor="start">AD-1.2</text></g><g data-box=""><rect class="viz-node viz-t4" x="136.0" y="487.5" width="132" height="83.5" rx="2"/><text class="viz-tag" x="144.0" y="504.9" text-anchor="start">stack</text><text class="viz-nodelabel" x="144.0" y="520.8" text-anchor="start">Employee group</text><text class="viz-small" x="144.0" y="535.4" text-anchor="start">AD-1.2.1 · its</text><text class="viz-small" x="144.0" y="547.9" text-anchor="start">policy, employees,</text><text class="viz-small" x="144.0" y="560.4" text-anchor="start">budgets</text></g><g data-box=""><rect class="viz-node viz-t4" x="136.0" y="581.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="144.0" y="598.4" text-anchor="start">form</text><text class="viz-nodelabel" x="144.0" y="614.3" text-anchor="start">Create group</text><text class="viz-small" x="144.0" y="628.9" text-anchor="start">AD-1.2.2 · HR</text></g><g data-box=""><rect class="viz-node viz-t4" x="116.0" y="649.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="124.0" y="666.9" text-anchor="start">form</text><text class="viz-nodelabel" x="124.0" y="682.8" text-anchor="start">Invite employees</text><text class="viz-small" x="124.0" y="697.4" text-anchor="start">AD-1.3 · HR</text></g><g data-box=""><rect class="viz-node viz-t4" x="116.0" y="718.0" width="132" height="96.0" rx="2"/><text class="viz-tag" x="124.0" y="735.4" text-anchor="start">index</text><text class="viz-nodelabel" x="124.0" y="751.3" text-anchor="start">Not joined</text><text class="viz-small" x="124.0" y="765.9" text-anchor="start">AD-1.4 · queue</text><text class="viz-small" x="124.0" y="778.4" text-anchor="start">[invited more than</text><text class="viz-small" x="124.0" y="790.9" text-anchor="start">14 days ago],</text><text class="viz-small" x="124.0" y="803.4" text-anchor="start">owned by HR</text></g><g data-box=""><rect class="viz-node viz-t4" x="282.0" y="113.5" width="132" height="133.5" rx="2"/><text class="viz-tag" x="290.0" y="130.9" text-anchor="start">index</text><text class="viz-nodelabel" x="290.0" y="146.8" text-anchor="start">Budgets</text><text class="viz-small" x="290.0" y="161.3" text-anchor="start">AD-2 · by group</text><text class="viz-small" x="290.0" y="173.8" text-anchor="start">and period; queue</text><text class="viz-small" x="290.0" y="186.3" text-anchor="start">No budget for next</text><text class="viz-small" x="290.0" y="198.8" text-anchor="start">period [no budgets</text><text class="viz-small" x="290.0" y="211.3" text-anchor="start">set for the next</text><text class="viz-small" x="290.0" y="223.8" text-anchor="start">period], owned by</text><text class="viz-small" x="290.0" y="236.3" text-anchor="start">finance</text></g><g data-box=""><rect class="viz-node viz-t4" x="302.0" y="257.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="310.0" y="274.4" text-anchor="start">stack</text><text class="viz-nodelabel" x="310.0" y="290.3" text-anchor="start">Budget</text><text class="viz-small" x="310.0" y="304.9" text-anchor="start">AD-2.1 · one</text><text class="viz-small" x="310.0" y="317.4" text-anchor="start">group, one period</text></g><g data-box=""><rect class="viz-node viz-t4" x="302.0" y="338.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="310.0" y="355.4" text-anchor="start">form</text><text class="viz-nodelabel" x="310.0" y="371.3" text-anchor="start">Set budgets</text><text class="viz-small" x="310.0" y="385.9" text-anchor="start">AD-2.2 · finance</text></g><g data-box=""><rect class="viz-node viz-t4" x="448.0" y="113.5" width="132" height="71.0" rx="2"/><text class="viz-tag" x="456.0" y="130.9" text-anchor="start">index</text><text class="viz-nodelabel" x="456.0" y="146.8" text-anchor="start">Policies</text><text class="viz-small" x="456.0" y="161.3" text-anchor="start">AD-3 · one per</text><text class="viz-small" x="456.0" y="173.8" text-anchor="start">employee group</text></g><g data-box=""><rect class="viz-node viz-t4" x="468.0" y="194.5" width="132" height="108.5" rx="2"/><text class="viz-tag" x="476.0" y="211.9" text-anchor="start">stack</text><text class="viz-nodelabel" x="476.0" y="227.8" text-anchor="start">Policy</text><text class="viz-small" x="476.0" y="242.3" text-anchor="start">AD-3.1 · open</text><text class="viz-small" x="476.0" y="254.8" text-anchor="start">categories,</text><text class="viz-small" x="476.0" y="267.4" text-anchor="start">auto-approve</text><text class="viz-small" x="476.0" y="279.9" text-anchor="start">limit, covered</text><text class="viz-small" x="476.0" y="292.4" text-anchor="start">items, History</text></g><g data-box=""><rect class="viz-node viz-t4" x="488.0" y="313.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="496.0" y="330.4" text-anchor="start">form</text><text class="viz-nodelabel" x="496.0" y="346.3" text-anchor="start">Edit policy</text><text class="viz-small" x="496.0" y="360.9" text-anchor="start">AD-3.1.1 · HR</text></g><g data-box=""><rect class="viz-node viz-t4" x="488.0" y="381.5" width="132" height="71.0" rx="2"/><text class="viz-tag" x="496.0" y="398.9" text-anchor="start">index</text><text class="viz-nodelabel" x="496.0" y="414.8" text-anchor="start">Covered items</text><text class="viz-small" x="496.0" y="429.4" text-anchor="start">AD-3.1.2 · HR</text><text class="viz-small" x="496.0" y="441.9" text-anchor="start">adds; all view</text></g><g data-box=""><rect class="viz-node viz-t4" x="43.0" y="850.0" width="132" height="171.0" rx="2"/><text class="viz-tag" x="51.0" y="867.4" text-anchor="start">index</text><text class="viz-nodelabel" x="51.0" y="883.3" text-anchor="start">Approvals</text><text class="viz-small" x="51.0" y="897.9" text-anchor="start">AD-4 · HR only;</text><text class="viz-small" x="51.0" y="910.4" text-anchor="start">queue [over the</text><text class="viz-small" x="51.0" y="922.9" text-anchor="start">policy&#x27;s</text><text class="viz-small" x="51.0" y="935.4" text-anchor="start">auto-approve</text><text class="viz-small" x="51.0" y="947.9" text-anchor="start">limit]; by policy,</text><text class="viz-small" x="51.0" y="960.4" text-anchor="start">oldest first;</text><text class="viz-small" x="51.0" y="972.9" text-anchor="start">count on the</text><text class="viz-small" x="51.0" y="985.4" text-anchor="start">global route;</text><text class="viz-small" x="51.0" y="997.9" text-anchor="start">opens claims → see</text><text class="viz-small" x="51.0" y="1010.4" text-anchor="start">AD-1.1.1</text></g><g data-box=""><rect class="viz-node viz-t4" x="189.0" y="850.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="197.0" y="867.4" text-anchor="start">section</text><text class="viz-nodelabel" x="197.0" y="883.3" text-anchor="start">Reports</text><text class="viz-small" x="197.0" y="897.9" text-anchor="start">AD-5 · views</text></g><g data-box=""><rect class="viz-node viz-t4" x="209.0" y="918.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="217.0" y="935.9" text-anchor="start">index</text><text class="viz-nodelabel" x="217.0" y="951.8" text-anchor="start">Spend by category</text><text class="viz-small" x="217.0" y="966.4" text-anchor="start">AD-5.1 · finance</text></g><g data-box=""><rect class="viz-node viz-t4" x="209.0" y="987.0" width="132" height="72.5" rx="2"/><text class="viz-tag" x="217.0" y="1004.4" text-anchor="start">index</text><text class="viz-nodelabel" x="217.0" y="1020.3" text-anchor="start">Spend by</text><text class="viz-nodelabel" x="217.0" y="1034.3" text-anchor="start">employee group</text><text class="viz-small" x="217.0" y="1048.8" text-anchor="start">AD-5.2 · finance</text></g><g data-box=""><rect class="viz-node viz-t4" x="209.0" y="1069.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="217.0" y="1086.9" text-anchor="start">index</text><text class="viz-nodelabel" x="217.0" y="1102.8" text-anchor="start">Budget use</text><text class="viz-small" x="217.0" y="1117.3" text-anchor="start">AD-5.3</text></g><g data-box=""><rect class="viz-node viz-t4" x="209.0" y="1138.0" width="132" height="83.5" rx="2"/><text class="viz-tag" x="217.0" y="1155.4" text-anchor="start">index</text><text class="viz-nodelabel" x="217.0" y="1171.3" text-anchor="start">Claims by status</text><text class="viz-small" x="217.0" y="1185.8" text-anchor="start">AD-5.4 · opens</text><text class="viz-small" x="217.0" y="1198.3" text-anchor="start">claims → see</text><text class="viz-small" x="217.0" y="1210.8" text-anchor="start">AD-1.1.1</text></g><g data-box=""><rect class="viz-node viz-t4" x="209.0" y="1231.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="217.0" y="1248.9" text-anchor="start">index</text><text class="viz-nodelabel" x="217.0" y="1264.8" text-anchor="start">Card payments</text><text class="viz-small" x="217.0" y="1279.3" text-anchor="start">AD-5.5 · finance</text></g><g data-box=""><rect class="viz-node viz-t4" x="355.0" y="850.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="363.0" y="867.4" text-anchor="start">section</text><text class="viz-nodelabel" x="363.0" y="883.3" text-anchor="start">Settings</text><text class="viz-small" x="363.0" y="897.9" text-anchor="start">AD-6</text></g><g data-box=""><rect class="viz-node viz-t4" x="375.0" y="918.5" width="132" height="71.0" rx="2"/><text class="viz-tag" x="383.0" y="935.9" text-anchor="start">detail</text><text class="viz-nodelabel" x="383.0" y="951.8" text-anchor="start">Company</text><text class="viz-small" x="383.0" y="966.4" text-anchor="start">AD-6.1 · owner</text><text class="viz-small" x="383.0" y="978.9" text-anchor="start">edits</text></g><g data-box=""><rect class="viz-node viz-t4" x="375.0" y="999.5" width="132" height="58.5" rx="2"/><text class="viz-tag" x="383.0" y="1016.9" text-anchor="start">index</text><text class="viz-nodelabel" x="383.0" y="1032.8" text-anchor="start">Admins</text><text class="viz-small" x="383.0" y="1047.3" text-anchor="start">AD-6.2 · owner</text></g><g data-box=""><rect class="viz-node viz-t4" x="395.0" y="1068.0" width="132" height="58.5" rx="2"/><text class="viz-tag" x="403.0" y="1085.4" text-anchor="start">form</text><text class="viz-nodelabel" x="403.0" y="1101.3" text-anchor="start">Add admin user</text><text class="viz-small" x="403.0" y="1115.8" text-anchor="start">AD-6.2.1 · owner</text></g><g data-box=""><rect class="viz-node viz-t4" x="375.0" y="1136.5" width="132" height="83.5" rx="2"/><text class="viz-tag" x="383.0" y="1153.9" text-anchor="start">index</text><text class="viz-nodelabel" x="383.0" y="1169.8" text-anchor="start">Activity log</text><text class="viz-small" x="383.0" y="1184.3" text-anchor="start">AD-6.3 · owner;</text><text class="viz-small" x="383.0" y="1196.8" text-anchor="start">each entry opens</text><text class="viz-small" x="383.0" y="1209.3" text-anchor="start">its record</text></g><g data-box=""><rect class="viz-node viz-t4" x="375.0" y="1230.0" width="132" height="71.0" rx="2"/><text class="viz-tag" x="383.0" y="1247.4" text-anchor="start">detail</text><text class="viz-nodelabel" x="383.0" y="1263.3" text-anchor="start">Your profile</text><text class="viz-small" x="383.0" y="1277.8" text-anchor="start">AD-6.4 · own</text><text class="viz-small" x="383.0" y="1290.3" text-anchor="start">profile</text></g><g data-box=""><rect class="viz-node viz-t4" x="541.0" y="850.0" width="132" height="108.5" rx="2"/><text class="viz-tag" x="549.0" y="867.4" text-anchor="start">form</text><text class="viz-nodelabel" x="549.0" y="883.3" text-anchor="start">Sign in</text><text class="viz-small" x="549.0" y="897.9" text-anchor="start">AD-0 · line</text><text class="viz-small" x="549.0" y="910.4" text-anchor="start">&quot;Looking for your</text><text class="viz-small" x="549.0" y="922.9" text-anchor="start">benefits? Get the</text><text class="viz-small" x="549.0" y="935.4" text-anchor="start">Perqo app&quot; → see</text><text class="viz-small" x="549.0" y="947.9" text-anchor="start">S-6</text></g></svg></div><figcaption>Sitemap: Perqo Admin's pages at F2, with an identifier on every page (AD-0 to AD-6) and IA2's type tags; the structure the navigation model's routes run through; supports the decision on where each object's list, detail, create form, queue and view lives (Deliverable C, C.1). Every box tone 4, Perqo Admin. Notes give the page ID, roles where not all reach it or the owner of a queue, 'queue' with its [condition], 'views', and what a page holds or how its list is ordered where that decides it; '→ see' points to a page or surface drawn elsewhere. Six areas from IA1's surfaces map, kept; Policies one per employee group from IA2, section 5.3; Reports as views from IA4, section 4.3; the rest set in sections 3.2 to 3.4, 4.1 to 4.6 and 5.3, Deliverable A, A.1 and A.4, and Deliverable C, C.3 to C.5. Perqo is fictional.</figcaption></figure>
+<p>The identifiers, for citing (Perqo, fictional): AD-0 Sign in; AD-1 Employees, AD-1.1 Employee, AD-1.1.1 Claim, AD-1.2 Employee groups, AD-1.2.1 Employee group, AD-1.2.2 Create group, AD-1.3 Invite employees, AD-1.4 Not joined; AD-2 Budgets, AD-2.1 Budget (one employee group's budgets for one period), AD-2.2 Set budgets; AD-3 Policies, AD-3.1 Policy, AD-3.1.1 Edit policy, AD-3.1.2 Covered items; AD-4 Approvals; AD-5 Reports, AD-5.1 Spend by category, AD-5.2 Spend by employee group, AD-5.3 Budget use, AD-5.4 Claims by status, AD-5.5 Card payments; AD-6 Settings, AD-6.1 Company, AD-6.2 Admins, AD-6.2.1 Add admin user, AD-6.3 Activity log, AD-6.4 Your profile.</p>
+<p>Admin's addresses follow IA4's rule, identifier first (IA4, section 5): /employees/{employee ID}, /employees/{employee ID}/claims/{claim ID}, /policies/{policy ID}, /budgets/{employee group ID}/{period}, /reports/claims-by-status (Perqo, fictional). A page that moves keeps a redirect from its old address. Admin's domain, and the identifiers' format, are left free.</p>
+<h4>C.2 · The routes</h4>
+<p>IA2's navigation table, Admin's column, at F2 (IA2, section 5.3; route types from Rosenfeld, Morville and Arango 2015, ch. 8). IA2's entries are kept; this unit's are marked <em>new</em> (Perqo, fictional).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Route type</th>
+<th>Perqo Admin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global</td>
+<td>Employees, Budgets, Policies, Approvals, Reports, Settings (IA1); by role <em>new</em>: a finance manager's navigation has no Approvals; Approvals shows the count of claims waiting for the viewer <em>new</em></td>
+</tr>
+<tr>
+<td>Local</td>
+<td>the policies inside Policies, one per employee group (IA2); <em>new</em>: inside Employees, All employees (the Employees list, AD-1), Employee groups and Not joined; inside Budgets, the current and the next period; inside Reports, the five reports; inside Settings, Company, Admins, Activity log and Your profile; inside Approvals, none: it is one list, grouped by policy (IA1)</td>
+</tr>
+<tr>
+<td>Contextual</td>
+<td>from an employee's record to the claims they made (IA2); <em>new</em>: from an employee's record to their budgets and their Perqo card's status; from a claim to its employee, its policy and its budget; from an employee group to its policy, its employees and its budgets; from a budget to its employee group; from a policy to its employee group; from a report row to the records it sums; from an audit entry to the record it changed</td>
+</tr>
+<tr>
+<td>Supplemental</td>
+<td>none (IA2); each long list has a find field, part of the list (section 4.5)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Where each person lands after signing in (<em>new</em>, Perqo, fictional): an HR manager on Approvals, a finance manager on Budgets, an account owner where their role lands them. The placing follows frequency, the rule IA6 took from Sears and Shneiderman's split menus and Nielsen's progressive disclosure (IA6, section 1.2): the most frequent work of each role is deciding claims for HR and setting budgets for finance (IA4, A.3), assumed until measured.</p>
+<p>The same model as a matrix, one row per area of the global navigation: its local routes, its work queue, its contextual routes, and the roles that reach it with what each does there, from the role matrix (the supplemental row, none, is left out). An area with no work queue has a blank cell (C.4). The account owner reaches each area other than Settings as the role it also holds (Deliverable B, B.1). A contextual route sits in the row of the area where it is followed most: a claim's routes are in Approvals, where HR opens claims, although the claim's page sits under Employees (C.1). Its rows take tone 4, Perqo Admin.</p>
+<figure class="viz viz-matrix"><div class="viz-scroll" style="--stick:98px"><svg viewBox="0 0 700.0 332" width="700.0" height="332" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="157.1" y="15.6" text-anchor="middle">Local routes</text><text class="viz-colhead" x="261.7" y="15.6" text-anchor="middle">Work queue</text><text class="viz-colhead" x="411.7" y="15.6" text-anchor="middle">Contextual routes</text><text class="viz-colhead" x="604.0" y="15.6" text-anchor="middle">Roles</text><text class="viz-label" x="8.0" y="62.8" text-anchor="start">Employees</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="34.0" width="114.1" height="49.0"/><text class="viz-mark" x="157.1" y="49.3" text-anchor="middle">All employees,</text><text class="viz-mark" x="157.1" y="62.3" text-anchor="middle">Employee groups,</text><text class="viz-mark" x="157.1" y="75.3" text-anchor="middle">Not joined</text></g><g data-box=""><rect class="viz-band viz-t4" x="218.1" y="34.0" width="87.3" height="49.0"/><text class="viz-mark" x="261.7" y="62.3" text-anchor="middle">Not joined</text></g><g data-box=""><rect class="viz-band viz-t4" x="309.4" y="34.0" width="204.6" height="49.0"/><text class="viz-mark" x="411.7" y="49.3" text-anchor="middle">employee to claims, budgets,</text><text class="viz-mark" x="411.7" y="62.3" text-anchor="middle">Perqo card status; group to</text><text class="viz-mark" x="411.7" y="75.3" text-anchor="middle">policy, employees, budgets</text></g><g data-box=""><rect class="viz-band viz-t4" x="518.0" y="34.0" width="172.0" height="49.0"/><text class="viz-mark" x="604.0" y="62.3" text-anchor="middle">HR edit; finance view</text></g><text class="viz-label" x="8.0" y="115.8" text-anchor="start">Budgets</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="87.0" width="114.1" height="49.0"/><text class="viz-mark" x="157.1" y="108.8" text-anchor="middle">current period,</text><text class="viz-mark" x="157.1" y="121.8" text-anchor="middle">next period</text></g><g data-box=""><rect class="viz-band viz-t4" x="218.1" y="87.0" width="87.3" height="49.0"/><text class="viz-mark" x="261.7" y="102.3" text-anchor="middle">No budget</text><text class="viz-mark" x="261.7" y="115.3" text-anchor="middle">for next</text><text class="viz-mark" x="261.7" y="128.3" text-anchor="middle">period</text></g><g data-box=""><rect class="viz-band viz-t4" x="309.4" y="87.0" width="204.6" height="49.0"/><text class="viz-mark" x="411.7" y="115.3" text-anchor="middle">budget to its employee group</text></g><g data-box=""><rect class="viz-band viz-t4" x="518.0" y="87.0" width="172.0" height="49.0"/><text class="viz-mark" x="604.0" y="115.3" text-anchor="middle">finance set; HR view</text></g><text class="viz-label" x="8.0" y="162.3" text-anchor="start">Policies</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="140.0" width="114.1" height="36.0"/><text class="viz-mark" x="157.1" y="155.3" text-anchor="middle">one per</text><text class="viz-mark" x="157.1" y="168.3" text-anchor="middle">employee group</text></g><g data-box=""><rect class="viz-track" x="218.1" y="140.0" width="87.3" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t4" x="309.4" y="140.0" width="204.6" height="36.0"/><text class="viz-mark" x="411.7" y="161.8" text-anchor="middle">policy to its employee group</text></g><g data-box=""><rect class="viz-band viz-t4" x="518.0" y="140.0" width="172.0" height="36.0"/><text class="viz-mark" x="604.0" y="161.8" text-anchor="middle">HR edit; finance view</text></g><text class="viz-label" x="8.0" y="208.8" text-anchor="start">Approvals</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="180.0" width="114.1" height="49.0"/><text class="viz-mark" x="157.1" y="195.3" text-anchor="middle">none: one</text><text class="viz-mark" x="157.1" y="208.3" text-anchor="middle">list, grouped</text><text class="viz-mark" x="157.1" y="221.3" text-anchor="middle">by policy</text></g><g data-box=""><rect class="viz-band viz-t4" x="218.1" y="180.0" width="87.3" height="49.0"/><text class="viz-mark" x="261.7" y="195.3" text-anchor="middle">Approvals,</text><text class="viz-mark" x="261.7" y="208.3" text-anchor="middle">count on the</text><text class="viz-mark" x="261.7" y="221.3" text-anchor="middle">global route</text></g><g data-box=""><rect class="viz-band viz-t4" x="309.4" y="180.0" width="204.6" height="49.0"/><text class="viz-mark" x="411.7" y="201.8" text-anchor="middle">claim to employee,</text><text class="viz-mark" x="411.7" y="214.8" text-anchor="middle">policy, budget</text></g><g data-box=""><rect class="viz-band viz-t4" x="518.0" y="180.0" width="172.0" height="49.0"/><text class="viz-mark" x="604.0" y="201.8" text-anchor="middle">HR decide; not in</text><text class="viz-mark" x="604.0" y="214.8" text-anchor="middle">finance&#x27;s navigation</text></g><text class="viz-label" x="8.0" y="255.3" text-anchor="start">Reports</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="233.0" width="114.1" height="36.0"/><text class="viz-mark" x="157.1" y="254.8" text-anchor="middle">the five reports</text></g><g data-box=""><rect class="viz-track" x="218.1" y="233.0" width="87.3" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t4" x="309.4" y="233.0" width="204.6" height="36.0"/><text class="viz-mark" x="411.7" y="248.3" text-anchor="middle">report row to the</text><text class="viz-mark" x="411.7" y="261.3" text-anchor="middle">records it sums</text></g><g data-box=""><rect class="viz-band viz-t4" x="518.0" y="233.0" width="172.0" height="36.0"/><text class="viz-mark" x="604.0" y="248.3" text-anchor="middle">finance all five;</text><text class="viz-mark" x="604.0" y="261.3" text-anchor="middle">HR some (two)</text></g><text class="viz-label" x="8.0" y="301.8" text-anchor="start">Settings</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="273.0" width="114.1" height="49.0"/><text class="viz-mark" x="157.1" y="288.3" text-anchor="middle">Company, Admins,</text><text class="viz-mark" x="157.1" y="301.3" text-anchor="middle">Activity log,</text><text class="viz-mark" x="157.1" y="314.3" text-anchor="middle">Your profile</text></g><g data-box=""><rect class="viz-track" x="218.1" y="273.0" width="87.3" height="49.0"/></g><g data-box=""><rect class="viz-band viz-t4" x="309.4" y="273.0" width="204.6" height="49.0"/><text class="viz-mark" x="411.7" y="301.3" text-anchor="middle">audit entry to its record</text></g><g data-box=""><rect class="viz-band viz-t4" x="518.0" y="273.0" width="172.0" height="49.0"/><text class="viz-mark" x="604.0" y="288.3" text-anchor="middle">account owner manage;</text><text class="viz-mark" x="604.0" y="301.3" text-anchor="middle">others profile: Company</text><text class="viz-mark" x="604.0" y="314.3" text-anchor="middle">read only, Your profile</text></g></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 98 332" width="98" height="332" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="98" height="326"/><text class="viz-label" x="8.0" y="62.8" text-anchor="start">Employees</text><text class="viz-label" x="8.0" y="115.8" text-anchor="start">Budgets</text><text class="viz-label" x="8.0" y="162.3" text-anchor="start">Policies</text><text class="viz-label" x="8.0" y="208.8" text-anchor="start">Approvals</text><text class="viz-label" x="8.0" y="255.3" text-anchor="start">Reports</text><text class="viz-label" x="8.0" y="301.8" text-anchor="start">Settings</text></svg></div></div><figcaption>Navigation model: Perqo Admin's six areas with their local routes, work queues, contextual routes, and the roles that reach each with their marks from Deliverable B, F2; supports the decision on which routes the navigation components must carry, for which role (Deliverable C, C.2). Rows tone 4, Perqo Admin. A blank cell is an area with no work queue (Deliverable C, C.4). The supplemental route, none, is left out (Deliverable C, C.2). Route types from Rosenfeld, Morville and Arango, 2015, ch. 8, through IA2, section 1.4; areas from IA1's surfaces map; IA2, section 5.3's Admin column kept; contextual routes from the relationships in Deliverable A, A.3, following Prater 2015; queues from Deliverable C, C.4; roles from Deliverable B. Perqo is fictional.</figcaption></figure>
+<h4>C.3 · Lists: order, filters, find, bulk actions</h4>
+<p>Every list in Admin, with its default order and what acts on it (Perqo, fictional; sections 4.3 to 4.5).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Page</th>
+<th>List of</th>
+<th>Default order</th>
+<th>Filters</th>
+<th>Find</th>
+<th>Bulk actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AD-1 Employees</td>
+<td>employees</td>
+<td>name, alphabetical (IA4)</td>
+<td>employee group; status</td>
+<td>name or work email</td>
+<td>move to group (HR)</td>
+</tr>
+<tr>
+<td>AD-1.2 Employee groups</td>
+<td>employee groups</td>
+<td>name</td>
+<td>none</td>
+<td>name</td>
+<td>none</td>
+</tr>
+<tr>
+<td>AD-1.4 Not joined</td>
+<td>employees, Invited over 14 days</td>
+<td>oldest invitation first</td>
+<td>employee group</td>
+<td>name or work email</td>
+<td>resend invitation; mark as left (HR)</td>
+</tr>
+<tr>
+<td>AD-1.1 Employee, Claims</td>
+<td>the employee's claims</td>
+<td>by status, newest first in each, as the app's Claims (IA6)</td>
+<td>status</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>AD-2 Budgets</td>
+<td>employee groups by period</td>
+<td>name</td>
+<td>period</td>
+<td>name</td>
+<td>none: Set budgets is itself one action on a group</td>
+</tr>
+<tr>
+<td>AD-3 Policies</td>
+<td>policies</td>
+<td>employee group name</td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>AD-4 Approvals</td>
+<td>claims waiting</td>
+<td>grouped by policy (IA1), oldest first; Overdue marked</td>
+<td>policy; category</td>
+<td>employee name</td>
+<td>approve selected (HR)</td>
+</tr>
+<tr>
+<td>AD-5.4 Claims by status</td>
+<td>claims</td>
+<td>by status, newest first</td>
+<td>status; employee group; category; period</td>
+<td>employee name</td>
+<td>none</td>
+</tr>
+<tr>
+<td>AD-5.5 Card payments</td>
+<td>card payments</td>
+<td>newest first</td>
+<td>employee group; category; period</td>
+<td>employee name; merchant</td>
+<td>none</td>
+</tr>
+<tr>
+<td>AD-6.2 Admins</td>
+<td>admin users</td>
+<td>name</td>
+<td>role; status</td>
+<td>name</td>
+<td>none</td>
+</tr>
+<tr>
+<td>AD-6.3 Activity log</td>
+<td>audit entries</td>
+<td>newest first</td>
+<td>person; object type; date</td>
+<td>object ID</td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<h4>C.4 · Work queues, and the invitation</h4>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Queue</th>
+<th>Object and state</th>
+<th>Condition</th>
+<th>Owner</th>
+<th>Where</th>
+<th>Order</th>
+<th>Volume, sizing client</th>
+<th>Cleared by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Approvals</td>
+<td>claim, Submitted</td>
+<td>over the policy's auto-approve limit; the viewer's own claim is listed, and only another HR manager can decide it (EX-1)</td>
+<td>HR manager</td>
+<td>AD-4; count on the global route</td>
+<td>grouped by policy, oldest first; Overdue after five working days (EX-3)</td>
+<td>about 9 a working day (assumed)</td>
+<td>approve or reject (T3, T4); T5</td>
+</tr>
+<tr>
+<td>Not joined</td>
+<td>employee, Invited</td>
+<td>invited more than 14 days ago</td>
+<td>HR manager</td>
+<td>AD-1.4</td>
+<td>oldest invitation first</td>
+<td>not set</td>
+<td>resend invitation; mark as left</td>
+</tr>
+<tr>
+<td>No budget for next period</td>
+<td>employee group</td>
+<td>no budgets set for the next period</td>
+<td>finance manager</td>
+<td>top of AD-2</td>
+<td>employee group name</td>
+<td>up to 14</td>
+<td>set budgets</td>
+</tr>
+</tbody>
+</table></div>
+<p>HR's invitation, Admin's side of IA6's entry E-2 (IA6, Deliverable B, B.4). HR invites from Invite employees (AD-1.3), one employee or several into one group, each with a name and a work email; each becomes an employee in the state Invited (section 5.1). The invitation is an email to the work email, carrying the employer's name (the client's name, from Company, AD-6.1) and the link perqo.com/app/join/{invitation}, which opens Join (A-0.1) in the app, or Get the Perqo app (S-6) without it, as IA6 set. Resend invitation sends the same email again. How long an invitation stays valid is left free.</p>
+<h4>C.5 · The sign-in screen, and the proposal IA5 left</h4>
+<p>IA5 recorded an assumption, untested: an employee who wants the app may press Sign in on perqo.com and land on Admin's sign-in screen; it proposed for this unit a line there pointing employees to Get the Perqo app (IA5, section 5.5). IA6 left it with this unit, which owns that screen (IA6, section 6.3 and B.4).</p>
+<p><strong>Decision: taken, with one change.</strong> Admin's Sign in (AD-0) carries the line "Looking for your benefits? Get the Perqo app", linking to S-6, perqo.com/app (Perqo, fictional). The change: the line is on the screen for everyone, from the first view, not only after a failed sign-in. An employee who has landed in the wrong place may read the screen and leave without trying to sign in, and a line that appears only after a failure would never reach them. The words are the employee's: "benefits" is the app's tab and perqo.com's section (IA5, Deliverable B; IA6, Deliverable B). The cost is one line on a screen HR and finance see daily, which they learn to pass over (section 1.2). The assumption itself stays untested: the evidence IA5 named, Admin's failed sign-ins and the Help centre's search log (IA5, section 5.5; IA3, section 5.2), is for IA11 and IA12, and if no employee is ever found there, the line can go.</p>
+<h3>Deliverable D · The claim-approval state diagram</h3>
+<p><em>Face: state diagram of a Perqo claim at F3, every transition with its trigger, actor and condition, extending IA2, section 5.3's diagram and IA1's states; decision: what moves a claim, who may move it, and what is recorded when it moves; readers: engineering (the status field and its allowed changes), content and support (what each status and reason is called and what a person can do in it), the client (when money moves and who decided); leaves out: when Perqo pays out (the payout schedule is left free), the decision tree as a figure (IA2, section 5.3; IA8), the app's screens (IA6); owner: the IA designer; version 1, dated 3 November 2026; Perqo is fictional.</em></p>
+<h4>D.1 · States and transitions</h4>
+<p>IA1's four states and IA2's transitions are kept: Submitted, Approved, Rejected, Paid, with Paid and Rejected end states; approve, by the rule or by HR; reject, by the rule or by HR; pay out (IA2, section 5.3). The rule is the register's, reading the chosen category's balance (IA3, section 2.3). This unit writes each transition at F3 and adds T5, marked <em>extension</em> (Perqo, fictional). Every transition writes an audit entry (O-17).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>From</th>
+<th>To</th>
+<th>Trigger</th>
+<th>Actor</th>
+<th>Condition</th>
+<th>Recorded on the claim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Submitted</td>
+<td>Rejected</td>
+<td>submission</td>
+<td>Perqo system</td>
+<td>the amount is over the chosen category's balance</td>
+<td>rejection reason: over the balance; decided by: rule</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Submitted</td>
+<td>Approved</td>
+<td>submission</td>
+<td>Perqo system</td>
+<td>within the balance, and at or under the policy's auto-approve limit</td>
+<td>decided by: rule</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Submitted</td>
+<td>Approved</td>
+<td>Approve, or Approve selected, in Approvals</td>
+<td>HR manager, not the claimant (EX-1)</td>
+<td>over the limit; the balance still covers the amount</td>
+<td>decided by: the HR manager</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Submitted</td>
+<td>Rejected</td>
+<td>Reject claim, with a note</td>
+<td>HR manager, not the claimant (EX-1)</td>
+<td>over the limit</td>
+<td>rejection reason: by HR; rejection note; decided by: the HR manager</td>
+</tr>
+<tr>
+<td>T5 <em>extension</em></td>
+<td>Submitted</td>
+<td>Rejected</td>
+<td>Approve, or Approve selected, in Approvals</td>
+<td>Perqo system, on HR's approval</td>
+<td>the amount is now over the category's balance (EX-2)</td>
+<td>rejection reason: over the balance; decided by: rule</td>
+</tr>
+<tr>
+<td>T6</td>
+<td>Approved</td>
+<td>Paid</td>
+<td>pay out</td>
+<td>Perqo system</td>
+<td>none</td>
+<td>none beyond the audit entry</td>
+</tr>
+</tbody>
+</table></div>
+<p>A claim over the limit stays Submitted while it waits in Approvals (IA2's note "[over limit] waits in Approvals"). No transition leaves Rejected or Paid, and none returns a claim to Submitted.</p>
+<h4>D.2 · Exceptions</h4>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Exception</th>
+<th>What happens</th>
+<th>Status in the lifecycle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EX-1 <em>extension</em></td>
+<td>the claimant is an HR manager (R-21)</td>
+<td>the claim waits in Approvals for another HR manager; the claimant sees Approve and Reject disabled, with "Another HR manager decides your own claim"</td>
+<td>a condition on T3 and T4; no new state</td>
+</tr>
+<tr>
+<td>EX-2 <em>extension</em></td>
+<td>the balance changed while the claim waited, since waiting claims reserve nothing</td>
+<td>on HR's approval the Perqo system checks again; a claim now over the balance takes T5; in a bulk approval each claim is checked on its own</td>
+<td>a new trigger, T5, on IA2's Submitted-to-Rejected transition</td>
+</tr>
+<tr>
+<td>EX-3 <em>extension</em></td>
+<td>the claim has waited more than five working days</td>
+<td>marked Overdue in Approvals, which is ordered oldest first</td>
+<td>not a state: a display rule in the queue</td>
+</tr>
+<tr>
+<td>EX-4 <em>extension</em></td>
+<td>the claimant is marked as left while the claim waits</td>
+<td>the claim is still decided as usual</td>
+<td>no change to the lifecycle</td>
+</tr>
+</tbody>
+</table></div>
+<h4>D.3 · The diagram</h4>
+<p>The claim's lifecycle drawn at F3, the transitions labelled by their IDs and actors. Submitted, Approved and Paid take tone 5, because a claim's status is shown on both Admin and the app (IA2, section 5.3); Rejected takes tone 6, a path that ends without success.</p>
+<figure class="viz viz-states"><div class="viz-scroll"><svg viewBox="0 0 700 304.0" width="700" height="304.0" data-x0="181" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="states"><path class="viz-link" d="M269.8,142.0 L269.8,183.2 L288.2,183.2 L288.2,217.5"/><path class="viz-head" d="M288.2,224.5 L284.2,217.5 L292.2,217.5 z"/><g data-box=""><rect class="viz-lblbg" x="294.2" y="150.0" width="69.0" height="66.5"/><text class="viz-linklabel" x="328.7" y="162.0" text-anchor="middle">T1, T5 rule:</text><text class="viz-linklabel" x="328.7" y="174.5" text-anchor="middle">over the</text><text class="viz-linklabel" x="328.7" y="187.0" text-anchor="middle">balance; T4</text><text class="viz-linklabel" x="328.7" y="199.5" text-anchor="middle">HR manager</text><text class="viz-linklabel" x="328.7" y="212.0" text-anchor="middle">rejects</text></g><path class="viz-link" d="M445.8,110.8 L445.8,183.2 L464.2,183.2 L464.2,233.2"/><path class="viz-head" d="M464.2,240.2 L460.2,233.2 L468.2,233.2 z"/><g data-box=""><rect class="viz-lblbg" x="470.2" y="162.5" width="72.5" height="41.5"/><text class="viz-linklabel" x="506.4" y="174.5" text-anchor="middle">T6 Perqo</text><text class="viz-linklabel" x="506.4" y="187.0" text-anchor="middle">system pays</text><text class="viz-linklabel" x="506.4" y="199.5" text-anchor="middle">out</text></g><path class="viz-link" d="M337.0,75.0 L390.0,75.0"/><path class="viz-head" d="M397.0,75.0 L390.0,79.0 L390.0,71.0 z"/><text class="viz-linklabel" x="367.0" y="30.0" text-anchor="middle">T2 rule;</text><text class="viz-linklabel" x="367.0" y="42.5" text-anchor="middle">T3 HR</text><text class="viz-linklabel" x="367.0" y="55.0" text-anchor="middle">manager</text><text class="viz-linklabel" x="367.0" y="67.5" text-anchor="middle">approves</text><circle class="viz-start" cx="194.0" cy="75.0" r="5"/><path class="viz-link" d="M200.0,75.0 L214.0,75.0"/><path class="viz-head" d="M221.0,75.0 L214.0,79.0 L214.0,71.0 z"/><g data-box=""><rect class="viz-node viz-t5" x="221.0" y="8.0" width="116" height="134.0" rx="10"/><text class="viz-nodelabel" x="279.0" y="28.3" text-anchor="middle">Submitted</text><text class="viz-small" x="279.0" y="42.9" text-anchor="middle">[over the limit]</text><text class="viz-small" x="279.0" y="55.4" text-anchor="middle">waits in</text><text class="viz-small" x="279.0" y="67.8" text-anchor="middle">Approvals;</text><text class="viz-small" x="279.0" y="80.3" text-anchor="middle">[claimant is an</text><text class="viz-small" x="279.0" y="92.8" text-anchor="middle">HR manager]</text><text class="viz-small" x="279.0" y="105.3" text-anchor="middle">another HR</text><text class="viz-small" x="279.0" y="117.8" text-anchor="middle">manager decides</text><text class="viz-small" x="279.0" y="130.3" text-anchor="middle">(EX-1)</text></g><g data-box=""><rect class="viz-node viz-t5" x="397.0" y="39.2" width="116" height="71.5" rx="10"/><text class="viz-nodelabel" x="455.0" y="59.6" text-anchor="middle">Approved</text><text class="viz-small" x="455.0" y="74.1" text-anchor="middle">decided by the</text><text class="viz-small" x="455.0" y="86.6" text-anchor="middle">rule or an HR</text><text class="viz-small" x="455.0" y="99.1" text-anchor="middle">manager</text></g><g data-box=""><rect class="viz-node viz-t6" x="221.0" y="224.5" width="116" height="71.5" rx="10"/><rect class="viz-endring viz-t6" x="224.0" y="227.5" width="110" height="65.5" rx="7"/><text class="viz-nodelabel" x="279.0" y="244.8" text-anchor="middle">Rejected</text><text class="viz-small" x="279.0" y="259.4" text-anchor="middle">reason: over the</text><text class="viz-small" x="279.0" y="271.9" text-anchor="middle">balance, or by</text><text class="viz-small" x="279.0" y="284.4" text-anchor="middle">HR with a note</text></g><g data-box=""><rect class="viz-node viz-t5" x="397.0" y="240.2" width="116" height="40.0" rx="10"/><rect class="viz-endring viz-t5" x="400.0" y="243.2" width="110" height="34.0" rx="7"/><text class="viz-nodelabel" x="455.0" y="264.6" text-anchor="middle">Paid</text></g></svg></div><figcaption>State diagram: the claim-approval lifecycle of a Perqo claim at F3, every transition with its ID and who triggers it, extending IA2, section 5.3's diagram (states from IA1, section 5) with T5 and the exceptions EX-1 and EX-2; supports the decision on what moves a claim, who may move it and what is recorded (Deliverable D). Tone 5 for the statuses Admin and the app both show; tone 6 a path that ends without success. The rule from IA2, section 5.3 and IA3, section 2.3; rejection reason from IA6, Deliverable B; T5, EX-1 and EX-2 set in section 5.2; separation of duty from NIST's glossary (SP 800⁠-⁠192); plain state-transition form as Harel 1987 extends it. Perqo is fictional.</figcaption></figure>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia7-5" data-step="5"><span>Previous · 6 of 9</span><b>The IA and the engineering data model</b></a><a class="snext" href="#read-ia7-7" data-step="7"><span>Next · 8 of 9</span><b>What IA8 and later units take</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-ia7-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">What IA8 and later units take</span></span></h2>
+<p><strong>IA8</strong> takes this IA as the Admin layer of the cross-surface interaction map. The joins it will need are named here: Admin's invitation to the app's entry E-2 (Deliverable C, C.4); the claim's lifecycle (Deliverable D) to the app's Claims groups and Claim screen (IA6, Deliverable B) and to the decision tree IA2 drew, with T5 added; Admin's labels against the app's and perqo.com's through the object map's "Surface: Label" lines; and three cross-surface questions this unit leaves open: what happens to a leaver's remaining allocations and card (section 5.1); whether the model should take Admin's word, Budget, for the allocation (section 6.2); and where boundaries between models would run, at the catalogue and the merchant side (section 6.2).</p>
+<p><strong>IA11</strong> tests it. <strong>IA12's assumption register</strong> records its decisions and assumptions, each with its test:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Decision or assumption</th>
+<th>Where</th>
+<th>Test (IA11)</th>
+<th>What changes if it fails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volumes of the sizing client: 1,200 employees, 14 groups, about 1,200 claims and 9,600 card payments a month, 15% of claims over the limit</td>
+<td>section 2.2</td>
+<td>product analytics from live clients</td>
+<td>the queue design; whether search is needed (section 4.5)</td>
+</tr>
+<tr>
+<td>HR's most frequent work is deciding claims, finance's setting budgets, so each lands there</td>
+<td>Deliverable C, C.2</td>
+<td>analytics of first actions after sign-in</td>
+<td>the landing pages</td>
+</tr>
+<tr>
+<td>In-list find serves known-item seeking at these volumes</td>
+<td>section 4.5</td>
+<td>task-based usability test: find this employee, find this claim from a support question</td>
+<td>a global search, role-scoped</td>
+</tr>
+<tr>
+<td>HR and finance recognise their objects and their names (employee group, policy, budget, claim)</td>
+<td>Deliverable A</td>
+<td>card sort or interviews with HR and finance managers at clients</td>
+<td>labels, through the vocabulary</td>
+</tr>
+<tr>
+<td>A finance manager does not need Approvals</td>
+<td>Deliverable B</td>
+<td>interviews with finance managers</td>
+<td>a read-only Approvals for finance</td>
+</tr>
+<tr>
+<td>HR does not need individual card payments</td>
+<td>section 3.3</td>
+<td>interviews with HR managers; support's tickets (IA12 as proxy)</td>
+<td>the Card payments report for HR</td>
+</tr>
+<tr>
+<td>The account owner fits how clients assign admin rights</td>
+<td>section 3.4</td>
+<td>interviews with clients at onboarding</td>
+<td>a second owner, or an owner without HR or finance work</td>
+</tr>
+<tr>
+<td>The list-detail layout keeps HR's place in the queue</td>
+<td>section 4.3</td>
+<td>usability test of a run of ten decisions</td>
+<td>the detail on its own page</td>
+</tr>
+<tr>
+<td>The sign-in line reaches employees who land on Admin</td>
+<td>Deliverable C, C.5</td>
+<td>Admin's failed sign-ins; the Help centre's search log (IA5)</td>
+<td>the line stays or goes</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>DD-IA2</strong> takes this IA as the scope its business case is for, and the sizing client's volumes and queue numbers as the assumed load its case argues from, each to be replaced by measured figures.</p>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia7-6" data-step="6"><span>Previous · 7 of 9</span><b>The Perqo Admin IA</b></a><a class="snext" href="#read-ia7-8" data-step="8"><span>Next · 9 of 9</span><b>Perqo facts set by this unit</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-ia7-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class="bt">Perqo facts set by this unit</span></span></h2>
+<p>Every fact below is a course convention (Perqo, fictional), never evidence about the world. Each keeps every registered fact; none renames an IA1 to IA6 label, object, attribute or relationship.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Set in</th>
+<th>Left free</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A sizing client, used for volumes here and by DD-IA2: 1,200 employees, 14 employee groups, three admin users (two HR managers, one finance manager); about 1,200 claims and 9,600 card payments a month; 15% of claims over the limit, about 180 a month, about 9 a working day over 20 working days; up to 4,800 allocations a period; it is not the example client of IA3 and IA6</td>
+<td>section 2.2</td>
+<td>the example client's size; measured volumes</td>
+</tr>
+<tr>
+<td>Employee status: Invited, Active, Left; Left is an end state, after which the person cannot sign in to the app; claims submitted before leaving are still decided</td>
+<td>sections 2.2, 5.1</td>
+<td>what happens to a leaver's allocations and card (IA8)</td>
+</tr>
+<tr>
+<td>Account owner: exactly one per client, an admin user who also holds the HR manager or finance manager role; edits company details, adds and removes admin users, changes roles, reads the Activity log, hands ownership on; Perqo sets up the first admin user as account owner</td>
+<td>section 3.4</td>
+<td>the rest of a client's onboarding</td>
+</tr>
+<tr>
+<td>Admin user status: Active, Removed; a removed admin user's name stays on their decisions and changes</td>
+<td>section 2.2</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Every client has at least two admin users with the HR manager role; an HR manager cannot decide their own claim</td>
+<td>section 3.3; Deliverable D, EX-1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Claim attributes decided by and rejection note; rejecting a claim needs a note to the employee</td>
+<td>section 2.2; Deliverable D</td>
+<td>the notes' wording</td>
+</tr>
+<tr>
+<td>A waiting claim reserves nothing: spent counts approved and paid claims and card payments; on HR's approval the balance is checked again (T5)</td>
+<td>section 5.2; Deliverable D</td>
+<td>none</td>
+</tr>
+<tr>
+<td>A claim waiting more than five working days is marked Overdue in Approvals</td>
+<td>Deliverable D, EX-3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Audit entry (O-17): who, action, object and its ID, date and time, before and after; shown as History on each detail page and as the Activity log in Settings</td>
+<td>section 5.3</td>
+<td>how long entries are kept</td>
+</tr>
+<tr>
+<td>Relationships R-21 (admin user is also employee), R-22 (claim is decided by admin user), R-23 (audit entry records a change to), R-24 (audit entry is made by admin user)</td>
+<td>Deliverable A, A.3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Admin's name for the card is "Perqo card", status only (Active, Frozen, Not issued), on the employee's record; Admin does not show notifications</td>
+<td>section 2.3</td>
+<td>whether Admin sends HR messages of its own</td>
+</tr>
+<tr>
+<td>Roles cover the whole client; the role-by-section matrix and the calls to action with their roles in Deliverables A and B; finance does not see Approvals; HR sees Budget use and Claims by status only</td>
+<td>section 3; Deliverables A, B</td>
+<td>scoping roles to employee groups</td>
+</tr>
+<tr>
+<td>Every admin user sees Company (AD-6.1) read only; only the account owner edits it, and only the account owner reaches Admins and the Activity log</td>
+<td>Deliverable A, A.1; Deliverable B</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Admin's pages AD-0 to AD-6 as in C.1; addresses identifier first</td>
+<td>Deliverable C, C.1</td>
+<td>Admin's domain; the identifiers' format</td>
+</tr>
+<tr>
+<td>Reports holds five views: Spend by category, Spend by employee group, Budget use, Claims by status, Card payments</td>
+<td>section 4.6</td>
+<td>the reports' columns beyond those named</td>
+</tr>
+<tr>
+<td>Work queues: Approvals (HR), Not joined (HR, Invited over 14 days), No budget for next period (finance)</td>
+<td>Deliverable C, C.4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Bulk actions: approve selected; move to group; resend invitation; rejection one at a time</td>
+<td>section 4.4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>No search across Admin; a find field on each long list</td>
+<td>section 4.5</td>
+<td>when a global search is added</td>
+</tr>
+<tr>
+<td>Landing after sign-in: HR on Approvals, finance on Budgets</td>
+<td>Deliverable C, C.2</td>
+<td>none</td>
+</tr>
+<tr>
+<td>A policy change applies to claims submitted after it</td>
+<td>section 4.3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Admin is used in a desktop browser (assumed); on a narrow window list and detail show one at a time</td>
+<td>section 4.3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Admin's sign-in screen carries "Looking for your benefits? Get the Perqo app", linking to S-6, for everyone (IA5's proposal, taken with one change)</td>
+<td>Deliverable C, C.5</td>
+<td>the test's result</td>
+</tr>
+<tr>
+<td>The invitation carries the client's name from Company and the Join link; Resend invitation sends it again</td>
+<td>Deliverable C, C.4</td>
+<td>how long an invitation is valid</td>
+</tr>
+<tr>
+<td>Model names of Admin's objects and attributes, as in A.2</td>
+<td>Deliverable A, A.2</td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ia7-7" data-step="7"><span>Previous · 8 of 9</span><b>What IA8 and later units take</b></a><a class="snext send" href="#read-ia7-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-ia7-sources"><summary><span class="at" id="read-ia7-9">Sources</span><span class="an">11</span></summary><div class="accb">
+<ul>
+<li>Android Developers. "Canonical layouts". Page updated 22 October 2026 (platform documentation, checked 3 November 2026). <a target="_blank" rel="noopener" href="https://developer.android.com/develop/adaptive-apps/guides/canonical-layouts">developer.android.com, canonical layouts</a></li>
+<li>Cooper, Alan, Robert Reimann, David Cronin and Christopher Noessel. <em>About Face: The Essentials of Interaction Design</em>. 4th ed. Wiley, 2014. Ch. 9, "Platform and Posture", pp. 205 to 236 (sections "Product Postures", p. 206, and "Postures for the Desktop", p. 207); ch. 10, "Optimizing for Intermediates", section "Perpetual Intermediates", p. 238. Contents at <a target="_blank" rel="noopener" href="https://wiley-vch.e-bookshelf.de/about-face-2765056.html">e-bookshelf.de</a>.</li>
+<li>Evans, Eric. <em>Domain-Driven Design: Tackling Complexity in the Heart of Software</em>. Addison-Wesley, 2003. Ch. 2, "Communication and the Use of Language"; ch. 14, "Maintaining Model Integrity". Contents at <a target="_blank" rel="noopener" href="https://www.pearson.com/en-gb/subject-catalog/p/domain-driven-design-tackling-complexity-in-the-heart-of-software/P200000009375">pearson.com, contents</a>.</li>
+<li>Evans, Eric. <em>Domain-Driven Design Reference: Definitions and Pattern Summaries</em>. Domain Language, 2015 (CC BY 4.0). "Ubiquitous Language"; "Bounded Context". <a target="_blank" rel="noopener" href="https://domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf">domainlanguage.com, DDD Reference</a></li>
+<li>Ferraiolo, David F., Ravi Sandhu, Serban Gavrila, D. Richard Kuhn and Ramaswamy Chandramouli. "Proposed NIST Standard for Role-Based Access Control". <em>ACM Transactions on Information and System Security</em> 4, no. 3 (2001): 224 to 274. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/501978.501980">doi.org, Ferraiolo 2001</a></li>
+<li>Fowler, Martin. "Ubiquitous Language". martinfowler.com, 31 October 2006 (practice). <a target="_blank" rel="noopener" href="https://martinfowler.com/bliki/UbiquitousLanguage.html">martinfowler.com, ubiquitous language</a></li>
+<li>Kaplan, Kate. "8 Design Guidelines for Complex Applications". Nielsen Norman Group, 8 November 2020. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/complex-application-design/">nngroup.com, complex applications</a></li>
+<li>Laubheimer, Page. "Data Tables: Four Major User Tasks". Nielsen Norman Group, 3 April 2022. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/data-tables/">nngroup.com, data tables</a></li>
+<li>NIST. "Role Based Access Control: Frequently Asked Questions". Computer Security Resource Center, archived 17 September 2008 (standards documentation). <a target="_blank" rel="noopener" href="https://webarchive.library.unt.edu/eot2008/20080917093055/http:/csrc.nist.gov/groups/SNS/rbac/faq.html">NIST RBAC FAQ, archived</a></li>
+<li>NIST. Computer Security Resource Center glossary: "least privilege" (from CNSSI 4009-2022); "Separation of Duty" (from NIST SP 800-192); "audit trail" (from NIST SP 800-53 Rev. 5). Standards documentation, checked 3 November 2026. <a target="_blank" rel="noopener" href="https://csrc.nist.gov/glossary/term/least_privilege">csrc.nist.gov, least privilege</a>; <a target="_blank" rel="noopener" href="https://csrc.nist.gov/glossary/term/Separation_of_Duty">csrc.nist.gov, separation of duty</a>; <a target="_blank" rel="noopener" href="https://csrc.nist.gov/glossary/term/audit_trail">csrc.nist.gov, audit trail</a></li>
+<li>Cited through the filed units, for claims made there: Cooper and others 2014, ch. 1, p. 16 (IA1); Harel 1987 (IA2); Krug, <em>Don't Make Me Think, Revisited</em>, 2014 (IA3; practice); Laubheimer 2018, "Polyhierarchies Improve Findability for Ambiguous IA Categories" (IA4); Nielsen 2006, "Progressive Disclosure" (IA6); Object Management Group, UML 2.5.1, 2017 (IA2); Prater 2015, "Object-Oriented UX", and 2016, "OOUX: A Foundation for Interaction Design", A List Apart (IA2, IA4; practice); Rosenfeld, Morville and Arango 2015, chs 8 and 9 (IA2, IA3); Sears and Shneiderman 1994 (IA6); Spencer 2006, "Four Modes of Seeking Information and How to Design for Them", Boxes and Arrows (IA3; practice); Garrett, <em>Visual Vocabulary Quick Reference</em> (crossbar; IA2). Full references in IA1 to IA6, Sources.</li>
+</ul>
+</div></details><details class="acc note" id="read-ia7-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>IA5 built the IA of perqo.com, a shallow website, and IA6 the IA of the Perqo app, a small task-driven app. This unit builds the third surface, Perqo Admin (Perqo, fictional), the backoffice where a client company's HR and finance managers configure budgets, policies, approvals and reports. IA1 called it "object-heavy" and said that "permissions decide what each role sees", and that a sitemap of it "would list its areas and miss most of its structure" (IA1, section 5). This unit covers what makes a backoffice's IA different from a website's or an app's, object-relationship mapping for a system of many linked entities, roles and permissions as a layer of the IA, enterprise navigation built on lists, details and work queues, a state diagram for each object that has a lifecycle, and the boundary between the IA and the engineering data model. The deliverable is the Perqo Admin IA: the object-relationship map, the role-by-section matrix, the navigation model and the claim-approval state diagram.</p>
+<p>Every figure uses IA2's notation (IA2, section 5 and the notation sheet). Admin's boxes take tone 4, Perqo Admin; on a figure of one surface every box takes that surface's tone (IA2, section 5.2). Two figures add tones of their own, and say so where they are drawn: the claim's state diagram keeps IA2's tone 5 for the statuses both Admin and the app show, and tone 6, IA2's stop, marks a path that ends without success.</p>
+<p>The filed units and the brief handed this one the questions below by name; a search of the vault and the register for "IA7" found one more, the last row. Where each is answered:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Handed on by</th>
+<th>The question</th>
+<th>Answered in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IA4, Deliverable A ("What IA7 may do with it"; "What the map hands on"); the brief's last sentence</td>
+<td>extend the object map for Admin to F3, with permissions, model names, roles, volumes, lifecycles and work queues; keep O-01 to O-16 and R-01 to R-20; rename nothing</td>
+<td>section 2; Deliverable A</td>
+</tr>
+<tr>
+<td>IA4, A.3</td>
+<td>who triggers client -&gt; edit company details and admin user -&gt; add</td>
+<td>section 3.4; Deliverable A, A.4</td>
+</tr>
+<tr>
+<td>IA4, A.1; IA6, section 6.2</td>
+<td>Admin's name for card (O-09) and notification (O-10)</td>
+<td>section 2.3; Deliverable A, A.1</td>
+</tr>
+<tr>
+<td>IA4, section 4.3</td>
+<td>Reports as a view in Admin's navigation model</td>
+<td>section 4.6; Deliverable C</td>
+</tr>
+<tr>
+<td>IA2, decision table and section 5.3</td>
+<td>the navigation model, the object-relationship map and the state diagram for Admin, at the fidelity IA2 names, in the course notation</td>
+<td>Deliverables A, C and D</td>
+</tr>
+<tr>
+<td>IA5, section 5.5 and its register row; IA6, section 6.3 and B.4</td>
+<td>the line on Admin's sign-in screen pointing employees to Get the Perqo app: taken, changed or refused</td>
+<td>Deliverable C, C.5</td>
+</tr>
+<tr>
+<td>IA6, B.4, E-2</td>
+<td>Admin's side of HR's invitation</td>
+<td>section 5.1; Deliverable C, C.4</td>
+</tr>
+<tr>
+<td>IA1, surfaces map</td>
+<td>Admin's six top-level areas as the start of its navigation model</td>
+<td>section 4.1; Deliverable C</td>
+</tr>
+<tr>
+<td>Register (claim lifecycle and rule); IA6 (rejection reason)</td>
+<td>the claim-approval state diagram extends IA2's and IA1's and contradicts nothing</td>
+<td>section 5.2; Deliverable D</td>
+</tr>
+<tr>
+<td>Register, "Not yet set"</td>
+<td>roles beyond HR manager and finance manager, volumes, Admin's pages below the top level, numbers</td>
+<td>sections 2.2, 3.4; Deliverables A and C; "Perqo facts set by this unit"</td>
+</tr>
+<tr>
+<td>IA4, Deliverable A's face; IA6, Deliverable C's face</td>
+<td>Admin's permissions and data-model mapping at F3; Admin's screens</td>
+<td>Deliverables A, B and C</td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="acc made" id="read-ia7-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>Unit IA7, written 3 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 4, the figure kinds, the Perqo register and IA1 to IA6 (P31), search off (used only to verify editions, chapters, dates, quotations and URLs); fresh check the same day by a separate Fable 5.1 agent that had not seen the writing: fix, 0 errors, 6 should-fix, 3 minor, all applied as verified. Figures 1 to 4 and 8 passed the check; the sitemap (figure 6) took eight checks and the two matrices (figures 5 and 7) seven each, fixed against every report until each passed with nothing left in it to change. What makes a backoffice's IA different (many entity types, roles, permissions, volumes, workflows, and users paid to be there: Cooper and others on sovereign posture; Kaplan, NN/g, on complex applications); object-relationship mapping, extending IA4's object map for Admin to F3 with model names, volumes, lifecycles, work queues and an audit entry, renaming nothing; roles and permissions as a layer of the IA (role-based access control after Ferraiolo and others and NIST; least privilege and separation of duty), the account owner and the role-by-section matrix; enterprise navigation by objects and work queues (list, detail, create and edit; bulk actions; find inside the system; Laubheimer, NN/g, and Android's list-detail layout, dated); a state diagram per lifecycle, with approvals, exceptions and audit trails; the IA against the data model, kept aligned by Evans's ubiquitous language. Eight figures in the course notation. Deliverables: the Perqo Admin IA, its object-relationship map (A), role-by-section matrix (B), navigation model with Admin's pages AD-0 to AD-6 (C) and claim-approval state diagram at F3 (D); it answers IA4's open Admin names and roles and takes IA5's sign-in proposal with one change. Known gaps: Cooper's posture chapter paraphrased from knowledge, not re-read; Laubheimer's article body could not be reopened by the checker; NIST's RBAC FAQ read in a 2008 archive; Ferraiolo and others from an indexing record.</p><h3 id="read-ia7-10">Unsure list</h3>
+<ul>
+<li>Cooper and others 2014, ch. 9: the chapter, its section titles and pages were checked in the publisher's contents; the account of sovereign and transient posture is from knowledge of the book and a secondary summary of the third edition, not re-read in the fourth, so it is paraphrased and nothing is quoted.</li>
+<li>Cooper and others 2014, ch. 10, "Perpetual Intermediates": the argument is from knowledge of the book; the section was not re-read.</li>
+<li>Evans 2003: chapter titles checked in the publisher's contents (published August 2003, copyright 2004); the quoted lines are from Evans's 2015 Reference, not from the 2003 book.</li>
+<li>Ferraiolo and others 2001: volume, issue, pages and date from an indexing record; the abstract's first sentence was read there; the article itself was not read.</li>
+<li>NIST's RBAC FAQ was read in a 2008 web archive; the live NIST page was not checked.</li>
+<li>NIST glossary audit trail: only the opening of the SP 800-53 Rev. 5 definition is quoted; the rest is paraphrased from the glossary page.</li>
+<li>That a permission in RBAC is an operation on an object is from knowledge of the RBAC model; the FAQ read for this unit says only that a role is a collection of permissions.</li>
+<li>Not checked: OWASP's guidance on sign-in error messages (the fetch was redirected); nothing from it is cited.</li>
+</ul><h3>Fresh check</h3><p>Fresh check 2026-11-03 (Fable 5.1; no Fable 5.1 fresh check is owed): fix · 0 errors, 6 should-fix, 3 minor; all applied as verified (eight edits; the ninth needed none); figures 1 to 4 and 8 passed; figure 6, the sitemap, fixed against every report and passed on its eighth check, figures 5 and 7, the matrices, on their seventh; report <code>audits/ux/fresh-check-IA7.md</code>.</p><h3>The brief</h3><div class="pbox"><pre>Aim: After this unit the reader can build a multi-entity backoffice IA: objects and relationships, roles as a layer, list-and-detail navigation, and a state diagram per lifecycle.
+Takes: IA4&#x27;s Perqo object map; IA2&#x27;s state diagram, matrix and navigation model entries.
+Gives: the Perqo Admin IA (IA8; IA12&#x27;s assumption register records its decisions; DD-IA2&#x27;s business case is for Admin).
+
+Unit IA7, Level 3: the backoffice. Cover: what makes backoffice and enterprise IA different (many entity types, roles, permissions, volumes, workflows, and users who are paid to be there; Cooper and others on sovereign posture); object-relationship mapping for a system with companies, employees, budgets, policies, benefits, claims and approvals; roles and permissions as an IA layer (what a role can see, do and reach) and the role-by-section matrix; enterprise navigation (global, local, contextual; list, detail, create and edit patterns; bulk actions; search inside the system) and why a backoffice IA is organised around objects and work queues rather than pages; workflows and states (a state diagram per object that has a lifecycle; approvals, exceptions, audit trails); the boundary between the IA and the engineering data model, and how the two are kept aligned without being the same thing (Evans&#x27;s ubiquitous language as the shared vocabulary). Figures: the object-relationship map; the role matrix; the navigation model; the claim-approval state diagram; a list-detail pattern. Deliverable: the Perqo Admin IA: the object-relationship map, the role-by-section matrix, the navigation model in the course notation, and the claim-approval state diagram, all with Perqo facts invented and labelled. The object-relationship map extends IA4&#x27;s Perqo object map for Admin (roles, volumes, lifecycles, work queues) and renames none of IA4&#x27;s objects, attributes or relationships.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>

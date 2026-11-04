@@ -428,7 +428,7 @@ The second holds money, decisions and the record of them: the employee's card, c
 
 #### B.1 · The matrix
 
-Roles as rows, Admin's six areas as columns, IA1's order (Perqo, fictional). A blank cell means the area is not in that role's navigation. The account owner holds the HR manager or the finance manager role as well, so its row reads "as role" except in Settings.
+Roles as rows, Admin's six areas as columns, IA1's order (Perqo, fictional). A blank cell in the figure, "(not in navigation)" in the table, means the area is not in that role's navigation. The account owner holds the HR manager or the finance manager role as well, so its row reads "as role" except in Settings.
 
 | Role | Employees | Budgets | Policies | Approvals | Reports | Settings |
 |---|---|---|---|---|---|---|
@@ -506,7 +506,7 @@ Admin's structure as a sitemap at F2 with identifiers, IA2's type tags (section,
  {"label": "Sign in", "type": "form", "note": "AD-0 · line \"Looking for your benefits? Get the Perqo app\" → see S-6", "tone": 4}]}}
 ```
 
-The identifiers, for citing (Perqo, fictional): AD-0 Sign in; AD-1 Employees, AD-1.1 Employee, AD-1.1.1 Claim, AD-1.2 Employee groups, AD-1.2.1 Employee group, AD-1.2.2 Create group, AD-1.3 Invite employees, AD-1.4 Not joined; AD-2 Budgets, AD-2.1 Budget, AD-2.2 Set budgets; AD-3 Policies, AD-3.1 Policy, AD-3.1.1 Edit policy, AD-3.1.2 Covered items; AD-4 Approvals; AD-5 Reports, AD-5.1 Spend by category, AD-5.2 Spend by employee group, AD-5.3 Budget use, AD-5.4 Claims by status, AD-5.5 Card payments; AD-6 Settings, AD-6.1 Company, AD-6.2 Admins, AD-6.2.1 Add admin user, AD-6.3 Activity log, AD-6.4 Your profile.
+The identifiers, for citing (Perqo, fictional): AD-0 Sign in; AD-1 Employees, AD-1.1 Employee, AD-1.1.1 Claim, AD-1.2 Employee groups, AD-1.2.1 Employee group, AD-1.2.2 Create group, AD-1.3 Invite employees, AD-1.4 Not joined; AD-2 Budgets, AD-2.1 Budget (one employee group's budgets for one period), AD-2.2 Set budgets; AD-3 Policies, AD-3.1 Policy, AD-3.1.1 Edit policy, AD-3.1.2 Covered items; AD-4 Approvals; AD-5 Reports, AD-5.1 Spend by category, AD-5.2 Spend by employee group, AD-5.3 Budget use, AD-5.4 Claims by status, AD-5.5 Card payments; AD-6 Settings, AD-6.1 Company, AD-6.2 Admins, AD-6.2.1 Add admin user, AD-6.3 Activity log, AD-6.4 Your profile.
 
 Admin's addresses follow IA4's rule, identifier first (IA4, section 5): /employees/{employee ID}, /employees/{employee ID}/claims/{claim ID}, /policies/{policy ID}, /budgets/{employee group ID}/{period}, /reports/claims-by-status (Perqo, fictional). A page that moves keeps a redirect from its old address. Admin's domain, and the identifiers' format, are left free.
 
@@ -523,7 +523,7 @@ IA2's navigation table, Admin's column, at F2 (IA2, section 5.3; route types fro
 
 Where each person lands after signing in (*new*, Perqo, fictional): an HR manager on Approvals, a finance manager on Budgets, an account owner where their role lands them. The placing follows frequency, the rule IA6 took from Sears and Shneiderman's split menus and Nielsen's progressive disclosure (IA6, section 1.2): the most frequent work of each role is deciding claims for HR and setting budgets for finance (IA4, A.3), assumed until measured.
 
-The same model as a matrix, one row per area of the global navigation: its local routes, its work queue, its contextual routes, and the roles that reach it with what each does there, from the role matrix (the supplemental row, none, is left out). An area with no work queue has a blank cell (C.4). A contextual route sits in the row of the area where it is followed most: a claim's routes are in Approvals, where HR opens claims, although the claim's page sits under Employees (C.1). Its rows take tone 4, Perqo Admin.
+The same model as a matrix, one row per area of the global navigation: its local routes, its work queue, its contextual routes, and the roles that reach it with what each does there, from the role matrix (the supplemental row, none, is left out). An area with no work queue has a blank cell (C.4). The account owner reaches each area other than Settings as the role it also holds (Deliverable B, B.1). A contextual route sits in the row of the area where it is followed most: a claim's routes are in Approvals, where HR opens claims, although the claim's page sits under Employees (C.1). Its rows take tone 4, Perqo Admin.
 
 ```viz
 {"kind": "matrix", "caption": "Navigation model: Perqo Admin's six areas with their local routes, work queues, contextual routes, and the roles that reach each with their marks from Deliverable B, F2; supports the decision on which routes the navigation components must carry, for which role (Deliverable C, C.2). Rows tone 4, Perqo Admin. A blank cell is an area with no work queue (Deliverable C, C.4). The supplemental route, none, is left out (Deliverable C, C.2). Route types from Rosenfeld, Morville and Arango, 2015, ch. 8, through IA2, section 1.4; areas from IA1's surfaces map; IA2, section 5.3's Admin column kept; contextual routes from the relationships in Deliverable A, A.3, following Prater 2015; queues from Deliverable C, C.4; roles from Deliverable B. Perqo is fictional.", "cols": ["Local routes", "Work queue", "Contextual routes", "Roles"], "rows": [
@@ -688,3 +688,4 @@ Every fact below is a course convention (Perqo, fictional), never evidence about
 - NIST glossary audit trail: only the opening of the SP 800-53 Rev. 5 definition is quoted; the rest is paraphrased from the glossary page.
 - That a permission in RBAC is an operation on an object is from knowledge of the RBAC model; the FAQ read for this unit says only that a role is a collection of permissions.
 - Not checked: OWASP's guidance on sign-in error messages (the fetch was redirected); nothing from it is cited.
+- Fresh check 2026-11-03 (Fable 5.1; no Fable 5.1 fresh check is owed): fix · 0 errors, 6 should-fix, 3 minor; all applied as verified (eight edits; the ninth needed none); figures 1 to 4 and 8 passed; figure 6, the sitemap, fixed against every report and passed on its eighth check, figures 5 and 7, the matrices, on their seventh; report `audits/ux/fresh-check-IA7.md`.
