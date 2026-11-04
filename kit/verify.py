@@ -60,7 +60,8 @@ each planned unit marked planned), the whole tile the link and no other link in 
 sections, the constants, the site links (Backlog, Figure kinds, Changelog), New since (What's new's first six rows, its
 heading naming its oldest day) and one link to #new, last; no sideways scroll. Every text of the hero is measured
 against the pixels under it (the contour lines and the page, shot with the texts made transparent): 4.5:1, 3:1 for
-large text. With motion allowed the hero's texts are measured at both ends of the drift with each area word shown in turn. With
+large text. With motion allowed the hero's texts are measured at both ends and the middle of the drift with each area word shown
+in turn. With
 reduced motion no animation runs on the home; with motion allowed only transform and opacity animate
 (document.getAnimations(), each effect's keyframes), the four area words and the shown contour layout, none on a tile.
 At 390 px with motion allowed the fresh load's LCP and longest task are printed. On the desktop a history tile, a
@@ -435,12 +436,12 @@ HERO_TEXTS_JS = r'''() => { const out = [], copy = document.querySelector('#home
     out.push({what: (e.className || e.tagName.toLowerCase()) + ' "' + e.textContent.trim().slice(0, 18) + '"', color: cs.color, large, x: r.left, y: r.top, w: r.width, h: r.height}); });
   return out; }'''
 def hero_contrast(pg, label, fails, motion=False):
-    """P92: with motion allowed, every moment that matters: the drift at both ends of its sweep (0 and 30 s) and, at
+    """P92: with motion allowed, every moment that matters: the drift at both ends and the middle of its sweep (0, 15 and 30 s) and, at
     each, each area word in turn (its animation set to the middle of its showing), every animation paused there."""
     if not motion:
         return _hero_contrast(pg, label, fails)
     names = pg.evaluate("[...document.querySelectorAll('#home .harea-w')].map(w => w.textContent)")
-    for td in (0, 30000):
+    for td in (0, 15000, 30000):
         for k, nm in enumerate(names):
             ta = k * 3000 + 1500
             pg.evaluate(f'''() => document.getAnimations().forEach(a => {{ a.pause(); a.currentTime = a.animationName === 'topo-drift' ? {td} : {ta}; }})''')
