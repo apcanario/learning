@@ -64,7 +64,7 @@
   --fg:#ececf1;--muted:#9a9aa6;--dim:#6b6b78;
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
-  --topo-a:.3;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page) and a tile's patch */
+  --topo-a:.22;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page) and a tile's patch */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
   --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -497,7 +497,7 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 .topo{position:absolute;top:-22px;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}   /* the lines fade out at the hero's foot, not cut */
 .topo-l{display:none;position:absolute;top:-12px;left:-12px;width:calc(100% + 24px);height:calc(100% + 24px)}
 .topo-tall{display:block}
-.topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:butt}   /* butt: where one rise's stretch of a line hands over to the next, the two ends abut, never overlap (round caps doubled the line there) */
 .topo .ct-rise path{stroke:var(--c);stroke-opacity:var(--topo-a)}
 .topo .ct-plan circle{stroke:var(--c);stroke-opacity:var(--topo-a);stroke-dasharray:3 3}
 .topo.topo-patch{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;margin:14px 0 0;aspect-ratio:4 / 1;overflow:hidden;-webkit-mask-image:none;mask-image:none}

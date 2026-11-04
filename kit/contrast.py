@@ -11,7 +11,14 @@ planned spine's code and the volume's label (--muted on --bg), the lit label (--
 accent on --bg at 3:1), the shelf's course labels (--fg) and notes (--muted), the live totals (--fg, their labels
 --muted), What's new's approximate mark (--muted on --card). Exits 1 if any of these is under its bar either. The dark
 accents as text on the page are printed for the record (the house palette, which does not change: blue gives 4.31:1,
-so the shelf names its tracks in --fg with the tone as a mark)."""
+so the shelf names its tracks in --fg with the tone as a mark).
+P92 (4 Nov 2026): the shelf's pairs are gone with it; the hero's pairs in both themes instead: each area word of the
+cycling line and the static line in its area's tone (History red, Marketing teal, Technology purple, User Experience
+blue) on the page (--bg: dark, the page; light, the paper), large text (28 px, 600), at 3:1; the static line's dots
+(--muted); the headline (--fg, large); the lede (--muted) and the quiet What's new link (--fg, its arrow --muted) at
+4.5:1; and every one of them over a contour line of each area's tone at the hero's opacity (--topo-a composited over
+--bg, the densest a line gets: two crossing lines never share a pixel at 1 px and full coverage), at the same bars.
+verify.py measures the same texts on the built page, pixel by pixel, over the lines actually under them."""
 import re, sys, pathlib
 
 def rgb(h):
@@ -35,6 +42,9 @@ def mix(a, b, p):   # color-mix(in srgb, a p, b)
 def dark_tokens(css):
     blk = re.search(r'\n:root\{(.*?)\}', css, re.S).group(1)
     return dict(re.findall(r'--([\w-]+):(#[0-9a-fA-F]{3,6})', blk))
+
+def alpha(css, name, block):
+    return float(re.search(r'--' + name + r':([\d.]+)', block).group(1))
 
 def light_tokens(css):
     blk = re.search(r':root\[data-theme="light"\]\{(.*?)\}', css, re.S).group(1)
@@ -65,19 +75,25 @@ if __name__ == '__main__':
         print(f'{r[0]:8} {r[1]:8} {cells}')
         low += [f'{r[0]} {v:.2f}' for v in r[2:] if v < 4.5]
     print('ALL PAIRS >= 4.5:1' if not low else 'UNDER 4.5:1: ' + ', '.join(low))
-    # P91: the home's new pairs, light and dark
+    # P91's shelf pairs went with the shelf (P92); the dark accents as text on the page, for the record
+    dk = dark_tokens(css)
+    print('(record) dark accents as text on --bg: ' + ', '.join(f'{a} {ratio(rgb(dk[a]), rgb(dk["bg"])):.2f}' for a in ACCENTS))
+    # P92: the hero's texts, on the page and over the densest contour line of each area's tone
+    AREAS = [('History', 'red'), ('Marketing', 'teal'), ('Technology', 'purple'), ('User Experience', 'blue')]
+    blocks = {'dark': re.search(r'\n:root\{(.*?)\}', css, re.S).group(1), 'light': re.search(r':root\[data-theme="light"\]\{(.*?)\}', css, re.S).group(1)}
     for name, t in (('light', tok), ('dark', dark_tokens(css))):
-        bg, card, fg, mu, on = (rgb(t[k]) for k in ('bg', 'card', 'fg', 'muted', 'on-accent'))
-        print(f"P91 shelf pairs, {name} (--bg {t['bg']}, --on-accent {t['on-accent']}):")
-        pairs = [(f'spine code on {a}', ratio(on, rgb(t[a])), 4.5) for a in ACCENTS]
-        pairs += [('planned code, volume label (muted on bg)', ratio(mu, bg), 4.5), ('lit label, course labels, totals (fg on bg)', ratio(fg, bg), 4.5),
-                  ('notes, totals labels (muted on bg)', ratio(mu, bg), 4.5), ("What's new approximate mark (muted on card)", ratio(mu, card), 4.5)]
-        pairs += [(f'lit arrow, {a} on bg (a symbol)', ratio(rgb(t[a]), bg), 3) for a in ACCENTS]
-        for what, v, bar in pairs:
-            print(f'  {what:46} {v:6.2f}' + ('' if v >= bar else f'  UNDER {bar}:1'))
-            if v < bar:
-                low.append(f'{name} {what} {v:.2f}')
-        if name == 'dark':
-            print('  (record) dark accents as text on --bg: ' + ', '.join(f'{a} {ratio(rgb(t[a]), bg):.2f}' for a in ACCENTS))
-    print('P91: ALL HOME PAIRS PASS' if not low else 'UNDER THE BAR: ' + ', '.join(low))
+        bg, fg, mu = (rgb(t[k]) for k in ('bg', 'fg', 'muted'))
+        a = alpha(css, 'topo-a', blocks[name])
+        under = [('the page', bg)] + [(f'a {tn} line at {a}', mix(rgb(t[tn]), bg, a)) for _, tn in AREAS]
+        print(f"P92 hero pairs, {name} (--bg {t['bg']}, contour lines at --topo-a {a}):")
+        texts = [(f'area word {w} ({tn}, large)', rgb(t[tn]), 3) for w, tn in AREAS]
+        texts += [('headline Academy (fg, large)', fg, 3), ('static line dots (muted)', mu, 4.5), ('lede (muted)', mu, 4.5),
+                  ("What's new link (fg)", fg, 4.5), ("What's new arrow (muted)", mu, 4.5)]
+        for what, c, bar in texts:
+            vs = [(where, ratio(c, b)) for where, b in under]
+            worst = min(vs, key=lambda x: x[1])
+            print(f'  {what:36} on the page {vs[0][1]:5.2f}; lowest over a line {min(v for _, v in vs[1:]):5.2f} ({worst[0]})' + ('' if worst[1] >= bar else f'  UNDER {bar}:1'))
+            if worst[1] < bar:
+                low.append(f'{name} {what} {worst[1]:.2f} ({worst[0]})')
+    print('P92: ALL HOME PAIRS PASS' if not low else 'UNDER THE BAR: ' + ', '.join(low))
     sys.exit(1 if low else 0)

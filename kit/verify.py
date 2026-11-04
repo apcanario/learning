@@ -18,7 +18,7 @@ shell, one row per written report or unit), the drawer groups (tracks open by de
 accordion) and the Backlog page; the same panel checks again in the light theme. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
 its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
-and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35; the home whole, P90) at the three widths
+and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35; the home whole, P90; P92: and the hero's motion sheets, five moments of the area line and the drift, at 390 and 1280 px) at the three widths
 of home, What's new (P91; the home and What's new at 320, 360 and 430 px too), Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
 and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png, the figure as its frame
 opens; and (P89, p85_frames.py folded in) every frame a reader scrolls that figure across, stacked and numbered in one
@@ -41,21 +41,29 @@ Figure keys (P52): every viz block in the vault, every history figure declaratio
 examples block uses only the keys viz.VIZ_KEYS documents for its kind, and viz.render leaves the block it draws unchanged.
 Opening notes (P73): a markdown unit's text before its first heading is a closed accordion after Sources, "The writer's
 opening note", on every unit that has one and on none that has not; section 1 opens on its heading; a deep link lands.
-Home (P91, 4 Nov 2026; P90's map and Continue gone), at 320, 360, 390, 430, 768 and 1280 px, dark and light, with
-reduced motion emulated in every pass (so the shelf is measured and shot at rest): the hero holds the headline (and,
-from 1100 px only, the live totals beside it, set big, its units written and courses live as the sources give them),
-the lede and the bookshelf, nothing else; the shelf has one spine per unit of every live course, grouped by course in
-courses.py's track order, written (solid) and planned (dashed, unfilled) as the sources say (home_expect: the
-syllabi, the prompts indexes, the data files and the vault, not the build), each at least 24 x 44 px, its href its
-data-target, resolving to a panel or an anchor in one, its title and aria-label naming its code; heights in word
-order; one lit spine, the newest dated unit, its label "Newest · <code> · <day>" beside it, a link to #new; the planned
-volume reads "8 planned"; nothing on the shelf runs out of it or off the screen and no page scrolls sideways; from
-1100 px the shelf is wider than the 760 px column, below it never; below 768 px the first track starts below the first
-screen. No Continue button, no map, no meter, no card button; every card holds the chip row, the title, a tile of at
-most two lines and three stats; one card style; one column below 768 px, two from 768, a track's only card half the
-width; the order hero, tracks, the constants, the site links (Backlog, Figure kinds, Changelog), New since (What's
-new's first six rows) and one link to #new, last. On the desktop a written history spine, a written markdown spine, a
-planned spine and the lit label are clicked and each lands on its page (a unit card open). What's new (P91), at the
+Home (P92, 4 Nov 2026; P91's shelf, P90's map and Continue gone), at 320, 360, 390, 430, 768 and 1280 px, dark and
+light, with reduced motion emulated, and once more at 390 and 1280 px with motion allowed: the hero holds the contour
+layer and the copy, nothing else: the headline "Academy"; the area line, the four areas in courses.py's order, each in
+its tone, aria-hidden, no link or focus stop in it; the static line naming all four in their tones, for a screen
+reader, and the line shown under reduced motion (with motion allowed the cycling line shows and the static line is for
+a screen reader only); the lede; the quiet link "What's new · <code> · <day>" naming the newest dated unit, to #new, at
+least 44 px tall, outlined, not filled. The contour layer: aria-hidden, no text, at most 20 KB, one layout shown (tall
+below 1100 px, wide from it), running the full width beside the sidebar while the copy keeps the column; in each layout
+one rise per area, its words the area's words as the sources give them (home_expect: a history unit's reports counted
+from the vault, a markdown unit from its reading page), standing in the order of its words, in the area's tone. On a
+phone the hero is 60 to 80% of the screen and the first area's heading starts inside it; no live totals, no shelf, no
+Continue, no map, no eyebrow; the area headers from 768 px the label, the name, the lede and the count, below it the
+name only; every tile the chip row with its pill, the title, a tile line of at most two lines, three stats and its own
+contour patch (aria-hidden, 4:1, inside the tile; one rise per written unit with its words as the sources give them,
+each planned unit marked planned), the whole tile the link and no other link in it; one tile style; one column below
+768 px, two from 768, a track's only tile half the width; History's two folded blocks; the order hero, the area
+sections, the constants, the site links (Backlog, Figure kinds, Changelog), New since (What's new's first six rows, its
+heading naming its oldest day) and one link to #new, last; no sideways scroll. Every text of the hero is measured
+against the pixels under it (the contour lines and the page, shot with the texts made transparent): 4.5:1, 3:1 for
+large text. With reduced motion no animation runs on the home; with motion allowed only transform and opacity animate
+(document.getAnimations(), each effect's keyframes), the four area words and the shown contour layout, none on a tile.
+At 390 px with motion allowed the fresh load's LCP and longest task are printed. On the desktop a history tile, a
+markdown tile, the IA tile and the What's new link are clicked and each lands on its page. What's new (P91), at the
 same widths: every dated unit and every course start once, newest first, as home_expect orders them, grouped by day
 under its heading, each row linking to a page that exists, the approximate dates (provenance.json's written_approx)
 marked and no other; its breadcrumbs and title. The root drawer's top rows: Home, What's new, Changelog, Backlog.
@@ -113,7 +121,7 @@ VX_KINDS = 16  # the examples page carries one figure per kind: four from A8, se
 VX_FIGS = VX_KINDS + len(viz_examples.CASES)   # then one hard case per drawing fault P55 fixed
 VIEWPORTS = [('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
 HOME_WIDTHS = [('phone320', 320, 640, True), ('phone360', 360, 780, True), ('phone430', 430, 932, True)]   # P91: the home only
-# P91: where a tapped spine landed: [visible panel, its target inside it, the target's top, a <details> target open, the viewport height]
+# P91: where a tapped link landed (P92: a tile, the What's new link): [visible panel, its target inside it, the target's top, a <details> target open, the viewport height]
 LAND_JS = '''(t) => { const v = [...document.querySelectorAll('.panel')].find(p => !p.hidden), e = document.getElementById(t);
   return [v && v.id, !!e && !!v && v.contains(e), e ? Math.round(e.getBoundingClientRect().top) : null, e && e.tagName === 'DETAILS' ? e.open : null, innerHeight]; }'''
 SIDE = 300  # desktop sidebar width (theme.css --side)
@@ -202,25 +210,44 @@ FRAME_JS = r'''async ([scope, phone]) => {
   return {n, over, bad: bad.slice(0, 8)};
 }'''
 
-# P91 (4 Nov 2026): what the home and What's new must show, read here from the sources, not from the build: each live
-# course's units in order (a history course's syllabus units, the audit unit left out, written when every module is in
-# its prompts index; a markdown course's units from its data file, written when its vault file is filed), every dated
-# unit (vault front matter `written`; provenance.json's `written` map for a history report, `written_approx` marking an
-# approximate one) and each course's start (its first dated unit), newest first, ties on a day by build order.
+# P91 (4 Nov 2026); P92 (4 Nov 2026): what the home and What's new must show, read here from the sources, not from the
+# build: each live course's units in order (a history course's syllabus units, the audit unit left out, written when
+# every module is in its prompts index; a markdown course's units from its data file, written when its vault file is
+# filed) with their words (a history unit's: its reports' words, each counted from its vault file as build.py counts
+# a report, before the Self-test, figures left out; a markdown unit's: its reading page as published, from its first
+# section to the end of its text), each area's words (its live courses' units), every dated unit (vault front matter
+# `written`; provenance.json's `written` map for a history report, `written_approx` marking an approximate one) and
+# each course's start (its first dated unit), newest first, ties on a day by build order.
+FIGBLOCK = re.compile(r'<figure class="viz[ "].*?</figure>', re.S)
+def _wc(frag):
+    body = re.split(r'<h2>\s*Self-test', FIGBLOCK.sub(' ', frag))[0]
+    return len(re.sub(r'<[^>]+>', ' ', body).split())
 def home_expect():
-    import importlib.util
+    import importlib.util, vault
     prov = json.load(open(R / 'provenance.json'))
     from howbuilt import front
-    shelf, dated = {}, []
+    courses, dated, areas = {}, [], []
     for t in THEMES:
+        aw = 0
         for c in COURSES:
             if c['family'] == 'history' and c['theme'] == t['id']:
                 syl = (R / c['syllabus']).read_text()
                 idx = json.load(open(R / c['prompts']))
                 units = [(u, re.findall(r'data-id="([\d.]+)">', body)) for u, body in re.findall(r'<section class="unit" id="u(\d+)"[^>]*>(.*?)</section>', syl, re.S)]
                 order = [m for _, ms in units for m in ms]
-                shelf[c['short']] = [(f'U{u}', all(m in idx for m in ms), f'{c["home_id"]}-u{u}' if all(m in idx for m in ms) else f'{c["syl_anchor"]}-u{u}')
-                                     for u, ms in units if u != c['audit_unit']]
+                def rw(m):
+                    f = vault.report_html(c, m, draw=False)
+                    f = re.sub(r'<(/?)(html|head|body|!doctype[^>]*)>', '', f, flags=re.I)
+                    f = re.sub(r'<style.*?</style>|<script.*?</script>', '', f, flags=re.S | re.I)
+                    return _wc(re.sub(r'\sstyle="[^"]*"', '', f))
+                us = []
+                for u, ms in units:
+                    if u == c['audit_unit']:
+                        continue
+                    done = all(m in idx for m in ms)
+                    us.append((f'U{u}', sum(rw(m) for m in ms) if done else None))
+                aw += sum(rw(m) for m in idx if m in order)
+                courses[c['home_id']] = dict(short=c['short'], units=us)
                 ap = set(prov.get('written_approx', {}).get(c['id'], []))
                 for m, d in prov.get('written', {}).get(c['id'], {}).items():
                     if m in idx:
@@ -230,134 +257,152 @@ def home_expect():
                 continue
             spec = importlib.util.spec_from_file_location('hubv_' + c['id'], R.parent / c['data'])
             d = importlib.util.module_from_spec(spec); spec.loader.exec_module(d)
-            vault = {}
+            vlt = {}
             for f in (sorted((R.parent / c['vault']).glob('*.md')) if (R.parent / c['vault']).is_dir() else []):
                 fm = front(f)
-                if fm.get('code'): vault[fm['code']] = fm
+                if fm.get('code'): vlt[fm['code']] = fm
             rid = {r['covers'][0]: r['id'] for r in d.READINGS if 'md' not in r and r.get('covers')}
             order = [o[0] if isinstance(o, (tuple, list)) else o for o in getattr(d, 'ORDER', [])]
             for sc in d.COURSES:
                 tr, short = c['tracks'][sc['key']]
-                if tr != t['id'] or not any(u[0] in vault for u in sc['units']):
-                    continue                                   # a course with nothing filed is not live: no shelf group
+                if tr != t['id'] or not any(u[0] in vlt for u in sc['units']):
+                    continue                                   # a course with nothing filed is not live: no tile
                 pid = f'{c.get("prefix", c["id"])}-{sc["key"].lower()}'
-                anc = 'b-' if c.get('legacy_ids') else f'{pid}-b-'
                 read = lambda code: rid.get(code, f'read-{c["id"]}-{code.lower()}')
-                shelf[short] = [(u[0], u[0] in vault, read(u[0]) if u[0] in vault else f'{anc}{u[0].lower()}') for u in sc['units']]
+                def pw(code):
+                    page = (SITE / pid / f'{read(code)}.html')
+                    page = page if page.exists() else next(SITE.glob(f'*/{read(code)}.html'))
+                    return _wc(page.read_text(encoding='utf-8').split('<div class="report', 1)[1].split('<div class="process"', 1)[0])
+                us = [(u[0], pw(u[0]) if u[0] in vlt else None) for u in sc['units']]
+                aw += sum(w for _, w in us if w)
+                courses[pid] = dict(short=short, units=us)
                 for k, u in enumerate(sc['units']):
-                    if u[0] in vault and vault[u[0]].get('written'):
-                        dated.append(dict(date=str(vault[u[0]]['written']), rank=order.index(u[0]) if u[0] in order else len(order) + k, home=pid,
+                    if u[0] in vlt and vlt[u[0]].get('written'):
+                        dated.append(dict(date=str(vlt[u[0]]['written']), rank=order.index(u[0]) if u[0] in order else len(order) + k, home=pid,
                                           code=u[0], pid=read(u[0]), approx=False, course=short))
+        areas.append(dict(name=t['name'], color=t['color'], words=aw))
     dated.sort(key=lambda x: (x['date'], x['rank']), reverse=True)
     rows = [dict(x, kind='unit') for x in dated]
     for home in dict.fromkeys(x['home'] for x in dated):
         f = min((x for x in dated if x['home'] == home), key=lambda x: (x['date'], x['rank']))
         k = next(i for i, r in enumerate(rows) if r['kind'] == 'unit' and r['home'] == home and r['code'] == f['code'])
         rows.insert(k + 1, dict(f, kind='course', pid=home))   # below its first unit
-    return dict(shelf=shelf, newest=dated[0] if dated else None, rows=rows, planned=len(NEXT) if 'planned' not in OMIT else 0,
-                units=sum(1 for v in shelf.values() for x in v if x[1]), live=len(shelf))
+    return dict(courses=courses, areas=areas, newest=dated[0] if dated else None, rows=rows)
 
-# P91 (4 Nov 2026): the home's layout, read on the visible home panel at one width. Returns what was found and the
-# faults (bad); check_home compares the shelf, the lit spine and New since with home_expect().
-HOME_JS = r'''() => {
+# P92 (4 Nov 2026): the home's layout, read on the visible home panel at one width. Returns what was found and the
+# faults (bad); check_home compares the hero, the tiles and New since with home_expect().
+HOME_JS = r'''(tones) => {
   const h = document.getElementById('home'), bad = [], out = {bad};
-  const phone = innerWidth < 768, desk = innerWidth >= 1100;
-  const hero = h.querySelector(':scope > header.hero');
-  if (!hero) { bad.push('no hero'); return out; }
+  const phone = innerWidth < 768, desk = innerWidth >= 1100, de = document.documentElement;
+  const vis = e => !!e && getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0;
+  const hero = h.querySelector(':scope > header.hero.hhome');
+  if (!hero) { bad.push('no hero (header.hero.hhome)'); return out; }
   const resolves = t => !!document.getElementById(t) || [...document.querySelectorAll('.panel[data-anchors]')].some(p => (' ' + p.getAttribute('data-anchors') + ' ').includes(' ' + t + ' '));
-  if (hero.querySelector('.eyebrow')) bad.push('the hero still has its eyebrow line');
   for (const [sel, what] of [['.hbtn.cont, .hbtn.start, [data-long]', 'a Continue button'], ['figure.viz', 'the map (a figure)'], ['.resume, .rmeter', 'the resume card'],
-                             ['.tjump', 'the track tiles'], ['.totals', 'the totals line'], ['.meter', 'a progress meter'], ['.cgo', 'a card button']])
+                             ['.tjump', 'the track tiles'], ['.totals, .htot, .htop', 'live totals'], ['.meter', 'a progress meter'], ['.cgo', 'a card button'],
+                             ['.shelf, .spine, .shelf-lit', 'the shelf (P91)'], ['.eyebrow', 'an eyebrow line']])
     if (h.querySelector(sel)) bad.push(`the home still has ${what} (${sel})`);
-  out.hero = [...hero.children].map(e => e.tagName.toLowerCase() + (e.classList.length ? '.' + [...e.classList].join('.') : '')).join(' ');
-  if (out.hero !== 'div.htop p.lede figure.shelf') bad.push(`the hero holds ${out.hero}, expected the headline row, the lede and the shelf`);
-  const h1 = hero.querySelector('.htop h1'); if (!h1 || h1.textContent !== 'Academy') bad.push('the headline is not "Academy"');
-  // the live totals: beside the headline on the desktop only
-  const tot = hero.querySelector('.htop .htot'), tv = !!tot && tot.getBoundingClientRect().width > 0;
-  out.totals = tot ? [...tot.querySelectorAll(':scope > div')].map(d => [d.querySelector('b').textContent, d.querySelector('span').textContent]) : null;
-  if (desk && !tv) bad.push('the live totals are not shown beside the headline on the desktop');
-  if (!desk && tv) bad.push('the live totals show below 1100 px (the phone\'s first screen is the headline, the lede and the shelf)');
-  if (desk && tv && h1) { const hb = h1.getBoundingClientRect(), tb = tot.getBoundingClientRect();
-    if (tb.left < hb.right || Math.abs(tb.bottom - hb.bottom) > 40) bad.push('the live totals are not beside the headline');
-    const fs = parseFloat(getComputedStyle(tot.querySelector('b')).fontSize); out.totfont = fs; if (fs < 40) bad.push(`the totals are set at ${fs} px, not big`); }
-  // the shelf
-  const sh = hero.querySelector(':scope > figure.shelf');
-  if (!sh) { bad.push('no shelf in the hero'); return out; }
-  out.groups = [...sh.querySelectorAll('.shelf-group:not(.shelf-vol)')].map(g => ({label: g.querySelector('.shelf-label').firstChild.textContent.trim(),
-    track: g.closest('.shelf-track').querySelector('.shelf-tname').textContent,
-    spines: [...g.querySelectorAll('a.spine')].map(a => { const r = a.getBoundingClientRect(), cs = getComputedStyle(a); return {code: a.getAttribute('data-code'), ghost: a.classList.contains('ghost'),
-      lit: a.classList.contains('lit'), t: a.getAttribute('data-target'), href: a.getAttribute('href'), title: a.getAttribute('title'), aria: a.getAttribute('aria-label'),
-      words: +a.getAttribute('data-words'), w: r.width, h: r.height, fill: cs.backgroundColor, bs: cs.borderTopStyle}; })}));
-  out.vol = [...sh.querySelectorAll('.spine.vol')].map(v => v.textContent.trim());
-  sh.querySelectorAll('a.spine.vol').forEach(v => { if (!resolves(v.getAttribute('data-target'))) bad.push(`the planned volume links to #${v.getAttribute('data-target')}, no anchor`); });
-  const sp = out.groups.flatMap(g => g.spines);
-  sp.forEach(s => {
-    if (s.w < 23.5 || s.h < 43.5) bad.push(`spine ${s.code}: ${s.w.toFixed(0)}x${s.h.toFixed(0)} px, under 24x44`);
-    if (s.href !== '#' + s.t) bad.push(`spine ${s.code}: href ${s.href} is not its data-target`);
-    if (!resolves(s.t)) bad.push(`spine ${s.code}: its link #${s.t} is no panel and no anchor in one`);
-    if (!s.title || !s.title.includes(s.code) || s.title !== s.aria) bad.push(`spine ${s.code}: its title and aria-label do not name it (${s.title})`);
-    const filled = s.fill !== 'rgba(0, 0, 0, 0)' && s.fill !== 'transparent';
-    if (s.ghost && (filled || s.bs !== 'dashed')) bad.push(`spine ${s.code}: planned, but drawn ${filled ? 'filled' : 'unfilled'} and ${s.bs}`);
-    if (!s.ghost && (!filled || s.bs === 'dashed')) bad.push(`spine ${s.code}: written, but not solid`);
-  });
-  // heights in word order: more words, never a shorter spine
-  const byw = [...sp].sort((a, b) => a.words - b.words);
-  for (let i = 1; i < byw.length; i++) if (byw[i].h + 0.6 < byw[i - 1].h && byw[i].words > byw[i - 1].words) { bad.push(`spine ${byw[i].code} (${byw[i].words} words) is shorter than ${byw[i - 1].code} (${byw[i - 1].words})`); break; }
-  const lit = sp.filter(s => s.lit); out.lit = lit.map(s => s.code);
-  const lab = sh.querySelector('a.shelf-lit');
-  out.litlabel = lab ? [lab.textContent.trim(), lab.getAttribute('href'), lab.getAttribute('data-target')] : null;
-  if (lit.length !== 1) bad.push(`${lit.length} lit spines, expected one`);
-  else if (lab) { const a = sh.querySelector('a.spine.lit').getBoundingClientRect(), l = lab.getBoundingClientRect();
-    const near = Math.abs(l.bottom - a.bottom) < 4 && Math.abs(l.left - a.right) < 30;           // beside it on its row
-    const under = l.top >= a.bottom - 1 && l.top - a.bottom < 120 && Math.abs(l.left - a.left) < 200;   // or wrapped just under it
-    out.litpos = [Math.round(a.right), Math.round(a.bottom), Math.round(l.left), Math.round(l.bottom)];
-    if (!near && !under) bad.push(`the lit spine's label is not beside it (spine right ${a.right.toFixed(0)}, bottom ${a.bottom.toFixed(0)}; label left ${l.left.toFixed(0)}, bottom ${l.bottom.toFixed(0)})`); }
-  if (!lab || lab.getAttribute('href') !== '#new' || lab.getAttribute('data-target') !== 'new') bad.push('the lit spine\'s label does not link to What\'s new (#new)');
-  if (lab && lab.getBoundingClientRect().height < 43.5) bad.push('the lit label is under 44 px tall');
-  // nothing sideways, nothing cut
-  const de = document.documentElement;
+  out.hero = [...hero.children].map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ');
+  if (out.hero !== 'div.topo div.hcopy') bad.push(`the hero holds ${out.hero}, expected the contour layer and the copy`);
+  const copy = hero.querySelector(':scope > .hcopy');
+  out.copy = copy ? [...copy.children].map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ') : '';
+  if (out.copy !== 'h1. p.harea p.harea-all p.lede a.hnew') bad.push(`the hero's copy runs ${out.copy}, expected the headline, the area line, the static line, the lede and the link`);
+  const h1 = copy && copy.querySelector(':scope > h1'); if (!h1 || h1.textContent !== 'Academy') bad.push('the headline is not "Academy"');
+  // the area line: the four names, in order, each in its tone, hidden from a screen reader; the static line for one
+  const al = copy && copy.querySelector('.harea'), st = copy && copy.querySelector('.harea-all');
+  const probe = document.createElement('span'); hero.appendChild(probe);
+  const tone = v => { probe.style.color = v; return getComputedStyle(probe).color; };
+  out.words = al ? [...al.querySelectorAll('.harea-w')].map(w => [w.textContent, getComputedStyle(w).color]) : [];
+  out.tones = tones.map(tone); probe.remove();
+  if (!al || al.getAttribute('aria-hidden') !== 'true') bad.push('the cycling area line is not hidden from a screen reader');
+  if (al && [...al.querySelectorAll('a, button, [tabindex]')].length) bad.push('the area line holds a link or a focus stop');
+  out.static = st ? st.textContent : null;
+  out.staticTones = st ? [...st.children].filter(e => !e.classList.contains('harea-dot')).map(e => getComputedStyle(e).color) : [];
+  out.staticAria = st ? st.getAttribute('aria-hidden') : 'missing';
+  out.lineShown = vis(al); out.staticShown = !!st && st.getBoundingClientRect().width > 2 && getComputedStyle(st).clipPath === 'none';
+  const lede = copy && copy.querySelector('.lede'); out.lede = lede ? lede.textContent : null;
+  // the quiet link: names the newest unit and its day, to #new, at least 44 px, outlined, not filled
+  const ln = copy && copy.querySelector('a.hnew');
+  if (ln) { const cs = getComputedStyle(ln), r = ln.getBoundingClientRect();
+    out.link = [ln.querySelector('span').textContent, ln.getAttribute('href'), ln.getAttribute('data-target'), Math.round(r.height), cs.backgroundColor, cs.borderTopStyle, parseFloat(cs.borderTopWidth)];
+    if (r.height < 43.5) bad.push(`the What's new link is ${r.height.toFixed(0)} px tall, under 44`);
+    if (cs.backgroundColor !== 'rgba(0, 0, 0, 0)') bad.push(`the What's new link is filled (${cs.backgroundColor}), not outlined`);
+    if (cs.borderTopStyle === 'none' || !(parseFloat(cs.borderTopWidth) > 0)) bad.push('the What\'s new link has no outline');
+    if (ln.getAttribute('href') !== '#new' || ln.getAttribute('data-target') !== 'new') bad.push('the What\'s new link does not open #new'); }
+  else bad.push('no quiet link to What\'s new');
+  // the contour layer: aria-hidden, no text, one layout shown (tall below 1100 px, wide from it), one rise per area
+  const topo = hero.querySelector(':scope > .topo');
+  if (topo) {
+    out.topoBytes = new Blob([topo.outerHTML]).size;
+    if (topo.getAttribute('aria-hidden') !== 'true') bad.push('the contour layer is not aria-hidden');
+    if (topo.querySelector('text, title, desc') || topo.textContent.trim()) bad.push('the contour layer holds text');
+    const shown = [...topo.querySelectorAll('svg.topo-l')].filter(vis);
+    out.layout = shown.map(s => s.getAttribute('data-layout'));
+    if (out.layout.join() !== (desk ? 'wide' : 'tall')) bad.push(`the contour layout shown is ${out.layout}, expected ${desk ? 'wide' : 'tall'}`);
+    out.layouts = [...topo.querySelectorAll('svg.topo-l')].map(s => [s.getAttribute('data-layout'), [...s.querySelectorAll('g.ct-rise, g.ct-plan')].map(g => [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), +g.getAttribute('data-rings'), getComputedStyle(g.querySelector('path, circle')).stroke])]);
+    const tr = topo.getBoundingClientRect(), m = document.querySelector('main').getBoundingClientRect(), cr = copy.getBoundingClientRect();
+    out.topoBox = [Math.round(tr.left), Math.round(tr.right), Math.round(cr.left), Math.round(cr.right), Math.round(m.left), Math.round(m.right)];
+    if (Math.abs(tr.left - (desk ? 300 : 0)) > 1 || Math.abs(tr.right - de.clientWidth) > 1) bad.push(`the contour layer spans ${tr.left.toFixed(0)}..${tr.right.toFixed(0)}, not the full width beside the sidebar (${desk ? 300 : 0}..${de.clientWidth})`);
+    if (cr.left < m.left + 15 || cr.right > m.right - 15) bad.push(`the hero's text runs ${cr.left.toFixed(0)}..${cr.right.toFixed(0)}, outside the column ${m.left.toFixed(0)}..${m.right.toFixed(0)}`);
+  } else bad.push('no contour layer');
+  // the hero's height: on a phone 60 to 80% of the screen, the first area's heading starting inside the first screen
+  const hr = hero.getBoundingClientRect(); out.heroH = [Math.round(hr.height), innerHeight, Math.round(100 * hr.height / innerHeight)];
+  if (phone && (hr.height < .6 * innerHeight || hr.height > .8 * innerHeight)) bad.push(`the hero is ${out.heroH[2]}% of the screen, not 60 to 80%`);
+  const kids = [...h.children], tracks = kids.filter(e => e.classList.contains('track'));
+  const th = tracks.length && tracks[0].querySelector('.thead h2');
+  out.first = th ? Math.round(th.getBoundingClientRect().top + scrollY) : null;
+  if (phone && th && out.first + 10 > innerHeight) bad.push(`the first area's heading starts at ${out.first} px, not inside the first screen (${innerHeight} px)`);
+  // nothing sideways, nothing on the hero past the screen
   out.scroll = [de.scrollWidth, de.clientWidth];
   if (de.scrollWidth > de.clientWidth) bad.push(`the page scrolls sideways (${de.scrollWidth} in ${de.clientWidth} px)`);
-  const sr = sh.getBoundingClientRect();
-  if (sr.left < -0.5 || sr.right > de.clientWidth + 0.5) bad.push(`the shelf runs off the screen (${sr.left.toFixed(0)}..${sr.right.toFixed(0)} of ${de.clientWidth})`);
-  sh.querySelectorAll('a.spine, .shelf-lit, .shelf-label, .spine.vol').forEach(e => { const r = e.getBoundingClientRect(); if (r.right > sr.right + 0.5 || r.left < sr.left - 0.5) bad.push(`${e.className} "${e.textContent.trim().slice(0, 20)}" runs out of the shelf`); });
-  sh.querySelectorAll('.sc').forEach(e => { const p = e.parentElement.getBoundingClientRect(), r = e.getBoundingClientRect(); if (r.height > p.height + 0.5 || r.width > p.width + 0.5) bad.push(`the label "${e.textContent}" does not fit its spine`); });
-  const main = document.querySelector('main').getBoundingClientRect();
-  out.shelfw = [Math.round(sr.width), Math.round(main.width)];
-  if (desk && sr.width <= main.width + 1) bad.push(`the desktop shelf is ${sr.width.toFixed(0)} px, not wider than the ${main.width.toFixed(0)} px column`);
-  if (!desk && sr.width > main.width) bad.push('the shelf is wider than the column below 1100 px');
-  // the phone's first screen: the headline, the lede and the shelf, nothing else
-  const kids = [...h.children], tracks = kids.filter(e => e.classList.contains('track'));
-  out.first = tracks.length ? Math.round(tracks[0].getBoundingClientRect().top + window.scrollY) : null;
-  if (phone && tracks.length && out.first < innerHeight) bad.push(`the first track starts at ${out.first} px, inside the first screen (${innerHeight} px)`);
-  // the order: hero, the track sections, the constants, the site pages, New since, its one link
+  copy && copy.querySelectorAll('*').forEach(e => { if (e.closest('.harea-all') && getComputedStyle(e.closest('.harea-all')).clipPath !== 'none') return;   // the static line, clipped for a screen reader
+    const r = e.getBoundingClientRect(); if (r.width && (r.right > de.clientWidth + .5 || r.left < -.5)) bad.push(`${e.className || e.tagName} on the hero runs off the screen`); });
+  // the order: hero, the area sections, the constants, the site pages, New since, its one link
   out.order = kids.map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ');
-  const want = ['header.hero', ...tracks.map(() => 'section.track'), 'details.howto.rules', 'div.hlinks', 'section.recent', 'div.hlinks'].join(' ');
+  const want = ['header.hero.hhome', ...tracks.map(() => 'section.track'), 'details.howto.rules', 'div.hlinks', 'section.recent', 'div.hlinks'].join(' ');
   if (out.order !== want) bad.push(`the home runs ${out.order}`);
+  // the area headers: from 768 px the label, the name, the lede and the count; below it the name only
+  out.heads = tracks.map(t => { const hd = t.querySelector('.thead'); return [t.id, vis(hd.querySelector('.cname')), vis(hd.querySelector('h2')), vis(hd.querySelector('p')), vis(hd.querySelector('.tmeta'))]; });
+  out.heads.forEach(([id, c, n, p, m]) => { const ok = phone ? (n && !c && !p && !m) : (n && c && p && m);
+    if (!ok) bad.push(`${id}: its header shows label ${c}, name ${n}, lede ${p}, count ${m}; ${phone ? 'below 768 px the name only' : 'from 768 px all four'}`); });
   const site = kids[kids.length - 3], rec = h.querySelector(':scope > .recent'), last = kids[kids.length - 1];
   out.site = site ? [...site.querySelectorAll('a')].map(a => a.getAttribute('href')) : [];
   if (!rec) bad.push('no New since');
   else {
     out.rows = [...rec.querySelectorAll('.hrow')].map(r => [r.getAttribute('data-kind'), r.getAttribute('data-target')]);
+    out.since = rec.querySelector('h2').textContent;
     [...rec.querySelectorAll('.hrow')].forEach(r => { if (!r.querySelector('.t small') || !r.querySelector('.pill') || !r.querySelector('.n')) bad.push('a New since row without its date, its course and model line or its pill');
       if (!resolves(r.getAttribute('data-target'))) bad.push(`a New since row links to #${r.getAttribute('data-target')}, no page`); });
-    const ln = last && last.querySelectorAll('a');
-    if (!ln || ln.length !== 1 || ln[0].getAttribute('href') !== '#new') bad.push('New since is not followed, last on the page, by one link, to What\'s new');
+    const ln2 = last && last.querySelectorAll('a');
+    if (!ln2 || ln2.length !== 1 || ln2[0].getAttribute('href') !== '#new') bad.push('New since is not followed, last on the page, by one link, to What\'s new');
   }
   h.querySelectorAll('.hbtn b, .hbtn span').forEach(el => { if (el.getBoundingClientRect().width > 0 && el.scrollWidth > el.clientWidth + 1) bad.push(`a button's text is cut short: "${el.textContent.trim().slice(0, 40)}"`); });
+  // the tiles: every one the same fields, its own contour patch, the whole tile the link
   const cards = [...h.querySelectorAll('.track .cgrid > a.course.live')];
-  out.cards = cards.length;
+  out.cards = cards.map(c => { const p = c.querySelector(':scope > .topo.topo-patch'), s = p && p.querySelector('svg');
+    return {home: c.getAttribute('data-target'), href: c.getAttribute('href'),
+            rises: p ? [...p.querySelectorAll('g.ct-rise')].map(g => [g.getAttribute('data-label'), +g.getAttribute('data-words')]) : null,
+            plan: p ? [...p.querySelectorAll('g.ct-plan')].map(g => g.getAttribute('data-label')) : null,
+            aria: p && p.getAttribute('aria-hidden'), stroke: p && p.querySelector('path') ? getComputedStyle(p.querySelector('path')).stroke : null,
+            tone: getComputedStyle(c).getPropertyValue('--c').trim(), pw: p ? Math.round(p.getBoundingClientRect().width) : 0, cw: Math.round(c.querySelector('.ctitle').parentElement.clientWidth),
+            ph: p ? Math.round(p.getBoundingClientRect().height) : 0, sw: s ? Math.round(s.getBoundingClientRect().width) : 0}; });
   cards.forEach(c => {
     const name = c.querySelector('.ctitle').textContent;
-    const kidc = [...c.children].map(e => e.tagName.toLowerCase() + (e.className ? '.' + e.className : '')).join(' ');
-    if (kidc !== 'div.ctop span.ctitle p div.cstats') bad.push(`${name}: the card holds ${kidc}, expected the chip row, the title, the tile and the stats`);
+    const kidc = [...c.children].map(e => e.tagName.toLowerCase() + (e.className && typeof e.className === 'string' ? '.' + e.className : '')).join(' ');
+    if (kidc !== 'div.ctop span.ctitle p div.cstats div.topo topo-patch') bad.push(`${name}: the tile holds ${kidc}, expected the chip row, the title, the tile line, the stats and the patch`);
     const n = c.querySelectorAll('.cstats > span').length; if (n !== 3) bad.push(`${name}: ${n} stats, expected 3`);
+    const ctop = c.querySelector('.ctop'); if (!ctop || !ctop.querySelector('.cname') || !ctop.querySelector('.pill')) bad.push(`${name}: no chip and status pill`);
     const pp = c.querySelector(':scope > p'), lh = parseFloat(getComputedStyle(pp).lineHeight);
-    if (pp.scrollHeight > pp.clientHeight + 1) bad.push(`${name}: the tile is clipped (${pp.scrollHeight} px of ${pp.clientHeight})`);
-    if (Math.round(pp.clientHeight / lh) > 2) bad.push(`${name}: the tile runs to ${Math.round(pp.clientHeight / lh)} lines`);
-    if (c.scrollWidth > c.clientWidth + 1) bad.push(`${name}: the card scrolls sideways`);
+    if (pp.scrollHeight > pp.clientHeight + 1) bad.push(`${name}: the tile line is clipped (${pp.scrollHeight} px of ${pp.clientHeight})`);
+    if (Math.round(pp.clientHeight / lh) > 2) bad.push(`${name}: the tile line runs to ${Math.round(pp.clientHeight / lh)} lines`);
+    if (c.scrollWidth > c.clientWidth + 1) bad.push(`${name}: the tile scrolls sideways`);
+    if (c.querySelectorAll('a').length) bad.push(`${name}: a link inside the tile (the whole tile is the link)`);
+    const p = c.querySelector('.topo-patch');
+    if (p) { const r = p.getBoundingClientRect(), cr = c.getBoundingClientRect();
+      if (Math.abs(r.width / r.height - 4) > .05) bad.push(`${name}: the patch is ${r.width.toFixed(0)} x ${r.height.toFixed(0)}, not 4:1`);
+      if (r.left < cr.left || r.right > cr.right + .5) bad.push(`${name}: the patch runs out of its tile`); }
   });
-  if (new Set(cards.map(c => c.className)).size > 1) bad.push('the course cards are not one style');
+  if (new Set(cards.map(c => c.className)).size > 1) bad.push('the course tiles are not one style');
   tracks.forEach(t => {
     const g = t.querySelector('.cgrid'), cs = [...g.querySelectorAll(':scope > a.course')];
     const cols = getComputedStyle(g).gridTemplateColumns.split(' ').length;
@@ -365,37 +410,112 @@ HOME_JS = r'''() => {
     if (!phone && cols !== 2) bad.push(`${t.id}: ${cols} column(s) from 768 px, expected 2`);
     if (!phone && cs.length === 1) {
       const gw = g.getBoundingClientRect().width, cw = cs[0].getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
-      if (Math.abs(cw - (gw - gap) / 2) > 2) bad.push(`${t.id}: its only card is ${cw.toFixed(0)} px of a ${gw.toFixed(0)} px grid, expected half`);
+      if (Math.abs(cw - (gw - gap) / 2) > 2) bad.push(`${t.id}: its only tile is ${cw.toFixed(0)} px of a ${gw.toFixed(0)} px grid, expected half`);
     }
+    if (t.id === 'track-history' && (!t.querySelector('details.howto.rules:not(.planned)') || !t.querySelector('details.planned#planned-courses'))) bad.push('History lost "Why history and myth together" or its folded Planned list');
   });
+  // what runs: with reduced motion nothing on the home; with motion allowed only transform and opacity, none on a tile
+  out.anims = document.getAnimations().filter(a => a.effect && a.effect.target && h.contains(a.effect.target)).map(a => {
+    const t = a.effect.target, props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(k => !['offset', 'computedOffset', 'easing', 'composite'].includes(k)))];
+    return [t.className && typeof t.className === 'string' ? t.className : (t.getAttribute('class') || t.tagName), props, a.playState, !!t.closest('.course')]; });
   return out;
 }'''
 MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-def check_home(pg, label, fails, expect):
-    """P91: the home's layout at one width (HOME_JS): the shelf against the sources (home_expect), the lit spine the
-    newest unit and its label, the planned volume's count, the totals, New since as What's new's first six rows."""
-    pg.evaluate("location.hash = 'home'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(120)
-    r = pg.evaluate(HOME_JS)
+# P92: the hero's texts against the pixels actually under them (the contour lines, the page), in the theme in use: each
+# text's box and colour are read, every text of the copy is made transparent, the hero is shot, and each text's colour
+# is measured against every pixel in its box (4.5:1, 3:1 for large text); the texts are put back.
+HERO_TEXTS_JS = r'''() => { const out = [], copy = document.querySelector('#home .hcopy');
+  copy.querySelectorAll('h1, .harea-w, .harea-all > span, .lede, .hnew > span').forEach(e => { const cs = getComputedStyle(e), r = e.getBoundingClientRect();
+    if (!r.width || cs.display === 'none' || (e.closest('.harea-all') && getComputedStyle(e.closest('.harea-all')).clipPath !== 'none')) return;   // the static line read by a screen reader only
+    const size = parseFloat(cs.fontSize), large = size >= 24 || (size >= 18.66 && parseInt(cs.fontWeight) >= 700);
+    out.push({what: (e.className || e.tagName.toLowerCase()) + ' "' + e.textContent.trim().slice(0, 18) + '"', color: cs.color, large, x: r.left, y: r.top, w: r.width, h: r.height}); });
+  return out; }'''
+def hero_contrast(pg, label, fails):
+    from PIL import Image
+    import io
+    pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(60)
+    items = pg.evaluate(HERO_TEXTS_JS)
+    pg.evaluate("""() => { const s = document.createElement('style'); s.id = 'p92hide'; s.textContent = '#home .hcopy, #home .hcopy * {color: transparent !important; border-color: transparent !important}'; document.head.appendChild(s); }""")
+    pg.wait_for_timeout(60)
+    img = Image.open(io.BytesIO(pg.screenshot())).convert('RGB')
+    pg.evaluate("document.getElementById('p92hide').remove()")
+    k = img.width / pg.evaluate('innerWidth')
+    def lum(c):
+        f = lambda v: (v / 255) / 12.92 if v / 255 <= 0.04045 else ((v / 255 + 0.055) / 1.055) ** 2.4
+        return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2])
+    worst = [99, '']
+    for it in items:
+        fg = [float(v) for v in re.findall(r'[\d.]+', it['color'])[:3]]
+        lf = lum(fg)
+        box = img.crop((int(it['x'] * k), int(it['y'] * k), int((it['x'] + it['w']) * k), int((it['y'] + it['h']) * k)))
+        lo = 99
+        for c, _ in [(c, n) for n, c in box.getcolors(box.width * box.height or 1) or []]:
+            lb = lum(c); r = (max(lf, lb) + .05) / (min(lf, lb) + .05)
+            lo = min(lo, r)
+        need = 3 if it['large'] else 4.5
+        if lo < worst[0]: worst = [round(lo, 2), it['what']]
+        if lo < need - .005: fails.append(f'home {label}: {it["what"]} reaches {lo:.2f}:1 over the contours under it (needs {need}:1)')
+    print(f'home {label}: hero texts over the contours, {len(items)} measured pixel by pixel, lowest {worst[0]}:1 ({worst[1]})')
+
+def check_home(pg, label, fails, expect, motion=False):
+    """P92: the home's layout at one width (HOME_JS): the hero (the headline, the area line and its static line, the
+    lede, the quiet link, the contour layer, its rises against the sources), its height, the area headers, the tiles and
+    their patches against the sources, the order, New since as What's new's first six rows; and what animates."""
+    pg.evaluate("location.hash = 'home'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(160)
+    # a theme switched by the test fades the tiles' colours (section 7's .15 s transitions): read the page once they are done
+    pg.wait_for_function("() => !document.getAnimations().some(a => typeof CSSTransition !== 'undefined' && a instanceof CSSTransition && a.playState === 'running')", timeout=5000)
+    r = pg.evaluate(HOME_JS, [a['color'] for a in expect['areas']])
     fails += [f'home {label}: {b}' for b in r['bad']]
-    got = {g['label']: [(s['code'], not s['ghost'], s['t']) for s in g['spines']] for g in r.get('groups', [])}
-    if list(got) != list(expect['shelf']): fails.append(f'home {label}: the shelf groups are {list(got)}, the sources give {list(expect["shelf"])}')
-    for k, v in expect['shelf'].items():
-        if got.get(k) != [tuple(x) for x in v]: fails.append(f'home {label}: {k} on the shelf is {got.get(k)}, the sources give {v}')
+    names = [a['name'] for a in expect['areas']]
+    if [w for w, _ in r.get('words', [])] != names: fails.append(f'home {label}: the area line reads {[w for w, _ in r.get("words", [])]}, THEMES gives {names}')
+    if [c for _, c in r.get('words', [])] != r.get('tones'): fails.append(f'home {label}: the area words are coloured {[c for _, c in r.get("words", [])]}, their tones are {r.get("tones")}')
+    if r.get('static') != ' · '.join(names).replace(' · ', ' · '): fails.append(f'home {label}: the static line reads {r.get("static")!r}')
+    if r.get('staticTones') != r.get('tones'): fails.append(f'home {label}: the static line\'s words are coloured {r.get("staticTones")}, not their tones')
+    if r.get('staticAria') is not None: fails.append(f'home {label}: the static line is hidden from a screen reader ({r.get("staticAria")})')
+    if motion and (not r.get('lineShown') or r.get('staticShown')): fails.append(f'home {label}: with motion allowed the cycling line shows {r.get("lineShown")} and the static line {r.get("staticShown")}, expected the cycling line only')
+    if not motion and (r.get('lineShown') or not r.get('staticShown')): fails.append(f'home {label}: under reduced motion the cycling line shows {r.get("lineShown")} and the static line {r.get("staticShown")}, expected the static line only')
+    if r.get('lede') != 'Every self-study course in one place. Pick up where you left off.': fails.append(f'home {label}: the lede reads {r.get("lede")!r}')
     nw = expect['newest']
-    if nw and r.get('lit') != [f'U{nw["code"].split(".")[0]}' if '.' in nw['code'] else nw['code']]: fails.append(f'home {label}: the lit spine is {r.get("lit")}, the newest unit is {nw["code"]}')
-    if nw and r.get('litlabel') and not r['litlabel'][0].endswith(f'Newest · {nw["code"]} · {int(nw["date"][8:])} {MON3[int(nw["date"][5:7]) - 1]}'):
-        fails.append(f'home {label}: the lit label reads {r["litlabel"][0]!r}')
-    if expect['planned'] and r.get('vol') != [f'{expect["planned"]} planned']: fails.append(f'home {label}: the planned volume reads {r.get("vol")}, expected "{expect["planned"]} planned"')
-    if r.get('totals') and (r['totals'][0][0] != str(expect['units']) or r['totals'][2][0] != str(expect['live'])):
-        fails.append(f'home {label}: the totals read {r["totals"]}, the sources give {expect["units"]} units written and {expect["live"]} courses live')
+    want_link = f"What's new · {nw['code']} · {int(nw['date'][8:])} {MON3[int(nw['date'][5:7]) - 1]}" if nw else None
+    if r.get('link') and r['link'][0] != want_link: fails.append(f'home {label}: the What\'s new link reads {r["link"][0]!r}, expected {want_link!r}')
+    if (r.get('topoBytes') or 0) > 20 * 1024: fails.append(f'home {label}: the hero\'s contour SVG is {r["topoBytes"]} bytes, over 20 KB')
+    for name, rs in r.get('layouts', []):
+        got = [(l, w) for l, w, _, _ in rs]
+        want = [(a['name'], a['words'] or None) for a in expect['areas']]
+        if got != want: fails.append(f'home {label}: the {name} contours give the rises {got}, the sources give {want}')
+        rings = [k for _, w, k, _ in rs if w]
+        byw = [k for _, k in sorted((w, k) for _, w, k, _ in rs if w)]
+        if byw != sorted(byw): fails.append(f'home {label}: the {name} rises stand {rings} levels high, not in the order of their words')
+        if [s for _, _, _, s in rs] != r.get('tones'): fails.append(f'home {label}: the {name} rises are drawn in {[s for *_, s in rs]}, not their areas\' tones')
+    got = {c['home']: c for c in r.get('cards', [])}
+    if list(got) != list(expect['courses']): fails.append(f'home {label}: the tiles are {list(got)}, the sources give {list(expect["courses"])}')
+    for home, e in expect['courses'].items():
+        c = got.get(home)
+        if not c: continue
+        want_r = [(k, w) for k, w in e['units'] if w]
+        if [tuple(x) for x in (c['rises'] or [])] != want_r: fails.append(f'home {label}: {e["short"]}\'s patch has the rises {c["rises"]}, the sources give its written units {want_r}')
+        if (c['plan'] or []) != [k for k, w in e['units'] if not w]: fails.append(f'home {label}: {e["short"]}\'s patch marks {c["plan"]} planned, the sources {[k for k, w in e["units"] if not w]}')
+        if c['aria'] != 'true': fails.append(f'home {label}: {e["short"]}\'s patch is not aria-hidden')
+        if c['href'] != '#' + home: fails.append(f'home {label}: {e["short"]}\'s tile links to {c["href"]}')
     want_rows = [[x['kind'], x['pid']] for x in expect['rows'][:6]]
     if r.get('rows') != want_rows: fails.append(f'home {label}: New since lists {r.get("rows")}, What\'s new leads with {want_rows}')
+    if expect['rows'][:6] and r.get('since') != f"New since {int(expect['rows'][5]['date'][8:])} {MON3[int(expect['rows'][5]['date'][5:7]) - 1]}":
+        fails.append(f'home {label}: New since\'s heading reads {r.get("since")!r}, its oldest row is {expect["rows"][5]["date"]}')
     want_site = [x for x, k in (('#backlog', 'backlog'), ('#viz-examples', 'figures'), ('#changelog', 'changelog')) if k not in OMIT]
     if r.get('site') != want_site: fails.append(f'home {label}: the site links above New since are {r.get("site")}, expected {want_site}')
-    print(f'home {label}: shelf {sum(len(g["spines"]) for g in r.get("groups", []))} spines in {len(r.get("groups", []))} courses, lit {r.get("lit")} '
-          f'({r.get("litlabel") and r["litlabel"][0]}), planned {r.get("vol")}; shelf {r.get("shelfw")} px (shelf, column); totals {r.get("totals") and [t[0] for t in r["totals"]]}; '
-          f'{r.get("cards")} cards; New since {len(r.get("rows") or [])} rows; first track at {r.get("first")} px; page {r.get("scroll")}')
+    an = r.get('anims', [])
+    if motion:
+        if [a for a in an if any(p not in ('transform', 'opacity') for p in a[1])]: fails.append(f'home {label}: an animation runs on more than transform and opacity: {[a for a in an if any(p not in ("transform", "opacity") for p in a[1])]}')
+        if [a for a in an if a[3]]: fails.append(f'home {label}: an animation runs on a tile: {[a for a in an if a[3]][:3]}')
+        kinds = sorted({a[0].split()[0] for a in an})
+        if kinds != ['harea-w', 'topo-l'] or sum(1 for a in an if a[0].startswith('harea-w')) != len(names): fails.append(f'home {label}: with motion allowed the animations are {[(a[0], a[1]) for a in an]}, expected the {len(names)} area words and the shown contour layout')
+    elif an: fails.append(f'home {label}: under reduced motion {len(an)} animations run: {an[:3]}')
+    print(f'home {label}: hero {r.get("heroH")} (px, screen, %), copy {r.get("copy")!r}; area line {[w for w, _ in r.get("words", [])]}, shown {r.get("lineShown")}, static shown {r.get("staticShown")}; '
+          f'link {r.get("link") and r["link"][:4]}; contours {r.get("topoBytes")} B, layout {r.get("layout")}, rises {[(l, k) for _, rs in r.get("layouts", [])[:1] for l, _, k, _ in rs]}; '
+          f'tiles {[(c["home"], len(c["rises"] or []), len(c["plan"] or [])) for c in r.get("cards", [])]}; heads {[x[1:] for x in r.get("heads", [])][:1]}; '
+          f'first area at {r.get("first")} px; New since {len(r.get("rows") or [])} rows; animations {len(an)}; page {r.get("scroll")}')
+    hero_contrast(pg, label, fails)
     return r
 
 # P91: What's new (#new), fetched through the shell: every dated unit and every course start once, newest first,
@@ -601,10 +721,11 @@ def font_file(route):
     else:
         route.abort()
 
-def new_page(p, br, errors, name, w, h, mobile):
+def new_page(p, br, errors, name, w, h, mobile, motion=False):
     ctx = br.new_context(viewport={'width': w, 'height': h}, device_scale_factor=3 if mobile else 1,
                          is_mobile=mobile, has_touch=mobile,  # a real phone or tablet honours the viewport tag
-                         reduced_motion='reduce')             # P91: every measure and shot sees the home's shelf at rest
+                         color_scheme='dark',                 # P92: the site's default theme; a pass without the toggle is dark (Playwright's default system setting is light, so every 'dark' pass before P92 measured the light theme)
+                         reduced_motion='no-preference' if motion else 'reduce')   # P91: every measure and shot sees the home at rest; P92: one pass with motion allowed
     # the theme fonts, from the vendored copy in fonts/ (P39): the page measures and draws what a reader's phone does
     ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=FONT_CSS))
     ctx.route('**/fonts.gstatic.com/**', font_file)
@@ -1406,8 +1527,8 @@ def main():
         ctx.close()
 
         # P91: the home and What's new at 320, 360 and 430 px (390 is the phone pass above), tablet and desktop, dark and
-        # light; on the desktop a spine of each kind opens its page: a history unit's card on its course home, a markdown
-        # unit's reading page, a planned unit's brief, and the lit label What's new
+        # light; P92: on the desktop a history tile, a markdown tile, the IA tile and the hero's What's new link each open
+        # their page
         for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS[1:]:
             ctx, pg, _ = new_page(p, br, errors, name, w, h, mobile)
             check_home(pg, name, fails, EXPECT)
@@ -1415,7 +1536,7 @@ def main():
             pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
             check_home(pg, name + ' light', fails, EXPECT)
             if name == 'desktop':
-                for sel in ('a.spine:not(.ghost)', 'a.spine:not(.ghost)[data-target^="read-"]', 'a.spine.ghost:not(.vol)', 'a.spine.vol', 'a.shelf-lit'):
+                for sel in ('a.course.live[data-target="greece"]', 'a.course.live[data-target^="brand-"]', 'a.course.live[data-target^="ux-"]', 'a.hnew'):   # P92: a tile of each family and the quiet link
                     pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(60)
                     t = pg.evaluate(f"(() => {{ const a = document.querySelector('#home {sel}'); return a && a.getAttribute('data-target'); }})()")
                     if not t:
@@ -1426,6 +1547,28 @@ def main():
                         fails.append(f'home desktop: tapping {sel} (#{t}) lands on {land}')
                     else:
                         print(f'home desktop: {sel} opens #{t} on {land[0]}, at {land[2]} px' + (', its card open' if land[3] else ''))
+            ctx.close()
+
+        # P92: with motion allowed, at 390 and 1280 px, dark and light: only transform and opacity animate, none on a
+        # tile, the cycling area line shows and the static line is for a screen reader only; the hero's texts over the
+        # contours as they drift; and at 390 px the hero's weight on a fresh load (LCP and the longest task, from the
+        # browser's performance entries)
+        for name, w, h, mobile in (('phone', 390, 844, True), ('desktop', 1280, 800, False)):
+            ctx, pg, _ = new_page(p, br, errors, name + ' motion', w, h, mobile, motion=True)
+            if name == 'phone':
+                pg.evaluate('''() => { window.__p92 = {lcp: 0, lt: 0, n: 0};
+                  new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lcp = Math.max(window.__p92.lcp, e.startTime); })).observe({type: 'largest-contentful-paint', buffered: true});
+                  new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lt = Math.max(window.__p92.lt, e.duration); window.__p92.n++; })).observe({type: 'longtask', buffered: true}); }''')
+                pg.reload(); pg.wait_for_timeout(200)
+                pg.evaluate('''() => { window.__p92 = {lcp: 0, lt: 0, n: 0};
+                  new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lcp = Math.max(window.__p92.lcp, e.startTime); })).observe({type: 'largest-contentful-paint', buffered: true});
+                  new PerformanceObserver(l => l.getEntries().forEach(e => { window.__p92.lt = Math.max(window.__p92.lt, e.duration); window.__p92.n++; })).observe({type: 'longtask', buffered: true}); }''')
+                pg.wait_for_timeout(3000)
+                perf = pg.evaluate('window.__p92')
+                print(f"home phone motion: LCP {perf['lcp']:.0f} ms, longest task {perf['lt']:.0f} ms ({perf['n']} long tasks over 50 ms), on a fresh load from the local server")
+            check_home(pg, name + ' motion', fails, EXPECT, motion=True)
+            pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+            check_home(pg, name + ' motion light', fails, EXPECT, motion=True)
             ctx.close()
 
         if SHOTS:
@@ -1448,7 +1591,7 @@ def main():
                                 pg.evaluate(js, pid); pg.wait_for_timeout(200)
                                 pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{state}-{theme}.png'))
                             pg.evaluate("(pid) => { const p = document.getElementById(pid); p.querySelectorAll('details').forEach(d => d.open = false); const w = p.querySelector('.stepbar .whole'); if (w.getAttribute('aria-pressed') === 'true') w.click(); [...p.querySelectorAll('.seclist a')][0].click(); window.scrollTo(0, 0); }", pid)
-                        if pid in PAGES:   # P41: each figure of a --page panel, as the reader sees it in its frame (P91: the home has no figure; its shelf is in the home shot)
+                        if pid in PAGES:   # P41: each figure of a --page panel, as the reader sees it in its frame (P91: the home has no figure; P92: its contours are not figures, and are in the home shot and the motion sheets)
                             for k, fig in enumerate(pg.query_selector_all(f'[id="{pid}"] figure.viz')):
                                 kind = ([c for c in fig.get_attribute('class').split() if c.startswith('viz-') and c != 'viz-wide'] or ['viz-figure'])[0][4:]
                                 fig.evaluate("f => { const s = f.closest('.sec'), p = f.closest('.panel'); if (s && !s.classList.contains('on')) p.querySelector('.seclist a[data-step=\"' + s.dataset.step + '\"]').click(); }")   # P68: its section shown first
@@ -1457,6 +1600,31 @@ def main():
                                 nf = frames(pg, fig, SHOTS / f'{name}-{pid}-fig-{k + 1:02d}-{kind}-frames-{theme}.png', f'{name} · {pid} · figure {k + 1} · {theme}')   # P89
                                 print(f'shots: {name} {pid} figure {k + 1} ({kind}) {theme}: {nf} frame' + ('s' if nf != 1 else ''))
                             pg.evaluate('window.scrollTo(0, 0)')
+                ctx.close()
+            # P92: the hero at five moments across one cycle of the area line (12 s) and one sweep of the drift (30 s), at
+            # 390 and 1280 px with motion allowed, dark and light: every animation paused and set to the moment, the hero
+            # shot, the five stacked with their times in one sheet
+            from PIL import Image, ImageDraw, ImageFont
+            for name, w, h, mobile in (('phone', 390, 844, True), ('desktop', 1280, 800, False)):
+                ctx, pg, _ = new_page(p, br, [], name, w, h, mobile, motion=True)
+                for theme in ('dark', 'light'):
+                    pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')"); pg.goto(URL + '#home'); pg.reload(); ready(pg); pg.wait_for_timeout(400)
+                    ims, tags = [], []
+                    for k in range(5):
+                        ta, td = k * 3000, k * 7500
+                        pg.evaluate(f'''() => document.getAnimations().forEach(a => {{ a.pause(); a.currentTime = a.animationName === 'topo-drift' ? {td} : {ta}; }})''')
+                        pg.wait_for_timeout(120)
+                        tmp = SHOTS / f'_{name}-hero-{k}.png'
+                        pg.locator('#home .hhome').screenshot(path=str(tmp), animations='allow')
+                        ims.append(Image.open(tmp)); tags.append(f'{name} · {theme} · moment {k + 1} of 5: area line at {ta / 1000:.0f} s of its 12 s cycle, drift at {td / 1000:.1f} s of its 30 s sweep'); tmp.unlink()
+                    sc = max(1, round(ims[0].width / pg.evaluate("document.querySelector('#home .hhome').getBoundingClientRect().width")))
+                    font, band = ImageFont.load_default(size=12 * sc), 26 * sc
+                    sheet = Image.new('RGB', (ims[0].width, sum(i.height + band for i in ims)), (128, 128, 128))
+                    d, y = ImageDraw.Draw(sheet), 0
+                    for im, tg in zip(ims, tags):
+                        d.text((6 * sc, y + 6 * sc), tg, fill=(0, 0, 0), font=font); y += band; sheet.paste(im, (0, y)); y += im.height
+                    sheet.save(SHOTS / f'{name}-hero-motion-{theme}.png')
+                    print(f'shots: {name} hero motion sheet, {theme}')
                 ctx.close()
             # V1: each figure of the examples page as the reader sees it in its frame, then one sheet per width and theme
             for name, w, h, mobile in (VIEWPORTS if 'figures' not in OMIT else []):
