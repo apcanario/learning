@@ -62,18 +62,18 @@ tablet: panels checked: 222; tightest stacked gap 6px (home)
 tablet: drawer is a drawer (off screen, 360 px with backdrop when open); column 760 px; report rm11 loaded through the shell, 33 paragraphs
 desktop: panels checked: 222; tightest stacked gap 6px (home); 655 figure frames, 56 wider than their frame with the cue, the rest without
 desktop: sidebar 300 px at the left, content column 760 px from 410 px, current item m23, measure 744.193px
-home phone320: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [288, 320] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1559 px; page [320, 320]
+home phone320: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [288, 320] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1577 px; page [320, 320]
 what's new phone320: 186 unit rows, 5 course rows, 81 approximate, on 9 days
-home phone320 light: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [288, 320] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1559 px; page [320, 320]
-home phone360: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [328, 360] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1454 px; page [360, 360]
+home phone320 light: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [288, 320] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1577 px; page [320, 320]
+home phone360: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [328, 360] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1472 px; page [360, 360]
 what's new phone360: 186 unit rows, 5 course rows, 81 approximate, on 9 days
-home phone360 light: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [328, 360] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1454 px; page [360, 360]
+home phone360 light: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [328, 360] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1472 px; page [360, 360]
 home phone430: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [398, 430] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1223 px; page [430, 430]
 what's new phone430: 186 unit rows, 5 course rows, 81 approximate, on 9 days
 home phone430 light: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [398, 430] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 1223 px; page [430, 430]
-home tablet: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [728, 760] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 994 px; page [768, 768]
+home tablet: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [728, 760] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 877 px; page [768, 768]
 what's new tablet: 186 unit rows, 5 course rows, 81 approximate, on 9 days
-home tablet light: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [728, 760] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 994 px; page [768, 768]
+home tablet light: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [728, 760] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 877 px; page [768, 768]
 home desktop: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [916, 760] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 944 px; page [1280, 1280]
 what's new desktop: 186 unit rows, 5 course rows, 81 approximate, on 9 days
 home desktop light: shelf 64 spines in 5 courses, lit ['IA7'] (← Newest · IA7 · 3 Nov), planned ['8 planned']; shelf [916, 760] px (shelf, column); totals ['56', '49', '5']; 5 cards; New since 6 rows; first track at 944 px; page [1280, 1280]
@@ -82,6 +82,6 @@ home desktop: a.spine:not(.ghost)[data-target^="read-"] opens #read-a1 on read-a
 home desktop: a.spine.ghost:not(.vol) opens #ux-ia-b-ia8 on ux-ia-briefs, at 68 px
 home desktop: a.spine.vol opens #planned-courses on home, at 68 px, its card open
 home desktop: a.shelf-lit opens #new on new, at 78 px
-screenshots in /tmp/claude-0/-home-claude/5f6706f6-e265-5756-81be-81a7bb944c5f/scratchpad/after3
+screenshots in /tmp/claude-0/-home-claude/5f6706f6-e265-5756-81be-81a7bb944c5f/scratchpad/after4
 courses-index.md: matches the sources
 ALL CHECKS PASSED

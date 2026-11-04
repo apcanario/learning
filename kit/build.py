@@ -636,7 +636,7 @@ changelog = f"""
 # which joins them) sit above New since, so What's new is the one link under it
 site_links = ''.join(([] if 'backlog' in OMIT else [f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a>'])
                   + ([] if 'figures' in OMIT else [f'<a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a>'])
-                  + ([] if 'changelog' in OMIT else [f'<a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {cl_since}, newest first</b></a>']))
+                  + ([] if 'changelog' in OMIT else [f'<a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {re.sub(r"(\d) ", r"\1&nbsp;", cl_since)}, newest first</b></a>']))
 site_links = f'<div class="hlinks">{site_links}</div>' if site_links else ''
 
 # the backlog page: docs/BACKLOG.md (the queue) and docs/CHANGELOG.md (the chats done), rendered as they are
@@ -774,7 +774,7 @@ def shelf_block():
             courses.append(dict(label=f'{planned} planned', volume=True, title=', '.join(n[0] for n in NEXT), href='planned-courses'))
         if courses:
             tracks.append(dict(label=t['name'], tone=_TONE[t['color']], courses=courses))
-    cap = ('One spine per unit: solid is written, outlined is planned, the height is its length in words. '
+    cap = ('One spine per unit: solid is written, outlined is planned, the height is its length in words (a planned unit takes its course\'s average). '
            'Drawn from the course data when the site is built.')
     return dict(kind='shelf', caption=cap, tracks=tracks)
 SHELF = shelf_block()

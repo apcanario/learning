@@ -62,9 +62,10 @@ def plus_months(iso, n):
 
 
 def front(path):
-    """A Markdown file's front matter as a dict (flat key: value lines)."""
+    """A Markdown file's front matter as a dict (flat key: value lines). A value in matching quotes is read without them
+    (P91: IA2's quoted title showed its quotes on What's new and the shelf)."""
     m = re.match(r'---\n(.*?)\n---\n', path.read_text(encoding='utf-8'), re.S)
-    return dict(re.findall(r'^(\w+):\s*(.*)$', m.group(1), re.M)) if m else {}
+    return {k: re.sub(r'^(["\'])(.*)\1$', r'\2', v.strip()) for k, v in re.findall(r'^(\w+):\s*(.*)$', m.group(1), re.M)} if m else {}
 
 
 # ---- shared sections: the method and the sources policy, read from docs/ ----------------------------------------

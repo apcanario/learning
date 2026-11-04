@@ -399,6 +399,8 @@ details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter
 @media (max-width:400px){.panel.root .track{padding-left:12px;padding-right:12px}.panel.root .course.live{padding:14px 12px}.panel.root .course.live p{font-size:13.5px}.panel.root .cstats{gap:4px 12px}}
 /* the card's chip breaks only between its two parts, the track and the course */
 .cname .cpart{white-space:nowrap}
+.panel.root .course.live .cname{white-space:nowrap}   /* the chip on one line; the status pill drops under it when the two do not fit */
+.panel.root .course.live .ctop{flex-wrap:wrap;row-gap:8px}
 @media (max-width:340px){.panel.root .course.live p{font-size:12.5px;line-height:1.45}}
 /* new since: dated rows; the date column is wider than a module number; the link to What's new under it. What's new
    (#new, P91): the same rows, one card per day under the day's heading, the unit code in the first column; an
@@ -416,6 +418,7 @@ details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter
 .newday .hsec{margin:0}
 /* on a narrow phone the pill sits under the date or code, so the title has the width */
 @media (max-width:400px){.recent .hrow,.newday .hrow{display:grid;grid-template-columns:4.6em minmax(0,1fr);column-gap:10px;align-items:start}.recent .hrow .t,.newday .hrow .t{grid-column:2;grid-row:1 / span 2}.recent .hrow .pill,.newday .hrow .pill{grid-column:1;grid-row:2;justify-self:start}}
+.hrow small .approx{display:block}   /* the mark on a line of its own, never read as part of the model */
 .hrow .approx{font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--muted);white-space:nowrap}
 /* the planned courses fold into a rule block on the home and a row in the drawer */
 details.rules.planned>.hnote,details.rules.planned>.soonlist{padding:0 16px}
@@ -444,16 +447,16 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
 :root{--spine-w:24px;--spine-gap:4px;--shelf-lo:44px;--shelf-hi:104px}
 .shelf{margin:22px 0 0;min-width:0}
 .shelf-tracks{display:flex;flex-direction:column;gap:20px}
-.shelf-track{min-width:0}
+.shelf-track{min-width:0;display:flex;flex-direction:column}
+.shelf-track>.shelf-row{flex:1 1 auto}   /* side by side, two tracks' shelves stand on one line: the row fills the track, its groups at the bottom */
 .shelf-tname{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin:0 0 10px}
 .shelf-tname::before{content:"";flex:0 0 10px;height:10px;background:var(--c)}   /* the track's tone as a mark, not as the text's colour (dark blue text is under 4.5:1) */
 .shelf-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 24px}
 .shelf-group{min-width:0;max-width:100%}
 .shelf-books{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px var(--spine-gap)}
 .spine{flex:0 0 var(--spine-w);box-sizing:border-box;width:var(--spine-w);height:max(44px,calc(var(--shelf-lo) + (var(--shelf-hi) - var(--shelf-lo)) * var(--h,0)));display:flex;align-items:flex-end;justify-content:center;padding:0 0 6px;background:var(--c);border:1px solid var(--c);color:var(--on-accent);text-decoration:none}
-.spine .sc{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:10px;line-height:1;letter-spacing:.04em;white-space:nowrap}
+.spine .sc{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:10px;font-weight:700;line-height:1;letter-spacing:.04em;white-space:nowrap}
 .spine.ghost{background:transparent;border-style:dashed;color:var(--muted)}
-.spine.ghost .sc{font-weight:700}
 /* the lit spine and its label are one item: the label wraps with the spine, never away from it */
 .shelf-pair{display:inline-flex;align-items:flex-end;flex:0 0 auto}
 .spine.vol{flex:0 0 calc(var(--spine-w) * 2);width:calc(var(--spine-w) * 2);height:calc((var(--shelf-lo) + var(--shelf-hi)) / 2)}
@@ -680,6 +683,9 @@ details.clog[open]>summary::after{content:"–"}
   /* stat tiles stay 3 or 4 across (two columns would orphan a tile) */
   .stats[data-n="4"]{grid-template-columns:repeat(4,1fr)}
   .panel.root>.hlinks:not([data-one]){grid-template-columns:repeat(3,1fr)}
+  /* P91: from 768 px the shelf's tracks sit side by side where they fit (Marketing and Technology on the tablet) */
+  .shelf-tracks{flex-direction:row;flex-wrap:wrap;gap:28px 56px}
+  .shelf-row{column-gap:20px}
 }
 @media (min-width:1100px){
   /* the drawer is a sidebar: always open, no backdrop, no menu or close button; its list scrolls on its own */
@@ -698,8 +704,6 @@ details.clog[open]>summary::after{content:"–"}
      by side where they fit */
   :root{--bleed:32px;--spine-w:26px;--spine-gap:4px;--shelf-lo:60px;--shelf-hi:210px}
   .panel.root>.hero{width:calc(100vw - var(--side) - 2 * var(--bleed));margin-left:calc(50% - (100vw - var(--side)) / 2 + var(--bleed));max-width:none}
-  .shelf-tracks{flex-direction:row;flex-wrap:wrap;gap:28px 56px}
-  .shelf-row{column-gap:20px}
   .htot{display:flex;gap:28px;padding-bottom:6px}
 }
 
