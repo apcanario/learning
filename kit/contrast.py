@@ -122,6 +122,7 @@ if __name__ == '__main__':
         tiles += [('ghost chip on card (fg)', fg, card, 4.5), ('ghost chip on page (fg)', fg, bg, 4.5), ('ghost line on card (muted)', mu, card, 4.5), ('ghost line on page (muted)', mu, bg, 4.5),
                   ('tile title on card (fg)', fg, card, 4.5), ('tile line and stat labels on card (muted)', mu, card, 4.5)]
         tiles += [(f'pill {k} on card ({c}, 78% with fg)', mix(rgb(t[c]), fg, .78), card, 4.5) for k, c in (('live', 'teal'), ('prog', 'gold'), ('unck', 'orange'), ('next', 'blue'))]
+        tiles += [('plain pill on card (muted: soon, not run yet)', mu, card, 4.5), ('plain pill on page (muted)', mu, bg, 4.5)]
         for what, c, b, bar in tiles:
             r = ratio(c, b)
             print(f'  {what:44} {r:5.2f}' + ('' if r >= bar else f'  UNDER {bar}:1'))

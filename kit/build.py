@@ -334,8 +334,7 @@ def ct_fit(rises, iv, specs, maxbytes=19500):
         for _ in range(24):
             lay = dict(name=sp['name'], width=W, height=H, spread=round(s, 4), grid=sp.get('grid', 5), simplify=.8, at=at)
             rr = viz.contours_rings(dict(kind='contours', interval=iv, rises=rises, layouts=[lay]))[sp['name']]
-            vx0, vy0, vx1, vy1 = sp['view']
-            inside = all(b[0] >= vx0 * W and b[1] >= vy0 * H and b[2] <= vx1 * W and b[3] <= vy1 * H for _, _, _, b in rr)
+            inside = all(turned_inside(b, W, H, view=sp['view']) for _, _, _, b in rr)   # at every pose of the move, not at rest only
             if inside and all(own >= min(2, lv) for _, lv, own, _ in rr):
                 break
             s *= .9
@@ -354,19 +353,20 @@ def ct_fit(rises, iv, specs, maxbytes=19500):
 TOPO_TURN, TOPO_GROW = 3, 1.06   # theme.css --topo-turn and --topo-grow: the move every drawing makes (verify.py reads them from the theme)
 
 
-def turned_inside(b, W, H, pad=3):
-    """Whether a box (x0, y0, x1, y1) in a W x H drawing stays inside it, pad units clear, at both ends of the move: the
-    drawing turned by -TOPO_TURN at scale 1 and by +TOPO_TURN at TOPO_GROW (and the two other corners of that range),
-    about its centre. A ring near the end of a 4:1 patch rises and falls by a tenth of its height; one at the centre
-    does not move."""
+def turned_inside(b, W, H, pad=3, view=None):
+    """Whether a box (x0, y0, x1, y1) in a W x H drawing stays inside it, pad units clear (or inside view, fractions of
+    the drawing: a hero's window), at both ends of the move: the drawing turned by -TOPO_TURN at scale 1 and by
+    +TOPO_TURN at TOPO_GROW (and the two other corners of that range), about its centre. A ring near the end of a 4:1
+    patch rises and falls by a tenth of its height; one at the centre does not move."""
     cx, cy = W / 2, H / 2
+    lo_x, lo_y, hi_x, hi_y = (view[0] * W, view[1] * H, view[2] * W, view[3] * H) if view else (pad, pad, W - pad, H - pad)
     for a in (-TOPO_TURN, TOPO_TURN):
         ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
         for g in (1, TOPO_GROW):
             for x, y in ((b[0], b[1]), (b[2], b[1]), (b[0], b[3]), (b[2], b[3])):
                 dx, dy = x - cx, y - cy
                 u, v = cx + g * (dx * ca - dy * sa), cy + g * (dx * sa + dy * ca)
-                if not (pad <= u <= W - pad and pad <= v <= H - pad):
+                if not (lo_x <= u <= hi_x and lo_y <= v <= hi_y):
                     return False
     return True
 
@@ -408,7 +408,7 @@ COURSE_TOPO = [dict(name='tall', width=1000, height=1000, box=(.29, .27, .71, .6
                dict(name='wide', width=1000, height=500, box=(.1, .12, .9, .66), view=(.04, .06, .96, .84), place=ct_lattice)]
 NEW_TOPO = [dict(name='tall', width=1000, height=625, box=(.24, .3, .76, .64), view=(.18, .27, .82, .67), place=ct_ridge),
             dict(name='wide', width=1000, height=270, box=(.12, .26, .88, .66), view=(.1, .12, .9, .8), place=ct_ridge)]   # views with a margin for a shorter hero (an edition's eyebrow is a line shorter)
-NEW_INTERVAL = 14000    # words between two of What's new's contour levels: its largest day (22 Oct 2026, 221,673 words) stands 15, inside the 10 to 25 the row sets (verify.py checks it), and its smallest (30 Oct, 14,178) still one, so no day it lists is flat
+NEW_INTERVAL = 11000    # words between two of What's new's contour levels: its largest day (22 Oct 2026, 221,673 words) stands 20, inside the 10 to 25 the row sets (verify.py checks it), and its smallest (30 Oct, 14,178) 1.29 levels, a ring of its own that reads (at 14,000 it stood 1.01 levels, a 2 px ring; P93 check)
 
 
 def hero_layer(rises, tone, iv, specs, phase=0.0):

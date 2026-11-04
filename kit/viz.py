@@ -102,7 +102,7 @@ figure kinds a unit declares (the Figure kinds page shows those):
             sampled every "grid" units, cut at every multiple of "interval" words by marching squares, each line
             simplified to within "simplify" units and written in whole-unit relative steps; each stretch of a line is
             drawn in the tone of the rise that dominates it there (<g class="ct-rise ct-t{tone}"> per rise, with
-            data-label, data-words and data-rings, the levels its peak stands above). A "planned": true entry needs no
+            data-label, data-words and data-rings, the levels its own words stand above; P93: each peak on a grid node). A "planned": true entry needs no
             words: it is flat, a small dashed ring (<g class="ct-plan">), in no line. Each layout is one <svg
             class="topo-l topo-{name}" data-layout="{name}"> (preserveAspectRatio slice: it covers its frame); "at"
             places each rise (fractions of the width and height, one per rise, in order); without it the rises stand in
@@ -2774,6 +2774,9 @@ def _ct_field(d, lay, rises, iv, live):
     if not all(isinstance(v, (int, float)) and v > 0 for v in (W, H, g, lay.get('spread'))):
         _fail(K, f'layout {lay.get("name")!r}: width, height, spread and grid must be positive numbers')
     at = _ct_layout(d, K, lay, len(rises))
+    # P93 check: each written rise's peak stands on a grid node, so the sampled field there holds at least its words
+    # (between nodes a rise barely over a level lost that level: What's new's 30 Oct, 14,178 words at 14,000 a level)
+    at = [[round(a[0] * W / g) * g / W, round(a[1] * H / g) * g / H] if k in live else a for k, a in enumerate(at)]
     sp, eps = lay['spread'], lay.get('simplify', .6)
     per = {k: [] for k in live}
     lv_of, own, box = {}, {}, {}
@@ -2807,8 +2810,7 @@ def _ct_field(d, lay, rises, iv, live):
                     per[who].append((run, False)); run, who = [x], w
             per[who].append((run, False))
     for k in live:
-        i, j = min(nx - 1, round(at[k][0] * W / g)), min(ny - 1, round(at[k][1] * H / g))
-        lv_of[k] = int(F[j][i] // iv)
+        lv_of[k] = int(rises[k]['words'] // iv)   # P93 check: its own height in levels, one count for every layout (with the field at its peak Rome's U11, 4.996 levels, read 4 in one layout and 5 in the other)
         rings = [p for p, closed in per[k] if closed]
         own[k] = len([1 for p in rings if len({(round(x), round(y)) for x, y in p}) >= 2])
         xs = [x for p in rings for x, _ in p] or [at[k][0] * W]
@@ -2836,7 +2838,8 @@ def contours_rings(d):
 def contours(d):
     """The topography (the module docstring, "The home kind"): one rise per entry of "rises", its height its words, in
     every layout; returns the layer's HTML. A written rise is a <g class="ct-rise ct-t{tone}"> holding every stretch of
-    contour line it dominates, with data-label, data-words, data-rings (the contour levels its peak stands above),
+    contour line it dominates, with data-label, data-words, data-rings (the contour levels its own words stand above,
+    the same in every layout; P93),
     data-at (its peak, in the layout's units) and data-box (the box of its own closed rings, P93: verify.py maps both
     to the screen to check every rise in view); a planned one ("planned": true) a dashed ring, <g class="ct-plan">, flat
     (no height, in no line). P93: a patch may be all planned (a planned course's ghost tile, a planned unit), its rings

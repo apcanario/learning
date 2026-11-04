@@ -660,7 +660,7 @@ TILES_JS = r"""(pid) => {
     const r = {name, kind: t.classList.contains('ghost') ? 'ghost' : disc ? 'disc' : t.tagName === 'A' ? 'link' : 'other', cls: [...t.classList].filter(c => !['ghost', 'pending'].includes(c)).join(' '),
       kids, chip: [...box.querySelectorAll('.ctop > .cname > .cpart')].map(x => x.textContent), pill: box.querySelector('.ctop > .pill') ? box.querySelector('.ctop > .pill').textContent : null,
       stats: [...box.querySelectorAll('.cstats > span')].map(x => [x.querySelector('b') ? x.querySelector('b').textContent : null, x.textContent.replace(x.querySelector('b') ? x.querySelector('b').textContent : '', '').trim()]),
-      lines: p ? (getComputedStyle(p).webkitLineClamp === '2' ? 2 : Math.round(p.scrollHeight / lh)) : 0, clipped: p ? p.scrollHeight > p.clientHeight + 1 : false, open: disc ? t.open : null,
+      lines: p ? Math.round(p.getBoundingClientRect().height / lh) : 0,   /* as painted (P93 check: a stretched line showed a third line under its clamp) */ clipped: p ? p.scrollHeight > p.clientHeight + 1 : false, open: disc ? t.open : null,
       href: t.getAttribute('href'), target: t.getAttribute('data-target'), mods: t.getAttribute('data-mods'),
       rows: disc ? t.querySelectorAll(':scope > .hrows > .hrow').length : null,
       rises: sv ? [...sv.querySelectorAll('g.ct-rise')].map(g => [g.getAttribute('data-label'), +g.getAttribute('data-words')]) : null,

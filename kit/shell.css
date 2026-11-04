@@ -263,8 +263,9 @@ pre.tree{background:var(--card);border:1px solid var(--line);border-radius:8px;p
 .hrow.soon .n{color:var(--dim)}
 .hrow.soon small{color:var(--dim)}
 /* status pills */
-.pill{flex:0 0 auto;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);border:1px solid var(--line-2);border-radius:999px;padding:2px 8px;margin-top:3px}
-/* P93: a pill's word is its tone mixed 78% with --fg, as the eyebrow's course label (4a), so it reads at 4.5:1 on a tile's
+.pill{flex:0 0 auto;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:2px 8px;margin-top:3px}
+/* P93 check: a plain pill ("soon", "not run yet", "coming soon") in --muted: in --dim it measured about 3.5:1 on a dark
+   card. P93: a toned pill's word is its tone mixed 78% with --fg, as the eyebrow's course label (4a), so it reads at 4.5:1 on a tile's
    card in both themes (the dark blue "next" measured about 4.1:1 there in its own tone); its outline stays the tone */
 .pill.live{color:color-mix(in srgb,var(--teal) 78%,var(--fg));border-color:var(--teal)}
 .pill.prog{color:color-mix(in srgb,var(--gold) 78%,var(--fg));border-color:var(--gold)}
@@ -426,8 +427,9 @@ details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter
 .course.live .cname{white-space:nowrap}   /* the chip on one line; the status pill drops under it */
 .course.live .ctop{flex-direction:column;align-items:flex-start;row-gap:8px}   /* the pill under the chip on every tile, so no tile's row differs */
 @media (max-width:340px){.course.live>p,.course.live>summary>p{font-size:12.5px;line-height:1.45}}
-/* P91: on a narrow phone the three stats stand in three columns, each number over its label, alike on every tile */
-@media (max-width:400px){.course.live .cstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 10px}.course.live .cstats>span{display:flex;flex-direction:column;line-height:1.3}}
+/* P91: on a narrow phone the three stats stand in three columns, each number over its label; P93 check: on every tile
+   at every width (side by side from 768 px a tile is a phone's width, and a unit's "12 modules written" wrapped its row) */
+.course.live .cstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 10px}.course.live .cstats>span{display:flex;flex-direction:column;line-height:1.3}
 /* P93: the tile as a disclosure (a history unit, a planned course): the summary is the tile, laid out as the linked
    one is; the chevron at its top right turns when it opens; the module rows (or the scope and spine) under it */
 details.course.live{padding:0}
@@ -749,10 +751,12 @@ details.clog[open]>summary::after{content:"–"}
 
 /* 7 · Interaction ------------------------------------------------------------ */
 /* A tile is a flex column so that side-by-side tiles share a height and their stats and patches sit level at the
-   bottom (the line takes the slack; P91: the meter and the button are gone; P93: a disclosure tile's summary is the
-   column, the full height of its box while it is closed). */
+   bottom (P91: the meter and the button are gone; P93: a disclosure tile's summary is the column, the full height of
+   its box while it is closed). */
 .course.live:not(details){display:flex;flex-direction:column}
-.course.live>p,.course.live>summary>p{flex:1 1 auto}
+/* P93 check: the slack goes above the stats (or, on a ghost, the patch), not to the line: a stretched line showed a
+   third line under its clamp's ellipsis */
+.course.live>.cstats,.course.live>summary>.cstats,.course.live.ghost>summary>.topo-patch{margin-top:auto}
 /* transitions on the properties the states below change; respects reduced motion */
 @media (prefers-reduced-motion:no-preference){
   .course,.smod,.hrow,.ditem,.duh,.hbtn,.ib,.toc a,.pager a,.copy,.rlink,.crumbs a,details.course.live>summary,details.course.live>summary>.chev,details.rules>summary,details.clog>summary,.prompt summary,.quiz summary{transition:background-color .15s,border-color .15s,color .15s,box-shadow .15s,transform .15s}
