@@ -318,8 +318,8 @@ HOME_JS = r'''(tones) => {
   out.tones = tones.map(tone); probe.remove();
   if (!al || al.getAttribute('aria-hidden') !== 'true') bad.push('the cycling area line is not hidden from a screen reader');
   if (al && [...al.querySelectorAll('a, button, [tabindex]')].length) bad.push('the area line holds a link or a focus stop');
-  out.static = st ? (() => { const c = st.cloneNode(true); c.querySelectorAll('.harea-sr').forEach(x => x.remove()); return c.textContent; })() : null;   // as seen; the screen reader's commas left out
-  out.staticSr = st ? [...st.querySelectorAll('.harea-dot')].map(d => [d.querySelector('[aria-hidden="true"]') ? 1 : 0, d.querySelector('.harea-sr') ? d.querySelector('.harea-sr').textContent : null]) : [];
+  out.static = st ? (() => { const c = st.cloneNode(true); c.querySelectorAll('.hsr').forEach(x => x.remove()); return c.textContent; })() : null;   // as seen; the screen reader's commas left out
+  out.staticSr = st ? [...st.querySelectorAll('.harea-dot')].map(d => [d.querySelector('[aria-hidden="true"]') ? 1 : 0, d.querySelector('.hsr') ? d.querySelector('.hsr').textContent : null]) : [];
   out.staticTones = st ? [...st.children].filter(e => !e.classList.contains('harea-dot')).map(e => getComputedStyle(e).color) : [];
   out.staticAria = st ? st.getAttribute('aria-hidden') : 'missing';
   out.lineShown = vis(al); out.staticShown = !!st && st.getBoundingClientRect().width > 2 && getComputedStyle(st).clipPath === 'none';
@@ -327,10 +327,13 @@ HOME_JS = r'''(tones) => {
   // the quiet link: names the newest unit and its day, to #new, at least 44 px, outlined, not filled
   const ln = copy && copy.querySelector('a.hnew');
   if (ln) { const cs = getComputedStyle(ln), r = ln.getBoundingClientRect();
-    out.link = [ln.querySelector('span').textContent, ln.getAttribute('href'), ln.getAttribute('data-target'), Math.round(r.height), cs.backgroundColor, cs.borderTopStyle, parseFloat(cs.borderTopWidth)];
+    const vt = e => { const c = e.cloneNode(true); c.querySelectorAll('.hsr').forEach(x => x.remove()); return c.textContent; };   // as seen
+    out.linkSr = [...ln.querySelectorAll(':scope > span > [aria-hidden="true"]')].length === 2 && [...ln.querySelectorAll('.hsr')].length === 2;
+    out.link = [vt(ln.querySelector('span')), ln.getAttribute('href'), ln.getAttribute('data-target'), Math.round(r.height), cs.backgroundColor, cs.borderTopStyle, parseFloat(cs.borderTopWidth)];
     if (r.height < 43.5) bad.push(`the What's new link is ${r.height.toFixed(0)} px tall, under 44`);
     if (cs.backgroundColor !== 'rgba(0, 0, 0, 0)') bad.push(`the What's new link is filled (${cs.backgroundColor}), not outlined`);
     if (cs.borderTopStyle === 'none' || !(parseFloat(cs.borderTopWidth) > 0)) bad.push('the What\'s new link has no outline');
+    if (!out.linkSr) bad.push('the What\'s new link\'s dots are not aria-hidden with a comma for a screen reader');
     if (ln.getAttribute('href') !== '#new' || ln.getAttribute('data-target') !== 'new') bad.push('the What\'s new link does not open #new'); }
   else bad.push('no quiet link to What\'s new');
   // the contour layer: aria-hidden, no text, one layout shown (tall below 1100 px, wide from it), one rise per area
@@ -478,7 +481,7 @@ def _hero_contrast(pg, label, fails, only=None):
         if lo < worst[0]: worst = [round(lo, 2), it['what']]
         each.append(f'{it["what"].split(chr(34))[1] if chr(34) in it["what"] else it["what"]} {lo:.2f}/{need:g}')
         if lo < need - .005: fails.append(f'home {label}: {it["what"]} reaches {lo:.2f}:1 over the contours under it (needs {need}:1)')
-    print(f'home {label}: hero texts over the contours, {len(items)} measured pixel by pixel, lowest {worst[0]}:1 ({worst[1]}); each (lowest/needed): ' + '; '.join(each))
+    print(f'home {label} ({pg.evaluate("innerWidth")} px): hero texts over the contours, {len(items)} measured pixel by pixel, lowest {worst[0]}:1 ({worst[1]}); each (lowest/needed): ' + '; '.join(each))
 
 def check_home(pg, label, fails, expect, motion=False):
     """P92: the home's layout at one width (HOME_JS): the hero (the headline, the area line and its static line, the

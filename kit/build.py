@@ -820,8 +820,9 @@ whatsnew = f"""
 # hidden from a screen reader, which reads the static line after it; under reduced motion the static line shows and
 # nothing moves. And the quiet link to What's new, naming the newest unit and its day, as P91's shelf label did.
 hero_areas = ('<p class="harea" aria-hidden="true">' + ''.join(f'<span class="harea-w" style="--c:{t["color"]};--k:{k}">{html.escape(t["name"])}</span>' for k, t in enumerate(THEMES)) + '</p>'
-              + '<p class="harea-all">' + '<span class="harea-dot"><span aria-hidden="true">&nbsp;·</span><span class="harea-sr">,</span> </span>'.join(f'<span style="--c:{t["color"]}">{html.escape(t["name"])}</span>' for t in THEMES) + '</p>')
-hero_new = (f'<a class="hnew" href="#new" data-target="new"><span>What\'s new · {html.escape(NEWEST["code"])} · {short_date(NEWEST["date"]).rsplit(" ", 1)[0]}</span>'
+              + '<p class="harea-all">' + '<span class="harea-dot"><span aria-hidden="true">&nbsp;·</span><span class="hsr">,</span> </span>'.join(f'<span style="--c:{t["color"]}">{html.escape(t["name"])}</span>' for t in THEMES) + '</p>')
+_sep = '<span aria-hidden="true"> ·</span><span class="hsr">,</span> '   # P92 check: the dot never read aloud; a comma for the pause
+hero_new = (f'<a class="hnew" href="#new" data-target="new"><span>What\'s new{_sep}{html.escape(NEWEST["code"])}{_sep}{short_date(NEWEST["date"]).rsplit(" ", 1)[0]}</span>'
             '<span class="hnew-a" aria-hidden="true">→</span></a>') if NEWEST else ''
 new_link = '<div class="hlinks" data-one><a class="hbtn alt" href="#new" data-target="new"><span>What\'s new</span><b>Every unit and report filed and every course started, by day</b></a></div>'
 # "How every course works": the constants. P80 (1 Nov 2026): an edition replaces any line that names a course it does

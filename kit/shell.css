@@ -414,7 +414,7 @@ details.course.soon .nspine span{font-family:var(--mono);font-size:10.5px;letter
 .harea-w,.harea-all>span{color:var(--c)}
 .harea-all{text-wrap:balance}
 .harea-all>.harea-dot{color:var(--muted)}
-.harea-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}   /* the comma a screen reader pauses on; the dot itself is aria-hidden, never read as "dot" */
+.hsr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}   /* the comma a screen reader pauses on; the dot itself is aria-hidden, never read as "dot" (the static line and the What's new link) */
 .hhome .lede{margin:0 0 18px}
 .hnew{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border:1px solid var(--line-2);border-radius:2px;background:transparent;color:var(--fg);text-decoration:none;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em}
 .hnew-a{color:var(--muted)}
