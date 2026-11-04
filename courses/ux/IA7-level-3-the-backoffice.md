@@ -203,7 +203,7 @@ The reasoning (Perqo, fictional). Most finding in Admin is known-item seeking, i
 
 ### 4.6 · Reports as views
 
-IA4 kept Reports off the object map: a report is an arrangement of objects, "allocations and transactions summed by group and period", and belongs in Admin's navigation model (IA4, section 4.3). Here it is. Reports holds five views (Perqo, fictional): Spend by category, Spend by employee group, Budget use (each group's budgets against what has been spent), Claims by status, and Card payments (each card payment with its employee, merchant, category, amount and date). Each is a page with an identifier and an address, and no object ID. Every row of a report is a contextual route to the records it sums, so a number in a report can always be traced to the claims, card payments or allocations behind it. Finance sees all five. HR sees Budget use and Claims by status, and not the other three: Card payments lists individual spending, which no HR task needs (section 3.3), and the two spend reports serve finance's work alone.
+IA4 kept Reports off the object map: a report is an arrangement of objects, "allocations and transactions summed by group and period", and belongs in Admin's navigation model (IA4, section 4.3). Here it is. Reports holds five views (Perqo, fictional): Spend by category, Spend by employee group, Budget use (each group's budgets against what has been spent), Claims by status, and Card payments (each card payment with its employee, merchant, category, amount and date). Each is a page with an identifier and an address, and no object ID. Every row of a report is a contextual route to the records it sums, so a number in a report can always be traced to the claims, card payments or allocations behind it. Finance sees all five. HR sees two, Budget use and Claims by status, and not the other three: Card payments lists individual spending, which no HR task needs (section 3.3), and the two spend reports serve finance's work alone.
 
 ## 5 · Workflows and states
 
@@ -432,7 +432,7 @@ Roles as rows, Admin's six areas as columns, IA1's order (Perqo, fictional). A b
 
 | Role | Employees | Budgets | Policies | Approvals | Reports | Settings |
 |---|---|---|---|---|---|---|
-| HR manager | edit: create groups, invite, resend, move, mark as left | view | edit: policy, covered items | decide: approve, reject, approve selected, except their own claims | some: Budget use, Claims by status | profile: Company read only, Your profile |
+| HR manager | edit: create groups, invite, resend, move, mark as left | view | edit: policy, covered items | decide: approve, reject, approve selected, never on their own claim | some: Budget use, Claims by status | profile: Company read only, Your profile |
 | Finance manager | view | set: set budgets for a group | view | (not in navigation) | all five reports | profile: Company read only, Your profile |
 | Account owner | as role | as role | as role | as role | as role | manage: Company, Admins, Activity log, Your profile |
 
@@ -444,9 +444,9 @@ The figure draws the same matrix with a mark per cell and a legend. Its rows tak
  {"label": "Finance manager", "tone": 4, "cells": ["view", "set", "view", null, "all", "profile"]},
  {"label": "Account owner", "tone": 4, "cells": ["as role", "as role", "as role", "as role", "as role", "manage"]}],
  "legend": [
-  {"mark": "edit", "means": "Employees: create groups, invite, resend, move, mark as left; Policies: edit policy, add covered items", "tone": 4},
-  {"mark": "decide", "means": "-> approve, -> reject, -> approve selected [never their own claim]", "tone": 4},
-  {"mark": "set", "means": "set budgets for a group", "tone": 4},
+  {"mark": "edit", "means": "Employees: -> create group, -> invite employees, -> invite, -> move to group, -> resend invitation, -> mark as left; Policies: -> edit policy, -> add covered items", "tone": 4},
+  {"mark": "decide", "means": "-> approve, -> reject, -> approve selected [never on their own claim]", "tone": 4},
+  {"mark": "set", "means": "-> set for a group (Set budgets)", "tone": 4},
   {"mark": "view", "means": "read only", "tone": 4},
   {"mark": "all", "means": "all five reports", "tone": 4},
   {"mark": "some", "means": "Budget use and Claims by status only", "tone": 4},
@@ -471,10 +471,10 @@ The three rules of section 3.2, applied (Perqo, fictional):
 
 #### C.1 · Admin's pages
 
-Admin's structure as a sitemap at F2 with identifiers, IA2's type tags (section, a landing page for a group; index, a list of items; stack, many pages of one type; detail, one item; form; IA2, section 5.2) and notation (Perqo, fictional). Notes carry the page ID, the roles that reach the page when not all do or the owner of its work queue, "queue" with the queue's [condition], "views" for the reports, and "→ see" for a route drawn elsewhere. A claim's page sits under its employee's record (section 4.2); Approvals and Claims by status open it there, and each entry of the Activity log opens its record. The six areas keep IA1's order, and Sign in comes last. Every box is tone 4, Perqo Admin; the root names the surface and carries no type tag, because the global navigation is not a page.
+Admin's structure as a sitemap at F2 with identifiers, IA2's type tags (section, a landing page for a group; index, a list of items; stack, many pages of one type; detail, one item; form; IA2, section 5.2) and notation (Perqo, fictional). Notes carry the page ID, the roles that reach the page when not all do or the owner of its work queue, "queue" with the queue's [condition], "views" for the reports, "→ see" for a route drawn elsewhere, and, where it decides the page, what the page holds or how its list is ordered. A claim's page sits under its employee's record (section 4.2); Approvals and Claims by status open it there, and each entry of the Activity log opens its record. The six areas keep IA1's order, and Sign in comes last. Every box is tone 4, Perqo Admin; the root names the surface and carries no type tag, because the global navigation is not a page.
 
 ```viz
-{"kind": "sitemap", "stack_from": 2, "caption": "Sitemap: Perqo Admin's pages at F2, with an identifier on every page (AD-0 to AD-6) and IA2's type tags; the structure the navigation model's routes run through; supports the decision on where each object's list, detail, create form, queue and view lives (Deliverable C, C.1). Every box tone 4, Perqo Admin. Notes give the page ID, roles where not all reach it or the owner of a queue, 'queue' with its [condition], and 'views'; '→ see' points to a page or surface drawn elsewhere. Six areas from IA1's surfaces map, kept; Policies one per employee group from IA2, section 5.3; Reports as views from IA4, section 4.3; the rest set in sections 3.2 to 3.4, 4.1 to 4.6 and 5.3, Deliverable A, A.1, and Deliverable C, C.4 and C.5. Perqo is fictional.", "root": {"label": "Perqo Admin", "note": "the surface; AD-1 to AD-6 are global routes, by role", "tone": 4, "children": [
+{"kind": "sitemap", "stack_from": 2, "caption": "Sitemap: Perqo Admin's pages at F2, with an identifier on every page (AD-0 to AD-6) and IA2's type tags; the structure the navigation model's routes run through; supports the decision on where each object's list, detail, create form, queue and view lives (Deliverable C, C.1). Every box tone 4, Perqo Admin. Notes give the page ID, roles where not all reach it or the owner of a queue, 'queue' with its [condition], 'views', and what a page holds or how its list is ordered where that decides it; '→ see' points to a page or surface drawn elsewhere. Six areas from IA1's surfaces map, kept; Policies one per employee group from IA2, section 5.3; Reports as views from IA4, section 4.3; the rest set in sections 3.2 to 3.4, 4.1 to 4.6 and 5.3, Deliverable A, A.1, and Deliverable C, C.4 and C.5. Perqo is fictional.", "root": {"label": "Perqo Admin", "note": "the surface; AD-1 to AD-6 are global routes, by role", "tone": 4, "children": [
  {"label": "Employees", "type": "index", "note": "AD-1 · by name; filter by group; find", "tone": 4, "children": [
   {"label": "Employee", "type": "stack", "note": "AD-1.1 · one per employee; claims, budgets, Perqo card status (HR), History", "tone": 4, "children": [
    {"label": "Claim", "type": "stack", "note": "AD-1.1.1 · one per claim; modal: Reject claim (HR)", "tone": 4}]},
@@ -490,7 +490,7 @@ Admin's structure as a sitemap at F2 with identifiers, IA2's type tags (section,
   {"label": "Policy", "type": "stack", "note": "AD-3.1 · open categories, auto-approve limit, covered items, History", "tone": 4, "children": [
    {"label": "Edit policy", "type": "form", "note": "AD-3.1.1 · HR", "tone": 4},
    {"label": "Covered items", "type": "index", "note": "AD-3.1.2 · HR adds; all view", "tone": 4}]}]},
- {"label": "Approvals", "type": "index", "note": "AD-4 · queue [over the policy's auto-approve limit], owned by HR; by policy, oldest first; opens claims → see AD-1.1.1", "tone": 4},
+ {"label": "Approvals", "type": "index", "note": "AD-4 · queue [over the policy's auto-approve limit], owned by HR; by policy, oldest first; count on the global route; opens claims → see AD-1.1.1", "tone": 4},
  {"label": "Reports", "type": "section", "note": "AD-5 · views", "tone": 4, "children": [
   {"label": "Spend by category", "type": "index", "note": "AD-5.1 · finance", "tone": 4},
   {"label": "Spend by employee group", "type": "index", "note": "AD-5.2 · finance", "tone": 4},
@@ -503,7 +503,7 @@ Admin's structure as a sitemap at F2 with identifiers, IA2's type tags (section,
    {"label": "Add admin user", "type": "form", "note": "AD-6.2.1 · owner", "tone": 4}]},
   {"label": "Activity log", "type": "index", "note": "AD-6.3 · owner; each entry opens its record", "tone": 4},
   {"label": "Your profile", "type": "detail", "note": "AD-6.4 · every admin user", "tone": 4}]},
- {"label": "Sign in", "type": "form", "note": "AD-0 · Looking for your benefits? Get the Perqo app → see S-6", "tone": 4}]}}
+ {"label": "Sign in", "type": "form", "note": "AD-0 · line \"Looking for your benefits? Get the Perqo app\" → see S-6", "tone": 4}]}}
 ```
 
 The identifiers, for citing (Perqo, fictional): AD-0 Sign in; AD-1 Employees, AD-1.1 Employee, AD-1.1.1 Claim, AD-1.2 Employee groups, AD-1.2.1 Employee group, AD-1.2.2 Create group, AD-1.3 Invite employees, AD-1.4 Not joined; AD-2 Budgets, AD-2.1 Budget, AD-2.2 Set budgets; AD-3 Policies, AD-3.1 Policy, AD-3.1.1 Edit policy, AD-3.1.2 Covered items; AD-4 Approvals; AD-5 Reports, AD-5.1 Spend by category, AD-5.2 Spend by employee group, AD-5.3 Budget use, AD-5.4 Claims by status, AD-5.5 Card payments; AD-6 Settings, AD-6.1 Company, AD-6.2 Admins, AD-6.2.1 Add admin user, AD-6.3 Activity log, AD-6.4 Your profile.
@@ -523,14 +523,14 @@ IA2's navigation table, Admin's column, at F2 (IA2, section 5.3; route types fro
 
 Where each person lands after signing in (*new*, Perqo, fictional): an HR manager on Approvals, a finance manager on Budgets, an account owner where their role lands them. The placing follows frequency, the rule IA6 took from Sears and Shneiderman's split menus and Nielsen's progressive disclosure (IA6, section 1.2): the most frequent work of each role is deciding claims for HR and setting budgets for finance (IA4, A.3), assumed until measured.
 
-The same model as a matrix, one row per area. Its rows take tone 4, Perqo Admin.
+The same model as a matrix, one row per area of the global navigation: its local routes, its work queue, its contextual routes and the roles that reach it (the supplemental row, none, is left out). Its rows take tone 4, Perqo Admin.
 
 ```viz
-{"kind": "matrix", "caption": "Navigation model: Perqo Admin's six areas with their local routes, work queues, contextual routes out and the roles that reach each, F2; supports the decision on which routes the navigation components must carry, for which role (Deliverable C, C.2). Rows tone 4, Perqo Admin. A blank cell is an area with no work queue (Deliverable C, C.4). Route types from Rosenfeld, Morville and Arango, 2015, ch. 8, through IA2, section 1.4; areas from IA1's surfaces map; IA2, section 5.3's Admin column kept; contextual routes from the relationships in Deliverable A, A.3, following Prater 2015; queues from Deliverable C, C.4; roles from Deliverable B. Perqo is fictional.", "cols": ["Local routes", "Work queue", "Contextual routes out", "Roles"], "rows": [
+{"kind": "matrix", "caption": "Navigation model: Perqo Admin's six areas with their local routes, work queues, contextual routes and the roles that reach each, F2; supports the decision on which routes the navigation components must carry, for which role (Deliverable C, C.2). Rows tone 4, Perqo Admin. A blank cell is an area with no work queue (Deliverable C, C.4). Route types from Rosenfeld, Morville and Arango, 2015, ch. 8, through IA2, section 1.4; areas from IA1's surfaces map; IA2, section 5.3's Admin column kept; contextual routes from the relationships in Deliverable A, A.3, following Prater 2015; queues from Deliverable C, C.4; roles from Deliverable B. Perqo is fictional.", "cols": ["Local routes", "Work queue", "Contextual routes", "Roles"], "rows": [
  {"label": "Employees", "tone": 4, "cells": ["All employees, Employee groups, Not joined", "Not joined", "employee to claims, budgets, card status; group to policy, employees, budgets", "HR edit; finance view"]},
  {"label": "Budgets", "tone": 4, "cells": ["current period, next period", "No budget for next period", "budget to its employee group", "finance set; HR view"]},
  {"label": "Policies", "tone": 4, "cells": ["one per employee group", null, "policy to its employee group", "HR edit; finance view"]},
- {"label": "Approvals", "tone": 4, "cells": ["none: one list, grouped by policy", "Approvals, count on the global route", "claim to employee, policy, budget", "HR decide"]},
+ {"label": "Approvals", "tone": 4, "cells": ["none: one list, grouped by policy", "Approvals, count on the global route", "claim to employee, policy, budget", "HR decide; not in finance's navigation"]},
  {"label": "Reports", "tone": 4, "cells": ["the five reports", null, "report row to the records it sums", "finance all five; HR two"]},
  {"label": "Settings", "tone": 4, "cells": ["Company, Admins, Activity log, Your profile", null, "audit entry to its record", "owner all; others Company read only and Your profile"]}]}
 ```
@@ -557,7 +557,7 @@ Every list in Admin, with its default order and what acts on it (Perqo, fictiona
 
 | Queue | Object and state | Condition | Owner | Where | Order | Volume, sizing client | Cleared by |
 |---|---|---|---|---|---|---|---|
-| Approvals | claim, Submitted | over the policy's auto-approve limit; never the viewer's own claim (EX-1) | HR manager | AD-4; count on the global route | grouped by policy, oldest first; Overdue after five working days (EX-3) | about 9 a working day (assumed) | approve or reject (T3, T4); T5 |
+| Approvals | claim, Submitted | over the policy's auto-approve limit; the viewer's own claim is listed, and only another HR manager can decide it (EX-1) | HR manager | AD-4; count on the global route | grouped by policy, oldest first; Overdue after five working days (EX-3) | about 9 a working day (assumed) | approve or reject (T3, T4); T5 |
 | Not joined | employee, Invited | invited more than 14 days ago | HR manager | AD-1.4 | oldest invitation first | not set | resend invitation; mark as left |
 | No budget for next period | employee group | no budgets set for the next period | finance manager | top of AD-2 | employee group name | up to 14 | set budgets |
 

@@ -109,7 +109,7 @@ Every fact below is a course convention (Perqo, fictional); IA5 keeps every regi
 - **Plans** (§5.4): two, each with a published price per employee per month. Free: plan names and amounts.
 - **No self-serve sign-up and no free trial** (§5.5): a client starts after a contract. Free: the contract's terms.
 - **Get the Perqo app** (§5.5; Deliverable A): S-6, owned by support, holds the download links; employees join from HR's invitation and do not sign in on perqo.com. Free: the app stores named.
-- **Assumed, untested** (§5.5): an employee may press Sign in and land on Admin's sign-in screen; proposed for IA7: a line there pointing employees to Get the Perqo app. Free: the test's result; IA7's decision.
+- **Assumed, untested** (§5.5): an employee may press Sign in and land on Admin's sign-in screen; IA5 proposed a line there pointing employees to Get the Perqo app, which IA7 took with one change (see "Set by IA7": the line is shown to everyone). Free: the test's result.
 - **Language** (§5.3): perqo.com is published in English only today. Free: which markets and languages come next (DD-IA3).
 - **Campaign pages** (§5.2; Deliverable A): under /lp/, noindex, in no navigation, template T-12, each with an owner and an end date, redirected at the end; L-01 "Learning budgets for engineering teams" is live. Free: campaign dates and channels.
 - **Help centre additions** (Deliverable A): Approvals topic under For HR and finance teams (H-1.3, H-1.3.1); Card topic under For employees (H-2.3, two articles); articles H-1.2.5 (replaces the PDF, listed under both audiences), H-2.1.3, H-2.1.4 (tagged CAT-HEA-FIT, answers "gym"), H-2.2.2; Balance gets its own topic page at /help/employees/balance and H-2.2.1 moves with a redirect; H-0.1 search results page, noindex. Free: the articles' text.
@@ -142,6 +142,34 @@ From IA6's table "Perqo facts set by this unit", verbatim, with the section that
 - New calls to action by the employee: claim -> view; catalogue item -> view (Deliverable A).
 - Complexity and priority of the app's calls to action, and the attribute order on each screen, as in A.2 (Deliverable A, A.2).
 
+## Set by IA7 (3 Nov 2026)
+
+From IA7's table "Perqo facts set by this unit", verbatim but for the layout (the section that sets each in brackets, then what it leaves free). IA7 keeps every registered fact and renames none of IA1 to IA6's labels, objects, attributes or relationships; it answers IA4's "not set (IA7)" cells and two "role not set: IA7" rows, and IA5's proposal for Admin's sign-in screen.
+
+- A sizing client, used for volumes here and by DD-IA2: 1,200 employees, 14 employee groups, three admin users (two HR managers, one finance manager); about 1,200 claims and 9,600 card payments a month; 15% of claims over the limit, about 180 a month, about 9 a working day over 20 working days; up to 4,800 allocations a period; it is not the example client of IA3 and IA6 (section 2.2). Free: the example client's size; measured volumes.
+- Employee status: Invited, Active, Left; Left is an end state, after which the person cannot sign in to the app; claims submitted before leaving are still decided (sections 2.2, 5.1). Free: what happens to a leaver's allocations and card (IA8).
+- Account owner: exactly one per client, an admin user who also holds the HR manager or finance manager role; edits company details, adds and removes admin users, changes roles, reads the Activity log, hands ownership on; Perqo sets up the first admin user as account owner (section 3.4). Free: the rest of a client's onboarding.
+- Admin user status: Active, Removed; a removed admin user's name stays on their decisions and changes (section 2.2).
+- Every client has at least two admin users with the HR manager role; an HR manager cannot decide their own claim (section 3.3; Deliverable D, EX-1).
+- Claim attributes decided by and rejection note; rejecting a claim needs a note to the employee (section 2.2; Deliverable D). Free: the notes' wording.
+- A waiting claim reserves nothing: spent counts approved and paid claims and card payments; on HR's approval the balance is checked again (T5) (section 5.2; Deliverable D).
+- A claim waiting more than five working days is marked Overdue in Approvals (Deliverable D, EX-3).
+- Audit entry (O-17): who, action, object and its ID, date and time, before and after; shown as History on each detail page and as the Activity log in Settings (section 5.3). Free: how long entries are kept.
+- Relationships R-21 (admin user is also employee), R-22 (claim is decided by admin user), R-23 (audit entry records a change to), R-24 (audit entry is made by admin user) (Deliverable A, A.3).
+- Admin's name for the card is "Perqo card", status only (Active, Frozen, Not issued), on the employee's record; Admin does not show notifications (section 2.3). Free: whether Admin sends HR messages of its own.
+- Roles cover the whole client; the role-by-section matrix and the calls to action with their roles in Deliverables A and B; finance does not see Approvals; HR sees Budget use and Claims by status only (section 3; Deliverables A, B). Free: scoping roles to employee groups.
+- Admin's pages AD-0 to AD-6 as in C.1; addresses identifier first (Deliverable C, C.1). Free: Admin's domain; the identifiers' format.
+- Reports holds five views: Spend by category, Spend by employee group, Budget use, Claims by status, Card payments (section 4.6). Free: the reports' columns beyond those named.
+- Work queues: Approvals (HR), Not joined (HR, Invited over 14 days), No budget for next period (finance) (Deliverable C, C.4).
+- Bulk actions: approve selected; move to group; resend invitation; rejection one at a time (section 4.4).
+- No search across Admin; a find field on each long list (section 4.5). Free: when a global search is added.
+- Landing after sign-in: HR on Approvals, finance on Budgets (Deliverable C, C.2).
+- A policy change applies to claims submitted after it (section 4.3).
+- Admin is used in a desktop browser (assumed); on a narrow window list and detail show one at a time (section 4.3).
+- Admin's sign-in screen carries "Looking for your benefits? Get the Perqo app", linking to S-6, for everyone (IA5's proposal, taken with one change) (Deliverable C, C.5). Free: the test's result.
+- The invitation carries the client's name from Company and the Join link; Resend invitation sends it again (Deliverable C, C.4). Free: how long an invitation is valid.
+- Model names of Admin's objects and attributes, as in A.2 (Deliverable A, A.2).
+
 ## Not yet set (free for the unit that needs it)
 
-The merchant side's own surface and anything of it beyond IA3's card offers and IA4's merchant and offer objects; pages below the top level on Admin beyond the fragments above (perqo.com's are IA5's inventory; the app's are IA6's map, A-0 to A-5); roles inside Admin beyond HR manager and finance manager; volumes (IA3 and IA6 assume frequencies of use only); the purchase lifecycle of a client company; the employee's enrolment beyond IA6's invitation and Join; any number (budgets, limits, counts) beyond IA5's page, template and module counts; any named person or client company (none may be real).
+The merchant side's own surface and anything of it beyond IA3's card offers and IA4's merchant and offer objects; pages on Admin beyond IA7's map, AD-0 to AD-6 (perqo.com's are IA5's inventory; the app's are IA6's map, A-0 to A-5); roles inside Admin beyond HR manager, finance manager and IA7's account owner, and scoping a role to some employee groups; volumes beyond IA7's sizing client (IA3 and IA6 assume frequencies of use only); the purchase lifecycle of a client company; the employee's enrolment beyond IA6's invitation and Join; any number (budgets, limits, amounts) beyond IA5's page, template and module counts and IA7's sizing-client volumes, 15% over the limit, five working days and 14 days; any named person or client company (none may be real).
