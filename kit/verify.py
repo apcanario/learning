@@ -42,7 +42,7 @@ examples block uses only the keys viz.VIZ_KEYS documents for its kind, and viz.r
 Opening notes (P73): a markdown unit's text before its first heading is a closed accordion after Sources, "The writer's
 opening note", on every unit that has one and on none that has not; section 1 opens on its heading; a deep link lands.
 Home (P92, 4 Nov 2026; P91's shelf, P90's map and Continue gone), at 320, 360, 390, 430, 768 and 1280 px, dark and
-light, with reduced motion emulated, and once more at 390 and 1280 px with motion allowed: the hero holds the contour
+light, with reduced motion emulated, and once more at every width with motion allowed: the hero holds the contour
 layer and the copy, nothing else: the headline "Academy"; the area line, the four areas in courses.py's order, each in
 its tone, aria-hidden, no link or focus stop in it; the static line naming all four in their tones, for a screen
 reader, and the line shown under reduced motion (with motion allowed the cycling line shows and the static line is for
@@ -60,7 +60,8 @@ each planned unit marked planned), the whole tile the link and no other link in 
 sections, the constants, the site links (Backlog, Figure kinds, Changelog), New since (What's new's first six rows, its
 heading naming its oldest day) and one link to #new, last; no sideways scroll. Every text of the hero is measured
 against the pixels under it (the contour lines and the page, shot with the texts made transparent): 4.5:1, 3:1 for
-large text. With reduced motion no animation runs on the home; with motion allowed only transform and opacity animate
+large text. With motion allowed the hero's texts are measured at both ends of the drift with each area word shown in turn. With
+reduced motion no animation runs on the home; with motion allowed only transform and opacity animate
 (document.getAnimations(), each effect's keyframes), the four area words and the shown contour layout, none on a tile.
 At 390 px with motion allowed the fresh load's LCP and longest task are printed. On the desktop a history tile, a
 markdown tile, the IA tile and the What's new link are clicked and each lands on its page. What's new (P91), at the
@@ -432,11 +433,28 @@ HERO_TEXTS_JS = r'''() => { const out = [], copy = document.querySelector('#home
     const size = parseFloat(cs.fontSize), large = size >= 24 || (size >= 18.66 && parseInt(cs.fontWeight) >= 700);
     out.push({what: (e.className || e.tagName.toLowerCase()) + ' "' + e.textContent.trim().slice(0, 18) + '"', color: cs.color, large, x: r.left, y: r.top, w: r.width, h: r.height}); });
   return out; }'''
-def hero_contrast(pg, label, fails):
+def hero_contrast(pg, label, fails, motion=False):
+    """P92: with motion allowed, every moment that matters: the drift at both ends of its sweep (0 and 30 s) and, at
+    each, each area word in turn (its animation set to the middle of its showing), every animation paused there."""
+    if not motion:
+        return _hero_contrast(pg, label, fails)
+    names = pg.evaluate("[...document.querySelectorAll('#home .harea-w')].map(w => w.textContent)")
+    for td in (0, 30000):
+        for k, nm in enumerate(names):
+            ta = k * 3000 + 1500
+            pg.evaluate(f'''() => document.getAnimations().forEach(a => {{ a.pause(); a.currentTime = a.animationName === 'topo-drift' ? {td} : {ta}; }})''')
+            pg.wait_for_timeout(80)
+            _hero_contrast(pg, f'{label} (drift {td / 1000:.0f} s, {nm} shown)', fails, only=k)
+    pg.evaluate("() => document.getAnimations().forEach(a => a.play())")
+
+def _hero_contrast(pg, label, fails, only=None):
     from PIL import Image
     import io
     pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(60)
     items = pg.evaluate(HERO_TEXTS_JS)
+    if only is not None:   # the cycling words: only the one shown at this moment
+        ws = [i for i in items if i['what'].startswith('harea-w')]
+        items = [i for i in items if not i['what'].startswith('harea-w')] + ws[only:only + 1]
     pg.evaluate("""() => { const s = document.createElement('style'); s.id = 'p92hide'; s.textContent = '#home .hcopy, #home .hcopy * {color: transparent !important; border-color: transparent !important}'; document.head.appendChild(s); }""")
     pg.wait_for_timeout(60)
     img = Image.open(io.BytesIO(pg.screenshot())).convert('RGB')
@@ -519,7 +537,7 @@ def check_home(pg, label, fails, expect, motion=False):
           f'link {r.get("link") and r["link"][:4]}; contours {r.get("topoBytes")} B, layout {r.get("layout")}, rises {[(l, k) for _, rs in r.get("layouts", [])[:1] for l, _, k, _ in rs]}; '
           f'tiles {[(c["home"], len(c["rises"] or []), len(c["plan"] or [])) for c in r.get("cards", [])]}; heads {[x[1:] for x in r.get("heads", [])][:1]}; '
           f'first area at {r.get("first")} px; New since {len(r.get("rows") or [])} rows; animations {len(an)}; page {r.get("scroll")}')
-    hero_contrast(pg, label, fails)
+    hero_contrast(pg, label, fails, motion)
     return r
 
 # P91: What's new (#new), fetched through the shell: every dated unit and every course start once, newest first,
@@ -1553,11 +1571,11 @@ def main():
                         print(f'home desktop: {sel} opens #{t} on {land[0]}, at {land[2]} px' + (', its card open' if land[3] else ''))
             ctx.close()
 
-        # P92: with motion allowed, at 390 and 1280 px, dark and light: only transform and opacity animate, none on a
+        # P92: with motion allowed, at every width, dark and light: only transform and opacity animate, none on a
         # tile, the cycling area line shows and the static line is for a screen reader only; the hero's texts over the
         # contours as they drift; and at 390 px the hero's weight on a fresh load (LCP and the longest task, from the
         # browser's performance entries)
-        for name, w, h, mobile in (('phone', 390, 844, True), ('desktop', 1280, 800, False)):
+        for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:   # P92 check: every width, not two
             ctx, pg, _ = new_page(p, br, errors, name + ' motion', w, h, mobile, motion=True)
             if name == 'phone':
                 pg.evaluate('''() => { window.__p92 = {lcp: 0, lt: 0, n: 0};

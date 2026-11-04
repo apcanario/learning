@@ -59,7 +59,7 @@
   --fg:#ececf1;--muted:#9a9aa6;--dim:#6b6b78;
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
-  --topo-a:.22;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page) and a tile's patch */
+  --topo-a:.2;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page) and a tile's patch */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
   --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -493,7 +493,7 @@ details.rules.planned>.soonlist{padding-bottom:16px;margin:0}
    wide from it); it drifts (section 4h: transform only, 8 x 6 px over 30 s, alternating) where motion is welcome. A
    patch (.topo-patch) is the tile's own drawing, the full width of its content at a 4:1 ratio, and never moves. */
 .ct-t1{--c:var(--viz-1)}.ct-t2{--c:var(--viz-2)}.ct-t3{--c:var(--viz-3)}.ct-t4{--c:var(--viz-4)}.ct-t5{--c:var(--viz-5)}.ct-t6{--c:var(--viz-6)}
-.topo{position:absolute;top:-22px;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}   /* the lines fade out at the hero's foot, not cut */
+.topo{position:absolute;top:-22px;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(#000 84%,transparent);mask-image:linear-gradient(#000 84%,transparent)}   /* the lines fade out over the hero's last 16%, not cut */
 .topo-l{display:none;position:absolute;top:-12px;left:-12px;width:calc(100% + 24px);height:calc(100% + 24px)}
 .topo-tall{display:block}
 .topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:butt}   /* butt: where one rise's stretch of a line hands over to the next, the two ends abut, never overlap (round caps doubled the line there) */

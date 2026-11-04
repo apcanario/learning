@@ -688,8 +688,8 @@ _TONE = {'var(--red)': 1, 'var(--orange)': 2, 'var(--teal)': 3, 'var(--blue)': 4
 NEWEST = DATED[0] if DATED else None
 HERO_INTERVAL = 22000   # words between two of the hero's contour levels: History's 510k words stand 23 levels up, an area of 67k three
 HERO_AT = {             # where each area's rise stands, in THEMES order (fractions of the layout's width and height)
-    'tall': [[.50, .52], [.26, .22], [.76, .27], [.70, .80]],
-    'wide': [[.42, .52], [.08, .24], [.80, .26], [.74, .80]],
+    'tall': [[.50, .52], [.33, .20], [.66, .22], [.72, .68]],   # every rise inside a 390 px phone's view (x .27 to .73)
+    'wide': [[.42, .52], [.12, .22], [.80, .26], [.76, .66]],   # P92 check: Marketing clear of the sidebar, User Experience above the fade
 }
 if any(len(v) != len(THEMES) for v in HERO_AT.values()):
     raise SystemExit(f'build.py HERO_AT places {len(HERO_AT["tall"])} rises; courses.py has {len(THEMES)} areas: give each a place')
