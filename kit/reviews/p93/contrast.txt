@@ -1,0 +1,97 @@
+light surfaces: --bg #e8e4dc · --card #f0ede6 · --line #d7d1c5 · --line-2 #c4bdae · --on-accent #f5f2eb
+token    value     on bg on card button  .u bg .u card   band
+red      #bd0000    5.23   5.68    5.94   6.96   7.55   4.62
+orange   #9c4500    5.07   5.50    5.75   6.51   7.06   4.62
+teal     #006b5e    5.07   5.50    5.75   6.50   7.05   4.62
+blue     #0062a0    5.09   5.52    5.77   6.54   7.09   4.62
+purple   #7400fe    5.22   5.66    5.92   6.95   7.54   4.61
+gold     #7c5800    5.09   5.52    5.77   6.47   7.02   4.64
+dim      #5e5950    5.48   5.95
+muted    #4a463f    7.40   8.02
+fg       #1b1915   13.84  15.01
+ALL PAIRS >= 4.5:1
+(record) dark accents as text on --bg: red 7.13, orange 9.60, teal 5.95, blue 4.31, purple 4.80, gold 11.84
+P92 hero pairs, light (--bg #e8e4dc, contour lines at --topo-a 0.16):
+  area word History (red, large)       on the page  5.23; lowest over a line  3.93 (a red line at 0.16)
+  area word Marketing (teal, large)    on the page  5.07; lowest over a line  3.81 (a red line at 0.16)
+  area word Technology (purple, large) on the page  5.22; lowest over a line  3.92 (a red line at 0.16)
+  area word User Experience (blue, large) on the page  5.09; lowest over a line  3.82 (a red line at 0.16)
+  headline Academy (fg, large)         on the page 13.84; lowest over a line 10.40 (a red line at 0.16)
+  static line dots (muted)             on the page  7.40; lowest over a line  5.56 (a red line at 0.16)
+  lede (muted)                         on the page  7.40; lowest over a line  5.56 (a red line at 0.16)
+  What's new link (fg)                 on the page 13.84; lowest over a line 10.40 (a red line at 0.16)
+  What's new arrow (muted)             on the page  7.40; lowest over a line  5.56 (a red line at 0.16)
+P92 hero pairs, dark (--bg #0a0a0c, contour lines at --topo-a 0.16):
+  area word History (red, large)       on the page  7.13; lowest over a line  5.85 (a red line at 0.16)
+  area word Marketing (teal, large)    on the page  5.95; lowest over a line  4.88 (a red line at 0.16)
+  area word Technology (purple, large) on the page  4.80; lowest over a line  3.93 (a red line at 0.16)
+  area word User Experience (blue, large) on the page  4.31; lowest over a line  3.53 (a red line at 0.16)
+  headline Academy (fg, large)         on the page 16.80; lowest over a line 13.78 (a red line at 0.16)
+  static line dots (muted)             on the page  7.11; lowest over a line  5.83 (a red line at 0.16)
+  lede (muted)                         on the page  7.11; lowest over a line  5.83 (a red line at 0.16)
+  What's new link (fg)                 on the page 16.80; lowest over a line 13.78 (a red line at 0.16)
+  What's new arrow (muted)             on the page  7.11; lowest over a line  5.83 (a red line at 0.16)
+P92: ALL HOME PAIRS PASS
+P93 pairs, light (contour lines at --topo-a 0.16; two stacked 0.294):
+  crumb link, separator (muted)                on the page  7.40; over one line  5.56; over two stacked  4.28
+  crumb here (fg)                              on the page 13.84; over one line 10.40; over two stacked  8.01
+  eyebrow (muted)                              on the page  7.40; over one line  5.56; over two stacked  4.28
+  headline (fg, large)                         on the page 13.84; over one line 10.40; over two stacked  8.01
+  lede (muted)                                 on the page  7.40; over one line  5.56; over two stacked  4.28
+  outlined button label (muted)                on the page  7.40; over one line  5.56; over two stacked  4.28
+  outlined button title (fg)                   on the page 13.84; over one line 10.40; over two stacked  8.01
+  flag (muted)                                 on the page  7.40; over one line  5.56; over two stacked  4.28
+  eyebrow course label (red: .u, 78% with fg)  on the page  6.96; over one line  5.23; over two stacked  4.03
+  eyebrow course label (orange: .u, 78% with fg) on the page  6.51; over one line  4.89; over two stacked  3.76
+  eyebrow course label (teal: .u, 78% with fg) on the page  6.50; over one line  4.89; over two stacked  3.76
+  eyebrow course label (blue: .u, 78% with fg) on the page  6.54; over one line  4.91; over two stacked  3.79
+  eyebrow course label (purple: .u, 78% with fg) on the page  6.95; over one line  5.22; over two stacked  4.02
+  eyebrow course label (gold: .u, 78% with fg) on the page  6.47; over one line  4.86; over two stacked  3.75
+  chip on red (on-accent)                       5.94
+  chip on orange (on-accent)                    5.75
+  chip on teal (on-accent)                      5.75
+  chip on blue (on-accent)                      5.77
+  chip on purple (on-accent)                    5.92
+  chip on gold (on-accent)                      5.77
+  ghost chip on card (fg)                      15.01
+  ghost chip on page (fg)                      13.84
+  ghost line on card (muted)                    8.02
+  ghost line on page (muted)                    7.40
+  tile title on card (fg)                      15.01
+  tile line and stat labels on card (muted)     8.02
+  pill live on card (teal, 78% with fg)         7.05
+  pill prog on card (gold, 78% with fg)         7.02
+  pill unck on card (orange, 78% with fg)       7.06
+  pill next on card (blue, 78% with fg)         7.09
+P93 pairs, dark (contour lines at --topo-a 0.16; two stacked 0.294):
+  crumb link, separator (muted)                on the page  7.11; over one line  5.26; over two stacked  3.60
+  crumb here (fg)                              on the page 16.80; over one line 12.42; over two stacked  8.52
+  eyebrow (muted)                              on the page  7.11; over one line  5.26; over two stacked  3.60
+  headline (fg, large)                         on the page 16.80; over one line 12.42; over two stacked  8.52
+  lede (muted)                                 on the page  7.11; over one line  5.26; over two stacked  3.60
+  outlined button label (muted)                on the page  7.11; over one line  5.26; over two stacked  3.60
+  outlined button title (fg)                   on the page 16.80; over one line 12.42; over two stacked  8.52
+  flag (muted)                                 on the page  7.11; over one line  5.26; over two stacked  3.60
+  eyebrow course label (red: .u, 78% with fg)  on the page  8.40; over one line  6.22; over two stacked  4.26
+  eyebrow course label (orange: .u, 78% with fg) on the page 10.80; over one line  7.98; over two stacked  5.47
+  eyebrow course label (teal: .u, 78% with fg) on the page  7.52; over one line  5.56; over two stacked  3.81
+  eyebrow course label (blue: .u, 78% with fg) on the page  6.09; over one line  4.51; over two stacked  3.09
+  eyebrow course label (purple: .u, 78% with fg) on the page  6.43; over one line  4.75; over two stacked  3.26
+  eyebrow course label (gold: .u, 78% with fg) on the page 12.80; over one line  9.46; over two stacked  6.49
+  chip on red (on-accent)                       7.57
+  chip on orange (on-accent)                   10.19
+  chip on teal (on-accent)                      6.32
+  chip on blue (on-accent)                      4.57
+  chip on purple (on-accent)                    5.09
+  chip on gold (on-accent)                     12.57
+  ghost chip on card (fg)                      15.75
+  ghost chip on page (fg)                      16.80
+  ghost line on card (muted)                    6.66
+  ghost line on page (muted)                    7.11
+  tile title on card (fg)                      15.75
+  tile line and stat labels on card (muted)     6.66
+  pill live on card (teal, 78% with fg)         7.05
+  pill prog on card (gold, 78% with fg)        12.00
+  pill unck on card (orange, 78% with fg)      10.12
+  pill next on card (blue, 78% with fg)         5.71
+P93: ALL NEW PAIRS PASS

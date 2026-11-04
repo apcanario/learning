@@ -873,14 +873,17 @@ backlog = f"""
 # numbers say the rest.
 NEWEST = DATED[0] if DATED else None
 HERO_INTERVAL = 22000   # words between two of the hero's contour levels: History's 510k words stand 23 levels up, an area of 67k three
-HERO_AT = {             # where each area's rise stands, in THEMES order (fractions of the layout's width and height)
+_HERO_AT = {            # where each area's rise stands (fractions of the layout's width and height), tall and wide
     # P92 checks: every rise inside a 390 px phone's view (x .27 to .73) and above the fade, each small rise closing two
-    # rings of its own (verify.py checks it), Marketing clear of the sidebar at both ends of the drift
-    'tall': [[.50, .48], [.33, .16], [.66, .18], [.66, .82]],
-    'wide': [[.46, .55], [.14, .18], [.81, .26], [.78, .68]],
+    # rings of its own (verify.py checks it), Marketing clear of the sidebar at both ends of the drift. P93: keyed by
+    # area, so an edition that holds fewer areas (Greece: History only) takes its areas' places (keyed by THEMES order,
+    # the Greece edition stopped here from P92 on)
+    'history': ([.50, .48], [.46, .55]), 'marketing': ([.33, .16], [.14, .18]),
+    'technology': ([.66, .18], [.81, .26]), 'ux': ([.66, .82], [.78, .68]),
 }
-if any(len(v) != len(THEMES) for v in HERO_AT.values()):
-    raise SystemExit(f'build.py HERO_AT places {len(HERO_AT["tall"])} rises; courses.py has {len(THEMES)} areas: give each a place')
+if [t['id'] for t in THEMES if t['id'] not in _HERO_AT]:
+    raise SystemExit(f'build.py _HERO_AT has no place for the areas {[t["id"] for t in THEMES if t["id"] not in _HERO_AT]}: give each a place')
+HERO_AT = {'tall': [_HERO_AT[t['id']][0] for t in THEMES], 'wide': [_HERO_AT[t['id']][1] for t in THEMES]}
 AREA_WORDS = {t['id']: sum(c['words'] for c in HISTORY if c['theme'] == t['id']) + sum(m['words'] for m in MD if m['theme'] == t['id'] and m['status'] != 'coming soon')
               for t in THEMES}
 HERO_TOPO = dict(kind='contours', interval=HERO_INTERVAL,
@@ -1205,7 +1208,7 @@ if OLD.exists():
 # the size table in README.md (between the markers), regenerated on every build; verify.py checks it against the files
 def kb(n):
     return f'{n / 1024:,.0f} KB' if n < 1024 * 1024 else f'{n / 1024 / 1024:.2f} MB'
-rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, Brand + AI course homes and build pages, changelog, backlog')]
+rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, the markdown courses' build pages, changelog, backlog')]
 for ctx, name in [(c['id'], c['short']) for c in HISTORY] + [(m['id'], m['short']) for m in MD]:
     fs = [len(v.encode()) for k, v in REPORTS.items() if k.startswith(ctx + '/')]
     big = max(((len(v.encode()), k) for k, v in REPORTS.items() if k.startswith(ctx + '/')), default=(0, ''))

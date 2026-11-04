@@ -571,9 +571,9 @@ def check_home(pg, label, fails, expect, motion=False):
     if motion:
         if [a for a in an if any(p not in ('transform', 'opacity') for p in a[1])]: fails.append(f'home {label}: an animation runs on more than transform and opacity: {[a for a in an if any(p not in ("transform", "opacity") for p in a[1])]}')
         kinds = sorted({a[0].split()[0] for a in an})
-        npatch = pg.evaluate("[...document.querySelectorAll('#home .topo-patch')].filter(t => t.getBoundingClientRect().width > 0).length")
+        npatch = pg.evaluate("document.querySelectorAll('#home .topo.topo-patch').length")   # a patch in the closed Planned list is not drawn, but its move runs
         if kinds != ['harea-w', 'topo-l'] or sum(1 for a in an if a[0].startswith('harea-w')) != len(names) or sum(1 for a in an if a[0].startswith('topo-l')) != 1 + npatch:
-            fails.append(f'home {label}: with motion allowed the animations are {[(a[0], a[1]) for a in an]}, expected the {len(names)} area words, the shown contour layout and every shown tile\'s patch ({npatch}; P93)')
+            fails.append(f'home {label}: with motion allowed the animations are {[(a[0], a[1]) for a in an]}, expected the {len(names)} area words, the shown contour layout and every tile\'s patch ({npatch}; P93)')
     elif an: fails.append(f'home {label}: under reduced motion {len(an)} animations run: {an[:3]}')
     print(f'home {label}: hero {r.get("heroH")} (px, screen, %), copy {r.get("copy")!r}; area line {[w for w, _ in r.get("words", [])]}, shown {r.get("lineShown")}, static shown {r.get("staticShown")}; '
           f'link {r.get("link") and r["link"][:4]}; contours {r.get("topoBytes")} B, layout {r.get("layout")}, rises {[(l, k, z) for _, rs in r.get("layouts", [])[:1] for l, _, k, _, z in rs]}; '
@@ -634,7 +634,7 @@ TOPO_JS = r"""(pid) => {
   };
   const hl = P.querySelector(':scope > header.hero > .topo');
   out.hero = hl ? one(hl, true) : null;
-  out.anyTopo = P.querySelectorAll('.topo').length;
+  out.anyTopo = P.querySelectorAll('.topo').length; out.allPatches = P.querySelectorAll('.topo.topo-patch').length;
   P.querySelectorAll('.topo.topo-patch').forEach(t => { if (vis(t)) out.patches.push(one(t, false)); });
   out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && P.contains(a.effect.target)).map(a => {   // animations, not the transitions of a hover or the theme switch
     const t = a.effect.target, props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(k => !['offset', 'computedOffset', 'easing', 'composite'].includes(k)))];
@@ -801,8 +801,8 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
         odd = [a for a in an if any(x not in ('transform', 'opacity') for x in a[1])]
         if odd: fails.append(f'{pid} {label}: an animation runs on more than transform and opacity: {odd[:3]}')
         tp = [a for a in an if a[3] == 'topo-turn']
-        nt = (1 if h else 0) + len(r['patches'])
-        if len(tp) != nt: fails.append(f'{pid} {label}: {len(tp)} contour drawings move, {nt} are shown')
+        nt = (1 if h else 0) + r['allPatches']
+        if len(tp) != nt: fails.append(f'{pid} {label}: {len(tp)} contour drawings move, the page has {nt}')
         prog = sorted(a[4] for a in tp)
         close = [(round(a, 3), round(b, 3)) for a, b in zip(prog, prog[1:]) if b - a < .02]
         if phase and close: fails.append(f'{pid} {label}: drawings move in step (directed progress {close[:3]})')
@@ -1950,9 +1950,9 @@ def main():
                 pg.evaluate("location.hash = 'home'"); ready(pg)
             for theme in ('dark', 'light'):
                 if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
-                check_home(pg, name + (' motion' if theme == 'dark' else ' motion light'), fails, EXPECT, motion=True)
-                pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(200)
+                pg.evaluate("location.hash = 'new'"); ready(pg); pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(200)   # the home shown afresh, each drawing at its own phase, before any pose
                 check_topo(pg, 'home', f'{name} motion {theme}', fails, EXPECT, motion=True)
+                check_home(pg, name + (' motion' if theme == 'dark' else ' motion light'), fails, EXPECT, motion=True)
                 for p_ in POSES:
                     pose(pg, p_, 1500)
                     check_topo(pg, 'home', f'{name} motion {theme} pose {p_:g}', fails, EXPECT, motion=True, phase=False)
@@ -2009,7 +2009,7 @@ def main():
             for name, w, h, mobile in (('phone', 390, 844, True), ('desktop', 1280, 800, False)):
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile, motion=True)
                 for pid in [x for x in ('home', 'greece', 'ux-ia') if x == 'home' or x in TOPO_PAGES]:
-                    sel = '#home .hhome' if pid == 'home' else f'#{pid} > header.hero'
+                    sel = '#home .hhome > .topo' if pid == 'home' else f'#{pid} > header.hero > .topo'   # the layer's own frame: from the top bar to the hero's foot, the full width beside the sidebar (the hero's box is the column), the texts on it
                     for theme in ('dark', 'light'):
                         pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')"); pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(500)
                         ims, tags = [], []
