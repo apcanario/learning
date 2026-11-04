@@ -444,7 +444,7 @@ The figure draws the same matrix with a mark per cell and a legend. Its rows tak
  {"label": "Finance manager", "tone": 4, "cells": ["view", "set", "view", null, "all", "profile"]},
  {"label": "Account owner", "tone": 4, "cells": ["as role", "as role", "as role", "as role", "as role", "manage"]}],
  "legend": [
-  {"mark": "edit", "means": "Employees: -> create group, -> invite employees, -> invite, -> move to group, -> resend invitation, -> mark as left; Policies: -> edit policy, -> add covered items", "tone": 4},
+  {"mark": "edit", "means": "-> create group, -> invite, -> move to group, -> resend invitation, -> mark as left; -> edit, -> add covered items", "tone": 4},
   {"mark": "decide", "means": "-> approve, -> reject, -> approve selected [never on their own claim]", "tone": 4},
   {"mark": "set", "means": "-> set for a group (Set budgets)", "tone": 4},
   {"mark": "view", "means": "read only", "tone": 4},
