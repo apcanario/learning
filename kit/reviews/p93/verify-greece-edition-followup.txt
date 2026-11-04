@@ -1,0 +1,273 @@
+edition greece: no size table (README.md keeps the full Academy's)
+split: shell 153 KB (limit 1,024 KB), 81 fetched files in 2 folders, largest greece/syllabus.html 134 KB
+  greece/     80 files   4,224 KB, largest greece/syllabus.html 134 KB
+  ./           1 files      38 KB, largest new.html 38 KB
+figure keys (P52): 294 blocks read, 0 undocumented keys
+opening notes (P73): 0 units with an opening, each with its closed note after Sources; 0 without, none shown
+figure rules (P58): 261 built figures read, 0 faults
+split: no unopened course home in this edition; the failed course-home fetch is not tried
+split: stubs empty until opened; fetched once, kept and the next report prefetched; links into an unopened report, syllabus, briefs page and course home; failed fetch and retry (report and course home); a course home's continue button
+figures: edition greece leaves out the examples page; the figure blocks are still checked (figure keys)
+reading: 78 units and reports, 826 sections, each reached by next, previous and the menu, "Whole unit" on and off, both accordions closed after the text and Sources opened by its links; deep links to a section (1 of 1), to Sources and to the opening note (0), and Continue and a reload resuming at the section, on one page of each course (m73)
+phone layout: 390 px at scale 1
+phone: panels checked: 82; tightest stacked gap 6px (syllabus); 261 figure frames at natural size, 258 scrolling with the cue; geometry of 261 figures on 79 panels checked
+phone light: panels checked: 82; tightest stacked gap 6px (syllabus); 261 figure frames at natural size, 258 scrolling with the cue
+home phone: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 711 px; New since 6 rows; animations 0; page [390, 390]
+home phone (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; History 7.13/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5
+what's new phone: 78 unit rows, 1 course rows, 71 approximate, on 2 days
+home phone light: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 711 px; New since 6 rows; animations 0; page [390, 390]
+home phone light (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (span "History"); each (lowest/needed): Academy 10.29/3; History 5.23/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5
+contrast (light, phone): 1606 texts on 4 panels and the drawer, lowest 4.3:1 (m01 span.bn)
+  home                         home           nav=root    HOME | Academy | arrows=False prev=False next=True | 
+  home again                   home           nav=root    HOME | Academy | arrows=False prev=False next=True | 
+  greece home                  greece         nav=greece  COURSE 1 | Greece | arrows=True prev=False next=True | (hidden)
+  greek report                 m23            nav=greece  GREECE · UNIT 2 · 2.3 | The underworld and the chthonic gods | arrows=True prev=True next=True | 
+  greek next                   m24            nav=greece  GREECE · UNIT 2 · 2.4 | Prometheus, Pandora, the Five Ages and t | arrows=True prev=True next=True | 
+  greek last                   m128           nav=greece  GREECE · U12 · 12.8 | Sceptics and Neoplatonists: the late sch | arrows=True prev=True next=False | 
+  home last                    home           nav=root    HOME | Academy | arrows=False prev=False next=True | 
+tablet: panels checked: 82; tightest stacked gap 6px (syllabus)
+tablet: drawer is a drawer (off screen, 360 px with backdrop when open); column 760 px; report m55 loaded through the shell, 40 paragraphs
+desktop: panels checked: 82; tightest stacked gap 6px (syllabus); 261 figure frames, 26 wider than their frame with the cue, the rest without
+desktop: sidebar 300 px at the left, content column 760 px from 410 px, current item m23, measure 744.193px
+home phone320: hero [448, 640, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 568 px; New since 6 rows; animations 0; page [320, 320]
+home phone320 (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; History 5.89/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5
+what's new phone320: 78 unit rows, 1 course rows, 71 approximate, on 2 days
+home phone320 light: hero [448, 640, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 568 px; New since 6 rows; animations 0; page [320, 320]
+home phone320 light (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (span "History"); each (lowest/needed): Academy 10.29/3; History 3.89/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5
+home phone360: hero [546, 780, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 666 px; New since 6 rows; animations 0; page [360, 360]
+home phone360 (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; History 5.89/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5
+what's new phone360: 78 unit rows, 1 course rows, 71 approximate, on 2 days
+home phone360 light: hero [546, 780, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 666 px; New since 6 rows; animations 0; page [360, 360]
+home phone360 light (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (span "History"); each (lowest/needed): Academy 10.29/3; History 3.89/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5
+home phone430: hero [652, 932, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 772 px; New since 6 rows; animations 0; page [430, 430]
+home phone430 (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; History 7.13/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5
+what's new phone430: 78 unit rows, 1 course rows, 71 approximate, on 2 days
+home phone430 light: hero [652, 932, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 772 px; New since 6 rows; animations 0; page [430, 430]
+home phone430 light (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (span "History"); each (lowest/needed): Academy 10.29/3; History 5.23/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5
+home tablet: hero [717, 1024, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[True, True, True, True]]; first area at 858 px; New since 6 rows; animations 0; page [768, 768]
+home tablet (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 7.11:1 (hnew-a "→"); each (lowest/needed): Academy 16.80/3; History 7.13/3; Every self-study c 7.11/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5
+what's new tablet: 78 unit rows, 1 course rows, 71 approximate, on 2 days
+home tablet light: hero [717, 1024, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[True, True, True, True]]; first area at 858 px; New since 6 rows; animations 0; page [768, 768]
+home tablet light (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (span "History"); each (lowest/needed): Academy 13.84/3; History 5.23/3; Every self-study c 7.40/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5
+home desktop: hero [560, 800, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['wide'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[True, True, True, True]]; first area at 701 px; New since 6 rows; animations 0; page [1280, 1280]
+home desktop (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; History 6.04/3; Every self-study c 5.87/4.5; What's new ·, 12.8 14.03/4.5; → 7.11/4.5
+what's new desktop: 78 unit rows, 1 course rows, 71 approximate, on 2 days
+home desktop light: hero [560, 800, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown False, static shown True; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['wide'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[True, True, True, True]]; first area at 701 px; New since 6 rows; animations 0; page [1280, 1280]
+home desktop light (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.98:1 (span "History"); each (lowest/needed): Academy 10.29/3; History 3.98/3; Every self-study c 5.50/4.5; What's new ·, 12.8 10.37/4.5; → 7.40/4.5
+home desktop: a.course.live[data-target="greece"] opens #greece on greece, at 78 px
+home desktop: a.hnew opens #new on new, at 78 px
+greece phone320 dark: below 390 px the rises ['U4', 'U8', 'U12'] reach past the narrower window (the row sets 390 px)
+greece phone320: layer 8297 B, layout ['tall'], frame [0, 320, 56, 868]; 14 tiles, 14 patches, grids [[1, 2, None, 138], [1, 3, None, 138]]
+new phone320 dark: below 390 px the rises ['2026-10-22'] reach past the narrower window (the row sets 390 px)
+new phone320: layer 5461 B, layout ['tall'], frame [0, 320, 56, 426], days [('2026-10-22', 20), ('2026-10-25', 2)]
+greece phone320 light: below 390 px the rises ['U4', 'U8', 'U12'] reach past the narrower window (the row sets 390 px)
+new phone320 light: below 390 px the rises ['2026-10-22'] reach past the narrower window (the row sets 390 px)
+greece phone360: layer 8297 B, layout ['tall'], frame [0, 360, 56, 780]; 14 tiles, 14 patches, grids [[1, 2, None, 158], [1, 3, None, 158]]
+new phone360: layer 5461 B, layout ['tall'], frame [0, 360, 56, 383], days [('2026-10-22', 20), ('2026-10-25', 2)]
+greece phone430: layer 8297 B, layout ['tall'], frame [0, 430, 56, 712]; 14 tiles, 14 patches, grids [[1, 2, None, 193], [1, 3, None, 193]]
+new phone430: layer 5461 B, layout ['tall'], frame [0, 430, 56, 332], days [('2026-10-22', 20), ('2026-10-25', 2)]
+greece phone: layer 8297 B, layout ['tall'], frame [0, 390, 56, 755]; 14 tiles, 14 patches, grids [[1, 2, None, 173], [1, 3, None, 173]]
+new phone: layer 5461 B, layout ['tall'], frame [0, 390, 56, 358], days [('2026-10-22', 20), ('2026-10-25', 2)]
+greece tablet: layer 8297 B, layout ['tall'], frame [0, 768, 56, 479]; 14 tiles, 14 patches, grids [[2, 2, None, 358], [2, 3, None, 358]]
+new tablet: layer 5461 B, layout ['tall'], frame [0, 768, 56, 264], days [('2026-10-22', 20), ('2026-10-25', 2)]
+greece desktop: layer 8297 B, layout ['wide'], frame [300, 1280, 56, 479]; 14 tiles, 14 patches, grids [[2, 2, None, 358], [2, 3, None, 358]]
+new desktop: layer 5461 B, layout ['wide'], frame [300, 1280, 56, 264], days [('2026-10-22', 20), ('2026-10-25', 2)]
+home phone320 motion: hero [448, 640, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 568 px; New since 6 rows; animations 3; page [320, 320]
+home phone320 motion (pose 0 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 5.89/3
+home phone320 motion (pose 0.25 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 5.89/3
+home phone320 motion (pose 0.5 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 5.89/3
+home phone320 motion (pose 0.75 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 5.89/3
+home phone320 motion (pose 1 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 5.89/3
+greece phone320 motion dark pose 0 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone320 motion dark pose 0.25 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone320 motion dark pose 0.5 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone320 motion dark pose 0.75 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone320 motion dark pose 1 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+new phone320 motion dark pose 0 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone320 motion dark pose 0.25 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone320 motion dark pose 0.5 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone320 motion dark pose 0.75 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone320 motion dark pose 1 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+home phone320 motion light: hero [448, 640, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 568 px; New since 6 rows; animations 3; page [320, 320]
+home phone320 motion light (pose 0 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 3.89/3
+home phone320 motion light (pose 0.25 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 3.89/3
+home phone320 motion light (pose 0.5 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 3.89/3
+home phone320 motion light (pose 0.75 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 3.89/3
+home phone320 motion light (pose 1 of the sweep, History shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 3.89/3
+greece phone320 motion light pose 0 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone320 motion light pose 0.25 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone320 motion light pose 0.5 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone320 motion light pose 0.75 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone320 motion light pose 1 (320 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+new phone320 motion light pose 0 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone320 motion light pose 0.25 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone320 motion light pose 0.5 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone320 motion light pose 0.75 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone320 motion light pose 1 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+home phone360 motion: hero [546, 780, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 666 px; New since 6 rows; animations 3; page [360, 360]
+home phone360 motion (pose 0 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 6.44/3
+home phone360 motion (pose 0.25 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 5.89/3
+home phone360 motion (pose 0.5 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 5.89/3
+home phone360 motion (pose 0.75 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 5.89/3
+home phone360 motion (pose 1 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 5.89/3
+greece phone360 motion dark pose 0 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone360 motion dark pose 0.25 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone360 motion dark pose 0.5 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone360 motion dark pose 0.75 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone360 motion dark pose 1 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+new phone360 motion dark pose 0 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone360 motion dark pose 0.25 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone360 motion dark pose 0.5 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone360 motion dark pose 0.75 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone360 motion dark pose 1 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+home phone360 motion light: hero [546, 780, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 666 px; New since 6 rows; animations 3; page [360, 360]
+home phone360 motion light (pose 0 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 4.3:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 4.30/3
+home phone360 motion light (pose 0.25 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 3.89/3
+home phone360 motion light (pose 0.5 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 3.89/3
+home phone360 motion light (pose 0.75 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 3.89/3
+home phone360 motion light (pose 1 of the sweep, History shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 3.89:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 3.89/3
+greece phone360 motion light pose 0 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone360 motion light pose 0.25 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone360 motion light pose 0.5 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone360 motion light pose 0.75 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone360 motion light pose 1 (360 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+new phone360 motion light pose 0 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone360 motion light pose 0.25 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone360 motion light pose 0.5 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone360 motion light pose 0.75 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone360 motion light pose 1 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+home phone430 motion: hero [652, 932, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 772 px; New since 6 rows; animations 3; page [430, 430]
+home phone430 motion (pose 0 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home phone430 motion (pose 0.25 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home phone430 motion (pose 0.5 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home phone430 motion (pose 0.75 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home phone430 motion (pose 1 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+greece phone430 motion dark pose 0 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone430 motion dark pose 0.25 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone430 motion dark pose 0.5 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone430 motion dark pose 0.75 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone430 motion dark pose 1 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+new phone430 motion dark pose 0 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone430 motion dark pose 0.25 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone430 motion dark pose 0.5 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone430 motion dark pose 0.75 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (seg "since 22 October 2")
+new phone430 motion dark pose 1 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (seg "1 courses ·")
+home phone430 motion light: hero [652, 932, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 772 px; New since 6 rows; animations 3; page [430, 430]
+home phone430 motion light (pose 0 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home phone430 motion light (pose 0.25 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home phone430 motion light (pose 0.5 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home phone430 motion light (pose 0.75 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home phone430 motion light (pose 1 of the sweep, History shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+greece phone430 motion light pose 0 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone430 motion light pose 0.25 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone430 motion light pose 0.5 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone430 motion light pose 0.75 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone430 motion light pose 1 (430 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+new phone430 motion light pose 0 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone430 motion light pose 0.25 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone430 motion light pose 0.5 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone430 motion light pose 0.75 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone430 motion light pose 1 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+home phone motion: LCP 64 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+greece phone motion: LCP 136 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+new phone motion: LCP 96 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+home phone motion: the move peaks at 3.5 px/s at the layer's corners (390 x 613 px frame, 6 degrees and 0.06 growth over 20 s); moved in 2 s: True
+home phone motion: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 711 px; New since 6 rows; animations 3; page [390, 390]
+home phone motion (pose 0 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home phone motion (pose 0.25 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home phone motion (pose 0.5 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home phone motion (pose 0.75 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home phone motion (pose 1 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.87:1 (lede "Every self-study c"); each (lowest/needed): Academy 13.87/3; Every self-study c 5.87/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+greece phone motion dark pose 0 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone motion dark pose 0.25 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone motion dark pose 0.5 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone motion dark pose 0.75 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+greece phone motion dark pose 1 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (lede "Four parts and thr")
+new phone motion dark pose 0 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone motion dark pose 0.25 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone motion dark pose 0.5 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone motion dark pose 0.75 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone motion dark pose 1 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+home phone motion light: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[False, True, False, False]]; first area at 711 px; New since 6 rows; animations 3; page [390, 390]
+home phone motion light (pose 0 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home phone motion light (pose 0.25 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home phone motion light (pose 0.5 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home phone motion light (pose 0.75 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home phone motion light (pose 1 of the sweep, History shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 10.29/3; Every self-study c 5.50/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+greece phone motion light pose 0 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone motion light pose 0.25 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone motion light pose 0.5 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone motion light pose 0.75 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece phone motion light pose 1 (390 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+new phone motion light pose 0 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone motion light pose 0.25 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone motion light pose 0.5 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone motion light pose 0.75 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new phone motion light pose 1 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+home tablet motion: hero [717, 1024, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[True, True, True, True]]; first area at 858 px; New since 6 rows; animations 3; page [768, 768]
+home tablet motion (pose 0 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 7.11:1 (hnew-a "→"); each (lowest/needed): Academy 16.80/3; Every self-study c 7.11/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home tablet motion (pose 0.25 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 7.11:1 (hnew-a "→"); each (lowest/needed): Academy 16.80/3; Every self-study c 7.11/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home tablet motion (pose 0.5 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 7.11:1 (hnew-a "→"); each (lowest/needed): Academy 16.80/3; Every self-study c 7.11/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home tablet motion (pose 0.75 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 7.11:1 (hnew-a "→"); each (lowest/needed): Academy 16.80/3; Every self-study c 7.11/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+home tablet motion (pose 1 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 7.11:1 (hnew-a "→"); each (lowest/needed): Academy 16.80/3; Every self-study c 7.11/4.5; What's new ·, 12.8 16.80/4.5; → 7.11/4.5; History 7.13/3
+greece tablet motion dark pose 0 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (eyebrow "COURSE 1 · GREECE ")
+greece tablet motion dark pose 0.25 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (eyebrow "COURSE 1 · GREECE ")
+greece tablet motion dark pose 0.5 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (eyebrow "COURSE 1 · GREECE ")
+greece tablet motion dark pose 0.75 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (eyebrow "COURSE 1 · GREECE ")
+greece tablet motion dark pose 1 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.87:1 (eyebrow "COURSE 1 · GREECE ")
+new tablet motion dark pose 0 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (seg "78 history reports")
+new tablet motion dark pose 0.25 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (seg "78 history reports")
+new tablet motion dark pose 0.5 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (seg "78 history reports")
+new tablet motion dark pose 0.75 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (seg "78 history reports")
+new tablet motion dark pose 1 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (seg "78 history reports")
+home tablet motion light: hero [717, 1024, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['tall'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[True, True, True, True]]; first area at 858 px; New since 6 rows; animations 3; page [768, 768]
+home tablet motion light (pose 0 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 13.84/3; Every self-study c 7.40/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home tablet motion light (pose 0.25 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 13.84/3; Every self-study c 7.40/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home tablet motion light (pose 0.5 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 13.84/3; Every self-study c 7.40/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home tablet motion light (pose 0.75 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 13.84/3; Every self-study c 7.40/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+home tablet motion light (pose 1 of the sweep, History shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.23:1 (harea-w "History"); each (lowest/needed): Academy 13.84/3; Every self-study c 7.40/4.5; What's new ·, 12.8 13.84/4.5; → 7.40/4.5; History 5.23/3
+greece tablet motion light pose 0 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece tablet motion light pose 0.25 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.5:1 (lede "Four parts and thr")
+greece tablet motion light pose 0.5 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 4.84:1 (u "COMPLETE")
+greece tablet motion light pose 0.75 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 4.84:1 (u "COMPLETE")
+greece tablet motion light pose 1 (768 px): hero texts over the contours, 23 measured pixel by pixel, lowest 4.84:1 (u "COMPLETE")
+new tablet motion light pose 0 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new tablet motion light pose 0.25 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new tablet motion light pose 0.5 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new tablet motion light pose 0.75 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+new tablet motion light pose 1 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.5:1 (lede "Every unit and eve")
+home desktop motion: hero [560, 800, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['wide'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[True, True, True, True]]; first area at 701 px; New since 6 rows; animations 3; page [1280, 1280]
+home desktop motion (pose 0 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 6.07:1 (lede "Every self-study c"); each (lowest/needed): Academy 14.14/3; Every self-study c 6.07/4.5; What's new ·, 12.8 15.17/4.5; → 7.11/4.5; History 6.54/3
+home desktop motion (pose 0.25 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 6.07:1 (lede "Every self-study c"); each (lowest/needed): Academy 14.29/3; Every self-study c 6.07/4.5; What's new ·, 12.8 15.23/4.5; → 7.11/4.5; History 6.36/3
+home desktop motion (pose 0.5 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 6.3:1 (lede "Every self-study c"); each (lowest/needed): Academy 14.49/3; Every self-study c 6.30/4.5; What's new ·, 12.8 15.03/4.5; → 6.38/4.5; History 6.42/3
+home desktop motion (pose 0.75 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 6.02:1 (lede "Every self-study c"); each (lowest/needed): Academy 14.14/3; Every self-study c 6.02/4.5; What's new ·, 12.8 14.54/4.5; → 6.32/4.5; History 6.44/3
+home desktop motion (pose 1 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.96:1 (lede "Every self-study c"); each (lowest/needed): Academy 14.34/3; Every self-study c 5.96/4.5; What's new ·, 12.8 14.69/4.5; → 6.26/4.5; History 6.36/3
+greece desktop motion dark pose 0 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.89:1 (eyebrow "COURSE 1 · GREECE ")
+greece desktop motion dark pose 0.25 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.89:1 (eyebrow "COURSE 1 · GREECE ")
+greece desktop motion dark pose 0.5 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.89:1 (eyebrow "COURSE 1 · GREECE ")
+greece desktop motion dark pose 0.75 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.89:1 (eyebrow "COURSE 1 · GREECE ")
+greece desktop motion dark pose 1 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.89:1 (eyebrow "COURSE 1 · GREECE ")
+new desktop motion dark pose 0 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new desktop motion dark pose 0.25 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new desktop motion dark pose 0.5 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new desktop motion dark pose 0.75 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new desktop motion dark pose 1 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+home desktop motion light: hero [560, 800, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['History'], shown True, static shown False; link ["What's new · 12.8 · 25 Oct", '#new', 'new', 44]; contours 5589 B, layout ['wide'], rises [('History', 11, 11)]; tiles [('greece', 13, 0)]; heads [[True, True, True, True]]; first area at 701 px; New since 6 rows; animations 3; page [1280, 1280]
+home desktop motion light (pose 0 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 4.44:1 (harea-w "History"); each (lowest/needed): Academy 10.53/3; Every self-study c 5.67/4.5; What's new ·, 12.8 11.34/4.5; → 7.33/4.5; History 4.44/3
+home desktop motion light (pose 0.25 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 4.26:1 (harea-w "History"); each (lowest/needed): Academy 10.62/3; Every self-study c 5.71/4.5; What's new ·, 12.8 11.46/4.5; → 7.40/4.5; History 4.26/3
+home desktop motion light (pose 0.5 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 4.29:1 (harea-w "History"); each (lowest/needed): Academy 10.75/3; Every self-study c 5.91/4.5; What's new ·, 12.8 11.15/4.5; → 6.06/4.5; History 4.29/3
+home desktop motion light (pose 0.75 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 4.29:1 (harea-w "History"); each (lowest/needed): Academy 10.53/3; Every self-study c 5.64/4.5; What's new ·, 12.8 10.83/4.5; → 5.97/4.5; History 4.29/3
+home desktop motion light (pose 1 of the sweep, History shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 4.26:1 (harea-w "History"); each (lowest/needed): Academy 10.68/3; Every self-study c 5.60/4.5; What's new ·, 12.8 10.92/4.5; → 5.91/4.5; History 4.26/3
+greece desktop motion light pose 0 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.54:1 (lede "Four parts and thr")
+greece desktop motion light pose 0.25 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.54:1 (lede "Four parts and thr")
+greece desktop motion light pose 0.5 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.54:1 (lede "Four parts and thr")
+greece desktop motion light pose 0.75 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.54:1 (lede "Four parts and thr")
+greece desktop motion light pose 1 (1280 px): hero texts over the contours, 23 measured pixel by pixel, lowest 5.54:1 (lede "Four parts and thr")
+new desktop motion light pose 0 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.06:1 (u "WHAT'S NEW")
+new desktop motion light pose 0.25 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.06:1 (u "WHAT'S NEW")
+new desktop motion light pose 0.5 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.06:1 (u "WHAT'S NEW")
+new desktop motion light pose 0.75 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.06:1 (u "WHAT'S NEW")
+new desktop motion light pose 1 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.06:1 (u "WHAT'S NEW")
+courses-index.md: matches the sources
+ALL CHECKS PASSED
+exit 0
