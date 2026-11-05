@@ -458,7 +458,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
   // what runs: with reduced motion nothing on the home; with motion allowed only transform and opacity, none on a tile
   out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && h.contains(a.effect.target)).map(a => {   // P93: animations; the transitions of a hover or the theme switch are not
     const t = a.effect.target, props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(k => !['offset', 'computedOffset', 'easing', 'composite'].includes(k)))];
-    return [t.className && typeof t.className === 'string' ? t.className : (t.getAttribute('class') || t.tagName), props, a.playState, !!t.closest('.course')]; });
+    return [t.className && typeof t.className === 'string' ? t.className : (t.getAttribute('class') || t.tagName), props, a.playState, !!t.closest('.course'), a.animationName]; });
   return out;
 }'''
 MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -570,9 +570,9 @@ def check_home(pg, label, fails, expect, motion=False):
     an = r.get('anims', [])
     if motion:
         if [a for a in an if any(p not in ('transform', 'opacity') for p in a[1])]: fails.append(f'home {label}: an animation runs on more than transform and opacity: {[a for a in an if any(p not in ("transform", "opacity") for p in a[1])]}')
-        nb = sum(1 for a in an if a[0].split()[0] == 'ct-b')   # P93 follow-up: the rings' heartbeat
-        if not nb: fails.append(f'home {label}: with motion allowed no ring beats')
-        an = [a for a in an if a[0].split()[0] != 'ct-b']
+        nb = sum(1 for a in an if a[4] == 'topo-breathe')   # P93 follow-up: every drawing breathes, as it turns
+        if nb != sum(1 for a in an if a[4] == 'topo-turn'): fails.append(f'home {label}: {nb} drawings breathe, {sum(1 for a in an if a[4] == "topo-turn")} turn')
+        an = [a for a in an if a[4] != 'topo-breathe']
         kinds = sorted({a[0].split()[0] for a in an})
         npatch = pg.evaluate("document.querySelectorAll('#home .topo.topo-patch').length")   # a patch in the closed Planned list is not drawn, but its move runs
         if kinds != ['harea-w', 'topo-l'] or sum(1 for a in an if a[0].startswith('harea-w')) != len(names) or sum(1 for a in an if a[0].startswith('topo-l')) != 1 + npatch:
@@ -622,7 +622,7 @@ TOPO_JS = r"""(pid) => {
       const fr = t.getBoundingClientRect(), m = sv.getScreenCTM();
       if (hero) {
         r.outside = [];
-        sv.querySelectorAll('g.ct-rise[data-box]').forEach(g => { const b = g.getAttribute('data-box').split(' ').map(Number);   // P93 follow-up: data-box is the rings at the top of their beat
+        sv.querySelectorAll('g.ct-rise[data-box]').forEach(g => { const b = g.getAttribute('data-box').split(' ').map(Number);   // P93 follow-up: data-box is the rings at the top of the breath
           for (const [x, y] of [[b[0], b[1]], [b[2], b[1]], [b[0], b[3]], [b[2], b[3]]]) { const q = new DOMPoint(x, y).matrixTransform(m);
             if (q.x < fr.left - .5 || q.x > fr.right + .5 || q.y < fr.top - .5 || q.y > fr.top + .9 * fr.height + .5) { r.outside.push(g.getAttribute('data-label')); break; } } });
         r.frame = [Math.round(fr.left), Math.round(fr.right), Math.round(fr.top + scrollY), Math.round(fr.height)];
@@ -688,10 +688,8 @@ TILES_JS = r"""(pid) => {
   return out;
 }"""
 
-_TM = re.search(r'--topo-turn:([\d.]+)deg;--topo-grow:([\d.]+);--topo-cycle:([\d.]+)s', (R / 'shell.css').read_text())
-TURN, GROW, CYCLE = float(_TM.group(1)), float(_TM.group(2)), float(_TM.group(3)) * 1000   # P93: the move, from the theme
-_TB = re.search(r'--topo-beat:([\d.]+);--topo-pulse:([\d.]+)s', (R / 'shell.css').read_text())
-BEAT, PULSE = float(_TB.group(1)), float(_TB.group(2)) * 1000   # P93 follow-up: the heartbeat, from the theme
+_TM = re.search(r'--topo-turn:([\d.]+)deg;--topo-cycle:([\d.]+)s;[^\n]*\n\s*--topo-grow:([\d.]+);--topo-breath:([\d.]+)s', (R / 'shell.css').read_text())
+TURN, CYCLE, GROW, BTIME = float(_TM.group(1)), float(_TM.group(2)) * 1000, float(_TM.group(3)), float(_TM.group(4)) * 1000   # P93: the turn and (follow-up, 5 Nov) the breath, from the theme
 POSES = (0, .25, .5, .75, 1)   # the two ends of the sweep, its quarters and its middle
 def eased(p):
     """CSS ease-in-out, cubic-bezier(.42, 0, .58, 1), at the point p of the sweep: the share of the move made."""
@@ -702,15 +700,15 @@ def eased(p):
         lo, hi = (t, hi) if x < p else (lo, t)
     t = (lo + hi) / 2
     return 3 * (1 - t) * t * t + t ** 3
-POSE_JS = r"""([p, ta, cyc, pulse]) => { document.getAnimations().forEach(a => { if (!a.animationName) { a.finish(); return; }   // a transition (a hover, the theme switch) is let run out: paused half-way it would outrank every rule
+POSE_JS = r"""([p, ta, cyc, bt]) => { document.getAnimations().forEach(a => { if (!a.animationName) { a.finish(); return; }   // a transition (a hover, the theme switch) is let run out: paused half-way it would outrank every rule
   a.pause();
   if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let t = p * cyc + d; if (t < 0) t = 2 * cyc - p * cyc + d; a.currentTime = t; }
-  else if (a.animationName === 'topo-beat') a.currentTime = a.effect.getTiming().delay + .12 * pulse;   // P93 follow-up: every ring at the top of its beat
+  else if (a.animationName === 'topo-breathe') { let t = a.effect.getTiming().delay + .9999 * bt; if (t < 0) t += 2 * bt; a.currentTime = t; }   // P93 follow-up: every drawing at the top of its breath
   else if (ta !== null) a.currentTime = ta; }); }"""
 def pose(pg, p, ta=None):
     """Every contour drawing on the page paused at the point p (0 to 1) of its sweep, its own phase taken into account;
     the area words (the home) at ta ms of their cycle."""
-    pg.evaluate(POSE_JS, [p, ta, CYCLE, PULSE]); pg.wait_for_timeout(80)
+    pg.evaluate(POSE_JS, [p, ta, CYCLE, BTIME]); pg.wait_for_timeout(80)
 
 # the texts of a hero over a topography (a course home's, What's new's), as the eye reads them: every element of the
 # hero with a text of its own, its colour, the opacity it is drawn at and whether it is large text
@@ -813,7 +811,7 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
         if odd: fails.append(f'{pid} {label}: an animation runs on more than transform and opacity: {odd[:3]}')
         tp = [a for a in an if a[3] == 'topo-turn']
         nt = (1 if h else 0) + r['allPatches']
-        if nt and not any(a[3] == 'topo-beat' and a[0] == 'ct-b' for a in an): fails.append(f'{pid} {label}: with motion allowed no ring beats (P93 follow-up)')
+        if len([a for a in an if a[3] == 'topo-breathe']) != nt: fails.append(f'{pid} {label}: {len([a for a in an if a[3] == "topo-breathe"])} drawings breathe, the page has {nt} (P93 follow-up)')
         if len(tp) != nt: fails.append(f'{pid} {label}: {len(tp)} contour drawings move, the page has {nt}')
         # each drawing at its own point of the cycle: the phases build.py gives (--ph), at least 0.9 / n apart for the n
         # drawings of the page (P93 follow-up: at a 10 s sweep the measured progress also carried when each drawing was
@@ -1973,10 +1971,10 @@ def main():
                 # the average), between 2 and 8 px/s; and the layer must have moved between two reads 2 s apart
                 fw, fh = pg.evaluate("(() => { const t = document.querySelector('#home .hhome > .topo'); return [t.clientWidth, t.clientHeight]; })()")
                 rc = math.hypot(fw, fh) / 2
-                v = 1.6 * rc * math.hypot(math.radians(2 * TURN), GROW - 1) / (CYCLE / 1000)
+                v = 1.6 * rc * math.hypot(math.radians(2 * TURN) / (CYCLE / 1000), (GROW - 1) / (BTIME / 1000))   # the turn and the breath, each at its peak
                 m0 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform"); pg.wait_for_timeout(2000)
                 m1 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform")
-                print(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners ({fw} x {fh} px frame, {2 * TURN:g} degrees and {GROW - 1:.2f} growth over {CYCLE / 1000:g} s); moved in 2 s: {m0 != m1}")
+                print(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners ({fw} x {fh} px frame, {2 * TURN:g} degrees over {CYCLE / 1000:g} s, a breath to {GROW:g} over {BTIME / 1000:g} s); moved in 2 s: {m0 != m1}")
                 if not 2 <= v <= 12: fails.append(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners, outside 2 to 12 px/s (seen, and still slow; Pedro, 5 Nov 2026: \"it could be faster\")")
                 if m0 == m1: fails.append('home phone motion: the layer did not move in 2 s')
             for theme in ('dark', 'light'):

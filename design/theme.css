@@ -30,8 +30,8 @@
       that can hover; equal-height catalogue cards with the button on one line
    9  Reading layout (P68): scope line, sticky section bar, one section at a time,
       numbered section bands, next and previous, Sources and "How this unit was made"
-   Version 6.6, 4 Nov 2026 (P93): every contour drawing moves very slowly where motion is welcome (4i: one move, a scale
-   from 1 to 1.06 and a turn from -3 to +3 degrees over 10 s, alternating, eased, transform only, about each drawing's
+   Version 6.6, 4 Nov 2026 (P93): every contour drawing moves where motion is welcome (4i: a turn from -3 to +3 degrees
+   over 10 s and, since 5 Nov, a breath from 1 to 1.1 over 6 s, each alternating, eased, transform only, about each drawing's
    centre; each drawing of a page starts at its own point of the cycle, --ph from build.py; each layer stands out of its
    frame by the overscan the turn needs for the frame's own aspect, from the tokens; still under reduced motion); each
    course home and What's new has a topography behind its hero (.hero.has-topo, the layer the full width beside the
@@ -70,8 +70,8 @@
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
   --topo-a:.16;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page; P93: .16, from .2, so the course homes' and What's new's texts, which stand over the lines, keep theirs at every pose of the move) and a tile's patch */
-  --topo-turn:3deg;--topo-grow:1.06;--topo-cycle:10s;   /* P93: the contours' one move, both themes: a turn of +/- 3 degrees and a growth to 1.06, over 10 s each way (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile": at 120 s a corner of the home's layer moved 0.6 px/s at most and read as still; 5 Nov, 04:11, at 20 s: "It's still too slow [...] it could be faster") */
-  --topo-beat:1.1;--topo-pulse:1.6s;   /* P93 follow-up (Pedro, 5 Nov 2026, 04:11: "the lines expanding from the center and spreading and contracting in all animations to give a heartbeat feeling"): on each beat a rise's outermost ring grows to 1.1 about its own centre and each ring inside it by its share of that (its --b, the ring's rank from the centre over the rise's rings), so the rings spread apart from its peak and draw back together, never crossing (viz.py caps a rise's share where a ring would reach another line); twice (a strong beat, then a weaker) once every 1.6 s */
+  --topo-turn:3deg;--topo-cycle:10s;   /* P93: the contours' turn, both themes: +/- 3 degrees over 10 s each way (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile": at 120 s a corner of the home's layer moved 0.6 px/s at most and read as still; 5 Nov, 04:11, at 20 s: "it could be faster") */
+  --topo-grow:1.1;--topo-breath:6s;   /* P93 follow-up (Pedro, 5 Nov 2026, 07:49, on that morning's heartbeat, a pop of the inner rings every 1.6 s: "It wasn't supposed to be that fast and to pop within the outer line. The whole drawing was supposed to flowingly expand and contract, slowishly but fluidly. Even the outer edges"): the whole drawing breathes, from 1 to 1.1 about its centre and back, 6 s each way (until then it grew to 1.06 with the turn) */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
   --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -494,8 +494,8 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
    shows at a time (tall below 1100 px, wide from it). A patch (.topo-patch) is the tile's own drawing, the full width
    of its content at 4:1.
    The move (P93, Pedro: "very slow, expanding and rotating movements, across the board"): where motion is welcome
-   every drawing turns from -3 to +3 degrees and grows from 1 to 1.06 about its centre, over 10 s each way, eased at
-   both ends, alternating; transform only (the compositor's work, nothing on the main thread); each drawing of a page
+   every drawing turns from -3 to +3 degrees about its centre over 10 s each way and (5 Nov) breathes, swelling from 1
+   to 1.1 and back over 6 s each way, both eased at both ends and alternating; transform only (the compositor's work, nothing on the main thread); each drawing of a page
    starts at its own point of the cycle (--ph, 0 to 1, set by build.py), so none moves in lockstep with another; under
    reduced motion nothing moves. The overscan: a frame W x H turned by a is covered by a layer about its centre W + H
    sin a wide and H + W sin a tall (a scale over 1 only adds), so each layout stands out of its frame by half of that
@@ -509,24 +509,20 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
 .topo-tall{display:block}
 .topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:butt}   /* butt: where one rise's stretch of a line hands over to the next, the two ends abut, never overlap (round caps doubled the line there) */
 .topo .ct-rise path,.topo .ct-spot{stroke:var(--c)}   /* P93 check: .ct-spot, the ring that marks a written part under one level, as a map marks a spot height */
-.topo .topo-l{opacity:var(--topo-a)}   /* P93 follow-up: the layer, not each line, carries the opacity, so lines that touch or cross (a ring beating past a shared stretch, two rings of a dense rise, now separate paths) composite as one line, never darker; a text over them keeps its contrast */
+.topo .topo-l{opacity:var(--topo-a)}   /* P93 follow-up: the layer, not each line, carries the opacity, so lines that touch or cross (two lines of a dense rise, now separate paths) composite as one line, never darker; a text over them keeps its contrast */
 .topo .ct-plan circle{stroke:var(--c);stroke-dasharray:3 3}
 .topo.topo-patch{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;margin:14px 0 0;aspect-ratio:4 / 1;overflow:hidden;-webkit-mask-image:none;mask-image:none}
 .topo-patch .topo-l{display:block;--ox:0px;--oy:0px}   /* a patch's drawing fits its frame (meet) and is transparent: it needs no overscan; its rings are placed clear of the frame at every pose (build.py turned_inside) */
 .topo.topo-patch .topo-l{opacity:var(--topo-p)}
-@media (prefers-reduced-motion:no-preference){.topo-l{animation:topo-turn var(--topo-cycle) ease-in-out calc(var(--ph,0) * -1 * var(--topo-cycle)) infinite alternate both}}
-@keyframes topo-turn{from{transform:rotate(calc(-1 * var(--topo-turn))) scale(1)}to{transform:rotate(var(--topo-turn)) scale(var(--topo-grow))}}
-/* P93 follow-up, the heartbeat (Pedro, 5 Nov 2026, 04:11): every ring a rise closes on its own (.ct-b: viz.py draws each
-   as its own path, with --b its rank from the centre over the rise's rings, 1 for the outermost, a spot ring and a
-   planned ring) beats about the rise's peak (--cx, --cy): out by its share of --topo-beat and back, then a weaker second beat
-   (lub-dub), then rest, once every --topo-pulse, all together. The outer rings move furthest, so the lines expand from
-   the centre, spread apart and contract, and never cross (a ring that set off before the one outside it crossed it:
-   tried first, it stacked two lines under What's new's lede). The stretches two rises share stay still, so no line parts
-   where one rise's stretch hands over to the next. Transform only; under reduced motion nothing beats. build.py keeps
-   every ring clear of its frame at the top of its beat. */
-.topo .ct-b{transform-box:view-box;transform-origin:var(--cx,50%) var(--cy,50%)}   /* about the rise's peak, set on its group by viz.py */
-@media (prefers-reduced-motion:no-preference){.topo .ct-b{animation:topo-beat var(--topo-pulse) ease-in-out infinite both}}
-@keyframes topo-beat{0%,48%,100%{transform:scale(1)}12%{transform:scale(calc(1 + (var(--topo-beat) - 1) * var(--b,1)))}24%{transform:scale(1)}34%{transform:scale(calc(1 + (var(--topo-beat) - 1) * .55 * var(--b,1)))}}
+@media (prefers-reduced-motion:no-preference){.topo-l{animation:topo-turn var(--topo-cycle) ease-in-out calc(var(--ph,0) * -1 * var(--topo-cycle)) infinite alternate both,topo-breathe var(--topo-breath) ease-in-out calc(var(--ph,0) * -2 * var(--topo-breath)) infinite alternate both;animation-composition:replace,add}}
+@keyframes topo-turn{from{transform:rotate(calc(-1 * var(--topo-turn)))}to{transform:rotate(var(--topo-turn))}}
+@keyframes topo-breathe{from{transform:scale(1)}to{transform:scale(var(--topo-grow))}}
+/* P93 follow-up, the breath (Pedro, 5 Nov 2026, 07:49; it replaces that morning's heartbeat, a pop of the inner rings
+   every 1.6 s, and the growth that rode on the turn): the whole drawing swells about its centre from 1 to --topo-grow and
+   back over --topo-breath each way, eased, alternating, added to the turn (animation-composition), every line and gap
+   growing with it, the outer edges furthest; each drawing at its own phase (--ph). Transform only, on the layer, so the
+   compositor does the work; still under reduced motion. build.py keeps every ring clear of its frame at the top of the
+   breath and both ends of the turn. */
 /* P93: a course home's and What's new's hero over its topography: the layer the full width beside the sidebar (it
    bleeds out of the column to 100cqw of the body, section 3), from the top bar to the hero's foot; the hero keeps its
    own height (a course home's holds its stats and buttons, whose boxes are opaque, so the lines pass under them) */
