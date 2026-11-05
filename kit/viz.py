@@ -2819,7 +2819,8 @@ def _ct_field(d, lay, rises, iv, live):
             rings = [[(at[k][0] * W - sr, at[k][1] * H - sr), (at[k][0] * W + sr, at[k][1] * H + sr)]]
         xs = [x for p in rings for x, _ in p] or [at[k][0] * W]
         ys = [y for p in rings for _, y in p] or [at[k][1] * H]
-        box[k] = (min(xs), min(ys), max(xs), max(ys))
+        px, py, g_ = at[k][0] * W, at[k][1] * H, CT_BEAT   # P93 follow-up: the box at the top of the beat, every ring grown about the peak
+        box[k] = (px + (min(xs) - px) * g_, py + (min(ys) - py) * g_, px + (max(xs) - px) * g_, py + (max(ys) - py) * g_)
     return W, H, at, sp, per, lv_of, own, box, edge
 
 
@@ -2845,6 +2846,57 @@ def contours_rings(d):
     return out
 
 
+CT_BEAT = 1.1   # P93 follow-up: the most a rise's outermost ring grows on the heartbeat (theme.css --topo-beat; build.py sets it from the theme)
+
+
+def _ct_beat_caps(per, live, peaks, clr=2.0):
+    """P93 follow-up: for each written rise, the share (0 to 1) of the full beat its outermost own ring can take without
+    reaching another line: the lines it shares with a neighbour, which stay still, at their distance, and the other
+    rises' own rings, which beat too, at half theirs, less clr units. A ring at its full beat crossed a merged line
+    beside it (What's new's 22 Oct under the lede: two lines stacked in one pixel). Distances to points along every line,
+    a point every 2 units, in a hash of 12-unit cells."""
+    cell, pts = 12.0, {}
+    def add(p, closed, tag):
+        q = p + [p[0]] if closed else p
+        for (x0, y0), (x1, y1) in zip(q, q[1:]):
+            n = max(1, int(math.hypot(x1 - x0, y1 - y0) // 2))
+            for i in range(n + 1):
+                x, y = x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n
+                pts.setdefault((int(x // cell), int(y // cell)), []).append((x, y, tag))
+    own = {}
+    for k in live:
+        rings = [pr for pr, c in per[k] if c and len({(round(x), round(y)) for x, y in pr}) >= 2]
+        own[k] = max(rings, key=lambda pr: (max(x for x, _ in pr) - min(x for x, _ in pr)) * (max(y for _, y in pr) - min(y for _, y in pr))) if rings else None
+        for pr, c in per[k]:
+            if c and len({(round(x), round(y)) for x, y in pr}) >= 2:
+                add(pr, True, k)          # an own ring: it beats (tag: its rise)
+            else:
+                add(pr, c, None)          # a shared stretch: still
+    caps = {}
+    for k in live:
+        o = own[k]
+        if not o:
+            caps[k] = 1.0; continue
+        cx, cy = peaks[k]   # every ring of a rise beats about its peak
+        smax = CT_BEAT
+        for x, y in o:
+            r = math.hypot(x - cx, y - cy)
+            if r < 1e-6:
+                continue
+            reach = (CT_BEAT - 1) * r + clr   # how far this point travels at the full beat, plus the clearance
+            cx0, cy0, m = int(x // cell), int(y // cell), int(reach // cell) + 1
+            for i in range(cx0 - m, cx0 + m + 1):
+                for j in range(cy0 - m, cy0 + m + 1):
+                    for px, py, tag in pts.get((i, j), ()):
+                        if tag == k:
+                            continue
+                        dd = math.hypot(px - x, py - y) / (2 if tag is not None else 1) - clr
+                        if dd < (smax - 1) * r:
+                            smax = 1 + max(0.0, dd) / r
+        caps[k] = max(0.0, min(1.0, (smax - 1) / (CT_BEAT - 1))) if CT_BEAT > 1 else 0.0
+    return caps
+
+
 def contours(d):
     """The topography (the module docstring, "The home kind"): one rise per entry of "rises", its height its words, in
     every layout; returns the layer's HTML. A written rise is a <g class="ct-rise ct-t{tone}"> holding every stretch of
@@ -2859,20 +2911,32 @@ def contours(d):
     svgs = []
     for lay in lays:
         W, H, at, sp, per, lv_of, own, box, edge = _ct_field(d, lay, rises, iv, live)
+        caps = _ct_beat_caps(per, live, {k: (at[k][0] * W, at[k][1] * H) for k in live})
         body = ''
         for k, r in enumerate(rises):
             t = r.get('tone')
             tc = f' ct-t{t}' if t else ''
             if r.get('planned'):
                 rr = max(2.0, min(sp * W * .55, .22 * min(W, H)))   # P93: a lone planned ring (spread over one rise) stays inside a 4:1 patch
-                body += (f'<g class="ct-plan{tc}" data-label="{esc(r["label"])}" data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}"><circle cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" '
+                body += (f'<g class="ct-plan{tc}" style="--cx:{at[k][0] * W:.0f}px;--cy:{at[k][1] * H:.0f}px" data-label="{esc(r["label"])}" data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}"><circle class="ct-b" style="--b:1" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" '
                          f'r="{rr:.0f}"/></g>')
                 continue
             bx = ' '.join(f'{v:.0f}' for v in box[k])
-            spot = (f'<circle class="ct-spot" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" r="{_ct_spot_r(r, sp, W, max(rises[j]["words"] for j in live)):.0f}"/>'
+            spot = (f'<circle class="ct-b ct-spot" style="--b:1" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" r="{_ct_spot_r(r, sp, W, max(rises[j]["words"] for j in live)):.0f}"/>'
                     if lv_of[k] == 0 else '')   # P93 check: a written part under one level still shows, as a spot ring
-            body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{lv_of[k]}" '
-                     f'data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"><path d="{_ct_d(per[k])}"/>{spot}</g>')
+            # P93 follow-up (Pedro, 5 Nov 2026, 04:11: "the lines expanding from the center and spreading and contracting
+            # [...] to give a heartbeat feeling"): each ring the rise closes on its own is its own path, .ct-b, beating
+            # about the rise's peak (--cx, --cy on the group: rings beating about their own centres, which differ a
+            # little, met in a dense rise), its share of the beat capped (_ct_beat_caps) so it never reaches another line;
+            # with --b its rank from the centre over the rise's rings (1 for the outermost), so the theme beats it about
+            # its own centre, the outer rings furthest: they spread apart and draw together, never crossing; the
+            # stretches it shares with a neighbour (open runs) stay one path and do not beat, so no line parts at a hand-over
+            own_r = sorted((pr for pr, c in per[k] if c and len({(round(x), round(y)) for x, y in pr}) >= 2),
+                           key=lambda pr: (max(x for x, _ in pr) - min(x for x, _ in pr)) * (max(y for _, y in pr) - min(y for _, y in pr)))
+            rest = [(pr, c) for pr, c in per[k] if not (c and len({(round(x), round(y)) for x, y in pr}) >= 2)]
+            lines = f'<path d="{_ct_d(rest)}"/>' + ''.join(f'<path class="ct-b" style="--b:{(i + 1) / len(own_r) * caps[k]:.2g}" d="{_ct_d([(pr, True)])}"/>' for i, pr in enumerate(own_r))
+            body += (f'<g class="ct-rise{tc}" style="--cx:{at[k][0] * W:.0f}px;--cy:{at[k][1] * H:.0f}px" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{lv_of[k]}" '
+                     f'data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}">{lines}{spot}</g>')
         nm = esc(lay.get('name', ''))
         fit = 'meet' if d.get('patch') else 'slice'
         svgs.append(f'<svg class="topo-l topo-{nm}" data-layout="{nm}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid {fit}" '

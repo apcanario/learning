@@ -32,7 +32,7 @@ P92 hero pairs, dark (--bg #0a0a0c, contour lines at --topo-a 0.16):
   What's new link (fg)                 on the page 16.80; lowest over a line 13.78 (a red line at 0.16)
   What's new arrow (muted)             on the page  7.11; lowest over a line  5.83 (a red line at 0.16)
 P92: ALL HOME PAIRS PASS
-P93 pairs, light (contour lines at --topo-a 0.16; two stacked 0.294). The bar is over one line; two lines stacked in one pixel is a worst case printed for the record, not a pass criterion: verify.py measures every hero text on the built page, pixel by pixel, at five poses of the move, and that is the authority:
+P93 pairs, light (contour lines at --topo-a 0.16; two stacked 0.294). The bar is over one line; since the follow-up of 5 Nov 2026 the layer carries the opacity, so two lines stacked in one pixel composite as one and the two-stacked column is a record of the old worst case only; verify.py measures every hero text on the built page, pixel by pixel, at five poses of the move, and that is the authority:
   crumb link, separator (muted)                on the page  7.40; over one line  5.56; over two stacked  4.28 (record)
   crumb here (fg)                              on the page 13.84; over one line 10.40; over two stacked  8.01 (record)
   eyebrow (muted)                              on the page  7.40; over one line  5.56; over two stacked  4.28 (record)
@@ -65,7 +65,7 @@ P93 pairs, light (contour lines at --topo-a 0.16; two stacked 0.294). The bar is
   pill next on card (blue, 78% with fg)         7.09
   plain pill on card (muted: soon, not run yet)  8.02
   plain pill on page (muted)                    7.40
-P93 pairs, dark (contour lines at --topo-a 0.16; two stacked 0.294). The bar is over one line; two lines stacked in one pixel is a worst case printed for the record, not a pass criterion: verify.py measures every hero text on the built page, pixel by pixel, at five poses of the move, and that is the authority:
+P93 pairs, dark (contour lines at --topo-a 0.16; two stacked 0.294). The bar is over one line; since the follow-up of 5 Nov 2026 the layer carries the opacity, so two lines stacked in one pixel composite as one and the two-stacked column is a record of the old worst case only; verify.py measures every hero text on the built page, pixel by pixel, at five poses of the move, and that is the authority:
   crumb link, separator (muted)                on the page  7.11; over one line  5.26; over two stacked  3.60 (record)
   crumb here (fg)                              on the page 16.80; over one line 12.42; over two stacked  8.52 (record)
   eyebrow (muted)                              on the page  7.11; over one line  5.26; over two stacked  3.60 (record)

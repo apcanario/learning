@@ -350,7 +350,10 @@ def ct_fit(rises, iv, specs, maxbytes=19500):
     return lays
 
 
-TOPO_TURN, TOPO_GROW = 3, 1.06   # theme.css --topo-turn and --topo-grow: the move every drawing makes (verify.py reads them from the theme)
+_TT = (pathlib.Path(__file__).resolve().parent.parent / 'design/theme.css').read_text()
+TOPO_TURN, TOPO_GROW = float(re.search(r'--topo-turn:([\d.]+)deg', _TT).group(1)), float(re.search(r'--topo-grow:([\d.]+);', _TT).group(1))   # the move every drawing makes, from the theme (P93; read from it since the follow-up of 5 Nov)
+TOPO_BEAT = float(re.search(r'--topo-beat:([\d.]+);', _TT).group(1))   # P93 follow-up: the most a ring grows about its own centre on the beat
+viz.CT_BEAT = TOPO_BEAT   # each rise's beat is capped so its outermost ring never reaches another line (viz._ct_beat_caps)
 
 
 def turned_inside(b, W, H, pad=6, view=None):   # P93 check: 6 units (about 2.5 px on a 320 px phone's patch; at 3 the closest came to 1.1 px)
@@ -359,6 +362,7 @@ def turned_inside(b, W, H, pad=6, view=None):   # P93 check: 6 units (about 2.5 
     +TOPO_TURN at TOPO_GROW (and the two other corners of that range), about its centre. A ring near the end of a 4:1
     patch rises and falls by a tenth of its height; one at the centre does not move."""
     cx, cy = W / 2, H / 2
+    # P93 follow-up: a rise's box (viz.contours_rings) is its rings at the top of their beat, grown about its peak
     lo_x, lo_y, hi_x, hi_y = (view[0] * W, view[1] * H, view[2] * W, view[3] * H) if view else (pad, pad, W - pad, H - pad)
     for a in (-TOPO_TURN, TOPO_TURN):
         ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))

@@ -379,7 +379,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
     const shown = [...topo.querySelectorAll('svg.topo-l')].filter(vis);
     out.layout = shown.map(s => s.getAttribute('data-layout'));
     if (out.layout.join() !== (desk ? 'wide' : 'tall')) bad.push(`the contour layout shown is ${out.layout}, expected ${desk ? 'wide' : 'tall'}`);
-    out.layouts = [...topo.querySelectorAll('svg.topo-l')].map(s => [s.getAttribute('data-layout'), [...s.querySelectorAll('g.ct-rise, g.ct-plan')].map(g => [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), +g.getAttribute('data-rings'), getComputedStyle(g.querySelector('path, circle')).stroke, ((g.querySelector('path') || {}).getAttribute ? g.querySelector('path').getAttribute('d') : '').split('z').length - 1])]);
+    out.layouts = [...topo.querySelectorAll('svg.topo-l')].map(s => [s.getAttribute('data-layout'), [...s.querySelectorAll('g.ct-rise, g.ct-plan')].map(g => [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), +g.getAttribute('data-rings'), getComputedStyle(g.querySelector('path, circle')).stroke, [...g.querySelectorAll('path')].map(e => e.getAttribute('d')).join('').split('z').length - 1])]);
     const tr = topo.getBoundingClientRect(), m = document.querySelector('main').getBoundingClientRect(), cr = copy.getBoundingClientRect();
     out.topoBox = [Math.round(tr.left), Math.round(tr.right), Math.round(cr.left), Math.round(cr.right), Math.round(m.left), Math.round(m.right)];
     if (Math.abs(tr.left - (desk ? 300 : 0)) > 1 || Math.abs(tr.right - de.clientWidth) > 1) bad.push(`the contour layer spans ${tr.left.toFixed(0)}..${tr.right.toFixed(0)}, not the full width beside the sidebar (${desk ? 300 : 0}..${de.clientWidth})`);
@@ -570,6 +570,9 @@ def check_home(pg, label, fails, expect, motion=False):
     an = r.get('anims', [])
     if motion:
         if [a for a in an if any(p not in ('transform', 'opacity') for p in a[1])]: fails.append(f'home {label}: an animation runs on more than transform and opacity: {[a for a in an if any(p not in ("transform", "opacity") for p in a[1])]}')
+        nb = sum(1 for a in an if a[0].split()[0] == 'ct-b')   # P93 follow-up: the rings' heartbeat
+        if not nb: fails.append(f'home {label}: with motion allowed no ring beats')
+        an = [a for a in an if a[0].split()[0] != 'ct-b']
         kinds = sorted({a[0].split()[0] for a in an})
         npatch = pg.evaluate("document.querySelectorAll('#home .topo.topo-patch').length")   # a patch in the closed Planned list is not drawn, but its move runs
         if kinds != ['harea-w', 'topo-l'] or sum(1 for a in an if a[0].startswith('harea-w')) != len(names) or sum(1 for a in an if a[0].startswith('topo-l')) != 1 + npatch:
@@ -608,7 +611,7 @@ TOPO_JS = r"""(pid) => {
   };
   const rises = svg => [...svg.querySelectorAll('g.ct-rise, g.ct-plan')].map(g => { const pa = g.querySelector('path, circle');
     return [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-rings'),
-            getComputedStyle(pa).stroke, g.classList.contains('ct-plan') ? 0 : (g.querySelector('path').getAttribute('d').split('z').length - 1)]; });
+            getComputedStyle(pa).stroke, g.classList.contains('ct-plan') ? 0 : ([...g.querySelectorAll('path')].map(e => e.getAttribute('d')).join('').split('z').length - 1)]; });
   const one = (t, hero) => {
     const r = {bytes: new Blob([t.outerHTML]).size, aria: t.getAttribute('aria-hidden'), text: !!(t.querySelector('text, title, desc') || t.textContent.trim()),
                shown: [...t.querySelectorAll(':scope > svg.topo-l')].filter(vis).map(x => x.getAttribute('data-layout')),
@@ -619,7 +622,7 @@ TOPO_JS = r"""(pid) => {
       const fr = t.getBoundingClientRect(), m = sv.getScreenCTM();
       if (hero) {
         r.outside = [];
-        sv.querySelectorAll('g.ct-rise[data-box]').forEach(g => { const b = g.getAttribute('data-box').split(' ').map(Number);
+        sv.querySelectorAll('g.ct-rise[data-box]').forEach(g => { const b = g.getAttribute('data-box').split(' ').map(Number);   // P93 follow-up: data-box is the rings at the top of their beat
           for (const [x, y] of [[b[0], b[1]], [b[2], b[1]], [b[0], b[3]], [b[2], b[3]]]) { const q = new DOMPoint(x, y).matrixTransform(m);
             if (q.x < fr.left - .5 || q.x > fr.right + .5 || q.y < fr.top - .5 || q.y > fr.top + .9 * fr.height + .5) { r.outside.push(g.getAttribute('data-label')); break; } } });
         r.frame = [Math.round(fr.left), Math.round(fr.right), Math.round(fr.top + scrollY), Math.round(fr.height)];
@@ -687,6 +690,8 @@ TILES_JS = r"""(pid) => {
 
 _TM = re.search(r'--topo-turn:([\d.]+)deg;--topo-grow:([\d.]+);--topo-cycle:([\d.]+)s', (R / 'shell.css').read_text())
 TURN, GROW, CYCLE = float(_TM.group(1)), float(_TM.group(2)), float(_TM.group(3)) * 1000   # P93: the move, from the theme
+_TB = re.search(r'--topo-beat:([\d.]+);--topo-pulse:([\d.]+)s', (R / 'shell.css').read_text())
+BEAT, PULSE = float(_TB.group(1)), float(_TB.group(2)) * 1000   # P93 follow-up: the heartbeat, from the theme
 POSES = (0, .25, .5, .75, 1)   # the two ends of the sweep, its quarters and its middle
 def eased(p):
     """CSS ease-in-out, cubic-bezier(.42, 0, .58, 1), at the point p of the sweep: the share of the move made."""
@@ -697,14 +702,15 @@ def eased(p):
         lo, hi = (t, hi) if x < p else (lo, t)
     t = (lo + hi) / 2
     return 3 * (1 - t) * t * t + t ** 3
-POSE_JS = r"""([p, ta, cyc]) => { document.getAnimations().forEach(a => { if (!a.animationName) { a.finish(); return; }   // a transition (a hover, the theme switch) is let run out: paused half-way it would outrank every rule
+POSE_JS = r"""([p, ta, cyc, pulse]) => { document.getAnimations().forEach(a => { if (!a.animationName) { a.finish(); return; }   // a transition (a hover, the theme switch) is let run out: paused half-way it would outrank every rule
   a.pause();
   if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let t = p * cyc + d; if (t < 0) t = 2 * cyc - p * cyc + d; a.currentTime = t; }
+  else if (a.animationName === 'topo-beat') a.currentTime = a.effect.getTiming().delay + .12 * pulse;   // P93 follow-up: every ring at the top of its beat
   else if (ta !== null) a.currentTime = ta; }); }"""
 def pose(pg, p, ta=None):
     """Every contour drawing on the page paused at the point p (0 to 1) of its sweep, its own phase taken into account;
     the area words (the home) at ta ms of their cycle."""
-    pg.evaluate(POSE_JS, [p, ta, CYCLE]); pg.wait_for_timeout(80)
+    pg.evaluate(POSE_JS, [p, ta, CYCLE, PULSE]); pg.wait_for_timeout(80)
 
 # the texts of a hero over a topography (a course home's, What's new's), as the eye reads them: every element of the
 # hero with a text of its own, its colour, the opacity it is drawn at and whether it is large text
@@ -806,11 +812,16 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
         odd = [a for a in an if any(x not in ('transform', 'opacity') for x in a[1])]
         if odd: fails.append(f'{pid} {label}: an animation runs on more than transform and opacity: {odd[:3]}')
         tp = [a for a in an if a[3] == 'topo-turn']
+        if not any(a[3] == 'topo-beat' and a[0] == 'ct-b' for a in an): fails.append(f'{pid} {label}: with motion allowed no ring beats (P93 follow-up)')
         nt = (1 if h else 0) + r['allPatches']
         if len(tp) != nt: fails.append(f'{pid} {label}: {len(tp)} contour drawings move, the page has {nt}')
-        prog = sorted(a[4] for a in tp)
-        close = [(round(a, 3), round(b, 3)) for a, b in zip(prog, prog[1:]) if b - a < .02]
-        if phase and close: fails.append(f'{pid} {label}: drawings move in step (directed progress {close[:3]})')
+        # each drawing at its own point of the cycle: the phases build.py gives (--ph), at least 0.9 / n apart for the n
+        # drawings of the page (P93 follow-up: at a 10 s sweep the measured progress also carried when each drawing was
+        # first shown, a fifth of a second for the tiles in History's Planned list opened after the home, so the check
+        # reads the phases themselves; the animations' running is checked above)
+        phs = sorted(float(x['ph']) for x in ([h] if h else []) + r['patches'] if x.get('ph'))
+        close = [(a, b) for a, b in zip(phs, phs[1:]) if b - a < .9 / max(nt, 1)]
+        if phase and (close or len(phs) < len(r['patches']) + (1 if h else 0)): fails.append(f'{pid} {label}: drawings share or lack a phase ({close[:3]}; {len(phs)} phases)')
     elif an: fails.append(f'{pid} {label}: under reduced motion {len(an)} animations run: {an[:2]}')
     if want is None and pid != 'home' and r['anyTopo']: fails.append(f'{pid} {label}: a topography on a page that has none')
     return r
@@ -1966,7 +1977,7 @@ def main():
                 m0 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform"); pg.wait_for_timeout(2000)
                 m1 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform")
                 print(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners ({fw} x {fh} px frame, {2 * TURN:g} degrees and {GROW - 1:.2f} growth over {CYCLE / 1000:g} s); moved in 2 s: {m0 != m1}")
-                if not 2 <= v <= 8: fails.append(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners, outside 2 to 8 px/s (seen, and very slow)")
+                if not 2 <= v <= 12: fails.append(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners, outside 2 to 12 px/s (seen, and still slow; Pedro, 5 Nov 2026: \"it could be faster\")")
                 if m0 == m1: fails.append('home phone motion: the layer did not move in 2 s')
             for theme in ('dark', 'light'):
                 if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
