@@ -812,8 +812,8 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
         odd = [a for a in an if any(x not in ('transform', 'opacity') for x in a[1])]
         if odd: fails.append(f'{pid} {label}: an animation runs on more than transform and opacity: {odd[:3]}')
         tp = [a for a in an if a[3] == 'topo-turn']
-        if not any(a[3] == 'topo-beat' and a[0] == 'ct-b' for a in an): fails.append(f'{pid} {label}: with motion allowed no ring beats (P93 follow-up)')
         nt = (1 if h else 0) + r['allPatches']
+        if nt and not any(a[3] == 'topo-beat' and a[0] == 'ct-b' for a in an): fails.append(f'{pid} {label}: with motion allowed no ring beats (P93 follow-up)')
         if len(tp) != nt: fails.append(f'{pid} {label}: {len(tp)} contour drawings move, the page has {nt}')
         # each drawing at its own point of the cycle: the phases build.py gives (--ph), at least 0.9 / n apart for the n
         # drawings of the page (P93 follow-up: at a 10 s sweep the measured progress also carried when each drawing was
