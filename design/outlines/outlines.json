@@ -1424,7 +1424,9 @@
    "set": "game-icons",
    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
    "background_removed": true,
-   "excludes": [],
+   "excludes": [
+    "In toga candida"
+   ],
    "texts": {
     "rome": [
      [
@@ -1462,10 +1464,6 @@
      [
       "courses/rome/9.2-the-army.md",
       2
-     ],
-     [
-      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
-      1
      ],
      [
       "courses/rome/11.1-how-the-republic-worked-at-its-height.md",
@@ -2657,16 +2655,18 @@
    "set": "phosphor",
    "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
    "background_removed": false,
-   "excludes": [],
+   "excludes": [
+    "MCP servers?"
+   ],
    "texts": {
     "brand-b": [
      [
-      "courses/brand-ai/B5-skills-and-automation.md",
-      5
-     ],
-     [
       "courses/brand-ai/B1-mental-model.md",
       2
+     ],
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      1
      ],
      [
       "courses/brand-ai/B8-cost-limits-hygiene.md",

@@ -97,6 +97,8 @@ EXCLUDE = {
     'receipt': [r'Receipts inside', r'net receipts', r'Tier receipts', r'trailing receipts', r'quarters of receipts', r'banked receipts', r'from receipt'],
     'map': [r'\bmaps? (?:to|onto|into|them)\b', r'does not map'],
     'books': [r'Two Waves Books'],
+    'toga': [r'In toga candida'],
+    'servers': [r'MCP servers?'],
     'database': [r'Cochrane Database'],
     'phone': [r'phone (?:fields?|numbers?|line|volume)', r'from a phone'],
 }
