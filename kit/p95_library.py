@@ -45,7 +45,7 @@ L = [
     ('olive', 'game-icons', 'delapouite/olive.svg', 'olive (a branch)', ['greece'], ['olive', 'olives']),
     ('laurels', 'game-icons', 'lorc/laurels.svg', 'laurel (a wreath)', ['greece', 'rome'], ['laurel', 'laurels']),
     ('theatre-masks', 'game-icons', 'lorc/drama-masks.svg', 'two theatre masks', ['greece'], ['mask', 'masks']),
-    ('wooden-horse', 'game-icons', 'delapouite/trojan-horse.svg', 'the wooden horse', ['greece'], ['wooden horse', 'Trojan horse']),
+    ('wooden-horse', 'game-icons', 'delapouite/trojan-horse.svg', 'the wooden horse', ['greece', 'rome'], ['wooden horse', 'Trojan horse']),
     ('centaur', 'game-icons', 'delapouite/centaur.svg', 'a centaur', ['greece'], ['centaur', 'centaurs']),
     ('minotaur', 'game-icons', 'lorc/minotaur.svg', 'the Minotaur', ['greece'], ['Minotaur']),
     ('centurion-helmet', 'game-icons', 'delapouite/centurion-helmet.svg', 'a crested helmet', ['rome'], ['helmet', 'helmets']),
@@ -66,7 +66,7 @@ L = [
     ('receipt', 'phosphor', 'assets/fill/receipt-fill.svg', 'a receipt', ['brand-a', 'ux-ia'], ['receipt', 'receipts', 'invoice', 'invoices']),
     ('envelope', 'phosphor', 'assets/fill/envelope-simple-fill.svg', 'an envelope (the sign for email)', ['brand-a', 'brand-b', 'ux-ia'], ['email', 'emails', 'envelope']),
     ('folder', 'phosphor', 'assets/fill/folder-fill.svg', 'a folder', ['brand-a', 'brand-b'], ['folder', 'folders']),
-    ('terminal', 'phosphor', 'assets/fill/terminal-window-fill.svg', 'a terminal window', ['brand-b'], ['terminal', 'terminals']),
+    ('terminal', 'phosphor', 'assets/fill/terminal-window-fill.svg', 'a terminal window (the sign for Claude Code)', ['brand-b'], ['terminal', 'terminals', 'Claude Code']),
     ('plug', 'phosphor', 'assets/fill/plug-fill.svg', 'a plug (the sign for a plugin)', ['brand-b'], ['plugin', 'plugins']),
     ('servers', 'phosphor', 'assets/fill/hard-drives-fill.svg', 'two stacked servers', ['brand-b'], ['server', 'servers']),
     ('clock', 'phosphor', 'assets/fill/clock-fill.svg', 'a clock (the sign for scheduled times)', ['brand-b'], ['clock', 'clocks']),
@@ -83,7 +83,37 @@ L = [
     ('fork-knife', 'phosphor', 'assets/fill/fork-knife-fill.svg', 'a fork and a knife (the sign for meals)', ['ux-ia'], ['meal', 'meals', 'lunch']),
     ('credit-card', 'phosphor', 'assets/fill/credit-card-fill.svg', 'a payment card', ['ux-ia'], ['Perqo card', 'credit card', 'credit cards', 'payment card', 'payment cards']),
     ('bell', 'phosphor', 'assets/fill/bell-fill.svg', 'a bell (the sign for notifications)', ['ux-ia'], ['notification', 'notifications', 'bell']),
-    ('magnifier', 'phosphor', 'assets/fill/magnifying-glass-fill.svg', 'a magnifying glass (the sign for search)', ['ux-ia'], ['search', 'magnifying glass']),
+    ('magnifier', 'phosphor', 'assets/fill/magnifying-glass-fill.svg', 'a magnifying glass (the sign for search)', ['brand-b', 'ux-ia'], ['search', 'magnifying glass']),
+    # P96 (8 Nov 2026): the outlines the roll-out's texts call for and the library lacked, each for the page whose
+    # deciding sentence is in design/outlines/uses-why.md; measured by relief.py --probe before they were taken
+    ('greek-helmet', 'game-icons', 'lorc/crested-helmet.svg', 'a crested Greek helmet', ['greece'], ['helmet', 'helmets']),
+    ('vase', 'game-icons', 'delapouite/painted-pottery.svg', 'a painted vase', ['greece'], ['vase', 'vases', 'lekythos', 'lekythoi', 'krater', 'kraters']),
+    ('ostrakon', 'game-icons', 'delapouite/broken-pottery.svg', 'a broken pot (the sign for the sherds of ostracism)', ['greece'], ['ostracism', 'ostracised', 'ostraka', 'ostrakon', 'sherd', 'sherds', 'potsherd', 'potsherds']),
+    ('bull', 'game-icons', 'lorc/bull.svg', "a bull's head", ['greece', 'rome'], ['bull', 'bulls']),
+    ('hydra', 'game-icons', 'lorc/hydra.svg', 'the Hydra', ['greece'], ['Hydra']),
+    ('ram', 'game-icons', 'delapouite/ram-profile.svg', 'a ram', ['greece'], ['ram', 'fleece']),
+    ('scroll', 'game-icons', 'lorc/scroll-unfurled.svg', 'a scroll', ['greece', 'rome'], ['scroll', 'scrolls', 'papyrus', 'papyri', 'book-roll', 'book-rolls']),
+    ('tablet', 'game-icons', 'lorc/stone-tablet.svg', 'a tablet', ['greece', 'rome'], ['tablet', 'tablets', 'Twelve Tables']),
+    ('coins', 'game-icons', 'delapouite/two-coins.svg', 'two coins', ['greece', 'rome'], ['coin', 'coins', 'coinage', 'coinages']),
+    ('horse', 'game-icons', 'lorc/horse-head.svg', "a horse's head", ['greece', 'rome'], ['horse', 'horses', 'cavalry']),
+    ('wall', 'game-icons', 'delapouite/stone-wall.svg', 'a stone wall', ['greece', 'rome'], ['wall', 'walls']),
+    ('winged-sandal', 'game-icons', 'lorc/wingfoot.svg', 'a winged sandal', ['greece'], ['winged sandals', 'sandals']),
+    ('sun', 'game-icons', 'lorc/sun.svg', 'the sun', ['rome'], ['Sun', 'Sol', 'Helios']),
+    ('scales', 'game-icons', 'lorc/scales.svg', 'a pair of scales (the sign for the law)', ['rome', 'brand-a'], ['law', 'laws']),
+    ('dagger', 'game-icons', 'lorc/plain-dagger.svg', 'a dagger', ['rome'], ['dagger', 'daggers']),
+    ('libation', 'game-icons', 'lorc/pouring-chalice.svg', 'a cup pouring out (the sign for a libation)', ['greece', 'rome'], ['libation', 'libations']),
+    ('film-slate', 'phosphor', 'assets/fill/film-slate-fill.svg', 'a clapperboard (the sign for a video)', ['brand-a'], ['video', 'videos', 'vlog', 'vlogs', 'episode', 'episodes']),
+    ('audience', 'phosphor', 'assets/fill/users-three-fill.svg', 'three people (the sign for an audience)', ['brand-a'], ['audience', 'audiences']),
+    ('notebook', 'phosphor', 'assets/fill/notebook-fill.svg', 'a notebook (the sign for the record)', ['brand-a'], ['the record', 'a record']),
+    ('chart', 'phosphor', 'assets/fill/chart-line-up-fill.svg', 'a rising line chart (the sign for benchmarks)', ['brand-a'], ['benchmark', 'benchmarks']),
+    ('piggy-bank', 'phosphor', 'assets/fill/piggy-bank-fill.svg', 'a piggy bank (the sign for savings)', ['brand-a'], ['savings', 'runway']),
+    ('context-window', 'phosphor', 'assets/fill/app-window-fill.svg', 'a window (the sign for the context window)', ['brand-b'], ['context window', 'context windows']),
+    ('cost', 'phosphor', 'assets/fill/coins-fill.svg', 'coins (the sign for cost)', ['brand-b'], ['cost', 'costs', 'price', 'prices', 'pricing']),
+    ('chat', 'phosphor', 'assets/fill/chat-text-fill.svg', 'a speech bubble (the sign for a chat)', ['brand-b'], ['chat', 'chats']),
+    ('stack', 'phosphor', 'assets/fill/stack-fill.svg', 'a stack of layers (the sign for the layers of context)', ['brand-b'], ['layer', 'layers']),
+    ('gauge', 'phosphor', 'assets/fill/gauge-fill.svg', 'a gauge (the sign for usage limits)', ['brand-b'], ['limit', 'limits', 'usage']),
+    ('cards', 'phosphor', 'assets/fill/cards-fill.svg', 'a stack of cards (the sign for method cards)', ['brand-b'], ['card', 'cards']),
+    ('key', 'phosphor', 'assets/fill/key-fill.svg', 'a key (the sign for permissions)', ['ux-ia'], ['permission', 'permissions']),
 ]
 # P95 check A: what a keyword also matches that is not the object (a homonym, a title, another kind of the thing), taken
 # out of each line before counting
@@ -101,6 +131,12 @@ EXCLUDE = {
     'servers': [r'MCP servers?'],
     'database': [r'Cochrane Database'],
     'phone': [r'phone (?:fields?|numbers?|line|volume)', r'from a phone'],
+    # P96
+    'ram': [r'battering', r'\brams? (?:of|on) (?:a|the|her|their)\b', r'\bramm', r'bronze rams?'],
+    'horse': [r'wooden horse', r'Trojan horse'],
+    'wall': [r'walls? of (?:the )?(?:world|text)', r'without walls', r'wall of (?:text|silence)'],
+    'scales': [r'\bin[- ]law\b', r'law of (?:signs|nature|averages)', r'Laws\b(?= of Plato| \()', r'\bOn the Laws\b'],
+    'chat': [r'\bchat (?:with|about) (?:a|his) friend'],
 }
 # taken from the sets and measured, then not used: busy (relief.py's measures) or not the object the texts name
 REJECTED = [
@@ -127,7 +163,48 @@ REJECTED = [
     ('phosphor', 'assets/fill/brain-fill.svg', 'not the object: "brain dump", "pick your brain", a skill\'s name; the organ only in passing'),
     ('phosphor', 'assets/fill/chart-bar-fill.svg', 'not the object: the texts name charts only in passing and in a source\'s title, never a bar chart (second check of the library)'),
     ('phosphor', 'assets/fill/camera-fill.svg', 'a second camera: the texts\' camera is the phone filming, kept as the video camera'),
+    # P96: measured for a page of the roll-out and not taken
+    ('game-icons', 'skoll/pegasus.svg', 'busy: 1 thin part (Greece 3.6 discusses Pegasus; it gets no relief)'),
+    ('game-icons', 'cathelineau/medusa-head.svg', 'busy: 5 thin parts and a step of 2.5 px (Greece 3.1 takes the winged sandal instead)'),
+    ('game-icons', 'caro-asercion/philosopher-bust.svg', 'busy: 2 thin parts; and the philosophy reports discuss no bust'),
+    ('game-icons', 'delapouite/caduceus.svg', 'busy: 16 regions, 2 thin parts'),
+    ('game-icons', 'delapouite/harp.svg', 'busy: 4 thin parts; and a harp, not the lyre the texts name'),
+    ('game-icons', 'delapouite/papyrus.svg', 'busy: 14 thin parts, a step of 2.2 px (lorc/scroll-unfurled.svg taken for the scroll)'),
+    ('game-icons', 'lorc/heavy-lightning.svg', 'busy: 3 thin parts'),
+    ('game-icons', 'delapouite/sheep.svg', 'busy: 2 thin parts (delapouite/ram-profile.svg taken for the Golden Fleece)'),
+    ('game-icons', 'delapouite/charging-bull.svg', 'busy: 4 thin parts (lorc/bull.svg taken)'),
+    ('game-icons', 'lorc/cyclops.svg', 'not the object: an eye in an oval reads as an eye, not the Cyclops of Greece 4.4 and 10.7'),
+    ('game-icons', 'sbed/arena.svg', 'not the object: no amphitheatre a reader would recognise (Rome 9.4 takes the short sword)'),
+    ('game-icons', 'delapouite/lighthouse.svg', 'not the object: a modern lighthouse, not the Pharos of Greece 7.2'),
+    ('game-icons', 'lorc/wine-glass.svg', 'not the object: a modern wine glass, not the krater or kylix of Greece 8.5'),
+    ('game-icons', 'lorc/sacrificial-dagger.svg', 'busy: 2 thin parts (lorc/plain-dagger.svg taken for Rome 11.7)'),
+    ('phosphor', 'assets/fill/calculator-fill.svg', 'not the object: Brand DD-A2 names savings and a runway, never a calculator'),
 ]
+# P96: outlines in the library that no reading page shows yet, kept for the texts that name them (verify.py: every
+# outline is in use in design/outlines/uses.json or listed here)
+SPARE = {
+    'amphora': 'Greece 4.3 names it most and shows the wooden horse; kept for a later text',
+    'ionic-column': 'two Greek texts name the order in passing; kept',
+    'owl': 'named in passing in three Greek texts; kept',
+    'torch': 'Rome 12.4 takes the short sword; kept',
+    'bridge': 'Rome 8.3 names the Milvian Bridge twice, in passing; kept',
+    'video-camera': 'Personal brand A5 takes the phone; kept',
+    'microphone': 'Personal brand A5 takes the phone; kept',
+    'money': 'Personal brand DD-A2 takes the piggy bank; kept',
+    'receipt': 'Personal brand A8 takes the scales; kept for Information architecture',
+    'folder': 'named in passing; kept',
+    'servers': 'named in passing; kept',
+    'clock': 'Building with AI B5 takes the plug; kept',
+    'book': 'named in passing; kept',
+    'checklist': 'kept for a deliverable that is a checklist',
+    'database': 'named in passing; kept',
+    'laptop': 'named in passing; kept',
+    'tag': 'Information architecture: kept for the units on labelling still to come',
+    'bicycle': 'Information architecture: kept for the Perqo units still to come',
+    'barbell': 'Information architecture: kept for the Perqo units still to come',
+    'fork-knife': 'Information architecture: kept for the Perqo units still to come',
+    'credit-card': 'Information architecture: kept for the Perqo units still to come',
+}
 
 
 def credit(s, author):
@@ -181,7 +258,7 @@ def main():
         out.append(dict(id=oid, file=f'{oid}.svg', depicts=what, courses=courses, keywords=kws,
                         source=dict(repository=st['repo'], path=path, commit=commits[s], url=f'https://github.com/{st["repo"]}/blob/{commits[s]}/{path}'),
                         author=author, licence=st['licence'], credit=credit(s, author), set=s,
-                        licence_url='https://creativecommons.org/licenses/by/3.0/' if st['licence'] == 'CC BY 3.0' else f'https://github.com/{st["repo"]}/blob/{commits[s]}/{st["licence_file"]}', background_removed=bool(n), excludes=EXCLUDE.get(oid, []), texts=texts))
+                        licence_url='https://creativecommons.org/licenses/by/3.0/' if st['licence'] == 'CC BY 3.0' else f'https://github.com/{st["repo"]}/blob/{commits[s]}/{st["licence_file"]}', background_removed=bool(n), excludes=EXCLUDE.get(oid, []), texts=texts, **({'spare': SPARE[oid]} if oid in SPARE else {})))
     lic = LIB / 'licences'
     lic.mkdir(exist_ok=True)
     for k, st in SETS.items():   # each set's licence file as its repository holds it at the commit taken, for the credits page
