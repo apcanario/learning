@@ -49,7 +49,7 @@ def checker_a(clones, sheet, out):
         (out / f'licence-{cl}.txt').write_text(f'{repo} at {sha}, file {f}:\n\n{txt}')
     for t in ('dark', 'light'):
         shutil.copy(sheet / f'sheet-{t}.png', out / f'contact-sheet-{t}.png')
-    g = ['# Grep lines', '', 'For each outline and each course it serves: the lines of that course\'s texts that name it (its keywords, whole words, any case), at most eight per course, with the total; read from the prose (figure declarations and the outline\'s excludes taken out, so a line number may differ from the file\'s where a figure stood above it).', '']
+    g = ['# Grep lines', '', 'For each outline and each course it serves: the lines of that course\'s texts that name it (its keywords, whole words, any case), at most eight per course, with the total; read from the prose (the front matter, a unit\'s Sources section, figure declarations, link targets and URLs taken out, and every sentence holding one of the outline\'s excludes, so a line number may differ from the file\'s where a figure stood above it).', '']
     for o in lib['outlines']:
         g.append(f'## {o["id"]} · {o["depicts"]} · keywords: {", ".join(o["keywords"])}')
         for c in o['courses']:

@@ -1,5 +1,5 @@
 {
- "about": "P95 (8 Nov 2026): the outline library. Each outline is a file from an open icon set on GitHub, taken unchanged but for the background square a set adds (removed by kit/p95_library.py), because a course's texts discuss the object: \"texts\" lists, for each course it serves, every file whose text names it (its keywords) with the count. kit/relief.py turns each into <id>.json, which viz.py's kind \"relief\" draws. A caption prints \"<depicts>, a stylised outline drawn as a relief from an icon. <credit>.\", the licence linked; verify.py checks it is printed exactly. A count is of the prose: the front matter, figure declarations, link targets and URLs are taken out first, and every sentence that holds one of the outline's \"excludes\" (a homonym, a title, another kind of the thing). licences/ holds each set's licence file at the commit taken.",
+ "about": "P95 (8 Nov 2026): the outline library. Each outline is a file from an open icon set on GitHub, taken unchanged but for the background square a set adds (removed by kit/p95_library.py), because a course's texts discuss the object: \"texts\" lists, for each course it serves, every file whose text names it (its keywords) with the count. kit/relief.py turns each into <id>.json, which viz.py's kind \"relief\" draws. A caption prints \"<depicts>, a stylised outline drawn as a relief from an icon. <credit>.\", the licence linked; verify.py checks it is printed exactly. A count is of the prose: the front matter, a unit's Sources section, figure declarations, link targets and URLs are taken out first, and every sentence that holds one of the outline's \"excludes\" (a homonym, a title, another kind of the thing). licences/ holds each set's licence file at the commit taken.",
  "allowed_licences": [
   "CC BY 3.0",
   "CC0 1.0",
@@ -813,7 +813,7 @@
   {
    "id": "olive",
    "file": "olive.svg",
-   "depicts": "an olive branch",
+   "depicts": "olive (a branch)",
    "courses": [
     "greece"
    ],
@@ -1198,13 +1198,11 @@
   {
    "id": "centurion-helmet",
    "file": "centurion-helmet.svg",
-   "depicts": "a crested Roman helmet",
+   "depicts": "a crested helmet",
    "courses": [
     "rome"
    ],
    "keywords": [
-    "centurion",
-    "centurions",
     "helmet",
     "helmets"
    ],
@@ -1224,32 +1222,16 @@
    "texts": {
     "rome": [
      [
-      "courses/rome/9.2-the-army.md",
-      12
-     ],
-     [
       "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
       6
-     ],
-     [
-      "courses/rome/11.2-generals-and-their-armies.md",
-      5
      ],
      [
       "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
       3
      ],
      [
-      "courses/rome/3.1-the-struggle-of-the-orders.md",
+      "courses/rome/9.2-the-army.md",
       3
-     ],
-     [
-      "courses/rome/13.7-marcus-aurelius-a-life.md",
-      2
-     ],
-     [
-      "courses/rome/5.4-caesar.md",
-      2
      ],
      [
       "courses/rome/1.2-the-etruscans.md",
@@ -1260,27 +1242,7 @@
       1
      ],
      [
-      "courses/rome/10.4-reception-how-rome-reached-you.md",
-      1
-     ],
-     [
-      "courses/rome/11.4-women-and-the-late-republic.md",
-      1
-     ],
-     [
-      "courses/rome/11.6-caesars-commentaries-and-gaul.md",
-      1
-     ],
-     [
-      "courses/rome/2.2-the-gods-of-rome-and-their-greek-doubles.md",
-      1
-     ],
-     [
-      "courses/rome/3.2-the-legends-of-the-early-republic.md",
-      1
-     ],
-     [
-      "courses/rome/3.3-veii-the-gauls-and-camillus.md",
+      "courses/rome/13.7-marcus-aurelius-a-life.md",
       1
      ],
      [
@@ -1288,27 +1250,7 @@
       1
      ],
      [
-      "courses/rome/5.3-pompey-crassus-cicero-and-catiline.md",
-      1
-     ],
-     [
-      "courses/rome/6.4-empire-without-end.md",
-      1
-     ],
-     [
-      "courses/rome/7.4-the-severans-and-the-citizenship-of-212.md",
-      1
-     ],
-     [
-      "courses/rome/7.5-how-the-empire-worked.md",
-      1
-     ],
-     [
       "courses/rome/8.3-constantine.md",
-      1
-     ],
-     [
-      "courses/rome/8.6-the-rome-that-did-not-fall.md",
       1
      ],
      [
@@ -2007,11 +1949,11 @@
     "brand-a": [
      [
       "courses/brand-ai/A5-production-craft.md",
-      30
+      29
      ],
      [
       "courses/brand-ai/A6-how-growth-works-per-platform.md",
-      9
+      8
      ],
      [
       "courses/brand-ai/A4-voice-disclosure-and-the-record.md",
@@ -2045,7 +1987,7 @@
      ],
      [
       "courses/brand-ai/B3-prompting-that-holds-up.md",
-      15
+      14
      ],
      [
       "courses/brand-ai/B5-skills-and-automation.md",
@@ -2081,23 +2023,23 @@
     "brand-a": [
      [
       "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
-      8
+      6
      ],
      [
       "courses/brand-ai/A7-monetisation-through-shomen.md",
-      5
+      4
      ],
      [
       "courses/brand-ai/A9-what-to-expect-benchmarks.md",
-      5
+      4
      ],
      [
       "courses/brand-ai/A2-audience-and-platform-economics.md",
-      3
+      2
      ],
      [
       "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
-      3
+      1
      ],
      [
       "generator/data/brand-ai/audience-growth-across-platforms.md",
@@ -2136,7 +2078,7 @@
     "brand-a": [
      [
       "courses/brand-ai/A5-production-craft.md",
-      13
+      11
      ],
      [
       "courses/brand-ai/A3-the-journey-system.md",
@@ -2184,15 +2126,11 @@
      ],
      [
       "courses/brand-ai/A3-the-journey-system.md",
-      6
+      5
      ],
      [
       "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
       2
-     ],
-     [
-      "courses/brand-ai/A2-audience-and-platform-economics.md",
-      1
      ]
     ],
     "ux-ia": [
@@ -2317,7 +2255,7 @@
     "ux-ia": [
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
-      57
+      56
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -2462,15 +2400,15 @@
       18
      ],
      [
-      "courses/brand-ai/A6-how-growth-works-per-platform.md",
-      12
-     ],
-     [
       "generator/data/brand-ai/audience-growth-across-platforms.md",
       12
      ],
      [
       "courses/brand-ai/A2-audience-and-platform-economics.md",
+      10
+     ],
+     [
+      "courses/brand-ai/A6-how-growth-works-per-platform.md",
       10
      ],
      [
@@ -2640,10 +2578,6 @@
    ],
    "texts": {
     "brand-b": [
-     [
-      "courses/brand-ai/B2-choosing-the-model.md",
-      1
-     ],
      [
       "courses/brand-ai/B5-skills-and-automation.md",
       1
@@ -2843,11 +2777,11 @@
    "texts": {
     "brand-b": [
      [
-      "courses/brand-ai/B7-content-pipeline.md",
-      6
+      "courses/brand-ai/B5-skills-and-automation.md",
+      5
      ],
      [
-      "courses/brand-ai/B5-skills-and-automation.md",
+      "courses/brand-ai/B7-content-pipeline.md",
       5
      ],
      [
@@ -2866,7 +2800,7 @@
     "ux-ia": [
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
-      11
+      10
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
@@ -2989,13 +2923,14 @@
    "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
    "background_removed": false,
    "excludes": [
-    "\\bmaps? (?:to|onto|into)\\b"
+    "\\bmaps? (?:to|onto|into|them)\\b",
+    "does not map"
    ],
    "texts": {
     "ux-ia": [
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
-      37
+      36
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
@@ -3016,10 +2951,6 @@
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
       7
-     ],
-     [
-      "courses/ux/IA3-how-people-find-and-understand-things.md",
-      1
      ]
     ]
    }
@@ -3052,15 +2983,15 @@
     "ux-ia": [
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
-      37
+      34
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      33
+      31
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
-      12
+      11
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -3115,7 +3046,7 @@
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      26
+      25
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -3123,11 +3054,11 @@
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      9
+      8
      ],
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
-      5
+      4
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
@@ -3174,23 +3105,23 @@
     "ux-ia": [
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      27
+      26
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
-      24
-     ],
-     [
-      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      20
+      23
      ],
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
-      19
+      18
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      18
      ],
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
-      10
+      9
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
@@ -3485,15 +3416,15 @@
     "ux-ia": [
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
-      70
+      61
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      36
+      28
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      17
+      16
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",

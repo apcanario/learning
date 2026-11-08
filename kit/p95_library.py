@@ -42,13 +42,13 @@ L = [
     ('trireme', 'game-icons', 'delapouite/trireme.svg', 'an oared warship under sail', ['greece', 'rome'], ['trireme', 'triremes', 'quinquereme', 'quinqueremes', 'warship', 'warships', 'galley', 'galleys']),
     ('lyre', 'game-icons', 'lorc/lyre.svg', 'a lyre', ['greece'], ['lyre', 'lyres']),
     ('owl', 'game-icons', 'lorc/owl.svg', 'an owl', ['greece'], ['owl', 'owls']),
-    ('olive', 'game-icons', 'delapouite/olive.svg', 'an olive branch', ['greece'], ['olive', 'olives']),
+    ('olive', 'game-icons', 'delapouite/olive.svg', 'olive (a branch)', ['greece'], ['olive', 'olives']),
     ('laurels', 'game-icons', 'lorc/laurels.svg', 'laurel (a wreath)', ['greece', 'rome'], ['laurel', 'laurels']),
     ('theatre-masks', 'game-icons', 'lorc/drama-masks.svg', 'two theatre masks', ['greece'], ['mask', 'masks']),
     ('wooden-horse', 'game-icons', 'delapouite/trojan-horse.svg', 'the wooden horse', ['greece'], ['wooden horse', 'Trojan horse']),
     ('centaur', 'game-icons', 'delapouite/centaur.svg', 'a centaur', ['greece'], ['centaur', 'centaurs']),
     ('minotaur', 'game-icons', 'lorc/minotaur.svg', 'the Minotaur', ['greece'], ['Minotaur']),
-    ('centurion-helmet', 'game-icons', 'delapouite/centurion-helmet.svg', 'a crested Roman helmet', ['rome'], ['centurion', 'centurions', 'helmet', 'helmets']),
+    ('centurion-helmet', 'game-icons', 'delapouite/centurion-helmet.svg', 'a crested helmet', ['rome'], ['helmet', 'helmets']),
     ('gladius', 'game-icons', 'skoll/gladius.svg', 'a short sword', ['rome'], ['gladius', 'sword', 'swords']),
     ('toga', 'game-icons', 'delapouite/roman-toga.svg', 'a figure in a toga', ['rome'], ['toga', 'togas']),
     ('eagle', 'game-icons', 'lorc/eagle-emblem.svg', 'an eagle with spread wings', ['rome'], ['eagle', 'eagles', 'aquila']),
@@ -95,7 +95,7 @@ EXCLUDE = {
     'bridge': [r'bridge and barrier', r'bridge to the', r'bridge to Italy', r'bridge between', r'Rhine bridges?', r'bridges? (?:over|across) the Rhine', r'Pons Sublicius', r'Sublician bridge', r'bridge of boats', r'Boarding-Bridge'],
     'gladius': [r'fire and sword', r'fire, sword'],
     'receipt': [r'Receipts inside', r'net receipts', r'Tier receipts', r'trailing receipts', r'quarters of receipts', r'banked receipts', r'from receipt'],
-    'map': [r'\bmaps? (?:to|onto|into)\b'],
+    'map': [r'\bmaps? (?:to|onto|into|them)\b', r'does not map'],
     'books': [r'Two Waves Books'],
     'database': [r'Cochrane Database'],
     'phone': [r'phone (?:fields?|numbers?|line|volume)', r'from a phone'],
@@ -143,8 +143,12 @@ def prose(f, oid):
     t = FIG.sub(' ', f.read_text(encoding='utf-8'))
     t = re.sub(r'\A---\n.*?\n---\n', ' ', t, flags=re.S)        # the front matter (search: off)
     t = re.sub(r'\]\([^)\s]*\)|https?://\S+|\b[\w.-]+\.(?:com|org|net|io|ai|dev|edu|gov|co)/\S*', ' ', t)   # link targets and URLs, bare ones too (a slug such as earn-money)
+    t = re.sub(r'^##\s+Sources\b.*?(?=^## |\Z)', ' ', t, flags=re.S | re.M)   # P95 check A4: a unit's source list (its titles are not its prose)
+    t = re.sub(r'(?<=\d)\.(?=\d)', '\x00', t)
+    t = re.sub(r'\b(c|ca|no|vol|pp|p|cf|e\.g|i\.e)\.', lambda m: m.group(1).replace('.', '\x00') + '\x00', t, flags=re.I)   # a decimal point or an abbreviation's stop ends no sentence
     for x in EXCLUDE.get(oid, []):   # P95 check A3: the whole sentence that holds a homonym goes, not only its name
         t = re.sub(r'[^.\n]*(?:' + x + r')[^.\n]*', ' ', t, flags=re.I)
+    t = t.replace('\x00', '.')
     return t
 
 
@@ -188,7 +192,7 @@ def main():
                      'discuss the object: "texts" lists, for each course it serves, every file whose text names it (its keywords) '
                      'with the count. kit/relief.py turns each into <id>.json, which viz.py\'s kind "relief" draws. A caption prints '
                      '"<depicts>, a stylised outline drawn as a relief from an icon. <credit>.", the licence linked; verify.py checks it is printed exactly. A count is '
-                     'of the prose: the front matter, figure declarations, link targets and URLs are taken out first, and every sentence '
+                     'of the prose: the front matter, a unit\'s Sources section, figure declarations, link targets and URLs are taken out first, and every sentence '
                      'that holds one of the outline\'s "excludes" (a homonym, a title, another kind of the thing). licences/ holds '
                      'each set\'s licence file at the commit taken.',
                allowed_licences=ALLOWED, outlines=out, rejected=rej)
