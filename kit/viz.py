@@ -2625,7 +2625,7 @@ def _heat(d):
 # lines found by marching squares, each line simplified (Ramer-Douglas-Peucker) and written with whole-unit relative
 # path steps, each stretch of a line in the tone of the rise that dominates it.
 CT_RIPPLE = (.16, .09)
-SEP_FLAT = 2    # P94 check (second): a separator's closed ring under 2 units across either way is a dash, not a ring, and is dropped
+SEP_FLAT = 8    # P94 checks 2 and 3: a separator's closed ring under 8 units across either way (2.4 px at 390 px, its two strokes merging into one bar) is a dash, not a ring, and is dropped; the test is on the whole contour line, before it is shared out among the rises
 SEP_SPECK = 6   # P94 check: a separator's closed ring under 6 units both ways (about 1.5 px on a 320 px phone) is a speck and is dropped   # the bump's outline: two angular harmonics, so a rise reads as land, not a target; its peak is unchanged
 
 
@@ -2907,8 +2907,10 @@ def contours(d):
             spot = (f'<circle class="ct-spot" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" r="{_ct_spot_r(r, sp, W, max(rises[j]["words"] for j in live)):.0f}"/>'
                     if _ct_spotted(d, lv_of[k], own[k]) else '')   # P93 check: a written part under one level still shows, as a spot ring
             where = '' if d.get('sep') else f' data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"'   # P94: a separator keeps to 6 KB; its place and box serve no check
+            dd = _ct_d(per[k])
+            path = '' if (d.get('sep') and not dd) else f'<path d="{dd}"/>'   # P94 check 3: a separator's spot-only rise carries no empty path
             body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{lv_of[k]}"'
-                     f'{where}><path d="{_ct_d(per[k])}"/>{spot}</g>')
+                     f'{where}>{path}{spot}</g>')
         nm = esc(lay.get('name', ''))
         fit = 'meet' if d.get('patch') else 'slice'
         svgs.append(f'<svg class="topo-l topo-{nm}" data-layout="{nm}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid {fit}" '

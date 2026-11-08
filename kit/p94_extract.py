@@ -33,7 +33,7 @@ JS = r"""([pid, poses, cyc, bt]) => {
         next: t.nextElementSibling ? t.nextElementSibling.tagName.toLowerCase() + '.' + t.nextElementSibling.className : null,
         viewBox: l.getAttribute('viewBox'), fit: l.getAttribute('preserveAspectRatio'), tone, stroke: getComputedStyle(t.querySelector('path, circle')).stroke, opacity: getComputedStyle(l).opacity,
         rises: [...l.querySelectorAll('g.ct-rise')].map(g => ({label: g.getAttribute('data-label'), words: +g.getAttribute('data-words'), levels: +g.getAttribute('data-rings'),
-          rings: g.querySelector('path').getAttribute('d').split('z').length - 1, spot: !!g.querySelector('.ct-spot')})), poses: []};
+          rings: g.querySelector('path') ? g.querySelector('path').getAttribute('d').split('z').length - 1 : 0, spot: !!g.querySelector('.ct-spot')})), poses: []};
     }
     return [o, t];
   });
