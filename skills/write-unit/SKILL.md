@@ -63,9 +63,9 @@ With the whole draft written, go through it section by section and ask of each: 
 - Run `sourcing-standard.md` Part 1 and `<sourcing part>` over every checkable claim. Fix what fails; a claim you cannot source is said to be unsourced or removed (and never enters the deliverable).
 - Confirm the closing artefact agrees with the body and the deliverable (or Self-test) is complete.
 - Check every figure against the text: each label and number is in the unit, the caption names the section and the source, the kind fits the shape (§4b).
-- Write the unsure list: up to ten claims you could not verify, one per line.
+- Write the unsure list: up to ten claims you could not verify, one per line. Then one last line (P96, 8 Nov 2026): `Object: <the object the unit discusses most, with the section that discusses it at length>`, or `Object: none` when the unit discusses no object at length, only in passing. Filing maps the page's relief from it (`file-unit`); name the thing the text discusses (the lekythos, the Twelve Tables, the phone on a tripod), not a theme.
 
 ## 6. Hand in
 - **Markdown course:** one file `<code>-<slug>.md`, filed later in `<vault>` (code, then the title lower-cased, hyphenated, accents and punctuation dropped), starting with the front matter from `method.md` §7 (code, title, course, model, written date, search flag).
 - **Personal Mythology:** two files: `<id>-<slug>.md` (front matter, title, then the report in Markdown; the only copy, since P71-3), and `bibliography-r-<id>.md` (the curated bibliography: ancient sources with passages and edition where known; modern works with author, full title, place or journal, year of the edition named).
-- Send the files. Reply with one line (unit, word count, search used or not), one line per figure (kind, section, what it draws) and the unsure list. Filing is a separate step (`file-unit`).
+- Send the files. Reply with one line (unit, word count, search used or not), one line per figure (kind, section, what it draws) and the unsure list with its Object line. Filing is a separate step (`file-unit`).
