@@ -103,7 +103,7 @@
      ]
     ]
    },
-   "spare": "Greece 4.3 names it most and shows the wooden horse; kept for a later text"
+   "spare": "Greece 4.3 names it most and shows the wooden horse; Rome 1.2 names the Tyrrhenian amphorae and shows the vase; kept for a later text"
   },
   {
    "id": "temple",
@@ -562,7 +562,8 @@
    "file": "ionic-column.svg",
    "depicts": "an Ionic column",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "Ionic column",
@@ -595,6 +596,16 @@
      [
       "courses/greece/9.2-reading-a-site-athens-on-foot.md",
       1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/10.3-reading-roman-art-and-architecture.md",
+      2
+     ],
+     [
+      "courses/rome/9.5-reading-a-site-rome-on-foot.md",
+      2
      ]
     ]
    },
@@ -695,7 +706,8 @@
    "file": "lyre.svg",
    "depicts": "a lyre",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "lyre",
@@ -768,6 +780,32 @@
       "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
       1
      ]
+    ],
+    "rome": [
+     [
+      "courses/rome/1.3-before-romulus-evander-hercules-and-aeneas.md",
+      1
+     ],
+     [
+      "courses/rome/10.3-reading-roman-art-and-architecture.md",
+      1
+     ],
+     [
+      "courses/rome/11.4-women-and-the-late-republic.md",
+      1
+     ],
+     [
+      "courses/rome/13.1-philosophy-comes-to-rome.md",
+      1
+     ],
+     [
+      "courses/rome/13.6-musonius-rufus-and-epictetus.md",
+      1
+     ],
+     [
+      "courses/rome/6.2-the-city-of-marble-and-the-restored-religion.md",
+      1
+     ]
     ]
    },
    "spare": "Greece 2.2 and 5.6 name the lyre in passing (P96 checks H1, H2); kept"
@@ -777,7 +815,8 @@
    "file": "owl.svg",
    "depicts": "an owl",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "owl",
@@ -810,6 +849,24 @@
       "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
       1
      ]
+    ],
+    "rome": [
+     [
+      "courses/rome/10.1-ovid-and-the-roman-remaking-of-greek-myth.md",
+      3
+     ],
+     [
+      "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
+      1
+     ],
+     [
+      "courses/rome/12.4-dido.md",
+      1
+     ],
+     [
+      "courses/rome/12.8-the-aeneid-after-rome.md",
+      1
+     ]
     ]
    },
    "spare": "named in passing in three Greek texts; kept"
@@ -819,7 +876,8 @@
    "file": "olive.svg",
    "depicts": "olive (a branch)",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "olive",
@@ -894,6 +952,24 @@
      ],
      [
       "courses/greece/8.1-ritual-practice-sacrifice-temples-priests-pollution.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/4.4-east-and-west-macedon-spain-and-the-year-146.md",
+      3
+     ],
+     [
+      "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
+      1
+     ],
+     [
+      "courses/rome/4.1-carthage-and-dido.md",
+      1
+     ],
+     [
+      "courses/rome/7.5-how-the-empire-worked.md",
       1
      ]
     ]
@@ -989,7 +1065,8 @@
    "file": "theatre-masks.svg",
    "depicts": "two theatre masks",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "mask",
@@ -1029,6 +1106,44 @@
      ],
      [
       "courses/greece/2.2-the-twelve-olympians.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/2.4-house-family-and-the-dead.md",
+      8
+     ],
+     [
+      "courses/rome/0.1-how-we-know-anything-the-sources.md",
+      2
+     ],
+     [
+      "courses/rome/10.3-reading-roman-art-and-architecture.md",
+      2
+     ],
+     [
+      "courses/rome/13.2-stoicism-made-roman.md",
+      2
+     ],
+     [
+      "courses/rome/7.1-the-julio-claudians.md",
+      2
+     ],
+     [
+      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      1
+     ],
+     [
+      "courses/rome/11.1-how-the-republic-worked-at-its-height.md",
+      1
+     ],
+     [
+      "courses/rome/3.2-the-legends-of-the-early-republic.md",
+      1
+     ],
+     [
+      "courses/rome/6.4-empire-without-end.md",
       1
      ]
     ]
@@ -1119,7 +1234,8 @@
    "file": "centaur.svg",
    "depicts": "a centaur",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "centaur",
@@ -1176,6 +1292,12 @@
       "courses/greece/9.4-capstone-the-whole-thing-in-one-sitting.md",
       1
      ]
+    ],
+    "rome": [
+     [
+      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
+      2
+     ]
     ]
    }
   },
@@ -1184,7 +1306,8 @@
    "file": "minotaur.svg",
    "depicts": "the Minotaur",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "Minotaur"
@@ -1220,6 +1343,12 @@
       "courses/greece/3.2-heracles.md",
       1
      ]
+    ],
+    "rome": [
+     [
+      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
+      1
+     ]
     ]
    }
   },
@@ -1228,7 +1357,8 @@
    "file": "centurion-helmet.svg",
    "depicts": "a crested helmet",
    "courses": [
-    "rome"
+    "rome",
+    "greece"
    ],
    "keywords": [
     "helmet",
@@ -1285,6 +1415,80 @@
       "courses/rome/9.4-bread-baths-and-games.md",
       1
      ]
+    ],
+    "greece": [
+     [
+      "courses/greece/10.11-homeric-society-and-homeric-warfare.md",
+      7
+     ],
+     [
+      "courses/greece/10.6-reading-the-iliad-closely-books-1-6-9-16-18-22-24.md",
+      4
+     ],
+     [
+      "courses/greece/5.3-hoplites-lawgivers-and-tyrants.md",
+      4
+     ],
+     [
+      "courses/greece/1.2-mycenaean-greece.md",
+      3
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      3
+     ],
+     [
+      "courses/greece/1.3-the-collapse-of-1200-and-the-dark-age.md",
+      2
+     ],
+     [
+      "courses/greece/8.3-festivals-and-the-games.md",
+      2
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      2
+     ],
+     [
+      "courses/greece/0.1-how-we-know-anything-the-sources.md",
+      1
+     ],
+     [
+      "courses/greece/1.1-minoan-crete.md",
+      1
+     ],
+     [
+      "courses/greece/10.10-troy-the-place-hisarlik-and-the-historicity-question.md",
+      1
+     ],
+     [
+      "courses/greece/10.3-hector-priam-and-the-trojan-side.md",
+      1
+     ],
+     [
+      "courses/greece/10.5-helen-menelaus-and-sparta.md",
+      1
+     ],
+     [
+      "courses/greece/10.8-the-other-greeks-at-troy.md",
+      1
+     ],
+     [
+      "courses/greece/11.2-alexanders-generalship-the-battles-and-sieges.md",
+      1
+     ],
+     [
+      "courses/greece/4.2-the-iliad.md",
+      1
+     ],
+     [
+      "courses/greece/4.3-the-fall-of-troy-the-lost-epic-cycle.md",
+      1
+     ],
+     [
+      "courses/greece/6.7-alexander.md",
+      1
+     ]
     ]
    },
    "spare": "its Rome pages name a helmet in passing (P96 check H1: Rome 1.1, 9.2, 12.3); kept"
@@ -1294,7 +1498,8 @@
    "file": "gladius.svg",
    "depicts": "a short sword",
    "courses": [
-    "rome"
+    "rome",
+    "greece"
    ],
    "keywords": [
     "gladius",
@@ -1425,6 +1630,120 @@
      ],
      [
       "courses/rome/8.2-diocletian-and-the-tetrarchy.md",
+      1
+     ]
+    ],
+    "greece": [
+     [
+      "courses/greece/1.3-the-collapse-of-1200-and-the-dark-age.md",
+      5
+     ],
+     [
+      "courses/greece/3.3-theseus-and-athens.md",
+      5
+     ],
+     [
+      "courses/greece/4.3-the-fall-of-troy-the-lost-epic-cycle.md",
+      5
+     ],
+     [
+      "courses/greece/10.5-helen-menelaus-and-sparta.md",
+      4
+     ],
+     [
+      "courses/greece/3.2-heracles.md",
+      4
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      4
+     ],
+     [
+      "courses/greece/10.2-agamemnon-and-the-kingship-of-the-atreids.md",
+      3
+     ],
+     [
+      "courses/greece/10.4-odysseus.md",
+      3
+     ],
+     [
+      "courses/greece/1.1-minoan-crete.md",
+      2
+     ],
+     [
+      "courses/greece/1.2-mycenaean-greece.md",
+      2
+     ],
+     [
+      "courses/greece/10.8-the-other-greeks-at-troy.md",
+      2
+     ],
+     [
+      "courses/greece/11.7-the-sources-for-alexander.md",
+      2
+     ],
+     [
+      "courses/greece/2.6-the-monsters-and-their-genealogy.md",
+      2
+     ],
+     [
+      "courses/greece/3.1-what-a-hero-is-and-perseus.md",
+      2
+     ],
+     [
+      "courses/greece/3.5-the-theban-cycle-cadmus-to-antigone.md",
+      2
+     ],
+     [
+      "courses/greece/3.6-the-other-heroes-bellerophon-meleager-atalanta-pelops-tantalus.md",
+      2
+     ],
+     [
+      "courses/greece/4.5-the-house-of-atreus-after-troy.md",
+      2
+     ],
+     [
+      "courses/greece/5.3-hoplites-lawgivers-and-tyrants.md",
+      2
+     ],
+     [
+      "courses/greece/6.7-alexander.md",
+      2
+     ],
+     [
+      "courses/greece/10.11-homeric-society-and-homeric-warfare.md",
+      1
+     ],
+     [
+      "courses/greece/10.12-troy-after-antiquity.md",
+      1
+     ],
+     [
+      "courses/greece/10.7-reading-the-odyssey-closely-the-telemachy-the-apologoi-the-nekyia-the-recognitions.md",
+      1
+     ],
+     [
+      "courses/greece/10.9-the-gods-at-troy.md",
+      1
+     ],
+     [
+      "courses/greece/2.3-the-underworld-and-the-chthonic-gods.md",
+      1
+     ],
+     [
+      "courses/greece/3.4-jason-the-argonauts-and-medea.md",
+      1
+     ],
+     [
+      "courses/greece/4.1-causes-of-the-war-and-the-gathering-at-aulis.md",
+      1
+     ],
+     [
+      "courses/greece/4.4-the-returns-and-the-odyssey.md",
+      1
+     ],
+     [
+      "courses/greece/6.4-tragedy-and-comedy.md",
       1
      ]
     ]
@@ -1694,7 +2013,8 @@
    "file": "wolf.svg",
    "depicts": "a wolf's head",
    "courses": [
-    "rome"
+    "rome",
+    "greece"
    ],
    "keywords": [
     "wolf",
@@ -1774,6 +2094,48 @@
       "courses/rome/8.1-the-third-century-crisis.md",
       1
      ]
+    ],
+    "greece": [
+     [
+      "courses/greece/10.12-troy-after-antiquity.md",
+      4
+     ],
+     [
+      "courses/greece/3.7-love-hubris-and-metamorphosis.md",
+      3
+     ],
+     [
+      "courses/greece/10.5-helen-menelaus-and-sparta.md",
+      2
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      1
+     ],
+     [
+      "courses/greece/3.6-the-other-heroes-bellerophon-meleager-atalanta-pelops-tantalus.md",
+      1
+     ],
+     [
+      "courses/greece/4.2-the-iliad.md",
+      1
+     ],
+     [
+      "courses/greece/4.4-the-returns-and-the-odyssey.md",
+      1
+     ],
+     [
+      "courses/greece/5.1-the-eighth-century-renaissance.md",
+      1
+     ],
+     [
+      "courses/greece/5.5-athens-from-solon-to-cleisthenes.md",
+      1
+     ],
+     [
+      "courses/greece/8.3-festivals-and-the-games.md",
+      1
+     ]
     ]
    }
   },
@@ -1782,7 +2144,8 @@
    "file": "bridge.svg",
    "depicts": "an arched stone bridge",
    "courses": [
-    "rome"
+    "rome",
+    "greece"
    ],
    "keywords": [
     "bridge",
@@ -1838,6 +2201,44 @@
       "courses/rome/9.2-the-army.md",
       1
      ]
+    ],
+    "greece": [
+     [
+      "courses/greece/6.1-the-persian-wars.md",
+      3
+     ],
+     [
+      "courses/greece/11.2-alexanders-generalship-the-battles-and-sieges.md",
+      2
+     ],
+     [
+      "courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md",
+      1
+     ],
+     [
+      "courses/greece/1.1-minoan-crete.md",
+      1
+     ],
+     [
+      "courses/greece/11.5-the-court-companions-conspiracies-and-the-orientalising-policy.md",
+      1
+     ],
+     [
+      "courses/greece/11.6-the-eastern-campaign-bactria-sogdiana-india-and-the-return.md",
+      1
+     ],
+     [
+      "courses/greece/4.2-the-iliad.md",
+      1
+     ],
+     [
+      "courses/greece/8.2-oracles-and-mystery-cults.md",
+      1
+     ],
+     [
+      "courses/greece/9.4-capstone-the-whole-thing-in-one-sitting.md",
+      1
+     ]
     ]
    },
    "spare": "Rome 8.3 names the Milvian Bridge twice, in passing; kept"
@@ -1847,7 +2248,8 @@
    "file": "torch.svg",
    "depicts": "a burning torch",
    "courses": [
-    "rome"
+    "rome",
+    "greece"
    ],
    "keywords": [
     "torch",
@@ -1906,6 +2308,48 @@
      ],
      [
       "courses/rome/7.2-the-year-of-four-emperors-and-the-flavians.md",
+      1
+     ]
+    ],
+    "greece": [
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      3
+     ],
+     [
+      "courses/greece/2.3-the-underworld-and-the-chthonic-gods.md",
+      2
+     ],
+     [
+      "courses/greece/2.5-the-lesser-divinities-and-personifications.md",
+      2
+     ],
+     [
+      "courses/greece/8.2-oracles-and-mystery-cults.md",
+      2
+     ],
+     [
+      "courses/greece/11.3-the-achaemenid-side.md",
+      1
+     ],
+     [
+      "courses/greece/11.7-the-sources-for-alexander.md",
+      1
+     ],
+     [
+      "courses/greece/3.7-love-hubris-and-metamorphosis.md",
+      1
+     ],
+     [
+      "courses/greece/4.1-causes-of-the-war-and-the-gathering-at-aulis.md",
+      1
+     ],
+     [
+      "courses/greece/8.3-festivals-and-the-games.md",
+      1
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
       1
      ]
     ]
@@ -3654,7 +4098,8 @@
    "file": "greek-helmet.svg",
    "depicts": "a crested Greek helmet",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "helmet",
@@ -3745,6 +4190,44 @@
      ],
      [
       "courses/greece/6.7-alexander.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
+      6
+     ],
+     [
+      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
+      3
+     ],
+     [
+      "courses/rome/9.2-the-army.md",
+      3
+     ],
+     [
+      "courses/rome/1.2-the-etruscans.md",
+      1
+     ],
+     [
+      "courses/rome/1.5-the-seven-kings.md",
+      1
+     ],
+     [
+      "courses/rome/13.7-marcus-aurelius-a-life.md",
+      1
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/8.3-constantine.md",
+      1
+     ],
+     [
+      "courses/rome/9.4-bread-baths-and-games.md",
       1
      ]
     ]
@@ -3903,7 +4386,8 @@
    "file": "ostrakon.svg",
    "depicts": "a broken pot (the sign for the sherds of ostracism)",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "ostracism",
@@ -3952,6 +4436,20 @@
      ],
      [
       "courses/greece/9.2-reading-a-site-athens-on-foot.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md",
+      1
+     ],
+     [
+      "courses/rome/5.1-the-gracchi.md",
+      1
+     ],
+     [
+      "courses/rome/9.5-reading-a-site-rome-on-foot.md",
       1
      ]
     ]
@@ -4110,7 +4608,8 @@
    "file": "hydra.svg",
    "depicts": "the Hydra",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "Hydra"
@@ -4141,6 +4640,16 @@
      [
       "courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md",
       1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
+      2
+     ],
+     [
+      "courses/rome/3.5-pyrrhus-and-the-greek-south.md",
+      2
      ]
     ]
    }
@@ -5662,7 +6171,8 @@
    "file": "winged-sandal.svg",
    "depicts": "a winged sandal",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "winged sandals",
@@ -5699,6 +6209,16 @@
       "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
       1
      ]
+    ],
+    "rome": [
+     [
+      "courses/rome/9.2-the-army.md",
+      2
+     ],
+     [
+      "courses/rome/11.4-women-and-the-late-republic.md",
+      1
+     ]
     ]
    }
   },
@@ -5707,7 +6227,8 @@
    "file": "sun.svg",
    "depicts": "the sun",
    "courses": [
-    "rome"
+    "rome",
+    "greece"
    ],
    "keywords": [
     "Sun",
@@ -5821,6 +6342,116 @@
       "courses/rome/6.4-empire-without-end.md",
       1
      ]
+    ],
+    "greece": [
+     [
+      "courses/greece/2.3-the-underworld-and-the-chthonic-gods.md",
+      6
+     ],
+     [
+      "courses/greece/2.5-the-lesser-divinities-and-personifications.md",
+      5
+     ],
+     [
+      "courses/greece/7.2-alexandria-science-scholarship-and-the-new-philosophies.md",
+      5
+     ],
+     [
+      "courses/greece/10.9-the-gods-at-troy.md",
+      3
+     ],
+     [
+      "courses/greece/11.8-death-body-and-afterlives.md",
+      3
+     ],
+     [
+      "courses/greece/12.8-sceptics-and-neoplatonists-the-late-schools-to-529.md",
+      3
+     ],
+     [
+      "courses/greece/3.4-jason-the-argonauts-and-medea.md",
+      3
+     ],
+     [
+      "courses/greece/4.4-the-returns-and-the-odyssey.md",
+      3
+     ],
+     [
+      "courses/greece/6.5-the-sophists-socrates-plato-and-aristotle.md",
+      3
+     ],
+     [
+      "courses/greece/10.6-reading-the-iliad-closely-books-1-6-9-16-18-22-24.md",
+      2
+     ],
+     [
+      "courses/greece/10.7-reading-the-odyssey-closely-the-telemachy-the-apologoi-the-nekyia-the-recognitions.md",
+      2
+     ],
+     [
+      "courses/greece/12.3-plato.md",
+      2
+     ],
+     [
+      "courses/greece/2.1-cosmogony-chaos-to-zeus.md",
+      2
+     ],
+     [
+      "courses/greece/3.2-heracles.md",
+      2
+     ],
+     [
+      "courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md",
+      1
+     ],
+     [
+      "courses/greece/12.1-the-presocratics.md",
+      1
+     ],
+     [
+      "courses/greece/12.2-the-sophists-and-socrates.md",
+      1
+     ],
+     [
+      "courses/greece/12.7-the-stoa-from-zeno-to-posidonius.md",
+      1
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      1
+     ],
+     [
+      "courses/greece/3.6-the-other-heroes-bellerophon-meleager-atalanta-pelops-tantalus.md",
+      1
+     ],
+     [
+      "courses/greece/3.7-love-hubris-and-metamorphosis.md",
+      1
+     ],
+     [
+      "courses/greece/5.6-lyric-poets-and-the-first-philosophers.md",
+      1
+     ],
+     [
+      "courses/greece/6.1-the-persian-wars.md",
+      1
+     ],
+     [
+      "courses/greece/6.4-tragedy-and-comedy.md",
+      1
+     ],
+     [
+      "courses/greece/8.2-oracles-and-mystery-cults.md",
+      1
+     ],
+     [
+      "courses/greece/8.4-death-the-afterlife-and-hero-cult.md",
+      1
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      1
+     ]
     ]
    }
   },
@@ -5830,7 +6461,8 @@
    "depicts": "a pair of scales (the sign for the law)",
    "courses": [
     "rome",
-    "brand-a"
+    "brand-a",
+    "greece"
    ],
    "keywords": [
     "law",
@@ -6106,6 +6738,188 @@
       "courses/brand-ai/A7-monetisation-through-shomen.md",
       1
      ]
+    ],
+    "greece": [
+     [
+      "courses/greece/6.5-the-sophists-socrates-plato-and-aristotle.md",
+      17
+     ],
+     [
+      "courses/greece/12.3-plato.md",
+      15
+     ],
+     [
+      "courses/greece/5.3-hoplites-lawgivers-and-tyrants.md",
+      15
+     ],
+     [
+      "courses/greece/5.5-athens-from-solon-to-cleisthenes.md",
+      15
+     ],
+     [
+      "courses/greece/12.2-the-sophists-and-socrates.md",
+      12
+     ],
+     [
+      "courses/greece/9.4-capstone-the-whole-thing-in-one-sitting.md",
+      11
+     ],
+     [
+      "courses/greece/8.5-households-women-slaves-the-symposium-and-sexuality.md",
+      9
+     ],
+     [
+      "courses/greece/4.5-the-house-of-atreus-after-troy.md",
+      8
+     ],
+     [
+      "courses/greece/5.2-the-polis-and-colonisation.md",
+      7
+     ],
+     [
+      "courses/greece/5.4-sparta.md",
+      7
+     ],
+     [
+      "courses/greece/6.2-the-athenian-empire-and-the-radical-democracy.md",
+      7
+     ],
+     [
+      "courses/greece/8.1-ritual-practice-sacrifice-temples-priests-pollution.md",
+      7
+     ],
+     [
+      "courses/greece/8.4-death-the-afterlife-and-hero-cult.md",
+      7
+     ],
+     [
+      "courses/greece/6.3-the-peloponnesian-war.md",
+      5
+     ],
+     [
+      "courses/greece/7.4-greece-under-the-empire-and-the-end-of-antiquity.md",
+      5
+     ],
+     [
+      "courses/greece/8.3-festivals-and-the-games.md",
+      4
+     ],
+     [
+      "courses/greece/3.5-the-theban-cycle-cadmus-to-antigone.md",
+      3
+     ],
+     [
+      "courses/greece/4.4-the-returns-and-the-odyssey.md",
+      3
+     ],
+     [
+      "courses/greece/7.1-the-successors-and-the-kingdoms.md",
+      3
+     ],
+     [
+      "courses/greece/7.2-alexandria-science-scholarship-and-the-new-philosophies.md",
+      3
+     ],
+     [
+      "courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md",
+      2
+     ],
+     [
+      "courses/greece/1.1-minoan-crete.md",
+      2
+     ],
+     [
+      "courses/greece/12.7-the-stoa-from-zeno-to-posidonius.md",
+      2
+     ],
+     [
+      "courses/greece/6.4-tragedy-and-comedy.md",
+      2
+     ],
+     [
+      "courses/greece/9.2-reading-a-site-athens-on-foot.md",
+      2
+     ],
+     [
+      "courses/greece/0.3-the-timeline-spine-3000-bc-to-ad-529.md",
+      1
+     ],
+     [
+      "courses/greece/10.10-troy-the-place-hisarlik-and-the-historicity-question.md",
+      1
+     ],
+     [
+      "courses/greece/10.11-homeric-society-and-homeric-warfare.md",
+      1
+     ],
+     [
+      "courses/greece/10.3-hector-priam-and-the-trojan-side.md",
+      1
+     ],
+     [
+      "courses/greece/10.6-reading-the-iliad-closely-books-1-6-9-16-18-22-24.md",
+      1
+     ],
+     [
+      "courses/greece/11.3-the-achaemenid-side.md",
+      1
+     ],
+     [
+      "courses/greece/11.7-the-sources-for-alexander.md",
+      1
+     ],
+     [
+      "courses/greece/12.5-cynics-cyrenaics-and-the-other-socratic-schools.md",
+      1
+     ],
+     [
+      "courses/greece/12.6-epicurus-and-the-garden.md",
+      1
+     ],
+     [
+      "courses/greece/12.8-sceptics-and-neoplatonists-the-late-schools-to-529.md",
+      1
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      1
+     ],
+     [
+      "courses/greece/2.4-prometheus-pandora-the-five-ages-and-the-flood.md",
+      1
+     ],
+     [
+      "courses/greece/2.5-the-lesser-divinities-and-personifications.md",
+      1
+     ],
+     [
+      "courses/greece/2.6-the-monsters-and-their-genealogy.md",
+      1
+     ],
+     [
+      "courses/greece/3.2-heracles.md",
+      1
+     ],
+     [
+      "courses/greece/3.3-theseus-and-athens.md",
+      1
+     ],
+     [
+      "courses/greece/3.7-love-hubris-and-metamorphosis.md",
+      1
+     ],
+     [
+      "courses/greece/6.1-the-persian-wars.md",
+      1
+     ],
+     [
+      "courses/greece/7.3-rome-conquers-greece.md",
+      1
+     ],
+     [
+      "courses/greece/8.2-oracles-and-mystery-cults.md",
+      1
+     ]
     ]
    }
   },
@@ -6163,7 +6977,8 @@
    "file": "dagger.svg",
    "depicts": "a dagger",
    "courses": [
-    "rome"
+    "rome",
+    "greece"
    ],
    "keywords": [
     "dagger",
@@ -6206,6 +7021,28 @@
      ],
      [
       "courses/rome/7.3-the-adoptive-emperors.md",
+      1
+     ]
+    ],
+    "greece": [
+     [
+      "courses/greece/5.4-sparta.md",
+      2
+     ],
+     [
+      "courses/greece/1.2-mycenaean-greece.md",
+      1
+     ],
+     [
+      "courses/greece/10.11-homeric-society-and-homeric-warfare.md",
+      1
+     ],
+     [
+      "courses/greece/10.2-agamemnon-and-the-kingship-of-the-atreids.md",
+      1
+     ],
+     [
+      "courses/greece/3.6-the-other-heroes-bellerophon-meleager-atalanta-pelops-tantalus.md",
       1
      ]
     ]
@@ -6902,8 +7739,8 @@
    }
   },
   {
-   "id": "gauge",
-   "file": "gauge.svg",
+   "id": "battery",
+   "file": "battery.svg",
    "depicts": "a half-charged battery (the sign for usage limits)",
    "courses": [
     "brand-b"

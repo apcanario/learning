@@ -657,7 +657,7 @@ TOPO_JS = r"""(pid) => {
   };
   const hl = P.querySelector(':scope > header.hero > .topo');
   out.hero = hl ? one(hl, true) : null;
-  out.anyTopo = P.querySelectorAll('.topo:not(.topo-sep)').length; out.allPatches = P.querySelectorAll('.topo.topo-patch:not(.topo-sep)').length;   // P94: a reading page's section separators are checked by check_seps
+  out.anyTopo = P.querySelectorAll('.topo:not(.topo-sep):not(.relief)').length; out.allPatches = P.querySelectorAll('.topo.topo-patch:not(.topo-sep)').length;   // P94: a reading page's section separators are checked by check_seps; P96: its relief by check_reliefs
   P.querySelectorAll('.topo.topo-patch:not(.topo-sep)').forEach(t => { if (vis(t)) out.patches.push(one(t, false)); });
   out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && P.contains(a.effect.target) && !a.effect.target.closest('.topo-sep')).map(a => {   // animations, not the transitions of a hover or the theme switch
     const t = a.effect.target, props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(k => !['offset', 'computedOffset', 'easing', 'composite'].includes(k)))];

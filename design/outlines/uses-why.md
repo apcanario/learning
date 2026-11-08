@@ -4,7 +4,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 
 ## Greece
 
-33 pages with a relief, 20 outlines in use (bull, centaur, coins, eagle, greek-helmet, horse, hydra, minotaur, olive, ostrakon, ram, scroll, tablet, temple, theatre-masks, trireme, vase, wall, winged-sandal, wooden-horse); 45 pages with none.
+33 pages with a relief, 21 outlines in use (bull, centaur, coins, eagle, gladius, greek-helmet, horse, hydra, minotaur, olive, ostrakon, ram, scroll, tablet, temple, theatre-masks, trireme, vase, wall, winged-sandal, wooden-horse); 45 pages with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
@@ -25,7 +25,6 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | 6.2 (`m62`) | ostrakon | 6 | Ostracism: each year the Assembly voted whether to hold one; if so, every citizen could scratch a name on a sherd, and provided 6,000 voted the man with most was exiled for ten years without loss of property. |
 | 6.3 (`m63`) | wall | 10 | Pericles' strategy (1.140–144, 2.13) was deliberately unheroic: abandon the countryside, bring the population inside the walls, refuse pitched battle against superior Peloponnesian hoplites, use the fleet to raid the Peloponnese and keep tribute flowing, and make no new conquests while the war lasted. |
 | 6.4 (`m64`) | theatre-masks | 4 | Masks let three men play twelve roles and men play women, and fixed the face, so that voice, posture and text carried meaning. |
-| 7.1 (`m71`) | coins | 5 | Coins became bilingual, Greek and Kharosthi, with Buddhist wheels beside Zeus; Heliodorus, envoy of King Antialcidas, raised a pillar to Vasudeva at Besnagar around 110. |
 | 7.2 (`m72`) | scroll | 6 | Ptolemaic papyri from before about 150 BC show a "wild" Homer, with extra lines and variant phrasing; after that date the papyri settle into the text the medieval manuscripts transmit. |
 | 8.1 (`m81`) | temple | 9 | A temple (naos) housed the god's image and treasure; it was not a hall for worshippers, and the cella was dark and often locked. |
 | 8.2 (`m82`) | tablet | 8 | The excavations of Evangelidis and Dakaris, and the 2013 corpus of Dakaris, Vokotopoulou and Christidis, have produced over four thousand lead tablets inscribed with the enquirers' questions: whether to marry, whether a child is one's own, which god to sacrifice to, who stole the blankets. |
@@ -34,6 +33,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | 9.1 (`m91`) | vase | 11 | Protocorinthian miniaturists reach a peak on the Chigi Vase (c. |
 | 9.2 (`m92`) | temple | 16 | Temple of Athena Nike |
 | 10.4 (`m104`) | wooden-horse | 2 | The Palladium and the horse are the two exploits the Cycle gave him outright. |
+| 10.5 (`m105`) | gladius | 4 | The reunion at the fall has a fixed archaic shape: Menelaus goes for Helen with drawn sword and drops it at the sight of her. |
 | 10.6 (`m106`) | greek-helmet | 4 | Hector is koruthaiolos, of the glancing helmet, and that helmet frightens Astyanax (6.467–470), so he takes it off: the formula briefly becomes a prop. |
 | 10.10 (`m1010`) | wall | 11 | 1750–1300 BC / New culture; great limestone walls with towers and gates; grey wheel-made ware, horse bones, imported Mycenaean pottery; lower city; end (VIh) in earthquake or attack |
 | 11.2 (`m112`) | horse | 35 | The fight on the bank was a cavalry melee. |
@@ -42,15 +42,16 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | 12.5 (`m125`) | coins | 7 | Debased Sinopean coins of about 350–340 BC led Branham (1996) and Navia (2005) to give the story a historical core. |
 | 12.6 (`m126`) | wall | 6 | Diogenes of Oinoanda's wall |
 
-**None:** 0.2 (`m02`), tablet 3; 0.3 (`m03`), olive 2; 1.3 (`m13`), tablet 4; 2.1 (`m21`), tablet 3; 2.2 (`m22`), horse 6; 2.3 (`m23`), temple 2; 2.5 (`m25`), temple 6; 3.5 (`m35`), wall 4; 3.6 (`m36`), horse 5; 3.7 (`m37`), laurels 4; 4.1 (`m41`), horse 5; 4.2 (`m42`), wall 6; 4.4 (`m44`), olive 4; 4.5 (`m45`), vase 1; 5.2 (`m52`), wall 4; 5.4 (`m54`), scroll 1; 5.6 (`m56`), horse 4; 6.5 (`m65`), scroll 1; 6.6 (`m66`), horse 12; 6.7 (`m67`), horse 9; 7.3 (`m73`), horse 4; 7.4 (`m74`), temple 9; 8.5 (`m85`), vase 7; 9.3 (`m93`), vase 1; 9.4 (`m94`), scroll 6; 10.1 (`m101`), amphora 3; 10.2 (`m102`), tablet 5; 10.3 (`m103`), wall 8; 10.5 (`m105`), horse 5; 10.7 (`m107`), wooden-horse 3; 10.8 (`m108`), horse 3; 10.9 (`m109`), wall 3; 10.11 (`m1011`), greek-helmet 7; 10.12 (`m1012`), scroll 4; 11.1 (`m111`), horse 11; 11.3 (`m113`), tablet 5; 11.4 (`m114`), temple 5; 11.5 (`m115`), horse 7; 11.6 (`m116`), horse 9; 11.8 (`m118`), temple 5; 12.2 (`m122`), wall 2; 12.3 (`m123`), tablet 1; 12.4 (`m124`), tablet 1; 12.7 (`m127`), temple 2; 12.8 (`m128`), horse 1.
+**None:** 0.2 (`m02`), tablet 3; 0.3 (`m03`), olive 2; 1.3 (`m13`), gladius 5; 2.1 (`m21`), tablet 3; 2.2 (`m22`), horse 6; 2.3 (`m23`), sun 6; 2.5 (`m25`), temple 6; 3.5 (`m35`), wall 4; 3.6 (`m36`), horse 5; 3.7 (`m37`), laurels 4; 4.1 (`m41`), horse 5; 4.2 (`m42`), wall 6; 4.4 (`m44`), olive 4; 4.5 (`m45`), scales 8; 5.2 (`m52`), scales 7; 5.4 (`m54`), scales 7; 5.6 (`m56`), horse 4; 6.5 (`m65`), scales 17; 6.6 (`m66`), horse 12; 6.7 (`m67`), horse 9; 7.1 (`m71`), temple 7; 7.3 (`m73`), horse 4; 7.4 (`m74`), temple 9; 8.5 (`m85`), scales 9; 9.3 (`m93`), vase 1; 9.4 (`m94`), scales 11; 10.1 (`m101`), amphora 3; 10.2 (`m102`), tablet 5; 10.3 (`m103`), wall 8; 10.7 (`m107`), wooden-horse 3; 10.8 (`m108`), horse 3; 10.9 (`m109`), wall 3; 10.11 (`m1011`), greek-helmet 7; 10.12 (`m1012`), wolf 4; 11.1 (`m111`), horse 11; 11.3 (`m113`), tablet 5; 11.4 (`m114`), temple 5; 11.5 (`m115`), horse 7; 11.6 (`m116`), horse 9; 11.8 (`m118`), temple 5; 12.2 (`m122`), scales 12; 12.3 (`m123`), scales 15; 12.4 (`m124`), tablet 1; 12.7 (`m127`), temple 2; 12.8 (`m128`), sun 3.
 
 
 ## Rome
 
-32 pages with a relief, 18 outlines in use (bough, bull, coins, dagger, eagle, gladius, horse, libation, scales, scroll, sun, tablet, temple, trireme, vase, wall, wolf, wooden-horse); 47 pages with none.
+33 pages with a relief, 18 outlines in use (bough, bull, coins, dagger, eagle, gladius, horse, libation, scales, scroll, sun, tablet, temple, trireme, vase, wall, wolf, wooden-horse); 46 pages with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
+| 1.1 (`rm11`) | tablet | 4 | The Umbrians of the upper Tiber left the Iguvine Tables, seven bronzes found at Gubbio in 1444 and engraved in the third to first centuries BC, in Umbrian and Latin letters: the rites of a priestly college, the Atiedian Brethren. |
 | 1.2 (`rm12`) | vase | 3 | Most of the finest Attic black- and red-figure vases in museums came from Etruscan graves, Vulci above all, where Lucien Bonaparte's diggers found thousands from 1828. |
 | 1.4 (`rm14`) | wolf | 23 | A she-wolf coming down to drink heard the crying, suckled them and licked them (Livy 1.4.4–6). |
 | 1.5 (`rm15`) | temple | 14 | Where sources disagree. John Stamper (The Architecture of Roman Temples, 2005) reads the foundations, and Dionysius' 200 feet a side (4.61), as a platform carrying a temple of roughly 34 by 38 metres. |
@@ -84,7 +85,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | 12.5 (`rm125`) | bough | 12 | A golden bough hides in a dark tree, sacred to the Juno of the underworld; Proserpina has ordained it as her gift; pluck one and another grows; if fate calls a man it comes away easily, and otherwise no force will tear it nor iron cut it (6.136–148). |
 | 13.5 (`rm135`) | libation | 4 | The libation to Jupiter the Liberator turns death into the freedom Seneca had preached: the way out lies open (On Providence 6.7). |
 
-**None:** 0.1 (`rm01`), wolf 4; 0.2 (`rm02`), temple 4; 0.3 (`rm03`), temple 8; 1.1 (`rm11`), tablet 4; 1.3 (`rm13`), wooden-horse 2; 2.1 (`rm21`), temple 5; 2.3 (`rm23`), horse 9; 2.4 (`rm24`), scales 6; 3.2 (`rm32`), toga 4; 3.4 (`rm34`), scales 5; 4.1 (`rm41`), temple 6; 4.4 (`rm44`), scales 5; 4.5 (`rm45`), scales 3; 5.1 (`rm51`), scales 13; 5.2 (`rm52`), scales 9; 5.3 (`rm53`), scales 9; 5.4 (`rm54`), scales 13; 5.6 (`rm56`), toga 1; 6.1 (`rm61`), scales 11; 6.3 (`rm63`), scales 7; 7.3 (`rm73`), temple 4; 8.5 (`rm85`), scales 6; 8.6 (`rm86`), scales 13; 9.3 (`rm93`), scales 12; 9.4 (`rm94`), scales 2; 10.1 (`rm101`), wall 3; 10.2 (`rm102`), no outline named; 10.5 (`rm105`), scales 18; 11.1 (`rm111`), scales 28; 11.2 (`rm112`), scales 5; 11.3 (`rm113`), scales 38; 11.4 (`rm114`), scales 5; 11.5 (`rm115`), scales 11; 11.6 (`rm116`), horse 6; 11.8 (`rm118`), scales 6; 12.1 (`rm121`), sun 3; 12.3 (`rm123`), horse 8; 12.6 (`rm126`), wall 4; 12.7 (`rm127`), scales 3; 12.8 (`rm128`), wall 4; 13.1 (`rm131`), scales 2; 13.2 (`rm132`), scales 4; 13.3 (`rm133`), scroll 4; 13.4 (`rm134`), libation 3; 13.6 (`rm136`), horse 2; 13.7 (`rm137`), coins 4; 13.8 (`rm138`), scales 3.
+**None:** 0.1 (`rm01`), wolf 4; 0.2 (`rm02`), temple 4; 0.3 (`rm03`), temple 8; 1.3 (`rm13`), wooden-horse 2; 2.1 (`rm21`), temple 5; 2.3 (`rm23`), horse 9; 2.4 (`rm24`), theatre-masks 8; 3.2 (`rm32`), toga 4; 3.4 (`rm34`), scales 5; 4.1 (`rm41`), temple 6; 4.4 (`rm44`), scales 5; 4.5 (`rm45`), scales 3; 5.1 (`rm51`), scales 13; 5.2 (`rm52`), scales 9; 5.3 (`rm53`), scales 9; 5.4 (`rm54`), scales 13; 5.6 (`rm56`), toga 1; 6.1 (`rm61`), scales 11; 6.3 (`rm63`), scales 7; 7.3 (`rm73`), temple 4; 8.5 (`rm85`), scales 6; 8.6 (`rm86`), scales 13; 9.3 (`rm93`), scales 12; 9.4 (`rm94`), scales 2; 10.1 (`rm101`), wall 3; 10.2 (`rm102`), no outline named; 10.5 (`rm105`), scales 18; 11.1 (`rm111`), scales 28; 11.2 (`rm112`), scales 5; 11.3 (`rm113`), scales 38; 11.4 (`rm114`), scales 5; 11.5 (`rm115`), scales 11; 11.6 (`rm116`), horse 6; 11.8 (`rm118`), scales 6; 12.1 (`rm121`), sun 3; 12.3 (`rm123`), horse 8; 12.6 (`rm126`), wall 4; 12.7 (`rm127`), scales 3; 12.8 (`rm128`), wall 4; 13.1 (`rm131`), scales 2; 13.2 (`rm132`), scales 4; 13.3 (`rm133`), scroll 4; 13.4 (`rm134`), libation 3; 13.6 (`rm136`), horse 2; 13.7 (`rm137`), coins 4; 13.8 (`rm138`), scales 3.
 
 
 ## Personal brand
@@ -111,7 +112,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 
 ## Building with AI
 
-10 pages with a relief, 10 outlines in use (chat, clock, context-window, cost, gauge, magnifier, pen-nib, picture, stack, terminal); 1 pages with none.
+10 pages with a relief, 10 outlines in use (battery, chat, clock, context-window, cost, magnifier, pen-nib, picture, stack, terminal); 1 pages with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
@@ -122,7 +123,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | B5 (`read-b5`) | clock | 31 | 4 · Scheduled tasks: what they can and cannot touch |
 | B6 (`read-b6`) | magnifier | 37 | 1 · Ask, search or deep research |
 | B7 (`read-b7`) | picture | 19 | 3 · Thumbnail copy in the Shōmen stylesheet |
-| B8 (`read-b8`) | gauge | 116 | 2 · What burns usage for no gain |
+| B8 (`read-b8`) | battery | 116 | 2 · What burns usage for no gain |
 | DD-B1 (`read-dd-b1`) | terminal | 41 | 2 · Claude Code and subagents in practice |
 | DD-B2 (`read-dd-b2`) | chat | 162 | The evidence is this Project's own chat history, read through three past-chat tools. `recent_chats` lists chats by when they were last updated, with each chat's title, its first message, a stretch of its opening or closing turns and, for some chats, a summary. |
 
@@ -150,7 +151,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 
 In the library and on no page yet, kept for the texts that name them (`spare` in `outlines.json`):
 
-- **amphora**: Greece 4.3 names it most and shows the wooden horse; kept for a later text
+- **amphora**: Greece 4.3 names it most and shows the wooden horse; Rome 1.2 names the Tyrrhenian amphorae and shows the vase; kept for a later text
 - **ionic-column**: two Greek texts name the order in passing; kept
 - **lyre**: Greece 2.2 and 5.6 name the lyre in passing (P96 checks H1, H2); kept
 - **owl**: named in passing in three Greek texts; kept

@@ -43,7 +43,6 @@ MAP = [
     ('m61', 'trireme', 'build two hundred warships'),
     ('m63', 'wall', 'bring the population inside the walls'),
     ('m64', 'theatre-masks', 'Masks let three men play twelve roles'),
-    ('m71', 'coins', 'Coins became bilingual'),
     ('m72', 'scroll', 'Ptolemaic papyri from before about 150 BC'),
     ('m81', 'temple', "housed the god's image and treasure"),
     ('m82', 'tablet', 'over four thousand lead tablets'),
@@ -53,6 +52,7 @@ MAP = [
     ('m91', 'vase', 'reach a peak on the Chigi Vase'),
     ('m92', 'temple', 'Temple of Athena Nike'),
     ('m104', 'wooden-horse', 'The Palladium and the horse are the two exploits'),
+    ('m105', 'gladius', 'Menelaus goes for Helen with drawn sword and drops it at the sight of her'),
     ('m106', 'greek-helmet', 'that helmet frightens Astyanax'),
     ('m1010', 'wall', 'great limestone walls with towers and gates'),
     ('m112', 'horse', 'The fight on the bank was a cavalry melee'),
@@ -61,6 +61,7 @@ MAP = [
     ('m125', 'coins', 'Debased Sinopean coins of about 350'),
     ('m126', 'wall', "Diogenes of Oinoanda's wall"),
     # Rome
+    ('rm11', 'tablet', 'seven bronzes found at Gubbio in 1444'),
     ('rm12', 'vase', 'Most of the finest Attic black- and red-figure vases in museums came from Etruscan graves'),
     ('rm14', 'wolf', 'A she-wolf coming down to drink heard the crying'),
     ('rm15', 'temple', 'as a platform carrying a temple of roughly 34 by 38 metres'),
@@ -114,7 +115,7 @@ MAP = [
     ('read-b5', 'clock', 'Scheduled tasks: what they can and cannot touch'),
     ('read-b6', 'magnifier', 'Ask, search or deep research'),
     ('read-b7', 'picture', 'Thumbnail copy in the'),
-    ('read-b8', 'gauge', 'What burns usage for no gain'),
+    ('read-b8', 'battery', 'What burns usage for no gain'),
     ('read-dd-b1', 'terminal', 'Claude Code and subagents in practice'),
     ('read-dd-b2', 'chat', "The evidence is this Project's own chat history"),
     # Information architecture

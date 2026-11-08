@@ -112,7 +112,7 @@ L = [
     ('cost', 'phosphor', 'assets/fill/coins-fill.svg', 'coins (the sign for cost)', ['brand-b'], ['cost', 'costs', 'price', 'prices', 'pricing']),
     ('chat', 'phosphor', 'assets/fill/chat-text-fill.svg', 'a speech bubble (the sign for a chat)', ['brand-b'], ['chat', 'chats']),
     ('stack', 'phosphor', 'assets/fill/stack-fill.svg', 'a stack of layers (the sign for the layers of context)', ['brand-b'], ['layer', 'layers']),
-    ('gauge', 'phosphor', 'assets/fill/battery-medium-fill.svg', 'a half-charged battery (the sign for usage limits)', ['brand-b'], ['limit', 'limits', 'usage']),
+    ('battery', 'phosphor', 'assets/fill/battery-medium-fill.svg', 'a half-charged battery (the sign for usage limits)', ['brand-b'], ['limit', 'limits', 'usage']),
     ('pen-nib', 'phosphor', 'assets/fill/pen-nib-fill.svg', 'a pen nib (the sign for writing a brief)', ['brand-b'], ['brief', 'briefs']),
     ('key', 'phosphor', 'assets/fill/key-fill.svg', 'a key (the sign for permissions)', ['ux-ia'], ['permission', 'permissions']),
 ]
@@ -199,7 +199,7 @@ SPARE = {
     'centurion-helmet': 'its Rome pages name a helmet in passing (P96 check H1: Rome 1.1, 9.2, 12.3); kept',
     'laurels': 'Greece 3.7 names the laurel tree, not a wreath (P96 check H1); kept',
     'toga': 'Rome 3.2 names the toga in one story among many (P96 check H1); kept',
-    'amphora': 'Greece 4.3 names it most and shows the wooden horse; kept for a later text',
+    'amphora': 'Greece 4.3 names it most and shows the wooden horse; Rome 1.2 names the Tyrrhenian amphorae and shows the vase; kept for a later text',
     'ionic-column': 'two Greek texts name the order in passing; kept',
     'owl': 'named in passing in three Greek texts; kept',
     'torch': 'Rome 12.4 takes the short sword; kept',
@@ -269,6 +269,8 @@ def main():
         svg, n = st['bg'].subn('', raw)
         author = path.split('/')[0].replace('-', ' ').title() if s == 'game-icons' else st['author']
         (LIB / f'{oid}.svg').write_text(svg, encoding='utf-8')
+        if s == 'game-icons':   # P96 check H4: an ancient outline serves every history course whose texts name it
+            courses = courses + [c for c in ('greece', 'rome') if c not in courses and hits(c, kws, oid)]
         texts = {c: hits(c, kws, oid) for c in courses}
         for c, t in texts.items():
             assert t, f'{oid}: no text of {c} names it'
