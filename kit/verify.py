@@ -1637,7 +1637,7 @@ REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
 
 
 def check_reliefs(br, fails):
-    """P95: the outline library (at least ten outlines for each course, each with every field, an allowed licence, its
+    """P95, P96: the outline library (at least ten outlines for each course, each with every field, an allowed licence, its
     SVG and its relief JSON, and a text of each course it serves naming it); every page uses.json maps (in this
     edition) at 320, 390, 768 and 1280 px, dark and light, with and without motion (REL_JS: its place under the scope
     line before the section bar, its caption and credit printed exactly, classes only, aria-hidden and textless, at most
@@ -1667,6 +1667,29 @@ def check_reliefs(br, fails):
     for m in re.finditer(r'<section class="panel[^"]*" id="([^"]+)"[^>]*data-kind="report"[^>]*data-src="([^"]+)"', shell):
         pages[m.group(1)] = (SITE / m.group(2)).read_text()
     mapped = {pid: oid for pid, oid in mdcourse.USES.items() if pid in pages}
+    # P96: the roll-out. Every course keeps at least ten outlines in use (a course with fewer than ten reading pages, as
+    # many as it has pages with a relief, each its own); every outline is in use or marked spare, not both; every
+    # mapped page has its deciding sentence in uses-why.md
+    if len(mapped) == len(mdcourse.USES):   # the full site, not an edition
+        crs = {}
+        for pid in pages:
+            c = ('greece' if pid.startswith('m') else 'rome' if pid.startswith('rm') else None) or next((k for k in REL_COURSES if (SITE / k / f'{pid}.html').exists()), None)
+            crs.setdefault(c, []).append(pid)
+        inuse = {}
+        for c, pids in crs.items():
+            ids = {mapped[p] for p in pids if p in mapped}
+            need = 10 if len(pids) >= 10 else sum(1 for p in pids if p in mapped)
+            inuse[c] = len(ids)
+            if len(ids) < need: bad.append(f'{c}: {len(ids)} outlines in use, fewer than {need}')
+        used = set(mapped.values())
+        for o in lib['outlines']:
+            if o['id'] not in used and not o.get('spare'): bad.append(f'{o["id"]}: neither in use nor marked spare')
+            if o['id'] in used and o.get('spare'): bad.append(f'{o["id"]}: in use and marked spare')
+        why = (OUTL / 'uses-why.md').read_text()
+        for pid, oid in mapped.items():
+            if not re.search(r'\(`' + re.escape(pid) + r'`\) \| ' + re.escape(oid) + r' \| \d+ \| \S', why): bad.append(f'{pid}: no deciding sentence for {oid} in uses-why.md')
+        print(f'reliefs: outlines in use per course {", ".join(f"{c} {n}" for c, n in inuse.items())}; {len(used)} of {len(lib["outlines"])} in use, '
+              f'{sum(1 for o in lib["outlines"] if o.get("spare"))} spare; {len(mapped)} deciding sentences in uses-why.md')
     for pid, h in pages.items():
         n = h.count('<figure class="relief-fig"')
         if n != (1 if pid in mapped else 0): bad.append(f'{pid}: {n} reliefs, {"1" if pid in mapped else "none"} mapped')
