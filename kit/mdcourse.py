@@ -67,6 +67,32 @@ def literal_brackets(src):
     return '\n'.join(out)
 
 
+_LI = re.compile(r'^\s*(?:[-*+]|\d+[.)])\s+\S')
+
+
+def list_breaks(src):
+    """P94 check: a list written straight under a paragraph's line, with no blank line between (\"At zero hours, with the
+    reason:\" then \"- TikTok. ...\"), is a list: Python-Markdown folds it into the paragraph, its marks shown as text and
+    its words counted as the paragraph's. A blank line goes in before the first item of such a list, and nowhere else:
+    not inside a fenced block, not inside a list already open in the block, not under a table row or a quotation."""
+    out, fence, item = [], False, False
+    prev = ''
+    for ln in src.split('\n'):
+        if ln.lstrip().startswith('```'):
+            fence = not fence
+        elif not fence:
+            if not ln.strip():
+                item = False
+            elif _LI.match(ln):
+                if not item and prev.strip() and not prev.lstrip().startswith(('|', '>')) and not prev.startswith((' ', '\t')) \
+                        and not re.match(r'^#{1,6}\s', prev):
+                    out.append('')
+                item = True
+        out.append(ln)
+        prev = ln
+    return '\n'.join(out)
+
+
 def render_md(src):
     """A unit file (method.md §7: front matter, then Markdown ending with the deliverable and a Sources list) to
     theme-classed HTML. Returns (body html, toc html, links {url: title})."""
@@ -80,7 +106,7 @@ def render_md(src):
     # P94 check: 'fenced_code', so a fenced block the writer wrote at the top level is the code block it is (without it
     # A1's bio drafts, B7's two thumbnail styles and DD-B1's skill file showed as paragraphs with their fences, a "> "
     # line of B7's as a quotation and DD-B1's "---" as a heading, a section of its own named "```")
-    body = markdown.markdown(src, extensions=['tables', 'fenced_code'])
+    body = markdown.markdown(list_breaks(src), extensions=['tables', 'fenced_code'])
     body = viz.restore_md(body, figs)
     body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
     body = body.replace('<a href=', '<a target="_blank" rel="noopener" href=')
@@ -139,7 +165,7 @@ def history_html(src, draw=True):
         return f'{ind}{tok}'
     src = HIST_TREE.sub(tree, src)
     src = literal_brackets(src)
-    body = markdown.markdown(src, extensions=['tables'])
+    body = markdown.markdown(list_breaks(src), extensions=['tables'])   # P94 check: a list straight under a line is a list
     for tok, h in trees.items():
         body = body.replace(f'<p>{tok}</p>', h).replace(tok, h)
     body = viz.restore_md(body, figs)

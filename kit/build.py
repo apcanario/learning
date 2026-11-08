@@ -152,7 +152,7 @@ def load(c):
         if bib.exists():
             bt = re.sub(r'\A# .*\n', '', bib.read_text(encoding='utf-8'))
             nsrc = len(re.findall(r'^\s*- ', bt, re.M))
-            src = markdown.markdown(bt).replace('<h2>', '<h3>').replace('</h2>', '</h3>').replace('<a href=', '<a target="_blank" rel="noopener" href=')
+            src = markdown.markdown(mdcourse.list_breaks(bt)).replace('<h2>', '<h3>').replace('</h2>', '</h3>').replace('<a href=', '<a target="_blank" rel="noopener" href=')
         checks = []
         for fo in REVIEW_FOLDERS:
             f = fo['path'] / f'{c["id"]}-{i}.md'

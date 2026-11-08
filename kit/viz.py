@@ -2625,6 +2625,7 @@ def _heat(d):
 # lines found by marching squares, each line simplified (Ramer-Douglas-Peucker) and written with whole-unit relative
 # path steps, each stretch of a line in the tone of the rise that dominates it.
 CT_RIPPLE = (.16, .09)
+SEP_FLAT = 2    # P94 check (second): a separator's closed ring under 2 units across either way is a dash, not a ring, and is dropped
 SEP_SPECK = 6   # P94 check: a separator's closed ring under 6 units both ways (about 1.5 px on a 320 px phone) is a speck and is dropped   # the bump's outline: two angular harmonics, so a rise reads as land, not a target; its peak is unchanged
 
 
@@ -2821,8 +2822,10 @@ def _ct_field(d, lay, rises, iv, live):
             p = _ct_simplify(p, closed, eps)
             if len(p) < 2:
                 continue
-            if closed and d.get('sep') and max(x for x, _ in p) - min(x for x, _ in p) < SEP_SPECK and max(y for _, y in p) - min(y for _, y in p) < SEP_SPECK:
-                continue   # P94 check: a separator drops a ring smaller than a speck (zero-area slivers, M792 80l-1 0z)
+            if closed and d.get('sep'):   # P94 check: a separator drops a ring smaller than a speck (M792 80l-1 0z) or flat as a dash (M344 88l32 0z)
+                rw, rh = max(x for x, _ in p) - min(x for x, _ in p), max(y for _, y in p) - min(y for _, y in p)
+                if (rw < SEP_SPECK and rh < SEP_SPECK) or min(rw, rh) < SEP_FLAT:
+                    continue
             ds = [dom(x) for x in p]
             if len(set(ds)) == 1:
                 per[ds[0]].append((p, closed)); continue
@@ -2837,13 +2840,19 @@ def _ct_field(d, lay, rises, iv, live):
         lv_of[k] = int(rises[k]['words'] // iv)   # P93 check: its own height in levels, one count for every layout (with the field at its peak Rome's U11, 4.996 levels, read 4 in one layout and 5 in the other)
         rings = [p for p, closed in per[k] if closed]
         own[k] = len([1 for p in rings if len({(round(x), round(y)) for x, y in p}) >= 2])
-        if lv_of[k] == 0 and not (d.get('sep') and own[k]):   # P93 check: a part under one level is marked by a spot ring at its peak (spot_r), its box that ring's; P94 check: in a separator, only where its neighbours have not already ringed it
+        if _ct_spotted(d, lv_of[k], own[k]):   # P93 check: a part under one level is marked by a spot ring at its peak (spot_r), its box that ring's; P94 check: in a separator, any rise with no ring of its own (one under a level its neighbours have not ringed, or one whose rings merged into its neighbours' lines)
             sr = _ct_spot_r(rises[k], sp, W, wmax)
             rings = [[(at[k][0] * W - sr, at[k][1] * H - sr), (at[k][0] * W + sr, at[k][1] * H + sr)]]
         xs = [x for p in rings for x, _ in p] or [at[k][0] * W]
         ys = [y for p in rings for _, y in p] or [at[k][1] * H]
         box[k] = (min(xs), min(ys), max(xs), max(ys))
     return W, H, at, sp, per, lv_of, own, box, edge
+
+
+def _ct_spotted(d, lv, own):
+    """Whether a written rise is marked by a spot ring: in a tile's patch or a hero, when it stands under one level (P93);
+    in a section separator (P94 checks), whenever it closes no ring of its own, so every paragraph shows."""
+    return own == 0 if d.get('sep') else lv == 0
 
 
 def _ct_spot_r(r, sp, W, wmax):
@@ -2896,7 +2905,7 @@ def contours(d):
                 continue
             bx = ' '.join(f'{v:.0f}' for v in box[k])
             spot = (f'<circle class="ct-spot" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" r="{_ct_spot_r(r, sp, W, max(rises[j]["words"] for j in live)):.0f}"/>'
-                    if lv_of[k] == 0 and not (d.get('sep') and own[k]) else '')   # P93 check: a written part under one level still shows, as a spot ring
+                    if _ct_spotted(d, lv_of[k], own[k]) else '')   # P93 check: a written part under one level still shows, as a spot ring
             where = '' if d.get('sep') else f' data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"'   # P94: a separator keeps to 6 KB; its place and box serve no check
             body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{lv_of[k]}"'
                      f'{where}><path d="{_ct_d(per[k])}"/>{spot}</g>')

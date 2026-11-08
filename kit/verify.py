@@ -1456,6 +1456,8 @@ SEP_JS = r"""([pid, poses, cyc, bt, motion]) => {
     if (b > 6144) out.bad.push(`section ${k + 1}: the separator is ${b} bytes, over 6 KB`);
     const gs = [...t.querySelectorAll('svg.topo-l g.ct-rise')], got = gs.map(g => +g.getAttribute('data-words'));
     if (t.querySelectorAll('svg.topo-l').length !== 1 || t.querySelector('g.ct-plan')) out.bad.push(`section ${k + 1}: ${t.querySelectorAll('svg.topo-l').length} layouts, or a planned ring`);
+    const blank = gs.filter(g => !g.querySelector('circle.ct-spot') && !(g.querySelector('path') && g.querySelector('path').getAttribute('d'))).map(g => g.getAttribute('data-label'));   // P94 check: every paragraph shows
+    if (blank.length) out.bad.push(`section ${k + 1}: rises ${blank.join(' ')} draw nothing`);
     if (got.join() !== paras.join()) out.bad.push(`section ${k + 1}: rises by words ${got.join(',')}, its paragraphs ${paras.join(',')}`);
     const st = [...new Set([...t.querySelectorAll('path, circle')].map(e => getComputedStyle(e).stroke))];
     if (st.length !== 1 || st[0] !== tone) out.bad.push(`section ${k + 1}: lines in ${st.join(' ')}, the page's tone ${tone}`);
