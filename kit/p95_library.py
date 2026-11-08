@@ -51,7 +51,7 @@ L = [
     ('centurion-helmet', 'game-icons', 'delapouite/centurion-helmet.svg', 'a crested helmet', ['rome'], ['helmet', 'helmets']),
     ('gladius', 'game-icons', 'skoll/gladius.svg', 'a short sword', ['rome'], ['gladius', 'sword', 'swords']),
     ('toga', 'game-icons', 'delapouite/roman-toga.svg', 'a figure in a toga', ['rome'], ['toga', 'togas']),
-    ('eagle', 'game-icons', 'lorc/eagle-emblem.svg', 'an eagle with spread wings', ['rome'], ['eagle', 'eagles', 'aquila']),
+    ('eagle', 'game-icons', 'lorc/eagle-emblem.svg', 'an eagle with spread wings', ['greece', 'rome'], ['eagle', 'eagles', 'aquila']),
     ('wolf', 'game-icons', 'lorc/wolf-head.svg', "a wolf's head", ['rome'], ['wolf', 'she-wolf', 'wolves']),
     ('bridge', 'game-icons', 'delapouite/stone-bridge.svg', 'an arched stone bridge', ['rome'], ['bridge', 'bridges']),
     ('torch', 'game-icons', 'delapouite/torch.svg', 'a burning torch', ['rome'], ['torch', 'torches']),
@@ -87,13 +87,13 @@ L = [
     # P96 (8 Nov 2026): the outlines the roll-out's texts call for and the library lacked, each for the page whose
     # deciding sentence is in design/outlines/uses-why.md; measured by relief.py --probe before they were taken
     ('greek-helmet', 'game-icons', 'lorc/crested-helmet.svg', 'a crested Greek helmet', ['greece'], ['helmet', 'helmets']),
-    ('vase', 'game-icons', 'delapouite/painted-pottery.svg', 'a painted vase', ['greece'], ['vase', 'vases', 'lekythos', 'lekythoi', 'krater', 'kraters']),
+    ('vase', 'game-icons', 'delapouite/painted-pottery.svg', 'a painted vase', ['greece', 'rome'], ['vase', 'vases', 'lekythos', 'lekythoi', 'krater', 'kraters']),
     ('ostrakon', 'game-icons', 'delapouite/broken-pottery.svg', 'a broken pot (the sign for the sherds of ostracism)', ['greece'], ['ostracism', 'ostracised', 'ostraka', 'ostrakon', 'sherd', 'sherds', 'potsherd', 'potsherds']),
     ('bull', 'game-icons', 'lorc/bull-horns.svg', "a bull's horns", ['greece', 'rome'], ['bull', 'bulls']),
     ('hydra', 'game-icons', 'lorc/hydra.svg', 'the Hydra', ['greece'], ['Hydra']),
     ('ram', 'game-icons', 'delapouite/ram-profile.svg', 'a ram', ['greece'], ['ram', 'fleece']),
     ('scroll', 'game-icons', 'lorc/scroll-unfurled.svg', 'a scroll', ['greece', 'rome'], ['scroll', 'scrolls', 'papyrus', 'papyri', 'book-roll', 'book-rolls']),
-    ('tablet', 'game-icons', 'delapouite/wax-tablet.svg', 'an inscribed tablet', ['greece'], ['tablet', 'tablets']),
+    ('tablet', 'game-icons', 'delapouite/wax-tablet.svg', 'an inscribed tablet', ['greece', 'rome'], ['tablet', 'tablets']),
     ('coins', 'game-icons', 'delapouite/two-coins.svg', 'two coins', ['greece', 'rome'], ['coin', 'coins', 'coinage', 'coinages']),
     ('horse', 'game-icons', 'lorc/horse-head.svg', "a horse's head", ['greece', 'rome'], ['horse', 'horses', 'cavalry']),
     ('wall', 'game-icons', 'delapouite/stone-wall.svg', 'a stone wall', ['greece', 'rome'], ['wall', 'walls']),
@@ -112,7 +112,7 @@ L = [
     ('cost', 'phosphor', 'assets/fill/coins-fill.svg', 'coins (the sign for cost)', ['brand-b'], ['cost', 'costs', 'price', 'prices', 'pricing']),
     ('chat', 'phosphor', 'assets/fill/chat-text-fill.svg', 'a speech bubble (the sign for a chat)', ['brand-b'], ['chat', 'chats']),
     ('stack', 'phosphor', 'assets/fill/stack-fill.svg', 'a stack of layers (the sign for the layers of context)', ['brand-b'], ['layer', 'layers']),
-    ('gauge', 'phosphor', 'assets/fill/gauge-fill.svg', 'a gauge (the sign for usage limits)', ['brand-b'], ['limit', 'limits', 'usage']),
+    ('gauge', 'phosphor', 'assets/fill/battery-medium-fill.svg', 'a half-charged battery (the sign for usage limits)', ['brand-b'], ['limit', 'limits', 'usage']),
     ('pen-nib', 'phosphor', 'assets/fill/pen-nib-fill.svg', 'a pen nib (the sign for writing a brief)', ['brand-b'], ['brief', 'briefs']),
     ('key', 'phosphor', 'assets/fill/key-fill.svg', 'a key (the sign for permissions)', ['ux-ia'], ['permission', 'permissions']),
 ]
@@ -188,6 +188,9 @@ REJECTED = [
     ('game-icons', 'delapouite/viking-shield.svg', 'busy (3 thin parts, a step of 2.6 px) and not the object: a Viking shield'),
     ('game-icons', 'skoll/tablet.svg', 'not the object: a tablet computer'),
     ('phosphor', 'assets/fill/chart-line-up-fill.svg', 'not the object as a relief: the filled frame with the line cut out reads as a maze in a box (P96 check M1); trend-up-fill.svg taken'),
+    ('phosphor', 'assets/fill/gauge-fill.svg', 'not the object as a relief: a filled dome with the needle cut out reads as a maze, not a dial (P96 check M3); battery-medium-fill.svg taken'),
+    ('phosphor', 'assets/fill/speedometer-fill.svg', 'not the object as a relief: the same dome with its needle cut out'),
+    ('game-icons', 'delapouite/speedometer.svg', 'busy: 1 thin part'),
     ('phosphor', 'assets/fill/calculator-fill.svg', 'not the object: Brand DD-A2 names savings and a runway, never a calculator'),
 ]
 # P96: outlines in the library that no reading page shows yet, kept for the texts that name them (verify.py: every

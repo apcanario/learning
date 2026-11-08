@@ -4,13 +4,14 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 
 ## Greece
 
-31 pages with a relief, 19 outlines in use (bull, centaur, coins, greek-helmet, horse, hydra, minotaur, olive, ostrakon, ram, scroll, tablet, temple, theatre-masks, trireme, vase, wall, winged-sandal, wooden-horse); 47 pages with none.
+33 pages with a relief, 20 outlines in use (bull, centaur, coins, eagle, greek-helmet, horse, hydra, minotaur, olive, ostrakon, ram, scroll, tablet, temple, theatre-masks, trireme, vase, wall, winged-sandal, wooden-horse); 45 pages with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
 | 0.1 (`m01`) | vase | 7 | Vase painting. Tens of thousands of mythical images from the seventh to the fourth centuries BC, many earlier than any surviving text of the same story. |
 | 1.1 (`m11`) | bull | 13 | The bull dominates: bull-leaping on seals and on the Knossos "Taureador" frescoes (which most now date to LM II–IIIA, after the Mycenaean takeover), stone bull's-head rhyta from Knossos and Zakros, and the sacrifice scene on the Hagia Triada sarcophagus. |
 | 1.2 (`m12`) | tablet | 18 | Pylos in Messenia, excavated by Carl Blegen from 1939, is unwalled and burned in a single fire that baked its 1,100 tablets. |
+| 2.4 (`m24`) | eagle | 4 | For Prometheus personally, binding: Hesiod has him fastened in inescapable chains, a shaft driven through his middle, and a long-winged eagle sent to eat his liver, which grows back each night (521–525). |
 | 2.6 (`m26`) | centaur | 9 | Centaurs: the sin of Ixion |
 | 3.1 (`m31`) | winged-sandal | 5 | From the nymphs he received the winged sandals, the kibisis (a pouch in which the head could be carried safely) and the cap of Hades, which made its wearer invisible; Hermes added the adamantine sickle, the harpe. |
 | 3.2 (`m32`) | hydra | 7 | 2 / Lernaean Hydra / Lerna, Argolid / Many-headed snake reared by Hera (Hesiod, Theogony 313–318); Iolaus cauterises the necks; arrows dipped in the venom / Intelligence and help against a Hera-bred monster; the poison that will kill him |
@@ -18,12 +19,13 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | 3.4 (`m34`) | ram | 17 | The Fleece: Athamas, Ino, Phrixus and Helle |
 | 4.3 (`m43`) | wooden-horse | 3 | Epeius, by Athena's design, builds the Wooden Horse. |
 | 5.1 (`m51`) | temple | 11 | The first temples and the Geometric style |
-| 5.5 (`m55`) | ostrakon | 4 | Athenaion Politeia 22.1 adds ostracism: the assembly voted yearly whether to hold one, a quorum of six thousand scratched names on sherds, and the man named most often left for ten years without losing his property. |
+| 5.3 (`m53`) | coins | 9 | The earliest coins are electrum, a natural gold-silver alloy, stamped with a lion's head or other badge; the key deposit is the foundation fill of the Artemision at Ephesus, now dated by most around 600 BC. |
+| 5.5 (`m55`) | ostrakon | 4 | Where sources disagree. Ostracism was first used in 487, against the Peisistratid connection Hipparchus son of Charmus, and Athenaion Politeia strains to explain the twenty-year gap. |
 | 6.1 (`m61`) | trireme | 3 | Themistocles persuaded the assembly to build two hundred warships with the surplus rather than distribute ten drachmas a head, ostensibly for the war with Aegina (7.144); Herodotus calls it the decision that saved Greece. |
 | 6.2 (`m62`) | ostrakon | 6 | Ostracism: each year the Assembly voted whether to hold one; if so, every citizen could scratch a name on a sherd, and provided 6,000 voted the man with most was exiled for ten years without loss of property. |
 | 6.3 (`m63`) | wall | 10 | Pericles' strategy (1.140–144, 2.13) was deliberately unheroic: abandon the countryside, bring the population inside the walls, refuse pitched battle against superior Peloponnesian hoplites, use the fleet to raid the Peloponnese and keep tribute flowing, and make no new conquests while the war lasted. |
 | 6.4 (`m64`) | theatre-masks | 4 | Masks let three men play twelve roles and men play women, and fixed the face, so that voice, posture and text carried meaning. |
-| 7.1 (`m71`) | coins | 5 | Where sources disagree. Almost all this chronology rests on coins. |
+| 7.1 (`m71`) | coins | 5 | Coins became bilingual, Greek and Kharosthi, with Buddhist wheels beside Zeus; Heliodorus, envoy of King Antialcidas, raised a pillar to Vasudeva at Besnagar around 110. |
 | 7.2 (`m72`) | scroll | 6 | Ptolemaic papyri from before about 150 BC show a "wild" Homer, with extra lines and variant phrasing; after that date the papyri settle into the text the medieval manuscripts transmit. |
 | 8.1 (`m81`) | temple | 9 | A temple (naos) housed the god's image and treasure; it was not a hall for worshippers, and the cella was dark and often locked. |
 | 8.2 (`m82`) | tablet | 8 | The excavations of Evangelidis and Dakaris, and the 2013 corpus of Dakaris, Vokotopoulou and Christidis, have produced over four thousand lead tablets inscribed with the enquirers' questions: whether to marry, whether a child is one's own, which god to sacrifice to, who stole the blankets. |
@@ -40,17 +42,19 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | 12.5 (`m125`) | coins | 7 | Debased Sinopean coins of about 350–340 BC led Branham (1996) and Navia (2005) to give the story a historical core. |
 | 12.6 (`m126`) | wall | 6 | Diogenes of Oinoanda's wall |
 
-**None:** 0.2 (`m02`), tablet 3; 0.3 (`m03`), olive 2; 1.3 (`m13`), tablet 4; 2.1 (`m21`), tablet 3; 2.2 (`m22`), horse 6; 2.3 (`m23`), temple 2; 2.4 (`m24`), tablet 1; 2.5 (`m25`), temple 6; 3.5 (`m35`), wall 4; 3.6 (`m36`), horse 5; 3.7 (`m37`), laurels 4; 4.1 (`m41`), horse 5; 4.2 (`m42`), wall 6; 4.4 (`m44`), olive 4; 4.5 (`m45`), vase 1; 5.2 (`m52`), wall 4; 5.3 (`m53`), coins 9; 5.4 (`m54`), scroll 1; 5.6 (`m56`), horse 4; 6.5 (`m65`), scroll 1; 6.6 (`m66`), horse 12; 6.7 (`m67`), horse 9; 7.3 (`m73`), horse 4; 7.4 (`m74`), temple 9; 8.5 (`m85`), vase 7; 9.3 (`m93`), vase 1; 9.4 (`m94`), scroll 6; 10.1 (`m101`), amphora 3; 10.2 (`m102`), tablet 5; 10.3 (`m103`), wall 8; 10.5 (`m105`), horse 5; 10.7 (`m107`), wooden-horse 3; 10.8 (`m108`), horse 3; 10.9 (`m109`), wall 3; 10.11 (`m1011`), greek-helmet 7; 10.12 (`m1012`), scroll 4; 11.1 (`m111`), horse 11; 11.3 (`m113`), tablet 5; 11.4 (`m114`), temple 5; 11.5 (`m115`), horse 7; 11.6 (`m116`), horse 9; 11.8 (`m118`), temple 5; 12.2 (`m122`), wall 2; 12.3 (`m123`), tablet 1; 12.4 (`m124`), tablet 1; 12.7 (`m127`), temple 2; 12.8 (`m128`), horse 1.
+**None:** 0.2 (`m02`), tablet 3; 0.3 (`m03`), olive 2; 1.3 (`m13`), tablet 4; 2.1 (`m21`), tablet 3; 2.2 (`m22`), horse 6; 2.3 (`m23`), temple 2; 2.5 (`m25`), temple 6; 3.5 (`m35`), wall 4; 3.6 (`m36`), horse 5; 3.7 (`m37`), laurels 4; 4.1 (`m41`), horse 5; 4.2 (`m42`), wall 6; 4.4 (`m44`), olive 4; 4.5 (`m45`), vase 1; 5.2 (`m52`), wall 4; 5.4 (`m54`), scroll 1; 5.6 (`m56`), horse 4; 6.5 (`m65`), scroll 1; 6.6 (`m66`), horse 12; 6.7 (`m67`), horse 9; 7.3 (`m73`), horse 4; 7.4 (`m74`), temple 9; 8.5 (`m85`), vase 7; 9.3 (`m93`), vase 1; 9.4 (`m94`), scroll 6; 10.1 (`m101`), amphora 3; 10.2 (`m102`), tablet 5; 10.3 (`m103`), wall 8; 10.5 (`m105`), horse 5; 10.7 (`m107`), wooden-horse 3; 10.8 (`m108`), horse 3; 10.9 (`m109`), wall 3; 10.11 (`m1011`), greek-helmet 7; 10.12 (`m1012`), scroll 4; 11.1 (`m111`), horse 11; 11.3 (`m113`), tablet 5; 11.4 (`m114`), temple 5; 11.5 (`m115`), horse 7; 11.6 (`m116`), horse 9; 11.8 (`m118`), temple 5; 12.2 (`m122`), wall 2; 12.3 (`m123`), tablet 1; 12.4 (`m124`), tablet 1; 12.7 (`m127`), temple 2; 12.8 (`m128`), horse 1.
 
 
 ## Rome
 
-28 pages with a relief, 16 outlines in use (bough, bull, coins, dagger, eagle, gladius, horse, libation, scales, scroll, sun, temple, trireme, wall, wolf, wooden-horse); 51 pages with none.
+32 pages with a relief, 18 outlines in use (bough, bull, coins, dagger, eagle, gladius, horse, libation, scales, scroll, sun, tablet, temple, trireme, vase, wall, wolf, wooden-horse); 47 pages with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
+| 1.2 (`rm12`) | vase | 3 | Most of the finest Attic black- and red-figure vases in museums came from Etruscan graves, Vulci above all, where Lucien Bonaparte's diggers found thousands from 1828. |
 | 1.4 (`rm14`) | wolf | 23 | A she-wolf coming down to drink heard the crying, suckled them and licked them (Livy 1.4.4–6). |
 | 1.5 (`rm15`) | temple | 14 | Where sources disagree. John Stamper (The Architecture of Roman Temples, 2005) reads the foundations, and Dionysius' 200 feet a side (4.61), as a platform carrying a temple of roughly 34 by 38 metres. |
+| 1.6 (`rm16`) | tablet | 3 | The Pyrgi tablets (module 1.2) record about 500 BC that Thefarie Velianas dedicated a holy place to Uni, equated with Astarte, in the third year of his rule. |
 | 2.2 (`rm22`) | temple | 36 | The temple of Jupiter Optimus Maximus, "Best and Greatest", shared with Juno and Minerva, was begun by the Tarquins and dedicated in 509 by the consul M. |
 | 2.5 (`rm25`) | bull | 3 | Mithras: the bull, the cave and the grades |
 | 3.1 (`rm31`) | scales | 30 | The Decemvirate and the Twelve Tables, 451–449 |
@@ -61,6 +65,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | 5.5 (`rm55`) | trireme | 2 | On 2 September Antony brought the fleet out, having burned all the Egyptian ships but sixty and ordered the sails taken aboard, on the pretext, Plutarch says, that no fleeing enemy must escape (Antony 64). |
 | 6.2 (`rm62`) | temple | 24 | The house on the Palatine and the temple of Apollo |
 | 6.4 (`rm64`) | coins | 8 | Reinhard Wolters argued that the coins cannot exclude a later date, since bronze circulating on the lower Rhine was old stock, and proposed Caecina's fight at the pontes longi in AD 15 (Tacitus, Annals 1.63–68); David Wigg-Wolf replied that the profile of the coin finds separates a Varian horizon from a Germanicus horizon, and Kalkriese belongs to the first. |
+| 7.1 (`rm71`) | tablet | 4 | The bronze from Lyon (CIL XIII 1668) preserves part of the speech; module 1.5 uses it for Mastarna, and module 0.1 sets it beside Tacitus' version. |
 | 7.2 (`rm72`) | temple | 13 | On 19 December the Vitellians stormed it and the temple of Jupiter Best and Greatest burned: for Tacitus the most lamentable and disgraceful crime since the city's foundation, committed with no foreign enemy at the gates (3.72). |
 | 7.4 (`rm74`) | scroll | 7 | A damaged Greek papyrus at Giessen, P.Giss. 40 col. |
 | 7.5 (`rm75`) | coins | 5 | The coinage tied the system together: an aureus of 25 denarii, a denarius of four sesterces, a sestertius of four asses, struck chiefly at Rome. |
@@ -69,6 +74,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | 8.3 (`rm83`) | sun | 10 | The coins hedge too: a Ticinum medallion of 315 shows the Chi-Rho on his helmet, while Sol Invictus, the emperor's "companion", stayed on the bronze into the 320s. |
 | 8.4 (`rm84`) | temple | 10 | Julian ordered the temples opened and the sacrifices restored (Ammianus 22.5.2). |
 | 9.1 (`rm91`) | scales | 53 | Custom made law: Julian holds that inveterate custom is rightly kept as statute and that statutes may lapse by disuse (Digest 1.3.32.1). |
+| 9.2 (`rm92`) | tablet | 5 | The veteran could obtain, probably at his own cost, a certified copy on two bronze tablets sealed by seven witnesses: the military diploma. |
 | 9.5 (`rm95`) | temple | 36 | The temple platform. The foundations of Jupiter Best and Greatest, shared with Juno and Minerva (module 2.2), lie inside the Capitoline Museums: cappellaccio tufa, about 54 by 62 metres (module 1.5). |
 | 10.3 (`rm103`) | temple | 11 | Etruria gave the temple (module 1.2): a high podium, a frontal stair and a deep porch with columns only at the front, the form Vitruvius calls Tuscan (4.7). |
 | 10.4 (`rm104`) | eagle | 5 | Napoleon passed through the Roman titles in five years: First Consul in 1799, consul for life by plebiscite in 1802, emperor in 1804, when he gave his regiments eagles. |
@@ -78,7 +84,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | 12.5 (`rm125`) | bough | 12 | A golden bough hides in a dark tree, sacred to the Juno of the underworld; Proserpina has ordained it as her gift; pluck one and another grows; if fate calls a man it comes away easily, and otherwise no force will tear it nor iron cut it (6.136–148). |
 | 13.5 (`rm135`) | libation | 4 | The libation to Jupiter the Liberator turns death into the freedom Seneca had preached: the way out lies open (On Providence 6.7). |
 
-**None:** 0.1 (`rm01`), wolf 4; 0.2 (`rm02`), temple 4; 0.3 (`rm03`), temple 8; 1.1 (`rm11`), centurion-helmet 3; 1.2 (`rm12`), temple 4; 1.3 (`rm13`), wooden-horse 2; 1.6 (`rm16`), temple 10; 2.1 (`rm21`), temple 5; 2.3 (`rm23`), horse 9; 2.4 (`rm24`), scales 6; 3.2 (`rm32`), toga 4; 3.4 (`rm34`), scales 5; 4.1 (`rm41`), temple 6; 4.4 (`rm44`), scales 5; 4.5 (`rm45`), scales 3; 5.1 (`rm51`), scales 13; 5.2 (`rm52`), scales 9; 5.3 (`rm53`), scales 9; 5.4 (`rm54`), scales 13; 5.6 (`rm56`), toga 1; 6.1 (`rm61`), scales 11; 6.3 (`rm63`), scales 7; 7.1 (`rm71`), scales 4; 7.3 (`rm73`), temple 4; 8.5 (`rm85`), scales 6; 8.6 (`rm86`), scales 13; 9.2 (`rm92`), horse 8; 9.3 (`rm93`), scales 12; 9.4 (`rm94`), scales 2; 10.1 (`rm101`), wall 3; 10.2 (`rm102`), no outline named; 10.5 (`rm105`), scales 18; 11.1 (`rm111`), scales 28; 11.2 (`rm112`), scales 5; 11.3 (`rm113`), scales 38; 11.4 (`rm114`), scales 5; 11.5 (`rm115`), scales 11; 11.6 (`rm116`), horse 6; 11.8 (`rm118`), scales 6; 12.1 (`rm121`), sun 3; 12.3 (`rm123`), horse 8; 12.6 (`rm126`), wall 4; 12.7 (`rm127`), scales 3; 12.8 (`rm128`), wall 4; 13.1 (`rm131`), scales 2; 13.2 (`rm132`), scales 4; 13.3 (`rm133`), scroll 4; 13.4 (`rm134`), libation 3; 13.6 (`rm136`), horse 2; 13.7 (`rm137`), coins 4; 13.8 (`rm138`), scales 3.
+**None:** 0.1 (`rm01`), wolf 4; 0.2 (`rm02`), temple 4; 0.3 (`rm03`), temple 8; 1.1 (`rm11`), tablet 4; 1.3 (`rm13`), wooden-horse 2; 2.1 (`rm21`), temple 5; 2.3 (`rm23`), horse 9; 2.4 (`rm24`), scales 6; 3.2 (`rm32`), toga 4; 3.4 (`rm34`), scales 5; 4.1 (`rm41`), temple 6; 4.4 (`rm44`), scales 5; 4.5 (`rm45`), scales 3; 5.1 (`rm51`), scales 13; 5.2 (`rm52`), scales 9; 5.3 (`rm53`), scales 9; 5.4 (`rm54`), scales 13; 5.6 (`rm56`), toga 1; 6.1 (`rm61`), scales 11; 6.3 (`rm63`), scales 7; 7.3 (`rm73`), temple 4; 8.5 (`rm85`), scales 6; 8.6 (`rm86`), scales 13; 9.3 (`rm93`), scales 12; 9.4 (`rm94`), scales 2; 10.1 (`rm101`), wall 3; 10.2 (`rm102`), no outline named; 10.5 (`rm105`), scales 18; 11.1 (`rm111`), scales 28; 11.2 (`rm112`), scales 5; 11.3 (`rm113`), scales 38; 11.4 (`rm114`), scales 5; 11.5 (`rm115`), scales 11; 11.6 (`rm116`), horse 6; 11.8 (`rm118`), scales 6; 12.1 (`rm121`), sun 3; 12.3 (`rm123`), horse 8; 12.6 (`rm126`), wall 4; 12.7 (`rm127`), scales 3; 12.8 (`rm128`), wall 4; 13.1 (`rm131`), scales 2; 13.2 (`rm132`), scales 4; 13.3 (`rm133`), scroll 4; 13.4 (`rm134`), libation 3; 13.6 (`rm136`), horse 2; 13.7 (`rm137`), coins 4; 13.8 (`rm138`), scales 3.
 
 
 ## Personal brand

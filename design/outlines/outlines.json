@@ -1563,6 +1563,7 @@
    "file": "eagle.svg",
    "depicts": "an eagle with spread wings",
    "courses": [
+    "greece",
     "rome"
    ],
    "keywords": [
@@ -1586,6 +1587,60 @@
     "eagle-owls?"
    ],
    "texts": {
+    "greece": [
+     [
+      "courses/greece/2.4-prometheus-pandora-the-five-ages-and-the-flood.md",
+      4
+     ],
+     [
+      "courses/greece/4.4-the-returns-and-the-odyssey.md",
+      3
+     ],
+     [
+      "courses/greece/10.2-agamemnon-and-the-kingship-of-the-atreids.md",
+      2
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      2
+     ],
+     [
+      "courses/greece/4.1-causes-of-the-war-and-the-gathering-at-aulis.md",
+      2
+     ],
+     [
+      "courses/greece/10.3-hector-priam-and-the-trojan-side.md",
+      1
+     ],
+     [
+      "courses/greece/10.7-reading-the-odyssey-closely-the-telemachy-the-apologoi-the-nekyia-the-recognitions.md",
+      1
+     ],
+     [
+      "courses/greece/3.2-heracles.md",
+      1
+     ],
+     [
+      "courses/greece/3.3-theseus-and-athens.md",
+      1
+     ],
+     [
+      "courses/greece/3.4-jason-the-argonauts-and-medea.md",
+      1
+     ],
+     [
+      "courses/greece/3.7-love-hubris-and-metamorphosis.md",
+      1
+     ],
+     [
+      "courses/greece/7.2-alexandria-science-scholarship-and-the-new-philosophies.md",
+      1
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      1
+     ]
+    ],
     "rome": [
      [
       "courses/rome/10.4-reception-how-rome-reached-you.md",
@@ -3700,7 +3755,8 @@
    "file": "vase.svg",
    "depicts": "a painted vase",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "vase",
@@ -3823,6 +3879,20 @@
      ],
      [
       "courses/greece/9.3-reception-how-it-all-reached-you.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/1.2-the-etruscans.md",
+      3
+     ],
+     [
+      "courses/rome/1.3-before-romulus-evander-hercules-and-aeneas.md",
+      2
+     ],
+     [
+      "courses/rome/0.1-how-we-know-anything-the-sources.md",
       1
      ]
     ]
@@ -4374,7 +4444,8 @@
    "file": "tablet.svg",
    "depicts": "an inscribed tablet",
    "courses": [
-    "greece"
+    "greece",
+    "rome"
    ],
    "keywords": [
     "tablet",
@@ -4493,6 +4564,92 @@
      ],
      [
       "courses/greece/3.3-theseus-and-athens.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/9.2-the-army.md",
+      5
+     ],
+     [
+      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
+      4
+     ],
+     [
+      "courses/rome/11.6-caesars-commentaries-and-gaul.md",
+      4
+     ],
+     [
+      "courses/rome/7.1-the-julio-claudians.md",
+      4
+     ],
+     [
+      "courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md",
+      3
+     ],
+     [
+      "courses/rome/2.4-house-family-and-the-dead.md",
+      3
+     ],
+     [
+      "courses/rome/1.2-the-etruscans.md",
+      2
+     ],
+     [
+      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      2
+     ],
+     [
+      "courses/rome/4.1-carthage-and-dido.md",
+      2
+     ],
+     [
+      "courses/rome/4.3-hannibal-and-the-second-punic-war.md",
+      2
+     ],
+     [
+      "courses/rome/5.3-pompey-crassus-cicero-and-catiline.md",
+      2
+     ],
+     [
+      "courses/rome/7.2-the-year-of-four-emperors-and-the-flavians.md",
+      2
+     ],
+     [
+      "courses/rome/7.5-how-the-empire-worked.md",
+      2
+     ],
+     [
+      "courses/rome/0.1-how-we-know-anything-the-sources.md",
+      1
+     ],
+     [
+      "courses/rome/1.5-the-seven-kings.md",
+      1
+     ],
+     [
+      "courses/rome/11.7-the-ides-of-march.md",
+      1
+     ],
+     [
+      "courses/rome/13.5-seneca.md",
+      1
+     ],
+     [
+      "courses/rome/3.3-veii-the-gauls-and-camillus.md",
+      1
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/5.4-caesar.md",
+      1
+     ],
+     [
+      "courses/rome/7.3-the-adoptive-emperors.md",
       1
      ]
     ]
@@ -6747,7 +6904,7 @@
   {
    "id": "gauge",
    "file": "gauge.svg",
-   "depicts": "a gauge (the sign for usage limits)",
+   "depicts": "a half-charged battery (the sign for usage limits)",
    "courses": [
     "brand-b"
    ],
@@ -6758,9 +6915,9 @@
    ],
    "source": {
     "repository": "phosphor-icons/core",
-    "path": "assets/fill/gauge-fill.svg",
+    "path": "assets/fill/battery-medium-fill.svg",
     "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
-    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/gauge-fill.svg"
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/battery-medium-fill.svg"
    },
    "author": "Phosphor Icons",
    "licence": "MIT",
@@ -7297,6 +7454,30 @@
     "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
    },
    "reason": "not the object as a relief: the filled frame with the line cut out reads as a maze in a box (P96 check M1); trend-up-fill.svg taken"
+  },
+  {
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/gauge-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
+   },
+   "reason": "not the object as a relief: a filled dome with the needle cut out reads as a maze, not a dial (P96 check M3); battery-medium-fill.svg taken"
+  },
+  {
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/speedometer-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
+   },
+   "reason": "not the object as a relief: the same dome with its needle cut out"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/speedometer.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 1 thin part"
   },
   {
    "source": {
