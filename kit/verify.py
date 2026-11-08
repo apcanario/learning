@@ -105,6 +105,17 @@ above and of the next and previous below (in "Whole unit", of the next section);
 breath on each, transform only, each at its own phase, and at five poses of the turn at the top of the breath every
 line inside its frame; none moving under reduced motion; no page wider than the screen. The other topography checks
 leave the separators to this one.
+Object reliefs (P95, 8 Nov 2026; check_reliefs): the outline library (design/outlines/outlines.json) holds at least ten
+outlines for each of the five courses, each with every field, an allowed licence named in its credit, its SVG and its
+relief JSON, and a text of each course it serves naming it; every reading page maps a relief exactly when uses.json
+maps it one; and each mapped page at 320, 390, 768 and 1280 px, dark and light, with and without motion: the relief under
+the scope line as the header's last block, before the section bar; its caption printed exactly (what it shows, "a
+stylised outline drawn as a relief from an icon", the credit) with the licence linked to its text; div.topo.relief
+aria-hidden and textless, one svg.topo-l with only path.rl-in and path.rl-out (class and d), at most 12 KB, in the page's
+tone, the halo fainter; its frame at the drawing's aspect, the column's width or 280 px tall (340 from 768 px); a turn
+and a breath by transform only, at a phase none of the page's separators has, and at five poses of the turn at the top
+of the breath every line inside its frame; nothing moving under reduced motion; the page's text naming the object; no
+page wider than the screen.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools, math, html as H

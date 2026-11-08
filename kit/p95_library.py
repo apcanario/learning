@@ -43,7 +43,7 @@ L = [
     ('lyre', 'game-icons', 'lorc/lyre.svg', 'a lyre', ['greece'], ['lyre', 'lyres']),
     ('owl', 'game-icons', 'lorc/owl.svg', 'an owl', ['greece'], ['owl', 'owls']),
     ('olive', 'game-icons', 'delapouite/olive.svg', 'an olive branch', ['greece'], ['olive', 'olives']),
-    ('laurels', 'game-icons', 'lorc/laurels.svg', 'a laurel wreath', ['greece', 'rome'], ['laurel', 'laurels']),
+    ('laurels', 'game-icons', 'lorc/laurels.svg', 'laurel (a wreath)', ['greece', 'rome'], ['laurel', 'laurels']),
     ('theatre-masks', 'game-icons', 'lorc/drama-masks.svg', 'two theatre masks', ['greece'], ['mask', 'masks']),
     ('wooden-horse', 'game-icons', 'delapouite/trojan-horse.svg', 'the wooden horse', ['greece'], ['wooden horse', 'Trojan horse']),
     ('centaur', 'game-icons', 'delapouite/centaur.svg', 'a centaur', ['greece'], ['centaur', 'centaurs']),
@@ -88,16 +88,17 @@ L = [
 # P95 check A: what a keyword also matches that is not the object (a homonym, a title, another kind of the thing), taken
 # out of each line before counting
 EXCLUDE = {
-    'theatre-masks': [r'death[- ]masks?', r'(?:gold(?:en)?|funeral|funerary|burial|wax) masks?', r'Mask of Agamemnon', r'mask from Grave \w+', r"mask's authenticity", r'Humbaba masks?', r'grotesque masks?'],
+    'theatre-masks': [r'death[- ]masks?', r'(?:gold(?:en)?|funeral|funerary|burial|wax|ancestral) masks?', r'Agamemnon', r'Schliemann', r'shaft graves', r'Grave \w+', r"mask's authenticity", r'mask dates', r'stylistically odd', r'Humbaba', r'grotesque masks?', r'mask on a pillar'],
     'terminal': [r'Terminal-Bench'],
     'eagle': [r'eagle-owls?'],
     'wolf': [r'Hieronymus Wolf'],
-    'bridge': [r'bridge and barrier', r'bridge to the', r'bridge to Italy', r'bridge between', r'Rhine bridges?', r'bridges? (?:over|across) the Rhine', r'Pons Sublicius', r'Sublician bridge', r'bridge of boats'],
+    'bridge': [r'bridge and barrier', r'bridge to the', r'bridge to Italy', r'bridge between', r'Rhine bridges?', r'bridges? (?:over|across) the Rhine', r'Pons Sublicius', r'Sublician bridge', r'bridge of boats', r'Boarding-Bridge'],
     'gladius': [r'fire and sword', r'fire, sword'],
-    'receipt': [r'Receipts inside', r'net receipts', r'Tier receipts', r'trailing receipts', r'quarters of receipts'],
+    'receipt': [r'Receipts inside', r'net receipts', r'Tier receipts', r'trailing receipts', r'quarters of receipts', r'banked receipts', r'from receipt'],
     'map': [r'\bmaps? (?:to|onto|into)\b'],
+    'books': [r'Two Waves Books'],
     'database': [r'Cochrane Database'],
-    'phone': [r'phone (?:fields?|numbers?|line|volume)'],
+    'phone': [r'phone (?:fields?|numbers?|line|volume)', r'from a phone'],
 }
 # taken from the sets and measured, then not used: busy (relief.py's measures) or not the object the texts name
 REJECTED = [
@@ -141,9 +142,9 @@ def prose(f, oid):
     ("label") and data are not the text naming an object, and each outline's EXCLUDE patterns taken out."""
     t = FIG.sub(' ', f.read_text(encoding='utf-8'))
     t = re.sub(r'\A---\n.*?\n---\n', ' ', t, flags=re.S)        # the front matter (search: off)
-    t = re.sub(r'\]\([^)\s]*\)|https?://\S+', ' ', t)               # link targets and URLs (a slug such as earn-money)
-    for x in EXCLUDE.get(oid, []):
-        t = re.sub(x, ' ', t, flags=re.I)
+    t = re.sub(r'\]\([^)\s]*\)|https?://\S+|\b[\w.-]+\.(?:com|org|net|io|ai|dev|edu|gov|co)/\S*', ' ', t)   # link targets and URLs, bare ones too (a slug such as earn-money)
+    for x in EXCLUDE.get(oid, []):   # P95 check A3: the whole sentence that holds a homonym goes, not only its name
+        t = re.sub(r'[^.\n]*(?:' + x + r')[^.\n]*', ' ', t, flags=re.I)
     return t
 
 
@@ -187,7 +188,8 @@ def main():
                      'discuss the object: "texts" lists, for each course it serves, every file whose text names it (its keywords) '
                      'with the count. kit/relief.py turns each into <id>.json, which viz.py\'s kind "relief" draws. A caption prints '
                      '"<depicts>, a stylised outline drawn as a relief from an icon. <credit>.", the licence linked; verify.py checks it is printed exactly. A count is '
-                     'of the prose: figure declarations and each outline\'s "excludes" (homonyms) are taken out first. licences/ holds '
+                     'of the prose: the front matter, figure declarations, link targets and URLs are taken out first, and every sentence '
+                     'that holds one of the outline\'s "excludes" (a homonym, a title, another kind of the thing). licences/ holds '
                      'each set\'s licence file at the commit taken.',
                allowed_licences=ALLOWED, outlines=out, rejected=rej)
     (LIB / 'outlines.json').write_text(json.dumps(lib, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')

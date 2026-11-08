@@ -16,6 +16,7 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] Words in quotation marks are the source's exact words.
 - [ ] Nothing is invented: no citation, name, handle, number or quotation that the writer cannot point to.
 - [ ] A figure adds no fact: every label, date and number in it appears in the unit's own sourced text, and its caption says what it shows and where its data comes from (section, author, line).
+- [ ] An illustration adds no claim (P95): an object relief shows an object the text discusses at length, from a file in design/outlines/ whose licence allows reuse with credit (outlines.json: its source repository, path and commit, author and licence); its caption says what it shows, that it is a stylised outline, and gives the credit exactly as the licence asks; it is never offered as evidence of what the object looked like.
 
 **Per unit**
 - [ ] A claim that cannot be sourced is said to be unsourced or uncertain, or is left out.

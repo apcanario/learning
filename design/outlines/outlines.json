@@ -1,5 +1,5 @@
 {
- "about": "P95 (8 Nov 2026): the outline library. Each outline is a file from an open icon set on GitHub, taken unchanged but for the background square a set adds (removed by kit/p95_library.py), because a course's texts discuss the object: \"texts\" lists, for each course it serves, every file whose text names it (its keywords) with the count. kit/relief.py turns each into <id>.json, which viz.py's kind \"relief\" draws. A caption prints \"<depicts>, a stylised outline drawn as a relief from an icon. <credit>.\", the licence linked; verify.py checks it is printed exactly. A count is of the prose: figure declarations and each outline's \"excludes\" (homonyms) are taken out first. licences/ holds each set's licence file at the commit taken.",
+ "about": "P95 (8 Nov 2026): the outline library. Each outline is a file from an open icon set on GitHub, taken unchanged but for the background square a set adds (removed by kit/p95_library.py), because a course's texts discuss the object: \"texts\" lists, for each course it serves, every file whose text names it (its keywords) with the count. kit/relief.py turns each into <id>.json, which viz.py's kind \"relief\" draws. A caption prints \"<depicts>, a stylised outline drawn as a relief from an icon. <credit>.\", the licence linked; verify.py checks it is printed exactly. A count is of the prose: the front matter, figure declarations, link targets and URLs are taken out first, and every sentence that holds one of the outline's \"excludes\" (a homonym, a title, another kind of the thing). licences/ holds each set's licence file at the commit taken.",
  "allowed_licences": [
   "CC BY 3.0",
   "CC0 1.0",
@@ -898,7 +898,7 @@
   {
    "id": "laurels",
    "file": "laurels.svg",
-   "depicts": "a laurel wreath",
+   "depicts": "laurel (a wreath)",
    "courses": [
     "greece",
     "rome"
@@ -1004,12 +1004,17 @@
    "background_removed": true,
    "excludes": [
     "death[- ]masks?",
-    "(?:gold(?:en)?|funeral|funerary|burial|wax) masks?",
-    "Mask of Agamemnon",
-    "mask from Grave \\w+",
+    "(?:gold(?:en)?|funeral|funerary|burial|wax|ancestral) masks?",
+    "Agamemnon",
+    "Schliemann",
+    "shaft graves",
+    "Grave \\w+",
     "mask's authenticity",
-    "Humbaba masks?",
-    "grotesque masks?"
+    "mask dates",
+    "stylistically odd",
+    "Humbaba",
+    "grotesque masks?",
+    "mask on a pillar"
    ],
    "texts": {
     "greece": [
@@ -1018,19 +1023,7 @@
       4
      ],
      [
-      "courses/greece/9.2-reading-a-site-athens-on-foot.md",
-      3
-     ],
-     [
       "courses/greece/2.2-the-twelve-olympians.md",
-      2
-     ],
-     [
-      "courses/greece/9.3-reception-how-it-all-reached-you.md",
-      2
-     ],
-     [
-      "courses/greece/7.3-rome-conquers-greece.md",
       1
      ]
     ]
@@ -1791,7 +1784,8 @@
     "bridges? (?:over|across) the Rhine",
     "Pons Sublicius",
     "Sublician bridge",
-    "bridge of boats"
+    "bridge of boats",
+    "Boarding-Bridge"
    ],
    "texts": {
     "rome": [
@@ -1800,23 +1794,11 @@
       2
      ],
      [
-      "courses/rome/0.2-italy-and-the-mediterranean-the-shape-of-romes-world.md",
-      1
-     ],
-     [
       "courses/rome/0.3-the-timeline-spine-1000-bc-to-ad-476.md",
       1
      ],
      [
-      "courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md",
-      1
-     ],
-     [
       "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
-      1
-     ],
-     [
-      "courses/rome/4.2-the-first-punic-war.md",
       1
      ],
      [
@@ -2191,17 +2173,18 @@
    "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
    "background_removed": false,
    "excludes": [
-    "phone (?:fields?|numbers?|line|volume)"
+    "phone (?:fields?|numbers?|line|volume)",
+    "from a phone"
    ],
    "texts": {
     "brand-a": [
      [
       "courses/brand-ai/A5-production-craft.md",
-      13
+      11
      ],
      [
       "courses/brand-ai/A3-the-journey-system.md",
-      7
+      6
      ],
      [
       "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
@@ -2394,17 +2377,19 @@
     "net receipts",
     "Tier receipts",
     "trailing receipts",
-    "quarters of receipts"
+    "quarters of receipts",
+    "banked receipts",
+    "from receipt"
    ],
    "texts": {
     "brand-a": [
      [
       "courses/brand-ai/A8-legal-tax-time.md",
-      6
+      5
      ],
      [
       "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
-      2
+      1
      ]
     ],
     "ux-ia": [
@@ -2413,15 +2398,15 @@
       21
      ],
      [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      4
+     ],
+     [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
-      5
+      4
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      5
-     ],
-     [
-      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
       4
      ],
      [
@@ -3014,11 +2999,11 @@
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
-      34
+      33
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
-      30
+      29
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
@@ -3067,15 +3052,15 @@
     "ux-ia": [
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
-      40
+      37
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      34
+      33
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
-      13
+      12
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -3130,7 +3115,7 @@
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      28
+      26
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -3138,11 +3123,11 @@
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      10
+      9
      ],
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
-      7
+      5
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
@@ -3182,24 +3167,26 @@
    "set": "phosphor",
    "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
    "background_removed": false,
-   "excludes": [],
+   "excludes": [
+    "Two Waves Books"
+   ],
    "texts": {
     "ux-ia": [
      [
-      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
-      29
-     ],
-     [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      28
+      27
      ],
      [
-      "courses/ux/IA3-how-people-find-and-understand-things.md",
-      22
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      24
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       20
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      19
      ],
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
@@ -3498,11 +3485,11 @@
     "ux-ia": [
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
-      77
+      70
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      42
+      36
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
