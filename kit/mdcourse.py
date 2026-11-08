@@ -77,7 +77,10 @@ def render_md(src):
     links = {}
     for t, u in re.findall(r'\[([^\]]+)\]\((https?://[^)]+)\)', src):
         links.setdefault(u, t)
-    body = markdown.markdown(src, extensions=['tables'])
+    # P94 check: 'fenced_code', so a fenced block the writer wrote at the top level is the code block it is (without it
+    # A1's bio drafts, B7's two thumbnail styles and DD-B1's skill file showed as paragraphs with their fences, a "> "
+    # line of B7's as a quotation and DD-B1's "---" as a heading, a section of its own named "```")
+    body = markdown.markdown(src, extensions=['tables', 'fenced_code'])
     body = viz.restore_md(body, figs)
     body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
     body = body.replace('<a href=', '<a target="_blank" rel="noopener" href=')

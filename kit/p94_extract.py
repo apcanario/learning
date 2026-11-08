@@ -90,7 +90,7 @@ def main(out):
             if seps:
                 stem = f.stem   # a fetched file is a panel's inside: r-6.1 in greece/ is m61, in rome/ rm11; read-x is read-x
                 pid = ({'greece': 'm', 'rome': 'rm'}[f.parent.name] + stem[2:].replace('.', '')) if stem.startswith('r-') else stem
-                sizes[pid] = (sum(len(x.encode()) for x in seps), max(x.count('class="ct-rise') for x in seps))
+                sizes[pid] = (sum(len(re.sub(r'<(\w+)([^<>]*?)/>', r'<\1\2></\1>', x).encode()) for x in seps), max(x.count('class="ct-rise') for x in seps))   # as the page holds it (build.py sep_bytes)
         most = max(sizes, key=lambda k: sizes[k][1]); heavy = max(sizes, key=lambda k: sizes[k][0])
         for k, x in enumerate((most, heavy)):
             if x not in extra and x not in S.PAGES:

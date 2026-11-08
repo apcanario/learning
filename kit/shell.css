@@ -888,6 +888,9 @@ a.course:active{transform:translateY(0);box-shadow:none}
 .secnav a.snext span{color:var(--on-accent)}
 .secnav a.send{background:transparent;border-color:var(--line-2);color:var(--fg)}
 .secnav a.send span{color:var(--muted);opacity:1}
+/* P94 check: on a phone under 360 px a two-digit "Previous · 10 of 11" ran past its button (the label keeps one line):
+   the label at 10 px without tracking and the button's sides at 10 px give it the room */
+@media (max-width:360px){.secnav a{padding:10px}.secnav a span{font-size:10px;letter-spacing:0}}
 /* P94 (theme 6.7): the section separator. Every section with a paragraph ends on a horizontal topography of its
    paragraphs (kit/build.py sep_block, viz.py's contours with sep: one rise per top-level paragraph by its words, along a
    ridge, in the course's tone), aria-hidden and textless, the column's width at 1200 by 170, before the next and

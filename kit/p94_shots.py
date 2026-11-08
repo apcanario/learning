@@ -67,6 +67,11 @@ def tops(br, url, out, widths):
                 # and the end of section 1, where the separator stands, its next and previous at the screen's foot
                 pg.evaluate(f"document.querySelector('#{pid} .sec.on > .secnav').scrollIntoView({{block: 'end'}}); window.scrollBy(0, 12)"); pg.wait_for_timeout(80)
                 pg.screenshot(path=str(out / f'{w}-{pid}-end1-{theme}.png'))
+                # "Whole unit": the first separator standing between its section and the next
+                pg.evaluate(f"document.querySelector('#{pid} .stepbar .whole').click()"); pg.wait_for_timeout(100)
+                pg.evaluate(f"(() => {{ const t = document.querySelector('#{pid} .topo-sep'); window.scrollTo(0, t.getBoundingClientRect().top + scrollY - innerHeight / 2); }})()"); pg.wait_for_timeout(80)
+                pg.screenshot(path=str(out / f'{w}-{pid}-whole-{theme}.png'))
+                pg.evaluate(f"document.querySelector('#{pid} .stepbar .whole').click()"); pg.wait_for_timeout(60)
                 print('shot', out / f'{w}-{pid}-{theme}.png')
         ctx.close()
 

@@ -420,7 +420,7 @@ def patch_block(rises, tone, phase=None):
 SEP_W, SEP_H = 1200, 170   # the separator's layout: the column's width at 1200 by 170 units (about 7:1)
 SEP_BOX = (.1, .42, .9, .58)   # where its rises stand: along a ridge across the frame, swinging gently about its middle
 SEP_MAX = 6 * 1024   # bytes, at most
-SEP_SY, SEP_STRETCH = 24, 6   # the hills' first spread across the ridge, in units, and how far each may be drawn out along it
+SEP_SY, SEP_STRETCH, SEP_STRETCH_MIN = 24, 6, 2.5   # the hills' first spread across the ridge, in units, and how far each is drawn out along it, at most and at least
 
 
 def sep_block(paras, tone, phase=None, label=''):
@@ -431,7 +431,7 @@ def sep_block(paras, tone, phase=None, label=''):
     rise's rings and every line stay clear of it at every pose of the move (turned_inside: both ends of the turn, at rest
     and at the top of the breath): its hills start SEP_SY units across the ridge and drawn out along it as far as the
     next rise (stretch, at most SEP_STRETCH times), so neighbours meet in one ridge; where a pose takes a line past the
-    top or bottom the hills are lowered, past an end they are drawn out less (then lowered once round); then its lines are
+    top or bottom the hills are lowered, past an end they are drawn out less (then lowered once at SEP_STRETCH_MIN); then its lines are
     simplified a step further until it is at most SEP_MAX bytes (no rise is ever dropped). Each rise is labelled by its
     place (¶1, ¶2 ...); label, the section's id, seeds their outlines (the ripple), so each separator's are its own."""
     n, top = len(paras), max(paras)
@@ -440,8 +440,12 @@ def sep_block(paras, tone, phase=None, label=''):
     # (stretch) to under half the distance between two neighbours, so neighbours meet in one ridge, at most SEP_STRETCH
     # times its height and never less than round
     gap = (SEP_BOX[2] - SEP_BOX[0]) * SEP_W / n
-    lay = dict(name='ridge', width=SEP_W, height=SEP_H, spread=round(SEP_SY / SEP_W, 5), grid=8, simplify=.8, at=at,
-               stretch=round(max(1, min(SEP_STRETCH, gap / SEP_SY)), 3))
+    # P94 check: every hill drawn out at least SEP_STRETCH_MIN times its height, so a ridge of many paragraphs stays a
+    # flat ridge (at 38 rises, round hills in narrow slots read as dots and blobs); along the ridge as far as about the
+    # next rise, so neighbours meet; across it SEP_SY units, or less where the ridge is dense
+    stretch = max(SEP_STRETCH_MIN, min(SEP_STRETCH, gap / SEP_SY))
+    lay = dict(name='ridge', width=SEP_W, height=SEP_H, spread=round(min(SEP_SY, 1.1 * gap / stretch) / SEP_W, 5), grid=8, simplify=.8, at=at,
+               stretch=round(stretch, 3))
     blk = dict(kind='contours', patch=True, sep=True, interval=top / 5.5, seed=label,
                rises=[dict(label=f'¶{k + 1}', words=w, tone=tone) for k, w in enumerate(paras)], layouts=[lay])
     for _ in range(80):
@@ -454,8 +458,8 @@ def sep_block(paras, tone, phase=None, label=''):
         if not ok_y:   # too tall at some pose: lower every hill (the spread across the ridge)
             lay['spread'] = round(lay['spread'] * .9, 5)
         if not ok_x or rr[('ridge', 'edge')]:   # too long: draw the hills out less (never under round)
-            if lay['stretch'] > 1:
-                lay['stretch'] = round(max(1, lay['stretch'] * .9), 3)
+            if lay['stretch'] > SEP_STRETCH_MIN:
+                lay['stretch'] = round(max(SEP_STRETCH_MIN, lay['stretch'] * .9), 3)
             elif ok_y:
                 lay['spread'] = round(lay['spread'] * .9, 5)
     else:

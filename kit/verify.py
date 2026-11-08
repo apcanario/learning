@@ -1468,6 +1468,8 @@ SEP_JS = r"""([pid, poses, cyc, bt, motion]) => {
     if (!fr.width) { out.bad.push(`section ${k + 1}: the separator does not show in its section`); return; }
     if (Math.abs(fr.width / fr.height - 1200 / 170) > .05) out.bad.push(`section ${k + 1}: the separator is ${(fr.width / fr.height).toFixed(3)}:1, not 1200:170`);
     if (Math.abs(fr.width - col.width) > 1) out.bad.push(`section ${k + 1}: the separator is ${fr.width.toFixed(1)} px wide in a ${col.width.toFixed(1)} px column`);
+    t.nextElementSibling.querySelectorAll('a').forEach(a => { const sp = a.querySelector('span'), ar = a.getBoundingClientRect(), pr = parseFloat(getComputedStyle(a).paddingRight);   // P94 check: a label past its button
+      if (sp && (sp.scrollWidth > sp.clientWidth + 1 || sp.getBoundingClientRect().right > ar.right - pr + .5 || sp.getBoundingClientRect().left < ar.left - .5)) out.bad.push(`section ${k + 1}: "${sp.textContent}" runs past its button`); });
     if (fr.top - up.bottom < 20 || nav.top - fr.bottom < 20) out.bad.push(`section ${k + 1}: the separator ${Math.round(fr.top - up.bottom)} px under the text and ${Math.round(nav.top - fr.bottom)} px over the next and previous (20 at least)`);
   });
   links[0].click();
@@ -1544,7 +1546,7 @@ def check_seps(br, fails):
     big = max(per_page.items(), key=lambda x: x[1][0]) if per_page else ('', (0, 0, 0))
     print(f'separators: {len(per_page)} reading pages, {tot["secs"]} sections, {tot["seps"]} separators, {tot["none"]} sections without a paragraph and so without one; '
           f'{tot["bytes"]:,} bytes in all, the largest {max((v[2] for v in per_page.values()), default=0):,} B, the page with most {big[0]} ({big[1][0]:,} B over {big[1][1]}); '
-          f'checked at {", ".join(str(x[1]) for x in SEP_WIDTHS)} px, dark and light, with and without motion; {tot["poses"]:,} separator poses, the closest line {low:.1f} px from its frame')
+          f'checked at {", ".join(str(x[1]) for x in SEP_WIDTHS)} px, dark and light, with and without motion; {tot["poses"]:,} separator poses with motion allowed, the closest line {low:.1f} px from its frame')
     return tot, per_page
 
 def check_reading(br, fails):
