@@ -464,12 +464,18 @@ def sep_block(paras, tone, phase=None, label=''):
     if phase is not None:
         blk['phase'] = round(phase, 3)
     out = viz.render(blk)
-    while len(out.encode()) > SEP_MAX:
+    while sep_bytes(out) > SEP_MAX:
         lay['simplify'] = round(lay['simplify'] * 1.25, 3)
         if lay['simplify'] > 12:
             raise SystemExit(f'build.py sep_block: the separator of {label} ({paras}) stays over {SEP_MAX} bytes even simplified')
         out = viz.render(blk)
     return out
+
+
+def sep_bytes(h):
+    """P94: a separator's size as the page holds it (verify.py measures the element's outerHTML): the HTML parser writes
+    every self-closed SVG element with an end tag, <path d=".."></path>, a few bytes more than the source's <path/>."""
+    return len(re.sub(r'<(\w+)([^<>]*?)/>', r'<\1\2></\1>', h).encode())
 
 
 def sep_kit(tone):

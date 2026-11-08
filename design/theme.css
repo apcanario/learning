@@ -29,7 +29,14 @@
    7  Interaction: hover and pressed states for every clickable thing, on devices
       that can hover; equal-height catalogue cards with the button on one line
    9  Reading layout (P68): scope line, sticky section bar, one section at a time,
-      numbered section bands, next and previous, Sources and "How this unit was made"
+      numbered section bands, next and previous, Sources and "How this unit was made"; since 6.7 (P94) each
+      section's separator, a horizontal topography of its paragraphs
+   Version 6.7, 8 Nov 2026 (P94; Pedro, 5 Nov 2026: "These topographical abstract illustrations are great. We could use
+   them as paragraph separators (the ones that are more horizontal)"): section 9, every section of every reading page
+   ends on a horizontal topography of its paragraphs (.topo.topo-patch.topo-sep: one rise per top-level paragraph by its
+   words along a ridge, in the course's tone, the column's width at 1200 by 170, 30 px clear of the text above and of
+   the next and previous below; between sections in "Whole unit"); it turns and breathes as every contour drawing (4i);
+   new token --topo-s, its lines (the value of --topo-p in each theme).
    Version 6.6, 4 Nov 2026 (P93): every contour drawing moves where motion is welcome (4i: a turn from -3 to +3 degrees
    over 10 s and, since 5 Nov, a breath from 1 to 1.1 over 6 s, each alternating, eased, transform only, about each drawing's
    centre; each drawing of a page starts at its own point of the cycle, --ph from build.py; each layer stands out of its

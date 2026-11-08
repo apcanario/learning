@@ -96,6 +96,15 @@ a topography keeps 4.5:1 (3:1 large) against the pixels under it; under reduced 
 them. At 390 px with motion allowed, LCP and the longest task are printed for the home, Greece's home and What's new.
 With --shots: the home, What's new and the five course homes at the six widths, and the motion sheets of the home,
 Greece and Information architecture at the five poses, 390 and 1280 px.
+Section separators (P94, 8 Nov 2026), on every reading page at 320, 390, 768 and 1280 px, dark and light, under reduced
+motion and with motion allowed (check_seps): every section with a top-level paragraph ends on one separator, last before
+its next and previous, and a section without one has none; its rises, one per paragraph in order, carry the words read
+from the page (the cue shell.js puts under a wide figure left out); div.topo.topo-patch.topo-sep, aria-hidden, textless,
+at most 6 KB, its lines in the page's tone, its frame 1200:170 and the column's width, 20 px clear at least of the text
+above and of the next and previous below (in "Whole unit", of the next section); with motion allowed a turn and a
+breath on each, transform only, each at its own phase, and at five poses of the turn at the top of the breath every
+line inside its frame; none moving under reduced motion; no page wider than the screen. The other topography checks
+leave the separators to this one.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 """
 import sys, json, pathlib, re, threading, functools, math, html as H
@@ -637,9 +646,9 @@ TOPO_JS = r"""(pid) => {
   };
   const hl = P.querySelector(':scope > header.hero > .topo');
   out.hero = hl ? one(hl, true) : null;
-  out.anyTopo = P.querySelectorAll('.topo').length; out.allPatches = P.querySelectorAll('.topo.topo-patch').length;
-  P.querySelectorAll('.topo.topo-patch').forEach(t => { if (vis(t)) out.patches.push(one(t, false)); });
-  out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && P.contains(a.effect.target)).map(a => {   // animations, not the transitions of a hover or the theme switch
+  out.anyTopo = P.querySelectorAll('.topo:not(.topo-sep)').length; out.allPatches = P.querySelectorAll('.topo.topo-patch:not(.topo-sep)').length;   // P94: a reading page's section separators are checked by check_seps
+  P.querySelectorAll('.topo.topo-patch:not(.topo-sep)').forEach(t => { if (vis(t)) out.patches.push(one(t, false)); });
+  out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && P.contains(a.effect.target) && !a.effect.target.closest('.topo-sep')).map(a => {   // animations, not the transitions of a hover or the theme switch
     const t = a.effect.target, props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(k => !['offset', 'computedOffset', 'easing', 'composite'].includes(k)))];
     return [(t.getAttribute('class') || t.tagName).split(' ')[0], props, a.playState, a.animationName || '', a.effect.getComputedTiming().progress, !!t.closest('.topo-patch')]; });
   return out;
@@ -1416,6 +1425,128 @@ READING_SHOTS = [
     ('7-whole', "(pid) => { const p = document.getElementById(pid); p.querySelectorAll('.process details').forEach(d => d.open = false); p.querySelector('.stepbar .whole').click(); window.scrollTo(0, document.documentElement.scrollHeight * 0.4); }"),
 ]
 
+# P94 (8 Nov 2026) · the section separators: on one reading page, every section's top-level paragraphs and their
+# words, read from the page (each <p> child of the section; its words its text nodes split at white space, a tag a
+# break, as build.py's wc counts), against its separator: one separator in a section with a paragraph, none in one
+# without, standing last before the next and previous; div.topo.topo-patch.topo-sep, aria-hidden, textless, at most
+# 6 KB; one rise per paragraph in order, its data-words that paragraph's words; every line in the page's tone (the
+# panel's --cc); the frame 1200:170 and the column's width; in one-section view the text above and the next and
+# previous below at least 20 px clear, in "Whole unit" the text above and the next section's band; then, with motion
+# allowed, each separator's turn and breath (transform only) and at five poses of the turn, at the top of the breath,
+# every line inside its frame; the page no wider than the screen.
+SEP_JS = r"""([pid, poses, cyc, bt, motion]) => {
+  const P = document.getElementById(pid), out = {secs: 0, seps: 0, none: 0, bytes: 0, maxb: 0, bad: [], ph: [], anims: 0, poses: 0};
+  if (!P) { out.bad.push('no page'); return out; }
+  const r = P.querySelector('.report.steps'), bar = P.querySelector('.stepbar'), whole = bar.querySelector('.whole');
+  const words = e => { let t = ''; const walk = n => { for (const c of n.childNodes) { if (c.nodeType === 3) t += c.data; else if (c.nodeType === 1) { t += ' '; walk(c); t += ' '; } } }; walk(e); return t.split(/\s+/).filter(Boolean).length; };
+  const probe = document.createElement('i'); P.appendChild(probe); probe.style.color = 'var(--cc)'; const tone = getComputedStyle(probe).color; probe.remove();
+  const secs = [...r.children].filter(x => x.classList.contains('sec')); out.secs = secs.length;
+  const seps = [];
+  secs.forEach((sec, k) => {
+    const paras = [...sec.children].filter(e => e.tagName === 'P' && !e.classList.contains('viz-cue')).map(words).filter(n => n > 0);   // the cue shell.js puts under a figure or table wider than its frame is the figure's, not a paragraph
+    const ts = sec.querySelectorAll('.topo'), t = sec.querySelector(':scope > .topo-sep');
+    if (!paras.length) { out.none++; if (ts.length) out.bad.push(`section ${k + 1}: no paragraph, yet ${ts.length} drawing(s)`); return; }
+    if (ts.length !== 1 || !t) { out.bad.push(`section ${k + 1}: ${paras.length} paragraphs, ${ts.length} drawings, separator ${!!t}`); return; }
+    out.seps++; seps.push([k, t]);
+    if (t.className !== 'topo topo-patch topo-sep' || t.tagName !== 'DIV') out.bad.push(`section ${k + 1}: the separator is ${t.tagName}.${t.className}`);
+    if (!t.nextElementSibling || !t.nextElementSibling.matches('nav.secnav')) out.bad.push(`section ${k + 1}: the separator is not last before the next and previous`);
+    if (t.getAttribute('aria-hidden') !== 'true') out.bad.push(`section ${k + 1}: the separator is not aria-hidden`);
+    if (t.textContent.trim() || t.querySelector('text, title, desc')) out.bad.push(`section ${k + 1}: the separator holds text`);
+    const b = new Blob([t.outerHTML]).size; out.bytes += b; out.maxb = Math.max(out.maxb, b);
+    if (b > 6144) out.bad.push(`section ${k + 1}: the separator is ${b} bytes, over 6 KB`);
+    const gs = [...t.querySelectorAll('svg.topo-l g.ct-rise')], got = gs.map(g => +g.getAttribute('data-words'));
+    if (t.querySelectorAll('svg.topo-l').length !== 1 || t.querySelector('g.ct-plan')) out.bad.push(`section ${k + 1}: ${t.querySelectorAll('svg.topo-l').length} layouts, or a planned ring`);
+    if (got.join() !== paras.join()) out.bad.push(`section ${k + 1}: rises by words ${got.join(',')}, its paragraphs ${paras.join(',')}`);
+    const st = [...new Set([...t.querySelectorAll('path, circle')].map(e => getComputedStyle(e).stroke))];
+    if (st.length !== 1 || st[0] !== tone) out.bad.push(`section ${k + 1}: lines in ${st.join(' ')}, the page's tone ${tone}`);
+    out.ph.push(parseFloat(getComputedStyle(t).getPropertyValue('--ph')));
+  });
+  // one section at a time: each separator between its text and its next and previous
+  const links = [...bar.querySelectorAll('.seclist a')];
+  seps.forEach(([k, t]) => { links[k].click();
+    const fr = t.getBoundingClientRect(), up = t.previousElementSibling.getBoundingClientRect(), nav = t.nextElementSibling.getBoundingClientRect(), col = secs[k].getBoundingClientRect();
+    if (!fr.width) { out.bad.push(`section ${k + 1}: the separator does not show in its section`); return; }
+    if (Math.abs(fr.width / fr.height - 1200 / 170) > .05) out.bad.push(`section ${k + 1}: the separator is ${(fr.width / fr.height).toFixed(3)}:1, not 1200:170`);
+    if (Math.abs(fr.width - col.width) > 1) out.bad.push(`section ${k + 1}: the separator is ${fr.width.toFixed(1)} px wide in a ${col.width.toFixed(1)} px column`);
+    if (fr.top - up.bottom < 20 || nav.top - fr.bottom < 20) out.bad.push(`section ${k + 1}: the separator ${Math.round(fr.top - up.bottom)} px under the text and ${Math.round(nav.top - fr.bottom)} px over the next and previous (20 at least)`);
+  });
+  links[0].click();
+  // "Whole unit": every separator between its section and the next
+  whole.click();
+  seps.forEach(([k, t]) => { const fr = t.getBoundingClientRect(), nx = secs[k + 1];
+    if (!fr.width) out.bad.push(`section ${k + 1}: no separator shown in "Whole unit"`);
+    else if (nx && nx.getBoundingClientRect().top - fr.bottom < 20) out.bad.push(`section ${k + 1}: in "Whole unit" the separator is ${Math.round(nx.getBoundingClientRect().top - fr.bottom)} px over the next section`); });
+  out.scroll = [document.documentElement.scrollWidth, document.documentElement.clientWidth];
+  // the move
+  const an = document.getAnimations().filter(a => a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('#' + pid + ' .topo-sep'));
+  out.anims = an.length;
+  if (!motion) { if (an.length) out.bad.push(`${an.length} animations run on the separators under reduced motion`); }
+  else {
+    seps.forEach(([k, t]) => { const l = t.querySelector('svg.topo-l'), mine = an.filter(a => a.effect.target === l).map(a => a.animationName).sort().join();
+      if (mine !== 'topo-breathe,topo-turn') out.bad.push(`section ${k + 1}: the separator's animations are [${mine}], not a turn and a breath`); });
+    an.forEach(a => { const props = [...new Set(a.effect.getKeyframes().flatMap(f => Object.keys(f)).filter(x => !['offset', 'computedOffset', 'easing', 'composite'].includes(x)))];
+      if (props.some(x => x !== 'transform')) out.bad.push(`a separator animates ${props.join(',')}, not transform alone`); });
+    for (const p of poses) {
+      an.forEach(a => { a.pause();
+        if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let t = p * cyc + d; if (t < 0) t = 2 * cyc - p * cyc + d; a.currentTime = t; }
+        else { let t = a.effect.getTiming().delay + .9999 * bt; if (t < 0) t += 2 * bt; a.currentTime = t; } });
+      out.poses++;
+      seps.forEach(([k, t]) => { const fr = t.getBoundingClientRect(); let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+        t.querySelectorAll('path, circle').forEach(e => { const q = e.getBoundingClientRect(); if (!q.width && !q.height) return; x0 = Math.min(x0, q.left); y0 = Math.min(y0, q.top); x1 = Math.max(x1, q.right); y1 = Math.max(y1, q.bottom); });
+        const m = [x0 - fr.left, y0 - fr.top, fr.right - x1, fr.bottom - y1];
+        if (Math.min(...m) < -.5) out.bad.push(`section ${k + 1}: at pose ${p} its lines leave the frame by ${m.filter(v => v < 0).map(v => (-v).toFixed(1))} px`);
+        out.minclear = Math.min(out.minclear === undefined ? 1e9 : out.minclear, ...m); });
+    }
+    an.forEach(a => a.play());
+  }
+  whole.click(); links[0].click(); window.scrollTo(0, 0);
+  return out;
+}"""
+
+SEP_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
+
+def check_seps(br, fails):
+    """P94: every reading page at 320, 390, 768 and 1280 px, dark and light, under reduced motion and with motion
+    allowed: SEP_JS on each (the separators against the sections' paragraphs, their place, size, tone and bytes, and
+    with motion their move and their lines inside the frame at the five poses); no sideways scroll at 320 px. Prints
+    the count and bytes."""
+    errs, bad = [], []
+    tot = dict(seps=0, none=0, bytes=0, secs=0, poses=0)
+    per_page, low = {}, 1e9
+    for name, w, h, mobile in SEP_WIDTHS:
+        ctx, pg, _ = new_page(None, br, errs, f'seps {name}', w, h, mobile, motion=True)
+        ids = pg.eval_on_selector_all('.panel[data-kind="report"]', 'ps => ps.map(p => p.id)')
+        for pid in ids:
+            pg.evaluate("localStorage.removeItem('hellas-theme'); document.documentElement.removeAttribute('data-theme')")
+            pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
+            for theme in ('dark', 'light'):
+                if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                for motion in (False, True):
+                    pg.emulate_media(reduced_motion='no-preference' if motion else 'reduce'); pg.wait_for_timeout(20)
+                    r = pg.evaluate(SEP_JS, [pid, list(POSES), CYCLE, BTIME, motion])
+                    tag = f'{pid} {name} {theme}{" motion" if motion else ""}'
+                    bad += [f'{tag}: {b}' for b in r['bad'][:3]]
+                    if r['scroll'][0] > r['scroll'][1]: bad.append(f'{tag}: the page is {r["scroll"][0]} px wide on a {r["scroll"][1]} px screen')
+                    if motion:
+                        phs = sorted(r['ph']); n = len(phs)
+                        close = [(a, b) for a, b in zip(phs, phs[1:]) if b - a < .9 / max(n, 1)]
+                        if close or any(x != x for x in phs): bad.append(f'{tag}: separators share or lack a phase ({close[:3]})')
+                        if 'minclear' in r: low = min(low, r['minclear'])
+                        tot['poses'] += r['poses'] * r['seps']
+                    if name == 'phone' and theme == 'dark' and not motion:
+                        tot['seps'] += r['seps']; tot['none'] += r['none']; tot['bytes'] += r['bytes']; tot['secs'] += r['secs']
+                        per_page[pid] = (r['bytes'], r['seps'], r['maxb'])
+        pg.emulate_media(reduced_motion='reduce')
+        ctx.close()
+    fails += ['separators ' + b for b in bad[:30]]
+    if len(bad) > 30: fails.append(f'separators: {len(bad) - 30} more')
+    if errs: fails.append('separators: console errors: ' + ' | '.join(errs[:3]))
+    big = max(per_page.items(), key=lambda x: x[1][0]) if per_page else ('', (0, 0, 0))
+    print(f'separators: {len(per_page)} reading pages, {tot["secs"]} sections, {tot["seps"]} separators, {tot["none"]} sections without a paragraph and so without one; '
+          f'{tot["bytes"]:,} bytes in all, the largest {max((v[2] for v in per_page.values()), default=0):,} B, the page with most {big[0]} ({big[1][0]:,} B over {big[1][1]}); '
+          f'checked at {", ".join(str(x[1]) for x in SEP_WIDTHS)} px, dark and light, with and without motion; {tot["poses"]:,} separator poses, the closest line {low:.1f} px from its frame')
+    return tot, per_page
+
 def check_reading(br, fails):
     """P68 on every unit and report of every course, at phone width: STEP_JS and SRC_JS on each; then, on one page of
     each course, a deep link to a section and to Sources on a fresh load, and Continue resuming at the section."""
@@ -1633,6 +1764,7 @@ def main():
         check_split(br, fails)
         check_figures(br, fails)
         check_reading(br, fails)
+        check_seps(br, fails)
 
         # ---- phone ------------------------------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)
