@@ -81,6 +81,7 @@
   --fg:#ececf1;--muted:#9a9aa6;--dim:#6b6b78;
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
+  --topo-r:.85;--topo-rh:.4;--relief-h:280px;   /* P95 (6.8): an object relief's lines (the layer's opacity), its halo's share of that (the faint lines outside the outline) and its frame's most height on a phone (section 9) */
   --topo-a:.16;--topo-p:.62;--topo-s:.62;   /* P94: --topo-s, a section separator's lines (section 9). P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page; P93: .16, from .2, so the course homes' and What's new's texts, which stand over the lines, keep theirs at every pose of the move) and a tile's patch */
   --topo-turn:3deg;--topo-cycle:10s;   /* P93: the contours' turn, both themes: +/- 3 degrees over 10 s each way (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile": at 120 s a corner of the home's layer moved 0.6 px/s at most and read as still; 5 Nov, 04:11, at 20 s: "it could be faster") */
   --topo-grow:1.1;--topo-breath:6s;   /* P93 follow-up (Pedro, 5 Nov 2026, 07:49, on that morning's heartbeat, a pop of the inner rings every 1.6 s: "It wasn't supposed to be that fast and to pop within the outer line. The whole drawing was supposed to flowingly expand and contract, slowishly but fluidly. Even the outer edges"): the whole drawing breathes, from 1 to 1.1 about its centre and back, 6 s each way (until then it grew to 1.06 with the turn) */
@@ -102,7 +103,7 @@
   --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
   --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
   --on-accent:#f5f2eb;
-  --topo-a:.16;--topo-p:.6;--topo-s:.6;
+  --topo-a:.16;--topo-p:.6;--topo-s:.6;--topo-r:.8;--topo-rh:.45;
   --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }}
@@ -111,7 +112,7 @@
   --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
   --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
   --on-accent:#f5f2eb;
-  --topo-a:.16;--topo-p:.6;--topo-s:.6;
+  --topo-a:.16;--topo-p:.6;--topo-s:.6;--topo-r:.8;--topo-rh:.45;
   --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }
@@ -543,7 +544,7 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
 /* a figure scales to the column but never below the width its type stays legible at; narrower than that it scrolls */
 .viz svg{display:block;width:100%;max-width:none;height:auto;min-width:560px;font-family:var(--sans)}
 .viz-timeline svg,.viz-flow svg{width:auto}
-.viz figcaption{font-size:12.5px;color:var(--muted);margin:10px 0 0;line-height:1.45;max-width:68ch}
+.viz figcaption,.relief-fig figcaption{font-size:12.5px;color:var(--muted);margin:10px 0 0;line-height:1.45;max-width:68ch}   /* P95: an object relief's caption in the figure caption's style */
 .viz text{fill:var(--fg)}
 .viz-label{font-size:12px}
 /* written .viz .x (P40, 29 Oct 2026): as plain classes they lost to .viz text and drew in the body colour */
@@ -736,6 +737,8 @@ details.clog[open]>summary::after{content:"–"}
 @media (min-width:768px){
   /* reading column: 760 px; the top bar follows it */
   main,.top-in{max-width:760px}
+  /* P95: an object relief stands up to 340 px tall from a tablet (280 on a phone) */
+  :root{--relief-h:340px}
   /* two columns of tiles, side by side the same height (P90: a lone tile keeps half the width; P93: on every page);
      the briefs' and syllabi's cards too */
   .cgrid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px;align-items:stretch}
@@ -905,6 +908,20 @@ a.course:active{transform:translateY(0);box-shadow:none}
    it needs no overscan; the layer carries the opacity, --topo-s. */
 .topo.topo-patch.topo-sep{aspect-ratio:1200 / 170;margin:30px 0 0}
 .topo.topo-sep .topo-l{opacity:var(--topo-s)}
+/* P95 (theme 6.8): the object relief. A reading page whose text discusses an object at length shows it under its scope
+   line, before the section bar: an outline from the library (design/outlines/, a sourced file credited in
+   outlines.json) drawn by viz.py's kind "relief" as the lines of a relief map of its own silhouette, the outline and
+   the levels inside it (.rl-in) in the page's tone, two halo levels outside it (.rl-out) fainter; aria-hidden and
+   textless, its caption (what it shows, that it is a stylised outline, the credit) in the figure caption's style. The
+   frame is the drawing's own aspect (--ar, from viz.py), the column's width at most and --relief-h tall at most (280 px
+   on a phone); the drawing fits it (meet) and its lines stay clear of it at every pose of the move (viz.py rel_frame),
+   so it needs no overscan. It turns and breathes as every contour drawing does (4i), at its own phase; still under
+   reduced motion; the layer carries the opacity, --topo-r, and the halo --topo-rh of it. */
+.relief-fig{margin:20px 0 0}
+.topo.relief{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;overflow:hidden;-webkit-mask-image:none;mask-image:none;aspect-ratio:var(--ar,1);width:min(100%,calc(var(--relief-h) * var(--ar,1)))}
+.topo.relief .topo-l{display:block;--ox:0px;--oy:0px;opacity:var(--topo-r)}
+.topo.relief .rl-in,.topo.relief .rl-out{stroke:var(--c)}
+.topo.relief .rl-out{stroke-opacity:var(--topo-rh)}
 /* process last: two closed accordions after the text */
 .process{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:40px}
 details.acc{background:var(--card);border:1px solid var(--line-2)}

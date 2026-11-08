@@ -484,7 +484,7 @@ def sep_bytes(h):
 
 def sep_kit(tone):
     """P94: what mdcourse.reading needs to end each section on its separator, in the tone given."""
-    return dict(block=lambda paras, ph, label: sep_block(paras, tone, ph, label), phases=phases)
+    return dict(block=lambda paras, ph, label: sep_block(paras, tone, ph, label), phases=phases, tone=tone)   # P95: the tone, for the page's relief too
 
 
 # A course home's hero layer (P93): the tall layout a square, its rises (box) and their own rings (view) where both a

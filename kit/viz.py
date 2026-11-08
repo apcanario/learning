@@ -228,6 +228,7 @@ import html as H
 import itertools
 import json
 import math
+import pathlib
 import re
 import textwrap
 import zlib
@@ -2921,13 +2922,82 @@ def contours(d):
     st = f' style="--ph:{ph:g}"' if isinstance(ph, (int, float)) else ''
     return f'<div class="{cls}" aria-hidden="true"{st}>{"".join(svgs)}</div>'
 
+
+# P95 (8 Nov 2026; Pedro, 5 Nov 2026: "we can even fetch svg outlines of things ... and then use the topographical
+# method and animation to illustrate the articles") · the object relief: an outline from the library (design/outlines/,
+# each a sourced file with its credit in outlines.json) drawn as the lines of a relief map of its own silhouette, the
+# outline and the levels inside it solid (path.rl-in), two faint halo levels outside it (path.rl-out), in the page's tone.
+# kit/relief.py computes the lines once, when an outline is added (the silhouette's distance field, contoured at even
+# steps), and writes <id>.json; this draws that JSON, so the build stays pure Python. The frame is the drawing's box
+# grown so that, turned to either end of the turn at the top of the breath about its centre (the move every contour
+# drawing makes, read from the theme), every line stays REL_PAD units clear of it; its aspect goes to the page as --ar.
+_THEME = (pathlib.Path(__file__).resolve().parent.parent / 'design' / 'theme.css').read_text()
+REL_TURN = float(re.search(r'--topo-turn:([\d.]+)deg', _THEME).group(1))
+REL_GROW = float(re.search(r'--topo-grow:([\d.]+);', _THEME).group(1))
+REL_PAD = 14        # units of the 1000-unit drawing kept clear of the frame at every pose (about 4 px at 280 px tall)
+REL_MAX = 12 * 1024  # bytes, as the page holds the element (the parser writes <path ...></path>)
+REL_SPECK = 8       # a closed ring under this many units both ways (about 2 px at 280 px) is a speck, dropped
+
+
+def rel_bytes(h):
+    """A drawing's size as the page holds it: the HTML parser writes a self-closed SVG element with an end tag."""
+    return len(re.sub(r'<(\w+)([^<>]*?)/>', r'<\1\2></\1>', h).encode())
+
+
+def rel_frame(w, h):
+    """The frame (W, H) round a w by h drawing, so that the drawing turned by +/- REL_TURN and grown to REL_GROW about
+    its centre stays REL_PAD units inside it."""
+    a = math.radians(REL_TURN)
+    c, s = math.cos(a), math.sin(a)
+    return round(REL_GROW * (w * c + h * s) + 2 * REL_PAD), round(REL_GROW * (w * s + h * c) + 2 * REL_PAD)
+
+
+def relief(d):
+    """The relief layer: div.topo.relief (aria-hidden, textless) holding one svg.topo-l in the tone's class, its lines in
+    two paths, rl-out (the halo) and rl-in (the outline and the levels inside it); --ph its phase, --ar the frame's
+    aspect. The lines are simplified further (viz's RDP) until the element is at most REL_MAX bytes as the page holds
+    it. The caption is the page's, outside the drawing (mdcourse.reading)."""
+    o = d['outline']
+    w, h, lines = o['width'], o['height'], o['lines']
+    if not lines or not all(isinstance(v, (int, float)) and v > 0 for v in (w, h)):
+        _fail('relief', f'outline {o.get("id")!r}: no lines or no size')
+    W, H = rel_frame(w, h)
+    ox, oy = (W - w) / 2, (H - h) / 2
+    t = d.get('tone')
+    tc = f' ct-t{t}' if t else ''
+    ph = d.get('phase')
+    st = f' style="--ph:{ph:g};--ar:{W / H:.4f}"' if isinstance(ph, (int, float)) else f' style="--ar:{W / H:.4f}"'
+    eps = 0
+    while True:
+        runs = {'out': [], 'in': []}
+        for ln in lines:
+            p = [(x + ox, y + oy) for x, y in ln['pts']]
+            if eps:
+                p = _ct_simplify(p, ln['closed'], eps)
+            if len(p) < (3 if ln['closed'] else 2):
+                continue
+            if ln['closed']:
+                xs, ys = [x for x, _ in p], [y for _, y in p]
+                if max(xs) - min(xs) < REL_SPECK and max(ys) - min(ys) < REL_SPECK:
+                    continue
+            runs['out' if ln['lv'] < 0 else 'in'].append((p, ln['closed']))
+        body = ''.join(f'<path class="rl-{k}" d="{_ct_d(runs[k])}"/>' for k in ('out', 'in') if runs[k])
+        out = (f'<div class="topo relief" aria-hidden="true" data-outline="{esc(o.get("id", ""))}"{st}><svg class="topo-l{tc}" viewBox="0 0 {W} {H}" '
+               f'preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false">{body}</svg></div>')
+        if rel_bytes(out) <= REL_MAX:
+            return out
+        eps = 1.5 if not eps else eps * 1.3
+        if eps > 40:
+            _fail('relief', f'outline {o.get("id")!r} stays over {REL_MAX} bytes even simplified')
+
+
 KINDS = {'timeline': timeline, 'compare': compare, 'tree': tree, 'flow': flow,
          'sitemap': sitemap, 'objects': objects, 'decision': decision, 'matrix': matrix,
          'states': states, 'swimlanes': swimlanes, 'wireflow': wireflow,
          'line': line, 'bars': bars, 'scatter': scatter, 'range': range_}
 # P92: the home kind, the topography (P91's shelf is gone), not on the Figure kinds page (viz_examples.py shows one
 # example of every kind in KINDS)
-HOME_KINDS = {'contours': contours}
+HOME_KINDS = {'contours': contours, 'relief': relief}   # P95: the object relief, on a reading page under its scope line
 
 
 _LISTS = {'rises', 'layouts', 'at', 'events', 'spans', 'ticks', 'rows', 'steps', 'objects', 'attrs', 'actions', 'lines', 'cols', 'cells', 'series',
@@ -2990,6 +3060,8 @@ VIZ_KEYS = {
     # P92: the home's topography (HOME_KINDS), the hero's and each course tile's
     'contours': {'.': {'interval', 'rises', 'layouts', 'patch', 'phase', 'sep', 'seed'}, 'rises': {'label', 'words', 'tone', 'planned'},
                  'layouts': {'name', 'width', 'height', 'spread', 'grid', 'simplify', 'at', 'stretch'}},
+    # P95: the object relief (HOME_KINDS): an outline's JSON from design/outlines/ (kit/relief.py), the page's tone, its phase
+    'relief': {'.': {'outline', 'tone', 'phase'}},
 }
 NODE_OF = {'scatter': {('.', 'x'): 'axis', ('.', 'y'): 'axis'}}
 

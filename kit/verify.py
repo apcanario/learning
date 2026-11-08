@@ -1551,6 +1551,145 @@ def check_seps(br, fails):
           f'checked at {", ".join(str(x[1]) for x in SEP_WIDTHS)} px, dark and light, with and without motion; {tot["poses"]:,} separator poses with motion allowed, the closest line {low:.1f} px from its frame')
     return tot, per_page
 
+# P95 (8 Nov 2026) · the object reliefs: the library (design/outlines/) and every page uses.json maps
+OUTL = R.parent / 'design' / 'outlines'
+REL_FIELDS = ('id', 'file', 'depicts', 'courses', 'keywords', 'source', 'author', 'licence', 'credit', 'texts')
+REL_COURSES = ('greece', 'rome', 'brand-a', 'brand-b', 'ux-ia')
+REL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
+REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
+  const P = document.getElementById(pid), out = {bad: [], bytes: 0, poses: 0};
+  if (!P) { out.bad.push('no page'); return out; }
+  const figs = P.querySelectorAll('figure.relief-fig'), f = figs[0], hd = P.querySelector(':scope > header.phead');
+  if (figs.length !== 1 || !f) { out.bad.push(`${figs.length} relief figures`); return out; }
+  if (f.parentElement !== hd) out.bad.push('the relief is not in the page header');
+  const sc = hd.querySelector(':scope > p.scope');
+  if (sc && !(sc.compareDocumentPosition(f) & Node.DOCUMENT_POSITION_FOLLOWING)) out.bad.push('the relief is not under the scope line');
+  if (f.nextElementSibling) out.bad.push('the relief is not the header\'s last block');
+  if (!hd.nextElementSibling || !hd.nextElementSibling.matches('.stepbar')) out.bad.push('the section bar does not follow the header');
+  if (f.dataset.outline !== want.id) out.bad.push(`outline ${f.dataset.outline}, mapped ${want.id}`);
+  const t = f.querySelector(':scope > div.topo.relief'), cap = f.querySelector(':scope > figcaption');
+  if (!t || f.children.length !== 2 || !cap) { out.bad.push('the figure is not one drawing and its caption'); return out; }
+  if (cap.textContent.trim() !== want.caption) out.bad.push(`caption "${cap.textContent.trim()}", expected "${want.caption}"`);
+  if (!cap.textContent.includes(want.credit)) out.bad.push('the credit is not printed exactly');
+  if (t.className !== 'topo relief' || t.getAttribute('aria-hidden') !== 'true') out.bad.push(`the drawing is ${t.className}, aria-hidden ${t.getAttribute('aria-hidden')}`);
+  if (t.textContent.trim() || t.querySelector('text, title, desc')) out.bad.push('the drawing holds text');
+  const svgs = t.querySelectorAll('svg'), sv = svgs[0];
+  if (svgs.length !== 1 || !sv.classList.contains('topo-l')) out.bad.push(`${svgs.length} svgs, or not svg.topo-l`);
+  const paths = [...sv.children];
+  if (!paths.length || paths.some(p => p.tagName !== 'path' || !['rl-in', 'rl-out'].includes(p.getAttribute('class')) || [...p.attributes].some(a => !['class', 'd'].includes(a.name)))) out.bad.push('the drawing holds more than rl-in and rl-out paths with a class and a d');
+  if (!sv.querySelector('path.rl-in') || !sv.querySelector('path.rl-out')) out.bad.push('no outline or no halo');
+  out.bytes = new Blob([t.outerHTML]).size;
+  if (out.bytes > 12288) out.bad.push(`the drawing is ${out.bytes} bytes, over 12 KB`);
+  const probe = document.createElement('i'); P.appendChild(probe); probe.style.color = 'var(--cc)'; const tone = getComputedStyle(probe).color; probe.remove();
+  const st = [...new Set(paths.map(p => getComputedStyle(p).stroke))];
+  if (st.length !== 1 || st[0] !== tone) out.bad.push(`lines in ${st.join(' ')}, the page's tone ${tone}`);
+  const op = parseFloat(getComputedStyle(sv).opacity), ho = parseFloat(getComputedStyle(sv.querySelector('path.rl-out')).strokeOpacity), io = parseFloat(getComputedStyle(sv.querySelector('path.rl-in')).strokeOpacity);
+  if (!(op > 0 && op < 1) || !(ho < io)) out.bad.push(`the layer at ${op}, the halo at ${ho} of the lines' ${io}`);
+  // the frame: the drawing's aspect, the column's width at most, 280 px tall at most on a phone (340 from 768)
+  const fr = t.getBoundingClientRect(), col = hd.getBoundingClientRect(), vb = sv.viewBox.baseVal;
+  out.w = fr.width; out.h = fr.height;
+  if (Math.abs(fr.width / fr.height - vb.width / vb.height) > .02) out.bad.push(`frame ${(fr.width / fr.height).toFixed(3)}:1, drawing ${(vb.width / vb.height).toFixed(3)}:1`);
+  if (fr.width > col.width + .5) out.bad.push(`frame ${fr.width.toFixed(1)} px in a ${col.width.toFixed(1)} px column`);
+  const maxh = innerWidth < 768 ? 280 : 340;
+  if (fr.height > maxh + .5) out.bad.push(`frame ${fr.height.toFixed(1)} px tall, over ${maxh}`);
+  if (Math.abs(fr.height - maxh) > .5 && Math.abs(fr.width - col.width) > .5) out.bad.push(`frame ${fr.width.toFixed(1)} x ${fr.height.toFixed(1)}: neither the column's width nor ${maxh} px tall`);
+  out.scroll = [document.documentElement.scrollWidth, document.documentElement.clientWidth];
+  const an = document.getAnimations().filter(a => a.effect && a.effect.target === sv);
+  out.anims = an.map(a => a.animationName).sort().join();
+  if (!motion) { if (an.length) out.bad.push(`${an.length} animations under reduced motion`); }
+  else {
+    if (out.anims !== 'topo-breathe,topo-turn') out.bad.push(`animations [${out.anims}], not a turn and a breath`);
+    an.forEach(a => { const props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(x => !['offset', 'computedOffset', 'easing', 'composite'].includes(x)))];
+      if (props.some(x => x !== 'transform')) out.bad.push(`animates ${props.join(',')}, not transform alone`); });
+    out.ph = parseFloat(getComputedStyle(t).getPropertyValue('--ph'));
+    out.sepph = [...P.querySelectorAll('.topo-sep')].map(s => parseFloat(getComputedStyle(s).getPropertyValue('--ph')));
+    for (const p of poses) {
+      an.forEach(a => { a.pause();
+        if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let x = p * cyc + d; if (x < 0) x = 2 * cyc - p * cyc + d; a.currentTime = x; }
+        else { let x = a.effect.getTiming().delay + .9999 * bt; if (x < 0) x += 2 * bt; a.currentTime = x; } });
+      out.poses++;
+      const r = t.getBoundingClientRect(); let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+      paths.forEach(e => { const q = e.getBoundingClientRect(); x0 = Math.min(x0, q.left); y0 = Math.min(y0, q.top); x1 = Math.max(x1, q.right); y1 = Math.max(y1, q.bottom); });
+      const m = [x0 - r.left, y0 - r.top, r.right - x1, r.bottom - y1];
+      if (Math.min(...m) < -.5) out.bad.push(`at pose ${p} its lines leave the frame by ${m.filter(v => v < 0).map(v => (-v).toFixed(1))} px`);
+      out.minclear = Math.min(out.minclear === undefined ? 1e9 : out.minclear, ...m);
+    }
+    an.forEach(a => a.play());
+  }
+  // the page's text names the object
+  const txt = P.querySelector('.report.steps').textContent;
+  if (!new RegExp('\\b(?:' + want.kw.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i').test(txt)) out.bad.push('the page\'s text does not name the object');
+  return out;
+}"""
+
+
+def check_reliefs(br, fails):
+    """P95: the outline library (at least ten outlines for each course, each with every field, an allowed licence, its
+    SVG and its relief JSON, and a text of each course it serves naming it); every page uses.json maps (in this
+    edition) at 320, 390, 768 and 1280 px, dark and light, with and without motion (REL_JS: its place under the scope
+    line before the section bar, its caption and credit printed exactly, classes only, aria-hidden and textless, at most
+    12 KB, the page's tone, the halo fainter, its frame, a turn and a breath by transform only at a phase of its own, its
+    lines inside the frame at five poses at the top of the breath, still under reduced motion, the page's text naming
+    the object, no sideways scroll); and no other reading page holding a relief."""
+    import mdcourse
+    lib = json.loads((OUTL / 'outlines.json').read_text())
+    allowed = set(lib['allowed_licences'])
+    bad, per = [], {c: 0 for c in REL_COURSES}
+    for o in lib['outlines']:
+        miss = [k for k in REL_FIELDS if not o.get(k)] + [k for k in ('repository', 'path', 'commit') if not o.get('source', {}).get(k)]
+        if miss: bad.append(f'{o.get("id")}: no {", ".join(miss)}')
+        if o.get('licence') not in allowed: bad.append(f'{o.get("id")}: licence {o.get("licence")!r} not in {sorted(allowed)}')
+        if o.get('licence') not in o.get('credit', ''): bad.append(f'{o.get("id")}: the credit does not name its licence')
+        for f in (o['file'], f'{o["id"]}.json'):
+            if not (OUTL / f).exists(): bad.append(f'{o["id"]}: {f} missing')
+        for c in o['courses']:
+            per[c] = per.get(c, 0) + 1
+            if not o['texts'].get(c): bad.append(f'{o["id"]}: no text of {c} names it')
+    thin = {c: n for c, n in per.items() if n < 10}
+    if thin: bad.append(f'the library holds fewer than ten outlines for {thin}')
+    print(f'reliefs: the library holds {len(lib["outlines"])} outlines ({", ".join(f"{c} {n}" for c, n in per.items())}), {len(lib["rejected"])} rejected; licences {sorted({o["licence"] for o in lib["outlines"]})}')
+    # every reading page on disk: a relief where uses.json maps one, none elsewhere
+    pages = {}
+    shell = (SITE / 'index.html').read_text()
+    for m in re.finditer(r'<section class="panel[^"]*" id="([^"]+)"[^>]*data-kind="report"[^>]*data-src="([^"]+)"', shell):
+        pages[m.group(1)] = (SITE / m.group(2)).read_text()
+    mapped = {pid: oid for pid, oid in mdcourse.USES.items() if pid in pages}
+    for pid, h in pages.items():
+        n = h.count('<figure class="relief-fig"')
+        if n != (1 if pid in mapped else 0): bad.append(f'{pid}: {n} reliefs, {"1" if pid in mapped else "none"} mapped')
+    errs, low, phs = [], 1e9, []
+    sizes = {}
+    lb = {o['id']: o for o in lib['outlines']}
+    for name, w, h, mobile in REL_WIDTHS:
+        ctx, pg, _ = new_page(None, br, errs, f'reliefs {name}', w, h, mobile, motion=True)
+        for pid, oid in mapped.items():
+            o = lb[oid]
+            want = dict(id=oid, caption=mdcourse.relief_caption(o), credit=o['credit'], kw=o['keywords'])
+            pg.evaluate("localStorage.removeItem('hellas-theme'); document.documentElement.removeAttribute('data-theme')")
+            pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
+            for theme in ('dark', 'light'):
+                if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                for motion in (False, True):
+                    pg.emulate_media(reduced_motion='no-preference' if motion else 'reduce'); pg.wait_for_timeout(20)
+                    r = pg.evaluate(REL_JS, [pid, list(POSES), CYCLE, BTIME, motion, want])
+                    tag = f'{pid} {name} {theme}{" motion" if motion else ""}'
+                    bad += [f'{tag}: {b}' for b in r['bad'][:4]]
+                    if r.get('scroll') and r['scroll'][0] > r['scroll'][1]: bad.append(f'{tag}: the page is {r["scroll"][0]} px wide on a {r["scroll"][1]} px screen')
+                    if motion and 'minclear' in r:
+                        low = min(low, r['minclear'])
+                        if any(abs(r['ph'] - x) < 1e-6 for x in r['sepph']): bad.append(f'{tag}: the relief shares a phase with a separator')
+                    sizes[pid] = r['bytes']
+                    if theme == 'dark' and not motion: phs.append(f'{pid} {name} {r.get("w", 0):.0f}x{r.get("h", 0):.0f}')
+        pg.emulate_media(reduced_motion='reduce')
+        ctx.close()
+    fails += ['reliefs ' + b for b in bad[:30]]
+    if len(bad) > 30: fails.append(f'reliefs: {len(bad) - 30} more')
+    if errs: fails.append('reliefs: console errors: ' + ' | '.join(errs[:3]))
+    print(f'reliefs: {len(mapped)} mapped pages ({", ".join(f"{p} {o} {sizes.get(p, 0):,} B" for p, o in mapped.items())}), {len(pages) - len(mapped)} reading pages without one; '
+          f'checked at {", ".join(str(x[1]) for x in REL_WIDTHS)} px, dark and light, with and without motion; frames {"; ".join(phs)}; '
+          f'the closest line {low:.1f} px from its frame over the poses with motion')
+
+
 def check_reading(br, fails):
     """P68 on every unit and report of every course, at phone width: STEP_JS and SRC_JS on each; then, on one page of
     each course, a deep link to a section and to Sources on a fresh load, and Continue resuming at the section."""
@@ -1769,6 +1908,7 @@ def main():
         check_figures(br, fails)
         check_reading(br, fails)
         check_seps(br, fails)
+        check_reliefs(br, fails)   # P95
 
         # ---- phone ------------------------------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)

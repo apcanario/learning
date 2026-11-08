@@ -1,0 +1,8 @@
+{
+ "about": "P95: each reading page that shows an object relief, by its panel id (a history report m61, rm14; a markdown unit read-a5), and the outline it shows (outlines.json). P95 maps the three pilot pages; P96 rolls the reliefs out.",
+ "uses": {
+  "m43": "wooden-horse",
+  "rm14": "wolf",
+  "read-a5": "microphone"
+ }
+}

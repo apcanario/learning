@@ -10,9 +10,35 @@ One Academy course per entry in the data file's COURSES (AD6), each its own draw
 The hub pages of generator/build_hub.py (retired at A3) are the origin of these; the data file is unchanged.
 Needs the `markdown` package (pip install markdown).
 """
-import html as H, json, re
+import html as H, json, pathlib, re
 import markdown
 import viz
+
+# P95 (8 Nov 2026) · the object reliefs: design/outlines/uses.json maps a reading page (its panel id: a history report's,
+# m61 or rm14, or a markdown unit's, read-a5) to an outline of the library (outlines.json, each outline's lines in
+# <id>.json, written by relief.py); `reading` shows it under the page's scope line, before the section bar, with its
+# caption (what it shows, that it is a stylised outline, the credit, from outlines.json).
+OUTLINES = pathlib.Path(__file__).resolve().parent.parent / 'design' / 'outlines'
+_LIB = {o['id']: o for o in json.loads((OUTLINES / 'outlines.json').read_text(encoding='utf-8'))['outlines']}
+USES = json.loads((OUTLINES / 'uses.json').read_text(encoding='utf-8'))['uses']
+for _pid, _oid in USES.items():
+    assert _oid in _LIB, f'P95: uses.json maps {_pid} to {_oid}, which is not in outlines.json'
+
+
+def relief_caption(o):
+    """P95: an outline's caption: what it shows, that it is a stylised outline, and its credit line, as printed."""
+    return f'{o["depicts"][0].upper()}{o["depicts"][1:]}, a stylised outline. {o["credit"]}.'
+
+
+def relief_figure(pid, tone, phase):
+    """P95: the page's relief (figure.relief-fig: viz.py's kind relief and its caption), or '' where uses.json maps none."""
+    oid = USES.get(pid)
+    if not oid:
+        return ''
+    o = _LIB[oid]
+    d = json.loads((OUTLINES / f'{oid}.json').read_text(encoding='utf-8'))
+    return (f'<figure class="relief-fig" data-outline="{oid}">{viz.render(dict(kind="relief", outline=d, tone=tone, phase=round(phase, 3)))}'
+            f'<figcaption>{e(relief_caption(o))}</figcaption></figure>')
 
 
 def _words(n):
@@ -324,6 +350,9 @@ def reading(pid, body, scope, sources, made, nsrc=None, chev='', note=False, sep
            + f'<a href="#{pid}-made" data-acc>How this unit was made</a>'
            f'<button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div>')
     head = f'<p class="scope">{scope}</p>' if scope else ''
+    # P95: the page's relief under the scope line, at its own phase: halfway between the separators' first two (or 0)
+    nsep = sum(1 for p in paras if p)
+    head += relief_figure(pid, sep['tone'] if sep else None, .5 / nsep if nsep else 0)
     cnt = f'<span class="an">{nsrc}</span>' if nsrc else ''
     src = (f'<details class="acc src" id="{pid}-sources"><summary><span class="at">Sources</span>{cnt}</summary><div class="accb">{url_breaks(sources) if sources else "<p>No source list on file for this page.</p>"}</div></details>')
     opn = (f'<details class="acc note" id="{pid}-note"><summary><span class="at">The writer\'s opening note</span></summary>'
@@ -421,6 +450,7 @@ def build(m, crumbs, theme, pill_next, chev, kit):
     for r in readings:
         pills = ''.join(f'<span class="pill live">{x}</span>' for x in r['covers'])
         code = r['covers'][0] if r['covers'] else ''
+        m.setdefault('pages', {})[r['id']] = code or r['name']   # P95: this course's reading pages, for its Illustration credits
         # P68: the process sections leave the text for the end: Sources to its accordion; the unsure list, any fresh
         # check (its own h2, or the line the writer added to the unsure list), the provenance paragraph and the brief
         # to "How this unit was made"
