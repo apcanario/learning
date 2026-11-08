@@ -769,7 +769,8 @@
       1
      ]
     ]
-   }
+   },
+   "spare": "Greece 2.2 and 5.6 name the lyre in passing (P96 checks H1, H2); kept"
   },
   {
    "id": "owl",
@@ -1902,7 +1903,8 @@
       1
      ]
     ]
-   }
+   },
+   "spare": "Personal brand A7 names the gi in passing and discusses money at length (P96 checks M1, M2); kept for a unit on the brand's products"
   },
   {
    "id": "video-camera",
@@ -2035,7 +2037,9 @@
     "brand-a"
    ],
    "keywords": [
-    "money"
+    "money",
+    "monetisation",
+    "revenue"
    ],
    "source": {
     "repository": "phosphor-icons/core",
@@ -2054,31 +2058,38 @@
     "brand-a": [
      [
       "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
-      6
-     ],
-     [
-      "courses/brand-ai/A7-monetisation-through-shomen.md",
-      4
-     ],
-     [
-      "courses/brand-ai/A9-what-to-expect-benchmarks.md",
-      4
+      17
      ],
      [
       "courses/brand-ai/A2-audience-and-platform-economics.md",
-      2
+      14
+     ],
+     [
+      "courses/brand-ai/A7-monetisation-through-shomen.md",
+      12
+     ],
+     [
+      "courses/brand-ai/A9-what-to-expect-benchmarks.md",
+      9
      ],
      [
       "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
-      1
+      8
+     ],
+     [
+      "courses/brand-ai/A8-legal-tax-time.md",
+      7
      ],
      [
       "generator/data/brand-ai/audience-growth-across-platforms.md",
-      1
+      3
+     ],
+     [
+      "courses/brand-ai/A6-how-growth-works-per-platform.md",
+      2
      ]
     ]
-   },
-   "spare": "Personal brand DD-A2 takes the piggy bank; kept"
+   }
   },
   {
    "id": "microphone",
@@ -7181,7 +7192,7 @@
     "path": "sbed/arena.svg",
     "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
    },
-   "reason": "not the object: no amphitheatre a reader would recognise (Rome 9.4 takes the short sword)"
+   "reason": "not the object: no amphitheatre a reader would recognise (Rome 9.4 gets none)"
   },
   {
    "source": {
@@ -7221,7 +7232,7 @@
     "path": "lorc/stone-tablet.svg",
     "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
    },
-   "reason": "not the object: its relief reads as a rock, not a tablet (contact sheet); lorc/broken-tablet.svg taken"
+   "reason": "not the object: its relief reads as a rock, not a tablet (contact sheet); delapouite/wax-tablet.svg taken"
   },
   {
    "source": {
@@ -7261,7 +7272,7 @@
     "path": "willdabeast/round-shield.svg",
     "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
    },
-   "reason": "not the object: a planked wooden shield with rivets, not the worked bronze shields of Achilles (Greece 10.1) and Aeneas (Rome 12.7), which get none (P96 check H1)"
+   "reason": "not the object: a planked wooden shield with rivets, not the worked bronze shields of Achilles (Greece 10.1) and Aeneas (Rome 12.7), nor the bronze-faced aspis of Greece 5.3; all three get none (P96 checks H1, H2)"
   },
   {
    "source": {
