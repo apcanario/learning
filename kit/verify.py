@@ -1553,7 +1553,7 @@ def check_seps(br, fails):
 
 # P95 (8 Nov 2026) · the object reliefs: the library (design/outlines/) and every page uses.json maps
 OUTL = R.parent / 'design' / 'outlines'
-REL_FIELDS = ('id', 'file', 'depicts', 'courses', 'keywords', 'source', 'author', 'licence', 'credit', 'texts')
+REL_FIELDS = ('id', 'file', 'depicts', 'courses', 'keywords', 'source', 'author', 'licence', 'licence_url', 'credit', 'texts')
 REL_COURSES = ('greece', 'rome', 'brand-a', 'brand-b', 'ux-ia')
 REL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
 REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
@@ -1571,6 +1571,8 @@ REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
   if (!t || f.children.length !== 2 || !cap) { out.bad.push('the figure is not one drawing and its caption'); return out; }
   if (cap.textContent.trim() !== want.caption) out.bad.push(`caption "${cap.textContent.trim()}", expected "${want.caption}"`);
   if (!cap.textContent.includes(want.credit)) out.bad.push('the credit is not printed exactly');
+  const la = cap.querySelectorAll('a');
+  if (la.length !== 1 || la[0].getAttribute('href') !== want.lic || la[0].textContent !== want.licence) out.bad.push('the licence is not linked to its text');
   if (t.className !== 'topo relief' || t.getAttribute('aria-hidden') !== 'true') out.bad.push(`the drawing is ${t.className}, aria-hidden ${t.getAttribute('aria-hidden')}`);
   if (t.textContent.trim() || t.querySelector('text, title, desc')) out.bad.push('the drawing holds text');
   const svgs = t.querySelectorAll('svg'), sv = svgs[0];
@@ -1664,7 +1666,7 @@ def check_reliefs(br, fails):
         ctx, pg, _ = new_page(None, br, errs, f'reliefs {name}', w, h, mobile, motion=True)
         for pid, oid in mapped.items():
             o = lb[oid]
-            want = dict(id=oid, caption=mdcourse.relief_caption(o), credit=o['credit'], kw=o['keywords'])
+            want = dict(id=oid, caption=mdcourse.relief_caption(o), credit=o['credit'], kw=o['keywords'], lic=o['licence_url'], licence=o['licence'])
             pg.evaluate("localStorage.removeItem('hellas-theme'); document.documentElement.removeAttribute('data-theme')")
             pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
             for theme in ('dark', 'light'):

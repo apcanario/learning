@@ -12,7 +12,9 @@ longer side is 1000 units, and written to design/outlines/<id>.json. viz.py's ki
 It also measures how busy a silhouette is (the row's rule: a part thinner than 3% of its width, or more than 40
 separate regions, is a busy relief and the outline is rejected): `regions`, the separate pieces of the silhouette; `thin`,
 the thin parts, each a piece the silhouette loses to an opening by a disc 1.5% of its width across in radius (so under
-3% thick) that runs at least 8% of its width (a short corner the disc rounds off is not a part).
+3% thick) that runs at least 8% of its width (a short corner the disc rounds off is not a part: the row's "a part
+thinner than 3% of its width" read as a part, not a corner); and, after the first fresh check (P95), a step under
+MIN_STEP px at 512 px, where a silhouette drawn in thin strokes packs its levels so close they merge into solid bands.
 
     python3 relief.py                 every outline in outlines.json
     python3 relief.py amphora owl     those outlines
@@ -36,6 +38,7 @@ STEP_DIV = 9        # a step is the deepest distance over this
 EPS = .8            # RDP tolerance at the render's scale, in pixels (about 1.6 units of 1000)
 BOX = 1000          # the longer side of the normalised drawing
 MAX_REGIONS, THIN, THIN_RUN = 40, .03, .08
+MIN_STEP = 3.0     # P95 check A: a step under 3 px at 512 px (lines closer than about 0.6% of the width) merges into solid bands: busy
 
 PAGE = '''<!doctype html><html><head><style>html,body{margin:0;background:#000}
 svg{display:block;width:512px;height:512px;color:#fff}</style></head><body>%s</body></html>'''
@@ -113,7 +116,8 @@ def main():
             for f in [a for a in args if a != '--probe']:
                 mask = render(pathlib.Path(f).read_text(), page)
                 rg, th = busy(mask)
-                print(f'{pathlib.Path(f).name}: regions {rg}, thin parts {th}' + (' BUSY' if rg > MAX_REGIONS or th else ''))
+                st = float(field(mask).max()) / STEP_DIV
+                print(f'{pathlib.Path(f).name}: regions {rg}, thin parts {th}, step {st:.2f} px' + (' BUSY' if rg > MAX_REGIONS or th or st < MIN_STEP else ''))
             return
         lib = json.loads((LIB / 'outlines.json').read_text())
         for o in lib['outlines']:
@@ -127,8 +131,10 @@ def main():
                         render=dict(px=PX, depth_px=round(depth, 2), step_px=round(step, 2), regions=rg, thin_parts=th),
                         lines=norm)
             (LIB / f'{o["id"]}.json').write_text(json.dumps(data, separators=(',', ':')) + '\n')
-            print(f'{o["id"]}: {w}x{h}, {len(norm)} lines, depth {depth:.1f} px, step {step:.1f} px, regions {rg}, thin parts {th}'
-                  + (' BUSY' if rg > MAX_REGIONS or th else ''))
+            busy_ = rg > MAX_REGIONS or th or step < MIN_STEP
+            print(f'{o["id"]}: {w}x{h}, {len(norm)} lines, depth {depth:.1f} px, step {step:.2f} px, regions {rg}, thin parts {th}'
+                  + (' BUSY' if busy_ else ''))
+            assert not busy_, f'{o["id"]}: a busy relief; reject it in p95_library.py'
         br.close()
 
 

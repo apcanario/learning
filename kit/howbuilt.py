@@ -115,10 +115,15 @@ def sources_section(family, md_blocks, part=None):
             f'<p class="hnote">From {gh("docs/sourcing-standard.md")}: Part 1 applies to every course, the second part to this one. A unit must pass both.</p>{parts}</details>')
 
 
+SET_NAME = {'game-icons': 'game-icons.net', 'phosphor': 'Phosphor Icons', 'tabler': 'Tabler Icons'}
+SET_LIC = {'game-icons': 'CC BY 3.0, as its repository states it', 'phosphor': 'MIT, its copyright and permission notice', 'tabler': 'MIT, its copyright and permission notice'}
+
+
 def credits_section(pages, course):
     """P95: "Illustration credits": every object relief shown on this course's reading pages (pages: panel id to its
     label), from design/outlines/uses.json, with the caption printed under it (its credit), the source file and the
-    commit it was taken at, from outlines.json; and the size of the library for this course."""
+    commit it was taken at, from outlines.json; the size of the library for this course; and (P95 check A: the MIT
+    licence asks that its notice go with every copy) each set's licence file in full, from design/outlines/licences/."""
     import mdcourse
     lib = [o for o in mdcourse._LIB.values() if course in o['courses']]
     rows = ''
@@ -130,12 +135,15 @@ def credits_section(pages, course):
         s = o['source']
         rows += (f'<li><a href="#{pid}" data-target="{pid}">{e(label)}</a>: {e(mdcourse.relief_caption(o))} Taken from '
                  f'<a href="{e(s["url"])}" target="_blank" rel="noopener">{e(s["repository"])}, {e(s["path"])}</a> at {e(s["commit"][:7])}.</li>')
+    sets = sorted({mdcourse._LIB[mdcourse.USES[pid]]['set'] for pid in pages if pid in mdcourse.USES})
+    lic = ''.join(f'<details class="howto rules"><summary><h2>Licence: {e(SET_NAME[k])}</h2><span>{e(SET_LIC[k])}</span></summary>'
+                  f'{mdcourse.brief_box((mdcourse.OUTLINES / "licences" / f"{k}.txt").read_text(encoding="utf-8").strip(), "Copy licence")}</details>' for k in sets)
     n = len(lib)
     note = (f'<p class="hnote">The pages of this course that show an object relief, each an outline from an open icon set drawn as the '
             f'lines of a relief map of its silhouette, credited as its licence asks. The library ({gh("design/outlines/outlines.json")}) '
             f'holds {n} outline{"s" if n != 1 else ""} for this course, each taken because its texts name the object.</p>')
     return (f'<section class="howto" style="--hc:var(--teal)"><h2>Illustration credits</h2>{note}'
-            + (f'<ul>{rows}</ul>' if rows else '<p>No reading page of this course shows a relief yet.</p>') + '</section>')
+            + (f'<ul>{rows}</ul>' if rows else '<p>No reading page of this course shows a relief yet.</p>') + '</section>' + lic)
 
 
 def flags_section(flags):

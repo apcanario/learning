@@ -30,7 +30,15 @@
       that can hover; equal-height catalogue cards with the button on one line
    9  Reading layout (P68): scope line, sticky section bar, one section at a time,
       numbered section bands, next and previous, Sources and "How this unit was made"; since 6.7 (P94) each
-      section's separator, a horizontal topography of its paragraphs
+      section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
+      the scope line
+   Version 6.8, 8 Nov 2026 (P95; Pedro, 5 Nov 2026: "we can even fetch svg outlines of things ... and then use the
+   topographical method and animation to illustrate the articles"): section 9, a reading page whose text discusses an
+   object at length shows its relief under the scope line, before the section bar (figure.relief-fig: div.topo.relief,
+   viz.py's kind relief drawn from an outline of design/outlines/, and its caption with the credit); the frame at the
+   drawing's aspect (--ar), the column's width and --relief-h tall at most (280 px on a phone, 340 from 768 px); new
+   tokens --topo-r (its layer), --topo-rh (its halo within it), --relief-h; it turns and breathes as every contour
+   drawing (4i).
    Version 6.7, 8 Nov 2026 (P94; Pedro, 5 Nov 2026: "These topographical abstract illustrations are great. We could use
    them as paragraph separators (the ones that are more horizontal)"): section 9, every section of every reading page
    ends on a horizontal topography of its paragraphs (.topo.topo-patch.topo-sep: one rise per top-level paragraph by its

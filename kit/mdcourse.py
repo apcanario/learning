@@ -30,6 +30,15 @@ def relief_caption(o):
     return f'{o["depicts"][0].upper()}{o["depicts"][1:]}, a stylised outline. {o["credit"]}.'
 
 
+def relief_caption_html(o):
+    """P95 check A: the caption as the page prints it, its licence linked to the licence itself (CC BY 3.0's deed, an MIT
+    set's LICENSE at the commit taken); its text is relief_caption's, word for word."""
+    t = e(relief_caption(o))
+    lic = e(o['licence'])
+    assert t.endswith(lic + '.')
+    return t[:-len(lic) - 1] + f'<a href="{e(o["licence_url"])}" target="_blank" rel="noopener">{lic}</a>.'
+
+
 def relief_figure(pid, tone, phase):
     """P95: the page's relief (figure.relief-fig: viz.py's kind relief and its caption), or '' where uses.json maps none."""
     oid = USES.get(pid)
@@ -38,7 +47,7 @@ def relief_figure(pid, tone, phase):
     o = _LIB[oid]
     d = json.loads((OUTLINES / f'{oid}.json').read_text(encoding='utf-8'))
     return (f'<figure class="relief-fig" data-outline="{oid}">{viz.render(dict(kind="relief", outline=d, tone=tone, phase=round(phase, 3)))}'
-            f'<figcaption>{e(relief_caption(o))}</figcaption></figure>')
+            f'<figcaption>{relief_caption_html(o)}</figcaption></figure>')
 
 
 def _words(n):
