@@ -1,0 +1,3951 @@
+{
+ "about": "P95 (8 Nov 2026): the outline library. Each outline is a file from an open icon set on GitHub, taken unchanged but for the background square a set adds (removed by kit/p95_library.py), because a course's texts discuss the object: \"texts\" lists, for each course it serves, every file whose text names it (its keywords) with the count. kit/relief.py turns each into <id>.json, which viz.py's kind \"relief\" draws. A caption prints \"<depicts>, a stylised outline. <credit>.\"; verify.py checks the credit is printed exactly.",
+ "allowed_licences": [
+  "CC BY 3.0",
+  "CC0 1.0",
+  "MIT",
+  "ISC"
+ ],
+ "outlines": [
+  {
+   "id": "amphora",
+   "file": "amphora.svg",
+   "depicts": "an amphora",
+   "courses": [
+    "greece",
+    "rome"
+   ],
+   "keywords": [
+    "amphora",
+    "amphorae",
+    "amphoras"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/amphora.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/amphora.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/4.3-the-fall-of-troy-the-lost-epic-cycle.md",
+      8
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      4
+     ],
+     [
+      "courses/greece/10.1-achilles.md",
+      3
+     ],
+     [
+      "courses/greece/0.1-how-we-know-anything-the-sources.md",
+      2
+     ],
+     [
+      "courses/greece/1.3-the-collapse-of-1200-and-the-dark-age.md",
+      2
+     ],
+     [
+      "courses/greece/5.1-the-eighth-century-renaissance.md",
+      2
+     ],
+     [
+      "courses/greece/8.3-festivals-and-the-games.md",
+      2
+     ],
+     [
+      "courses/greece/10.3-hector-priam-and-the-trojan-side.md",
+      1
+     ],
+     [
+      "courses/greece/3.3-theseus-and-athens.md",
+      1
+     ],
+     [
+      "courses/greece/8.4-death-the-afterlife-and-hero-cult.md",
+      1
+     ],
+     [
+      "courses/greece/9.2-reading-a-site-athens-on-foot.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/1.2-the-etruscans.md",
+      2
+     ],
+     [
+      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
+      1
+     ],
+     [
+      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      1
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/8.5-the-fall-of-the-west-395-to-476.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "temple",
+   "file": "temple.svg",
+   "depicts": "a classical temple front",
+   "courses": [
+    "greece",
+    "rome"
+   ],
+   "keywords": [
+    "temple",
+    "temples"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/greek-temple.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/greek-temple.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/9.2-reading-a-site-athens-on-foot.md",
+      19
+     ],
+     [
+      "courses/greece/5.1-the-eighth-century-renaissance.md",
+      17
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      13
+     ],
+     [
+      "courses/greece/7.4-greece-under-the-empire-and-the-end-of-antiquity.md",
+      10
+     ],
+     [
+      "courses/greece/8.1-ritual-practice-sacrifice-temples-priests-pollution.md",
+      10
+     ],
+     [
+      "courses/greece/8.3-festivals-and-the-games.md",
+      8
+     ],
+     [
+      "courses/greece/3.4-jason-the-argonauts-and-medea.md",
+      7
+     ],
+     [
+      "courses/greece/7.1-the-successors-and-the-kingdoms.md",
+      7
+     ],
+     [
+      "courses/greece/2.5-the-lesser-divinities-and-personifications.md",
+      6
+     ],
+     [
+      "courses/greece/10.11-homeric-society-and-homeric-warfare.md",
+      5
+     ],
+     [
+      "courses/greece/11.4-alexander-and-the-gods.md",
+      5
+     ],
+     [
+      "courses/greece/11.8-death-body-and-afterlives.md",
+      5
+     ],
+     [
+      "courses/greece/0.1-how-we-know-anything-the-sources.md",
+      4
+     ],
+     [
+      "courses/greece/1.2-mycenaean-greece.md",
+      4
+     ],
+     [
+      "courses/greece/8.2-oracles-and-mystery-cults.md",
+      4
+     ],
+     [
+      "courses/greece/1.1-minoan-crete.md",
+      3
+     ],
+     [
+      "courses/greece/5.2-the-polis-and-colonisation.md",
+      3
+     ],
+     [
+      "courses/greece/6.1-the-persian-wars.md",
+      3
+     ],
+     [
+      "courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md",
+      2
+     ],
+     [
+      "courses/greece/10.1-achilles.md",
+      2
+     ],
+     [
+      "courses/greece/10.3-hector-priam-and-the-trojan-side.md",
+      2
+     ],
+     [
+      "courses/greece/11.7-the-sources-for-alexander.md",
+      2
+     ],
+     [
+      "courses/greece/12.7-the-stoa-from-zeno-to-posidonius.md",
+      2
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      2
+     ],
+     [
+      "courses/greece/2.3-the-underworld-and-the-chthonic-gods.md",
+      2
+     ],
+     [
+      "courses/greece/3.2-heracles.md",
+      2
+     ],
+     [
+      "courses/greece/3.6-the-other-heroes-bellerophon-meleager-atalanta-pelops-tantalus.md",
+      2
+     ],
+     [
+      "courses/greece/4.4-the-returns-and-the-odyssey.md",
+      2
+     ],
+     [
+      "courses/greece/6.2-the-athenian-empire-and-the-radical-democracy.md",
+      2
+     ],
+     [
+      "courses/greece/6.7-alexander.md",
+      2
+     ],
+     [
+      "courses/greece/9.4-capstone-the-whole-thing-in-one-sitting.md",
+      2
+     ],
+     [
+      "courses/greece/0.3-the-timeline-spine-3000-bc-to-ad-529.md",
+      1
+     ],
+     [
+      "courses/greece/10.10-troy-the-place-hisarlik-and-the-historicity-question.md",
+      1
+     ],
+     [
+      "courses/greece/10.12-troy-after-antiquity.md",
+      1
+     ],
+     [
+      "courses/greece/10.5-helen-menelaus-and-sparta.md",
+      1
+     ],
+     [
+      "courses/greece/10.8-the-other-greeks-at-troy.md",
+      1
+     ],
+     [
+      "courses/greece/10.9-the-gods-at-troy.md",
+      1
+     ],
+     [
+      "courses/greece/11.5-the-court-companions-conspiracies-and-the-orientalising-policy.md",
+      1
+     ],
+     [
+      "courses/greece/11.6-the-eastern-campaign-bactria-sogdiana-india-and-the-return.md",
+      1
+     ],
+     [
+      "courses/greece/12.5-cynics-cyrenaics-and-the-other-socratic-schools.md",
+      1
+     ],
+     [
+      "courses/greece/2.6-the-monsters-and-their-genealogy.md",
+      1
+     ],
+     [
+      "courses/greece/3.1-what-a-hero-is-and-perseus.md",
+      1
+     ],
+     [
+      "courses/greece/3.3-theseus-and-athens.md",
+      1
+     ],
+     [
+      "courses/greece/3.7-love-hubris-and-metamorphosis.md",
+      1
+     ],
+     [
+      "courses/greece/4.3-the-fall-of-troy-the-lost-epic-cycle.md",
+      1
+     ],
+     [
+      "courses/greece/5.5-athens-from-solon-to-cleisthenes.md",
+      1
+     ],
+     [
+      "courses/greece/6.3-the-peloponnesian-war.md",
+      1
+     ],
+     [
+      "courses/greece/6.4-tragedy-and-comedy.md",
+      1
+     ],
+     [
+      "courses/greece/6.6-the-fourth-century-sparta-thebes-philip.md",
+      1
+     ],
+     [
+      "courses/greece/7.2-alexandria-science-scholarship-and-the-new-philosophies.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/2.2-the-gods-of-rome-and-their-greek-doubles.md",
+      39
+     ],
+     [
+      "courses/rome/9.5-reading-a-site-rome-on-foot.md",
+      37
+     ],
+     [
+      "courses/rome/6.2-the-city-of-marble-and-the-restored-religion.md",
+      24
+     ],
+     [
+      "courses/rome/1.5-the-seven-kings.md",
+      14
+     ],
+     [
+      "courses/rome/2.5-new-gods-cybele-bacchus-isis-mithras-and-the-christians.md",
+      13
+     ],
+     [
+      "courses/rome/7.2-the-year-of-four-emperors-and-the-flavians.md",
+      13
+     ],
+     [
+      "courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md",
+      12
+     ],
+     [
+      "courses/rome/10.3-reading-roman-art-and-architecture.md",
+      11
+     ],
+     [
+      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      11
+     ],
+     [
+      "courses/rome/8.4-julian-theodosius-and-the-end-of-the-old-gods.md",
+      10
+     ],
+     [
+      "courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md",
+      9
+     ],
+     [
+      "courses/rome/3.3-veii-the-gauls-and-camillus.md",
+      9
+     ],
+     [
+      "courses/rome/0.3-the-timeline-spine-1000-bc-to-ad-476.md",
+      8
+     ],
+     [
+      "courses/rome/1.4-romulus-and-remus.md",
+      8
+     ],
+     [
+      "courses/rome/2.3-priests-augury-and-the-calendar.md",
+      8
+     ],
+     [
+      "courses/rome/8.3-constantine.md",
+      8
+     ],
+     [
+      "courses/rome/4.1-carthage-and-dido.md",
+      6
+     ],
+     [
+      "courses/rome/2.1-what-roman-religion-was.md",
+      5
+     ],
+     [
+      "courses/rome/6.3-virgil-horace-livy-and-ovid-the-augustan-myth.md",
+      5
+     ],
+     [
+      "courses/rome/0.1-how-we-know-anything-the-sources.md",
+      4
+     ],
+     [
+      "courses/rome/0.2-italy-and-the-mediterranean-the-shape-of-romes-world.md",
+      4
+     ],
+     [
+      "courses/rome/1.2-the-etruscans.md",
+      4
+     ],
+     [
+      "courses/rome/3.2-the-legends-of-the-early-republic.md",
+      4
+     ],
+     [
+      "courses/rome/5.4-caesar.md",
+      4
+     ],
+     [
+      "courses/rome/6.4-empire-without-end.md",
+      4
+     ],
+     [
+      "courses/rome/7.3-the-adoptive-emperors.md",
+      4
+     ],
+     [
+      "courses/rome/7.5-how-the-empire-worked.md",
+      4
+     ],
+     [
+      "courses/rome/8.1-the-third-century-crisis.md",
+      4
+     ],
+     [
+      "courses/rome/11.7-the-ides-of-march.md",
+      3
+     ],
+     [
+      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
+      3
+     ],
+     [
+      "courses/rome/12.6-the-gods-of-the-aeneid.md",
+      3
+     ],
+     [
+      "courses/rome/5.1-the-gracchi.md",
+      3
+     ],
+     [
+      "courses/rome/5.5-antony-octavian-and-cleopatra.md",
+      3
+     ],
+     [
+      "courses/rome/8.2-diocletian-and-the-tetrarchy.md",
+      3
+     ],
+     [
+      "courses/rome/1.3-before-romulus-evander-hercules-and-aeneas.md",
+      2
+     ],
+     [
+      "courses/rome/12.4-dido.md",
+      2
+     ],
+     [
+      "courses/rome/13.7-marcus-aurelius-a-life.md",
+      2
+     ],
+     [
+      "courses/rome/3.1-the-struggle-of-the-orders.md",
+      2
+     ],
+     [
+      "courses/rome/4.4-east-and-west-macedon-spain-and-the-year-146.md",
+      2
+     ],
+     [
+      "courses/rome/5.2-marius-and-sulla.md",
+      2
+     ],
+     [
+      "courses/rome/5.3-pompey-crassus-cicero-and-catiline.md",
+      2
+     ],
+     [
+      "courses/rome/6.1-from-octavian-to-augustus.md",
+      2
+     ],
+     [
+      "courses/rome/7.1-the-julio-claudians.md",
+      2
+     ],
+     [
+      "courses/rome/8.5-the-fall-of-the-west-395-to-476.md",
+      2
+     ],
+     [
+      "courses/rome/9.1-roman-law.md",
+      2
+     ],
+     [
+      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
+      1
+     ],
+     [
+      "courses/rome/10.1-ovid-and-the-roman-remaking-of-greek-myth.md",
+      1
+     ],
+     [
+      "courses/rome/11.3-politics-in-the-street.md",
+      1
+     ],
+     [
+      "courses/rome/11.6-caesars-commentaries-and-gaul.md",
+      1
+     ],
+     [
+      "courses/rome/2.4-house-family-and-the-dead.md",
+      1
+     ],
+     [
+      "courses/rome/3.4-the-samnite-wars-and-the-roman-system-in-italy.md",
+      1
+     ],
+     [
+      "courses/rome/3.5-pyrrhus-and-the-greek-south.md",
+      1
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/4.3-hannibal-and-the-second-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/9.4-bread-baths-and-games.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "ionic-column",
+   "file": "ionic-column.svg",
+   "depicts": "an Ionic column",
+   "courses": [
+    "greece"
+   ],
+   "keywords": [
+    "Ionic",
+    "column",
+    "columns"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/ionic-column.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/ionic-column.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      31
+     ],
+     [
+      "courses/greece/6.1-the-persian-wars.md",
+      7
+     ],
+     [
+      "courses/greece/9.2-reading-a-site-athens-on-foot.md",
+      7
+     ],
+     [
+      "courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md",
+      4
+     ],
+     [
+      "courses/greece/1.2-mycenaean-greece.md",
+      3
+     ],
+     [
+      "courses/greece/11.3-the-achaemenid-side.md",
+      3
+     ],
+     [
+      "courses/greece/11.7-the-sources-for-alexander.md",
+      3
+     ],
+     [
+      "courses/greece/12.2-the-sophists-and-socrates.md",
+      3
+     ],
+     [
+      "courses/greece/11.6-the-eastern-campaign-bactria-sogdiana-india-and-the-return.md",
+      2
+     ],
+     [
+      "courses/greece/12.1-the-presocratics.md",
+      2
+     ],
+     [
+      "courses/greece/12.6-epicurus-and-the-garden.md",
+      2
+     ],
+     [
+      "courses/greece/1.1-minoan-crete.md",
+      1
+     ],
+     [
+      "courses/greece/10.11-homeric-society-and-homeric-warfare.md",
+      1
+     ],
+     [
+      "courses/greece/11.2-alexanders-generalship-the-battles-and-sieges.md",
+      1
+     ],
+     [
+      "courses/greece/11.8-death-body-and-afterlives.md",
+      1
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      1
+     ],
+     [
+      "courses/greece/2.5-the-lesser-divinities-and-personifications.md",
+      1
+     ],
+     [
+      "courses/greece/3.7-love-hubris-and-metamorphosis.md",
+      1
+     ],
+     [
+      "courses/greece/4.1-causes-of-the-war-and-the-gathering-at-aulis.md",
+      1
+     ],
+     [
+      "courses/greece/4.2-the-iliad.md",
+      1
+     ],
+     [
+      "courses/greece/5.1-the-eighth-century-renaissance.md",
+      1
+     ],
+     [
+      "courses/greece/5.3-hoplites-lawgivers-and-tyrants.md",
+      1
+     ],
+     [
+      "courses/greece/5.6-lyric-poets-and-the-first-philosophers.md",
+      1
+     ],
+     [
+      "courses/greece/6.7-alexander.md",
+      1
+     ],
+     [
+      "courses/greece/8.4-death-the-afterlife-and-hero-cult.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "trireme",
+   "file": "trireme.svg",
+   "depicts": "an oared warship under sail",
+   "courses": [
+    "greece",
+    "rome"
+   ],
+   "keywords": [
+    "trireme",
+    "triremes",
+    "quinquereme",
+    "quinqueremes",
+    "warship",
+    "warships",
+    "galley",
+    "galleys"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/trireme.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/trireme.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/6.1-the-persian-wars.md",
+      3
+     ],
+     [
+      "courses/greece/6.3-the-peloponnesian-war.md",
+      2
+     ],
+     [
+      "courses/greece/9.4-capstone-the-whole-thing-in-one-sitting.md",
+      2
+     ],
+     [
+      "courses/greece/10.8-the-other-greeks-at-troy.md",
+      1
+     ],
+     [
+      "courses/greece/11.2-alexanders-generalship-the-battles-and-sieges.md",
+      1
+     ],
+     [
+      "courses/greece/11.8-death-body-and-afterlives.md",
+      1
+     ],
+     [
+      "courses/greece/6.2-the-athenian-empire-and-the-radical-democracy.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      13
+     ],
+     [
+      "courses/rome/5.5-antony-octavian-and-cleopatra.md",
+      3
+     ],
+     [
+      "courses/rome/3.3-veii-the-gauls-and-camillus.md",
+      2
+     ],
+     [
+      "courses/rome/3.5-pyrrhus-and-the-greek-south.md",
+      1
+     ],
+     [
+      "courses/rome/4.3-hannibal-and-the-second-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/9.5-reading-a-site-rome-on-foot.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "lyre",
+   "file": "lyre.svg",
+   "depicts": "a lyre",
+   "courses": [
+    "greece"
+   ],
+   "keywords": [
+    "lyre",
+    "lyres"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/lyre.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/lyre.svg"
+   },
+   "author": "Lorc",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      6
+     ],
+     [
+      "courses/greece/5.6-lyric-poets-and-the-first-philosophers.md",
+      3
+     ],
+     [
+      "courses/greece/3.2-heracles.md",
+      2
+     ],
+     [
+      "courses/greece/4.4-the-returns-and-the-odyssey.md",
+      2
+     ],
+     [
+      "courses/greece/0.1-how-we-know-anything-the-sources.md",
+      1
+     ],
+     [
+      "courses/greece/10.12-troy-after-antiquity.md",
+      1
+     ],
+     [
+      "courses/greece/10.7-reading-the-odyssey-closely-the-telemachy-the-apologoi-the-nekyia-the-recognitions.md",
+      1
+     ],
+     [
+      "courses/greece/12.1-the-presocratics.md",
+      1
+     ],
+     [
+      "courses/greece/3.5-the-theban-cycle-cadmus-to-antigone.md",
+      1
+     ],
+     [
+      "courses/greece/4.1-causes-of-the-war-and-the-gathering-at-aulis.md",
+      1
+     ],
+     [
+      "courses/greece/8.3-festivals-and-the-games.md",
+      1
+     ],
+     [
+      "courses/greece/8.5-households-women-slaves-the-symposium-and-sexuality.md",
+      1
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "owl",
+   "file": "owl.svg",
+   "depicts": "an owl",
+   "courses": [
+    "greece"
+   ],
+   "keywords": [
+    "owl",
+    "owls"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/owl.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/owl.svg"
+   },
+   "author": "Lorc",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      2
+     ],
+     [
+      "courses/greece/5.3-hoplites-lawgivers-and-tyrants.md",
+      2
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "olive",
+   "file": "olive.svg",
+   "depicts": "an olive branch",
+   "courses": [
+    "greece"
+   ],
+   "keywords": [
+    "olive",
+    "olives"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/olive.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/olive.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/8.3-festivals-and-the-games.md",
+      8
+     ],
+     [
+      "courses/greece/9.2-reading-a-site-athens-on-foot.md",
+      6
+     ],
+     [
+      "courses/greece/0.3-the-timeline-spine-3000-bc-to-ad-529.md",
+      4
+     ],
+     [
+      "courses/greece/1.1-minoan-crete.md",
+      4
+     ],
+     [
+      "courses/greece/4.4-the-returns-and-the-odyssey.md",
+      4
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      3
+     ],
+     [
+      "courses/greece/3.6-the-other-heroes-bellerophon-meleager-atalanta-pelops-tantalus.md",
+      3
+     ],
+     [
+      "courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md",
+      2
+     ],
+     [
+      "courses/greece/8.5-households-women-slaves-the-symposium-and-sexuality.md",
+      2
+     ],
+     [
+      "courses/greece/10.5-helen-menelaus-and-sparta.md",
+      1
+     ],
+     [
+      "courses/greece/10.7-reading-the-odyssey-closely-the-telemachy-the-apologoi-the-nekyia-the-recognitions.md",
+      1
+     ],
+     [
+      "courses/greece/5.5-athens-from-solon-to-cleisthenes.md",
+      1
+     ],
+     [
+      "courses/greece/7.4-greece-under-the-empire-and-the-end-of-antiquity.md",
+      1
+     ],
+     [
+      "courses/greece/8.1-ritual-practice-sacrifice-temples-priests-pollution.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "laurels",
+   "file": "laurels.svg",
+   "depicts": "a laurel wreath",
+   "courses": [
+    "greece",
+    "rome"
+   ],
+   "keywords": [
+    "laurel",
+    "laurels",
+    "wreath",
+    "wreaths"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/laurels.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/laurels.svg"
+   },
+   "author": "Lorc",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/8.3-festivals-and-the-games.md",
+      8
+     ],
+     [
+      "courses/greece/3.7-love-hubris-and-metamorphosis.md",
+      4
+     ],
+     [
+      "courses/greece/11.1-macedon-before-alexander.md",
+      2
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      2
+     ],
+     [
+      "courses/greece/11.4-alexander-and-the-gods.md",
+      1
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      1
+     ],
+     [
+      "courses/greece/3.3-theseus-and-athens.md",
+      1
+     ],
+     [
+      "courses/greece/5.1-the-eighth-century-renaissance.md",
+      1
+     ],
+     [
+      "courses/greece/8.2-oracles-and-mystery-cults.md",
+      1
+     ]
+    ],
+    "rome": [
+     [
+      "courses/rome/8.3-constantine.md",
+      4
+     ],
+     [
+      "courses/rome/6.2-the-city-of-marble-and-the-restored-religion.md",
+      3
+     ],
+     [
+      "courses/rome/7.3-the-adoptive-emperors.md",
+      2
+     ],
+     [
+      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      1
+     ],
+     [
+      "courses/rome/11.7-the-ides-of-march.md",
+      1
+     ],
+     [
+      "courses/rome/12.1-virgil-and-the-making-of-the-poem.md",
+      1
+     ],
+     [
+      "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
+      1
+     ],
+     [
+      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "theatre-masks",
+   "file": "theatre-masks.svg",
+   "depicts": "two theatre masks",
+   "courses": [
+    "greece"
+   ],
+   "keywords": [
+    "mask",
+    "masks"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/drama-masks.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/drama-masks.svg"
+   },
+   "author": "Lorc",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/9.2-reading-a-site-athens-on-foot.md",
+      5
+     ],
+     [
+      "courses/greece/10.2-agamemnon-and-the-kingship-of-the-atreids.md",
+      4
+     ],
+     [
+      "courses/greece/6.4-tragedy-and-comedy.md",
+      4
+     ],
+     [
+      "courses/greece/9.3-reception-how-it-all-reached-you.md",
+      4
+     ],
+     [
+      "courses/greece/0.3-the-timeline-spine-3000-bc-to-ad-529.md",
+      2
+     ],
+     [
+      "courses/greece/1.2-mycenaean-greece.md",
+      2
+     ],
+     [
+      "courses/greece/2.2-the-twelve-olympians.md",
+      2
+     ],
+     [
+      "courses/greece/2.6-the-monsters-and-their-genealogy.md",
+      1
+     ],
+     [
+      "courses/greece/5.4-sparta.md",
+      1
+     ],
+     [
+      "courses/greece/7.3-rome-conquers-greece.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "wooden-horse",
+   "file": "wooden-horse.svg",
+   "depicts": "the wooden horse",
+   "courses": [
+    "greece"
+   ],
+   "keywords": [
+    "wooden horse",
+    "Trojan horse"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/trojan-horse.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/trojan-horse.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/4.3-the-fall-of-troy-the-lost-epic-cycle.md",
+      4
+     ],
+     [
+      "courses/greece/10.7-reading-the-odyssey-closely-the-telemachy-the-apologoi-the-nekyia-the-recognitions.md",
+      3
+     ],
+     [
+      "courses/greece/10.4-odysseus.md",
+      2
+     ],
+     [
+      "courses/greece/0.1-how-we-know-anything-the-sources.md",
+      1
+     ],
+     [
+      "courses/greece/10.5-helen-menelaus-and-sparta.md",
+      1
+     ],
+     [
+      "courses/greece/4.2-the-iliad.md",
+      1
+     ],
+     [
+      "courses/greece/4.4-the-returns-and-the-odyssey.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "centaur",
+   "file": "centaur.svg",
+   "depicts": "a centaur",
+   "courses": [
+    "greece"
+   ],
+   "keywords": [
+    "centaur",
+    "centaurs"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/centaur.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/centaur.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/2.6-the-monsters-and-their-genealogy.md",
+      12
+     ],
+     [
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      4
+     ],
+     [
+      "courses/greece/3.3-theseus-and-athens.md",
+      3
+     ],
+     [
+      "courses/greece/10.1-achilles.md",
+      2
+     ],
+     [
+      "courses/greece/3.2-heracles.md",
+      2
+     ],
+     [
+      "courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md",
+      1
+     ],
+     [
+      "courses/greece/1.3-the-collapse-of-1200-and-the-dark-age.md",
+      1
+     ],
+     [
+      "courses/greece/10.8-the-other-greeks-at-troy.md",
+      1
+     ],
+     [
+      "courses/greece/9.4-capstone-the-whole-thing-in-one-sitting.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "minotaur",
+   "file": "minotaur.svg",
+   "depicts": "the Minotaur",
+   "courses": [
+    "greece"
+   ],
+   "keywords": [
+    "Minotaur"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/minotaur.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/minotaur.svg"
+   },
+   "author": "Lorc",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/2.6-the-monsters-and-their-genealogy.md",
+      8
+     ],
+     [
+      "courses/greece/3.3-theseus-and-athens.md",
+      6
+     ],
+     [
+      "courses/greece/1.1-minoan-crete.md",
+      4
+     ],
+     [
+      "courses/greece/3.2-heracles.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "labyrinth",
+   "file": "labyrinth.svg",
+   "depicts": "a labyrinth",
+   "courses": [
+    "greece"
+   ],
+   "keywords": [
+    "labyrinth",
+    "labyrinths",
+    "maze"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/maze.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/maze.svg"
+   },
+   "author": "Lorc",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "greece": [
+     [
+      "courses/greece/1.1-minoan-crete.md",
+      11
+     ],
+     [
+      "courses/greece/3.3-theseus-and-athens.md",
+      4
+     ],
+     [
+      "courses/greece/0.2-geography-dialects-and-the-shape-of-greece.md",
+      2
+     ],
+     [
+      "courses/greece/2.6-the-monsters-and-their-genealogy.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "centurion-helmet",
+   "file": "centurion-helmet.svg",
+   "depicts": "a centurion's crested helmet",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "centurion",
+    "centurions",
+    "helmet",
+    "helmets"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/centurion-helmet.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/centurion-helmet.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/9.2-the-army.md",
+      12
+     ],
+     [
+      "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
+      6
+     ],
+     [
+      "courses/rome/11.2-generals-and-their-armies.md",
+      5
+     ],
+     [
+      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
+      3
+     ],
+     [
+      "courses/rome/13.7-marcus-aurelius-a-life.md",
+      3
+     ],
+     [
+      "courses/rome/3.1-the-struggle-of-the-orders.md",
+      3
+     ],
+     [
+      "courses/rome/5.4-caesar.md",
+      2
+     ],
+     [
+      "courses/rome/1.2-the-etruscans.md",
+      1
+     ],
+     [
+      "courses/rome/1.5-the-seven-kings.md",
+      1
+     ],
+     [
+      "courses/rome/10.4-reception-how-rome-reached-you.md",
+      1
+     ],
+     [
+      "courses/rome/11.4-women-and-the-late-republic.md",
+      1
+     ],
+     [
+      "courses/rome/11.6-caesars-commentaries-and-gaul.md",
+      1
+     ],
+     [
+      "courses/rome/2.2-the-gods-of-rome-and-their-greek-doubles.md",
+      1
+     ],
+     [
+      "courses/rome/3.2-the-legends-of-the-early-republic.md",
+      1
+     ],
+     [
+      "courses/rome/3.3-veii-the-gauls-and-camillus.md",
+      1
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/5.3-pompey-crassus-cicero-and-catiline.md",
+      1
+     ],
+     [
+      "courses/rome/6.4-empire-without-end.md",
+      1
+     ],
+     [
+      "courses/rome/7.4-the-severans-and-the-citizenship-of-212.md",
+      1
+     ],
+     [
+      "courses/rome/7.5-how-the-empire-worked.md",
+      1
+     ],
+     [
+      "courses/rome/8.3-constantine.md",
+      1
+     ],
+     [
+      "courses/rome/8.6-the-rome-that-did-not-fall.md",
+      1
+     ],
+     [
+      "courses/rome/9.4-bread-baths-and-games.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "gladius",
+   "file": "gladius.svg",
+   "depicts": "a short sword, the gladius",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "gladius",
+    "sword",
+    "swords"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "skoll/gladius.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/skoll/gladius.svg"
+   },
+   "author": "Skoll",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Skoll, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/12.4-dido.md",
+      10
+     ],
+     [
+      "courses/rome/4.1-carthage-and-dido.md",
+      6
+     ],
+     [
+      "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
+      5
+     ],
+     [
+      "courses/rome/9.2-the-army.md",
+      4
+     ],
+     [
+      "courses/rome/11.2-generals-and-their-armies.md",
+      3
+     ],
+     [
+      "courses/rome/5.1-the-gracchi.md",
+      3
+     ],
+     [
+      "courses/rome/6.3-virgil-horace-livy-and-ovid-the-augustan-myth.md",
+      3
+     ],
+     [
+      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
+      2
+     ],
+     [
+      "courses/rome/1.5-the-seven-kings.md",
+      2
+     ],
+     [
+      "courses/rome/10.1-ovid-and-the-roman-remaking-of-greek-myth.md",
+      2
+     ],
+     [
+      "courses/rome/11.4-women-and-the-late-republic.md",
+      2
+     ],
+     [
+      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
+      2
+     ],
+     [
+      "courses/rome/13.4-cato-and-the-stoic-opposition.md",
+      2
+     ],
+     [
+      "courses/rome/4.3-hannibal-and-the-second-punic-war.md",
+      2
+     ],
+     [
+      "courses/rome/5.5-antony-octavian-and-cleopatra.md",
+      2
+     ],
+     [
+      "courses/rome/9.4-bread-baths-and-games.md",
+      2
+     ],
+     [
+      "courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md",
+      1
+     ],
+     [
+      "courses/rome/11.3-politics-in-the-street.md",
+      1
+     ],
+     [
+      "courses/rome/11.6-caesars-commentaries-and-gaul.md",
+      1
+     ],
+     [
+      "courses/rome/11.7-the-ides-of-march.md",
+      1
+     ],
+     [
+      "courses/rome/12.1-virgil-and-the-making-of-the-poem.md",
+      1
+     ],
+     [
+      "courses/rome/12.7-augustan-or-anti-augustan.md",
+      1
+     ],
+     [
+      "courses/rome/12.8-the-aeneid-after-rome.md",
+      1
+     ],
+     [
+      "courses/rome/3.3-veii-the-gauls-and-camillus.md",
+      1
+     ],
+     [
+      "courses/rome/3.4-the-samnite-wars-and-the-roman-system-in-italy.md",
+      1
+     ],
+     [
+      "courses/rome/5.4-caesar.md",
+      1
+     ],
+     [
+      "courses/rome/7.4-the-severans-and-the-citizenship-of-212.md",
+      1
+     ],
+     [
+      "courses/rome/8.2-diocletian-and-the-tetrarchy.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "toga",
+   "file": "toga.svg",
+   "depicts": "a figure in a toga",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "toga",
+    "togas"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/roman-toga.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/roman-toga.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/2.4-house-family-and-the-dead.md",
+      5
+     ],
+     [
+      "courses/rome/3.5-pyrrhus-and-the-greek-south.md",
+      5
+     ],
+     [
+      "courses/rome/11.7-the-ides-of-march.md",
+      4
+     ],
+     [
+      "courses/rome/3.2-the-legends-of-the-early-republic.md",
+      4
+     ],
+     [
+      "courses/rome/12.1-virgil-and-the-making-of-the-poem.md",
+      3
+     ],
+     [
+      "courses/rome/1.2-the-etruscans.md",
+      2
+     ],
+     [
+      "courses/rome/10.3-reading-roman-art-and-architecture.md",
+      2
+     ],
+     [
+      "courses/rome/13.7-marcus-aurelius-a-life.md",
+      2
+     ],
+     [
+      "courses/rome/5.1-the-gracchi.md",
+      2
+     ],
+     [
+      "courses/rome/9.2-the-army.md",
+      2
+     ],
+     [
+      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      1
+     ],
+     [
+      "courses/rome/11.1-how-the-republic-worked-at-its-height.md",
+      1
+     ],
+     [
+      "courses/rome/11.3-politics-in-the-street.md",
+      1
+     ],
+     [
+      "courses/rome/11.5-cicero-through-his-letters.md",
+      1
+     ],
+     [
+      "courses/rome/13.6-musonius-rufus-and-epictetus.md",
+      1
+     ],
+     [
+      "courses/rome/2.2-the-gods-of-rome-and-their-greek-doubles.md",
+      1
+     ],
+     [
+      "courses/rome/3.4-the-samnite-wars-and-the-roman-system-in-italy.md",
+      1
+     ],
+     [
+      "courses/rome/4.3-hannibal-and-the-second-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/5.3-pompey-crassus-cicero-and-catiline.md",
+      1
+     ],
+     [
+      "courses/rome/5.4-caesar.md",
+      1
+     ],
+     [
+      "courses/rome/5.6-writing-in-a-falling-republic.md",
+      1
+     ],
+     [
+      "courses/rome/6.2-the-city-of-marble-and-the-restored-religion.md",
+      1
+     ],
+     [
+      "courses/rome/7.5-how-the-empire-worked.md",
+      1
+     ],
+     [
+      "courses/rome/9.3-family-women-and-slaves.md",
+      1
+     ],
+     [
+      "courses/rome/9.4-bread-baths-and-games.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "eagle",
+   "file": "eagle.svg",
+   "depicts": "an eagle with spread wings",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "eagle",
+    "eagles",
+    "aquila"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/eagle-emblem.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/eagle-emblem.svg"
+   },
+   "author": "Lorc",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/10.4-reception-how-rome-reached-you.md",
+      7
+     ],
+     [
+      "courses/rome/6.4-empire-without-end.md",
+      3
+     ],
+     [
+      "courses/rome/5.2-marius-and-sulla.md",
+      2
+     ],
+     [
+      "courses/rome/1.4-romulus-and-remus.md",
+      1
+     ],
+     [
+      "courses/rome/1.5-the-seven-kings.md",
+      1
+     ],
+     [
+      "courses/rome/10.1-ovid-and-the-roman-remaking-of-greek-myth.md",
+      1
+     ],
+     [
+      "courses/rome/10.3-reading-roman-art-and-architecture.md",
+      1
+     ],
+     [
+      "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
+      1
+     ],
+     [
+      "courses/rome/2.5-new-gods-cybele-bacchus-isis-mithras-and-the-christians.md",
+      1
+     ],
+     [
+      "courses/rome/6.2-the-city-of-marble-and-the-restored-religion.md",
+      1
+     ],
+     [
+      "courses/rome/7.1-the-julio-claudians.md",
+      1
+     ],
+     [
+      "courses/rome/8.6-the-rome-that-did-not-fall.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "wolf",
+   "file": "wolf.svg",
+   "depicts": "a wolf's head",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "wolf",
+    "she-wolf",
+    "wolves"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/wolf-head.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/wolf-head.svg"
+   },
+   "author": "Lorc",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/1.4-romulus-and-remus.md",
+      24
+     ],
+     [
+      "courses/rome/9.5-reading-a-site-rome-on-foot.md",
+      7
+     ],
+     [
+      "courses/rome/0.1-how-we-know-anything-the-sources.md",
+      4
+     ],
+     [
+      "courses/rome/3.5-pyrrhus-and-the-greek-south.md",
+      3
+     ],
+     [
+      "courses/rome/5.2-marius-and-sulla.md",
+      3
+     ],
+     [
+      "courses/rome/6.4-empire-without-end.md",
+      2
+     ],
+     [
+      "courses/rome/8.6-the-rome-that-did-not-fall.md",
+      2
+     ],
+     [
+      "courses/rome/0.2-italy-and-the-mediterranean-the-shape-of-romes-world.md",
+      1
+     ],
+     [
+      "courses/rome/0.3-the-timeline-spine-1000-bc-to-ad-476.md",
+      1
+     ],
+     [
+      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
+      1
+     ],
+     [
+      "courses/rome/10.3-reading-roman-art-and-architecture.md",
+      1
+     ],
+     [
+      "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
+      1
+     ],
+     [
+      "courses/rome/12.7-augustan-or-anti-augustan.md",
+      1
+     ],
+     [
+      "courses/rome/6.3-virgil-horace-livy-and-ovid-the-augustan-myth.md",
+      1
+     ],
+     [
+      "courses/rome/7.1-the-julio-claudians.md",
+      1
+     ],
+     [
+      "courses/rome/8.1-the-third-century-crisis.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bridge",
+   "file": "bridge.svg",
+   "depicts": "an arched stone bridge",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "bridge",
+    "bridges"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/stone-bridge.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/stone-bridge.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/8.3-constantine.md",
+      6
+     ],
+     [
+      "courses/rome/11.6-caesars-commentaries-and-gaul.md",
+      4
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      3
+     ],
+     [
+      "courses/rome/5.4-caesar.md",
+      3
+     ],
+     [
+      "courses/rome/0.2-italy-and-the-mediterranean-the-shape-of-romes-world.md",
+      2
+     ],
+     [
+      "courses/rome/0.3-the-timeline-spine-1000-bc-to-ad-476.md",
+      2
+     ],
+     [
+      "courses/rome/8.2-diocletian-and-the-tetrarchy.md",
+      2
+     ],
+     [
+      "courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md",
+      1
+     ],
+     [
+      "courses/rome/10.2-imperial-literature-seneca-to-apuleius.md",
+      1
+     ],
+     [
+      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      1
+     ],
+     [
+      "courses/rome/7.3-the-adoptive-emperors.md",
+      1
+     ],
+     [
+      "courses/rome/9.2-the-army.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "wax-tablet",
+   "file": "wax-tablet.svg",
+   "depicts": "a writing tablet",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "tablet",
+    "tablets"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/wax-tablet.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/wax-tablet.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
+      5
+     ],
+     [
+      "courses/rome/9.2-the-army.md",
+      5
+     ],
+     [
+      "courses/rome/11.6-caesars-commentaries-and-gaul.md",
+      4
+     ],
+     [
+      "courses/rome/2.4-house-family-and-the-dead.md",
+      4
+     ],
+     [
+      "courses/rome/7.1-the-julio-claudians.md",
+      4
+     ],
+     [
+      "courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md",
+      3
+     ],
+     [
+      "courses/rome/4.3-hannibal-and-the-second-punic-war.md",
+      3
+     ],
+     [
+      "courses/rome/1.2-the-etruscans.md",
+      2
+     ],
+     [
+      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      2
+     ],
+     [
+      "courses/rome/4.1-carthage-and-dido.md",
+      2
+     ],
+     [
+      "courses/rome/5.3-pompey-crassus-cicero-and-catiline.md",
+      2
+     ],
+     [
+      "courses/rome/7.2-the-year-of-four-emperors-and-the-flavians.md",
+      2
+     ],
+     [
+      "courses/rome/7.5-how-the-empire-worked.md",
+      2
+     ],
+     [
+      "courses/rome/0.1-how-we-know-anything-the-sources.md",
+      1
+     ],
+     [
+      "courses/rome/1.5-the-seven-kings.md",
+      1
+     ],
+     [
+      "courses/rome/11.7-the-ides-of-march.md",
+      1
+     ],
+     [
+      "courses/rome/13.5-seneca.md",
+      1
+     ],
+     [
+      "courses/rome/3.3-veii-the-gauls-and-camillus.md",
+      1
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/5.4-caesar.md",
+      1
+     ],
+     [
+      "courses/rome/7.3-the-adoptive-emperors.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "columns",
+   "file": "columns.svg",
+   "depicts": "three broken columns",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "column",
+    "columns"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/ancient-columns.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/ancient-columns.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/10.3-reading-roman-art-and-architecture.md",
+      19
+     ],
+     [
+      "courses/rome/9.5-reading-a-site-rome-on-foot.md",
+      18
+     ],
+     [
+      "courses/rome/13.7-marcus-aurelius-a-life.md",
+      6
+     ],
+     [
+      "courses/rome/7.3-the-adoptive-emperors.md",
+      6
+     ],
+     [
+      "courses/rome/9.2-the-army.md",
+      5
+     ],
+     [
+      "courses/rome/2.3-priests-augury-and-the-calendar.md",
+      4
+     ],
+     [
+      "courses/rome/10.4-reception-how-rome-reached-you.md",
+      3
+     ],
+     [
+      "courses/rome/4.3-hannibal-and-the-second-punic-war.md",
+      3
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      2
+     ],
+     [
+      "courses/rome/0.3-the-timeline-spine-1000-bc-to-ad-476.md",
+      1
+     ],
+     [
+      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
+      1
+     ],
+     [
+      "courses/rome/1.4-romulus-and-remus.md",
+      1
+     ],
+     [
+      "courses/rome/1.5-the-seven-kings.md",
+      1
+     ],
+     [
+      "courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md",
+      1
+     ],
+     [
+      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      1
+     ],
+     [
+      "courses/rome/12.1-virgil-and-the-making-of-the-poem.md",
+      1
+     ],
+     [
+      "courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md",
+      1
+     ],
+     [
+      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
+      1
+     ],
+     [
+      "courses/rome/3.2-the-legends-of-the-early-republic.md",
+      1
+     ],
+     [
+      "courses/rome/3.3-veii-the-gauls-and-camillus.md",
+      1
+     ],
+     [
+      "courses/rome/6.2-the-city-of-marble-and-the-restored-religion.md",
+      1
+     ],
+     [
+      "courses/rome/7.4-the-severans-and-the-citizenship-of-212.md",
+      1
+     ],
+     [
+      "courses/rome/8.3-constantine.md",
+      1
+     ],
+     [
+      "courses/rome/8.4-julian-theodosius-and-the-end-of-the-old-gods.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "torch",
+   "file": "torch.svg",
+   "depicts": "a burning torch",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "torch",
+    "torches"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/torch.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/torch.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/12.4-dido.md",
+      8
+     ],
+     [
+      "courses/rome/11.7-the-ides-of-march.md",
+      3
+     ],
+     [
+      "courses/rome/12.3-books-7-to-12-the-iliadic-aeneid.md",
+      3
+     ],
+     [
+      "courses/rome/12.6-the-gods-of-the-aeneid.md",
+      2
+     ],
+     [
+      "courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md",
+      1
+     ],
+     [
+      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
+      1
+     ],
+     [
+      "courses/rome/2.5-new-gods-cybele-bacchus-isis-mithras-and-the-christians.md",
+      1
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
+      1
+     ],
+     [
+      "courses/rome/5.5-antony-octavian-and-cleopatra.md",
+      1
+     ],
+     [
+      "courses/rome/7.2-the-year-of-four-emperors-and-the-flavians.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "gi",
+   "file": "gi.svg",
+   "depicts": "a karate gi, its jacket belted",
+   "courses": [
+    "brand-a"
+   ],
+   "keywords": [
+    "gi",
+    "gis",
+    "kimono",
+    "dogi"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/kimono.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/kimono.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A7-monetisation-through-shomen.md",
+      4
+     ],
+     [
+      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      4
+     ],
+     [
+      "courses/brand-ai/A5-production-craft.md",
+      1
+     ],
+     [
+      "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "black-belt",
+   "file": "black-belt.svg",
+   "depicts": "a tied belt",
+   "courses": [
+    "brand-a"
+   ],
+   "keywords": [
+    "belt",
+    "belts",
+    "black belt"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/black-belt.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/black-belt.svg"
+   },
+   "author": "Delapouite",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
+   "background_removed": true,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "camera",
+   "file": "camera.svg",
+   "depicts": "a camera",
+   "courses": [
+    "brand-a"
+   ],
+   "keywords": [
+    "camera",
+    "cameras"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/camera-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/camera-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A5-production-craft.md",
+      11
+     ],
+     [
+      "courses/brand-ai/A1-positioning-the-journey-as-a-format.md",
+      3
+     ],
+     [
+      "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
+      3
+     ],
+     [
+      "courses/brand-ai/A4-voice-disclosure-and-the-record.md",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "video-camera",
+   "file": "video-camera.svg",
+   "depicts": "a video camera",
+   "courses": [
+    "brand-a"
+   ],
+   "keywords": [
+    "video camera",
+    "camera",
+    "cameras"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/video-camera-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/video-camera-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A5-production-craft.md",
+      11
+     ],
+     [
+      "courses/brand-ai/A1-positioning-the-journey-as-a-format.md",
+      3
+     ],
+     [
+      "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
+      3
+     ],
+     [
+      "courses/brand-ai/A4-voice-disclosure-and-the-record.md",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "microphone",
+   "file": "microphone.svg",
+   "depicts": "a microphone",
+   "courses": [
+    "brand-a"
+   ],
+   "keywords": [
+    "microphone",
+    "microphones",
+    "mic",
+    "mics",
+    "lav",
+    "lavalier"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/microphone-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/microphone-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A5-production-craft.md",
+      45
+     ],
+     [
+      "courses/brand-ai/A3-the-journey-system.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "phone",
+   "file": "phone.svg",
+   "depicts": "a phone",
+   "courses": [
+    "brand-a",
+    "ux-ia"
+   ],
+   "keywords": [
+    "phone",
+    "phones",
+    "smartphone",
+    "smartphones",
+    "iPhone"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/device-mobile-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/device-mobile-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A5-production-craft.md",
+      15
+     ],
+     [
+      "courses/brand-ai/A3-the-journey-system.md",
+      7
+     ],
+     [
+      "courses/brand-ai/A2-audience-and-platform-economics.md",
+      3
+     ],
+     [
+      "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
+      2
+     ]
+    ],
+    "ux-ia": [
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      8
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      2
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "calendar",
+   "file": "calendar.svg",
+   "depicts": "a calendar",
+   "courses": [
+    "brand-a",
+    "brand-b"
+   ],
+   "keywords": [
+    "calendar",
+    "calendars"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/calendar-blank-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/calendar-blank-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A3-the-journey-system.md",
+      13
+     ],
+     [
+      "courses/brand-ai/A5-production-craft.md",
+      3
+     ],
+     [
+      "courses/brand-ai/A7-monetisation-through-shomen.md",
+      2
+     ],
+     [
+      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      2
+     ],
+     [
+      "courses/brand-ai/A6-how-growth-works-per-platform.md",
+      1
+     ],
+     [
+      "courses/brand-ai/A9-what-to-expect-benchmarks.md",
+      1
+     ],
+     [
+      "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
+      1
+     ]
+    ],
+    "brand-b": [
+     [
+      "courses/brand-ai/B2-choosing-the-model.md",
+      4
+     ],
+     [
+      "courses/brand-ai/B7-content-pipeline.md",
+      3
+     ],
+     [
+      "courses/brand-ai/B3-prompting-that-holds-up.md",
+      2
+     ],
+     [
+      "courses/brand-ai/B4-context-engineering.md",
+      2
+     ],
+     [
+      "courses/brand-ai/B8-cost-limits-hygiene.md",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "tag",
+   "file": "tag.svg",
+   "depicts": "a tag",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "tag",
+    "tags",
+    "label",
+    "labels"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/tag-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/tag-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      156
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      146
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      139
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      111
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      108
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      99
+     ],
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      53
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bar-chart",
+   "file": "bar-chart.svg",
+   "depicts": "a bar chart",
+   "courses": [
+    "brand-a"
+   ],
+   "keywords": [
+    "chart",
+    "charts",
+    "bar chart"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/chart-bar-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/chart-bar-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A2-audience-and-platform-economics.md",
+      2
+     ],
+     [
+      "courses/brand-ai/A6-how-growth-works-per-platform.md",
+      2
+     ],
+     [
+      "courses/brand-ai/A7-monetisation-through-shomen.md",
+      2
+     ],
+     [
+      "courses/brand-ai/A9-what-to-expect-benchmarks.md",
+      2
+     ],
+     [
+      "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "receipt",
+   "file": "receipt.svg",
+   "depicts": "a receipt",
+   "courses": [
+    "brand-a",
+    "ux-ia"
+   ],
+   "keywords": [
+    "receipt",
+    "receipts",
+    "invoice",
+    "invoices"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/receipt-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/receipt-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A8-legal-tax-time.md",
+      8
+     ],
+     [
+      "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
+      6
+     ],
+     [
+      "courses/brand-ai/A7-monetisation-through-shomen.md",
+      2
+     ]
+    ],
+    "ux-ia": [
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      28
+     ],
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      8
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      6
+     ],
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      4
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      4
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      2
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "envelope",
+   "file": "envelope.svg",
+   "depicts": "an envelope, the sign for email",
+   "courses": [
+    "brand-a",
+    "brand-b",
+    "ux-ia"
+   ],
+   "keywords": [
+    "email",
+    "emails",
+    "envelope"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/envelope-simple-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/envelope-simple-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A3-the-journey-system.md",
+      43
+     ],
+     [
+      "courses/brand-ai/A7-monetisation-through-shomen.md",
+      18
+     ],
+     [
+      "courses/brand-ai/A6-how-growth-works-per-platform.md",
+      16
+     ],
+     [
+      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      13
+     ],
+     [
+      "courses/brand-ai/A2-audience-and-platform-economics.md",
+      11
+     ],
+     [
+      "courses/brand-ai/A4-voice-disclosure-and-the-record.md",
+      9
+     ],
+     [
+      "courses/brand-ai/A8-legal-tax-time.md",
+      6
+     ],
+     [
+      "courses/brand-ai/A9-what-to-expect-benchmarks.md",
+      6
+     ],
+     [
+      "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
+      5
+     ],
+     [
+      "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
+      2
+     ],
+     [
+      "courses/brand-ai/A5-production-craft.md",
+      1
+     ]
+    ],
+    "brand-b": [
+     [
+      "courses/brand-ai/B3-prompting-that-holds-up.md",
+      18
+     ],
+     [
+      "courses/brand-ai/B7-content-pipeline.md",
+      18
+     ],
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      16
+     ],
+     [
+      "courses/brand-ai/B6-research-and-verification.md",
+      3
+     ],
+     [
+      "courses/brand-ai/DD-B1-deep-dive-agents.md",
+      1
+     ]
+    ],
+    "ux-ia": [
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      19
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      9
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      6
+     ],
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      2
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      2
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "folder",
+   "file": "folder.svg",
+   "depicts": "a folder",
+   "courses": [
+    "brand-a",
+    "brand-b"
+   ],
+   "keywords": [
+    "folder",
+    "folders"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/folder-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/folder-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-a": [
+     [
+      "courses/brand-ai/A3-the-journey-system.md",
+      6
+     ],
+     [
+      "courses/brand-ai/A5-production-craft.md",
+      4
+     ],
+     [
+      "courses/brand-ai/A8-legal-tax-time.md",
+      1
+     ]
+    ],
+    "brand-b": [
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      20
+     ],
+     [
+      "courses/brand-ai/B4-context-engineering.md",
+      4
+     ],
+     [
+      "courses/brand-ai/DD-B1-deep-dive-agents.md",
+      4
+     ],
+     [
+      "courses/brand-ai/B1-mental-model.md",
+      2
+     ],
+     [
+      "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "terminal",
+   "file": "terminal.svg",
+   "depicts": "a terminal window",
+   "courses": [
+    "brand-b"
+   ],
+   "keywords": [
+    "terminal",
+    "terminals"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/terminal-window-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/terminal-window-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/B2-choosing-the-model.md",
+      7
+     ],
+     [
+      "courses/brand-ai/DD-B1-deep-dive-agents.md",
+      2
+     ],
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      1
+     ],
+     [
+      "courses/brand-ai/B8-cost-limits-hygiene.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "brain",
+   "file": "brain.svg",
+   "depicts": "a brain",
+   "courses": [
+    "brand-b"
+   ],
+   "keywords": [
+    "brain",
+    "brains"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/brain-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/brain-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      6
+     ],
+     [
+      "courses/brand-ai/B3-prompting-that-holds-up.md",
+      2
+     ],
+     [
+      "courses/brand-ai/B2-choosing-the-model.md",
+      1
+     ],
+     [
+      "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "servers",
+   "file": "servers.svg",
+   "depicts": "two stacked servers",
+   "courses": [
+    "brand-b"
+   ],
+   "keywords": [
+    "server",
+    "servers"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/hard-drives-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/hard-drives-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      5
+     ],
+     [
+      "courses/brand-ai/B1-mental-model.md",
+      2
+     ],
+     [
+      "courses/brand-ai/B8-cost-limits-hygiene.md",
+      1
+     ],
+     [
+      "courses/brand-ai/DD-B1-deep-dive-agents.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "flask",
+   "file": "flask.svg",
+   "depicts": "a laboratory flask",
+   "courses": [
+    "brand-b"
+   ],
+   "keywords": [
+    "flask",
+    "lab",
+    "labs"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/flask-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/flask-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/B1-mental-model.md",
+      6
+     ],
+     [
+      "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "clock",
+   "file": "clock.svg",
+   "depicts": "a clock",
+   "courses": [
+    "brand-b"
+   ],
+   "keywords": [
+    "clock",
+    "clocks"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/clock-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/clock-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      5
+     ],
+     [
+      "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "robot",
+   "file": "robot.svg",
+   "depicts": "a robot's head",
+   "courses": [
+    "brand-b"
+   ],
+   "keywords": [
+    "robot",
+    "robots"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/robot-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/robot-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "book",
+   "file": "book.svg",
+   "depicts": "an open book",
+   "courses": [
+    "brand-b"
+   ],
+   "keywords": [
+    "book",
+    "books"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/book-open-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/book-open-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "id": "checklist",
+   "file": "checklist.svg",
+   "depicts": "a checklist",
+   "courses": [
+    "brand-b",
+    "ux-ia"
+   ],
+   "keywords": [
+    "checklist",
+    "checklists"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/list-checks-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/list-checks-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      6
+     ],
+     [
+      "courses/brand-ai/B7-content-pipeline.md",
+      6
+     ],
+     [
+      "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
+      4
+     ],
+     [
+      "courses/brand-ai/B4-context-engineering.md",
+      3
+     ],
+     [
+      "courses/brand-ai/DD-B1-deep-dive-agents.md",
+      1
+     ]
+    ],
+    "ux-ia": [
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      12
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      6
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      3
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "database",
+   "file": "database.svg",
+   "depicts": "a database",
+   "courses": [
+    "brand-b"
+   ],
+   "keywords": [
+    "database",
+    "databases"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/database-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/database-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/B6-research-and-verification.md",
+      2
+     ],
+     [
+      "courses/brand-ai/B1-mental-model.md",
+      1
+     ],
+     [
+      "courses/brand-ai/B2-choosing-the-model.md",
+      1
+     ],
+     [
+      "courses/brand-ai/DD-B1-deep-dive-agents.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "laptop",
+   "file": "laptop.svg",
+   "depicts": "a laptop",
+   "courses": [
+    "brand-b"
+   ],
+   "keywords": [
+    "laptop",
+    "laptops",
+    "computer",
+    "computers"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/laptop-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/laptop-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "brand-b": [
+     [
+      "courses/brand-ai/B4-context-engineering.md",
+      3
+     ],
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "map",
+   "file": "map.svg",
+   "depicts": "a folded map",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "map",
+    "maps"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/map-trifold-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/map-trifold-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      42
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      40
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      33
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      22
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      10
+     ],
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      9
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sitemap",
+   "file": "sitemap.svg",
+   "depicts": "a sitemap",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "sitemap",
+    "sitemaps"
+   ],
+   "source": {
+    "repository": "tabler/tabler-icons",
+    "path": "icons/filled/sitemap.svg",
+    "commit": "58f60538fe2fab2e1459a09198f9bd3b033bf90e",
+    "url": "https://github.com/tabler/tabler-icons/blob/58f60538fe2fab2e1459a09198f9bd3b033bf90e/icons/filled/sitemap.svg"
+   },
+   "author": "Paweł Kuna",
+   "licence": "MIT",
+   "credit": "Icon: Paweł Kuna, Tabler Icons, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      45
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      41
+     ],
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      15
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      10
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      6
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      3
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "tree",
+   "file": "tree.svg",
+   "depicts": "a tree diagram",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "tree",
+    "trees",
+    "hierarchy",
+    "hierarchies"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/tree-structure-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/tree-structure-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      35
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      34
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      14
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      13
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      9
+     ],
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      3
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "books",
+   "file": "books.svg",
+   "depicts": "books on a shelf",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "book",
+    "books",
+    "library",
+    "libraries",
+    "librarian",
+    "librarians"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/books-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/books-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      38
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      38
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      37
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      31
+     ],
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      15
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      11
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      9
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bicycle",
+   "file": "bicycle.svg",
+   "depicts": "a bicycle",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "bike",
+    "bikes",
+    "bicycle",
+    "bicycles",
+    "cycling"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/bicycle-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/bicycle-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      13
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      9
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      6
+     ],
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "barbell",
+   "file": "barbell.svg",
+   "depicts": "a barbell",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "gym",
+    "gyms",
+    "barbell"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/barbell-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/barbell-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      8
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      6
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      5
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "fork-knife",
+   "file": "fork-knife.svg",
+   "depicts": "a fork and a knife",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "meal",
+    "meals",
+    "lunch"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/fork-knife-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/fork-knife-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      38
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      15
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      8
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      3
+     ],
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      2
+     ],
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "credit-card",
+   "file": "credit-card.svg",
+   "depicts": "a payment card",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "credit card",
+    "credit cards",
+    "payment card",
+    "card payment"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/credit-card-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/credit-card-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      16
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      14
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      12
+     ],
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bell",
+   "file": "bell.svg",
+   "depicts": "a bell, the sign for notifications",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "notification",
+    "notifications",
+    "bell"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/bell-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/bell-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      57
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      13
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      10
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "id": "magnifier",
+   "file": "magnifier.svg",
+   "depicts": "a magnifying glass, the sign for search",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "search",
+    "magnifying glass"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/magnifying-glass-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/magnifying-glass-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "background_removed": false,
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      93
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      56
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      18
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      16
+     ],
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      11
+     ],
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      9
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      8
+     ]
+    ]
+   }
+  }
+ ],
+ "rejected": [
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/aqueduct.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 2 thin parts (under 3% of its width, running 8% of it or more)"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/roman-shield.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 8 thin parts"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/coins.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 45 separate regions"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/sundial.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 4 thin parts"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/ancient-ruins.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 17 regions and 6 thin parts"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/spartan-helmet.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 1 thin part"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/greek-sphinx.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 1 thin part"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "cathelineau/chariot.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 1 thin part"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "caro-asercion/barn-owl.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy: 2 thin parts; lorc/owl.svg taken instead"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/column-vase.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "not the object: a vase standing on an Ionic capital, not a krater as the texts describe one"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/galley.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "not the object: its masts and yards read as a later ship, not an ancient galley; the trireme serves Rome too"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/arch-bridge.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "not the object: a modern arch with a hung deck, not a Roman stone bridge"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/laurel-crown.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "not the object: a crown inside the wreath; lorc/laurels.svg taken instead"
+  }
+ ]
+}
