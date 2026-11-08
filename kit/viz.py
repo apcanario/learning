@@ -2626,6 +2626,7 @@ def _heat(d):
 # path steps, each stretch of a line in the tone of the rise that dominates it.
 CT_RIPPLE = (.16, .09)
 SEP_FLAT = 8    # P94 checks 2 and 3: a separator's closed ring under 8 units across either way (2.4 px at 390 px, its two strokes merging into one bar) is a dash, not a ring, and is dropped; the test is on the whole contour line, before it is shared out among the rises
+SEP_SPOT = 5    # P94 check 4: a separator's spot ring is at least 5 units in radius (10 across, 3 px at 390 px), a ring rather than a speck
 SEP_SPECK = 6   # P94 check: a separator's closed ring under 6 units both ways (about 1.5 px on a 320 px phone) is a speck and is dropped   # the bump's outline: two angular harmonics, so a rise reads as land, not a target; its peak is unchanged
 
 
@@ -2841,7 +2842,7 @@ def _ct_field(d, lay, rises, iv, live):
         rings = [p for p, closed in per[k] if closed]
         own[k] = len([1 for p in rings if len({(round(x), round(y)) for x, y in p}) >= 2])
         if _ct_spotted(d, lv_of[k], own[k]):   # P93 check: a part under one level is marked by a spot ring at its peak (spot_r), its box that ring's; P94 check: in a separator, any rise with no ring of its own (one under a level its neighbours have not ringed, or one whose rings merged into its neighbours' lines)
-            sr = _ct_spot_r(rises[k], sp, W, wmax)
+            sr = _ct_spot_r(rises[k], sp, W, wmax, d.get('sep'))
             rings = [[(at[k][0] * W - sr, at[k][1] * H - sr), (at[k][0] * W + sr, at[k][1] * H + sr)]]
         xs = [x for p in rings for x, _ in p] or [at[k][0] * W]
         ys = [y for p in rings for _, y in p] or [at[k][1] * H]
@@ -2855,10 +2856,10 @@ def _ct_spotted(d, lv, own):
     return own == 0 if d.get('sep') else lv == 0
 
 
-def _ct_spot_r(r, sp, W, wmax):
+def _ct_spot_r(r, sp, W, wmax, sep=False):
     """P93 check: the radius of the spot ring that marks a written rise standing under one level (its words below the
     interval, so no contour passes round it): half its spread, at least 3 units; as a map marks a spot height."""
-    return max(3.0, .5 * sp * W * (r['words'] / wmax) ** (1 / 3))
+    return max(SEP_SPOT if sep else 3.0, .5 * sp * W * (r['words'] / wmax) ** (1 / 3))
 
 
 def contours_rings(d):
@@ -2904,7 +2905,7 @@ def contours(d):
                          f'r="{rr:.0f}"/></g>')
                 continue
             bx = ' '.join(f'{v:.0f}' for v in box[k])
-            spot = (f'<circle class="ct-spot" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" r="{_ct_spot_r(r, sp, W, max(rises[j]["words"] for j in live)):.0f}"/>'
+            spot = (f'<circle class="ct-spot" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" r="{_ct_spot_r(r, sp, W, max(rises[j]["words"] for j in live), d.get('sep')):.0f}"/>'
                     if _ct_spotted(d, lv_of[k], own[k]) else '')   # P93 check: a written part under one level still shows, as a spot ring
             where = '' if d.get('sep') else f' data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"'   # P94: a separator keeps to 6 KB; its place and box serve no check
             dd = _ct_d(per[k])
