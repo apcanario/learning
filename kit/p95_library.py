@@ -89,11 +89,11 @@ L = [
     ('greek-helmet', 'game-icons', 'lorc/crested-helmet.svg', 'a crested Greek helmet', ['greece'], ['helmet', 'helmets']),
     ('vase', 'game-icons', 'delapouite/painted-pottery.svg', 'a painted vase', ['greece'], ['vase', 'vases', 'lekythos', 'lekythoi', 'krater', 'kraters']),
     ('ostrakon', 'game-icons', 'delapouite/broken-pottery.svg', 'a broken pot (the sign for the sherds of ostracism)', ['greece'], ['ostracism', 'ostracised', 'ostraka', 'ostrakon', 'sherd', 'sherds', 'potsherd', 'potsherds']),
-    ('bull', 'game-icons', 'lorc/bull.svg', "a bull's head", ['greece', 'rome'], ['bull', 'bulls']),
+    ('bull', 'game-icons', 'lorc/bull-horns.svg', "a bull's horns", ['greece', 'rome'], ['bull', 'bulls']),
     ('hydra', 'game-icons', 'lorc/hydra.svg', 'the Hydra', ['greece'], ['Hydra']),
     ('ram', 'game-icons', 'delapouite/ram-profile.svg', 'a ram', ['greece'], ['ram', 'fleece']),
     ('scroll', 'game-icons', 'lorc/scroll-unfurled.svg', 'a scroll', ['greece', 'rome'], ['scroll', 'scrolls', 'papyrus', 'papyri', 'book-roll', 'book-rolls']),
-    ('tablet', 'game-icons', 'lorc/stone-tablet.svg', 'a tablet', ['greece', 'rome'], ['tablet', 'tablets', 'Twelve Tables']),
+    ('tablet', 'game-icons', 'lorc/broken-tablet.svg', 'an inscribed tablet', ['greece', 'rome'], ['tablet', 'tablets', 'Twelve Tables']),
     ('coins', 'game-icons', 'delapouite/two-coins.svg', 'two coins', ['greece', 'rome'], ['coin', 'coins', 'coinage', 'coinages']),
     ('horse', 'game-icons', 'lorc/horse-head.svg', "a horse's head", ['greece', 'rome'], ['horse', 'horses', 'cavalry']),
     ('wall', 'game-icons', 'delapouite/stone-wall.svg', 'a stone wall', ['greece', 'rome'], ['wall', 'walls']),
@@ -112,7 +112,7 @@ L = [
     ('chat', 'phosphor', 'assets/fill/chat-text-fill.svg', 'a speech bubble (the sign for a chat)', ['brand-b'], ['chat', 'chats']),
     ('stack', 'phosphor', 'assets/fill/stack-fill.svg', 'a stack of layers (the sign for the layers of context)', ['brand-b'], ['layer', 'layers']),
     ('gauge', 'phosphor', 'assets/fill/gauge-fill.svg', 'a gauge (the sign for usage limits)', ['brand-b'], ['limit', 'limits', 'usage']),
-    ('cards', 'phosphor', 'assets/fill/cards-fill.svg', 'a stack of cards (the sign for method cards)', ['brand-b'], ['card', 'cards']),
+    ('pen-nib', 'phosphor', 'assets/fill/pen-nib-fill.svg', 'a pen nib (the sign for writing a brief)', ['brand-b'], ['brief', 'briefs']),
     ('key', 'phosphor', 'assets/fill/key-fill.svg', 'a key (the sign for permissions)', ['ux-ia'], ['permission', 'permissions']),
 ]
 # P95 check A: what a keyword also matches that is not the object (a homonym, a title, another kind of the thing), taken
@@ -178,6 +178,11 @@ REJECTED = [
     ('game-icons', 'delapouite/lighthouse.svg', 'not the object: a modern lighthouse, not the Pharos of Greece 7.2'),
     ('game-icons', 'lorc/wine-glass.svg', 'not the object: a modern wine glass, not the krater or kylix of Greece 8.5'),
     ('game-icons', 'lorc/sacrificial-dagger.svg', 'busy: 2 thin parts (lorc/plain-dagger.svg taken for Rome 11.7)'),
+    ('game-icons', 'lorc/bull.svg', 'not the object: as a silhouette only the horns, the eyes and a nose ring stand, no head (contact sheet); lorc/bull-horns.svg taken'),
+    ('game-icons', 'lorc/stone-tablet.svg', 'not the object: its relief reads as a rock, not a tablet (contact sheet); lorc/broken-tablet.svg taken'),
+    ('phosphor', 'assets/fill/cow-fill.svg', 'not the object: a cartoon cow, not a bull'),
+    ('phosphor', 'assets/fill/cards-fill.svg', 'not the object: its relief reads as nested rectangles, not cards (contact sheet); Building with AI DD-B3 gets none'),
+    ('phosphor', 'assets/fill/cards-three-fill.svg', 'not the object: a box under two bars, not a card'),
     ('phosphor', 'assets/fill/calculator-fill.svg', 'not the object: Brand DD-A2 names savings and a runway, never a calculator'),
 ]
 # P96: outlines in the library that no reading page shows yet, kept for the texts that name them (verify.py: every

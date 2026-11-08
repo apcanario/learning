@@ -119,13 +119,13 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 
 ## Building with AI
 
-11 pages with a relief, 10 outlines in use (cards, chat, context-window, cost, gauge, magnifier, picture, plug, stack, terminal); 0 pages with none.
+10 pages with a relief, 10 outlines in use (chat, context-window, cost, gauge, magnifier, pen-nib, picture, plug, stack, terminal); 1 pages with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
 | B1 (`read-b1`) | context-window | 15 | 1 · The context window is the one thing you control |
 | B2 (`read-b2`) | cost | 89 | 5 · Cost per task |
-| B3 (`read-b3`) | chat | 29 | A format clause names the container as well as the layout: a Markdown file in the vault, a message ready to paste, a table in the chat. |
+| B3 (`read-b3`) | pen-nib | 33 | A brief survives when someone with no context can act on it without coming back with a question. |
 | B4 (`read-b4`) | stack | 38 | 1 · The layers in claude.ai, and what belongs in each |
 | B5 (`read-b5`) | plug | 5 | 3 · How his existing plugin skills fire |
 | B6 (`read-b6`) | magnifier | 37 | 1 · Ask, search or deep research |
@@ -133,9 +133,8 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | B8 (`read-b8`) | gauge | 116 | 2 · What burns usage for no gain |
 | DD-B1 (`read-dd-b1`) | terminal | 41 | 2 · Claude Code and subagents in practice |
 | DD-B2 (`read-dd-b2`) | chat | 162 | The evidence is this Project's own chat history, read through three past-chat tools. `recent_chats` lists chats by when they were last updated, with each chat's title, its first message, a stretch of its opening or closing turns and, for some chats, a summary. |
-| DD-B3 (`read-dd-b3`) | cards | 5 | One card per method. |
 
-**None:** every page has one.
+**None:** DD-B3 (`read-dd-b3`), chat 20.
 
 
 ## Information architecture

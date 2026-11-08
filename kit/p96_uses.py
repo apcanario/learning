@@ -116,7 +116,7 @@ MAP = [
     # Building with AI
     ('read-b1', 'context-window', 'The context window is the one thing you control'),
     ('read-b2', 'cost', 'Cost per task'),
-    ('read-b3', 'chat', 'a table in the chat'),
+    ('read-b3', 'pen-nib', 'A brief survives when someone with no context can act on it'),
     ('read-b4', 'stack', 'The layers in claude.ai, and what belongs in each'),
     ('read-b5', 'plug', 'How his existing plugin skills fire'),
     ('read-b6', 'magnifier', 'Ask, search or deep research'),
@@ -124,7 +124,6 @@ MAP = [
     ('read-b8', 'gauge', 'What burns usage for no gain'),
     ('read-dd-b1', 'terminal', 'Claude Code and subagents in practice'),
     ('read-dd-b2', 'chat', "The evidence is this Project's own chat history"),
-    ('read-dd-b3', 'cards', 'One card per method'),
     # Information architecture
     ('read-ia1', 'books', 'The second line is library science'),
     ('read-ia2', 'map', 'gives a chapter each to personas, concept models, site maps'),

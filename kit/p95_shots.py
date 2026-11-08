@@ -4,7 +4,8 @@ under it) at 320, 360, 390, 430, 768 and 1280 px, dark and light, at rest (reduc
 motion allowed, the relief alone at the five poses of the turn (0, .25, .5, .75, 1 of the sweep) at the top of the
 breath, as verify.py poses it. Every shot is under 8,000 px tall.
 
-    python3 p95_shots.py <folder>
+    python3 p95_shots.py <folder>                                  every mapped page
+    python3 p95_shots.py <folder> m11 read-a4 --widths 390,1280      (P96) a sample of pages, at some of the widths
 """
 import functools, json, pathlib, sys, threading
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
@@ -35,7 +36,12 @@ class Quiet(SimpleHTTPRequestHandler):
 
 def main():
     from playwright.sync_api import sync_playwright
-    out = pathlib.Path(sys.argv[1])
+    args = sys.argv[1:]
+    out = pathlib.Path(args.pop(0))
+    widths = WIDTHS
+    if '--widths' in args:
+        i = args.index('--widths'); widths = [int(x) for x in args[i + 1].split(',')]; del args[i:i + 2]
+    uses = {p: USES[p] for p in args} if args else USES
     out.mkdir(parents=True, exist_ok=True)
     srv = ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(Quiet, directory=str(SITE)))
     threading.Thread(target=srv.serve_forever, daemon=True).start()
@@ -44,7 +50,7 @@ def main():
     css = (fonts / 'fonts.css').read_text()
     with sync_playwright() as pw:
         br = pw.chromium.launch()
-        for w in WIDTHS:
+        for w in widths:
             for theme in ('dark', 'light'):
                 for motion in ((False, True) if (w == 390 and theme == 'dark') else (False,)):
                     ctx = br.new_context(viewport=dict(width=w, height=900), device_scale_factor=2 if w < 768 else 1, is_mobile=w < 768,
@@ -55,7 +61,7 @@ def main():
                     pg.goto(url + '#home'); pg.wait_for_timeout(300)
                     if theme == 'light':
                         pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
-                    for pid, oid in USES.items():
+                    for pid, oid in uses.items():
                         pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(900)
                         pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(100)
                         if not motion:

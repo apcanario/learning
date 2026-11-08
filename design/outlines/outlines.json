@@ -3857,7 +3857,7 @@
   {
    "id": "bull",
    "file": "bull.svg",
-   "depicts": "a bull's head",
+   "depicts": "a bull's horns",
    "courses": [
     "greece",
     "rome"
@@ -3868,9 +3868,9 @@
    ],
    "source": {
     "repository": "game-icons/icons",
-    "path": "lorc/bull.svg",
+    "path": "lorc/bull-horns.svg",
     "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
-    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/bull.svg"
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/bull-horns.svg"
    },
    "author": "Lorc",
    "licence": "CC BY 3.0",
@@ -4339,7 +4339,7 @@
   {
    "id": "tablet",
    "file": "tablet.svg",
-   "depicts": "a tablet",
+   "depicts": "an inscribed tablet",
    "courses": [
     "greece",
     "rome"
@@ -4351,9 +4351,9 @@
    ],
    "source": {
     "repository": "game-icons/icons",
-    "path": "lorc/stone-tablet.svg",
+    "path": "lorc/broken-tablet.svg",
     "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
-    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/stone-tablet.svg"
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/broken-tablet.svg"
    },
    "author": "Lorc",
    "licence": "CC BY 3.0",
@@ -6853,21 +6853,21 @@
    }
   },
   {
-   "id": "cards",
-   "file": "cards.svg",
-   "depicts": "a stack of cards (the sign for method cards)",
+   "id": "pen-nib",
+   "file": "pen-nib.svg",
+   "depicts": "a pen nib (the sign for writing a brief)",
    "courses": [
     "brand-b"
    ],
    "keywords": [
-    "card",
-    "cards"
+    "brief",
+    "briefs"
    ],
    "source": {
     "repository": "phosphor-icons/core",
-    "path": "assets/fill/cards-fill.svg",
+    "path": "assets/fill/pen-nib-fill.svg",
     "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
-    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/cards-fill.svg"
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/pen-nib-fill.svg"
    },
    "author": "Phosphor Icons",
    "licence": "MIT",
@@ -6879,15 +6879,47 @@
    "texts": {
     "brand-b": [
      [
-      "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
-      5
+      "courses/brand-ai/B3-prompting-that-holds-up.md",
+      33
+     ],
+     [
+      "courses/brand-ai/B4-context-engineering.md",
+      19
      ],
      [
       "courses/brand-ai/B8-cost-limits-hygiene.md",
-      3
+      17
+     ],
+     [
+      "courses/brand-ai/B7-content-pipeline.md",
+      11
      ],
      [
       "courses/brand-ai/DD-B1-deep-dive-agents.md",
+      11
+     ],
+     [
+      "courses/brand-ai/DD-B2-deep-dive-his-unknown-unknowns.md",
+      10
+     ],
+     [
+      "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
+      10
+     ],
+     [
+      "courses/brand-ai/B1-mental-model.md",
+      5
+     ],
+     [
+      "courses/brand-ai/B5-skills-and-automation.md",
+      5
+     ],
+     [
+      "courses/brand-ai/B6-research-and-verification.md",
+      4
+     ],
+     [
+      "courses/brand-ai/B2-choosing-the-model.md",
       2
      ]
     ]
@@ -7227,6 +7259,46 @@
     "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
    },
    "reason": "busy: 2 thin parts (lorc/plain-dagger.svg taken for Rome 11.7)"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/bull.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "not the object: as a silhouette only the horns, the eyes and a nose ring stand, no head (contact sheet); lorc/bull-horns.svg taken"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/stone-tablet.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "not the object: its relief reads as a rock, not a tablet (contact sheet); lorc/broken-tablet.svg taken"
+  },
+  {
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/cow-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
+   },
+   "reason": "not the object: a cartoon cow, not a bull"
+  },
+  {
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/cards-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
+   },
+   "reason": "not the object: its relief reads as nested rectangles, not cards (contact sheet); Building with AI DD-B3 gets none"
+  },
+  {
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/cards-three-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
+   },
+   "reason": "not the object: a box under two bars, not a card"
   },
   {
    "source": {
