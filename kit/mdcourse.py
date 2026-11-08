@@ -27,7 +27,7 @@ for _pid, _oid in USES.items():
 
 def relief_caption(o):
     """P95: an outline's caption: what it shows, that it is a stylised outline, and its credit line, as printed."""
-    return f'{o["depicts"][0].upper()}{o["depicts"][1:]}, a stylised outline. {o["credit"]}.'
+    return f'{o["depicts"][0].upper()}{o["depicts"][1:]}, a stylised outline drawn as a relief from an icon. {o["credit"]}.'   # P95 check B2: CC BY 3.0 asks an adaptation's credit to say it is one
 
 
 def relief_caption_html(o):

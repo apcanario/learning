@@ -23,11 +23,11 @@ LICENCE_FILES = {'game-icons/icons': ('game-icons_icons', 'license.txt'), 'phosp
                  'tabler/tabler-icons': ('tabler_tabler-icons', 'LICENSE')}
 
 
-def grep_lines(course, kws, cap=8):
+def grep_lines(course, kws, oid='', cap=8):
     rx = re.compile(r'\b(?:' + '|'.join(re.escape(k) for k in kws) + r')\b', re.I)
     out = []
     for f in p95_library.TEXTS[course]:
-        for n, ln in enumerate(f.read_text(encoding='utf-8').splitlines(), 1):
+        for n, ln in enumerate(p95_library.prose(f, oid).splitlines(), 1):   # its prose: figure data and the outline's excludes taken out (line numbers of the prose)
             if rx.search(ln):
                 s = ln.strip()
                 m = rx.search(s)
@@ -49,11 +49,11 @@ def checker_a(clones, sheet, out):
         (out / f'licence-{cl}.txt').write_text(f'{repo} at {sha}, file {f}:\n\n{txt}')
     for t in ('dark', 'light'):
         shutil.copy(sheet / f'sheet-{t}.png', out / f'contact-sheet-{t}.png')
-    g = ['# Grep lines', '', 'For each outline and each course it serves: the lines of that course\'s texts that name it (its keywords, whole words, any case), at most eight per course, with the total.', '']
+    g = ['# Grep lines', '', 'For each outline and each course it serves: the lines of that course\'s texts that name it (its keywords, whole words, any case), at most eight per course, with the total; read from the prose (figure declarations and the outline\'s excludes taken out, so a line number may differ from the file\'s where a figure stood above it).', '']
     for o in lib['outlines']:
         g.append(f'## {o["id"]} · {o["depicts"]} · keywords: {", ".join(o["keywords"])}')
         for c in o['courses']:
-            lines, n = grep_lines(c, o['keywords'])
+            lines, n = grep_lines(c, o['keywords'], o['id'])
             g.append(f'### {c}: {n} lines in all')
             g += [f'- {x}' for x in lines]
         g.append('')

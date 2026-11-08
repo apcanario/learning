@@ -48,22 +48,21 @@ L = [
     ('wooden-horse', 'game-icons', 'delapouite/trojan-horse.svg', 'the wooden horse', ['greece'], ['wooden horse', 'Trojan horse']),
     ('centaur', 'game-icons', 'delapouite/centaur.svg', 'a centaur', ['greece'], ['centaur', 'centaurs']),
     ('minotaur', 'game-icons', 'lorc/minotaur.svg', 'the Minotaur', ['greece'], ['Minotaur']),
-    ('centurion-helmet', 'game-icons', 'delapouite/centurion-helmet.svg', "a centurion's crested helmet", ['rome'], ['centurion', 'centurions', 'helmet', 'helmets']),
+    ('centurion-helmet', 'game-icons', 'delapouite/centurion-helmet.svg', 'a crested Roman helmet', ['rome'], ['centurion', 'centurions', 'helmet', 'helmets']),
     ('gladius', 'game-icons', 'skoll/gladius.svg', 'a short sword', ['rome'], ['gladius', 'sword', 'swords']),
     ('toga', 'game-icons', 'delapouite/roman-toga.svg', 'a figure in a toga', ['rome'], ['toga', 'togas']),
     ('eagle', 'game-icons', 'lorc/eagle-emblem.svg', 'an eagle with spread wings', ['rome'], ['eagle', 'eagles', 'aquila']),
     ('wolf', 'game-icons', 'lorc/wolf-head.svg', "a wolf's head", ['rome'], ['wolf', 'she-wolf', 'wolves']),
     ('bridge', 'game-icons', 'delapouite/stone-bridge.svg', 'an arched stone bridge', ['rome'], ['bridge', 'bridges']),
     ('torch', 'game-icons', 'delapouite/torch.svg', 'a burning torch', ['rome'], ['torch', 'torches']),
-    ('gi', 'game-icons', 'delapouite/kimono.svg', 'a karate gi, its jacket belted', ['brand-a'], ['gi', 'gis', 'kimono', 'dogi']),
-    ('video-camera', 'phosphor', 'assets/fill/video-camera-fill.svg', 'a video camera', ['brand-a'], ['video camera', 'camera', 'cameras']),
+    ('gi', 'game-icons', 'delapouite/kimono.svg', 'a karate gi with its jacket belted', ['brand-a'], ['gi', 'gis', 'kimono', 'dogi']),
+    ('video-camera', 'phosphor', 'assets/fill/video-camera-fill.svg', 'a video camera (the sign for filming)', ['brand-a'], ['video camera', 'camera', 'cameras']),
     ('picture', 'phosphor', 'assets/fill/image-fill.svg', 'a picture (the sign for a thumbnail)', ['brand-a', 'brand-b'], ['thumbnail', 'thumbnails']),
     ('money', 'phosphor', 'assets/fill/money-fill.svg', 'a banknote (the sign for money)', ['brand-a'], ['money']),
-    ('microphone', 'phosphor', 'assets/fill/microphone-fill.svg', 'a stand microphone', ['brand-a'], ['microphone', 'microphones', 'mic', 'mics']),
+    ('microphone', 'phosphor', 'assets/fill/microphone-fill.svg', 'a microphone', ['brand-a'], ['microphone', 'microphones', 'mic', 'mics']),
     ('phone', 'phosphor', 'assets/fill/device-mobile-fill.svg', 'a phone', ['brand-a', 'ux-ia'], ['phone', 'phones', 'smartphone', 'smartphones', 'iPhone']),
     ('calendar', 'phosphor', 'assets/fill/calendar-blank-fill.svg', 'a calendar', ['brand-a', 'brand-b'], ['calendar', 'calendars']),
     ('tag', 'phosphor', 'assets/fill/tag-fill.svg', 'a tag (the sign for labels)', ['ux-ia'], ['tag', 'tags', 'label', 'labels']),
-    ('bar-chart', 'phosphor', 'assets/fill/chart-bar-fill.svg', 'a bar chart', ['brand-a'], ['chart', 'charts', 'bar chart']),
     ('receipt', 'phosphor', 'assets/fill/receipt-fill.svg', 'a receipt', ['brand-a', 'ux-ia'], ['receipt', 'receipts', 'invoice', 'invoices']),
     ('envelope', 'phosphor', 'assets/fill/envelope-simple-fill.svg', 'an envelope (the sign for email)', ['brand-a', 'brand-b', 'ux-ia'], ['email', 'emails', 'envelope']),
     ('folder', 'phosphor', 'assets/fill/folder-fill.svg', 'a folder', ['brand-a', 'brand-b'], ['folder', 'folders']),
@@ -82,21 +81,23 @@ L = [
     ('bicycle', 'phosphor', 'assets/fill/bicycle-fill.svg', 'a bicycle', ['ux-ia'], ['bike', 'bikes', 'bicycle', 'bicycles', 'cycling']),
     ('barbell', 'phosphor', 'assets/fill/barbell-fill.svg', 'a barbell (the sign for a gym)', ['ux-ia'], ['gym', 'gyms', 'barbell']),
     ('fork-knife', 'phosphor', 'assets/fill/fork-knife-fill.svg', 'a fork and a knife (the sign for meals)', ['ux-ia'], ['meal', 'meals', 'lunch']),
-    ('credit-card', 'phosphor', 'assets/fill/credit-card-fill.svg', 'a payment card', ['ux-ia'], ['credit card', 'credit cards', 'payment card', 'card payment']),
+    ('credit-card', 'phosphor', 'assets/fill/credit-card-fill.svg', 'a payment card', ['ux-ia'], ['Perqo card', 'credit card', 'credit cards', 'payment card', 'payment cards']),
     ('bell', 'phosphor', 'assets/fill/bell-fill.svg', 'a bell (the sign for notifications)', ['ux-ia'], ['notification', 'notifications', 'bell']),
     ('magnifier', 'phosphor', 'assets/fill/magnifying-glass-fill.svg', 'a magnifying glass (the sign for search)', ['ux-ia'], ['search', 'magnifying glass']),
 ]
 # P95 check A: what a keyword also matches that is not the object (a homonym, a title, another kind of the thing), taken
 # out of each line before counting
 EXCLUDE = {
-    'theatre-masks': [r'death[- ]masks?', r'(?:gold(?:en)?|funeral|funerary|burial|wax) masks?', r'Mask of Agamemnon'],
+    'theatre-masks': [r'death[- ]masks?', r'(?:gold(?:en)?|funeral|funerary|burial|wax) masks?', r'Mask of Agamemnon', r'mask from Grave \w+', r"mask's authenticity", r'Humbaba masks?', r'grotesque masks?'],
     'terminal': [r'Terminal-Bench'],
     'eagle': [r'eagle-owls?'],
     'wolf': [r'Hieronymus Wolf'],
-    'bridge': [r'bridge and barrier', r'bridge to the', r'bridge between'],
-    'gladius': [r'fire and sword'],
-    'receipt': [r'Receipts inside', r'net receipts'],
+    'bridge': [r'bridge and barrier', r'bridge to the', r'bridge to Italy', r'bridge between', r'Rhine bridges?', r'bridges? (?:over|across) the Rhine', r'Pons Sublicius', r'Sublician bridge', r'bridge of boats'],
+    'gladius': [r'fire and sword', r'fire, sword'],
+    'receipt': [r'Receipts inside', r'net receipts', r'Tier receipts', r'trailing receipts', r'quarters of receipts'],
     'map': [r'\bmaps? (?:to|onto|into)\b'],
+    'database': [r'Cochrane Database'],
+    'phone': [r'phone (?:fields?|numbers?|line|volume)'],
 }
 # taken from the sets and measured, then not used: busy (relief.py's measures) or not the object the texts name
 REJECTED = [
@@ -121,6 +122,7 @@ REJECTED = [
     ('phosphor', 'assets/fill/flask-fill.svg', 'not the object: "lab" names AI laboratories, never a flask'),
     ('phosphor', 'assets/fill/robot-fill.svg', 'not the object: "robots" is the robots.txt rule and a quoted metaphor'),
     ('phosphor', 'assets/fill/brain-fill.svg', 'not the object: "brain dump", "pick your brain", a skill\'s name; the organ only in passing'),
+    ('phosphor', 'assets/fill/chart-bar-fill.svg', 'not the object: the texts name charts only in passing and in a source\'s title, never a bar chart (second check of the library)'),
     ('phosphor', 'assets/fill/camera-fill.svg', 'a second camera: the texts\' camera is the phone filming, kept as the video camera'),
 ]
 
@@ -138,6 +140,8 @@ def prose(f, oid):
     """P95 check A: a text as prose: its figure declarations (```viz blocks, history figures) taken out, whose JSON keys
     ("label") and data are not the text naming an object, and each outline's EXCLUDE patterns taken out."""
     t = FIG.sub(' ', f.read_text(encoding='utf-8'))
+    t = re.sub(r'\A---\n.*?\n---\n', ' ', t, flags=re.S)        # the front matter (search: off)
+    t = re.sub(r'\]\([^)\s]*\)|https?://\S+', ' ', t)               # link targets and URLs (a slug such as earn-money)
     for x in EXCLUDE.get(oid, []):
         t = re.sub(x, ' ', t, flags=re.I)
     return t
@@ -182,7 +186,7 @@ def main():
                      'unchanged but for the background square a set adds (removed by kit/p95_library.py), because a course\'s texts '
                      'discuss the object: "texts" lists, for each course it serves, every file whose text names it (its keywords) '
                      'with the count. kit/relief.py turns each into <id>.json, which viz.py\'s kind "relief" draws. A caption prints '
-                     '"<depicts>, a stylised outline. <credit>.", the licence linked; verify.py checks it is printed exactly. A count is '
+                     '"<depicts>, a stylised outline drawn as a relief from an icon. <credit>.", the licence linked; verify.py checks it is printed exactly. A count is '
                      'of the prose: figure declarations and each outline\'s "excludes" (homonyms) are taken out first. licences/ holds '
                      'each set\'s licence file at the commit taken.',
                allowed_licences=ALLOWED, outlines=out, rejected=rej)

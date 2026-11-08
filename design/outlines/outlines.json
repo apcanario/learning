@@ -1,5 +1,5 @@
 {
- "about": "P95 (8 Nov 2026): the outline library. Each outline is a file from an open icon set on GitHub, taken unchanged but for the background square a set adds (removed by kit/p95_library.py), because a course's texts discuss the object: \"texts\" lists, for each course it serves, every file whose text names it (its keywords) with the count. kit/relief.py turns each into <id>.json, which viz.py's kind \"relief\" draws. A caption prints \"<depicts>, a stylised outline. <credit>.\", the licence linked; verify.py checks it is printed exactly. A count is of the prose: figure declarations and each outline's \"excludes\" (homonyms) are taken out first. licences/ holds each set's licence file at the commit taken.",
+ "about": "P95 (8 Nov 2026): the outline library. Each outline is a file from an open icon set on GitHub, taken unchanged but for the background square a set adds (removed by kit/p95_library.py), because a course's texts discuss the object: \"texts\" lists, for each course it serves, every file whose text names it (its keywords) with the count. kit/relief.py turns each into <id>.json, which viz.py's kind \"relief\" draws. A caption prints \"<depicts>, a stylised outline drawn as a relief from an icon. <credit>.\", the licence linked; verify.py checks it is printed exactly. A count is of the prose: figure declarations and each outline's \"excludes\" (homonyms) are taken out first. licences/ holds each set's licence file at the commit taken.",
  "allowed_licences": [
   "CC BY 3.0",
   "CC0 1.0",
@@ -136,19 +136,19 @@
       16
      ],
      [
-      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
-      12
-     ],
-     [
       "courses/greece/5.1-the-eighth-century-renaissance.md",
       11
      ],
      [
-      "courses/greece/8.1-ritual-practice-sacrifice-temples-priests-pollution.md",
-      10
+      "courses/greece/9.1-reading-greek-art-temples-sculpture-vases.md",
+      11
      ],
      [
       "courses/greece/7.4-greece-under-the-empire-and-the-end-of-antiquity.md",
+      9
+     ],
+     [
+      "courses/greece/8.1-ritual-practice-sacrifice-temples-priests-pollution.md",
       9
      ],
      [
@@ -1005,7 +1005,11 @@
    "excludes": [
     "death[- ]masks?",
     "(?:gold(?:en)?|funeral|funerary|burial|wax) masks?",
-    "Mask of Agamemnon"
+    "Mask of Agamemnon",
+    "mask from Grave \\w+",
+    "mask's authenticity",
+    "Humbaba masks?",
+    "grotesque masks?"
    ],
    "texts": {
     "greece": [
@@ -1018,24 +1022,12 @@
       3
      ],
      [
-      "courses/greece/10.2-agamemnon-and-the-kingship-of-the-atreids.md",
-      2
-     ],
-     [
       "courses/greece/2.2-the-twelve-olympians.md",
       2
      ],
      [
       "courses/greece/9.3-reception-how-it-all-reached-you.md",
       2
-     ],
-     [
-      "courses/greece/2.6-the-monsters-and-their-genealogy.md",
-      1
-     ],
-     [
-      "courses/greece/5.4-sparta.md",
-      1
      ],
      [
       "courses/greece/7.3-rome-conquers-greece.md",
@@ -1213,7 +1205,7 @@
   {
    "id": "centurion-helmet",
    "file": "centurion-helmet.svg",
-   "depicts": "a centurion's crested helmet",
+   "depicts": "a crested Roman helmet",
    "courses": [
     "rome"
    ],
@@ -1358,7 +1350,8 @@
    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
    "background_removed": true,
    "excludes": [
-    "fire and sword"
+    "fire and sword",
+    "fire, sword"
    ],
    "texts": {
     "rome": [
@@ -1399,10 +1392,6 @@
       2
      ],
      [
-      "courses/rome/10.1-ovid-and-the-roman-remaking-of-greek-myth.md",
-      2
-     ],
-     [
       "courses/rome/11.4-women-and-the-late-republic.md",
       2
      ],
@@ -1425,6 +1414,10 @@
      [
       "courses/rome/9.4-bread-baths-and-games.md",
       2
+     ],
+     [
+      "courses/rome/10.1-ovid-and-the-roman-remaking-of-greek-myth.md",
+      1
      ],
      [
       "courses/rome/11.3-politics-in-the-street.md",
@@ -1792,25 +1785,19 @@
    "excludes": [
     "bridge and barrier",
     "bridge to the",
-    "bridge between"
+    "bridge to Italy",
+    "bridge between",
+    "Rhine bridges?",
+    "bridges? (?:over|across) the Rhine",
+    "Pons Sublicius",
+    "Sublician bridge",
+    "bridge of boats"
    ],
    "texts": {
     "rome": [
      [
-      "courses/rome/11.6-caesars-commentaries-and-gaul.md",
-      3
-     ],
-     [
-      "courses/rome/4.2-the-first-punic-war.md",
-      3
-     ],
-     [
-      "courses/rome/5.4-caesar.md",
-      3
-     ],
-     [
       "courses/rome/8.3-constantine.md",
-      3
+      2
      ],
      [
       "courses/rome/0.2-italy-and-the-mediterranean-the-shape-of-romes-world.md",
@@ -1826,6 +1813,10 @@
      ],
      [
       "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
+      1
+     ],
+     [
+      "courses/rome/4.2-the-first-punic-war.md",
       1
      ],
      [
@@ -1915,7 +1906,7 @@
   {
    "id": "gi",
    "file": "gi.svg",
-   "depicts": "a karate gi, its jacket belted",
+   "depicts": "a karate gi with its jacket belted",
    "courses": [
     "brand-a"
    ],
@@ -1962,7 +1953,7 @@
   {
    "id": "video-camera",
    "file": "video-camera.svg",
-   "depicts": "a video camera",
+   "depicts": "a video camera (the sign for filming)",
    "courses": [
     "brand-a"
    ],
@@ -2108,27 +2099,27 @@
     "brand-a": [
      [
       "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
-      12
+      8
      ],
      [
       "courses/brand-ai/A7-monetisation-through-shomen.md",
-      7
-     ],
-     [
-      "courses/brand-ai/A9-what-to-expect-benchmarks.md",
-      7
-     ],
-     [
-      "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
-      7
-     ],
-     [
-      "courses/brand-ai/A2-audience-and-platform-economics.md",
       5
      ],
      [
-      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      "courses/brand-ai/A9-what-to-expect-benchmarks.md",
+      5
+     ],
+     [
+      "courses/brand-ai/A2-audience-and-platform-economics.md",
       3
+     ],
+     [
+      "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
+      3
+     ],
+     [
+      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      1
      ]
     ]
    }
@@ -2136,7 +2127,7 @@
   {
    "id": "microphone",
    "file": "microphone.svg",
-   "depicts": "a stand microphone",
+   "depicts": "a microphone",
    "courses": [
     "brand-a"
    ],
@@ -2163,7 +2154,7 @@
     "brand-a": [
      [
       "courses/brand-ai/A5-production-craft.md",
-      18
+      13
      ],
      [
       "courses/brand-ai/A3-the-journey-system.md",
@@ -2199,34 +2190,32 @@
    "set": "phosphor",
    "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
    "background_removed": false,
-   "excludes": [],
+   "excludes": [
+    "phone (?:fields?|numbers?|line|volume)"
+   ],
    "texts": {
     "brand-a": [
      [
       "courses/brand-ai/A5-production-craft.md",
-      15
+      13
      ],
      [
       "courses/brand-ai/A3-the-journey-system.md",
       7
      ],
      [
-      "courses/brand-ai/A2-audience-and-platform-economics.md",
-      3
-     ],
-     [
       "courses/brand-ai/DD-A1-deep-dive-five-creators-who-did-this.md",
       2
+     ],
+     [
+      "courses/brand-ai/A2-audience-and-platform-economics.md",
+      1
      ]
     ],
     "ux-ia": [
      [
       "courses/ux/IA6-level-2-the-client-app.md",
       8
-     ],
-     [
-      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      2
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
@@ -2375,56 +2364,6 @@
    }
   },
   {
-   "id": "bar-chart",
-   "file": "bar-chart.svg",
-   "depicts": "a bar chart",
-   "courses": [
-    "brand-a"
-   ],
-   "keywords": [
-    "chart",
-    "charts",
-    "bar chart"
-   ],
-   "source": {
-    "repository": "phosphor-icons/core",
-    "path": "assets/fill/chart-bar-fill.svg",
-    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
-    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/chart-bar-fill.svg"
-   },
-   "author": "Phosphor Icons",
-   "licence": "MIT",
-   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
-   "set": "phosphor",
-   "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
-   "background_removed": false,
-   "excludes": [],
-   "texts": {
-    "brand-a": [
-     [
-      "courses/brand-ai/A2-audience-and-platform-economics.md",
-      2
-     ],
-     [
-      "courses/brand-ai/A6-how-growth-works-per-platform.md",
-      2
-     ],
-     [
-      "courses/brand-ai/A7-monetisation-through-shomen.md",
-      2
-     ],
-     [
-      "courses/brand-ai/A9-what-to-expect-benchmarks.md",
-      2
-     ],
-     [
-      "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
-      2
-     ]
-    ]
-   }
-  },
-  {
    "id": "receipt",
    "file": "receipt.svg",
    "depicts": "a receipt",
@@ -2452,7 +2391,10 @@
    "background_removed": false,
    "excludes": [
     "Receipts inside",
-    "net receipts"
+    "net receipts",
+    "Tier receipts",
+    "trailing receipts",
+    "quarters of receipts"
    ],
    "texts": {
     "brand-a": [
@@ -2462,7 +2404,7 @@
      ],
      [
       "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
-      5
+      2
      ]
     ],
     "ux-ia": [
@@ -2536,11 +2478,11 @@
      ],
      [
       "courses/brand-ai/A6-how-growth-works-per-platform.md",
-      16
+      12
      ],
      [
       "generator/data/brand-ai/audience-growth-across-platforms.md",
-      13
+      12
      ],
      [
       "courses/brand-ai/A2-audience-and-platform-economics.md",
@@ -2883,7 +2825,7 @@
     "brand-b": [
      [
       "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
-      5
+      3
      ]
     ]
    }
@@ -2979,13 +2921,11 @@
    "set": "phosphor",
    "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
    "background_removed": false,
-   "excludes": [],
+   "excludes": [
+    "Cochrane Database"
+   ],
    "texts": {
     "brand-b": [
-     [
-      "courses/brand-ai/B6-research-and-verification.md",
-      2
-     ],
      [
       "courses/brand-ai/B1-mental-model.md",
       1
@@ -3127,15 +3067,15 @@
     "ux-ia": [
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
-      43
+      40
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      35
+      34
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
-      15
+      13
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -3190,7 +3130,7 @@
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      30
+      28
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -3198,11 +3138,11 @@
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      11
+      10
      ],
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
-      9
+      7
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
@@ -3246,32 +3186,32 @@
    "texts": {
     "ux-ia": [
      [
-      "courses/ux/IA3-how-people-find-and-understand-things.md",
-      37
-     ],
-     [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
-      34
+      29
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      32
-     ],
-     [
-      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       28
      ],
      [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      22
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      20
+     ],
+     [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
-      13
+      10
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
-      9
+      7
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
-      7
+      5
      ]
     ]
    }
@@ -3432,10 +3372,11 @@
     "ux-ia"
    ],
    "keywords": [
+    "Perqo card",
     "credit card",
     "credit cards",
     "payment card",
-    "card payment"
+    "payment cards"
    ],
    "source": {
     "repository": "phosphor-icons/core",
@@ -3453,20 +3394,32 @@
    "texts": {
     "ux-ia": [
      [
-      "courses/ux/IA6-level-2-the-client-app.md",
-      14
-     ],
-     [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      12
+      20
      ],
      [
-      "courses/ux/IA7-level-3-the-backoffice.md",
+      "courses/ux/IA6-level-2-the-client-app.md",
       10
      ],
      [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      8
+     ],
+     [
+      "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      7
+     ],
+     [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
-      3
+      1
+     ],
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      1
+     ],
+     [
+      "courses/ux/IA3-how-people-find-and-understand-things.md",
+      1
      ]
     ]
    }
@@ -3545,31 +3498,31 @@
     "ux-ia": [
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
-      92
+      77
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
-      53
+      42
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      18
+      17
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
-      16
+      15
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
-      10
-     ],
-     [
-      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
       9
      ],
      [
-      "courses/ux/IA6-level-2-the-client-app.md",
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
       8
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      7
      ]
     ]
    }
@@ -3735,6 +3688,14 @@
     "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
    },
    "reason": "not the object: \"brain dump\", \"pick your brain\", a skill's name; the organ only in passing"
+  },
+  {
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/chart-bar-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
+   },
+   "reason": "not the object: the texts name charts only in passing and in a source's title, never a bar chart (second check of the library)"
   },
   {
    "source": {
