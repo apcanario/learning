@@ -69,7 +69,7 @@
   --fg:#ececf1;--muted:#9a9aa6;--dim:#6b6b78;
   --red:#ff6b6b;--orange:#f4a261;--teal:#2a9d8f;--blue:#457b9d;--purple:#9b5de5;--gold:#e9c46a;
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
-  --topo-a:.16;--topo-p:.62;   /* P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page; P93: .16, from .2, so the course homes' and What's new's texts, which stand over the lines, keep theirs at every pose of the move) and a tile's patch */
+  --topo-a:.16;--topo-p:.62;--topo-s:.62;   /* P94: --topo-s, a section separator's lines (section 9). P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page; P93: .16, from .2, so the course homes' and What's new's texts, which stand over the lines, keep theirs at every pose of the move) and a tile's patch */
   --topo-turn:3deg;--topo-cycle:10s;   /* P93: the contours' turn, both themes: +/- 3 degrees over 10 s each way (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile": at 120 s a corner of the home's layer moved 0.6 px/s at most and read as still; 5 Nov, 04:11, at 20 s: "it could be faster") */
   --topo-grow:1.1;--topo-breath:6s;   /* P93 follow-up (Pedro, 5 Nov 2026, 07:49, on that morning's heartbeat, a pop of the inner rings every 1.6 s: "It wasn't supposed to be that fast and to pop within the outer line. The whole drawing was supposed to flowingly expand and contract, slowishly but fluidly. Even the outer edges"): the whole drawing breathes, from 1 to 1.1 about its centre and back, 6 s each way (until then it grew to 1.06 with the turn) */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
@@ -90,7 +90,7 @@
   --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
   --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
   --on-accent:#f5f2eb;
-  --topo-a:.16;--topo-p:.6;
+  --topo-a:.16;--topo-p:.6;--topo-s:.6;
   --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }}
@@ -99,7 +99,7 @@
   --fg:#1b1915;--muted:#4a463f;--dim:#5e5950;
   --red:#bd0000;--orange:#9c4500;--teal:#006b5e;--blue:#0062a0;--purple:#7400fe;--gold:#7c5800;
   --on-accent:#f5f2eb;
-  --topo-a:.16;--topo-p:.6;
+  --topo-a:.16;--topo-p:.6;--topo-s:.6;
   --bar-bg:rgba(232,228,220,.94);--hover:rgba(40,30,10,.06);--scrim:rgba(20,18,14,.35);--shadow:rgba(40,30,10,.18);--code:#e4dfd5;
   color-scheme:light;
 }
@@ -881,6 +881,15 @@ a.course:active{transform:translateY(0);box-shadow:none}
 .secnav a.snext span{color:var(--on-accent)}
 .secnav a.send{background:transparent;border-color:var(--line-2);color:var(--fg)}
 .secnav a.send span{color:var(--muted);opacity:1}
+/* P94 (theme 6.7): the section separator. Every section with a paragraph ends on a horizontal topography of its
+   paragraphs (kit/build.py sep_block, viz.py's contours with sep: one rise per top-level paragraph by its words, along a
+   ridge, in the course's tone), aria-hidden and textless, the column's width at 1200 by 170, before the next and
+   previous (30 px clear of the text above and of them below); in "Whole unit" it stands between two sections. It turns
+   and breathes as every contour drawing does (4i), each separator of a page at its own phase; still under reduced
+   motion. Its drawing fits its frame (meet) and its lines stay clear of it at every pose (build.py turned_inside), so
+   it needs no overscan; the layer carries the opacity, --topo-s. */
+.topo.topo-patch.topo-sep{aspect-ratio:1200 / 170;margin:30px 0 0}
+.topo.topo-sep .topo-l{opacity:var(--topo-s)}
 /* process last: two closed accordions after the text */
 .process{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:40px}
 details.acc{background:var(--card);border:1px solid var(--line-2)}

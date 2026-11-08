@@ -2627,10 +2627,12 @@ def _heat(d):
 CT_RIPPLE = (.16, .09)   # the bump's outline: two angular harmonics, so a rise reads as land, not a target; its peak is unchanged
 
 
-def _ct_bump(r, cx, cy, sx, sy):
+def _ct_bump(r, cx, cy, sx, sy, salt=''):
     """One rise as a function of (x, y): its words at its centre, falling off as a Gaussian whose outline is pushed in
-    and out by two harmonics of the angle, their phases from the rise's label (the same drawing on every build)."""
-    seed = zlib.crc32(str(r.get('label', '')).encode())
+    and out by two harmonics of the angle, their phases from the rise's label (the same drawing on every build), after
+    the block's seed where it has one (P94: a section separator's rises are labelled by their place, the seed is the
+    section, so each separator's outlines are its own)."""
+    seed = zlib.crc32((str(salt) + str(r.get('label', ''))).encode())
     p1, p2 = (seed % 628) / 100, ((seed // 628) % 628) / 100
     h, (a1, a2) = float(r['words']), CT_RIPPLE
     def f(x, y):
@@ -2784,17 +2786,35 @@ def _ct_field(d, lay, rises, iv, live):
     if not live:
         return W, H, at, sp, per, lv_of, own, box, False
     wmax = max(rises[k]['words'] for k in live)
-    # a rise's spread grows with the cube root of its words (a bigger hill is wider), the same in x and y
-    fs = {k: _ct_bump(rises[k], at[k][0] * W, at[k][1] * H, sp * W * (rises[k]['words'] / wmax) ** (1 / 3),
-                      sp * W * (rises[k]['words'] / wmax) ** (1 / 3)) for k in live}
+    # a rise's spread grows with the cube root of its words (a bigger hill is wider), the same in x and y; P94: in x
+    # times the layout's stretch, where it has one (a section separator's hills drawn out along its ridge)
+    st = lay.get('stretch', 1)
+    fs = {k: _ct_bump(rises[k], at[k][0] * W, at[k][1] * H, st * sp * W * (rises[k]['words'] / wmax) ** (1 / 3),
+                      sp * W * (rises[k]['words'] / wmax) ** (1 / 3), d.get('seed', '')) for k in live}
     nx, ny = int(W // g) + 1, int(H // g) + 1
-    C = {k: [[f(i * g, j * g) for i in range(nx)] for j in range(ny)] for k, f in fs.items()}
-    F = [[sum(C[k][j][i] for k in live) for i in range(nx)] for j in range(ny)]
+    # P94: each rise sampled only inside the window where its bump can be above 0 (q <= 40, so within sqrt(40) of its
+    # spread of its peak); outside it _ct_bump returns 0.0 anyway, so the field is the same, node for node, and the
+    # 1,900 section separators of the reading pages build in seconds, not minutes
+    Cw, F = {}, [[0.0] * nx for _ in range(ny)]
+    for k, f in fs.items():   # in the order of the rises, so each node's sum is the same sum as before, its zeros left out
+        rad = 6.33 * sp * W * (rises[k]['words'] / wmax) ** (1 / 3) + g
+        rx = 6.33 * st * sp * W * (rises[k]['words'] / wmax) ** (1 / 3) + g
+        i0, i1 = max(0, int((at[k][0] * W - rx) // g)), min(nx - 1, int((at[k][0] * W + rx) // g) + 1)
+        j0, j1 = max(0, int((at[k][1] * H - rad) // g)), min(ny - 1, int((at[k][1] * H + rad) // g) + 1)
+        rows = [[f(i * g, j * g) for i in range(i0, i1 + 1)] for j in range(j0, j1 + 1)]
+        Cw[k] = (i0, i1, j0, j1, rows)
+        for j, row in zip(range(j0, j1 + 1), rows):
+            Fj = F[j]
+            for i, v in zip(range(i0, i1 + 1), row):
+                Fj[i] += v
+    def val(k, i, j):
+        i0, i1, j0, j1, rows = Cw[k]
+        return rows[j - j0][i - i0] if (j0 <= j <= j1 and i0 <= i <= i1) else 0.0
     top = max(max(row) for row in F)
     edge = max(F[0] + F[-1] + [r[0] for r in F] + [r[-1] for r in F]) >= iv   # P93: a contour reaches the layout's edge
     def dom(p):
         i, j = min(nx - 1, max(0, round(p[0] / g))), min(ny - 1, max(0, round(p[1] / g)))
-        return max(live, key=lambda k: C[k][j][i])
+        return max(live, key=lambda k: val(k, i, j))
     for lv in range(1, int(top // iv) + 1):
         for p, closed in _ct_march(F, nx, ny, g, lv * iv):
             p = _ct_simplify(p, closed, eps)
@@ -2854,7 +2874,10 @@ def contours(d):
     to the screen to check every rise in view); a planned one ("planned": true) a dashed ring, <g class="ct-plan">, flat
     (no height, in no line). P93: a patch may be all planned (a planned course's ghost tile, a planned unit), its rings
     only; a patch's layout is fitted whole inside its frame (meet), so the frame's overscan for the turn never crops a
-    rise, where the hero's layouts cover theirs (slice)."""
+    rise, where the hero's layouts cover theirs (slice). P94: with "sep" the patch is a section separator (the layer
+    .topo.topo-patch.topo-sep; its rises carry no data-at or data-box, which only a hero's checks read, so it keeps to
+    6 KB); "seed" salts every rise's outline (a separator labels its rises by place, ¶1, ¶2 ..., and is seeded by its
+    section); a layout's "stretch" draws each hill out along x by that factor (a separator's hills meet in one ridge)."""
     rises, iv, lays, live = _ct_check(d)
     svgs = []
     for lay in lays:
@@ -2871,13 +2894,14 @@ def contours(d):
             bx = ' '.join(f'{v:.0f}' for v in box[k])
             spot = (f'<circle class="ct-spot" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" r="{_ct_spot_r(r, sp, W, max(rises[j]["words"] for j in live)):.0f}"/>'
                     if lv_of[k] == 0 else '')   # P93 check: a written part under one level still shows, as a spot ring
-            body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{lv_of[k]}" '
-                     f'data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"><path d="{_ct_d(per[k])}"/>{spot}</g>')
+            where = '' if d.get('sep') else f' data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"'   # P94: a separator keeps to 6 KB; its place and box serve no check
+            body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{lv_of[k]}"'
+                     f'{where}><path d="{_ct_d(per[k])}"/>{spot}</g>')
         nm = esc(lay.get('name', ''))
         fit = 'meet' if d.get('patch') else 'slice'
         svgs.append(f'<svg class="topo-l topo-{nm}" data-layout="{nm}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid {fit}" '
                     f'xmlns="http://www.w3.org/2000/svg" focusable="false">{body}</svg>')
-    cls = 'topo' + (' topo-patch' if d.get('patch') else '')
+    cls = 'topo' + (' topo-patch' if d.get('patch') else '') + (' topo-sep' if d.get('sep') else '')   # P94: a section separator is a patch drawn across the column
     ph = d.get('phase')
     st = f' style="--ph:{ph:g}"' if isinstance(ph, (int, float)) else ''
     return f'<div class="{cls}" aria-hidden="true"{st}>{"".join(svgs)}</div>'
@@ -2949,8 +2973,8 @@ VIZ_KEYS = {
     'range': {'.': {'unit', 'unit_one', 'years', 'era', 'min', 'max', 'ticks', 'decimals', 'xlabel', 'rows'},
               'rows': {'label', 'low', 'high', 'point', 'low_src', 'high_src', 'tone'}},
     # P92: the home's topography (HOME_KINDS), the hero's and each course tile's
-    'contours': {'.': {'interval', 'rises', 'layouts', 'patch', 'phase'}, 'rises': {'label', 'words', 'tone', 'planned'},
-                 'layouts': {'name', 'width', 'height', 'spread', 'grid', 'simplify', 'at'}},
+    'contours': {'.': {'interval', 'rises', 'layouts', 'patch', 'phase', 'sep', 'seed'}, 'rises': {'label', 'words', 'tone', 'planned'},
+                 'layouts': {'name', 'width', 'height', 'spread', 'grid', 'simplify', 'at', 'stretch'}},
 }
 NODE_OF = {'scatter': {('.', 'x'): 'axis', ('.', 'y'): 'axis'}}
 

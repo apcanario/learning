@@ -167,7 +167,8 @@ def load(c):
         made = [('Provenance', f'<p>Written with {html.escape(model)}{audit}.</p>', None), ("Writer's unsure list", unsure, None),
                 ('Checks and audits', f'<ul>{"".join(checks)}</ul>' if checks else '', None),
                 ('The prompt this answers', mdcourse.brief_box(meta['prompt'], 'Copy prompt'), None)]
-        scope, steps, end = mdcourse.reading(sl, frag, html.escape(why), src, made, nsrc, ICON_CHEV)
+        scope, steps, end = mdcourse.reading(sl, frag, html.escape(why), src, made, nsrc, ICON_CHEV,
+                                             sep=sep_kit(_TONE[c['color']]))   # P94: each section's separator, in the course's colour (its home's hero's tone)
         panels.append(f'''
 <section class="panel" id="{sl}" data-unit="{u}" data-ctx="{c['id']}" data-kind="report" data-split="r-{i}" style="--cc:{c['color']}" hidden>
   <header class="phead">
@@ -372,6 +373,21 @@ def turned_inside(b, W, H, pad=6, view=None):   # P93 check: 6 units (about 2.5 
     return True
 
 
+def turned_clear(b, W, H, pad=6):
+    """P94: turned_inside split by direction: whether the box stays pad units clear of the drawing's left and right
+    edges, and of its top and bottom, at every pose of the move (both are true exactly when turned_inside is)."""
+    cx, cy, ok_x, ok_y = W / 2, H / 2, True, True
+    for a in (-TOPO_TURN, TOPO_TURN):
+        ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
+        for g in (1, TOPO_GROW):
+            for x, y in ((b[0], b[1]), (b[2], b[1]), (b[0], b[3]), (b[2], b[3])):
+                dx, dy = x - cx, y - cy
+                u, v = cx + g * (dx * ca - dy * sa), cy + g * (dx * sa + dy * ca)
+                ok_x &= pad <= u <= W - pad
+                ok_y &= pad <= v <= H - pad
+    return ok_x, ok_y
+
+
 def patch_block(rises, tone, phase=None):
     """A tile's contour patch (a course's units, a history unit's modules, a markdown unit's sections; P92 for a course):
     rises [(label, words or None)], one per part in order, a written part by its words, a planned one flat (a dashed
@@ -396,6 +412,69 @@ def patch_block(rises, tone, phase=None):
     if phase is not None:
         blk['phase'] = round(phase, 3)
     return viz.render(blk)
+
+
+# P94 (8 Nov 2026; Pedro, 5 Nov 2026, 09:12: "These topographical abstract illustrations are great. We could use them as
+# paragraph separators (the ones that are more horizontal)"; the plan's part A): every section of every reading page ends
+# with a horizontal topography drawn from its paragraphs, before its next and previous.
+SEP_W, SEP_H = 1200, 170   # the separator's layout: the column's width at 1200 by 170 units (about 7:1)
+SEP_BOX = (.1, .42, .9, .58)   # where its rises stand: along a ridge across the frame, swinging gently about its middle
+SEP_MAX = 6 * 1024   # bytes, at most
+SEP_SY, SEP_STRETCH = 24, 6   # the hills' first spread across the ridge, in units, and how far each may be drawn out along it
+
+
+def sep_block(paras, tone, phase=None, label=''):
+    """A section's separator: paras [words of each top-level paragraph of the section, in order], one rise each along a
+    ridge (ct_ridge, as What's new's days), in the course's tone, a contour every 5.5th of the section's largest
+    paragraph (as a tile's patch steps by its largest part); 1200 by 170 units fitted whole in its frame (meet). Its
+    spread is fitted as patch_block fits a tile's patch, narrowed by a tenth until no line reaches the frame and every
+    rise's rings and every line stay clear of it at every pose of the move (turned_inside: both ends of the turn, at rest
+    and at the top of the breath): its hills start SEP_SY units across the ridge and drawn out along it as far as the
+    next rise (stretch, at most SEP_STRETCH times), so neighbours meet in one ridge; where a pose takes a line past the
+    top or bottom the hills are lowered, past an end they are drawn out less (then lowered once round); then its lines are
+    simplified a step further until it is at most SEP_MAX bytes (no rise is ever dropped). Each rise is labelled by its
+    place (¶1, ¶2 ...); label, the section's id, seeds their outlines (the ripple), so each separator's are its own."""
+    n, top = len(paras), max(paras)
+    at = ct_ridge(n, SEP_BOX, SEP_W, SEP_H)
+    # the first spread tried (the hills' height across the ridge): SEP_SY units; along the ridge each hill is drawn out
+    # (stretch) to under half the distance between two neighbours, so neighbours meet in one ridge, at most SEP_STRETCH
+    # times its height and never less than round
+    gap = (SEP_BOX[2] - SEP_BOX[0]) * SEP_W / n
+    lay = dict(name='ridge', width=SEP_W, height=SEP_H, spread=round(SEP_SY / SEP_W, 5), grid=8, simplify=.8, at=at,
+               stretch=round(max(1, min(SEP_STRETCH, gap / SEP_SY)), 3))
+    blk = dict(kind='contours', patch=True, sep=True, interval=top / 5.5, seed=label,
+               rises=[dict(label=f'¶{k + 1}', words=w, tone=tone) for k, w in enumerate(paras)], layouts=[lay])
+    for _ in range(80):
+        rr = viz.contours_rings(blk)
+        boxes = [b for _, _, _, b in rr['ridge']] + ([rr[('ridge', 'extent')]] if rr[('ridge', 'extent')] else [])
+        cl = [turned_clear(b, SEP_W, SEP_H) for b in boxes]
+        ok_x, ok_y = all(x for x, _ in cl), all(y for _, y in cl)
+        if ok_x and ok_y and not rr[('ridge', 'edge')]:
+            break
+        if not ok_y:   # too tall at some pose: lower every hill (the spread across the ridge)
+            lay['spread'] = round(lay['spread'] * .9, 5)
+        if not ok_x or rr[('ridge', 'edge')]:   # too long: draw the hills out less (never under round)
+            if lay['stretch'] > 1:
+                lay['stretch'] = round(max(1, lay['stretch'] * .9), 3)
+            elif ok_y:
+                lay['spread'] = round(lay['spread'] * .9, 5)
+    else:
+        raise SystemExit(f'build.py sep_block: no spread keeps the separator of {label} clear of its frame')
+    assert all(turned_inside(b, SEP_W, SEP_H) for b in boxes)
+    if phase is not None:
+        blk['phase'] = round(phase, 3)
+    out = viz.render(blk)
+    while len(out.encode()) > SEP_MAX:
+        lay['simplify'] = round(lay['simplify'] * 1.25, 3)
+        if lay['simplify'] > 12:
+            raise SystemExit(f'build.py sep_block: the separator of {label} ({paras}) stays over {SEP_MAX} bytes even simplified')
+        out = viz.render(blk)
+    return out
+
+
+def sep_kit(tone):
+    """P94: what mdcourse.reading needs to end each section on its separator, in the tone given."""
+    return dict(block=lambda paras, ph, label: sep_block(paras, tone, ph, label), phases=phases)
 
 
 # A course home's hero layer (P93): the tall layout a square, its rises (box) and their own rings (view) where both a
@@ -628,7 +707,7 @@ def md_courses(c):
 for c in MARKDOWN:
     load_markdown(c)
 MD = [m for c in MARKDOWN for m in md_courses(c)]
-MDKIT = dict(wc=wc, tile=tile, patch=patch_block, hero=hero_layer, hours=hours, phases=phases, tone=_TONE, topo=COURSE_TOPO, pill=status_pill)
+MDKIT = dict(wc=wc, tile=tile, patch=patch_block, hero=hero_layer, hours=hours, phases=phases, tone=_TONE, topo=COURSE_TOPO, pill=status_pill, sep=sep_kit)
 for m in MD:
     m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV, MDKIT)
     # P90 (4 Nov 2026): a markdown course's words, as a history course's are counted (wc, figures left out), for the

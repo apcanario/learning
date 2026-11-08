@@ -223,7 +223,34 @@ def url_breaks(h):
     return re.sub(r'>([^<]+)<', lambda m: '>' + _URL.sub(brk, m.group(1)) + '<', f'>{h}<')[1:-1]
 
 
-def reading(pid, body, scope, sources, made, nsrc=None, chev='', note=False):
+_TAG = re.compile(r'<(/?)([a-zA-Z][\w-]*)\b[^>]*?(/?)>', re.S)
+_VOID = {'br', 'img', 'wbr', 'hr', 'input', 'meta', 'link', 'source', 'col', 'area', 'base', 'embed', 'track'}
+
+
+def top_paras(x):
+    """P94: the words of each top-level <p> of a section's own text (x: the html between its band and its next and
+    previous), in order, by section_text's rule (the tags taken out, the rest split at white space); a paragraph inside
+    anything else (a list, a table, a figure, a quote, a box) is not one, and an empty one is left out."""
+    out, depth, start = [], 0, None
+    for m in _TAG.finditer(x):
+        close, tag, selfc = m.group(1), m.group(2).lower(), m.group(3)
+        if tag in _VOID or selfc:
+            continue
+        if not close:
+            if depth == 0 and tag == 'p':
+                start = m.end()
+            depth += 1
+        else:
+            depth -= 1
+            if depth == 0 and tag == 'p' and start is not None:
+                n = len(re.sub(r'<[^>]+>', ' ', x[start:m.start()]).split())
+                if n:
+                    out.append(n)
+                start = None
+    return out
+
+
+def reading(pid, body, scope, sources, made, nsrc=None, chev='', note=False, sep=None):
     """The reading layout for one page. body: the unit's HTML with ids on its h2s and the process sections already
     taken out; scope: the one-line scope (html, may be empty); sources: the Sources list (html, may be empty);
     made: [(heading, html, id or None)] for "How this unit was made". Returns (the scope line for the header, the
@@ -243,6 +270,11 @@ def reading(pid, body, scope, sources, made, nsrc=None, chev='', note=False):
     for k, (sid, head, html_) in enumerate(secs):
         b, kick, title = band(sid, head, k) if head else ('', '', 'The unit')
         items.append((sid, kick, title))
+    # P94: each section with a paragraph ends on its separator (sep: {'block': build.py's sep_block bound to the course's
+    # tone, given the section's paragraphs' words, its phase and its name; 'phases': build.py's phases}), each at its own
+    # point of the cycle over the page's separators; a section with no top-level paragraph has none
+    paras = [top_paras((pre if k == 0 else '') + html_) for k, (_, _, html_) in enumerate(secs)] if sep else [[] for _ in secs]
+    ph = iter(sep['phases'](sum(1 for p in paras if p))) if sep else None
     for k, (sid, head, html_) in enumerate(secs):
         b = band(sid, head, k)[0] if head else ''
         nav = ''
@@ -252,7 +284,8 @@ def reading(pid, body, scope, sources, made, nsrc=None, chev='', note=False):
             nav += f'<a class="snext" href="#{items[k + 1][0]}" data-step="{k + 1}"><span>Next · {k + 2} of {n}</span><b>{e(plain(items[k + 1][2]))}</b></a>'
         else:
             nav += f'<a class="snext send" href="#{pid}-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a>'
-        steps.append(f'<section class="sec" data-step="{k}">{pre if k == 0 else ""}{b}{html_}<nav class="secnav" aria-label="Sections">{nav}</nav></section>')
+        topo = sep['block'](paras[k], next(ph), sid) if paras[k] else ''
+        steps.append(f'<section class="sec" data-step="{k}">{pre if k == 0 else ""}{b}{html_}{topo}<nav class="secnav" aria-label="Sections">{nav}</nav></section>')
     menu = ''.join(f'<li><a href="#{sid}" data-step="{k}"><span class="n">{k + 1:02d}</span><span class="t">{(e(plain(kick)) + " · ") if kick else ""}{e(plain(t))}</span></a></li>'
                    for k, (sid, kick, t) in enumerate(items))
     bar = (f'<div class="stepbar" data-n="{n}"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of {n}</span>'
@@ -380,7 +413,8 @@ def build(m, crumbs, theme, pill_next, chev, kit):
                     fresh.append(('Fresh check', lines, None))
         u = unit_of.get(code)
         made = [('Provenance', f'<p>{r["intro"]}</p>', None)] + unsure + fresh + ([('The brief', brief_box((aims_text(d, code) + '\n\n' + u[4]) if aims_text(d, code) else u[4]), None)] if u else [])
-        head, steps, end = reading(r['id'], pre + ''.join(text), e(u[2]) if u else '', src, made, src.count('<li>'), chev, note=True)
+        head, steps, end = reading(r['id'], pre + ''.join(text), e(u[2]) if u else '', src, made, src.count('<li>'), chev, note=True,
+                                   sep=kit['sep'](kit['tone'].get(col, 4)))   # P94: each section's separator, in the course's tone
         if code:   # P93: each section's own words (its text, not its next and previous buttons or its band's numeral)
             m.setdefault('secw', {})[code] = [kit['wc'](section_text(x)) for x in re.findall(r'<section class="sec" data-step="\d+">(.*?)</section>(?=<section class="sec"|</div>$)', steps.split('<div class="report steps">', 1)[1] + '', re.S)]
             m.setdefault('wby', {})[code] = sum(m['secw'][code])
