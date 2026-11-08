@@ -980,7 +980,8 @@
       1
      ]
     ]
-   }
+   },
+   "spare": "Greece 3.7 names the laurel tree, not a wreath (P96 check H1); kept"
   },
   {
    "id": "theatre-masks",
@@ -1284,7 +1285,8 @@
       1
      ]
     ]
-   }
+   },
+   "spare": "its Rome pages name a helmet in passing (P96 check H1: Rome 1.1, 9.2, 12.3); kept"
   },
   {
    "id": "gladius",
@@ -1552,7 +1554,8 @@
       1
      ]
     ]
-   }
+   },
+   "spare": "Rome 3.2 names the toga in one story among many (P96 check H1); kept"
   },
   {
    "id": "eagle",
@@ -1864,7 +1867,8 @@
     "gi",
     "gis",
     "kimono",
-    "dogi"
+    "dogi",
+    "karate apparel"
    ],
    "source": {
     "repository": "game-icons/icons",
@@ -1883,7 +1887,7 @@
     "brand-a": [
      [
       "courses/brand-ai/A7-monetisation-through-shomen.md",
-      4
+      7
      ],
      [
       "generator/data/brand-ai/audience-growth-across-platforms.md",
@@ -2689,7 +2693,8 @@
       1
      ]
     ]
-   }
+   },
+   "spare": "Building with AI B5 takes the clock, its scheduled tasks discussed at length, where plugins are named in passing (P96 check M1); kept"
   },
   {
    "id": "servers",
@@ -2742,13 +2747,15 @@
   {
    "id": "clock",
    "file": "clock.svg",
-   "depicts": "a clock (the sign for scheduled times)",
+   "depicts": "a clock (the sign for scheduled tasks)",
    "courses": [
     "brand-b"
    ],
    "keywords": [
     "clock",
-    "clocks"
+    "clocks",
+    "scheduled task",
+    "scheduled tasks"
    ],
    "source": {
     "repository": "phosphor-icons/core",
@@ -2767,15 +2774,30 @@
     "brand-b": [
      [
       "courses/brand-ai/B5-skills-and-automation.md",
-      4
+      31
+     ],
+     [
+      "courses/brand-ai/B4-context-engineering.md",
+      16
+     ],
+     [
+      "courses/brand-ai/DD-B1-deep-dive-agents.md",
+      9
+     ],
+     [
+      "courses/brand-ai/B1-mental-model.md",
+      5
+     ],
+     [
+      "courses/brand-ai/B7-content-pipeline.md",
+      1
      ],
      [
       "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
       1
      ]
     ]
-   },
-   "spare": "Building with AI B5 takes the plug; kept"
+   }
   },
   {
    "id": "book",
@@ -4341,23 +4363,21 @@
    "file": "tablet.svg",
    "depicts": "an inscribed tablet",
    "courses": [
-    "greece",
-    "rome"
+    "greece"
    ],
    "keywords": [
     "tablet",
-    "tablets",
-    "Twelve Tables"
+    "tablets"
    ],
    "source": {
     "repository": "game-icons/icons",
-    "path": "lorc/broken-tablet.svg",
+    "path": "delapouite/wax-tablet.svg",
     "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
-    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/broken-tablet.svg"
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/wax-tablet.svg"
    },
-   "author": "Lorc",
+   "author": "Delapouite",
    "licence": "CC BY 3.0",
-   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "credit": "Icon: Delapouite, game-icons.net, CC BY 3.0",
    "set": "game-icons",
    "licence_url": "https://creativecommons.org/licenses/by/3.0/",
    "background_removed": true,
@@ -4462,120 +4482,6 @@
      ],
      [
       "courses/greece/3.3-theseus-and-athens.md",
-      1
-     ]
-    ],
-    "rome": [
-     [
-      "courses/rome/2.4-house-family-and-the-dead.md",
-      7
-     ],
-     [
-      "courses/rome/3.1-the-struggle-of-the-orders.md",
-      7
-     ],
-     [
-      "courses/rome/9.2-the-army.md",
-      5
-     ],
-     [
-      "courses/rome/1.1-the-peoples-of-iron-age-italy.md",
-      4
-     ],
-     [
-      "courses/rome/11.6-caesars-commentaries-and-gaul.md",
-      4
-     ],
-     [
-      "courses/rome/7.1-the-julio-claudians.md",
-      4
-     ],
-     [
-      "courses/rome/0.1-how-we-know-anything-the-sources.md",
-      3
-     ],
-     [
-      "courses/rome/1.6-the-fall-of-the-monarchy-lucretia-brutus-and-porsenna.md",
-      3
-     ],
-     [
-      "courses/rome/10.5-capstone-the-whole-thing-in-one-sitting.md",
-      3
-     ],
-     [
-      "courses/rome/1.2-the-etruscans.md",
-      2
-     ],
-     [
-      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
-      2
-     ],
-     [
-      "courses/rome/3.3-veii-the-gauls-and-camillus.md",
-      2
-     ],
-     [
-      "courses/rome/4.1-carthage-and-dido.md",
-      2
-     ],
-     [
-      "courses/rome/4.3-hannibal-and-the-second-punic-war.md",
-      2
-     ],
-     [
-      "courses/rome/5.3-pompey-crassus-cicero-and-catiline.md",
-      2
-     ],
-     [
-      "courses/rome/7.2-the-year-of-four-emperors-and-the-flavians.md",
-      2
-     ],
-     [
-      "courses/rome/7.5-how-the-empire-worked.md",
-      2
-     ],
-     [
-      "courses/rome/9.1-roman-law.md",
-      2
-     ],
-     [
-      "courses/rome/0.3-the-timeline-spine-1000-bc-to-ad-476.md",
-      1
-     ],
-     [
-      "courses/rome/1.5-the-seven-kings.md",
-      1
-     ],
-     [
-      "courses/rome/11.1-how-the-republic-worked-at-its-height.md",
-      1
-     ],
-     [
-      "courses/rome/11.7-the-ides-of-march.md",
-      1
-     ],
-     [
-      "courses/rome/11.8-why-the-republic-fell.md",
-      1
-     ],
-     [
-      "courses/rome/13.5-seneca.md",
-      1
-     ],
-     [
-      "courses/rome/4.2-the-first-punic-war.md",
-      1
-     ],
-     [
-      "courses/rome/5.4-caesar.md",
-      1
-     ],
-     [
-      "courses/rome/7.3-the-adoptive-emperors.md",
-      1
-     ],
-     [
-      "courses/rome/9.3-family-women-and-slaves.md",
       1
      ]
     ]
@@ -6036,6 +5942,55 @@
    }
   },
   {
+   "id": "bough",
+   "file": "bough.svg",
+   "depicts": "a leafy bough",
+   "courses": [
+    "rome"
+   ],
+   "keywords": [
+    "bough",
+    "boughs"
+   ],
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/tree-branch.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+    "url": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/tree-branch.svg"
+   },
+   "author": "Lorc",
+   "licence": "CC BY 3.0",
+   "credit": "Icon: Lorc, game-icons.net, CC BY 3.0",
+   "set": "game-icons",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0/",
+   "background_removed": true,
+   "excludes": [],
+   "texts": {
+    "rome": [
+     [
+      "courses/rome/12.5-book-6-the-underworld-and-the-parade-of-heroes.md",
+      12
+     ],
+     [
+      "courses/rome/0.2-italy-and-the-mediterranean-the-shape-of-romes-world.md",
+      1
+     ],
+     [
+      "courses/rome/12.2-books-1-to-6-the-odyssean-aeneid.md",
+      1
+     ],
+     [
+      "courses/rome/12.4-dido.md",
+      1
+     ],
+     [
+      "courses/rome/12.7-augustan-or-anti-augustan.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
    "id": "dagger",
    "file": "dagger.svg",
    "depicts": "a dagger",
@@ -6414,7 +6369,7 @@
   {
    "id": "chart",
    "file": "chart.svg",
-   "depicts": "a rising line chart (the sign for benchmarks)",
+   "depicts": "a rising trend line (the sign for growth benchmarks)",
    "courses": [
     "brand-a"
    ],
@@ -6424,9 +6379,9 @@
    ],
    "source": {
     "repository": "phosphor-icons/core",
-    "path": "assets/fill/chart-line-up-fill.svg",
+    "path": "assets/fill/trend-up-fill.svg",
     "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
-    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/chart-line-up-fill.svg"
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/trend-up-fill.svg"
    },
    "author": "Phosphor Icons",
    "licence": "MIT",
@@ -6516,7 +6471,7 @@
   {
    "id": "context-window",
    "file": "context-window.svg",
-   "depicts": "a window (the sign for the context window)",
+   "depicts": "an app window (the sign for the context window)",
    "courses": [
     "brand-b"
    ],
@@ -7102,14 +7057,6 @@
   },
   {
    "source": {
-    "repository": "game-icons/icons",
-    "path": "delapouite/wax-tablet.svg",
-    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
-   },
-   "reason": "not the object: no Roman text names a wax or writing tablet; its tablets are bronze, gold, lead and ivory"
-  },
-  {
-   "source": {
     "repository": "phosphor-icons/core",
     "path": "assets/fill/flask-fill.svg",
     "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
@@ -7218,7 +7165,7 @@
     "path": "delapouite/charging-bull.svg",
     "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
    },
-   "reason": "busy: 4 thin parts (lorc/bull.svg taken)"
+   "reason": "busy: 4 thin parts (lorc/bull-horns.svg taken)"
   },
   {
    "source": {
@@ -7299,6 +7246,46 @@
     "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
    },
    "reason": "not the object: a box under two bars, not a card"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "lorc/broken-tablet.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "not the object: its relief reads as a shattered polygon round a spiral, broken rock, not a tablet (P96 check H1); delapouite/wax-tablet.svg taken for the inscribed tablets of Greece 1.2 and 8.2"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "willdabeast/round-shield.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "not the object: a planked wooden shield with rivets, not the worked bronze shields of Achilles (Greece 10.1) and Aeneas (Rome 12.7), which get none (P96 check H1)"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "delapouite/viking-shield.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "busy (3 thin parts, a step of 2.6 px) and not the object: a Viking shield"
+  },
+  {
+   "source": {
+    "repository": "game-icons/icons",
+    "path": "skoll/tablet.svg",
+    "commit": "82d948812bfe3f269ef8f731dcdb07b08160edc4"
+   },
+   "reason": "not the object: a tablet computer"
+  },
+  {
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/chart-line-up-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
+   },
+   "reason": "not the object as a relief: the filled frame with the line cut out reads as a maze in a box (P96 check M1); trend-up-fill.svg taken"
   },
   {
    "source": {
