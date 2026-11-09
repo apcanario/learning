@@ -214,6 +214,27 @@ From IA9's table "Perqo facts set by this unit", verbatim but for the layout (th
 - The Help centre's logs for both audiences are read quarterly by support (extends IA3's E2, which named the For employees log) (section 5; RV-04).
 - Workflow rows W-01 to W-17; reviews RV-01 to RV-12 with their cadences, triggers and owners (Deliverables A and C).
 
+## Set by IA10 (9 Nov 2026)
+
+From IA10's table "Perqo facts set by this unit", verbatim but for the layout (the section that sets each in brackets, then what it leaves free). IA10 keeps every registered fact and renames none of IA1 to IA9's labels, objects, attributes or relationships. Its decision log entries DL-011 to DL-015 are proposed, so no filed artefact changes at its filing.
+
+- Twelve functions touch the IA: product management, engineering, content team, marketing, localisation, sales, customer success, support, clients, legal, security, leadership (section 1.1; Deliverable A, A.1). Free: named people.
+- Perqo's setup staff (IA8, section 3.2) are the customer success team, which sets up the client and account owner at CL-3 and supports the account owner through CL-4 and CL-5 (section 2.5). Free: the team's size.
+- Localisation has no forum until a second language is added (section 2.3; TP-05). Free: its forum (DD-IA3).
+- Touchpoint rows TP-01 to TP-12, each with question, artefact, fidelity, format, meeting, owner and cadence (Deliverable A, A.1).
+- Forums and documents FO-01 to FO-09: FO-01 the IA review, FO-02 the story check and release note, FO-03 the vocabulary and content review, FO-06 the ticket and log read hold IA9's reviews; FO-04 the pre-sales briefing (monthly), FO-05 the onboarding handover, FO-07 the client validation session (admin users from at least two clients), FO-08 the privacy and security review, FO-09 the leadership quarterly (Deliverable A, A.2). Free: the meetings' length.
+- Who is told when each join J-01 to J-14 changes, and through which forum (Deliverable A, A.3).
+- The demo path: S-1, AD-3.1, AD-2.2, AD-1.3, A-0.1, A-1, A-3.1, AD-4, A-3.4, AD-5.3 (section 2.4; BR-3). Free: the demo's data.
+- A configuration workbook per client; training paths by role from the H-1 articles (HR: H-1.2.1, H-1.2.2, H-1.2.3, H-1.2.5, H-1.3.1; finance: H-1.1.1, H-1.1.2) (section 2.5). Free: the workbook's layout.
+- Open fault: no Help centre article covers the account owner's tasks (section 2.5). Free: the article (support).
+- The where-things-go-wrong table for support (section 2.6).
+- A client's structure enters as employee groups (data), its words as variants, a request to mirror its approval chain as a DL entry (section 2.7). Free: role scoping (IA7).
+- The data view for legal: IA7's attributes with data category and the roles that see each (section 2.8). Free: the categories' names.
+- Event naming, proposed for engineering to confirm: a resource takes the model name, an event the model name and the state entered (section 2.2; BR-2). Free: the strings.
+- The one-page map for leadership: the whole interaction map, G-5 to G-7, the IA debt count, the quarter's decisions (section 2.9).
+- Briefs BR-1 to BR-3, re-issued when their source changes (Deliverable B).
+- Decision log entries DL-011 to DL-015, proposed (Deliverable A, A.4): DL-011 a positions field in the log; DL-012 the told field names the forum and date, A.3 the list per join; DL-013 the face's Readers field may name any of the twelve functions; DL-014 a change adding personal data or changing a role's mark is consulted at FO-08 first; DL-015 who may open a claim's receipt. Free: their decisions.
+
 ## Not yet set (free for the unit that needs it)
 
-The merchant side's own surface and anything of it beyond IA3's card offers and IA4's merchant and offer objects; pages on Admin beyond IA7's map, AD-0 to AD-6 (perqo.com's are IA5's inventory; the app's are IA6's map, A-0 to A-5); roles inside Admin beyond HR manager, finance manager and IA7's account owner, and scoping a role to some employee groups; volumes beyond IA7's sizing client (IA3 and IA6 assume frequencies of use only); the terms of a client's contract beyond IA8's purchase lifecycle (CL-1 to CL-6), how long a former client's records are kept, the period's length, the sprint's length (IA9), how long issuing a card takes, and IA8's open gaps G-5 to G-7 (how a leaver learns of a decided claim, a mid-period move to another group, money unspent at a period's end); any number (budgets, limits, amounts) beyond IA5's page, template and module counts and IA7's sizing-client volumes, 15% over the limit, five working days and 14 days; any named person or client company (none may be real).
+The merchant side's own surface and anything of it beyond IA3's card offers and IA4's merchant and offer objects; pages on Admin beyond IA7's map, AD-0 to AD-6 (perqo.com's are IA5's inventory; the app's are IA6's map, A-0 to A-5); roles inside Admin beyond HR manager, finance manager and IA7's account owner, and scoping a role to some employee groups; volumes beyond IA7's sizing client (IA3 and IA6 assume frequencies of use only); the terms of a client's contract beyond IA8's purchase lifecycle (CL-1 to CL-6), how long a former client's records are kept, the period's length, the sprint's length (IA9), the meetings' length and localisation's forum (IA10), how long issuing a card takes, and IA8's open gaps G-5 to G-7 (how a leaver learns of a decided claim, a mid-period move to another group, money unspent at a period's end); any number (budgets, limits, amounts) beyond IA5's page, template and module counts and IA7's sizing-client volumes, 15% over the limit, five working days and 14 days; any named person or client company (none may be real).
