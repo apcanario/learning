@@ -2821,6 +2821,10 @@
       28
      ],
      [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      27
+     ],
+     [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       21
      ],
@@ -2886,6 +2890,10 @@
      [
       "courses/ux/IA6-level-2-the-client-app.md",
       21
+     ],
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      11
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
@@ -3554,6 +3562,10 @@
       36
      ],
      [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      34
+     ],
+     [
       "courses/ux/IA7-level-3-the-backoffice.md",
       33
      ],
@@ -3617,6 +3629,10 @@
      [
       "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
       10
+     ],
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      9
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -3688,6 +3704,10 @@
      [
       "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
       13
+     ],
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      8
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
@@ -3775,6 +3795,10 @@
      [
       "courses/ux/IA6-level-2-the-client-app.md",
       5
+     ],
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      4
      ]
     ]
    }
@@ -3933,6 +3957,10 @@
      [
       "courses/ux/IA8-level-4-the-system-map.md",
       2
+     ],
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      1
      ]
     ]
    },
@@ -3989,6 +4017,10 @@
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      1
+     ],
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
       1
      ],
      [
@@ -4056,6 +4088,10 @@
      [
       "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
       3
+     ],
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      1
      ]
     ]
    }
@@ -4164,6 +4200,10 @@
      [
       "courses/ux/IA6-level-2-the-client-app.md",
       7
+     ],
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      6
      ],
      [
       "courses/ux/IA8-level-4-the-system-map.md",
@@ -7457,6 +7497,10 @@
       26
      ],
      [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      16
+     ],
+     [
       "courses/ux/IA7-level-3-the-backoffice.md",
       8
      ],
@@ -8032,6 +8076,10 @@
       13
      ],
      [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      10
+     ],
+     [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
       2
      ],
@@ -8041,6 +8089,56 @@
      ],
      [
       "courses/ux/IA8-level-4-the-system-map.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "table",
+   "file": "table.svg",
+   "depicts": "a table with a header row and a label column (the sign for a matrix)",
+   "courses": [
+    "ux-ia"
+   ],
+   "keywords": [
+    "matrix",
+    "matrices",
+    "touchpoint matrix"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/table-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/table-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "set": "phosphor",
+   "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
+   "background_removed": false,
+   "excludes": [],
+   "texts": {
+    "ux-ia": [
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      32
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      20
+     ],
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      5
+     ],
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      3
+     ],
+     [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
       1
      ]
     ]
@@ -8439,6 +8537,22 @@
     "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
    },
    "reason": "not the object: Brand DD-A2 names savings and a runway, never a calculator"
+  },
+  {
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/grid-nine-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e"
+   },
+   "reason": "not the object as a relief: nine blocks read as tiles, not a table with rows and a header (table-fill.svg taken)"
+  },
+  {
+   "source": {
+    "repository": "tabler/tabler-icons",
+    "path": "icons/filled/table.svg",
+    "commit": "58f60538fe2fab2e1459a09198f9bd3b033bf90e"
+   },
+   "reason": "not the object as a relief: four rounded pads, no header row or label column (phosphor table-fill.svg taken)"
   }
  ]
 }

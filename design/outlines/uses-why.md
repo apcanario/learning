@@ -132,11 +132,12 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 
 ## Information architecture
 
-9 pages with a relief, 9 outlines in use (bell, books, credit-card, key, magnifier, map, notebook, sitemap, tree); 0 pages with none.
+10 pages with a relief, 10 outlines in use (bell, books, credit-card, key, magnifier, map, notebook, sitemap, table, tree); 0 pages with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
 | IA1 (`read-ia1`) | books | 23 | The second line is library science, and it is the one that produced the practice of IA on the web. |
+| IA10 (`read-ia10`) | table | 32 | The deliverable is the Perqo touchpoint matrix, with its forums, and three one-page IA briefs, for product management, engineering and sales, each built from the same Perqo IA and saying only what that audience needs. |
 | IA2 (`read-ia2`) | map | 36 | An object-relationship map adds the lines between them, each with a verb and a count at each end. |
 | IA3 (`read-ia3`) | magnifier | 61 | 5 · Search versus browse |
 | IA4 (`read-ia4`) | tree | 25 | A structure is the shape the groups are arranged in (a tree, a set of independent facets, a web of links). |

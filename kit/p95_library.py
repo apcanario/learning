@@ -115,6 +115,7 @@ L = [
     ('battery', 'phosphor', 'assets/fill/battery-medium-fill.svg', 'a half-charged battery (the sign for usage limits)', ['brand-b'], ['limit', 'limits', 'usage']),
     ('pen-nib', 'phosphor', 'assets/fill/pen-nib-fill.svg', 'a pen nib (the sign for writing a brief)', ['brand-b'], ['brief', 'briefs']),
     ('key', 'phosphor', 'assets/fill/key-fill.svg', 'a key (the sign for permissions)', ['ux-ia'], ['permission', 'permissions']),
+    ('table', 'phosphor', 'assets/fill/table-fill.svg', 'a table with a header row and a label column (the sign for a matrix)', ['ux-ia'], ['matrix', 'matrices', 'touchpoint matrix']),   # added by U-10 (9 Nov 2026): IA10's touchpoint matrix
 ]
 # P95 check A: what a keyword also matches that is not the object (a homonym, a title, another kind of the thing), taken
 # out of each line before counting
@@ -192,6 +193,9 @@ REJECTED = [
     ('phosphor', 'assets/fill/speedometer-fill.svg', 'not the object as a relief: the same dome with its needle cut out'),
     ('game-icons', 'delapouite/speedometer.svg', 'busy: 1 thin part'),
     ('phosphor', 'assets/fill/calculator-fill.svg', 'not the object: Brand DD-A2 names savings and a runway, never a calculator'),
+    # U-10 (9 Nov 2026): measured for IA10's touchpoint matrix and not taken
+    ('phosphor', 'assets/fill/grid-nine-fill.svg', 'not the object as a relief: nine blocks read as tiles, not a table with rows and a header (table-fill.svg taken)'),
+    ('tabler', 'icons/filled/table.svg', 'not the object as a relief: four rounded pads, no header row or label column (phosphor table-fill.svg taken)'),
 ]
 # P96: outlines in the library that no reading page shows yet, kept for the texts that name them (verify.py: every
 # outline is in use in design/outlines/uses.json or listed here)
