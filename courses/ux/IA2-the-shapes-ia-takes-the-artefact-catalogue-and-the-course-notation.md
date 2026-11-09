@@ -177,7 +177,7 @@ An artefact that has been handed around is depended on: engineering tickets cite
 - **Rename through the vocabulary.** Change a label in the controlled vocabulary first, with the old term kept as a variant, then in the diagrams. Protects: support and search, which still meet the old word from customers; taxonomy terms reach users through search suggestions and filters (Laubheimer 2022).
 - **Split rather than cram.** When an addition would double a diagram's size, move a part into its own figure and leave a continuation point to it, Garrett's device for "easily digestible sections" (*Quick Reference*). Protects: the readers who used the diagram at its old size.
 - **Keep the notation; extend the legend.** If a new symbol is needed, add it to the legend with its meaning before using it. Garrett's own advice is to take what helps (Brown 2003); the course's rule is that what is taken is declared. Protects: everyone reading section 3's fault 2.
-- **Re-stamp the face.** Update the version, the date, the owner and the line saying what the artefact leaves out (IA1, section 4). Protects: the reader who arrives a year later.
+- **Re-stamp the face.** Update the version, the date, the owner and the line saying what the artefact leaves out (IA1, section 4). Protects: the reader who arrives a year later. *Note, 9 November 2026: IA9 (section 4.4) set when a change earns a new version. A change that would break a citation (an identifier retired or moved to another parent, a label renamed, a relationship or transition removed, a rule's outcome changed) makes a new version; any other change is a dated amendment, and each amendment names its decision log entry, so the face reads "version N, dated D; amended D2 (DL-nnn)" (IA9, Deliverable D).*
 
 ## 5 · The course notation
 
@@ -410,7 +410,7 @@ The global routes are IA1's top-level areas, with Book a demo added on perqo.com
 | Readers | which of the six touchpoints it is for |
 | Leaves out | what a reader must not look for in it |
 | Fidelity | F1 sketch, F2 working, F3 specification (section 1.0) |
-| Owner, version, date | who keeps it, and when it was last true |
+| Owner, version, date, amendments (DL-) | who keeps it, when it was last true, and each dated amendment with its decision log entry (IA9, section 4.4; note, 9 November 2026) |
 | Sources and the Perqo label | where its facts come from; "Perqo is fictional" for the running example |
 
 ## Deliverable · The artefact decision table

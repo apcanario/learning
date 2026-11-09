@@ -195,6 +195,25 @@ From IA8's table "Perqo facts set by this unit", verbatim but for the layout (th
 - Open gaps: a mid-period move to another group (G-6); money unspent at a period's end (G-7) (sections 1, 3.3). Free: both.
 - Review of the interaction map at each release touching two surfaces, and quarterly (section 6).
 
+## Set by IA9 (9 Nov 2026)
+
+From IA9's table "Perqo facts set by this unit", verbatim but for the layout (the section that sets each in brackets, then what it leaves free). IA9 keeps every registered fact and renames none of IA1 to IA8's labels, objects, attributes or relationships. Its filing applied IA8's decisions where IA4, IA6 and IA7 had not yet carried them (decision log DL-004 to DL-008), and added the version and amendment rule to IA2, section 4 and the notation sheet (DL-010), each with a dated note of 9 Nov 2026.
+
+- A Perqo cycle runs Discover, Define, Develop and Deliver, with discovery one step ahead of delivery, then Run (section 1.4; Deliverable A).
+- Engineering delivers in sprints and releases at the end of each sprint; each release note lists the surfaces it touches; Admin changes clients' staff will see are announced to clients in the release note (section 2.3; Deliverable A, W-14). Free: the sprint's length.
+- Every story cites the IA identifiers it touches; IA debt items are backlog items tagged "IA debt"; a story enters a sprint only when the artefact it builds from is at F3 for its part (F2 for the navigation model and the blueprint) (section 2.3; Deliverable B).
+- The IA designer owns the canonical IA artefacts, other than the benefits taxonomy (the content team's), and the decision log (section 4.1).
+- The IA review: the IA designer (chair), product management, engineering, the content team, support; it holds IA8's review; sales and clients are told of its decisions (section 4.1).
+- The routing rule for changes (D.1) (section 4.1).
+- The change-control flow (D.2) (section 4.2).
+- The decision log: identifiers DL-001 onward, never reused; its fields; statuses proposed, accepted, declined, applied, superseded; entries DL-001 to DL-010 (section 4.3; Deliverable D, D.3).
+- A new version for a change that breaks a citation; a dated amendment naming its DL entry otherwise (section 4.4).
+- Proposed model names, for engineering to confirm: card status value `cancelled`; allocation attribute closed → `closed`; client attribute contract end date → `contract_end_date` (Deliverable D, D.3: DL-005, DL-006). Free: the final names.
+- Support tags each ticket with the surface, the screen or page identifier and, for a rule, the DT- tree, and reads the tags monthly (section 6.2; RV-05). Free: the tag set beyond these.
+- Product analytics record each app screen view by screen identifier and each Admin page view by page identifier (section 6.3). Free: what else is recorded.
+- The Help centre's logs for both audiences are read quarterly by support (extends IA3's E2, which named the For employees log) (section 5; RV-04).
+- Workflow rows W-01 to W-17; reviews RV-01 to RV-12 with their cadences, triggers and owners (Deliverables A and C).
+
 ## Not yet set (free for the unit that needs it)
 
-The merchant side's own surface and anything of it beyond IA3's card offers and IA4's merchant and offer objects; pages on Admin beyond IA7's map, AD-0 to AD-6 (perqo.com's are IA5's inventory; the app's are IA6's map, A-0 to A-5); roles inside Admin beyond HR manager, finance manager and IA7's account owner, and scoping a role to some employee groups; volumes beyond IA7's sizing client (IA3 and IA6 assume frequencies of use only); the terms of a client's contract beyond IA8's purchase lifecycle (CL-1 to CL-6), how long a former client's records are kept, the period's length, how long issuing a card takes, and IA8's open gaps G-5 to G-7 (how a leaver learns of a decided claim, a mid-period move to another group, money unspent at a period's end); any number (budgets, limits, amounts) beyond IA5's page, template and module counts and IA7's sizing-client volumes, 15% over the limit, five working days and 14 days; any named person or client company (none may be real).
+The merchant side's own surface and anything of it beyond IA3's card offers and IA4's merchant and offer objects; pages on Admin beyond IA7's map, AD-0 to AD-6 (perqo.com's are IA5's inventory; the app's are IA6's map, A-0 to A-5); roles inside Admin beyond HR manager, finance manager and IA7's account owner, and scoping a role to some employee groups; volumes beyond IA7's sizing client (IA3 and IA6 assume frequencies of use only); the terms of a client's contract beyond IA8's purchase lifecycle (CL-1 to CL-6), how long a former client's records are kept, the period's length, the sprint's length (IA9), how long issuing a card takes, and IA8's open gaps G-5 to G-7 (how a leaver learns of a decided claim, a mid-period move to another group, money unspent at a period's end); any number (budgets, limits, amounts) beyond IA5's page, template and module counts and IA7's sizing-client volumes, 15% over the limit, five working days and 14 days; any named person or client company (none may be real).

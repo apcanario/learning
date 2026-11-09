@@ -123,7 +123,7 @@ Perqo's own artefacts show record debt accruing, in the filed units' dated notes
 - **Applied, face not re-stamped:** IA6's app map gained entry E-8 and a note on A-5 (IA6, Deliverable B, B.3 and B.4), and its face still reads "version 1, dated 3 November 2026" with no amendment. IA4's object map gained a dated note under its figure (IA4, Deliverable A, after A.4), and its face is unchanged.
 - **Recorded as a note, not applied in the artefact:** IA7's Admin IA carries IA8's answers in a dated note under "What IA8 and later units take" and in its facts row, while its F3 object-relationship map still lists the card's states as "Active, Frozen (IA4)" (IA7, Deliverable A, A.1, row O-09; section 5.1's table), its model fields still give card status as `active`, `frozen` with no `cancelled`, the allocation with no closed attribute and the client with no contract end date (A.2), and its calls to action list -> invite employees with no condition (A.4). IA6's screen states table has no state for a category open with no allocation for the period, which IA8 set as "a new state of IA6's category screen" (IA6, Deliverable B, B.5; IA8, section 4.2).
 
-An engineer who builds Admin's card status from IA7's F3 map, which its face calls "the agreed mapping to the data model", builds it without Cancelled. That is the interest on record debt, and nothing in IA7's own deliverable warns the engineer. Section 4.5 says what this unit changes so that a face would warn them, and Deliverable D logs each unapplied place as an entry.
+An engineer who builds Admin's card status from IA7's F3 map, which its face calls "the agreed mapping to the data model", builds it without Cancelled. That is the interest on record debt, and nothing in IA7's own deliverable warns the engineer. Section 4.5 says what this unit changes so that a face would warn them, and Deliverable D logs each unapplied place as an entry. *Note, 9 November 2026: the filing of this unit applied every place listed above and re-stamped the faces by section 4.4's rule, so IA4's, IA6's and IA7's artefacts no longer carry this debt (section 4.5; Deliverable D, the note after D.3).*
 
 ## 3 · When an IA artefact is done
 
@@ -266,6 +266,8 @@ This unit changes how filed artefacts are kept, in three places; the filing chat
 1. **IA2, section 4, "Re-stamp the face", and the notation sheet's face field "Owner, version, date"** gain the rule of section 4.4: a new version for a change that breaks a citation, a dated amendment otherwise, each amendment naming its decision log entry; and the field reads "Owner, version, date, amendments (DL-)".
 2. **The faces of three filed artefacts are re-stamped** under that rule, each with an amendment of 9 November 2026: IA4, Deliverable A (DL-004 to DL-006); IA6, Deliverable B (DL-004, DL-008); IA7, the Deliverable (DL-005 to DL-007). None needs a new version: IA8's decisions added states, attributes and conditions and renamed nothing (IA8, "Perqo facts set by this unit").
 3. **The places Deliverable D logs as not yet applied** are listed there, entry by entry, with the change each needs. They follow from decisions IA8 took and the register holds, so the filing chat can apply them without a new decision; the model field names they need are proposed in D.3 for engineering to confirm.
+
+*Note, 9 November 2026: the filing chat applied all three, with a dated note in each place: IA2, section 4 and the notation sheet; the faces of IA4, Deliverable A, IA6, Deliverable B and IA7's Deliverable, and IA6's wireflows (Deliverable C, whose amendment now names DL-004) and IA7's navigation model (Deliverable C, for C.4); and every place D.3 lists, with the client's contract end date drawn in IA7's object-relationship figure (A.5), which holds the client's attributes.*
 
 ## 5 · IA as a living document: the maintenance cadence
 
@@ -446,6 +448,8 @@ Each review (Perqo, fictional), with what it checks, when it runs, what else tri
 | DL-010 | The version and amendment rule for faces (section 4.4), applied to IA2, section 4 and the notation sheet | IA9, section 4.5; proposed 9 November 2026 | none yet | IA2, section 4 and the notation sheet; then DL-004 to DL-008's face lines | proposed |
 
 DL-004 to DL-008 are Perqo's IA debt at the date of this unit: decisions accepted and not applied everywhere. DL-010 is decided by the filing of this unit; once it is applied, the faces DL-004 to DL-008 name can be re-stamped by its rule.
+
+*Note, 9 November 2026: the filing of this unit accepted and applied DL-010 and applied every place in the column "Not yet applied", so DL-004 to DL-008 and DL-010 are now applied and the debt above is cleared (section 4.5's note). The table keeps the state at the unit's date, as the log keeps its history.*
 
 ## What later units take
 

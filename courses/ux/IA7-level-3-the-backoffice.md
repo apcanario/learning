@@ -86,7 +86,7 @@ Every object below keeps its IA4 label, attributes and relationships; nothing is
 
 IA4 left Admin's name for two objects unset, for this unit (IA4, A.1), and IA6 repeated the gap in its labels table (IA6, section 6.2); since 3 November 2026 both give the decisions below, with a dated note. The test for each is IA4's: does anyone in Admin find, list or act on the thing (IA4, section 4.2)?
 
-- **Card (O-09): shown, as "Perqo card", status only.** HR is the person an employee asks why a payment was declined, and IA6 set that a payment is declined at the till when the card is Frozen or the payment is over the category's balance (IA6, Deliverable C, C.2). So the employee's record in Admin shows "Perqo card" with its status: Active, Frozen, or Not issued when the employee holds no card (R-11 allows 0..1). The label is perqo.com's (IA4, A.1), so no new term enters the vocabulary. The last four digits are not shown, and Admin cannot change the card: HR's one call to action on it is -> view status (Deliverable A, A.4), and freezing and unfreezing stay the employee's (IA4, A.3). Showing only what HR needs to answer the question applies least privilege to an attribute (section 3.3).
+- **Card (O-09): shown, as "Perqo card", status only.** HR is the person an employee asks why a payment was declined, and IA6 set that a payment is declined at the till when the card is Frozen or the payment is over the category's balance (IA6, Deliverable C, C.2). So the employee's record in Admin shows "Perqo card" with its status: Active, Frozen, Cancelled (since IA8: note below), or Not issued when the employee holds no card (R-11 allows 0..1). The label is perqo.com's (IA4, A.1), so no new term enters the vocabulary. The last four digits are not shown, and Admin cannot change the card: HR's one call to action on it is -> view status (Deliverable A, A.4), and freezing and unfreezing stay the employee's (IA4, A.3). Showing only what HR needs to answer the question applies least privilege to an attribute (section 3.3). *Note, 9 November 2026: Cancelled is the status IA8 gave the card of an employee who leaves and of a churned client (IA8, sections 3.2 and 3.4; decision log DL-005, IA9, Deliverable D).*
 - **Notification (O-10): not shown.** A notification is a message to the employee about one claim (IA4, A.1). What HR needs to know about that claim is its status and history, which the claim and its audit entries hold (section 5.3). Showing the employee's messages in Admin would put a person's inbox in their employer's backoffice and add nothing HR acts on. Whether Admin sends HR any message of its own (a daily email of waiting claims, say) is left free.
 
 ## 3 · Roles and permissions as an IA layer
@@ -215,7 +215,7 @@ IA2 drew the claim's lifecycle as a plain state-transition diagram, the form Dav
 |---|---|---|---|
 | claim (O-07) | Submitted, Approved, Rejected, Paid (IA1; IA2) | yes, Deliverable D | four states, two end states, decisions by the rule and by HR, exceptions |
 | employee (O-05) | Invited, Active, Left (this unit) | yes, below | what HR can do differs by state, and Invited has three ways out |
-| card (O-09) | Active, Frozen (IA4) | no | the employee's own toggle; Admin only shows it (section 2.3) |
+| card (O-09) | Active, Frozen (IA4); Cancelled (IA8, section 3.4) | no | the employee's own toggle, and Cancelled, set on Left, has no way out; Admin only shows it (section 2.3) |
 | admin user (O-02) | Active, Removed (this unit) | no | one transition, by the account owner |
 | allocation, policy, employee group, client | none | no | they change values, not states; History records each change (section 5.3) |
 
@@ -284,7 +284,7 @@ Four practices hold the line, each with the dependency it protects.
 
 ## Deliverable · The Perqo Admin IA
 
-*Face of this artefact (IA2, the notation sheet): the information architecture of Perqo Admin, in four parts: A, the object-relationship map at F3 (IA2's decision table: F3 as the agreed mapping to the data model); B, the role-by-section matrix at F2, one mark per cell, with a legend saying, for each mark, its calls to action, the pages and reports it opens, or what it stands for; C, the navigation model at F2 (IA2: before navigation components are chosen), with F3's identifiers on every page; D, the claim-approval state diagram at F3 (IA2: every trigger for build). Decision: what Admin holds, who may see, do and reach what, by which routes, and how a claim moves; readers: engineering and security (objects, model names, permissions, transitions), product management (scope), the client (whether its roles fit its people), support (where a manager is and what they can do), content (labels); leaves out: visual design and layout, the sign-in method, the merchant side and the catalogue's own surface, perqo.com and the app beyond the routes into them, measured volumes (every volume is assumed); owner: the IA designer; version 1, dated 3 November 2026; every object and placement is assumed until tested (IA4, section 4.3); Perqo is fictional.*
+*Face of this artefact (IA2, the notation sheet): the information architecture of Perqo Admin, in four parts: A, the object-relationship map at F3 (IA2's decision table: F3 as the agreed mapping to the data model); B, the role-by-section matrix at F2, one mark per cell, with a legend saying, for each mark, its calls to action, the pages and reports it opens, or what it stands for; C, the navigation model at F2 (IA2: before navigation components are chosen), with F3's identifiers on every page; D, the claim-approval state diagram at F3 (IA2: every trigger for build). Decision: what Admin holds, who may see, do and reach what, by which routes, and how a claim moves; readers: engineering and security (objects, model names, permissions, transitions), product management (scope), the client (whether its roles fit its people), support (where a manager is and what they can do), content (labels); leaves out: visual design and layout, the sign-in method, the merchant side and the catalogue's own surface, perqo.com and the app beyond the routes into them, measured volumes (every volume is assumed); owner: the IA designer; version 1, dated 3 November 2026; amended 9 November 2026 (DL-005, DL-006, DL-007; IA9, section 4.5); every object and placement is assumed until tested (IA4, section 4.3); Perqo is fictional.*
 
 ### Deliverable A · The object-relationship map
 
@@ -302,7 +302,7 @@ Every Admin object of IA4's map, with IA4's label kept and this unit's columns a
 | O-06 | allocation (`allocation`) | Budget, in Budgets | up to 4,800 a period *new* | none | none | all | finance |
 | O-07 | transaction, type claim (`transaction`, type claim) | Claim, on the employee's record; listed in Approvals | about 1,200 a month, about 180 waiting *new* | Submitted, Approved, Rejected, Paid (Deliverable D) | Approvals | all | HR (decision); Perqo system |
 | O-08 | transaction, type card payment (`transaction`, type card payment) | Card payment, in Reports | about 9,600 a month *new* | none | none | finance *new* | nobody in Admin |
-| O-09 | card (`card`) | Perqo card, on the employee's record *new*: status only | up to 1,200 | Active, Frozen (IA4) | none | HR *new* | nobody in Admin (the employee, in the app) |
+| O-09 | card (`card`) | Perqo card, on the employee's record *new*: status only | up to 1,200 | Active, Frozen (IA4); Cancelled (IA8) | none | HR *new* | nobody in Admin (the employee, in the app) |
 | O-10 | notification | not shown *new* (section 2.3) | not applicable | none | none | nobody in Admin | nobody in Admin |
 | O-13 | catalogue item (`catalogue_item`) | Covered items, in Policies | 12 in the sample (IA4) | none | none | all | Perqo content team (outside Admin) |
 | O-17 | audit entry (`audit_entry`) *new* | History, on each detail page; Activity log, in Settings | one per change | none | none | History: any role that sees the record; Activity log: owner | nobody: written by the system |
@@ -315,17 +315,19 @@ Each attribute with IA4's label (or this unit's, marked *new*) and its model fie
 
 | Object | Attribute → model field |
 |---|---|
-| O-01 client | name → `name`; contract start date → `contract_start_date` |
+| O-01 client | name → `name`; contract start date → `contract_start_date`; contract end date (IA8) → `contract_end_date` (proposed) |
 | O-02 admin user | name → `name`; work email → `work_email`; role (HR manager or finance manager) → `role` (`hr_manager`, `finance_manager`); account owner *new* → `is_account_owner`; status *new* → `status` (`active`, `removed`) |
 | O-03 employee group | name → `name` |
 | O-04 policy | open categories → `open_categories` (F-CAT identifiers, IA4, Deliverable B); auto-approve limit → `auto_approve_limit`; covered items → `covered_items` (catalogue item IDs, R-07) |
 | O-05 employee | name → `name`; work email → `work_email`; status *new* → `status` (`invited`, `active`, `left`) |
-| O-06 allocation | category → `category` (F-CAT identifier); period → `period`; amount → `amount`; spent → `spent` (approved and paid claims and card payments; waiting claims excluded, section 5.2); remaining → computed as amount less spent, not stored |
+| O-06 allocation | category → `category` (F-CAT identifier); period → `period`; amount → `amount`; spent → `spent` (approved and paid claims and card payments; waiting claims excluded, section 5.2); remaining → computed as amount less spent, not stored; closed (IA8) → `closed` (proposed), set when the employee is Left |
 | O-07 claim | amount → `amount`; category → `category`; receipt → `receipt_file`; status → `status` (`submitted`, `approved`, `rejected`, `paid`); date submitted → `submitted_at`; rejection reason (IA6) → `rejection_reason` (`over_balance`, `by_hr`); decided by *new* → `decided_by` (an admin user ID, or `rule`); rejection note *new* → `rejection_note` |
 | O-08 card payment | amount → `amount`; date → `occurred_at`; merchant → `merchant_id`; category → `category` |
-| O-09 card | status → `status` (`active`, `frozen`); last four digits → `last_four` (not shown in Admin) |
+| O-09 card | status → `status` (`active`, `frozen`, `cancelled`); last four digits → `last_four` (not shown in Admin) |
 | O-13 catalogue item | ID → `id`; name → `name`; the four facet values → `facets` (IA4, Deliverable B) |
 | O-17 audit entry *new* | who → `actor_id` (an admin user ID, or `system`); action → `action`; object and its ID → `object_type`, `object_id`; date and time → `occurred_at`; before and after → `before`, `after` |
+
+*Note, 9 November 2026: three fields added from IA8's decisions (IA8, sections 3.2 and 3.4; decision log DL-005 and DL-006, IA9, Deliverable D): `cancelled` on the card's status, the allocation's `closed` and the client's `contract_end_date`; the last two names are proposed for engineering to confirm.*
 
 #### A.3 · Relationships
 
@@ -361,9 +363,9 @@ Every Admin call to action, IA4's kept and this unit's added, with the role that
 | client | -> edit company details | account owner *new* (section 3.4) | Settings, Company (AD-6.1) |
 | admin user | -> add | account owner *new* (section 3.4) | Settings, Admins (AD-6.2.1) |
 | admin user | -> remove *new*; -> change role *new*; -> make account owner *new* | account owner | Settings, Admins (AD-6.2) |
-| employee group | -> create; -> invite employees | HR manager | Employees (AD-1.2.2; AD-1.3) |
+| employee group | -> create; -> invite employees (only once the group's budgets for the current period are set; IA8, section 3.2) | HR manager | Employees (AD-1.2.2; AD-1.3) |
 | policy | -> edit; -> add covered items | HR manager | Policies (AD-3.1.1; AD-3.1.2) |
-| employee | -> invite; -> move to group | HR manager | Employees (AD-1.3; AD-1, for one or selected employees) |
+| employee | -> invite (only into a group whose budgets for the current period are set; IA8, section 3.2); -> move to group | HR manager | Employees (AD-1.3; AD-1, for one or selected employees) |
 | employee | -> resend invitation *new*; -> mark as left *new* | HR manager | Employees (AD-1.1; AD-1.4, for one or selected employees) |
 | allocation | -> set for a group | finance manager | Budgets (AD-2.2) |
 | transaction, type claim | -> approve; -> reject | HR manager, never on their own claim | Approvals (AD-4), on the claim (AD-1.1.1) |
@@ -380,7 +382,7 @@ Split in two figures, IA2's rule "split rather than cram" (IA2, section 4), with
 
 ```viz
 {"kind": "objects", "caption": "Object-relationship map, figure 1 of 2, setup: the Admin objects HR and the account owner configure, with IDs, Admin labels, attributes, volumes for the sizing client (assumed), work queues, calls to action with their roles and counts in UML multiplicity notation, F3 (model names in A.2); supports the decision on what Admin holds and who changes it (Deliverable A). Every box tone 4, Perqo Admin, because the figure shows one surface. Lines read left to right on a level line, top to bottom otherwise. R-01 to R-04 and R-07 from IA4, Deliverable A, labels and counts kept; R-21, the account owner, employee status and the volumes set in section 2.2 and section 3.4; object-first method from Prater, A List Apart, 2015 and 2016. Perqo is fictional.", "objects": [
- {"id": "client", "title": "client", "tone": 4, "attrs": ["O-01", "Admin: Company, in Settings", "name", "contract start date", "volume: 1"], "actions": ["-> edit company details (owner)"]},
+ {"id": "client", "title": "client", "tone": 4, "attrs": ["O-01", "Admin: Company, in Settings", "name", "contract start date", "contract end date", "volume: 1"], "actions": ["-> edit company details (owner)"]},
  {"id": "admin", "title": "admin user", "tone": 4, "attrs": ["O-02", "Admin: Admins, in Settings", "name", "work email", "role", "account owner", "status", "volume: 3"], "actions": ["-> add (owner)", "-> remove (owner)", "-> change role (owner)", "-> make account owner (owner)"]},
  {"id": "group", "title": "employee group", "tone": 4, "attrs": ["O-03", "Admin: Employee group", "name", "volume: 14", "queue: No budget for next period"], "actions": ["-> create (HR)", "-> invite employees (HR)"]},
  {"id": "employee", "title": "employee", "tone": 4, "attrs": ["O-05", "Admin: Employees", "name", "work email", "status", "volume: 1,200", "queue: Not joined", "→ see figure 2"], "actions": ["-> invite (HR)", "-> resend invitation (HR)", "-> move to group (HR)", "-> mark as left (HR)"]},
@@ -467,7 +469,7 @@ The three rules of section 3.2, applied (Perqo, fictional):
 
 ### Deliverable C · The navigation model
 
-*Face: navigation model of Perqo Admin, F2 (IA2's decision table), with F3's identifiers on every page, AD-0 to AD-6, beside IA5's S-, L- and H- and IA6's A-; decision: by which routes each role reaches each object, list, queue and view; readers: engineering (routes and addresses), content (labels), support (where a manager is); leaves out: the components that carry the routes (navigation design, IA1, section 2.1), visual layout, Admin's domain; owner: the IA designer; version 1, dated 3 November 2026; Perqo is fictional.*
+*Face: navigation model of Perqo Admin, F2 (IA2's decision table), with F3's identifiers on every page, AD-0 to AD-6, beside IA5's S-, L- and H- and IA6's A-; decision: by which routes each role reaches each object, list, queue and view; readers: engineering (routes and addresses), content (labels), support (where a manager is); leaves out: the components that carry the routes (navigation design, IA1, section 2.1), visual layout, Admin's domain; owner: the IA designer; version 1, dated 3 November 2026; C.4 amended 9 November 2026 (DL-007; IA9, section 4.5); Perqo is fictional.*
 
 #### C.1 · Admin's pages
 
@@ -561,7 +563,7 @@ Every list in Admin, with its default order and what acts on it (Perqo, fictiona
 | Not joined | employee, Invited | invited more than 14 days ago | HR manager | AD-1.4 | oldest invitation first | not set | resend invitation; mark as left |
 | No budget for next period | employee group | no budgets set for the next period | finance manager | top of AD-2 | employee group name | up to 14 | set budgets |
 
-HR's invitation, Admin's side of IA6's entry E-2 (IA6, Deliverable B, B.4). HR invites from Invite employees (AD-1.3), one employee or several into one group, each with a name and a work email; each becomes an employee in the state Invited (section 5.1). The invitation is an email to the work email, carrying the employer's name (the client's name, from Company, AD-6.1) and the link perqo.com/app/join/{invitation}, which opens Join (A-0.1) in the app, or Get the Perqo app (S-6) without it, as IA6 set. Resend invitation sends the same email again. How long an invitation stays valid is left free.
+HR's invitation, Admin's side of IA6's entry E-2 (IA6, Deliverable B, B.4). HR invites from Invite employees (AD-1.3), one employee or several into one group, each with a name and a work email, once that group's budgets for the current period are set (until then Invite employees is shown disabled with "Set this group's budgets first": IA8, section 3.2; decision log DL-007, IA9, Deliverable D; note, 9 November 2026); each becomes an employee in the state Invited (section 5.1). The invitation is an email to the work email, carrying the employer's name (the client's name, from Company, AD-6.1) and the link perqo.com/app/join/{invitation}, which opens Join (A-0.1) in the app, or Get the Perqo app (S-6) without it, as IA6 set. Resend invitation sends the same email again. How long an invitation stays valid is left free.
 
 #### C.5 · The sign-in screen, and the proposal IA5 left
 
@@ -615,7 +617,7 @@ The claim's lifecycle drawn at F3, the transitions labelled by their IDs and act
 
 ## What IA8 and later units take
 
-**IA8** takes this IA as the Admin layer of the cross-surface interaction map. The joins it will need are named here: Admin's invitation to the app's entry E-2 (Deliverable C, C.4); the claim's lifecycle (Deliverable D) to the app's Claims groups and Claim screen (IA6, Deliverable B) and to the decision tree IA2 drew, with T5 added; Admin's labels against the app's and perqo.com's through the object map's "Surface: Label" lines; and three cross-surface questions this unit leaves open: what happens to a leaver's remaining allocations and card (section 5.1); whether the model should take Admin's word, Budget, for the allocation (section 6.2); and where boundaries between models would run, at the catalogue and the merchant side (section 6.2). *Note, 9 November 2026: IA8 answered all three: on Left the card is Cancelled, a new card status Admin shows beside Active, Frozen and Not issued, the allocations are closed to new spending and claims submitted before leaving are still decided (IA8, section 3.4); the model keeps `allocation` and Admin keeps the label Budget; and the candidate contexts are benefits, catalogue, merchant and website (IA8, Deliverable, D.1). IA8 also made Invite employees unavailable for a group until its budgets for the current period are set (IA8, section 3.2).*
+**IA8** takes this IA as the Admin layer of the cross-surface interaction map. The joins it will need are named here: Admin's invitation to the app's entry E-2 (Deliverable C, C.4); the claim's lifecycle (Deliverable D) to the app's Claims groups and Claim screen (IA6, Deliverable B) and to the decision tree IA2 drew, with T5 added; Admin's labels against the app's and perqo.com's through the object map's "Surface: Label" lines; and three cross-surface questions this unit leaves open: what happens to a leaver's remaining allocations and card (section 5.1); whether the model should take Admin's word, Budget, for the allocation (section 6.2); and where boundaries between models would run, at the catalogue and the merchant side (section 6.2). *Note, 9 November 2026: IA8 answered all three: on Left the card is Cancelled, a new card status Admin shows beside Active, Frozen and Not issued, the allocations are closed to new spending and claims submitted before leaving are still decided (IA8, section 3.4); the model keeps `allocation` and Admin keeps the label Budget; and the candidate contexts are benefits, catalogue, merchant and website (IA8, Deliverable, D.1). IA8 also made Invite employees unavailable for a group until its budgets for the current period are set (IA8, section 3.2). The same day IA9's filing applied these in sections 2.3 and 5.1 and Deliverables A and C, and re-stamped the face (IA9, section 4.5).*
 
 **IA11** tests it. **IA12's assumption register** records its decisions and assumptions, each with its test:
 
@@ -649,7 +651,7 @@ Every fact below is a course convention (Perqo, fictional), never evidence about
 | A claim waiting more than five working days is marked Overdue in Approvals | Deliverable D, EX-3 | none |
 | Audit entry (O-17): who, action, object and its ID, date and time, before and after; shown as History on each detail page and as the Activity log in Settings | section 5.3 | how long entries are kept |
 | Relationships R-21 (admin user is also employee), R-22 (claim is decided by admin user), R-23 (audit entry records a change to), R-24 (audit entry is made by admin user) | Deliverable A, A.3 | none |
-| Admin's name for the card is "Perqo card", status only (Active, Frozen, Not issued), on the employee's record; Admin does not show notifications | section 2.3 | whether Admin sends HR messages of its own |
+| Admin's name for the card is "Perqo card", status only (Active, Frozen, Not issued; Cancelled since IA8, 9 Nov 2026), on the employee's record; Admin does not show notifications | section 2.3 | whether Admin sends HR messages of its own |
 | Roles cover the whole client; the role-by-section matrix and the calls to action with their roles in Deliverables A and B; finance does not see Approvals; HR sees Budget use and Claims by status only | section 3; Deliverables A, B | scoping roles to employee groups |
 | Every admin user sees Company (AD-6.1) read only; only the account owner edits it, and only the account owner reaches Admins and the Activity log | Deliverable A, A.1; Deliverable B | none |
 | Admin's pages AD-0 to AD-6 as in C.1; addresses identifier first | Deliverable C, C.1 | Admin's domain; the identifiers' format |
