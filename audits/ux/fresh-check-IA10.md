@@ -76,3 +76,18 @@ WebSearch (20): (1) Dan Brown "Communicating Design" preface "underbelly of web 
 WebFetch (each URL from a search result above, verbatim): oreilly.com .../9780131385399/pr02.html ok; .../ch08.html ok; .../ch09.html ok; informit.com communicating-design ...9780321712462 ok (chapter titles only); oreilly.com .../9780131385399/ ok; .../ch02.html ok (partial, paywalled); .../bk01-toc.html ok; oreilly.com .../9780133390957/ch07.html ok; .../part02.html ok; .../9780133390957/ ok; scottberkun.com/2013/book-review-designing-together/ ok (fetched twice, same URL); nngroup.com/articles/stakeholder-analysis/ ok; nngroup.com/articles/intranet-information-architecture-ia/ ok; steptwo.com.au/papers/cmb_orgchart/ ok; blog.acolyer.org/2019/12/13/how-do-committees-invent/ ok; legislation.gov.uk/eur/2016/679/article/9/adopted ok (fetched twice, same URL); designcouncil.org.uk/resources/framework-for-innovation/ ok; domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf ok.
 
 Nothing from memory was used; no memory tool was called.
+
+## Maintainer's notes (U-10 chat, 9 November 2026)
+
+Every finding was verified before it was applied, each applied as an exact replacement by script (each `Current` occurring once in the unit).
+
+- Finding 1 (error, Berkun): verified by a WebSearch for the review and a WebFetch of the URL it returned (scottberkun.com, 27 June 2013): the sentence is introduced "Brown writes in the opening pages:" and the block-quoted foreword opens on the cliché of forewords. Holds; applied. The Sources line stays, as the checker says.
+- Finding 2 (error, IA8's gaps): IA8, section 1, "Gap-finding": seven places, two already named (G-1, G-2), "five were found only when the layers were laid together". Holds; applied.
+- Finding 3 (error, W-17): IA9, Deliverable A, W-17's informed column reads "all six". Holds; applied.
+- Finding 4 (should-fix, consent): verified by a WebSearch and a WebFetch of legislation.gov.uk's Article 9 as adopted: 9(2)(a) reads as quoted and 9(1) lists "data concerning health". Holds; applied. The writer's unsure line on Article 9(1) was extended to say the fresh check read the phrase on the page.
+- Finding 5 (should-fix, figure 5's notes): the three notes did not occur in the text; applied as the checker's primary Fix, the text's steps (5) to (7) changed to the figure's words, the declaration unchanged. Figure 5 is re-checked by a new agent (below).
+- Finding 6 (should-fix, IA6's faces): IA6's Deliverable A face reads "version 1, dated 3 November 2026" with no amendment; B and C carry the 9 November amendment. Holds; applied.
+- Finding 7 (minor, IA7 D.1): T3 and T4 say nothing of reading the receipt. Holds; applied.
+- Finding 8 (minor, facts table): the client rule of section 2.7 was unlisted. Holds; applied as the row the checker gives.
+- Finding 9 (minor, style, figure 6's cells): the checker's own Fix is "no change required" and the figure passed; recorded, not applied: cutting the cells to identifiers would change a passed figure's declaration for words that are all traced to table A.1.
+- Confirmed list: the Chisnell 2016 page the checker could not find is cited through IA9, where U-9's checker verified it; no change.
