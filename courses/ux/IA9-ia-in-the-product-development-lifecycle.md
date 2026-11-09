@@ -287,16 +287,17 @@ Two triggers outrank the calendar. A change to a top level or a tab sends the st
 The cadence below shows when each review runs and who owns it; a cell names the owner where a review runs at that cadence. Row names are Deliverable C's.
 
 ```viz
-{"kind": "matrix", "caption": "Maintenance cadence: each review of Perqo's IA by when it runs, with its owner in the cell (under Each release, the Cross-surface review runs only at a release touching two surfaces, and Analytics paths only for the screens the release changed: Deliverable C, RV-03 and RV-06); supports the decision on who checks what, and when, once the IA is in use (section 5; Deliverable C). Cadence and owners set in section 5 and Deliverable C (Perqo, fictional), extending IA8, section 6 (each release touching two surfaces, quarterly) and IA3's item E2 (support reads the log each quarter); quarterly log reading after Farrell, NN/g, 2017; rolling audits from Halvorson and Rach 2012, index; recurring debt reviews from Kaley, NN/g, 2018. Every row tone 5, shared.",
+{"kind": "matrix",
+ "caption": "Maintenance cadence: each review of Perqo's IA by when it runs, with its owner in the cell (a condition in square brackets: the review runs at that cadence only when it holds; Deliverable C, RV-03 and RV-06); supports the decision on who checks what, and when, once the IA is in use (section 5; Deliverable C). Cadence and owners set in section 5 and Deliverable C (Perqo, fictional), extending IA8, section 6 (each release touching two surfaces, quarterly) and IA3's item E2 (support reads the log each quarter); quarterly log reading on this unit's reading of Farrell, NN/g, 2017; rolling audits from Halvorson and Rach 2012, index; recurring debt reviews from Kaley, NN/g, 2018. Every row tone 5, shared.",
  "cols": ["Each story", "Each release", "Monthly", "Quarterly", "On trigger"],
  "rows": [
   {"label": "Story check", "tone": 5, "cells": ["IA designer", null, null, null, null]},
   {"label": "Release check", "tone": 5, "cells": [null, "IA designer", null, null, null]},
-  {"label": "Cross-surface review", "tone": 5, "cells": [null, "IA review", null, "IA review", null]},
+  {"label": "Cross-surface review", "tone": 5, "cells": [null, "IA review [touching two surfaces]", null, "IA review", null]},
   {"label": "Face audit", "tone": 5, "cells": [null, null, null, "IA designer", null]},
   {"label": "Search log", "tone": 5, "cells": [null, null, null, "support", "support"]},
   {"label": "Support tickets", "tone": 5, "cells": [null, null, "support", null, "support"]},
-  {"label": "Analytics paths", "tone": 5, "cells": [null, "product management", null, "product management", null]},
+  {"label": "Analytics paths", "tone": 5, "cells": [null, "product management [screens it changed]", null, "product management", null]},
   {"label": "Vocabulary", "tone": 5, "cells": [null, null, null, "content team", "content team"]},
   {"label": "Rolling audit", "tone": 5, "cells": [null, null, null, "content team", "content team"]},
   {"label": "Debt triage", "tone": 5, "cells": [null, null, null, "product management", null]},
@@ -337,13 +338,14 @@ Jen Cardello names three uses for analytics in UX practice: "Issue indication: N
 Every signal is read for what it shows and becomes a hypothesis about one part of the structure, which a method of IA11 then tests with people before an artefact changes. The methods themselves are IA11's to specify; the filed units have already named which fits which assumption. Samhita Tankala separates the two structure methods by stage: card sorting is "typically conducted early in the design process", a discovery method, and a tree test "evaluates a hierarchical category structure", existing or proposed ("Card Sorting vs. Tree Testing", Nielsen Norman Group, 23 February 2024, [nngroup.com, card sort vs tree test](https://nngroup.com/articles/card-sorting-tree-testing-differences)). So a signal from production, which is about a structure that exists, goes first to a test of that structure, a tree test or the first-click test IA3 and IA6 named for the app's labels, and to a card sort only when the test shows the categories themselves are wrong.
 
 ```viz
-{"kind": "matrix", "caption": "Production signals: what each record shows about Perqo's IA, the hypothesis it raises, the test it goes to and the artefact a failed test changes; supports the decision on what to do with a signal before changing the structure (section 6). Search-log reading from Farrell, NN/g, 2017 (IA3, section 5.2); tickets from Chisnell 2016 (practice); analytics uses from Cardello, NN/g, 2013; tests as named in IA5 to IA8's assumption tables, methods by stage from Tankala, NN/g, 2024. Tone 1 perqo.com (the Help centre), tone 3 the Perqo app, tone 4 Perqo Admin, tone 5 shared: tickets reach every surface. Perqo is fictional.",
+{"kind": "matrix",
+ "caption": "Production signals: what each record shows about Perqo's IA, the hypothesis it raises, the test it goes to and the artefact a failed test changes; supports the decision on what to do with a signal before changing the structure (section 6). Records and what each shows from sections 6.1 to 6.3 and Deliverable C, RV-04 to RV-06; search-log reading from Farrell, NN/g, 2017 (IA3, section 5.2); tickets from Chisnell 2016 (practice); analytics uses from Cardello, NN/g, 2013; tests from section 6.4, methods by stage from Tankala, NN/g, 2024, and for tickets the IA11 table in 'What later units take'. Tone 1 perqo.com (the Help centre), tone 3 the Perqo app, tone 4 Perqo Admin, tone 5 shared: tickets reach every surface. Perqo is fictional.",
  "cols": ["Shows", "Hypothesis", "Test (IA11)", "Changes"],
  "rows": [
-  {"label": "Help centre search", "tone": 1, "cells": ["zero results, variants, reformulations", "a label or route hides a thing", "tree test, first-click test", "vocabulary, Help centre structure"]},
-  {"label": "App paths", "tone": 3, "cells": ["loops, detours through Help, exits", "a route or screen is misplaced", "usability test; tree test of the app map", "app map, wireflows"]},
-  {"label": "Admin paths, sign-ins", "tone": 4, "cells": ["first actions after sign-in; failed sign-ins", "a landing page or the sign-in line is wrong", "usability test; interviews with HR and finance", "navigation model, AD-0"]},
-  {"label": "Support tickets", "tone": 5, "cells": ["where people stop, in their words", "a rule or a status is unclear", "interviews; usability test", "decision trees, state names, articles"]}]}
+  {"label": "Search log", "tone": 1, "cells": ["zero results, frequent queries, reformulations", "a structure hides what is wanted, or a content gap", "tree test or first-click test", "vocabulary and search synonyms; Help centre articles (H-)"]},
+  {"label": "App paths", "tone": 3, "cells": ["loops, detours through Help or search, exits", "a screen is reached from search or Help, not by its route", "tree test or first-click test of the app's labels", "the app's labels and routes (A-)"]},
+  {"label": "Admin paths", "tone": 4, "cells": ["first actions after sign-in; failed sign-ins", "landing pages miss HR's and finance's most frequent work; employees look for the app on AD-0", "tree test or first-click test of Admin's structure", "the landing pages; AD-0, the sign-in screen (DL-002)"]},
+  {"label": "Support tickets", "tone": 5, "cells": ["tags by screen, page or DT- tree; the words people use", "problems cluster on the tagged screen, page or rule", "first-click tests on the same screens", "the tagged screen, page or DT- tree"]}]}
 ```
 
 The loop runs back as well as forward. A test that confirms the structure closes the hypothesis in the decision log as declined, with the test as its reason; a test that fails it raises a change, which runs the flow of section 4.2. Where no test can be run, IA12's assumption register holds the hypothesis as assumed, with its test named, until one can (IA8, "What later units take").

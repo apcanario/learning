@@ -381,35 +381,35 @@ Every Admin call to action, IA4's kept and this unit's added, with the role that
 Split in two figures, IA2's rule "split rather than cram" (IA2, section 4), with "→ see" lines where an object continues in the other. Every box is tone 4, Perqo Admin, because the map shows one surface; each title is the model name in lower case and the "Admin: Label" line gives the label people see (IA2, section 5.2). Each box carries its ID, its volume and its work queue; model names of attributes are in A.2, and every relationship, drawn or not, is in A.3. The first figure holds the setup: client, admin users, employee groups, employees, policies and the catalogue items policies cover (R-01 to R-04, R-07, R-21).
 
 ```viz
-{"kind": "objects", "caption": "Object-relationship map, figure 1 of 2, setup: the Admin objects HR and the account owner configure, with IDs, Admin labels, attributes, volumes for the sizing client (assumed), work queues, calls to action with their roles and counts in UML multiplicity notation, F3 (model names in A.2); supports the decision on what Admin holds and who changes it (Deliverable A). Every box tone 4, Perqo Admin, because the figure shows one surface. Lines read left to right on a level line, top to bottom otherwise. R-01 to R-04 and R-07 from IA4, Deliverable A, labels and counts kept; R-21, the account owner, employee status and the volumes set in section 2.2 and section 3.4; object-first method from Prater, A List Apart, 2015 and 2016. Perqo is fictional.", "objects": [
- {"id": "client", "title": "client", "tone": 4, "attrs": ["O-01", "Admin: Company, in Settings", "name", "contract start date", "contract end date", "volume: 1"], "actions": ["-> edit company details (owner)"]},
- {"id": "admin", "title": "admin user", "tone": 4, "attrs": ["O-02", "Admin: Admins, in Settings", "name", "work email", "role", "account owner", "status", "volume: 3"], "actions": ["-> add (owner)", "-> remove (owner)", "-> change role (owner)", "-> make account owner (owner)"]},
- {"id": "group", "title": "employee group", "tone": 4, "attrs": ["O-03", "Admin: Employee group", "name", "volume: 14", "queue: No budget for next period"], "actions": ["-> create (HR)", "-> invite employees (HR)"]},
- {"id": "employee", "title": "employee", "tone": 4, "attrs": ["O-05", "Admin: Employees", "name", "work email", "status", "volume: 1,200", "queue: Not joined", "→ see figure 2"], "actions": ["-> invite (HR)", "-> resend invitation (HR)", "-> move to group (HR)", "-> mark as left (HR)"]},
- {"id": "policy", "title": "policy", "tone": 4, "attrs": ["O-04", "Admin: Policy", "open categories", "auto-approve limit", "covered items", "volume: 14", "→ see figure 2"], "actions": ["-> edit (HR)", "-> add covered items (HR)"]},
- {"id": "item", "title": "catalogue item", "tone": 4, "attrs": ["O-13", "Admin: Covered items, in Policies", "ID", "name", "facet values", "volume: 12 in the sample"], "actions": ["-> view (HR, finance)"]}],
- "rows": [["client", "admin"], ["group", "employee"], ["policy", "item"]],
- "links": [
-  {"from": "client", "to": "admin", "label": "has", "from_card": "1", "to_card": "1..*"},
-  {"from": "client", "to": "group", "label": "has", "from_card": "1", "to_card": "1..*"},
-  {"from": "admin", "to": "employee", "label": "is also", "from_card": "0..1", "to_card": "0..1"},
-  {"from": "group", "to": "employee", "label": "contains", "from_card": "1", "to_card": "1..*"},
-  {"from": "group", "to": "policy", "label": "follows", "from_card": "1", "to_card": "1"},
-  {"from": "policy", "to": "item", "label": "covers", "from_card": "0..*", "to_card": "0..*"}]}
+{"kind": "objects",
+ "caption": "Object-relationship map, figure 1 of 2, setup: the Admin objects HR and the account owner configure, with IDs, Admin labels, attributes, volumes for the sizing client (assumed), work queues, calls to action with their roles and conditions, and counts in UML multiplicity notation, F3 (model names in A.2); supports the decision on what Admin holds and who changes it (Deliverable A). Every box tone 4, Perqo Admin, because the figure shows one surface. Lines read left to right on a level line, top to bottom otherwise. R-01 to R-04 and R-07 from IA4, Deliverable A, labels and counts kept; R-21, the account owner, employee status and the volumes set in section 2.2 and section 3.4; contract end date from IA8, sections 3.2 and 3.4, as A.2 and its note of 9 November 2026 give it (DL-005 and DL-006); the condition on inviting from IA8, section 3.2, as A.4 gives it (DL-007, Deliverable C, C.4); object-first method from Prater, A List Apart, 2015 and 2016. Perqo is fictional.",
+ "links": [{"from": "client", "to": "admin", "label": "has", "from_card": "1", "to_card": "1..*"}, {"from": "client", "to": "group", "label": "has", "from_card": "1", "to_card": "1..*"}, {"from": "admin", "to": "employee", "label": "is also", "from_card": "0..1", "to_card": "0..1"}, {"from": "group", "to": "employee", "label": "contains", "from_card": "1", "to_card": "1..*"}, {"from": "group", "to": "policy", "label": "follows", "from_card": "1", "to_card": "1"}, {"from": "policy", "to": "item", "label": "covers", "from_card": "0..*", "to_card": "0..*"}],
+ "objects": [
+  {"id": "client", "title": "client", "tone": 4, "attrs": ["O-01", "Admin: Company, in Settings", "name", "contract start date", "contract end date", "volume: 1"], "actions": ["-> edit company details (owner)"]},
+  {"id": "admin", "title": "admin user", "tone": 4, "attrs": ["O-02", "Admin: Admins, in Settings", "name", "work email", "role", "account owner", "status", "volume: 3"], "actions": ["-> add (owner)", "-> remove (owner)", "-> change role (owner)", "-> make account owner (owner)"]},
+  {"id": "group", "title": "employee group", "tone": 4, "attrs": ["O-03", "Admin: Employee group", "name", "volume: 14", "queue: No budget for next period"], "actions": ["-> create (HR)", "-> invite employees (HR) [only once the group's budgets for the current period are set]"]},
+  {"id": "employee", "title": "employee", "tone": 4, "attrs": ["O-05", "Admin: Employees", "name", "work email", "status", "volume: 1,200", "queue: Not joined", "→ see figure 2 of 2"], "actions": ["-> invite (HR) [only into a group whose budgets for the current period are set]", "-> resend invitation (HR)", "-> move to group (HR)", "-> mark as left (HR)"]},
+  {"id": "policy", "title": "policy", "tone": 4, "attrs": ["O-04", "Admin: Policy", "open categories", "auto-approve limit", "covered items", "volume: 14", "→ see figure 2 of 2"], "actions": ["-> edit (HR)", "-> add covered items (HR)"]},
+  {"id": "item", "title": "catalogue item", "tone": 4, "attrs": ["O-13", "Admin: Covered items, in Policies", "ID", "name", "facet values", "volume: 12 in the sample"], "actions": ["-> view (HR, finance)"]}],
+ "rows": [
+  ["client", "admin"],
+  ["group", "employee"],
+  ["policy", null],
+  ["item", null]]}
 ```
 
 The second holds money, decisions and the record of them: the employee's card, claims and allocations, card payments, the admin user who decides a claim, the policy a claim is checked against, and the audit entry (R-05, R-08 to R-13, R-22 to R-24). R-06 and R-23's other objects are in A.3 only.
 
 ```viz
 {"kind": "objects", "caption": "Object-relationship map, figure 2 of 2, money, decisions and the audit trail: the Admin objects money moves through, who decides a claim and what records each change, with IDs, Admin labels, attributes, volumes for the sizing client (assumed), work queues, calls to action with their roles and counts, F3 (model names in A.2); supports the decision on what Admin shows about spending and who answers for each decision (Deliverable A). Every box tone 4, Perqo Admin. Lines read left to right on a level line, top to bottom otherwise; a triangle by a label marks a label that reads right to left or bottom to top. R-05, R-08 to R-13 from IA4, Deliverable A, labels and counts kept; rejection reason from IA6, Deliverable B; R-22 to R-24, the audit entry (O-17), decided by, rejection note and the Perqo card label set in sections 2.2, 2.3 and 5.3. Perqo is fictional.", "objects": [
- {"id": "employee", "title": "employee", "tone": 4, "attrs": ["O-05", "→ see figure 1"]},
+ {"id": "employee", "title": "employee", "tone": 4, "attrs": ["O-05", "→ see figure 1 of 2"]},
  {"id": "card", "title": "card", "tone": 4, "attrs": ["O-09", "Admin: Perqo card, status only", "status", "volume: up to 1,200"], "actions": ["-> view status (HR)"]},
- {"id": "policy", "title": "policy", "tone": 4, "attrs": ["O-04", "→ see figure 1"]},
+ {"id": "policy", "title": "policy", "tone": 4, "attrs": ["O-04", "→ see figure 1 of 2"]},
  {"id": "claim", "title": "transaction, type claim", "tone": 4, "attrs": ["O-07", "Admin: Claim", "amount", "category", "receipt", "status", "date submitted", "rejection reason", "decided by", "rejection note", "volume: 1,200 a month", "queue: Approvals"], "actions": ["-> approve (HR)", "-> reject (HR)", "-> approve selected (HR)", "-> view (HR, finance)"]},
  {"id": "alloc", "title": "allocation", "tone": 4, "attrs": ["O-06", "Admin: Budget", "category", "period", "amount", "spent", "remaining", "volume: up to 4,800 a period"], "actions": ["-> set for a group (finance)"]},
  {"id": "payment", "title": "transaction, type card payment", "tone": 4, "attrs": ["O-08", "Admin: Card payment, in Reports", "amount", "date", "merchant", "category", "volume: 9,600 a month"], "actions": ["-> view in a report (finance)"]},
  {"id": "audit", "title": "audit entry", "tone": 4, "attrs": ["O-17", "Admin: History; Activity log", "who", "action", "object and its ID", "date and time", "before and after"], "actions": ["-> view (as the record; owner for the log)"]},
- {"id": "admin", "title": "admin user", "tone": 4, "attrs": ["O-02", "→ see figure 1"]}],
+ {"id": "admin", "title": "admin user", "tone": 4, "attrs": ["O-02", "→ see figure 1 of 2"]}],
  "rows": [["employee", "card", null], ["claim", "alloc", "payment"], ["policy", "audit", "admin"]],
  "links": [
   {"from": "employee", "to": "card", "label": "holds", "from_card": "1", "to_card": "0..1"},

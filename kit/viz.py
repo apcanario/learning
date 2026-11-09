@@ -1142,6 +1142,8 @@ def objects(d):
         if e.get('label') and pa and pb and pa[0] == pb[0] and abs(pa[1] - pb[1]) == 1:
             word = max(_tw(w, T_LINK[2], T_LINK[1]) for w in str(e['label']).split())
             GX = max(GX, math.ceil(word + 12 + 8 + (DIRW if e.get('dir') else 0)))   # P66: room for the direction mark
+        if pa and pb and pa[0] == pb[0] and abs(pa[1] - pb[1]) == 1 and (e.get('from_card') or e.get('to_card')):   # U-9: the two counts
+            GX = max(GX, math.ceil(16 + _tw(e.get('from_card') or '', 10, 'mono') + _tw(e.get('to_card') or '', 10, 'mono') + 6))   # of a level line never meet (IA7's "0..*0..*")
     Wd = W
     bw = min(220, (Wd - 16 - GX * (cols - 1)) / cols)
     if bw < 110:
@@ -1442,6 +1444,16 @@ def matrix(d):
             cws[k] = left * nat[k] / tot
     wide = min(cws) < 70 and sum(nat) > avail
     words = lambda t, f, sz, ls=0: max([_tw(w, sz, f, ls) for w in str(t).split()] or [0])   # the widest word, unbroken
+    if not wide:                                             # U-9: no column below its longest word (IA6's B.5 split
+        piece = lambda s, sz=10.5, ls=0: max([_tw(w, sz, 'mono', ls) for w in re.split(r'\s+|(?<=-)', str(s)) if w] or [0])   # a hyphen may break
+        floor = [math.ceil(max([piece(c, 10, 0.4) + 14] + [piece(mark(r['cells'][k])) + 15 for r in rows]))
+                 for k, c in enumerate(cols)]                # "notification / s"): a narrow one takes width from the
+        lack = sum(max(0, floor[k] - cws[k]) for k in range(n))   # columns above their floor, in proportion to their surplus
+        over = {k: cws[k] - floor[k] for k in range(n) if cws[k] > floor[k]}
+        if lack and sum(over.values()) >= lack:
+            tot = sum(over.values())
+            for k in range(n):
+                cws[k] = floor[k] if cws[k] < floor[k] else cws[k] - lack * over.get(k, 0) / tot
     if wide:                                                 # too many columns for the width: each takes the narrowest width
         cws = [max(70, math.ceil(max([words(c, 'mono', 10, 0.4) + 14] + [words(mark(r['cells'][k]), 'mono', 10.5) + 18 for r in rows])))
                for k, c in enumerate(cols)]
