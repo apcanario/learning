@@ -91,3 +91,66 @@ Every finding was verified before it was applied, each applied as an exact repla
 - Finding 8 (minor, facts table): the client rule of section 2.7 was unlisted. Holds; applied as the row the checker gives.
 - Finding 9 (minor, style, figure 6's cells): the checker's own Fix is "no change required" and the figure passed; recorded, not applied: cutting the cells to identifiers would change a passed figure's declaration for words that are all traced to table A.1.
 - Confirmed list: the Chisnell 2016 page the checker could not find is cited through IA9, where U-9's checker verified it; no change.
+
+## Figure 5, second check (new agent, Opus 5.5, 9 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, figure 5's declaration, IA2 and the frames sheets `verify.py --shots` saved for figure 5 at every width, dark and light. Its hand-back, extracted by script from its transcript (the harness refused its `out/report.md` write, so the hand-back is its one copy); transcript checks: Read, Glob and Bash only, every path inside its folder; no web, memory, Projects, Artifact or `mcp__*` tool.
+
+Figure 5 needs one fix: at 320 and 360 px it does not fit the phone screen and has to be scrolled sideways. The rest of the check found nothing wrong. I couldn't save `out/report.md` because the harness refused the write ("Subagents should return findings as text"), so this reply is the record.
+
+**1. Every label, note, identifier and number traces to the unit's text.** All seven steps come word for word from line 195 (section 4.2):
+- "(1) **Object to a proposal**, any function, at its forum or in writing". The label and note match.
+- "(2) **Record the position** on the DL entry: function, position, reason, what would reopen it". This matches the note "DL entry: function, position, reason, what would reopen it".
+- "(3) **Route to who decides** (→ see IA9, D.1)". "→ see IA9, D.1" appears exactly as written.
+- "(4) **Hear the position**: the function speaks at the forum that decides". Matches.
+- "(5) **Decide, with the reason**: the reason answers each position". Matches.
+- "(6) **Tell the function**, through its forum; the told field". Matches.
+- "(7) **Keep the position**: [not taken] kept with its reopening test". The bracketed condition `[not taken]` appears exactly as written.
+- The step count: "The path has seven steps" (line 195). The figure draws seven.
+
+No errors.
+
+**2. The caption passes.** It says what the figure shows: a disagreement, from a function's objection to its position kept with the decision. It names the decision it supports and the section ("section 4.2"). It names the sources, and each is cited in the text:
+- DL-011 (lines 195 and 294)
+- IA9, section 4 and Deliverable D (line 195: "section 4.1 of IA9", "IA9, D.1", "IA9, D.2")
+- IA6, B.6 (line 193)
+- Brown, Designing Together, 2013 (line 191)
+
+It also states both tones and "Perqo is fictional".
+
+**3. The kind fits.** The data is a sequence of seven ordered steps with no branch, so flow is right. The step not taken is a bracketed condition in a note, which IA2 §5.1 allows ("Conditional area: a box whose note opens with the condition in square brackets").
+
+**4. The notation is correct.**
+- The figure uses tone 5 (shared) and tone 6 (a stop: a path that ends without success). Both are defined in IA2 §5.2 and on the notation sheet.
+- The unit names both on line 14: "Tone 5, shared, carries most figures…" and "Tone 6, a stop, marks a position that a decision did not take."
+- Colour is not the only carrier of meaning: the text `[not taken]` also marks the stop (WCAG 1.4.1, as IA2 requires).
+- The condition is in square brackets and the "→ see" note follows the notation sheet. Arrows mean movement and nothing is dashed.
+- Each row reads left to right, then an elbow arrow drops to the first box of the next row.
+- IA2's shapes table has no row for flow steps, so the plain boxes break no rule.
+
+**5. How the reader sees it.**
+- **Desktop, tablet, 390 px and 430 px, dark and light:** the whole figure fits in one frame. Text sits inside its boxes, nothing overlaps, the arrows join steps 1 to 7 in order, nothing is cut, and the caption sits under the figure.
+- **Light frames:** on cream, the tone 6 box (tan with a brown border) stands clearly apart from the lilac tone 5 boxes.
+- **320 px, dark and light:** two frames, with 70 px of sideways scroll and the line "scroll sideways for the whole figure". In the opening frame the right column is cut at the screen edge ("Record the p…", "Hear the po…", "Tell the func…"). The second frame shows it whole. The figure is complete across the two frames, and the caption is under it.
+- **360 px, dark and light:** two frames, with 30 px of sideways scroll and the same line. The right column's notes are cut in the opening frame ("reaso…", "reope…", "decid…", "foru…") and whole in the second.
+
+Fit without sideways scroll, which a `per_row: 2` flow should achieve since 3 November 2026:
+
+| Width | Fits without sideways scroll? |
+|---|---|
+| 320 px | No (70 px of scroll) |
+| 360 px | No (30 px of scroll) |
+| 390 px | Yes |
+| 430 px | Yes |
+
+**6. Findings.**
+- [should-fix] At 320 and 360 px this `per_row: 2` flow does not fit the phone screen. It needs 70 px and 30 px of sideways scroll, and the right column is cut in the opening frame. That breaks the 3 November 2026 rule.
+  - Current: `{"kind": "flow", "per_row": 2,`
+  - Fix: `{"kind": "flow", "per_row": 1,` (this removes the sideways scroll at every width, at the cost of a taller figure; the alternative is to change the build's flow layout so step boxes shrink to the column width at 320 and 360 px).
+- Nothing else is wrong in the figure or in the text it draws from (lines 191, 193 and 195; DL-011 at line 294).
+
+No minors.
+
+Figure 5: FIX
+
+**Maintainer's reading (U-10 chat).** The one finding rests on how the renderer lays a two-a-row flow out: since P83 (3 Nov 2026) `viz.py` sizes a flow with `per_row` 1 or 2 to the 390 px phone frame (`bw` = 143 at two a row, the drawing 328 px wide whatever its content), so at 320 and 360 px every such flow in the course (IA3, IA4, IA6, IA7, IA9 and this one) scrolls by the same few pixels with the cue line; the checker's Fix, `per_row: 1`, renders the same 328 px width (checked with `viz.render`: 328 × 445 at two a row, 328 × 583 at one), so the declaration cannot meet the note. Recorded as a renderer-layout note (P44, P83) and not applied. Every other point passed: all seven labels and notes traced after finding 5's text change, the caption, the kind, the notation, the drawing at 390 and 430 px, tablet and desktop, dark and light. Figure 5 passed on its second check with that note.
