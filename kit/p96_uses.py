@@ -220,7 +220,7 @@ def main():
         nonep = sorted([(v[2], pid) for pid, v in P.items() if v[0] == c and pid not in uses],
                        key=lambda x: [int(p) if p.isdigit() else p for p in re.split(r'[.\-]', x[0])])
         out += [f'## {NAMES[c]}', '',
-                f'{len(mine)} pages with a relief, {len(per[c])} outlines in use ({", ".join(per[c])}); {len(nonep)} pages with none.', '',
+                f'{len(mine)} pages with a relief, {len(per[c])} outlines in use ({", ".join(per[c])}); {len(nonep)} page{"" if len(nonep) == 1 else "s"} with none.', '',
                 '| Page | Outline | Names | Deciding sentence |', '|---|---|---|---|']
         key = lambda r: [int(p) if p.isdigit() else p for p in re.split(r'[.\-]', r[2])]
         for _, pid, code, oid, n, s in sorted(mine, key=key):

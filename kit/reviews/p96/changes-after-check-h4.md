@@ -8,3 +8,14 @@
 3. Greece 7.1: no relief; the coins stay on Greece 5.3, 11.7 and 12.5.
 4. Rome 7.1 and 1.6: no change (the check found them acceptable).
 5. library.md's amphora note now names Rome 1.2.
+
+## Added after the fifth check (its minor 1: the pages named three times or more by an outline now matched against both courses, each with its one-line reason for none)
+
+- Greece 1.3: the swords are Naue II slashing swords in Drews' argument about tactics, another kind than the short sword drawn, and grave goods in a list.
+- Greece 10.2: the sword or axe of Agamemnon's murder, one disputed detail.
+- Greece 3.7: Lycaon's change into a wolf, one story among many.
+- Greece 10.12: "Wolf" is F. A. Wolf and Christa Wolf, surnames, not the animal.
+- Greece 2.2: Athena's and Ares' helmets as attributes in a table and an "Art." line.
+- Greece 4.4, 6.5, 10.9, 11.8, 12.8: the sun as Helios' cattle, Plato's analogy, an allegory, a royal name and the Vergina star, and similes; no page discusses the sun itself.
+- Rome 10.1: the owl one bird of a metamorphosis.
+- Greece 10.5 (its minor 2): kept, as the check found it acceptable.

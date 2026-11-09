@@ -112,7 +112,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 
 ## Building with AI
 
-10 pages with a relief, 10 outlines in use (battery, chat, clock, context-window, cost, magnifier, pen-nib, picture, stack, terminal); 1 pages with none.
+10 pages with a relief, 10 outlines in use (battery, chat, clock, context-window, cost, magnifier, pen-nib, picture, stack, terminal); 1 page with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
