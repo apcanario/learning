@@ -518,3 +518,4 @@ Every fact below is a course convention (Perqo, fictional), never evidence about
 - Rosenfeld, Morville and Arango 2015, ch. 13, has a section "Guidelines for Diagramming an Information Architecture"; its text was not seen and is not used.
 - The owner counts (section 2.3) assume each row counted once under its first-named owner; IA5 does not say how to count shared ownership.
 - Object: the Perqo touchpoint matrix, sections 2 and 5 and Deliverable A
+- Fresh check 2026-11-09 (Fable 5.1; no Fable 5.1 fresh check is owed): fix · 3 error, 3 should-fix, 3 minor; all applied as verified (finding 9 recorded, not applied, at its own Fix); figures 1 to 4 and 6 passed; figure 5 fixed in the text it draws and passed its second check (its note on the 320 px width rests on the renderer's phone frame, P83, recorded); report `audits/ux/fresh-check-IA10.md`
