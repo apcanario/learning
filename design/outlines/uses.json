@@ -95,6 +95,7 @@
   "read-ia4": "tree",
   "read-ia5": "sitemap",
   "read-ia6": "bell",
-  "read-ia7": "key"
+  "read-ia7": "key",
+  "read-ia8": "credit-card"
  }
 }

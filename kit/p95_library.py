@@ -220,7 +220,6 @@ SPARE = {
     'bicycle': 'Information architecture: kept for the Perqo units still to come',
     'barbell': 'Information architecture: kept for the Perqo units still to come',
     'fork-knife': 'Information architecture: kept for the Perqo units still to come',
-    'credit-card': 'Information architecture: kept for the Perqo units still to come',
 }
 
 

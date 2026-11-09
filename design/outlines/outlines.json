@@ -2679,7 +2679,7 @@
     "ux-ia": [
      [
       "courses/ux/IA6-level-2-the-client-app.md",
-      8
+      9
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
@@ -2814,11 +2814,15 @@
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
-      27
+      28
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       21
+     ],
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      15
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
@@ -3011,6 +3015,10 @@
      [
       "courses/ux/IA6-level-2-the-client-app.md",
       9
+     ],
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      4
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
@@ -3526,6 +3534,10 @@
    "texts": {
     "ux-ia": [
      [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      78
+     ],
+     [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
       36
      ],
@@ -3539,7 +3551,7 @@
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      18
+      19
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
@@ -3599,6 +3611,10 @@
       4
      ],
      [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      3
+     ],
+     [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
       1
      ],
@@ -3637,6 +3653,10 @@
    "excludes": [],
    "texts": {
     "ux-ia": [
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      36
+     ],
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
       31
@@ -3718,6 +3738,10 @@
      ],
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      9
+     ],
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
       9
      ],
      [
@@ -3856,7 +3880,7 @@
     "ux-ia": [
      [
       "courses/ux/IA6-level-2-the-client-app.md",
-      16
+      20
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
@@ -3876,6 +3900,10 @@
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
+      2
+     ],
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
       2
      ]
     ]
@@ -3928,6 +3956,10 @@
       7
      ],
      [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      6
+     ],
+     [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
       1
      ],
@@ -3940,8 +3972,7 @@
       1
      ]
     ]
-   },
-   "spare": "Information architecture: kept for the Perqo units still to come"
+   }
   },
   {
    "id": "bell",
@@ -3972,11 +4003,15 @@
     "ux-ia": [
      [
       "courses/ux/IA6-level-2-the-client-app.md",
-      46
+      55
+     ],
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      30
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
-      11
+      12
      ],
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
@@ -4089,6 +4124,10 @@
      [
       "courses/ux/IA6-level-2-the-client-app.md",
       7
+     ],
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      3
      ]
     ]
    }
@@ -7926,6 +7965,10 @@
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       2
+     ],
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      1
      ]
     ]
    }

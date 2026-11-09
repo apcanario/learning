@@ -126,6 +126,7 @@ MAP = [
     ('read-ia5', 'sitemap', 'the content inventory, the sitemap and the page-template catalogue'),
     ('read-ia6', 'bell', 'Refusing notifications loses nothing that cannot be found'),
     ('read-ia7', 'key', 'Roles and permissions as an IA layer'),
+    ('read-ia8', 'credit-card', 'The Perqo card is cancelled at once'),
 ]
 
 
