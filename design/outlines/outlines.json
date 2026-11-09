@@ -2810,7 +2810,11 @@
      ],
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
-      42
+      43
+     ],
+     [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      39
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
@@ -2822,7 +2826,7 @@
      ],
      [
       "courses/ux/IA8-level-4-the-system-map.md",
-      15
+      16
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
@@ -3413,6 +3417,10 @@
       3
      ],
      [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      2
+     ],
+     [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       1
      ]
@@ -3538,6 +3546,10 @@
       78
      ],
      [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      41
+     ],
+     [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
       36
      ],
@@ -3601,6 +3613,10 @@
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
       11
+     ],
+     [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      10
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -3668,6 +3684,10 @@
      [
       "courses/ux/IA6-level-2-the-client-app.md",
       14
+     ],
+     [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      13
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
@@ -3743,6 +3763,10 @@
      [
       "courses/ux/IA8-level-4-the-system-map.md",
       9
+     ],
+     [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      8
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
@@ -3844,6 +3868,10 @@
       5
      ],
      [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      3
+     ],
+     [
       "courses/ux/IA6-level-2-the-client-app.md",
       2
      ]
@@ -3880,7 +3908,7 @@
     "ux-ia": [
      [
       "courses/ux/IA6-level-2-the-client-app.md",
-      20
+      21
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
@@ -3970,6 +3998,10 @@
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
       1
+     ],
+     [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      1
      ]
     ]
    }
@@ -4003,7 +4035,7 @@
     "ux-ia": [
      [
       "courses/ux/IA6-level-2-the-client-app.md",
-      55
+      56
      ],
      [
       "courses/ux/IA8-level-4-the-system-map.md",
@@ -4020,6 +4052,10 @@
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
       8
+     ],
+     [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      3
      ]
     ]
    }
@@ -4106,6 +4142,10 @@
       28
      ],
      [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      23
+     ],
+     [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       16
      ],
@@ -4127,7 +4167,7 @@
      ],
      [
       "courses/ux/IA8-level-4-the-system-map.md",
-      3
+      4
      ]
     ]
    }
@@ -7350,11 +7390,14 @@
    "file": "notebook.svg",
    "depicts": "a notebook (the sign for the record)",
    "courses": [
-    "brand-a"
+    "brand-a",
+    "ux-ia"
    ],
    "keywords": [
     "the record",
-    "a record"
+    "a record",
+    "decision log",
+    "decision logs"
    ],
    "source": {
     "repository": "phosphor-icons/core",
@@ -7405,6 +7448,36 @@
      ],
      [
       "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
+      1
+     ]
+    ],
+    "ux-ia": [
+     [
+      "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      26
+     ],
+     [
+      "courses/ux/IA7-level-3-the-backoffice.md",
+      8
+     ],
+     [
+      "courses/ux/IA6-level-2-the-client-app.md",
+      3
+     ],
+     [
+      "courses/ux/IA8-level-4-the-system-map.md",
+      3
+     ],
+     [
+      "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
+      2
+     ],
+     [
+      "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
+      1
+     ],
+     [
+      "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       1
      ]
     ]

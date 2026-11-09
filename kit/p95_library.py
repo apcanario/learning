@@ -105,7 +105,7 @@ L = [
     ('libation', 'game-icons', 'lorc/pouring-chalice.svg', 'a cup pouring out (the sign for a libation)', ['greece', 'rome'], ['libation', 'libations']),
     ('film-slate', 'phosphor', 'assets/fill/film-slate-fill.svg', 'a clapperboard (the sign for a video)', ['brand-a'], ['video', 'videos', 'vlog', 'vlogs', 'episode', 'episodes']),
     ('audience', 'phosphor', 'assets/fill/users-three-fill.svg', 'three people (the sign for an audience)', ['brand-a'], ['audience', 'audiences']),
-    ('notebook', 'phosphor', 'assets/fill/notebook-fill.svg', 'a notebook (the sign for the record)', ['brand-a'], ['the record', 'a record']),
+    ('notebook', 'phosphor', 'assets/fill/notebook-fill.svg', 'a notebook (the sign for the record)', ['brand-a', 'ux-ia'], ['the record', 'a record', 'decision log', 'decision logs']),   # ux-ia and its two keywords added by U-9 (9 Nov 2026): IA9's decision log
     ('chart', 'phosphor', 'assets/fill/trend-up-fill.svg', 'a rising trend line (the sign for growth benchmarks)', ['brand-a'], ['benchmark', 'benchmarks']),
     ('piggy-bank', 'phosphor', 'assets/fill/piggy-bank-fill.svg', 'a piggy bank (the sign for savings)', ['brand-a'], ['savings', 'runway']),
     ('context-window', 'phosphor', 'assets/fill/app-window-fill.svg', 'an app window (the sign for the context window)', ['brand-b'], ['context window', 'context windows']),

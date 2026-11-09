@@ -96,6 +96,7 @@
   "read-ia5": "sitemap",
   "read-ia6": "bell",
   "read-ia7": "key",
-  "read-ia8": "credit-card"
+  "read-ia8": "credit-card",
+  "read-ia9": "notebook"
  }
 }

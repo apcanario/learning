@@ -132,7 +132,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 
 ## Information architecture
 
-8 pages with a relief, 8 outlines in use (bell, books, credit-card, key, magnifier, map, sitemap, tree); 0 pages with none.
+9 pages with a relief, 9 outlines in use (bell, books, credit-card, key, magnifier, map, notebook, sitemap, tree); 0 pages with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
@@ -141,9 +141,10 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | IA3 (`read-ia3`) | magnifier | 61 | 5 · Search versus browse |
 | IA4 (`read-ia4`) | tree | 25 | A structure is the shape the groups are arranged in (a tree, a set of independent facets, a web of links). |
 | IA5 (`read-ia5`) | sitemap | 31 | It inventories and audits the site, chooses its structure, and hands three artefacts to the people who build and fill it: the content inventory, the sitemap and the page-template catalogue. |
-| IA6 (`read-ia6`) | bell | 55 | Refusing notifications loses nothing that cannot be found: every claim's state shows in Claims and every message in Notifications. |
+| IA6 (`read-ia6`) | bell | 56 | Refusing notifications loses nothing that cannot be found: every claim's state shows in Claims and every message in Notifications. |
 | IA7 (`read-ia7`) | key | 16 | 3 · Roles and permissions as an IA layer |
 | IA8 (`read-ia8`) | credit-card | 6 | The Perqo card is cancelled at once. A card left Active would let a leaver spend the client's money; a Frozen one could be unfrozen by its holder (IA4, A.3). |
+| IA9 (`read-ia9`) | notebook | 26 | Perqo's IA decision log is one list of entries, kept by the IA designer, each with an identifier DL-001 onward, never reused (Perqo, fictional). |
 
 **None:** every page has one.
 
