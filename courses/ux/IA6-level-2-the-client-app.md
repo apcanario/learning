@@ -330,7 +330,7 @@ IA4 left the complexity and priority of each call to action to this unit, and th
 | allocation | -> see balance | employee | A-1; A-2.1 to A-2.4 | low | P1 | Home: category, remaining. Category screen: remaining, spent, amount, period | do employees read four balances as four pots? (IA11) |
 | transaction, type claim | -> submit | employee | A-3.1 to A-3.3 | high | P1 | New claim: category, the category's balance, amount, receipt, the rule. Check and submit: category, amount, balance after | is the rule line understood before submitting? (IA11) |
 | transaction, type claim | -> view *new* | employee | A-3; A-3.4 | low | P1 | Claims list: status (the group), amount, category, date submitted. Claim: status, amount, category, date submitted, receipt, the reason when Rejected | is a rejected claim found in Claims? (IA11) |
-| transaction, type card payment | -> view | employee | A-4.2; A-4.2.1 | low | P2 | merchant, amount, date, category; on the purchase, the category's balance after | should a declined attempt be shown? (IA8) |
+| transaction, type card payment | -> view | employee | A-4.2; A-4.2.1 | low | P2 | merchant, amount, date, category; on the purchase, the category's balance after | decided: as a notification (IA8, section 4.5, 9 Nov 2026) |
 | card | -> view card details | employee | A-4.1 | low | P3 | last four digits, status | none |
 | card | -> freeze; -> unfreeze | employee | A-4.4 | medium (a modal to confirm) | P2 | status, then the action | none |
 | offer | -> view | employee | A-4.3 | low | P3 | title, discount, merchant, valid until | are offers found under Card and from the categories? (IA11) |
@@ -522,17 +522,18 @@ The employee opens the app on Home and sees each open category with what remains
 
 ### C.2 · Spend a benefit
 
-Spending is done with the Perqo card at a merchant's till; the app's part is before and after (Perqo, fictional; IA1, section 5). From Home the employee taps Meals, sees the Meals balance and what's covered, and either taps Card offers in Meals to see the offers for Meals items or goes straight to a merchant. At the till, a card payment spends from the allocation of the merchant's category (IA4, Deliverable A). This unit sets what happens when it cannot (Perqo, fictional): a payment over the balance of the merchant's category, or with the card Frozen, is declined at the till. A taken payment appears in Purchases, newest first, as a Purchase with its merchant, amount, date, category and the category's balance after. A declined attempt moves no money, so it is not a card payment, and the app shows nothing for it; the employee sees the decline at the till, and the Card screen shows a Frozen card with Unfreeze card. Whether a declined attempt should reach the app is a cross-surface question, proposed for IA8 (A.2).
+Spending is done with the Perqo card at a merchant's till; the app's part is before and after (Perqo, fictional; IA1, section 5). From Home the employee taps Meals, sees the Meals balance and what's covered, and either taps Card offers in Meals to see the offers for Meals items or goes straight to a merchant. At the till, a card payment spends from the allocation of the merchant's category (IA4, Deliverable A). This unit sets what happens when it cannot (Perqo, fictional): a payment over the balance of the merchant's category, or with the card Frozen, is declined at the till. A taken payment appears in Purchases, newest first, as a Purchase with its merchant, amount, date, category and the category's balance after. A declined attempt moves no money, so it is not a card payment and is not in Purchases; the employee sees the decline at the till, and the Card screen shows a Frozen card with Unfreeze card. *Note, 9 November 2026: this unit proposed to IA8 whether a declined attempt should reach the app (A.2); IA8 decided it (IA8, section 4.5): a declined attempt sends a notification, decided by IA8, "Card payment declined", naming the merchant, the amount and the reason, and opening the Meals screen for a balance or Card for a Frozen card; the wireflow below carries the two routes.*
 
 ```viz
-{"kind": "wireflow", "per_row": 2, "caption": "Wireflow: an employee spends a benefit with the Perqo card, F2, from the Meals balance and Card offers to the till and the Purchase, with the declined path; supports the decision on what the app shows before and after a card payment (Deliverable C, C.2). Tone 3 the app; tone 2 the merchant side, for the till; tone 6 a path that ends without success. A card payment spends from the allocation of the merchant's category (IA4, Deliverable A); the decline rule from this section. The cookery course cross-listing is assumed (IA4, rule R6). Wireflow form from Laubheimer, NN/g, 2016; screens from Deliverable B. Perqo is fictional.", "screens": [
+{"kind": "wireflow", "per_row": 2, "caption": "Wireflow: an employee spends a benefit with the Perqo card, F2, from the Meals balance and Card offers to the till and the Purchase, with the declined path; supports the decision on what the app shows before and after a card payment (Deliverable C, C.2). Tone 3 the app; tone 2 the merchant side, for the till; tone 6 a path that ends without success. A card payment spends from the allocation of the merchant's category (IA4, Deliverable A); the decline rule from this section; the decline notification's two routes from IA8, section 4.5 (note, 9 November 2026). The cookery course cross-listing is assumed (IA4, rule R6). Wireflow form from Laubheimer, NN/g, 2016; screens from Deliverable B. Perqo is fictional.", "screens": [
  {"id": "home", "title": "Home", "tone": 3, "lines": ["Balance", "Health", {"bar": 0.6}, "Learning", {"bar": 0.3}, "Mobility", {"bar": 0.4}, "Meals", {"bar": 0.8}, "Recent activity", {"bar": 0.7}]},
  {"id": "meals", "title": "Meals", "tone": 3, "lines": ["Meals balance", {"bar": 0.8}, "What's covered", "Restaurants: restaurant meal", "Groceries: groceries", "Cookery course: covered under Learning", {"button": "Card offers in Meals"}, {"button": "New claim"}]},
  {"id": "offers", "title": "Card offers", "tone": 3, "lines": ["Filter: Meals", "Title and discount", {"bar": 0.7}, "Merchant, valid until", {"bar": 0.5}, "Title and discount", {"bar": 0.6}]},
  {"id": "till", "title": "At the till", "tone": 2, "lines": ["Merchant's card reader", {"block": 30}, "Pay with the Perqo card"]},
  {"id": "purchase", "title": "Purchase", "tone": 3, "lines": ["Merchant", {"bar": 0.6}, "Amount and date", {"bar": 0.5}, "Category: Meals", "Meals balance after", {"bar": 0.6}]},
  {"id": "declined", "title": "Declined at the till", "tone": 6, "lines": ["Payment declined", "[over the Meals balance] or [card Frozen]"]},
- {"id": "frozen", "title": "Card [Frozen]", "tone": 3, "lines": ["Card details", "Status: Frozen", {"button": "Unfreeze card"}, {"button": "Purchases"}]}],
+ {"id": "frozen", "title": "Card [Frozen]", "tone": 3, "lines": ["Card details", "Status: Frozen", {"button": "Unfreeze card"}, {"button": "Purchases"}]},
+ {"id": "mealsback", "title": "Meals [from the notification]", "tone": 3, "lines": ["Meals balance", {"bar": 0.1}, "What's covered"]}],
  "links": [
   {"from": "home", "to": "meals", "label": "tap Meals"},
   {"from": "meals", "to": "offers", "label": "tap Card offers in Meals"},
@@ -540,7 +541,8 @@ Spending is done with the Perqo card at a merchant's till; the app's part is bef
   {"from": "offers", "to": "till", "label": "pay at the offer's merchant"},
   {"from": "till", "to": "purchase", "label": "[within the Meals balance, card Active] open Card, Purchases"},
   {"from": "till", "to": "declined", "label": "[over the Meals balance, or card Frozen]"},
-  {"from": "declined", "to": "frozen", "label": "open Card [card Frozen]"}]}
+  {"from": "declined", "to": "mealsback", "label": "notification: Card payment declined [over the Meals balance]"},
+  {"from": "declined", "to": "frozen", "label": "notification: Card payment declined [card Frozen]"}]}
 ```
 
 ### C.3 · Submit a reimbursement claim
@@ -573,7 +575,7 @@ A claim can still end Rejected, over the balance, when the category's balance ch
 
 ## What IA8 and IA11 take
 
-**IA8** takes the app map (B.3, with B.4's entry points and addresses) and the three wireflows (C.1 to C.3) as the app's layer of the cross-surface interaction map. The joins it will need are named on the map: each external route to its Help centre page (IA5's IDs), each entry to its source on Admin or perqo.com (E-2 to Admin's invite, E-3 to S-6), each claim state on A-3 and A-3.4 to the claim's state diagram and decision tree (IA2, section 5.3), and the Purchase to the card payment's category rule (IA4, Deliverable A). One question is proposed to IA8 and left unset here: whether a declined card attempt should reach the app, as a notification or a record, which would extend the notification beyond claims and the data model beyond movements of money.
+**IA8** takes the app map (B.3, with B.4's entry points and addresses) and the three wireflows (C.1 to C.3) as the app's layer of the cross-surface interaction map. The joins it will need are named on the map: each external route to its Help centre page (IA5's IDs), each entry to its source on Admin or perqo.com (E-2 to Admin's invite, E-3 to S-6), each claim state on A-3 and A-3.4 to the claim's state diagram and decision tree (IA2, section 5.3), and the Purchase to the card payment's category rule (IA4, Deliverable A). One question is proposed to IA8 and left unset here: whether a declined card attempt should reach the app, as a notification or a record, which would extend the notification beyond claims and the data model beyond movements of money. *Note, 9 November 2026: IA8 decided it, as a notification and no record in Purchases, with a new object, the declined attempt (O-18), outside the transactions (IA8, section 4.5).*
 
 **IA11** tests this IA. Every assumption in it, with the test it needs (the methods are IA11's to specify; the pass mark is set there):
 
@@ -589,7 +591,7 @@ A claim can still end Rejected, over the balance, when the category's balance ch
 | Profile, Notifications and Help are found under Account | A-5 | tree test | Notifications' placing |
 | Asking for notifications after the first claim gets more employees to allow them than asking at first run | A-3.3 | a comparison of the two timings in analytics, by the share who allow | the prompt's timing |
 | An employee who installs the app from the invitation can join | E-2, A-0.1 | usability test of the join path on a phone without the app | whether Join needs another way in |
-| Employees understand a declined payment from the balance they saw | C.2 | interviews after a decline; support's tickets (IA12 as proxy) | IA8's proposed notice |
+| Employees understand a declined payment from the balance they saw | C.2 | interviews after a decline; support's tickets (IA12 as proxy) | the decline notification's wording and route (IA8, section 4.5, 9 Nov 2026) |
 | The renamed labels predict their pages (A1 to A3) | every label in B.2 | tree test and first-click test (IA3, "What this hands on") | the labels |
 
 ## Perqo facts set by this unit
@@ -609,7 +611,7 @@ Every fact below is a course convention (Perqo, fictional), never evidence about
 | New claim shows the chosen category's balance, takes the receipt by Take a photo or Choose a file, and shows "Claims over the limit need HR approval" with the group's limit and a link to H-1.2.5 | section 4; Deliverable C, C.3 | the limit's amount |
 | Check and submit, when the amount is over the category's balance, shows "More than your Learning balance" (in the chosen category's name) with Edit only | section 4.3; Deliverable C, C.3 | none |
 | The camera is asked for when the employee taps Take a photo; notifications are asked for once, after the first claim is submitted | section 4.4 | the prompt's wording beyond its purpose |
-| A card payment over the balance of the merchant's category, or with the card Frozen, is declined at the till; a declined attempt is not a card payment and is not shown in the app (proposed for IA8) | Deliverable C, C.2 | IA8's decision |
+| A card payment over the balance of the merchant's category, or with the card Frozen, is declined at the till; a declined attempt is not a card payment and is not in Purchases; the app shows it as a notification (IA8, section 4.5, 9 Nov 2026) | Deliverable C, C.2 | the notice's wording |
 | An employee with no card issued sees the Card tab in the state "Your Perqo card has not been issued yet" | section 4.4 | when cards are issued |
 | A category closed to the group is not shown, nor any cross-listing or offer that belongs to it | section 4.4 | none |
 | Without a connection, Home, Claims and Purchases show their last loaded content with the time it was loaded | section 4.3 | none |

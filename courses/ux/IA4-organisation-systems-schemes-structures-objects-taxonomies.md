@@ -364,6 +364,8 @@ The third holds the catalogue, the merchant side and perqo.com: the policy's cov
   {"from": "demo", "to": "client", "label": "leads to", "from_card": "0..*", "to_card": "0..1", "dir": "to"}]}
 ```
 
+*Note, 9 November 2026: IA8 extended this map, renaming nothing: card status Cancelled beside Active and Frozen, an allocation attribute closed, a client attribute contract end date, a notification about one claim or one declined attempt, object O-18 declined attempt and relationship R-25 (IA8, sections 3.2, 3.4 and 4.5).*
+
 **What the map hands on.** IA6 designs the app's flows from the calls to action on claim, card, allocation, offer and notification. IA7 extends the Admin objects (client, admin user, employee group, policy, employee, allocation, claim, card payment) to F3 with permissions and model names. IA8 joins the claim's status attribute to its state diagram and decision tree, and the policy's auto-approve limit to the rule that reads it.
 
 ## Deliverable · B · The Perqo benefits catalogue taxonomy
