@@ -175,7 +175,7 @@ under the same rule: a label moves or the drawing widens; it is never clipped or
   objects     a link label on a level line wraps in the gap between its columns; the gap widens (all gaps alike) until
               the label's longest word fits with 6 units either side, and when the boxes would fall under 110 the
               drawing widens and scrolls; a word is never cut. A diagonal link's label wraps no narrower than its
-              longest word.
+              longest word. U-9 (9 Nov 2026): a level gap also widens until the two counts at its ends stand apart.
   tree        a tree narrower than the 700-unit drawing (a one-child chain, a short branch) is centred in it; its svg
               carries data-x0, where the drawing starts, and a phone frame (natural size, scrolling) opens there.
 Contract change at P63 (1 Nov 2026), under the same rule:
@@ -207,6 +207,8 @@ Contract change at P53 (1 Nov 2026):
               need more than the width share it, the narrower keeping their size and the wider wrapping, and under 70 each the drawing widens
               and scrolls as before. A matrix narrower than the width draws at its own width (class viz-fit: natural size
               at every width, never stretched to the column), at least 320 units and wide enough for its widest legend item.
+              U-9 (9 Nov 2026): no shared column is narrower than its longest word or hyphen-split piece, in its header
+              or its cells; a column below it takes the width from the columns above theirs, in proportion.
 Contract change at P50 (1 Nov 2026): sitemap, objects, decision, states and wireflow centre their drawing in the
   700-unit width; their svg carries data-x0 (where the drawing starts, less 8) as a narrow tree's does since P58, so a
   phone frame opens on the drawing. Desktop scaling is unchanged. verify.py checks that every figure of these kinds
