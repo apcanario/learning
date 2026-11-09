@@ -1,0 +1,990 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#ux-ia" data-target="ux-ia">Course IA · Information architecture</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">IA10</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--blue)">INFORMATION ARCHITECTURE</span> · IA10 <span class="pill live">IA10</span></div>
+    <h1>Touchpoints: what each part of the business needs from the IA</h1>
+    <p class="scope">Product management, engineering, content and marketing, sales, customer success, support, clients, legal: the question each asks and the artefact that answers it.</p>
+  </header>
+  <div class="stepbar" data-n="9"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 9</span><span class="stt">What a touchpoint is, and the published practice on communicating design</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-ux-ia10-0" data-step="0"><span class="n">01</span><span class="t">What a touchpoint is, and the published practice on communicating design</span></a></li><li><a href="#read-ux-ia10-1" data-step="1"><span class="n">02</span><span class="t">What each function asks of the IA</span></a></li><li><a href="#read-ux-ia10-2" data-step="2"><span class="n">03</span><span class="t">The artefact-to-audience map, and one translation</span></a></li><li><a href="#read-ux-ia10-3" data-step="3"><span class="n">04</span><span class="t">Failure modes, and how the IA records a disagreement</span></a></li><li><a href="#read-ux-ia10-4" data-step="4"><span class="n">05</span><span class="t">When each function enters a Perqo cycle, and its standing duties</span></a></li><li><a href="#read-ux-ia10-5" data-step="5"><span class="n">06</span><span class="t">Deliverable · A · The Perqo touchpoint matrix</span></a></li><li><a href="#read-ux-ia10-6" data-step="6"><span class="n">07</span><span class="t">Deliverable · B · Three one-page IA briefs</span></a></li><li><a href="#read-ux-ia10-7" data-step="7"><span class="n">08</span><span class="t">What later units take</span></a></li><li><a href="#read-ux-ia10-8" data-step="8"><span class="n">09</span><span class="t">Perqo facts set by this unit</span></a></li></ol><div class="secx"><a href="#read-ux-ia10-sources" data-acc>Sources</a><a href="#read-ux-ia10-note" data-acc>The writer's opening note</a><a href="#read-ux-ia10-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-ux-ia10-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">What a touchpoint is, and the published practice on communicating design</span></span></h2>
+<h3>1.1 · Readers, questions and the one view</h3>
+<p>IA1 set the rule this unit rests on: an IA deliverable is one view, chosen for a decision, with named readers, and it says on its face what it leaves out (IA1, section 4; Brown, <em>Communicating Design</em>, 2nd ed., New Riders, 2011, ch. 5; Tankala, "Information Architecture vs. Sitemaps", NN/g, 3 September 2023). IA1 also gave each of the course goal's six touchpoints a reason to read: product management for scope and priority, engineering for what must be built and how labels map to the model, content for where each piece lives and what it is called, sales for how the product will be shown and named to a buyer, support for how a customer will describe where they are, the client for whether its own structure fits (IA1, section 4).</p>
+<p>A <strong>touchpoint</strong>, in this course, is a function of the business that depends on the IA for a decision of its own, with five things fixed for it: the question it asks, the artefact that answers it, the fidelity and format it can read, and the meeting or document where the exchange happens. The brief for this unit widens IA1's six into nine groups: product management; engineering; content, marketing and localisation; sales and pre-sales; customer success and onboarding; support; clients; legal, security and compliance; leadership. At Perqo (Perqo, fictional) the nine become twelve functions, because content, marketing and localisation are separate owners on perqo.com (IA5, Deliverable A), and legal and security read different artefacts (section 2.8). In the figures they go by short names: Product management, Engineering, Content team, Marketing, Localisation, Sales, Customer success, Support, Clients, Legal, Security, Leadership.</p>
+<h3>1.2 · Brown: deliverables as conversation, and the brief as a form</h3>
+<p>Dan Brown's <em>Communicating Design</em> is the field's book on this exchange, and what it says is practice: the author's account of what works, with no measurement behind it. Its preface calls documentation "the underbelly of web design", something that "helps project team members communicate with each other", and says documents "serve as milestones" (Brown 2011, preface to the second edition, <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/communicating-design-developing/9780131385399/pr02.html">oreilly.com, preface</a>). Its second part opens with a definition of a deliverable as a document submitted during a project to facilitate communication, "capture decisions, and stimulate conversation", and Brown says the first edition treated the artefacts "as separate deliverables", where he now has "a greater sensitivity to how deliverables and the design process work together to move a project along" (Brown 2011, ch. 8, "Deliverable Basics", <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/communicating-design-developing/9780131385399/ch08.html">oreilly.com, ch. 8</a>). Chapter 2 carries sections headed "Challenges in Communicating Design" and "Presenting Design" (Brown 2011, contents, <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/communicating-design-developing/9780131385399/bk01-toc.html">oreilly.com, contents</a>); only the headings were seen for this unit, and nothing is drawn from their text.</p>
+<p>Chapter 9 gives the form this unit's deliverable uses. A design brief is "A document describing the design problem and establishing a foundation of objectives, principles, and requirements"; to varying degrees it "Articulates the objectives of the project", "Positions the project in a larger context", "States the design problem", "Establishes other parameters, like timing", "Summarizes any inputs, like technical, content, or user requirements" and "Defines the direction or approach the designers will take" (Brown 2011, ch. 9, "Design Briefs", <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/communicating-design-developing/9780131385399/ch09.html">oreilly.com, ch. 9</a>). Brown's brief is written at a project's start, for the whole team. This unit takes its parts and changes two things: an IA brief is written for one function, and it is re-issued when the IA changes, from the same source as every other brief.</p>
+<h3>1.3 · Brown: conflict and collaboration</h3>
+<p>Brown's later book, <em>Designing Together: The Collaboration and Conflict Management Handbook for Creative Professionals</em> (New Riders, June 2013, <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/designing-together-the/9780133390957/">oreilly.com, Designing Together</a>), treats the people side of the same exchange; it is practice. Its theory part opens: "Conflict and collaboration are two complex dynamics"; "With conflict, teams must recognize how difficult conversations contribute to the design process"; "With collaboration, teams must embrace virtues that lead to productive habits" (Brown 2013, Part II, <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/designing-together-the/9780133390957/part02.html">oreilly.com, Part II</a>). Chapter 7 puts the relation in one line: "If conflict is the engine, then collaboration is the oil" (Brown 2013, ch. 7, <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/designing-together-the/9780133390957/ch07.html">oreilly.com, ch. 7</a>). Its chapters on conflict separate "Healthy vs. Unhealthy Conflict" and ask "What Causes Conflict?", under "Internal Sources of Conflict" and "External Sources of Conflict" (Brown 2013, contents); the publisher's description lists 46 conflict management techniques and 31 diagnoses of difficult situations (same page). Scott Berkun's foreword opens: "Successful design projects require effective collaboration and healthy conflict" (reproduced in Berkun, "Book review: Designing Together", scottberkun.com, 27 June 2013, <a target="_blank" rel="noopener" href="https://scottberkun.com/2013/book-review-designing-together/">scottberkun.com, review</a>; practice). For this unit the useful reading is narrow: a touchpoint will disagree with the IA, the disagreement is part of the work, and section 4 gives it a place in the record.</p>
+<h3>1.4 · Who is consulted and who is told</h3>
+<p>Maria Rosala's NN/g article on stakeholder analysis defines a stakeholder as "anyone who has interest in your project" and plots stakeholders on a power-interest matrix with four quadrants: those with high power and high interest "need to be managed closely"; with high power and low interest, "It's important to ensure these stakeholders are happy"; with low power and high interest, keep them informed, by inviting them to research, debriefs and design critiques; with low power and low interest, "you should monitor them regularly" ("Stakeholder Analysis for UX Projects", Nielsen Norman Group, 18 April 2021, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/stakeholder-analysis/">nngroup.com, stakeholder analysis</a>; NN/g guidance). IA9's owner, consulted and informed columns are a finer version of the same sort (IA9, Deliverable A). On this unit's reading, Rosala's quadrants add one thing: the format follows the quadrant. A function that is managed closely reads the artefact itself; one that must be kept satisfied reads one page; one that is kept informed reads the decisions and is invited to the sessions where they are tested.</p>
+<h3>1.5 · Translation: one source, cut and renamed</h3>
+<p>IA5 set the mechanism for serving several readers from one artefact: the team ships one sitemap at three fidelities from one source, the F3 drawing with identifiers, cut to two levels for marketing, "so the three readers never argue from three different maps" (IA5, section 6). IA8 did the same for a rule: one tree, one table for engineering and one sentence for sales, from one source (IA8, section 4.1). This unit calls the operation <strong>translation</strong> and gives it two moves, both from those rules:</p>
+<ul>
+<li><strong>Cut</strong>: drop the elements the reader's decision does not need, by level or by layer (IA2, section 1.0; IA8, section 5.2). A cut never adds an element the source lacks.</li>
+<li><strong>Rename</strong>: replace the model name with the name the reader's surface uses, from the vocabulary (IA1, section 2.4; IA8, D.1's shared-objects table). A rename never changes what an element means.</li>
+</ul>
+<p>A translated artefact cites the source's version on its face, so a reader holding a brief can tell when it is stale. Five formats cover what Perqo's functions read, each defined by what it carries (Perqo, fictional): <strong>F3 tables cited by identifier</strong> (the object-relationship map's model names, the DT- tables, the transitions); <strong>a drawing cut to levels</strong> (a sitemap at two levels, the whole interaction map); <strong>sentences in words</strong> (IA8's rule in words, D.3); <strong>a one-page brief</strong> (Brown's brief form, for one function, Deliverable B); and <strong>an entry in a release note or a decision log's told line</strong> (IA9, W-14 and D.3).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="132" data-rings="3"><path d="M216 67l-16-2-32 0-32 5-16 5-12 5-7 8 11 8 16 6 24 6 16 2 32 3 64-1M240 83l-32-8-16-2-24 0-16 2-17 5-10 8 3 2 10 6 22 6 16 3 24 2 64 0M200 80l-16-2-20 2-18 8 16 8 22 4 24 1 40-2"/><circle class="ct-spot" cx="176" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="140" data-rings="3"><path d="M280 79l-24-1-40-11M264 112l48 4 32 0 136-17M304 82l-24 2-24 0-16-1M264 107l48 3 24-1 104-11M328 83l-72 9-24-1-32-11M248 99l56 6 24 0 48-7M328 88l-8 3-29 5 21 2 16 0 16-2 16-4 66-4"/><circle class="ct-spot" cx="304" cy="96" r="6"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="164" data-rings="4"><path d="M416 55l-24 4-16 5-42 8-54 7M480 99l24 0M456 52l-24 1-16 2M408 63l-40 9-64 10M440 98l40-7 16-1M440 60l-32 3M400 70l-16 4-56 9M376 98l56-5 23-5 16-8 7-8-22-4-16-2-24 1-16 3M376 80l-16 4-32 4M426 88l17-8-3-4-8-3-16 0-40 7"/><circle class="ct-spot" cx="416" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="128" data-rings="3"><path d="M504 99l47 5 35 8M592 64l-32-7-32-3-72-2M496 90l40 5 48 9M589 72l-29-7-24-2-96-3M512 72l-2 0-7 8 25 8 64 13M584 76l-24-4-16-2-32 2M552 80l-5 0 13 2 3 6 21 4M568 82l-6-2-10 0"/><circle class="ct-spot" cx="544" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="205" data-rings="5"><path d="M586 112l30 10 16 3 24 3 24 0 32-3 41-13 79-4M704 64l-88 3-24-3M584 104l48 14 24 3 16 0 32-4 32-12 7-1M696 70l-88 3-19-1M592 101l48 12 24 2 16 0 16-3 24-10 8-2M704 74l-96 4-24-2M584 92l9 4 39 10 24 4 16 0 16-3 9-3 15-8 16-3M680 79l-80 4-32-1M616 88l-4 0 3 8 32 8 17 1 10-1 6-2 16-9 17-5-17-3-16-1z"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="168" data-rings="4"><path d="M832 108l120-19M856 67l-64 2-88-5M743 104l57 0 48-5 65-11M864 73l-72 1-96-4M728 100l16-2 48 2 24-2 63-10M784 78l-80-4M728 93l24-1 40 3 48-7-8-2-16-3-32 0-35-3-37-1-32 0"/><circle class="ct-spot" cx="784" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="85" data-rings="2"><path d="M952 89l8 0M920 63l-16 0-48 4M913 88l18-8-10-8-17-2-40 3M879 88l21-8-20-2-96 0"/><circle class="ct-spot" cx="896" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="102" data-rings="2"><path d="M960 89l8 2 16 9 16 5 16 2 24-1 16-3 16-4 7-3 7-8-14-7-8-3-40-8-56-2-48-5M992 79l-2 1 4 8 6 5 4 3 12 2 16 0 12-2 14-8-23-8-11-2-16 0z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-ux-ia10-1" data-step="1"><span>Next · 2 of 9</span><b>What each function asks of the IA</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-ux-ia10-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">What each function asks of the IA</span></span></h2>
+<p>Each subsection gives the function's question, the artefact that answers it, the fidelity and format it can read, and its forum. The forums are Perqo's meetings and documents, FO-01 to FO-09, set out in Deliverable A, A.2; four of them hold IA9's reviews.</p>
+<h3>2.1 · Product management</h3>
+<p><strong>Question:</strong> what does this change touch, and what must be decided before it is built? It covers scope, the roadmap, requirements, and the impact of a change. Garrett's planes overlap in time, so structure work begins while scope is still open, and IA9 drew the consequence: a sitemap started after the requirements are signed has lost the overlap where the structure shows a requirement missing or doubled (IA9, section 1.2; Garrett, <em>The Elements of User Experience</em>, 2nd ed., New Riders, 2011, ch. 2). IA8 named the map's third purpose as scope decisions: with lifecycles and rules on one sheet, product management sees which surfaces, stages and rules a change touches before it is estimated (IA8, section 1).</p>
+<p><strong>Artefact:</strong> the interaction map's surface layer and its J- table (IA8, D.1 and D.4), read through IA9's impact list, which names the surfaces, objects, J- rows and DT- rules a piece of work touches (IA9, W-05). <strong>Fidelity and format:</strong> F2 with identifiers; an impact list citing identifiers, and the one-page brief BR-1. <strong>Forums:</strong> the IA review (FO-01), where product management sits and signs off rule changes and two-surface changes (IA9, section 4.1), and the debt triage it owns each quarter (IA9, RV-10).</p>
+<h3>2.2 · Engineering</h3>
+<p><strong>Question:</strong> what objects, names, routes, permissions and rules do we build, and which of them can we not change alone? It covers the data model, routing, permissions, API and event naming and the shared vocabulary. IA7 drew the line between the IA and the data model at Perqo: one table shown as two objects, one action writing many records, computed attributes, views with no table, fields with no screen (IA7, section 6.1). It took Evans's ubiquitous language as the rule that holds the two together: "Use the model as the backbone of a language", and "Recognize that a change in the language is a change to the model" (Evans, <em>Domain-Driven Design Reference</em>, Domain Language, 2015; IA7, section 6.2).</p>
+<p><strong>Artefact:</strong> the F3 artefacts. The object-relationship map with model names (IA7, Deliverable A, A.2); the navigation model's pages and addresses (IA7, C.1; IA6, B.4; IA5, Deliverable A); the role-by-section matrix with the calls to action it is read from (IA7, B and A.4); the decision tables DT-1 to DT-3 with the Unique hit policy (IA8, D.3); and the claim's transitions T1 to T6 (IA7, D.1). <strong>API and event naming</strong> follows from Evans's rule (Perqo, fictional; proposed for engineering to confirm): a resource takes the object's model name, and an event takes the model name and the state the object enters, so the event for T3 names <code>claim</code> and Approved; the strings are engineering's. <strong>Fidelity and format:</strong> F3; tables cited by identifier in each story (IA9, section 2.3), and the brief BR-2. <strong>Forums:</strong> the story check and the release note (FO-02; IA9, RV-01 and RV-02), and the IA review (FO-01), where engineering sits because a rename is a change to the model (IA9, section 4.1).</p>
+<h3>2.3 · Content, marketing and localisation</h3>
+<p><strong>Content team.</strong> <strong>Question:</strong> what is each thing called on each surface, where does each page live, and which template fills it? <strong>Artefact:</strong> the controlled vocabulary with each surface's name (IA2, section 5.3; IA8, D.1), the benefits taxonomy, which the content team owns (IA4, Deliverable B; IA9, section 4.1), the inventory row and the template entry, which IA5 called the writer's real document (IA5, section 6). <strong>Fidelity:</strong> F2 for the vocabulary, F3 for the inventory and the taxonomy's identifiers. <strong>Forum:</strong> the vocabulary and content review (FO-03), which holds IA9's RV-07 and RV-08.</p>
+<p><strong>Marketing.</strong> <strong>Question:</strong> what does a buyer see first, under which labels, and where do campaigns and indexing go? <strong>Artefact:</strong> perqo.com's sitemap cut to two levels, with the label table (IA5, section 6 and B.2), the inventory's URL, redirect and indexed columns, and the campaign rule: a page under /lp/, noindex, in no navigation, with an owner and an end date (IA5, sections 5.1 and 5.2). Search-engine structure enters the IA as vendor documentation: Google's guidance asks for readable URLs and permanent redirects (Google Search Central, as cited in IA5, section 5.1; vendor documentation, checked 3 November 2026). <strong>Fidelity:</strong> F1 or F2 (IA5, section 6). <strong>Forum:</strong> FO-03, where marketing is consulted on the rolling audit (IA9, RV-08).</p>
+<p><strong>Localisation.</strong> <strong>Question:</strong> what key does every language version share, and what changes by market? <strong>Artefact:</strong> the inventory's IDs, which carry no words of any language, and the template catalogue's localisation column, where the modules marked by market (M-10, M-11, M-24, M-25) need a decision per market (IA5, section 5.3 and "What the catalogue hands on"). <strong>Fidelity:</strong> F3. perqo.com is published in English only (IA5, section 5.3), so at Perqo this touchpoint is dormant: the row in the matrix is conditional, [when a second language is added], and DD-IA3 sets its forum.</p>
+<p><strong>The owner column.</strong> IA5 handed this unit its inventory's owner column as the content touchpoint (IA5, "What the inventory hands on"). Counted over the 52 rows of the redesigned site, each row counted once under its first-named owner (S-2, "Marketing, with Sales", under Marketing; H-2.1.3, "Support, with Content team", under Support), the owners are: Support 26, Marketing 13, Content team 5, Legal 3, Product 2, Sales 2, Partnerships 1 (Perqo, fictional; from IA5, Deliverable A, A.1 to A.3). Half of perqo.com is support's, because the Help centre is (A.3); the content touchpoint at Perqo is two functions with most of the pages and five with a few each.</p>
+<figure class="viz viz-compare"><div class="viz-scroll" style="--stick:96.8px"><svg viewBox="0 0 700 222" width="700" height="222" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="90.8" y="27.3" text-anchor="end">Support</text><rect class="viz-track" x="100.75808" y="16.0" width="564.4" height="14"/><rect class="viz-bar viz-t1" x="100.75808" y="16.0" width="489.1" height="14"/><text class="viz-value" x="597.9" y="26.8">26</text><text class="viz-label" x="90.8" y="57.3" text-anchor="end">Marketing</text><rect class="viz-track" x="100.75808" y="46.0" width="564.4" height="14"/><rect class="viz-bar viz-t1" x="100.75808" y="46.0" width="244.6" height="14"/><text class="viz-value" x="353.3" y="56.8">13</text><text class="viz-label" x="90.8" y="87.3" text-anchor="end">Content team</text><rect class="viz-track" x="100.75808" y="76.0" width="564.4" height="14"/><rect class="viz-bar viz-t1" x="100.75808" y="76.0" width="94.1" height="14"/><text class="viz-value" x="202.8" y="86.8">5</text><text class="viz-label" x="90.8" y="117.3" text-anchor="end">Legal</text><rect class="viz-track" x="100.75808" y="106.0" width="564.4" height="14"/><rect class="viz-bar viz-t1" x="100.75808" y="106.0" width="56.4" height="14"/><text class="viz-value" x="165.2" y="116.8">3</text><text class="viz-label" x="90.8" y="147.3" text-anchor="end">Product</text><rect class="viz-track" x="100.75808" y="136.0" width="564.4" height="14"/><rect class="viz-bar viz-t1" x="100.75808" y="136.0" width="37.6" height="14"/><text class="viz-value" x="146.4" y="146.8">2</text><text class="viz-label" x="90.8" y="177.3" text-anchor="end">Sales</text><rect class="viz-track" x="100.75808" y="166.0" width="564.4" height="14"/><rect class="viz-bar viz-t1" x="100.75808" y="166.0" width="37.6" height="14"/><text class="viz-value" x="146.4" y="176.8">2</text><text class="viz-label" x="90.8" y="207.3" text-anchor="end">Partnerships</text><rect class="viz-track" x="100.75808" y="196.0" width="564.4" height="14"/><rect class="viz-bar viz-t1" x="100.75808" y="196.0" width="18.8" height="14"/><text class="viz-value" x="127.6" y="206.8">1</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 96.8 222" width="96.8" height="222" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="96.8" height="222"/><text class="viz-label" x="90.8" y="27.3" text-anchor="end">Support</text><text class="viz-label" x="90.8" y="57.3" text-anchor="end">Marketing</text><text class="viz-label" x="90.8" y="87.3" text-anchor="end">Content team</text><text class="viz-label" x="90.8" y="117.3" text-anchor="end">Legal</text><text class="viz-label" x="90.8" y="147.3" text-anchor="end">Product</text><text class="viz-label" x="90.8" y="177.3" text-anchor="end">Sales</text><text class="viz-label" x="90.8" y="207.3" text-anchor="end">Partnerships</text></svg></div></div><figcaption>Owners of perqo.com's pages: the 52 rows of the redesigned site by owner, each row counted once under its first-named owner; supports the decision on which functions the content touchpoint must reach (section 2.3). Counted from IA5, Deliverable A, A.1 to A.3 (removed rows excluded); 'Product' is IA5's owner name for product management. Every bar tone 1, perqo.com. Perqo is fictional.</figcaption></figure>
+<h3>2.4 · Sales and pre-sales</h3>
+<p><strong>Question:</strong> how do we tell the story of the system, run the demo, and answer a proposal or a tender without promising what the product does not do? IA8 named what sales needs from the system map: the decision trees with their words for sales, and the purchase lifecycle (IA8, D.3 and "What later units take"). Its sixth practice for a rule is a sentence for sales, because sales explains the rule to a buyer and the Help centre article carries the same words (IA8, section 4.1), and IA9 made sales a function told of every decision that changes what perqo.com or a rule says (IA9, Deliverable A).</p>
+<p><strong>Artefact:</strong> the purchase lifecycle CL-1 to CL-6 (IA8, section 3.2); the rules DT-1 to DT-3 in words (IA8, D.3); the surfaces map at F1, three surfaces and what crosses between them (IA1, Deliverable; IA8, D.1); and, for tenders, which ask who may see what, the role-by-section matrix in words (IA7, Deliverable B). <strong>The demo path</strong> (Perqo, fictional) follows the lifecycles in their order, each step named by identifier so that a change to any step reaches sales through the J- table: Product (S-1); a policy's open categories and limit (AD-3.1); Set budgets (AD-2.2); Invite employees (AD-1.3); Join (A-0.1); Home (A-1); New claim over the limit (A-3.1); Approvals (AD-4); the approved Claim (A-3.4); Budget use (AD-5.3). <strong>Fidelity and format:</strong> F1 for the story, F2 for the rules in words; sentences, the demo path and the brief BR-3. <strong>Forum:</strong> the pre-sales briefing (FO-04), monthly, and the release note.</p>
+<h3>2.5 · Customer success and onboarding</h3>
+<p><strong>Question:</strong> how should this client be configured, and what does each of its admin users need to learn? At Perqo (Perqo, fictional) the setup staff IA8 placed outside the surfaces (IA8, section 3.2) are the customer success team, which sets up the client and its account owner at CL-3 and supports the account owner through CL-4 and CL-5. <strong>Artefact:</strong> the onboarding order (client and account owner, admin users, groups and policies, budgets, invitations, joining; IA8, section 3.2), the role-by-section matrix (IA7, B), and DT-1 and DT-2 as tables, because a client's policy settings are their inputs (IA8, D.3). <strong>Format:</strong> a <strong>configuration workbook</strong> per client (Perqo, fictional): one table per onboarding step, with a row per employee group giving its policy's open categories, its auto-approve limit and its covered items, then its budgets per category and period; and a <strong>training path</strong> per role, built from the Help centre's articles for HR and finance teams: for an HR manager, H-1.2.1, H-1.2.2, H-1.2.3, H-1.2.5 and H-1.3.1; for a finance manager, H-1.1.1 and H-1.1.2 (IA5, A.3). The account owner's own work (Company, Admins, Activity log; IA7, section 3.4) has no Help centre article: drawing the training paths found that gap, and it is logged for support. <strong>Fidelity:</strong> F2. <strong>Forum:</strong> the onboarding handover (FO-05), once per new client and at each renewal (CL-6).</p>
+<h3>2.6 · Support</h3>
+<p><strong>Question:</strong> where is this person, why did this outcome happen, and where does the structure fail? IA8's reading guide says support reads the lifecycle layer to place a caller in a stage, and each tree stops at the first question that ends the path "so support can say at which question a case stopped" (IA8, D.5). IA9 set support's tags: surface, screen or page identifier, and for a rule the DT- tree, read monthly (IA9, section 6.2; RV-05), after Chisnell's account of the call centre as a source of data (Chisnell, danachisnell.com, 24 July 2016; IA9, section 6.2; practice).</p>
+<p><strong>Artefact:</strong> the tag list, and a <strong>where-things-go-wrong table</strong> drawn from the filed IA (Perqo, fictional): the stops of DT-1 to DT-3 (IA8, D.3), the claim's rejections T1, T4 and T5 with their reasons (IA7, D.1), the exceptions EX-1 to EX-4 (IA7, D.2), the screen states that block an action (IA6, B.5; the category with no allocation, IA8, section 4.2), and the open gaps G-5 to G-7 (IA8, section 1). Each row names where the person is when it happens and what the screen says. <strong>Fidelity:</strong> F3 identifiers. <strong>Forum:</strong> the ticket and log read (FO-06), which holds IA9's RV-04 and RV-05; support also sits in the IA review (FO-01).</p>
+<h3>2.7 · Clients</h3>
+<p><strong>Question:</strong> do these words, roles and rules fit our people, and what changes for our staff? IA9 gave clients three points in a cycle: consulted on Admin's labels and structure (W-06), participants in tests (W-09), and told of Admin changes their staff will see (W-14). Those are vocabulary, validation and notice. Co-creation is the fourth: the Design Council's Develop phase draws on "co-designing with a range of different people" (Design Council, "Framework for Innovation", checked 9 November 2026; IA9, section 1.1).</p>
+<p><strong>The org-chart risk.</strong> A client asked how the product should be organised will often describe itself: its departments, its approval chain, its job titles. Marieke McCloskey's NN/g analysis of 77 intranet IAs reports that intranets "are initially structured to mimic the organizational configuration of the company", that "whenever the institution reorganizes, the navigation must also change", and that "Task-based structures often better withstood organizational change than intranets organized by department" ("Intranet Information Architecture (IA) Trends", Nielsen Norman Group, 23 February 2014, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/intranet-information-architecture-ia/">nngroup.com, intranet IA trends</a>). The finding is about intranets, where the organisation is the user's own; a backoffice that encodes one client's org chart breaks the same way when that client reorganises, and fails every other client from the start. Donna Spencer's practitioner article names the reader's side of it: staff "can't find information if they don't know who is responsible for it" ("Why are intranets structured like the organisational chart?", Step Two, 3 April 2005, <a target="_blank" rel="noopener" href="https://www.steptwo.com.au/papers/cmb_orgchart/">steptwo.com.au, org chart</a>; practice). Melvin Conway's 1968 thesis, that organisations which design systems "are constrained to produce designs which are copies of the communication structures of these organizations", is the older form of the same warning, aimed at the builder's organisation ("How Do Committees Invent?", <em>Datamation</em>, 1968, as quoted in Adrian Colyer, "How do committees invent?", the morning paper, 13 December 2019, <a target="_blank" rel="noopener" href="https://blog.acolyer.org/2019/12/13/how-do-committees-invent/">blog.acolyer.org, Conway</a>).</p>
+<p>Perqo's IA already holds a client's structure where a reorganisation cannot reach the navigation (Perqo, fictional). A client's departments enter as employee groups, records each with one policy (IA4, Deliverable A, R-02 to R-04); Admin's top level is by object and work queue, the same for every client (IA7, section 4.2). A reorganisation moves employees between groups, a call to action HR already has (IA4, A.3: employee -&gt; move to group); it changes no page. The rule for the client touchpoint follows: <strong>a client's structure enters as data, its words enter as variants, and a request to mirror its approval chain enters as a decision log entry</strong>. A client that wants line managers to approve claims is asking for roles scoped to some employee groups, which IA7 left free (IA7, section 3.2); the request is logged with the client's position and decided by the routing rule.</p>
+<p><strong>Artefact and format:</strong> the vocabulary as a word list for consultation (F1), the role-by-section matrix and DT-2 in words (F2), and the release note for notice. <strong>Forums:</strong> the client validation session (FO-07), held in a cycle that touches Admin's labels or roles (IA9, W-06 and W-09), and the release note (FO-02).</p>
+<h3>2.8 · Legal, security and compliance</h3>
+<p><strong>Legal. Question:</strong> what personal data does each object hold, who sees it, what is recorded when it changes, and what is asked of the person? Perqo's objects hold personal data, and one category holds more: the Health category covers therapy sessions, which an employee usually claims (IA4, Deliverable B, BI-003, usual way to pay: Claim), so a claim's receipt can show that an employee saw a therapist. Where the EU's General Data Protection Regulation applies, its Article 9(1) puts "data concerning health" among the special categories of personal data whose processing is prohibited except under the conditions of Article 9(2) (Regulation (EU) 2016/679, Article 9, as adopted, <a target="_blank" rel="noopener" href="https://www.legislation.gov.uk/eur/2016/679/article/9/adopted">legislation.gov.uk, GDPR art. 9</a>; legal text). Perqo's markets are left free (IA5, section 5.3), so whether it applies is legal's question; what the IA owes legal is a view that lets the question be asked object by object.</p>
+<p><strong>Artefact:</strong> a <strong>data view</strong> (Perqo, fictional), a cut of IA7's attributes table (IA7, A.2) with two columns added for legal's reading: the data category of each attribute, and the roles that see it, read from the role-by-section matrix (IA7, B); with the audit entry (O-17), which records who changed what, before and after, as History and the Activity log (IA7, section 5.3). The app's device permissions belong here too: the camera is asked for when the employee taps Take a photo, and notifications once, after the first claim (IA6, section 4.4). Retention is open in two places the filed units left free: how long audit entries are kept (IA7) and how long a former client's records are kept (IA8, section 3.2). <strong>Fidelity:</strong> F3. <strong>Format:</strong> the data view, a table.</p>
+<p><strong>Security. Question:</strong> which role may see and do what, and is every permission written once? IA7 set the rule that permissions are written once, on the calls to action, and both the role matrix and the access-control configuration are read from them, which protects "the client, who signs off what each role can do, and security, who build it" (IA7, section 6.3). <strong>Artefact:</strong> the role-by-section matrix with the calls to action it is read from (IA7, B and A.4), at F3 for build. <strong>Forum, for both:</strong> the privacy and security review (FO-08), consulted on each change that adds an attribute holding personal data or changes a role's mark (DL-014).</p>
+<h3>2.9 · Leadership</h3>
+<p><strong>Question:</strong> what is the system, where is it weak, and what is decided and what is open? At Perqo (Perqo, fictional) leadership is placed in Rosala's keep-satisfied quadrant, high power and low interest in the IA's detail, and is given one page (Rosala 2021). <strong>Artefact:</strong> the one-page map (Perqo, fictional): IA8's whole interaction map, the index figure that names each layer and points to its full figure (IA8, D.4); the open gaps G-5 to G-7 with their owners (IA8, section 1; IA12); the count of IA debt, decision log entries accepted and not applied, from the quarter's triage (IA9, RV-10); and the decisions since the last page, by DL- identifier. <strong>Fidelity:</strong> F1, with identifiers so a question can be followed down. <strong>Format:</strong> one page. <strong>Forum:</strong> the leadership quarterly (FO-09), after RV-10.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.444"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="43" data-rings="1"><path d="M145 80l-17 8-4 8 8 8"/><circle class="ct-spot" cx="144" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="118" data-rings="2"><path d="M132 104l12 6 24 5 24 0 48-7 32 3M184 78l-27 10-9 8 10 8 18 3 16 0 24-6 16-1 40 3M200 87l-9 1-17 8 18 0 8-7 8 0 39 7"/><circle class="ct-spot" cx="184" cy="96" r="6"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="82" data-rings="2"><path d="M192 67l-47 13M208 71l-24 7M237 72l-31 8-6 7M234 80l2 8"/><circle class="ct-spot" cx="232" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="119" data-rings="2"><path d="M336 68l-48-7-40-2-56 8M336 75l-48-8-40-1-40 5M288 72l-32-2-19 2M247 96l33 3M296 78l-24-2-16 0-22 4M236 88l4 1 48 4"/><circle class="ct-spot" cx="272" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="164" data-rings="4"><path d="M272 111l32 6 24 1 32-3 40-9 16-1M272 103l32 8 16 1 40-3 32-8 16-2M336 80l-48-8M280 99l24 6 16 2 40-3 40-10M336 84l-16-1-24-5M288 93l24 8 16 2 32-3 24-8M344 88l-24 4-2 4 18 1 17-1 7-4"/><circle class="ct-spot" cx="320" cy="96" r="7"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="91" data-rings="2"><path d="M360 92l12-4-28 0"/><circle class="ct-spot" cx="360" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="116" data-rings="2"><path d="M432 66l-24-6-16-2-16 1-40 9M432 72l-40-7-16 1-24 7-16 2M408 99l80 5M424 75l-32-6-56 11M400 94l88 5M392 75l-56 9M384 92l16-3 88 5"/><circle class="ct-spot" cx="400" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="91" data-rings="2"><path d="M416 105l40 2 32 4M456 78l-32-3M456 83l-64-8"/><circle class="ct-spot" cx="448" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶9" data-words="108" data-rings="2"><path d="M456 68l-24-2M488 111l48 0M456 74l-24-2M488 104l40-2 16 2M488 99l40-3M488 79l-32 4M488 94l32-6"/><circle class="ct-spot" cx="488" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶10" data-words="108" data-rings="2"><path d="M524 64l-68 4M528 68l-72 6M560 68l-32 5-72 5M528 96l16 3M528 79l-40 0M520 88l24 5M556 80l-6 8"/><circle class="ct-spot" cx="536" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶11" data-words="146" data-rings="3"><path d="M616 59l-48-2-44 7M536 111l48 14M568 63l-40 5M544 104l40 14M544 99l48 15M568 73l-40 6M544 93l40 15M560 79l-4 1M550 88l15 8 27 10M576 79l-16 0M576 87l-2 1 5 8 21 6"/><circle class="ct-spot" cx="576" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶12" data-words="218" data-rings="5"><path d="M584 125l32 4 32-3 32-15 32-4M616 66l-48-3M584 118l32 4 16-1 16-3 30-14 34-3M616 72l-56-4M592 114l24 3 24-3 32-14 40-5M608 78l-40-5M584 108l32 5 16-2 24-10 24-7M592 106l24 2 16-2 24-11 24-7M656 77l-40 7-40-5M600 102l16 1 18-7-2-3-8-2-48-4"/><circle class="ct-spot" cx="624" cy="96" r="8"/></g><g class="ct-rise ct-t4" data-label="¶13" data-words="99" data-rings="2"><path d="M664 63l-48 3M656 67l-40 5M683 72l-19-1-56 7M680 94l40-8M680 88l1-8-25-3"/><circle class="ct-spot" cx="664" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶14" data-words="108" data-rings="2"><path d="M720 63l-56 0M720 69l-64-2M712 95l16 0M712 76l-29-4M720 86l16 2"/><circle class="ct-spot" cx="712" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶15" data-words="81" data-rings="1"><path d="M712 107l64 7 72-5M712 101l64 7 64-5M728 95l48 7 64-3M763 96l21 2"/><circle class="ct-spot" cx="752" cy="96" r="6"/></g><g class="ct-rise ct-t4" data-label="¶16" data-words="225" data-rings="5"><path d="M752 56l-136 3M899 64l-35-11-24-3M792 64l-72 5M883 72l-27-10-16-3M816 63l-104 13M736 88l27 8M784 98l104-3M880 75l-32-11-16-2-16 1M784 71l-31 9 19 8 20 4 80-1M840 66l-16-1-40 6M808 71l-23 9 15 9 24 1 38-2M840 69l-16-1-16 3M824 71l-8 2-13 7 5 3 24 3 22-6M837 72l-13-1"/><circle class="ct-spot" cx="800" cy="80" r="8"/></g><g class="ct-rise ct-t4" data-label="¶17" data-words="147" data-rings="3"><path d="M848 109l72-1M840 50l-88 6M824 56l-104 7M840 103l80-1M856 58l-32-2M840 99l80-1M840 59l-16 0-32 5M872 91l24-3M883 80l-43-14M862 88l7-8-29-11M854 80l-17-8"/><circle class="ct-spot" cx="840" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶18" data-words="51" data-rings="1"><circle class="ct-spot" cx="880" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶19" data-words="146" data-rings="3"><path d="M920 108l104 5M920 102l80 5M904 72l-48-14M920 98l88 5M920 75l-16 1-21-4M888 95l32-3 88 7M912 82l-32-7M896 88l-13-8M936 80l0 1 8 6 24 3"/><circle class="ct-spot" cx="928" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶20" data-words="129" data-rings="3"><path d="M976 57l-24 0-40 7-13 0M968 63l-24 1-40 8M976 68l-32 1-24 6M976 72l-27 0-37 10M968 90l48 3M968 77l-16 0-16 3"/><circle class="ct-spot" cx="968" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶21" data-words="109" data-rings="2"><path d="M1024 113l32 5M1056 69l-40-4-40-8M1000 107l32 0M1008 103l48 0M1040 78l-32-3-32-7M1008 99l37-3M1016 93l14-5M1000 84l-32-7"/><circle class="ct-spot" cx="1016" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶22" data-words="131" data-rings="3"><path d="M1056 118l16 1 16-3 8-4 7-8 0-8-4-8-12-8-31-11M1032 107l32 4 16-4 4-3 2-8-6-9-24-11-88-13M1056 103l8-2 7-5-4-8-11-5-16-5M1045 96l5-8-10-4-64-12M1030 88l-30-4"/><circle class="ct-spot" cx="1056" cy="96" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia10-0" data-step="0"><span>Previous · 1 of 9</span><b>What a touchpoint is, and the published practice on communicating design</b></a><a class="snext" href="#read-ux-ia10-2" data-step="2"><span>Next · 3 of 9</span><b>The artefact-to-audience map, and one translation</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-ux-ia10-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">The artefact-to-audience map, and one translation</span></span></h2>
+<h3>3.1 · Which artefact each function reads, and at what fidelity</h3>
+<p>IA2's decision table gives each artefact its readers (IA2, the artefact decision table); IA5 to IA8's faces name theirs; section 2 adds legal, security, customer success and leadership. The map below joins them: one row per artefact, one column per group of the brief, the cell the fidelity that function reads it at, or "words" where the function reads the artefact as sentences. Content in the map stands for the content team, marketing and localisation together, and Legal, security for those two. The rows use short names: Inventory, Vocabulary, Taxonomy, Sitemap, Navigation model, Wireflow, Decision tree and State diagram are IA9's (IA9, section 3.2); Relationship map is the object-relationship map; Role matrix is the role-by-section matrix (IA7, B); Lifecycles are IA8's CL- and EL- swimlanes; Interaction map is the cross-surface interaction map, which IA9 calls the cross-surface map. An empty cell is an artefact the function does not read.</p>
+<figure class="viz viz-matrix viz-wide"><div class="viz-scroll" style="--stick:128.7px"><svg viewBox="0 0 802.7 538" width="802.7" height="538" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="168.7" y="15.6" text-anchor="middle">Product</text><text class="viz-colhead" x="168.7" y="27.6" text-anchor="middle">management</text><text class="viz-colhead" x="251.7" y="27.6" text-anchor="middle">Engineering</text><text class="viz-colhead" x="329.7" y="27.6" text-anchor="middle">Content</text><text class="viz-colhead" x="399.7" y="27.6" text-anchor="middle">Sales</text><text class="viz-colhead" x="469.7" y="15.6" text-anchor="middle">Customer</text><text class="viz-colhead" x="469.7" y="27.6" text-anchor="middle">success</text><text class="viz-colhead" x="539.7" y="27.6" text-anchor="middle">Support</text><text class="viz-colhead" x="609.7" y="27.6" text-anchor="middle">Clients</text><text class="viz-colhead" x="679.7" y="15.6" text-anchor="middle">Legal,</text><text class="viz-colhead" x="679.7" y="27.6" text-anchor="middle">security</text><text class="viz-colhead" x="754.7" y="27.6" text-anchor="middle">Leadership</text><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Inventory</text><g data-box=""><rect class="viz-band viz-t5" x="130.7" y="46.0" width="76.0" height="28.0"/><text class="viz-mark" x="168.7" y="63.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="46.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="63.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="296.7" y="46.0" width="66.0" height="28.0"/><text class="viz-mark" x="329.7" y="63.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-track" x="366.7" y="46.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="436.7" y="46.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="46.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="63.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-track" x="576.7" y="46.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="646.7" y="46.0" width="66.0" height="28.0"/><text class="viz-mark" x="679.7" y="63.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="716.7" y="46.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Vocabulary</text><g data-box=""><rect class="viz-track" x="130.7" y="78.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="78.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="95.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="296.7" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="329.7" y="95.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="366.7" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="399.7" y="95.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="436.7" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="469.7" y="95.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="95.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="576.7" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="609.7" y="95.8" text-anchor="middle">F1</text></g><g data-box=""><rect class="viz-track" x="646.7" y="78.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="716.7" y="78.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="128.3" text-anchor="start">Taxonomy</text><g data-box=""><rect class="viz-band viz-t5" x="130.7" y="110.0" width="76.0" height="28.0"/><text class="viz-mark" x="168.7" y="127.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="110.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="127.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="296.7" y="110.0" width="66.0" height="28.0"/><text class="viz-mark" x="329.7" y="127.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="366.7" y="110.0" width="66.0" height="28.0"/><text class="viz-mark" x="399.7" y="127.8" text-anchor="middle">words</text></g><g data-box=""><rect class="viz-band viz-t5" x="436.7" y="110.0" width="66.0" height="28.0"/><text class="viz-mark" x="469.7" y="127.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="506.7" y="110.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="576.7" y="110.0" width="66.0" height="28.0"/><text class="viz-mark" x="609.7" y="127.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="646.7" y="110.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="716.7" y="110.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Sitemap</text><g data-box=""><rect class="viz-band viz-t5" x="130.7" y="142.0" width="76.0" height="28.0"/><text class="viz-mark" x="168.7" y="159.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="142.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="159.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="296.7" y="142.0" width="66.0" height="28.0"/><text class="viz-mark" x="329.7" y="159.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="366.7" y="142.0" width="66.0" height="28.0"/><text class="viz-mark" x="399.7" y="159.8" text-anchor="middle">F1</text></g><g data-box=""><rect class="viz-track" x="436.7" y="142.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="142.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="159.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="576.7" y="142.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="646.7" y="142.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="716.7" y="142.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="192.3" text-anchor="start">Navigation model</text><g data-box=""><rect class="viz-track" x="130.7" y="174.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="174.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="191.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="296.7" y="174.0" width="66.0" height="28.0"/><text class="viz-mark" x="329.7" y="191.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="366.7" y="174.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="436.7" y="174.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="174.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="191.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="576.7" y="174.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="646.7" y="174.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="716.7" y="174.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="224.3" text-anchor="start">Relationship map</text><g data-box=""><rect class="viz-band viz-t5" x="130.7" y="206.0" width="76.0" height="28.0"/><text class="viz-mark" x="168.7" y="223.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="206.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="223.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-track" x="296.7" y="206.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="366.7" y="206.0" width="66.0" height="28.0"/><text class="viz-mark" x="399.7" y="223.8" text-anchor="middle">words</text></g><g data-box=""><rect class="viz-track" x="436.7" y="206.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="506.7" y="206.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="576.7" y="206.0" width="66.0" height="28.0"/><text class="viz-mark" x="609.7" y="223.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="646.7" y="206.0" width="66.0" height="28.0"/><text class="viz-mark" x="679.7" y="223.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-track" x="716.7" y="206.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="256.3" text-anchor="start">Role matrix</text><g data-box=""><rect class="viz-band viz-t5" x="130.7" y="238.0" width="76.0" height="28.0"/><text class="viz-mark" x="168.7" y="255.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="238.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="255.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-track" x="296.7" y="238.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="366.7" y="238.0" width="66.0" height="28.0"/><text class="viz-mark" x="399.7" y="255.8" text-anchor="middle">words</text></g><g data-box=""><rect class="viz-band viz-t5" x="436.7" y="238.0" width="66.0" height="28.0"/><text class="viz-mark" x="469.7" y="255.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="238.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="255.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="576.7" y="238.0" width="66.0" height="28.0"/><text class="viz-mark" x="609.7" y="255.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="646.7" y="238.0" width="66.0" height="28.0"/><text class="viz-mark" x="679.7" y="255.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-track" x="716.7" y="238.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="288.3" text-anchor="start">Wireflow</text><g data-box=""><rect class="viz-track" x="130.7" y="270.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="270.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="287.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="296.7" y="270.0" width="66.0" height="28.0"/><text class="viz-mark" x="329.7" y="287.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="366.7" y="270.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="436.7" y="270.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="270.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="287.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="576.7" y="270.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="646.7" y="270.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="716.7" y="270.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="320.3" text-anchor="start">Decision tree</text><g data-box=""><rect class="viz-band viz-t5" x="130.7" y="302.0" width="76.0" height="28.0"/><text class="viz-mark" x="168.7" y="319.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="302.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="319.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="296.7" y="302.0" width="66.0" height="28.0"/><text class="viz-mark" x="329.7" y="319.8" text-anchor="middle">words</text></g><g data-box=""><rect class="viz-band viz-t5" x="366.7" y="302.0" width="66.0" height="28.0"/><text class="viz-mark" x="399.7" y="319.8" text-anchor="middle">words</text></g><g data-box=""><rect class="viz-band viz-t5" x="436.7" y="302.0" width="66.0" height="28.0"/><text class="viz-mark" x="469.7" y="319.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="302.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="319.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="576.7" y="302.0" width="66.0" height="28.0"/><text class="viz-mark" x="609.7" y="319.8" text-anchor="middle">words</text></g><g data-box=""><rect class="viz-track" x="646.7" y="302.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="716.7" y="302.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="352.3" text-anchor="start">State diagram</text><g data-box=""><rect class="viz-track" x="130.7" y="334.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="334.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="351.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="296.7" y="334.0" width="66.0" height="28.0"/><text class="viz-mark" x="329.7" y="351.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="366.7" y="334.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="436.7" y="334.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="334.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="351.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="576.7" y="334.0" width="66.0" height="28.0"/><text class="viz-mark" x="609.7" y="351.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="646.7" y="334.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="716.7" y="334.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="384.3" text-anchor="start">Lifecycles</text><g data-box=""><rect class="viz-band viz-t5" x="130.7" y="366.0" width="76.0" height="28.0"/><text class="viz-mark" x="168.7" y="383.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-track" x="210.7" y="366.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="296.7" y="366.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="366.7" y="366.0" width="66.0" height="28.0"/><text class="viz-mark" x="399.7" y="383.8" text-anchor="middle">F1</text></g><g data-box=""><rect class="viz-band viz-t5" x="436.7" y="366.0" width="66.0" height="28.0"/><text class="viz-mark" x="469.7" y="383.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="366.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="383.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="576.7" y="366.0" width="66.0" height="28.0"/><text class="viz-mark" x="609.7" y="383.8" text-anchor="middle">F1</text></g><g data-box=""><rect class="viz-track" x="646.7" y="366.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="716.7" y="366.0" width="76.0" height="28.0"/><text class="viz-mark" x="754.7" y="383.8" text-anchor="middle">F1</text></g><text class="viz-label" x="8.0" y="416.3" text-anchor="start">Interaction map</text><g data-box=""><rect class="viz-band viz-t5" x="130.7" y="398.0" width="76.0" height="28.0"/><text class="viz-mark" x="168.7" y="415.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="210.7" y="398.0" width="82.0" height="28.0"/><text class="viz-mark" x="251.7" y="415.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="296.7" y="398.0" width="66.0" height="28.0"/><text class="viz-mark" x="329.7" y="415.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="366.7" y="398.0" width="66.0" height="28.0"/><text class="viz-mark" x="399.7" y="415.8" text-anchor="middle">F1</text></g><g data-box=""><rect class="viz-band viz-t5" x="436.7" y="398.0" width="66.0" height="28.0"/><text class="viz-mark" x="469.7" y="415.8" text-anchor="middle">F1</text></g><g data-box=""><rect class="viz-band viz-t5" x="506.7" y="398.0" width="66.0" height="28.0"/><text class="viz-mark" x="539.7" y="415.8" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="576.7" y="398.0" width="66.0" height="28.0"/><text class="viz-mark" x="609.7" y="415.8" text-anchor="middle">F1</text></g><g data-box=""><rect class="viz-track" x="646.7" y="398.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="716.7" y="398.0" width="76.0" height="28.0"/><text class="viz-mark" x="754.7" y="415.8" text-anchor="middle">F1</text></g><g data-box=""><rect class="viz-band viz-t5" x="8.0" y="442.0" width="28.9" height="24"/><text class="viz-mark" x="22.4" y="457.8" text-anchor="middle">F1</text></g><text class="viz-attr" x="44.9" y="458.0" text-anchor="start">sketch: the shape and the main names</text><g data-box=""><rect class="viz-band viz-t5" x="267.3" y="442.0" width="28.9" height="24"/><text class="viz-mark" x="281.7" y="457.8" text-anchor="middle">F2</text></g><text class="viz-attr" x="304.1" y="458.0" text-anchor="start">working: complete for its scope, in the product&#x27;s words</text><g data-box=""><rect class="viz-band viz-t5" x="8.0" y="474.0" width="28.9" height="24"/><text class="viz-mark" x="22.4" y="489.8" text-anchor="middle">F3</text></g><text class="viz-attr" x="44.9" y="490.0" text-anchor="start">specification: identifiers, every condition, citable in a ticket</text><g data-box=""><rect class="viz-band viz-t5" x="8.0" y="506.0" width="48.1" height="24"/><text class="viz-mark" x="32.1" y="521.8" text-anchor="middle">words</text></g><text class="viz-attr" x="64.1" y="522.0" text-anchor="start">read as sentences: the rule or the object said in the reader&#x27;s words</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 128.7 538" width="128.7" height="538" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="128.7" height="430"/><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Inventory</text><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Vocabulary</text><text class="viz-label" x="8.0" y="128.3" text-anchor="start">Taxonomy</text><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Sitemap</text><text class="viz-label" x="8.0" y="192.3" text-anchor="start">Navigation model</text><text class="viz-label" x="8.0" y="224.3" text-anchor="start">Relationship map</text><text class="viz-label" x="8.0" y="256.3" text-anchor="start">Role matrix</text><text class="viz-label" x="8.0" y="288.3" text-anchor="start">Wireflow</text><text class="viz-label" x="8.0" y="320.3" text-anchor="start">Decision tree</text><text class="viz-label" x="8.0" y="352.3" text-anchor="start">State diagram</text><text class="viz-label" x="8.0" y="384.3" text-anchor="start">Lifecycles</text><text class="viz-label" x="8.0" y="416.3" text-anchor="start">Interaction map</text></svg></div></div><figcaption>Artefact-to-audience map: which function reads each artefact of Perqo's IA, and at what fidelity; supports the decision on which cut of an artefact goes to whom (section 3.1). Readers from IA2's artefact decision table and the faces of IA5 to IA8 (IA5, Deliverables A and B; IA6, Deliverable B; IA7, Deliverables A to D; IA8, Deliverable); legal, security, customer success and leadership from section 2 of this unit. Content stands for the content team, marketing and localisation; Legal, security for those two. Every row tone 5, shared: each artefact is read across functions. Perqo is fictional.</figcaption></figure>
+<p>Read down a column and a function's reading list appears: engineering reads nine of the twelve artefacts at F3; sales reads four in words, three as sketches and the vocabulary at F2; leadership reads two, both as sketches. Read across a row and an artefact's audiences appear: the decision tree has seven readers in three forms, which is why IA8 drew it as a tree, a table and a sentence from one source (IA8, section 4.1). The empty cells say what a function never needs: sales reads neither the wireflows nor the state diagram, because the screens and transitions are what the demo shows and the rules in words explain; leadership never needs any F3 artefact.</p>
+<h3>3.2 · The same object map, read by engineering and by sales</h3>
+<p>The translation example takes one slice of IA4's object map, the six objects of a claim and a card payment and their relationships (IA4, Deliverable A, A.2: R-03, R-04, R-05, R-08, R-09, R-10, R-13), and cuts and renames it twice. Engineering's cut keeps the model names IA7 set (IA7, A.2), so its boxes are titled employee_group, policy, employee, allocation, transaction type claim and transaction type card payment, the fields its rules read, the relationship identifiers and the counts. Sales' cut keeps the boxes and the lines, drops the counts and the identifiers, and renames each element into the words a buyer meets: perqo.com's word where perqo.com has one (IA8, D.1), Admin's where it does not, because the buyer's HR and finance staff will use Admin.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Engineering reads</th>
+<th>Sales says</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>employee group (O-03)</td>
+<td><code>employee_group</code></td>
+<td>Teams and groups</td>
+</tr>
+<tr>
+<td>policy (O-04)</td>
+<td><code>policy</code>: <code>open_categories</code>, <code>auto_approve_limit</code></td>
+<td>Policies: which categories are open; the auto-approve limit</td>
+</tr>
+<tr>
+<td>employee (O-05)</td>
+<td><code>employee</code>: <code>status</code></td>
+<td>Employees</td>
+</tr>
+<tr>
+<td>allocation (O-06)</td>
+<td><code>allocation</code>: <code>category</code>, <code>period</code>, <code>amount</code>, <code>spent</code></td>
+<td>Benefits budget: per category, per period; what's left</td>
+</tr>
+<tr>
+<td>transaction, type claim (O-07)</td>
+<td><code>transaction</code> type claim: <code>status</code>, <code>rejection_reason</code>, <code>decided_by</code></td>
+<td>Claims: approved at once up to your limit</td>
+</tr>
+<tr>
+<td>transaction, type card payment (O-08)</td>
+<td><code>transaction</code> type card payment: <code>merchant_id</code>, <code>category</code></td>
+<td>Card payments: taken at the till if within budget</td>
+</tr>
+<tr>
+<td>R-03</td>
+<td>R-03 follows, 1 and 1</td>
+<td>follows one</td>
+</tr>
+<tr>
+<td>R-04</td>
+<td>R-04 contains, 1 and 1..*</td>
+<td>includes</td>
+</tr>
+<tr>
+<td>R-05</td>
+<td>R-05 holds, 1 and 1..*</td>
+<td>gets one per category</td>
+</tr>
+<tr>
+<td>R-08</td>
+<td>R-08 submits, 1 and 0..*</td>
+<td>makes</td>
+</tr>
+<tr>
+<td>R-09</td>
+<td>R-09 is checked against, 0..* and 1</td>
+<td>checked against</td>
+</tr>
+<tr>
+<td>R-10, R-13</td>
+<td>R-10 spends from; R-13 spends from; 0..* and 1</td>
+<td>paid from</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every word in the sales column is the vocabulary's or the rule's: the perqo.com labels are IA1's and IA4's, "the auto-approve limit" is the policy's attribute (IA4, A.1), "approved at once up to your limit" is DT-2's sentence cut to its first clause (IA8, D.3), "taken at the till if within budget" is DT-3's row 4 in words (IA8, D.3), and "what's left" is the remaining attribute, which IA7 records as computed (IA7, A.2). The translation adds no claim the source lacks. It loses three things, and the brief for sales says so: the counts (a team follows exactly one policy; an employee holds one budget per open category); the difference between the two kinds of transaction in the model, which sales never needs; and the card payment's other ways to end, the declines of DT-3, which sales reaches through the rules in words.</p>
+<figure class="viz viz-objects"><div class="viz-scroll"><svg viewBox="0 0 700 302" width="700" height="302" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="objects"><path class="viz-link" d="M94.7,66.0 L94.7,180.0"/><text class="viz-small" x="80.6" y="85.6" text-anchor="middle">1</text><text class="viz-small" x="80.6" y="167.6" text-anchor="middle">1</text><g data-box="" data-text="R-03 follows"><rect class="viz-lblbg" x="58.4" y="114.8" width="72.6" height="16.5"/><text class="viz-linklabel" x="94.7" y="126.8" text-anchor="middle">R-03 follows</text></g><path class="viz-link" d="M181.3,37.0 L263.3,37.0"/><text class="viz-small" x="192.4" y="29.6" text-anchor="middle">1</text><text class="viz-small" x="243.1" y="29.6" text-anchor="middle">1..*</text><g data-box="" data-text="R-04 contains"><rect class="viz-lblbg" x="196.5" y="41.0" width="51.6" height="29.0"/><text class="viz-linklabel" x="222.3" y="53.0" text-anchor="middle">R-04</text><text class="viz-linklabel" x="222.3" y="65.5" text-anchor="middle">contains</text></g><path class="viz-link" d="M350.0,80.0 L350.0,180.0"/><text class="viz-small" x="335.9" y="99.6" text-anchor="middle">1</text><text class="viz-small" x="326.8" y="167.6" text-anchor="middle">0..*</text><g data-box="" data-text="R-08 submits"><rect class="viz-lblbg" x="311.0" y="121.8" width="78.1" height="16.5"/><text class="viz-linklabel" x="350.0" y="133.8" text-anchor="middle">R-08 submits</text></g><path class="viz-link" d="M263.3,223.0 L181.3,223.0"/><text class="viz-small" x="243.1" y="215.6" text-anchor="middle">0..*</text><text class="viz-small" x="192.4" y="215.6" text-anchor="middle">1</text><g data-box="" data-text="R-09 is checked against"><rect class="viz-lblbg" x="187.6" y="227.0" width="69.5" height="41.5"/><text class="viz-linklabel" x="213.3" y="239.0" text-anchor="middle">R-09 is</text><text class="viz-linklabel" x="213.3" y="251.5" text-anchor="middle">checked</text><text class="viz-linklabel" x="213.3" y="264.0" text-anchor="middle">against</text><path class="viz-head" d="M238.6,247.8 L252.6,244.8 L252.6,250.8 z"/></g><path class="viz-link" d="M436.7,230.0 L518.7,230.0"/><text class="viz-small" x="456.9" y="222.6" text-anchor="middle">0..*</text><text class="viz-small" x="507.6" y="222.6" text-anchor="middle">1</text><g data-box="" data-text="R-10 spends from"><rect class="viz-lblbg" x="442.0" y="234.0" width="71.3" height="29.0"/><text class="viz-linklabel" x="477.7" y="246.0" text-anchor="middle">R-10 spends</text><text class="viz-linklabel" x="477.7" y="258.5" text-anchor="middle">from</text></g><path class="viz-link" d="M605.3,108.0 L605.3,180.0"/><text class="viz-small" x="582.1" y="127.6" text-anchor="middle">0..*</text><text class="viz-small" x="591.3" y="167.6" text-anchor="middle">1</text><g data-box="" data-text="R-13 spends from"><rect class="viz-lblbg" x="556.8" y="135.8" width="97.1" height="16.5"/><text class="viz-linklabel" x="605.3" y="147.8" text-anchor="middle">R-13 spends from</text></g><path class="viz-link" d="M397.6,80.0 L529.9,180.0"/><text class="viz-small" x="402.1" y="103.1" text-anchor="middle">1</text><text class="viz-small" x="523.0" y="155.3" text-anchor="middle">1..*</text><g data-box="" data-text="R-05 holds"><rect class="viz-lblbg" x="431.3" y="121.8" width="64.9" height="16.5"/><text class="viz-linklabel" x="463.8" y="133.8" text-anchor="middle">R-05 holds</text></g><g data-box=""><rect class="viz-node viz-t5" x="8.0" y="8.0" width="173.3" height="58.0" rx="2"/><rect class="viz-solid viz-t5" x="8.0" y="8.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="25.3" text-anchor="start">employee_group</text><text class="viz-attr" x="16.0" y="53.0" text-anchor="start">O-03</text></g><g data-box=""><rect class="viz-node viz-t5" x="263.3" y="8.0" width="173.3" height="72.0" rx="2"/><rect class="viz-solid viz-t5" x="263.3" y="8.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="271.3" y="25.3" text-anchor="start">employee</text><text class="viz-attr" x="271.3" y="53.0" text-anchor="start">O-05</text><text class="viz-attr" x="271.3" y="67.0" text-anchor="start">status</text></g><g data-box=""><rect class="viz-node viz-t5" x="518.7" y="8.0" width="173.3" height="100.0" rx="2"/><rect class="viz-solid viz-t5" x="518.7" y="8.0" width="173.3" height="40.0" rx="2"/><text class="viz-ontone" x="526.7" y="25.3" text-anchor="start">transaction type card</text><text class="viz-ontone" x="526.7" y="39.3" text-anchor="start">payment</text><text class="viz-attr" x="526.7" y="67.0" text-anchor="start">O-08</text><text class="viz-attr" x="526.7" y="81.0" text-anchor="start">merchant_id</text><text class="viz-attr" x="526.7" y="95.0" text-anchor="start">category</text></g><g data-box=""><rect class="viz-node viz-t5" x="8.0" y="180.0" width="173.3" height="86.0" rx="2"/><rect class="viz-solid viz-t5" x="8.0" y="180.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="197.3" text-anchor="start">policy</text><text class="viz-attr" x="16.0" y="225.0" text-anchor="start">O-04</text><text class="viz-attr" x="16.0" y="239.0" text-anchor="start">open_categories</text><text class="viz-attr" x="16.0" y="253.0" text-anchor="start">auto_approve_limit</text></g><g data-box=""><rect class="viz-node viz-t5" x="263.3" y="180.0" width="173.3" height="100.0" rx="2"/><rect class="viz-solid viz-t5" x="263.3" y="180.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="271.3" y="197.3" text-anchor="start">transaction type claim</text><text class="viz-attr" x="271.3" y="225.0" text-anchor="start">O-07</text><text class="viz-attr" x="271.3" y="239.0" text-anchor="start">status</text><text class="viz-attr" x="271.3" y="253.0" text-anchor="start">rejection_reason</text><text class="viz-attr" x="271.3" y="267.0" text-anchor="start">decided_by</text></g><g data-box=""><rect class="viz-node viz-t5" x="518.7" y="180.0" width="173.3" height="114.0" rx="2"/><rect class="viz-solid viz-t5" x="518.7" y="180.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="526.7" y="197.3" text-anchor="start">allocation</text><text class="viz-attr" x="526.7" y="225.0" text-anchor="start">O-06</text><text class="viz-attr" x="526.7" y="239.0" text-anchor="start">category</text><text class="viz-attr" x="526.7" y="253.0" text-anchor="start">period</text><text class="viz-attr" x="526.7" y="267.0" text-anchor="start">amount</text><text class="viz-attr" x="526.7" y="281.0" text-anchor="start">spent</text></g></svg></div><figcaption>Translation, engineering's cut: six objects of IA4's object map with IA7's model names, the fields the rules read, relationship IDs and counts (UML multiplicity), F3; supports the decision on what engineering builds and which relationships a change to one object reaches (section 3.2). Every box tone 5, shared: the data model. Lines relate, read left to right on a level line and top to bottom otherwise, unless a triangle marks the other way. Objects and relationships from IA4, Deliverable A, A.2; model names and fields from IA7, Deliverable A, A.2. Perqo is fictional.</figcaption></figure>
+<p>The same six boxes and seven lines, as sales reads them.</p>
+<figure class="viz viz-objects"><div class="viz-scroll"><svg viewBox="0 0 700 232" width="700" height="232" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="objects"><path class="viz-link" d="M94.7,42.0 L94.7,152.0"/><g data-box="" data-text="follows one"><rect class="viz-lblbg" x="62.1" y="88.8" width="65.2" height="16.5"/><text class="viz-linklabel" x="94.7" y="100.8" text-anchor="middle">follows one</text></g><path class="viz-link" d="M181.3,25.0 L263.3,25.0"/><g data-box="" data-text="includes"><rect class="viz-lblbg" x="197.2" y="29.0" width="50.4" height="16.5"/><text class="viz-linklabel" x="222.3" y="41.0" text-anchor="middle">includes</text></g><path class="viz-link" d="M350.0,42.0 L350.0,152.0"/><g data-box="" data-text="makes"><rect class="viz-lblbg" x="329.6" y="88.8" width="40.9" height="16.5"/><text class="viz-linklabel" x="350.0" y="100.8" text-anchor="middle">makes</text></g><path class="viz-link" d="M263.3,188.0 L181.3,188.0"/><g data-box="" data-text="checked against"><rect class="viz-lblbg" x="187.6" y="192.0" width="69.5" height="29.0"/><text class="viz-linklabel" x="213.3" y="204.0" text-anchor="middle">checked</text><text class="viz-linklabel" x="213.3" y="216.5" text-anchor="middle">against</text><path class="viz-head" d="M238.6,206.5 L252.6,203.5 L252.6,209.5 z"/></g><path class="viz-link" d="M436.7,188.0 L518.7,188.0"/><g data-box="" data-text="paid from"><rect class="viz-lblbg" x="449.1" y="192.0" width="57.1" height="16.5"/><text class="viz-linklabel" x="477.7" y="204.0" text-anchor="middle">paid from</text></g><path class="viz-link" d="M605.3,80.0 L605.3,152.0"/><g data-box="" data-text="paid from"><rect class="viz-lblbg" x="576.8" y="107.8" width="57.1" height="16.5"/><text class="viz-linklabel" x="605.3" y="119.8" text-anchor="middle">paid from</text></g><path class="viz-link" d="M376.6,42.0 L548.9,152.0"/><g data-box="" data-text="gets one per category"><rect class="viz-lblbg" x="402.7" y="88.8" width="120.1" height="16.5"/><text class="viz-linklabel" x="462.8" y="100.8" text-anchor="middle">gets one per category</text></g><g data-box=""><rect class="viz-node viz-t1" x="8.0" y="8.0" width="173.3" height="34.0" rx="2"/><rect class="viz-solid viz-t1" x="8.0" y="8.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="25.3" text-anchor="start">Teams and groups</text></g><g data-box=""><rect class="viz-node viz-t1" x="263.3" y="8.0" width="173.3" height="34.0" rx="2"/><rect class="viz-solid viz-t1" x="263.3" y="8.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="271.3" y="25.3" text-anchor="start">Employees</text></g><g data-box=""><rect class="viz-node viz-t1" x="518.7" y="8.0" width="173.3" height="72.0" rx="2"/><rect class="viz-solid viz-t1" x="518.7" y="8.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="526.7" y="25.3" text-anchor="start">Card payments</text><text class="viz-attr" x="526.7" y="53.0" text-anchor="start">taken at the till if within</text><text class="viz-attr" x="536.7" y="67.0" text-anchor="start">budget</text></g><g data-box=""><rect class="viz-node viz-t1" x="8.0" y="152.0" width="173.3" height="72.0" rx="2"/><rect class="viz-solid viz-t1" x="8.0" y="152.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="16.0" y="169.3" text-anchor="start">Policies</text><text class="viz-attr" x="16.0" y="197.0" text-anchor="start">which categories are open</text><text class="viz-attr" x="16.0" y="211.0" text-anchor="start">the auto-approve limit</text></g><g data-box=""><rect class="viz-node viz-t1" x="263.3" y="152.0" width="173.3" height="72.0" rx="2"/><rect class="viz-solid viz-t1" x="263.3" y="152.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="271.3" y="169.3" text-anchor="start">Claims</text><text class="viz-attr" x="271.3" y="197.0" text-anchor="start">approved at once up to</text><text class="viz-attr" x="281.3" y="211.0" text-anchor="start">your limit</text></g><g data-box=""><rect class="viz-node viz-t1" x="518.7" y="152.0" width="173.3" height="72.0" rx="2"/><rect class="viz-solid viz-t1" x="518.7" y="152.0" width="173.3" height="26.0" rx="2"/><text class="viz-ontone" x="526.7" y="169.3" text-anchor="start">Benefits budget</text><text class="viz-attr" x="526.7" y="197.0" text-anchor="start">per category, per period</text><text class="viz-attr" x="526.7" y="211.0" text-anchor="start">what&#x27;s left</text></g></svg></div><figcaption>Translation, sales' cut: the same six objects and seven relationships as engineering's cut, renamed into the words a buyer meets (perqo.com's labels where perqo.com has one, Admin's otherwise) with counts and identifiers dropped; F1; supports the decision on how sales explains what Perqo holds (section 3.2). Every box tone 1, perqo.com: the figure is drawn in perqo.com's vocabulary. Lines relate, read left to right on a level line and top to bottom otherwise, unless a triangle marks the other way. Labels from IA8, D.1's shared-objects table and IA4, Deliverable A, A.1; rule words from IA8, D.3 (DT-2, DT-3). Perqo is fictional.</figcaption></figure>
+<p>The two figures are one source. A change to R-09, to the auto-approve limit or to the label Benefits budget changes both, which is why IA8's J- table lists who is told when a join changes and Deliverable A, A.3 turns it into a list of functions.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.889"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="149" data-rings="5"><path d="M368 58l-72-5-32-1-40 1-64 5-32 4-32 7-8 3-13 8-3 8 1 8 6 8 9 7 8 3 32 9 24 3 24 1 40-2 40-5 16-1 16 1M280 60l-32 0-40 1-56 6-24 4-22 9-5 8 3 9 7 7 9 4 24 7 16 2 24 1 32-2 48-8 16-2M288 67l-40-2-40 2-40 4-24 5-14 4-7 8 3 8 13 8 21 5 24 2 32-2 40-8 24-2 24 2M216 71l-40 5-16 3-8 2-8 7 5 8 11 5 16 3 32 0 40-8 32-2 32 1M304 74l-40-3-48 0M192 80l-8 1-16 7 12 8 20 2 16-2 32-6 46-2M295 80l-31-3-24-1-48 4"/><circle class="ct-spot" cx="200" cy="88" r="9"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="116" data-rings="4"><path d="M288 120l40 7 48 1 32-2 56-8 112 0M392 69l-112-9M280 106l8 1 32 9 16 2 40 1 24-2 40-8 16-2 72 3M408 80l-24-1-64-10-32-2M304 101l32 9 24 2 16 0 16-2 23-6 17-6 16-2 80 8M312 95l32 7 17 2 15-2 18-6-14-8-36-8-40-6M294 88l1-8"/><circle class="ct-spot" cx="360" cy="96" r="8"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="125" data-rings="4"><path d="M520 48l-56 3-72 7-24 0M576 118l32-3 93-11M576 47l-56 1M512 56l-48 4-48 7-24 2M528 110l40 0 40-2M568 55l-56 1M488 64l-40 7-24 7-16 2M528 104l32 0 32-1 96-9M544 60l-56 4M480 72l-17 8 15 8 26 8 32 3 40-1 152-10M544 66l-32 2-32 4M536 72l-24 3-16 5 12 8 28 4 24 0 36-4M562 72l-26 0"/><circle class="ct-spot" cx="520" cy="80" r="8"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="144" data-rings="5"><path d="M701 104l131-5 22-3 3-8-5-8-12-8-16-5-24-5-32-4-104-8-88-3M608 108l88-9 64-3 32-4 17-4 2-8-3-2-10-6-22-5-40-4-72-6-96-2M688 94l56-2 24-4 12-8-17-8-35-5-72-5-112-2M728 88l23-8-27-8-60-5-120-1M596 88l4-3 8-2 48 3 58-6-42-6-16 0-48 5-16-1-30-6"/><circle class="ct-spot" cx="680" cy="80" r="9"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="11" data-rings="0"><circle class="ct-spot" cx="840" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="47" data-rings="1"><path d="M968 79l-29 9 0 8 21 4 16 1 24-2 40-5 24-6-15-8-17-2-40-2z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia10-1" data-step="1"><span>Previous · 2 of 9</span><b>What each function asks of the IA</b></a><a class="snext" href="#read-ux-ia10-3" data-step="3"><span>Next · 4 of 9</span><b>Failure modes, and how the IA records a disagreement</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-ux-ia10-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">Failure modes, and how the IA records a disagreement</span></span></h2>
+<h3>4.1 · How each touchpoint fails</h3>
+<p>Each touchpoint fails in a way the filed units have already met at Perqo or named as a risk. The table names the failure, what it costs and the guard that a filed rule or this unit sets. None of these failures has been measured; the costs are the mechanisms the filed units describe.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Failure</th>
+<th>What it costs</th>
+<th>Guard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product management</td>
+<td>scope set and estimated before the structure is drawn</td>
+<td>a join missed: IA8 found seven gaps only when the layers were laid together (IA8, section 1)</td>
+<td>the impact list before estimation (IA9, W-05)</td>
+</tr>
+<tr>
+<td>Engineering</td>
+<td>the schema read into the labels, or the IA "fixed" to match the schema</td>
+<td>one table shown as one object where people need two (IA7, section 6.1)</td>
+<td>every divergence written down; the vocabulary first (IA7, section 6.3)</td>
+</tr>
+<tr>
+<td>Content team</td>
+<td>a label drifts on one surface</td>
+<td>IA2's fault 5: one thing, two names, no mapping (IA2, section 3)</td>
+<td>rename through the vocabulary (IA2, section 4)</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>a page made outside the sitemap</td>
+<td>duplicates and leftovers: S-1.6, S-1.7, L-02 (IA5, section 1.3)</td>
+<td>the new-page decision tree (IA5, section 5.2)</td>
+</tr>
+<tr>
+<td>Localisation</td>
+<td>identifiers that carry words</td>
+<td>language versions that cannot point to each other (IA5, section 5.3)</td>
+<td>IDs without words (IA5, section 5.3)</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>the product promised beyond its IA</td>
+<td>a buyer told of a trial or a feature Perqo lacks (IA5, section 5.5)</td>
+<td>BR-3's "What Perqo does not do"; the told line</td>
+</tr>
+<tr>
+<td>Customer success</td>
+<td>a client's approval chain configured by workaround, with groups made to stand for approvers</td>
+<td>a reorganisation rewrites groups and policies at once (McCloskey 2014)</td>
+<td>requests outside the IA logged as DL entries at FO-05</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>tickets with no location</td>
+<td>signals nobody can place on the IA (IA9, section 6.2)</td>
+<td>tags by identifier (IA9, RV-05)</td>
+</tr>
+<tr>
+<td>Clients</td>
+<td>one client's words or approval chain built into everyone's product</td>
+<td>the org-chart risk of section 2.7</td>
+<td>structure as data, words as variants, requests as DL entries</td>
+</tr>
+<tr>
+<td>Legal</td>
+<td>consulted after the build</td>
+<td>personal data shown to a role that need not see it</td>
+<td>FO-08 consulted before the decision (DL-014)</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>permissions written twice, in the matrix and in the configuration</td>
+<td>the two drift apart (IA7, section 6.3)</td>
+<td>permissions written once, on the calls to action</td>
+</tr>
+<tr>
+<td>Leadership</td>
+<td>the one-page map read as a plan or a promise</td>
+<td>open gaps taken for decided</td>
+<td>the face's "leaves out" and the open gaps on the page</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two failures cut across every row. The first is a translation that adds a claim: a brief that says more than its source, which no one can trace back. The guard is section 1.5's rule that a cut adds nothing and a rename changes no meaning, and the face of every brief cites the source's version. The second is a function told nothing, or told too late to act. The guard is the told field and the J- list (Deliverable A, A.3).</p>
+<h3>4.2 · A disagreement, recorded</h3>
+<p>A function will disagree with a decision about the IA. Brown's position is that such conflict is part of design work, and he separates healthy from unhealthy conflict (Brown 2013, ch. 4, contents; practice). The IA's contribution is a record: what each function wanted, why, and what would reopen the question, so that the next person to raise it starts from the record and the loser of the argument can see that their position was heard and answered.</p>
+<p>Perqo already has one such record, without the form. The partnerships team asked for card offers on Home and in Benefits; IA6 recorded the request and gave it neither placing, on IA3's criteria, and named the test that would settle it: whether the filtered route from each category finds offers as well as a Home banner did (IA6, B.6). Every part of a recorded disagreement is there: the function, its position, the reason it was not taken, and what would reopen it. IA9's decision log has fields for the alternatives considered and the reason for a decision (IA9, D.3), and no field for whose alternative each was.</p>
+<p>This unit adds one (DL-011, Perqo, fictional): <strong>positions</strong>. For each function that disagrees with a proposed change, the entry records the function, its position in one line, its reason, and the evidence that would reopen the decision; the decision's reason must answer each position. A position not taken is kept with the entry, and its reopening test goes to IA12's assumption register when it is a test with people. The disagreement goes through IA9's routing rule unchanged: the decider is the one section 4.1 of IA9 names, and the function with the position speaks at that forum (IA9, D.1). The path has seven steps, and it adds no decider and no step to IA9's change control (IA9, D.2), only what the record holds: (1) <strong>Object to a proposal</strong>, any function, at its forum or in writing; (2) <strong>Record the position</strong> on the DL entry: function, position, reason, what would reopen it; (3) <strong>Route to who decides</strong> (→ see IA9, D.1); (4) <strong>Hear the position</strong>: the function speaks at the forum that decides; (5) <strong>Decide, with the reason</strong>, which answers each position; (6) <strong>Tell the function</strong>, through its forum and the told field; (7) <strong>Keep the position</strong>, when it is not taken, with its reopening test.</p>
+<figure class="viz viz-flow"><div class="viz-scroll"><svg viewBox="0 0 328 445" width="328" height="445" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="flow"><g data-box=""><rect class="viz-node viz-t5" x="8" y="8" width="143" height="107" rx="2"/><text class="viz-nodelabel" x="20.0" y="31.3" text-anchor="start">Object to a</text><text class="viz-nodelabel" x="20.0" y="45.3" text-anchor="start">proposal</text><text class="viz-note" x="20.0" y="62.3" text-anchor="start">any function, at</text><text class="viz-note" x="20.0" y="75.3" text-anchor="start">its forum or in</text><text class="viz-note" x="20.0" y="88.3" text-anchor="start">writing</text></g><path class="viz-arrow" d="M155,61.5 L171,61.5"/><g data-box=""><rect class="viz-node viz-t5" x="177" y="8" width="143" height="107" rx="2"/><text class="viz-nodelabel" x="189.0" y="31.3" text-anchor="start">Record the position</text><text class="viz-note" x="189.0" y="48.3" text-anchor="start">DL entry:</text><text class="viz-note" x="189.0" y="61.3" text-anchor="start">function,</text><text class="viz-note" x="189.0" y="74.3" text-anchor="start">position, reason,</text><text class="viz-note" x="189.0" y="87.3" text-anchor="start">what would reopen</text><text class="viz-note" x="189.0" y="100.3" text-anchor="start">it</text></g><path class="viz-arrow" d="M248.5,117 L248.5,128.0 L79.5,128.0 L79.5,137"/><g data-box=""><rect class="viz-node viz-t5" x="8" y="141" width="143" height="81" rx="2"/><text class="viz-nodelabel" x="20.0" y="164.3" text-anchor="start">Route to who</text><text class="viz-nodelabel" x="20.0" y="178.3" text-anchor="start">decides</text><text class="viz-note" x="20.0" y="195.3" text-anchor="start">→ see IA9, D.1</text></g><path class="viz-arrow" d="M155,181.5 L171,181.5"/><g data-box=""><rect class="viz-node viz-t5" x="177" y="141" width="143" height="81" rx="2"/><text class="viz-nodelabel" x="189.0" y="164.3" text-anchor="start">Hear the position</text><text class="viz-note" x="189.0" y="181.3" text-anchor="start">the function</text><text class="viz-note" x="189.0" y="194.3" text-anchor="start">speaks at the</text><text class="viz-note" x="189.0" y="207.3" text-anchor="start">forum that decides</text></g><path class="viz-arrow" d="M248.5,224 L248.5,235.0 L79.5,235.0 L79.5,244"/><g data-box=""><rect class="viz-node viz-t5" x="8" y="248" width="143" height="82" rx="2"/><text class="viz-nodelabel" x="20.0" y="271.3" text-anchor="start">Decide, with the</text><text class="viz-nodelabel" x="20.0" y="285.3" text-anchor="start">reason</text><text class="viz-note" x="20.0" y="302.3" text-anchor="start">the reason answers</text><text class="viz-note" x="20.0" y="315.3" text-anchor="start">each position</text></g><path class="viz-arrow" d="M155,289.0 L171,289.0"/><g data-box=""><rect class="viz-node viz-t5" x="177" y="248" width="143" height="82" rx="2"/><text class="viz-nodelabel" x="189.0" y="271.3" text-anchor="start">Tell the function</text><text class="viz-note" x="189.0" y="288.3" text-anchor="start">through its forum;</text><text class="viz-note" x="189.0" y="301.3" text-anchor="start">the told field</text></g><path class="viz-arrow" d="M248.5,332 L248.5,343.0 L79.5,343.0 L79.5,352"/><g data-box=""><rect class="viz-node viz-t6" x="8" y="356" width="143" height="81" rx="2"/><text class="viz-nodelabel" x="20.0" y="379.3" text-anchor="start">Keep the position</text><text class="viz-note" x="20.0" y="396.3" text-anchor="start">[not taken] kept</text><text class="viz-note" x="20.0" y="409.3" text-anchor="start">with its reopening</text><text class="viz-note" x="20.0" y="422.3" text-anchor="start">test</text></g><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>How Perqo's IA records a disagreement: from a function's objection to its position kept with the decision; supports the decision on what must be on record before a contested change counts as decided (section 4.2). The flow kind draws no branch, so the position not taken is a bracketed condition in the last step's note. Positions field set by DL-011 (this unit); routing and change control from IA9, section 4 and Deliverable D; the precedent from IA6, B.6 (the partnerships team's request). Conflict as part of design work from Brown, Designing Together, 2013 (practice). Tone 5 shared; tone 6 a stop: a position the decision did not take. Perqo is fictional.</figcaption></figure>
+<h3>4.3 · A disagreement now open: who may open a receipt</h3>
+<p>Drawing the data view for legal (section 2.8) found one disagreement, logged as DL-015 (Perqo, fictional). IA7 lets every admin user see a claim, receipt included (IA7, A.1, O-07, seen by all; A.2, <code>receipt_file</code>). A therapy session is claimed under Health (IA4, B.3, BI-003), and its receipt names what was bought. Legal's position: a receipt can reveal data concerning health, so only the HR manager deciding a claim waiting in Approvals should open its receipt, and finance should see a claim's amount, category and status only. Product management's position: a claim is checked against its policy (R-09), and the HR manager deciding a claim over the limit reads the receipt to judge it (IA7, D.1, T3 and T4); any restriction must leave that reading possible. The two positions are compatible on the reading above, since HR's check happens in Approvals; the entry records both, routes the change to the IA review because it changes a role's mark in the role-by-section matrix, consults FO-08, and leaves the decision to that review. It is proposed, and no artefact changes until it is decided.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.333"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="54" data-rings="1"><path d="M256 87l-24-3-24-5-16-1-19 2-15 8 10 3 16 3 32 4 48 3"/><circle class="ct-spot" cx="200" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="82" data-rings="2"><path d="M432 76l-144 11-32 0M264 101l48 9 24 3 32-1 16-2 24-6 24-3 64-4M336 95l-3 1 3 1 16 3 16 0 23-4-7-3-8-1z"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="78" data-rings="2"><path d="M584 65l-88 1-64 10M496 97l48-6 24 0 24 1 27 4"/><circle class="ct-spot" cx="520" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="107" data-rings="2"><path d="M648 56l-24 2-40 7M619 96l38 8 39 12M744 70l-32-10-16-3-24-2-24 1M728 77l-40-10-24-2-16 2-23 5-8 8 17 8 46 9 48 15M736 89l-8 2-3 5"/><circle class="ct-spot" cx="680" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="211" data-rings="5"><path d="M696 116l24 6 40 5 40 2 40 1 176-8M944 57l-88 0-32 3-48 9-16 2-16-1M936 66l-56-1-32 1-24 2-48 10-16 1-32-2M728 112l24 5 48 4 64 1 80-6M856 72l-32 3-40 9-48 5M725 96l12 8 7 2 24 6 40 4 64 0 72-7M832 79l-71 17 7 8 8 2 32 4 32 1 40-1 64-8M872 77l-40 2M824 87l-31 9 15 8 40 2 33-2 55-13M872 83l-24 1-24 3"/><circle class="ct-spot" cx="840" cy="96" r="9"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="182" data-rings="4"><path d="M1016 122l48-6 16-5 11-7 4-8 6-8 11-8 4-8-8-8-20-6-24-4-32-1-88 4M976 64l-40 2M944 116l72-2 32-5 15-5 13-16 9-8-2-8-3-2-16-5-24-3-32 0-32 2M944 109l56-1 24-2 16-4 8-4 15-18-7-6-5-2-27-3-24 0-56 3-88 0M944 102l48-1 24-2 12-3 7-8 3-8-14-3-24-2-48 3-80-1M936 91l48 0 19-3-19-2-56 1-56-4"/><circle class="ct-spot" cx="1000" cy="88" r="8"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia10-2" data-step="2"><span>Previous · 3 of 9</span><b>The artefact-to-audience map, and one translation</b></a><a class="snext" href="#read-ux-ia10-4" data-step="4"><span>Next · 5 of 9</span><b>When each function enters a Perqo cycle, and its standing duties</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-ux-ia10-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">When each function enters a Perqo cycle, and its standing duties</span></span></h2>
+<p>IA9 named, for each step of a Perqo cycle, the function that owns it, those consulted and those informed (IA9, Deliverable A), and for each review its owner and those consulted (IA9, Deliverable C). Read by function, those columns say when each touchpoint enters a cycle and what it does once the IA is in use. The reading below takes the columns as they stand; it adds only the functions this unit separates out (marketing, customer success, legal, security, leadership), whose entry points are the forums of Deliverable A.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Owns (IA9)</th>
+<th>Consulted on (IA9)</th>
+<th>Told of (IA9)</th>
+<th>Forums (this unit)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product management</td>
+<td>W-05, W-07, W-15 (paths), W-16; RV-06, RV-10, RV-12</td>
+<td>W-01, W-04, W-06, W-09, W-10, W-12, W-17; RV-01, RV-11</td>
+<td>W-02, W-08, W-14</td>
+<td>FO-01, FO-02, FO-09 (owner)</td>
+</tr>
+<tr>
+<td>Engineering</td>
+<td>none</td>
+<td>W-04, W-05, W-07, W-08, W-10, W-11, W-12, W-14, W-16; RV-01, RV-02, RV-06, RV-07, RV-10, RV-12</td>
+<td>W-01, W-03, W-06, W-09, W-17</td>
+<td>FO-01, FO-02, FO-08</td>
+</tr>
+<tr>
+<td>Content team</td>
+<td>W-03, W-13 (labels, vocabulary); RV-07, RV-08</td>
+<td>W-02, W-06, W-08, W-10; RV-04</td>
+<td>W-01, W-11, W-14, W-15, W-17</td>
+<td>FO-01, FO-03 (owner)</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>none</td>
+<td>W-02 (perqo.com); RV-08</td>
+<td>none in IA9</td>
+<td>FO-03</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>none</td>
+<td>W-03, W-06 (perqo.com); RV-03, RV-12</td>
+<td>W-04, W-05, W-08, W-10, W-13, W-14, W-17</td>
+<td>FO-04</td>
+</tr>
+<tr>
+<td>Customer success</td>
+<td>none in IA9</td>
+<td>none in IA9</td>
+<td>none in IA9</td>
+<td>FO-05 (owner), FO-07</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>W-13 (articles), W-15 (logs, tickets); RV-04, RV-05</td>
+<td>W-01, W-02, W-03, W-04, W-08, W-09, W-10, W-14; RV-02, RV-07, RV-11</td>
+<td>W-05, W-06, W-07, W-11, W-16, W-17</td>
+<td>FO-01, FO-06 (owner)</td>
+</tr>
+<tr>
+<td>Clients</td>
+<td>none</td>
+<td>W-03, W-06 (Admin's labels), W-09 (participants); RV-03, RV-12</td>
+<td>W-10, W-14 (Admin changes), W-17</td>
+<td>FO-07</td>
+</tr>
+<tr>
+<td>Legal, security</td>
+<td>none in IA9</td>
+<td>none in IA9</td>
+<td>none in IA9</td>
+<td>FO-08</td>
+</tr>
+<tr>
+<td>Leadership</td>
+<td>none in IA9</td>
+<td>none in IA9</td>
+<td>none in IA9</td>
+<td>FO-09</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three readings follow. Engineering owns no step and is consulted on fifteen, which is the shape of a function that is managed closely in Rosala's terms: it reads the artefacts themselves, at F3, in every sprint. Sales owns nothing, is consulted on four and is told of seven, which is the keep-informed quadrant: it needs decisions, in words, on a cadence, and the pre-sales briefing exists to give them. And four functions appear nowhere in IA9's tables: customer success, legal, security and leadership; marketing appears only as consulted, on perqo.com's inventory. IA9 built its workflow on the course goal's six touchpoints (IA9, Deliverable, the note after the face); this unit adds the forums through which the other four enter, and DL-013 lets every face name them as readers.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.778"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="89" data-rings="3"><path d="M368 56l-56 3-56 8-19 5-18 8-1 8 15 8 39 12 32 7 24 4 32 2 32 1 32-1 32-4 18-5 12-8-2-8-6-8 3-8-2-8-17-8-22-5-32-2zM304 71l-24 5-14 4-5 8 18 8 41 10 40 5 24 1 24-2 16-2 17-4 6-8-6-8 3-8-11-8-9-2-24-3-32-1-32 1zM320 79l-8 1-12 8 22 8 14 3 16 2 24 1 24-2 12-4-3-8 0-8-9-2-16-3-16 0-24 1z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="128" data-rings="5"><path d="M688 71l-24 3-24 5-18 9-1 8 12 8 31 10 40 8 32 4 48 4 40 1 32-2 48-4 80-10 61-11 22-8 6-8-9-8-24-6-32-5-32-2-48-1-88 2-88 0zM704 79l-16 4-14 5-2 8 13 8 27 8 24 4 40 5 32 1 56-1 40-4 64-9 22-4 25-8 4-8-19-8-8-2-24-3-32-2-176 2-32 1zM768 80l-32 3-21 5-5 8 15 8 19 5 32 5 32 2 32 0 24-1 83-11 28-8 1-8-24-6-32-3zM760 87l-3 1-11 8 14 6 24 5 32 3 32 0 32-3 23-3 35-8-4-8-38-4-96 0zM792 95l-4 1 20 5 24 3 16-1 46-7-14-4-16-2-48 1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia10-3" data-step="3"><span>Previous · 4 of 9</span><b>Failure modes, and how the IA records a disagreement</b></a><a class="snext" href="#read-ux-ia10-5" data-step="5"><span>Next · 6 of 9</span><b>A · The Perqo touchpoint matrix</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-ux-ia10-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A · The Perqo touchpoint matrix</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): touchpoint matrix of Perqo, a table with a matrix figure, in four parts: A.1, one row per function, TP-01 to TP-12, with its question, artefact, fidelity, format, meeting, owner and cadence; A.2, the forums and documents, FO-01 to FO-09; A.3, who is told when each join J-01 to J-14 changes; A.4, the decision log entries DL-011 to DL-015. Fidelity F2 (complete for its scope; identifiers stable). Decision: what each function asks of the IA, what it is given, cut to what, where and how often. Readers: the IA designer, and every function named in it, each for its own row; DD-IA3 for the forums. Leaves out: named people, the meetings' length, localisation's forum (DD-IA3), the validation methods (IA11). Owner: the IA designer; version 1, dated 9 November 2026; built from IA4 to IA9 as filed on 9 November 2026; every forum and cadence set here is assumed until tested ("What later units take"); Perqo is fictional.</em></p>
+<h3>A.1 · The matrix</h3>
+<p>Every row is a Perqo convention (Perqo, fictional). Fidelity is IA2's (F1 sketch, F2 working, F3 specification); "words" means the artefact read as sentences. Owner is the function that prepares the exchange and keeps the row current. Identifiers are IA4 to IA9's and this unit's.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Function</th>
+<th>Question</th>
+<th>Artefact</th>
+<th>Fidelity</th>
+<th>Format</th>
+<th>Meeting</th>
+<th>Owner</th>
+<th>Cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TP-01</td>
+<td>Product management</td>
+<td>What does this change touch, and what must be decided before it is built?</td>
+<td>interaction map and J- table (IA8, D.1, D.4); impact list (IA9, W-05)</td>
+<td>F2, identifiers</td>
+<td>impact list; BR-1</td>
+<td>FO-01 IA review; FO-09</td>
+<td>IA designer</td>
+<td>each cycle; quarterly</td>
+</tr>
+<tr>
+<td>TP-02</td>
+<td>Engineering</td>
+<td>What objects, names, routes, permissions and rules do we build, and which can we not change alone?</td>
+<td>relationship map with model names; addresses; role matrix; DT- tables; T1 to T6 (IA7; IA8, D.3)</td>
+<td>F3</td>
+<td>tables cited in stories; BR-2</td>
+<td>FO-02 story check; FO-01 IA review</td>
+<td>IA designer</td>
+<td>each story; each release</td>
+</tr>
+<tr>
+<td>TP-03</td>
+<td>Content team</td>
+<td>What is each thing called on each surface, where does each page live, and which template fills it?</td>
+<td>vocabulary; taxonomy; inventory; templates (IA4, B; IA5, A and C)</td>
+<td>F2 vocabulary; F3 inventory</td>
+<td>inventory rows; vocabulary table</td>
+<td>FO-03 vocabulary review</td>
+<td>content team</td>
+<td>quarterly; each rename</td>
+</tr>
+<tr>
+<td>TP-04</td>
+<td>Marketing</td>
+<td>What does a buyer see first, under which labels, and where do campaigns and indexing go?</td>
+<td>sitemap cut to two levels; label table; URL, redirect, indexed columns (IA5)</td>
+<td>F1 or F2</td>
+<td>two-level sitemap</td>
+<td>FO-03 vocabulary review</td>
+<td>IA designer</td>
+<td>quarterly; each campaign</td>
+</tr>
+<tr>
+<td>TP-05</td>
+<td>Localisation</td>
+<td>What key does every language version share, and what changes by market?</td>
+<td>inventory IDs; localisation column (IA5, C)</td>
+<td>F3</td>
+<td>inventory and catalogue columns</td>
+<td>none yet (DD-IA3)</td>
+<td>content team</td>
+<td>[when a second language is added]</td>
+</tr>
+<tr>
+<td>TP-06</td>
+<td>Sales</td>
+<td>How do we tell the story, run the demo and answer a tender truthfully?</td>
+<td>CL-1 to CL-6; DT- rules in words; surfaces map; role matrix in words (IA8; IA7, B)</td>
+<td>F1 story; F2 rules</td>
+<td>BR-3; demo path</td>
+<td>FO-04 pre-sales briefing</td>
+<td>IA designer</td>
+<td>monthly; each rule change</td>
+</tr>
+<tr>
+<td>TP-07</td>
+<td>Customer success</td>
+<td>How should this client be configured, and what does each admin user need to learn?</td>
+<td>onboarding order; role matrix (IA8, 3.2; IA7, B); DT-1, DT-2 tables; H-1 articles</td>
+<td>F2</td>
+<td>configuration workbook; training paths</td>
+<td>FO-05 onboarding handover</td>
+<td>customer success</td>
+<td>each new client; each renewal</td>
+</tr>
+<tr>
+<td>TP-08</td>
+<td>Support</td>
+<td>Where is this person, why did this outcome happen, and where does the structure fail?</td>
+<td>ticket tags; where-things-go-wrong table (DT- stops, T1, T4, T5, EX-, G-)</td>
+<td>F3 identifiers</td>
+<td>tag list; table</td>
+<td>FO-06 ticket and log read; FO-01</td>
+<td>support</td>
+<td>monthly; quarterly logs</td>
+</tr>
+<tr>
+<td>TP-09</td>
+<td>Clients</td>
+<td>Do these words, roles and rules fit our people, and what changes for our staff?</td>
+<td>word list; role matrix; DT-2 in words; release note</td>
+<td>F1 words; F2 roles</td>
+<td>session materials; release note</td>
+<td>FO-07 validation session; FO-02</td>
+<td>IA designer, with customer success</td>
+<td>each cycle touching Admin; each release</td>
+</tr>
+<tr>
+<td>TP-10</td>
+<td>Legal</td>
+<td>What personal data does each object hold, who sees it, and what is recorded?</td>
+<td>data view (IA7, A.2 with data category and roles); O-17</td>
+<td>F3</td>
+<td>data view</td>
+<td>FO-08 privacy and security review</td>
+<td>IA designer</td>
+<td>each data or role change; quarterly</td>
+</tr>
+<tr>
+<td>TP-11</td>
+<td>Security</td>
+<td>Which role may see and do what, and is every permission written once?</td>
+<td>role matrix with calls to action (IA7, B, A.4)</td>
+<td>F3</td>
+<td>matrix and table</td>
+<td>FO-08 privacy and security review</td>
+<td>IA designer</td>
+<td>each role change</td>
+</tr>
+<tr>
+<td>TP-12</td>
+<td>Leadership</td>
+<td>What is the system, where is it weak, and what is decided and open?</td>
+<td>one-page map: whole interaction map, G-5 to G-7, IA debt, decisions</td>
+<td>F1</td>
+<td>one page</td>
+<td>FO-09 leadership quarterly</td>
+<td>product management</td>
+<td>quarterly, after RV-10</td>
+</tr>
+</tbody>
+</table></div>
+<p>The matrix as a figure, its columns the five that carry a mark per row (the question, owner and full artefact are in the table).</p>
+<figure class="viz viz-matrix"><div class="viz-scroll" style="--stick:153.8px"><svg viewBox="0 0 700.0 728" width="700.0" height="728" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="225.6" y="15.6" text-anchor="middle">Artefact</text><text class="viz-colhead" x="333.5" y="15.6" text-anchor="middle">Fidelity</text><text class="viz-colhead" x="424.9" y="15.6" text-anchor="middle">Format</text><text class="viz-colhead" x="528.8" y="15.6" text-anchor="middle">Meeting</text><text class="viz-colhead" x="634.6" y="15.6" text-anchor="middle">Cadence</text><text class="viz-label" x="8.0" y="62.8" text-anchor="start">Product management</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="34.0" width="139.7" height="49.0"/><text class="viz-mark" x="225.6" y="55.8" text-anchor="middle">interaction map</text><text class="viz-mark" x="225.6" y="68.8" text-anchor="middle">and J- table</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="34.0" width="68.0" height="49.0"/><text class="viz-mark" x="333.5" y="49.3" text-anchor="middle">F2,</text><text class="viz-mark" x="333.5" y="62.3" text-anchor="middle">identifie</text><text class="viz-mark" x="333.5" y="75.3" text-anchor="middle">rs</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="34.0" width="106.9" height="49.0"/><text class="viz-mark" x="424.9" y="55.8" text-anchor="middle">impact</text><text class="viz-mark" x="424.9" y="68.8" text-anchor="middle">list; BR-1</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="34.0" width="92.8" height="49.0"/><text class="viz-mark" x="528.8" y="49.3" text-anchor="middle">FO-01 IA</text><text class="viz-mark" x="528.8" y="62.3" text-anchor="middle">review;</text><text class="viz-mark" x="528.8" y="75.3" text-anchor="middle">FO-09</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="34.0" width="110.8" height="49.0"/><text class="viz-mark" x="634.6" y="55.8" text-anchor="middle">each cycle;</text><text class="viz-mark" x="634.6" y="68.8" text-anchor="middle">quarterly</text></g><text class="viz-label" x="8.0" y="115.8" text-anchor="start">Engineering</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="87.0" width="139.7" height="49.0"/><text class="viz-mark" x="225.6" y="108.8" text-anchor="middle">relationship map</text><text class="viz-mark" x="225.6" y="121.8" text-anchor="middle">with model names</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="87.0" width="68.0" height="49.0"/><text class="viz-mark" x="333.5" y="115.3" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="87.0" width="106.9" height="49.0"/><text class="viz-mark" x="424.9" y="108.8" text-anchor="middle">tables cited in</text><text class="viz-mark" x="424.9" y="121.8" text-anchor="middle">stories; BR-2</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="87.0" width="92.8" height="49.0"/><text class="viz-mark" x="528.8" y="102.3" text-anchor="middle">FO-02 story</text><text class="viz-mark" x="528.8" y="115.3" text-anchor="middle">check; FO-01</text><text class="viz-mark" x="528.8" y="128.3" text-anchor="middle">IA review</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="87.0" width="110.8" height="49.0"/><text class="viz-mark" x="634.6" y="108.8" text-anchor="middle">each story;</text><text class="viz-mark" x="634.6" y="121.8" text-anchor="middle">each release</text></g><text class="viz-label" x="8.0" y="175.3" text-anchor="start">Content team</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="140.0" width="139.7" height="62.0"/><text class="viz-mark" x="225.6" y="161.8" text-anchor="middle">vocabulary;</text><text class="viz-mark" x="225.6" y="174.8" text-anchor="middle">taxonomy; inventory;</text><text class="viz-mark" x="225.6" y="187.8" text-anchor="middle">templates</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="140.0" width="68.0" height="62.0"/><text class="viz-mark" x="333.5" y="155.3" text-anchor="middle">F2</text><text class="viz-mark" x="333.5" y="168.3" text-anchor="middle">vocabular</text><text class="viz-mark" x="333.5" y="181.3" text-anchor="middle">y; F3</text><text class="viz-mark" x="333.5" y="194.3" text-anchor="middle">inventory</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="140.0" width="106.9" height="62.0"/><text class="viz-mark" x="424.9" y="161.8" text-anchor="middle">inventory rows;</text><text class="viz-mark" x="424.9" y="174.8" text-anchor="middle">vocabulary</text><text class="viz-mark" x="424.9" y="187.8" text-anchor="middle">table</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="140.0" width="92.8" height="62.0"/><text class="viz-mark" x="528.8" y="161.8" text-anchor="middle">FO-03</text><text class="viz-mark" x="528.8" y="174.8" text-anchor="middle">vocabulary</text><text class="viz-mark" x="528.8" y="187.8" text-anchor="middle">review</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="140.0" width="110.8" height="62.0"/><text class="viz-mark" x="634.6" y="168.3" text-anchor="middle">quarterly;</text><text class="viz-mark" x="634.6" y="181.3" text-anchor="middle">each rename</text></g><text class="viz-label" x="8.0" y="234.8" text-anchor="start">Marketing</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="206.0" width="139.7" height="49.0"/><text class="viz-mark" x="225.6" y="227.8" text-anchor="middle">sitemap cut</text><text class="viz-mark" x="225.6" y="240.8" text-anchor="middle">to two levels</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="206.0" width="68.0" height="49.0"/><text class="viz-mark" x="333.5" y="234.3" text-anchor="middle">F1 or F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="206.0" width="106.9" height="49.0"/><text class="viz-mark" x="424.9" y="227.8" text-anchor="middle">two-level</text><text class="viz-mark" x="424.9" y="240.8" text-anchor="middle">sitemap</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="206.0" width="92.8" height="49.0"/><text class="viz-mark" x="528.8" y="221.3" text-anchor="middle">FO-03</text><text class="viz-mark" x="528.8" y="234.3" text-anchor="middle">vocabulary</text><text class="viz-mark" x="528.8" y="247.3" text-anchor="middle">review</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="206.0" width="110.8" height="49.0"/><text class="viz-mark" x="634.6" y="227.8" text-anchor="middle">quarterly;</text><text class="viz-mark" x="634.6" y="240.8" text-anchor="middle">each campaign</text></g><text class="viz-label" x="8.0" y="287.8" text-anchor="start">Localisation</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="259.0" width="139.7" height="49.0"/><text class="viz-mark" x="225.6" y="280.8" text-anchor="middle">inventory IDs;</text><text class="viz-mark" x="225.6" y="293.8" text-anchor="middle">localisation column</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="259.0" width="68.0" height="49.0"/><text class="viz-mark" x="333.5" y="287.3" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="259.0" width="106.9" height="49.0"/><text class="viz-mark" x="424.9" y="274.3" text-anchor="middle">inventory and</text><text class="viz-mark" x="424.9" y="287.3" text-anchor="middle">catalogue</text><text class="viz-mark" x="424.9" y="300.3" text-anchor="middle">columns</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="259.0" width="92.8" height="49.0"/><text class="viz-mark" x="528.8" y="280.8" text-anchor="middle">none yet</text><text class="viz-mark" x="528.8" y="293.8" text-anchor="middle">(DD-IA3)</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="259.0" width="110.8" height="49.0"/><text class="viz-mark" x="634.6" y="274.3" text-anchor="middle">[when a second</text><text class="viz-mark" x="634.6" y="287.3" text-anchor="middle">language is</text><text class="viz-mark" x="634.6" y="300.3" text-anchor="middle">added]</text></g><text class="viz-label" x="8.0" y="340.8" text-anchor="start">Sales</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="312.0" width="139.7" height="49.0"/><text class="viz-mark" x="225.6" y="333.8" text-anchor="middle">CL-1 to CL-6; DT-</text><text class="viz-mark" x="225.6" y="346.8" text-anchor="middle">rules in words</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="312.0" width="68.0" height="49.0"/><text class="viz-mark" x="333.5" y="333.8" text-anchor="middle">F1 story;</text><text class="viz-mark" x="333.5" y="346.8" text-anchor="middle">F2 rules</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="312.0" width="106.9" height="49.0"/><text class="viz-mark" x="424.9" y="340.3" text-anchor="middle">BR-3; demo path</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="312.0" width="92.8" height="49.0"/><text class="viz-mark" x="528.8" y="327.3" text-anchor="middle">FO-04</text><text class="viz-mark" x="528.8" y="340.3" text-anchor="middle">pre-sales</text><text class="viz-mark" x="528.8" y="353.3" text-anchor="middle">briefing</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="312.0" width="110.8" height="49.0"/><text class="viz-mark" x="634.6" y="333.8" text-anchor="middle">monthly; each</text><text class="viz-mark" x="634.6" y="346.8" text-anchor="middle">rule change</text></g><text class="viz-label" x="8.0" y="393.8" text-anchor="start">Customer success</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="365.0" width="139.7" height="49.0"/><text class="viz-mark" x="225.6" y="386.8" text-anchor="middle">onboarding order;</text><text class="viz-mark" x="225.6" y="399.8" text-anchor="middle">role matrix</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="365.0" width="68.0" height="49.0"/><text class="viz-mark" x="333.5" y="393.3" text-anchor="middle">F2</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="365.0" width="106.9" height="49.0"/><text class="viz-mark" x="424.9" y="380.3" text-anchor="middle">configuration</text><text class="viz-mark" x="424.9" y="393.3" text-anchor="middle">workbook;</text><text class="viz-mark" x="424.9" y="406.3" text-anchor="middle">training paths</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="365.0" width="92.8" height="49.0"/><text class="viz-mark" x="528.8" y="380.3" text-anchor="middle">FO-05</text><text class="viz-mark" x="528.8" y="393.3" text-anchor="middle">onboarding</text><text class="viz-mark" x="528.8" y="406.3" text-anchor="middle">handover</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="365.0" width="110.8" height="49.0"/><text class="viz-mark" x="634.6" y="380.3" text-anchor="middle">each new</text><text class="viz-mark" x="634.6" y="393.3" text-anchor="middle">client; each</text><text class="viz-mark" x="634.6" y="406.3" text-anchor="middle">renewal</text></g><text class="viz-label" x="8.0" y="446.8" text-anchor="start">Support</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="418.0" width="139.7" height="49.0"/><text class="viz-mark" x="225.6" y="433.3" text-anchor="middle">ticket tags;</text><text class="viz-mark" x="225.6" y="446.3" text-anchor="middle">where-things-go-</text><text class="viz-mark" x="225.6" y="459.3" text-anchor="middle">wrong table</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="418.0" width="68.0" height="49.0"/><text class="viz-mark" x="333.5" y="433.3" text-anchor="middle">F3</text><text class="viz-mark" x="333.5" y="446.3" text-anchor="middle">identifie</text><text class="viz-mark" x="333.5" y="459.3" text-anchor="middle">rs</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="418.0" width="106.9" height="49.0"/><text class="viz-mark" x="424.9" y="446.3" text-anchor="middle">tag list; table</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="418.0" width="92.8" height="49.0"/><text class="viz-mark" x="528.8" y="433.3" text-anchor="middle">FO-06 ticket</text><text class="viz-mark" x="528.8" y="446.3" text-anchor="middle">and log</text><text class="viz-mark" x="528.8" y="459.3" text-anchor="middle">read; FO-01</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="418.0" width="110.8" height="49.0"/><text class="viz-mark" x="634.6" y="439.8" text-anchor="middle">monthly;</text><text class="viz-mark" x="634.6" y="452.8" text-anchor="middle">quarterly logs</text></g><text class="viz-label" x="8.0" y="506.3" text-anchor="start">Clients</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="471.0" width="139.7" height="62.0"/><text class="viz-mark" x="225.6" y="492.8" text-anchor="middle">word list;</text><text class="viz-mark" x="225.6" y="505.8" text-anchor="middle">role matrix;</text><text class="viz-mark" x="225.6" y="518.8" text-anchor="middle">DT-2 in words</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="471.0" width="68.0" height="62.0"/><text class="viz-mark" x="333.5" y="499.3" text-anchor="middle">F1 words;</text><text class="viz-mark" x="333.5" y="512.3" text-anchor="middle">F2 roles</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="471.0" width="106.9" height="62.0"/><text class="viz-mark" x="424.9" y="492.8" text-anchor="middle">session</text><text class="viz-mark" x="424.9" y="505.8" text-anchor="middle">materials;</text><text class="viz-mark" x="424.9" y="518.8" text-anchor="middle">release note</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="471.0" width="92.8" height="62.0"/><text class="viz-mark" x="528.8" y="486.3" text-anchor="middle">FO-07</text><text class="viz-mark" x="528.8" y="499.3" text-anchor="middle">validation</text><text class="viz-mark" x="528.8" y="512.3" text-anchor="middle">session;</text><text class="viz-mark" x="528.8" y="525.3" text-anchor="middle">FO-02</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="471.0" width="110.8" height="62.0"/><text class="viz-mark" x="634.6" y="492.8" text-anchor="middle">each cycle</text><text class="viz-mark" x="634.6" y="505.8" text-anchor="middle">touching Admin;</text><text class="viz-mark" x="634.6" y="518.8" text-anchor="middle">each release</text></g><text class="viz-label" x="8.0" y="572.3" text-anchor="start">Legal</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="537.0" width="139.7" height="62.0"/><text class="viz-mark" x="225.6" y="571.8" text-anchor="middle">data view</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="537.0" width="68.0" height="62.0"/><text class="viz-mark" x="333.5" y="571.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="537.0" width="106.9" height="62.0"/><text class="viz-mark" x="424.9" y="571.8" text-anchor="middle">data view</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="537.0" width="92.8" height="62.0"/><text class="viz-mark" x="528.8" y="552.3" text-anchor="middle">FO-08</text><text class="viz-mark" x="528.8" y="565.3" text-anchor="middle">privacy and</text><text class="viz-mark" x="528.8" y="578.3" text-anchor="middle">security</text><text class="viz-mark" x="528.8" y="591.3" text-anchor="middle">review</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="537.0" width="110.8" height="62.0"/><text class="viz-mark" x="634.6" y="558.8" text-anchor="middle">each data or</text><text class="viz-mark" x="634.6" y="571.8" text-anchor="middle">role change;</text><text class="viz-mark" x="634.6" y="584.8" text-anchor="middle">quarterly</text></g><text class="viz-label" x="8.0" y="638.3" text-anchor="start">Security</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="603.0" width="139.7" height="62.0"/><text class="viz-mark" x="225.6" y="631.3" text-anchor="middle">role matrix with</text><text class="viz-mark" x="225.6" y="644.3" text-anchor="middle">calls to action</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="603.0" width="68.0" height="62.0"/><text class="viz-mark" x="333.5" y="637.8" text-anchor="middle">F3</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="603.0" width="106.9" height="62.0"/><text class="viz-mark" x="424.9" y="631.3" text-anchor="middle">matrix</text><text class="viz-mark" x="424.9" y="644.3" text-anchor="middle">and table</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="603.0" width="92.8" height="62.0"/><text class="viz-mark" x="528.8" y="618.3" text-anchor="middle">FO-08</text><text class="viz-mark" x="528.8" y="631.3" text-anchor="middle">privacy and</text><text class="viz-mark" x="528.8" y="644.3" text-anchor="middle">security</text><text class="viz-mark" x="528.8" y="657.3" text-anchor="middle">review</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="603.0" width="110.8" height="62.0"/><text class="viz-mark" x="634.6" y="631.3" text-anchor="middle">each role</text><text class="viz-mark" x="634.6" y="644.3" text-anchor="middle">change</text></g><text class="viz-label" x="8.0" y="697.8" text-anchor="start">Leadership</text><g data-box=""><rect class="viz-band viz-t5" x="155.8" y="669.0" width="139.7" height="49.0"/><text class="viz-mark" x="225.6" y="697.3" text-anchor="middle">one-page map</text></g><g data-box=""><rect class="viz-band viz-t5" x="299.5" y="669.0" width="68.0" height="49.0"/><text class="viz-mark" x="333.5" y="697.3" text-anchor="middle">F1</text></g><g data-box=""><rect class="viz-band viz-t5" x="371.5" y="669.0" width="106.9" height="49.0"/><text class="viz-mark" x="424.9" y="697.3" text-anchor="middle">one page</text></g><g data-box=""><rect class="viz-band viz-t5" x="482.4" y="669.0" width="92.8" height="49.0"/><text class="viz-mark" x="528.8" y="684.3" text-anchor="middle">FO-09</text><text class="viz-mark" x="528.8" y="697.3" text-anchor="middle">leadership</text><text class="viz-mark" x="528.8" y="710.3" text-anchor="middle">quarterly</text></g><g data-box=""><rect class="viz-band viz-t5" x="579.2" y="669.0" width="110.8" height="49.0"/><text class="viz-mark" x="634.6" y="690.8" text-anchor="middle">quarterly,</text><text class="viz-mark" x="634.6" y="703.8" text-anchor="middle">after RV-10</text></g></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 153.8 728" width="153.8" height="728" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="153.8" height="722"/><text class="viz-label" x="8.0" y="62.8" text-anchor="start">Product management</text><text class="viz-label" x="8.0" y="115.8" text-anchor="start">Engineering</text><text class="viz-label" x="8.0" y="175.3" text-anchor="start">Content team</text><text class="viz-label" x="8.0" y="234.8" text-anchor="start">Marketing</text><text class="viz-label" x="8.0" y="287.8" text-anchor="start">Localisation</text><text class="viz-label" x="8.0" y="340.8" text-anchor="start">Sales</text><text class="viz-label" x="8.0" y="393.8" text-anchor="start">Customer success</text><text class="viz-label" x="8.0" y="446.8" text-anchor="start">Support</text><text class="viz-label" x="8.0" y="506.3" text-anchor="start">Clients</text><text class="viz-label" x="8.0" y="572.3" text-anchor="start">Legal</text><text class="viz-label" x="8.0" y="638.3" text-anchor="start">Security</text><text class="viz-label" x="8.0" y="697.8" text-anchor="start">Leadership</text></svg></div></div><figcaption>The Perqo touchpoint matrix: for each function, the artefact it is given, at what fidelity, in what format, in which forum and how often; supports the decision on what each part of the business receives from the IA (Deliverable A, A.1; sections 2.1 to 2.9). The question, owner and full artefact of each row are in table A.1. Artefacts and fidelities from IA2's decision table, IA5, section 6, IA7, Deliverables A to D, IA8, D.1 to D.5 and IA9, Deliverables A and C; forums from A.2; the format follows the function's place in Rosala's power-interest matrix (NN/g, 2021). Every row tone 5, shared. Perqo is fictional.</figcaption></figure>
+<h3>A.2 · The forums and documents</h3>
+<p>Each forum is a meeting or a document (Perqo, fictional). FO-01, FO-02, FO-03 and FO-06 hold IA9's reviews and documents under one name each; the other five are set here. Each row gives what DD-IA3 needs to extend it: who chairs or writes it, who takes part, what goes in, what comes out, and when.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Forum or document</th>
+<th>Kind</th>
+<th>Chair or writer</th>
+<th>Takes part</th>
+<th>Inputs</th>
+<th>Outputs</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FO-01</td>
+<td>IA review (IA9, section 4.1)</td>
+<td>meeting</td>
+<td>IA designer</td>
+<td>product management, engineering, content team, support</td>
+<td>DL entries routed to it; J- and X- rows (RV-03)</td>
+<td>DL entries decided, with positions answered</td>
+<td>each release touching two surfaces; quarterly; when a change is routed to it</td>
+</tr>
+<tr>
+<td>FO-02</td>
+<td>Story check and release note (IA9, RV-01, RV-02, W-14)</td>
+<td>documents</td>
+<td>IA designer (check); engineering (note)</td>
+<td>product management, engineering, support; clients read the note</td>
+<td>stories citing identifiers; DL entries applied</td>
+<td>stories held or passed; the release note's IA changes, with Admin changes for clients</td>
+<td>each story; each release</td>
+</tr>
+<tr>
+<td>FO-03</td>
+<td>Vocabulary and content review (IA9, RV-07, RV-08)</td>
+<td>meeting</td>
+<td>content team</td>
+<td>support, engineering, marketing, page owners</td>
+<td>new variants from FO-06; a slice of the inventory</td>
+<td>DL entries; synonyms loaded; inventory rows updated</td>
+<td>quarterly; on a new variant or before a redesign</td>
+</tr>
+<tr>
+<td>FO-04</td>
+<td>Pre-sales briefing</td>
+<td>meeting</td>
+<td>IA designer, with product management</td>
+<td>sales</td>
+<td>BR-3; DL entries whose told line names sales; questions from tenders</td>
+<td>BR-3 re-issued when its source changed; questions logged as proposed DL entries</td>
+<td>monthly; and within a week of a decision that changes a rule or perqo.com</td>
+</tr>
+<tr>
+<td>FO-05</td>
+<td>Onboarding handover</td>
+<td>meeting and document</td>
+<td>customer success</td>
+<td>the client's account owner; the IA designer when a request touches the IA</td>
+<td>the configuration workbook; training paths; the client's requests</td>
+<td>the workbook agreed; requests logged as proposed DL entries</td>
+<td>each new client (CL-3 to CL-4); each renewal (CL-6)</td>
+</tr>
+<tr>
+<td>FO-06</td>
+<td>Ticket and log read (IA9, RV-04, RV-05)</td>
+<td>meeting</td>
+<td>support</td>
+<td>IA designer, content team</td>
+<td>ticket tags; the Help centre's search logs</td>
+<td>hypotheses for IA11; variant terms for FO-03</td>
+<td>monthly (tickets); quarterly (logs)</td>
+</tr>
+<tr>
+<td>FO-07</td>
+<td>Client validation session</td>
+<td>meeting</td>
+<td>IA designer</td>
+<td>admin users from at least two clients; customer success</td>
+<td>word lists; the role matrix; DT-2 in words; candidate structures</td>
+<td>words and roles confirmed or logged; test results (IA11)</td>
+<td>in each cycle touching Admin's labels or roles (IA9, W-06, W-09)</td>
+</tr>
+<tr>
+<td>FO-08</td>
+<td>Privacy and security review</td>
+<td>meeting</td>
+<td>IA designer</td>
+<td>legal, security, engineering</td>
+<td>the data view; the role matrix; proposed DL entries that add personal data or change a role's mark</td>
+<td>positions recorded on the entry before it is decided (DL-014)</td>
+<td>each such entry; quarterly</td>
+</tr>
+<tr>
+<td>FO-09</td>
+<td>Leadership quarterly</td>
+<td>document, then meeting</td>
+<td>product management</td>
+<td>leadership; IA designer</td>
+<td>the one-page map; RV-10's debt count; decisions of the quarter</td>
+<td>questions logged as proposed DL entries</td>
+<td>quarterly, after RV-10</td>
+</tr>
+</tbody>
+</table></div>
+<p>FO-07 takes admin users from at least two clients, so that one client's words or structure are heard beside another's (section 2.7).</p>
+<h3>A.3 · Who is told when a join changes</h3>
+<p>IA8's rule is that a change to any identifier in a J- row is not done until the other cells of that row have been checked (IA8, D.5). The decision log's told field records who heard of it (IA9, D.3). This table joins them: for each join, the functions beyond the IA review's members who must be told when it changes, and the forum that tells them (Perqo, fictional; DL-012).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Join (IA8, D.4)</th>
+<th>Told</th>
+<th>Through</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>J-01 status</td>
+<td>customer success; clients</td>
+<td>FO-02 release note; FO-05</td>
+</tr>
+<tr>
+<td>J-02 limit</td>
+<td>sales; customer success; clients</td>
+<td>FO-04; FO-05; FO-02</td>
+</tr>
+<tr>
+<td>J-03 Claims</td>
+<td>clients</td>
+<td>FO-02</td>
+</tr>
+<tr>
+<td>J-04 Approvals</td>
+<td>customer success; clients; legal</td>
+<td>FO-05; FO-02; FO-08</td>
+</tr>
+<tr>
+<td>J-05 invite</td>
+<td>customer success; clients</td>
+<td>FO-05; FO-02</td>
+</tr>
+<tr>
+<td>J-06 Purchase</td>
+<td>clients; legal</td>
+<td>FO-02; FO-08</td>
+</tr>
+<tr>
+<td>J-07 decline</td>
+<td>clients</td>
+<td>FO-02</td>
+</tr>
+<tr>
+<td>J-08 categories</td>
+<td>sales; marketing; customer success; clients</td>
+<td>FO-04; FO-03; FO-05; FO-02</td>
+</tr>
+<tr>
+<td>J-09 card</td>
+<td>customer success; clients; security</td>
+<td>FO-05; FO-02; FO-08</td>
+</tr>
+<tr>
+<td>J-10 contract</td>
+<td>sales; customer success; legal; leadership</td>
+<td>FO-04; FO-05; FO-08; FO-09</td>
+</tr>
+<tr>
+<td>J-11 sign-in</td>
+<td>marketing; security</td>
+<td>FO-03; FO-08</td>
+</tr>
+<tr>
+<td>J-12 demo</td>
+<td>sales; marketing</td>
+<td>FO-04; FO-03</td>
+</tr>
+<tr>
+<td>J-13 rule words</td>
+<td>sales; customer success</td>
+<td>FO-04; FO-05</td>
+</tr>
+<tr>
+<td>J-14 budgets</td>
+<td>customer success; clients</td>
+<td>FO-05; FO-02</td>
+</tr>
+</tbody>
+</table></div>
+<h3>A.4 · Decision log entries</h3>
+<p>The changes this unit makes to how Perqo's IA is kept, in IA9's format (IA9, D.3; Perqo, fictional). Each is proposed at the date of this unit and is decided where the Decided by column says.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Change</th>
+<th>Raised by, from</th>
+<th>Touches</th>
+<th>Decided by</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DL-011</td>
+<td>The decision log gains a field, positions: for each function that disagrees, its position, reason and what would reopen the decision; the decision's reason answers each position</td>
+<td>IA10, section 4.2; the precedent of IA6, B.6</td>
+<td>IA9, D.3 (the log's fields)</td>
+<td>IA designer (inside the log; renames nothing)</td>
+<td>proposed</td>
+</tr>
+<tr>
+<td>DL-012</td>
+<td>The told field names, for each function told, the forum or document (FO-) and the date; A.3 is the list of who is told when each join changes</td>
+<td>IA10, section 5 and A.3</td>
+<td>IA9, D.3; IA8, D.4</td>
+<td>IA designer</td>
+<td>proposed</td>
+</tr>
+<tr>
+<td>DL-013</td>
+<td>The face's Readers field may name any of the twelve functions TP-01 to TP-12; IA2's six touchpoints are kept as groups</td>
+<td>IA10, section 1.1</td>
+<td>IA2, the notation sheet; every face, by dated amendment</td>
+<td>IA review (a field every artefact carries)</td>
+<td>proposed</td>
+</tr>
+<tr>
+<td>DL-014</td>
+<td>A proposed change that adds an attribute holding personal data, or changes a role's mark, is consulted at FO-08 before it is decided; the decider stays the one IA9, D.1 names</td>
+<td>IA10, section 2.8</td>
+<td>IA9, D.1 and D.2</td>
+<td>IA review; product management signs off (a rule on routing)</td>
+<td>proposed</td>
+</tr>
+<tr>
+<td>DL-015</td>
+<td>Only the HR manager deciding a claim waiting in Approvals opens its receipt; finance sees a claim's amount, category and status only. Positions: legal (health data in receipts); product management (HR reads the receipt to decide, R-09)</td>
+<td>IA10, section 4.3, from the data view</td>
+<td>IA7, A.1 (O-07), B; IA8, J-04</td>
+<td>IA review, after FO-08</td>
+<td>proposed</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.222"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="164" data-rings="5"><path d="M104 62l-16 5-11 5-5 4-5 4-4 8 1 8 6 8 14 8 20 6 16 2 16 2 24 0 88-9 104-4M344 74l-24-7-32-4-32-3-96-3-32 1-24 4M168 64l-24 1-16 2-17 5-13 8-5 8 1 8 10 8 24 7 16 3 24 0 64-6 80-4M328 80l-32-7-40-5-88-4M144 72l-23 8-6 8 3 8 10 6 8 3 16 2 32 0 32-4 88-6 6-1 5-8-22-8-45-7-72-4zM152 78l-8 2-8 8 5 8 11 4 16 2 16 0 63-6 25-8-19-8-21-3-56-2zM168 85l-6 3 6 4 8 3 8 1 48-8-16-4-24-2-16 0z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="45" data-rings="1"><path d="M352 109l16-2 13-3 5-8-14-8-28-14M312 104l24-3 16-5-9-8-15-8"/><circle class="ct-spot" cx="328" cy="96" r="6"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="25" data-rings="0"><circle class="ct-spot" cx="464" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="55" data-rings="1"><path d="M584 63l-16 5-10 4-6 8 11 8 29 7 24 2 16-2 8-2 8-5-15-16-9-6-16-3z"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="22" data-rings="0"><circle class="ct-spot" cx="736" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="70" data-rings="2"><path d="M824 70l-4 2-5 8 5 8 3 8 11 8 14 4 24 1 32-3 24-6 9-4 12-8-5-5M936 80l-16-3-40-10-16-2-16 0-16 3-8 2M856 79l-4 1-2 8 6 6 4 2 12 1 13-1 11-4 5-4-21-8-16-2z"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="36" data-rings="1"><path d="M944 83l-8-3M968 79l-6 1 14 3 40 4 8-2 10-5-10-4-8-1-24 1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia10-4" data-step="4"><span>Previous · 5 of 9</span><b>When each function enters a Perqo cycle, and its standing duties</b></a><a class="snext" href="#read-ux-ia10-6" data-step="6"><span>Next · 7 of 9</span><b>B · Three one-page IA briefs</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-ux-ia10-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">B · Three one-page IA briefs</span></span></h2>
+<p><em>Face of these artefacts (IA2, the notation sheet): three IA briefs, BR-1 for product management, BR-2 for engineering, BR-3 for sales, each a translation (section 1.5) of the same source: IA4, Deliverable A (amended 9 November 2026), IA5, Deliverables A to C (version 1, 3 November 2026), IA6, Deliverables A to C (amended 9 November 2026), IA7's Deliverable (amended 9 November 2026), IA8's Deliverable (version 1, 9 November 2026) and IA9's Deliverable (version 1, 9 November 2026). Form after Brown's design brief (Communicating Design, 2nd ed., 2011, ch. 9; practice), written for one function each. Fidelity: BR-1 F2, BR-2 F3 by reference, BR-3 F1 with the rules at F2. Decision: what each function must know of the IA to do its own work. Leaves out: everything its reader does not need, as each brief's last section says. Owner: the IA designer; version 1, dated 9 November 2026; re-issued when its source changes; Perqo is fictional.</em></p>
+<h3>BR-1 · Perqo IA brief for product management</h3>
+<p><strong>What this is.</strong> One page on Perqo's IA for product management: what it holds, how to read the impact of a change, what is open and where you decide. Source versions are on the face; Perqo is fictional.</p>
+<p><strong>The system, as layers.</strong> Three surfaces and a merchant side. perqo.com sells and helps (52 rows after the redesign; IA5). Perqo Admin is where a client's HR and finance managers configure and decide (pages AD-0 to AD-6; IA7). The Perqo app is where employees see balances, pay and claim (screens A-0 to A-5; IA6). Two lifecycles run across them: the client's, CL-1 Evaluate to CL-6 Renew or churn, and the employee's, EL-1 Enrol to EL-6 Review, each period. Three rules decide what happens: DT-1 eligibility, DT-2 approval routing, DT-3 spend limits. Fourteen joins, J-01 to J-14, tie the layers (IA8).</p>
+<p><strong>How to scope a change.</strong> Before estimating, list what it touches by identifier: surfaces and pages (S-, AD-, A-, H-), objects and relationships (O-, R-), joins (J-), rules (DT-). That list is the impact list (IA9, W-05). A change that touches a rule or two surfaces goes to the IA review, and you sign it off; a change that renames a label goes to the IA review with the vocabulary changed first; anything inside one surface that renames nothing, the IA designer decides (IA9, D.1). A story enters a sprint only when the artefact it builds from is at F3 for its part (IA9, Deliverable B).</p>
+<p><strong>What already constrains the roadmap.</strong> A new top-level benefit category is a product decision with finance and the client, because it creates an allocation for every employee in every group that opens it (IA4, R8). The benefits taxonomy keeps two levels (R7). Invite employees stays unavailable for a group until its budgets for the period are set (IA8, section 3.2). Admin has no global search; each long list has a find field (IA7, section 4.5). Roles cover the whole client; scoping a role to some groups is open (IA7).</p>
+<p><strong>What is open, with an owner.</strong> G-5, how a leaver learns of a claim decided after they left; G-6, which allocations an employee keeps when moved to another group mid-period; G-7, money unspent at a period's end (IA8). DL-015, who may open a claim's receipt, is proposed and awaits the IA review after FO-08. The account owner's tasks have no Help centre article.</p>
+<p><strong>What you own.</strong> The impact list (W-05), the story map's backbone under the IA's identifiers (W-07), analytics paths (W-15, RV-06), IA debt triage each quarter (RV-10), the rules review on trigger (RV-12), and the leadership page (FO-09).</p>
+<p><strong>Where you will hear.</strong> FO-01, the IA review; FO-02, the release note; the decision log's told line. This brief leaves out model names, screens and labels (BR-2 and the vocabulary hold them) and sales' words (BR-3).</p>
+<h3>BR-2 · Perqo IA brief for engineering</h3>
+<p><strong>What this is.</strong> One page on Perqo's IA for engineering: what the F3 artefacts hold, which names are fixed, which you may not change alone, and what is open. Every element is cited by identifier; the tables named are the specification. Perqo is fictional.</p>
+<p><strong>Objects and names.</strong> The model names are IA7's (A.2): <code>client</code>, <code>admin_user</code>, <code>employee_group</code>, <code>policy</code>, <code>employee</code>, <code>allocation</code>, <code>transaction</code> (type claim or card payment), <code>card</code>, <code>catalogue_item</code>, <code>audit_entry</code>; IA8 added <code>card_decline</code> (O-18), outside the transactions. One table, two objects: claims and card payments are one <code>transaction</code> table with a type field, and two objects in every surface (IA7, section 6.1). Remaining is computed as amount less spent and stored nowhere; spent counts approved and paid claims and card payments, never a waiting claim (IA7, A.2). Proposed names still to confirm: <code>closed</code> on the allocation and <code>contract_end_date</code> on the client (IA9, D.3: DL-005, DL-006).</p>
+<p><strong>One thing, several labels.</strong> The model keeps <code>allocation</code>; Admin says Budget, the app Balance, perqo.com Benefits budget (IA8, D.1). Labels are recorded translations of the model name, never a second concept; use the model name in code, tickets and conversation (IA7, section 6.2).</p>
+<p><strong>Rules and transitions.</strong> Build from the tables, Unique hit policy: DT-1 (five rows), DT-2 (five rows, with T1 to T5), DT-3 (four rows) (IA8, D.3). The claim moves only by T1 to T6, each writing an audit entry; no transition leaves Rejected or Paid (IA7, D.1). EX-1: an HR manager never decides their own claim. EX-2: on HR's approval the balance is checked again (T5).</p>
+<p><strong>Routes and addresses.</strong> Addresses put the identifier first: Admin's /employees/{employee ID} and its kin (IA7, C.1); the app's perqo.com/app/ entries E-1 to E-8 (IA6, B.4); perqo.com's category pages /product/benefits/cat-hea/health (IA5). A moved page keeps a redirect. Analytics record each app screen and Admin page by identifier (IA9, section 6.3).</p>
+<p><strong>Permissions.</strong> Written once, on the calls to action (IA7, A.4); the role-by-section matrix and the access-control configuration are both read from them (IA7, B; section 6.3). Hidden, disabled with a reason, or read only: IA7, B.2.</p>
+<p><strong>Events and APIs (proposed).</strong> A resource takes the object's model name; an event takes the model name and the state entered. The strings are yours.</p>
+<p><strong>What you may not change alone.</strong> An identifier, a label, a model name that a label maps to, a rule's outcome, a transition: each is a DL entry through the IA review (IA9, D.1), vocabulary first. Every story cites the identifiers it touches (IA9, section 2.3).</p>
+<p><strong>Open.</strong> G-5 to G-7 (IA8); DL-015 may change who opens <code>receipt_file</code>. This brief leaves out sales' words, the lifecycles' business stages and visual design.</p>
+<h3>BR-3 · Perqo IA brief for sales</h3>
+<p><strong>What this is.</strong> One page on how Perqo is put together, in the words a buyer meets, with the rules you can say and the things you must not promise. Perqo is fictional.</p>
+<p><strong>The story in one paragraph.</strong> A client gives each employee a benefits budget, per category (Health, Learning, Mobility, Meals) and per period. HR and finance set it up in Perqo Admin: teams and groups, each with its policy (which categories are open, the auto-approve limit, what is covered), then budgets. Employees join from an invitation, see what's left in each category in the Perqo app, and spend it two ways: with the Perqo card at the till, or by paying another way and making a claim. Reports show spend by category, by group and by budget use.</p>
+<p><strong>The rules, in words</strong> (IA8, D.3; the Help centre says the same, H-1.2.5).</p>
+<ul>
+<li>Approvals: "A claim within the category's balance and at or under your limit is approved at once; over the limit, one of your HR managers decides, never the person claiming, and Perqo checks the balance again when they approve."</li>
+<li>Spending: a card payment is taken at the till if the card is active, the category is open and the budget covers it; otherwise it is declined, and the employee is told why unless the card was cancelled.</li>
+<li>Who can spend: an employee spends in a category only when the contract is in force, they have joined, the category is open to their group and its budget for the period is set.</li>
+</ul>
+<p><strong>How a client starts</strong> (CL-1 to CL-6, IA8). Evaluate on perqo.com; a demo (there is no free trial); a contract; onboarding in Admin, in order: admin users, groups and policies, budgets, invitations; then each period runs. Renewal sets a new contract end date; at churn, sign-in ends and cards are cancelled the day after it.</p>
+<p><strong>The demo path.</strong> Product (S-1); a policy's open categories and limit (AD-3.1); Set budgets (AD-2.2); Invite employees (AD-1.3); Join (A-0.1); Home (A-1); a claim over the limit (A-3.1); Approvals (AD-4); the approved claim (A-3.4); Budget use (AD-5.3).</p>
+<p><strong>For tenders.</strong> Roles: HR managers decide claims and manage employees and policies; finance managers set budgets and see all five reports; one account owner manages company details and admin users and reads the Activity log. Every change is recorded with who, what, before and after. Each client has at least two HR managers. Security page: S-1.5. Data and privacy questions go to legal through FO-08.</p>
+<p><strong>What Perqo does not do.</strong> No self-serve sign-up and no free trial; perqo.com in English only; no search across Admin; no Approvals for finance; roles cannot be limited to some groups; merchants have no surface of their own beyond accepting the card and publishing offers; unspent money at a period's end and mid-period moves between groups are not yet decided. Pricing: two plans, each with a published price per employee per month (Pricing, S-2).</p>
+<p><strong>Where you will hear of changes.</strong> FO-04, monthly, and within a week of a decision that changes a rule or perqo.com. This brief leaves out model names, counts and screens' states.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.667"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="155" data-rings="5"><path d="M120 56l-24 5-16 8-4 3-5 8-4 16 0 8 5 8 8 6 16 5 16 3 24-2 41-12 31-2M144 52l-24 4M120 63l-16 5-9 4-8 8-4 16 2 8 10 8 9 3 16 2 24-2 40-10M144 59l-24 4M152 64l-40 8-13 8-4 16 5 8 12 5 8 1 24-1 40-8M136 71l-16 4-8 4-6 9 0 8 6 5 7 3 9 1 16 0 32-7 56-3M168 71l-44 9-7 8 3 8 16 4 48-8 48-1M151 80l-18 8 11 3 34-3 6-2 24 2"/><circle class="ct-spot" cx="136" cy="88" r="8"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="38" data-rings="1"><path d="M184 105l32-2M184 101l40-2"/><circle class="ct-spot" cx="176" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="100" data-rings="3"><path d="M208 110l24 1M176 50l-32 2M216 103l19 1 37 11M176 57l-32 2M224 99l16 1 32 9M192 60l-40 4M232 95l16 2M192 65l-56 6M232 91l16 1M200 68l-32 3M208 72l-57 8M208 88l32-1"/><circle class="ct-spot" cx="216" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="106" data-rings="3"><path d="M272 54l-16-2-80-2M272 60l-16-1-80-2M264 64l-72-4M248 97l24 8M272 69l-16-2-64-2M248 92l32 10M256 70l-56-2M240 87l16 3 24 7M289 80l-25-5-56-3"/><circle class="ct-spot" cx="256" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="89" data-rings="3"><path d="M232 111l16 6 16 4 24 1 24-4 20-6 36-8M315 64l-43-10M272 115l24 0 80-21M272 109l24 1 56-14M304 72l-40-8M272 105l24 1 40-10M280 102l16 0 27-6 8-8M307 80l-51-10M280 97l16 1 14-2 6-8-27-8"/><circle class="ct-spot" cx="296" cy="96" r="7"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="63" data-rings="2"><path d="M368 104l24-3M376 94l16-1M332 72l-60-12M352 96l17-8-1-3-9-5M336 96l13-8-22-8-55-11M331 88l-24-8"/><circle class="ct-spot" cx="328" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="37" data-rings="1"><path d="M368 67l-53-3M376 75l-44-3M359 80l-55-8"/><circle class="ct-spot" cx="368" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="36" data-rings="1"><path d="M392 101l24 1 32 5M392 93l24 1 32 6M415 88l25 6"/><circle class="ct-spot" cx="408" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶9" data-words="44" data-rings="1"><path d="M448 107l120 6M448 100l80 5M440 94l80 5"/><circle class="ct-spot" cx="448" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶10" data-words="108" data-rings="3"><path d="M568 65l-32-7-16-1-80 5-40 4-32 1M536 66l-24-3-64 4-40 6-32 2M456 71l-16 3-26 6 1 8M520 99l40-1M528 70l-24-2-48 3M440 80l-2 0 1 8 9 1 32 1 40 4 24-3M541 80l-29-6-16 0-56 6"/><circle class="ct-spot" cx="488" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶11" data-words="44" data-rings="1"><circle class="ct-spot" cx="520" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶12" data-words="65" data-rings="2"><path d="M568 113l16-1 16-4 23-12 9-2M528 105l40 0 12-1 12-4 16-12M560 98l15-2 1-8-8-5-6-3-34-10M544 91l10-3-13-8"/><circle class="ct-spot" cx="560" cy="96" r="6"/></g><g class="ct-rise ct-t4" data-label="¶13" data-words="49" data-rings="1"><path d="M608 62l-40 3M608 88l40-8M621 72l-21 0-16 3-8 1-40-10"/><circle class="ct-spot" cx="600" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶14" data-words="36" data-rings="1"><path d="M632 94l16 0M664 70l-56-8M648 80l-27-8"/><circle class="ct-spot" cx="640" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶15" data-words="25" data-rings="0"><path d="M648 94l32 6 8 1 24-7"/><circle class="ct-spot" cx="680" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶16" data-words="46" data-rings="1"><path d="M712 94l24-2 22 4M720 70l-24-1-32 1M706 80l54 2"/><circle class="ct-spot" cx="712" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶17" data-words="25" data-rings="0"><path d="M768 79l-62 1M760 82l24 18"/><circle class="ct-spot" cx="752" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶18" data-words="33" data-rings="1"><circle class="ct-spot" cx="792" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶19" data-words="97" data-rings="3"><path d="M758 96l18 11 8 3 24 4 16-1 32-6 48-3M816 66l-96 4M816 73l-48 6M784 100l10 4 14 3 16-1 24-5 16-1 48-2M808 80l-18 8 6 8 12 3 16 0 24-5 87-6"/><circle class="ct-spot" cx="832" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶20" data-words="13" data-rings="0"><circle class="ct-spot" cx="872" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶21" data-words="55" data-rings="1"><path d="M904 104l40 4M896 74l-80-1M912 98l32 2M935 88l-39-7-88-1"/><circle class="ct-spot" cx="904" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶22" data-words="37" data-rings="1"><path d="M944 108l48-5M944 100l48-5"/><circle class="ct-spot" cx="944" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶23" data-words="65" data-rings="2"><path d="M952 65l-16 2-120-1M952 76l-8 1-48-3M992 95l48 3M992 70l-8 2-8 8 8 4 40 6"/><circle class="ct-spot" cx="984" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶24" data-words="74" data-rings="2"><path d="M992 103l56 3 24-3M1068 72l-4-3-24-9-24-3-32 2-32 6M1000 63l-24 5-24 8M1040 98l15-2M1060 88l-2-8-8-8-10-4-16-4-24-1M1024 90l12-2 4-3 3-5-10-8-9-3-16-1-16 2"/><circle class="ct-spot" cx="1024" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶25" data-words="31" data-rings="1"><path d="M1072 103l8-2 6-5-6-6-12-18M1055 96l5-8"/><circle class="ct-spot" cx="1064" cy="96" r="5"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia10-5" data-step="5"><span>Previous · 6 of 9</span><b>A · The Perqo touchpoint matrix</b></a><a class="snext" href="#read-ux-ia10-7" data-step="7"><span>Next · 8 of 9</span><b>What later units take</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-ux-ia10-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">What later units take</span></span></h2>
+<p><strong>IA11</strong> tests what this unit sets. Every practice is assumed, with its test:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Practice or assumption</th>
+<th>Where</th>
+<th>Test (IA11)</th>
+<th>What changes if it fails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Each function's question is the one it asks</td>
+<td>section 2; A.1</td>
+<td>interviews with each function, asking what decision it last needed the IA for</td>
+<td>the question and artefact in that row</td>
+</tr>
+<tr>
+<td>Sales can explain the rules from BR-3</td>
+<td>BR-3; section 3.2</td>
+<td>IA8's test: sales explains DT-2 to a buyer in a recorded demo, and the buyer restates it</td>
+<td>the rules' words, or BR-3's order</td>
+</tr>
+<tr>
+<td>Engineering can build from BR-2's references without a meeting</td>
+<td>BR-2</td>
+<td>the questions engineering raises at FO-02, counted per release</td>
+<td>BR-2's sections, or the F3 tables it points to</td>
+</tr>
+<tr>
+<td>The translation loses nothing a reader needs</td>
+<td>section 3.2</td>
+<td>ask each reader a question answerable from the source only, with only the brief in hand (after IA8, D.5's test)</td>
+<td>the cut</td>
+</tr>
+<tr>
+<td>Positions recorded reduce reopened decisions</td>
+<td>DL-011</td>
+<td>DL entries reopened or superseded within a quarter, before and after, read at RV-10</td>
+<td>the positions field</td>
+</tr>
+<tr>
+<td>Clients' structure enters as data without loss</td>
+<td>section 2.7</td>
+<td>interviews with account owners at FO-05; configuration requests logged per client</td>
+<td>employee groups, or role scoping (left free)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>IA12</strong> delivers an IA when inputs are missing. The touchpoint matrix names which function's input is missing when one is: a row whose forum has not met, or whose function has not been consulted, is an input IA12's assumption register marks as absent, with the function named and the test from the table above.</p>
+<p><strong>DD-IA2</strong> writes the business case. It takes BR-3 and the leadership page (FO-09) as two of its audiences, and the touchpoint matrix as the list of functions a case for IA work must speak to.</p>
+<p><strong>DD-IA3</strong> takes the forums FO-01 to FO-09 as the governance forums it extends for several languages and markets, TP-05 as the localisation row it brings to life, and DL-011 to DL-015 as the log's state at this unit's date.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.111"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="13" data-rings="1"><path d="M264 81l-32-2-23 1-10 8 17 5 16 3 64 2 32 3"/><circle class="ct-spot" cx="240" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="54" data-rings="5"><path d="M592 72l-88-6-80 1-40 2-96 12-24 0M328 101l67 11 53 13 40 4 24 2 40-1 32-4 24-5 32-11 8-2 72-2M376 79l-35 9 11 8 96 21 32 4 40 2 40-4 27-7 8-8-6-8-10-8-20-8-23-4-32-2-48-1-48 2zM432 80l-24 2-27 6 3 8 80 18 32 2 32 0 24-4 14-8-5-8-9-8-24-6-40-4zM416 88l-5 8 61 13 24 2 16-1 16-2 12-4-2-8-10-7-16-4-24-1-24 0-24 1zM448 94l-5 2 45 8 8 0 8-2 8-6-16-5-16-1-16 0z"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="35" data-rings="3"><path d="M664 55l-32 5-15 4-17 7-8 1M720 106l40-3 80-14 16 2M816 65l-96-10-32-1-24 1M680 64l-16 2-15 6 6 8 0 8 9 5 14 3 34 2 32-2 39-8 14-8-17-8-36-6-32-3zM696 71l-6 1-4 8 2 3 6 5 2 0 16 1 24-1 25-8-29-8-20-1z"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="39" data-rings="3"><path d="M856 91l24 9 32 7 32 2 40-1 24-3 24-5 24-10 17-10-1-8-16-7-24-5-64-5-40-1-48 3-48 7-16 1M904 64l-16 3-14 5 20 16 10 6 8 3 16 2 32 2 32-3 24-6 10-4 14-8-5-8-35-7-48-3-24 0zM912 72l1 8 9 8 22 4 24 0 16-1 11-3 16-8-14-8-21-2-32-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia10-6" data-step="6"><span>Previous · 7 of 9</span><b>B · Three one-page IA briefs</b></a><a class="snext" href="#read-ux-ia10-8" data-step="8"><span>Next · 9 of 9</span><b>Perqo facts set by this unit</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-ux-ia10-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class="bt">Perqo facts set by this unit</span></span></h2>
+<p>Every fact below is a course convention (Perqo, fictional), never evidence about the world. Each keeps every registered fact; none renames an IA1 to IA9 label, object, attribute or relationship.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Set in</th>
+<th>Left free</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Twelve functions touch the IA: product management, engineering, content team, marketing, localisation, sales, customer success, support, clients, legal, security, leadership</td>
+<td>section 1.1; A.1</td>
+<td>named people</td>
+</tr>
+<tr>
+<td>Perqo's setup staff (IA8, section 3.2) are the customer success team, which sets up the client and account owner at CL-3 and supports the account owner through CL-4 and CL-5</td>
+<td>section 2.5</td>
+<td>the team's size</td>
+</tr>
+<tr>
+<td>Localisation has no forum until a second language is added</td>
+<td>section 2.3; TP-05</td>
+<td>its forum (DD-IA3)</td>
+</tr>
+<tr>
+<td>Rows TP-01 to TP-12 with question, artefact, fidelity, format, meeting, owner and cadence</td>
+<td>Deliverable A, A.1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Forums and documents FO-01 to FO-09; FO-01, FO-02, FO-03 and FO-06 hold IA9's reviews; FO-07 takes admin users from at least two clients</td>
+<td>Deliverable A, A.2</td>
+<td>the meetings' length</td>
+</tr>
+<tr>
+<td>Who is told when each join J-01 to J-14 changes, and through which forum</td>
+<td>Deliverable A, A.3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>The demo path: S-1, AD-3.1, AD-2.2, AD-1.3, A-0.1, A-1, A-3.1, AD-4, A-3.4, AD-5.3</td>
+<td>section 2.4; BR-3</td>
+<td>the demo's data</td>
+</tr>
+<tr>
+<td>A configuration workbook per client; training paths by role from the H-1 articles (HR: H-1.2.1, H-1.2.2, H-1.2.3, H-1.2.5, H-1.3.1; finance: H-1.1.1, H-1.1.2)</td>
+<td>section 2.5</td>
+<td>the workbook's layout</td>
+</tr>
+<tr>
+<td>Open fault: no Help centre article covers the account owner's tasks</td>
+<td>section 2.5</td>
+<td>the article (support)</td>
+</tr>
+<tr>
+<td>The where-things-go-wrong table for support</td>
+<td>section 2.6</td>
+<td>none</td>
+</tr>
+<tr>
+<td>The data view for legal: IA7's attributes with data category and the roles that see each</td>
+<td>section 2.8</td>
+<td>the categories' names</td>
+</tr>
+<tr>
+<td>Event naming, proposed for engineering to confirm: a resource takes the model name, an event the model name and the state entered</td>
+<td>section 2.2; BR-2</td>
+<td>the strings</td>
+</tr>
+<tr>
+<td>The one-page map for leadership: the whole interaction map, G-5 to G-7, the IA debt count, the quarter's decisions</td>
+<td>section 2.9</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Briefs BR-1 to BR-3, re-issued when their source changes</td>
+<td>Deliverable B</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Decision log entries DL-011 to DL-015, proposed</td>
+<td>Deliverable A, A.4</td>
+<td>their decisions</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.556"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="30" data-rings="5"><path d="M432 48l-56 4-48 8-14 4-14 8 2 8 16 8 33 8 111 16 58 13 40 7 40 3 56 3 48 0 48-3 40-5 32-8 22-10 7-8 1-8-4-8-8-8-10-6-24-8-40-8-64-7-104-5-96-1zM496 56l-56 3-39 5-27 8-5 8 14 8 33 7 62 9 66 13 32 5 40 4 40 1 40-1 32-3 24-4 27-7 14-8 3-8-3-8-9-8-8-3-12-5-12-3-32-6-40-4-48-2-80-2zM504 64l-40 3-29 5-14 8 11 8 40 8 48 7 56 11 32 3 32 1 56-3 23-3 17-5 8-3 7-8-2-8-10-8-27-8-16-2-40-4-48-2-56-1zM512 72l-24 3-16 5 6 8 106 19 40 2 40-1 28-4 17-8-1-8-13-8-31-6-32-3-48-1-40 0zM544 80l-8 5-3 3 27 4 24 5 16 2 24 0 29-3 6-8-27-8-48-2z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-ux-ia10-7" data-step="7"><span>Previous · 8 of 9</span><b>What later units take</b></a><a class="snext send" href="#read-ux-ia10-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-ux-ia10-sources"><summary><span class="at" id="read-ux-ia10-9">Sources</span><span class="an">10</span></summary><div class="accb">
+<ul>
+<li>Berkun, Scott. "Book review: Designing Together". scottberkun.com, 27 June 2013 (reproduces his foreword; practice). <a target="_blank" rel="noopener" href="https://scottberkun.com/2013/book-review-designing-together/">scottberkun.com, review</a></li>
+<li>Brown, Dan M. <em>Communicating Design: Developing Web Site Documentation for Design and Planning</em>. 2nd ed. New Riders, 2011 (published September 2010). Preface; ch. 2 contents; ch. 8, "Deliverable Basics"; ch. 9, "Design Briefs" (practice). <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/communicating-design-developing/9780131385399/pr02.html">oreilly.com, preface</a>; <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/communicating-design-developing/9780131385399/bk01-toc.html">oreilly.com, contents</a>; <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/communicating-design-developing/9780131385399/ch08.html">oreilly.com, ch. 8</a>; <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/communicating-design-developing/9780131385399/ch09.html">oreilly.com, ch. 9</a></li>
+<li>Brown, Dan M. <em>Designing Together: The Collaboration and Conflict Management Handbook for Creative Professionals</em>. New Riders, June 2013. Contents and publisher's description; Part II opening; ch. 7 opening (practice). <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/designing-together-the/9780133390957/">oreilly.com, Designing Together</a>; <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/designing-together-the/9780133390957/part02.html">oreilly.com, Part II</a>; <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/designing-together-the/9780133390957/ch07.html">oreilly.com, ch. 7</a></li>
+<li>Colyer, Adrian. "How do committees invent?" the morning paper, 13 December 2019 (summary of Conway 1968, quoted for Conway's thesis). <a target="_blank" rel="noopener" href="https://blog.acolyer.org/2019/12/13/how-do-committees-invent/">blog.acolyer.org, Conway</a></li>
+<li>Conway, Melvin E. "How Do Committees Invent?" <em>Datamation</em>, 1968 (not read; quoted through Colyer 2019).</li>
+<li>European Union. Regulation (EU) 2016/679 (General Data Protection Regulation), Article 9, as adopted (legal text). <a target="_blank" rel="noopener" href="https://www.legislation.gov.uk/eur/2016/679/article/9/adopted">legislation.gov.uk, GDPR art. 9</a></li>
+<li>McCloskey, Marieke. "Intranet Information Architecture (IA) Trends". Nielsen Norman Group, 23 February 2014. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/intranet-information-architecture-ia/">nngroup.com, intranet IA trends</a></li>
+<li>Rosala, Maria. "Stakeholder Analysis for UX Projects". Nielsen Norman Group, 18 April 2021. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/stakeholder-analysis/">nngroup.com, stakeholder analysis</a></li>
+<li>Spencer, Donna. "Why are intranets structured like the organisational chart?" Step Two, 3 April 2005 (practice). <a target="_blank" rel="noopener" href="https://www.steptwo.com.au/papers/cmb_orgchart/">steptwo.com.au, org chart</a></li>
+<li>Cited through the filed units, for claims made there: Chisnell, "Call centers as a source of data", 2016 (IA9; practice); Design Council, "Framework for Innovation", checked 9 November 2026 (IA9); Evans, <em>Domain-Driven Design Reference</em>, 2015 (IA7); Garrett, <em>The Elements of User Experience</em>, 2nd ed., 2011, ch. 2 (IA9); Google Search Central, "URL Structure Best Practices" and "Redirects and Google Search", 2026 (IA5; vendor documentation); Tankala, "Information Architecture vs. Sitemaps", NN/g, 2023 (IA1). Full references in IA1, IA5, IA7 and IA9, Sources.</li>
+</ul>
+</div></details><details class="acc note" id="read-ux-ia10-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>IA4 to IA8 built the IA of Perqo (Perqo, fictional), the flexible-benefits platform this course runs on, and IA9 put that work into a product cycle with owners, consulted and informed functions, reviews and a decision log. Every face in those units names its readers, and IA9's tables name the functions that own, are consulted on and are told of each step. None of them says what each of those functions asks of the IA, which artefact answers it, cut to which fidelity, in what format, and in which meeting or document the exchange happens. This unit does. It covers the published practice on communicating design to an audience, labelled as practice; for each function that touches the IA, its question, its artefact, its fidelity and format, and its forum; the risk of building a client's org chart into the product; the failure modes of each touchpoint and how the IA records a disagreement; and the same object map read by engineering and by sales. The deliverable is the Perqo touchpoint matrix, with its forums, and three one-page IA briefs, for product management, engineering and sales, each built from the same Perqo IA and saying only what that audience needs.</p>
+<p>Every figure uses IA2's notation (IA2, section 5.2 and the notation sheet). This unit draws three of its six tones. Tone 5, shared, carries most figures, because a touchpoint reads artefacts of every surface. Tone 1, perqo.com, carries the sales reading of the object map, which is drawn in perqo.com's words, and the owners of perqo.com's pages. Tone 6, a stop, marks a position that a decision did not take.</p>
+<p>What the filed units hand on, and where this unit uses it:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>What it hands on</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IA1, section 4</td>
+<td>every deliverable names the decision it supports and its readers; the six touchpoints and what each reads for</td>
+<td>sections 1 and 2</td>
+</tr>
+<tr>
+<td>IA2, sections 1.0 and 3; the decision table's readers column; the notation sheet's Readers field</td>
+<td>F1 to F3; the five faults; which reader each artefact serves</td>
+<td>sections 1.3 and 3; Deliverable A</td>
+</tr>
+<tr>
+<td>IA4, Deliverables A and B</td>
+<td>the object map; the benefits taxonomy and its rules R1 to R10</td>
+<td>sections 2.3 and 3</td>
+</tr>
+<tr>
+<td>IA5, section 5; "What the inventory hands on"; "What the catalogue hands on"</td>
+<td>what marketing, search, localisation, pricing and sign-in bring; the owner column as the content touchpoint</td>
+<td>section 2.3; the owners figure</td>
+</tr>
+<tr>
+<td>IA6, the task inventory, app map and wireflows</td>
+<td>the app's screens, states and entries</td>
+<td>sections 2.6 and 2.7; BR-2</td>
+</tr>
+<tr>
+<td>IA7, Deliverables A to D and section 6</td>
+<td>model names, the role-by-section matrix, the navigation model, the claim's transitions; the IA against the data model</td>
+<td>sections 2.2 and 2.8; BR-2</td>
+</tr>
+<tr>
+<td>IA8, D.3, CL-1 to CL-6, the J- table and D.5</td>
+<td>the rules in words for sales; the purchase lifecycle for sales and the client; what each touchpoint must be told when a join changes; the reading guide</td>
+<td>sections 2.4, 2.5, 2.7 and 3; A.3; BR-3</td>
+</tr>
+<tr>
+<td>IA9, Deliverables A, C and D; section 4.1</td>
+<td>when each function enters a cycle; its standing duties; the decision log's "told" field; the routing rule</td>
+<td>sections 4 and 5; Deliverable A; DL-011 to DL-015</td>
+</tr>
+<tr>
+<td>IA5 to IA9, the assumption tables</td>
+<td>which function's reading of an artefact each assumption depends on</td>
+<td>"What later units take"</td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="acc made" id="read-ux-ia10-made"><summary><span class="at">How this unit was made</span><span class="an">3 parts</span></summary><div class="accb"><h3>Provenance</h3><p>Unit IA10, written 2026-11-09 by Opus 5.5, search off.</p><h3 id="read-ux-ia10-10">Unsure list</h3>
+<ul>
+<li>Brown 2011, ch. 2: only the section headings "Challenges in Communicating Design" and "Presenting Design" were seen; nothing is drawn from their text.</li>
+<li>Brown 2011, ch. 8: the opening definition was read through a page summary that gave "facilitate" misspelled; the unit quotes only "capture decisions, and stimulate conversation".</li>
+<li>Brown 2013, chs 4 and 5: "Healthy vs. Unhealthy Conflict" and the sources of conflict are section headings only; the four virtues of chapter 8 could not be read and are not named.</li>
+<li>Brown 2013: the counts of techniques and diagnoses are from the publisher's description; the book's text behind them was not seen.</li>
+<li>Conway 1968: the quotation and the year are as Colyer gives them; the month, pages and original wording were not checked.</li>
+<li>GDPR Article 9(1): "data concerning health" is from knowledge of the text; the fetched page was summarised and confirmed health data among the categories without giving the phrase.</li>
+<li>McCloskey 2014: the quotations were read through a page summary; the 77 intranets are the report's sample, and the finding is about intranets, applied to a backoffice on this unit's reading.</li>
+<li>Rosenfeld, Morville and Arango 2015, ch. 13, has a section "Guidelines for Diagramming an Information Architecture"; its text was not seen and is not used.</li>
+<li>The owner counts (section 2.3) assume each row counted once under its first-named owner; IA5 does not say how to count shared ownership.</li>
+<li>Object: the Perqo touchpoint matrix, sections 2 and 5 and Deliverable A</li>
+</ul><h3>The brief</h3><div class="pbox"><pre>Aim: After this unit the reader can say what each function of the business asks of the IA and answer it with the right artefact at the fidelity that function can read.
+Takes: IA4 to IA8&#x27;s Perqo IA; IA2&#x27;s readers and fidelities.
+Gives: the touchpoint matrix and three one-page briefs (DD-IA3&#x27;s governance forums).
+
+Unit IA10, Touchpoints: what each part of the business needs from the IA. Cover: for each function that touches the IA, the question it actually asks of it, the artefact that answers it, the format and fidelity it can read, and the meeting or document where the exchange happens: product management (scope, roadmap, requirements, what a change touches); engineering (data model, routing, permissions, API and event naming, the shared vocabulary); content, marketing and localisation (labels, templates, search-engine structure); sales and pre-sales (demo paths, the story of the system, proposals and tenders); customer success and onboarding (the client&#x27;s configuration, training paths); support (ticket taxonomy, the map of where things go wrong); clients themselves (their vocabulary, validation, co-creation, and the risk of building their org chart into the product); legal, security and compliance (data categories, consent, audit); leadership (the one-page map); the failure modes of each touchpoint and how the IA records a disagreement; the published practice on communicating design to each audience (Brown, Communicating Design; Brown, Designing Together) labelled as practice. Figures: the touchpoint matrix; the artefact-to-audience map; one translation example (the same object map read by engineering and by sales). Deliverable: the Perqo touchpoint matrix (function, question, artefact, fidelity, format, meeting, owner, cadence) and three one-page IA briefs written in full for product management, engineering and sales, each built from the same Perqo IA (IA4 to IA8) and saying only what that audience needs.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>
