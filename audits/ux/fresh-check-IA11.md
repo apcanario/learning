@@ -767,3 +767,154 @@ These notes rest on how the renderer lays the figure out, not on the figure:
 **Figure 6: FIX.** Two caption replacements, each to be applied identically to the "caption" field of declaration.json (the figure's viz block) and to captions.md. Each Current occurs once in each.
 1. Current `Rungs this unit's construct:` → Replacement `Rungs are this unit's construct:`
 2. Current `the Perqo column tone 3, the employee. Perqo is fictional.` → Replacement `the Perqo column tone 3, the employee. Perqo examples from IA6, Deliverable A (C0); IA3, section 5.2 (C1); section 4.1 (C2); and Deliverable A, V-05 (C3, C4), V-15 (C4) and V-01 (C5). Perqo is fictional.`
+
+## Figure 1, fourth check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets of the filed build (the drawing unchanged since). Its hand-back, extracted by script from its transcript, is below; transcript checks: Read and Bash only, every path inside its folder, no web, memory, Projects, Artifact or `mcp__*` tool; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** Applied as given, verified against sections 2.4 to 2.6, plan rows V-01 and V-13 and the Sources' practice label on Krug: the caption's Krug label and the participants' sources for the two records rows, in the caption and in section 2.7's sentence. Its renderer notes recorded, not applied. Fifth check by a new agent.
+
+Running as Opus 5.5.
+
+# Fresh check of IA11, figure 1 (section 2.7, method-selection matrix)
+
+**Verdict: FIX.** Two small faults, both in where the caption says its data comes from. The drawing, every cell and every width and theme pass.
+
+Unit lines below are in /home/claude/agents/ia11-fig1-check4/unit-without-figures.md. The images I cropped to check the frames are in /home/claude/agents/ia11-fig1-check4/out/. I edited nothing else.
+
+## 1. Every label, cell and number traces to the text: PASS
+
+**Columns**
+- "Answers": l.110 "name the question first"; l.106 "Figure 1 puts the eight methods side by side".
+- "Proves" / "Does not prove": l.65 "What each form proves, and what it does not".
+- "Participants": l.106 "the participant numbers section 3's".
+- "Cheapest form": l.106 "the cheapest forms section 5's"; l.210 "Running each method cheaply and remotely".
+
+**Row labels**, from the headings at l.59–98 and the list at l.12:
+- Open sort, Closed sort, Hybrid sort: l.59 "Card sorting: open, closed and hybrid".
+- Tree test: l.72.
+- First click: l.80 "First-click testing".
+- Search logs: l.86 "Search-log analysis".
+- Analytics: l.92 "Analytics paths and funnels".
+- Usability test: l.98 "Task-based usability testing".
+
+**Open sort**
+- Answers, "how people group and name the content": l.35 "How do people group and name these things?"
+- Proves, "the groups and names a population makes": l.67 "how a group of people clusters the content and what they call the clusters".
+- Does not prove, "that a structure built on them is findable": l.67 "It does not show that a structure built from those clusters can be navigated".
+- Participants, "15 to 30": l.122 "15 to 30 participants give a similarity matrix".
+- Cheapest form, "paper cards and a spreadsheet": l.214 "Paper cards and category headers… in a spreadsheet"; l.215 "The same, with blank headers".
+
+**Closed sort**
+- Answers, "which given category people put each item in": l.68 "whether people put each item where an existing scheme puts it".
+- Proves, "agreement with an existing scheme": l.68 "It measures agreement with a scheme the team chose".
+- Does not prove, "a better scheme nobody offered": l.68 "cannot show a better scheme the team did not offer".
+- Participants, "50 in the Perqo plan; about 193 for a 7% margin": l.122 "a margin of error of around 7%… around 193 participants" and "the Perqo plan gives CS-1 50 participants".
+- Cheapest form, "a form with one choice per card": l.214 "a form with one question per card and the categories as its choices (closed)".
+
+**Hybrid sort**
+- Answers, "whether a given scheme has gaps": l.69 "Those added groups are the gaps in the scheme".
+- Proves, "the groups people add to it": l.69 "the groups people add when the given ones do not fit".
+- Does not prove, "that the added groups are findable": l.69 "they are not yet a tested part of it".
+- Participants, "as an open sort": l.122 "this unit gives it the open sort's numbers".
+- Cheapest form, "a form with a free-text 'another group' choice": l.214 "plus a free-text 'another group' choice (hybrid)".
+
+**Tree test**
+- Answers, "can people find items in this hierarchy": l.36 "Can people find things in this structure?"; l.74 "find the locations in the tree".
+- Proves, "findability of labels and grouping": l.78 "whether the labels and the grouping of a hierarchy lead people to an item"; l.74 "findability".
+- Does not prove, "visual design, content, search": l.78 "No visual design, no content on the page, no search".
+- Participants, "50 or more per tree": l.128 "Typically, 50+ participants per tree are needed".
+- Cheapest form, "index cards, moderated": l.216 "On index cards, moderated".
+
+**First click**
+- Answers, "is the first move on this screen right": l.82 "records where they tap or click first"; l.47 (M-03).
+- Proves, "where people start on a real layout": l.84 "where people start on a real layout".
+- Does not prove, "that the task is completed": l.84 "What it does not: that the task is completed".
+- Participants, "as a tree test": l.136 "the Perqo plan gives it the tree test's 50".
+- Cheapest form, "a screen image on a video call": l.217 "A screen image shown on a video call".
+
+**Search logs**
+- Answers, "what people ask for, in their words": l.90 "what people who searched asked for, in their words".
+- Proves, "demand and failed searches": l.90 "which searches failed"; l.88 "frequent queries for things the site holds… things it lacks".
+- Does not prove, "why, or what non-searchers did": l.90 "why they searched, what the people who did not search did".
+- Participants, "none: the log": l.304 (V-13) "none: the log".
+- Cheapest form, "an exported log and a spreadsheet": l.218 "An export of the queries… one row per search"; l.212 "a form and a spreadsheet".
+
+**Analytics**
+- Answers, "what people did in production": l.94 "Product analytics record what people did"; l.37 "Asked after release".
+- Proves, "frequencies, paths and drop-offs at scale": l.96 "frequencies, paths and drop-offs, measured on everyone".
+- Does not prove, "intent": l.96 "What it does not: intent".
+- Participants, "none: the records": l.96 "with no recruiting"; l.292 (V-01) "no recruiting".
+- Cheapest form, "screen views by identifier": l.219 "The screen views by identifier, per session".
+
+**Usability test**
+- Answers, "can people do real tasks on the built thing, and why not": l.102 "whether real tasks succeed on the whole system… and why they fail".
+- Proves, "problems and their causes": l.136 "which problems exist and why".
+- Does not prove, "a stable rate at five": l.102 "What it does not prove at five participants is a rate". "Stable" is a gloss, and section 3.4 supports it.
+- Participants, "5 per round, several rounds": l.136 "Nielsen's five per round"; l.100 "three rounds of five".
+- Cheapest form, "a video call and a prototype": l.220 "A video call… a prototype or the built app".
+
+**Legend**, tone 5, "shared: a method serves any surface": l.14 "Tone 5, shared, carries the methods… because a method serves any surface"; l.106.
+
+## 2. Caption: FIX
+
+What passes:
+- It says what the figure shows and names the section (2.7) and Deliverable A, as l.110 and the A.1 Method column support.
+- Every source it names is cited in the text:
+  - Nielsen 2004: l.35, 118
+  - Sauro 2012, practice: l.61
+  - dscout, vendor: l.61
+  - Tankala 2024 through IA3: l.70
+  - Laubheimer 2023 and 2024: l.74, 128
+  - Boxes and Arrows, practice: l.76
+  - Bailey 2009: l.82
+  - Rosenfeld 2011 and Farrell through IA3: l.88
+  - Cardello through IA9: l.94
+  - Nielsen 2000: l.100
+  - Krug 2014: l.100
+
+Two faults:
+- **(a) Krug has no "(practice)" label.** The caption labels Sauro and Boxes and Arrows "(practice)" and dscout "(vendor)", but not Krug 2014. The text (l.100) and Sources (l.607) both label Krug "practice".
+- **(b) "participant numbers from section 3" is not true of two rows.** The Search logs and Analytics participant cells ("none: the log", "none: the records") are not in section 3. They come from l.96 (section 2.5) and Deliverable A, V-01 and V-13. The intro sentence at l.106 makes the same claim.
+
+## 3. Kind fits the data: PASS
+
+Eight items against five dimensions is "items by sections", so matrix is the right kind. The declaration's keys (cols, rows with label/tone/cells, legend with mark/means/tone) are all in VIZ_KEYS.
+
+## 4. Notation: PASS
+
+- **Tone 5 matches IA2.** IA2 §5.2 defines tone 5 as "shared… any object or term that lives on more than one surface". The unit applies it as "a method serves any surface" and names that at l.14 and l.106. It is an extension of IA2's meaning, not a contradiction. IA2's own notation sheet also draws matrix rows in tone 5.
+- **Colour is not the only carrier.** Every row has the same tone, so colour tells no row apart, and the meaning is stated in words in the legend and the caption.
+- **Row labels are short.** The longest is "Usability test" (14 characters). At 320 px the label column leaves a full cell column visible beside it. Each label traces to a heading, as in item 1.
+
+## 5. How the reader sees it: PASS
+
+Checked at 320, 360, 390 and 430 px, tablet and desktop, dark and light. The light theme is on cream.
+- Every cell's text sits inside its box, and nothing overlaps.
+- On tablet and desktop the whole figure fits in one frame.
+- On phones, every column is shown whole in at least one frame, except two: PROVES at 390 and DOES NOT PROVE at 360. Between them, the frames on either side show each of those cells' text in full.
+- The legend is whole in frame 1 at every width. At 320 its last letter sits under the right-edge fade but is still readable.
+- The caption sits under the "scroll sideways" line at every width.
+- The opening frames are not clipped.
+- Light-theme cells (lilac on cream) and dark-theme cells (deep violet on near-black) both read clearly.
+
+These notes rest on how the renderer lays the figure out, not on the figure:
+- the sticky label column with its fade;
+- columns cut in the sampled frames because the screenshot run steps sideways by a fixed distance;
+- the legend scrolling with the cells and fading at the right edge on phones.
+
+The frames show the caption's old last sentence ("…no Perqo fact is drawn."). That is expected; the caption I checked is the one in declaration.json.
+
+## Fixes
+
+**Figure 1: FIX.**
+
+Caption, in the figure's declaration in the unit:
+- Current: `and Krug 2014; participant numbers from section 3; cheapest forms from section 5.`
+- Replacement: `and Krug 2014 (practice); participant numbers from section 3, and none for the records (section 2.5; Deliverable A, V-01 and V-13); cheapest forms from section 5.`
+
+Text, section 2.7, line 106:
+- Current: `the participant numbers section 3's and the cheapest forms section 5's`
+- Replacement: `the participant numbers section 3's (none for the records: section 2.5; Deliverable A, V-01 and V-13) and the cheapest forms section 5's`
+
+I checked that each Current string occurs exactly once: the first in declaration.json, the second in unit-without-figures.md.
