@@ -159,3 +159,172 @@ Each finding was verified before it was applied, against the unit, the filed uni
 - 15 to 24: hold (IA7, section 4.1, "almost one for one"; IA11, A.2 rows 5 to 7 and section 2.6; the unit's section 3.2 and AR-43; Deliverable B's face; IA9, section 4.4; IA10, section 4.3, which records DL-015 as a disagreement whose positions it reads as compatible, so "two of conflict" stands; IA8, section 1's gaps table; Deliverable C's face; section 5; the brief's tone rule). Applied as given.
 
 No finding was a "no change required" minor. Every Current occurred once before its replacement (checked by script).
+
+## Figure re-checks
+
+Each report is the re-checker's hand-back, verbatim, extracted by script from its transcript (the `SubagentHandback` call); each re-checker was a fresh Opus 5.5 agent (claude-opus-5-5 in its transcript) given only the unit's text with its figures taken out, the captions, the figure's declaration, IA2 and the frames sheets `verify.py --shots` saved for page `read-ux-ia12`; transcript checks: no web, memory, Projects, connector, Artifact or Agent tool; every path inside its folder.
+
+### Figure 1, check 2
+
+**IA12 figure 1 (objects), check 2: PASS. The three fixes from check 1 hold. I found three minors, two of them in the figure, and no layout faults at any width or theme.**
+
+There is a memory snapshot and the Project's instructions in my context. I did not use them as sources. The only sources were the files in `/home/claude/agents/ia12-fig1-check2`. The harness refused the report file write, so this message is the whole report.
+
+**(7) Content and notation**
+- **Kind and section:** objects, in section 3.2, "What a register row holds".
+- **Check 1's fixes are in place:**
+  - Row to review is `0..2`. It matches "is read at no more than two reviews". AR-39's Read at is "RV-06; RV-04"; every other row has one review or "none".
+  - Row to decision is `0..1`. It matches "Each row records at most one IA7 decision".
+  - The input attribute reads `input: records kept or absent`. It matches the paragraph word for word.
+- **Labels traced:** every title, attribute, action, verb and count traces to the paragraph before the figure (line 121, "A register row holds its AR- identifier; ... Its actions are -> raise the rung and -> mark not run ..."). The decision end's `1` traces to "one row per structural decision or assumption". Every owner in Deliverable B is a function or the IA designer.
+- **Tones:** tones 4 and 5 are named in the unit's intro (line 14) and in the paragraph. No tone 6 is drawn.
+- **Kind fits the data:** six things and their relationships suit the objects kind.
+- **IA2 notation:**
+  - Relationship verbs read left to right on the level line and top to bottom on the others.
+  - "records" reads right to left, so it carries the solid triangle pointing at IA7 decision.
+  - Actions are written "-> verb", and nothing is dashed.
+  - `0..1` and `0..2` are not in IA2's sheet, which lists only 1, 0..* and 1..*. They are valid UML, and the text says "in UML's notation", so this is not a fault.
+- **Caption:** it says what the figure shows and the decision it supports. It names section 3.2 and Deliverable B, the sources of each field, and "Perqo is fictional".
+
+**(8) As drawn**
+- I opened every frames sheet: 320, 360, 390, 430, tablet and desktop, in dark and light.
+- In every sheet, text stays inside its boxes, nothing overlaps, and the caption sits under the figure.
+- Desktop and tablet show the whole figure in one frame.
+- On the phone widths the figure scrolls sideways in its frame and shows the cue "scroll sideways for the whole figure". The last frame shows the test and review boxes in full.
+- Labels that fade at the frame's edge are the renderer's scroll fade, not a fault.
+- On the cream light theme, the tone 4 blue and tone 5 violet are distinct and readable.
+
+**Findings**
+
+[minor] figure 1; Current: `{"from": "row", "to": "dl", "label": "changes through", "from_card": "1..*", "to_card": "0..*"}`; Problem: the `1..*` at the register-row end says every decision log entry changes at least one register row. The text never says this, and the unit's own record contradicts it. DL-001 to DL-016 name no register rows. D.1's "Register rows (proposed)" field is dropped if DL-017 is declined. Fix: `{"from": "row", "to": "dl", "label": "changes through", "from_card": "0..*", "to_card": "0..*"}`. The paragraph's list "1, 0..1, 0..2, 0..* and 1..*" still holds after the change, because the test line keeps 1..*.
+
+[minor] figure 1; Current: `"AD-, O-, R-, T- identifiers"` (declaration) and `its AD-, O-, R-, T- identifiers` (paragraph, line 121); Problem: no "T-" identifier appears anywhere in the unit. The register cites IA7's transitions as T1, T5 and T6, for example AR-15: "HR's approval checks the balance again, T5". The figure's label traces only to this one line of the paragraph. Fix: declaration `"AD-, O-, R- and T identifiers"`; paragraph `its AD-, O-, R- and T identifiers`.
+
+[minor] figure 1 (the fault is in the unit's text, not the figure); Current: `"V- plan row, or IA11 method section"`; Problem: the attribute matches section 3.2's Test field ("one V- row of IA11's plan, or the IA11 method section that specifies the test"). Deliverable B does not: AR-04, AR-05, AR-09, AR-12 and AR-49 cite tests marked "none of IA11's methods", and no Admin row cites a V- row. Fix (only if 3.2's Test field is amended to match): `"V- plan row, IA11 method section, or none of IA11's methods"`.
+
+figure 1: PASS
+
+**Maintainer:** PASS. Its three minors verified and applied, since each corrects text the figure draws: the row-to-entry count `1..*` became `0..*` (no statement in the unit has every entry change a register row, and DL-001 to DL-016 name none); "AD-, O-, R-, T- identifiers" became "AD-, O-, R- and T identifiers" in the paragraph and the declaration (the only T- in the unit is inside DT-2; IA7's transitions are T1 to T6); the third in part: one Admin row does cite a plan row (AR-38 cites V-10; the note's "no Admin row cites a V- row" does not hold), but ten rows cite "none of IA11's methods", which section 3.2's Test field, the paragraph and the test box left out, so all three now name it. A correction to the text a figure draws reopens it: third check by a new agent.
+
+### Figure 5, check 2
+
+# IA12 figure 5 (decision), check 2
+
+Figure 5 passes. I found one minor issue in the caption and no errors or should-fix items. The FIX from check 1 is resolved: the added A.2 sentence now traces every yes and no branch, and the declaration matches it.
+
+I saw a memory snapshot and the Project instructions in my context and did not use them. I used only the files in /home/claude/agents/ia12-fig5-check2.
+
+## (7) Content
+- **Kind and section:** decision, in Deliverable A, A.2 "The tree". The figure marker is at line 256 of unit-without-figures.md, after the A.2 paragraph.
+- **Questions:** all five are word for word in A.2: "The questions: "Do the requirements for it hold still?"; "Has the owner of the answer given it?"; "Is the content it organises there, and trusted?"; "Can you test it with the people it is for?"; "Is there a record of use: a log, tickets, paths?"."
+- **Outcomes:** all six are word for word in A.2: "The outcomes: "Shifting requirements: fix the backbone only, log each version"; "Stakeholder shortage: write a default as a DL entry, escalate"; "Content shortage: structure from the objects and the data model; audit"; "Test it (IA11); record the rung reached"; "Read it at its RV- review; hold at C1"; "Hold at C0, labelled assumed; name the test"." The first three also match A.1's move column and A.3's headings exactly.
+- **Branch labels and wiring:** traced to the sentence added after check 1: "Each question has two answers, yes and no: a no to any of the first three ends at that shortage's move and a yes goes on to the next question; at the fourth, yes ends at the test and no goes on to the fifth, where yes ends at the review and no at C0." The declaration matches it branch by branch:
+  - question 1, no: Shifting requirements
+  - question 2, no: Stakeholder shortage
+  - question 3, no: Content shortage
+  - question 4, yes: Test it
+  - question 5, yes: Read it
+  - question 5, no: Hold at C0
+- **Identifiers:** IA11, RV-, DL, C0 and C1 all appear in the unit's text:
+  - C0 and C1: sections 2 and 3.3
+  - RV-: the "Read at" field in 3.2
+  - DL: 4.4, step 3
+- **Tones:** every box is tone 5. The unit says: "Every box is tone 5, shared, because the tree serves any surface." Tone 6 is not drawn and is not needed, because no outcome is a path that fails.
+- **Caption:** it says what the figure shows and names the section (Deliverable A, A.2) and its sources. The one mismatch is in the findings below.
+- **Kind fits the data:** a rule with branches is a decision.
+- **IA2 notation:** the figure follows it.
+  - Question boxes are outlined and outcomes are filled.
+  - Branch labels are "yes" and "no", with yes always on the left.
+  - Labels are in sentence case, nothing is dashed, and "assumed" appears as a word.
+  - IA2 lets a question box be "a decision a named person makes". Deliverable A's face names that person, the IA designer.
+
+## (8) As drawn
+I opened every frames sheet: desktop, tablet, and phones at 320, 360, 390 and 430, in dark and light. I judged light on cream.
+- **Desktop and tablet:** the whole figure fits in one frame. All text is inside its boxes, nothing overlaps, and the caption is under the figure. On cream, the filled violet outcomes with white text and the pale lilac questions with dark text both read clearly.
+- **Phones:**
+  - The drawing is wider than the column. It scrolls 442, 402, 372 and 332 px at 320, 360, 390 and 430.
+  - It scrolls inside its frame, with the cue line "scroll sideways for the whole figure" above the caption.
+  - Every box comes into view across the frames: "Test it" in the first frame, the root and "Shifting requirements" in the last.
+  - No text sits outside a box, nothing overlaps and nothing is out of reach.
+- **Phone opening frame:** at every phone width the opening frame shows the lower left of the tree, not the root, which sits at the right. This comes from where the renderer opens the frame and from the decision kind putting yes on the left. It is not a fault of the figure.
+- **"Read it at its RV- review":** this box wraps after "RV-" at every width. It still reads as the text is written.
+
+## Findings
+[minor] figure 5; Current: `Shortages and symptoms from section 1;`; Problem: the caption says symptoms are a data source, but no symptom is drawn in the figure (the symptoms are in A.1's table, not in the tree); Fix: `Shortages from section 1;`
+
+figure 5: PASS
+
+The report is also saved at /home/claude/agents/ia12-fig5-check2/out/report.md.
+
+**Maintainer:** PASS; its loop ends. Its one minor (the caption's "Shortages and symptoms from section 1") would change the declaration once more, and every word it touches is traced (section 1 holds the shortages and their symptoms, from which the tree's questions are drawn); recorded, not applied. Its notes on the phone's opening frame (the tree's lower left, the root at the right) and on the wrap after "RV-" rest on the renderer; recorded, not applied.
+
+### Figure 6, check 2
+
+## IA12 figure 6 (scatter), check 2: FIX
+
+Figure 6 needs one caption fix. One section number in its caption is not in the unit (error), and the caption names the wrong subsection (minor). Every point matches the C.1 table, including the change that moved Legal's power to 6, and the figure renders cleanly at every width in both themes.
+
+I saw a memory snapshot and the Project's instructions in my context and did not use them. Writing out/report.md was refused by the harness ("Subagents should return findings as text"), so this reply is the only copy of the report.
+
+### (7) Content
+
+**Kind and section.** Scatter, in Deliverable C, C.2 "The map" (unit lines 385–389). Its data comes from the C.1 table (lines 368–381).
+
+**Points.** All twelve points match C.1 (power is y, interest is x):
+
+| Point | x, y | C.1 row |
+|---|---|---|
+| Product management | 7, 9 | `\| TP-01 \| Product management \| 9 \| 7 \| Manage closely \|` |
+| Engineering | 9, 7 | `\| TP-02 \| Engineering \| 7 \| 9 \| Manage closely \|` |
+| Content team | 8, 7 | `\| TP-03 \| Content team \| 7 \| 8 \| Manage closely \|` |
+| Marketing | 6, 2 | `\| TP-04 \| Marketing \| 2 \| 6 \| Keep informed \|` |
+| Localisation | 1, 1 | `\| TP-05 \| Localisation \| 1 \| 1 \| Monitor \|` |
+| Sales | 7, 3 | `\| TP-06 \| Sales \| 3 \| 7 \| Keep informed \|` |
+| Customer success | 8, 4 | `\| TP-07 \| Customer success \| 4 \| 8 \| Keep informed \|` |
+| Support | 9, 6 | `\| TP-08 \| Support \| 6 \| 9 \| Manage closely \|` |
+| Clients | 4, 8 | `\| TP-09 \| Clients \| 8 \| 4 \| Keep satisfied \|` |
+| Legal | 6, 6 | `\| TP-10 \| Legal \| 6 \| 6 \| Manage closely \|` |
+| Security | 7, 6 | `\| TP-11 \| Security \| 6 \| 7 \| Manage closely \|` |
+| Leadership | 2, 10 | `\| TP-12 \| Leadership \| 10 \| 2 \| Keep satisfied \|` |
+
+- **Legal (the changed value):** power 6 is above 5, so Legal stays in Manage closely, as the table says.
+- **Quadrant counts** match line 383: `Six functions are managed closely, two kept satisfied, three kept informed and one monitored.`
+
+**Axes, ticks and quadrants**
+- They trace to line 387: `"Interest in the IA's detail" (across) and "Power over the IA" (up), on 0 to 10 with ticks at 0, 5 and 10, the quadrants named as Rosala names them: Keep satisfied, Manage closely, Monitor, Keep informed`.
+- The split at 5 traces to line 366: `split at 5 on each scale`.
+- Each quadrant is drawn in the right corner: Keep satisfied top-left, Manage closely top-right, Monitor bottom-left, Keep informed bottom-right.
+
+**Tone.** Tone 5 is named at line 387: `Every point is tone 5, shared`. The figure draws no tone 6.
+
+**Kind fit.** The data is two measures, so scatter is the right kind. Line 492 lists the stakeholder map as `scatter (power by interest)`. Tone 5 is used as IA2 defines it ("shared").
+
+**Caption sources**
+- Rosala, title, NN/g and 2021 trace to lines 58 and 534.
+- IA10, section 2.9 and IA10, section 5 trace to line 158.
+- IA9, 4.1 and D.1, IA10, A.2, and IA10, A.1 trace to line 366.
+- `IA10, section 1.1` is not in the unit (first finding below).
+
+### Findings
+
+[error] figure 6; Current: `functions from IA10, section 1.1 and A.1`; Problem: the unit never cites IA10, section 1.1 (it cites only IA11's, IA2's and IA4's sections 1.1 / 4.3). Its sources table gives the twelve functions as `IA10, sections 1.3, 1.4, 2.7, 4.2 and 4.3; Deliverable A | twelve functions, TP-01 to TP-12`, and C.1 cites `(IA10, A.1)`. The section number cannot be traced. Fix, in the declaration and in captions.md: `functions from IA10, A.1`
+
+[minor] figure 6; Current: `who is asked when an answer is missing (Deliverable C, C.1)`; Problem: the figure sits in C.2 "The map"; C.1 is where its data comes from, and the caption already names C.1 in that role later on. Fix: `who is asked when an answer is missing (Deliverable C, C.2, from C.1)`
+
+Replacement caption value for the declaration, with both fixes applied:
+`"caption": "Stakeholder map: Perqo's twelve functions placed by power and interest in the IA's detail, with Rosala's four quadrants; supports the decision on how each function is engaged and who is asked when an answer is missing (Deliverable C, C.2, from C.1). Quadrants from Rosala, 'Stakeholder Analysis for UX Projects', NN/g, 2021; functions from IA10, A.1; leadership's placement from IA10, section 2.9; engineering's and sales' quadrants as IA10, section 5 reads them; every other placement set in C.1 by section 4.1's rule (power from IA9, section 4.1 and D.1, and IA10, A.2; interest from IA10, A.1). Every point tone 5, shared. Perqo is fictional."`
+
+### (8) As drawn
+
+I opened every frames sheet: 320, 360, 390, 430, tablet and desktop, each in dark and in light (judged on cream). No drawing fault.
+
+- **Fit and scrolling.** Desktop and tablet fit in one frame. On phones the figure scrolls in its frame, with the cue line `scroll sideways for the whole figure`: 5 frames at 320 px, 4 at 360, 4 at 390, 3 at 430.
+- **Labels.** Every label can be read whole in at least one frame. Labels cut at the frame edge in the middle frames come from the screenshot run's fixed scroll steps, which is renderer behaviour, not a fault of the figure.
+- **Legal at 6,6** sits clearly above the dashed 5 line, with no overlap with Security or the quadrant line.
+- **Leadership's dot** sits on the top border at power 10. Its label sits below and to the right and reads clearly.
+- **Overlap and caption.** Nothing overlaps, and the caption is under the figure in every frame.
+- **Light theme.** Dots, labels and quadrant names all read on cream.
+
+figure 6: FIX
+
+**Maintainer:** Applied as given, verified against the unit: "IA10, section 1.1" occurs nowhere else in the unit, which takes the twelve functions from IA10, A.1 (C.1); the caption now reads "functions from IA10, A.1" and names C.2 as the figure's place, C.1 as its data's. A caption is part of the declaration, so the figure is checked a third time by a new agent.

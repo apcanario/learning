@@ -111,21 +111,21 @@ The register is one table, one row per structural decision or assumption, with t
 | Source | the unit, section and deliverable that took it, with identifiers | IA9, section 2.3 (citing by identifier) |
 | Evidence, and its kind | what supports it now, each item labelled: assumed, reasoning, a filed decision, guidance, a standard, practice, or proxy (named) | IA3, section 5.2 (labelled as proxy); IA11, section 1.1 |
 | Rung | C0 to C5, cited by identifier | IA11, section 6.4 |
-| Test | one V- row of IA11's plan, or the IA11 method section that specifies the test, with the forum where it runs | IA11, Deliverable A, A.1 and A.2 |
+| Test | one V- row of IA11's plan, or the IA11 method section that specifies the test, or "none of IA11's methods" with the method named (an interview, a legal reading), with the forum where it runs | IA11, Deliverable A, A.1 and A.2 |
 | Owner | the function that gets the test run, from IA9's owners and IA10's functions | IA9, Deliverables A and C; IA10, A.1 |
 | Read at | the RV- review that reads it, when its test is a log, a ticket tag or a path | IA9, Deliverable C; "What later units take" |
 | Input | "records kept" where the product's own records serve (IA9, section 6.3), or absent with the TP- row and FO- forum named | IA10, "What later units take" |
 | Fix | backbone (expensive to change once built) or open | section 5 |
 | Status | not run, or the verdict with the plan row and date | IA11, sections 6.1 and 7 |
 
-The register's structure as an object map, in IA2's notation. A **register row** holds its AR- identifier; the decision or assumption; the evidence, its kind labelled; the rung: C0 to C5; the input: records kept or absent; the fix: backbone or open; and the status: not run, or the verdict. Its actions are -> raise the rung and -> mark not run. Each row records at most one **IA7 decision** (its section or deliverable, and its AD-, O-, R-, T- identifiers), and the rows from other units' tables and the open questions record none; is settled by at least one **test** (a V- plan row, or IA11 method section; the forum where it runs; the rung it reaches); is owned by one **owner** (a function (IA10, TP-) or the IA designer (IA9)); is read at no more than two reviews, each a **review** (RV-04, RV-05 or RV-06, with its cadence and owner (IA9)); and changes through **decision log entries** (DL- identifier, status, positions (DL-011, proposed), register rows (DL-017, proposed)). Counts at the line ends are 1, 0..1, 0..2, 0..* and 1..* in UML's notation. IA7's decision is tone 4, Perqo Admin; the rest are tone 5, shared.
+The register's structure as an object map, in IA2's notation. A **register row** holds its AR- identifier; the decision or assumption; the evidence, its kind labelled; the rung: C0 to C5; the input: records kept or absent; the fix: backbone or open; and the status: not run, or the verdict. Its actions are -> raise the rung and -> mark not run. Each row records at most one **IA7 decision** (its section or deliverable, and its AD-, O-, R- and T identifiers), and the rows from other units' tables and the open questions record none; is settled by at least one **test** (a V- plan row, an IA11 method section, or none of IA11's methods, with the method named; the forum where it runs; the rung it reaches); is owned by one **owner** (a function (IA10, TP-) or the IA designer (IA9)); is read at no more than two reviews, each a **review** (RV-04, RV-05 or RV-06, with its cadence and owner (IA9)); and changes through **decision log entries** (DL- identifier, status, positions (DL-011, proposed), register rows (DL-017, proposed)). Counts at the line ends are 1, 0..1, 0..2, 0..* and 1..* in UML's notation. IA7's decision is tone 4, Perqo Admin; the rest are tone 5, shared.
 
 ```viz
 {"kind": "objects", "caption": "Object map: the structure of the assumption register, one row per structural decision with its evidence, rung, test, owner, review and decision log entries; supports the decision on what a register row must hold before a structure ships on assumption (section 3.2; Deliverable B). Fields set in section 3.2: hypotheses one per row after Bland and Osterwalder, Testing Business Ideas, 2019, section 2.1; rungs from IA11, section 6.4; tests from IA11, Deliverable A, A.1 and A.2; reviews from IA9, Deliverable C; functions from IA10, A.1; decision log from IA9, D.3, with positions (DL-011) and register rows (DL-017) proposed. Tone 4 Perqo Admin; tone 5 shared. Counts in UML multiplicity notation. Perqo is fictional.",
  "objects": [
-  {"id": "decision", "title": "IA7 decision", "tone": 4, "attrs": ["section or deliverable", "AD-, O-, R-, T- identifiers"]},
+  {"id": "decision", "title": "IA7 decision", "tone": 4, "attrs": ["section or deliverable", "AD-, O-, R- and T identifiers"]},
   {"id": "row", "title": "register row", "tone": 5, "attrs": ["AR- identifier", "decision or assumption", "evidence, its kind labelled", "rung: C0 to C5", "input: records kept or absent", "fix: backbone or open", "status: not run, or the verdict"], "actions": ["-> raise the rung", "-> mark not run"]},
-  {"id": "test", "title": "test", "tone": 5, "attrs": ["V- plan row, or IA11 method section", "forum where it runs", "rung it reaches"]},
+  {"id": "test", "title": "test", "tone": 5, "attrs": ["V- plan row, IA11 method section, or none of IA11's methods", "forum where it runs", "rung it reaches"]},
   {"id": "owner", "title": "owner", "tone": 5, "attrs": ["a function (IA10, TP-) or the IA designer (IA9)"]},
   {"id": "dl", "title": "decision log entry", "tone": 5, "attrs": ["DL- identifier", "status", "positions (DL-011, proposed)", "register rows (DL-017, proposed)"]},
   {"id": "review", "title": "review", "tone": 5, "attrs": ["RV-04, RV-05 or RV-06", "cadence and owner (IA9)"]}],
@@ -134,7 +134,7 @@ The register's structure as an object map, in IA2's notation. A **register row**
   {"from": "row", "to": "decision", "label": "records", "from_card": "1", "to_card": "0..1", "dir": "to"},
   {"from": "row", "to": "test", "label": "is settled by", "from_card": "0..*", "to_card": "1..*"},
   {"from": "row", "to": "owner", "label": "is owned by", "from_card": "0..*", "to_card": "1"},
-  {"from": "row", "to": "dl", "label": "changes through", "from_card": "1..*", "to_card": "0..*"},
+  {"from": "row", "to": "dl", "label": "changes through", "from_card": "0..*", "to_card": "0..*"},
   {"from": "row", "to": "review", "label": "is read at", "from_card": "0..*", "to_card": "0..2"}]}
 ```
 
@@ -447,7 +447,7 @@ The IA designer owns the remaining 14 rows of the register; it is IA9's owner of
 The figure places the twelve functions by "Interest in the IA's detail" (across) and "Power over the IA" (up), on 0 to 10 with ticks at 0, 5 and 10, the quadrants named as Rosala names them: Keep satisfied, Manage closely, Monitor, Keep informed. Every point is tone 5, shared, because each function reads artefacts of every surface (IA10).
 
 ```viz
-{"kind": "scatter", "caption": "Stakeholder map: Perqo's twelve functions placed by power and interest in the IA's detail, with Rosala's four quadrants; supports the decision on how each function is engaged and who is asked when an answer is missing (Deliverable C, C.1). Quadrants from Rosala, 'Stakeholder Analysis for UX Projects', NN/g, 2021; functions from IA10, section 1.1 and A.1; leadership's placement from IA10, section 2.9; engineering's and sales' quadrants as IA10, section 5 reads them; every other placement set in C.1 by section 4.1's rule (power from IA9, section 4.1 and D.1, and IA10, A.2; interest from IA10, A.1). Every point tone 5, shared. Perqo is fictional.", "height": 380,
+{"kind": "scatter", "caption": "Stakeholder map: Perqo's twelve functions placed by power and interest in the IA's detail, with Rosala's four quadrants; supports the decision on how each function is engaged and who is asked when an answer is missing (Deliverable C, C.2, from C.1). Quadrants from Rosala, 'Stakeholder Analysis for UX Projects', NN/g, 2021; functions from IA10, A.1; leadership's placement from IA10, section 2.9; engineering's and sales' quadrants as IA10, section 5 reads them; every other placement set in C.1 by section 4.1's rule (power from IA9, section 4.1 and D.1, and IA10, A.2; interest from IA10, A.1). Every point tone 5, shared. Perqo is fictional.", "height": 380,
  "x": {"label": "Interest in the IA's detail", "min": 0, "max": 10, "ticks": [0, 5, 10]},
  "y": {"label": "Power over the IA", "min": 0, "max": 10, "ticks": [0, 5, 10]},
  "quadrants": {"x": 5, "y": 5, "names": ["Keep satisfied", "Manage closely", "Monitor", "Keep informed"]},
