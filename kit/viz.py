@@ -1754,6 +1754,10 @@ def states(d):
         _fail(K, 'a state diagram needs states')
     start = d.get('start', items[0]['id'])                 # "start": null draws no start marker
     per_row = d.get('per_row', 4)
+    # U-13 (10 Nov 2026): a label between two states in a row wraps at gap - 8; a word wider than that was broken inside
+    # ("informati / on"). The gap widens to the longest word of any transition label, and is unchanged where all fit.
+    lw = max((_tw(w, T_LINK[2], T_LINK[1], T_LINK[3]) for tr in d.get('transitions', []) for w in str(tr.get('label', '')).split()), default=0)
+    gap = max(gap, math.ceil(lw) + 8)
     Wd, h, body = _gridflow(K, items, d.get('transitions', []), per_row, bw, gap, gap - 8, start)
     return _svg(_r(Wd), _r(h), body, 'states', d.get('title'), d.get('caption'), wide=Wd > W)
 
