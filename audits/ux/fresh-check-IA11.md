@@ -699,3 +699,71 @@ The figure is six items (rungs) against five dimensions, which is a matrix. Its 
 - Replacement: `Figure 6 draws the ladder, rows in tone 5, shared, since the rungs serve any surface (table A.2 holds Admin's assumptions at C1), and the Perqo column in tone 3, the employee,`
 
 figure 6, FIX: replace `Figure 6 draws the ladder, rows in tone 5, shared, and the Perqo column in tone 3, the employee,` (unit text, line 268) with `Figure 6 draws the ladder, rows in tone 5, shared, since the rungs serve any surface (table A.2 holds Admin's assumptions at C1), and the Perqo column in tone 3, the employee,`
+
+## Figure 6, fourth check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets of the filed build (the drawing unchanged since). Its hand-back, extracted by script from its transcript, is below; transcript checks: Read, Glob, Grep and Bash only, every path inside its folder, no web, memory, Projects, Artifact or `mcp__*` tool; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** Applied as given, verified against IA6, Deliverable A, IA3, section 5.2, section 4.1 and plan rows V-01, V-05 and V-15: the caption's verb and the sources of the Perqo column. Its renderer notes (the label column's width, the narrow Evidence column, the fade over the legend at 320 and 360 px) recorded, not applied. Fifth check by a new agent.
+
+Running as Opus 5.5 (claude-opus-5-5).
+
+Fresh check of IA11, figure 6 (matrix, section 6.4, the confidence ladder). I used only the files in /home/claude/agents/ia11-fig6-check4. The only things I wrote are crops in out/.
+
+**1. Declaration traces to the text: PASS**
+Every row, cell and Perqo mark comes from the table in section 6.4 (unit lines 259 to 266). Some cells are shortened from the text but say nothing it does not.
+- Columns: "| Rung | Evidence | Can decide | Cannot decide | At Perqo (Perqo, fictional) |" (l.259).
+- Row labels: "IA12 and DD-IA2 cite rungs by identifier, C0 to C5" (l.257).
+- C0: "| C0 Assumed | reasoning at a desk, from the literature and the domain | a labelled default, marked "assumed" (IA2, section 5.2) | anything a person would do | IA6's task frequencies (IA6, Deliverable A) |" (l.261).
+- C1: "| C1 Signal | a log, ticket tags or paths, read once | what to test next (IA9, section 6.4) | why, or the fix | the zero results for "gym" (IA3, section 5.2) |" (l.262).
+- C2: "| C2 Observed | a small test with people: a usability round, a pilot, a moderated tree test | that a problem exists, and its cause (section 2.6) | a rate, or a pass (section 3.4) | the TT-1 pilot, 12 employees |" (l.263).
+- C3: "| C3 Measured | a planned test from the right people, its interval clear of a mark set beforehand | a label, a placement, a cross-listing | a top level on one method alone | TT-1 and CS-1 at 50 (planned) |" (l.264).
+- C4: "| C4 Converging | two methods of different kinds that agree | a change to a tab or a top level (IA9, RV-11) | how it performs in use | TT-1 with CS-1 on a cross-listing; FC-1 with ticket tags |" (l.265).
+- C5: "| C5 Confirmed in use | production records of the behaviour itself, or before and after a release | closing the DL entry as applied and confirmed | why it worked | AN-1 one quarter after release |" (l.266).
+- Both legend items: "Figure 6 draws the ladder, rows in tone 5, shared, since the rungs serve any surface, and the Perqo column in tone 3, the employee, since every example is evidence about employees" (l.268).
+- The examples also trace further into the unit: "TT-1 and CS-1 … 50 employees" (Deliverable A, l.312); V-05 "TT-1, tasks T3 to T5; CS-1 | the same 50 … C4 when both agree" (l.296); V-15 "TK-1's most-tagged A- screens … set beside FC-1's results" (l.306); V-01 "AN-1 … one quarter after release" (l.292).
+- One note, not an error: under the declaration's form, "Rung" heads the name column (Assumed…), and C0 to C5 sit in the unheaded label column.
+
+**2. Caption: FIX**
+- What is right: the caption says what the figure shows and names section 6.4. Every source it names is cited in the text:
+  - IA2, section 5.2 (l.261).
+  - IA9, section 6.4 (l.262).
+  - Rosenfeld through IA3, section 5.2 (l.37: "after Rosenfeld … IA3, section 5.2"; Sources l.616).
+  - Nielsen, NN/g, 2000 (section 2.6; Sources).
+  - Section 3.4.
+  - Lewis and Sauro 2006 (section 3.4; Sources).
+  - Laubheimer, NN/g, 2024 (l.128, "50+ participants per tree"; Sources).
+  - Section 6.3.
+  - IA9, RV-11 (l.265).
+  - IA9, section 6.3 (l.52, l.94, l.219).
+  - "Rungs … this unit's construct" matches l.257.
+- Fault (a): the caption gives sources for the rungs but not for the Perqo column. That column comes from IA6, Deliverable A (C0); IA3, section 5.2 (C1); section 4.1 (C2, the pilot of 12); and Deliverable A, V-05, V-15 and V-01 (C3 to C5).
+- Fault (b), minor: "Rungs this unit's construct:" is missing its verb.
+
+**3. Kind: PASS**
+Six ordered rungs, each against the same five attributes, are items by sections, so a matrix fits. A flow would lose the four attribute columns.
+
+**4. Notation: PASS**
+- Tone 5 is IA2's "shared: … any object or term on more than one surface" (IA2 l.206, l.342). The unit names this use: "Tone 5, shared, carries the methods and the confidence ladder, because a method serves any surface" (l.14), and again at l.268.
+- Tone 3 is IA2's "the Perqo app and the employee". Line 268 names it and explains the one perqo.com case: "the search log is the Help centre's, on perqo.com: section 2.4".
+- No other tones are drawn.
+- Colour is not the only carrier: the "At Perqo" header and the legend's words carry both meanings.
+- The row labels C0 to C5 are two characters each and trace to l.257 and the table.
+
+**5. Frames, all widths, dark and light: PASS**
+I checked 320, 360, 390 and 430 px, tablet and desktop, plus the opening frames. Light was judged on cream: the lavender (tone 5) and sage (tone 3) fills read well on it.
+- Text sits inside its boxes everywhere, and nothing overlaps.
+- The caption is under the figure at every width.
+- Every column is shown whole in at least one frame: at 320, Evidence in frame 1, Can decide in frame 2, Cannot decide in frame 3, At Perqo in frame 4. 360, 390 and 430 follow the same pattern.
+- Tablet and desktop each fit in one frame.
+
+These notes rest on how the renderer lays the figure out, not on the figure:
+- The sticky label column with its fade on phones.
+- The sticky section bar clipping the opening frames.
+- The label column is about 115 px wide even though its labels are two characters.
+- The Evidence column is narrow, so C3 and C5 wrap to eight or nine lines (the column-width rule).
+- At 320 and 360 the legend item "tone 3 the employee: every Perqo example" never appears clean in a single frame: the fade dims part of it, or its last letters are at the edge. The chip and its text are each readable whole across frames 3 and 4 (at 360, frames 2 and 3).
+
+**Figure 6: FIX.** Two caption replacements, each to be applied identically to the "caption" field of declaration.json (the figure's viz block) and to captions.md. Each Current occurs once in each.
+1. Current `Rungs this unit's construct:` → Replacement `Rungs are this unit's construct:`
+2. Current `the Perqo column tone 3, the employee. Perqo is fictional.` → Replacement `the Perqo column tone 3, the employee. Perqo examples from IA6, Deliverable A (C0); IA3, section 5.2 (C1); section 4.1 (C2); and Deliverable A, V-05 (C3, C4), V-15 (C4) and V-01 (C5). Perqo is fictional.`
