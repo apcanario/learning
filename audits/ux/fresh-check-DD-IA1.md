@@ -989,3 +989,44 @@ Confirmed
 - Context: my context held a memory snapshot and Project instructions. I used neither. I read only files in my folder and wrote crops only to /home/claude/w/rc/r3-fig7/crops/.
 
 *Maintainer's note.* PASS: the loop ends. Finding 1 (delete the Object line) not applied, as for figure 6. Finding 2 rests on the theme's tones 2 and 6 and asks no change to the figure: recorded, not applied.
+
+**Round 4.** Figure 1, a fresh Opus 5.5 agent, the same inputs from a new build's frames. Transcript check: claude-opus-5-5; no web or forbidden tool; every path inside its folder.
+
+### Figure 1, re-check 4 (Opus 5.5)
+
+Figure 1 (sitemap): PASS
+
+Findings
+
+1. [minor] `{"label": "6 more links", "type": "stack", "tone": 2, "note": "Guidance and regulation to Get involved"}` (once, in declaration.json)
+Problem: IA2 §5.2 defines `stack` as "many pages of one type" and the notation sheet adds "note says what repeats". These six links are "Guidance and regulation", "Research and statistics", "Policy papers and consultations", "Transparency", "How government works" and "Get involved". Line 50 calls them "links by department and document type". The text never shows they are one page type, and the note gives a range of links rather than what repeats. The box comes close to IA2's third fault, mixed levels. Nothing it says is false, because the text states the box (line 66: `6 more links (`stack`, "Guidance and regulation to Get involved")`).
+Fix: make the note say that the box groups links rather than one page type. In declaration.json, replace `"note": "Guidance and regulation to Get involved"}` with `"note": "links not drawn one by one: Guidance and regulation to Get involved"}`. In unit-without-figures.md line 66, replace `6 more links (`stack`, "Guidance and regulation to Get involved")` with `6 more links (`stack`, "links not drawn one by one: Guidance and regulation to Get involved")`.
+
+2. [minor] `Tone 2: a product outside Perqo; tone 6: a strain found in this reading. Credit: GOV.UK, Government Digital Service.` (once, in declaration.json, in the caption)
+Problem: The caption names Perqo but does not say Perqo is fictional. IA2's caption rule asks for that "for Perqo", and the same unit's figures 7 and 8 do say it. This is borderline, because figure 1 draws no Perqo box.
+Fix: `Tone 2: a product outside Perqo (Perqo is fictional); tone 6: a strain found in this reading. Credit: GOV.UK, Government Digital Service.`
+
+Confirmed
+- Every label and note drawn occurs in unit-without-figures.md line 66 exactly as drawn: "Popular on GOV.UK; Featured", "Services and information", "16 topics", "Benefits", "Benefits and financial support pages", "7 of 8 labels open with the same four words", "Manage an existing benefit, payment or claim", "15 other topics", "Births, deaths, marriages and care to Working, jobs and pensions", "Government activity", "8 links", "Departments", "News", "6 more links", "Guidance and regulation to Get involved", "Search GOV.UK", "more than 4 million searches a month", "Topic taxonomy pages", "the taxonomy, one of three topic systems in 2021; reached from content pages' sidebar and breadcrumbs", "Step by step pages", "end to end journeys", "Content pages" and "more than half a million pages (2021)". Line 66 also states every type tag and both tone 6 boxes, and ends "Every other box is tone 2."
+- The numbers trace back to the body text:
+  - 16 topics and the 8 Government activity links are listed on line 50. 16 − 1 = 15, and 8 − 2 = 6.
+  - "Seven of the eight children of Benefits begin with the same four words" is on line 52.
+  - "more than 4 million times a month" (Fraser and Crusellas 2024) is on line 56.
+  - "more than half a million pages" (Dub 2021) is on line 54.
+  - "in 2021 there were three topic systems" is on line 64.
+  - "reached from content pages, through sidebar links and breadcrumbs" is on line 50.
+  - "presents an end to end journey" is on line 54.
+  - "Menu" and "Search GOV.UK" in the header are on line 54.
+- Caption: it says what the figure shows and the decision it supports, and names section 2. Every source it cites appears in section 2 and in Sources: gov.uk, gov.uk/browse, the content API Benefits record, Dub 2021, taxonomy principles 2019, Fraser and Crusellas 2024, and the Design System's Step by step navigation. It credits GOV.UK / GDS and gives the date observed, 10 November 2026. The tones are explained.
+- Kind: a hierarchy drawn as a sitemap fits. Topic taxonomy, step by step and content pages hang off the root. Each note says how it is actually reached, and line 66 states the structure ("holds six parts").
+- Notation: every type tag is on IA2's fixed list (home, section, index, stack). Labels are in sentence case. Only tones 2 and 6 are drawn, each with one meaning. Line 14 of the unit names tone 2 and tone 6, including tone 6 as "the strains this reading finds". The tone 6 meaning is not carried by colour alone, because each tone 6 box's note states the strain.
+- Matrix check: not applicable (the figure is a sitemap).
+- Desktop (dark and light) and tablet (dark and light): the whole figure fits in one frame. Text stays inside its boxes, nothing overlaps or is cut off, and tone 6 boxes are distinct from tone 2 in dark and in light (cream).
+- Phone 390 and 430: one frame, stacked from level 1 as declared (phone stack_from 1). The figure is whole and the text fits.
+- Phone 320 and 360: two frames each. The stacked tree is 70 px and 30 px wider than the viewport, so the reader scrolls sideways, with an edge fade and the note "scroll sideways for the whole figure". Across the two frames every box and every line of text is visible. This is renderer layout (fixed-width stacked boxes plus indent), not a figure error.
+- Unit text: I found no error in section 2, Sources or the Unsure list that touches figure 1.
+- Context: my context held a memory snapshot and Project instructions. I used neither, and read only files in /home/claude/w/rc/r4-fig1. I wrote three crop images there for inspection: crop320a.png, crop320b.png, crop390a.png, c360.png and c430.png (five files).
+
+*Maintainer's note.* PASS: the loop ends. Both minors would change the declaration once more and every word they touch is traced (the stack's note stands in section 2 as drawn; the caption draws no Perqo box): recorded, not applied.
+
+**Figures, in all.** Counting the fresh check as each figure's first check: figure 5 passed its first and, reopened by the family name in its caption, its second; figures 2, 3, 4 and 8 passed their third; figure 6 its fourth; figure 7 passed its second, was reopened by its own minor ("listing content"), and passed its fourth; figure 1 passed its fifth. Brand + AI A4's states figure, redrawn by the renderer change, passed its re-check. No figure was dropped.
