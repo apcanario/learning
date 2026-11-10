@@ -1037,3 +1037,112 @@ The rungs are items and the four columns are sections (dimensions), so matrix fi
 Nothing for memory.
 
 figure 6, PASS
+
+## Figure 1, fifth check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets of the filed build (the drawing unchanged since). Its hand-back, extracted by script from its transcript, is below; transcript checks: no web, memory, Projects, Artifact or `mcp__*` tool, every path inside its folder; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** PASS: figure 1's loop ends at its fifth check. Its notes (Participants at 320 px and Does not prove at 360 px cut in every sampled frame; the opening frame at 430 px clipped; the label column's fade) rest on the renderer and the screenshot run's fixed steps, and are recorded, not applied.
+
+Running as Opus 5.5 (claude-opus-5-5).
+
+**IA11, figure 1 (method-selection matrix, section 2.7), fresh check: PASS on all five items. No replacements needed.**
+
+I worked only in /home/claude/agents/ia11-fig1-check5. My crops and contact sheets are in /home/claude/agents/ia11-fig1-check5/out/.
+
+**1. Every declared item traces to the text: PASS**
+
+- **Figure framing:**
+  - "eight methods": §2.7, "Figure 1 puts the eight methods side by side."
+  - Columns: §2 title, "what each does and does not prove"; §1.1, "A test answers one question… the method follows from the question"; §2.7, "the participant numbers section 3's… and the cheapest forms section 5's."
+  - Legend "tone 5 / shared: a method serves any surface": §2.7, "Every row is tone 5, since a method serves any surface", and the opening paragraph, "Tone 5, shared, carries the methods… because a method serves any surface." The legend uses only declared keys (mark, means, tone), which are valid matrix keys.
+- **Open sort:**
+  - Answers: §1.1, "How do people group and name these things?… open and hybrid card sorts".
+  - Proves: §2.1, "shows how a group of people clusters the content and what they call the clusters".
+  - Does not prove: "It does not show that a structure built from those clusters can be navigated".
+  - Participants "15 to 30": §3.1, "15 to 30 participants give a similarity matrix".
+  - Cheapest form: §5, "Paper cards… Record… in a spreadsheet" (the open sort is "The same").
+- **Closed sort:**
+  - Answers: §2.1, "whether people put each item where an existing scheme puts it" and Sauro, "sort items into previously defined category names".
+  - Proves: "It measures agreement with a scheme the team chose".
+  - Does not prove: "it cannot show a better scheme the team did not offer".
+  - Participants: §3.1, "margin of error of around 7%… around 193 participants" and "the Perqo plan gives CS-1 50 participants".
+  - Cheapest form: §5, "a form with one question per card and the categories as its choices (closed)".
+- **Hybrid sort:**
+  - Answers: §2.1, "Those added groups are the gaps in the scheme".
+  - Proves: "plus the groups people add when the given ones do not fit".
+  - Does not prove: "they are not yet a tested part of it". "Findable" is the short form, since §1.1 says testing a structure asks "Can people find things in this structure?"
+  - Participants: §3.1, "this unit gives it the open sort's numbers".
+  - Cheapest form: §5, 'plus a free-text "another group" choice (hybrid)'.
+- **Tree test:**
+  - Answers and Proves: §2.2, "whether the labels and the grouping of a hierarchy lead people to an item".
+  - Does not prove: "No visual design, no content on the page, no search".
+  - Participants: §3.2, "50+ participants per tree" (Laubheimer 2024) and "Fifty participants per tree, per user group".
+  - Cheapest form: §5, "On index cards, moderated".
+- **First click:**
+  - Answers: §2.3, "records where they tap or click first" and §2.7, "first click for a screen".
+  - Proves: "where people start on a real layout".
+  - Does not prove: "that the task is completed".
+  - Participants: §3.3, "the Perqo plan gives it the tree test's 50".
+  - Cheapest form: §5, "A screen image shown on a video call".
+- **Search logs:**
+  - Answers and Proves: §2.4, "what people who searched asked for, in their words, and which searches failed".
+  - Does not prove: "why they searched, what the people who did not search did".
+  - Participants: V-13, "none: the log".
+  - Cheapest form: §5, "An export of the queries for one period". The spreadsheet comes from §5's opening line, "with a video call, a form and a spreadsheet".
+- **Analytics:**
+  - Answers: §2.5, "Product analytics record what people did" and §1.1, "Asked after release".
+  - Proves: "frequencies, paths and drop-offs, measured on everyone", "at the scale of everyone".
+  - Does not prove: "intent".
+  - Participants: §2.7, "none for the records: section 2.5; Deliverable A, V-01 and V-13"; V-01, "no recruiting".
+  - Cheapest form: §5, "The screen views by identifier, per session".
+- **Usability test:**
+  - Answers: §2.6, "whether real tasks succeed on the whole system… and why they fail".
+  - Proves: §6.4 C2, "that a problem exists, and its cause (section 2.6)".
+  - Does not prove "a stable rate at five": §2.6, "What it does not prove at five participants is a rate". "Stable" is supported by §3.4's table, where 4 of 5 gives "36.0% to 98.0%, 62 points".
+  - Participants: §2.6, "three rounds of five" and §5, "five participants a round".
+  - Cheapest form: §5, "A video call… a prototype or the built app".
+
+Two cells are short forms rather than quotations: "findable" in the hybrid row and "stable" in the usability row. Each keeps the meaning of the lines quoted, so neither is an error.
+
+**2. Caption: PASS**
+
+- It names the artefact ("Method selection") and what it shows.
+- It names the decision it supports (choice of method per assumption) and where that comes from (§2.7; Deliverable A).
+- It credits the participant numbers to §3 and the cheapest forms to §5, matching §2.7.
+- It says "Perqo is fictional", and the closed sort's 50 is labelled as the Perqo plan's (§3.1).
+- Every source it names is cited in the text: Nielsen 2004, Sauro 2012, dscout, Tankala 2024 (through IA3), Laubheimer 2023 and 2024, Boxes and Arrows, Bailey 2009, Rosenfeld 2011, Farrell 2017 (through IA3), Cardello 2013 (through IA9), Nielsen 2000 and Krug 2014.
+- Tankala (through IA3), Krug and Cardello supply no single cell. They are cited in §§2.1, 2.6 and 2.5, the sections the figure draws on, and IA2 §5.2's caption rule asks for "the sources cited there". That is not a fault.
+- The caption in captions.md matches the declaration exactly.
+
+**3. Kind: PASS.** The data is items (eight methods) set against dimensions (five columns), so it is "items by sections": a matrix.
+
+**4. Notation: PASS**
+
+- Tone 5 is IA2's "shared" (IA2 §5.2 and the notation sheet). The unit names it in its opening paragraph and in §2.7.
+- No other tone is drawn.
+- Colour is not the only carrier of meaning: the legend and the caption both say it in words. All rows share one tone, so colour does not distinguish anything here.
+- The longest row label is "Usability test", 14 characters. It leaves the cells room at 320 px, and each label is the text's own name for its method (§§2.1 to 2.6, §1.1).
+
+**5. How the reader sees it, all widths, dark and light (light judged on cream): PASS**
+
+- **Desktop and tablet:** one frame, whole figure; every cell's text inside its box; nothing overlapping; legend and then caption under the figure in both themes.
+- **Phones (320, 360, 390, 430):**
+  - The label column stays in view while the cells scroll, with the fade.
+  - The 320 legend text fades at the right edge in frame 1 but stays readable and is completed in frame 2.
+  - "scroll sideways for the whole figure" and the caption sit under the figure.
+  - No text leaves its box, and nothing overlaps.
+  - Purple cells read clearly on cream in light and on near-black in dark.
+- **Notes that depend on how the renderer lays out the figure (not faults of the figure):**
+  - Matrix label column pinned with a fade, at every phone width.
+  - At 430 the opening frame's column headers are clipped by the sticky section bar.
+  - Because the screenshot run steps sideways by a fixed distance, no sampled frame shows these columns whole: Participants at 320 (frames 3 and 4 each cut it) and Does not prove at 360 (frames 2 and 3 each cut it). A reader can scroll to each whole, and both are whole at 390 and 430.
+- The frames carry the older caption ending "no Perqo fact is drawn". The declaration's caption replaces that with "The closed sort's 50 is the Perqo plan's (section 3.1); Perqo is fictional.", which is correct, since the 50 is a Perqo fact. The drawing in the frames matches the declaration cell for cell.
+
+Nothing to add to memory from this check.
+
+figure 1, PASS
+
+## Figures, in sum
+
+Figures 2, 3 and 5 passed the fresh check. Figure 4 passed its third check (two caption phrases fixed after its second). Figures 1 and 6 passed their fifth checks: figure 1 was fixed in a cell, its row labels, its caption (four times) and section 2.7's sentence; figure 6 in two cells, its rung names moved to a column, its tone 3 meaning, its caption and section 6.4's sentence. Twelve re-checks in all, each a fresh Opus 5.5 agent.
