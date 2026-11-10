@@ -148,7 +148,7 @@ def pages():
                 code = f.name.split('-')[0]
                 out[('m' if c == 'greece' else 'rm') + code.replace('.', '')] = (c, f, code)
             elif f.parent.parent.name == 'courses':
-                code = re.match(r'(DD-[AB]\d|[A-Z]+\d+)', f.name).group(1)
+                code = re.match(r'(DD-[A-Z]+\d+|[A-Z]+\d+)', f.name).group(1)
                 out['read-' + code.lower()] = (c, f, code)
             else:                                   # generator/data/brand-ai/audience-growth-across-platforms.md
                 out['read-audience-growth'] = (c, f, 'research')
