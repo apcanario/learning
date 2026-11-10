@@ -140,3 +140,22 @@ Present in full. Follows from the evidence except findings 5 to 9. Usable alone 
 - IA1 2.4 (one transactions table with a type field; Cooper, ch. 1, p. 16); IA2 section 4 (vocabulary first; "Keep the notation; extend the legend"), 1.1 and the decision table's header; IA4 4.3 and section 5; IA5 1.3 and S-7's owner Partnerships; IA6 1.4 and B.6; IA7 6.2 (Evans) and 6.3 (permissions once; the client signs off).
 
 IA12 · verdict: fix · 3 errors, 8 should-fix, 13 minor.
+
+## Maintainer's notes (U-12 chat, 10 November 2026)
+
+Each finding was verified before it was applied, against the unit, the filed units and, for the one outside source a finding added, the maintainer's own search and fetch under the web rule:
+
+- 1 (error): holds. IA11, A.2: rows 15 to 19 and 21 to 24 go to the register and concern no Admin structure, nine rows; applied as given.
+- 2 (error): holds. The closing assumption tables are IA6's ("What IA8 and IA11 take"), IA7's, IA8's, IA9's and IA10's, five in all; IA5 holds none and IA11 none; A.2's opening sentence gathers IA7 to IA10's rows, IA5's sign-in assumption among IA7's. Applied as given.
+- 3 (error): holds. "yes" and "no" occur only in the decision figure; the sentence the fix adds traces every branch of the declaration as drawn. Applied as given; the declaration is unchanged, so the figure is re-checked on the new text.
+- 4: holds. IA11, section 7 gives C0 and C1 with no employee reachable; section 6.4 gives C5 to "production records of the behaviour itself", and IA11's own AN- reads (Deliverable D, SG-A) stand at C5. Applied as given.
+- 5: holds against IA10, A.1 (TP-06: BR-3 and the demo path, monthly; TP-07: the role matrix, DT-1 and DT-2, each new client; TP-09: word list and role matrix, each cycle touching Admin). Applied as given.
+- 6: holds against the unit's section 4.1 rule (sits in the IA review above consulted). Applied in C.1 and in the scatter; the quadrant and the 6, 2, 3 and 1 counts stand; figure 6 reopened and re-checked.
+- 7, 8: hold against Deliverable C's face and D.1. Applied as given.
+- 9: holds. IA7, section 4.3 (the wireflow's "The next waiting claim opens") and A.4 (catalogue item, "-> view *new* in Admin", HR and finance managers). Applied as the checker's first option, the sentence, so the counts 42, 49, 16 and the owners stand.
+- 10: holds; both quotations stand word for word in IA10, section 1.3. Applied as given.
+- 11: holds. Maintainer's search for the first edition's contents returned oreilly.com/library/view/just-enough-research/9780133964394/; its fetch lists chapter 4's sections "Put an MBA Out of Work", "Who are Stakeholders?", "Interviewing Stakeholders" and "What to do with Stakeholder Analysis". Applied with that page linked in the sentence; the first edition's Sources line gains "Contents" with the same link, and the Hall line of the unsure list now reads "the contents of both editions", both made stale by the fix.
+- 12 to 14: hold (AR-39 is read at RV-06 and RV-04; AR-43 to AR-49 record no IA7 decision; the register writes "records kept"). Applied as given, in the text and in figure 1's declaration; figure 1 re-checked.
+- 15 to 24: hold (IA7, section 4.1, "almost one for one"; IA11, A.2 rows 5 to 7 and section 2.6; the unit's section 3.2 and AR-43; Deliverable B's face; IA9, section 4.4; IA10, section 4.3, which records DL-015 as a disagreement whose positions it reads as compatible, so "two of conflict" stands; IA8, section 1's gaps table; Deliverable C's face; section 5; the brief's tone rule). Applied as given.
+
+No finding was a "no change required" minor. Every Current occurred once before its replacement (checked by script).
