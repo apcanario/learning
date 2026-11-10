@@ -319,7 +319,7 @@ The six reasons and section 3's numbers sort evidence into rungs, each licensing
 | C4 Converging | two methods of different kinds that agree | a change to a tab or a top level (IA9, RV-11) | how it performs in use | TT-1 with CS-1 on a cross-listing; FC-1 with ticket tags |
 | C5 Confirmed in use | production records of the behaviour itself, or before and after a release | closing the DL entry as applied and confirmed | why it worked | AN-1 one quarter after release |
 
-Figure 6 draws the ladder, rows in tone 5, shared, and the Perqo column in tone 3, the employee, since every example is evidence about employees (the search log is the Help centre's, on perqo.com: section 2.4).
+Figure 6 draws the ladder, rows in tone 5, shared, since the rungs serve any surface, and the Perqo column in tone 3, the employee, since every example is evidence about employees (the search log is the Help centre's, on perqo.com: section 2.4).
 
 ```viz
 {"kind": "matrix", "caption": "Confidence ladder: six rungs of evidence for an IA decision, from assumed to confirmed in use, with what each can and cannot decide and its Perqo example; supports the decision on whether a result is strong enough to act on (section 6.4). Rungs this unit's construct: C0 from IA2, section 5.2 ('assumed'); C1 from IA9, section 6.4, and Rosenfeld through IA3, section 5.2; C2 from Nielsen, NN/g, 2000, and section 3.4; C3 from Lewis and Sauro, Journal of Usability Studies, 2006, and Laubheimer, NN/g, 2024; C4 from section 6.3 and IA9, RV-11; C5 from IA9, section 6.3. Rows tone 5, shared; the Perqo column tone 3, the employee. Perqo is fictional.", "cols": ["Rung", "Evidence", "Can decide", "Cannot decide", "At Perqo"], "rows": [
