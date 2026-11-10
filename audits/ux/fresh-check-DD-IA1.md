@@ -513,3 +513,363 @@ Confirmed:
 - Context: a memory snapshot and project instructions were present in my context. I used neither. I read only files in /home/claude/w/rc/r1-fig8 and wrote crops only to /home/claude/w/rc/r1-fig8/crops.
 
 *Maintainer's note.* Applied: findings 1, 2 and 3 (commas inside the three cells, in the declaration and the text; the Monzo sentence; the legend's meaning for tone 6) and finding 4 as for figure 1. Finding 5 (delete the Object line) not applied: the Object line closes the unsure list by method.md section 4 and write-unit section 5 (P96). Reopened for round 2.
+
+**Round 2.** Every DD-IA1 figure was re-checked, figure 5 because the family name in its caption changed, and Brand + AI A4's states figure because the renderer change redrew it. Fresh Opus 5.5 agents, the same inputs as round 1 from a new build's frames (the A4 agent: A4 without its figures, its captions, its figure 2's declaration and frames, told what the renderer change was). Transcript checks: each claude-opus-5-5; no web or forbidden tool; every path inside its folder, and the figure 7 agent's one read under `/root/.claude/` its own saved result, by the exact path its result gave.
+
+### Figure 1, re-check 2 (Opus 5.5)
+
+Figure 1 (sitemap): FIX
+
+1. [should-fix] Current (declaration.json): `{"label": "6 more links", "type": "stack", "tone": 2}`
+   Problem: IA2, section 5.1 says a page stack is "one box tagged `stack`, with a note saying what repeats". The notation sheet says the same: "Box tagged `stack`, note says what repeats". This stack has no note. Every other stack in the figure has one. The six links are also of different kinds, so without a note the reader cannot tell what the box holds. Section 2 already names the six: "Guidance and regulation", "Research and statistics", "Policy papers and consultations", "Transparency", "How government works" and "Get involved".
+   Fix: `{"label": "6 more links", "type": "stack", "tone": 2, "note": "Guidance and regulation to Get involved"}`
+   Make the matching change in unit-without-figures.md. Current: `and 6 more links (`stack`)`. Fix: `and 6 more links (`stack`, "Guidance and regulation to Get involved")`
+
+2. [minor] Current (unit-without-figures.md): `leads to six groups`
+   Problem: two of the six root children are not groups. Search GOV.UK is a single `index` page and Content pages is a `stack` of pages. "Leads to" also suggests the home page links to all six. The text itself says topic pages are "reached from content pages' sidebar and breadcrumbs". In IA2 notation a line without a head means "contains", not "links to".
+   Fix: `holds six parts`
+
+Confirmed:
+- Each of these labels and notes occurs exactly as drawn in the text. All of them are in the line beginning "The structure, as figure 1 draws it." (section 2, line 66 of unit-without-figures.md):
+  - GOV.UK (`home`), "Popular on GOV.UK; Featured"
+  - Services and information (`section`, 16 topics); Benefits (`section`)
+  - Benefits and financial support pages (`stack`, "7 of 8 labels open with the same four words", tone 6)
+  - Manage an existing benefit, payment or claim (`section`)
+  - 15 other topics (`stack`, "Births, deaths, marriages and care to Working, jobs and pensions")
+  - Government activity (`section`, 8 links); Departments (`index`); News (`index`); 6 more links (`stack`)
+  - Search GOV.UK (`index`), "more than 4 million searches a month"
+  - Topic pages (`stack`, tone 6), "the taxonomy, one of three topic systems in 2021; reached from content pages' sidebar and breadcrumbs"
+  - Step by step pages (`stack`), "end to end journeys"
+  - Content pages (`stack`), "more than half a million pages (2021)"
+  - "Every other box is tone 2."
+- The numbers agree with the section 2 body:
+  - 16 topics: Benefits plus 15 others.
+  - 8 links: 8 listed, which is 2 drawn plus 6.
+  - 7 of 8: seven children start with "Benefits and financial support" (four words); the eighth is "Manage…".
+  - "more than 4 million times a month" (Fraser and Crusellas 2024).
+  - Three topic systems and more than half a million pages, 2021 (Dub 2021).
+  - Sidebar links and breadcrumbs (taxonomy principles, 2019).
+  - "end to end journey" (Design System).
+- Caption:
+  - It says what the figure shows and names section 2.
+  - Its sources are gov.uk, gov.uk/browse, the Benefits content API record, Dub 2021, the taxonomy principles 2019, Fraser and Crusellas 2024, and the Design System's Step by step navigation. Every one is cited in section 2 and listed in Sources. It cites nothing the unit does not.
+  - It gives the date observed (10 November 2026) and the credit (GOV.UK, Government Digital Service), and names the decision it supports.
+  - The source document is titled "GOV.UK Taxonomy principles" with a capital T; the caption's lower-case "taxonomy" is not an error.
+- Kind: a hierarchy of pages, so a sitemap fits.
+- Notation:
+  - The type tags `home`, `section`, `index` and `stack` are all from IA2's fixed list.
+  - Two tones are used: tone 2 for outside Perqo and tone 6 for a fault found in a review. Each has one meaning, and tones are set explicitly, not by position.
+  - The unit's own text names both tones (intro paragraph, line 14, and line 66), tone 6 included.
+  - Tone 6 is not the only carrier of its meaning: the notes of both tone-6 boxes state the strain.
+- Matrix check: not applicable (sitemap).
+- Frames, every width (phone 320, 360, 390, 430, tablet, desktop) in both themes:
+  - Text sits inside its boxes, nothing overlaps, and the drawing is whole.
+  - Light frames read clearly on cream. The tone 6 olive fill is told apart from the tone 2 tan in both themes, though the difference is subtle.
+- Renderer-only notes, not errors in the figure:
+  - On desktop and tablet the root's six children wrap into two rows by width.
+  - Phones (stack_from 1) draw a vertical indented list. At 320 px (70 px) and 360 px (30 px) the figure scrolls sideways; the second frame shows the right edges whole.
+  - The desktop light opening frame is clipped at the top by the sticky section bar. The frames sheet shows the whole figure.
+- Unit text: no other error found in section 2 or in the related Sources and Unsure entries.
+- I saw a memory snapshot and the attached Project's instructions in my context and used neither. I read only files in /home/claude/w/rc/r2-fig1. I made two crops there to inspect the 320 px frames and deleted them afterwards.
+
+*Maintainer's note.* FIX. Applied: finding 1 (the `stack` box gets the note "Guidance and regulation to Get involved", in the declaration and the text, as IA2, section 5.1 requires) and finding 2 ("holds six parts"). Reopened for round 3.
+
+### Figure 2, re-check 2 (Opus 5.5)
+
+Figure 2 (sitemap): PASS
+
+There is one minor finding. It does not block the pass.
+
+Findings
+
+1. [minor] The caption shortens a source title.
+   - Current (declaration.json, occurs once): `We're changing how search works;`
+   - Problem: the unit gives this source's full title as "We're changing how search works in the Monzo app" (section 3 and Sources). The caption cuts it to "We're changing how search works". The source can still be identified, but the title is not given as the unit cites it. The same shortened text is in captions.md.
+   - Fix: `We're changing how search works in the Monzo app;`
+
+What I confirmed
+
+- **Labels and notes match the text exactly.** Every one occurs in unit-without-figures.md line 88 ("The app map, as figure 2 draws it. …"):
+  - root "Monzo app", no type tag, note "tab bar not fully named in the pages read"
+  - Home (`home`, "layout set by the customer"); Save tab (`section`, "Savings Pots"); Help (`section`)
+  - Accounts (`index`, "at the top; Card button on each")
+  - Activity (`index`, "latest and upcoming payments; See all")
+  - Pots (`index`, "list or images")
+  - Savings & Investments (`section`)
+  - Profile (`section`, "top left: Settings; Edit layout")
+  - + (`section`, "open an account, create a Pot, apply for a loan")
+  - Search (`index`, "also on Help; transactions, payees")
+  - "Every box is tone 2."
+- **No extra content.** The figure draws nothing the text does not state. It has no numbers or dates.
+- **The facts behind the boxes are in section 3.** Line 72 gives accounts at the top, Activity, Pots as a list or images, Savings & Investments, the Save tab and the Card button. Line 74 gives what "+" opens. Line 76 gives the profile photo top left, the layout edit, and that the tab bar is not named. Line 78 gives search on Home and Help, transactions and payees.
+- **Caption content.** It says what the figure shows and names section 3. Every source it names is cited in section 3: the three Monzo help pages, and White, Monzo blog, 1 and 6 November 2023.
+- **Caption credit and limits.** It credits Monzo and the date observed (10 November 2026). It states the sign-in limit and the two-market join, which matches line 72 and the Unsure list.
+- **Kind.** A hierarchy of app, areas and Home's parts, so a sitemap fits.
+- **Notation.**
+  - The type tags (`home`, `section`, `index`) are all from IA2 section 5.2's fixed list.
+  - The root has no tag; line 88 explains this ("drawn without a type tag as IA6 draws the Perqo app").
+  - Every box sets tone 2 explicitly. It has one meaning, and unit line 14 names it ("the merchant side and anything outside Perqo").
+  - The figure draws no tone 6, and nothing in it needs tone 6.
+- **Matrix rules.** Not applicable; this figure is a sitemap.
+- **Frames: whole and readable at every width and theme.** Nothing overlaps, and text sits inside its boxes.
+  - Desktop and tablet: one frame each. Home's seven children are stacked in a column; Save tab and Help sit beside Home.
+  - Phone 390 and 430: one frame each, fully stacked.
+  - Phone 320 (70 px sideways scroll) and 360 (30 px): two frames each. Together they show every note in full, including "See all", "apply for a loan" and "payees". The right-edge fade and the "scroll sideways for the whole figure" line are the renderer's cue for this scroll.
+  - Renderer-only notes: the desktop opening frame has the root and Home row clipped by the sticky section bar; that is the renderer, and the frame sheet shows the whole figure. The sideways steps on 320 and 360 also come from the renderer.
+- **Light theme.** Boxes read correctly on cream.
+- **Unit text.** I found no error in section 3 or the other passages I checked.
+- **Scope.**
+  - I read only my folder. I wrote crops of the phone 320 and 360 frame sheets into it: phone320-dark-a.png, phone320-dark-b.png, phone320-light-a.png, phone320-light-b.png, phone360-dark-a.png, phone360-dark-b.png, phone360-light-a.png and phone360-light-b.png, all in /home/claude/w/rc/r2-fig2.
+  - My context held a memory snapshot and Project instructions. I used neither, and no web, memory, Project or mcp__ tool.
+
+*Maintainer's note.* PASS: the loop ends. The minor (the caption's shortened title of Monzo's search page) would change the declaration once more and every word it touches is traced: recorded, not applied.
+
+### Figure 3, re-check 2 (Opus 5.5)
+
+Figure 3 (sitemap): PASS
+
+Findings
+
+1. [minor] Current (declaration.json, caption): `(Stripe docs: Web Dashboard; Perform searches in the Dashboard)`
+   Problem: The tone-6 Transactions box and its note "address: /payments" rest on the section 4 labelling sentence. That sentence cites both Web Dashboard and "Payment status updates": "(Web Dashboard; Stripe, "Payment status updates", ... read 10 November 2026; vendor documentation)". The caption lists only Web Dashboard and Dashboard search, so it may leave out a source the drawn strain depends on. This matters only if the /payments address or "the Payments page" comes from the second page; the text does not say which page supplies which.
+   Fix: `(Stripe docs: Web Dashboard; Payment status updates; Perform searches in the Dashboard)`. The same change goes in captions.md, Figure 3.
+
+2. [minor] Current (declaration.json): `"note": "Stripe's products"`
+   Problem: In the light (e-ink cream) theme, the tone 6 boxes (olive fill and border) and the tone 2 boxes (tan fill, rust border) are only slightly different. Nothing in a tone-6 box says it marks a strain, and the caption names tone 6's meaning without saying which boxes carry it. IA2 §5.2 says "No tone is the only carrier of its meaning". For Transactions ("address: /payments") and the pair Product catalog / Products ("your products and prices" / "Stripe's products"), the notes do imply the strain, so this is borderline.
+   Fix (optional): leave it as is, or make the strain explicit in the unit text and the declaration together: `"note": "Stripe's products; strain: two meanings of product"`. Section 4's figure paragraph would then change `Products (`section`, "Stripe's products", tone 6)` to `Products (`section`, "Stripe's products; strain: two meanings of product", tone 6)`.
+
+Confirmed
+- Root "Dashboard", tone 2, no type tag: text line 110 has "Dashboard, the surface, drawn without a type tag as IA7 draws Perqo Admin (IA7, Deliverable C)".
+- Home `home`, "analytics; Your overview widgets": line 110 has "Home (`home`, "analytics; Your overview widgets")".
+- Balances `index`: line 110 has "Balances (`index`)".
+- Transactions `index`, tone 6, "address: /payments": line 110 has "Transactions (`index`, "address: /payments", tone 6)".
+- Customers `index` holding Customer details `detail`, "subscriptions, payments, payment methods, invoices, quotes": line 110 has "Customers (`index`), which holds Customer details (`detail`, "subscriptions, payments, payment methods, invoices, quotes")".
+- Product catalog `index`, tone 6, "your products and prices": line 110 has "Product catalog (`index`, "your products and prices", tone 6)".
+- Shortcuts `section`, "pinned and recently visited pages": line 110 has "Shortcuts (`section`, "pinned and recently visited pages")". The quote from the source in line 94 is "your pinned and most recently visited pages"; the note paraphrases it, unquoted, and matches line 110.
+- Products `section`, tone 6, "Stripe's products", with Connect, Payments, Billing, Reporting (`section`) and More (`stack`, "Workflows, Tax, Identity, Atlas, Issuing and others"): line 110 has "Products (`section`, "Stripe's products", tone 6), which holds Connect, Payments, Billing and Reporting (each `section`) and More (`stack`, "Workflows, Tax, Identity, Atlas, Issuing and others")". Line 94 gives the full More list.
+- Settings `section`, "Personal, Account, Product": line 110 has "Settings (`section`, "Personal, Account, Product")".
+- Search `index`, "is: filters, field filters, object IDs": line 110 has "Search (`index`, "is: filters, field filters, object IDs")".
+- Tones: line 110 has "Three boxes are tone 6 ... every other box is tone 2". The declaration matches: Transactions, Product catalog and Products are tone 6, the rest tone 2, and Products' children are set to tone 2 explicitly.
+- The figure draws no number or date beyond the text. The date in the caption, 10 November 2026, matches the unit's lines 14 and 94.
+- Caption: it says what the figure shows (sidebar, settings, search), names section 4, gives both sources (each in the unit's Sources) and the date read, says the Dashboard was not seen, and credits Stripe.
+- Kind: the sidebar is a hierarchy, so a sitemap fits.
+- Notation: every tag (home, index, detail, section, stack) is on IA2's fixed list, and a page box without a tag matches the unit's stated convention for a surface. Tone 2 and tone 6 each have one meaning, consistent with IA2 §5.2 ("Tone 2: the merchant side and anything outside Perqo"; "Tone 6: a stop, meaning a path that ends without success, or a fault found in a review"). The unit's line 14 names both, tone 6 included, as "the strains this reading finds".
+- Type choices that are this unit's reading: Shortcuts tagged `section` with no children, More tagged `stack` for the other products, Search tagged `index`. All are consistent with the text and with IA2's tag definitions; not an error.
+- Matrix check (item 5): not applicable.
+- Frames, desktop and tablet, dark and light: one frame, whole, with no overlap and all text inside its box. Search sits alone on a third row. That comes from the renderer wrapping the root's children into rows by width, not from the figure.
+- Frames, phone 320 and 360: the figure scrolls sideways (70 px at 320) and carries the hint "scroll sideways for the whole figure". Across the two frames every note sits inside its box and nothing is cut off. The clipping you see in one frame comes from the screenshot run's fixed scroll steps.
+- Frames, phone 390 and 430: one frame, whole and stacked, text inside every box, in both themes. I opened the 430 light sheet and judged it on cream; I did not open the 360 or 390 sheets or any phone opening frame.
+- Opening frames: the desktop light opening frame has its top hidden under the sticky section bar. That is the renderer's sticky bar, not a figure fault; the frames sheet shows the whole figure.
+- Unit text: no error found in section 4 or in the lines describing figure 3.
+- Context: a memory snapshot and project instructions were in my context. I used neither. I read only files in my folder; the two crops (crop320a.png, crop320b.png) were made inside it.
+
+*Maintainer's note.* PASS: the loop ends. Both minors (a third source in the caption; an optional strain note) would change the declaration once more and touch words already traced: recorded, not applied.
+
+### Figure 4, re-check 2 (Opus 5.5)
+
+Figure 4 (states): PASS
+
+I found no errors. The three minor findings below are optional.
+
+1. [minor] Current, in unit-without-figures.md: `Canceled, an end state in tone 6, "Dashboard: Cancelled; can't be undone".`
+Problem: section 4's paragraph on figure 4 names tone 6 but does not say the other six states are tone 2. The paragraphs on figures 3, 5 and 6 each say so. Tone 2 is named only in the intro (line 14) and in the caption. Check 4 is met, but less directly than for the other figures.
+Fix: `Canceled, an end state in tone 6, "Dashboard: Cancelled; can't be undone"; the other states are tone 2.`
+
+2. [minor] Current, in unit-without-figures.md: `carries every box of the five real products, because all five are outside Perqo`
+Problem: tone 2 does not carry every box of the five products. The same paragraph says tone 6 marks paths that end without success and strains, and figure 4's Canceled box (like figure 3's three strain boxes and figure 5's end state) is tone 6. This is an error in the unit's own text, not in the figure.
+Fix: `carries every box of the five real products that tone 6 does not mark, because all five are outside Perqo`
+
+3. [minor] Current, in declaration.json (the same string occurs once in the unit text, line 114): `Dashboard: Cancelled; can't be undone`
+Problem: a reader can take the whole note as the Dashboard's label. In fact "Cancelled" comes from the mapping table on Payment status updates, and "can't be undone" comes from the lifecycle page, How Payment Intents and Setup Intents work (line 104). The figure is accurate to the text, so this is about clarity only.
+Fix, optional, in both the declaration and line 114: `Dashboard: Cancelled; cancellation can't be undone`
+
+Confirmed:
+- States: all seven labels occur in unit line 114 exactly as drawn: "Requires payment method, Requires confirmation and Requires action"; "Processing"; "as Requires capture"; "Succeeded, an end state"; "Canceled, an end state in tone 6".
+- Notes: all occur in line 114 exactly as drawn: "each carry "Dashboard: Incomplete""; "Processing carries "Dashboard: Pending""; "Requires capture "Dashboard: Uncaptured or Partial capture""; ""Dashboard: Succeeded""; ""Dashboard: Cancelled; can't be undone"".
+- Transitions: all nine labels occur in line 114 exactly as drawn: "customer provides payment information; [additional action, such as 3D Secure]; [asynchronous method] actions handled; [separate capture] actions handled; capture, to Processing or to Succeeded "depending on the payment method"; payment flow complete; attempt fails, such as a decline, back to Requires payment method, ... drawn here from Processing ...; and cancel, ... drawn once, from Requires payment method".
+- Moves match the text: failure from Processing, cancel from Requires payment method, capture to both Processing and Succeeded, and no direct card path to Succeeded ("so it is not drawn").
+- Figure draws no number, date or identifier beyond those above.
+- Caption: names the artefact and its family, what it shows and the decision it supports, and section 4. Both sources it cites are in the unit's Sources list and cited in section 4. It gives the date read (10 November 2026), credits Stripe, and declares the two origins that are the unit's own reading.
+- Kind: states fits a lifecycle.
+- Notation: rounded boxes; start dot and arrow; inner ring on the two end states (Succeeded, Canceled); arrows for state changes; conditions in square brackets; nothing dashed; no type tags, as is right for a state diagram.
+- Notes in "Surface: Label" form match the vocabulary mapping that section 4 ties to IA2 section 5.2.
+- Tones: tone 2 for outside Perqo; tone 6 only on Canceled, an end without success. Each has one meaning, and both are named in the caption and the text (line 14; line 114 for tone 6).
+- Spelling: "Canceled" (state) versus "Cancelled" (Dashboard) is explained in the text and the Unsure list.
+- Check 5 (matrix) does not apply.
+- Frames at tablet and desktop, dark and light: whole figure in one frame. All text sits inside its boxes; no overlaps, nothing cut off. The tone 6 box is distinct on cream and on dark. No line crossings.
+- Frames at phone 320, 360, 390 and 430, dark and light: the figure scrolls sideways (4 frames at 320 and 360, 3 at 390 and 430) and is whole across the frames. The faded edges and part-boxes at the frame edges are the renderer's scroll cut.
+- Renderer-only, not a figure error: on phones the figure opens scrolled to 58 px; the start dot is still visible in frame 1. The screenshot run steps in fixed increments.
+- Sources used: I read only my folder (unit-without-figures.md, captions.md, declaration.json, IA2.md, frames/) and wrote crops only to /home/claude/w/rc/r2-fig4/crops.
+- Context: I saw a memory snapshot and the Project instructions in my context and used neither. I used no web, memory, Projects or mcp__ tool.
+
+*Maintainer's note.* PASS: the loop ends. Findings 1 and 2 are on the unit's text and were verified and applied (section 4 names the other states' tone 2; the introduction says tone 2 carries every box "that tone 6 does not mark"); the declaration is unchanged. Finding 3 is optional wording of a note already traced: recorded, not applied.
+
+### Figure 5, re-check 2 (Opus 5.5)
+
+Figure 5 (states): PASS
+
+Findings
+
+1. [minor] Current (declaration.json): `What is the pending status for a reservation?`
+Problem: the caption shortens the source's title. The unit cites it as `What is the "pending" status for a reservation?` in section 5 and in Sources, article 2810. The caption drops the quotation marks around "pending", so the caption and the unit name the source differently.
+Fix: `What is the \"pending\" status for a reservation?` (in the JSON string; it renders as What is the "pending" status for a reservation?)
+
+2. [minor, the unit's own text] Current (unit-without-figures.md): `One status was read in full. The article gives it two causes:`
+Problem: the sentence before this one cites only "Understanding your reservation status" (article 363), so "The article" first reads as that page. The two causes actually come from the pending article (2810), which is cited only at the end of the next sentence.
+Fix: `One status was read in full, Pending, in the help centre's article on it. That article gives it two causes:`
+
+Confirmed
+- The state label `Pre-trip statuses` occurs in section 5 as "Pre-trip statuses" (in the four headings and in "Pre-trip statuses starts, with the note…").
+- The state label `During-trip status` occurs in section 5: "During-trip status".
+- The state label `Post-trip statuses` occurs in section 5 ("then Post-trip statuses, an end state"), so drawing it as an end state is in the text.
+- The state label `Canceled, declined, or expired statuses` occurs in section 5: "ends at Canceled, declined, or expired statuses, an end state in tone 6".
+- The note `includes Pending (assumed): the host has 24 hours to accept or decline` matches section 5 word for word ("with the note "includes Pending (assumed): the host has 24 hours to accept or decline""). It is backed by "the host "has 24 hours to accept or decline the request"", and the Unsure list marks the assumption.
+- The note `Declined or Expired: payment refunded` matches section 5 word for word ("with the note "Declined or Expired: payment refunded""). It is backed by "becomes "Declined" or "Expired" and "your payment will be refunded…"".
+- The transition label `host declines, or no response within 24 hours` matches section 5 word for word ("a path labelled "host declines, or no response within 24 hours""). The pre to during and during to post moves carry no label, and none is stated.
+- Tones: tone 2 on three boxes and tone 6 on the stop match section 5 ("an end state in tone 6… The other boxes are tone 2"). The intro paragraph names both tones as IA2 defines them, tone 6 included.
+- Caption: it names the artefact and family, says what is shown and the decision ("what a two-sided purchase lifecycle must name"), and names section 5 and the two help-centre pages section 5 cites. It credits Airbnb, gives the date observed (10 November 2026) and states what was not seen. It cites nothing the unit does not cite.
+- Kind: a lifecycle drawn as states fits the data. The mixed-level choice (groups drawn as states) is declared in the unit's text as IA2's third fault, so the reader is warned.
+- Notation, checked against IA2 section 5.2 and the legend: rounded boxes, an inner ring on both end states, a start dot with an arrow, solid arrows only, no type tags (correct for states), "assumed" as a status word in a note, and box labels in the product's own words.
+- Frames, phone 320, 360, 390 and 430, tablet and desktop, dark and light (light judged on cream): text sits inside every box, nothing overlaps or is cut off, and the drawing is whole across the frames at every width. At phone widths the figure scrolls sideways with a fade at the edges and the screenshot run steps through fixed offsets; that is how the renderer lays the figure out, not a fault in the figure. Tone 6 (olive with a double ring) reads as distinct from tone 2 in both themes.
+- Matrix check (item 5): not applicable to a states figure.
+- Sources: I read only files in /home/claude/w/rc/r2-fig5. A memory snapshot and project instructions were in my context; I used neither. No web, memory, Projects, Artifact or mcp__ tool was used.
+
+*Maintainer's note.* PASS: the loop ends. Finding 1 (the caption's quotation marks) touches words already traced: recorded, not applied. Finding 2 is on the unit's text, verified (the sentence before names article 363) and applied.
+
+### Figure 6, re-check 2 (Opus 5.5)
+
+Figure 6 (objects): FIX
+
+1. [error] Current: `Shopify POS shows any number of POS and online orders (1 to 0..*)` (unit-without-figures.md, section 6, the "as figure 6 draws them" paragraph). Problem: the figure draws the line label "shows POS and online orders", and that exact string is not in the text. The other three verbs ("connects", "manages", "is available on") do occur exactly as drawn. Fix: `Shopify POS shows POS and online orders, any number of them (1 to 0..*)`
+
+2. [minor] Current: `{"from": "product", "to": "channel", "label": "is available on", "from_card": "0..*", "to_card": "0..*", "dir": "to"}` (declaration.json). Problem: at every width the product end of this line has a "0..*" stacked just under the "0..*" at the product end of the admin "manages" line. The two counts do not overlap, but a reader cannot easily tell which count belongs to which line. Both values are 0..*, so the reading does not change. This comes from how the renderer places the counts, not from the data. Fix: `{"from": "channel", "to": "product", "label": "offers", "from_card": "0..*", "to_card": "0..*"}`. This is optional. If used, the text's `the line labelled "is available on", which reads upwards, towards the channel, so it carries the triangle` must become `the line labelled "offers", which reads from top to bottom`, and the Fix has to be checked against the rendered frames again.
+
+Confirmed:
+- Box titles "Shopify POS", "Shopify admin", "sales channel", "order", "product" all occur in section 6's figure paragraph.
+- POS box: "Orders screen", "filters: sale type, sale location, delivery type" and "-> search orders" occur verbatim.
+- Admin box: "orders, products, customers", "analytics, marketing, discounts", "Sales channels and apps", "Settings" and "-> search, filtered by category" occur verbatim.
+- Channel box: "Online Store", "Point of sale", "Shop" and "social, Google, marketplaces" occur verbatim.
+- Order box: "order status: 3 values", "payment status: 9 values, plus Expiring and Unpaid", "fulfillment status: 7 values", "return status: 4 values" and "POS number #1-1005 if offline or unpaid" occur verbatim.
+- Product box: "availability per channel" occurs verbatim.
+- The status counts match the Lifecycle paragraph: order status 3 (Open, Archived, Canceled), payment status 9 plus Expiring and Unpaid, fulfillment status 7, return status 4.
+- "#1-1005" matches the Labelling paragraph.
+- All counts are drawn as the text states them: 1 to 1..* (connects); 1 to 0..* (shows; manages, twice); 0..* to 0..* (is available on).
+- The caption says what the figure shows and names section 6. Its five sources are all in the unit's own text and its Sources list. It is dated 10 November 2026, credits Shopify, and says the admin and the POS app were not seen. "Counts are this unit's reading" agrees with the Unsure list.
+- Kind: objects fits things and relationships. IA2's decision table gives the cross-surface interaction map as kind objects, in the journeys family.
+- Notation: surface and object boxes have filled title bands, shared objects have lower-case titles, actions are written "-> verb", and the counts use UML multiplicities (IA2, section 1.5). No page-type tags are used, which is correct for this kind.
+- Label direction: "connects" reads left to right on a level line. "shows POS and online orders" and both "manages" read top to bottom. "is available on" reads upwards and carries the triangle, as IA2, section 5.2 requires.
+- Tones: the figure uses tone 2 only, and IA2 defines it as "anything outside Perqo". The unit names it ("Every box is tone 2.") and so does the caption. Tone 6 is not drawn.
+- Matrix check: does not apply (this figure is objects).
+- Frames: I checked phone 320, 360, 390 and 430, tablet and desktop, in dark and light (light on cream). Text sits inside its boxes, nothing is cut off, and the drawing is whole across the scroll frames.
+  - On phones the figure scrolls sideways, and the "scroll sideways for the whole figure" hint shows. The faded right and left edges in the middle frames are the renderer's scroll fade, not clipping.
+  - The final frame (for example 442 of 442 px at 320) shows the right column whole.
+  - The tablet and desktop frames show the whole figure.
+- Unit text: I found no further error in section 6. Its citations of IA2, section 1.5 (UML) and IA2, section 1.8 (Harel's parallel components) match IA2.
+- Memory and context: I saw a memory snapshot and Project instructions in my context and used neither. I read only the files in /home/claude/w/rc/r2-fig6. I wrote crops of the frame sheets to /home/claude/w/rc/r2-fig6/crops/ and edited nothing.
+
+*Maintainer's note.* FIX. Finding 1 holds: round 1's text change no longer gave the drawn label "shows POS and online orders" word for word; the text now does ("Shopify POS shows POS and online orders, any number of them (1 to 0..*)"), the declaration unchanged. Finding 2 is optional and rests on how the renderer places counts: recorded, not applied. Reopened for round 3.
+
+### Figure 7, re-check 2 (Opus 5.5)
+
+Figure 7 (matrix): FIX
+
+1. [should-fix] Current (declaration.json, caption): `Rows tone 2: products outside Perqo; tone 6: a strain found in this reading.`
+Problem: The caption and the legend both name Perqo, and the caption's decision ("which real product to read for which Perqo surface") is about Perqo, but the caption never says Perqo is fictional. IA2 §5.2, Captions, requires a caption to say "for Perqo ... that Perqo is fictional". Figure 8's caption says it; figure 7's does not.
+Fix: `Rows tone 2: products outside Perqo; tone 6: a strain found in this reading. Perqo is fictional.`
+
+2. [should-fix] Current (declaration.json, caption): `Every cell is drawn from sections 2 to 6 and the makers' documents cited there, read on 10 November 2026.`
+Problem: The Shaping decision column is not drawn from the makers' documents. The unit's Unsure list says: "The counts on figure 6's lines, and each product's shaping decision, are this unit's reading of the makers' documents; no maker names a single shaping decision." As written, the caption credits a whole column of this unit's own reading to the makers.
+Fix: `Every cell is drawn from sections 2 to 6 and the makers' documents cited there, read on 10 November 2026; each shaping decision is this unit's reading, as no maker names one.`
+
+3. [minor] Current (declaration.json, caption): `"caption": "Comparison (structure family)`
+Problem: "Comparison" is not one of IA2's ten artefacts. IA2 §1 lists the structure family as sitemap and navigation model. The unit names this artefact "The comparison table" (Deliverable B).
+Fix: `"caption": "Comparison table (structure family)`
+
+4. [minor, rests on the theme] In the light (e-ink, cream) frames, the tone 2 fill (peach) and the tone 6 fill (khaki) are close in value and hard to tell apart. The meaning does not rest on tone alone, because the Strain column header and the legend also carry it, so WCAG 1.4.1 is met. No change to the figure is needed. If the pair is changed, the change belongs in theme.css.
+
+5. [minor, rests on the renderer] On the phone at 320 px, the pinned label column takes about 40% of the width even though the longest row label is seven characters ("Shopify"). That leaves room for about one and a half cells per frame. Every cell is still readable as the reader scrolls (4 frames at 320 px, 3 at 430 px). The legend scrolls with the table, so in some frames it is cut at the edge. Both come from the matrix renderer's layout, not from the declaration.
+
+Confirmed:
+- Every drawn string occurs in unit-without-figures.md exactly as drawn. They are all on line 174 ("The comparison, as figure 7 draws it. The rows are GOV.UK, Monzo, Stripe, Airbnb and Shopify, in tone 2; the columns are Level, Scheme, Structure, Search, Shaping decision and Strain. GOV.UK: IA5 website; topic; hierarchy and taxonomy; site search, filters; navigation from one taxonomy; three topic systems. Monzo: IA6 app; by account, then time; summary on Home; one search, Home and Help; Home set by the customer; moved features need a help page. Stripe: IA7 backoffice; by object, then product; database; global, typed filters; the API's objects are the Dashboard's; two meanings of product. Airbnb: IA8 lifecycle; place, then category; database; place box 2022, own words 2026; categories beside place; placement inferred from listing content. Shopify: IA8 surfaces; by object; one admin, many channels; admin search by category; one admin for every channel; four status sets. The Strain column is tone 6. The legend reads "tone 2: a product outside Perqo" and "tone 6: a strain found in this reading".").
+- No number or date appears in the frames that the text does not state (IA5 to IA8, 2022, 2026).
+- Each strain cell traces to a sentence in its section:
+  - GOV.UK: "in 2021 there were three topic systems" (§2)
+  - Monzo: "a page exists to tell customers where things are ... The makers wrote a page to find them again" (§3)
+  - Stripe: "the two meanings of product" (§4, line 110)
+  - Airbnb: "A listing's category is inferred from its text and photos" (§5)
+  - Shopify: "an order carries four status sets" (§6)
+- The other cells agree with Deliverable B's columns, in shorter form.
+- Row labels (GOV.UK, Monzo, Stripe, Airbnb, Shopify) are the five products named in the unit's opening and in §7, and each is at most seven characters long.
+- The caption says what the figure shows, names section 7 and Deliverable B, and cites only sections 2 to 6 and the documents cited there. A matrix comparing products is not a redrawn product structure, so it needs no product credit or observed date beyond the reading date it gives.
+- Kind: five items against six dimensions is a matrix, which fits.
+- Notation:
+  - Rows are tone 2, which matches IA2's "anything outside Perqo".
+  - Strain cells are tone 6, which matches IA2's "a fault found in a review". The unit names both tones on line 5 ("Tone 6 ... marks ... the strains this reading finds") and on line 174.
+  - No type tags apply to a matrix.
+  - Each tone has one meaning.
+- Frames, at desktop, tablet and phones 320, 360, 390 and 430 px, dark and light: text sits inside its cells, nothing overlaps, no cell text is cut off, and the drawing is whole across the scroll frames.
+- Unit text: I found no error in the passages read for this check (§7, Deliverables A and B, the Unsure list, Sources).
+- I saw a memory snapshot and project instructions in my context. I used neither. I read only files in /home/claude/w/rc/r2-fig7 and one saved tool result under /root/.claude/. I wrote three crops in the folder (crop320_f1.png, crop320_f4.png, crop320_f2_light.png) and two more (crop430_last.png, crop390_open.png) in /home/claude/w/rc/r2-fig7.
+
+*Maintainer's note.* FIX. Applied: findings 1, 2 and 3 (the caption says Perqo is fictional and that each shaping decision is this unit's reading; "Comparison table"). Findings 4 and 5 rest on the theme and the renderer: recorded, not applied. Reopened for round 3.
+
+### Figure 8, re-check 2 (Opus 5.5)
+
+Figure 8 (matrix): PASS
+
+Findings
+
+1. [minor] Current: `"D.2, CL- and EL-"` (declaration.json, once; the same words occur once in unit-without-figures.md line 178 as `D.2, CL- and EL-;`). Problem: the cell shows bare ID prefixes. The unit's own prose (line 172) gives the ranges: "the client's CL-1 to CL-6 and the employee's EL-1 to EL-6". The other three Perqo cells all give ranges (X-01 to X-13, DT-1 to DT-3, J-01 to J-14), so this cell is the odd one out. Fix: `"D.2, CL-1 to CL-6, EL-1 to EL-6"` in declaration.json. In line 178 of the unit, replace `D.2, CL- and EL-;` with `D.2, CL-1 to CL-6, EL-1 to EL-6;`. The cell will then wrap to two lines like its neighbours.
+
+2. [minor] Current: `"sidebar, 26 is: types"` (declaration.json, once). Problem: the cell matches the text, but it is hard to read. Section 4 (line 100) says "`is:` with one of 26 object types". Fix: `"sidebar, 26 is: object types"` in declaration.json. In line 178 of the unit, replace `sidebar, 26 is: types;` with `sidebar, 26 is: object types;`.
+
+3. [minor, renderer layout only] There is no Current text, because this is not a content fault. On phones the legend sits inside the sideways-scrolling figure, so it scrolls with it. In the opening frame at 320 px (both themes), the "tone 2" entry is off-screen to the right and the tone 6 text is cut at "none in t". At 430 px, tone 2 is cut at "a produ". Both are whole once scrolled (320 frames 2 and 3). Later 320 frames show stray legend fragments at the left edge ("ıap (Perqo is fictional)", "qo"), also from the scroll. This comes from how the renderer lays out a matrix legend, not from the declaration. Fix: none in this figure. If it matters, it is a renderer question: the legend could sit outside the scroll area.
+
+Confirmed
+- Columns `Surface layer`, `Lifecycle layer`, `Decision layer`, `Connections`: unit line 178, "The columns are Surface layer, Lifecycle layer, Decision layer and Connections."
+- Perqo row `Perqo map (IA8)`, `D.1, X-01 to X-13`, `D.2, CL- and EL-`, `D.3, DT-1 to DT-3`, `D.4, J-01 to J-14`: line 178, "Perqo map (IA8): D.1, X-01 to X-13; D.2, CL- and EL-; D.3, DT-1 to DT-3; D.4, J-01 to J-14." Also backed by line 172 (the IA8 layers and ID ranges).
+- GOV.UK `16 topics, taxonomy principles`, `step by step journeys`, none, none: line 178, "GOV.UK: 16 topics, taxonomy principles; step by step journeys; none in the pages read; none in the pages read." Backed by lines 54 and 172.
+- Monzo `Home's areas`, then none in the other three: line 178, "Monzo: Home's areas; none in the pages read, in the other three columns." Backed by line 172.
+- Stripe `sidebar, 26 is: types`, `PaymentIntent statuses`, none, `status mapping table`: line 178, "Stripe: sidebar, 26 is: types; PaymentIntent statuses; none in the pages read; status mapping table." Backed by line 100 (26 object types) and line 172 (status mapping as the join).
+- Airbnb `four tabs, 55 categories (2022)`, `four status groups`, `24 hours, then Expired`, none: line 178, "Airbnb: four tabs, 55 categories (2022); four status groups; 24 hours, then Expired; none in the pages read." Backed by lines 122, 130 and 172.
+- Shopify `admin, channels, POS, online orders on POS`, `four status sets`, `products available by default`, none: line 178, "Shopify: admin, channels, POS, online orders on POS; four status sets; products available by default; none in the pages read." Backed by line 172 (one cross-surface default, one crossing) and line 232 (the channel default).
+- Tones: line 178, "Each "none in the pages read" is tone 6; the other cells of the five take their row's tone 2". The declaration matches this cell by cell.
+- Legend: line 178, "tone 5: the Perqo map (Perqo is fictional)", "tone 2: a product outside Perqo" and "tone 6: a gap found in this reading: none in the pages read". All three match the declaration exactly.
+- Caption: it says what the figure shows and names section 7. It names its sources as IA8, Deliverable, D.1 to D.4 (the unit cites IA8, Deliverable, D.1 to D.5 in its table, line 26) and sections 2 to 6, read on 10 November 2026. It cites nothing the unit does not cite. It redraws no product structure, so no product credit is needed (figure 7 is the same).
+- Kind: matrix fits, with items (the Perqo map and five products) by dimensions (three layers plus connections), as IA2 section 5.2 defines it: "a row is an item, a column a dimension, and a marked cell the value where they meet".
+- Notation: tone 2 matches IA2 ("the merchant side and anything outside Perqo"). Tone 5 for the Perqo map matches "shared... the Perqo system". Tone 6 matches "a fault found in a review", which the unit applies to a gap in a published map (line 14). Each tone has one meaning in the figure. All three tones, tone 6 included, are named in the unit's text (lines 14 and 178). A matrix has no type tags.
+- Row labels: the longest is "Perqo map (IA8)" at 15 characters. At 320 px the pinned label column takes about 45% of the width and leaves a full cell visible. Each label is traced to line 178.
+- Frames: I checked desktop and tablet in both themes and phones at 320 and 430 px in both themes (opening frames and frame sheets). Text sits inside its cells, nothing overlaps, and every column is reached across the scroll frames. In light (cream), tones 2 and 6 are close but still told apart, and the words "none in the pages read" carry the meaning in any case.
+- Unit text: I found no error in the passages on this figure. Line 172 calls the layers "actor and lifecycle layer" and "decision-tree layer", while the columns say "Lifecycle layer" and "Decision layer". The shorter names are stated at line 178, so this is not an error.
+- Context: a memory snapshot and project instructions were present in my context. I used none of them, and I used only the files in /home/claude/w/rc/r2-fig8 (crops written to /home/claude/w/rc/r2-fig8/crops).
+
+*Maintainer's note.* PASS: the loop ends. Minors 1 and 2 would change the declaration once more and every word they touch is traced ("CL- and EL-" and "26 is: types" stand in the text as drawn): recorded, not applied. Minor 3 rests on the renderer: recorded.
+
+### Brand + AI A4, figure 2 (states), re-check after the renderer change (Opus 5.5)
+
+A4 figure 2 (states): PASS
+
+No word is broken inside any more. The former "harassme / nt" split is gone at every width and theme, and "harassment" sits whole on its own line under "change or". The two findings below are wording condensations. Neither is a factual error, and neither has to be fixed for the figure to pass.
+
+Findings
+
+1. [minor] Current: `"label": "platform change or harassment"` (declaration.json). Problem: the text says "a platform change or a wave of harassment can push them back" (unit-without-figures.md line 83). The label shortens this, so it is not drawn word for word from the text, though the meaning is the same and the caption gives the full wording. Fix (optional): `"label": "platform change or a wave of harassment"`. The renderer now widens the gap to fit the longest word, so the longer label will not break.
+
+2. [minor] Current: `"note": "metrics as validation"` (declaration.json). Problem: the text says "metrics as the main source of validation" (line 83), and the note drops "the main source of". Fix (optional): `"note": "metrics as main source of validation"`.
+
+Confirmed
+- "Large audience": line 83, "After a creator reaches a large audience, "audience entanglement" sets in".
+- "usually begins", on the arrow from Large audience to Dysfunctional: line 83, "It usually begins as *dysfunctional entanglement*".
+- "Dysfunctional entanglement": line 83, "*dysfunctional entanglement*: oppressive dependence on audience reactions, metrics as the main source of validation".
+- "Functional entanglement" and "balanced dependence": line 83, "Some creators reach *functional entanglement*, a balanced dependence in which they draw meaning from the audience".
+- "some creators reach", on the arrow from Dysfunctional to Functional: line 83, "Some creators reach *functional entanglement*".
+- The arrow back from Functional to Dysfunctional: line 83, "Creators cycle between the two; a platform change or a wave of harassment can push them back."
+- The figure draws no numbers. The start dot is the declared start state, audience.
+- Caption: it says what the figure shows (the cycle: begins dysfunctional, some reach functional, pushed back). It names §3, and its source (Pillemer, Harrison, Murphy and Park, ASQ 71(1), online 18 Dec 2025, as summarised in the abstract and by PsyPost, 20 Feb 2026) matches line 80 and Sources line 250.
+- Kind: states fits. The data is a lifecycle with an entry state, a forward step and a return step.
+- Desktop and tablet, dark and light: one frame holds the whole figure. Text sits inside its boxes, labels are clear of the arrows, both arrows join their states, nothing overlaps or is cut off. The light frames read correctly on cream.
+- Phones 320, 360, 390 and 430, dark and light: the figure scrolls sideways, with a "scroll sideways for the whole figure" note. Across the stacked frames every state, label and arrow appears whole at least once, and no word is broken inside. The fading or clipped box edges in the middle frames come from the horizontal-scroll viewport and its edge fade. That is how the renderer lays the figure out, not a defect in the figure.
+- No error seen in the unit's own text in §3 (lines 74–105).
+- A memory snapshot and Project instructions were in my context. I used neither, and I read nothing outside /home/claude/w/rc/r2-a4.
+
+*Maintainer's note.* PASS: the loop ends; the word is whole at every width. Both minors would change A4's declaration, which this row does not otherwise touch, and every word is traced to A4's text and caption: recorded, not applied. A4's text, figures' declarations, written date and word count are unchanged.
