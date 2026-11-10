@@ -918,3 +918,122 @@ Text, section 2.7, line 106:
 - Replacement: `the participant numbers section 3's (none for the records: section 2.5; Deliverable A, V-01 and V-13) and the cheapest forms section 5's`
 
 I checked that each Current string occurs exactly once: the first in declaration.json, the second in unit-without-figures.md.
+
+## Figure 6, fifth check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets of the filed build (the drawing unchanged since). Its hand-back, extracted by script from its transcript, is below; transcript checks: no web, memory, Projects, Artifact or `mcp__*` tool, every path inside its folder; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** PASS: figure 6's loop ends at its fifth check. Its notes (Cannot decide at 360 px cut in the sampled frames; the legend under the fade; the opening frame at 390 px clipped; the wide label column) rest on the renderer and the screenshot run's fixed steps, and are recorded, not applied.
+
+I ran as Opus 5.5 (claude-opus-5-5).
+
+# Figure 6 check: IA11, section 6.4, the confidence ladder (matrix)
+
+Sources used: everything in /home/claude/agents/ia11-fig6-check5. I wrote only image crops, to /home/claude/agents/ia11-fig6-check5/out/ (the phone frame sheets cut into pieces small enough to read).
+
+## 1. Every item in the declaration traces to the unit's text: PASS
+
+Line numbers are in unit-without-figures.md.
+
+**Column headers**
+- "Rung", "Evidence", "Can decide", "Cannot decide", "At Perqo": the header row of the table at l.259, `| Rung | Evidence | Can decide | Cannot decide | At Perqo (Perqo, fictional) |`.
+- The matrix spec's rule is that a row's cells match its columns, so "Rung" heads the rung names and the C-numbers sit in the row-label column.
+
+**Row labels C0 to C5**
+- l.257: "IA12 and DD-IA2 cite rungs by identifier, C0 to C5."
+- l.261 to l.266: each table row begins "C0 Assumed" … "C5 Confirmed in use".
+
+**Row C0 (l.261)**: `| C0 Assumed | reasoning at a desk, from the literature and the domain | a labelled default, marked "assumed" (IA2, section 5.2) | anything a person would do | IA6's task frequencies (IA6, Deliverable A) |`
+- "Assumed", "reasoning at a desk", "a labelled default", "anything a person would do" and "IA6's task frequencies" are each the text's words, the longer cells shortened.
+
+**Row C1 (l.262)**: `| C1 Signal | a log, ticket tags or paths, read once | what to test next (IA9, section 6.4) | why, or the fix | the zero results for "gym" (IA3, section 5.2) |`
+- All five cells match.
+- The figure writes 'gym' with single quotes where the text has double quotes. The words are the same.
+
+**Row C2 (l.263)**: `| C2 Observed | a small test with people: a usability round, a pilot, a moderated tree test | that a problem exists, and its cause (section 2.6) | a rate, or a pass (section 3.4) | the TT-1 pilot, 12 employees |`
+- All five cells match.
+- The number 12 is also in l.158: "with 12 employees of the example client".
+
+**Row C3 (l.264)**: `| C3 Measured | a planned test from the right people, its interval clear of a mark set beforehand | a label, a placement, a cross-listing | a top level on one method alone | TT-1 and CS-1 at 50 (planned) |`
+- Every cell matches the text exactly.
+- The number 50 is also in l.122: "the Perqo plan gives CS-1 50 participants, the tree test's sample".
+
+**Row C4 (l.265)**: `| C4 Converging | two methods of different kinds that agree | a change to a tab or a top level (IA9, RV-11) | how it performs in use | TT-1 with CS-1 on a cross-listing; FC-1 with ticket tags |`
+- All five cells match.
+
+**Row C5 (l.266)**: `| C5 Confirmed in use | production records of the behaviour itself, or before and after a release | closing the DL entry as applied and confirmed | why it worked | AN-1 one quarter after release |`
+- Every cell matches the text exactly.
+
+**Legend**
+- "shared: the rungs serve any surface" (tone 5) and "the employee: every Perqo example" (tone 3) come from l.268: "rows in tone 5, shared, since the rungs serve any surface, and the Perqo column in tone 3, the employee, since every example is evidence about employees".
+
+**Identifiers in the cells**
+- TT-1, CS-1, FC-1 and AN-1: Deliverable A, l.292 to l.306.
+- DL: l.228 and l.232.
+
+## 2. Caption: PASS
+
+**What it shows**: six rungs, what each can and cannot decide, and its Perqo example. It names the artefact (Confidence ladder) and the decision it supports, which matches l.257 ("each licensing a kind of decision and no more"). It names the section (6.4) and says Perqo is fictional.
+
+**Each source the caption names, traced:**
+- **C0, IA2 section 5.2 ('assumed')**: the l.261 cell cites it. IA2.md §5.2 also says: "Status words go in a note: "assumed" for a fact not yet evidenced".
+- **C1, IA9 section 6.4**: cited in the l.262 cell.
+- **C1, Rosenfeld through IA3 section 5.2**: l.37, "IA9 made these Perqo's production signals and gave them their status, after Rosenfeld: each record says what happened and never why … (IA9, section 6; IA3, section 5.2, after Mausser, UXmatters, 2011)". Sources list Rosenfeld 2011 and "Mausser, 'Site Search Analytics: A Conversation with Lou Rosenfeld', UXmatters, 2011 (IA3)".
+- **C2, Nielsen, NN/g, 2000 and section 3.4**: the l.263 cells cite section 2.6 and section 3.4. Section 2.6 (l.100) is Nielsen, "Why You Only Need to Test with 5 Users", NN/g, 2000, which is in Sources.
+- **C3, Lewis and Sauro, Journal of Usability Studies, 2006**: l.140, and in Sources.
+- **C3, Laubheimer, NN/g, 2024**: l.82 and l.128 ("50+ participants per tree … reasonably narrow confidence intervals"), and in Sources.
+- **C4, section 6.3 (reason 6, l.253) and IA9, RV-11**: RV-11 is cited in the l.265 cell and at l.228.
+- **C5, IA9 section 6.3**: l.52 and l.94 (screen-view records, "IA9, section 6.3").
+
+**Where each Perqo example comes from:**
+- **IA6, Deliverable A (C0)**: l.261.
+- **IA3, section 5.2 (C1)**: l.262.
+- **Section 4.1 (C2)**: the pilot, l.158.
+- **V-05 (C3, C4)**: l.296, "the same 50"; "C4 when both agree; C3 on one".
+- **V-15 (C4)**: l.306, TK-1 set beside FC-1; rung C4.
+- **V-01 (C5)**: l.292, "AN-1 … one quarter after release"; rung C5.
+
+**The tones line** ("Rows tone 5, shared; the Perqo column tone 3, the employee") matches l.268.
+
+## 3. Kind: PASS
+
+The rungs are items and the four columns are sections (dimensions), so matrix fits. The rungs are ordered, but each row carries four parallel fields, which a flow cannot hold. IA2 §5.2: "In a matrix, a row is an item, a column a dimension, and a marked cell the value where they meet."
+
+## 4. Notation: PASS
+
+**Tone 5.** IA2 §5.2 defines it as "shared, meaning the data model, the Perqo system, and any object or term that lives on more than one surface". The unit applies it to the rungs as terms that serve any surface, and names this at l.14 ("Tone 5, shared, carries the methods and the confidence ladder, because a method serves any surface") and at l.268.
+
+**Tone 3.** IA2 defines it as "the Perqo app and the employee". The unit explains the one apparent exception, C1's search log on perqo.com, at l.268: "since every example is evidence about employees (the search log is the Help centre's, on perqo.com: section 2.4)".
+
+**Colour is not the only carrier.** The column is headed "At Perqo", each legend swatch is labelled "tone 5" or "tone 3" with its meaning written beside it, and the caption states both tones. No other tone is drawn.
+
+**Row labels.** They are two characters each (C0 to C5) and each traces to l.257 and l.261 to l.266.
+
+## 5. How the reader sees it: PASS
+
+**Desktop and tablet, dark and light**
+- The whole figure fits in one frame.
+- All text is inside its boxes, with no overlap.
+- The legend and caption sit under the figure.
+- The light theme is on cream: lilac (tone 5) and sage (tone 3) cells with dark text, legible.
+
+**Phones at 320, 360, 390 and 430 px, dark and light**
+- No text is outside its box and nothing overlaps.
+- The caption is under the figure in every frame.
+- Every column is shown whole in at least one frame at each width, except Cannot decide at 360 (see the renderer notes).
+  - 320: Rung and Evidence in frame 1, Can decide in 2, Cannot decide in 3, At Perqo in 4.
+  - 360: Rung and Evidence in frame 1, Can decide in 2, At Perqo in 3.
+  - 390: Rung and Evidence in frame 1, Can decide and Cannot decide in 2, Cannot decide and At Perqo in 3.
+  - 430: Rung, Evidence and Can decide in frame 1, Cannot decide in 2 and 3, At Perqo in 3.
+- The light theme on cream is legible at every width.
+
+**Notes that rest on how the renderer lays the figure out (not faults of the figure):**
+- At 360 px, Cannot decide is cut at its right edge in frame 2 and at its left edge in frame 3. This is the fixed sideways step of the screenshot run; the column (about 120 CSS px) is narrower than the visible cell area, so a reader can scroll to it whole.
+- On phones, the sticky label column keeps C0 to C5 in view while the cells scroll, with a fade. The legend scrolls with the cells and is partly under that fade in some frames, for example the tone 3 swatch at 320 frame 4 and 430 frame 2. Each legend item is shown whole in another frame: tone 5 in frame 1 at every width; tone 3 in 320 frame 3, 360 frame 3, 390 frame 2 and 430 frame 3.
+- The opening frame at 390 is clipped at the top by the sticky section bar (rows C0 and part of C1). The figure is taller than the screen, so this is known behaviour.
+- The label column is wide for two-character labels, so on a phone the rung's name (Assumed, Signal and so on) scrolls away and only C0 to C5 stay pinned. That width is set by the renderer, not the data, and the identifiers carry the row. Not a fault.
+- The frames carry the caption as it was before its last two changes: the sentence on the Perqo examples' sources is missing. The caption checked above is the one in declaration.json, and the drawing is unchanged.
+
+Nothing for memory.
+
+figure 6, PASS
