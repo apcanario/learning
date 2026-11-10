@@ -370,3 +370,63 @@ DD-IA2: verdict fix; 2 errors, 11 should-fix, 7 minor (20 findings, 29 replaceme
 **The checker's repeated fetch.** One fetch (Moran 2020) was cut off by the session's restart and run once more; it was not refused or rate-limited by the site, so it is read as within the web rule and recorded. The writer's unsure line on Moran ("read through a summary") stands as the writer's; the checker confirmed the figures.
 
 **Transcript checks.** This session wrote no agent transcript to disk (no `.jsonl` anywhere under `/root/.claude/` or `/tmp/`), so the scripted transcript checks of the row (tool names, each fetched URL returned by an earlier search, paths, the "model" field) could not be run for any agent. What stands in their place: each agent's own statement of its model and of the tools it used; the checker's `out/log.md` (62 numbered searches and fetches, each fetch after the search that returned its address); the writer's `out/notes.md`. The gap is recorded in the session's record.
+
+
+---
+
+## Figure re-checks (U-14 chat, 10 November 2026)
+
+Each re-check was a fresh Opus 5.5 agent (as each states: Opus 5.5, claude-opus-5-5) given only its own folder: the unit's text with its figures taken out, the six captions, the figure's declaration, IA2 and the frames `verify.py --shots` saved for the figure (phone 320, 360, 390 and 430, tablet and desktop, dark and light, each with its frames sheet). **The reports below are the maintainer's summaries, not the hand-backs verbatim**: this session kept no agent transcript on disk, each hand-back arrived only in the chat, and the harness refused each re-checker's `report.md` ("Subagents should return findings as text, not write report files"), which was not worked around. What is verbatim is every replacement: each re-checker wrote its Current and Fix strings to `fixes.json` in its folder (the harness allowed that file), and they are copied below by script and were applied from that file by script, each Current counted once in the unit. Every re-checker said its context held a memory snapshot and the Project's instructions and that it used neither; none used a web tool.
+
+### Second check (the first re-check), figures 1 and 2: the frames of the build after the fresh check's fixes
+
+**Figure 1 (compare): FIX.** Trace, caption sources, kind and tones all found right; every row and value quoted from section 1.6 and its source paragraph. Findings: (1) should-fix, text: "the 66% beside it" was ambiguous, two rows drawing 66 and neither beside the 86; (2) should-fix, declaration and text: the ten row labels, 34 to 55 characters, made the pinned label column so wide that at 320 px no value was readable and at no phone width could the bars be compared; (3) minor, caption: section 1.6's table does not give every sample; (4) minor, caption: section 1.3 gives no row. Notes, renderer: the compare scrolls with its labels pinned; the page's sticky bar touches row 1 in two opening shots.
+  - 1 (text): `` the 66% beside it is an average across studies `` → `` the 66% for MeasuringU's tree tests is an average across three studies ``
+  - 2 (declaration): `` "Usability tasks completed (MeasuringU, 2011)" `` → `` "MeasuringU, tasks, 2011" ``
+  - 2 (declaration): `` "Tree-test tasks completed (MeasuringU, 2013)" `` → `` "MeasuringU, tree tests, 2013" ``
+  - 2 (declaration): `` "Website tasks succeeded, 2004 (NN/g)" `` → `` "NN/g sites, success, 2004" ``
+  - 2 (declaration): `` "Website tasks succeeded, 2009 (NN/g)" `` → `` "NN/g sites, success, 2009" ``
+  - 2 (declaration): `` "ONS new taxonomy, tree tests (2013)" `` → `` "ONS tree tests, 2013" ``
+  - 2 (declaration): `` "Scenario right after a right first click (Bailey, 2009)" `` → `` "Bailey, right first click, 2009" ``
+  - 2 (declaration): `` "Scenario right after a wrong first click (Bailey, 2009)" `` → `` "Bailey, wrong first click, 2009" ``
+  - 2 (declaration): `` "Self-service resolved fully (Gartner, 2019)" `` → `` "Gartner, fully self-served, 2019" ``
+  - 2 (declaration): `` "Attempts failed by IA, 2004 (NN/g)" `` → `` "NN/g sites, failed by IA, 2004" ``
+  - 2 (declaration): `` "Attempts failed by IA, 2009 (NN/g)" `` → `` "NN/g sites, failed by IA, 2009" ``
+  - 2 (text): `` Its rows: Usability tasks completed (MeasuringU, 2011), 78; Tree-test tasks completed (MeasuringU, 2013), 66; Website tasks succeeded, 2004 (NN/g), 66; Website tasks succeeded, 2009 (NN/g), 81; ONS new taxonomy, tree tests (2013), 86; Scenario right after a right first click (Bailey, 2009), 87; Scenario right after a wrong first click (Bailey, 2009), 46; Self-service resolved fully (Gartner, 2019), 9; Attempts failed by IA, 2004 (NN/g), 14; Attempts failed by IA, 2009 (NN/g), 10. `` → `` Its rows: MeasuringU, tasks, 2011, 78 (usability tasks completed); MeasuringU, tree tests, 2013, 66 (tree-test tasks completed); NN/g sites, success, 2004, 66; NN/g sites, success, 2009, 81; ONS tree tests, 2013, 86 (the new taxonomy); Bailey, right first click, 2009, 87, and Bailey, wrong first click, 2009, 46 (scenario right after each); Gartner, fully self-served, 2019, 9 (customers who report resolving their issue completely by self-service); NN/g sites, failed by IA, 2004, 14; NN/g sites, failed by IA, 2009, 10. ``
+  - 3 (caption): `` Samples differ row by row and are given in section 1.6's table. `` → `` Samples differ row by row; section 1.6's table gives each, or says it is not given. ``
+  - 4 (caption): `` (section 1.6, from sections 1.2 to 1.5) `` → `` (section 1.6, from sections 1.2, 1.4 and 1.5) ``
+
+*Maintainer's note.* All four hold (the phone frames looked at: the label column took most of the frame) and were applied, the labels in the declaration and in section 1.6's sentence together.
+
+**Figure 2 (numeric matrix): FIX.** Trace found right for every row, cell, column, the scale label and the unit. Findings: (1) and (2) error: the caption and the text both said the pairs come from section 1.5, and the two NN/g pairs are in section 1.2; (3) should-fix: the unit said tone 6 marks the shares of attempts failed by the IA, and figure 2 draws those shares in tone 2; (4) should-fix: the six row labels were too long for the pinned column on phones (at 320 px no cell value was whole in any frame); (5) minor: "no pair carries an interval" was cited to section 1.6, whose prose did not say it (met by 4's text). Notes, renderer: the legend's buckets are drawn from min and max; the legend scrolls with the figure; the 320 px opening frame sits under the sticky bar.
+  - 1 (declaration): `` the published pairs of section 1.5 that give both numbers `` → `` the published pairs of sections 1.2 and 1.5 that give both numbers ``
+  - 1 (caption): `` the published pairs of section 1.5 that give both numbers `` → `` the published pairs of sections 1.2 and 1.5 that give both numbers ``
+  - 2 (text): `` Figure 2 draws the before-and-after pairs from section 1.5 that give both numbers `` → `` Figure 2 draws the before-and-after pairs from sections 1.2 and 1.5 that give both numbers ``
+  - 3 (text): `` marks the published shares of task attempts that failed because of the IA. `` → `` marks, in figure 1, the published shares of task attempts that failed because of the IA; figure 2, a numeric grid drawn in one tone, gives the same two shares in tone 2. ``
+  - 4 (declaration): `` "label": "GOV.UK topic pages, clickthrough" `` → `` "label": "GOV.UK clickthrough" ``
+  - 4 (declaration): `` "label": "UNC Libraries, success, all tasks" `` → `` "label": "UNC, all tasks" ``
+  - 4 (declaration): `` "label": "UNC Libraries, directness" `` → `` "label": "UNC, directness" ``
+  - 4 (declaration): `` "label": "UNC Libraries, borrow task" `` → `` "label": "UNC, borrow task" ``
+  - 4 (declaration): `` "label": "NN/g sites, success (2004, 2009)" `` → `` "label": "NN/g, success" ``
+  - 4 (declaration): `` "label": "NN/g sites, failed by IA (2004, 2009)" `` → `` "label": "NN/g, failed by IA" ``
+  - 4 (text): `` GOV.UK topic pages, clickthrough, 61.6 and 65.1; UNC Libraries, success, all tasks, 63 and 70; UNC Libraries, directness, 69 and 74; UNC Libraries, borrow task, 79 and 61; NN/g sites, success (2004, 2009), 66 and 81; NN/g sites, failed by IA (2004, 2009), 14 and 10. The last two rows are different sites in two years, a trend and no redesign. `` → `` GOV.UK clickthrough, 61.6 and 65.1; UNC, all tasks, 63 and 70; UNC, directness, 69 and 74; UNC, borrow task, 79 and 61; NN/g, success, 66 and 81; NN/g, failed by IA, 14 and 10. GOV.UK's rows are its topic pages, UNC's are UNC Libraries' tree tests, and NN/g's are the sites it tested; the last two rows are different sites in 2004 and 2009, under Before and After, a trend and no redesign. No pair here carries an interval. ``
+
+*Maintainer's note.* All hold: the NN/g pairs stand in section 1.2's paragraph on how often the IA is the cause. Applied; finding 1's string stands once in the unit (the declaration's caption), so its two entries are one replacement.
+
+### Third check, figures 1 and 2: the frames of the next build
+
+**Figure 1: FIX.** Trace, caption sections (1.2, 1.4, 1.5), kind, tones and the drawing at every width found right; at 320 px some values fall in the fade of the fixed-step frames, recorded by the checker as a renderer note. Findings: (1) should-fix, text: "no two rows share a population, a task set or a method" is false of the figure's own rows (NN/g's success and failed-by-IA rows share their sites; Bailey's two rows share their tests); (2) should-fix, caption: "Samples differ row by row" likewise; (3) minor, caption: tone 6 glossed without "a stop".
+  - 1 (should-fix, text): `` no two rows share a population, a task set or a method, so no row can be read against another as better or worse. `` → `` no two sources share a population, a task set or a method, and NN/g's 2004 and 2009 rows are different sites, so no row can be read against another as better or worse. ``
+  - 2 (should-fix, caption): `` Samples differ row by row; section 1.6's table gives each, or says it is not given. `` → `` Samples differ from source to source; section 1.6's table gives each, or says it is not given. ``
+  - 3 (minor, caption): `` tone 6: a share of attempts that failed because of the IA. `` → `` tone 6: a stop, here the share of attempts on sites outside Perqo that failed because of the IA. ``
+
+*Maintainer's note.* All three hold against section 1.2 and were applied.
+
+**Figure 2: FIX.** Trace, caption, kind and tone found right. Findings: (1) should-fix: at 320 px the pinned label column still left the cells about 120 px and no Before value was whole in any frame; shorter labels, the long forms kept beside them in the text; (2) minor: the last row runs the other way (a lower share is the better result) and neither the caption nor the text said so.
+  - 1 (should-fix, declaration): ``  {"label": "GOV.UK clickthrough", "cells": [61.6, 65.1]},  {"label": "UNC, all tasks", "cells": [63, 70]},  {"label": "UNC, directness", "cells": [69, 74]},  {"label": "UNC, borrow task", "cells": [79, 61]},  {"label": "NN/g, success", "cells": [66, 81]},  {"label": "NN/g, failed by IA", "cells": [14, 10]} `` → ``  {"label": "GOV.UK, clicks", "cells": [61.6, 65.1]},  {"label": "UNC, all", "cells": [63, 70]},  {"label": "UNC, direct", "cells": [69, 74]},  {"label": "UNC, borrow", "cells": [79, 61]},  {"label": "NN/g, success", "cells": [66, 81]},  {"label": "NN/g, IA fail", "cells": [14, 10]} ``
+  - 1 (should-fix, text): `` GOV.UK clickthrough, 61.6 and 65.1; UNC, all tasks, 63 and 70; UNC, directness, 69 and 74; UNC, borrow task, 79 and 61; NN/g, success, 66 and 81; NN/g, failed by IA, 14 and 10. `` → `` GOV.UK, clicks (clickthrough), 61.6 and 65.1; UNC, all (all tasks), 63 and 70; UNC, direct (directness), 69 and 74; UNC, borrow (the borrow task), 79 and 61; NN/g, success, 66 and 81; NN/g, IA fail (attempts failed by IA), 14 and 10. ``
+  - 2 (minor, caption): `` (different sites in 2004 and 2009, a trend and no redesign). Maker's `` → `` (different sites in 2004 and 2009, a trend and no redesign; in its last row lower is better). Maker's ``
+  - 2 (minor, declaration): `` (different sites in 2004 and 2009, a trend and no redesign). Maker's `` → `` (different sites in 2004 and 2009, a trend and no redesign; in its last row lower is better). Maker's ``
+  - 2 (minor, text): `` a trend and no redesign. No pair here carries an interval. `` → `` a trend and no redesign; in that last row a lower share is the better result. No pair here carries an interval. ``
+
+*Maintainer's note.* Both hold and were applied; finding 2's caption string stands once in the unit.
