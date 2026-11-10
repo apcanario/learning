@@ -406,3 +406,296 @@ The full corrected declaration with all the declaration changes applied is /home
 Nothing new for memory.
 
 Figure 6: FIX. Restore the dropped qualifiers in the C3 Evidence and C5 Can decide cells, recast tone 3 as the employee, and move the rung names into a Rung column so the row labels are only the identifiers.
+
+## Figure 1, third check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets of the filed build (page read-ia11). Its hand-back, extracted by script from its transcript, is below; transcript checks: Read, Glob, Grep and Bash only, every path inside its folder, no web, memory, Projects, Artifact or `mcp__*` tool; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** Applied as given, verified against section 3.1 (the closed sort's 50 is the Perqo plan's, which the second check's cell put there): the caption's last sentence. Its renderer note (the screenshot run steps sideways by a fixed distance, so at 320 to 390 px some columns are cut in every sampled frame while a reader scrolling freely can stop on each whole) rests on the renderer and the screenshot run, and is recorded, not applied. The drawing is unchanged, so the fourth check reads the same frames sheets with the new caption.
+
+Running as Opus 5.5 (claude-opus-5-5). This was a fresh check of IA11, figure 1 (the section 2.7 method-selection matrix). I worked only inside /home/claude/agents/ia11-fig1-check3 and wrote crops and montages only to out/. I used no memory, Projects, connector, web or Artifact tool.
+
+**Result: FIX.** One fault, in the caption: it says "no Perqo fact is drawn", but one cell draws a Perqo fact. Everything else passes. The phone frames sheets also show a problem that comes from the renderer, not from this figure (item 5).
+
+## 1. Every label, cell and number traces to the text: PASS
+
+**Columns:**
+- "Answers": l.31 "A test answers one question about one part of the structure".
+- "Proves" and "Does not prove": l.57 "The methods, and what each does and does not prove".
+- "Participants" and "Cheapest form": l.106 "the participant numbers section 3's and the cheapest forms section 5's".
+
+**Row labels:**
+- Open sort, Closed sort, Hybrid sort: l.67–69 "An open sort… A closed sort… A hybrid sort".
+- Tree test: l.72 "Tree testing".
+- First click: l.80 "First-click testing".
+- Search logs: l.37 "search logs, analytics paths and funnels".
+- Analytics: l.92 "Analytics paths and funnels".
+- Usability test: l.100 "A usability test gives a participant realistic tasks".
+
+**Open sort:**
+- "how people group and name the content": l.35 "How do people group and name these things?… open and hybrid card sorts".
+- "the groups and names a population makes": l.67 "shows how a group of people clusters the content and what they call the clusters".
+- "that a structure built on them is findable": l.67 "It does not show that a structure built from those clusters can be navigated".
+- "15 to 30": l.122 "15 to 30 participants give a similarity matrix".
+- "paper cards and a spreadsheet": l.214–215 "Paper cards and category headers… in a spreadsheet" and "Open card sort. The same, with blank headers".
+
+**Closed sort:**
+- "which given category people put each item in": l.68 "whether people put each item where an existing scheme puts it"; l.61 "sort items into previously defined category names".
+- "agreement with an existing scheme": l.68 "It measures agreement with a scheme the team chose".
+- "a better scheme nobody offered": l.68 "it cannot show a better scheme the team did not offer".
+- "50 in the Perqo plan; about 193 for a 7% margin": l.122 "to have a margin of error of around 7% you should plan on having around 193 participants" and "the Perqo plan gives CS-1 50 participants".
+- "a form with one choice per card": l.214 "a form with one question per card and the categories as its choices". This is a fair short form.
+
+**Hybrid sort:**
+- "whether a given scheme has gaps": l.69 "Those added groups are the gaps in the scheme".
+- "the groups people add to it": l.69 "plus the groups people add when the given ones do not fit".
+- "that the added groups are findable": l.69 "they are not yet a tested part of it".
+- "as an open sort": l.122 "this unit gives it the open sort's numbers".
+- "a form with a free-text 'another group' choice": l.214 "plus a free-text "another group" choice (hybrid)".
+
+**Tree test:**
+- "can people find items in this hierarchy": l.36 "Can people find things in this structure?"; l.74 "find the locations in the tree".
+- "findability of labels and grouping": l.78 "whether the labels and the grouping of a hierarchy lead people to an item".
+- "visual design, content, search": l.78 "No visual design, no content on the page, no search".
+- "50 or more per tree": l.128 "50+ participants per tree"; l.132 "Fifty participants per tree".
+- "index cards, moderated": l.216 "On index cards, moderated".
+
+**First click:**
+- "is the first move on this screen right": l.82 "records where they tap or click first… if the user's first click was correct".
+- "where people start on a real layout": l.84, the same words.
+- "that the task is completed": l.84, the same words.
+- "as a tree test": l.136 "the Perqo plan gives it the tree test's 50".
+- "a screen image on a video call": l.217 "A screen image shown on a video call".
+
+**Search logs:**
+- "what people ask for, in their words": l.90 "what people who searched asked for, in their words".
+- "demand and failed searches": l.90 "and which searches failed".
+- "why, or what non-searchers did": l.90 "why they searched, what the people who did not search did".
+- "none: the log": l.37 "The methods read records of use: search logs".
+- "an exported log and a spreadsheet": l.218 "An export of the queries for one period"; l.212 "a form and a spreadsheet".
+
+**Analytics:**
+- "what people did in production": l.94 "Product analytics record what people did"; l.37 "Asked after release".
+- "frequencies, paths and drop-offs at scale": l.96 "frequencies, paths and drop-offs, measured on everyone".
+- "intent": l.96 "What it does not: intent."
+- "none: the records": l.96 "with no recruiting".
+- "screen views by identifier": l.219 "The screen views by identifier, per session".
+
+**Usability test:**
+- "can people do real tasks on the built thing, and why not": l.102 "whether real tasks succeed on the whole system… and why they fail".
+- "problems and their causes": l.136 "which problems exist and why".
+- "a stable rate at five": l.102 "What it does not prove at five participants is a rate".
+- "5 per round, several rounds": l.100 "three rounds of five"; l.220 "five participants a round".
+- "a video call and a prototype": l.220 "A video call… a prototype or the built app".
+
+**Legend, "tone 5: shared: a method serves any surface"**: l.106 "Every row is tone 5, since a method serves any surface"; l.14 "Tone 5, shared, carries the methods".
+
+## 2. The caption: FIX
+
+The caption says what the figure shows, the decision it supports and the section (2.7; Deliverable A). Every source it names is cited in the text:
+- Nielsen 2004: l.35
+- Sauro 2012: l.61
+- dscout: l.61
+- Tankala 2024 through IA3: l.70
+- Laubheimer 2023: l.74; Laubheimer 2024: l.128
+- Boxes and Arrows: l.76
+- Bailey 2009: l.82
+- Rosenfeld 2011: l.88
+- Farrell 2017 through IA3: l.88
+- Cardello 2013 through IA9: l.94
+- Nielsen 2000 and Krug 2014: l.100
+
+Tankala (terminology) and Krug feed no cell. They are cited in sections 2.1 and 2.6, and IA2's caption rule asks for "the sources cited there", so naming them is in order.
+
+**The fault:** the caption ends "Perqo is fictional; no Perqo fact is drawn." The closed-sort cell draws one: "50 in the Perqo plan" (l.122, "the Perqo plan gives CS-1 50 participants").
+
+## 3. The kind fits the data: PASS
+
+Eight items (the methods) against five dimensions is "items by sections", so a matrix is the right kind.
+
+## 4. The notation is IA2's: PASS
+
+- IA2 defines tone 5 as "shared: … any object or term that lives on more than one surface" (IA2 §5.2). Reading a method as shared because it serves any surface is the unit's own use of that meaning. It is stated in the text (l.14, l.106), the legend and the caption.
+- All rows carry the one tone, so colour distinguishes nothing. The meaning is carried in words.
+- Row labels are at most 14 characters ("Usability test"). At 320 px the label column leaves the cell window about 170 css px, and each label traces to its section heading, quoted above.
+
+## 5. How the reader sees it: PASS for the figure, with a renderer note
+
+**Desktop and tablet, dark and light:**
+- Each is one frame with the whole figure.
+- Text sits inside its cells, nothing overlaps, and the legend and caption sit under the figure.
+- Light theme on cream: the lavender cells and dark text read cleanly.
+
+**Phones, 320, 360, 390 and 430 px, dark and light:**
+- No text overflows a cell and nothing overlaps.
+- The caption is under the figure and "scroll sideways for the whole figure" shows.
+- The 430 opening frame is clipped by the sticky section bar. That is known behaviour.
+
+**Renderer note, resting on how the renderer lays the figure out:** the frames step sideways by a fixed distance (129, 149, 164 and 184 px), not column by column. Combined with the sticky label column and its fade, some columns are cut in every frame of a sheet:
+- **320:** Participants is cut at the right in frame 3. In frame 4 its first words ("50", "5", "as") sit under the label column and cannot be read.
+- **360:** Proves and Does not prove are each cut at one edge or the other in every frame.
+- **390:** Proves is cut at the right in frame 1 and its first characters are under the fade in frame 2.
+- **The legend line:** "surface" fades at the right edge at 320 but stays legible.
+
+Every column fits inside the visible cell window, so a reader scrolling freely can stop on each column whole. The fault is in how the screenshot run samples the scroll, not in the declaration, and no change to the figure's JSON fixes it. To clear the check, the screenshot run should add a frame at each column's left edge, or the renderer should snap scrolling to columns. 430, desktop and tablet show every column whole.
+
+**Figure 1: FIX.** One replacement, in the caption (declaration.json "caption"; the same text in captions.md, Figure 1):
+
+Current: `Perqo is fictional; no Perqo fact is drawn.`
+Replacement: `The closed sort's 50 is the Perqo plan's (section 3.1); Perqo is fictional.`
+
+## Figure 4, third check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets of the filed build (page read-ia11). Its hand-back, extracted by script from its transcript, is below; transcript checks: Read, Glob, Grep and Bash only, every path inside its folder, no web, memory, Projects, Artifact or `mcp__*` tool; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** PASS. Its notes on the YOGA CLASS and TRAIN PASS headers at 320 and 360 px rest on the pinned label column, its fade and the run's fixed scroll steps; recorded, not applied.
+
+Running as Opus 5.5 (claude-opus-5-5). This is a fresh check: I had not seen the unit's writing, the writer's report or any earlier check. I used only my folder, and wrote crops and montages only to out/. I used no memory, project, connector, web or Artifact tool.
+
+**Verdict: figure 4 passes on all five items.** The figure needs no replacement JSON, caption or text.
+
+## 1. Every element traces to the text: PASS
+I recomputed all 30 off-diagonal cells from the placements in the text, with n = 12. All of them match and the matrix is symmetric.
+
+**Placements the cells come from**
+- Line 183: "eight cards were placed in their home category by everyone; therapy session by 11, with one in Not sure; yoga class by 9 in Health and 3 in Learning; cookery course by 7 in Learning and 5 in Meals; bike helmet by 9 in Mobility, 2 in Health and 1 in Not sure."
+- Deliverable C, C.2 gives the home categories: gym membership in Health, coding course in Learning, train pass in Mobility. So those three cards were placed 12 of 12 in their homes.
+
+**Row and column labels (the six cards, in the card text of C.2)**
+- `Gym membership`: "| C-01 | Gym membership | BI-001 | Health | none |"
+- `Yoga class`: "| C-02 | Yoga class | BI-002 | Health | Learning |"
+- `Coding course`: "| C-04 | Coding course | BI-004 | Learning | none |"
+- `Cookery course`: "| C-05 | Cookery course | BI-005 | Learning | Meals |"
+- `Train pass`: "| C-07 | Train pass | BI-007 | Mobility | none |"
+- `Bike helmet`: "| C-08 | Bike helmet | BI-008 | Mobility | Health |"
+
+**Cells**
+- Gym membership with yoga class, 75 (9 of 12), and train pass with bike helmet, 75 (9 of 12): "two firm pairs (gym membership with yoga class at 75%, train pass with bike helmet at 75%)" (line 189).
+- Coding course with cookery course, 58 (7 of 12 is 58.3): "one loose one (coding course with cookery course at 58%)" (line 189).
+- Yoga class with coding course, 25: "the 3 who placed yoga class in Learning put it with coding course (25%)" (line 185).
+- Yoga class with cookery course, 17: "and 2 of them had also placed cookery course in Learning (17%)" (line 185).
+- Bike helmet with gym membership, 17: "the 2 who placed bike helmet in Health put it with gym membership (17%)" (line 185).
+- Bike helmet with yoga class, 17: "and both had yoga class in Health too (17%)" (line 185).
+- The 0 cells: "The other cells follow from who placed what (Perqo, fictional)" (line 185). Every zero pairs cards that never shared a category in the placements above.
+- The blank diagonal (`null`): "a card with itself is left blank" (line 185).
+- Bike helmet's row: 17 plus 75 is 92, matching "a card in Not sure is in no group, which is why bike helmet's cells against gym membership and train pass do not add to 100" (line 185).
+
+**Other keys**
+- `numeric`, `min` 0, `max` 100, `unit` %, `decimals` 0: the M-06 definition reads "in any sort, participants who placed two cards in the same group, divided by participants who sorted both" (line 50). The whole numbers match the rounding used in the text (58%, 17%).
+- `scale_label` "share of the 12 participants": "for each pair of cards, the share of participants who put both in one group" (line 185), and "Perqo piloted ... (CS-1) with 12 employees" (section 4.1).
+- `tone` 3: "Figure 4 draws it for the six items of IA3, section 3.3, shaded in tone 3" (line 185).
+- Identifiers. M-06 is in line 50 and line 185. CS-1 is in section 4.1 and Deliverable C. CS-A is "### CS-A · Closed card sort" (Deliverable D). Sections 4.3 and 6.3 exist ("### 4.3 · Agreement: placement and similarity", "### 6.3 · Six reasons a result is too weak to act on").
+- "the six items of IA3, section 3.3" matches line 185 word for word. IA3 is not in my folder, so I could not check that reference against IA3 itself.
+- Every key is a documented matrix key in VIZ_KEYS.
+
+## 2. Caption: PASS
+- **What it shows:** "Card-sort result, similarity matrix ... each cell the share who placed both cards in one category (M-06)", plus the diagonal and Not-sure conventions.
+- **Section:** "section 4.3; Deliverable D, CS-A".
+- **Where the data comes from:** the Perqo CS-1 pilot, 12 employees, flagged "Perqo and its pilot are fictional", as the text does in "(Perqo, fictional)".
+- **Method sources:** Katsanos and others (CHI '19 Extended Abstracts) and Lantz and others (Journal of Classification, 2019). Both are cited in section 3.1, in the M-06 row (line 50) and in the references (lines 606 and 608).
+- **"no cell decides an IA change (section 6.3)":** this matches section 6.3, "This is why the Perqo pilot decides nothing in the IA" (line 249), and section 4.1, "the rule of section 6.3 that a pilot's numbers do not change the IA".
+- **"Shaded in tone 3, the employee":** this matches IA2 and the text's wording for figure 3 (line 179).
+
+## 3. Kind fits the data: PASS
+The data is items crossed with items, one number in each cell. That is the matrix kind with `numeric: true`, which is the standard form of a card-sort similarity matrix.
+
+## 4. Notation: PASS
+- **Tone:** the one tone used, tone 3, means "the Perqo app and the employee" in IA2, section 5.2. The unit names it in the text ("shaded in tone 3", line 185) and in the caption.
+- **Colour is not the only carrier:** every cell prints its value, the legend gives each step's range, and the caption explains the blank diagonal. The 0 cells and 17 cells share the 0–20% shade, so the printed number tells them apart.
+- **Row labels:** each is the card text of C.2, two words and at most 14 characters, each traced in item 1. At 320 px they leave about 137 CSS px for cells, more than one whole column of about 99 px. Shortening them would break the card wording that section 4.3 sets for the sort's figures ("one row per card in the card's own words", line 179).
+
+## 5. How the reader sees it: PASS
+I checked desktop, tablet and phone at 320, 360, 390 and 430 px, in dark and in light. I judged the light theme on its cream ground.
+
+**Whole at every width and theme:**
+- Every cell's text sits inside its box.
+- Nothing overlaps.
+- The caption sits under the figure and the legend.
+- The "scroll sideways for the whole figure" hint shows on phones.
+- The blank diagonal reads as a distinct neutral cell in both themes.
+- Contrast holds on dark and on cream.
+
+**Desktop and tablet:** each shows the figure whole in one frame.
+
+**Phone 390 and 430:** each header, column of cells and legend chip appears whole in at least one frame.
+
+**Phone 320 and 360** (these notes rest on how the renderer lays the figure out, not on the figure):
+- At 320, no frame shows the "YOGA CLASS" header whole. Frame 1 cuts it at the right edge, and in frame 2 it sits under the fade of the sticky label column. The same happens to "TRAIN PASS" (frame 4) and the "60–80%" legend chip (frame 3).
+- At 360, the "YOGA CLASS" header is likewise never wholly clear.
+- Every cell value in those columns is still legible in some frame, dimmed in places by the fade.
+- These gaps come from where the screenshot run stops the sideways scroll, plus the sticky-column fade. A reader scrolling freely can bring each of these columns fully into view, because the window (about 137 CSS px at 320) is wider than one column (about 99 px).
+
+**Opening frame:** at 320 and 360 the top of the figure is clipped by the sticky section bar. This is the known renderer behaviour for a figure taller than the screen, also a layout note.
+
+**Memory:** I used nothing from memory, and I have nothing new to propose saving.
+
+Figure 4: PASS.
+
+## Figure 6, third check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets of the filed build (page read-ia11). Its hand-back, extracted by script from its transcript, is below; transcript checks: Read, Glob, Grep and Bash only, every path inside its folder, no web, memory, Projects, Artifact or `mcp__*` tool; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** Applied in part, verified against section 6.4, A.2 and IA2, section 5.2: the legend note's reason added to section 6.4's sentence ("since the rungs serve any surface"), without the checker's parenthesis on A.2, which the sentence does not need. A correction to the text a figure draws reopens it: fourth check by a new agent on the same frames sheets (the declaration is unchanged).
+
+Running as Opus 5.5 (claude-opus-5-5). I worked only inside /home/claude/agents/ia11-fig6-check3; the only files I wrote are image crops in out/crops/.
+
+**Figure 6 (IA11, section 6.4, the confidence ladder, a matrix): FIX.** There is one fault: one legend note does not trace to the unit's text. Everything else passes.
+
+**1. Trace to text: FIX (one item)**
+- **Columns.** "Rung", "Evidence", "Can decide", "Cannot decide", "At Perqo" come from the table header at line 259: `| Rung | Evidence | Can decide | Cannot decide | At Perqo (Perqo, fictional) |`.
+- **Row labels C0 to C5.** Line 257: "IA12 and DD-IA2 cite rungs by identifier, C0 to C5."
+- **Row C0 (line 261):** "| C0 Assumed | reasoning at a desk, from the literature and the domain | a labelled default, marked "assumed" (IA2, section 5.2) | anything a person would do | IA6's task frequencies (IA6, Deliverable A) |". The cells "Assumed", "reasoning at a desk", "a labelled default", "anything a person would do" and "IA6's task frequencies" are all there, two of them as leading short forms.
+- **Row C1 (line 262):** "| C1 Signal | a log, ticket tags or paths, read once | what to test next (IA9, section 6.4) | why, or the fix | the zero results for "gym" (IA3, section 5.2) |". Every cell matches. The figure writes 'gym' in single quotes where the text uses double; the captions do the same with ('assumed'), so this is a quoting convention, not a fault.
+- **Row C2 (line 263):** "| C2 Observed | a small test with people: a usability round, a pilot, a moderated tree test | that a problem exists, and its cause (section 2.6) | a rate, or a pass (section 3.4) | the TT-1 pilot, 12 employees |". Every cell matches, "a small test with people" as a leading short form.
+- **Row C3 (line 264):** "| C3 Measured | a planned test from the right people, its interval clear of a mark set beforehand | a label, a placement, a cross-listing | a top level on one method alone | TT-1 and CS-1 at 50 (planned) |". Exact.
+- **Row C4 (line 265):** "| C4 Converging | two methods of different kinds that agree | a change to a tab or a top level (IA9, RV-11) | how it performs in use | TT-1 with CS-1 on a cross-listing; FC-1 with ticket tags |". Exact.
+- **Row C5 (line 266):** "| C5 Confirmed in use | production records of the behaviour itself, or before and after a release | closing the DL entry as applied and confirmed | why it worked | AN-1 one quarter after release |". Exact.
+- **Numbers.** "12" (line 263) and "50" (line 264) both trace.
+- **Legend, tone 3, "the employee: every Perqo example".** Line 268: "the Perqo column in tone 3, the employee, since every example is evidence about employees".
+- **Legend, tone 5, "shared: the rungs serve any surface": FIX.** No sentence says this. Line 14 gives a different reason: "Tone 5, shared, carries the methods and the confidence ladder, because a method serves any surface." Line 268 says only "rows in tone 5, shared". The claim itself holds, since table A.2 holds Admin assumptions at C1 (rows 6 and 9), but the text never says it. The fix below adds it to the text.
+
+**2. Caption: PASS**
+- The caption says what the figure shows (six rungs, what each can and cannot decide, a Perqo example), names the decision it supports and the section (6.4), and says "Perqo is fictional".
+- Every source it names is cited in the text:
+  - IA2, section 5.2: line 261.
+  - IA9, section 6.4: line 262.
+  - Rosenfeld through IA3, section 5.2: line 37, "after Rosenfeld: each record says what happened and never why … (IA9, section 6; IA3, section 5.2, after Mausser…)".
+  - Nielsen, NN/g, 2000: section 2.6.
+  - Section 3.4: line 263.
+  - Lewis and Sauro, Journal of Usability Studies, 2006: section 3.4.
+  - Laubheimer, NN/g, 2024: section 3.2.
+  - Section 6.3: lines 246 to 253.
+  - IA9, RV-11: line 265.
+  - IA9, section 6.3: line 94.
+- The tone statement matches line 268.
+- The caption in captions.md and the one in the declaration are identical.
+- Minor, not a fault: the text's C3 and C5 rows cite nothing, so their sources rest on the caption alone. Those sources are all cited elsewhere in the text.
+
+**3. Kind: PASS**
+The figure is six items (rungs) against five dimensions, which is a matrix. Its keys are all valid matrix keys in VIZ_KEYS (cols, rows with label, tone and cells, cell mark and tone, legend).
+
+**4. Notation: PASS**
+- Tone 5 means "shared … any object or term on more than one surface" (IA2, line 206, and the notation sheet). The rungs are terms used on the app, Admin and the register, and the unit names the tone at lines 14 and 268.
+- Tone 3 means "the Perqo app and the employee". The unit names it at line 268 and justifies applying it to C1's perqo.com Help-centre search log: the example is evidence about employees.
+- Colour is not the only carrier of meaning. The legend states both meanings in words, the caption repeats them, and the column header "At Perqo" marks the tone 3 column.
+- Row labels are two characters each and trace to line 257.
+
+**5. How the reader sees it: PASS**
+- **Desktop and tablet, dark and light.** One frame holds the whole figure. Every text sits inside its box, nothing overlaps, and the caption sits under the figure. On light, the cells sit correctly on the cream paper.
+- **Phone 320 (4 frames), 360, 390 and 430 (3 frames each), dark and light.** Every cell, header and caption is shown whole in at least one frame, and the drawing is whole across the frames:
+  - The tone 5 legend swatch and note are whole in frame 1.
+  - The tone 3 swatch is whole in an earlier frame, and its note "the employee: every Perqo example" is whole in the last frame.
+- Nothing overlaps at any width, and the caption is under the figure every time.
+
+**What rests on the renderer:**
+- The label column stays in view with a fade while the cells scroll.
+- The fade lies across parts of the legend text as the legend scrolls past the label column (for example "e|very" in the last frame at 320). The text stays legible.
+- The label column takes about 40% of the 320 px frame although the labels are two characters wide. The renderer sets that width, not the figure.
+- The opening frames at every phone width are clipped by the sticky section bar.
+- The matrix draws at its own width on desktop and tablet.
+
+**Replacement (one fault):**
+- Current: `Figure 6 draws the ladder, rows in tone 5, shared, and the Perqo column in tone 3, the employee,`
+- Replacement: `Figure 6 draws the ladder, rows in tone 5, shared, since the rungs serve any surface (table A.2 holds Admin's assumptions at C1), and the Perqo column in tone 3, the employee,`
+
+figure 6, FIX: replace `Figure 6 draws the ladder, rows in tone 5, shared, and the Perqo column in tone 3, the employee,` (unit text, line 268) with `Figure 6 draws the ladder, rows in tone 5, shared, since the rungs serve any surface (table A.2 holds Admin's assumptions at C1), and the Perqo column in tone 3, the employee,`
