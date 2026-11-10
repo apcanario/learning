@@ -623,4 +623,4 @@ Every fact below is a course convention (Perqo, fictional), never evidence about
 - Berners-Lee 1998: the advice to leave information out of an address is paraphrased from a summary of the page; the two quoted lines are its own.
 - The four shortages' symptoms, the triage order, the backbone criterion and the escalation procedure are this unit's synthesis and practice; no source read for this unit measures any of them.
 - Object: the assumption register for Perqo Admin, AR-01 to AR-49, Deliverable B
-- Fresh check 2026-11-10 (Fable 5.2; a Fable 5.1 fresh check is owed, P49): fix · 3 error, 8 should-fix, 13 minor; all applied as verified; figures 1, 5 and 6 fixed or reopened and checked again; report `audits/ux/fresh-check-IA12.md`
+- Fresh check 2026-11-10 (Fable 5.2; a Fable 5.1 fresh check is owed, P49): fix · 3 error, 8 should-fix, 13 minor; all applied as verified; figures 2, 3 and 4 passed; figure 5 fixed in the text and passed its second check; figure 1 fixed and passed its third check, figure 6 reopened by a fix to its data and passed its third; report `audits/ux/fresh-check-IA12.md`
