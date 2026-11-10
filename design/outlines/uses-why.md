@@ -132,7 +132,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 
 ## Information architecture
 
-12 pages with a relief, 10 outlines in use (bell, books, credit-card, key, magnifier, map, notebook, sitemap, table, tree); 2 pages with none.
+12 pages with a relief, 10 outlines in use (bell, books, credit-card, key, magnifier, map, notebook, sitemap, table, tree); 3 pages with none.
 
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
@@ -149,7 +149,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | IA8 (`read-ia8`) | credit-card | 6 | The Perqo card is cancelled at once. A card left Active would let a leaver spend the client's money; a Frozen one could be unfrozen by its holder (IA4, A.3). |
 | IA9 (`read-ia9`) | notebook | 26 | Perqo's IA decision log is one list of entries, kept by the IA designer, each with an identifier DL-001 onward, never reused (Perqo, fictional). |
 
-**None:** DD-IA1 (`read-dd-ia1`), no outline named; DD-IA2 (`read-dd-ia2`), no outline named.
+**None:** DD-IA1 (`read-dd-ia1`), no outline named; DD-IA2 (`read-dd-ia2`), no outline named; DD-IA3 (`read-dd-ia3`), no outline named.
 
 
 ## Spare outlines

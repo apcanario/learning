@@ -1,0 +1,1543 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#ux-ia" data-target="ux-ia">Course IA · Information architecture</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">DD-IA3</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--blue)">INFORMATION ARCHITECTURE</span> · DD-IA3 <span class="pill live">DD-IA3</span></div>
+    <h1>Deep dive: taxonomy and governance at scale</h1>
+    <p class="scope">Enterprise taxonomy, metadata, controlled vocabularies, ownership and change control, localisation: keeping an IA whole as the system grows.</p>
+  </header>
+  <div class="stepbar" data-n="12"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 12</span><span class="stt">What an enterprise taxonomy is, and how it differs from a navigation hierarchy</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-dd-ia3-0" data-step="0"><span class="n">01</span><span class="t">What an enterprise taxonomy is, and how it differs from a navigation hierarchy</span></a></li><li><a href="#read-dd-ia3-1" data-step="1"><span class="n">02</span><span class="t">Metadata and the shared vocabulary across product, content, data and engineering</span></a></li><li><a href="#read-dd-ia3-2" data-step="2"><span class="n">03</span><span class="t">Ownership: who owns the IA, the taxonomy and each label</span></a></li><li><a href="#read-dd-ia3-3" data-step="3"><span class="n">04</span><span class="t">Change control for a taxonomy and for the IA</span></a></li><li><a href="#read-dd-ia3-4" data-step="4"><span class="n">05</span><span class="t">Localisation, and the labels that do not survive translation</span></a></li><li><a href="#read-dd-ia3-5" data-step="5"><span class="n">06</span><span class="t">The failure modes at scale, and how to detect them</span></a></li><li><a href="#read-dd-ia3-6" data-step="6"><span class="n">07</span><span class="t">Documented practice, verified against its publications</span></a></li><li><a href="#read-dd-ia3-7" data-step="7"><span class="n">08</span><span class="t">Deliverable · A · The Perqo governance model</span></a></li><li><a href="#read-dd-ia3-8" data-step="8"><span class="n">09</span><span class="t">Deliverable · B · The taxonomy change-request process</span></a></li><li><a href="#read-dd-ia3-9" data-step="9"><span class="n">10</span><span class="t">Deliverable · C · The Perqo controlled-vocabulary starter</span></a></li><li><a href="#read-dd-ia3-10" data-step="10"><span class="n">11</span><span class="t">What later units take</span></a></li><li><a href="#read-dd-ia3-11" data-step="11"><span class="n">12</span><span class="t">Perqo facts set by this unit</span></a></li></ol><div class="secx"><a href="#read-dd-ia3-sources" data-acc>Sources</a><a href="#read-dd-ia3-note" data-acc>The writer's opening note</a><a href="#read-dd-ia3-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-dd-ia3-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">What an enterprise taxonomy is, and how it differs from a navigation hierarchy</span></span></h2>
+<h3>1.1 · The taxonomy, and the vocabularies around it</h3>
+<p>IA2 gave the course its definition. Page Laubheimer's is "A closed list of acceptable terms that are arranged hierarchically and are used to describe and classify content", and he places it backstage: the taxonomy maps the concepts used to describe content, where the IA structure maps where content lives and the navigation is the frontstage layer people see ("Taxonomy 101", Nielsen Norman Group, 3 July 2022, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/taxonomy-101/">nngroup.com, taxonomy 101</a>; IA2, section 1.2). The US standard for controlled vocabularies puts the taxonomy in a family: ANSI/NISO Z39.19 "Presents guidelines and conventions for the contents, display, construction, testing, maintenance, and management of monolingual controlled vocabularies", and focuses on vocabularies "used for the representation of content objects in knowledge organization systems including lists, synonym rings, taxonomies, and thesauri" (NISO, <em>ANSI/NISO Z39.19-2005 (R2010)</em>, publication page, <a target="_blank" rel="noopener" href="https://niso.org/publications/ansiniso-z3919-2005-r2010">niso.org, Z39.19</a>, read 10 November 2026; standard). Rosenfeld, Morville and Arango give the same family a chapter, with synonym rings, authority files, classification schemes and thesauri, the three semantic relationships (equivalence, hierarchical, associative) and preferred terms, and say of it: "In many large metadata-driven products, controlled vocabularies have become the glue that holds the systems together" (<em>Information Architecture: For the Web and Beyond</em>, 4th ed., O'Reilly, 2015, ch. 10; IA2, section 1.2; IA4, section 3.1).</p>
+<p>An <strong>enterprise taxonomy</strong>, in this course's words, is one taxonomy that every system and surface of an organisation classifies by, so that a term means the same thing wherever it is stored, filtered, searched, reported or shown. The definition is this unit's; it names what the sources above describe at the scale of one product. Heather Hedden's <em>The Accidental Taxonomist</em> is the practitioner's book-length guide, and its third edition shifts its emphasis from the thesaurus model of terms to the SKOS model of concepts (publisher's description, Information Today, November 2022, <a target="_blank" rel="noopener" href="https://books.infotoday.com/Ebooks/489_The-Accidental-Taxonomist-Third-Edition.htm">books.infotoday.com, Accidental Taxonomist</a>, read 10 November 2026; IA4, section 3.1). The shift matters at scale: a concept carries an identifier and several labels, so one concept can be named differently by surface and by language without becoming two concepts.</p>
+<p>Perqo's benefit-category facet, F-CAT, is enterprise in this sense (Perqo, fictional). It is used by the app's Benefits, Admin's Policies, Card offers, each merchant's category and each claim's category (IA4, Deliverable B, B.1); by the Help centre's articles and the customer stories, which carry F-CAT tags (IA5, section 3.3); and by Admin's report Spend by category (IA7, section 4.6). Money moves by it: a claim reads one category's balance (IA3, section 2.3).</p>
+<h3>1.2 · How it differs from a navigation hierarchy</h3>
+<p>Laubheimer's point that a taxonomy "need not match the order people browse in" (IA2, section 1.2, after Laubheimer 2022) is the first difference, and Perqo shows the rest. The app's navigation hierarchy is five tabs, Home, Benefits, Claims, Card and Account, with the four categories one level below Benefits (IA6, Deliverable B). The taxonomy holds twelve F-CAT values, four categories and eight narrower terms, with their variant terms (IA4, B.2), and three flat facets besides. The eight narrower terms are not places a person navigates to: they appear as groups inside each category's What's covered list (IA6, Deliverable B, B.3). The flat facets appear in no navigation at all, only as the facts shown about each item and as filters (IA4, B.1). And perqo.com's Help centre is navigated by audience and then by task, while its articles are classified by F-CAT (IA2, section 5.3; IA5, section 3.3): one taxonomy, several navigation hierarchies, none of them a copy of it.</p>
+<p>The two also change differently, are owned differently and are addressed differently. A change to a tab or a top level of a navigation sends the structure to a test before and after (IA9, Deliverable C, RV-11). A change to a taxonomy value reaches every item tagged with it, every filter, every search synonym and every address built on it, which is why IA4's R9 keeps identifiers stable and keeps a renamed term as a variant (IA4, B.4). The IA designer owns the canonical IA artefacts, the navigation among them; the benefits taxonomy is the content team's (IA9, section 4.1). And a navigation node is addressed by its screen or page identifier (A-2.1 is a category screen; IA6, Deliverable B), a taxonomy value by its own identifier (CAT-HEA; IA4, B.2).</p>
+<p>The figure sets the two side by side, one row per difference, with Perqo's case in each cell. Answers: what it is about, and what else means the same; where a person can go from here. Built for: tags, filters, search, reports; people moving on one surface. Size: every term: 12 F-CAT values and their variants; what fits a screen: 5 tabs, 4 categories. Shape: facets, a hierarchy inside each; a tree per surface, with routes across it. Changes by: a DL entry; identifiers kept; a release; a test before and after. Owner: content team; IA designer. Surfaces: backstage, under every surface; one surface each. Addressed by: identifier: CAT-HEA; screen or page: A-2.1. The taxonomy column is tone 5, shared; the navigation column is tone 3, because its examples are the app's. In the legend, tone 5 is "the taxonomy: shared, under every surface" and tone 3 "the navigation: the Perqo app's examples".</p>
+<figure class="viz viz-matrix"><div class="viz-scroll" style="--stick:109.2px"><svg viewBox="0 0 700.0 350" width="700.0" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="259.6" y="15.6" text-anchor="middle">Enterprise taxonomy</text><text class="viz-colhead" x="551.0" y="15.6" text-anchor="middle">Navigation hierarchy</text><text class="viz-label" x="8.0" y="56.3" text-anchor="start">Answers</text><g data-box=""><rect class="viz-band viz-t5" x="111.2" y="34.0" width="296.8" height="36.0"/><text class="viz-mark" x="259.6" y="49.3" text-anchor="middle">what it is about, and</text><text class="viz-mark" x="259.6" y="62.3" text-anchor="middle">what else means the same</text></g><g data-box=""><rect class="viz-band viz-t3" x="412.0" y="34.0" width="278.0" height="36.0"/><text class="viz-mark" x="551.0" y="55.8" text-anchor="middle">where a person can go from here</text></g><text class="viz-label" x="8.0" y="92.3" text-anchor="start">Built for</text><g data-box=""><rect class="viz-band viz-t5" x="111.2" y="74.0" width="296.8" height="28.0"/><text class="viz-mark" x="259.6" y="91.8" text-anchor="middle">tags, filters, search, reports</text></g><g data-box=""><rect class="viz-band viz-t3" x="412.0" y="74.0" width="278.0" height="28.0"/><text class="viz-mark" x="551.0" y="91.8" text-anchor="middle">people moving on one surface</text></g><text class="viz-label" x="8.0" y="128.3" text-anchor="start">Size</text><g data-box=""><rect class="viz-band viz-t5" x="111.2" y="106.0" width="296.8" height="36.0"/><text class="viz-mark" x="259.6" y="121.3" text-anchor="middle">every term: 12 F-CAT</text><text class="viz-mark" x="259.6" y="134.3" text-anchor="middle">values and their variants</text></g><g data-box=""><rect class="viz-band viz-t3" x="412.0" y="106.0" width="278.0" height="36.0"/><text class="viz-mark" x="551.0" y="127.8" text-anchor="middle">what fits a screen: 5 tabs, 4 categories</text></g><text class="viz-label" x="8.0" y="164.3" text-anchor="start">Shape</text><g data-box=""><rect class="viz-band viz-t5" x="111.2" y="146.0" width="296.8" height="28.0"/><text class="viz-mark" x="259.6" y="163.8" text-anchor="middle">facets, a hierarchy inside each</text></g><g data-box=""><rect class="viz-band viz-t3" x="412.0" y="146.0" width="278.0" height="28.0"/><text class="viz-mark" x="551.0" y="163.8" text-anchor="middle">a tree per surface, with routes across it</text></g><text class="viz-label" x="8.0" y="196.3" text-anchor="start">Changes by</text><g data-box=""><rect class="viz-band viz-t5" x="111.2" y="178.0" width="296.8" height="28.0"/><text class="viz-mark" x="259.6" y="195.8" text-anchor="middle">a DL entry; identifiers kept</text></g><g data-box=""><rect class="viz-band viz-t3" x="412.0" y="178.0" width="278.0" height="28.0"/><text class="viz-mark" x="551.0" y="195.8" text-anchor="middle">a release; a test before and after</text></g><text class="viz-label" x="8.0" y="228.3" text-anchor="start">Owner</text><g data-box=""><rect class="viz-band viz-t5" x="111.2" y="210.0" width="296.8" height="28.0"/><text class="viz-mark" x="259.6" y="227.8" text-anchor="middle">content team</text></g><g data-box=""><rect class="viz-band viz-t3" x="412.0" y="210.0" width="278.0" height="28.0"/><text class="viz-mark" x="551.0" y="227.8" text-anchor="middle">IA designer</text></g><text class="viz-label" x="8.0" y="260.3" text-anchor="start">Surfaces</text><g data-box=""><rect class="viz-band viz-t5" x="111.2" y="242.0" width="296.8" height="28.0"/><text class="viz-mark" x="259.6" y="259.8" text-anchor="middle">backstage, under every surface</text></g><g data-box=""><rect class="viz-band viz-t3" x="412.0" y="242.0" width="278.0" height="28.0"/><text class="viz-mark" x="551.0" y="259.8" text-anchor="middle">one surface each</text></g><text class="viz-label" x="8.0" y="292.3" text-anchor="start">Addressed by</text><g data-box=""><rect class="viz-band viz-t5" x="111.2" y="274.0" width="296.8" height="28.0"/><text class="viz-mark" x="259.6" y="291.8" text-anchor="middle">identifier: CAT-HEA</text></g><g data-box=""><rect class="viz-band viz-t3" x="412.0" y="274.0" width="278.0" height="28.0"/><text class="viz-mark" x="551.0" y="291.8" text-anchor="middle">screen or page: A-2.1</text></g><g data-box=""><rect class="viz-band viz-t5" x="8.0" y="318.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="333.8" text-anchor="middle">tone 5</text></g><text class="viz-attr" x="70.6" y="334.0" text-anchor="start">the taxonomy: shared, under every surface</text><g data-box=""><rect class="viz-band viz-t3" x="315.6" y="318.0" width="54.6" height="24"/><text class="viz-mark" x="342.8" y="333.8" text-anchor="middle">tone 3</text></g><text class="viz-attr" x="378.1" y="334.0" text-anchor="start">the navigation: the Perqo app&#x27;s examples</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 109.2 350" width="109.2" height="350" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="109.2" height="306"/><text class="viz-label" x="8.0" y="56.3" text-anchor="start">Answers</text><text class="viz-label" x="8.0" y="92.3" text-anchor="start">Built for</text><text class="viz-label" x="8.0" y="128.3" text-anchor="start">Size</text><text class="viz-label" x="8.0" y="164.3" text-anchor="start">Shape</text><text class="viz-label" x="8.0" y="196.3" text-anchor="start">Changes by</text><text class="viz-label" x="8.0" y="228.3" text-anchor="start">Owner</text><text class="viz-label" x="8.0" y="260.3" text-anchor="start">Surfaces</text><text class="viz-label" x="8.0" y="292.3" text-anchor="start">Addressed by</text></svg></div></div><figcaption>Enterprise taxonomy against navigation hierarchy: eight differences, each with Perqo's case; supports the decision on which of the two a proposed change touches, and so who decides it (section 1.2). Taxonomy as backstage and navigation as frontstage from Laubheimer, 'Taxonomy 101', NN/g, 2022 (through IA2, section 1.2); the taxonomy's facets, values, identifiers and owner from IA4, Deliverable B; the app's tabs and screen identifiers from IA6, Deliverable B; the test before and after from IA9, Deliverable C, RV-11; owners from IA9, section 4.1. Rows tone 5; the taxonomy column tone 5, shared; the navigation column tone 3, the Perqo app. Perqo is fictional.</figcaption></figure>
+<h3>1.3 · The standards for thesauri and knowledge organisation systems</h3>
+<p>Four standards govern this ground: Z39.19, cited in section 1.1, and the three below. Each is cited as its publisher gives it; none of the publishers' pages read for this unit lists clauses, so no clause is cited.</p>
+<ul>
+<li><strong>ISO 25964-1:2011</strong>, <em>Information and documentation — Thesauri and interoperability with other vocabularies — Part 1: Thesauri for information retrieval</em>, edition 1, August 2011. Its abstract: it "gives recommendations for the development and maintenance of thesauri intended for information retrieval applications", "is applicable to monolingual and multilingual thesauri", "also provides a data model and recommended format for the import and export of thesaurus data", and anticipates the needs of other applications "among its recommendations for thesaurus management". The page says it "was last reviewed and confirmed in 2022" and marks it "to be revised" (ISO, <a target="_blank" rel="noopener" href="https://www.iso.org/standard/53657.html">iso.org, ISO 25964-1</a>, read 10 November 2026; standard).</li>
+<li><strong>ISO 25964-2:2013</strong>, <em>Part 2: Interoperability with other vocabularies</em>, edition 1, March 2013, confirmed in 2023. It "gives recommendations for the establishment and maintenance of mappings between multiple thesauri, or between thesauri and other types of vocabularies" (ISO, <a target="_blank" rel="noopener" href="https://www.iso.org/standard/53658.html?browse=tc">iso.org, ISO 25964-2</a>, read 10 November 2026; standard).</li>
+<li><strong>SKOS</strong>, <em>Simple Knowledge Organization System Reference</em>, W3C Recommendation, 18 August 2009. Section 5 defines the lexical labels, preferred, alternative and hidden, with two integrity conditions that matter here: S13, the three label properties "are pairwise disjoint properties", and S14, "A resource has no more than one value of <code>skos:prefLabel</code> per language tag". Section 6 defines <code>skos:notation</code>, "used to assign a notation as a typed literal", a code such as an identifier. Section 7 gives "seven properties in SKOS for associating notes with concepts", among them the scope, change and history notes. Section 8 relates concepts: <code>skos:broader</code> and <code>skos:narrower</code> "assert a direct hierarchical link", <code>skos:related</code> "an associative link". Section 10 holds the mapping properties between concept schemes (W3C, <a target="_blank" rel="noopener" href="https://www.w3.org/TR/2009/REC-skos-reference-20090818">w3.org, SKOS Reference</a>, read 10 November 2026, the first 100,000 characters of the page; standard).</li>
+</ul>
+<p>Z39.19's title limits it to monolingual vocabularies, which is why a product that adds a language reaches for ISO 25964-1, whose scope names multilingual thesauri.</p>
+<p>What a product team takes from the three, on this unit's reading, is a data model more than a procedure. A concept has a code (SKOS's notation; IA4's CAT-HEA), one preferred label per language (S14), any number of alternative labels (IA4's variant terms), broader and narrower links (F-CAT's two levels), notes that record its scope and its history, and mappings to other schemes. One Perqo fact does not fit SKOS's core directly: Perqo gives one concept a preferred term per surface in the same language, Budget in Admin and Balance in the app for the allocation (IA1, section 2.4), and S14 allows one preferred label per language tag. The vocabulary in Deliverable C therefore records each surface's label in its own column; a team that exports it to SKOS has to decide where those columns go, and that decision is left to engineering.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="211" data-rings="5"><path d="M184 56l-40 3-32 6-19 7-10 8-3 8 1 8 3 8 9 8 11 6 16 5 16 2 16 1 32-1 56-10M304 65l-32-6-32-4-24-1-32 2M176 63l-32 4-22 5-16 8-4 8 1 8 5 8 4 2 16 7 24 4 32 0 40-8 16-1M280 69l-24-4-40-3-40 1M152 71l-16 4-12 5-6 8 2 8 9 8 7 3 16 3 16 1 16-1 40-6 16-2M248 70l-24-2-24-1-24 2-24 2M144 79l-2 1-9 8 3 8 8 5 8 3 16 2 24-2 32-6 47-2M240 76l-24-3-32 0-24 3-16 3M168 80l-8 2-10 6 5 8 13 3 16 0 8-1 48-10-12-8-12-2-24 0z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="131" data-rings="3"><path d="M240 115l16 0 48 6 24 0 24-6 7-3 11-8 6-2 24-3M240 108l24 1 32 4 19-1 13-3 10-5 6-10 8-4M336 85l-14-5-42-11M240 102l56 3 9-1 8-8-7-8-16-8-42-10M271 96l8-8-18-8-21-4"/><circle class="ct-spot" cx="280" cy="96" r="7"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="72" data-rings="1"><path d="M328 68l-24-3M352 90l40 0 48 4M376 72l-26 8-6 6-8-1M397 80l35 8"/><circle class="ct-spot" cx="384" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="159" data-rings="4"><path d="M400 99l80 2 33 3 39 8M580 64l-28-6-40-4-24 1-90 9-70 4M440 94l54 2 57 8M528 62l-32-1-120 11M448 71l-51 9M432 88l64 4 64 9M544 71l-24-4-24 0-48 4M504 72l-16 1-37 7 13 3 128 16M563 80l-59-8"/><circle class="ct-spot" cx="496" cy="80" r="8"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="130" data-rings="3"><path d="M552 112l24 7 24 4 24 0 56-5M616 68l-36-4M551 104l41 10 16 1 64-5M624 77l-24-2-72-13M560 101l32 6 24 1 48-5M624 84l-16-1-64-12M592 99l16 0 29-3-29-5-8-3-37-8"/><circle class="ct-spot" cx="600" cy="96" r="7"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="153" data-rings="3"><path d="M680 118l64-2 24-4 16-5 5-3 11-9 8-5M792 84l-8 0M768 80l-16-11-16-7-16-4-16-1-32 1-40 9-16 1M672 110l64-3 18-3 11-8-7-8-15-8-11-8-12-4-16-2-24 1-40 9-16 1M664 103l48-1 16-2 14-4-3-8-13-8-6-3-16-4-16 1-40 9-24 1M672 87l-4 1 4 5 8 2 24-1 8-3 4-3-12-5-8 0z"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="38" data-rings="0"><path d="M808 90l5-2 11-8-8-2-8 0-7 2-9 4M784 84l-16-4"/><circle class="ct-spot" cx="816" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="25" data-rings="0"><path d="M915 88l13 4 56 12"/><circle class="ct-spot" cx="920" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶9" data-words="143" data-rings="3"><path d="M992 63l-32 6-30 11-15 8M984 104l32 10 16 3 24 0 16-1 16-5 10-7 0-8-18-22-8-5-8-3-24-4-24-1-24 2M1000 71l-16 3-18 6-4 8 14 5 40 12 24 3 16-1 12-3 8-8-12-16-8-5-8-3-24-3zM1000 80l-10 8 22 8 20 3 8 0 12-3-1-8-8-8-3-1-16-2z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-dd-ia3-1" data-step="1"><span>Next · 2 of 12</span><b>Metadata and the shared vocabulary across product, content, data and engineering</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-dd-ia3-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">Metadata and the shared vocabulary across product, content, data and engineering</span></span></h2>
+<p>A taxonomy reaches the product through metadata: the fields on each record that hold its terms. IA4 traced one organisation decision through four places, navigation, filters, search and URLs (IA4, section 5). At scale there are two more readers, data and engineering, and each reads the same terms for its own purpose.</p>
+<ul>
+<li><strong>Product</strong> reads the terms as scope. A new top-level category creates an allocation for every employee in every group that opens it, so it is a product decision (IA4, B.4, R8).</li>
+<li><strong>Content</strong> reads them as labels. Each concept has a preferred term on each surface and its variants (IA2, section 5.3; IA8, D.1's shared-objects table).</li>
+<li><strong>Data</strong> reads them as dimensions. Admin's Spend by category groups transactions by F-CAT (IA7, section 4.6); product analytics record each screen and page view by identifier (IA9, section 6.3); IA10 proposed that an event take the model name and the state entered (IA10, section 2.2).</li>
+<li><strong>Engineering</strong> reads them as names in the model. IA7 took Eric Evans's ubiquitous language as the rule that holds the model and the words together: "Use the model as the backbone of a language", and "Recognize that a change in the language is a change to the model" (Evans, <em>Domain-Driven Design Reference</em>, Domain Language, 2015; IA7, section 6.2). Evans asks for one language within a bounded context. IA7 read Perqo's three labels for one allocation as compatible with that on one rule: the model name is the team's word, and the surface labels are recorded translations of it, "never a second concept" (IA7, section 6.2). IA8 named the catalogue and its taxonomy as a candidate bounded context of its own, owned by the content team and joined to the rest at R-07 and R-17 (IA8, D.1).</li>
+</ul>
+<p>Lisa Welchman's subtitle is <em>Digital Governance by Design</em>, and her publisher's page defines the discipline: "Digital governance is a discipline that focuses on establishing clear accountability for digital strategy, policy, and standards" (Rosenfeld Media, <em>Managing Chaos</em>, publisher's page, FAQ, <a target="_blank" rel="noopener" href="https://rosenfeldmedia.com/?p=187514">rosenfeldmedia.com, Managing Chaos</a>, read 10 November 2026). In her chapter on standards she writes: "Your standards are the tactical manifestation of your strategy" (Welchman, "Stopping the Infighting About Digital Standards", A List Apart, 3 March 2015, an excerpt of <em>Managing Chaos</em>, ch. 5, <a target="_blank" rel="noopener" href="https://alistapart.com/article/stopping-the-infighting-about-digital-standards/">alistapart.com, digital standards</a>, read 10 November 2026; practice). IA9 already called the IA a standard in her sense, a shared structure many teams build on (IA9, section 4.1). The shared vocabulary is the most widely read part of that standard: support reads it in tickets, sales in demos, engineering in code, finance in reports.</p>
+<p>On this unit's reading, "by design" means the vocabulary is built so that each of the four readers finds its own column in one record, and none keeps a private list. One row per concept: its identifier, its model name, its preferred term on each surface (and, once a second language exists, in each language), its variants, its definition, and its owner. That is the form of Deliverable C. A product that keeps four lists, one per function, keeps four vocabularies, and IA2's fifth fault, one thing with two names and no mapping, is the condition it will be in (IA2, section 3).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.417"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="52" data-rings="2"><path d="M224 78l-8 2-11 8 11 4 16 4 48 5 32 1 32-2 23-4-10-8-61-13-40-1z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="141" data-rings="5"><path d="M496 72l-24 4-24 7-13 5-4 8 25 8 16 3 104 17 64 5 24 0 32-1 24-3 16-4 8-3 9-6-2-8-32-16-12-8-19-7-24-5-40-3-48 0-48 2zM584 72l-32 1-32 4-24 5-16 5-2 1-3 8 25 8 84 14 56 4 32-2 24-3 18-5 3-8-37-20-16-6-32-5zM552 80l-24 3-19 5-5 8 29 8 59 9 40 3 24-1 21-3 14-8-11-8-16-9-24-7-40-3zM544 88l-3 0-11 8 37 8 25 4 24 2 16 0 16-2 17-4-7-8-15-8-19-4-16-1-24 0zM568 94l-6 2 46 7 16-1 8-6-16-5-16-2-16 1z"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="103" data-rings="4"><path d="M840 55l-32 7-7 2-8 8 5 8 13 8 13 5 24 5 24 3 32 1 88-1 48-5 16-4 9-4-4-8-13-4-32-6-48-6-24-5-56-5-24 0zM856 64l-16 4-8 4 3 8 14 8 23 5 40 3 48-1 32-2 27-5 1-8-20-4-72-12-32-3zM872 71l-5 1-2 8 22 8 9 1 40 1 32-2 8-2 9-6-65-11-24-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-0" data-step="0"><span>Previous · 1 of 12</span><b>What an enterprise taxonomy is, and how it differs from a navigation hierarchy</b></a><a class="snext" href="#read-dd-ia3-2" data-step="2"><span>Next · 3 of 12</span><b>Ownership: who owns the IA, the taxonomy and each label</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-dd-ia3-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">Ownership: who owns the IA, the taxonomy and each label</span></span></h2>
+<h3>3.1 · Welchman's framework</h3>
+<p>Welchman's book is practice: an author's account from consulting work, with case studies and no measurement. Its contents, as the publisher lists them, run from "The Basics of Digital Governance" through "Your Digital Team: Where They Are and What They Do", "Digital Strategy: Aligning Expertise and Authority", "Staying on Track with Digital Policy", "Stopping the Infighting About Digital Standards" and "Five Digital Governance Design Factors" to "Getting it Done", "The Decision to Govern Well" and three case studies, multinational business-to-business, government and higher education (publisher's page, read 10 November 2026). Two of those chapters were read for this unit, chapter 5 in the A List Apart excerpt and chapter 7 in a sample chapter (Welchman, "Managing Chaos: Digital Governance by Design", UXmatters, 4 May 2015, <a target="_blank" rel="noopener" href="https://www.uxmatters.com/mt/archives/2015/05/managing-chaos-digital-governance-by-design.php">uxmatters.com, sample chapter</a>, read 10 November 2026; practice). Chapters 2 and 6, where the publisher's titles show the book treats where the team sits and the factors that shape a framework, were not read, and this unit names none of the organisational models they may describe.</p>
+<p>What the two read chapters set out is a framework, and its parts are these. Governance is accountability for three things: strategy, policy and standards (publisher's FAQ). "Your digital governance framework is just that—a framework for decision making" (Welchman 2015, ch. 7). Standards have a steward: "An organization's digital standards steward's job is to establish and maintain a standards-compliant environment", and "In the best of cases, the organizational standards steward is not an enforcer" (Welchman 2015, ch. 5). Authority is named in advance: "knowing who has the authority to define standards saves time" (same). Compliance has four conditions, standards "defined and documented", "disseminated", "implemented", and "measured and managed", the measuring done "in a consistent and automated way", with the expectation that "you'll never have 100% compliance" (same). And the failure she names is one of telling: "Frequently, resources aren't told that a standard has changed until the standard is violated" (same). The chapter names a "core digital team" and an "extended digital team", and asks that standards be written down so the extended team can follow them (same).</p>
+<h3>3.2 · What each part is owned by at Perqo</h3>
+<p>Halvorson and Rach make governance one of content strategy's four components, the way key decisions about content are made (<em>Content Strategy for the Web</em>, 2nd ed., New Riders, 2012, ch. 9; IA1, section 2.3; IA9, section 4.1). The filed units already answer most of the ownership question for Perqo (Perqo, fictional); one part was left split, and one was left empty.</p>
+<ul>
+<li><strong>The IA.</strong> The IA designer owns the canonical artefacts and the decision log; the IA review decides changes that touch a rule or two surfaces, rename a label or retire an identifier; product management signs off rule and two-surface changes (IA9, section 4.1 and D.1).</li>
+<li><strong>The taxonomy.</strong> The content team owns it and decides its values, as a proposed change reviewed with support and engineering under R1 to R10; a new top-level category also goes to product management, finance and the client (IA4, B.4; IA9, D.1).</li>
+<li><strong>The vocabulary, left split.</strong> IA9's workflow names the content team as owner of "labels, vocabulary" when the words are put in place (IA9, Deliverable A, W-13) and of the vocabulary review (RV-07), while its section 4.1 gives the IA designer every canonical artefact other than the taxonomy. A vocabulary with two owners has none in Welchman's sense: nobody is its steward. DL-024 proposes the content team as the vocabulary's steward, with the IA designer keeping the model-name column with engineering.</li>
+<li><strong>Each label, left empty.</strong> No filed unit names who answers for one term. Deliverable C gives each term an owner by one rule: <strong>a term is owned by the owner of the artefact that defines it, and a term whose meaning is a rule or a contract term is owned by product management</strong>. An object's term is the IA designer's, because the object map defines it (IA4, A; IA9, section 4.1); a taxonomy term is the content team's (IA4, B); a claim's status, the auto-approve limit and the period are product management's, because a change to any of them changes a rule's outcome, which product management signs off (IA9, D.1), and the period's end is G-7, which product management owns (IA12, B.6). The owner keeps the definition true and is asked first about a change; the decider is still the one D.1 names.</li>
+<li><strong>Each language, left empty.</strong> Localisation has no forum until a second language is added (IA10, section 2.3, TP-05). Deliverable A gives it one, FO-10, and a role, the language owner, both dormant until then.</li>
+</ul>
+<p>Mapped onto Welchman's framework, on this unit's reading: strategy is leadership's and product management's (which markets, which categories); policy is the routing rule and the consultation rules (IA9, D.1; DL-014, proposed); standards are the notation, the vocabulary, the taxonomy rules and the version rule. The core team is the IA designer, the content team and, once there is a second language, localisation; every other function applies the standards and sits in the extended team. The figure of decision rights is in Deliverable A, A.2.</p>
+<h3>3.3 · One organisation's documented split: GOV.UK</h3>
+<p>The Government Digital Service publishes how GOV.UK's topic taxonomy is owned. Its principles say: "GDS manages the topic taxonomy based on feedback from a variety of sources"; publishers can "suggest new topics, or changes to existing topics"; and "Publishing teams are responsible for making sure the content they publish is tagged accurately" (GDS, "GOV.UK Taxonomy principles", published 13 June 2019, updated 9 September 2026, <a target="_blank" rel="noopener" href="https://www.gov.uk/government/publications/govuk-topic-taxonomy-principles/govuk-taxonomy-principles">gov.uk, taxonomy principles</a>, read 10 November 2026; publisher's documentation). In 2019 a GOV.UK product manager described how the work was divided when the dedicated taxonomy team paused for other work: "taxonomy change requests will be handled by content support", "improvements to content tagging quality and the structure of the taxonomy will sit in the navigation team", and "improvements to the tagging interface will form part of the publishing workflow team's work"; the same post says "We know that we need to do more to make it easier for publishers to tag their content accurately" (Si Stephens-Manassiev, "An update on the GOV.UK taxonomy", Inside GOV.UK, 12 February 2019, <a target="_blank" rel="noopener" href="https://insidegovuk.blog.gov.uk/2019/02/12/an-update-on-the-gov-uk-taxonomy/">insidegovuk.blog.gov.uk, taxonomy update</a>, read 10 November 2026; practice, a maker's account). DD-IA1 read the same post as GOV.UK's documented governance cost (DD-IA1, section 2).</p>
+<p>Three roles are separated in that account: who handles a request, who owns the structure, and who owns the tool that applies it. They map onto Perqo without a new function: the content team handles requests and owns the structure (IA4, B.4), and engineering owns the tool, the covered-items picker in Admin's Policies and the catalogue's own surface, which IA4 left unset (IA4, A.3). What the GOV.UK account adds is the warning in its last sentence: the people who tag are not the people who own the taxonomy, and accuracy is theirs to keep. At Perqo the taggers are support (Help centre articles) and marketing (customer stories) (IA5, Deliverable A), the content team (catalogue items; IA4, A.3), and Perqo itself, which assigns each merchant its narrower term (IA4, A.1); so the drift checks of section 6 read their tags as well as the taxonomy.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.833"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="172" data-rings="4"><path d="M160 62l-24 8-20 10-11 8 1 8 14 7 24 6 40 5 96 4M282 72l-18-6-16-5-16-2-40-1-32 4M160 72l-16 6-15 10 4 8 11 4 24 5 24 3 88 1M272 82l-7-2-17-9-24-4-32-1-16 2-16 4M200 72l-16 1-16 4-7 3-13 8 8 8 20 4 24 3 32 0 48-3M272 93l-16-5-12-8-12-5-16-3-16 0M184 80l-16 8 16 7 24 3 28-2-3-8-11-8-22-2z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="178" data-rings="4"><path d="M280 118l72 7 40 0 24-5 16-6 3-2 5-9 9-7 7-2 16-2M464 74l-56-6-32-1-24 2-40 5-16 0-14-2M280 109l64 8 40 0 24-4 8-6 9-11 15-8-8-8-24-4-16-1-40 1-48 7-16 1-16-2M280 100l56 11 24 1 16 0 16-3 8-3 3-2 5-9 8-7-16-6-16-2-16 0-32 4-48 9-16 0M344 88l-28 8 18 8 26 3 24-3 7-8 1-8-24-2z"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="63" data-rings="1"><path d="M472 92l72-5 16-3 13-4-19-8-26-3-16 1-32 4-16 0"/><circle class="ct-spot" cx="520" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="84" data-rings="2"><path d="M616 72l8 8 24 12 24 4 48 1 8 4M736 74l-56-9-24-1-24 3-16 5M664 75l-7 5 15 6 8 1 16-2 14-5-30-5z"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="197" data-rings="5"><path d="M728 101l5 11 11 6 24 7 24 2 48-2 81-13 55-3M928 71l-72-3-32 0-72 7-16-1M792 78l-16 5-8 5-11 16 6 8 5 2 16 4 24 2 40-2 32-7 24-3 144-11M928 77l-96-3-24 2-16 2M824 80l-16 2-19 6-13 16 8 5 8 3 24 2 24-1 40-6 32-4 80-5M928 83l-72-4-32 1M808 88l-10 8-3 8 13 4 16 1 24-1 48-8 41-4M928 88l-80-4-24 1-16 3M816 96l8 7 8 1 55-8-15-4-24-3-16 1z"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="144" data-rings="4"><path d="M976 109l43-5 53-3 24-5 10-8-9-8-17-5-32-6-32-3-32 1-56 4M1048 97l10-1 18-8-14-8-6-2-24-4-24-1-24 0-56 4M992 98l40-5 18-5-21-8-21-2-16 0-40 4-24 1M937 96l7-4 32 0 41-4-25-3-64 3"/><circle class="ct-spot" cx="1000" cy="88" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-1" data-step="1"><span>Previous · 2 of 12</span><b>Metadata and the shared vocabulary across product, content, data and engineering</b></a><a class="snext" href="#read-dd-ia3-3" data-step="3"><span>Next · 4 of 12</span><b>Change control for a taxonomy and for the IA</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-dd-ia3-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">Change control for a taxonomy and for the IA</span></span></h2>
+<h3>4.1 · What a taxonomy change has that an IA change does not</h3>
+<p>IA9's change control covers every change to the IA: raise, log as proposed, check the impact by identifier, J- row, X- crossing and DT- rule, route, decide, change the vocabulary first, change the artefacts and re-stamp each face, tell the informed functions, close as applied (IA9, D.2). A taxonomy change runs the same steps and adds one: migration. Changing a value changes nothing on its own; every item, article, story, offer, merchant and synonym that carries the old value has to be moved, and each address built on it redirected. The two standards whose scope covers maintenance say so in their titles and abstracts, Z39.19's "maintenance, and management" and ISO 25964-1's "development and maintenance" and "thesaurus management" (section 1.3), and SKOS gives a concept notes to carry its change and history (section 1.3).</p>
+<p>The documented practice shows three ways an organisation runs migration and tells its readers.</p>
+<ul>
+<li><strong>GOV.UK changes topics one at a time.</strong> "The taxonomy is flexible": topics can be added "if a new subject area emerges", removed "if they become redundant", renamed, merged or split (GDS, taxonomy principles, read 10 November 2026). When policies and policy areas were retired in 2019 they were "removed and redirected to equivalent topics", the front-end links to them removed, and subscribers to their email alerts sent one email suggesting equivalent topics (Stephens-Manassiev 2019). GOV.UK's developer documentation says the topics, "taxons" in code, are stored as content items that "can be in either draft state or published", managed in the Content Tagger application by users with the "GDS Editor" permission (GOV.UK Developer Documentation, "How the topic taxonomy works", last updated 4 May 2022, <a target="_blank" rel="noopener" href="https://docs.publishing.service.gov.uk/manual/taxonomy.html">docs.publishing.service.gov.uk, taxonomy</a>, read 10 November 2026; platform documentation, which warns that it "may be out of date").</li>
+<li><strong>eBay versions a tree per market.</strong> "Approximately 20 eBay marketplaces each use a default category tree", which is "subject to change as categories are added, expanded, consolidated, or removed (users are notified of any changes)"; a client retrieves the tree's version and compares "the categoryTreeVersion field to the one you have cached" (eBay Developers Program, "Finding categories for a listing", <a target="_blank" rel="noopener" href="https://www.developer.ebay.com/api-docs/sell/static/metadata/sell-categories.html">developer.ebay.com, sell categories</a>, read 10 November 2026; platform documentation). DD-IA1 read the same page on the same day (DD-IA1, "What later units take").</li>
+<li><strong>Shopify releases the whole taxonomy on a calendar.</strong> Its standard product taxonomy, "an open-source comprehensive, global standard for product classification", is versioned by date, "in sync with Shopify's API release schedule", with "a stable release every 3 months at most, at the beginning of the quarter"; anyone may "Submit a taxonomy tree change request" or a pull request "against the source-of-truth files"; and "mappings" are "rules that can be used to convert between categories and attributes" (Shopify, product-taxonomy repository, README, <a target="_blank" rel="noopener" href="https://github.com/Shopify/product-taxonomy">github.com, Shopify product taxonomy</a>, read 10 November 2026, version badge 2026-10; vendor documentation).</li>
+</ul>
+<p>The three differ in who reads the taxonomy. GOV.UK's readers are its own publishers and the public, and it changes topic by topic. eBay's and Shopify's readers include outside software that stores the categories, so each publishes a version a client can compare, and Shopify publishes mappings from one version to the next. Perqo's readers today are its own surfaces, its functions and its merchants' category assignments; no software outside Perqo reads the taxonomy (Perqo, fictional, set here; the catalogue's own surface is unset, IA4, A.3). So Perqo keeps IA9's version rule for the taxonomy's face, a new version when a change breaks a citation and a dated amendment otherwise (IA9, section 4.4), and does not adopt a release calendar. If an outside reader is added, such as a merchant integration, the versioned release eBay and Shopify document is the form to adopt; that is recorded as an open condition in Deliverable B.</p>
+<h3>4.2 · A term's lifecycle</h3>
+<p>The operations a taxonomy change can make are six: add, rename, move, merge, split and retire (the list GDS publishes, with move added for a value that changes its parent). Each moves a term through a lifecycle, which the figure draws (Perqo, fictional; built on IA4's R9 and IA9's log statuses). A term starts <strong>Proposed</strong>, logged as a DL entry and in no filter. It becomes <strong>Active</strong> when it is accepted and applied: it is in tags, filters, search and URLs. A rename leaves it Active, its old label kept as a variant (R9), which the notation draws as an arrow from the state back to itself (IA2, section 5.2). A merge, a split or a retirement, once accepted, makes it <strong>Deprecated</strong>: no new item is tagged with it, its items are migrating, and its addresses redirect. When the last item has migrated it is <strong>Retired</strong>, and its identifier is never reused (R9). A proposal refused is <strong>Declined</strong>, kept with its reason (IA9, section 4.3). Retired and Declined are end states; Declined is tone 6, a stop, and every other state is tone 5, shared. The figure's states carry these notes: Proposed, "a DL entry; in no filter"; Active, "tags, filters, search, URLs"; Deprecated, "no new tags; items migrating; addresses redirect"; Declined, "kept, with its reason"; Retired, "identifier never reused". Its transitions read "accepted and applied" (Proposed to Active), "decided: no" (Proposed to Declined), "rename: old label kept as a variant" (Active to itself), "merge, split or retire accepted" (Active to Deprecated) and "last item migrated" (Deprecated to Retired). A move changes a value's parent; it is not drawn as a state, because the term stays Active, and under IA9's rule it makes a new version (IA9, section 4.4).</p>
+<figure class="viz viz-states"><div class="viz-scroll"><svg viewBox="0 0 700 259.5" width="700" height="259.5" data-x0="93" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="states"><path class="viz-link" d="M181.8,94.5 L181.8,176.2 L200.2,176.2 L200.2,185.5"/><path class="viz-head" d="M200.2,192.5 L196.2,185.5 L204.2,185.5 z"/><g data-box=""><rect class="viz-lblbg" x="206.2" y="168.0" width="67.7" height="16.5"/><text class="viz-linklabel" x="240.0" y="180.0" text-anchor="middle">decided: no</text></g><path class="viz-link" d="M533.8,107.0 L533.8,176.2 L376.2,176.2 L376.2,185.5"/><path class="viz-head" d="M376.2,192.5 L372.2,185.5 L380.2,185.5 z"/><g data-box=""><rect class="viz-lblbg" x="404.7" y="168.0" width="100.5" height="16.5"/><text class="viz-linklabel" x="455.0" y="180.0" text-anchor="middle">last item migrated</text></g><path class="viz-link" d="M249.0,65.0 L302.0,65.0"/><path class="viz-head" d="M309.0,65.0 L302.0,69.0 L302.0,61.0 z"/><text class="viz-linklabel" x="279.0" y="32.5" text-anchor="middle">accepted</text><text class="viz-linklabel" x="279.0" y="45.0" text-anchor="middle">and</text><text class="viz-linklabel" x="279.0" y="57.5" text-anchor="middle">applied</text><path class="viz-link" d="M425.0,65.0 L478.0,65.0"/><path class="viz-head" d="M485.0,65.0 L478.0,69.0 L478.0,61.0 z"/><text class="viz-linklabel" x="455.0" y="20.0" text-anchor="middle">merge,</text><text class="viz-linklabel" x="455.0" y="32.5" text-anchor="middle">split or</text><text class="viz-linklabel" x="455.0" y="45.0" text-anchor="middle">retire</text><text class="viz-linklabel" x="455.0" y="57.5" text-anchor="middle">accepted</text><path class="viz-link" d="M393.0,94.5 C393.0,118.5 413.0,118.5 413.0,101.5"/><path class="viz-head" d="M413.0,94.5 L409.0,101.5 L417.0,101.5 z"/><text class="viz-linklabel" x="403.0" y="126.5" text-anchor="middle">rename: old label</text><text class="viz-linklabel" x="403.0" y="139.0" text-anchor="middle">kept as a variant</text><circle class="viz-start" cx="106.0" cy="65.0" r="5"/><path class="viz-link" d="M112.0,65.0 L126.0,65.0"/><path class="viz-head" d="M133.0,65.0 L126.0,69.0 L126.0,61.0 z"/><g data-box=""><rect class="viz-node viz-t5" x="133.0" y="35.5" width="116" height="59.0" rx="10"/><text class="viz-nodelabel" x="191.0" y="55.8" text-anchor="middle">Proposed</text><text class="viz-small" x="191.0" y="70.3" text-anchor="middle">a DL entry; in</text><text class="viz-small" x="191.0" y="82.8" text-anchor="middle">no filter</text></g><g data-box=""><rect class="viz-node viz-t5" x="309.0" y="35.5" width="116" height="59.0" rx="10"/><text class="viz-nodelabel" x="367.0" y="55.8" text-anchor="middle">Active</text><text class="viz-small" x="367.0" y="70.3" text-anchor="middle">tags, filters,</text><text class="viz-small" x="367.0" y="82.8" text-anchor="middle">search, URLs</text></g><g data-box=""><rect class="viz-node viz-t5" x="485.0" y="23.0" width="116" height="84.0" rx="10"/><text class="viz-nodelabel" x="543.0" y="43.3" text-anchor="middle">Deprecated</text><text class="viz-small" x="543.0" y="57.9" text-anchor="middle">no new tags;</text><text class="viz-small" x="543.0" y="70.3" text-anchor="middle">items migrating;</text><text class="viz-small" x="543.0" y="82.8" text-anchor="middle">addresses</text><text class="viz-small" x="543.0" y="95.3" text-anchor="middle">redirect</text></g><g data-box=""><rect class="viz-node viz-t6" x="133.0" y="192.5" width="116" height="59.0" rx="10"/><rect class="viz-endring viz-t6" x="136.0" y="195.5" width="110" height="53.0" rx="7"/><text class="viz-nodelabel" x="191.0" y="212.8" text-anchor="middle">Declined</text><text class="viz-small" x="191.0" y="227.3" text-anchor="middle">kept, with its</text><text class="viz-small" x="191.0" y="239.8" text-anchor="middle">reason</text></g><g data-box=""><rect class="viz-node viz-t5" x="309.0" y="192.5" width="116" height="59.0" rx="10"/><rect class="viz-endring viz-t5" x="312.0" y="195.5" width="110" height="53.0" rx="7"/><text class="viz-nodelabel" x="367.0" y="212.8" text-anchor="middle">Retired</text><text class="viz-small" x="367.0" y="227.3" text-anchor="middle">identifier never</text><text class="viz-small" x="367.0" y="239.8" text-anchor="middle">reused</text></g></svg></div><figcaption>State diagram: the lifecycle of a term in Perqo's taxonomy and vocabulary; supports the decision on what a term may be used for at each point of a change (section 4.2). Operations from GDS, 'GOV.UK Taxonomy principles' (read 10 November 2026), with move added; stable identifiers and the renamed term kept as a variant from IA4, Deliverable B, R9; Proposed and Declined from IA9, section 4.3; the arrow to itself from IA2, section 5.2. Tone 5 shared; tone 6 a stop, a proposal refused. Perqo is fictional.</figcaption></figure>
+<h3>4.3 · Change control for the IA, at scale</h3>
+<p>The IA's own change control stays IA9's, and three things change when the IA holds several languages and markets. The impact step counts language versions: a renamed label is one change in the log and one change per language on the screens, and IA9's "applied" means every place is changed (IA9, section 4.3), so a change is not applied while any live language still shows the old label. The told step reaches functions per language: a change sales hears of at FO-04 in one market is heard by each market's sales. And the version rule holds per artefact, in every language alike: a translated label added where none existed adds without breaking, a dated amendment; a translated label renamed breaks citations in that language's articles and support scripts, a new version (IA9, section 4.4). Deliverable B writes the process in full.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.25"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="133" data-rings="2"><path d="M120 71l-8 3-10 6 8 8 21 8 14 8 15 5 24 5 24 2 48-1 24-3 16-5 8-3 20-16 2-8-19-8-11-2-48-5-72 0-32 2zM168 80l-4 8 20 9 24 4 24 0 16-2 11-3 7-8-6-8-20-3-40 0z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="14" data-rings="0"><circle class="ct-spot" cx="408" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="153" data-rings="2"><path d="M616 48l-40 4-57 12-49 8-26 8-7 8 6 8 85 11 88 10M680 43l-64 5M616 56l-32 4-72 16-13 4 1 8 36 9 96 11M656 52l-40 4M608 63l-39 9-27 8 2 3 6 5 18 4 32 5 48 5M648 59l-40 4M640 67l-32 4-23 9 16 8 15 2 53 6M643 80l5 1"/><circle class="ct-spot" cx="600" cy="80" r="9"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="293" data-rings="5"><path d="M616 117l72 6 48 2 48-2 104-8 24 1M1064 72l-37-16-27-6-40-6-48-2-56-1-176 2M632 108l72 5 40 2 48-2 104-7M984 63l-24-6-32-4-64-3-160 1-48 1M648 102l72 5 48 0 40-1 72-6 88-1M968 72l-32-9-40-5-48-2-152 1-48 2M672 64l-32 3M669 96l51 3 40 2 40-1 128-9M950 80l-17-8-13-3-24-4-24-2-48-2-152 3M664 72l-21 8M648 81l39 7 81 6 40-1 57-5 31-4 14-4-20-8-50-4-112 0-64 4"/><circle class="ct-spot" cx="792" cy="80" r="11"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="141" data-rings="2"><path d="M912 116l72 4 40 0 32-3 33-5 27-8 10-8-7-8-23-8-32-8M896 106l32 0 48 4 24 0 24-2 23-4 19-8-7-8-35-9-40-16M968 99l32-3-1-8-31-16M928 91l19-3 3-8"/><circle class="ct-spot" cx="984" cy="96" r="8"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-2" data-step="2"><span>Previous · 3 of 12</span><b>Ownership: who owns the IA, the taxonomy and each label</b></a><a class="snext" href="#read-dd-ia3-4" data-step="4"><span>Next · 5 of 12</span><b>Localisation, and the labels that do not survive translation</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-dd-ia3-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">Localisation, and the labels that do not survive translation</span></span></h2>
+<h3>5.1 · One key for every language</h3>
+<p>IA5 set the rule this section builds on. perqo.com is published in English only, and each language version of a page must list itself and every other version, or, in Google's documentation as IA5 cites it, "If two pages don't both point to each other, the tags will be ignored" ("Localized Versions of your Pages", Google Search Central, as cited in IA5, section 5.3; vendor documentation, checked 3 November 2026). So the site needs one key the same in every language, and the inventory's identifier is it: S-1.4.2 is the Learning page in every language, "whatever its title and its slug become"; identifiers carry no words of any language (IA5, section 5.3).</p>
+<p>DD-IA1 brought two observations of real products to this rule, both of 10 November 2026. Stripe's English (UK) documentation writes the API value <code>cancelled</code> where its unlocalised pages write <code>canceled</code>: an identifier that took a language's spelling. And a web search returned Airbnb's help article on pending reservations at the same number, 2810, on seven country domains: a stable key across language versions (DD-IA1, "What later units take"; only the airbnb.com page was read there). The first is the fault IA5's rule exists to prevent; the second is the rule kept.</p>
+<p>Perqo's own identifiers raise one honest question. CAT-HEA is built from the first letters of an English word. It is a code, SKOS's notation (section 1.3), never shown as a label, and R9 forbids changing it; so it stays as it is in every language, and nobody translates "cat-hea" (Perqo, fictional). The rule for new identifiers is IA5's, without exception: no word of any language in an identifier created from today. The twelve existing F-CAT codes are kept under R9, because changing them would break every address and filter built on them (IA4, section 5).</p>
+<h3>5.2 · What does not survive translation</h3>
+<p>A label is a short string, and short strings change most in translation. The W3C's internationalisation article "Text size in translation" says that "text will normally expand, but note carefully how the smaller the source message, the higher the likely translation length", and reports IBM's average expansion for English into European languages: 200 to 300% for text up to 10 characters, 180 to 200% for 11 to 20, falling to 130% over 70 characters ("IBM in their Guidelines to design global solutions", as the article attributes them). Its example is a label: "views" becomes "visualizzazioni" in Italian, "a ratio of 3" (W3C Internationalization, "Text size in translation", <a target="_blank" rel="noopener" href="https://www.w3.org/International/articles/article-text-size/index.en">w3.org, text size in translation</a>, read 10 November 2026; the page as read shows no date; standards body's guidance, reporting IBM's figures). Perqo's five tab labels are 4 to 8 characters long (Home, Benefits, Claims, Card, Account; IA6, Deliverable B), the band where IBM's figures put the largest expansion. A tab bar that fits in English is the first structure to test in a new language, and IA9's trigger already applies: a change to a tab sends the structure to a test before and after (RV-11).</p>
+<p>Four further things do not travel, each from a filed rule.</p>
+<ol>
+<li><strong>Variant terms.</strong> Furnas and his colleagues found that two people chose the same term for an object with a probability under 0.20 (Furnas, Landauer, Gomez and Dumais, <em>Communications of the ACM</em> 30, no. 11, 1987; IA3, section 4.2; IA4, section 1.1). A language's variants are the words its speakers type, and IA4's source for them is the search log and support's tickets (IA4, section 3.3). A translated list of English variants is a guess at another population's words; each language's variants come from that language's logs and tickets, which is what T-14's "synonyms per language" means (IA5, Deliverable C).</li>
+<li><strong>Exclusions.</strong> R4 excludes "class" from Courses because "yoga class" is a Fitness item (IA4, B.4). The exclusion is a fact about English. In another language the word that pulls an item into the wrong category is another word, so R4 is run again for every language.</li>
+<li><strong>Preferred terms at the basic level.</strong> R3 asks for the employee's word, at the basic level where it can be (IA4, B.4). The basic-level word is found in each language's users, so a translated preferred term is assumed until that language's test confirms it (IA11's ladder: C0 until tested; IA11, section 6.4).</li>
+<li><strong>Market facts inside a page.</strong> IA5's localisation column marks the modules a translator cannot fill because they differ by market: plan comparison and pricing scenario (M-10, M-11), app-store links (M-24), legal text with its version date (M-25); and T-04's catalogue examples (M-08) may differ by market (IA5, Deliverable C, C.1 and C.2). Each needs a decision per market, by the module's owner, before the page goes live there.</li>
+</ol>
+<h3>5.3 · Languages and markets are separate keys</h3>
+<p>eBay's documentation shows a market with a tree of its own, about 20 marketplaces each with "a default category tree" (section 4.1). Shopify's shows one tree with translations, "translations to various languages in the <code>localizations</code> directory" (Shopify README, read 10 November 2026). Perqo takes Shopify's form for its taxonomy, on a reason of its own (Perqo, fictional): F-CAT is how money moves, a claim reads one category's balance and a new category creates an allocation for every employee who has it open (IA3, section 2.3; IA4, R8), so a market with a different category tree would be a different product. Markets differ in what a policy covers and what a page carries; the categories are the same in every market: a client's policy covers catalogue items (IA4, A.2, R-07), and the market-marked modules carry the rest. A proposal for a market-specific category is a new top-level category under R8 and goes to the IA review.</p>
+<p>A language and a market are therefore two keys on every record that varies. A label varies by language; a module's content varies by market; a catalogue item's presence varies by policy, and so by client. The vocabulary in Deliverable C keys labels by surface and language; the inventory keys pages by identifier, with a market column where a market-marked module is used (Deliverable B, B.4).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.667"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="112" data-rings="3"><path d="M288 67l-40 0-80-6-32 2-24 3-22 6-16 8-6 8 3 8 16 8 9 3 24 3 32 3 96 5M256 75l-80-4-32 2-23 7-9 8 4 8 4 1 16 5 16 2 96 7M288 82l-96-3-18 1-14 4-8 4 9 8 73 8 30 2"/><circle class="ct-spot" cx="192" cy="88" r="9"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="92" data-rings="2"><path d="M248 118l96 0 74 2 78 4M320 74l-64 1M248 111l32 1 48-2 80 1 104 4M376 82l-8 1-80-1M264 106l32 0 48-2 48-4 104 7"/><circle class="ct-spot" cx="328" cy="96" r="8"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="95" data-rings="2"><path d="M400 52l-40 6-35 6-37 3M424 60l-24 3-50 9-30 2M448 66l-24 3-14 3-34 10M465 72l-17 4-13 4-1 8 6 3 16 5 24 3M478 80l2 8 24 5"/><circle class="ct-spot" cx="464" cy="80" r="9"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="194" data-rings="5"><path d="M520 47l-120 5M496 124l40 1 48-3 40-5 40-7 40-2 61 4M808 56l-48-6-72-6-96 0-72 3M520 56l-96 4M512 115l40 0 24-1 32-3 56-10 32-1 48 2M712 55l-40-3-96 0-56 4M496 63l-48 3M496 107l64 2 40-4 56-10 56-2 48 2M696 61l-40-3-88 0-72 5M560 64l-95 8M480 99l56 3 48-1 24-3 32-6 40-4 49-8-17-8-48-7-40-2-64 1M528 71l-50 9M504 93l31 3 33 0 24-1 77-15-14-8-23-2-56-1-48 2M536 80l8 5 8 3 16 0 16-1 29-7-21-3-16 0z"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="11" data-rings="0"><circle class="ct-spot" cx="736" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="155" data-rings="4"><path d="M765 112l67 7 40 2 24-1 56-4 56-8 32-8 32-9M1008 54l-48-1-72 5-32 1-48-3M744 102l104 9 48 1 48-4 56-8 24-6M992 62l-40 0-96 5-56-3-88-9M760 95l96 10 32 0 32-2 59-7 34-8M984 69l-40 0-72 4-24 0-80-4-72-8M816 80l-8 2-6 6 47 8 31 2 31-2 59-8 5-8-63-2-48 2z"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="66" data-rings="1"><path d="M1072 91l25-11 0-8-17-8-32-6-40-4M1024 94l36-14-5-8-7-2-24-5-32-3M1013 88l14-8-15-8-28-3"/><circle class="ct-spot" cx="1008" cy="80" r="8"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-3" data-step="3"><span>Previous · 4 of 12</span><b>Change control for a taxonomy and for the IA</b></a><a class="snext" href="#read-dd-ia3-5" data-step="5"><span>Next · 6 of 12</span><b>The failure modes at scale, and how to detect them</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-dd-ia3-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">The failure modes at scale, and how to detect them</span></span></h2>
+<p>Four failures recur when a structure grows across surfaces, functions and languages. For each, the evidence that it happens, its Perqo instance, and the check that would detect it. None of the checks has been measured at Perqo; each is set as practice in Deliverable A, A.4, and assumed until tested (Deliverable A, A.6).</p>
+<p><strong>Drift.</strong> One thing acquires two names, and the mapping between them is never written (IA2, section 3, fault 5). DD-IA1 found it on the one site of its five whose makers publish rules for their vocabulary: GOV.UK's topic list reads "Births, deaths, marriages and care" where its navigation menu reads "Births, death, marriages and care" (DD-IA1, section 2, read 10 November 2026). Perqo has had it twice: the Help centre article H-2.1.2 said "refund" where the app says Claim (IA2, section 5.3), and the product page S-1.2 said "allowance" (IA5, section 1.3). Welchman's compliance conditions give the detection its form: measured "in a consistent and automated way" (Welchman 2015, ch. 5). <strong>Check:</strong> at each release, every label on the screens and pages the release changed is compared with the vocabulary's preferred term for that surface and language; a label in the vocabulary's "avoid" column is a finding (RV-13, Deliverable A, A.4).</p>
+<p><strong>Duplication.</strong> Two structures, or two terms, hold the same thing. In 2021 GDS described GOV.UK's three topic systems, "a set of around 200 topics", "a set of around 400 topics" and "a set of around 4,000 cross-cutting topics", and wrote: "This triple-system, which has substantial duplication, causes confusion for users"; publishers "currently need to tag their content to multiple topics, and to multiple topic systems", and the team was "in the early stages of thinking about how we might bring together mainstream topics, specialist topics and the taxonomy into a single tagging system" (Sam Dub, "Our plans to improve navigation on GOV.UK", GDS blog, 17 May 2021, <a target="_blank" rel="noopener" href="https://gds.blog.gov.uk/2021/05/17/our-plans-to-improve-navigation-on-gov-uk">gds.blog.gov.uk, navigation plans</a>, read 10 November 2026; practice, a maker's account). The figure draws the three as GDS counted them: Mainstream topics, around 200; Specialist topics, around 400; Taxonomy topics, around 4,000, the taxonomy's "cross-cutting topics". Perqo's instances were smaller: a Features page and a brochure that duplicated Product (S-1.6, S-1.7; IA5, section 1.3), and the offers list shown twice, as "Discover" and as "Perks" (IA3, Deliverable). <strong>Check:</strong> each quarter, every variant that points to two values (R4 forbids it), every label used by two concepts, and every pair of inventory rows bound to one identifier (RV-07, extended in Deliverable A, A.4).</p>
+<figure class="viz viz-compare"><div class="viz-scroll" style="--stick:124.0px"><svg viewBox="0 0 700 102" width="700" height="102" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="118.0" y="27.3" text-anchor="end">Mainstream topics</text><rect class="viz-track" x="128.03936" y="16.0" width="472.8" height="14"/><rect class="viz-bar viz-t2" x="128.03936" y="16.0" width="23.6" height="14"/><text class="viz-value" x="159.7" y="26.8">around 200</text><text class="viz-label" x="118.0" y="57.3" text-anchor="end">Specialist topics</text><rect class="viz-track" x="128.03936" y="46.0" width="472.8" height="14"/><rect class="viz-bar viz-t2" x="128.03936" y="46.0" width="47.3" height="14"/><text class="viz-value" x="183.3" y="56.8">around 400</text><text class="viz-label" x="118.0" y="87.3" text-anchor="end">Taxonomy topics</text><rect class="viz-track" x="128.03936" y="76.0" width="472.8" height="14"/><rect class="viz-bar viz-t2" x="128.03936" y="76.0" width="472.8" height="14"/><text class="viz-value" x="608.9" y="86.8">around 4,000</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 124.0 102" width="124.0" height="102" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="124.0" height="102"/><text class="viz-label" x="118.0" y="27.3" text-anchor="end">Mainstream topics</text><text class="viz-label" x="118.0" y="57.3" text-anchor="end">Specialist topics</text><text class="viz-label" x="118.0" y="87.3" text-anchor="end">Taxonomy topics</text></svg></div></div><figcaption>Duplication at scale: GOV.UK's three topic systems in 2021, each counted as GDS gave it; supports the decision on whether a second classification may be added beside an existing one (section 6). Data from Dub, 'Our plans to improve navigation on GOV.UK', GDS blog, 17 May 2021 (read 10 November 2026): around 200 mainstream topics, around 400 specialist topics and around 4,000 taxonomy topics, a 'triple-system, which has substantial duplication'. Every bar tone 2: a product outside Perqo. Credit: GOV.UK, Government Digital Service.</figcaption></figure>
+<p><strong>The org chart leaking into the structure.</strong> IA10 set out the evidence: Marieke McCloskey's analysis of 77 intranet IAs found that intranets "are initially structured to mimic the organizational configuration of the company", that "whenever the institution reorganizes, the navigation must also change", and that "Task-based structures often better withstood organizational change than intranets organized by department" (McCloskey, "Intranet Information Architecture (IA) Trends", Nielsen Norman Group, 23 February 2014; IA10, section 2.7); Conway's thesis is the older form of the warning (Conway 1968, as quoted by Colyer 2019; IA10, section 2.7). GOV.UK's principles write the guard into its naming rules: topics must "be subject areas (not tasks, audience types, names of departments, government initiatives, or content types)" (GDS, taxonomy principles, read 10 November 2026). At Perqo the leak has two sources. A client's structure was given its rule by IA10: "a client's structure enters as data, its words enter as variants, and a request to mirror its approval chain enters as a decision log entry" (IA10, section 2.7). Perqo's own structure has no rule yet, and one request is on record: the partnerships team asked for offers on Home and in Benefits (IA6, B.6). <strong>Check:</strong> each year, and whenever Perqo or a client reorganises, every term and top-level label is read against the list of Perqo's functions and of client group names; a term that names a team is a finding, and every term owner is confirmed to exist (RV-16).</p>
+<p><strong>Orphan categories.</strong> A value that holds nothing, or holds too much, or that nobody owns. GOV.UK's principles set both ends: "A topic should have between 2 and 12 child topics (or none)", "Single child topics can either be merged with the parent topic, pulled up to the same level as the parent topic or sibling topics and a new parent topic should be added", and "Topics with too many or too few content items should be reviewed to see if the taxonomy needs to be more or less granular" (GDS, taxonomy principles, read 10 November 2026). In 2019 GOV.UK reported its untagged content as a measure of the same thing: "the amount of untagged content has stopped growing (and is actually decreasing as a percentage)" (Stephens-Manassiev 2019; the post gives no figures). Perqo's R5 covers the low end, a value needs at least two items and is hidden from filters when it loses its last one (IA4, B.4), and nothing covers the high end. An orphan also arises when an owner goes: a term whose owner has left has no one to ask. <strong>Check:</strong> each quarter, items per value, articles and stories per F-CAT tag, untagged items, and values outside R5 and the proposed R12 (RV-14).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.083"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="54" data-rings="1"><path d="M192 87l-6 1 6 2 16 4 8 0 16-2 19-4-11-5-8-1z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="151" data-rings="3"><path d="M464 79l-16 1-48-4-32 0-24 2-24 6-10 4-3 8 7 8 22 7 24 3 32 1 128-6 72 4M504 87l-8 1-104-5-16 1-16 2-9 2-9 8 10 8 24 4 24 0 56-2 17-2 23-6 16-1 16 1M376 95l-2 1 10 3 16 2 32-2 19-3-51-6-16 2z"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="210" data-rings="4"><path d="M552 55l-32 6-16 5-24 10-16 3M592 113l32 0 32-4 40-10 16-2M640 48l-48 2-40 5M616 56l-48 4-32 7-14 5-18 15M528 98l48 6 40 1 32-4 32-9 24-2M648 56l-32 0M592 63l-24 4-21 5-10 8 8 8 7 3 16 5 16 2 24 1 24-2 16-5 24-8 16-2M632 61l-40 2M576 72l-17 8 14 8 11 3 16 1 16 0 19-4 21-12 10-4-18-3-24-2-24 1z"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="240" data-rings="5"><path d="M712 97l24 2 56 11 72 6M912 65l-48-7-40-4-184-6M704 90l40 4 32 6 24 3 80 3 32 9M904 75l-56-12-32-3-104-2-64-2M688 82l32 3 72 13 16 1 24 0 24-3 23-8-5-8-17-8-33-6-48-2-72 1-72-4M728 72l-2 0-1 8 59 11 16 2 24 0 16-3 6-2 2-8-17-8-23-3-40 0zM760 79l-3 1 43 7 8 0 8-3 6-4-14-4-16-1-16 0z"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="206" data-rings="4"><path d="M864 116l48 10 24 2 32 0 32-3 32-7 56-19 6-3 3-8-14-8-11-3-40-7-40-4-80-1M912 115l16 3 16 2 24 0 24-2 16-2 32-10 26-10 0-8-10-4-24-6-24-3-40-1-64 1M960 80l-24 3-19 5 1 8 0 8 10 4 13 4 27 2 24-2 24-6 28-10-4-8-16-4-32-4zM960 87l-8 1-6 8 1 8 5 1 16 2 24-2 28-9-15-8-21-2z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-4" data-step="4"><span>Previous · 5 of 12</span><b>Localisation, and the labels that do not survive translation</b></a><a class="snext" href="#read-dd-ia3-6" data-step="6"><span>Next · 7 of 12</span><b>Documented practice, verified against its publications</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-dd-ia3-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class="bt">Documented practice, verified against its publications</span></span></h2>
+<p>Three organisations publish their taxonomy or how it is governed, and each publication was read on 10 November 2026: GDS for GOV.UK (principles, a maker's blog post, developer documentation), eBay (developer documentation of its category trees), and Shopify (its open-source taxonomy's README). None publishes a measure of whether its governance works; GDS's posts give counts of topic systems and describe trends, and the other two describe mechanisms. They are cited as practice and documentation, never as evidence about Perqo.</p>
+<p>DD-IA1 handed this unit GOV.UK's principles to set beside IA4's rules. The table does that, each principle in GDS's words, the Perqo rule that meets it, and what Perqo takes (Perqo, fictional).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>GOV.UK principle (GDS 2019, updated 2026)</th>
+<th>IA4's rule</th>
+<th>What Perqo takes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"A topic should have between 2 and 12 child topics (or none)"</td>
+<td>R7: F-CAT keeps two levels; each category has two narrower terms today (B.2)</td>
+<td>nothing new: R7 is stricter on depth; the count of children per category is not limited, and the test of a longer list is a tree test (RV-11)</td>
+</tr>
+<tr>
+<td>"The maximum number of topics at any level should ideally be around 12"</td>
+<td>none; four categories at the top level</td>
+<td>nothing new: R8 makes every new category a product decision</td>
+</tr>
+<tr>
+<td>"Content should be tagged to the lowest possible level of the taxonomy"; "should not be tagged to both a topic and its parent"</td>
+<td>R2: every item has exactly one narrower term, and so one category</td>
+<td>already met (DD-IA1, section 2)</td>
+</tr>
+<tr>
+<td>"be disambiguated if there is more than one topic with the same name - use qualifiers in brackets"</td>
+<td>none</td>
+<td>R11, proposed: a preferred term used by two concepts takes a qualifier in brackets in the vocabulary, and the duplication check reads for it (DL-026)</td>
+</tr>
+<tr>
+<td>topics "be subject areas (not tasks, audience types, names of departments, ...)"</td>
+<td>R1 and R10: a value answers its facet's question, and a property of the policy, amount, merchant or client is not a facet</td>
+<td>the owner check of RV-16 adds Perqo's own functions to the test</td>
+</tr>
+<tr>
+<td>"reflect user language where possible"; "be written in plain English"</td>
+<td>R3: the employee's word, checked against the search log and tickets</td>
+<td>R3 run per language (section 5.2)</td>
+</tr>
+<tr>
+<td>"Topics with too many or too few content items should be reviewed"</td>
+<td>R5: at least two items; an empty value hidden</td>
+<td>R12, proposed: a value above a size set by the content team is reviewed for a split at RV-14 (DL-026)</td>
+</tr>
+<tr>
+<td>"GDS manages the topic taxonomy"; publishers "suggest new topics, or changes"</td>
+<td>IA4, B.4: the content team decides, reviewed with support and engineering; anyone may propose (IA9, D.1)</td>
+<td>already met; the request form is Deliverable B, B.1</td>
+</tr>
+</tbody>
+</table></div>
+<p>eBay and Shopify add what GOV.UK does not need: a version a reader outside the organisation can compare (eBay's <code>categoryTreeVersion</code>), a calendar for releases and a published mapping between versions (Shopify), and, for eBay, a tree per market (section 4.1). Section 5.3 gives the reason Perqo keeps one tree; the open condition in Deliverable B gives the moment Perqo would add a published version.</p>
+<p>What these publications cannot show: how many change requests each receives, how long one takes, how accurate the tagging is, or whether the structure helps people find things. GDS's 2019 sentence on tagging accuracy is the closest any comes, and it reports a need with no result.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.5"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="79" data-rings="5"><path d="M152 48l-24 3-16 3-16 5-9 5-8 8-1 8 4 8 8 8 13 8 25 9 24 5 48 5 40 1 72-1 176-6M432 77l-24-2-56-7-38-4-82-14-40-3-40 1M136 63l-17 9-4 8 3 8 9 8 16 8 17 5 24 4 24 2 96 0 184-9M408 85l-64-10-56-7-48-9-24-2-24-1-24 1-32 6M192 64l-16 2-16 3-8 3-8 8 2 8 10 8 12 5 16 4 40 4 72-1 50-4 31-8-9-4-6-4-30-8-60-8-40-7-24-2zM192 72l-8 2-13 6 1 8 11 8 17 4 24 3 48 0 24-2 27-5 1-8-31-8-61-9-24-1zM216 79l-6 1-7 8 13 5 12 3 36 0 8-2 13-6-45-9z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="32" data-rings="2"><path d="M488 117l32-3 48-11 24-2M456 75l-24 2M488 106l18-2 23-8 7-4 12-4-12-4-24-2-24 1-40 4-40-2"/><circle class="ct-spot" cx="480" cy="96" r="8"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="65" data-rings="4"><path d="M592 101l80 3 80 11 48 1 120-11M744 47l-48 0-64 5-88 12-88 11M704 56l-40 2-40 6-33 8-7 3-15 5 24 8 47 6 48 4 56 7 24 1 24-1 56-7 24-3M824 70l-64-12-32-2-24 0M696 63l-32 4-24 5-10 8 21 8 53 5 24 4 24 2 37-3 22-8-6-8-22-8-23-6-32-3zM696 72l-8 2-16 6 48 9 24 1 17-2 3-8-20-7-8-2-16 0z"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="47" data-rings="3"><path d="M920 105l32-1 64 1 32-2 16-3 17-4 11-8-6-8-22-8-45-8-43-9-32-4-32 0-54 5-18 1-96-10M872 95l128 1 24-3 19-5-2-8-1 0-28-8-52-10-16-1-24 1-16 2-32 6-24 2-24-2M944 72l-8 1-20 7 12 4 8 2 40 0 8-1 11-5-35-8z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-5" data-step="5"><span>Previous · 6 of 12</span><b>The failure modes at scale, and how to detect them</b></a><a class="snext" href="#read-dd-ia3-7" data-step="7"><span>Next · 8 of 12</span><b>A · The Perqo governance model</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-dd-ia3-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A · The Perqo governance model</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): governance model for Perqo's IA, taxonomy and vocabulary, in six parts: A.1 the roles; A.2 the decision rights, with a matrix figure; A.3 the forums, FO-01 to FO-09 as IA10 set them and FO-10 added; A.4 the cadence, with RV-13 to RV-16 added to IA9's RV-01 to RV-12 and the measurement model's reads per forum, with a matrix figure; A.5 escalation; A.6 the assumption register's process part, AR-50 to AR-64. Fidelity F2 (complete for its scope; identifiers stable). Decision: who decides, applies, is consulted on and is told of each kind of change, where, and how often the structure is checked for drift. Readers: the IA designer, the content team, product management, localisation, leadership, and every function named in a row. Leaves out: named people, the meetings' length, which markets and languages come next (leadership's decision, A.5), the business case for any of it (DD-IA2's template, Deliverable B, B.1). Owner: the IA designer; version 1, dated 10 November 2026; every role, forum, review and threshold set here is assumed until tested (A.6); every change it makes to a filed artefact is proposed in DL-023 to DL-026 (Deliverable B, B.6), so no filed artefact changes until each is decided. Perqo is fictional.</em></p>
+<h3>A.1 · The roles</h3>
+<p>Every role is held by one of IA10's twelve functions or by the IA designer, as IA9 named it (Perqo, fictional). The last column is this unit's mapping onto Welchman's framework (section 3.1).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Held by</th>
+<th>Owns</th>
+<th>Decides</th>
+<th>Framework (section 3.2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategy owner</td>
+<td>leadership</td>
+<td>which markets and languages come next</td>
+<td>a new market or language</td>
+<td>strategy</td>
+</tr>
+<tr>
+<td>Rule owner</td>
+<td>product management</td>
+<td>the rule terms of the vocabulary (Deliverable C)</td>
+<td>signs off rule and two-surface changes (IA9, D.1)</td>
+<td>strategy, policy</td>
+</tr>
+<tr>
+<td>IA review</td>
+<td>the IA designer (chair), product management, engineering, content team, support (IA9, section 4.1)</td>
+<td>none</td>
+<td>renames, retired identifiers, rule and two-surface changes, a new top-level category (R8)</td>
+<td>policy</td>
+</tr>
+<tr>
+<td>IA designer</td>
+<td>the IA designer</td>
+<td>the canonical IA artefacts other than the taxonomy and the vocabulary; the decision log; the object terms (Deliverable C)</td>
+<td>changes inside one surface that rename nothing (IA9, D.1)</td>
+<td>core team</td>
+</tr>
+<tr>
+<td>Vocabulary steward</td>
+<td>content team (DL-024)</td>
+<td>the controlled vocabulary; the benefits taxonomy (IA4, B); the taxonomy terms</td>
+<td>taxonomy values and variants, by R1 to R12</td>
+<td>core team; standards steward</td>
+</tr>
+<tr>
+<td>Term owner</td>
+<td>the owner of the artefact that defines the term (section 3.2)</td>
+<td>one term's definition (Deliverable C)</td>
+<td>nothing alone: asked first about a change</td>
+<td>core or extended team</td>
+</tr>
+<tr>
+<td>Language owner</td>
+<td>localisation, one per live language [when a second language is added]</td>
+<td>that language's labels and variants</td>
+<td>a term's label in that language</td>
+<td>core team</td>
+</tr>
+<tr>
+<td>Market module owner</td>
+<td>the owner of each market-marked module: marketing with sales (M-10, M-11, on Pricing, S-2), support (M-24, on S-6), legal (M-25) (IA5, Deliverable A)</td>
+<td>that module's content per market</td>
+<td>that content</td>
+<td>extended team</td>
+</tr>
+<tr>
+<td>Applier</td>
+<td>engineering (model names, synonyms loaded, redirects); support, marketing and the content team (tags on articles, stories and items)</td>
+<td>the tags and loads they make</td>
+<td>nothing alone</td>
+<td>extended team</td>
+</tr>
+<tr>
+<td>Signal reader</td>
+<td>support (logs, tickets; IA9, RV-04, RV-05), product management (paths, RV-06)</td>
+<td>the reads</td>
+<td>nothing alone: findings are hypotheses (IA9, section 6.4)</td>
+<td>extended team</td>
+</tr>
+</tbody>
+</table></div>
+<h3>A.2 · The decision rights</h3>
+<p>For each kind of change: who decides, who signs off, who chairs, who applies it, who is consulted and who is told (Perqo, fictional). "Product mgmt" in the figure is product management. Each row follows IA9's D.1 and IA4's B.4 where those already decide it; the rows for a language, a translation and a market are new.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Decides</th>
+<th>Signs off</th>
+<th>Chairs</th>
+<th>Applies</th>
+<th>Consulted</th>
+<th>Told</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New variant</td>
+<td>content team</td>
+<td>none</td>
+<td>none</td>
+<td>engineering (synonyms loaded)</td>
+<td>support; engineering; localisation</td>
+<td>none</td>
+</tr>
+<tr>
+<td>New value (narrower term or flat-facet value)</td>
+<td>content team</td>
+<td>none</td>
+<td>none</td>
+<td>content team (items retagged)</td>
+<td>support; engineering; localisation</td>
+<td>product management; clients (J-08, FO-02)</td>
+</tr>
+<tr>
+<td>New category (top level, R8)</td>
+<td>IA review</td>
+<td>product management</td>
+<td>IA designer</td>
+<td>content team; engineering</td>
+<td>clients (R8); localisation</td>
+<td>none beyond J-08's list</td>
+</tr>
+<tr>
+<td>Rename term</td>
+<td>IA review</td>
+<td>none</td>
+<td>IA designer</td>
+<td>content team (vocabulary first); localisation (each language)</td>
+<td>none beyond the review</td>
+<td>clients</td>
+</tr>
+<tr>
+<td>Retire ID</td>
+<td>IA review</td>
+<td>none</td>
+<td>IA designer</td>
+<td>content team (migration); engineering (redirects); localisation</td>
+<td>none beyond the review</td>
+<td>clients</td>
+</tr>
+<tr>
+<td>Rule change (DT-)</td>
+<td>IA review</td>
+<td>product management</td>
+<td>IA designer</td>
+<td>engineering</td>
+<td>legal, when personal data is touched (DL-014)</td>
+<td>clients</td>
+</tr>
+<tr>
+<td>New language</td>
+<td>leadership</td>
+<td>none</td>
+<td>none</td>
+<td>localisation</td>
+<td>product management; localisation; legal</td>
+<td>IA review; content team</td>
+</tr>
+<tr>
+<td>Translate term</td>
+<td>localisation</td>
+<td>none</td>
+<td>none</td>
+<td>engineering (synonyms per language)</td>
+<td>content team; support</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Market module</td>
+<td>the module's owner (A.1)</td>
+<td>none</td>
+<td>none</td>
+<td>content team</td>
+<td>localisation; legal</td>
+<td>sales (FO-04)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The figure draws the first eight rows by function; the market module row, whose decider differs by module, stays in the table. Row labels are short forms of the table's: New variant, New value, New category, Rename term, Retire ID, Rule change, New language, Translate term. The marks: decides, "takes the decision (IA9, D.1)"; signs off, "a rule or two-surface change is not decided without it"; chairs, "runs the forum that decides"; applies, "changes the vocabulary, the items or the system"; consulted, "heard before the decision"; told, "informed after it, through its forum". Every row is tone 5, shared.</p>
+<figure class="viz viz-matrix viz-wide"><div class="viz-scroll" style="--stick:112.4px"><svg viewBox="0 0 899.4 378" width="899.4" height="378" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="147.4" y="15.6" text-anchor="middle">IA</text><text class="viz-colhead" x="147.4" y="27.6" text-anchor="middle">designer</text><text class="viz-colhead" x="217.4" y="27.6" text-anchor="middle">IA review</text><text class="viz-colhead" x="290.4" y="15.6" text-anchor="middle">Content</text><text class="viz-colhead" x="290.4" y="27.6" text-anchor="middle">team</text><text class="viz-colhead" x="374.9" y="27.6" text-anchor="middle">Localisation</text><text class="viz-colhead" x="464.4" y="27.6" text-anchor="middle">Engineering</text><text class="viz-colhead" x="545.4" y="27.6" text-anchor="middle">Support</text><text class="viz-colhead" x="621.4" y="15.6" text-anchor="middle">Product</text><text class="viz-colhead" x="621.4" y="27.6" text-anchor="middle">mgmt</text><text class="viz-colhead" x="697.4" y="27.6" text-anchor="middle">Clients</text><text class="viz-colhead" x="773.4" y="27.6" text-anchor="middle">Legal</text><text class="viz-colhead" x="851.4" y="27.6" text-anchor="middle">Leadership</text><text class="viz-label" x="8.0" y="64.3" text-anchor="start">New variant</text><g data-box=""><rect class="viz-track" x="114.4" y="46.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="184.4" y="46.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="254.4" y="46.0" width="72.0" height="28.0"/><text class="viz-mark" x="290.4" y="63.8" text-anchor="middle">decides</text></g><g data-box=""><rect class="viz-band viz-t5" x="330.4" y="46.0" width="89.0" height="28.0"/><text class="viz-mark" x="374.9" y="63.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-band viz-t5" x="423.4" y="46.0" width="82.0" height="28.0"/><text class="viz-mark" x="464.4" y="63.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-band viz-t5" x="509.4" y="46.0" width="72.0" height="28.0"/><text class="viz-mark" x="545.4" y="63.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-track" x="585.4" y="46.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="661.4" y="46.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="737.4" y="46.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="813.4" y="46.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="96.3" text-anchor="start">New value</text><g data-box=""><rect class="viz-track" x="114.4" y="78.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="184.4" y="78.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="254.4" y="78.0" width="72.0" height="28.0"/><text class="viz-mark" x="290.4" y="95.8" text-anchor="middle">decides</text></g><g data-box=""><rect class="viz-band viz-t5" x="330.4" y="78.0" width="89.0" height="28.0"/><text class="viz-mark" x="374.9" y="95.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-band viz-t5" x="423.4" y="78.0" width="82.0" height="28.0"/><text class="viz-mark" x="464.4" y="95.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-band viz-t5" x="509.4" y="78.0" width="72.0" height="28.0"/><text class="viz-mark" x="545.4" y="95.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-band viz-t5" x="585.4" y="78.0" width="72.0" height="28.0"/><text class="viz-mark" x="621.4" y="95.8" text-anchor="middle">told</text></g><g data-box=""><rect class="viz-band viz-t5" x="661.4" y="78.0" width="72.0" height="28.0"/><text class="viz-mark" x="697.4" y="95.8" text-anchor="middle">told</text></g><g data-box=""><rect class="viz-track" x="737.4" y="78.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="813.4" y="78.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="128.3" text-anchor="start">New category</text><g data-box=""><rect class="viz-band viz-t5" x="114.4" y="110.0" width="66.0" height="28.0"/><text class="viz-mark" x="147.4" y="127.8" text-anchor="middle">chairs</text></g><g data-box=""><rect class="viz-band viz-t5" x="184.4" y="110.0" width="66.0" height="28.0"/><text class="viz-mark" x="217.4" y="127.8" text-anchor="middle">decides</text></g><g data-box=""><rect class="viz-band viz-t5" x="254.4" y="110.0" width="72.0" height="28.0"/><text class="viz-mark" x="290.4" y="127.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-band viz-t5" x="330.4" y="110.0" width="89.0" height="28.0"/><text class="viz-mark" x="374.9" y="127.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-band viz-t5" x="423.4" y="110.0" width="82.0" height="28.0"/><text class="viz-mark" x="464.4" y="127.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-track" x="509.4" y="110.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="585.4" y="110.0" width="72.0" height="28.0"/><text class="viz-mark" x="621.4" y="127.8" text-anchor="middle">signs off</text></g><g data-box=""><rect class="viz-band viz-t5" x="661.4" y="110.0" width="72.0" height="28.0"/><text class="viz-mark" x="697.4" y="127.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-track" x="737.4" y="110.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="813.4" y="110.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Rename term</text><g data-box=""><rect class="viz-band viz-t5" x="114.4" y="142.0" width="66.0" height="28.0"/><text class="viz-mark" x="147.4" y="159.8" text-anchor="middle">chairs</text></g><g data-box=""><rect class="viz-band viz-t5" x="184.4" y="142.0" width="66.0" height="28.0"/><text class="viz-mark" x="217.4" y="159.8" text-anchor="middle">decides</text></g><g data-box=""><rect class="viz-band viz-t5" x="254.4" y="142.0" width="72.0" height="28.0"/><text class="viz-mark" x="290.4" y="159.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-band viz-t5" x="330.4" y="142.0" width="89.0" height="28.0"/><text class="viz-mark" x="374.9" y="159.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-track" x="423.4" y="142.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="509.4" y="142.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="585.4" y="142.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="661.4" y="142.0" width="72.0" height="28.0"/><text class="viz-mark" x="697.4" y="159.8" text-anchor="middle">told</text></g><g data-box=""><rect class="viz-track" x="737.4" y="142.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="813.4" y="142.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="192.3" text-anchor="start">Retire ID</text><g data-box=""><rect class="viz-band viz-t5" x="114.4" y="174.0" width="66.0" height="28.0"/><text class="viz-mark" x="147.4" y="191.8" text-anchor="middle">chairs</text></g><g data-box=""><rect class="viz-band viz-t5" x="184.4" y="174.0" width="66.0" height="28.0"/><text class="viz-mark" x="217.4" y="191.8" text-anchor="middle">decides</text></g><g data-box=""><rect class="viz-band viz-t5" x="254.4" y="174.0" width="72.0" height="28.0"/><text class="viz-mark" x="290.4" y="191.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-band viz-t5" x="330.4" y="174.0" width="89.0" height="28.0"/><text class="viz-mark" x="374.9" y="191.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-band viz-t5" x="423.4" y="174.0" width="82.0" height="28.0"/><text class="viz-mark" x="464.4" y="191.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-track" x="509.4" y="174.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="585.4" y="174.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="661.4" y="174.0" width="72.0" height="28.0"/><text class="viz-mark" x="697.4" y="191.8" text-anchor="middle">told</text></g><g data-box=""><rect class="viz-track" x="737.4" y="174.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="813.4" y="174.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="224.3" text-anchor="start">Rule change</text><g data-box=""><rect class="viz-band viz-t5" x="114.4" y="206.0" width="66.0" height="28.0"/><text class="viz-mark" x="147.4" y="223.8" text-anchor="middle">chairs</text></g><g data-box=""><rect class="viz-band viz-t5" x="184.4" y="206.0" width="66.0" height="28.0"/><text class="viz-mark" x="217.4" y="223.8" text-anchor="middle">decides</text></g><g data-box=""><rect class="viz-track" x="254.4" y="206.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="330.4" y="206.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="423.4" y="206.0" width="82.0" height="28.0"/><text class="viz-mark" x="464.4" y="223.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-track" x="509.4" y="206.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="585.4" y="206.0" width="72.0" height="28.0"/><text class="viz-mark" x="621.4" y="223.8" text-anchor="middle">signs off</text></g><g data-box=""><rect class="viz-band viz-t5" x="661.4" y="206.0" width="72.0" height="28.0"/><text class="viz-mark" x="697.4" y="223.8" text-anchor="middle">told</text></g><g data-box=""><rect class="viz-band viz-t5" x="737.4" y="206.0" width="72.0" height="28.0"/><text class="viz-mark" x="773.4" y="223.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-track" x="813.4" y="206.0" width="76.0" height="28.0"/></g><text class="viz-label" x="8.0" y="256.3" text-anchor="start">New language</text><g data-box=""><rect class="viz-track" x="114.4" y="238.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="184.4" y="238.0" width="66.0" height="28.0"/><text class="viz-mark" x="217.4" y="255.8" text-anchor="middle">told</text></g><g data-box=""><rect class="viz-band viz-t5" x="254.4" y="238.0" width="72.0" height="28.0"/><text class="viz-mark" x="290.4" y="255.8" text-anchor="middle">told</text></g><g data-box=""><rect class="viz-band viz-t5" x="330.4" y="238.0" width="89.0" height="28.0"/><text class="viz-mark" x="374.9" y="255.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-track" x="423.4" y="238.0" width="82.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="509.4" y="238.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="585.4" y="238.0" width="72.0" height="28.0"/><text class="viz-mark" x="621.4" y="255.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-track" x="661.4" y="238.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="737.4" y="238.0" width="72.0" height="28.0"/><text class="viz-mark" x="773.4" y="255.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-band viz-t5" x="813.4" y="238.0" width="76.0" height="28.0"/><text class="viz-mark" x="851.4" y="255.8" text-anchor="middle">decides</text></g><text class="viz-label" x="8.0" y="288.3" text-anchor="start">Translate term</text><g data-box=""><rect class="viz-track" x="114.4" y="270.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="184.4" y="270.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="254.4" y="270.0" width="72.0" height="28.0"/><text class="viz-mark" x="290.4" y="287.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-band viz-t5" x="330.4" y="270.0" width="89.0" height="28.0"/><text class="viz-mark" x="374.9" y="287.8" text-anchor="middle">decides</text></g><g data-box=""><rect class="viz-band viz-t5" x="423.4" y="270.0" width="82.0" height="28.0"/><text class="viz-mark" x="464.4" y="287.8" text-anchor="middle">applies</text></g><g data-box=""><rect class="viz-band viz-t5" x="509.4" y="270.0" width="72.0" height="28.0"/><text class="viz-mark" x="545.4" y="287.8" text-anchor="middle">consulted</text></g><g data-box=""><rect class="viz-track" x="585.4" y="270.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="661.4" y="270.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="737.4" y="270.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="813.4" y="270.0" width="76.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="8.0" y="314.0" width="61.0" height="24"/><text class="viz-mark" x="38.5" y="329.8" text-anchor="middle">decides</text></g><text class="viz-attr" x="77.0" y="330.0" text-anchor="start">takes the decision (IA9, D.1)</text><g data-box=""><rect class="viz-band viz-t5" x="240.0" y="314.0" width="73.8" height="24"/><text class="viz-mark" x="276.9" y="329.8" text-anchor="middle">signs off</text></g><text class="viz-attr" x="321.8" y="330.0" text-anchor="start">a rule or two-surface change is not decided without it</text><g data-box=""><rect class="viz-band viz-t5" x="626.7" y="314.0" width="54.6" height="24"/><text class="viz-mark" x="654.0" y="329.8" text-anchor="middle">chairs</text></g><text class="viz-attr" x="689.2" y="330.0" text-anchor="start">runs the forum that decides</text><g data-box=""><rect class="viz-band viz-t5" x="8.0" y="346.0" width="61.0" height="24"/><text class="viz-mark" x="38.5" y="361.8" text-anchor="middle">applies</text></g><text class="viz-attr" x="77.0" y="362.0" text-anchor="start">changes the vocabulary, the items or the system</text><g data-box=""><rect class="viz-band viz-t5" x="353.9" y="346.0" width="73.8" height="24"/><text class="viz-mark" x="390.9" y="361.8" text-anchor="middle">consulted</text></g><text class="viz-attr" x="435.8" y="362.0" text-anchor="start">heard before the decision</text><g data-box=""><rect class="viz-band viz-t5" x="591.0" y="346.0" width="41.7" height="24"/><text class="viz-mark" x="611.9" y="361.8" text-anchor="middle">told</text></g><text class="viz-attr" x="640.7" y="362.0" text-anchor="start">informed after it, through its forum</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 112.4 378" width="112.4" height="378" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="112.4" height="302"/><text class="viz-label" x="8.0" y="64.3" text-anchor="start">New variant</text><text class="viz-label" x="8.0" y="96.3" text-anchor="start">New value</text><text class="viz-label" x="8.0" y="128.3" text-anchor="start">New category</text><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Rename term</text><text class="viz-label" x="8.0" y="192.3" text-anchor="start">Retire ID</text><text class="viz-label" x="8.0" y="224.3" text-anchor="start">Rule change</text><text class="viz-label" x="8.0" y="256.3" text-anchor="start">New language</text><text class="viz-label" x="8.0" y="288.3" text-anchor="start">Translate term</text></svg></div></div><figcaption>The Perqo governance model, decision rights: for eight kinds of change, which function decides, signs off, chairs, applies, is consulted or is told; supports the decision on where a proposed change to the taxonomy, the vocabulary or the IA goes (Deliverable A, A.2). Rows from IA9, D.1 (renames, retired identifiers, rules, the IA review), IA4, Deliverable B, B.4 (values and variants, R8 for a new category) and IA10, A.3 (J-08's told list); the language and translation rows set in A.2; DL-014 (IA10, proposed) for legal. Accountability for strategy, policy and standards after Welchman, Managing Chaos, 2015 (practice). Every row tone 5, shared. Perqo is fictional.</figcaption></figure>
+<p>The figure draws one mark per cell, so where the table names a function twice it draws the stronger part. In "New variant" engineering is consulted and loads the synonym: the figure draws "applies". In "New value" the content team decides and retags the items: the figure draws "decides"; engineering is consulted and does not apply, because a narrower term reaches the system only through tags, and the synonyms load with the value's variants, which is the first row. In "New language" localisation is consulted and then sets the language up: the figure draws "consulted", because the decision is leadership's.</p>
+<h3>A.3 · The forums</h3>
+<p>FO-01 to FO-09 keep IA10's identifiers, names, chairs and cadences (IA10, Deliverable A, A.2). This unit adds to what five of them take in and put out, and adds one, FO-10 (DL-023, proposed). Each addition is proposed; IA10's table changes only when DL-023 and DL-024 are decided.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Forum</th>
+<th>What this unit adds to it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FO-01</td>
+<td>IA review</td>
+<td>decides renames, retired identifiers and new categories with their impact per language (Deliverable B); reads RV-13's drift findings once a quarter</td>
+</tr>
+<tr>
+<td>FO-02</td>
+<td>Story check and release note</td>
+<td>the release note names, per language, each label changed; RV-13 runs at each release</td>
+</tr>
+<tr>
+<td>FO-03</td>
+<td>Vocabulary and content review</td>
+<td>the vocabulary's steward (DL-024); takes RV-14's counts and the duplication check (RV-07 extended); decides new values and variants; reads M-07 and M-12 to M-14 for the variants they suggest</td>
+</tr>
+<tr>
+<td>FO-04</td>
+<td>Pre-sales briefing</td>
+<td>sales in each market told of category and label changes in its language (J-08, J-13)</td>
+</tr>
+<tr>
+<td>FO-09</td>
+<td>Leadership quarterly</td>
+<td>decides a new market or language; reads RV-16's owner check once a year</td>
+</tr>
+<tr>
+<td>FO-10</td>
+<td>Language and market review <em>new</em></td>
+<td>below</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>FO-10, the language and market review</strong> (Perqo, fictional). Kind: meeting. Chair: the language owner, one per live language. Takes part: the content team, support (that language's logs and tickets), legal (M-25), the owners of M-10, M-11 and M-24 for that market, the IA designer when a request touches the IA. Inputs: each change FO-03 or FO-01 decided since the last meeting, with its labels to translate; RV-15's per-language search read; the market-marked modules due in that market. Outputs: labels and variants in that language, each marked tested or assumed; market modules filled; proposed DL entries for anything that would change the IA. When: once before a language goes live, then quarterly, and within one release of any rename. Dormant until leadership decides a second language at FO-09; until then, TP-05's row stays at C0 (IA11, section 7) and the content team holds every language question.</p>
+<h3>A.4 · The cadence</h3>
+<p>IA9's twelve reviews stand (IA9, Deliverable C). Four are added, each detecting one failure of section 6, and RV-07 is extended to detect duplication (Perqo, fictional; DL-024, proposed). Thresholds are set here and assumed until tested (A.6).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Review</th>
+<th>Detects</th>
+<th>Checks</th>
+<th>Cadence</th>
+<th>Trigger</th>
+<th>Owner</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RV-07 (extended)</td>
+<td>Vocabulary</td>
+<td>duplication</td>
+<td>as IA9 set it, plus: every variant that points to two values; every label used by two concepts without a qualifier (R11, proposed); every pair of inventory rows bound to one identifier</td>
+<td>quarterly</td>
+<td>a new variant</td>
+<td>content team</td>
+<td>DL entries; synonyms loaded</td>
+</tr>
+<tr>
+<td>RV-13</td>
+<td>Label drift check</td>
+<td>drift</td>
+<td>every label on the screens and pages a release changed, against the vocabulary's preferred term for its surface and language; any label in an "avoid" column</td>
+<td>each release</td>
+<td>a rename: the release that ships it</td>
+<td>content team</td>
+<td>build debt logged as DL entries</td>
+</tr>
+<tr>
+<td>RV-14</td>
+<td>Term counts</td>
+<td>orphans, over-broad values</td>
+<td>items per F-CAT value; articles and stories per F-CAT tag; untagged items, articles and stories; values with fewer than two items (R5); values above R12's size</td>
+<td>quarterly</td>
+<td>a value added or a client's catalogue changed</td>
+<td>content team</td>
+<td>proposals to merge, split or hide; untagged items tagged</td>
+</tr>
+<tr>
+<td>RV-15</td>
+<td>Search per language</td>
+<td>untranslated or unfound labels</td>
+<td>M-07, M-12, M-13 and M-14 for each language's Help centre search (DD-IA2, A.2); zero-result queries per language; queries in one language that match another's variant</td>
+<td>quarterly, per language</td>
+<td>a language added: the next month's log</td>
+<td>support</td>
+<td>variants for FO-10; hypotheses for IA11</td>
+</tr>
+<tr>
+<td>RV-16</td>
+<td>Owner check</td>
+<td>org chart, orphan ownership</td>
+<td>every term owner and language owner exists; no term or top-level label names a Perqo team or a client's group</td>
+<td>yearly</td>
+<td>a reorganisation at Perqo; a client's request to mirror its structure</td>
+<td>IA designer</td>
+<td>owners reassigned; DL entries</td>
+</tr>
+</tbody>
+</table></div>
+<p>The measurement model's reads, by forum (DD-IA2, Deliverable A): FO-06 reads M-07 and M-12 to M-15, per language once the Help centre has more than one; FO-03 reads M-07 and M-12 to M-14 for the variants they suggest; FO-10 reads RV-15's per-language results; FO-01 receives the reads of M-16 to M-19 for Admin, which go to it from RV-06 when a target is missed (DD-IA2, A.2); FO-09 reads what DL-022 proposes. No read decides a change on its own: a lagging change is a hypothesis at C1 (DD-IA2, A.3, rule 5).</p>
+<p>The drift-detection cadence, drawn: one row per check, its owner in the cell where it runs. Label drift, RV-13: each release, content team; on trigger, content team [a rename]. Term counts, RV-14: quarterly, content team; on trigger, content team [a value added]. Duplicates, RV-07 extended: quarterly, content team; on trigger, content team [a new variant]. Language search, RV-15: quarterly, support [two languages or more]; on trigger, support [a language added]. Owner check, RV-16: yearly, IA designer; on trigger, IA designer [a reorganisation]. Ticket tags, IA9's RV-05: monthly, support. Face audit, IA9's RV-09: quarterly, IA designer. Every row tone 5, shared.</p>
+<figure class="viz viz-matrix viz-fit viz-wide"><div class="viz-scroll" style="--stick:125.9px"><svg viewBox="0 0 557.9 338" width="557.9" height="338" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-fit"><text class="viz-colhead" x="172.4" y="15.6" text-anchor="middle">Each release</text><text class="viz-colhead" x="253.9" y="15.6" text-anchor="middle">Monthly</text><text class="viz-colhead" x="326.9" y="15.6" text-anchor="middle">Quarterly</text><text class="viz-colhead" x="399.9" y="15.6" text-anchor="middle">Yearly</text><text class="viz-colhead" x="492.4" y="15.6" text-anchor="middle">On trigger</text><text class="viz-label" x="8.0" y="56.3" text-anchor="start">Label drift</text><g data-box=""><rect class="viz-band viz-t5" x="127.9" y="34.0" width="89.0" height="36.0"/><text class="viz-mark" x="172.4" y="55.8" text-anchor="middle">content team</text></g><g data-box=""><rect class="viz-track" x="220.9" y="34.0" width="66.0" height="36.0"/></g><g data-box=""><rect class="viz-track" x="290.9" y="34.0" width="72.0" height="36.0"/></g><g data-box=""><rect class="viz-track" x="366.9" y="34.0" width="66.0" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="436.9" y="34.0" width="111.0" height="36.0"/><text class="viz-mark" x="492.4" y="49.3" text-anchor="middle">content team</text><text class="viz-mark" x="492.4" y="62.3" text-anchor="middle">[a rename]</text></g><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Term counts</text><g data-box=""><rect class="viz-track" x="127.9" y="74.0" width="89.0" height="36.0"/></g><g data-box=""><rect class="viz-track" x="220.9" y="74.0" width="66.0" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="290.9" y="74.0" width="72.0" height="36.0"/><text class="viz-mark" x="326.9" y="89.3" text-anchor="middle">content</text><text class="viz-mark" x="326.9" y="102.3" text-anchor="middle">team</text></g><g data-box=""><rect class="viz-track" x="366.9" y="74.0" width="66.0" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="436.9" y="74.0" width="111.0" height="36.0"/><text class="viz-mark" x="492.4" y="89.3" text-anchor="middle">content team [a</text><text class="viz-mark" x="492.4" y="102.3" text-anchor="middle">value added]</text></g><text class="viz-label" x="8.0" y="136.3" text-anchor="start">Duplicates</text><g data-box=""><rect class="viz-track" x="127.9" y="114.0" width="89.0" height="36.0"/></g><g data-box=""><rect class="viz-track" x="220.9" y="114.0" width="66.0" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="290.9" y="114.0" width="72.0" height="36.0"/><text class="viz-mark" x="326.9" y="129.3" text-anchor="middle">content</text><text class="viz-mark" x="326.9" y="142.3" text-anchor="middle">team</text></g><g data-box=""><rect class="viz-track" x="366.9" y="114.0" width="66.0" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="436.9" y="114.0" width="111.0" height="36.0"/><text class="viz-mark" x="492.4" y="129.3" text-anchor="middle">content team [a</text><text class="viz-mark" x="492.4" y="142.3" text-anchor="middle">new variant]</text></g><text class="viz-label" x="8.0" y="189.3" text-anchor="start">Language search</text><g data-box=""><rect class="viz-track" x="127.9" y="154.0" width="89.0" height="62.0"/></g><g data-box=""><rect class="viz-track" x="220.9" y="154.0" width="66.0" height="62.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="290.9" y="154.0" width="72.0" height="62.0"/><text class="viz-mark" x="326.9" y="169.3" text-anchor="middle">support</text><text class="viz-mark" x="326.9" y="182.3" text-anchor="middle">[two</text><text class="viz-mark" x="326.9" y="195.3" text-anchor="middle">languages</text><text class="viz-mark" x="326.9" y="208.3" text-anchor="middle">or more]</text></g><g data-box=""><rect class="viz-track" x="366.9" y="154.0" width="66.0" height="62.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="436.9" y="154.0" width="111.0" height="62.0"/><text class="viz-mark" x="492.4" y="182.3" text-anchor="middle">support [a</text><text class="viz-mark" x="492.4" y="195.3" text-anchor="middle">language added]</text></g><text class="viz-label" x="8.0" y="242.3" text-anchor="start">Owner check</text><g data-box=""><rect class="viz-track" x="127.9" y="220.0" width="89.0" height="36.0"/></g><g data-box=""><rect class="viz-track" x="220.9" y="220.0" width="66.0" height="36.0"/></g><g data-box=""><rect class="viz-track" x="290.9" y="220.0" width="72.0" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="366.9" y="220.0" width="66.0" height="36.0"/><text class="viz-mark" x="399.9" y="235.3" text-anchor="middle">IA</text><text class="viz-mark" x="399.9" y="248.3" text-anchor="middle">designer</text></g><g data-box=""><rect class="viz-band viz-t5" x="436.9" y="220.0" width="111.0" height="36.0"/><text class="viz-mark" x="492.4" y="235.3" text-anchor="middle">IA designer [a</text><text class="viz-mark" x="492.4" y="248.3" text-anchor="middle">reorganisation]</text></g><text class="viz-label" x="8.0" y="278.3" text-anchor="start">Ticket tags</text><g data-box=""><rect class="viz-track" x="127.9" y="260.0" width="89.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="220.9" y="260.0" width="66.0" height="28.0"/><text class="viz-mark" x="253.9" y="277.8" text-anchor="middle">support</text></g><g data-box=""><rect class="viz-track" x="290.9" y="260.0" width="72.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="366.9" y="260.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="436.9" y="260.0" width="111.0" height="28.0"/></g><text class="viz-label" x="8.0" y="314.3" text-anchor="start">Face audit</text><g data-box=""><rect class="viz-track" x="127.9" y="292.0" width="89.0" height="36.0"/></g><g data-box=""><rect class="viz-track" x="220.9" y="292.0" width="66.0" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t5" x="290.9" y="292.0" width="72.0" height="36.0"/><text class="viz-mark" x="326.9" y="307.3" text-anchor="middle">IA</text><text class="viz-mark" x="326.9" y="320.3" text-anchor="middle">designer</text></g><g data-box=""><rect class="viz-track" x="366.9" y="292.0" width="66.0" height="36.0"/></g><g data-box=""><rect class="viz-track" x="436.9" y="292.0" width="111.0" height="36.0"/></g></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 125.9 338" width="125.9" height="338" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="125.9" height="332"/><text class="viz-label" x="8.0" y="56.3" text-anchor="start">Label drift</text><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Term counts</text><text class="viz-label" x="8.0" y="136.3" text-anchor="start">Duplicates</text><text class="viz-label" x="8.0" y="189.3" text-anchor="start">Language search</text><text class="viz-label" x="8.0" y="242.3" text-anchor="start">Owner check</text><text class="viz-label" x="8.0" y="278.3" text-anchor="start">Ticket tags</text><text class="viz-label" x="8.0" y="314.3" text-anchor="start">Face audit</text></svg></div></div><figcaption>Drift-detection cadence: the checks that detect drift, duplication, orphans and the org chart leaking into Perqo's taxonomy and vocabulary, by when each runs, with its owner in the cell (a condition in square brackets: the check runs then only when it holds); supports the decision on who looks for which failure, and when (section 6; Deliverable A, A.4). RV-13 to RV-16 and the extension of RV-07 set in A.4; RV-05 and RV-09 from IA9, Deliverable C; measurement 'in a consistent and automated way' after Welchman, A List Apart, 2015 (practice); sizes reviewed at both ends after GDS, 'GOV.UK Taxonomy principles' (read 10 November 2026). Every row tone 5, shared. Perqo is fictional.</figcaption></figure>
+<h3>A.5 · Escalation</h3>
+<p>IA12's procedure applies unchanged when the owner of an answer does not give it: name the owner, ask once in the owner's format, write the question as a proposed DL entry with a default and the meeting that decides it, ship the default labelled, decide at that meeting with silence recorded as "not given", and show the risk where the owner reads (IA12, section 4.4). Three cases arise in this model, each with its default (Perqo, fictional).</p>
+<ul>
+<li><strong>A term owner who does not answer.</strong> The content team, as steward, proposes the default at FO-03: the term keeps its current definition, and the change waits as proposed with the FO-03 meeting named.</li>
+<li><strong>No language owner.</strong> While TP-05 is dormant, the content team holds every language question. When a language goes live without a language owner, a label not yet translated shows the English preferred term and is marked "untranslated" in the vocabulary; the change that needs it stays accepted and is not applied (Deliverable B, B.4).</li>
+<li><strong>No decision on markets.</strong> Which markets and languages come next is leadership's, a strategy question in Welchman's sense (section 3.1), and it stays free in this unit for that reason. Product management asks at FO-09; the default is no second language, which builds nothing that assumes one, and FO-10 stays dormant.</li>
+</ul>
+<h3>A.6 · The register's process part</h3>
+<p>IA12 filled the assumption register for Admin and left its process part unfilled: nine rows IA11's table A.2 sends to the register that do not concern Admin (rows 15 to 19 and 21 to 24), IA8's one-year test of J- rows, and localisation's TP-05 (IA12, section 3.4). They are entered here, with this unit's own assumptions after them, in IA12's fields cut to the ten a reader needs (IA12, section 3.2). Every row is at C0 and not run on 10 November 2026 (Perqo, fictional). The counts of rows owned per function in IA12's stakeholder map cover the Admin part; the process part's owners below are added to them at the next FO-09, when the map is revised (IA12, Deliverable C; DL-024).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Assumption</th>
+<th>From</th>
+<th>Rung</th>
+<th>Test</th>
+<th>Owner</th>
+<th>Read at</th>
+<th>Input</th>
+<th>Fix</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AR-50</td>
+<td>the trees' words let sales explain the rules (BR-3)</td>
+<td>IA11, A.2, row 15</td>
+<td>C0</td>
+<td>IA8's recorded-demo restatement test, at FO-04</td>
+<td>IA designer</td>
+<td>FO-04</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-51</td>
+<td>readers can read one layer, or one brief, alone</td>
+<td>row 16</td>
+<td>C0</td>
+<td>IA8's one-layer question test (IA8, D.5)</td>
+<td>IA designer</td>
+<td>FO-01</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-52</td>
+<td>stories citing identifiers keep build debt down</td>
+<td>row 17</td>
+<td>C0</td>
+<td>RV-02's share of built screens that differ from their F3 artefact, quarter to quarter</td>
+<td>product management</td>
+<td>RV-10</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-53</td>
+<td>the F3 gate does not slow delivery</td>
+<td>row 18</td>
+<td>C0</td>
+<td>stories held at RV-01, read at RV-10</td>
+<td>product management</td>
+<td>RV-10</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-54</td>
+<td>a quarterly face audit keeps record debt from building</td>
+<td>row 19</td>
+<td>C0</td>
+<td>DL entries accepted and not applied, at RV-10</td>
+<td>product management</td>
+<td>RV-10</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-55</td>
+<td>the routing rule sends changes to the right decider</td>
+<td>row 21</td>
+<td>C0</td>
+<td>DL entries reopened or superseded within a quarter</td>
+<td>product management</td>
+<td>RV-10</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-56</td>
+<td>each function's question is the one it asks</td>
+<td>row 22</td>
+<td>C0</td>
+<td>interviews with each function</td>
+<td>IA designer</td>
+<td>FO-09</td>
+<td>absent: FO-09 has not met (IA12, section 3.4)</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-57</td>
+<td>engineering can build from BR-2 without a meeting</td>
+<td>row 23</td>
+<td>C0</td>
+<td>questions raised at FO-02, counted per release</td>
+<td>IA designer</td>
+<td>FO-02</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-58</td>
+<td>positions recorded reduce reopened decisions</td>
+<td>row 24</td>
+<td>C0</td>
+<td>DL entries reopened within a quarter, before and after DL-011</td>
+<td>product management</td>
+<td>RV-10</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-59</td>
+<td>a reader a year later can trust a J- row without opening every surface map</td>
+<td>IA8, section 6</td>
+<td>C0</td>
+<td>one year after a J- row is checked, a reader answers a question from the row alone and is checked against the surface maps</td>
+<td>IA designer</td>
+<td>RV-03</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-60</td>
+<td>localisation's question is the key every language shares and what changes by market (TP-05)</td>
+<td>IA10, A.1; IA11, section 7</td>
+<td>C0</td>
+<td>interviews with the language owner at the first FO-10</td>
+<td>content team, until a language owner exists</td>
+<td>FO-10</td>
+<td>absent: dormant until a second language</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-61</td>
+<td>a term owner answers a change request within one FO-03 cycle</td>
+<td>A.1 (this unit)</td>
+<td>C0</td>
+<td>time from proposed to decided for taxonomy and vocabulary DL entries</td>
+<td>content team</td>
+<td>RV-10</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-62</td>
+<td>RV-13 finds label drift before support's tickets do</td>
+<td>A.4 (this unit)</td>
+<td>C0</td>
+<td>for two quarters, labels found by RV-13 against labels found first by RV-05's tags</td>
+<td>content team</td>
+<td>RV-05</td>
+<td>kept</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-63</td>
+<td>a translated preferred term is found as well as the English one</td>
+<td>section 5.2 (this unit)</td>
+<td>C0</td>
+<td>IA11's tree test TT-1 in the new language against the English results, at C3</td>
+<td>language owner</td>
+<td>RV-11</td>
+<td>absent: no second language</td>
+<td>backbone</td>
+<td>not run</td>
+</tr>
+<tr>
+<td>AR-64</td>
+<td>variants taken from a language's own logs serve better than translated English variants</td>
+<td>section 5.2 (this unit)</td>
+<td>C0</td>
+<td>M-07 for that language before and after the log-derived variants are loaded (RV-15)</td>
+<td>support</td>
+<td>RV-15</td>
+<td>absent: no second language</td>
+<td>open</td>
+<td>not run</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.917"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="209" data-rings="5"><path d="M112 47l-16 4-8 3-12 10-2 8 4 16-5 16 4 8 11 7 8 3 16 4 24 2 32 0 32-4 48-10 40-13 16-3M248 72l-23-8-25-11-24-6-32-3-16 0-16 3M128 55l-16 4-8 3-3 2-7 8 3 16-3 8 0 8 10 8 8 3 16 3 16 1 32-1 64-12 6-2 15-8-6-8-71-29-32-5zM136 63l-16 4-9 5-2 8 2 8-3 8 5 8 7 3 8 3 16 2 24-1 44-7 12-3 12-5-3-8-49-21-24-5zM136 71l-8 4-5 5 2 8-2 8 5 4 10 4 22 1 32-4 19-5 2-8-38-16-23-3zM144 80l-1 0-2 8 4 8 15 1 16-1 8-3 6-5-22-9-16-1z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="33" data-rings="0"><circle class="ct-spot" cx="240" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="57" data-rings="1"><path d="M304 98l16 0 32 1M304 68l-32 5-8 1-16-2M326 72l-6 4-8 4 16 5 24 3"/><circle class="ct-spot" cx="320" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="99" data-rings="2"><path d="M352 99l64 11M472 69l-40-3-13-2-27-6-32-2-24 3-32 9M464 76l-48-5-24-5-16-2-24 2-26 6M352 88l40 9 40 7M376 79l-2 1 10 3 13 5 37 8M456 84l-22-4-42-3-8 0-8 2"/><circle class="ct-spot" cx="400" cy="80" r="8"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="100" data-rings="2"><path d="M416 110l48 2 40 4 16 0 72-7M504 70l-32-1M520 78l-56-2M432 104l56 3 16 0 32-4 48-2M434 96l14 2 32 0 16-1 3-1 2-8-45-4"/><circle class="ct-spot" cx="480" cy="96" r="8"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="47" data-rings="1"><path d="M553 88l7 1"/><circle class="ct-spot" cx="560" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="145" data-rings="3"><path d="M592 109l48-6 24 1 40 3 72 4M736 67l-36-3-60-10-16-1-24 1-24 4-32 8-16 2-24 2M600 63l-48 12-32 3M584 101l56-5 64 3 40-1M744 77l-24-2-80-13-16-1-24 2M608 71l-33 9-7 4-15 4M560 89l16 2 16 0 48-1 48 0 26-2-13-8-43-8-26-3-24 2"/><circle class="ct-spot" cx="640" cy="80" r="9"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="37" data-rings="0"><circle class="ct-spot" cx="720" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶9" data-words="91" data-rings="2"><path d="M776 111l16-1 32-7 16-1 25 2M760 66l-24 1M744 98l40 2 16-1 24-4 16-1 64 6M760 77l-16 0M816 79l-7 1 7 3 8 1 48 5"/><circle class="ct-spot" cx="800" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶10" data-words="100" data-rings="2"><path d="M865 104l63 10M912 63l-48-6-24-1-32 2-48 8M904 100l32 6M856 65l-32 1-64 11M872 89l40-1 16 3 10 5M904 78l-40-5-24 1-24 5"/><circle class="ct-spot" cx="880" cy="80" r="8"/></g><g class="ct-rise ct-t4" data-label="¶11" data-words="77" data-rings="2"><path d="M928 114l24 3 80 3M1016 71l-104-8M936 106l24 3M938 96l30 4M976 84l-72-6"/><circle class="ct-spot" cx="960" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶12" data-words="122" data-rings="3"><path d="M1032 120l16 0 24-3 16-6 25-15 6-8-3-8-4-2-16-6-16-2-16-1-48 2M960 109l80 2 16-1 18-6 13-8 3-8-10-6-16-3-48 1-160-15M968 100l32-1 40 2 8-1 10-4-2-4-6-4-26 2-48-6"/><circle class="ct-spot" cx="1040" cy="96" r="8"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-6" data-step="6"><span>Previous · 7 of 12</span><b>Documented practice, verified against its publications</b></a><a class="snext" href="#read-dd-ia3-8" data-step="8"><span>Next · 9 of 12</span><b>B · The taxonomy change-request process</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-dd-ia3-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">B · The taxonomy change-request process</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): process specification for a change to Perqo's benefits taxonomy or controlled vocabulary, in any language or market, extending IA9's change control (section 4 and Deliverable D) and IA12's decision log template (Deliverable D): B.1 the request, B.2 the operations, B.3 the flow, with a flow figure, B.4 languages and markets, B.5 who is told, B.6 the decision log entries DL-023 to DL-026. Fidelity F3 for the form and the operations (ready to use), F2 for the language rules (no second language is live). Decision: what a change to a term must carry, who decides it, what must move with it and who must hear of it, before it counts as made. Readers: the content team (steward), the IA designer, the IA review, engineering, localisation, support, sales. Leaves out: changes to the IA that touch no term, which run IA9's D.2 unchanged; the decisions on DL-023 to DL-026; money. Owner: the content team; version 1, dated 10 November 2026; every step is assumed until AR-61 and AR-62 are read. Perqo is fictional.</em></p>
+<h3>B.1 · The request</h3>
+<p>A change request is a decision log entry in IA12's template (IA12, Deliverable D, D.1), with five fields added for a term. Fields marked (proposed) depend on an entry not yet decided: positions on DL-011, register rows on DL-017, told with forum and date on DL-012, and the five term fields on DL-025.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What to write</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID, change, raised by and from</td>
+<td>as IA12's template</td>
+<td>IA9, D.3</td>
+</tr>
+<tr>
+<td>Operation (proposed)</td>
+<td>add, rename, move, merge, split or retire (B.2)</td>
+<td>section 4.2</td>
+</tr>
+<tr>
+<td>Terms (proposed)</td>
+<td>each identifier touched (CAT-, PAY-, TYP-, CHN-, O-, VOC-), with its current and proposed preferred term per surface</td>
+<td>IA4, R9</td>
+</tr>
+<tr>
+<td>Reach (proposed)</td>
+<td>the counts of what carries each term: catalogue items (BI-), merchants, offers, help articles and customer stories by F-CAT tag, addresses, synonyms, reports, J- rows (J-08 for categories)</td>
+<td>IA8, D.4; RV-14</td>
+</tr>
+<tr>
+<td>Languages and markets (proposed)</td>
+<td>each live language, with the label to change or translate; each market whose modules or catalogue examples change</td>
+<td>section 5; B.4</td>
+</tr>
+<tr>
+<td>Cost, when asked (proposed)</td>
+<td>DD-IA2's business-case template, every number measured, sourced, context or assumed</td>
+<td>DD-IA2, Deliverable B</td>
+</tr>
+<tr>
+<td>Touches, register rows, alternatives, positions, decided by, decide at, decision, version effect, places to apply, told, supersedes, status</td>
+<td>as IA12's template</td>
+<td>IA12, D.1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Anyone may raise a request (IA9, D.1): support from a ticket or a zero-result query, sales from a buyer's word, a client from its policy, the content team from RV-14. GDS's principle that publishers "suggest" and GDS manages (section 3.3) is the same division; at Perqo the request goes to FO-03, where the content team logs it.</p>
+<h3>B.2 · The operations</h3>
+<p>Six operations, each with its effect on the identifier, the version, the migration it needs and who decides (Perqo, fictional). Version effects follow IA9's rule: a change that breaks a citation makes a new version of the taxonomy's face, anything else a dated amendment (IA9, section 4.4).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Identifier</th>
+<th>Version effect</th>
+<th>Migration</th>
+<th>Decides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add</td>
+<td>a new identifier, with no word of any language in it (IA5, section 5.3)</td>
+<td>amendment</td>
+<td>at least two items tagged before it shows (R5); variants loaded per language; labels translated or marked untranslated</td>
+<td>content team (a narrower term or flat value); IA review with product management's sign-off, finance and the client (a category, R8)</td>
+</tr>
+<tr>
+<td>Rename</td>
+<td>kept (R9)</td>
+<td>new version</td>
+<td>old label kept as a variant in every language; every surface label, article and synonym changed; addresses keep the identifier and redirect the old slug</td>
+<td>IA review, vocabulary first</td>
+</tr>
+<tr>
+<td>Move (new parent)</td>
+<td>kept (R9)</td>
+<td>new version</td>
+<td>items keep the value; the parent's counts and filters change; addresses redirect when the parent is in the path; for an F-CAT value, the allocation that pays for its items changes, which changes a rule's outcome</td>
+<td>IA review; product management signs off for F-CAT</td>
+</tr>
+<tr>
+<td>Merge</td>
+<td>the one kept stays; the other is deprecated, then retired (section 4.2)</td>
+<td>new version</td>
+<td>items retagged to the one kept; the retired term's labels kept as its variants; addresses redirect to the kept value</td>
+<td>IA review</td>
+</tr>
+<tr>
+<td>Split</td>
+<td>the old one is deprecated; new identifiers for the parts</td>
+<td>new version</td>
+<td>every item reclassified, one part each (R2); each part needs two items (R5); addresses of the old value redirect to its parent until the parts have pages</td>
+<td>IA review</td>
+</tr>
+<tr>
+<td>Retire</td>
+<td>never reused (R9)</td>
+<td>new version</td>
+<td>items retagged or removed; addresses redirect to the parent or the nearest value, as GOV.UK redirected its retired policy areas to "equivalent topics" (Stephens-Manassiev 2019)</td>
+<td>IA review</td>
+</tr>
+</tbody>
+</table></div>
+<p>A change to a flat facet (F-PAY, F-TYP, F-CHN) touches no allocation, so a move there needs no product sign-off. A change to F-CAT always reaches money: claims read one category's balance (IA3, section 2.3) and each merchant spends from its category (IA4, A.1), so the impact field names every merchant whose narrower term moves.</p>
+<h3>B.3 · The flow</h3>
+<p>The flow extends IA9's (IA9, D.2): migration is a step of its own, and every step counts each live language. Its steps, with the note each carries in the figure:</p>
+<ol>
+<li><strong>Propose.</strong> Any function; the request form (B.1); DL entry proposed.</li>
+<li><strong>Check the impact.</strong> Every identifier, item, page, synonym and language version.</li>
+<li><strong>Route.</strong> → see the decision rights (A.2).</li>
+<li><strong>Decide.</strong> [declined] logged with its reason; ends here.</li>
+<li><strong>Change the vocabulary first.</strong> Every language; old label kept as a variant.</li>
+<li><strong>Migrate.</strong> Retag, redirect, reload synonyms, re-stamp faces.</li>
+<li><strong>Tell.</strong> The told list (B.5); the release note; each language.</li>
+<li><strong>Close.</strong> Applied when every language version is done.</li>
+</ol>
+<p>The flow kind draws no branch, so the declined path is the bracketed condition in step 4's note, as in IA9's figure. Every step is tone 5, shared.</p>
+<figure class="viz viz-flow"><div class="viz-scroll"><svg viewBox="0 0 328 458" width="328" height="458" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="flow"><g data-box=""><rect class="viz-node viz-t5" x="8" y="8" width="143" height="94" rx="2"/><text class="viz-nodelabel" x="20.0" y="31.3" text-anchor="start">Propose</text><text class="viz-note" x="20.0" y="48.3" text-anchor="start">any function; the</text><text class="viz-note" x="20.0" y="61.3" text-anchor="start">request form</text><text class="viz-note" x="20.0" y="74.3" text-anchor="start">(B.1); DL entry</text><text class="viz-note" x="20.0" y="87.3" text-anchor="start">proposed</text></g><path class="viz-arrow" d="M155,55.0 L171,55.0"/><g data-box=""><rect class="viz-node viz-t5" x="177" y="8" width="143" height="94" rx="2"/><text class="viz-nodelabel" x="189.0" y="31.3" text-anchor="start">Check the impact</text><text class="viz-note" x="189.0" y="48.3" text-anchor="start">every identifier,</text><text class="viz-note" x="189.0" y="61.3" text-anchor="start">item, page,</text><text class="viz-note" x="189.0" y="74.3" text-anchor="start">synonym and</text><text class="viz-note" x="189.0" y="87.3" text-anchor="start">language version</text></g><path class="viz-arrow" d="M248.5,104 L248.5,115.0 L79.5,115.0 L79.5,124"/><g data-box=""><rect class="viz-node viz-t5" x="8" y="128" width="143" height="81" rx="2"/><text class="viz-nodelabel" x="20.0" y="151.3" text-anchor="start">Route</text><text class="viz-note" x="20.0" y="168.3" text-anchor="start">→ see the decision</text><text class="viz-note" x="20.0" y="181.3" text-anchor="start">rights (A.2)</text></g><path class="viz-arrow" d="M155,168.5 L171,168.5"/><g data-box=""><rect class="viz-node viz-t5" x="177" y="128" width="143" height="81" rx="2"/><text class="viz-nodelabel" x="189.0" y="151.3" text-anchor="start">Decide</text><text class="viz-note" x="189.0" y="168.3" text-anchor="start">[declined] logged</text><text class="viz-note" x="189.0" y="181.3" text-anchor="start">with its reason;</text><text class="viz-note" x="189.0" y="194.3" text-anchor="start">ends here</text></g><path class="viz-arrow" d="M248.5,211 L248.5,222.0 L79.5,222.0 L79.5,231"/><g data-box=""><rect class="viz-node viz-t5" x="8" y="235" width="143" height="95" rx="2"/><text class="viz-nodelabel" x="20.0" y="258.3" text-anchor="start">Change the</text><text class="viz-nodelabel" x="20.0" y="272.3" text-anchor="start">vocabulary first</text><text class="viz-note" x="20.0" y="289.3" text-anchor="start">every language;</text><text class="viz-note" x="20.0" y="302.3" text-anchor="start">old label kept as</text><text class="viz-note" x="20.0" y="315.3" text-anchor="start">a variant</text></g><path class="viz-arrow" d="M155,282.5 L171,282.5"/><g data-box=""><rect class="viz-node viz-t5" x="177" y="235" width="143" height="95" rx="2"/><text class="viz-nodelabel" x="189.0" y="258.3" text-anchor="start">Migrate</text><text class="viz-note" x="189.0" y="275.3" text-anchor="start">retag, redirect,</text><text class="viz-note" x="189.0" y="288.3" text-anchor="start">reload synonyms,</text><text class="viz-note" x="189.0" y="301.3" text-anchor="start">re-stamp faces</text></g><path class="viz-arrow" d="M248.5,332 L248.5,343.0 L79.5,343.0 L79.5,352"/><g data-box=""><rect class="viz-node viz-t5" x="8" y="356" width="143" height="94" rx="2"/><text class="viz-nodelabel" x="20.0" y="379.3" text-anchor="start">Tell</text><text class="viz-note" x="20.0" y="396.3" text-anchor="start">the told list</text><text class="viz-note" x="20.0" y="409.3" text-anchor="start">(B.5); the release</text><text class="viz-note" x="20.0" y="422.3" text-anchor="start">note; each</text><text class="viz-note" x="20.0" y="435.3" text-anchor="start">language</text></g><path class="viz-arrow" d="M155,403.0 L171,403.0"/><g data-box=""><rect class="viz-node viz-t5" x="177" y="356" width="143" height="94" rx="2"/><text class="viz-nodelabel" x="189.0" y="379.3" text-anchor="start">Close</text><text class="viz-note" x="189.0" y="396.3" text-anchor="start">applied when every</text><text class="viz-note" x="189.0" y="409.3" text-anchor="start">language version</text><text class="viz-note" x="189.0" y="422.3" text-anchor="start">is done</text></g><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>Change-control flow for a term: how a change to Perqo's taxonomy or vocabulary is proposed, checked, routed, decided, applied first in the vocabulary, migrated, told and closed, in every live language; supports the decision on what must happen before a term's change counts as made (Deliverable B, B.3). Extends IA9's change-control flow (IA9, section 4.2 and D.2) with the migration step and the per-language rule of B.4; the request form from IA12, Deliverable D; redirects to equivalent topics after GDS (Stephens-Manassiev, Inside GOV.UK, 2019, read 10 November 2026). The flow kind draws no branch, so the declined path is a bracketed condition in the Decide step's note. Every step tone 5, shared. Perqo is fictional.</figcaption></figure>
+<h3>B.4 · Languages and markets</h3>
+<p>The rules a change follows once Perqo has more than one language (Perqo, fictional). Until then they are dormant, and only rule 1 applies, to every identifier created from today.</p>
+<ol>
+<li><strong>Identifiers carry no words.</strong> Every new identifier is a code with no word of any language in it; existing identifiers, CAT-HEA among them, are kept under R9 and never translated (section 5.1).</li>
+<li><strong>One preferred term per surface per language.</strong> The vocabulary gains a column per live language for each surface label (Deliverable C, C.2). A label not yet translated shows the English preferred term and is marked "untranslated"; the change that needs it stays accepted and is not applied, until the label exists (A.5).</li>
+<li><strong>Variants per language, from that language.</strong> Each language's variants come from its own search log and tickets (RV-15; IA4, section 3.3), and R4's exclusions are re-run for it. T-14, the Help search results template, loads the synonyms of the visitor's language only (IA5, Deliverable C).</li>
+<li><strong>Addresses.</strong> English keeps the root and every existing address, because an address that changes breaks every link to it (Berners-Lee, "Cool URIs Don't Change", W3C, 1998; IA4, section 5). Each other language takes a subdirectory, the structure Google's documentation gives for a multi-regional site, example.com/de/, applied here to languages (IA5, section 5.3). A category page's address in another language is perqo.com/{language}/{section path in that language}/cat-hea/{preferred term in that language}; the page is found by its identifier, and any other path that carries the identifier redirects permanently to the current one. Every language version of a page lists every other, keyed by its inventory ID (IA5, section 5.3).</li>
+<li><strong>Markets.</strong> A market changes no category (section 5.3). Before a page goes live in a market, the owner of each market-marked module on it fills it for that market: M-10 and M-11 (marketing with sales), M-24 (support), M-25 (legal); and T-04's catalogue examples (M-08) show the items that market's clients' policies cover. The inventory gains a market column for the rows that use them.</li>
+<li><strong>Measures.</strong> M-07 and M-12 to M-14 are read per language from the month a language goes live (RV-15; DD-IA2, A.2).</li>
+<li><strong>An outside reader.</strong> If software outside Perqo comes to read the taxonomy, such as a merchant integration, the taxonomy publishes a version number with each release and a mapping from the last, as eBay and Shopify document (section 4.1); this is a condition with no decision attached, recorded on DL-025.</li>
+</ol>
+<h3>B.5 · Who is told</h3>
+<p>IA10's list of who is told when a join changes stands (IA10, A.3). For a term the told list adds these, each through its forum (Perqo, fictional).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Told</th>
+<th>Through</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>any rename, merge, split or retirement</td>
+<td>support (articles, scripts, tags); every language owner</td>
+<td>FO-06; FO-10</td>
+</tr>
+<tr>
+<td>an F-CAT value (J-08)</td>
+<td>sales, marketing, customer success, clients, as IA10 lists; each market's sales</td>
+<td>FO-04; FO-03; FO-05; FO-02</td>
+</tr>
+<tr>
+<td>an Admin label</td>
+<td>clients, in the release note, in each live language</td>
+<td>FO-02</td>
+</tr>
+<tr>
+<td>a market module</td>
+<td>sales in that market; legal for M-25</td>
+<td>FO-04; FO-08</td>
+</tr>
+<tr>
+<td>a new language</td>
+<td>every function</td>
+<td>FO-09; then FO-10</td>
+</tr>
+</tbody>
+</table></div>
+<p>Welchman's warning is the reason this table exists: "resources aren't told that a standard has changed until the standard is violated" (section 3.1). A change is closed only when the told field names every function above with its forum and date (DL-012, proposed).</p>
+<h3>B.6 · The decision log entries</h3>
+<p>The log stands at DL-022 on 10 November 2026: DL-001 to DL-010 applied (IA9, D.3), DL-011 to DL-022 proposed and undecided (IA10, A.4; IA11; IA12, Deliverable D; DD-IA1; DD-IA2, Deliverable D). This unit adds four, each proposed, in IA12's template. No filed artefact changes until each is decided; when one is, the vocabulary changes first and each face it names is re-stamped by IA9's rule (IA9, section 4.4).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>DL-023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change</td>
+<td>Localisation's forum: FO-10, the language and market review (A.3), is added to IA10's forums; TP-05's meeting becomes "FO-10 [when a second language is added]"; the language owner role is added (A.1)</td>
+</tr>
+<tr>
+<td>Raised by, from</td>
+<td>DD-IA3, Deliverable A; IA10's TP-05, "none yet (DD-IA3)"</td>
+</tr>
+<tr>
+<td>Touches</td>
+<td>IA10, Deliverable A, A.1 (TP-05) and A.2 (a new row); IA12, Deliverable C, C.1 (TP-05's forum and format) and C.3 (the Monitor row); no J- row</td>
+</tr>
+<tr>
+<td>Register rows (proposed)</td>
+<td>AR-60</td>
+</tr>
+<tr>
+<td>Alternatives considered</td>
+<td>localisation as a standing item of FO-03 (the vocabulary review would then decide market modules, which are not its owners'); no forum until a language is chosen (leaves the first language to be launched without one)</td>
+</tr>
+<tr>
+<td>Positions (proposed)</td>
+<td>none recorded</td>
+</tr>
+<tr>
+<td>Decided by</td>
+<td>IA review: the forum takes in legal and sales and decides labels on every surface (IA9, D.1)</td>
+</tr>
+<tr>
+<td>Decide at</td>
+<td>FO-01, the IA review's next meeting</td>
+</tr>
+<tr>
+<td>Decision, date, reason</td>
+<td>not decided</td>
+</tr>
+<tr>
+<td>Version effect</td>
+<td>dated amendments to IA10, Deliverable A and IA12, Deliverable C: both add, neither breaks a citation</td>
+</tr>
+<tr>
+<td>Places to apply</td>
+<td>IA10, A.1, TP-05's Meeting cell: "FO-10 language and market review [when a second language is added]"; IA10, A.2: FO-10's row as in A.3 of this unit; IA12, C.1, TP-05's forum: "FO-10 (dormant)"; each not done</td>
+</tr>
+<tr>
+<td>Told</td>
+<td>product management, engineering, content team, support at FO-01; leadership at FO-09</td>
+</tr>
+<tr>
+<td>Supersedes, superseded by</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>proposed</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>DL-024</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change</td>
+<td>The controlled vocabulary (Deliverable C) is a canonical artefact whose steward is the content team; each term has an owner by section 3.2's rule; reviews RV-13 to RV-16 are added and RV-07 extended (A.4); the register's process part, AR-50 to AR-64, is entered (A.6)</td>
+</tr>
+<tr>
+<td>Raised by, from</td>
+<td>DD-IA3, section 3.2: the vocabulary has two owners in IA9 (section 4.1 and W-13)</td>
+</tr>
+<tr>
+<td>Touches</td>
+<td>IA9, section 4.1 (the artefacts the IA designer owns) and Deliverable C (RV-07 and four new rows); IA2, the decision table's controlled-vocabulary row (its example becomes Deliverable C); IA12, Deliverable B (rows AR-50 to AR-64) and C.1 (rows owned per function); no J- row</td>
+</tr>
+<tr>
+<td>Register rows (proposed)</td>
+<td>AR-61, AR-62</td>
+</tr>
+<tr>
+<td>Alternatives considered</td>
+<td>the IA designer as owner of the vocabulary (it would own every word on every surface, and the content team, which puts the words in place, would own none); one owner per surface (four vocabularies, section 2)</td>
+</tr>
+<tr>
+<td>Positions (proposed)</td>
+<td>none recorded; the content team to be asked at the next FO-03</td>
+</tr>
+<tr>
+<td>Decided by</td>
+<td>IA review, product management signs off: it changes who decides a class of change (IA9, D.1)</td>
+</tr>
+<tr>
+<td>Decide at</td>
+<td>FO-01, after the next FO-03</td>
+</tr>
+<tr>
+<td>Decision, date, reason</td>
+<td>not decided</td>
+</tr>
+<tr>
+<td>Version effect</td>
+<td>dated amendments to IA9, section 4.1 and Deliverable C, IA2's decision table and IA12, Deliverable B: none retires an identifier, renames a label, removes a relationship or changes a rule's outcome (IA9, section 4.4)</td>
+</tr>
+<tr>
+<td>Places to apply</td>
+<td>IA9, section 4.1: "the canonical IA artefacts, other than the benefits taxonomy and the controlled vocabulary (the content team's)"; IA9, C: RV-07's Checks extended and rows RV-13 to RV-16; IA2, the decision table's controlled-vocabulary row: "§5.3 vocabulary · DD-IA3, Deliverable C"; IA12, B: AR-50 to AR-64; IA12, C.1: rows owned per function, revised at the next FO-09; each not done</td>
+</tr>
+<tr>
+<td>Told</td>
+<td>every member of the IA review at FO-01; support at FO-06; leadership at FO-09</td>
+</tr>
+<tr>
+<td>Supersedes, superseded by</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>proposed</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>DL-025</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change</td>
+<td>The taxonomy change-request process (Deliverable B) extends IA9's change control for terms: the request's five term fields (B.1), the six operations (B.2), the migration step (B.3), and the language and market rules with the URL form in other languages and T-14's synonyms per language (B.4)</td>
+</tr>
+<tr>
+<td>Raised by, from</td>
+<td>DD-IA3, sections 4 and 5; IA9, "What later units take" (DD-IA3); IA5, section 5.3 and B.3 (the URL form left free)</td>
+</tr>
+<tr>
+<td>Touches</td>
+<td>IA9, D.2 and D.3; IA12, D.1 (five fields); IA5, Deliverable B, B.3 (category page URLs) and Deliverable C, T-14; IA4, B.4, R9 (no change: the rule is applied as it stands); J-08</td>
+</tr>
+<tr>
+<td>Register rows (proposed)</td>
+<td>AR-63, AR-64</td>
+</tr>
+<tr>
+<td>Alternatives considered</td>
+<td>run term changes through IA9's D.2 unchanged (migration has no step and no owner); a release calendar for the taxonomy, as Shopify publishes (no outside reader yet: B.4, rule 7)</td>
+</tr>
+<tr>
+<td>Positions (proposed)</td>
+<td>none recorded</td>
+</tr>
+<tr>
+<td>Decided by</td>
+<td>IA review, product management signs off: it changes the change control on every surface (IA9, D.1)</td>
+</tr>
+<tr>
+<td>Decide at</td>
+<td>FO-01, the IA review's next meeting</td>
+</tr>
+<tr>
+<td>Decision, date, reason</td>
+<td>not decided</td>
+</tr>
+<tr>
+<td>Version effect</td>
+<td>dated amendments to IA9, Deliverable D, IA12, Deliverable D and IA5, Deliverables B and C: each adds; no citation breaks, because English keeps every address</td>
+</tr>
+<tr>
+<td>Places to apply</td>
+<td>IA9, D.2: "migrate" added after "change the artefacts" for a change to a term, and "every live language" in the impact and close steps; IA12, D.1: the five term fields; IA5, B.3: the URL form in other languages (B.4, rule 4); IA5, C.2, T-14's Localisation cell: "language; synonyms of the visitor's language only, from that language's logs (DD-IA3)"; each not done</td>
+</tr>
+<tr>
+<td>Told</td>
+<td>product management, engineering, content team, support at FO-01; sales at FO-04; marketing at FO-03</td>
+</tr>
+<tr>
+<td>Supersedes, superseded by</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>proposed</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>DL-026</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change</td>
+<td>IA4's rules for adding a value gain two: R11, a preferred term used by two concepts takes a qualifier in brackets in the vocabulary; R12, a value holding more than 40 catalogue items, or a top-level category holding more than half of them, is reviewed for a split at RV-14</td>
+</tr>
+<tr>
+<td>Raised by, from</td>
+<td>DD-IA3, section 7: GOV.UK's naming and size principles set beside R1 to R10 (DD-IA1, "What later units take")</td>
+</tr>
+<tr>
+<td>Touches</td>
+<td>IA4, Deliverable B, B.4; no J- row</td>
+</tr>
+<tr>
+<td>Register rows (proposed)</td>
+<td>none: R12's numbers are a threshold for a review, assumed, and the review reads them</td>
+</tr>
+<tr>
+<td>Alternatives considered</td>
+<td>no upper size (R5 covers only the low end); GOV.UK's 2 to 12 children (R7 already limits depth, and Perqo's categories have two children each)</td>
+</tr>
+<tr>
+<td>Positions (proposed)</td>
+<td>none recorded</td>
+</tr>
+<tr>
+<td>Decided by</td>
+<td>content team, as a change to its taxonomy's rules reviewed with support and engineering (IA4, B.4)</td>
+</tr>
+<tr>
+<td>Decide at</td>
+<td>FO-03, the vocabulary and content review's next meeting</td>
+</tr>
+<tr>
+<td>Decision, date, reason</td>
+<td>not decided</td>
+</tr>
+<tr>
+<td>Version effect</td>
+<td>a dated amendment to IA4, Deliverable B: two rules added, none changed</td>
+</tr>
+<tr>
+<td>Places to apply</td>
+<td>IA4, B.4: R11 and R12 after R10; not done</td>
+</tr>
+<tr>
+<td>Told</td>
+<td>IA review at FO-01; support at FO-06</td>
+</tr>
+<tr>
+<td>Supersedes, superseded by</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>proposed</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.333"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="179" data-rings="5"><path d="M152 55l-16 5-23 12-17 5-22 11-6 8 1 8 11 7 8 3 16 4 24 1 80-4 16-2M240 72l-16-10-16-6-24-4-16 0-16 3M152 63l-58 25-5 8 6 8 9 4 16 3 16 1 56-3 41-5M232 83l-24-16-8-3-8-2-16-2-16 1-8 2M152 69l-43 19-4 8 7 5 7 3 25 2 32-2 24-3 17-5-2-8-7-8-11-8-13-4-8-1-16 1zM144 79l-21 9-1 8 14 4 16 1 32-3 8-2 5-8-4-8-9-4-8-3-16 0zM160 80l-20 8 4 4 8 3 16-2 8-3 4-2-4-4-7-4z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="53" data-rings="1"><path d="M224 113l48-9 18-8 1-8-11-2-24-7-16-7M233 104l23-8-9-8-15-5"/><circle class="ct-spot" cx="248" cy="96" r="6"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="57" data-rings="1"><path d="M320 69l-17 11-7 8 24 5 24 2 16-3 9-4-9-16-8-5-8-2-8 0z"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="47" data-rings="1"><path d="M424 70l-26 10 7 8 19 2 12-2 9-8 0-8-13-3z"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="55" data-rings="1"><path d="M496 84l-8 4 1 8-1 8 8 5 8 1 16-2 11-4 9-8-6-8-14-5-16-1z"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="30" data-rings="0"><circle class="ct-spot" cx="600" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="28" data-rings="0"><circle class="ct-spot" cx="688" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="30" data-rings="0"><circle class="ct-spot" cx="776" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶9" data-words="27" data-rings="0"><circle class="ct-spot" cx="864" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶10" data-words="43" data-rings="1"><path d="M952 72l-8 1-8 6-1 1 2 8 7 2 8 0 26-10-10-6-7-2z"/></g><g class="ct-rise ct-t4" data-label="¶11" data-words="68" data-rings="2"><path d="M1016 77l-7 3-10 8-1 8 10 5 8 2 16 0 37-7 15-8-6-8-22-6-24-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-7" data-step="7"><span>Previous · 8 of 12</span><b>A · The Perqo governance model</b></a><a class="snext" href="#read-dd-ia3-9" data-step="9"><span>Next · 10 of 12</span><b>C · The Perqo controlled-vocabulary starter</b></a></nav></section><section class="sec" data-step="9"><h2 id="read-dd-ia3-9" class="band"><span class="bn" aria-hidden="true">10</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">C · The Perqo controlled-vocabulary starter</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): controlled vocabulary of Perqo, the twenty terms every surface must share, each with its identifier, model name, preferred term on each surface, definition, synonyms to avoid and owner; fidelity F2 with F3's identifiers on every term (F3 when the variants are loaded as search synonyms, IA9, Deliverable B). Decision: what each shared thing is called, on which surface, what it means, which words are never used as its label, and who answers for it. Readers: content, engineering, support, sales, localisation, product management. Leaves out: the eight narrower terms and the flat facets' values (IA4, Deliverable B, B.2, whose preferred and variant terms stand), the states of the card and the employee beyond the names in C.1, labels in other languages (none is live), Admin's page names and the app's screen names (IA6, IA7). Owner: the content team as steward (DL-024, proposed; until it is decided, IA9's owners stand); version 1, dated 10 November 2026; every definition is assumed until the readers it names have agreed it (IA9, section 3.2: fidelity rises only through agreement). Perqo is fictional.</em></p>
+<h3>C.1 · The twenty terms</h3>
+<p>Every term the filed units already fix keeps its filed preferred terms and its filed identifier: the objects' O- identifiers (IA4, A.1) and the categories' CAT- identifiers (IA4, B.2). Three terms had no identifier and take one here, VOC-01 to VOC-03 (Perqo, fictional). Surface columns give each surface's preferred term, from IA1, IA2, IA4 and IA8's shared-objects table; "not shown" means the surface does not name it. "Synonyms to avoid" are never used as a label on any surface; where IA2 or IA4 records them as variant terms they stay loaded as search synonyms, which is R4's rule. Words marked <em>new</em> are set here; the rest are filed. Owners follow section 3.2's rule.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Term (model name)</th>
+<th>Admin</th>
+<th>App</th>
+<th>perqo.com</th>
+<th>Definition</th>
+<th>Synonyms to avoid</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O-01</td>
+<td>client</td>
+<td>Company</td>
+<td>not shown</td>
+<td>Customers</td>
+<td>a company that has a contract with Perqo for its employees' benefits, from its contract start date to its contract end date</td>
+<td>account, alone (the app's Account is the employee's own; account owner is a role); organisation <em>new</em></td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>O-02</td>
+<td>admin user</td>
+<td>Admins; each with a role: HR manager, finance manager; one also account owner</td>
+<td>not shown</td>
+<td>For HR and finance teams (the Help centre's audience)</td>
+<td>a person at a client who signs in to Perqo Admin, with the role HR manager or finance manager; exactly one is also the client's account owner</td>
+<td>user, alone; manager, alone <em>new</em></td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>O-03</td>
+<td>employee group</td>
+<td>Employee group</td>
+<td>not shown</td>
+<td>Teams and groups</td>
+<td>a set of a client's employees who follow one policy; a client's departments enter as groups, and a group need not be a department (IA10, section 2.7)</td>
+<td>department; team, in Admin and the app <em>new</em></td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>O-04</td>
+<td>policy</td>
+<td>Policy</td>
+<td>not shown; its effect shows as open categories and "Claims over the limit need HR approval"</td>
+<td>Policies</td>
+<td>the rules one employee group follows: its open categories, its auto-approve limit and its covered items</td>
+<td>rules, as a label; plan (Pricing's plans are Perqo's prices) <em>new</em></td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>O-05</td>
+<td>employee</td>
+<td>Employees; Invited, Active, Left</td>
+<td>Profile (the employee's own record)</td>
+<td>not shown</td>
+<td>a person at a client who is invited to the Perqo app and spends benefits; belongs to one employee group</td>
+<td>user; member; staff <em>new</em></td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>O-06</td>
+<td>allocation</td>
+<td>Budget (one group's allocations for a category and period, or one employee's on their record)</td>
+<td>Balance</td>
+<td>Benefits budget</td>
+<td>the amount one employee may spend in one category in one period, with what is spent and what remains</td>
+<td>allowance, credit (IA2's variants); wallet <em>new</em></td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>VOC-01</td>
+<td>period (an attribute of the allocation)</td>
+<td>period</td>
+<td>period</td>
+<td>per period, in sales' words (BR-3)</td>
+<td>the span of time an allocation covers; its length is left free (register)</td>
+<td>month, year, cycle (the product cycle of IA9 is another thing) <em>new</em></td>
+<td>product management</td>
+</tr>
+<tr>
+<td>F-CAT</td>
+<td>benefit category</td>
+<td>category; open categories</td>
+<td>Benefits; each category by name</td>
+<td>Benefits</td>
+<td>one of the four top-level values of the benefit-category facet; an employee holds one allocation per open category and period</td>
+<td>perk (the as-is "Perks" was the offers list, IA3); benefit type <em>new</em></td>
+<td>content team</td>
+</tr>
+<tr>
+<td>CAT-HEA</td>
+<td>Health</td>
+<td>Health</td>
+<td>Health</td>
+<td>Health</td>
+<td>physical and mental health (IA4, B.2)</td>
+<td>wellbeing (IA2's variant); wellness <em>new</em></td>
+<td>content team</td>
+</tr>
+<tr>
+<td>CAT-LEA</td>
+<td>Learning</td>
+<td>Learning</td>
+<td>Learning</td>
+<td>Learning</td>
+<td>learning anything, work-related or not (IA4, B.2)</td>
+<td>education, training (IA2's variants)</td>
+<td>content team</td>
+</tr>
+<tr>
+<td>CAT-MOB</td>
+<td>Mobility</td>
+<td>Mobility</td>
+<td>Mobility</td>
+<td>Mobility</td>
+<td>getting around (IA4, B.2)</td>
+<td>transport, commuting (IA2's variants)</td>
+<td>content team</td>
+</tr>
+<tr>
+<td>CAT-MEA</td>
+<td>Meals</td>
+<td>Meals</td>
+<td>Meals</td>
+<td>Meals</td>
+<td>food and eating (IA4, B.2)</td>
+<td>food (IA2's variant)</td>
+<td>content team</td>
+</tr>
+<tr>
+<td>O-13</td>
+<td>catalogue item</td>
+<td>Covered items, in Policies</td>
+<td>What's covered, on each category screen</td>
+<td>the catalogue examples on each category page (M-08)</td>
+<td>one thing an employee can spend benefits on, classified by the four facets, with one narrower term and so one category (IA4, B.3)</td>
+<td>product (perqo.com's Product is Perqo itself); perk <em>new</em></td>
+<td>content team</td>
+</tr>
+<tr>
+<td>O-07</td>
+<td>transaction, type claim</td>
+<td>Claim</td>
+<td>Claim</td>
+<td>Claims</td>
+<td>a request by an employee to be paid back for a receipt, checked against the group's policy and spending from one allocation</td>
+<td>refund, reimbursement, expense (IA2's variants)</td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>VOC-02</td>
+<td>claim status</td>
+<td>Submitted, Approved, Rejected, Paid</td>
+<td>the same four</td>
+<td>not shown</td>
+<td>where a claim is in its lifecycle; Paid and Rejected are end states (IA2, section 5.3)</td>
+<td>Pending (the as-is app's word, IA3); Declined (a declined attempt at the till is another thing, IA8, section 4.5)</td>
+<td>product management</td>
+</tr>
+<tr>
+<td>VOC-03</td>
+<td>auto-approve limit (an attribute of the policy)</td>
+<td>auto-approve limit</td>
+<td>the limit, in "Claims over the limit need HR approval"</td>
+<td>the auto-approve limit (BR-3)</td>
+<td>the amount at or under which a claim within its category's balance is approved without HR (IA8, DT-2); its amount is left free (register)</td>
+<td>threshold; cap <em>new</em></td>
+<td>product management</td>
+</tr>
+<tr>
+<td>O-08</td>
+<td>transaction, type card payment</td>
+<td>Card payment, in Reports</td>
+<td>Purchase</td>
+<td>Card payments</td>
+<td>a payment with the Perqo card at a merchant that accepts it, spending from the allocation of that merchant's category</td>
+<td>transaction (the model's word, never a label); charge <em>new</em></td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>O-09</td>
+<td>card</td>
+<td>Perqo card: Active, Frozen, Not issued, Cancelled</td>
+<td>Card</td>
+<td>Perqo card</td>
+<td>the payment card Perqo issues to an employee, at most one per employee</td>
+<td>Blocked, Locked (the state is Frozen); debit card <em>new</em></td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>O-11</td>
+<td>merchant</td>
+<td>not shown</td>
+<td>the merchant's name on a Purchase</td>
+<td>For merchants</td>
+<td>a business that accepts the Perqo card, assigned one narrower term by Perqo</td>
+<td>vendor; partner (the partnerships team's word for its relationship) <em>new</em></td>
+<td>IA designer</td>
+</tr>
+<tr>
+<td>O-12</td>
+<td>offer</td>
+<td>not shown</td>
+<td>Card offers</td>
+<td>not shown</td>
+<td>a discount a merchant publishes for Perqo cardholders, for one catalogue item</td>
+<td>Perks, Discover (the as-is labels, IA3); deal <em>new</em></td>
+<td>IA designer</td>
+</tr>
+</tbody>
+</table></div>
+<p>Several terms are not shown on some surface and are still shared, because each surface depends on them: the policy's effect is what the app shows as open categories and the rule line (IA1; IA6, Deliverable C), and the merchant and the offer reach the app through Purchases and Card offers (IA8, D.1, X-10).</p>
+<h3>C.2 · How the vocabulary is used and kept</h3>
+<ol>
+<li><strong>A label on any surface is the term's preferred term for that surface.</strong> A new label is a new term or a rename, and goes through Deliverable B.</li>
+<li><strong>A synonym to avoid is never a label.</strong> Where it is a recorded variant it stays a search synonym, pointing to one term (R4); RV-13 reads every release for it.</li>
+<li><strong>The model name is the team's word</strong> in code, tickets and conversation between design and engineering, and the surface labels are its recorded translations (IA7, section 6.2). Engineering keeps the model-name column with the IA designer.</li>
+<li><strong>A language column is added per live language,</strong> one preferred term per surface per language (SKOS, section 5, S14, read 10 November 2026; B.4, rule 2), and each cell is marked tested or assumed.</li>
+<li><strong>Each term's owner keeps its definition true</strong> and is asked first about a change; the decider is the one A.2 names.</li>
+<li><strong>A term used by two concepts takes a qualifier in brackets</strong> (R11, proposed; DL-026). None of the twenty needs one today.</li>
+</ol>
+<h3>C.3 · Why these twenty</h3>
+<p>The twenty are the concepts that appear on at least two of Perqo's surfaces or functions and that a surface's label could drift from: the ten objects IA4 drew in tone 5, shared (IA4, A.1: client, employee group, policy, employee, allocation, claim, card payment, card, offer, catalogue item); the admin user and the merchant, which cross between Admin and perqo.com and between the merchant side and the app; the benefit-category facet and its four categories, which every surface classifies by; and three terms whose words reach every surface through a rule: the period, the claim's status and the auto-approve limit. The eight narrower terms are left in IA4's table, where their preferred and variant terms already stand, because they are shown only inside the app's What's covered and the catalogue (section 1.2).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.75"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="185" data-rings="5"><path d="M152 47l-24 4-16 4-8 3-10 6-2 8 6 8 8 8 2 8 0 8 7 8 5 3 24 7 24 4 40 3 32 0 40-2 64-7 24-2 24 2M360 64l-80-13-48-5-40-1-40 2M184 56l-24 2-16 4-8 3-10 7 3 8 8 8 4 16 11 6 8 3 32 5 32 2 40-1 32-4 64-9 24-2 16 2M368 75l-27-3-61-11-24-4-40-2-32 1M192 63l-16 3-16 4-5 2-3 8 8 8 1 8 7 8 24 6 40 3 48-4 32-5 39-8 9-4 15-4-111-22-40-3zM192 72l-8 3-8 5 6 8 2 8 8 4 16 4 32 2 32-3 36-7 12-8-23-8-41-8-32-2zM216 79l-6 1-2 8 9 8 23 1 20-1 22-8-27-8-23-2z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="113" data-rings="3"><path d="M392 120l40 6 24 2 32 0 32-2 24-4 16-5 10-5 14-10 16-9 8-3 12-2 4-4M600 79l-48-6-48-4-112-3-32-2M400 106l25 6 23 4 24 1 24 0 24-3 16-6 16-12 1-8-17-5-32-4-40-2-64-1-32-1M408 88l-5 0 13 4 4 4 28 8 16 3 24-1 16-2 12-8-12-7-16-2-40-1z"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="54" data-rings="1"><path d="M624 84l19 4 45 3 32 2 24-2 48-8 16-1 16 2M800 65l-64 2-104 12-16 1-16-1"/><circle class="ct-spot" cx="720" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="132" data-rings="3"><path d="M824 84l30 12 26 6 48 5 56 2 48-1 40-4 16-3 15-5 5-8-12-8-61-16-35-12-24-3-32-3-32 0-32 3-24 4-32 8-24 4M880 63l-12 9 3 8 8 8 17 6 16 3 48 3 48 0 36-4 20-8-8-8-33-8-31-10-16-3-24-3-32 1-24 3zM912 70l-6 2-1 8 12 8 3 1 24 3 32 1 24-2 21-3-1-8-52-14-16-1-16 0z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-8" data-step="8"><span>Previous · 9 of 12</span><b>B · The taxonomy change-request process</b></a><a class="snext" href="#read-dd-ia3-10" data-step="10"><span>Next · 11 of 12</span><b>What later units take</b></a></nav></section><section class="sec" data-step="10"><h2 id="read-dd-ia3-10" class="band"><span class="bn" aria-hidden="true">11</span><span class="bh"><span class="bt">What later units take</span></span></h2>
+<p>DD-IA3 is the course's last unit. <strong>The final audit</strong> takes the twenty terms of Deliverable C as the check of every label in the vocabulary against the filed units' labels, each term's filed identifier kept; the decision rights of A.2 against IA9's D.1, which they must not contradict; DL-023 to DL-026 as the log's state at this unit's date, beside DL-011 to DL-022, all proposed; the register's process part, AR-50 to AR-64, as the rows the audit's sample may draw from; and section 7's table, whose every GOV.UK principle is quoted from the publication read on 10 November 2026. The governance model and the change-request process are built to be used without the rest of the course: each row cites the unit that defines it.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.167"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="125" data-rings="5"><path d="M560 48l-72 3-64 8-32 7-19 6-20 8-15 8-9 8-2 8 6 8 19 8 16 4 32 5 24 3 72 3 72-2 64-7 64-8 120-11 40-5 31-6 22-8 6-8-9-8-26-8-32-6-40-4-48-3-56-2-80-2zM480 63l-32 6-24 7-10 4-15 8-9 8 2 8 16 8 32 7 48 4 40 1 48-2 48-4 48-7 104-9 37-6 11-3 14-5 4-8-17-8-25-5-40-5-48-3-72-2-72 0-48 2zM584 64l-48 2-40 5-36 9-16 8-7 8 7 8 28 7 24 3 40 2 48-2 87-10 73-7 11-1 29-8 1-8-27-8-38-4-64-4zM560 72l-24 2-24 4-7 2-18 8-5 8 20 8 18 2 40 2 40-2 48-6 48-4 37-8-3-8-42-6-64-3zM568 80l-30 8 5 8 17 2 40-1 73-9-9-4-15-4-49-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-9" data-step="9"><span>Previous · 10 of 12</span><b>C · The Perqo controlled-vocabulary starter</b></a><a class="snext" href="#read-dd-ia3-11" data-step="11"><span>Next · 12 of 12</span><b>Perqo facts set by this unit</b></a></nav></section><section class="sec" data-step="11"><h2 id="read-dd-ia3-11" class="band"><span class="bn" aria-hidden="true">12</span><span class="bh"><span class="bt">Perqo facts set by this unit</span></span></h2>
+<p>Every fact below is a course convention (Perqo, fictional), never evidence about the world. Each keeps every registered fact; none renames an IA1 to IA12, DD-IA1 or DD-IA2 label, object, attribute or relationship. DL-023 to DL-026 are proposed, so no filed artefact changes at this unit's filing.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Set in</th>
+<th>Left free</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A term is owned by the owner of the artefact that defines it, and a term whose meaning is a rule or a contract term by product management; the owner is asked first, and the decider is IA9's D.1's</td>
+<td>section 3.2; Deliverable C</td>
+<td>none</td>
+</tr>
+<tr>
+<td>The roles: strategy owner (leadership), rule owner (product management), vocabulary steward (content team, DL-024), term owner, language owner (localisation, one per live language), market module owner, applier, signal reader</td>
+<td>Deliverable A, A.1</td>
+<td>named people</td>
+</tr>
+<tr>
+<td>The decision rights for nine kinds of change, as A.2 gives them</td>
+<td>Deliverable A, A.2</td>
+<td>none</td>
+</tr>
+<tr>
+<td>FO-10, the language and market review, with its chair, members, inputs, outputs and cadence; dormant until leadership decides a second language at FO-09; TP-05's meeting FO-10 (DL-023, proposed)</td>
+<td>Deliverable A, A.3</td>
+<td>its meetings' length</td>
+</tr>
+<tr>
+<td>Additions to FO-01, FO-02, FO-03, FO-04 and FO-09 as A.3 gives them</td>
+<td>Deliverable A, A.3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Reviews RV-13 label drift check, RV-14 term counts, RV-15 search per language, RV-16 owner check, and RV-07 extended to duplication, with checks, cadences, triggers and owners</td>
+<td>Deliverable A, A.4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>The measurement model's reads by forum, per language once there are two</td>
+<td>Deliverable A, A.4</td>
+<td>every result</td>
+</tr>
+<tr>
+<td>Escalation defaults: a term keeps its definition while its owner is silent; an untranslated label shows the English term, marked "untranslated", and its change stays accepted; no second language until leadership decides</td>
+<td>Deliverable A, A.5</td>
+<td>which markets and languages come next (leadership's decision, A.5)</td>
+</tr>
+<tr>
+<td>The register's process part: AR-50 to AR-64, every row at C0 and not run on 10 November 2026</td>
+<td>Deliverable A, A.6</td>
+<td>the results</td>
+</tr>
+<tr>
+<td>The request's five term fields; the six operations with their identifier, version, migration and decider; the flow's eight steps; the told list for terms</td>
+<td>Deliverable B, B.1 to B.3, B.5</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Perqo keeps one taxonomy for every market; a market changes what policies cover and what market-marked modules hold, never a category</td>
+<td>section 5.3; Deliverable B, B.4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Identifiers created from today carry no word of any language; CAT-HEA and the other existing codes are kept and never translated</td>
+<td>section 5.1; Deliverable B, B.4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>English keeps the root and every address; another language takes a language subdirectory; a category page is perqo.com/{language}/{section path in that language}/cat-hea/{preferred term in that language}, found by its identifier, other paths redirecting</td>
+<td>Deliverable B, B.4</td>
+<td>the language tags' form</td>
+</tr>
+<tr>
+<td>T-14 loads the synonyms of the visitor's language only, from that language's logs and tickets (DL-025, proposed)</td>
+<td>Deliverable B, B.4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>No software outside Perqo reads the taxonomy today; a published version and mapping only when one does</td>
+<td>section 4.1; Deliverable B, B.4, rule 7</td>
+<td>whether one ever does</td>
+</tr>
+<tr>
+<td>DL-023 to DL-026, proposed; R11 and R12 proposed in DL-026, R12's thresholds 40 items and half of the catalogue</td>
+<td>Deliverable B, B.6</td>
+<td>their decisions</td>
+</tr>
+<tr>
+<td>The controlled-vocabulary starter: twenty terms with definitions, synonyms to avoid and owners; VOC-01 period, VOC-02 claim status, VOC-03 auto-approve limit; the synonyms marked <em>new</em></td>
+<td>Deliverable C</td>
+<td>the period's length and the limit's amount (register)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.583"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="47" data-rings="5"><path d="M568 48l-80 3-80 7-56 7-37 7-25 8-11 8 4 8 20 8 33 6 40 5 48 3 120 2 136 7 80 0 56-3 48-7 19-5 13-7 2-1 1-8-9-8-26-10-40-10-56-10-48-6-40-3-56-2zM472 63l-48 5-32 5-26 7-13 8 6 8 9 3 20 5 36 4 48 3 96 2 88 5 64 0 40-2 36-4 28-8 7-8-8-8-31-11-48-10-56-7-48-3-48 0-56 2zM584 64l-96 6-32 4-32 6-15 8 9 8 22 4 26 4 22 1 192 7 40-2 32-4 11-2 16-8-6-8-5-2-18-6-38-8-32-5-32-2zM560 72l-78 8-21 8 15 8 44 4 136 5 40-2 31-7-2-8-25-8-36-6-48-4zM568 80l-44 8 20 4 16 2 56 3 32 0 8-1 12-8-36-8-32-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia3-10" data-step="10"><span>Previous · 11 of 12</span><b>What later units take</b></a><a class="snext send" href="#read-dd-ia3-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-dd-ia3-sources"><summary><span class="at" id="read-dd-ia3-12">Sources</span><span class="an">23</span></summary><div class="accb">
+<ul>
+<li>Berners-Lee, Tim. "Cool URIs Don't Change". W3C, 1998 (W3C style guidance; cited through IA4, section 5). <a target="_blank" rel="noopener" href="https://w3.org/Provider/Style/URI">w3.org, cool URIs</a></li>
+<li>Dub, Sam. "Our plans to improve navigation on GOV.UK". GDS blog, 17 May 2021, read 10 November 2026 (practice, a maker's account). <a target="_blank" rel="noopener" href="https://gds.blog.gov.uk/2021/05/17/our-plans-to-improve-navigation-on-gov-uk">gds.blog.gov.uk, navigation plans</a></li>
+<li>eBay Developers Program. "Finding categories for a listing". Read 10 November 2026 (platform documentation). <a target="_blank" rel="noopener" href="https://www.developer.ebay.com/api-docs/sell/static/metadata/sell-categories.html">developer.ebay.com, sell categories</a></li>
+<li>Evans, Eric. <em>Domain-Driven Design Reference: Definitions and Pattern Summaries</em>. Domain Language, 2015 (cited through IA7, section 6.2). <a target="_blank" rel="noopener" href="https://domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf">domainlanguage.com, DDD Reference</a></li>
+<li>Furnas, George W., Thomas K. Landauer, Louis M. Gomez and Susan T. Dumais. "The Vocabulary Problem in Human-System Communication". <em>Communications of the ACM</em> 30, no. 11 (1987): 964 to 971 (cited through IA3, section 4.2, and IA4, section 1.1). <a target="_blank" rel="noopener" href="https://cacm.acm.org/research/the-vocabulary-problem-in-human-system-communication">cacm.acm.org, vocabulary problem</a></li>
+<li>GOV.UK Developer Documentation. "How the topic taxonomy works". Last updated 4 May 2022, read 10 November 2026 (platform documentation; the page warns it may be out of date). <a target="_blank" rel="noopener" href="https://docs.publishing.service.gov.uk/manual/taxonomy.html">docs.publishing.service.gov.uk, taxonomy</a></li>
+<li>Government Digital Service. "GOV.UK Taxonomy principles". Published 13 June 2019, updated 9 September 2026, read 10 November 2026 (publisher's documentation). <a target="_blank" rel="noopener" href="https://www.gov.uk/government/publications/govuk-topic-taxonomy-principles/govuk-taxonomy-principles">gov.uk, taxonomy principles</a></li>
+<li>Halvorson, Kristina, and Melissa Rach. <em>Content Strategy for the Web</em>. 2nd ed. New Riders, 2012. Ch. 9 (cited through IA1, section 2.3, and IA9, section 4.1).</li>
+<li>Hedden, Heather. <em>The Accidental Taxonomist</em>. 3rd ed. Information Today, November 2022. Publisher's description, read 10 November 2026. <a target="_blank" rel="noopener" href="https://books.infotoday.com/Ebooks/489_The-Accidental-Taxonomist-Third-Edition.htm">books.infotoday.com, Accidental Taxonomist</a></li>
+<li>ISO. <em>ISO 25964-1:2011, Information and documentation — Thesauri and interoperability with other vocabularies — Part 1: Thesauri for information retrieval</em>. Edition 1, August 2011; confirmed 2022. Publisher's page, read 10 November 2026 (standard). <a target="_blank" rel="noopener" href="https://www.iso.org/standard/53657.html">iso.org, ISO 25964-1</a></li>
+<li>ISO. <em>ISO 25964-2:2013, Information and documentation — Thesauri and interoperability with other vocabularies — Part 2: Interoperability with other vocabularies</em>. Edition 1, March 2013; confirmed 2023. Publisher's page, read 10 November 2026 (standard). <a target="_blank" rel="noopener" href="https://www.iso.org/standard/53658.html?browse=tc">iso.org, ISO 25964-2</a></li>
+<li>Laubheimer, Page. "Taxonomy 101: Definition, Best Practices, and How It Complements Other IA Work". Nielsen Norman Group, 3 July 2022 (cited through IA2, section 1.2). <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/taxonomy-101/">nngroup.com, taxonomy 101</a></li>
+<li>McCloskey, Marieke. "Intranet Information Architecture (IA) Trends". Nielsen Norman Group, 23 February 2014 (cited through IA10, section 2.7). <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/intranet-information-architecture-ia/">nngroup.com, intranet IA trends</a></li>
+<li>NISO. <em>ANSI/NISO Z39.19-2005 (R2010): Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies</em>. Publication page, dated 13 May 2010, read 10 November 2026 (standard). <a target="_blank" rel="noopener" href="https://niso.org/publications/ansiniso-z3919-2005-r2010">niso.org, Z39.19</a></li>
+<li>Rosenfeld Media. <em>Managing Chaos: Digital Governance by Design</em>, by Lisa Welchman. Publisher's page: contents and FAQ, read 10 November 2026. <a target="_blank" rel="noopener" href="https://rosenfeldmedia.com/?p=187514">rosenfeldmedia.com, Managing Chaos</a></li>
+<li>Rosenfeld, Louis, Peter Morville and Jorge Arango. <em>Information Architecture: For the Web and Beyond</em>. 4th ed. O'Reilly, 2015. Ch. 10 (cited through IA2, section 1.2, and IA4, section 3.1). <a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/information-architecture-4th/9781491913529/ch10.html">oreilly.com, ch. 10</a></li>
+<li>Shopify. product-taxonomy repository, README. GitHub, version badge 2026-10, read 10 November 2026 (vendor documentation). <a target="_blank" rel="noopener" href="https://github.com/Shopify/product-taxonomy">github.com, Shopify product taxonomy</a></li>
+<li>Stephens-Manassiev, Si. "An update on the GOV.UK taxonomy". Inside GOV.UK, 12 February 2019, read 10 November 2026 (practice, a maker's account). <a target="_blank" rel="noopener" href="https://insidegovuk.blog.gov.uk/2019/02/12/an-update-on-the-gov-uk-taxonomy/">insidegovuk.blog.gov.uk, taxonomy update</a></li>
+<li>W3C. <em>SKOS Simple Knowledge Organization System Reference</em>. W3C Recommendation, 18 August 2009. Sections 5 to 8 and 10; integrity conditions S13 and S14. Read 10 November 2026 (standard). <a target="_blank" rel="noopener" href="https://www.w3.org/TR/2009/REC-skos-reference-20090818">w3.org, SKOS Reference</a></li>
+<li>W3C Internationalization. "Text size in translation". Undated as read, 10 November 2026 (standards body's guidance; reports IBM's figures). <a target="_blank" rel="noopener" href="https://www.w3.org/International/articles/article-text-size/index.en">w3.org, text size in translation</a></li>
+<li>Welchman, Lisa. "Stopping the Infighting About Digital Standards". A List Apart, 3 March 2015, excerpt of <em>Managing Chaos</em>, ch. 5. Read 10 November 2026 (practice). <a target="_blank" rel="noopener" href="https://alistapart.com/article/stopping-the-infighting-about-digital-standards/">alistapart.com, digital standards</a></li>
+<li>Welchman, Lisa. "Managing Chaos: Digital Governance by Design". UXmatters, 4 May 2015, sample chapter of <em>Managing Chaos</em>, ch. 7, "Getting It Done". Read 10 November 2026 (practice). <a target="_blank" rel="noopener" href="https://www.uxmatters.com/mt/archives/2015/05/managing-chaos-digital-governance-by-design.php">uxmatters.com, sample chapter</a></li>
+<li>Cited through the filed units, for claims made there: Colyer, "How do committees invent?", the morning paper, 2019, for Conway 1968 (IA10); Google Search Central, "Localized Versions of your Pages", checked 3 November 2026 (IA5; vendor documentation); DD-IA1's observations of 10 November 2026 of GOV.UK's labels, Stripe's documentation and Airbnb's help article (DD-IA1, section 2 and "What later units take"). Full references in IA5, IA10 and DD-IA1, Sources.</li>
+</ul>
+</div></details><details class="acc note" id="read-dd-ia3-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>IA4 built the benefits catalogue taxonomy of Perqo (Perqo, fictional), the flexible-benefits platform this course runs on, with its four facets, twelve benefit-category values and the rules R1 to R10 for adding one. IA9 set who may change the IA and how: the routing rule, the change-control flow, the decision log and the version rule. IA10 named the twelve functions that touch the IA and the forums where each meets it, FO-01 to FO-09, and left one function, localisation, with no forum until a second language is added. This unit takes those three to scale. It covers what an enterprise taxonomy is and how it differs from a navigation hierarchy; the metadata and shared vocabulary that product, content, data and engineering must hold in common; who owns the IA, the taxonomy and each label; change control for a taxonomy and for the IA; localisation and the labels that do not survive translation; the failure modes of a structure at scale and how to detect them; and the documented practice of three organisations that publish their taxonomy or its governance, read against their own publications on 10 November 2026. The deliverable is the Perqo governance model, the taxonomy change-request process in full, and a controlled-vocabulary starter of the twenty terms every surface must share.</p>
+<p>Search was off for this unit: it is written from the field's standard works and the filed units, and the web was used only to verify the standards' numbers and dates on their publishers' pages and the documented practice of the organisations cited. Every page so read is dated "read 10 November 2026" where it is cited.</p>
+<p>Every figure uses IA2's notation (IA2, section 5.2 and the notation sheet). This unit draws four of its six tones. Tone 5, shared, carries most figures, because a taxonomy and its governance sit under every surface. Tone 3, the Perqo app, carries the navigation column of the first figure, whose examples are the app's. Tone 2, anything outside Perqo, carries GOV.UK's figures. Tone 6, a stop, marks a proposed term that is declined.</p>
+<p>What the filed units hand on, and where this unit uses it:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>What it hands on</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IA2, sections 1.2, 3 and 4; the notation sheet; the decision table's controlled-vocabulary row, "§5.3 vocabulary · DD-IA3"</td>
+<td>the controlled vocabulary as an artefact; fault 5 (labels that drift); rename through the vocabulary; the face</td>
+<td>sections 1, 2 and 6; Deliverable C</td>
+</tr>
+<tr>
+<td>IA4, sections 3 and 5; Deliverable B and "What IA5 and DD-IA3 take"</td>
+<td>the taxonomy, its facets, preferred and variant terms, R1 to R10; the controlled vocabulary taken further, nothing renamed except under R9</td>
+<td>sections 1, 4, 6 and 7; Deliverables B and C</td>
+</tr>
+<tr>
+<td>IA5, sections 3.3 and 5.3; Deliverables A and C</td>
+<td>identifiers as the key every language version shares; the localisation column (modules M-10, M-11, M-24, M-25 by market); T-14's synonyms per language; the URL form in other languages; which markets come next</td>
+<td>section 5; Deliverable B, B.4</td>
+</tr>
+<tr>
+<td>IA7, sections 6.2 and 6.3; IA8, D.1</td>
+<td>Evans's ubiquitous language; the model name as the team's word and surface labels as recorded translations; the shared objects and their names</td>
+<td>section 2; Deliverable C</td>
+</tr>
+<tr>
+<td>IA9, section 4 and Deliverable D; "What later units take"</td>
+<td>the routing rule, the flow, the log's format and statuses, the version rule, as the base to extend for languages and markets</td>
+<td>sections 3 and 4; Deliverables A and B</td>
+</tr>
+<tr>
+<td>IA10, sections 2.3 and A.2; the open-questions table; "What later units take"</td>
+<td>FO-01 to FO-09; TP-05, localisation, dormant, "none yet (DD-IA3)"; DL-011 to DL-015</td>
+<td>section 3; Deliverable A</td>
+</tr>
+<tr>
+<td>IA11, sections 6.4 and 7</td>
+<td>the confidence ladder, C0 to C5; TP-05 held at C0 with DD-IA3 named</td>
+<td>Deliverable A, A.6</td>
+</tr>
+<tr>
+<td>IA12, sections 3.4 and 4.4; Deliverables C and D; "What later units take"</td>
+<td>the stakeholder map; the escalation procedure; the decision log template with "decide at"; DL-017 to DL-019; the register's process part, left unfilled</td>
+<td>Deliverables A and B</td>
+</tr>
+<tr>
+<td>DD-IA1, section 2 and "What later units take"</td>
+<td>GOV.UK's taxonomy principles beside R1 to R10; GOV.UK's governance costs; the Stripe and Airbnb localisation observations; eBay's versioned category trees per market</td>
+<td>sections 3 to 7</td>
+</tr>
+<tr>
+<td>DD-IA2, Deliverables A, B and D</td>
+<td>the measurement model as the forums' reads, M-07 and M-12 to M-14 per language; the business-case template and its number rule; DL-021 and DL-022</td>
+<td>Deliverables A and B</td>
+</tr>
+<tr>
+<td>Register, "Free: ... (DD-IA3)"</td>
+<td>localisation's forum; the URL form in other languages; T-14's synonyms per language; which markets and languages come next</td>
+<td>Deliverables A and B; "Perqo facts set by this unit"</td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="acc made" id="read-dd-ia3-made"><summary><span class="at">How this unit was made</span><span class="an">3 parts</span></summary><div class="accb"><h3>Provenance</h3><p>INTRO-PENDING</p><h3 id="read-dd-ia3-13">Unsure list</h3>
+<ul>
+<li>Welchman, <em>Managing Chaos</em>: only chapter 5 (the A List Apart excerpt) and chapter 7 (the UXmatters sample chapter) were read, with the publisher's contents and FAQ; chapters 2 and 6, which the titles show treat the team's placement and five design factors, were not read, so the organisational models the book may describe are not named. That the excerpt is chapter 5 is the A List Apart page's statement.</li>
+<li>The ISO, NISO and W3C pages read list no clauses; no clause is cited for ISO 25964-1, ISO 25964-2 or Z39.19. The Z39.19 text itself was not opened (the PDF on NISO's site refused the fetch).</li>
+<li>SKOS: only the first 100,000 of the page's 182,857 characters were read; section 10's definitions of the mapping properties were not reached, and the names of the change and history notes are as the fetch reported section 7.3's list.</li>
+<li>ISO 25964-1's page marks the standard "to be revised"; whether a new edition has been published since was not checked.</li>
+<li>Hedden, 3rd ed.: the chapter contents were not seen (the library record found was the 2nd edition's); the book is cited only for its scope as the publisher describes it.</li>
+<li>W3C, "Text size in translation": the page as read gave no author or date; IBM's figures are reported by the W3C, and IBM's guidelines were not seen.</li>
+<li>GOV.UK's developer documentation is dated 4 May 2022 and warns it may be out of date; the draft and published states of taxons are cited as it gives them, with no claim that they are current.</li>
+<li>Shopify's README gives no release date for the version on its badge (2026-10); the cadence is as the README states it.</li>
+<li>The Stripe and Airbnb observations are DD-IA1's of 10 November 2026 and were not re-read for this unit.</li>
+<li>Object: the Perqo controlled vocabulary, sections 2 and 5 and Deliverable C</li>
+</ul><h3>The brief</h3><div class="pbox"><pre>Aim: After this unit the reader can tell an enterprise taxonomy from a navigation hierarchy, set ownership and change control for both, and detect drift as the system grows.
+Takes: IA4&#x27;s taxonomy; IA9&#x27;s change control; IA10&#x27;s forums.
+Gives: the Perqo governance model, change process and controlled vocabulary.
+
+Deep dive DD-IA3, Taxonomy and governance at scale. Written last. Cover: what an enterprise taxonomy is and how it differs from a navigation hierarchy (Hedden; Rosenfeld, Morville and Arango on metadata, controlled vocabularies and thesauri; the published standards for thesauri and knowledge organisation systems named as standards); metadata and the shared vocabulary across product, content, data and engineering (Evans&#x27;s ubiquitous language; Welchman&#x27;s digital governance by design); ownership: who owns the IA, the taxonomy and each label, and the governance models Welchman describes; change control for a taxonomy (proposal, impact, approval, migration, communication) and for the IA; localisation and the labels that do not survive translation; the failure modes at scale (drift, duplication, the org chart leaking into the structure, orphan categories) and how to detect them; the documented practice of organisations that publish their taxonomy or governance, verified against those publications. Figures: the taxonomy-versus-navigation figure; the governance model; the change-control flow; the drift-detection cadence. Deliverable: the Perqo governance model (roles, decisions, forums, cadence), the taxonomy change-request process in full, and a controlled-vocabulary starter for Perqo (the twenty terms every surface must share, each with its definition, its synonyms to avoid and its owner), Perqo facts invented and labelled.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>
