@@ -342,11 +342,11 @@ Three cautions keep proxy evidence honest:
 - **A record of use shows only those who used it.** A search log holds no employee who gave up before searching (section 2.4); an analytics path holds no employee who never opened the app.
 - **An absent rung is recorded.** Where the plan below cannot be run (a client declines to let its employees take part, or no new joiner is available for the join test), the plan row stays, marked not run, and the assumption goes to IA12's register at its current rung with the row's test named. IA10's TP-05 is the case already on file: localisation has no forum and no test until a second language is added (IA10, Deliverable A, A.1), so its assumptions sit in the register, at C0, with DD-IA3 named.
 
-## Deliverable · The Perqo app validation plan, scripts and templates
+## Deliverable · A · The Perqo app validation plan, scripts and templates
 
 *Face of this artefact (IA2, the notation sheet): validation plan for the Perqo app IA (IA6, Deliverables A to C), with its scripts and analysis templates, at fidelity F3 for the scripts (ready to run) and F2 for the plan; decision: which test settles each assumption of the app IA, with which participants, by which rule, at what cost; readers: the IA designer (runs the tests), product management (cost, priority), customer success and clients' HR (recruiting), support (ticket tags), engineering (analytics queries); leaves out: Perqo Admin's and perqo.com's tests (handed to IA12's register in A.2, with a reason each), the full run's results, the visual design of any test material; owner: the IA designer; version 1, dated 10 November 2026; the pilot results in D are fictional and decide nothing in the IA; Perqo is fictional.*
 
-### A · The validation plan
+### A.1 · The validation plan
 
 Each row is one test of one or more assumptions of the app IA (Perqo, fictional). "What decides" gives the metric (section 1.2), the mark and the rule (section 4.4, at 50 participants: a 70% mark passes at 42 or more and fails at 28 or fewer; an 80% mark passes at 46 or more and fails at 34 or fewer; a cross-listing is kept at 13 or more and removed at 2 or fewer). Costs are in staff time and participants' time; recruiting goes through clients' HR, arranged by customer success (section 5). "Rung" is the rung the test reaches when it passes or fails (section 6.4). Every row cites its source assumption.
 
@@ -410,11 +410,11 @@ Every row of IA7 to IA10's assumption tables that names a test for IA11, with IA
 
 IA10's forums carry two of these streams: FO-06 (the ticket and log read) produces the hypotheses that feed V-13, V-15 and the next cycle's rows, and FO-07 (the client validation session) is where rows 3, 4 and 8 run with admin users from at least two clients (IA10, Deliverable A, A.2). TP-05's row stays dormant: localisation has no forum and no test until a second language (IA10, A.1; section 7).
 
-### B · Tree-test script TT-1
+## Deliverable · B · Tree-test script TT-1
 
 *TT-1, version 2 (after the pilot: T2's correct nodes extended, section 4.1). Unmoderated online, or moderated over a video call for the paper or reading form (section 5). One session: instructions, a warm-up, ten tasks in random order, two closing questions. Median 9 minutes in the moderated pilot (Perqo, fictional).*
 
-#### B.1 · Screener and consent
+### B.1 · Screener and consent
 
 1. Do you work for a company that gives you a Perqo benefits budget? (yes continues)
 2. Do you work in your company's HR or finance team? (yes ends the session, with thanks)
@@ -422,13 +422,13 @@ IA10's forums carry two of these streams: FO-06 (the ticket and log read) produc
 4. When did you join your company? (record: in the last three months, or earlier; quota at least 15 of 50 in the last three months)
 5. Consent: "We will record which options you choose and how long each task takes. We will not store your name with your answers. You can stop at any time." (agree continues)
 
-#### B.2 · Instructions, read or shown to the participant
+### B.2 · Instructions, read or shown to the participant
 
 "Thank you for helping. We are testing how the Perqo app is organised, not you; there are no wrong answers. You will see a list of the app's sections as plain text, with no pictures. For each task, click through the list to where you would expect to find the answer, then choose 'I'd find it here'. You can go back up at any time. If you have no idea, choose 'Skip this task'. Please don't search elsewhere; we want your first instinct."
 
 Moderated form, added: "Think aloud if you can: say what you are looking for and why you choose each option. I won't tell you whether an answer is right."
 
-#### B.3 · The tree
+### B.3 · The tree
 
 The text-only tree of the Perqo app as designed (IA6, Deliverable B, B.3), each node with its tree identifier (TN-) and the screen or page it stands for. Elements on Home are nodes under Home. Left out, because no task can end on them: Join and sign in (A-0), which a signed-in employee does not see; the screens reached only inside a flow or from a list item (Check and submit, Claim submitted, Claim, Purchase); and How approval rules work, a link on New claim. The four Claims groups are nodes, since the Claims screen shows them. The routes leaving the app (H-) are nodes, since an employee may choose them. Under Meals, the route Card offers in Meals appears because the example client's offers are in Meals only (Perqo, fictional), and the route shows only for a category with offers (IA6, B.5).
 
@@ -468,7 +468,7 @@ The text-only tree of the Perqo app as designed (IA6, Deliverable B, B.3), each 
 
 TT-1b, if DL-016 is accepted: the same tree with one node added, TN-31 "Payment messages", under Card (TN-20), standing for A-5.2. Tasks: the warm-up, T7 and T2, in random order after the warm-up.
 
-#### B.4 · The tasks
+### B.4 · The tasks
 
 Each task is written in the employee's words and avoids the label it targets (Laubheimer 2023); where that is impossible, the note says so. The correct nodes are the answers that reach the outcome in the app as designed; the "read" column is what the analysis takes from the task beyond M-01. Marks from section 4.4 by IA6's priority.
 
@@ -488,11 +488,11 @@ Each task is written in the employee's words and avoids the label it targets (La
 
 T2's correct nodes: a rejected claim is reached in Claims (TN-16), from its notification (TN-29, which opens the claim: IA6, E-4), or from Recent activity while it is recent (TN-04). T8's: the rule shows on New claim from either route (TN-05, TN-18), and How approval rules work (H-1.2.5) is listed under Help with claims (TN-19) and reached from Help (TN-30) through For employees (IA5, Deliverable A).
 
-#### B.5 · Closing questions, and what is recorded
+### B.5 · Closing questions, and what is recorded
 
 After the last task: "Was any task hard to understand? Which, and why?" (free text) and "Is there anything in the app you looked for and did not see?" (free text). Recorded per participant: identifier (no name), client, joined in the last three months (yes or no), order (tree first or sort first), and per task the path of nodes, the final node or skip, and the time from the task's start to the answer.
 
-#### B.6 · TT-0: the as-is tree, for V-17
+### B.6 · TT-0: the as-is tree, for V-17
 
 TT-0 is IA3's as-is navigation of the Perqo app (IA3, Deliverable, the as-is sitemap), drawn as a text-only tree with the same screener, instructions and closing questions as TT-1, and five of its tasks in the same words: T2, T6, T7, T8 and T10, after the warm-up. Its nodes, by path: Home (Balance; Learn more; Recent activity; Discover; +), Benefits (Health; Learning; Mobility; Meals; Perks), Claims (Submitted; Paid; New claim, with Check and submit under it; Help with claims), Card (Card details; Purchases; Freeze card), Account (Profile; Notifications; Documents, with Approval rules under it; Help). The as-is labels are shown as the as-is app showed them, the first "Learn more" being the one under Balance and the "+" shown as the character itself; the second "Learn more", under Discover, is left out, since it opened the same offers list (IA3, Deliverable).
 
@@ -504,17 +504,17 @@ TT-0 is IA3's as-is navigation of the Perqo app (IA3, Deliverable, the as-is sit
 | T8 Approval rule | Account › Documents › Approval rules; Account › Help | the rule was in the PDF H-1.2.4 under Documents, and in the Help centre reached from Help (IA3, Deliverable) |
 | T10 How balances work | Home › Learn more; Account › Help | the first Learn more opened H-2.2.1 (IA3, section 1.2) |
 
-### C · Closed card-sort protocol CS-1
+## Deliverable · C · Closed card-sort protocol CS-1
 
 *CS-1, version 1. Unmoderated online as a form, or moderated with paper cards (section 5). Same participants and screener as TT-1 (B.1); half sort before the tree test, half after. Median 6 minutes in the moderated pilot (Perqo, fictional).*
 
-#### C.1 · Instructions, read or shown to the participant
+### C.1 · Instructions, read or shown to the participant
 
 "Your employer's Perqo budget is split into four categories: Health, Learning, Mobility and Meals. Below are things people spend benefits on. For each one, choose the category where you would expect your employer to cover it. Choose one category for each. If you can't decide, choose 'Not sure'. There are no right answers; we want to know what you would expect."
 
 Moderated form: the four category cards and a "Not sure" card are laid out; the twelve cards are handed over shuffled; the participant may think aloud; the moderator records the final placement of each card.
 
-#### C.2 · The cards
+### C.2 · The cards
 
 One card per item of the example client's policy, BI-001 to BI-012 (IA4, Deliverable B, B.3; IA6, B.3). Each card's text is the item in basic-level words (IA3, C2); one card is reworded so that no card shares a word with a category name, after Tankala's finding that participants match keywords (section 2.1). Cards are shown in a new random order for each participant.
 
@@ -533,19 +533,19 @@ One card per item of the example client's policy, BI-001 to BI-012 (IA4, Deliver
 | C-11 | Groceries | BI-011 | Meals | none |
 | C-12 | Swimming pool entry | BI-012 | Health | none |
 
-#### C.3 · The categories
+### C.3 · The categories
 
 Health, Learning, Mobility, Meals (F-CAT's four top-level values: IA4, Deliverable B), and Not sure. The narrower terms are not shown, since the decision the employee makes in the app is between the four categories (IA6, B.3), and adding them would turn a closed sort of four into one of twelve. "Not sure" exists so that a participant who cannot place a card is not forced to guess; a card in Not sure counts in no category (M-05, M-06).
 
-#### C.4 · What is recorded
+### C.4 · What is recorded
 
 Per participant: identifier (no name), client, joined in the last three months, order; per card, the category chosen. After the sort, one free-text question: "Which card was hardest to place, and why?"
 
-### D · Analysis templates
+## Deliverable · D · Analysis templates
 
 Each template is a table to fill per run, with its formulas and its decision rule, shown filled with the pilot where the pilot ran (Perqo, fictional; the pilot decides nothing in the IA: section 6.3).
 
-#### TT-A · Tree test
+### TT-A · Tree test
 
 Per task: x = successes, n = attempts (a skip is a failure); success M-01 = x / n; interval by section 3.4's formula; verdict by section 4.4 (pass, fail, undecided); directness M-02 = direct successes / n; first click M-03 = first choices on a path to a correct node / n; correct node chosen, as counts; median time M-04 of successful attempts, in seconds; wrong final nodes, as counts. Then, per far-member task, the cross-listing share = choices of the cross-listing node / n, with its interval and the 15% rule. A comparison of two trees (TT-1b) uses a two-proportion test on M-01 and M-02 (Laubheimer 2024).
 
@@ -568,7 +568,7 @@ Cross-listing shares in the pilot (the 15% rule): T3, Learning 3 of 12, 25.0%, i
 
 What the pilot hands the planned run: T7 is the one task predicted to fail, and DL-016's variant goes with it; the cookery course's two methods disagree; T3's 12 of 12 clears its 70% mark and is held as a pilot result; every other task is undecided at 12.
 
-#### CS-A · Closed card sort
+### CS-A · Closed card sort
 
 Per card: n = participants who sorted it; home share M-05 = placements in the home category / n, with its interval, confirmed at a lower end of 50%; second-place share = placements in IA6's assumed second category / n, with its interval and the 15% rule; other placements and Not sure, as counts. Then the similarity matrix M-06 for the cards in question, each cell the participants who placed both cards in one category divided by n; read for firm pairs and for the cards least tied to their home, never as a dendrogram alone (section 4.3). Then the convergence check for V-05: for each cross-listing, the verdict from CS-1 beside the verdict from TT-1 (T3 to T5); a cross-listing is decided only where the two agree.
 
@@ -584,7 +584,7 @@ The CS-1 pilot, n = 12 (the eight cards everyone placed at home are given togeth
 
 Convergence for V-05 in the pilot: yoga class, undecided in both; cookery course, keep in CS-1 and undecided in TT-1, so undecided; bike helmet, undecided in both.
 
-#### FC-A · First-click test FC-1
+### FC-A · First-click test FC-1
 
 *FC-1: six tasks on F2 screen images of the app as designed (IA6, Deliverable C's wireflow screens), one screen per task, unmoderated or over a video call (section 5); 50 employees who have not taken TT-1, screened as B.1.*
 
@@ -603,7 +603,7 @@ Per task: M-03 = clicks in a correct area / n, with its interval and verdict by 
 |---|---|---|---|---|---|---|---|
 | F1 to F6 | | | | | | | |
 
-#### UT-A · Usability test UT-1
+### UT-A · Usability test UT-1
 
 *UT-1: moderated over a video call, the participant's own phone shared or held to the camera; the built app on a test account or a clickable prototype of it; tasks U1 and U2 in each round with five employees, U3 in its own round with five new joiners (Deliverable A, V-03, V-07, V-10).*
 
@@ -619,7 +619,7 @@ Per participant per task: completed without help, with help, or not; the problem
 |---|---|---|---|---|---|---|
 | 1 | U1 | P1 to P5 | | | | |
 
-#### SG-A · Signal reads: AN-1 to AN-4, LG-1, TK-1
+### SG-A · Signal reads: AN-1 to AN-4, LG-1, TK-1
 
 Per read: ID; record (analytics, the search log, ticket tags); period, and the period it is compared with; metric (M-07 to M-10); numerator and denominator, each defined as in section 1.2; value, and, for a share, its interval; the hypothesis it raises, in one sentence naming the screen or page identifier; the plan row or next cycle's test it goes to; rung (C1 for a single read that raises a hypothesis about the structure; C5 for a read that measures in use the behaviour the assumption is about, as AN-2 to AN-4 do, or a before-and-after read of a released change). Reads are presented at FO-06 (logs and tickets) or FO-01 (paths) (IA10, A.2).
 
