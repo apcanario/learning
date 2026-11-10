@@ -129,6 +129,7 @@ MAP = [
     ('read-ia8', 'credit-card', 'The Perqo card is cancelled at once'),
     ('read-ia9', 'notebook', "Perqo's IA decision log is one list of entries"),
     ('read-ia10', 'table', 'The deliverable is the Perqo touchpoint matrix'),
+    ('read-ia11', 'tree', 'The text-only tree of the Perqo app as designed'),
 ]
 
 

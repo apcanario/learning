@@ -98,6 +98,7 @@
   "read-ia7": "key",
   "read-ia8": "credit-card",
   "read-ia9": "notebook",
-  "read-ia10": "table"
+  "read-ia10": "table",
+  "read-ia11": "tree"
  }
 }

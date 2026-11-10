@@ -138,7 +138,7 @@ From IA6's table "Perqo facts set by this unit", verbatim, with the section that
 - Without a connection, Home, Claims and Purchases show their last loaded content with the time it was loaded (section 4.3).
 - The tab bar shows on every screen except Join, Sign in and modals; a claim in progress is kept when the employee changes tab (Deliverable B, B.3).
 - HR's invitation is an email to the employee's work email with a link that opens Join (A-0.1), or S-6 without the app; Join confirms the employer's name and the work email (Deliverable B, B.4). Free: the sign-in method.
-- Task frequencies per employee, assumed: pay with the card 8 a month; see the balance 3; read a notification 2; check a purchase and track a claim 1.5 each; submit a claim 1; find what's covered and find card offers 0.5 each; read a help article 0.3; freeze or unfreeze the card and see the profile 0.1 each; join once (Deliverable A). Free: measured use (IA11).
+- Task frequencies per employee, assumed: pay with the card 8 a month; see the balance 3; read a notification 2; check a purchase and track a claim 1.5 each; submit a claim 1; find what's covered and find card offers 0.5 each; read a help article 0.3; freeze or unfreeze the card and see the profile 0.1 each; join once (Deliverable A). Free: measured use (IA11); IA11 measures it as AN-1, plan row V-01 (IA11, Deliverable A).
 - New calls to action by the employee: claim -> view; catalogue item -> view (Deliverable A).
 - Complexity and priority of the app's calls to action, and the attribute order on each screen, as in A.2 (Deliverable A, A.2).
 
@@ -234,6 +234,26 @@ From IA10's table "Perqo facts set by this unit", verbatim but for the layout (t
 - The one-page map for leadership: the whole interaction map, G-5 to G-7, the IA debt count, the quarter's decisions (section 2.9).
 - Briefs BR-1 to BR-3, re-issued when their source changes (Deliverable B).
 - Decision log entries DL-011 to DL-015, proposed (Deliverable A, A.4): DL-011 a positions field in the log; DL-012 the told field names the forum and date, A.3 the list per join; DL-013 the face's Readers field may name any of the twelve functions; DL-014 a change adding personal data or changing a role's mark is consulted at FO-08 first; DL-015 who may open a claim's receipt. Free: their decisions.
+
+## Set by IA11 (10 Nov 2026)
+
+From IA11's table "Perqo facts set by this unit", verbatim but for the layout (the section that sets each in brackets, then what it leaves free). IA11 keeps every registered fact and renames none of IA1 to IA10's labels, objects, attributes or relationships. Its decision log entry DL-016 is proposed, so no filed artefact changes at its filing. Its pilot's results are fictional and decide nothing in the IA (IA11, section 6.3).
+
+- Metrics M-01 to M-11, each with one definition and its reading (section 1.2).
+- The confidence ladder, rungs C0 to C5 (section 6.4).
+- Intervals are 95% adjusted-Wald; a mark is set before a test; verdicts pass, fail, undecided by the interval's ends (sections 3.4, 4.4).
+- Marks: task success 80% for a P1 task, 70% for P2 and P3; a cross-listing kept at a lower end of 15%, removed at an upper end below 15%; a home placement confirmed at a lower end of 50%; usability: a problem in 2 or more of 5 is a fault (sections 4.4, 6.1). Free: marks for Admin's and perqo.com's tests.
+- The pilot: 12 employees of the example client, recruited through its HR, remote moderated sessions of 30 minutes, TT-1 then CS-1; median times 9 and 6 minutes; results as in Deliverable D, TT-A and CS-A (section 4.1; Deliverable D). Free: the full run's results.
+- T2's correct nodes extended to Recent activity (TN-04) after the pilot (section 4.1).
+- The example client's card offers are in Meals only (Deliverable B, B.3). Free: the number of offers.
+- Tree node identifiers TN-00 to TN-30 (TN-31 in TT-1b) (Deliverable B, B.3).
+- Scripts and protocols TT-1 (version 2), TT-1b (if DL-016 is accepted), TT-0 (IA3's as-is tree), CS-1, FC-1, UT-1; card identifiers C-01 to C-12; task identifiers W, T1 to T10, F1 to F6, U1 to U3 (Deliverable B to D).
+- Validation plan rows V-01 to V-17, with participants, rules and costs; reads AN-1 to AN-4, LG-1, TK-1; templates TT-A, CS-A, FC-A, UT-A, SG-A (Deliverable A, D). Free: when each row runs.
+- IA6's changes to the app's tabs trigger RV-11's before-and-after test, run as V-17 (Deliverable A).
+- Recruitment: employees through clients' HR, arranged by customer success; at least two clients, all four categories open; at least 15 of 50 joined in the last three months; HR and finance staff screened out; TT-1 with CS-1, FC-1 and TT-0 each take different employees; no answer stored with a name (section 5; Deliverable A). Free: incentives.
+- Costs in staff days and participants' minutes, as in the plan (Deliverable A). Free: money.
+- DL-016, proposed: TT-1b with "Payment messages" (TN-31) under Card, against TT-1 on T7 (section 6.2; Deliverable A). Free: its decision.
+- Where each test named for IA11 outside the app IA goes (A.2, rows 1 to 25) (Deliverable A, A.2). Free: the tests' results.
 
 ## Not yet set (free for the unit that needs it)
 
