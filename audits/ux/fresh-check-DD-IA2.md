@@ -344,3 +344,29 @@ DD-IA2: verdict fix; 2 errors, 11 should-fix, 7 minor (20 findings, 29 replaceme
  }
 ]
 ```
+
+---
+
+## Maintainer's notes (U-14 chat, 10 November 2026)
+
+**How each finding was verified, and what was applied.** Every Current and Fix was taken by script from the checker's `out/findings.json` (sha256 f85f6caf…, equal string for string to the json block in the report above); each Current counted once in the unit as committed at cf7802a; each Fix checked by script to stand in the saved report; 26 replacements applied in one script run, three minors being "no change required" (18, 19, 20: recorded here, not applied). No line outside a figure holds an odd number of backticks after the run.
+
+- 1 (error): holds. Nielsen's page, found by the maintainer's own search, reads "14% of task attempts failed due to IA problems in 2004" and "10% of task attempts failed due to IA problems in 2009"; the unit's body already said so and row RD-18 did not. Applied.
+- 2 (error): holds. The maintainer's search returned the McKinsey full report at mckinsey.com; fetched in four parts from that address: characters 100,000 to 200,000 hold "19 percent of working hours trying to track down information needed to complete tasks"; characters 400,000 to 500,000 hold the exhibit titled "We adjust IDC data to estimate time spent on different activities by a typical interaction worker", with searching and gathering information at 8.8 hours of a total of 46.5; the first part holds the 35 percent and "return approximately 6 percent of the workweek to other tasks". A McKinsey Quarterly page the same search returned draws the same exhibit ("Searching and gathering information 19", source IDC and MGI analysis). 2a to 2d applied; the unsure line changed with it (2c).
+- 3: holds. The search returned the NN/g article: "this time the average improvement was 83%"; "the average improvement in key performance indicators (KPI) was 135%" belongs to the earlier survey; "before-after analysis of all 72 case studies" describes the full report. 3a to 3c applied.
+- 4: holds. The search returned a quotation of the article: "An IDC study in 2001 ("Quantifying Enterprise Search," IDC, May 2002)". Applied.
+- 5: holds. IA11's section 3.4 has no interval of a difference; row M-10 of section 1.2 reads "the interval of a difference when two timings are compared". Applied.
+- 6: holds. IA11's row M-05 opens "in a closed sort". Applied.
+- 7, 8, 9, 10: hold against the unit's own sections (3.2, C.3, C.5, C.6, B.3, C.8; E2 has 12 admin users and E3 has 15). Applied; finding 9's six rows keep C.8's four columns.
+- 11: holds (the scale label is drawn and was not in the text). Applied to the text; the declaration of figure 2 is unchanged.
+- 12: holds (the unit's own "as cited in" labels). 12a and 12b applied; 12b changes figure 1's caption.
+- 13: holds as unverifiable; neither NN/g article as returned describes how its cases were chosen. Applied. (A Boxes and Arrows review of the first edition of the report, returned by the same search, says most of its cases came from calls for case studies; it is about the 2003 edition, is not the source, and was not added to the unit.)
+- 14, 15, 16: hold (IA11 section 2.2's sentence; DD-IA1's register columns; Lewis and Sauro named once, in Sources only). Applied.
+- 17: holds. A search returned The Register's report of Wayne's piece quoting the sentence as ending "depending on how you interpret 'late-stage', 'bugs', and 'more expensive'"; "for design-level defects" is not in it. Applied.
+- 18, 19, 20: no change required; recorded. The shared M- prefix (19) is IA11's choice and stands in the register; it is noted in the register's DD-IA2 section, with no row proposed.
+
+**Sauro 2013, which the checker could not reach.** The maintainer's search returned the article at measuringu.com and it was fetched from the returned address: published 26 March 2013; "a much smaller sample of just 77 tree test tasks from 200 users" across three studies, "the average completion rate was 66%", "Consider this result tentative"; "Of the 20 tasks, 17 had higher task completion rates on the tree test!" (preliminary results from two retailers' sites). The unit's section 1.2, row RD-17, figure 1's second row and section 3.1 say what the page says. PASS.
+
+**The checker's repeated fetch.** One fetch (Moran 2020) was cut off by the session's restart and run once more; it was not refused or rate-limited by the site, so it is read as within the web rule and recorded. The writer's unsure line on Moran ("read through a summary") stands as the writer's; the checker confirmed the figures.
+
+**Transcript checks.** This session wrote no agent transcript to disk (no `.jsonl` anywhere under `/root/.claude/` or `/tmp/`), so the scripted transcript checks of the row (tool names, each fetched URL returned by an earlier search, paths, the "model" field) could not be run for any agent. What stands in their place: each agent's own statement of its model and of the tools it used; the checker's `out/log.md` (62 numbered searches and fetches, each fetch after the search that returned its address); the writer's `out/notes.md`. The gap is recorded in the session's record.
