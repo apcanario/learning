@@ -167,3 +167,242 @@ Each finding was verified against the unit, the filed units (IA3, section 5.2's 
 - Not findings (the report's "noted" line): FC-1's F6 and the length note recorded, not acted on; the D1 point is the checker's reading, not a finding.
 - Figures. Figures 2, 3 and 5 passed the check. Figure 1 (finding 16's cell; finding 2's sentence for its hybrid cell), figure 4 (finding 1's sentence for its four cells) and figure 6 (findings 15 and 24) are re-checked by new agents below.
 - The model. The checker ran on Fable 5.2 (claude-fable-5-2), which the session now gives for the model "fable"; method §4 names Fable 5.1, so by the rule as written the Fable 5.1 fresh check of IA11 is recorded as owed to the Fable stage (P49).
+
+## Figure 1, second check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets `verify.py --shots` saved for it at every width, dark and light. Its hand-back, extracted by script from its transcript, is below; transcript checks: Read, Glob, Grep and Bash only, every path inside its folder, no web, memory, Projects, Artifact or `mcp__*` tool; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** Applied as given, verified against sections 2.1, 2.5, 2.7 and 5: the hybrid sort's cheapest form (section 5 gives it the form with a free-text group; the cell's quotation marks single inside the JSON); the six row labels shortened to the text's words; the caption and section 2.7's paragraph name section 5 for the cheapest forms. Re-checked by a new agent (third check).
+
+Running as Opus 5.5. Fresh figure check of IA11, figure 1 (matrix, section 2.7, method selection). I checked it only against the files in /home/claude/agents/ia11-fig1-check2. My crops are in /home/claude/agents/ia11-fig1-check2/out/.
+
+**1. Every item traces to the text: FIX (one cell)**
+
+Columns. "Answers" traces to 1.1 ("A test answers one question about one part of the structure"). "Proves" and "Does not prove" trace to 2.1 ("What each form proves, and what it does not"). "Participants" traces to section 3. "Cheapest form" traces to section 5 ("Running each method cheaply… What each needs, at the least").
+
+Rows:
+- **Open card sort.** 2.1: "An open sort shows how a group of people clusters the content and what they call the clusters. It does not show that a structure built from those clusters can be navigated". 3.1: "15 to 30 participants give a similarity matrix". 5: "Open card sort. The same, with blank headers…", where "the same" is paper cards and "Record one row per participant… in a spreadsheet". PASS.
+- **Closed card sort.** 2.1: "A closed sort shows whether people put each item where an existing scheme puts it… It measures agreement with a scheme the team chose, so it cannot show a better scheme the team did not offer". 3.1: "the Perqo plan gives CS-1 50 participants" and "to have a margin of error of around 7% you should plan on having around 193 participants". 5: "a form with one question per card and the categories as its choices (closed)". PASS.
+- **Hybrid card sort.** Most cells trace. 2.1: "the groups people add when the given ones do not fit. Those added groups are the gaps in the scheme; they are not yet a tested part of it". 3.1: "this unit gives it the open sort's numbers".
+  - **Error:** "Cheapest form" says "paper cards and blank headers". Section 5 gives blank headers to the open sort ("Open card sort. The same, with blank headers the participant names"). It gives the hybrid sort a form "plus a free-text 'another group' choice (hybrid)".
+- **Tree test.** 1.1: "Can people find things in this structure?" 2.2: "whether the labels and the grouping of a hierarchy lead people to an item" and "No visual design, no content on the page, no search". 3.2: "50+ participants per tree" and "Fifty participants per tree". 5: "On index cards, moderated". PASS.
+- **First-click test.** 2.3: "where people start on a real layout… What it does not: that the task is completed". 3.3: "the Perqo plan gives it the tree test's 50". 5: "A screen image shown on a video call". PASS.
+- **Search-log analysis.** 2.4: "what people who searched asked for, in their words, and which searches failed. What it does not: why they searched, what the people who did not search did". A.1, V-13: "none: the log". 5: "An export of the queries… sort by frequency". "Demand" is a fair gloss of "asked for". PASS.
+- **Analytics paths.** 1.1: "What do people do with the built product? Asked after release". 2.5: "frequencies, paths and drop-offs, measured on everyone, with no recruiting. What it does not: intent". 5: "The screen views by identifier". PASS.
+- **Usability test.** 2.6: "whether real tasks succeed on the whole system… and why they fail" and "What it does not prove at five participants is a rate. Five people find problems". 2.6 also has "three rounds of five", and 5 has "five participants a round". 5: "A video call… a prototype or the built app". PASS.
+
+Legend. "tone 5, shared: a method serves any surface" traces to 106: "Every row is tone 5, since a method serves any surface". PASS.
+
+**2. Caption: FIX**
+
+What passes:
+- It says what the figure shows and the decision it supports, and names section 2.7 and Deliverable A.
+- Every source it names is cited in the text, with the line:
+  - Nielsen 2004: line 35 and Sources.
+  - Sauro 2012: 2.1.
+  - dscout: 2.1.
+  - Tankala 2024 through IA3: 2.1.
+  - Laubheimer 2023 and 2024: 2.2 and 2.3.
+  - Boxes and Arrows: 2.2.
+  - Bailey 2009: 2.3.
+  - Rosenfeld 2011: 2.4.
+  - Farrell 2017 through IA3: 2.4.
+  - Cardello 2013 through IA9: 2.5.
+  - Nielsen 2000 and Krug 2014: 2.6.
+- It says Perqo is fictional.
+
+**Fault:** the whole "Cheapest form" column comes from section 5, and neither the caption nor the text says so. The caption names only section 2.7 and section 3. Line 106 says the cells are "short forms of what those sections say" (2.1 to 2.6) and the participant numbers are section 3's.
+
+**3. Kind: PASS**
+
+The data is items by sections: eight methods against five dimensions. That is a matrix.
+
+**4. Notation: FIX (row labels)**
+
+What passes:
+- **Tone 5 means what IA2 says.** IA2 5.2 defines it as "shared… any object or term that lives on more than one surface". The unit's "a method serves any surface" applies that meaning. The unit names it at line 14 ("Tone 5, shared, carries the methods… because a method serves any surface") and again at 106.
+- **Colour is not the only carrier.** Every row has the same tone, so colour tells no row from another. The caption and legend say it in words.
+
+**Fault:** the row labels take more than half a 320 px phone. "Search-log analysis" is about 120 css px, and the cells start at about 176 of 320 css px, which leaves about 144 px. Only one column fits in view at a time, under the fade (see item 5). If the labels are shortened to the text's own words, the longest becomes "Usability test" (about 81 css px), and the cells gain about 40 px. Each short label traces to a line:
+- "Open sort": 2.1, "An open sort shows…"
+- "Closed sort": 2.1, "A closed sort shows…"
+- "Hybrid sort": 2.1, "A hybrid sort shows…"
+- "First click": 2.7, "first click for a screen"
+- "Search logs": 1.1, "The methods read records of use: search logs, analytics paths and funnels"
+- "Analytics": 2.5, "Product analytics record what people did"
+
+The caption already uses these short forms ("first click", "search logs", "analytics").
+
+**5. How the reader sees it: FIX at 320, 360 and 390; PASS at 430, tablet and desktop**
+
+- **Desktop and tablet:** one frame each, dark and light (light on cream). The whole figure fits. All text is inside its boxes; the tightest cell, "can people do real tasks on the built thing, and why not", fits with small padding. Nothing overlaps, the legend is whole, and the caption sits under the figure. PASS.
+- **430:** three frames. Every column is shown whole in some frame; in frame 1 the right edge of "Proves" sits under the fade and stays legible. PASS.
+- **390:** "Proves" is never whole. Frame 1 cuts it at the right; frame 2 (scrolled 164) has the left part under the label column ("e groups", "ulation"). FIX.
+- **360:** neither "Proves" nor "Does not prove" is whole in any of the four frames. FIX.
+- **320:** none of "Answers", "Does not prove" or "Participants" is whole in any of the five frames. "Answers" loses its line ends at the edge ("put each item i[n]", "can people do re[al]"); the other two are cut on the left in frames 3 and 4. FIX.
+- At 320 the "e" of "surface" at the end of the legend falls under the fade in frame 1 but is present and readable. I do not count that as a fault.
+- At every width, light and dark: text is inside its boxes, nothing overlaps, and the caption is under the figure.
+
+The sticky label column, the fade, the column widths (each as wide as its widest wrapped cell, from the 700-unit width) and the screenshot run's frame steps are the renderer's. My notes on cut columns rest on that layout. The fix the figure itself can make is the shorter row labels. The screenshot run needs repeating after the change. If a column still never shows whole at 320 or 360, the next fix is shorter cells, starting with the Usability "Answers" cell, which sets that column's width.
+
+**Figure 1: FIX.** Each Current, in backticks, occurs once in the file named.
+
+- **declaration.json, hybrid card sort cell (item 1).** Current: `"paper cards and blank headers"`. Replacement: `"a form with a free-text \"another group\" choice"`
+- **declaration.json, row labels (items 4 and 5).**
+  - `"Open card sort"` → `"Open sort"`
+  - `"Closed card sort"` → `"Closed sort"`
+  - `"Hybrid card sort"` → `"Hybrid sort"`
+  - `"First-click test"` → `"First click"`
+  - `"Search-log analysis"` → `"Search logs"`
+  - `"Analytics paths"` → `"Analytics"`
+- **Caption, in declaration.json and captions.md (item 2).** Current: `participant numbers from section 3.` Replacement: `participant numbers from section 3; cheapest forms from section 5.`
+- **Unit text, line 106 (item 2).** Current: `say, and the participant numbers are section 3's.` Replacement: `say, the participant numbers section 3's and the cheapest forms section 5's.`
+
+## Figure 4, second check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets `verify.py --shots` saved for it at every width, dark and light. Its hand-back, extracted by script from its transcript, is below; transcript checks: Read, Glob, Grep and Bash only, every path inside its folder, no web, memory, Projects, Artifact or `mcp__*` tool; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** Applied in part, verified against IA3, section 3.3: IA3 does not test its six items; it reasons about them and leaves where people look to IA11. So the caption's phrase became "for the six items of IA3, section 3.3" and section 4.3's sentence the same words, rather than the checker's longer list. The venue made the text's "CHI '19 Extended Abstracts". The renderer notes (the pinned label column and fade at 320 and 360 px) recorded, not applied. Re-checked by a new agent (third check).
+
+Running as Opus 5.5 (claude-opus-5-5).
+
+# IA11, figure 4 (section 4.3, card-sort similarity matrix): fresh figure check
+
+The figure needs two fixes, both in the caption. The data and rendering are sound.
+
+**1. Every label, cell, note, identifier and number traces to the text: FIX**
+
+Cells. I recomputed every cell from the placements in section 4.3, line 183: "eight cards were placed in their home category by everyone; therapy session by 11, with one in Not sure; yoga class by 9 in Health and 3 in Learning; cookery course by 7 in Learning and 5 in Meals; bike helmet by 9 in Mobility, 2 in Health and 1 in Not sure."
+- Gym membership and yoga class: 9/12 = 75. Train pass and bike helmet: 9/12 = 75. Coding course and cookery course: 7/12 = 58. All match line 189: "gym membership with yoga class at 75%, train pass with bike helmet at 75% … coding course with cookery course at 58%".
+- Yoga class and coding course 25, yoga class and cookery course 17, bike helmet and gym membership 17, bike helmet and yoga class 17. These match line 185: "the 3 who placed yoga class in Learning put it with coding course (25%), and 2 of them had also placed cookery course in Learning (17%); the 2 who placed bike helmet in Health put it with gym membership (17%), and both had yoga class in Health too (17%)."
+- The 0 cells follow from the home-only placements: "The other cells follow from who placed what".
+- The matrix is symmetric. The diagonal is null, per line 185: "a card with itself is left blank". "decimals": 0 gives 17 and 58, as the text writes them.
+- Bike helmet's cells against gym membership and train pass add to 92, which is consistent with "do not add to 100".
+
+Labels.
+- Rows and columns are the card texts in Deliverable C, C.2: "| C-01 | Gym membership |", "| C-02 | Yoga class |", "| C-04 | Coding course |", "| C-05 | Cookery course |", "| C-07 | Train pass |", "| C-08 | Bike helmet |".
+- All six also appear in line 185.
+
+Scale and units.
+- "unit": "%", "min": 0, "max": 100: the text gives every cell as a percentage.
+- "scale_label": "share of the 12 participants": line 179 has "each cell the share of the 12 participants".
+
+Caption identifiers that trace:
+- "the Perqo CS-1 pilot, 12 employees": section 4.1, "Perqo piloted … (CS-1) with 12 employees of the example client".
+- "(M-06)": section 1.2, "M-06 | Pair similarity | … participants who placed two cards in the same group"; CS-A, "each cell the participants who placed both cards in one category divided by n".
+- "a card in Not sure is in no group": line 185, the same words.
+- "Supports reading a sort's clusters apart from the category labels": line 185, "reads the same sort without the category names", and line 189, "Read as clusters".
+- "(section 4.3; Deliverable D, CS-A)": CS-A, "Then the similarity matrix M-06 for the cards in question".
+- "Similarity matrix as used by Katsanos … Lantz": M-06, "the similarity matrix as in Katsanos and others 2019 and Lantz and others 2019".
+- "Lantz and others, Journal of Classification, 2019": section 3.1, "*Journal of Classification* 36, no. 3, 2019".
+- "Shaded in tone 3, the employee": line 185, "shaded in tone 3"; line 14, "Tone 3, the Perqo app and the employee".
+- "no cell decides an IA change (section 6.3)": 6.3, item 2, "the Perqo pilot decides nothing in the IA".
+- "Perqo and its pilot are fictional": "(Perqo, fictional)" throughout.
+
+Faults:
+- **"for the six items IA3 tested by reasoning (IA3, section 3.3)" is not in the text.** The text says only "Figure 4 draws it for IA3's six items" (line 185). It cites IA3, section 3.3 for the three far members (line 183: "The three far members IA3 named, and only those, were placed in a second category (IA3, section 3.3)"). "tested by reasoning" appears nowhere, and the text never ties "six items" to IA3, section 3.3. IA3 is not in my folder, so I could not check the claim against IA3 itself.
+- **"CHI EA 2019" is not the text's form.** The text and Sources give "*CHI '19 Extended Abstracts*". The other captions in this unit use the text's own venue form, for example "HCII 2009".
+
+**2. Caption: PASS once the item 1 fixes are made**
+- It says what the figure shows: card-sort result, similarity matrix, what each cell is, the blank diagonal and the Not sure rule.
+- It names the section it draws (4.3; Deliverable D, CS-A) and where the data comes from (the CS-1 pilot, M-06).
+- Both sources it names, Katsanos and others 2019 and Lantz and others 2019, are cited in section 3.1 and in Sources.
+- A note, not a fault: IA2, section 5.2 says a caption names "the decision it supports". This caption names a reading ("reading a sort's clusters"), not a decision. The text gives the matrix no decision, and M-06 is "never one cell at a time", so I am not asking for one. Writing one in would mean inventing it.
+
+**3. Kind: PASS**
+The data is pairs of cards with a numeric share where each pair meets. That is a square numeric matrix ("matrix" with "numeric": true). Compare, bars or another kind would lose the pairing.
+
+**4. Notation: PASS**
+- The one tone, 3, means what IA2, section 5.2 says: "Tone 3: the Perqo app and the employee". The unit's text names it (lines 14 and 185).
+- Colour is not the only carrier: every cell prints its value, and the blank diagonal is marked by having no number. The caption names the tone's meaning.
+- The row labels are 10 to 14 characters, the cards' own words, each in line 185 and in C.2.
+- At 320 px the label column takes about 140 of the frame's CSS pixels and leaves one whole value column in view at a time. That is enough, and shortening the labels would break the card wording the rows and columns share.
+
+**5. How the reader sees it: PASS**
+I looked at desktop, tablet and phones at 320, 360, 390 and 430 px, in dark and light; the light theme is on cream.
+- Desktop and tablet: the whole figure fits in one frame. All text sits inside its cells, nothing overlaps, the legend is whole, and the caption is under the figure.
+- Phones: every column's cells appear whole in at least one frame, and each figure ends on a frame with the bike helmet column whole. The caption and the "scroll sideways for the whole figure" line are under the figure at every width.
+- Light theme: the shading steps are distinct on cream.
+- Dark theme: the blank diagonal cells (dark grey) are close in colour to the 0–20% cells. They are told apart by having no number, so this is not a fault.
+
+These notes rest on how the renderer lays the figure out (the sticky label column with its fade, the frame scroll steps and the sticky section bar), not on the declaration:
+- The "YOGA CLASS" header is cut in every sampled frame at 320 and 360 px: at the right edge in frame 1, under the label-column fade in frame 2. "TRAIN PASS" has its "T" under the fade at 320.
+- The yoga class column's values at 320 are readable only through the fade (frame 2).
+- The legend chip "60–80%" at 320 is partly faded in frame 3 and cut in frame 4.
+- At 390 px the "80–100%" chip is partly under the fade in frame 3, but whole in frame 2.
+- The opening frame at 320 is clipped by the sticky section bar, so the header row and the Gym membership row are hidden.
+
+None of these can be fixed in the declaration without shortening the card wording.
+
+**Figure 4: FIX.** Both replacements are in the caption string. Each Current occurs once in declaration.json and once in the unit's viz block; captions.md carries the same caption and changes with it.
+- Current: `for the six items IA3 tested by reasoning (IA3, section 3.3)`. Replacement: `for IA3's six items, the three far members it named (IA3, section 3.3) and gym membership, coding course and train pass`. If IA3, section 3.3 really does test six items by reasoning, the alternative is to keep the caption and change line 185 instead: replace `Figure 4 draws it for IA3's six items, shaded in tone 3` with `Figure 4 draws it for the six items IA3 tested by reasoning (IA3, section 3.3), shaded in tone 3`.
+- Current: `Katsanos and others, CHI EA 2019` (in the caption). Replacement: `Katsanos and others, CHI '19 Extended Abstracts`.
+
+The phone-sheet crops I made for viewing are in /home/claude/agents/ia11-fig4-check2/out/.
+
+## Figure 6, second check (new agent, Opus 5.5, 10 November 2026), verbatim
+
+Given only the unit's text with its figures taken out, the six captions, the figure's declaration, IA2, the figure kinds and the frames sheets `verify.py --shots` saved for it at every width, dark and light. Its hand-back, extracted by script from its transcript, is below; transcript checks: Read, Glob, Grep and Bash only, every path inside its folder, no web, memory, Projects, Artifact or `mcp__*` tool; model claude-opus-5-5 from its transcript.
+
+**Maintainer:** Applied as given, verified against section 6.4's table and section 2.4 (the search log is the Help centre's, on perqo.com): the C3 and C5 cells restored to the table's words; tone 3 named as the employee in the legend, the caption and section 6.4's sentence (shortened from the checker's wording); the rung names moved into a Rung column so the row labels are the identifiers. Re-checked by a new agent (third check).
+
+I ran this check as Opus 5.5 (claude-opus-5-5). It is a fresh check of IA11, figure 6 (the confidence-ladder matrix, section 6.4). I worked only inside /home/claude/agents/ia11-fig6-check2. My only writes were the phone frame-sheet slices in out/ and a full replacement declaration, /home/claude/agents/ia11-fig6-check2/out/fig6-replacement.json, which parses and has every row's cells matching the columns.
+
+**1. Every label, cell and number traces to the text: FIX**
+The source is the table under section 6.4, lines 259–266 of unit-without-figures.md.
+- **Columns.** "Evidence", "Can decide", "Cannot decide" and "At Perqo" match the header row `| Rung | Evidence | Can decide | Cannot decide | At Perqo (Perqo, fictional) |`.
+- **C0 row.** Matches `| C0 Assumed | reasoning at a desk, from the literature and the domain | a labelled default, marked "assumed" (IA2, section 5.2) | anything a person would do | IA6's task frequencies (IA6, Deliverable A) |`. The shortenings are faithful.
+- **C1 row.** Matches `| C1 Signal | a log, ticket tags or paths, read once | what to test next (IA9, section 6.4) | why, or the fix | the zero results for "gym" (IA3, section 5.2) |` exactly.
+- **C2 row.** Matches `| C2 Observed | a small test with people: a usability round, a pilot, a moderated tree test | that a problem exists, and its cause (section 2.6) | a rate, or a pass (section 3.4) | the TT-1 pilot, 12 employees |`. Only the examples are dropped.
+- **C3 row: fault.** The text has `| C3 Measured | a planned test from the right people, its interval clear of a mark set beforehand | ...`. The figure drops "from the right people", which is the condition section 6.3 reason 2 rests on ("twelve employees of one client are a convenience sample of one profile ... the Perqo pilot decides nothing in the IA even where its intervals are clear"). Without it, the cell would let the pilot's clear sort result count as C3. The other three C3 cells match.
+- **C4 row.** Matches `| C4 Converging | two methods of different kinds that agree | a change to a tab or a top level (IA9, RV-11) | how it performs in use | TT-1 with CS-1 on a cross-listing; FC-1 with ticket tags |`.
+- **C5 row: fault.** The text has `| C5 Confirmed in use | ... | closing the DL entry as applied and confirmed | why it worked | AN-1 one quarter after release |`. The figure's "closing the DL entry" drops "as applied and confirmed". That makes the cell wrong: section 6.1 already closes a DL entry "as declined, with the test as its reason" on a pass, which is C3.
+- **Legend, tone 5.** "shared: the rungs serve any surface" traces to line 14: "Tone 5, shared, carries the methods and the confidence ladder, because a method serves any surface."
+- **Legend, tone 3.** "the Perqo app" traces to line 268: "the Perqo column in tone 3, the app". That line has the tone fault described under item 4.
+- **Identifiers.** C0 to C5 trace to line 257: "IA12 and DD-IA2 cite rungs by identifier, C0 to C5." TT-1, CS-1, FC-1, AN-1 and DL also appear in the text.
+
+**2. Caption: PASS**
+- It names the artefact, what the figure shows, the decision it supports and section 6.4, and says Perqo is fictional.
+- Every source it names is cited in the text and listed in Sources: Nielsen 2000, Lewis and Sauro 2006, Laubheimer 2024, and Rosenfeld 2011 (line 37, "after Rosenfeld ... IA3, section 5.2").
+- The internal references are cited too: IA2 5.2, IA9 6.4, IA9 6.3 (in M-08), IA9 RV-11, and sections 3.4 and 6.3.
+- Its last sentence repeats the tone 3 wording, "the app", which is fixed under item 4.
+
+**3. Kind: PASS**
+The figure shows items (rungs) against dimensions (evidence, can decide, cannot decide, Perqo example), which is the shape a matrix is for. The order C0 to C5 carries the ladder.
+
+**4. Notation: FIX**
+- **Tone 5.** Correct for shared, and named at lines 14 and 268.
+- **Tone 3: fault.** The figure draws tone 3 and labels it "the Perqo app". But the C1 example, "the zero results for 'gym'", is not app evidence. Line 90 says "At Perqo the log is the Help centre's, on perqo.com; the app has no search", and V-13 and LG-1 name it the For employees log. IA2's tone 3 is "the Perqo app and the employee". Every Perqo example in the column is evidence about employees, so the meaning to cite is the employee, not the app.
+- **Colour.** It is not the only carrier: the column is headed "At Perqo" and the legend states each tone's meaning in words.
+- **Row labels: fault.** "C0 Assumed" to "C5 Confirmed in use" trace to the text, but they are too long for a phone. The fixed label column takes about 180 of the frame's 290 px at 320, which leaves the cells a window of about 120 px (see item 5).
+
+**5. How the reader sees it: FIX**
+- **Desktop and tablet, dark and light: PASS.** One frame shows the whole figure. Text sits inside its boxes, nothing overlaps, and the caption is under the figure. The light theme reads on cream.
+- **Phone 430: PASS.** Every column is whole in one of the three frames, and so is each legend item.
+- **Phone 390.** Cannot decide is cut in both frames that show it: frame 2 at the right edge, frame 3 at the left ("thing a", "n would do"). No frame shows it whole.
+- **Phone 360.** Evidence is cut at the right in frame 1 ("reasoning at a desk" ends in "des", and "a small test with peo") and is gone by frame 2. No frame shows it whole.
+- **Phone 320.** No cell of any column is shown whole in any of the five frames. Each frame shows a sliver about 120 px wide between fades. The legend item "the Perqo app" is never whole either ("the Perq", "the Perqo ap", "› app").
+- **Dark versions** have the same layout and read fine. The captions are under the figure at every width.
+- **Renderer-dependent notes.** The fixed label column and its fade are the renderer's known behaviour, not a fault. What the figure controls is the label width: the column is as wide as the longest label, "C5 Confirmed in use". My estimate is that with labels of two characters the column falls to about 75 px, and the window at 320 grows to about 225 px. The widest cell, Evidence, is about 195 px at 430, so every column should then fit whole in some frame. That estimate rests on how the renderer sizes the label column, which figure-kinds.md does not document for matrix.
+
+**Replacements**
+Each Current occurs once in declaration.json, or in unit-without-figures.md for the last one.
+- Columns: `"cols": ["Evidence"` becomes `"cols": ["Rung", "Evidence"`
+- Row C0: `"label": "C0 Assumed", "tone": 5, "cells": [` becomes `"label": "C0", "tone": 5, "cells": ["Assumed", `
+- Row C1: `"label": "C1 Signal", "tone": 5, "cells": [` becomes `"label": "C1", "tone": 5, "cells": ["Signal", `
+- Row C2: `"label": "C2 Observed", "tone": 5, "cells": [` becomes `"label": "C2", "tone": 5, "cells": ["Observed", `
+- Row C3: `"label": "C3 Measured", "tone": 5, "cells": [` becomes `"label": "C3", "tone": 5, "cells": ["Measured", `
+- Row C4: `"label": "C4 Converging", "tone": 5, "cells": [` becomes `"label": "C4", "tone": 5, "cells": ["Converging", `
+- Row C5: `"label": "C5 Confirmed in use", "tone": 5, "cells": [` becomes `"label": "C5", "tone": 5, "cells": ["Confirmed in use", `
+  - "Rung" traces to the text table's header. Each name traces to its row in that table.
+- C3 Evidence cell: `"a planned test, its interval clear of a mark set beforehand"` becomes `"a planned test from the right people, its interval clear of a mark set beforehand"`
+- C5 Can decide cell: `"closing the DL entry"` becomes `"closing the DL entry as applied and confirmed"`
+- Tone 3 legend: `"means": "the Perqo app"` becomes `"means": "the employee: every Perqo example"`
+- Caption: `the Perqo column tone 3, the app.` becomes `the Perqo column tone 3, the employee, since every example is evidence about employees, the perqo.com Help centre's search log included (section 2.4).`
+- Unit text, line 268: `the Perqo column in tone 3, the app.` becomes `the Perqo column in tone 3, the employee: every example is evidence about employees, the Help centre's search log on perqo.com included (section 2.4).`
+
+The full corrected declaration with all the declaration changes applied is /home/claude/agents/ia11-fig6-check2/out/fig6-replacement.json.
+
+Nothing new for memory.
+
+Figure 6: FIX. Restore the dropped qualifiers in the C3 Evidence and C5 Can decide cells, recast tone 3 as the employee, and move the rung names into a Rung column so the row labels are only the identifiers.
