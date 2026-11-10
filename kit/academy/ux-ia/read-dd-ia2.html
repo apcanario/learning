@@ -1,0 +1,1555 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#ux-ia" data-target="ux-ia">Course IA · Information architecture</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">DD-IA2</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--blue)">INFORMATION ARCHITECTURE</span> · DD-IA2 <span class="pill live">DD-IA2</span></div>
+    <h1>Deep dive: what IA costs and returns</h1>
+    <p class="scope">The evidence on what bad IA costs and what good IA returns, with every number labelled; a measurement model and a business-case template.</p>
+  </header>
+  <div class="stepbar" data-n="11"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 11</span><span class="stt">The published evidence on findability failure and its cost</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-dd-ia2-0" data-step="0"><span class="n">01</span><span class="t">The published evidence on findability failure and its cost</span></a></li><li><a href="#read-dd-ia2-1" data-step="1"><span class="n">02</span><span class="t">What cannot be measured, and the claims made without evidence</span></a></li><li><a href="#read-dd-ia2-2" data-step="2"><span class="n">03</span><span class="t">The measurement model</span></a></li><li><a href="#read-dd-ia2-3" data-step="3"><span class="n">04</span><span class="t">The business case for IA work</span></a></li><li><a href="#read-dd-ia2-4" data-step="4"><span class="n">05</span><span class="t">The limits of the exercise</span></a></li><li><a href="#read-dd-ia2-5" data-step="5"><span class="n">06</span><span class="t">Deliverable · A · The IA measurement model</span></a></li><li><a href="#read-dd-ia2-6" data-step="6"><span class="n">07</span><span class="t">Deliverable · B · The business-case template</span></a></li><li><a href="#read-dd-ia2-7" data-step="7"><span class="n">08</span><span class="t">Deliverable · C · The case filled for Perqo Admin</span></a></li><li><a href="#read-dd-ia2-8" data-step="8"><span class="n">09</span><span class="t">Deliverable · D · Decision log entries proposed</span></a></li><li><a href="#read-dd-ia2-9" data-step="9"><span class="n">10</span><span class="t">What later units take</span></a></li><li><a href="#read-dd-ia2-10" data-step="10"><span class="n">11</span><span class="t">Perqo facts set by this unit</span></a></li></ol><div class="secx"><a href="#read-dd-ia2-sources" data-acc>Sources</a><a href="#read-dd-ia2-note" data-acc>The writer's opening note</a><a href="#read-dd-ia2-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-dd-ia2-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">The published evidence on findability failure and its cost</span></span></h2>
+<h3>1.1 · Five labels, and what each licenses</h3>
+<p>A published number carries the weight of the work behind it, and the course's sourcing rule asks that its kind be named where it is used. This unit uses five labels. <strong>Peer-reviewed</strong>: research published after review in an HCI or information-science venue, with its method open to inspection. <strong>Consultancy report</strong>: a research firm's own data and analysis, published by the firm, whose sample and method are given in part or not at all (NN/g, MeasuringU, Gartner, IDC, McKinsey Global Institute). <strong>Maker's report</strong>: an organisation's account of a test on its own product, as DD-IA1 labelled GOV.UK's posts ("a maker's report of its own test"; DD-IA1, section 2); it is the vendor label applied to a product's own makers, whose interest is in the result. <strong>Vendor</strong>: a company that sells the tool or service whose value it reports. <strong>Anecdote</strong>: a single case without a stated method or sample. A sixth kind, <strong>official statistics</strong>, enters only in section 4, for wages.</p>
+<p>DD-IA1 set the ceiling for every one of them when carried to Perqo: a test GOV.UK ran on GOV.UK's users is evidence about GOV.UK, and for Perqo it is a reasoned default at C0 on IA11's ladder until Perqo's own test raises it (DD-IA1, section 1; IA11, section 6.4). The figures below are therefore read for two different uses. As evidence about the world, each is worth what its label says. As an input to a Perqo case, each is at most a reference range, labelled, and never a forecast of what Perqo will see.</p>
+<h3>1.2 · Task success, and the failures the IA causes</h3>
+<p><strong>How often tasks succeed.</strong> Jeff Sauro's analysis of MeasuringU's practice data found that "the average task-completion rate is 78%", from 1,189 tasks in 115 usability tests with 3,472 users across more than a dozen organisations; a rate above 92% is in the top quartile and one below 49% in the bottom ("What Is A Good Task-Completion Rate?", MeasuringU, 21 March 2011, <a target="_blank" rel="noopener" href="https://measuringu.com/task-completion/">measuringu.com, task completion</a>, read 10 November 2026; consultancy report). The tasks were on full interfaces, the products are not named, and nothing says how the tests were chosen, so the 78% describes MeasuringU's clients' tests and no wider population. IA11 used the same figure for scale (IA11, section 4.4).</p>
+<p><strong>How often tree tests succeed.</strong> Sauro reported an average tree-test completion rate of 66% across 77 tasks from 200 users in three studies, and called it "tentative". In an experiment on two retailers' structures, 17 of 20 tasks had a higher completion rate on the tree test than on the live site ("Using Tree-Testing To Test Information Architecture", MeasuringU, 26 March 2013, <a target="_blank" rel="noopener" href="https://measuringu.com/tree-testing-ia/">measuringu.com, tree testing</a>, read 10 November 2026; consultancy report). The second finding matters more for this unit than the first: a tree test and the live product measure different things, and the one study that set them side by side found the tree test higher, by margins it does not generalise.</p>
+<p><strong>How often the IA is the cause.</strong> Jakob Nielsen's comparison of two NN/g studies is the one published figure found for this unit that attributes task failures to the IA itself: "14% of task attempts failed due to IA problems in 2004" and "10% of task attempts failed due to IA problems in 2009", from user testing of 25 websites and of 24 websites; over the same years the average success rate rose from 66% to 81%, and "Bad IA is now the greatest cause of task failures" ("IA Task Failures Remain Costly", Nielsen Norman Group, 15 April 2009, <a target="_blank" rel="noopener" href="https://www.nngroup.com/alertbox/ia-failures.html">nngroup.com, IA task failures</a>, read 10 November 2026; consultancy report). The attribution rests on a classification scheme NN/g developed in 2004 and describes in a book; the article does not say how many people coded each failure or how agreement was checked. The two samples are different sites, so the change from 14% to 10% is a change across the web NN/g tested, and no redesign of any one site.</p>
+<p><strong>What a first click predicts.</strong> Robert Bailey and his colleagues report that "if the user's first click was correct, the chances of getting the overall scenario correct was .87", against ".46" after a wrong first click, from tests across several websites; the paper does not give the number of participants or studies (Bailey and others, <em>HCII 2009</em>, LNCS 5619, pp. 3 to 12; peer-reviewed proceedings; as read and cited by IA11, section 2.3). This is the one published link found between a leading indicator and the task's outcome, and section 3.1 builds on it.</p>
+<h3>1.3 · Search and browse</h3>
+<p>Three findings, all filed in IA3 (section 5.1), describe how people choose between a menu and a search box. Nielsen reported in 1997 that "more than half of all users are search-dominant" ("Search and You May Find", NN/g, 14 July 1997; as cited in IA3, section 5.1; consultancy report, no sample given in the article as IA3 cites it). Jared Spool's team tested that claim with 30 users performing 121 shopping tasks on three to six e-commerce sites each: "there wasn't a single user out of 30 who always used the search engine first"; on 21% of the sites every user searched, on 32% every user followed links, and 47% were "not dominant to search or links" ("Are There Users Who Always Search?", UIE, 1 May 2001, <a target="_blank" rel="noopener" href="https://articles.centercentre.com/?p=15">articles.centercentre.com, always search</a>, read 10 November 2026; consultancy report, practice). Michael Katz and Michael Byrne ran two studies on e-commerce sites and found that "use of the site search functions did not yield faster or more accurate performance", and that the breadth and scent of the menus influenced browsing; their conclusion is that "providing site search should not be used to compensate for poor menu design" ("Effects of Scent and Breadth on Use of Site-Specific Search on E-Commerce Web Sites", <em>ACM Transactions on Computer-Human Interaction</em> 10, no. 3, September 2003, abstract at <a target="_blank" rel="noopener" href="https://unpaywall.org/10.1145%2F937549.937551">unpaywall.org, Katz and Byrne</a>, read 10 November 2026; peer-reviewed; the participant numbers are not on the record read).</p>
+<p>Two maker's figures add scale. GDS wrote in 2021 that "while most users start from a search engine, around 15% use topic pages to navigate" on GOV.UK, without the method behind the 15% (Dub 2021, as read by DD-IA1, section 2, RD-03; maker's report). And GOV.UK's A/B test of a new site search reported "a 14% increase in overall clickthrough from the search results page", "an 11% decrease in users having to refine their search" and "an 8% reduction in users leaving site from the search page"; the test was ramped to 50% of users who consented to analytics, and the post gives no sample size, no test length and no intervals, and does not say whether the three changes are relative or in percentage points (Catriona Fraser, Christian Sutter and Tara Stockford, "A new search engine for GOV.UK", Inside GOV.UK, 23 October 2024, <a target="_blank" rel="noopener" href="https://insidegovuk.blog.gov.uk/2024/10/23/a-new-search-engine-for-gov-uk/">insidegovuk.blog.gov.uk, new search engine</a>, read 10 November 2026; maker's report; DD-IA1's RD-05).</p>
+<p>Read together: the peer-reviewed result says search does not rescue a weak menu, the practice result says the site shapes the choice more than the person does, and the 1997 claim of a search-dominant majority did not survive a test. None of them gives a rate a Perqo case can use; they decide what to measure. A product whose search is a supplement, as the Help centre's is, should be measured on both routes, and a product with no search, as Admin has none (IA7, section 4.5), on its lists and their find fields.</p>
+<h3>1.4 · Support contacts and failed self-service</h3>
+<p>A failed search for help often ends in a contact. Gartner reported in 2019 that "Only 9% of customers report resolving their issues completely via self-service"; from its 2019 poll of customer service and support leaders, that "live channels such as phone, live chat and email cost an average of $8.01 per contact", and "self-service channels such as company-run websites and mobile apps cost about $0.10 per contact"; and from "a survey of 8,398 customers", the channels customers preferred for resolving an issue, phone first at 44% (Gartner, "Gartner Says Only 9% of Customers Report Solving Their Issues Completely via Self-Service", press release, 25 September 2019, <a target="_blank" rel="noopener" href="https://www.gartner.com/en/newsroom/press-releases/2019-09-25-gartner-says-only-9--of-customers-report-solving-thei">gartner.com, self-service</a>, read 10 November 2026; consultancy report). Three limits follow from the release itself. The 9% is not tied in the text to a named sample. The cost figures are averages reported by service leaders, across industries and mostly consumer service, and say nothing about a business tool's support. And a self-service contact at $0.10 is a cost to the company; the customer's time is not in it.</p>
+<p>For work tools, the older figures are about intranets. Susan Feldman of IDC wrote in 2004 that knowledge workers "spend from 15% to 35% of their time searching for information", citing studies by IDC and others with no sample or year for the range; that a 1999 European IDC study put the cost at $5,000 per worker a year, without its method; and that an IDC study, which the article dates 2001 and cites as "Quantifying Enterprise Search", IDC, May 2002, found that only 21% of respondents found what they needed 85% to 100% of the time ("The high cost of not finding information", KMWorld, 1 March 2004, <a target="_blank" rel="noopener" href="https://www.kmworld.com/Articles/Editorial/Feature/The-high-cost-of-not-finding-information-9534.aspx">kmworld.com, not finding information</a>, read 10 November 2026; consultancy report). Nielsen's intranet study of 2002 is the one with a stated sample: employees at 14 companies doing 16 common tasks, from which he computed the annual cost of the time those tasks take per employee at $3,042 on a low-usability intranet, $2,069 on an average one and $1,563 on one in the best quarter ("Intranet Usability: The Trillion-Dollar Question", NN/g, 10 November 2002, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/intranet-usability-the-trillion-dollar-question/">nngroup.com, intranet usability</a>, read 10 November 2026; consultancy report). The per-employee figures are measured times priced at assumed salaries and overheads; section 2.2 returns to what he did with them.</p>
+<h3>1.5 · Redesigns with before-and-after numbers</h3>
+<p><strong>Averages across many redesigns.</strong> Nielsen reported in 2008 that in NN/g's new survey of design projects "the average improvement was 83%" in key performance indicators, against 135% in its survey six years earlier; the full report holds 72 case studies, and the article does not say how many projects the 83% averages; projects with improvements of "a factor of 10 or more", about 12% of them, were removed as outliers, and the difference between the two surveys was "marginally significant", at p = 8% ("Usability ROI Declining, But Still Strong", NN/g, 21 January 2008, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/usability-roi-declining-but-still-strong/">nngroup.com, usability ROI</a>, read 10 November 2026; consultancy report). Kate Moran's update gives 99 case studies collected for NN/g's report since 2006, each with at least one before-and-after metric: an average improvement of 247% for 2006 to 2008 and 75% for 2020, the difference "statistically significant (p = 0.01)", and for 2020 a 95% confidence interval from 8% to 104%; half the values fell between 13% and 157% ("UX Gains Shrinking", NN/g, 1 November 2020, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/ux-gains-shrinking/">nngroup.com, UX gains shrinking</a>, read 10 November 2026; consultancy report). Both are averages of case studies NN/g collected for its reports, by a selection neither article describes, across every kind of UX change, of which IA is one.</p>
+<p><strong>Single redesigns of a structure.</strong> Four reports, each a maker's account or weaker:</p>
+<ul>
+<li><strong>GOV.UK's topic pages, 2022.</strong> An A/B test in which "50% of GOV.UK users got this new design": clickthrough to content, the pages' key indicator, "increased from 61.6% to 65.1%"; no sample size, test length or interval is given (Sam Dub, "Rolling out a new design for browsing GOV.UK by topic", Inside GOV.UK, 8 August 2022, <a target="_blank" rel="noopener" href="https://insidegovuk.blog.gov.uk/2022/08/08/rolling-out-a-new-design-for-browsing-gov-uk-by-topic/">insidegovuk.blog.gov.uk, browsing by topic</a>, read 10 November 2026; maker's report).</li>
+<li><strong>The ONS taxonomy, 2013.</strong> A card sort with around 200 users and tree tests with over 130; "The average success rate across all test 2 versions was 86%"; "It took users half the time to complete the tasks", and success rates "were almost 30% better than that of the existing taxonomy", with no absolute figure for the old one; themes cut "from 11 to 4" in a taxonomy of "over 1400" items, "5 levels deep". The post also cites Sauro's 78% as "a satisfaction benchmark", where Sauro's figure is a completion rate (Jonathan Porton, "No longer taxing – we hope", ONS Digital blog, 5 December 2013, <a target="_blank" rel="noopener" href="https://digitalblog.ons.gov.uk/2013/12/05/no-longer-taxing-we-hope">digitalblog.ons.gov.uk, taxonomy</a>, read 10 November 2026; maker's report).</li>
+<li><strong>UNC Libraries' navigation.</strong> A tree test of the new navigation with 170 participants on four tasks, against "a similar test conducted before the navigation changes" whose sample is not given: overall success from 63% to 70% and directness from 69% to 74%, while one task, borrowing a book the library does not hold, fell from 79% to 61%; no statistical test is reported (Daniel Pshock and Chad Haefele, "Assessing nav changes", UNC Libraries UX blog, dated 19 May 2016 in its address, <a target="_blank" rel="noopener" href="https://libux.web.unc.edu/2016/05/19/assessing-nav-changes/">libux.web.unc.edu, nav changes</a>, read 10 November 2026; maker's report).</li>
+<li><strong>An intranet, unnamed.</strong> A vendor's case study quotes an anonymous New Zealand financial organisation's intranet manager: "53% faster to find the information through the new content", from "controlled testing with frontline staff" with no sample, tasks or times given (SWOOP Analytics, "How one organisation made intranet information 53% faster to find", case study, 27 July, year not stated, <a target="_blank" rel="noopener" href="https://www.swoopanalytics.com/case-studies/intranet-information-faster-to-find">swoopanalytics.com, case study</a>, read 10 November 2026; vendor, anecdote).</li>
+</ul>
+<p>The UNC result is the most useful of the four for a business case, and for its worst row: an overall gain hid a task that got markedly worse. A case that reports one number per redesign loses that.</p>
+<h3>1.6 · The evidence, tabulated</h3>
+<p>Figure 1 sets the published success and failure rates side by side, each in percent, in tone 2 for figures about products and studies outside Perqo and tone 6 for the two shares of task attempts that failed because of the IA. Its rows: MeasuringU, tasks, 2011, 78 (usability tasks completed); MeasuringU, tree tests, 2013, 66 (tree-test tasks completed); NN/g sites, success, 2004, 66; NN/g sites, success, 2009, 81; ONS tree tests, 2013, 86 (the new taxonomy); Bailey, right first click, 2009, 87, and Bailey, wrong first click, 2009, 46 (scenario right after each); Gartner, fully self-served, 2019, 9 (customers who report resolving their issue completely by self-service); NN/g sites, failed by IA, 2004, 14; NN/g sites, failed by IA, 2009, 10.</p>
+<figure class="viz viz-compare"><div class="viz-scroll" style="--stick:193.1px"><svg viewBox="0 0 700 312" width="700" height="312" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="187.1" y="27.3" text-anchor="end">MeasuringU, tasks, 2011</text><rect class="viz-track" x="197.07872" y="16.0" width="461.6" height="14"/><rect class="viz-bar viz-t2" x="197.07872" y="16.0" width="360.1" height="14"/><text class="viz-value" x="565.2" y="26.8">78%</text><text class="viz-label" x="187.1" y="57.3" text-anchor="end">MeasuringU, tree tests, 2013</text><rect class="viz-track" x="197.07872" y="46.0" width="461.6" height="14"/><rect class="viz-bar viz-t2" x="197.07872" y="46.0" width="304.7" height="14"/><text class="viz-value" x="509.8" y="56.8">66%</text><text class="viz-label" x="187.1" y="87.3" text-anchor="end">NN/g sites, success, 2004</text><rect class="viz-track" x="197.07872" y="76.0" width="461.6" height="14"/><rect class="viz-bar viz-t2" x="197.07872" y="76.0" width="304.7" height="14"/><text class="viz-value" x="509.8" y="86.8">66%</text><text class="viz-label" x="187.1" y="117.3" text-anchor="end">NN/g sites, success, 2009</text><rect class="viz-track" x="197.07872" y="106.0" width="461.6" height="14"/><rect class="viz-bar viz-t2" x="197.07872" y="106.0" width="373.9" height="14"/><text class="viz-value" x="579.0" y="116.8">81%</text><text class="viz-label" x="187.1" y="147.3" text-anchor="end">ONS tree tests, 2013</text><rect class="viz-track" x="197.07872" y="136.0" width="461.6" height="14"/><rect class="viz-bar viz-t2" x="197.07872" y="136.0" width="397.0" height="14"/><text class="viz-value" x="602.1" y="146.8">86%</text><text class="viz-label" x="187.1" y="177.3" text-anchor="end">Bailey, right first click, 2009</text><rect class="viz-track" x="197.07872" y="166.0" width="461.6" height="14"/><rect class="viz-bar viz-t2" x="197.07872" y="166.0" width="401.6" height="14"/><text class="viz-value" x="606.7" y="176.8">87%</text><text class="viz-label" x="187.1" y="207.3" text-anchor="end">Bailey, wrong first click, 2009</text><rect class="viz-track" x="197.07872" y="196.0" width="461.6" height="14"/><rect class="viz-bar viz-t2" x="197.07872" y="196.0" width="212.4" height="14"/><text class="viz-value" x="417.4" y="206.8">46%</text><text class="viz-label" x="187.1" y="237.3" text-anchor="end">Gartner, fully self-served, 2019</text><rect class="viz-track" x="197.07872" y="226.0" width="461.6" height="14"/><rect class="viz-bar viz-t2" x="197.07872" y="226.0" width="41.5" height="14"/><text class="viz-value" x="246.6" y="236.8">9%</text><text class="viz-label" x="187.1" y="267.3" text-anchor="end">NN/g sites, failed by IA, 2004</text><rect class="viz-track" x="197.07872" y="256.0" width="461.6" height="14"/><rect class="viz-bar viz-t6" x="197.07872" y="256.0" width="64.6" height="14"/><text class="viz-value" x="269.7" y="266.8">14%</text><text class="viz-label" x="187.1" y="297.3" text-anchor="end">NN/g sites, failed by IA, 2009</text><rect class="viz-track" x="197.07872" y="286.0" width="461.6" height="14"/><rect class="viz-bar viz-t6" x="197.07872" y="286.0" width="46.2" height="14"/><text class="viz-value" x="251.2" y="296.8">10%</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 193.1 312" width="193.1" height="312" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="193.1" height="312"/><text class="viz-label" x="187.1" y="27.3" text-anchor="end">MeasuringU, tasks, 2011</text><text class="viz-label" x="187.1" y="57.3" text-anchor="end">MeasuringU, tree tests, 2013</text><text class="viz-label" x="187.1" y="87.3" text-anchor="end">NN/g sites, success, 2004</text><text class="viz-label" x="187.1" y="117.3" text-anchor="end">NN/g sites, success, 2009</text><text class="viz-label" x="187.1" y="147.3" text-anchor="end">ONS tree tests, 2013</text><text class="viz-label" x="187.1" y="177.3" text-anchor="end">Bailey, right first click, 2009</text><text class="viz-label" x="187.1" y="207.3" text-anchor="end">Bailey, wrong first click, 2009</text><text class="viz-label" x="187.1" y="237.3" text-anchor="end">Gartner, fully self-served, 2019</text><text class="viz-label" x="187.1" y="267.3" text-anchor="end">NN/g sites, failed by IA, 2004</text><text class="viz-label" x="187.1" y="297.3" text-anchor="end">NN/g sites, failed by IA, 2009</text></svg></div></div><figcaption>Published success and failure rates: ten figures on task success, tree-test success, first clicks, self-service and IA-caused failure, each in percent; supports the reading of what a findability failure rate looks like in the published evidence, and how little of it transfers (section 1.6, from sections 1.2, 1.4 and 1.5). Sauro, MeasuringU, 2011 and 2013 (consultancy reports); Nielsen, NN/g, 2009 (consultancy report); Porton, ONS Digital blog, 2013 (maker's report); Bailey and others, HCII 2009 (peer-reviewed, as cited in IA11); Gartner press release, 2019 (consultancy report). All but Bailey and others read 10 November 2026. Samples differ from source to source; section 1.6's table gives each, or says it is not given. Tone 2: outside Perqo; tone 6: a stop, here the share of attempts on sites outside Perqo that failed because of the IA.</figcaption></figure>
+<p>The figure flattens what the table below keeps: no two sources share a population, a task set or a method, and NN/g's 2004 and 2009 rows are different sites, so no row can be read against another as better or worse. The 86% is one organisation's new tree on its own tasks; the 66% for MeasuringU's tree tests is an average across three studies; the 87% is a conditional probability.</p>
+<p>Figure 2 draws the before-and-after pairs from sections 1.2 and 1.5 that give both numbers, as a grid in tone 2, each cell a percent, its scale labelled "percent, as published": GOV.UK, clicks (clickthrough), 61.6 and 65.1; UNC, all (all tasks), 63 and 70; UNC, direct (directness), 69 and 74; UNC, borrow (the borrow task), 79 and 61; NN/g, success, 66 and 81; NN/g, IA fail (attempts failed by IA), 14 and 10. GOV.UK's row is its topic pages, UNC's are UNC Libraries' tree tests, and NN/g's are the sites it tested; the last two rows are different sites in 2004 and 2009, under Before and After, a trend and no redesign; in that last row a lower share is the better result. No pair here carries an interval.</p>
+<figure class="viz viz-matrix viz-numeric"><div class="viz-scroll" style="--stick:111.6px"><svg viewBox="0 0 700.0 270" width="700.0" height="270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-numeric"><text class="viz-colhead" x="256.7" y="15.6" text-anchor="middle">Before</text><text class="viz-colhead" x="546.9" y="15.6" text-anchor="middle">After</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">GOV.UK, clicks</text><g data-box=""><rect class="viz-t2 viz-h4" x="113.6" y="34.0" width="286.2" height="28.0"/><text class="viz-mark" x="256.7" y="51.8" text-anchor="middle">61.6%</text></g><g data-box=""><rect class="viz-t2 viz-h4" x="403.8" y="34.0" width="286.2" height="28.0"/><text class="viz-mark" x="546.9" y="51.8" text-anchor="middle">65.1%</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">UNC, all</text><g data-box=""><rect class="viz-t2 viz-h4" x="113.6" y="66.0" width="286.2" height="28.0"/><text class="viz-mark" x="256.7" y="83.8" text-anchor="middle">63%</text></g><g data-box=""><rect class="viz-t2 viz-h4" x="403.8" y="66.0" width="286.2" height="28.0"/><text class="viz-mark" x="546.9" y="83.8" text-anchor="middle">70%</text></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">UNC, direct</text><g data-box=""><rect class="viz-t2 viz-h4" x="113.6" y="98.0" width="286.2" height="28.0"/><text class="viz-mark" x="256.7" y="115.8" text-anchor="middle">69%</text></g><g data-box=""><rect class="viz-t2 viz-h4" x="403.8" y="98.0" width="286.2" height="28.0"/><text class="viz-mark" x="546.9" y="115.8" text-anchor="middle">74%</text></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">UNC, borrow</text><g data-box=""><rect class="viz-t2 viz-h4" x="113.6" y="130.0" width="286.2" height="28.0"/><text class="viz-mark" x="256.7" y="147.8" text-anchor="middle">79%</text></g><g data-box=""><rect class="viz-t2 viz-h4" x="403.8" y="130.0" width="286.2" height="28.0"/><text class="viz-mark" x="546.9" y="147.8" text-anchor="middle">61%</text></g><text class="viz-label" x="8.0" y="180.3" text-anchor="start">NN/g, success</text><g data-box=""><rect class="viz-t2 viz-h4" x="113.6" y="162.0" width="286.2" height="28.0"/><text class="viz-mark" x="256.7" y="179.8" text-anchor="middle">66%</text></g><g data-box=""><rect class="viz-t2 viz-h5" x="403.8" y="162.0" width="286.2" height="28.0"/><text class="viz-markon" x="546.9" y="179.8" text-anchor="middle">81%</text></g><text class="viz-label" x="8.0" y="212.3" text-anchor="start">NN/g, IA fail</text><g data-box=""><rect class="viz-t2 viz-h1" x="113.6" y="194.0" width="286.2" height="28.0"/><text class="viz-mark" x="256.7" y="211.8" text-anchor="middle">14%</text></g><g data-box=""><rect class="viz-t2 viz-h1" x="403.8" y="194.0" width="286.2" height="28.0"/><text class="viz-mark" x="546.9" y="211.8" text-anchor="middle">10%</text></g><text class="viz-colhead" x="8.0" y="253.6" text-anchor="start">percent, as published</text><g data-box=""><rect class="viz-t2 viz-h1" x="156.9" y="238.0" width="46.1" height="24"/><text class="viz-mark" x="180.0" y="253.8" text-anchor="middle">0–20%</text></g><g data-box=""><rect class="viz-t2 viz-h2" x="207.1" y="238.0" width="52.6" height="24"/><text class="viz-mark" x="233.3" y="253.8" text-anchor="middle">20–40%</text></g><g data-box=""><rect class="viz-t2 viz-h3" x="263.6" y="238.0" width="52.6" height="24"/><text class="viz-mark" x="289.9" y="253.8" text-anchor="middle">40–60%</text></g><g data-box=""><rect class="viz-t2 viz-h4" x="320.2" y="238.0" width="52.6" height="24"/><text class="viz-mark" x="346.4" y="253.8" text-anchor="middle">60–80%</text></g><g data-box=""><rect class="viz-t2 viz-h5" x="376.7" y="238.0" width="59.0" height="24"/><text class="viz-markon" x="406.2" y="253.8" text-anchor="middle">80–100%</text></g></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 111.6 270" width="111.6" height="270" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="111.6" height="226"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">GOV.UK, clicks</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">UNC, all</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">UNC, direct</text><text class="viz-label" x="8.0" y="148.3" text-anchor="start">UNC, borrow</text><text class="viz-label" x="8.0" y="180.3" text-anchor="start">NN/g, success</text><text class="viz-label" x="8.0" y="212.3" text-anchor="start">NN/g, IA fail</text></svg></div></div><figcaption>Before and after: the published pairs of sections 1.2 and 1.5 that give both numbers, each cell a percent as its source gives it; supports the reading that an overall gain can hide a task that got worse (UNC's borrow task) and that no pair here carries an interval (section 1.6). Dub, Inside GOV.UK, 2022; Pshock and Haefele, UNC Libraries UX blog, dated 2016 in its address; Nielsen, NN/g, 2009 (different sites in 2004 and 2009, a trend and no redesign; in its last row lower is better). Maker's reports and a consultancy report, read 10 November 2026. Tone 2: outside Perqo.</figcaption></figure>
+<p>The register below records each published figure in a form adapted from DD-IA1's (the columns are this unit's), continuing its identifiers from RD-16 (DD-IA1, Deliverable A); RD-03 and RD-05, GOV.UK's, are DD-IA1's and are not repeated. "Rung for Perqo" is C0 for every row: published evidence about other products is a reasoned default for Perqo (DD-IA1, section 1).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Source and date</th>
+<th>Published figure</th>
+<th>Sample</th>
+<th>Label</th>
+<th>Left out</th>
+<th>Rung for Perqo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RD-16</td>
+<td>Sauro, MeasuringU, 21 Mar 2011</td>
+<td>average task completion 78%; quartiles above 92% and below 49%</td>
+<td>1,189 tasks, 115 tests, 3,472 users</td>
+<td>consultancy report</td>
+<td>which products; how tests were chosen</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-17</td>
+<td>Sauro, MeasuringU, 26 Mar 2013</td>
+<td>tree-test completion 66%, "tentative"; 17 of 20 tasks higher on the tree than live</td>
+<td>77 tasks, 200 users, 3 studies</td>
+<td>consultancy report</td>
+<td>the range; the live rates</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-18</td>
+<td>Nielsen, NN/g, 15 Apr 2009</td>
+<td>14% (2004) and 10% (2009) of task attempts failed because of the IA; success 66% and 81%</td>
+<td>25 sites; 24 sites</td>
+<td>consultancy report</td>
+<td>coders, agreement, intervals</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-19</td>
+<td>Bailey and others, HCII 2009 (as cited in IA11)</td>
+<td>scenario right .87 after a right first click, .46 after a wrong one</td>
+<td>not given</td>
+<td>peer-reviewed</td>
+<td>participants, studies</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-20</td>
+<td>Nielsen, NN/g, 14 Jul 1997 (as cited in IA3)</td>
+<td>"more than half of all users are search-dominant"</td>
+<td>not given</td>
+<td>consultancy report</td>
+<td>the method; contradicted by RD-21; RD-22 found the choice shaped by the site's menus</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-21</td>
+<td>Spool, UIE, 1 May 2001</td>
+<td>no user of 30 always searched first; sites: 21% search, 32% links, 47% neither</td>
+<td>30 users, 121 tasks</td>
+<td>consultancy report, practice</td>
+<td>the number of sites</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-22</td>
+<td>Katz and Byrne, ACM TOCHI, Sep 2003</td>
+<td>search not faster or more accurate; menu breadth and scent shape browsing</td>
+<td>two studies; n not on the record read</td>
+<td>peer-reviewed</td>
+<td>the participant numbers, as read</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-23</td>
+<td>Gartner, press release, 25 Sep 2019</td>
+<td>9% resolve fully by self-service; $8.01 live and $0.10 self-service per contact</td>
+<td>8,398 customers (channels); a poll of service leaders (costs)</td>
+<td>consultancy report</td>
+<td>the 9%'s sample; business support</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-24</td>
+<td>Feldman, KMWorld, 1 Mar 2004</td>
+<td>15% to 35% of time searching; $5,000 per worker a year (IDC, 1999)</td>
+<td>not given</td>
+<td>consultancy report</td>
+<td>every sample and method</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-25</td>
+<td>Nielsen, NN/g, 10 Nov 2002</td>
+<td>cost of 16 tasks a year per employee: $3,042, $2,069, $1,563 by intranet quality</td>
+<td>14 companies, 16 tasks</td>
+<td>consultancy report</td>
+<td>salaries assumed; the worldwide figures extrapolated (section 2.2)</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-26</td>
+<td>Nielsen, NN/g, 21 Jan 2008</td>
+<td>average KPI gain 83% (135% six years earlier)</td>
+<td>not given for the 83%; the report holds 72 case studies; outliers removed</td>
+<td>consultancy report</td>
+<td>how cases were chosen</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-27</td>
+<td>Moran, NN/g, 1 Nov 2020</td>
+<td>average gain 247% (2006 to 2008), 75% (2020), 95% interval 8% to 104%</td>
+<td>99 case studies</td>
+<td>consultancy report</td>
+<td>IA's share among UX changes</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-28</td>
+<td>Dub, Inside GOV.UK, 8 Aug 2022</td>
+<td>topic pages' clickthrough 61.6% to 65.1%</td>
+<td>A/B, 50% of users; n not given</td>
+<td>maker's report</td>
+<td>n, length, interval</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-29</td>
+<td>Porton, ONS Digital blog, 5 Dec 2013</td>
+<td>new taxonomy 86% success; "almost 30% better"; half the time</td>
+<td>about 200 (sort), over 130 (tree tests)</td>
+<td>maker's report</td>
+<td>the old taxonomy's absolute rate</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-30</td>
+<td>Pshock and Haefele, UNC Libraries, 2016</td>
+<td>success 63% to 70%; borrow task 79% to 61%</td>
+<td>170 (after); before not given</td>
+<td>maker's report</td>
+<td>the before sample; any test</td>
+<td>C0</td>
+</tr>
+<tr>
+<td>RD-31</td>
+<td>SWOOP Analytics, case study, year not stated</td>
+<td>"53% faster to find"</td>
+<td>not given</td>
+<td>vendor, anecdote</td>
+<td>everything but the quotation</td>
+<td>C0</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="165" data-rings="3"><path d="M176 55l-32 4-8 2-25 11-28 8-14 8-3 8 8 8 14 6 24 4 40 5 32 0M176 64l-24 2-16 4-40 16-4 2 0 8 12 6 8 3 48 7 24 0M160 72l-16 3-32 13 4 8 44 9 24 0M152 87l-6 1 14 4 8 1 16-2 9-3M184 84l-8 0-24 3"/><circle class="ct-spot" cx="144" cy="88" r="8"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="95" data-rings="2"><path d="M184 119l56-7 24 0M184 112l54-8 34 0M184 105l32-8 16-2 32 3M193 88l-9-4"/><circle class="ct-spot" cx="200" cy="96" r="7"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="111" data-rings="2"><path d="M232 56l-56-1M264 112l16 0 64 9M232 64l-56 0M272 104l24 1M272 68l-48 3-64 1M264 98l40 1M264 74l-27 6 10 8 9 2 16 2 32 1"/><circle class="ct-spot" cx="256" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="114" data-rings="2"><path d="M296 54l-64 2M360 68l-40-6-24-1-64 3M304 67l-32 1M296 73l-32 1"/><circle class="ct-spot" cx="304" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="170" data-rings="3"><path d="M344 121l80 4M296 105l48 9 48 4 32 0M304 99l40 10 56 5 40-1M376 79l-80-6M304 93l8 1 38 10 42 5 40 0M376 85l-32-1-16 1-6 3 14 4 9 4 47 9 24 1 16-1M386 88l-7 8 29 5 24-1"/><circle class="ct-spot" cx="360" cy="96" r="8"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="95" data-rings="2"><circle class="ct-spot" cx="416" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="239" data-rings="5"><path d="M464 48l-40 4-48 8-80-6M424 125l32-2 64-10M528 46l-24-1-40 3M448 56l-24 2-32 8-16 2-16 0M424 118l40-3 56-8M552 57l-32-4-24-2-24 2-24 3M424 63l-32 9-16 2-72-7M440 113l88-11M512 57l-24-1-40 4-24 3M448 64l-24 3-32 10-16 2M432 109l80-10M552 67l-40-6-16-1-16 0-32 4M480 64l-48 5-40 13-16 3M432 105l72-9M544 70l-40-6-24 0M440 72l-54 16M432 100l40-4 24-3M544 75l-32-6-16-1-24 0-32 4M472 72l-40 7-23 9 7 7 6 1 90-10M501 72l-29 0"/><circle class="ct-spot" cx="464" cy="80" r="10"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="157" data-rings="3"><path d="M520 113l16-1 105 8M520 107l16 0 72 4M528 102l72 3M512 99l16-1 80 4M504 96l24-1 40 3 40 1M496 93l32-2 80 4M512 86l31-6-15-1-27-7M560 80l-4 8 60 3"/><circle class="ct-spot" cx="520" cy="88" r="8"/></g><g class="ct-rise ct-t4" data-label="¶9" data-words="94" data-rings="2"><circle class="ct-spot" cx="576" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶10" data-words="176" data-rings="4"><path d="M664 50l-24-1-56 3-56-6M656 56l-16 0-56 3-32-2M656 60l-24 0-32 4-24 0-64-7M656 64l-16 0-56 4-32-1M608 99l48 7M640 67l-56 5-40-2M608 95l48 8M632 71l-48 5-40-1M568 80l-8 0M616 91l17 5M640 75l-50 5-6 2-16-2M640 79l-8 2-9 7 31 8"/><circle class="ct-spot" cx="624" cy="80" r="9"/></g><g class="ct-rise ct-t4" data-label="¶11" data-words="213" data-rings="4"><path d="M641 120l63 7M728 62l-48-10-16-2M608 111l104 10M720 67l-19-3-21-6-24-2M600 105l104 11M720 72l-48-10-16-2M608 102l48 7 64 5M712 74l-32-7-24-3M656 106l72 4M712 77l-48-9-24-1M656 103l64 4M656 71l-24 0M633 96l23 3 64 5M664 75l-24 0M654 96l58 3M672 80l-32-1"/><circle class="ct-spot" cx="680" cy="88" r="9"/></g><g class="ct-rise ct-t4" data-label="¶12" data-words="209" data-rings="4"><path d="M704 127l32 2 32-4 40-14 16-4 16 0M792 63l-64-1M712 121l24 1 16-1 16-4 40-18 16-5 16 2M816 76l-32-6-64-3M704 116l32 2 24-4 16-6 20-12 5-8-6-8-11-4-16-2-48-2M720 114l16 0 16-3 19-7 12-8 3-8-10-7-8-2-56-5M728 110l16-1 15-5 12-8 1-8-12-6-8-1-40-4M720 107l24-2 16-9-1-8-7-2-96-15M720 104l16-3 12-5-5-8-79-13M712 99l21-3-12-8-49-8"/><circle class="ct-spot" cx="736" cy="96" r="9"/></g><g class="ct-rise ct-t4" data-label="¶13" data-words="13" data-rings="0"><circle class="ct-spot" cx="784" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶14" data-words="39" data-rings="0"><circle class="ct-spot" cx="840" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶15" data-words="122" data-rings="2"><path d="M840 107l39 5 17 4 16 3 24 0 48-11M864 69l-72-6M840 96l32 7 32 6 16 1 16-2 32-8M880 77l-24 1-40-2M928 85l-24 1-15 2-4 8 19 3 8 1 16-3 16-5"/><circle class="ct-spot" cx="896" cy="96" r="8"/></g><g class="ct-rise ct-t4" data-label="¶16" data-words="70" data-rings="1"><path d="M952 66l-40-1-48 4M952 72l-32 2-40 3M943 80l-7 3-8 2M944 92l64-2"/><circle class="ct-spot" cx="944" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶17" data-words="129" data-rings="2"><path d="M984 108l40-3 32-4M1040 57l-8-2-16-3-16 1-16 4-19 7-13 2M968 100l67-4 21-8M1050 80l-18-11-12-5-12-2-16 2-40 8M992 71l-16 4-33 5M1008 90l15-2-2-8-12-8-9-1-8 0"/><circle class="ct-spot" cx="1000" cy="80" r="8"/></g><g class="ct-rise ct-t4" data-label="¶18" data-words="58" data-rings="1"><path d="M1056 101l18-5 8-8 0-8-11-8-31-15M1056 88l-6-8"/><circle class="ct-spot" cx="1056" cy="88" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-dd-ia2-1" data-step="1"><span>Next · 2 of 11</span><b>What cannot be measured, and the claims made without evidence</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-dd-ia2-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">What cannot be measured, and the claims made without evidence</span></span></h2>
+<h3>2.1 · What no measure of an IA reaches</h3>
+<p>Five things lie outside every measure in section 1, and a case that claims them claims without evidence.</p>
+<ul>
+<li><strong>The counterfactual.</strong> A before-and-after comparison measures a release, and a release carries more than a structure: GOV.UK's 2024 change was a new search engine, its 2022 change a new page design, and ONS reworked a whole taxonomy at once (RD-05, RD-28, RD-29). Only a split test isolates one change, and GOV.UK's two A/B tests are the only split tests in the evidence above; neither gives an interval.</li>
+<li><strong>The people who never arrived.</strong> A search log holds no one who gave up before searching, and an analytics path no one who never opened the product (IA11, section 7). A structure that sends people to support, or to a competitor, shows in a log only as their absence.</li>
+<li><strong>Who would have left.</strong> Nielsen's 2009 article argues that most of the business gain from a better IA comes from "antagonizing customers less, so that they're more likely to stay" (RD-18), which is an argument; no study read for this unit measures it for an IA.</li>
+<li><strong>What a rework did not cost.</strong> A structure that was right the first time leaves no record of the change it made unnecessary. IA9 said the same of IA debt: "No study known to this unit measures what IA debt costs" (IA9, section 2.4).</li>
+<li><strong>The share that belongs to the IA.</strong> Moran's 99 cases are UX changes of every kind (RD-27), and Nielsen's survey is of design projects (RD-26). The one figure that separates the IA's share of failures is RD-18's, and its coding method is not open.</li>
+</ul>
+<h3>2.2 · Six claims the field repeats</h3>
+<p>Each claim below circulates in business cases for UX and IA work. Each is named here with what its source shows.</p>
+<ol>
+<li><strong>"Every $1 spent on UX returns $100."</strong> A 2021 post by a director at an SAP consultancy gives "$1 spent on UX returns $100" from "a 2019 Forrester report", hedged in its own introduction with "if Roger Pressman and a secondary Forrester Report are to be believed"; it quotes nothing from the report and names no page (Adam Anderson, "User Experience (UX) turns your $1 investment into a $100 return…really?", Mindset Consulting, 20 October 2021, <a target="_blank" rel="noopener" href="https://www.mindsetconsulting.com/user-experience-ux-turns-your-1-investment-into-a-100-return-really/">mindsetconsulting.com, UX return</a>, read 10 November 2026; practice). The report was not seen for this unit. As it circulates, the claim is unsourced.</li>
+<li><strong>"A defect costs 100 times more to fix after release."</strong> The chart most often given for it is attributed to an "IBM Systems Sciences Institute". Hillel Wayne reports that Laurent Bossavit traced the institute to an internal training programme and found no study behind the chart, which as far as anyone knows is "completely made up"; Wayne's own reading of the primary research is that it "tentatively points in that direction", depending on how late-stage, bugs and more expensive are read, with "no smoking gun" ("I ***<em>ing hate Science", </em>Computer Things<em>, 19 July 2021, <a target="_blank" rel="noopener" href="https://buttondown.com/hillelwayne/archive/i-ing-hate-science/">buttondown.com, Hillel Wayne</a>, read 10 November 2026; practice). Bossavit's book gives the curve a chapter and a bibliographical appendix (</em>The Leprechauns of Software Engineering<em>, Leanpub, page dated 20 December 2025, ch. 10 and appendix B, contents, <a target="_blank" rel="noopener" href="https://leanpub.com/leprechauns">leanpub.com, Leprechauns</a>; only the contents were read). The primary candidate, Barry Boehm and Victor Basili's "Software Defect Reduction Top 10 List" (</em>Computer* 34, no. 1, January 2001, pp. 135 to 137), was seen only as a catalogue record with its abstract (<a target="_blank" rel="noopener" href="https://umiacs.umd.edu/node/12156">umiacs.umd.edu, record</a>, read 10 November 2026); its ratios are unverified here. The counter-claim is no better supported: Mike Cohn writes that the curve "hasn't disappeared, but it's far flatter than most people assume", and cites no data ("The Cost of Change Curve Is Outdated", Mountain Goat Software, last updated 3 March 2026, <a target="_blank" rel="noopener" href="https://www.mountaingoatsoftware.com/blog/the-cost-of-change-curve-is-outdated">mountaingoatsoftware.com, cost of change</a>, read 10 November 2026; practice). Section 4.2 uses no multiplier from either side.</li>
+<li><strong>"Knowledge workers spend a fifth of their time searching."</strong> The figure usually given, 19% or 1.8 hours a day, is McKinsey Global Institute's own estimate, in its 2012 report on social technologies: interaction workers spend "19 percent of working hours trying to track down information needed to complete tasks", which its appendix gives as 8.8 hours of a 46.5-hour week in an exhibit titled "We adjust IDC data to estimate time spent on different activities by a typical interaction worker" (Exhibit A7; 8.8 hours over five days is 1.76 hours a day, this unit's arithmetic). The same report says social tools could reduce "information searching time by as much as 35 percent", which would "return approximately 6 percent of the workweek to other tasks", and that knowledge workers spend 28 hours a week "writing e-mails, searching for information, and collaborating internally" (Michael Chui and others, <em>The social economy</em>, McKinsey Global Institute, July 2012, <a target="_blank" rel="noopener" href="https://mckinsey.com/~/media/McKinsey/Industries/Technology%20Media%20and%20Telecommunications/High%20Tech/Our%20Insights/The%20social%20economy/MGI_The_social_economy_Full_report.ashx">mckinsey.com, social economy</a>, read 10 November 2026; consultancy report). The 19% is therefore a consultancy's estimate adjusted from IDC survey data, with no sample given in the passages read; it estimates time spent looking for information and measures nothing about time lost to a poor structure. Feldman's 15% to 35% names no sample (RD-24).</li>
+<li><strong>"Most users are search-dominant."</strong> Nielsen's 1997 claim (RD-20), contradicted by Spool's observation (RD-21); Katz and Byrne's experiments found the choice between searching and browsing shaped by the site's menus (RD-22; IA3, section 5.1).</li>
+<li><strong>"Poor intranets cost the world $100 billion a year", or $1.3 trillion.</strong> In June 2002 Nielsen wrote: "I estimate that low intranet usability costs the world economy $100 billion per year in lost employee productivity", with no method given ("Foreword to Information Architecture (2nd edition)", NN/g, 1 June 2002, <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/foreword-ia-2nd/">nngroup.com, foreword</a>, read 10 November 2026). Five months later his study of 14 intranets extrapolated savings of $311,294,070,513 a year for the 16 tasks if every intranet reached the best quarter, about $600 billion with assumed company-specific tasks, and $1.3 trillion if every task reached the best level found (RD-25). Two estimates by one author in one year differ thirteenfold; both rest on priced time from 14 companies multiplied across the world's workers.</li>
+<li><strong>"UX improves key metrics by 83%", or 247%, or 75%.</strong> These are real averages (RD-26, RD-27), and Moran's own interval, 8% to 104% for 2020, shows how little one average says about the next project. Used as a forecast for one product, each is a claim without evidence.</li>
+</ol>
+<p>What the six have in common is a number detached from its sample. Each one, put back beside its sample, shrinks to what it can support, and section 4.6 makes that the rule for every number in a case.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.364"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="18" data-rings="2"><path d="M240 71l-27 9-29 8-13 8 12 8 17 3 24 2 32 0 80-7 37-6 16-8-8-8-5-2-20-6-28-5-24-1-24 0-24 2zM264 79l-33 9 0 8 1 0 24 2 24-1 32-4 21-5-13-7-8-2-24-2z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="21" data-rings="2"><path d="M712 80l-40 0-32-1-64-5-40 1-32 4-16 4-11 5-2 8 12 8 17 6 24 4 24 2 32 1 136-3 88 4M720 95l-52-7-92-5-24 2-18 3-7 8 14 8 35 4 64-1 40-3 32-6 16-2 16 1"/><circle class="ct-spot" cx="600" cy="96" r="8"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="39" data-rings="5"><path d="M864 47l-40 6-24 7-32 12-32 6-24 2M808 118l40 1 32-1 32-2 72-12 56-6 40-6 18-4 17-8 2-8-12-8-17-5-24-5-32-4-48-4-40-2-48 1-32 2M872 55l-24 4-16 5-56 20-14 4-10 5-8 2-24 0M744 97l34 7 54 5 40 1 40-2 138-20 21-8-1-8-20-8-10-2-56-7-64-3-48 3M872 63l-16 3-17 6-20 8-13 8 5 8 29 5 32 2 40-2 100-13 25-8-4-8-25-7-24-3-32-3-32 0-24 1zM872 71l-24 9-9 8 9 4 18 4 22 1 24-1 58-8 34-8-7-8-21-4-24-2-24-1-24 0zM912 72l-16 3-16 5 5 8 19 1 16-1 46-8-22-7-9-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-0" data-step="0"><span>Previous · 1 of 11</span><b>The published evidence on findability failure and its cost</b></a><a class="snext" href="#read-dd-ia2-2" data-step="2"><span>Next · 3 of 11</span><b>The measurement model</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-dd-ia2-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">The measurement model</span></span></h2>
+<h3>3.1 · Leading and lagging</h3>
+<p>A leading indicator, in this unit's use, is measured on a structure before it ships, with people doing tasks on a tree, a sort or a screen: it predicts. A lagging indicator is measured in use, from the product's own records, after release: it confirms. The terms are this unit's, set to match IA11's ladder, where leading tests reach C2 or C3 and records of the behaviour itself reach C5 (IA11, section 6.4).</p>
+<p>The published link between the two is thin. Bailey's first click is a leading measure with a stated relation to the outcome, .87 against .46 (RD-19), and IA11 adopted it as M-03 for that reason (IA11, section 2.3). Sauro's comparison runs the other way: 17 of 20 tasks did better on a tree test than on the live site (RD-17), so a tree test's success is an estimate of findability in the structure and an overestimate of success in the product, by an amount no source fixes. IA11 gave the mechanism: a tree test has no visual design, no content on the page and no search, and a label may fail or pass on a screen where its neighbours explain it (IA11, section 2.2). The model therefore keeps the two kinds apart: a lagging number is never read as the verdict on a leading test, or the reverse. Where a test and a record agree on one question, they converge, which IA11's ladder holds at C4 (IA11, section 6.4); where they disagree, the question stays open (IA11, section 6.3).</p>
+<h3>3.2 · Which metrics, and why these</h3>
+<p>The brief names four lagging indicators: task success, search exits, support tickets by category, and time to find. IA11's eleven metrics were defined for tests and for the app's records; eight lagging metrics are new here, three from GOV.UK's search work and five that Admin's records need.</p>
+<ul>
+<li><strong>Leading: IA11's metrics, kept.</strong> M-01 success rate, M-02 directness, M-03 first-click correctness, M-04 time on task, M-05 placement share and M-11 problem frequency, each as IA11 defines it, with IA11's 95% adjusted-Wald interval for every proportion (IA11, sections 1.2 and 3.4).</li>
+<li><strong>Lagging, search: M-07 kept, and GOV.UK's three measures joined.</strong> DD-IA1 left this unit to decide whether GOV.UK's clickthrough from results, refinement and exit from the search page join the model ("What later units take"). They join, as new metrics M-12 to M-14, for the Help centre's search on perqo.com, which is where Perqo has a search box (IA3, section 5.1); they do not apply to Admin, which has none (IA7, section 4.5). Each is defined below so that it can carry an interval, which GOV.UK's report did not give (RD-05).</li>
+<li><strong>Lagging, Admin: five new metrics.</strong> M-15 tickets per page answers "support tickets by category", on IA9's tag practice (IA9, section 6.2). M-16 find-to-open time answers "time to find" for Admin, whose finding is done in each list's find field (IA7, section 4.5). M-17 landing match is the read IA12 named for AR-37 (IA12, Deliverable B). M-18 overdue share is the read named for AR-41. M-19 flow completion answers "task success" in use, for the forms where Admin's work is saved.</li>
+</ul>
+<p>The new definitions (this unit's, Perqo, fictional):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Metric</th>
+<th>Definition</th>
+<th>Read with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-12</td>
+<td>Results clickthrough</td>
+<td>searches followed by a click on a result before any further search, divided by all searches, in one period; after GOV.UK's "clickthrough from the search results page" (RD-05)</td>
+<td>the interval of a difference of two proportions, period with period (IA11, section 1.2, M-10's reading, and section 6.2; section 3.4 gives the interval of one proportion)</td>
+</tr>
+<tr>
+<td>M-13</td>
+<td>Refinement rate</td>
+<td>searches followed in the same session by another search with no result clicked between them, divided by all searches; IA3's reformulated query (IA3, section 5.2)</td>
+<td>as M-12</td>
+</tr>
+<tr>
+<td>M-14</td>
+<td>Search exit rate</td>
+<td>sessions that end on a results page, divided by sessions with a search; after GOV.UK's "users leaving site from the search page" (RD-05)</td>
+<td>as M-12</td>
+</tr>
+<tr>
+<td>M-15</td>
+<td>Tickets per page</td>
+<td>tickets tagged with one AD- page or DT- tree in a month, per 100 active admin users; per tag</td>
+<td>compared with the range of the four quarters before (this unit's rule)</td>
+</tr>
+<tr>
+<td>M-16</td>
+<td>Find-to-open time</td>
+<td>the median seconds from the first character typed in a list's find field to opening a record from that list, per list; with find abandonment, finds that open no record divided by all finds</td>
+<td>median beside the abandonment share and its interval</td>
+</tr>
+<tr>
+<td>M-17</td>
+<td>Landing match</td>
+<td>sessions of a role whose first action after sign-in is on that role's landing page (AD-4 for an HR manager, AD-2 for a finance manager), divided by that role's sessions</td>
+<td>the interval of a proportion (IA11, section 3.4)</td>
+</tr>
+<tr>
+<td>M-18</td>
+<td>Overdue share</td>
+<td>claims that waited in Approvals more than five working days, divided by claims that entered Approvals in the period</td>
+<td>as M-17</td>
+</tr>
+<tr>
+<td>M-19</td>
+<td>Flow completion</td>
+<td>starts of Invite employees (AD-1.3), Set budgets (AD-2.2) or Edit policy (AD-3.1.1) that end in a save in the same session, divided by starts; per form</td>
+<td>as M-17</td>
+</tr>
+</tbody>
+</table></div>
+<p>M-16 and M-19 need two records Perqo does not keep today: a find-field event and a save event on Admin's forms (Perqo, fictional; set here). Admin's page views by AD- identifier and its failed sign-ins are already recorded (IA9, section 6.3). M-12 to M-14 need a click event on the Help centre's results page (Perqo, fictional; set here).</p>
+<h3>3.3 · Baselines, targets and cadence</h3>
+<p><strong>Baselines.</strong> A leading indicator's baseline is the same tasks on the current structure, the form IA11 gave TT-0 for the app (IA11, Deliverable B, B.6, and V-17). A lagging indicator's baseline is at least one full quarter of records before the change, because a single month can hold a campaign or an onboarding; Farrell's advice to read several months of a search log is the source of the rule (Farrell, NN/g, 2017, as cited in IA3, section 5.2). For a proportion the baseline carries its interval; for a count or a median, its range over the four quarters before (this unit's rule, since IA11 set no interval method for counts or medians).</p>
+<p><strong>Targets.</strong> Every target is set before the measure is read, which is IA11's rule (IA11, section 4.4) and the one GOV.UK's reports did not show (DD-IA1, "What later units take"). For Admin's leading tests IA11 left the marks free ("Perqo facts set by this unit", marks for Admin's tests); this unit sets them by IA11's pattern: 80% for the two tasks that are each role's most frequent work, deciding a claim and setting budgets (IA7, Deliverable C, C.2, assumed), and 70% for every other Admin task (Perqo, fictional). For a lagging indicator the target is a direction and a rule: after a change, the interval of the difference lies wholly on the improving side, or for a count, the next two months fall outside the baseline's range on the improving side (this unit's rule).</p>
+<p><strong>Cadence.</strong> Lagging reads follow IA9's reviews: search logs quarterly at RV-04, ticket tags monthly at RV-05, analytics quarterly at RV-06, each with its triggers (IA9, Deliverable C). Leading tests run in a cycle that touches Admin's labels or roles, at FO-07 (IA10, A.2), and before and after a change to a top level, at RV-11 (IA9, Deliverable C).</p>
+<h3>3.4 · The model, drawn</h3>
+<p>Figure 3 draws the model's fifteen metrics with four columns: kind, data, cadence and the rung a read reaches (IA11, section 6.4). Rows for the leading metrics are tone 5, shared, because a method serves any surface; rows read from the Help centre on perqo.com are tone 1; rows read from Admin's records are tone 4. Its legend reads "tone 5: shared: a method serves any surface", "tone 1: perqo.com: the Help centre's search" and "tone 4: Perqo Admin's records". The rows and their cells, as drawn:</p>
+<ul>
+<li>M-01 Success rate: leading; tree test; each FO-07 cycle; RV-11; C2 at 12, C3 at 50.</li>
+<li>M-02 Directness: leading; tree test; with M-01; C2 or C3.</li>
+<li>M-03 First click: leading; first-click test; each FO-07 cycle; C2 or C3.</li>
+<li>M-04 Time on task: leading; any test; with M-01; read beside M-01.</li>
+<li>M-05 Placement share: leading; hybrid sort; when a label is in question; C2 or C3.</li>
+<li>M-11 Problem frequency: leading; usability round; each round; C2.</li>
+<li>M-07 Zero-result rate: lagging; Help centre log; quarterly, RV-04; C1.</li>
+<li>M-12 Results clickthrough: lagging; Help centre log; quarterly, RV-04; C1.</li>
+<li>M-13 Refinement rate: lagging; Help centre log; quarterly, RV-04; C1.</li>
+<li>M-14 Search exit rate: lagging; Help centre log; quarterly, RV-04; C1.</li>
+<li>M-15 Tickets per page: lagging; ticket tags; monthly, RV-05; C1.</li>
+<li>M-16 Find-to-open time: lagging; Admin events; quarterly, RV-06; C5.</li>
+<li>M-17 Landing match: lagging; first actions; quarterly, RV-06; C5.</li>
+<li>M-18 Overdue share: lagging; claim records; quarterly, RV-06; C5.</li>
+<li>M-19 Flow completion: lagging; Admin events; quarterly, RV-06; C5.</li>
+</ul>
+<figure class="viz viz-matrix"><div class="viz-scroll" style="--stick:176.5px"><svg viewBox="0 0 694.5 590" width="694.5" height="590" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="208.0" y="15.6" text-anchor="middle">Kind</text><text class="viz-colhead" x="300.0" y="15.6" text-anchor="middle">Data</text><text class="viz-colhead" x="456.5" y="15.6" text-anchor="middle">Cadence</text><text class="viz-colhead" x="619.5" y="15.6" text-anchor="middle">Rung</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">M-01 Success rate</text><g data-box=""><rect class="viz-band viz-t5" x="178.5" y="34.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="51.8" text-anchor="middle">leading</text></g><g data-box=""><rect class="viz-band viz-t5" x="241.5" y="34.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="51.8" text-anchor="middle">tree test</text></g><g data-box=""><rect class="viz-band viz-t5" x="362.5" y="34.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="51.8" text-anchor="middle">each FO-07 cycle; RV-11</text></g><g data-box=""><rect class="viz-band viz-t5" x="554.5" y="34.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="51.8" text-anchor="middle">C2 at 12, C3 at 50</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">M-02 Directness</text><g data-box=""><rect class="viz-band viz-t5" x="178.5" y="66.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="83.8" text-anchor="middle">leading</text></g><g data-box=""><rect class="viz-band viz-t5" x="241.5" y="66.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="83.8" text-anchor="middle">tree test</text></g><g data-box=""><rect class="viz-band viz-t5" x="362.5" y="66.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="83.8" text-anchor="middle">with M-01</text></g><g data-box=""><rect class="viz-band viz-t5" x="554.5" y="66.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="83.8" text-anchor="middle">C2 or C3</text></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">M-03 First click</text><g data-box=""><rect class="viz-band viz-t5" x="178.5" y="98.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="115.8" text-anchor="middle">leading</text></g><g data-box=""><rect class="viz-band viz-t5" x="241.5" y="98.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="115.8" text-anchor="middle">first-click test</text></g><g data-box=""><rect class="viz-band viz-t5" x="362.5" y="98.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="115.8" text-anchor="middle">each FO-07 cycle</text></g><g data-box=""><rect class="viz-band viz-t5" x="554.5" y="98.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="115.8" text-anchor="middle">C2 or C3</text></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">M-04 Time on task</text><g data-box=""><rect class="viz-band viz-t5" x="178.5" y="130.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="147.8" text-anchor="middle">leading</text></g><g data-box=""><rect class="viz-band viz-t5" x="241.5" y="130.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="147.8" text-anchor="middle">any test</text></g><g data-box=""><rect class="viz-band viz-t5" x="362.5" y="130.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="147.8" text-anchor="middle">with M-01</text></g><g data-box=""><rect class="viz-band viz-t5" x="554.5" y="130.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="147.8" text-anchor="middle">read beside M-01</text></g><text class="viz-label" x="8.0" y="180.3" text-anchor="start">M-05 Placement share</text><g data-box=""><rect class="viz-band viz-t5" x="178.5" y="162.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="179.8" text-anchor="middle">leading</text></g><g data-box=""><rect class="viz-band viz-t5" x="241.5" y="162.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="179.8" text-anchor="middle">hybrid sort</text></g><g data-box=""><rect class="viz-band viz-t5" x="362.5" y="162.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="179.8" text-anchor="middle">when a label is in question</text></g><g data-box=""><rect class="viz-band viz-t5" x="554.5" y="162.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="179.8" text-anchor="middle">C2 or C3</text></g><text class="viz-label" x="8.0" y="212.3" text-anchor="start">M-11 Problem frequency</text><g data-box=""><rect class="viz-band viz-t5" x="178.5" y="194.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="211.8" text-anchor="middle">leading</text></g><g data-box=""><rect class="viz-band viz-t5" x="241.5" y="194.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="211.8" text-anchor="middle">usability round</text></g><g data-box=""><rect class="viz-band viz-t5" x="362.5" y="194.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="211.8" text-anchor="middle">each round</text></g><g data-box=""><rect class="viz-band viz-t5" x="554.5" y="194.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="211.8" text-anchor="middle">C2</text></g><text class="viz-label" x="8.0" y="244.3" text-anchor="start">M-07 Zero-result rate</text><g data-box=""><rect class="viz-band viz-t1" x="178.5" y="226.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="243.8" text-anchor="middle">lagging</text></g><g data-box=""><rect class="viz-band viz-t1" x="241.5" y="226.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="243.8" text-anchor="middle">Help centre log</text></g><g data-box=""><rect class="viz-band viz-t1" x="362.5" y="226.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="243.8" text-anchor="middle">quarterly, RV-04</text></g><g data-box=""><rect class="viz-band viz-t1" x="554.5" y="226.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="243.8" text-anchor="middle">C1</text></g><text class="viz-label" x="8.0" y="276.3" text-anchor="start">M-12 Results clickthrough</text><g data-box=""><rect class="viz-band viz-t1" x="178.5" y="258.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="275.8" text-anchor="middle">lagging</text></g><g data-box=""><rect class="viz-band viz-t1" x="241.5" y="258.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="275.8" text-anchor="middle">Help centre log</text></g><g data-box=""><rect class="viz-band viz-t1" x="362.5" y="258.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="275.8" text-anchor="middle">quarterly, RV-04</text></g><g data-box=""><rect class="viz-band viz-t1" x="554.5" y="258.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="275.8" text-anchor="middle">C1</text></g><text class="viz-label" x="8.0" y="308.3" text-anchor="start">M-13 Refinement rate</text><g data-box=""><rect class="viz-band viz-t1" x="178.5" y="290.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="307.8" text-anchor="middle">lagging</text></g><g data-box=""><rect class="viz-band viz-t1" x="241.5" y="290.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="307.8" text-anchor="middle">Help centre log</text></g><g data-box=""><rect class="viz-band viz-t1" x="362.5" y="290.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="307.8" text-anchor="middle">quarterly, RV-04</text></g><g data-box=""><rect class="viz-band viz-t1" x="554.5" y="290.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="307.8" text-anchor="middle">C1</text></g><text class="viz-label" x="8.0" y="340.3" text-anchor="start">M-14 Search exit rate</text><g data-box=""><rect class="viz-band viz-t1" x="178.5" y="322.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="339.8" text-anchor="middle">lagging</text></g><g data-box=""><rect class="viz-band viz-t1" x="241.5" y="322.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="339.8" text-anchor="middle">Help centre log</text></g><g data-box=""><rect class="viz-band viz-t1" x="362.5" y="322.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="339.8" text-anchor="middle">quarterly, RV-04</text></g><g data-box=""><rect class="viz-band viz-t1" x="554.5" y="322.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="339.8" text-anchor="middle">C1</text></g><text class="viz-label" x="8.0" y="372.3" text-anchor="start">M-15 Tickets per page</text><g data-box=""><rect class="viz-band viz-t4" x="178.5" y="354.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="371.8" text-anchor="middle">lagging</text></g><g data-box=""><rect class="viz-band viz-t4" x="241.5" y="354.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="371.8" text-anchor="middle">ticket tags</text></g><g data-box=""><rect class="viz-band viz-t4" x="362.5" y="354.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="371.8" text-anchor="middle">monthly, RV-05</text></g><g data-box=""><rect class="viz-band viz-t4" x="554.5" y="354.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="371.8" text-anchor="middle">C1</text></g><text class="viz-label" x="8.0" y="404.3" text-anchor="start">M-16 Find-to-open time</text><g data-box=""><rect class="viz-band viz-t4" x="178.5" y="386.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="403.8" text-anchor="middle">lagging</text></g><g data-box=""><rect class="viz-band viz-t4" x="241.5" y="386.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="403.8" text-anchor="middle">Admin events</text></g><g data-box=""><rect class="viz-band viz-t4" x="362.5" y="386.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="403.8" text-anchor="middle">quarterly, RV-06</text></g><g data-box=""><rect class="viz-band viz-t4" x="554.5" y="386.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="403.8" text-anchor="middle">C5</text></g><text class="viz-label" x="8.0" y="436.3" text-anchor="start">M-17 Landing match</text><g data-box=""><rect class="viz-band viz-t4" x="178.5" y="418.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="435.8" text-anchor="middle">lagging</text></g><g data-box=""><rect class="viz-band viz-t4" x="241.5" y="418.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="435.8" text-anchor="middle">first actions</text></g><g data-box=""><rect class="viz-band viz-t4" x="362.5" y="418.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="435.8" text-anchor="middle">quarterly, RV-06</text></g><g data-box=""><rect class="viz-band viz-t4" x="554.5" y="418.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="435.8" text-anchor="middle">C5</text></g><text class="viz-label" x="8.0" y="468.3" text-anchor="start">M-18 Overdue share</text><g data-box=""><rect class="viz-band viz-t4" x="178.5" y="450.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="467.8" text-anchor="middle">lagging</text></g><g data-box=""><rect class="viz-band viz-t4" x="241.5" y="450.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="467.8" text-anchor="middle">claim records</text></g><g data-box=""><rect class="viz-band viz-t4" x="362.5" y="450.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="467.8" text-anchor="middle">quarterly, RV-06</text></g><g data-box=""><rect class="viz-band viz-t4" x="554.5" y="450.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="467.8" text-anchor="middle">C5</text></g><text class="viz-label" x="8.0" y="500.3" text-anchor="start">M-19 Flow completion</text><g data-box=""><rect class="viz-band viz-t4" x="178.5" y="482.0" width="59.0" height="28.0"/><text class="viz-mark" x="208.0" y="499.8" text-anchor="middle">lagging</text></g><g data-box=""><rect class="viz-band viz-t4" x="241.5" y="482.0" width="117.0" height="28.0"/><text class="viz-mark" x="300.0" y="499.8" text-anchor="middle">Admin events</text></g><g data-box=""><rect class="viz-band viz-t4" x="362.5" y="482.0" width="188.0" height="28.0"/><text class="viz-mark" x="456.5" y="499.8" text-anchor="middle">quarterly, RV-06</text></g><g data-box=""><rect class="viz-band viz-t4" x="554.5" y="482.0" width="130.0" height="28.0"/><text class="viz-mark" x="619.5" y="499.8" text-anchor="middle">C5</text></g><g data-box=""><rect class="viz-band viz-t5" x="8.0" y="526.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="541.8" text-anchor="middle">tone 5</text></g><text class="viz-attr" x="70.6" y="542.0" text-anchor="start">shared: a method serves any surface</text><g data-box=""><rect class="viz-band viz-t1" x="284.0" y="526.0" width="54.6" height="24"/><text class="viz-mark" x="311.3" y="541.8" text-anchor="middle">tone 1</text></g><text class="viz-attr" x="346.6" y="542.0" text-anchor="start">perqo.com: the Help centre&#x27;s search</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="558.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="573.8" text-anchor="middle">tone 4</text></g><text class="viz-attr" x="70.6" y="574.0" text-anchor="start">Perqo Admin&#x27;s records</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 176.5 590" width="176.5" height="590" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="176.5" height="514"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">M-01 Success rate</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">M-02 Directness</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">M-03 First click</text><text class="viz-label" x="8.0" y="148.3" text-anchor="start">M-04 Time on task</text><text class="viz-label" x="8.0" y="180.3" text-anchor="start">M-05 Placement share</text><text class="viz-label" x="8.0" y="212.3" text-anchor="start">M-11 Problem frequency</text><text class="viz-label" x="8.0" y="244.3" text-anchor="start">M-07 Zero-result rate</text><text class="viz-label" x="8.0" y="276.3" text-anchor="start">M-12 Results clickthrough</text><text class="viz-label" x="8.0" y="308.3" text-anchor="start">M-13 Refinement rate</text><text class="viz-label" x="8.0" y="340.3" text-anchor="start">M-14 Search exit rate</text><text class="viz-label" x="8.0" y="372.3" text-anchor="start">M-15 Tickets per page</text><text class="viz-label" x="8.0" y="404.3" text-anchor="start">M-16 Find-to-open time</text><text class="viz-label" x="8.0" y="436.3" text-anchor="start">M-17 Landing match</text><text class="viz-label" x="8.0" y="468.3" text-anchor="start">M-18 Overdue share</text><text class="viz-label" x="8.0" y="500.3" text-anchor="start">M-19 Flow completion</text></svg></div></div><figcaption>Measurement model: the fifteen metrics for an IA, leading (measured on a structure before release) and lagging (measured in use), with the data each is read from, its cadence and the rung a read reaches; supports the decision on what to measure, when, and how much each read can decide (section 3.4; Deliverable A). Metrics M-01 to M-11 as IA11, section 1.2 defines them; M-12 to M-14 after GOV.UK's search measures (Fraser, Sutter and Stockford, Inside GOV.UK, 2024; maker's report); M-15 to M-19 defined in section 3.2; cadence from IA9, Deliverable C, and IA10, A.2; rungs from IA11, section 6.4. Tone 5 shared: a method serves any surface; tone 1 perqo.com, the Help centre's search; tone 4 Perqo Admin's records. Perqo is fictional.</figcaption></figure>
+<h3>3.5 · What the model means for a backoffice with few users</h3>
+<p>The sizing client has three admin users (IA7, section 2.2). A quantitative tree test wants about 50 participants per tree, a convention of guidance and practice (IA11, section 3.2), so Admin's tree test at 50 would need the admin users of at least 17 clients the size of the sizing client, all willing to take part at FO-07. Until Perqo has that many, Admin's leading tests run at the small sizes IA11 reported for qualitative work, ten to fifteen moderated sessions (IA11, section 3.2, after Barker, Boxes and Arrows, 2007, practice), and reach C2: they show that a problem exists and why, and they cannot pass a mark. IA11 put the arithmetic plainly: at 12 participants "nothing short of 12 of 12 clears a 70% mark ... and nothing clears 80%" (IA11, section 4.4). For Admin, then, the lagging indicators carry most of the measurement. Four of them (M-16 to M-19) read the behaviour itself and reach C5 without recruiting anyone, which is IA12's point that a team with no access to users can still reach C5 for questions about frequency or use (IA12, section 3.3).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.727"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="73" data-rings="2"><path d="M184 72l-32 4-14 4-10 8 0 8 8 4 16 2 32-1 16 2M176 79l-16 5-9 4 9 5 32 1M193 88l15 3"/><circle class="ct-spot" cx="168" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="179" data-rings="5"><path d="M200 103l3 1 13 12 8 5 16 5 16 1 24 0 24-4 16-8 16-18 8-5 34-4M264 68l-40 0-40 4M192 94l11 2 17 8 8 8 4 2 8 3 16 3 24-1 16-3 8-4 9-8 6-8 3-8-2-5-4-3-52-6-40 0-48 5M224 80l-16 3-15 5M208 91l8 3 24 16 8 3 16 2 21-3 11-5 4-3 6-8-1-8-17-6-32-3-32 1M224 88l20 16 12 4 16 0 8-1 6-3 7-8-6-8-15-3-24-1zM256 92l-6 4 6 3 8 2 8-2 5-3-13-4z"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="47" data-rings="1"><path d="M378 88l7-8-9-4-16-3-96-5"/><circle class="ct-spot" cx="360" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="7" data-rings="0"><circle class="ct-spot" cx="456" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="58" data-rings="1"><path d="M544 87l-16 3-15 6 15 6 24 4 48-3M579 88l5 3"/><circle class="ct-spot" cx="552" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="112" data-rings="3"><path d="M640 71l-48 3-48 13M600 103l48 3 56-4 120-3M648 76l-40 3-29 9M584 91l8 2 40 6 16 1 56-4 48-1M632 83l-14 5 14 4 16 2 48-3 48 0"/><circle class="ct-spot" cx="648" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="134" data-rings="3"><path d="M832 71l-32-8-16-2-104 4-40 6M680 71l-32 5M752 95l48-6 38-1M805 80l-8-8-21-4-64 0-32 3M712 72l-80 11M744 91l16-2 8-2 13-7-5-4-8-4-56 0"/><circle class="ct-spot" cx="744" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="58" data-rings="1"><path d="M872 75l-40-4M824 99l56-6 8 1M838 88l-22-1-8-2-3-5"/><circle class="ct-spot" cx="840" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶9" data-words="87" data-rings="2"><path d="M912 69l-32 6-8 0M888 94l24 8 24 3 88 5M952 77l-24 0-16 3-1 0-2 8 13 8 22 3 96 4M944 86l-10 2 18 3 64 6"/><circle class="ct-spot" cx="936" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶10" data-words="186" data-rings="5"><path d="M1000 54l-24 11-16 4-48 0M1024 110l32-1 24-3 8-3 11-7 2-8-4-8 1-16-2-2-7-6-9-4-24-4-32 1-24 5M1032 56l-24 4-27 12-13 4-16 1M1040 103l16-1 16-3 7-3 6-8-3-8 1-8-3-8-8-4-8-3-16-2-16 1M1016 64l-48 20-24 2M1016 97l24 1 17-2 7-2 9-6-2-8 1-8-8-7-8-3-16-1-24 3M1016 70l-21 10-3 8 24 4 16 1 16-1 12-4 0-16-4-2-16-4-16 2zM1016 78l-4 2 4 3 8 3 8 1 8-1 7-6-7-6-8-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-1" data-step="1"><span>Previous · 2 of 11</span><b>What cannot be measured, and the claims made without evidence</b></a><a class="snext" href="#read-dd-ia2-3" data-step="3"><span>Next · 4 of 11</span><b>The business case for IA work</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-dd-ia2-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">The business case for IA work</span></span></h2>
+<h3>4.1 · The decision the case supports, and who reads it</h3>
+<p>A business case is an argument for one decision, made by one decider, at one meeting, and it is worth writing only if a number in it could change that decision. At Perqo the decision on IA work is a ranking: IA debt and open faults are "ranked by value and effort on the backlog" at RV-10, the quarterly debt triage, which product management owns (IA9, Deliverable C). The case supplies the value and the effort. IA10 named two audiences for it, and its touchpoint matrix the functions it must speak to (IA10, "What later units take").</p>
+<ul>
+<li><strong>Leadership, at FO-09.</strong> One page, F1, with identifiers so a question can be followed down (IA10, section 2.9). The case reaches leadership as its decision, its cost and its break-even, with the register's counts that DL-019 proposes for the same page (IA12, Deliverable D, D.4).</li>
+<li><strong>Sales, through BR-3.</strong> The case is where sales learns what it may say about Admin's ease of use. Nothing in Admin's register is above C0 (IA12, section 3.4), so the answer today is no figure at all; Deliverable D proposes that BR-3 says so (DL-021).</li>
+<li><strong>The other functions.</strong> Product management decides and signs off (TP-01); engineering gives the engineering days of a change (TP-02); the content team and support give the articles and tags a change touches (TP-03, TP-08); customer success gives the per-client hours and recruits for FO-07 (TP-07); clients give their admin users' time (TP-09); legal and security are consulted where a role or a field changes (TP-10, TP-11) (IA10, A.1). Each number the case takes from a function is labelled with that function as its source.</li>
+</ul>
+<h3>4.2 · The cost of change by layer</h3>
+<p>IA12 gave the criterion: a part that would break many citations if changed is backbone and is fixed early; a part that changes by adding is open (IA12, section 5). IA9's version rule says what a break is: an identifier retired or moved, a label renamed, a relationship or transition removed, a rule's outcome changed (IA9, section 4.4). The cost of a change to a layer is the work IA9's change-control flow sets off for it: the decision log entry, the impact check, the artefacts and their faces, the vocabulary first, the structure test where a top level moves, the build, and everyone told (IA9, section 4.2). Those steps give the cost's parts; their size at Perqo is not on record anywhere, and this unit assumes it.</p>
+<p>The figures for Perqo Admin are in Deliverable C, C.4, each the unit's own assumption (Perqo, fictional): a late change to Admin's objects costs about 22 staff days, to its roles 15, its top level 10.5, its vocabulary 8, its addresses 7; an open part costs 1.5 to 3 (reports 3, lower labels 2, queues 2, lists 1.5, landing 1.5). One part of one figure is sourced in Perqo's own record: the structure test's 1.5 days of the IA designer's time is IA11's cost for V-17, the before-and-after test (IA11, Deliverable A). The ordering follows the dependents IA12 named for each layer; the magnitudes are assumptions, and no multiplier from section 2.2's second claim is applied.</p>
+<p>Figure 4 draws those totals in staff days, every row tone 4, Perqo Admin, because every figure in it belongs to the Admin case: Objects 22; Roles 15; Top level 10.5; Vocabulary 8; Addresses 7; Reports 3; Lower labels 2; Queues 2; Lists 1.5; Landing 1.5.</p>
+<figure class="viz viz-compare"><div class="viz-scroll" style="--stick:88.0px"><svg viewBox="0 0 700 312" width="700" height="312" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="82.0" y="27.3" text-anchor="end">Objects</text><rect class="viz-track" x="92.04704" y="16.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="16.0" width="464.7" height="14"/><text class="viz-value" x="564.8" y="26.8">22 days</text><text class="viz-label" x="82.0" y="57.3" text-anchor="end">Roles</text><rect class="viz-track" x="92.04704" y="46.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="46.0" width="316.9" height="14"/><text class="viz-value" x="416.9" y="56.8">15 days</text><text class="viz-label" x="82.0" y="87.3" text-anchor="end">Top level</text><rect class="viz-track" x="92.04704" y="76.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="76.0" width="221.8" height="14"/><text class="viz-value" x="321.9" y="86.8">10.5 days</text><text class="viz-label" x="82.0" y="117.3" text-anchor="end">Vocabulary</text><rect class="viz-track" x="92.04704" y="106.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="106.0" width="169.0" height="14"/><text class="viz-value" x="269.0" y="116.8">8 days</text><text class="viz-label" x="82.0" y="147.3" text-anchor="end">Addresses</text><rect class="viz-track" x="92.04704" y="136.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="136.0" width="147.9" height="14"/><text class="viz-value" x="247.9" y="146.8">7 days</text><text class="viz-label" x="82.0" y="177.3" text-anchor="end">Reports</text><rect class="viz-track" x="92.04704" y="166.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="166.0" width="63.4" height="14"/><text class="viz-value" x="163.4" y="176.8">3 days</text><text class="viz-label" x="82.0" y="207.3" text-anchor="end">Lower labels</text><rect class="viz-track" x="92.04704" y="196.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="196.0" width="42.2" height="14"/><text class="viz-value" x="142.3" y="206.8">2 days</text><text class="viz-label" x="82.0" y="237.3" text-anchor="end">Queues</text><rect class="viz-track" x="92.04704" y="226.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="226.0" width="42.2" height="14"/><text class="viz-value" x="142.3" y="236.8">2 days</text><text class="viz-label" x="82.0" y="267.3" text-anchor="end">Lists</text><rect class="viz-track" x="92.04704" y="256.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="256.0" width="31.7" height="14"/><text class="viz-value" x="131.7" y="266.8">1.5 days</text><text class="viz-label" x="82.0" y="297.3" text-anchor="end">Landing</text><rect class="viz-track" x="92.04704" y="286.0" width="528.1" height="14"/><rect class="viz-bar viz-t4" x="92.04704" y="286.0" width="31.7" height="14"/><text class="viz-value" x="131.7" y="296.8">1.5 days</text></svg><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 88.0 312" width="88.0" height="312" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="88.0" height="312"/><text class="viz-label" x="82.0" y="27.3" text-anchor="end">Objects</text><text class="viz-label" x="82.0" y="57.3" text-anchor="end">Roles</text><text class="viz-label" x="82.0" y="87.3" text-anchor="end">Top level</text><text class="viz-label" x="82.0" y="117.3" text-anchor="end">Vocabulary</text><text class="viz-label" x="82.0" y="147.3" text-anchor="end">Addresses</text><text class="viz-label" x="82.0" y="177.3" text-anchor="end">Reports</text><text class="viz-label" x="82.0" y="207.3" text-anchor="end">Lower labels</text><text class="viz-label" x="82.0" y="237.3" text-anchor="end">Queues</text><text class="viz-label" x="82.0" y="267.3" text-anchor="end">Lists</text><text class="viz-label" x="82.0" y="297.3" text-anchor="end">Landing</text></svg></div></div><figcaption>Cost of change by layer: the staff days of a late change to each layer of Perqo Admin's IA, from the backbone (objects, roles, top level, vocabulary, addresses) to the open parts; supports the decision on which layers to test before more is built on them (section 4.2; Deliverable C, C.4). Layers and their dependents from IA12, section 5; the steps a change sets off from IA9, sections 4.2 and 4.4; the structure test's 1.5 days from IA11, Deliverable A, V-17. Every magnitude is this unit's assumption, C0; no published multiplier is applied (section 2.2). Every row tone 4, Perqo Admin. Perqo is fictional.</figcaption></figure>
+<p>Two costs lie outside the figure. A change that admin users see costs every client time: customer success explains it and each client's admin users relearn it, which this unit assumes at 4 hours a client for a change to objects, roles or the top level and 1 hour for a rename (Perqo, fictional). And a change already built into clients' own habits, links and documents costs them more than Perqo can count; the case leaves it out and says so.</p>
+<h3>4.3 · The cost of not changing</h3>
+<p>Not changing has two costs, and a case states both. The first recurs: while a part of the IA is wrong, the people who use it pay time on every visit, and support pays for the tickets. The second is the late change itself, which grows with every client trained on the wrong structure. Neither is measured at Perqo, because nothing about Admin has been read: every row of the register is at C0 and "not run" (IA12, section 3.4).</p>
+<p>What the published evidence gives is a set of reference ranges for pricing hours and contacts, each labelled. For client staff time, the US Bureau of Labor Statistics gives a median annual wage of $149,280 for human resources managers and $166,570 for financial managers in May 2025 (BLS, <em>Occupational Outlook Handbook</em>, "Human Resources Managers", last modified 29 October 2026, <a target="_blank" rel="noopener" href="https://www.bls.gov/ooh/Management/human-resources-managers.htm">bls.gov, HR managers</a>, and "Financial Managers", last modified 27 August 2026, <a target="_blank" rel="noopener" href="https://www.bls.gov/OOH/management/financial-managers.htm">bls.gov, financial managers</a>, both read 10 November 2026; official statistics), and wages were 70.0% of employer costs for private industry workers in June 2026 (BLS, <em>The Economics Daily</em>, 17 September 2026, <a target="_blank" rel="noopener" href="https://www.bls.gov/opub/ted/2026/compensation-costs-for-private-industry-workers-averaged-46-89-per-hour-worked-in-june-2026.htm">bls.gov, compensation costs</a>, read 10 November 2026; official statistics). At an assumed 2,080 working hours a year, that is about $71.77 an hour for an HR manager in wages, or about $102.53 with employer costs, if a manager's wage share equals all private workers' (this unit's arithmetic and assumption). These are US figures; Perqo's clients' countries are not set, so the case keeps its arithmetic in hours and shows money only as a conversion. For support contacts, Gartner's $8.01 per live contact (RD-23) is the only published figure found, and it is a consumer-service average; Perqo's own cost per ticket is not set.</p>
+<h3>4.4 · The cost of evidence</h3>
+<p>The cost of evidence is what it takes to raise a register row's rung. IA11's plan priced each test of the app in staff days and participants' minutes (IA11, Deliverable A): a usability round costs the IA designer 3 days and five participants 45 minutes each (V-03); a before-and-after tree test, 1.5 days and 50 participants at 6 minutes (V-17); a quarterly analytics read, product management 1 day and engineering 0.5 day (V-01). Those are Perqo's own unit costs, and Deliverable C, C.5 prices Admin's evidence from them.</p>
+<p>IA12 gave the size of what is missing. Of the 49 register rows, 28 have a test or a first read in Admin's own records or support's tickets (IA12, section 3.4): those cost a read, with no recruiting. The rest wait on forums that have not met. Counted from the register's Input column, 30 rows are wholly absent and two partly (AR-40 and AR-43): FO-07, the client validation session, is named for 21 of them; FO-05, onboarding, for 6; FO-08, privacy and security, for 4; FO-09, leadership, for 1 (IA12, Deliverable B; this unit's count). The cost of evidence for those rows is a forum's first meeting, and for most of them, recruiting admin users from several clients.</p>
+<h3>4.5 · Benefits, each at its rung</h3>
+<p>A case claims benefits, and each benefit stands on evidence at some rung of IA11's ladder. The rule for the case is that a benefit is stated at its rung and no higher, and that a published figure never stands in for a measure (this unit's rule, from section 1.1 and IA11, section 6.4). For Admin today, every benefit is at C0: the HR time a better Approvals list would save, the tickets a clearer top level would prevent, the finance time a better landing page would save. Each has a metric that would raise it (Deliverable A) and a test in the register (IA12, Deliverable B). Deliverable C, C.7 lists them with the rung each would reach.</p>
+<h3>4.6 · Every number labelled</h3>
+<p>Every number in a case is sourced, measured or assumed, or a published figure kept as context, and the case says which beside it: <strong>sourced</strong>, with its source, sample, date and label; <strong>measured</strong>, from Perqo's own records or tests, with its rung; <strong>assumed</strong>, the case's own, at C0, with the test or read that would replace it. A published figure enters the arithmetic only if it measures the same quantity for a similar product and population; otherwise it is context, shown beside the arithmetic and never inside it. Figure 5 draws the rule as a tree; Deliverable B, B.3 carries it into the template.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.091"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="97" data-rings="2"><path d="M152 66l-24 0-20 6-6 8 11 16 12 8 11 3 136 15M160 75l-16 1-15 4 0 8 7 8 16 5 104 12M168 84l-8 1-7 3 15 8 40 6"/><circle class="ct-spot" cx="160" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="127" data-rings="3"><path d="M200 68l-48-2M272 122l16 0 16-3 16-4 26-11M248 71l-48 6-40-2M256 113l16 0 16-2 16-6 8-5M240 80l-32 3-40 1M208 102l48 4 18-2 6-4 13-12"/><circle class="ct-spot" cx="248" cy="96" r="7"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="116" data-rings="3"><path d="M400 62l-24-1-40 2-48-2-32 1-56 6M346 104l38-7 16-1 40 1M312 100l8-3 32-4 32-7 32-3M410 72l-34-3-40 0-48-1-40 3M293 88l11-4 32-1 18-3-34-3-40 0-40 3"/><circle class="ct-spot" cx="336" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="46" data-rings="1"><path d="M464 78l-11-6-21-6-32-4M440 97l8 3M416 83l9-3-15-8"/><circle class="ct-spot" cx="424" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="81" data-rings="2"><path d="M480 79l-16-1M448 100l8 5 16 6 24 3 16-2 32-6 24-2 64 7M500 88l-10 8 6 4 8 2 40-3 32-1"/><circle class="ct-spot" cx="512" cy="96" r="6"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="80" data-rings="2"><path d="M576 69l-20 3-76 7M576 98l64 7M584 84l-17 4 25 4 14 4 26 3M614 88l2 1 16 3"/><circle class="ct-spot" cx="600" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="209" data-rings="5"><path d="M632 46l-16 6-23 12-17 5M632 111l136 7 40-2M720 46l-16-3-16-2-24 0-16 2-16 3M640 55l-40 17-8 2-92 14M640 105l144 5M760 69l-16-4-32-12-16-2-32-1-24 5M648 61l-32 13-32 10M632 99l152 6M744 72l-32-12-16-3-24 0-24 4M672 63l-16 4-34 13-8 8M632 92l24 3 112 4 16 0M736 75l-36-11-12-1-16 0M672 70l-8 2-16 8 6 8 66 4 40-1 12-3M752 85l-14-5-18-3-24-7-24 0"/><circle class="ct-spot" cx="688" cy="80" r="9"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="88" data-rings="2"><path d="M808 116l21-4M771 64l-51-18M784 110l24-1 40-7M779 72l-19-3M784 105l16-1 56-9M784 99l22-3M800 86l-64-11M772 88l-20-3"/><circle class="ct-spot" cx="776" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶9" data-words="118" data-rings="3"><path d="M829 112l35-4 64 2M876 64l-28 3-24 1-53-4M848 102l16-1 64 3M882 72l-50 4-53-4M856 95l8-1 40 4 40 0M896 78l-56 6-16-1-80-11M806 96l1-8-7-2M902 88l2 0 16 3"/><circle class="ct-spot" cx="864" cy="88" r="7"/></g><g class="ct-rise ct-t4" data-label="¶10" data-words="118" data-rings="3"><path d="M928 110l40-1 56-4M1008 65l-24-7-24-5-16-1-16 1-52 11M928 104l128-5M1008 73l-40-9-16-2-24 0-46 10M944 98l64-3M952 69l-24 1-32 8M936 78l-34 10M920 91l16 0 55-3M984 85l-8-5-24-3-16 1"/><circle class="ct-spot" cx="952" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶11" data-words="107" data-rings="2"><path d="M1024 105l48 1 24-3 15-7 1-8-9-8-15-6-16-4-64-5M1056 99l20-3 6-8-12-8-6-2-16-2-40-3M1008 95l42-7-10-3-24-5-64-11M991 88l-7-3"/><circle class="ct-spot" cx="1040" cy="88" r="7"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-2" data-step="2"><span>Previous · 3 of 11</span><b>The measurement model</b></a><a class="snext" href="#read-dd-ia2-4" data-step="4"><span>Next · 5 of 11</span><b>The limits of the exercise</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-dd-ia2-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">The limits of the exercise</span></span></h2>
+<p><strong>The numbers that decide are the ones nobody has.</strong> Deliverable C's break-even turns on three assumptions: how much time a wrong backbone part costs each client a year, how many clients Perqo has, and how long a fault would go unfound without the evidence. Figure 6 there shows the break-even moving from about 12% to about 87% across ranges of those three that no reader could rule out. A case honest about that range supports a decision about evidence, and a weaker one about the structure.</p>
+<p><strong>Averages do not forecast one project.</strong> Moran's 2020 interval, 8% to 104% (RD-27), is the field's own measure of how far one project can sit from the average, and it comes from case studies whose selection the article does not describe.</p>
+<p><strong>Attribution stays open.</strong> A lagging indicator moves for many reasons at once: a release carries more than a structure, a client's onboarding changes the mix of users, a campaign fills the search log (section 2.1; IA11, section 2.5). The model reads a lagging change as a hypothesis about the IA at C1 unless the change was split-tested or the record is of the behaviour itself (IA11, section 6.4).</p>
+<p><strong>Hours of different people are summed.</strong> The case adds Perqo's staff days to clients' admin users' hours. Perqo pays the first; clients pay the second, and Perqo's interest in them runs through renewal (CL-6), which no figure here measures. A decider who counts only Perqo's own hours gets a different break-even, and the case shows both (Deliverable C, C.6).</p>
+<p><strong>A case can be gamed by its targets.</strong> A target set after the read, or a metric chosen because it moved, turns a measure into an argument. IA11's rule that the mark is set before the test (IA11, section 4.4) is the only guard the model has, and section 3.3 extends it to every lagging target.</p>
+<p><strong>Some value has no measure.</strong> A structure that spares support a category of tickets, or lets sales answer a tender truthfully (IA10, BR-3), has value the case can name and cannot price. It is listed in the case as unpriced, and never given a number to make the total look complete.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.455"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="86" data-rings="5"><path d="M376 74l-13-2-35-10-16-4-32-3-24-1-40 0-48 4-32 3-32 6-15 5-15 8-3 8 3 8 7 8 12 8 19 7 24 5 24 2 24 1 32-1 80-11M296 66l-40-4-24-1-32 2-40 3-24 4-16 4-15 6-5 8 4 8 9 8 15 6 16 4 24 3 32 1 24-2 64-11M168 72l-24 4-14 4-7 8 4 8 13 8 28 6 24 1 32-2 16-3 32-9 48-6M311 80l-15-5-13-3-19-3-24-1-24 0-48 4M160 79l-5 1-11 8 6 8 18 7 24 2 16 0 16-2 24-8 29-7 2-8-23-5-32-2-32 2zM200 80l-16 3-15 5 11 8 20 2 16-2 27-8-3-5-4-3z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="41" data-rings="2"><path d="M296 115l48-1 72-3 128 0M384 84l-24-1-64-17M288 105l56 1 96-3 96 0M427 88l5 3M440 94l16 1M320 91l11-3-11-3-9-5"/><circle class="ct-spot" cx="360" cy="96" r="7"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="68" data-rings="4"><path d="M496 47l-32 7-27 10-27 8-18 2-16 0M544 111l72-3 120 5M576 45l-40-1-40 3M504 56l-24 5-30 11-26 7-16 3-24 2M536 103l24-1 56-6 56 6M560 53l-32 0-24 3M504 63l-16 5-48 17-13 3M432 91l8 3M456 95l56 2 32-1 24-4 16-4 8-4 16-2M584 63l-32-3-24 1-24 2M512 71l-7 1-22 8 4 8 25 2 32-2 14-8 6-8-20-3-16 0z"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="59" data-rings="3"><path d="M736 113l80 7M744 58l-168-13M672 102l80 1 64 9M704 63l-72-4-72-6M608 82l24 2 24 7 24 3 24 0 48-4 16 0M758 80l-32-8-14-2-40-2-56 0-32-5"/><circle class="ct-spot" cx="680" cy="80" r="8"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="56" data-rings="3"><path d="M816 120l72-1 112-6M872 70l-71-6-57-6M816 112l48 0 72-5 56-2M888 82l-48-6-48-3-88-10M768 90l8 2 10 4 22 6 16 3 24 0 26-1 30-8-56-10-16-2-64 0-10-4"/><circle class="ct-spot" cx="840" cy="96" r="8"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="51" data-rings="3"><path d="M1000 113l56-5 25-4 23-6 4-2 4-8-17-8-15-3-51-5-45-6-40-1-56 5-16 0M992 105l32-2 39-7 9-8-30-8-58-7-32 1-40 7-24 1M952 88l8 5 8 3 16 1 24-1 24-8-48-6-16 1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-3" data-step="3"><span>Previous · 4 of 11</span><b>The business case for IA work</b></a><a class="snext" href="#read-dd-ia2-5" data-step="5"><span>Next · 6 of 11</span><b>A · The IA measurement model</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-dd-ia2-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A · The IA measurement model</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): measurement model for an IA, one row per metric, leading and lagging, filled for Perqo Admin and the Help centre's search on perqo.com; fidelity F3 (ready to use). Decision: what is measured about the IA, from which data, against which baseline and target, how often, and how much each read can decide. Readers: the IA designer (runs the tests, reads the results), product management (owns RV-06 and RV-10), support (owns RV-04 and RV-05), engineering (the events M-12 to M-14, M-16 and M-19 need), leadership through FO-09 (DL-022, proposed). Leaves out: the app's metrics already in IA11's plan (M-08 to M-10, with V-01 to V-17), M-06, read inside a sort's analysis (IA11, Deliverable D, CS-A), every result (none has been read), money. Owner: the IA designer; version 1, dated 10 November 2026; Perqo is fictional.</em></p>
+<h3>A.1 · Leading indicators</h3>
+<p>Every leading metric is IA11's, with IA11's definition and its 95% adjusted-Wald interval (IA11, sections 1.2 and 3.4). Verdicts are IA11's: pass when the interval's lower end is at or above the mark, fail when its upper end is below it, undecided otherwise (IA11, section 4.4).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Metric</th>
+<th>Definition</th>
+<th>Source of data</th>
+<th>Baseline method</th>
+<th>Target</th>
+<th>Cadence</th>
+<th>Rung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-01</td>
+<td>Success rate</td>
+<td>IA11, section 1.2</td>
+<td>tree test of Admin's six areas with admin users from at least four clients, moderated (Deliverable C, E2); perqo.com's trees at RV-11</td>
+<td>the current tree, same tasks, before any change (IA11's TT-0 form)</td>
+<td>lower end at or above 80% for deciding a claim and setting budgets, 70% for other Admin tasks</td>
+<td>each FO-07 cycle touching Admin's labels or top level; before and after a top-level change (RV-11)</td>
+<td>C2 at 12 participants; C3 at 50</td>
+</tr>
+<tr>
+<td>M-02</td>
+<td>Directness</td>
+<td>IA11, section 1.2</td>
+<td>as M-01</td>
+<td>as M-01</td>
+<td>no mark: read beside M-01</td>
+<td>with M-01</td>
+<td>C2 or C3</td>
+</tr>
+<tr>
+<td>M-03</td>
+<td>First-click correctness</td>
+<td>IA11, section 1.2</td>
+<td>first-click test on Admin's screens with admin users (AR-45)</td>
+<td>the current screens, same tasks</td>
+<td>as M-01's marks</td>
+<td>each FO-07 cycle</td>
+<td>C2 or C3</td>
+</tr>
+<tr>
+<td>M-04</td>
+<td>Time on task</td>
+<td>IA11, section 1.2 (median)</td>
+<td>every test</td>
+<td>the same tasks on the current structure</td>
+<td>none alone: read beside M-01</td>
+<td>with M-01</td>
+<td>as M-01</td>
+</tr>
+<tr>
+<td>M-05</td>
+<td>Placement share</td>
+<td>IA11, section 1.2, which defines it for a closed sort; applied here to the given categories of a hybrid sort (this unit's extension)</td>
+<td>hybrid card sort with admin users (Deliverable C, E3)</td>
+<td>none: the first sort is the baseline</td>
+<td>home placement confirmed at a lower end of 50% (IA11, section 4.4)</td>
+<td>when an object or label is in question (AR-01, AR-13, AR-14)</td>
+<td>C2 at 15; C3 at about 50</td>
+</tr>
+<tr>
+<td>M-11</td>
+<td>Problem frequency</td>
+<td>IA11, section 1.2</td>
+<td>usability round with five admin users (Deliverable C, E4)</td>
+<td>round 1</td>
+<td>no problem in 2 or more of 5 (IA11, section 6.1)</td>
+<td>each round</td>
+<td>C2</td>
+</tr>
+</tbody>
+</table></div>
+<h3>A.2 · Lagging indicators</h3>
+<p>M-07 is IA11's; M-12 to M-19 are new, defined in section 3.2 and set here (Perqo, fictional). "Range" means the lowest and highest of the four quarters before (or twelve months, for a monthly read).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Metric</th>
+<th>Definition</th>
+<th>Source of data</th>
+<th>Baseline method</th>
+<th>Target</th>
+<th>Cadence</th>
+<th>Rung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-07</td>
+<td>Zero-result rate</td>
+<td>IA11, section 1.2</td>
+<td>the Help centre's search log, For HR and finance teams and For employees</td>
+<td>one quarter before, per query, with its interval</td>
+<td>no query among the 20 most frequent returns zero results; overall rate's interval of difference not above zero after a change</td>
+<td>quarterly, RV-04; the month after a rename</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>M-12</td>
+<td>Results clickthrough</td>
+<td>section 3.2 (new)</td>
+<td>the Help centre's log with click events (new)</td>
+<td>one quarter before, with its interval</td>
+<td>after a search or label change, interval of the difference above zero</td>
+<td>quarterly, RV-04</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>M-13</td>
+<td>Refinement rate</td>
+<td>section 3.2 (new)</td>
+<td>as M-12</td>
+<td>as M-12</td>
+<td>interval of the difference below zero</td>
+<td>quarterly, RV-04</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>M-14</td>
+<td>Search exit rate</td>
+<td>section 3.2 (new)</td>
+<td>as M-12</td>
+<td>as M-12</td>
+<td>interval of the difference below zero</td>
+<td>quarterly, RV-04</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>M-15</td>
+<td>Tickets per page</td>
+<td>section 3.2 (new)</td>
+<td>support's ticket tags by AD- page and DT- tree (IA9, section 6.2)</td>
+<td>the range over twelve months, per tag</td>
+<td>after a change to a page, two months below its range</td>
+<td>monthly, RV-05; a tag that rises after a release</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>M-16</td>
+<td>Find-to-open time</td>
+<td>section 3.2 (new)</td>
+<td>Admin's find-field and record-open events (new)</td>
+<td>one quarter, median per list and abandonment with its interval</td>
+<td>abandonment's interval wholly below 20% on Employees (AD-1) and Approvals (AD-4); above it, AR-34's global search goes to FO-01 as a proposed DL entry</td>
+<td>quarterly, RV-06</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>M-17</td>
+<td>Landing match</td>
+<td>section 3.2 (new)</td>
+<td>first actions after sign-in, by role (IA9, RV-06)</td>
+<td>the first quarter read is the baseline and AR-37's test</td>
+<td>holds while the lower end is above 50%; fails when the upper end is below 50% and the landing pages go to FO-01</td>
+<td>quarterly, RV-06</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>M-18</td>
+<td>Overdue share</td>
+<td>section 3.2 (new)</td>
+<td>claim records and their audit entries (IA7, O-17)</td>
+<td>one quarter, with its interval</td>
+<td>set at FO-01 from the first read, before any change to Approvals ships</td>
+<td>quarterly, RV-06</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>M-19</td>
+<td>Flow completion</td>
+<td>section 3.2 (new)</td>
+<td>Admin's form-start and save events (new)</td>
+<td>one quarter per form, with its interval</td>
+<td>after a change to a form, interval of the difference not below zero</td>
+<td>quarterly, RV-06</td>
+<td>C5</td>
+</tr>
+</tbody>
+</table></div>
+<h3>A.3 · Rules for reading the model</h3>
+<ol>
+<li><strong>Set the target first.</strong> Every target is written in the row before the read it applies to; a target changed after a read is a new row, with the old one kept (IA11, section 4.4).</li>
+<li><strong>Read a proportion with its interval.</strong> IA11's 95% adjusted-Wald interval for one proportion; for a change, the interval of the difference of two proportions (IA11, sections 3.4 and 6.2, after Laubheimer 2024 on comparing trees).</li>
+<li><strong>Read a count or a median against its range.</strong> No interval method is set for them in the course; the range of the period before is the comparison (this unit's rule).</li>
+<li><strong>Keep the kinds apart.</strong> A lagging number is never the verdict on a leading test, nor the reverse (section 3.1); each goes to the register row it tests, at its own rung (IA12, section 3.2), and agreement between a test and a record on one question is convergence, C4 (IA11, section 6.4).</li>
+<li><strong>A lagging change is a hypothesis.</strong> Unless the change was split-tested, or the metric records the behaviour itself (M-16 to M-19), a lagging change raises a hypothesis at C1 for a test (IA11, section 6.4; IA9, section 6.4).</li>
+<li><strong>Report what moved the other way.</strong> Every read lists the rows, tasks or pages that worsened, as UNC's borrow task did (RD-30), beside the overall figure.</li>
+</ol>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.818"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="142" data-rings="5"><path d="M216 55l-32 5-64 16-31 12-9 8 1 8 13 8 26 7 32 4 32 2 40-1 72-6 96-3 96-8 24 0M512 81l-24-3-80-18-64-8-32-2-40 0-32 2-24 3M224 63l-56 13-15 4-20 8-8 8 6 8 21 7 24 3 24 2 32 0 64-5 88-4 25-3 29-8 6-8-13-8-25-8-30-6-32-4-32-3-32 0-32 1zM224 71l-36 9-20 7-2 1-5 8 13 8 26 4 40 1 56-3 56-2 24-4 19-4 8-8-11-8-16-4-24-5-32-4-48-1-24 1zM272 72l-40 6-34 10-3 8 21 6 32 2 88-5 20-3 13-8-15-8-18-4-32-4zM272 80l-8 1-29 7 5 5 7 3 25 0 32-3 24-5-29-8z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="46" data-rings="1"><path d="M512 107l56 5 32 0 40-6 39-10 1-8-24-5-24-1-40 1-80-2"/><circle class="ct-spot" cx="600" cy="96" r="7"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="35" data-rings="1"><path d="M880 71l-3 1 3 8 15 8 17 3 24 0 16-3 13-8-26-8-19-3-24 0z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-4" data-step="4"><span>Previous · 5 of 11</span><b>The limits of the exercise</b></a><a class="snext" href="#read-dd-ia2-6" data-step="6"><span>Next · 7 of 11</span><b>B · The business-case template</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-dd-ia2-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">B · The business-case template</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): one-page business case for IA work in a product company, with its fields, a table of sourced reference ranges with their labels, and the rule for labelling every number; fidelity F3 for the template (ready to fill). Decision: whether to fund a piece of IA work, or the evidence for it, now. Readers: product management (decides at RV-10), leadership (FO-09, one page), the IA designer (writes it), every function whose number it takes. Leaves out: the work's design, the tests' scripts (IA11), a forecast of results. Owner: the IA designer; version 1, dated 10 November 2026; Perqo is fictional.</em></p>
+<h3>B.1 · The fields</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What to write</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decision</td>
+<td>the decision, in one line; who decides (IA9, D.1, or the RV-10 ranking); the forum and date</td>
+<td>one decision per case (section 4.1)</td>
+</tr>
+<tr>
+<td>Options</td>
+<td>at least: do nothing; the cheapest evidence; the change or the full evidence</td>
+<td>each option costed the same way</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>the artefacts and identifiers, and the register rows (AR-) the case rests on, each with its rung</td>
+<td>IA12, section 3.2</td>
+</tr>
+<tr>
+<td>Load</td>
+<td>volumes the arithmetic uses, each sourced, measured or assumed</td>
+<td>section 4.6</td>
+</tr>
+<tr>
+<td>Cost of change by layer</td>
+<td>per layer touched: staff days by function, and per-client hours</td>
+<td>section 4.2; IA9, section 4.2</td>
+</tr>
+<tr>
+<td>Cost of not changing</td>
+<td>recurring hours while a fault stands; the late change; who pays each</td>
+<td>section 4.3</td>
+</tr>
+<tr>
+<td>Cost of evidence</td>
+<td>per test or read: staff days, participants' hours, the forum it needs, the rung it reaches</td>
+<td>section 4.4; IA11, Deliverable A</td>
+</tr>
+<tr>
+<td>Benefits</td>
+<td>each with its metric (Deliverable A), its rung now and the rung the evidence would reach; unpriced value listed as unpriced</td>
+<td>section 4.5</td>
+</tr>
+<tr>
+<td>Arithmetic</td>
+<td>the formula, in words and symbols, and its result</td>
+<td>every term labelled</td>
+</tr>
+<tr>
+<td>Break-even and sensitivity</td>
+<td>the value of the unknown at which the options cost the same; the result across a stated low and high for each assumption</td>
+<td>section 5</td>
+</tr>
+<tr>
+<td>What would change it</td>
+<td>the read or test result that would reverse the recommendation</td>
+<td>IA11, section 6.1</td>
+</tr>
+<tr>
+<td>Audiences</td>
+<td>the one-page summary for FO-09; the line for BR-3; what each function gave</td>
+<td>IA10, sections 2.9 and 2.4</td>
+</tr>
+<tr>
+<td>Number register</td>
+<td>every number in the case, with its kind, source and label</td>
+<td>B.3</td>
+</tr>
+</tbody>
+</table></div>
+<h3>B.2 · Sourced reference ranges</h3>
+<p>Published figures a case may cite, each with its label and its use. "Reference" means it may appear beside the arithmetic as context; "do not use" means it may appear only as a claim examined. No row enters a Perqo case's arithmetic, because none measures a Perqo quantity (DD-IA1, section 1).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Published range</th>
+<th>Source (register)</th>
+<th>Label</th>
+<th>Use in a case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task completion in usability tests</td>
+<td>78% average; 49% to 92% between the quartiles</td>
+<td>RD-16</td>
+<td>consultancy report</td>
+<td>reference, for scale</td>
+</tr>
+<tr>
+<td>Tree-test completion</td>
+<td>66% average, "tentative"</td>
+<td>RD-17</td>
+<td>consultancy report</td>
+<td>reference; a tree test overestimates live success</td>
+</tr>
+<tr>
+<td>Share of attempts failing because of the IA</td>
+<td>10% to 14%</td>
+<td>RD-18</td>
+<td>consultancy report</td>
+<td>reference, for websites</td>
+</tr>
+<tr>
+<td>Scenario success after a right or wrong first click</td>
+<td>.87 against .46</td>
+<td>RD-19</td>
+<td>peer-reviewed</td>
+<td>reference, for why M-03 leads</td>
+</tr>
+<tr>
+<td>Average gain from a UX redesign</td>
+<td>75% (2020; interval 8% to 104%) to 247% (2006 to 2008)</td>
+<td>RD-26, RD-27</td>
+<td>consultancy report</td>
+<td>reference only, with its interval; never a forecast</td>
+</tr>
+<tr>
+<td>Before-and-after change from one redesign</td>
+<td>61.6% to 65.1%; 63% to 70%, with one task 79% to 61%</td>
+<td>RD-28, RD-30</td>
+<td>maker's report</td>
+<td>reference, as examples of what is reported and left out</td>
+</tr>
+<tr>
+<td>Cost per support contact</td>
+<td>$8.01 live; $0.10 self-service</td>
+<td>RD-23</td>
+<td>consultancy report (consumer service)</td>
+<td>reference; replace with the product's own cost</td>
+</tr>
+<tr>
+<td>Full resolution by self-service</td>
+<td>9%</td>
+<td>RD-23</td>
+<td>consultancy report</td>
+<td>reference</td>
+</tr>
+<tr>
+<td>Annual cost of common tasks per employee</td>
+<td>$1,563 to $3,042 by intranet quality (2002)</td>
+<td>RD-25</td>
+<td>consultancy report</td>
+<td>reference, for intranets only</td>
+</tr>
+<tr>
+<td>Wages of the people who use a backoffice</td>
+<td>$149,280 (HR managers), $166,570 (financial managers), May 2025; wages 70.0% of employer costs (June 2026)</td>
+<td>section 4.3</td>
+<td>official statistics (US)</td>
+<td>conversion of hours to money, where clients are in the US</td>
+</tr>
+<tr>
+<td>Time spent searching at work</td>
+<td>15% to 35%; 19% (McKinsey Global Institute, 2012, adjusted from IDC data)</td>
+<td>RD-24; section 2.2, claim 3</td>
+<td>consultancy report, no sample</td>
+<td>do not use</td>
+</tr>
+<tr>
+<td>Worldwide cost of poor intranets</td>
+<td>$100 billion to $1.3 trillion a year</td>
+<td>section 2.2, claim 5</td>
+<td>consultancy estimate</td>
+<td>do not use</td>
+</tr>
+<tr>
+<td>Return on UX spending</td>
+<td>"$1 ... returns $100"</td>
+<td>section 2.2, claim 1</td>
+<td>practice, unsourced as circulated</td>
+<td>do not use</td>
+</tr>
+<tr>
+<td>Multiplier for a late fix</td>
+<td>"100 times"</td>
+<td>section 2.2, claim 2</td>
+<td>unverified</td>
+<td>do not use</td>
+</tr>
+</tbody>
+</table></div>
+<h3>B.3 · The rule for each number</h3>
+<p>Figure 5 draws the rule of section 4.6 as a decision tree, read top-down, every box tone 5, shared, because the rule serves any case. Its questions: "Has the product's own record or test measured it?"; "Is there a published figure for this quantity?"; "Same quantity, similar product and population?". Its answers are yes and no, yes on the left. Its outcomes: "Measured: give the rung and the date"; "Sourced: in the arithmetic, with source, sample, date and label"; "Context only: beside the arithmetic, labelled"; "Assumed (C0): name the read or test that replaces it".</p>
+<figure class="viz viz-decision"><div class="viz-scroll"><svg viewBox="0 0 700 406" width="700" height="406" data-x0="154" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="decision"><path class="viz-link" d="M310.5,66.0 L310.5,78.0 L231.5,78.0 L231.5,107.0"/><path class="viz-head" d="M231.5,114.0 L227.5,107.0 L235.5,107.0 z"/><g data-box=""><rect class="viz-lblbg" x="218.6" y="84.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="231.5" y="96.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M310.5,66.0 L310.5,78.0 L389.5,78.0 L389.5,107.0"/><path class="viz-head" d="M389.5,114.0 L385.5,107.0 L393.5,107.0 z"/><g data-box=""><rect class="viz-lblbg" x="379.1" y="84.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="389.5" y="96.3" text-anchor="middle">no</text></g><path class="viz-link" d="M389.5,172.0 L389.5,184.0 L310.5,184.0 L310.5,213.0"/><path class="viz-head" d="M310.5,220.0 L306.5,213.0 L314.5,213.0 z"/><g data-box=""><rect class="viz-lblbg" x="297.6" y="190.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="310.5" y="202.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M310.5,278.0 L310.5,290.0 L231.5,290.0 L231.5,319.0"/><path class="viz-head" d="M231.5,326.0 L227.5,319.0 L235.5,319.0 z"/><g data-box=""><rect class="viz-lblbg" x="218.6" y="296.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="231.5" y="308.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M310.5,278.0 L310.5,290.0 L389.5,290.0 L389.5,319.0"/><path class="viz-head" d="M389.5,326.0 L385.5,319.0 L393.5,319.0 z"/><g data-box=""><rect class="viz-lblbg" x="379.1" y="296.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="389.5" y="308.3" text-anchor="middle">no</text></g><path class="viz-link" d="M389.5,172.0 L389.5,184.0 L468.5,184.0 L468.5,213.0"/><path class="viz-head" d="M468.5,220.0 L464.5,213.0 L472.5,213.0 z"/><g data-box=""><rect class="viz-lblbg" x="458.1" y="190.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="468.5" y="202.3" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-node viz-t5" x="240.5" y="8.0" width="140" height="58.0" rx="2"/><text class="viz-nodelabel" x="310.5" y="27.3" text-anchor="middle">Has the product&#x27;s</text><text class="viz-nodelabel" x="310.5" y="41.3" text-anchor="middle">own record or test</text><text class="viz-nodelabel" x="310.5" y="55.3" text-anchor="middle">measured it?</text></g><g data-box=""><rect class="viz-solid viz-t5" x="161.5" y="114.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="231.5" y="133.3" text-anchor="middle">Measured: give the</text><text class="viz-ontone" x="231.5" y="147.3" text-anchor="middle">rung and the date</text></g><g data-box=""><rect class="viz-node viz-t5" x="319.5" y="114.0" width="140" height="58.0" rx="2"/><text class="viz-nodelabel" x="389.5" y="133.3" text-anchor="middle">Is there a published</text><text class="viz-nodelabel" x="389.5" y="147.3" text-anchor="middle">figure for this</text><text class="viz-nodelabel" x="389.5" y="161.3" text-anchor="middle">quantity?</text></g><g data-box=""><rect class="viz-node viz-t5" x="240.5" y="220.0" width="140" height="58.0" rx="2"/><text class="viz-nodelabel" x="310.5" y="239.3" text-anchor="middle">Same quantity,</text><text class="viz-nodelabel" x="310.5" y="253.3" text-anchor="middle">similar product and</text><text class="viz-nodelabel" x="310.5" y="267.3" text-anchor="middle">population?</text></g><g data-box=""><rect class="viz-solid viz-t5" x="161.5" y="326.0" width="140" height="72.0" rx="2"/><text class="viz-ontone" x="231.5" y="345.3" text-anchor="middle">Sourced: in the</text><text class="viz-ontone" x="231.5" y="359.3" text-anchor="middle">arithmetic, with</text><text class="viz-ontone" x="231.5" y="373.3" text-anchor="middle">source, sample,</text><text class="viz-ontone" x="231.5" y="387.3" text-anchor="middle">date and label</text></g><g data-box=""><rect class="viz-solid viz-t5" x="319.5" y="326.0" width="140" height="58.0" rx="2"/><text class="viz-ontone" x="389.5" y="345.3" text-anchor="middle">Context only:</text><text class="viz-ontone" x="389.5" y="359.3" text-anchor="middle">beside the</text><text class="viz-ontone" x="389.5" y="373.3" text-anchor="middle">arithmetic, labelled</text></g><g data-box=""><rect class="viz-solid viz-t5" x="398.5" y="220.0" width="140" height="58.0" rx="2"/><text class="viz-ontone" x="468.5" y="239.3" text-anchor="middle">Assumed (C0):</text><text class="viz-ontone" x="468.5" y="253.3" text-anchor="middle">name the read or</text><text class="viz-ontone" x="468.5" y="267.3" text-anchor="middle">test that replaces it</text></g></svg></div><figcaption>Decision tree: how each number in a business case for IA work is labelled and where it may stand; supports the decision on whether a number enters the case's arithmetic (section 4.6; Deliverable B, B.3). Labels from section 1.1; rungs from IA11, section 6.4; the rule that published evidence about other products is a reasoned default for Perqo from DD-IA1, section 1; assumptions at C0 named with their test as IA12, section 3.2 records them. Every box tone 5, shared: the rule serves any case. Perqo is fictional.</figcaption></figure>
+<p>The number register in each case has these columns: the number; what it measures; its kind (measured, sourced, context, assumed; a number computed from others is marked arithmetic, and a cost taken from a filed Perqo plan is marked as that plan's); its source, sample, date and label, or its rung, or the read that would replace it; where in the case it is used.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.182"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="107" data-rings="5"><path d="M128 56l-16 3-14 5-8 8 6 8 32 16 8 8 8 6 8 4 16 5 32 5 40 2 40-1 48-7 40-8 24-2 32 2M392 75l-25-3-87-14-64-6-48 0-40 4M152 63l-16 5-9 4 0 8 29 16 8 8 4 2 16 6 24 4 24 1 24 0 40-4 79-17 11-8-10-1-23-7-25-5-80-13-48-2-24 1zM160 72l-9 8 37 24 28 5 40 1 32-3 16-4 24-7 8-8-18-8-6-1-48-9-24-2-24-2-24 1zM176 80l9 8 15 10 16 4 14 2 26 0 24-4 17-4 10-8-21-8-54-7-32 0-16 4zM224 80l-8 0-6 8 17 8 28 0 21-8-35-8z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="51" data-rings="2"><path d="M424 110l56 8 40 0 24-2 15-4 11-8-8-8-4-8-6-5-8-4-24-3-32-2-72 2-24-1M416 88l-8 4-4 4 28 4 32 6 32 2 16-2 11-2-2-8-8-8-9-2-32-2z"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="95" data-rings="4"><path d="M632 47l-16 3-16 4-6 2-10 7-1 1-2 8 5 8 23 16 15 5 32 7 32 2 56 1 112-5 80 1M840 66l-30-2-58-13-40-5-40-1-40 2M656 55l-16 3-18 6-3 8 7 8 9 8 16 8 21 4 32 3 64-1 96-7 64 3M848 75l-56-6-48-10-24-4-32-1-32 1M664 63l-8 2-11 7 6 8 9 8 12 4 16 3 32 2 32 0 32-3 32-6-1-8-87-17-32-2zM680 71l-5 1 1 8 13 8 15 2 32 0 31-2 10-8-57-11-24-1z"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="65" data-rings="3"><path d="M936 107l32-1 24-4 16-3 30-11 31-8 13-8-8-8-2-1-16-3-24-3-48 0-96 7-48 2M928 98l32-1 24-3 47-14 8-8-23-6-32-1-72 5-40 4-24 1M912 80l-2 0 2 1 15 7 17 1 22-1 28-8-10-5-16-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-5" data-step="5"><span>Previous · 6 of 11</span><b>A · The IA measurement model</b></a><a class="snext" href="#read-dd-ia2-7" data-step="7"><span>Next · 8 of 11</span><b>C · The case filled for Perqo Admin</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-dd-ia2-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">C · The case filled for Perqo Admin</span></span></h2>
+<p><em>Face of this artefact (IA2, the notation sheet): business case for the first evidence package on Perqo Admin's IA, filled in the template of Deliverable B; fidelity F2 (complete for its scope; every number labelled). Decision: whether product management ranks the first FO-07 evidence package for Admin's backbone into the next cycle, at RV-10, or holds the backbone at C0 and reads the records only. Readers: product management, leadership (C.9, at FO-09), the IA designer, customer success, support, engineering. Leaves out: any change to Admin's IA (none is proposed), money for Perqo's staff (its rate is not set), clients' own costs beyond their admin users' hours. Owner: the IA designer; version 1, dated 10 November 2026; every number in it is a Perqo fact or this unit's assumption; Perqo is fictional.</em></p>
+<h3>C.1 · Decision and options</h3>
+<p><strong>Decision.</strong> Whether the first FO-07 evidence package for Admin's backbone (E2 to E4 below) is ranked into the next cycle at RV-10, decided by product management, which owns RV-10 (IA9, Deliverable C), and shown to leadership at FO-09 (Perqo, fictional).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What it is</th>
+<th>Cost (C.5)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O-1 Hold</td>
+<td>keep every row at C0; read nothing</td>
+<td>none now</td>
+</tr>
+<tr>
+<td>O-2 Records only</td>
+<td>E1: the first quarterly read of Admin's records at RV-06, lifting AR-02 and AR-37, and the other rows records can reach, to C1 or C5</td>
+<td>1.5 staff days a quarter</td>
+</tr>
+<tr>
+<td>O-3 Records and package</td>
+<td>E1 with E2 to E4: a moderated tree test, a hybrid card sort and a usability round with admin users at FO-07</td>
+<td>1.5 staff days a quarter, and 9 staff days and 14.75 hours of admin users once</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C.2 · Scope</h3>
+<p>Perqo Admin's IA as IA7 drew it, pages AD-0 to AD-6 (IA7, Deliverable C, C.1), and its register, AR-01 to AR-49, every row at C0 and not run on 10 November 2026 (IA12, Deliverable B). The package touches seven of the 25 backbone rows: AR-01, AR-13 and AR-14 (objects and their names), AR-24 and AR-27 (the six areas, and a list and a detail per object), AR-03 and AR-06 (the employee's lifecycle, the rejection note), and three open rows, AR-25, AR-29 and AR-34 (IA12, Deliverable B, B.1 and B.3).</p>
+<h3>C.3 · Load</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Number</th>
+<th>What</th>
+<th>Kind</th>
+<th>Source</th>
+<th>Replaced by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1,200</td>
+<td>employees at the sizing client</td>
+<td>assumed, C0</td>
+<td>IA7, section 2.2; AR-02</td>
+<td>E1, analytics on live clients</td>
+</tr>
+<tr>
+<td>3</td>
+<td>admin users at the sizing client (two HR, one finance)</td>
+<td>assumed, C0</td>
+<td>IA7, section 2.2</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>180</td>
+<td>claims a month in Approvals (15% of about 1,200)</td>
+<td>assumed, C0</td>
+<td>IA7, section 2.2</td>
+<td>E1; M-18's read</td>
+</tr>
+<tr>
+<td>9</td>
+<td>claims a working day in Approvals</td>
+<td>assumed, C0</td>
+<td>IA7, section 2.2, over 20 working days</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>20</td>
+<td>clients like the sizing client, now</td>
+<td>assumed, C0, for this case only</td>
+<td>this unit (Perqo, fictional)</td>
+<td>the client count, from customer success</td>
+</tr>
+<tr>
+<td>1</td>
+<td>new client a month</td>
+<td>assumed, C0, for this case only</td>
+<td>this unit (Perqo, fictional)</td>
+<td>customer success's pipeline</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C.4 · Cost of change by layer</h3>
+<p>Staff days of a late change to each layer, by function, and per-client hours; every figure this unit's assumption (Perqo, fictional) except the structure test's 1.5 days, which is IA11's cost for V-17 (IA11, Deliverable A). Totals are drawn in figure 4 (section 4.2).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Fix (IA12)</th>
+<th>IA designer</th>
+<th>Structure test (RV-11)</th>
+<th>Engineering</th>
+<th>Content, support, sales</th>
+<th>Total staff days</th>
+<th>Per client, hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objects</td>
+<td>backbone</td>
+<td>3</td>
+<td>0</td>
+<td>15</td>
+<td>4</td>
+<td>22</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Roles</td>
+<td>backbone</td>
+<td>2</td>
+<td>0</td>
+<td>10</td>
+<td>3</td>
+<td>15</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Top level</td>
+<td>backbone</td>
+<td>2</td>
+<td>1.5</td>
+<td>4</td>
+<td>3</td>
+<td>10.5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Vocabulary</td>
+<td>backbone</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>4</td>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Addresses</td>
+<td>backbone</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>7</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Reports</td>
+<td>open</td>
+<td>0.5</td>
+<td>0</td>
+<td>2</td>
+<td>0.5</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Lower labels</td>
+<td>open</td>
+<td>0.5</td>
+<td>0</td>
+<td>0.5</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Queues</td>
+<td>open</td>
+<td>0.5</td>
+<td>0</td>
+<td>1</td>
+<td>0.5</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Lists</td>
+<td>open</td>
+<td>0.5</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1.5</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Landing</td>
+<td>open</td>
+<td>0.5</td>
+<td>0</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>What each figure counts: the IA designer's days are IA9's steps 2, 3, 6 and 7 (log, impact check, vocabulary, artefacts and faces); engineering's are the build, migration and redirects; content, support and sales are Help centre articles for HR and finance teams, ticket tags, and BR-3 re-issued (IA9, section 4.2; IA10, BR-3). Per client: customer success's hour and each admin user's hour relearning (Perqo, fictional).</p>
+<h3>C.5 · Cost of evidence</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Evidence</th>
+<th>Register rows</th>
+<th>Participants</th>
+<th>Staff days</th>
+<th>Participants' hours</th>
+<th>Rung it reaches</th>
+<th>Unit cost from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>quarterly read of Admin's records at RV-06: first actions after sign-in, page views, claim records</td>
+<td>AR-02, AR-37 and the rows read at RV-06</td>
+<td>none</td>
+<td>product management 1, engineering 0.5</td>
+<td>0</td>
+<td>C5 for AR-02 and AR-37; C1 or C5 for others</td>
+<td>IA11, V-01</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>moderated tree test of Admin's six areas, 30 minutes each</td>
+<td>AR-24, AR-27</td>
+<td>12 admin users from at least four clients</td>
+<td>IA designer 3</td>
+<td>6</td>
+<td>C2</td>
+<td>IA11, V-03 (assumed to carry); 10 to 15 sessions after IA11, section 3.2</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>hybrid card sort of Admin's objects and their names, 20 minutes each, in E2's twelve sessions and three more</td>
+<td>AR-01, AR-13, AR-14</td>
+<td>15 admin users from at least five clients</td>
+<td>IA designer 2</td>
+<td>5</td>
+<td>C2</td>
+<td>15 participants after IA11, section 3.1; days assumed</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>usability round: a run of ten decisions, find this employee and this claim, invite and mark as left</td>
+<td>AR-03, AR-06, AR-25, AR-29, AR-34</td>
+<td>5 admin users</td>
+<td>IA designer 3</td>
+<td>3.75</td>
+<td>C2</td>
+<td>IA11, V-03</td>
+</tr>
+<tr>
+<td>Recruiting</td>
+<td>arranging E2 to E4 through clients, at FO-07</td>
+<td></td>
+<td></td>
+<td>customer success 1</td>
+<td></td>
+<td></td>
+<td>assumed</td>
+</tr>
+</tbody>
+</table></div>
+<p>E2 to E4 with recruiting: 9 staff days, and 14.75 hours of admin users' time; at an assumed 8 hours a staff day, 86.75 hours in all (this unit's arithmetic). E1: 1.5 staff days a quarter. E3's 15 participants, at three admin users a client, need at least five clients at FO-07, which is the package's precondition.</p>
+<h3>C.6 · Cost of not changing, and the break-even</h3>
+<p>O-3 differs from O-2 in one thing: a fault in one of the seven backbone rows the package touches is found now, at C2, instead of later, when it surfaces in tickets at C1 and waits for a test (IA11, section 6.4). The change costs the same staff days either way (C.4); what finding it earlier saves is the time the fault costs clients while it stands, and the re-training of clients onboarded on the wrong structure in the meantime.</p>
+<p>The arithmetic (this unit's; every term assumed, Perqo, fictional):</p>
+<ul>
+<li>f, hours a fault in a backbone part costs one client a year: <strong>10</strong> (three admin users losing about 4 minutes a week each over 48 working weeks is 9.6 hours, rounded); low 2, high 20.</li>
+<li>N, clients now: <strong>20</strong>; low 10, high 40.</li>
+<li>g, new clients a year: <strong>12</strong>.</li>
+<li>d, years before the fault is found without the package: <strong>1</strong>; low 0.5, high 2.</li>
+<li>r, hours of re-training a client per fault: <strong>4</strong> (C.4).</li>
+<li>E, the package's cost: <strong>86.75 hours</strong> (C.5).</li>
+</ul>
+<p>Hours saved per fault found early, A = f × (N × d + g × d² ÷ 2) + r × g × d = 10 × (20 + 6) + 48 = <strong>308 hours</strong>. The package pays for itself when the chance p that at least one of the seven rows is wrong satisfies p × A ≥ E, so the break-even is p = E ÷ A = 86.75 ÷ 308, about <strong>28%</strong>. The sum mixes payers (section 5). Counted on Perqo's hours alone, the package costs 72 staff hours and saves 12, customer success's hour for each of the 12 clients not re-trained, so it never pays for itself on Perqo's own time: its case for Perqo rests on clients' time, which reaches Perqo through renewal (CL-6) and is not measured. Counted on clients' hours alone, it costs 14.75 and saves 296 (260 of time lost and 36 of admin users' re-training), a break-even of about 5%. As a conversion only, at the US HR manager's $102.53 an hour with employer costs (section 4.3), clients' 14.75 hours are about $1,512 and their 296 hours about $30,349 (this unit's arithmetic; Perqo's clients' countries are not set).</p>
+<p>Figure 6 draws the break-even across each assumption's range with the others held, every row tone 4: Fault cost a client a year, 2 to 20 hours, from 15.3% to 86.8%; Clients now, 10 to 40, from 17.1% to 41.7%; Years to find without it, 0.5 to 2, from 11.8% to 62.4%; each with the base case's 28.2% as its point, and each end tagged "assumed".</p>
+<figure class="viz viz-range"><div class="viz-scroll"><svg viewBox="0 0 700 259" width="700" height="259" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="range"><path class="viz-grid" d="M24.0,8.0 L24.0,237.0"/><text class="viz-ticklabel" x="24.0" y="251.0" text-anchor="middle">0%</text><path class="viz-grid" d="M187.0,8.0 L187.0,237.0"/><text class="viz-ticklabel" x="187.0" y="251.0" text-anchor="middle">25%</text><path class="viz-grid" d="M350.0,8.0 L350.0,237.0"/><text class="viz-ticklabel" x="350.0" y="251.0" text-anchor="middle">50%</text><path class="viz-grid" d="M513.0,8.0 L513.0,237.0"/><text class="viz-ticklabel" x="513.0" y="251.0" text-anchor="middle">75%</text><path class="viz-grid" d="M676.0,8.0 L676.0,237.0"/><text class="viz-ticklabel" x="676.0" y="251.0" text-anchor="middle">100%</text><g data-row="0"><text class="viz-label" x="8.0" y="19.3" text-anchor="start">Fault cost a client a year, 2 to 20 hours</text><text class="viz-value" x="207.9" y="36.3" text-anchor="middle">28.2%</text><rect class="viz-rangebar viz-t4" x="123.8" y="40.0" width="466.2" height="10"/><path class="viz-est" d="M207.9,38.0 L214.9,45.0 L207.9,52.0 L200.9,45.0 z"/><g data-end="123.8"><g data-box=""><rect class="viz-lblbg" x="119.8" y="54.0" width="104.4" height="17.0"/><text class="viz-value" x="172.0" y="66.3" text-anchor="middle">15.3% · assumed</text></g></g><g data-end="589.9"><g data-box=""><rect class="viz-lblbg" x="489.5" y="54.0" width="104.4" height="17.0"/><text class="viz-value" x="541.7" y="66.3" text-anchor="middle">86.8% · assumed</text></g></g></g><g data-row="1"><text class="viz-label" x="8.0" y="98.3" text-anchor="start">Clients now, 10 to 40</text><text class="viz-value" x="207.9" y="115.3" text-anchor="middle">28.2%</text><rect class="viz-rangebar viz-t4" x="135.5" y="119.0" width="160.4" height="10"/><path class="viz-est" d="M207.9,117.0 L214.9,124.0 L207.9,131.0 L200.9,124.0 z"/><g data-end="135.5"><g data-box=""><rect class="viz-lblbg" x="83.3" y="133.0" width="104.4" height="17.0"/><text class="viz-value" x="135.5" y="145.3" text-anchor="middle">17.1% · assumed</text></g></g><g data-end="295.9"><g data-box=""><rect class="viz-lblbg" x="243.7" y="133.0" width="104.4" height="17.0"/><text class="viz-value" x="295.9" y="145.3" text-anchor="middle">41.7% · assumed</text></g></g></g><g data-row="2"><text class="viz-label" x="8.0" y="177.3" text-anchor="start">Years to find without it, 0.5 to 2</text><text class="viz-value" x="207.9" y="194.3" text-anchor="middle">28.2%</text><rect class="viz-rangebar viz-t4" x="100.9" y="198.0" width="329.9" height="10"/><path class="viz-est" d="M207.9,196.0 L214.9,203.0 L207.9,210.0 L200.9,203.0 z"/><g data-end="100.9"><g data-box=""><rect class="viz-lblbg" x="96.9" y="212.0" width="104.4" height="17.0"/><text class="viz-value" x="149.1" y="224.3" text-anchor="middle">11.8% · assumed</text></g></g><g data-end="430.8"><g data-box=""><rect class="viz-lblbg" x="330.5" y="212.0" width="104.4" height="17.0"/><text class="viz-value" x="382.7" y="224.3" text-anchor="middle">62.4% · assumed</text></g></g></g></svg></div><figcaption>Break-even sensitivity: the chance of a fault in the seven backbone rows at which the FO-07 evidence package costs what it saves, across each assumption's range with the others held at the base case; supports the decision on whether to rank the package into the next cycle (Deliverable C, C.6; section 5). Arithmetic and every assumption this unit's, Perqo, fictional, C0; the package's unit costs from IA11, Deliverable A (V-01, V-03); load from IA7, section 2.2. Low and high ends are the assumption's high and low values. Every row tone 4, Perqo Admin.</figcaption></figure>
+<p><strong>What the case concludes.</strong> No published or Perqo figure gives p. The nearest Perqo evidence is the app pilot, where one of ten tasks failed its mark at 12 participants and eight were undecided (IA11, Deliverable D, TT-A): a C2 result about a different surface. The nearest published figure, 10% of task attempts failing because of the IA on 24 websites (RD-18), counts failed attempts on sites unlike Admin, a different quantity from wrong structural decisions. The case therefore supports one decision firmly and one conditionally. <strong>O-2 now</strong>: E1 costs 1.5 staff days, needs no recruiting, and replaces the load the whole case argues from (AR-02) with measured figures; nothing in the arithmetic argues against it. <strong>O-3 when five clients agree to FO-07</strong>, if product management judges p above the break-even for the measured N and the measured d; at the base case that is a better than one-in-four chance that at least one of seven untested backbone answers is wrong.</p>
+<p>What would change it: the client count from customer success (N) and the reads bearing on f (M-15 at RV-05; M-16 once its find-field event is recorded, section 3.2) move the break-even directly; a C2 failure in E2 or E3 turns the package's cost into a found fault, and the change goes to the decision log by IA9's flow (IA9, section 4.2).</p>
+<h3>C.7 · Benefits, each at its rung</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Benefit claimed</th>
+<th>Metric (Deliverable A)</th>
+<th>Register rows</th>
+<th>Rung now</th>
+<th>Rung after O-2</th>
+<th>Rung after O-3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR finds and decides claims without losing its place</td>
+<td>M-11; M-16; M-18</td>
+<td>AR-29, AR-34, AR-41</td>
+<td>C0</td>
+<td>C5 for M-18; C5 for M-16 once its find-field event is recorded (section 3.2)</td>
+<td>C2 for the list and detail</td>
+</tr>
+<tr>
+<td>Admin users find each area where they look</td>
+<td>M-01; M-02; M-15</td>
+<td>AR-24, AR-27</td>
+<td>C0</td>
+<td>C1 from tickets</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Admin users recognise their objects and names</td>
+<td>M-05</td>
+<td>AR-01, AR-13, AR-14</td>
+<td>C0</td>
+<td>C0</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>Each role lands where its work is</td>
+<td>M-17</td>
+<td>AR-37</td>
+<td>C0</td>
+<td>C5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>Fewer tickets about where things are in Admin</td>
+<td>M-15</td>
+<td>AR-45</td>
+<td>C0</td>
+<td>C1</td>
+<td>C1; C4 with a first-click test (AR-45)</td>
+</tr>
+<tr>
+<td>Sales can answer a tender truthfully about roles and rules</td>
+<td>none</td>
+<td>AR-16, AR-17</td>
+<td>C0</td>
+<td>C0</td>
+<td>C0: unpriced</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C.8 · Number register</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Number</th>
+<th>Measures</th>
+<th>Kind</th>
+<th>Source, or the read that replaces it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1,200; 3; 180; 9</td>
+<td>load</td>
+<td>assumed, C0</td>
+<td>IA7, section 2.2; replaced by E1</td>
+</tr>
+<tr>
+<td>20; 12 a year</td>
+<td>clients now; new clients a year</td>
+<td>assumed, C0</td>
+<td>this unit; customer success</td>
+</tr>
+<tr>
+<td>22, 15, 10.5, 8, 7, 3, 2, 2, 1.5, 1.5</td>
+<td>staff days of a late change by layer</td>
+<td>assumed, C0</td>
+<td>this unit; engineering and content give their days at FO-01</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>structure test, IA designer's days</td>
+<td>Perqo's plan</td>
+<td>IA11, Deliverable A, V-17</td>
+</tr>
+<tr>
+<td>3; 5 × 45 minutes</td>
+<td>a usability round</td>
+<td>Perqo's plan</td>
+<td>IA11, Deliverable A, V-03</td>
+</tr>
+<tr>
+<td>1 and 0.5</td>
+<td>a quarterly records read</td>
+<td>Perqo's plan</td>
+<td>IA11, Deliverable A, V-01</td>
+</tr>
+<tr>
+<td>12; 15; 5</td>
+<td>participants in E2, E3, E4</td>
+<td>assumed, within published guidance</td>
+<td>IA11, sections 3.1 and 3.2; Nielsen 2000 through IA11, section 2.6</td>
+</tr>
+<tr>
+<td>4; 1</td>
+<td>per-client hours of a change</td>
+<td>assumed, C0</td>
+<td>this unit; customer success</td>
+</tr>
+<tr>
+<td>10 (2 to 20)</td>
+<td>hours a fault costs a client a year</td>
+<td>assumed, C0</td>
+<td>this unit; M-15 and M-16 after E1</td>
+</tr>
+<tr>
+<td>1 (0.5 to 2)</td>
+<td>years to find a fault without the package</td>
+<td>assumed, C0</td>
+<td>this unit</td>
+</tr>
+<tr>
+<td>8</td>
+<td>hours in a staff day</td>
+<td>assumed</td>
+<td>this unit</td>
+</tr>
+<tr>
+<td>10 to 40</td>
+<td>range of clients now</td>
+<td>assumed, C0</td>
+<td>this unit; customer success</td>
+</tr>
+<tr>
+<td>4 minutes a week; 48 working weeks</td>
+<td>the working behind the 10 hours</td>
+<td>assumed, C0</td>
+<td>this unit; M-16 once its event is recorded</td>
+</tr>
+<tr>
+<td>30; 20 minutes</td>
+<td>session length of E2; of E3</td>
+<td>assumed</td>
+<td>this unit</td>
+</tr>
+<tr>
+<td>3; 2; 1</td>
+<td>staff days of E2, E3 and recruiting</td>
+<td>assumed</td>
+<td>this unit; E2's carried from IA11, V-03</td>
+</tr>
+<tr>
+<td>9; 14.75; 72; 12; 296; 5%</td>
+<td>staff days and participants' hours of E2 to E4; Perqo's hours spent and saved; clients' hours saved and their break-even</td>
+<td>arithmetic</td>
+<td>C.5 and C.6</td>
+</tr>
+<tr>
+<td>15.3% to 86.8%; 17.1% to 41.7%; 11.8% to 62.4%</td>
+<td>the break-even across each assumption's range</td>
+<td>arithmetic</td>
+<td>C.6, figure 6</td>
+</tr>
+<tr>
+<td>86.75; 308; 28%</td>
+<td>the package's hours; hours saved per fault; break-even</td>
+<td>arithmetic</td>
+<td>C.5 and C.6</td>
+</tr>
+<tr>
+<td>$149,280; $166,570; 70.0%; 2,080; $102.53; $1,512; $30,349</td>
+<td>wages, employer costs and the conversion of C.6, for conversion only</td>
+<td>sourced, official statistics (US); 2,080 hours assumed</td>
+<td>BLS, section 4.3</td>
+</tr>
+<tr>
+<td>$8.01</td>
+<td>cost per live contact, context only</td>
+<td>sourced, consultancy report</td>
+<td>RD-23</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>attempts failing because of the IA, context only</td>
+<td>sourced, consultancy report</td>
+<td>RD-18</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C.9 · For leadership and for sales</h3>
+<p><strong>The page at FO-09</strong> (F1, one page; IA10, section 2.9):</p>
+<blockquote>
+<p><strong>Admin's IA: what we know and what it would cost to know more.</strong> All 49 rows of Admin's assumption register, its structural decisions with four assumptions from other units and three open questions, stand on reasoning, none on a test or a read (AR-01 to AR-49; 25 of them backbone, expensive to change once built). Reading our own records once costs 1.5 staff days a quarter and replaces our assumed volumes with measured ones: ranked now (O-2). Testing seven backbone decisions with admin users costs 9 staff days and about 15 hours of five or more clients' admin users' time (O-3). It saves more than it costs if the chance that at least one of the seven is wrong is above about 28%, a figure that moves between 12% and 87% with assumptions we can replace with the first records read. Most of what it saves is clients' admin users' time; on our own staff hours alone it does not pay, and its value to us runs through renewal, which we do not measure. Decision at RV-10 by product management; next review after the first read.</p>
+</blockquote>
+<p><strong>The line for BR-3</strong>, proposed in DL-021: "No figure for time saved or ease of use in Admin is given to a buyer until a measure at C3 or above is on record; until then, say what Admin does and what it does not do."</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.545"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="131" data-rings="3"><path d="M224 74l-80-8-24 1-16 4-8 4-7 5-4 8 2 8 9 7 8 4 16 3 16 0 40-3 40 1M232 85l-16-1-32-7-48-3-16 3-7 3-6 8 3 8 10 4 8 2 16 1 24-2 56-2M144 80l-8 2-9 6 9 7 4 1 36-3 17-5-25-5z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="40" data-rings="1"><path d="M216 108l64-6M224 99l56-7"/><circle class="ct-spot" cx="224" cy="96" r="5"/></g><g class="ct-rise ct-t4" data-label="¶3" data-words="89" data-rings="2"><path d="M288 63l-24 3-26 6-14 2M280 102l40-12 48-3M336 64l-24-2-24 1M288 71l-16 3-24 9-16 2M280 92l8-1 16-6 30-5-7-8-23-1-16 0"/><circle class="ct-spot" cx="288" cy="80" r="7"/></g><g class="ct-rise ct-t4" data-label="¶4" data-words="44" data-rings="1"><path d="M368 87l20-7-18-8-34-8"/><circle class="ct-spot" cx="360" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶5" data-words="66" data-rings="1"><path d="M464 79l-40 0-8 2-16 12-2 3 1 8 9 4 8 2 32 0 64-12"/><circle class="ct-spot" cx="432" cy="96" r="6"/></g><g class="ct-rise ct-t4" data-label="¶6" data-words="57" data-rings="1"><path d="M504 72l-40 7M512 98l56-1"/><circle class="ct-spot" cx="496" cy="88" r="6"/></g><g class="ct-rise ct-t4" data-label="¶7" data-words="80" data-rings="2"><path d="M624 68l-24-3-16-1-80 8M568 97l32-9 8-1 8 1M536 80l-2 0 2 2 8 4 16 2 8-1 17-7-9-4-24 1z"/></g><g class="ct-rise ct-t4" data-label="¶8" data-words="9" data-rings="0"><circle class="ct-spot" cx="632" cy="88" r="5"/></g><g class="ct-rise ct-t4" data-label="¶9" data-words="201" data-rings="5"><path d="M688 56l-24 3-32 9-8 0M616 88l8 4 3 4 2 8 5 8 6 5 16 6 16 3 24 0 16-3 16-5 16-7 16-3 16 1M792 59l-56-6-24 0-24 3M688 63l-16 3-14 6-9 8-4 8 0 8 3 8 10 8 14 4 16 2 16-2 16-4 18-8 22-3 24 1M784 66l-32-5-16-1-24 1-24 2M680 71l-8 3-8 6-4 8-1 8 5 8 8 4 8 2 8 1 16-1 8-2 24-9 16-3 32 0M784 72l-32-6-24-1-24 2-24 4M712 71l-24 5-11 4-4 8-1 8 8 6 7 2 17 0 8-2 16-7 16-3 45-4M756 72l-20-2-24 1M704 79l-8 2-9 7 1 3 4 5 4 1 11-1 13-5 13-3 3-2 17-6-25-3z"/></g><g class="ct-rise ct-t4" data-label="¶10" data-words="66" data-rings="1"><path d="M787 80l-31-8"/><circle class="ct-spot" cx="768" cy="80" r="6"/></g><g class="ct-rise ct-t4" data-label="¶11" data-words="163" data-rings="4"><path d="M776 109l40 8 24 2 24 0 24-2 48-9M888 61l-8-4-16-3-16-1-56 6M784 102l48 9 32 0 40-7M896 83l-16-13-8-4-16-4-16 0-40 5-16-1M784 96l48 8 16 1 16-1 8-2 13-6-6-8-4-8-3-3-8-5-8-2-16-1-40 5-16-2M789 88l-2-8M824 79l-32 9 8 1 24 7 8 1 16 1 11-2 2-8-3-8-10-3-8 0z"/></g><g class="ct-rise ct-t4" data-label="¶12" data-words="62" data-rings="1"><path d="M936 108l9-4 0-8-16-8-41-27M904 104l13-8-21-13"/><circle class="ct-spot" cx="912" cy="96" r="6"/></g><g class="ct-rise ct-t4" data-label="¶13" data-words="10" data-rings="0"><circle class="ct-spot" cx="976" cy="80" r="5"/></g><g class="ct-rise ct-t4" data-label="¶14" data-words="46" data-rings="1"><path d="M1040 72l-7 8 7 6 8 1 8 0 9-7-14-8z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-6" data-step="6"><span>Previous · 7 of 11</span><b>B · The business-case template</b></a><a class="snext" href="#read-dd-ia2-8" data-step="8"><span>Next · 9 of 11</span><b>D · Decision log entries proposed</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-dd-ia2-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">D · Decision log entries proposed</span></span></h2>
+<p>Both entries use IA12's template (IA12, Deliverable D, D.1), with its proposed fields, positions (DL-011) and register rows (DL-017), filled as they would be if accepted. Neither changes a filed artefact until it is decided; the filing chat applies nothing.</p>
+<h3>D.1 · DL-021: what sales may claim about Admin's ease of use</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>DL-021</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change</td>
+<td>BR-3, "What Perqo does not do", gains the line: "No figure for time saved or ease of use in Admin is given to a buyer until a measure at C3 or above is on record; until then, say what Admin does and what it does not do."</td>
+</tr>
+<tr>
+<td>Raised by, from</td>
+<td>DD-IA2, sections 2.2 and 4.1: every Admin row at C0 (IA12, section 3.4); published averages that cannot forecast one product (RD-26, RD-27)</td>
+</tr>
+<tr>
+<td>Touches</td>
+<td>IA10, Deliverable B, BR-3; FO-04's inputs (IA10, A.2); no J- row</td>
+</tr>
+<tr>
+<td>Register rows (proposed)</td>
+<td>AR-01 to AR-49, as the evidence the line waits on</td>
+</tr>
+<tr>
+<td>Alternatives considered</td>
+<td>quote NN/g's average gains as "industry figures" (a forecast without evidence, section 2.2, claim 6); say nothing (leaves sales to choose its own figures)</td>
+</tr>
+<tr>
+<td>Positions (proposed)</td>
+<td>none recorded; sales to be asked at the next FO-04</td>
+</tr>
+<tr>
+<td>Decided by</td>
+<td>IA designer, consulting product management: inside one artefact, renaming nothing (IA9, D.1), as DL-019 is</td>
+</tr>
+<tr>
+<td>Decide at</td>
+<td>FO-01, the IA review's next meeting; sales told at the next FO-04</td>
+</tr>
+<tr>
+<td>Decision, date, reason</td>
+<td>not decided</td>
+</tr>
+<tr>
+<td>Version effect</td>
+<td>a dated amendment to IA10, Deliverable B: it adds a line and breaks no citation (IA9, section 4.4)</td>
+</tr>
+<tr>
+<td>Places to apply</td>
+<td>IA10, BR-3, "What Perqo does not do": the line added; BR-3 re-issued at FO-04; not done</td>
+</tr>
+<tr>
+<td>Told (DL-012, proposed)</td>
+<td>sales at FO-04; product management at FO-01</td>
+</tr>
+<tr>
+<td>Supersedes, superseded by</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>proposed</td>
+</tr>
+</tbody>
+</table></div>
+<h3>D.2 · DL-022: the measurement model's read on the leadership page</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>DL-022</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change</td>
+<td>The one-page map for leadership (TP-12) adds, each quarter, the latest read of M-15 to M-19 for Admin with each one's interval or range, and any business case decided that quarter with its break-even</td>
+</tr>
+<tr>
+<td>Raised by, from</td>
+<td>DD-IA2, section 4.1 and Deliverable C, C.9</td>
+</tr>
+<tr>
+<td>Touches</td>
+<td>IA10, section 2.9 and A.1, TP-12's artefact; FO-09's inputs (IA10, A.2)</td>
+</tr>
+<tr>
+<td>Register rows (proposed)</td>
+<td>AR-02, AR-37, AR-41, as the rows the reads move</td>
+</tr>
+<tr>
+<td>Alternatives considered</td>
+<td>send leadership Deliverable A itself (the wrong format for the keep-satisfied quadrant, IA10, section 1.4); report reads only at RV-10 (leadership does not attend)</td>
+</tr>
+<tr>
+<td>Positions (proposed)</td>
+<td>none recorded</td>
+</tr>
+<tr>
+<td>Decided by</td>
+<td>IA designer, consulting product management, which prepares TP-12: inside one artefact, renaming nothing (IA9, D.1)</td>
+</tr>
+<tr>
+<td>Decide at</td>
+<td>FO-01, the IA review's next meeting, with DL-019</td>
+</tr>
+<tr>
+<td>Decision, date, reason</td>
+<td>not decided</td>
+</tr>
+<tr>
+<td>Version effect</td>
+<td>a dated amendment to IA10, Deliverable A</td>
+</tr>
+<tr>
+<td>Places to apply</td>
+<td>IA10, section 2.9 and A.1, TP-12's artefact cell: add "M-15 to M-19 for Admin, latest read; cases decided this quarter"; A.2, FO-09's inputs: add "the measurement model's Admin reads"; each not done</td>
+</tr>
+<tr>
+<td>Told (DL-012, proposed)</td>
+<td>product management at FO-01; leadership at FO-09</td>
+</tr>
+<tr>
+<td>Supersedes, superseded by</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>proposed</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.909"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="40" data-rings="5"><path d="M584 48l-200 19-40 5-32 6-16 5-15 5-7 8 8 8 30 9 48 6 64 4 56 1 104-1 136 1 56-3 56-6 24-5 20-6 12-8 1-8-7-8-10-5-32-12-24-5-32-6-64-6-72-1zM608 56l-48 3-120 12-40 5-20 4-25 8-5 8 15 8 27 5 32 4 48 2 216 1 48-2 40-5 25-5 19-8 3-8-9-8-18-8-36-9-48-6-56-2zM592 64l-112 11-41 5-29 8-2 8 27 8 29 3 40 2 168 0 32-1 35-4 28-8 5-8-9-8-25-8-34-6-32-3-40-1zM584 71l-86 9-36 8 3 8 31 5 48 2 120 0 24-2 28-5 9-8-12-8-39-8-42-2zM584 80l-59 8 11 5 15 3 87 0 18-4 12-4-22-8-30-2z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-7" data-step="7"><span>Previous · 8 of 11</span><b>C · The case filled for Perqo Admin</b></a><a class="snext" href="#read-dd-ia2-9" data-step="9"><span>Next · 10 of 11</span><b>What later units take</b></a></nav></section><section class="sec" data-step="9"><h2 id="read-dd-ia2-9" class="band"><span class="bn" aria-hidden="true">10</span><span class="bh"><span class="bt">What later units take</span></span></h2>
+<p><strong>DD-IA3</strong> takes taxonomy and governance to scale, in several languages and markets. From this unit it takes the measurement model (Deliverable A) as the set of reads its governance forums receive, with M-07 and M-12 to M-14 to be read per language once the Help centre has more than one (TP-05, dormant); the business-case template (Deliverable B) as the form in which a case for taxonomy work at scale is made, with its rule that every number is measured, sourced, context or assumed; and DL-021 and DL-022 as the log's state at this unit's date, beside DL-011 to DL-020.</p>
+<p><strong>The final audit</strong> takes the evidence register RD-16 to RD-31 as the claims to sample, each with its source, sample, date and label; section 2.2's six claims as the list of figures the course has examined and refused; the new metrics M-12 to M-19 and the marks for Admin's tests as Perqo facts to check against IA11; and Deliverable C's number register (C.8) as the test of whether every number in the case is traced or labelled. Both the model and the template are built to be used without the rest of the course: each row cites the unit that defines it.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.273"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="99" data-rings="5"><path d="M224 64l-24 4-15 4-7 8 15 8 76 16 35 10 24 4 64 4 32-1 32-2 24-4 16-5 13-6 4-8-1-8-6-8-2-1-24-9-32-5-56-5-64-1-56 1zM240 72l-20 8 12 8 40 8 48 12 24 4 48 2 40-2 16-3 19-5 10-8-1-8-7-8-21-6-32-5-48-3-56 0-40 2zM304 72l-24 2-25 6 7 8 39 8 35 9 32 3 40-1 21-3 20-8 0-8-9-7-16-4-24-3-32-2zM296 79l-4 1-1 8 45 10 24 3 24 1 24-3 12-3 3-8-16-8-23-2-48-2zM328 88l24 4 16 2 8-1 14-5-14-3-16-1-16 0z"/></g><g class="ct-rise ct-t4" data-label="¶2" data-words="102" data-rings="5"><path d="M736 71l-16 3-16 6-6 8 2 8-1 16 11 8 10 3 24 5 32 3 32 1 32-1 24-1 40-6 96-27 11-9-10-8-17-5-32-5-40-3-48-2-56 0-40 2zM752 78l-8 2-13 8 1 8-1 8 4 8 9 3 16 4 40 4 48 0 40-5 76-22 7-8-11-5-16-4-32-4-32-2-40-1-40 1-24 2zM792 79l-16 3-19 6-2 16 13 8 32 5 40 0 24-2 16-3 56-16 3-8-27-6-32-3-48-2zM784 88l-5 8 1 8 12 4 24 3 24 0 24-3 46-12-4-8-34-4-48-1-24 2zM808 95l-1 1 1 1 8 5 6 2 10 0 16-1 30-7-14-5-24-2-16 1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-8" data-step="8"><span>Previous · 9 of 11</span><b>D · Decision log entries proposed</b></a><a class="snext" href="#read-dd-ia2-10" data-step="10"><span>Next · 11 of 11</span><b>Perqo facts set by this unit</b></a></nav></section><section class="sec" data-step="10"><h2 id="read-dd-ia2-10" class="band"><span class="bn" aria-hidden="true">11</span><span class="bh"><span class="bt">Perqo facts set by this unit</span></span></h2>
+<p>Every fact below is a course convention (Perqo, fictional), never evidence about the world. Each keeps every registered fact; none renames an IA1 to IA12 or DD-IA1 label, object, attribute or relationship. DL-021 and DL-022 are proposed, so no filed artefact changes at this unit's filing.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Set in</th>
+<th>Left free</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metrics M-12 results clickthrough, M-13 refinement rate, M-14 search exit rate (the Help centre's search), M-15 tickets per page, M-16 find-to-open time with find abandonment, M-17 landing match, M-18 overdue share, M-19 flow completion (Admin), each with one definition</td>
+<td>section 3.2</td>
+<td>none</td>
+</tr>
+<tr>
+<td>The measurement model: fifteen metrics, M-01 to M-05, M-07, M-11 to M-19, with source of data, baseline method, target, cadence and rung</td>
+<td>Deliverable A</td>
+<td>every result</td>
+</tr>
+<tr>
+<td>Marks for Admin's leading tests: 80% for deciding a claim and setting budgets, 70% for every other Admin task</td>
+<td>section 3.3; Deliverable A, A.1</td>
+<td>marks for perqo.com's tests</td>
+</tr>
+<tr>
+<td>Lagging targets as A.2 gives them, among them M-16's find abandonment under 20% on AD-1 and AD-4, above which AR-34's global search goes to FO-01</td>
+<td>Deliverable A, A.2</td>
+<td>M-18's target, set at FO-01 after the first read</td>
+</tr>
+<tr>
+<td>New records: a click event on the Help centre's results page; find-field, record-open, form-start and save events in Admin</td>
+<td>section 3.2</td>
+<td>how long events are kept</td>
+</tr>
+<tr>
+<td>Lagging baselines: one full quarter before; counts and medians read against the range of the period before</td>
+<td>section 3.3; Deliverable A, A.3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>The business-case template's fields, the reference-range table and the number rule</td>
+<td>Deliverable B</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Staff days of a late change by layer, by function, and per-client hours, as C.4 gives them, all assumed</td>
+<td>Deliverable C, C.4</td>
+<td>measured days</td>
+</tr>
+<tr>
+<td>The evidence package E1 to E4, with its participants, staff days and rungs; at least five clients at FO-07 as its precondition</td>
+<td>Deliverable C, C.5</td>
+<td>when it runs</td>
+</tr>
+<tr>
+<td>For this case only, assumed: 20 clients like the sizing client and 1 new client a month; f 10 hours, d 1 year, r 4 hours, 8 hours a staff day</td>
+<td>Deliverable C, C.3 and C.6</td>
+<td>the real client count</td>
+</tr>
+<tr>
+<td>The case's conclusion: O-2 ranked now; O-3 when five clients agree to FO-07 and p is judged above the break-even</td>
+<td>Deliverable C, C.6</td>
+<td>product management's decision at RV-10</td>
+</tr>
+<tr>
+<td>DL-021, proposed: BR-3 gains a line on figures for ease of use</td>
+<td>Deliverable D, D.1</td>
+<td>its decision</td>
+</tr>
+<tr>
+<td>DL-022, proposed: the leadership page adds Admin's lagging reads and the quarter's decided cases</td>
+<td>Deliverable D, D.2</td>
+<td>its decision</td>
+</tr>
+<tr>
+<td>The evidence register continues DD-IA1's identifiers, RD-16 to RD-31; later readings take RD-32 onward</td>
+<td>section 1.6</td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.636"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t4" data-label="¶1" data-words="46" data-rings="5"><path d="M440 47l-40 6-32 7-33 12-12 8-4 8 9 9 24 8 48 9 48 4 208 12 48 1 48 0 64-3 48-7 16-4 16-5 7-8-6-8-20-8-13-3-32-7-80-14-56-12-40-6-48-4-64-1-56 2zM488 55l-32 5-24 4-28 8-16 8-4 8 9 8 23 7 16 3 32 3 48 4 128 7 64 1 48-2 32-2 27-5 20-8 0-8-17-8-37-8-48-8-49-11-24-4-40-4-40-1-48 0zM504 64l-44 8-21 8-6 8 11 8 44 8 144 9 64 0 32-1 32-5 12-3 8-8-15-8-101-20-32-5-32-3-32 0-32 1zM520 72l-32 8-9 8 16 8 17 2 96 7 48 1 48-2 27-8-11-8-96-18-48-2-32 1zM552 80l-18 8 18 4 30 4 42 2 38-2 3-8-40-8-17-2-24-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-ia2-9" data-step="9"><span>Previous · 10 of 11</span><b>What later units take</b></a><a class="snext send" href="#read-dd-ia2-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-dd-ia2-sources"><summary><span class="at" id="read-dd-ia2-11">Sources</span><span class="an">26</span></summary><div class="accb">
+<ul>
+<li>Anderson, Adam. "User Experience (UX) turns your $1 investment into a $100 return…really?" Mindset Consulting, 20 October 2021 (practice). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.mindsetconsulting.com/user-experience-ux-turns-your-1-investment-into-a-100-return-really/">mindsetconsulting.com, UX return</a></li>
+<li>Boehm, Barry, and Victor R. Basili. "Software Defect Reduction Top 10 List". <em>Computer</em> 34, no. 1 (January 2001): 135 to 137. Catalogue record with abstract, read 10 November 2026; the article was not seen. <a target="_blank" rel="noopener" href="https://umiacs.umd.edu/node/12156">umiacs.umd.edu, record</a></li>
+<li>Bossavit, Laurent. <em>The Leprechauns of Software Engineering</em>. Leanpub, page dated 20 December 2025. Ch. 10, "The cost of defects: an illustrated history"; appendix B. Contents only. <a target="_blank" rel="noopener" href="https://leanpub.com/leprechauns">leanpub.com, Leprechauns</a></li>
+<li>Bureau of Labor Statistics. <em>Occupational Outlook Handbook</em>, "Human Resources Managers", last modified 29 October 2026 (official statistics). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.bls.gov/ooh/Management/human-resources-managers.htm">bls.gov, HR managers</a></li>
+<li>Bureau of Labor Statistics. <em>Occupational Outlook Handbook</em>, "Financial Managers", last modified 27 August 2026 (official statistics). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.bls.gov/OOH/management/financial-managers.htm">bls.gov, financial managers</a></li>
+<li>Bureau of Labor Statistics. "Compensation costs for private industry workers averaged $46.89 per hour worked in June 2026". <em>The Economics Daily</em>, 17 September 2026 (official statistics). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.bls.gov/opub/ted/2026/compensation-costs-for-private-industry-workers-averaged-46-89-per-hour-worked-in-june-2026.htm">bls.gov, compensation costs</a></li>
+<li>Chui, Michael, James Manyika, Jacques Bughin, Richard Dobbs, Charles Roxburgh, Hugo Sarrazin, Geoffrey Sands and Magdalena Westergren. <em>The social economy: Unlocking value and productivity through social technologies</em>. McKinsey Global Institute, July 2012 (consultancy report). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://mckinsey.com/~/media/McKinsey/Industries/Technology%20Media%20and%20Telecommunications/High%20Tech/Our%20Insights/The%20social%20economy/MGI_The_social_economy_Full_report.ashx">mckinsey.com, social economy</a></li>
+<li>Cohn, Mike. "The Cost of Change Curve Is Outdated". Mountain Goat Software, last updated 3 March 2026 (practice). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.mountaingoatsoftware.com/blog/the-cost-of-change-curve-is-outdated">mountaingoatsoftware.com, cost of change</a></li>
+<li>Dub, Sam. "Rolling out a new design for browsing GOV.UK by topic". Inside GOV.UK, 8 August 2022 (maker's report). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://insidegovuk.blog.gov.uk/2022/08/08/rolling-out-a-new-design-for-browsing-gov-uk-by-topic/">insidegovuk.blog.gov.uk, browsing by topic</a></li>
+<li>Feldman, Susan. "The high cost of not finding information". KMWorld, 1 March 2004 (consultancy report, IDC). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.kmworld.com/Articles/Editorial/Feature/The-high-cost-of-not-finding-information-9534.aspx">kmworld.com, not finding information</a></li>
+<li>Fraser, Catriona, Christian Sutter and Tara Stockford. "A new search engine for GOV.UK". Inside GOV.UK, 23 October 2024 (maker's report). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://insidegovuk.blog.gov.uk/2024/10/23/a-new-search-engine-for-gov-uk/">insidegovuk.blog.gov.uk, new search engine</a></li>
+<li>Gartner. "Gartner Says Only 9% of Customers Report Solving Their Issues Completely via Self-Service". Press release, 25 September 2019 (consultancy report). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.gartner.com/en/newsroom/press-releases/2019-09-25-gartner-says-only-9--of-customers-report-solving-thei">gartner.com, self-service</a></li>
+<li>Katz, Michael A., and Michael D. Byrne. "Effects of Scent and Breadth on Use of Site-Specific Search on E-Commerce Web Sites". <em>ACM Transactions on Computer-Human Interaction</em> 10, no. 3 (September 2003): 198 to 220. Abstract read 10 November 2026. <a target="_blank" rel="noopener" href="https://unpaywall.org/10.1145%2F937549.937551">unpaywall.org, Katz and Byrne</a></li>
+<li>Moran, Kate. "UX Gains Shrinking". Nielsen Norman Group, 1 November 2020. Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/ux-gains-shrinking/">nngroup.com, UX gains shrinking</a></li>
+<li>Nielsen, Jakob. "Foreword to Information Architecture (2nd edition)". Nielsen Norman Group, 1 June 2002. Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/foreword-ia-2nd/">nngroup.com, foreword</a></li>
+<li>Nielsen, Jakob. "Intranet Usability: The Trillion-Dollar Question". Nielsen Norman Group, 10 November 2002. Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/intranet-usability-the-trillion-dollar-question/">nngroup.com, intranet usability</a></li>
+<li>Nielsen, Jakob. "Usability ROI Declining, But Still Strong". Nielsen Norman Group, 21 January 2008. Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.nngroup.com/articles/usability-roi-declining-but-still-strong/">nngroup.com, usability ROI</a></li>
+<li>Nielsen, Jakob. "IA Task Failures Remain Costly". Nielsen Norman Group, 15 April 2009. Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.nngroup.com/alertbox/ia-failures.html">nngroup.com, IA task failures</a></li>
+<li>Porton, Jonathan. "No longer taxing – we hope". ONS Digital blog, 5 December 2013 (maker's report). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://digitalblog.ons.gov.uk/2013/12/05/no-longer-taxing-we-hope">digitalblog.ons.gov.uk, taxonomy</a></li>
+<li>Pshock, Daniel, and Chad Haefele. "Assessing nav changes". UNC Libraries UX blog, dated 19 May 2016 in its address (maker's report). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://libux.web.unc.edu/2016/05/19/assessing-nav-changes/">libux.web.unc.edu, nav changes</a></li>
+<li>Sauro, Jeff. "What Is A Good Task-Completion Rate?" MeasuringU, 21 March 2011 (consultancy report). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://measuringu.com/task-completion/">measuringu.com, task completion</a></li>
+<li>Sauro, Jeff. "Using Tree-Testing To Test Information Architecture". MeasuringU, 26 March 2013 (consultancy report). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://measuringu.com/tree-testing-ia/">measuringu.com, tree testing</a></li>
+<li>Spool, Jared M. "Are There Users Who Always Search?" UIE, 1 May 2001 (consultancy report, practice). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://articles.centercentre.com/?p=15">articles.centercentre.com, always search</a></li>
+<li>SWOOP Analytics. "How one organisation made intranet information 53% faster to find". Case study by Sharon Dawson, 27 July, year not stated (vendor, anecdote). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://www.swoopanalytics.com/case-studies/intranet-information-faster-to-find">swoopanalytics.com, case study</a></li>
+<li>Wayne, Hillel. "I ***<em>ing hate Science". </em>Computer Things*, 19 July 2021 (practice). Read 10 November 2026. <a target="_blank" rel="noopener" href="https://buttondown.com/hillelwayne/archive/i-ing-hate-science/">buttondown.com, Hillel Wayne</a></li>
+<li>Cited through the filed units, for claims made there: Bailey, Wolfson, Nall and Koyani, "Performance-Based Usability Testing", <em>HCII 2009</em>, LNCS 5619 (IA11); Barker, "Measuring the Success of a Classification System", Boxes and Arrows, 2007 (IA11; practice); Dub, "Our plans to improve navigation on GOV.UK", GDS blog, 2021 (DD-IA1); Farrell, "Search-Log Analysis", NN/g, 2017 (IA3); Laubheimer, "Tree Testing Part 2: Interpreting the Results", NN/g, 2024 (IA11); Nielsen, "Search and You May Find", NN/g, 1997 (IA3); Nielsen, "Why You Only Need to Test with 5 Users", NN/g, 2000 (IA11). Full references in IA3, IA11 and DD-IA1, Sources.</li>
+</ul>
+</div></details><details class="acc note" id="read-dd-ia2-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>IA1 to IA12 built the IA of Perqo (Perqo, fictional), tested part of it on paper, and recorded the rest as assumptions, and DD-IA1 read five real products from outside. This unit asks what any of that work is worth in numbers, and how far numbers can answer. It covers the published evidence on findability failure and its cost: usability studies with task-success rates, search-versus-browse figures, the cost of support contacts and of failed self-service, and redesigns with before-and-after numbers, each with its source, sample, date and label; what cannot be measured, and the claims the field repeats without evidence, named as such; the measurement model for an IA, with leading indicators measured on a structure before it ships and lagging indicators measured in use; how to build a business case for IA work in a product company, from the cost of change by layer, the cost of not changing and the decision the case supports; and the limits of the exercise. The deliverable is the IA measurement model and a business-case template with sourced ranges and labels, filled once for Perqo Admin, with every figure traced to its source or marked as this unit's own assumption.</p>
+<p>Every published figure in this unit was read at its source on 10 November 2026, the day the unit was written, and each carries that date, its sample and its label where it is made; the exceptions are the figures cited through IA3, IA11 and DD-IA1 (Nielsen 1997, Bailey and others 2009, Dub 2021), which are marked as cited there. A figure that could not be opened at its source is said to be unverified. Every figure uses IA2's notation (IA2, section 5.2 and the notation sheet). This unit draws five of the notation's six tones. Tone 2, "the merchant side and anything outside Perqo", carries every published figure about real products and studies, since all of them lie outside Perqo. Tone 6, a stop, "a path that ends without success, or a fault found in a review", marks, in figure 1, the published shares of task attempts that failed because of the IA; figure 2, a numeric grid drawn in one tone, gives the same two shares in tone 2. Tone 1, perqo.com, carries the metrics read from the Help centre's search, which sits on perqo.com. Tone 4, Perqo Admin and the HR and finance managers who use it, carries the metrics read from Admin's own records and every figure of the Admin business case. Tone 5, shared, carries the leading metrics, because a test method serves any surface, and the rule for labelling a number, which serves any case.</p>
+<p>What the filed units hand on, and where this unit uses it:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>What it hands on</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IA7, section 2.2, Deliverable C and "What IA8 and later units take"</td>
+<td>Perqo Admin's IA, AD-0 to AD-6, as the scope of the case; the sizing client's volumes and queue numbers as the assumed load, each to be replaced by measured figures</td>
+<td>section 4; Deliverable C</td>
+</tr>
+<tr>
+<td>IA11, sections 1.2, 3.4, 4.4 and 6.4; Deliverable A, A.1 cost column and A.2 row 1</td>
+<td>the metrics M-01 to M-11, each with one definition and one interval method; the marks; the rungs C0 to C5 as the strength of each claimed benefit; the plan's costs as the unit costs of evidence; the sizing client's volumes routed to this unit</td>
+<td>sections 3 and 4; Deliverables A and C</td>
+</tr>
+<tr>
+<td>IA12, sections 3.4 and 5; Deliverable B</td>
+<td>the Admin register AR-01 to AR-49 as the assumptions the case rests on, each at its rung; AR-02 and AR-37 as rows records can lift to C5; the 25 backbone rows as the cost of being wrong; the absent inputs as the cost of evidence not yet bought</td>
+<td>sections 4.2 to 4.4; Deliverable C</td>
+</tr>
+<tr>
+<td>IA10, section 2.9, Deliverables A and B</td>
+<td>the leadership page (FO-09) and the sales brief (BR-3) as two audiences; the touchpoint matrix, TP-01 to TP-12, as the functions a case must speak to</td>
+<td>section 4.1; Deliverables C and D</td>
+</tr>
+<tr>
+<td>IA9, sections 2.4, 4.1 to 4.4 and 6; Deliverable C</td>
+<td>IA debt; the change-control flow and the version rule, as the work a late change sets off; the reviews RV-04 to RV-06 and RV-10 as the cadence of the lagging reads</td>
+<td>sections 3.3 and 4.2; Deliverable A</td>
+</tr>
+<tr>
+<td>DD-IA1, section 2, Deliverable A and "What later units take"</td>
+<td>GOV.UK's search figures with no intervals, as practice; whether GOV.UK's three search measures join the model; the register of published claims, RD-01 to RD-15, as the form in which a case records outside evidence, continued here from RD-16</td>
+<td>sections 1 and 3.2; Deliverable B</td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="acc made" id="read-dd-ia2-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>Deep dive DD-IA2, written 10 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 4, the figure kinds, the Perqo register, IA1 to IA12 and DD-IA1 (P31), search on: every published figure carries its source, sample, date and label (peer-reviewed, consultancy report, maker's report, vendor, anecdote, official statistics) where it is made, read at its source that day unless marked as cited through a filed unit; fresh check the same day by a separate Fable 5.2 agent that had not seen the writing: fix, 2 errors, 11 should-fix, 7 minor, all applied as verified, three minors needing no change; a Fable 5.1 fresh check is owed to the Fable stage. Six figures in the course notation: figures 3 to 6 passed the fresh check; figures 1 and 2, changed by its findings, passed their fourth check, each by a separate re-checker. The published evidence on findability failure and its cost (task-success and tree-test rates, first clicks, search against browsing, self-service and support contacts, redesigns with before-and-after numbers) as register rows RD-16 to RD-31, every row at C0 for Perqo; what cannot be measured and six claims the field repeats without evidence, named as such; the measurement model, leading indicators read on a structure before it ships and lagging indicators read in use; the business case, from the cost of change by layer, the cost of not changing and the decision the case supports; and the limits of the exercise. Deliverable: the IA measurement model, fifteen metrics (IA11's M-01 to M-05, M-07 and M-11 and eight new, M-12 to M-19) each with its source of data, baseline method, target, cadence and rung; the business-case template with reference ranges and the rule for labelling a number; the case filled once for Perqo Admin, every number sourced, assumed or arithmetic, with its break-even and sensitivity; and two proposed decision log entries, DL-021 and DL-022. Known gaps: no published figure enters the Perqo arithmetic, and every magnitude of the case is the unit's assumption at C0; Boehm and Basili's ratios, the Forrester report behind the $1 to $100 claim and Prioritizing Web Usability were not seen; Katz and Byrne's participant numbers were not on the record read; UNC's year comes from the post's address.</p><h3 id="read-dd-ia2-12">Unsure list</h3>
+<ul>
+<li>Boehm and Basili 2001: only the catalogue record and the abstract's first sentence were read; the article's ratios are unverified here and are not used.</li>
+<li>McKinsey Global Institute 2012: the "19%" is in the report (the main text beside Exhibit 20, and Exhibit A7, 8.8 hours of 46.5); "1.8 hours a day" does not appear there and is 8.8 hours over five days, rounded; the sample behind the IDC data the report adjusts was not found in the passages read.</li>
+<li>Gartner 2019: the release ties the 8,398 customers to the channel preferences; whether the 9% comes from the same survey is not stated.</li>
+<li>Moran 2020: read through a summary of the page; the figures and the interval are as the summary gave them, and the page's exact wording was not checked line by line.</li>
+<li>Katz and Byrne 2003: the number of participants in each study was not on the record read; the authors' first names, issue and pages are from knowledge and IA3's citation.</li>
+<li>Pshock and Haefele: the year comes from the post's address; the page gives only April 15 to 25 for the test, with no year, and the "before" test's sample and date are not given.</li>
+<li>Spool 2001 appears on articles.centercentre.com, the site of Spool's company; the original UIE publication was not seen.</li>
+<li>Anderson 2021: the post's link suggests the Forrester report is titled "The ROI of Design Thinking, Part 1: Overview"; the report was not seen, and its contents are unknown.</li>
+<li>Nielsen 2009: how failures were attributed to the IA is given only as a scheme described in <em>Prioritizing Web Usability</em>, which was not read.</li>
+<li>Object: the business case for Perqo Admin's IA, with its cost of change by layer and its break-even, Deliverable C</li>
+</ul><h3>Fresh check</h3><p>Fresh check 2026-11-10 (Fable 5.2; a Fable 5.1 fresh check is owed, P49): fix · 2 error, 11 should-fix, 7 minor; all applied as verified (three minors needing no change); figures 3 to 6 passed the fresh check; figures 1 and 2, changed by its findings, passed their fourth check; report <code>audits/ux/fresh-check-DD-IA2.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: After this unit the reader can say what findability failure costs on the published evidence, measure an IA with leading and lagging indicators, and build a business case with every number labelled.
+Takes: IA7&#x27;s Perqo Admin; IA11&#x27;s metrics.
+Gives: the measurement model and business-case template.
+
+Deep dive DD-IA2, What IA costs and returns. Written last, search on, every figure dated. Cover: the published evidence on findability failure and its cost (usability studies with task-success rates, search-versus-browse figures, the cost of support contacts and of failed self-service, redesign case studies with before-and-after numbers), each with its source, sample, date and label (peer-reviewed, consultancy report, vendor, anecdote); what cannot be measured and the claims the field makes without evidence, named as such; the measurement model for an IA (leading indicators: tree-test success, first-click accuracy; lagging: task success, search exits, support tickets by category, time to find); how to build a business case for IA work in a product company (the cost of change by layer, the cost of not changing, the decision the case supports), and the limits of the exercise. Figures: the evidence table as a compare; the cost-by-layer figure; the measurement model. Deliverable: the IA measurement model (metric, source of data, baseline method, target, cadence) and a business-case template with sourced ranges and labels, filled once for Perqo Admin with every figure traced to its source or marked as the unit&#x27;s own assumption.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>

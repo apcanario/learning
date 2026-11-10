@@ -430,3 +430,17 @@ Each re-check was a fresh Opus 5.5 agent (as each states: Opus 5.5, claude-opus-
   - 2 (minor, text): `` a trend and no redesign. No pair here carries an interval. `` → `` a trend and no redesign; in that last row a lower share is the better result. No pair here carries an interval. ``
 
 *Maintainer's note.* Both hold and were applied; finding 2's caption string stands once in the unit.
+
+### Fourth check, figures 1 and 2: the frames of the build after the third checks' fixes
+
+**Figure 1: PASS.** Every row and value traced to section 1.6 and its source paragraph; the caption's sections (1.2, 1.4, 1.5), sources, labels and read dates found right; compare fits; tones 2 and 6 named in the unit with IA2's meanings; at desktop and tablet the whole figure in one frame, on phones the labels pinned, the bars whole across the frames, the caption under the figure. Two notes needing no change: no "Perqo is fictional" in a caption that draws nothing of Perqo; on the phone sheets some values fall in a frame's fade or between steps, and two opening frames sit under the sticky bar (renderer). No replacement; no `fixes.json`.
+
+*Maintainer's note.* PASS: the loop ends at the fourth check.
+
+**Figure 2: PASS.** Every row, cell, column, the scale label and the unit traced to section 1.6's sentence and to sections 1.2 and 1.5; caption found right; numeric matrix fits; tone 2 named, and the unit says why the two shares are tone 6 in figure 1 and tone 2 here; at 320 px the labels now take about 45% of the width and every value is whole in at least one frame. Renderer notes: the legend's buckets; 79 and 61 share a bucket, so the borrow task's fall shows in the numbers only; some frames of the sheet catch no value whole; the 320 px opening frame sits under the sticky bar. Two minors on the unit's text:
+  - 1 (minor, text): `` GOV.UK's rows are its topic pages `` → `` GOV.UK's row is its topic pages ``
+  - 2 (minor, text; no replacement proposed): rows RD-20 and section 2.2's claim 4 say Katz and Byrne (RD-22) contradict the search-dominance claim, and section 1.3 reports them only as finding search no faster or more accurate and browsing shaped by the menus.
+
+*Maintainer's note.* PASS: the loop ends at the fourth check. Minor 1 holds and was applied; the sentence is prose beside the figure and nothing the figure draws, so it does not reopen it. Minor 2 holds in part and was fixed in both places, checked against IA3, section 5.1 (Katz and Byrne found that menu structure, scent and the person's disposition all influenced whether people searched or browsed): row RD-20's "Left out" cell now reads "the method; contradicted by RD-21; RD-22 found the choice shaped by the site's menus", and claim 4 reads "contradicted by Spool's observation (RD-21); Katz and Byrne's experiments found the choice between searching and browsing shaped by the site's menus (RD-22; IA3, section 5.1)". Neither string is drawn by a figure.
+
+**Figures, in all.** Counting the fresh check as each figure's first check: figures 3, 4, 5 and 6 passed it and no later fix touched their declarations, captions or drawn text; figures 1 and 2 were changed by its findings 11 and 12 and passed their fourth check, after two rounds of fixes, most of them to row labels too long for a phone. Six re-checks in three rounds. The maintainer looked at the phone and desktop frames of all six.
