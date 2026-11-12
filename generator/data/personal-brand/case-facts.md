@@ -74,6 +74,16 @@ Left free by PB4: her actual restoration time per piece; her cost per piece; the
 
 Left free by PB5: the free editor she uses; her actual edit minutes; her per-piece cost amounts.
 
+## Set by PB6, How YouTube growth works (12 Nov 2026)
+
+- She reads YouTube Studio in the YouTube Studio app on her phone; per video, Content, the video, the Analytics card, then a tab (D2).
+- No YouTube Shorts in year one, and her Reel files are not uploaded as Shorts; the twelve-month review (3 Jan 2028) may test Shorts for one season if her logged hours show slack (§5, D1 R8).
+- Title and search rule: the piece and its fault, in the words a buyer would type, come before the method in the title, and the description's first two sentences repeat them; from the Q2 review she reads the YouTube search terms report and carries terms strangers used into the next title of the same kind of piece (§7, D1 R3).
+- Packaging check, from the Q2 review (5 Jul 2027): at each checkpoint, at most one upload at least 28 days old, the lowest CTR of the quarter with impressions below her median upload's and Intro at or above her median, gets one new thumbnail or one new title, made in the next cut window's packaging hour (planning estimate 15 minutes; waits a fortnight if the hour is full); CTR before and after recorded; uploads with above-median CTR untouched (D1 R6).
+- She writes impressions and the largest traffic source beside each upload's CTR (D2 YT3).
+- Her YouTube metric rows are YT1–YT12; YT8 (back-catalogue share) is first read at the Q2 review on uploads 1–7; YT11 from Q3; YT12 not read (D2).
+- Left free by PB6: her Q1 and later values on every row; her phone's operating system; whether her channel has advanced features; her search terms.
+
 ## Left free (a unit that needs one sets it and it is appended here)
 
 - Her country, city, household and income. PB8 works its register for the EU, the UK and the US without fixing her country unless it must.
