@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v3 · 12 Nov 2026'
+VERSION = 'v4 · 12 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -44,6 +44,9 @@ READINGS = [
     dict(id='read-pb2', course='PB',
          title='Positioning: the sentence a stranger can repeat', covers=['PB2'], name='PB2 · Positioning',
          intro="Unit PB2, written 12 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register, PB1 and its source material, search off (used only to re-check what it carried over, the platforms' name, handle and text-field rules, and the handles chosen for Mara); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 1 error, 3 should-fix, 6 minor, all applied (a Fable 5.1 fresh check is owed). What a positioning is, against a description of the person (Ries and Trout); the three patterns a personal brand is built on, a topic, a method or repeatable format and the person, with the evidence on how each survives a change of subject graded (thin: platform tips, one vendor dataset, brand-extension research on products and celebrities, creator cases); the repeat-back test with strangers; the account name against the handle, each platform's limits and change rules dated, and the availability check; the Instagram bio and the YouTube description as the fields that carry it; three figures. Deliverables: Mara's positioning sentence and 60-word expansion, three name options with their checks and the pick, her Instagram profile and YouTube channel copy written in full and counted, and the repeat-back test as a script; then the template. Known gaps: none of the handles could be checked inside the two apps, so the pick is provisional until claimed; Instagram's bio, username and name-field limits rest on third parties; the test's number of strangers, delay and pass mark are conventions with no source. About 6,900 words with the deliverable, above the brief's guide; nothing was cut to meet it."),
+    dict(id='read-pb3', course='PB',
+         title='Audience and the two platforms', covers=['PB3'], name='PB3 · Audience and platforms',
+         intro="Unit PB3, written 12 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register, PB1, PB2 and its source material, search on (every changeable fact dated, checked 12 Nov 2026); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 1 error, 5 should-fix, 6 minor, all applied (a Fable 5.1 fresh check is owed). An audience described by what its members do and need, each trait with its basis and label; who uses YouTube and Instagram by age and gender from Pew's 2026 survey (US) and Ofcom's 2025 report (UK, YouTube only); what each platform does for a small account, from the platforms' own statements and vendor datasets on reach and shelf life; what is and is not measured about Shorts or Reels viewers becoming long-form viewers (no published rate); the email list as the channel you own, with the open-rate and conversion data that exists and no follower-to-subscriber rate; how to split 3, 6 and 10 hours a week between the platforms, and what is cut first in a bad week; four figures. Deliverables: Mara's audience profile (PB2's audience tested and kept, ten traits each with its basis and label) and her platform allocation at the three budgets with the cut order (no Shorts at 6 hours; one short email per video once the data-protection question is answered), then both as templates. Known gaps: no survey splits platform use by age across the EU; Instagram's reach split between followers and non-followers is not published for small accounts; Fanpage Karma's sample has no account count; the GetResponse report page and the EUR-Lex text were not re-opened by the fresh check. About 7,500 words with the deliverable, above the brief's guide; most of the excess is the deliverable's tables."),
 ]
 
 # ---- build order -----------------------------------------------------------------------
@@ -51,11 +54,11 @@ DONE_ROWS = []
 ORDER = [("PB1", "Opus 5.5", "on"), ("PB2", "Opus 5.5", "off"), ("PB3", "Opus 5.5", "on"), ("PB4", "Opus 5.5", "off"),
          ("PB5", "Opus 5.5", "off"), ("PB6", "Opus 5.5", "on"), ("PB7", "Opus 5.5", "on"), ("PB8", "Opus 5.5", "on"),
          ("PB9", "Opus 5.5", "on"), ("PB10", "Opus 5.5", "off"), ("DD-PB1", "Opus 5.5", "on"), ("DD-PB2", "Opus 5.5", "off")]
-STATUS = {'PB1': 'written 12 Nov', 'PB2': 'written 12 Nov'}          # unit code -> status text in the build-order table once filed
+STATUS = {'PB1': 'written 12 Nov', 'PB2': 'written 12 Nov', 'PB3': 'written 12 Nov'}          # unit code -> status text in the build-order table once filed
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
 FINAL_AUDIT = ('Audit 4', 'Final audit of the last units plus a full read of the course against its goal, and a read-through as the persona', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'PB3', 0, 'after four units; deferred to the Fable stage (decided 11 Nov 2026), so it gates no unit'
+NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'PB4', 0, 'after four units; deferred to the Fable stage (decided 11 Nov 2026), so it gates no unit'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_H1 = 'Building a Personal Brand on Instagram and YouTube'
@@ -147,6 +150,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-12 09:45', "v4. PB3 Audience and the two platforms written (Opus 5.5, own agent context, search on; row W-PB3, P31), fresh-checked by Opus 5.5 in a separate context (fix, 1 error, 5 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), its four figures passed (the flow's caption fixed as the report gives it), and filed: reading page, PB3 marked written; PB4 next; Mara's register gains PB3's facts; PB1's D2 corrected (publishing and replies 1.25, email 0.25 hours a fortnight; flag F21); flags F2, F5, F14 and F20 carried, F21 to F29 raised. Writer's Object line: none."),
     ('2026-11-12 05:30', "v3. PB2 Positioning: the sentence a stranger can repeat written (Opus 5.5, own agent context, search off; row W-PB2, P31), fresh-checked by Opus 5.5 in a separate context (fix, 1 error, 3 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), its matrix figure (a finding) and its decision figure (handles broken mid-word on a phone) fixed and each passed a re-check, the flow passed, and filed: reading page, PB2 marked written; PB3 next; Mara's register gains PB2's facts; flags F13 to F20 raised. Writer's Object line: none."),
     ('2026-11-12 03:30', "v2. PB1 What to expect: odds, timeline, cost written (Opus 5.5, own agent context, search on; row W-PB1, P31), fresh-checked by Opus 5.5 in a separate context (fix, 1 error, 6 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed), its four figures passed or fixed and re-checked, and filed: reading page, PB1 marked written; PB2 next; Mara's register gains PB1's facts; flag F1 carried, flags F3 to F12 raised. Writer's Object line: none."),
     ('2026-11-11 23:59', "v1. Course created (new-course skill; backlog row G-0): frame, goal and three outcomes, 12 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the build order in syllabus order, the syllabus-flags file. Adapted from a private course of the Learning Project; no unit written."),
