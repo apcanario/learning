@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **PB7 filed (session 78, W-PB7):** PB7 How Instagram growth works written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 9 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed); A6 erratum; P99 and P100 applied after a two-round correction check; PB4 and PB5 corrected at step 7b; PB8 next, in the same chat.
 - **PB6 filed (session 77, W-PB6):** PB6 How YouTube growth works written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 2 errors, 12 should-fix, 14 minor; all applied; Fable 5.1 fresh check owed); A6 erratum, PB1 and PB3 corrected; PB7 and PB8 next, in one chat.
 - **Figure finishes and PB5 filed (session 76, P98, W-PB5):** a bars figure is drawn at its own size on a 320 px phone and no value sits across the end of its track, checked on every compare and bars figure; PB5 Production craft with a phone written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 3 should-fix, 11 minor; all applied; Fable 5.1 fresh check owed).
 - **Syllabus review of PB and compare figures on a phone (session 75, S-PB1, P97):** PB6's, PB9's and PB10's briefs changed as Pedro confirmed, Mara's register corrected, six flags resolved and 22 left with their units; every compare figure now opens whole on a 320 or 390 px phone (63 figures redrawn for phones, all re-checked and passed).
@@ -127,6 +128,17 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 72. Public course PB: PB2 Positioning: the sentence a stranger can repeat filed: Mara's positioning, name pick and profile copy, and the repeat-back test (W-PB2) | | |
 | 12 Nov | 73. Public course PB: PB3 Audience and the two platforms filed: Mara's audience profile and her platform allocation at three budgets with the cut order (W-PB3) | | |
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
+| 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
+
+## 12 November 2026 · Session 78 · Public course PB, unit PB7 (W-PB7)
+
+The first row of an unattended two-row chat (Pedro away), on Opus 5.5 (claude-opus-5-5): the chat staged, applied, filed, built, published and recorded; the writer, the fresh checker and three correction checkers were fresh Opus 5.5 agents (P31), each stating claude-opus-5-5; no agent transcript on disk.
+
+- **Step 1b.** P99 and P100 checked in two rounds and applied (PB4 F36, F37; PB1 F42, F45; knock-ons in PB5, PB6 and the register); reports `audits/personal-brand/corrections-2026-11-12-P99-P100.md` and `-round2.md`. P101: `claude/public-courses.md` and `method.md` refreshed; the rest at the chat's close.
+- **PB7.** How Instagram growth works, about 8,750 words, three figures, search on; fresh check fix, 3 errors, 9 should-fix, 7 minor, all applied; report `audits/personal-brand/fresh-check-PB7.md`.
+- **Mistakes elsewhere.** A6 erratum (Aug 2024 metrics changes; brand-ai v9.10). Step 7b: PB5 §6 and PB4 §3 corrected after a correction check (`corrections-2026-11-12-PB4-PB5.md`).
+- **Flags.** F6, F17, F26, F32, F39 carried; F47 to F55 raised; none blocks PB8.
+- **Build.** `build.py`, `verify.py`, `verify.py --shots` for `read-pb7` and `read-pb1` (the changed decision figure).
 
 ## 12 November 2026 · Session 77 · Public course PB, unit PB6 (W-PB6)
 
