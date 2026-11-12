@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **PB4 filed (session 74, W-PB4):** the public course PB's fourth unit, The content system, written by an Opus 5.5 agent from its brief, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 8 should-fix, 15 minor; all applied; Fable 5.1 fresh check owed), three figures; PB1 and PB3 corrected where they sat; flags F30 to F35; PB's Audit 1 due, owed to the Fable stage. Personal Brand v5, 4 of 12. Next: S-PB1.
 - **PB3 filed (session 73, W-PB3):** the public course PB's third unit, Audience and the two platforms, written by an Opus 5.5 agent from its brief, search on, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 5 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), four figures; A2 and PB1 corrected where they sat; flags F21 to F29. Personal Brand v4, 3 of 12.
 - **PB2 filed (session 72, W-PB2):** the public course PB's second unit, Positioning: the sentence a stranger can repeat, written by an Opus 5.5 agent from its brief, search off, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 3 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), three figures; A1 corrected where it sat; flags F13 to F20; the home hero's Marketing rise moved so it still closes two rings. Personal Brand v3, 2 of 12.
 - **PB1 filed (session 71, W-PB1):** the public course Building a Personal Brand on Instagram and YouTube has its first unit, What to expect: odds, timeline, cost, written by an Opus 5.5 agent from its brief, search on, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 6 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed), four figures; A9 corrected where it sat; flags F3 to F12 raised. Personal Brand v2, 1 of 12.
@@ -122,6 +123,17 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 71. Public course PB: PB1 What to expect: odds, timeline, cost filed, the course's first unit: Mara's expectation sheet, budget, stop rule and checkpoint dates (W-PB1) | | |
 | 12 Nov | 72. Public course PB: PB2 Positioning: the sentence a stranger can repeat filed: Mara's positioning, name pick and profile copy, and the repeat-back test (W-PB2) | | |
 | 12 Nov | 73. Public course PB: PB3 Audience and the two platforms filed: Mara's audience profile and her platform allocation at three budgets with the cut order (W-PB3) | | |
+| 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
+
+## 12 November 2026 · Session 74 · Public course PB, unit PB4 (W-PB4)
+
+W-PB4 ran in the same unattended chat as W-PB3 (session 73), on Opus 5.5, which only staged, applied, filed and published. A fresh Opus 5.5 writer wrote PB4 The content system from its brief on a packet staged by script (brief, skill, sourcing Parts 1 and 5, figure kinds with `viz.py` and `design/theme.css`, Mara's register, PB1 to PB3, A3 with its fresh-check report, seven flags), search off. A separate Opus 5.5 checker returned fix, 0 errors, 8 should-fix, 15 minor; its report was saved verbatim and the 23 findings applied by script (the unsure list added by script from the writer's file). No figure needed a re-check. No agent transcript was on disk.
+
+- **Filed.** `courses/personal-brand/PB4-the-content-system.md`; `hub.py` v5; `case-facts.md` gains PB4's facts, with the season and format-change rules as the checker corrected them; `syllabus-flags.md` F30 to F35; `courses-index.md` (PB's Audit 1 at 4 of 4, owed to the Fable stage).
+- **Corrected where they sat.** PB1 and PB3 §6: YouTube's statement on breaks beside AIR's gap data, with dated notes.
+- **Flags put right.** W-PB3 had set F2, F5 and F20 to carried, which took them out of PB4's prompt (`next_prompt.py` passes only flags whose status is exactly open); they were set back to open with PB3's handling noted, and W-PB4's prompt re-saved before its writer ran.
+- **Build.** `build.py`, `verify.py`: ALL CHECKS PASSED; `verify.py --shots --page read-pb4` looked at.
+- **Publish.** See the record commit.
 
 ## 12 November 2026 · Session 73 · Public course PB, unit PB3 (W-PB3)
 
