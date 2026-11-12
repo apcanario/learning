@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **PB3 filed (session 73, W-PB3):** the public course PB's third unit, Audience and the two platforms, written by an Opus 5.5 agent from its brief, search on, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 5 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), four figures; A2 and PB1 corrected where they sat; flags F21 to F29. Personal Brand v4, 3 of 12.
 - **PB2 filed (session 72, W-PB2):** the public course PB's second unit, Positioning: the sentence a stranger can repeat, written by an Opus 5.5 agent from its brief, search off, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 3 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), three figures; A1 corrected where it sat; flags F13 to F20; the home hero's Marketing rise moved so it still closes two rings. Personal Brand v3, 2 of 12.
 - **PB1 filed (session 71, W-PB1):** the public course Building a Personal Brand on Instagram and YouTube has its first unit, What to expect: odds, timeline, cost, written by an Opus 5.5 agent from its brief, search on, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 6 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed), four figures; A9 corrected where it sat; flags F3 to F12 raised. Personal Brand v2, 1 of 12.
 - **The two public courses created (session 70, G-0):** Building a Personal Brand on Instagram and YouTube (PB, 12 units, Marketing track) and Building with AI (BW, 13 units, Technology track) are in Academy with their frames, briefs, build orders and "How it was built" pages, adapted from Brand + AI's A and B for any reader, each in its own data folder and vault; no unit is written. `kit/next_prompt.py` prints each writing row's prompt; `kit/private_terms.py` fails `verify.py` on a private term in a public course; a markdown course with no unit filed now builds. Next: W-PB1.
@@ -120,6 +121,17 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 11 to 12 Nov | 70. The two public courses created: Building a Personal Brand on Instagram and YouTube (12 units) and Building with AI (13 units), with briefs, the prompt generator and the private-term gate; no unit written (G-0) | | |
 | 12 Nov | 71. Public course PB: PB1 What to expect: odds, timeline, cost filed, the course's first unit: Mara's expectation sheet, budget, stop rule and checkpoint dates (W-PB1) | | |
 | 12 Nov | 72. Public course PB: PB2 Positioning: the sentence a stranger can repeat filed: Mara's positioning, name pick and profile copy, and the repeat-back test (W-PB2) | | |
+| 12 Nov | 73. Public course PB: PB3 Audience and the two platforms filed: Mara's audience profile and her platform allocation at three budgets with the cut order (W-PB3) | | |
+
+## 12 November 2026 · Session 73 · Public course PB, unit PB3 (W-PB3)
+
+W-PB3 ran in one unattended chat with W-PB4 (session 74), on Opus 5.5, which only staged, applied, filed and published. A fresh Opus 5.5 writer wrote PB3 Audience and the two platforms from its brief on a packet staged by script (brief, skill, sourcing Parts 1 and 5, figure kinds with `viz.py`, Mara's register, PB1, PB2, A2 with its fresh-check report, flags F2, F5, F14, F20), search on. A separate Opus 5.5 checker returned fix, 1 error, 5 should-fix, 6 minor; its report was saved verbatim and the twelve findings applied by script (the Sources finding, a delete and an insert, by hand-checked script). No figure needed a re-check. No agent transcript was on disk.
+
+- **Filed.** `courses/personal-brand/PB3-audience-and-the-two-platforms.md`; `hub.py` v4; `case-facts.md` gains PB3's facts (PB1's hours line updated); `syllabus-flags.md` F21 to F29; `courses-index.md`.
+- **Corrected where it sat.** A2 (beehiiv's date and 2024 figure, from PB3's writer, confirmed by the checker), with its dated note; Brand + AI v9.7. PB1's D2 hours (publishing and replies 1.25, email 0.25), with its dated note.
+- **Packet.** `viz.py` reads `design/theme.css` at import; the writer's packet lacked it and the writer stubbed it in its own folder; the staging now copies the theme.
+- **Build.** `build.py`, `verify.py`: ALL CHECKS PASSED; `verify.py --shots --page read-pb3` looked at.
+- **Publish.** See the record commit.
 
 ## 12 November 2026 · Session 72 · Public course PB, unit PB2 (W-PB2)
 
