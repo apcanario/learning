@@ -142,7 +142,9 @@ the renderer cannot draw honestly stops the build with a message that says what 
               <g data-box>, with its label when the label is inside it.
   compare     row labels are measured and wrapped in a column as wide as the widest line (up to 240, LABEL_COL); values
               take thousands separators (and "decimals" when given) and the value column is measured; values must be
-              0 to max. Each row grows with its label.
+              0 to max. Each row grows with its label. P97 (12 Nov 2026): it also carries a phone drawing (svg.viz-alt,
+              PHONE_NARROW = 258 units, shown below 768 px), its labels pinned at the left (wrapped at 112) when that
+              leaves the bars 96 units, else above each bar, so the longest bar is whole in the opening phone frame.
   bars        the same label column as compare (it wrapped at 160 inside a 172 column).
   tree        boxes keep their size: 112 units, or wider when one word of a label needs it, so no word is broken; every
               label is wrapped in full (it was cut at two lines) and a level's boxes grow to its longest label. A tree
@@ -236,6 +238,7 @@ import textwrap
 import zlib
 
 W = 700            # drawing width in user units; the SVG scales to the column
+PHONE_NARROW = 258  # P97 (12 Nov 2026): the scroll frame of a figure on a 320 px phone (the same gutters, padding and border); a compare's phone drawing is this wide, so it never scrolls on any phone
 PHONE_FRAME = 328  # P83 (3 Nov 2026): the scroll frame of a figure on a 390 px phone (16 px gutters, the figure's 14 px padding and 1 px border); a drawing this wide or narrower never scrolls there
 TONES = 6          # --viz-1 … --viz-6 map to the house accents in theme.css
 
@@ -685,7 +688,47 @@ def compare(d):
         body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{cy - 7:.1f}" width="{wv:.1f}" height="14"/>'
         body += f'<text class="viz-value" x="{bar_x + wv + 8:.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
         y += rh
-    return _svg(W, _r(y + 4), body, 'compare', d.get('title'), d.get('caption'), stick=(bar_x - 4, stick))
+    alt = _compare_phone(rows, vals, mx, K)
+    return _svg(W, _r(y + 4), body, 'compare', d.get('title'), d.get('caption'), stick=None if alt else (bar_x - 4, stick), alt=alt)
+
+
+COMPARE_PHONE_LABEL = 112   # P97: the widest a compare's pinned label column grows in its phone drawing before its labels wrap
+COMPARE_PHONE_BAR = 96      # P97: the shortest track the pinned layout keeps on a phone; below it the labels go above their bars
+
+
+def _compare_phone(rows, vals, mx, K):
+    """P97 (12 Nov 2026): a compare's phone drawing, PHONE_NARROW units wide, emitted as svg.viz-alt (shown below 768 px
+    in place of the 700-unit one), so the longest bar, its value and every label are whole in the figure's opening frame
+    on a 320 or a 390 px phone, at the drawing's own size (text never scaled down). The label column stays pinned at the
+    left, wrapped at COMPARE_PHONE_LABEL, when it leaves the bars COMPARE_PHONE_BAR units or more; otherwise each label
+    sits above its bar, which then runs the drawing's width. Bars keep one scale, the figure's max, as in the wide one."""
+    PW = PHONE_NARROW
+    VW = max(_tw(v, 10.5, 'mono') for v in vals) + 14
+    labs = [_lines(r['label'], T_LABEL, COMPARE_PHONE_LABEL) for r in rows]
+    LW = max(_width(l, T_LABEL) for l in labs) + 12
+    bar_x, body, y = 8 + LW, '', 8
+    bar_w = PW - 8 - bar_x - VW
+    if bar_w >= COMPARE_PHONE_BAR:                                # pinned: the label column at the left, as on a desktop
+        for r, lab, v in zip(rows, labs, vals):
+            rh = max(30, len(lab) * 14 + 12)
+            wv, cy = bar_w * float(r['value']) / mx, y + rh / 2
+            body += _text(lab, T_LABEL, bar_x - 10, cy - len(lab) * 7, 'end')
+            body += f'<rect class="viz-track" x="{bar_x}" y="{cy - 7:.1f}" width="{bar_w:.1f}" height="14"/>'
+            body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{cy - 7:.1f}" width="{wv:.1f}" height="14"/>'
+            body += f'<text class="viz-value" x="{bar_x + wv + 8:.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
+            y += rh
+    else:                                                         # stacked: each label above its bar, the bar the drawing's width
+        bar_x, bar_w = 8, PW - 16 - VW
+        for r, v in zip(rows, vals):
+            lab = _lines(r['label'], T_LABEL, PW - 16)
+            body += _text(lab, T_LABEL, bar_x, y, 'start')
+            y += len(lab) * 14 + 2
+            wv = bar_w * float(r['value']) / mx
+            body += f'<rect class="viz-track" x="{bar_x}" y="{y:.1f}" width="{bar_w:.1f}" height="14"/>'
+            body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{y:.1f}" width="{wv:.1f}" height="14"/>'
+            body += f'<text class="viz-value" x="{bar_x + wv + 8:.1f}" y="{y + 10.8:.1f}">{esc(v)}</text>'
+            y += 14 + 12
+    return (PW, _r(y + 4), body)
 
 
 def tree(d):

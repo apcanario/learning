@@ -23,6 +23,8 @@ of home, What's new (P91; the home and What's new at 320, 360 and 430 px too), R
 and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png, the figure as its frame
 opens; and (P89, p85_frames.py folded in) every frame a reader scrolls that figure across, stacked and numbered in one
 sheet: <width>-<panel>-fig-<nn>-<kind>-frames-<theme>.png, at each width, dark and light.
+Compare figures on a phone (P97, 12 Nov 2026): every compare figure at 320 and 390 px opens with its longest bar and
+its value whole in the frame (its phone drawing, svg.viz-alt).
 Figure geometry (FIG_JS; V1, every kind since P55): on the examples page (one figure per kind, then one hard case per
 drawing fault P55 fixed, and the blocks that must stop the build) and, in the phone pass, on every panel with figures:
 nothing outside the drawing, text inside its box or bar, no two boxes or labels overlapping, no free label over a box.
@@ -1916,6 +1918,49 @@ FIG_JS = r'''(sel) => {
   return {n: figs.length, kinds: figs.map(kindOf), bad: out};
 }'''
 
+CMP_WIDTHS = [('phone320', 320, 640), ('phone', 390, 844)]
+CMP_JS = """async (pid) => { const out = []; const p = document.getElementById(pid);
+ for (const [i, f] of [...p.querySelectorAll('figure.viz-compare')].entries()) {
+  const sec = f.closest('.sec'); if (sec && !sec.classList.contains('on')) p.querySelector('.seclist a[data-step="' + sec.dataset.step + '"]').click();
+  for (const d of p.querySelectorAll('details')) if (d.contains(f)) d.open = true;
+  f.scrollIntoView({block: 'center'}); await new Promise(r => setTimeout(r, 120));
+  const sc = f.querySelector('.viz-scroll'), fr = sc.getBoundingClientRect();
+  const s = [...sc.querySelectorAll(':scope > svg')].find(x => getComputedStyle(x).display !== 'none');
+  const bars = [...s.querySelectorAll('rect.viz-bar')].map(b => [b, b.getBoundingClientRect()]);
+  const [bar, br] = bars.reduce((a, b) => b[1].width > a[1].width ? b : a);
+  const vals = [...s.querySelectorAll('text.viz-value')].map(t => t.getBoundingClientRect());
+  const v = vals.find(r => Math.abs((r.top + r.bottom) / 2 - (br.top + br.bottom) / 2) < 8) || null;
+  out.push({n: i + 1, frame: [fr.left, fr.right], bar: [br.left, br.right], val: v ? [v.left, v.right] : null,
+            open: sc.scrollLeft, alt: s.classList.contains('viz-alt')}); }
+ return out; }"""
+def check_compare_phone(br, fails):
+    """P97 (12 Nov 2026): every compare figure, on every page that has one, at 320 and 390 px: the drawing a phone shows
+    (its svg.viz-alt) opens with its longest bar and that bar's value whole inside the frame, unscrolled, so the bars are
+    seen to scale in one frame. Before P97 a compare drew 700 units on a phone and its long bars ran off the frame's edge."""
+    idx = (SITE / 'index.html').read_text()
+    pids = [pid for pid, src in re.findall(r'<section class="panel" id="([^"]+)"[^>]*data-src="([^"]+)"', idx)
+            if (SITE / src).exists() and 'viz-compare' in (SITE / src).read_text()]
+    n, bad = 0, []
+    for name, w, h in CMP_WIDTHS:
+        errs = []
+        ctx, pg, _ = new_page(None, br, errs, name, w, h, True)
+        for pid in pids:
+            pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(120)
+            for f in pg.evaluate(CMP_JS, pid):
+                n += 1
+                (fl, fr), (bl, brr) = f['frame'], f['bar']
+                where = f'{pid} figure {f["n"]} (compare) at {w} px'
+                if not f['alt']:
+                    bad.append(f'{where}: shows its 700-unit drawing, not its phone drawing')
+                if f['open'] > 0.5 or bl < fl - 0.5 or brr > fr + 0.5:
+                    bad.append(f'{where}: the longest bar ({bl:.0f} to {brr:.0f}) is not whole in the opening frame ({fl:.0f} to {fr:.0f})')
+                elif not f['val'] or f['val'][1] > fr + 0.5:
+                    bad.append(f'{where}: the longest bar\'s value runs past the frame')
+        if errs: fails.append(f'compare on a phone {name}: console errors: ' + ' | '.join(errs[:3]))
+        ctx.close()
+    fails += bad
+    print(f'compare on a phone (P97): {n} figure frames on {len(pids)} pages at 320 and 390 px, {len(bad)} without the longest bar and its value whole in the opening frame')
+
 def check_figures(br, fails):
     """The examples page (V1) through the shell: VX_FIGS figures, one per kind, and the geometry of each (FIG_JS)."""
     if 'figures' in OMIT:
@@ -1948,6 +1993,7 @@ def main():
         br = p.chromium.launch()
         check_split(br, fails)
         check_figures(br, fails)
+        check_compare_phone(br, fails)
         check_reading(br, fails)
         check_seps(br, fails)
         check_reliefs(br, fails)   # P95
