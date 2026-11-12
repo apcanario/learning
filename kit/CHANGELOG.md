@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **PB6 filed (session 77, W-PB6):** PB6 How YouTube growth works written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 2 errors, 12 should-fix, 14 minor; all applied; Fable 5.1 fresh check owed); A6 erratum, PB1 and PB3 corrected; PB7 and PB8 next, in one chat.
 - **Figure finishes and PB5 filed (session 76, P98, W-PB5):** a bars figure is drawn at its own size on a 320 px phone and no value sits across the end of its track, checked on every compare and bars figure; PB5 Production craft with a phone written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 3 should-fix, 11 minor; all applied; Fable 5.1 fresh check owed).
 - **Syllabus review of PB and compare figures on a phone (session 75, S-PB1, P97):** PB6's, PB9's and PB10's briefs changed as Pedro confirmed, Mara's register corrected, six flags resolved and 22 left with their units; every compare figure now opens whole on a 320 or 390 px phone (63 figures redrawn for phones, all re-checked and passed).
 - **PB4 filed (session 74, W-PB4):** the public course PB's fourth unit, The content system, written by an Opus 5.5 agent from its brief, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 8 should-fix, 15 minor; all applied; Fable 5.1 fresh check owed), three figures; PB1 and PB3 corrected where they sat; flags F30 to F35; PB's Audit 1 due, owed to the Fable stage. Personal Brand v5, 4 of 12. Next: S-PB1.
@@ -126,6 +127,16 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 72. Public course PB: PB2 Positioning: the sentence a stranger can repeat filed: Mara's positioning, name pick and profile copy, and the repeat-back test (W-PB2) | | |
 | 12 Nov | 73. Public course PB: PB3 Audience and the two platforms filed: Mara's audience profile and her platform allocation at three budgets with the cut order (W-PB3) | | |
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
+
+## 12 November 2026 · Session 77 · Public course PB, unit PB6 (W-PB6)
+
+The second row of the session-76 chat (Pedro away), on Opus 5.5: the chat staged, applied, filed, built, published and recorded; the writer and the fresh checker were fresh Opus 5.5 agents (P31), each model the one the agent stated (no transcript on disk).
+
+- **PB6.** How YouTube growth works, about 10,400 words, four figures, search on; fresh check fix, 2 errors, 12 should-fix, 14 minor, all applied (two minors no change required); report `audits/personal-brand/fresh-check-PB6.md`.
+- **Mistakes elsewhere.** A6 erratum (answer 1714921's title; brand-ai v9.9); PB1 corrected (answer 12843009's title); PB3 corrected (§4 AIR sample; §3 shelf-life cell).
+- **Flags.** F24, F31, F38 carried; F42 to F46 raised (F43 resolved by the PB3 correction); none blocks PB7. P100 proposed.
+- **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-pb6`.
+- **Publish.** Academy artifact vARTV (ARTVER); Pages academy PAGESC, run RUNID.
 
 ## 12 November 2026 · Session 76 · Figure renderer finishes and public course PB, unit PB5 (P98, W-PB5)
 
