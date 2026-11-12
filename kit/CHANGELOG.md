@@ -127,7 +127,7 @@ W-PB1 ran in one unattended chat with W-PB2, on Opus 5.5 (claude-opus-5-5), whic
 - **Corrected where it sat.** A9 (three errata from PB1's writer, confirmed by the checker), with its dated note; Brand + AI v9.5.
 - **Build.** `build.py`, `verify.py` and `verify.py --shots --page read-pb1`: ALL CHECKS PASSED; the page and its four figures looked at, phone and desktop, dark and light. The home gains the course's tile with its first unit.
 - **Proposed.** P97 (compare figures on a phone).
-- **Publish.** PUBLISH_PLACEHOLDER
+- **Publish.** Academy artifact v144 (1794453673-a039, build 3483442; the live page was the start build exactly; the shell in its live wrapper and the nine changed files sent in one patch and all ten read back, sha256 matching); Pages academy 0415402, run 43147658434 succeeded.
 
 ## 11 to 12 November 2026 · Session 70 · The two public courses created (G-0)
 
