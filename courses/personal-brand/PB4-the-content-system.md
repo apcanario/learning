@@ -205,7 +205,7 @@ The shape of the two normal weeks and the two recovery weeks, by line:
   {"label": "After lost A", "values": [1.0, 3.0, 1.0, 1.0, 0.25, 0, 0.25]},
   {"label": "After lost B", "values": [1.0, 3.0, 1.0, 1.0, 0.25, 0, 0.25]}
  ],
- "caption": "Hours per week by line, §5 and §7 (Mara, fictional): weeks A and B total 6.0 each; each recovery week totals 6.5. The per-line hours are PB1 D2 and PB3 D2's planning figures, split into weeks by this unit; the 8-minute edit's 3.0 hours is PB3's estimate. No dataset gives hours per piece."}
+ "caption": "Hours per week by line, §5 and §7 (Mara, fictional): weeks A and B total 6.0 each; each recovery week totals 6.5. The per-line hours are PB1 D2 and PB3 D2's planning figures, split into weeks by this unit; the 8-minute edit's 3.0 hours is PB3's estimate. No dataset gives hours per piece. Capture and Log share a tone: Capture is the first segment of each bar, Log the last."}
 ```
 
 ## Deliverable

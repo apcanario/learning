@@ -82,7 +82,7 @@ The best single dataset is vidIQ's study of 32,926,088 channels that had fewer t
   {"label": "12–51 videos", "value": 8.65, "tone": 1},
   {"label": "52 or more", "value": 30.77, "tone": 3}
  ],
- "caption": "The table above, drawn. 32,926,088 channels under 1,000 subscribers, compared with themselves 360 days later; a bi-weekly channel (26 videos a year) sits in the 12–51 band. <a href=\"https://vidiq.com/research/youtube-uploads-1000-subscribers/\">vidIQ, 11 Sep 2026</a>; vendor data, correlational, groups unmatched."}
+ "caption": "The table above, drawn. 32,926,088 channels under 1,000 subscribers, compared with themselves 360 days later; a bi-weekly channel (26 videos a year) sits in the 12–51 band; the tones only tell the bands apart. <a href=\"https://vidiq.com/research/youtube-uploads-1000-subscribers/\">vidIQ, 11 Sep 2026</a>; vendor data, correlational, groups unmatched."}
 ```
 
 That first row is 83.1% of the sample showing no net change in video count over the year. vidIQ warns that this "does not prove a channel published nothing", since uploads can be offset by removals or changes in visibility. Video counts include Shorts, long-form and livestreams, and the 52-or-more group does not prove a weekly schedule.
@@ -222,7 +222,7 @@ What the sound figures support: on an owned list, the documented cases sit aroun
    "tone": 2
   }
  ],
- "caption": "Median monthly subscriber growth by subscriber band, §8. <a href=\"https://vidiq.com/research/youtube-subscriber-benchmarks-2026/\">vidIQ, Subscriber Benchmarks 2026, 20 Jul 2026</a>; vendor data, medians, not paths."
+ "caption": "Median monthly subscriber growth by subscriber band, §8. <a href=\"https://vidiq.com/research/youtube-subscriber-benchmarks-2026/\">vidIQ, Subscriber Benchmarks 2026, 20 Jul 2026</a>; vendor data, medians, not paths; §8 gives no percentage for the bands from 100 to 999 subscribers."
 }
 ```
 

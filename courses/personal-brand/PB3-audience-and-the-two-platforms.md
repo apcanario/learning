@@ -71,7 +71,7 @@ The largest current survey that splits use of both platforms by age, gender, edu
   {"label": "Ages 65+", "values": [65, 21]},
   {"label": "All adults", "values": [84, 51]}
  ],
- "caption": "The age rows of the table in §2. Source: Pew Research Center, Americans' Use of Social Media in 2026, fact sheet, 19 Oct 2026; National Public Opinion Reference Survey, 5,511 US adults, 30 Jan to 18 Jun 2026. Large survey; ever-use, which says nothing about time spent."}
+ "caption": "The age rows and the All adults row of the table in §2. Source: Pew Research Center, Americans' Use of Social Media in 2026, fact sheet, 19 Oct 2026; National Public Opinion Reference Survey, 5,511 US adults, 30 Jan to 18 Jun 2026. Large survey; ever-use, which says nothing about time spent."}
 ```
 
 What the table says for a small account:
@@ -101,7 +101,7 @@ What the table says for a small account:
   {"label": "Image posts", "value": 3.5, "tone": 2},
   {"label": "Carousels", "value": 2.6, "tone": 4}
  ],
- "caption": "§3, Instagram reach by format. Source: Fanpage Karma, Reel, carousel, or image post, 7 Aug 2026; more than 3 million posts, January to April 2026, accounts not counted. Vendor data; medians for every account under 10,000 followers."}
+ "caption": "§3, Instagram reach by format. Source: Fanpage Karma, Reel, carousel, or image post, 7 Aug 2026; more than 3 million posts, January to April 2026, accounts not counted. Vendor data; medians for every account under 10,000 followers. The tones only tell the formats apart."}
 ```
 
 ### Reach to followers against reach to strangers
@@ -258,7 +258,7 @@ Rates per month are derived (13, 26 or 52 divided by 12). The bands are from vid
   {"label": "6 h a week (her plan)", "values": [4.0, 8.0, 2.0, 6.0, 2.5, 0.5, 1.0]},
   {"label": "10 h a week", "values": [8.0, 16.0, 4.0, 6.0, 3.0, 1.0, 1.0]}
  ],
- "caption": "D2, the hours table: Mara's planning estimates per four weeks (Mara, fictional), totals 11.75, 24.0 and 39.0. The per-video and per-post hours are PB1's D2 planning figures; no dataset gives hours per piece (§6)."}
+ "caption": "D2, the hours table: Mara's planning estimates per four weeks (Mara, fictional), totals 11.75, 24.0 and 39.0. The per-video and per-post hours are PB1's D2 planning figures; no dataset gives hours per piece (§6). Capture and Log share a tone: Capture is the first segment of each bar, Log the last."}
 ```
 
 **Why each budget is built this way.**
