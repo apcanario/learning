@@ -134,7 +134,7 @@ One unattended chat (Pedro away), on Opus 5.5, running W-PB5 with P98 first as i
 - **P98.** `viz._bars_phone` draws at `PHONE_NARROW` (258 units); `design/theme.css` 6.10 shows a bars figure's phone drawing at its own size, as a compare's (the 328-unit drawing had not scrolled on a 320 px phone, as the row assumed: the theme shrank it to about 79%). `viz._val_x`: a compare's value sits wholly on its track or wholly beyond its end, in both drawings. `verify.py`'s `check_phone_figures` (was `check_compare_phone`): every compare and bars figure at 320 and 390 px opens with every bar and value whole, unscrolled, and at 320, 390 and 1280 px no value sits across a track's end (121 in the build before, 0 after). The eleven declaration notes from S-PB1's re-checks applied, prose untouched. 67 changed figures re-checked (Greece 12, Rome 13, A 14, B 13, UX, PB and the examples 15), two fixed in their captions and re-checked with eight others: all pass (`kit/reviews/p98/`).
 - **PB5.** Production craft with a phone, about 11,000 words, four figures, search off; fresh check fix, 0 errors, 3 should-fix, 11 minor, all applied; flags F36 to F41; Mara's register; P99 proposed.
 - **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-pb5`.
-- **Publish.** PUBLISH_LINE
+- **Publish.** Academy artifact v149 (1794496820-4056, build 560a53a; the live page matched the start build, so the shell in its live wrapper, reproduced to the byte, and the 57 changed files went in one patch; the shell and ten pages read back with matching sha256); Pages academy 31da830, run 43246838448 succeeded.
 
 ## 12 November 2026 · Session 75 · Syllabus review of course PB and compare figures on a phone (S-PB1, P97)
 
