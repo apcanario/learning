@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Syllabus review of PB and compare figures on a phone (session 75, S-PB1, P97):** PB6's, PB9's and PB10's briefs changed as Pedro confirmed, Mara's register corrected, six flags resolved and 22 left with their units; every compare figure now opens whole on a 320 or 390 px phone (63 figures redrawn for phones, all re-checked and passed).
 - **PB4 filed (session 74, W-PB4):** the public course PB's fourth unit, The content system, written by an Opus 5.5 agent from its brief, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 8 should-fix, 15 minor; all applied; Fable 5.1 fresh check owed), three figures; PB1 and PB3 corrected where they sat; flags F30 to F35; PB's Audit 1 due, owed to the Fable stage. Personal Brand v5, 4 of 12. Next: S-PB1.
 - **PB3 filed (session 73, W-PB3):** the public course PB's third unit, Audience and the two platforms, written by an Opus 5.5 agent from its brief, search on, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 5 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), four figures; A2 and PB1 corrected where they sat; flags F21 to F29. Personal Brand v4, 3 of 12.
 - **PB2 filed (session 72, W-PB2):** the public course PB's second unit, Positioning: the sentence a stranger can repeat, written by an Opus 5.5 agent from its brief, search off, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 3 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), three figures; A1 corrected where it sat; flags F13 to F20; the home hero's Marketing rise moved so it still closes two rings. Personal Brand v3, 2 of 12.
@@ -124,6 +125,15 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 72. Public course PB: PB2 Positioning: the sentence a stranger can repeat filed: Mara's positioning, name pick and profile copy, and the repeat-back test (W-PB2) | | |
 | 12 Nov | 73. Public course PB: PB3 Audience and the two platforms filed: Mara's audience profile and her platform allocation at three budgets with the cut order (W-PB3) | | |
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
+
+## 12 November 2026 · Session 75 · Syllabus review of course PB and compare figures on a phone (S-PB1, P97)
+
+S-PB1 ran on Opus 5.5 with Pedro present. The 28 open flags of PB's `syllabus-flags.md` were sorted into four kinds in `docs/syllabus-review-PB-1.md`; a fresh Opus 5.5 checker read the proposal against the flags, the briefs, the register and PB1 to PB4 (fix, 5 should-fix, 4 minor; saved verbatim under it, all applied). Pedro confirmed the four brief changes at 12:36.
+
+- **Briefs.** PB6, PB9 and PB10 changed by one sentence each, PB10's Takes line adds PB2 to PB4 (`generator/data/personal-brand/units_data.py`); each checked by eye as `open_brief` prints it.
+- **Register and flags.** Mara's handle lines (`case-facts.md`); F3, F4, F13, F19, F28, F33 resolved; F8's verdict order put in PB1 D3's order; the 22 kind-(d) flags noted and left open.
+- **P97.** A compare figure carries a second drawing for phones (svg.viz-alt, 258 units, `PHONE_NARROW`): labels pinned at the left when they leave the bars 96 units, else above each bar; no sticky label copy. `design/theme.css` 6.9, copied to `shell.css`. `verify.py` gains `check_compare_phone`: every compare at 320 and 390 px opens with its longest bar and its value whole. Before: 125 of 126 compare frames cut; after: none. 63 figures on 46 pages changed (no other kind); each re-checked by one of five fresh Opus 5.5 agents from its page's text without figures, the captions and `frames()` sheets at 320 and 390 px, dark and light: all passed (`kit/reviews/p97/`). P98 proposed for what they noted.
+- **Build.** recorded below after the publish.
 
 ## 12 November 2026 · Session 74 · Public course PB, unit PB4 (W-PB4)
 
