@@ -198,7 +198,7 @@ What length works is a separate question with weaker evidence. Socialinsider's 2
 
 **The shape.** Instagram announced on 28 May 2025 that "when you upload a 3:4 image it'll now appear exactly as you shot it", and that "This works with both single-photo posts and carousels" ([Social Media Today, 28 May 2025](https://www.socialmediatoday.com/news/instagram-adds-support-phone-camera-aspect-ratio-images), quoting Instagram's Creators channel; platform statement via the press; no Instagram help page stating feed sizes was found). A vendor guide still advises "Stick with the 4:5 format (1080 x 1350 px) for feed posts" and says the grid shows a 3:4 preview ([Metricool, Best Instagram post sizes, 21 Jan 2026](https://metricool.com/instagram-image-size/); vendor guide). Mara's slides are 1080 × 1350, every slide the same shape, with the words kept in the middle where the grid's 3:4 preview keeps them (her rule).
 
-**The first slide.** In the feed and on the grid the first slide is the only one a viewer sees before choosing to swipe, so it carries the whole promise of the post (inference from how the format displays). A claim circulates in creator advice that Instagram shows an unengaged carousel again starting from its second slide; no Instagram statement of it was found on 12 November 2026, so no rule here depends on it.
+**The first slide.** In the feed and on the grid the first slide is the only one a viewer sees before choosing to swipe, so it carries the whole promise of the post (inference from how the format displays). A claim circulates in creator advice that Instagram shows an unengaged carousel again starting from its second slide; no Instagram statement of it was found on 12 November 2026. Two press reports say it does, neither quoting Instagram: Lia Haberman summarises a 2024 Mosseri post as saying the algorithm gives a carousel "a second chance after it's posted, resurfacing it to followers who previously swiped by" ([ICYMI, 14 Oct 2025](https://liahaberman.substack.com/p/the-best-instagram-content-formats); her summary, not his words), and Uppbeat paraphrases an undated Mosseri interview with Colin and Samir as saying a carousel scrolled past "may come back around with the second slide showing" ([Uppbeat, 3 Nov 2026](https://uppbeat.io/blog/creator-news/whats-working-on-instagram-right-now-carousels-and-sends-says-adam-mosseri); a paraphrase, not a quotation). No rule here depends on it.
 
 **The order.** No source found tests the order of slides. Mara's order follows the promise (her rule): the first slide is as found and finished side by side from the taped mark; then what was wrong; then one slide per step; then what went wrong; then the finished piece; then the last slide pointing to the full video through the profile link PB2 set. Eight slides, well under the limit: the 30 minutes PB4 gives each post (PB4 §3) is the binding constraint, and how carousels perform for her is PB7's to test.
 
@@ -539,10 +539,13 @@ Fill the brackets; keep each line's basis. Every minute is your planning estimat
 
 Correction 12 Nov 2026, found by the P99 correction check: §1 now says PB4 first had the phone recording before the first tool comes out of the box, since PB4 now carries this unit's one clip per step (flag F36).
 
+Correction 12 Nov 2026, found by PB7's writer: §6 now says that two press reports, Haberman's summary of a 2024 Mosseri post (ICYMI, 14 Oct 2025) and Uppbeat's paraphrase of an undated Mosseri interview (3 Nov 2026), say Instagram re-shows an unengaged carousel from its second slide, neither quoting Instagram, where it said only that no Instagram statement was found; the Unsure list line follows; no rule changes (flag F41).
+
 ## Sources
 
 - Audio-Technica, "Do you have any tips on placing microphones to get the best possible sound?", undated, read 12 Nov 2026. https://www.audio-technica.com/en-us/support/audio-solutions-question-week-tips-placing-microphones-get-best-possible-sound
 - Google India blog (The YouTube Team), "Strengthening enforcement against egregious clickbait on YouTube", 18 Dec 2024. https://blog.google/intl/en-in/products/platforms/strengthening-enforcement-against-egregious-clickbait-on-youtube/
+- ICYMI (Lia Haberman), "The best Instagram content formats", 14 Oct 2025. https://liahaberman.substack.com/p/the-best-instagram-content-formats
 - Inro, "How long can Instagram Reels be?", updated 23 Jul 2026. https://www.inro.social/blog/instagram-reels-length
 - Instagram, "Introducing Edits: make great videos on your phone", 22 Apr 2025. https://creators.instagram.com/blog/edits-video-creation-app
 - Instagram Help Centre, "Share a post with multiple photos or videos on Instagram", read 12 Nov 2026. https://help.instagram.com/iphone-app/269314186824048
@@ -562,6 +565,7 @@ Correction 12 Nov 2026, found by the P99 correction check: §1 now says PB4 firs
 - Social Media Today, report on the Reels camera update, 23 Nov 2025. https://socialmediatoday.com/news/instagram-update-reels-camera-with-improved-functions/806247
 - Socialinsider, "Instagram Reels statistics for 2026", 24 Jun 2026, updated 6 Nov 2026. https://socialinsider.io/blog/instagram-reels-statistics/
 - Tasty Edits (Alex Lefkowitz), "How long does it take to edit a video?", published 19 May 2021, updated 17 Sep 2026. https://www.tastyedits.com/how-long-does-it-take-to-edit-a-video/
+- Uppbeat, "What's working on Instagram right now? Carousels and sends, says Adam Mosseri", 3 Nov 2026. https://uppbeat.io/blog/creator-news/whats-working-on-instagram-right-now-carousels-and-sends-says-adam-mosseri
 - vidIQ, "YouTube Average View Duration: What Is a Good AVD?", updated 21 Jul 2026. https://vidiq.com/blog/post/average-view-duration/
 - W3C, "Understanding SC 1.2.2: Captions (Prerecorded)", WCAG 2.1, read 12 Nov 2026. https://www.w3.org/WAI/WCAG21/Understanding/captions-prerecorded.html
 - W3C, "Understanding SC 1.4.3: Contrast (Minimum)", WCAG 2.1, read 12 Nov 2026. https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum
@@ -589,6 +593,6 @@ Correction 12 Nov 2026, found by the P99 correction check: §1 now says PB4 firs
 - Whether YouTube's egregious-clickbait enforcement, announced for India on 18 Dec 2024, now applies elsewhere was not found stated (§7).
 - Newman and Schwarz (2018) was read in a copy hosted by Gwern.net; the ANU record confirms the DOI and the abstract but shows no volume or pages; replication outside Mechanical Turk was not checked (§2).
 - No free phone editor was checked for a 10-minute 3840 × 2160 timeline; Edits' 10-minute recording and 4K options rest on Digital Camera World (24 Apr 2025) and were not cited; the editor test in the deliverable stands in for the check (§9, §10, D A).
-- The claim that Instagram re-shows an unengaged carousel from its second slide was searched once; no Instagram statement was found and its origin was not traced (§6).
+- The claim that Instagram re-shows an unengaged carousel from its second slide: no Instagram statement was found; it rests on Haberman's summary of a 2024 Mosseri post (ICYMI, 14 Oct 2025) and Uppbeat's paraphrase of an undated Mosseri interview (3 Nov 2026), and neither underlying statement was read (§6).
 - Object: the phone on its clamp at the edge of the work table, §1
 - Fresh check 2026-11-12 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 0 errors, 3 should-fix, 11 minor; all applied as verified, with the two Sources lines and the lower-third gloss the report proposes; the four figures passed; report `audits/personal-brand/fresh-check-PB5.md`. The checker could not open the copy of Newman and Schwarz (2018) the writer read, so the experiment's numbers in §2 rest on the writer's reading and the earlier check of the same paper.
