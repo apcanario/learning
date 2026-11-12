@@ -1,6 +1,6 @@
 # Sourcing standard
 
-One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 4 are each course family's own rules, taken from its brief preamble and its spec; a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
+One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 6 are each course family's own rules, taken from its brief preamble and its spec; a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
 
 A **checkable claim** is any sentence that carries a number, a date, a named source, an attribution ("X argued Y", "the source says"), a mechanism or a recommendation. The auditor's sample is drawn from these (method.md §6).
 
@@ -65,5 +65,37 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] Every figure is a fenced `viz` block of a kind `kit/viz.py` draws; its labels and numbers appear in the unit's own sourced text; no screenshot, embedded image or hand-written SVG.
 - [ ] No uncited figures; no invented articles, authors, studies, URLs, names or numbers; a claim that cannot be sourced is said to be unsourced and is left out of the deliverable.
 - [ ] Where the unit's search flag is on (DD-IA1, DD-IA2), every observation of a live product and every published figure carries the date it was checked.
+- [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
+- [ ] Links are given as links, so the course bibliography can collect them.
+
+## Part 5 · Building a Personal Brand on Instagram and YouTube (from the shared preamble of `generator/data/personal-brand/units_data.py`)
+
+- [ ] Every claim that carries a number, a mechanism or a recommendation is sourced where it is made.
+- [ ] Each source is one of: peer-reviewed work; platform-official documentation or statements; a large-sample vendor dataset, named, with sample size and date; a documented creator case with verifiable numbers.
+- [ ] Creator anecdotes are labelled as anecdote; correlational and vendor data are labelled as such.
+- [ ] A claim about growth, formats or metrics says which platform it holds for.
+- [ ] Every claim carried over from a source unit of the private course was re-verified at its source by the writer; nothing rests on the source unit alone.
+- [ ] Nothing about the private course's reader appears, and the unit never refers to the private course or its units (`python3 kit/private_terms.py` prints OK).
+- [ ] Every fact about Mara Venn, the fictional running example, is labelled "(Mara, fictional)" on its first use in the unit, agrees with `generator/data/personal-brand/case-facts.md`, and is never used as evidence for a claim about the world; every benchmark she is set against is sourced.
+- [ ] No country's tax rate or threshold is stated as the reader's; an amount is in its source's currency with its date; a legal point is a question with the primary source to open for the EU, the UK and the US, and the unit says it is information, not legal or tax advice.
+- [ ] No uncited figures; no invented handles, names, studies or numbers (Mara's labelled facts apart); a claim that cannot be sourced is said to be unsourced and is left out of the deliverable.
+- [ ] Where the unit's search flag is on, every fact that can change (platform rules and thresholds, features, prices, published benchmarks) carries the date it was checked.
+- [ ] The deliverable is built in full for Mara and then given as a template whose blanks say what goes in them.
+- [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
+- [ ] Links are given as links, so the course bibliography can collect them.
+
+## Part 6 · Building with AI (from the shared preamble of `generator/data/building-with-ai/units_data.py`)
+
+- [ ] Every claim that carries a number, a mechanism or a recommendation is sourced where it is made.
+- [ ] Each source is one of: peer-reviewed work; a preprint, labelled as one; vendor documentation or statements, labelled as vendor and dated; a named practitioner's own post, talk or repository, labelled as practice; an independent benchmark with its version and date.
+- [ ] Each method or practice carries an evidence grade: measured, documented practice, or stated opinion.
+- [ ] A study's finding names the models and the task it tested; a transfer to a current model or to the reader's work is said to be the unit's inference.
+- [ ] Every product fact (a limit, a price, a feature, a model name) carries the date it was read on the vendor's own page.
+- [ ] The body ends with a section "On other tools" that says which claims are specific to Claude and cites the other vendors' own documentation for each equivalent, or says none was found.
+- [ ] Every claim carried over from a source unit of the private course was re-verified at its source by the writer; nothing rests on the source unit alone.
+- [ ] Nothing about the private course's reader appears, and the unit never refers to the private course or its units (`python3 kit/private_terms.py` prints OK).
+- [ ] Every fact about the Academy case is in `generator/data/building-with-ai/case-academy.md`, is cited to its section, is labelled "(Academy case)" on first use and as an anecdote, and is never the only support for a general claim.
+- [ ] No uncited figures; no invented names, studies, quotations or numbers; a claim that cannot be sourced is said to be unsourced and is left out of the deliverable.
+- [ ] The deliverable is built in full on the case (or on a neutral example whose invented content is labelled) and then given as a template whose blanks say what goes in them.
 - [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
 - [ ] Links are given as links, so the course bibliography can collect them.

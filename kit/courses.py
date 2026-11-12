@@ -151,7 +151,33 @@ UX = dict(
     eyebrow='USER EXPERIENCE',
 )
 
-COURSES = [GREECE, ROME, BRAND_AI, UX]
+# The two public courses (11 Nov 2026, backlog row G-0; docs/public-courses.md): adapted from Brand + AI's A and B for
+# any reader, each in its own data folder and vault so the private courses can move to a private site later. Each sits
+# in the same track as its private original for now. No private term may reach either (kit/private_terms.py).
+PERSONAL_BRAND = dict(
+    id='personal-brand', family='markdown', short='Personal Brand (public)', label='PERSONAL BRAND', name='Building a Personal Brand on Instagram and YouTube', color='var(--teal)',
+    home_id='personal-brand', status='in progress',
+    # panel ids default to <id>-<key>: personal-brand-pb, personal-brand-pb-briefs
+    tracks={'PB': ('marketing', 'Personal brand · public')},
+    tiles={'PB': 'A following on Instagram and YouTube, step by step, all sourced.'},
+    data='generator/data/personal-brand/hub.py',
+    vault='courses/personal-brand',   # the filed units (method.md §7); the folder appears with the first one (A5)
+    sourcing_part='Part 5',
+    eyebrow='PERSONAL BRAND',
+)
+
+BUILDING_WITH_AI = dict(
+    id='building-with-ai', family='markdown', short='Building with AI (public)', label='BUILDING WITH AI', name='Building with AI', color='var(--purple)',
+    home_id='building-with-ai', status='in progress',
+    tracks={'BW': ('technology', 'Building with AI · public')},
+    tiles={'BW': 'A working method for building a real project with AI.'},
+    data='generator/data/building-with-ai/hub.py',
+    vault='courses/building-with-ai',
+    sourcing_part='Part 6',
+    eyebrow='BUILDING WITH AI',
+)
+
+COURSES = [GREECE, ROME, BRAND_AI, UX, PERSONAL_BRAND, BUILDING_WITH_AI]
 
 # Editions (P70, 1 Nov 2026): a build of Academy with only some courses, from the same sources, theme, shell and rules.
 # `courses`: the ids of the courses it holds (None: every course); `omit`: what it leaves out, by panel kind

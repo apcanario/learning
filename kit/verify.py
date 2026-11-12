@@ -122,6 +122,7 @@ import sys, json, pathlib, re, threading, functools, math, html as H
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
+import private_terms   # G-0: the public courses carry no private term
 from courses import COURSES, THEMES, EDITIONS, NEXT
 # P70: --edition checks an edition's folder the same way, over the courses and pages it holds (default: the full Academy)
 EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else 'academy'
@@ -137,10 +138,15 @@ HAS = {c['id'] for c in COURSES}
 ROME, BRAND = 'rome' in HAS, 'brand-ai' in HAS
 import viz, viz_examples   # P55: the examples page's hard cases and the blocks that must stop the build
 # each track and its course cards as the home must show them, from courses.py (A5: a new course needs no edit here)
+# G-0 (12 Nov 2026): a markdown course with no unit filed is not live and has no tile on the home (home_expect says the
+# same); a unit's file is named by its code, the course's key and a number (A9, DD-IA2, PB1)
+def _live(c, k):
+    v = pathlib.Path(__file__).resolve().parent.parent / c['vault']
+    return any(v.glob(f'{k}[0-9]*.md')) or any(v.glob(f'DD-{k}[0-9]*.md'))
 HOME_TRACKS = [t['name'] + ':' + ','.join(
     ['#' + c['home_id'] for c in COURSES if c['family'] == 'history' and c['theme'] == t['id']]
     + ['#' + f"{c.get('prefix', c['id'])}-{k.lower()}" for c in COURSES if c['family'] == 'markdown'
-       for k, (tr, _) in c['tracks'].items() if tr == t['id']]) for t in THEMES]
+       for k, (tr, _) in c['tracks'].items() if tr == t['id'] and _live(c, k)]) for t in THEMES]
 
 R = pathlib.Path(__file__).resolve().parent
 SITE = R / ED['site']
@@ -1132,7 +1138,7 @@ def check_files(fails):
     # history homes; P93 the markdown ones, whose unit tiles and topography would have filled the shell) and every
     # course's "How it was built" page leave the shell (A2, P20, P22, A4, P93)
     must = [h for h in heads if ' data-kind="report"' in h or ' data-kind="syllabus"' in h or re.search(r' id="(briefs-[a-z]+|[a-z-]+-briefs|[a-z-]+-bibliography|[a-z-]+-built)"', h)
-            or ' data-kind="course"' in h or ' id="viz-examples"' in h or ' id="new"' in h]   # P91: What's new is fetched too; P93: every course home, a markdown course's too
+            or ' data-kind="course"' in h or ' id="viz-examples"' in h or ' id="new"' in h or ' id="changelog"' in h]   # G-0: the changelog too   # P91: What's new is fetched too; P93: every course home, a markdown course's too
     kept = [h[:80] for h in must if ' data-src="' not in h]
     if kept: fails.append(f'split: {len(kept)} panels should be fetched but are in the shell: {kept[:2]}')
     if len(srcs) != len(must): fails.append(f'split: {len(must)} panels should be fetched but {len(srcs)} carry data-src')
@@ -2399,6 +2405,9 @@ def main():
     ix = index_check.check()   # A5: docs/courses-index.md against the sources it summarises
     fails += ['courses-index.md: ' + x for x in ix]
     print('courses-index.md: ' + (f'{len(ix)} mismatches' if ix else 'matches the sources'))
+    pt = private_terms.check()   # G-0 (11 Nov 2026): no private term in a public course's vault, data folder or built pages
+    fails += ['private term in a public course: ' + x for x in pt]
+    print('private terms in the public courses: ' + (f'{len(pt)} found' if pt else 'none'))
     print('\n'.join('FAIL ' + f for f in fails) if fails else 'ALL CHECKS PASSED')
     return 1 if fails else 0
 

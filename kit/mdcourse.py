@@ -408,6 +408,7 @@ def build(m, crumbs, theme, pill_next, chev, kit):
     list, nav html, bibliography size)."""
     c, sc, d = m['parent'], m['sc'], m['parent']['hub']
     ctx, k, col, key = m['id'], sc['k'], m['color'], sc['key']
+    m.setdefault('wby', {})   # G-0 (11 Nov 2026): a course with no unit filed yet has no words, and still builds
     courses = d.COURSES
     done = lambda u: u[0] in d.WRITTEN
     C_DONE = {x['key']: sum(map(done, x['units'])) for x in courses}

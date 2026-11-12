@@ -1,0 +1,34 @@
+# Private terms that must never reach a public course (kit/private_terms.py; docs/public-courses.md).
+# One term per line, matched as a whole word, case-insensitive. A line starting "warn:" is reported and does not fail.
+# This file stays in the private repository; deploy.sh pushes only kit/academy/.
+Pedro
+Canário
+Canario
+apcanario
+run.pedro.run
+Pedro on the Run
+Porto
+Infios
+ToolsGroup
+Shōmen
+Shomen
+Wado
+Wado-Ryū
+WIKF
+kumite
+SC Braga
+Braga
+Teresa
+Toni
+pcblueprint
+AIssistant
+Strider
+Brand + AI
+brand-ai
+warn: ADHD
+warn: karate
+warn: half marathon
+warn: Athens
+warn: Portugal
+warn: Portuguese
+warn: his setup

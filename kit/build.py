@@ -1017,7 +1017,7 @@ def md_card(m, phase=None):
 
 # P93: the home's drawings in page order (the hero, each live course's tile, History's eight planned courses), each
 # starting at its own point of the cycle
-HOME_PH = iter(phases(1 + len(HISTORY) + len(MD) + len(NEXT)))
+HOME_PH = iter(phases(1 + len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon') + len(NEXT)))   # G-0: one phase per drawing on the home; a course with nothing filed has none
 HERO_TOPO['phase'] = round(next(HOME_PH), 3)
 hero_topo = viz.render(HERO_TOPO)
 tracks = ''
@@ -1026,8 +1026,10 @@ for t in THEMES:
     mds = [m for m in MD if m['theme'] == t['id']]
     cards = ''.join(root_card(c, next(HOME_PH)) for c in hist)
     soon_cards = ''.join(ghost_tile(t['name'], short, name, col, scope, spine, next(HOME_PH)) for short, name, col, scope, spine in NEXT) if t['id'] == 'history' else ''
-    cards += ''.join(md_card(m, next(HOME_PH)) for m in mds)
     soon = [m for m in mds if m['status'] == 'coming soon']   # a markdown course with nothing written is planned, not live
+    # G-0 (12 Nov 2026): such a course has no tile on the home (verify.py's home_expect: "a course with nothing filed is
+    # not live: no tile"; its patch would be empty); it is counted as coming soon here and listed in the drawer
+    cards += ''.join(md_card(m, next(HOME_PH)) for m in mds if m not in soon)
     n = len(hist) + len(mds) - len(soon)
     count = f'{n} course{"s" if n != 1 else ""}' if n else f'{len(soon)} course{"s" if len(soon) != 1 else ""} coming soon'
     if hist: count += f' · {sum(c["nrep"] for c in hist)} reports'
@@ -1219,6 +1221,16 @@ _wn_head = whatsnew.strip()[:whatsnew.strip().index('>') + 1]
 _wn_body = whatsnew.strip()[len(_wn_head):-len('</section>')].strip() + '\n'
 (SITE / 'new.html').write_text(_wn_body)
 panels.insert(1, '\n' + _wn_head[:-len(' hidden>')] + f' data-src="new.html" data-anchors="{" ".join(re.findall(r' id="([^"]+)"', _wn_body))}" hidden></section>')
+# G-0 (12 Nov 2026) · the changelog leaves the shell too (academy/changelog.html, fetched on navigation, like What's new):
+# at 422 KB it was the largest panel, and with it the shell stood 7 KB under its 1 MB limit, so the next unit filed
+# would have failed verify.py's size check
+if 'changelog' not in OMIT:
+    _k = next(i for i, p in enumerate(panels) if re.match(r'\s*<section class="panel[^"]*" id="changelog"', p))
+    _cl = panels[_k].strip()
+    _cl_head = _cl[:_cl.index('>') + 1]
+    _cl_body = _cl[len(_cl_head):-len('</section>')].strip() + '\n'
+    (SITE / 'changelog.html').write_text(_cl_body)
+    panels[_k] = '\n' + _cl_head[:-len(' hidden>')] + f' data-src="changelog.html" data-anchors="{" ".join(re.findall(r' id="([^"]+)"', _cl_body))}" hidden></section>'
 
 def root_nav_track(t):
     hist = [c for c in HISTORY if c['theme'] == t['id']]
@@ -1298,7 +1310,7 @@ if OLD.exists():
 # the size table in README.md (between the markers), regenerated on every build; verify.py checks it against the files
 def kb(n):
     return f'{n / 1024:,.0f} KB' if n < 1024 * 1024 else f'{n / 1024 / 1024:.2f} MB'
-rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, the build pages of the markdown courses, changelog, backlog')]
+rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, the build pages of the markdown courses, backlog')]
 for ctx, name in [(c['id'], c['short']) for c in HISTORY] + [(m['id'], m['short']) for m in MD]:
     fs = [len(v.encode()) for k, v in REPORTS.items() if k.startswith(ctx + '/')]
     big = max(((len(v.encode()), k) for k, v in REPORTS.items() if k.startswith(ctx + '/')), default=(0, ''))
