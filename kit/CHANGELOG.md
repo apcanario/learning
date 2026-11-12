@@ -133,7 +133,7 @@ W-PB4 ran in the same unattended chat as W-PB3 (session 73), on Opus 5.5, which 
 - **Corrected where they sat.** PB1 and PB3 §6: YouTube's statement on breaks beside AIR's gap data, with dated notes.
 - **Flags put right.** W-PB3 had set F2, F5 and F20 to carried, which took them out of PB4's prompt (`next_prompt.py` passes only flags whose status is exactly open); they were set back to open with PB3's handling noted, and W-PB4's prompt re-saved before its writer ran.
 - **Build.** `build.py`, `verify.py`: ALL CHECKS PASSED; `verify.py --shots --page read-pb4` looked at.
-- **Publish.** See the record commit.
+- **Publish.** Academy artifact v147 (1794484293-8f99, build b298b20; the shell in its live wrapper and the nine changed files sent in one patch and all ten read back, sha256 matching); Pages academy aeda65a, run 43212780952 succeeded.
 
 ## 12 November 2026 · Session 73 · Public course PB, unit PB3 (W-PB3)
 
