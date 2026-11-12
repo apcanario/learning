@@ -305,7 +305,7 @@ Cut in this order and keep the date (A2, Deliverable 2): Instagram to zero; skip
   {"label": "Week 11 · 12 Jan", "value": 6.75, "tone": 1},
   {"label": "Week 12 · 19 Jan", "value": 6.25, "tone": 2}
  ],
- "caption": "The weekly totals of the calendar above, every week inside 5–7 hours: weeks A (publish, Short, Instagram, comments, outline, filming) at 6.75, weeks B (editing window) at 6.25, the Christmas week cut in advance to 5.25. Hours per item are A2's allocation (Deliverable 2) plus this unit's capture line (§6); all are estimates that A9's hours log tests."}
+ "caption": "The weekly totals of the calendar above, every week inside 5–7 hours: weeks 1 and 2 (the close of season one) at 6.5, weeks A (publish, Short, Instagram, comments, outline, filming) at 6.75, weeks B (editing window) at 6.25, the Christmas week cut in advance to 5.25; each of these four kinds of week has its own tone. Hours per item are A2's allocation (Deliverable 2) plus this unit's capture line (§6); all are estimates that A9's hours log tests."}
 ```
 
 **What the 12 weeks produce:** five long-form episodes (the Athens finale and season two's episodes 1 to 4), five Shorts (50% of uploads, A2 §4), 24 Instagram posts (two a week), 12 emails, one season closed and one opened. By the arithmetic of the table, the planned total is 77.0 hours, a mean of 6.42 a week; the lowest week is 5.25 and the highest 6.75, so no week leaves the 5–7 band, and the B weeks keep 0.75 hours of slack for the editing overrun A2 expects.

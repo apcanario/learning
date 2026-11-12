@@ -145,7 +145,11 @@ the renderer cannot draw honestly stops the build with a message that says what 
               0 to max. Each row grows with its label. P97 (12 Nov 2026): it also carries a phone drawing (svg.viz-alt,
               PHONE_NARROW = 258 units, shown below 768 px), its labels pinned at the left (wrapped at 112) when that
               leaves the bars 96 units, else above each bar, so the longest bar is whole in the opening phone frame.
-  bars        the same label column as compare (it wrapped at 160 inside a 172 column).
+  bars        the same label column as compare (it wrapped at 160 inside a 172 column). P98 (12 Nov 2026): its phone
+              drawing is PHONE_NARROW (258) units wide, as a compare's, so every bar and its value open whole on a
+              320 px phone. Bars draw no track, so P98's value rule (below) does not apply to them.
+  compare     P98 (12 Nov 2026): a value sits wholly on its track or wholly beyond the track's end (_val_x), in both
+              drawings, never across the track's edge.
   tree        boxes keep their size: 112 units, or wider when one word of a label needs it, so no word is broken; every
               label is wrapped in full (it was cut at two lines) and a level's boxes grow to its longest label. A tree
               more than 15 % wider than 700 keeps its size on a desktop and scrolls (viz-wide); one just over 700 (six
@@ -686,10 +690,21 @@ def compare(d):
         body += lt; stick += lt
         body += f'<rect class="viz-track" x="{bar_x}" y="{cy - 7:.1f}" width="{bar_w:.1f}" height="14"/>'
         body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{cy - 7:.1f}" width="{wv:.1f}" height="14"/>'
-        body += f'<text class="viz-value" x="{bar_x + wv + 8:.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
+        body += f'<text class="viz-value" x="{_val_x(bar_x, wv, bar_w, v):.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
         y += rh
     alt = _compare_phone(rows, vals, mx, K)
     return _svg(W, _r(y + 4), body, 'compare', d.get('title'), d.get('caption'), stick=None if alt else (bar_x - 4, stick), alt=alt)
+
+
+def _val_x(bar_x, wv, bar_w, v):
+    """P98 (12 Nov 2026): the x of a value printed after its bar on a track. It sits 8 units past the bar's end when it
+    fits wholly on the track there (4 units clear of the track's end); otherwise it sits wholly beyond the track's end
+    (6 units past it), so the track's edge never cuts through a number. The value column (VW, the widest value plus 14)
+    leaves room for that in every drawing."""
+    x, end = bar_x + wv + 8, bar_x + bar_w
+    if x + _tw(v, 10.5, 'mono') > end - 4:
+        x = max(x, end + 6)
+    return x
 
 
 COMPARE_PHONE_LABEL = 112   # P97: the widest a compare's pinned label column grows in its phone drawing before its labels wrap
@@ -715,7 +730,7 @@ def _compare_phone(rows, vals, mx, K):
             body += _text(lab, T_LABEL, bar_x - 10, cy - len(lab) * 7, 'end')
             body += f'<rect class="viz-track" x="{bar_x}" y="{cy - 7:.1f}" width="{bar_w:.1f}" height="14"/>'
             body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{cy - 7:.1f}" width="{wv:.1f}" height="14"/>'
-            body += f'<text class="viz-value" x="{bar_x + wv + 8:.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
+            body += f'<text class="viz-value" x="{_val_x(bar_x, wv, bar_w, v):.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
             y += rh
     else:                                                         # stacked: each label above its bar, the bar the drawing's width
         bar_x, bar_w = 8, PW - 16 - VW
@@ -726,7 +741,7 @@ def _compare_phone(rows, vals, mx, K):
             wv = bar_w * float(r['value']) / mx
             body += f'<rect class="viz-track" x="{bar_x}" y="{y:.1f}" width="{bar_w:.1f}" height="14"/>'
             body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{y:.1f}" width="{wv:.1f}" height="14"/>'
-            body += f'<text class="viz-value" x="{bar_x + wv + 8:.1f}" y="{y + 10.8:.1f}">{esc(v)}</text>'
+            body += f'<text class="viz-value" x="{_val_x(bar_x, wv, bar_w, v):.1f}" y="{y + 10.8:.1f}">{esc(v)}</text>'
             y += 14 + 12
     return (PW, _r(y + 4), body)
 
@@ -2343,7 +2358,7 @@ def _bars_phone(d):
     """Grouped or stacked horizontal bars across categories: one bar per series in each row (grouped) or one bar of
     segments (stacked); values at the bar ends (a stacked bar's total at its end, a segment's value inside it when it
     fits); a legend names the series. P83 (3 Nov 2026): the row label sits above its bars and the drawing is as wide as
-    a phone's figure frame (PHONE_FRAME), so on a phone a bar, its value and its label are always in view together; on a
+    a phone's figure frame (PHONE_NARROW since P98, 12 Nov 2026: a 320 px phone's frame; PHONE_FRAME before), so on a phone a bar, its value and its label are always in view together; on a
     wider screen the drawing keeps that size (viz-fit) instead of stretching to the column."""
     K = 'bars'
     series, rows = d.get('series'), d.get('rows')
@@ -2367,7 +2382,7 @@ def _bars_phone(d):
     tot = [sum(v or 0 for v in r['values']) for r in rows]
     big = max(tot) if mode == 'stacked' else max(v or 0 for r in rows for v in r['values'])
     mx = d.get('max') or _ticks(0, big or 1)[-1]
-    Wd = PHONE_FRAME
+    Wd = PHONE_NARROW   # P98 (12 Nov 2026): was PHONE_FRAME (328), which scrolled on a 320 px phone
     labs = [_lines(r['label'], T_LABEL, Wd - 16) for r in rows]
     vals = [_fmt(v, dec) + unit for r, t in zip(rows, tot) for v in (r['values'] + [t]) if v is not None]
     VW = max(_tw(v, 10.5, 'mono') for v in vals) + 12
@@ -2417,7 +2432,7 @@ def _bars_phone(d):
 def bars(d):
     """Grouped or stacked horizontal bars. Two drawings (P83, 3 Nov 2026, Pedro: "it should be responsive"): the wide one,
     labels in a column at the left, 700 units, scaled to the column at 768 px and up; and the phone one, the row label
-    above its bars, as wide as the phone frame (PHONE_FRAME), shown below 768 px so the chart never scrolls there. Both
+    above its bars, as wide as a 320 px phone's frame (PHONE_NARROW since P98), shown below 768 px so the chart never scrolls there. Both
     are drawn from the same data by _bars_wide and _bars_phone; the theme shows one at a time."""
     import copy as _c
     body, w, h = _bars_wide(_c.deepcopy(d))

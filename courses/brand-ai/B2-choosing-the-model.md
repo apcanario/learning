@@ -84,7 +84,7 @@ On the price list alone, an output token on Haiku, Sonnet, Opus and Fable costs 
   {"label": "Sonnet 5.5", "value": 10, "display": "$10", "tone": 3},
   {"label": "Haiku 5.5", "value": 0.5, "display": "$0.50 (prompt up to 100K)", "tone": 4}
  ],
- "caption": "The Output column of the table above: list price per million output tokens, the rate thinking tokens are also billed at. <a href=\"https://platform.claude.com/docs/en/about-claude/pricing\">Anthropic, Pricing</a>, read 28 Oct 2026. The 1 : 20 : 40 : 100 ratio; §5 gives the cost per task, which is what matters."}
+ "caption": "The Output column of the table above (Haiku 5.5: prompt up to 100K): list price per million output tokens, the rate thinking tokens are also billed at. <a href=\"https://platform.claude.com/docs/en/about-claude/pricing\">Anthropic, Pricing</a>, read 28 Oct 2026. The 1 : 20 : 40 : 100 ratio; §5 gives the cost per task, which is what matters."}
 ```
 
 ## 4 · The other vendors on the same axes

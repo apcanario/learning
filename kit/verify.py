@@ -1919,47 +1919,66 @@ FIG_JS = r'''(sel) => {
 }'''
 
 CMP_WIDTHS = [('phone320', 320, 640), ('phone', 390, 844)]
+TRACK_WIDTHS = CMP_WIDTHS + [('desktop', 1280, 800)]
 CMP_JS = """async (pid) => { const out = []; const p = document.getElementById(pid);
- for (const [i, f] of [...p.querySelectorAll('figure.viz-compare')].entries()) {
+ for (const [i, f] of [...p.querySelectorAll('figure.viz-compare, figure.viz-bars')].entries()) {
   const sec = f.closest('.sec'); if (sec && !sec.classList.contains('on')) p.querySelector('.seclist a[data-step="' + sec.dataset.step + '"]').click();
   for (const d of p.querySelectorAll('details')) if (d.contains(f)) d.open = true;
   f.scrollIntoView({block: 'center'}); await new Promise(r => setTimeout(r, 120));
   const sc = f.querySelector('.viz-scroll'), fr = sc.getBoundingClientRect();
   const s = [...sc.querySelectorAll(':scope > svg')].find(x => getComputedStyle(x).display !== 'none');
-  const bars = [...s.querySelectorAll('rect.viz-bar')].map(b => [b, b.getBoundingClientRect()]);
-  const [bar, br] = bars.reduce((a, b) => b[1].width > a[1].width ? b : a);
+  const bars = [...s.querySelectorAll('rect.viz-bar')].map(b => b.getBoundingClientRect()).filter(r => r.height > 0);
   const vals = [...s.querySelectorAll('text.viz-value')].map(t => t.getBoundingClientRect());
-  const v = vals.find(r => Math.abs((r.top + r.bottom) / 2 - (br.top + br.bottom) / 2) < 8) || null;
-  out.push({n: i + 1, frame: [fr.left, fr.right], bar: [br.left, br.right], val: v ? [v.left, v.right] : null,
+  const tracks = [...s.querySelectorAll('rect.viz-track')].map(t => t.getBoundingClientRect());
+  const cross = [];
+  for (const v of vals) { const cy = (v.top + v.bottom) / 2;
+    const t = tracks.find(t => cy > t.top - 2 && cy < t.bottom + 2);
+    if (t && v.left < t.right - 0.5 && v.right > t.right + 0.5) cross.push([v.left, v.right, t.right]); }
+  out.push({n: i + 1, kind: f.classList.contains('viz-bars') ? 'bars' : 'compare', frame: [fr.left, fr.right],
+            bars: bars.map(r => [r.left, r.right]), vals: vals.map(r => [r.left, r.right]), cross: cross,
             open: sc.scrollLeft, alt: s.classList.contains('viz-alt')}); }
  return out; }"""
-def check_compare_phone(br, fails):
-    """P97 (12 Nov 2026): every compare figure, on every page that has one, at 320 and 390 px: the drawing a phone shows
-    (its svg.viz-alt) opens with its longest bar and that bar's value whole inside the frame, unscrolled, so the bars are
-    seen to scale in one frame. Before P97 a compare drew 700 units on a phone and its long bars ran off the frame's edge."""
+def check_phone_figures(br, fails):
+    """P97 (12 Nov 2026), widened by P98 (12 Nov 2026) from compare to bars, and from the longest bar to every bar:
+    every compare and bars figure, on every page that has one, at 320 and 390 px: the drawing a phone shows (its
+    svg.viz-alt) opens unscrolled with every bar and every value whole inside the frame, so the bars are seen to scale
+    in one frame. And (P98) at 320, 390 and 1280 px, in the drawing the width shows: no value sits across the end of its
+    grey track (wholly on it or wholly beyond its end). Before P97 a compare drew 700 units on a phone; before P98 a
+    bars figure's phone drawing was 328 units and scrolled on a 320 px phone, and a value could straddle its track's end."""
     idx = (SITE / 'index.html').read_text()
     pids = [pid for pid, src in re.findall(r'<section class="panel" id="([^"]+)"[^>]*data-src="([^"]+)"', idx)
-            if (SITE / src).exists() and 'viz-compare' in (SITE / src).read_text()]
-    n, bad = 0, []
-    for name, w, h in CMP_WIDTHS:
+            if (SITE / src).exists() and re.search(r'viz-(compare|bars)\b', (SITE / src).read_text())]
+    n, nt, bad = 0, 0, []
+    for name, w, h in TRACK_WIDTHS:
         errs = []
-        ctx, pg, _ = new_page(None, br, errs, name, w, h, True)
+        phone = w < 768
+        ctx, pg, _ = new_page(None, br, errs, name, w, h, phone)
         for pid in pids:
             pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(120)
             for f in pg.evaluate(CMP_JS, pid):
+                where = f'{pid} figure {f["n"]} ({f["kind"]}) at {w} px'
+                nt += 1
+                for vl, vr, tr in f['cross']:
+                    bad.append(f'{where}: a value ({vl:.0f} to {vr:.0f}) sits across the end of its track ({tr:.0f})')
+                if not phone:
+                    continue
                 n += 1
-                (fl, fr), (bl, brr) = f['frame'], f['bar']
-                where = f'{pid} figure {f["n"]} (compare) at {w} px'
+                fl, fr = f['frame']
                 if not f['alt']:
-                    bad.append(f'{where}: shows its 700-unit drawing, not its phone drawing')
-                if f['open'] > 0.5 or bl < fl - 0.5 or brr > fr + 0.5:
-                    bad.append(f'{where}: the longest bar ({bl:.0f} to {brr:.0f}) is not whole in the opening frame ({fl:.0f} to {fr:.0f})')
-                elif not f['val'] or f['val'][1] > fr + 0.5:
-                    bad.append(f'{where}: the longest bar\'s value runs past the frame')
-        if errs: fails.append(f'compare on a phone {name}: console errors: ' + ' | '.join(errs[:3]))
+                    bad.append(f'{where}: shows its wide drawing, not its phone drawing')
+                if f['open'] > 0.5:
+                    bad.append(f'{where}: the frame opens scrolled')
+                out = [b for b in f['bars'] if b[0] < fl - 0.5 or b[1] > fr + 0.5]
+                if out:
+                    bad.append(f'{where}: {len(out)} bar(s) not whole in the opening frame ({fl:.0f} to {fr:.0f})')
+                vout = [v for v in f['vals'] if v[0] < fl - 0.5 or v[1] > fr + 0.5]
+                if vout:
+                    bad.append(f'{where}: {len(vout)} value(s) run past the frame')
+        if errs: fails.append(f'compare and bars {name}: console errors: ' + ' | '.join(errs[:3]))
         ctx.close()
     fails += bad
-    print(f'compare on a phone (P97): {n} figure frames on {len(pids)} pages at 320 and 390 px, {len(bad)} without the longest bar and its value whole in the opening frame')
+    print(f'compare and bars on a phone (P97, P98): {n} figure frames on {len(pids)} pages at 320 and 390 px, every bar and value whole in the opening frame; '
+          f'{nt} drawings at 320, 390 and 1280 px checked for a value across its track\'s end; {len(bad)} faults')
 
 def check_figures(br, fails):
     """The examples page (V1) through the shell: VX_FIGS figures, one per kind, and the geometry of each (FIG_JS)."""
@@ -1993,7 +2012,7 @@ def main():
         br = p.chromium.launch()
         check_split(br, fails)
         check_figures(br, fails)
-        check_compare_phone(br, fails)
+        check_phone_figures(br, fails)
         check_reading(br, fails)
         check_seps(br, fails)
         check_reliefs(br, fails)   # P95

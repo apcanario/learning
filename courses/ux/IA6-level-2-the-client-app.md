@@ -304,7 +304,7 @@ Two calls to action are new here, both by the employee: claim -> view (tracking 
 The employee's tasks ranked by assumed frequency:
 
 ```viz
-{"kind": "compare", "caption": "Task inventory, ranked: the Perqo employee's tasks by assumed frequency per employee per month, F2; supports the decision on what sits on Home and in the tab bar (Deliverable A, A.1). Every frequency is assumed, within IA3's assumption that the app is opened a few times a month (IA3, section 6.2), and is replaced by measured use in IA11; placement by frequency from Sears and Shneiderman, ACM TOCHI 1(1), 1994, and Nielsen, 'Progressive Disclosure', NN/g, 2006. Every bar is tone 3, the employee and the app; paying with the card happens at a merchant's till and does not open the app. Perqo is fictional.", "unit": "a month", "max": 10, "decimals": 1, "rows": [
+{"kind": "compare", "caption": "Task inventory, ranked: the Perqo employee's tasks by assumed frequency per employee per month, F2; supports the decision on what sits on Home and in the tab bar (Deliverable A, A.1). Every frequency is assumed, within IA3's assumption that the app is opened a few times a month (IA3, section 6.2), and is replaced by measured use in IA11; placement by frequency from Sears and Shneiderman, ACM TOCHI 1(1), 1994, and Nielsen, 'Progressive Disclosure', NN/g, 2006. Every bar is tone 3, the employee and the app; paying with the card happens at a merchant's till and does not open the app. Perqo is fictional.", "unit": "a month", "max": 10, "rows": [
  {"label": "Pay with my card", "value": 8, "tone": 3},
  {"label": "See my balance per category", "value": 3, "tone": 3},
  {"label": "Read a notification", "value": 2, "tone": 3},

@@ -194,6 +194,7 @@ What the sound figures support: on an owned list, the documented cases sit aroun
  "kind": "compare",
  "title": "Median monthly subscriber growth, by channel size",
  "unit": "%",
+ "decimals": 2,
  "rows": [
   {
    "label": "1–99",

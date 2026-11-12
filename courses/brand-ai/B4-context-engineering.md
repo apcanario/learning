@@ -390,7 +390,7 @@ F1's shares, side by side.
 {
  "kind": "compare",
  "unit": "%",
- "caption": "Project knowledge by share of its 907,260 characters, in the groups of finding F1 (Deliverable, C). Measured by script from the 33 repository files the Project mirrors, at commit <code>b4fea09</code>, 29 October 2026 (Deliverable, A).",
+ "caption": "Project knowledge by share of its 907,260 characters, in the groups of finding F1 (Deliverable, C); the bar in its own tone is the rules, map and queue, the five files F1 keeps. Measured by script from the 33 repository files the Project mirrors, at commit <code>b4fea09</code>, 29 October 2026 (Deliverable, A).",
  "rows": [
   {
    "label": "Filed units",

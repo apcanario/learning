@@ -161,7 +161,7 @@ The brand system is the one B3 records for Shōmen: the Tomorrow typeface, "red 
   {"label": "Red on #1A1A1A", "value": 4.72, "tone": 5},
   {"label": "Red on light blue", "value": 1.94, "tone": 6}
  ],
- "caption": "§4: WCAG contrast ratios of the two Shōmen highlight colours (B3, templates 5 and 6) on black, on #1A1A1A as a stand-in for near-black, and against each other, computed by script with the formula in <a href=\"https://w3.org/WAI/WCAG20/Understanding/contrast-minimum\">W3C, Understanding SC 1.4.3</a> (4.5:1 for text, 3:1 for large text). Applying a web-text standard to thumbnails is this unit's transfer."}
+ "caption": "§4: WCAG contrast ratios of the two Shōmen highlight colours (B3, templates 5 and 6) on black, on #1A1A1A as a stand-in for near-black, and against each other (the bar tones are the theme's, not the colours named), computed by script with the formula in <a href=\"https://w3.org/WAI/WCAG20/Understanding/contrast-minimum\">W3C, Understanding SC 1.4.3</a> (4.5:1 for text, 3:1 for large text). Applying a web-text standard to thumbnails is this unit's transfer."}
 ```
 
 **The thumbnail rules, his, each with its basis:**

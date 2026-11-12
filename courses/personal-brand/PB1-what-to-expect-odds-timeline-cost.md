@@ -82,7 +82,7 @@ The Instagram evidence is thinner than YouTube's, and it describes different acc
   {"label": "6–9 posts a week", "value": 0.44, "tone": 2},
   {"label": "10 or more a week", "value": 0.66, "tone": 3}
  ],
- "caption": "Fixed-effects estimates from §3: each account compared with itself, feed posts only (photos, Reels, carousels), Stories excluded. 2.1 million posts from 102,000 Instagram accounts using Buffer. Source: Buffer, How often should you post on Instagram, 13 Aug 2025. Vendor data, within-account association; no confidence intervals published."}
+ "caption": "Fixed-effects estimates from §3: each account compared with itself, feed posts only (photos, Reels, carousels), Stories excluded. 2.1 million posts from 102,000 Instagram accounts using Buffer. Source: Buffer, How often should you post on Instagram, 13 Aug 2025. Vendor data, within-account association; no confidence intervals published. The bar tones only tell the rows apart; they carry no meaning."}
 ```
 
 A rate means little at a small base. For Mara at 140 followers and three posts a week, 0.26% of weekly growth is about 0.36 followers a week, one follower every three weeks or so (derived: 140 × 0.0026). The same rate at 5,000 followers is 13 a week, which is the example Buffer itself gives.

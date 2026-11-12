@@ -170,7 +170,7 @@ Start dates and the pieces that broke out, as the sections above date them:
 Subscribers on the latest date each tracker gives:
 
 ```viz
-{"kind": "compare", "caption": "YouTube subscribers, in thousands, on the tracker's latest data date: Abdaal 6.7M (vidIQ, 1 Nov 2026), Boyd 2.93M (vidIQ, 28 Oct 2026), Partridge 408K (OutlierKit, 21 Sep 2026), Lewis 399K (vidIQ, 31 Oct 2026), Sidibe 294K (vidIQ, 1 Nov 2026). §2 to §6; tracker counts, rounded by the trackers.", "rows": [{"label": "Ali Abdaal", "value": 6700, "display": "6.7M", "tone": 3}, {"label": "Mike Boyd", "value": 2930, "display": "2.93M", "tone": 1}, {"label": "Alex Partridge (ADHD Chatter)", "value": 408, "display": "408K", "tone": 5}, {"label": "Mark Lewis", "value": 399, "display": "399K", "tone": 4}, {"label": "Hellah Sidibe", "value": 294, "display": "294K", "tone": 2}]}
+{"kind": "compare", "caption": "YouTube subscribers (M for millions, K for thousands) on the tracker's latest data date: Abdaal 6.7M (vidIQ, 1 Nov 2026), Boyd 2.93M (vidIQ, 28 Oct 2026), Partridge 408K (OutlierKit, 21 Sep 2026), Lewis 399K (vidIQ, 31 Oct 2026), Sidibe 294K (vidIQ, 1 Nov 2026). §2 to §6; tracker counts, rounded by the trackers.", "rows": [{"label": "Ali Abdaal", "value": 6700, "display": "6.7M", "tone": 3}, {"label": "Mike Boyd", "value": 2930, "display": "2.93M", "tone": 1}, {"label": "Alex Partridge (ADHD Chatter)", "value": 408, "display": "408K", "tone": 5}, {"label": "Mark Lewis", "value": 399, "display": "399K", "tone": 4}, {"label": "Hellah Sidibe", "value": 294, "display": "294K", "tone": 2}]}
 ```
 
 ### 7.2 Against A1

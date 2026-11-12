@@ -59,8 +59,8 @@ The three routes on one axis, from the Anthropic post's own figures:
  "max": 15,
  "rows": [
   {"label": "Chat", "value": 1, "tone": 3},
-  {"label": "Agent with tools", "value": 4, "tone": 2},
-  {"label": "Multi-agent research", "value": 15, "tone": 1}
+  {"label": "Agent with tools", "value": 4, "display": "about 4×", "tone": 2},
+  {"label": "Multi-agent research", "value": 15, "display": "about 15×", "tone": 1}
  ],
  "caption": "Token use of an agent and of a multi-agent research system relative to a chat, §1, from Hadfield et al., <a href=\"https://www.anthropic.com/engineering/multi-agent-research-system\"><em>How we built our multi-agent research system</em></a>, Anthropic Engineering, 13 Jun 2025; vendor figures, measured on Anthropic's 2025 systems."
 }
