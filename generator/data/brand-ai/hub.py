@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v9.5 · 12 Nov 2026'
+VERSION = 'v9.6 · 12 Nov 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -248,6 +248,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-11-12 05:00', "v9.6. Erratum to A1, found by the writer of the public course PB's unit PB2 (row W-PB2) and confirmed by its fresh checker: YouTube Help 2657964's current title and check date; the Data API's 30-character title limit placed on brandingSettings.channel.title; the handle rules completed; the handle change and release rule added (YouTube Help 15920820); Mike Boyd's and Matt D'Avella's counts updated to vidIQ's of 11 and 5 Nov 2026. Dated note in A1."),
     ('2026-11-12 03:00', "v9.5. Erratum to A9, found by the writer of the public course PB's unit PB1 (row W-PB1) and confirmed by its fresh checker: the vidIQ methodology quotation made exact; the 2027 Partner Program line gains the condition that existing members accept the updated terms by 31 January 2027; the First 10 Videos citation gains its 30 Jul 2026 update date (two places). Dated note in A9."),
     ('2026-11-03 05:00', "v9.4. DD-B2 Deep dive: his unknown unknowns written (Opus 5.5, own agent context, search off, the past-chat tools its evidence; backlog row A-5, P31; the brief's Fable 5.1 exception set aside by Pedro on 31 Oct 2026; two writer agents lost to container restarts, the third resumed from the second's working files), fresh-checked by Opus 5.5 in a separate context with the same tools (fix, 3 errors, 4 should-fix, 5 minor; verified and applied, one error in part and one should-fix not applied; Fable 5.1 fresh check owed), its bars and Fable-by-day figures fixed and passed by a separate agent, the task-type figure passed, and filed: reading page under course B, DD-B2 marked written, the build order records Opus 5.5; both courses complete, 22 of 22; no unit left to write; Audits 3, 4 and 5 and Audit 6, the final audit, owed to the Fable 5.1 stage. Change to a filed unit the same day, dated to DD-B2: B6 §2's count of first drafts with an error carried forward (fifteen of twenty). The method's and the write-unit skill's lines on DD-B2's model now say it was written by Opus 5.5."),
     ('2026-11-02 20:30', "v9.3. DD-A2 Deep dive: the exit math written (Opus 5.5, own agent context, search off; backlog row A-5, P31), the last unit of course A, fresh-checked by Opus 5.5 in a separate context (fix, 0 errors, 5 should-fix, 5 minor; all verified and applied; Fable 5.1 fresh check owed), its timeline figure fixed and passed by a separate agent, the compare and decision figures passed, and filed: reading page under course A, DD-A2 marked written; course A complete, 11 of 11; DD-B2 next, in the same chat; DD-A2 falls to Audit 6, the final audit, with DD-B2; Audits 3, 4 and 5 owed to the Fable 5.1 stage. Change to a filed unit the same day, dated to DD-A2: A8 §2's open question on whether A7's totals cross €15,000 answered for the exchange rate (under €15,000, net or gross)."),

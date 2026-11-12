@@ -75,8 +75,8 @@ How the capture, recap and derivative layers produce those elements inside 5–7
 The umbrella name was left open when the borrowed name was removed from the brief on 27 October 2026. Each candidate below is judged on four tests drawn from this unit: does it name the method (§2), can a stranger repeat it (§1), does it hold every journey (§3), and is it free on the platforms (checked where possible). Platform rules that bound the choice, checked 28 October 2026:
 
 - YouTube lets a channel change its name "twice within a 14-day period", and "Changing your name will remove your verification badge" ([YouTube Help, answer 2657964](https://support.google.com/youtube/answer/2657964?hl=en)). The display name can be changed later; the decision is reversible at low cost.
-- A YouTube handle is one of the "short and unique channel identifiers" YouTube assigns, 3–30 characters, letters or numbers, with underscores, hyphens and periods allowed except at the start or end ([YouTube Help, answer 11585688](https://support.google.com/youtube/answer/11585688?hl=en)). The handle is the scarce part.
-- The YouTube Data API documents a maximum of 30 characters for the channel title ([YouTube Data API, Channels](https://developers.google.com/youtube/v3/docs/channels)).
+- A YouTube handle is one of the "short and unique channel identifiers" YouTube assigns, 3–30 characters (1–10 for Han or Hangul, 2–20 for Ethiopic, Hiragana or Katakana), letters or numbers, with underscores, hyphens, periods and Latin middle dots allowed except at the start or end; not case-sensitive ([YouTube Help, answer 11585688](https://support.google.com/youtube/answer/11585688?hl=en)). The handle is the scarce part. A handle can be changed twice within 14 days; the previous one is held for 14 days and then becomes available to other users, so a handle change can lose the old address for good.
+- The YouTube Data API documents a maximum of 30 characters for the channel title in brandingSettings.channel.title (snippet.title states none) ([YouTube Data API, Channels](https://developers.google.com/youtube/v3/docs/channels)).
 - Instagram's username limit of 30 characters is reported by third parties ([Bitly, updated 29 Sep 2026](https://bitly.com/blog/instagram-character-limit/)); no Instagram page found states it.
 
 What was checked on 28 October 2026: YouTube About pages were opened for the handles @Consumed and @thesyllabus, and both are in use by unrelated channels. Fetches of @syllabusofone and of Instagram profile pages failed (YouTube returned an error to the fetch tool; Instagram blocks automated fetching), so the availability of those handles is **not known**. No name was checked for trade marks or for use on other platforms.
@@ -101,9 +101,9 @@ Selection rule: one person or a small fixed team; a repeated procedure applied t
 
 | Creator · channel | Subscribers · videos · views (whose figure, date) | Channel created | Their own sentence (YouTube About, read 28 Oct 2026) | The repeatable version (mine) |
 |---|---|---|---|---|
-| Mike Boyd · @MikeBoyd | 2.93M · 197 · 476,842,692 (Social Blade, 17 Oct 2026) | 23 Oct 2008 | "Every month I pick a new challenge and try to conquer it as quickly as possible." | He learns a skill from zero as fast as he can, on camera |
+| Mike Boyd · @MikeBoyd | 2.93M · 197 · 477,008,214 (vidIQ, 11 Nov 2026) | 23 Oct 2008 | "Every month I pick a new challenge and try to conquer it as quickly as possible." | He learns a skill from zero as fast as he can, on camera |
 | Michelle Khare · @MichelleKhare | 5.5M (rounded) · 277 · 926,028,639 (Social Blade, 24 Oct 2026) | 20 Jul 2007 | "Challenge Accepted follows Michelle Khare as she attempts the world's most difficult lifestyles, stunts, and professions." | She trains for one extreme job or feat, then attempts it |
-| Matt D'Avella · @mattdavella | 4.05M · 471 · 337,159,760 (vidIQ, data 26 Oct 2026) | 25 Jul 2011 | None about the method: "Hi my name is Matt." and a line about his documentary *Minimalism* | He lives one habit for thirty days and reports what changed |
+| Matt D'Avella · @mattdavella | 4.06M · 472 · 337,764,525 (vidIQ, 5 Nov 2026) | 25 Jul 2011 | None about the method: "Hi my name is Matt." and a line about his documentary *Minimalism* | He lives one habit for thirty days and reports what changed |
 | Goal Guys · @GoalGuys | 562,000 · 236 · 87,724,487 (vidIQ, 28 Oct 2026) | 15 Jul 2015 | "We're two brothers trying to become better versions of ourselves, one goal at a time!" | Two brothers set one goal at a time and film the attempt |
 | Yes Theory · @yestheory | 10.2M (rounded) · 459 · 1,348,045,772 (Social Blade, 26 Oct 2026) | 13 Jan 2014 | "We believe that life's greatest moments and deepest connections exist outside your comfort zone." | They say yes to whatever is uncomfortable and film it |
 
@@ -274,6 +274,8 @@ Audit 2 29 Oct 2026 (Fable 5.1, stratified sample): PASS · 0 of 7 sampled FAIL,
 - YouTube, "Being a Better Athlete Made Me a Worse Person | Karate Vlog: Road to WIKF Global Cup 2026, Ep. 2", 13 Oct 2026, read in Chrome 29 Oct 2026 (auto-generated captions). https://www.youtube.com/watch?v=o5fitxW62Ng
 - YouTube, Yes Theory About page, read 28 Oct 2026. https://www.youtube.com/@yestheory/about
 - YouTube Data API, Channels resource, checked 28 Oct 2026. https://developers.google.com/youtube/v3/docs/channels
-- YouTube Help, "Manage your channel's basic info" (answer 2657964), checked 28 Oct 2026. https://support.google.com/youtube/answer/2657964?hl=en
+- YouTube Help, "Manage your YouTube channel's profile" (answer 2657964), checked 12 Nov 2026. https://support.google.com/youtube/answer/2657964?hl=en
 - YouTube Help, "New, casual, & regular viewers tips" (answer 13615784), checked 28 Oct 2026. https://support.google.com/youtube/answer/13615784?hl=en
-- YouTube Help, handles (answer 11585688), checked 28 Oct 2026. https://support.google.com/youtube/answer/11585688?hl=en
+- YouTube Help, "Learn about YouTube handles" (answer 11585688), checked 28 Oct 2026. https://support.google.com/youtube/answer/11585688?hl=en
+
+Erratum 12 Nov 2026, found by PB2's writer (public course PB, row W-PB2) and confirmed by its fresh checker: the YouTube Help page 2657964's current title and check date; the Data API's 30-character limit placed on brandingSettings.channel.title; the handle rules completed (scripts, middle dots, not case-sensitive) with the page's title; the handle change and release rule added (YouTube Help 15920820); Mike Boyd's and Matt D'Avella's counts brought to vidIQ's of 11 and 5 Nov 2026.
