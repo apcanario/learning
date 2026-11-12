@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v1 · 11 Nov 2026'
+VERSION = 'v2 · 12 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -37,18 +37,22 @@ COURSE_NOTE = 'Every unit is sourced to peer-reviewed work, platform-official st
 
 # ---- written material (reading pages) ---------------------------------------------------
 # A unit is written when its file is in the vault, courses/personal-brand/ (A5); kit/build.py derives WRITTEN from it.
-READINGS = []
+READINGS = [
+    dict(id='read-pb1', course='PB',
+         title='What to expect: odds, timeline, cost', covers=['PB1'], name='PB1 · What to expect',
+         intro="Unit PB1, written 12 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register and its source material, search on (every changeable fact dated, checked 12 Nov 2026); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 1 error, 6 should-fix, 7 minor, all applied (a Fable 5.1 fresh check is owed). What a one-person account can expect on YouTube and on Instagram from the largest datasets found (vidIQ's studies of 33 million and 137,000 channels, Metricool, Socialinsider, Buffer), each with its sample, date and label; the milestones and the monetisation thresholds as YouTube states them, with the 1 February 2027 change; months to each milestone where data exists; the plateau, who continues, the cost of a phone-only setup, survivor bias and what no dataset measures; four figures. Deliverables: Mara's expectation sheet (21 rows), her hours-and-money budget, her stop rule and the four checkpoint dates of her first year, then all three as templates. Known gaps: the Instagram data is thin: no dataset covers accounts under 1,000 followers or follows new accounts, so the Instagram row for followers at 12, 24 and 36 months is unsourced and left for PB7; Instagram states no thresholds for its earning tools on its public pages; Buffer's frequency model is unpublished and Metricool's growth figure undefined; no dataset follows YouTube channels past 360 days. About 8,200 words with the deliverable."),
+]
 
 # ---- build order -----------------------------------------------------------------------
 DONE_ROWS = []
 ORDER = [("PB1", "Opus 5.5", "on"), ("PB2", "Opus 5.5", "off"), ("PB3", "Opus 5.5", "on"), ("PB4", "Opus 5.5", "off"),
          ("PB5", "Opus 5.5", "off"), ("PB6", "Opus 5.5", "on"), ("PB7", "Opus 5.5", "on"), ("PB8", "Opus 5.5", "on"),
          ("PB9", "Opus 5.5", "on"), ("PB10", "Opus 5.5", "off"), ("DD-PB1", "Opus 5.5", "on"), ("DD-PB2", "Opus 5.5", "off")]
-STATUS = {}          # unit code -> status text in the build-order table once filed
+STATUS = {'PB1': 'written 12 Nov'}          # unit code -> status text in the build-order table once filed
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
 FINAL_AUDIT = ('Audit 4', 'Final audit of the last units plus a full read of the course against its goal, and a read-through as the persona', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'PB1', 0, 'after four units; deferred to the Fable stage (decided 11 Nov 2026), so it gates no unit'
+NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'PB2', 0, 'after four units; deferred to the Fable stage (decided 11 Nov 2026), so it gates no unit'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_H1 = 'Building a Personal Brand on Instagram and YouTube'
@@ -140,5 +144,6 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-12 03:30', "v2. PB1 What to expect: odds, timeline, cost written (Opus 5.5, own agent context, search on; row W-PB1, P31), fresh-checked by Opus 5.5 in a separate context (fix, 1 error, 6 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed), its four figures passed or fixed and re-checked, and filed: reading page, PB1 marked written; PB2 next; Mara's register gains PB1's facts; flag F1 carried, flags F3 to F12 raised. Writer's Object line: none."),
     ('2026-11-11 23:59', "v1. Course created (new-course skill; backlog row G-0): frame, goal and three outcomes, 12 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the build order in syllabus order, the syllabus-flags file. Adapted from a private course of the Learning Project; no unit written."),
 ]
