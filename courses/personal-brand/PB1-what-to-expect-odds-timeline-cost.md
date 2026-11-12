@@ -100,6 +100,7 @@ Thresholds as the platforms state them, checked 12 November 2026:
 | YouTube | 1,000 subscribers plus 4,000 qualified watch hours in the past 12 months, or 10 million qualified Shorts views in 90 days | Application to the Partner Programme with ad revenue; meeting the threshold sends the channel to review, and approval is not automatic | [YouTube Help, YouTube Partner Programme overview and eligibility](https://support.google.com/youtube/answer/72851?hl=en-gb) |
 | YouTube | From 1 February 2027: 1,000 subscribers plus 8,000 qualified watch hours in the last 365 days, or 20 million qualified Shorts views in the last 90 days | The same entry, for new creators; channels already in the programme keep their status, provided they accept the updated terms in YouTube Studio by 31 January 2027, without which they stop earning from the affected features from 1 February 2027 | [YouTube Help, Changes to the YouTube Partner Program](https://support.google.com/youtube/answer/12843009) |
 | YouTube | From 1 February 2027, to stay active: 1,000 watch hours in 365 days, or 1 million Shorts views in 90 days, or 2 long-form videos or 5 Shorts uploaded every 90 days | Continued monetisation; a channel that drops below has 90 days to meet one of them | same |
+| YouTube | From 1 February 2027: 10 million qualified Shorts views in the last 90 days, kept each month | Earning that month from the Shorts Creator Pool (Shorts revenue sharing); a channel below it is not removed from the Partner Programme, and its other Partner Programme earnings, long-form included, are unaffected | same |
 | Instagram | 1,000 followers and a public account | Going live; the rule appeared without announcement around 1 August 2025 and Instagram confirmed it to TechCrunch | [9to5Mac, 1 Aug 2025](https://9to5mac.com/2025/08/01/new-instagram-rule-cuts-off-live-broadcasts-for-small-accounts/); [TechCrunch](https://techcrunch.com/?p=3033252) |
 | Instagram | No follower threshold published | Instagram's creator page names Subscriptions, Partnership Ads, Creator Marketplace, Gifts, Badges and Bonuses and states no follower, age or country requirement for any of them | [Instagram, Monetize with Instagram](https://creators.instagram.com/earn-cash-making-what-you-love) |
 
@@ -282,7 +283,7 @@ Spending is read at each checkpoint. Any income, however small, triggers the tax
 
 1. **Stop or rebuild**: fewer than 3 YouTube uploads in this quarter and the one before (Y4).
 2. **Change one thing: cut the load**: over 7 hours in 3 or more weeks of the quarter. The video gets shorter and the Instagram derivatives drop from six a fortnight to four before the YouTube cadence slips; repeated gaps of 14+ days go with fewer views per video (AIR, §6, vendor, correlational), and posting less on Instagram goes with a lower weekly growth rate (I4).
-3. **Change the format** (same channel, same cadence; structure, length or packaging): from Q2, click-through under 2% or percentage viewed under its band on 3 or more of the quarter's uploads (Y2, Y3).
+3. **Change the format** (same channel, same cadence; structure, length or packaging): from Q2, on 3 or more of the quarter's uploads, click-through under 2% with impressions at or below her median upload's, or percentage viewed under its band (Y2, Y3). An upload under 2% with impressions above her median is recorded and not counted: YouTube says that when a video gets a lot of impressions "it's natural for the CTR to be lower" ([YouTube Help 7628154](https://support.google.com/youtube/answer/7628154?hl=en-GB)), and recommends a title or thumbnail change when a video "has a lower click-through rate (CTR)" and "is receiving fewer impressions than usual" ([YouTube Help 16559651](https://support.google.com/youtube/answer/16559651?hl=en)); platform-official.
 4. **Continue**: none of the above, whatever the subscriber and follower counts.
 
 ```viz
@@ -290,13 +291,13 @@ Spending is read at each checkpoint. Any income, however small, triggers the tax
   {"label": "yes", "to": {"outcome": "Stop, or rebuild the system before another upload", "tone": 1}},
   {"label": "no", "to": {"q": "Over 7 hours in 3 or more weeks of the quarter?", "tone": 4, "branches": [
      {"label": "yes", "to": {"outcome": "Change one thing: cut the load, cadence kept", "tone": 2}},
-     {"label": "no", "to": {"q": "From Q2: click-through under 2% or percentage viewed under its band on 3 or more uploads?", "tone": 4, "branches": [
+     {"label": "no", "to": {"q": "From Q2, on 3 or more uploads: click-through under 2% with impressions at or below her median upload's, or percentage viewed under its band?", "tone": 4, "branches": [
         {"label": "yes", "to": {"outcome": "Change the format, same channel and cadence", "tone": 5}},
         {"label": "no", "to": {"outcome": "Continue", "tone": 3}}
      ]}}
   ]}}
 ]},
- "caption": "Mara's stop rule and verdicts from the deliverable, §D3 (Mara, fictional). The thresholds are her own rules; the base rates behind them are in §2 and §5 (vidIQ, 11 Sep 2026: the 1–11 videos band crossed 1,000 at 1.86% a year) and the expectation sheet D1, rows Y2 (YouTube Help, impressions click-through rate: half of channels and videos sit between 2% and 10%) and Y3 (vidIQ guidance, 21 Jul 2026, for percentage-viewed bands; also §4). Subscriber count is not a branch in year one."}
+ "caption": "Mara's stop rule and verdicts from the deliverable, §D3 (Mara, fictional). The thresholds are her own rules; the base rates behind them are in §2 and §5 (vidIQ, 11 Sep 2026: the 1–11 videos band crossed 1,000 at 1.86% a year) and the expectation sheet D1, rows Y2 (YouTube Help, impressions click-through rate: half of channels and videos sit between 2% and 10%) and Y3 (vidIQ guidance, 21 Jul 2026, for percentage-viewed bands; also §4). An upload under 2% with impressions above her median is recorded and not counted (YouTube Help, answers 7628154 and 16559651; D3 verdict 3). Subscriber count is not a branch in year one."}
 ```
 
 **The seven reads at every checkpoint** (PB10 runs them as a 60-minute procedure; Studio and Insights are opened for the review on its date):
@@ -417,3 +418,7 @@ Correction 12 Nov 2026, made by the chat that filed PB3 (row W-PB3): PB3 gives M
 Correction 12 Nov 2026, found by PB4's writer (row W-PB4) and confirmed by its fresh checker: §6 now gives YouTube's own statement that it found no correlation between break length and changes in views (YouTube Help, answer 141805) beside AIR Media-Tech's finding on repeated gaps.
 
 Correction 12 Nov 2026, found by PB6's fresh checker (row W-PB6): the YouTube Help page at answer 12843009 is titled "Changes to the YouTube Partner Program", not "Changes to YouTube Partner Program terms" (§4 table, twice, and Sources).
+
+Correction 12 Nov 2026, found by PB6's writer: D3 verdict 3 and its decision figure now count an upload's click-through under 2% only when its impressions are at or below her median upload's; an upload under 2% with impressions above her median is recorded and not counted (YouTube Help, answers 7628154 and 16559651) (flag F42).
+
+Correction 12 Nov 2026, found by PB6's writer: §4 gains a row for the rule from 1 February 2027 that earning from the Shorts Creator Pool needs 10 million qualified Shorts views in the last 90 days (YouTube Help, answer 12843009) (flag F45).

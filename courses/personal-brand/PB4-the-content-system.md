@@ -34,7 +34,7 @@ The note has three fixed prompts (her rule): what I did; what went wrong; what c
 
 | Stream | What | When | Minutes |
 |---|---|---|---|
-| Set-up | Phone on its clamp, framed on the table, recording before the first tool comes out of the box; the work kept in the centre of a horizontal frame so a vertical crop for a Reel holds (framing itself is PB5's) | Start of session | 10 |
+| Set-up | Phone on its clamp, framed on the table, recording before each step's tool comes out, one clip per step (PB5 §1); the work kept in the centre of a horizontal frame so a vertical crop for a Reel holds (framing itself is PB5's) | Start of session | 10 |
 | Repositioning | The phone moved for close-ups of the step that matters | Two or three times a session | 15 |
 | As found or reveal | First session of a piece: a walk-round and four stills from a taped mark on the table, before anything is touched (what was wrong). First session after a piece is finished: the same walk-round and stills of the finished piece, from the same mark | Opening minutes | 10 |
 | To camera | Short lines straight to the phone: what is wrong with it; what just went wrong, when it does, while the camera is already running; what this session cost | As they happen | 10 |
@@ -225,7 +225,7 @@ Mara Venn (Mara, fictional), 6 hours a week. Each line names its basis; **her ru
 
 **B · Every Saturday session (capture, 1.0)**
 
-- [ ] Phone recording before the first tool comes out; the work in the centre of a horizontal frame (§1; framing is PB5's).
+- [ ] Phone recording before each step's tool comes out, one clip per step (PB5 §1); the work in the centre of a horizontal frame (§1; framing is PB5's).
 - [ ] First session of a piece: walk-round and four stills from the mark before anything is touched. First session after a piece is finished: the same, of the finished piece (§1).
 - [ ] To camera: what is wrong; what went wrong, when it does, with the camera already running; what this session cost (PB2, D4).
 - [ ] Never re-stage a mistake. Nothing is filmed twice (§1).
@@ -279,8 +279,8 @@ Weeks run Monday to Sunday. Week 1 is the week of 4 January 2027, PB1's day one,
 
 | Week | Dates | Items, with hours | Total |
 |---|---|---|---|
-| R1 (A) | Mon 7 – Sun 13 Dec 2026 | Repeat-back test run 1 on the profile (PB2, D5; its five people, delay and pass mark are conventions without a source) 1.0 · Backlog written and Season 1's seven pieces picked (§6) 1.0 · Folders, log sheet, Season 1 playlist 0.5 · Sat 12: piece 1, session 1, capture 1.0 · Log 0.25 | **3.75** |
-| R2 (B) | Mon 14 – Sun 20 Dec | Sat 19: piece 1, session 2, capture 1.0 · Log 0.25 | **1.25** |
+| R1 (A) | Mon 7 – Sun 13 Dec 2026 | Repeat-back test run 1 on the profile (PB2, D5; its five people, delay and pass mark are conventions without a source) 1.0 · Backlog written and Season 1's seven pieces picked (§6) 1.0 · Folders, log sheet, Season 1 playlist 0.5 · Sat 12: piece 1, session 1, capture 1.0 · Production tests: editor, storage, light, audio check (PB5, D A) 0.5 · Log 0.25 | **4.25** |
+| R2 (B) | Mon 14 – Sun 20 Dec | Sat 19: piece 1, session 2, capture 1.0 · Audio re-test (PB5, D A) 0.25 · Log 0.25 | **1.5** |
 | R3 (A) | Mon 21 – Sun 27 Dec | Sat 26: piece 1 reveal, piece 2 session 1, capture 1.0 · Sun 27: edit window, piece 1, 4.0 · Log 0.25 | **5.25** |
 | R4 (B) | Mon 28 Dec – Sun 3 Jan 2027 | Sat 2: piece 2, session 2, capture 1.0 · Sun 3: cut window, piece 1 (packaging, 4 Reels, 2 carousels, scheduling) 4.5 · Log 0.25 | **5.75** |
 
@@ -380,6 +380,10 @@ Then write: [uploads and posts the twelve weeks produce]; [which weeks are most 
 - **Override** (PB3: the anchor stays fortnightly; Instagram at five posts a week; the spare hours to the edit): week A, capture 1.0, edit 8.0 in two windows of 4.0 on Saturday and Sunday, email 0.25, replies 0.5, log 0.25 = 10.0; week B, capture 1.0, cut window 6.5 (packaging 1.0, ten posts 5.0, scheduling 0.5), replies 0.25, log 0.25 = 8.0. The split of the spare hours, 8.0 to the edit, is this unit's, which PB3 left open; no dataset gives hours per video (PB1 §8), and the only published figure, a vendor's rule of thumb without method or sample (§2), is context, not evidence for it.
 - Cut order (PB3): the week's second anchor first, which returns you to the 6-hour plan for that fortnight; then the 6-hour order.
 - On any move between budgets, re-read your PB1 rows that depend on posting rate and your stop rule the same day (PB3, D2).
+
+Correction 12 Nov 2026, found by PB5's writer: §1's capture table (Set-up) and D1 B now start the phone before each step's tool comes out, one clip per step (PB5 §1), in place of before the first tool comes out of the box (flag F36).
+
+Correction 12 Nov 2026, found by PB5's writer: D2's run-in rows now include PB5's production tests (PB5, D A; 0.75 hours): R1 from 3.75 to 4.25 hours, R2 from 1.25 to 1.5 hours, both under 6; no other total changes (flag F37).
 
 ## Sources
 
