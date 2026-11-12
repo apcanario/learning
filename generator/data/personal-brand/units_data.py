@@ -3,7 +3,7 @@
 # Each unit: (code, title, one-line scope, what it ships, brief). Ten core units in four parts plus two deep dives (DD-),
 # written last. A unit is written when its file is filed in courses/personal-brand/ (A5).
 # AIMS: per unit, (aim, takes, gives); kit/mdcourse.py joins them into the brief between the preamble and the unit brief.
-# S-PB1 (12 Nov 2026, Pedro confirmed): PB6, PB9 and PB10 briefs and PB10's Takes line changed (docs/syllabus-review-PB-1.md A1 to A4).
+# S-PB1 (12 Nov 2026, confirmed in the review): PB6, PB9 and PB10 briefs and PB10's Takes line changed (docs/syllabus-review-PB-1.md A1 to A4).
 # The course is adapted from a private course of the Learning Project; the Takes line names the source units a writer is given.
 PRE = ("Write one unit of a self-study course in the long-form report format of the Learning Project's markdown courses: a long-form report in Markdown. "
 "Length is whatever the topic needs (2,000–6,000 words); do not pad and do not cut to a target. "
