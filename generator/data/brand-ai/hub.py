@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v9.7 · 12 Nov 2026'
+VERSION = 'v9.8 · 12 Nov 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -248,6 +248,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-11-12 15:30', "v9.8. P98 (row W-PB5, step 1b): figure finishes. A bars figure's phone drawing is 258 units, as a compare's, so it is drawn at its own size on a 320 px phone; a value sits wholly on its grey track or wholly beyond its end, never across it, in both drawings of every compare. Declaration notes from S-PB1's re-checks applied, data and prose untouched: A9 figure 5 two decimals (0.30%); DD-A1 figure 3's caption says M and K; A3 figure 4's caption names weeks 1 and 2 and the tones; A5 figure 3's caption says its tones are the theme's; B4 figure 4's and DD-B2 figure 1's tones explained; B2 figure 1's caption adds (prompt up to 100K); B6 figure 1 prints about 4× and about 15×; and, from P98's own re-checks, A5 figure 4's and A9 figure 2's tones explained and A9 figure 5's missing bands noted. 27 changed figures of A and B re-checked by fresh Opus 5.5 agents at 320, 390 and 1280 px, dark and light: all pass (kit/reviews/p98/)."),
     ('2026-11-12 09:30', "v9.7. Erratum to A2, found by the writer of the public course PB's unit PB3 (row W-PB3) and confirmed by its fresh checker: beehiiv's State of Newsletters 2026 dated 6 Jan 2026 (was 5 Jan) in §2, §3 and Sources, and its 2024 open rate given with its own graphic's 37.67% beside the text's 37.98%; a dated note at the foot of A2."),
     ('2026-11-12 05:00', "v9.6. Erratum to A1, found by the writer of the public course PB's unit PB2 (row W-PB2) and confirmed by its fresh checker: YouTube Help 2657964's current title and check date; the Data API's 30-character title limit placed on brandingSettings.channel.title; the handle rules completed; the handle change and release rule added (YouTube Help 15920820); Mike Boyd's and Matt D'Avella's counts updated to vidIQ's of 11 and 5 Nov 2026. Dated note in A1."),
     ('2026-11-12 03:00', "v9.5. Erratum to A9, found by the writer of the public course PB's unit PB1 (row W-PB1) and confirmed by its fresh checker: the vidIQ methodology quotation made exact; the 2027 Partner Program line gains the condition that existing members accept the updated terms by 31 January 2027; the First 10 Videos citation gains its 30 Jul 2026 update date (two places). Dated note in A9."),

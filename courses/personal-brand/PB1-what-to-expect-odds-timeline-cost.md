@@ -46,7 +46,7 @@ One planning assumption is needed before any benchmark can be applied to her, be
   {"label": "12–51 videos", "value": 8.65, "tone": 1},
   {"label": "52 or more", "value": 30.77, "tone": 3}
  ],
- "caption": "The table in §2 drawn: 32,926,088 YouTube channels with under 1,000 subscribers and at least one video, compared with themselves 360 days later; videos added is the net change in video count, Shorts and long-form together. Source: vidIQ, Uploads and reaching 1,000 subscribers, 11 Sep 2026. Vendor data, correlational, groups not matched. The tones only tell the bands apart."}
+ "caption": "The table in §2 drawn: 32,926,088 YouTube channels with under 1,000 subscribers and at least one video, compared with themselves 360 days later; videos added is the net change in video count, Shorts, long-form and livestreams together. Source: vidIQ, Uploads and reaching 1,000 subscribers, 11 Sep 2026. Vendor data, correlational, groups not matched. The tones only tell the bands apart."}
 ```
 
 vidIQ states the limits itself: "This is not a random sample or a census of all YouTube channels"; the groups were not matched on starting subscribers, channel age, resources or quality; the result is "an observational association, not proof that uploading caused subscriber growth"; the count is a net change in total videos, so it does not count individual uploads; and channel totals "do not separate Shorts, long-form videos, or livestreams" (same source). A channel adding 26 videos a year sits in the 12–51 band: about one in twelve channels in that band crossed 1,000 within the year, and 91.35% did not (derived: 100 minus 8.65). The 52-plus band's 30.77% belongs to channels that may also have had more time, money or audience. Vendor data; correlational.

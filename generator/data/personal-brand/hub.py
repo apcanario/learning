@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v6 · 12 Nov 2026'
+VERSION = 'v6.1 · 12 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -153,6 +153,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-12 15:30', "v6.1. P98 (row W-PB5, step 1b): figure finishes. A bars figure's phone drawing is 258 units, drawn at its own size on a 320 px phone; a compare's value sits wholly on its track or wholly beyond its end. Captions only, data and prose untouched: PB1 figures 1 and 2 and PB3 figure 2 say their tones only tell the rows apart; PB1 figure 1 counts Shorts, long-form and livestreams together; PB3 figure 1 names the All adults row; PB3 figure 3 and PB4 figure 3, whose Capture and Log share a tone, say which segment is which. Seven changed figures re-checked by fresh Opus 5.5 agents at 320, 390 and 1280 px, dark and light: all pass (kit/reviews/p98/)."),
     ('2026-11-12 13:00', "v6. Syllabus review S-PB1 after PB4: the briefs of PB6 (click-through and retention benchmarks from a dataset with a stated sample, else the platform's ranges and vendor heuristics, labelled), PB9 (where a platform publishes no earning thresholds, say so and name the professional dashboard) and PB10 (the review also takes PB2's repeat-back sheet, PB3's audience traits 8 and 9 and PB4's season pick, break question and log items; its Takes line adds PB2 to PB4) changed as confirmed; Mara's register corrected on the handle check; six flags resolved, 22 left open for the units they name; no filed unit changed. Compare figures now open whole on a phone (P97): PB1's three and PB3's one redrawn for phones."),
     ('2026-11-12 12:00', "v5. PB4 The content system written (Opus 5.5, own agent context, search off; row W-PB4, P31), fresh-checked by Opus 5.5 in a separate context (fix, 0 errors, 8 should-fix, 15 minor; all applied; Fable 5.1 fresh check owed), its three figures passed, and filed: reading page, PB4 marked written; PB5 next, held by the syllabus review S-PB1; Mara's register gains PB4's facts; PB1 and PB3 §6 gain YouTube's statement on breaks (found by PB4's writer, confirmed by its checker; flag F35); flags F9, F15 and F23 carried, F30 to F35 raised; F2, F5 and F20 back to open after W-PB3 had marked them carried. Audit 1's four units written, owed to the Fable stage. Writer's Object line: none."),
     ('2026-11-12 09:45', "v4. PB3 Audience and the two platforms written (Opus 5.5, own agent context, search on; row W-PB3, P31), fresh-checked by Opus 5.5 in a separate context (fix, 1 error, 5 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), its four figures passed (the flow's caption fixed as the report gives it), and filed: reading page, PB3 marked written; PB4 next; Mara's register gains PB3's facts; PB1's D2 corrected (publishing and replies 1.25, email 0.25 hours a fortnight; flag F21); flags F2, F5, F14 and F20 carried, F21 to F29 raised. Writer's Object line: none."),

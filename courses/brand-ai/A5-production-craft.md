@@ -327,7 +327,7 @@ Each box is done once and closed. The clock assumes the window opens at 0:00; th
   {"label": "8 · Fixes", "value": 15, "tone": 2},
   {"label": "9 · Export and hand-off", "value": 20, "tone": 2}
  ],
- "caption": "The nine boxes of the edit template, Deliverable B2: 225 minutes in all, inside A3 §6's five-hour editing window. Every time is this unit's estimate (his rule); no source measures editing time per stage, and A9's hours log (read 2) tests the total. One tone marks the three cutting boxes (assemble, tighten, b-roll), two others mark sound and graphics; the tones group the boxes and carry no other meaning."}
+ "caption": "The nine boxes of the edit template, Deliverable B2: 225 minutes in all, inside A3 §6's five-hour editing window. Every time is this unit's estimate (his rule); no source measures editing time per stage, and A9's hours log (read 2) tests the total. One tone marks the three cutting boxes (assemble, tighten, b-roll), two others mark sound and graphics, and a fourth the remaining four boxes; the tones group the boxes and carry no other meaning."}
 ```
 
 **The arithmetic.** 15 + 30 + 35 + 40 + 25 + 25 + 20 + 15 + 20 = 225 minutes = 3 hours 45 minutes, 15 minutes under the brief's four hours. Per finished minute: 225 ÷ 12 = 18.75 minutes, against Tasty Edits' 30 to 60 (6 to 12 hours for 12 minutes; vendor rule of thumb, no method). Against A3's five-hour window (300 minutes): 300 − 225 = 75 minutes of margin.
