@@ -45,7 +45,7 @@ The same page says Instagram aims to show fewer reels that are "low-resolution o
   {"label": "Reels", "tone": 5, "cells": ["mostly not followed", "your activity", {"mark": "yes", "tone": 3}]},
   {"label": "Search", "tone": 6, "cells": ["matches to the typed text", "the text typed", {"mark": "yes, on words", "tone": 3}]}
  ],
- "caption": "§1: each surface as Instagram describes it. Instagram, Instagram Ranking Explained, 31 May 2023 (Feed, Stories, Explore, Reels); Instagram, Breaking Down How Instagram Search Works, 25 Aug 2021 (Search). The last column is this unit's reading of the first column. Platform-official."}
+ "caption": "§1: each surface as Instagram describes it. Instagram, Instagram Ranking Explained, 31 May 2023 (Feed, Stories, Explore, Reels); Instagram, Breaking Down How Instagram Search Works, 25 Aug 2021 (Search); platform-official. The last column, Reach to strangers, is this unit's reading of the Shows mostly column (§2)."}
 ```
 
 ## 2 · What reaches non-followers and what reaches followers
