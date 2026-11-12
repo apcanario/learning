@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Figure finishes and PB5 filed (session 76, P98, W-PB5):** a bars figure is drawn at its own size on a 320 px phone and no value sits across the end of its track, checked on every compare and bars figure; PB5 Production craft with a phone written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 3 should-fix, 11 minor; all applied; Fable 5.1 fresh check owed).
 - **Syllabus review of PB and compare figures on a phone (session 75, S-PB1, P97):** PB6's, PB9's and PB10's briefs changed as Pedro confirmed, Mara's register corrected, six flags resolved and 22 left with their units; every compare figure now opens whole on a 320 or 390 px phone (63 figures redrawn for phones, all re-checked and passed).
 - **PB4 filed (session 74, W-PB4):** the public course PB's fourth unit, The content system, written by an Opus 5.5 agent from its brief, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 8 should-fix, 15 minor; all applied; Fable 5.1 fresh check owed), three figures; PB1 and PB3 corrected where they sat; flags F30 to F35; PB's Audit 1 due, owed to the Fable stage. Personal Brand v5, 4 of 12. Next: S-PB1.
 - **PB3 filed (session 73, W-PB3):** the public course PB's third unit, Audience and the two platforms, written by an Opus 5.5 agent from its brief, search on, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 5 should-fix, 6 minor; all applied; Fable 5.1 fresh check owed), four figures; A2 and PB1 corrected where they sat; flags F21 to F29. Personal Brand v4, 3 of 12.
@@ -125,6 +126,15 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 72. Public course PB: PB2 Positioning: the sentence a stranger can repeat filed: Mara's positioning, name pick and profile copy, and the repeat-back test (W-PB2) | | |
 | 12 Nov | 73. Public course PB: PB3 Audience and the two platforms filed: Mara's audience profile and her platform allocation at three budgets with the cut order (W-PB3) | | |
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
+
+## 12 November 2026 · Session 76 · Figure renderer finishes and public course PB, unit PB5 (P98, W-PB5)
+
+One unattended chat (Pedro away), on Opus 5.5, running W-PB5 with P98 first as its step 1b, then W-PB6. The chat staged, applied, filed, built, published and recorded; the writing, the fresh check and the figure re-checks were fresh Opus 5.5 agents (P31). No agent transcript was kept on disk, so each agent's model is the one it stated.
+
+- **P98.** `viz._bars_phone` draws at `PHONE_NARROW` (258 units); `design/theme.css` 6.10 shows a bars figure's phone drawing at its own size, as a compare's (the 328-unit drawing had not scrolled on a 320 px phone, as the row assumed: the theme shrank it to about 79%). `viz._val_x`: a compare's value sits wholly on its track or wholly beyond its end, in both drawings. `verify.py`'s `check_phone_figures` (was `check_compare_phone`): every compare and bars figure at 320 and 390 px opens with every bar and value whole, unscrolled, and at 320, 390 and 1280 px no value sits across a track's end (121 in the build before, 0 after). The eleven declaration notes from S-PB1's re-checks applied, prose untouched. 67 changed figures re-checked (Greece 12, Rome 13, A 14, B 13, UX, PB and the examples 15), two fixed in their captions and re-checked with eight others: all pass (`kit/reviews/p98/`).
+- **PB5.** Production craft with a phone, about 11,000 words, four figures, search off; fresh check fix, 0 errors, 3 should-fix, 11 minor, all applied; flags F36 to F41; Mara's register; P99 proposed.
+- **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-pb5`.
+- **Publish.** PUBLISH_LINE
 
 ## 12 November 2026 · Session 75 · Syllabus review of course PB and compare figures on a phone (S-PB1, P97)
 
