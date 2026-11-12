@@ -136,7 +136,7 @@ The second row of the session-76 chat (Pedro away), on Opus 5.5: the chat staged
 - **Mistakes elsewhere.** A6 erratum (answer 1714921's title; brand-ai v9.9); PB1 corrected (answer 12843009's title); PB3 corrected (§4 AIR sample; §3 shelf-life cell).
 - **Flags.** F24, F31, F38 carried; F42 to F46 raised (F43 resolved by the PB3 correction); none blocks PB7. P100 proposed.
 - **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-pb6`.
-- **Publish.** Academy artifact vARTV (ARTVER); Pages academy PAGESC, run RUNID.
+- **Publish.** Academy artifact v150 (1794503151-a0ee; build 8aebc1f; the live page matched the start build, so the shell in its live wrapper and 12 changed or new files went in one patch; all 13 read back by sha256 in list_files); Pages academy 4215131, run 43265823654.
 
 ## 12 November 2026 · Session 76 · Figure renderer finishes and public course PB, unit PB5 (P98, W-PB5)
 
