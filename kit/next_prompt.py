@@ -4,6 +4,8 @@ python3 kit/next_prompt.py                 the next row: the first unit, in queu
 python3 kit/next_prompt.py --row W-PB3     that row
 python3 kit/next_prompt.py --list          every row with its unit, search flag and whether it is filed
 python3 kit/next_prompt.py --save          also write the prompt into the row's prompt cell in docs/BACKLOG.md
+python3 kit/next_prompt.py --bundle 2      the next two rows in one unattended chat: the first row's prompt between a preface
+                                           and a tail that has the chat print and work each following row after the one before is closed
 
 The queue is course PB in its ORDER, then course BW in its ORDER (QUEUE below; reorder it there). Everything a prompt
 names is read from the sources at the time it is printed: the course entry (kit/courses.py), the unit's title, search
@@ -161,6 +163,24 @@ if __name__ == '__main__':
         if k is None: raise SystemExit('every public unit is filed; the next row is G-R')
     nxt = next((r for r in rs[k + 1:] if r['code'] not in r['filed']), None)
     text = prompt(rs[k], nxt)
+    if '--bundle' in sys.argv:      # several rows in one unattended chat (method §4, P31): this row's prompt between a preface and a tail
+        n = int(sys.argv[sys.argv.index('--bundle') + 1])
+        todo = [r for r in rs[k:] if r['code'] not in r['filed']][:n]
+        if len(todo) > 1:
+            names = ', then '.join(f"{r['row']} (unit {r['code']})" for r in todo)
+            after = next((r for r in rs[rs.index(todo[-1]) + 1:] if r['code'] not in r['filed']), None)
+            pre = (f"This chat runs {len(todo)} rows one after the other, unattended (Pedro is away; method §4, P31): {names}. "
+                   "Work the first exactly as its prompt below says, to the end of its step 11: filed, built, verified, published to the artifact, deployed to Pages, pushed, its row closed. "
+                   "Each unit ends published before the next begins, so a failure later in the night strands nothing. Never ask a question: where the prompt says ask, take the most reasonable reading and record it; "
+                   "where it says stop (the permission check refuses the repo's scripts; a writer or checker states a model that is not claude-opus-5-5; a second `rewrite`; a flag that blocks the next unit), stop there, leave what is finished published and pushed, and say in the first line of the reply which row stopped and why. "
+                   "Do not write the first row's reply; go on.")
+            tail = (f"**Then the next row{'s' if len(todo) > 2 else ''}, in this same chat.** After each row is closed, run `python3 kit/next_prompt.py --row <the next row>` ("
+                    + ', '.join(r['row'] for r in todo[1:]) + ") and work what it prints in full, the same way: a new packet folder, a new writer and a new checker, each a fresh agent that has seen nothing of the earlier unit but its filed file; "
+                    "the start build for its publish is the build the row before published; clone nothing again. "
+                    f"After {todo[-1]['row']} is closed, stop. The next prompt, saved in its row and given at the end of the one reply, is "
+                    + (f"`python3 kit/next_prompt.py --bundle {n} --save` (from {after['row']})" if after else "the prompt of row G-R, written to the standard of this one")
+                    + ". **One reply for the whole chat:** per row, what its own Reply paragraph asks, under the row's name; then the backlog hand-off and the next prompt in a code block.")
+            text = pre + '\n\n' + text + '\n\n' + tail
     if '--save' in sys.argv:
         save(rs[k]['row'], text)
     print(text)
