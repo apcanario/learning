@@ -131,7 +131,7 @@ W-PB3 ran in one unattended chat with W-PB4 (session 74), on Opus 5.5, which onl
 - **Corrected where it sat.** A2 (beehiiv's date and 2024 figure, from PB3's writer, confirmed by the checker), with its dated note; Brand + AI v9.7. PB1's D2 hours (publishing and replies 1.25, email 0.25), with its dated note.
 - **Packet.** `viz.py` reads `design/theme.css` at import; the writer's packet lacked it and the writer stubbed it in its own folder; the staging now copies the theme.
 - **Build.** `build.py`, `verify.py`: ALL CHECKS PASSED; `verify.py --shots --page read-pb3` looked at.
-- **Publish.** See the record commit.
+- **Publish.** Academy artifact v146 (1794480132-33a0, build f0d622a; the shell in its live wrapper and the eleven changed files sent in one patch and all twelve read back, sha256 matching); Pages academy f03e264, run 43202733472 succeeded.
 
 ## 12 November 2026 · Session 72 · Public course PB, unit PB2 (W-PB2)
 
