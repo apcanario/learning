@@ -60,6 +60,20 @@ Left free by PB3: her audience's actual demographics (her own data decides), her
 
 Left free by PB4: her actual restoration time per piece; her cost per piece; the order of Season 1's pieces after piece 3; the rest of Season 2's pieces.
 
+## Set by PB5, Production craft with a phone (12 Nov 2026)
+
+- Her phone records 3840 × 2160 at 30 frames a second, the rate for Season 1 (§1). She works only on her phone for the channel, with no computer (§7).
+- Her set: the table beside a window, the window to her left facing the phone; the phone on a clamp on the far edge of the table, about 1.0 m from her seat; sessions start in the morning; one clip per step, started before each step's tool is picked up and stopped when the step ends (§1, §2).
+- Audio check: failed on sanding on Sat 12 Dec 2026 (7 errors in 38 words; the quiet line 0 in 41); passed on 19 Dec after speaking in the pauses (0 in 40); no microphone bought, PB1's microphone line unspent (§2). Storage test: two sessions fit, the phone cleared after each filing (D A).
+- Production tests add 0.75 h to the run-in: R1 4.25 h, R2 1.5 h (D A; flag F37 for PB4's D2).
+- Her colours: near-black #1C1C1C, cream #F3E9D2, teak #A0522D and white; mustard #D9A441 tried and rejected (§8). At most four words on a thumbnail (§7). No Test & Compare in Season 1 (§7).
+- Piece 1: a runtime map of eight chapters (§4); her mistake on it, sanding through one corner, and its fix (D C, D D); its edit on Sun 27 Dec 2026, 10:00 to 14:00, 220 minutes planned (D B).
+- Reels: her own sound only, 30 to 60 seconds; Reel 1 is 45 seconds (§5, D C). Carousel, post 5: eight slides, 1080 × 1350, out Thu 14 Jan 2027 (D D).
+- The season line: a lower third inside the first 30 seconds and the first line of the description, never in the title or thumbnail (§4).
+- After three edit overruns in a row, the video goes to about 8 minutes from the next checkpoint; hours are not added (§9). Spending after the run-in: the clamp only (§10).
+
+Left free by PB5: the free editor she uses; her actual edit minutes; her per-piece cost amounts.
+
 ## Left free (a unit that needs one sets it and it is appended here)
 
 - Her country, city, household and income. PB8 works its register for the EU, the UK and the US without fixing her country unless it must.
