@@ -84,6 +84,21 @@ Left free by PB5: the free editor she uses; her actual edit minutes; her per-pie
 - Her YouTube metric rows are YT1–YT12; YT8 (back-catalogue share) is first read at the Q2 review on uploads 1–7; YT11 from Q3; YT12 not read (D2).
 - Left free by PB6: her Q1 and later values on every row; her phone's operating system; whether her channel has advanced features; her search terms.
 
+## Set by PB7, How Instagram growth works (12 Nov 2026)
+
+- Her Instagram account is public and professional (creator type), with "Allow public photos and videos to appear in search engine results" left on (D1 IR10).
+- Profile links: link 1 the YouTube channel; link 2 the newest video, changed each upload Tuesday (D1 IR7).
+- Every post ends with "Full video: link in profile" (D1 IR7; consistent with PB5's Reel and carousel templates).
+- One Story a fortnight with a link sticker to the new video, posted in week A's Wednesday reply slot, 5 of its 15 minutes; skipped if the sticker is not offered (D1 IR7).
+- Captions open with the piece and its fault in a buyer's words; at most five hashtags. Post 1 of piece 1: first line "Teak side table with white water rings, restored at home with tools that fit in one box."; hashtags #furniturerestoration #midcenturymodern #teakfurniture #woodfinishing #restoration (D1).
+- Season 1 Instagram mix confirmed as four Reels and two carousels a fortnight (posts 1–4 Reels, 5–6 carousels), 30 minutes each: 27 Reels and 12 carousels in Q1, 25 and 14 in Q2 (derived from PB4 D2) (D1 IR1, D2).
+- Trial reels from the first checkpoint at 1,000 followers, one a fortnight testing an opening (IR8); no collab planned in Season 1 (IR9).
+- Format test once, at the Q2 review (5 Jul 2027): carousels' median non-follower views across Q1 and Q2 equal or beat Reels' → one Reel a fortnight becomes a carousel from Season 3's second video (IR11).
+- Instagram format flag from Q2: Reels' median skip rate above 65.5% and median watch-time share below her Q1 median → the next season's Reel openings change (IR12).
+- She reads Insights in the Instagram app on her phone; posts are read once 7 days old; at the Q1 review 36 posts qualify (24 Reels, 12 carousels) and the Reels of 30 Mar, 1 Apr and 3 Apr 2027 are recorded only (D2).
+- Her Instagram metric rows are IG1–IG13; IG13 is not read below 1,000 followers (D2).
+- Left free by PB7: her Q1 and later values on every IG row; whether the link sticker is offered to her account; her account's creation date; her follower demographics; any collaborator; her later hashtags.
+
 ## Left free (a unit that needs one sets it and it is appended here)
 
 - Her country, city, household and income. PB8 works its register for the EU, the UK and the US without fixing her country unless it must.
