@@ -133,7 +133,8 @@ S-PB1 ran on Opus 5.5 with Pedro present. The 28 open flags of PB's `syllabus-fl
 - **Briefs.** PB6, PB9 and PB10 changed by one sentence each, PB10's Takes line adds PB2 to PB4 (`generator/data/personal-brand/units_data.py`); each checked by eye as `open_brief` prints it.
 - **Register and flags.** Mara's handle lines (`case-facts.md`); F3, F4, F13, F19, F28, F33 resolved; F8's verdict order put in PB1 D3's order; the 22 kind-(d) flags noted and left open.
 - **P97.** A compare figure carries a second drawing for phones (svg.viz-alt, 258 units, `PHONE_NARROW`): labels pinned at the left when they leave the bars 96 units, else above each bar; no sticky label copy. `design/theme.css` 6.9, copied to `shell.css`. `verify.py` gains `check_compare_phone`: every compare at 320 and 390 px opens with its longest bar and its value whole. Before: 125 of 126 compare frames cut; after: none. 63 figures on 46 pages changed (no other kind); each re-checked by one of five fresh Opus 5.5 agents from its page's text without figures, the captions and `frames()` sheets at 320 and 390 px, dark and light: all passed (`kit/reviews/p97/`). P98 proposed for what they noted.
-- **Build.** recorded below after the publish.
+- **Build.** `build.py`, `verify.py --shots` (the PB Briefs page, PB1, PB3, A9, Greece 1.3, Rome 0.1): ALL CHECKS PASSED, the new compare check 126 frames, 0 cut; PB1's figure 3 looked at at 390 px, dark and light, all seven bars to scale in one frame; desktop drawings unchanged.
+- **Publish.** Academy artifact v148 (1794490291-5114, build ec40ba3; the live page matched the start build, so the shell in its live wrapper and the 48 changed files went in one patch, all 49 read back, sha256 matching); Pages academy 407f76c, run 43228251449 succeeded.
 
 ## 12 November 2026 · Session 74 · Public course PB, unit PB4 (W-PB4)
 
