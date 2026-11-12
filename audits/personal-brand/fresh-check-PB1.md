@@ -139,3 +139,10 @@ No course unit is filed, so there are no pointers to check. The pointers to PB3�
 No private name, employer, city, sport, business or handle appears, and there is no reference to another course; cross-references are only to this course's units. Two terms are used without a gloss: "Studio" (implicit in §4) and "Insights" (D3, Instagram's analytics). Neither is a private reference. The undefined "APV" is covered by the figure fix.
 
 PB1 · fix · error 1 · should-fix 6 · minor 7
+
+## Maintainer's notes (W-PB1 chat, 12 Nov 2026)
+
+- All fourteen findings applied by script as exact replacements, each Current found once in the unit as checked (sha of the checked copy equal to the filed draft, commit 7aea2d5).
+- The two Confirmed-section notes (the brandstore.rode.com link not returned by a search, so not checked by the checker, which confirmed the same price at rode.com; the TechCrunch Sources date not shown in its fetched text) are not findings; recorded in the unit's fresh-check line, not applied.
+- Figures 3 and 4, fixed by findings 1, 6 and 7, were re-checked by a new Opus 5.5 agent (claude-opus-5-5, as it states) from the unit's text without its figures, the captions and the frames `verify.py --shots` saved (phone320, phone, tablet, desktop; dark and light): both PASS. Its note that a compare figure on a phone opens with its long bars cut at the frame edge, so no single phone frame shows all bars to scale, is a builder matter for every compare figure, proposed as its own row (P97).
+- No agent transcript is kept on disk in this session (none found under `/root/.claude/` or `/tmp/`), so no transcript could be checked by script; each agent's model is the one it states.
