@@ -129,7 +129,7 @@ W-PB2 ran in the same unattended chat as W-PB1 (session 71), on Opus 5.5, which 
 - **Corrected where it sat.** A1 (six errata from PB2's writer, confirmed by the checker), with its dated note; Brand + AI v9.6.
 - **The home hero.** With PB2's words Marketing's rise in the tall layout closed one ring of its own (verify's P92 check failed at every width); `_HERO_AT['marketing']` moves from y .16 to .15 in that layout, checked with `viz.contours_rings` with headroom for more words.
 - **Build.** `build.py`, `verify.py --shots --page read-pb2`: ALL CHECKS PASSED after the move.
-- **Publish.** PUBLISH2_PLACEHOLDER
+- **Publish.** Academy artifact v145 (1794460419-93d6, build df77217; the shell in its live wrapper and the nine changed files sent in one patch and all ten read back, sha256 matching); Pages academy f79921c, run 43159981852 succeeded.
 
 ## 12 November 2026 · Session 71 · Public course PB, unit PB1 (W-PB1)
 
