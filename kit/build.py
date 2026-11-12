@@ -968,7 +968,7 @@ _HERO_AT = {            # where each area's rise stands (fractions of the layout
     # rings of its own (verify.py checks it), Marketing clear of the sidebar at both ends of the drift. P93: keyed by
     # area, so an edition that holds fewer areas (Greece: History only) takes its areas' places (keyed by THEMES order,
     # the Greece edition stopped here from P92 on)
-    'history': ([.50, .48], [.46, .55]), 'marketing': ([.33, .16], [.14, .18]),
+    'history': ([.50, .48], [.46, .55]), 'marketing': ([.33, .15], [.14, .18]),   # W-PB2 (12 Nov 2026): .16 to .15 in the tall layout, so Marketing (86,699 words with PB2) still closes two rings of its own
     'technology': ([.66, .18], [.81, .26]), 'ux': ([.66, .82], [.78, .68]),
 }
 if [t['id'] for t in THEMES if t['id'] not in _HERO_AT]:

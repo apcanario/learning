@@ -200,3 +200,13 @@ The unit assumes nothing only a private-course reader would know, with one excep
 - Every Mara fact agrees with case-facts.md and PB1 (age, job, followers, phone, hours, cadence, day one, Q1 date), apart from the handle-check tension noted above. Mara is labelled "(Mara, fictional)" on first use in §1, and the new facts are labelled in D1–D5.
 
 PB2, verdict fix: 1 error, 3 should-fix, 6 minor. Without the error, the keep rule would have been met, but the should-fix edits are still needed.
+
+## Maintainer's notes (W-PB2 chat, 12 Nov 2026)
+
+- All ten findings applied by script as exact replacements, each Current found once in the unit as checked (the checked copy equal to the filed draft, commit 136192c). Items 4 and 8 of the writer's unsure list were brought into line with findings 1 and 6 to 8.
+- The front matter keeps `search: off`: the searches were the re-checks and the platform rules the brief asks to date, which method §4 allows with search off.
+- The checker's tension between the register's handle-check line and what the unit could do is raised as flag F13; Contradictions in the writer's notes otherwise none.
+- F2 stays open: it names every unit from PB2 to DD-PB2, so it must reach the later writers.
+- Figure 1 (matrix), fixed by finding 5, was re-checked by a new Opus 5.5 agent (claude-opus-5-5, as it states) from the text without figures, the captions and the frames: PASS.
+- Figure 3 (decision), which the checker passed, broke the handles mid-word on a phone in the maintainer's look at the frames (`@oneboxrestoratio n`); its labels were shortened to name the picked and fallback handles by role, with the handles in the caption, and re-checked by a new agent (result in the unit's fresh-check line).
+- No agent transcript is kept on disk in this session, so none could be checked by script; each agent's model is the one it states.
