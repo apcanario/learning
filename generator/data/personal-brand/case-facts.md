@@ -20,6 +20,19 @@ The running example of the course Building a Personal Brand on Instagram and You
 
 Left free by PB1: her country (USD is the source currency of the one price checked, not hers); her niche's sub-topics; her actual numbers in any quarter; year two's dates (PB10). PB3 may move hours between the platforms and PB4 turns them into a calendar, inside the same 12 hours a fortnight.
 
+## Set by PB2, Positioning (12 Nov 2026)
+
+- She restores indoors, on a table, with hand tools that fit in one box; she has no garage, shed or workshop (§1, D1, D4).
+- Her pieces: mid-century chairs, side tables and small cabinets (D1).
+- Each YouTube video is one piece, start to finish, with what was wrong, what she did, what went wrong and what it cost; she presents every video herself (D1, D4).
+- When a job needs a workshop she says so and shows a workaround or refers it to a professional (D4).
+- Positioning sentence: "Mara shows people who have no workshop how to restore a mid-century chair, table or small cabinet at home, start to finish, with tools that fit in one box." Its 60-word expansion and the audience are as in PB2's D1 (PB3 tests the audience).
+- Account name: One Box Restoration; handle @oneboxrestoration on both platforms, provisional until she claims it in both apps on the same day; fallbacks @onebox.restoration, then @oneboxrestore; override: Mara Venn (@mara.venn), with One Box Restoration as the series name, if she moves beyond restoration or sells teaching under her own name (D2). None of these handles was checked for use on either platform (flag F13).
+- Instagram name field "Mara · One Box Restoration"; her Instagram bio, YouTube description and keywords are as written in PB2's D3 and D4. Her job as an accountant stays out of public copy until PB8 decides.
+- Repeat-back test: run 1 on the profile in the week of 7 December 2026; run 2 on one video at the Q1 review, Monday 5 April 2027 (D5).
+
+Left free by PB2: her country, city, household and income; how long she has restored; whether her job is disclosed (PB8).
+
 ## Left free (a unit that needs one sets it and it is appended here)
 
 - Her country, city, household and income. PB8 works its register for the EU, the UK and the US without fixing her country unless it must.
