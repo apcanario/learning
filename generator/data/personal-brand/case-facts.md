@@ -45,8 +45,23 @@ Left free by PB2: her country, city, household and income; how long she has rest
 
 Left free by PB3: her audience's actual demographics (her own data decides), her email list's size, her Instagram format mix (PB7).
 
+## Set by PB4, The content system (12 Nov 2026)
+
+- Week pattern: Saturdays are restoration sessions, filmed, 1.0 hour capture each; edit window Sunday of week A, 10:00, 4.0 hours with a hard stop; cut window Sunday of week B, 10:00, 4.5 hours (packaging 1.0, six Instagram posts 3.0, scheduling 0.5); the video goes public on Tuesday of week A; email that Tuesday, 0.25; replies Wednesday and Friday of week A and Wednesday of week B, 0.25 each; log Sunday evening, 0.25. Week A and week B each total 6.0 (§5, D1, D2).
+- Week 1 (Mon 4 – Sun 10 Jan 2027) is a week A. Run-in: R1 7–13 Dec 2026 (repeat-back test run 1, backlog and Season 1 pick, set-up, piece 1 session 1; 3.75 h), R2 14–20 Dec (1.25 h), R3 21–27 Dec (piece 1 edited Sun 27 Dec; 5.25 h), R4 28 Dec–3 Jan 2027 (piece 1 cut Sun 3 Jan; 5.75 h) (D2).
+- Upload dates: 5 Jan, 19 Jan, 2 Feb, 16 Feb, 2 Mar, 16 Mar, 30 Mar 2027 (uploads 1–7); upload 8, the first of Season 2, 13 Apr 2027 (D2).
+- Instagram posts go out Tuesday, Thursday and Saturday, post 1 of each piece with the video; provisional mix four Reels and two carousels a fortnight, 30 minutes each, which PB7 may change (§3).
+- Emails are written each publishing Tuesday and kept as drafts until PB8 allows collection (§3). No YouTube Shorts at 6 hours (unchanged from PB3).
+- Capture set-up: phone on a clamp, a taped mark on the table for stills; each piece's first session opens with an as-found walk-round and four stills, the first session after a piece is finished with its reveal; a voice note with three prompts; one folder per piece, a sub-folder per session (§1).
+- Seasons: a season matches a PB1 quarter; Season 1 is seven pieces, uploads 1–7, ending at the Q1 review on 5 Apr 2027; each season has a YouTube playlist and an on-screen "piece n of x" line; seasons run back to back in year one; a format change from a review takes effect at the first video edited after it, the season's second video (the first is edited before the review); the next season's first two pieces are picked from the backlog by week 10 of the season before, the rest at the quarterly review (§4, §6, D1, D2).
+- Backlog: one list on her phone, pieces and posts; Season 1's pieces a teak side table, a dining chair, a small teak cabinet, a side table, an armchair frame (cushions referred out), a nest of two tables and a small chest of drawers, a sideboard out of scope, each estimated at two weekends; pieces 1–3 bought and 4–7 seen as of 7 Dec 2026 (§6).
+- Piece rules: season lists take only pieces estimated at two weekends unless a bank exists (one finished, captured, unedited piece); a piece is never split across videos; if pieces average more than two weekends she moves to one video every four weeks at a checkpoint (§1).
+- Lost-week rules: a lost week A means next Sunday an 8-minute edit and a short cut with two posts, the video on its date, 6.5 h; a lost week B moves the upload 7 days, next Sunday a short cut and 8-minute edit, 6.5 h, and the week after carries the moved email (6.25 h); a second lost cut window in a quarter skips that upload; an edit not exported at the 4-hour stop is finished at the start of the next cut window, that fortnight's Instagram cut from six posts to two; never two videos in one week; holidays move a window within its own week (§7, D1 F, D2).
+
+Left free by PB4: her actual restoration time per piece; her cost per piece; the order of Season 1's pieces after piece 3; the rest of Season 2's pieces.
+
 ## Left free (a unit that needs one sets it and it is appended here)
 
 - Her country, city, household and income. PB8 works its register for the EU, the UK and the US without fixing her country unless it must.
 - Her account name and handle (PB2 chooses them, after checking that the handle is not in use on either platform on the day; if it is, PB2 picks another).
-- Her calendar, her numbers in any quarter, her products and prices.
+- Her numbers in any quarter, her products and prices.
