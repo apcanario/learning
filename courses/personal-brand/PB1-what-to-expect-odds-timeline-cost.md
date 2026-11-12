@@ -305,7 +305,7 @@ Spending is read at each checkpoint. Any income, however small, triggers the tax
 1. YouTube uploads and Instagram posts this quarter against plan (7 or 6 videos; 39 posts).
 2. Hours logged per week against 6, and the number of weeks over 7.
 3. YouTube: median 30-day views across uploads at least 30 days old, and the best upload so far (Y1).
-4. YouTube: click-through rate and percentage viewed for each upload at least 7 days old (Y2, Y3).
+4. YouTube: click-through rate, impressions and percentage viewed for each upload at least 7 days old, and her median upload's impressions (Y2, Y3).
 5. YouTube: subscribers, total and net gain per month, against the band median (Y6); watch hours in the last 365 days against 3,000 and 8,000 (Y10, Y11).
 6. Instagram: followers, total and net gain; median reach per post, recorded against 261 as context (I3); what the professional dashboard shows as eligible (I6).
 7. Money spent against the 150 USD cap, and any income.
@@ -395,6 +395,7 @@ Tax question to answer if anything is earned: [your country's tax authority page
 - Your Europe (European Union), "FAQs: Income taxes abroad", last checked 18 Jun 2026. https://europa.eu/youreurope/citizens/work/taxes/income-taxes-abroad/faq/index_en.htm
 - YouTube Help, "Changes to the YouTube Partner Program" (answer 12843009), checked 12 Nov 2026. https://support.google.com/youtube/answer/12843009
 - YouTube Help, "Create a live stream on mobile" (answer 9228390), checked 12 Nov 2026. https://support.google.com/youtube/answer/9228390?hl=en
+- YouTube Help, "Good to know about recommendations for YouTube's recommendation system" (answer 16559651), checked 12 Nov 2026. https://support.google.com/youtube/answer/16559651?hl=en
 - YouTube Help, "Impressions and click-through rate FAQ" (answer 7628154), checked 12 Nov 2026. https://support.google.com/youtube/answer/7628154?hl=en-GB
 - YouTube Help, "The YouTube Partner Programme overview and eligibility" (answer 72851), checked 12 Nov 2026. https://support.google.com/youtube/answer/72851?hl=en-gb
 
@@ -419,6 +420,8 @@ Correction 12 Nov 2026, found by PB4's writer (row W-PB4) and confirmed by its f
 
 Correction 12 Nov 2026, found by PB6's fresh checker (row W-PB6): the YouTube Help page at answer 12843009 is titled "Changes to the YouTube Partner Program", not "Changes to YouTube Partner Program terms" (§4 table, twice, and Sources).
 
-Correction 12 Nov 2026, found by PB6's writer: D3 verdict 3 and its decision figure now count an upload's click-through under 2% only when its impressions are at or below her median upload's; an upload under 2% with impressions above her median is recorded and not counted (YouTube Help, answers 7628154 and 16559651) (flag F42).
+Correction 12 Nov 2026, found by PB6's writer: D3 verdict 3 and its decision figure now count an upload's click-through under 2% only when its impressions are at or below her median upload's; an upload under 2% with impressions above her median is recorded and not counted (YouTube Help, answers 7628154 and 16559651, the latter added to Sources) (flag F42).
 
 Correction 12 Nov 2026, found by PB6's writer: §4 gains a row for the rule from 1 February 2027 that earning from the Shorts Creator Pool needs 10 million qualified Shorts views in the last 90 days (YouTube Help, answer 12843009) (flag F45).
+
+Correction 12 Nov 2026, found by the P100 correction check: D3 read 4 now records each upload's impressions and her median upload's impressions, which verdict 3 as corrected uses (flag F42).

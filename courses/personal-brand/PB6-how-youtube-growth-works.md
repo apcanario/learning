@@ -261,7 +261,7 @@ Mara reads Studio in the YouTube Studio app on her phone (Mara, fictional; PB5 �
 | YT11 | Returning, casual and regular viewers | Analytics, Audience | From Q3 | None in PB1 | Regular: watched in more than 6 months of the past year; "Audience segments do not affect reach or monetization" (answer 10246996; platform-official) | Not read in Q1: no viewer can qualify as regular before month seven |
 | YT12 | Shorts rows (stayed to watch, Shorts traffic source) | Not applicable | Not read | None | No Shorts in year one (R8) | Not read |
 
-**What the rows do not tell her.** No row measures how many Instagram viewers become YouTube viewers (PB3 §4), and no row has a sourced benchmark for Intro, traffic mix, search terms or the back catalogue: those rows are read for direction against her own earlier quarters. Where a low click-through rate sits beside high impressions from Browse, YouTube's FAQ calls it natural at wider reach (§3); she writes the impressions and traffic source beside every CTR so that PB10 can see it before verdict 3 counts the upload (PB10 decides whether such an upload counts towards verdict 3).
+**What the rows do not tell her.** No row measures how many Instagram viewers become YouTube viewers (PB3 §4), and no row has a sourced benchmark for Intro, traffic mix, search terms or the back catalogue: those rows are read for direction against her own earlier quarters. Where a low click-through rate sits beside high impressions from Browse, YouTube's FAQ calls it natural at wider reach (§3); she writes the impressions and traffic source beside every CTR so that PB10 can see it before verdict 3 counts the upload (PB1 D3 verdict 3, as corrected on 12 Nov 2026, records an upload under 2% with impressions above her median upload's and does not count it).
 
 ### Templates
 
@@ -293,6 +293,8 @@ Rules every reader should decide, one line each: [what you do with a weak upload
 | YT12 | Shorts: stayed to watch; views from the Shorts traffic source; subscribers gained per Short | [path, if you publish Shorts] | [every checkpoint, if any] | [your PB1 Shorts row, if any] | [own baseline; no sourced transfer rate] | [or "not applicable"] |
 
 Your device for reading Studio: [phone app or computer]. Rows you cannot open on that device: [list them and when you will read them elsewhere, or drop them].
+
+Correction 12 Nov 2026, found by the P100 correction check: D2's note on the rows ("What the rows do not tell her") now says that PB1 D3 verdict 3, as corrected, records an upload under 2% with impressions above her median and does not count it, where it said PB10 decides (flag F42).
 
 ## Sources
 

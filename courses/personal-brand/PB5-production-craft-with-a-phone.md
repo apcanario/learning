@@ -40,7 +40,7 @@ Mara's table stands beside a window, with the window to her left as she faces th
 
 ### One clip per step
 
-PB4 has the phone recording before the first tool comes out of the box. This unit refines that into one clip per step (her rule): she taps record before she picks up the tool for a step and stops when the step ends, so each clip is one step of the restoration and the to-camera lines fall inside the clips they describe. A tap costs seconds and does not stop the work; the gain is footage bounded by construction, which §9 needs, and a phone that is not filling its storage with the minutes between steps. No source measures either effect; the second is checked by a storage test in the deliverable (A, before the season).
+PB4 first had the phone recording before the first tool comes out of the box. This unit refines that into one clip per step (her rule): she taps record before she picks up the tool for a step and stops when the step ends, so each clip is one step of the restoration and the to-camera lines fall inside the clips they describe. A tap costs seconds and does not stop the work; the gain is footage bounded by construction, which §9 needs, and a phone that is not filling its storage with the minutes between steps. No source measures either effect; the second is checked by a storage test in the deliverable (A, before the season).
 
 ### A short shot list
 
@@ -536,6 +536,8 @@ Fill the brackets; keep each line's basis. Every minute is your planning estimat
 | Last | [the method or the subject] | [where the full video is] |
 
 **Boxes** ([minutes] in all): pick stills [ ]; crop [ ]; text bands [ ]; contrast and spelling [ ]; first-slide test [ ]; export [ ].
+
+Correction 12 Nov 2026, found by the P99 correction check: §1 now says PB4 first had the phone recording before the first tool comes out of the box, since PB4 now carries this unit's one clip per step (flag F36).
 
 ## Sources
 
