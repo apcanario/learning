@@ -17,7 +17,7 @@ Three kinds of source carry the unit, and they are labelled where they appear. P
 
 ### 1.1 Browse, suggested and search are three different machines
 
-YouTube Analytics sorts every view by where it started. The definitions matter, because the three large sources work differently ([YouTube Help, Traffic sources](https://support.google.com/youtube/answer/1714921?hl=en-GB)):
+YouTube Analytics sorts every view by where it started. The definitions matter, because the three large sources work differently ([YouTube Help, Understand your YouTube video reach, answer 1714921](https://support.google.com/youtube/answer/1714921?hl=en-GB)):
 
 - **Browse features**: traffic from Home, Subscriptions, Watch Later, trending/Explore and other browsing features.
 - **Suggested videos**: traffic from suggestions next to or after other videos, and from links in video descriptions.
@@ -357,7 +357,7 @@ Checked 28 October 2026. Each rule names the evidence it rests on. Rules marked 
 - YouTube Help, Impressions and click-through rate (answer 7628154), checked 28 Oct 2026. https://support.google.com/youtube/answer/7628154?hl=en-GB
 - YouTube Help, Measure key moments for audience retention (answer 9314415), checked 28 Oct 2026. https://support.google.com/youtube/answer/9314415?hl=en
 - YouTube Help, New, casual, & regular viewers tips (answer 13615784), checked 28 Oct 2026. https://support.google.com/youtube/answer/13615784?hl=en
-- YouTube Help, Traffic sources (answer 1714921), checked 28 Oct 2026. https://support.google.com/youtube/answer/1714921?hl=en-GB
+- YouTube Help, Understand your YouTube video reach, Computer version (answer 1714921), checked 28 Oct 2026. https://support.google.com/youtube/answer/1714921?hl=en-GB
 - YouTube Help, Understand new, casual, & regular viewers (answer 10246996), checked 28 Oct 2026. https://support.google.com/youtube/answer/10246996?hl=en
 - YouTube Help, YouTube Partner Program overview & eligibility (answer 72851), checked 28 Oct 2026. https://support.google.com/youtube/answer/72851?hl=en
 - YouTube Help, Changes to the YouTube Partner Program (answer 12843009), via A9, checked 28 Oct 2026. https://support.google.com/youtube/answer/12843009?hl=en
@@ -377,3 +377,5 @@ Fresh check 28 Oct 2026 (Fable 5.1): fix · 1 error, 9 should-fix, 7 minor; all 
 8. The Ahrefs figures are vendor data from US-weighted Search Console data; nothing found for Portuguese-language queries.
 9. Studio's typical-retention line also offers a comparison with "all YouTube videos of similar length"; not confirmed as available on a small channel.
 10. Social Media Today, not Instagram, is the source for Story link stickers reaching only followers; Instagram's 2023 ranking page supports it only indirectly.
+
+Erratum 12 Nov 2026, found by PB6's writer (public course PB, row W-PB6) and confirmed by its fresh checker: the YouTube Help page at answer 1714921 is titled "Understand your YouTube video reach" (Computer version); "Traffic sources" was a section of it (§1.1, Sources).
