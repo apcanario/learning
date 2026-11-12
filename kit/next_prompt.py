@@ -21,6 +21,7 @@ sys.path.insert(0, str(R))
 from courses import COURSES
 
 QUEUE = ('personal-brand', 'building-with-ai')          # the courses, in the order their rows run
+HOLDS = {'W-PB5': 'S-PB1'}   # a writing row that waits for a review row: while the review row is in the queue of docs/BACKLOG.md, no prompt runs past it (Pedro, 12 Nov 2026, 08:30)
 SRC = ROOT / 'courses' / 'brand-ai'                      # the private source units
 ACADEMY = 'https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH'
 NOTES = {   # what one row needs beyond the template
@@ -52,6 +53,14 @@ def rows():
             out.append(dict(row=f'W-{code}', code=code, c=c, d=d, sc=sc, unit=units[code], model=model, search=search,
                             filed=filed, order=[o[0] for o in d.ORDER]))
     return out
+
+
+def hold(r):
+    """The review row that holds writing row r, if that review row is still in the queue (above the Proposed section)."""
+    h = HOLDS.get(r['row']) if r else None
+    if not h: return None
+    q = (ROOT / 'docs' / 'BACKLOG.md').read_text(encoding='utf-8').split('## Proposed')[0]
+    return h if re.search(r'^\| ' + re.escape(h) + r' \|', q, flags=re.M) else None
 
 
 def sources(takes):
@@ -127,7 +136,8 @@ def prompt(r, nxt):
     P.append(f"**10. Publish Academy once.** Before the build you publish, move the row to `docs/CHANGELOG.md`, set the backlog's \"Next up\" line and save the next prompt in its row (step 11), so the published Backlog and Changelog pages are current. Read the artifact {ACADEMY} first and compare the live page with the build you started from (`get_artifact` for the live version id; `list_files` for every file's sha256 against `sha256sum` of the start build's files, which are the `kit/academy/` of the commit you cloned). `publish_files` patches (a republish changes only the files it names) and refuses a shell that does not begin with a doctype: send the files that differ from the start build, found by script, and the shell inside the wrapper the live page carries (its first line and its closing `</body></html>`, taken from the saved live shell by script into a copy outside the repo), with `slug`, `base_version` and mode patch; then read the sent files back and compare their sha256 with the build; never a new artifact, never forced. Then `./deploy.sh` once: attach `apcanario/academy` with add_repo (if refused, carry on and ask Pedro once at the end), clone it once, set `ACADEMY_DIR` to the clone, and confirm with `gh run` that the deployment of the new build succeeded. The publish and deploy identifiers go into the records after the publish, committed without republishing.")
     P.append("**11. Close** per `docs/method.md` §8, steps 1 to 5: the row done and moved to `docs/CHANGELOG.md` with the date, the models and a one-line result; `kit/CHANGELOG.md` gets its session entry; a task the work uncovered that this chat cannot do is a new row marked *proposed* (a syllabus review, if a flag asks for one, is such a row); the Project copies `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` rewritten from `docs/`, and every changed Project knowledge file re-uploaded with the Projects tool (`courses-index.md`, the course's `hub.py` and `syllabus-flags.md`, the unit; read each existing path with `project_read` first, then write it from its repo file with `local_path`). The next prompt is not written by hand: `python3 kit/next_prompt.py --save` prints the prompt of the next unit not filed"
              + (f" ({nxt['row']}, unit {nxt['code']})" if nxt else " (none is left: the next row is G-R, the reliefs of both public courses, and its prompt is written to the standard of this one)")
-             + " and saves it in that row of `docs/BACKLOG.md`; run it after filing and before the final build.")
+             + " and saves it in that row of `docs/BACKLOG.md`; run it after filing and before the final build."
+             + (f" Here the next row is {hold(nxt)}, the review that holds {nxt['row']}: its prompt is already saved in its row, so `--save` is not run; set the backlog's \"Next up\" line to {hold(nxt)} and give its saved prompt at the end of the reply." if hold(nxt) else ''))
     P.append("**Reply:** what was filed where (words, figures, search used or not); the fresh-check verdict and counts; each mistake corrected, in a line, with the file it was in; each flag raised, with the units it affects and whether it blocks the next unit; the private-terms result; verify's result; the publish and the deploy; the choices taken; the backlog hand-off (row done, proposed rows, next up); then the next prompt in a code block.")
     return '\n\n'.join(P)
 
@@ -161,11 +171,15 @@ if __name__ == '__main__':
     else:
         k = next((i for i, r in enumerate(rs) if r['code'] not in r['filed']), None)
         if k is None: raise SystemExit('every public unit is filed; the next row is G-R')
+        if hold(rs[k]): raise SystemExit(f"{rs[k]['row']} waits for {hold(rs[k])}: run that row first (its prompt is saved in its row of docs/BACKLOG.md)")
     nxt = next((r for r in rs[k + 1:] if r['code'] not in r['filed']), None)
     text = prompt(rs[k], nxt)
     if '--bundle' in sys.argv:      # several rows in one unattended chat (method §4, P31): this row's prompt between a preface and a tail
         n = int(sys.argv[sys.argv.index('--bundle') + 1])
-        todo = [r for r in rs[k:] if r['code'] not in r['filed']][:n]
+        todo = []
+        for r in [r for r in rs[k:] if r['code'] not in r['filed']]:
+            if len(todo) == n or (todo and hold(r)): break
+            todo.append(r)
         if len(todo) > 1:
             names = ', then '.join(f"{r['row']} (unit {r['code']})" for r in todo)
             after = next((r for r in rs[rs.index(todo[-1]) + 1:] if r['code'] not in r['filed']), None)
@@ -178,7 +192,7 @@ if __name__ == '__main__':
                     + ', '.join(r['row'] for r in todo[1:]) + ") and work what it prints in full, the same way: a new packet folder, a new writer and a new checker, each a fresh agent that has seen nothing of the earlier unit but its filed file; "
                     "the start build for its publish is the build the row before published; clone nothing again. "
                     f"After {todo[-1]['row']} is closed, stop. The next prompt, saved in its row and given at the end of the one reply, is "
-                    + (f"`python3 kit/next_prompt.py --bundle {n} --save` (from {after['row']})" if after else "the prompt of row G-R, written to the standard of this one")
+                    + (f"the prompt already saved in row {hold(after)} of `docs/BACKLOG.md` (the review that holds {after['row']}; do not run `--bundle`)" if hold(after) else f"`python3 kit/next_prompt.py --bundle {n} --save` (from {after['row']})" if after else "the prompt of row G-R, written to the standard of this one")
                     + ". **One reply for the whole chat:** per row, what its own Reply paragraph asks, under the row's name; then the backlog hand-off and the next prompt in a code block.")
             text = pre + '\n\n' + text + '\n\n' + tail
     if '--save' in sys.argv:
