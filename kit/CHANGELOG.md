@@ -138,7 +138,9 @@ The first row of an unattended two-row chat (Pedro away), on Opus 5.5 (claude-op
 - **PB7.** How Instagram growth works, about 8,750 words, three figures, search on; fresh check fix, 3 errors, 9 should-fix, 7 minor, all applied; report `audits/personal-brand/fresh-check-PB7.md`.
 - **Mistakes elsewhere.** A6 erratum (Aug 2024 metrics changes; brand-ai v9.10). Step 7b: PB5 §6 and PB4 §3 corrected after a correction check (`corrections-2026-11-12-PB4-PB5.md`).
 - **Flags.** F6, F17, F26, F32, F39 carried; F47 to F55 raised; none blocks PB8.
-- **Build.** `build.py`, `verify.py`, `verify.py --shots` for `read-pb7` and `read-pb1` (the changed decision figure).
+- **Figures.** PB7 figure 1 re-checked twice (caption corrected); PB1 D3's decision figure re-checked three times (caption corrected; hub v9.1).
+- **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-pb7` and `read-pb1`.
+- **Publish.** Academy artifact v151 (1794531794-9b30; build d63114a; the live page matched the start build; 15 files in one patch, all read back and matched). GitHub Pages not deployed: attaching `apcanario/academy` was refused by the session's permission check.
 
 ## 12 November 2026 · Session 77 · Public course PB, unit PB6 (W-PB6)
 
