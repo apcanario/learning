@@ -140,7 +140,9 @@ The second row of the session-78 chat (Pedro away), on Opus 5.5 (claude-opus-5-5
 - **Mistakes elsewhere.** None found; no correction to a filed unit.
 - **Flags.** F11, F18, F25, F40, F52 carried; F56 to F64 raised; none blocks PB9. P102 (syllabus review, Mara's country) and P103 (Pages deploy) proposed.
 - **Kit fix.** `build.py` stopped on PB8 §6's separator (38 paragraphs, over 6 KB at the simplify limit of 12); `sep_block` now simplifies up to 60 before stopping, no rise dropped; no other separator changes.
-- **Build.** `build.py`, `verify.py --shots` for `read-pb8`.
+- **Figures.** Figures 1, 2 and 4 corrected by the fresh check; 2 and 4 corrected again after the first re-check; all passed.
+- **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-pb8`.
+- **Publish.** Academy artifact v152 (1794537637-143a; 8 files in one patch over v151, all read back and matched). Pages not deployed (P103).
 
 ## 12 November 2026 · Session 78 · Public course PB, unit PB7 (W-PB7)
 
