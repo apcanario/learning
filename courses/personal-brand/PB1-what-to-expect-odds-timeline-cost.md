@@ -259,7 +259,7 @@ All allocations are Mara's planning figures (Mara, fictional), unsourced estimat
 | Log | 0.5 | Hours logged each week against this table |
 | **Total** | **12.0** | |
 
-The quarterly review (60 minutes, PB10) is taken from that fortnight's publishing-and-replies line. A week over 7 hours is logged as over budget.
+The quarterly review (60 minutes, PB10) is taken from the Instagram derivatives of the fortnight that holds it: that fortnight's cut window makes four posts in place of six, two Reels fewer (PB10 §5). A week over 7 hours is logged as over budget.
 
 **Money: year-one cap 150 USD (Mara, fictional).**
 
@@ -303,7 +303,7 @@ Spending is read at each checkpoint. Any income, however small, triggers the tax
 
 **The seven reads at every checkpoint** (PB10 runs them as a 60-minute procedure; Studio and Insights are opened for the review on its date):
 
-1. YouTube uploads and Instagram posts this quarter against plan (7 or 6 videos; 39 posts, 31 in Q2 if PB9's guide build is decided at the Q1 review).
+1. YouTube uploads and Instagram posts this quarter against plan (7 or 6 videos; 39 posts in Q1, 37 in Q2, Q3 and Q4, 29 in Q2 if PB9's guide build is decided at the Q1 review).
 2. Hours logged per week against 6, and the number of weeks over 7.
 3. YouTube: median 30-day views across uploads at least 30 days old, and the best upload so far (Y1).
 4. YouTube: click-through rate, impressions and percentage viewed for each upload at least 7 days old, and her median upload's impressions (Y2, Y3).
@@ -315,7 +315,7 @@ Spending is read at each checkpoint. Any income, however small, triggers the tax
 
 - **Q1 review, Monday 5 April 2027 · YouTube uploads 1–7.** Expect views near or below 180 on the uploads old enough to measure (Y1) and click-through scattered (Y2). The 8,000-hour rule took effect on 1 February 2027, inside this quarter (Y10); record the 365-day watch hours as the first baseline. Apply verdicts 2 and 4 only: the stop rule needs two quarters, and too few uploads are old enough for verdict 3.
 - **Q2 review, Monday 5 July 2027 · uploads 8–13.** Upload 10 has gone out (week 19). Compare the median 30-day views of uploads 1–10 with 180–272, remembering that cohort posted faster and excludes quitters (Y1); no upload past 1,000 views is what 42.2% of that cohort also saw (derived: 100 minus 57.8). Apply all four verdicts. Record the best upload and what differed in its packaging or subject.
-- **Q3 review, Monday 4 October 2027 · uploads 14–20.** Compare net subscribers per month with the band median (+0.5, +1.4 or +3.7; Y6) and Instagram net followers with the 0.36-a-week illustration (I4). Above the median is the upper tail that channels crossing 1,000 come from. Apply all four verdicts.
+- **Q3 review, Monday 4 October 2027 · uploads 14–20.** Compare net subscribers per month with the band median (+0.5, +1.4 or +3.7; Y6). Above the median is the upper tail that channels crossing 1,000 come from. Instagram net followers are recorded with no benchmark: no dataset found follows accounts from under 1,000 followers (§3; I7), and I4 is an increment over weeks without posts, not a total. Apply all four verdicts.
 - **Q4 review, Monday 3 January 2028 · uploads 21–26 · the twelve-month review.** Cadence test: 26 uploads planned, the year passes at 24 or more (her rule). Expect fewer than 1,000 subscribers, the outcome for 91.35% of channels in her band (Y4), and watch hours far below 8,000 (Y10). Decide in writing: continue, change one thing, change the format, or stop, with the four quarters' reads attached. Set the dates of year two's checkpoints, with the 24-month review as the first at which subscriber count may count (Y5).
 
 ### Template
@@ -433,3 +433,4 @@ Correction 12 Nov 2026, found by the P100 correction check: D3 read 4 now record
 
 Correction 13 Nov 2026, found by the W-PB7 figure re-check: D3's decision figure caption now places the 1.86% base rate in §2 and D1 row Y4, within 360 days and for channels whose video count grew by 1 to 11 (it said §2 and §5, a year), ties rows Y2 and Y3 to the format verdict, and names the above-median rule as hers, resting on the two YouTube Help statements.
 - Correction 2026-11-13, found by the W-PB9 correction check (P106): D2's postal-address line now says what pays it if a later audio check fails and the microphone is bought (PB5 §2, §10): what then remains under the 150 USD cap, the contingency and any unspent part of the tripod-or-clamp line, with D2 corrected if that does not cover both (PB9 D3); no price, rate or source is added, and the cap is unchanged.
+- Correction 2026-11-13, found by PB10's writer: D2 now takes the quarterly review's hour from the Instagram derivatives of the fortnight that holds it, two Reels fewer, since PB3 D2 and PB4 D1 E left the publishing-and-replies line no hour to give (PB10 §5); D3's Q3 line no longer compares Instagram net followers with the 0.36-a-week illustration, because I4 is an increment over weeks without posts, not a total (Buffer, 13 Aug 2025; §3); D3 read 1 now gives 39 posts in Q1 and 37 in Q2, Q3 and Q4, 29 in Q2 if PB9's guide build is decided at the Q1 review (row W-PB10).

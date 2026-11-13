@@ -269,7 +269,7 @@ Mara Venn (Mara, fictional), 6 hours a week. Each line names its basis; **her ru
 **G · Season end and quarter**
 
 - [ ] The last video of a season says it is the last and names the next season's start date (her rule).
-- [ ] The quarterly review on its date (PB1, D3; PB10 runs it), its hour taken from that fortnight's publishing-and-replies line (PB1, D2); the next season's remaining pieces picked from the backlog in the same sitting; its first two are picked by week 10, because they are on the table before the review (her rule).
+- [ ] The quarterly review on its date (PB1, D3; PB10 runs it), its hour taken from that fortnight's cut window, two Reels fewer (PB1 D2; PB10 §5); the next season's remaining pieces picked from the backlog in the same sitting; its first two are picked by week 10, because they are on the table before the review (her rule).
 
 ### D2 · Mara's calendar: the run-in and twelve weeks
 
@@ -304,7 +304,7 @@ Christmas Day falls on Friday 25 December 2026; the run-in's Saturday and Sunday
 | 12 (B) | Mon 22 – Sun 28 Mar | Wed 24: replies 0.25 · Sat 27: Season 2 piece 1 session 2, capture 1.0 · Sun 28: cut window, piece 7, the season's last, 4.5 · Log 0.25 | **6.0** |
 | **12 weeks** | | | **72.0** (6.0 a week) |
 
-**After week 12.** Upload 7, the last of Season 1, goes public on Tuesday 30 March 2027 (week 13), so the first quarter holds seven uploads, as PB1's Q1 review expects (uploads 1–7). The review is on Monday 5 April 2027 (week 14), its hour taken from that fortnight's publishing-and-replies line (PB1, D2), with the rest of Season 2's pieces picked in the same sitting; its first two, on the table from 20 March and 3 April, were picked from the backlog by week 10 (her rule). Season 2's first upload, upload 8, goes public on Tuesday 13 April 2027.
+**After week 12.** Upload 7, the last of Season 1, goes public on Tuesday 30 March 2027 (week 13), so the first quarter holds seven uploads, as PB1's Q1 review expects (uploads 1–7). The review is on Monday 5 April 2027 (week 14), its hour taken from that fortnight's cut window, two Reels fewer (PB1 D2; PB10 §5), with the rest of Season 2's pieces picked in the same sitting; its first two, on the table from 20 March and 3 April, were picked from the backlog by week 10 (her rule). Season 2's first upload, upload 8, goes public on Tuesday 13 April 2027.
 
 **What the twelve weeks produce:** six uploads (1 to 6) on their dates, a seventh edited and cut; 36 Instagram posts, three a week (24 Reels and 12 carousels on the provisional mix); six emails written; twelve capture sessions (pieces 3 to 7 and Season 2's first). The planned total is 72.0 hours, every week at 6.0 and none over the plan; with no slack, the over-budget weeks, if they come, will come from an edit-window overrun (§2, §7) and from the 6.5-hour recovery weeks after a lost week, which stay under PB1's 7-hour line. PB1's rows Y1, Y4, Y5 and I4 and its stop rule stand unchanged, because the posting rates are unchanged.
 
@@ -430,3 +430,4 @@ Correction 12 Nov 2026, found by PB7's writer: §3 now cites Social Media Today'
 - Every hour below the line level (the capture minutes, the 4.5-hour cut window, the 6.5-hour recovery weeks, the 3- and 10-hour week patterns) is a planning estimate with no source; the 8-minute edit's 3.0 hours is PB3's unsourced estimate (§1, §7, D1, D2, T2).
 - Object: none
 - Fresh check 2026-11-12 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 0 errors, 8 should-fix, 15 minor; all applied as verified; the three figures passed; report `audits/personal-brand/fresh-check-PB4.md`. The checker noted that the unit, briefed search off, cites studies and platform items no earlier unit carries; each was opened and confirmed on 12 Nov 2026, and the search flag stays off as the build order sets it
+- Correction 2026-11-13, found by PB10's writer: D1 G and D2 ("After week 12") now take the quarterly review's hour from that fortnight's cut window, two Reels fewer, in place of the publishing-and-replies line, which D1 E fills with three reply slots and the cut window's scheduling (PB1 D2; PB10 §5; row W-PB10).
