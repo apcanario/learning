@@ -106,14 +106,14 @@ Each subsection gives the question to answer, what the EU, UK and US sources say
 
 ```viz
 {"kind": "decision",
- "root": {"q": "Did a brand give you anything (money, a product, a discount, commission), is it your own product or your employer's, or is the brand's owner family or a friend?", "tone": 4, "branches": [
-  {"label": "yes", "to": {"outcome": "Label it: 'ad' in the post or spoken at the start of the video, plus YouTube's paid promotion setting or Instagram's paid partnership label", "tone": 5}},
+ "root": {"q": "Did a brand give you anything (money, a product, a discount, commission), is it your own product or your employer's, or do you have a personal or family relationship with the brand?", "tone": 4, "branches": [
+  {"label": "yes", "to": {"outcome": "Label it: 'ad' up front in the post, and in the video itself for a video, plus YouTube's paid promotion setting or Instagram's paid partnership label", "tone": 5}},
   {"label": "no", "to": {"q": "Affiliate link or discount code in the post?", "tone": 4, "branches": [
-   {"label": "yes", "to": {"outcome": "Label it the same way; a link or code alone is not a label", "tone": 5}},
+   {"label": "yes", "to": {"outcome": "Label it the same way: the CMA counts commissions and discounts as payment, and '#aff' is not a clear label", "tone": 5}},
    {"label": "no", "to": {"outcome": "No ad label needed for this post", "tone": 3}}
   ]}}
  ]},
- "caption": "When a post needs an ad label, drawn from §6.1: the FTC's Disclosures 101 (material connections include free products and employment; tools alone not enough; Nov 2019, modified 3 Dec 2024), the CMA's guidance for content creators (gifts, own brands, employers; affiliate links and codes not enough on their own; updated 3 Sep 2025), YouTube Help answer 154235 and Instagram Help on the paid partnership label. Information, not legal advice."}
+ "caption": "When a post needs an ad label, drawn from §6.1: the FTC's Disclosures 101 (material connections include free products and employment; tools alone not enough; Nov 2019, modified 3 Dec 2024), the CMA's guidance for content creators (gifts, own brands, employers; commissions and discounts count as payment; '#gifted' and '#aff' not clear labels; updated 3 Sep 2025), YouTube Help answer 154235 and Instagram Help on the paid partnership label. Information, not legal advice."}
 ```
 
 ### 6.2 · Other people's image, and children's
@@ -295,26 +295,7 @@ Status is **settled** (the source answers it for her), **to do** (an action with
 Who acts on each block of lines, from the owner and professional columns:
 
 ```viz
-{"kind": "matrix",
- "cols": ["Mara", "Tax professional", "Employment lawyer", "Trade mark attorney", "Lawyer"],
- "rows": [
-  {"label": "Ad disclosure (A1–A3)", "tone": 4, "cells": ["owns", null, null, null, null]},
-  {"label": "People in frame (P1–P3)", "tone": 4, "cells": ["owns", null, null, null, "on objection or change"]},
-  {"label": "Music and footage (C1–C3)", "tone": 4, "cells": ["owns", null, null, null, null]},
-  {"label": "Employment (J1–J3)", "tone": 4, "cells": ["owns", null, "if unclear", null, null]},
-  {"label": "Income (T1–T3)", "tone": 4, "cells": ["owns", "answers", null, null, null]},
-  {"label": "Email list (E1–E5)", "tone": 4, "cells": ["owns", null, null, null, null]},
-  {"label": "Trademark (M1–M2)", "tone": 4, "cells": ["owns", null, null, "if a hit", null]},
-  {"label": "Health and record (H1, R1)", "tone": 4, "cells": ["owns", null, null, null, null]}
- ],
- "legend": [
-  {"mark": "owns", "means": "Mara acts on the line or chases it", "tone": 3},
-  {"mark": "answers", "means": "a professional where she is taxed answers it before the first income", "tone": 2},
-  {"mark": "if unclear", "means": "only if her contract's wording is unclear or a clause reaches work made outside it", "tone": 5},
-  {"mark": "if a hit", "means": "if a search returns a close mark, and before she registers", "tone": 5},
-  {"mark": "on objection or change", "means": "if anyone in frame objects, or before any child appears", "tone": 5}
- ],
- "caption": "D3's owner and professional columns, grouped by area: who acts on each block of register lines. Every assignment is the register's own, set in this unit from the sources each line cites (§6, §7). Mara is fictional."}
+{"kind": "matrix", "cols": ["Mara", "Tax professional", "Employment lawyer", "Trade mark attorney", "Lawyer"], "rows": [{"label": "Ad disclosure (A1–A3)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, null]}, {"label": "People in frame (P1–P3)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, {"mark": "on objection or change", "tone": 5}]}, {"label": "Music and footage (C1–C3)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, null]}, {"label": "Employment (J1–J3)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "if unclear", "tone": 5}, null, null]}, {"label": "Income (T1–T3)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, {"mark": "answers", "tone": 2}, null, null, null]}, {"label": "Email list (E1–E5)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, null]}, {"label": "Trademark (M1–M2)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, {"mark": "if a hit", "tone": 5}, null]}, {"label": "Health and record (H1, R1)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, null]}], "legend": [{"mark": "owns", "means": "Mara acts on it", "tone": 3}, {"mark": "answers", "means": "a tax professional answers before the first income", "tone": 2}, {"mark": "if unclear", "means": "only if her contract is unclear or reaches outside work", "tone": 5}, {"mark": "if a hit", "means": "on a close mark, and before registering", "tone": 5}, {"mark": "on objection or change", "means": "if anyone objects, or before any child appears", "tone": 5}], "caption": "D3's owner and professional columns, grouped by area: who acts on each block of register lines. Every assignment is the register's own, set in this unit from the sources each line cites (§6, §7). Mara is fictional."}
 ```
 
 **Order of work** (her rule; basis: the register's dates): J1 and J2 by Sun 29 Nov 2026; M1 by Sun 6 Dec 2026, before the repeat-back test in the week of 7 December shows the name to anyone; T1 to a tax professional before any income; E3 and E4 by Sun 31 Jan 2027 so the form can go live with upload 3. The register is re-read at every checkpoint review, and A1, A2 and T1 again before the first deal.
