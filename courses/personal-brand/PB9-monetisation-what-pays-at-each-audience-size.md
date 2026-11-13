@@ -206,7 +206,7 @@ Built 13 November 2026 for Mara Venn (Mara, fictional). Period: her year one, Mo
 | V14 | Paid tier opens only if list × 0.62% ≥ 10 members | — | — | — | Her rule; at beehiiv's median, a list of about 1,613 | Rule set on platform data |
 | V15 | Services and teaching | USD 0 | USD 0 | USD 0 | No hours outside the cadence (§7; PB1 D3) | None: her rule |
 | V16 | Physical product | USD 0 | USD 0 | USD 0 | Restored pieces would need a handover that tells a buyer where she lives, which PB8 clause 3 (her city, street and home are never published) does not settle, or furniture delivery (unpriced); kits need stock (§8) | Her rule; derived |
-| V17 | Postal address for commercial email | 58.00 € + VAT a year | same | same | [CTT, Tarifário de serviços postais, 1 Nov 2020](https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf): Apartado, concessão anual, 58.00 € before VAT; no current price found | Platform-official, 2020 tariff; stale |
+| V17 | Postal address for commercial email | 58.00 € + VAT a year | same | same | [CTT, Tarifário de serviços postais, Nov 2020](https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf): Apartado, concessão anual, 58.00 € before VAT; no current price found | Platform-official, 2020 tariff; stale |
 | V18 | Tax professional (T1), lawyer for the first contract | Unpriced | Unpriced | Unpriced | No unit of this course has priced either (PB8 §7) | Unsourced |
 
 ### D3 · The arithmetic, line by line
@@ -350,7 +350,7 @@ A line starts this quarter only if: it is open [threshold, policy clause, legal 
 - CMA, "Social media endorsements: guidance for content creators", updated 3 Sep 2025. https://www.gov.uk/government/publications/social-media-endorsements-guide-for-influencers/social-media-endorsements-being-transparent-with-your-followers
 - Collabstr, "2026 Influencer Marketing Report" (2025 data). https://collabstr.com/2026-influencer-marketing-report
 - Collabstr, "What influencers really cost in 2026". https://collabstr.com/blog/influencer-costs-2025
-- CTT, "Tarifário de serviços postais", 1 Nov 2020. https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf
+- CTT, "Tarifário de serviços postais", Nov 2020. https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf
 - Eisend, M., E. A. van Reijmersdal, S. C. Boerman and F. Tarrahi, "A meta-analysis of the effects of disclosing sponsored content", *Journal of Advertising* 49(3), 344–366, 2020. https://research.wur.nl/en/publications/a-meta-analysis-of-the-effects-of-disclosing-sponsored-content/
 - EMARKETER, "Sticking with the same YouTube creator nearly doubles affiliate link CTR" (Agentio data). https://www.emarketer.com/content/sticking-with-same-youtube-creator-nearly-doubles-affiliate-link-ctr
 - Etsy, "Sell on Etsy", checked 13 Nov 2026. https://www.etsy.com/sell
@@ -381,7 +381,7 @@ A line starts this quarter only if: it is open [threshold, policy clause, legal 
 
 - Gumroad's pricing page does not say whether card processing is inside its 10% + $0.50, so the guide's net per sale (USD 13.00) may be overstated (§5, D2 V5).
 - Instagram's own Help Centre rules for Subscriptions and Gifts (eligibility, fees) were not read: no search returned them; the vendor claims quoted (Inro) cite no Meta page (§2).
-- The postal address price is CTT's tariff of 1 Nov 2020 (58.00 € a year before VAT); no current CTT price was found (D2 V17).
+- The postal address price is CTT's tariff of Nov 2020 (58.00 € a year before VAT); no current CTT price was found (D2 V17).
 - Collabstr's USD 255 average YouTube payment has no follower-tier breakdown, no page date, and a year-on-year figure that its own numbers contradict (§4, D2 V9).
 - Amazon US's 3.00% rate shows no effective date, and which Amazon store or other programme Mara could join from Portugal was not checked (§3).
 - The endorsement-rate turning points (0.393–0.475 on Instagram) come from the authors' accepted manuscript in the PolyU repository, not the publisher's version (§11).
@@ -391,3 +391,4 @@ A line starts this quarter only if: it is open [threshold, policy clause, legal 
 - The AIR Media-Tech RPM page is dated 1 Jul 2026 but refers to September 2026 (§2).
 - Object: none
 - Fresh check 2026-11-13 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 3 errors, 5 should-fix, 10 minor; all applied as the report gives them; figures 1 and 4 corrected and re-checked, figures 2 and 3 passed; report `audits/personal-brand/fresh-check-PB9.md`.
+- Correction 2026-11-13, found by the W-PB9 correction check: CTT's tariff is dated Nov 2020, not 1 Nov 2020 (D2 V17, Sources, this list); the PDF shows "Preços 2020" and "novembro/2020", and "1nov" is only its file name.
