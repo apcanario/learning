@@ -111,7 +111,7 @@ Left free by PB5: the free editor she uses; her actual edit minutes; her per-pie
 - Pauses announced within the week decided, in the next scheduled slot (D1 clause 9). Policy re-read at each checkpoint review (D1 clause 10).
 - Register: contract read against the checklist by Sun 29 Nov 2026, written notice before Tue 5 Jan 2027 if required (J1, J2); trademark search by Sun 6 Dec 2026 (M1); registration not before 3 Jan 2028 (M2); a dated log of every payment, product and cost from day one (T3); consent at sign-up, a notice with the GDPR art. 13 items by Sun 31 Jan 2027, unsubscribe and her name in each email, a PO box or registered private mailbox for the address (E2–E4); the sign-up form goes live with upload 3, Tue 2 Feb 2027, if E3 and E4 are done (E5).
 - The pre-mortem's dated story (January 2029) and its nine causes are hypothetical and set no fact.
-- Left free: her country of residence and tax (A3, T1, T2 open); what her employment contract says; the trademark search result; the price of the postal address; who is in her household; whether any deal happens after Season 2; her list size.
+- Left free: her tax answers (A3, T1, T2 stay open under Portuguese rules, P102/P105, 13 Nov 2026); what her employment contract says; the trademark search result; the price of the postal address; who is in her household; whether any deal happens after Season 2; her list size.
 
 ## Set by syllabus decision P102 (13 Nov 2026)
 
@@ -121,6 +121,6 @@ Left free by PB5: the free editor she uses; her actual edit minutes; her per-pie
 
 ## Left free (a unit that needs one sets it and it is appended here)
 
-- Her country, city, household and income. PB8 works its register for the EU, the UK and the US without fixing her country unless it must.
+- Her city, household and income (her country is Portugal since P102, 13 Nov 2026). PB8 works its register for the EU, the UK and the US, with her own lines open under Portuguese rules (P105).
 - Whether her claim of @oneboxrestoration is accepted on both platforms on the same day, or she takes a fallback or the override (PB2 set the name, handle, fallbacks and the same-day claim, D2); a unit that sets it does so as a labelled story fact, since no writing chat can check a real handle (S-PB1, 12 Nov 2026).
 - Her numbers in any quarter, her products and prices.
