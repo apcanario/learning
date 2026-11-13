@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **PB8 filed (session 79, W-PB8):** PB8 Voice, disclosure and the rules written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 2 errors, 6 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed); P102 and P103 proposed; PB9 and PB10 next, in one chat.
 - **PB7 filed (session 78, W-PB7):** PB7 How Instagram growth works written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 9 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed); A6 erratum; P99 and P100 applied after a two-round correction check; PB4 and PB5 corrected at step 7b; PB8 next, in the same chat.
 - **PB6 filed (session 77, W-PB6):** PB6 How YouTube growth works written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 2 errors, 12 should-fix, 14 minor; all applied; Fable 5.1 fresh check owed); A6 erratum, PB1 and PB3 corrected; PB7 and PB8 next, in one chat.
 - **Figure finishes and PB5 filed (session 76, P98, W-PB5):** a bars figure is drawn at its own size on a 320 px phone and no value sits across the end of its track, checked on every compare and bars figure; PB5 Production craft with a phone written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 3 should-fix, 11 minor; all applied; Fable 5.1 fresh check owed).
@@ -129,6 +130,16 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 73. Public course PB: PB3 Audience and the two platforms filed: Mara's audience profile and her platform allocation at three budgets with the cut order (W-PB3) | | |
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
+| 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 13 November 2026 · Session 79 · Public course PB, unit PB8 (W-PB8)
+
+The second row of the session-78 chat (Pedro away), on Opus 5.5 (claude-opus-5-5): the writer, the fresh checker and the figure re-checker were fresh Opus 5.5 agents (P31), each stating claude-opus-5-5; no agent transcript on disk.
+
+- **PB8.** Voice, disclosure and the rules, about 12,400 words, four figures, search on; fresh check fix, 2 errors, 6 should-fix, 8 minor, all applied; report `audits/personal-brand/fresh-check-PB8.md`.
+- **Mistakes elsewhere.** None found; no correction to a filed unit.
+- **Flags.** F11, F18, F25, F40, F52 carried; F56 to F64 raised; none blocks PB9. P102 (syllabus review, Mara's country) and P103 (Pages deploy) proposed.
+- **Build.** `build.py`, `verify.py --shots` for `read-pb8`.
 
 ## 12 November 2026 · Session 78 · Public course PB, unit PB7 (W-PB7)
 
