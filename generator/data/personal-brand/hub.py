@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v12 · 13 Nov 2026'
+VERSION = 'v12.1 · 13 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -171,6 +171,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-13 21:45', "v12.1. Correction P108 (row W-DD-PB1, step 1b), checked first by a fresh Opus 5.5 agent against source and syllabus (report `audits/personal-brand/corrections-2026-11-13-P107-P108.md`): PB10 §5 notes that PB4 §1 now states the weekends rule as PB10 reads it, the quoted words being its earlier wording; PB10's Object line made a list item. P107 (DL 57/2008 art. 19 on the Diário da República) not checked again, no change; it stays in Corrections."),
     ('2026-11-13 19:00', "v12. PB10 Read your numbers: the quarterly review written (Opus 5.5, own agent context, search off; row W-PB10, P31), fresh-checked by Opus 5.5 in a separate context (fix, 0 errors, 8 should-fix, 33 minor; all applied; Fable 5.1 fresh check owed), figure 4 corrected and re-checked, 1 to 3 passed, and filed: reading page, PB10 marked written; DD-PB1 next; Mara's register gains PB10's facts; PB1, PB3, PB4 and PB7 corrected (the review's hour, Buffer's increment, trait 8's qualifier, the Instagram counts, the weekends rule; step 7b); flags F5, F8, F22, F46 to F49, F54, F55, F57, F62, F67 carried, F65 resolved, F2, F20, F29, F34, F41, F63, F68 to F70 carried and still open, F73 to F76 raised, none blocks DD-PB1. Writer's Object line, kept for G-R: the metrics sheet, §1 and D1."),
     ('2026-11-13 17:20', "v11.1. Correction P106 (row W-PB10, step 1b), checked first by a fresh Opus 5.5 agent against source and syllabus (report `audits/personal-brand/corrections-2026-11-13-P106.md`): PB8 A3 says, from Decreto-Lei 57/2008 art. 19, that in advertising the Direção-Geral do Consumidor is the competent authority and may call on ASAE, the authority for other unfair practices, and gains a date consistent with PB9 D1; E1 cites GDPR recital 22; PB9 cites CTT's tariff by its title (Preços 2020) and the individual rate; PB1 D2's postal line says what pays it if the microphone is bought; dated notes; Mara's register follows. Left as P107: art. 19 as consolidated after later amendments, on the Diário da República."),
     ('2026-11-13 16:00', "v11. PB9 Monetisation: what pays at each audience size written (Opus 5.5, own agent context, search on; row W-PB9, P31), fresh-checked by Opus 5.5 in a separate context (fix, 3 errors, 5 should-fix, 10 minor; all applied; Fable 5.1 fresh check owed), figures 1 and 4 corrected and re-checked, 2 and 3 passed, and filed: reading page, PB9 marked written; PB10 next; Mara's register gains PB9's facts; PB1 corrected (§4, the Partner Programme status of existing channels, found by the fresh check; D3 read 1's Q2 posts and D2's postal line, found by the writer), PB7's Q2 counts and the register follow (step 7b, two checked rounds); no source error in A7; flags F7, F27, F53, F58, F59, F60 carried, F45 resolved, F2, F20, F29, F34, F41, F54, F56, F61, F63 carried and still open, F65 to F71 raised, none blocks PB10. Writer's Object line, kept for G-R: none."),
