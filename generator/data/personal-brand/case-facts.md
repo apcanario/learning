@@ -99,6 +99,20 @@ Left free by PB5: the free editor she uses; her actual edit minutes; her per-pie
 - Her Instagram metric rows are IG1–IG13; IG13 is not read below 1,000 followers (D2).
 - Left free by PB7: her Q1 and later values on every IG row; whether the link sticker is offered to her account; her account's creation date; her follower demographics; any collaborator; her later hashtags.
 
+## Set by PB8, Voice, disclosure and the rules (13 Nov 2026)
+
+- Her public copy names her job only as "a full-time job"; her profession, employer, colleagues and clients are never named or shown; she gives no tax, accounting or financial advice, and answers such requests with one fixed line (D1 clause 2). This settles PB2's open point: the accountant job stays out of public copy.
+- Never published: her city, street or any view placing her home; her household and family; any health fact; her income outside the account (D1 clause 3).
+- No one else appears in Seasons 1 and 2; from Season 3 adults appear only with written agreement naming where the footage goes, that it stays up and how to withdraw, with removal within seven days; no child appears; sellers are never named or shown and their listing photos never reproduced (D1 clause 4).
+- The case-by-case test, with a minimum of ten days between session and first public mention (D1 clause 5; derived from PB4's D2).
+- Titles and thumbnails never lead with a mistake or a mood (D1 clause 6).
+- No brand deal, gifted product, affiliate link or discount code in Seasons 1 and 2; an unsolicited product is not shown; from the first deal, "ad" in the first caption line and spoken in the first 30 seconds, plus the platform tool (D1 clause 7).
+- Corrections: dated description line and pinned comment on YouTube, dated caption line on Instagram, a line at the top of the next email; voice notes never rewritten (D1 clause 8).
+- Pauses announced within the week decided, in the next scheduled slot (D1 clause 9). Policy re-read at each checkpoint review (D1 clause 10).
+- Register: contract read against the checklist by Sun 29 Nov 2026, written notice before Tue 5 Jan 2027 if required (J1, J2); trademark search by Sun 6 Dec 2026 (M1); registration not before 3 Jan 2028 (M2); a dated log of every payment, product and cost from day one (T3); consent at sign-up, a notice with the GDPR art. 13 items by Sun 31 Jan 2027, unsubscribe and her name in each email, a PO box or registered private mailbox for the address (E2–E4); the sign-up form goes live with upload 3, Tue 2 Feb 2027, if E3 and E4 are done (E5).
+- The pre-mortem's dated story (January 2029) and its nine causes are hypothetical and set no fact.
+- Left free: her country of residence and tax (A3, T1, T2 open); what her employment contract says; the trademark search result; the price of the postal address; who is in her household; whether any deal happens after Season 2; her list size.
+
 ## Left free (a unit that needs one sets it and it is appended here)
 
 - Her country, city, household and income. PB8 works its register for the EU, the UK and the US without fixing her country unless it must.
