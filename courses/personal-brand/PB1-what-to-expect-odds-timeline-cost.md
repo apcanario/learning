@@ -297,7 +297,7 @@ Spending is read at each checkpoint. Any income, however small, triggers the tax
      ]}}
   ]}}
 ]},
- "caption": "Mara's stop rule and verdicts from the deliverable, §D3 (Mara, fictional). The thresholds are her own rules; the base rates behind them are in §2 and §5 (vidIQ, 11 Sep 2026: the 1–11 videos band crossed 1,000 at 1.86% a year) and the expectation sheet D1, rows Y2 (YouTube Help, impressions click-through rate: half of channels and videos sit between 2% and 10%) and Y3 (vidIQ guidance, 21 Jul 2026, for percentage-viewed bands; also §4). An upload under 2% with impressions above her median is recorded and not counted (YouTube Help, answers 7628154 and 16559651; D3 verdict 3). Subscriber count is not a branch in year one."}
+ "caption": "Mara's stop rule and quarterly verdicts from the deliverable, D3, read in order; the first question answered yes gives the verdict (Mara, fictional). The thresholds are her own rules. The stop rule rests on the base rate in §2 and the expectation sheet D1, row Y4 (vidIQ, 11 Sep 2026: 1.86% of channels whose video count grew by 1 to 11 in 360 days crossed 1,000 subscribers within those 360 days). The format verdict rests on rows Y2 (YouTube Help, impressions click-through rate: half of channels and videos sit between 2% and 10%) and Y3 (vidIQ guidance, 21 Jul 2026, for percentage-viewed bands; also §4). Her rule that an upload under 2% with impressions above her median is recorded and not counted (D3 verdict 3) rests on two YouTube Help statements: CTR is naturally lower when impressions are high (answer 7628154), and a title or thumbnail change is advised when low CTR comes with fewer impressions than usual (answer 16559651). Subscriber and follower counts are not a branch in year one."}
 ```
 
 **The seven reads at every checkpoint** (PB10 runs them as a 60-minute procedure; Studio and Insights are opened for the review on its date):
@@ -425,3 +425,5 @@ Correction 12 Nov 2026, found by PB6's writer: D3 verdict 3 and its decision fig
 Correction 12 Nov 2026, found by PB6's writer: §4 gains a row for the rule from 1 February 2027 that earning from the Shorts Creator Pool needs 10 million qualified Shorts views in the last 90 days (YouTube Help, answer 12843009) (flag F45).
 
 Correction 12 Nov 2026, found by the P100 correction check: D3 read 4 now records each upload's impressions and her median upload's impressions, which verdict 3 as corrected uses (flag F42).
+
+Correction 13 Nov 2026, found by the W-PB7 figure re-check: D3's decision figure caption now places the 1.86% base rate in §2 and D1 row Y4, within 360 days and for channels whose video count grew by 1 to 11 (it said §2 and §5, a year), ties rows Y2 and Y3 to the format verdict, and names the above-median rule as hers, resting on the two YouTube Help statements.

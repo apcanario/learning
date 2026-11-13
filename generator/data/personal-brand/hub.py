@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v9 · 12 Nov 2026'
+VERSION = 'v9.1 · 13 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -162,6 +162,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-13 00:40', "v9.1. Figure re-checks (row W-PB7): PB7 figure 1's caption now says the Reach to strangers column is the unit's reading of the Shows mostly column; PB1 D3's decision figure, re-checked after P100, passes, and its caption rewritten after two re-checks (the 1.86% base rate placed in §2 and D1 row Y4, Y2 and Y3 tied to the format verdict, the above-median rule named as hers); dated note in PB1."),
     ('2026-11-12 23:00', "v9. PB7 How Instagram growth works written (Opus 5.5, own agent context, search on; row W-PB7, P31), fresh-checked by Opus 5.5 in a separate context (fix, 3 errors, 9 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed), its three figures passed (one cell corrected), and filed: reading page, PB7 marked written; PB8 next; Mara's register gains PB7's facts; A6 erratum from its writer; PB4 and PB5 corrections (step 7b); flags F2, F20, F29, F34, F41 carried and still open, F6, F17, F26, F32, F39 carried, F47 to F55 raised, none blocks PB8. Writer's Object line, kept for G-R: Instagram's Insights screen for a single Reel (views split by followers and non-followers, skip rate, watch time, sends), §4 and D2."),
     ('2026-11-12 22:05', "v8.1. Corrections P99 and P100 (row W-PB7, step 1b; docs/public-courses.md §3 rule 12), each checked first by a fresh Opus 5.5 agent against its source and the syllabus, in two rounds (reports `audits/personal-brand/corrections-2026-11-12-P99-P100.md` and `-round2.md`): PB4 §1 and D1 B start the phone before each step's tool, one clip per step (F36); PB4 D2 run-in R1 4.25 h, R2 1.5 h with PB5's production tests (F37); PB1 D3 verdict 3 and its figure count click-through under 2% only with impressions at or below her median upload's, read 4 collects impressions, answer 16559651 added to Sources (F42); PB1 §4 gains the Shorts Creator Pool rule from 1 Feb 2027 (F45); knock-ons in PB5 §1 and PB6 D2; Mara's register follows; dated notes in each unit; flags F36, F37, F42 resolved, F45 resolved for PB1."),
     ('2026-11-12 19:00', "v8. PB6 How YouTube growth works written (Opus 5.5, own agent context, search on; row W-PB6, P31), fresh-checked by Opus 5.5 in a separate context (fix, 2 errors, 12 should-fix, 14 minor; all applied; Fable 5.1 fresh check owed), three of its four figures corrected, and filed: reading page, PB6 marked written; PB7 next; Mara's register gains PB6's facts; corrections to PB1 (the Partner Program page's title, found by the checker) and PB3 (§4, AIR's sample: at least 40 videos, 10 of them long-form; §3, the shelf-life cell: eligible indefinitely, how long views continue unmeasured; both found by the writer and confirmed), and an erratum to A6 (answer 1714921's title); flags F24, F31 and F38 carried, F2 noted and left open, F42 to F46 raised (PB1 verdict 3 and impressions; PB3's shelf-life cell; DD-PB1's checkable rules; PB9's Shorts revenue rule; PB10's values). Writer's Object line: none."),
