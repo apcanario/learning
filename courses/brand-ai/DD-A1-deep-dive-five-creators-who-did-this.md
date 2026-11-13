@@ -66,7 +66,7 @@ The brief lists nine. The test applied to each was two-part. First, evidence: at
 
 **Cadence.** The About text promises a challenge "every month" (A1 §5). OutlierKit estimates about 0.3 uploads a week, roughly 1.2 a month, with the last upload 31 days before its read of 11 July 2026. vidIQ counts 197 videos on 28 October 2026; across the eleven years since the kickflip that is about 18 a year (my arithmetic, which overstates the rate slightly, since some videos predate 2015).
 
-**Hours a week.** Unpublished. The profile describes two full-time people (Mike and his wife Kim, his "creative partner" in the profile's words; she films, buys props, makes thumbnails) plus an editor, after an early period in which Kim worked full time elsewhere (Net Influencer).
+**Hours a week.** Unpublished. The profile describes two full-time people (Mike and his wife Kim, his "creative partner" in the profile's words; she films, buys props, makes thumbnails) plus an editor, after an early period in which both held jobs, Kim full time while supporting the channel, until "we both quit our jobs and went all in" (Kim's words; Net Influencer).
 
 **12, 24 and 36 months (from November 2015).** All three unpublished. In the profile he says there was no grind to 10,000 subscribers. The first dated count found is The Courier's 2.7 million followers on 3 November 2021, six years in ([The Courier, 3 Nov 2021](https://www.thecourier.co.uk/fp/news/dundee/2700738/mike-boyd-dundee-youtube-campaign/)); the article does not say which platform the figure counts. vidIQ gives 2.93 million subscribers, 197 videos and 476,918,067 views on 28 October 2026, with no net change between 30 September and 27 October 2026. OutlierKit gives 2.9 million, 196 videos and 475.7 million views on 11 July 2026, an average of 2.4 million views a video, and reports a significant fall in recent views, especially on climbing content.
 
@@ -238,7 +238,7 @@ Built from §1 to §7 on 2 November 2026. Every number names its owner and date;
 
 **3. Other income carried the early years.** Two of five documented; one more documented in the fourth year only, and one without dates.
 - Abdaal: junior doctor 2018 to 2020; ads were about a tenth of 2020 income on a third-party summary of his figures (§2).
-- Boyd: Kim worked full time elsewhere until the channel could pay them both (Net Influencer, 4 Mar 2026).
+- Boyd: both he and Kim held jobs until the channel could pay them both, when "we both quit our jobs and went all in" (Kim, Net Influencer, 4 Mar 2026); no date given.
 - Sidibe: soccer personal training and youth coaching in 2021, about 46 months in; earlier years undocumented (InsideHook, 10 Aug 2021).
 - Lewis: financial services before full-time YouTube; whether the two overlapped, and for how long, unpub. (YouTube Creators Hub, undated).
 - Partridge: not applicable; he came to the show from two media companies (§6).
@@ -407,3 +407,5 @@ What is documented and what is not, item by item:
 10. Upload rates per year for Sidibe, Lewis and Boyd are my arithmetic from tracker video counts and channel dates; the counts include Shorts and any early uploads, so they overstate the long-form rate.
 
 Fresh check 2026-11-02 (Opus 5.5, own agent context; a Fable 5.1 fresh check is owed): fix · 3 errors (four entries, two of them one fact in two places), 6 should-fix, 6 minor; all verified and applied, one in part; three findings applied to filed units (A9 §5 twice, A1 §5); figures 1 to 3 passed; figure 4 (matrix) fixed and passed its re-check, its re-checker's two text minors applied and the third (phone-width row labels) recorded on P83; report `audits/brand-ai/fresh-check-DD-A1.md`
+
+Erratum 13 Nov 2026, found by DD-PB1's writer (public course PB, row W-DD-PB1) and confirmed by its fresh checker: Net Influencer (4 Mar 2026) quotes Kim, "we both quit our jobs and went all in", so Mike also held a job before the channel paid them both; §3 Hours a week and the Deliverable's pattern 3 line said only that Kim worked elsewhere, and now say both held jobs (report `audits/personal-brand/fresh-check-DD-PB1.md`, item 8).

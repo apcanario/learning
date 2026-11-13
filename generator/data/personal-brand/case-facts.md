@@ -140,6 +140,12 @@ Left free by PB5: the free editor she uses; her actual edit minutes; her per-pie
 - Amounts keep their source's currency and date (her PB1 cap stays 150 USD as written).
 - Still free: her city, street and household (never published, PB8 D1 clause 3); her income outside the account.
 
+## Set by DD-PB1 (13 Nov 2026)
+
+- She reads her comparables brief once a year, at the twelve-month review (3 Jan 2028) and the 24-month review (1 Jan 2029), and replaces any figure a creator has since updated (Deliverable A).
+- Her four comparables rules, untested: hold the one-piece, start-to-finish format for at least the year; hold the fortnightly date as PB4 and PB6 R7 set it, for her stop rule's count more than for reach; keep the job through year two; read no comparable's numbers as her expectation, her quarterly reads staying against PB1's sheet (Deliverable A).
+- Left free: whether she leaves her job, and when (DD-PB2 decides her threshold model and reads "keep the job through year two" as a prior, F79).
+
 ## Left free (a unit that needs one sets it and it is appended here)
 
 - Her city, household and income (her country is Portugal since P102, 13 Nov 2026). PB8 works its register for the EU, the UK and the US, with her own tax lines open under Portuguese rules (P105); A3 names the Direção-Geral do Consumidor and E1 gives GDPR art. 3(1) as her EU test (P105 round 2, 13 Nov 2026).
