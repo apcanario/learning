@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v10.1 · 13 Nov 2026'
+VERSION = 'v11 · 13 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -62,6 +62,9 @@ READINGS = [
     dict(id='read-pb8', course='PB',
          title='Voice, disclosure and the rules', covers=['PB8'], name='PB8 · Voice, disclosure and the rules',
          intro="Unit PB8, written 13 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register, PB1 to PB7 and its source material, search on (13 Nov 2026); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 2 errors, 6 should-fix, 8 minor, all applied (a Fable 5.1 fresh check is owed). Voice on camera and in writing and what the evidence says about parasocial trust and burnout; disclosure of ads, gifts, affiliate links and your own products on YouTube and Instagram, with the platforms' tools; people in frame, music and others' footage; your employer and your contract; first income and tax as questions to answer, with the primary source to open for the EU, the UK and the US; the email list and data protection; trade marks; four figures. Deliverables: Mara's ten-clause public policy, her pre-mortem, her rules register (each line with its status, owner and the professional who answers it), then the templates. Information, not legal or tax advice. Known gaps: no country is set for Mara, so her tax and some legal lines stay open; the Digital Fairness Act's text was not read; the 2026 UK influencers' guide rests on a law firm's summary; the audience-entanglement paper was read through a press report. About 12,400 words with the deliverable and templates, above the brief's guide; nothing was cut to meet it."),
+    dict(id='read-pb9', course='PB',
+         title='Monetisation: what pays at each audience size', covers=['PB9'], name='PB9 · Monetisation: what pays at each audience size',
+         intro="Unit PB9, written 13 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register, PB1 to PB8 and its source material, search on (13 Nov 2026); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 3 errors, 5 should-fix, 10 minor, all applied (a Fable 5.1 fresh check is owed). The income lines open to a small account in the order they open: platform revenue share (YouTube's thresholds from 1 Feb 2027; Instagram, which publishes none), affiliate links, brand deals, an own product, a paid membership or newsletter, services and teaching, each with the evidence that exists and where none does; why sales to a small audience are small-number events; platform and payment fees; when a line is worth starting; sponsorship load. Deliverable: Mara's twelve-month revenue model in three scenarios, every assumption in one table with its source and grade, the arithmetic shown and the rule for which line starts first, then the template. Known gaps: no creator affiliate conversion rate, own-product buy share or brand-deal offer rate for small accounts meets the standard; Instagram's Help Centre pages on Subscriptions and Gifts were not returned; Gumroad's page does not say whether card processing is inside its fee; the postal price is a 2020 tariff."),
 ]
 
 # ---- build order -----------------------------------------------------------------------
@@ -69,11 +72,11 @@ DONE_ROWS = []
 ORDER = [("PB1", "Opus 5.5", "on"), ("PB2", "Opus 5.5", "off"), ("PB3", "Opus 5.5", "on"), ("PB4", "Opus 5.5", "off"),
          ("PB5", "Opus 5.5", "off"), ("PB6", "Opus 5.5", "on"), ("PB7", "Opus 5.5", "on"), ("PB8", "Opus 5.5", "on"),
          ("PB9", "Opus 5.5", "on"), ("PB10", "Opus 5.5", "off"), ("DD-PB1", "Opus 5.5", "on"), ("DD-PB2", "Opus 5.5", "off")]
-STATUS = {'PB1': 'written 12 Nov', 'PB2': 'written 12 Nov', 'PB3': 'written 12 Nov', 'PB4': 'written 12 Nov', 'PB5': 'written 12 Nov', 'PB6': 'written 12 Nov', 'PB7': 'written 12 Nov', 'PB8': 'written 13 Nov'}          # unit code -> status text in the build-order table once filed
+STATUS = {'PB1': 'written 12 Nov', 'PB2': 'written 12 Nov', 'PB3': 'written 12 Nov', 'PB4': 'written 12 Nov', 'PB5': 'written 12 Nov', 'PB6': 'written 12 Nov', 'PB7': 'written 12 Nov', 'PB8': 'written 13 Nov', 'PB9': 'written 13 Nov'}          # unit code -> status text in the build-order table once filed
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
 FINAL_AUDIT = ('Audit 4', 'Final audit of the last units plus a full read of the course against its goal, and a read-through as the persona', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'PB9', 0, 'after four units; deferred to the Fable stage (decided 11 Nov 2026), so it gates no unit'
+NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'PB10', 0, 'after four units; deferred to the Fable stage (decided 11 Nov 2026), so it gates no unit'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_H1 = 'Building a Personal Brand on Instagram and YouTube'
@@ -165,6 +168,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-13 16:00', "v11. PB9 Monetisation: what pays at each audience size written (Opus 5.5, own agent context, search on; row W-PB9, P31), fresh-checked by Opus 5.5 in a separate context (fix, 3 errors, 5 should-fix, 10 minor; all applied; Fable 5.1 fresh check owed), figures 1 and 4 corrected and re-checked, 2 and 3 passed, and filed: reading page, PB9 marked written; PB10 next; Mara's register gains PB9's facts; PB1 corrected (§4, the Partner Programme status of existing channels, found by the fresh check; D3 read 1's Q2 posts and D2's postal line, found by the writer), PB7's Q2 counts and the register follow (step 7b, two checked rounds); no source error in A7; flags F7, F27, F53, F58, F59, F60 carried, F45 resolved, F2, F20, F29, F34, F41, F54, F56, F61, F63 carried and still open, F65 to F71 raised, none blocks PB10. Writer's Object line, kept for G-R: none."),
     ('2026-11-13 14:35', "v10.1. Correction P105 (row W-PB9, step 1b; docs/public-courses.md §3 rule 12), checked first by fresh Opus 5.5 agents against source and syllabus in two rounds (reports `audits/personal-brand/corrections-2026-11-13-P105.md` and `-round2.md`): PB8's deliverable opening, D3's status note and register lines T1 and T2 name Portugal (P102) and stay open for a tax professional; A3 names the Direção-Geral do Consumidor, Portugal's advertising regulator (gov.pt), and Sources gains its page; E1's status gives GDPR art. 3(1) as her EU test; dated notes in PB8; Mara's register follows. Left for the next prompt: ASAE's place in A3, a date for A3's to do, GDPR recital 22."),
     ('2026-11-13 02:30', "v10. PB8 Voice, disclosure and the rules written (Opus 5.5, own agent context, search on; row W-PB8, P31), fresh-checked by Opus 5.5 in a separate context (fix, 2 errors, 6 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed), three of its four figures corrected and re-checked, and filed: reading page, PB8 marked written; PB9 next; Mara's register gains PB8's facts; no source error found; flags F11, F18, F25, F40, F52, F54 carried, F2, F20, F29, F34, F41 carried and still open, F56 to F64 raised, none blocks PB9. Writer's Object line, kept for G-R: none."),
     ('2026-11-13 00:40', "v9.1. Figure re-checks (row W-PB7): PB7 figure 1's caption now says the Reach to strangers column is the unit's reading of the Shows mostly column; PB1 D3's decision figure, re-checked after P100, passes, and its caption rewritten after two re-checks (the 1.86% base rate placed in §2 and D1 row Y4, Y2 and Y3 tied to the format verdict, the above-median rule named as hers); dated note in PB1."),
