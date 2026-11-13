@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v10 · 13 Nov 2026'
+VERSION = 'v10.1 · 13 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -165,6 +165,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-13 14:35', "v10.1. Correction P105 (row W-PB9, step 1b; docs/public-courses.md §3 rule 12), checked first by fresh Opus 5.5 agents against source and syllabus in two rounds (reports `audits/personal-brand/corrections-2026-11-13-P105.md` and `-round2.md`): PB8's deliverable opening, D3's status note and register lines T1 and T2 name Portugal (P102) and stay open for a tax professional; A3 names the Direção-Geral do Consumidor, Portugal's advertising regulator (gov.pt), and Sources gains its page; E1's status gives GDPR art. 3(1) as her EU test; dated notes in PB8; Mara's register follows. Left for the next prompt: ASAE's place in A3, a date for A3's to do, GDPR recital 22."),
     ('2026-11-13 02:30', "v10. PB8 Voice, disclosure and the rules written (Opus 5.5, own agent context, search on; row W-PB8, P31), fresh-checked by Opus 5.5 in a separate context (fix, 2 errors, 6 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed), three of its four figures corrected and re-checked, and filed: reading page, PB8 marked written; PB9 next; Mara's register gains PB8's facts; no source error found; flags F11, F18, F25, F40, F52, F54 carried, F2, F20, F29, F34, F41 carried and still open, F56 to F64 raised, none blocks PB9. Writer's Object line, kept for G-R: none."),
     ('2026-11-13 00:40', "v9.1. Figure re-checks (row W-PB7): PB7 figure 1's caption now says the Reach to strangers column is the unit's reading of the Shows mostly column; PB1 D3's decision figure, re-checked after P100, passes, and its caption rewritten after two re-checks (the 1.86% base rate placed in §2 and D1 row Y4, Y2 and Y3 tied to the format verdict, the above-median rule named as hers); dated note in PB1."),
     ('2026-11-12 23:00', "v9. PB7 How Instagram growth works written (Opus 5.5, own agent context, search on; row W-PB7, P31), fresh-checked by Opus 5.5 in a separate context (fix, 3 errors, 9 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed), its three figures passed (one cell corrected), and filed: reading page, PB7 marked written; PB8 next; Mara's register gains PB7's facts; A6 erratum from its writer; PB4 and PB5 corrections (step 7b); flags F2, F20, F29, F34, F41 carried and still open, F6, F17, F26, F32, F39 carried, F47 to F55 raised, none blocks PB8. Writer's Object line, kept for G-R: Instagram's Insights screen for a single Reel (views split by followers and non-followers, skip rate, watch time, sends), §4 and D2."),
