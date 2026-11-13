@@ -1597,13 +1597,14 @@ def matrix(d):
     if d.get('legend'):
         y += 14
         x, lrow = 8, 24
+        LWd = min(Wd, PHONE_FRAME) if Wd > PHONE_FRAME else Wd   # W-DD-PB1 (13 Nov 2026): a drawing wider than the phone frame keeps its legend inside the frame's width, so the first frame shows every key whole
         for item in d['legend']:
             m, means = item.get('mark', ''), item.get('means', '')
             mw = _tw(m, 10.5, 'mono') + 16
-            room = Wd - 16 - mw - 8 - 18                     # a key's text keeps to one line when the drawing has room
+            room = LWd - 16 - mw - 8 - 18                    # a key's text keeps to one line when the drawing has room
             txt = _lines(means, T_ATTR, room if _tw(means, 11) <= room else min(220, room))
             iw = mw + 8 + _width(txt, T_ATTR) + 18
-            if x > 8 and x + iw > Wd - 8:
+            if x > 8 and x + iw > LWd - 8:
                 x, y, lrow = 8, y + lrow + 8, 24
             body += _g(f'<rect class="viz-band viz-t{_tone(item, 4, K)}" x="{x:.1f}" y="{y:.1f}" width="{mw:.1f}" height="24"/>'
                        + _text([m], T_MARK, x + mw / 2, y + 5.5, 'middle')) + _text(txt, T_ATTR, x + mw + 8, y + 12 - (len(txt) * 7 if len(txt) <= 3 else 14))   # U-7: a key of four lines or more starts at its band's top and hangs down, never up over the row above
