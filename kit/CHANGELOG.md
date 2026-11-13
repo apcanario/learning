@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **PB10 filed (session 81, W-PB10):** PB10 Read your numbers: the quarterly review written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 8 should-fix, 33 minor; all applied; Fable 5.1 fresh check owed); P106 applied; PB1, PB3, PB4 and PB7 corrected; DD-PB1 and DD-PB2 next, in one chat.
 - **PB9 filed (session 80, W-PB9):** PB9 Monetisation: what pays at each audience size written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 5 should-fix, 10 minor; all applied; Fable 5.1 fresh check owed); P105 applied; PB1, PB7 and PB8 corrected; Pages current again; PB10 next, in the same chat.
 - **PB8 filed (session 79, W-PB8):** PB8 Voice, disclosure and the rules written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 2 errors, 6 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed); P102 and P103 proposed; PB9 and PB10 next, in one chat.
 - **PB7 filed (session 78, W-PB7):** PB7 How Instagram growth works written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 9 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed); A6 erratum; P99 and P100 applied after a two-round correction check; PB4 and PB5 corrected at step 7b; PB8 next, in the same chat.
@@ -132,6 +133,19 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 13 November 2026 · Session 81 · Public course PB, unit PB10 (W-PB10)
+
+The second row of the session-80 chat (Pedro away), on Opus 5.5 (claude-opus-5-5): the writer, the fresh checker, three correction checkers and three figure re-checkers were fresh Opus 5.5 agents (P31), each stating claude-opus-5-5; no agent transcript on disk.
+
+- **Corrections first (step 1b).** P106 passed and applied: PB8 A3 (the DGC is the advertising authority and may call on ASAE; dated by Mon 5 Jul 2027), E1 (recital 22), PB9 (CTT's Preços 2020, Singulares), PB1 D2 (the postal line if the microphone is bought). P107 left (art. 19 consolidated, on the Diário da República).
+- **PB10.** Read your numbers: the quarterly review, about 11,700 words, four figures, search off; fresh check fix, 0 errors, 8 should-fix, 33 minor, all applied; report `audits/personal-brand/fresh-check-PB10.md`.
+- **Mistakes elsewhere.** PB1 D2 and PB4 (the review's hour), PB1 D3 and PB7 IG8 (Buffer's increment), PB3 trait 8 (the API qualifier), PB1, PB7 and the register (Instagram counts), PB4 §1 and the register (the cadence rule), in two checked rounds; P108 left (PB10 §5's quote of PB4's old rule).
+- **Flags.** F5, F8, F22, F46 to F49, F54, F55, F57, F62, F67 carried; F65 resolved; F73 to F76 raised; none blocks DD-PB1.
+- **Kit fix.** `verify.py`'s relief count grouped the public courses' pages as one course with no relief and failed once PB reached ten pages; it now skips them until G-R (rule 10).
+- **Figures.** Figure 4 (the review's flow) corrected by the fresh check, then twice more on re-check, passed its fourth check (`kit/reviews/pb10/figure-recheck.md`); 1 to 3 passed.
+- **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-pb10`.
+- **Publish.** Academy artifact v154 (1794598374-86f9; 14 files in one patch over v153, all read back and matched). Pages academy 01f72dc, run 43493290786 succeeded.
 
 ## 13 November 2026 · Session 80 · Public course PB, unit PB9 (W-PB9)
 
