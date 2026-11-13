@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **PB9 filed (session 80, W-PB9):** PB9 Monetisation: what pays at each audience size written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 5 should-fix, 10 minor; all applied; Fable 5.1 fresh check owed); P105 applied; PB1, PB7 and PB8 corrected; Pages current again; PB10 next, in the same chat.
 - **PB8 filed (session 79, W-PB8):** PB8 Voice, disclosure and the rules written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 2 errors, 6 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed); P102 and P103 proposed; PB9 and PB10 next, in one chat.
 - **PB7 filed (session 78, W-PB7):** PB7 How Instagram growth works written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 9 should-fix, 7 minor; all applied; Fable 5.1 fresh check owed); A6 erratum; P99 and P100 applied after a two-round correction check; PB4 and PB5 corrected at step 7b; PB8 next, in the same chat.
 - **PB6 filed (session 77, W-PB6):** PB6 How YouTube growth works written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 2 errors, 12 should-fix, 14 minor; all applied; Fable 5.1 fresh check owed); A6 erratum, PB1 and PB3 corrected; PB7 and PB8 next, in one chat.
@@ -131,6 +132,18 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 13 November 2026 · Session 80 · Public course PB, unit PB9 (W-PB9)
+
+The first row of an unattended two-row chat (Pedro away), on Opus 5.5 (claude-opus-5-5): the writer, the fresh checker, four correction checkers and two figure re-checkers were fresh Opus 5.5 agents (P31), each stating claude-opus-5-5; no agent transcript on disk; agents in this session may not write files named as reports, so two correction reports were saved from the agents' returned text.
+
+- **Corrections first (step 1b).** P105 in two checked rounds: PB8 names Portugal (deliverable opening, D3's note, T1, T2), A3 names the Direção-Geral do Consumidor (gov.pt), E1 gives GDPR art. 3(1); register follows. P104 (Project mirrors): PB5 and PB6 refreshed; the rest wait for the chat's end. Left as P106: ASAE in A3, A3's date, recital 22, CTT's document title and tier, the postal line's funding if the microphone is bought.
+- **PB9.** Monetisation: what pays at each audience size, about 8,600 words, four figures, search on; fresh check fix, 3 errors, 5 should-fix, 10 minor, all applied; report `audits/personal-brand/fresh-check-PB9.md`.
+- **Mistakes elsewhere.** PB1 §4 (existing Partner Programme channels keep their status; the terms govern earnings), PB1 D3 read 1 and D2 (Q2 posts, postal line), PB7 D2 (Q2 count), PB9 (tariff date); reports `audits/personal-brand/corrections-2026-11-13-*.md`. No source error in A7.
+- **Flags.** F7, F27, F53, F58, F59, F60 carried; F45 resolved; F65 to F72 raised; none blocks PB10.
+- **Figures.** Figures 1 and 4 corrected by the fresh check; figure 4 corrected again after re-check 1 (its made-to-order branch now leads back to the rule) and passed its third check (`kit/reviews/pb9/figure-recheck.md`); 2 and 3 passed.
+- **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-pb9`.
+- **Publish.** Academy artifact v153 (1794588876-5635; 11 files in one patch over v152, all read back and matched). Pages deployed (academy 32f7d53; run 43467515833 succeeded), P103 done.
 
 ## 13 November 2026 · Session 79 · Public course PB, unit PB8 (W-PB8)
 
