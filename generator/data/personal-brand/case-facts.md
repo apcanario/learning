@@ -113,6 +113,12 @@ Left free by PB5: the free editor she uses; her actual edit minutes; her per-pie
 - The pre-mortem's dated story (January 2029) and its nine causes are hypothetical and set no fact.
 - Left free: her country of residence and tax (A3, T1, T2 open); what her employment contract says; the trademark search result; the price of the postal address; who is in her household; whether any deal happens after Season 2; her list size.
 
+## Set by Pedro (syllabus decision P102, 13 Nov 2026)
+
+- Mara lives in Portugal (fictional). Her tax and national legal lines (PB8 register A3, T1, T2) are worked under Portuguese rules as hers, labelled as her case; no Portuguese rate or threshold is stated as the reader's (the preamble's neutral ground), and every reader still gets the EU, UK and US questions and sources.
+- Amounts keep their source's currency and date (her PB1 cap stays 150 USD as written).
+- Still free: her city, street and household (never published, PB8 D1 clause 3); her income outside the account.
+
 ## Left free (a unit that needs one sets it and it is appended here)
 
 - Her country, city, household and income. PB8 works its register for the EU, the UK and the US without fixing her country unless it must.
