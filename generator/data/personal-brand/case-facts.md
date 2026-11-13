@@ -123,6 +123,17 @@ Left free by PB5: the free editor she uses; her actual edit minutes; her per-pie
 - Scenario inputs, illustrations only: email list of 60, 150 or 400 at 3 Jan 2028; guide sales of 2, 8 or 24; one brand deal at USD 255 in the high scenario only; year-one income USD 26, 104 or 567 (D2, D3).
 - Left free: her actual sales, list size and offers (her counts replace V6, V8, V12 at each review, PB10); the tax professional's and the lawyer's fees; CTT's current price.
 
+## Set by PB10, Read your numbers: the quarterly review (13 Nov 2026)
+
+- Her reviews: 60 minutes each on PB1's dates, the hour taken from two Reels in the cut window of the fortnight that holds the review (six posts become four); the repeat-back test's second run at the Q1 review, 0.75 hours from the three reply slots of weeks 14–15 (her estimates; PB10 §5, D2).
+- Her Q1 and Q2 values (Mara, fictional, illustrations): every row of the metrics sheet (YT1–YT11, IG1–IG13, H1–H5, AU1–AU2) and PB9's R1, R3–R5, R7–R8, as PB10 D3 and D4 give them; piece 5 took three weekends and cost the edit window of week 7, upload 5 ran about 8 minutes; upload 13's edit overran (week 23).
+- Admin hours: contract read 1.0 (29 Nov 2026), trademark search 0.75 (6 Dec 2026), sign-up notice 1.0 (week 4), register line A3 0.5 (week 25); her contract required no notice; the sign-up form went live with upload 3.
+- T1 answered Thu 18 Mar 2027 by a tax professional she knows, without charge; the guide decided at the Q1 review; three sales by 4 Jul 2027 (net 39.00 USD); list of 9 at Q1 and 31 at Q2; clamp 32 USD.
+- Repeat-back test run 2 passed (4 of 5). Season 2's pieces 8–13 and Season 3's pieces 14–20 as PB10 D3 and D4 list them.
+- Verdicts: Q1 continue; Q2 change the format (from upload 15, Tue 20 Jul 2027, the thumbnail shows the fault and the finished piece side by side); R6's new thumbnail on upload 11.
+- Year two's reviews: Mon 3 Apr, 3 Jul, 2 Oct 2028; the 24-month review Mon 1 Jan 2029, moved within its week (public holiday); the rule for when subscriber count may count towards a stop (D5).
+- Left free: her Q3 and Q4 values; the trademark search's result (her register line M1).
+
 ## Set by syllabus decision P102 (13 Nov 2026)
 
 - Mara lives in Portugal (fictional). Her tax and national legal lines (PB8 register A3, T1, T2) are worked under Portuguese rules as hers, labelled as her case; no Portuguese rate or threshold is stated as the reader's (the preamble's neutral ground), and every reader still gets the EU, UK and US questions and sources.
