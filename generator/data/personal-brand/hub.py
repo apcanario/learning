@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v11 · 13 Nov 2026'
+VERSION = 'v11.1 · 13 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -168,6 +168,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-13 17:20', "v11.1. Correction P106 (row W-PB10, step 1b), checked first by a fresh Opus 5.5 agent against source and syllabus (report `audits/personal-brand/corrections-2026-11-13-P106.md`): PB8 A3 names ASAE beside the Direção-Geral do Consumidor (Decreto-Lei 57/2008, art. 19) and gains a date consistent with PB9 D1; E1 cites GDPR recital 22; PB9 cites CTT's tariff by its title (Preços 2020) and the individual rate; PB1 D2's postal line says what pays it if the microphone is bought; dated notes; Mara's register follows. Left as P107: art. 19 as consolidated after later amendments, on the Diário da República."),
     ('2026-11-13 16:00', "v11. PB9 Monetisation: what pays at each audience size written (Opus 5.5, own agent context, search on; row W-PB9, P31), fresh-checked by Opus 5.5 in a separate context (fix, 3 errors, 5 should-fix, 10 minor; all applied; Fable 5.1 fresh check owed), figures 1 and 4 corrected and re-checked, 2 and 3 passed, and filed: reading page, PB9 marked written; PB10 next; Mara's register gains PB9's facts; PB1 corrected (§4, the Partner Programme status of existing channels, found by the fresh check; D3 read 1's Q2 posts and D2's postal line, found by the writer), PB7's Q2 counts and the register follow (step 7b, two checked rounds); no source error in A7; flags F7, F27, F53, F58, F59, F60 carried, F45 resolved, F2, F20, F29, F34, F41, F54, F56, F61, F63 carried and still open, F65 to F71 raised, none blocks PB10. Writer's Object line, kept for G-R: none."),
     ('2026-11-13 14:35', "v10.1. Correction P105 (row W-PB9, step 1b; docs/public-courses.md §3 rule 12), checked first by fresh Opus 5.5 agents against source and syllabus in two rounds (reports `audits/personal-brand/corrections-2026-11-13-P105.md` and `-round2.md`): PB8's deliverable opening, D3's status note and register lines T1 and T2 name Portugal (P102) and stay open for a tax professional; A3 names the Direção-Geral do Consumidor, Portugal's advertising regulator (gov.pt), and Sources gains its page; E1's status gives GDPR art. 3(1) as her EU test; dated notes in PB8; Mara's register follows. Left for the next prompt: ASAE's place in A3, a date for A3's to do, GDPR recital 22."),
     ('2026-11-13 02:30', "v10. PB8 Voice, disclosure and the rules written (Opus 5.5, own agent context, search on; row W-PB8, P31), fresh-checked by Opus 5.5 in a separate context (fix, 2 errors, 6 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed), three of its four figures corrected and re-checked, and filed: reading page, PB8 marked written; PB9 next; Mara's register gains PB8's facts; no source error found; flags F11, F18, F25, F40, F52, F54 carried, F2, F20, F29, F34, F41 carried and still open, F56 to F64 raised, none blocks PB9. Writer's Object line, kept for G-R: none."),

@@ -270,7 +270,7 @@ The quarterly review (60 minutes, PB10) is taken from that fortnight's publishin
 | Editing | 0 | Edits, free since 22 Apr 2025 ([PetaPixel](https://petapixel.com/2025/04/22/instagrams-capcut-competitor-edits-is-now-available/)); paid apps not bought in year one (her rule) |
 | Clip-on microphone | 99.00 USD | RØDE Wireless Micro list price, 12 Nov 2026 ([RØDE](https://brandstore.rode.com/products/wireless-micro)); bought only if PB5's audio check fails |
 | Tripod or clamp | up to 40 USD | Her estimate; no price checked |
-| Postal address for commercial email (PB8 E4) | 58.00 € + VAT a year (CTT tariff, Nov 2020; current price to check) | Paid from the unspent microphone line (PB5 §2) at the day's rate, not added to the cap; the cap stands unless the converted price exceeds what remains under it (PB9 D2 V17) |
+| Postal address for commercial email (PB8 E4) | 58.00 € + VAT a year (CTT tariff, Nov 2020; current price to check) | Paid from the unspent microphone line (PB5 §2) at the day's rate, not added to the cap; the cap stands unless the converted price exceeds what remains under it (PB9 D2 V17); if a later audio check fails and the microphone is bought (PB5 §2, §10), that line is spent, the address is paid from what then remains under the cap (the contingency and any unspent part of the tripod-or-clamp line), and if that does not cover both, this D2 is corrected (PB9 D3) |
 | Contingency | 11 USD | The remainder of the cap |
 | **Total cap** | **150 USD** | |
 
@@ -432,3 +432,4 @@ Correction 12 Nov 2026, found by PB6's writer: §4 gains a row for the rule from
 Correction 12 Nov 2026, found by the P100 correction check: D3 read 4 now records each upload's impressions and her median upload's impressions, which verdict 3 as corrected uses (flag F42).
 
 Correction 13 Nov 2026, found by the W-PB7 figure re-check: D3's decision figure caption now places the 1.86% base rate in §2 and D1 row Y4, within 360 days and for channels whose video count grew by 1 to 11 (it said §2 and §5, a year), ties rows Y2 and Y3 to the format verdict, and names the above-median rule as hers, resting on the two YouTube Help statements.
+- Correction 2026-11-13, found by the W-PB9 correction check (P106): D2's postal-address line now says what pays it if a later audio check fails and the microphone is bought (PB5 §2, §10): what then remains under the 150 USD cap, the contingency and any unspent part of the tripod-or-clamp line, with D2 corrected if that does not cover both (PB9 D3); no price, rate or source is added, and the cap is unchanged.
