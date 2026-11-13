@@ -470,7 +470,7 @@ def sep_block(paras, tone, phase=None, label=''):
     out = viz.render(blk)
     while sep_bytes(out) > SEP_MAX:
         lay['simplify'] = round(lay['simplify'] * 1.25, 3)
-        if lay['simplify'] > 12:
+        if lay['simplify'] > 60:   # W-PB8 (13 Nov 2026): raised from 12 so a section of 38 paragraphs (PB8 §6) still fits SEP_MAX; no rise dropped
             raise SystemExit(f'build.py sep_block: the separator of {label} ({paras}) stays over {SEP_MAX} bytes even simplified')
         out = viz.render(blk)
     return out
