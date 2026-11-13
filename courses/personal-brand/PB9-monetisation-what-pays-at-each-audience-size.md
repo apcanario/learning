@@ -281,7 +281,7 @@ The rule, in order **(her rule;** basis: §10**)**: a line starts only if it is 
  "root": {"q": "Open now: platform threshold met, policy allows it, legal lines done?", "tone": 4, "branches": [
   {"label": "no", "to": {"outcome": "Wait; read again at the next checkpoint", "tone": 6}},
   {"label": "yes", "to": {"q": "Needs stock bought before her own sales count exists?", "tone": 4, "branches": [
-   {"label": "yes", "to": {"outcome": "Made to order or pre-order only, or wait", "tone": 5}},
+   {"label": "yes", "to": {"outcome": "Wait; or test a made-to-order version from the top", "tone": 6}},
    {"label": "no", "to": {"q": "Hours from a named cut, cash costs covered at the low scenario, at most one labelled piece a season?", "tone": 4, "branches": [
     {"label": "no", "to": {"outcome": "Wait", "tone": 6}},
     {"label": "yes", "to": {"outcome": "Start the passing line with the highest base net per hour, one at a time", "tone": 3}}
@@ -390,5 +390,5 @@ A line starts this quarter only if: it is open [threshold, policy clause, legal 
 - Not opened: Substack's fee page, Kit's commerce fee page, Patreon's full State of Create report, and the *South Dakota v. Wayfair* judgment (§5, §6).
 - The AIR Media-Tech RPM page is dated 1 Jul 2026 but refers to September 2026 (§2).
 - Object: none
-- Fresh check 2026-11-13 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 3 errors, 5 should-fix, 10 minor; all applied as the report gives them; figures 1 and 4 corrected and re-checked, figures 2 and 3 passed; report `audits/personal-brand/fresh-check-PB9.md`.
+- Fresh check 2026-11-13 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 3 errors, 5 should-fix, 10 minor; all applied as the report gives them; figures 1 and 4 corrected; on re-check from the shots figure 1 passed and figure 4's made-to-order branch was corrected again (it now leads back to the rule) and checked a third time; figures 2 and 3 passed; report `audits/personal-brand/fresh-check-PB9.md`.
 - Correction 2026-11-13, found by the W-PB9 correction check: CTT's tariff is dated Nov 2020, not 1 Nov 2020 (D2 V17, Sources, this list); the PDF shows "Preços 2020" and "novembro/2020", and "1nov" is only its file name.
