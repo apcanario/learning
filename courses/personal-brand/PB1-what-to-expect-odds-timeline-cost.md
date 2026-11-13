@@ -98,7 +98,7 @@ Thresholds as the platforms state them, checked 12 November 2026:
 | YouTube | 50 subscribers, channel verified, no live-streaming restriction in the last 90 days | Live streaming from a phone | [YouTube Help, Create a live stream on mobile](https://support.google.com/youtube/answer/9228390?hl=en) |
 | YouTube | 500 subscribers plus 3,000 watch hours in the past year, or 3 million Shorts views in 90 days | Fan funding and related products (the page groups Creator Partnerships and Shopping with it); unchanged by the 2027 update | [YouTube Help, Changes to the YouTube Partner Program](https://support.google.com/youtube/answer/12843009) |
 | YouTube | 1,000 subscribers plus 4,000 qualified watch hours in the past 12 months, or 10 million qualified Shorts views in 90 days | Application to the Partner Programme with ad revenue; meeting the threshold sends the channel to review, and approval is not automatic | [YouTube Help, YouTube Partner Programme overview and eligibility](https://support.google.com/youtube/answer/72851?hl=en-gb) |
-| YouTube | From 1 February 2027: 1,000 subscribers plus 8,000 qualified watch hours in the last 365 days, or 20 million qualified Shorts views in the last 90 days | The same entry, for new creators; channels already in the programme keep their status, provided they accept the updated terms in YouTube Studio by 31 January 2027, without which they stop earning from the affected features from 1 February 2027 | [YouTube Help, Changes to the YouTube Partner Program](https://support.google.com/youtube/answer/12843009) |
+| YouTube | From 1 February 2027: 1,000 subscribers plus 8,000 qualified watch hours in the last 365 days, or 20 million qualified Shorts views in the last 90 days | The same entry, for new creators; for channels already in the programme, status is not affected by the update or by whether they accept the updated terms; earning from the associated features from 1 February 2027 needs those terms accepted in YouTube Studio by 31 January 2027 | [YouTube Help, Changes to the YouTube Partner Program](https://support.google.com/youtube/answer/12843009) |
 | YouTube | From 1 February 2027, to stay active: 1,000 watch hours in 365 days, or 1 million Shorts views in 90 days, or 2 long-form videos or 5 Shorts uploaded every 90 days | Continued monetisation; a channel that drops below has 90 days to meet one of them | same |
 | YouTube | From 1 February 2027: 10 million qualified Shorts views in the last 90 days, kept each month | Earning that month from the Shorts Creator Pool (Shorts revenue sharing); a channel below it is not removed from the Partner Programme, and its other Partner Programme earnings, long-form included, are unaffected | same |
 | Instagram | 1,000 followers and a public account | Going live; the rule appeared without announcement around 1 August 2025 and Instagram confirmed it to TechCrunch | [9to5Mac, 1 Aug 2025](https://9to5mac.com/2025/08/01/new-instagram-rule-cuts-off-live-broadcasts-for-small-accounts/); [TechCrunch](https://techcrunch.com/?p=3033252) |
@@ -270,6 +270,7 @@ The quarterly review (60 minutes, PB10) is taken from that fortnight's publishin
 | Editing | 0 | Edits, free since 22 Apr 2025 ([PetaPixel](https://petapixel.com/2025/04/22/instagrams-capcut-competitor-edits-is-now-available/)); paid apps not bought in year one (her rule) |
 | Clip-on microphone | 99.00 USD | RØDE Wireless Micro list price, 12 Nov 2026 ([RØDE](https://brandstore.rode.com/products/wireless-micro)); bought only if PB5's audio check fails |
 | Tripod or clamp | up to 40 USD | Her estimate; no price checked |
+| Postal address for commercial email (PB8 E4) | 58.00 € + VAT a year (CTT tariff, Nov 2020; current price to check) | Paid from the unspent microphone line (PB5 §2) at the day's rate, not added to the cap; the cap stands unless the converted price exceeds what remains under it (PB9 D2 V17) |
 | Contingency | 11 USD | The remainder of the cap |
 | **Total cap** | **150 USD** | |
 
@@ -302,7 +303,7 @@ Spending is read at each checkpoint. Any income, however small, triggers the tax
 
 **The seven reads at every checkpoint** (PB10 runs them as a 60-minute procedure; Studio and Insights are opened for the review on its date):
 
-1. YouTube uploads and Instagram posts this quarter against plan (7 or 6 videos; 39 posts).
+1. YouTube uploads and Instagram posts this quarter against plan (7 or 6 videos; 39 posts, 31 in Q2 if PB9's guide build is decided at the Q1 review).
 2. Hours logged per week against 6, and the number of weeks over 7.
 3. YouTube: median 30-day views across uploads at least 30 days old, and the best upload so far (Y1).
 4. YouTube: click-through rate, impressions and percentage viewed for each upload at least 7 days old, and her median upload's impressions (Y2, Y3).
@@ -417,6 +418,10 @@ Tax question to answer if anything is earned: [your country's tax authority page
 Correction 12 Nov 2026, made by the chat that filed PB3 (row W-PB3): PB3 gives Mara one short email per video, so D2's hours line for publishing and replies falls from 1.5 to 1.25 hours a fortnight and a line Email, 0.25, is added; the fortnight's 12 hours, the posting rates, rows Y1, Y4, Y5 and I4 and the stop rule are unchanged (flag F5).
 
 Correction 12 Nov 2026, found by PB4's writer (row W-PB4) and confirmed by its fresh checker: §6 now gives YouTube's own statement that it found no correlation between break length and changes in views (YouTube Help, answer 141805) beside AIR Media-Tech's finding on repeated gaps.
+
+- Correction 2026-11-13, found by PB9's fresh checker: §4's row for the 1 February 2027 entry said channels already in the Partner Programme keep their status provided they accept the updated terms by 31 January 2027; YouTube Help 12843009 says their status "is not impacted by this update" and that the decision to accept the terms does not affect it either, acceptance governing only earning from the associated features from 1 February 2027; the cell now says so (row W-PB9).
+- Correction 2026-11-13, found by PB9's writer: D3 read 1 now gives 31 posts for Q2 if PB9's guide build is decided at the Q1 review (PB9 D1: two Reels fewer in each of the fortnights cut on 25 Apr, 9 May, 23 May and 6 Jun 2027); 39 stands otherwise (row W-PB9).
+- Correction 2026-11-13, found by PB9's writer: D2 gains a line for the postal address PB8 register E4 requires, 58.00 € + VAT a year on CTT's tariff dated November 2020 (Apartado, Singulares, concessão anual; prices subject to VAT), paid from the unspent microphone line (PB5 §2) at the day's rate; the current price was not checked, and the cap stands unless the converted price exceeds what remains under it (PB9 D2 V17; flag F58; row W-PB9).
 
 Correction 12 Nov 2026, found by PB6's fresh checker (row W-PB6): the YouTube Help page at answer 12843009 is titled "Changes to the YouTube Partner Program", not "Changes to YouTube Partner Program terms" (§4 table, twice, and Sources).
 

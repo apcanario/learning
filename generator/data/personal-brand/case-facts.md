@@ -91,7 +91,7 @@ Left free by PB5: the free editor she uses; her actual edit minutes; her per-pie
 - Every post ends with "Full video: link in profile" (D1 IR7; consistent with PB5's Reel and carousel templates).
 - One Story a fortnight with a link sticker to the new video, posted in week A's Wednesday reply slot, 5 of its 15 minutes; skipped if the sticker is not offered (D1 IR7).
 - Captions open with the piece and its fault in a buyer's words; at most five hashtags. Post 1 of piece 1: first line "Teak side table with white water rings, restored at home with tools that fit in one box."; hashtags #furniturerestoration #midcenturymodern #teakfurniture #woodfinishing #restoration (D1).
-- Season 1 Instagram mix confirmed as four Reels and two carousels a fortnight (posts 1–4 Reels, 5–6 carousels), 30 minutes each: 27 Reels and 12 carousels in Q1, 25 and 14 in Q2 (derived from PB4 D2) (D1 IR1, D2).
+- Season 1 Instagram mix confirmed as four Reels and two carousels a fortnight (posts 1–4 Reels, 5–6 carousels), 30 minutes each: 27 Reels and 12 carousels in Q1, 25 and 14 in Q2 (17 and 14 if PB9's guide build is decided at the Q1 review: two Reels fewer in each of the four fortnights cut on 25 Apr, 9 May, 23 May and 6 Jun 2027) (derived from PB4 D2) (D1 IR1, D2).
 - Trial reels from the first checkpoint at 1,000 followers, one a fortnight testing an opening (IR8); no collab planned in Season 1 (IR9).
 - Format test once, at the Q2 review (5 Jul 2027): carousels' median non-follower views across Q1 and Q2 equal or beat Reels' → one Reel a fortnight becomes a carousel from Season 3's second video (IR11).
 - Instagram format flag from Q2: Reels' median skip rate above 65.5% and median watch-time share below her Q1 median → the next season's Reel openings change (IR12).
