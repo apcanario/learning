@@ -315,10 +315,10 @@ The hour is taken from the review fortnight's cut window, which makes four posts
 {"kind": "flow", "title": "The quarterly review in sixty minutes",
  "steps": [
   {"label": "0–5 Set up", "note": "date; list what qualifies"},
-  {"label": "5–13 Output and hours", "note": "YT1, IG1, H1–H5"},
+  {"label": "5–13 Output and hours", "note": "YT1, IG1, H1–H5, R7"},
   {"label": "13–28 YouTube", "note": "YT2–YT11; R6 choice"},
   {"label": "28–40 Instagram", "note": "IG2–IG9, IG11–IG13; IR11, IR12"},
-  {"label": "40–45 Audience and money", "note": "AU1, AU2, R1–R8"},
+  {"label": "40–45 Audience and money", "note": "AU1, AU2, R1–R8; D4 start rule"},
   {"label": "45–50 Handed-over items", "note": "HO1, HO3"},
   {"label": "50–60 Verdict", "note": "PB1 order; at most one change per platform"}
  ],
@@ -578,4 +578,4 @@ Every other figure is carried from this course's units and cited there by row: P
 - Kohavi et al. is cited from the authors' own survey page; the full paper's text was not read beyond its abstract (§7).
 
 Object: the metrics sheet, the review's one page of rows, discussed at length in §1 and built in D1
-- Fresh check 2026-11-13 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 0 errors, 8 should-fix, 33 minor; all applied as the report gives them; figure 4 corrected; on re-check from the shots two of its labels were corrected again (IG10 is filled in step 3; at most one change per platform) and checked a third time; figures 1 to 3 passed; report `audits/personal-brand/fresh-check-PB10.md`.
+- Fresh check 2026-11-13 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 0 errors, 8 should-fix, 33 minor; all applied as the report gives them; figure 4 corrected; on re-check from the shots two of its labels were corrected again (IG10 is filled in step 3; at most one change per platform), then two more on the third check (R7; the D4 start rule), and checked a fourth time; figures 1 to 3 passed; report `audits/personal-brand/fresh-check-PB10.md`.
