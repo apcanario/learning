@@ -1,0 +1,98 @@
+[
+ {
+  "id": "PB3-1",
+  "unit": "PB3",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "- Eurostat, Housing in Europe, 2025 edition (interactive publication), read 12 Nov 2026. https://ec.europa.eu/eurostat/web/interactive-publications/housing",
+  "fix": "- European Union, Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 (General Data Protection Regulation), EUR-Lex. https://eur-lex.europa.eu/eli/reg/2016/679/oj\n- Eurostat, Housing in Europe, 2025 edition (interactive publication), read 12 Nov 2026. https://ec.europa.eu/eurostat/web/interactive-publications/housing",
+  "basis": "§5 cites this source and Sources does not list it (standard Part 1, per unit: every source cited is listed). Opened 14 Nov 2026: https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+  "figure": false
+ },
+ {
+  "id": "PB3-2",
+  "unit": "PB3",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "- FeedSpot, \"20 Furniture Restoration YouTubers in 2026\", updated 2 Jul 2026. https://videos.feedspot.com/furniture_restoration_youtube_channels",
+  "fix": "- Federal Trade Commission, \"CAN-SPAM Act: A Compliance Guide for Business\", Aug 2023, updated 22 Jul 2025. https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business\n- FeedSpot, \"20 Furniture Restoration YouTubers in 2026\", updated 2 Jul 2026. https://videos.feedspot.com/furniture_restoration_youtube_channels",
+  "basis": "§5 cites this source and Sources does not list it. Title and dates confirmed 14 Nov 2026 at the search-returned address https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business?frame=0",
+  "figure": false
+ },
+ {
+  "id": "PB3-3",
+  "unit": "PB3",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "- Measure Studio (Sweta Panigrahi), \"What engagement data reveals about content lifespan in TikTok vs Instagram\", 3 Jul 2025, updated 18 Aug 2025. https://www.measure.studio/blog/tiktok-vs-instagram",
+  "fix": "- legislation.gov.uk, Regulation (EU) 2016/679 as it applies in the United Kingdom (UK GDPR). https://www.legislation.gov.uk/eur/2016/679/introduction\n- Measure Studio (Sweta Panigrahi), \"What engagement data reveals about content lifespan in TikTok vs Instagram\", 3 Jul 2025, updated 18 Aug 2025. https://www.measure.studio/blog/tiktok-vs-instagram",
+  "basis": "§5 cites this source and Sources does not list it. This audit did not open the page (not checked); the reference is built from the unit's own §5 and PB8's citation of the same instrument, and whoever applies it should confirm the page title. https://www.legislation.gov.uk/eur/2016/679/introduction",
+  "figure": false
+ },
+ {
+  "id": "PB3-4",
+  "unit": "PB3",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Sources",
+  "current": "- YouTube Blog, \"YouTube related videos traffic guide\", 14 Jul 2026. https://blog.youtube/creator-and-artist-stories/youtube-related-videos-traffic-guide/",
+  "fix": "- YouTube Blog, \"How to convert YouTube Shorts views into long-form channel growth\", 14 Jul 2026. https://blog.youtube/creator-and-artist-stories/youtube-related-videos-traffic-guide/",
+  "basis": "The page's title, read 14 Nov 2026; the date is right. https://blog.youtube/creator-and-artist-stories/youtube-related-videos-traffic-guide/",
+  "figure": false
+ },
+ {
+  "id": "PB3-5",
+  "unit": "PB3",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Deliverable · D1 trait 3",
+  "current": "36% of US home-improvement projects in 2023 were done by do-it-yourselfers (50 million of 140 million)",
+  "fix": "36% of the home-improvement projects US homeowners reported in the 2023 American Housing Survey were done by do-it-yourselfers (about 50 million of about 140 million; the infographic does not date the projects)",
+  "basis": "The infographic gives homeowners' projects from the 2023 survey, heads its spending figure \"2021–2023\" and does not say the projects were done in 2023. https://www.census.gov/content/dam/Census/library/visualizations/2024/demo/2023%20Home%20Improvements%20Infographic.pdf",
+  "figure": false
+ },
+ {
+  "id": "PB3-6",
+  "unit": "PB3",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "§6 · What is cut first in a bad week",
+  "current": "and because a fixed schedule is what PB1's stop rule counts",
+  "fix": "and because uploads per quarter are what PB1's stop rule counts",
+  "basis": "PB1 D3: \"fewer than 3 YouTube videos in each of two consecutive quarters\"; PB4 §2 says the rule \"counts uploads per quarter\". others/PB1-what-to-expect-odds-timeline-cost.md (no URL: a pointer inside the course)",
+  "figure": false
+ },
+ {
+  "id": "PB3-7",
+  "unit": "PB3",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable · D2, at 3 hours",
+  "current": "longer than the 14 days AIR associates with fewer views when it recurs.",
+  "fix": "longer than the 14 days AIR associates with fewer views when it recurs; YouTube's own FAQ reports no correlation between break length and changes in views (YouTube Help, answer 141805; no sample size, period or method given).",
+  "basis": "§6 gives both findings since the correction of 12 Nov 2026; the deliverable, which must stand without the body, gives only AIR's. \"We studied thousands of channels that took a break and found no correlation between break length and changes in views.\" https://support.google.com/youtube/answer/141805?hl=en",
+  "figure": false
+ },
+ {
+  "id": "PB3-8",
+  "unit": "PB3",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable · D1, What the profile does not claim",
+  "current": "the sentence goes into the second run of PB2's repeat-back test the same day",
+  "fix": "the answers from the second run of PB2's repeat-back test, held the same day on one complete video, are read against the sentence",
+  "basis": "PB2 D5: run 2 shows \"one complete video, the most recent\" and marks each answer for who and what; no sentence is shown to the five people. A reading of another unit's procedure, so reported as a flag. others/PB2-positioning-the-sentence-a-stranger-can-repeat.md (no URL)",
+  "figure": false
+ }
+]

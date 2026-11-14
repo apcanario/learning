@@ -1,0 +1,497 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Instagram insights break down by \"age, city, country, gender\"; demographics \"Not returned if the IG User has less than 100 followers\"",
+  "source": "https://developers.facebook.com/docs/instagram-platform/api-reference/instagram-user/insights",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Pew fact sheet 19 Oct 2026: NPORS, 5,511 US adults, 30 Jan–18 Jun 2026, ±1.8 points; YouTube 84%, Instagram 51%; four age rows",
+  "source": "https://www.pewresearch.org/internet/fact-sheet/social-media/markdown",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Fanpage Karma: more than 3 million posts, Jan–Apr 2026; under 10,000 followers median reach 4.9% Reels, 3.5% image posts, 2.6% carousels; interaction 0.51% against 0.34%; \"nearly three times as many non-followers as carousels\"",
+  "source": "https://www.fanpagekarma.com/insights/instagram-format-reach/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "number",
+  "claim": "vidIQ First 10 Videos: about 180 → 272 (137,355 long-form channels), about 1,362 → 1,344 (367,243 Shorts channels); \"no incremental growth, in fact a slight decline over time\"",
+  "source": "https://vidiq.com/research/youtube-first-10-videos-study/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "beehiiv: 41.24% average open rate in 2025 across 28 billion emails; 37.98% for 2024 in text, 37.67% in graphic; 6 Jan 2026; \"auto-loads images\"; bot filtering",
+  "source": "https://www.beehiiv.com/blog/the-state-of-newsletters-2026.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Buffer: 2.1 million feed posts, 102,000 accounts, fixed effects, Stories excluded; +0.12% / +0.26% / +0.44% / +0.66%; about 12% more reach per post at 3–5 than at 1–2",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "D1 trait 2: 48% of the EU population lived in a flat in 2024 (Eurostat, 2025 edition); two thirds of US housing units had a garage or carport in 2021 (DOE FOTW 1268, Census data)",
+  "source": "https://ec.europa.eu/eurostat/web/interactive-publications/housing ; https://www.energy.gov/cmei/vehicles/articles/fotw-1268-december-12-2022-2021-two-thirds-us-housing-units-had-garage-or",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "Template",
+  "sampled": true,
+  "kind": "number",
+  "claim": "T2 total caps (12, 24, 40 hours per four weeks) and T1 \"first quarterly review date, from PB1\" agree with the body and with PB1",
+  "source": "unit.md §6 and D2; others/PB1 D3",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Metricool (Gretchen Oestreicher), \"YouTube Trends 2026: what 799,718 videos tell us about views, Shorts, and watch time\", 29 Jul 2026, modified 4 Aug 2026",
+  "source": "https://metricool.com/youtube-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "number",
+  "claim": "OverseerOS, 8 Nov 2026: about eight days of observation per Short; \"90.5% gained views\"",
+  "source": "https://www.overseeros.com/blog/do-youtube-shorts-get-views-after-30-days",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Instagram lists Reels signals \"roughly in order of importance\", starting \"Your activity\", then \"Your history of interacting with the person who posted\"; four headings, none is age or gender",
+  "source": "https://about.instagram.com/blog/announcements/instagram-ranking-explained",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help: \"The algorithm aims to understand a viewer's interest across Shorts, long videos, live streams, and posts\"; \"individual preferences vary, not just by topic but also by format\"",
+  "source": "https://support.google.com/youtube/answer/16559651?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Audience reports \"Channels that your audience watches\", \"What your audience watches\", \"Formats your viewers watch on YouTube\"",
+  "source": "https://support.google.com/youtube/answer/9314416",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube: data limited \"when metrics do not meet a certain threshold\"; thresholds not published; \"Not enough demographic data\"",
+  "source": "https://support.google.com/youtube/answer/9101241?authuser=1",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Pew rows for men, women, education and income; derived gaps of 13 and 17 points",
+  "source": "https://www.pewresearch.org/internet/fact-sheet/social-media/markdown",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Ofcom, 10 Dec 2025: YouTube \"used by 94% of adults\"; \"reaching an average of 51 minutes a day, not including the TV set\"; no Instagram figure, no panel or fieldwork dates",
+  "source": "https://www.ofcom.org.uk/media-use-and-attitudes/online-habits/from-apps-to-ai-search-how-the-uk-goes-online-in-2025",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Beaupré (senior director of growth and discovery), Creator Insider interview of 1 Sep 2026: four quotations; PPC Land 2 Sep 2026; transcript misspells the names",
+  "source": "https://ppc.land/subscribers-skip-90-of-uploads-in-their-feed-youtube-director-says/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help: \"Viewers, on average, are subscribed to dozens of channels and may not return for every new upload\"",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Instagram on Feed, Stories, Explore and Reels (four quotations)",
+  "source": "https://about.instagram.com/blog/announcements/instagram-ranking-explained",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Mosseri, Jan 2025: \"The top three signals that matter most for ranking are watch time, likes and sends\"; likes for connected, sends for unconnected content",
+  "source": "https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Trial reels \"will be shown to non-followers first\"; metrics about 24 hours later; \"globally available to all eligible creators\" forecast in Dec 2024; eligibility left to the Help Centre; 10 Dec 2024, updated 26 Jun 2025",
+  "source": "https://about.fb.com/news/2024/12/trial-reels-try-content-non-followers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Instagram, 30 Apr 2024: eligible content \"is shown to a small audience that we think will enjoy it\"; \"the top performing set of reels are shown to a slightly wider audience\"",
+  "source": "https://creators.instagram.com/recommendations-and-originality",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Fanpage Karma \"reach within the existing community\": 2.1% image posts, 2.0% Reels, under 10,000 followers",
+  "source": "https://www.fanpagekarma.com/insights/instagram-format-reach/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help on new channels: four quotations (\"naturally drawn\", \"takes time\", \"critical mass of content\", \"delve deeper into your channel\")",
+  "source": "https://support.google.com/youtube/answer/16559651?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help: \"binging\" old videos; a new video in a series",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help: viewers do not watch in chronological order; right videos \"regardless of when that video was uploaded\"",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Metricool: 799,718 videos, 71,177 accounts; peak in first three days; roughly 83% of interactions within ten days; \"keeps earning views for months\"",
+  "source": "https://metricool.com/youtube-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "OverseerOS: 9,982 Shorts, 676 channels, 30+ days old; median gain 57; the 1,546-Shorts sentence; \"selected, not random\"",
+  "source": "https://www.overseeros.com/blog/do-youtube-shorts-get-views-after-30-days",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Socialinsider: 25,503,389 Reels of brand accounts with 1,000 to 1 million followers, 2025; \"golden window\"; the 45% sentence; second sample of 40 million Reels from 450,000 accounts; 21 Jan 2026, updated 6 Nov 2026",
+  "source": "https://www.socialinsider.io/blog/how-long-does-it-take-for-reels-to-get-views/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help on Shorts and long-form: three quotations",
+  "source": "https://support.google.com/youtube/answer/16559651?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Net Influencer, 23 May 2025: Todd Sherman, Shorts product lead, on Creator Insider; paraphrase, no quote, no data",
+  "source": "https://www.netinfluencer.com/youtube-debunks-common-myths-about-shorts-as-format-gains-traction/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help: \"a clickable link below your channel handle\"; \"is only available with advanced feature access\"",
+  "source": "https://support.google.com/youtube/answer/14075157?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 33,
+  "section": "§4",
+  "sampled": false,
+  "kind": "date",
+  "claim": "YouTube Blog guide of 14 Jul 2026 gives no figure for viewers following the link",
+  "source": "https://blog.youtube/creator-and-artist-stories/youtube-related-videos-traffic-guide/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "AIR Media-Tech Shorts study: 18,000 English-language channels, 40+ videos and 10+ long-form, Mar 2025–Mar 2026; 41%, 39%, 37%; Home and DIY 95,100/94,600 and 251,500/256,000; \"0.04% to 0.5%\"; \"measured subscriber counts, not cross-format viewing rates directly\"; correlational",
+  "source": "https://air.io/en/audience-growth/do-youtube-shorts-help-your-long-form-videos-grow-data-from-18000-channels",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Metricool: about five Shorts a month, 8,789 views per long-form video against 5,985; correlation by its own account",
+  "source": "https://metricool.com/youtube-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 36,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "OverseerOS, 1 Sep 2026: 370 long-form videos, 37 channels; \"no consistent evidence…\"; \"cannot observe competitor impression allocation\"; no cross-format rate",
+  "source": "https://www.overseeros.com/blog/do-youtube-shorts-hurt-long-form-views",
+  "verdict": "PASS"
+ },
+ {
+  "n": 37,
+  "section": "§5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "GetResponse: more than 4.4 billion messages in 2023, senders with at least 500 contacts; 39.64% open rate; Mail Privacy Protection sentence",
+  "source": "https://www.getresponse.com/resources/reports/email-marketing-benchmarks?frame=0",
+  "verdict": "PASS"
+ },
+ {
+  "n": 38,
+  "section": "§5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "GetResponse landing pages: 10.76% average (subscription rate); 0.7% retail; 39.93% restaurants and food",
+  "source": "https://www.getresponse.com/resources/reports/email-marketing-benchmarks?frame=0",
+  "verdict": "PASS"
+ },
+ {
+  "n": 39,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Substack, 22 Feb 2024: network \"drives 50% of all new subscriptions and 25% of new paid subscriptions on Substack\"",
+  "source": "https://on.substack.com/p/substacks-recommendations-network",
+  "verdict": "PASS"
+ },
+ {
+  "n": 40,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "beehiiv: newsletters using Recommendations grew \"2.75x faster on average\"",
+  "source": "https://www.beehiiv.com/blog/the-state-of-newsletters-2026.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 41,
+  "section": "§5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "beehiiv Free plan: $0, \"Up to 2,500\" subscribers, landing pages, \"Unlimited email sends\"",
+  "source": "https://www.beehiiv.com/pricing?via=start",
+  "verdict": "PASS"
+ },
+ {
+  "n": 42,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "EUR-Lex address is Regulation (EU) 2016/679, the General Data Protection Regulation",
+  "source": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+  "verdict": "PASS"
+ },
+ {
+  "n": 43,
+  "section": "§5",
+  "sampled": false,
+  "kind": "date",
+  "claim": "FTC, \"CAN-SPAM Act: A Compliance Guide for Business\", Aug 2023, updated 22 Jul 2025",
+  "source": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business?frame=0",
+  "verdict": "PASS"
+ },
+ {
+  "n": 44,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ uploads study: 32,926,088 channels under 1,000 subscribers, 360 days; 1.86%, 8.65%, 30.77%; both caveats quoted; 11 Sep 2026",
+  "source": "https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 45,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "AIR Media-Tech posting study: 18,000 channels in four countries, 100,000–1 million monthly views; Home and DIY 114,000 (178 channels) against 90,700 (87); schedule finding; \"went dark for 14+ days three or more times a year\"; \"This is correlational data, not causal\"; 8 Jun 2026",
+  "source": "https://air.io/en/audience-growth/does-posting-more-on-youtube-help-we-studied-18000-channels-to-find-out",
+  "verdict": "PASS"
+ },
+ {
+  "n": 46,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help: \"We studied thousands of channels that took a break and found no correlation between break length and changes in views\"; no sample size, period or method",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 47,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D1 trait 1: Censuswide for uShip, 2,003 US consumers, 23–28 May 2024; 48% have bought used furniture; 78% of those likely to again; mid-century not sized",
+  "source": "https://businesswire.com/news/home/20240719968636/en/The-Secondhand-Furniture-Phenomenon-What-48-of-Americans-Know-That-You-Dont",
+  "verdict": "PASS"
+ },
+ {
+  "n": 48,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "date",
+  "claim": "D1 trait 3: \"36% of US home-improvement projects in 2023 were done by do-it-yourselfers (50 million of 140 million)\"",
+  "source": "https://www.census.gov/content/dam/Census/library/visualizations/2024/demo/2023%20Home%20Improvements%20Infographic.pdf",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 49,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D1 trait 4: Pew, 7 Nov 2018: 51% of US YouTube users (35% of all adults); 4,594 adults, 29 May–11 Jun 2018",
+  "source": "https://www.pewresearch.org/data-labs/2018/11/07/many-turn-to-youtube-for-childrens-content-news-how-to-lessons/",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 50,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D1 trait 7: FeedSpot list of 20 channels, 441K to 1.5K subscribers; mid-century channel 4K; hand-tool channel 3.2K; updated 2 Jul 2026",
+  "source": "https://videos.feedspot.com/furniture_restoration_youtube_channels",
+  "verdict": "PASS"
+ },
+ {
+  "n": 51,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "YouTube Blog, \"YouTube related videos traffic guide\", 14 Jul 2026",
+  "source": "https://blog.youtube/creator-and-artist-stories/youtube-related-videos-traffic-guide/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 52,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "\"a fixed schedule is what PB1's stop rule counts\"",
+  "source": "others/PB1 D3",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 53,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D2 arithmetic: column totals 11.75, 24.0, 39.0; 13/26/52 a year and 1.1/2.2/4.3 a month; 7.0 hours a video; 0.14 points and 0.2 followers; hours freed; five-week gap",
+  "source": "unit.md D2 tables; https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 54,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Mara's facts and the pointers to PB1 (§1, §8, D2, D3, 150 USD cap, rows Y1/Y4/Y5/I4, 5 Apr 2027) and PB2 (D1 wording, §3 conventions)",
+  "source": "case-facts.md; others/PB1, others/PB2",
+  "verdict": "PASS"
+ },
+ {
+  "n": 55,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Buffer (Kirsti Lang), \"How often should you post on Instagram in 2026? What data from 2 million posts tells us\", 13 Aug 2025",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ }
+]

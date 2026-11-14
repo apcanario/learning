@@ -1,0 +1,27 @@
+{
+ "unit": "PB3",
+ "model": "claude-fable-5-2",
+ "words": 9437,
+ "sections": 10,
+ "cited_claims_in_unit": 109,
+ "claims_sampled": 10,
+ "claims_checked_total": 55,
+ "fail_sampled": 0,
+ "fail_total": 3,
+ "stale_total": 0,
+ "unverifiable_total": 1,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 36,
+ "web_fetches": 39,
+ "not_checked": [
+  "https://www.pewresearch.org/data-labs/2018/11/07/many-turn-to-youtube-for-childrens-content-news-how-to-lessons/: failed at its site (client error); not retried; the unit's /markdown address was not returned by search",
+  "https://support.google.com/youtube/answer/13615375: not opened (no search run for it)",
+  "https://www.legislation.gov.uk/eur/2016/679/introduction: not opened (no search run for it)",
+  "https://www.measure.studio/blog/tiktok-vs-instagram: not opened (the unit cites it only to say it is not used)",
+  "https://www.beehiiv.com/pricing: plain address not returned by search; pricing?via=start and pricing.md opened instead",
+  "https://support.google.com/youtube/answer/9101241: plain address not returned by search; the ?authuser=1 address opened instead",
+  "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business: plain address not returned by search; the ?frame=0 address opened instead",
+  "Creator Insider video of 1 Sep 2026: not opened; quotations checked against PPC Land only"
+ ]
+}
