@@ -142,5 +142,17 @@
   "not_applied": [],
   "flags": [],
   "figures": []
+ },
+ "A4:PB4": {
+  "applied": [
+   "A4-19"
+  ],
+  "not_applied": [],
+  "flags": [
+   "A4-6",
+   "A4-15",
+   "A4-17"
+  ],
+  "figures": []
  }
 }
