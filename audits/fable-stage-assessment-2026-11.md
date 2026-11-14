@@ -30,7 +30,9 @@ Built by `audits/personal-brand/f-pb/tools/assess.py` from each auditor's comple
 | PB9 (run 1, no web search) | | | | | | | | 188,781 | 22 | 5.71 | | |
 | DD-PB1 (run 1, no web search) | | | | | | | | 183,932 | 24 | 6.5 | | |
 | DD-PB2 (run 1, no web search) | | | | | | | | 179,836 | 24 | 5.89 | | |
-| **Row, all agents measured** | | | | | | | | **2,451,755** | | | | |
+| PB10 (run 1, no web search) | | | | | | | | 254,438 | 41 | 10.55 | | |
+| Audit 4 | | | | | | | | 0 |  |  | | |
+| **Row, all agents measured** | | | | | | | | **2,706,193** | | | | |
 
 The chat's own share is unmeasured. Runs marked "no web search" spent their tokens reading and checking inside the folder only: the turn's web search budget (200 WebSearch calls per turn, shared by every agent) was used up by the first eight auditors, which is itself a finding for the planning of stage 5 (section 5).
 
@@ -49,11 +51,11 @@ Rates from the 8 complete runs: 237,401 tokens per unit (range 179,631 to 275,86
 
 Caveats: the private courses' units are of different lengths and source types than PB's; Rome's modules cite ancient texts and scholarship, where a claim is checked against a book or a passage, not a web page, and their full audit is the kit's scorecard, not this procedure, so the Rome line is the least reliable. Each set also needs its chat (staging, saving, applying, records), unmeasured here.
 
-**(b) A full Fable fresh check of PB's twelve units.** The reports counted 1,359 cited claims in 11 of the 12 units (PB1 148, PB2 65, PB3 109, PB4 111, PB5 139, PB6 144, PB7 126, PB8 169, PB9 94, DD-PB1 167, DD-PB2 87). Upper estimate, at the average of 6,068 tokens per claim checked: about 8,246,073 tokens for those units. That average carries each agent's fixed cost of reading the unit, its packet and the other eleven units' pointers, so it overstates.
+**(b) A full Fable fresh check of PB's twelve units.** The reports counted 1,532 cited claims in 12 of the 12 units (PB1 148, PB2 65, PB3 109, PB4 111, PB5 139, PB6 144, PB7 126, PB8 169, PB9 94, PB10 173, DD-PB1 167, DD-PB2 87). Upper estimate, at the average of 6,068 tokens per claim checked: about 9,295,794 tokens. That average carries each agent's fixed cost of reading the unit, its packet and the other eleven units' pointers, so it overstates.
 
-A closer estimate separates the two costs. The 3 runs that had no web search still cost 179,836 to 188,781 tokens each (mean 184,183): that is the cost of reading and of the internal checks (arithmetic, pointers, the register, figures, the deliverable). The complete runs averaged 237,401 tokens for 39 claims checked, so opening sources cost about 1,360 tokens per claim on top. On that split a full check of the 11 counted units is about 3,874,522 tokens (184,183 + 1,360 × its cited claims, per unit), roughly 1.5 times their sample audits. The no-search runs did more internal checking than a searching run would, so the fixed part is somewhat overstated and the per-claim part understated; the true figure lies between the two estimates, nearer the lower.
+A closer estimate separates the two costs. The 4 runs that had no web search still cost 179,836 to 254,438 tokens each (mean 201,747): that is the cost of reading and of the internal checks (arithmetic, pointers, the register, figures, the deliverable). The complete runs averaged 237,401 tokens for 39 claims checked, so opening sources cost about 911 tokens per claim on top. On that split a full check of the 12 counted units is about 3,817,049 tokens (201,747 + 911 × its cited claims, per unit), roughly 1.3 times their sample audits. The no-search runs did more internal checking than a searching run would, so the fixed part is somewhat overstated and the per-claim part understated; the true figure lies between the two estimates, nearer the lower.
 
-Searches are the binding limit, not tokens: at the sample's 0.64 searches per claim checked, a full check of 1,359 claims needs about 868 web searches, against a budget of 200 per turn shared by every agent in it.
+Searches are the binding limit, not tokens: at the sample's 0.64 searches per claim checked, a full check of 1,532 claims needs about 979 web searches, against a budget of 200 per turn shared by every agent in it.
 
 ## 4 · What the sample found, against what the Opus fresh checks had fixed
 
@@ -86,7 +88,13 @@ Searches are the binding limit, not tokens: at the sample's 0.64 searches per cl
 | also checked | 209 | 13 | 6.2 | 0 | 5 |
 | sampled | 104 | 3 | 2.9 | 0 | 1 |
 
-## 5 · Reading and recommendation
+## 5 · Reading and recommendation (part 1, 14 Nov 2026)
 
-To be written when the reports are in.
+**Where the row stopped.** The Fable limit was reached at 03:27 on 14 Nov 2026 (resets Sun 15 Nov, 06:00 Lisbon). By then: eight unit audits complete with live search (PB1 to PB8, so Audits 1 and 2 are complete); four unit audits run without their source check (PB9, PB10, DD-PB1, DD-PB2), because the 200-call WebSearch budget of the turn, shared by every agent, ran out after the first eight; Audit 4 complete (its agent was cut off after it had written every file). So Fable's weekly allowance ran out at about **3.2 million measured agent tokens** (the eleven runs with notices, 2.7M, plus Audit 4, unreported) **plus the chat's own share**, which is unmeasured. That is the best single number this row gives for planning: one allowance is about 12 to 13 PB-sized sample audits with a final read, not more.
+
+**What the sample found.** 16 FAIL in 313 claims checked (5.1 per 100), none STALE, 6 unverifiable; 3 FAIL among the 104 sampled claims, so no unit came near the one-in-ten rule and no full audit was triggered. No figure, sample size or benchmark number was found wrong in any of the eight units: the Opus fresh checks had already caught those. What the Opus checks left behind is of one kind: **attribution**, 10 FAIL in 51 (19.6 per 100), against 0.8 per 100 for numbers and 2.8 for quotations. The failures are source titles taken from URL slugs (PB3, PB5, PB7), a reporter's paraphrase set in quotation marks as the speaker's words (PB7), a Help page's eligibility stated where the page states none (PB7), the GDPR's paragraph for a controller outside the EU given to every reader (PB8), and sources cited in the body but missing from Sources (PB1, PB3). Search-on units failed slightly more often than search-off ones (5.7 against 3.8 per 100), on small counts.
+
+**Is sampling the wrong tool for any stratum?** For numbers, dates and mechanisms, no: the sample confirms what the fresh checks fixed, at about 1 failure in 100. For attributions, the failure rate is high enough that a one-claim-per-section sample will miss most of them: at 20 per 100, a unit with ten attributions holds about two failures, and a sample that draws one or two attributions finds one with probability well under a half. The cheap fix is not a full fresh check but a **targeted attribution pass**: every quotation, every "X says" and every Sources title checked against its page. That is a fraction of a unit's cited claims (PB's units carry about 15 to 25 each) and needs no new reading of the numbers.
+
+**Recommendation.** Pick: **sample audit for course B's seven units, with a full attribution pass in the same agent**, not a full Fable fresh check. Reasons: numbers failed at under 1 per 100 after an Opus fresh check; attributions failed at 20 per 100 and are cheap to check in full; a full fresh check of seven units costs about 1.5 to 3 times a sample audit and needs searches the turn cannot supply. Override if: course B's sample (written under older rules, before the fresh-check routine settled) fails numbers at more than 1 in 10. Order for the rest of stage 5: first **F-PB part 2** (PB9, PB10, DD-PB1, DD-PB2 re-run with search, about 1M tokens, from their recorded samples); then **course B** (seven units, about 1.4M to 1.7M tokens); then **course A**'s seven (about the same); then **User Experience** (fifteen, 3.6M to 5.0M, more than one allowance, so in two runs); **Rome** last, on its own scorecard procedure, which this row does not cost. **Run at most six auditors per turn**, each capped at 30 searches, or the turn's search budget runs out before the last agents start: this row's last four auditors ran blind for that reason.
 

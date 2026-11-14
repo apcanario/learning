@@ -55,7 +55,7 @@ else:
     assert p.count(f'- {code}: report saved') == 1, 'progress line not at report saved'
     p = p.replace(f'- {code}: report saved', f'- {code}: {state}')
 pf.write_text(p)
-msg = f"F-PB: {arg} errata, Audit {n}: {len(res['applied'])} applied ({', '.join(res['applied']) or 'none'}), {len(res['not_applied'])} not applied, {len(res['flags'])} flags\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01KMmgQyKuvCKpHpSB9xzQYA"
+msg = f"F-PB: {arg} errata, Audit {n}: {len(res['applied'])} applied ({', '.join(res['applied']) or 'none'}), {len(res['not_applied'])} not applied, {len(res['flags'])} flags\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01KMmgQyKuvCKpHpSB9xzQYA"
 subprocess.run(['git', '-C', str(ROOT), 'add', '-A'], check=True)
 subprocess.run(['git', '-C', str(ROOT), 'commit', '-q', '-m', msg], check=True)
 r = subprocess.run(['git', '-C', str(ROOT), '-c', 'push.negotiate=true', 'push', '-q', 'origin', 'main'], capture_output=True, text=True)
