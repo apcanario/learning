@@ -186,5 +186,14 @@
    "A4-6"
   ],
   "figures": []
+ },
+ "A4:DD-PB1": {
+  "applied": [
+   "A4-12",
+   "A4-18"
+  ],
+  "not_applied": [],
+  "flags": [],
+  "figures": []
  }
 }

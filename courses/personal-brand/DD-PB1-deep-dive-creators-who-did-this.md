@@ -239,7 +239,7 @@ Each cell reads only what the sources in §3 to §8 document. "Consistent" means
 - **The early numbers.** Of 18 points (six creators at 12, 24 and 36 months), one is a dated count at its point: Pascual's 29,385 at 12 months. The rest are unpublished; where a dated number sits near a point, it falls 2 to 5 months away (§3 to §8). Creators publish milestones when they reach them, so the gaps sit exactly where the slow months were.
 - **The hours.** No source opened gives weekly hours for any of the six. Nothing here shows an account grown on 6 hours a week by one person, and nothing shows that it cannot be.
 - **The platform as it is now.** Five of the six started before Reels (5 Aug 2020) and Shorts (US beta 18 Mar 2021); only Pascual (April 2023) started after both. Their growth happened under ranking systems that PB6 and PB7 do not describe, and their numbers cannot be set against PB1's 2025–2026 datasets as if the conditions matched.
-- **The plateau, partly.** The trackers do show the late stage: on 13 November 2026 Boyd and Anderson had no net subscriber change in the latest 28 days, Boyd had lost 10,000 in each of three months of the last twelve, and Abdaal, after gains of 10,000 to 30,000 in each month from November 2025 to September 2026, added none in October 2026 (vidIQ, data 11 Nov 2026). That is consistent with PB1 §6's plateau. It is still a survivors' plateau.
+- **The plateau, partly.** The trackers do show the late stage: on 13 November 2026 Boyd and Anderson had no net subscriber change in the latest 28 days, Boyd had lost 10,000 in each of three months of the last twelve, and Abdaal, after gains of 10,000 to 30,000 in each month from November 2025 to September 2026, added none in October 2026 (vidIQ, data 11 Nov 2026 for Abdaal and 13 Nov 2026 for Boyd and Anderson). That is consistent with PB1 §6's plateau. It is still a survivors' plateau.
 
 The dates that matter for a comparison, on one line:
 
@@ -260,7 +260,7 @@ Mara's plan: one 10-minute long-form video every two weeks, 26 a year, three Ins
 
 ### A · Mara's comparables brief (Mara, fictional; built 13 November 2026)
 
-Built from §1 to §11. Every number names its owner and date; "unpub." means no source opened gives it. All six are survivors and documented creator cases (anecdote). Nothing here is a benchmark: PB1's expectation sheet and PB10's review stay her benchmarks. She reads this brief once a year, at the twelve-month review on 3 January 2028 and the 24-month review on 1 January 2029 (Mara, fictional; the review dates are PB1's and PB10's), and replaces any figure that a creator has since updated.
+Built from §1 to §11. Every number names its owner and date; "unpub." means no source opened gives it. All six are survivors and documented creator cases (anecdote). Nothing here is a benchmark: PB1's expectation sheet and PB10's review stay her benchmarks. She reads this brief once a year, at the twelve-month review on 3 January 2028 and the 24-month review in the week of 1 January 2029 (Mara, fictional; the review dates are PB1's and PB10's), and replaces any figure that a creator has since updated.
 
 **One-page summary: what all six held constant**
 
@@ -392,3 +392,5 @@ Copy this and fill each blank. Every blank you cannot fill from a page you opene
 - Very Normal Issue 41 carries no post date (its latest date is 4 Jun 2025), and Pascual's move to a job in industry rests on his line about adjusting "to a new life in industry" after graduating (§4).
 - Object: none
 - Fresh check 2026-11-13 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): rewrite by the count rule, read as fix · 7 errors (six misquoted phrases and one unsupported clause), 13 should-fix, 9 minor; all applied as the report gives them; figures 1 to 3 corrected and re-checked from the shots; report `audits/personal-brand/fresh-check-DD-PB1.md`.
+
+Erratum 14 Nov 2026, Audit 4 (the final audit, a full read of the course; Fable 5.2, row F-PB): 2 exact replacements applied, A4-12, A4-18; each is quoted with its source in `audits/personal-brand/audit-4.md`.
