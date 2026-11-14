@@ -1,0 +1,308 @@
+[
+ {
+  "n": 1,
+  "section": "§1 Filming",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Levoy and Pritch: shot-noise sentence; Google Research blog, 14 Nov 2018",
+  "source": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2 Audio",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Newman and Schwarz exp. 1: 97 Mechanical Turk workers; 0.60 (0.41–0.79); 0.93 / 0.69 / 0.51 / 0.33",
+  "source": "https://www.Gwern.net/doc/design/visualization/2018-newman.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3 Opening",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Socialinsider: 9,771,822 organic Reels, brands 1K–1M, Jan–Jun 2026; skip rate 65.50% (1–5K) to 60.50% (100K–1M)",
+  "source": "https://socialinsider.io/blog/instagram-reels-statistics/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4 Structure",
+  "sampled": true,
+  "kind": "number",
+  "claim": "End screens: last 5–20 seconds; video at least 25 seconds; not seen on mobile web, iPad excepted",
+  "source": "https://support.google.com/youtube/answer/6388789",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5 Shorts and Reels",
+  "sampled": true,
+  "kind": "date",
+  "claim": "Shorts up to three minutes, uploads after 15 October 2024; Content ID block over one minute",
+  "source": "https://support.google.com/youtube/answer/15424877?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6 Carousels",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Instagram: \"You can upload up to 20 photos and videos and share them as a single post in Instagram Feed\"",
+  "source": "https://help.instagram.com/iphone-app/269314186824048",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "§7 Titles and thumbnails",
+  "sampled": true,
+  "kind": "number",
+  "claim": "\"Half of all channels and videos on YouTube have an impressions CTR that can range between 2% and 10%\"",
+  "source": "https://support.google.com/youtube/answer/7628154?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "§8 Captions and contrast",
+  "sampled": true,
+  "kind": "number",
+  "claim": "WCAG SC 1.4.3: 4.5:1; large text 3:1; \"18 point text or 14 point bold text\"; \"(L1 + 0.05) / (L2 + 0.05)\"",
+  "source": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "§9 Editing",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Tasty Edits rule of thumb, 30 minutes to an hour per finished minute; published 19 May 2021, updated 17 Sep 2026",
+  "source": "https://www.tastyedits.com/how-long-does-it-take-to-edit-a-video/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "§10 What not to buy",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Edits is free and exports without a watermark (Instagram, 22 Apr 2025)",
+  "source": "https://creators.instagram.com/blog/edits-video-creation-app",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 11,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Thumbnail: 16:9, 3840 × 2160 or at least 640 wide, JPG or PNG, under 2 MB from the phone",
+  "source": "https://support.google.com/youtube/answer/72431?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "Templates",
+  "sampled": true,
+  "kind": "number",
+  "claim": "YouTube chapter rules: first at 00:00, at least three, each at least 10 seconds",
+  "source": "https://support.google.com/youtube/answer/9884579?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "McFarland, Pinson, Ford, Webster, Ingram, Hanes and Anderson, NTIA TM-10-472, Sep 2010",
+  "source": "https://its.ntia.gov/publications/download/10-472.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "The ANU record confirms the DOI and the abstract but shows no volume or pages",
+  "source": "https://openresearch-repository.anu.edu.au/items/67350c38-062b-4837-84c9-81419829d59d",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "§2 Audio",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Newman and Schwarz exp. 2: 99 workers, Science Friday, \"bad phone line\", 0.19 (0.03–0.36)",
+  "source": "https://www.Gwern.net/doc/design/visualization/2018-newman.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§2 Audio",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Comprehension: 64% of exp. 1 answered correctly about both talks; pattern held",
+  "source": "https://www.Gwern.net/doc/design/visualization/2018-newman.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§2 Audio",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"Despite identical content, people evaluated the research and researcher less favorably when the audio quality was low.\"",
+  "source": "https://www.Gwern.net/doc/design/visualization/2018-newman.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§2 Audio / Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Reference: Science Communication 40(2), 2018, 246–257, doi 10.1177/1075547018759345",
+  "source": "https://www.Gwern.net/doc/design/visualization/2018-newman.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§2 Audio",
+  "sampled": false,
+  "kind": "number",
+  "claim": "NTIA TM-10-472: video 78% and audio 10% of variance; speech-only 90% and 3%; both caveats quoted",
+  "source": "https://its.ntia.gov/publications/download/10-472.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§2 Audio",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "Audio-Technica: 6 dB per doubling of distance in a free field; \"too much of the room\"; page undated",
+  "source": "https://www.audio-technica.com/en-us/support/audio-solutions-question-week-tips-placing-microphones-get-best-possible-sound",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§1 Filming",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Levoy and Pritch is about still photographs (the unit says applying it to video is its own inference)",
+  "source": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§1 Filming",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "A video \"with a square or vertical aspect ratio up to three minutes in length\" is categorised as a Short",
+  "source": "https://support.google.com/youtube/answer/15424877?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§3 Opening",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Instagram skip-rate definition, first 3 seconds, replacing view rate; Social Media Today, 24 Aug 2025",
+  "source": "https://www.socialmediatoday.com/news/instagram-adds-retention-insights-reels/758464/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§3 Opening",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ: \"Confirm the title and thumbnail promise immediately…\"; 40–55% at 5–15 minutes; \"vidIQ guidance for target bands\"; updated 21 Jul 2026",
+  "source": "https://vidiq.com/blog/post/average-view-duration/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§3 Opening",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Socialinsider bracket counts sum to 5 more than the stated total; \"less than 5000\" in the method, \"1–5K\" in the table",
+  "source": "https://socialinsider.io/blog/instagram-reels-statistics/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§5 Shorts and Reels",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Socialinsider reach rate by length: 5.20 / 5.60 / 5.30 / 4.30 / 3.50%",
+  "source": "https://socialinsider.io/blog/instagram-reels-statistics/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§1, §3, §5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Meta Creators, 17 Jun 2022: 9:16; blurry video; beginning, middle and end / hook or payoff; cover photo; visibly recycled",
+  "source": "https://creators.facebook.com/reels-best-practices-tips-tricks",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§4 Structure",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "vidIQ: \"APV (%) = (AVD / total video length) x 100\"; \"Use an end screen and a clear verbal bridge to another relevant video.\"",
+  "source": "https://vidiq.com/blog/post/average-view-duration/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§7 and §5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Answer 72431: \"upload your own if your account is verified\"; rejection and strike; 30 days or termination; 50 MB from a computer; Shorts thumbnails on a computer only",
+  "source": "https://support.google.com/youtube/answer/72431?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§7 Titles and thumbnails",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Answer 7628154: the clickbait sentence with lower than expected impressions; the wider range under a week or under 100 views",
+  "source": "https://support.google.com/youtube/answer/7628154?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§8 Captions and contrast",
+  "sampled": false,
+  "kind": "number",
+  "claim": "The seven contrast ratios (17.04, 14.12, 5.62, 4.65, 3.03, 2.25, 7.58)",
+  "source": "recomputed by script with the W3C formula, https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Sources line: Social Media Today, \"Instagram adds retention insights for Reels\", 24 Aug 2025",
+  "source": "https://www.socialmediatoday.com/news/instagram-adds-retention-insights-reels/758464/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 33,
+  "section": "Unsure list",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "End screens: \"YouTube's steps start at studio.youtube.com\"; the page is silent on the phone app",
+  "source": "https://support.google.com/youtube/answer/6388789",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "§3, Sources",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Socialinsider dated 24 Jun 2026, updated 6 Nov 2026",
+  "source": "https://socialinsider.io/blog/instagram-reels-statistics/",
+  "verdict": "PASS"
+ }
+]

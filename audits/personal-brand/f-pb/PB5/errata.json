@@ -1,0 +1,62 @@
+[
+ {
+  "id": "PB5-1",
+  "unit": "PB5",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Sources",
+  "current": "- Social Media Today, \"Instagram adds retention insights for Reels\", 24 Aug 2025.",
+  "fix": "- Social Media Today (Andrew Hutchinson), \"Instagram Adds Retention Metrics for Reels\", 24 Aug 2025.",
+  "basis": "The article's headline (H1 and title tag) is \"Instagram Adds Retention Metrics for Reels\"; the unit put the URL slug in quotation marks. Opened 14 Nov 2026: https://www.socialmediatoday.com/news/instagram-adds-retention-insights-reels/758464/",
+  "figure": false
+ },
+ {
+  "id": "PB5-2",
+  "unit": "PB5",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable B2, box 9",
+  "current": "Export at B's settings; upload as private;",
+  "fix": "Export at checklist A's edit-window settings (the recorded frame rate, AAC-LC stereo, 48 kHz, 384 kbps); upload as private;",
+  "basis": "Template B states no export settings; they are in checklist A, 'Post: edit window' (unit.md, Deliverable A), from YouTube Help answer 1722171, https://support.google.com/youtube/answer/1722171?hl=en (that page was not re-opened in this run; the settings are copied from the unit's own line).",
+  "figure": false
+ },
+ {
+  "id": "PB5-3",
+  "unit": "PB5",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§6 Carousels, The order",
+  "current": "then one slide per step; then what went wrong; then the finished piece;",
+  "fix": "then one slide per step, with what went wrong placed where it happened; then the finished piece;",
+  "basis": "Deliverable D puts 'What went wrong' on slide 5, between step 2 (slide 4) and step 3 (slide 6), as the runtime map does in §4 (chapter 5 before chapter 6); §6 says it comes after every step. Internal consistency; no outside source.",
+  "figure": false
+ },
+ {
+  "id": "PB5-4",
+  "unit": "PB5",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable B1",
+  "current": "**B1 · The runtime map.** As in §4: eight chapters, 00:00 to 10:00, with the season line as a lower third inside chapter 1 and the end screen over 09:40–10:00.",
+  "fix": "**B1 · The runtime map.** Eight chapters, 00:00 to 10:00, as in §4: The table 00:00 (0:30) · What was wrong 00:30 (1:00) · Lifting the rings 01:30 (2:00) · The edges 03:30 (2:00) · What went wrong 05:30 (1:30) · The finish 07:00 (2:00) · What it cost 09:00 (0:40) · Last line 09:40 (0:20); the season line is a lower third inside chapter 1 and the end screen runs over 09:40–10:00.",
+  "basis": "Method §6 step 4: the deliverable must be usable without reading the unit; B2 refers to 'the eight chapters' and '§4's times', which the deliverable does not hold. The times are copied from §4's runtime map (unit.md); no outside source.",
+  "figure": false
+ },
+ {
+  "id": "PB5-5",
+  "unit": "PB5",
+  "kind": "flag",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "§7 Mara's packaging rules, rule 1 (against PB10 D4 and the register)",
+  "current": "1. *The thumbnail image is a frame from the footage*, usually the as-found and finished views from the taped mark side by side.",
+  "fix": "No change in PB5. PB10's Q2 verdict ('from upload 15 … the thumbnail shows the fault and the finished piece side by side, at most four words, in her colours (PB5 §7), in place of the finished piece alone') and the register line that repeats it describe as a change the layout PB5 §7 rule 1 and Deliverable A already set from piece 1. Either PB10 names a different packaging change, or PB10 says Mara's thumbnails had drifted to the finished piece alone.",
+  "basis": "others/PB10-read-your-numbers-the-quarterly-review.md line 475; case-facts.md, 'Set by PB10', Verdicts line; unit.md §7 rule 1 and Deliverable A (piece 1 thumbnail 'the as-found and finished views from the taped mark side by side'). No URL: a cross-unit contradiction.",
+  "figure": false
+ }
+]
