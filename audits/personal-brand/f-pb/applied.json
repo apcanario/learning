@@ -69,5 +69,17 @@
    "PB5-5"
   ],
   "figures": []
+ },
+ "PB6": {
+  "applied": [
+   "PB6-1",
+   "PB6-2"
+  ],
+  "not_applied": [],
+  "flags": [
+   "PB6-3",
+   "PB6-4"
+  ],
+  "figures": []
  }
 }
