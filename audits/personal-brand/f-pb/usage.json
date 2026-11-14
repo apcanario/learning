@@ -124,6 +124,13 @@
    "minutes": 5.89,
    "model_stated": "claude-fable-5-2",
    "note": "INCOMPLETE: the turn's WebSearch budget (200 calls, shared by every agent) was used up; sources not opened; internal checks only"
+  },
+  "PB10 (run 1, no web search)": {
+   "tokens": 254438,
+   "tool_uses": 41,
+   "minutes": 10.55,
+   "model_stated": "claude-fable-5-2",
+   "note": "INCOMPLETE: the turn's WebSearch budget (200 calls, shared by every agent) was used up; sources not opened; internal checks only"
   }
  }
 }

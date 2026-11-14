@@ -1,0 +1,98 @@
+[
+ {
+  "id": "PB10-1",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "STALE",
+  "section": "§4",
+  "current": "Read PB1 D3's Q3 line and PB7's IG8 reference column this way.",
+  "fix": "PB1 D3's Q3 line and PB7's IG8 reference column were corrected on 13 November 2026 and now read this way; the words quoted above are PB1's earlier wording.",
+  "basis": "others/PB1 D3, Q3 review line (no longer contains the quoted words) and its correction note of 2026-11-13; others/PB7 D2 IG8 and its correction note of 2026-11-13. No URL: both are units of this course.",
+  "figure": false
+ },
+ {
+  "id": "PB10-2",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "STALE",
+  "section": "§5",
+  "current": "PB1 took the review's hour from \"that fortnight's publishing-and-replies line\" (PB1 D2), and PB4 repeated it (PB4 D1 G).",
+  "fix": "PB1 first took the review's hour from \"that fortnight's publishing-and-replies line\" (PB1 D2, as worded before 13 November 2026), and PB4 repeated it (PB4 D1 G); both were corrected that day and now take the hour as this section sets it.",
+  "basis": "others/PB1 D2 (now: \"taken from the Instagram derivatives of the fortnight that holds it\") and its correction note of 2026-11-13; others/PB4 D1 G, D2 and its correction note of 2026-11-13. No URL: both are units of this course.",
+  "figure": false
+ },
+ {
+  "id": "PB10-3",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Deliverable D4, Verdict",
+  "current": "in her colours (PB5 §7)",
+  "fix": "in her colours (PB5 §7, §8)",
+  "basis": "others/PB5: §7 sets the four-word limit; her colour rule is in §8 (\"text is white or cream on a near-black or teak band\"); register, PB5 entry (\"Her colours ... (§8). At most four words on a thumbnail (§7)\"). No URL: a unit of this course.",
+  "figure": false
+ },
+ {
+  "id": "PB10-4",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§5, PB3",
+  "current": "[YouTube Help, Understand limited data in YouTube Analytics, answer 9101241](https://SUPPORT.GOOGLE.COM/youtube/answer/9101241)",
+  "fix": "[YouTube Help, Understand limited data in YouTube Analytics, answer 9101241](https://support.google.com/youtube/answer/9101241)",
+  "basis": "The host is written in capitals; others/PB3 D1 cites the same page as https://support.google.com/youtube/answer/9101241, and a bibliography collected by URL string would list the page twice. The page itself was not opened in this run.",
+  "figure": false
+ },
+ {
+  "id": "PB10-5",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "checked 13 Nov 2026. https://SUPPORT.GOOGLE.COM/youtube/answer/9101241",
+  "fix": "checked 13 Nov 2026. https://support.google.com/youtube/answer/9101241",
+  "basis": "As PB10-4: the same URL in the Sources list; others/PB3 D1 gives https://support.google.com/youtube/answer/9101241.",
+  "figure": false
+ },
+ {
+  "id": "PB10-6",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable D4, YouTube, R6",
+  "current": "Lowest CTR, upload 11 (1.7%);",
+  "fix": "Lowest CTR among them, upload 11 (1.7%; upload 13's 1.6% is lower but the upload is under 28 days old);",
+  "basis": "Unit D4 table: upload 13 reads 1.6% and is 13 days old on 5 Jul 2027; others/PB6 D1 R6 (\"at least 28 days old whose CTR is the lowest of the quarter\"). The line as written calls 1.7% the lowest while the table above it shows 1.6%. No URL: internal.",
+  "figure": false
+ },
+ {
+  "id": "PB10-7",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources, closing line",
+  "current": "PB1 D1 (Y1–Y12, I1–I7, B1–B2), PB1 §2, §4 and §6, PB6 D1–D2, PB7 D1–D2, PB9 D2–D5;",
+  "fix": "PB1 D1 (Y1–Y12, I1–I7, B1–B2), PB1 §2, §3, §4, §6 and §8, PB1 D2–D3 (which carries YouTube Help 16559651), PB2 §3 and D5, PB3 §4 and D1–D2, PB4 §1 and §4–§7, PB5 §7–§9, PB6 §3 and D1–D2, PB7 §9 and D1–D2, PB8 D1–D3, PB9 §8 and D1–D5;",
+  "basis": "The unit also rests figures and rules on PB1 §3, §8, D2 and D3, PB2, PB3, PB4, PB5, PB6 §3, PB7 §9, PB8 and PB9 §8 and D1 (each pointer checked in others/); sourcing standard Part 1, 'The unit leaves its sources'. YouTube Help 16559651 is cited in D4 by number only and is listed nowhere in Sources. No URL: internal.",
+  "figure": false
+ },
+ {
+  "id": "PB10-8",
+  "unit": "PB10",
+  "kind": "flag",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "Deliverable D4, Verdict (and D5 item 2; register, PB10 entry)",
+  "current": "in place of the finished piece alone.",
+  "fix": "Not an exact replacement: decide which unit holds. Either PB5 §7 and its deliverable are changed so that Seasons 1-2 thumbnails show the finished piece alone, or D4's Q2 change is rewritten as a change PB5 has not already made (for example the title, or the thumbnail's words), with the register's PB10 line and D5 item 2 following.",
+  "basis": "others/PB5 §7 item 1: her thumbnail is \"usually the as-found and finished views from the taped mark side by side\"; others/PB5 deliverable, piece 1: \"thumbnail the as-found and finished views from the taped mark side by side\". D4's format change (\"the thumbnail shows the fault and the finished piece side by side ... in place of the finished piece alone\") changes her to the layout PB5 already set, so the Q2 verdict's one change is no change. Contradicts another unit and the register line set by PB10. No URL: internal.",
+  "figure": false
+ }
+]
