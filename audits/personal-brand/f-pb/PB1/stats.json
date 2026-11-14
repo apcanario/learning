@@ -1,0 +1,21 @@
+{
+ "unit": "PB1",
+ "model": "claude-fable-5-2",
+ "words": 10979,
+ "sections": 13,
+ "cited_claims_in_unit": 148,
+ "claims_sampled": 15,
+ "claims_checked_total": 34,
+ "fail_sampled": 0,
+ "fail_total": 0,
+ "stale_total": 0,
+ "unverifiable_total": 0,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 21,
+ "web_fetches": 23,
+ "not_checked": [
+  "https://brandstore.rode.com/products/wireless-micro: not returned by any search in this agent, so not fetched (price confirmed at rode.com instead)",
+  "WebFetch https://vidiq.com/research/youtube-subscriber-benchmarks-2026/: permission refused once, retried once, then opened"
+ ]
+}

@@ -1,0 +1,308 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Mara: 38, accountant, 0 subscribers, 140 followers, 6 h/week; day one Monday 4 Jan 2027; 26 videos a year, 3 posts a week",
+  "source": "case-facts.md; calendar",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "number",
+  "claim": "32,926,088 channels; 500,409 crossed; 12–51 band 1,259,198, 8.65%; 360 days; 11 Sep 2026",
+  "source": "https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Buffer: 2.1M feed posts, 102,000 accounts, fixed effects, +0.12/0.26/0.44/0.66%, 5,000-follower example, reach +12%",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "number",
+  "claim": "From 1 Feb 2027: 1,000 subscribers + 8,000 qualified watch hours in 365 days or 20M qualified Shorts views in 90 days, new creators",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "10,210,278 channels 1,000+; Apr 2025–Mar 2026; four bands of view and subscriber growth; \"correlation, not causation\"",
+  "source": "https://vidiq.com/research/youtube-upload-frequency-study/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Billion Dollar Boy: 1,000 US/UK creators; 52%; 37%; 40/31/27%; 55% most severe among burned out; 7 Jul 2025",
+  "source": "https://billiondollarboy.com/news/over-half-of-creators-face-burnout",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "§7",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Wu and Huberman: success = top 1% of views for upload week; about 21% first video; 34.1% first week; chance declines",
+  "source": "https://ar5iv.arxiv.org/html/0904.0489 (arXiv 0904.0489)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "§8",
+  "sampled": true,
+  "kind": "number",
+  "claim": "RØDE Wireless Micro $99.00 USD in every variant; receiver USB-C or Lightning",
+  "source": "https://rode.com/products/wireless-micro (cited brandstore link not opened)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "§9",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Pascual: first video 9 Apr 2023; 36 videos, 311 minutes; 29,385 subscribers; alongside research; post 9 Apr 2024",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "§10",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Instagram creator page names six tools and publishes no follower threshold",
+  "source": "https://creators.instagram.com/earn-cash-making-what-you-love",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "Deliverable D1 (Y2)",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Half of all channels and videos: impressions CTR between 2% and 10%; wider under a week old or under 100 views; no target",
+  "source": "https://support.google.com/youtube/answer/7628154?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "Deliverable D2",
+  "sampled": true,
+  "kind": "number",
+  "claim": "CTT PO box for an individual 58.00 € + VAT a year, tariff Nov 2020",
+  "source": "https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "Deliverable D3",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "YouTube Help 16559651: title or thumbnail change when \"lower click-through rate (CTR)\" and \"fewer impressions than usual\"",
+  "source": "https://support.google.com/youtube/answer/16559651?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Buffer article title, Kirsti Lang, analysis by Julian Winternheimer, 13 Aug 2025",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "date",
+  "claim": "Edits: free, iOS and Android, \"without added watermarks\"; 22 Apr 2025 from the URL, text says \"today\"",
+  "source": "https://petapixel.com/2025/04/22/instagrams-capcut-competitor-edits-is-now-available/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "First-ten study: cohort, 137,355, 180/211/272, 1,948, 57.8%, 30.8%, Shorts 367,243 at 1,362/1,344, exclusion quote, dates",
+  "source": "https://vidiq.com/research/youtube-first-10-videos-study/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "5,330,249 vidIQ users' channels created in prior three years; seven bucket shares; 9 Jun 2025",
+  "source": "https://vidiq.com/blog/post/how-many-videos-to-get-1000-subscribers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Median gain +0.5/+1.4/+3.7 with band counts; 61,186,246 channels, 40.6% and 7.90%; 20 Jul 2026",
+  "source": "https://vidiq.com/research/youtube-subscriber-benchmarks-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Beaupré title, interview 1 Sep 2026, both quotes, no sample; article 2 Sep 2026",
+  "source": "https://ppc.land/subscribers-skip-90-of-uploads-in-their-feed-youtube-director-says/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Socialinsider: 67,541,436 posts, about 579,000 accounts, definition quote, 2025 and 2024 rates, 131,955, both inconsistencies",
+  "source": "https://www.socialinsider.io/blog/instagram-benchmark-study/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Metricool: 24,364,803 posts, 375,118 accounts, Jan–Feb 2025 vs 2026, 21% quote, growing undefined, 16 Jun 2026",
+  "source": "https://metricool.com/press-release-instagram-study-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "500 subscribers + 3,000 hours or 3M Shorts views; unchanged; Creator Partnerships and Shopping grouped",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§4",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "Existing members: status not impacted; terms accepted by 31 Jan 2027 to keep earning from the features",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Activity rule: 1,000 hours / 1M Shorts views / 2 long-form or 5 Shorts per 90 days; 90 days to recover",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Shorts Creator Pool: 10M qualified Shorts views in 90 days; not removed; other earnings unaffected",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Page does not say whether qualifying or applying decides which rule applies",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Current rule: 1,000 + 4,000 hours in 12 months or 10M Shorts views in 90 days; review, not automatic",
+  "source": "https://support.google.com/youtube/answer/72851?hl=en-gb",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "27,360,211 with no net change, 0.20% crossed; uploads can be offset by removals",
+  "source": "https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "11,752,034 channels; median monthly growth 1.26/0.59/0.53/0.51/0.48/0.30/0.24% by band",
+  "source": "https://vidiq.com/research/youtube-subscriber-benchmarks-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube: \"no correlation between break length and changes in views\", \"thousands of channels that took a break\"; no sample or method",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§7",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Wu and Huberman: data cannot observe when producers stop",
+  "source": "https://ar5iv.arxiv.org/html/0904.0489",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "§9",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Candogan: assistant professor; 28 Jul 2023; 88 videos; 20K+, 600K+, $300+; \"was viewed only 164 times\"; undated",
+  "source": "https://sidikatunccandogan.substack.com/p/first-year-as-a-youtuber",
+  "verdict": "PASS"
+ },
+ {
+  "n": 33,
+  "section": "Deliverable D3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube: with a lot of impressions \"it's natural for the CTR to be lower\"",
+  "source": "https://support.google.com/youtube/answer/7628154?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "Deliverable D3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Stop rule base rate: 1–11 band, 1.86% crossed within 360 days",
+  "source": "https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ }
+]

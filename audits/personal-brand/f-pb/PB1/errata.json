@@ -1,0 +1,62 @@
+[
+ {
+  "id": "PB1-1",
+  "unit": "PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "- YouTube Help, \"The YouTube Partner Programme overview and eligibility\" (answer 72851), checked 12 Nov 2026. https://support.google.com/youtube/answer/72851?hl=en-gb",
+  "fix": "- YouTube Help, \"The YouTube Partner Programme overview and eligibility\" (answer 72851), checked 12 Nov 2026. https://support.google.com/youtube/answer/72851?hl=en-gb\n- YouTube Help, \"YouTube performance FAQ & Troubleshooting\" (answer 141805), checked 12 Nov 2026. https://support.google.com/youtube/answer/141805?hl=en",
+  "basis": "§6 cites YouTube Help answer 141805 with a link, but Sources does not list it (sourcing standard Part 1: every source the unit cites is listed). Page title and the quoted sentence confirmed 14 Nov 2026 at https://support.google.com/youtube/answer/141805?hl=en",
+  "figure": false
+ },
+ {
+  "id": "PB1-2",
+  "unit": "PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "Deliverable · D2",
+  "current": "58.00 € + VAT a year (CTT tariff, Nov 2020; current price to check)",
+  "fix": "58.00 € + VAT a year ([CTT, Preços 2020, tariff of November 2020](https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf), Apartados, Singulares, concessão anual; current price to check)",
+  "basis": "The amount is right (58.00 €, prices subject to VAT, tariff dated November 2020) but D2 gives no locator a reader can open and Sources has no entry (Part 1: sourced where made, source can be opened). Confirmed 14 Nov 2026 at https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf",
+  "figure": false
+ },
+ {
+  "id": "PB1-3",
+  "unit": "PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "- Cornell Chronicle, \"What social media creators can't say about their job\" (Nguyen and Duffy, *New Media & Society*, 7 Jul 2026), 8 Jul 2026. https://news.cornell.edu/node/333256",
+  "fix": "- Cornell Chronicle, \"What social media creators can't say about their job\" (Nguyen and Duffy, *New Media & Society*, 7 Jul 2026), 8 Jul 2026. https://news.cornell.edu/node/333256\n- CTT, \"Preços 2020\" (tariff of postal services, November 2020; Apartados, Singulares, concessão anual). https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf",
+  "basis": "Sources entry for the tariff D2 cites (goes with PB1-2). https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf",
+  "figure": false
+ },
+ {
+  "id": "PB1-4",
+  "unit": "PB1",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable · D3 (Q3 review)",
+  "current": "Above the median is the upper tail that channels crossing 1,000 come from.",
+  "fix": "Above the median is the upper half of her band; that channels crossing 1,000 come from its upper tail is an inference no dataset found tests (§2).",
+  "basis": "The sentence states as fact what §2 labels \"An inference, which no dataset found tests\", and \"above the median\" is the upper half, not the upper tail; closing material may add no unsourced claim (Part 1). vidIQ Subscriber Benchmarks gives band medians only: https://vidiq.com/research/youtube-subscriber-benchmarks-2026/",
+  "figure": false
+ },
+ {
+  "id": "PB1-5",
+  "unit": "PB1",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§8; Deliverable · D2; Sources",
+  "current": "[RØDE brand store](https://brandstore.rode.com/products/wireless-micro)",
+  "fix": "No text change proposed here. The cited link brandstore.rode.com/products/wireless-micro was returned by no search in this audit (nor in the fresh check), so it was not opened; the same price, USD 99.00 for every variant, was confirmed on 14 Nov 2026 at https://rode.com/products/wireless-micro. Replacing the link in §8, D2 and Sources would also touch the 12 Nov 2026 check date held in case-facts.md, so it is left to the maintainer.",
+  "basis": "https://rode.com/products/wireless-micro (USD 99.00, six variants, receiver USB-C or Lightning), 14 Nov 2026",
+  "figure": false
+ }
+]
