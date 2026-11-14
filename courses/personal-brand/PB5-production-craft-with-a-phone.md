@@ -200,7 +200,7 @@ What length works is a separate question with weaker evidence. Socialinsider's 2
 
 **The first slide.** In the feed and on the grid the first slide is the only one a viewer sees before choosing to swipe, so it carries the whole promise of the post (inference from how the format displays). A claim circulates in creator advice that Instagram shows an unengaged carousel again starting from its second slide; no Instagram statement of it was found on 12 November 2026. Two press reports say it does, neither quoting Instagram: Lia Haberman summarises a 2024 Mosseri post as saying the algorithm gives a carousel "a second chance after it's posted, resurfacing it to followers who previously swiped by" ([ICYMI, 14 Oct 2025](https://liahaberman.substack.com/p/the-best-instagram-content-formats); her summary, not his words), and Uppbeat paraphrases an undated Mosseri interview with Colin and Samir as saying a carousel scrolled past "may come back around with the second slide showing" ([Uppbeat, 3 Nov 2026](https://uppbeat.io/blog/creator-news/whats-working-on-instagram-right-now-carousels-and-sends-says-adam-mosseri); a paraphrase, not a quotation). No rule here depends on it.
 
-**The order.** No source found tests the order of slides. Mara's order follows the promise (her rule): the first slide is as found and finished side by side from the taped mark; then what was wrong; then one slide per step; then what went wrong; then the finished piece; then the last slide pointing to the full video through the profile link PB2 set. Eight slides, well under the limit: the 30 minutes PB4 gives each post (PB4 §3) is the binding constraint, and how carousels perform for her is PB7's to test.
+**The order.** No source found tests the order of slides. Mara's order follows the promise (her rule): the first slide is as found and finished side by side from the taped mark; then what was wrong; then one slide per step, with what went wrong placed where it happened; then the finished piece; then the last slide pointing to the full video through the profile link PB2 set. Eight slides, well under the limit: the 30 minutes PB4 gives each post (PB4 §3) is the binding constraint, and how carousels perform for her is PB7's to test.
 
 ## 7 · Titles and thumbnails inside YouTube's policy
 
@@ -337,7 +337,7 @@ Built from §1–§10 on 12 November 2026, for Mara Venn (Mara, fictional) and h
 
 ### B · Timed edit template: piece 1, a 10-minute video in 240 minutes
 
-**B1 · The runtime map.** As in §4: eight chapters, 00:00 to 10:00, with the season line as a lower third inside chapter 1 and the end screen over 09:40–10:00.
+**B1 · The runtime map.** Eight chapters, 00:00 to 10:00, as in §4: The table 00:00 (0:30) · What was wrong 00:30 (1:00) · Lifting the rings 01:30 (2:00) · The edges 03:30 (2:00) · What went wrong 05:30 (1:30) · The finish 07:00 (2:00) · What it cost 09:00 (0:40) · Last line 09:40 (0:20); the season line is a lower third inside chapter 1 and the end screen runs over 09:40–10:00.
 
 **B2 · The edit, box by box.** Sunday 27 December 2026, 10:00 to 14:00 (Mara, fictional; PB4 D2, week R3). Each box is done once and closed; the minutes are her rule.
 
@@ -351,7 +351,7 @@ Built from §1–§10 on 12 November 2026, for Mara Venn (Mara, fictional) and h
 | 6 | Text | 20 | 12:40 | "Season 1 · piece 1 of 7" lower third; chapter titles; the cost figures from the receipts; colours from §8 | Every number on screen is on a receipt |
 | 7 | Watch-through | 20 | 13:00 | One viewing at normal speed on the phone with earbuds, notes only | A written list of fixes |
 | 8 | Fixes | 15 | 13:15 | The list, top to bottom; what does not fit is dropped | List closed |
-| 9 | Export, upload, hand-off | 25 | 13:40 | Export at B's settings; upload as private; write the chapter list, the Reel's in and out points, three thumbnail frames, the carousel's eight stills | Files where the cut window finds them |
+| 9 | Export, upload, hand-off | 25 | 13:40 | Export at checklist A's edit-window settings (the recorded frame rate, AAC-LC stereo, 48 kHz, 384 kbps); upload as private; write the chapter list, the Reel's in and out points, three thumbnail frames, the carousel's eight stills | Files where the cut window finds them |
 
 ```viz
 {"kind": "compare", "title": "Minutes per box, edit template", "unit": "min", "max": 45,
@@ -560,7 +560,7 @@ Correction 12 Nov 2026, found by PB7's writer: §6 now says that two press repor
 - Planoly, "A complete guide to Instagram's new vertical grid", 28 Jan 2025, updated 31 Oct 2025. https://www.planoly.com/blog/guide-to-instagrams-new-vertical-grid.md
 - RNID, "How to use video captions on Instagram", updated 16 Jun 2026. https://rnid.org.uk/information-and-support/technology-and-products/how-to-use-video-captions-subtitles-social-media-accessibility/instagram/
 - Sennheiser, *Lavalier microphones*, instruction manual, 05/2026. https://docs.cloud.sennheiser.com/en-us/lavalier-mics/lavalier-mics_instruction_manual_05_2026_en.pdf
-- Social Media Today, "Instagram adds retention insights for Reels", 24 Aug 2025. https://www.socialmediatoday.com/news/instagram-adds-retention-insights-reels/758464/
+- Social Media Today (Andrew Hutchinson), "Instagram Adds Retention Metrics for Reels", 24 Aug 2025. https://www.socialmediatoday.com/news/instagram-adds-retention-insights-reels/758464/
 - Social Media Today, report on Instagram's 3:4 image support, 28 May 2025. https://www.socialmediatoday.com/news/instagram-adds-support-phone-camera-aspect-ratio-images
 - Social Media Today, report on the Reels camera update, 23 Nov 2025. https://socialmediatoday.com/news/instagram-update-reels-camera-with-improved-functions/806247
 - Socialinsider, "Instagram Reels statistics for 2026", 24 Jun 2026, updated 6 Nov 2026. https://socialinsider.io/blog/instagram-reels-statistics/
@@ -596,3 +596,5 @@ Correction 12 Nov 2026, found by PB7's writer: §6 now says that two press repor
 - The claim that Instagram re-shows an unengaged carousel from its second slide: no Instagram statement was found; it rests on Haberman's summary of a 2024 Mosseri post (ICYMI, 14 Oct 2025) and Uppbeat's paraphrase of an undated Mosseri interview (3 Nov 2026), and neither underlying statement was read (§6).
 - Object: the phone on its clamp at the edge of the work table, §1
 - Fresh check 2026-11-12 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 0 errors, 3 should-fix, 11 minor; all applied as verified, with the two Sources lines and the lower-third gloss the report proposes; the four figures passed; report `audits/personal-brand/fresh-check-PB5.md`. The checker could not open the copy of Newman and Schwarz (2018) the writer read, so the experiment's numbers in §2 rest on the writer's reading and the earlier check of the same paper.
+
+Erratum 14 Nov 2026, Audit 2 (stratified-sample audit; Fable 5.2, row F-PB): 4 exact replacements applied, PB5-1, PB5-2, PB5-3, PB5-4; each is quoted with its source in `audits/personal-brand/audit-2.md`.
