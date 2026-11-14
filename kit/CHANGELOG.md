@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **DD-PB1 filed (session 82, W-DD-PB1):** DD-PB1 Deep dive: creators who did this written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (rewrite by the count rule, read as fix: 7 errors, 13 should-fix, 9 minor; all applied; Fable 5.1 fresh check owed); P108 applied; a wide matrix's legend now stays inside the phone frame; DD-PB2 next, in the same chat.
 - **PB10 filed (session 81, W-PB10):** PB10 Read your numbers: the quarterly review written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 8 should-fix, 33 minor; all applied; Fable 5.1 fresh check owed); P106 applied; PB1, PB3, PB4 and PB7 corrected; DD-PB1 and DD-PB2 next, in one chat.
 - **PB9 filed (session 80, W-PB9):** PB9 Monetisation: what pays at each audience size written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 5 should-fix, 10 minor; all applied; Fable 5.1 fresh check owed); P105 applied; PB1, PB7 and PB8 corrected; Pages current again; PB10 next, in the same chat.
 - **PB8 filed (session 79, W-PB8):** PB8 Voice, disclosure and the rules written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 2 errors, 6 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed); P102 and P103 proposed; PB9 and PB10 next, in one chat.
@@ -133,6 +134,18 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 13–14 November 2026 · Session 82 · Public course PB, unit DD-PB1 (W-DD-PB1)
+
+The first row of an unattended two-row chat (W-DD-PB1, W-DD-PB2), on Opus 5.5 (claude-opus-5-5): the writer, the fresh checker, one correction checker and three figure re-checkers were fresh Opus 5.5 agents (P31), each stating claude-opus-5-5; no agent transcript on disk.
+
+- **Corrections first (step 1b).** P108 passed and applied (PB10 §5's note on PB4's corrected rule). P107 not checkable again (the Diário da República needs JavaScript); stays in Corrections.
+- **DD-PB1.** Deep dive: creators who did this, about 8,200 words, three figures, search on; fresh check rewrite by the count rule, read as fix, 7 errors, 13 should-fix, 9 minor, all applied; report `audits/personal-brand/fresh-check-DD-PB1.md`.
+- **Mistakes elsewhere.** DD-A1 §3 and its Deliverable's pattern 3: both Boyds held jobs (brand-ai v9.11). No filed PB unit needed a correction.
+- **Flags.** F12, F44, F51, F56 carried; F2, F20, F29, F34, F41, F63, F69, F74 carried and still open for DD-PB2; F77 to F80 raised; none blocks DD-PB2.
+- **Kit fix.** `viz.py`: a matrix drawing wider than the phone frame (328 units) wraps its legend within the frame's width, so a phone shows every key whole in the first frame; the 25 legends this changed on 21 other pages re-checked from their frames sheets, all PASS (`kit/reviews/dd-pb1/legend-recheck.md`).
+- **Figures.** All three corrected after the first re-check (§9's n/a definition, captions, the timeline's platform launches and bar label), figure 3 transposed after the second so the desktop frame holds it; `kit/reviews/dd-pb1/`.
+- **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-dd-pb1` and the 21 pages whose legends changed.
 
 ## 13 November 2026 · Session 81 · Public course PB, unit PB10 (W-PB10)
 
