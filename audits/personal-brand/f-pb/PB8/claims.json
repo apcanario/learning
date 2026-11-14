@@ -1,0 +1,263 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Tom Scott's four quotations; Tubefilter, James Hale, 2 Jan 2024; 'burnout' absent",
+  "source": "https://tubefilter.com/2024/01/02/tom-scott-youtube-break/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Muhmin et al.: n=407; paths 0.225/0.128/0.075 (p=0.135); 0.432; R2 24.7% and 35.5%; 5 Feb 2026",
+  "source": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2026.1723759/full",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Nguyen and Duffy: 58 examples, 62 news accounts, 78 interviews; NM&S 7 Jul 2026; Cornell Chronicle 8 Jul 2026",
+  "source": "https://news.cornell.edu/stories/2026/07/what-social-media-creators-cant-say-about-their-job",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "GDPR art. 9(1), 9(2)(e); C-252/21 (4 Jul 2023) on 'manifestly made public'",
+  "source": "https://www.legislation.gov.uk/eur/2016/679/article/9/adopted ; https://fra.europa.eu/en/node/44533",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "YouTube trim on a computer keeps URL, view count and comments; 100,000-view limit; YPP exception",
+  "source": "https://support.google.com/youtube/answer/9057455",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6.1",
+  "sampled": true,
+  "kind": "date",
+  "claim": "UK: DMCC Act rules in force 6 Apr 2025; 'hidden advertising on social media' banned; fines up to 10% of worldwide turnover; page updated 3 Dec 2025",
+  "source": "https://www.gov.uk/government/publications/what-businesses-need-to-know-about-unfair-commercial-practices/what-businesses-need-to-know-about-unfair-commercial-practices",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "§6.2",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Illinois Public Act 103-0556: 1 Jul 2024, under 16, 30% within 30 days, trust",
+  "source": "https://www.ilga.gov/Legislation/publicacts/view/103-0556",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "§6.3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Copyright strike definition; 3 strikes in 90 days subject to termination",
+  "source": "https://support.google.com/youtube/answer/2814000?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "§6.4",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Directive (EU) 2019/1152 art. 9: parallel employment and incompatibility restrictions",
+  "source": "https://lawplayer.com/eu/article/32019L1152/art_9",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "§6.5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "HMRC: over GBP 1,000, hobby wording, gifts, 5 October; modified 22 Sep 2026",
+  "source": "https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "§6.6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "CAN-SPAM guide: postal address, PO box or private mailbox, 10 business days, up to USD 53,088; Aug 2023, modified 22 Jul 2025",
+  "source": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "§6.7",
+  "sampled": true,
+  "kind": "date",
+  "claim": "USPTO replaced TESS on 30 Nov 2023 with a new trademark search system; post of 18 Oct 2023",
+  "source": "https://www.uspto.gov/subscription-center/2023/retiring-tess-what-know-about-new-trademark-search-system",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "§7",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "US and UK pages treat gifted goods as income in some cases (IRS Topic 420, reviewed 8 Oct 2026; HMRC gifts sentence)",
+  "source": "https://www.irs.gov/node/68141 ; https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "Deliverable D3 A3",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Portugal: DGC is the advertising regulator (gov.pt, updated 16 Jun 2026); DL 57/2008 art. 19(1), 19(3)",
+  "source": "https://www.gov.pt/entidades/direcao-geral-do-consumidor ; https://www.bportugal.pt/sites/default/files/anexos/legislacoes/459417805_1.doc.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "Template T3 E1",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "EU source for which data law reaches the reader's list given as GDPR art. 3(2)(a) only",
+  "source": "https://www.legislation.gov.uk/eur/2016/679/article/3/adopted/data.htm",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 16,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "date",
+  "claim": "Pillemer et al., ASQ 71(1), 215-260, online 18 Dec 2025 (metatoc record)",
+  "source": "https://metatoc.com/papers/129690-audience-entanglement-how-independent-creative-workers-experience-the-pressures-of-widespread-appeal-on-digital-platforms",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "number",
+  "claim": "SCL (20 Feb 2024): 572 influencers, 97%, one in five; other reports give a different count",
+  "source": "https://www.scl.org/european-commission-and-consumer-authorities-investigate-online-influencers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Audience entanglement via PsyPost: 54 creators, 74 interviews, over 500,000 followers, nearly 280,000 subscribers, two states, three strategies, limits",
+  "source": "https://www.psypost.org/new-study-sheds-light-on-the-psychological-burden-of-having-a-massive-social-media-audience/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Eisend et al.: 61 papers, 57 data sets; what disclosure reduced and increased; JA 49(3), 344-366, 2020",
+  "source": "https://research.wur.nl/en/publications/a-meta-analysis-of-the-effects-of-disclosing-sponsored-content/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Frontiers study: each respondent rated one focal influencer; wording of the trustworthiness items",
+  "source": "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2026.1723759/full",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§5",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "Nothing on the trim page says the viewer is shown that a video changed",
+  "source": "https://support.google.com/youtube/answer/9057455",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§6.1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "CMA guidance for content creators: payment definition, unsolicited gifts, own brands, clear and unclear labels, platform tools; updated 3 Sep 2025",
+  "source": "https://www.gov.uk/government/publications/social-media-endorsements-guide-for-influencers/social-media-endorsements-being-transparent-with-your-followers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§6.1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Influencers' guide, 2026 edition: DMCC Act basis, five labels, Sponsored/Spon/Sp insufficient, 12 months (unit rests on Lewis Silkin; confirmed in the ASA PDF, October 2026)",
+  "source": "https://www.asa.org.uk/static/17cf70a4-f904-4684-a68c8310ba7700e1/Influencers-guide-to-making-clear-that-ads-are-ads.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§6.1",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Digital Fairness Act proposal presented 11 Nov 2026; includes paid influencer promotion; still to pass Parliament and Council",
+  "source": "https://www.lewissilkin.com/insights/2026/11/11/european-commission-publishes-long-awaited-digital-fairness-act-102o9b5",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§6.1",
+  "sampled": false,
+  "kind": "number",
+  "claim": "EU sweep in the body: 572 influencers (SCL's count; others 576), 97%, one in five",
+  "source": "https://www.scl.org/european-commission-and-consumer-authorities-investigate-online-influencers/ ; https://germany.representation.ec.europa.eu/news/screening-von-kommissionverbraucherschutzbehorden-influencer-kennzeichnen-selten-werbung-2024-02-14_de",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§6.6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "GDPR art. 3(2)(a) wording",
+  "source": "https://www.legislation.gov.uk/eur/2016/679/article/3/adopted/data.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§6.6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "UK GDPR art. 3(2)(a): 'data subjects in the United Kingdom'",
+  "source": "https://www.legislation.gov.uk/eur/2016/679/article/3/data.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§6.6",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "CAN-SPAM: whether an email is commercial depends on its primary purpose",
+  "source": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "Deliverable D3 E1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "GDPR art. 3(1) wording; art. 3(2) is for a controller 'not established in the Union'",
+  "source": "https://www.legislation.gov.uk/eur/2016/679/article/3/adopted/data.htm",
+  "verdict": "PASS"
+ }
+]

@@ -1,0 +1,24 @@
+{
+ "unit": "PB8",
+ "model": "claude-fable-5-2",
+ "words": 14410,
+ "sections": 11,
+ "cited_claims_in_unit": 169,
+ "claims_sampled": 17,
+ "claims_checked_total": 29,
+ "fail_sampled": 1,
+ "fail_total": 1,
+ "stale_total": 0,
+ "unverifiable_total": 0,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 25,
+ "web_fetches": 32,
+ "not_checked": [
+  "WebSearch: search budget used up (200 calls per turn, shared by every agent); two searches refused (FTC Disclosures 101; ASA resource page), not retried as the tool directed",
+  "https://eur-lex.europa.eu/eli/dir/2019/1152/oj/eng: page returned header and navigation only, no article text",
+  "https://journals.sagepub.com/doi/10.1177/00018392251399652: failed at the site (client error)",
+  "https://support.google.com/youtube/answer/9783148?hl=en: not opened, no search left to return the URL (bears on PB8-9 and PB8-10)",
+  "unit sources outside the sample not opened after the search budget ran out: listed in audit.md under Not checked"
+ ]
+}
