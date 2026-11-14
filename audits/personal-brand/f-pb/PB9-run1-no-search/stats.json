@@ -1,0 +1,22 @@
+{
+ "unit": "PB9",
+ "model": "claude-fable-5-2",
+ "words": 8974,
+ "sections": 15,
+ "cited_claims_in_unit": 94,
+ "claims_sampled": 15,
+ "claims_checked_total": 32,
+ "fail_sampled": 0,
+ "fail_total": 0,
+ "stale_total": 0,
+ "unverifiable_total": 13,
+ "full_audit_run": false,
+ "verdict": "INCOMPLETE",
+ "web_searches": 0,
+ "web_fetches": 0,
+ "not_checked": [
+  "WebSearch: refused twice (this turn's web search budget is used up, 200 calls shared by every agent); 2 attempts, 0 performed",
+  "WebFetch: not used; no search returned any URL, so the web rule allowed no fetch; all 35 source URLs of the unit not checked"
+ ],
+ "verdict_note": "0 FAIL in 15 sampled claims (2 PASS on internal sources, 13 unverifiable: no external source could be opened). Not a PASS: step 2 of the method was not carried out for any external source. Rerun with search available."
+}

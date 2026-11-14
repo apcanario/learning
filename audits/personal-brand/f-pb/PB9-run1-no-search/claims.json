@@ -1,0 +1,290 @@
+[
+ {
+  "n": 1,
+  "section": "§1 The lines",
+  "sampled": true,
+  "kind": "number",
+  "claim": "YouTube fan funding 500 subs + 3,000 h; ad share 1,000 subs + 8,000 h for new applicants from 1 Feb 2027",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 2,
+  "section": "§2 Platform revenue share",
+  "sampled": true,
+  "kind": "number",
+  "claim": "vidIQ: 137,355 new long-form channels, median about 272 views in 30 days on upload 10; exclusion sentence",
+  "source": "https://vidiq.com/research/youtube-first-10-videos-study/",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 3,
+  "section": "§3 Affiliate links",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Amazon US rates 3.00% / 4.50% / 4.00% by category",
+  "source": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ?lang=en",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 4,
+  "section": "§4 Brand deals",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Collabstr: 21,000+ collaborations, paid $255 YouTube / $193 Instagram, asking $311 / $214, 'down 63%' line",
+  "source": "https://collabstr.com/2026-influencer-marketing-report",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 5,
+  "section": "§5 Own product",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Gumroad 10% + $0.50 direct, 30% marketplace, merchant of record, taxes since 1 Jan 2025",
+  "source": "https://gumroad.com/pricing",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 6,
+  "section": "§6 Paid membership",
+  "sampled": true,
+  "kind": "number",
+  "claim": "beehiiv median paid conversion 0.62%; $10 / $100 medians; churn 5.06%–16.67%",
+  "source": "https://www.beehiiv.com/blog/the-state-of-paid-newsletters-2026.md",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 7,
+  "section": "§7 Services and teaching",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "PB1's stop rule protects the long-form cadence (PB1 D3); PB3 D2 gives the 10-hour plan",
+  "source": "others/PB1 D3 (l. 281–285); others/PB3 D2 (l. 210–291)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "§8 Small-number events",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "NIST: Poisson models 'the number of events occurring within a given time interval', mean λ, SD √λ",
+  "source": "https://itl.nist.gov/div898/handbook/eda/section3/eda366j.htm",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 9,
+  "section": "§9 Fees",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Stripe Portugal: 1.5% + €0.25 EEA; 2.5% + €0.25 UK; 3.15% + €0.25 international; + 2% conversion",
+  "source": "https://stripe.com/pt-PT/pricing",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 10,
+  "section": "§10 When to start",
+  "sampled": true,
+  "kind": "recommendation",
+  "claim": "Step 1 pointers: PB8 D1 clause 7; register T1 before income, A3 before a deal, E3–E4 before commercial email",
+  "source": "others/PB8 D1 clause 7 (l. 243), D3 rows T1, A3, E3–E5 (l. 272–289)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "§11 Advert",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Li et al.: U-shape quote; 4,908 influencers, 6,869 posts; low point 0.475 / 0.393; Douyin 1,000, near 0.52",
+  "source": "https://ira.lib.polyu.edu.hk/bitstream/10397/119670/1/Li_Endorsement_Rate_Influencer.pdf",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 12,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "D2 V17: CTT Preços 2020, novembro/2020, Apartados, Singulares, 58.00 € a year before VAT",
+  "source": "https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 13,
+  "section": "Template",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "T1: answer 13376398 is where a reader checks whether their country is listed (18 countries, Portugal absent, YPP required)",
+  "source": "https://support.google.com/youtube/answer/13376398?hl=en",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 14,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Eisend, van Reijmersdal, Boerman, Tarrahi, Journal of Advertising 49(3), 344–366, 2020; '61 papers that use 57 distinct data sets'",
+  "source": "https://research.wur.nl/en/publications/a-meta-analysis-of-the-effects-of-disclosing-sponsored-content/",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 15,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "YouTube's 55% / 45% shares are from its blog of 10 Aug 2026",
+  "source": "https://blog.youtube/news-and-events/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 16,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Derived views: 480,000 min; 87,273–120,000; 3,357–4,615 a video; 32,727–45,000; 1,259–1,731; 12–17 times 272",
+  "source": "recomputed from the unit's own inputs",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Derived: 87,273 views at $2.39 RPM = $208.58",
+  "source": "recomputed",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Derived: 13 × 30 × 0.03 = USD 11.70; 13 videos = uploads 14–26",
+  "source": "recomputed",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Derived: 418 to 255 is a fall of 39%",
+  "source": "recomputed (38.995%)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Derived: 121 ÷ 13,413 = 0.90%; 700 ÷ 43,000 = 1.63%; 10 ÷ 0.0062 = 1,613; €5 − 0.50 − 0.17 − 0.35 = €3.98",
+  "source": "recomputed",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§8",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Poisson: ±50% / ±35% / ±10%; 31.2% and 74.7% empty months at 1.165 and 0.291; 5th–95th percentiles 0–5, 4–13, 16–32, 84–117; 45.3%; 10.0%",
+  "source": "recomputed (exact Poisson)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§9",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Derived on USD 15: Gumroad 2.00 (13.3%); Stripe 0.74 (4.9%); Etsy 1.88 (12.5%)",
+  "source": "recomputed",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§11",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Derived: one sponsored video in a season of six or seven = 14%–17%; 0.393–0.475 = 39%–48%",
+  "source": "recomputed",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "Deliverable D3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Net 13.00 a sale; 26 / 104 / 567; 0.37, 1.35, 6.52, 2.48 members; per-hour 6.50, 26.00, 78.00, 127.50; $588",
+  "source": "recomputed",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "Deliverable D1, D5",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Weekdays and upload numbers: 5 Jan, 2 Feb, 25 Apr, 9 May, 23 May, 6 Jun, 8 Jun (upload 12), 6 Jul (upload 14) 2027; checkpoints; 209 days",
+  "source": "recomputed; case-facts.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§2, D3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pointers to PB1: §1 labels, §4 figures (rounded), D1 rows Y1, Y10, Y11, D2 cap 150 USD / microphone 99.00 / clamp up to 40 / address line, D3 stop rule and read 6",
+  "source": "others/PB1",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§6, §7",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pointers to PB3: §5 (no viewer-to-list rate), D2 (beehiiv Free; 10-hour plan)",
+  "source": "others/PB3",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§2, D1, D3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pointers to PB4 §1 (voice notes, stills), PB5 §2 and §10 (microphone unspent; clamp only), PB6 D1 (no Shorts, R8) and YT10; PB7 and PB8 on unread Instagram Help Centre pages",
+  "source": "others/PB4, PB5, PB6, PB7, PB8",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§3–§5, §10, §11, D",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pointers to PB8: labels (primary law, regulator guidance), §2 (Eisend; load left to PB9), §6.1 (own brands), §6.5, §7 (lawyer for the first contract), D1 clauses 3 and 7, register A1–A3, T1–T3, E3–E4",
+  "source": "others/PB8",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Downstream agreement: PB10 D1 rows R1–R8 and first-read dates, PB10 D3/D4 guide dates; DD-PB2 §3 income lines, USD 13.00, 1,613",
+  "source": "others/PB10, others/DD-PB2",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "Intro, Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Mara's facts against the register: PB9 block, PB1, PB3, PB4, PB8 blocks, P102 (Portugal); labelled '(Mara, fictional)' on first use",
+  "source": "case-facts.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources list against the body: 35 linked URLs in the body, 35 in Sources, none missing either way",
+  "source": "unit.md (script)",
+  "verdict": "PASS"
+ }
+]

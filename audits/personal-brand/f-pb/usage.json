@@ -90,6 +90,13 @@
     "stats.json"
    ],
    "note": "3 searches refused at the end (turn search budget used up); 24 of 26 sources opened"
+  },
+  "PB9 (run 1, no web search)": {
+   "tokens": 188781,
+   "tool_uses": 22,
+   "minutes": 5.71,
+   "model_stated": "claude-fable-5-2",
+   "note": "INCOMPLETE: the turn's WebSearch budget (200 calls, shared by every agent) was used up before this agent's first search; no source opened; internal checks only; 3 flags"
   }
  }
 }

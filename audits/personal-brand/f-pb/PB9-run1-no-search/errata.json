@@ -1,0 +1,38 @@
+[
+ {
+  "id": "PB9-1",
+  "unit": "PB9",
+  "kind": "flag",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "Deliverable D2, row V10 (and D4, Brand deal row)",
+  "current": "| V10 | Hours for one deal | — | — | 2.0 | Her estimate, from the publishing-and-replies line | None: her estimate |",
+  "fix": "No replacement given: the cut that supplies a deal's 2.0 hours has to be decided (PB10 §5 took its own hour from the Instagram derivatives for the same reason). Not an erratum.",
+  "basis": "others/PB10 §5 ('Where the sixty minutes themselves come from'): the publishing-and-replies line is 1.25 hours a fortnight (three 15-minute reply slots plus 0.5 hours of scheduling, PB3, PB4 D1 E), and 'Taking 60 minutes from it would remove all three reply slots and half the scheduling, and scheduling cannot be skipped'. PB9 takes 2.0 hours from that line, which contradicts PB10 and fails PB9's own step 3 (hours from a named cut). No URL: internal.",
+  "figure": false
+ },
+ {
+  "id": "PB9-2",
+  "unit": "PB9",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable D4, the rule",
+  "current": "adds no more than one labelled piece per season to the account",
+  "fix": "No replacement given: decide whether later mentions of the guide count against the one-piece limit, or state the limit as one sponsored piece plus her own product's mentions. Not an erratum.",
+  "basis": "unit §11 ('An own product introduced as yours is also an ad under the UK guide's rule ... so it is counted too') and others/PB8 D1 clause 7 ('Anything she sells herself is introduced as hers every time'): from Season 3 a season with one sponsored video and any video that names the guide holds two or more labelled pieces, above the limit D4 sets; D4's table counts only 'One \"mine\" mention per launch video'. No URL: internal.",
+  "figure": false
+ },
+ {
+  "id": "PB9-3",
+  "unit": "PB9",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable D2, row V6 (against D5 R1)",
+  "current": "replaced by her Gumroad count at the Q3 review",
+  "fix": "No replacement given: D5 R1 (first read Q2, 5 Jul 2027) says it replaces V6, D5 R2 (first read Q3) also says it replaces V6, and V6 says Q3. One of the three has to change; PB10 D1 copies both first-read dates, so the choice touches PB10. Not an erratum.",
+  "basis": "unit D5 rows R1 and R2; others/PB10 D1 rows R1 ('From Q2') and R2 ('From Q3'), PB10 D4 (three guide sales read at Q2 under R1, 'R2 from Q3'). No URL: internal.",
+  "figure": false
+ }
+]

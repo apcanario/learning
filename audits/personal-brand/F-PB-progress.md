@@ -10,7 +10,7 @@ Row F-PB, started 14 Nov 2026. One line per unit and one for Audit 4. States: pe
 - PB6: report saved
 - PB7: report saved
 - PB8: pending
-- PB9: pending
+- PB9: pending (run 1 returned INCOMPLETE: the turn's web search budget was used up, no source opened; its report is saved in `f-pb/PB9-run1-no-search/`; to re-run with search from its recorded sample)
 - PB10: pending
 - DD-PB1: pending
 - DD-PB2: pending
