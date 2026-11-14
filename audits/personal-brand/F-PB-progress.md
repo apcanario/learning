@@ -20,3 +20,4 @@ Row F-PB, started 14 Nov 2026. One line per unit and one for Audit 4. States: pe
 - Audit 4 errata, PB4: errata applied (1 applied, 0 not applied, 3 flags)
 - Audit 4 errata, PB5: errata applied (1 applied, 0 not applied, 0 flags)
 - Audit 4 errata, PB6: errata applied (1 applied, 0 not applied, 0 flags)
+- Audit 4 errata, PB10: errata applied (7 applied, 0 not applied, 1 flags)
