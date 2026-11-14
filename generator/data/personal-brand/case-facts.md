@@ -146,8 +146,22 @@ Left free by PB5: the free editor she uses; her actual edit minutes; her per-pie
 - Her four comparables rules, untested: hold the one-piece, start-to-finish format for at least the year; hold the fortnightly date as PB4 and PB6 R7 set it, for her stop rule's count more than for reach; keep the job through year two; read no comparable's numbers as her expectation, her quarterly reads staying against PB1's sheet (Deliverable A).
 - Left free: whether she leaves her job, and when (DD-PB2 decides her threshold model and reads "keep the job through year two" as a prior, F79).
 
+## Set by DD-PB2 (14 Nov 2026)
+
+- Household: she lives with a partner in a rented flat; shared costs split equally, each paying their share from their own pay; her partner's pay covers only the partner's share (V_min = 0, her rule) (§1, D1).
+- Take-home pay from her job averages €2,150 a month across the year; outgoings €1,700 a month, including €120 a month for annual bills, from twelve months of statements; cuts agreed in writing with her partner if her salary stops, €200 a month; survivable floor €1,500 a month; she saves €450 a month (derived) (§1, D1, D2).
+- Savings held for a runway: €9,000 on 5 Jul 2027; runway rule 12 months of her floor (€18,000), 6 as sensitivity; complete end Feb 2029, first read Mon 2 Apr 2029 (§2, D2).
+- Tax input t: she asks her tax professional for it by Mon 3 Jan 2028; t = 0 in her model until then; no rate stated (§4, D1).
+- Checkpoints after the 24-month review: the first Monday of January, April, July and October; one on 1 January moves within its week (her rule) (D1).
+- Pass rule: net account income over the trailing twelve full months at least 12 × T at two checkpoints running, the runway saved and the preconditions (J1, J2, T1, t) done (D1, D2).
+- Path A assumptions, illustrations only: USD 0.7485 a month per subscriber (her launch month), a constant pace of 12.7 subscribers a month; ECB rate of 13 Nov 2026 (USD 1.1052) (D1, D3).
+- Model reading: one line at each quarterly review in PB10's money block (about a minute, her estimate); a 0.5-hour rebuild at each annual review, funded by one Reel fewer in the cut window of the fortnight after it (Sun 30 Jan 2028 for year two); first full reading Mon 3 Jan 2028 (D7).
+- Version 1 dates: Path A, a full exit on account income, Mon 7 Jul 2042 at her most favourable counts (monthly income first reaches T in about September 2041); Path B, a full exit on savings and contract income, no date from the evidence, bound by the runway at Mon 2 Apr 2029; Path C, four days a week at a planning take-home of €1,720, Mon 3 Jan 2028, conditional on her employer, which she has not asked (D3 to D6).
+- Contract accounting income K is a possible line, unfilled (D4).
+- Left free: whether she leaves her job or reduces her hours, and when; her employer's answer; the real payroll figure at four days; her city.
+
 ## Left free (a unit that needs one sets it and it is appended here)
 
-- Her city, household and income (her country is Portugal since P102, 13 Nov 2026). PB8 works its register for the EU, the UK and the US, with her own tax lines open under Portuguese rules (P105); A3 names the Direção-Geral do Consumidor and E1 gives GDPR art. 3(1) as her EU test (P105 round 2, 13 Nov 2026).
+- Her city (her country is Portugal since P102, 13 Nov 2026; her household and job income set by DD-PB2, 14 Nov 2026). PB8 works its register for the EU, the UK and the US, with her own tax lines open under Portuguese rules (P105); A3 names the Direção-Geral do Consumidor and E1 gives GDPR art. 3(1) as her EU test (P105 round 2, 13 Nov 2026).
 - Whether her claim of @oneboxrestoration is accepted on both platforms on the same day, or she takes a fallback or the override (PB2 set the name, handle, fallbacks and the same-day claim, D2); a unit that sets it does so as a labelled story fact, since no writing chat can check a real handle (S-PB1, 12 Nov 2026).
 - Her numbers in any quarter, her products and prices.

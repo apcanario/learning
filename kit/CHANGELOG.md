@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **DD-PB2 filed, course PB complete (session 83, W-DD-PB2):** DD-PB2 Deep dive: the quit-your-job math written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 4 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed); all twelve PB units filed; W-BW1 and W-BW2 next, in one chat.
 - **DD-PB1 filed (session 82, W-DD-PB1):** DD-PB1 Deep dive: creators who did this written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (rewrite by the count rule, read as fix: 7 errors, 13 should-fix, 9 minor; all applied; Fable 5.1 fresh check owed); P108 applied; a wide matrix's legend now stays inside the phone frame; DD-PB2 next, in the same chat.
 - **PB10 filed (session 81, W-PB10):** PB10 Read your numbers: the quarterly review written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 8 should-fix, 33 minor; all applied; Fable 5.1 fresh check owed); P106 applied; PB1, PB3, PB4 and PB7 corrected; DD-PB1 and DD-PB2 next, in one chat.
 - **PB9 filed (session 80, W-PB9):** PB9 Monetisation: what pays at each audience size written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 5 should-fix, 10 minor; all applied; Fable 5.1 fresh check owed); P105 applied; PB1, PB7 and PB8 corrected; Pages current again; PB10 next, in the same chat.
@@ -134,6 +135,17 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 14 November 2026 · Session 83 · Public course PB, unit DD-PB2 (W-DD-PB2)
+
+The second row of the session-82 chat (Pedro away), on Opus 5.5 (claude-opus-5-5): the writer and the fresh checker were fresh Opus 5.5 agents (P31), each stating claude-opus-5-5; no agent transcript on disk.
+
+- **Corrections first (step 1b).** P107 not re-run: it was checked at W-DD-PB1's step 1b an hour before, in the same chat with the same tools; it stays in Corrections.
+- **DD-PB2.** Deep dive: the quit-your-job math, about 8,100 words, four figures, search off; fresh check fix, 1 error, 4 should-fix, 8 minor, all applied; report `audits/personal-brand/fresh-check-DD-PB2.md`. Course PB's twelve units are written.
+- **Mistakes elsewhere.** None: no source error in DD-A2, no filed unit needed a correction.
+- **Flags.** The nineteen flags it was given carried; F81 to F86 raised; none blocks a unit.
+- **Figures.** All four passed the fresh check (matrix, compare, decision, timeline).
+- **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-dd-pb2`.
 
 ## 13–14 November 2026 · Session 82 · Public course PB, unit DD-PB1 (W-DD-PB1)
 
