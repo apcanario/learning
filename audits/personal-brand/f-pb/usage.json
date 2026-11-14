@@ -117,6 +117,13 @@
    "minutes": 6.5,
    "model_stated": "claude-fable-5-2",
    "note": "INCOMPLETE: the turn's WebSearch budget (200 calls, shared by every agent) was used up; sources not opened; internal checks only"
+  },
+  "DD-PB2 (run 1, no web search)": {
+   "tokens": 179836,
+   "tool_uses": 24,
+   "minutes": 5.89,
+   "model_stated": "claude-fable-5-2",
+   "note": "INCOMPLETE: the turn's WebSearch budget (200 calls, shared by every agent) was used up; sources not opened; internal checks only"
   }
  }
 }

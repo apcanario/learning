@@ -1,0 +1,380 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "DOL COBRA guide: termination 'for any reason other than gross misconduct', reduction in hours, 18 months, premium 'cannot exceed 102 percent'",
+  "source": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/publications/workers-guide-health-benefits-cobra?lang=en",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "MoneyHelper: 'three to six months' essential outgoings' in instant access savings",
+  "source": "https://www.moneyhelper.org.uk/en/savings/types-of-savings/emergency-savings-how-much-is-enough?source=mas",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "vidIQ: 8.65% of sub-1,000 channels adding 12 to 51 videos crossed 1,000 within 360 days; no 24/36-month dataset",
+  "source": "others/PB1 §2 (lines 32-38, 62)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Sources to open are PB8 §6.5's: Your Europe FAQ (sends to national authority), HMRC content creators, IRS Topic 554",
+  "source": "others/PB8 §6.5 (lines 165-173)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Raffiee and Feng: NLSY79, 1994-2008, 2,198 spells, 1,093 people, 'a 33.3% decrease in the hazard of exit'",
+  "source": "https://msbfile03.usc.edu/digitalmeasures/joe.raffiee/intellcont/Raffiee_Feng_2014_AMJ-1.pdF",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Base row: earliest pass Mon 7 Jul 2042, 15.0 years after 5 Jul 2027 (and the ten other rows)",
+  "source": "recomputed from D1 inputs by script, 14 Nov 2026",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Converted at $1.1052 per euro, ECB reference rate of 13 November 2026",
+  "source": "https://www.ecb.europa.eu/stats/policy%5Fand%5Fexchange%5Frates/euro%5Freference%5Fexchange%5Frates/html/eurofxref-graph-usd.en.html",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 8,
+  "section": "Template",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "T2/T3 formulas: T = F_s / (1 - i8); audience needed = T / i12; months = (needed - i10) / i11; date = later of income and runway dates",
+  "source": "unit §2, §4, D2 lines 3-6, D3 lines 1-3",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "date",
+  "claim": "ISS, Guia pratico: subsidio de desemprego (6001 v4.72), 20 Feb 2025; p. 6 condition, p. 14 resignation",
+  "source": "https://seg-social.pt/documents/10152/15007/6001_subsidio_desemprego/1867b682-64f2-4b1a-8f39-ca008602a16b",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 10,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "'the 33.3% figure is a hazard ratio from a Cox model'",
+  "source": "https://msbfile03.usc.edu/digitalmeasures/joe.raffiee/intellcont/Raffiee_Feng_2014_AMJ-1.pdF",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 11,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "PB1 §10 lists 'who continues among part-time creators with full-time jobs'",
+  "source": "others/PB1 §10 (line 211)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "DD-PB1 found no figure for channel income at the date any of its six creators left a job",
+  "source": "others/DD-PB1 §3-§8, §11",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "'No unemployment benefit follows a resignation in the three places checked (§1)'",
+  "source": "unit §1 item 3 (its own quotations of DOL, GOV.UK, ISS)",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 14,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "YouTube ad share: 1,000 subscribers + 8,000 qualified watch hours in 365 days for applicants from 1 Feb 2027",
+  "source": "others/PB9 §2 (line 42)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Of channels that crossed, 68% had 40+ videos and 53.5% had 70+ (survivor sample, no denominator)",
+  "source": "others/PB1 §2 (line 54)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§3",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Mara's 40th upload on Tue 4 Jul 2028; 70th in year three",
+  "source": "others/PB10 D5 (line 498)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Mara at Q2: 61 subscribers, 133.0 watch hours",
+  "source": "others/PB10 D4 (lines 450-451)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "AIR Media-Tech median $2.39 per 1,000 views, Crafting & Handmade, own client channels",
+  "source": "others/PB9 §2 (line 52)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Fan funding, Partnerships, Shopping at 500 subscribers + 3,000 watch hours",
+  "source": "others/PB9 §2 (line 44)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "YouTube Shopping affiliate lists 18 countries and not Portugal",
+  "source": "others/PB9 §2 (line 54)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Collabstr average paid $255 for YouTube in 2025, all sizes, no tier breakdown",
+  "source": "others/PB9 §4 (line 76)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Guide on sale Tue 8 Jun 2027; three sales by 4 Jul, net USD 39.00; no new cost",
+  "source": "others/PB10 D4 R1, R5/R8 (lines 466-467)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Paid tier rule list x 0.62% >= 10, about 1,613; list 9 at Q1, 31 at Q2; 72 quarters, 18 years",
+  "source": "others/PB9 D2 V14; PB10 D3 (line 398), D4 (line 467)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "No source gives the share of viewers or followers who join a list",
+  "source": "others/PB3 §5 (line 161)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "No dataset gives Instagram follower counts at 12, 24, 36 months from under 1,000",
+  "source": "others/PB1 D1 I7 (line 241); PB7 (line 251)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§4",
+  "sampled": false,
+  "kind": "date",
+  "claim": "T1 answered Thu 18 Mar 2027 by a tax professional, without charge; lawyer's fee unpriced (V18); postal address from receipt",
+  "source": "others/PB10 D3 R8 (line 399); PB9 D2 V18",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§5",
+  "sampled": false,
+  "kind": "recommendation",
+  "claim": "PB3 D2's 10-hour plan; PB1's posting-rate rows and stop rule re-read on the day of the change",
+  "source": "others/PB3 D2 (lines 268-270)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "PB8 §6.4's checklist items 1, 2 and 6",
+  "source": "others/PB8 §6.4 (lines 153-160)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§5",
+  "sampled": false,
+  "kind": "recommendation",
+  "claim": "PB9 §7's rule: hours from a named cut, never the cadence",
+  "source": "others/PB9 §7 (line 116)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Pace 7.7 a month at Q1 and 12.7 at Q2; readings differ 1.65 times; income per subscriber fourteenfold",
+  "source": "others/PB10 D3 (net 6, 8, 9), D4 (net 11, 13, 14); arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ median for 500 to 999 subscribers, +3.7 a month",
+  "source": "others/PB1 §2 (line 56)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D2: F_s EUR 1,500; T USD 1,657.80 a month, 19,893.60 a year; runway EUR 18,000; 20 months to end Feb 2029; first read Mon 2 Apr 2029; USD 1,842.00 at t = 10%",
+  "source": "arithmetic on D1",
+  "verdict": "PASS"
+ },
+ {
+  "n": 33,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D3: 2,215 subscribers; 170 months; about September 2041; 127.5 guide sales; 36 times; 693,640 views; about 437; about 1,590 times",
+  "source": "arithmetic on D1; others/PB9 D3; PB10 D4 YT8",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D3: 'the band medians of +0.5 and +1.4 a month for channels of her size'",
+  "source": "others/PB1 D1 Y6 (line 228)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D4: K about EUR 1,459 a month at the Q2 run rate of USD 45.66 (EUR 41.31)",
+  "source": "arithmetic on D1",
+  "verdict": "PASS"
+ },
+ {
+  "n": 36,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D5: EUR 1,720 at 80%; margin EUR 20; 69.8%; 450 months; loss of EUR 430 saving",
+  "source": "arithmetic on D1",
+  "verdict": "PASS"
+ },
+ {
+  "n": 37,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "DD-PB1's prior 'Keep the job through year two'; drawn from six survivors",
+  "source": "others/DD-PB1 Deliverable A (lines 263, 278)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 38,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "D1 i13: PB9 D2 rows V1-V3, V8, V11, V14, V15, V16",
+  "source": "others/PB9 D2 (lines 193-208)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 39,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "PB9 D3: USD 13.00 net a guide sale",
+  "source": "others/PB9 D3 (line 214)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 40,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "date",
+  "claim": "D7: reviews Mon 3 Jan 2028; cut window Sun 30 Jan 2028; 24-month review week of Mon 1 Jan 2029 moved by PB4's holiday rule",
+  "source": "others/PB10 D5 (line 498); PB4 (lines 121, 287)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 41,
+  "section": "intro",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Evidence labels are PB1 §1's seven and PB8's two",
+  "source": "others/PB1 §1 (lines 16-22); PB8 (line 12)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 42,
+  "section": "whole unit",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Mara's facts agree with the register",
+  "source": "case-facts.md, 'Set by DD-PB2' and earlier sections",
+  "verdict": "PASS"
+ }
+]

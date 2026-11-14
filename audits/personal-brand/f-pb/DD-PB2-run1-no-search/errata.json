@@ -1,0 +1,62 @@
+[
+ {
+  "id": "DD-PB2-1",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "§2 · Runway, 'What the guidance says', after the table",
+  "current": "No unemployment benefit follows a resignation in the three places checked (§1).",
+  "fix": "None of the three places checked pays unemployment benefit after a resignation as a matter of course (§1): the US leaves the decision to the state, the UK applies a sanction, 91 days for a first one, where there was no good reason, and Portugal treats a worker's own resignation as voluntary.",
+  "basis": "The unit's own §1 item 3, which reports the US rule as 'decided by the state' (https://oui.doleta.gov/unemploy/uifactsheet.asp), the UK rule as a sanction of '91 days for a first one in a year' for leaving 'without a good reason' (https://www.gov.uk/guidance/universal-credit-sanctions) and only Portugal's guide as treating a resignation as voluntary (https://seg-social.pt/documents/10152/15007/6001_subsidio_desemprego/1867b682-64f2-4b1a-8f39-ca008602a16b). The three pages were not re-opened in this audit (search refused); the finding is that §2 says more than §1 does.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-2",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable D3, What has to be true, item 2",
+  "current": "above the band medians of +0.5 and +1.4 a month for channels of her size (PB1 D1 Y6; vendor)",
+  "fix": "above the band median of +0.5 a month for channels of her size, 1 to 99 subscribers, and the +1.4 of the next band, 100 to 499 (PB1 D1 Y6; vendor)",
+  "basis": "PB1 D1 row Y6 and PB1 §2: +0.5 is the 1-99 band, +1.4 the 100-499 band; Mara has 61 subscribers (PB10 D4). vidIQ, YouTube Subscriber Benchmarks 2026, https://vidiq.com/research/youtube-subscriber-benchmarks-2026/ as PB1 cites it (not opened here).",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-3",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§3 · item 1, YouTube ad revenue share",
+  "current": "$2.39 per 1,000 views on its own client channels (PB9 §2)",
+  "fix": "$2.39 per 1,000 views on its own client channels, May 2025 to May 2026 (PB9 §2)",
+  "basis": "Part 5: an amount is in its source's currency with its date. PB9 §2 gives the period: AIR Media-Tech, 300 client channels, May 2025 to May 2026, https://air.io/en/air-data-findings/which-youtube-niche-makes-the-most-money-in-2026-ranked-by-real-rpm-and-cpm as PB9 cites it (not opened here).",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-4",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources, last line",
+  "current": "DD-PB1 (§11; Deliverable A)",
+  "fix": "DD-PB1 (§3 to §8, §11; Deliverable A)",
+  "basis": "§2 of the unit cites 'DD-PB1 §3 to §8, §11' (a fresh-check fix that the Sources line did not follow); Part 1: the unit leaves its sources. No URL: internal.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-5",
+  "unit": "DD-PB2",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable D1 row i18 against Template T1 row i18",
+  "current": "| i18 | Preconditions | Employment contract read and any notice given (PB8 J1, J2); income registration answered (T1, done 18 Mar 2027); t filled (i8) | PB8 register; PB10 D3 |",
+  "fix": "No replacement given. The template's i18 adds 'health cover and benefits after leaving answered (§1)', and §1 says each of its six items 'has to be answered before a date means anything'; Mara's own i18 leaves it out. Adding it to her row sets a new fact about Mara (what her employer pays that she would have to buy) and changes the preconditions the register records as (J1, J2, T1, t), so it is for the owner to decide.",
+  "basis": "unit §1 'What a survivable floor leaves out', items 2 and 3; Template T1 i18; case-facts.md, 'Set by DD-PB2', pass-rule line. No URL: internal.",
+  "figure": false
+ }
+]
