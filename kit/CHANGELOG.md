@@ -146,6 +146,7 @@ The first row of an unattended two-row chat (W-DD-PB1, W-DD-PB2), on Opus 5.5 (c
 - **Kit fix.** `viz.py`: a matrix drawing wider than the phone frame (328 units) wraps its legend within the frame's width, so a phone shows every key whole in the first frame; the 25 legends this changed on 21 other pages re-checked from their frames sheets, all PASS (`kit/reviews/dd-pb1/legend-recheck.md`).
 - **Figures.** All three corrected after the first re-check (§9's n/a definition, captions, the timeline's platform launches and bar label), figure 3 transposed after the second so the desktop frame holds it; `kit/reviews/dd-pb1/`.
 - **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-dd-pb1` and the 21 pages whose legends changed.
+- **Publish.** Academy artifact v155 (1794619922-f702; 32 files in one patch over v154, found by sha256 against the start build; 11 read back and matched, the shell in the live page's wrapper). GitHub Pages not deployed: attaching `apcanario/academy` was refused by the session's permission check (P110).
 
 ## 13 November 2026 · Session 81 · Public course PB, unit PB10 (W-PB10)
 
