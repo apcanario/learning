@@ -35,5 +35,26 @@
    "PB3-8"
   ],
   "figures": []
+ },
+ "PB4": {
+  "applied": [
+   "PB4-1",
+   "PB4-2",
+   "PB4-5"
+  ],
+  "not_applied": [
+   {
+    "id": "PB4-3",
+    "why": "held by the chat (see skip.json)"
+   },
+   {
+    "id": "PB4-4",
+    "why": "held by the chat (see skip.json)"
+   }
+  ],
+  "flags": [
+   "PB4-6"
+  ],
+  "figures": []
  }
 }
