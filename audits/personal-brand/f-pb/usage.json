@@ -131,6 +131,18 @@
    "minutes": 10.55,
    "model_stated": "claude-fable-5-2",
    "note": "INCOMPLETE: the turn's WebSearch budget (200 calls, shared by every agent) was used up; sources not opened; internal checks only"
+  },
+  "Audit 4": {
+   "tokens": 0,
+   "tool_uses": 0,
+   "minutes": 0.0,
+   "model_stated": "claude-fable-5-2",
+   "files": [
+    "audit.md",
+    "errata.json",
+    "stats.json"
+   ],
+   "note": "failed at the Fable limit (429, resets 15 Nov 06:00) after writing DONE and every report file; no completion notice, so tokens and duration not reported"
   }
  }
 }

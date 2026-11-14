@@ -1,0 +1,14 @@
+{
+ "model": "claude-fable-5-2",
+ "units_read": 12,
+ "words_read": 127096,
+ "findings": {
+  "error": 0,
+  "should-fix": 7,
+  "minor": 12
+ },
+ "errata": 15,
+ "flags": 9,
+ "contradictions": 10,
+ "verdict": "The course delivers its goal as written for the sentence, the twelve-week system and the YouTube half of the quarterly decision; the Instagram half is a reading with no deciding benchmark, as the units say; no REWRITE; 15 errata and 9 flags (6 flag findings) to settle."
+}
