@@ -19,5 +19,21 @@
   "not_applied": [],
   "flags": [],
   "figures": []
+ },
+ "PB3": {
+  "applied": [
+   "PB3-1",
+   "PB3-2",
+   "PB3-3",
+   "PB3-4",
+   "PB3-5",
+   "PB3-6",
+   "PB3-7"
+  ],
+  "not_applied": [],
+  "flags": [
+   "PB3-8"
+  ],
+  "figures": []
  }
 }
