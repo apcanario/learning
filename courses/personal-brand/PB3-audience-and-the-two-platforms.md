@@ -237,7 +237,7 @@ Rates per month are derived (13, 26 or 52 divided by 12). The bands are from vid
 | Long-form edit | 4.0 | 8.0 | 16.0 | 4.0 per video (PB1) |
 | Packaging | 1.0 | 2.0 | 4.0 | 1.0 per video: title, thumbnail, description (PB1) |
 | Instagram posts | 2.0 | 6.0 | 6.0 | 0.5 per post, cut from the same footage (PB1) |
-| Publishing and replies | 1.5 | 2.5 | 3.0 | Scheduling, captions, answering comments; at 6 h this is PB1's 1.5 a fortnight less the email's 0.25 |
+| Publishing and replies | 1.5 | 2.5 | 3.0 | Scheduling, captions, answering comments; at 6 h this is PB1's 1.25 a fortnight: the 1.5 PB1 first gave the line, less the email's 0.25 |
 | Email | 0.25 | 0.5 | 1.0 | 0.25 per email |
 | Log | 1.0 | 1.0 | 1.0 | 0.5 a fortnight (PB1) |
 | **Total** | **11.75 of 12** | **24.0 of 24** | **39.0 of 40** | |
@@ -411,3 +411,5 @@ Correction 12 Nov 2026, found by PB6's writer (row W-PB6) and confirmed by its f
 - Correction 2026-11-13, found by PB10's writer: D1 trait 8 restores the qualifier dropped from §1: the 100-follower threshold is Meta's developer reference for the API ("Not returned if the IG User has less than 100 followers"), and the app's threshold was not checked (flag F55; row W-PB10).
 
 Erratum 14 Nov 2026, Audit 1 (stratified-sample audit; Fable 5.2, row F-PB): 7 exact replacements applied, PB3-1, PB3-2, PB3-3, PB3-4, PB3-5, PB3-6, PB3-7; each is quoted with its source in `audits/personal-brand/audit-1.md`.
+
+Erratum 14 Nov 2026, Audit 4 (the final audit, a full read of the course; Fable 5.2, row F-PB): 1 exact replacement applied, A4-10; each is quoted with its source in `audits/personal-brand/audit-4.md`.
