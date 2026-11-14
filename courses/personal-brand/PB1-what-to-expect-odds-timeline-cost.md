@@ -270,7 +270,7 @@ The quarterly review (60 minutes, PB10) is taken from the Instagram derivatives 
 | Editing | 0 | Edits, free since 22 Apr 2025 ([PetaPixel](https://petapixel.com/2025/04/22/instagrams-capcut-competitor-edits-is-now-available/)); paid apps not bought in year one (her rule) |
 | Clip-on microphone | 99.00 USD | RØDE Wireless Micro list price, 12 Nov 2026 ([RØDE](https://brandstore.rode.com/products/wireless-micro)); bought only if PB5's audio check fails |
 | Tripod or clamp | up to 40 USD | Her estimate; no price checked |
-| Postal address for commercial email (PB8 E4) | 58.00 € + VAT a year (CTT tariff, Nov 2020; current price to check) | Paid from the unspent microphone line (PB5 §2) at the day's rate, not added to the cap; the cap stands unless the converted price exceeds what remains under it (PB9 D2 V17); if a later audio check fails and the microphone is bought (PB5 §2, §10), that line is spent, the address is paid from what then remains under the cap (the contingency and any unspent part of the tripod-or-clamp line), and if that does not cover both, this D2 is corrected (PB9 D3) |
+| Postal address for commercial email (PB8 E4) | 58.00 € + VAT a year ([CTT, Preços 2020, tariff of November 2020](https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf), Apartados, Singulares, concessão anual; current price to check) | Paid from the unspent microphone line (PB5 §2) at the day's rate, not added to the cap; the cap stands unless the converted price exceeds what remains under it (PB9 D2 V17); if a later audio check fails and the microphone is bought (PB5 §2, §10), that line is spent, the address is paid from what then remains under the cap (the contingency and any unspent part of the tripod-or-clamp line), and if that does not cover both, this D2 is corrected (PB9 D3) |
 | Contingency | 11 USD | The remainder of the cap |
 | **Total cap** | **150 USD** | |
 
@@ -315,7 +315,7 @@ Spending is read at each checkpoint. Any income, however small, triggers the tax
 
 - **Q1 review, Monday 5 April 2027 · YouTube uploads 1–7.** Expect views near or below 180 on the uploads old enough to measure (Y1) and click-through scattered (Y2). The 8,000-hour rule took effect on 1 February 2027, inside this quarter (Y10); record the 365-day watch hours as the first baseline. Apply verdicts 2 and 4 only: the stop rule needs two quarters, and too few uploads are old enough for verdict 3.
 - **Q2 review, Monday 5 July 2027 · uploads 8–13.** Upload 10 has gone out (week 19). Compare the median 30-day views of uploads 1–10 with 180–272, remembering that cohort posted faster and excludes quitters (Y1); no upload past 1,000 views is what 42.2% of that cohort also saw (derived: 100 minus 57.8). Apply all four verdicts. Record the best upload and what differed in its packaging or subject.
-- **Q3 review, Monday 4 October 2027 · uploads 14–20.** Compare net subscribers per month with the band median (+0.5, +1.4 or +3.7; Y6). Above the median is the upper tail that channels crossing 1,000 come from. Instagram net followers are recorded with no benchmark: no dataset found follows accounts from under 1,000 followers (§3; I7), and I4 is an increment over weeks without posts, not a total. Apply all four verdicts.
+- **Q3 review, Monday 4 October 2027 · uploads 14–20.** Compare net subscribers per month with the band median (+0.5, +1.4 or +3.7; Y6). Above the median is the upper half of her band; that channels crossing 1,000 come from its upper tail is an inference no dataset found tests (§2). Instagram net followers are recorded with no benchmark: no dataset found follows accounts from under 1,000 followers (§3; I7), and I4 is an increment over weeks without posts, not a total. Apply all four verdicts.
 - **Q4 review, Monday 3 January 2028 · uploads 21–26 · the twelve-month review.** Cadence test: 26 uploads planned, the year passes at 24 or more (her rule). Expect fewer than 1,000 subscribers, the outcome for 91.35% of channels in her band (Y4), and watch hours far below 8,000 (Y10). Decide in writing: continue, change one thing, change the format, or stop, with the four quarters' reads attached. Set the dates of year two's checkpoints, with the 24-month review as the first at which subscriber count may count (Y5).
 
 ### Template
@@ -370,6 +370,7 @@ Tax question to answer if anything is earned: [your country's tax authority page
 - Buffer, Instagram benchmarks, last updated 8 Nov 2026. https://buffer.com/social-media-benchmarks/instagram
 - Candogan, Sidika Tunc, "First year as a YouTuber", undated (about July 2024). https://sidikatunccandogan.substack.com/p/first-year-as-a-youtuber
 - Cornell Chronicle, "What social media creators can't say about their job" (Nguyen and Duffy, *New Media & Society*, 7 Jul 2026), 8 Jul 2026. https://news.cornell.edu/node/333256
+- CTT, "Preços 2020" (tariff of postal services, November 2020; Apartados, Singulares, concessão anual). https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf
 - GOV.UK (HMRC), "Tax-free allowances on property and trading income". https://gov.uk/guidance/tax-free-allowances-on-property-and-trading-income
 - Huberman, Bernardo A., Daniel M. Romero and Fang Wu, "Crowdsourcing, attention and productivity", arXiv 0809.3030, 2008. https://arxiv.org/abs/0809.3030
 - Inro, "Instagram Subscriptions: setup, cost and what you keep", updated 23 Jul 2026. https://www.inro.social/blog/instagram-subscriptions
@@ -399,6 +400,7 @@ Tax question to answer if anything is earned: [your country's tax authority page
 - YouTube Help, "Good to know about recommendations for YouTube's recommendation system" (answer 16559651), checked 12 Nov 2026. https://support.google.com/youtube/answer/16559651?hl=en
 - YouTube Help, "Impressions and click-through rate FAQ" (answer 7628154), checked 12 Nov 2026. https://support.google.com/youtube/answer/7628154?hl=en-GB
 - YouTube Help, "The YouTube Partner Programme overview and eligibility" (answer 72851), checked 12 Nov 2026. https://support.google.com/youtube/answer/72851?hl=en-gb
+- YouTube Help, "YouTube performance FAQ & Troubleshooting" (answer 141805), checked 12 Nov 2026. https://support.google.com/youtube/answer/141805?hl=en
 
 ## Unsure list
 
@@ -434,3 +436,5 @@ Correction 12 Nov 2026, found by the P100 correction check: D3 read 4 now record
 Correction 13 Nov 2026, found by the W-PB7 figure re-check: D3's decision figure caption now places the 1.86% base rate in §2 and D1 row Y4, within 360 days and for channels whose video count grew by 1 to 11 (it said §2 and §5, a year), ties rows Y2 and Y3 to the format verdict, and names the above-median rule as hers, resting on the two YouTube Help statements.
 - Correction 2026-11-13, found by the W-PB9 correction check (P106): D2's postal-address line now says what pays it if a later audio check fails and the microphone is bought (PB5 §2, §10): what then remains under the 150 USD cap, the contingency and any unspent part of the tripod-or-clamp line, with D2 corrected if that does not cover both (PB9 D3); no price, rate or source is added, and the cap is unchanged.
 - Correction 2026-11-13, found by PB10's writer: D2 now takes the quarterly review's hour from the Instagram derivatives of the fortnight that holds it, two Reels fewer, since PB3 D2 and PB4 D1 E left the publishing-and-replies line no hour to give (PB10 §5); D3's Q3 line no longer compares Instagram net followers with the 0.36-a-week illustration, because I4 is an increment over weeks without posts, not a total (Buffer, 13 Aug 2025; §3); D3 read 1 now gives 39 posts in Q1 and 37 in Q2, Q3 and Q4, 29 in Q2 if PB9's guide build is decided at the Q1 review (row W-PB10).
+
+Erratum 14 Nov 2026, Audit 1 (stratified-sample audit; Fable 5.2, row F-PB): 4 exact replacements applied, PB1-1, PB1-2, PB1-3, PB1-4; each is quoted with its source in `audits/personal-brand/audit-1.md`.
