@@ -1,0 +1,23 @@
+{
+ "unit": "PB4",
+ "model": "claude-fable-5-2",
+ "words": 10438,
+ "sections": 11,
+ "cited_claims_in_unit": 111,
+ "claims_sampled": 11,
+ "claims_checked_total": 38,
+ "fail_sampled": 1,
+ "fail_total": 2,
+ "stale_total": 0,
+ "unverifiable_total": 2,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 22,
+ "web_fetches": 33,
+ "not_checked": [
+  "https://support.google.com/youtube/answer/1270709?hl=en: WebSearch refused (the session's shared search budget was used up; retried once, refused again), so no search returned the URL and it could not be fetched",
+  "https://help.instagram.com/iphone-app/439971288310029: WebSearch refused (search budget used up), so no search returned the URL and it could not be fetched",
+  "https://pubmed.ncbi.nlm.nih.gov/18509902/: fetched once, returned no article content; not retried (Shiffman et al. volume, pages and year)",
+  "WebSearch: refused three times at the end of the run (limit of 200 searches per turn shared by every agent)"
+ ]
+}

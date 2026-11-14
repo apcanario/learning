@@ -1,0 +1,74 @@
+[
+ {
+  "id": "PB4-1",
+  "unit": "PB4",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Unsure list",
+  "current": "PPC Land dates the FAQ's publication to 2 Sep 2026 in the German Help Centre, and the English page's own date was not seen",
+  "fix": "PPC Land (2 Sep 2026) reports a German-language recommendations FAQ posted that day in the German YouTube Help community forum, with the performance FAQ as an accompanying Help Centre page that it does not date, and the English page's own date was not seen",
+  "basis": "PPC Land, 2 Sep 2026, places the dated FAQ (\"FAQ: Wie funktionieren die Empfehlungen?\") in the German YouTube Help community forum; the performance FAQ is one of two accompanying Help Centre pages, for which it gives only a 2026 footer year. https://ppc.land/youtube-finds-no-link-between-upload-breaks-and-view-counts/",
+  "figure": false
+ },
+ {
+  "id": "PB4-2",
+  "unit": "PB4",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "§3",
+  "current": "whose page gives two different samples and day-by-day figures that do not match its own 45% headline",
+  "fix": "whose page gives two different samples and does not say what period its 45% fall after day 10 covers",
+  "basis": "The page's own averages are about 14,578 views by day 10 and \"just above 8,000\" at the 20-day mark, a fall of about 45% (derived), so its figures do not contradict the headline; what the page lacks is a stated end point for the 45%. The 17,100 to 14,578 fall (about 15%) is days 5 to 10, before the period the headline names. https://www.socialinsider.io/blog/how-long-does-it-take-for-reels-to-get-views/ (PB3 §3 describes the same page as unclear, without saying the figures mismatch.)",
+  "figure": false
+ },
+ {
+  "id": "PB4-3",
+  "unit": "PB4",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "- vidIQ Research, \"Uploads and reaching 1,000 subscribers\", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "fix": "- vidIQ Research, \"Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal\", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "basis": "The page's headline is \"Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal\" (published September 11, 2026); the phrase in the unit's quotation marks appears nowhere on it. https://vidiq.com/research/youtube-uploads-1000-subscribers/ (PB1 carries the same label; change both together.)",
+  "figure": false
+ },
+ {
+  "id": "PB4-4",
+  "unit": "PB4",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§2",
+  "current": "[vidIQ, Uploads and reaching 1,000 subscribers, 11 Sep 2026]",
+  "fix": "[vidIQ, Reaching 1,000 YouTube Subscribers, 11 Sep 2026]",
+  "basis": "As PB4-3: the link label uses a title the page does not carry. https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "figure": false
+ },
+ {
+  "id": "PB4-5",
+  "unit": "PB4",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§5",
+  "current": "found that \"People need to stop thinking about one task",
+  "fix": "found that \"people need to stop thinking about one task",
+  "basis": "The abstract has the words mid-sentence in lower case; the standard asks for the source's exact words inside quotation marks. The fresh check noted this and proposed no fix. https://econpapers.repec.org/RePEc:eee:jobhdp:v:109:y:2009:i:2:p:168-181",
+  "figure": false
+ },
+ {
+  "id": "PB4-6",
+  "unit": "PB4",
+  "kind": "flag",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "§7 (also D1 F, the two §7 figures, case-facts, PB10 §8)",
+  "current": "With capture 1.0 and the log 0.25 that week is 6.5 hours.",
+  "fix": "With capture 1.0 and the log 0.25 that week is 6.5 hours, its own reply slot skipped (PB3's step 2); with the slot kept it is 6.75, and the recovery week after a lost week B, which has two reply slots, is 7.0.",
+  "basis": "The 6.5-hour recovery weeks add up only without the recovery week's own reply slots (D1 E: Wednesday of week B 0.25; Wednesday and Friday of week A 0.5). §7 says replies \"wait for the next slots\" but never says those slots are dropped. With them the weeks are 6.75 and 7.0, and 7.0 is at PB1's line, not under it (PB10 §8). The 6.5 figure is in case-facts.md, PB10 §8 and both §7 figures, so this needs a decision, not an erratum. Internal arithmetic from unit.md D1 E and §7; no URL.",
+  "figure": false
+ }
+]

@@ -1,0 +1,344 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Ruan et al.: speech 2.93x keyboard in English (153 v 52 wpm); pooled error rates 5.30/11.22 and 1.30/0.79; IMWUT 1(4) Dec 2017",
+  "source": "https://www.arxiv.org/abs/1608.07323?context=cs",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "AIR Media-Tech 8 Jun 2026: 18,000 channels, 100k-1M segment, 14+ day gaps quote, predictable schedule, correlational",
+  "source": "https://air.io/en/audience-growth/does-posting-more-on-youtube-help-we-studied-18000-channels-to-find-out",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Buffer 13 Aug 2025: 2.1M posts, 102,000 accounts, +0.12%/+0.26%, reach about 12% higher",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Dai, Milkman and Riis 2014: landmarks list, 'relegate past imperfections to a previous period', Mgmt Sci 60(10) 2563-2582",
+  "source": "https://econpapers.repec.org/RePEc:inm:ormnsc:v:60:y:2014:i:10:p:2563-2582",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Gollwitzer and Sheeran 2006: 94 independent tests, d = .65, AESP 38, 69-119",
+  "source": "https://kops.uni-konstanz.de/entities/publication/2e749bfb-8533-437c-8203-7e788c910c5f",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Masicampo and Baumeister 2011: intrusive thoughts, anagram task, plans eliminate effects; JPSP 101(4) 667-683",
+  "source": "https://bvbvf1.bib-bvb.de/vufind/PrimoRecord/cdi_proquest_miscellaneous_918752704",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "§7",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "PB3 D2 cut order: Instagram 3 to 1 (1.0 h), replies deferred, video about 8 min (est. 1.0 h), upload moved up to 7 days once, log never cut",
+  "source": "others/PB3 D2",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "D2: weeks 1-12 each 6.0, total 72.0; upload 7 on Tue 30 Mar 2027; PB1 Q1 review expects uploads 1-7; review Mon 5 Apr 2027",
+  "source": "arithmetic; others/PB1 D3; case-facts.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "Template",
+  "sampled": true,
+  "kind": "number",
+  "claim": "T2 3-hour rules match PB3's 3-hour plan (11.75 h per four weeks; weeks 3.0, 3.0, 3.0, 2.75)",
+  "source": "others/PB3 D2; arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Monsell, Sumner and Waters, Memory & Cognition 31(3), 2003, 327-342, and the §5 quotation",
+  "source": "https://orca.cardiff.ac.uk/33842",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "PPC Land dates the FAQ's publication to 2 Sep 2026 in the German Help Centre",
+  "source": "https://ppc.land/youtube-finds-no-link-between-upload-breaks-and-view-counts/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 12,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Instagram original content guidelines: three quotations, low-effort edits, undated",
+  "source": "https://creators.instagram.com/original-content-guidelines/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "§1",
+  "sampled": false,
+  "kind": "date",
+  "claim": "30 Apr 2026: Instagram extended loss of recommendations from Reels to photos and carousels",
+  "source": "https://techcrunch.com/2026/04/30/instagram-restricts-reach-of-content-aggregators-in-new-crackdown/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Shiffman, Stone and Hufford abstract: 'typically relies on global retrospective self-reports', recall bias, 'maximize ecological validity'",
+  "source": "https://citedrive.com/en/discovery/ecological-momentary-assessment",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help 13615784: 'To grow regular viewers...', 'keep your channel fresh...'",
+  "source": "https://support.google.com/youtube/answer/13615784?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help 141805: breaks statement, 'warm up', time between uploads; no sample, period or method",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "vidIQ 11 Sep 2026: 12-51 band; upload count indexes PB1's YouTube base rates",
+  "source": "https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Tasty Edits rule of thumb, published 19 May 2021, updated 17 Sep 2026; 5 to 10 hours derived",
+  "source": "https://www.tastyedits.com/how-long-does-it-take-to-edit-a-video/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "AIR Media-Tech 28 May 2026: 18,000 channels, Mar 2025-Mar 2026, Home and DIY sentence",
+  "source": "https://air.io/en/audience-growth/do-youtube-shorts-help-your-long-form-videos-grow-data-from-18000-channels",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Fanpage Karma: >3M posts Jan-Apr 2026; 4.9%, 3.5%, 2.6% under 10,000 followers; non-follower quote; no account count",
+  "source": "https://www.fanpagekarma.com/insights/instagram-format-reach/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Socialinsider page: two samples and day-by-day figures that do not match its own 45% headline",
+  "source": "https://www.socialinsider.io/blog/how-long-does-it-take-for-reels-to-get-views/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 22,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "TechCrunch 8 Nov 2022: all professional accounts; posts, Reels, carousels; up to 75 days",
+  "source": "https://techcrunch.com/2022/11/08/instagram-scheduling-tool-all-professional-accounts",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Social Media Today 1 Mar 2026: 'available to all public accounts'; no Instagram quote; no horizon",
+  "source": "https://www.socialmediatoday.com/news/instagram-opens-up-content-scheduling-to-all-users/813448/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Kivetz, Urminsky and Zheng 2006: three quotations; JMR 43, 39-58",
+  "source": "https://business.columbia.edu/faculty/research/goal-gradient-hypothesis-resurrected-purchase-acceleration-illusionary-goal",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube Help 13615784 and 141805: series quotations",
+  "source": "https://support.google.com/youtube/answer/13615784?hl=en ; https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Rubinstein, Meyer and Evans via APA release: young adults, 'time costs increased with the complexity of the tasks', unfamiliar tasks; JEP:HPP 27(4) Aug 2001",
+  "source": "https://www.newswise.com/articles/is-multitasking-more-efficient",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Leroy 2009: two experiments, unfinished task, finishing not sufficient, time pressure; OBHDP 109(2) 168-181",
+  "source": "https://econpapers.repec.org/RePEc:eee:jobhdp:v:109:y:2009:i:2:p:168-181",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "APA 20 Mar 2006: 'can cost as much as 40 percent of someone's productive time', attributed to Meyer, no study cited",
+  "source": "https://www.apa.org/topics/research/multitasking",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "0.2 followers a week (PB3 §6: 140 x 0.0014) and PB1 I4's 0.36",
+  "source": "others/PB3 §6; others/PB1 §3, D1 I4",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "PB1 D2 capture line quote; PB3 D2 24.0 of 24 per four weeks",
+  "source": "others/PB1 D2; others/PB3 D2",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "PB2 D4: 'one piece, start to finish: what was wrong with it, what I did, what went wrong and what it cost'",
+  "source": "others/PB2 D4",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "Template",
+  "sampled": false,
+  "kind": "number",
+  "claim": "T2 10-hour rules match PB3 (9.75 a week, 39.0 per four weeks; override 10.0 and 8.0)",
+  "source": "others/PB3 D2; arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 33,
+  "section": "§7",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "PB1 D3 verdict 2 and PB1 D2's 7-hour over-budget line",
+  "source": "others/PB1 D2, D3",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "Unsure list",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "CiteDrive dates Shiffman et al. 2007 and shows no volume",
+  "source": "https://citedrive.com/en/discovery/ecological-momentary-assessment",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D2 run-in: PB5 D A's 0.75 h (R1 4.25, R2 1.5); PB2 D5 run 1 in the week of 7 Dec 2026",
+  "source": "others/PB5 D A; others/PB2 D5",
+  "verdict": "PASS"
+ },
+ {
+  "n": 36,
+  "section": "§1",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "Cadence rule: two or more pieces over two weekends in two consecutive quarters (PB10 §5)",
+  "source": "others/PB10 §5",
+  "verdict": "PASS"
+ },
+ {
+  "n": 37,
+  "section": "§2",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "YouTube Help 1270709: scheduled or private, date/time/time zone, Studio or app; no publish during a strike's penalty period",
+  "source": "https://support.google.com/youtube/answer/1270709?hl=en",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 38,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Instagram Help page summary: 'schedule Reels, photos, and carousel posts'; body unreadable",
+  "source": "https://help.instagram.com/iphone-app/439971288310029",
+  "verdict": "unverifiable"
+ }
+]

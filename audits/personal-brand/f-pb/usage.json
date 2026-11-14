@@ -77,6 +77,19 @@
     "stats.json"
    ],
    "note": "WebSearch budget ran out after its 34th search"
+  },
+  "PB4": {
+   "tokens": 255764,
+   "tool_uses": 79,
+   "minutes": 11.99,
+   "model_stated": "claude-fable-5-2",
+   "files": [
+    "audit.md",
+    "errata.json",
+    "claims.json",
+    "stats.json"
+   ],
+   "note": "3 searches refused at the end (turn search budget used up); 24 of 26 sources opened"
   }
  }
 }
