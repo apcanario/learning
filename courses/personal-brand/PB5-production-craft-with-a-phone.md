@@ -40,7 +40,7 @@ Mara's table stands beside a window, with the window to her left as she faces th
 
 ### One clip per step
 
-PB4 first had the phone recording before the first tool comes out of the box. This unit refines that into one clip per step (her rule): she taps record before she picks up the tool for a step and stops when the step ends, so each clip is one step of the restoration and the to-camera lines fall inside the clips they describe. A tap costs seconds and does not stop the work; the gain is footage bounded by construction, which §9 needs, and a phone that is not filling its storage with the minutes between steps. No source measures either effect; the second is checked by a storage test in the deliverable (A, before the season).
+PB4's capture table has the phone recording before each step's tool comes out, one clip per step, and takes that rule from this unit (PB4 §1). The rule is hers (her rule): she taps record before she picks up the tool for a step and stops when the step ends, so each clip is one step of the restoration and the to-camera lines fall inside the clips they describe. A tap costs seconds and does not stop the work; the gain is footage bounded by construction, which §9 needs, and a phone that is not filling its storage with the minutes between steps. No source measures either effect; the second is checked by a storage test in the deliverable (A, before the season).
 
 ### A short shot list
 
@@ -598,3 +598,5 @@ Correction 12 Nov 2026, found by PB7's writer: §6 now says that two press repor
 - Fresh check 2026-11-12 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 0 errors, 3 should-fix, 11 minor; all applied as verified, with the two Sources lines and the lower-third gloss the report proposes; the four figures passed; report `audits/personal-brand/fresh-check-PB5.md`. The checker could not open the copy of Newman and Schwarz (2018) the writer read, so the experiment's numbers in §2 rest on the writer's reading and the earlier check of the same paper.
 
 Erratum 14 Nov 2026, Audit 2 (stratified-sample audit; Fable 5.2, row F-PB): 4 exact replacements applied, PB5-1, PB5-2, PB5-3, PB5-4; each is quoted with its source in `audits/personal-brand/audit-2.md`.
+
+Erratum 14 Nov 2026, Audit 4 (the final audit, a full read of the course; Fable 5.2, row F-PB): 1 exact replacement applied, A4-11; each is quoted with its source in `audits/personal-brand/audit-4.md`.
