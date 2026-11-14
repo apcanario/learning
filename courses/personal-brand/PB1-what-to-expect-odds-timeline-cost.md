@@ -306,7 +306,7 @@ Spending is read at each checkpoint. Any income, however small, triggers the tax
 1. YouTube uploads and Instagram posts this quarter against plan (7 or 6 videos; 39 posts in Q1, 37 in Q2, Q3 and Q4, 29 in Q2 if PB9's guide build is decided at the Q1 review).
 2. Hours logged per week against 6, and the number of weeks over 7.
 3. YouTube: median 30-day views across uploads at least 30 days old, and the best upload so far (Y1).
-4. YouTube: click-through rate, impressions and percentage viewed for each upload at least 7 days old, and her median upload's impressions (Y2, Y3).
+4. YouTube: click-through rate, impressions and percentage viewed for each upload at least 7 days old, and her median upload's impressions, the median across the quarter's uploads at least 7 days old, which is the median verdict 3 uses (PB10 D2 step 3) (Y2, Y3).
 5. YouTube: subscribers, total and net gain per month, against the band median (Y6); watch hours in the last 365 days against 3,000 and 8,000 (Y10, Y11).
 6. Instagram: followers, total and net gain; median reach per post, recorded against 261 as context (I3); what the professional dashboard shows as eligible (I6).
 7. Money spent against the 150 USD cap, and any income.
@@ -438,3 +438,5 @@ Correction 13 Nov 2026, found by the W-PB7 figure re-check: D3's decision figure
 - Correction 2026-11-13, found by PB10's writer: D2 now takes the quarterly review's hour from the Instagram derivatives of the fortnight that holds it, two Reels fewer, since PB3 D2 and PB4 D1 E left the publishing-and-replies line no hour to give (PB10 §5); D3's Q3 line no longer compares Instagram net followers with the 0.36-a-week illustration, because I4 is an increment over weeks without posts, not a total (Buffer, 13 Aug 2025; §3); D3 read 1 now gives 39 posts in Q1 and 37 in Q2, Q3 and Q4, 29 in Q2 if PB9's guide build is decided at the Q1 review (row W-PB10).
 
 Erratum 14 Nov 2026, Audit 1 (stratified-sample audit; Fable 5.2, row F-PB): 4 exact replacements applied, PB1-1, PB1-2, PB1-3, PB1-4; each is quoted with its source in `audits/personal-brand/audit-1.md`.
+
+Erratum 14 Nov 2026, Audit 4 (the final audit, a full read of the course; Fable 5.2, row F-PB): 1 exact replacement applied, A4-2; each is quoted with its source in `audits/personal-brand/audit-4.md`.

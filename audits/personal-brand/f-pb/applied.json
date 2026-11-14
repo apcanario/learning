@@ -121,5 +121,18 @@
   ],
   "flags": [],
   "figures": []
+ },
+ "A4:PB1": {
+  "applied": [
+   "A4-2"
+  ],
+  "not_applied": [
+   {
+    "id": "A4-13",
+    "why": "Current occurs 0 times"
+   }
+  ],
+  "flags": [],
+  "figures": []
  }
 }
