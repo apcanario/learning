@@ -1,0 +1,86 @@
+[
+ {
+  "id": "DD-PB1-1",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "§1 How the six were chosen (the spread sentence)",
+  "current": "four outside the United States (Abdaal, Boyd, Itsines, Wicks).",
+  "fix": "four outside the United States (Abdaal, Boyd, Itsines, Wicks). One of the six does not meet criterion 1 as written: no source opened gives a dated audience number from Boyd's first three years or near a 12-, 24- or 36-month point (§5: all three unpublished); he is kept with that gap stated, and his history documents practice, not early numbers.",
+  "basis": "Unit's own text: §1 criterion 1 ('A creator entered only if all of these held ... at least one dated audience number from the first three years, or a dated number close enough to read against a 12-, 24- or 36-month point') against §5 ('12, 24 and 36 months. All three unpublished'; the only counts are vidIQ's of 13 Nov 2026, eleven years in). Abel and Lewis were left out in §1 for the same gap. No URL: internal consistency; no source opened.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-2",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "§4 Christian Pascual, Read against PB1 §9, point 2",
+  "current": "where 8.65% of channels crossed 1,000 within 360 days; his rate",
+  "fix": "where 8.65% of channels crossed 1,000 subscribers within 360 days (vidIQ, 11 Sep 2026, as PB1 cites it; vendor data, correlational); his rate",
+  "basis": "Sourcing standard Part 5: correlational and vendor data are labelled as such, and a number is sourced where it is made. PB1 §2 (others/PB1, table row '12 to 51 | 1,259,198 | 8.65%', labelled vendor data, observational) citing vidIQ, 11 Sep 2026, https://vidiq.com/research/youtube-uploads-1000-subscribers/ (address as the fresh check gives it; not opened here). The fresh check named this line inside its §10 finding but gave no replacement, so it was not applied.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-3",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "Deliverable A, One-page summary, pattern 2 (the count)",
+  "current": "Four of six document one; Boyd and Anderson show only an average",
+  "fix": "Three of six document one; Pascual dropped his weekly date within year one and uploads when a video is ready (Issue 14), and Boyd and Anderson show only an average",
+  "basis": "Unit's own text: §4 Cadence ('A weekly schedule became \"an awful experience\"; he moved to uploading when a video was ready'), §4 What he stopped ('The weekly schedule'), §9 R7 ('Pascual departs in his own account: he dropped a fixed weekly date') and figure 1 (Pascual, R7: departs). A creator who dropped his schedule does not document 'a floor of output they did not let slide'. Very Normal Issue 14, https://verynormal.substack.com/p/issue-14-the-statistics-of-being (not opened here).",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-4",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "Deliverable A, One-page summary, pattern 2 (Pascual)",
+  "current": "Pascual: weekly in year one, then every two weeks (Issue 14, about page)",
+  "fix": "Pascual: 36 videos in year one, the weekly date dropped during it, then roughly every two weeks (Issue 14, about page)",
+  "basis": "Unit's own text: §4 Cadence gives 36 videos in his first year (Issue 14, written at twelve months) and says the weekly schedule had already been dropped by then; 36 videos in a year is not weekly. Very Normal Issue 14, https://verynormal.substack.com/p/issue-14-the-statistics-of-being ; about page, https://verynormal.substack.com/about (neither opened here).",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-5",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§10 The plateau, partly",
+  "current": "added none in October 2026 (vidIQ, data 11 Nov 2026)",
+  "fix": "added none in October 2026 (vidIQ, data 13 Nov 2026 for Boyd and Anderson, 11 Nov 2026 for Abdaal)",
+  "basis": "Unit's own text: the sentence opens 'on 13 November 2026 Boyd and Anderson', whose vidIQ pages §5 and §6 date 13 Nov 2026; only Abdaal's page is dated 11 Nov 2026 (§3). vidIQ pages not opened here.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-6",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable A, One-page summary, pattern 1 (Itsines)",
+  "current": "Itsines: client transformations since August 2012 (Bloomberg, 7 Jul 2016)",
+  "fix": "Itsines: clients' and followers' progress photos (Yahoo, 26 Jun 2015), on Instagram since August 2012 (Bloomberg, 7 Jul 2016)",
+  "basis": "Unit's own text: §7 cites Bloomberg only for the August 2012 start and Yahoo for the photographs ('she regularly posts her followers' progress photos'); the deliverable must agree with the body and keep each source to what the body says it says. Yahoo, https://www.yahoo.com/health/how-trainer-kayla-itsines-built-a-global-fitness-122451982837.html ; Bloomberg, https://www.bloomberg.com/features/2016-cult-of-kayla/ (neither opened here).",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-7",
+  "unit": "DD-PB1",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable A, opening paragraph (the 24-month review date)",
+  "current": "and the 24-month review on 1 January 2029 (Mara, fictional; the review dates are PB1",
+  "fix": "and the 24-month review in the week of Monday 1 January 2029 (Mara, fictional; the review dates are PB1",
+  "basis": "others/PB10 Deliverable, 'Year two's dates': 'the 24-month review, Monday 1 January 2029 (47-52), a public holiday, so PB4's holiday rule moves it within its own week'; others/DD-PB2 writes 'week of Mon 1 Jan 2029'. The unit and its register entry ('Set by DD-PB1': '1 Jan 2029') give the day itself. Flag, since the register line would change with it. No URL: other units.",
+  "figure": false
+ }
+]

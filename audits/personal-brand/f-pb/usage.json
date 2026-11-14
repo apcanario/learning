@@ -110,6 +110,13 @@
     "stats.json"
    ],
    "note": "2 searches refused after the sample was complete (turn search budget used up)"
+  },
+  "DD-PB1 (run 1, no web search)": {
+   "tokens": 183932,
+   "tool_uses": 24,
+   "minutes": 6.5,
+   "model_stated": "claude-fable-5-2",
+   "note": "INCOMPLETE: the turn's WebSearch budget (200 calls, shared by every agent) was used up; sources not opened; internal checks only"
   }
  }
 }

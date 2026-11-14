@@ -1,0 +1,353 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Candogan: 88 long-form videos, 20,000+ subscribers, 600,000+ views, $300+ at one year",
+  "source": "https://sidikatunccandogan.substack.com/p/first-year-as-a-youtuber",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "PB6 rules R3, R4, R7, R8, R10, R11 as the unit describes them",
+  "source": "others/PB6 Deliverable rule table (R3, R4, R7, R8, R10, R11)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Abdaal: 'cranking out three YouTube videos a week'; 'down to only one or two videos a week'",
+  "source": "https://every.to/superorganizers/the-double-life-of-productivitys-3842641",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Pascual: 29,385 subscribers at 12 months; Partner Programme 212 days in, 7 Nov 2023",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Boyd: 'There wasn't a grind to 10,000 subs. The first one just hit the nail on the head'",
+  "source": "https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Anderson: 93,400 Instagram followers on 27 Feb 2019",
+  "source": "https://pod.co/the-woodpreneur-podcast-1/083-woodworking-building-a-following-on-instagram-with-cam-anderson-of-blacktail-studio",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 7,
+  "section": "§7",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Itsines: 3.1 million followers on 26 Jun 2015",
+  "source": "https://www.yahoo.com/health/how-trainer-kayla-itsines-built-a-global-fitness-122451982837.html",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 8,
+  "section": "§8",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Wicks: 'over a million Instagram followers' on 21 Jun 2016",
+  "source": "https://globalnews.ca/news/2776599/personal-trainer-joe-wicks-trying-to-get-the-whole-world-lean/",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 9,
+  "section": "§9",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Itsines posted every three or four hours (USA Today, 2015), read as departing from IR6",
+  "source": "https://www.pressreader.com/usa/usa-today-us-edition/20151221/282265254388654",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 10,
+  "section": "§10",
+  "sampled": true,
+  "kind": "number",
+  "claim": "8.65% of channels adding 12 to 51 videos crossed 1,000 subscribers within 360 days (vidIQ, 11 Sep 2026, as PB1 cites it)",
+  "source": "others/PB1 §2 (the cited source: 'as PB1 cites it'); vidIQ itself not opened",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "§11",
+  "sampled": true,
+  "kind": "date",
+  "claim": "Abdaal took a break from medicine in August 2020 and decided to leave it in 2021 (his site)",
+  "source": "https://aliabdaal.com/about",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 12,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Itsines, latest: 13.1M IG (Startup Daily, 15 Jul 2021)",
+  "source": "https://www.startupdaily.net/topic/asx/fitness-app-founder-kayla-itsines-sells-sweat-for-400-million/",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 13,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Tubefilter (Geoff Weiss), 'YouTube launches Shorts beta in U.S.', 18 Mar 2021; India Sept 2020, US beta 18 Mar 2021",
+  "source": "https://tubefilter.com/2021/03/18/youtube-launches-shorts-beta-us-working-on-monetization/",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 14,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "date",
+  "claim": "The Guardian piece on Wicks is dated 18 June 2016 only in Wikipedia's citation; the inkl copy shows no date",
+  "source": "https://www.inkl.com/news/meet-the-body-coach-the-man-with-the-million-dollar-muscles ; https://en.wikipedia.org/wiki/Joe_Wicks_(coach)",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 15,
+  "section": "§1",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Candogan's figures and 'one of PB1 §9's two first-year cases' as PB1 carries them",
+  "source": "others/PB1 §9",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§1",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "PB1 §9 point 3: an existing audience changes the base rate",
+  "source": "others/PB1 §9 point 3",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Every creator entered only if criterion 1 held (a dated audience number in or near the first three years): Boyd has none",
+  "source": "unit §1 against §5",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 18,
+  "section": "§2",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "PB1 §9's six-point checklist as listed",
+  "source": "others/PB1 §9 points 1 to 6",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§2",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "PB7 rules IR1, IR2, IR5, IR6, IR7, IR9 as described",
+  "source": "others/PB7 Deliverable rule table",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Month counts from June 2017: 14 (24 Aug 2018), 18 (8 Dec 2018), 38 (Aug 2020), 39 (Sep 2020)",
+  "source": "arithmetic on the unit's dates",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "One to three videos a week is the 52-plus band and twice Mara's 26 a year or more",
+  "source": "others/PB1 §2; case-facts (PB1)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "787 days from 9 Apr 2023 to 4 Jun 2025 (about 26 months); 212 days to 7 Nov 2023",
+  "source": "arithmetic on the unit's dates",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "36 videos a year sits in PB1 §2's 12-51 band, where 8.65% crossed 1,000 within 360 days",
+  "source": "others/PB1 §2 and §9 (figure right; vendor label missing, erratum 2)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§4",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Partner Programme thresholds change on 1 February 2027, as PB1 §4 sets out",
+  "source": "others/PB1 §4",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "197 videos since Nov 2015 is about 18 a year",
+  "source": "arithmetic (17.9)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Mar 2020 is about 42 months, 27 Feb 2019 about 29 months, after 19 Sep 2016; 147 videos is about 14 a year",
+  "source": "arithmetic (14.5 a year)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§7",
+  "sampled": false,
+  "kind": "number",
+  "claim": "21 at the start (born 21 May 1991, joined Aug 2012); 26 Jun 2015 about 34 months in; eight years before Reels",
+  "source": "arithmetic on the unit's dates",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§8",
+  "sampled": false,
+  "kind": "number",
+  "claim": "21 Jun 2016 about 29 months, Jun 2017 about 41 months, from Jan 2014",
+  "source": "arithmetic on the unit's dates",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§9",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "PB7's evidence for IR6 is a within-account vendor association (Buffer, 13 Aug 2025)",
+  "source": "others/PB7 rule table, IR6",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§10",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Of 18 points one is a dated count at its point; near numbers fall 2 to 5 months away; five of six started before Reels and Shorts",
+  "source": "unit §3 to §8",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§10",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "PB1 §6's plateau: growth slows with size",
+  "source": "others/PB1 §6",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "§11",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Mara's plan: one 10-minute video every two weeks, 26 a year, three feed posts a week, 6 hours a week, no Shorts in year one, day one Mon 4 Jan 2027",
+  "source": "case-facts.md (preamble, PB1, PB6)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 33,
+  "section": "§11",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Her pieces are chairs, side tables and small cabinets restored at a table at home (PB2)",
+  "source": "case-facts.md (PB2)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Twelve-month review 3 Jan 2028 (PB1, PB10)",
+  "source": "case-facts.md (PB1); others/PB10",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "date",
+  "claim": "24-month review 'on 1 January 2029' (PB10 moves it within its week; flag 7)",
+  "source": "others/PB10 'Year two's dates'; others/DD-PB2",
+  "verdict": "PASS"
+ },
+ {
+  "n": 36,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pattern 2: four of six document a floor, Pascual 'weekly in year one'",
+  "source": "unit §4, §9 R7",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 37,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "recommendation",
+  "claim": "Read for Mara: the four rules, as the register records them",
+  "source": "case-facts.md 'Set by DD-PB1'",
+  "verdict": "PASS"
+ },
+ {
+  "n": 38,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "DD-PB2 takes 'Keep the job through year two' and §11 from this unit as written",
+  "source": "others/DD-PB2 D6",
+  "verdict": "PASS"
+ },
+ {
+  "n": 39,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Every address cited in the body is listed in Sources and every listed address is cited (43 and 43)",
+  "source": "script over unit.md",
+  "verdict": "PASS"
+ }
+]

@@ -1,0 +1,22 @@
+{
+ "unit": "DD-PB1",
+ "model": "claude-fable-5-2",
+ "words": 9411,
+ "sections": 14,
+ "cited_claims_in_unit": 167,
+ "claims_sampled": 14,
+ "claims_checked_total": 39,
+ "fail_sampled": 0,
+ "fail_total": 2,
+ "stale_total": 0,
+ "unverifiable_total": 12,
+ "full_audit_run": false,
+ "verdict": "PASS by the decision rule (0 FAIL in the sample), unconfirmed: 12 of 14 sampled claims unverifiable because WebSearch was refused; the source check is still owed",
+ "web_searches": 0,
+ "web_fetches": 0,
+ "not_checked": [
+  "WebSearch: refused, this turn's search budget (200 calls, shared by every agent) was used up; 4 queries refused, 1 retry refused; no search was performed",
+  "WebFetch: not used, since no search in this agent returned any address",
+  "all 43 addresses in the unit's Sources list: not checked (no address returned by a search in this agent)"
+ ]
+}
