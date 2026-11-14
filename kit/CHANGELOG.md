@@ -146,6 +146,7 @@ The second row of the session-82 chat (Pedro away), on Opus 5.5 (claude-opus-5-5
 - **Flags.** The nineteen flags it was given carried; F81 to F86 raised; none blocks a unit.
 - **Figures.** All four passed the fresh check (matrix, compare, decision, timeline).
 - **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED), `verify.py --shots` for `read-dd-pb2`.
+- **Publish.** Academy artifact v156 (1794623532-7060; 8 files in one patch over v155, all read back and matched). GitHub Pages not deployed (P110).
 
 ## 13–14 November 2026 · Session 82 · Public course PB, unit DD-PB1 (W-DD-PB1)
 
