@@ -1,0 +1,290 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Camerer et al.: curse of knowledge, approximately 50 percent, JPE 97(5) 1989 1232-1254",
+  "source": "https://ideas.repec.org/a/ucp/jpolec/v97y1989i5p1232-54.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "number",
+  "claim": "OverseerOS: 1,620 videos, 163 channels, 97.5%, 20.0%, quote, limits, 21 Aug 2026",
+  "source": "https://www.overseeros.com/blog/stick-to-one-niche-youtube",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Five people: one answer moves the result 20 points (derived); conventions marked",
+  "source": "derived; Camerer et al.",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "YouTube handle: twice in 14 days, old handle held 14 days, then available to others",
+  "source": "https://support.google.com/youtube/answer/15920820",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Channel description 1,000 characters (Data API); accessible in the channel header",
+  "source": "https://developers.google.cn/youtube/v3/docs/channels?hl=en ; https://support.google.com/youtube/answer/2657964",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "D3 bio 111 characters; third-party limit 150",
+  "source": "script count; https://bitly.com/blog/instagram-character-limit/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "Template",
+  "sampled": true,
+  "kind": "number",
+  "claim": "T4 handle 3-30 characters",
+  "source": "https://support.google.com/youtube/answer/11585688?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Thomson, Human brands, Journal of Marketing 70(3), 2006, 104-119",
+  "source": "https://bvbvf1.bib-bvb.de/vufind/PrimoRecord/cdi_proquest_journals_227781169",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Instagram name rule twice every 14 days and old username claimable rest on SocialBee, dated",
+  "source": "https://socialbee.com/blog/how-to-change-your-name-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Ries and Trout wordings as quoted in Graham Mann's notes",
+  "source": "https://grahammann.net/book-notes/positioning-al-ries-jack-trout",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube tips: two quotations, no effect sizes, no ranking",
+  "source": "https://support.google.com/youtube/answer/13615784?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "§2, §5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Mosseri 25 Aug 2021: search matching and handle, name, bio advice",
+  "source": "https://about.instagram.com/blog/announcements/break-down-how-instagram-search-works/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Beaupré's two quotations via SEJ, 4 Mar 2024",
+  "source": "https://www.searchenginejournal.com/youtube-algorithm-myths-debunked-insights-from-the-growth-team/510091/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Aaker and Keller fit finding; CiteDrive year 2018 in error",
+  "source": "https://www.citedrive.com/en/discovery/consumer-evaluations-of-brand-extensions/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Bottomley and Holden 2001: eight studies, two quotations, JMR 38(4) 494-500",
+  "source": "https://researchers.mq.edu.au/en/publications/do-we-really-know-how-consumers-evaluate-brand-extensions-empiric/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Net Influencer 4 Mar 2026: Boyd quote; second channel, no numbers",
+  "source": "https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Laughing Squid 30 Dec 2016: six skills of the 2016 round-up",
+  "source": "https://laughingsquid.com/a-recap-of-everything-mike-boyd-taught-himself-to-quickly-learn-in-2016/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "The round-up is 'titled' A round up of 2016's 'Learn Quick'",
+  "source": "https://laughingsquid.com/a-recap-of-everything-mike-boyd-taught-himself-to-quickly-learn-in-2016/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 19,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ Mike Boyd: 23 Oct 2008, 2.93M, 197 videos, 477,008,214 views on 11 Nov 2026",
+  "source": "https://vidiq.com/youtube-stats/channel/@mikeboyd/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§2",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Rosetta: nine 2019 '30 days' titles; 12 Feb 2019; 10 Dec 2019; zone 2 on 30 Mar 2026",
+  "source": "https://rosetta.to/u/mattdavella/2019",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ Matt D'Avella: 25 Jul 2011, 4.06M, 472 videos, 5 Nov 2026",
+  "source": "https://vidiq.com/youtube-stats/channel/@mattdavella/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Michelle Khare About: two phrases, 5.43M, undated",
+  "source": "https://michellekhare.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Thomson: three studies, two quotations",
+  "source": "https://bvbvf1.bib-bvb.de/vufind/PrimoRecord/cdi_proquest_journals_227781169",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§4",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "YouTube handle rules: characters, case, one per channel, already being used, distinct from channel names",
+  "source": "https://support.google.com/youtube/answer/11585688?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Channel name twice within 14 days; badge removed",
+  "source": "https://support.google.com/youtube/answer/2657964",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§4, §5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Data API: channel title 30; keywords 500 in total",
+  "source": "https://developers.google.cn/youtube/v3/docs/channels?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Instagram Help: periods, numbers, underscores or abbreviations; no limit stated",
+  "source": "https://help.instagram.com/513717858639392",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "SocialBee: 30 characters for username and display name",
+  "source": "https://socialbee.com/blog/how-to-change-your-name-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§4, Sources",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Bitly: username 30; author; dates; no Instagram source",
+  "source": "https://bitly.com/blog/instagram-character-limit/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Word and character counts in D1-D4; weekdays of the dates",
+  "source": "script in this audit",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§1, Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Mara's facts agree with the register",
+  "source": "case-facts.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "whole unit",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pointers to PB1, PB3, PB4, PB6, PB7, PB8, PB10 hold",
+  "source": "others/",
+  "verdict": "PASS"
+ }
+]

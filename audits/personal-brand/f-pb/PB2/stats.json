@@ -1,0 +1,20 @@
+{
+ "unit": "PB2",
+ "model": "claude-fable-5-2",
+ "words": 8183,
+ "sections": 9,
+ "cited_claims_in_unit": 65,
+ "claims_sampled": 9,
+ "claims_checked_total": 32,
+ "fail_sampled": 0,
+ "fail_total": 1,
+ "stale_total": 0,
+ "unverifiable_total": 0,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 24,
+ "web_fetches": 27,
+ "not_checked": [
+  "https://help.instagram.com/182492381886913: page served no article text (opened only to look for an Instagram-stated username limit)"
+ ]
+}

@@ -7,4 +7,4 @@ for i in $(seq 1 $((T/15))); do
   [ "$now" != "$start" ] && break
   sleep 15
 done
-for d in /home/claude/fpb/*/; do c=$(basename $d); printf '%s: %s lines audit, DONE=%s\n' "$c" "$(wc -l < $d/out/audit.md 2>/dev/null || echo 0)" "$( [ -f $d/out/DONE ] && head -c 80 $d/out/DONE | tr '\n' ' ' || echo no)"; done
+for d in /home/claude/fpb/*/; do c=$(basename $d); printf '%s: %s lines audit, DONE=%s\n' "$c" "$(cat $d/out/audit.md 2>/dev/null | wc -l)" "$( [ -f $d/out/DONE ] && head -c 80 $d/out/DONE | tr '\n' ' ' || echo no)"; done

@@ -1,0 +1,14 @@
+[
+ {
+  "id": "PB2-1",
+  "unit": "PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "§2 · The method or repeatable format (creator cases)",
+  "current": "and his 2016 round-up, titled \"A round up of 2016's 'Learn Quick'\", covered",
+  "fix": "and his 2016 round-up video, which the page quotes as \"A round up of 2016's 'Learn Quick'\", covered",
+  "basis": "The Laughing Squid page prints the line as a quotation under the embedded video and does not call it the video's title; its own headline is different. https://laughingsquid.com/a-recap-of-everything-mike-boyd-taught-himself-to-quickly-learn-in-2016/",
+  "figure": false
+ }
+]

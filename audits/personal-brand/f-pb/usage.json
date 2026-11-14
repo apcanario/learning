@@ -1,1 +1,17 @@
-{"units": {}}
+{
+ "units": {
+  "PB2": {
+   "tokens": 179631,
+   "tool_uses": 63,
+   "minutes": 6.14,
+   "model_stated": "claude-fable-5-2",
+   "files": [
+    "audit.md",
+    "errata.json",
+    "claims.json",
+    "stats.json"
+   ],
+   "note": ""
+  }
+ }
+}
