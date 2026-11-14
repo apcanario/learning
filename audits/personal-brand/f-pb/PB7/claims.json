@@ -1,0 +1,335 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "30 Apr 2024: small test audience; top performing set shown wider; new ranking input for smaller creators; no size, window or effect size",
+  "source": "https://creators.instagram.com/recommendations-and-originality",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Fanpage Karma: >3 million posts, Jan–Apr 2026; under 10,000: 4.9% / 3.5% / 2.6% median reach; Reels nearly three times the non-follower reach of carousels",
+  "source": "https://www.fanpagekarma.com/insights/instagram-format-reach/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Socialinsider: 67,541,436 posts, brands 1K–1M; 1K–5K views 993 / 580 / 417; engagement 0.55% / 0.52% / 0.37%",
+  "source": "https://socialinsider.io/social-media-benchmarks/instagram",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Socialinsider skip rate: 65.50% at 1–5K, 60.50% at 100K–1M; 9,771,822 Reels, Jan–Jun 2026",
+  "source": "https://socialinsider.io/blog/instagram-reels-statistics/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "30 Apr 2026: protections extended to photos and carousels; 'will no longer be shown in places where we recommend content'; 75% of US recommendations from original posts",
+  "source": "https://creators.instagram.com/blog/rewarding-original-creators-on-instagram",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "Reposts go to friends' and followers' feeds, 'credited to the original poster', with a profile tab; 6 Aug 2025",
+  "source": "https://about.fb.com/news/2025/08/new-instagram-features-help-you-connect/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "§7",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "18 Dec 2025: hashtag limit of five (Instagram, quoted); Mosseri: hashtags \"don't improve visibility on Instagram\" (in quotation marks)",
+  "source": "https://www.socialmediatoday.com/news/instagram-implements-new-limits-on-hashtag-use/808309/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 8,
+  "section": "§8",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Buffer: 2.1 million feed posts, 102,000 accounts, fixed effects; +0.12/0.26/0.44/0.66% weekly growth; reach per post +12/18/24%; 'likely the sweet spot'",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "§9",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "YouTube: definitions of External and of Direct or unknown sources",
+  "source": "https://support.google.com/youtube/answer/1714921?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "§10",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Mosseri: 'You're more than welcome to say 'link in bio,' it will not affect your reach one way or another'",
+  "source": "https://www.socialmediatoday.com/news/instagram-doesnt-penalize-posts-that-include-link-in-bio/753899/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "Deliverable · D1 (IR8)",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "Trial reels: non-followers first; automatic sharing on 72-hour views; 1,000 followers and a public account",
+  "source": "https://creators.instagram.com/blog/instagram-trial-reels ; https://socialmediatoday.com/news/instagram-expands-access-trial-reels/752895/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "Deliverable · D2 (IG3)",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Buffer benchmarks: median reach 261 (All); 27 million posts / 273,000 accounts and 30 million / 250,000 both on the page; updated 8 Nov 2026",
+  "source": "https://buffer.com/social-media-benchmarks/instagram",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "Deliverable · Templates (T2 IG12)",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Meta's threshold: follower demographics not returned under 100 followers",
+  "source": "https://developers.facebook.com/docs/instagram-platform/api-reference/instagram-user/insights",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "date",
+  "claim": "Engadget reference: title, 12 Mar 2026; Meta confirmed the caption-link test for Meta Verified; no word on wider availability",
+  "source": "https://www.engadget.com/social-media/meta-is-testing-clickable-links-in-instagram-captions-for-verified-subscribers-184555406.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Trial reels eligibility rests on SMT's paraphrase of a Mosseri Threads post, 13 Jul 2025",
+  "source": "https://socialmediatoday.com/news/instagram-expands-access-trial-reels/752895/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§5",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "30 Apr 2024: originals replace copies in recommendations, label to the original creator, repeat aggregators excluded",
+  "source": "https://creators.instagram.com/recommendations-and-originality",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Fanpage Karma: reach within the existing community 2.1% images, 2.0% Reels (under 10,000)",
+  "source": "https://www.fanpagekarma.com/insights/instagram-format-reach/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Fanpage Karma: interaction rate images 0.51%, Reels 0.34%; not stated as medians",
+  "source": "https://www.fanpagekarma.com/insights/instagram-format-reach/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "D2 IG8",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Socialinsider: 22% yearly follower growth, brand accounts 1,000–5,000",
+  "source": "https://socialinsider.io/social-media-benchmarks/instagram",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "30 Apr 2026: 'does not impact how we show people content from accounts they follow'; collabs, remix, paid-partnership label, Stories, reposts",
+  "source": "https://creators.instagram.com/blog/rewarding-original-creators-on-instagram",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Reposts row, Who can use it: 'All accounts', cited to Meta, 6 Aug 2025",
+  "source": "https://about.fb.com/news/2025/08/new-instagram-features-help-you-connect/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 22,
+  "section": "§7",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Instagram: fewer, more targeted hashtags 'can improve both your content's performance and people's experience on Instagram'",
+  "source": "https://www.socialmediatoday.com/news/instagram-implements-new-limits-on-hashtag-use/808309/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§10 item 1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Mosseri said in 2025 that hashtags \"don't improve visibility\"",
+  "source": "https://www.socialmediatoday.com/news/instagram-implements-new-limits-on-hashtag-use/808309/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 24,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Buffer left Stories out: 'Since stories are not typically shown to non-followers'",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Meta developer reference: definitions of views and reach; FOLLOWER and NON_FOLLOWER as a breakdown",
+  "source": "https://developers.facebook.com/docs/instagram-platform/api-reference/instagram-user/insights",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§9",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "profile_links_taps counts taps on contact buttons only",
+  "source": "https://developers.facebook.com/docs/instagram-platform/api-reference/instagram-user/insights",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§1, §4, D1 IR4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Mosseri, Jan 2025: top three signals; likes for connected, sends for unconnected; average watch time, likes per reach, sends per reach; 'connected' undefined, SMT's reading",
+  "source": "https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Metricool Trends 2026: 24,364,803 posts, 375,118 accounts; carousels' views about 1.69% above Reels'; Reels engagement +24.76%, shares +67.19%",
+  "source": "https://metricool.com/instagram-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Metricool 2026: Stories reach −1.77%, replies +88%; 65% / 76% of views in days 1–3; 44% of a single image's views on day 1",
+  "source": "https://metricool.com/instagram-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§8",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Metricool 2026: 2,000–10,000 best at 7–14 posts a week; 10,000–100,000 at 14–30; 100,000–1M better per post when posting less; no band under 2,000",
+  "source": "https://metricool.com/instagram-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Meta media insights: reels_skip_rate; ig_reels_avg_watch_time 'The average amount of time spent playing the reel'; no insights for media within an album; shares, saves, likes, comments, follows, profile visits defined there",
+  "source": "https://developers.facebook.com/docs/instagram-platform/reference/instagram-media/insights/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Reference title: Social Media Today, 'Instagram shares algorithm insights for 2025', 22 Jan 2025",
+  "source": "https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 33,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Reference title: Social Media Today, 'Instagram expands access to trial reels', 13 Jul 2025",
+  "source": "https://socialmediatoday.com/news/instagram-expands-access-trial-reels/752895/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 34,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Reference title: Social Media Today, 'Instagram implements new limits on hashtag use', 18 Dec 2025",
+  "source": "https://www.socialmediatoday.com/news/instagram-implements-new-limits-on-hashtag-use/808309/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Reference title: Buffer, 'How often should you post on Instagram', 13 Aug 2025",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 36,
+  "section": "D2 IG11",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "Recommendation eligibility 'regained after 30 days of mostly original posts'",
+  "source": "https://creators.instagram.com/blog/rewarding-original-creators-on-instagram",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 37,
+  "section": "§8",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "Buffer: Stories excluded; each account compared with itself; reach-per-post gain measured against 1–2 posts a week",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ }
+]

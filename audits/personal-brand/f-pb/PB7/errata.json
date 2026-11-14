@@ -1,0 +1,98 @@
+[
+ {
+  "id": "PB7-1",
+  "unit": "PB7",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "§7 · Hashtags",
+  "current": "The same article reports Mosseri saying in 2025 that hashtags \"don't improve visibility on Instagram\", though they are \"a great way to let people know what a post is about and connect posts\" (same source).",
+  "fix": "The same article reports Mosseri saying in May 2025 that hashtags don't improve visibility on Instagram (the article's paraphrase, not his words), though they are \"a great way to let people know what a post is about and connect posts\" (same source).",
+  "basis": "Social Media Today, 18 Dec 2025: 'In May this year, Mosseri once again said that hashtags don't improve visibility on Instagram, but they are \"a great way to let people know what a post is about and connect posts.\"' Only the second phrase is in quotation marks in the article. https://www.socialmediatoday.com/news/instagram-implements-new-limits-on-hashtag-use/808309/",
+  "figure": false
+ },
+ {
+  "id": "PB7-2",
+  "unit": "PB7",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "§10 · item 1",
+  "current": "Mosseri said in 2025 that hashtags \"don't improve visibility\"; Instagram limits them to five (§7).",
+  "fix": "Mosseri, as Social Media Today paraphrases him, said in May 2025 that hashtags don't improve visibility; Instagram limits them to five (§7).",
+  "basis": "As PB7-1: the phrase is the reporter's paraphrase, not a quotation. https://www.socialmediatoday.com/news/instagram-implements-new-limits-on-hashtag-use/808309/",
+  "figure": false
+ },
+ {
+  "id": "PB7-3",
+  "unit": "PB7",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "§6 · table, Reposts row",
+  "current": "| All accounts | [Meta, New Instagram features to help you connect, 6 Aug 2025]",
+  "fix": "| No eligibility limit stated on the page | [Meta, New Instagram features to help you connect, 6 Aug 2025]",
+  "basis": "Meta, 6 Aug 2025, says 'you can repost public reels and feed posts' and states no eligibility. https://about.fb.com/news/2025/08/new-instagram-features-help-you-connect/",
+  "figure": false
+ },
+ {
+  "id": "PB7-4",
+  "unit": "PB7",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "D2 · IG11",
+  "current": "Eligible is the expected state; regained after 30 days of mostly original posts (Original content guidelines; Instagram, 30 Apr 2026)",
+  "fix": "Eligible is the expected state; regained when a significant percentage of the posts of a rolling 30 days are original (Original content guidelines; Instagram, 30 Apr 2026)",
+  "basis": "Instagram Creators, 30 Apr 2026: eligibility returns when recent posts are 'considered original in a 30-day period', on a rolling basis; the unit's §5 quotes the guidelines' 'a significant percentage' and notes it is not defined. https://creators.instagram.com/blog/rewarding-original-creators-on-instagram",
+  "figure": false
+ },
+ {
+  "id": "PB7-5",
+  "unit": "PB7",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Sources",
+  "current": "- Social Media Today, Instagram shares algorithm insights for 2025, 22 Jan 2025.",
+  "fix": "- Social Media Today, Instagram Shares Algorithm Insights To Inform Strategy, 22 Jan 2025.",
+  "basis": "The article's headline and page title. https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/",
+  "figure": false
+ },
+ {
+  "id": "PB7-6",
+  "unit": "PB7",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Sources",
+  "current": "- Social Media Today, Instagram expands access to trial reels, 13 Jul 2025.",
+  "fix": "- Social Media Today, Instagram Trial Reels Are Now Available to More Creators, 13 Jul 2025.",
+  "basis": "The article's headline and page title. https://socialmediatoday.com/news/instagram-expands-access-trial-reels/752895/",
+  "figure": false
+ },
+ {
+  "id": "PB7-7",
+  "unit": "PB7",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Unsure list · item 1",
+  "current": "rests on Social Media Today's paraphrase of a Mosseri Threads post, 13 Jul 2025;",
+  "fix": "rests on Social Media Today's paraphrase of Mosseri, 13 Jul 2025, which links a Threads post on another account (not opened);",
+  "basis": "SMT credits Mosseri and links a Threads post on the account oncescuradu; whether the words are in a post of Mosseri's own was not confirmed. https://socialmediatoday.com/news/instagram-expands-access-trial-reels/752895/",
+  "figure": false
+ },
+ {
+  "id": "PB7-8",
+  "unit": "PB7",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Unsure list · item 8",
+  "current": "(§4; flag F32)",
+  "fix": "(§4)",
+  "basis": "brief.txt: the course is shared with anyone; 'flag F32' is an internal label a reader cannot open (the fresh check removed 'flag F6' from §4 for the same reason). No URL: internal consistency.",
+  "figure": false
+ }
+]

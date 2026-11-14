@@ -25,6 +25,19 @@
     "stats.json"
    ],
    "note": ""
+  },
+  "PB7": {
+   "tokens": 236397,
+   "tool_uses": 62,
+   "minutes": 8.33,
+   "model_stated": "claude-fable-5-2",
+   "files": [
+    "audit.md",
+    "errata.json",
+    "claims.json",
+    "stats.json"
+   ],
+   "note": ""
   }
  }
 }

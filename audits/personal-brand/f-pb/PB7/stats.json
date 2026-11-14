@@ -1,0 +1,23 @@
+{
+ "unit": "PB7",
+ "model": "claude-fable-5-2",
+ "words": 10591,
+ "sections": 13,
+ "cited_claims_in_unit": 126,
+ "claims_sampled": 15,
+ "claims_checked_total": 37,
+ "fail_sampled": 1,
+ "fail_total": 6,
+ "stale_total": 0,
+ "unverifiable_total": 0,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 20,
+ "web_fetches": 22,
+ "not_checked": [
+  "https://www.socialinsider.io/instagram-benchmarks: the unit's link was not returned verbatim by a search; the same report was read at https://socialinsider.io/social-media-benchmarks/instagram",
+  "Threads posts linked by Social Media Today (Mosseri's statements; the @creators hashtag post): not returned by a search, not opened",
+  "Instagram Help Centre pages: not attempted; the unit cites none",
+  "24 of the 42 listed sources (unsampled): not opened in this audit"
+ ]
+}
