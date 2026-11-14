@@ -96,5 +96,30 @@
   "not_applied": [],
   "flags": [],
   "figures": []
+ },
+ "PB8": {
+  "applied": [
+   "PB8-1",
+   "PB8-2",
+   "PB8-3",
+   "PB8-4",
+   "PB8-5",
+   "PB8-6",
+   "PB8-7",
+   "PB8-8",
+   "PB8-11"
+  ],
+  "not_applied": [
+   {
+    "id": "PB8-9",
+    "why": "held by the chat (see skip.json)"
+   },
+   {
+    "id": "PB8-10",
+    "why": "held by the chat (see skip.json)"
+   }
+  ],
+  "flags": [],
+  "figures": []
  }
 }
