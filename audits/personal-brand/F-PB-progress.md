@@ -3,7 +3,7 @@
 Row F-PB, started 14 Nov 2026. One line per unit and one for Audit 4. States: pending, report saved, errata applied, errata not applied: <why>.
 
 - PB1: errata applied (4 applied, 0 not applied, 1 flags)
-- PB2: report saved
+- PB2: errata applied (1 applied, 0 not applied, 0 flags)
 - PB3: report saved
 - PB4: report saved
 - PB5: report saved

@@ -11,5 +11,13 @@
    "PB1-5"
   ],
   "figures": []
+ },
+ "PB2": {
+  "applied": [
+   "PB2-1"
+  ],
+  "not_applied": [],
+  "flags": [],
+  "figures": []
  }
 }
