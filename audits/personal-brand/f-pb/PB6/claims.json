@@ -1,0 +1,488 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Recommendations page: \"over 80 billion pieces of information\"; surveys help understand \"satisfaction, not just watch time\"",
+  "source": "https://support.google.com/youtube/answer/16089387?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Metricool: 799,718 videos, 71,177 accounts, 2025 against 2026; Shorts feed more than 61%, subscribers 11%, search 9%, related 5.77%, playlists 5.05%, channel pages about 3%; browse not reported",
+  "source": "https://metricool.com/youtube-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "\"Half of all channels and videos on YouTube have an impressions CTR that can range between 2% and 10%.\"",
+  "source": "https://support.google.com/youtube/answer/7628154?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "number",
+  "claim": "vidIQ first-week views: 38,229,639 long-form videos, 15 Aug to 5 Sep 2026; median 234; 37.7% under 100; 70.1% under 1,000; top 1% took 54.1%, next 9% 34.6%, next 40% 10.8%, bottom 50% 0.5%; published 16 Sep 2026",
+  "source": "https://vidiq.com/research/youtube-first-week-views/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "AIR: 18,000 English-language channels, 40+ videos and 10+ long-form, Mar 2025 to Mar 2026; Home and DIY \"near-identical\", 95,100 v 94,600 and 251,500 v 256,000",
+  "source": "https://air.io/en/audience-growth/do-youtube-shorts-help-your-long-form-videos-grow-data-from-18000-channels",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "vidIQ: 32,926,088 channels under 1,000 subscribers, 360 days; 0.20% / 1.86% / 8.65% / 30.77% crossed 1,000 by videos added; \"observational association\"; formats not separated",
+  "source": "https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "§7",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "Search: relevance (\"how well the title, tags, description, and video content match your search query\"), engagement (watch time per query), quality (expertise, authoritativeness, trustworthiness); importance \"may vary by search type\"; no payment for placement; no channel size or upload date on the page",
+  "source": "https://support.google.com/youtube/answer/16090438?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "§8",
+  "sampled": true,
+  "kind": "date",
+  "claim": "10 Aug 2026 blog post: from 1 Feb 2027 new applicants need 8,000 qualified watch hours in 365 days or 20M qualified Shorts views in 90 days; Shorts revenue sharing only at 10M qualified Shorts views in 90 days; (with 1,000 subscribers; terms accepted by 31 Jan 2027)",
+  "source": "https://blog.youtube/news-and-events/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "§9",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "\"Publish time is not known to impact a video's long-term performance\"; publishing when the audience is active \"can be beneficial for early viewership\"",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "Deliverable D1 R4",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "\"consistent and similar in topic or format\"; \"a series of videos from topics that have already proven popular\"",
+  "source": "https://support.google.com/youtube/answer/13615784?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "Deliverable D2 YT9",
+  "sampled": true,
+  "kind": "number",
+  "claim": "+0.5 a month at 1–99 subscribers, +1.4 at 100–499, +3.7 at 500–999; 3,332,098 channels; 90 days to 20 Jul 2026",
+  "source": "https://vidiq.com/research/youtube-subscriber-benchmarks-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "TechCrunch (Amanda Silberling), \"YouTube adds new creator tools like video A/B testing, dynamic thumbnails, and live dubbing\", 23 Sep 2026; and the §8 row it supports",
+  "source": "https://techcrunch.com/2026/09/23/youtube-adds-new-creator-tools-like-video-a-b-testing-dynamic-thumbnails-and-live-dubbing/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "vidIQ first-week study states no channel count; livestreams not filtered out",
+  "source": "https://vidiq.com/research/youtube-first-week-views/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "§1",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "Help page: where recommendations appear, the signal list, Up Next main signal, Home relies primarily on watch history",
+  "source": "https://support.google.com/youtube/answer/16089387?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Goodrow, VP of engineering, 15 Sep 2021: six quoted strings",
+  "source": "https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Creator page: \"What matters is how viewers respond…\", \"does not penalize a channel overall\", \"consistently stops watching\", monetised videos not prioritised, unlisted-first quote",
+  "source": "https://support.google.com/youtube/answer/16559651?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Beaupré, SEJ 4 Mar 2024: four quotations",
+  "source": "https://www.searchenginejournal.com/youtube-algorithm-myths-debunked-insights-from-the-growth-team/510091/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Beaupré via PPC Land, 2 Sep 2026: interview published 1 Sep 2026; \"Each viewer gets a different ranking\"; \"videos are reaching people who've never watched the channel before\"; topic-match and impressions-stop are paraphrases",
+  "source": "https://ppc.land/subscribers-skip-90-of-uploads-in-their-feed-youtube-director-says/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Traffic source definitions (six table rows)",
+  "source": "https://support.google.com/youtube/answer/1714921?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "FAQ: \"You released a new video in a series…\"; \"Viewers, on average, are subscribed to dozens of channels…\"",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Beaupré on subscribers: \"10% or less click-through rate\", \"even your best videos, 90% of the time…\", \"The number one place…\"; subscriptions feed small in paraphrase",
+  "source": "https://ppc.land/subscribers-skip-90-of-uploads-in-their-feed-youtube-director-says/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§2",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "Android Studio app path (Content, video, Analytics card, Reach); \"Thumbnail impressions\" naming; search terms report",
+  "source": "https://support.google.com/youtube/answer/9314355?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "CTR definition; external sites and end screens not counted; the other six FAQ bullets",
+  "source": "https://support.google.com/youtube/answer/7628154?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Focus Digital: \"4–6%\", January to June 2026, sources named, no sample size; 11 Sep 2026",
+  "source": "https://focus-digital.co/average-youtube-ctr-organic-paid-benchmarks-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Retention report: Intro, spikes, dips, 60 seconds and 100 views, \"all YouTube videos of similar length\"",
+  "source": "https://support.google.com/youtube/answer/9314415?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Typical retention (\"the last 10 of your videos of a similar length\"); \"A typical intro is about 30 seconds long\"; 50% and the \"above typical intros\" list",
+  "source": "https://support.google.com/youtube/answer/12942217?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ: \"5 to 15 minutes: aim for 40 to 55% viewed\"; \"vidIQ guidance for target bands\"; own channel 30.3% across 16.5M views, 26 Jun 2025 to 25 Jun 2026; updated 21 Jul 2026",
+  "source": "https://vidiq.com/blog/post/average-view-duration/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Test & Compare: up to 3, computers only, advanced features, no Shorts, \"Not enough impressions\", \"Inconclusive\", default-title sentence, watch time over CTR",
+  "source": "https://support.google.com/youtube/answer/16391400?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Packaging changes: \"can lead to a shift in its performance…\", \"recommended when a video has a lower click-through rate (CTR)…\", \"not to change what is already working well\"",
+  "source": "https://support.google.com/youtube/answer/16559651?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Four FAQ quotes on old videos and \"regardless of when that video was uploaded\"",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"Qualified watch hours gained from long-form videos that you've set to public\"; private, unlisted, deleted and Shorts do not count",
+  "source": "https://support.google.com/youtube/answer/72851?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Answer 12843009: \"8,000 qualified watch hours in the last 365 days, or 20M qualified Shorts views in the last 90 days\", with 1,000 subscribers",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 33,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Metricool: peak in first three days; about 83% of interactions within ten days; \"keeps earning views for months\"",
+  "source": "https://metricool.com/youtube-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Formats \"will not inherently confuse the algorithm\"; long-form viewers may see Shorts; \"Any perceived effect…\"",
+  "source": "https://support.google.com/youtube/answer/16559651?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Related video on a Short; \"only available with advanced feature access\"; blog guide 14 Jul 2026, \"billions of daily views\", no conversion figure",
+  "source": "https://support.google.com/youtube/answer/14075157?hl=en; https://blog.youtube/creator-and-artist-stories/youtube-related-videos-traffic-guide/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 36,
+  "section": "§5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Metricool: 8,789 at about five Shorts a month, 5,985 global, 4,364 with none; 35+ falls back; \"Correlation isn't causation here…\"",
+  "source": "https://metricool.com/youtube-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 37,
+  "section": "§5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ first ten: Shorts 1,362 and 1,344; long-form 180 and 272; three caveat quotes; \"no incremental growth, in fact a slight decline over time\"",
+  "source": "https://vidiq.com/research/youtube-first-10-videos-study/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 38,
+  "section": "§5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "OverseerOS: 370 videos, 37 channels, 1.021, 19 of 37, subset of 16 at 0.754, \"found no consistent evidence…\", 1 Sep 2026, no subscriber finding",
+  "source": "https://www.overseeros.com/blog/do-youtube-shorts-hurt-long-form-views",
+  "verdict": "PASS"
+ },
+ {
+  "n": 39,
+  "section": "§5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "OverseerOS: 9,982 Shorts at least 30 days old, about eight days; \"Among 1,546 Shorts starting below 1,000 views, none gained another 1,000 views during that interval\"; \"selected, not random\"; 8 Nov 2026",
+  "source": "https://www.overseeros.com/blog/do-youtube-shorts-get-views-after-30-days",
+  "verdict": "PASS"
+ },
+ {
+  "n": 40,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "AIR states \"0.04% to 0.5% Shorts-to-long-form conversion\" with no definition, method, source or sample",
+  "source": "https://air.io/en/audience-growth/do-youtube-shorts-help-your-long-form-videos-grow-data-from-18000-channels",
+  "verdict": "PASS"
+ },
+ {
+  "n": 41,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Break and cadence quotes; PPC Land reports a German-language FAQ in the YouTube Help community on 2 Sep 2026 with two Help Center pages",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en; https://ppc.land/youtube-finds-no-link-between-upload-breaks-and-view-counts/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 42,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"To grow regular viewers, publish content regularly and maintain a strong connection with your audience\"",
+  "source": "https://support.google.com/youtube/answer/13615784?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 43,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "AIR cadence: 18,000 channels, US/UK/Canada/Australia, 100K–1M tier; Home and DIY 83,050 (116), 114,000 (178), 105,000 (130), 90,700 (87); 14+ day gaps; predictable schedule; \"correlational data, not causal\"; no effect size for the gap finding",
+  "source": "https://air.io/en/audience-growth/does-posting-more-on-youtube-help-we-studied-18000-channels-to-find-out",
+  "verdict": "PASS"
+ },
+ {
+  "n": 44,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Metricool: 2 to 4 long-form posts a week best per post, about 10,552 views; under once a week weakest monthly result",
+  "source": "https://metricool.com/youtube-trends/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 45,
+  "section": "§7",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Tags \"play a minimal role in your video's discovery\"; useful where \"commonly misspelled\"; title, thumbnail, description matter more",
+  "source": "https://support.google.com/youtube/answer/146402?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 46,
+  "section": "§7",
+  "sampled": false,
+  "kind": "number",
+  "claim": "AIR titles: 18,080 channels, 100K–100M monthly views, 11 niches; engagement definition; \"the universal sweet spot\" at 30 to 50; keyword in first 40%; Home and DIY finished-project finding; caveats; period not stated; titles not separated from thumbnails",
+  "source": "https://air.io/en/audience-growth/how-to-write-a-youtube-title-that-gets-clicked-research-across-11-niches",
+  "verdict": "PASS"
+ },
+ {
+  "n": 47,
+  "section": "§8",
+  "sampled": false,
+  "kind": "date",
+  "claim": "4 Dec 2025: title testing in Test & Compare, global, up to three titles, thumbnails or pairs, long-form, desktop, watch time",
+  "source": "https://www.searchenginejournal.com/youtube-title-a-b-testing-rolls-out-globally-to-creators/562571/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 48,
+  "section": "§8",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Shift in Shorts ranking from mid-Sep 2025; YouTube \"hasn't confirmed any algorithm change\"; SEJ 5 Dec 2025",
+  "source": "https://www.searchenginejournal.com/youtube-shorts-algorithm-may-now-favor-fresh-over-evergreen/562661/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 49,
+  "section": "§8",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"Videos that are made with AI can be recommended as broadly as videos made without AI\"",
+  "source": "https://support.google.com/youtube/answer/16089387?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 50,
+  "section": "§9",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Item 6: Mario Joos, on X, 30 Nov 2025, \"satisfied watch time per click\", reported by PPC Land 2 Dec 2025; YouTube gave no explanation",
+  "source": "https://ppc.land/youtube-creators-report-drops-in-shorts-viewership-after-september-algorithm-change/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 51,
+  "section": "§9 / D2 YT11",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"Audience segments do not affect reach or monetization\"; regular = at least once a month for more than 6 months in the past year",
+  "source": "https://support.google.com/youtube/answer/10246996?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 52,
+  "section": "D2 YT10",
+  "sampled": false,
+  "kind": "number",
+  "claim": "\"3,000 for fan funding (answers 12843009, 72851)\"",
+  "source": "https://support.google.com/youtube/answer/12843009; https://support.google.com/youtube/answer/72851?hl=en-GB",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 53,
+  "section": "D2 YT11 / T2 YT11",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Metric named \"Returning, casual and regular viewers\"",
+  "source": "https://support.google.com/youtube/answer/10246996?hl=en",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 54,
+  "section": "§7",
+  "sampled": false,
+  "kind": "number",
+  "claim": "AIR: \"titles of over 90 characters underperforming on views\"",
+  "source": "https://air.io/en/audience-growth/how-to-write-a-youtube-title-that-gets-clicked-research-across-11-niches",
+  "verdict": "FAIL"
+ }
+]

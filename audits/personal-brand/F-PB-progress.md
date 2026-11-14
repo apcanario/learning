@@ -7,7 +7,7 @@ Row F-PB, started 14 Nov 2026. One line per unit and one for Audit 4. States: pe
 - PB3: report saved
 - PB4: pending
 - PB5: report saved
-- PB6: pending
+- PB6: report saved
 - PB7: report saved
 - PB8: pending
 - PB9: pending

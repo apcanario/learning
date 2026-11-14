@@ -1,0 +1,50 @@
+[
+ {
+  "id": "PB6-1",
+  "unit": "PB6",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "§7 · Titles and search for a small channel (What the title data says)",
+  "current": "titles of over 90 characters underperforming on views",
+  "fix": "titles of 90 or more characters underperforming on views",
+  "basis": "AIR Media-Tech's length buckets are \"under 30, 30–50, 50–70, 70–90, 90+ characters\", and the finding reads \"90+ character titles consistently underperform on views\"; the page does not say \"over 90\". https://air.io/en/audience-growth/how-to-write-a-youtube-title-that-gets-clicked-research-across-11-niches",
+  "figure": false
+ },
+ {
+  "id": "PB6-2",
+  "unit": "PB6",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable · D1, rule R10",
+  "current": "| \"Publish time is not known to impact a video's long-term performance\" (answer 141805) | Strong |",
+  "fix": "| \"Publish time is not known to impact a video's long-term performance\", although publishing when the audience is most active \"can be beneficial for early viewership\" (answer 141805) | Strong |",
+  "basis": "The same FAQ answer carries both halves, and §9 item 8 of the unit gives both; the deliverable row, which must stand without the unit, gives only the half that supports the rule. https://support.google.com/youtube/answer/141805?hl=en",
+  "figure": false
+ },
+ {
+  "id": "PB6-3",
+  "unit": "PB6",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Deliverable · D2, row YT11",
+  "current": "| YT11 | Returning, casual and regular viewers |",
+  "fix": "| YT11 | New, casual and regular viewers |",
+  "basis": "The cited page names the three segments \"New viewers\", \"Casual viewers\" and \"Regular viewers\"; \"returning\" is not a segment name. Flag, not erratum: PB10 (D1, row YT11) uses the same label \"Returning, casual and regular viewers\", so the two units would have to change together. https://support.google.com/youtube/answer/10246996?hl=en",
+  "figure": false
+ },
+ {
+  "id": "PB6-4",
+  "unit": "PB6",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Deliverable · Templates, T2, row YT11",
+  "current": "| YT11 | Returning, casual, regular viewers |",
+  "fix": "| YT11 | New, casual, regular viewers |",
+  "basis": "Same finding as PB6-3, second occurrence (the template row). https://support.google.com/youtube/answer/10246996?hl=en",
+  "figure": false
+ }
+]

@@ -64,6 +64,19 @@
     "stats.json"
    ],
    "note": "WebSearch budget ran out after its 18th search (shared by all agents); 21 of 38 source pages not opened"
+  },
+  "PB6": {
+   "tokens": 251659,
+   "tool_uses": 94,
+   "minutes": 10.68,
+   "model_stated": "claude-fable-5-2",
+   "files": [
+    "audit.md",
+    "errata.json",
+    "claims.json",
+    "stats.json"
+   ],
+   "note": "WebSearch budget ran out after its 34th search"
   }
  }
 }
