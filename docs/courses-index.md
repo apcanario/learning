@@ -231,7 +231,7 @@ Complete: 78 of 78 content reports; 83 modules with the audit unit. Written in s
 | 77 | 12.7 | 12 · Deep dive III: Greek philosophy | The Stoa from Zeno to Posidonius | written · reviewed (sampled) | Opus 5.5 | off | `courses/greece/12.7-the-stoa-from-zeno-to-posidonius.md` |
 | 78 | 12.8 | 12 · Deep dive III: Greek philosophy | Sceptics and Neoplatonists: the late schools to 529 | written · reviewed (sampled) | Opus 5.5 | off | `courses/greece/12.8-sceptics-and-neoplatonists-the-late-schools-to-529.md` |
 | ✓ | 13.1 | 13 · Quality audit | Calibrate the rubric | run 27 Oct 2026 (`kit/audits/greece-13.1-rubric.md`) | Fable 5.1 | off | `kit/audits/` |
-| ✓ | 13.2 | 13 · Quality audit | Audit one report | in progress: 17 of 23 Opus reports cleared (11 audited, 6 on the sample); 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 remain (S4) | Fable 5.1 | off | `kit/audits/` |
+| ✓ | 13.2 | 13 · Quality audit | Audit one report | in progress: 17 of 23 Opus reports cleared (11 audited, 6 on the sample); 11.1, 11.2, 11.4, 11.5, 11.6, 11.8 remain unaudited; the row that would have audited them (S4) was withdrawn on 15 Nov 2026 (P113, S-NOAUDIT: the Fable stage is closed) | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 13.3 | 13 · Quality audit | Deep-dive overlap check | partly run: six repeated disputes homed, six pairs read; 32 pairs measured mechanically only | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 13.4 | 13 · Quality audit | Compare the cohorts | interim decision recorded (`kit/audits/greece-13.4-cohorts.md`); final after 13.2 | Fable 5.1 | off | `kit/audits/` |
 | ✓ | 13.5 | 13 · Quality audit | Fix a report | in progress with 13.2 | Fable 5.1 | off | `kit/audits/` |

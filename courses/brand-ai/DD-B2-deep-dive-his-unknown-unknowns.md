@@ -218,3 +218,5 @@ All sources are this Project's chat history, read through the past-chat tools on
 10. Chats 24, 43, 48 and 52 carry Opus and Fable trailers (the writer and the fresh checker each found one of the two in chats 24 and 48); either may be an agent of the other model inside the chat rather than a switch of the chat's model.
 
 Fresh check 2026-11-03 (Opus 5.5, own agent context with the past-chat tools): fix · 3 errors, 4 should-fix, 5 minor; applied as verified (the model readings in part, on the union of both agents' trailers; the overlap count not applied); the bars figure fixed and passed its re-check, the Fable-by-day figure fixed twice and passed its third check; report `audits/brand-ai/fresh-check-DD-B2.md`.
+
+Note 15 Nov 2026 (row S-BW1, P114): the line above, and wherever this unit says a Fable 5.1 check or audit was owed, is accurate as of its writing and is kept as history. The Fable stage was closed on 15 Nov 2026 (S-NOAUDIT): no Fable fresh check or audit of this unit will run, and the Opus 5.5 fresh check recorded here stands as its check. The text above is unchanged.

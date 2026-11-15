@@ -353,3 +353,5 @@ Web sources opened on 2 November 2026 at the address a search returned, unless m
 10. **The `vault-finder` subagent, rules 25 to 28 and the B7 rule are untested;** whether a Haiku subagent keeps to its stop line is unmeasured, and rule 28's ordering is my rule. The *Subagents* page was read through a fetch tool that returned its first 100,000 characters only; the removed-tools list is reported from that reading.
 
 Fresh check 2026-11-02 (Opus 5.5, own agent context): fix · 0 errors, 10 should-fix, 14 minor; all applied, plus one same-cause fix to unsure item 7; the matrix figure fixed and passed its re-check, the flow figure set two boxes a row for the phone; report `audits/brand-ai/fresh-check-DD-B1.md`.
+
+Note 15 Nov 2026 (row S-BW1, P114): the line above, and wherever this unit says a Fable 5.1 check or audit was owed, is accurate as of its writing and is kept as history. The Fable stage was closed on 15 Nov 2026 (S-NOAUDIT): no Fable fresh check or audit of this unit will run, and the Opus 5.5 fresh check recorded here stands as its check. The text above is unchanged.
