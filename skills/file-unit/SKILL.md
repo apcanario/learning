@@ -5,6 +5,10 @@ description: File a finished Learning Project unit, then update its course data 
 
 # File a unit
 
+**In a thin main chat (S-BW1, 15 Nov 2026)** the chat does not write the course data by hand: a fresh Opus 5.5 filer agent, staged with `python3 kit/thin.py stage filer --row <row> ...`, writes `out/records.json` (the reading-page intro, status, next unit, version, changelog lines, register lines, flag rows, the `courses-index.md` edits, both changelogs), and `python3 kit/thin.py insert out/records.json` inserts it, restoring every file if anything fails. §4 and §6 below say what those records hold; the checks (`index_check.py`, `private_terms.py`, `build.py`, `verify.py`, the publish read-back) are scripts.
+
+**Proposals (standing rule, Pedro, 15 Nov 2026).** The closing reply lists every proposal the work raised, each with what it does and a ⚠ flag on any disruption elsewhere in the project. Each goes into the Carried proposals section of `docs/BACKLOG.md`, is appended to the next row's prompt by `kit/next_prompt.py` (its step 1c) and is worked in that chat unless Pedro removes it. A brief change or a task only Pedro can do stays *proposed*. The W-PB7 same-chat corrections rule is unchanged.
+
 Turns a written unit into a filed one: vault, course data, Academy, index. The procedure is `method.md` §7. The design rule holds throughout: Academy is rebuilt by `kit/build.py` from `design/theme.css`; nothing is styled by hand.
 
 **The course's entry.** Every course is one entry in `kit/courses.py`. For a markdown course (Brand + AI, User Experience, any new one) the entry gives the paths used below: `id` (its fresh-check reports go in `audits/<id>/`), `data` (the course's `hub.py`), `vault` (the folder the unit is filed in) and `sourcing_part` (its own part of `sourcing-standard.md`; Part 2 for a markdown course without the key). Below, `<id>`, `<data>` and `<vault>` mean those values for the unit's course; no step names one course's folders.
@@ -53,5 +57,5 @@ Every reading page either shows one object relief or records none (`method.md` �
 - Markdown course: every unit gets a fresh check before filing (`audit-units` §3, "Fresh check of one markdown-course unit"; Brand + AI since 28 Oct 2026). A unit is not filed unless the fresh-check line ends its unsure list, `audits/<id>/fresh-check-<code>.md` exists as `audits/README.md` sets out, and that file's `verdict` matches the line (verdict and counts). The path goes on the unit's `courses-index.md` row.
 - Commit and push `apcanario/learning` with the message `<id> <code>: filed`.
 - Where the course keeps a register of its invented facts (`generator/data/ux/perqo-facts.md`, S-1): append every fact the unit set, with its section, and list what the unit left free; a fact the unit changed is a fix to the earlier unit, made in the same chat.
-- Re-upload the changed Project knowledge files (`courses-index.md`, the course's `hub.py`, the unit from its vault folder).
+- Refresh the changed Project mirrors with the Projects tool: `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` every time, and `courses-index.md`, the course's `hub.py` and `syllabus-flags.md`, and the method or skill mirrors when this filing changed them. **Never upload a unit**: units are not mirrored into the Project (Pedro, 15 Nov 2026; the 49 copies were deleted that day); the repo and Academy carry them.
 - Reply with what was filed where, the page's relief (its outline, or none), the Academy version, and the counter. Nothing else.

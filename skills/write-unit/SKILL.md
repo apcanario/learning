@@ -9,6 +9,9 @@ One chat writes one unit. The method is `method.md` (§2 anatomy, §3 order, §4
 
 **The course's entry.** Every course is one entry in `kit/courses.py`. For a markdown course (Brand + AI, User Experience, any new one) its entry gives the paths this skill uses: `data` (the course's `hub.py`; its `units_data.py` sits in the same folder), `vault` (the folder of filed units) and `sourcing_part` (its own part of `sourcing-standard.md`; without the key, Part 2 for a markdown course and Part 3 for a history course, as `kit/howbuilt.py` has it). Below, `<data>`, `<data folder>`, `<vault>` and `<sourcing part>` mean those values for the unit's course; no step names one course's folders.
 
+## 0. In a thin main chat (S-BW1)
+A writing row's chat runs on Sonnet 5.5 and never opens the unit: the writer is a fresh Opus 5.5 agent on a packet that `python3 kit/thin.py stage writer --row <row> <folder>` builds, it writes `out/unit.md`, `out/unsure.md` and `out/notes.md`, and it replies to the chat in at most six lines. Everything below is the agent's.
+
 ## 1. Check you may start
 - This chat must be new, or an isolated agent context started for this unit alone (method §4, P31). If it already holds another unit's work, stop and say: "One chat per unit: start a new chat for <code>."
 - Check the model you are running as. Units are written with Opus 5.5 unless `courses-index.md` names another model for this unit. If they differ, say so in your first line and stop.
@@ -59,10 +62,17 @@ With the whole draft written, go through it section by section and ask of each: 
 - **Syntax.** Every course (history too, since P71-3): a fenced ` ```viz ` block holding the JSON, `kind` and `caption` inside it (`kit/WRITER-BRIEF.md`).
 - **Draw it.** Before handing in, render every figure with `viz.render` (from `kit/`: `python3 -c "import json, viz; viz.render(json.load(open('fig.json')))"`, or `python3 check.py ../courses/<course>/<id>-<slug>.md` for a history report). A figure that raises is fixed until it draws, never dropped and never left to break the build (Pedro, 3 Nov 2026: figures are not dropped). Filing then draws each figure as the reader meets it, every frame of a figure wider than its column stacked in one sheet (`verify.py --shots`, P89).
 
+## 4c. Sources and attribution (S-BW1, 15 Nov 2026; from row F-PB, where attribution failed at 8.8 claims per 100 and numbers at 1.1)
+- **A Sources title is the page's own headline**, as the page shows it: never its URL slug, never a site name joined to a page name ("Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal", not "uploads-1000-subscribers" and not "vidIQ Research: Uploads"). Check each title against its page before handing in; a page whose headline you could not read is listed on the unsure list with the title left as the organisation, the document type and the date.
+- **A quotation is credited to the speaker**, with the outlet named as where it was said ("Kim Boyd, in Net Influencer"), never to the outlet alone.
+- **A paraphrase is never in quotation marks.** Words inside quotation marks are exactly the source's words, under fifteen words; anything else is written without them.
+- **A figure is cited to the page that states it for that thing**: the study that measured it, not a page that mentions the topic and not a page that repeats the number. When two pages give it, cite the original and say the other repeats it.
+
 ## 5. Check before handing in
 - Run `sourcing-standard.md` Part 1 and `<sourcing part>` over every checkable claim. Fix what fails; a claim you cannot source is said to be unsourced or removed (and never enters the deliverable).
 - Confirm the closing artefact agrees with the body and the deliverable (or Self-test) is complete.
 - Check every figure against the text: each label and number is in the unit, the caption names the section and the source, the kind fits the shape (§4b).
+- Check §4c over every Sources entry, quotation and figure citation.
 - Write the unsure list: up to ten claims you could not verify, one per line. Then one last line (P96, 8 Nov 2026): `Object: <the object the unit discusses most, with the section that discusses it at length>`, or `Object: none` when the unit discusses no object at length, only in passing. Filing maps the page's relief from it (`file-unit`); name the thing the text discusses (the lekythos, the Twelve Tables, the phone on a tripod), not a theme.
 
 ## 6. Hand in
