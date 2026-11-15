@@ -224,5 +224,14 @@
   "not_applied": [],
   "flags": [],
   "figures": []
+ },
+ "chat:PB6": {
+  "applied": [
+   "C-6",
+   "C-9"
+  ],
+  "not_applied": [],
+  "flags": [],
+  "figures": []
  }
 }

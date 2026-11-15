@@ -167,7 +167,7 @@ The question is whether time spent on Shorts brings subscribers and long-form vi
 
 **What the vendor data says.**
 
-- vidIQ, 32,926,088 channels under 1,000 subscribers compared with themselves 360 days later: 0.20% of those that added no videos crossed 1,000, 1.86% of those that added 1 to 11, 8.65% of those that added 12 to 51 and 30.77% of those that added 52 or more; "This is an observational association, not proof that uploading caused subscriber growth", and the counts do not separate Shorts, long-form and livestreams ([vidIQ Research, Uploads and reaching 1,000 subscribers, 11 Sep 2026](https://vidiq.com/research/youtube-uploads-1000-subscribers/)). Vendor data; correlational. PB1 row Y4.
+- vidIQ, 32,926,088 channels under 1,000 subscribers compared with themselves 360 days later: 0.20% of those that added no videos crossed 1,000, 1.86% of those that added 1 to 11, 8.65% of those that added 12 to 51 and 30.77% of those that added 52 or more; "This is an observational association, not proof that uploading caused subscriber growth", and the counts do not separate Shorts, long-form and livestreams ([vidIQ Research, Reaching 1,000 YouTube Subscribers, 11 Sep 2026](https://vidiq.com/research/youtube-uploads-1000-subscribers/)). Vendor data; correlational. PB1 row Y4.
 - AIR Media-Tech, 18,000 English-language channels in the US, UK, Canada and Australia, primary analysis at 100,000 to 1 million monthly views: in Home and DIY, median subscribers were 83,050 at under 2 uploads a month (116 channels), 114,000 at 2 to 5 (178), 105,000 at 5 to 10 (130) and 90,700 at 10 to 20 (87); channels that "went dark for 14+ days three or more times a year" got fewer views per video, and "Channels that posted on a predictable schedule got more views per subscriber" than channels posting as many videos on random days; "This is correlational data, not causal" ([AIR Media-Tech, Does posting more on YouTube help?, 8 Jun 2026](https://air.io/en/audience-growth/does-posting-more-on-youtube-help-we-studied-18000-channels-to-find-out)). Vendor data; correlational; channels far larger than a new one; no effect size for the gap finding.
 - Metricool: long-form at 2 to 4 posts a week gave the best results per post (about 10,552 views), and posting less than once a week gave the weakest monthly result (Metricool, 29 Jul 2026). Vendor data from Metricool's users; no account-size split for this finding.
 
@@ -316,7 +316,7 @@ Correction 12 Nov 2026, found by the P100 correction check: D2's note on the row
 - vidIQ Research, "YouTube First 10 Videos Study", 28 Jul 2026, updated 30 Jul 2026. https://vidiq.com/research/youtube-first-10-videos-study/
 - vidIQ Research, "YouTube first-week views", 16 Sep 2026. https://vidiq.com/research/youtube-first-week-views/
 - vidIQ Research, "YouTube Subscriber Benchmarks 2026", 20 Jul 2026. https://vidiq.com/research/youtube-subscriber-benchmarks-2026/
-- vidIQ Research, "Uploads and reaching 1,000 subscribers", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/
+- vidIQ Research, "Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/
 - YouTube Help, "A/B test titles & thumbnails" (answer 16391400), checked 12 Nov 2026. https://support.google.com/youtube/answer/16391400?hl=en
 - YouTube Help, "Add a related video to your YouTube Shorts" (answer 14075157), checked 12 Nov 2026. https://support.google.com/youtube/answer/14075157?hl=en
 - YouTube Help, "Add tags to videos" (answer 146402), checked 12 Nov 2026. https://support.google.com/youtube/answer/146402?hl=en
@@ -353,3 +353,5 @@ Correction 12 Nov 2026, found by the P100 correction check: D2's note on the row
 Erratum 14 Nov 2026, Audit 2 (stratified-sample audit; Fable 5.2, row F-PB): 2 exact replacements applied, PB6-1, PB6-2; each is quoted with its source in `audits/personal-brand/audit-2.md`.
 
 Erratum 14 Nov 2026, Audit 4 (the final audit, a full read of the course; Fable 5.2, row F-PB): 1 exact replacement applied, A4-2; each is quoted with its source in `audits/personal-brand/audit-4.md`.
+
+Erratum 15 Nov 2026, held errata of Audits 1, 2 and 4 worked by the chat (Opus 5.5, row F-PB part 2, each checked at source): 2 exact replacements applied, C-6 (PB4-3 (same label)), C-9 (PB4-4 (same label)); listed in `audits/personal-brand/f-pb/chat/errata.json`.
