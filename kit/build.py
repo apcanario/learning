@@ -130,7 +130,7 @@ def load(c):
         # strip anything that violates the fragment contract
         frag = re.sub(r'<(/?)(html|head|body|!doctype[^>]*)>', '', frag, flags=re.I)
         frag = re.sub(r'<style.*?</style>|<script.*?</script>', '', frag, flags=re.S | re.I)
-        frag = re.sub(r'\sstyle="[^"]*"', '', frag)
+        frag = re.sub(r'\sstyle="(?!(?:--stickn?:[0-9.]+px;?)+")[^"]*"', '', frag)   # C1 (15 Nov 2026): a figure frame's --stick/--stickn stays, so a history matrix keeps its label column on a phone
         u = i.split('.')[0]
         n = wc(frag); total += n; c['wby'][i] = n
         sl = c['slug'](i)

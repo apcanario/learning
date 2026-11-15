@@ -1500,7 +1500,7 @@ def matrix(d, narrow=None):
     if not cols or not rows:
         _fail(K, 'a matrix needs cols and rows')
     if d.get('numeric'):
-        return _heat(d)
+        return _heat(d, narrow)
     LW = min(240, max(90, max(_tw(r['label'], 12) for r in rows) + 20))   # H-2: a row label keeps to one line up to 240
     n = len(cols)
     # P53 (1 Nov 2026): each column is as wide as its widest cell (a mark on one line) or its header (its longest word,
@@ -1645,7 +1645,7 @@ def matrix(d, narrow=None):
         nw, nh, nb, nst = matrix(d, narrow=NARROW_LW)
         nar = (nw, nh, nb, nst if nw > NARROW_FRAME else None)
     return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide,
-                stick=(8 + LW, stick, grid_h) if Wd > PHONE_FRAME else None, narrow=nar)
+                stick=(8 + LW, stick, grid_h) if Wd > NARROW_FRAME else None, narrow=nar)   # C1: a column wherever a 320 px frame scrolls
 
 
 def _gridflow(K, items, edges, per_row, bw, gap, gap_px, start=None):
@@ -2722,7 +2722,7 @@ def range_(d):
     return _svg(W, _r(H), grid + marks, 'range', d.get('title'), d.get('caption'))
 
 
-def _heat(d):
+def _heat(d, narrow=None):
     """matrix with "numeric": true: each cell a number (or null for blank) on one of five shades of the figure's tone,
     shaded by value between min and max (default the data's); a legend under the grid gives each shade's range."""
     K = 'matrix'
@@ -2745,6 +2745,8 @@ def _heat(d):
     cw = (W - 16 - LW) / n
     wide = cw < 64
     cw = max(cw, 64)
+    if narrow is not None and LW > narrow:                   # C1: the drawing for 360 px and below, the columns unchanged
+        LW = narrow
     Wd = 16 + LW + n * cw
     heads = [_lines(c, T_COL, cw - 10) for c in cols]
     hh = max(len(h) for h in heads) * 12 + 12
@@ -2784,8 +2786,14 @@ def _heat(d):
         body += _g(f'<rect class="viz-t{tone} viz-h{i + 1}" x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="24"/>' + _text([txt], role, x + w / 2, y + 5.5, 'middle'))
         x += w + 4
     y += 24
+    if narrow is not None:
+        return _r(Wd), _r(y + 8), body, (8 + LW, stick, grid_h)
+    nar = None
+    if Wd > NARROW_FRAME and LW > NARROW_LW:                 # C1: as matrix()
+        nw, nh, nb, nst = _heat(d, narrow=NARROW_LW)
+        nar = (nw, nh, nb, nst if nw > NARROW_FRAME else None)
     return _svg(_r(Wd), _r(y + 8), body, 'matrix viz-numeric', d.get('title'), d.get('caption'), wide=wide,
-                stick=(8 + LW, stick, grid_h) if Wd > PHONE_FRAME else None)
+                stick=(8 + LW, stick, grid_h) if Wd > NARROW_FRAME else None, narrow=nar)   # C1: a column wherever a 320 px frame scrolls
 
 
 # P92 (4 Nov 2026) · the Academy home's topography: contour lines drawn from the course data (the module docstring, "The
