@@ -258,5 +258,22 @@
   "not_applied": [],
   "flags": [],
   "figures": []
+ },
+ "DD-PB2": {
+  "applied": [
+   "DD-PB2-1",
+   "DD-PB2-2",
+   "DD-PB2-3",
+   "DD-PB2-4",
+   "DD-PB2-6",
+   "DD-PB2-7",
+   "DD-PB2-8"
+  ],
+  "not_applied": [],
+  "flags": [
+   "DD-PB2-5",
+   "DD-PB2-9"
+  ],
+  "figures": []
  }
 }
