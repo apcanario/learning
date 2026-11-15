@@ -61,7 +61,7 @@ def die(msg, code=1):
 
 # ---------------------------------------------------------------------------------------------- fixes / apply
 
-FIND = re.compile(r'^\[(error|should-fix|minor)\]\s*\[([\w-]+)\]\s*(.*?);\s*Current:\s*"(.*)"\s*;\s*Problem:.*?(?:;\s*Fix:\s*"(.*?)"\s*(?:;\s*Basis:.*)?)?$')
+FIND = re.compile(r'^\[(error|should-fix|minor)\]\s*\[([\w-]+)\]\s*(.*?);\s*Current:\s*"(.*)"\s*;\s*Problem:.*?(?:[;.]\s*Fix:\s*"(.*?)"\s*(?:[;.]\s*Basis:.*)?)?$')
 
 
 def cmd_fixes(report, out):
@@ -71,6 +71,7 @@ def cmd_fixes(report, out):
         if not m:
             continue
         sev, kind, where, cur, fix = m.groups()
+        fix = fix.replace('\\n', '\n') if fix else fix   # W-BW2: a checker writes a line break inside a Fix as the two characters \n
         items.append(dict(id=f'f{len(items) + 1}', severity=sev, kind=kind, where=where.strip(), current=cur, fix=fix))
     pathlib.Path(out).write_text(json.dumps(items, ensure_ascii=False, indent=1), encoding='utf-8')
     print(f'{len(items)} findings -> {out}')
