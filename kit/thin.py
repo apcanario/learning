@@ -31,6 +31,8 @@ half-done change.
         out (verdict and counts counted from the report) and prints the line the unit's unsure list gains.
   python3 kit/thin.py assemble UNIT.md UNSURE.md "<fresh-check line>"
         Appends `## Unsure list`, the writer's unsure list and the fresh-check line to the unit (once; refuses a second run).
+  python3 kit/thin.py correct REPORT --ids "Change 1,New 2" --map NAME=repo/path,... --note "Correction <date>, found by <who>"
+        Applies passed changes of a corrections check as exact replacements and appends the dated note to each unit changed.
   python3 kit/thin.py stats OUTDIR
         Writes OUTDIR/stats.json from the files an agent left there (unit.md, unsure.md, notes.md, report.md, apply.json,
         records.json), counted by script; the chat reads this and the agent's six-line reply, nothing else.
@@ -137,6 +139,52 @@ def cmd_apply(unit, fixes, decisions):
         die('unit left unchanged; ' + '; '.join(bad))
     p.write_text(text, encoding='utf-8')
     print(f'applied {len(applied)}, held {len(held)}: held = {held}')
+
+
+def parse_corrections(report):
+    """The blocks of a corrections check (`## Change N` / `## New N`, each with File:, a fenced Current and Replacement,
+    Result:, Syllabus:) -> {name: dict(file, current, replacement, ok)}; ok when Result is PASS and Syllabus has no conflict."""
+    t = pathlib.Path(report).read_text(encoding='utf-8')
+    out = {}
+    for m in re.finditer(r'(?m)^## ((?:Change|New) \d+)\s*$(.*?)(?=^## |\Z)', t, flags=re.S):
+        name, body = m.group(1), m.group(2)
+        f = re.search(r'(?m)^File:\s*(?:files/)?(\S+?)[,\s]', body)
+        blocks = re.findall(r'(?ms)^(Current|Replacement):[^\n]*\n(`{3,})[^\n]*\n(.*?)\n\2\s*$', body)
+        got = {k: v for k, _, v in blocks}
+        res = re.search(r'(?m)^Result:\s*(\w+)', body)
+        syl = re.search(r'(?m)^Syllabus:\s*(.*)$', body)
+        out[name] = dict(file=f.group(1) if f else None, current=got.get('Current'), replacement=got.get('Replacement'),
+                         ok=bool(res and res.group(1).upper() == 'PASS' and syl and syl.group(1).lower().startswith('no conflict')))
+    return out
+
+
+def cmd_correct(argv):
+    """thin.py correct REPORT --ids "Change 1,Change 2" --map B4-x.md=courses/brand-ai/B4-x.md,... --note "Correction ..."
+    Applies the named passed changes as exact replacements (each Current once, in order; nothing written if one fails) and
+    appends the note to each unit it changed (W-BW5, 15 Nov 2026)."""
+    rep = argv[0]
+    opt = {argv[i][2:]: argv[i + 1] for i in range(1, len(argv), 2)}
+    ch = parse_corrections(rep)
+    mp = dict(x.split('=', 1) for x in opt['map'].split(','))
+    texts, bad = {}, []
+    for name in [x.strip() for x in opt['ids'].split(',') if x.strip()]:
+        c = ch.get(name)
+        if not c or not c['ok'] or c['current'] is None or c['replacement'] is None:
+            bad.append(f'{name}: not found, not passed, or missing a field'); continue
+        path = ROOT / mp.get(c['file'], c['file'] or '')
+        if path not in texts:
+            if not path.is_file():
+                bad.append(f'{name}: no file {path}'); continue
+            texts[path] = path.read_text(encoding='utf-8')
+        n = texts[path].count(c['current'])
+        if n != 1:
+            bad.append(f'{name}: Current occurs {n} times in {path.name}'); continue
+        texts[path] = texts[path].replace(c['current'], c['replacement'], 1)
+    if bad:
+        die('nothing written; ' + '; '.join(bad))
+    for path, txt in texts.items():
+        path.write_text(txt.rstrip('\n') + '\n\n' + opt['note'].strip() + '\n', encoding='utf-8')
+    print('corrected: ' + ', '.join(str(p.relative_to(ROOT)) for p in texts))
 
 
 # ---------------------------------------------------------------------------------------------- insert
@@ -515,6 +563,8 @@ if __name__ == '__main__':
         cmd_assemble(a[1], a[2], a[3])
     elif cmd == 'stats' and len(a) == 2:
         cmd_stats(a[1])
+    elif cmd == 'correct':
+        cmd_correct(a[1:])
     elif cmd == 'stage':
         cmd_stage(a[1:])
     else:

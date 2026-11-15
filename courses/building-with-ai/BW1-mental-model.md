@@ -380,7 +380,7 @@ Keep the first four columns: they are the course's shared vocabulary, and later 
 
 ## Sources
 
-All web pages read on 15 November 2026. Anthropic's help-centre pages show no exact date.
+All web pages read on 15 November 2026. Most of Anthropic's help-centre pages show no exact date; *Manage Claude's tool access* shows 16 March 2026.
 
 **Vendor documentation and statements: Anthropic**
 
@@ -446,3 +446,5 @@ Object: the context window (§1 and §2)
 Fresh check 2026-11-15 (claude-opus-5-5): fix · 1 errors, 7 should-fix, 7 minor; report `audits/building-with-ai/fresh-check-BW1.md`
 
 Correction 15 Nov 2026, found by BW3's corrections check (Opus 5.5, row W-BW3, flag F3): 7 exact replacements applied to §8 (the layer map names the unit that treats each layer) and to the "Treated in" column of the diagnosis table (Parts 3 and 4), each checked against the course's briefs; `audits/building-with-ai/corrections-2026-11-15-BW1-B3.md`.
+
+Correction 15 Nov 2026, found by W-BW4's round-two corrections check and confirmed by a corrections check (Opus 5.5, row W-BW5; `audits/building-with-ai/corrections-2026-11-15-BW5-BW1-B4.md`, change 3): the Sources note no longer says help-centre pages show no exact date; the connector page is dated 16 March 2026.
