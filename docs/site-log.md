@@ -14,22 +14,21 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | S-BW1 | AI | Tighten the writing rules of course BW before its first unit, carry the lessons of course PB into course A, and make the course's writing sessions leaner. |
-| 2 | P107 | Marketing | Confirm one reference to a national consumer law in PB8 against the official consolidated text. |
-| 3 | W-BW1 | AI | Write BW1, Mental model: how a language model works, for any reader. |
-| 4 | W-BW2 | AI | Write BW2, Choosing the model and the effort. |
-| 5 | W-BW3 | AI | Write BW3, Briefing: prompts that hold up. |
-| 6 | W-BW4 | AI | Write BW4, Context engineering. |
-| 7 | W-BW5 | AI | Write BW5, Specifying a project. |
-| 8 | W-BW6 | AI | Write BW6, Research and verification. |
-| 9 | W-BW7 | AI | Write BW7, Pipelines: raw material to finished output. |
-| 10 | W-BW8 | AI | Write BW8, Skills and automation. |
-| 11 | W-BW9 | AI | Write BW9, Agents. |
-| 12 | W-BW10 | AI | Write BW10, Cost, limits, privacy. |
-| 13 | W-DD-BW1 | AI | Write the deep dive on how the best practitioners work. |
-| 14 | W-DD-BW2 | AI | Write the deep dive that follows one project, with its numbers. |
-| 15 | W-DD-BW3 | AI | Write the deep dive in which the reader reviews their own usage; course BW complete. |
-| 16 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
+| 1 | P107 | Marketing | Confirm one reference to a national consumer law in PB8 against the official consolidated text. |
+| 2 | W-BW1 | AI | Write BW1, Mental model: how a language model works, for any reader. |
+| 3 | W-BW2 | AI | Write BW2, Choosing the model and the effort. |
+| 4 | W-BW3 | AI | Write BW3, Briefing: prompts that hold up. |
+| 5 | W-BW4 | AI | Write BW4, Context engineering. |
+| 6 | W-BW5 | AI | Write BW5, Specifying a project. |
+| 7 | W-BW6 | AI | Write BW6, Research and verification. |
+| 8 | W-BW7 | AI | Write BW7, Pipelines: raw material to finished output. |
+| 9 | W-BW8 | AI | Write BW8, Skills and automation. |
+| 10 | W-BW9 | AI | Write BW9, Agents. |
+| 11 | W-BW10 | AI | Write BW10, Cost, limits, privacy. |
+| 12 | W-DD-BW1 | AI | Write the deep dive on how the best practitioners work. |
+| 13 | W-DD-BW2 | AI | Write the deep dive that follows one project, with its numbers. |
+| 14 | W-DD-BW3 | AI | Write the deep dive in which the reader reviews their own usage; course BW complete. |
+| 15 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
 
 ## Done
 
@@ -37,8 +36,8 @@ Rules for an entry (`docs/method.md` §8):
 |---|---|---|---|
 | 2026-10-22 | G0–9 | Mythology | The Greece syllabus set out, then its core written: fifty reports from the sources and the geography, through myth, history, religion and art, to a final exam. |
 | 2026-10-22 | G10 | Mythology | Greece gains its first deep dive, the Trojan War, in twelve reports. |
-| 2026-10-22 | G11 | Mythology | Greece gains a second deep dive, Alexander, in eight reports. |
-| 2026-10-22 | PM | Mythology | The project becomes Personal Mythology, a journey through the myths and histories of many cultures, with Greece as course 1 and nine more planned. |
+| 2026-10-24 | G11 | Mythology | Greece gains a second deep dive, Alexander, in eight reports. |
+| 2026-10-24 | PM | Mythology | The project becomes Personal Mythology, a journey through the myths and histories of many cultures, with Greece as course 1 and nine more planned. |
 | 2026-10-24 | R0–3 | Mythology | Rome begins: its syllabus, its own course home, and units 0 to 3 (the sources, Italy before Rome, the gods, the early Republic), nineteen reports. |
 | 2026-10-24 | R4 | Mythology | Rome unit 4 written: Carthage and the Mediterranean, five reports. |
 | 2026-10-24 | R5–6 | Mythology | Rome units 5 and 6 written, the fall of the Republic and Augustus, and every cross-reference between the Rome reports checked. |
@@ -63,7 +62,7 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-11-02 | A8 | Marketing | A8, Legal, tax, time, written, with a register of every constraint and who confirms it. |
 | 2026-11-02 | DD-A1 | Marketing | Deep dive: five creators who did this, written. |
 | 2026-11-02 | DD-A2 | Marketing | Deep dive: the exit math, written; course A complete. |
-| 2026-11-11 | PB | Marketing | Course PB, Building a Personal Brand on Instagram and YouTube, created for any reader from course A: twelve units, each with its brief. |
+| 2026-11-11 | G-0 | Marketing | Course PB, Building a Personal Brand on Instagram and YouTube, created for any reader from course A: twelve units, each with its brief. |
 | 2026-11-12 | PB1 | Marketing | PB1, What to expect: odds, timeline, cost, written. |
 | 2026-11-12 | PB2 | Marketing | PB2, Positioning: the sentence a stranger can repeat, written. |
 | 2026-11-12 | PB3 | Marketing | PB3, Audience and the two platforms, written. |
@@ -85,12 +84,12 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-10-29 | DD-B3 | AI | Deep dive: how the best practitioners use the tool, written. |
 | 2026-10-29 | B5 | AI | B5, Skills and automation, written. |
 | 2026-10-30 | N3 | AI | Figures added to every course B unit written so far. |
-| 2026-11-02 | B7 | AI | B7, Content pipeline, written. |
+| 2026-11-01 | B7 | AI | B7, Content pipeline, written. |
 | 2026-11-02 | B6 | AI | B6, Research and verification, written. |
 | 2026-11-02 | B8 | AI | B8, Cost, limits, hygiene, written. |
 | 2026-11-02 | DD-B1 | AI | Deep dive: agents, written. |
 | 2026-11-02 | DD-B2 | AI | Deep dive: his unknown unknowns, written; course B complete. |
-| 2026-11-11 | BW | AI | Course BW, Building with AI, created for any reader from course B: thirteen units, each with its brief. |
+| 2026-11-11 | G-0 | AI | Course BW, Building with AI, created for any reader from course B: thirteen units, each with its brief. |
 | 2026-10-29 | U-0 | UX | The User Experience area opens with course IA, Information Architecture, written for designers around one fictional benefits platform. |
 | 2026-10-29 | V1 | UX | Seven new kinds of figure for course IA: site maps, object maps, decision trees, matrices, state diagrams, swimlanes and wireflows. |
 | 2026-10-30 | IA1 | UX | IA1, What information architecture is, and where it sits, written. |
@@ -136,9 +135,10 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-11-04 | P93 | Academy | Every contour drawing moves slowly, and contour maps join the course homes and What's new. |
 | 2026-11-08 | P94 | Academy | Every section of every reading page ends on a small contour line drawn from its paragraphs. |
 | 2026-11-08 | P95 | Academy | Object pictures: a library of outlines and three trial pages. |
-| 2026-11-09 | P96 | Academy | Object pictures on 95 of the 187 reading pages, wherever the text discusses an object at length. |
+| 2026-11-08 | P96 | Academy | Object pictures on 95 of the 187 reading pages, wherever the text discusses an object at length. |
 | 2026-11-12 | P97 | Academy | Every comparison figure opens whole on a 320 or 390 px phone. |
 | 2026-11-12 | P98 | Academy | Bar figures drawn at their own size on a 320 px phone, each value clear of the end of its bar. |
 | 2026-11-15 | S-NOAUDIT | Academy | Periodic reviews of written units stopped, and their pages removed from the site. |
 | 2026-11-15 | P112 | Academy | The project's working copies of the queue and this record brought up to date. |
 | 2026-11-15 | S-PAGES | Academy | The Backlog and Changelog pages redrawn as this plain overview by area. |
+| 2026-11-15 | S-BW1 | AI | The writing rules of the public AI course tightened before its first unit (honest source titles, quotations credited to the speaker, figures cited to the page that states them), the lesson carried back into course A, and the course's writing sessions made leaner. |

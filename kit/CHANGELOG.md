@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **S-BW1 and the site-bundle proposals (session 86, Sonnet 5.5 main chat, Opus 5.5 agents for the checks):** BW's writer rules (attribution) in the prompt generator and the writing skill, PB's vidIQ title carried to course A, `kit/thin.py` and the thin main chat written into the prompts, skills and method, the standing proposals rule, the stage-5 rows withdrawn, the history syllabus lines reworded, the site log checked against the changelogs; the first trial of the thin chat is W-BW1.
 - **Site bundle (session 85, P112, S-NOAUDIT, S-PAGES; Sonnet 5.5 main chat, one Opus 5.5 agent per row):** the Fable stage closed and its audit apparatus removed from Academy and the method; the Backlog and Changelog pages redrawn from `docs/site-log.md`; one build, one verify (ALL CHECKS PASSED), published to the artifact, sha256 read back. Not deployed to GitHub Pages (P119: `apcanario/academy` not in the session's repository set).
 - **Course PB audited (session 84, F-PB, two parts):** Audits 1 to 4 of the public course PB run on Fable 5.2 (14 and 15 Nov 2026): all twelve units PASS, 712 claims checked, 32 FAIL, none STALE, no full audit, no REWRITE; 103 errata applied with dated notes; flags F87 to F100; the final audit finds the course delivers its goal; the Fable-stage cost assessment is final and recommends sample audits with a full attribution pass; course B's seven units next (F-B).
 - **DD-PB2 filed, course PB complete (session 83, W-DD-PB2):** DD-PB2 Deep dive: the quit-your-job math written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 4 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed); all twelve PB units filed; W-BW1 and W-BW2 next, in one chat.
@@ -137,6 +138,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 15 November 2026 · Session 86 · S-BW1 and the site-bundle proposals (P113 to P119)
+
+Sonnet 5.5 main chat; one Opus 5.5 agent checked the vidIQ title corrections at the page and another cross-read the site log's Done entries against both changelogs (P117: four dates and two codes corrected). `kit/thin.py` is new: stage, fixes, apply, save-report, assemble, insert and stats, each run here on real data (apply and insert on copies, reverted). `kit/next_prompt.py` prints the thin chat (rules 1 to 6 and the trial note on W-BW1), the attribution rules in the writer's and the checker's steps, the applier and the filer as agents, no unit upload, step 1c (carried proposals) and the proposals list in the reply. P119: `deploy.sh` pushed the 15 Nov build to Pages. The stage-5 rows S4, S5, B-9, F-1 and P25 are withdrawn; Greek unit 13 and Rome unit 14 read as course content.
 
 ## 14–15 November 2026 · Session 84 · Public course PB, Audits 1 to 4 and the Fable-stage assessment (F-PB)
 
