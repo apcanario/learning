@@ -415,7 +415,7 @@ Tax question to answer if anything is earned: [your country's tax authority page
 - Candogan's first-year post is undated; its figures are taken as of about July 2024 from the anniversary it describes (§9).
 - Edits' launch date (22 Apr 2025) is taken from the PetaPixel article's URL date; the fetched text says only "today" (§8, D2).
 - Object: none
-- Fresh check 2026-11-12 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 1 error, 6 should-fix, 7 minor; all applied as verified; figures 1 and 2 passed; figure 3 fixed in the text (its values and sample now stated in §6) and figure 4's question node and caption fixed, as the report gives them; the checker could not verify the brandstore.rode.com link (it confirmed the same price at rode.com) or the TechCrunch Sources date; report `audits/personal-brand/fresh-check-PB1.md`
+- Fresh check 2026-11-12 (Opus 5.5): fix · 1 error, 6 should-fix, 7 minor; all applied as verified; figures 1 and 2 passed; figure 3 fixed in the text (its values and sample now stated in §6) and figure 4's question node and caption fixed, as the report gives them; the checker could not verify the brandstore.rode.com link (it confirmed the same price at rode.com) or the TechCrunch Sources date; report `audits/personal-brand/fresh-check-PB1.md`
 
 Correction 12 Nov 2026, made by the chat that filed PB3 (row W-PB3): PB3 gives Mara one short email per video, so D2's hours line for publishing and replies falls from 1.5 to 1.25 hours a fortnight and a line Email, 0.25, is added; the fortnight's 12 hours, the posting rates, rows Y1, Y4, Y5 and I4 and the stop rule are unchanged (flag F5).
 

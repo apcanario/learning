@@ -348,7 +348,7 @@ Correction 12 Nov 2026, found by the P100 correction check: D2's note on the row
 - AIR's title study states no period for its title data, and no Home and DIY figure could be read (§7).
 - The 4 Dec 2025 date for global title testing is Search Engine Journal's; YouTube's Creator Insider announcement was not opened (§8).
 - Object: none
-- Fresh check 2026-11-12 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 2 errors, 12 should-fix, 14 minor; all applied as the report gives them, with the Creator Insider gloss it suggests; items 27 (an unreviewed preprint outside the brief's source classes) and 28 (Mara's values left to PB10) recorded, no change required; figures 2, 3 and 4 corrected, figure 1 passed; report `audits/personal-brand/fresh-check-PB6.md`. YouTube's packaging sentence (answer 16559651), which the checker read as two quoted pieces running on, is quoted whole.
+- Fresh check 2026-11-12 (Opus 5.5): fix · 2 errors, 12 should-fix, 14 minor; all applied as the report gives them, with the Creator Insider gloss it suggests; items 27 (an unreviewed preprint outside the brief's source classes) and 28 (Mara's values left to PB10) recorded, no change required; figures 2, 3 and 4 corrected, figure 1 passed; report `audits/personal-brand/fresh-check-PB6.md`. YouTube's packaging sentence (answer 16559651), which the checker read as two quoted pieces running on, is quoted whole.
 
 Erratum 14 Nov 2026, Audit 2 (stratified-sample audit; Fable 5.2, row F-PB): 2 exact replacements applied, PB6-1, PB6-2; each is quoted with its source in `audits/personal-brand/audit-2.md`.
 

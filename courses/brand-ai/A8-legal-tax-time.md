@@ -359,4 +359,4 @@ All web sources opened on 2 November 2026 unless another date is given.
 9. **Music licences on Instagram** rest on a 2020 Meta post and a 2026 law-firm note; Meta's current music terms and the Sound Collection's licence were not opened.
 10. **Half-marathon hours** for a 1:45 target are unsourced: the Strava hours are a 2017 magazine report of 2016 data for men under 2:00 and under 1:30, and the Dutch cohort reports kilometres, not hours.
 
-Fresh check 2026-11-02 (Opus 5.5; a Fable 5.1 fresh check is owed): fix · 2 errors, 8 should-fix, 7 minor; all applied; report `audits/brand-ai/fresh-check-A8.md`.
+Fresh check 2026-11-02 (Opus 5.5): fix · 2 errors, 8 should-fix, 7 minor; all applied; report `audits/brand-ai/fresh-check-A8.md`.

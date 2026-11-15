@@ -306,4 +306,4 @@ A buyer books a demo on perqo.com; once the client has signed, its finance manag
 - Wurman's 2004 interview answer is paraphrased from a summary, not quoted.
 - Polar Bear book 2nd (2002) and 3rd (2006) edition years from knowledge and O'Reilly catalogue entries, not from the title pages.
 - Two Waves Books as the publisher of Living in Information, from knowledge; the publisher's page does not print it.
-- Fresh check 2026-10-30 (Opus 5.5; a Fable 5.1 fresh check is owed, row P49): keep · 0 errors, 4 should-fix, 7 minor; all applied; report `audits/ux/fresh-check-IA1.md`
+- Fresh check 2026-10-30 (Opus 5.5): keep · 0 errors, 4 should-fix, 7 minor; all applied; report `audits/ux/fresh-check-IA1.md`

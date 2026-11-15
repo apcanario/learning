@@ -528,4 +528,4 @@ Every fact below is a course convention (Perqo, fictional), never evidence about
 - Kaley 2018: the UX-debt definition is paraphrased; the quoted causes and the phrase "navigation structures and content classification" are as the page was read through a summary.
 - Rosenfeld, Morville and Arango 2015, ch. 13: only the chapter's preview and headings were seen.
 - Object: the Perqo IA decision log, section 4.3 and Deliverable D
-- Fresh check 2026-11-09 (Fable 5.1; no Fable 5.1 fresh check is owed): fix · 1 error, 3 should-fix, 8 minor; all applied as verified (finding 3 narrowed); figures 1 to 5 passed; figure 6 fixed twice and passed its third check, figure 7 fixed three times and passed its fourth; report `audits/ux/fresh-check-IA9.md`
+- Fresh check 2026-11-09 (Fable 5.1): fix · 1 error, 3 should-fix, 8 minor; all applied as verified (finding 3 narrowed); figures 1 to 5 passed; figure 6 fixed twice and passed its third check, figure 7 fixed three times and passed its fourth; report `audits/ux/fresh-check-IA9.md`

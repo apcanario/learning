@@ -384,6 +384,6 @@ Before publishing: claim [@handle] on both platforms on [date]; fallbacks, in or
 - Michelle Khare's 5.43 million YouTube subscribers and the "award-winning docuseries" wording are her own site's, undated (§2).
 - Matt D'Avella's 2019 and 2026 "30 days" titles and dates come from Rosetta, a third-party index, not checked against YouTube (§2).
 - Object: none
-- Fresh check 2026-11-12 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 1 error, 3 should-fix, 6 minor; all applied as verified; figure 2 passed; figure 1's legend fixed as the report gives it, and figure 3 relabelled after the handles broke mid-word on a phone; both passed a re-check by a new agent; none of the five handles in D2 could be checked in the two apps, so the pick stays provisional (flag F13); report `audits/personal-brand/fresh-check-PB2.md`
+- Fresh check 2026-11-12 (Opus 5.5): fix · 1 error, 3 should-fix, 6 minor; all applied as verified; figure 2 passed; figure 1's legend fixed as the report gives it, and figure 3 relabelled after the handles broke mid-word on a phone; both passed a re-check by a new agent; none of the five handles in D2 could be checked in the two apps, so the pick stays provisional (flag F13); report `audits/personal-brand/fresh-check-PB2.md`
 
 Erratum 14 Nov 2026, Audit 1 (stratified-sample audit; Fable 5.2, row F-PB): 1 exact replacement applied, PB2-1; each is quoted with its source in `audits/personal-brand/audit-1.md`.

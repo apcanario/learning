@@ -473,4 +473,4 @@ The global routes are IA1's top-level areas, with Book a demo added on perqo.com
 - Shostack 1984 as the origin of the service blueprint: the HBR page and a summary were seen, not the article's text; volume and pages omitted.
 - Harel 1987: the three added elements (nested states, parallel components, communication) paraphrased from the abstract.
 - The "unit that builds it" column of the decision table: codes from the course's units list (IA4 to IA8, DD-IA3); where no unit ships the artefact by name, the unit that ships its nearest form is named, with that form in brackets.
-- Fresh check 2026-10-30 (Opus 5.5; a Fable 5.1 fresh check is owed, row P49): fix · 3 errors, 10 should-fix, 17 minor; all applied; report `audits/ux/fresh-check-IA2.md`
+- Fresh check 2026-10-30 (Opus 5.5): fix · 3 errors, 10 should-fix, 17 minor; all applied; report `audits/ux/fresh-check-IA2.md`

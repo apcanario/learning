@@ -342,4 +342,4 @@ Each €100 a month of B, K or Q he can show from contracts lowers the members n
 9. The €430 freed in September 2027 is assumed to be saved in full; nothing in the brief says it will be.
 10. Whether consulting in his field would touch the competition limb of the duty of loyalty depends on the contract and the employer's business, neither of which is in any filed unit; the unit states no view on it.
 
-Fresh check 2026-11-02 (Opus 5.5, own agent context; a Fable 5.1 fresh check is owed): fix · 0 errors, 5 should-fix, 5 minor; all applied; the timeline figure fixed (its label, and each event placed at its date) and passed its re-check; report `audits/brand-ai/fresh-check-DD-A2.md`.
+Fresh check 2026-11-02 (Opus 5.5, own agent context): fix · 0 errors, 5 should-fix, 5 minor; all applied; the timeline figure fixed (its label, and each event placed at its date) and passed its re-check; report `audits/brand-ai/fresh-check-DD-A2.md`.

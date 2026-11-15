@@ -388,4 +388,4 @@ Each box is done once and closed. The clock assumes the window opens at 0:00; th
 9. **The 21.6 dB lav advantage** uses the free-field inverse-square rule, which rooms and reflections modify; the 3-metre tripod distance is an assumed example.
 10. **Phone capability**: whether his phone records 3840 × 2160 at the season's frame rate for a full session, and accepts a wireless lav at 48 kHz, was not checked.
 
-Fresh check 2026-11-02 (Opus 5.5; a Fable 5.1 fresh check is owed): fix · 1 error, 4 should-fix, 8 minor; all applied; report `audits/brand-ai/fresh-check-A5.md`.
+Fresh check 2026-11-02 (Opus 5.5): fix · 1 error, 4 should-fix, 8 minor; all applied; report `audits/brand-ai/fresh-check-A5.md`.

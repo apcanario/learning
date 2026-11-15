@@ -394,7 +394,7 @@ For each path you consider (a full exit carried by the account; a full exit carr
 - US rules on requesting reduced hours were not researched; the unit says so (§5).
 - No EU-level guidance on emergency savings or runway was opened; the EU row of §2 is Mara's national bank example only.
 - Object: none
-- Fresh check 2026-11-14 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 1 error (Path A's month, September 2041), 4 should-fix, 8 minor; all applied as the report gives them; figures 1 to 4 passed; report `audits/personal-brand/fresh-check-DD-PB2.md`.
+- Fresh check 2026-11-14 (Opus 5.5): fix · 1 error (Path A's month, September 2041), 4 should-fix, 8 minor; all applied as the report gives them; figures 1 to 4 passed; report `audits/personal-brand/fresh-check-DD-PB2.md`.
 
 Erratum 15 Nov 2026, Audit 3 (stratified-sample audit; Fable 5.2, row F-PB): 7 exact replacements applied, DD-PB2-1, DD-PB2-2, DD-PB2-3, DD-PB2-4, DD-PB2-6, DD-PB2-7, DD-PB2-8; each is quoted with its source in `audits/personal-brand/audit-3.md`.
 

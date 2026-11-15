@@ -642,4 +642,4 @@ Every fact below is a course convention (Perqo, fictional), never evidence about
 - Anderson 2021: the post's link suggests the Forrester report is titled "The ROI of Design Thinking, Part 1: Overview"; the report was not seen, and its contents are unknown.
 - Nielsen 2009: how failures were attributed to the IA is given only as a scheme described in *Prioritizing Web Usability*, which was not read.
 - Object: the business case for Perqo Admin's IA, with its cost of change by layer and its break-even, Deliverable C
-- Fresh check 2026-11-10 (Fable 5.2; a Fable 5.1 fresh check is owed, P49): fix · 2 error, 11 should-fix, 7 minor; all applied as verified (three minors needing no change); figures 3 to 6 passed the fresh check; figures 1 and 2, changed by its findings, passed their fourth check; report `audits/ux/fresh-check-DD-IA2.md`
+- Fresh check 2026-11-10 (Fable 5.2): fix · 2 error, 11 should-fix, 7 minor; all applied as verified (three minors needing no change); figures 3 to 6 passed the fresh check; figures 1 and 2, changed by its findings, passed their fourth check; report `audits/ux/fresh-check-DD-IA2.md`

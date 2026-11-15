@@ -347,7 +347,7 @@ Your first quarter, for every row: [day one; your posting days; the review date;
 - Links added to Reels in Edits pointing only to Instagram destinations rests on Blog du Modérateur, 20 Jan 2026, whose embedded Instagram source could not be read (§9).
 - The carousel "second chance" claim rests on Haberman's summary of a 2024 Mosseri post and Uppbeat's paraphrase (3 Nov 2026) of an interview it does not date; neither underlying statement was read (§10 item 7).
 - Object: Instagram's Insights screen for a single Reel (views split by followers and non-followers, skip rate, watch time, sends), discussed at length in §4 and D2
-- Fresh check 2026-11-12 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 3 errors, 9 should-fix, 7 minor; all applied as the report gives them; report `audits/personal-brand/fresh-check-PB7.md`
+- Fresh check 2026-11-12 (Opus 5.5): fix · 3 errors, 9 should-fix, 7 minor; all applied as the report gives them; report `audits/personal-brand/fresh-check-PB7.md`
 - Correction 2026-11-13, found by the W-PB9 correction check: the Q2 count at the end of D2 now gives 31 posts (17 Reels) if PB9's guide build is decided at the Q1 review, as PB1 D3 read 1 and the register do; the Q1 figures (D2's opening, IG1) are unchanged.
 - Correction 2026-11-13, found by PB10's writer: IG8's reference column no longer sets Buffer's increment (0.36 a week at 140 followers) as a reference for net followers, since I4 is an increment over weeks without posts, not a total (PB1 §3, I4); the Q2 count at the end of D2 now gives 37 posts (23 Reels), 29 (15 Reels) if PB9's guide build is decided at the Q1 review, each review's hour taking two Reels from the quarter after it (PB10 §5); Q1's figures are unchanged (row W-PB10).
 

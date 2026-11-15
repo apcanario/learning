@@ -616,4 +616,4 @@ Every fact below is a course convention (Perqo, fictional), never evidence about
 - Shopify's README gives no release date for the version on its badge (2026-10); the cadence is as the README states it.
 - The Stripe and Airbnb observations are DD-IA1's of 10 November 2026 and were not re-read for this unit.
 - Object: the Perqo controlled vocabulary, sections 2 and 5 and Deliverable C
-- Fresh check 2026-11-10 (Fable 5.2; a Fable 5.1 fresh check is owed, P49): fix · 3 error, 8 should-fix, 5 minor; all applied as verified (one minor needing no change); all six figures passed the fresh check and no fix changed a figure; report `audits/ux/fresh-check-DD-IA3.md`
+- Fresh check 2026-11-10 (Fable 5.2): fix · 3 error, 8 should-fix, 5 minor; all applied as verified (one minor needing no change); all six figures passed the fresh check and no fix changed a figure; report `audits/ux/fresh-check-DD-IA3.md`

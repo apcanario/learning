@@ -391,7 +391,7 @@ A line starts this quarter only if: it is open [threshold, policy clause, legal 
 - Not opened: Substack's fee page, Kit's commerce fee page, Patreon's full State of Create report, and the *South Dakota v. Wayfair* judgment (§5, §6).
 - The AIR Media-Tech RPM page is dated 1 Jul 2026 but refers to September 2026 (§2).
 - Object: none
-- Fresh check 2026-11-13 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 3 errors, 5 should-fix, 10 minor; all applied as the report gives them; figures 1 and 4 corrected; on re-check from the shots figure 1 passed and figure 4's made-to-order branch was corrected again (it now leads back to the rule) and checked a third time; figures 2 and 3 passed; report `audits/personal-brand/fresh-check-PB9.md`.
+- Fresh check 2026-11-13 (Opus 5.5): fix · 3 errors, 5 should-fix, 10 minor; all applied as the report gives them; figures 1 and 4 corrected; on re-check from the shots figure 1 passed and figure 4's made-to-order branch was corrected again (it now leads back to the rule) and checked a third time; figures 2 and 3 passed; report `audits/personal-brand/fresh-check-PB9.md`.
 - Correction 2026-11-13, found by the W-PB9 correction check: CTT's tariff is dated Nov 2020, not 1 Nov 2020 (D2 V17, Sources, this list); the PDF shows "Preços 2020" and "novembro/2020", and "1nov" is only its file name.
 - Correction 2026-11-13, found by the W-PB9 correction check (P106): D2 V17 and Sources cited CTT's tariff as "Tarifário de serviços postais", a phrase the PDF does not contain; its heading is "Preços 2020" (novembro/2020), and V17 now says the 58.00 € is the annual rate under "Singulares" (individuals); the amount is unchanged.
 

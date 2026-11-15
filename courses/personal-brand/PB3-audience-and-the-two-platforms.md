@@ -403,7 +403,7 @@ Rates re-read on a change of budget: [the rows of your PB1 expectation sheet and
 - FeedSpot's channel descriptions (one channel described as mid-century, one as hand-tool focused) were read through a text extraction that summarised them; the descriptions were not quoted word for word (D1 trait 7).
 - The 8 November 2026 OverseerOS Shorts study covers about eight days of observation per Short, so its "90.5% gained views" says nothing about months-long shelf life (§3).
 - Object: none
-- Fresh check 2026-11-12 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 1 error, 5 should-fix, 6 minor; all applied as verified; figures 1 to 3 passed, figure 4's caption fixed as the report gives it; report `audits/personal-brand/fresh-check-PB3.md`. Not opened by the fresh check: the EUR-Lex page it added to §5 for Regulation (EU) 2016/679 (fetch refused) and the GetResponse report page (its URL was not returned by search); the FTC and legislation.gov.uk pages were opened
+- Fresh check 2026-11-12 (Opus 5.5): fix · 1 error, 5 should-fix, 6 minor; all applied as verified; figures 1 to 3 passed, figure 4's caption fixed as the report gives it; report `audits/personal-brand/fresh-check-PB3.md`. Not opened by the fresh check: the EUR-Lex page it added to §5 for Regulation (EU) 2016/679 (fetch refused) and the GetResponse report page (its URL was not returned by search); the FTC and legislation.gov.uk pages were opened
 
 Correction 12 Nov 2026, found by PB4's writer (row W-PB4) and confirmed by its fresh checker: §6 now gives YouTube's own statement that it found no correlation between break length and changes in views (YouTube Help, answer 141805) beside AIR Media-Tech's finding on repeated gaps.
 

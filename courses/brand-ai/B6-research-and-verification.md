@@ -446,4 +446,4 @@ All web sources opened 2 November 2026.
 9. **The count of eleven units out of fourteen** with an error-severity finding at fresh check is from the lines filed at the end of each unit; three of the fourteen checks (A5, A7, B7) were run by Opus 5.5 with a Fable 5.1 check owed, and the two models' severity scales may differ.
 10. **Audit 1's Metricool finding** is contested by A9's writer and not yet settled by an audit; this unit reports it as the writer's record.
 
-Fresh check 2026-11-02 (Opus 5.5; a Fable 5.1 fresh check is owed): fix · 3 errors, 8 should-fix, 12 minor; all applied; report `audits/brand-ai/fresh-check-B6.md`.
+Fresh check 2026-11-02 (Opus 5.5): fix · 3 errors, 8 should-fix, 12 minor; all applied; report `audits/brand-ai/fresh-check-B6.md`.

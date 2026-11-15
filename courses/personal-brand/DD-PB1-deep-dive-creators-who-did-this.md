@@ -391,7 +391,7 @@ Copy this and fill each blank. Every blank you cannot fill from a page you opene
 - Itsines's "hundreds of thousands of followers" within a few months of August 2012 is Bloomberg's 2016 retrospective, with no date for the count (§7).
 - Very Normal Issue 41 carries no post date (its latest date is 4 Jun 2025), and Pascual's move to a job in industry rests on his line about adjusting "to a new life in industry" after graduating (§4).
 - Object: none
-- Fresh check 2026-11-13 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): rewrite by the count rule, read as fix · 7 errors (six misquoted phrases and one unsupported clause), 13 should-fix, 9 minor; all applied as the report gives them; figures 1 to 3 corrected and re-checked from the shots; report `audits/personal-brand/fresh-check-DD-PB1.md`.
+- Fresh check 2026-11-13 (Opus 5.5): rewrite by the count rule, read as fix · 7 errors (six misquoted phrases and one unsupported clause), 13 should-fix, 9 minor; all applied as the report gives them; figures 1 to 3 corrected and re-checked from the shots; report `audits/personal-brand/fresh-check-DD-PB1.md`.
 
 Erratum 14 Nov 2026, Audit 4 (the final audit, a full read of the course; Fable 5.2, row F-PB): 2 exact replacements applied, A4-12, A4-18; each is quoted with its source in `audits/personal-brand/audit-4.md`.
 

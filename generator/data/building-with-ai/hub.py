@@ -46,16 +46,13 @@ ORDER = [("BW1", "Opus 5.5", "on"), ("BW2", "Opus 5.5", "on"), ("BW3", "Opus 5.5
          ("BW9", "Opus 5.5", "on"), ("BW10", "Opus 5.5", "on"), ("DD-BW1", "Opus 5.5", "on"), ("DD-BW2", "Opus 5.5", "off"),
          ("DD-BW3", "Opus 5.5", "off")]
 STATUS = {}          # unit code -> status text in the build-order table once filed
-AUDIT_EVERY = 4
-AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
-FINAL_AUDIT = ('Audit 4', 'Final audit of the three deep dives plus a full read of the course against its goal, and a read-through as the persona', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = 'BW1', 0, 'after four units; deferred to the Fable stage (decided 11 Nov 2026), so it gates no unit'
+NEXT_UNIT = 'BW1'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_H1 = 'Building with AI'
 HOME_LEDE = 'A working method for people who already think well and want to build a real project with AI: brief, structure, specify, verify, automate. Every claim sourced.'
 LEARN_TILE = ('The course', 'Goal, outcomes, units, and the written material to read.')
-BUILD_TILE = ('How the course gets made', 'Procedure, model rules, every brief, audit prompts, bibliography, changelog.')
+BUILD_TILE = ('How the course gets made', 'Procedure, model rules, every brief, bibliography, changelog.')
 
 FRAME = """<h2 class="hsec">Frame</h2>
 <div class="report">
@@ -78,7 +75,7 @@ LEARN_LEDE = 'Read here. Everything about how the units get written lives in Bui
 LEARN_NOTE = 'Order of writing: the ten core units in reading order, BW1 to BW10, then the three deep dives, DD-BW3 last; BW1, BW2, BW5, BW9, BW10 and DD-BW1 with search on.'
 LEARNING_NOTE = ''
 
-BUILD_LEDE = 'Method, model rules, and the pages that hold the briefs, the audits and the sources. Nothing here is course content.'
+BUILD_LEDE = 'Method, model rules, and the pages that hold the briefs and the sources. Nothing here is course content.'
 BUILD_PICK = """<section class="howto edge" style="--hc:var(--red)"><h2>Pick</h2>
   <p><strong>BW1 first: the mental model every later unit speaks in.</strong></p>
   <ul><li>It is the cheapest unit and makes each later brief shorter.</li><li>Its source unit is already nearly generic.</li><li>BW5, the one unit with no source, comes after four that have one.</li></ul>
@@ -96,19 +93,18 @@ BUILD_BODY = """<div class="report">
   <h2>Models</h2>
   <ul>
     <li><strong>Writing: Opus 5.5</strong> for every unit. The deliverable is written in the same context as its unit.</li>
-    <li><strong>Fresh check: Opus 5.5</strong> in a separate context, with a Fable 5.1 fresh check owed to the Fable stage.</li>
-    <li><strong>Audits: Fable 5.1</strong>, deferred to the Fable stage (decided 11 Nov 2026); until then no audit gates a unit.</li>
-    <li><strong>Not Sonnet or Haiku</strong> for units or audits.</li>
+    <li><strong>Fresh check: Opus 5.5</strong> in a separate context.</li>
+    <li><strong>Not Sonnet or Haiku</strong> for units or checks.</li>
   </ul>
 </div>
 <section class="howto edge" style="--hc:var(--gold)"><h2>Review rule</h2>
-  <p>After every four written units, Fable 5.1 audits by stratified sample: one claim per section per unit, checked against its source; more than one in ten fails → full audit of that unit. These audits are owed and run at the Fable stage. Units written with live search (BW1, BW2, BW5, BW9, BW10, DD-BW1) are re-checked for staleness six months after writing.</p>
+  <p>Every new unit gets its fresh check before filing: every cited claim against its source, the deliverable against the brief, every figure against the text. Units written with live search (BW1, BW2, BW5, BW9, BW10, DD-BW1) are re-checked for staleness six months after writing.</p>
 </section>"""
 
-ORDER_LEDE = "One row per unit in writing order, which is the reading order; an audit row every fourth written unit. Opus 5.5 writes; Fable 5.1 audits. \"Search\" means the unit is written with web search on because its facts are current."
+ORDER_LEDE = "One row per unit in writing order, which is the reading order. Opus 5.5 writes; a fresh Opus 5.5 context checks each unit before filing. \"Search\" means the unit is written with web search on because its facts are current."
 ORDER_NOTES = """<div class="report"><ul>
   <li><strong>Why this order:</strong> the course is a method, so the writing order is the reading order: Part 1 gives the model of the tool and the choice of model; Part 2 directs it (the brief, the context, the spec); Part 3 builds and trusts (verification before the pipeline, the skill and the agent, since what can be verified decides what is delegated), then cost; the deep dives last, the review of one's own usage last of all.</li>
-  <li><strong>Audit gate:</strong> the four-unit audits are deferred to the Fable stage, so none stops a unit; a REWRITE verdict, once one exists, still does.</li>
+  <li><strong>Rewrite gate:</strong> no new unit starts while a rewrite verdict is open on an earlier one.</li>
   <li><strong>Syllabus flags:</strong> a unit that finds a contradiction or a need raises a flag; a flag that names the next unit travels to its writer; a flag that would change a brief waits for a syllabus review.</li>
 </ul></div>"""
 ORDER_FOOT = "The count starts at {start}."
@@ -116,22 +112,8 @@ ORDER_FOOT = "The count starts at {start}."
 BRIEFS_LEDE = 'One brief per unit, self-contained: the shared preamble (the reader, the source-material rule, the tool stance, the Academy case, the course goal, the sourcing standard, the tone) is baked into every open brief, followed by the unit\'s Aim, Takes and Gives lines. Written units show their note instead. The course itself is read in <a href="#course-{k}" data-target="course-{k}">Learn · Course {K}</a>.'
 BRIEF_LABEL = 'Opus brief'
 
-AUDITS_LEDE = "No audit yet. Each audit records: units sampled, claims checked, failures, verdict (pass / full audit / rewrite), and what changed."
+# the record of the audits run before the Fable stage closed (S-NOAUDIT, 15 Nov 2026); read by kit/howbuilt.py only, nothing is added
 AUDIT_LOG = []
-AUDIT_PROMPTS_NOTE = "Run in the Learning Project with Fable 5.1 after every fourth written unit (deferred to the Fable stage). Paste the units or point at their vault paths. The prompts are method.md §6, verbatim."
-AUDIT_PROMPTS = [
-    ('Stratified-sample audit (every four units)', True, """You are auditing four units of a self-study course written by Opus 5.5 for one reader. Units: {list the four unit codes and their vault paths}.
-
-Method, in this order:
-1. For each unit, list its sections. From every section draw one claim that carries a number, a named source, a mechanism or a recommendation. That is the sample; record it before checking anything.
-2. Check each sampled claim against the source the unit cites: open the source; confirm the figure, the date, the sample size and that the claim is what the source says, not a stretch of it. Mark each claim PASS, FAIL (wrong, unsupported, miscited, or invented) or STALE (true when written, superseded now, with the newer figure).
-3. For each unit compute the failure rate. If more than one claim in ten is FAIL, audit that unit in full: every cited claim, same procedure.
-4. Check the deliverable: it exists in full inside the unit, it follows from the unit's evidence, and it is usable without reading the unit.
-5. Check against the course goal and sourcing standard (in the unit's preamble): does the unit move the reader toward the stated outcomes, and is anything in it advice without evidence?
-
-Output: a table per unit (section, claim, source, verdict, note); the failure rate; a verdict per unit (PASS / FULL AUDIT RUN, result / REWRITE with the sections named); the three most consequential errors across the four units in plain language; and one line each for the bibliography (new sources to add, sources to mark failed) and the changelog. Do not fix the units; report."""),
-    ('Staleness check (six months after a live-search unit)', False, """You are re-checking one unit written with live search six months ago: {unit code, vault path, date written}. Search again, today, for every fact in it that can change: platform rules and thresholds, prices and plan limits, model lineups, benchmark figures, regulatory status, the numbers attached to named creators. For each: the value in the unit, the value now, the source and date for the new value, and whether the unit's conclusion still holds. End with a verdict: CURRENT / PATCH (list the lines to change) / REWRITE (say which sections). Do not rewrite; report."""),
-]
 
 
 BIB_NOTE = 'Every link cited in the written material, alphabetical by title. New units add to this list; a source that fails a staleness check is marked here.'

@@ -407,4 +407,4 @@ T1: merch = $2,328.00 ÷ 2 = $1,164.00 and $11,640.00 ÷ 2 = $5,820.00; Low $388
 9. **The override's hours** (0.5 h per Shōmen post shot for Instagram; 2.0 h a week for a monthly episode) are my estimates; only the hours log can test them.
 10. **That a karate product sells worse to a running audience** (§2) is my inference; no source measures conversion by match between audience and product.
 
-Fresh check 2026-11-02 (Opus 5.5; a Fable 5.1 fresh check is owed): keep · 0 errors, 3 should-fix, 6 minor; all applied; report `audits/brand-ai/fresh-check-A7.md`.
+Fresh check 2026-11-02 (Opus 5.5): keep · 0 errors, 3 should-fix, 6 minor; all applied; report `audits/brand-ai/fresh-check-A7.md`.

@@ -375,4 +375,4 @@ The as-is sitemap, in the notation: square-cornered boxes with type tags, every 
 - Furnas and others 1987: the abstract was read; volume, issue and pages from knowledge.
 - Bates 1989: volume, issue and pages (13(5), 407 to 424) confirmed from a bibliographic record at the fresh check.
 - Rosch and others 1976: the furniture, chair, kitchen chair example is in the paper's Table 1, confirmed at the fresh check.
-- Fresh check 2026-11-03 (Fable 5.1; no Fable 5.1 fresh check is owed): keep · 0 errors, 2 should-fix, 6 minor; all applied (A2's list and two wordings adjusted, as the report's maintainer's note says); figure 5 fixed after two FIX re-checks and passed its third; figures 1 to 4 passed; report `audits/ux/fresh-check-IA3.md`
+- Fresh check 2026-11-03 (Fable 5.1): keep · 0 errors, 2 should-fix, 6 minor; all applied (A2's list and two wordings adjusted, as the report's maintainer's note says); figure 5 fixed after two FIX re-checks and passed its third; figures 1 to 4 passed; report `audits/ux/fresh-check-IA3.md`

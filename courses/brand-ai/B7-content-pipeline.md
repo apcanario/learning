@@ -459,4 +459,4 @@ Season one, all three episodes: `<FILL: playlist URL>`
 9. **The time saved by the pipeline** is unmeasured for his tasks; Noy and Zhang's 40% is for occupation-specific writing tasks done with ChatGPT in 2023. The slots in A3 are estimates the hours log tests.
 10. **The Athens run** uses no fact about Athens beyond the filed units: the result, the miss, the takes and the footage are slots, and title 4 and its thumbnail exist only if the result is not a loss.
 
-Fresh check 2026-11-02 (Opus 5.5; a Fable 5.1 fresh check is owed): fix · 1 error, 4 should-fix, 8 minor; all applied; report `audits/brand-ai/fresh-check-B7.md`.
+Fresh check 2026-11-02 (Opus 5.5): fix · 1 error, 4 should-fix, 8 minor; all applied; report `audits/brand-ai/fresh-check-B7.md`.
