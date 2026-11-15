@@ -137,7 +137,7 @@ PB1's seven reads are the core. Seven units hand the review something more. Each
 
 **PB2: the repeat-back test, run 2 (Q1 review only; beside).** Five strangers watch one complete video, wait at least ten minutes, and say in one sentence what the account is and who it is for; the pass mark is four of five naming both who and what (PB2 D5). The five people, the delay and the pass mark are this course's conventions; no source validates them, and with five people one answer moves the result by 20 points (PB2 §3). It needs other people and a delay, so it sits beside the hour. Its time is Mara's estimate, 0.75 hours (her estimate, no source), taken from the next three reply slots after the review (at Q1: Wed 7, Wed 14 and Fri 16 April 2027, weeks 14–15); replies wait for the slots after those, which is PB3's second cut. Its scored sheet is filed with the review.
 
-**PB3: audience traits 8 and 9 (every review; inside).** Trait 8 is her audience's age, gender and country; trait 9 is what else it watches (PB3 D1). On Instagram, Meta's developer reference says follower demographics are "Not returned if the IG User has less than 100 followers", and follows and unfollows likewise ([Meta for Developers, Instagram account insights](https://developers.facebook.com/docs/instagram-platform/api-reference/instagram-user/insights), checked 13 Nov 2026; platform-official). That is the API's threshold; whether the app's own Insights screen uses the same one was not checked. On YouTube, the Audience tab shows demographics only above thresholds that "are not published" and can show "Not enough demographic data" ([YouTube Help, Understand limited data in YouTube Analytics, answer 9101241](https://SUPPORT.GOOGLE.COM/youtube/answer/9101241), checked 13 Nov 2026; platform-official). Both are readings, taken in the audience block in under five minutes. Each trait replaces PB3's outside evidence only where her own data shows something.
+**PB3: audience traits 8 and 9 (every review; inside).** Trait 8 is her audience's age, gender and country; trait 9 is what else it watches (PB3 D1). On Instagram, Meta's developer reference says follower demographics are "Not returned if the IG User has less than 100 followers", and follows and unfollows likewise ([Meta for Developers, Instagram account insights](https://developers.facebook.com/docs/instagram-platform/api-reference/instagram-user/insights), checked 13 Nov 2026; platform-official). That is the API's threshold; whether the app's own Insights screen uses the same one was not checked. On YouTube, the Audience tab shows demographics only above thresholds that "are not published" and can show "Not enough demographic data" ([YouTube Help, Understand limited data in YouTube Analytics, answer 9101241](https://support.google.com/youtube/answer/9101241), checked 13 Nov 2026; platform-official). Both are readings, taken in the audience block in under five minutes. Each trait replaces PB3's outside evidence only where her own data shows something.
 
 **PB4: three items.**
 
@@ -286,7 +286,7 @@ One sheet, read on PB1's dates in the order of D2. "Qualifies" is counted from t
 | # | Metric | Read from | Qualifies | Set against | Decides |
 |---|---|---|---|---|---|
 | AU1 | Trait 8: age, gender, country, both platforms | IG12; Studio Audience tab | When shown | PB3 D1 trait 8 | Replaces outside evidence |
-| AU2 | Trait 9: channels and content her audience watches | Studio, Audience, "Channels your audience watches" | When shown | PB3 D1 trait 9 | Replaces outside evidence |
+| AU2 | Trait 9: channels and content her audience watches | Studio, Audience, "Channels that your audience watches" | When shown | PB3 D1 trait 9 | Replaces outside evidence |
 | R1 | Income by line: gross, fees, net | Gumroad; T3 log | From Q2 | PB9 D3 scenarios | PB9 D4 rule |
 | R2 | Guide sales; months with none | Gumroad | From Q3 | PB9 §8 Poisson | PB9 D4 rule |
 | R3 | Watch hours and subscribers against programme thresholds | YT9, YT10 | All | 3,000/500; 8,000/1,000 | Record |
@@ -443,7 +443,7 @@ Quarter: Monday 5 April to Sunday 4 July 2027, weeks 14–26; Season 2, uploads 
 - YT4: under 40%: uploads 10 (38%) and 13 (37%).
 - Verdict 3 count: uploads 10 (% viewed), 11 (CTR) and 13 (both): **three**. Neither CTR reading alone is clear of 2%; the count is what carries the verdict (§3).
 - YT5: Intro shown for uploads 2, 3, 8, 9, 10 and 11 (52%, 61%, 59%, 54%, 51%, 57%); her median of the six, 55.5%.
-- R6 (PB6): uploads 28+ days old in the quarter: 8–11. Lowest CTR, upload 11 (1.7%); impressions 1,210, under 1,275; Intro 57%, above 55.5%. It qualifies: one new thumbnail, made in the packaging hour of Sun 18 Jul, CTR before (1.7% on 1,210) recorded. A one-video comparison with no control.
+- R6 (PB6): uploads 28+ days old in the quarter: 8–11. Lowest CTR among them, upload 11 (1.7%; upload 13's 1.6% is lower but the upload is under 28 days old); impressions 1,210, under 1,275; Intro 57%, above 55.5%. It qualifies: one new thumbnail, made in the packaging hour of Sun 18 Jul, CTR before (1.7% on 1,210) recorded. A one-video comparison with no control.
 - YT6: YouTube search 29%, Suggested videos 26%, Browse features 22%, External 11%, Channel pages 6%, Direct or unknown 4%, other 2%. External, 141 views; Instagram 97, copied to IG10.
 - YT7: new terms included "fix veneer bubble" and "restore furniture in apartment"; the second goes into upload 16's title (PB6 R3).
 - YT8: first reading: views on uploads 1–7 in the 28 days to 4 Jul, 118 of 402 channel views, 29%. Own baseline.
@@ -472,7 +472,7 @@ Quarter: Monday 5 April to Sunday 4 July 2027, weeks 14–26; Season 2, uploads 
 - HO1: five noes; register line A3 closed (23 Jun). No policy change.
 - HO3: Season 3 is seven pieces, uploads 14–20. On the table: 14, a teak sewing cabinet (from 12 Jun), and 15, a beech stool (from 26 Jun). Picked today, each at two weekends: 16, an oak bedside table; 17, a teak tray table; 18, a side chair with a cane seat (the cane referred out, PB2 D4); 19, a small teak bookcase; 20, a small walnut-veneer cabinet.
 
-**Verdict.** Verdict 1: no (7 and 6 uploads). Verdict 2: no (one week over 7). Verdict 3: yes (three uploads). **Change the format.** The one YouTube change: packaging. From upload 15 (Tue 20 Jul 2027, the season's second video, PB4 §4), the thumbnail shows the fault in a close frame beside the finished piece, at most four words, in her colours (PB5 §7), in place of the two whole-piece views from the taped mark, as found and finished, that PB5 §7 rule 1 set. Why packaging over length or structure: two of the three uploads count on click-through with impressions below her median, which is the case YouTube names for a title or thumbnail change (PB1 D3, YouTube Help 16559651); the two percentage-viewed readings sit 2 and 3 points under the edge of a vendor band published without a sample (PB1 Y3). What reverses it: at the Q3 review, the same count on uploads 15–20. If percentage viewed is still under band on three uploads at Q3, structure is the next change. On Instagram: none (IR11 and IR12 not triggered). R6 upload 11's new thumbnail uses the new layout, so its before-and-after is one early, uncontrolled reading. Hours for this review: two Reels fewer in the cut window of Sun 18 July; week 27 ran at 7.0, at the line.
+**Verdict.** Verdict 1: no (7 and 6 uploads). Verdict 2: no (one week over 7). Verdict 3: yes (three uploads). **Change the format.** The one YouTube change: packaging. From upload 15 (Tue 20 Jul 2027, the season's second video, PB4 §4), the thumbnail shows the fault in a close frame beside the finished piece, at most four words, in her colours (PB5 §7, §8), in place of the two whole-piece views from the taped mark, as found and finished, that PB5 §7 rule 1 set. Why packaging over length or structure: two of the three uploads count on click-through with impressions below her median, which is the case YouTube names for a title or thumbnail change (PB1 D3, YouTube Help 16559651); the two percentage-viewed readings sit 2 and 3 points under the edge of a vendor band published without a sample (PB1 Y3). What reverses it: at the Q3 review, the same count on uploads 15–20. If percentage viewed is still under band on three uploads at Q3, structure is the next change. On Instagram: none (IR11 and IR12 not triggered). R6 upload 11's new thumbnail uses the new layout, so its before-and-after is one early, uncontrolled reading. Hours for this review: two Reels fewer in the cut window of Sun 18 July; week 27 ran at 7.0, at the line.
 
 ### D5 · Mara's annual review: one page, Monday 3 January 2028
 
@@ -561,10 +561,10 @@ Rows read once and written twice: [any number two rows both read, and the row it
 - NIST/SEMATECH e-Handbook of Statistical Methods, §7.2.4.2, "Sample sizes required", checked 13 Nov 2026. https://itl.nist.gov/div898/handbook/prc/section2/prc242.htm
 - TechCrunch, "YouTube will no longer be deleting videos from inactive accounts", 18 May 2023. https://techcrunch.com/2023/05/18/youtube-will-no-longer-be-deleting-videos-from-inactive-accounts
 - YouTube Help, "The YouTube Partner Programme overview and eligibility" (answer 72851), checked 13 Nov 2026. https://support.google.com/youtube/answer/72851?hl=en-GB
-- YouTube Help, "Understand limited data in YouTube Analytics" (answer 9101241), checked 13 Nov 2026. https://SUPPORT.GOOGLE.COM/youtube/answer/9101241
+- YouTube Help, "Understand limited data in YouTube Analytics" (answer 9101241), checked 13 Nov 2026. https://support.google.com/youtube/answer/9101241
 - YouTube Help, "YouTube performance FAQ & troubleshooting" (answer 141805), checked 13 Nov 2026. https://support.google.com/youtube/answer/141805?hl=en
 
-Every other figure is carried from this course's units and cited there by row: PB1 D1 (Y1–Y12, I1–I7, B1–B2), PB1 §2, §4 and §6, PB6 D1–D2, PB7 D1–D2, PB9 D2–D5; each rests on the sources those units list.
+Every other figure is carried from this course's units and cited there by row: PB1 D1 (Y1–Y12, I1–I7, B1–B2), PB1 §2, §3, §4, §6 and §8, PB1 D2–D3 (which carries YouTube Help 16559651), PB2 §3 and D5, PB3 §4 and D1–D2, PB4 §1 and §4–§7, PB5 §7–§9, PB6 §3 and D1–D2, PB7 §9 and D1–D2, PB8 D1–D3, PB9 §8 and D1–D5; each rests on the sources those units list.
 
 ## Unsure list
 
@@ -574,7 +574,7 @@ Every other figure is carried from this course's units and cited there by row: P
 - Google's 2023 statement on not deleting accounts with YouTube videos is a 2023 statement via TechCrunch; Google's current inactive-account policy page was not opened, nor what counts as activity (§9).
 - The Rule of three is cited through a 1995 JAMA letter that credits Hanley and Lippman-Hand; the 1983 paper itself was not opened (§3).
 - The review's 60 minutes, the 0.75 hours for the repeat-back test and for the annual page, and the minute blocks of D2 are her estimates; no source gives the time a review takes (§5, D2).
-- The YouTube Studio app path to "Channels your audience watches" was not confirmed in the app (D1 AU2).
+- The YouTube Studio app path to "Channels that your audience watches" was not confirmed in the app (D1 AU2).
 - Kohavi et al. is cited from the authors' own survey page; the full paper's text was not read beyond its abstract (§7).
 
 - Object: the metrics sheet, the review's one page of rows, discussed at length in §1 and built in D1
@@ -582,3 +582,5 @@ Every other figure is carried from this course's units and cited there by row: P
 - Correction 2026-11-13, found by the W-PB10 round-2 correction check (P108): §5 item 3 quotes PB4 §1's earlier cadence wording; PB4 §1 was corrected on 13 Nov 2026 to two or more pieces in a quarter taking more than two weekends, in two consecutive quarters, the rule as §5 reads it; a note after the quotation says so. The Object line is now a list item, as in the other units (the same check, no content change).
 
 Erratum 14 Nov 2026, Audit 4 (the final audit, a full read of the course; Fable 5.2, row F-PB): 7 exact replacements applied, A4-1, A4-4, A4-5, A4-8, A4-9, A4-14, A4-14; each is quoted with its source in `audits/personal-brand/audit-4.md`.
+
+Erratum 15 Nov 2026, Audit 3 (stratified-sample audit; Fable 5.2, row F-PB): 7 exact replacements applied, PB10-1, PB10-2, PB10-3, PB10-4, PB10-5, PB10-6, PB10-7; each is quoted with its source in `audits/personal-brand/audit-3.md`.
