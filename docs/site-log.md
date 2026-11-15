@@ -14,26 +14,25 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | P107 | Marketing | Confirm one reference to a national consumer law in PB8 against the official consolidated text. |
-| 2 | W-BW1 | AI | Write BW1, Mental model: how a language model works, for any reader. |
-| 3 | W-BW2 | AI | Write BW2, Choosing the model and the effort. |
-| 4 | W-BW3 | AI | Write BW3, Briefing: prompts that hold up. |
-| 5 | W-BW4 | AI | Write BW4, Context engineering. |
-| 6 | W-BW5 | AI | Write BW5, Specifying a project. |
-| 7 | W-BW6 | AI | Write BW6, Research and verification. |
-| 8 | W-BW7 | AI | Write BW7, Pipelines: raw material to finished output. |
-| 9 | W-BW8 | AI | Write BW8, Skills and automation. |
-| 10 | W-BW9 | AI | Write BW9, Agents. |
-| 11 | W-BW10 | AI | Write BW10, Cost, limits, privacy. |
-| 12 | W-DD-BW1 | AI | Write the deep dive on how the best practitioners work. |
-| 13 | W-DD-BW2 | AI | Write the deep dive that follows one project, with its numbers. |
-| 14 | W-DD-BW3 | AI | Write the deep dive in which the reader reviews their own usage; course BW complete. |
-| 15 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
+| 1 | W-BW2 | AI | Write BW2, Choosing the model and the effort. |
+| 2 | W-BW3 | AI | Write BW3, Briefing: prompts that hold up. |
+| 3 | W-BW4 | AI | Write BW4, Context engineering. |
+| 4 | W-BW5 | AI | Write BW5, Specifying a project. |
+| 5 | W-BW6 | AI | Write BW6, Research and verification. |
+| 6 | W-BW7 | AI | Write BW7, Pipelines: raw material to finished output. |
+| 7 | W-BW8 | AI | Write BW8, Skills and automation. |
+| 8 | W-BW9 | AI | Write BW9, Agents. |
+| 9 | W-BW10 | AI | Write BW10, Cost, limits, privacy. |
+| 10 | W-DD-BW1 | AI | Write the deep dive on how the best practitioners work. |
+| 11 | W-DD-BW2 | AI | Write the deep dive that follows one project, with its numbers. |
+| 12 | W-DD-BW3 | AI | Write the deep dive in which the reader reviews their own usage; course BW complete. |
+| 13 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-15 | BW1 | AI | BW1, Mental model, written. |
 | 2026-10-22 | G0–9 | Mythology | The Greece syllabus set out, then its core written: fifty reports from the sources and the geography, through myth, history, religion and art, to a final exam. |
 | 2026-10-22 | G10 | Mythology | Greece gains its first deep dive, the Trojan War, in twelve reports. |
 | 2026-10-24 | G11 | Mythology | Greece gains a second deep dive, Alexander, in eight reports. |
