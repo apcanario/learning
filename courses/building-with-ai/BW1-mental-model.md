@@ -9,7 +9,7 @@ search: on
 
 # BW1 · Mental model
 
-Every product fact in this unit (a window size, a price, a cutoff, how memory, projects or skills behave) was read on the vendor's own page on 15 November 2026, and is dated where it appears. Anthropic's help-centre pages carry no exact date, only a note of how recently they were updated, so the reading date is the only date they can be given. Research findings name the models they tested; carrying a finding to a current model is this unit's inference, and is said to be. Each practice carries an evidence grade: **measured** (a study or a test with numbers), **documented practice** (a vendor or a named practitioner says to do it; nobody measured it here), or **stated opinion**.
+Every product fact in this unit (a window size, a price, a cutoff, how memory, projects or skills behave) was read on the vendor's own page on 15 November 2026, and is dated where it appears. Most of Anthropic's help-centre pages carry no exact date, only a note of how recently they were updated, so for those the reading date is the only date they can be given. Research findings name the models they tested; carrying a finding to a current model is this unit's inference, and is said to be. Each practice carries an evidence grade: **measured** (a study or a test with numbers), **documented practice** (a vendor or a named practitioner says to do it; nobody measured it here), or **stated opinion**.
 
 ## 1 · The context window is the one thing you control
 
@@ -436,7 +436,7 @@ All web pages read on 15 November 2026. Most of Anthropic's help-centre pages sh
 3. Anthropic, "Tracing the thoughts of a large language model": the hallucination section does not name its model; the unit says the introduction names Claude 3.5 Haiku for the companion research, and that transfer is inference.
 4. Liu et al.: "the models tested date from 2023" rests on the paper's 2023 arXiv posting (2307.03172) and its 2024 journal date; the list of models was not re-read on the page fetched (abstract only).
 5. Chroma, Context Rot: "Claude and GPT models among them" is from the page's distractor-test discussion as summarised by the fetch; the full model list beyond the five Claude models was not read.
-6. Anthropic help-centre pages carry no exact date ("updated this week", "over 3 weeks ago"); the window sizes, memory behaviour and plan lists were read on 15 Nov 2026 and may change within days.
+6. Most Anthropic help-centre pages carry no exact date ("updated this week", "over 3 weeks ago"); the window sizes, memory behaviour and plan lists were read on 15 Nov 2026 and may change within days.
 7. OpenAI help-centre pages (Memory FAQ, Projects in ChatGPT, Apps in ChatGPT) refused the fetch and were not checked; ChatGPT rows in "On other tools" rest on openai.com pages (Memory and new controls for ChatGPT; Using projects in ChatGPT; Custom instructions for ChatGPT) and the OpenAI API docs.
 8. Gemini skills: "Gemini can apply a skill when relevant" and the Gems read-only date (17 Nov 2026, personal accounts, users 18 and over) come from one Gemini Apps Help page with no publication date.
 9. Message threads (Anthropic API, beta): the unit reports the page's statement that the API keeps the conversation; how billing treats the kept history was not read.
@@ -448,3 +448,5 @@ Fresh check 2026-11-15 (claude-opus-5-5): fix · 1 errors, 7 should-fix, 7 minor
 Correction 15 Nov 2026, found by BW3's corrections check (Opus 5.5, row W-BW3, flag F3): 7 exact replacements applied to §8 (the layer map names the unit that treats each layer) and to the "Treated in" column of the diagnosis table (Parts 3 and 4), each checked against the course's briefs; `audits/building-with-ai/corrections-2026-11-15-BW1-B3.md`.
 
 Correction 15 Nov 2026, found by W-BW4's round-two corrections check and confirmed by a corrections check (Opus 5.5, row W-BW5; `audits/building-with-ai/corrections-2026-11-15-BW5-BW1-B4.md`, change 3): the Sources note no longer says help-centre pages show no exact date; the connector page is dated 16 March 2026.
+
+Correction 15 Nov 2026, found by W-BW5's corrections check and confirmed by its round-two check (Opus 5.5; `audits/building-with-ai/corrections-2026-11-15-BW5-r2-BW1-B4.md`, changes 1 and 2): the opening and unsure item 6 say most help-centre pages, not all, carry no exact date.
