@@ -10,10 +10,10 @@ Row F-PB, started 14 Nov 2026. One line per unit and one for Audit 4. States: pe
 - PB6: errata applied (2 applied, 0 not applied, 2 flags)
 - PB7: errata applied (8 applied, 0 not applied, 0 flags)
 - PB8: errata applied (9 applied, 2 not applied, 0 flags)
-- PB9: pending (run 1 returned INCOMPLETE: the turn's web search budget was used up, no source opened; its report is saved in `f-pb/PB9-run1-no-search/`; to re-run with search from its recorded sample)
-- PB10: pending (run 1 returned without its source check: the turn's web search budget was used up; its report is saved in `f-pb/PB10-run1-no-search/`; to re-run with search from its recorded sample)
-- DD-PB1: pending (run 1 returned without its source check: the turn's web search budget was used up; its report is saved in `f-pb/DD-PB1-run1-no-search/`; to re-run with search from its recorded sample)
-- DD-PB2: pending (run 1 returned without its source check: the turn's web search budget was used up; its report is saved in `f-pb/DD-PB2-run1-no-search/`; to re-run with search from its recorded sample)
+- PB9: pending
+- PB10: pending
+- DD-PB1: pending
+- DD-PB2: pending
 - Audit 4: report saved
 - Audit 4 errata, PB1: errata applied (1 applied, 1 not applied, 0 flags)
 - Audit 4 errata, PB3: errata applied (1 applied, 0 not applied, 0 flags)
@@ -27,3 +27,6 @@ Row F-PB, started 14 Nov 2026. One line per unit and one for Audit 4. States: pe
 
 The Fable limit was reached (resets Sun 15 Nov, 06:00 Lisbon); the chat went on as Opus 5.5 (Pedro switched the model at 03:28) and only saved, applied and recorded. Done: eight sample audits with search (PB1 to PB8; Audits 1 and 2 complete), Audit 4 complete, errata of PB1 to PB8 and of Audit 4 applied, the assessment built as partial. Not done: the source check of PB9, PB10, DD-PB1 and DD-PB2 (their first runs had no web search: the turn's 200-call budget was used up; their reports and recorded samples are in `f-pb/<code>-run1-no-search/`), their errata, the flags into `syllabus-flags.md`, the records (hub, index, audits/README, kit changelog), the build, verify, publish and deploy. Held errata: PB4-3 and PB4-4 (vidIQ's title, shared with PB1), PB8-9 and PB8-10 (not checked at source); A4-13 no longer matches (PB1-4 rewrote the line). Part 2 resumes from here: `docs/handoffs/F-PB-part2.md`.
 
+## Part 2 (15 Nov 2026)
+
+Resumed from `docs/handoffs/F-PB-part2.md`. The chat runs on Opus 5.5; the four auditors (PB9, PB10, DD-PB1, DD-PB2) run on Fable, each re-checking its run-1 sample (`f-pb/<code>-run1-no-search/`) at source with a full attribution pass.
