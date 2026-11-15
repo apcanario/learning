@@ -5,14 +5,15 @@ Opus 5.5 agents, and reads only each agent's reply (at most six lines) and its o
 is an agent's; everything that changes a file is one of these commands, which checks its own result and refuses to leave a
 half-done change.
 
-  python3 kit/thin.py stage KIND --row W-BW1 DIR [--unit F] [--report F] [--notes F] [--unsure F] [--fixes F]
+  python3 kit/thin.py stage KIND --row W-BW1 DIR [--unit F] [--report F] [--notes F] [--unsure F] [--fixes F] [--stats F,F] [--date D]
         KIND writer | checker | applier | filer. Builds the packet folder DIR for one agent (it must not exist or be empty).
         writer  brief.txt (kit/mdcourse.py open_brief), the skill, sourcing standard, figure kinds, case file, source units with
                 their fresh-check reports, filed units of the course, flags.txt
         checker unit.md, brief.txt, notes.md, unsure.md, the sourcing standard, the case file, skills/audit-units
         applier unit.md, report.md (the fresh-check report), fixes.json (made from the report by `fixes`)
         filer   unit.md, notes.md, unsure.md, report.md, the course's hub.py, syllabus-flags.md and case file, the course's rows
-                of docs/courses-index.md, a template of records.json
+                of docs/courses-index.md, a template of records.json, filer-rules.txt, the day's corrections reports of the course
+                (corrections/, --date, default today) and the stats files given with --stats (C4)
   python3 kit/thin.py fixes REPORT.md FIXES.json
         Parses the findings of a fresh-check report (`[sev] [kind] where; Current: "..."; Problem: ...; Fix: "..."; Basis: ...`)
         into fixes.json: [{id, severity, kind, where, current, fix}].
@@ -22,7 +23,7 @@ half-done change.
         (exit 1). A fix with no decision is held.
   python3 kit/thin.py insert RECORDS.json
         RECORDS.json (the filer agent's output; keys below) is inserted into the repo's files by anchored edits, and every
-        changed Python file is compiled; if anything fails every file is restored (exit 1).
+        changed Python file is compiled and kit/index_check.py is run (C4); if anything fails every file is restored (exit 1).
   python3 kit/thin.py save-report --row W-BW1 --report F --model M --chat URL --date D
         Saves the checker's report verbatim under audits/<course id>/fresh-check-<code>.md with the front matter audits/README.md sets
         out (verdict and counts counted from the report) and prints the line the unit's unsure list gains.
@@ -61,16 +62,49 @@ def die(msg, code=1):
 
 # ---------------------------------------------------------------------------------------------- fixes / apply
 
-FIND = re.compile(r'^\[(error|should-fix|minor)\]\s*\[([\w-]+)\]\s*(.*?);\s*Current:\s*"(.*)"\s*;\s*Problem:.*?(?:[;.]\s*Fix:\s*"(.*?)"\s*(?:[;.]\s*Basis:.*)?)?$')
+HEAD = re.compile(r'^\[(error|should-fix|minor)\]\s*\[([\w-]+)\]\s*(.*?);\s*Current:\s*', re.S)
+LABEL = re.compile(r'[;.]\s*(Problem|Fix|Basis):\s*')
+
+
+def unquote(s):
+    """Strip one outer pair of straight or curly double quotes, and nothing else (C2, 15 Nov 2026)."""
+    s = s.strip()
+    if len(s) >= 2 and s[0] in '"\u201c' and s[-1] in '"\u201d':
+        return s[1:-1]
+    return s
+
+
+def parse_finding(ln):
+    """One finding line -> (sev, kind, where, current, fix). Current runs up to the first `; Problem:`, Fix from the first
+    `Fix:` after Problem up to the last `; Basis:` (or the end), so nested quotes never cut a field (C2, 15 Nov 2026: W-BW4's
+    f1 and f3 were truncated and f4 to f6 lost). fix is None when there is no Fix label, '' when the Fix is empty (a deletion)."""
+    m = HEAD.match(ln)
+    if not m:
+        return None
+    sev, kind, where = m.groups()
+    rest = ln[m.end():]
+    labels = [(x.group(1), x.start(), x.end()) for x in LABEL.finditer(rest)]
+    prob = next((l for l in labels if l[0] == 'Problem'), None)
+    if prob is None:
+        return None
+    cur = unquote(rest[:prob[1]])
+    fx = next((l for l in labels if l[0] == 'Fix' and l[1] > prob[1]), None)
+    fix = None
+    if fx is not None:
+        basis = [l for l in labels if l[0] == 'Basis' and l[1] > fx[1]]
+        end = basis[-1][1] if basis else len(rest)
+        raw = rest[fx[2]:end].strip()
+        fix = '' if raw.lower() in ('', '""', '\u201c\u201d', '(delete)', 'delete') else unquote(raw)
+    return sev, kind, where, cur, fix
 
 
 def cmd_fixes(report, out):
     items = []
     for ln in pathlib.Path(report).read_text(encoding='utf-8').splitlines():
-        m = FIND.match(ln.strip())
-        if not m:
+        got = parse_finding(ln.strip())
+        if not got:
             continue
-        sev, kind, where, cur, fix = m.groups()
+        sev, kind, where, cur, fix = got
         fix = fix.replace('\\n', '\n') if fix else fix   # W-BW2: a checker writes a line break inside a Fix as the two characters \n
         items.append(dict(id=f'f{len(items) + 1}', severity=sev, kind=kind, where=where.strip(), current=cur, fix=fix))
     pathlib.Path(out).write_text(json.dumps(items, ensure_ascii=False, indent=1), encoding='utf-8')
@@ -88,7 +122,7 @@ def cmd_apply(unit, fixes, decisions):
     applied, held, bad = [], [], []
     for i, f in fx.items():
         d = dec.get(i)
-        if not d or d.get('decision') != 'apply' or not f.get('fix') or f['fix'] == f['current']:
+        if not d or d.get('decision') != 'apply' or f.get('fix') is None or f['fix'] == f['current']:   # '' is a deletion (C2)
             held.append(i)
             continue
         n = text.count(f['current'])
@@ -221,6 +255,10 @@ def cmd_insert(rec_path):
             raise ValueError('STATUS did not take')
         if rec.get('reading') and not any(rec['code'] in x['covers'] for x in mod.READINGS):
             raise ValueError('READINGS did not take')
+        import subprocess                                    # C4, 15 Nov 2026: the index must still match after the insert
+        ic = subprocess.run([sys.executable, str(R / 'index_check.py')], cwd=str(R), capture_output=True, text=True)
+        if ic.returncode != 0:
+            raise ValueError('kit/index_check.py failed: ' + (ic.stdout + ic.stderr).strip()[-1500:])
     except Exception as ex:                                  # restore everything
         for p, txt in old.items():
             pathlib.Path(p).write_text(txt, encoding='utf-8')
@@ -407,7 +445,27 @@ def cmd_stage(argv):
         if case:
             put(case)
         ix = (ROOT / 'docs' / 'courses-index.md').read_text(encoding='utf-8')
-        (out / 'index-rows.txt').write_text('\n'.join(ln for ln in ix.splitlines() if re.search(r'\b' + re.escape(code) + r'\b', ln) or re.match(r'^\d+ of \d+|written of', ln)), encoding='utf-8')
+        import datetime                                      # C4, 15 Nov 2026: what the filer counts from, and the forms it copies
+        (out / 'corrections').mkdir()
+        for f in sorted((ROOT / 'audits' / c['id']).glob(f"corrections-{opt.get('date', datetime.date.today().isoformat())}-*.md")):
+            put(f, 'corrections/' + f.name)
+        if opt.get('stats'):
+            (out / 'stats').mkdir()
+            for j, f in enumerate(x for x in opt['stats'].split(',') if x):
+                put(f, f'stats/{j + 1}-' + pathlib.Path(f).parent.name + '.json')
+        (out / 'filer-rules.txt').write_text(
+            'Rules for records.json (C4, 15 Nov 2026):\n'
+            '1. Every count you write (findings, fixes applied and held, private-unit or filed-unit replacements, flags) is taken from '
+            'the corrections reports in corrections/ and the stats files in stats/, counted there, never estimated. A corrections '
+            'report counts each replacement it passed; give the total and how many were applied.\n'
+            '2. The index status cell of this unit copies the form of the last filed row of this course in index-rows.txt, word for '
+            'word but for the code, the date and the report path.\n'
+            "3. index_edits always sets the course's count line (\"N of M written\") to the new count, and the unit's row; each old "
+            'text is copied exactly from index-rows.txt and occurs once in docs/courses-index.md.\n'
+            '4. thin.py insert runs kit/index_check.py after inserting and restores every file if it fails.\n', encoding='utf-8')
+        secs = re.split(r'(?m)^(?=## )', ix)                  # C4: the course's whole section (count line, last filed row, this row)
+        sec = next((s for s in secs if c['vault'] in s), None)
+        (out / 'index-rows.txt').write_text(sec if sec else '\n'.join(ln for ln in ix.splitlines() if re.search(r'\b' + re.escape(code) + r'\b', ln)), encoding='utf-8')
         (out / 'records.template.json').write_text(json.dumps(dict(
             row=opt['row'], code=code, course=c['id'], date='YYYY-MM-DD hh:mm',
             reading=dict(id=f'read-{code.lower()}', course=r['sc']['key'], title=r['unit'][1], covers=[code], name=f'{code} · {r["unit"][1]}', intro='…'),
