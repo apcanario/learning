@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **BW4 Context engineering filed (W-BW4, 15 Nov 2026).** Reading page read-bw4, status written 15 Nov, next unit BW5, v5; fresh check fix (2 errors, 5 should-fix, 5 minor, applied); BW1 §8 connector row corrected; 10 flags raised, F8 and F20 carried.
 - **Scatter figures drawn for the phone (P124, row W-BW3, 15 Nov 2026).** `kit/viz.py` draws scatter figures for phone width and `kit/verify.py` checks them.
 - **P123 (15 Nov 2026): `line` figures get a phone drawing.** `line` figures now carry a phone drawing, PHONE_NARROW (258) units wide, via kit/viz.py: `line` draws `_line_draw` twice, and a label with no room falls back to "ends" in the phone drawing only; verify.py's `check_phone_lines` checks it at 320 and 390 px. The `fixes` parser of kit/thin.py now accepts `. Fix:` and a literal `\n` inside a Fix. Nothing in design/theme.css changed.
 - **BW1 · Mental model filed (W-BW1, 15 Nov 2026).** Building with AI v2: reading read-bw1, status written 15 Nov, next unit BW2; 6,431 + 2,951 words, 3 figures, search on; fresh check fix 1/7/7, all applied; 8 syllabus flags raised; P107 and B1 errata applied elsewhere.
@@ -141,6 +142,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 15 Nov 2026 · Session W-BW4 · BW4 Context engineering filed
+
+Row W-BW4, run thin (P31): the main chat (Sonnet 5.5) staged packets and filed; a fresh Opus 5.5 agent wrote BW4 from its brief with search off (sources re-read only), a separate Opus 5.5 agent fresh-checked it (fix: 2 errors, 5 should-fix, 5 minor; audits/building-with-ai/fresh-check-BW4.md), an applier applied every finding, a corrections checker passed 7 of 9 proposed corrections (BW1 §8's connector row and six to a private unit applied; two failed and were not applied; audits/building-with-ai/corrections-2026-11-15-BW1-B4.md), and a filer wrote the records. Hub v5: reading page read-bw4, STATUS BW4 written 15 Nov, NEXT_UNIT BW5. Ten syllabus flags raised; F8 and F20 carried by BW4; the case file gained nothing, as no packet held a fact beyond it. No staleness row: search was off.
 
 ## 15 Nov 2026 · Session W-BW3 · BW3 Briefing: prompts that hold up
 
