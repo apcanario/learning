@@ -864,78 +864,105 @@ def md_blocks(lines):
     return ''.join(out)
 
 
-CL = (R / 'CHANGELOG.md').read_text(encoding='utf-8').split('\n')
-cl_title, cl_intro, cl_secs = CL[0][2:], [], []
-for ln in CL[1:]:
-    if ln.startswith('## '):
-        cl_secs.append((ln[3:], []))
-    elif cl_secs:
-        cl_secs[-1][1].append(ln)
-    else:
-        cl_intro.append(ln)
-cl_sessions = [s for s in cl_secs if re.match(r'\d', s[0])]
-CL_ACCENTS = ['var(--red)', 'var(--orange)', 'var(--gold)', 'var(--teal)', 'var(--blue)', 'var(--purple)']
-cl_since = re.match(r'(\d+)(?: to \d+)? (\w+) (\d{4})', cl_sessions[-1][0]) if cl_sessions else None
-cl_since = f'since {cl_since.group(1)} {cl_since.group(2)} {cl_since.group(3)}' if cl_since else ''
-cl_cards = ''
-for k, (head, body) in enumerate(cl_sessions):
-    parts = head.split(' · ')
-    date, sess, title = (parts + ['', ''])[:3]
-    num = re.search(r'\d+', sess)
-    col = CL_ACCENTS[(int(num.group()) - 1) % len(CL_ACCENTS)] if num else 'var(--gold)'
-    cl_cards += (f'<details class="clog" style="--c:{col}"{" open" if k == 0 else ""}><summary><span class="cd">{html.escape(date)}</span>'
-                 f'<span class="cs">{html.escape(sess)}</span><span class="ct">{md_inline(title)}</span></summary><div class="cb">{md_blocks(body)}</div></details>')
-cl_other = ''.join(f'<section class="howto clsec"><h2>{md_inline(h)}</h2>{md_blocks(b)}</section>' for h, b in cl_secs if (h, b) not in cl_sessions)
+# S-PAGES (15 Nov 2026) · the Changelog and Backlog pages, rendered from docs/site-log.md alone: a plain overview by area
+# for an ordinary reader, not the engine's records. docs/BACKLOG.md, docs/CHANGELOG.md and kit/CHANGELOG.md stay in the
+# repo and are not on the site. The file holds two pipe tables: "## Next" (#, Code, Area, What it is), in the overall
+# order, and "## Done" (Date, Code, Area, What happened), dates as YYYY-MM-DD; method.md §8 says who writes them.
+SL_AREAS = [   # (name, what it holds, the track whose tone it takes); the order of the per-area tables
+    ('Mythology', 'Greece and Rome', 'history'), ('Marketing', 'Courses A and PB', 'marketing'),
+    ('AI', 'Courses B and BW', 'technology'), ('UX', 'Course IA', 'ux'), ('Academy', 'The site and its method', None)]
+SL_TONE = {n: next((t['color'] for t in THEMES if t['id'] == tid), 'var(--gold)') for n, _, tid in SL_AREAS}
+
+
+def site_log(path):
+    """docs/site-log.md as (next, done): next [(n, code, area, sentence)] in order; done [(iso, code, area, sentence)]."""
+    import datetime
+    nxt, done, sec = [], [], None
+    for k, ln in enumerate(path.read_text(encoding='utf-8').split('\n'), 1):
+        if ln.startswith('## '):
+            sec = ln[3:].strip()
+            continue
+        if sec not in ('Next', 'Done') or not ln.startswith('|') or ln.startswith('|---'):
+            continue
+        c = [x.strip() for x in ln.strip().strip('|').split('|')]
+        if c[0] in ('#', 'Date'):
+            continue
+        assert len(c) == 4 and all(c), f'site-log.md:{k}: an entry has four cells, none empty: {ln}'
+        assert c[2] in SL_TONE, f'site-log.md:{k}: area {c[2]!r} is not one of {list(SL_TONE)}'
+        if sec == 'Next':
+            assert c[0] == str(len(nxt) + 1), f'site-log.md:{k}: Next is numbered 1, 2, 3 with no gap ({c[0]})'
+            nxt.append(tuple(c))
+        else:
+            datetime.date.fromisoformat(c[0])   # raises on a date that is not YYYY-MM-DD
+            done.append(tuple(c))
+    return nxt, done
+
+
+SL_NEXT, SL_DONE = site_log(R.parent / 'docs' / 'site-log.md')
+# newest first; on one day the entry lower in the file (written later) first
+SL_DONE_SORTED = [e for _, e in sorted(enumerate(SL_DONE), key=lambda ke: (ke[1][0], ke[0]), reverse=True)]
+cl_title, bl_title = 'Changelog', 'Backlog'
+cl_since = f'since {short_date(min(e[0] for e in SL_DONE))}' if SL_DONE else ''
+
+
+def sl_table(cls, head, rows):
+    """One overview table: the column classes come from cls (one per column), so theme.css sizes each column."""
+    th = ''.join(f'<th class="{c}">{html.escape(h)}</th>' for c, h in zip(cls, head))
+    tb = ''.join('<tr>' + ''.join(f'<td class="{c}">{v}</td>' for c, v in zip(cls, r)) + '</tr>' for r in rows)
+    return f'<div class="tbl sltbl"><table class="sl"><thead><tr>{th}</tr></thead><tbody>{tb}</tbody></table></div>'
+
+
+def sl_area(name):
+    return f'<span class="sla" style="--c:{SL_TONE[name]}">{html.escape(name)}</span>'
+
+
+def sl_section(name, held, body, kind):
+    return (f'<section class="howto slarea" data-area="{html.escape(name)}" data-sl="{kind}" style="--hc:{SL_TONE[name]}">'
+            f'<h2>{html.escape(name)}</h2><p class="slheld">{html.escape(held)}</p>{body}</section>')
+
+
+cl_body = ''
+for name, held, _ in SL_AREAS:
+    rows = [(f'<span class="sld">{short_date(d)}</span>', f'<span class="slc">{html.escape(c)}</span>', md_inline(t))
+            for d, c, a, t in SL_DONE_SORTED if a == name]
+    cl_body += sl_section(name, held, sl_table(('c-date', 'c-code', 'c-text'), ('Date', 'Code', 'What happened'), rows)
+                          if rows else '<p class="slnone">Nothing yet.</p>', 'done')
 changelog = f"""
-<section class="panel log" id="changelog" data-ctx="root" data-kind="changelog" data-t="{html.escape(cl_title)}" data-u="ACADEMY" data-c="var(--gold)" hidden>
+<section class="panel log slog" id="changelog" data-ctx="root" data-kind="changelog" data-t="{cl_title}" data-u="ACADEMY" data-c="var(--gold)" hidden>
   <header class="hero">
     {crumbs(('Academy', 'home'), ('Changelog', None))}
-    <div class="eyebrow"><span class="u" style="--c:var(--gold)">CHANGELOG</span> · {len(cl_sessions)} sessions {cl_since}</div>
-    <h1>{html.escape(cl_title)}</h1>
-    {md_blocks(cl_intro).replace('<p>', '<p class="lede">', 1)}
+    <div class="eyebrow"><span class="u" style="--c:var(--gold)">CHANGELOG</span> · {len(SL_DONE)} items {cl_since}</div>
+    <h1>{cl_title}</h1>
+    <p class="lede">What has been done, area by area, newest first: each unit written, each course started or finished, and each change to the site a reader can see. What is still to come is in the <a href="#backlog" data-target="backlog">Backlog</a>.</p>
   </header>
-  {cl_other}
-  <h2 class="hsec">Sessions, newest first</h2>
-  <div class="clogs">{cl_cards}</div>
+  {cl_body}
 </section>"""
 # P91 (4 Nov 2026): the home's other site pages (the backlog; the figure kinds, which has no drawer row; the changelog,
 # which joins them) sit above New since, so What's new is the one link under it
-site_links = ''.join(([] if 'backlog' in OMIT else [f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>The queue of chats, and the chats done</b></a>'])
+site_links = ''.join(([] if 'backlog' in OMIT else [f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>What comes next, in order and by area</b></a>'])
                   + ([] if 'figures' in OMIT else [f'<a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a>'])
-                  + ([] if 'changelog' in OMIT else [f'<a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>{len(cl_sessions)} sessions {re.sub(r"(\d) ", r"\1&nbsp;", cl_since)}, newest first</b></a>']))
+                  + ([] if 'changelog' in OMIT else [f'<a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>What has been done, by area, newest first</b></a>']))
 site_links = f'<div class="hlinks">{site_links}</div>' if site_links else ''
 
-# the backlog page: docs/BACKLOG.md (the queue) and docs/CHANGELOG.md (the chats done), rendered as they are
-def md_sections(path):
-    """A docs/ markdown file as (title, intro lines, [(heading, lines)]) split on '## ' headings."""
-    L = path.read_text(encoding='utf-8').split('\n')
-    title, intro, secs = L[0][2:], [], []
-    for ln in L[1:]:
-        if ln.startswith('## '):
-            secs.append((ln[3:], []))
-        elif secs:
-            secs[-1][1].append(ln)
-        else:
-            intro.append(ln)
-    return title, intro, secs
-
-DOCS = R.parent / 'docs'
-bl_title, bl_intro, bl_secs = md_sections(DOCS / 'BACKLOG.md')
-dc_title, dc_intro, dc_secs = md_sections(DOCS / 'CHANGELOG.md')
-dc_rows = sum(1 for ln in (DOCS / 'CHANGELOG.md').read_text(encoding='utf-8').split('\n') if ln.startswith('| ') and not ln.startswith('| Date') and not ln.startswith('|---'))
-bl_body = ''.join(f'<section class="howto clsec" style="--hc:var(--orange)"><h2>{md_inline(h)}</h2>{md_blocks(b)}</section>' for h, b in bl_secs)
-dc_body = f'<section class="howto clsec" style="--hc:var(--gold)"><h2>{md_inline(dc_title)}</h2>{md_blocks(dc_intro)}</section>' + ''.join(f'<section class="howto clsec" style="--hc:var(--gold)"><h2>{md_inline(h)}</h2>{md_blocks(b)}</section>' for h, b in dc_secs)
+# the backlog page (S-PAGES): the overall order first, then one table per area, from docs/site-log.md's Next alone
+bl_order = sl_table(('c-n', 'c-code', 'c-area', 'c-text'), ('#', 'Code', 'Area', 'What it is'),
+                    [(n, f'<span class="slc">{html.escape(c)}</span>', sl_area(a), md_inline(t)) for n, c, a, t in SL_NEXT])
+bl_body = ''
+for name, held, _ in SL_AREAS:
+    rows = [(f'<span class="slc">{html.escape(c)}</span>', md_inline(t)) for n, c, a, t in SL_NEXT if a == name]
+    bl_body += sl_section(name, held, sl_table(('c-code', 'c-text'), ('Code', 'What it is'), rows)
+                          if rows else '<p class="slnone">Nothing queued.</p>', 'next')
 backlog = f"""
-<section class="panel log" id="backlog" data-ctx="root" data-kind="backlog" data-t="{html.escape(bl_title)}" data-u="ACADEMY" data-c="var(--orange)" hidden>
+<section class="panel log slog" id="backlog" data-ctx="root" data-kind="backlog" data-t="{bl_title}" data-u="ACADEMY" data-c="var(--orange)" hidden>
   <header class="hero">
     {crumbs(('Academy', 'home'), ('Backlog', None))}
-    <div class="eyebrow"><span class="u" style="--c:var(--orange)">BACKLOG</span> · the queue of chats · {dc_rows} chats done</div>
-    <h1>{html.escape(bl_title)}</h1>
-    {md_blocks(bl_intro).replace('<p>', '<p class="lede">', 1)}
+    <div class="eyebrow"><span class="u" style="--c:var(--orange)">BACKLOG</span> · {len(SL_NEXT)} items next · {len(SL_DONE)} done</div>
+    <h1>{bl_title}</h1>
+    <p class="lede">What comes next: first everything in the order it will be done, then the same items area by area. What is done is in the <a href="#changelog" data-target="changelog">Changelog</a>.</p>
   </header>
+  <h2 class="hsec">In order</h2>
+  <section class="slorder" data-sl="order">{bl_order}</section>
   {bl_body}
-  <h2 class="hsec">Chats done</h2>
-  {dc_body}
 </section>"""
 
 # P92 (4 Nov 2026) · the home's topography (Pedro, 13:16: "SVG contours from the data, each area a rise by its words").
@@ -1099,7 +1126,7 @@ whatsnew = f"""
     {crumbs(('Academy', 'home'), ("What's new", None))}
     <div class="eyebrow">{eyebrow_segs(*['<span class="u" style="--c:var(--gold)">WHAT\'S NEW</span>', f'{nr} history reports', f'{nu} units', f'{nc} courses'] + ([f'since {howbuilt.date_long(WHATSNEW[-1]["date"])}'] if WHATSNEW else []))}</div>
     <h1>What's new</h1>
-    <p class="lede">Every unit and every history report filed, and every course started, newest first, by the day it was filed. A history report is dated by the work session that filed it; where that session ran over several days, by its first day, marked ≈. The work sessions themselves are in the Changelog.</p>
+    <p class="lede">Every unit and every history report filed, and every course started, newest first, by the day it was filed. A history report is dated by the work session that filed it; where that session ran over several days, by its first day, marked ≈. What else was done is in the Changelog.</p>
   </header>
   {''.join(f'<section class="newday" data-day="{d}"><h2 class="hsec">{short_date(d)}</h2><div class="hrows">{"".join(new_row(x) for x in xs)}</div></section>' for d, xs in _days)}
 </section>"""

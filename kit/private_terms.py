@@ -1,6 +1,7 @@
 """Fail if a private term reaches a public course (G-0, 11 Nov 2026; docs/public-courses.md; extends backlog row P29).
 
-python3 kit/private_terms.py            every public course: its vault, its data folder and its built pages (but built.html)
+python3 kit/private_terms.py            every public course: its vault, its data folder and its built pages (but built.html),
+                                        and docs/site-log.md, the source of the Backlog and Changelog pages (S-PAGES)
 python3 kit/private_terms.py <file>...  only these files (a writer's or a checker's draft)
 
 The public courses are the entries of kit/courses.py named in PUBLIC. The terms are kit/private-terms.txt: one per line,
@@ -40,6 +41,9 @@ def files():
         # built.html is left out: the "How it was built" page is generated from docs/method.md and links the private
         # repository by its owner's handle on every course; what it shows publicly is row P24's decision
         out += sorted(f for f in (R / 'academy').glob(f'{c["id"]}-*/*.html') if f.name != 'built.html')
+    # S-PAGES (15 Nov 2026): the site log, the one source of Academy's Backlog and Changelog pages; verify.py's
+    # check_site_log scans the two built pages for the same terms
+    out += [ROOT / 'docs' / 'site-log.md']
     return out
 
 

@@ -13,7 +13,8 @@
    3  Layout: top bar, drawer, reading column, panels
    4  Components from Personal Mythology
       4a report  4b home and course cards  4c syllabus and prompts
-      4d era ribbon  4e rule blocks and parts  4f root home  4g changelog
+      4d era ribbon  4e rule blocks and parts  4f root home  4g changelog (since S-PAGES the Backlog and Changelog
+         overview tables, .slog)
       4h learner home (since 6.5 the hero: the topography behind the headline, the areas cycling under it, the
          lede, the quiet link to What's new; the area headers; new since and What's new; folded planned lists) and,
          since 6.6, the tile: every course, unit and planned course on every page (.course.live and its modifiers)
@@ -669,6 +670,40 @@ details.clog[open]>summary::after{content:"–"}
 .clog .cb li{margin:0 0 6px;font-size:15px}
 .clog .cb ul ul{margin:6px 0 0}
 .clog .cb strong{font-weight:600}
+/* S-PAGES (15 Nov 2026) · the Backlog and Changelog as a plain overview by area (docs/site-log.md): one table for the
+   overall order, one per area. Read on a 320 px phone without sideways scroll: fixed columns, the code and date columns
+   narrow, the sentence wrapping; an area's table runs to the edges of its card. Column widths in px, since a th's
+   font size differs from a td's (an em would differ between them) */
+.slog .sltbl{overflow-x:visible;margin:0}
+.slog table.sl{table-layout:fixed;width:100%;font-size:14.5px;font-variant-numeric:normal}
+.slog table.sl th,.slog table.sl td{white-space:normal;padding:9px 6px;overflow-wrap:break-word}
+.slog table.sl th:first-child,.slog table.sl td:first-child{padding-left:12px}
+.slog table.sl th:last-child,.slog table.sl td:last-child{padding-right:12px}
+.slog table.sl td.c-text{line-height:1.45;color:var(--fg)}
+.slog .c-n{width:36px}
+.slog td.c-n{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.slog .c-code{width:84px}
+.slog .c-date{width:108px}
+.slog .c-area{width:104px}
+.slog .slc{display:block;font-family:var(--mono);font-size:11.5px;line-height:1.6;letter-spacing:.02em;color:var(--fg);overflow-wrap:anywhere}
+.slog .sld{display:block;font-family:var(--mono);font-size:11.5px;line-height:1.6;letter-spacing:.02em;color:var(--muted)}
+.slog .sla{display:block;border-left:3px solid var(--c);padding-left:6px;font-size:13.5px;line-height:1.4;overflow-wrap:normal;word-break:keep-all}
+.slog .slorder>.sltbl{background:var(--card)}
+.slog .slarea{padding:16px 0 0;border-left:3px solid var(--hc,var(--gold));overflow:hidden}
+.slog .slarea>h2,.slog .slarea>p{padding:0 12px}
+.slog .slarea>.slheld{color:var(--muted);margin:-4px 0 12px;font-size:14px}
+.slog .slarea>.slnone{color:var(--muted);margin:0 0 16px}
+.slog .slarea>.sltbl{border:0;border-top:1px solid var(--line);border-radius:0}
+.slog .slarea table.sl th{background:none}
+@media (max-width:430px){
+  .slog table.sl{font-size:14px}
+  .slog table.sl th,.slog table.sl td{padding:8px 5px}
+  .slog table.sl th:first-child,.slog table.sl td:first-child{padding-left:8px}
+  .slog table.sl th:last-child,.slog table.sl td:last-child{padding-right:8px}
+  .slog .c-n{width:24px}.slog .c-code{width:62px}.slog .c-date{width:62px}.slog .c-area{width:74px}
+  .slog .slc,.slog .sld{font-size:11px;letter-spacing:0}
+  .slog .sla{font-size:11.5px;padding-left:5px}
+}
 
 /* 5 · Components added for hubs -------------------------------------------- */
 /* Only what the history site lacks. Everything else in a hub reuses section 4. */
