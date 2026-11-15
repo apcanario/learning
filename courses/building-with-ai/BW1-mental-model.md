@@ -235,7 +235,6 @@ Grade: stated opinion (this unit's ordering, built on §1 to §7). Each answer p
 ```viz
 {
   "kind": "decision",
-  "caption": "The order in which to read a failed output, and the change each answer points to, from §9 of this unit (the unit's own reasoning, drawing on the sources cited in §2 to §7).",
   "root": {
     "q": "Was the needed fact in the window?",
     "tone": 4,
@@ -247,16 +246,22 @@ Grade: stated opinion (this unit's ordering, built on §1 to §7). Each answer p
         "branches": [
           {"label": "yes", "to": {"outcome": "Trim the window or start a new chat", "tone": 1}},
           {"label": "no", "to": {
-            "q": "Did it come from a source?",
+            "q": "Did it come from a source, or from training?",
             "tone": 4,
             "branches": [
-              {"label": "no", "to": {"outcome": "Supply the source; ask for quotes", "tone": 1}},
-              {"label": "yes", "to": {
+              {"label": "no source", "to": {"outcome": "Supply the source; ask for quotes", "tone": 1}},
+              {"label": "a source", "to": {
                 "q": "Do two layers disagree?",
                 "tone": 4,
                 "branches": [
                   {"label": "yes", "to": {"outcome": "Keep each rule in one layer", "tone": 1}},
-                  {"label": "no", "to": {"outcome": "Run it again; check a sample", "tone": 1}}
+                  {"label": "no", "to": {
+                    "q": "Was it one draw?",
+                    "tone": 4,
+                    "branches": [
+                      {"label": "yes", "to": {"outcome": "Run it again; check a sample", "tone": 1}}
+                    ]
+                  }}
                 ]
               }}
             ]
@@ -264,7 +269,8 @@ Grade: stated opinion (this unit's ordering, built on §1 to §7). Each answer p
         ]
       }}
     ]
-  }
+  },
+  "caption": "The five questions for reading a failed output, in the order §9 of this unit asks them, each with the change its answer points to; a path ends at the first answer that points to a change, and every other path reaches the fifth question, whether the output was one draw (the unit's own reasoning in §9, drawing on the sources cited in §2 to §7)."
 }
 ```
 
