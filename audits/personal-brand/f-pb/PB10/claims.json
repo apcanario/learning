@@ -1,0 +1,560 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "Qualifying ages: 30 days (YT2), 7 days (YT3, YT4), 7 days for an Instagram post",
+  "source": "others/PB6 D2 YT2-YT4; others/PB7 D2 IG2-IG7 and D1 IR4",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Watch hours only from \"long-form videos that you've set to public\"; not private, unlisted, deleted or Shorts",
+  "source": "https://support.google.com/youtube/answer/72851?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "About 2,045 impressions (hypothesis 3%, true 2%), about 1,747 the other way; continuity correction adds 100",
+  "source": "https://itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "Buffer's I4 is an increment over weeks with no posts: \"points added to the weekly growth rate\"",
+  "source": "others/PB1 §3; https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "\"Not returned if the IG User has less than 100 followers\"; follows and unfollows likewise",
+  "source": "https://developers.facebook.com/docs/instagram-platform/api-reference/instagram-user/insights",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Floor of the 12-51 band; below it 1.86%",
+  "source": "others/PB1 D1 Y4; https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "§7",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Regression to the mean \"happens when unusually large or small measurements tend to be followed by measurements that are closer to the mean\"",
+  "source": "https://pubmed.ncbi.nlm.nih.gov/15333621/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "§8",
+  "sampled": true,
+  "kind": "number",
+  "claim": "1,000 US and UK creators: 52% burnout, 37% considering leaving",
+  "source": "others/PB1 D1 B2; https://billiondollarboy.com/news/over-half-of-creators-face-burnout",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "§9",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Google 2023: two years' inactivity; \"We do not have plans to delete accounts with YouTube videos at this time\"",
+  "source": "https://techcrunch.com/2023/05/18/youtube-will-no-longer-be-deleting-videos-from-inactive-accounts",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "Deliverable D4",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Low CTR with fewer impressions than usual is the case YouTube names for a title or thumbnail change",
+  "source": "others/PB1 D3; https://support.google.com/youtube/answer/16559651?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "Deliverable D5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "91.35% under 1,000 in her band; 68% of crossers had 40+, 53.5% had 70+",
+  "source": "others/PB1 D1 Y4, Y5; https://vidiq.com/research/youtube-uploads-1000-subscribers/ ; https://vidiq.com/blog/post/how-many-videos-to-get-1000-subscribers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Newman, letter, JAMA 274(13), 4 Oct 1995, 1013; credits Hanley and Lippman-Hand (JAMA, 1983); 3/n",
+  "source": "https://jamanetwork.com/journals/jama/article-abstract/389714 ; https://scilit.com/publications/ddfc523d905fccaecb8488227831d6ec",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Todd Beaupré, senior director of growth and discovery: \"maybe a 10% or less\"; PPC Land, 2 Sep 2026",
+  "source": "https://ppc.land/subscribers-skip-90-of-uploads-in-their-feed-youtube-director-says/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "PB1's band medians: +0.5 (1-99) and +1.4 (100-499) subscribers a month",
+  "source": "https://vidiq.com/research/youtube-subscriber-benchmarks-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "NIST §7.2.4.1: Wilson interval's worth \"does not strongly depend upon the value of n and/or p\"; the page also gives p ± z·√(p(1−p)/n)",
+  "source": "https://itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "NIST §7.2.4.1: limits may not be accurate enough \"if the number of failures is very small or if the sample size N is very small\"",
+  "source": "https://itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "NIST §1.3.6.6.19: Poisson \"is used to model\" events in a time interval; standard deviation is the square root of the mean",
+  "source": "https://itl.nist.gov/div898/handbook/eda/section3/eda366j.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "NIST Dataplot: \"the test statistic for the sign test follows a binomial distribution with p=0.5\"",
+  "source": "https://itl.nist.gov/div898/software/dataplot/refman1/auxillar/signtest.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Binomial formula in NIST §1.3.6.6.18",
+  "source": "https://itl.nist.gov/div898/handbook/eda/section3/eda366i.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Wilson intervals for 3.0% at 250-5,000 impressions; skip rate 62% on 100 and 400 views; verdict-3 table",
+  "source": "derived; recomputed in this run",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Y1: median about 180 (upload 1) to 272 (upload 10); median best of ten 1,948",
+  "source": "https://vidiq.com/research/youtube-first-10-videos-study/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Y2: half of channels and videos between 2% and 10% click-through",
+  "source": "https://support.google.com/youtube/answer/7628154?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Y3: 40-55% viewed for 5-15 minute videos, vendor heuristic, no sample",
+  "source": "https://vidiq.com/blog/post/average-view-duration/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Y4: 8.65% of channels adding 12-51 videos crossed 1,000 within 360 days",
+  "source": "https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Y5: 68% of channels that crossed 1,000 had 40 or more videos",
+  "source": "https://vidiq.com/blog/post/how-many-videos-to-get-1000-subscribers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Y6: +0.5, +1.4, +3.7 subscribers a month by band",
+  "source": "https://vidiq.com/research/youtube-subscriber-benchmarks-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Y10, Y11: 8,000 and 3,000 watch hours with 1,000 and 500 subscribers",
+  "source": "https://support.google.com/youtube/answer/12843009 (PB1's source; not returned by search)",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 28,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Y12, I5: Live at 50 subscribers; Instagram Live at 1,000 followers",
+  "source": "https://support.google.com/youtube/answer/9228390 ; https://9to5mac.com/2025/08/01/new-instagram-rule-cuts-off-live-broadcasts-for-small-accounts/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "I3: median reach 261 accounts a post, all sizes pooled",
+  "source": "https://buffer.com/social-media-benchmarks/instagram",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "PB1's earlier Q3 wording: \"with the 0.36-a-week illustration (I4)\"",
+  "source": "others/PB1 (current text and correction note of 2026-11-13)",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 31,
+  "section": "§4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "PB1 D3's Q3 line and PB7's IG8 column were corrected on 13 Nov 2026 and now read this way",
+  "source": "others/PB1 correction note; others/PB7 D2 IG8",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "PB1's earlier wording: \"that fortnight's publishing-and-replies line\" (PB1 D2); PB4 D1 G repeated it; both corrected 13 Nov 2026",
+  "source": "others/PB1 D2 and correction note; others/PB4",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 33,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Buffer's within-account estimates: +0.12% at 1-2 posts against +0.26% at 3-5",
+  "source": "https://buffer.com/library/how-often-to-post-on-instagram/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube 9101241: thresholds \"are not published\"; \"Not enough demographic data\"",
+  "source": "https://SUPPORT.GOOGLE.COM/youtube/answer/9101241",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube 141805: \"We studied thousands of channels that took a break and found no correlation between break length and changes in views\"; \"growth in views across uploads is not correlated with time between uploads\"; no sample size, period or method",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 36,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "AIR Media-Tech: dark 14+ days three or more times a year goes with fewer views per video; main analysis 100,000-1,000,000 monthly views",
+  "source": "https://air.io/en/audience-growth/does-posting-more-on-youtube-help-we-studied-18000-channels-to-find-out",
+  "verdict": "PASS"
+ },
+ {
+  "n": 37,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "PB4 §1's earlier wording: \"If her log shows pieces averaging more than two weekends\"",
+  "source": "others/PB4 §1 (current text)",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 38,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "PB2: five strangers, ten minutes, four of five; conventions (PB2 §3, D5)",
+  "source": "others/PB2",
+  "verdict": "PASS"
+ },
+ {
+  "n": 39,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "PB8 clause 10 and its five pre-mortem questions (PB8 D1, D2)",
+  "source": "others/PB8",
+  "verdict": "PASS"
+ },
+ {
+  "n": 40,
+  "section": "§7",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Kohavi et al. 2009: controlled experiments are \"the best scientific design for establishing a causal relationship between changes\" and their effect",
+  "source": "https://exp-platform.com/journal-survey",
+  "verdict": "PASS"
+ },
+ {
+  "n": 41,
+  "section": "§7",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Test & Compare is computer-only and may return \"Not enough impressions\" or \"Inconclusive\" (PB6 §3)",
+  "source": "others/PB6 §3; https://support.google.com/youtube/answer/13861714",
+  "verdict": "PASS"
+ },
+ {
+  "n": 42,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Verdict 3 reads the anchor platform, \"whose two numbers YouTube itself documents\"",
+  "source": "https://support.google.com/youtube/answer/7628154?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 43,
+  "section": "Deliverable D1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "AU2: Studio, Audience, \"Channels your audience watches\"",
+  "source": "https://support.google.com/youtube/answer/9314416",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 44,
+  "section": "Deliverable D1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YT5: 50% \"above typical\" list (PB6 YT5)",
+  "source": "others/PB6",
+  "verdict": "PASS"
+ },
+ {
+  "n": 45,
+  "section": "Deliverable D3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "PB3's \"on Instagram, mainly under 50\"",
+  "source": "others/PB3",
+  "verdict": "PASS"
+ },
+ {
+  "n": 46,
+  "section": "Deliverable D4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "None past 1,000 views, as for 42.2% of PB1's cohort",
+  "source": "https://vidiq.com/research/youtube-first-10-videos-study/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 47,
+  "section": "Deliverable D4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "New thumbnail \"at most four words, in her colours (PB5 §7)\"",
+  "source": "others/PB5 §7, §8",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 48,
+  "section": "Deliverable D4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Thumbnail change \"in place of the two whole-piece views from the taped mark, as found and finished, that PB5 §7 rule 1 set\"",
+  "source": "others/PB5 §7 rule 1; case-facts.md PB10 entry",
+  "verdict": "PASS"
+ },
+ {
+  "n": 49,
+  "section": "Deliverable D5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "\"YouTube answer 141805 finds no correlation between break length and change in views\"; \"three or more times\" (PB1 §6)",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en ; https://air.io/en/audience-growth/does-posting-more-on-youtube-help-we-studied-18000-channels-to-find-out",
+  "verdict": "PASS"
+ },
+ {
+  "n": 50,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "PB6 D2, PB7 D2, \"What the rows do not tell her\"",
+  "source": "others/PB6, PB7",
+  "verdict": "PASS"
+ },
+ {
+  "n": 51,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Barnett, van der Pols and Dobson, \"Regression to the mean: what it is and how to deal with it\", IJE 34(1), 2005, 215-220, PubMed 15333621",
+  "source": "https://pubmed.ncbi.nlm.nih.gov/15333621/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 52,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Kohavi, Longbotham, Sommerfield and Henne, \"Controlled experiments on the web: survey and practical guide\", DMKD 18(1), 2009, 140-181",
+  "source": "https://exp-platform.com/journal-survey",
+  "verdict": "PASS"
+ },
+ {
+  "n": 53,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Meta for Developers, \"Instagram account insights\"",
+  "source": "https://developers.facebook.com/docs/instagram-platform/api-reference/instagram-user/insights",
+  "verdict": "PASS"
+ },
+ {
+  "n": 54,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: NIST, Dataplot Reference Manual, \"Sign test\"",
+  "source": "https://itl.nist.gov/div898/software/dataplot/refman1/auxillar/signtest.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 55,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: NIST/SEMATECH §1.3.6.6.18, \"Binomial distribution\"",
+  "source": "https://itl.nist.gov/div898/handbook/eda/section3/eda366i.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 56,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: NIST/SEMATECH §1.3.6.6.19, \"Poisson distribution\"",
+  "source": "https://itl.nist.gov/div898/handbook/eda/section3/eda366j.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 57,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: NIST/SEMATECH §7.2.4.1, \"Confidence intervals\"",
+  "source": "https://itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 58,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: NIST/SEMATECH §7.2.4.2, \"Sample sizes required\"",
+  "source": "https://itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 59,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: TechCrunch, \"YouTube will no longer be deleting videos from inactive accounts\", 18 May 2023",
+  "source": "https://techcrunch.com/2023/05/18/youtube-will-no-longer-be-deleting-videos-from-inactive-accounts",
+  "verdict": "PASS"
+ },
+ {
+  "n": 60,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: YouTube Help, \"The YouTube Partner Programme overview and eligibility\" (answer 72851)",
+  "source": "https://support.google.com/youtube/answer/72851?hl=en-GB",
+  "verdict": "PASS"
+ },
+ {
+  "n": 61,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: YouTube Help, \"Understand limited data in YouTube Analytics\" (answer 9101241)",
+  "source": "https://SUPPORT.GOOGLE.COM/youtube/answer/9101241",
+  "verdict": "PASS"
+ },
+ {
+  "n": 62,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: YouTube Help, \"YouTube performance FAQ & troubleshooting\" (answer 141805)",
+  "source": "https://support.google.com/youtube/answer/141805?hl=en",
+  "verdict": "PASS"
+ }
+]

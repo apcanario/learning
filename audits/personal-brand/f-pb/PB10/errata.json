@@ -1,0 +1,86 @@
+[
+ {
+  "id": "PB10-1",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Deliverable D4, Verdict",
+  "current": "in her colours (PB5 §7)",
+  "fix": "in her colours (PB5 §7, §8)",
+  "basis": "others/PB5: §7 rule 2 sets the four-word limit; the colour rule is §8 (\"text is white or cream on a near-black or teak band\"); case-facts.md, PB5 entry. No URL: a unit of this course. Run-1 erratum 3, carried over.",
+  "figure": false
+ },
+ {
+  "id": "PB10-2",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§5, PB3",
+  "current": "[YouTube Help, Understand limited data in YouTube Analytics, answer 9101241](https://SUPPORT.GOOGLE.COM/youtube/answer/9101241)",
+  "fix": "[YouTube Help, Understand limited data in YouTube Analytics, answer 9101241](https://support.google.com/youtube/answer/9101241)",
+  "basis": "The host is in capitals; others/PB3 D1 cites the same page as https://support.google.com/youtube/answer/9101241, so a bibliography collected by URL lists it twice. The page opened on 15 Nov 2026 and its title and both quotations are right. Run-1 erratum 4, carried over.",
+  "figure": false
+ },
+ {
+  "id": "PB10-3",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "checked 13 Nov 2026. https://SUPPORT.GOOGLE.COM/youtube/answer/9101241",
+  "fix": "checked 13 Nov 2026. https://support.google.com/youtube/answer/9101241",
+  "basis": "As PB10-2, the same URL in the Sources list; others/PB3 D1 gives https://support.google.com/youtube/answer/9101241. Run-1 erratum 5, carried over.",
+  "figure": false
+ },
+ {
+  "id": "PB10-4",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable D4, YouTube, R6",
+  "current": "Lowest CTR, upload 11 (1.7%);",
+  "fix": "Lowest CTR among them, upload 11 (1.7%; upload 13's 1.6% is lower but the upload is under 28 days old);",
+  "basis": "Unit D4 table: upload 13 reads 1.6% and is 13 days old on 5 Jul 2027; others/PB6 D1 R6 (at least 28 days old, lowest CTR of the quarter). No URL: internal. Run-1 erratum 6, carried over.",
+  "figure": false
+ },
+ {
+  "id": "PB10-5",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources, closing line",
+  "current": "PB1 D1 (Y1–Y12, I1–I7, B1–B2), PB1 §2, §4 and §6, PB6 D1–D2, PB7 D1–D2, PB9 D2–D5;",
+  "fix": "PB1 D1 (Y1–Y12, I1–I7, B1–B2), PB1 §2, §3, §4, §6 and §8, PB1 D2–D3 (which carries YouTube Help 16559651), PB2 §3 and D5, PB3 §4 and D1–D2, PB4 §1 and §4–§7, PB5 §7–§9, PB6 §3 and D1–D2, PB7 §9 and D1–D2, PB8 D1–D3, PB9 §8 and D1–D5;",
+  "basis": "The unit also rests figures and rules on those sections; sourcing standard Part 1, 'The unit leaves its sources'. YouTube Help 16559651 (https://support.google.com/youtube/answer/16559651?hl=en, opened 15 Nov 2026) is cited in D4 by number only and listed nowhere in Sources. Run-1 erratum 7, carried over.",
+  "figure": false
+ },
+ {
+  "id": "PB10-6",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Deliverable D1, Block D, AU2",
+  "current": "Studio, Audience, \"Channels your audience watches\"",
+  "fix": "Studio, Audience, \"Channels that your audience watches\"",
+  "basis": "YouTube Help, Understand your YouTube audience, https://support.google.com/youtube/answer/9314416 (opened 15 Nov 2026) names the report \"Channels that your audience watches\"; others/PB3 D1 trait 9 quotes it so. New in part 2 (attribution pass).",
+  "figure": false
+ },
+ {
+  "id": "PB10-7",
+  "unit": "PB10",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Unsure list",
+  "current": "The YouTube Studio app path to \"Channels your audience watches\" was not confirmed in the app (D1 AU2).",
+  "fix": "The YouTube Studio app path to \"Channels that your audience watches\" was not confirmed in the app (D1 AU2).",
+  "basis": "As PB10-6, the second occurrence: https://support.google.com/youtube/answer/9314416.",
+  "figure": false
+ }
+]

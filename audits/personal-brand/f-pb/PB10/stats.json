@@ -1,0 +1,23 @@
+{
+ "unit": "PB10",
+ "model": "claude-fable-5-2",
+ "words": 12916,
+ "sections": 12,
+ "cited_claims_in_unit": 171,
+ "claims_sampled": 12,
+ "claims_checked_total": 62,
+ "fail_sampled": 0,
+ "fail_total": 2,
+ "stale_total": 0,
+ "unverifiable_total": 4,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 31,
+ "web_fetches": 31,
+ "not_checked": [
+  "https://support.google.com/youtube/answer/12843009: not returned by any search in this agent, so not fetched (PB1's source for rows Y10, Y11; a secondary page agrees)",
+  "https://creators.instagram.com/earn-cash-making-what-you-love: not searched (PB1's source for row I6; outside the sample and the run-1 list)",
+  "Hanley and Lippman-Hand, JAMA 1983, full text: not opened (bibliographic record only)",
+  "Newman's JAMA letter: abstract excerpt only; the rest of the letter is behind the publisher's wall"
+ ]
+}
