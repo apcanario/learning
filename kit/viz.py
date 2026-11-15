@@ -149,6 +149,10 @@ the renderer cannot draw honestly stops the build with a message that says what 
               drawn from the same data, so its y-axis, legend, title and point labels open whole in a 320 px phone's frame
               and it never scrolls; a label with no room at that width falls back to "labels": "ends" in that drawing only.
               verify.py's check_phone_lines checks every line figure at 320 and 390 px.
+  scatter     P124 (15 Nov 2026): it also carries a phone drawing (svg.viz-alt, PHONE_NARROW = 258 units, shown below 768 px),
+              drawn from the same data, so its y-axis, title and point labels open whole in a 320 px phone's frame and it never
+              scrolls; in that drawing x ticks are thinned, labels wrap at half the width and the plot is retried taller (up
+              to 3 times its "height", in steps of an eighth) when a label has no room. verify.py's check_phone_scatters checks every scatter at 320 and 390 px.
   bars        the same label column as compare (it wrapped at 160 inside a 172 column). P98 (12 Nov 2026): its phone
               drawing is PHONE_NARROW (258) units wide, as a compare's, so every bar and its value open whole on a
               320 px phone. Bars draw no track, so P98's value rule (below) does not apply to them.
@@ -2464,9 +2468,8 @@ def bars(d):
     return _svg(w, h, body, 'bars', d.get('title'), d.get('caption'), alt=(pw, ph, pb))
 
 
-def scatter(d):
-    """Labelled points on two numeric axes with gridlines at the ticks, optional quadrant lines with a name in each
-    quadrant's outer corner; each label is placed where it covers no point, no other label and no quadrant name."""
+def _scatter_draw(d, W, height=None, wrap=150):
+    """One drawing of a scatter, W units wide: (width, height, body). scatter() draws it twice, wide and for a phone."""
     K = 'scatter'
     pts = d.get('points')
     if not pts:
@@ -2485,13 +2488,20 @@ def scatter(d):
     body = ''
     if ax['y']['label']:
         body += _text([ax['y']['label']], T_COL, 8, top); top += 18
-    PT, PH = top + 6, d.get('height', 340)
+    PT, PH = top + 6 + (14 if W < 400 else 0), height or d.get('height', 340)   # P124: a phone's drawing leaves 14 units above the plot, where the label of a point on the top edge sits
     PB = PT + PH
     X = lambda v: L + (v - ax['x']['lo']) / (ax['x']['hi'] - ax['x']['lo']) * (R - L)
     Y = lambda v: PB - (v - ax['y']['lo']) / (ax['y']['hi'] - ax['y']['lo']) * PH
     for t in ax['y']['ticks']:
         body += _line([(L, Y(t)), (R, Y(t))], 'viz-grid') + f'<text class="viz-ticklabel" x="{L - 6:.1f}" y="{Y(t) + 3.6:.1f}" text-anchor="end">{esc(tl("y", t))}</text>'
     xt = ax['x']['ticks']
+    if W < 400:                                              # P124: on a phone's drawing keep every k-th x tick, the fewest that leaves 6 units between two tick labels
+        for k_ in range(1, len(xt)):
+            keep = xt[::k_] if (len(xt) - 1) % k_ == 0 else xt[::k_] + [xt[-1]]
+            if all(X(b) - _tw(tl('x', b), 10.5, 'mono') / 2 - (X(a) + _tw(tl('x', a), 10.5, 'mono') / 2) >= 6 for a, b in zip(keep, keep[1:])):
+                xt = keep; break
+        else:
+            xt = [xt[0], xt[-1]]
     for i, t in enumerate(xt):
         hw_ = _tw(tl('x', t), 10.5, 'mono') / 2
         anchor = 'start' if X(t) - hw_ < 4 else ('end' if X(t) + hw_ > W - 4 else 'middle')
@@ -2511,6 +2521,16 @@ def scatter(d):
             lab = _lines(name, T_QUAD, max(60, (hi_x - lo_x) / 2))
             w, h = _width(lab, T_QUAD) + 8, len(lab) * 12.5 + 4
             rect = (cx if hx == 'l' else cx - w, cy if vy == 't' else cy - h, w, h)
+            if _clash(rect, dots, 1) and W < 400:            # P124: on a phone's drawing the name moves along its own quadrant to the first spot that covers no point
+                y_lo, y_hi = (PT, qy) if vy == 't' else (qy, PB)
+                for dy_ in range(0, int(y_hi - y_lo) + 1, 6):
+                    for dx_ in range(0, int(hi_x - lo_x) + 1, 6):
+                        r_ = (rect[0] + (dx_ if hx == 'l' else -dx_), rect[1] + (dy_ if vy == 't' else -dy_), w, h)
+                        if lo_x <= r_[0] and r_[0] + w <= hi_x and y_lo <= r_[1] and r_[1] + h <= y_hi and not _clash(r_, dots + plates, 1):
+                            rect = r_; break
+                    else:
+                        continue
+                    break
             if _clash(rect, dots, 1):
                 _fail(K, f'the quadrant name {name!r} would cover a point; shorten it or widen the axis range')
             plates.append(rect)
@@ -2525,14 +2545,14 @@ def scatter(d):
         if not p.get('label'):
             continue
         x_, y_ = X(p['x']), Y(p['y'])
-        lab = _lines(p['label'], T_LABEL, 150)
+        lab = _lines(p['label'], T_LABEL, wrap)
         w, h = _width(lab, T_LABEL) + 8, len(lab) * 14 + 4
         cands = []
-        for dist in (8, 16, 28):
+        for dist in ((8, 16, 28, 44) if W < 400 else (8, 16, 28)):
             cands += [(x_ + dist + w / 2, y_), (x_ - dist - w / 2, y_), (x_, y_ - dist - h / 2), (x_, y_ + dist + h / 2),
                       (x_ + dist / 2 + w / 2, y_ - dist / 2 - h / 2), (x_ - dist / 2 - w / 2, y_ - dist / 2 - h / 2),
                       (x_ + dist / 2 + w / 2, y_ + dist / 2 + h / 2), (x_ - dist / 2 - w / 2, y_ + dist / 2 + h / 2)]
-        spot = next((c for c in cands if L + 2 <= c[0] - w / 2 and c[0] + w / 2 <= W - 4 and PT - 4 <= c[1] - h / 2 and c[1] + h / 2 <= PB - 2
+        spot = next((c for c in cands if L + 2 <= c[0] - w / 2 and c[0] + w / 2 <= W - 4 and PT - (18 if W < 400 else 4) <= c[1] - h / 2 and c[1] + h / 2 <= PB - 2
                      and not _clash((c[0] - w / 2, c[1] - h / 2, w, h), plates + dots, 1)), None)
         if spot is None:
             _fail(K, f'no room for the label {p["label"]!r}; shorten it, widen an axis range or raise "height"')
@@ -2543,7 +2563,29 @@ def scatter(d):
     if ax['x']['label']:
         body += f'<text class="viz-colhead" x="{R:.1f}" y="{H + 4:.1f}" text-anchor="end">{esc(ax["x"]["label"])}</text>'
         H += 16
-    return _svg(W, _r(H), body + marks + labs, 'scatter', d.get('title'), d.get('caption'))
+    return W, _r(H), body + marks + labs
+
+
+def scatter(d):
+    """Labelled points on two numeric axes with gridlines at the ticks, optional quadrant lines with a name in each
+    quadrant's outer corner; each label is placed where it covers no point, no other label and no quadrant name.
+    P124 (15 Nov 2026): two drawings, as line, compare and bars have. The wide one is W (700) units, scaled to the column
+    at 768 px and up; the phone one is PHONE_NARROW (258) units wide, the frame of a 320 px phone, drawn from the same
+    data and shown below 768 px, so the y-axis, the title and every point label are in the opening frame and the chart
+    never scrolls on a phone. For the phone drawing only, x ticks are thinned to keep their labels apart, labels wrap
+    at half the width, and a drawing that cannot place a label or a quadrant name is retried taller (in steps of an eighth, up to 3 times "height"), then raises, as at any width."""
+    import copy as _c
+    w, h, body = _scatter_draw(_c.deepcopy(d), W)
+    base, err = d.get('height', 340), None
+    for mult in [1 + k / 8 for k in range(21)]:
+        try:
+            pw, ph, pb = _scatter_draw(_c.deepcopy(d), PHONE_NARROW, round(base * mult), min(150, (PHONE_NARROW - 24) // 2))
+            break
+        except SystemExit as e:
+            err = e
+    else:
+        raise err
+    return _svg(w, h, body, 'scatter', d.get('title'), d.get('caption'), alt=(pw, ph, pb))
 
 
 def range_(d):

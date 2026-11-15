@@ -2028,6 +2028,50 @@ def check_phone_lines(br, fails):
     fails += bad
     print(f'line figures on a phone (P123): {n} figure frames on {len(pids)} pages at 320 and 390 px, every part whole in the opening frame, no sideways scroll; {len(bad)} faults')
 
+SCATTER_JS = """async (pid) => { const out = []; const p = document.getElementById(pid);
+ for (const [i, f] of [...p.querySelectorAll('figure.viz-scatter')].entries()) {
+  const sec = f.closest('.sec'); if (sec && !sec.classList.contains('on')) p.querySelector('.seclist a[data-step="' + sec.dataset.step + '"]').click();
+  for (const d of p.querySelectorAll('details')) if (d.contains(f)) d.open = true;
+  f.scrollIntoView({block: 'center'}); await new Promise(r => setTimeout(r, 120));
+  const sc = f.querySelector('.viz-scroll'), fr = sc.getBoundingClientRect();
+  const s = [...sc.querySelectorAll(':scope > svg')].find(x => getComputedStyle(x).display !== 'none');
+  const sr = s.getBoundingClientRect();
+  const parts = [...s.querySelectorAll('text, circle, rect, line, polyline, path')].map(t => t.getBoundingClientRect()).filter(r => r.width > 0 || r.height > 0);
+  out.push({n: i + 1, frame: [fr.left, fr.right], svg: [sr.left, sr.right], open: sc.scrollLeft,
+            alt: s.classList.contains('viz-alt'), parts: parts.map(r => [r.left, r.right])}); }
+ return out; }"""
+def check_phone_scatters(br, fails):
+    """P124 (15 Nov 2026): every scatter figure, on every page that has one, at 320 and 390 px: the drawing a phone shows
+    (its svg.viz-alt) is no wider than the frame, opens unscrolled, and every text, point and line of it, the y-axis
+    labels, the legend and each point label included, is whole inside the frame. Before P124 a scatter drew its natural width
+    on a phone and scrolled, so its y-axis and title left the frame and a label could sit at its edge."""
+    idx = (SITE / 'index.html').read_text()
+    pids = [pid for pid, src in re.findall(r'<section class="panel" id="([^"]+)"[^>]*data-src="([^"]+)"', idx)
+            if (SITE / src).exists() and re.search(r'viz-scatter\b', (SITE / src).read_text())]
+    n, bad = 0, []
+    for name, w, h in CMP_WIDTHS:
+        errs = []
+        ctx, pg, _ = new_page(None, br, errs, name, w, h, True)
+        for pid in pids:
+            pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(120)
+            for f in pg.evaluate(SCATTER_JS, pid):
+                where = f'{pid} scatter figure {f["n"]} at {w} px'
+                n += 1
+                fl, fr = f['frame']
+                if not f['alt']:
+                    bad.append(f'{where}: shows its wide drawing, not its phone drawing')
+                if f['open'] > 0.5:
+                    bad.append(f'{where}: the frame opens scrolled')
+                if f['svg'][1] - f['svg'][0] > fr - fl + 0.5:
+                    bad.append(f'{where}: the phone drawing is wider than its frame and scrolls')
+                out = [b for b in f['parts'] if b[0] < fl - 0.5 or b[1] > fr + 0.5]
+                if out:
+                    bad.append(f'{where}: {len(out)} part(s) of the drawing outside the frame ({fl:.0f} to {fr:.0f})')
+        if errs: fails.append(f'scatter figures {name}: console errors: ' + ' | '.join(errs[:3]))
+        ctx.close()
+    fails += bad
+    print(f'scatter figures on a phone (P123): {n} figure frames on {len(pids)} pages at 320 and 390 px, every part whole in the opening frame, no sideways scroll; {len(bad)} faults')
+
 def check_figures(br, fails):
     """The examples page (V1) through the shell: VX_FIGS figures, one per kind, and the geometry of each (FIG_JS)."""
     if 'figures' in OMIT:
@@ -2158,6 +2202,7 @@ def main():
         check_figures(br, fails)
         check_phone_figures(br, fails)
         check_phone_lines(br, fails)
+        check_phone_scatters(br, fails)
         check_reading(br, fails)
         check_seps(br, fails)
         check_reliefs(br, fails)   # P95
