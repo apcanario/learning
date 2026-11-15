@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **BW1 · Mental model filed (W-BW1, 15 Nov 2026).** Building with AI v2: reading read-bw1, status written 15 Nov, next unit BW2; 6,431 + 2,951 words, 3 figures, search on; fresh check fix 1/7/7, all applied; 8 syllabus flags raised; P107 and B1 errata applied elsewhere.
 - **S-BW1 and the site-bundle proposals (session 86, Sonnet 5.5 main chat, Opus 5.5 agents for the checks):** BW's writer rules (attribution) in the prompt generator and the writing skill, PB's vidIQ title carried to course A, `kit/thin.py` and the thin main chat written into the prompts, skills and method, the standing proposals rule, the stage-5 rows withdrawn, the history syllabus lines reworded, the site log checked against the changelogs; the first trial of the thin chat is W-BW1.
 - **Site bundle (session 85, P112, S-NOAUDIT, S-PAGES; Sonnet 5.5 main chat, one Opus 5.5 agent per row):** the Fable stage closed and its audit apparatus removed from Academy and the method; the Backlog and Changelog pages redrawn from `docs/site-log.md`; one build, one verify (ALL CHECKS PASSED), published to the artifact, sha256 read back. Not deployed to GitHub Pages (P119: `apcanario/academy` not in the session's repository set).
 - **Course PB audited (session 84, F-PB, two parts):** Audits 1 to 4 of the public course PB run on Fable 5.2 (14 and 15 Nov 2026): all twelve units PASS, 712 claims checked, 32 FAIL, none STALE, no full audit, no REWRITE; 103 errata applied with dated notes; flags F87 to F100; the final audit finds the course delivers its goal; the Fable-stage cost assessment is final and recommends sample audits with a full attribution pass; course B's seven units next (F-B).
@@ -138,6 +139,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 15 Nov 2026 · Session W-BW1 · BW1 Mental model
+
+First unit of Building with AI, run as the first thin main chat (Sonnet 5.5): writer, fresh checker, applier, filer and corrections checkers were each a fresh Opus 5.5 agent that saw only its packet. The writer wrote BW1 with search on (6,431 words of body, 2,951 of deliverable, 3 figures). The checker's write of its report was refused, so the chat saved the report from its reply; verdict fix, 1 error, 7 should-fix, 7 minor, all applied as exact replacements. The writer's source errors went to B1 as errata; P107 corrected PB8 and A8 (Decreto-Lei 57/2008); P121 was worked in part. Filing: hub.py v2 (reading, status, next unit BW2, changelog), one case-file line (§7), eight flags in syllabus-flags.md, the courses-index row. The count line, counter and staleness row (due 15 May 2027) were not in the filer's packet and are left to the chat.
 
 ## 15 November 2026 · Session 86 · S-BW1 and the site-bundle proposals (P113 to P119)
 

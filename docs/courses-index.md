@@ -44,6 +44,7 @@ The Fable stage is closed (S-NOAUDIT, 15 Nov 2026; Pedro): no further Fable audi
 | PB8 | 13 Nov 2026 (search on: YouTube's and Instagram's branded-content and copyright pages, the FTC, the CMA and ASA, the EU's consumer and data-protection texts, the ICO, the IPOs' search tools, tax pages of the EU, HMRC and the IRS, peer-reviewed work on disclosure and creator wellbeing) | 13 May 2027 |
 | PB9 | 13 Nov 2026 (search on: YouTube's Partner Programme, Shopping and fan-funding pages, Instagram's and Meta's creator pages, affiliate, product, newsletter and payment platforms' fee pages, vendor and platform datasets on brand deals and paid conversion, the CMA and FTC, the EU's and UK's VAT pages, peer-reviewed work on disclosure and sponsorship load, CTT's tariff) | 13 May 2027 |
 | DD-PB1 | 13 Nov 2026 (search on: creators' own sites, newsletters and channel pages, vidIQ and Social Blade-type trackers, Tubefilter, the press on six creators, Instagram's and YouTube's launch posts for Reels and Shorts) | 13 May 2027 |
+| BW1 | 15 Nov 2026 (search on: Anthropic, OpenAI and Google help and API pages on context windows, memory, plans and prices; research papers; the model lineup) | 15 May 2027 |
 
 ## Brand + AI
 
@@ -124,11 +125,11 @@ The public course **PB · Building a Personal Brand on Instagram and YouTube**, 
 
 ## Building with AI (public)
 
-The public course **BW · Building with AI**, created 11 Nov 2026 (row G-0): Brand + AI's course B rewritten for any reader, an exception to the single-reader rule; the reader is the persona in each brief's preamble, principles are tool-neutral and worked on Claude with every product fact dated, and the running case is Academy itself (`gen/data/building-with-ai/case-academy.md`, private details removed). Ten core units in three parts (understand; direct; build and trust) and three deep dives. Sits in the Technology track beside course B until the private courses move to a private site. 0 of 13 written. A unit is written when its file is in `courses/building-with-ai/` (the folder appears with the first one). Briefs: the course's Briefs page in Academy (`gen/data/building-with-ai/units_data.py`, with `AIMS`). Build order: the Build order page, in syllabus order. Syllabus flags: `gen/data/building-with-ai/syllabus-flags.md`. Decisions: `docs/public-courses.md`.
+The public course **BW · Building with AI**, created 11 Nov 2026 (row G-0): Brand + AI's course B rewritten for any reader, an exception to the single-reader rule; the reader is the persona in each brief's preamble, principles are tool-neutral and worked on Claude with every product fact dated, and the running case is Academy itself (`gen/data/building-with-ai/case-academy.md`, private details removed). Ten core units in three parts (understand; direct; build and trust) and three deep dives. Sits in the Technology track beside course B until the private courses move to a private site. 1 of 13 written. A unit is written when its file is in `courses/building-with-ai/` (the folder appears with the first one). Briefs: the course's Briefs page in Academy (`gen/data/building-with-ai/units_data.py`, with `AIMS`). Build order: the Build order page, in syllabus order. Syllabus flags: `gen/data/building-with-ai/syllabus-flags.md`. Decisions: `docs/public-courses.md`.
 
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
-| 1 | BW1 | BW | Mental model | not written | Opus 5.5 | on | `courses/building-with-ai/BW1-mental-model.md` |
+| 1 | BW1 | BW | Mental model | written 15 Nov 2026 | Opus 5.5 | on | `courses/building-with-ai/BW1-mental-model.md` · fresh check `audits/building-with-ai/fresh-check-BW1.md` |
 | 2 | BW2 | BW | Choosing the model and the effort | not written | Opus 5.5 | on | `courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md` |
 | 3 | BW3 | BW | Briefing: prompts that hold up | not written | Opus 5.5 | off | `courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md` |
 | 4 | BW4 | BW | Context engineering | not written | Opus 5.5 | off | `courses/building-with-ai/BW4-context-engineering.md` |

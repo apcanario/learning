@@ -111,3 +111,4 @@ The 36 units that got a fresh check before filing (the marketing, AI and UX cour
 - No control: no unit was written without the method to compare.
 - No second project and no second person.
 - Audits 3 onward of the marketing, AI and UX courses had not run at 11 Nov 2026.
+§7 · BW1 of this course (15 Nov 2026) was checked from a Claude Code session on claude.ai (claude.ai/code, recorded in its fresh-check report); the checker was a separate context that read only its packet, its write of its report was refused, and the chat saved the report from the checker's reply. The record does not say which plan the project runs on, whether memory was on, or any token or window measure for a unit.

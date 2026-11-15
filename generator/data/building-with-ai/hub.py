@@ -16,7 +16,7 @@ BAR = 'BUILDING WITH AI'
 BRAND_HTML = 'BUILDING <span>/</span> WITH AI'
 OUT = 'building-with-ai.html'
 THEME_KEY = 'building-with-ai-theme'
-VERSION = 'v1 · 11 Nov 2026'
+VERSION = 'v2 · 15 Nov 2026'
 LEARN_C, BUILD_C = 'var(--purple)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -37,7 +37,9 @@ COURSE_NOTE = "Every unit is sourced to peer-reviewed work, vendor documentation
 
 # ---- written material (reading pages) ---------------------------------------------------
 # A unit is written when its file is in the vault, courses/building-with-ai/ (A5); kit/build.py derives WRITTEN from it.
-READINGS = []
+READINGS = [
+    dict(id='read-bw1', course='Building with AI', title='Mental model', covers=['BW1'], name='BW1 · Mental model', intro='The first unit of Building with AI: a working model of what an AI assistant sees and why its outputs fail, built around the context window: what reaches it, tokens as cost and as attention, what persists inside a chat, across chats and with memory, trained, retrieved and in-conversation knowledge and the training cutoff, why the same prompt gives different answers, system prompt, project instruction and user message, and fabrication, with a map of the layers, a section on other tools, and a deliverable in two parts, a five-minute model and a diagnosis table, each built on the Academy case and then as a template. It was written by an AI model (Opus 5.5) from its brief, with live search on 15 Nov 2026; every product fact was read on the vendor\'s page that day and is dated where it appears. A separate model, in a context that had not seen the writing, checked every cited claim, the deliverable against the brief and every figure against the text; it found 1 error, 7 should-fix and 7 minor points, and every finding was applied before filing. Known gaps: the "Treated in" column of the diagnosis table assigns rows to BW3, BW4 and BW6 partly by inference, as the other units\' briefs were not checked against it; Anthropic\'s help-centre pages carry no exact date, so window sizes, memory behaviour and plan lists are dated by the day they were read and may change within days; the help-centre memory article refused the fetch, so its plan list was not checked; OpenAI\'s help-centre pages could not be fetched, so the ChatGPT rows rest on openai.com pages and the API docs; the Gemini skills and Gems dates rest on one undated help page; Holtzman et al. is cited as the arXiv version, its conference venue not confirmed; carrying Anthropic\'s interpretability findings to the model they name is inference; how billing treats the history the API keeps in its beta message threads was not read; and the affiliation of the authors of "Why Language Models Hallucinate" could not be checked, so it is not stated.'),
+]
 
 # ---- build order -----------------------------------------------------------------------
 DONE_ROWS = []
@@ -45,8 +47,8 @@ ORDER = [("BW1", "Opus 5.5", "on"), ("BW2", "Opus 5.5", "on"), ("BW3", "Opus 5.5
          ("BW5", "Opus 5.5", "on"), ("BW6", "Opus 5.5", "off"), ("BW7", "Opus 5.5", "off"), ("BW8", "Opus 5.5", "off"),
          ("BW9", "Opus 5.5", "on"), ("BW10", "Opus 5.5", "on"), ("DD-BW1", "Opus 5.5", "on"), ("DD-BW2", "Opus 5.5", "off"),
          ("DD-BW3", "Opus 5.5", "off")]
-STATUS = {}          # unit code -> status text in the build-order table once filed
-NEXT_UNIT = 'BW1'
+STATUS = {'BW1': 'written 15 Nov'}          # unit code -> status text in the build-order table once filed
+NEXT_UNIT = 'BW2'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_H1 = 'Building with AI'
@@ -123,5 +125,6 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-15 15:00', 'v2. BW1 Mental model filed (row W-BW1): 6,431 words of body and 2,951 of deliverable, 3 figures, written by Opus 5.5 from its brief with search on. Fresh check (Opus 5.5, separate context): fix, 1 error, 7 should-fix, 7 minor, all applied before filing. Corrected elsewhere: a private unit (18 replacements and a note); PB8 and a private legal unit, their citation of Decreto-Lei 57/2008. Object: the context window (§1 and §2)'),
     ('2026-11-11 23:59', "v1. Course created (new-course skill; backlog row G-0): frame, goal and three outcomes, 13 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the build order in syllabus order, the syllabus-flags file. Adapted from a private course of the Learning Project; no unit written."),
 ]
