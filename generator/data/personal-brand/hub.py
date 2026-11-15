@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v14 · 14 Nov 2026'
+VERSION = 'v15 · 15 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -84,8 +84,8 @@ ORDER = [("PB1", "Opus 5.5", "on"), ("PB2", "Opus 5.5", "off"), ("PB3", "Opus 5.
 STATUS = {'PB1': 'written 12 Nov', 'PB2': 'written 12 Nov', 'PB3': 'written 12 Nov', 'PB4': 'written 12 Nov', 'PB5': 'written 12 Nov', 'PB6': 'written 12 Nov', 'PB7': 'written 12 Nov', 'PB8': 'written 13 Nov', 'PB9': 'written 13 Nov', 'PB10': 'written 13 Nov', 'DD-PB1': 'written 13 Nov', 'DD-PB2': 'written 14 Nov'}          # unit code -> status text in the build-order table once filed
 AUDIT_EVERY = 4
 AUDIT_ROW = ('Stratified-sample audit of the last four units', 'Fable 5.1', 'on', 'prompt on Audits page')
-FINAL_AUDIT = ('Audit 4', 'Final audit of the last units plus a full read of the course against its goal, and a read-through as the persona', 'Fable 5.1', 'on', '')
-NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = '—', 0, 'Audit 1 (4 of 4: PB1 to PB4), Audit 2 (4 of 4: PB5 to PB8), Audit 3 (4 of 4: PB9, PB10, DD-PB1, DD-PB2) and Audit 4, the final audit and a full read of the course, all owed to the Fable stage (decided 11 Nov 2026); none gates a unit'
+FINAL_AUDIT = ('Audit 4', 'Final audit of the last units plus a full read of the course against its goal, and a read-through as the persona', 'Fable 5.2', 'off', 'run 14 Nov 2026')
+NEXT_UNIT, AUDITS_RUN, NEXT_AUDIT = '—', 4, 'none: Audits 1 to 4 run (14–15 Nov 2026); the staleness check is due six months after each unit written with live search (May 2027)'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_H1 = 'Building a Personal Brand on Instagram and YouTube'
@@ -152,8 +152,13 @@ ORDER_FOOT = "The count starts at {start}."
 BRIEFS_LEDE = 'One brief per unit, self-contained: the shared preamble (the reader, the source-material rule, Mara, the neutral-ground rule, the course goal, the sourcing standard, the tone) is baked into every open brief, followed by the unit\'s Aim, Takes and Gives lines. Written units show their note instead. The course itself is read in <a href="#course-{k}" data-target="course-{k}">Learn · Course {K}</a>.'
 BRIEF_LABEL = 'Opus brief'
 
-AUDITS_LEDE = "No audit yet. Each audit records: units sampled, claims checked, failures, verdict (pass / full audit / rewrite), and what changed."
-AUDIT_LOG = []
+AUDITS_LEDE = "Four audits run, 14 to 15 Nov 2026, on Fable 5.2. Each audit records: units sampled, claims checked, failures, verdict (pass / full audit / rewrite), and what changed."
+AUDIT_LOG = [
+    ('2026-11-14', "Audit 4, the final audit (Fable 5.2, a full read of the twelve units against the course goal and outcomes, and a read-through as the persona; no source re-checked). 19 findings (0 error, 7 should-fix, 12 minor), 10 contradictions between units, <strong>no REWRITE</strong>: the course delivers its goal, the Instagram half of the third clause as a reading that informs rather than decides, since no benchmark exists at that size. What is wrong is seam work: later units still describing an earlier unit as it was before its correction. 15 errata (14 applied, A4-13 worked later on the changed line) and 9 flags (syllabus flags F89, F92 to F96: the own-product ad label, the hours log, the email sign-up's place and notice, the profiles' go-live step, process notes in public text). Report: <code>audits/personal-brand/audit-4.md</code>."),
+    ('2026-11-14 · 15', "Audit 3 (Fable 5.2, stratified sample, live search, with a full attribution pass). Units: PB9, PB10, DD-PB1, DD-PB2. <strong>PB9·PB10·DD-PB1·DD-PB2: PASS</strong>, all four: 51 claims sampled, 399 checked in all (the attribution pass checked every quotation, attribution and Sources title); 2 sampled FAIL (PB9 1 in 15, DD-PB2 1 in 10), 16 FAIL in all, 0 STALE, 7 unverifiable. No full audit triggered. Run in two parts: the first runs on 14 Nov opened no source (the turn's search budget was used up); re-run on 15 Nov from the same samples. Errata applied: PB9-4 to PB9-15 (the 55%/45% ad shares re-cited to YouTube Help 72902; Li et al.'s mechanism and the file's status corrected), PB10-1 to PB10-7, DD-PB1-1 to DD-PB1-9 (Pascual's quote's referent; Leif Abel's sales job; two titles), DD-PB2-1 to DD-PB2-8 (unemployment benefit after a resignation; the hazard figure; a title); DD-PB2-9 (the HMRC page title) applied to PB8 and DD-PB2 together; flags F97 to F100. Report: <code>audits/personal-brand/audit-3.md</code>."),
+    ('2026-11-14', "Audit 2 (Fable 5.2, stratified sample, live search). Units: PB5 to PB8. <strong>PB5·PB6·PB7·PB8: PASS</strong>, all four: 59 claims sampled, 154 checked in all; 2 sampled FAIL, 10 FAIL in all, 0 STALE, 3 unverifiable. No full audit triggered. 23 errata applied the same day, chiefly source titles taken from URL slugs and one reporter's paraphrase set as a quotation (PB7), and the GDPR's paragraph for a controller outside the EU (PB8); PB8-9 and PB8-10 (the fair-dealing cells) applied on 15 Nov after YouTube Help 9783148 was opened; flags F90, F91. Report: <code>audits/personal-brand/audit-2.md</code>."),
+    ('2026-11-14', "Audit 1 (Fable 5.2, stratified sample, live search). Units: PB1 to PB4. <strong>PB1·PB2·PB3·PB4: PASS</strong>, all four: 45 claims sampled, 159 checked in all; 1 sampled FAIL, 6 FAIL in all, 0 STALE, 3 unverifiable. No full audit triggered. 15 errata applied the same day (sources cited in the body but missing from Sources; titles); PB4-3 and PB4-4, vidIQ's study title, applied on 15 Nov in PB1, PB3, PB4 and PB6 together; flags F87 to F89. Report: <code>audits/personal-brand/audit-1.md</code>."),
+]
 AUDIT_PROMPTS_NOTE = "Run in the Learning Project with Fable 5.1 after every fourth written unit (deferred to the Fable stage). Paste the units or point at their vault paths. The prompts are method.md §6, verbatim."
 AUDIT_PROMPTS = [
     ('Stratified-sample audit (every four units)', True, """You are auditing four units of a self-study course written by Opus 5.5 for one reader. Units: {list the four unit codes and their vault paths}.
@@ -177,6 +182,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-15 12:00', "v15. Audits 1 to 4 run on Fable 5.2 (row F-PB, in two parts, 14 and 15 Nov 2026): every unit PASS, 712 claims checked, 32 FAIL, none STALE, no full audit, no REWRITE; 103 errata applied across the twelve units, each with a dated note; 17 flags, 16 raised as F87 to F100; the final audit finds the course delivers its goal, its faults seam work between units."),
     ('2026-11-14 02:30', "v14. DD-PB2 Deep dive: the quit-your-job math written (Opus 5.5, own agent context, search off; row W-DD-PB2, P31), fresh-checked by Opus 5.5 in a separate context (fix, 1 error, 4 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed), its four figures passed, and filed: reading page, DD-PB2 marked written; the course's twelve units are written; Mara's register gains her household, floor, runway and threshold model; the nineteen flags it was given carried, F81 to F86 raised; no source error, no filed unit needed a correction. Writer's Object line: Object: none."),
     ('2026-11-13 23:00', "v13. DD-PB1 Deep dive: creators who did this written (Opus 5.5, own agent context, search on; row W-DD-PB1, P31), fresh-checked by Opus 5.5 in a separate context (rewrite by the count rule, read as fix: 7 errors, each a misquoted phrase or one unsupported clause, 13 should-fix, 9 minor; all applied; Fable 5.1 fresh check owed), its three figures corrected and re-checked, and filed: reading page, DD-PB1 marked written; DD-PB2 next; Mara's register gains DD-PB1's facts; flags F12, F44, F51, F56 carried, F2, F20, F29, F34, F41, F63, F69, F74 carried and still open for DD-PB2, F77 to F80 raised; no filed unit needed a correction; erratum to the source material (the Boyds' jobs). Writer's Object line: Object: none."),
     ('2026-11-13 21:45', "v12.1. Correction P108 (row W-DD-PB1, step 1b), checked first by a fresh Opus 5.5 agent against source and syllabus (report `audits/personal-brand/corrections-2026-11-13-P107-P108.md`): PB10 §5 notes that PB4 §1 now states the weekends rule as PB10 reads it, the quoted words being its earlier wording; PB10's Object line made a list item. P107 (DL 57/2008 art. 19 on the Diário da República) not checked again, no change; it stays in Corrections."),

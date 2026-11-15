@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Course PB audited (session 84, F-PB, two parts):** Audits 1 to 4 of the public course PB run on Fable 5.2 (14 and 15 Nov 2026): all twelve units PASS, 712 claims checked, 32 FAIL, none STALE, no full audit, no REWRITE; 103 errata applied with dated notes; flags F87 to F100; the final audit finds the course delivers its goal; the Fable-stage cost assessment is final and recommends sample audits with a full attribution pass; course B's seven units next (F-B).
 - **DD-PB2 filed, course PB complete (session 83, W-DD-PB2):** DD-PB2 Deep dive: the quit-your-job math written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 1 error, 4 should-fix, 8 minor; all applied; Fable 5.1 fresh check owed); all twelve PB units filed; W-BW1 and W-BW2 next, in one chat.
 - **DD-PB1 filed (session 82, W-DD-PB1):** DD-PB1 Deep dive: creators who did this written by an Opus 5.5 agent, search on, fresh-checked by a separate Opus 5.5 agent (rewrite by the count rule, read as fix: 7 errors, 13 should-fix, 9 minor; all applied; Fable 5.1 fresh check owed); P108 applied; a wide matrix's legend now stays inside the phone frame; DD-PB2 next, in the same chat.
 - **PB10 filed (session 81, W-PB10):** PB10 Read your numbers: the quarterly review written by an Opus 5.5 agent, search off, fresh-checked by a separate Opus 5.5 agent (fix, 0 errors, 8 should-fix, 33 minor; all applied; Fable 5.1 fresh check owed); P106 applied; PB1, PB3, PB4 and PB7 corrected; DD-PB1 and DD-PB2 next, in one chat.
@@ -135,6 +136,17 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 14–15 November 2026 · Session 84 · Public course PB, Audits 1 to 4 and the Fable-stage assessment (F-PB)
+
+Row F-PB ran in two parts. Part 1, 14 Nov 2026 (Pedro away): twelve fresh Fable agents, one per unit, and one for Audit 4, every auditor stating claude-fable-5-2 (Fable 5.2, accepted by Pedro for this row); the chat ran as Fable 5.2 until 03:28, then as Opus 5.5 for saving, applying and recording, and stopped at a shorter-window Fable limit at 03:27, after 18% of the weekly Fable allowance. Part 2, 15 Nov 2026 (session https://claude.ai/code/session_01KMmgQyNZfTSHF35S2ivXpn): the chat on Opus 5.5 throughout, reading only six-line replies and stats files; four fresh Fable agents (claude-fable-5-2) re-ran PB9, PB10, DD-PB1 and DD-PB2 from their recorded samples with search, each with a full attribution pass and 40 searches at most (134 used, none refused).
+
+- **Audits.** Audit 1 (PB1 to PB4), Audit 2 (PB5 to PB8), Audit 3 (PB9, PB10, DD-PB1, DD-PB2): every unit PASS; 155 claims sampled, 712 checked in all, 32 FAIL (5 in the samples), none STALE, 13 unverifiable; no unit reached the one-in-ten rule. Audit 4, the full read: the course delivers its goal; 19 findings, 10 contradictions between units, seam work; no REWRITE. Reports: `audits/personal-brand/audit-1.md` to `audit-4.md`, built by script from `audits/personal-brand/f-pb/`.
+- **Errata.** 73 from the unit reports and 14 from Audit 4, applied one unit at a time by script, each with a dated note in its unit; 16 more worked by the chat at source: vidIQ's study title in PB1, PB3, PB4 and PB6; PB8's fair-dealing cells after YouTube Help 9783148 was opened (it names no UK); A4-13 re-anchored in PB1; the HMRC page title in PB8 and DD-PB2.
+- **Flags.** F87 to F100 in `generator/data/personal-brand/syllabus-flags.md` (among them: the own-product ad label, the hours log no unit builds, the email sign-up's place and notice, the recovery weeks' reply slots).
+- **Assessment.** `audits/fable-stage-assessment-2026-11.md`, final: 2.83M tokens for the twelve unit audits, 3.64M for every agent measured; numbers fail at 1.1 per 100 after the Opus fresh checks, attribution at 8.8 (6 per 100 in the full attribution passes); recommendation: sample audits with a full attribution pass in the same agent, course B first, at most six auditors a turn at 30 searches each.
+- **Records.** Course PB v15: `AUDIT_LOG` four rows, `AUDITS_RUN` 4; `docs/courses-index.md` audit rows; `audits/README.md`.
+- **Build.** `build.py`, `verify.py`; publish and deploy as `docs/CHANGELOG.md`'s F-PB row records.
 
 ## 14 November 2026 · Session 83 · Public course PB, unit DD-PB2 (W-DD-PB2)
 
