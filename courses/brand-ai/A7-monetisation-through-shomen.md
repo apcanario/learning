@@ -386,7 +386,7 @@ T1: merch = $2,328.00 ÷ 2 = $1,164.00 and $11,640.00 ÷ 2 = $5,820.00; Low $388
 - The Creator's Playbook (Mark Wils), "Celebrating 1 year on Substack", 30 Jul 2025. https://thecreatorplaybook.substack.com/p/celebrating-1-year-on-substack
 - The Introverted Networker, "How I grew my newsletter to 2,500", charts as of 28 May 2025. https://theintrovertednetworker.substack.com/p/how-i-grew-my-newsletter-to-2500
 - vidIQ, karatebyjesse channel stats, updated 28 Oct 2026. https://vidiq.com/youtube-stats/channel/@karatebyjesse/
-- vidIQ Research, "Uploads and reaching 1,000 subscribers", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/
+- vidIQ Research, "Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/
 - vidIQ Research, "YouTube Subscriber Benchmarks 2026", 20 Jul 2026. https://vidiq.com/research/youtube-subscriber-benchmarks-2026/
 - VoxBooster, "Merch sales creator statistics 2026", 22 Aug 2026, re-read 2 Nov 2026. https://voxbooster.com/blog/merch-sales-creator-statistics-2026
 - World Karate Federation, "Meet internet sensation and Karate Nerd Jesse Enkamp", 17 Feb 2018. https://wkf.net/news-center-new/meet-internet-sensation-and-karate-nerd-jesse-enkamp/670
@@ -408,3 +408,5 @@ T1: merch = $2,328.00 ÷ 2 = $1,164.00 and $11,640.00 ÷ 2 = $5,820.00; Low $388
 10. **That a karate product sells worse to a running audience** (§2) is my inference; no source measures conversion by match between audience and product.
 
 Fresh check 2026-11-02 (Opus 5.5): keep · 0 errors, 3 should-fix, 6 minor; all applied; report `audits/brand-ai/fresh-check-A7.md`.
+
+Erratum 15 Nov 2026, found by the Fable audits of course PB (row F-PB, errata PB4-3 and PB4-4) and carried here by row S-BW1: the Sources title of vidIQ's 11 Sep 2026 study is now the page's own headline, "Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal", checked at the page by a fresh Opus 5.5 agent (`audits/brand-ai/corrections-2026-11-15-vidiq-title.md`); no other text changed.

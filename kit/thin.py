@@ -23,6 +23,11 @@ half-done change.
   python3 kit/thin.py insert RECORDS.json
         RECORDS.json (the filer agent's output; keys below) is inserted into the repo's files by anchored edits, and every
         changed Python file is compiled; if anything fails every file is restored (exit 1).
+  python3 kit/thin.py save-report --row W-BW1 --report F --model M --chat URL --date D
+        Saves the checker's report verbatim under audits/<course id>/fresh-check-<code>.md with the front matter audits/README.md sets
+        out (verdict and counts counted from the report) and prints the line the unit's unsure list gains.
+  python3 kit/thin.py assemble UNIT.md UNSURE.md "<fresh-check line>"
+        Appends `## Unsure list`, the writer's unsure list and the fresh-check line to the unit (once; refuses a second run).
   python3 kit/thin.py stats OUTDIR
         Writes OUTDIR/stats.json from the files an agent left there (unit.md, unsure.md, notes.md, report.md, apply.json,
         records.json), counted by script; the chat reads this and the agent's six-line reply, nothing else.
@@ -222,6 +227,42 @@ def cmd_insert(rec_path):
     print('inserted into: ' + ', '.join(sorted(str(p.relative_to(ROOT)) for p in files if files[p] != old[p])))
 
 
+# ---------------------------------------------------------------------------------------------- save-report / assemble
+
+def cmd_save_report(argv):
+    opt = {argv[i][2:]: argv[i + 1] for i in range(0, len(argv), 2)}
+    for k in ('row', 'report', 'model', 'chat', 'date'):
+        if k not in opt:
+            die('usage: thin.py save-report --row R --report F --model M --chat URL --date D')
+    import next_prompt as np
+    r = next((x for x in np.rows() if x['row'] == opt['row']), None)
+    if r is None:
+        die(f"no row {opt['row']}")
+    body = pathlib.Path(opt['report']).read_text(encoding='utf-8')
+    sev = re.findall(r'^\[(error|should-fix|minor)\]', body, flags=re.M)
+    v = re.search(r'verdict[^\n]*?\b(keep|fix|rewrite)\b', body, flags=re.I)
+    if not v:
+        die('no verdict line in the report')
+    counts = f"{sev.count('error')} errors, {sev.count('should-fix')} should-fix, {sev.count('minor')} minor"
+    c, code = r['c'], r['code']
+    out = ROOT / 'audits' / c['id'] / f'fresh-check-{code}.md'
+    head = (f"---\naudit: fresh check\nunit: {code} · {r['unit'][1]}\ncourse: {c['id']} · {r['sc']['name']}\nmodel: {opt['model']}\n"
+            f"date: {opt['date']}\nchat: {opt['chat']}\nverdict: {v.group(1).lower()} · {counts}\n---\n\n"
+            "The checker's final report, verbatim, from its hand-back. Saved before any finding was applied.\n\n")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(head + body, encoding='utf-8')
+    print(f"Fresh check {opt['date']} ({opt['model']}): {v.group(1).lower()} \u00b7 {counts}; report `audits/{c['id']}/fresh-check-{code}.md`")
+
+
+def cmd_assemble(unit, unsure, line):
+    p = pathlib.Path(unit)
+    t = p.read_text(encoding='utf-8')
+    if '\n## Unsure list' in t:
+        die('the unit already has an unsure list')
+    p.write_text(t.rstrip('\n') + '\n\n## Unsure list\n\n' + pathlib.Path(unsure).read_text(encoding='utf-8').strip('\n') + '\n\n' + line.strip() + '\n', encoding='utf-8')
+    print('unsure list appended')
+
+
 # ---------------------------------------------------------------------------------------------- stats
 
 def words(t):
@@ -380,6 +421,10 @@ if __name__ == '__main__':
         cmd_apply(a[1], a[2], a[3])
     elif cmd == 'insert' and len(a) == 2:
         cmd_insert(a[1])
+    elif cmd == 'save-report':
+        cmd_save_report(a[1:])
+    elif cmd == 'assemble' and len(a) == 4:
+        cmd_assemble(a[1], a[2], a[3])
     elif cmd == 'stats' and len(a) == 2:
         cmd_stats(a[1])
     elif cmd == 'stage':

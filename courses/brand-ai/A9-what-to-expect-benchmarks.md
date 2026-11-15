@@ -371,7 +371,7 @@ No quarter before quarter 8 uses subscriber count as grounds to stop. Basis: row
 - vidIQ Research, "YouTube First 10 Videos Study", 28 Jul 2026. https://vidiq.com/research/youtube-first-10-videos-study/
 - vidIQ Research, "YouTube Subscriber Benchmarks 2026", 20 Jul 2026. https://vidiq.com/research/youtube-subscriber-benchmarks-2026/
 - vidIQ Research, "YouTube Upload Frequency Study", 8 Jul 2026. https://vidiq.com/research/youtube-upload-frequency-study/
-- vidIQ Research, "Uploads and reaching 1,000 subscribers", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/
+- vidIQ Research, "Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/
 - VoxBooster, "Merch sales creator statistics 2026", 22 Aug 2026. https://voxbooster.com/blog/merch-sales-creator-statistics-2026
 - YouTube Help, "Changes to the YouTube Partner Program" (answer 12843009), checked 28 Oct 2026. https://support.google.com/youtube/answer/12843009?hl=en
 - YouTube Help, "Impressions and click-through rate" (answer 7628154), checked 28 Oct 2026. https://support.google.com/youtube/answer/7628154?hl=en-GB
@@ -397,3 +397,5 @@ No quarter before quarter 8 uses subscriber count as grounds to stop. Basis: row
 Verdict: fix (2 errors, 15 should-fix, 8 minor); every finding applied as an exact replacement before filing. The checker confirmed every vidIQ, Metricool, YouTube Help, PPC Land and Search Engine Journal figure at source.
 
 Erratum 12 Nov 2026, found by PB1's writer (public course PB, row W-PB1) and confirmed by its fresh checker: §1's quotation of vidIQ's methodology made exact ("This is not a random sample or a census of all YouTube channels"); the 2027 Partner Program line now says existing members keep their status only if they accept the updated terms in YouTube Studio by 31 January 2027 (YouTube Help 12843009, 72851); the First 10 Videos study's citation gains its update date, 30 Jul 2026 (both places it is cited).
+
+Erratum 15 Nov 2026, found by the Fable audits of course PB (row F-PB, errata PB4-3 and PB4-4) and carried here by row S-BW1: the Sources title of vidIQ's 11 Sep 2026 study is now the page's own headline, "Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal", checked at the page by a fresh Opus 5.5 agent (`audits/brand-ai/corrections-2026-11-15-vidiq-title.md`); no other text changed.

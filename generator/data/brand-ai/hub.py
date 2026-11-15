@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v9.11 · 13 Nov 2026'
+VERSION = 'v9.12 · 15 Nov 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -229,6 +229,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-11-15 13:00', "v9.12. Erratum to the Sources title of vidIQ's 11 Sep 2026 study in A7, A9 and DD-A2 (was \"Uploads and reaching 1,000 subscribers\", now the page's headline, \"Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal\"): found by the Fable audits of course PB (errata PB4-3 and PB4-4) and carried by row S-BW1; checked at the page by a fresh Opus 5.5 agent; the text of the three units is otherwise unchanged."),
     ('2026-11-13 22:40', "v9.11. Erratum to DD-A1 §3 (Hours a week) and its Deliverable's pattern 3, found by the writer of the public course PB's unit DD-PB1 (row W-DD-PB1) and confirmed by its fresh checker: Net Influencer (4 Mar 2026) has Kim say both quit their jobs, so both Boyds held jobs before the channel paid them, not Kim alone."),
     ('2026-11-12 22:50', "v9.10. Erratum to A6 §2.2, found by the writer of the public course PB's unit PB7 (row W-PB7) and confirmed by its fresh checker: Metricool (14 Aug 2024) reported the followers and non-followers split of views and impressions leaving Insights as changes still to come; the sentence now says so, with Social Media Today (7 Aug 2024) for the views change; dated note in the unit."),
     ('2026-11-12 19:00', "v9.9. Erratum to A6, found by the writer of the public course PB's unit PB6 (row W-PB6) and confirmed by its fresh checker: the YouTube Help page at answer 1714921 cited by its title, \"Understand your YouTube video reach\" (Computer version), in §1.1 and Sources, where A6 had named its section, \"Traffic sources\"; a dated note at the foot of A6. The writer's second query, on A6 §1.2's \"narrower, more loyal audience\", was not confirmed: the page still says it, and A6 stands."),

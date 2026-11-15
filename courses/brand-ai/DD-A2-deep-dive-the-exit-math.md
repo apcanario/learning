@@ -322,7 +322,7 @@ Each €100 a month of B, K or Q he can show from contracts lowers the members n
 - Teachery, "Make $500, Part 2: Managing expectations", as cited in A9 §7. https://make500.teachery.co/lessons/part-2-managing-expectations
 - The Creator's Playbook (Mark Wils), "Celebrating 1 year on Substack", 30 Jul 2025, as cited in A9 §6. https://thecreatorplaybook.substack.com/p/celebrating-1-year-on-substack
 - The Introverted Networker, "How I grew my newsletter to 2,500", charts as of 28 May 2025, as cited in A9 §6. https://theintrovertednetworker.substack.com/p/how-i-grew-my-newsletter-to-2500
-- vidIQ Research, "Uploads and reaching 1,000 subscribers", 11 Sep 2026, as cited in A9 §3. https://vidiq.com/research/youtube-uploads-1000-subscribers/
+- vidIQ Research, "Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal", 11 Sep 2026, as cited in A9 §3. https://vidiq.com/research/youtube-uploads-1000-subscribers/
 - vidIQ, "How many videos to get 1,000 subscribers", 9 Jun 2025, as cited in A9 §3. https://vidiq.com/blog/post/how-many-videos-to-get-1000-subscribers/
 - vidIQ Research, "YouTube Subscriber Benchmarks 2026", 20 Jul 2026, as cited in A9 §8. https://vidiq.com/research/youtube-subscriber-benchmarks-2026/
 - VoxBooster, "Merch sales creator statistics 2026", 22 Aug 2026, as cited in A7 §1 (weakly sourced). https://voxbooster.com/blog/merch-sales-creator-statistics-2026
@@ -343,3 +343,5 @@ Each €100 a month of B, K or Q he can show from contracts lowers the members n
 10. Whether consulting in his field would touch the competition limb of the duty of loyalty depends on the contract and the employer's business, neither of which is in any filed unit; the unit states no view on it.
 
 Fresh check 2026-11-02 (Opus 5.5, own agent context): fix · 0 errors, 5 should-fix, 5 minor; all applied; the timeline figure fixed (its label, and each event placed at its date) and passed its re-check; report `audits/brand-ai/fresh-check-DD-A2.md`.
+
+Erratum 15 Nov 2026, found by the Fable audits of course PB (row F-PB, errata PB4-3 and PB4-4) and carried here by row S-BW1: the Sources title of vidIQ's 11 Sep 2026 study is now the page's own headline, "Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal", checked at the page by a fresh Opus 5.5 agent (`audits/brand-ai/corrections-2026-11-15-vidiq-title.md`); no other text changed.
