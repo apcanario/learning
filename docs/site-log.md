@@ -44,14 +44,14 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-10-25 | R7 | Mythology | Philosophy deep dives added to both syllabi; Rome unit 7, the Principate, written; every Rome report so far read again and corrected. |
 | 2026-10-25 | G12 | Mythology | Greece complete: its third deep dive, Greek philosophy, in eight reports, brings it to 78. |
 | 2026-10-25 | R8–10 | Mythology | Rome units 8 to 10 written: crisis and the late empire, law, army and daily life, literature and art, and the final exam. |
-| 2026-10-25 | R11 | Mythology | Rome's first deep dive, the fall of the Republic, begins with its first two reports, and its philosophy deep dive with two more. |
-| 2026-10-27 | K10 | Mythology | Every Greek and Rome report gains its own list of sources, ancient passages and modern works in full; the Rome reports read again against the Greek course's standard and their slips corrected. |
+| 2026-10-25 | R11, R13 | Mythology | Rome's first deep dive, the fall of the Republic, begins with its first two reports, and its philosophy deep dive with two more. |
+| 2026-10-27 | K10 | Mythology | Every Greek and Rome report gains its own list of sources, ancient passages and modern works in full; the Greek deep-dive reports read again against the course's standard and their slips corrected. |
 | 2026-10-30 | N4 | Mythology | Figures added to the Rome reports: timelines, comparisons, family trees and steps drawn from each report's own text. |
 | 2026-10-30 | N5 | Mythology | Figures added to the Greek reports in the same way, and the facts found wrong while drawing them corrected in both courses. |
 | 2026-11-01 | R11 | Mythology | Rome's deep dive on the fall of the Republic continues: politics in the street, women, Cicero's letters, and Caesar in Gaul. |
 | 2026-11-01 | R11–13 | Mythology | Rome complete, 79 reports: the Ides of March, why the Republic fell, the deep dive on the Aeneid, and the Stoics through Marcus Aurelius. |
-| 2026-10-28 | A9 | Marketing | A9, What to expect: benchmarks, written again from its brief. |
-| 2026-10-28 | A2 | Marketing | A2, Audience and platform economics, written again from its brief. |
+| 2026-10-28 | A9 | Marketing | A9, What to expect: benchmarks, written again from its brief, with a figure drawn from its own data. |
+| 2026-10-28 | A2 | Marketing | A2, Audience and platform economics, written again from its brief, with a figure drawn from its own data. |
 | 2026-10-28 | A6 | Marketing | A6, How growth works, per platform, written again from its brief. |
 | 2026-10-29 | A1 | Marketing | A1, Positioning: the journey as a format, written; its section on two vlog episodes rebuilt from the episodes themselves. |
 | 2026-10-29 | A3 | Marketing | A3, The journey system, written. |
@@ -77,7 +77,7 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-11-13 | DD-PB1 | Marketing | Deep dive: creators who did this, written: six creators read against the course's rules. |
 | 2026-11-14 | DD-PB2 | Marketing | Deep dive: the quit-your-job math, written; course PB complete, and its twelve units then corrected in 103 places against their sources. |
 | 2026-10-28 | B1 | AI | B1, Mental model, written. |
-| 2026-10-28 | B2 | AI | B2, Choosing the model, written. |
+| 2026-10-28 | B2 | AI | B2, Choosing the model, written, with a figure drawn from its own data. |
 | 2026-10-28 | DD-B3 | AI | Course B gains a third deep dive, on how the best practitioners use the tool, and is renamed Using AI to Build a Brand. |
 | 2026-10-29 | B3 | AI | B3, Prompting that holds up, written, with a library of ten templates. |
 | 2026-10-29 | B4 | AI | B4, Context engineering, written. |
@@ -115,7 +115,7 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-10-28 | A1 | Academy | The site becomes Academy, one site for every course, also published on GitHub Pages. |
 | 2026-10-28 | P11 | Academy | Layouts for tablet and desktop: a wider column, and from desktop width a sidebar that stays open. |
 | 2026-10-28 | A0 | Academy | Academy's home becomes a catalogue of the courses, grouped by area. |
-| 2026-10-28 | A0 | Academy | Academy can be read by anyone it is shared with: a breadcrumb trail on every page and a Start button on every course. |
+| 2026-10-28 | A0 (2) | Academy | Academy can be read by anyone it is shared with: a breadcrumb trail on every page and a Start button on every course. |
 | 2026-10-28 | A3 | Academy | Courses A and B move into Academy, each with its own home, reading pages, briefs and sources, and a Backlog page joins the site. |
 | 2026-10-28 | A2 | Academy | Academy splits into a main page plus one file per report, loaded as it is read, so the site stays light. |
 | 2026-10-28 | A4 | Academy | A page on how each course was built: who wrote each unit, how it was checked, and the method in force. |
@@ -125,9 +125,11 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-10-29 | P40 | Academy | Figures drawn in the site's own fonts and colours. |
 | 2026-10-29 | P31 | Academy | Several units may be written in one working session, each by a fresh writer that sees only its brief and the units already filed. |
 | 2026-10-30 | P41 | Academy | Figures become part of how every unit is written, wherever structure is the content. |
+| 2026-10-30 | P55 | Academy | Figure labels that do not fit move aside or widen the drawing instead of being cut off, with eight hard cases on the Figure kinds page. |
 | 2026-10-30 | P58 | Academy | Six drawing faults in the figures fixed, each with a hard case on the Figure kinds page. |
 | 2026-11-01 | H-1 | Academy | A new reading layout: every unit and report opens on its scope and reads one section at a time, with a progress bar and a section menu. |
 | 2026-11-01 | H-2 | Academy | Figures open on the drawing on a phone, timelines may name a century, and matrix columns fit their contents. |
+| 2026-11-01 | P70 | Academy | A Greece-only edition of Academy, published on its own, and the Greek course as an e-book with every figure. |
 | 2026-11-03 | P83 | Academy | Wide figures keep their labels in view while they scroll on a phone. |
 | 2026-11-04 | P90 | Academy | A new home with a map of Academy, and a paper-like light theme in which every colour reads clearly. |
 | 2026-11-04 | P91 | Academy | The home as a bookshelf of every unit, and a What's new page listing every unit and report by the day it was filed. |
