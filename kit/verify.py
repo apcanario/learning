@@ -2070,7 +2070,7 @@ def check_phone_scatters(br, fails):
         if errs: fails.append(f'scatter figures {name}: console errors: ' + ' | '.join(errs[:3]))
         ctx.close()
     fails += bad
-    print(f'scatter figures on a phone (P123): {n} figure frames on {len(pids)} pages at 320 and 390 px, every part whole in the opening frame, no sideways scroll; {len(bad)} faults')
+    print(f'scatter figures on a phone (P124): {n} figure frames on {len(pids)} pages at 320 and 390 px, every part whole in the opening frame, no sideways scroll; {len(bad)} faults')
 
 def check_figures(br, fails):
     """The examples page (V1) through the shell: VX_FIGS figures, one per kind, and the geometry of each (FIG_JS)."""

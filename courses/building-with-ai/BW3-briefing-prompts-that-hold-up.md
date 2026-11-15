@@ -163,7 +163,7 @@ The decision below draws the rule in the order it is cheapest to check.
         "branches": [
           {"label": "yes", "to": {"outcome": "Rewrite the brief with what you learned; new chat", "tone": 1}},
           {"label": "no", "to": {
-            "q": "Did the requirements change, or was the chat summarised or near it?",
+            "q": "Did the requirements change, or has the chat been summarised, or is it long enough that it may be?",
             "tone": 4,
             "branches": [
               {"label": "yes", "to": {"outcome": "Consolidate the brief; new chat", "tone": 1}},
