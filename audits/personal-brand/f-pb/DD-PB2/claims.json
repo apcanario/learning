@@ -1,0 +1,524 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "S1 · DOL COBRA guide: termination 'for any reason other than gross misconduct', reduction in hours, 18 months as a rule, premium 'cannot exceed 102 percent of the plan's total cost'",
+  "source": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/publications/workers-guide-health-benefits-cobra?lang=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "S2 · MoneyHelper: 'have three to six months' essential outgoings available in an instant access savings account'",
+  "source": "https://www.moneyhelper.org.uk/en/savings/types-of-savings/emergency-savings-how-much-is-enough?source=mas",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "S3 · vidIQ: 8.65% of sub-1,000 channels adding 12 to 51 videos crossed 1,000 within 360 days; no dataset follows new channels 24 or 36 months",
+  "source": "https://vidiq.com/research/youtube-uploads-1000-subscribers/ (and others/PB1 §2)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "S4 · Sources to open are PB8 §6.5's: Your Europe FAQ (sends you to your national authority), HMRC content creators, IRS Topic 554",
+  "source": "https://europa.eu/youreurope/citizens/work/taxes/income-taxes-abroad/faq/index_en.htm ; https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/ ; https://www.irs.gov/taxtopics/tc554",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "S5 · Raffiee and Feng: NLSY79, 1994 to 2008, 2,198 spells by 1,093 people, 'a 33.3% decrease in the hazard of exit'",
+  "source": "https://msbfile03.usc.edu/digitalmeasures/joe.raffiee/intellcont/Raffiee_Feng_2014_AMJ-1.pdF",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "S6 · Base row: earliest pass Mon 7 Jul 2042, 15.0 years after 5 Jul 2027, and the other ten rows",
+  "source": "recomputed, out/check.py and out/check2.py",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "S7 · $1.1052 per euro, the ECB reference rate of 13 November 2026",
+  "source": "https://www.ecb.europa.eu/stats/policy%5Fand%5Fexchange%5Frates/euro%5Freference%5Fexchange%5Frates/html/eurofxref-graph-usd.en.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "Template",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "S8 · T2/T3 formulas agree with §4, D2 and D3",
+  "source": "unit §2, §4, D2, D3",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "S9 · ISS, Guia prático: subsídio de desemprego (6001 v4.72), 20 Feb 2025; p. 6 condition; p. 14 resignation",
+  "source": "https://seg-social.pt/documents/10152/15007/6001_subsidio_desemprego/1867b682-64f2-4b1a-8f39-ca008602a16b",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "S10 · 'the 33.3% figure is a hazard ratio from a Cox model'",
+  "source": "https://msbfile03.usc.edu/digitalmeasures/joe.raffiee/intellcont/Raffiee_Feng_2014_AMJ-1.pdF",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 11,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "DOL COBRA guide 'does not say whether a resignation qualifies' (also Unsure list)",
+  "source": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/publications/workers-guide-health-benefits-cobra?lang=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "DOL: 'unemployed through no fault of your own (determined under State law)'; a separation for a reason other than 'lack of work' is decided by the state; last updated 11 Sep 2026",
+  "source": "https://oui.doleta.gov/unemploy/uifactsheet.asp",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "GOV.UK: 'leave a job or lose pay by choice while claiming Universal Credit or just before you claim, without a good reason'; 91 days for a first one in a year; updated 6 Apr 2026",
+  "source": "https://www.gov.uk/guidance/universal-credit-sanctions",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "PB1 §10 lists 'who continues among part-time creators with full-time jobs'",
+  "source": "others/PB1 §10, line 211",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "WA DFI: 'Many experts suggest saving 3 to 6 months of basic living costs'; a state regulator reporting unnamed experts; undated",
+  "source": "https://dfi.wa.gov/financial-education/information/importance-having-emergency-savings-account",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§2 and Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "WA DFI page title 'The importance of having an emergency savings account'",
+  "source": "https://dfi.wa.gov/financial-education/information/importance-having-emergency-savings-account",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 17,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "CGD: 'pelo menos, seis meses de despesas'; 'pelo menos, um ano de despesas'; 9 Apr 2026",
+  "source": "https://www.cgd.pt/Site/Saldo-Positivo/protecao/Pages/fundo-emergencia.aspx",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Caixa Geral de Depósitos is 'a state-owned bank'",
+  "source": "https://www.cgd.pt/Institucional/Governo-Sociedade-CGD/Praticas-de-Bom-Governo/Documents/Relatorio-Governo-Sociedade-CGD-2020.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Grades: MoneyHelper has no mention of self-employment or variable income; CGD none of independent work or variable income",
+  "source": "https://www.moneyhelper.org.uk/en/savings/types-of-savings/emergency-savings-how-much-is-enough?source=mas ; https://www.cgd.pt/Site/Saldo-Positivo/protecao/Pages/fundo-emergencia.aspx",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§2",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "'No unemployment benefit follows a resignation in the three places checked (§1)'",
+  "source": "https://oui.doleta.gov/unemploy/uifactsheet.asp ; https://www.gov.uk/guidance/universal-credit-sanctions ; https://seg-social.pt/documents/10152/15007/6001_subsidio_desemprego/1867b682-64f2-4b1a-8f39-ca008602a16b",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 21,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ: of channels that crossed 1,000, 68% had 40+ videos and 53.5% had 70+ (survivor sample)",
+  "source": "https://vidiq.com/blog/post/how-many-videos-to-get-1000-subscribers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "AIR Media-Tech: median $2.39 per 1,000 views, Crafting & Handmade, its own client channels",
+  "source": "https://air.io/en/air-data-findings/which-youtube-niche-makes-the-most-money-in-2026-ranked-by-real-rpm-and-cpm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "YouTube: ad share at 1,000 subscribers with 8,000 qualified watch hours in 365 days for applicants from 1 Feb 2027 (platform-official)",
+  "source": "https://blog.google/intl/en-mena/product-updates/connect-communicate/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "YouTube: fan funding, Creator Partnerships, Shopping open at 500 subscribers with 3,000 watch hours",
+  "source": "https://support.google.com/youtube/answer/13429240",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "YouTube Shopping affiliate programme lists 18 countries and not Portugal",
+  "source": "https://support.google.com/youtube/answer/13376398?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Collabstr: average paid $255 for YouTube in 2025, its own marketplace, no tier breakdown",
+  "source": "https://collabstr.com/2026-influencer-marketing-report",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "beehiiv's median 0.62% (platform data)",
+  "source": "https://www.beehiiv.com/blog/the-state-of-paid-newsletters-2026.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "'PB10 notes that launch-week sales are not independent of the launch email'",
+  "source": "others/PB10 D4 R1, line 466",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sales at these numbers behave like a Poisson count (PB9 §8)",
+  "source": "others/PB9 §8, line 120",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Raffiee and Feng attribute the difference to learning, not measured directly; 'systematically select better ideas ex ante'; shared frailty model; 'unlikely'",
+  "source": "https://msbfile03.usc.edu/digitalmeasures/joe.raffiee/intellcont/Raffiee_Feng_2014_AMJ-1.pdF",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "EUR-Lex summary: 'fully consider'; 'to transfer from full-time work to any part-time work that becomes available'; 'is not sufficient reason'; last updated 4 Dec 2016",
+  "source": "https://eur-lex.europa.eu/EN/legal-content/summary/part-time-work.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "§5",
+  "sampled": false,
+  "kind": "date",
+  "claim": "UK: since 6 April 2024 a statutory flexible-working request from the first day of employment (S.I. 2023/1328)",
+  "source": "https://www.legislation.gov.uk/uksi/2023/1328/made/data.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 33,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "'COBRA lists a reduction in hours as a qualifying event'",
+  "source": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/publications/workers-guide-health-benefits-cobra?lang=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ median for 500 to 999 subscribers, +3.7 a month; caption title 'YouTube Subscriber Benchmarks 2026'",
+  "source": "https://vidiq.com/research/youtube-subscriber-benchmarks-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "§6 and D1 i9",
+  "sampled": false,
+  "kind": "number",
+  "claim": "ECB: August to November 2026 range $1.1052 to $1.1699; 'the August 2026 high'",
+  "source": "https://www.ecb.europa.eu/stats/policy%5Fand%5Fexchange%5Frates/euro%5Freference%5Fexchange%5Frates/html/eurofxref-graph-usd.en.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 36,
+  "section": "Deliverable D3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "vidIQ band medians +0.5 and +1.4 a month 'for channels of her size'",
+  "source": "https://vidiq.com/research/youtube-subscriber-benchmarks-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 37,
+  "section": "Deliverable D3",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "Percentage growth falls with size (PB1 §2, §6)",
+  "source": "https://vidiq.com/research/youtube-subscriber-benchmarks-2026/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 38,
+  "section": "Deliverable D6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "DD-PB1's prior: 'Keep the job through year two'",
+  "source": "others/DD-PB1 Deliverable A, line 278",
+  "verdict": "PASS"
+ },
+ {
+  "n": 39,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: CGD, Saldo Positivo, 'Fundo de emergência', 9 Apr 2026",
+  "source": "https://www.cgd.pt/Site/Saldo-Positivo/protecao/Pages/fundo-emergencia.aspx",
+  "verdict": "PASS"
+ },
+ {
+  "n": 40,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: ECB, euro foreign exchange reference rates, US dollar",
+  "source": "https://www.ecb.europa.eu/stats/policy%5Fand%5Fexchange%5Frates/euro%5Freference%5Fexchange%5Frates/html/eurofxref-graph-usd.en.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 41,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: EUR-Lex, summary of Directive 97/81/EC, 'Part-time work', last updated 4 Dec 2016",
+  "source": "https://eur-lex.europa.eu/EN/legal-content/summary/part-time-work.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 42,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: GOV.UK (DWP), 'Universal Credit sanctions', updated 6 Apr 2026",
+  "source": "https://www.gov.uk/guidance/universal-credit-sanctions",
+  "verdict": "PASS"
+ },
+ {
+  "n": 43,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: HMRC, 'Tax help for hustles: content creators', modified 22 Sep 2026",
+  "source": "https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 44,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: IRS, Topic no. 554, Self-employment tax, last reviewed or updated 9 Nov 2026",
+  "source": "https://www.irs.gov/taxtopics/tc554",
+  "verdict": "PASS"
+ },
+ {
+  "n": 45,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: MoneyHelper (Money and Pensions Service), 'Emergency savings: how much is enough?', undated",
+  "source": "https://www.moneyhelper.org.uk/en/savings/types-of-savings/emergency-savings-how-much-is-enough?source=mas",
+  "verdict": "PASS"
+ },
+ {
+  "n": 46,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Reference: Raffiee and Feng, AMJ 57(4), 2014, 936–963, doi:10.5465/amj.2012.0522, author's copy",
+  "source": "https://msbfile03.usc.edu/digitalmeasures/joe.raffiee/intellcont/Raffiee_Feng_2014_AMJ-1.pdF",
+  "verdict": "PASS"
+ },
+ {
+  "n": 47,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: The Flexible Working (Amendment) Regulations 2023, S.I. 2023/1328",
+  "source": "https://www.legislation.gov.uk/uksi/2023/1328/made/data.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 48,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: US DOL, EBSA, 'A Worker's Guide to Health Benefits Under COBRA', undated",
+  "source": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/publications/workers-guide-health-benefits-cobra?lang=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 49,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: US DOL, ETA, 'State Unemployment Insurance Benefits', last updated 11 Sep 2026",
+  "source": "https://oui.doleta.gov/unemploy/uifactsheet.asp",
+  "verdict": "PASS"
+ },
+ {
+  "n": 50,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Title: Your Europe, 'FAQs: Income taxes abroad', last checked 18 Jun 2026",
+  "source": "https://europa.eu/youreurope/citizens/work/taxes/income-taxes-abroad/faq/index_en.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 51,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Runway arithmetic: 12 x 1,500 = 18,000; 9,000 / 450 = 20 months to end Feb 2029; 9,000 / 550 = 16.4",
+  "source": "arithmetic on D1",
+  "verdict": "PASS"
+ },
+ {
+  "n": 52,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Paid tier: 10 / 0.62% = 1,613; (1,613 - 31) / 22 = 72 quarters, 18 years",
+  "source": "arithmetic; others/PB9 D2 V14",
+  "verdict": "PASS"
+ },
+ {
+  "n": 53,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Fourteenfold (income per subscriber) and 1.65 times (pace)",
+  "source": "arithmetic on PB10 D3, D4 counts",
+  "verdict": "PASS"
+ },
+ {
+  "n": 54,
+  "section": "Deliverable D2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "T = USD 1,657.80 a month, 19,893.60 a year; 1,842.00 at t = 10%",
+  "source": "arithmetic on D1",
+  "verdict": "PASS"
+ },
+ {
+  "n": 55,
+  "section": "Deliverable D3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "2,215 subscribers; 170 months; 127.5 sales; 3.5 a month; 36 times; 693,640 views; about 437; about 1,590 times",
+  "source": "arithmetic on D1; others/PB9 D3, PB10 D4",
+  "verdict": "PASS"
+ },
+ {
+  "n": 56,
+  "section": "Deliverable D4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "USD 45.66 = EUR 41.31; K about EUR 1,459",
+  "source": "arithmetic on D1",
+  "verdict": "PASS"
+ },
+ {
+  "n": 57,
+  "section": "Deliverable D5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "EUR 1,720; margin 20; 69.8%; 450 months; EUR 430 less saving",
+  "source": "arithmetic on D1",
+  "verdict": "PASS"
+ },
+ {
+  "n": 58,
+  "section": "whole unit",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Mara's facts agree with the register",
+  "source": "case-facts.md, Set by DD-PB2",
+  "verdict": "PASS"
+ }
+]

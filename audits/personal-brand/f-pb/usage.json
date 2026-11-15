@@ -156,6 +156,19 @@
     "stats.json"
    ],
    "note": "part 2 re-run from run 1's sample, with search and a full attribution pass; 31 searches"
+  },
+  "DD-PB2": {
+   "tokens": 208823,
+   "tool_uses": 74,
+   "minutes": 7.59,
+   "model_stated": "claude-fable-5-2",
+   "files": [
+    "audit.md",
+    "errata.json",
+    "claims.json",
+    "stats.json"
+   ],
+   "note": "part 2 re-run from run 1's sample, with search and a full attribution pass; 28 searches"
   }
  }
 }

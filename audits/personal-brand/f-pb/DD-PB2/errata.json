@@ -1,0 +1,110 @@
+[
+ {
+  "id": "DD-PB2-1",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "§2 · Runway, 'What the guidance says', after the table",
+  "current": "No unemployment benefit follows a resignation in the three places checked (§1).",
+  "fix": "None of the three places checked pays unemployment benefit after a resignation as a matter of course (§1): the US leaves the decision to the state, the UK applies a sanction, 91 days for a first one, where there was no good reason, and Portugal treats a worker's own resignation as voluntary.",
+  "basis": "Pages opened 15 Nov 2026. US: a separation for a reason other than 'lack of work' is decided by the state, https://oui.doleta.gov/unemploy/uifactsheet.asp . UK: a high level sanction of 91 days for a first one in 365 days for leaving 'without a good reason', https://www.gov.uk/guidance/universal-credit-sanctions . Portugal: the guide requires involuntary unemployment and classes a worker's own resignation as voluntary, https://seg-social.pt/documents/10152/15007/6001_subsidio_desemprego/1867b682-64f2-4b1a-8f39-ca008602a16b (pp. 6, 14). §2 says more than these pages and than the unit's own §1.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-2",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable D3, What has to be true, item 2",
+  "current": "above the band medians of +0.5 and +1.4 a month for channels of her size (PB1 D1 Y6; vendor)",
+  "fix": "above the band median of +0.5 a month for channels of her size, 1 to 99 subscribers, and the +1.4 of the next band, 100 to 499 (PB1 D1 Y6; vendor)",
+  "basis": "vidIQ, YouTube Subscriber Benchmarks 2026, 20 Jul 2026, opened 15 Nov 2026: +0.5 a month is the 1 to 99 band, +1.4 the 100 to 499 band, https://vidiq.com/research/youtube-subscriber-benchmarks-2026/ ; Mara has 61 subscribers (PB10 D4); PB1 D1 Y6.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-3",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§3 · item 1, YouTube ad revenue share",
+  "current": "$2.39 per 1,000 views on its own client channels (PB9 §2)",
+  "fix": "$2.39 per 1,000 views on its own client channels, May 2025 to May 2026 (PB9 §2)",
+  "basis": "Part 5: an amount is in its source's currency with its date. AIR Media-Tech, opened 15 Nov 2026: 300 channels it works with, every monetised month from May 2025 to May 2026, https://air.io/en/air-data-findings/which-youtube-niche-makes-the-most-money-in-2026-ranked-by-real-rpm-and-cpm ; PB9 §2.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-4",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources, last line",
+  "current": "DD-PB1 (§11; Deliverable A)",
+  "fix": "DD-PB1 (§3 to §8, §11; Deliverable A)",
+  "basis": "§2 of the unit cites 'DD-PB1 §3 to §8, §11' (a fresh-check fix that the Sources line did not follow); Part 1: the unit leaves its sources. No URL: internal.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-5",
+  "unit": "DD-PB2",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Deliverable D1 row i18 against Template T1 row i18",
+  "current": "| i18 | Preconditions | Employment contract read and any notice given (PB8 J1, J2); income registration answered (T1, done 18 Mar 2027); t filled (i8) | PB8 register; PB10 D3 |",
+  "fix": "No replacement given. The template's i18 adds 'health cover and benefits after leaving answered (§1)', and §1 says each of its six items 'has to be answered before a date means anything'; Mara's own i18 leaves it out. Adding it to her row sets a new fact about Mara (what her employer pays that she would have to buy) and changes the preconditions the register records as (J1, J2, T1, t), so it is for the owner to decide.",
+  "basis": "unit §1 'What a survivable floor leaves out', items 2 and 3; Template T1 i18; case-facts.md, 'Set by DD-PB2', pass-rule line. No URL: internal.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-6",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Unsure list, Raffiee and Feng line",
+  "current": "the 33.3% figure is a hazard ratio from a Cox model (§5)",
+  "fix": "the 33.3% figure is the fall in the hazard of exit computed from a Cox model's coefficient, a hazard ratio of about 0.667 (§5)",
+  "basis": "Raffiee and Feng 2014, author's copy, opened 15 Nov 2026: Cox proportional hazards models; 33.3% is 100 x (e^b - 1) for the coefficient -.405, so the hazard ratio is about 0.667 (derived: e^-0.405). https://msbfile03.usc.edu/digitalmeasures/joe.raffiee/intellcont/Raffiee_Feng_2014_AMJ-1.pdF",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-7",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "§2 · Runway, table, US row",
+  "current": "[WA DFI, The importance of having an emergency savings account]",
+  "fix": "[WA DFI, Building an Emergency Savings Fund]",
+  "basis": "The page at this URL is titled 'Building an Emergency Savings Fund' (opened 15 Nov 2026); the unit's title is the URL slug. Quotation and publisher hold. https://dfi.wa.gov/financial-education/information/importance-having-emergency-savings-account",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-8",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "Sources, Washington State DFI entry",
+  "current": "\"The importance of having an emergency savings account\", undated",
+  "fix": "\"Building an Emergency Savings Fund\", undated",
+  "basis": "As DD-PB2-7: the page's title is 'Building an Emergency Savings Fund'. https://dfi.wa.gov/financial-education/information/importance-having-emergency-savings-account",
+  "figure": false
+ },
+ {
+  "id": "DD-PB2-9",
+  "unit": "DD-PB2",
+  "kind": "flag",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources, HMRC entry (and the §4 link text)",
+  "current": "HMRC, \"Tax help for hustles: content creators\", modified 22 Sep 2026, as PB8 §6.5 cites it.",
+  "fix": "No replacement given. The site is 'Tax Help for Hustles' and the page is titled 'Tax rules for content creators'; the title used here joins the two, exactly as PB8 §6.5 and PB8's Sources do. A change here alone would part from PB8; if wanted, change both to: HMRC, Tax Help for Hustles, \"Tax rules for content creators\".",
+  "basis": "Page opened 15 Nov 2026, last modified 22 Sep 2026: https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/ ; others/PB8 lines 171 and 397.",
+  "figure": false
+ }
+]

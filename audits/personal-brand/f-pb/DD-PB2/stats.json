@@ -1,0 +1,25 @@
+{
+ "unit": "DD-PB2",
+ "model": "claude-fable-5-2",
+ "words": 8875,
+ "sections": 10,
+ "cited_claims_in_unit": 87,
+ "claims_sampled": 10,
+ "claims_checked_total": 58,
+ "fail_sampled": 1,
+ "fail_total": 3,
+ "stale_total": 0,
+ "unverifiable_total": 0,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 28,
+ "web_fetches": 29,
+ "not_checked": [
+  "https://support.google.com/youtube/answer/12843009: not returned by any search in this agent, so not fetched (web rule); its 8,000-hour rule was checked on YouTube's blog.google announcement instead, and 'Creator Partnerships at 500 subscribers' stands on PB9 §2 alone",
+  "Instagram's creator page (PB9 §2's source for 'no threshold or rate published'): not searched; the claim was checked in others/PB9 in run 1 only",
+  "doi:10.5465/amj.2012.0522: not read off the author's copy; no publisher page opened",
+  "MoneyHelper 'government-backed' (§2 grade): not stated on the page opened; no further page opened",
+  "https://www.cgd.pt/Investor-Relations/Informacao-Financeira/CGD/Relatorios-Contas/2025/Documents/Press-Release-PT-4T-2025.pdf: opened, does not name the shareholder; ownership taken from CGD's 2020 governance report instead",
+  "run-1 'Also checked' rows 12, 16, 17, 22, 24 to 29, 38 to 41 (pointers into others/): not re-run one by one in part 2; they stand as run 1 left them (all PASS) and are not counted in part 2's totals"
+ ]
+}
