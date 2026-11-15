@@ -15,7 +15,9 @@ under 44 px tall (inline links in running text exempt), no console error. Phone:
 navigation context (drawer, title, arrows, continue) across home -> Rome -> report -> home -> Greece -> report ->
 a Brand + AI course and its reading and build pages, every course's "How it was built" page (A4: fetched through the
 shell, one row per written report or unit), the drawer groups (tracks open by default, a course's units as an
-accordion) and the Backlog page; the same panel checks again in the light theme. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
+accordion) and the Backlog page; the same panel checks again in the light theme. The Backlog and Changelog pages
+(S-PAGES, 15 Nov 2026; check_site_log): rendered from docs/site-log.md alone, every entry in its area and order, newest
+first on the Changelog, in plain words with no private term, at 320, 390 and 1280 px, dark and light, without sideways scroll. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
 its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
 and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35; the home whole, P90; P92: and the hero's motion sheets, five moments of the area line and the drift, at 390 and 1280 px) at the three widths
@@ -2004,6 +2006,102 @@ def check_figures(br, fails):
           f'{len(viz_examples.RAISES)} blocks stop the build as they should')
     ctx.close()
 
+# S-PAGES (15 Nov 2026) · the Backlog and Changelog pages: a plain overview by area, rendered from docs/site-log.md alone
+SL_AREAS = ['Mythology', 'Marketing', 'AI', 'UX', 'Academy']
+SL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('desktop', 1280, 800, False)]
+# the engine's words, which the two pages leave out (a unit's own title, such as "Agents" or "Prompting", is content)
+SL_PLAIN = re.compile(r'\b(Opus|Fable|Sonnet|Haiku|subagents?|(?:fresh|isolated|writer|checker|filer|applier|correction) agents?|'
+                      r'agent contexts?|audit\w*|tokens?|chats?|backlog rows?|mirrors?|Corrections section|next prompt)\b'
+                      r'|\b[\w/-]+\.(?:py|md|json|css|js|sh|txt)\b', re.I)
+SL_JS = """(pid) => { const p = document.getElementById(pid), w = el => el.getBoundingClientRect().width;
+  const areas = [...p.querySelectorAll('section.slarea')];
+  return {sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth,
+    order: [...p.querySelectorAll('[data-sl="order"] table.sl tbody tr')].map(r => [...r.cells].map(c => c.textContent.trim())),
+    areas: areas.map(a => ({name: a.dataset.area, rows: [...a.querySelectorAll('table.sl tbody tr')].map(r => [...r.cells].map(c => c.textContent.trim())),
+                             dates: [...a.querySelectorAll('td.c-date .sld')].map(d => d.textContent.trim())})),
+    over: [...p.querySelectorAll('.sltbl, td')].filter(e => e.scrollWidth > e.clientWidth + 1).length,
+    code: Math.max(0, ...[...p.querySelectorAll('td.c-code')].map(w)),
+    text: Math.min(9999, ...[...p.querySelectorAll('td.c-text')].map(w)),
+    nowrap: [...p.querySelectorAll('td.c-text')].filter(t => getComputedStyle(t).whiteSpace === 'nowrap').length}; }"""
+def site_log_rows():
+    """docs/site-log.md's two tables, as build.py reads them: Next [(n, code, area, text)], Done [(iso, code, area, text)]."""
+    nxt, done, sec = [], [], None
+    for ln in (R.parent / 'docs' / 'site-log.md').read_text(encoding='utf-8').split('\n'):
+        if ln.startswith('## '):
+            sec = ln[3:].strip(); continue
+        if sec in ('Next', 'Done') and ln.startswith('|') and not ln.startswith('|---'):
+            c = [x.strip() for x in ln.strip().strip('|').split('|')]
+            if c[0] not in ('#', 'Date'):
+                (nxt if sec == 'Next' else done).append(tuple(c))
+    return nxt, done
+
+def check_site_log(br, fails):
+    """S-PAGES (15 Nov 2026): the Backlog page holds the overall order (#, code, area, sentence: one row per entry of the
+    site log's Next, in its order) and one section per area (code, sentence); the Changelog page one section per area
+    (date, code, sentence), newest first, every Done entry once. Both in plain words: no model name, no engine word
+    (SL_PLAIN), no file name and no private term (kit/private-terms.txt). At 320, 390 and 1280 px, dark and light: no
+    sideways scroll of the page, a table or a cell; the sentence wraps; on a phone the code column at most 72 px and the
+    sentence column at least 110 px."""
+    if 'backlog' in OMIT and 'changelog' in OMIT:
+        print(f'site log: edition {EDITION} leaves out the Backlog and Changelog pages'); return
+    nxt, done = site_log_rows()
+    bad = []
+    # the words, on disk: the backlog panel in the shell and the changelog page beside it
+    shell = (SITE / 'index.html').read_text()
+    texts = {}
+    if 'backlog' not in OMIT:
+        m = re.search(r'<section class="panel log slog" id="backlog".*?</section>\s*(?=<section class="panel|$)', shell, re.S)
+        texts['backlog'] = m.group(0) if m else ''
+        if not m: bad.append('site log: the Backlog panel (.panel.log.slog#backlog) is not in the shell')
+    if 'changelog' not in OMIT:
+        texts['changelog'] = (SITE / 'changelog.html').read_text() if (SITE / 'changelog.html').exists() else ''
+    ft, _ = private_terms.terms()
+    PT = private_terms.rx(ft)
+    for pid, t in texts.items():
+        plain = H.unescape(re.sub(r'<[^>]+>', ' ', t))
+        for m in SL_PLAIN.finditer(plain): bad.append(f'site log: the {pid} page says "{m.group(0)}" (not plain)')
+        for m in PT.finditer(plain): bad.append(f'site log: the {pid} page carries the private term "{m.group(0)}"')
+    seen = 0
+    for name, w, h, mobile in SL_WIDTHS:
+        for theme in ('dark', 'light'):
+            errs = []
+            ctx, pg, _ = new_page(None, br, errs, name, w, h, mobile)
+            if theme == 'light':
+                pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+            where = f'{w} px {theme}'
+            for pid in [x for x in ('backlog', 'changelog') if x not in OMIT]:
+                pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(80)
+                r = pg.evaluate(SL_JS, pid)
+                seen += 1
+                if [a['name'] for a in r['areas']] != SL_AREAS: bad.append(f'site log {pid} at {where}: areas {[a["name"] for a in r["areas"]]}, expected {SL_AREAS}')
+                if r['sw'] > r['cw']: bad.append(f'site log {pid} at {where}: the page scrolls sideways ({r["sw"]} > {r["cw"]})')
+                if r['over']: bad.append(f'site log {pid} at {where}: {r["over"]} table(s) or cell(s) overflow')
+                if r['nowrap']: bad.append(f'site log {pid} at {where}: {r["nowrap"]} sentence cell(s) do not wrap')
+                if mobile and r['code'] > 72: bad.append(f'site log {pid} at {where}: the code column is {r["code"]:.0f} px wide (at most 72)')
+                if mobile and r['text'] < 110: bad.append(f'site log {pid} at {where}: a sentence column is {r["text"]:.0f} px wide (at least 110)')
+                if pid == 'backlog':
+                    want = [[n, c, a, t] for n, c, a, t in nxt]
+                    if r['order'] != want: bad.append(f'site log backlog at {where}: the order table has {len(r["order"])} rows, not the site log\'s {len(want)} in order')
+                    for a in r['areas']:
+                        wa = [[c, t] for n, c, ar, t in nxt if ar == a['name']]
+                        if a['rows'] != wa: bad.append(f'site log backlog at {where}: {a["name"]} has {len(a["rows"])} rows, the site log {len(wa)}')
+                else:
+                    got = sorted(tuple(x[1:]) + (a['name'],) for a in r['areas'] for x in a['rows'])
+                    want = sorted((c, t, a) for d, c, a, t in done)
+                    if got != want: bad.append(f'site log changelog at {where}: {len(got)} entries shown, the site log has {len(want)}')
+                    for a in r['areas']:
+                        iso = [d for d, c, ar, t in done if ar == a['name']]
+                        if a['dates'] != [short(d) for d in sorted(iso, reverse=True)]: bad.append(f'site log changelog at {where}: {a["name"]} is not newest first')
+            if errs: bad.append(f'site log {where}: console errors: ' + ' | '.join(errs[:3]))
+            ctx.close()
+    fails += bad
+    print(f'site log (S-PAGES): {len(nxt)} next and {len(done)} done in docs/site-log.md; Backlog and Changelog checked {seen} times at '
+          f'{", ".join(str(x[1]) for x in SL_WIDTHS)} px, dark and light (plain words, private terms, order, areas, no sideways scroll); {len(bad)} faults')
+
+def short(iso):
+    import datetime
+    return datetime.date.fromisoformat(iso).strftime('%-d %b %Y')
+
 def main():
     errors, fails = [], []
     check_files(fails)
@@ -2018,6 +2116,7 @@ def main():
         check_reading(br, fails)
         check_seps(br, fails)
         check_reliefs(br, fails)   # P95
+        check_site_log(br, fails)   # S-PAGES
 
         # ---- phone ------------------------------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)
@@ -2177,12 +2276,12 @@ def main():
         op = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"greece\"] .dunit:not(.closed)')].map(u => u.dataset.unit)")
         if op != ['2']: fails.append(f'greece drawer accordion: open units {op}, expected [\'2\']')
         pg.click('#closeB'); pg.wait_for_timeout(200)
-        # the backlog page renders the queue and the chats done
+        # the backlog page (S-PAGES): the overall order, then the areas, from docs/site-log.md
         if 'backlog' not in OMIT:
             pg.evaluate("location.hash = 'backlog'"); pg.wait_for_timeout(50)
             step('backlog', dict(id='backlog', nav='root', u='ACADEMY', t='Backlog', arrows=False))
-            nt = pg.evaluate("document.querySelectorAll('#backlog table').length")
-            if nt < 3: fails.append(f'backlog page: {nt} tables, expected the lanes, the proposed rows and the chats done')
+            nt = pg.evaluate("document.querySelectorAll('#backlog [data-sl=\"order\"] table.sl').length")
+            if nt != 1: fails.append(f'backlog page: {nt} order tables, expected one (S-PAGES; check_site_log checks the rest)')
         # the home lists every live course under its track, in courses.py order (history courses, then markdown courses)
         pg.click('#homeB'); pg.wait_for_timeout(80)
         tr = pg.evaluate("[...document.querySelectorAll('#home .track')].map(t => t.querySelector('h2').textContent + ':' + [...t.querySelectorAll('.cgrid a.course')].map(a => a.getAttribute('href')).join(','))")
