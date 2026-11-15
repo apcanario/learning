@@ -1,0 +1,866 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Fan funding at 500 subscribers + 3,000 hours; ad share at 1,000 + 8,000 hours for new applicants from 1 Feb 2027",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "number",
+  "claim": "vidIQ cohort 137,355 long-form channels; median about 272 views at 30 days on the tenth upload; exclusion sentence",
+  "source": "https://vidiq.com/research/youtube-first-10-videos-study/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Amazon US 3.00% / 4.50% / 4.00% by category",
+  "source": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ?lang=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Collabstr: more than 21,000 collaborations; paid $255 / $193; asking $311 / $214; \"down 63% ... from $418\"",
+  "source": "https://collabstr.com/2026-influencer-marketing-report",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Gumroad 10% + $0.50, 30% via marketplace, no monthly fee, merchant of record, taxes since 1 Jan 2025",
+  "source": "https://gumroad.com/pricing",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "beehiiv median paid conversion 0.62%; about 6 per 1,000; $10 / $100; churn 5.06%–16.67%",
+  "source": "https://www.beehiiv.com/blog/the-state-of-paid-newsletters-2026.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "§7",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "PB1 stop rule protects the long-form cadence (PB1 D3); PB3 D2 gives the 10-hour plan",
+  "source": "others/PB1, others/PB3",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "§8",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "NIST: Poisson models \"the number of events occurring within a given time interval\"; mean λ, SD √λ; percentiles 0–5, 4–13, 16–32, 84–117",
+  "source": "https://itl.nist.gov/div898/handbook/eda/section3/eda366j.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "§9",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Stripe (Portugal) 1.5% + €0.25; 2.5% + €0.25 UK; 3.15% + €0.25 international; + 2% conversion",
+  "source": "https://stripe.com/pt-PT/pricing",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "§10",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "Step 1 pointers: PB8 D1 clause 7; register T1, A3, E3–E4",
+  "source": "others/PB8",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "§11",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Li, Gao, Gu and Leung: U-shape quotation; 4,908 Australian influencers, 6,869 posts; 0.475 comments, 0.393 likes; Douyin 1,000, near 0.52",
+  "source": "https://research.polyu.edu.hk/en/publications/endorsement-rate-in-influencer-marketing/ ; https://ira.lib.polyu.edu.hk/bitstream/10397/119670/1/Li_Endorsement_Rate_Influencer.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "V17: CTT, Preços 2020, novembro/2020, Apartados, Singulares, concessão anual 58.00 € before VAT",
+  "source": "https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "Template",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "T1 sends the Shopping row to answer 13376398 for \"whether your country is listed\": 18 countries, Portugal absent, YPP required",
+  "source": "https://support.google.com/youtube/answer/13376398?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Eisend, van Reijmersdal, Boerman and Tarrahi, Journal of Advertising 49(3), 344–366, 2020; \"61 papers that use 57 distinct data sets\"",
+  "source": "https://research.wur.nl/en/publications/a-meta-analysis-of-the-effects-of-disclosing-sponsored-content/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "YouTube 55%/45% revenue shares are from its blog of 10 Aug 2026",
+  "source": "https://blog.youtube/news-and-events/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 16,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "12843009: \"8,000 qualified watch hours in the last 365 days, or 20M qualified Shorts views in the last 90 days\"",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "12843009: \"If you are already in YPP, your status is not impacted by this update\"",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 18,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "12843009: \"review and accept the updated terms in YouTube Studio by January 31, 2027\"",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "12843009: \"stop earning from the associated monetization features beginning February 1, 2027\"",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "12843009: \"does not impact your channel’s status in the YouTube Partner Program\"",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "13429240: \"with 4,000 qualified watch hours in the last 12 months\"",
+  "source": "https://support.google.com/youtube/answer/13429240",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "12843009: \"500 subscribers and either 3,000 qualified watch hours in the last year or 3M qualified Shorts views in the last 90 days\"; thresholds do not change",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "13429240: \"3 valid public uploads in the last 90 days\"; the five features named; Portugal listed",
+  "source": "https://support.google.com/youtube/answer/13429240",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "12843009: \"10M qualified Shorts views over the last 90 days\"; missing it does not remove a channel or affect other earnings",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "YouTube's announcement \"states the creator revenue share as\" \"55% for long-form videos and 45% for Shorts\"",
+  "source": "https://blog.youtube/news-and-events/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 26,
+  "section": "§9",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Fee table: ad revenue creator share 55% long-form, 45% Shorts, sourced to the YouTube Official Blog",
+  "source": "https://blog.youtube/news-and-events/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 27,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "7491256: \"Creators get 70% of membership revenue after applicable taxes and fees are deducted\"; \"All transaction costs (including credit card fees) are currently covered by YouTube\"",
+  "source": "https://support.google.com/youtube/answer/7491256?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "vidIQ: \"aim for 40 to 55% viewed\" for 5–15 minutes, published without a sample; updated 21 Jul 2026",
+  "source": "https://vidiq.com/blog/post/average-view-duration/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "AIR Media-Tech \"reports\" median RPM $2.39 Crafting & Handmade, $2.98 Lifestyle; 300 channels, May 2025–May 2026; no home or DIY category; dated 1 Jul 2026 yet refers to September 2026",
+  "source": "https://air.io/en/air-data-findings/which-youtube-niche-makes-the-most-money-in-2026-ranked-by-real-rpm-and-cpm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "13376398: \"Every participating brand and retailer will set their commission rates and attribution window for each product\"",
+  "source": "https://support.google.com/youtube/answer/13376398?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§2",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Instagram's page names six earning tools and states no follower, age, country or account-type requirement",
+  "source": "https://creators.instagram.com/earn-cash-making-what-you-love",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Inro: \"Meta's own documentation is not consistent on this and access appears to be invite-based and genuinely uneven\"; \"Meta takes 0% of subscription revenue\"; \"roughly 30% for a subscriber's first year\"; cites no Meta page; updated 23 Jul 2026",
+  "source": "https://www.inro.social/blog/instagram-subscriptions",
+  "verdict": "PASS"
+ },
+ {
+  "n": 33,
+  "section": "§2",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Meta for Creators: \"10,000 followers or 250+ Return Viewers\"; \"50,000 Post Engagements\" or \"180,000 Watch Minutes\" in the last 60 days; says nothing about Instagram",
+  "source": "https://creators.facebook.com/tools/fan-subs",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "EMARKETER reporting Agentio: more than 10,000 mostly US integrations, Oct 2023–Dec 2025; \"affiliate link CTR reaches 1.8x the rate of the first integration\" by the eighth; no base or purchase rate",
+  "source": "https://www.emarketer.com/content/sticking-with-same-youtube-creator-nearly-doubles-affiliate-link-ctr",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "CMA: \"Any form of incentive or reward – including money, commissions, discounts\"; \"It is not enough just to tag a brand in your post, use discount codes or affiliate links\"; updated 3 Sep 2025",
+  "source": "https://www.gov.uk/government/publications/social-media-endorsements-guide-for-influencers/social-media-endorsements-being-transparent-with-your-followers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 36,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "FTC: a disclosure \"should be in the video and not just in the description\"; Nov 2019, modified 3 Dec 2024",
+  "source": "https://ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 37,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Collabstr blog: \"Micro-influencers (10K–100K followers) average $198 per collaboration\"; no figure for smaller accounts",
+  "source": "https://collabstr.com/blog/influencer-costs-2025",
+  "verdict": "PASS"
+ },
+ {
+  "n": 38,
+  "section": "§4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Influencer Marketing Hub \"reports\" 51.43% expansion intent for nano creators (42.86% + 8.57%); \"600+\"; nano not defined; 4 May 2026",
+  "source": "https://influencermarketinghub.com/influencer-marketing-benchmark-report/?facet1=pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 39,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "YouTube blog: \"incentives for brand deals\" for channels below its Shorts threshold; \"We'll share more details soon\"",
+  "source": "https://blog.youtube/news-and-events/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 40,
+  "section": "§4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Eisend et al.: the disclosure lowered brand attitudes and credibility",
+  "source": "https://research.wur.nl/en/publications/a-meta-analysis-of-the-effects-of-disclosing-sponsored-content/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 41,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "beehiiv Pricing: \"Digital Products\" on every plan; \"beehiiv takes 0%\"; \"Stripe's standard processing fee of 2.9% + $0.30 per transaction\"; Free $0 to 2,500; paid subscriptions from Lite, $49 a month yearly; merchant of record not stated",
+  "source": "https://www.beehiiv.com/pricing",
+  "verdict": "PASS"
+ },
+ {
+  "n": 42,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Etsy: \"$0.20 Listing fee\"; \"6.5 % Transaction fee\" on the sale price including the shipping you set; \"3% + $0.25 payment processing fee\"; varies by bank country",
+  "source": "https://etsy.com/sell",
+  "verdict": "PASS"
+ },
+ {
+  "n": 43,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "European Commission: since 1 July 2021, One Stop Shop; EU-wide threshold of EUR 10,000",
+  "source": "https://vat-one-stop-shop.ec.europa.eu/index_en?",
+  "verdict": "PASS"
+ },
+ {
+  "n": 44,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "GOV.UK: \"The place of supply of cross-border digital services is the consumer's location\"; updated 28 Mar 2022",
+  "source": "https://www.gov.uk/guidance/the-vat-rules-if-you-supply-digital-services-to-private-consumers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 45,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "beehiiv: \"first-party data from thousands of publications on beehiiv, analyzed across the 2021-2026 period\"; publications that chose to charge; conversion not formally defined",
+  "source": "https://www.beehiiv.com/blog/the-state-of-paid-newsletters-2026.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 46,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Artificial Ignorance: 13,413 free and 121 paid subscribers on 1 January 2025; post of 11 Feb 2025",
+  "source": "https://www.ignorance.ai/p/two-years-of-artificial-ignorance",
+  "verdict": "PASS"
+ },
+ {
+  "n": 47,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "beehiiv describes Generalist World as \"a living community of 43,000 newsletter subscribers and 700+ paying members\"; 6 Jan 2026",
+  "source": "https://www.beehiiv.com/blog/the-state-of-newsletters-2026.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 48,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Patreon's own article gives none of the State of Create figures other summaries quote; 19 Feb 2025",
+  "source": "https://news.patreon.com/articles/state-of-create",
+  "verdict": "PASS"
+ },
+ {
+  "n": 49,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Kit: \"completely free for up to 10,000 subscribers\"; \"Unlimited digital products and subscriptions\"; fee not stated; 23 Sep 2026",
+  "source": "https://intercom.help/convertkit/en/articles/9053602-the-kit-newsletter-plan",
+  "verdict": "PASS"
+ },
+ {
+  "n": 50,
+  "section": "§6, §9",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Patreon Help: 10% for pages published after 4 Aug 2025; 3.4% + €0.35 for EUR payouts; 2.9% + $0.30 USD card; 2.5% currency conversion; Apple 30% on iOS",
+  "source": "https://support.patreon.com/hc/en-us/articles/11111747095181-Creator-fees",
+  "verdict": "PASS"
+ },
+ {
+  "n": 51,
+  "section": "§11",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Li et al. define endorsement rate as the share of sponsored posts among all posts before a given sponsored post",
+  "source": "https://ira.lib.polyu.edu.hk/bitstream/10397/119670/1/Li_Endorsement_Rate_Influencer.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 52,
+  "section": "§11",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "The turning points are cited from \"the authors' accepted manuscript\" (body, link text, Sources, Unsure list)",
+  "source": "https://ira.lib.polyu.edu.hk/handle/10397/119670",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 53,
+  "section": "§11",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "\"The authors attribute the U to two forces: a higher rate raises recognition of the brand and also suspicion of manipulative intent\"",
+  "source": "https://ira.lib.polyu.edu.hk/bitstream/10397/119670/1/Li_Endorsement_Rate_Influencer.pdf",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 54,
+  "section": "§11",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Li et al.: two experiments with 168 and 208 participants; Instagram sample mean 83,782.6 followers, smallest 630; Douyin smallest 939; follower count a control",
+  "source": "https://ira.lib.polyu.edu.hk/bitstream/10397/119670/1/Li_Endorsement_Rate_Influencer.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 55,
+  "section": "§11",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "An own product introduced as yours is an ad under the UK guide's rule for brands you own",
+  "source": "https://www.gov.uk/government/publications/social-media-endorsements-guide-for-influencers/social-media-endorsements-being-transparent-with-your-followers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 56,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: AIR Media-Tech, \"Which YouTube niche makes the most money in 2026, ranked by real RPM and CPM\", last updated 1 Jul 2026",
+  "source": "https://air.io/en/air-data-findings/which-youtube-niche-makes-the-most-money-in-2026-ranked-by-real-rpm-and-cpm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 57,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Amazon Associates, \"Associates Program Standard Commission Income Statement\"",
+  "source": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ?lang=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 58,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Artificial Ignorance, \"Two years of Artificial Ignorance\", 11 Feb 2025",
+  "source": "https://www.ignorance.ai/p/two-years-of-artificial-ignorance",
+  "verdict": "PASS"
+ },
+ {
+  "n": 59,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: beehiiv, Pricing",
+  "source": "https://www.beehiiv.com/pricing",
+  "verdict": "PASS"
+ },
+ {
+  "n": 60,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: beehiiv, \"The State of Newsletters 2026\", 6 Jan 2026",
+  "source": "https://www.beehiiv.com/blog/the-state-of-newsletters-2026.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 61,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: beehiiv, \"The State of Paid Newsletters 2026\", 22 Jun 2026",
+  "source": "https://www.beehiiv.com/blog/the-state-of-paid-newsletters-2026.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 62,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: CMA, \"Social media endorsements: guidance for content creators\", updated 3 Sep 2025",
+  "source": "https://www.gov.uk/government/publications/social-media-endorsements-guide-for-influencers/social-media-endorsements-being-transparent-with-your-followers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 63,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Collabstr, \"2026 Influencer Marketing Report\" (2025 data)",
+  "source": "https://collabstr.com/2026-influencer-marketing-report",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 64,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Collabstr, \"What influencers really cost in 2026\"",
+  "source": "https://collabstr.com/blog/influencer-costs-2025",
+  "verdict": "PASS"
+ },
+ {
+  "n": 65,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: CTT, \"Preços 2020\", novembro/2020",
+  "source": "https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 66,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: EMARKETER, \"Sticking with the same YouTube creator nearly doubles affiliate link CTR\" (Agentio data)",
+  "source": "https://www.emarketer.com/content/sticking-with-same-youtube-creator-nearly-doubles-affiliate-link-ctr",
+  "verdict": "PASS"
+ },
+ {
+  "n": 67,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Etsy, \"Sell on Etsy\"",
+  "source": "https://etsy.com/sell",
+  "verdict": "PASS"
+ },
+ {
+  "n": 68,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: European Commission, VAT One Stop Shop",
+  "source": "https://vat-one-stop-shop.ec.europa.eu/index_en?",
+  "verdict": "PASS"
+ },
+ {
+  "n": 69,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: FTC, \"Disclosures 101 for Social Media Influencers\", Nov 2019, modified 3 Dec 2024",
+  "source": "https://ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 70,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: GOV.UK (HMRC), \"VAT rules for supplies of digital services to consumers\", updated 28 Mar 2022",
+  "source": "https://www.gov.uk/guidance/the-vat-rules-if-you-supply-digital-services-to-private-consumers",
+  "verdict": "PASS"
+ },
+ {
+  "n": 71,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Gumroad, Pricing",
+  "source": "https://gumroad.com/pricing",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 72,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Influencer Marketing Hub, \"Influencer Marketing Benchmark Report 2026\", 4 May 2026",
+  "source": "https://influencermarketinghub.com/influencer-marketing-benchmark-report/?facet1=pdf",
+  "verdict": "PASS"
+ },
+ {
+  "n": 73,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Inro, \"Instagram Subscriptions: setup, cost and what you keep\", updated 23 Jul 2026",
+  "source": "https://www.inro.social/blog/instagram-subscriptions",
+  "verdict": "PASS"
+ },
+ {
+  "n": 74,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Instagram, \"Monetize with Instagram\"",
+  "source": "https://creators.instagram.com/earn-cash-making-what-you-love",
+  "verdict": "PASS"
+ },
+ {
+  "n": 75,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Kit, \"The Kit Newsletter plan\", 23 Sep 2026",
+  "source": "https://intercom.help/convertkit/en/articles/9053602-the-kit-newsletter-plan",
+  "verdict": "PASS"
+ },
+ {
+  "n": 76,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Li, Y., A. Gao, F. Gu and F. Leung, \"Endorsement Rate in Influencer Marketing\", Journal of Marketing, 2026, doi:10.1177/00222429261422744",
+  "source": "https://research.polyu.edu.hk/en/publications/endorsement-rate-in-influencer-marketing/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 77,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Meta for Creators, \"Subscriptions\" (Facebook)",
+  "source": "https://creators.facebook.com/tools/fan-subs",
+  "verdict": "PASS"
+ },
+ {
+  "n": 78,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: NIST/SEMATECH, e-Handbook of Statistical Methods, §1.3.6.6.19, Poisson distribution",
+  "source": "https://itl.nist.gov/div898/handbook/eda/section3/eda366j.htm",
+  "verdict": "PASS"
+ },
+ {
+  "n": 79,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Patreon, \"State of Create in 2025\", 19 Feb 2025",
+  "source": "https://news.patreon.com/articles/state-of-create",
+  "verdict": "PASS"
+ },
+ {
+  "n": 80,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Patreon Help, \"Creator fees overview\"",
+  "source": "https://support.patreon.com/hc/en-us/articles/11111747095181-Creator-fees",
+  "verdict": "PASS"
+ },
+ {
+  "n": 81,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: Stripe, \"Preços\" (Portugal)",
+  "source": "https://stripe.com/pt-PT/pricing",
+  "verdict": "PASS"
+ },
+ {
+  "n": 82,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: vidIQ, \"YouTube average view duration: what is a good AVD?\", updated 21 Jul 2026",
+  "source": "https://vidiq.com/blog/post/average-view-duration/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 83,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: vidIQ Research, \"YouTube First 10 Videos Study\", 28 Jul 2026, updated 30 Jul 2026",
+  "source": "https://vidiq.com/research/youtube-first-10-videos-study/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 84,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: YouTube Help, \"Analyze and manage your YouTube channel memberships program\" (answer 7491256)",
+  "source": "https://support.google.com/youtube/answer/7491256?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 85,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: YouTube Help, \"Changes to the YouTube Partner Program\" (answer 12843009)",
+  "source": "https://support.google.com/youtube/answer/12843009",
+  "verdict": "PASS"
+ },
+ {
+  "n": 86,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: YouTube Help, \"Overview of the expanded YouTube Partner Program\" (answer 13429240)",
+  "source": "https://support.google.com/youtube/answer/13429240",
+  "verdict": "PASS"
+ },
+ {
+  "n": 87,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: YouTube Help, \"YouTube Shopping affiliate program overview & eligibility\" (answer 13376398)",
+  "source": "https://support.google.com/youtube/answer/13376398?hl=en",
+  "verdict": "PASS"
+ },
+ {
+  "n": 88,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources title: YouTube Official Blog (The YouTube Team), \"New opportunities to earn and changes to the YouTube Partner Program\", 10 Aug 2026",
+  "source": "https://blog.youtube/news-and-events/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 89,
+  "section": "§2",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Views the thresholds mean: 87,273–120,000; 3,357–4,615 a video; 32,727–45,000; 1,259–1,731; 12 to 17 times 272; $208.58",
+  "source": "arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 90,
+  "section": "§3, §4, §6, §9",
+  "sampled": false,
+  "kind": "number",
+  "claim": "USD 11.70; 418 to 255 is 39%; 0.90%; 1.63%; 1,613; €3.98; fees on USD 15 (2.00, 0.74, 1.88)",
+  "source": "arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 91,
+  "section": "§8",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Poisson: empty months 31.2% and 74.7%; percentiles; 45.3%; 10.0%",
+  "source": "arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 92,
+  "section": "§11",
+  "sampled": false,
+  "kind": "number",
+  "claim": "One sponsored video in a season of six or seven is 14%–17%",
+  "source": "arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 93,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "D3: USD 13.00 a sale; totals 26.00 / 104.00 / 567.00; members 0.37, 1.35, 6.52, 2.48; per-hour figures; $588",
+  "source": "arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 94,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Weekdays of all dates; upload 12 on 8 Jun 2027, upload 14 on 6 Jul 2027; 209 days",
+  "source": "calendar",
+  "verdict": "PASS"
+ },
+ {
+  "n": 95,
+  "section": "Intro, Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Mara's facts against case-facts.md (PB9 block)",
+  "source": "case-facts.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 96,
+  "section": "§2–§11, Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pointers to PB1, PB3, PB4, PB5, PB6, PB7, PB8, PB10 used by the unit",
+  "source": "others/",
+  "verdict": "PASS"
+ }
+]

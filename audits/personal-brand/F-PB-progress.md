@@ -10,7 +10,7 @@ Row F-PB, started 14 Nov 2026. One line per unit and one for Audit 4. States: pe
 - PB6: errata applied (2 applied, 0 not applied, 2 flags)
 - PB7: errata applied (8 applied, 0 not applied, 0 flags)
 - PB8: errata applied (9 applied, 2 not applied, 0 flags)
-- PB9: pending
+- PB9: report saved
 - PB10: errata applied (7 applied, 0 not applied, 0 flags)
 - DD-PB1: pending
 - DD-PB2: report saved

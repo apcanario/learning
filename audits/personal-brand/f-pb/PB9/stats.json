@@ -1,0 +1,25 @@
+{
+ "unit": "PB9",
+ "model": "claude-fable-5-2",
+ "words": 8974,
+ "sections": 15,
+ "cited_claims_in_unit": 94,
+ "claims_sampled": 15,
+ "claims_checked_total": 96,
+ "fail_sampled": 1,
+ "fail_total": 6,
+ "stale_total": 0,
+ "unverifiable_total": 2,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 38,
+ "web_fetches": 47,
+ "not_checked": [
+  "https://gumroad.com/pricing: not returned by any of four searches, so the web rule allowed no fetch; its claims are unverifiable",
+  "https://influencermarketinghub.com/influencer-marketing-benchmark-report/?bbpage=1: this exact address was not returned; the same report was read at the ?facet1=pdf address search returned",
+  "https://www.etsy.com/sell: this exact address was not returned; the page was read at https://etsy.com/sell, which search returned",
+  "https://ira.lib.polyu.edu.hk/bitstream/10397/119670/1/Li_Endorsement_Rate_Influencer.pdf: characters 100,000 to 112,144 of the PDF text were beyond the fetch window and not read",
+  "https://www.beehiiv.com/pricing: the '1,000 subscribers' tier sits in a selector and could not be read as text",
+  "kit/private_terms.py: not in the folder, not run"
+ ]
+}
