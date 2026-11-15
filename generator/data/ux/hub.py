@@ -137,7 +137,7 @@ BUILD_BODY = """<div class="report">
   <ol>
     <li>One chat per unit, in the Learning Project. Copy the unit's brief from this course's Briefs page and paste it into a new chat; never reuse a chat across units. An isolated agent context counts as a chat (method.md §4, P31).</li>
     <li>The unit is written in full with its deliverable and its figures, each figure a fenced <code>viz</code> block of a kind <code>kit/viz.py</code> can draw. Every Perqo fact the unit invents is labelled and kept consistent with the Perqo facts already filed.</li>
-    <li>A fresh checker in a new context that has not seen the writing (Opus 5.5, <code>skills/audit-units</code> §3b) checks every cited claim and every figure's content against the unit, and the deliverable against the brief; findings are applied as exact replacements and the report filed as <code>audits/ux/fresh-check-&lt;code&gt;.md</code>.</li>
+    <li>A fresh checker in a new context that has not seen the writing (Opus 5.5, <code>skills/audit-units</code> §3) checks every cited claim and every figure's content against the unit, and the deliverable against the brief; findings are applied as exact replacements and the report filed as <code>audits/ux/fresh-check-&lt;code&gt;.md</code>.</li>
     <li>File the unit at <code>courses/ux/&lt;code&gt;-&lt;slug&gt;.md</code> with the front matter of method.md §7 (<code>skills/file-unit</code>); update this data file, rebuild, verify, publish Academy.</li>
   </ol>
   <h2>Models</h2>

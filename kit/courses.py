@@ -86,7 +86,7 @@ ROME = dict(
         ("III", "The Empire", ["6", "7", "8"], "31 BC to AD 476, and on to 1453", "Augustus and the Principate, the third-century crisis and the Christian empire, to the last emperor in the West and the eastern empire that outlived him."),
         ("IV", "Practice and legacy", ["9", "10"], "across the whole span", "Law, the army, the household and the city; Ovid, the imperial writers, the art, and how all of it reached you. Ends with the capstone exam."),
         ("+", "Deep dives", ["11", "12", "13"], "optional", "The fall of the Republic, the Aeneid and Roman philosophy taken to the depth the survey could not reach. Best after the material they extend, or after the capstone."),
-        ("✓", "Quality audit", ["14"], "run when ready", "A check on the course itself. The syllabus and every report so far were written with Opus 5.5 and are flagged for review with Fable 5.1; this unit runs that review: the Greek rubric, the cross-references back to Greece, the syllabus itself, and fixes for what falls short."),
+        ("✓", "Quality audit", ["14"], "run when ready", "A check on the course itself, written for the Fable review that closed on 15 Nov 2026 (S-NOAUDIT): the Greek rubric, the cross-references back to Greece, the syllabus itself, and fixes for what falls short."),
     ],
     eras=[("Iron Age Italy", -1000, -753, "var(--orange)", "modules 1.1 and 1.2"),
           ("Regal period", -753, -509, "var(--gold)", "modules 1.3 to 1.6, all of it legend written down five centuries later"),

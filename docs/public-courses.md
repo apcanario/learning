@@ -8,7 +8,7 @@ Two courses written to be shared with anyone, adapted from the private courses B
 |---|---|---|
 | Structure | Two new courses, each in its own data folder and vault; courses A and B stay untouched as his editions | Confirmed 11 Nov 2026: "new courses in new folders so that we can separate them afterwards" |
 | Place on the site | Each sits in the track of its private original (Marketing, Technology) for now; his editions move to a private environment later | Confirmed 11 Nov 2026 |
-| Audits | The four-unit sample audits and the Fable 5.1 fresh checks are owed to the Fable stage and gate no unit | Confirmed 11 Nov 2026: "the audits will run later" |
+| Audits | None: the Fable stage is closed, so no four-unit audit and no Fable 5.1 fresh check runs; the Opus 5.5 fresh check of every unit before filing stands | Confirmed 11 Nov 2026 ("the audits will run later"); closed 15 Nov 2026, S-NOAUDIT ("let's stop with the fable audits") |
 | Personal-brand course's worked case | One fictional creator, Mara Venn, with a register of invented facts | Proposed 11 Nov 2026, not objected to; override: his own account as the public case |
 | AI course's tool stance | Principles tool-neutral, worked on Claude, every product fact dated, an "On other tools" section per unit | Proposed 11 Nov 2026, not objected to; override: readers mostly on another assistant |
 | AI course's worked case | Academy itself, from a case file with private details removed | Proposed 11 Nov 2026, not objected to; override: he does not want the audit record public (P24) |
@@ -32,7 +32,7 @@ The reader of each is the persona in its preamble (`PRE` in its `units_data.py`)
 ## 3 · Rules every writing row follows
 
 1. **One unit per chat, in syllabus order.** The writing order is the reading order. A unit starts only when every earlier unit of its course is filed.
-2. **Opus 5.5 writes; a separate Opus 5.5 context checks.** Each fresh check owes a Fable 5.1 fresh check (P49). The four-unit audits are owed to the Fable stage and gate nothing. The chat only stages, applies, files, builds, publishes and records.
+2. **Opus 5.5 writes; a separate Opus 5.5 context checks.** No Fable audit or Fable fresh check follows (S-NOAUDIT, 15 Nov 2026). The chat only stages, applies, files, builds, publishes and records.
 3. **The brief is never reworded.** It is built with `kit/mdcourse.py`'s `open_brief`: the preamble, the Aim, Takes and Gives lines, the unit brief.
 4. **Source units are material, never authority.** The writer is given the private units its Takes line names, with their fresh-check reports. It re-verifies every claim it carries over at the claim's source. Nothing rests on a source unit alone.
 5. **Mistakes are corrected where they sit.** The writer lists every mistake it finds in a source unit; the fresh checker verifies that list. A verified mistake is fixed in the private unit as an exact replacement, with a dated note in that unit and a line in its hub's changelog. A mistake found in a filed public unit is fixed the same way. Each is named in the reply.

@@ -56,7 +56,7 @@ Since 6.7 (P94): on every reading page of every course, at the end of every sect
 | `--orange` | `#f4a261` | `#9c4500` | Build, "unchecked" |
 | `--teal` | `#2a9d8f` | `#006b5e` | links, course A, "written" |
 | `--blue` | `#457b9d` | `#0062a0` | goals, "next" |
-| `--gold` | `#e9c46a` | `#7c5800` | deep dives, labels, audits |
+| `--gold` | `#e9c46a` | `#7c5800` | deep dives, labels |
 | `--topo-a` / `--topo-p` | `.16` / `.62` | `.16` / `.6` | the opacity of a hero's contour layer (every text over it at its bar at every pose of the move; .2 until P93) / of a tile's patch (P92); since the follow-up of 5 Nov 2026 the layer, not each line, carries it, so lines that touch or cross composite as one |
 | `--topo-s` | `.62` | `.6` | the opacity of a section separator's layer (P94, section 9): the patch's value, so a separator reads as quietly as a tile's patch; its own token so it can be tuned alone |
 | `--topo-turn` / `--topo-cycle` | `3deg` / `10s` | the same | the contours' turn each way and the time of one sweep (P93: 120 s at first, which read as still on a phone, 0.6 px/s at most; 20 s on 4 Nov; 10 s since 5 Nov, Pedro: "it could be faster") |

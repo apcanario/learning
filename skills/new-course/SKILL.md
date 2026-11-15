@@ -22,7 +22,7 @@ Draft the frame before the syllabus: the pick, up to three reasons, the override
 - A course goal in one sentence and three measurable outcomes, each mapped to the units that deliver it.
 - Per unit: code, title, one-line scope, the deliverable it ships (built in full inside the unit), and the unit brief (`method.md` §4, Brief template: "Unit <code>, <Title>. [Search before writing.] Cover: … Deliverable: …").
 - A search flag per unit: on only where facts are current.
-- An explicit writing order, with interleaving where two units build the same asset, and an audit row after every fourth unit.
+- An explicit writing order, with interleaving where two units build the same asset.
 
 ## 4. The shared preamble
 Fill the template in `method.md` §4 once for the course. Reader: copied from `reader.md`, nothing added. Sourcing standard: Part 1 of `sourcing-standard.md` plus a new part for this course (its acceptable sources and labels), which you add to `sourcing-standard.md`. Tone: the Project's. End with "End with the unit's deliverable, built out in full, not described."
@@ -38,6 +38,6 @@ Fill the template in `method.md` §4 once for the course. Reader: copied from `r
 7. Publish Academy: the artifact (read first, publish once with its `url`: the shell `kit/academy/index.html` with `root` `kit/academy` and the fetched files `python3 publish_files.py` prints as `files`), then `./deploy.sh`.
 
 ## 6. Register it in the Project
-- `courses-index.md`: a section for the course with every unit in build order (status "not written", model, search flag, vault path `courses/<slug>/<code>-<slug>.md`, and for history `(+ kit/<id>/r-<id>.html)`), rows numbered from 1, and the count line above the table (markdown: "0 of N written"; history: "0 of N content reports; M modules with the audit unit" under a `### <Short> (course N)` heading); an audit counter at 0. `python3 kit/index_check.py` until it passes.
+- `courses-index.md`: a section for the course with every unit in build order (status "not written", model, search flag, vault path `courses/<slug>/<code>-<slug>.md`, and for history `(+ kit/<id>/r-<id>.html)`), rows numbered from 1, and the count line above the table (markdown: "0 of N written"; history: "0 of N content reports; M modules with the audit unit" under a `### <Short> (course N)` heading). `python3 kit/index_check.py` until it passes.
 - `project-instructions.md`: add the course to the Purpose line only if it stays under 400 words.
 - Reply with the course's Academy anchor, the unit count, the first unit to write and its model. Do not write a unit in this chat.
