@@ -113,7 +113,7 @@ and until t is filled, the model runs at t = 0 and labels every date it prints a
 3. When those amounts are paid (in arrears, in advance, quarterly), so the runway holds them.
 4. What registration the income needs before the first payment (PB8 register T1), and whether a platform that acts as merchant of record changes anything for you (PB9 §5).
 
-The sources to open before that conversation are the ones PB8 §6.5 gives for the EU ([Your Europe, Income taxes abroad FAQ](https://europa.eu/youreurope/citizens/work/taxes/income-taxes-abroad/faq/index_en.htm), which sends you to your national authority), the UK ([HMRC, Tax help for hustles: content creators](https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/)) and the US ([IRS, Topic 554, Self-employment tax](https://www.irs.gov/taxtopics/tc554)). Unemployment and health cover after leaving (§1) go to the same list, because they change what the floor must buy.
+The sources to open before that conversation are the ones PB8 §6.5 gives for the EU ([Your Europe, Income taxes abroad FAQ](https://europa.eu/youreurope/citizens/work/taxes/income-taxes-abroad/faq/index_en.htm), which sends you to your national authority), the UK ([HMRC, Tax Help for Hustles, Tax rules for content creators](https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/)) and the US ([IRS, Topic 554, Self-employment tax](https://www.irs.gov/taxtopics/tc554)). Unemployment and health cover after leaving (§1) go to the same list, because they change what the floor must buy.
 
 **Mara (Mara, fictional).** She is taxed in Portugal. Her T1 question (registering the guide's income) was answered on Thursday 18 March 2027 by a tax professional she knows, without charge (PB10 D3). Her t is a separate question: she asks the same professional for t at her current income and at T, under Portuguese rules, by the twelve-month review on Monday 3 January 2028; the fee, if any, is an unfilled input, as is a lawyer's fee for a first brand contract (PB9 D2 V18); the postal address is priced from her receipt (PB10 D3, R8). Until then her model runs at t = 0.
 
@@ -369,7 +369,7 @@ For each path you consider (a full exit carried by the account; a full exit carr
 - European Central Bank, euro foreign exchange reference rates, US dollar, rate of 13 Nov 2026 and the Aug to Nov 2026 range, read 14 Nov 2026. https://www.ecb.europa.eu/stats/policy%5Fand%5Fexchange%5Frates/euro%5Freference%5Fexchange%5Frates/html/eurofxref-graph-usd.en.html
 - EUR-Lex, summary of Directive 97/81/EC, "Part-time work", last updated 4 Dec 2016, read 14 Nov 2026. https://eur-lex.europa.eu/EN/legal-content/summary/part-time-work.html
 - GOV.UK (DWP), "Universal Credit sanctions", updated 6 Apr 2026, read 14 Nov 2026. https://www.gov.uk/guidance/universal-credit-sanctions
-- HMRC, "Tax help for hustles: content creators", modified 22 Sep 2026, as PB8 §6.5 cites it. https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/
+- HMRC, Tax Help for Hustles, "Tax rules for content creators", modified 22 Sep 2026, as PB8 §6.5 cites it. https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/
 - Instituto da Segurança Social, *Guia prático: subsídio de desemprego* (6001 v4.72), 20 Feb 2025, read 14 Nov 2026. https://seg-social.pt/documents/10152/15007/6001_subsidio_desemprego/1867b682-64f2-4b1a-8f39-ca008602a16b
 - IRS, Topic no. 554, Self-employment tax, last reviewed or updated 9 Nov 2026, as PB8 §6.5 cites it. https://www.irs.gov/taxtopics/tc554
 - MoneyHelper (Money and Pensions Service), "Emergency savings: how much is enough?", undated, read 14 Nov 2026. https://www.moneyhelper.org.uk/en/savings/types-of-savings/emergency-savings-how-much-is-enough?source=mas
@@ -397,3 +397,5 @@ For each path you consider (a full exit carried by the account; a full exit carr
 - Fresh check 2026-11-14 (Opus 5.5; a Fable 5.1 fresh check is owed, P49): fix · 1 error (Path A's month, September 2041), 4 should-fix, 8 minor; all applied as the report gives them; figures 1 to 4 passed; report `audits/personal-brand/fresh-check-DD-PB2.md`.
 
 Erratum 15 Nov 2026, Audit 3 (stratified-sample audit; Fable 5.2, row F-PB): 7 exact replacements applied, DD-PB2-1, DD-PB2-2, DD-PB2-3, DD-PB2-4, DD-PB2-6, DD-PB2-7, DD-PB2-8; each is quoted with its source in `audits/personal-brand/audit-3.md`.
+
+Erratum 15 Nov 2026, held errata of Audits 1 to 4 worked by the chat (Opus 5.5, row F-PB part 2, each checked at source): 2 exact replacements applied, C-15 (DD-PB2-9), C-16 (DD-PB2-9); listed in `audits/personal-brand/f-pb/chat/errata.json`.
