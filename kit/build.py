@@ -8,7 +8,7 @@ README.md is regenerated on every build.
 The root home is Academy (docs/academy.md, A1): every course of both families. History courses (Greece, Rome) are
 built from their kit folders; a markdown course (Brand + AI) is built by mdcourse.py from its data file
 (generator/data/<slug>/hub.py, AD5) into one Academy course per course in that file (AD6, A3): a course home, a
-reading page per written unit, and the "How it is built" pages (method, build order, briefs, audits, bibliography,
+reading page per written unit, and the "How it is built" pages (method, build order, briefs, bibliography,
 changelog). The site also renders the Project's backlog and chat changelog (docs/) as a Backlog page.
 
 Each course has a syllabus file, its reports in the vault (courses/<course>/, Markdown since P71-3; vault.py), a prompts index (the modules with a written report),
@@ -1119,7 +1119,7 @@ RULE_LINES = [
     ('One reader.', 'Every course is written for the same person and read in order, on a phone, with the citations checked.'),
     ('Sources first.', 'A unit names its sources and says where they disagree; a claim that cannot be sourced is marked unsourced or left out.'),
     ('One unit per chat, built in full.', 'Each unit is written from a published brief or prompt, in its own chat, with its closing artefact: a self-test and carry-forward ideas for the history courses, a shipped deliverable for Brand + AI.'),
-    ('Audited every four units.', 'After every four units written in a hub, a stratified sample of claims is checked against its sources with a second model; a unit that fails gets a full audit. The model that wrote each unit is recorded.'),
+    ('Checked before filing.', 'Every new unit is checked by a fresh reader that has not seen it written: each cited claim against its source, the deliverable against its brief. A unit written with live search is checked again six months on. The model that wrote each unit is recorded.'),
     ('An open syllabus.', 'Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.'),
 ]
 _own = ED.get('rules', {})
