@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v9.14 · 15 Nov 2026'
+VERSION = 'v9.15 · 15 Nov 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -229,6 +229,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-11-15 14:50', "v9.15. Erratum (row W-BW1, step 6): B1 corrected where BW1's writer found it out of date and a corrections check by Opus 5.5 confirmed it (audits/brand-ai/corrections-2026-11-15-BW1-B1.md): the claude.ai window now 1M tokens for Opus 5.5 (arithmetic and chart updated), temperature not a setting on Claude 4.7 and later, lineup and prices as of 15 Nov 2026 (Fable 5.2), four source titles, the Messages API's beta threads; 18 exact replacements and a dated note."),
     ('2026-11-15 14:10', "v9.14. Correction P107 (row W-BW1, step 1b, second round): A8's citation of the consolidated text of Decreto-Lei 57/2008 (Banco de Portugal copy, to Decreto-Lei 9/2021) re-pointed to the Procuradoria-Geral Distrital de Lisboa consolidated text to Lei 10/2023; checked by Opus 5.5 (audits/brand-ai/corrections-2026-11-15-P107-A8.md); dated note in A8; no claim changed."),
     ('2026-11-15 14:00', "v9.13. Dated notes (15 Nov 2026, P114) added to DD-B1 and DD-B2: where they say a Fable 5.1 check or audit was owed, that was accurate when written and is kept as history; the Fable stage was closed on 15 Nov 2026 and the Opus 5.5 fresh check recorded in each stands. No text rewritten."),
     ('2026-11-15 13:00', "v9.12. Erratum to the Sources title of vidIQ's 11 Sep 2026 study in A7, A9 and DD-A2 (was \"Uploads and reaching 1,000 subscribers\", now the page's headline, \"Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal\"): found by the Fable audits of course PB (errata PB4-3 and PB4-4) and carried by row S-BW1; checked at the page by a fresh Opus 5.5 agent; the text of the three units is otherwise unchanged."),

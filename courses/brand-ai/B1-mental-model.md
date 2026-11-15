@@ -66,12 +66,12 @@ That is the whole interface. The model's trained parameters are fixed when he us
 }
 ```
 
-**How big the window is (as of 28 Oct 2026).** Two different numbers are in circulation, and the one that applies to him is the smaller.
+**How big the window is (as of 15 Nov 2026).** Two different numbers are in circulation, and on 15 Nov 2026 they agree for his model.
 
-- On the API, Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.1 all have a 1M-token window with up to 128K output tokens per request ([Anthropic, *Context windows*](https://platform.claude.com/docs/en/build-with-claude/context-windows); [Anthropic, *Models overview*](https://platform.claude.com/docs/en/about-claude/models/overview)).
-- On claude.ai paid plans, Anthropic's help centre states that the context window is 200K tokens across all models and paid plans, with some models at 500K on Enterprise ([Claude Help Center, usage and length limits](https://support.claude.com/en/articles/11647753)).
+- On the API, Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.2 all have a 1M-token window with up to 128K output tokens per request ([Anthropic, *Context windows*](https://platform.claude.com/docs/en/build-with-claude/context-windows); [Anthropic, *Models overview*](https://platform.claude.com/docs/en/about-claude/models/overview)).
+- On claude.ai paid plans, Anthropic's help centre lists a 1M-token window in chat for Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.2, 500K for some older models such as Opus 4.8, and 200K for models not in its table ([Claude Help Center, *How large is the context window on paid Claude plans?*, read 15 Nov 2026](https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans)).
 
-His Project runs on claude.ai, so his working budget is 200K tokens, a fifth of the figure on the model page. (On 2 Nov 2026 Anthropic's pages disagree on the claude.ai window, and the most specific gives 1M for the current models in chat: B8 §1.)
+On Opus 5.5 the chat window is therefore the same 1M tokens as on the API.
 
 **Worked example: what the chat that wrote this unit received** *(observed, 28 Oct 2026)*. Before the brief arrived, the window already held Anthropic's system prompt; his saved preferences; the Learning Project's instructions; a snapshot of his memory (a profile, a preferences line and a listing of memory file paths with one-line descriptions); and the names and one-line descriptions of his fifteen plugin skills. The brief came next. During the work, a list of the Project's 24 documents arrived by name, then five of them (`method.md`, `sourcing-standard.md`, `courses-index.md`, `reader.md`, `units_data.py`) and about twenty web pages were read in. Each of those reads added text to the same window. None of it was "known" to the model before it was placed there.
 
@@ -81,17 +81,17 @@ His Project runs on claude.ai, so his working budget is 200K tokens, a fifth of 
 
 A token is the smallest unit the model works in: a word, part of a word, a character or a byte. For Claude, the number of characters per token depends on the model and the language. On models before Claude 4.7, a token is about 3.5 English characters; Claude 4.7 and later models use a newer tokenizer that produces about 30 percent more tokens for the same text ([Anthropic, *Glossary*](https://platform.claude.com/docs/en/about-claude/glossary)). Opus 5.5 is in the later group, so on Anthropic's two figures an English token is roughly 3.5 ÷ 1.3 ≈ 2.7 characters. That is arithmetic on the glossary's numbers; nobody measured it, and the glossary gives no figure for Portuguese; for an exact count Anthropic points to its token-counting endpoint (same page).
 
-On that arithmetic, a 200K-token window holds roughly 540,000 characters of English. This unit, at about 36,000 characters, would be about 13,000 tokens: around 6 to 7 percent of his window, before anything else is loaded.
+On that arithmetic, a 1M-token window holds roughly 2.7 million characters of English. This unit, at about 36,000 characters, would be about 13,000 tokens: about 1.3 percent of his window, before anything else is loaded.
 
 ### Tokens as cost
 
-On the API, price is per million tokens, with output dearer than input. As of 28 October 2026: Opus 5.5 $4 input / $20 output; Sonnet 5.5 $2 / $10; Haiku 5.5 from $0.10 / $0.50; Fable 5.1 $10 / $50 ([Anthropic, *Models overview*](https://platform.claude.com/docs/en/about-claude/models/overview)). Which model to route each task to is B2.
+On the API, price is per million tokens, with output dearer than input. As of 15 November 2026: Opus 5.5 $4 input / $20 output; Sonnet 5.5 $2 / $10; Haiku 5.5 from $0.10 / $0.50; Fable 5.2 $8 / $40 (Fable 5.1, still listed, $10 / $50) ([Anthropic, *Models overview*](https://platform.claude.com/docs/en/about-claude/models/overview)). Which model to route each task to is B2.
 
 ```viz
 {
   "kind": "bars",
   "mode": "grouped",
-  "caption": "API price per million tokens, input and output, as of 28 October 2026 (Haiku 5.5 is a starting price), from §2 of this unit, on <a href=\"https://platform.claude.com/docs/en/about-claude/models/overview\">Anthropic, <em>Models overview</em></a>.",
+  "caption": "API price per million tokens, input and output, as of 15 November 2026 (Haiku 5.5 is a starting price), from §2 of this unit, on <a href=\"https://platform.claude.com/docs/en/about-claude/models/overview\">Anthropic, <em>Models overview</em></a>.",
   "series": [
     {
       "name": "Input",
@@ -125,10 +125,10 @@ On the API, price is per million tokens, with output dearer than input. As of 28
       ]
     },
     {
-      "label": "Fable 5.1",
+      "label": "Fable 5.2",
       "values": [
-        10,
-        50
+        8,
+        40
       ]
     }
   ],
@@ -137,7 +137,7 @@ On the API, price is per million tokens, with output dearer than input. As of 28
 }
 ```
 
-The mechanism that matters more than the price list is that the model keeps nothing between turns. Anthropic's API documentation says the Messages API is stateless and that the full conversation history is sent with every request ([Anthropic, *Working with messages*](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)). The context-window page says the same in turn-by-turn terms: each new turn's input contains all previous conversation history plus the new message, and each response becomes part of the input for the next turn ([Anthropic, *Context windows*](https://platform.claude.com/docs/en/build-with-claude/context-windows)).
+The mechanism that matters more than the price list is that the model keeps nothing between turns. Anthropic's API documentation says the Messages API is stateless and that the full conversation history is sent with every request ([Anthropic, *Using the Messages API*](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)). A beta feature, message threads, lets the API keep the conversation so that later requests send only the new messages ([Anthropic, *Using the Messages API*, read 15 Nov 2026](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)). The context-window page says the same in turn-by-turn terms: each new turn's input contains all previous conversation history plus the new message, and each response becomes part of the input for the next turn ([Anthropic, *Context windows*](https://platform.claude.com/docs/en/build-with-claude/context-windows)).
 
 The consequence is quadratic. Illustrative arithmetic, unmeasured: if every exchange adds about 2,000 tokens, the 30th turn sends about 60,000 tokens of history, and the 30 turns together send about 2,000 × (1 + 2 + … + 30) = 930,000 tokens of input, plus every fixed layer (preferences, project instructions, memory, skill descriptions) once per turn. The thirtieth turn sends thirty times the history of the first, whatever the length of the question itself.
 
@@ -180,7 +180,7 @@ Across chats, nothing persists in the model. A new chat is a new request with a 
 
 Each of these is text that something re-inserts. Remove the re-insertion and the fact is gone.
 
-One route does run from his chats into a model, and it is slow. Since Anthropic's consumer-terms change of 28 August 2025, Free, Pro and Max users choose whether new or resumed chats may be used to improve Claude; opted-in data is retained for five years, otherwise 30 days ([Anthropic, *Updates to our consumer terms*, 28 Aug 2025](https://www.anthropic.com/news/updates-to-our-consumer-terms)). That feeds a future training run. None of the documentation cited here describes any path by which a chat changes the model he talks to the next morning.
+One route does run from his chats into a model, and it is slow. Since Anthropic's consumer-terms change of 28 August 2025, Free, Pro and Max users choose whether new or resumed chats may be used to improve Claude; opted-in data is retained for five years, otherwise 30 days ([Anthropic, *Updates to Consumer Terms and Privacy Policy*, 28 Aug 2025](https://www.anthropic.com/news/updates-to-our-consumer-terms)). That feeds a future training run. None of the documentation cited here describes any path by which a chat changes the model he talks to the next morning.
 
 ### "It forgot" usually means "it was never told"
 
@@ -192,7 +192,7 @@ His own rules already encode this. His "Teresa" disambiguation lives in the pref
 
 ### Trained
 
-Claude is built on a model pretrained on a large corpus to predict the next word, then fine-tuned and trained with human feedback to act as an assistant ([Anthropic, *Glossary*](https://platform.claude.com/docs/en/about-claude/glossary)). What it learned this way stops at a cutoff. As of 28 October 2026, Anthropic lists the reliable knowledge cutoff of Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.1 as June 2026 ([Anthropic, *Models overview*](https://platform.claude.com/docs/en/about-claude/models/overview)). Today is four months past that.
+Claude is built on a model pretrained on a large corpus to predict the next word, then fine-tuned and trained with human feedback to act as an assistant ([Anthropic, *Glossary*](https://platform.claude.com/docs/en/about-claude/glossary)). What it learned this way stops at a cutoff. As of 15 November 2026, Anthropic lists the reliable knowledge cutoff of Opus 5.5, Sonnet 5.5, Haiku 5.5 and Fable 5.2 as June 2026 ([Anthropic, *Models overview*](https://platform.claude.com/docs/en/about-claude/models/overview)). Today is four months past that.
 
 The reader profile in his own brief shows the gap. "Ended competitive karate after the WIKF Global Cup (Oct 2026)" describes an event after the cutoff. No amount of training covers it; the model knows it only because the brief and his memory put it in the window. The same holds for any model lineup, price or plan limit dated after June 2026, which is why B2 and B8 are flagged to search before writing.
 
@@ -212,7 +212,7 @@ The three kinds look identical in the output. A sentence about the 2026 WIKF res
 
 ### Sampling is the design
 
-At each step the model produces a probability distribution over possible next tokens, and one is drawn. Temperature controls how random that draw is: higher gives more varied output, lower gives more conservative, more probable phrasing ([Anthropic, *Glossary*](https://platform.claude.com/docs/en/about-claude/glossary)). Sampling is deliberate. Holtzman and colleagues showed that always choosing the most likely continuation produces bland, repetitive, degenerate text, and that sampling from a truncated distribution ("nucleus sampling") produced text closer to human writing ([Holtzman et al., "The Curious Case of Neural Text Degeneration", ICLR 2020](https://arxiv.org/abs/1904.09751)). Temperature is an API parameter; none of the claude.ai help articles cited in this unit offers him a temperature setting.
+At each step the model produces a probability distribution over possible next tokens, and one is drawn. Temperature controls how random that draw is: higher gives more varied output, lower gives more conservative, more probable phrasing ([Anthropic, *Glossary*](https://platform.claude.com/docs/en/about-claude/glossary)). Sampling is deliberate. Holtzman and colleagues showed that always choosing the most likely continuation produces bland, repetitive, degenerate text, and that sampling from a truncated distribution ("nucleus sampling") produced text closer to human writing ([Holtzman et al., "The Curious Case of Neural Text Degeneration", ICLR 2020](https://arxiv.org/abs/1904.09751)). Temperature is not settable on Claude 4.7 and later models, Opus 5.5 included: Anthropic's API returns an error for a non-default value and advises prompting instead ([Anthropic, *Using the Messages API*, read 15 Nov 2026](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)). None of the claude.ai help articles cited offers a setting either.
 
 ### Even fixed settings vary
 
@@ -243,11 +243,11 @@ All three are text in the same window. They differ in who writes them, where the
 | Skill name + description | Skill author | Every chat where installed; body loads on trigger | [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) |
 | User message | Him | This turn, then every later turn of the chat | [Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows) |
 
-**The system prompt** sets the frame. Anthropic publishes the claude.ai version and says it supplies current information such as the date at the start of every conversation, encourages certain behaviours, is updated periodically, and does not apply to the API ([Anthropic, *System prompts* release notes](https://platform.claude.com/docs/en/release-notes/system-prompts)). On the API, the developer writes the system prompt, and a system message added mid-conversation carries the same authority as the one at the start ([Anthropic, *Working with messages*](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)). Authority comes from the role the text is given; arrival time leaves it unchanged.
+**The system prompt** sets the frame. Anthropic publishes the claude.ai version and says it supplies current information such as the date at the start of every conversation, encourages certain behaviours, is updated periodically, and does not apply to the API ([Anthropic, *System prompts* release notes](https://platform.claude.com/docs/en/release-notes/system-prompts)). On the API, the developer writes the system prompt, and a system message added mid-conversation carries the same authority as the one at the start ([Anthropic, *Using the Messages API*](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)). Authority comes from the role the text is given; arrival time leaves it unchanged.
 
 **Project instructions and preferences** are his standing orders at two scopes. Anthropic's help centre says the features can be used "independently or in combination" and states no order of precedence between them ([Claude Help Center, personalisation features](https://support.claude.com/en/articles/10185728)). His preferences and the Learning Project's instructions both set tone rules (no flattery, no filler, no preamble). Repeating a rule in two layers spends tokens twice; two layers that disagree leave the model to resolve the conflict with no documented rule. That is a project-rot risk, and B4 audits it.
 
-**Skills** sit across the layers. Only each skill's name and description load at startup, about 100 tokens a skill, placed in the system prompt; the `SKILL.md` body (under 5K tokens) enters the window only when a request matches the description, and bundled files only when read ([Anthropic, *Agent Skills overview*](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)). The description is what a request is matched against (same page). His fifteen plugin skills therefore cost about 1,500 tokens in every chat, on Anthropic's per-skill figure, and they fire on their descriptions alone. His decompression skill lists "Netflix" and "dinner" among its triggers *(observed)*, so it becomes a candidate to load whenever those words appear, whatever the conversation is about.
+**Skills** sit across the layers. Only each skill's name and description load at startup, about 100 tokens a skill, placed in the system prompt; the `SKILL.md` body (under 5K tokens) enters the window only when a request matches the description, and bundled files only when read ([Anthropic, *Agent Skills*](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)). The description is what a request is matched against (same page). His fifteen plugin skills therefore cost about 1,500 tokens in every chat, on Anthropic's per-skill figure, and they fire on their descriptions alone. His decompression skill lists "Netflix" and "dinner" among its triggers *(observed)*, so it becomes a candidate to load whenever those words appear, whatever the conversation is about.
 
 **The user message** is the request itself, and once sent it is part of the history re-read on every later turn (§3).
 
@@ -339,14 +339,14 @@ All web sources checked 28 October 2026.
 - Anthropic. *Context windows*. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/context-windows
 - Anthropic. *Glossary*. Claude Platform docs. https://platform.claude.com/docs/en/about-claude/glossary
 - Anthropic. *Models overview*. Claude Platform docs. https://platform.claude.com/docs/en/about-claude/models/overview
-- Anthropic. *Working with messages*. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/working-with-messages
+- Anthropic. *Using the Messages API*. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/working-with-messages
 - Anthropic. *Prompt caching*. Claude Platform docs. https://platform.claude.com/docs/en/build-with-claude/prompt-caching
-- Anthropic. *Agent Skills overview*. Claude Platform docs. https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+- Anthropic. *Agent Skills*. Claude Platform docs. https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
 - Anthropic. *System prompts* (release notes). Claude Platform docs. https://platform.claude.com/docs/en/release-notes/system-prompts
 - Anthropic. *Effective context engineering for AI agents*. Anthropic Engineering, 29 September 2025. https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
-- Anthropic. *Updates to our consumer terms*. Anthropic News, 28 August 2025. https://www.anthropic.com/news/updates-to-our-consumer-terms
+- Anthropic. *Updates to Consumer Terms and Privacy Policy*. Anthropic News, 28 August 2025. https://www.anthropic.com/news/updates-to-our-consumer-terms
 - Claude Help Center. *Use Claude's chat search and memory to build on previous context*. https://support.claude.com/en/articles/11817273
-- Claude Help Center. *Usage and length limits* (article 11647753). https://support.claude.com/en/articles/11647753
+- Claude Help Center. *How do usage and length limits work?* (article 11647753). https://support.claude.com/en/articles/11647753
 - Claude Help Center. *Retrieval augmented generation (RAG) for projects*, 10 September 2026. https://support.claude.com/en/articles/11473015
 - Claude Help Center. *Understanding Claude's personalization features*. https://support.claude.com/en/articles/10185728
 - Claude Help Center. *Use the GitHub integration*. https://support.claude.com/en/articles/10167454
@@ -357,3 +357,5 @@ All web sources checked 28 October 2026.
 - Holtzman, A., Buys, J., Du, L., Forbes, M. and Choi, Y. "The Curious Case of Neural Text Degeneration". ICLR 2020. https://arxiv.org/abs/1904.09751
 - He, H. and Thinking Machines Lab. *Defeating Nondeterminism in LLM Inference*. Thinking Machines Lab, 10 September 2025 (lab blog, not peer-reviewed). https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference
 - Hong, K., Troynikov, A. and Huber, J. *Context Rot: How Increasing Input Tokens Impacts LLM Performance*. Chroma, 14 July 2025 (vendor research). https://www.trychroma.com/research/context-rot
+
+Erratum 2026-11-15, found by BW1's writer and checked by a corrections check (audits/brand-ai/corrections-2026-11-15-BW1-B1.md): the claude.ai window (Anthropic's help centre now gives 1M tokens for Opus 5.5, with the unit's arithmetic on the window and the chart figure updated to match), the temperature setting (not supported on Claude 4.7 and later models), the model lineup and prices as of 15 Nov 2026 (Fable 5.2 in place of Fable 5.1), four source titles, and the Messages API's beta message threads. The memory-exclusions sentence (§ on memory), the long-chat sentence and the Holtzman venue were checked and left as written. Lines still giving 28 October 2026 are the unit's own written date and stay.
