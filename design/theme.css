@@ -700,14 +700,12 @@ details.clog[open]>summary::after{content:"–"}
 .smod .pill{margin-top:4px}
 .smod details.prompt{margin-top:8px;padding:0 10px}
 .smod details.prompt .pbox{margin:0 0 10px}
-/* build-order table: code cells in the course colour, audit rows in gold, written rows muted */
+/* build-order table: code cells in the course colour, written rows muted */
 .report table.order{min-width:560px}
 .order td.code{font-family:var(--mono);font-weight:700;color:var(--c);white-space:nowrap}
 .order td:first-child{font-family:var(--mono);color:var(--muted)}
-.order tr.audit td{background:color-mix(in srgb,var(--gold) 10%,transparent);color:var(--gold)}
-.order tr.audit td.code{color:var(--gold)}
 .order tr.done td{color:var(--muted)}
-/* dated log rows (audit log, hub changelog) */
+/* dated log rows (hub changelog) */
 .logrows{display:grid}
 .logrow{display:grid;grid-template-columns:minmax(88px,118px) minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
 .logrow:first-child{border-top:0;padding-top:0}

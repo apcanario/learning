@@ -39,5 +39,3 @@ prov[cid] = {k: prov[cid][k] for k in order if k in prov[cid]}
 w = prov.setdefault('written', {}).setdefault(cid, {}); prov['written'][cid] = {k: w[k] for k in order if k in w}
 json.dump(idx, open(idx_path, 'w'), indent=1, ensure_ascii=False)
 json.dump(prov, open(R / 'provenance.json', 'w'), indent=1, ensure_ascii=False)
-from review_due import status
-print(status()[1])

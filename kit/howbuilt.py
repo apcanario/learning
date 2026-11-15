@@ -244,7 +244,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
             when = PROV.get('written', {}).get(cid, {}).get(mid)
             approx = mid in PROV.get('written_approx', {}).get(cid, [])
             when = f'<br><small>{e(date_long(when))}{" (approximate: its session ran over several days)" if approx else ""}</small>' if when else '<br><small>date not recorded</small>'
-            pills = (' <span class="pill unck">unchecked</span>' if unchecked(model) else '') + (' <span class="pill">flagged</span>' if flagged(model) else '')
+            pills = (' <span class="pill unck">unchecked</span>' if unchecked(model) else '')
             checks = []
             for fo in folders:
                 f = fo['path'] / f'{cid}-{mid}.md'
@@ -267,15 +267,14 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
                 files.append(f'bibliography {gh(rel(b))}')
             rows += (f'<tr data-mod="{e(mid)}"><td><a href="#{c["slug"](mid)}" data-target="{c["slug"](mid)}">{e(mid)}</a> {e(t)}</td><td>{e(model)}{pills}{when}</td>'
                      f'<td>{"<br>".join(checks) if checks else "none on file"}</td><td>{"<br>".join(files) if files else "none"}</td></tr>')
-        nf = sum(1 for m in written if flagged(prov.get(m[0], c['default_model'])))
-        groups += (f'<details class="prompt"><summary>Unit {e(u)} · {e(name)} · {len(written)} of {len(mods)} written{f" · {nf} flagged" if nf else ""}</summary>'
+        groups += (f'<details class="prompt"><summary>Unit {e(u)} · {e(name)} · {len(written)} of {len(mods)} written</summary>'
                    f'<div class="report"><div class="tbl"><table><thead><tr><th>Report</th><th>Written with, and when</th><th>Checks and audits</th><th>Files</th></tr></thead>'
                    f'<tbody>{rows}</tbody></table></div></div></details>')
 
     # the course's own material other than reports, and the kit-wide material, from provenance.json artefacts
     own_keys = [k for k in PROV.get('artefacts', {}) if k.startswith(c['syllabus']) or k == f'courses.py:{cid.upper()}']
     def art_rows(keys):
-        return ''.join(f'<tr><td><code>{e(k)}</code></td><td>{e(PROV["artefacts"][k]["model"])}{" <span class=\"pill\">flagged</span>" if flagged(PROV["artefacts"][k]["model"]) else ""}</td><td>{e(PROV["artefacts"][k].get("review", ""))}</td><td>{e(PROV["artefacts"][k]["what"])}</td></tr>' for k in keys)
+        return ''.join(f'<tr><td><code>{e(k)}</code></td><td>{e(PROV["artefacts"][k]["model"])}</td><td>{e(PROV["artefacts"][k].get("review", ""))}</td><td>{e(PROV["artefacts"][k]["what"])}</td></tr>' for k in keys)
     art_head = '<thead><tr><th>Item</th><th>Model</th><th>Review</th><th>What</th></tr></thead>'
     other_keys = [k for k in PROV.get('artefacts', {}) if k not in own_keys and not re.match(r'(greek|roman)-syllabus|courses\.py:', k)]
 
@@ -289,26 +288,10 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
 
     # flags still open
     flags = []
-    fl = [i for i in c['index'] if flagged(prov.get(i, c['default_model']))]
-    if fl:
-        flags.append(f'{len(fl)} report{"s" if len(fl) != 1 else ""} not yet reviewed with Fable 5.1: {", ".join(fl)} (<code>provenance.json</code>).')
+    # S-NOAUDIT (15 Nov 2026): the Fable stage is closed, so nothing is flagged for want of a Fable 5.1 review
     un = [i for i in c['index'] if unchecked(prov.get(i, ''))]
     if un:
         flags.append(f'Registered before their fresh check: {", ".join(un)}.')
-    # the course's own artefacts, and the per-report bibliographies (course content), are course flags; the rest of
-    # the kit's flagged material (code, guides, review folders) is counted in one line
-    kitwide = []
-    for k in own_keys + other_keys:
-        v = PROV['artefacts'][k]
-        if not flagged(v['model']):
-            continue
-        if k in own_keys or 'bibliography' in k:
-            flags.append(f'<code>{e(k)}</code>: {e(v["model"])}; {e(v.get("review", ""))}.')
-        else:
-            kitwide.append(k)
-    if kitwide:
-        flags.append(f'Kit material shared by the history courses (code, guides, review folders), not reviewed with Fable 5.1: {len(kitwide)} entr{"ies" if len(kitwide) != 1 else "y"} in <code>provenance.json</code>, listed under "Course material other than reports" below.')
-
     # review notes that name this course
     word = {'greece': r'\bGree(k|ce)\b', 'rome': r'\bRom(e|an)\b'}.get(cid, re.escape(c['short']))
     notes = [n for n in PROV.get('review_notes', []) if re.search(word, n)]
@@ -324,11 +307,11 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
     <div class="eyebrow"><span class="u" style="--c:{color}">{c['label']}</span> · <span class="u" style="--c:var(--gold)">HOW IT WAS BUILT</span> · from provenance.json, the reviews and the audits</div>
     <h1>{e(c['short'])}: how it was built</h1>
     <p class="lede">The model that wrote each of the {c['nrep']} reports, every check and audit run on it with its verdict, the flags still open, and the rules the course was written to. Reports by provenance: {by_model}.</p>
-    {stats([(c['nrep'], f'of {c["content_mods"]} reports written'), (sum(1 for i in c['index'] if not flagged(prov.get(i, c['default_model']))), 'written or reviewed with Fable 5.1'), (reviewed, 'reviewed with Fable 5.1'), (len(fl), 'flagged for review')])}
+    {stats([(c['nrep'], f'of {c["content_mods"]} reports written'), (sum(1 for i in c['index'] if prov.get(i, c['default_model']).startswith('Fable 5.1')), 'written with Fable 5.1'), (reviewed, 'reviewed with Fable 5.1')])}
   </header>
   {flags_section(flags)}
   <h2 class="hsec">Who wrote what, and the checks run</h2>
-  <p class="hnote">One table per syllabus unit. "Written with" is the report's entry in {gh("kit/provenance.json")}: an entry that does not name Fable 5.1 is flagged. Checks come from the review folders ({", ".join(gh(rel(fo["path"] / "BRIEF.md"), fo["label"].lower() + " brief") for fo in folders)}) and the Fable audits in <code>kit/audits/</code>. Under the model is the date the report was filed, from the same file's <code>written</code> map: the date of the work session that filed it, read from the Changelog (P91); where that session ran over several days, its first day, marked approximate.</p>
+  <p class="hnote">One table per syllabus unit. "Written with" is the report's entry in {gh("kit/provenance.json")}. Checks come from the review folders ({", ".join(gh(rel(fo["path"] / "BRIEF.md"), fo["label"].lower() + " brief") for fo in folders)}) and the Fable audits in <code>kit/audits/</code>. Under the model is the date the report was filed, from the same file's <code>written</code> map: the date of the work session that filed it, read from the Changelog (P91); where that session ran over several days, its first day, marked approximate.</p>
   <div>{groups}</div>
   <section class="howto" style="--hc:var(--gold)"><h2>Audits and checks run</h2>{f'<div class="logrows">{arows}</div>' if arows else '<p>None yet.</p>'}</section>
   <details class="howto rules"><summary><h2>Course material other than reports</h2><span>{len(own_keys)} item{"s" if len(own_keys) != 1 else ""}</span></summary>
@@ -429,9 +412,6 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
             ch.append(f'staleness check due {e(date_long(due))}')
         rows += (f'<tr data-unit="{e(code)}"><td>{name}<br>{gh(rel(u["path"]), "vault file")}</td><td>{made}</td><td>{"<br>".join(ch)}</td></tr>')
 
-    not_audited = [code for code in order if code not in audited]
-    if not_audited:
-        flags.append(f'Written and not yet in a stratified-sample audit: {", ".join(not_audited)} (the data file\'s AUDIT_LOG; next audit: {e(d.NEXT_AUDIT)}).')
     stale = sorted((plus_months(units[x]['written'], 6), x) for x in order if units[x].get('search') == 'on')
     if stale:
         flags.append('Staleness checks owed (search on, six months after writing): ' + '; '.join(f'{e(x)} on {e(date_long(dd))}' for dd, x in stale) + '.')
@@ -458,11 +438,11 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
     <div class="eyebrow"><span class="u" style="--c:{col}">{e(label)}</span> · <span class="u" style="--c:var(--gold)">HOW IT WAS BUILT</span> · from the units' front matter and the audit log</div>
     <h1>{e(m['short'])}: how it was built</h1>
     <p class="lede">The model that wrote each of the {len(order)} written units, when, with or without search, every fresh check and audit run on it with its verdict, the flags still open, and the rules the course is written to. Units by model: {by_model or 'none yet'}.</p>
-    {stats([(len(order), f'of {len(codes)} units written'), (sum(1 for x in order if x in checks), 'fresh-checked'), (sum(1 for x in order if x in audited), 'in an audit'), (len(not_audited), 'awaiting an audit')])}
+    {stats([(len(order), f'of {len(codes)} units written'), (sum(1 for x in order if x in checks), 'fresh-checked'), (sum(1 for x in order if x in audited), 'in an audit')])}
   </header>
   {flags_section(flags)}
   <h2 class="hsec">Who wrote what, and the checks run</h2>
-  <p class="hnote">One row per written unit, in writing order. Model, date and search flag are the unit's front matter in <code>courses/{e(slug)}/</code>; status is the data file's STATUS; fresh checks are <code>audits/{e(slug)}/fresh-check-&lt;code&gt;.md</code>; audits are the data file's AUDIT_LOG, also on the <a href="#{ctx}-audits" data-target="{ctx}-audits">Audits</a> page. Sources cited by the units are on the <a href="#{ctx}-bibliography" data-target="{ctx}-bibliography">Bibliography</a> page.</p>
+  <p class="hnote">One row per written unit, in writing order. Model, date and search flag are the unit's front matter in <code>courses/{e(slug)}/</code>; status is the data file's STATUS; fresh checks are <code>audits/{e(slug)}/fresh-check-&lt;code&gt;.md</code>; audits are the data file's AUDIT_LOG, the record of the audits run before the Fable stage closed (S-NOAUDIT, 15 Nov 2026). Sources cited by the units are on the <a href="#{ctx}-bibliography" data-target="{ctx}-bibliography">Bibliography</a> page.</p>
   <div class="report"><div class="tbl"><table><thead><tr><th>Unit</th><th>Written</th><th>Checks and audits</th></tr></thead><tbody>{rows}</tbody></table></div></div>
   {f'<section class="howto" style="--hc:var(--orange)"><h2>Earlier material</h2><ul>{earlier_html}</ul></section>' if earlier_html else ''}
   <section class="howto" style="--hc:var(--gold)"><h2>Audits and checks run</h2>{f'<div class="logrows">{arows}</div>' if arows else '<p>None yet.</p>'}</section>

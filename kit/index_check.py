@@ -11,8 +11,8 @@ fact in it that has a source is checked here, so it cannot drift from what the b
   written or not          history: the module is in the course's prompts index; markdown: its file is in the vault
   model                   history: kit/provenance.json (the default model when absent); markdown: the vault file's front
                           matter, or the data file's ORDER for a unit not yet written
-  status                  history: written, written · reviewed, written · reviewed (sampled) or written · flagged for
-                          Fable review, from provenance (build.py's rule: flagged when it does not mention Fable 5.1);
+  status                  history: written, written · reviewed or written · reviewed (sampled), from provenance (no
+                          report is flagged for Fable review since S-NOAUDIT, 15 Nov 2026);
                           markdown: starts "written" (or "rewritten") once filed, "not written" before
   search                  markdown: front matter, or ORDER before writing; history: off
   path                    written: the vault file (both families since P71-3), and every path the cell
@@ -20,7 +20,7 @@ fact in it that has a source is checked here, so it cannot drift from what the b
   counts                  the "N of M" line above each course's table
   staleness table         one row per filed search-on unit, written date and due date (written + six months)
 
-Not checked (hand-kept until S3 rewrites the counter): the audit counters, and the free text of the notes.
+Not checked: the free text of the notes. (The audit counters were removed with the Fable stage, S-NOAUDIT, 15 Nov 2026.)
 """
 import html, importlib.util, json, pathlib, re, sys, unicodedata
 
@@ -127,8 +127,7 @@ def history(c, secs, fails):
             if model != pv.split(',')[0].strip():
                 fails.append(f'{L}: model "{model}", provenance has "{pv}"')
             want = ('reviewed (sampled)' if 'reviewed with Fable 5.1 (sampled)' in pv else
-                    'reviewed' if 'reviewed with Fable 5.1' in pv else
-                    'flagged' if 'Fable 5.1' not in pv else '')
+                    'reviewed' if 'reviewed with Fable 5.1' in pv else '')
             got = ('reviewed (sampled)' if 'reviewed (sampled)' in st else 'reviewed' if 'reviewed' in st else
                    'flagged' if 'flagged' in st else '')
             if not st.startswith('written') or got != want:

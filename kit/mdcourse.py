@@ -2,11 +2,12 @@
 Markdown files and whose content is a data file in the shape of generator/data/brand-ai/hub.py (AD5).
 
 One Academy course per entry in the data file's COURSES (AD6), each its own drawer context, with:
-  the course home        goal, outcomes, progress, the units in writing order, the audits run
+  the course home        goal, outcomes, progress, the units in writing order
   one reading page       per written unit (the unit's Markdown on the theme classes), the course's "reports"
   How it is built        the shared method page, the build order with models, this course's briefs (copyable),
-                         the audit log and prompts, the bibliography collected from this course's units, the
-                         course's changelog
+                         the bibliography collected from this course's units, the course's changelog
+                         (no Audits page since S-NOAUDIT, 15 Nov 2026: the Fable stage is closed; the audit reports
+                         stay in audits/ as the record, and How it was built lists the audits run)
 The hub pages of generator/build_hub.py (retired at A3) are the origin of these; the data file is unchanged.
 Needs the `markdown` package (pip install markdown).
 """
@@ -522,7 +523,6 @@ def build(m, crumbs, theme, pill_next, chev, kit):
                                  pill=pill_next if code == d.NEXT_UNIT else '<span class="pill">soon</span>',
                                  patch=kit['patch']([(code, None)], pt(col), ph[k + 1]), href=f'#{BP}{code.lower()}', cls=' pending')
     pct = round(100 * m['nwritten'] / m['nunits'])
-    audits = ''.join(f'<li><strong>{e(dt)}</strong> · {txt}</li>' for dt, txt in d.AUDIT_LOG)
     start = (f'<a class="hbtn start" href="#{read_of[first[0]]["id"]}" data-target="{read_of[first[0]]["id"]}"><span>Start the course</span><b>{e(first[0] + " " + first[1])}</b></a>' if first
              else f'<a class="hbtn start" href="#{BR}" data-target="{BR}"><span>Open the course</span><b>No unit written yet · the briefs</b></a>')
     frame = getattr(d, 'FRAME', '') if sc is courses[0] else ''      # the frame is shown on the data file's first course
@@ -533,25 +533,24 @@ def build(m, crumbs, theme, pill_next, chev, kit):
     {eyebrow((f'COURSE {key}', col), (c['short'], None), (('COMPLETE', 'var(--teal)') if m['status'] == 'available' else (m['status'].upper(), 'var(--gold)')))}
     <h1>{e(m['name'])}</h1>
     <p class="lede">{sc['intro']}</p>
-    <div class="stats" data-n="4"><div><b>{m['nwritten']}</b><span>of {m['nunits']} units written</span></div><div><b>{pct}%</b><span>of the course</span></div><div><b>{len(d.AUDIT_LOG)}</b><span>audit{'s' if len(d.AUDIT_LOG) != 1 else ''} run</span></div><div><b>{e(d.NEXT_UNIT)}</b><span>next unit to write</span></div></div>
+    <div class="stats" data-n="3"><div><b>{m['nwritten']}</b><span>of {m['nunits']} units written</span></div><div><b>{pct}%</b><span>of the course</span></div><div><b>{e(d.NEXT_UNIT)}</b><span>next unit to write</span></div></div>
     <div class="hlinks"><a class="hbtn cont" href="#{ctx}" data-course="{ctx}" hidden><span>Continue</span><b></b></a>{start}<a class="hbtn alt" href="#{BR}" data-target="{BR}"><span>Briefs</span><b>Every unit's brief, copyable</b></a></div>
   </header>
   <section class="howto edge" style="--hc:var(--blue)"><h2>What you will be able to do</h2><p>{e(sc['goal'][0].upper() + sc['goal'][1:])}</p><ul>{sc['outcomes']}</ul><p class="over">{d.COURSE_NOTE}</p></section>
   <h2 class="hsec">Units, in writing order</h2>
   <div class="cgrid">{tiles}</div>
-  <details class="howto rules"><summary><h2>Audits run</h2><span>{len(d.AUDIT_LOG)} · next {e(d.NEXT_AUDIT)}</span></summary><ul>{audits}</ul></details>
   {frame}
-  <a class="hbtn alt wide" href="#{ctx}-build" data-target="{ctx}-build"><span>How it is built</span><b>Method, build order, briefs, audits, sources, changelog.</b></a>
-  <a class="hbtn alt wide" href="#{ctx}-built" data-target="{ctx}-built"><span>How it was built</span><b>The model behind each unit, every check and audit with its verdict, the flags still open.</b></a>
+  <a class="hbtn alt wide" href="#{ctx}-build" data-target="{ctx}-build"><span>How it is built</span><b>Method, build order, briefs, sources, changelog.</b></a>
+  <a class="hbtn alt wide" href="#{ctx}-built" data-target="{ctx}-built"><span>How it was built</span><b>The model behind each unit, every check with its verdict, the flags still open.</b></a>
   <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>Back to every course.</b></a>''', t=m['short'], u=f'COURSE {key}', cls='home', split='home'))   # P93: fetched, as a history course home is (P22), so its tiles and topography never weigh on the shell
 
 
     # ---- How it is built ----------------------------------------------------------------------
     bid = f'{ctx}-build'
     pages = [(bid, 'M', 'How we build', 'procedure, models, review rule'), (f'{ctx}-order', '1·2', 'Build order with models', f'{total - written} units to go'),
-             (BR, f'P·{key}', f'Briefs · course {key}', f'{len(sc["units"]) - C_DONE[key]} open'), (f'{ctx}-audits', 'AU', 'Audits and audit prompts', f'next {d.NEXT_AUDIT}'),
+             (BR, f'P·{key}', f'Briefs · course {key}', f'{len(sc["units"]) - C_DONE[key]} open'),
              (f'{ctx}-bibliography', 'BIB', 'Bibliography', f'{len(biblio)} sources'), (f'{ctx}-changelog', 'LOG', 'Changelog', d.VERSION.split(' · ')[0]),
-             (f'{ctx}-built', '✓', 'How it was built', 'models, checks, audits, flags')]   # the page itself is howbuilt.py's (A4)
+             (f'{ctx}-built', '✓', 'How it was built', 'models, checks, flags')]   # the page itself is howbuilt.py's (A4)
     prow = ''.join(f'<a class="hrow" href="#{h}" data-target="{h}" style="--c:{col}"><span class="n">{n}</span><span class="t">{tt}<small>{e(s)}</small></span></a>' for h, n, tt, s in pages)
     bc = (('Academy', 'home'), course_crumb)
     P.append(panel(bid, 'build', f'''
@@ -567,15 +566,10 @@ def build(m, crumbs, theme, pill_next, chev, kit):
     trs, n = [], start_n
     for row in d.DONE_ROWS:
         trs.append('<tr class="done">' + ''.join(f'<td>{x}</td>' for x in row) + '</tr>')
-    for i, (code, model, search) in enumerate(d.ORDER):
+    for code, model, search in d.ORDER:   # no audit rows since S-NOAUDIT (15 Nov 2026)
         n += 1
         st = d.STATUS.get(code, '')
         trs.append(f'<tr{" class=\"done\"" if st else ""}><td>{n}</td><td class="code" style="--c:{course_of[code]["color"]}">{code}</td><td>{e(titles[code])}</td><td>{model}</td><td>{search}</td><td>{e(st)}</td></tr>')
-        if n % d.AUDIT_EVERY == 0 and i < len(d.ORDER) - 1:
-            a = d.AUDIT_ROW
-            trs.append(f'<tr class="audit"><td>✓</td><td class="code">Audit {n // d.AUDIT_EVERY}</td><td>{a[0]}</td><td>{a[1]}</td><td>{a[2]}</td><td>{a[3]}</td></tr>')
-    f = d.FINAL_AUDIT
-    trs.append(f'<tr class="audit"><td>✓</td><td class="code">{f[0]}</td><td>{f[1]}</td><td>{f[2]}</td><td>{f[3]}</td><td>{f[4]}</td></tr>')
     table = ('<div class="report"><div class="tbl"><table class="order"><thead><tr><th>#</th><th>Unit</th><th>Title</th><th>Model</th><th>Search</th><th>Status</th></tr></thead><tbody>' + ''.join(trs) + '</tbody></table></div></div>')
     P.append(panel(f'{ctx}-order', 'build', f'''
   <header class="hero">{crumbs(*bc, ('Build order', None))}{eyebrow((ulabel, col), ('BUILD ORDER', None))}<h1>Building order, with models</h1><p class="lede">{order_lede}</p></header>
@@ -597,13 +591,6 @@ def build(m, crumbs, theme, pill_next, chev, kit):
     P.append(panel(BR, 'build', f'''
   <header class="hero">{crumbs(*bc, ('Briefs', None))}{eyebrow((ulabel, col), ('BRIEFS', None))}<h1>{e(sc['name'])}: the briefs</h1><p class="lede">{lede}</p></header>
   <div class="smods">{cards}</div>''', t='Briefs', u=ulabel, split='briefs'))
-
-    # audits
-    prompts = ''.join(f'<details class="prompt"{" open" if op else ""}><summary>{e(tt)}</summary><div class="pbox"><pre>{e(p)}</pre><div class="pbar"><button class="copy" type="button">Copy prompt</button></div></div></details>' for tt, op, p in d.AUDIT_PROMPTS)
-    P.append(panel(f'{ctx}-audits', 'build', f'''
-  <header class="hero">{crumbs(*bc, ('Audits', None))}{eyebrow((ulabel, col), ('AUDITS', None))}<h1>Fable audit log and prompts</h1><p class="lede">{d.AUDITS_LEDE}</p></header>
-  <section class="howto" style="--hc:var(--gold)"><h2>Audit log</h2>{logrows(d.AUDIT_LOG)}</section>
-  <h2 class="hsec">Audit prompts</h2><p class="hnote">{d.AUDIT_PROMPTS_NOTE}</p><div>{prompts}</div>''', t='Audits', u=ulabel))
 
     # bibliography
     bib = ''.join(f'<a class="hrow" target="_blank" rel="noopener" href="{e(u)}"><span class="t">{e(tt)}<small class="url">{e(u.split("//")[1].split("/")[0])}</small></span></a>' for u, tt in biblio)

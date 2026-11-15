@@ -2120,7 +2120,7 @@ def main():
         pg.click('#closeB'); pg.wait_for_timeout(200)
         # the Brand + AI courses (A under Marketing, B under Technology, A3): each its own drawer context with a Units group
         # and a "How it is built" group; written units open reading pages inside the site (never a link out); the reading
-        # page is a report (prev/next, continue); the briefs, build order, audits, bibliography and changelog are pages too
+        # page is a report (prev/next, continue); the briefs, build order, bibliography and changelog are pages too
         for bid, short, key in ((('brand-a', 'Personal brand', 'A'), ('brand-b', 'Building with AI', 'B')) if BRAND else ()):
             pg.click('#homeB'); pg.wait_for_timeout(80)
             pg.click(f'#home a.course[href="#{bid}"]'); pg.wait_for_timeout(80)
@@ -2136,7 +2136,7 @@ def main():
             if ext: fails.append(f'{bid} navigation links out of the site: {ext[:3]}')
             pg.click(f'#{bid} a.course.live[href="{ba[0]}"]'); pg.wait_for_timeout(80)
             step(f'{bid} reading', dict(id=ba[0][1:], nav=bid, u=lambda u: u.startswith(short.upper() + ' · '), arrows=True, prev=True))
-            for pid, t in ((f'{bid}-build', 'How it is built'), (f'{bid}-order', 'Build order'), (f'briefs-{key.lower()}', 'Briefs'), (f'{bid}-audits', 'Audits'), (f'{bid}-bibliography', 'Bibliography'), (f'{bid}-changelog', 'Changelog')):
+            for pid, t in ((f'{bid}-build', 'How it is built'), (f'{bid}-order', 'Build order'), (f'briefs-{key.lower()}', 'Briefs'), (f'{bid}-bibliography', 'Bibliography'), (f'{bid}-changelog', 'Changelog')):
                 pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(50)
                 step(f'{bid} {t}', dict(id=pid, nav=bid, t=t))
             # A4: the course's "How it was built" page, generated: one row per written unit, read from the front matter
