@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Scatter figures drawn for the phone (P124, row W-BW3, 15 Nov 2026).** `kit/viz.py` draws scatter figures for phone width and `kit/verify.py` checks them.
 - **P123 (15 Nov 2026): `line` figures get a phone drawing.** `line` figures now carry a phone drawing, PHONE_NARROW (258) units wide, via kit/viz.py: `line` draws `_line_draw` twice, and a label with no room falls back to "ends" in the phone drawing only; verify.py's `check_phone_lines` checks it at 320 and 390 px. The `fixes` parser of kit/thin.py now accepts `. Fix:` and a literal `\n` inside a Fix. Nothing in design/theme.css changed.
 - **BW1 · Mental model filed (W-BW1, 15 Nov 2026).** Building with AI v2: reading read-bw1, status written 15 Nov, next unit BW2; 6,431 + 2,951 words, 3 figures, search on; fresh check fix 1/7/7, all applied; 8 syllabus flags raised; P107 and B1 errata applied elsewhere.
 - **S-BW1 and the site-bundle proposals (session 86, Sonnet 5.5 main chat, Opus 5.5 agents for the checks):** BW's writer rules (attribution) in the prompt generator and the writing skill, PB's vidIQ title carried to course A, `kit/thin.py` and the thin main chat written into the prompts, skills and method, the standing proposals rule, the stage-5 rows withdrawn, the history syllabus lines reworded, the site log checked against the changelogs; the first trial of the thin chat is W-BW1.
@@ -140,6 +141,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 15 Nov 2026 · Session W-BW3 · BW3 Briefing: prompts that hold up
+
+Thin main chat (Sonnet 5.5) staging packets with kit/thin.py; each step a fresh Opus 5.5 agent. BW3 written with search off (~14,000 words, 3 figures), fresh-checked in a separate context (fix: 0 errors, 8 should-fix, 11 minor; audits/building-with-ai/fresh-check-BW3.md), all findings applied, filed at courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md. Corrections check (audits/building-with-ai/corrections-2026-11-15-BW1-B3.md): 1 erratum to B3 (a quotation of OpenAI's API guide) and 7 F3 errata to BW1's layer map and diagnosis table, 8/8 pass, applied (hub v3.1). P124 done: scatter figures drawn for the phone (kit/viz.py, kit/verify.py). Six syllabus flags raised (needs), F3 and F10 carried; hub v4, next unit BW4.
 
 ## 15 Nov 2026 · Session W-BW2 · BW2 Choosing the model and the effort; P123
 

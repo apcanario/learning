@@ -2,7 +2,7 @@
 code: BW3
 title: "Briefing: prompts that hold up"
 course: building-with-ai
-model: claude-opus-5-5
+model: Opus 5.5
 written: 2026-11-15
 search: off
 ---
