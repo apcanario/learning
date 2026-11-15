@@ -251,6 +251,8 @@ import zlib
 
 W = 700            # drawing width in user units; the SVG scales to the column
 PHONE_NARROW = 258  # P97 (12 Nov 2026): the scroll frame of a figure on a 320 px phone (the same gutters, padding and border); a compare's phone drawing is this wide, so it never scrolls on any phone
+NARROW_FRAME = 258  # C1 (15 Nov 2026): the scroll frame of a figure on a 320 px phone
+NARROW_LW = 100     # C1: a matrix's label column in the drawing shown at 360 px and below (its sticky copy 108 px of that frame)
 PHONE_FRAME = 328  # P83 (3 Nov 2026): the scroll frame of a figure on a 390 px phone (16 px gutters, the figure's 14 px padding and 1 px border); a drawing this wide or narrower never scrolls there
 TONES = 6          # --viz-1 … --viz-6 map to the house accents in theme.css
 
@@ -374,13 +376,16 @@ def _left(body):
     return min(xs) if xs else None
 
 
-def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=None, alt=None):
+def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=None, alt=None, narrow=None):
     """stick (P83, 3 Nov 2026): (width, svg body) of the label column a matrix, a numeric matrix or a compare keeps in
     view while a phone frame scrolls: a copy of the labels on a card-coloured plate, drawn after the main svg in a
     .viz-stick holder that the theme shows only below 768 px, sticky at the frame's left edge (aria-hidden: the
     main svg carries the same labels). The frame carries --stick so the left fade starts past the column.
     alt (P83): (width, height, body) of a second drawing of the same data for a phone, emitted after the main svg as
-    svg.viz-alt; the theme shows it below 768 px and the main svg above (the frame carries data-alt)."""
+    svg.viz-alt; the theme shows it below 768 px and the main svg above (the frame carries data-alt).
+    narrow (C1, 15 Nov 2026): (width, height, body, stick or None) of a matrix drawn with a narrow label column, emitted as
+    svg.viz-altn with its own sticky copy in .viz-stickn; the theme shows it at 360 px and below in place of the main svg
+    and its column (the frame carries data-altn and --stickn)."""
     if x0 is None and cls in X0_KINDS:
         lft = _left(body)
         x0 = max(0, lft - 8) if lft is not None and lft - 8 > 4 else None
@@ -399,6 +404,17 @@ def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=No
         aw, ah, ab = alt
         st += ' data-alt=""'
         av = f'<svg class="viz-alt" viewBox="0 0 {aw} {ah}" width="{aw}" height="{ah}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{ab}</svg>'
+    nv = ''
+    if narrow:
+        nw, nh, nb, nst = narrow
+        st += ' data-altn=""'
+        nv = f'<svg class="viz-altn" viewBox="0 0 {nw} {nh}" width="{nw}" height="{nh}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{nb}</svg>'
+        if nst and nst[0] > 0:
+            ns, nsh = _r(nst[0]), _r(nst[2]) if len(nst) > 2 and nst[2] else nh
+            st = st.replace(' style="', f' style="--stickn:{ns}px;') if ' style="' in st else st + f' style="--stickn:{ns}px"'
+            nv += (f'<div class="viz-stickn" aria-hidden="true"><svg viewBox="0 0 {ns} {nh}" width="{ns}" height="{nh}" xmlns="http://www.w3.org/2000/svg">'
+                   f'<rect class="viz-lblbg" x="0" y="0" width="{ns}" height="{nsh}"/>{nst[1]}</svg></div>')
+    sv = nv + sv
     return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"{st}><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''}{f' data-xr="{xr:.0f}"' if xr else ''} '
             f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg>{av}{sv}</div>{c}</figure>')
 
@@ -1476,7 +1492,7 @@ def decision(d):
     return _svg(_r(Wd), _r(y - gaps.get(max(levels), 0) + 8), links + body, 'decision', d.get('title'), d.get('caption'), wide=Wd > W)
 
 
-def matrix(d):
+def matrix(d, narrow=None):
     """A labelled grid: row labels down the left, column labels across the top, each cell a short mark or word on a
     field of its tone (an empty cell is blank); an optional legend under the grid says what each mark means."""
     K = 'matrix'
@@ -1574,6 +1590,9 @@ def matrix(d):
             cur = [nlines(k, cws[k]) for k in range(n)]
             if not any(relieve(k, cur) for k in sorted(range(n), key=lambda j: -cur[j]) if cur[k] > 1):
                 break
+    if narrow is not None and LW > narrow:                   # C1 (15 Nov 2026): the drawing a phone of 360 px and below shows keeps
+        LW = narrow                                          # its row labels in a narrow column, wrapped to more lines, so the
+        labs = [_balanced(r['label'], T_LABEL, LW - 12) for r in rows]   # sticky copy leaves room for the cells beside it
     leg = [_tw(i.get('mark', ''), 10.5, 'mono') + 16 + 8 + min(220, _tw(i.get('means', ''), 11)) + 18 for i in d.get('legend') or []]
     Wd = max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)
     xs = [8 + LW + sum(cws[:k]) for k in range(n)]
@@ -1619,8 +1638,14 @@ def matrix(d):
             x += iw
             lrow = max(lrow, len(txt) * 14)
         y += lrow
+    if narrow is not None:
+        return _r(Wd), _r(y + 8), body, (8 + LW, stick, grid_h)
+    nar = None
+    if Wd > NARROW_FRAME and LW > NARROW_LW:                 # C1: a second drawing for 360 px and below, with its own narrow column
+        nw, nh, nb, nst = matrix(d, narrow=NARROW_LW)
+        nar = (nw, nh, nb, nst if nw > NARROW_FRAME else None)
     return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide,
-                stick=(8 + LW, stick, grid_h) if Wd > PHONE_FRAME else None)
+                stick=(8 + LW, stick, grid_h) if Wd > PHONE_FRAME else None, narrow=nar)
 
 
 def _gridflow(K, items, edges, per_row, bw, gap, gap_px, start=None):

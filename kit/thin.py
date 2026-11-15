@@ -7,6 +7,8 @@ half-done change.
 
   python3 kit/thin.py stage KIND --row W-BW1 DIR [--unit F] [--report F] [--notes F] [--unsure F] [--fixes F] [--stats F,F] [--date D]
         KIND writer | checker | applier | filer. Builds the packet folder DIR for one agent (it must not exist or be empty).
+        corrections  --text F --files a,b (repo paths) --briefs BW1,BW4: the corrections, the units they touch, the briefs
+                (open_brief), syllabus-flags.md, the case file (the register), the sourcing standard (W-BW5)
         writer  brief.txt (kit/mdcourse.py open_brief), the skill, sourcing standard, figure kinds, case file, source units with
                 their fresh-check reports, filed units of the course, flags.txt
         checker unit.md, brief.txt, notes.md, unsure.md, the sourcing standard, the case file, skills/audit-units
@@ -371,7 +373,7 @@ def cmd_stage(argv):
         else:
             pos.append(argv[i])
             i += 1
-    if kind not in ('writer', 'checker', 'applier', 'filer') or len(pos) != 1 or 'row' not in opt:
+    if kind not in ('writer', 'checker', 'applier', 'filer', 'corrections') or len(pos) != 1 or 'row' not in opt:
         die('usage: thin.py stage writer|checker|applier|filer --row W-BW1 DIR [--unit F] [--report F] [--notes F] [--unsure F]')
     out = pathlib.Path(pos[0])
     if out.exists() and any(out.iterdir()):
@@ -427,6 +429,24 @@ def cmd_stage(argv):
         put(ROOT / 'docs' / 'sourcing-standard.md')
         if case:
             put(case)
+        (out / 'out').mkdir()
+    elif kind == 'corrections':                              # W-BW5 (15 Nov 2026): the corrections checker's packet (steps 1b and 7b)
+        if 'text' not in opt:
+            die('--text (the corrections, as written) is required')
+        put(opt['text'], 'corrections.md')
+        (out / 'files').mkdir()
+        for f in [x for x in opt.get('files', '').split(',') if x]:
+            put(ROOT / f, 'files/' + pathlib.Path(f).name)
+        (out / 'briefs').mkdir()
+        for u in [x for x in opt.get('briefs', '').split(',') if x]:
+            ur = next((x for x in rs if x['c']['id'] == c['id'] and x['code'] == u), None)
+            if ur is None:
+                die(f'no unit {u} in {c["id"]}')
+            (out / 'briefs' / f'{u}.txt').write_text(mdcourse.open_brief(ur['d'], ur['sc'], ur['unit']), encoding='utf-8')
+        put(ddir / 'syllabus-flags.md')
+        if case:
+            put(case)
+        put(ROOT / 'docs' / 'sourcing-standard.md')
         (out / 'out').mkdir()
     elif kind == 'applier':
         for k in ('unit', 'report'):

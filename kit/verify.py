@@ -25,6 +25,8 @@ of home, What's new (P91; the home and What's new at 320, 360 and 430 px too), R
 and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png, the figure as its frame
 opens; and (P89, p85_frames.py folded in) every frame a reader scrolls that figure across, stacked and numbered in one
 sheet: <width>-<panel>-fig-<nn>-<kind>-frames-<theme>.png, at each width, dark and light.
+Matrix figures at 320 px (C1, 15 Nov 2026): every matrix that scrolls a 320 px frame keeps a label column in view, at
+most 45% of the frame, sticky at its edge and as tall as the drawing (check_matrix_320).
 Compare figures on a phone (P97, 12 Nov 2026): every compare figure at 320 and 390 px opens with its longest bar and
 its value whole in the frame (its phone drawing, svg.viz-alt).
 Figure geometry (FIG_JS; V1, every kind since P55): on the examples page (one figure per kind, then one hard case per
@@ -1984,6 +1986,59 @@ def check_phone_figures(br, fails):
     print(f'compare and bars on a phone (P97, P98): {n} figure frames on {len(pids)} pages at 320 and 390 px, every bar and value whole in the opening frame; '
           f'{nt} drawings at 320, 390 and 1280 px checked for a value across its track\'s end; {len(bad)} faults')
 
+MTX_JS = """async (pid) => { const out = []; const p = document.getElementById(pid);
+ for (const [i, f] of [...p.querySelectorAll('figure.viz-matrix')].entries()) {
+  const sec = f.closest('.sec'); if (sec && !sec.classList.contains('on')) p.querySelector('.seclist a[data-step="' + sec.dataset.step + '"]').click();
+  for (const d of p.querySelectorAll('details')) if (d.contains(f)) d.open = true;
+  f.scrollIntoView({block: 'center'}); await new Promise(r => setTimeout(r, 120));
+  const sc = f.querySelector('.viz-scroll'), fr = sc.getBoundingClientRect();
+  const s = [...sc.querySelectorAll(':scope > svg')].find(x => getComputedStyle(x).display !== 'none');
+  if (!s) { out.push({n: i + 1, none: true}); continue; }
+  const w = s.getBoundingClientRect().width, over = w > sc.clientWidth + 1;
+  const st = [...sc.querySelectorAll(':scope > .viz-stick, :scope > .viz-stickn')].find(x => getComputedStyle(x).display !== 'none');
+  const r = {n: i + 1, over, frame: sc.clientWidth, w, stick: st ? st.getBoundingClientRect().width : 0, cls: st ? st.className : ''};
+  if (st) { sc.scrollLeft = sc.scrollWidth; await new Promise(r => setTimeout(r, 60));
+    const a = st.getBoundingClientRect(), b = sc.getBoundingClientRect(), ss = st.querySelector('svg');
+    r.edge = Math.abs(a.left - b.left); r.tall = ss ? Math.abs(ss.getBoundingClientRect().height - s.getBoundingClientRect().height) : 0;
+    sc.scrollLeft = 0; sc.dispatchEvent(new Event('scroll')); }
+  out.push(r); }
+ return out; }"""
+
+
+def check_matrix_320(br, fails):
+    """C1 (15 Nov 2026): every matrix figure, on every page that has one, at 320 px: a drawing that scrolls keeps a label
+    column in view (.viz-stickn below 361 px where the matrix has one, else .viz-stick), sticky at the frame's left edge when
+    scrolled to the end, as tall as the drawing, and no wider than 45% of the frame, so cells show beside the labels before
+    the sideways scroll (BW4 figure 1 showed only its labels at 320 px)."""
+    idx = (SITE / 'index.html').read_text()
+    pids = [pid for pid, src in re.findall(r'<section class="panel" id="([^"]+)"[^>]*data-src="([^"]+)"', idx)
+            if (SITE / src).exists() and 'viz-matrix' in (SITE / src).read_text()]
+    errs, bad, n, sc = [], [], 0, 0
+    ctx, pg, _ = new_page(None, br, errs, 'phone320', 320, 640, True)
+    for pid in pids:
+        pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(120)
+        for f in pg.evaluate(MTX_JS, pid):
+            n += 1
+            where = f'{pid} matrix {f["n"]} at 320 px'
+            if f.get('none'):
+                bad.append(f'{where}: no drawing shown'); continue
+            if not f['over']:
+                continue
+            sc += 1
+            if not f['stick']:
+                bad.append(f'{where}: scrolls with no label column in view'); continue
+            if f['stick'] > 0.45 * f['frame'] + 0.5:
+                bad.append(f'{where}: label column {f["stick"]:.0f} px of a {f["frame"]} px frame (over 45%)')
+            if f.get('edge', 0) > 1:
+                bad.append(f'{where}: label column {f["edge"]:.0f} px from the frame edge when scrolled to the end')
+            if f.get('tall', 0) > 1:
+                bad.append(f'{where}: label column not as tall as the drawing')
+    if errs: fails.append('matrix 320: console errors: ' + ' | '.join(errs[:3]))
+    ctx.close()
+    fails += bad
+    print(f'matrix figures at 320 px (C1): {n} on {len(pids)} pages, {sc} scrolling, each with a label column at most 45% of its frame; {len(bad)} faults')
+
+
 LINE_JS = """async (pid) => { const out = []; const p = document.getElementById(pid);
  for (const [i, f] of [...p.querySelectorAll('figure.viz-linechart')].entries()) {
   const sec = f.closest('.sec'); if (sec && !sec.classList.contains('on')) p.querySelector('.seclist a[data-step="' + sec.dataset.step + '"]').click();
@@ -2201,6 +2256,7 @@ def main():
         check_split(br, fails)
         check_figures(br, fails)
         check_phone_figures(br, fails)
+        check_matrix_320(br, fails)
         check_phone_lines(br, fails)
         check_phone_scatters(br, fails)
         check_reading(br, fails)
