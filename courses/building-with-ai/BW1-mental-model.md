@@ -68,7 +68,7 @@ The consequence is that cost grows faster than the conversation. Illustrative ar
   "x": [1, 10, 20, 30],
   "unit": "k",
   "xlabel": "Turn",
-  "ylabel": "Total input sent (thousand tokens)",
+  "ylabel": "Total input sent (tokens)",
   "series": [{"name": "Total input sent", "values": [2, 110, 420, 930], "tone": 3}]
 }
 ```
