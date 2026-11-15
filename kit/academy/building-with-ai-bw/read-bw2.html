@@ -1,0 +1,791 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#building-with-ai-bw" data-target="building-with-ai-bw">Course BW · Building with AI · public</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">BW2</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI · PUBLIC</span> · BW2 <span class="pill live">BW2</span></div>
+    <h1>Choosing the model and the effort</h1>
+    <p class="scope">Cost per task, when the small model is the right one, what effort settings do; the method in the unit and the lineup in a dated appendix.</p>
+  </header>
+  <div class="stepbar" data-n="10"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 10</span><span class="stt">Cost per task</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-bw2-0" data-step="0"><span class="n">01</span><span class="t">Cost per task</span></a></li><li><a href="#read-bw2-1" data-step="1"><span class="n">02</span><span class="t">The tiers outlive the lineup</span></a></li><li><a href="#read-bw2-2" data-step="2"><span class="n">03</span><span class="t">What effort and thinking settings do</span></a></li><li><a href="#read-bw2-3" data-step="3"><span class="n">04</span><span class="t">Where quality differences show, and where they do not</span></a></li><li><a href="#read-bw2-4" data-step="4"><span class="n">05</span><span class="t">Self-preference, and why the check runs elsewhere</span></a></li><li><a href="#read-bw2-5" data-step="5"><span class="n">06</span><span class="t">A subscription against the API</span></a></li><li><a href="#read-bw2-6" data-step="6"><span class="n">07</span><span class="t">A rule for re-deciding when the lineup changes</span></a></li><li><a href="#read-bw2-7" data-step="7"><span class="n">08</span><span class="t">On other tools</span></a></li><li><a href="#read-bw2-8" data-step="8"><span class="n">09</span><span class="t">Appendix · The lineup on 15 November 2026</span></a></li><li><a href="#read-bw2-9" data-step="9"><span class="n">10</span><span class="t">Deliverable · A routing table</span></a></li></ol><div class="secx"><a href="#read-bw2-sources" data-acc>Sources</a><a href="#read-bw2-note" data-acc>The writer's opening note</a><a href="#read-bw2-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-bw2-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">Cost per task</span></span></h2>
+<p>A price list gives the cost of one token. What you pay for is a finished job. The cost of a task is the input tokens times the input price, plus the output tokens times the output price, summed over every turn the task takes, with the history re-sent on each turn (BW1 §2). The price list fixes one factor. The other, how many tokens the model spends to finish, is set by the model and by the effort setting (§3), and it varies more than the price does.</p>
+<p>Two parts of the output are easy to miss.</p>
+<ul>
+<li><strong>Thinking is output.</strong> On Claude, the tokens the model spends thinking are billed as output tokens, and in full even when the app shows only a summary of the thinking; thinking blocks kept from earlier turns are billed again as input (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking?r=0">Anthropic, <em>Steering thinking</em></a>, read 15 Nov 2026). OpenAI documents the same for its reasoning tokens, which are hidden, count toward the context window and are billed as output (<a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md">OpenAI, <em>Reasoning models</em></a>, read 15 Nov 2026), and Google bills a Gemini response as its output plus its thinking tokens, for the full thoughts even when only a summary is returned (<a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/generate-content/thinking?authuser=1">Google, <em>Gemini thinking</em></a>, last updated 14 Oct 2026, read 15 Nov 2026).</li>
+<li><strong>Output costs five times input</strong> on every current Claude model: $4 and $20 per million tokens for Opus 5.5, for example (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview">Anthropic, <em>Models overview</em></a>, read 15 Nov 2026). A model that thinks at length pays the dear rate on every token of it.</li>
+</ul>
+<p><strong>What the measured comparison shows.</strong> Artificial Analysis, an independent benchmarking company, runs one set of tasks across models and reports a cost per task: the weighted-average cost in US dollars to complete one task of its Intelligence Index, computed from the tokens each model consumed and its price, which is the first-party API rate or the median across providers (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/methodology">Artificial Analysis, <em>Artificial Analysis Benchmarking Methodology</em></a>, read 15 Nov 2026). On its leaderboard on 15 November 2026, under Intelligence Index v5.0.1 (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/models/claude-opus-5-5-medium"><em>Claude Opus 5.5: Intelligence, Performance &amp; Price Analysis</em></a>, read 15 Nov 2026, for the version), each model at its highest listed effort (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/leaderboards/models?status=all">Artificial Analysis, <em>LLM Leaderboard</em></a>, read 15 Nov 2026):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Model (effort)</th>
+<th>API price, input / output per million tokens (vendor page, read 15 Nov 2026)</th>
+<th>Index score</th>
+<th>Cost per task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Fable 5.2 (max)</td>
+<td>$8 / $40</td>
+<td>65</td>
+<td>$26.54</td>
+</tr>
+<tr>
+<td>Claude Opus 5.5 (max)</td>
+<td>$4 / $20</td>
+<td>59</td>
+<td>$10.04</td>
+</tr>
+<tr>
+<td>Claude Sonnet 5.5 (max)</td>
+<td>$2 / $10</td>
+<td>55</td>
+<td>$10.02</td>
+</tr>
+<tr>
+<td>GPT-6 Astra (max)</td>
+<td>$10 / $50</td>
+<td>57</td>
+<td>$6.24</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol (max)</td>
+<td>$2 / $10</td>
+<td>55</td>
+<td>$1.27</td>
+</tr>
+<tr>
+<td>GPT-6.1 Terra (max)</td>
+<td>$1 / $5</td>
+<td>51</td>
+<td>$0.96</td>
+</tr>
+<tr>
+<td>Claude Haiku 5.5 (max)</td>
+<td>from $0.10 / from $0.50</td>
+<td>36</td>
+<td>$0.41</td>
+</tr>
+<tr>
+<td>GPT-6 Luna (max)</td>
+<td>$0.10 / $0.50</td>
+<td>28</td>
+<td>$0.15</td>
+</tr>
+</tbody>
+</table></div>
+<p>Claude prices from <a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview"><em>Models overview</em></a>; OpenAI prices from <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/pricing">OpenAI, <em>Pricing</em></a>, standard tier; both read 15 Nov 2026. Gemini models appear on the leaderboard at high effort (Gemini 4 Carbon 60 at $5.48, Gemini 4 Argon 50 at $4.97); their current API prices could not be read on Google's pricing page that day, so they are left out of the table.</p>
+<p>Three readings, all arithmetic on the table (grade: measured, by a third party, on its tasks):</p>
+<ol>
+<li><strong>Same token price, different task price.</strong> Sonnet 5.5 and GPT-6.1 Sol both cost $2 and $10 per million tokens and both score 55 at max. Sonnet's task costs $10.02, Sol's $1.27: 7.9 times as much for the same score. The difference is tokens spent per task.</li>
+<li><strong>A cheaper token can make a dearer task.</strong> GPT-6 Astra's tokens cost more than Fable 5.2's ($10 / $50 against $8 / $40), and its task costs less ($6.24 against $26.54). Fable 5.2 scores 8 points higher.</li>
+<li><strong>Price ratios understate the gap at the top.</strong> Fable 5.2's tokens cost twice Opus 5.5's; its task at max costs 2.6 times as much.</li>
+</ol>
+<p>A Claude Code engineer says the same in practice terms: larger models cost more per token, yet on tasks that stretch a smaller model the total cost per task can come out lower, and some tasks a smaller model cannot finish at any effort (Lydia Hallie, <a target="_blank" rel="noopener" href="https://www.claude.com/blog/claude-model-and-effort-level-in-claude-code"><em>Choosing a Claude model and effort level in Claude Code</em></a>, Claude blog, 7 Jul 2026; grade: documented practice). Anthropic's own launch figures point the same way and are vendor data: at default (medium) effort, Opus 5.5 beat Opus 5 at max effort on Terminal-Bench 4.0 for about a fifth of the cost, and beat GPT-6 Astra at max effort on GDPval-AA for about a fifth of the cost per task (<a target="_blank" rel="noopener" href="https://anthropic.com/news/claude-opus-5-5">Anthropic, <em>Introducing Claude Opus 5.5</em></a>, 22 Sep 2026, read 15 Nov 2026).</p>
+<p>The comparison below draws the cost-per-task column.</p>
+<figure class="viz viz-compare"><p class="viz-title">Cost per Intelligence Index task, USD, at the highest listed effort</p><div class="viz-scroll" data-alt=""><svg viewBox="0 0 700 252" width="700" height="252" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cost per Intelligence Index task, USD, at the highest listed effort"><text class="viz-label" x="152.6" y="27.3" text-anchor="end">Claude Fable 5.2 (max)</text><rect class="viz-track" x="162.59647999999999" y="16.0" width="406.2" height="14"/><rect class="viz-bar viz-t1" x="162.59647999999999" y="16.0" width="385.0" height="14"/><text class="viz-value" x="574.8" y="26.8">$26.54 · index 65</text><text class="viz-label" x="152.6" y="57.3" text-anchor="end">Claude Opus 5.5 (max)</text><rect class="viz-track" x="162.59647999999999" y="46.0" width="406.2" height="14"/><rect class="viz-bar viz-t2" x="162.59647999999999" y="46.0" width="145.6" height="14"/><text class="viz-value" x="316.2" y="56.8">$10.04 · index 59</text><text class="viz-label" x="152.6" y="87.3" text-anchor="end">Claude Sonnet 5.5 (max)</text><rect class="viz-track" x="162.59647999999999" y="76.0" width="406.2" height="14"/><rect class="viz-bar viz-t3" x="162.59647999999999" y="76.0" width="145.3" height="14"/><text class="viz-value" x="315.9" y="86.8">$10.02 · index 55</text><text class="viz-label" x="152.6" y="117.3" text-anchor="end">GPT-6 Astra (max)</text><rect class="viz-track" x="162.59647999999999" y="106.0" width="406.2" height="14"/><rect class="viz-bar viz-t5" x="162.59647999999999" y="106.0" width="90.5" height="14"/><text class="viz-value" x="261.1" y="116.8">$6.24 · index 57</text><text class="viz-label" x="152.6" y="147.3" text-anchor="end">GPT-6.1 Sol (max)</text><rect class="viz-track" x="162.59647999999999" y="136.0" width="406.2" height="14"/><rect class="viz-bar viz-t5" x="162.59647999999999" y="136.0" width="18.4" height="14"/><text class="viz-value" x="189.0" y="146.8">$1.27 · index 55</text><text class="viz-label" x="152.6" y="177.3" text-anchor="end">GPT-6.1 Terra (max)</text><rect class="viz-track" x="162.59647999999999" y="166.0" width="406.2" height="14"/><rect class="viz-bar viz-t5" x="162.59647999999999" y="166.0" width="13.9" height="14"/><text class="viz-value" x="184.5" y="176.8">$0.96 · index 51</text><text class="viz-label" x="152.6" y="207.3" text-anchor="end">Claude Haiku 5.5 (max)</text><rect class="viz-track" x="162.59647999999999" y="196.0" width="406.2" height="14"/><rect class="viz-bar viz-t4" x="162.59647999999999" y="196.0" width="5.9" height="14"/><text class="viz-value" x="176.5" y="206.8">$0.41 · index 36</text><text class="viz-label" x="152.6" y="237.3" text-anchor="end">GPT-6 Luna (max)</text><rect class="viz-track" x="162.59647999999999" y="226.0" width="406.2" height="14"/><rect class="viz-bar viz-t5" x="162.59647999999999" y="226.0" width="2.2" height="14"/><text class="viz-value" x="172.8" y="236.8">$0.15 · index 28</text></svg><svg class="viz-alt" viewBox="0 0 258 348" width="258" height="348" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cost per Intelligence Index task, USD, at the highest listed effort"><text class="viz-label" x="8.0" y="19.3" text-anchor="start">Claude Fable 5.2 (max)</text><rect class="viz-track" x="8" y="24.0" width="118.8" height="14"/><rect class="viz-bar viz-t1" x="8" y="24.0" width="112.6" height="14"/><text class="viz-value" x="132.8" y="34.8">$26.54 · index 65</text><text class="viz-label" x="8.0" y="61.3" text-anchor="start">Claude Opus 5.5 (max)</text><rect class="viz-track" x="8" y="66.0" width="118.8" height="14"/><rect class="viz-bar viz-t2" x="8" y="66.0" width="42.6" height="14"/><text class="viz-value" x="132.8" y="76.8">$10.04 · index 59</text><text class="viz-label" x="8.0" y="103.3" text-anchor="start">Claude Sonnet 5.5 (max)</text><rect class="viz-track" x="8" y="108.0" width="118.8" height="14"/><rect class="viz-bar viz-t3" x="8" y="108.0" width="42.5" height="14"/><text class="viz-value" x="132.8" y="118.8">$10.02 · index 55</text><text class="viz-label" x="8.0" y="145.3" text-anchor="start">GPT-6 Astra (max)</text><rect class="viz-track" x="8" y="150.0" width="118.8" height="14"/><rect class="viz-bar viz-t5" x="8" y="150.0" width="26.5" height="14"/><text class="viz-value" x="132.8" y="160.8">$6.24 · index 57</text><text class="viz-label" x="8.0" y="187.3" text-anchor="start">GPT-6.1 Sol (max)</text><rect class="viz-track" x="8" y="192.0" width="118.8" height="14"/><rect class="viz-bar viz-t5" x="8" y="192.0" width="5.4" height="14"/><text class="viz-value" x="132.8" y="202.8">$1.27 · index 55</text><text class="viz-label" x="8.0" y="229.3" text-anchor="start">GPT-6.1 Terra (max)</text><rect class="viz-track" x="8" y="234.0" width="118.8" height="14"/><rect class="viz-bar viz-t5" x="8" y="234.0" width="4.1" height="14"/><text class="viz-value" x="132.8" y="244.8">$0.96 · index 51</text><text class="viz-label" x="8.0" y="271.3" text-anchor="start">Claude Haiku 5.5 (max)</text><rect class="viz-track" x="8" y="276.0" width="118.8" height="14"/><rect class="viz-bar viz-t4" x="8" y="276.0" width="1.7" height="14"/><text class="viz-value" x="17.7" y="286.8">$0.41 · index 36</text><text class="viz-label" x="8.0" y="313.3" text-anchor="start">GPT-6 Luna (max)</text><rect class="viz-track" x="8" y="318.0" width="118.8" height="14"/><rect class="viz-bar viz-t5" x="8" y="318.0" width="0.6" height="14"/><text class="viz-value" x="16.6" y="328.8">$0.15 · index 28</text></svg></div><figcaption>Weighted cost per task and Intelligence Index score at each model's highest listed effort, from the table in §1 of this unit: Artificial Analysis, LLM Leaderboard, Intelligence Index v5.0.1, read 15 Nov 2026 (third-party benchmark). Sonnet 5.5 and GPT-6.1 Sol have the same token prices and the same score.</figcaption></figure>
+<p>None of these tasks is your task. What transfers is the mechanism: the bill is set by tokens spent per finished job, and the model and the effort setting both move that number. One cost no table holds is your own time. A cheap output that needs a second run, or an error you have to find, is paid in hours, and nothing measured that for the reader of this unit. The routing table at the end handles it with override triggers.</p>
+<p><strong>The case.</strong> Academy (Academy case), a library of self-study courses built by one person with Claude in October and November 2026, is this course's running example; it is one project, an anecdote, never evidence about AI tools in general. Its record holds no measure of hours or money spent per unit (Academy case file §9). So the case cannot say what any of its tasks cost; this unit's routing of it rests on the evidence above, and the deliverable says where the case file records a model and where it does not.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="89" data-rings="3"><path d="M248 70l-72-11-24-1-32 1-16 3-8 3-10 7 2 8 10 8 15 8 15 13 16 7 16 3 16 1 24-1 16-2 40-10 16-3 16-1M128 70l-7 2-7 8 8 8 14 8 8 7 16 6 24 1 24-3 11-3 19-8 7-8-13-8-48-10-32-3zM144 79l-3 1 3 8 12 8 12 4 16 1 16-3 5-2 8-8-17-8-20-3-16-1z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="9" data-rings="0"><circle class="ct-spot" cx="280" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="116" data-rings="4"><path d="M320 47l-16 5-24 13-8 3-8 2-16 0M288 103l27 1 101 10 40 1 40-2 24-4M448 58l-11-2-37-11-24-3-32 1-24 4M336 55l-22 9-9 8-4 8 2 8 9 5 12 3 28 4 72 7 32 0 24-1 24-4M440 65l-9-1-31-9-24-3-24 0-16 3M344 63l-8 4-8 5-3 8 6 8 21 5 40 6 48 1 24-1 24-2M432 70l-32-8-16-2-24 0-16 3M352 72l-6 8 13 8 9 1 32 4 24 1 32-2 23-4M424 75l-32-7-16-1-8 0-16 5"/><circle class="ct-spot" cx="384" cy="80" r="9"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="62" data-rings="2"><path d="M520 109l24-5 16-2M536 57l-24-1-48 3-16-1M504 102l21-6 10-8 6-8 0-8-21-5-16-1-40 1-24-2M488 97l16-5 8-4 2-8-10-4-8-2-64-4M479 88l-6-8-49-5"/><circle class="ct-spot" cx="496" cy="80" r="8"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="16" data-rings="0"><circle class="ct-spot" cx="600" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="131" data-rings="5"><path d="M560 102l16 3 32 10 32 6 24 3 24 1 32-3 24-5 45-13 35-7 8 0 8 1 22 14M832 58l-72-2-112 5-56 4-56-8M728 64l-72 4-28 4-23 8-13 8-2 8 18 8 8 2 48 9 32 1 16-1 16-4 58-15 25-8 13-6 9-2-13-8-36-6-24-3zM680 72l-24 2-16 4-7 2-12 8 1 8 10 4 24 6 24 3 24 0 24-4 33-9 23-8 7-8-19-8-20-3-24 0zM664 79l-6 1-12 8 7 8 19 5 24 3 24-4 41-12 1-8-18-4-16-2-48 3zM680 85l-7 3 15 8 8 0 10 0 29-8-7-5-8-2-32 3z"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="7" data-rings="0"><circle class="ct-spot" cx="816" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="82" data-rings="3"><path d="M862 112l18 6 24 3 32 1 56-5M896 56l-64 2M856 72l-7 8 7 2 8 5 5 9 7 8 20 7 24 3 40-1M968 70l-48-4-24 0-16 1-24 5M888 78l-4 2 4 16 15 8 25 3 24 0 32-2M912 74l-16 1-8 3M912 84l-6 4 4 8 18 4 16 1 32-1M928 81l-16 3"/><circle class="ct-spot" cx="920" cy="88" r="8"/></g><g class="ct-rise ct-t5" data-label="¶9" data-words="92" data-rings="3"><path d="M992 117l32-5 48-3 24-3 16-4 13-6 4-8-7-8-10-5-16-6-32-7-24-2-64 2-80-6M960 113l40-4 32-5 40-3 19-5 6-8-8-8-9-3-16-5-24-4-24 0-48 2M984 105l72-9 8-3 6-5-12-8-26-5-64 1-56-2M976 100l32-3 30-9-14-4-8-1-88-2"/><circle class="ct-spot" cx="1024" cy="88" r="9"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-bw2-1" data-step="1"><span>Next · 2 of 10</span><b>The tiers outlive the lineup</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-bw2-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">The tiers outlive the lineup</span></span></h2>
+<p>Each of the three vendors this course follows sells a ladder of models, and the ladders line up by price. On 15 November 2026:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Tier (this unit's grouping)</th>
+<th>Anthropic</th>
+<th>OpenAI</th>
+<th>Google</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small and fast</td>
+<td>Haiku 5.5: from $0.10 / from $0.50</td>
+<td>GPT-6 Luna: $0.10 / $0.50</td>
+<td>Gemini 3.5 Flash-Lite: $0.30 / $2.50</td>
+</tr>
+<tr>
+<td>Mid</td>
+<td>Sonnet 5.5: $2 / $10</td>
+<td>GPT-6.1 Sol: $2 / $10; GPT-6.1 Terra: $1 / $5</td>
+<td>Gemini 3.8 Flash: $0.75 / $3.75 to 31 Dec 2026, then $1.50 / $7.50</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>Opus 5.5: $4 / $20; Fable 5.2: $8 / $40</td>
+<td>GPT-6 Astra: $10 / $50</td>
+<td>Gemini 4 Argon (price not read)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Prices in USD per million input and output tokens, standard API tier, from <a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview">Anthropic, <em>Models overview</em></a>, <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/pricing">OpenAI, <em>Pricing</em></a>, and Google's <a target="_blank" rel="noopener" href="https://ai.google.dev/pricing">Gemini API pricing page</a>, all read 15 Nov 2026. Google's page carried output prices "including thinking tokens" for both Flash models and did not list Gemini 4 Argon in the copy read; Google's <a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/models/gemini-4-argon"><em>Gemini 4 Argon</em></a> model page (last updated 30 Oct 2026) calls it the flagship reasoning model and gives no price.</p>
+<p>What each vendor says the rungs are for (vendor statements):</p>
+<ul>
+<li><strong>Anthropic</strong> describes Haiku 5.5 as for high-volume, latency-sensitive tasks such as classification, extraction and routing; Sonnet 5.5 as the best combination of speed and intelligence; Opus 5.5 as for long-running agentic coding and knowledge work; and Fable 5.2 as for demanding reasoning and long-horizon agentic work. It advises starting with Opus 5.5 when unsure and moving to Fable 5.2 for demanding reasoning and long-horizon agentic work, or when evals on Opus 5.5 at higher effort still fall short (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview"><em>Models overview</em></a>, read 15 Nov 2026). Its Haiku 5.5 launch lists summaries, compactions, database queries and classification, subagent work on coding tasks alongside Opus 5.5 and Sonnet 5.5, and speed-sensitive work such as live customer support, and says Sonnet 5.5 and Opus 5.5 remain better choices for complex agentic coding (<a target="_blank" rel="noopener" href="https://anthropic.com/claude-haiku-5-5">Anthropic, <em>Introducing Claude Haiku 5.5</em></a>, 7 Oct 2026, read 15 Nov 2026).</li>
+<li><strong>OpenAI</strong>'s reasoning guide says, for cost, to consider a smaller model: start with its largest and try a mid model for lower cost or its smallest for the lowest cost and latency (<a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md">OpenAI, <em>Reasoning models</em></a>, read 15 Nov 2026). The guide names those models gpt-5.6-terra and gpt-5.6-luna, while the pricing page lists gpt-6.1-terra and gpt-6-luna: on the day, OpenAI's own pages did not agree on the names.</li>
+<li><strong>Google</strong> sets Gemini 4 Argon as its flagship reasoning model for complex software engineering, deep maths and science and autonomous multi-step agents (<a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/models/gemini-4-argon"><em>Gemini 4 Argon</em></a>, read 15 Nov 2026).</li>
+</ul>
+<p>Three things make the ladder a better unit of decision than any model name.</p>
+<ol>
+<li><strong>Names change; rungs stay.</strong> On 15 November 2026 Anthropic's lineup lists Fable 5.2 at the top at $8 / $40, with Fable 5.1, at $10 / $50, moved to the list of all models (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview"><em>Models overview</em></a>); Anthropic's page on the new model says its input and output cost less than Fable 5.1's (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/fable-5-2/whats-new-fable-5-2">Anthropic, <em>What's new in Claude Fable 5.2</em></a>, read 15 Nov 2026). A routing rule written as "large tier, high effort" survives that change; one written as "Fable 5.1" does not. In Academy, a session's model named "fable" resolved to a newer version than the method names, and the checks it ran were recorded as owed again on the named version (Academy case file §7): the name moved under the rule.</li>
+<li><strong>The rungs are priced alike across vendors.</strong> Haiku 5.5 and GPT-6 Luna cost the same per token, as do Sonnet 5.5 and GPT-6.1 Sol (the tables above). The cost per task does not line up the same way (§1), which is why each rung needs its own evidence.</li>
+<li><strong>Anthropic now sells two large rungs.</strong> Opus 5.5 and Fable 5.2 are both large, and the vendor's own advice is to start on the cheaper one. The brief of this course names three tiers; on Anthropic's lineup the top tier has a step inside it.</li>
+</ol>
+<p><strong>Where the tier pattern holds less well.</strong> The routing evidence (§4) shows a small model is often enough, and the measured data (§1) shows a mid model at max effort costing as much per task as a large one. A tier is a starting point for a task. The override triggers in the deliverable move a task up or down.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.7"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="24" data-rings="1"><path d="M288 87l-8-1-23-6-33-3-40 4-16 3-13 4 21 7 56 3 40-2 16-5 8 12"/><circle class="ct-spot" cx="216" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="76" data-rings="5"><path d="M368 64l-24 3-16 3-23 10-9 6-8 1M296 103l2 9 10 8 12 5 24 4 24 2 24 0 24-2 32-5 56-16 12-4 13-8 2-8-14-8-21-6-32-6-56-5-40 1M376 71l-16 2-16 4-6 3-7 8-1 8-6 8 3 8 9 4 14 4 18 2 24 1 40-4 16-4 32-9 21-10-3-8-18-7-16-4-48-6zM368 79l-8 2-10 7-1 8-6 8 9 8 16 3 24 2 32-3 39-10 17-8-6-8-18-6-16-3-40-3zM368 88l-6 16 6 3 16 3 16 1 24-3 16-4 20-8-10-8-34-6-24 0-16 3zM392 91l-7 5 7 7 5 1 11 0 28-8-20-7-16 0z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="10" data-rings="0"><circle class="ct-spot" cx="600" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="14" data-rings="1"><circle class="ct-spot" cx="792" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="60" data-rings="4"><path d="M904 71l-16 5-7 4 0 8 32 24 23 7 24 3 16 1 40-1 48-6 16-4 16-8-1-8-19-8-84-18-24-2-24-1-24 1zM920 79l-8 5-4 4 9 8 10 8 9 5 10 3 14 2 32 2 40-4 16-3 14-5 3-8-24-8-57-11-32-2-16 1zM936 86l-3 2 5 8 11 8 19 4 24 1 32-3 8-2 8-8-40-10-24-4-24 1zM968 92l-5 4 13 4 16 1 18-5-26-5-8-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw2-0" data-step="0"><span>Previous · 1 of 10</span><b>Cost per task</b></a><a class="snext" href="#read-bw2-2" data-step="2"><span>Next · 3 of 10</span><b>What effort and thinking settings do</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-bw2-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">What effort and thinking settings do</span></span></h2>
+<p>Every vendor in this unit now sells two dials: which model, and how hard it works. This section is from the vendors' documentation (grade: documented practice) and one benchmark.</p>
+<p><strong>Claude.</strong> Anthropic's documentation says effort controls how many tokens Claude uses when responding, and states: "Effort is a behavioral signal, not a strict token budget." At lower levels Claude still thinks on hard problems, but less, and it can skip thinking entirely on simple ones. Effort applies to every output token: the text, the tool calls and the thinking. Lower effort makes fewer tool calls and terser confirmations; higher effort may make more calls and explain its plan. The levels are low, medium, high, xhigh and max; xhigh is described as for long-running agentic and coding tasks of over 30 minutes, max as capability with no constraint on token spending (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort">Anthropic, <em>Effort</em></a>, read 15 Nov 2026).</p>
+<p>Defaults differ by model, and the differences matter when a model is swapped (same page, read 15 Nov 2026):</p>
+<ul>
+<li>Opus 5.5 and Haiku 5.5 default to medium; Fable 5.2 and Sonnet 5.5 to high on the API.</li>
+<li>Opus 5 and earlier Opus models defaulted to high, so the same request with no effort set runs one level lower on Opus 5.5.</li>
+<li>On Opus 5.5, thinking is always on and cannot be turned off; effort is the lever.</li>
+<li>Per model: for Fable 5.2, start at high, where most of the capability gain already is, and keep max for measuring the ceiling; for Sonnet 5.5, start at high unless the work is agentic or latency-sensitive, at medium for well-specified agentic coding, and at medium or low for chat; for Haiku 5.5, use low for chat, short tool tasks and simple high-volume requests, high for knowledge work, longer agent tasks and strict instruction following. At low, the page warns, Haiku in a long agent prompt is more likely to skip a search, stop early or skip a check.</li>
+</ul>
+<p>On claude.ai the effort setting is inside the model menu next to the send button. The help centre describes low and medium as suiting routine tasks and stretching usage further, high as the best overall balance of quality and speed, extra high as for long-running coding and agentic tasks (Opus 4.7 and newer), and max as the most thorough; higher effort uses more tokens and reaches usage limits sooner. On Fable 5.2, Haiku 5.5, Sonnet 5.5, Opus 5.5, Fable 5.1 and Opus 5, thinking cannot be turned off in the app; to reduce it, lower the effort. The menu marks each model's default without the article listing them (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings">Claude Help Center, <em>Change the model, effort, and thinking settings</em></a>, read 15 Nov 2026).</p>
+<p><strong>OpenAI and Google.</strong> OpenAI's effort values depend on the model and can run from none through max; GPT-6.1 Sol defaults to medium and supports neither none nor minimal. Lower effort favours speed and fewer tokens, higher effort reasons more completely, and the guide advises starting at medium, evaluating medium against high before using high or xhigh, and treating effort as a tuning knob, since clear prompts and explicit output contracts matter more (<a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md">OpenAI, <em>Reasoning models</em></a>, read 15 Nov 2026). Google's Gemini 4 Argon takes low, medium and high thinking levels, defaults to medium and cannot have thinking turned off; Google's page assigns little or no thinking to fact retrieval and classification and a high level to complex maths and coding, and says to lower the level to cut cost or latency (<a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/generate-content/thinking?authuser=1"><em>Gemini thinking</em></a>, read 15 Nov 2026).</p>
+<p><strong>What a step of effort buys, measured.</strong> Artificial Analysis reports Opus 5.5 and Sonnet 5.5 at each effort level, with the index score and the time per task; on 15 November it gave a cost per task only at max (index v5.0.1; third-party benchmark):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Effort</th>
+<th>Opus 5.5: index · minutes per task</th>
+<th>Sonnet 5.5: index · minutes per task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>low</td>
+<td>35 · 3.1</td>
+<td>26 · 2.6</td>
+</tr>
+<tr>
+<td>medium</td>
+<td>48 · 6.9</td>
+<td>31 · 4.1</td>
+</tr>
+<tr>
+<td>high</td>
+<td>52 · 9.4</td>
+<td>42 · 6.9</td>
+</tr>
+<tr>
+<td>xhigh</td>
+<td>57 · 15.8</td>
+<td>50 · 14.5</td>
+</tr>
+<tr>
+<td>max</td>
+<td>59 · 25.4</td>
+<td>55 · 33.3</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources: <a target="_blank" rel="noopener" href="https://artificialanalysis.ai/models/claude-opus-5-5-medium"><em>Claude Opus 5.5: Intelligence, Performance &amp; Price Analysis</em></a> and <a target="_blank" rel="noopener" href="https://artificialanalysis.ai/models/claude-sonnet-5-5-low"><em>Claude Sonnet 5.5: Intelligence, Performance &amp; Price Analysis</em></a>, both read 15 Nov 2026.</p>
+<p>Readings, arithmetic on the table:</p>
+<ul>
+<li>On Opus 5.5, low to medium buys 13 points for 2.2 times the time; medium to high 4 points for 36% more; high to xhigh 5 points for 1.7 times; xhigh to max 2 points for 1.6 times.</li>
+<li>Sonnet 5.5 at high and Opus 5.5 at medium take the same 6.9 minutes a task; Opus scores 6 points higher.</li>
+<li>Fable 5.2 at its lowest level scores 54, above Opus 5.5 at high (52), on the same site's Fable page (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/models/claude-fable-5-2-xhigh"><em>Claude Fable 5.2: Intelligence, Performance &amp; Price Analysis</em></a>, read 15 Nov 2026), which gave no cost per task below max.</li>
+</ul>
+<p>Time per task is not cost. Opus 5.5's output speed on that page is 104 to 114 tokens a second at every level, so the longer times suggest more tokens spent; that reading is this unit's inference, and the page does not state it.</p>
+<figure class="viz viz-scatter"><p class="viz-title">Index score against minutes per task, by effort</p><div class="viz-scroll"><svg viewBox="0 0 700 412" width="700" height="412" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Index score against minutes per task, by effort"><text class="viz-colhead" x="8.0" y="17.6" text-anchor="start">Index score</text><path class="viz-grid" d="M28.9,372.0 L688.0,372.0"/><text class="viz-ticklabel" x="22.9" y="375.6" text-anchor="end">20</text><path class="viz-grid" d="M28.9,287.0 L688.0,287.0"/><text class="viz-ticklabel" x="22.9" y="290.6" text-anchor="end">30</text><path class="viz-grid" d="M28.9,202.0 L688.0,202.0"/><text class="viz-ticklabel" x="22.9" y="205.6" text-anchor="end">40</text><path class="viz-grid" d="M28.9,117.0 L688.0,117.0"/><text class="viz-ticklabel" x="22.9" y="120.6" text-anchor="end">50</text><path class="viz-grid" d="M28.9,32.0 L688.0,32.0"/><text class="viz-ticklabel" x="22.9" y="35.6" text-anchor="end">60</text><path class="viz-grid" d="M28.9,32.0 L28.9,372.0"/><text class="viz-ticklabel" x="28.9" y="388.0" text-anchor="middle">0</text><path class="viz-grid" d="M123.0,32.0 L123.0,372.0"/><text class="viz-ticklabel" x="123.0" y="388.0" text-anchor="middle">5</text><path class="viz-grid" d="M217.2,32.0 L217.2,372.0"/><text class="viz-ticklabel" x="217.2" y="388.0" text-anchor="middle">10</text><path class="viz-grid" d="M311.3,32.0 L311.3,372.0"/><text class="viz-ticklabel" x="311.3" y="388.0" text-anchor="middle">15</text><path class="viz-grid" d="M405.5,32.0 L405.5,372.0"/><text class="viz-ticklabel" x="405.5" y="388.0" text-anchor="middle">20</text><path class="viz-grid" d="M499.7,32.0 L499.7,372.0"/><text class="viz-ticklabel" x="499.7" y="388.0" text-anchor="middle">25</text><path class="viz-grid" d="M593.8,32.0 L593.8,372.0"/><text class="viz-ticklabel" x="593.8" y="388.0" text-anchor="middle">30</text><path class="viz-grid" d="M688.0,32.0 L688.0,372.0"/><text class="viz-ticklabel" x="688.0" y="388.0" text-anchor="middle">35</text><path class="viz-base" d="M28.9,372.0 L688.0,372.0"/><path class="viz-base" d="M28.9,32.0 L28.9,372.0"/><text class="viz-colhead" x="688.0" y="400.0" text-anchor="end">Minutes per task</text><circle class="viz-pt viz-t2" cx="87.2" cy="244.5" r="4.5"/><circle class="viz-pt viz-t2" cx="158.8" cy="134.0" r="4.5"/><circle class="viz-pt viz-t2" cx="205.9" cy="100.0" r="4.5"/><circle class="viz-pt viz-t2" cx="326.4" cy="57.5" r="4.5"/><circle class="viz-pt viz-t2" cx="507.2" cy="40.5" r="4.5"/><circle class="viz-pt viz-t3" cx="77.8" cy="321.0" r="4.5"/><circle class="viz-pt viz-t3" cx="106.1" cy="278.5" r="4.5"/><circle class="viz-pt viz-t3" cx="158.8" cy="185.0" r="4.5"/><circle class="viz-pt viz-t3" cx="301.9" cy="117.0" r="4.5"/><circle class="viz-pt viz-t3" cx="656.0" cy="74.5" r="4.5"/><g data-box=""><rect class="viz-lblbg" x="166.8" y="125.0" width="89.5" height="18.0"/><text class="viz-label" x="211.6" y="138.3" text-anchor="middle">Opus medium</text></g><g data-box=""><rect class="viz-lblbg" x="114.1" y="269.5" width="99.6" height="18.0"/><text class="viz-label" x="163.8" y="282.8" text-anchor="middle">Sonnet medium</text></g><g data-box=""><rect class="viz-lblbg" x="95.2" y="235.5" width="61.9" height="18.0"/><text class="viz-label" x="126.2" y="248.8" text-anchor="middle">Opus low</text></g><g data-box=""><rect class="viz-lblbg" x="213.9" y="91.0" width="66.5" height="18.0"/><text class="viz-label" x="247.1" y="104.3" text-anchor="middle">Opus high</text></g><g data-box=""><rect class="viz-lblbg" x="85.8" y="312.0" width="72.0" height="18.0"/><text class="viz-label" x="121.8" y="325.3" text-anchor="middle">Sonnet low</text></g><g data-box=""><rect class="viz-lblbg" x="166.8" y="176.0" width="76.6" height="18.0"/><text class="viz-label" x="205.1" y="189.3" text-anchor="middle">Sonnet high</text></g><g data-box=""><rect class="viz-lblbg" x="334.4" y="48.5" width="72.7" height="18.0"/><text class="viz-label" x="370.8" y="61.8" text-anchor="middle">Opus xhigh</text></g><g data-box=""><rect class="viz-lblbg" x="515.2" y="31.5" width="66.3" height="18.0"/><text class="viz-label" x="548.4" y="44.8" text-anchor="middle">Opus max</text></g><g data-box=""><rect class="viz-lblbg" x="309.9" y="108.0" width="82.8" height="18.0"/><text class="viz-label" x="351.3" y="121.3" text-anchor="middle">Sonnet xhigh</text></g><g data-box=""><rect class="viz-lblbg" x="571.6" y="65.5" width="76.4" height="18.0"/><text class="viz-label" x="609.8" y="78.8" text-anchor="middle">Sonnet max</text></g></svg></div><figcaption>Claude Opus 5.5 and Sonnet 5.5 at each effort level: Intelligence Index score against time per task, from the table in §3 of this unit: Artificial Analysis model pages for Claude Opus 5.5 and Claude Sonnet 5.5, Intelligence Index v5.0.1, read 15 Nov 2026 (third-party benchmark). Time is not cost.</figcaption></figure>
+<p><strong>Extra thinking on easy problems is waste, measured.</strong> Xingyu Chen and colleagues found long reasoning models spending compute on simple problems for little gain, and cut that overhead while keeping performance on GSM8K, MATH500, GPQA and AIME (<a target="_blank" rel="noopener" href="https://proceedings.mlr.press/v267/chen25bx.html">Chen et al., <em>Do NOT Think That Much for 2+3=? On the Overthinking of Long Reasoning Models</em>, ICML 2025, PMLR 267</a>; the abstract does not name the models). Anthropic's thinking page says the same in product terms: to get less thinking, lower the effort before trying to prompt the model out of it (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking?r=0"><em>Steering thinking</em></a>).</p>
+<p><strong>Model or effort: the diagnostic.</strong> Lydia Hallie puts the two dials apart: "The model setting is roughly how capable; the effort setting is roughly how thorough." If Claude had the right context and clearly tried and still failed, choose a larger model; if it skipped a file, did not run tests or did not double-check, raise effort. She frames this as a starting heuristic, and recommends the model's default effort for most tasks, treating effort as a standing preference more than a per-task choice (<a target="_blank" rel="noopener" href="https://www.claude.com/blog/claude-model-and-effort-level-in-claude-code">Hallie, Claude blog, 7 Jul 2026</a>; grade: documented practice, written before the 5.5 models).</p>
+<p><strong>Keep effort fixed inside one piece of work.</strong> On the API, changing the top-level effort between requests can invalidate all or part of the prompt cache; models that support per-message effort keep it (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort"><em>Effort</em></a>, read 15 Nov 2026). The claude.ai help article says changes apply from the next response and says nothing about caching (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings"><em>Change the model, effort, and thinking settings</em></a>). Setting both dials before the first message costs nothing and avoids the question.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.4"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="29" data-rings="1"><path d="M145 80l-10 8 11 8 14 4 20 4M160 88l19 8"/><circle class="ct-spot" cx="160" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="118" data-rings="4"><path d="M280 69l-64-1-32 1-24 5-15 6M180 104l12 6 15 10 9 4 24 3 24 0 16-3 16-7 16-13 16-3 30 3M296 77l-8 1-56-3-40 1-22 4-10 8M179 96l21 7 16 11 8 3 16 2 16 0 16-3 9-4 18-16 5-2 16-2M200 85l-7 3 9 8 22 13 11 3 13 1 16-3 10-6 6-8 0-8-24-5-32-2-16 2zM232 87l-8 2-5 7 13 8 8 1 14-1 9-8-7-5-8-3z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="19" data-rings="0"><circle class="ct-spot" cx="320" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="124" data-rings="4"><path d="M320 63l-40 6M456 59l-24-3-32 1-56 3-24 3M392 63l-64 6-32 8M320 92l40 5 40 12M432 63l-16-1-24 1M360 71l-8 1-29 8 20 8 33 6 32 11M464 74l-40-7-24 0-40 4M400 71l-24 3-17 6 12 8 13 3 24 9M456 77l-32-5-24-1M384 80l-2 0 11 8 17 8M456 82l-40-5-16 0-16 3M416 86l-5 2 16 8M432 85l-16 1"/><circle class="ct-spot" cx="400" cy="80" r="8"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="141" data-rings="5"><path d="M358 104l34 11 24 4 96 1 32-2 16-3 16-5 14-6 7-8M488 64l-32-5M400 109l24 5 24 1 56 0 16-1 32-6 13-4 11-6M480 70l-48-7M408 105l24 5 64 1 24-2 21-5 19-8 3-8M544 82l-48-6-32-2M408 100l16 5 24 3 56-1 16-3 18-8-2-8-32-6-48-5M410 96l14 4 20 4 20 1 32-2 20-7-8-8-20-4-32-2M427 96l13 2 24 2 29-4-13-7-48-4"/><circle class="ct-spot" cx="480" cy="96" r="8"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="44" data-rings="1"><path d="M597 96l-1-8 3-8-7-5-8-3-16-3-80-5M576 98l3-2 0-8-6-8-13-3-80-7M563 88l-11-4-8-2"/><circle class="ct-spot" cx="560" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="24" data-rings="0"><circle class="ct-spot" cx="640" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="5" data-rings="0"><circle class="ct-spot" cx="720" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶9" data-words="44" data-rings="1"><path d="M776 81l-8 2-11 5 18 8 49 9M793 88l23 9 40 3"/><circle class="ct-spot" cx="800" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶10" data-words="97" data-rings="3"><path d="M856 55l-16 6-19 11-45 9M824 105l32 2 64 0M937 64l-17-6-24-5-24-1-16 3M864 62l-8 2-24 12-39 12M856 100l72 2M896 61l-16-1-16 2M864 69l-8 3-27 16 11 4 16 2 80 4M904 68l-16-2-16 1-8 2M880 72l-8 1-13 7-2 8 7 1 16 2 64 3M896 72l-16 0"/><circle class="ct-spot" cx="880" cy="80" r="7"/></g><g class="ct-rise ct-t5" data-label="¶11" data-words="100" data-rings="3"><path d="M920 107l72 8 56 0M1032 73l-32-5-48-2-15-2M928 102l48 6 32 1M1026 80l-34-6-48-2-48-11M936 98l40 5 24 1M992 79l-48-3-40-8M944 94l32 4 24 0 27-2M1008 88l-16-3-16-2-24-1-56-10"/><circle class="ct-spot" cx="960" cy="88" r="7"/></g><g class="ct-rise ct-t5" data-label="¶12" data-words="78" data-rings="3"><path d="M1048 115l24-4 16-5 14-10 1-8-13-8-18-4-40-3M1008 109l32-1 16-1 11-3 13-8-2-8-14-5-38-3M1000 104l40-2 8-1 11-5-3-4-6-4-18-1-40-8M1027 96l-11-3-8-5"/><circle class="ct-spot" cx="1040" cy="96" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw2-1" data-step="1"><span>Previous · 2 of 10</span><b>The tiers outlive the lineup</b></a><a class="snext" href="#read-bw2-3" data-step="3"><span>Next · 4 of 10</span><b>Where quality differences show, and where they do not</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-bw2-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">Where quality differences show, and where they do not</span></span></h2>
+<h3>Read a benchmark by who ran it, which version and when</h3>
+<p>Every benchmark number in this unit comes with three facts attached, and each of them changes what the number means.</p>
+<ul>
+<li><strong>Who ran it.</strong> A vendor's launch table is the vendor running its model against rivals it chose, under settings it chose. Anthropic's Opus 5.5 table runs Opus 5.5 at max effort except on Terminal-Bench 4.0, where it was run at xhigh; tasks its safeguards stopped were finished by older models, which Anthropic says likely lowers the scores; one test (AutomationBench) was run by Zapier; and the same page gives Opus 5.5 57.8% on CursorBench 4.0 in the table and 52.5% at default effort in the text (<a target="_blank" rel="noopener" href="https://anthropic.com/news/claude-opus-5-5"><em>Introducing Claude Opus 5.5</em></a>, read 15 Nov 2026). Each of those is stated on the page; none of them is in the headline numbers.</li>
+<li><strong>Which version.</strong> Artificial Analysis moved to Intelligence Index v5 on 27 October 2026: it dropped GDPval-AA, SciCode and AA-LCR, added a private coding test and a set of terminal-based science tasks, and now rests about 60% of the index on private test sets or held-out answers (<a target="_blank" rel="noopener" href="https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5">Artificial Analysis, <em>Announcing Artificial Analysis Intelligence Index v5</em></a>, 27 Oct 2026, read 15 Nov 2026). On 15 November its pages show v5.0.1. A score under v4 and a score under v5 measure different tasks.</li>
+<li><strong>When.</strong> The index above changed version on 27 October 2026, so a leaderboard read before that day and one read after it rank models on different tasks. In Academy's second audit (anecdote), ten claims in one unit were stale, all from one cause: an independent benchmark published a new index version the day before the unit read its leaderboard (Academy case file §4).</li>
+</ul>
+<p>A benchmark that the vendor ran, on a version that has since changed, on a date you do not know, is a claim about someone else's tasks under someone else's settings. Use it to rank options, never to predict your own result.</p>
+<h3>Where the differences show</h3>
+<p><strong>Small against mid, on long or open work.</strong> Anthropic's Haiku 5.5 launch sets Haiku 5.5 beside Sonnet 5.5 as a reference: GDPval-AA v2.1, a knowledge-work test, 1620 against 1840; Terminal-Bench 4.0, long agentic terminal tasks, 39.2% against 70.6%; Humanity's Last Exam with tools 57.4% against 64.5% (<a target="_blank" rel="noopener" href="https://anthropic.com/claude-haiku-5-5"><em>Introducing Claude Haiku 5.5</em></a>, read 15 Nov 2026; vendor). The gap is widest on the long agentic task. On the third-party index at max effort, Haiku 5.5 scores 36 against Sonnet 5.5's 55 (§1).</p>
+<p><strong>Effort, at the bottom of the range.</strong> On Opus 5.5, low to medium is the largest step on the third-party index, 35 to 48 (§3). On Sonnet 5.5, medium to high is 31 to 42.</p>
+<p><strong>The top tier, on hard reasoning.</strong> On the third-party index, Fable 5.2 at max scores 65 against Opus 5.5's 59, at 2.6 times the cost per task (§1).</p>
+<h3>Where they shrink</h3>
+<p><strong>Large against larger, on the vendor's own table.</strong> Anthropic's Opus 5.5 table scores Opus 5.5 above Fable 5.1 on all nine tests listed, among them GDPval-AA v2.1 (1846 against 1735), Humanity's Last Exam with tools (67.7% against 65.6%), OSWorld 2.1 (81.8% against 80.7%, both marked partial) and Chartography with tools (89.0% against 88.4%). The same page says Opus 5.5 performs at the level of Fable 5.1 on most work, and that the gap is narrower in practice than the scores suggest (<a target="_blank" rel="noopener" href="https://anthropic.com/news/claude-opus-5-5"><em>Introducing Claude Opus 5.5</em></a>, read 15 Nov 2026; vendor). That table compares Opus 5.5 with Fable 5.1; Fable 5.2, now on sale, is not in it.</p>
+<p><strong>Mid against large, on knowledge work.</strong> GDPval-AA v2.1 gives Opus 5.5 1846 on Anthropic's Opus page and Sonnet 5.5 1840 on its Haiku page (both read 15 Nov 2026; vendor). The two figures come from two pages and their settings are not stated side by side, so read them as close and leave the order open.</p>
+<p><strong>Mid against large, on agentic coding.</strong> Terminal-Bench 4.0 gives Sonnet 5.5 70.6% in the Haiku page's reference column and Opus 5.5 66.4%, run at xhigh, on the Opus page (both read 15 Nov 2026; vendor). Again two pages, two sets of settings; on this evidence the mid model is not behind on that test.</p>
+<p><strong>Routing studies: a large share of requests does not need the large model.</strong> Lingjiao Chen, Matei Zaharia and James Zou found that API fees could differ by two orders of magnitude, and that a cascade which learns which model to call for each request matched the best single model (GPT-4) with up to 98% lower cost (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2305.05176v1">Chen, Zaharia and Zou, <em>FrugalGPT</em>, arXiv 2305.05176</a>, 2023; published in <a target="_blank" rel="noopener" href="https://mlanthology.org/tmlr/2024/chen2024tmlr-frugalgpt"><em>Transactions on Machine Learning Research</em>, 2024</a>; measured, on 2023 models). Isaac Ong and colleagues trained routers that send each query to a strong model (GPT-4) or a weak one (Mixtral 8x7B), and on MMLU, MT Bench and GSM8K cut costs by more than half without loss of response quality (<a target="_blank" rel="noopener" href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html">Ong et al., <em>RouteLLM: Learning to Route LLMs from Preference Data</em>, ICLR 2025</a>; models from the <a target="_blank" rel="noopener" href="https://arxiv.org/html/2406.18665v3">arXiv version</a>; measured). The saving in both comes from identifying the requests the cheap model already answers well.</p>
+<p><strong>Compute against size.</strong> Charlie Snell and colleagues found that on maths reasoning problems where a smaller model already had a somewhat non-trivial success rate, in a FLOPs-matched comparison, spending more inference compute on it outperformed a model 14 times larger (<a target="_blank" rel="noopener" href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/1b623663fd9b874366f3ce019fdfdd44-Abstract-Conference.html">Snell, Lee, Xu and Kumar, ICLR 2025</a>; preprint at <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2408.03314">arXiv 2408.03314</a>; measured; the abstract does not name the model). The study varied the compute a model spends at answer time, which is not the same control as a vendor's effort setting; reading it as evidence that a higher effort setting can stand in for a larger model, on tasks within the small model's reach and only there, is this unit's inference.</p>
+<h3>What follows (stated opinion, built on the evidence above)</h3>
+<p>A small model is right when the task is fully specified by its input, a correct output can be recognised at a glance, volume or speed matters, and an error is cheap to catch: triage, reformatting, extraction to a fixed schema, short tool calls. Each condition traces to a source above: Anthropic's positioning of Haiku, the routing studies, and Haiku's gap on long agentic work. It is the wrong model when the task is long, multi-step or open, or when a mistake hides well, such as a plausible wrong figure in a long text. The large tier earns its price on long, open, searched work and on judgement, and the top rung is the vendor's own second step, after Opus at higher effort has fallen short. One exception cuts across tiers: where a task is arithmetic over numbers, have the model write code and let the code produce the numbers, because the same input can give a model different outputs (BW1 §5) and a script gives the same output every time.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.1"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="20" data-rings="0"><circle class="ct-spot" cx="160" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="42" data-rings="1"><path d="M248 86l-21 2-11 6-2 2 34 9 16 0 24-9 8 0"/><circle class="ct-spot" cx="248" cy="96" r="6"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="82" data-rings="2"><path d="M296 62l-16 8-10 10-6 3-16 3M296 96l40 9 24 0 16-3 24-9 46-13M392 71l-24-10-16-3-32 0-24 4M312 71l-2 1-7 8 25 12 8 1 16 1 8-2 8-4-3-8-5-7-8-3-16-2z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="35" data-rings="1"><path d="M446 80l-22-5-32-4"/><circle class="ct-spot" cx="424" cy="80" r="6"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="28" data-rings="0"><path d="M504 91l-12 5 14 8 14 6"/><circle class="ct-spot" cx="512" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="109" data-rings="3"><path d="M592 60l-24 6-26 14-38 11M520 110l16 4 24 3 16 0 16-2 50-11 38-3M584 71l-8 3-39 22 10 8 21 3 24 0 32-7 79-12M640 70l-32-1-24 2M592 79l-17 9-1 8 2 1 8 1 16-1 39-9-10-8-21-2z"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="56" data-rings="1"><path d="M728 75l-8-3-16-9-16-4-16 0-80 1M680 101l40-1 24 2M703 88l2-8-13-8-12-2-40 0"/><circle class="ct-spot" cx="688" cy="80" r="7"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="54" data-rings="1"><path d="M752 73l-8 2-8 1-8-1M744 102l48 10M768 80l-7 8 15 7 24 5"/><circle class="ct-spot" cx="776" cy="88" r="7"/></g><g class="ct-rise ct-t5" data-label="¶9" data-words="158" data-rings="5"><path d="M896 55l-48-6-32 0-24 4-16 6-24 14M792 112l40 11 24 3 32 1 160-6M896 63l-48-6-32 2-16 3-16 7-16 11M800 100l32 13 24 4 32 1 80-3M904 69l-48-4-24 0-16 2-15 5-8 8 23 12 16 12 8 3 16 3 32 2 160-5M840 71l-8 2-12 7 10 8 8 8 10 6 8 2 16 2 56-1 56-3M904 74l-16 0-32-3-16 0M856 79l-6 1-2 8 8 8 8 2 16 1 64 0M896 80l-40-1"/><circle class="ct-spot" cx="864" cy="88" r="9"/></g><g class="ct-rise ct-t5" data-label="¶10" data-words="114" data-rings="3"><path d="M992 51l-80 5-16-1M992 59l-80 4-16 0M992 66l-88 3M1000 71l-56 1-40 2M944 99l40-4M944 78l-48 2"/><circle class="ct-spot" cx="952" cy="80" r="8"/></g><g class="ct-rise ct-t5" data-label="¶11" data-words="171" data-rings="5"><path d="M1032 48l-40 3M1048 121l40-5 24-8 6-4 8-8 4-8 2-8-1-8-6-8-5-4-8-5-16-5-32-4-32 2M1032 55l-40 4M968 115l56 0 40-3 24-6 8-3 9-7 5-8 1-8-3-8-9-8-19-7-24-2-24 0M1016 63l-24 3M1048 107l24-3 17-8 5-8 1-8-5-8-10-6-16-4-24-1-24 2M984 102l40 1 24-1 16-3 8-3 8-8 0-8-8-8-8-3-16-2-16 0-32 4M984 95l48 2 16-1 8-3 8-5-1-8-7-4-16-3-40 5-56 0"/><circle class="ct-spot" cx="1040" cy="88" r="10"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw2-2" data-step="2"><span>Previous · 3 of 10</span><b>What effort and thinking settings do</b></a><a class="snext" href="#read-bw2-4" data-step="4"><span>Next · 5 of 10</span><b>Self-preference, and why the check runs elsewhere</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-bw2-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">Self-preference, and why the check runs elsewhere</span></span></h2>
+<p>On the evidence below, a model asked to grade its own work grades it too kindly. Three findings bear on this.</p>
+<ul>
+<li><strong>Self-enhancement.</strong> Lianmin Zheng and colleagues found strong model judges, GPT-4 among them, agreeing with human preferences over 80% of the time, about the rate at which humans agree with each other, and named three biases in model judges: position, verbosity and self-enhancement (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2306.05685">Zheng et al., <em>Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena</em>, NeurIPS 2023 Datasets and Benchmarks Track</a>; measured, on 2023 models).</li>
+<li><strong>Self-recognition drives it.</strong> Arjun Panickssery, Samuel Bowman and Shi Feng found that models such as GPT-4 and Llama 2 can tell their own outputs from other models' and humans' with non-trivial accuracy, and, by fine-tuning, a linear correlation between how well a model recognises its own text and how strongly it prefers it, with controlled experiments pointing to a causal link (<a target="_blank" rel="noopener" href="https://papers.nips.cc/paper_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html">Panickssery, Bowman and Feng, <em>LLM Evaluators Recognize and Favor Their Own Generations</em>, NeurIPS 2024</a>; measured).</li>
+<li><strong>Checking itself without outside input does not reliably help.</strong> Jie Huang and colleagues found that on reasoning tasks (GSM8K, CommonSenseQA, HotpotQA) GPT-3.5-Turbo and GPT-4 struggled to correct their own answers without external feedback, and that performance sometimes fell after self-correction (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2310.01798">Huang et al., <em>Large Language Models Cannot Self-Correct Reasoning Yet</em>, ICLR 2024</a>; models from the <a target="_blank" rel="noopener" href="https://arxiv.org/html/2310.01798v1">arXiv HTML version</a>; measured).</li>
+</ul>
+<p>What each kind of separation removes, by this unit's reasoning on those findings:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Check run by</th>
+<th>Removes the writer's conversation from the window</th>
+<th>Removes self-recognition</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The same chat, asked to review</td>
+<td>No</td>
+<td>No</td>
+<td>Huang et al.: no reliable gain without outside feedback</td>
+</tr>
+<tr>
+<td>The same model in a fresh context</td>
+<td>Yes</td>
+<td>No</td>
+<td>Inference from BW1 §1 (the window) and Panickssery et al.</td>
+</tr>
+<tr>
+<td>A different model in a fresh context</td>
+<td>Yes</td>
+<td>Yes, as far as the studies tested other makers' models</td>
+<td>Panickssery et al.; Zheng et al.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two limits. None of these studies tested a sibling model from the same vendor, such as one Claude model checking another; whether self-preference carries across siblings is untested in the sources cited. And all of them tested models of 2023 and 2024; carrying them to current models is this unit's inference.</p>
+<p><strong>The case</strong> (anecdote). Academy's method has one model write (Opus 5.5) and a different model audit (Fable 5.1) (Academy case file §2). Its fresh checks before filing were run by three models: Fable 5.1 checked 19 drafts, Opus 5.5 checked 12, Fable 5.2 checked 5; the checkers found at least one error in 15, 8 and 5 of them respectively, and 58 errors in all (counts from the table in Academy case file §5). So a checker of the model the method names as its writer (case file §2; the file does not record the writer of each draft), in a fresh context, still found errors in two thirds of the drafts it read. The units, courses and dates differ between the three groups and there is no control (case file §9), so the counts compare nothing; they show only that a fresh context of the writer's own model was not a blind spot in this project.</p>
+<figure class="viz viz-bars"><div class="viz-scroll" data-alt=""><svg viewBox="0 0 700 159" width="700" height="159" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="bars"><g data-box=""><rect class="viz-lblbg" x="8.0" y="8.0" width="120.5" height="20.0"/><rect class="viz-bar viz-t4" x="12.0" y="12.0" width="12" height="12"/><text class="viz-label" x="30.0" y="22.3" text-anchor="start">Drafts checked</text></g><g data-box=""><rect class="viz-lblbg" x="138.5" y="8.0" width="198.1" height="20.0"/><rect class="viz-bar viz-t1" x="142.5" y="12.0" width="12" height="12"/><text class="viz-label" x="160.5" y="22.3" text-anchor="start">Drafts with at least one error</text></g><path class="viz-base" d="M144.8,38.0 L144.8,155.0"/><text class="viz-label" x="134.8" y="59.8" text-anchor="end">Checked by Fable 5.1</text><rect class="viz-bar viz-t4" x="144.8" y="42.0" width="496.2" height="12"/><text class="viz-value" x="647.0" y="51.8">19</text><rect class="viz-bar viz-t1" x="144.8" y="57.0" width="391.7" height="12"/><text class="viz-value" x="542.6" y="66.8">15</text><text class="viz-label" x="134.8" y="100.8" text-anchor="end">Checked by Opus 5.5</text><rect class="viz-bar viz-t4" x="144.8" y="83.0" width="313.4" height="12"/><text class="viz-value" x="464.2" y="92.8">12</text><rect class="viz-bar viz-t1" x="144.8" y="98.0" width="208.9" height="12"/><text class="viz-value" x="359.8" y="107.8">8</text><text class="viz-label" x="134.8" y="141.8" text-anchor="end">Checked by Fable 5.2</text><rect class="viz-bar viz-t4" x="144.8" y="124.0" width="130.6" height="12"/><text class="viz-value" x="281.4" y="133.8">5</text><rect class="viz-bar viz-t1" x="144.8" y="139.0" width="130.6" height="12"/><text class="viz-value" x="281.4" y="148.8">5</text></svg><svg class="viz-alt" viewBox="0 0 258 235" width="258" height="235" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="bars"><g data-box=""><rect class="viz-lblbg" x="8.0" y="8.0" width="120.5" height="20.0"/><rect class="viz-bar viz-t4" x="12.0" y="12.0" width="12" height="12"/><text class="viz-label" x="30.0" y="22.3" text-anchor="start">Drafts checked</text></g><g data-box=""><rect class="viz-lblbg" x="8.0" y="32.0" width="198.1" height="20.0"/><rect class="viz-bar viz-t1" x="12.0" y="36.0" width="12" height="12"/><text class="viz-label" x="30.0" y="46.3" text-anchor="start">Drafts with at least one error</text></g><path class="viz-base" d="M8.0,62.0 L8.0,229.0"/><text class="viz-label" x="8.0" y="75.3" text-anchor="start">Checked by Fable 5.1</text><rect class="viz-bar viz-t4" x="8.0" y="82.0" width="206.3" height="12"/><text class="viz-value" x="220.3" y="91.8">19</text><rect class="viz-bar viz-t1" x="8.0" y="97.0" width="162.9" height="12"/><text class="viz-value" x="176.9" y="106.8">15</text><text class="viz-label" x="8.0" y="134.3" text-anchor="start">Checked by Opus 5.5</text><rect class="viz-bar viz-t4" x="8.0" y="141.0" width="130.3" height="12"/><text class="viz-value" x="144.3" y="150.8">12</text><rect class="viz-bar viz-t1" x="8.0" y="156.0" width="86.9" height="12"/><text class="viz-value" x="100.9" y="165.8">8</text><text class="viz-label" x="8.0" y="193.3" text-anchor="start">Checked by Fable 5.2</text><rect class="viz-bar viz-t4" x="8.0" y="200.0" width="54.3" height="12"/><text class="viz-value" x="68.3" y="209.8">5</text><rect class="viz-bar viz-t1" x="8.0" y="215.0" width="54.3" height="12"/><text class="viz-value" x="68.3" y="224.8">5</text></svg></div><figcaption>Academy (anecdote): fresh checks before filing, by checker model, and how many drafts had at least one error, counted from the table in Academy case file §5 (§5 of this unit). The method names Opus 5.5 as the writer (case file §2); the writer of each draft is not recorded. Different units and dates, no control: the groups are not comparable.</figcaption></figure>
+<p>The rule this course uses (stated opinion, on the findings above): the writer never checks its own text in the same conversation; a check runs in a fresh context at the least, by a different model where the stakes justify the cost, and the report records which model checked. How to check by sample, and what a clean sample proves, is BW6.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.8"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="21" data-rings="0"><circle class="ct-spot" cx="216" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="13" data-rings="0"><circle class="ct-spot" cx="408" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="51" data-rings="1"><path d="M528 60l-25 4-15 7-3 1 9 8 10 3 40 11 32 6 120 6M540 72l1 8 23 8 28 5 136 8M592 74l-10 6 34 8"/><circle class="ct-spot" cx="600" cy="80" r="7"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="157" data-rings="5"><path d="M664 48l-136 12M696 106l120 12 104 5 48 1 48-2M994 72l-43-8-47-12-48-8-40-2-56-1-48 2-48 5M688 55l-112 11-36 6M728 101l88 8 136 6 40-1M941 72l-61-14-32-5-40-3-40 0-40 2-40 3M680 64l-82 8-6 2M616 88l120 8 80 7 128 5 32-1M901 72l-45-10-24-3-32-2-40 0-80 7M752 64l-89 8-32 8 25 4 27 4 69 4 72 6 104 1 24-1 13-2M954 88l-114-22-40-3-48 1M736 72l-41 8 74 8 39 3 32 1 40-1 21-3-21-4-12-4-52-9-32-1z"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="62" data-rings="2"><path d="M1016 122l48-6 13-4 17-8 4-8-13-8-13-3-78-13M992 114l32-4 22-6 8-8-19-8-94-16M976 107l24-3 14-8-20-8-93-16M965 96l-11-8"/><circle class="ct-spot" cx="984" cy="96" r="7"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw2-3" data-step="3"><span>Previous · 4 of 10</span><b>Where quality differences show, and where they do not</b></a><a class="snext" href="#read-bw2-5" data-step="5"><span>Next · 6 of 10</span><b>A subscription against the API</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-bw2-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">A subscription against the API</span></span></h2>
+<p><strong>What a subscription buys (Anthropic, read 15 Nov 2026).</strong> Anthropic's pricing page lists Pro at $20 a month billed monthly or $17 a month billed annually ($200 up front); Max at $100 a month for 5 times Pro's usage every five hours and every week; and Ultra at $200 a month for 10 times Pro's weekly usage, with no five-hour limit for verified accounts. On Fable models, Pro pays with usage credits; Max and Ultra include them up to 50% of the weekly limit (<a target="_blank" rel="noopener" href="https://claude.com/max">Claude, <em>Pricing</em></a>, read 15 Nov 2026). A second copy of the same page, read the same day, listed Max at 5x or 20x Pro's usage and no Ultra (<a target="_blank" rel="noopener" href="https://claude.com/pricing?hsLang=en">Claude, <em>Pricing</em></a>, read 15 Nov 2026), and the help article on Max prices still lists Max 20x at $200 (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11049744-how-much-does-the-max-plan-cost">Claude Help Center, <em>How much does the Max plan cost?</em></a>, read 15 Nov 2026). Anthropic's help article on Ultra, read the same day, says the Max 20x plan is now called the Ultra plan (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/17728952">Claude Help Center, <em>What is the Ultra plan?</em></a>, read 15 Nov 2026), so the second copy and the Max price article are out of date; check the plan page on the day you buy.</p>
+<p><strong>How usage is metered.</strong> Every plan except Ultra on a verified account has a session limit that resets five hours after your first message (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/17728952"><em>What is the Ultra plan?</em></a>), and paid plans have weekly limits across all models, with a separate weekly limit for Fable on some plans. What you use depends on conversation length and complexity, features, the model and the effort level; claude.ai, Claude Code and Claude Desktop count toward the same limit (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work">Claude Help Center, <em>How do usage and length limits work?</em></a>, read 15 Nov 2026). Anthropic's list of what draws usage down names message length, attachment size, conversation length, tools such as Research and web search, model choice, effort level, artifacts and multi-step tasks, and says project content is cached and counts less when reused (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/9797557-usage-limit-best-practices">Claude Help Center, <em>Usage limit best practices</em></a>, read 15 Nov 2026). On plans where Fable counts toward weekly limits, it draws from them faster than other Claude models (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan">Claude Help Center, <em>Claude Fable models on your plan</em></a>, read 15 Nov 2026).</p>
+<p><strong>What Anthropic does not publish.</strong> None of these pages gives a rate per model: how much of a five-hour or weekly allowance one Opus turn uses against one Sonnet or Haiku turn. Inside a plan you pay in a share of an allowance, at an exchange rate that is not stated.</p>
+<p><strong>Where the two meet.</strong> Past your limits, usage credits keep you working at standard API rates, billed separately and bought in advance, on Pro, Max and Ultra (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans">Claude Help Center, <em>Manage usage credits for paid Claude plans</em></a>, read 15 Nov 2026). On Pro, every Fable run is on credits. So the API price list is the one published price that applies to a subscriber, at the margin.</p>
+<p><strong>What the API adds.</strong> You pay per token at the prices in the appendix, with no five-hour window. The Batch API halves input and output prices for work that can wait, which none of the plan pages read offers; cached input is billed at a fraction of the base rate, as project content counts less on a plan; web search costs $10 per 1,000 searches plus the tokens it adds (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/pricing?">Anthropic, <em>Pricing</em></a>, read 15 Nov 2026).</p>
+<p><strong>A sense of scale (arithmetic, illustrative).</strong> Pro's $20 a month buys, at API prices, one million Opus 5.5 output tokens, or about two of Artificial Analysis's index tasks on Opus 5.5 at max effort ($10.04 each, §1). Those tasks are long agentic jobs, larger than most chat turns; the point is only that a monthly fee and a per-task cost are of the same order for heavy work, and far apart for light work.</p>
+<p><strong>When which (stated opinion, on the documented mechanics above).</strong></p>
+<ul>
+<li><strong>Subscription</strong> for interactive work: drafting, critique, research you read as it runs, work whose volume varies by week. The fee caps what you spend, and the limits cap what you can do.</li>
+<li><strong>API</strong> for work that repeats at volume or runs without you (a batch of extractions, a scheduled check), for work you need to cost per task, and for anything that can wait for the batch discount. You need to write or run a small script, or use a tool that calls the API for you.</li>
+<li><strong>Both</strong>, with credits switched on, when a subscription carries the daily work and a few heavy runs would otherwise stop at a limit.</li>
+</ul>
+<p>Which plan the Academy project runs on is not recorded (Academy case file §7), so the case cannot illustrate this choice. How to keep a project inside its plan's limits, and what to keep out of the tool, is BW10.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.5"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="207" data-rings="5"><path d="M160 56l-16 3-8 4-28 17-20 8-10 8 0 8 10 6 16 5 16 3 32 1 64-2 16 2M272 66l-17-2-31-7-24-4-24 1-16 2M160 64l-16 5-17 11-19 8-8 8 6 8 22 6 32 1 64-3 16 2M256 74l-40-10-16-2-24-1-16 3M160 70l-8 3-11 7-17 8-7 8 11 7 16 3 24 0 56-5 16 0M248 81l-32-10-24-3-16 0-16 2M160 77l-22 11-3 8 9 3 24 2 32-3 13-2 13-8-10-8-24-6-16-1zM176 80l-8 2-13 6 5 5 8 2 8-1 16-2 10-4-10-6-5-2z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="178" data-rings="4"><path d="M232 119l24 6 16 2 16 1 24-1 16-3 8-3 31-17 57-14M240 110l32 8 16 2 16 0 16-3 8-2 18-11 36-16-8-8-30-4-88-2M240 101l8 1 29 10 11 1 16 0 16-3 28-14 5-8-17-5-16-2-72 0M280 87l-4 1-4 2-5 6 11 8 10 2 16 1 8-2 19-9-3-6-2-2-22-2z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="51" data-rings="1"><path d="M424 90l20-10-4-8-8-1-160-5"/><circle class="ct-spot" cx="416" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="69" data-rings="1"><path d="M512 69l-6 3 12 16 10 4 8 2 16 0 24-5 5-1 4-8-19-8-22-5-16-1z"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="78" data-rings="2"><path d="M720 85l-48-3-40 3-15 3-8 8 7 8 8 4 8 2 16 2 16-1 8-3 16-7 17-5 7-4 8-1 8 0"/><circle class="ct-spot" cx="656" cy="96" r="6"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="74" data-rings="1"><path d="M736 80l-16 5M728 91l24 7 16 2 16-1 32-2 8-2 13-7-13-6-8-2-48-4-16 1-16 3"/><circle class="ct-spot" cx="784" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="9" data-rings="0"><circle class="ct-spot" cx="896" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="40" data-rings="1"><circle class="ct-spot" cx="1024" cy="88" r="5"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw2-4" data-step="4"><span>Previous · 5 of 10</span><b>Self-preference, and why the check runs elsewhere</b></a><a class="snext" href="#read-bw2-6" data-step="6"><span>Next · 7 of 10</span><b>A rule for re-deciding when the lineup changes</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-bw2-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class="bt">A rule for re-deciding when the lineup changes</span></span></h2>
+<p>A routing table is a set of dated claims about prices, defaults and capability. Four kinds of change make it wrong without anyone touching it, and each has a dated instance in this unit's sources.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Instance</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A new model in a tier, at a new price</td>
+<td>Fable 5.2 at $8 / $40 beside Fable 5.1 at $10 / $50</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview"><em>Models overview</em></a>, read 15 Nov 2026</td>
+</tr>
+<tr>
+<td>A price with an announced date</td>
+<td>Gemini 3.8 Flash from $0.75 / $3.75 to $1.50 / $7.50 on 1 Jan 2027</td>
+<td><a target="_blank" rel="noopener" href="https://ai.google.dev/pricing">Google, Gemini API pricing page</a>, read 15 Nov 2026</td>
+</tr>
+<tr>
+<td>A default effort that moved</td>
+<td>Opus 5.5 defaults to medium; Opus 5 defaulted to high</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort"><em>Effort</em></a>, read 15 Nov 2026</td>
+</tr>
+<tr>
+<td>A name that resolves to a newer model, or a benchmark that changes version</td>
+<td>Academy's "fable" resolving to a newer version (case file §7); Intelligence Index v5</td>
+<td>Academy case file §4, §7; <a target="_blank" rel="noopener" href="https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5"><em>Announcing … v5</em></a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The rule</strong> (stated opinion; each step rests on the sources named in it):</p>
+<ol>
+<li><strong>Write each row by tier and effort, with the model and the date it was read.</strong> "Large, high; Opus 5.5, read 15 Nov 2026."</li>
+<li><strong>Re-decide on an event, and on a date.</strong> The events are the four in the table. The date is six months after the table was written: the interval Academy's method sets for its staleness check of any unit written with live search (Academy case file §2).</li>
+<li><strong>On an event, re-read before re-running.</strong> Read the vendor's models page, price page and effort page on the day; if a tier gained a model, read its default effort, since the same request can run at another level on a new model (Opus 5.5, above).</li>
+<li><strong>Test the change on your own work.</strong> Keep three past inputs per row whose good output you know. Run them on the new option at the row's effort, check each output the way the row's check says (BW6 for claims against sources), and compare with the old option on what you can see: errors found, reruns needed, and the cost or usage shown. A vendor benchmark ranks the options; your three runs decide. Anthropic's model page frames its own advice the same way, in terms of your evals (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview"><em>Models overview</em></a>), and OpenAI's guide advises evaluating effort levels against your own evals (<a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md"><em>Reasoning models</em></a>); grade: documented practice. If the new option is as good on all three inputs when checked, and costs less or uses less of the plan, change the row and log it (step 6); otherwise keep the row and re-date it with the day you re-read the pages (stated opinion).</li>
+<li><strong>Pin what can be pinned.</strong> Where a tool lets you name an exact model version, name it in the brief; where it does not, record which version ran (BW1 §5).</li>
+<li><strong>Change one row at a time, and log it</strong>: the row, from, to, the trigger, the date.</li>
+</ol>
+<figure class="viz viz-decision"><div class="viz-scroll"><svg viewBox="0 0 700 420" width="700" height="420" data-x0="114" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="decision"><path class="viz-link" d="M271.0,94.0 L271.0,106.0 L192.0,106.0 L192.0,135.0"/><path class="viz-head" d="M192.0,142.0 L188.0,135.0 L196.0,135.0 z"/><g data-box=""><rect class="viz-lblbg" x="181.6" y="112.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="192.0" y="124.3" text-anchor="middle">no</text></g><path class="viz-link" d="M271.0,94.0 L271.0,106.0 L350.0,106.0 L350.0,135.0"/><path class="viz-head" d="M350.0,142.0 L346.0,135.0 L354.0,135.0 z"/><g data-box=""><rect class="viz-lblbg" x="337.1" y="112.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="350.0" y="124.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M350.0,228.0 L350.0,240.0 L271.0,240.0 L271.0,269.0"/><path class="viz-head" d="M271.0,276.0 L267.0,269.0 L275.0,269.0 z"/><g data-box=""><rect class="viz-lblbg" x="260.6" y="246.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="271.0" y="258.3" text-anchor="middle">no</text></g><path class="viz-link" d="M350.0,228.0 L350.0,240.0 L429.0,240.0 L429.0,269.0"/><path class="viz-head" d="M429.0,276.0 L425.0,269.0 L433.0,269.0 z"/><g data-box=""><rect class="viz-lblbg" x="416.1" y="246.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="429.0" y="258.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M429.0,320.0 L429.0,332.0 L350.0,332.0 L350.0,361.0"/><path class="viz-head" d="M350.0,368.0 L346.0,361.0 L354.0,361.0 z"/><g data-box=""><rect class="viz-lblbg" x="337.1" y="338.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="350.0" y="350.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M429.0,320.0 L429.0,332.0 L508.0,332.0 L508.0,361.0"/><path class="viz-head" d="M508.0,368.0 L504.0,361.0 L512.0,361.0 z"/><g data-box=""><rect class="viz-lblbg" x="497.6" y="338.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="508.0" y="350.3" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-node viz-t4" x="201.0" y="8.0" width="140" height="86.0" rx="2"/><text class="viz-nodelabel" x="271.0" y="27.3" text-anchor="middle">Did a model, price,</text><text class="viz-nodelabel" x="271.0" y="41.3" text-anchor="middle">default or</text><text class="viz-nodelabel" x="271.0" y="55.3" text-anchor="middle">benchmark version</text><text class="viz-nodelabel" x="271.0" y="69.3" text-anchor="middle">change, or is the</text><text class="viz-nodelabel" x="271.0" y="83.3" text-anchor="middle">row six months old?</text></g><g data-box=""><rect class="viz-solid viz-t3" x="122.0" y="142.0" width="140" height="30.0" rx="2"/><text class="viz-ontone" x="192.0" y="161.3" text-anchor="middle">Keep the row</text></g><g data-box=""><rect class="viz-node viz-t4" x="280.0" y="142.0" width="140" height="86.0" rx="2"/><text class="viz-nodelabel" x="350.0" y="161.3" text-anchor="middle">On three past</text><text class="viz-nodelabel" x="350.0" y="175.3" text-anchor="middle">inputs, at the row&#x27;s</text><text class="viz-nodelabel" x="350.0" y="189.3" text-anchor="middle">effort, is the new</text><text class="viz-nodelabel" x="350.0" y="203.3" text-anchor="middle">option as good</text><text class="viz-nodelabel" x="350.0" y="217.3" text-anchor="middle">when checked?</text></g><g data-box=""><rect class="viz-solid viz-t3" x="201.0" y="276.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="271.0" y="295.3" text-anchor="middle">Keep the row;</text><text class="viz-ontone" x="271.0" y="309.3" text-anchor="middle">re-date it</text></g><g data-box=""><rect class="viz-node viz-t4" x="359.0" y="276.0" width="140" height="44.0" rx="2"/><text class="viz-nodelabel" x="429.0" y="295.3" text-anchor="middle">Does it cost less, or</text><text class="viz-nodelabel" x="429.0" y="309.3" text-anchor="middle">use less of the plan?</text></g><g data-box=""><rect class="viz-solid viz-t1" x="280.0" y="368.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="350.0" y="387.3" text-anchor="middle">Change the row; log</text><text class="viz-ontone" x="350.0" y="401.3" text-anchor="middle">it</text></g><g data-box=""><rect class="viz-solid viz-t3" x="438.0" y="368.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="508.0" y="387.3" text-anchor="middle">Keep the row;</text><text class="viz-ontone" x="508.0" y="401.3" text-anchor="middle">re-date it</text></g></svg></div><figcaption>The re-deciding rule in §7 of this unit (stated opinion), drawn as a decision; the triggers are the four kinds of change in its table, each with its dated source there.</figcaption></figure>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.2"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="35" data-rings="5"><path d="M160 56l-40 7-27 9-12 8-5 8 2 8 10 8 20 8 12 3 40 7 40 4 64 2 64-1 123-7 101-4 112-7 24 1 80 8M720 72l-24 0-136-13-248-10-88 1-32 2-32 4M200 64l-36 8-17 8-6 8 3 8 14 8 26 7 32 5 32 2 40 1 40-1 200-10 39-4 25-5 15-3 11-8-9-8-33-8-32-4-40-3-200-7-56 1zM224 72l-26 8-8 8 5 8 21 8 8 2 24 3 32 2 56 0 147-7 29-3 31-5 15-8-11-8-11-2-40-6-32-2-120-5-40 0-40 1zM296 72l-24 3-25 5-10 8 7 8 20 5 21 3 51 1 112-6 34-3 22-8-18-8-30-3-112-6zM320 80l-8 1-19 7 19 8 8 1 24 0 29-1 35-3 30-5-22-5-24-2-40-2z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="13" data-rings="2"><path d="M768 118l40 1 40 0 40-2 32-4 16-3 18-6-3-8-36-16-27-7-40-4-48-1-80 4M800 88l-8 8 8 4 16 3 32-1 16-3 9-3-17-7-8-2-24-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw2-5" data-step="5"><span>Previous · 6 of 10</span><b>A subscription against the API</b></a><a class="snext" href="#read-bw2-7" data-step="7"><span>Next · 8 of 10</span><b>On other tools</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-bw2-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">On other tools</span></span></h2>
+<p>The principles in §1 to §7 (cost per task, a price ladder of tiers, an effort dial, benchmarks read by who ran them and when, a check run outside the writer's context, a fee against a per-token price, a dated rule for re-deciding) hold for any current assistant. The detail is Claude's. Below, each Claude-specific claim, with the equivalent where the other vendor's own documentation was found (all read 15 Nov 2026). ChatGPT's plan page failed to load and was not checked; Google's consumer plan pages were not read for this unit.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Claim in this unit</th>
+<th>Claude</th>
+<th>ChatGPT / OpenAI API</th>
+<th>Gemini / Google API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thinking or reasoning is billed as output (§1)</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking?r=0"><em>Steering thinking</em></a></td>
+<td>Reasoning tokens billed as output and counted in the window: <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md"><em>Reasoning models</em></a></td>
+<td>Output plus thinking tokens; full thoughts billed when a summary is returned: <a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/generate-content/thinking?authuser=1"><em>Gemini thinking</em></a></td>
+</tr>
+<tr>
+<td>A price ladder of small, mid and large models (§2)</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview"><em>Models overview</em></a></td>
+<td><a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/pricing"><em>Pricing</em></a>; smaller models for cost: <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md"><em>Reasoning models</em></a></td>
+<td>Flash and Flash-Lite prices: <a target="_blank" rel="noopener" href="https://ai.google.dev/pricing">Gemini API pricing page</a>; Argon as flagship: <a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/models/gemini-4-argon"><em>Gemini 4 Argon</em></a></td>
+</tr>
+<tr>
+<td>Effort levels and per-model defaults (§3)</td>
+<td>Five levels; Opus 5.5 and Haiku 5.5 default medium: <a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort"><em>Effort</em></a></td>
+<td>Model-dependent levels from none to max; GPT-6.1 Sol default medium: <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md"><em>Reasoning models</em></a></td>
+<td>thinkingLevel low, medium, high; Argon default medium: <a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/generate-content/thinking?authuser=1"><em>Gemini thinking</em></a></td>
+</tr>
+<tr>
+<td>Thinking cannot be switched off on the top models (§3)</td>
+<td>Opus 5.5 always on: <a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort"><em>Effort</em></a></td>
+<td>GPT-6.1 Sol supports neither none nor minimal: <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md"><em>Reasoning models</em></a></td>
+<td>Gemini 4 Argon cannot disable thinking: <a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/generate-content/thinking?authuser=1"><em>Gemini thinking</em></a></td>
+</tr>
+<tr>
+<td>Lower the effort before prompting around thinking (§3)</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking?r=0"><em>Steering thinking</em></a></td>
+<td>Effort as a tuning knob; prompts and output contracts matter more: <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md"><em>Reasoning models</em></a></td>
+<td>Lower the level to cut cost or latency: <a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/generate-content/thinking?authuser=1"><em>Gemini thinking</em></a></td>
+</tr>
+<tr>
+<td>Batch work at half price (§6)</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/pricing?"><em>Pricing</em></a></td>
+<td>The Flex/Batch table lists half the standard prices; the page does not state the discount in words: <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/pricing"><em>Pricing</em></a></td>
+<td>Batch API at 50% cost reduction: <a target="_blank" rel="noopener" href="https://ai.google.dev/pricing">Gemini API pricing page</a></td>
+</tr>
+<tr>
+<td>Subscription limits, per-model usage rates unpublished (§6)</td>
+<td><a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"><em>How do usage and length limits work?</em></a></td>
+<td>Not checked: the plan page failed to load</td>
+<td>Not checked for this unit</td>
+</tr>
+<tr>
+<td>Model-or-effort diagnostic (§3)</td>
+<td><a target="_blank" rel="noopener" href="https://www.claude.com/blog/claude-model-and-effort-level-in-claude-code">Hallie, Claude blog</a> (practice)</td>
+<td>No equivalent found in the pages read</td>
+<td>Level by task complexity: <a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/generate-content/thinking?authuser=1"><em>Gemini thinking</em></a></td>
+</tr>
+</tbody>
+</table></div>
+<p>The research in §4 and §5 is not Claude-specific: the studies whose pages name their models tested OpenAI, Meta and Mistral models released in 2023 (GPT-3.5-Turbo, GPT-4, Llama 2, Mixtral 8x7B), and none tested a model current on 15 Nov 2026 from any vendor.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.9"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="92" data-rings="5"><path d="M312 47l-40 7-65 18-71 14-10 2-21 8-6 8 10 8 19 6 16 3 48 5 80 2 112-3 112-8 96-12 32-3M632 90l-24-6-40-20-16-5-24-6-24-4-48-5-48-2-56 1-40 4M336 55l-40 6-40 11-76 16-19 8 1 8 14 5 16 4 40 4 56 2 56-1 72-4 56-5 35-5 28-8 7-8-5-8-12-8-22-8-23-5-32-4-40-2-40 0zM336 63l-24 4-51 13-40 8-16 8 10 8 17 3 32 4 40 1 48-1 64-4 32-3 32-6 9-2 10-8-5-8-15-8-31-7-24-3-32-1-32 0zM336 71l-77 17-11 8 16 5 16 3 56 1 72-4 37-5 15-8-6-8-14-5-16-4-24-2-24-1zM344 79l-39 9 6 8 25 1 39-1 25-4 15-4-15-8-32-2z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="44" data-rings="2"><path d="M624 102l80 10 32 2 184 1 32-2 24-5 15-4 4-8-14-8-31-8-30-4-40-2-56 1-176 15-16 0M800 88l-54 8 14 6 8 2 32 2 88-1 18-1 16-8-21-8-21-2-32-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw2-6" data-step="6"><span>Previous · 7 of 10</span><b>A rule for re-deciding when the lineup changes</b></a><a class="snext" href="#read-bw2-8" data-step="8"><span>Next · 9 of 10</span><b>The lineup on 15 November 2026</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-bw2-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class=bk>Appendix</span><span class="bt">The lineup on 15 November 2026</span></span></h2>
+<p>Read on the vendors' own pages on 15 November 2026. Re-read before relying on any of it.</p>
+<p><strong>Anthropic, current models</strong> (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview"><em>Models overview</em></a>; <a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/pricing?"><em>Pricing</em></a>; <a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/effort"><em>Effort</em></a>)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>API ID</th>
+<th>Input / output, USD per million tokens</th>
+<th>Cache read</th>
+<th>Default effort (API)</th>
+<th>Thinking</th>
+<th>Window / max output</th>
+<th>Anthropic's positioning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fable 5.2</td>
+<td>claude-fable-5-2</td>
+<td>$8 / $40</td>
+<td>$0.20</td>
+<td>high</td>
+<td>adaptive, always on</td>
+<td>1M / 128K</td>
+<td>demanding reasoning and long-horizon agentic work</td>
+</tr>
+<tr>
+<td>Opus 5.5</td>
+<td>claude-opus-5-5</td>
+<td>$4 / $20</td>
+<td>$0.20</td>
+<td>medium</td>
+<td>adaptive, always on</td>
+<td>1M / 128K</td>
+<td>long-running agentic coding and knowledge work</td>
+</tr>
+<tr>
+<td>Sonnet 5.5</td>
+<td>claude-sonnet-5-5</td>
+<td>$2 / $10</td>
+<td>$0.10</td>
+<td>high</td>
+<td>adaptive</td>
+<td>1M / 128K</td>
+<td>the best combination of speed and intelligence</td>
+</tr>
+<tr>
+<td>Haiku 5.5</td>
+<td>claude-haiku-5-5</td>
+<td>$0.10 / $0.50 for prompts up to 100,000 tokens; $0.50 / $2.50 over</td>
+<td>$0.01; $0.05 over</td>
+<td>medium</td>
+<td>adaptive</td>
+<td>1M / 128K</td>
+<td>high-volume, latency-sensitive tasks such as classification, extraction and routing</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rules on the pricing page that change a task's cost: a Haiku 5.5 request whose prompt is over 100,000 tokens, cache reads and writes included, pays the higher prices for the whole request; every other model above bills its full 1M window at one rate; the Batch API takes 50% off input and output; web search is $10 per 1,000 searches plus tokens; Claude 4.7 and later models use a tokenizer that produces about 30% more tokens for the same text; US-only inference costs 1.1 times; fast mode, on Fable 5.2 and Opus 5.5 among others, costs $16 / $80 and $8 / $40 respectively (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/pricing?"><em>Pricing</em></a>). All four models have a June 2026 reliable knowledge cutoff (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/models/overview"><em>Models overview</em></a>). Still listed with prices: Fable 5.1 at $10 / $50, Opus 5 at $5 / $25, Sonnet 5 at $2 / $10 (same page). The context window in the claude.ai chat differs from the API's and is in BW1 §1, dated; re-read it on the help centre on the day.</p>
+<p><strong>Anthropic, plans</strong> (<a target="_blank" rel="noopener" href="https://claude.com/max">Claude, <em>Pricing</em></a>; <a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan"><em>Claude Fable models on your plan</em></a>; <a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"><em>How do usage and length limits work?</em></a>; <a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans"><em>Manage usage credits for paid Claude plans</em></a>)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Price (USD)</th>
+<th>Usage</th>
+<th>Fable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Free</td>
+<td>$0</td>
+<td>limited</td>
+<td>not available</td>
+</tr>
+<tr>
+<td>Pro</td>
+<td>$20 a month, or $17 a month billed annually ($200 up front)</td>
+<td>more than Free, every five hours and every week</td>
+<td>on usage credits</td>
+</tr>
+<tr>
+<td>Max</td>
+<td>$100 a month</td>
+<td>5x Pro, every five hours and every week</td>
+<td>up to 50% of weekly limits</td>
+</tr>
+<tr>
+<td>Ultra</td>
+<td>$200 a month</td>
+<td>10x Pro every week; no five-hour limit for verified accounts</td>
+<td>up to 50% of weekly limits</td>
+</tr>
+<tr>
+<td>Team</td>
+<td>standard seat $20 a month billed annually or $25 monthly; premium seat $100 or $125; 2 to 150 seats</td>
+<td>not stated on this copy of the page</td>
+<td>premium seats up to 50% of weekly limits; standard seats on credits</td>
+</tr>
+<tr>
+<td>Enterprise</td>
+<td>$20 a seat a month billed annually, 20-seat minimum, plus usage at API rates</td>
+<td>billed at API rates</td>
+<td>included, per the pricing page; the Fable help article sets premium seats on seat-based plans to the Max rules and standard seats to credits</td>
+</tr>
+</tbody>
+</table></div>
+<p>Limits reset five hours after the first message of a session, except on Ultra for verified accounts; weekly limits apply across all models; claude.ai, Claude Code and Claude Desktop share one limit; usage credits bill overage at standard API rates on Pro, Max and Ultra. Anthropic publishes no per-model usage rate. A second copy of the pricing page, read the same day, showed Max at 5x or 20x and no Ultra; Anthropic's Ultra help article says Max 20x is now called Ultra (§6).</p>
+<p><strong>OpenAI, pointer row.</strong> API standard prices per million tokens: gpt-6-astra $10 / $50, gpt-6.1-sol $2 / $10, gpt-6.1-terra $1 / $5, gpt-6-luna $0.10 / $0.50 (<a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/pricing">OpenAI, <em>Pricing</em></a>); effort levels and defaults by model (<a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/reasoning.md">OpenAI, <em>Reasoning models</em></a>). ChatGPT plan prices and limits: not checked (the plan page failed to load).</p>
+<p><strong>Google, pointer row.</strong> Gemini 3.8 Flash $0.75 / $3.75 to 31 December 2026, $1.50 / $7.50 from 1 January 2027; Gemini 3.5 Flash-Lite $0.30 / $2.50; output prices include thinking tokens (<a target="_blank" rel="noopener" href="https://ai.google.dev/pricing">Gemini API pricing page</a>). Gemini 4 Argon: 1,048,576-token window, thinking at low, medium or high, no price on its model page (<a target="_blank" rel="noopener" href="https://ai.google.dev/gemini-api/docs/models/gemini-4-argon"><em>Gemini 4 Argon</em></a>, last updated 30 Oct 2026). Gemini consumer plans: not checked.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.6"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="17" data-rings="0"><circle class="ct-spot" cx="192" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="11" data-rings="0"><circle class="ct-spot" cx="328" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="172" data-rings="5"><path d="M328 48l-32 7-19 9-14 16 4 8 20 8 25 7 32 5 40 2 129 2 135 4M704 70l-96-10-76-4-44-6-56-6-56 0-48 4M360 55l-24 5-11 4-5 4-4 4-2 8 4 8 18 8 8 1 32 4 32 2 264 5M680 77l-64-9-88-6-80-9-48-1-40 3M368 64l-17 8-2 8 3 2 8 6 8 3 16 3 24 3 40 2 88 1 96-2 72 1M664 86l-20-6-44-8-88-6-56-6-48-1-24 2-16 3M392 70l-7 2-3 8 10 5 5 3 11 2 32 3 80 1 48-2 33-4 1-8-42-6-64-4-48-5-32 0zM440 72l-8 1-13 7 21 6 16 2 72 0 8-2 11-6-59-4-25-4z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="29" data-rings="0"><circle class="ct-spot" cx="600" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="83" data-rings="2"><path d="M648 116l88-1 64 1 40-1 32-2M744 71l-40-1M672 108l152-1 45-3M792 81l-80-2-32-2M704 99l80-3-48-5-48-1-24-4"/><circle class="ct-spot" cx="736" cy="96" r="8"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="53" data-rings="1"><path d="M872 113l80-9M880 70l-136 1M869 104l59-10M904 79l-112 2"/><circle class="ct-spot" cx="872" cy="88" r="7"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="69" data-rings="2"><path d="M952 104l64-4 59-12 26-8-3-8-18-5-32-5-32-3-48 1-56 8-32 2M928 94l80-5 39-9-20-8-27-2-24 1-40 6-32 2"/><circle class="ct-spot" cx="1008" cy="80" r="7"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw2-7" data-step="7"><span>Previous · 8 of 10</span><b>On other tools</b></a><a class="snext" href="#read-bw2-9" data-step="9"><span>Next · 10 of 10</span><b>A routing table</b></a></nav></section><section class="sec" data-step="9"><h2 id="read-bw2-9" class="band"><span class="bn" aria-hidden="true">10</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A routing table</span></span></h2>
+<p>Two parts. Part 1 is the routing table for ten common project tasks, worked on the Academy case: each task with its tier, its effort, the reason and an override trigger, and a last column saying what the case file records about that task. Where the case file records no model for a task, the row is this unit's routing of it, built from the evidence in §1 to §7; it is not a description of what the project did. Models and defaults are as read on 15 November 2026 (appendix). Part 2 is the template with blank rows. BW7 assigns a model to each stage of a pipeline from this table, and BW10 sets a usage budget per row.</p>
+<h3>Part 1 · The routing table, on the Academy case</h3>
+<p>Tiers: <strong>small</strong> (Haiku 5.5), <strong>mid</strong> (Sonnet 5.5), <strong>large</strong> (Opus 5.5), <strong>large, top rung</strong> (Fable 5.2). "Override" moves one step, once, when its trigger fires; a second firing on the same row in a month re-opens the row (rule 4 below).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Academy instance</th>
+<th>Tier · model, effort</th>
+<th>Reason (evidence)</th>
+<th>Override trigger</th>
+<th>What the case file records</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Triage and reformatting</strong></td>
+<td>Sorting the proposed rows a chat adds to the backlog (case file §2); the case file records no separate triage step, so the instance is this unit's example</td>
+<td>Small · Haiku 5.5, low</td>
+<td>Fully specified by its input; Anthropic positions Haiku for classification and routing, and its effort page sets low for simple, high-volume requests (§2, §3); routing studies find the cheap model already answers such requests well (§4)</td>
+<td>The sort needs a judgement of priority, or a misfiled row would pass unseen: mid, medium</td>
+<td>No model recorded for this task</td>
+</tr>
+<tr>
+<td><strong>2. Extraction to a table</strong></td>
+<td>The table of fresh-check findings per unit: 36 units, three counts each (case file §5)</td>
+<td>Small · Haiku 5.5, high; totals by script</td>
+<td>Extraction is Haiku's documented use; high is Anthropic's level for strict instruction following, and at low Haiku is more likely to skip a check (§3); numbers come from code because model outputs vary between runs (§4; BW1 §5)</td>
+<td>The extraction needs reading judgement, such as naming the kind of each error: mid, medium. A total that does not add up: recompute by script, never by the model</td>
+<td>Totals of 58 errors, 237 should-fix and 303 minor; no model recorded for compiling them</td>
+</tr>
+<tr>
+<td><strong>3. Summary for a named reader</strong></td>
+<td>A fresh check's findings, which a maintainer verifies one by one before applying them (case file §2); a summary of them for the maintainer is this unit's example, not a task the case file records</td>
+<td>Mid · Sonnet 5.5, medium</td>
+<td>Well-scoped writing from given material; on Anthropic's knowledge-work figures Sonnet sits close to Opus (§4, vendor); low and medium suit routine work on claude.ai (§3)</td>
+<td>The summary must weigh several reports or decide what matters most: large, medium</td>
+<td>No model recorded for this task</td>
+</tr>
+<tr>
+<td><strong>4. A long first draft</strong></td>
+<td>A unit: a long-form report of 2,000 to 6,000 words by guide, sources cited in place, closing deliverable built in full (case file §1); 194 units written by 11 Nov 2026</td>
+<td>Large · Opus 5.5, high</td>
+<td>The method's writing model (case file §2); Anthropic positions Opus for long-running knowledge work (§2); on the third-party index, medium to high adds 4 points for 36% more time per task (§3)</td>
+<td>The draft skipped a search, a source or a check: xhigh. It had its sources, clearly tried, and its reasoning is still wrong: top rung, high (§3, diagnostic)</td>
+<td>Opus 5.5 writes (§2); the effort used is not recorded</td>
+</tr>
+<tr>
+<td><strong>5. Critique of a draft</strong></td>
+<td>The fresh check: every cited claim against its source and the deliverable against the brief, by a context that has not seen the unit written; it lists findings and never edits (case file §2)</td>
+<td>Large, in a fresh context, a model other than the writer's where affordable · Fable 5.2, high</td>
+<td>Self-preference and failed self-correction (§5); Anthropic's guidance for Fable 5.2 is to start at high (§3)</td>
+<td>Fable is out of budget (on Pro it runs on credits, §6): Opus 5.5, high, in a fresh context, and the report says the checker was the writer's model. A check that finds nothing in a long draft: a second check by another model</td>
+<td>Checkers: Fable 5.1 on 19 drafts, Opus 5.5 on 12, Fable 5.2 on 5; 28 of the 36 drafts had at least one error (case file §5)</td>
+</tr>
+<tr>
+<td><strong>6. Research with search</strong></td>
+<td>The searched reading behind a unit whose facts change, which the method marks as written with live search (case file §2)</td>
+<td>Large · Opus 5.5, medium</td>
+<td>Multi-step searched work; Humanity's Last Exam with tools: Opus 5.5 67.7%, Sonnet 5.5 64.5%, Haiku 5.5 57.4% (§4, vendor, two pages); at low effort a model is more likely to skip a search or stop early (§3); search draws usage on any model (§6)</td>
+<td>It skipped sources or stopped early: high. A single factual lookup: mid, low</td>
+<td>No model recorded for searching apart from writing</td>
+</tr>
+<tr>
+<td><strong>7. Deep research</strong></td>
+<td>The research report the first three units of one of the project's courses were written from, produced by research agents across five tracks (case file §3)</td>
+<td>Large · Opus 5.5 as lead, xhigh; top rung if Opus at xhigh falls short</td>
+<td>Long-horizon multi-agent work, which is what xhigh is for (§3); Anthropic's advice is to start on Opus and move to Fable when Opus at higher effort falls short (§2)</td>
+<td>Always, before anything is built on it: sample its claims against their sources (BW6). If its claims feed several units, check before writing them</td>
+<td>The agents' model is not recorded. Audit 1 failed 23 of 91 claims in the three units written from it, with nothing invented; the pattern was qualifiers the source does not carry (case file §3)</td>
+</tr>
+<tr>
+<td><strong>8. A code change</strong></td>
+<td>A change to the scripts that build the site from the repository and draw the figures (case file §1, §6)</td>
+<td>Mid · Sonnet 5.5, medium</td>
+<td>Anthropic's Sonnet guidance: medium for well-specified agentic coding, high for harder or longer tasks (§3); on Terminal-Bench 4.0 Sonnet 5.5 is not behind Opus 5.5 in Anthropic's figures (§4, vendor); Sonnet or Opus over Haiku for complex agentic coding (§2)</td>
+<td>It skipped a test or a file: high. It had full context, tried and failed: large, high</td>
+<td>No model recorded for code changes</td>
+</tr>
+<tr>
+<td><strong>9. An audit against sources</strong></td>
+<td>The sample audit: one claim drawn from every section of each unit, checked against its source; more than one in ten failing sends the unit to a full audit (case file §2)</td>
+<td>Large, top rung, a different model from the writer · Fable 5.2, high</td>
+<td>A different model removes self-recognition as far as the studies tested (§5); the method's audit model differs from its writer (case file §2); Fable 5.2 has the highest third-party index score (§1); start at high (§3)</td>
+<td>Pin the version and record it, since a model name can resolve to a newer model (§2). Out of budget (on Max or Ultra, Fable uses up to half the weekly limit and draws faster, §6): Opus 5.5, high, fresh context, recorded as such</td>
+<td>Fable 5.1 audits (§2); Audit 2: 28 claims sampled, 96 checked, ten stale from one benchmark version change (§4)</td>
+</tr>
+<tr>
+<td><strong>10. A plan or spec</strong></td>
+<td>A course syllabus: a goal in one sentence, three measurable outcomes, eight to twelve core units and two or three deep dives, each with a scope, a deliverable and a brief (case file §2)</td>
+<td>Large · Opus 5.5, high</td>
+<td>Open-ended judgement with no input that fixes the answer; Anthropic's advice is to start on Opus 5.5 (§2)</td>
+<td>The plan fails review on its reasoning, with the needed inputs present: top rung, high</td>
+<td>No model recorded for syllabus work</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rules for using the table</strong></p>
+<ol>
+<li><strong>Set both dials before the first message</strong> and keep them for that piece of work; on the API an effort change mid-session can invalidate the cache (§3).</li>
+<li><strong>Escalate by cause.</strong> Missing context: fix the window (BW1 §9). Skipped steps: raise effort one level. Full context, real attempt, still wrong: one tier up (§3). Grade: documented practice (Hallie) with this unit's first step added.</li>
+<li><strong>Never trust one run of anything that will be published or filed.</strong> Its claims are sampled against their sources by a check run outside the writer's context (§5; BW6).</li>
+<li><strong>Log every override</strong> (row, from, to, trigger, date). Two firings on one row in a month re-open the row under the rule in §7. The threshold is this unit's stated opinion.</li>
+<li><strong>Re-decide on an event and on a date</strong>: a new model in a tier, a price change, a moved default, a name or benchmark version change, or six months, here 15 May 2027 (§7).</li>
+</ol>
+<p><em>Sources for Part 1:</em> the evidence is §1 to §7 of this unit, each cell pointing to its section; Academy facts are from Academy case file §1 (unit length, count), §2 (method, models), §3 (Audit 1), §4 (Audit 2), §5 (fresh checks), §6 (figures by script). The case file holds no record of cost per unit, of the plan used, or of which model ran triage, extraction, summaries, searching, code or syllabus work (§9; §7 note).</p>
+<h3>Part 2 · Template: your routing table</h3>
+<p>Copy the table, keep the ten task names, and fill each blank; add rows for recurring tasks of your own. Fill the "Read on" column with the date you read the vendor's pages, and leave a row blank until you have three past inputs for it whose good output you know (§7, rule 4). Each blank says what goes in it.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Your instance</th>
+<th>How often</th>
+<th>Tier · model, effort</th>
+<th>Reason (evidence)</th>
+<th>Override trigger</th>
+<th>Read on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Triage and reformatting</td>
+<td>[<em>the recurring sort or reformat in your project, with an example input</em>]</td>
+<td>[<em>times a week or month</em>]</td>
+<td>[<em>small, mid or large · the model in that tier on your tool, and the effort level</em>]</td>
+<td>[<em>why this tier: is the output fully set by the input, can you check it at a glance; cite §2 to §4 or your own runs</em>]</td>
+<td>[<em>what you will see when it fails, and the one step it moves to</em>]</td>
+<td>[<em>date you read the vendor's model and price pages</em>]</td>
+</tr>
+<tr>
+<td>2. Extraction to a table</td>
+<td>[<em>the documents and the columns you extract</em>]</td>
+<td>[<em>how many documents, how often</em>]</td>
+<td>[<em>tier · model, effort; and whether totals come from a script</em>]</td>
+<td>[<em>why; note whether a wrong cell would be visible</em>]</td>
+<td>[<em>the error that sends it up a tier, or to a script</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+<tr>
+<td>3. Summary for a named reader</td>
+<td>[<em>the material, and who reads the summary</em>]</td>
+<td>[<em>how often</em>]</td>
+<td>[<em>tier · model, effort</em>]</td>
+<td>[<em>why; how much judgement the summary needs</em>]</td>
+<td>[<em>the sign the summary misjudged what matters</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+<tr>
+<td>4. A long first draft</td>
+<td>[<em>the document, its length and its sources</em>]</td>
+<td>[<em>how many, how often</em>]</td>
+<td>[<em>tier · model, effort</em>]</td>
+<td>[<em>why; cite §2 to §4</em>]</td>
+<td>[<em>skipped steps: effort up; wrong with full context: tier up</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+<tr>
+<td>5. Critique of a draft</td>
+<td>[<em>what is checked, against what</em>]</td>
+<td>[<em>how often</em>]</td>
+<td>[<em>tier · model, effort; and whether it is a different model from the writer, in a fresh context</em>]</td>
+<td>[<em>why; cite §5</em>]</td>
+<td>[<em>what you do when the checker finds nothing, or when the stronger checker is out of budget</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+<tr>
+<td>6. Research with search</td>
+<td>[<em>the questions that need current sources</em>]</td>
+<td>[<em>how often</em>]</td>
+<td>[<em>tier · model, effort</em>]</td>
+<td>[<em>why</em>]</td>
+<td>[<em>skipped sources: effort up; single lookup: tier down</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+<tr>
+<td>7. Deep research</td>
+<td>[<em>the multi-source report you commission</em>]</td>
+<td>[<em>how often</em>]</td>
+<td>[<em>tier · model, effort</em>]</td>
+<td>[<em>why; and the check every claim gets before use</em>]</td>
+<td>[<em>the result of that check that makes you rerun or discard</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+<tr>
+<td>8. A code change</td>
+<td>[<em>the script, sheet formula or small tool you change</em>]</td>
+<td>[<em>how often</em>]</td>
+<td>[<em>tier · model, effort</em>]</td>
+<td>[<em>why; cite §3 and §4</em>]</td>
+<td>[<em>skipped tests: effort up; failed with full context: tier up</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+<tr>
+<td>9. An audit against sources</td>
+<td>[<em>the text audited, and the sampling rule from BW6</em>]</td>
+<td>[<em>how often</em>]</td>
+<td>[<em>tier · model, effort; a model other than the writer's</em>]</td>
+<td>[<em>why; cite §5</em>]</td>
+<td>[<em>what you do when that model is unavailable, and how you record it</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+<tr>
+<td>10. A plan or spec</td>
+<td>[<em>the plan you write for your project (BW5)</em>]</td>
+<td>[<em>how often</em>]</td>
+<td>[<em>tier · model, effort</em>]</td>
+<td>[<em>why</em>]</td>
+<td>[<em>the review result that sends it up a tier</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+<tr>
+<td>[<em>a recurring task of your own</em>]</td>
+<td>[<em>example input</em>]</td>
+<td>[<em>how often</em>]</td>
+<td>[<em>tier · model, effort</em>]</td>
+<td>[<em>why</em>]</td>
+<td>[<em>trigger</em>]</td>
+<td>[<em>date</em>]</td>
+</tr>
+</tbody>
+</table></div>
+<p>Under the table, keep the five rules above as they are, and one line: <strong>Re-decide by</strong> [<em>the date six months after the "Read on" dates, and the vendor pages you will re-read on that day</em>].</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.3"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="120" data-rings="5"><path d="M168 56l-32 4-32 7-17 5-14 8-2 8 7 8 13 8 29 13 32 7 40 3 48-1 24-4 40-12 8-1 48 2M320 63l-16-5-16-3-24-3-32-1-32 1-32 4M176 63l-32 5-24 5-16 7-3 8 8 8 14 8 13 5 24 6 40 3 40-2 24-6 24-12 32-7M320 84l-3-4-13-8-16-6-16-3-24-3-24 0-48 3M160 72l-31 8-6 8 9 8 18 8 18 5 24 2 32-1 24-5 31-17 9-8-14-8-18-4-16-1-40 0zM160 79l-6 1-10 8 11 8 21 7 24 2 24-2 16-5 14-10 8-8-22-6-24-2-24 2zM200 80l-16 2-14 6 17 8 13 1 17-1 13-8-4-8z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="40" data-rings="1"><path d="M360 111l32-2 19-5 8-8-19-8-42-8-38-17M320 91l8-3-8-4"/><circle class="ct-spot" cx="360" cy="96" r="6"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="5" data-rings="0"><circle class="ct-spot" cx="520" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="76" data-rings="3"><path d="M656 56l-40 6-16 5-12 5-4 8 10 8 22 10 32 8 24 3 32 0 48-4 16 0M760 58l-24-4-40-1-40 3M664 64l-24 4-16 4-7 8 11 8 20 7 24 4 32 0 24-3 31-8M755 80l-2-8-17-6-16-3-16-1-40 2M672 71l-8 2-17 7 17 8 16 2 24-1 5-1 7-8-3-8-17-2z"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="61" data-rings="2"><path d="M768 105l32 10 16 4 16 1 24 0 24-2 16-4 24-10 16-4 16 0M920 83l-56-7-57-4-15-3-32-11M759 88l-4-8M776 88l-3 0 11 4 5 4 27 10 16 3 24 0 16-3 6-2 10-8-11-8-29-3-40-1z"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="37" data-rings="1"><path d="M952 100l40 2 24-1 17-5 11-8 6-8-18-5-16-1-24 2-48 6-24 1"/><circle class="ct-spot" cx="1000" cy="88" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw2-8" data-step="8"><span>Previous · 9 of 10</span><b>The lineup on 15 November 2026</b></a><a class="snext send" href="#read-bw2-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-bw2-sources"><summary><span class="at" id="read-bw2-10">Sources</span><span class="an">37</span></summary><div class="accb">
+<p>All web pages read on 15 November 2026. Most vendor documentation and help-centre pages show no exact date; where a page gives one, it is listed.</p>
+<p><strong>Vendor documentation and statements: Anthropic</strong></p>
+<ul>
+<li>Anthropic. <em>Models overview</em>. Claude Platform Docs. https://<wbr>platform<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>models/<wbr>overview</li>
+<li>Anthropic. <em>Pricing</em>. Claude Platform Docs. https://<wbr>platform<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>about-claude/<wbr>pricing?</li>
+<li>Anthropic. <em>Effort</em>. Claude Platform Docs. https://<wbr>platform<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>build-with-claude/<wbr>effort</li>
+<li>Anthropic. <em>Steering thinking</em>. Claude Platform Docs. https://<wbr>platform<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>build-with-claude/<wbr>adaptive-thinking?r=0</li>
+<li>Anthropic. <em>What's new in Claude Fable 5.2</em>. Claude Platform Docs. https://<wbr>platform<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>models/<wbr>fable-5-2/<wbr>whats-new-fable-5-2</li>
+<li>Anthropic. <em>Introducing Claude Opus 5.5</em>. 22 September 2026. https://<wbr>anthropic<wbr>.com/<wbr>news/<wbr>claude-opus-5-5</li>
+<li>Anthropic. <em>Introducing Claude Haiku 5.5</em>. 7 October 2026. https://<wbr>anthropic<wbr>.com/<wbr>claude-haiku-5-5</li>
+<li>Hallie, L. (Claude Code team, Anthropic). <em>Choosing a Claude model and effort level in Claude Code</em>. Claude blog, 7 July 2026 (practice). https://<wbr>www<wbr>.claude<wbr>.com/<wbr>blog/<wbr>claude-model-and-effort-level-in-claude-code</li>
+<li>Claude. <em>Pricing</em> (plans page). https://<wbr>claude<wbr>.com/<wbr>max</li>
+<li>Claude. <em>Pricing</em> (a second copy of the plans page, served the same day with a different plan list). https://<wbr>claude<wbr>.com/<wbr>pricing?hsLang=en</li>
+<li>Claude Help Center. <em>How much does the Max plan cost?</em> https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>11049744-how-much-does-the-max-plan-cost</li>
+<li>Claude Help Center. <em>What is the Ultra plan?</em> https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>17728952</li>
+<li>Claude Help Center. <em>How do usage and length limits work?</em> https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>11647753-how-do-usage-and-length-limits-work</li>
+<li>Claude Help Center. <em>Usage limit best practices</em>. https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>9797557-usage-limit-best-practices</li>
+<li>Claude Help Center. <em>Claude Fable models on your plan</em>. https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>15424964-claude-fable-models-on-your-plan</li>
+<li>Claude Help Center. <em>Manage usage credits for paid Claude plans</em>. https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>12429409-manage-usage-credits-for-paid-claude-plans</li>
+<li>Claude Help Center. <em>Change the model, effort, and thinking settings</em>. https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>8664678-change-the-model-effort-and-thinking-settings</li>
+</ul>
+<p><strong>Vendor documentation: OpenAI and Google</strong></p>
+<ul>
+<li>OpenAI. <em>Pricing</em>. OpenAI API docs. https://<wbr>developers<wbr>.openai<wbr>.com/<wbr>api/<wbr>docs/<wbr>pricing</li>
+<li>OpenAI. <em>Reasoning models</em>. OpenAI API docs. https://<wbr>developers<wbr>.openai<wbr>.com/<wbr>api/<wbr>docs/<wbr>guides/<wbr>reasoning<wbr>.md</li>
+<li>Google. Gemini API pricing page, Google AI for Developers, read 15 November 2026 (no headline shown in the copy read). https://<wbr>ai<wbr>.google<wbr>.dev/<wbr>pricing</li>
+<li>Google. <em>Gemini thinking</em>. Gemini API docs, last updated 14 October 2026. https://<wbr>ai<wbr>.google<wbr>.dev/<wbr>gemini-api/<wbr>docs/<wbr>generate-content/<wbr>thinking?authuser=1</li>
+<li>Google. <em>Gemini 4 Argon</em>. Gemini API docs, last updated 30 October 2026. https://<wbr>ai<wbr>.google<wbr>.dev/<wbr>gemini-api/<wbr>docs/<wbr>models/<wbr>gemini-4-argon</li>
+</ul>
+<p><strong>Independent benchmark (third party)</strong></p>
+<ul>
+<li>Artificial Analysis. <em>LLM Leaderboard</em>. Intelligence Index v5.0.1. https://<wbr>artificialanalysis<wbr>.ai/<wbr>leaderboards/<wbr>models?status=all</li>
+<li>Artificial Analysis. <em>Claude Opus 5.5: Intelligence, Performance &amp; Price Analysis</em>. Intelligence Index v5.0.1. https://<wbr>artificialanalysis<wbr>.ai/<wbr>models/<wbr>claude-opus-5-5-medium</li>
+<li>Artificial Analysis. <em>Claude Sonnet 5.5: Intelligence, Performance &amp; Price Analysis</em>. Intelligence Index v5.0.1. https://<wbr>artificialanalysis<wbr>.ai/<wbr>models/<wbr>claude-sonnet-5-5-low</li>
+<li>Artificial Analysis. <em>Claude Fable 5.2: Intelligence, Performance &amp; Price Analysis</em>. Intelligence Index v5.0.1. https://<wbr>artificialanalysis<wbr>.ai/<wbr>models/<wbr>claude-fable-5-2-xhigh</li>
+<li>Artificial Analysis. <em>Artificial Analysis Benchmarking Methodology</em>. https://<wbr>artificialanalysis<wbr>.ai/<wbr>methodology</li>
+<li>Artificial Analysis. <em>Announcing Artificial Analysis Intelligence Index v5</em>. 27 October 2026. https://<wbr>artificialanalysis<wbr>.ai/<wbr>articles/<wbr>artificial-analysis-intelligence-index-v5</li>
+</ul>
+<p><strong>Research</strong></p>
+<ul>
+<li>Chen, L., Zaharia, M. and Zou, J. "FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance". arXiv 2305.05176, 2023; <em>Transactions on Machine Learning Research</em>, 2024 (peer-reviewed). https://<wbr>arxiv<wbr>.org/<wbr>abs/<wbr>2305<wbr>.05176v1 · https://<wbr>mlanthology<wbr>.org/<wbr>tmlr/<wbr>2024/<wbr>chen2024tmlr-frugalgpt</li>
+<li>Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W. and Stoica, I. "RouteLLM: Learning to Route LLMs from Preference Data". ICLR 2025 (peer-reviewed). https://<wbr>proceedings<wbr>.iclr<wbr>.cc/<wbr>paper_files/<wbr>paper/<wbr>2025/<wbr>hash/<wbr>5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference<wbr>.html · arXiv version: https://<wbr>arxiv<wbr>.org/<wbr>html/<wbr>2406<wbr>.18665v3</li>
+<li>Snell, C., Lee, J., Xu, K. and Kumar, A. "Scaling LLM Test-Time Compute Optimally Can be More Effective than Scaling Parameters for Reasoning". ICLR 2025 (peer-reviewed); preprint as "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters", arXiv 2408.03314, 2024. https://<wbr>proceedings<wbr>.iclr<wbr>.cc/<wbr>paper_files/<wbr>paper/<wbr>2025/<wbr>hash/<wbr>1b623663fd9b874366f3ce019fdfdd44-Abstract-Conference<wbr>.html · https://<wbr>arxiv<wbr>.org/<wbr>abs/<wbr>2408<wbr>.03314</li>
+<li>Chen, X., Xu, J., Liang, T. et al. "Do NOT Think That Much for 2+3=? On the Overthinking of Long Reasoning Models". <em>Proceedings of the 42nd International Conference on Machine Learning</em>, PMLR 267, 2025, 9487–9499 (peer-reviewed). https://<wbr>proceedings<wbr>.mlr<wbr>.press/<wbr>v267/<wbr>chen25bx<wbr>.html</li>
+<li>Zheng, L., Chiang, W.-L., Sheng, Y., Zhuang, S. et al. "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena". NeurIPS 2023 Datasets and Benchmarks Track (peer-reviewed). https://<wbr>arxiv<wbr>.org/<wbr>abs/<wbr>2306<wbr>.05685</li>
+<li>Panickssery, A., Bowman, S. R. and Feng, S. "LLM Evaluators Recognize and Favor Their Own Generations". NeurIPS 2024 (peer-reviewed). https://<wbr>papers<wbr>.nips<wbr>.cc/<wbr>paper_files/<wbr>paper/<wbr>2024/<wbr>hash/<wbr>7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference<wbr>.html</li>
+<li>Huang, J., Chen, X., Mishra, S., Zheng, H. S., Yu, A. W., Song, X. and Zhou, D. "Large Language Models Cannot Self-Correct Reasoning Yet". ICLR 2024 (peer-reviewed). https://<wbr>arxiv<wbr>.org/<wbr>abs/<wbr>2310<wbr>.01798 · https://<wbr>arxiv<wbr>.org/<wbr>html/<wbr>2310<wbr>.01798v1</li>
+</ul>
+<p><strong>The case</strong></p>
+<ul>
+<li>Academy case file (<code>generator/data/building-with-ai/case-academy.md</code>), compiled 11 November 2026; cited by section, §1 to §9.</li>
+</ul>
+<p><strong>This course</strong></p>
+<ul>
+<li>BW1 · Mental model, §1, §2, §4, §5, §9.</li>
+</ul>
+</div></details><details class="acc note" id="read-bw2-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>Every product fact in this unit (a model name, a price, a default, a plan limit) was read on the vendor's own page on 15 November 2026 and carries that date. Help-centre and documentation pages mostly show no exact date, so the reading date is the only one they can be given. Benchmark figures name who ran the test, which version and when. Research findings name the models they tested; carrying a finding to a current model is this unit's inference and is said to be. Each practice carries an evidence grade, as in BW1: <strong>measured</strong>, <strong>documented practice</strong> (a vendor or a named practitioner says to do it; nobody measured it here) or <strong>stated opinion</strong>. What a token is, why the whole conversation is re-sent on every turn and why a model's knowledge stops at a cutoff are in BW1 (§2, §4); this unit uses them without restating them.</p>
+</div></details><details class="acc made" id="read-bw2-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>The second unit of Building with AI: how to choose a model and an effort setting for each task of a project, starting from the cost of a finished task rather than the price of a token: what a task costs and why thinking is billed as output, the tiers vendors offer (small, mid, large, and a top rung inside the large tier) as a pattern that outlives any lineup, what the effort and thinking settings do, where quality differences between models show and where they do not, and how to read a benchmark by who ran it, which version and when, self-preference and why a check runs in a fresh context or on a different model, a subscription against the API, and a rule for re-deciding when the lineup changes, with a section on other tools, a dated appendix of the lineup, prices and plan limits on 15 Nov 2026, and a deliverable, a routing table of ten common tasks, each with its tier, effort, reason and override trigger, built on the Academy case and then as a template. It was written by an AI model (Opus 5.5) from its brief, with live search on 15 Nov 2026; every product fact was read on the vendor's page that day and is dated where it appears. A separate model, in a context that had not seen the writing, checked every cited claim, the deliverable against the brief and every figure against the text; it found 1 error, 5 should-fix and 10 minor points, and every finding was applied before filing. Known gaps: Anthropic's Sonnet 5.5 launch page refused the fetch, so every Sonnet 5.5 benchmark figure comes from the reference column of the Haiku 5.5 launch page, which states Sonnet's effort setting for one test only; Google's pricing page did not list the Gemini 4 models on the day, so their prices are left out; ChatGPT's plan page failed to load and Google's consumer plans were not read, so the subscription comparison covers Anthropic only; two copies of Anthropic's pricing page disagreed on the day, and the unit follows Anthropic's help article saying the Max 20x plan is now called Ultra; the independent benchmark gave a cost per task only at max effort, so the effort steps use time per task, and reading longer time as more tokens is the unit's inference; the Academy case file records the model of each check but not the writer of each draft, and no cost, plan or effort for any task, so the routing table's last column mostly says nothing is recorded; FrugalGPT's journal venue rests on a search result, Huang et al.'s conference venue was not shown on the page read, and the model behind Snell et al.'s finding is not named; and the check could not confirm three claims, that Opus models before Opus 5 also defaulted to high effort, OpenAI's advice to start with its largest model, and the pricing page's statement that Fable is included on Enterprise.</p><h3 id="read-bw2-11">Unsure list</h3>
+<ol>
+<li>Anthropic's plan line-up: two copies of the Plans &amp; pricing page served on 15 Nov 2026 disagreed (claude.com/max: Max $100 at 5x, Ultra $200 at 10x weekly, no five-hour limit for verified accounts; claude.com/pricing?hsLang=en: Max 5x or 20x, no Ultra), and the Max-price help article still lists Max 20x at $200. The conflict is settled by Anthropic's help article on Ultra (support.claude.com/en/articles/17728952), read 15 Nov 2026, which says the Max 20x plan is now called the Ultra plan; the unit gives the /max copy in the appendix and says so in §6.</li>
+<li>Thinking page headline: the page at platform.claude.com/docs/en/build-with-claude/adaptive-thinking?r=0 returned the headline "Steering thinking" while its search-result title was "adaptive thinking"; the Sources title follows the fetched headline.</li>
+<li>Artificial Analysis leaderboard: the fetch did not return the page's headline; the Sources title "LLM Leaderboard" comes from the search result title ("LLM Leaderboard - Comparison of AI models from OpenAI, Anthropic, Google, SpaceXAI &amp; others"). The leaderboard itself showed no index version; v5.0.1 is from the model pages.</li>
+<li>Artificial Analysis gave a cost per task only at max effort on 15 Nov 2026; time per task is used for the effort steps, and the reading that longer time means more tokens is the unit's inference from a near-constant output speed.</li>
+<li>Google's Gemini API pricing page (ai.google.dev/pricing) showed no headline and did not list Gemini 4 Argon or Carbon in the copy read; a second pricing URL was refused at fetch. Argon's price is left out. Sources title given as organisation, document type and date.</li>
+<li>Anthropic's Sonnet 5.5 launch page was refused at fetch; every Sonnet 5.5 benchmark figure in the unit comes from the reference column of the Haiku 5.5 launch page, whose effort settings for Sonnet are stated only for FrontierCode (xhigh).</li>
+<li>Snell et al.: the ICLR 2025 and arXiv abstracts read do not name the model or the benchmark; the unit says "maths reasoning problems" from the ICLR abstract and does not name the model.</li>
+<li>FrugalGPT's TMLR 2024 venue rests on the mlanthology.org search result (title and URL), whose page was not fetched; the arXiv abstract was read.</li>
+<li>Lydia Hallie's post: the fetch summarised her smaller-model advice as "routine work, such as precisely described edits or mechanical changes"; a fresh check of the source unit had removed "precisely described" as not in the post. The unit avoids the phrase; which reading is right was not settled.</li>
+<li>Academy fresh-check counts by checker model (Fable 5.1: 19 drafts, 15 with an error; Opus 5.5: 12, 8; Fable 5.2: 5, 5) are the unit's count of the case file §5 table; that the writer of every one of those drafts was Opus 5.5 rests on case file §2's general statement, not on a per-unit record.
+Object: none</li>
+</ol>
+<h3>Fresh check</h3><p>Fresh check 2026-11-15 (claude-opus-5-5): fix · 1 errors, 5 should-fix, 10 minor; all applied; report <code>audits/building-with-ai/fresh-check-BW2.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: route each recurring task of your project to a model tier and an effort level, with the reason
+Takes: B2 as source material; its lineup and prices are re-read, not carried over; BW1.
+Gives: the routing table BW7 assigns stages from and BW10 budgets.
+
+Unit BW2, Choosing the model and the effort. Search before writing. Cover: cost per task rather than per token; the tiers vendors offer (small and fast, mid, large) as a pattern that outlives any lineup; what effort or thinking settings do, from the vendors&#x27; documentation; where quality differences show and where they do not, with benchmark evidence and its limits (who runs it, which version, which date); self-preference, and why a check is better run by a different model or a fresh context; a subscription against the API; and a rule for re-deciding when the lineup changes. Then a dated appendix: the current Claude lineup with prices and plan limits as Anthropic states them, and one pointer row each for OpenAI and Google from their own pages. Deliverable: a routing table for ten common project tasks (triage and reformatting, extraction to a table, summary for a named reader, a long first draft, critique of a draft, research with search, deep research, a code change, an audit against sources, a plan or spec), each with tier, effort, the reason and an override trigger, worked on the Academy case; then the template with blank rows.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>
