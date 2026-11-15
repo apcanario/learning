@@ -23,7 +23,7 @@ pf.write_text(t.replace(f'- {code}: pending', f'- {code}: report saved'))
 verdict = ''
 try: verdict = json.loads((dst / 'stats.json').read_text()).get('verdict', '')
 except Exception: pass
-msg = f"F-PB: {code} report saved ({model}; {verdict}; {tokens} tokens, {tools} tool uses, {minutes:g} min)\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01KMmgQyKuvCKpHpSB9xzQYA"
+msg = f"F-PB: {code} report saved ({model}; {verdict}; {tokens} tokens, {tools} tool uses, {minutes:g} min)\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01KMmgQyNZfTSHF35S2ivXpn"
 subprocess.run(['git', '-C', str(ROOT), 'add', '-A'], check=True)
 subprocess.run(['git', '-C', str(ROOT), 'commit', '-q', '-m', msg], check=True)
 r = subprocess.run(['git', '-C', str(ROOT), '-c', 'push.negotiate=true', 'push', '-q', 'origin', 'main'], capture_output=True, text=True)
