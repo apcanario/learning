@@ -409,7 +409,7 @@ def cmd_stage(argv):
         (out / 'index-rows.txt').write_text('\n'.join(ln for ln in ix.splitlines() if re.search(r'\b' + re.escape(code) + r'\b', ln) or re.match(r'^\d+ of \d+|written of', ln)), encoding='utf-8')
         (out / 'records.template.json').write_text(json.dumps(dict(
             row=opt['row'], code=code, course=c['id'], date='YYYY-MM-DD hh:mm',
-            reading=dict(id=f'read-{code.lower()}', course=r['sc']['name'].split(' · ')[0], title=r['unit'][1], covers=[code], name=f'{code} · {r["unit"][1]}', intro='…'),
+            reading=dict(id=f'read-{code.lower()}', course=r['sc']['key'], title=r['unit'][1], covers=[code], name=f'{code} · {r["unit"][1]}', intro='…'),
             status='written D Mon', next_unit='…', version='vN · D Mon 2026', hub_changelog='vN. …',
             case_lines=[], flag_rows=[dict(date='D Mon 2026', raised_by=code, affects='…', flag='…', proposed='…')], flags_carried=[],
             index_edits=[dict(old='exact text of the row now', new='the row as filed')],
