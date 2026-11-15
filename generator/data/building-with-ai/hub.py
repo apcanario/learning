@@ -16,7 +16,7 @@ BAR = 'BUILDING WITH AI'
 BRAND_HTML = 'BUILDING <span>/</span> WITH AI'
 OUT = 'building-with-ai.html'
 THEME_KEY = 'building-with-ai-theme'
-VERSION = 'v3 · 15 Nov 2026'
+VERSION = 'v3.1 · 15 Nov 2026'
 LEARN_C, BUILD_C = 'var(--purple)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -126,6 +126,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-15 19:41', "v3.1. Correction (row W-BW3, step 7b, flag F3): BW1's layer map (§8) and the 'Treated in' column of its diagnosis table (Parts 3 and 4) now name the units whose briefs treat each layer and problem, 7 exact replacements checked against the briefs by Opus 5.5 (audits/building-with-ai/corrections-2026-11-15-BW1-B3.md); the F3 flag is carried by BW3."),
     ('2026-11-15 17:55', 'v3. BW2 Choosing the model and the effort filed (row W-BW2): about 10,000 words, 4 figures, written by Opus 5.5 from its brief with search on. Fresh check (Opus 5.5, separate context): fix, 1 error, 5 should-fix, 10 minor, all applied before filing. Corrected elsewhere: a private unit (2 replacements, each with a dated note). Object: none'),
     ('2026-11-15 15:00', 'v2. BW1 Mental model filed (row W-BW1): 6,431 words of body and 2,951 of deliverable, 3 figures, written by Opus 5.5 from its brief with search on. Fresh check (Opus 5.5, separate context): fix, 1 error, 7 should-fix, 7 minor, all applied before filing. Corrected elsewhere: a private unit (18 replacements and a note); PB8 and a private legal unit, their citation of Decreto-Lei 57/2008. Object: the context window (§1 and §2)'),
     ('2026-11-11 23:59', "v1. Course created (new-course skill; backlog row G-0): frame, goal and three outcomes, 13 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the build order in syllabus order, the syllabus-flags file. Adapted from a private course of the Learning Project; no unit written."),
