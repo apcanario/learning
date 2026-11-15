@@ -458,7 +458,7 @@ def cmd_stage(argv):
         (out / 'sources').mkdir()
         for f in np.sources(r['d'].AIMS[code][1]):
             put(f, 'sources/' + f.name)
-            fc = ROOT / 'audits' / 'brand-ai' / f'fresh-check-{f.name.split("-")[0]}.md'
+            fc = ROOT / 'audits' / 'brand-ai' / f'fresh-check-{re.match(r"((?:DD-)?[A-Z]+\d+)", f.name).group(1)}.md'   # W-BW5: a deep dive's code has a hyphen
             if fc.exists():
                 put(fc, 'sources/' + fc.name)
         (out / 'filed').mkdir()
@@ -466,6 +466,10 @@ def cmd_stage(argv):
             if x in r['filed']:
                 put(r['filed'][x], 'filed/' + r['filed'][x].name)
         (out / 'flags.txt').write_text('\n'.join(np.flags(r)), encoding='utf-8')
+        (out / 'course-map.txt').write_text(                # W-BW5 (flags F3, F22): every unit's code, title, Aim and Gives line
+            'Course map: every unit of the course, in order, with its Aim and its Gives line (what later units take from it).\n\n'
+            + '\n'.join(f"{u[0]} · {u[1]}" + (f" — Aim: {r['d'].AIMS[u[0]][0]}. Gives: {r['d'].AIMS[u[0]][2]}." if u[0] in getattr(r['d'], 'AIMS', {}) else '')
+                         for u in r['sc']['units']) + '\n', encoding='utf-8')
         (out / 'out').mkdir()
     elif kind == 'checker':
         brief()
