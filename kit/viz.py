@@ -145,6 +145,10 @@ the renderer cannot draw honestly stops the build with a message that says what 
               0 to max. Each row grows with its label. P97 (12 Nov 2026): it also carries a phone drawing (svg.viz-alt,
               PHONE_NARROW = 258 units, shown below 768 px), its labels pinned at the left (wrapped at 112) when that
               leaves the bars 96 units, else above each bar, so the longest bar is whole in the opening phone frame.
+  line        P123 (15 Nov 2026): it also carries a phone drawing (svg.viz-alt, PHONE_NARROW = 258 units, shown below 768 px),
+              drawn from the same data, so its y-axis, legend, title and point labels open whole in a 320 px phone's frame
+              and it never scrolls; a label with no room at that width falls back to "labels": "ends" in that drawing only.
+              verify.py's check_phone_lines checks every line figure at 320 and 390 px.
   bars        the same label column as compare (it wrapped at 160 inside a 172 column). P98 (12 Nov 2026): its phone
               drawing is PHONE_NARROW (258) units wide, as a compare's, so every bar and its value open whole on a
               320 px phone. Bars draw no track, so P98's value rule (below) does not apply to them.
@@ -2120,9 +2124,8 @@ def _legend(items, top, width, kind):
     return s, (y + rowh) - top
 
 
-def line(d):
-    """One or more named series over an ordered x (years, periods or any ordered labels), each point labelled with its
-    value (or only the first and last), optional annotations as dashed verticals with a note, and a legend."""
+def _line_draw(d, W):
+    """One drawing of a line chart, W units wide: (width, height, body). line() draws it twice, wide and for a phone."""
     K = 'line'
     xs, series = d.get('x'), d.get('series')
     if not xs or not series:
@@ -2280,7 +2283,27 @@ def line(d):
         body += f'<text class="viz-colhead" x="{R:.1f}" y="{H + 6:.1f}" text-anchor="end">{esc(d["xlabel"])}</text>'
         H += 16
     # the figure's class is viz-linechart: viz-line is already the class of a structural line, and would style the figure
-    return _svg(W, _r(H), grid + body + marks + labs, 'linechart', d.get('title'), d.get('caption'))
+    return W, _r(H), grid + body + marks + labs
+
+
+def line(d):
+    """One or more named series over an ordered x (years, periods or any ordered labels), each point labelled with its
+    value (or only the first and last), optional annotations as dashed verticals with a note, and a legend.
+    P123 (15 Nov 2026): two drawings, as compare and bars have. The wide one is W (700) units, scaled to the column at
+    768 px and up; the phone one is PHONE_NARROW (258) units wide, the frame of a 320 px phone, drawn from the same data
+    and shown below 768 px, so the y-axis, the legend, the title and every point label are in the opening frame and the
+    chart never scrolls on a phone. A label that cannot find room at 258 units falls back to labels "ends" for the phone
+    drawing only; a figure that cannot draw at that width raises, as at any width."""
+    import copy as _c
+    w, h, body = _line_draw(_c.deepcopy(d), W)
+    try:
+        pw, ph, pb = _line_draw(_c.deepcopy(d), PHONE_NARROW)
+    except SystemExit:
+        if d.get('labels', 'all' if len(d.get('x') or []) <= 8 else 'ends') in ('ends', 'none'):
+            raise
+        dd = _c.deepcopy(d); dd['labels'] = 'ends'
+        pw, ph, pb = _line_draw(dd, PHONE_NARROW)
+    return _svg(w, h, body, 'linechart', d.get('title'), d.get('caption'), alt=(pw, ph, pb))
 
 
 def _bars_wide(d):
