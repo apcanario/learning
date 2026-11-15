@@ -35,3 +35,4 @@ Resumed from `docs/handoffs/F-PB-part2.md`. The chat runs on Opus 5.5; the four 
 - Held errata worked by the chat, PB4: errata applied (2 applied: C-5 (PB4-3), C-8 (PB4-4))
 - Held errata worked by the chat, PB6: errata applied (2 applied: C-6 (PB4-3 (same label)), C-9 (PB4-4 (same label)))
 - Held errata worked by the chat, PB8: errata applied (2 applied: C-10 (PB8-9), C-11 (PB8-10))
+- Held errata worked by the chat, PB8: errata applied (2 applied: C-13 (DD-PB2-9), C-14 (DD-PB2-9))

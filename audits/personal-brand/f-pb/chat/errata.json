@@ -154,5 +154,57 @@
   "basis": "A4-13, re-anchored by the chat: PB1-4 had rewritten the line A4-13 quoted; PB8 deliverable sets Mara in Portugal.",
   "figure": false,
   "from_": "A4-13"
+ },
+ {
+  "id": "C-13",
+  "unit": "PB8",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§6.5",
+  "current": "[HMRC, Tax help for hustles: content creators, modified 22 Sep 2026]",
+  "fix": "[HMRC, Tax Help for Hustles, Tax rules for content creators, modified 22 Sep 2026]",
+  "basis": "DD-PB2-9 (Audit 3), worked by the chat for PB8 and DD-PB2 together: the auditor opened https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/ on 15 Nov 2026 (last modified 22 Sep 2026): site \"Tax Help for Hustles\", page \"Tax rules for content creators\".",
+  "figure": false,
+  "from_": "DD-PB2-9"
+ },
+ {
+  "id": "C-14",
+  "unit": "PB8",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "- HMRC, \"Tax help for hustles: content creators\", modified 22 Sep 2026.",
+  "fix": "- HMRC, Tax Help for Hustles, \"Tax rules for content creators\", modified 22 Sep 2026.",
+  "basis": "DD-PB2-9 (Audit 3), worked by the chat for PB8 and DD-PB2 together: the auditor opened https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/ on 15 Nov 2026 (last modified 22 Sep 2026): site \"Tax Help for Hustles\", page \"Tax rules for content creators\".",
+  "figure": false,
+  "from_": "DD-PB2-9"
+ },
+ {
+  "id": "C-15",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "§4",
+  "current": "[HMRC, Tax help for hustles: content creators]",
+  "fix": "[HMRC, Tax Help for Hustles, Tax rules for content creators]",
+  "basis": "DD-PB2-9 (Audit 3), worked by the chat for PB8 and DD-PB2 together: the auditor opened https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/ on 15 Nov 2026 (last modified 22 Sep 2026): site \"Tax Help for Hustles\", page \"Tax rules for content creators\".",
+  "figure": false,
+  "from_": "DD-PB2-9"
+ },
+ {
+  "id": "C-16",
+  "unit": "DD-PB2",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources",
+  "current": "\"Tax help for hustles: content creators\", modified 22 Sep 2026, as PB8",
+  "fix": "Tax Help for Hustles, \"Tax rules for content creators\", modified 22 Sep 2026, as PB8",
+  "basis": "DD-PB2-9 (Audit 3), worked by the chat for PB8 and DD-PB2 together: the auditor opened https://taxhelpforhustles.campaign.gov.uk/tax-rules-content-creators/ on 15 Nov 2026 (last modified 22 Sep 2026): site \"Tax Help for Hustles\", page \"Tax rules for content creators\".",
+  "figure": false,
+  "from_": "DD-PB2-9"
  }
 ]
