@@ -146,7 +146,7 @@ Row F-PB ran in two parts. Part 1, 14 Nov 2026 (Pedro away): twelve fresh Fable 
 - **Flags.** F87 to F100 in `generator/data/personal-brand/syllabus-flags.md` (among them: the own-product ad label, the hours log no unit builds, the email sign-up's place and notice, the recovery weeks' reply slots).
 - **Assessment.** `audits/fable-stage-assessment-2026-11.md`, final: 2.83M tokens for the twelve unit audits, 3.64M for every agent measured; numbers fail at 1.1 per 100 after the Opus fresh checks, attribution at 8.8 (6 per 100 in the full attribution passes); recommendation: sample audits with a full attribution pass in the same agent, course B first, at most six auditors a turn at 30 searches each.
 - **Records.** Course PB v15: `AUDIT_LOG` four rows, `AUDITS_RUN` 4; `docs/courses-index.md` audit rows; `audits/README.md`.
-- **Build.** `build.py`, `verify.py`; publish and deploy as `docs/CHANGELOG.md`'s F-PB row records.
+- **Build.** `build.py`, `verify.py` (ALL CHECKS PASSED). Academy artifact v157 (1794739051-70be; 18 files in one patch over v156, read back and matched). GitHub Pages deployed (01f72dc..73ffe9f; P110 closed).
 
 ## 14 November 2026 · Session 83 · Public course PB, unit DD-PB2 (W-DD-PB2)
 
