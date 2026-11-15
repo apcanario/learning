@@ -30,3 +30,4 @@ The Fable limit was reached (resets Sun 15 Nov, 06:00 Lisbon); the chat went on 
 ## Part 2 (15 Nov 2026)
 
 Resumed from `docs/handoffs/F-PB-part2.md`. The chat runs on Opus 5.5; the four auditors (PB9, PB10, DD-PB1, DD-PB2) run on Fable, each re-checking its run-1 sample (`f-pb/<code>-run1-no-search/`) at source with a full attribution pass.
+- Held errata worked by the chat, PB1: errata applied (4 applied: C-1 (PB4-3/4), C-2 (PB4-3/4), C-3 (PB4-3 (same label)), C-12 (A4-13))

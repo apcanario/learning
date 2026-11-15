@@ -29,7 +29,7 @@ One planning assumption is needed before any benchmark can be applied to her, be
 
 **Views per video in the first ten uploads.** vidIQ studied channels created between 1 January and 30 June 2025 that published at least ten videos of the same format in their first 90 days. Its long-form cohort, 137,355 channels with live streams excluded, had median 30-day views of about 180 on the first upload, 211 on the fifth and 272 on the tenth. The median of each channel's best video among its first ten was 1,948. 57.8% of these channels had at least one of the first ten past 1,000 views and 30.8% had one past 10,000 ([vidIQ, YouTube First 10 Videos Study, 28 Jul 2026, updated 30 Jul 2026](https://vidiq.com/research/youtube-first-10-videos-study/)). The same study's Shorts cohort (367,243 channels) had median 30-day views of about 1,362 on the first Short and 1,344 on the tenth. Two corrections apply before using these numbers. The study says "Channels that gave up before publishing ten same-format videos in their first 90 days are excluded entirely", so it is a survivor sample and the true medians for all new channels are lower. And ten videos in 90 days is faster than one every two weeks: at Mara's rate her tenth upload goes out in week 19 (derived: upload 1 in week 1, then one every two weeks). Vendor data; survivor sample.
 
-**The odds of reaching 1,000 subscribers within a year.** The largest dataset found is vidIQ's study of 32,926,088 channels that had fewer than 1,000 subscribers and at least one video, compared with themselves 360 days later. 500,409 crossed 1,000, about 1.52% (derived). The share depended on how much the channel's video count grew ([vidIQ, Uploads and reaching 1,000 subscribers, 11 Sep 2026](https://vidiq.com/research/youtube-uploads-1000-subscribers/)):
+**The odds of reaching 1,000 subscribers within a year.** The largest dataset found is vidIQ's study of 32,926,088 channels that had fewer than 1,000 subscribers and at least one video, compared with themselves 360 days later. 500,409 crossed 1,000, about 1.52% (derived). The share depended on how much the channel's video count grew ([vidIQ, Reaching 1,000 YouTube Subscribers, 11 Sep 2026](https://vidiq.com/research/youtube-uploads-1000-subscribers/)):
 
 | Net change in video count over 360 days | Channels | Crossed 1,000 |
 |---|---|---|
@@ -46,7 +46,7 @@ One planning assumption is needed before any benchmark can be applied to her, be
   {"label": "12–51 videos", "value": 8.65, "tone": 1},
   {"label": "52 or more", "value": 30.77, "tone": 3}
  ],
- "caption": "The table in §2 drawn: 32,926,088 YouTube channels with under 1,000 subscribers and at least one video, compared with themselves 360 days later; videos added is the net change in video count, Shorts, long-form and livestreams together. Source: vidIQ, Uploads and reaching 1,000 subscribers, 11 Sep 2026. Vendor data, correlational, groups not matched. The tones only tell the bands apart."}
+ "caption": "The table in §2 drawn: 32,926,088 YouTube channels with under 1,000 subscribers and at least one video, compared with themselves 360 days later; videos added is the net change in video count, Shorts, long-form and livestreams together. Source: vidIQ, Reaching 1,000 YouTube Subscribers, 11 Sep 2026. Vendor data, correlational, groups not matched. The tones only tell the bands apart."}
 ```
 
 vidIQ states the limits itself: "This is not a random sample or a census of all YouTube channels"; the groups were not matched on starting subscribers, channel age, resources or quality; the result is "an observational association, not proof that uploading caused subscriber growth"; the count is a net change in total videos, so it does not count individual uploads; and channel totals "do not separate Shorts, long-form videos, or livestreams" (same source). A channel adding 26 videos a year sits in the 12–51 band: about one in twelve channels in that band crossed 1,000 within the year, and 91.35% did not (derived: 100 minus 8.65). The 52-plus band's 30.77% belongs to channels that may also have had more time, money or audience. Vendor data; correlational.
@@ -270,7 +270,7 @@ The quarterly review (60 minutes, PB10) is taken from the Instagram derivatives 
 | Editing | 0 | Edits, free since 22 Apr 2025 ([PetaPixel](https://petapixel.com/2025/04/22/instagrams-capcut-competitor-edits-is-now-available/)); paid apps not bought in year one (her rule) |
 | Clip-on microphone | 99.00 USD | RØDE Wireless Micro list price, 12 Nov 2026 ([RØDE](https://brandstore.rode.com/products/wireless-micro)); bought only if PB5's audio check fails |
 | Tripod or clamp | up to 40 USD | Her estimate; no price checked |
-| Postal address for commercial email (PB8 E4) | 58.00 € + VAT a year ([CTT, Preços 2020, tariff of November 2020](https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf), Apartados, Singulares, concessão anual; current price to check) | Paid from the unspent microphone line (PB5 §2) at the day's rate, not added to the cap; the cap stands unless the converted price exceeds what remains under it (PB9 D2 V17); if a later audio check fails and the microphone is bought (PB5 §2, §10), that line is spent, the address is paid from what then remains under the cap (the contingency and any unspent part of the tripod-or-clamp line), and if that does not cover both, this D2 is corrected (PB9 D3) |
+| Postal address for commercial email (PB8 E4) | 58.00 € + VAT a year for a PO box at CTT, the post office of Portugal, where PB8 sets her home ([CTT, Preços 2020, tariff of November 2020](https://www.ctt.pt/application/themes/pdfs/1_tarifario_servicos_postais_1nov.pdf), Apartados, Singulares, concessão anual; current price to check) | Paid from the unspent microphone line (PB5 §2) at the day's rate, not added to the cap; the cap stands unless the converted price exceeds what remains under it (PB9 D2 V17); if a later audio check fails and the microphone is bought (PB5 §2, §10), that line is spent, the address is paid from what then remains under the cap (the contingency and any unspent part of the tripod-or-clamp line), and if that does not cover both, this D2 is corrected (PB9 D3) |
 | Contingency | 11 USD | The remainder of the cap |
 | **Total cap** | **150 USD** | |
 
@@ -392,7 +392,7 @@ Tax question to answer if anything is earned: [your country's tax authority page
 - vidIQ Research, "YouTube First 10 Videos Study", 28 Jul 2026, updated 30 Jul 2026. https://vidiq.com/research/youtube-first-10-videos-study/
 - vidIQ Research, "YouTube Subscriber Benchmarks 2026", 20 Jul 2026. https://vidiq.com/research/youtube-subscriber-benchmarks-2026/
 - vidIQ Research, "YouTube Upload Frequency Study", 8 Jul 2026. https://vidiq.com/research/youtube-upload-frequency-study/
-- vidIQ Research, "Uploads and reaching 1,000 subscribers", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/
+- vidIQ Research, "Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal", 11 Sep 2026. https://vidiq.com/research/youtube-uploads-1000-subscribers/
 - Wu, Fang and Bernardo A. Huberman, "Persistence and success in the attention economy", arXiv 0904.0489, 2009. https://arxiv.org/pdf/0904.0489
 - Your Europe (European Union), "FAQs: Income taxes abroad", last checked 18 Jun 2026. https://europa.eu/youreurope/citizens/work/taxes/income-taxes-abroad/faq/index_en.htm
 - YouTube Help, "Changes to the YouTube Partner Program" (answer 12843009), checked 12 Nov 2026. https://support.google.com/youtube/answer/12843009
@@ -440,3 +440,5 @@ Correction 13 Nov 2026, found by the W-PB7 figure re-check: D3's decision figure
 Erratum 14 Nov 2026, Audit 1 (stratified-sample audit; Fable 5.2, row F-PB): 4 exact replacements applied, PB1-1, PB1-2, PB1-3, PB1-4; each is quoted with its source in `audits/personal-brand/audit-1.md`.
 
 Erratum 14 Nov 2026, Audit 4 (the final audit, a full read of the course; Fable 5.2, row F-PB): 1 exact replacement applied, A4-2; each is quoted with its source in `audits/personal-brand/audit-4.md`.
+
+Erratum 15 Nov 2026, held errata of Audits 1, 2 and 4 worked by the chat (Opus 5.5, row F-PB part 2, each checked at source): 4 exact replacements applied, C-1 (PB4-3/4), C-2 (PB4-3/4), C-3 (PB4-3 (same label)), C-12 (A4-13); listed in `audits/personal-brand/f-pb/chat/errata.json`.
