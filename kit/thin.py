@@ -289,8 +289,17 @@ def cmd_stats(d):
                            object_line=bool(re.search(r'^Object:', uns, flags=re.M)))
     n = rd('notes.md')
     if n is not None:
-        s['notes'] = {k: 0 if re.search(r'(?im)^\s*none\.?\s*$', v) else len([x for x in v.splitlines() if re.match(r'\s*(\d+[.)]|[-*])\s', x)])
-                      for k, v in ((k, (re.split(r'(?im)^\*{0,2}' + k + r'\*{0,2}\s*:?.*$', n, maxsplit=1) + [''])[1].split('\n\n\n')[0]) for k in ('Source errors', 'Contradictions', 'Needs'))}
+        # a section runs from its heading (any of #, ##, ** forms) to the next of the three; "none" (also "- none found") counts 0 (S-BW1 fix, 15 Nov 2026: headings with # were not read)
+        names = ('Source errors', 'Contradictions', 'Needs')
+        head = re.compile(r'(?im)^\s*(?:#{1,6}\s*|\*{2})(' + '|'.join(names) + r')\b.*$')
+        marks = [(m.group(1).lower(), m.start(), m.end()) for m in head.finditer(n)]
+        s['notes'] = {k: 0 for k in names}
+        for i, (nm, a, b) in enumerate(marks):
+            body = n[b:marks[i + 1][1] if i + 1 < len(marks) else len(n)]
+            key = next(k for k in names if k.lower() == nm)
+            if re.search(r'(?im)^\s*(?:[-*]\s*)?none\b', body):
+                continue
+            s['notes'][key] = len([x for x in body.splitlines() if re.match(r'(\d+[.)]|[-*])\s', x)])   # top-level items only
     rp = rd('report.md')
     if rp is not None:
         sev = re.findall(r'^\[(error|should-fix|minor)\]', rp, flags=re.M)
