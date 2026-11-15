@@ -32,7 +32,7 @@ The reader of each is the persona in its preamble (`PRE` in its `units_data.py`)
 ## 3 · Rules every writing row follows
 
 1. **One unit per chat, in syllabus order.** The writing order is the reading order. A unit starts only when every earlier unit of its course is filed.
-2. **Opus 5.5 writes; a separate Opus 5.5 context checks.** No Fable audit or Fable fresh check follows (S-NOAUDIT, 15 Nov 2026). The chat only stages, applies, files, builds, publishes and records.
+2. **Opus 5.5 writes; a separate Opus 5.5 context checks.** No Fable audit or Fable fresh check follows (S-NOAUDIT, 15 Nov 2026). The chat is a thin main chat on Sonnet 5.5 (S-BW1, `docs/method.md` §4): it only stages, launches agents, runs scripts, builds, publishes and records, and never opens a unit; the applier and the filer are Opus 5.5 agents too.
 3. **The brief is never reworded.** It is built with `kit/mdcourse.py`'s `open_brief`: the preamble, the Aim, Takes and Gives lines, the unit brief.
 4. **Source units are material, never authority.** The writer is given the private units its Takes line names, with their fresh-check reports. It re-verifies every claim it carries over at the claim's source. Nothing rests on a source unit alone.
 5. **Mistakes are corrected where they sit.** The writer lists every mistake it finds in a source unit; the fresh checker verifies that list. A verified mistake is fixed in the private unit as an exact replacement, with a dated note in that unit and a line in its hub's changelog. A mistake found in a filed public unit is fixed the same way. Each is named in the reply.
