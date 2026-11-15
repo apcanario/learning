@@ -1,0 +1,21 @@
+{
+ "unit": "DD-PB1",
+ "model": "claude-fable-5-2",
+ "words": 9457,
+ "sections": 14,
+ "cited_claims_in_unit": 168,
+ "claims_sampled": 14,
+ "claims_checked_total": 183,
+ "fail_sampled": 0,
+ "fail_total": 5,
+ "stale_total": 0,
+ "unverifiable_total": 1,
+ "full_audit_run": false,
+ "verdict": "PASS",
+ "web_searches": 37,
+ "web_fetches": 51,
+ "not_checked": [
+  "https://www.startupdaily.net/topic/asx/fitness-app-founder-kayla-itsines-sells-sweat-for-400-million/: the unit's address was not returned by either of two searches, so it was not fetched; the article was read at the outlet's own address the searches returned, https://www.startupdaily.net/2021/07/fitness-app-founder-kayla-itsines-sells-sweat-for-400-million/",
+  "vidIQ, Ali Abdaal, the 11 Nov 2026 snapshot: the page now carries data of 13 Nov 2026 (1,514 videos; 6 long-form and 25 Shorts in 28 days), so the unit's 1,513, 5 and 26 could not be read as dated"
+ ]
+}

@@ -1,0 +1,1649 @@
+[
+ {
+  "n": 1,
+  "section": "§1",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Candogan: 88 long-form videos, 20,000+ subscribers, 600,000+ views, $300+ revenue at one year",
+  "source": "https://sidikatunccandogan.substack.com/p/first-year-as-a-youtuber",
+  "verdict": "PASS"
+ },
+ {
+  "n": 2,
+  "section": "§2",
+  "sampled": true,
+  "kind": "mechanism",
+  "claim": "PB6 rules R3, R4, R7, R8, R10, R11 as the unit describes them",
+  "source": "others/PB6 Deliverable rule table",
+  "verdict": "PASS"
+ },
+ {
+  "n": 3,
+  "section": "§3",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Abdaal: \"cranking out three YouTube videos a week\"; \"down to only one or two videos a week\"",
+  "source": "https://every.to/superorganizers/the-double-life-of-productivitys-3842641",
+  "verdict": "PASS"
+ },
+ {
+  "n": 4,
+  "section": "§4",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Pascual: 29,385 subscribers at 12 months; Partner Programme 212 days in, 7 Nov 2023",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "PASS"
+ },
+ {
+  "n": 5,
+  "section": "§5",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Boyd: \"There wasn't a grind to 10,000 subs. The first one just hit the nail on the head\"",
+  "source": "https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 6,
+  "section": "§6",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Anderson: 93,400 Instagram followers on 27 Feb 2019 (\"the account now at 93.4k followers\")",
+  "source": "https://pod.co/the-woodpreneur-podcast-1/083-woodworking-building-a-following-on-instagram-with-cam-anderson-of-blacktail-studio",
+  "verdict": "PASS"
+ },
+ {
+  "n": 7,
+  "section": "§7",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Itsines: 3.1 million Instagram followers on 26 Jun 2015",
+  "source": "https://www.yahoo.com/health/how-trainer-kayla-itsines-built-a-global-fitness-122451982837.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 8,
+  "section": "§8",
+  "sampled": true,
+  "kind": "quotation",
+  "claim": "Wicks: \"over a million Instagram followers\" on 21 Jun 2016",
+  "source": "https://globalnews.ca/news/2776599/personal-trainer-joe-wicks-trying-to-get-the-whole-world-lean/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 9,
+  "section": "§9",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Itsines \"a post every three or four hours\" (USA Today, 2015), read as departing from IR6",
+  "source": "https://www.pressreader.com/usa/usa-today-us-edition/20151221/282265254388654",
+  "verdict": "PASS"
+ },
+ {
+  "n": 10,
+  "section": "§10",
+  "sampled": true,
+  "kind": "number",
+  "claim": "8.65% of channels adding 12 to 51 videos crossed 1,000 subscribers within 360 days (vidIQ, 11 Sep 2026, as PB1 cites it)",
+  "source": "others/PB1 §2; https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 11,
+  "section": "§11",
+  "sampled": true,
+  "kind": "date",
+  "claim": "Abdaal took a break from medicine in August 2020 and decided to leave it in 2021 (his site)",
+  "source": "https://aliabdaal.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 12,
+  "section": "Deliverable",
+  "sampled": true,
+  "kind": "number",
+  "claim": "Itsines, latest: 13.1M IG (Startup Daily, 15 Jul 2021)",
+  "source": "https://www.startupdaily.net/2021/07/fitness-app-founder-kayla-itsines-sells-sweat-for-400-million/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 13,
+  "section": "Sources",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "Tubefilter (Geoff Weiss), \"YouTube launches Shorts beta in U.S.\", 18 Mar 2021; India Sept 2020, US beta 18 Mar 2021",
+  "source": "https://tubefilter.com/2021/03/18/youtube-launches-shorts-beta-us-working-on-monetization/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 14,
+  "section": "Unsure list",
+  "sampled": true,
+  "kind": "attribution",
+  "claim": "The Guardian piece on Wicks is dated 18 June 2016 only in Wikipedia's citation; the inkl copy shows no date",
+  "source": "https://www.inkl.com/news/meet-the-body-coach-the-man-with-the-million-dollar-muscles ; https://en.wikipedia.org/wiki/Joe_Wicks_(coach)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 15,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Candogan is one of PB1 §9's two first-year cases, with the same figures",
+  "source": "others/PB1 §9",
+  "verdict": "PASS"
+ },
+ {
+  "n": 16,
+  "section": "§1",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "PB1 §9 point 3: an existing audience changes the base rate",
+  "source": "others/PB1 §9 point 3",
+  "verdict": "PASS"
+ },
+ {
+  "n": 17,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Entry rule: a creator entered only with a dated audience number from the first three years or near a 12-, 24- or 36-month point; Boyd has none",
+  "source": "unit §1 against §5; https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/ ; https://yespress.io/mike-boyd",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 18,
+  "section": "§2",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "PB1 §9's six-point checklist as listed",
+  "source": "others/PB1 §9 points 1 to 6",
+  "verdict": "PASS"
+ },
+ {
+  "n": 19,
+  "section": "§2",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "PB7 rules IR1, IR2, IR5, IR6, IR7, IR9 as described",
+  "source": "others/PB7 Deliverable rule table",
+  "verdict": "PASS"
+ },
+ {
+  "n": 20,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Month counts from June 2017: 14, 18, 38, 39",
+  "source": "arithmetic on the unit's dates",
+  "verdict": "PASS"
+ },
+ {
+  "n": 21,
+  "section": "§3",
+  "sampled": false,
+  "kind": "number",
+  "claim": "One to three videos a week is the 52-plus band and twice Mara's 26 a year or more",
+  "source": "others/PB1 §2; case-facts.md (PB1)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 22,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "787 days from 9 Apr 2023 to 4 Jun 2025; 212 days to 7 Nov 2023",
+  "source": "arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 23,
+  "section": "§4",
+  "sampled": false,
+  "kind": "number",
+  "claim": "36 videos a year sits in the 12-51 band, where 8.65% crossed 1,000 within 360 days (figure right; label missing, erratum 2)",
+  "source": "others/PB1 §2; https://vidiq.com/research/youtube-uploads-1000-subscribers/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 24,
+  "section": "§4",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Partner Programme thresholds change on 1 February 2027, as PB1 §4 sets out",
+  "source": "others/PB1 §4",
+  "verdict": "PASS"
+ },
+ {
+  "n": 25,
+  "section": "§5",
+  "sampled": false,
+  "kind": "number",
+  "claim": "197 videos since Nov 2015 is about 18 a year",
+  "source": "arithmetic (17.9)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 26,
+  "section": "§6",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Mar 2020 about 42 months, 27 Feb 2019 about 29 months after 19 Sep 2016; 147 videos about 14 a year",
+  "source": "arithmetic (14.5)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 27,
+  "section": "§7",
+  "sampled": false,
+  "kind": "number",
+  "claim": "21 at the start; 26 Jun 2015 about 34 months in; eight years before Reels",
+  "source": "arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 28,
+  "section": "§8",
+  "sampled": false,
+  "kind": "number",
+  "claim": "21 Jun 2016 about 29 months, Jun 2017 about 41 months from Jan 2014",
+  "source": "arithmetic",
+  "verdict": "PASS"
+ },
+ {
+  "n": 29,
+  "section": "§9",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "PB7's evidence for IR6 is a within-account vendor association (Buffer, 13 Aug 2025)",
+  "source": "others/PB7 rule table, IR6",
+  "verdict": "PASS"
+ },
+ {
+  "n": 30,
+  "section": "§10",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Of 18 points one is a dated count at its point; near numbers 2 to 5 months away; five of six started before Reels and Shorts",
+  "source": "unit §3 to §8",
+  "verdict": "PASS"
+ },
+ {
+  "n": 31,
+  "section": "§10",
+  "sampled": false,
+  "kind": "mechanism",
+  "claim": "PB1 §6's plateau",
+  "source": "others/PB1 §6",
+  "verdict": "PASS"
+ },
+ {
+  "n": 32,
+  "section": "§11",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Mara's plan: one 10-minute video every two weeks, 26 a year, three feed posts a week, 6 hours, no Shorts in year one, day one Mon 4 Jan 2027",
+  "source": "case-facts.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 33,
+  "section": "§11",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Her pieces: chairs, side tables and small cabinets (PB2)",
+  "source": "case-facts.md (PB2)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 34,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "date",
+  "claim": "Twelve-month review 3 Jan 2028; 24-month review in the week of 1 January 2029",
+  "source": "case-facts.md; others/PB10; others/DD-PB2",
+  "verdict": "PASS"
+ },
+ {
+  "n": 35,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "number",
+  "claim": "Pattern 2: \"Four of six document\" a floor, with Pascual \"weekly in year one\"",
+  "source": "unit §4, §9 R7; https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 36,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "recommendation",
+  "claim": "Read for Mara: the four rules as the register records them",
+  "source": "case-facts.md \"Set by DD-PB1\"",
+  "verdict": "PASS"
+ },
+ {
+  "n": 37,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "DD-PB2 takes \"Keep the job through year two\" from this unit",
+  "source": "others/DD-PB2",
+  "verdict": "PASS"
+ },
+ {
+  "n": 38,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Every address cited in the body is in Sources and the reverse (43 and 43)",
+  "source": "script over unit.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 39,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Abdaal: \"2 years working full-time as a Junior Doctor\"",
+  "source": "https://aliabdaal.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 40,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Pascual: \"a Ph.D candidate in Biostatistics at a California university\"",
+  "source": "https://verynormal.substack.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 41,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "yespress: \"Boyd grew up in Dundee, Scotland\" (undated, unsigned)",
+  "source": "https://yespress.io/mike-boyd",
+  "verdict": "PASS"
+ },
+ {
+  "n": 42,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Anderson a LifeFlight pilot until March 2020 (Tubefilter; the page writes \"Life Flight\")",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 43,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Itsines born 21 May 1991 (Wikipedia)",
+  "source": "https://en.wikipedia.org/wiki/Kayla_Itsines",
+  "verdict": "PASS"
+ },
+ {
+  "n": 44,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Wicks a personal trainer running bootcamps (Campaign)",
+  "source": "https://www.pressreader.com/uae/campaign-middle-east/20170611/281509341172242",
+  "verdict": "PASS"
+ },
+ {
+  "n": 45,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Candogan's archive lists twelve posts, March to August 2025, none about the channel",
+  "source": "https://sidikatunccandogan.substack.com/archive",
+  "verdict": "PASS"
+ },
+ {
+  "n": 46,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Abel \"built on social media while\" \"working a full-time sales job at a boat dealership\"",
+  "source": "https://socialstudies.beehiiv.com/p/90k-ig-followers-for-a-furniture-restorer ; https://heatherparady.com/blog/38",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 47,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Abel: the only audience number is the headline's \"90K+ IG Followers\", undated; the rest is paywalled; the Parady profile gives no count or start year",
+  "source": "https://socialstudies.beehiiv.com/p/90k-ig-followers-for-a-furniture-restorer ; https://heatherparady.com/blog/38",
+  "verdict": "PASS"
+ },
+ {
+  "n": 48,
+  "section": "§1",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Partridge founded UNILAD (2010) and LADbible (2011) (BusinessCloud, 19 Jan 2025)",
+  "source": "https://businesscloud.co.uk/news/adhd-felt-like-10-caffeinated-squirrels-in-my-head-ladbible-founder/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 49,
+  "section": "§1",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Lewis: \"from financial services to full-time YouTube\"; 325,000 subscribers, undated",
+  "source": "https://youtubecreatorshub.libsyn.com/from-financial-services-to-full-time-youtube-mark-lewiss-story",
+  "verdict": "PASS"
+ },
+ {
+  "n": 50,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Kagan: first upload a guitar cover on 4 Jan 2017; medical content from 20 Jun 2017, filmed on his phone in Cambodia",
+  "source": "https://noahkagan.com/ali-abdaal-interview/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 51,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Abdaal: \"I started my YouTube channel in 2017 while I was at university\"",
+  "source": "https://aliabdaal.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 52,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Kagan: email list \"over 130,000\", a backup if the platform changes",
+  "source": "https://noahkagan.com/ali-abdaal-interview/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 53,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "First cohort of the course in November 2020; book in 2023",
+  "source": "https://aliabdaal.com/?p=222 ; https://aliabdaal.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 54,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Kagan: one to three videos a week since 2017; \"He's never skipped a week\"",
+  "source": "https://noahkagan.com/ali-abdaal-interview/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 55,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "vidIQ: 1,513 videos, 5 long-form and 26 Shorts in 28 days (data 11 Nov 2026)",
+  "source": "https://vidiq.com/youtube-stats/channel/@aliabdaal/index.md",
+  "verdict": "unverifiable"
+ },
+ {
+  "n": 56,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Abdaal: \"either me or someone on my team\"",
+  "source": "https://every.to/superorganizers/the-double-life-of-productivitys-3842641",
+  "verdict": "PASS"
+ },
+ {
+  "n": 57,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "50,000-subscriber video of 24 Aug 2018: \"a year ago\"; \"a junior doctor working in Cambridge\"",
+  "source": "https://rosetta.to/u/aliabdaal/answering-personal-questions-50k-subs-q-a",
+  "verdict": "PASS"
+ },
+ {
+  "n": 58,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "100,000-subscriber Q&A dated 8 Dec 2018",
+  "source": "https://rosetta.to/u/aliabdaal/ask-doctor-ali-100k-subscribers-q-a",
+  "verdict": "PASS"
+ },
+ {
+  "n": 59,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"I hit 100,000 subscribers on YouTube in 2018\"; \"1 million subscribers in September 2020\"; 2M Jul 2021, 3M Jun 2022, 4M Apr 2023",
+  "source": "https://aliabdaal.com/?p=222",
+  "verdict": "PASS"
+ },
+ {
+  "n": 60,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "vidIQ: 6.71 million; gains of 10,000 to 30,000 a month Nov 2025 to Sep 2026, none in Oct 2026",
+  "source": "https://vidiq.com/youtube-stats/channel/@aliabdaal/index.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 61,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Abdaal: \"made the decision to officially leave Medicine\" (2021); pandemic closed Australia's borders",
+  "source": "https://aliabdaal.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 62,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Kagan: he quit his day job at 1 million subscribers",
+  "source": "https://noahkagan.com/ali-abdaal-interview/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 63,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Abdaal: sponsorships \"a vitally important part of our revenue\"",
+  "source": "https://every.to/superorganizers/the-double-life-of-productivitys-3842641",
+  "verdict": "PASS"
+ },
+ {
+  "n": 64,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "His site: the business has \"grown to over 20 employees\"",
+  "source": "https://aliabdaal.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 65,
+  "section": "§3",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Abdaal: \"I thought I'd be way more productive than I've been so far\"",
+  "source": "https://every.to/superorganizers/the-double-life-of-productivitys-3842641",
+  "verdict": "PASS"
+ },
+ {
+  "n": 66,
+  "section": "§3",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Kagan's first tactic: start very niche (an admissions exam), then broaden",
+  "source": "https://noahkagan.com/ali-abdaal-interview/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 67,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Pascual: \"I uploaded my first video on April 9th, 2023\"; the page carries no post date",
+  "source": "https://verynormal.substack.com/p/issue-41-a-lifelong-goal-achieved",
+  "verdict": "PASS"
+ },
+ {
+  "n": 68,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"a newsletter for the Very Normal YouTube Channel\"",
+  "source": "https://verynormal.substack.com",
+  "verdict": "PASS"
+ },
+ {
+  "n": 69,
+  "section": "§4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "36 videos totalling 311 minutes in the first year",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "PASS"
+ },
+ {
+  "n": 70,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Weekly schedule \"an awful experience\"; \"about two weeks\"",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "PASS"
+ },
+ {
+  "n": 71,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "About page: \"I post roughly every two weeks\"",
+  "source": "https://verynormal.substack.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 72,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"Balancing it with my research is an ongoing struggle\"",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "PASS"
+ },
+ {
+  "n": 73,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"not going to give up my Ph.D just to get explosive growth on the channel\" (Issue 25, 11 Sep 2024)",
+  "source": "https://verynormal.substack.com/p/issue-25-should-you-be-afraid-of",
+  "verdict": "PASS"
+ },
+ {
+  "n": 74,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "100,000 on 4 Jun 2025, \"it took 787 days\"; \"to reach 100K before I graduate\"",
+  "source": "https://verynormal.substack.com/p/issue-41-a-lifelong-goal-achieved",
+  "verdict": "PASS"
+ },
+ {
+  "n": 75,
+  "section": "§4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Most viewed \"The most important skill in statistics\"; best earner \"The better way to do statistics\" (Issue 18, 17 May 2024)",
+  "source": "https://verynormal.substack.com/p/issue-18-a-realistic-look-at-creating",
+  "verdict": "PASS"
+ },
+ {
+  "n": 76,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"to a new life in industry\"",
+  "source": "https://verynormal.substack.com/p/issue-41-a-lifelong-goal-achieved",
+  "verdict": "PASS"
+ },
+ {
+  "n": 77,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Affiliate links: \"I may get a small amount of money\"",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "PASS"
+ },
+ {
+  "n": 78,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Explainer videos \"hover at around 1-2 cents a day\", maximum \"$1.20 in a single day\"; first two weeks left out",
+  "source": "https://verynormal.substack.com/p/issue-18-a-realistic-look-at-creating",
+  "verdict": "PASS"
+ },
+ {
+  "n": 79,
+  "section": "§4",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "\"Maybe this has hurt my potential channel growth\", said \"of holding to strict consistency\"",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 80,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"I don't think the weekly pace helped, but rather a more mindful approach to the thumbnail and title\"",
+  "source": "https://verynormal.substack.com/p/issue-41-a-lifelong-goal-achieved",
+  "verdict": "PASS"
+ },
+ {
+  "n": 81,
+  "section": "§4",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "His content \"has ended up confusing a lot of people\"",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "PASS"
+ },
+ {
+  "n": 82,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "vidIQ dates the channel to 23 Oct 2008; yespress says it lay dormant until 2015",
+  "source": "https://vidiq.com/youtube-stats/channel/@mikeboyd/ ; https://yespress.io/mike-boyd",
+  "verdict": "PASS"
+ },
+ {
+  "n": 83,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "MetaFilter, 11 Nov 2015: \"It took him five hours and forty-seven minutes\"",
+  "source": "https://www.metafilter.com/154630/Gladwell-eat-my-shorts",
+  "verdict": "PASS"
+ },
+ {
+  "n": 84,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Second channel launched \"three years ago\"; \"I struggle to put stuff on TikTok. I don't think it's a good thing to be on\"",
+  "source": "https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 85,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Kim: \"When we realized we could pay both of us, we both quit our jobs and went all in\"; \"We have an editor and occasionally hire other cameramen\"",
+  "source": "https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 86,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "vidIQ: 2.93 million, 197 videos; losses of 10,000 in Dec 2025, Apr 2026, Sep 2026, no change otherwise (views were 477,016,889 on 13 Nov; 477,027,345 on the page's 15 Nov data)",
+  "source": "https://vidiq.com/youtube-stats/channel/@mikeboyd/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 87,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"people resonated with the first video I put up\"",
+  "source": "https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 88,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Most-viewed long-form videos date Dec 2021 to Nov 2022, led by \"Can I make money counting cards?\" (23 Feb 2022, 3.89 million)",
+  "source": "https://vidiq.com/youtube-stats/channel/@mikeboyd/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 89,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Kim: \"Deciding not to become a huge production company is what has made it sustainable\"; \"I always say mood over work\"",
+  "source": "https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 90,
+  "section": "§5",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"Get a good agent who brings you third parties that are worth trusting\"; \"Stay away from gambling, alcohol\"; \"I'm really bad at that stuff\"",
+  "source": "https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 91,
+  "section": "§5",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Two engineering degrees and a master's thesis in progress at the start (yespress)",
+  "source": "https://yespress.io/mike-boyd",
+  "verdict": "PASS"
+ },
+ {
+  "n": 92,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"my wife showed me what a hashtag was\"; YouTube in 2016 (his words)",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 93,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "vidIQ dates the channel to 19 Sep 2016",
+  "source": "https://vidiq.com/youtube-stats/channel/UC6I0KzAD7uFTL1qzxyunkvA",
+  "verdict": "PASS"
+ },
+ {
+  "n": 94,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Woodworking Talk Show, 6 Aug 2021: posting \"since 2018\"",
+  "source": "https://thewoodworkingtalkshow.libsyn.com/cam-anderson-of-blacktail-studio-ep-5",
+  "verdict": "PASS"
+ },
+ {
+  "n": 95,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Seven days on, seven off; in Tubefilter's words \"so much downtime\"; quit in March 2020",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 96,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Feb 2019: emergency services flight pilot; \"a one-man woodworking company based out of Portland, Oregon\"",
+  "source": "https://pod.co/the-woodpreneur-podcast-1/083-woodworking-building-a-following-on-instagram-with-cam-anderson-of-blacktail-studio",
+  "verdict": "PASS"
+ },
+ {
+  "n": 97,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "\"the thousands of views\" given as \"Tubefilter's account\" (the words are Anderson's, quoted)",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "FAIL"
+ },
+ {
+  "n": 98,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "About one video a month in 2022, a wish for every two to three weeks, Shorts under test",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 99,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Show notes: first year slow; Instagram, at his wife's suggestion, is what took the business off",
+  "source": "https://pod.co/the-woodpreneur-podcast-1/083-woodworking-building-a-following-on-instagram-with-cam-anderson-of-blacktail-studio",
+  "verdict": "PASS"
+ },
+ {
+  "n": 100,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Sponsorship offers at about 30,000 to 40,000 subscribers, 2018 to 2019: \"They weren't very good offers\"",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 101,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "About one million subscribers by June 2022",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 102,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "vidIQ: 3.46 million, 147 videos, no net change in 28 days, none in four of the last twelve months",
+  "source": "https://vidiq.com/youtube-stats/channel/UC6I0KzAD7uFTL1qzxyunkvA",
+  "verdict": "PASS"
+ },
+ {
+  "n": 103,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Fifth or sixth video, an epoxy table: \"that one got a couple million views pretty quick\"; about 20,000 subscribers",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 104,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Barnwood, \"a big part of the whole 'ugly end products' thing\"",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 105,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "The Tilt: \"regularly turning down $20K commissioned projects that don't fit his business model\"; most sponsorship offers declined",
+  "source": "https://www.thetilt.com/content-entrepreneur/blacktail-studio-cam-anderson",
+  "verdict": "PASS"
+ },
+ {
+  "n": 106,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"I never wanted to be a big furniture company with a bunch of employees\"; hired a videographer",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 107,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"thousands, or even tens of thousands\"; Home Depot; \"I never spent any money I didn't make from furniture\"",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 108,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Blog post, 9 Nov 2023: advertising revenue of five videos, $5,486 to $70,533",
+  "source": "https://cameron-anderson-f9sx.squarespace.com/blog/5-terrible-builds-that-paid-me-131708",
+  "verdict": "PASS"
+ },
+ {
+  "n": 109,
+  "section": "§6",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"I was an idiot so I sold it on Etsy for like $350 and didn't charge shipping\"; shipping $150; \"was apparently pricing myself way too low\"",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 110,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "His view that giving away his methods brought more sales and followers",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 111,
+  "section": "§6",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Instagram announced Reels on 5 Aug 2020",
+  "source": "https://about.instagram.com/blog/announcements/introducing-instagram-reels-announcement",
+  "verdict": "PASS"
+ },
+ {
+  "n": 112,
+  "section": "§7",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "She \"joined as @kayla_itsines in August 2012\" (Bloomberg, 7 Jul 2016)",
+  "source": "https://www.bloomberg.com/features/2016-cult-of-kayla/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 113,
+  "section": "§7",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Yahoo: women-only gym, mobile trainer, \"about 220 clients\"; began posting to store her photos; posts followers' progress photos",
+  "source": "https://www.yahoo.com/health/how-trainer-kayla-itsines-built-a-global-fitness-122451982837.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 114,
+  "section": "§7",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Company founded March 2013; two PDF guides January 2014 (Bloomberg)",
+  "source": "https://www.bloomberg.com/features/2016-cult-of-kayla/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 115,
+  "section": "§7",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Facebook: more than 20 million followers in July 2021 (Startup Daily)",
+  "source": "https://www.startupdaily.net/2021/07/fitness-app-founder-kayla-itsines-sells-sweat-for-400-million/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 116,
+  "section": "§7",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"In a few months, Itsines attracted hundreds of thousands of followers\"",
+  "source": "https://www.bloomberg.com/features/2016-cult-of-kayla/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 117,
+  "section": "§7",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "4 million in December 2015 (USA Today)",
+  "source": "https://www.pressreader.com/usa/usa-today-us-edition/20151221/282265254388654",
+  "verdict": "PASS"
+ },
+ {
+  "n": 118,
+  "section": "§7",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "4.6 million on 18 March 2016 (Christian Post): the headline's figure; the body says \"close to five million\"",
+  "source": "https://www.christianpost.com/trends/bbg-creator-kayla-itsines-instafamous-trainer-with-4-6-million-followers-on-instagram.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 119,
+  "section": "§7",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "More than 5.3 million in July 2016 (Bloomberg)",
+  "source": "https://www.bloomberg.com/features/2016-cult-of-kayla/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 120,
+  "section": "§7",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"Do I regret calling my guides Bikini Body? My answer is yes\"; she \"doesn't even like the term 'BBG' anymore\"; calorie levels raised in 2014",
+  "source": "https://www.bloomberg.com/features/2016-cult-of-kayla/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 121,
+  "section": "§7",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Sale to iFIT, July 2021: A$400 million widely reported; note: \"the M&A was worth just under $200m\"",
+  "source": "https://www.startupdaily.net/2021/07/fitness-app-founder-kayla-itsines-sells-sweat-for-400-million/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 122,
+  "section": "§7",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Bloomberg: a spokesperson narrowed \"25 million people\" to everyone who had interacted with the products online",
+  "source": "https://www.bloomberg.com/features/2016-cult-of-kayla/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 123,
+  "section": "§8",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Guardian via inkl: \"I was a personal trainer for five years\"; Instagram for self-promotion in 2014",
+  "source": "https://www.inkl.com/news/meet-the-body-coach-the-man-with-the-million-dollar-muscles",
+  "verdict": "PASS"
+ },
+ {
+  "n": 124,
+  "section": "§8",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Campaign: a friend urged him to try it later in 2013, when Instagram launched video",
+  "source": "https://www.pressreader.com/uae/campaign-middle-east/20170611/281509341172242",
+  "verdict": "PASS"
+ },
+ {
+  "n": 125,
+  "section": "§8",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "First YouTube video \"HIIT Home Workout for beginners\", 29 Aug 2014 (Wikipedia, citing YouTube)",
+  "source": "https://en.wikipedia.org/wiki/Joe_Wicks_(coach)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 126,
+  "section": "§8",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Mission page: bootcamps in Richmond, \"Often no one came\" (undated)",
+  "source": "https://thebodycoach.com/mission",
+  "verdict": "PASS"
+ },
+ {
+  "n": 127,
+  "section": "§8",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "#leanin15 for 15-second recipe videos; 90-day plan; books (Campaign; mission page)",
+  "source": "https://www.pressreader.com/uae/campaign-middle-east/20170611/281509341172242 ; https://thebodycoach.com/mission",
+  "verdict": "PASS"
+ },
+ {
+  "n": 128,
+  "section": "§8",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"Every single day posting breakfast, lunch and dinner\" (Campaign; the page has it mid-sentence, lower-case \"every\")",
+  "source": "https://www.pressreader.com/uae/campaign-middle-east/20170611/281509341172242",
+  "verdict": "PASS"
+ },
+ {
+  "n": 129,
+  "section": "§8",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Guardian: \"I've got a million followers\"",
+  "source": "https://www.inkl.com/news/meet-the-body-coach-the-man-with-the-million-dollar-muscles",
+  "verdict": "PASS"
+ },
+ {
+  "n": 130,
+  "section": "§8",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Campaign: Instagram \"rocketed from 600,000 to 1.8 million\"; YouTube \"has grown from 30,000 subscribers to 300,000\"",
+  "source": "https://www.pressreader.com/uae/campaign-middle-east/20170611/281509341172242",
+  "verdict": "PASS"
+ },
+ {
+  "n": 131,
+  "section": "§8",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "He quit his job to launch The Body Coach (Business Insider India, undated)",
+  "source": "https://businessinsider.in/a-day-in-the-life-of-the-body-coach-the-british-instagram-star-inspiring-thousands-of-people-to-get-lean/amp_articleshow/49486010.cms",
+  "verdict": "PASS"
+ },
+ {
+  "n": 132,
+  "section": "§8",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "About 400 sign-ups a day at £147 (the Guardian)",
+  "source": "https://www.inkl.com/news/meet-the-body-coach-the-man-with-the-million-dollar-muscles",
+  "verdict": "PASS"
+ },
+ {
+  "n": 133,
+  "section": "§8",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Lean in 15: The Shift Plan (2015) sold 77,000 copies in its opening week (Wikipedia, citing Metro, 26 Mar 2020)",
+  "source": "https://en.wikipedia.org/wiki/Joe_Wicks_(coach)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 134,
+  "section": "§8",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "\"In order to be good on social media, I was antisocial in real life\"",
+  "source": "https://www.pressreader.com/uae/campaign-middle-east/20170611/281509341172242",
+  "verdict": "PASS"
+ },
+ {
+  "n": 135,
+  "section": "§9",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Top titles such as \"$4000 Block of Wood\" (vidIQ); Boyd's and Anderson's most-viewed videos date from 2021 to 2024",
+  "source": "https://vidiq.com/youtube-stats/channel/UC6I0KzAD7uFTL1qzxyunkvA ; https://vidiq.com/youtube-stats/channel/@mikeboyd/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 136,
+  "section": "§9",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pascual: two video types inside one subject (Issue 18)",
+  "source": "https://verynormal.substack.com/p/issue-18-a-realistic-look-at-creating",
+  "verdict": "PASS"
+ },
+ {
+  "n": 137,
+  "section": "§10",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Kagan credits Abdaal's niche and email list; Pascual says titles and thumbnails mattered more than pace",
+  "source": "https://noahkagan.com/ali-abdaal-interview/ ; https://verynormal.substack.com/p/issue-41-a-lifelong-goal-achieved",
+  "verdict": "PASS"
+ },
+ {
+  "n": 138,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Quotations repeated in the brief: \"never skipped a week\", \"we both quit our jobs\", \"not to become a huge production company\", \"I never wanted to be a big furniture company\"",
+  "source": "https://noahkagan.com/ali-abdaal-interview/ ; https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/ ; https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 139,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "quotation",
+  "claim": "Table quotations: \"hundreds of thousands\" (Bloomberg), \"2018 or 2019\" (Tubefilter), \"antisocial in real life\" (Campaign), \"way more productive\" (Every)",
+  "source": "https://www.bloomberg.com/features/2016-cult-of-kayla/ ; https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/ ; https://www.pressreader.com/uae/campaign-middle-east/20170611/281509341172242 ; https://every.to/superorganizers/the-double-life-of-productivitys-3842641",
+  "verdict": "PASS"
+ },
+ {
+  "n": 140,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pattern 1: \"Itsines: client transformations since August 2012 (Bloomberg, 7 Jul 2016)\"",
+  "source": "https://www.bloomberg.com/features/2016-cult-of-kayla/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 141,
+  "section": "Deliverable",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Pattern 1: Wicks joined later in 2013 by Campaign's account or in 2014 by the Guardian's",
+  "source": "https://www.pressreader.com/uae/campaign-middle-east/20170611/281509341172242 ; https://www.inkl.com/news/meet-the-body-coach-the-man-with-the-million-dollar-muscles",
+  "verdict": "PASS"
+ },
+ {
+  "n": 142,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: aliabdaal.com, about page",
+  "source": "https://aliabdaal.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 143,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: aliabdaal.com, ?p=222 (earlier about page)",
+  "source": "https://aliabdaal.com/?p=222",
+  "verdict": "PASS"
+ },
+ {
+  "n": 144,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: AP (Louise Dixon) via Global News, \"Personal trainer Joe Wicks trying to get the whole world lean\", 21 Jun 2016",
+  "source": "https://globalnews.ca/news/2776599/personal-trainer-joe-wicks-trying-to-get-the-whole-world-lean/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 145,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Bloomberg (Claire Suddath), \"The Bikini Body Cult of Kayla Itsines\", 7 Jul 2016",
+  "source": "https://www.bloomberg.com/features/2016-cult-of-kayla/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 146,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: The Body Coach, mission page, undated",
+  "source": "https://thebodycoach.com/mission",
+  "verdict": "PASS"
+ },
+ {
+  "n": 147,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Business Insider India, \"A day in the life of The Body Coach\", undated",
+  "source": "https://businessinsider.in/a-day-in-the-life-of-the-body-coach-the-british-instagram-star-inspiring-thousands-of-people-to-get-lean/amp_articleshow/49486010.cms",
+  "verdict": "PASS"
+ },
+ {
+  "n": 148,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: BusinessCloud (Chris Maguire), \"'ADHD felt like 10 caffeinated squirrels in my head' – LADbible founder\", 19 Jan 2025",
+  "source": "https://businesscloud.co.uk/news/adhd-felt-like-10-caffeinated-squirrels-in-my-head-ladbible-founder/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 149,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Campaign Middle East, Joe Wicks profile, 11 Jun 2017, via PressReader",
+  "source": "https://www.pressreader.com/uae/campaign-middle-east/20170611/281509341172242",
+  "verdict": "PASS"
+ },
+ {
+  "n": 150,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Cameron Anderson, \"5 Terrible Builds That Paid Me $131,708\", 9 Nov 2023",
+  "source": "https://cameron-anderson-f9sx.squarespace.com/blog/5-terrible-builds-that-paid-me-131708",
+  "verdict": "PASS"
+ },
+ {
+  "n": 151,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Candogan, \"First year as a YouTuber\", about 28 Jul 2024",
+  "source": "https://sidikatunccandogan.substack.com/p/first-year-as-a-youtuber",
+  "verdict": "PASS"
+ },
+ {
+  "n": 152,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Candogan, newsletter archive",
+  "source": "https://sidikatunccandogan.substack.com/archive",
+  "verdict": "PASS"
+ },
+ {
+  "n": 153,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Christian Post (Abigail Briones), \"#BBG Creator Kayla Itsines, 'Instafamous' Trainer With 4.6 Million Followers on Instagram\", 18 Mar 2016",
+  "source": "https://www.christianpost.com/trends/bbg-creator-kayla-itsines-instafamous-trainer-with-4-6-million-followers-on-instagram.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 154,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Every, Superorganizers, \"The double life of productivity's most famous doctor\", 24 Sep 2020",
+  "source": "https://every.to/superorganizers/the-double-life-of-productivitys-3842641",
+  "verdict": "PASS"
+ },
+ {
+  "n": 155,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: The Guardian (Stuart Heritage), \"Meet The Body Coach: the man with the million-dollar muscles\", via inkl",
+  "source": "https://www.inkl.com/news/meet-the-body-coach-the-man-with-the-million-dollar-muscles",
+  "verdict": "PASS"
+ },
+ {
+  "n": 156,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Heather Parady, Leif Abel profile, 25 Jun 2024",
+  "source": "https://heatherparady.com/blog/38",
+  "verdict": "PASS"
+ },
+ {
+  "n": 157,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Instagram, \"Introducing Instagram Reels\", 5 Aug 2020",
+  "source": "https://about.instagram.com/blog/announcements/introducing-instagram-reels-announcement",
+  "verdict": "PASS"
+ },
+ {
+  "n": 158,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: MetaFilter, \"Gladwell, eat my shorts\", 11 Nov 2015",
+  "source": "https://www.metafilter.com/154630/Gladwell-eat-my-shorts",
+  "verdict": "PASS"
+ },
+ {
+  "n": 159,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Net Influencer (Dragomir Stojkov), \"Learning in public: how Mike Boyd built a sustainable YouTube business on curiosity\", 4 Mar 2026",
+  "source": "https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 160,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Noah Kagan, Ali Abdaal interview write-up, 25 Jan 2022",
+  "source": "https://noahkagan.com/ali-abdaal-interview/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 161,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Rosetta, \"Answering personal questions - 50k subs Q&A\", 24 Aug 2018",
+  "source": "https://rosetta.to/u/aliabdaal/answering-personal-questions-50k-subs-q-a",
+  "verdict": "PASS"
+ },
+ {
+  "n": 162,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Rosetta, \"Ask Doctor Ali - 100k subscribers Q&A\", 8 Dec 2018",
+  "source": "https://rosetta.to/u/aliabdaal/ask-doctor-ali-100k-subscribers-q-a",
+  "verdict": "PASS"
+ },
+ {
+  "n": 163,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Social Studies, \"90K+ IG Followers.. For a furniture restorer???\", 23 Sep 2024",
+  "source": "https://socialstudies.beehiiv.com/p/90k-ig-followers-for-a-furniture-restorer",
+  "verdict": "PASS"
+ },
+ {
+  "n": 164,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Startup Daily (Simon Thomsen), Sweat sale to iFIT, 15 Jul 2021, with editor's note",
+  "source": "https://www.startupdaily.net/2021/07/fitness-app-founder-kayla-itsines-sells-sweat-for-400-million/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 165,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: The Tilt (Leo Bonacci), \"Entrepreneur: Cam Anderson\", 3 Jul 2023",
+  "source": "https://www.thetilt.com/content-entrepreneur/blacktail-studio-cam-anderson",
+  "verdict": "PASS"
+ },
+ {
+  "n": 166,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Tubefilter (James Hale), \"YouTube Millionaires: Cam Anderson makes a living building $20,000 tables\", 3 Jun 2022",
+  "source": "https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 167,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: USA Today, Kayla Itsines profile, 21 Dec 2015, via PressReader",
+  "source": "https://www.pressreader.com/usa/usa-today-us-edition/20151221/282265254388654",
+  "verdict": "PASS"
+ },
+ {
+  "n": 168,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Very Normal, newsletter home",
+  "source": "https://verynormal.substack.com",
+  "verdict": "PASS"
+ },
+ {
+  "n": 169,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Very Normal, about page",
+  "source": "https://verynormal.substack.com/about",
+  "verdict": "PASS"
+ },
+ {
+  "n": 170,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Very Normal, Issue 14, \"The statistics of being on YouTube for one year\", 9 Apr 2024",
+  "source": "https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "verdict": "PASS"
+ },
+ {
+  "n": 171,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Very Normal, Issue 18, \"A realistic look at creating evergreen content\", 17 May 2024",
+  "source": "https://verynormal.substack.com/p/issue-18-a-realistic-look-at-creating",
+  "verdict": "PASS"
+ },
+ {
+  "n": 172,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Very Normal, Issue 25, \"Should you be afraid of 'falling off'?\", 11 Sep 2024",
+  "source": "https://verynormal.substack.com/p/issue-25-should-you-be-afraid-of",
+  "verdict": "PASS"
+ },
+ {
+  "n": 173,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Very Normal, Issue 41, \"A lifelong goal achieved\", after 4 Jun 2025 (undated)",
+  "source": "https://verynormal.substack.com/p/issue-41-a-lifelong-goal-achieved",
+  "verdict": "PASS"
+ },
+ {
+  "n": 174,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: vidIQ, Ali Abdaal channel stats, data 11 Nov 2026",
+  "source": "https://vidiq.com/youtube-stats/channel/@aliabdaal/index.md",
+  "verdict": "PASS"
+ },
+ {
+  "n": 175,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: vidIQ, Blacktail Studio channel stats, data 13 Nov 2026",
+  "source": "https://vidiq.com/youtube-stats/channel/UC6I0KzAD7uFTL1qzxyunkvA",
+  "verdict": "PASS"
+ },
+ {
+  "n": 176,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: vidIQ, Mike Boyd channel stats, data 13 Nov 2026",
+  "source": "https://vidiq.com/youtube-stats/channel/@mikeboyd/",
+  "verdict": "PASS"
+ },
+ {
+  "n": 177,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Wikipedia, \"Joe Wicks (coach)\"",
+  "source": "https://en.wikipedia.org/wiki/Joe_Wicks_(coach)",
+  "verdict": "PASS"
+ },
+ {
+  "n": 178,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Wikipedia, \"Kayla Itsines\"",
+  "source": "https://en.wikipedia.org/wiki/Kayla_Itsines",
+  "verdict": "PASS"
+ },
+ {
+  "n": 179,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: The Woodpreneur Podcast, ep. 83, Cam Anderson, 27 Feb 2019",
+  "source": "https://pod.co/the-woodpreneur-podcast-1/083-woodworking-building-a-following-on-instagram-with-cam-anderson-of-blacktail-studio",
+  "verdict": "PASS"
+ },
+ {
+  "n": 180,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: The Woodworking Talk Show, ep. 5, Cam Anderson, 6 Aug 2021",
+  "source": "https://thewoodworkingtalkshow.libsyn.com/cam-anderson-of-blacktail-studio-ep-5",
+  "verdict": "PASS"
+ },
+ {
+  "n": 181,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: Yahoo (Molly Shea), \"Kayla Itsines on the 28-Min 'Bikini Body' Secret that Earned Her Instagram Fame\", 26 Jun 2015",
+  "source": "https://www.yahoo.com/health/how-trainer-kayla-itsines-built-a-global-fitness-122451982837.html",
+  "verdict": "PASS"
+ },
+ {
+  "n": 182,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: yespress.io, \"The engineer who learned to fail on camera\", undated",
+  "source": "https://yespress.io/mike-boyd",
+  "verdict": "PASS"
+ },
+ {
+  "n": 183,
+  "section": "Sources",
+  "sampled": false,
+  "kind": "attribution",
+  "claim": "Sources entry: YouTube Creators Hub, \"From Financial Services to Full-Time YouTube: Mark Lewis's story\", undated",
+  "source": "https://youtubecreatorshub.libsyn.com/from-financial-services-to-full-time-youtube-mark-lewiss-story",
+  "verdict": "PASS"
+ }
+]

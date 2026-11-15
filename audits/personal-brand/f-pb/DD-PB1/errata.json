@@ -1,0 +1,110 @@
+[
+ {
+  "id": "DD-PB1-1",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "§1 How the six were chosen (the spread sentence)",
+  "current": "four outside the United States (Abdaal, Boyd, Itsines, Wicks).",
+  "fix": "four outside the United States (Abdaal, Boyd, Itsines, Wicks). One of the six does not meet criterion 1 as written: no source opened gives a dated audience number from Boyd's first three years or near a 12-, 24- or 36-month point (§5: all three unpublished); he is kept with that gap stated, and his history documents practice, not early numbers.",
+  "basis": "Carried from run 1 (its DD-PB1-1), now with the sources open. Unit §1 criterion 1 against §5 ('All three unpublished'). Net Influencer, 4 Mar 2026, gives no subscriber count and no start year, https://www.netinfluencer.com/learning-in-public-how-mike-boyd-built-a-sustainable-youtube-business-on-curiosity/ ; yespress.io gives one count, '2.7M subscribers', for 2026, https://yespress.io/mike-boyd ; vidIQ's monthly series starts in October 2025, https://vidiq.com/youtube-stats/channel/@mikeboyd/ . Abel and Lewis were left out in §1 for the same gap.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-2",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "other",
+  "section": "§4 Christian Pascual, Read against PB1 §9, point 2",
+  "current": "where 8.65% of channels crossed 1,000 within 360 days; his rate",
+  "fix": "where 8.65% of channels crossed 1,000 subscribers within 360 days (vidIQ, 11 Sep 2026, as PB1 cites it; vendor data, correlational); his rate",
+  "basis": "Carried from run 1 (its DD-PB1-2), now with the source open. Sourcing standard Part 5: vendor and correlational data are labelled, and a number is sourced where it is made. vidIQ Research, 'Reaching 1,000 YouTube Subscribers: What 32.9 Million Channels Reveal', 11 Sep 2026: 12 to 51 videos, 1,259,198 channels, 108,952 reached 1,000 (8.65%); the study calls itself observational. https://vidiq.com/research/youtube-uploads-1000-subscribers/ ; PB1 §2 carries the same row.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-3",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "Deliverable A, One-page summary, pattern 2 (the count)",
+  "current": "Four of six document one; Boyd and Anderson show only an average",
+  "fix": "Three of six document one; Pascual dropped his weekly date within year one and uploads when a video is ready (Issue 14), and Boyd and Anderson show only an average",
+  "basis": "Carried from run 1 (its DD-PB1-3), now with the source open. Very Normal, Issue 14, 9 Apr 2024: 'I started with a weekly upload schedule, and it quickly became an awful experience.'; 'At some point, I decided that strict consistency in uploads was not tenable.' https://verynormal.substack.com/p/issue-14-the-statistics-of-being ; the unit's own §4 (What he stopped: the weekly schedule), §9 R7 (Pascual departs) and figure 1 say the same.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-4",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "Deliverable A, One-page summary, pattern 2 (Pascual)",
+  "current": "Pascual: weekly in year one, then every two weeks (Issue 14, about page)",
+  "fix": "Pascual: 36 videos in year one, the weekly date dropped during it, then roughly every two weeks (Issue 14, about page)",
+  "basis": "Carried from run 1 (its DD-PB1-4), now with the sources open. Very Normal, Issue 14, 9 Apr 2024: 'I posted 36 videos, adding a total of 311 minutes of statistics content to Youtube'; the weekly schedule 'quickly became an awful experience' and was given up inside the year the post covers. https://verynormal.substack.com/p/issue-14-the-statistics-of-being ; about page: 'I post roughly every two weeks', https://verynormal.substack.com/about",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-5",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "should-fix",
+  "verdict": "FAIL",
+  "section": "§1 Considered and left out (Leif Abel)",
+  "current": "a furniture restorer who built on social media while \"working a full-time sales job at a boat dealership\"",
+  "fix": "a furniture restorer who began restoring furniture after leaving \"a full-time sales job at a boat dealership\"",
+  "basis": "Social Studies, 23 Sep 2024, his words: 'I was working a full-time sales job at a boat dealership ...'; 'I felt I was supposed to leave. So I did, with no plan B, cold turkey.'; 'After leaving my sales job, I was chatting with my mom, and she suggested doing furniture flipping.' https://socialstudies.beehiiv.com/p/90k-ig-followers-for-a-furniture-restorer ; Heather Parady, 25 Jun 2024, has him begin restoring after leaving the sales job, https://heatherparady.com/blog/38 . The quoted words are exact; the claim that he built beside the job is not what the source says. His exclusion (no dated number) stands.",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-6",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "error",
+  "verdict": "FAIL",
+  "section": "§4 Christian Pascual, What he says he got wrong",
+  "current": "\"Maybe this has hurt my potential channel growth\", of holding to strict consistency (Issue 14)",
+  "fix": "\"Maybe this has hurt my potential channel growth\", of giving up strict consistency in uploads (Issue 14)",
+  "basis": "Very Normal, Issue 14, 9 Apr 2024, in order: 'At some point, I decided that strict consistency in uploads was not tenable.' 'What I opted for instead was consistency in effort.' ... 'It turns out that it takes me about two weeks to do this, so that's the rate that it happens.' 'Maybe this has hurt my potential channel growth.' The 'this' is dropping the strict schedule; the unit has the referent reversed. https://verynormal.substack.com/p/issue-14-the-statistics-of-being",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-7",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "FAIL",
+  "section": "§6 Cam Anderson, Platform mix",
+  "current": "because of his Instagram following (Tubefilter's account).",
+  "fix": "because of his Instagram following (Tubefilter; his words).",
+  "basis": "Tubefilter (James Hale), 3 Jun 2022: the words are Anderson's, in quotation: 'You know, they got in the thousands of views, because I had my Instagram following to kinda push it to.' §9 IR7 of the unit already gives them as 'his account'. https://tubefilter.com/2022/06/03/youtube-millionaires-blacktail-studio/",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-8",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources (the Guardian via inkl)",
+  "current": "\"Meet The Body Coach: the man with the million-dollar muscles\", via inkl",
+  "fix": "\"Meet the Body Coach, the man with the million-dollar muscles\", via inkl",
+  "basis": "The headline on the inkl page reads 'Meet the Body Coach, the man with the million-dollar muscles', https://www.inkl.com/news/meet-the-body-coach-the-man-with-the-million-dollar-muscles ; Wikipedia's reference gives the same title, https://en.wikipedia.org/wiki/Joe_Wicks_(coach)",
+  "figure": false
+ },
+ {
+  "id": "DD-PB1-9",
+  "unit": "DD-PB1",
+  "kind": "erratum",
+  "severity": "minor",
+  "verdict": "other",
+  "section": "Sources (AP via Global News)",
+  "current": "\"Personal trainer Joe Wicks trying to get the whole world lean\", 21 Jun 2016.",
+  "fix": "\"Personal trainer Joe Wicks 'trying to get the whole world lean'\", 21 Jun 2016.",
+  "basis": "The page's headline is: Personal trainer Joe Wicks 'trying to get the whole world lean' (the phrase is his, in quotation marks). https://globalnews.ca/news/2776599/personal-trainer-joe-wicks-trying-to-get-the-whole-world-lean/",
+  "figure": false
+ }
+]
