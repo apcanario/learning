@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v9.17 · 15 Nov 2026'
+VERSION = 'v9.18 · 15 Nov 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -229,6 +229,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-11-15 22:30', "v9.18. Erratum (row W-BW4, step 6): B4 corrected where BW4's writer found it out of date and a corrections check by Opus 5.5 confirmed it (audits/building-with-ai/corrections-2026-11-15-BW1-B4.md): tokens per character now 2.5 and the window 1M, 500K or 200K by model, with the retrieval-mode inference stated as model-dependent; the scheduled-task name, the path-scoped-rule quotation and the usage-limits source title corrected. Two proposed changes failed the check and were not applied."),
     ('2026-11-15 19:40', "v9.17. Erratum (row W-BW3, step 6): B3 corrected where BW3's writer found it out of date and a corrections check by Opus 5.5 confirmed it (audits/building-with-ai/corrections-2026-11-15-BW1-B3.md): OpenAI's API guide now quoted as 'benefit from precise instructions', not 'very precise instructions' (§2, Where sources disagree)."),
     ('2026-11-15 17:50', "v9.16. Erratum (row W-BW2, step 6): B2 corrected where BW2's writer found it imprecise and a corrections check by Opus 5.5 confirmed it (audits/building-with-ai/corrections-2026-11-15-B2.md): the 40% saving against Opus 5 now carries the launch page's qualifier (typical workloads, default settings), and the launch post's illustrative labels are named in full; 2 exact replacements and a dated note."),
     ('2026-11-15 14:50', "v9.15. Erratum (row W-BW1, step 6): B1 corrected where BW1's writer found it out of date and a corrections check by Opus 5.5 confirmed it (audits/brand-ai/corrections-2026-11-15-BW1-B1.md): the claude.ai window now 1M tokens for Opus 5.5 (arithmetic and chart updated), temperature not a setting on Claude 4.7 and later, lineup and prices as of 15 Nov 2026 (Fable 5.2), four source titles, the Messages API's beta threads; 18 exact replacements and a dated note."),

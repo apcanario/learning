@@ -210,7 +210,7 @@ Every feature of a current assistant is a way of deciding what enters the window
 | **Chat** | Your messages, attachments and the model's replies so far | Every turn, all of it | [*Context windows*](https://platform.claude.com/docs/en/build-with-claude/context-windows) |
 | **Project** | Project instructions; project files, loaded whole or, in retrieval mode, the passages a search returns | Every chat in the project | [*Personalization features*](https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features); [*RAG for projects*](https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects) |
 | **Memory** | Notes a model wrote about earlier chats; past chats, when chat search runs | Next chat, as the app inserts them; search results when searched | [*Chat search and memory*](https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context) |
-| **Tools and connectors** | Results of a web search, a file read, or an action in a connected service | Only when called, then for the rest of the chat | [*Use connectors*](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities); [*How Claude Code works*](https://code.claude.com/docs/en/how-claude-code-works) |
+| **Tools and connectors** | Results of a web search, a file read, or an action in a connected service | The connector: at the start in Always available mode, by Claude's choice in Auto, when searched for in On demand ([*Manage Claude's tool access*](https://support.claude.com/en/articles/13730515-manage-claude-s-tool-access)); its results: only when called, then for the rest of the chat (erratum 15 Nov 2026: was "Only when called, then for the rest of the chat") | [*Use connectors*](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities); [*How Claude Code works*](https://code.claude.com/docs/en/how-claude-code-works) |
 | **Skills** | A name and description per skill; the body and files on trigger | Description always; body when a request matches | [*Agent Skills*](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.md) |
 | **Agents** | Whatever the agent's own tool calls bring in, in a loop | Throughout a task; a subagent in its own window, fresh unless forked from the conversation | [*How Claude Code works*](https://code.claude.com/docs/en/how-claude-code-works) |
 
@@ -403,6 +403,7 @@ All web pages read on 15 November 2026. Anthropic's help-centre pages show no ex
 - Claude Help Center. *Understanding Claude's personalization features*. https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features
 - Claude Help Center. *Retrieval augmented generation (RAG) for projects*. https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects
 - Claude Help Center. *Use connectors to extend Claude's capabilities*. https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities
+- Claude Help Center. *Manage Claude's tool access*. 16 March 2026. https://support.claude.com/en/articles/13730515-manage-claude-s-tool-access
 
 **Vendor documentation and statements: OpenAI and Google**
 
