@@ -66,7 +66,7 @@ def die(msg, code=1):
 
 # ---------------------------------------------------------------------------------------------- fixes / apply
 
-HEAD = re.compile(r'^\[(error|should-fix|minor)\]\s*\[([\w-]+)\]\s*(.*?);\s*Current:\s*', re.S)
+HEAD = re.compile(r'^\[?(error|should-fix|minor)\]?\s+\[([\w-]+)\]\s*(.*?);\s*Current:\s*', re.S)
 LABEL = re.compile(r'[;.]\s*(Problem|Fix|Basis):\s*')
 
 
@@ -110,6 +110,9 @@ def cmd_fixes(report, out):
             continue
         sev, kind, where, cur, fix = got
         fix = fix.replace('\\n', '\n') if fix else fix   # W-BW2: a checker writes a line break inside a Fix as the two characters \n
+        # W-BW10: a checker escapes inner double quotes as \" (JSON style) inside a quoted Current or Fix; the unit has plain quotes
+        cur = cur.replace('\\"', '"')
+        fix = fix.replace('\\"', '"') if fix else fix
         items.append(dict(id=f'f{len(items) + 1}', severity=sev, kind=kind, where=where.strip(), current=cur, fix=fix))
     pathlib.Path(out).write_text(json.dumps(items, ensure_ascii=False, indent=1), encoding='utf-8')
     print(f'{len(items)} findings -> {out}')
@@ -328,7 +331,7 @@ def cmd_save_report(argv):
     if r is None:
         die(f"no row {opt['row']}")
     body = pathlib.Path(opt['report']).read_text(encoding='utf-8')
-    sev = re.findall(r'^\[(error|should-fix|minor)\]', body, flags=re.M)
+    sev = re.findall(r'^\[?(error|should-fix|minor)\]?\s+\[[\w-]+\]', body, flags=re.M)
     v = re.search(r'verdict[^\n]*?\b(keep|fix|rewrite)\b', body, flags=re.I)
     if not v:
         die('no verdict line in the report')
@@ -393,7 +396,7 @@ def cmd_stats(d):
             s['notes'][key] = len([x for x in body.splitlines() if re.match(r'(\d+[.)]|[-*])\s', x)])   # top-level items only
     rp = rd('report.md')
     if rp is not None:
-        sev = re.findall(r'^\[(error|should-fix|minor)\]', rp, flags=re.M)
+        sev = re.findall(r'^\[?(error|should-fix|minor)\]?\s+\[[\w-]+\]', rp, flags=re.M)
         v = re.search(r'verdict[^\n]*?\b(keep|fix|rewrite)\b', rp, flags=re.I)
         s['report'] = dict(error=sev.count('error'), should_fix=sev.count('should-fix'), minor=sev.count('minor'), verdict=v.group(1).lower() if v else None,
                            model=(re.search(r'claude-[a-z0-9.-]+', rp) or [None])[0])

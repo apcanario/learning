@@ -5,7 +5,7 @@ course: building-with-ai · Building with AI
 model: claude-opus-5-5
 date: 2026-11-16
 chat: https://claude.ai/code/session_01KMmgR36FFxqBvGbNsHzyhJ
-verdict: fix · 0 errors, 0 should-fix, 0 minor
+verdict: fix · 0 errors, 7 should-fix, 11 minor
 ---
 
 The checker's final report, verbatim, from its hand-back. Saved before any finding was applied.
