@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v9.19 · 15 Nov 2026'
+VERSION = 'v9.20 · 16 Nov 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -229,6 +229,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-11-16 01:00', "v9.20. Erratum (row W-BW5, step 6): DD-B3 corrected where BW5's writer found it wrong, confirmed by BW5's fresh check and a corrections check by Opus 5.5 (audits/building-with-ai/corrections-2026-11-15-BW5-DD-B3.md): Harper Reed's plan step and Kiro's task links. 2 exact replacements; a third, the Claude Code quotation in §2.1, failed the check and was not applied."),
     ('2026-11-15 23:45', "v9.19. Correction (row W-BW5, step 1b): B4's leftovers from W-BW4's erratum corrected after two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-15-BW5-BW1-B4.md and -BW5-r2-BW1-B4.md): the opening's token and window figures and opened dates, the Models overview entry in Sources, and the erratum's attribution of Models overview. 4 exact replacements."),
     ('2026-11-15 22:30', "v9.18. Erratum (row W-BW4, step 6): B4 corrected where BW4's writer found it out of date and a corrections check by Opus 5.5 confirmed it (audits/building-with-ai/corrections-2026-11-15-BW1-B4.md): tokens per character now 2.5 and the window 1M, 500K or 200K by model, with the retrieval-mode inference stated as model-dependent; the scheduled-task name, the path-scoped-rule quotation and the usage-limits source title corrected. Two proposed changes failed the check and were not applied."),
     ('2026-11-15 19:40', "v9.17. Erratum (row W-BW3, step 6): B3 corrected where BW3's writer found it out of date and a corrections check by Opus 5.5 confirmed it (audits/building-with-ai/corrections-2026-11-15-BW1-B3.md): OpenAI's API guide now quoted as 'benefit from precise instructions', not 'very precise instructions' (§2, Where sources disagree)."),
