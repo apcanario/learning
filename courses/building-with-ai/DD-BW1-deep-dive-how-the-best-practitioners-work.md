@@ -250,7 +250,7 @@ The studies name their own models: GPT-4 (Dell'Acqua et al.), a custom drafting 
 
 ## Deliverable · Method cards and ten operating rules
 
-Three parts. Part 1 is the method cards, one per method of §1 to §3, each traced to its section. Part 2 is the ten operating rules, each traced to its cards, built on the Academy case, a library of self-study courses built by one person with Claude in October and November 2026, each unit written by one model from a brief, checked by a fresh context and audited by sample (Academy case file §1, §2). It is one project by one person: an anecdote, never evidence for a rule, and its record holds no control (case file §9). Each rule has a column saying what your own record of chats would show, so DD-BW3 can test it. Part 3 is the templates. Grades are this unit's; the rules as a set are this unit's synthesis (stated opinion), each resting on the cards named.
+Three parts. Part 1 is the method cards, one per method of §1 to §3, each traced to its section. Part 2 is the ten operating rules, each traced to its cards, built on the Academy case, a library of self-study courses built by one person with Claude in October and November 2026, with a method of one brief per unit, and a fresh check and sample audits that the case file records as run on part of the library (Academy case file §1, §2, §5, §9). It is one project by one person: an anecdote, never evidence for a rule, and its record holds no control (case file §9). Each rule has a column saying what your own record of chats would show, so DD-BW3 can test it. Part 3 is the templates. Grades are this unit's; the rules as a set are this unit's synthesis (stated opinion), each resting on the cards named.
 
 ### Part 1 · Method cards
 
@@ -565,3 +565,5 @@ All read, or tried, on 16 November 2026 at the address a search returned.
 Object: none
 
 Fresh check 2026-11-16 (claude-opus-5-5): fix · 3 errors, 20 should-fix, 12 minor; report `audits/building-with-ai/fresh-check-DD-BW1.md`
+
+Correction 2026-11-16, found by DD-BW1's filer (flag F98, as F52) and checked by a fresh agent (`audits/building-with-ai/corrections-2026-11-16-DD-BW1-r3-DD-BW1.md`): the Deliverable intro describes the case in the case file's wording.
