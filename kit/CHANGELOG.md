@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **BW8 Skills and automation** (row W-BW8, 16 Nov 2026): written by Opus 5.5 with search off, 13,799 words, 4 figures, 14 sources; fresh check fix (3 errors, 9 should-fix, 11 minor), 22 applied, 1 held; a private source unit corrected (11 replacements, two rounds) and BW4 (2 replacements, its Skills cell); 10 flags raised, 8 carried; case file §1 gains the repository's course index and build order.
 - **BW7 Pipelines: raw material to finished output** written by Opus 5.5 and filed (16 Nov 2026, row W-BW7, search off): 10,499 words, 3 figures, 15 sources; fresh check fix (2 errors, 7 should-fix, 11 minor), all applied, 22 replacements, 0 held; 3 corrections applied to B7; 7 flags raised; building-with-ai v8.
 - **BW6 Research and verification** filed 16 Nov 2026 (row W-BW6): written by Opus 5.5 from its brief, search off; fresh check by Opus 5.5, fix (1 error, 7 should-fix, 3 minor), 12 applied, 1 held (search flag); 9 flags raised, 4 carried; 6 of 13 written.
 - **Matrices on a 320 px phone; filer rules (16 Nov 2026, row W-BW5).** Site: every matrix figure gets a second drawing for screens of 360 px and below (a narrow label column, columns and legend inside a 320 px frame); verify.py checks every matrix at 320 px; the build keeps the frame's --stick on history pages; theme 6.11; all 112 matrix figures re-checked from 320 px shots until each passed. Kit: thin.py's fixes parser reads the full Current and Fix and an empty Fix deletes (12 of 12 on fresh-check-BW4.md); thin.py gains `correct` and `stage corrections`; the filer's packet carries the filer rules and thin.py insert runs index_check.py, restoring every file if it fails; the writer's packet carries the course map; the build runs verify.py --shots in the background with a one-hour timeout.
@@ -145,6 +146,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16 Nov 2026 · Session W-BW8 · BW8 Skills and automation
+
+BW8, the unit on skills and automation, was written by Opus 5.5 with search off and filed: the three forms a repeated procedure can take, how a skill is built, triggered and tested, scripts for the exact steps, scheduled tasks and their limits, and a deliverable that turns the course's verification protocol into a skill with a sixteen-request trigger test and schedules the monthly rot check. A separate Opus 5.5 check found 3 errors, 9 should-fix and 11 minor points; 22 were applied and 1 held. Two corrections checks fixed a private source unit (11 replacements in two rounds) and BW4's table cell on where a skill reaches (2 replacements). Ten flags were raised for the syllabus review and eight earlier flags were carried. Next: BW9, Agents.
 
 ## 16 Nov 2026 · Session W-BW7 · BW7 filed
 
