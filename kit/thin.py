@@ -5,13 +5,17 @@ Opus 5.5 agents, and reads only each agent's reply (at most six lines) and its o
 is an agent's; everything that changes a file is one of these commands, which checks its own result and refuses to leave a
 half-done change.
 
-  python3 kit/thin.py stage KIND --row W-BW1 DIR [--unit F] [--report F] [--notes F] [--unsure F] [--fixes F] [--stats F,F] [--date D]
+  python3 kit/thin.py stage KIND --row W-BW1 DIR [--unit F] [--report F] [--notes F] [--unsure F] [--sources F] [--fixes F] [--stats F,F] [--date D]
         KIND writer | checker | applier | filer. Builds the packet folder DIR for one agent (it must not exist or be empty).
         corrections  --text F --files a,b (repo paths) --briefs BW1,BW4: the corrections, the units they touch, the briefs
                 (open_brief), syllabus-flags.md, the case file (the register), the sourcing standard (W-BW5)
         writer  brief.txt (kit/mdcourse.py open_brief), the skill, sourcing standard, figure kinds, case file, source units with
-                their fresh-check reports, filed units of the course, flags.txt
-        checker unit.md, brief.txt, notes.md, unsure.md, the sourcing standard, the case file, skills/audit-units
+                their fresh-check reports, filed units of the course, flags.txt. A course with `source_units=False` in
+                kit/courses.py (S-SP0, 16 Nov 2026: sport-psychology) gets no sources/ folder, its data folder's bibliography.md,
+                and a sourcing-standard.md holding only the standard's opening, Part 1 and the course's own part (also in the
+                checker's and the corrections checker's packets)
+        checker unit.md, brief.txt, notes.md, unsure.md, the sourcing standard, the case file, skills/audit-units;
+                with --sources F also sources.md (the writer's source log, S-SP0)
         applier unit.md, report.md (the fresh-check report), fixes.json (made from the report by `fixes`)
         filer   unit.md, notes.md, unsure.md, report.md, the course's hub.py, syllabus-flags.md and case file, the course's rows
                 of docs/courses-index.md, a template of records.json, filer-rules.txt, the day's corrections reports of the course
@@ -257,7 +261,8 @@ def cmd_insert(rec_path):
             case = next((f for f in ddir.glob('case-*.md')), None)
             if case is None:
                 raise ValueError('no case file in the data folder')
-            files[case] = get(case).rstrip('\n') + '\n' + '\n'.join(rec['case_lines']) + '\n'
+            ct = get(case).replace('\n| — | none yet | — |', '')      # S-SP0: the register's placeholder row goes with the first fact
+            files[case] = ct.rstrip('\n') + '\n' + '\n'.join(rec['case_lines']) + '\n'
 
         fl = ddir / 'syllabus-flags.md'
         if rec.get('flag_rows') or rec.get('flags_carried'):
@@ -414,6 +419,17 @@ def cmd_stats(d):
 
 # ---------------------------------------------------------------------------------------------- stage
 
+def sourcing_text(c):
+    """S-SP0: the sourcing standard as one course's writer needs it: the opening (up to Part 1), Part 1 and the course's part."""
+    t = (ROOT / 'docs' / 'sourcing-standard.md').read_text(encoding='utf-8')
+    parts = re.split(r'(?m)^(?=## Part \d+ )', t)
+    want = ('## Part 1 ', f"## {c['sourcing_part']} ")
+    keep = [x for x in parts[1:] if x.startswith(want)]
+    if len(keep) != 2:
+        die(f"sourcing-standard.md: Part 1 and {c['sourcing_part']} not both found")
+    return parts[0] + ''.join(x.rstrip('\n') + '\n\n' for x in keep)
+
+
 def cmd_stage(argv):
     kind = argv[0]
     opt = {}
@@ -427,7 +443,7 @@ def cmd_stage(argv):
             pos.append(argv[i])
             i += 1
     if kind not in ('writer', 'checker', 'applier', 'filer', 'corrections') or len(pos) != 1 or 'row' not in opt:
-        die('usage: thin.py stage writer|checker|applier|filer --row W-BW1 DIR [--unit F] [--report F] [--notes F] [--unsure F]')
+        die('usage: thin.py stage writer|checker|applier|filer --row W-BW1 DIR [--unit F] [--report F] [--notes F] [--unsure F] [--sources F]')
     out = pathlib.Path(pos[0])
     if out.exists() and any(out.iterdir()):
         die(f'{out} is not empty')
@@ -443,6 +459,13 @@ def cmd_stage(argv):
     ddir = data.parent
     case = next(ddir.glob('case-*.md'), None) or next(ddir.glob('case-facts.md'), None)
     sp = c['sourcing_part'][5:]
+    own = c.get('source_units', True) is False                # S-SP0: a course adapted from nothing
+
+    def standard():
+        if own:
+            (out / 'sourcing-standard.md').write_text(sourcing_text(c), encoding='utf-8')
+        else:
+            put(ROOT / 'docs' / 'sourcing-standard.md')
 
     def put(src, name=None):
         src = pathlib.Path(src)
@@ -456,12 +479,15 @@ def cmd_stage(argv):
     if kind == 'writer':
         brief()
         put(ROOT / 'skills' / 'write-unit' / 'SKILL.md', 'write-unit-SKILL.md')
-        put(ROOT / 'docs' / 'sourcing-standard.md')
+        standard()
         put(R / 'viz.py')
         if case:
             put(case)
-        (out / 'sources').mkdir()
-        for f in np.sources(r['d'].AIMS[code][1]):
+        if own:
+            put(ddir / 'bibliography.md')
+        else:
+            (out / 'sources').mkdir()
+        for f in ([] if own else np.sources(r['d'].AIMS[code][1])):
             put(f, 'sources/' + f.name)
             fc = ROOT / 'audits' / 'brand-ai' / f'fresh-check-{re.match(r"((?:DD-)?[A-Z]+\d+)", f.name).group(1)}.md'   # W-BW5: a deep dive's code has a hyphen
             if fc.exists():
@@ -482,8 +508,10 @@ def cmd_stage(argv):
             if k not in opt:
                 die(f'--{k} is required')
             put(opt[k], f'{k}.md')
+        if 'sources' in opt:                                 # S-SP0: the writer's source log
+            put(opt['sources'], 'sources.md')
         put(ROOT / 'skills' / 'audit-units' / 'SKILL.md', 'audit-units-SKILL.md')
-        put(ROOT / 'docs' / 'sourcing-standard.md')
+        standard()
         if case:
             put(case)
         (out / 'out').mkdir()
@@ -503,7 +531,7 @@ def cmd_stage(argv):
         put(ddir / 'syllabus-flags.md')
         if case:
             put(case)
-        put(ROOT / 'docs' / 'sourcing-standard.md')
+        standard()
         (out / 'out').mkdir()
     elif kind == 'applier':
         for k in ('unit', 'report'):
@@ -539,7 +567,10 @@ def cmd_stage(argv):
             'word but for the code, the date and the report path.\n'
             "3. index_edits always sets the course's count line (\"N of M written\") to the new count, and the unit's row; each old "
             'text is copied exactly from index-rows.txt and occurs once in docs/courses-index.md.\n'
-            '4. thin.py insert runs kit/index_check.py after inserting and restores every file if it fails.\n', encoding='utf-8')
+            '4. thin.py insert runs kit/index_check.py after inserting and restores every file if it fails.\n'
+            + ('5. case_lines (S-SP0): every fact the writer invented about the case athletes, from the Case facts list of '
+               'notes.md, each as one row of the case file\'s table "Added by units": "| <code> | <the fact> | <athlete> |".\n'
+               if own else ''), encoding='utf-8')
         secs = re.split(r'(?m)^(?=## )', ix)                  # C4: the course's whole section (count line, last filed row, this row)
         sec = next((s for s in secs if c['vault'] in s), None)
         stl = next((s for s in secs if s.startswith('## Staleness')), '')   # W-BW5: the staleness table, where a search-on unit gets its row
