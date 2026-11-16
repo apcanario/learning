@@ -38,7 +38,7 @@ The method is laid out as a spec in BW5 §10 and as a pipeline in BW7 §8; this 
 1. **The fresh check became a rule after a failure.** The first three marketing units were written from one research report produced by research agents across five tracks, without a fresh check; Audit 1 sent them to rewrite, and "from then on every unit of that family got a fresh check before filing" (§3). The first AI unit predates the rule (§5).
 2. **Three checker models ran the fresh check:** Fable 5.1 on 19 drafts, Opus 5.5 on 12, Fable 5.2 on 5 (§5, by count of its table). The method names Fable 5.1 as the auditing model (§2); it names no model for the fresh check.
 3. **The figure rule changed.** At first a figure that failed its check three times was dropped, and two were; the owner later ruled that figures are never dropped and are fixed until they pass (§6).
-4. **The applying step became an agent.** From BW7 of this course (16 Nov 2026), a separate agent, the applier, running Opus 5.5, applied the fresh check's findings and could add companion edits a finding implies; writer, checker, applier, filer and corrections checker were each a fresh agent (§2, note). The record does not say who applied findings for the 36 earlier units (§2, note).
+4. **The applying step became an agent.** From BW7 of this course (16 Nov 2026), a separate agent, the applier, running Opus 5.5, applied the fresh check's findings and could add companion edits a finding implies; writer, checker, applier, filer and corrections checker were each a fresh agent (§2, note). The record does not say who applied findings for the 42 earlier units of §5, the 36 of its table and BW1 to BW6 (§2, note; §5, note).
 5. **A thinner main chat was asked for and not run.** For BW10 and for DD-BW1, the row's prompt asked for a main chat on a smaller model (Sonnet 5.5) that only staged packets, filed and recorded; both sessions ran Opus 5.5 and were recorded as such (§2, notes). DD-BW1's row was the second of three rows run in one main chat (§2, note).
 6. **Checks were added; the record does not date them.** A script now checks this course's data folder against a list of private terms, and its fresh checker checks each unit against the same list; the record does not say when this was added relative to the structure audit that found private terms in a public build (§7, note). A script also checks the course index after each filing chat and restores every file if the check fails (§1, note).
 
@@ -46,7 +46,7 @@ The proposal rule shows in the flag counts: the case file's method says a propos
 
 ## 3 · Errors per unit at the fresh check
 
-The fresh check is the one stage the record counts for every unit it covers. The table below is the case file's §5 table, with two changes: the private courses' unit codes are replaced by the row's number in the case file's order (the case file does not say that order is the order of writing), and this course's two units whose checks the case file records are added at the foot. Counts are the checker's findings on the writer's handed-in draft (§5).
+The fresh check is the one stage the record counts for every unit it covers. The table below is the case file's §5 table, with two changes: the private courses' unit codes are replaced by the row's number in the case file's order (the case file does not say that order is the order of writing), and this course's eleven units whose checks the case file records (BW1 to BW10 and DD-BW1) are added at the foot, with their totals and the totals of all 47 rows. Counts are the checker's findings on the writer's handed-in draft (§5).
 
 | Row | Course | Checker | Verdict | Errors | Should-fix | Minor |
 |---|---|---|---|---|---|---|
@@ -87,24 +87,35 @@ The fresh check is the one stage the record counts for every unit it covers. The
 | 35 | UX | Fable 5.2 | fix | 2 | 11 | 7 |
 | 36 | UX | Fable 5.2 | fix | 3 | 8 | 5 |
 | **1–36** | **Three courses** | | **31 fix, 4 keep, 1 rewrite** | **58** | **237** | **303** |
+| BW1 | This course | Opus 5.5 | fix | 1 | 7 | 7 |
+| BW2 | This course | Opus 5.5 | fix | 1 | 5 | 10 |
+| BW3 | This course | Opus 5.5 | fix | 0 | 8 | 11 |
+| BW4 | This course | Opus 5.5 | fix | 2 | 5 | 5 |
+| BW5 | This course | Opus 5.5 | fix | 1 | 5 | 12 |
+| BW6 | This course | Opus 5.5 | fix | 1 | 7 | 3 |
+| BW7 | This course | Opus 5.5 | fix | 2 | 7 | 11 |
+| BW8 | This course | Opus 5.5 | fix | 3 | 9 | 11 |
+| BW9 | This course | Opus 5.5 | keep | 0 | 7 | 11 |
 | BW10 | This course | Opus 5.5 | fix | 0 | 7 | 11 |
 | DD-BW1 | This course | Opus 5.5 | fix | 3 | 20 | 12 |
+| **BW1–DD-BW1** | **This course** | | **10 fix, 1 keep** | **14** | **87** | **104** |
+| **All 47** | **Four courses** | | **41 fix, 5 keep, 1 rewrite** | **72** | **324** | **407** |
 
-Sources: rows 1 to 36 and their totals, Academy case file §5; BW10 and DD-BW1, case file §5, notes of 16 Nov 2026. The checks of BW1 to BW9 of this course are not in the case file's counts.
+Sources: rows 1 to 36 and their totals, Academy case file §5; BW1 to BW9, case file §5, note (checks of 15 and 16 Nov 2026, from the front matter of each unit's fresh-check report); BW10 and DD-BW1, case file §5, notes of 16 Nov 2026. The totals of this course's eleven rows and of all 47 rows are summed from the rows above.
 
 What the table says, by arithmetic on it:
 
-- **Most drafts had an error.** 28 of the 36 had at least one; 8 had none (§5). That is 77.8%. A count kept in one AI unit at the time it was written gives the same picture from earlier: fifteen of the first twenty drafts had an error at first check (§5), 75%.
-- **Errors were few per draft; findings were many.** 58 errors across 36 drafts is 1.6 a draft: 8 drafts had none, 9 had one, 9 had two, 9 had three and 1 had four. All findings together number 598, from 8 to 34 a draft, 16.6 on average. Errors are 9.7% of the findings, should-fix 39.6%, minor 50.7%.
-- **A clean draft still got work.** Of the 8 drafts with no error, 4 were kept as they were and 4 were sent back to fix on their should-fix findings. Every "keep" had no error. The one "rewrite" (row 17) had the most errors, 4.
-- **The courses look alike.** Marketing: 8 of 11 drafts with an error; 15 errors, 71 should-fix, 81 minor, 167 findings. AI: 8 of 10; 17, 58, 89, 164. UX: 12 of 15; 26, 108, 133, 267.
+- **Most drafts had an error.** Of all 47 drafts in the table, 36 had at least one and 11 had none: 76.6%. Of the 36 of three courses, 28 had at least one and 8 had none (§5), 77.8%; of this course's 11, 8 had at least one (§5, notes), 72.7%. A count kept in one AI unit at the time it was written gives the same picture from earlier: fifteen of the first twenty drafts had an error at first check (§5), 75%.
+- **Errors were few per draft; findings were many.** 72 errors across 47 drafts is 1.5 a draft: 11 drafts had none, 13 had one, 11 had two, 11 had three and 1 had four. All findings together number 803, from 8 to 35 a draft, 17.1 on average. Errors are 9.0% of the findings, should-fix 40.3%, minor 50.7%.
+- **A clean draft still got work.** Of the 11 drafts with no error, 5 were kept as they were and 6 were sent back to fix on their should-fix findings. Every "keep" had no error. The one "rewrite" (row 17) had the most errors, 4.
+- **The courses look alike.** Marketing: 8 of 11 drafts with an error; 15 errors, 71 should-fix, 81 minor, 167 findings. AI: 8 of 10; 17, 58, 89, 164. UX: 12 of 15; 26, 108, 133, 267. This course: 8 of 11; 14, 87, 104, 205.
 
 ```viz
-{"kind": "compare", "unit": "drafts", "max": 10, "rows": [{"label": "No error", "value": 8, "tone": 3}, {"label": "1 error", "value": 9, "tone": 4}, {"label": "2 errors", "value": 9, "tone": 4}, {"label": "3 errors", "value": 9, "tone": 1}, {"label": "4 errors", "value": 1, "tone": 1, "display": "1 draft"}], "caption": "The 36 fresh-checked drafts of three courses by the number of errors the checker found in each: §3 of this unit, counted from the table in Academy case file §5 (one project, an anecdote)."}
+{"kind": "compare", "unit": "drafts", "max": 14, "rows": [{"label": "No error", "value": 11, "tone": 3}, {"label": "1 error", "value": 13, "tone": 4}, {"label": "2 errors", "value": 11, "tone": 4}, {"label": "3 errors", "value": 11, "tone": 1}, {"label": "4 errors", "value": 1, "tone": 1, "display": "1 draft"}], "caption": "The 47 fresh-checked drafts of four courses by the number of errors the checker found in each: §3 of this unit, counted from the table in Academy case file §5 and its notes (one project, an anecdote)."}
 ```
 
 ```viz
-{"kind": "bars", "mode": "stacked", "series": [{"name": "Errors", "tone": 1}, {"name": "Should-fix", "tone": 4}, {"name": "Minor", "tone": 3}], "rows": [{"label": "Marketing (11 drafts)", "values": [15, 71, 81]}, {"label": "AI (10 drafts)", "values": [17, 58, 89]}, {"label": "UX (15 drafts)", "values": [26, 108, 133]}], "caption": "Fresh-check findings by grade and course, 598 in all; errors 15 marketing, 17 AI, 26 UX: §3 of this unit, summed from the table in Academy case file §5. The courses differ in subject, units, dates and checkers, and there is no control (§3), so the bars compare nothing causal."}
+{"kind": "bars", "mode": "stacked", "series": [{"name": "Errors", "tone": 1}, {"name": "Should-fix", "tone": 4}, {"name": "Minor", "tone": 3}], "rows": [{"label": "Marketing (11 drafts)", "values": [15, 71, 81]}, {"label": "AI (10 drafts)", "values": [17, 58, 89]}, {"label": "UX (15 drafts)", "values": [26, 108, 133]}, {"label": "This course (11 drafts)", "values": [14, 87, 104]}], "caption": "Fresh-check findings by grade and course, 803 in all; errors 15 marketing, 17 AI, 26 UX, 14 this course: §3 of this unit, summed from the table in Academy case file §5 and its notes. The courses differ in subject, units, dates and checkers, and there is no control (§3), so the bars compare nothing causal."}
 ```
 
 **What the table cannot be read for.** It cannot rank the checker models. BW6 §4 and BW2 §5 already say so: units, courses and dates differ, and there is no control (case file §9). It cannot say which model wrote each draft: the method names Opus 5.5 as the writer and says the writing model is recorded (§2), but the table does not list it per draft. It cannot say whether the fresh check made later drafts better: the file does not say the rows are in order of writing. And an error count is a count of what one checker found, not of what was there: the case file does not count findings the maintainer rejected after verifying them, so the checkers' false-alarm rate is unknown, and nothing measures what they missed. The nearest evidence on both is in §5 below.
@@ -199,7 +210,7 @@ The consequence is the largest single limit on what the record can support. Ever
 - **No control.** No unit was written without the method (§9). Nothing in the record shows the method beats a lighter one; BW5 §10, BW7 §8 and BW9 §9 each say the same.
 - **No second project and no second person** (§9). Every rate above is one person's, on one kind of output (long-form sourced reports), with one family of models.
 - **No before and after.** The fresh check was introduced after Audit 1; Audit 2's units passed; the case file does not say whether those units had a fresh check (BW5 §10, BW6 §7), so the record cannot say the check caused the pass.
-- **No measure of what the checks missed.** The 58 errors are what checkers found. Audit 2's incidental miscited caption outside the sample (§4) shows that errors survive a clean sample; how many survive a fresh check is not measured anywhere in the record.
+- **No measure of what the checks missed.** The 72 errors in §3's table are what checkers found. Audit 2's incidental miscited caption outside the sample (§4) shows that errors survive a clean sample; how many survive a fresh check is not measured anywhere in the record.
 - **No model comparison.** Three checker models ran on different units, courses and dates (§5). Any difference between their counts is confounded with all three.
 - **A record compiled by the project itself.** The case file was compiled from the project's own records, with private details removed (case file header). Its counts are the project's counts of its own work, and the case file records no outside check of them.
 
@@ -211,7 +222,7 @@ Three verdicts (this unit's reading, stated opinion): **supported by a count**, 
 
 | Rule (unit) | Verdict | The count, or what is missing |
 |---|---|---|
-| The check runs in a context that did not write the work (BW2 §5; BW6 §4; DD-BW1 rule 3) | Supported by a count | 28 of 36 drafts with an error at the fresh check (§5). Not tested: the writer's own pass ran before every fresh check (§2), and the record holds no count of what it caught |
+| The check runs in a context that did not write the work (BW2 §5; BW6 §4; DD-BW1 rule 3) | Supported by a count | 36 of 47 drafts with an error at the fresh check (§5 and notes). Not tested: the writer's own pass ran before every fresh check (§2), and the record holds no count of what it caught |
 | A check opens the source and compares; existence is not enough (BW6 §2, §3) | Supported by a count | 23 of 91 claims failed with nothing invented; pattern, qualifiers the source does not carry (§3) |
 | Sample, and send any FAIL to a full check; a clean sample certifies nothing (BW6 §5) | Supported by a count | Audit 1: 1 of 8 sampled, then 23 of 91 (§3). Audit 2: clean sample of 28, one failure outside it (§4) |
 | Date every fact; a STALE triggers a sweep (BW1 §4; BW6 §5) | Supported by a count | 10 stale claims, one unit, one cause (§4) |
@@ -278,7 +289,7 @@ Four parts. Part 1 is the case report: the record of §1 to §9 as one form, eac
 |---|---|---|
 | Stages | Syllabus; brief per unit, never reworded; one context per unit; writer's own pass; fresh check; sample audit every four units; staleness check at six months | §2 |
 | Writer model | Opus 5.5 named; per-draft model not in the table | §2, §5 |
-| Checker models (fresh check) | Fable 5.1: 19; Opus 5.5: 12 plus BW10 and DD-BW1; Fable 5.2: 5 | §5; §5 notes |
+| Checker models (fresh check) | Fable 5.1: 19; Opus 5.5: 12 plus BW1 to BW10 and DD-BW1; Fable 5.2: 5 | §5; §5 notes |
 | Audit model | Fable 5.1 named; per-audit model not recorded | §2 |
 | Effort settings | Not recorded | §9 |
 | Changes while running | Fresh check made a rule after Audit 1; figure rule from drop-after-three to fix-until-pass; applier agent from BW7; thin main chat asked for on two rows and not run | §3, §6, §2 notes |
@@ -291,7 +302,7 @@ Four parts. Part 1 is the case report: the record of §1 to §9 as one form, eac
 | Drafts with at least one error | 28 of 36 (77.8%); earlier count, 15 of the first 20 | §5 |
 | Findings | 58 errors, 237 should-fix, 303 minor: 598 | §5 |
 | Verdicts | 31 fix, 4 keep, 1 rewrite | §5 |
-| This course | BW10: 0 errors, 7 should-fix, 11 minor. DD-BW1: 3 errors (all in figures), 20 should-fix, 12 minor. BW1 to BW9: not in the case file | §5 notes |
+| This course | 11 drafts, each checked by Opus 5.5 (errors, should-fix, minor): BW1 1, 7, 7; BW2 1, 5, 10; BW3 0, 8, 11; BW4 2, 5, 5; BW5 1, 5, 12; BW6 1, 7, 3; BW7 2, 7, 11; BW8 3, 9, 11; BW9 0, 7, 11; BW10 0, 7, 11; DD-BW1 3 (all in figures), 20, 12. Together 14, 87, 104: 205 findings; 8 of 11 with an error; 10 fix, 1 keep (BW9) | §5 notes |
 | Fixes held as wrong or incomplete | BW10: 4 of 18. DD-BW1: 2 of 35. Earlier units: not recorded | §5 notes |
 | Findings rejected after verification | Not recorded | — |
 | History courses' 157 units checked? | Not recorded | — |
@@ -322,7 +333,7 @@ Each change is for the case's own method. **Ranking rule** (stated opinion): by 
 
 | # | Change | Count behind it (Academy case file) | Unit that teaches it | Grade of the rule |
 |---|---|---|---|---|
-| 1 | **Keep the fresh check on every unit, and record for every unit whether it had one.** The check stays a stage with a written report; the course index gains a column saying whether each unit, history courses included, was checked, by which model, with what counts. | 28 of 36 drafts with an error; 58 errors, 598 findings (§5); 15 of the first 20 (§5); check counts in the case file for 38 of 205 units (§1, §5 and notes) | BW6 §4; BW2 §5 | Stated opinion on measured self-preference evidence (BW2 §5); documented practice, vendor (BW6 §4; DD-BW1 rule 3) |
+| 1 | **Keep the fresh check on every unit, and record for every unit whether it had one.** The check stays a stage with a written report; the course index gains a column saying whether each unit, history courses included, was checked, by which model, with what counts. | 36 of 47 drafts with an error; 72 errors, 803 findings (§5 and notes); 15 of the first 20 (§5); check counts in the case file for 47 of 205 units (§1, §5 and notes) | BW6 §4; BW2 §5 | Stated opinion on measured self-preference evidence (BW2 §5); documented practice, vendor (BW6 §4; DD-BW1 rule 3) |
 | 2 | **Put "qualifiers and figures the source does not carry" first in the checker's brief,** above existence and format, and have the checker quote the source's sentence beside each claim it passes. | 23 of 91 claims failed at Audit 1, none invented; the pattern named (§3); 2 table rows on figures the vendor pages lacked (§3) | BW6 §2, §3 | Stated opinion, built on measured citation-error studies (BW6 §2) |
 | 3 | **On any STALE, sweep every claim read from the same page or version, across all units,** and date each again (the sweep across units is this unit's extension of BW6 §5's sweep within one text). | 10 stale claims in one unit, one cause (§4) | BW6 §5; BW1 §4 | Stated opinion (BW6 §5) |
 | 4 | **Record every finding's fate: applied, applied as corrected, rejected, with the reason.** The applier's practice of holding wrong fixes stays; the count it produces becomes the checkers' false-alarm measure. | 6 of 53 fixes held on two rows (§5 notes); 2 of 13 replacements failed a corrections check (§2 notes); rejected findings not counted (§5) | BW6 §6 | Stated opinion, built on vendor guidance (BW6 §4, §6) |
@@ -333,7 +344,7 @@ Each change is for the case's own method. **Ranking rule** (stated opinion): by 
 | 9 | **Run the private-terms check on the built site before each publish, and record the date it was added.** A check on the source folder does not check what the build renders. | 1 of 17 structure-audit findings: private terms in a public build (§7); date of the check not recorded (§7 note) | BW4 §7; BW10 §7 | Stated opinion (BW4 §7) |
 | 10 | **Record hours and usage per unit,** at least the usage bar before and after each row and the clock time of each stage, so that changes 1 to 9 can be weighed against what they cost. | 0 measures of hours, money, tokens or effort across 205 units (§9; §7 note) | BW10 §1, §4; BW7 §7 | Stated opinion (this unit), on BW10 §1: no usage allowance is published, so the record must keep its own |
 
-*Sources for Parts 1 and 2:* Academy case file §1 to §9, its notes of 15 and 16 Nov 2026 and its header; the units of this course named in each row. "205 units" is 194 at 11 Nov 2026 plus this course's 11 by 16 Nov 2026 (§1 and notes); "38" is the 36 of §5's table plus BW10 and DD-BW1.
+*Sources for Parts 1 and 2:* Academy case file §1 to §9, its notes of 15 and 16 Nov 2026 and its header; the units of this course named in each row. "205 units" is 194 at 11 Nov 2026 plus this course's 11 by 16 Nov 2026 (§1 and notes); "47" is the 36 of §5's table plus BW1 to BW10 and DD-BW1.
 
 ### Part 3 · Template: your project's report
 
@@ -433,3 +444,5 @@ Object: none
 Fresh check 2026-11-16 (claude-opus-5-5): fix · 2 errors, 12 should-fix, 10 minor; report `audits/building-with-ai/fresh-check-DD-BW2.md`
 
 Correction 2026-11-16, found by DD-BW2's filer (flag F112, as F52 and F98) and checked by a fresh agent (`audits/building-with-ai/corrections-2026-11-16-DD-BW2-r2-DD-BW2.md`): the opening describes the case in the case file's wording.
+
+Correction 16 Nov 2026, found by the W-DD-BW3 chat (carried proposal CP-2, flag F101): §3's table extended with the fresh checks of BW1 to BW9 from case file §5 and every total, percentage and figure built on its rows recomputed; corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW3-CP2-DD-BW2.md`.

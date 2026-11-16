@@ -16,7 +16,7 @@ BAR = 'BUILDING WITH AI'
 BRAND_HTML = 'BUILDING <span>/</span> WITH AI'
 OUT = 'building-with-ai.html'
 THEME_KEY = 'building-with-ai-theme'
-VERSION = 'v13 · 16 Nov 2026'
+VERSION = 'v14 · 16 Nov 2026'
 LEARN_C, BUILD_C = 'var(--purple)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -136,6 +136,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-16 16:10', "v14. Correction (row W-DD-BW3, step 1c, carried proposal CP-2): DD-BW2's §3 table extended with the fresh checks of BW1 to BW9 from case file §5, and every total, percentage and figure built on its rows recomputed (17 replacements, two figures; flag F101), checked by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-16-DD-BW3-CP2-DD-BW2.md); F101 resolved."),
     ('2026-11-16 16:45', "v13. Correction (row W-DD-BW2, step 7b): DD-BW2's opening now describes the case in the case file's own wording (flag F112, as F52 and F98), checked by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-16-DD-BW2-r2-DD-BW2.md); F112 resolved."),
     ('2026-11-16 16:30', "v13. DD-BW2 Deep dive: one project, with its numbers written (Opus 5.5) and filed; row W-DD-BW2, the third of three rows run in one chat: 8,529 words, 4 figures, no outside page cited at hand-in (the case file and the course's units; one vendor page added from the fresh check, as BW6 §8 read it), written from its brief with search off; the writer was not given the fresh-check reports, audit reports or changelog the brief names. Fresh check (Opus 5.5, separate context, given the course's filed units to check pointers; audits/building-with-ai/fresh-check-DD-BW2.md): fix, 2 errors, 12 should-fix, 10 minor; 21 applied and 3 held in a first pass, where the problem was real but the proposed fix wrong, then 8 entries applied in a second pass (5 companion edits and corrected fixes for the 3 held): all 24 resolved, 29 replacements, 0 held. The applier was stopped once by a server restart and resumed from its transcript. Corrections check of the writer's 3 contradictions by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-DD-BW2-contradictions.md): 0 text changes, 3 not a text change. Case file: BW1 to BW9's fresh-check counts added to §5 from their reports; DD-BW2's §3 table not changed in this row. Flags: 14 raised; F58 and F85 carried; F18, F45, F46, F47, F71, F79, F83 and F95 stay open (case facts still needed, or rules that also bind DD-BW3). Object: none."),
     ('2026-11-16 14:00', "v12. Correction (row W-DD-BW1, step 7b): DD-BW1's Deliverable intro now describes the case in the case file's own wording (flag F98, as F52), checked by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-16-DD-BW1-r3-DD-BW1.md); F98 resolved."),
