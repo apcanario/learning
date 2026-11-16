@@ -46,7 +46,7 @@ The matrix sorts what a subscriber can read from the vendor against what has to 
   {"label": "Session window: five hours from the first message", "cells": [{"mark": "yes", "tone": 3}, null]},
   {"label": "Weekly limit across all models", "cells": [{"mark": "exists", "tone": 3}, {"mark": "its size", "tone": 1}]},
   {"label": "Fable on Max and Ultra", "cells": [{"mark": "up to 50%", "tone": 3}, {"mark": "how much faster", "tone": 1}]},
-  {"label": "Tokens or messages per window", "cells": [{"mark": "Pro example: about 45", "tone": 4}, {"mark": "no fixed count", "tone": 1}]},
+  {"label": "Tokens or messages per window", "cells": [{"mark": "Pro example: about 45", "tone": 4}, {"mark": "token count", "tone": 1}]},
   {"label": "Rate per model", "cells": [null, {"mark": "not stated", "tone": 1}]},
   {"label": "Cached project content", "cells": [{"mark": "counts less", "tone": 3}, {"mark": "how much less", "tone": 1}]},
   {"label": "Cache lifetime, claude.ai", "cells": [null, {"mark": "not stated", "tone": 1}]},
