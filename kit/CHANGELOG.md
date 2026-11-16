@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **DD-BW3 · Deep dive: audit your own usage** written (Opus 5.5, search off) and filed 16 Nov 2026, row W-DD-BW3: fresh check fix, 1 error, 4 should-fix, 9 minor, 12 applied and 2 minor held; CP-2 applied to DD-BW2 first (17 replacements, F101 resolved); 11 flags raised. Building with AI is complete: 13 of 13 written; hub v15.
 - **DD-BW2 · Deep dive: one project, with its numbers** (16 Nov 2026, Opus 5.5, search off): filed at `courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md`; fresh check fix 2/12/10 (`audits/building-with-ai/fresh-check-DD-BW2.md`), all 24 resolved in 29 replacements; corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW2-contradictions.md`, 0 text changes. 12 of 13 written; next DD-BW3.
 - **DD-BW1 · Deep dive: how the best practitioners work** (Building with AI): written by Opus 5.5 with search on, 16 Nov 2026; fresh check fix (3 errors, 20 should-fix, 12 minor), all 35 applied; corrections to a private source unit (6) and BW7 (1), 1 failed; 10 flags raised; staleness check 16 May 2027.
 - **thin.py `fixes` and `save-report`** (16 Nov 2026, row W-BW10): read a finding's severity tag with or without brackets, and unescape \" in its Current and Fix text; BW10's fresh checker wrote both forms.
@@ -150,6 +151,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16 Nov 2026 · Session W-DD-BW3 · DD-BW3 Deep dive: audit your own usage
+
+Row W-DD-BW3, chat https://claude.ai/code/session_01KMmgR2o4QPEmGVEkBpukcP. The main chat ran Opus 5.5 (the prompt asked for a Sonnet 5.5 thin chat); writer, fresh checker, applier, corrections checker and filer were each a fresh Opus 5.5 agent that saw only its packet. Step 1c: carried proposal CP-2 applied to DD-BW2 after a corrections check (17 replacements passed and applied, two figures recomputed; F101 resolved; audits/building-with-ai/corrections-2026-11-16-DD-BW3-CP2-DD-BW2.md); DD-BW2's two changed figures await a figure re-check on the page shots. DD-BW3 written from its brief with search off (10,268 words, 4 figures, 7 web sources read on 16 Nov 2026), fresh-checked (audits/building-with-ai/fresh-check-DD-BW3.md: fix, 1 error, 4 should-fix, 9 minor), 12 findings applied and 2 minor held (f11: the export page does not state what the finding claimed; f14: no change required), filed at courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md. No source errors. Flags: 11 raised (one at filing: §1 repeats the preamble's wording on the case, as F112, with a corrections pass proposed); F67, F79, F80, F81, F83, F84, F92, F93, F95, F99, F100, F108, F109 and F111 carried. DD-BW3's live-read vendor pages are to be re-read with BW10's staleness check on 16 May 2027 (no index row: search off). Building with AI is complete, 13 of 13; next unit —; hub v15.
 
 ## 16 Nov 2026 · Session W-DD-BW2 · DD-BW2 Deep dive: one project, with its numbers
 

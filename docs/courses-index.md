@@ -130,7 +130,7 @@ The public course **PB · Building a Personal Brand on Instagram and YouTube**, 
 
 ## Building with AI (public)
 
-The public course **BW · Building with AI**, created 11 Nov 2026 (row G-0): Brand + AI's course B rewritten for any reader, an exception to the single-reader rule; the reader is the persona in each brief's preamble, principles are tool-neutral and worked on Claude with every product fact dated, and the running case is Academy itself (`gen/data/building-with-ai/case-academy.md`, private details removed). Ten core units in three parts (understand; direct; build and trust) and three deep dives. Sits in the Technology track beside course B until the private courses move to a private site. 12 of 13 written. A unit is written when its file is in `courses/building-with-ai/` (the folder appears with the first one). Briefs: the course's Briefs page in Academy (`gen/data/building-with-ai/units_data.py`, with `AIMS`). Build order: the Build order page, in syllabus order. Syllabus flags: `gen/data/building-with-ai/syllabus-flags.md`. Decisions: `docs/public-courses.md`.
+The public course **BW · Building with AI**, created 11 Nov 2026 (row G-0): Brand + AI's course B rewritten for any reader, an exception to the single-reader rule; the reader is the persona in each brief's preamble, principles are tool-neutral and worked on Claude with every product fact dated, and the running case is Academy itself (`gen/data/building-with-ai/case-academy.md`, private details removed). Ten core units in three parts (understand; direct; build and trust) and three deep dives. Sits in the Technology track beside course B until the private courses move to a private site. 13 of 13 written. A unit is written when its file is in `courses/building-with-ai/` (the folder appears with the first one). Briefs: the course's Briefs page in Academy (`gen/data/building-with-ai/units_data.py`, with `AIMS`). Build order: the Build order page, in syllabus order. Syllabus flags: `gen/data/building-with-ai/syllabus-flags.md`. Decisions: `docs/public-courses.md`.
 
 | # | Unit | Course | Title | Status | Model | Search | Path |
 |---|---|---|---|---|---|---|---|
@@ -146,7 +146,7 @@ The public course **BW · Building with AI**, created 11 Nov 2026 (row G-0): Bra
 | 10 | BW10 | BW | Cost, limits, privacy | written 16 Nov 2026 (fresh check `audits/building-with-ai/fresh-check-BW10.md`) | Opus 5.5 | on | `courses/building-with-ai/BW10-cost-limits-privacy.md` |
 | 11 | DD-BW1 | BW | Deep dive: how the best practitioners work | written 16 Nov 2026 (fresh check `audits/building-with-ai/fresh-check-DD-BW1.md`) | Opus 5.5 | on | `courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md` |
 | 12 | DD-BW2 | BW | Deep dive: one project, with its numbers | written 16 Nov 2026 (fresh check `audits/building-with-ai/fresh-check-DD-BW2.md`) | Opus 5.5 | off | `courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md` |
-| 13 | DD-BW3 | BW | Deep dive: audit your own usage | not written | Opus 5.5 | off | `courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md` |
+| 13 | DD-BW3 | BW | Deep dive: audit your own usage | written 16 Nov 2026 (fresh check `audits/building-with-ai/fresh-check-DD-BW3.md`) | Opus 5.5 | off | `courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md` |
 
 ## Personal Mythology
 
