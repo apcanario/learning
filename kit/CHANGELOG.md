@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Sport Psychology for Coaches** registered 16 Nov 2026, row S-SP0 (Opus 5.5): a markdown course of 13 units in a new Coaching track, no unit written; `thin.py` stages courses with no source units, `next_prompt.py` prints the course's rows from `docs/sport-psychology-prompts.md`; next row of the course W-SP1.
 - **DD-BW3 · Deep dive: audit your own usage** written (Opus 5.5, search off) and filed 16 Nov 2026, row W-DD-BW3: fresh check fix, 1 error, 4 should-fix, 9 minor, 12 applied and 2 minor held; CP-2 applied to DD-BW2 first (17 replacements, F101 resolved); 11 flags raised. Building with AI is complete: 13 of 13 written; hub v15.
 - **DD-BW2 · Deep dive: one project, with its numbers** (16 Nov 2026, Opus 5.5, search off): filed at `courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md`; fresh check fix 2/12/10 (`audits/building-with-ai/fresh-check-DD-BW2.md`), all 24 resolved in 29 replacements; corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW2-contradictions.md`, 0 text changes. 12 of 13 written; next DD-BW3.
 - **DD-BW1 · Deep dive: how the best practitioners work** (Building with AI): written by Opus 5.5 with search on, 16 Nov 2026; fresh check fix (3 errors, 20 should-fix, 12 minor), all 35 applied; corrections to a private source unit (6) and BW7 (1), 1 failed; 10 flags raised; staleness check 16 May 2027.
@@ -151,6 +152,15 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16 Nov 2026 · Session S-SP0 · Sport Psychology for Coaches registered
+
+- Course folder `generator/data/sport-psychology/` from `_template/`: `units_data.py`, `case-facts.md`, `bibliography.md` as attached; `hub.py` from the syllabus's §11; `syllabus-flags.md` with no rows.
+- `kit/courses.py`: `SPORT_PSYCHOLOGY` (`source_units=False`, `prompts_doc`, `sourcing_part='Part 7'`) and the Coaching track in `THEMES` (orange).
+- `kit/build.py`: Coaching in the site log's areas (`SL_AREAS`) and a place on the home topography (`_HERO_AT`); `kit/verify.py`: `SL_AREAS` to match; `kit/private_terms.py`: the course in `PUBLIC`.
+- `kit/thin.py`: `sourcing_text` (the standard's opening, Part 1 and the course's part); `stage writer` gives a course with no source units its `bibliography.md` and no `sources/`; `stage checker --sources F`; `insert` drops the case register's placeholder row with the first fact; filer rule 5 for `case_lines`. building-with-ai packets unchanged (W-BW5, byte for byte).
+- `kit/next_prompt.py`: `sport-psychology` in `QUEUE`; `doc_parts` and `prompt_doc` print a row from the template, safety reader and row paragraphs in the course's `prompts_doc`. building-with-ai prompts unchanged.
+- Registration check (fresh Opus 5.5 agent): PASS 10 of 10, `audits/sport-psychology/registration-2026-11-16.md`.
 
 ## 16 Nov 2026 · Session W-DD-BW3 · DD-BW3 Deep dive: audit your own usage
 

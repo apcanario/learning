@@ -33,6 +33,7 @@ Rules for an entry (`docs/method.md` §8):
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-16 | S-SP0 | Coaching | Sport Psychology for Coaches, a new course, added: 13 units to write. |
 | 2026-11-16 | DD-BW3 | AI | DD-BW3, the deep dive in which the reader reviews their own usage, written; course BW complete. |
 | 2026-11-16 | DD-BW2 | AI | DD-BW2, Deep dive: one project, with its numbers, written. |
 | 2026-11-16 | DD-BW1 | AI | DD-BW1, Deep dive: how the best practitioners work, written. |

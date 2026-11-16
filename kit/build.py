@@ -985,6 +985,7 @@ _HERO_AT = {            # where each area's rise stands (fractions of the layout
     # the Greece edition stopped here from P92 on)
     'history': ([.50, .48], [.46, .55]), 'marketing': ([.33, .15], [.14, .18]),   # W-PB2 (12 Nov 2026): .16 to .15 in the tall layout, so Marketing (86,699 words with PB2) still closes two rings of its own
     'technology': ([.66, .18], [.81, .26]), 'ux': ([.66, .82], [.78, .68]),
+    'coaching': ([.34, .80], [.24, .74]),   # S-SP0 (16 Nov 2026): the Coaching track, a planned rise until SP1 is filed
 }
 if [t['id'] for t in THEMES if t['id'] not in _HERO_AT]:
     raise SystemExit(f'build.py _HERO_AT has no place for the areas {[t["id"] for t in THEMES if t["id"] not in _HERO_AT]}: give each a place')
