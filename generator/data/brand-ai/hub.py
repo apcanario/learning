@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v9.23 · 16 Nov 2026'
+VERSION = 'v9.24 · 16 Nov 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -229,6 +229,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-11-16 13:30', "v9.24. Erratum (row W-DD-BW1, step 6): DD-B3 corrected where DD-BW1's writer found it wrong, confirmed by DD-BW1's fresh check and two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-DD-BW1-DD-B3-BW7.md, Changes 1 to 4; corrections-2026-11-16-DD-BW1-r2-DD-B3.md, Changes 1 and 2): Sprague et al. given as published at ICLR 2025, not a preprint; the four authors of Anthropic's Effective context engineering for AI agents named on card A2 and in Sources. The Cherny byline item (Change 5) failed the check and was not applied. Dated notes in the unit."),
     ('2026-11-16 10:00', "v9.23. Erratum (row W-BW10, step 6): B8 corrected where BW10's writer found it out of date, confirmed by BW10's fresh check and a corrections check by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-BW10-B8-BW1-BW4.md, Change 1 and New 1): the paid plans' context windows as read 16 Nov 2026 added beside the 2 Nov reading; the usage credits' 12-month expiry for credits bought on or after 7 Dec 2026 added. The 'prepaid' item failed the check and was not applied; the Fable-limit item is a note for B8's staleness check. Dated note in the unit."),
     ('2026-11-16 04:30', "v9.22. Erratum (row W-BW8, step 6): B5 corrected where BW8's writer found it wrong, confirmed by BW8's fresh check and two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-BW8-B5-BW4.md, Changes 1 to 5; corrections-2026-11-16-BW8-r2-B5.md, Changes 1 to 6): the help page's title and address (now Use skills in Claude), the custom-skills visibility sentence, sharing on Team and Enterprise, the dated data-persistence sentence, and the 1,536-character cap given as Claude Code's default. 11 exact replacements, each with a dated note in the unit."),
     ('2026-11-16 03:00', "v9.21. Erratum (row W-BW7, step 6): B7 corrected where BW7's writer found it wrong, confirmed by BW7's fresh check and a corrections check by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-BW7-B7.md): Doshi and Hauser's sample and model, and the model of Agarwal and colleagues' study. 3 exact replacements."),

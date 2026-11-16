@@ -174,7 +174,7 @@ None of the three publishes a measurement. Transfer: the pattern transfers whole
 - **Chain-of-thought (Wei et al., arXiv 2201.11903, first posted 28 January 2022).** Including worked reasoning steps as examples improved large models on arithmetic, commonsense and symbolic reasoning; a 540B-parameter model with eight such examples reached state of the art on GSM8K ([arXiv](https://arxiv.org/abs/2201.11903)). Measured, 2022 models.
 - **ReAct (Yao et al., ICLR 2023, first posted 6 October 2022).** Interleaving reasoning with actions (here, Wikipedia lookups) reduced hallucination against chain-of-thought on HotpotQA and FEVER, and beat imitation and reinforcement-learning baselines on ALFWorld and WebShop by 34 and 10 absolute points of success rate ([arXiv](https://arxiv.org/abs/2210.03629)). Measured.
 - **Self-consistency (Wang et al., ICLR 2023, first posted 21 March 2022).** Sample many reasoning paths and keep the most consistent answer; gains over chain-of-thought of 17.9 points on GSM8K, 11.0 on SVAMP, 12.2 on AQuA ([arXiv](https://arxiv.org/abs/2203.11171)). Measured.
-- **Where chain-of-thought does not help (Sprague et al., arXiv 2409.12183, v3 May 2025).** A meta-analysis of over 100 papers and an evaluation of 20 datasets on 14 models: chain-of-thought helps "primarily on tasks involving math or logic"; on MMLU, answering directly is nearly as accurate unless the question or answer contains an equals sign ([arXiv](https://arxiv.org/abs/2409.12183)). Measured.
+- **Where chain-of-thought does not help (Sprague et al., ICLR 2025; arXiv 2409.12183).** A meta-analysis of over 100 papers and an evaluation of 20 datasets on 14 models: chain-of-thought helps "primarily on tasks involving math or logic"; on MMLU, answering directly is nearly as accurate unless the question or answer contains an equals sign ([arXiv](https://arxiv.org/abs/2409.12183)). Measured.
 
 What survives for him. Opus 5.5 and Fable 5.1 think adaptively and always (B2 §7), so writing "think step by step" into a prompt asks for what the model already does, and Anthropic's current Claude Code page says such phrases do not raise effort. ReAct is how a search-enabled chat already works. Self-consistency survives as a verification habit: for a figure or a verdict, two independent runs that agree are stronger than one (B1 §5, "one good answer is one draw"). Sprague et al. place his main work, long-form synthesis and judgement, outside the tasks where explicit reasoning prompts measurably help.
 
@@ -329,7 +329,7 @@ One card per method. Grades: **measured**, **documented practice**, **stated opi
 - Leaves: the framework advice, which is for API developers.
 
 **A2 · Effective context engineering**
-- Author: Anthropic.
+- Author: Prithvi Rajasekaran, Ethan Dixon, Carly Ryan and Jeremy Hadfield, Anthropic.
 - Primary source: Anthropic Engineering, 29 Sep 2025 (§2.1).
 - Claim: aim for the smallest set of high-signal tokens; load by identifier, compact, take notes, use clean sub-agent windows.
 - Grade: documented practice, vendor; no figures.
@@ -426,7 +426,7 @@ One card per method. Grades: **measured**, **documented practice**, **stated opi
 
 **P1 · Chain-of-thought, and its limit**
 - Author: Jason Wei and others; Zayne Sprague and others.
-- Primary source: arXiv 2201.11903, Jan 2022; arXiv 2409.12183, v3 May 2025 (§2.6).
+- Primary source: arXiv 2201.11903, Jan 2022; ICLR 2025, arXiv 2409.12183 (§2.6).
 - Claim: worked reasoning helps large models mainly on math and symbolic tasks, and little elsewhere.
 - Grade: measured; older models.
 - Adopts: nothing in prompts; effort is the control (B2 §7).
@@ -478,7 +478,7 @@ Fresh check 29 Oct 2026 (Fable 5.1): fix · 1 error, 3 should-fix, 9 minor; all 
 7. **"How I use LLMs"**: only the chapter list was read; nothing he says in the video is verified.
 8. **Mollick's four principles** are quoted from a reader's notes; the book was not opened.
 9. **Anthropic's April 2025 Claude Code post** could not be opened (its URL redirects to the current documentation); its content is known here only through Willison's note and the current page's list of retired advice.
-10. **Venues and dates not confirmed on the source page**: the arXiv page for Wei et al. gives no venue and none is claimed; Sprague et al. is cited as a preprint; the OpenAI agents PDF carries no date, so April 2025 rests on Maginative's report; the Sequoia talk video itself was not opened.
+10. **Venues and dates not confirmed on the source page**: the arXiv page for Wei et al. gives no venue and none is claimed; the OpenAI agents PDF carries no date, so April 2025 rests on Maginative's report; the Sequoia talk video itself was not opened.
 
 ## Sources
 
@@ -516,7 +516,7 @@ All web sources opened or attempted on 29 October 2026. X posts marked "not open
 - Pillitteri, P. *Karpathy CLAUDE.md: the #1 GitHub Trending file…*, 4 May 2026. https://pasqualepillitteri.it/en/news/1872/karpathy-claude-md-trending-github-llm-coding
 - Analytics Vidhya. *This is How Andrej Karpathy Uses LLMs*, March 2025. https://www.analyticsvidhya.com/blog/2025/03/how-andrej-karpathy-uses-llms/
 - Schluntz, E. and Zhang, B. *Building effective agents*. Anthropic Engineering, 19 December 2024. https://www.anthropic.com/engineering/building-effective-agents
-- Anthropic. *Effective context engineering for AI agents*. Anthropic Engineering, 29 September 2025. https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+- Rajasekaran, P., Dixon, E., Ryan, C. and Hadfield, J. (Anthropic). *Effective context engineering for AI agents*. Anthropic Engineering, 29 September 2025. https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 - Willison, S. Note on *Claude Code: Best practices for agentic coding*, 19 April 2025. https://simonwillison.net/2025/Apr/19/claude-code-best-practices/
 - Claude Code docs. *Best practices for Claude Code* (read 29 October 2026). https://code.claude.com/docs/en/best-practices
 - OpenAI. *A practical guide to building agents* (PDF, undated). https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf
@@ -536,7 +536,11 @@ All web sources opened or attempted on 29 October 2026. X posts marked "not open
 - Wei, J. et al. "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models". arXiv 2201.11903, 2022. https://arxiv.org/abs/2201.11903
 - Yao, S. et al. "ReAct: Synergizing Reasoning and Acting in Language Models". ICLR 2023; arXiv 2210.03629. https://arxiv.org/abs/2210.03629
 - Wang, X. et al. "Self-Consistency Improves Chain of Thought Reasoning in Language Models". ICLR 2023; arXiv 2203.11171. https://arxiv.org/abs/2203.11171
-- Sprague, Z. et al. "To CoT or not to CoT? Chain-of-thought helps mainly on math and symbolic reasoning". arXiv 2409.12183, v3 May 2025 (preprint). https://arxiv.org/abs/2409.12183
+- Sprague, Z. et al. "To CoT or not to CoT? Chain-of-thought helps mainly on math and symbolic reasoning". ICLR 2025; arXiv 2409.12183. https://proceedings.iclr.cc/paper_files/paper/2025/hash/ead542f13a38179d1b55b88610f959a1-Abstract-Conference.html
 - Learning Project files cited by name: `method.md` §3, §5, §6; B1 · Mental model §1, §3, §4, §5; B2 · Choosing the model §2, §7; B3 · Prompting that holds up §1, §2, §4; B4 · Context engineering §1, §2, F1, F13, F14, E. His saved preferences are cited as B3 §4 describes them.
 
 Erratum 16 Nov 2026, found by BW5's writer and confirmed by its fresh check and a corrections check (Opus 5.5, row W-BW5; `audits/building-with-ai/corrections-2026-11-15-BW5-DD-B3.md`, changes 2 and 3): Harper Reed's plan step and Kiro's task links now say what their pages say. A third item (the Claude Code quotation in §2.1) failed the check: the page DD-B3 cites still carries its wording, and stays.
+
+Erratum 2026-11-16, found by DD-BW1's writer (corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW1-DD-B3-BW7.md`, Changes 1 to 4): Sprague et al. given as ICLR 2025; the authors of Effective context engineering named.
+
+Erratum 2026-11-16 (second round), found by the corrections check of DD-BW1's writer's list and checked by a fresh agent (`audits/building-with-ai/corrections-2026-11-16-DD-BW1-r2-DD-B3.md`): the stale preprint clause removed from the unsure list; the authors named in Sources.

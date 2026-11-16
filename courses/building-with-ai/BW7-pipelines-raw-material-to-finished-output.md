@@ -68,7 +68,7 @@ The stages of a pipeline that produces prose divide into those where a model's c
 | Study | Models | Task | Finding | Grade |
 |---|---|---|---|---|
 | Noy and Zhang, *Science* 2023; working paper 10 Mar 2023 | ChatGPT (version not named in the working paper) | 453 college-educated professionals; occupation-specific writing tasks: press releases, short reports, analysis plans, delicate emails | Time down 40%, quality up 18%; time shifted away from rough-drafting toward ideas and editing | Measured |
-| Dell'Acqua et al., HBS working paper, 2023 | GPT-4 | 758 consultants; consulting tasks inside and outside the model's frontier | Faster and better inside; 19 points less likely to be correct outside; less variable ideas | Measured (working paper) |
+| Dell'Acqua et al., HBS working paper, 2023 | GPT-4 | 758 consultants; consulting tasks inside and outside the model's frontier | Faster and better inside; 19 points less likely to be correct outside; less variable ideas | Measured (working paper; since published in *Organization Science*, DOI 10.1287/orsc.2025.21838) |
 | Doshi and Hauser, *Science Advances* 2024 | GPT-4 | Eight-sentence stories; 293 writers analysed, 600 evaluators | Ideas from the model raised novelty and usefulness, most for the least creative writers; stories became more similar to each other | Measured |
 | Padmakumar and He, ICLR 2024 | GPT-3 (davinci), InstructGPT (text-davinci-003) | 38 writers; argumentative essays of about 300 words | InstructGPT, not GPT-3, reduced diversity; the reduction came from the model's text, not the writers' | Measured |
 | Chakrabarty, Laban and Wu, arXiv preprint, v5 2025 | GPT-4o, Claude-3.5-Sonnet, Llama-3.1-70b | 18 MFA-trained writers edited 1,057 model paragraphs | 8,035 edits; writer-edited text preferred most | Measured (preprint) |
@@ -502,3 +502,5 @@ All web sources read 16 November 2026 unless marked. Product facts carried from 
 Object: none
 
 Fresh check 2026-11-16 (Opus 5.5): fix · 2 errors, 7 should-fix, 11 minor; all 20 applied, with 2 companion edits (22 replacements); report `audits/building-with-ai/fresh-check-BW7.md`
+
+Correction 2026-11-16, found by DD-BW1's writer (corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW1-DD-B3-BW7.md`, Change 6).
