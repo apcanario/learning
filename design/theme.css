@@ -34,6 +34,7 @@
       section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
       the scope line
    Version 6.11, 15 Nov 2026 (C1, W-BW5): a matrix carries a narrow-label drawing (svg.viz-altn, .viz-stickn) shown at 360 px and below, 4i.
+   Version 6.12, 16 Nov 2026 (W-BW8): a matrix's narrow-label drawing (svg.viz-altn, .viz-stickn) is shown below 768 px, on every phone, 4i.
    Version 6.10, 12 Nov 2026 (P98, W-PB5): a bars figure's phone drawing (svg.viz-alt) is 258 units wide, as a compare's,
    and 4i shows it at its own size, so it never scrolls on a 320 px phone; viz.py keeps a compare's value wholly on its
    track or wholly beyond the track's end.
@@ -642,10 +643,11 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
   .viz-stick svg{position:absolute;left:0;bottom:0;display:block;width:auto;min-width:0;max-width:none}
 }
 /* C1 (15 Nov 2026): a matrix whose label column is wider than 100 units also carries svg.viz-altn, the same grid with its row labels
-   in a 100-unit column, and its own sticky copy in .viz-stickn (the frame carries data-altn and --stickn); at 360 px and below
-   they replace the main svg and .viz-stick, so a 320 px phone shows cells beside the labels before the sideways scroll */
+   in a 100-unit column, and its own sticky copy in .viz-stickn (the frame carries data-altn and --stickn); below 768 px (at 360 px and below
+   until W-BW8) they replace the main svg and .viz-stick, so a 320 px phone shows cells beside the labels before the sideways scroll */
 .viz-scroll > svg.viz-altn,.viz-stickn{display:none}
-@media (max-width:360.98px){
+@media (max-width:767.98px){   /* W-BW8 (16 Nov 2026): every phone, not only 360 px and below: at 390 and 430 px the wide drawing's
+     longest cells (BW8 figure 4) sat on one line wider than the frame, never whole in any frame */
   .viz-scroll[data-altn] > svg:not(.viz-altn){display:none}
   .viz-scroll[data-altn] > svg.viz-altn{display:block}
   .viz-scroll[data-altn] > .viz-stick{display:none}

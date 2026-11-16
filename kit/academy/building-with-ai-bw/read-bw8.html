@@ -1,0 +1,1380 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#building-with-ai-bw" data-target="building-with-ai-bw">Course BW · Building with AI · public</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">BW8</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI · PUBLIC</span> · BW8 <span class="pill live">BW8</span></div>
+    <h1>Skills and automation</h1>
+    <p class="scope">What a skill is, why its description carries the trigger, scheduled tasks and their limits, and when a procedure is worth automating.</p>
+  </header>
+  <div class="stepbar" data-n="10"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 10</span><span class="stt">Three forms a reusable procedure takes, and how to choose</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-bw8-0" data-step="0"><span class="n">01</span><span class="t">Three forms a reusable procedure takes, and how to choose</span></a></li><li><a href="#read-bw8-1" data-step="1"><span class="n">02</span><span class="t">What a skill is, as its format defines it</span></a></li><li><a href="#read-bw8-2" data-step="2"><span class="n">03</span><span class="t">How triggering works, and why the description matters more than the body</span></a></li><li><a href="#read-bw8-3" data-step="3"><span class="n">04</span><span class="t">Testing whether it triggers</span></a></li><li><a href="#read-bw8-4" data-step="4"><span class="n">05</span><span class="t">Scripts inside a skill for the steps that must be exact</span></a></li><li><a href="#read-bw8-5" data-step="5"><span class="n">06</span><span class="t">Scheduled tasks: what they can and cannot touch</span></a></li><li><a href="#read-bw8-6" data-step="6"><span class="n">07</span><span class="t">Counting the repeats before automating</span></a></li><li><a href="#read-bw8-7" data-step="7"><span class="n">08</span><span class="t">What a skill must never hold</span></a></li><li><a href="#read-bw8-8" data-step="8"><span class="n">09</span><span class="t">On other tools</span></a></li><li><a href="#read-bw8-9" data-step="9"><span class="n">10</span><span class="t">Deliverable · A skill that checks a draft against its sources, tested, with one scheduled task</span></a></li></ol><div class="secx"><a href="#read-bw8-sources" data-acc>Sources</a><a href="#read-bw8-note" data-acc>The writer's opening note</a><a href="#read-bw8-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-bw8-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">Three forms a reusable procedure takes, and how to choose</span></span></h2>
+<p>By the time you reach this unit you repeat several procedures: the checker brief of BW6, the stages of your BW7 pipeline, the rot check of BW4. Each can live in one of three forms, and they differ in one thing: when the text reaches the model's window (BW1 §1).</p>
+<p><strong>A saved prompt.</strong> A brief you keep in a file and paste, or attach, when you need it: BW3's ten templates are saved prompts. It enters the window only when you put it there, so it costs nothing in the chats that do not use it and it never fires by mistake. Its cost is that you must remember it exists and fetch it. Claude Code has a form of the same thing that you call by name: "Custom commands have been merged into skills", and a skill whose front matter sets <code>disable-model-invocation: true</code> is one Claude cannot load on its own, only you with <code>/name</code> (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/skills.md">Anthropic, <em>Extend Claude with skills</em>, Claude Code documentation</a>, read 16 Nov 2026; vendor).</p>
+<p><strong>A project instruction.</strong> Text that reaches every turn of every chat in one project (BW4 §1). It is the right home for a rule every chat must obey and the wrong home for a procedure: Claude Code's own rule for its instruction file is to move a multi-step procedure into a skill, which BW4 §1 applies to claude.ai's project instructions by inference. Academy (Academy case) is a library of self-study courses built by one person with Claude in October and November 2026; it is one project, so everything it shows is an anecdote. A structure audit of that project found project instructions that carried procedures and paraphrased the method file (Academy case file §1, §7; BW4 §7).</p>
+<p><strong>A skill.</strong> A folder the assistant reads in two steps: its name and description in every chat where it is installed, its body only when a request matches the description (§2). It costs a little in every chat, fires without being asked, and can carry scripts. Claude Code's documentation states when to make one: when you "keep pasting the same instructions, checklist, or multi-step procedure into chat", or when a section of the instruction file "has grown into a procedure rather than a fact" (<em>Extend Claude with skills</em>, read 16 Nov 2026; vendor, documented practice).</p>
+<p>How to choose (stated opinion, each branch traced to the paragraphs above or to §7). A one-step instruction needs none of the three forms: it is a line in the brief that needs it (BW3).</p>
+<figure class="viz viz-decision"><div class="viz-scroll"><svg viewBox="0 0 700 498" width="700" height="498" data-x0="74" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="decision"><path class="viz-link" d="M231.5,66.0 L231.5,78.0 L152.5,78.0 L152.5,107.0"/><path class="viz-head" d="M152.5,114.0 L148.5,107.0 L156.5,107.0 z"/><g data-box=""><rect class="viz-lblbg" x="139.6" y="84.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="152.5" y="96.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M231.5,66.0 L231.5,78.0 L310.5,78.0 L310.5,107.0"/><path class="viz-head" d="M310.5,114.0 L306.5,107.0 L314.5,107.0 z"/><g data-box=""><rect class="viz-lblbg" x="300.1" y="84.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="310.5" y="96.3" text-anchor="middle">no</text></g><path class="viz-link" d="M310.5,186.0 L310.5,198.0 L231.5,198.0 L231.5,227.0"/><path class="viz-head" d="M231.5,234.0 L227.5,227.0 L235.5,227.0 z"/><g data-box=""><rect class="viz-lblbg" x="221.1" y="204.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="231.5" y="216.3" text-anchor="middle">no</text></g><path class="viz-link" d="M310.5,186.0 L310.5,198.0 L389.5,198.0 L389.5,227.0"/><path class="viz-head" d="M389.5,234.0 L385.5,227.0 L393.5,227.0 z"/><g data-box=""><rect class="viz-lblbg" x="376.6" y="204.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="389.5" y="216.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M389.5,292.0 L389.5,304.0 L310.5,304.0 L310.5,333.0"/><path class="viz-head" d="M310.5,340.0 L306.5,333.0 L314.5,333.0 z"/><g data-box=""><rect class="viz-lblbg" x="300.1" y="310.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="310.5" y="322.3" text-anchor="middle">no</text></g><path class="viz-link" d="M389.5,292.0 L389.5,304.0 L468.5,304.0 L468.5,333.0"/><path class="viz-head" d="M468.5,340.0 L464.5,333.0 L472.5,333.0 z"/><g data-box=""><rect class="viz-lblbg" x="455.6" y="310.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="468.5" y="322.3" text-anchor="middle">yes</text></g><path class="viz-link" d="M468.5,398.0 L468.5,410.0 L389.5,410.0 L389.5,439.0"/><path class="viz-head" d="M389.5,446.0 L385.5,439.0 L393.5,439.0 z"/><g data-box=""><rect class="viz-lblbg" x="379.1" y="416.2" width="20.7" height="16.5"/><text class="viz-linklabel" x="389.5" y="428.3" text-anchor="middle">no</text></g><path class="viz-link" d="M468.5,398.0 L468.5,410.0 L547.5,410.0 L547.5,439.0"/><path class="viz-head" d="M547.5,446.0 L543.5,439.0 L551.5,439.0 z"/><g data-box=""><rect class="viz-lblbg" x="534.6" y="416.2" width="25.8" height="16.5"/><text class="viz-linklabel" x="547.5" y="428.3" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-node viz-t4" x="161.5" y="8.0" width="140" height="58.0" rx="2"/><text class="viz-nodelabel" x="231.5" y="27.3" text-anchor="middle">Must it hold in every</text><text class="viz-nodelabel" x="231.5" y="41.3" text-anchor="middle">chat of the project,</text><text class="viz-nodelabel" x="231.5" y="55.3" text-anchor="middle">whatever the task?</text></g><g data-box=""><rect class="viz-solid viz-t3" x="82.5" y="114.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="152.5" y="133.3" text-anchor="middle">Project instruction:</text><text class="viz-ontone" x="152.5" y="147.3" text-anchor="middle">one rule</text></g><g data-box=""><rect class="viz-node viz-t4" x="240.5" y="114.0" width="140" height="72.0" rx="2"/><text class="viz-nodelabel" x="310.5" y="133.3" text-anchor="middle">Is it a procedure of</text><text class="viz-nodelabel" x="310.5" y="147.3" text-anchor="middle">several steps, done</text><text class="viz-nodelabel" x="310.5" y="161.3" text-anchor="middle">the same way each</text><text class="viz-nodelabel" x="310.5" y="175.3" text-anchor="middle">time?</text></g><g data-box=""><rect class="viz-solid viz-t5" x="161.5" y="234.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="231.5" y="253.3" text-anchor="middle">A line in the brief</text><text class="viz-ontone" x="231.5" y="267.3" text-anchor="middle">that needs it</text></g><g data-box=""><rect class="viz-node viz-t4" x="319.5" y="234.0" width="140" height="58.0" rx="2"/><text class="viz-nodelabel" x="389.5" y="253.3" text-anchor="middle">Have you run it at</text><text class="viz-nodelabel" x="389.5" y="267.3" text-anchor="middle">least three times by</text><text class="viz-nodelabel" x="389.5" y="281.3" text-anchor="middle">hand?</text></g><g data-box=""><rect class="viz-solid viz-t2" x="240.5" y="340.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="310.5" y="359.3" text-anchor="middle">Saved prompt: run it</text><text class="viz-ontone" x="310.5" y="373.3" text-anchor="middle">and count</text></g><g data-box=""><rect class="viz-node viz-t4" x="398.5" y="340.0" width="140" height="58.0" rx="2"/><text class="viz-nodelabel" x="468.5" y="359.3" text-anchor="middle">Should it start on its</text><text class="viz-nodelabel" x="468.5" y="373.3" text-anchor="middle">own when a request</text><text class="viz-nodelabel" x="468.5" y="387.3" text-anchor="middle">matches?</text></g><g data-box=""><rect class="viz-solid viz-t2" x="319.5" y="446.0" width="140" height="44.0" rx="2"/><text class="viz-ontone" x="389.5" y="465.3" text-anchor="middle">Saved prompt,</text><text class="viz-ontone" x="389.5" y="479.3" text-anchor="middle">called by name</text></g><g data-box=""><rect class="viz-solid viz-t1" x="477.5" y="446.0" width="140" height="30.0" rx="2"/><text class="viz-ontone" x="547.5" y="465.3" text-anchor="middle">Skill</text></g></svg></div><figcaption>Choosing the form of a reusable procedure (§1 of this unit; stated opinion). The rule for instructions against skills is Claude Code's, in Extend Claude with skills, applied to claude.ai projects by BW4 §1; the count of three is §7's; the name-only form is Claude Code's disable-model-invocation, read 16 Nov 2026.</figcaption></figure>
+<p>The last question matters more than it looks. A skill that fires on its own can fire on the wrong request (§3), and every installed skill adds its description to every chat (§2). A procedure you only ever start on purpose, such as a monthly check, loses nothing as a saved prompt.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="50" data-rings="2"><path d="M216 75l-64 0-24 2-14 3-2 8 32 10 30 6 74 17M256 78l-40 4-32 1-8 1-14 4 26 8 28 4M251 88l-1 8"/><circle class="ct-spot" cx="200" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="122" data-rings="5"><path d="M344 56l-40 5-56 11-32 3M248 121l24 3 32 2 64 1 56-2 32-3 59-10 21-1 112 0M352 63l-32 4-64 11M216 100l48 14 40 5 56 1 56-2 32-4 56-9M360 68l-40 6-35 6-34 8M250 96l13 8 25 6 32 4 48 1 40-2 32-4 40-8 32-3M384 72l-68 8-24 8-10 8 11 8 27 4 24 2 32 0 32-2 24-4 40-8M368 79l-40 6-10 3-8 8 18 7 16 2 49-1 23-4 32-9M360 87l-5 1-8 8 21 1 21-1 13-8-18-2z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="117" data-rings="5"><path d="M576 56l-17 0-55-5-48-2-64 2-48 5M504 105l16-2 128 2M576 64l-72-7-56-1-48 3-48 4M416 64l-56 4M512 98l104 3M576 68l-88-6-32 0-40 2M472 96l32-3 32 0 80 4M600 72l-24 0-24 0-48-5-32 0-88 5M488 72l-120 7M448 91l24-2 56-1 88 5M600 76l-32 1-24-1-40-4-16 0M624 80l-18 8 18 0"/><circle class="ct-spot" cx="520" cy="80" r="8"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="97" data-rings="4"><path d="M648 111l112-4 88 1M824 81l-16-4-32-14-16-5-24-5-32-4-56 1-56 6-16 0M648 105l143-9M787 88l-11-8-24-12-24-7-24-3-48-1-80 7M616 101l56-1 48-5 31-7 0-8-14-8-17-5-24-3-40-1-56 4-24 1M616 97l48-1 32-4 26-4 7-8-17-8-16-3-24-1-24 0-48 4M616 93l40-1 35-4 14-8-17-5-24-3-64 4M624 88l19 0 25-8-20-1-24 1"/><circle class="ct-spot" cx="680" cy="80" r="7"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="35" data-rings="1"><path d="M848 108l64-6M912 84l-16 0-72-3M791 96l-4-8"/><circle class="ct-spot" cx="840" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="52" data-rings="2"><path d="M912 102l48 3 32 0 40-3 24-4 8-2 13-8-12-8-9-3-24-6-24-2-24 0-24 3-40 11-8 1M992 80l-8 1-8 2-9 5 9 6 8 1 16 0 16-3 17-4-9-4-16-4z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-bw8-1" data-step="1"><span>Next · 2 of 10</span><b>What a skill is, as its format defines it</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-bw8-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">What a skill is, as its format defines it</span></span></h2>
+<p>The format has its own specification, published at agentskills.io: "A skill is a directory containing, at minimum, a <code>SKILL.md</code> file", with optional folders for scripts, references and assets (<a target="_blank" rel="noopener" href="https://agentskills.io/specification.md">Agent Skills, <em>Specification</em></a>, read 16 Nov 2026; the format's documentation, whose publisher the page does not name; graded here as vendor documentation, as the Sources list files it). <code>SKILL.md</code> is YAML front matter followed by Markdown. Two fields are required:</p>
+<ul>
+<li><strong><code>name</code></strong>: at most 64 characters, lowercase letters, digits and hyphens only, not starting or ending with a hyphen, no two hyphens together, and it "Must match the parent directory name" (<em>Specification</em>).</li>
+<li><strong><code>description</code></strong>: 1 to 1,024 characters; it "Describes what the skill does and when to use it", and should hold the keywords that help an agent pick it (<em>Specification</em>).</li>
+</ul>
+<p>Anthropic's documentation of the same format adds two rules of its own: the name "Cannot contain reserved words: <code>anthropic</code>, <code>claude</code>", and neither field may hold XML tags; and it states the description requirement as "must include both what the Skill does and when Claude should use it" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/agents-and-tools/agent-skills/overview">Anthropic, <em>Agent Skills</em>, Claude Platform Docs</a>, read 16 Nov 2026; vendor). Both pages describe the same three-level loading, which BW1 §6 and BW4 §2 already use: at startup only the name and description, about 100 tokens a skill; the body when the skill is triggered, under 5,000 tokens; bundled files only when read, and for scripts "only their output enters context" (<em>Agent Skills</em>). The specification adds a size rule: keep <code>SKILL.md</code> "under 500 lines" and move detail into referenced files one level deep (<em>Specification</em>). All of this is documented practice; nobody has published a measurement of what happens past those sizes.</p>
+<p>Where a skill lives decides who can load it. On 16 November 2026:</p>
+<ul>
+<li><strong>claude.ai.</strong> Skills are on the Free, Pro, Max, Ultra, Team and Enterprise plans by the help page, while Anthropic's <em>Agent Skills</em> page lists custom skills, the kind the Deliverable uploads, on Pro, Max, Ultra, Team and Enterprise only (both read 16 Nov 2026); and "This feature requires code execution to be enabled"; individuals turn code execution on in Settings &gt; Capabilities and switch skills on under Customize &gt; Skills (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12512180-use-skills-in-claude">Claude Help Center, <em>Use skills in Claude</em></a>, read 16 Nov 2026; vendor). A custom skill is uploaded as a ZIP, and "The ZIP should contain the skill folder as its root (not a subfolder)" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12512198-how-to-create-custom-skills">Claude Help Center, <em>How to create custom skills</em></a>, read 16 Nov 2026; vendor).</li>
+<li><strong>Claude Code.</strong> A personal skill sits in <code>~/.claude/skills/&lt;name&gt;/</code> and loads in your projects on that machine, "but not Cowork or cloud sessions"; a project skill sits in the repository's <code>.claude/skills/&lt;name&gt;/</code> and loads in sessions in that repository, "but not cloud threads in a project" (<em>Extend Claude with skills</em>, read 16 Nov 2026).</li>
+<li><strong>Network.</strong> On claude.ai, skills "might have full, partial, or no network access" depending on settings; through the API they have none (<em>Agent Skills</em>, read 16 Nov 2026). A script inside a skill that must run everywhere uses nothing outside its own folder (§5).</li>
+</ul>
+<blockquote>
+<p><strong>Where sources disagree.</strong> Anthropic's developer documentation says "Custom Skills do not sync across surfaces" and that Claude Code's skills are "filesystem-based and separate from both claude.ai and the API" (<em>Agent Skills</em>). Claude Code's own documentation says the skills enabled for your claude.ai account load in Cowork sessions, cloud sessions and terminal sessions signed in with that account, the last downloaded into <code>~/.claude/skills/synced/</code> from version 2.1.273 (<em>Extend Claude with skills</em>). Both were read on 16 Nov 2026. Read together: a skill uploaded to claude.ai is documented to reach Claude Code's cloud sessions by one page and not by the other, so the Deliverable also commits the folder to the repository, the route both pages document.</p>
+</blockquote>
+<p>Anthropic's developer documentation warns about installing skills: "Use Skills only from trusted sources", because a malicious skill "can direct Claude to call tools or run code" against its stated purpose, and "Treat like installing software" (<em>Agent Skills</em>, read 16 Nov 2026; vendor). §8 turns that into rules for what you put in your own.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.7"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="70" data-rings="2"><path d="M264 70l-56 3-24 2-21 5-6 8 3 8 8 4 11 4 13 2 24 2 24 0 72-3M320 85l-25-5-31-1-32 1-16 2-16 6 10 8 22 2 24-1 48-7 16-1 16 1"/><circle class="ct-spot" cx="240" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="157" data-rings="5"><path d="M520 64l-56 2-96 6-104-2M312 105l16 3 48 14 24 4 56 5 56 0 40-5 27-6 15-8 9-8 38-16 3-8-18-8-26-5-32-2-48-1M488 72l-64 4-88 9-16 0M336 90l8 2 32 16 16 6 16 3 48 6 48 0 32-4 24-6 12-9 33-16-6-8-23-5-40-3-48 0M448 80l-32 3-27 5-6 8 13 8 20 7 16 3 24 2 40 1 24-3 13-2 11-5 34-19-18-7-24-3-40-1zM432 87l-8 2-13 7 14 8 23 5 32 2 24-1 16-3 8-3 13-8 8-8-21-4-24-2-32 1zM448 94l-6 2 6 2 16 5 8 1 16 0 8-1 17-7-9-6-8-1-24 1z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="13" data-rings="0"><circle class="ct-spot" cx="720" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="56" data-rings="1"><path d="M888 72l-7 8 21 8 26 3 56 0 40-1 16-2 11-8-27-5-72-8-32 0z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw8-0" data-step="0"><span>Previous · 1 of 10</span><b>Three forms a reusable procedure takes, and how to choose</b></a><a class="snext" href="#read-bw8-2" data-step="2"><span>Next · 3 of 10</span><b>How triggering works, and why the description matters more than the body</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-bw8-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">How triggering works, and why the description matters more than the body</span></span></h2>
+<p>At the moment the model decides whether to use a skill, the body is not in its window. Only the name and description are (§2). The agentskills.io guide to descriptions puts the consequence in one line: "the description carries the entire burden of triggering" (<a target="_blank" rel="noopener" href="https://agentskills.io/skill-creation/optimizing-descriptions.md">Agent Skills, <em>Optimizing skill descriptions</em></a>, read 16 Nov 2026; the format's documentation). Anthropic's guide says the same at more length: Claude uses the description to choose among "potentially 100+ available Skills", and the rest of <code>SKILL.md</code> "provides the implementation details" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices.md">Anthropic, <em>Skill authoring best practices</em></a>, read 16 Nov 2026; vendor). A body the model never loads does nothing, however good it is. This is the fault BW1's diagnosis table sends here: a skill that fires when it should not, or fails to fire, is a description fault first (BW1, Deliverable Part 3).</p>
+<p><strong>What the guidance asks of a description</strong> (documented practice, vendor and format documentation, all read 16 Nov 2026):</p>
+<ul>
+<li><strong>What it does, and when to use it, in the words a request would contain.</strong> "Be specific and include key terms"; Anthropic's bad examples are "Helps with documents", "Processes data" and "Does stuff with files" (<em>Skill authoring best practices</em>).</li>
+<li><strong>Lean towards firing.</strong> "Err on the side of being pushy": list the contexts where the skill applies, including requests that do not name its domain (<em>Optimizing skill descriptions</em>).</li>
+<li><strong>Expect simple requests to bypass it.</strong> Agents typically consult a skill only for a task beyond what they can do alone, so a one-step request "may not trigger a PDF skill even if the description matches perfectly" (<em>Optimizing skill descriptions</em>). A skill for a multi-step procedure is the case the description is for.</li>
+<li><strong>Put the use first.</strong> Claude Code truncates the combined <code>description</code> and <code>when_to_use</code> text at 1,536 characters in its listing, a default it lets you change; with many skills it drops whole descriptions to fit a budget that "scales at 1% of the model's context window", starting with the skills you invoke least (<em>Extend Claude with skills</em>). The first words are the ones every surface keeps.</li>
+</ul>
+<blockquote>
+<p><strong>Where sources disagree.</strong> Anthropic's guide says "Always write in third person", because "The description is injected into the system prompt" and a shifting point of view "can cause discovery problems"; its good example is "Processes Excel files and generates reports" (<em>Skill authoring best practices</em>). The agentskills.io guide says "Use imperative phrasing", "Use this skill when…" rather than "This skill does…" (<em>Optimizing skill descriptions</em>). Neither page cites a test. Read together: open in the third person with what the skill does, and end with a sentence that begins "Use when", as Anthropic's examples do; the agentskills.io guide's example begins "Use this skill when", which the Deliverable's <code>lint</code> does not accept.</p>
+</blockquote>
+<p><strong>How long it may be.</strong> The limits differ by surface, and the strictest decides:</p>
+<figure class="viz viz-compare"><div class="viz-scroll" data-alt=""><svg viewBox="0 0 700 142" width="700" height="142" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="198.7" y="27.3" text-anchor="end">This unit&#x27;s skill (Deliverable)</text><rect class="viz-track" x="208.73504" y="16.0" width="437.1" height="14"/><rect class="viz-bar viz-t2" x="208.73504" y="16.0" width="54.9" height="14"/><text class="viz-value" x="271.7" y="26.8">193</text><text class="viz-label" x="198.7" y="57.3" text-anchor="end">claude.ai upload</text><rect class="viz-track" x="208.73504" y="46.0" width="437.1" height="14"/><rect class="viz-bar viz-t1" x="208.73504" y="46.0" width="56.9" height="14"/><text class="viz-value" x="273.7" y="56.8">200</text><text class="viz-label" x="198.7" y="85.3" text-anchor="end">Format specification and Claude</text><text class="viz-label" x="198.7" y="99.3" text-anchor="end">Platform</text><rect class="viz-track" x="208.73504" y="81.0" width="437.1" height="14"/><rect class="viz-bar viz-t3" x="208.73504" y="81.0" width="291.4" height="14"/><text class="viz-value" x="508.2" y="91.8">1,024</text><text class="viz-label" x="198.7" y="127.3" text-anchor="end">Claude Code listing cap</text><rect class="viz-track" x="208.73504" y="116.0" width="437.1" height="14"/><rect class="viz-bar viz-t4" x="208.73504" y="116.0" width="437.1" height="14"/><text class="viz-value" x="653.9" y="126.8">1,536</text></svg><svg class="viz-alt" viewBox="0 0 258 180" width="258" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="8.0" y="19.3" text-anchor="start">This unit&#x27;s skill (Deliverable)</text><rect class="viz-track" x="8" y="24.0" width="195.9" height="14"/><rect class="viz-bar viz-t2" x="8" y="24.0" width="24.6" height="14"/><text class="viz-value" x="40.6" y="34.8">193</text><text class="viz-label" x="8.0" y="61.3" text-anchor="start">claude.ai upload</text><rect class="viz-track" x="8" y="66.0" width="195.9" height="14"/><rect class="viz-bar viz-t1" x="8" y="66.0" width="25.5" height="14"/><text class="viz-value" x="41.5" y="76.8">200</text><text class="viz-label" x="8.0" y="103.3" text-anchor="start">Format specification and Claude Platform</text><rect class="viz-track" x="8" y="108.0" width="195.9" height="14"/><rect class="viz-bar viz-t3" x="8" y="108.0" width="130.6" height="14"/><text class="viz-value" x="146.6" y="118.8">1,024</text><text class="viz-label" x="8.0" y="145.3" text-anchor="start">Claude Code listing cap</text><rect class="viz-track" x="8" y="150.0" width="195.9" height="14"/><rect class="viz-bar viz-t4" x="8" y="150.0" width="195.9" height="14"/><text class="viz-value" x="211.9" y="160.8">1,536</text></svg></div><figcaption>Limits on a skill's description, in characters, by surface, against the Deliverable's own description (§3 of this unit). From Claude Help Center, How to create custom skills (200); Agent Skills, Specification, and Anthropic, Agent Skills (1,024); Anthropic, Extend Claude with skills (1,536, description and when_to_use combined, a default the page says is configurable). All read 16 Nov 2026.</figcaption></figure>
+<p>The claude.ai help page gives the description as "(200 characters maximum)" (<em>How to create custom skills</em>, read 16 Nov 2026); the specification and Anthropic's platform page allow 1,024. A description meant to work on claude.ai is therefore written to 200 characters, with the trigger words first (stated opinion). The Deliverable's is 193.</p>
+<p><strong>The front matter has to parse.</strong> Claude Code reads the front matter only when the opening <code>---</code> is the first line of the file; when the YAML fails to parse, "the skill still loads with no fields set", so <code>/name</code> works and Claude "can't match against your <code>description</code>" (<em>Extend Claude with skills</em>, read 16 Nov 2026). The skill exists and never fires on its own. One way to break it (this unit's example; no page read says which way is commonest) is a colon followed by a space inside an unquoted value, which a strict YAML parser reads as a second key; double quotes around the description prevent it. The Deliverable's script checks this before upload (<code>check.py lint</code>).</p>
+<p><strong>What a description cannot do.</strong> It raises the chance that the skill loads; nothing makes it certain. Claude Code's troubleshooting for a skill that does not fire starts with "Check the description includes keywords users would naturally say", then checking that the skill is listed, rephrasing the request and calling the skill by name; for a skill that fires too often it says to make the description more specific or set <code>disable-model-invocation: true</code> (<em>Extend Claude with skills</em>, read 16 Nov 2026). The claude.ai help page's advice is the same in short: "Try being more explicit in your request" (<em>Use skills in Claude</em>, read 16 Nov 2026). When a step must happen every time, the description is the wrong tool (§8).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.4"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="140" data-rings="5"><path d="M176 56l-16 4-38 12-26 6-23 10-5 8 8 8 12 5 16 5 32 5 40 3 32 1 40-4 24-4 25-11 10-16 7-8 2-8-6-8-6-4-16-5-24-4-24-1-24 0-24 3zM184 63l-62 17-20 8-3 8 5 3 9 5 23 6 32 3 32 2 24-1 24-4 19-6 9-8 12-16-1-8-7-5-8-3-16-4-16-1-24 0zM176 71l-52 17 0 8 4 2 19 6 21 3 40 1 16-1 18-3 15-8 12-16-6-8-23-6-32 0-16 2zM208 72l-24 4-39 12 4 8 27 5 32 1 24-3 7-3 6-8 5-8-10-5-8-2zM200 80l-30 8 14 6 12 2 12 0 8-3 8-4 0-3-5-6z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="18" data-rings="0"><circle class="ct-spot" cx="360" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="14" data-rings="0"><circle class="ct-spot" cx="520" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="54" data-rings="2"><path d="M696 64l-16 1-43 7-21 5-10 3 5 8 21 5 30 3 18 4 13 4M760 71l-40-6-24-1M728 84l-10-4-22-4-16 0-25 4 34 8 23 2 8 2"/><circle class="ct-spot" cx="680" cy="80" r="6"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="123" data-rings="4"><path d="M693 104l15 8 20 6 40 4 24 1 56-3 72 5M904 66l-72 1-56 4-16 0M904 74l-72 1-88 10-16-1M720 92l16 13 16 6 16 3 24 2 56-1 64 3M912 81l-64-1-24 1-38 7-25 8 4 8 19 5 16 1 48 0 80 3M912 86l-64-1-16 1-12 2-29 8 10 8 15 1 104 2 56-2M920 95l-64-1-21 2 29 2 104 1"/><circle class="ct-spot" cx="840" cy="96" r="8"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="124" data-rings="4"><path d="M920 125l32 0 24-2 40-6 18-5 70-14 7-2 17-8 1-8-12-8-21-6-32-5-40-4-48 1-72 8M936 71l-32 3M912 118l40 0 40-4 43-10 42-8 19-8-1-8-23-8-24-5-24-2-48 1-40 5M976 71l-48 8-16 2M928 113l32-1 24-2 16-3 48-11 23-8-4-8-27-6-32-3-32 0M960 80l-24 4-24 2M976 105l24-4 47-13-11-8-20-3-32 0-24 3M960 88l-16 4-24 3M968 99l27-3 13-6 8-2-8-2-16-2-32 4"/><circle class="ct-spot" cx="1000" cy="88" r="8"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw8-1" data-step="1"><span>Previous · 2 of 10</span><b>What a skill is, as its format defines it</b></a><a class="snext" href="#read-bw8-3" data-step="3"><span>Next · 4 of 10</span><b>Testing whether it triggers</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-bw8-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">Testing whether it triggers</span></span></h2>
+<p>Because no vendor publishes a trigger rate, the only rate you have is the one you measure on your own skill. The format's documentation gives a method (documented practice; <em>Optimizing skill descriptions</em>, read 16 Nov 2026):</p>
+<ol>
+<li><strong>Write about twenty requests</strong>, "8-10 that should trigger and 8-10 that shouldn't". Vary the should-trigger ones in phrasing, explicitness, detail and complexity; the most useful are those where the need is described without the skill's own words.</li>
+<li><strong>Make the negatives near-misses</strong>: requests that "share keywords or concepts with your skill but actually need something different". A request with no shared words tests nothing.</li>
+<li><strong>Run each request three times</strong>, because the same request can fire the skill on one run and not the next, and compute a trigger rate. A should-trigger request passes above 0.5; a should-not-trigger request passes below it.</li>
+<li><strong>Hold some back.</strong> About 60% of the set guides changes to the description; about 40% is kept aside and used only to see whether a change generalises. Five rounds of revision are usually enough, by the same page.</li>
+</ol>
+<p><strong>How you see that it fired.</strong> On claude.ai the help page says to "Review Claude's thinking to confirm it's loading the skill" (<em>How to create custom skills</em>, read 16 Nov 2026). In Claude Code, the agentskills.io page gives a script that runs each request with <code>claude -p</code> and JSON output and looks for a call to the Skill tool naming your skill (<em>Optimizing skill descriptions</em>). A third signal costs nothing on either surface: make the skill's first instruction a fixed first line of the reply, so a run that loaded it says so where you can see it (stated opinion; the Deliverable's skill opens every reply with its own name).</p>
+<p><strong>What a passing set proves.</strong> Little, at sixteen requests. On BW6 §5's arithmetic, sixteen clean runs bound a failure rate only below about 17% at 95% (1 − 0.05^(1/16) = 17.1%, this unit's arithmetic), and each request here is one draw of a different question, not sixteen draws of one. A passing set says the description is not badly wrong; the misfires you see in use say the rest. Keep the set, rerun it after every change to the description, and add each real misfire to it as a new row (stated opinion).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.1"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="37" data-rings="1"><path d="M392 73l-56-2-32 1-78 8-18 3-18 5 11 8 31 5 48 4 72 2"/><circle class="ct-spot" cx="280" cy="88" r="7"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="114" data-rings="5"><path d="M696 60l-128 3-144 10-32 0M352 107l72 10 64 5 80 1 80 4 56 1 56-3 80-12 24 0M608 70l-40 1-48 3-48 6-32 5-14 3-11 8 10 8 23 6 24 3 40 3 72 1 80 3 48-1 40-5 7-2 18-8 9-8 14-2 40 1M536 80l-58 8-17 8 10 8 41 6 128 5 40-1 25-2 23-6 4-2 1-8-17-8-12-3-31-5-25-3-56-1zM528 87l-28 9 16 8 28 2 88 3 24 0 36-5 3-8-25-8-46-6-40 0zM552 94l-7 2 15 3 56 4 16-1 8-1 11-5-27-6-24-2-24 2z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="93" data-rings="4"><path d="M752 55l-56 5M864 113l72 4 48-1 24-2 32-5 20-5 16-8 6-8 0-8-8-8-20-8-22-5-40-4-88-5-88 0-64 5M792 63l-40 8-24 3-120-4M840 95l40 8 32 3 32 1 32-1 24-3 16-3 11-4 11-8 1-8-10-8-21-6-24-4-24-2-72-2-48 0-48 5M816 71l-3 1-2 8 46 8 38 8 25 3 32 0 27-3 23-8 2-8-14-8-6-1-24-4-32-2-40-1-24 1-24 2zM888 72l-8 0-8 3-9 5 49 9 24 1 20-2 9-8-13-4-16-3-16-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw8-2" data-step="2"><span>Previous · 3 of 10</span><b>How triggering works, and why the description matters more than the body</b></a><a class="snext" href="#read-bw8-4" data-step="4"><span>Next · 5 of 10</span><b>Scripts inside a skill for the steps that must be exact</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-bw8-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">Scripts inside a skill for the steps that must be exact</span></span></h2>
+<p>A skill's body is instructions, and instructions are followed with some probability (BW1 §6). For steps where an approximate result is a wrong result, the format offers something better: a script in the skill's <code>scripts/</code> folder, which the model runs and does not read. Anthropic's guide grades the choice by "degrees of freedom": low freedom, meaning a specific script with few or no parameters, where "Operations are fragile and error-prone", consistency is critical, or a specific sequence must be followed; and it says to "Prefer scripts for deterministic operations", since a prepared script is "more reliable than generated code", saves tokens and is consistent across uses (<em>Skill authoring best practices</em>, read 16 Nov 2026; vendor, documented practice). The specification asks that scripts be self-contained or document their dependencies, and "Include helpful error messages" (<em>Specification</em>). A script costs the window only what it prints (§2).</p>
+<p>Which steps must be exact is already settled by earlier units. BW7 §3 calls them code gates: anything countable or matchable, such as a length, a required heading, a quotation found verbatim in its source. BW6's protocol has four more: counting the checkable claims, drawing the sample by number and never by eye, applying the decision rule with an acceptance number of zero, and computing what a clean sample proves (BW6 §5, Deliverable step C). BW2's routing table already says numbers come from code (BW2, row 2). The rule this unit uses (stated opinion, on those units and the guide above):</p>
+<ul>
+<li><strong>Every code gate runs before the first model stage</strong>, so a model never spends its turn on an input that fails a check a script could make. A draft without a Sources list, with a private term in it, or with a quotation not found in the saved copy of its source, stops there.</li>
+<li><strong>A script makes every number and every draw</strong>: N, the sample, the bound, the counts on the verdict line.</li>
+<li><strong>A script checks the model's own output against its form</strong> before anyone reads it: every finding quotes text that occurs once in the draft; the counts on the last line match the findings.</li>
+<li><strong>A script writes the log line</strong>, in BW7 §7's form, with a hash of each input file as its version, so the line says exactly what was read.</li>
+<li><strong>The judgement stays with the model, and the decision with you.</strong> Whether a source supports a claim is the model's step; whether to apply a finding, and the final pass, are yours (BW7 §5).</li>
+</ul>
+<p>The Academy case runs two scripts of this kind (anecdote). A script checks the course index after each filing chat writes its records, and restores every file if the check fails; another checks the public course's data against a list of private terms, and the course's fresh checker also checks each unit against that list (Academy case file §1, §7). The case file does not record when the terms check was added relative to the structure audit that found private terms in a public build (Academy case file §7), nor whether either script lives inside a skill <code>[NOT IN CASE FILE]</code>.</p>
+<p>The Deliverable's skill puts the steps in this order:</p>
+<figure class="viz viz-flow"><div class="viz-scroll"><svg viewBox="0 0 694 178" width="694" height="178" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="flow"><g data-box=""><rect class="viz-node viz-t3" x="8" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="20.0" y="31.3" text-anchor="start">1 · Code gates</text><text class="viz-note" x="20.0" y="48.3" text-anchor="start">script: sources,</text><text class="viz-note" x="20.0" y="61.3" text-anchor="start">terms, quotations</text></g><path class="viz-arrow" d="M162,42.0 L178,42.0"/><g data-box=""><rect class="viz-node viz-t2" x="184" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="196.0" y="31.3" text-anchor="start">2 · List claims</text><text class="viz-note" x="196.0" y="48.3" text-anchor="start">script, then the</text><text class="viz-note" x="196.0" y="61.3" text-anchor="start">model adds</text></g><path class="viz-arrow" d="M338,42.0 L354,42.0"/><g data-box=""><rect class="viz-node viz-t3" x="360" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="372.0" y="31.3" text-anchor="start">3 · Draw</text><text class="viz-note" x="372.0" y="48.3" text-anchor="start">script: census or</text><text class="viz-note" x="372.0" y="61.3" text-anchor="start">sample, by seed</text></g><path class="viz-arrow" d="M514,42.0 L530,42.0"/><g data-box=""><rect class="viz-node viz-t2" x="536" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="548.0" y="31.3" text-anchor="start">4 · Check</text><text class="viz-note" x="548.0" y="48.3" text-anchor="start">the model opens</text><text class="viz-note" x="548.0" y="61.3" text-anchor="start">each source</text></g><path class="viz-arrow" d="M611.0,78 L611.0,89.0 L83.0,89.0 L83.0,98"/><g data-box=""><rect class="viz-node viz-t2" x="8" y="102" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="20.0" y="125.3" text-anchor="start">5 · Report</text><text class="viz-note" x="20.0" y="142.3" text-anchor="start">the model writes it</text></g><path class="viz-arrow" d="M162,136.0 L178,136.0"/><g data-box=""><rect class="viz-node viz-t3" x="184" y="102" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="196.0" y="125.3" text-anchor="start">6 · Report gate</text><text class="viz-note" x="196.0" y="142.3" text-anchor="start">script: form,</text><text class="viz-note" x="196.0" y="155.3" text-anchor="start">counts, rule C5</text></g><path class="viz-arrow" d="M338,136.0 L354,136.0"/><g data-box=""><rect class="viz-node viz-t3" x="360" y="102" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="372.0" y="125.3" text-anchor="start">7 · Log</text><text class="viz-note" x="372.0" y="142.3" text-anchor="start">script: BW7 §7 line</text></g><path class="viz-arrow" d="M514,136.0 L530,136.0"/><g data-box=""><rect class="viz-node viz-t1" x="536" y="102" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="548.0" y="125.3" text-anchor="start">8 · Your pass</text><text class="viz-note" x="548.0" y="142.3" text-anchor="start">verify, apply,</text><text class="viz-note" x="548.0" y="155.3" text-anchor="start">publish</text></g><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>The stages of the Deliverable's check-against-sources skill, by who runs each (§5 of this unit): scripts for the exact steps, the model for the judgement, you for the decision. Built on BW6, Deliverable steps C to F, and BW7 §3 and §7.</figcaption></figure>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.8"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="148" data-rings="5"><path d="M136 56l-16 3-17 5-9 8 3 8 12 8 43 20 24 7 24 4 40 3 32-1 40-3 48-7 24-1 24 2M368 69l-48-2-37-3-35-6-48-5-32 0-32 3M160 63l-16 3-14 6-2 8 11 8 37 16 24 6 24 3 24 1 32-2 32-3 48-8 24-2 16 1M368 78l-77-6-75-10-32-1-24 2M168 71l-8 3-7 6 9 8 30 13 16 4 16 2 32 1 41-4 37-8 13-8-29-8-86-11-32-2zM184 77l-7 3 6 8 25 10 24 4 24 0 32-4 11-2 12-8-31-8-48-6-24-1zM224 80l-8 1-7 7 23 7 8 1 16-1 22-7-45-8z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="101" data-rings="3"><path d="M408 112l32 9 24 4 24 1 24 0 24-3 24-6 10-5 10-8 4-8-5-8-11-4-24-7-32-4-64-4-80 0M400 100l24 4 24 8 16 3 32 2 16-2 18-3 16-8 4-8-9-8-5-2-24-4-32-4-40-1-72 1M416 88l-2 0 10 8 48 12 24 0 16-3 3-1 7-8-17-8-25-3-32 0z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="102" data-rings="3"><path d="M640 55l-8 3-10 6 0 8 8 8 7 16 19 7 24 4 24 2 32 0 24-3 24-4 16-4 16-5 8-5 2-8-14-8-12-4-40-10-32-6-24-2-24 0-24 2zM664 63l-8 5-4 4 8 8 4 9 13 7 11 2 32 2 24-2 16-2 28-8 5-8-18-8-47-11-32-2-16 1zM688 70l-7 2 3 8 4 6 2 2 14 3 24 0 24-3 12-8-23-8-13-3-24-1z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="9" data-rings="0"><circle class="ct-spot" cx="960" cy="80" r="5"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw8-3" data-step="3"><span>Previous · 4 of 10</span><b>Testing whether it triggers</b></a><a class="snext" href="#read-bw8-5" data-step="5"><span>Next · 6 of 10</span><b>Scheduled tasks: what they can and cannot touch</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-bw8-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">Scheduled tasks: what they can and cannot touch</span></span></h2>
+<p>A scheduled task is a saved prompt that runs on its own at set times, in a session that knows nothing of the chat that created it (BW1 §3). BW4 §1 placed it among the layers of a project; this section re-reads its limits on the day of writing, because the feature is in research preview and its pages change. Everything below was read on 16 Nov 2026 on Anthropic's page, <em>Automate work with scheduled tasks</em> (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/web-scheduled-tasks">Claude Code documentation</a>; vendor), unless another page is named.</p>
+<p><strong>What it is.</strong> "A cloud scheduled task, formerly a routine," is a saved Claude Code configuration of a prompt, one or more repositories and a set of connectors, run on Anthropic's cloud so that it keeps working when your computer is closed. The page says scheduled tasks "are in research preview" and that behaviour, limits and the API "may change". They are on the Pro, Max, Team and Enterprise plans, and you create them at claude.ai/code/routines, in the desktop app, or with <code>/schedule</code> in Claude Code.</p>
+<p><strong>What a run can touch.</strong></p>
+<ul>
+<li><strong>The repositories you select.</strong> "Each repository is cloned at the start of a run." Claude pushes to a branch prefixed <code>claude/</code> unless the prompt says otherwise. Branch protection on GitHub limits that, with one condition: "a rule that access can bypass doesn't block a run's push", so a rule your own connected account can bypass does nothing.</li>
+<li><strong>Skills.</strong> A run "uses skills"; outside a project's threads these include the ones committed to the cloned repository.</li>
+<li><strong>Connectors, with writes.</strong> All your connectors are included by default; "Remove any the task doesn't need", because Claude can use an included one during a run, "including writes". Anything done through them "appears as you".</li>
+<li><strong>The network its environment allows.</strong> The default environment allows only an allowlist of package registries, cloud provider APIs and common development domains; requests to other hosts "fail with <code>403</code>". Connectors reach their services through Anthropic's servers and bypass that list.</li>
+</ul>
+<p><strong>What it cannot touch, or cannot do.</strong></p>
+<ul>
+<li><strong>Your computer.</strong> A cloud run works on a fresh clone and has no access to local files; that is a Desktop scheduled task, a separate feature that runs on your machine (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/scheduled-tasks">Anthropic, <em>Run prompts on a schedule</em>, Claude Code documentation</a>, comparison table, read 16 Nov 2026).</li>
+<li><strong>Ask you anything and wait for a quick answer.</strong> A run starts in auto mode, where "a classifier model allows or blocks actions"; an action that still needs approval stops the run until you open it.</li>
+<li><strong>Treat its own prompt as your consent.</strong> The fired prompt is "not live user input and can't act as approval or consent" for anything the run does.</li>
+<li><strong>Run more often than hourly.</strong> "Expressions that run more often than once per hour are rejected." A run set exactly on the hour "can start several minutes late", so the page suggests a few minutes past it.</li>
+<li><strong>Run for free.</strong> Runs "draw down subscription usage the same way interactive sessions do", and past 100 scheduled runs an hour on one account, a run waits until the hour resets.</li>
+</ul>
+<p>The prompt "must be self-contained and explicit about what to do and what success looks like" (same page). The three ways Claude Code can schedule work differ in what they reach, by the comparison table as <em>Schedule recurring tasks in Claude Code Desktop</em> prints it (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/desktop-scheduled-tasks">Anthropic, Claude Code documentation</a>, read 16 Nov 2026; vendor). The copy of that table on <em>Run prompts on a schedule</em> gives the Desktop task's minimum interval as 1 minute and the cloud task's permission prompts as "No (runs autonomously)", so two of the vendor's own pages differ: a cloud task runs on Anthropic's cloud, needs neither your machine nor an open session, works on a fresh clone with no local files, starts in auto mode and runs at most hourly; a Desktop task runs on your machine, which must be on, needs no open session, reaches local files, has its permission prompts set per task, and runs at most hourly in its forms or every minute when Claude sets it; <code>/loop</code> runs inside an open session, takes that session's permissions, can repeat every minute, and a recurring one expires seven days after it is created (<em>Run prompts on a schedule</em>, read 16 Nov 2026; vendor).</p>
+<figure class="viz viz-matrix viz-fit"><div class="viz-scroll" style="--stickn:108px;--stick:156.2px" data-altn=""><svg viewBox="0 0 643.2 232" width="643.2" height="232" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-fit"><text class="viz-colhead" x="220.2" y="15.6" text-anchor="middle">Cloud task</text><text class="viz-colhead" x="405.7" y="15.6" text-anchor="middle">Desktop task</text><text class="viz-colhead" x="581.2" y="15.6" text-anchor="middle">/loop</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Runs on</text><g data-box=""><rect class="viz-band viz-t4" x="158.2" y="34.0" width="124.0" height="28.0"/><text class="viz-mark" x="220.2" y="51.8" text-anchor="middle">Anthropic&#x27;s cloud</text></g><g data-box=""><rect class="viz-band viz-t4" x="286.2" y="34.0" width="239.0" height="28.0"/><text class="viz-mark" x="405.7" y="51.8" text-anchor="middle">your machine</text></g><g data-box=""><rect class="viz-band viz-t4" x="529.2" y="34.0" width="104.0" height="28.0"/><text class="viz-mark" x="581.2" y="51.8" text-anchor="middle">your machine</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Machine must be on</text><g data-box=""><rect class="viz-band viz-t4" x="158.2" y="66.0" width="124.0" height="28.0"/><text class="viz-mark" x="220.2" y="83.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t4" x="286.2" y="66.0" width="239.0" height="28.0"/><text class="viz-mark" x="405.7" y="83.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t4" x="529.2" y="66.0" width="104.0" height="28.0"/><text class="viz-mark" x="581.2" y="83.8" text-anchor="middle">yes</text></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Session must be open</text><g data-box=""><rect class="viz-band viz-t4" x="158.2" y="98.0" width="124.0" height="28.0"/><text class="viz-mark" x="220.2" y="115.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t4" x="286.2" y="98.0" width="239.0" height="28.0"/><text class="viz-mark" x="405.7" y="115.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t4" x="529.2" y="98.0" width="104.0" height="28.0"/><text class="viz-mark" x="581.2" y="115.8" text-anchor="middle">yes</text></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">Local files</text><g data-box=""><rect class="viz-band viz-t1" x="158.2" y="130.0" width="124.0" height="28.0"/><text class="viz-mark" x="220.2" y="147.8" text-anchor="middle">no: fresh clone</text></g><g data-box=""><rect class="viz-band viz-t3" x="286.2" y="130.0" width="239.0" height="28.0"/><text class="viz-mark" x="405.7" y="147.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t3" x="529.2" y="130.0" width="104.0" height="28.0"/><text class="viz-mark" x="581.2" y="147.8" text-anchor="middle">yes</text></g><text class="viz-label" x="8.0" y="180.3" text-anchor="start">Permission prompts</text><g data-box=""><rect class="viz-band viz-t4" x="158.2" y="162.0" width="124.0" height="28.0"/><text class="viz-mark" x="220.2" y="179.8" text-anchor="middle">auto mode</text></g><g data-box=""><rect class="viz-band viz-t4" x="286.2" y="162.0" width="239.0" height="28.0"/><text class="viz-mark" x="405.7" y="179.8" text-anchor="middle">set per task</text></g><g data-box=""><rect class="viz-band viz-t4" x="529.2" y="162.0" width="104.0" height="28.0"/><text class="viz-mark" x="581.2" y="179.8" text-anchor="middle">as the session</text></g><text class="viz-label" x="8.0" y="212.3" text-anchor="start">Minimum interval</text><g data-box=""><rect class="viz-band viz-t4" x="158.2" y="194.0" width="124.0" height="28.0"/><text class="viz-mark" x="220.2" y="211.8" text-anchor="middle">1 hour</text></g><g data-box=""><rect class="viz-band viz-t4" x="286.2" y="194.0" width="239.0" height="28.0"/><text class="viz-mark" x="405.7" y="211.8" text-anchor="middle">1 hour in forms, 1 minute by Claude</text></g><g data-box=""><rect class="viz-band viz-t4" x="529.2" y="194.0" width="104.0" height="28.0"/><text class="viz-mark" x="581.2" y="211.8" text-anchor="middle">1 minute</text></g></svg><svg class="viz-altn" viewBox="0 0 490 264" width="490" height="264" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-fit"><text class="viz-colhead" x="172.0" y="15.6" text-anchor="middle">Cloud task</text><text class="viz-colhead" x="305.0" y="15.6" text-anchor="middle">Desktop task</text><text class="viz-colhead" x="428.0" y="15.6" text-anchor="middle">/loop</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Runs on</text><g data-box=""><rect class="viz-band viz-t4" x="110.0" y="34.0" width="124.0" height="28.0"/><text class="viz-mark" x="172.0" y="51.8" text-anchor="middle">Anthropic&#x27;s cloud</text></g><g data-box=""><rect class="viz-band viz-t4" x="238.0" y="34.0" width="134.0" height="28.0"/><text class="viz-mark" x="305.0" y="51.8" text-anchor="middle">your machine</text></g><g data-box=""><rect class="viz-band viz-t4" x="376.0" y="34.0" width="104.0" height="28.0"/><text class="viz-mark" x="428.0" y="51.8" text-anchor="middle">your machine</text></g><text class="viz-label" x="8.0" y="81.3" text-anchor="start">Machine</text><text class="viz-label" x="8.0" y="95.3" text-anchor="start">must be on</text><g data-box=""><rect class="viz-band viz-t4" x="110.0" y="66.0" width="124.0" height="36.0"/><text class="viz-mark" x="172.0" y="87.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t4" x="238.0" y="66.0" width="134.0" height="36.0"/><text class="viz-mark" x="305.0" y="87.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t4" x="376.0" y="66.0" width="104.0" height="36.0"/><text class="viz-mark" x="428.0" y="87.8" text-anchor="middle">yes</text></g><text class="viz-label" x="8.0" y="121.3" text-anchor="start">Session must</text><text class="viz-label" x="8.0" y="135.3" text-anchor="start">be open</text><g data-box=""><rect class="viz-band viz-t4" x="110.0" y="106.0" width="124.0" height="36.0"/><text class="viz-mark" x="172.0" y="127.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t4" x="238.0" y="106.0" width="134.0" height="36.0"/><text class="viz-mark" x="305.0" y="127.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t4" x="376.0" y="106.0" width="104.0" height="36.0"/><text class="viz-mark" x="428.0" y="127.8" text-anchor="middle">yes</text></g><text class="viz-label" x="8.0" y="164.3" text-anchor="start">Local files</text><g data-box=""><rect class="viz-band viz-t1" x="110.0" y="146.0" width="124.0" height="28.0"/><text class="viz-mark" x="172.0" y="163.8" text-anchor="middle">no: fresh clone</text></g><g data-box=""><rect class="viz-band viz-t3" x="238.0" y="146.0" width="134.0" height="28.0"/><text class="viz-mark" x="305.0" y="163.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t3" x="376.0" y="146.0" width="104.0" height="28.0"/><text class="viz-mark" x="428.0" y="163.8" text-anchor="middle">yes</text></g><text class="viz-label" x="8.0" y="193.3" text-anchor="start">Permission</text><text class="viz-label" x="8.0" y="207.3" text-anchor="start">prompts</text><g data-box=""><rect class="viz-band viz-t4" x="110.0" y="178.0" width="124.0" height="36.0"/><text class="viz-mark" x="172.0" y="199.8" text-anchor="middle">auto mode</text></g><g data-box=""><rect class="viz-band viz-t4" x="238.0" y="178.0" width="134.0" height="36.0"/><text class="viz-mark" x="305.0" y="199.8" text-anchor="middle">set per task</text></g><g data-box=""><rect class="viz-band viz-t4" x="376.0" y="178.0" width="104.0" height="36.0"/><text class="viz-mark" x="428.0" y="199.8" text-anchor="middle">as the session</text></g><text class="viz-label" x="8.0" y="233.3" text-anchor="start">Minimum</text><text class="viz-label" x="8.0" y="247.3" text-anchor="start">interval</text><g data-box=""><rect class="viz-band viz-t4" x="110.0" y="218.0" width="124.0" height="36.0"/><text class="viz-mark" x="172.0" y="239.8" text-anchor="middle">1 hour</text></g><g data-box=""><rect class="viz-band viz-t4" x="238.0" y="218.0" width="134.0" height="36.0"/><text class="viz-mark" x="305.0" y="233.3" text-anchor="middle">1 hour in forms, 1</text><text class="viz-mark" x="305.0" y="246.3" text-anchor="middle">minute by Claude</text></g><g data-box=""><rect class="viz-band viz-t4" x="376.0" y="218.0" width="104.0" height="36.0"/><text class="viz-mark" x="428.0" y="239.8" text-anchor="middle">1 minute</text></g></svg><div class="viz-stickn" aria-hidden="true"><svg viewBox="0 0 108 264" width="108" height="264" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="108" height="258"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Runs on</text><text class="viz-label" x="8.0" y="81.3" text-anchor="start">Machine</text><text class="viz-label" x="8.0" y="95.3" text-anchor="start">must be on</text><text class="viz-label" x="8.0" y="121.3" text-anchor="start">Session must</text><text class="viz-label" x="8.0" y="135.3" text-anchor="start">be open</text><text class="viz-label" x="8.0" y="164.3" text-anchor="start">Local files</text><text class="viz-label" x="8.0" y="193.3" text-anchor="start">Permission</text><text class="viz-label" x="8.0" y="207.3" text-anchor="start">prompts</text><text class="viz-label" x="8.0" y="233.3" text-anchor="start">Minimum</text><text class="viz-label" x="8.0" y="247.3" text-anchor="start">interval</text></svg></div><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 156.2 232" width="156.2" height="232" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="156.2" height="226"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Runs on</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Machine must be on</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Session must be open</text><text class="viz-label" x="8.0" y="148.3" text-anchor="start">Local files</text><text class="viz-label" x="8.0" y="180.3" text-anchor="start">Permission prompts</text><text class="viz-label" x="8.0" y="212.3" text-anchor="start">Minimum interval</text></svg></div></div><figcaption>Claude Code's three ways to schedule work, by what each reaches (§6 of this unit). From Anthropic, Schedule recurring tasks in Claude Code Desktop, the table 'Compare scheduling options', read 16 Nov 2026 (vendor); the copy of the table on Run prompts on a schedule differs on two cells (§6). A /loop task also expires seven days after it is created, by Run prompts on a schedule.</figcaption></figure>
+<p><strong>Which task to schedule.</strong> A task that runs without you suits work that is mechanical, has a fixed input and a pass-or-fail result, and touches nothing it cannot undo (BW7 §3 and §6; stated opinion). BW4 built such a job and said this unit would automate it: the monthly rot check, whose steps 2, 3 and 6 are mechanical and whose steps 1, 4 and 5 need reading (BW4, Deliverable Part 2). The Deliverable schedules that, with one more mechanical check BW5 states by hand: no unit's Takes entry points to a unit below it in the build order (BW5, Deliverable 2b). Three of its parts stay with you, for reasons the page above gives: the reading steps need judgement; the comparison of the claude.ai instructions field with its canonical file needs claude.ai, which a cloud run cannot open; and the private-terms search needs a list that BW4 keeps outside the repository, which a cloud run, working on a fresh clone, cannot read. The run writes a report and a log line to a <code>claude/</code> branch, and you read it.</p>
+<p>The skill itself is not scheduled, and the reason is its input: a fresh check starts when a draft is finished, which is an event, not a date. A check run on a timetable would find either nothing new or a draft that is not ready (stated opinion). It also opens every cited page, and the default environment allows only its allowlist (above).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.5"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="87" data-rings="2"><path d="M168 71l-46 9-13 8 11 8 8 3 24 6 16 3 40 3 144 3M272 68l-40-2-32 1-32 4M184 79l-30 9 18 8 20 3 32 1 40-2M256 78l-40-1-32 2"/><circle class="ct-spot" cx="192" cy="88" r="7"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="86" data-rings="2"><path d="M352 114l40-3 16-3 11-4-7-8-32-8-20-8-16-4-40-5-32-3M264 98l48 5 24 0 16-2 11-5-27-8-48-4-15-4-17-2"/><circle class="ct-spot" cx="328" cy="96" r="7"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="5" data-rings="0"><circle class="ct-spot" cx="464" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="7" data-rings="0"><circle class="ct-spot" cx="600" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="204" data-rings="5"><path d="M608 63l-24 4-22 5-12 8 6 8 20 9 88 25 24 5 48 4 56-1 120-7M688 59l-48 2-32 2M624 71l-16 3-19 6 3 8 17 8 71 20 32 5 32 2 32-1 120-6M704 66l-48 2-32 3M680 72l-32 3-24 5-4 8 15 8 53 15 24 4 32 2 32 0 112-6M712 71l-32 1M664 79l-8 3-11 6 12 8 47 12 16 3 24 1 128-4M720 75l-32 1-24 3M704 80l-16 2-18 6 10 8 32 8 32 3 32 0 112-5M704 87l-6 1 7 8 23 5 32 1 120-4M736 84l-32 3M760 88l-7 0-9 8 32 1 44-1 38-8"/><circle class="ct-spot" cx="736" cy="96" r="9"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="180" data-rings="4"><path d="M912 123l56-6 32-6 51-15 37-8M992 62l-120 0-184-3M896 116l48-4 24-5 48-14 25-5M968 68l-264-2M888 111l40-3 24-5 24-6 28-9 11-8M984 75l-48-2-136-2-88 0M872 108l32-3 40-7 32-10-5-8-59-4-96-1-96 0M888 102l37-6 18-8-15-5-24-3-88-2-112 2M880 98l14-2 13-8-27-3-56-3-88 2M858 88l-50-2-48 2"/><circle class="ct-spot" cx="872" cy="88" r="8"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="63" data-rings="1"><path d="M1088 88l9-8-19-8-14-3-32-4-40-3M1041 88l13-8-30-8-24-3-32-1M1015 80l-31-5"/><circle class="ct-spot" cx="1008" cy="80" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw8-4" data-step="4"><span>Previous · 5 of 10</span><b>Scripts inside a skill for the steps that must be exact</b></a><a class="snext" href="#read-bw8-6" data-step="6"><span>Next · 7 of 10</span><b>Counting the repeats before automating</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-bw8-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class="bt">Counting the repeats before automating</span></span></h2>
+<p>A skill costs three things before it saves anything: the time to write it and its script, the time to test it (sixteen requests, three runs each, is 48 runs), and a description in the window of every chat where it is installed, about 100 tokens on Anthropic's figure (§2), whether or not that chat uses it. It also needs upkeep: every product fact inside it is dated and goes stale (§8). No source read for this unit measures any of these in hours, and the Academy case file records no hours per unit or per check (Academy case file §9).</p>
+<p>So count before you build (stated opinion, built on the costs above and BW2 §7's habit of deciding from your own record):</p>
+<ol>
+<li><strong>Count the runs.</strong> Write down each time you do the procedure by hand, with the date and the minutes it took. The Claude Code documentation's trigger for a skill is repetition: you "keep pasting" the same procedure (§1). Software has a long-standing rule of thumb for the same decision, the rule of three: code repeated twice is left alone and extracted the third time; it is attributed to Don Roberts and was popularised by Martin Fowler's <em>Refactoring</em> (1999), as Wikipedia's article reports it (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming)">Wikipedia, <em>Rule of three (computer programming)</em></a>, read 16 Nov 2026; the book itself was not read for this unit, so this is a reporter's account of a documented practice).</li>
+<li><strong>Check that the runs were the same.</strong> Three runs that each needed different steps are three briefs, not one procedure (BW7 §1: work whose steps change each time is a brief, not a pipeline).</li>
+<li><strong>Do the arithmetic.</strong> A skill pays when the runs ahead, times the minutes each saves, exceed the minutes to build, test and keep it. Illustrative arithmetic, unmeasured: a check that takes you 20 minutes to brief and run by hand and 5 with the skill saves 15 a run; if the skill takes four hours to write and test, it pays after 16 runs (240 ÷ 15).</li>
+<li><strong>Count what a script saves separately.</strong> A step a script does exactly (a count, a draw, a match) also removes a kind of error, which the minutes do not show.</li>
+</ol>
+<p><strong>The case</strong> (anecdote). The fresh check is the Academy case's most repeated procedure on its record: 36 drafts got one before filing, and 28 of them had at least one error (Academy case file §5). The case file describes it as one procedure: a context that has not seen the unit written, every cited claim against its source, findings graded and never edited (Academy case file §2); the checker's model varied across the 36 (Fable 5.1, Opus 5.5, Fable 5.2; §5). On the count, it passes; the case file does not record the minutes per check, or whether the case wrote the check as a skill <code>[NOT IN CASE FILE]</code>.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.2"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="101" data-rings="5"><path d="M184 64l-32 4-24 8-9 4-7 8 2 8 8 8 22 10 24 5 40 5 56 0 48-6 73-14 31-4 32-6 23-6 7-8-9-8-21-7-24-4-32-3-40-1-48 1-80 2zM192 72l-30 8-8 8 2 8 12 8 16 5 24 4 24 2 32 0 24-2 24-4 24-5 51-8 32-8 8-8-11-6-8-3-24-4-32-2-40 0-72 2zM272 72l-40 2-24 3-11 3-11 8 3 8 11 5 16 4 24 3 24 0 24-2 58-10 38-8 4-8-20-6-16-2-32-1zM240 80l-8 1-14 7 7 8 23 4 16 1 24-2 60-11-3-8-17-2-32-1z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="22" data-rings="1"><path d="M568 95l-5 1 45 4 16 0 13-4-21-4-16-1-16 1z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="111" data-rings="5"><path d="M840 47l-40 5-32 7-18 5-19 8-9 8 2 8 18 8 26 5 64 6 72 1 80 4 56-1 32-2 28-5 22-8 3-8-9-8-28-9-104-20-40-4-32-2-40 0zM848 56l-32 5-24 6-14 5-10 8 6 8 18 6 16 3 40 3 152 5 32-2 24-4 12-3 11-8-8-8-26-8-77-14-32-4-24-1-32 0zM848 64l-34 8-11 8 8 8 29 5 112 6 32 0 35-3 23-8-5-8-13-4-24-6-56-9-24-2-24 0-24 2zM856 71l-6 1-15 8 14 8 7 1 24 2 80 2 24-1 21-4 0-8-34-8-35-6-16-1-24 0zM912 72l-16 1-22 7 14 3 56 4 16-3 6-4-38-7z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw8-5" data-step="5"><span>Previous · 6 of 10</span><b>Scheduled tasks: what they can and cannot touch</b></a><a class="snext" href="#read-bw8-7" data-step="7"><span>Next · 8 of 10</span><b>What a skill must never hold</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-bw8-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">What a skill must never hold</span></span></h2>
+<p>A skill is a file that loads into chats you have not planned, and it can run code (§2). Six things stay out of it.</p>
+<ol>
+<li><strong>Keys, passwords and secrets.</strong> "Don't hardcode sensitive information (API keys, passwords)" (<em>How to create custom skills</em>, read 16 Nov 2026; vendor). A skill is copied, zipped, uploaded and committed; anything in it travels with it. For a scheduled run, Claude Code's page sends API keys to the environment's network secrets rather than to visible variables (<em>Automate work with scheduled tasks</em>, read 16 Nov 2026).</li>
+<li><strong>Private terms, and the list of them.</strong> The case found private terms reaching a public build (Academy case file §7), and BW4 keeps the list outside the repository so the list itself is never built or pushed (BW4, Deliverable Part 1). A skill that checks for the terms reads the list from outside its own folder and never prints a term (the Deliverable's script prints "term #3 at line 120").</li>
+<li><strong>Facts that change.</strong> "Don't include information that will become outdated", or put it in a section marked as old (<em>Skill authoring best practices</em>, read 16 Nov 2026). Model names, prices and limits belong in the project's dated files, which the skill names by path (BW4 §5: one source of truth).</li>
+<li><strong>A rule that must hold in every chat.</strong> A skill loads only on a match (§3), so a standing rule placed there is absent from every chat that does not match; it belongs in the instructions (BW4 §1). And a rule that must hold every time, even inside the skill's own task, belongs in something that does not depend on the model: Claude Code's advice when Claude skips such a rule is to "move the rule into a hook", a script that runs on an event whatever the model does (<em>Extend Claude with skills</em>, read 16 Nov 2026; BW1 §6).</li>
+<li><strong>A copy of another file.</strong> A skill that restates the method in its own words is the paraphrased duplicate BW4 §6 names as the dangerous kind. It points to the file instead.</li>
+<li><strong>Your final pass.</strong> A skill reports and stops. Approving, applying, publishing and sending stay with you (BW7 §5), and a scheduled run's prompt cannot stand in for your consent (§6).</li>
+</ol>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.9"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="25" data-rings="5"><path d="M488 40l-32 3-32 7-17 6-10 8-1 8 4 8-1 8-17 16-3 8 8 8 13 5 16 5 24 4 56 6 56 1 56-2 64-6 64-10 64-14 19-5 20-8 10-8-2-8-14-8-17-6-48-12-56-9-64-6-48-3-56 0zM480 55l-24 7-8 4-5 6 2 8 0 8-9 8-6 8 5 8 13 5 16 4 24 4 40 3 40 0 48-1 40-4 48-8 51-11 26-8 10-8-3-8-18-8-10-3-40-9-56-8-48-3-56-1-48 3zM504 63l-8 2-15 7-2 8 1 8-9 8-2 8 18 8 33 5 32 2 32 0 32-2 32-3 40-7 32-7 15-4 13-8-6-8-23-8-39-7-32-5-40-2-40-1-32 2zM528 71l-8 2-8 7 1 8-8 8 8 8 31 5 40 1 48-3 22-3 37-8 16-8-11-9-32-7-32-4-32-2-24 0-24 1zM560 79l-4 1-5 16 17 3 24 1 32-3 9-1 26-8-20-8-23-3-32-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw8-6" data-step="6"><span>Previous · 7 of 10</span><b>Counting the repeats before automating</b></a><a class="snext" href="#read-bw8-8" data-step="8"><span>Next · 9 of 10</span><b>On other tools</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-bw8-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class="bt">On other tools</span></span></h2>
+<p>The principles of §1 to §8 (a procedure loaded on a match, a description that decides loading, a trigger test with near-misses, scripts for exact steps, unattended runs only for mechanical work, a count before building, nothing secret or stale in the file) need no particular product; the format itself is published as a specification any client can implement (§2). What is specific to a vendor, as read on 16 Nov 2026:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Claim in this unit</th>
+<th>Claude</th>
+<th>ChatGPT and OpenAI</th>
+<th>Gemini and Google</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A skill is a folder with a <code>SKILL.md</code>; name and description decide when it is used (§2, §3)</td>
+<td><a target="_blank" rel="noopener" href="https://platform.claude.com/docs/agents-and-tools/agent-skills/overview"><em>Agent Skills</em></a>; <a target="_blank" rel="noopener" href="https://agentskills.io/specification.md"><em>Specification</em></a></td>
+<td>"A SKILL.md file is the skill's playbook"; the name and description help ChatGPT recognise when a skill is relevant; a skill can also be called with @: <a target="_blank" rel="noopener" href="https://openai.com/academy/skills"><em>Using skills</em></a> (OpenAI Academy, 10 Apr 2026)</td>
+<td>Skills are reusable custom instructions; Gemini can "automatically run them whenever you enter a matching prompt", or you type <code>/</code> and the name: <a target="_blank" rel="noopener" href="https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/">Tokuno, <em>Let skills in Gemini tackle your most repetitive tasks</em></a> (Google, 30 Sep 2026). No <code>SKILL.md</code> format named on the page</td>
+</tr>
+<tr>
+<td>Description limit (§3)</td>
+<td>200 on claude.ai, 1,024 on the platform, 1,536 in Claude Code's listing</td>
+<td>No limit stated on the page read</td>
+<td>No limit stated on the pages read; a skill's files are limited to 100 MB, by the Gems transition page</td>
+</tr>
+<tr>
+<td>A trigger test with near-misses (§4)</td>
+<td>Format documentation, not Claude-specific: <a target="_blank" rel="noopener" href="https://agentskills.io/skill-creation/optimizing-descriptions.md"><em>Optimizing skill descriptions</em></a></td>
+<td>No equivalent found on the page read</td>
+<td>No equivalent found on the pages read</td>
+</tr>
+<tr>
+<td>Scripts inside a skill (§5)</td>
+<td>Code execution required on claude.ai (<em>Use skills in Claude</em>)</td>
+<td>Not stated on the page read</td>
+<td>Skills can hold reference files (text, PDFs, images); scripts not mentioned (Tokuno, 2026)</td>
+</tr>
+<tr>
+<td>Scheduled runs (§6)</td>
+<td><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/web-scheduled-tasks"><em>Automate work with scheduled tasks</em></a></td>
+<td>Not checked: OpenAI's help page on scheduled tasks failed to load on 16 Nov 2026</td>
+<td>Up to 10 active schedules; a schedule uses another app only if it is connected; responses are prepared in advance, so fast-changing data may not be current: <a target="_blank" rel="noopener" href="https://support.google.com/gemini/answer/16316416?hl=en-GB"><em>Schedules in Gemini Apps</em></a></td>
+</tr>
+<tr>
+<td>Legacy form</td>
+<td>None</td>
+<td>None</td>
+<td><strong>Gems are legacy.</strong> On personal accounts of users 18 and over, Gems convert to skills and become read-only on 17 Nov 2026 and are removed on 17 Dec 2026; Workspace business, enterprise and non-profit accounts follow in March 2027, education in June 2027; under-18 accounts later, date not announced: <a target="_blank" rel="noopener" href="https://support.google.com/gemini/answer/18560919"><em>About the transition from Gems to skills</em></a> (Gemini Apps Help, undated)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A procedure kept as a Gem is a procedure kept in a feature with an end date. The procedure belongs in your own files (BW4 §5), with any product holding a copy.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.6"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="72" data-rings="5"><path d="M264 55l-32 5-24 8-8 4-32 24-6 8 4 8 20 8 30 6 32 3 32 1 40 0 48-3 32-4 58-11 93-16 27-8 7-8-9-8-28-8-28-5-56-6-56-3-56 0-48 1zM280 63l-16 3-20 6-34 24-2 8 16 8 24 5 24 2 56 1 32-1 32-4 112-20 24-7 5-8-17-8-12-3-32-4-40-4-48-2-40 0-32 1zM288 71l-8 1-17 8-20 16 4 8 9 3 24 4 24 2 40 0 48-5 64-12 34-8 2-8-29-8-63-6-64 0-24 1zM344 72l-32 3-19 5-11 8-8 8 14 6 8 2 32 2 40-2 86-16-3-8-19-3-48-5zM344 80l-16 3-10 5 3 8 23 2 24-2 43-8-11-5-14-3z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="32" data-rings="2"><path d="M816 72l-32 2-24 6-8 8-5 8-10 8 10 8 13 3 24 2 32 1 64-3 32-4 24-5 7-2 6-8-21-10-32-9-40-5zM808 87l-4 1-8 8 2 8 10 1 32 1 28-2 23-8-20-8-15-2-24-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw8-7" data-step="7"><span>Previous · 8 of 10</span><b>What a skill must never hold</b></a><a class="snext" href="#read-bw8-9" data-step="9"><span>Next · 10 of 10</span><b>A skill that checks a draft against its sources, tested, with one scheduled task</b></a></nav></section><section class="sec" data-step="9"><h2 id="read-bw8-9" class="band"><span class="bn" aria-hidden="true">10</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A skill that checks a draft against its sources, tested, with one scheduled task</span></span></h2>
+<p>Two parts. Part 1 is the skill built in full on the Academy case and ready to install: the folder, <code>SKILL.md</code>, its checking script, the install steps, a sixteen-request trigger test set, one scheduled task (the monthly rot check, with its own script) and the done-when lines. Part 2 is the template for your project; each blank says what goes in it. BW9's agents load a skill in this form: front matter that parses, a stop condition first, numbered steps each with its input, output and gate, scripts for the exact steps, a <strong>Never</strong> list and done-when lines.</p>
+<p>Conventions, as in BW4 to BW7. Every fact about Academy comes from the Academy case file and is cited by section; where the case file holds no value, the text says <code>[NOT IN CASE FILE: …]</code>, a blank for the project's owner and never a claim. File paths follow BW4's Part 1 folders and BW7's Part 1 steps, which are those units' proposals; the case file names no paths. Product facts are as read on 16 Nov 2026; model names are from BW2's routing table, read 15 Nov 2026.</p>
+<p><strong>What the skill takes from earlier units, and where it departs.</strong> It is BW6's checker brief (Deliverable step E) turned into steps, and it keeps BW6's three tiers and their sample sizes (9, 14, 29), the census when a text has no more claims than its tier's sample, the acceptance number of zero, the early stop on an invented item, the sweep on STALE, and the five-item output form (BW6 §5; Deliverable steps C and E). Two changes, each for a script's sake: the claims table in item 1 carries a verdict column, so that a script can apply rule C5 rather than the model; and after one claim from every section, the extra draws are taken at random from all remaining claims, so larger sections give more draws in proportion, which is this unit's reading of BW6's "extra draws from the largest strata" in a form a script can repeat from its seed. It runs as stage 3 of BW7's Part 1 pipeline (the fresh check), with BW7's code gates first and BW7 §7's log line last, and it stops before stage 4: applying findings stays with the maintainer, whether a person or a model <code>[NOT IN CASE FILE]</code>.</p>
+<p><strong>Routing rows</strong> (BW2). The check is row 5, critique of a draft, in census mode, and row 9, an audit against sources, in sample mode: large, top rung, a model other than the writer's, Fable 5.2, high; override Opus 5.5, high, recorded as the writer's model. One chat runs the whole skill on one model, so the claim-listing step, which is row 2's kind of work (extraction to a table), runs on row 5's model; the script does the listing first, so the model only corrects it. Applying verified findings and checking a figure against the text have no BW2 row (BW7 borrowed row 5 for both, by analogy); this skill automates neither.</p>
+<h3>Part 1 · On the Academy case</h3>
+<p>The case's fresh check: a separate context that has not seen the unit written checks every cited claim against its source and the deliverable against the brief, grades its findings error, should-fix or minor, and never edits; a maintainer verifies each finding and applies it as an exact replacement (Academy case file §2). Units are published as one website, as an artifact on claude.ai and on GitHub Pages (Academy case file §1), so the tier is 3. The failure kinds in the skill's settings are the ones the case's reports name (§5) and the pattern its first audit named (§3).</p>
+<h4>A · The folder</h4>
+<pre><code>check-against-sources/
+  SKILL.md                the procedure (below), 122 lines, 193-character description
+  scripts/
+    check.py              the exact steps: lint, gate, claims, sample, redraw, report, recheck, log
+</code></pre>
+<p>Committed in the case's repository at <code>.claude/skills/check-against-sources/</code> (BW4's Part 1 folders hold no <code>.claude/</code>; this path is Claude Code's, §2), and uploaded to claude.ai as a ZIP. The private-terms list stays at <code>private-terms.txt</code> beside the repository, never inside it (BW4, Deliverable Part 1). Nothing else goes in the folder (§8).</p>
+<h4>B · <code>SKILL.md</code></h4>
+<pre><code>---
+name: check-against-sources
+description: "Checks a draft's claims against its cited sources, by census or tiered sample, and reports findings without editing it. Use when asked to check, fact-check or verify a text against its sources."
+---
+
+# Check against sources
+
+One check per chat, in a context that did not write the draft. This skill reports. It never edits the draft, never applies a finding, never publishes or sends anything. Every step marked **script** is run with `scripts/check.py` in this skill's own folder (in Claude Code, `${CLAUDE_SKILL_DIR}/scripts/check.py`, because the session's working directory is the repository root), never done by eye.
+
+## Settings
+
+Fill once per project; the steps below read them.
+
+- **Tier:** 3. The draft is published to anyone. (1: for you alone; 2: shared, or a decision rests on it; 3: published, sent to a client, or with legal, financial or health consequences.)
+- **Mode:** census. Every cited claim is checked, as the project's fresh check does. Use `sample` only when the maintainer asks for one.
+- **Also look for:** a figure the cited page does not carry; an author named wrongly; a law or product fact that has changed; a quotation the page does not hold; a count that does not add up; a product fact that differs between two of the vendor's own pages; a qualifier the source does not carry.
+- **Private-terms list:** `../private-terms.txt`, kept outside the repository. If it is not on disk where this chat runs, skip that gate and say so in the report; never ask for the list to be pasted or uploaded.
+- **Expected model:** the model on rows 5 and 9 of the project's BW2 routing table, read from that file (path: `[NOT IN CASE FILE: where the case keeps its routing table]`), never the writer's model. Record in the report the model and version you ran as.
+- **Report goes to:** `checks/&lt;unit code&gt;-fresh-check.md`, with `claims.tsv` and `sample.tsv` beside it in `checks/&lt;unit code&gt;/`.
+- **Run log:** `records/run-log.md`.
+
+## 0 · Before anything
+
+1. First line of the reply: `check-against-sources · &lt;the model and version this chat runs as&gt; · tier &lt;n&gt;, &lt;mode&gt;`. If that model is not the expected one, or is the model that wrote the draft, say so in the same line.
+2. You need the draft as a file. The brief it was written from and saved copies of its sources are optional. If the draft is missing, ask for it; ask nothing else.
+3. Read only the draft, its brief and its sources. Never read the writer's conversation, notes or unsure list: the check exists because it has not seen them.
+
+## 1 · Code gates (script, before any model stage)
+
+Run:
+
+    python3 scripts/check.py gate &lt;draft&gt; --brief &lt;brief&gt; --terms &lt;private-terms list&gt; --sources &lt;folder of saved sources&gt;
+
+Leave out an option whose file you do not have; pass `--sources` only when every cited page is saved as text there, since a page left out reads as a missing quotation.
+
+- `gate: PASS` → go on.
+- `gate: FAIL` → stop. Report the failing lines and nothing else. No model stage runs on a draft that fails a gate. The script prints where a private term was found, never the term.
+
+Then log it:
+
+    python3 scripts/check.py log --stage "1 Gate" --run 1 --inputs &lt;draft&gt; &lt;brief&gt; --model "none: script" --output "gate output" --gate "code: PASS" --by script --append &lt;run log&gt;
+
+## 2 · List the claims (script, then you)
+
+    python3 scripts/check.py claims &lt;draft&gt; --out claims.tsv
+
+The script lists every sentence with a number, a quotation or a link, numbered, by section. Read the list. In its `status` column, write `drop: &lt;reason&gt;` beside a row that is not a checkable claim (a heading, a template blank). Add, as new rows `A01`, `A02` …, every claim the script missed: a mechanism, a recommendation, or an attribution with no number, quotation or link. Never delete a row.
+
+## 3 · Draw what you will check (script)
+
+    python3 scripts/check.py sample claims.tsv --tier &lt;tier&gt; --out sample.tsv
+
+Add `--census` in census mode. The script uses the tier's sample size (9, 14 or 29), takes every claim when there are no more than that, and otherwise draws one claim from every section and the rest at random by seed. Copy its first three lines into the report. **Do not open any source before `sample.tsv` exists.** Never swap a drawn claim for another.
+
+## 4 · Check each drawn claim (you)
+
+For each row of `sample.tsv`, in order:
+
+1. Open the cited source. A source you cannot open is UNVERIFIABLE, never FAIL; run `python3 scripts/check.py redraw claims.tsv sample.tsv &lt;id&gt;` for a replacement from the same section, and check that one too.
+2. Compare the claim with what the source says: the figure, the sample, the date, the population, the qualifiers. Look in particular for the kinds listed under **Also look for**.
+3. Check that the source is the original (a page that repeats a figure is a reporter) and that its class is labelled: peer-reviewed; preprint; vendor, dated; practice; benchmark with version and date.
+4. Verdict: PASS (the source holds it), FAIL (wrong, unsupported, miscited, stretched or invented), STALE (true when written, superseded now: give the newer value and its source) or UNVERIFIABLE.
+
+In sample mode, also check in full, outside the sample, every figure and citation in the draft's deliverable or closing section. In both modes, check the deliverable against the brief: present, in full, as named.
+
+## 5 · Write the report
+
+Markdown, in this form and order; the script reads it.
+
+    # Check · &lt;draft name&gt;
+
+    ## 1 · Claims
+    N = &lt;count&gt; (&lt;dropped&gt; dropped as not checkable)
+    &lt;the sample script's first three lines&gt;
+    | id | section | claim, exact | cited source | verdict |
+    |---|---|---|---|---|
+    | C012 | &lt;section&gt; | "&lt;the claim&gt;" | &lt;link&gt; | PASS |
+
+    ## 2 · Findings
+    - [error] [§&lt;section&gt;] · Current: "&lt;exact text, found once in the draft&gt;" · Problem: &lt;what is wrong&gt; · Fix: "&lt;replacement&gt;" · Basis: &lt;link&gt;, &lt;where on the page&gt;
+
+    ## 3 · Confirmed
+    - &lt;id&gt; · &lt;link&gt; · "&lt;the words on the page that hold it, under 15 words, exact&gt;"
+
+    ## 4 · Invented items
+    none
+
+    Verdict: &lt;keep|fix|rewrite&gt; · errors &lt;n&gt; · should-fix &lt;n&gt; · minor &lt;n&gt; · checker: &lt;model and version you ran as&gt;
+
+Grades: an **error** is a claim the source does not support, a miscitation, an invented item, or a part of the brief missing from the draft; a **should-fix** is a stretch, a missing label or date, or a reporter cited for an original; anything else is **minor**. Findings run most serious first. Style is minor at most. Write "none" under a heading with nothing in it. No praise and no summary of the draft.
+
+## 6 · Gate the report (script)
+
+    python3 scripts/check.py report &lt;report&gt; --draft &lt;draft&gt; --sample sample.tsv
+
+- `report: FAIL` → fix the report's form (a missing row, a `Current` text that is not found exactly once, a count that does not match) and run it again, twice at most. Never change a verdict to make the report pass.
+- The script prints the decision under BW6's rule C5: FULL CHECK on any invented item or any FAIL in a sample (acceptance number zero); SWEEP on any STALE; USE IT, with the bound a clean sample gives; CENSUS DONE when every claim was checked.
+
+Then:
+
+    python3 scripts/check.py recheck &lt;report&gt;
+    python3 scripts/check.py log --stage "2 Check" --run 1 --inputs &lt;draft&gt; sample.tsv --model "&lt;model and version you ran as&gt;, &lt;effort&gt;" --output &lt;report&gt; --gate "&lt;report gate result&gt;; &lt;decision&gt;" --by "&lt;model and version&gt;" --append &lt;run log&gt;
+
+## 7 · Hand over, then stop
+
+Reply with three lines and the report's path: the decision line, the verdict line, and the five claim ids from `recheck`, which the maintainer re-opens. Then stop. The maintainer verifies every FAIL and STALE at its source before applying any fix, applies each as an exact replacement, and makes the final pass. None of that is this skill's.
+
+## Never
+
+- Edit the draft, apply a fix, publish, send, or write any file other than the report, `claims.tsv`, `sample.tsv` and the log line.
+- Give a verdict on a claim whose source you did not open.
+- Quote 15 words or more from a source.
+- Print a term from the private-terms list.
+- Hold a key, a password or a private fact in this folder.
+
+## Done when
+
+- The gate passed, or its failure is the whole report.
+- `sample.tsv` existed before any source was opened.
+- Every drawn claim has one verdict, and every finding quotes text found once in the draft, with its fix and its basis.
+- `check.py report` printed `report: PASS` and a decision.
+- Two log lines were appended, and the reply named the five claims to re-check.
+</code></pre>
+<h4>C · <code>scripts/check.py</code></h4>
+<p>Python 3, standard library only, so it runs where a skill's network access is partial or none (§2). It was run before this unit was handed in, on a filed unit of this course as the draft (BW6, 192 candidate claims in 10 sections; a tier 3 sample of 29 drawn with seed 42), on mock reports that pass and fail each rule, on a skill whose unquoted description holds a colon, and on a private-terms list.</p>
+<pre><code>#!/usr/bin/env python3
+"""check.py: the exact steps of the check-against-sources skill.
+
+Python 3 standard library only: no network, no packages, so it runs in
+claude.ai's code-execution sandbox, in Claude Code and on your own machine.
+Every step here is one a model should not do by eye: counting, drawing a
+sample by number, matching text exactly, applying the decision rule, and
+writing the log line.
+
+  lint    SKILL_DIR                          the skill's own front matter and body
+  gate    DRAFT [--brief F] [--terms F] [--sources DIR]
+                                             code gates, run before any model stage
+  claims  DRAFT --out claims.tsv             candidate checkable sentences, by section
+  sample  claims.tsv --tier 1|2|3 [--seed N] [--census] --out sample.tsv
+                                             census, or stratified sample drawn by number
+  redraw  claims.tsv sample.tsv ID [--seed N]
+                                             replace an UNVERIFIABLE claim from its section
+  report  REPORT --draft DRAFT --sample sample.tsv
+                                             the checker's report against its form; rule C5
+  recheck REPORT [--seed N]
+                                             five PASS verdicts for you to re-open
+  log     --stage S --run N --inputs F [F ...] --model M --output F --gate G --by WHO
+          [--append LOG]                     one run-log line
+
+Exit status: 0 pass, 1 fail, 2 usage or input error.
+"""
+import argparse
+import datetime
+import hashlib
+import math
+import os
+import random
+import re
+import sys
+import unicodedata
+
+# Tiers and their rates to rule out: BW6 section 5 (stated opinion there).
+# n is the smallest sample whose clean result rules the rate out at 95%.
+TIER_RATE = {1: 0.30, 2: 0.20, 3: 0.10}
+VERDICTS = ("PASS", "FAIL", "STALE", "UNVERIFIABLE")
+SEVERITIES = ("error", "should-fix", "minor")
+RESERVED = ("anthropic", "claude")
+CLAUDE_AI_DESC_LIMIT = 200      # claude.ai help centre, read 16 Nov 2026
+SPEC_DESC_LIMIT = 1024          # Agent Skills specification, read 16 Nov 2026
+BODY_LINE_LIMIT = 500           # same specification
+CONFIRM_WORD_LIMIT = 15         # quotations in Confirmed lines stay under this
+
+
+def sample_size(tier):
+    p = TIER_RATE[tier]
+    return math.ceil(math.log(0.05) / math.log(1 - p))
+
+
+def upper_bound(n):
+    """Largest failure rate still consistent with n clean draws, at 95%."""
+    return 1 - 0.05 ** (1 / n) if n &gt; 0 else 1.0
+
+
+def die(msg):
+    print("ERROR: " + msg)
+    sys.exit(2)
+
+
+def read(path):
+    if not os.path.isfile(path):
+        die(f"no such file: {path}")
+    with open(path, encoding="utf-8") as f:
+        return f.read()
+
+
+def norm(text):
+    """Fold quotes, dashes and spacing so that exact matching ignores typography."""
+    text = unicodedata.normalize("NFKC", text)
+    for a, b in (("“", '"'), ("”", '"'), ("‘", "'"), ("’", "'"),
+                 ("–", "-"), ("—", "-"), (" ", " ")):
+        text = text.replace(a, b)
+    return re.sub(r"\s+", " ", text).strip().lower()
+
+
+def short_hash(path):
+    with open(path, "rb") as f:
+        return hashlib.sha256(f.read()).hexdigest()[:7]
+
+
+# ---------------------------------------------------------------- lint
+
+def front_matter(text):
+    lines = text.split("\n")
+    if not lines or lines[0].strip() != "---":
+        return None, "the opening --- is not the file's first line"
+    try:
+        end = lines.index("---", 1)
+    except ValueError:
+        return None, "no closing --- line"
+    fields = {}
+    for raw in lines[1:end]:
+        if not raw.strip():
+            continue
+        m = re.match(r"^([a-z_-]+):\s*(.*)$", raw)
+        if not m:
+            return None, f"cannot read front matter line: {raw!r}"
+        key, value = m.group(1), m.group(2)
+        if value[:1] in "\"'":
+            if len(value) &lt; 2 or value[-1] != value[0]:
+                return None, f"{key}: opening quote is not closed on the same line"
+            value = value[1:-1]
+        elif ": " in value or " #" in value:
+            return None, (f"{key}: an unquoted value holds ': ' or ' #', which a strict "
+                          f"YAML parser rejects; put the value in double quotes")
+        fields[key] = value
+    return (fields, "\n".join(lines[end + 1:])), None
+
+
+def cmd_lint(a):
+    skill_md = os.path.join(a.skill_dir, "SKILL.md")
+    text = read(skill_md)
+    parsed, err = front_matter(text)
+    fails, notes = [], []
+    if err:
+        print("FAIL front matter: " + err)
+        return 1
+    fields, body = parsed
+    name, desc = fields.get("name", ""), fields.get("description", "")
+    folder = os.path.basename(os.path.abspath(a.skill_dir))
+    if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", name) or len(name) &gt; 64:
+        fails.append("name: 1 to 64 lowercase letters, digits and single hyphens")
+    if any(w in name for w in RESERVED):
+        fails.append("name: holds a reserved word (anthropic, claude)")
+    if name != folder:
+        fails.append(f"name {name!r} does not match its folder {folder!r}")
+    if not desc:
+        fails.append("description: empty")
+    if len(desc) &gt; SPEC_DESC_LIMIT:
+        fails.append(f"description: {len(desc)} characters, over {SPEC_DESC_LIMIT}")
+    if re.search(r"&lt;[A-Za-z/]", desc):
+        fails.append("description: holds an XML tag")
+    if "use when" not in desc.lower():
+        fails.append("description: no 'Use when' clause saying when to use it")
+    if len(desc) &gt; CLAUDE_AI_DESC_LIMIT:
+        notes.append(f"description: {len(desc)} characters, over claude.ai's {CLAUDE_AI_DESC_LIMIT}")
+    body_lines = body.count("\n") + 1
+    if body_lines &gt;= BODY_LINE_LIMIT:
+        fails.append(f"body: {body_lines} lines, not under {BODY_LINE_LIMIT}")
+    for ref in sorted(set(re.findall(r"scripts/[\w.-]+", body))):
+        if not os.path.isfile(os.path.join(a.skill_dir, ref)):
+            fails.append(f"body names {ref}, which is not in the folder")
+    print(f"name: {name} ({len(name)} characters)")
+    print(f"description: {len(desc)} characters")
+    print(f"body: {body_lines} lines")
+    for n in notes:
+        print("NOTE " + n)
+    for f in fails:
+        print("FAIL " + f)
+    print("lint: " + ("FAIL" if fails else "PASS"))
+    return 1 if fails else 0
+
+
+# ---------------------------------------------------------------- gate
+
+def quotations(text):
+    """Quoted spans of four words or more, outside code."""
+    spans = re.findall(r'"([^"\n]{3,}?)"|“([^”\n]{3,}?)”', strip_code(text))
+    out = []
+    for a_, b_ in spans:
+        q = a_ or b_
+        if len(q.split()) &gt;= 4:
+            out.append(q)
+    return out
+
+
+def strip_code(text):
+    text = re.sub(r"(?ms)^(```|~~~).*?^\1\s*$", "", text)
+    return "\n".join(l for l in text.split("\n") if not l.startswith(("    ", "\t")))
+
+
+def cmd_gate(a):
+    results = []
+    draft = read(a.draft)
+    results.append(("draft is readable and not empty", bool(draft.strip()), ""))
+    has_sources = re.search(r"(?mi)^#{1,6}\s+sources\b", draft) is not None
+    results.append(("draft has a Sources heading", has_sources, ""))
+    links = re.findall(r"https?://[^\s)&gt;\]]+", draft)
+    results.append(("draft cites at least one link", len(links) &gt; 0, f"{len(links)} links"))
+    if a.brief:
+        brief = read(a.brief)
+        results.append(("brief is readable and not empty", bool(brief.strip()), ""))
+    if a.terms:
+        terms = [t.strip() for t in read(a.terms).split("\n")
+                 if t.strip() and not t.strip().startswith("#")]
+        hits = []
+        low = draft.lower().split("\n")
+        for i, term in enumerate(terms, 1):
+            pat = re.compile(r"(?&lt;!\w)" + re.escape(term.lower()) + r"(?!\w)")
+            for ln, line in enumerate(low, 1):
+                if pat.search(line):
+                    hits.append(f"term #{i} at line {ln}")
+        # the terms themselves are never printed, so they do not enter the chat
+        results.append(("no private term in the draft", not hits, "; ".join(hits)))
+    if a.sources:
+        if not os.path.isdir(a.sources):
+            die(f"no such folder: {a.sources}")
+        corpus = []
+        for root, _, files in os.walk(a.sources):
+            for fn in files:
+                if fn.endswith((".txt", ".md", ".html", ".htm")):
+                    with open(os.path.join(root, fn), encoding="utf-8", errors="ignore") as f:
+                        corpus.append(norm(re.sub(r"&lt;[^&gt;]+&gt;", " ", f.read())))
+        corpus = "\n".join(corpus)
+        missing = []
+        for q in quotations(draft):
+            parts = [p for p in re.split(r"\s*(?:…|\.\.\.)\s*", q) if p.strip()]
+            if not all(norm(p) in corpus for p in parts):
+                missing.append(q[:60])
+        results.append(("every quotation is verbatim in the saved sources", not missing,
+                        f"{len(missing)} not found: " + " | ".join(missing) if missing else ""))
+    failed = 0
+    for label, ok, detail in results:
+        print(("PASS " if ok else "FAIL ") + label + (f" ({detail})" if detail else ""))
+        failed += not ok
+    print("gate: " + ("FAIL" if failed else "PASS"))
+    return 1 if failed else 0
+
+
+# ---------------------------------------------------------------- claims
+
+def split_sentences(par):
+    par = re.sub(r"\s+", " ", par).strip()
+    return [s for s in re.split(r"(?&lt;=[.!?])\s+(?=[A-Z“\"*\[(])", par) if s]
+
+
+def cmd_claims(a):
+    lines = read(a.draft).split("\n")
+    rows, stratum, in_fence, skip, buf = [], "Opening", False, False, []
+    if lines and lines[0].strip() == "---":
+        try:
+            lines = lines[lines.index("---", 1) + 1:]
+        except ValueError:
+            pass
+
+    def flush():
+        if buf and not skip:
+            for s in split_sentences(" ".join(buf)):
+                kinds = []
+                if re.search(r"\d", s):
+                    kinds.append("number")
+                if re.search(r'["“”]', s):
+                    kinds.append("quote")
+                if re.search(r"https?://|\]\(", s):
+                    kinds.append("link")
+                if kinds:
+                    rows.append((stratum, "+".join(kinds), s))
+        buf.clear()
+
+    for line in lines:
+        if line.strip().startswith(("```", "~~~")):
+            flush()
+            in_fence = not in_fence
+            continue
+        if in_fence or line.startswith(("    ", "\t")):
+            continue
+        m = re.match(r"^(#{1,6})\s+(.*)$", line)
+        if m:
+            flush()
+            if len(m.group(1)) &lt;= 2:
+                title = m.group(2).strip()
+                skip = bool(re.match(r"(?i)^(sources|unsure list)\b", title))
+                stratum = title
+            continue
+        if line.startswith("|"):
+            flush()
+            if not re.fullmatch(r"[|\s:-]+", line) and not skip:
+                cells = [c.strip() for c in line.strip("|").split("|")]
+                buf.append(" | ".join(cells))
+                flush()
+            continue
+        if not line.strip():
+            flush()
+            continue
+        buf.append(re.sub(r"^(&gt;\s*|[-*]\s+|\d+\.\s+)", "", line.strip()))
+    flush()
+    with open(a.out, "w", encoding="utf-8") as f:
+        f.write("id\tsection\tkind\tclaim\tstatus\n")
+        for i, (st, kind, s) in enumerate(rows, 1):
+            f.write(f"C{i:03d}\t{st}\t{kind}\t{s.replace(chr(9), ' ')}\t\n")
+    strata = {}
+    for st, _, _ in rows:
+        strata[st] = strata.get(st, 0) + 1
+    print(f"{len(rows)} candidate claims in {len(strata)} sections written to {a.out}")
+    for st, c in strata.items():
+        print(f"  {c:4d}  {st}")
+    print("Next: read the list; mark a row that is not a checkable claim with "
+          "'drop: &lt;reason&gt;' in its status column; add a claim the script missed "
+          "(a mechanism, a recommendation, an attribution with no number, quotation "
+          "or link) as a new row with an id A01, A02, ...")
+    return 0
+
+
+# ---------------------------------------------------------------- sample
+
+def read_tsv(path):
+    rows = []
+    lines = read(path).rstrip("\n").split("\n")
+    head = lines[0].split("\t")
+    for line in lines[1:]:
+        if not line.strip():
+            continue
+        cells = line.split("\t") + [""] * len(head)
+        rows.append(dict(zip(head, cells)))
+    return head, rows
+
+
+def write_tsv(path, head, rows):
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("\t".join(head) + "\n")
+        for r in rows:
+            f.write("\t".join(r.get(h, "") for h in head) + "\n")
+
+
+def cmd_sample(a):
+    if a.tier not in TIER_RATE:
+        die("tier must be 1, 2 or 3")
+    _, rows = read_tsv(a.claims)
+    live = [r for r in rows if not r.get("status", "").lower().startswith("drop")]
+    dropped = len(rows) - len(live)
+    big_n, n = len(live), sample_size(a.tier)
+    if big_n == 0:
+        die("no claims to check")
+    seed = a.seed if a.seed is not None else int(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))
+    rng = random.Random(seed)
+    if a.census or big_n &lt;= n:
+        mode, chosen = "census", list(live)
+    else:
+        mode = "sample"
+        strata = {}
+        for r in live:
+            strata.setdefault(r["section"], []).append(r)
+        chosen = []
+        for st in strata:                       # one from every section
+            pick = rng.choice(strata[st])
+            chosen.append(pick)
+            strata[st].remove(pick)
+        rest = [r for v in strata.values() for r in v]
+        extra = max(0, n - len(chosen))         # then at random from all that remain,
+        chosen += rng.sample(rest, min(extra, len(rest)))   # so larger sections give more
+    head = ["id", "section", "claim", "mode"]
+    write_tsv(a.out, head, [{"id": r["id"], "section": r["section"],
+                             "claim": r["claim"], "mode": mode} for r in chosen])
+    k = len(chosen)
+    print(f"N = {big_n} checkable claims ({dropped} dropped as not checkable)")
+    print(f"tier {a.tier}: n = {n}; mode: {mode}; drawn: {k}; seed: {seed}")
+    if mode == "sample":
+        print(f"if all {k} pass: consistent with up to {upper_bound(k):.1%} failing (95%)")
+        if k &gt; n:
+            print(f"note: {k - n} more than n, because every section gives one claim")
+    print(f"sample written to {a.out}: record it before opening any source")
+    return 0
+
+
+def cmd_redraw(a):
+    _, rows = read_tsv(a.claims)
+    head, sample = read_tsv(a.sample)
+    target = [r for r in sample if r["id"] == a.id]
+    if not target:
+        die(f"{a.id} is not in the sample")
+    taken = {r["id"] for r in sample}
+    pool = [r for r in rows if r["section"] == target[0]["section"] and r["id"] not in taken
+            and not r.get("status", "").lower().startswith("drop")]
+    if not pool:
+        print(f"no undrawn claim left in section {target[0]['section']!r}; "
+              f"{a.id} stays UNVERIFIABLE and is marked unsourced")
+        return 1
+    seed = a.seed if a.seed is not None else int(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))
+    pick = random.Random(seed).choice(pool)
+    sample.append({"id": pick["id"], "section": pick["section"], "claim": pick["claim"],
+                   "mode": sample[0].get("mode", "sample")})
+    write_tsv(a.sample, head, sample)
+    print(f"{pick['id']} added from section {pick['section']!r} (seed {seed}); "
+          f"{a.id} stays in the sample as UNVERIFIABLE and is marked unsourced in the draft")
+    return 0
+
+
+# ---------------------------------------------------------------- report
+
+def sections(text):
+    marks = {}
+    for i in range(1, 5):
+        m = re.search(rf"(?m)^##\s*{i}\s*·", text)
+        marks[i] = m.start() if m else None
+    return marks
+
+
+def cmd_report(a):
+    rep = read(a.report)
+    draft_norm = norm(read(a.draft))
+    _, sample = read_tsv(a.sample)
+    sample_ids = [r["id"] for r in sample]
+    fails = []
+    marks = sections(rep)
+    names = {1: "Claims", 2: "Findings", 3: "Confirmed", 4: "Invented items"}
+    for i in range(1, 5):
+        if marks[i] is None:
+            fails.append(f"no '## {i} · {names[i]}' section")
+    if any(marks[i] is None for i in marks):
+        for f in fails:
+            print("FAIL " + f)
+        print("report: FAIL")
+        return 1
+    if not all(marks[i] &lt; marks[i + 1] for i in range(1, 4)):
+        fails.append("sections are not in the order 1, 2, 3, 4")
+    part = {i: rep[marks[i]:(marks[i + 1] if i &lt; 4 else len(rep))] for i in range(1, 5)}
+
+    m = re.search(r"(?m)^N\s*=\s*(\d+)", part[1])
+    if not m:
+        fails.append("section 1 gives no 'N = &lt;count&gt;' line")
+    verdict_of = {}
+    for line in part[1].split("\n"):
+        cells = [c.strip() for c in line.strip().strip("|").split("|")] if line.startswith("|") else []
+        if cells and re.fullmatch(r"[CA]\d{2,}", cells[0]):
+            verdict_of[cells[0]] = cells[-1].upper()
+    missing = [i for i in sample_ids if i not in verdict_of]
+    extra = [i for i in verdict_of if i not in sample_ids]
+    if missing:
+        fails.append("sampled claims with no row: " + ", ".join(missing))
+    if extra:
+        fails.append("rows for claims that were not drawn: " + ", ".join(extra))
+    bad = [f"{i}={v}" for i, v in verdict_of.items() if v not in VERDICTS]
+    if bad:
+        fails.append("verdicts not PASS, FAIL, STALE or UNVERIFIABLE: " + ", ".join(bad))
+
+    counts = {s: 0 for s in SEVERITIES}
+    for line in part[2].split("\n"):
+        if not line.startswith("- ["):
+            continue
+        sev = re.match(r"- \[([a-z-]+)\]", line).group(1)
+        if sev not in SEVERITIES:
+            fails.append(f"finding with unknown grade [{sev}]")
+            continue
+        counts[sev] += 1
+        cur = re.search(r'Current: "(.*?)" · Problem:', line)
+        if not cur:
+            fails.append(f"finding without 'Current: \"...\" · Problem:': {line[:70]}")
+        else:
+            hits = draft_norm.count(norm(cur.group(1)))
+            if hits != 1:
+                fails.append(f"Current text occurs {hits} times in the draft, not once: "
+                             f"{cur.group(1)[:60]}")
+        if not re.search(r'· Fix: ".*?"', line):
+            fails.append(f"finding without 'Fix: \"...\"': {line[:70]}")
+        if not re.search(r"· Basis: .*https?://", line):
+            fails.append(f"finding without a Basis link: {line[:70]}")
+
+    for line in part[3].split("\n"):
+        for q in re.findall(r'"([^"]+)"', line):
+            if len(q.split()) &gt;= CONFIRM_WORD_LIMIT:
+                fails.append(f"Confirmed quotation of {len(q.split())} words, "
+                             f"not under {CONFIRM_WORD_LIMIT}: {q[:50]}")
+
+    inv_body = re.sub(r"(?m)^##.*$", "", part[4]).strip()
+    inv_lines = [l for l in inv_body.split("\n") if l.strip() and not l.startswith("Verdict:")]
+    invented = not (len(inv_lines) == 1 and inv_lines[0].strip().lower().rstrip(".") == "none")
+    if not inv_lines:
+        fails.append("section 4 is empty: write 'none' or list the invented items")
+        invented = False
+
+    last = [l for l in rep.strip().split("\n") if l.strip()][-1].strip()
+    vm = re.fullmatch(r"Verdict: (keep|fix|rewrite) · errors (\d+) · should-fix (\d+) · "
+                      r"minor (\d+) · checker: (.+)", last)
+    if not vm:
+        fails.append("last line is not 'Verdict: keep|fix|rewrite · errors n · "
+                     "should-fix n · minor n · checker: &lt;model and version&gt;'")
+    else:
+        stated = dict(zip(SEVERITIES, map(int, vm.group(2, 3, 4))))
+        if stated != counts:
+            fails.append(f"last line counts {stated} differ from the findings {counts}")
+        if vm.group(1) == "keep" and ("FAIL" in verdict_of.values() or counts["error"]):
+            fails.append("verdict keep with a FAIL or an error")
+
+    tally = {v: list(verdict_of.values()).count(v) for v in VERDICTS}
+    census = bool(sample) and sample[0].get("mode") == "census"
+    print("verdicts: " + ", ".join(f"{v} {tally[v]}" for v in VERDICTS))
+    print("findings: " + ", ".join(f"{s} {counts[s]}" for s in SEVERITIES))
+    unv = [i for i, v in verdict_of.items() if v == "UNVERIFIABLE"]
+    if unv:
+        print("UNVERIFIABLE (redraw each, and mark it unsourced): " + ", ".join(unv))
+    # Rule C5 of BW6's protocol, acceptance number zero
+    if invented:
+        decision = "FULL CHECK: an invented item was found"
+    elif census:
+        decision = "CENSUS DONE: verify every FAIL and STALE at its source before applying"
+    elif tally["FAIL"]:
+        decision = "FULL CHECK: a sampled claim failed (acceptance number zero)"
+    elif tally["STALE"]:
+        decision = "SWEEP: re-read and date every fact in the draft that can change"
+    else:
+        k = tally["PASS"]
+        decision = (f"USE IT: a clean sample of {k} is consistent with up to "
+                    f"{upper_bound(k):.1%} failing (95%)")
+    print("decision: " + decision)
+    for f in fails:
+        print("FAIL " + f)
+    print("report: " + ("FAIL" if fails else "PASS"))
+    return 1 if fails else 0
+
+
+def cmd_recheck(a):
+    rep = read(a.report)
+    passes = []
+    for line in rep.split("\n"):
+        cells = [c.strip() for c in line.strip().strip("|").split("|")] if line.startswith("|") else []
+        if cells and re.fullmatch(r"[CA]\d{2,}", cells[0]) and cells[-1].upper() == "PASS":
+            passes.append(cells[0])
+    seed = a.seed if a.seed is not None else int(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))
+    pick = sorted(random.Random(seed).sample(passes, min(5, len(passes))))
+    print(f"re-open the sources of these PASS verdicts yourself (seed {seed}): " + ", ".join(pick))
+    if len(pick) == 5:
+        print("five clean re-checks bound the checker's false-PASS rate below "
+              f"{upper_bound(5):.1%} (95%); one wrong PASS sends the check to be run again")
+    return 0
+
+
+# ---------------------------------------------------------------- log
+
+def cmd_log(a):
+    stamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    inputs = ", ".join(f"{os.path.basename(p)}@{short_hash(p)}" if os.path.isfile(p)
+                       else f"{p}@missing" for p in a.inputs)
+    line = (f"{stamp} · {a.stage} · run {a.run} · {inputs} · {a.model} · "
+            f"{a.output} · {a.gate} · {a.by}")
+    print(line)
+    if a.append:
+        new = not os.path.isfile(a.append)
+        with open(a.append, "a", encoding="utf-8") as f:
+            if new:
+                f.write("# Run log\n\nDate and time · Stage · run · Inputs@version · "
+                        "Model, version and effort · Output · Gate and result · Who ran the gate\n\n")
+            f.write(line + "\n")
+    return 0
+
+
+def main(argv):
+    p = argparse.ArgumentParser(prog="check.py", description=__doc__,
+                                formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = p.add_subparsers(dest="cmd")
+    s = sub.add_parser("lint"); s.add_argument("skill_dir")
+    s = sub.add_parser("gate"); s.add_argument("draft"); s.add_argument("--brief")
+    s.add_argument("--terms"); s.add_argument("--sources")
+    s = sub.add_parser("claims"); s.add_argument("draft"); s.add_argument("--out", required=True)
+    s = sub.add_parser("sample"); s.add_argument("claims"); s.add_argument("--tier", type=int, required=True)
+    s.add_argument("--seed", type=int); s.add_argument("--census", action="store_true")
+    s.add_argument("--out", required=True)
+    s = sub.add_parser("redraw"); s.add_argument("claims"); s.add_argument("sample"); s.add_argument("id")
+    s.add_argument("--seed", type=int)
+    s = sub.add_parser("report"); s.add_argument("report"); s.add_argument("--draft", required=True)
+    s.add_argument("--sample", required=True)
+    s = sub.add_parser("recheck"); s.add_argument("report"); s.add_argument("--seed", type=int)
+    s = sub.add_parser("log")
+    for k in ("stage", "run", "model", "output", "gate", "by"):
+        s.add_argument("--" + k, required=True)
+    s.add_argument("--inputs", nargs="+", required=True); s.add_argument("--append")
+    a = p.parse_args(argv)
+    if not a.cmd:
+        p.print_help()
+        return 2
+    return {"lint": cmd_lint, "gate": cmd_gate, "claims": cmd_claims, "sample": cmd_sample,
+            "redraw": cmd_redraw, "report": cmd_report, "recheck": cmd_recheck,
+            "log": cmd_log}[a.cmd](a)
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
+</code></pre>
+<h4>D · Install</h4>
+<p><strong>claude.ai</strong> (read 16 Nov 2026: <em>Use skills in Claude</em>; <em>How to create custom skills</em>):</p>
+<ol>
+<li>Settings &gt; Capabilities: turn on code execution. On Team and Enterprise an owner enables it for the organisation first.</li>
+<li>From the folder that holds <code>check-against-sources/</code>, run <code>python3 check-against-sources/scripts/check.py lint check-against-sources</code>. It must end <code>lint: PASS</code>. On the case it prints a 21-character name, a 193-character description (inside claude.ai's 200) and 119 body lines.</li>
+<li><code>zip -r check-against-sources.zip check-against-sources</code>, so that the folder is the ZIP's root.</li>
+<li>Customize &gt; Skills: upload the ZIP and switch the skill on.</li>
+<li>Do not upload the private-terms list. On claude.ai the terms gate is skipped and the report says so; the case's own terms check runs by script on the course data (Academy case file §7).</li>
+</ol>
+<p><strong>Claude Code</strong> (read 16 Nov 2026: <em>Extend Claude with skills</em>):</p>
+<ol>
+<li>Commit the folder at <code>.claude/skills/check-against-sources/</code> in the repository. It then loads in sessions in that repository and in scheduled runs that clone it, but not in cloud threads inside a project.</li>
+<li>In a session, ask "What skills are available?"; the skill must be listed.</li>
+<li>A skill switched on in claude.ai also loads in cloud and Cowork sessions, and in terminal sessions signed in with the account from version 2.1.273, by this page; the developer documentation says it does not (§2, disagreement). The committed copy is the route both document.</li>
+</ol>
+<p><strong>Before the first real check: seed three errors</strong> (BW6, Deliverable step F). Copy a filed unit, change three checkable claims so they no longer match their sources, note which, and run the skill on the copy in census mode. All three must appear as findings. Record the result in the run log.</p>
+<h4>E · Trigger test set</h4>
+<p>Sixteen requests: eight that should load the skill and eight near-misses that share its words and need something else (§4). On the case each is sent in a new chat in the course's project, with a unit attached where the request needs one. Requests marked <strong>V</strong> are the validation set (six of sixteen, about the 40% §4 gives): they are run, never used to rewrite the description.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Request</th>
+<th>Should load</th>
+<th>Set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td>"Check this text against its sources." (a unit attached)</td>
+<td>yes</td>
+<td>train</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>"Fact-check BW6 before I file it: every claim against the page it cites."</td>
+<td>yes</td>
+<td>train</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>"Can you verify the numbers in this report against the studies it links to?"</td>
+<td>yes</td>
+<td>train</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>"Run the fresh check on the attached unit, tier 3, census."</td>
+<td>yes</td>
+<td>train</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>"I don't trust the citations in this research summary. Go through them and tell me which ones don't hold."</td>
+<td>yes</td>
+<td>train</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>"Sample 14 claims from this memo and check them against their sources; it goes to the board on Friday."</td>
+<td>yes</td>
+<td>V</td>
+</tr>
+<tr>
+<td>S7</td>
+<td>"is every quote in here actually on the page it cites? file attached"</td>
+<td>yes</td>
+<td>V</td>
+</tr>
+<tr>
+<td>S8</td>
+<td>"Before we publish: audit the claims in section 3 against their references."</td>
+<td>yes</td>
+<td>V</td>
+</tr>
+<tr>
+<td>N1</td>
+<td>"Run the monthly rot check on the project."</td>
+<td>no</td>
+<td>train</td>
+</tr>
+<tr>
+<td>N2</td>
+<td>"Proofread this draft for spelling and grammar."</td>
+<td>no</td>
+<td>train</td>
+</tr>
+<tr>
+<td>N3</td>
+<td>"Find three sources that support this claim about sample sizes."</td>
+<td>no</td>
+<td>train</td>
+</tr>
+<tr>
+<td>N4</td>
+<td>"Summarise these five sources in a page for my director."</td>
+<td>no</td>
+<td>train</td>
+</tr>
+<tr>
+<td>N5</td>
+<td>"Critique the structure of this draft: does the argument hold?"</td>
+<td>no</td>
+<td>train</td>
+</tr>
+<tr>
+<td>N6</td>
+<td>"Write the Sources list for this draft from the links in it."</td>
+<td>no</td>
+<td>V</td>
+</tr>
+<tr>
+<td>N7</td>
+<td>"Check that the totals in this spreadsheet add up."</td>
+<td>no</td>
+<td>V</td>
+</tr>
+<tr>
+<td>N8</td>
+<td>"Apply the findings in this check report to the draft."</td>
+<td>no</td>
+<td>V</td>
+</tr>
+</tbody>
+</table></div>
+<p>S1 is the request the skill exists for, a text checked against its sources. N1 is the scheduled task's job, N5 is BW3's template 3, N7 is a script's job (BW2, row 2), and N8 is stage 4 of BW7's pipeline, which this skill must never do.</p>
+<p><strong>How to run it.</strong> Each request three times, each in a new chat. Loaded means the reply's first line begins <code>check-against-sources ·</code> (the skill's step 0), confirmed on claude.ai in Claude's thinking and in Claude Code by a Skill tool call naming it (§4). Record a line per request: <code>#, runs loaded of 3, pass or fail</code>. A should-load request passes at 2 or 3 of 3; a near-miss passes at 0 or 1 of 3 (the 0.5 threshold of §4). If a train request fails, rewrite the description, keep it at 200 characters or fewer, run <code>lint</code> again, and rerun all sixteen; stop after five rewrites and look at the requests instead (§4).</p>
+<h4>F · The scheduled task: the monthly rot check</h4>
+<p>The job is BW4's rot check (Deliverable Part 2), with BW5's build-order check added (§6). The script runs the mechanical steps and lists the rest for you; the cloud run only runs it and commits its report.</p>
+<p><strong><code>build/rotcheck.py</code></strong> (BW4's <code>build/</code> folder holds the build scripts), tested on a mock repository laid out as BW4's Part 1, with a missing file, a superseded file outside <code>archive/</code>, a mirror that differs from its source, a private term in the built output, and a build order with two rows swapped; each was reported, and the term by number only.</p>
+<pre><code>#!/usr/bin/env python3
+"""rotcheck.py: the mechanical steps of the monthly rot check (BW4, Deliverable Part 2).
+
+Python 3 standard library only. It reads the repository and writes one report;
+it changes nothing else and fixes nothing it finds.
+
+  python3 build/rotcheck.py --root . [--date YYYY-MM-DD] [--terms FILE --built DIR]
+
+Steps it runs:
+  1a  INSTRUCTIONS.md is at most 400 words           (the word count only; the reading is yours)
+  2   every file is in INDEX.md, every INDEX.md entry exists, nothing superseded sits outside archive/
+  3   every mirror inside the repository matches its source byte for byte
+  6   no private term in the built output             (only with --terms and --built: a local run)
+  B   BUILD-ORDER.md: every "Takes from" entry sits higher than its own row (BW5, Deliverable 2b)
+Steps it lists for you: 1b (read the instructions), 3 (mirrors outside the repository),
+4 (duplicated rules), 5 (contradictions), and 6 when it was not run here.
+
+Writes records/rot/&lt;date&gt;.md and prints the run-log line. Exit 1 if a step fails.
+"""
+import argparse
+import datetime
+import hashlib
+import os
+import re
+import sys
+
+IGNORE_DIRS = {".git", "__pycache__", "node_modules", ".venv"}
+IGNORE_FILES = {".DS_Store"}
+WORD_LIMIT = 400          # BW4, Deliverable Part 1 (stated opinion there)
+
+
+def read(path):
+    with open(path, encoding="utf-8") as f:
+        return f.read()
+
+
+def tables(text):
+    """Every Markdown table in text, as (header cells, list of row cells)."""
+    out, cur = [], []
+    for line in text.split("\n") + [""]:
+        if line.strip().startswith("|"):
+            cur.append([c.strip() for c in line.strip().strip("|").split("|")])
+        elif cur:
+            if len(cur) &gt;= 2 and re.fullmatch(r"[\s:|-]+", "|".join(cur[1])):
+                out.append((cur[0], cur[2:]))
+            cur = []
+    return out
+
+
+def column(header, word):
+    for i, h in enumerate(header):
+        if word.lower() in h.lower():
+            return i
+    return None
+
+
+def repo_files(root):
+    found = []
+    for d, dirs, files in os.walk(root):
+        dirs[:] = [x for x in dirs if x not in IGNORE_DIRS]
+        for f in files:
+            if f not in IGNORE_FILES:
+                found.append(os.path.relpath(os.path.join(d, f), root).replace(os.sep, "/"))
+    return sorted(found)
+
+
+def entry_path(cell):
+    m = re.search(r"`([^`]+)`", cell)
+    p = (m.group(1) if m else cell).strip()
+    p = re.sub(r"(…|\.\.\.|\*).*$", "", p)      # archive/… covers the folder
+    return p
+
+
+def covered(path, entries):
+    for e in entries:
+        if e and (path == e or (e.endswith("/") and path.startswith(e))):
+            return True
+    return False
+
+
+def step_1a(root):
+    p = os.path.join(root, "INSTRUCTIONS.md")
+    if not os.path.isfile(p):
+        return "FAIL", "INSTRUCTIONS.md not found"
+    words = len(read(p).split())
+    return ("PASS" if words &lt;= WORD_LIMIT else "FAIL"), f"{words} words (limit {WORD_LIMIT})"
+
+
+def step_2_3(root):
+    p = os.path.join(root, "INDEX.md")
+    if not os.path.isfile(p):
+        return ("FAIL", "INDEX.md not found"), ("FAIL", "INDEX.md not found"), []
+    found = [t for t in tables(read(p)) if column(t[0], "path") is not None]
+    if not found:
+        return ("FAIL", "INDEX.md has no table with a Path column"), ("FAIL", "no index table"), []
+    header, rows = found[0]
+    ip, ist, imi = column(header, "path"), column(header, "status"), column(header, "mirror")
+    entries, problems = [], []
+    for r in rows:
+        if ip &gt;= len(r):
+            continue
+        e = entry_path(r[ip])
+        entries.append(e)
+        status = r[ist].lower() if ist is not None and ist &lt; len(r) else ""
+        if e and not e.endswith("/") and not os.path.exists(os.path.join(root, e)):
+            problems.append(f"listed but missing: {e}")
+        if "superseded" in status and not e.startswith("archive/"):
+            problems.append(f"superseded outside archive/: {e}")
+    for f in repo_files(root):
+        if not covered(f, entries):
+            problems.append(f"not in INDEX.md: {f}")
+    s2 = ("FAIL" if problems else "PASS",
+          "; ".join(problems) if problems else f"{len(entries)} entries, every file listed")
+    mirror_fail, by_hand = [], []
+    if imi is not None:
+        for r in rows:
+            if imi &gt;= len(r) or ip &gt;= len(r):
+                continue
+            src, cell = entry_path(r[ip]), r[imi]
+            if not cell or cell.lower() in ("none", "n/a", "-"):
+                continue
+            inside = [m for m in re.findall(r"`([^`]+)`", cell)
+                      if os.path.isfile(os.path.join(root, m))]
+            if inside:
+                for m in inside:
+                    a_, b_ = os.path.join(root, src), os.path.join(root, m)
+                    if not os.path.isfile(a_):
+                        mirror_fail.append(f"{src}: source missing")
+                        continue
+                    if hashlib.sha256(open(a_, "rb").read()).digest() != \
+                       hashlib.sha256(open(b_, "rb").read()).digest():
+                        mirror_fail.append(f"{m} differs from {src}")
+            else:
+                by_hand.append(f"{src} → {cell}")
+    s3 = ("FAIL" if mirror_fail else "PASS",
+          "; ".join(mirror_fail) if mirror_fail else "mirrors inside the repository match")
+    return s2, s3, by_hand
+
+
+def step_6(terms_file, built):
+    terms = [t.strip() for t in read(terms_file).split("\n")
+             if t.strip() and not t.strip().startswith("#")]
+    hits = []
+    for f in repo_files(built):
+        try:
+            text = read(os.path.join(built, f)).lower()
+        except (UnicodeDecodeError, OSError):
+            continue
+        for i, t in enumerate(terms, 1):
+            if re.search(r"(?&lt;!\w)" + re.escape(t.lower()) + r"(?!\w)", text):
+                hits.append(f"term #{i} in {f}")      # never the term itself
+    return ("FAIL" if hits else "PASS"), ("; ".join(hits) if hits else f"{len(terms)} terms, none found")
+
+
+def step_b(root):
+    p = os.path.join(root, "BUILD-ORDER.md")
+    if not os.path.isfile(p):
+        return "SKIP", "no BUILD-ORDER.md"
+    for header, rows in tables(read(p)):
+        iu, it = column(header, "unit"), column(header, "takes")
+        if iu is None or it is None:
+            continue
+        codes = [re.split(r"\s+·\s+|\s", r[iu].strip(), maxsplit=1)[0] for r in rows]
+        problems = []
+        for k, r in enumerate(rows):
+            for want in re.findall(r"[A-Z]+-?[A-Z]*\d+", r[it] if it &lt; len(r) else ""):
+                if want not in codes:
+                    problems.append(f"{codes[k]} takes {want}, which is not in the table")
+                elif codes.index(want) &gt;= k:
+                    problems.append(f"{codes[k]} takes {want}, which sits at or below it")
+        return ("FAIL" if problems else "PASS"), \
+               ("; ".join(problems) if problems else f"{len(rows)} units in order")
+    return "FAIL", "BUILD-ORDER.md has no table with Unit and Takes columns"
+
+
+def main(argv):
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--root", default=".")
+    ap.add_argument("--date", default=datetime.date.today().isoformat())
+    ap.add_argument("--terms")
+    ap.add_argument("--built")
+    a = ap.parse_args(argv)
+    root = os.path.abspath(a.root)
+    results = [("1a · Instructions word count",) + step_1a(root)]
+    s2, s3, by_hand = step_2_3(root)
+    results.append(("2 · Index against folders",) + s2)
+    results.append(("3 · Mirrors inside the repository",) + s3)
+    if a.terms and a.built:
+        results.append(("6 · Private terms in the built output",) + step_6(a.terms, a.built))
+    results.append(("B · Build order",) + step_b(root))
+    yours = ["1b · Read INSTRUCTIONS.md whole: no procedure; every sentence a rule or a pointer",
+             "4 · Duplicated rules: search for the three rules broken most often this month",
+             "5 · Contradictions: account-wide instructions beside the exceptions paragraph"]
+    yours += [f"3 · Mirror outside the repository: {x}" for x in by_hand]
+    if not (a.terms and a.built):
+        yours.append("6 · Private terms: run locally with --terms and --built "
+                     "(the list is kept outside the repository)")
+    failed = [r for r in results if r[1] == "FAIL"]
+    out_rel = f"records/rot/{a.date}.md"
+    lines = [f"# Rot check · {a.date}", "", "| Step | Result | Detail |", "|---|---|---|"]
+    lines += [f"| {s} | {res} | {d} |" for s, res, d in results]
+    lines += ["", "## By hand (yours)", ""] + [f"- [ ] {y}" for y in yours]
+    stamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    inputs = ", ".join(
+        f"{n}@{hashlib.sha256(open(os.path.join(root, n), 'rb').read()).hexdigest()[:7]}"
+        for n in ("INDEX.md", "INSTRUCTIONS.md", "BUILD-ORDER.md")
+        if os.path.isfile(os.path.join(root, n)))
+    verdict = ("FAIL at steps " + ", ".join(r[0].split(" ·")[0] for r in failed)) if failed else "PASS"
+    log = (f"{stamp} · rot check · run 1 · {inputs} · none: script rotcheck.py · "
+           f"{out_rel} · code: {verdict}; {len(yours)} by hand · script")
+    lines += ["", "Run-log line:", "", log, ""]
+    os.makedirs(os.path.join(root, "records", "rot"), exist_ok=True)
+    with open(os.path.join(root, out_rel), "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    for s, res, d in results:
+        print(f"{res:4}  {s}: {d}")
+    print(f"by hand: {len(yours)} items, listed in {out_rel}")
+    print(log)
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
+</code></pre>
+<p><strong>Settings</strong> (on <em>Automate work with scheduled tasks</em>, read 16 Nov 2026):</p>
+<ul>
+<li><strong>Name:</strong> monthly rot check.</li>
+<li><strong>Repository:</strong> the course repository only.</li>
+<li><strong>Connectors:</strong> remove all of them. They are included by default and can write.</li>
+<li><strong>Environment:</strong> Default, Trusted network. The run needs no outside host.</li>
+<li><strong>Schedule:</strong> Custom, <code>7 7 1 * *</code>: 07:07 UTC on the first of each month (a five-field expression is read in UTC; begin it with <code>CRON_TZ=&lt;your time zone&gt;</code> to write local hours), a few minutes past the hour because a run set on the hour can start several minutes late. Create the task with a preset, then choose Custom in its edit dialog. Monthly is BW4's cadence.</li>
+<li><strong>Model:</strong> the smallest the dialog offers. BW2 has no row for running a script and committing its output; row 1 (triage and reformatting, small, Haiku 5.5, low) is borrowed by analogy, because the run makes no judgement.</li>
+<li><strong>Branch protection:</strong> on the default branch, with no bypass for your own account, since a rule your connected access can bypass does not block a run's push.</li>
+</ul>
+<p><strong>The prompt</strong>, self-contained, saying what success looks like:</p>
+<blockquote>
+<p>Run the monthly rot check of this repository. Step 1: run <code>python3 build/rotcheck.py --root .</code> from the repository root. It writes <code>records/rot/&lt;today's date&gt;.md</code> and prints a run-log line as its last line. Step 2: append that line, unchanged, to the end of <code>records/run-log.md</code>. Step 3: commit exactly those two files to a new branch named <code>claude/rot-&lt;today's date&gt;</code> and push it. Change no other file, fix nothing the report finds, use no connector, and send nothing. If the script cannot run (it prints a Python traceback and writes no report), push nothing and give its error as your last message; an exit status of 1 with the report written means a step failed, and the branch is still pushed. Success is one pushed branch with those two files changed, and your last message giving the script's PASS and FAIL lines.</p>
+</blockquote>
+<p><strong>What the run leaves for you.</strong> A branch with the report. You read its <strong>By hand</strong> list, which always holds steps 1b, 4 and 5, the mirror comparisons outside the repository (the claude.ai instructions field against <code>INSTRUCTIONS.md</code>), and step 6, the private-terms search, which you run locally with <code>--terms ../private-terms.txt --built &lt;the built site folder&gt;</code> because the list is outside the repository. Each FAIL becomes a backlog row (BW4, Deliverable Part 2), and you merge or delete the branch.</p>
+<p>On the case <code>[NOT IN CASE FILE: whether the repository holds INDEX.md, INSTRUCTIONS.md and BUILD-ORDER.md in BW4's and BW5's form; the case file records the method, a backlog and a changelog, §1, §2]</code>. Until it does, the script reports those files as missing, which is itself the first finding. INDEX.md also needs rows for <code>.claude/skills/</code> and <code>records/</code>, or step 2 reports the committed skill and every earlier rot report as unlisted.</p>
+<h4>G · Done when</h4>
+<ul>
+<li>[ ] <code>check.py lint</code> prints <code>lint: PASS</code>, with a description of 200 characters or fewer.</li>
+<li>[ ] The skill is switched on in Customize &gt; Skills on claude.ai, and listed by "What skills are available?" in a Claude Code session on the repository.</li>
+<li>[ ] The trigger test is run three times per request: at least 15 of the 16 requests pass, S1 loads 3 of 3, and no near-miss loads 3 of 3; all six V requests pass (this unit's thresholds, stated opinion, on §4's method).</li>
+<li>[ ] The seeded-error run reports all three seeded errors.</li>
+<li>[ ] The first real check ends with <code>report: PASS</code> and a decision line, two log lines in <code>records/run-log.md</code>, and the five claim ids to re-check, which the maintainer re-opens before applying any finding.</li>
+<li>[ ] The scheduled task's first run pushes <code>claude/rot-&lt;date&gt;</code> with the report and one log line, and nothing else.</li>
+<li>[ ] Nothing in the skill folder is a key, a password or a private term, and its only product facts are the three limits in <code>check.py</code> that <code>lint</code> needs to run without a network, each dated in its comment; re-read them at each rot check (§8).</li>
+</ul>
+<h3>Part 2 · Template: your skill</h3>
+<p>Copy Part 1's folder and both scripts unchanged. Fill the blanks below; keep everything else as it is unless your log gives you a reason to change it.</p>
+<p><strong>The front matter.</strong> Keep the name if it suits you (it must match the folder). Keep the description, or rewrite it in this form, in 200 characters or fewer:</p>
+<pre><code>description: "[what it does, third person: Checks … against …, and reports … without editing it]. Use when asked to [the verbs your requests use: check, fact-check, verify] [the object: a text, a memo, a report] against its sources."
+</code></pre>
+<p><strong>The Settings section of <code>SKILL.md</code>:</strong></p>
+<pre><code>- **Tier:** [1, 2 or 3, from BW6 §5: 1 for you alone; 2 shared or a decision rests on it; 3 published, sent to a client, or with legal, financial or health consequences].
+- **Mode:** [census, if you check every cited claim; or sample, if the tier's n is what you can afford].
+- **Also look for:** [the failure kinds your own checks have found, from your BW6 log; or "none yet"].
+- **Private-terms list:** [its path outside your project folder; or "none"].
+- **Expected model:** [the path of your BW2 routing table; the skill reads rows 5 and 9 there, so no model name is written here; a model other than the writer's].
+- **Report goes to:** [the folder and file name for check reports, e.g. checks/&lt;name&gt;-check.md].
+- **Run log:** [your run log, e.g. records/run-log.md].
+</code></pre>
+<p><strong>Install.</strong> Part 1's steps, with your repository's path, or the claude.ai steps alone if you have no repository.</p>
+<p><strong>Trigger test set.</strong> Sixteen rows, in Part 1's table form:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Request</th>
+<th>Should load</th>
+<th>Set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td>[<em>the plainest form of your request to check a text against its sources</em>]</td>
+<td>yes</td>
+<td>train</td>
+</tr>
+<tr>
+<td>S2–S5</td>
+<td>[<em>four more, varied: one formal, one casual, one long with context, one that describes the need without the words "check" or "sources"</em>]</td>
+<td>yes</td>
+<td>train</td>
+</tr>
+<tr>
+<td>S6–S8</td>
+<td>[<em>three more of the same kinds, kept aside</em>]</td>
+<td>yes</td>
+<td>V</td>
+</tr>
+<tr>
+<td>N1–N5</td>
+<td>[<em>five near-misses from your own work that share the words "check", "sources", "draft" or "claims" and need something else: a proofread, a search for sources, a summary, a critique of structure, another of your skills</em>]</td>
+<td>no</td>
+<td>train</td>
+</tr>
+<tr>
+<td>N6–N8</td>
+<td>[<em>three more near-misses, kept aside; include "apply these findings", which the skill must never do</em>]</td>
+<td>no</td>
+<td>V</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Scheduled task.</strong> Keep the rot-check script and prompt. Fill:</p>
+<ul>
+<li>Repository: [<em>your canonical repository, or "none: run the script by hand on the first of the month" if your project is not in one</em>]</li>
+<li>Schedule: [<em>a day of the month and a time a few minutes past the hour, written as cron in UTC (or after <code>CRON_TZ=&lt;your time zone&gt;</code>): minute, hour, day of the month, then <code>* *</code></em>]</li>
+<li>Files the script expects: [<em>INDEX.md, INSTRUCTIONS.md and BUILD-ORDER.md from BW4 Part 3 and BW5 2b, or the names you gave them; edit the names where the script reads them, in <code>step_1a</code>, <code>step_2_3</code>, <code>step_b</code> and <code>main</code>, if they differ</em>]</li>
+<li>What stays by hand: [<em>steps 1b, 4, 5; mirrors outside the repository; the terms search, if your list is outside it</em>]</li>
+</ul>
+<p><strong>Done when.</strong> Part 1's seven lines, with your thresholds if you change them: [<em>the pass rule for the trigger test, and why</em>].</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.3"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="99" data-rings="2"><path d="M104 74l-15 6-5 8 4 8 10 8 6 3 24 8M112 80l-10 8 4 8 12 8 18 5M133 80l-16 8 3 8 8 5 16 4M147 80l-11 5-6 3 3 8 3 2 16 4M142 88l7 8M155 88l5 4"/><circle class="ct-spot" cx="136" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="90" data-rings="2"><path d="M128 115l16 2 16 0 32-2M136 109l24 2 96-3M144 105l24 2 96-4M152 102l24 1 56-1M149 96l19 4 64-1M170 96l38 1"/><circle class="ct-spot" cx="176" cy="96" r="6"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="201" data-rings="5"><path d="M208 48l-16 5-25 11-63 10M192 115l56-2 32 5M280 51l-24-6-24-1-16 2-8 2M208 55l-24 9-72 16M256 108l32 3M280 59l-24-6-24-2-16 2-8 2M200 62l-16 6-51 12M275 64l-19-6-16-2-16 1-16 2-8 3M208 64l-23 8-38 8M232 102l62-6M264 65l-16-4-16-1-16 1-8 3M224 64l-16 3-16 7-32 6-18 8M232 99l24-2 8-2M248 65l-24-1M208 71l-16 6-17 3-20 8M160 92l10 4M208 97l40-3 8-2 9-4 2-8M258 72l-18-5-16 0-16 4M224 71l-32 9-8 4-13 4 21 4 24 1 24-1 15-4 3-8-10-7-8-2zM216 78l-6 2-3 8 9 1 25-1 6-8-7-3-8-1z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="113" data-rings="3"><path d="M320 64l-16-5-24-8M312 72l-32-13M287 80l-8-8-15-7M277 80l-8-8-21-7M267 80l-9-8"/><circle class="ct-spot" cx="248" cy="80" r="7"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="100" data-rings="2"><path d="M280 118l24 1 16-3 25-12M288 111l16-1 8-1 48-19M264 103l32 2 16-5 10-4 6-4M304 79l-29-15M294 96l-2-8-5-8M264 95l11-7 2-8"/><circle class="ct-spot" cx="288" cy="96" r="6"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="51" data-rings="1"><path d="M328 92l10-4"/><circle class="ct-spot" cx="320" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="77" data-rings="2"><path d="M345 104l15-4 24-9 11-3 12-8-11-8-20-6-24-3-32 1M360 90l4-2 10-8-14-7-8-1-24 2-16-2M338 88l-34-9"/><circle class="ct-spot" cx="360" cy="80" r="6"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="16" data-rings="0"><circle class="ct-spot" cx="400" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶9" data-words="11" data-rings="0"><circle class="ct-spot" cx="432" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶10" data-words="52" data-rings="1"><path d="M472 68l-8 1-12 3-14 8-2 8 44 12M480 76l-15 4 5 8"/><circle class="ct-spot" cx="472" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶11" data-words="67" data-rings="1"><path d="M480 100l72 7M470 88l10 4 16 4 32 3M536 86l-32-1-8 1-2 2 26 3 32 0"/><circle class="ct-spot" cx="504" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶12" data-words="47" data-rings="1"><path d="M552 107l48-4M528 99l24 1 40-5"/><circle class="ct-spot" cx="544" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶13" data-words="115" data-rings="3"><path d="M560 64l-48 5-40-1M600 103l16 1M640 66l-16-4-16-1-32 3-16 0M552 71l-24 5-48 0M592 95l40-2M639 80l-8-8-15-4-16-1-48 4M600 72l-40 6-16 7-8 1M552 91l56-5 8-2 6-4-6-4-8-3-8-1"/><circle class="ct-spot" cx="584" cy="80" r="7"/></g><g class="ct-rise ct-t5" data-label="¶14" data-words="37" data-rings="1"><circle class="ct-spot" cx="616" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶15" data-words="60" data-rings="1"><path d="M616 104l24 4 16 0 8-1 11-3 13-16-7-8-17-4-24-10M632 93l8-5-1-8"/><circle class="ct-spot" cx="656" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶16" data-words="12" data-rings="0"><circle class="ct-spot" cx="696" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶17" data-words="9" data-rings="0"><circle class="ct-spot" cx="728" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶18" data-words="80" data-rings="2"><path d="M760 71l-37 9-1 8 7 8 7 3 40 8M776 69l-16 2M760 80l-12 8 4 4 5 4 27 5M776 85l-6 3 14 8"/><circle class="ct-spot" cx="768" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶19" data-words="73" data-rings="1"><path d="M776 107l16 1 16-2 40-14 28-4M792 69l-16 0M784 101l16 0 8-2 21-11-1-8-20-4-24 0-24 4M784 96l8 0 8-2 11-6-11-5-8-1-8 0-8 3"/><circle class="ct-spot" cx="800" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶20" data-words="28" data-rings="0"><path d="M848 75l-16-4-40-2"/><circle class="ct-spot" cx="840" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶21" data-words="29" data-rings="0"><path d="M876 88l-12-5-2-3-14-5"/><circle class="ct-spot" cx="880" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶22" data-words="6" data-rings="0"><circle class="ct-spot" cx="912" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶23" data-words="18" data-rings="0"><circle class="ct-spot" cx="952" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶24" data-words="10" data-rings="0"><circle class="ct-spot" cx="984" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶25" data-words="9" data-rings="0"><circle class="ct-spot" cx="1024" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶26" data-words="24" data-rings="0"><circle class="ct-spot" cx="1064" cy="80" r="5"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw8-8" data-step="8"><span>Previous · 9 of 10</span><b>On other tools</b></a><a class="snext send" href="#read-bw8-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-bw8-sources"><summary><span class="at" id="read-bw8-10">Sources</span><span class="an">17</span></summary><div class="accb">
+<p>All web pages read 16 November 2026. Most vendor documentation and help-centre pages show no exact date of their own; where a page gives one, it is listed.</p>
+<p><strong>The format and Anthropic's documentation (vendor)</strong></p>
+<ul>
+<li>Agent Skills. <em>Specification</em>. agentskills.io (the format's documentation). https://<wbr>agentskills<wbr>.io/<wbr>specification<wbr>.md</li>
+<li>Agent Skills. <em>Optimizing skill descriptions</em>. agentskills.io (the format's documentation). https://<wbr>agentskills<wbr>.io/<wbr>skill-creation/<wbr>optimizing-descriptions<wbr>.md</li>
+<li>Anthropic. <em>Agent Skills</em>. Claude Platform Docs. https://<wbr>platform<wbr>.claude<wbr>.com/<wbr>docs/<wbr>agents-and-tools/<wbr>agent-skills/<wbr>overview</li>
+<li>Anthropic. <em>Skill authoring best practices</em>. Claude Platform Docs. https://<wbr>platform<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>agents-and-tools/<wbr>agent-skills/<wbr>best-practices<wbr>.md</li>
+<li>Anthropic. <em>Extend Claude with skills</em>. Claude Code documentation. https://<wbr>code<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>skills<wbr>.md</li>
+<li>Anthropic. <em>Automate work with scheduled tasks</em>. Claude Code documentation (research preview); read at https://<wbr>code<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>web-scheduled-tasks?mode=reply. https://<wbr>code<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>web-scheduled-tasks</li>
+<li>Anthropic. <em>Run prompts on a schedule</em>. Claude Code documentation. https://<wbr>code<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>scheduled-tasks</li>
+<li>Anthropic. <em>Schedule recurring tasks in Claude Code Desktop</em>. Claude Code documentation. https://<wbr>code<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>desktop-scheduled-tasks</li>
+<li>Claude Help Center. <em>Use skills in Claude</em>. Undated ("Updated this week" on 16 November 2026). https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>12512180-use-skills-in-claude</li>
+<li>Claude Help Center. <em>How to create custom skills</em>. Undated ("Updated over a week ago" on 16 November 2026). https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>12512198-how-to-create-custom-skills</li>
+</ul>
+<p><strong>Other vendors (vendor)</strong></p>
+<ul>
+<li>OpenAI. <em>Using skills</em>. OpenAI Academy, 10 April 2026. https://<wbr>openai<wbr>.com/<wbr>academy/<wbr>skills</li>
+<li>Tokuno, D. <em>Let skills in Gemini tackle your most repetitive tasks</em>. Google, blog.google, 30 September 2026. https://<wbr>blog<wbr>.google/<wbr>products-and-platforms/<wbr>products/<wbr>gemini/<wbr>automate-tasks-with-skills/</li>
+<li>Google. <em>About the transition from Gems to skills</em>. Gemini Apps Help, undated; read at https://<wbr>support<wbr>.google<wbr>.com/<wbr>gemini/<wbr>answer/<wbr>18560919?hl=en-JS. https://<wbr>support<wbr>.google<wbr>.com/<wbr>gemini/<wbr>answer/<wbr>18560919</li>
+<li>Google. <em>Schedules in Gemini Apps</em>. Gemini Apps Help, undated. https://<wbr>support<wbr>.google<wbr>.com/<wbr>gemini/<wbr>answer/<wbr>16316416?hl=en-GB</li>
+</ul>
+<p><strong>Practice, as reported</strong></p>
+<ul>
+<li>Wikipedia. <em>Rule of three (computer programming)</em>. A reporter's account of a practice attributed to Don Roberts and popularised in Martin Fowler's <em>Refactoring: Improving the Design of Existing Code</em> (Addison-Wesley, 1999), which was not read for this unit. https://<wbr>en<wbr>.wikipedia<wbr>.org/<wbr>wiki/<wbr>Rule_of_three_(computer_programming)</li>
+</ul>
+<p><strong>The case</strong></p>
+<ul>
+<li>Academy case file (<code>generator/data/building-with-ai/case-academy.md</code>), compiled 11 November 2026, with its later notes; cited by section: §1, §2, §3, §5, §7, §9.</li>
+</ul>
+<p><strong>This course</strong></p>
+<ul>
+<li>Units cited by section: BW1 (§1, §3, §6, §8; Deliverable Part 3); BW2 (§7; routing table rows 1, 2, 5 and 9); BW3 (Deliverable: the ten templates, template 3); BW4 (§1, §2, §5, §6, §7; Deliverable Parts 1 and 2); BW5 (Deliverable 2b); BW6 (§5; Deliverable steps C, E and F); BW7 (§1, §3, §5, §6, §7; Deliverable Part 1).</li>
+</ul>
+</div></details><details class="acc note" id="read-bw8-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>This unit was written with search off. Searches were used only to re-verify the sources it cites and every product fact it carries, on 16 November 2026; each product fact (a limit, a feature, a plan, a date) carries the day it was read on the vendor's own page, and most of those pages show no date of their own. Each practice carries an evidence grade, as in BW1 to BW7: <strong>measured</strong> (a study or test with numbers), <strong>documented practice</strong> (a vendor or a named practitioner says to do it; nobody measured it here) or <strong>stated opinion</strong>. No page read for this unit publishes a measured rate at which skills trigger, so nothing about triggering here is graded measured.</p>
+<p>What this unit assumes, by section, without restating it: the layers of a project and what loads every turn (BW1 §6 and §8; BW4 §1 and §2); the project structure and the monthly rot check (BW4, Deliverable Parts 1 to 4); the build order (BW5, Deliverable 2b); the verification protocol, its tiers, sample sizes and checker brief (BW6 §5 and Deliverable, steps C, E and F); and the pipeline form, its three kinds of gate and its run log (BW7 §3, §5 and §7). What it adds: how to turn one repeated procedure into a file the assistant loads on its own, how to prove it loads when it should, which of its steps a script must do, and which work can run on a clock without you.</p>
+</div></details><details class="acc made" id="read-bw8-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>The eighth unit of Building with AI: how to turn a procedure you repeat into something the assistant loads or runs on its own: the three forms a reusable procedure takes (a saved prompt, a project instruction, a skill) and how to choose between them; what a skill is as its format defines it, and what a skill reaches on claude.ai and in Claude Code; how triggering works and why the description matters more than the body; testing whether a skill triggers, with requests that should load it and near-misses that should not; scripts inside a skill for the steps that must be exact; scheduled tasks and what they can and cannot touch; counting the repeats before automating; what a skill must never hold; a section on other tools, with Gemini's Gems treated as legacy and their move to skills dated; and a deliverable built on the Academy case and then as a template: a skill that checks a draft against its sources (the course's verification protocol turned into numbered steps, with its checking script, install steps, a sixteen-request trigger test set and done-when lines) and one scheduled task, the monthly rot check of the project's structure, with its own script. It was written by an AI model (Opus 5.5) on 16 Nov 2026 from its brief and the course's source material, with search off: searches were used only to re-read each source it cites, and every product fact is dated by that reading. A separate model (Opus 5.5), in a context that had not seen the writing, checked every cited claim, the deliverable against the brief and every figure against the text, and ran the unit's scripts; its verdict was fix, with 3 errors, 9 should-fix and 11 minor points; 22 were applied before filing and 1 minor point was held: the claude.ai install step keeps its wording on what is on by default on the Team plan, because the help page says the skills feature is on by default there but does not say the same of code execution, and the proposed fix would have added that unsupported claim. Known gaps: the trigger test set has not been run, so whether the skill's 193-character description passes its own sixteen requests is unknown; the skill's script was tested locally, not inside claude.ai or a Claude Code session, and whether its output files can be downloaded or persist past a chat on claude.ai was not checked; whether a cloud run's default environment holds python3, and whether the scheduled-task dialog offers a choice of model, were not checked; Anthropic's own pages differ on which plans carry custom skills and on whether a skill uploaded to claude.ai reaches other surfaces, and two copies of its table comparing ways to schedule work differ on two cells, so the unit states each difference with its page; several help-centre and other vendors' pages were read through fetch summaries, not line by line; OpenAI's help page on scheduled tasks failed to load and the Claude Help Center's overview of skills refused the fetch, so the first is marked not checked and the second rests on an earlier unit's reading of 15 Nov 2026; who publishes the skill format's documentation site was not checked; the rule of three is attributed through an encyclopaedia article, not the book it comes from; the trigger test's pass thresholds, the proportional extra draws of the sampling script (a departure from BW6's wording, stated in the deliverable), the order of the skill's steps and the choice of the rot check as the scheduled task are the unit's own design, stated opinion; and the Academy case file does not record whether the case packaged any procedure as a skill or ran any scheduled task, how long a fresh check takes, whether its repository holds the index and build-order files in the form BW4 and BW5 give, where it keeps its routing table, or who applied the fresh check's findings before BW7, so those cells are marked [NOT IN CASE FILE] as blanks for the project's owner.</p><h3 id="read-bw8-11">Unsure list</h3>
+<ol>
+<li>agentskills.io is called "the format's documentation" (§2, §3, §4) because Claude Code's skills page links it for the eval format and OpenAI's page calls SKILL.md an open standard; who publishes and maintains agentskills.io was not checked.</li>
+<li>Help-centre wording was read through fetch summaries, not line by line: "(200 characters maximum)", "Don't hardcode sensitive information (API keys, passwords)", "The ZIP should contain the skill folder as its root (not a subfolder)", "Review Claude's thinking to confirm it's loading the skill" (How to create custom skills) and "This feature requires code execution to be enabled", "Try being more explicit in your request" (Use skills in Claude), all 16 Nov 2026.</li>
+<li>Other vendors read through fetch summaries: OpenAI's "A SKILL.md file is the skill's playbook" and @-mention (Using skills, 10 Apr 2026); Tokuno's "automatically run them whenever you enter a matching prompt" (30 Sep 2026); the Gems dates and the 100 MB file limit (About the transition from Gems to skills, undated). OpenAI's scheduled-tasks help page failed to load (not checked, not retried); "What are skills?" (Claude Help Center) was refused and not re-read, so §1 relies on BW4 §1's reading of 15 Nov 2026.</li>
+<li>Deliverable F assumes <code>python3</code> is available in a Claude Code cloud run's default environment; the scheduled-tasks page names a setup script for dependencies but no page read says which interpreters the default image holds.</li>
+<li>Deliverable F: whether the scheduled-task dialog offers a choice of model (and Haiku 5.5 in it), and in which time zone a Custom cron expression is read, were not checked on the page.</li>
+<li>Whether a skill's script on claude.ai can write the report, <code>claims.tsv</code> and <code>sample.tsv</code> to a path the user can then download, and whether they persist past the chat, was not checked; the skill was tested by running its script locally, not inside claude.ai or a Claude Code session.</li>
+<li>The trigger test set has not been run: no request was sent to any model for this unit, so whether the 193-character description passes its own sixteen requests is unknown.</li>
+<li>Rule of three (§7): attribution to Don Roberts and Fowler's Refactoring (1999) rests on Wikipedia's article; the book was not read.</li>
+<li>The pass thresholds of the trigger test (15 of 16, S1 3 of 3, no near-miss 3 of 3), the proportional extra draws in <code>check.py sample</code>, the order of steps in the skill and the choice of the rot check as the scheduled task are this unit's design (stated opinion), not sourced rules.</li>
+<li>Agent Skills (platform overview) says custom skills do not sync across surfaces; Extend Claude with skills says claude.ai account skills load in cloud, Cowork and signed-in terminal sessions (v2.1.273 or later). Which holds for a skill uploaded today was not tested.
+Object: the check-against-sources skill folder (its SKILL.md and scripts/check.py), Deliverable Part 1, sections B and C</li>
+</ol>
+<h3>Fresh check</h3><p>Fresh check 2026-11-16 (Opus 5.5 (claude-opus-5-5)): fix · 3 errors, 9 should-fix, 11 minor; report <code>audits/building-with-ai/fresh-check-BW8.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: write one reusable skill for your project and test that it triggers
+Takes: B5 as source material; its deliverable is replaced; BW4, BW6, BW7.
+Gives: the skill form BW9&#x27;s agents load.
+
+Unit BW8, Skills and automation. Cover: the forms a reusable procedure takes (a saved prompt, a project instruction, a skill) and how to choose; what a skill is as its format&#x27;s own documentation defines it, how triggering works and why the description matters more than the body; testing whether it triggers; scripts inside a skill for the steps that must be exact; scheduled tasks, what they can and cannot touch, dated; counting the repeats before automating; what a skill must never hold. Deliverable: one skill written in full and ready to install, a fresh check of a draft&#x27;s claims against its sources (it reuses BW6&#x27;s checker brief): the skill file, a checking script, install steps, a sixteen-request trigger test set, one scheduled task, and its done-when lines.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>
