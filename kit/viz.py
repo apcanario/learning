@@ -1593,8 +1593,12 @@ def matrix(d, narrow=None):
     if narrow is not None and LW > narrow:                   # C1 (15 Nov 2026): the drawing a phone of 360 px and below shows keeps
         LW = narrow                                          # its row labels in a narrow column, wrapped to more lines, so the
         labs = [_balanced(r['label'], T_LABEL, LW - 12) for r in rows]   # sticky copy leaves room for the cells beside it
+    if narrow is not None:                                   # C1 re-check: no column wider than the room right of the sticky
+        room = NARROW_FRAME - (8 + LW) - 12                  # column, so a scrolled-to-the-end frame shows the last column whole
+        cws = [min(cw, max(room, math.ceil(max([words(c, 'mono', 10, 0.4) + 14] + [words(mark(r['cells'][k]), 'mono', 10.5) + 18 for r in rows]))))
+               for k, (cw, c) in enumerate(zip(cws, cols))]  # but never below the column's longest word
     leg = [_tw(i.get('mark', ''), 10.5, 'mono') + 16 + 8 + min(220, _tw(i.get('means', ''), 11)) + 18 for i in d.get('legend') or []]
-    Wd = max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)
+    Wd = max(16 + LW + sum(cws), NARROW_FRAME) if narrow is not None else max(16 + LW + sum(cws), min(W, max(leg or [0]) + 16), 320)   # C1: the narrow drawing's legend wraps inside the 320 px frame
     xs = [8 + LW + sum(cws[:k]) for k in range(n)]
     heads = [_balanced(c, T_COL, cws[k] - 10) for k, c in enumerate(cols)]
     hh = max(len(h) for h in heads) * 12 + 12
@@ -1624,7 +1628,7 @@ def matrix(d, narrow=None):
     if d.get('legend'):
         y += 14
         x, lrow = 8, 24
-        LWd = min(Wd, PHONE_FRAME) if Wd > PHONE_FRAME else Wd   # W-DD-PB1 (13 Nov 2026): a drawing wider than the phone frame keeps its legend inside the frame's width, so the first frame shows every key whole
+        LWd = min(Wd, NARROW_FRAME - 20 if narrow is not None else PHONE_FRAME)   # C1 re-check: the narrow drawing's legend fits a 320 px frame   # W-DD-PB1 (13 Nov 2026): a drawing wider than the phone frame keeps its legend inside the frame's width, so the first frame shows every key whole
         for item in d['legend']:
             m, means = item.get('mark', ''), item.get('means', '')
             mw = _tw(m, 10.5, 'mono') + 16
@@ -1641,7 +1645,7 @@ def matrix(d, narrow=None):
     if narrow is not None:
         return _r(Wd), _r(y + 8), body, (8 + LW, stick, grid_h)
     nar = None
-    if Wd > NARROW_FRAME and LW > NARROW_LW:                 # C1: a second drawing for 360 px and below, with its own narrow column
+    if Wd > NARROW_FRAME and (LW > NARROW_LW or max(cws) > NARROW_FRAME - (8 + min(LW, NARROW_LW)) - 12):   # C1: a second drawing for 360 px and below, with its own narrow column (or narrower columns)
         nw, nh, nb, nst = matrix(d, narrow=NARROW_LW)
         nar = (nw, nh, nb, nst if nw > NARROW_FRAME else None)
     return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide,
@@ -2745,8 +2749,10 @@ def _heat(d, narrow=None):
     cw = (W - 16 - LW) / n
     wide = cw < 64
     cw = max(cw, 64)
-    if narrow is not None and LW > narrow:                   # C1: the drawing for 360 px and below, the columns unchanged
+    if narrow is not None and LW > narrow:                   # C1: the drawing for 360 px and below
         LW = narrow
+    if narrow is not None:                                   # C1 re-check: no column wider than the room right of the sticky column
+        cw = min(cw, NARROW_FRAME - (8 + LW) - 12)
     Wd = 16 + LW + n * cw
     heads = [_lines(c, T_COL, cw - 10) for c in cols]
     hh = max(len(h) for h in heads) * 12 + 12
@@ -2781,7 +2787,7 @@ def _heat(d, narrow=None):
         role = ('viz-markon',) + T_MARK[1:] if i == 4 else T_MARK
         txt = f'{fmt(edges[i])}–{fmt(edges[i + 1])}{unit}'
         w = _tw(txt, 10.5, 'mono') + 14
-        if x + w > Wd - 8:
+        if x + w > (min(Wd, NARROW_FRAME - 20) if narrow is not None else Wd) - 8:   # C1 re-check: the narrow drawing's scale fits a 320 px frame
             x, y = 8, y + 30
         body += _g(f'<rect class="viz-t{tone} viz-h{i + 1}" x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="24"/>' + _text([txt], role, x + w / 2, y + 5.5, 'middle'))
         x += w + 4
@@ -2789,7 +2795,7 @@ def _heat(d, narrow=None):
     if narrow is not None:
         return _r(Wd), _r(y + 8), body, (8 + LW, stick, grid_h)
     nar = None
-    if Wd > NARROW_FRAME and LW > NARROW_LW:                 # C1: as matrix()
+    if Wd > NARROW_FRAME and (LW > NARROW_LW or cw > NARROW_FRAME - (8 + min(LW, NARROW_LW)) - 12):   # C1: as matrix()
         nw, nh, nb, nst = _heat(d, narrow=NARROW_LW)
         nar = (nw, nh, nb, nst if nw > NARROW_FRAME else None)
     return _svg(_r(Wd), _r(y + 8), body, 'matrix viz-numeric', d.get('title'), d.get('caption'), wide=wide,

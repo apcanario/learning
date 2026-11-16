@@ -380,12 +380,14 @@ def cmd_stats(d):
     if n is not None:
         # a section runs from its heading (any of #, ##, ** forms) to the next of the three; "none" (also "- none found") counts 0 (S-BW1 fix, 15 Nov 2026: headings with # were not read)
         names = ('Source errors', 'Contradictions', 'Needs')
-        head = re.compile(r'(?im)^\s*(?:#{1,6}\s*|\*{2})(' + '|'.join(names) + r')\b.*$')
+        head = re.compile(r'(?im)^\s*(?:#{1,6}\s*|\*{2})(' + '|'.join(names) + r'|Flags dealt with)\b.*$')   # W-BW5: a fourth heading ends Needs
         marks = [(m.group(1).lower(), m.start(), m.end()) for m in head.finditer(n)]
         s['notes'] = {k: 0 for k in names}
         for i, (nm, a, b) in enumerate(marks):
             body = n[b:marks[i + 1][1] if i + 1 < len(marks) else len(n)]
-            key = next(k for k in names if k.lower() == nm)
+            key = next((k for k in names if k.lower() == nm), None)
+            if key is None:
+                continue
             if re.search(r'(?im)^\s*(?:[-*]\s*)?none\b', body):
                 continue
             s['notes'][key] = len([x for x in body.splitlines() if re.match(r'(\d+[.)]|[-*])\s', x)])   # top-level items only
