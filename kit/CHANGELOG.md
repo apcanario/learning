@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **16 Nov 2026 · BW9 Agents filed (row W-BW9).** Written by Opus 5.5 with search on (11,363 words, 3 figures, 25 sources); fresh check by Opus 5.5: keep, 0 errors, 7 should-fix, 11 minor, all 18 applied. Two corrections checks passed 9 replacements, all applied: BW6 (5), BW8 (3), BW9 (1). 8 flags raised; F56 and F65 carried; two corrections (C-BW9-1, C-BW9-2) left for W-BW10. Hub v10.
 - **BW8 Skills and automation** (row W-BW8, 16 Nov 2026): written by Opus 5.5 with search off, 13,799 words, 4 figures, 14 sources; fresh check fix (3 errors, 9 should-fix, 11 minor), 22 applied, 1 held; a private source unit corrected (11 replacements, two rounds) and BW4 (2 replacements, its Skills cell); 10 flags raised, 8 carried; case file §1 gains the repository's course index and build order.
 - **BW7 Pipelines: raw material to finished output** written by Opus 5.5 and filed (16 Nov 2026, row W-BW7, search off): 10,499 words, 3 figures, 15 sources; fresh check fix (2 errors, 7 should-fix, 11 minor), all applied, 22 replacements, 0 held; 3 corrections applied to B7; 7 flags raised; building-with-ai v8.
 - **BW6 Research and verification** filed 16 Nov 2026 (row W-BW6): written by Opus 5.5 from its brief, search off; fresh check by Opus 5.5, fix (1 error, 7 should-fix, 3 minor), 12 applied, 1 held (search flag); 9 flags raised, 4 carried; 6 of 13 written.
@@ -146,6 +147,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16 Nov 2026 · Session W-BW9 · BW9 Agents
+
+BW9, Agents, the ninth unit of Building with AI, was written and filed. A fresh Opus 5.5 agent wrote it from its brief with live search; a separate Opus 5.5 agent that had not seen the writing checked it and found no error, 7 should-fix and 11 minor points, and a third agent applied all 18. The writer's contradictions went to two corrections checks, which passed 9 exact replacements, all applied: BW6 now quotes Anthropic's Claude Code best-practice page rather than its older .md copy (5), BW8 cites the skills page at its page address and rewords one install step to it (3), and BW9 drops a version number the current page does not carry (1). Two contradictions were judged not a text change and became flags: the Fable version differs between Anthropic's API lineup and Claude Code's alias, and Claude Code forks side tasks by default, so a 'fresh' reviewer may have seen the writing. 8 flags were raised in all, F56 and F65 were carried, and two corrections to BW9's skills-page citations wait for the next row. Two lines were added to the case file. The course hub is at v10; BW10 is next.
 
 ## 16 Nov 2026 · Session W-BW8 · BW8 Skills and automation
 
