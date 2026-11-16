@@ -1,0 +1,1344 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#building-with-ai-bw" data-target="building-with-ai-bw">Course BW · Building with AI · public</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">DD-BW3</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI · PUBLIC</span> · DD-BW3 <span class="pill live">DD-BW3</span></div>
+    <h1>Deep dive: audit your own usage</h1>
+    <p class="scope">A method for classifying your own chats by task, model, outcome and turns, with one person&#x27;s findings as the worked example.</p>
+  </header>
+  <div class="stepbar" data-n="9"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 9</span><span class="stt">Why a review of your own chats finds what a course cannot</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-dd-bw3-0" data-step="0"><span class="n">01</span><span class="t">Why a review of your own chats finds what a course cannot</span></a></li><li><a href="#read-dd-bw3-1" data-step="1"><span class="n">02</span><span class="t">The method: a window, a list, four labels</span></a></li><li><a href="#read-dd-bw3-2" data-step="2"><span class="n">03</span><span class="t">The patterns to look for</span></a></li><li><a href="#read-dd-bw3-3" data-step="3"><span class="n">04</span><span class="t">Testing the rules of BW10 and DD-BW1 against your record</span></a></li><li><a href="#read-dd-bw3-4" data-step="4"><span class="n">05</span><span class="t">The privacy of doing this at all</span></a></li><li><a href="#read-dd-bw3-5" data-step="5"><span class="n">06</span><span class="t">The worked example: one review of 53 chats (Academy case)</span></a></li><li><a href="#read-dd-bw3-6" data-step="6"><span class="n">07</span><span class="t">From counts to ten changes</span></a></li><li><a href="#read-dd-bw3-7" data-step="7"><span class="n">08</span><span class="t">On other tools</span></a></li><li><a href="#read-dd-bw3-8" data-step="8"><span class="n">09</span><span class="t">Deliverable · A classification sheet, a gap report, a sixty-minute review, and changes for any project</span></a></li></ol><div class="secx"><a href="#read-dd-bw3-sources" data-acc>Sources</a><a href="#read-dd-bw3-note" data-acc>The writer's opening note</a><a href="#read-dd-bw3-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-dd-bw3-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">Why a review of your own chats finds what a course cannot</span></span></h2>
+<p>A course is built from evidence about other people's work: studies on tasks someone else chose, vendor guidance written for every customer at once, and in this course one real project, the Academy case. None of it knows your mix of tasks, the model you actually open for each, or where your chats go wrong.</p>
+<p>The mix varies more than a course can assume. A usage study of ChatGPT, a working paper on a sample of its conversations classified by an automated pipeline, reports that "Practical Guidance," "Seeking Information," and "Writing" together account for nearly 80% of all conversations, and that non-work messages grew from 53% to more than 70% of usage (<a target="_blank" rel="noopener" href="https://www.nber.org/papers/w34255">Chatterji et al., <em>How People Use ChatGPT</em>, NBER Working Paper 34255, September 2025</a>; working paper, not peer-reviewed; measured on ChatGPT consumer use). Anthropic's Clio system, which describes Claude.ai use by attributes it calls facets, among them the conversation's topic and its number of turns, was run over one million Claude.ai Free and Pro conversations (<a target="_blank" rel="noopener" href="https://arxiv.org/html/2412.13678v1">Tamkin et al., <em>Clio: Privacy-Preserving Insights into Real-World AI Use</em>, arXiv:2412.13678, 18 December 2024</a>; preprint, vendor-authored). Both are population figures. They tell you what millions of people do on average and nothing about which of your tasks takes most of your week, which is the number every routing and usage rule in this course depends on (this unit's inference).</p>
+<p>A second reason is structural. The rules you set for a project cover the tasks you thought of when you set them. DD-BW2 §10 found the same shape in the Academy record: the record supported the rules its stages produced numbers for, and was silent on the rest (stated opinion, DD-BW2's reading). A chat history is the one record every assistant keeps whether or not you planned to keep one, so it is the one place a task you never wrote a rule for shows up with a count.</p>
+<p>The third reason is the evidence on recording itself. A meta-analysis of 138 randomised studies (N = 19,951) found that interventions which increased how often people monitored their progress improved goal attainment, d+ = 0.40, with larger effects when progress was physically recorded and when it was reported to others (<a target="_blank" rel="noopener" href="https://eprints.whiterose.ac.uk/91437/">Harkin, Webb, Chang and colleagues, <em>Does Monitoring Goal Progress Promote Goal Attainment? A Meta-Analysis of the Experimental Evidence</em>, <em>Psychological Bulletin</em> 142(2), 2016, 198–229</a>; measured, on personal goals outside AI use (the repository record does not list their domains), none of them about AI tools). That an audit of your own chats works the same way is this unit's inference, not something any study has measured.</p>
+<p><strong>The case</strong> (Academy case). Academy is a library of self-study courses built by one person with Claude in October and November 2026, with a method of one brief per unit, a fresh check and sample audits that the case file records as run on part of the library (Academy case file §1, §2, §5, §9). Its owner's chats in the project were reviewed for one deep dive: 53 chats over six days, the project's whole history at the time (case file §8). One review of one person's chats is an anecdote; §6 reads it for its method only.</p>
+<p><strong>Grade of this section's claim</strong> that a review of your own chats finds what a course cannot: stated opinion, built on measured population data that shows how much use varies and on measured evidence for recording progress in other domains.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="55" data-rings="1"><path d="M160 69l-24 6-32 12-14 9 7 8 15 4M184 75l-22 5-22 8-8 8 12 5M184 85l-11 3-2 8"/><circle class="ct-spot" cx="200" cy="88" r="7"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="176" data-rings="5"><path d="M336 58l-72 2-72 5-32 4M112 108l32 6 32 3 80 5 200 7 64-2 93-7 51-2M336 66l-120 6-32 3M144 101l16 4 72 8 40 3 72 1 80 4 56-1 112-9 64-2M352 71l-120 6-28 3-20 5M171 96l21 5 20 3 52 5 144 6 56-1 120-11M288 80l-48 4-26 4 7 8 59 9 112 5 24 0 32-3 56-7 37-4M384 77l-40 0-56 3M288 88l-4 0-8 8 44 5 73 3 15-2 23-6-24-8-31-4-32 0z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="89" data-rings="2"><path d="M464 55l-128 3M488 63l-152 3M512 70l-160 1M584 103l56-2M541 96l27-6 16-1 136 2M584 86l-64-6-136-3"/><circle class="ct-spot" cx="520" cy="80" r="8"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="118" data-rings="3"><path d="M576 48l-112 7M664 118l48 1M792 67l-26-3-54-12-48-5-40-1-48 2M616 56l-128 7M656 109l56 0M792 75l-40-5-64-11-32-3-40 0M616 64l-104 6M640 101l56 0 104 5M792 81l-56-6-64-10-56-1M720 91l40 2M736 85l-22-5-50-4-24 1-32 7-24 2"/><circle class="ct-spot" cx="680" cy="80" r="9"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="98" data-rings="3"><path d="M712 119l88 5 40-1 48-5 48-10 28-4 44-5M936 69l-104 0-40-2M712 109l96 5 40 0 24-3 40-9 43-6 39-8M976 84l-16-4-32-2-136-3M800 106l40 0 19-2 36-8 14-8-37-4-80-3M760 93l12 3 47 0-27-3-8-2-3-3-45-3"/><circle class="ct-spot" cx="840" cy="96" r="8"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="40" data-rings="1"><path d="M1008 99l56-11-7-8-25-3-96-8M994 88l-18-4"/><circle class="ct-spot" cx="1000" cy="88" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-dd-bw3-1" data-step="1"><span>Next · 2 of 9</span><b>The method: a window, a list, four labels</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-dd-bw3-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">The method: a window, a list, four labels</span></span></h2>
+<p>The method has four steps: choose a window, list every chat in it, label every ask with four labels, then count. Each label is defined below with what it cannot tell you. The method is the one the case's review used (case file §8: each ask classified by task type, model, outcome and number of turns); the definitions, the extra columns and the limits are this unit's (stated opinion unless a source is named).</p>
+<h3>Choose a window</h3>
+<p>A window is a period and the chats in it. Three rules (stated opinion):</p>
+<ol>
+<li><strong>Long enough to hold repeats.</strong> A task you do weekly should appear at least three times, because BW8 §7 has you count runs before automating, and the rule of three it reports extracts a procedure on its third repeat. Four weeks is the shortest window that does that for weekly work.</li>
+<li><strong>Short enough to label in one sitting.</strong> The sixty-minute procedure in the Deliverable gives labelling thirty minutes: sixty chats at thirty seconds each, or thirty at a minute (an estimate, unmeasured). Take the shorter of four weeks and the most recent thirty to sixty chats.</li>
+<li><strong>Every chat in it, not the memorable ones.</strong> Chats you remember are the ones that went unusually well or badly. If the window holds more chats than you can label, draw a sample by number, as BW6 §5 step 3 does for claims, and write down that you sampled.</li>
+</ol>
+<p>Write the window down with its first and last date, and say whether it was an ordinary stretch of work. The case's window was the project's whole history at the time, six days (case file §8), so it had no selection problem; the case file does not say whether those six days were typical of later work.</p>
+<h3>List every chat</h3>
+<p>You need a list you can check is complete. On Claude (all read 16 November 2026, vendor):</p>
+<ul>
+<li><strong>claude.ai.</strong> Settings &gt; Privacy &gt; "Export data". Exports are available to individual users on Free, Pro, Max and Ultra; on Team or Enterprise you can export your own data once an organisation owner turns this on. The export includes "conversation data and the user data for your account", and does not include the original files you uploaded. It cannot be run from the iOS or Android app. A download link arrives by email; it "will expire 24 hours after it's created, and it may work only once" (<a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/9450526-export-your-claude-data">Claude Help Center, <em>Export your Claude data</em></a>, labelled "Updated this week"). The page does not say what file format the export uses. BW1 §3 describes chat search on paid plans, read 15 November 2026; it finds chats by topic and does not give you a complete list.</li>
+<li><strong>Claude Code.</strong> Each session is "a saved conversation tied to a project directory". By default transcripts are stored as JSONL at <code>~/.claude/projects/&lt;project&gt;/&lt;session-id&gt;.jsonl</code>, and the retention is 30 days unless you change the <code>cleanupPeriodDays</code> setting. <code>claude --resume</code> or <code>/resume</code> opens a session picker whose rows show the session's name, generated title, summary or first prompt, with time since last activity, git branch and file size; <code>Ctrl+A</code> widens it to every project on the machine. <code>/export</code> saves the current conversation as plain text. The desktop app, claude.ai/code and the VS Code extension each keep their own session list (<a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/sessions">Claude Code documentation, <em>Manage sessions</em></a>). Two consequences for a review: a window older than 30 days is gone from the command line unless you changed the setting, and a review that reads only one surface's list misses the others.</li>
+</ul>
+<p>The page also warns that the transcript format "is internal to Claude Code and changes between versions", so a script that parses those files can break on any release (same page). For a review by hand, the picker and <code>/export</code> are enough.</p>
+<h3>Label every ask</h3>
+<p>The unit of the sheet is the chat, labelled by its first <strong>ask</strong>, the message that sets its task. A later message in the same chat that starts a different task is an ask too: it goes in the "two tasks" column with its own task type, and that column is itself a count (§3).</p>
+<p><strong>1 · Task type.</strong> A short list of five to nine types, written down with a one-line definition each before you label anything. Take the types from your BW2 routing table, one per row, and add "other". Define each by the artefact it produces ("a table extracted from a document"), never by topic, so that two chats about the same subject but producing different things fall in different types.
+<em>Limits.</em> The labels are yours and applied by hand, as the case's were (case file §8). Boundary cases will fall between two types. To see how consistent you are, relabel five chats picked by number at the end of the sitting and count how many get the same label (stated opinion; a second reader would be a stronger check, and is rarely available). Large-scale studies label with a model instead: Clio reports reconstructing the true topic distribution of a synthetic dataset with 94% accuracy, and its authors still call its outputs preliminary and in need of further validation before decisions rest on them (Tamkin et al., preprint). A model labelling your chats raises a privacy question (§5).</p>
+<p><strong>2 · Model, and effort where recorded.</strong> The model the chat actually ran on, read from a record: the model shown in the chat, a log line, a commit trailer, your BW7 run log. Never from memory. Where nothing records it, write "not recorded". Effort the same way. The case read its model from commit trailers (case file §8); its labels do not include effort.
+<em>Limits.</em> What you asked for is not always what ran: in the case, a session's model named "fable" resolved to a newer version than the method named (case file §7), which is why BW7 §7 has the log record the model that ran. A chat that switched models mid-way gets both, marked as a switch.</p>
+<p><strong>3 · Outcome.</strong> One of five values, defined before you start:</p>
+<ul>
+<li><em>used as is</em>: the output went where it was meant to go without changes of substance;</li>
+<li><em>used after edits</em>: it went there after you changed it;</li>
+<li><em>redone</em>: you asked again, in this chat or another, for the same output;</li>
+<li><em>abandoned</em>: nothing from the chat was used;</li>
+<li><em>not seen</em>: you cannot tell from the record.
+<em>Limits.</em> The chat records what the model wrote, rarely what you did with it. "Used" is a proxy, as the case's "accepted" was (case file §8), and the case could not see 14 of its 53 endings (§8). Do not guess an outcome to shrink that count: "not seen" is a finding about your record.</li>
+</ul>
+<p><strong>4 · Turns.</strong> Count your own messages in the chat, and among them your <strong>corrections</strong>: messages that fix, reject or narrow what the model produced. The model's messages are not counted, because where a chat runs agents or tools the thread can hold many messages you did not trigger one by one (stated opinion; check what your tool shows).
+<em>Limits.</em> Turns mix length with friction. A long chat can be a good working session and a two-message chat can be a bad answer you walked away from; read turns beside the outcome, never alone. Clio counts turns as a facet computed directly, without a model (Tamkin et al., preprint). A count needs no judgement, which makes this the most reliable of the four labels (stated opinion).</p>
+<h3>The extra columns</h3>
+<p>Four yes-or-no columns turn the labels into the patterns of §3. Mark them while you have the chat open:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Mark it when</th>
+<th>Pattern it feeds (§3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Two tasks</td>
+<td>the chat holds asks of two task types</td>
+<td>badly put</td>
+</tr>
+<tr>
+<td>Routing</td>
+<td>the model or effort differs from your BW2 row for the task type</td>
+<td>wrong tool</td>
+</tr>
+<tr>
+<td>Procedure</td>
+<td>you typed a procedure you have typed before, or a skill you have was expected and did not load</td>
+<td>by hand</td>
+</tr>
+<tr>
+<td>Repeat research</td>
+<td>the chat searched or researched a question an earlier chat in the window already answered</td>
+<td>paid twice</td>
+</tr>
+</tbody>
+</table></div>
+<p>The sequence, as one figure:</p>
+<figure class="viz viz-flow"><div class="viz-scroll"><svg viewBox="0 0 694 191" width="694" height="191" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="flow"><g data-box=""><rect class="viz-node viz-t1" x="8" y="8" width="150" height="81" rx="2"/><text class="viz-nodelabel" x="20.0" y="31.3" text-anchor="start">Choose a window</text><text class="viz-note" x="20.0" y="48.3" text-anchor="start">four weeks or 30 to</text><text class="viz-note" x="20.0" y="61.3" text-anchor="start">60 chats, whichever</text><text class="viz-note" x="20.0" y="74.3" text-anchor="start">is shorter</text></g><path class="viz-arrow" d="M162,48.5 L178,48.5"/><g data-box=""><rect class="viz-node viz-t1" x="184" y="8" width="150" height="81" rx="2"/><text class="viz-nodelabel" x="196.0" y="31.3" text-anchor="start">List every chat</text><text class="viz-note" x="196.0" y="48.3" text-anchor="start">export or session</text><text class="viz-note" x="196.0" y="61.3" text-anchor="start">list; check both</text><text class="viz-note" x="196.0" y="74.3" text-anchor="start">ends</text></g><path class="viz-arrow" d="M338,48.5 L354,48.5"/><g data-box=""><rect class="viz-node viz-t1" x="360" y="8" width="150" height="81" rx="2"/><text class="viz-nodelabel" x="372.0" y="31.3" text-anchor="start">Label every ask</text><text class="viz-note" x="372.0" y="48.3" text-anchor="start">task type, model,</text><text class="viz-note" x="372.0" y="61.3" text-anchor="start">outcome, turns</text></g><path class="viz-arrow" d="M514,48.5 L530,48.5"/><g data-box=""><rect class="viz-node viz-t1" x="536" y="8" width="150" height="81" rx="2"/><text class="viz-nodelabel" x="548.0" y="31.3" text-anchor="start">Mark four columns</text><text class="viz-note" x="548.0" y="48.3" text-anchor="start">two tasks, routing,</text><text class="viz-note" x="548.0" y="61.3" text-anchor="start">procedure, repeat</text><text class="viz-note" x="548.0" y="74.3" text-anchor="start">research</text></g><path class="viz-arrow" d="M611.0,91 L611.0,102.0 L83.0,102.0 L83.0,111"/><g data-box=""><rect class="viz-node viz-t1" x="8" y="115" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="20.0" y="138.3" text-anchor="start">Count</text><text class="viz-note" x="20.0" y="155.3" text-anchor="start">per pattern and per</text><text class="viz-note" x="20.0" y="168.3" text-anchor="start">rule</text></g><path class="viz-arrow" d="M162,149.0 L178,149.0"/><g data-box=""><rect class="viz-node viz-t1" x="184" y="115" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="196.0" y="138.3" text-anchor="start">Rank changes</text><text class="viz-note" x="196.0" y="155.3" text-anchor="start">largest count first</text></g><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>The review's six steps, as §2 of this unit defines them: the four labels follow the Academy case's review (Academy case file §8); the window rules, the extra columns and the ranking (DD-BW2, Deliverable Part 2) are stated opinion.</figcaption></figure>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.444"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="74" data-rings="2"><path d="M144 70l-16 7-16 11 1 8 7 3 24 5 24 2 24-3 22-7-12-16-10-8-8-2-16-2zM144 88l8 3 8 2 8-1 7-4-7-5-8-1-8 2z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="14" data-rings="0"><circle class="ct-spot" cx="240" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="57" data-rings="1"><path d="M288 71l-12 9 4 4 8 4 8 1 48 2 38-3 4-8-26-3-40-9-16 0z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="17" data-rings="0"><circle class="ct-spot" cx="400" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="42" data-rings="1"><path d="M449 96l15 3 24 3 32 2 56 11"/><circle class="ct-spot" cx="480" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="56" data-rings="1"><path d="M528 72l-24 11-55 13M546 80l-7 8 8 8 5 2 17 6M569 88l7 8"/><circle class="ct-spot" cx="560" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="186" data-rings="5"><path d="M576 46l-24 8-8 5-16 13M576 115l16 3 64 3 64-2M712 52l-48-7-48-3-24 2-16 2M584 55l-8 2-13 7-17 16M569 104l15 3 32 4 40 2 32 0M704 58l-40-5-32-2-24 0-24 4M584 64l-11 8-4 16M576 96l16 4 16 3 56 4 40-1M688 61l-32-3-32-1-24 2-16 5M616 63l-16 4-10 5 0 8 4 8 6 4 11 4 37 4 48 1M704 68l-48-6-24 0-16 1M616 70l-6 2-1 8 7 8 16 4 64 3M696 71l-24-3-24-1-16 1-16 2M640 76l-7 4 7 3 16 2 32 0 8-2 4-3M680 75l-16-1-16 0-8 2"/><circle class="ct-spot" cx="640" cy="80" r="9"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="120" data-rings="3"><path d="M720 119l24-4 48-13 16-3 16 2M784 69l-16-3-24-7-32-7M688 113l24-2 24-3 16-4 23-8 12-8-13-8-30-12-24-7-16-3M704 106l24-3 16-5 7-2 10-8-10-8-15-8-16-5-32-6M696 101l16-2 16-3 14-8-6-8-8-4-9-4-15-4M696 95l16-3 11-4-3-8-24-9M700 80l-20-5"/><circle class="ct-spot" cx="720" cy="88" r="8"/></g><g class="ct-rise ct-t5" data-label="¶9" data-words="11" data-rings="0"><circle class="ct-spot" cx="800" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶10" data-words="127" data-rings="3"><path d="M824 101l24 6 16 3 24 1 16-1 16-2 16-6 14-6 10-8M955 80l-2-8-5-8-12-6-24-4-24-2-32 2-32 5-32 9-8 1M856 63l-16 3-14 6-4 8 9 8 17 8 24 5 24 0 22-5 9-8 3-16-10-6-8-3-16-2-16 0zM856 72l-8 8 10 8 14 4 16 0 8-1 9-3 4-8-3-8-10-2-16-1z"/></g><g class="ct-rise ct-t5" data-label="¶11" data-words="19" data-rings="0"><path d="M960 88l-5-8"/><circle class="ct-spot" cx="960" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶12" data-words="5" data-rings="0"><circle class="ct-spot" cx="1040" cy="96" r="5"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-bw3-0" data-step="0"><span>Previous · 1 of 9</span><b>Why a review of your own chats finds what a course cannot</b></a><a class="snext" href="#read-dd-bw3-2" data-step="2"><span>Next · 3 of 9</span><b>The patterns to look for</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-dd-bw3-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">The patterns to look for</span></span></h2>
+<p>Four patterns account for most of what a review can change, because each is a cost you pay again every time the habit repeats. For each: what it looks like in the sheet, the count to take, and the unit that teaches the fix. A pattern found in one chat is a flag; it becomes a change when the count is two or more (stated opinion; §7 gives the ranking).</p>
+<h3>An ask that was badly put</h3>
+<p><strong>In the sheet:</strong> chats with two or more corrections; chats marked "two tasks"; chats whose outcome is "redone".</p>
+<p><strong>Why these.</strong> BW3 §6 names three failures the vendors' guidance and the studies converge on: asking for a plan when you wanted the thing, burying the ask, and stacking unrelated tasks in one window; it grades its one-artefact-per-brief fix documented practice. A correction is the visible cost of each: the model produced what the words asked for, and you spent a message saying what you meant. Stacked tasks show directly in the "two tasks" column.</p>
+<p><strong>The count to take:</strong> the number of chats with two or more corrections, and the share of all corrections they hold. If a few chats hold most of the corrections, read those chats' first messages side by side: the defect is usually the same one, and it is in the brief (stated opinion). Then check the type: if the heavy chats are mostly one task type, the fix is that type's brief in your BW3 set, not your briefing in general.</p>
+<h3>A tool wrong for the job</h3>
+<p><strong>In the sheet:</strong> the routing column; and, among the chats on your heaviest model, those whose task type your routing table puts lower.</p>
+<p><strong>Why.</strong> BW2's routing table assigns each recurring task a tier and an effort, with the reason. A chat that ran on another tier is either a deliberate exception or a habit, and the review cannot tell which without the count: a heavy model opened for a short reply because it was the last one selected costs the gap between the tiers each time (BW2 §1 gives the cost side; it is not restated here). The other direction counts too: a light model on a task the routing table puts higher, where the outcome is "redone".</p>
+<p>Three related marks belong here. Research or agent runs for a task a single chat would have answered (DD-BW1 rule 6, "the simplest setup that does the job"). Connectors or tools on in a chat that called none (BW10 rule 7). And a mid-chat switch of model or effort (BW10 rule 3): count it, and read the note on rule 3 in §4 before you score it.</p>
+<h3>Work done by hand that a saved procedure already does</h3>
+<p><strong>In the sheet:</strong> the procedure column.</p>
+<p><strong>Two forms.</strong> The first is a procedure you typed into a prompt three or more times in the window: BW8 §7's count says a procedure repeated three times the same way is a candidate for a skill, a template or a script, and gives the arithmetic for whether it pays. The second is a skill you already have that did not load when the task called for it, or the wrong one that did. That second count is a misfire count, and BW8 §4 gives the pass rule for judging a skill's triggering; add each misfire you find to your skill's test set as a new row, as BW8 §4 says.</p>
+<p><strong>The count to take:</strong> for each procedure, the number of chats where you typed it; for each skill, the number of chats where it should have loaded and the number where it did.</p>
+<h3>Research paid for twice</h3>
+<p><strong>In the sheet:</strong> the repeat-research column.</p>
+<p><strong>Why.</strong> BW10 rule 6 says a question is researched once, filed with its source and date, and searched again only at its six-month check; BW10 grades it documented practice and cites the vendor's 2025 measure of how many more tokens a research run uses than a chat (BW10, Deliverable Part 1, rule 6). A question researched in two chats inside one window is that rule broken; count questions, so two chats on one question count once.</p>
+<p><strong>Not every repeat is waste.</strong> A fresh checker that re-opens the sources a writer cited is the check doing its job: DD-BW1 rule 3 has the check run in a context that did not see the writing, and BW6 §4 has the checker open each cited page itself. Mark a repeat only when the second search served the same purpose as the first.</p>
+<h3>Where each pattern is read</h3>
+<figure class="viz viz-matrix viz-wide"><div class="viz-scroll" style="--stickn:98px;--stick:98px" data-altn=""><svg viewBox="0 0 700 250" width="700" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="134.5" y="27.6" text-anchor="middle">Task type</text><text class="viz-colhead" x="206.0" y="27.6" text-anchor="middle">Model</text><text class="viz-colhead" x="276.0" y="27.6" text-anchor="middle">Outcome</text><text class="viz-colhead" x="355.5" y="27.6" text-anchor="middle">Turns</text><text class="viz-colhead" x="436.5" y="27.6" text-anchor="middle">Two tasks</text><text class="viz-colhead" x="508.0" y="27.6" text-anchor="middle">Routing</text><text class="viz-colhead" x="579.5" y="27.6" text-anchor="middle">Procedure</text><text class="viz-colhead" x="654.0" y="15.6" text-anchor="middle">Repeat</text><text class="viz-colhead" x="654.0" y="27.6" text-anchor="middle">research</text><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Badly put</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="46.0" width="69.0" height="28.0"/><text class="viz-mark" x="134.5" y="63.8" text-anchor="middle">group</text></g><g data-box=""><rect class="viz-track" x="173.0" y="46.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="243.0" y="46.0" width="66.0" height="28.0"/><text class="viz-mark" x="276.0" y="63.8" text-anchor="middle">redone</text></g><g data-box=""><rect class="viz-band viz-t3" x="313.0" y="46.0" width="85.0" height="28.0"/><text class="viz-mark" x="355.5" y="63.8" text-anchor="middle">corrections</text></g><g data-box=""><rect class="viz-band viz-t3" x="402.0" y="46.0" width="69.0" height="28.0"/><text class="viz-mark" x="436.5" y="63.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-track" x="475.0" y="46.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="545.0" y="46.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="618.0" y="46.0" width="72.0" height="28.0"/></g><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Wrong tool</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="78.0" width="69.0" height="28.0"/><text class="viz-mark" x="134.5" y="95.8" text-anchor="middle">group</text></g><g data-box=""><rect class="viz-band viz-t3" x="173.0" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="206.0" y="95.8" text-anchor="middle">tier</text></g><g data-box=""><rect class="viz-band viz-t4" x="243.0" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="276.0" y="95.8" text-anchor="middle">redone</text></g><g data-box=""><rect class="viz-track" x="313.0" y="78.0" width="85.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="402.0" y="78.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="475.0" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="508.0" y="95.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-track" x="545.0" y="78.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="618.0" y="78.0" width="72.0" height="28.0"/></g><text class="viz-label" x="8.0" y="128.3" text-anchor="start">By hand</text><g data-box=""><rect class="viz-track" x="100.0" y="110.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="173.0" y="110.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="243.0" y="110.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="313.0" y="110.0" width="85.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="402.0" y="110.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="475.0" y="110.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="545.0" y="110.0" width="69.0" height="28.0"/><text class="viz-mark" x="579.5" y="127.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-track" x="618.0" y="110.0" width="72.0" height="28.0"/></g><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Paid twice</text><g data-box=""><rect class="viz-track" x="100.0" y="142.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="173.0" y="142.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="243.0" y="142.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="313.0" y="142.0" width="85.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="402.0" y="142.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="475.0" y="142.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="545.0" y="142.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="618.0" y="142.0" width="72.0" height="28.0"/><text class="viz-mark" x="654.0" y="159.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t3" x="8.0" y="186.0" width="35.3" height="24"/><text class="viz-mark" x="25.6" y="201.8" text-anchor="middle">yes</text></g><text class="viz-attr" x="51.3" y="202.0" text-anchor="start">the column that counts the pattern</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="218.0" width="48.1" height="24"/><text class="viz-mark" x="32.1" y="233.8" text-anchor="middle">group</text></g><text class="viz-attr" x="64.1" y="234.0" text-anchor="start">used to group the count by task type</text></svg><svg class="viz-altn" viewBox="0 0 700 258" width="700" height="258" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix"><text class="viz-colhead" x="134.5" y="27.6" text-anchor="middle">Task type</text><text class="viz-colhead" x="206.0" y="27.6" text-anchor="middle">Model</text><text class="viz-colhead" x="276.0" y="27.6" text-anchor="middle">Outcome</text><text class="viz-colhead" x="355.5" y="27.6" text-anchor="middle">Turns</text><text class="viz-colhead" x="436.5" y="27.6" text-anchor="middle">Two tasks</text><text class="viz-colhead" x="508.0" y="27.6" text-anchor="middle">Routing</text><text class="viz-colhead" x="579.5" y="27.6" text-anchor="middle">Procedure</text><text class="viz-colhead" x="654.0" y="15.6" text-anchor="middle">Repeat</text><text class="viz-colhead" x="654.0" y="27.6" text-anchor="middle">research</text><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Badly put</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="46.0" width="69.0" height="28.0"/><text class="viz-mark" x="134.5" y="63.8" text-anchor="middle">group</text></g><g data-box=""><rect class="viz-track" x="173.0" y="46.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="243.0" y="46.0" width="66.0" height="28.0"/><text class="viz-mark" x="276.0" y="63.8" text-anchor="middle">redone</text></g><g data-box=""><rect class="viz-band viz-t3" x="313.0" y="46.0" width="85.0" height="28.0"/><text class="viz-mark" x="355.5" y="63.8" text-anchor="middle">corrections</text></g><g data-box=""><rect class="viz-band viz-t3" x="402.0" y="46.0" width="69.0" height="28.0"/><text class="viz-mark" x="436.5" y="63.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-track" x="475.0" y="46.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="545.0" y="46.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="618.0" y="46.0" width="72.0" height="28.0"/></g><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Wrong tool</text><g data-box=""><rect class="viz-band viz-t4" x="100.0" y="78.0" width="69.0" height="28.0"/><text class="viz-mark" x="134.5" y="95.8" text-anchor="middle">group</text></g><g data-box=""><rect class="viz-band viz-t3" x="173.0" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="206.0" y="95.8" text-anchor="middle">tier</text></g><g data-box=""><rect class="viz-band viz-t4" x="243.0" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="276.0" y="95.8" text-anchor="middle">redone</text></g><g data-box=""><rect class="viz-track" x="313.0" y="78.0" width="85.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="402.0" y="78.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="475.0" y="78.0" width="66.0" height="28.0"/><text class="viz-mark" x="508.0" y="95.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-track" x="545.0" y="78.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="618.0" y="78.0" width="72.0" height="28.0"/></g><text class="viz-label" x="8.0" y="128.3" text-anchor="start">By hand</text><g data-box=""><rect class="viz-track" x="100.0" y="110.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="173.0" y="110.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="243.0" y="110.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="313.0" y="110.0" width="85.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="402.0" y="110.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="475.0" y="110.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="545.0" y="110.0" width="69.0" height="28.0"/><text class="viz-mark" x="579.5" y="127.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-track" x="618.0" y="110.0" width="72.0" height="28.0"/></g><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Paid twice</text><g data-box=""><rect class="viz-track" x="100.0" y="142.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="173.0" y="142.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="243.0" y="142.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="313.0" y="142.0" width="85.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="402.0" y="142.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="475.0" y="142.0" width="66.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="545.0" y="142.0" width="69.0" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="618.0" y="142.0" width="72.0" height="28.0"/><text class="viz-mark" x="654.0" y="159.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t3" x="8.0" y="186.0" width="35.3" height="24"/><text class="viz-mark" x="25.6" y="201.8" text-anchor="middle">yes</text></g><text class="viz-attr" x="51.3" y="195.0" text-anchor="start">the column that counts</text><text class="viz-attr" x="51.3" y="209.0" text-anchor="start">the pattern</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="222.0" width="48.1" height="24"/><text class="viz-mark" x="32.1" y="237.8" text-anchor="middle">group</text></g><text class="viz-attr" x="64.1" y="231.0" text-anchor="start">used to group the count</text><text class="viz-attr" x="64.1" y="245.0" text-anchor="start">by task type</text></svg><div class="viz-stickn" aria-hidden="true"><svg viewBox="0 0 98 258" width="98" height="258" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="98" height="174"/><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Badly put</text><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Wrong tool</text><text class="viz-label" x="8.0" y="128.3" text-anchor="start">By hand</text><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Paid twice</text></svg></div><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 98 250" width="98" height="250" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="98" height="174"/><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Badly put</text><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Wrong tool</text><text class="viz-label" x="8.0" y="128.3" text-anchor="start">By hand</text><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Paid twice</text></svg></div></div><figcaption>Which columns of the classification sheet count each of the four patterns, as §3 of this unit defines them (stated opinion; the fixes are taught in BW2, BW3 §6, BW8 §4 and §7, BW10 rule 6).</figcaption></figure>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.889"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="70" data-rings="3"><path d="M208 63l-40-1-24 0-16 3-16 4-5 3-6 8 1 8-1 8 1 8 10 7 8 3 24 3 24-1 40-8 48-5M224 74l-64-3-19 1-13 4-6 4-1 16 9 8 6 2 16 1 24-2 24-8 8-1 40-1M152 79l-8 4-4 5 4 8 8 2 16-1 24-9-8-6-4-2z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="18" data-rings="0"><circle class="ct-spot" cx="232" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="75" data-rings="3"><path d="M264 55l-40 7-16 1M256 103l22 1 26 6M288 52l-24 3M272 63l-32 9-16 2M248 95l24 1 48 9M296 60l-24 3M296 67l-22 5-15 8 7 8 46 11 24 3M304 74l-17 6 8 8 27 8 22 2M320 79l-4 1-2 8 14 3 16 2"/><circle class="ct-spot" cx="304" cy="80" r="8"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="81" data-rings="4"><path d="M304 110l40 4 16-1 64-5M440 57l-40-7-24-2-88 4M320 105l24 2 24 0 48-7 40 1M440 68l-32-8-24-3-88 3M360 64l-64 3M336 102l16 0 24-2 48-10 16-2 28 8M440 86l-7-6-18-8-15-5-16-3-24 0M352 71l-48 3M344 98l24-1 31-9 5-8-12-6-8-3-16-1-16 1M344 93l16-1 18-4 4-8-14-3-8-1-40 3"/><circle class="ct-spot" cx="376" cy="80" r="8"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="23" data-rings="1"><path d="M424 108l32 0 32 4M456 101l27 3"/><circle class="ct-spot" cx="456" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="95" data-rings="4"><path d="M488 112l16 5 24 5 24 2 24-2 24-4 24-7 24-3M552 55l-88 4-24-2M483 104l45 10 16 1 16 0 16-2 16-3 24-8M512 65l-56 5-16-2M468 96l20 3 32 8 16 2 24 0 24-4 32-11M528 69l-24 2-50 9-14 6M496 79l-5 1-14 8 43 14 24 2 24-2 16-5 20-9M536 73l-40 6M528 79l-8 1-17 8 17 8 8 2 16 1 16-1 8-2 13-8M552 78l-24 1"/><circle class="ct-spot" cx="528" cy="88" r="8"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="67" data-rings="3"><path d="M632 51l-24 0-56 4M616 102l24-4 16 1M624 60l-24-1-88 6M616 94l24-6 5-8-11-8-10-3-16-3-16 0-64 3M604 88l9-8-13-6-8-1-56 0M581 88l-1-8-28-2"/><circle class="ct-spot" cx="600" cy="80" r="7"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="6" data-rings="0"><circle class="ct-spot" cx="672" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶9" data-words="111" data-rings="5"><path d="M648 108l112 9 40 1 32-3 16-5 24-10 8-1 20 5M792 63l-56-9-16-1-48 1-40-3M656 99l56 9 56 3 24 0 24-2 17-5 13-8 6-8-1-8M784 70l-40-7-16-1-64 4-40-6M696 72l-25 8-13 8 14 4 11 4 29 6 56 4 32-1 24-7 5-2 6-8-3-4-8-5M776 75l-32-7-24 0-24 4M704 79l-3 1-9 8 16 8 20 3 40 2 24-1 18-4 8-8-10-4-32-4-32-6-24 1zM736 80l-8 2-11 6 19 5 21 3 15 0 12-4 7-4-31-4-16-4z"/></g><g class="ct-rise ct-t5" data-label="¶10" data-words="33" data-rings="1"><path d="M880 76l-40-10-48-3M851 80l-19-6-16-3-32-1M824 79l-48-4"/><circle class="ct-spot" cx="824" cy="80" r="6"/></g><g class="ct-rise ct-t5" data-label="¶11" data-words="6" data-rings="0"><circle class="ct-spot" cx="896" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶12" data-words="76" data-rings="3"><path d="M900 104l28 14 16 6 16 3 24 0 24-4 8-3 16-10 8-3M944 65l-40 10-16 1-8 0M960 70l-32 10-17 8 3 8 28 16 18 5 16 1 16-2 10-4 10-8 12-5 40-3M960 78l-23 10-1 8 13 8 11 4 16 1 8-2 8-3 11-8 5-1 16-3M984 80l-18 8 2 7 8 0 31-7 9-4"/><circle class="ct-spot" cx="968" cy="96" r="8"/></g><g class="ct-rise ct-t5" data-label="¶13" data-words="63" data-rings="3"><path d="M1040 107l40-4 16-4 7-3 6-8-4-8-9-8-8-5-24-7-24-2-32 0-32 2-32 5M1064 96l8-2 11-6-1-8-10-8-8-3-16-3-24-2-24 1-24 2-16 3M992 71l-32 7M1024 92l32-4 5-8-13-7-8-2-24-1-24 1M1016 84l17-4-25-3-24 3"/><circle class="ct-spot" cx="1040" cy="80" r="7"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-bw3-1" data-step="1"><span>Previous · 2 of 9</span><b>The method: a window, a list, four labels</b></a><a class="snext" href="#read-dd-bw3-3" data-step="3"><span>Next · 4 of 9</span><b>Testing the rules of BW10 and DD-BW1 against your record</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-dd-bw3-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">Testing the rules of BW10 and DD-BW1 against your record</span></span></h2>
+<p>BW10's twelve usage rules (Deliverable Part 1) and DD-BW1's ten operating rules (Deliverable Part 2) each carry a column called "What your record shows", naming what your own chats would show if you kept or broke the rule. This section turns that column into a count on your sheet. The rules are not restated: open the two tables beside this one. Each rule keeps the grade its own unit gives it, and the case adds nothing to any grade.</p>
+<p><strong>Four verdicts</strong>, adapted from DD-BW2 §10's three (stated opinion): <strong>kept</strong> (the sheet holds chats where the rule applied and none broke it); <strong>broken, n</strong> (n chats broke it); <strong>did not arise</strong> (no chat in the window met the situation the rule covers); <strong>not testable</strong> (a chat history cannot show it, or your sheet has no column for it). A rule your chats cannot test marks a gap in your record, and the gap goes to the tenth change (§7).</p>
+<h3>BW10's twelve rules</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>BW10 rule</th>
+<th>Grade, as BW10 gives it</th>
+<th>Count on your sheet</th>
+<th>Testable from chats?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · One task, one chat</td>
+<td>Documented practice</td>
+<td>Chats marked "two tasks"</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2 · Back after a break, a new chat</td>
+<td>Documented practice; the claude.ai hour is stated opinion</td>
+<td>Chats resumed after a gap longer than BW10 sets; needs timestamps in your list</td>
+<td>Partly: only where the record shows times</td>
+</tr>
+<tr>
+<td>3 · Model and effort before the first message</td>
+<td>Documented practice</td>
+<td>Mid-chat switches of model; of effort, where recorded</td>
+<td>Model yes; effort only if recorded. See the note on rule 3 below</td>
+</tr>
+<tr>
+<td>4 · A file read once, never pasted or re-uploaded</td>
+<td>Documented practice</td>
+<td>Chats where one file was pasted or uploaded twice</td>
+<td>Yes, if you open the chat</td>
+</tr>
+<tr>
+<td>5 · A paste carries only what this output needs</td>
+<td>Documented practice</td>
+<td>Pastes much larger than what the output used</td>
+<td>By judgement only; mark, do not count, unless obvious</td>
+</tr>
+<tr>
+<td>6 · A question researched once</td>
+<td>Documented practice; the 15× is the vendor's 2025 measure</td>
+<td>Questions in the repeat-research column</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>7 · Tools and connectors off unless used</td>
+<td>Documented practice</td>
+<td>Chats with tools or connectors on that called none</td>
+<td>Only where the chat shows its tools</td>
+</tr>
+<tr>
+<td>8 · Light tasks outside the project</td>
+<td>Documented mechanism; the rule is stated opinion</td>
+<td>Short tasks run inside a heavy project</td>
+<td>Yes, if your list shows the project</td>
+</tr>
+<tr>
+<td>9 · Every background run has an end</td>
+<td>Documented practice</td>
+<td>Runs without a done-when line or cap</td>
+<td>Partly: the prompt shows the line; the cap is a setting</td>
+</tr>
+<tr>
+<td>10 · Usage read before a heavy task; credits capped</td>
+<td>Documented practice</td>
+<td>Heavy tasks stopped by a limit</td>
+<td>Partly; the cap is a setting, not in chats</td>
+</tr>
+<tr>
+<td>11 · Material where it belongs; memory settings</td>
+<td>Stated opinion on documented settings</td>
+<td>Private or work material found in chats</td>
+<td>Partly: the material shows; the settings do not</td>
+</tr>
+<tr>
+<td>12 · Training and deletion decided once</td>
+<td>Documented facts; the rule is stated opinion</td>
+<td>None</td>
+<td>No: it is a setting and a decision</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>A note on rule 3.</strong> BW10's source for rule 3 says an effort change breaks the cache "on most models", not on all (BW10, Deliverable Part 1, rule 3, citing Claude Code's prompt-caching page as read 16 November 2026). Count a mid-chat effort switch as a departure from the rule, and do not score it as a cache cost until you have read that page for your model and your plan on the day of your review.</p>
+<h3>DD-BW1's ten rules</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>DD-BW1 rule</th>
+<th>Grade, as DD-BW1 gives it</th>
+<th>Count on your sheet</th>
+<th>Testable from chats?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · Delegate what something other than your reading can check</td>
+<td>Stated opinion; one supporting mechanism measured on GPT-4 in 2023</td>
+<td>Delegated tasks whose chat names no check</td>
+<td>Yes, from the first message</td>
+</tr>
+<tr>
+<td>2 · Brief the result, not the steps</td>
+<td>Documented practice</td>
+<td>Briefs with no done-when line; outcomes "redone" though the brief was met</td>
+<td>Yes, from the first message</td>
+</tr>
+<tr>
+<td>3 · The writer never checks its own work</td>
+<td>Documented practice, vendor; no figures</td>
+<td>Checks asked for in the chat that wrote the draft</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>4 · Read what you send; label what you did not write</td>
+<td>Stated opinion; documented practice for two of its cards</td>
+<td>Outputs used as is that went to another person</td>
+<td>Partly: the chat does not show what you read</td>
+</tr>
+<tr>
+<td>5 · Small pieces, one at a time</td>
+<td>Stated opinion; documented practice for two of its cards</td>
+<td>Chats asking for several outputs</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>6 · The simplest setup that does the job</td>
+<td>Documented practice, vendor</td>
+<td>Research or agent runs for one-chat tasks</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>7 · An unattended loop has four guards</td>
+<td>Documented practice</td>
+<td>Background runs missing a guard</td>
+<td>Partly, as BW10 rule 9</td>
+</tr>
+<tr>
+<td>8 · Files are the memory</td>
+<td>Documented practice</td>
+<td>Facts you re-typed because they lived only in an earlier chat</td>
+<td>Yes, by reading</td>
+</tr>
+<tr>
+<td>9 · Never the trifecta</td>
+<td>Stated opinion on a documented attack class</td>
+<td>Chats holding private material, untrusted content and a way out at once</td>
+<td>Only where the chat shows its tools</td>
+</tr>
+<tr>
+<td>10 · Effort is a setting; a number that matters gets two runs</td>
+<td>Measured, on 2022 to 2024 models; the transfer to current models is inference</td>
+<td>Prompts asking the model to think harder; key figures taken from one draw</td>
+<td>First half yes; effort setting only if recorded</td>
+</tr>
+</tbody>
+</table></div>
+<p>DD-BW1 says of its own ten that only rule 10 rests on measured studies, on older models, and that the rules as a set are its synthesis (DD-BW1, Deliverable Part 2). A count of "broken" on your sheet does not raise or lower that: it says how often your work met the situation the rule covers, which is what decides whether the rule is worth your attention.</p>
+<p><strong>The case.</strong> The case file records that the case's review classified each ask and produced ten ranked changes, each tied to a count (§8); it does not say which of the course's rules the review tested, and DD-BW2 §10 is the only reading of the case against the rules. Its verdicts come from the project's records, not its chats.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.333"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="79" data-rings="5"><path d="M328 65l-56-7-24-2-24 0-24 2-16 3-16 5-15 6-41 12-10 4-12 8 2 8 12 6 16 4 24 3 40 0 64-6 56-1M224 64l-32 3-64 21-9 8 9 8 16 4 24 2 24 0 78-6 34-1 32 4M320 75l-56-9-40-2M200 72l-52 16-7 8 11 5 14 3 34 1 104-9 24 2M304 83l-32-9-24-4-24-1-24 3M200 78l-33 10-2 8 11 2 24 2 48-4 8-1 20-7-13-8-23-5-24 0zM192 88l-1 0 1 1 8 3 8 1 24-2 15-3-15-6-8-1-8 1z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="80" data-rings="5"><path d="M416 63l-88 2M304 110l21 2 75 14 32 3 32 0 32-3 40-9 56-4M336 107l64 12 40 3 24-2 16-2 19-6 12-8-7-7M481 88l-12-8-13-4-16-3-16-2-24-1-56 4-24 1M328 98l72 15 32 3 16-1 19-3 12-8-21-16-10-6-8-3-16-2-16-1-24 1-64 8-16-2M360 87l-3 1-6 8 28 8 21 4 16 2 16 0 16-2 9-4-6-8-9-8-18-5-16-1-16 0zM400 88l-16 4-7 4 39 8 8 0 8-8-8-5-8-3z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="77" data-rings="5"><path d="M560 55l-24 4-32 7-16 3-72-6M592 113l24-3 16-3 32-12 24-4 16-1M648 50l-48 2-40 3M504 97l-23-9M552 64l-26 8-9 8-4 16 7 4 8 2 32 3 32 0 24-3 16-4 28-10 28-4 16 0M632 57l-48 3-32 4M600 64l-32 3-16 4-4 1-9 8 1 8 4 3 10 5 22 3 16 0 16-1 9-2 31-11 48-10 16 1M648 63l-48 1M576 71l-8 2-10 7 3 8 15 4 16 1 16-1 41-12 7-8-32-4-24 1zM584 79l-3 1 11 5 8 0 22-5-6-3-8-1-16 1z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="67" data-rings="4"><path d="M704 90l16 2 16 3 32 11 16 3 40 2 24-2 32-5 8 1 8 3M896 77l-24-11-16-5-24-4-40-4-48-2-96-1M704 84l24 2 13 2 35 12 16 2 16 1 16-1 16-2 12-4 9-8 0-8-7-8-22-7-32-4-32-2-136-2M712 76l14 4 26 5 32 9 16 2 16 0 16-4 7-4 2-8-9-8-16-3-24-3-40 0-48 3-56-6M768 72l-6 0-2 2-3 6 28 8 15 1 11-1 5-3 4-5-12-5-8-2z"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="59" data-rings="4"><path d="M896 108l4 4 20 6 24 4 32 1 48-5 24-5 20-9 2-8-14-10-24-11-24-6-16-2-40 0-24 4-24 5-8 1M944 79l-8 4-5 5 0 8-6 8 11 7 8 2 32 2 32-3 16-3 16-5 5-8-12-8-9-4-24-7-16-2-16 0zM952 88l-3 16 19 4 16 0 24-3 8-3 8-6-14-8-18-4-24-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-bw3-2" data-step="2"><span>Previous · 3 of 9</span><b>The patterns to look for</b></a><a class="snext" href="#read-dd-bw3-4" data-step="4"><span>Next · 5 of 9</span><b>The privacy of doing this at all</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-dd-bw3-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">The privacy of doing this at all</span></span></h2>
+<p>A review re-reads everything you told an assistant, and makes copies. Three copies matter.</p>
+<p><strong>The export.</strong> On claude.ai it holds every conversation and the user data for your account (Claude Help Center, <em>Export your Claude data</em>, read 16 November 2026; vendor). It lands on your disk as a download. Treat it as BW10 §7 treats drafts and working files: a private store you control, read by name when needed. Download it once, label from it, and delete it when the sheet is done; a fresh export is a few clicks away for the next review.</p>
+<p><strong>A model that reads your chats for you.</strong> Labelling by hand keeps the history where it already is. Handing the history to an assistant to label sends every chat back into a new chat, which then falls under the retention and training settings BW10 §6 lists (as read there on 16 November 2026: re-read them on the day), and, if memory is on, can write memory entries from what it reads; BW10 §6 records that deleting a chat does not delete the memory entries written from it. If you use a model, give it only the first message of each chat, trimmed of names, in a chat where memory and training are set as BW10's Template D records them (stated opinion). The vendors' own studies of usage show the standard for reading chats at scale: Clio was designed so that it works "without the need for human reviewers to read raw conversations", and keeps a cluster only if it exceeds minimum sizes for both unique accounts and conversations (Tamkin et al., preprint); the ChatGPT study classified its sample with "a privacy-preserving automated pipeline" (Chatterji et al., working paper). Those designs answer a different problem, many people's chats read by the vendor, but they show that the vendors treat reading chats as sensitive even in aggregate (this unit's reading).</p>
+<p><strong>The sheet and the gap report.</strong> Your chats name other people: clients, colleagues, family. The sheet does not need them, and the gap report should be something you could show a colleague. Three rules (stated opinion): the sheet holds labels and counts, never quotations longer than a few words; no row names a person other than you; a pattern is described by its kind ("two tasks in one chat"), never by what the chat was about when that would identify someone. If any chat in the window holds employer material, BW10 §8's five questions apply to the export and the sheet as they did to the chat.</p>
+<p><strong>The case.</strong> The case file was compiled from the project's own records "with private details removed" (case file header), and its record of the review is counts and a description of the method, with no chat quoted (§8). That is the form this unit asks of your gap report. One project; it shows the form is workable, not that it is sufficient.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.778"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="14" data-rings="0"><circle class="ct-spot" cx="216" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="82" data-rings="2"><path d="M316 80l-12 3-11 5 13 8 54 16 24 5 40 4 88 4M368 88l-7 8 20 8 27 5 32 4 80 3M419 96l27 8 50 4"/><circle class="ct-spot" cx="408" cy="96" r="7"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="218" data-rings="5"><path d="M488 47l-40 7-32 14-11 4-89 8M512 125l88-1 64-6 109-14M792 51l-88-7-80-3-80 1-56 5M504 56l-16 3-15 5-17 11-13 5-75 8M520 116l72-1 64-5 48-6 120-13M728 54l-72-3-64-1-48 2-40 4M512 64l-18 8-10 8-65 16M496 108l64 1 64-3 88-10 72-7M768 64l-72-5-64-2-48 0-40 2-32 5M568 64l-24 3-19 5-9 8-22 8-12 8 38 5 48 2 56-3 64-8 48-4M712 66l-80-3-64 1M568 72l-8 2-25 14 9 4 8 1 16 2 48-1 106-14-21-8-21-1-64-2z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="107" data-rings="2"><path d="M773 104l83-8 26 0 22 2M968 70l-64-8-112-11M824 91l48-2 60-1M931 80l-35-8-96-12-72-6M784 89l63-9-18-8-61-8M736 88l51-8-12-8-63-6"/><circle class="ct-spot" cx="792" cy="80" r="8"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="62" data-rings="1"><path d="M904 98l40 10 16 2 32 1 32-4 10-3 18-8-4-8-32-8-48-10M932 88l-1-8"/><circle class="ct-spot" cx="984" cy="96" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-bw3-3" data-step="3"><span>Previous · 4 of 9</span><b>Testing the rules of BW10 and DD-BW1 against your record</b></a><a class="snext" href="#read-dd-bw3-5" data-step="5"><span>Next · 6 of 9</span><b>The worked example: one review of 53 chats (Academy case)</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-dd-bw3-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">The worked example: one review of 53 chats (Academy case)</span></span></h2>
+<p>What the case file records about the review, in full (case file §8):</p>
+<ul>
+<li>The owner's chats in the project were reviewed for one deep dive: 53 chats over six days, the project's whole history at the time.</li>
+<li>By model, read from commit trailers: 31 chats ran on Opus, 18 on Fable, 4 on both.</li>
+<li>Each ask was classified by task type, model, outcome and number of turns. The labels were applied by hand; "accepted" was a proxy; 14 endings were not seen.</li>
+<li>The review produced ten changes, ranked, each tied to a count.</li>
+</ul>
+<figure class="viz viz-compare"><div class="viz-scroll" data-alt=""><svg viewBox="0 0 700 102" width="700" height="102" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="41.2" y="27.3" text-anchor="end">Opus</text><rect class="viz-track" x="51.15008" y="16.0" width="575.4" height="14"/><rect class="viz-bar viz-t3" x="51.15008" y="16.0" width="575.4" height="14"/><text class="viz-value" x="634.6" y="26.8">31 chats</text><text class="viz-label" x="41.2" y="57.3" text-anchor="end">Fable</text><rect class="viz-track" x="51.15008" y="46.0" width="575.4" height="14"/><rect class="viz-bar viz-t2" x="51.15008" y="46.0" width="334.1" height="14"/><text class="viz-value" x="393.3" y="56.8">18 chats</text><text class="viz-label" x="41.2" y="87.3" text-anchor="end">Both</text><rect class="viz-track" x="51.15008" y="76.0" width="575.4" height="14"/><rect class="viz-bar viz-t4" x="51.15008" y="76.0" width="74.3" height="14"/><text class="viz-value" x="133.4" y="86.8">4 chats</text></svg><svg class="viz-alt" viewBox="0 0 258 102" width="258" height="102" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="41.2" y="27.3" text-anchor="end">Opus</text><rect class="viz-track" x="51.15008" y="16.0" width="133.4" height="14"/><rect class="viz-bar viz-t3" x="51.15008" y="16.0" width="133.4" height="14"/><text class="viz-value" x="192.6" y="26.8">31 chats</text><text class="viz-label" x="41.2" y="57.3" text-anchor="end">Fable</text><rect class="viz-track" x="51.15008" y="46.0" width="133.4" height="14"/><rect class="viz-bar viz-t2" x="51.15008" y="46.0" width="77.5" height="14"/><text class="viz-value" x="190.6" y="56.8">18 chats</text><text class="viz-label" x="41.2" y="87.3" text-anchor="end">Both</text><rect class="viz-track" x="51.15008" y="76.0" width="133.4" height="14"/><rect class="viz-bar viz-t4" x="51.15008" y="76.0" width="17.2" height="14"/><text class="viz-value" x="76.4" y="86.8">4 chats</text></svg></div><figcaption>The 53 chats of the Academy case's review by the model they ran on, read from commit trailers: §6 of this unit, from Academy case file §8. One person's six days; an anecdote, not a benchmark.</figcaption></figure>
+<p><strong>What the example shows about the method.</strong> Four things, each a reading of §8 (stated opinion):</p>
+<ol>
+<li><strong>The window had no selection problem.</strong> It was the whole history (§8), so no chat was left out by choice. Your window will rarely be the whole history; §2's third rule is the substitute.</li>
+<li><strong>The model was read from a record.</strong> Commit trailers are a record the work produced for another purpose (§8). BW7 §7's run log builds the same habit on purpose. The model column covers all 53 chats: 31 + 18 + 4 = 53 (arithmetic).</li>
+<li><strong>Outcome was the weakest label.</strong> "Accepted" was a proxy and 14 of 53 endings were not seen (§8): about one chat in four (14 ÷ 53 = 26%, arithmetic). A label that cannot be read for a quarter of the chats can still rank changes, but every outcome-based count carries that gap.</li>
+<li><strong>Every change was tied to a count</strong> (§8). That is the ranking rule DD-BW2 Part 2 uses for the record's own changes, and the one §7 asks of yours.</li>
+</ol>
+<p><strong>What it does not show.</strong> The case file holds no breakdown of the 53 chats by task type, outcome or turns, no pattern counts, no rule verdicts, and none of the ten changes (§8). So this unit cannot set the case's list beside yours. What it can set beside your gap report is DD-BW2's case report, line by line (Deliverable, Part B), and DD-BW2's ten changes, the record's own, restated for any project (Deliverable, Part D). Nothing about the review is a benchmark: 53 chats in six days, or 18 on one model, says what one person did in one week of one project; compare your counts only with your own next review.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.222"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="13" data-rings="0"><circle class="ct-spot" cx="280" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="16" data-rings="0"><circle class="ct-spot" cx="600" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="113" data-rings="5"><path d="M872 47l-48 5-40 7-32 8-16 5-8 4-7 4-8 8 10 8 37 8 32 4 40 2 96-2 104 0 32-2 32-5 20-5 13-8-2-8-16-8-23-6-32-6-56-8-40-3-48-3zM872 56l-32 3-32 6-25 7-15 8-2 8 18 8 16 3 24 2 32 2 72-2 80 0 24-2 25-3 22-8 0-8-18-8-45-9-40-5-40-3-32-1zM864 63l-44 9-18 8 1 8 13 4 22 4 34 2 128-2 24-4 17-4 2-8-21-8-30-5-40-5-48-2zM856 72l-21 8 5 7 16 3 16 2 88 0 24-2 17-2 8-8-26-8-55-6-32 0zM880 78l-7 2 7 3 8 2 16 1 40-1 16-2 9-3-33-6-16-2-16 1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-bw3-4" data-step="4"><span>Previous · 5 of 9</span><b>The privacy of doing this at all</b></a><a class="snext" href="#read-dd-bw3-6" data-step="6"><span>Next · 7 of 9</span><b>From counts to ten changes</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-dd-bw3-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class="bt">From counts to ten changes</span></span></h2>
+<p><strong>Ranking.</strong> Use DD-BW2 Part 2's rule: rank by the count behind each change, largest first; a change you cannot tie to a count is not on the list; ties go to the change whose failure reached a finished output (DD-BW2, Deliverable Part 2; stated opinion there) and, where that does not separate them, to the change with more corrections in the chats behind it (this unit's addition, stated opinion). Each change names the unit that teaches it and that unit's grade, as DD-BW2 Part 4's columns ask.</p>
+<p><strong>What a count can carry.</strong> Your window is small. A pattern seen in 2 of 30 chats and one seen in 4 of 30 are not reliably different rates; with counts this size, the ranking says where to look first and nothing about the size of an effect. BW6 §5 gives the arithmetic for what a small sample can and cannot show; apply its rule that a clean sample certifies nothing to a pattern you did not find: no "two tasks" chat in thirty bounds the rate, it does not prove zero (stated opinion, on BW6 §5).</p>
+<p><strong>Three rules for writing a change</strong> (stated opinion):</p>
+<ol>
+<li><strong>Say it so next month can check it.</strong> "One task per chat" is a rule; "a new chat for every task type in my routing table, and the 'two tasks' count at zero in the next review" is a change.</li>
+<li><strong>Give it a "worked if" line</strong>: the count in the next review that would show it worked.</li>
+<li><strong>Reserve the tenth place for the record.</strong> The rules your sheet marked "not testable" and the labels with the most "not recorded" cells are a change of their own: what to start recording so the next review can test them. DD-BW2 Part 4 makes the same reservation for "not recorded" lines.</li>
+</ol>
+<p><strong>Re-run.</strong> Repeat the review after four weeks with the same task types and the same definitions, so the two sheets can be compared column by column. Changing a definition between reviews makes the counts incomparable; if you must, relabel the first window with the new one (stated opinion).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.667"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="87" data-rings="4"><path d="M152 56l-32 9-16 7-8 5-5 3-5 8 6 8 12 6 16 5 40 8 56 8 40 3 64 2 112-2M353 64l-25-6-32-7-48-3-56 2-40 6M176 63l-24 6-22 11-7 8 8 8 21 7 24 5 40 6 32 4 64 2 112-1M342 72l-54-11-40-3-40 1-32 4M184 71l-24 9-8 8 9 8 47 10 32 5 32 2 48 2 112-2M328 77l-48-10-32-2-32 1-32 5M232 72l-24 3-16 4-13 9 13 8 41 8 31 3 40 2 120-1M320 83l-48-10-16-1-24 0M240 79l-16 3-14 6 19 8 51 6 40 0 56-4M320 91l-55-11-25-1"/><circle class="ct-spot" cx="240" cy="88" r="9"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="97" data-rings="5"><path d="M432 126l96 3 56-3 32-4 16-4 17-6 13-8 6-8 3-8-8-8-15-5-32-6-32-4-56-1-96 4-40 0-39-4M424 119l80 2 40-1 32-3 24-5 18-8 6-8-3-8-16-8-21-5-24-2-40-2-88 4-64 0-26-3M432 113l64 3 32-1 24-2 16-4 16-5 7-8-4-8-11-4-15-4-25-3-32 0-72 3-72 1-32-4M424 108l88 2 16-2 22-4 11-8-8-8-33-5-24 0-112 3-32 0-32-3M376 98l120 6 16-3 12-5-12-5-16-2-104 6-40-1-32-3"/><circle class="ct-spot" cx="480" cy="96" r="10"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="8" data-rings="0"><circle class="ct-spot" cx="720" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="48" data-rings="2"><path d="M872 64l-8 3-6 5 10 8 20 8 13 8 11 4 24 5 16 2 40-1 32-5 12-5 8-8 6-8 0-8-10-5-16-5-24-3-24-2-32 0-32 1-24 2zM912 71l-4 1 1 8 19 9 8 3 16 2 24 0 16-2 11-4 7-8-7-8-19-3-40-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-bw3-5" data-step="5"><span>Previous · 6 of 9</span><b>The worked example: one review of 53 chats (Academy case)</b></a><a class="snext" href="#read-dd-bw3-7" data-step="7"><span>Next · 8 of 9</span><b>On other tools</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-dd-bw3-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">On other tools</span></span></h2>
+<p>The method in §2 to §7 (a window, a list, four labels, four patterns, counts tested against rules) needs nothing from a vendor except a way to list your chats, and holds for any assistant. The Claude-specific claims are the export and the Claude Code session list in §2 and the export's contents in §5. The equivalents found on the other vendors' own pages, all read 16 November 2026:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Claim in this unit</th>
+<th>Claude</th>
+<th>ChatGPT (OpenAI)</th>
+<th>Gemini (Google)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A full export of your chats (§2, §5)</td>
+<td>Settings &gt; Privacy &gt; "Export data"; conversations and account data, uploaded files excluded; emailed link expires after 24 hours: <a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/9450526-export-your-claude-data"><em>Export your Claude data</em></a></td>
+<td>Settings &gt; Data Controls &gt; "Export data"; the export includes "your chat history in chat.html"; "The link in the email expires after 24 hours"; the article says it applies to Free and Plus users as of 11 April 2023: <a target="_blank" rel="noopener" href="https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data"><em>How do I export my ChatGPT history and data?</em></a> (labelled "Updated over a week ago")</td>
+<td>Google Takeout, "My Activity" &gt; "Gemini Apps", which the page describes as "your Gemini chats, generated media, and uploads"; downloading does not delete the data from Google's servers: <a target="_blank" rel="noopener" href="https://support.google.com/gemini/answer/16920332"><em>Download your Gemini Apps data</em></a></td>
+</tr>
+<tr>
+<td>A local session list with transcripts and a 30-day default retention (§2)</td>
+<td><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/sessions"><em>Manage sessions</em></a></td>
+<td>Not checked for this unit</td>
+<td>Not checked for this unit</td>
+</tr>
+<tr>
+<td>Chat search by topic (§2)</td>
+<td>BW1 §3, read 15 Nov 2026</td>
+<td>Not checked for this unit (BW1 §10 covers ChatGPT's memory and chat history, not search)</td>
+<td>Not checked for this unit (BW1 §10 covers Gemini's reference to past chats, not search)</td>
+</tr>
+<tr>
+<td>Retention, training and memory settings that govern a chat used for labelling (§5)</td>
+<td>BW10 §6, read 16 Nov 2026</td>
+<td>BW10 §9</td>
+<td>BW10 §9</td>
+</tr>
+<tr>
+<td>Large-scale classification of chats by task (§1, §2)</td>
+<td>Clio, on Claude.ai (Tamkin et al., preprint)</td>
+<td>Chatterji et al., on ChatGPT (working paper)</td>
+<td>No equivalent read for this unit</td>
+</tr>
+</tbody>
+</table></div>
+<p>Everything else in this unit (the labels and their limits, the patterns, the rule tests, the ranking, the privacy rules) is a method that needs no product.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.111"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="69" data-rings="5"><path d="M336 47l-40 6-49 11-95 14-42 10-14 8 1 8 19 8 36 7 56 5 72 3 104-1 72-4 56-6 24-5 23-7 21-8 12-8 1-8-4-8-10-8-11-5-24-7-32-5-40-4-48-1-48 1zM352 55l-32 4-60 13-68 10-24 6-12 8 8 8 28 6 32 5 48 2 64 1 64-1 48-4 40-6 12-3 20-8 10-8 5-8-3-8-16-8-36-7-40-4-48 0zM344 64l-133 24-9 8 20 8 26 4 40 2 48 1 56-1 40-3 20-3 28-8 10-8 5-8-8-8-15-5-24-4-24-2-32 0zM344 71l-92 17-4 8 24 5 24 3 72 0 48-3 25-5 13-8 3-8-19-8-22-3-40 0zM344 80l-16 4-27 4 11 6 5 2 35 1 31-1 17-4 11-4-5-8-6-1-32-1z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="27" data-rings="2"><path d="M872 80l-104 1-40 3-32 4-7 8 33 8 54 6 64 4 32 0 24-1 32-4 22-5 20-8-3-8-15-4-24-3-24-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-bw3-6" data-step="6"><span>Previous · 7 of 9</span><b>From counts to ten changes</b></a><a class="snext" href="#read-dd-bw3-8" data-step="8"><span>Next · 9 of 9</span><b>A classification sheet, a gap report, a sixty-minute review, and changes for any project</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-dd-bw3-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A classification sheet, a gap report, a sixty-minute review, and changes for any project</span></span></h2>
+<p>Four parts. <strong>Part A</strong> is the classification sheet: its label definitions, the sheet on the Academy case as far as the case file holds it, the sheet filled in full on a neutral example whose content is invented and labelled so, and the blank template. <strong>Part B</strong> is the gap report, in the same three forms, set beside DD-BW2's case report line by line. <strong>Part C</strong> is the review as a sixty-minute procedure. <strong>Part D</strong> restates, for any project, the ten changes the Academy record supports, and says why the case's own review list is not among them. Product facts as read 16 November 2026; re-read the export and session pages on the day you run the review.</p>
+<h3>Part A · The classification sheet</h3>
+<p><strong>The definitions, written once at the top of the sheet</strong> (from §2; stated opinion):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Value</th>
+<th>Defined as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#</td>
+<td>1, 2, 3 …</td>
+<td>The chat's number in order of its first message</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Day</td>
+<td>The date of the first message</td>
+</tr>
+<tr>
+<td>Task type</td>
+<td>One of your five to nine types, or "other"</td>
+<td>The artefact the first ask produces, named as in your BW2 routing table</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>The model, or "not recorded"</td>
+<td>What ran, read from a record; "A → B" for a switch</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>The level, or "not recorded"</td>
+<td>As set, read from a record</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>Used as is · used after edits · redone · abandoned · not seen</td>
+<td>What happened to the output; "not seen" when the record does not show it</td>
+</tr>
+<tr>
+<td>My messages</td>
+<td>Count</td>
+<td>Your messages in the chat, the first included</td>
+</tr>
+<tr>
+<td>Corrections</td>
+<td>Count</td>
+<td>Your messages that fix, reject or narrow an output</td>
+</tr>
+<tr>
+<td>Two tasks</td>
+<td>The second task's type, or blank</td>
+<td>A later ask in the chat of another task type</td>
+</tr>
+<tr>
+<td>Routing</td>
+<td>Yes or blank</td>
+<td>Model or effort differs from your routing table's row for the task type</td>
+</tr>
+<tr>
+<td>Procedure</td>
+<td>Yes or blank, with which</td>
+<td>A procedure typed again, or an expected skill that did not load</td>
+</tr>
+<tr>
+<td>Repeat research</td>
+<td>The number of the earlier chat, or blank</td>
+<td>The chat researched a question an earlier chat in the window answered</td>
+</tr>
+<tr>
+<td>Other marks</td>
+<td>Free text, a few words</td>
+<td>Any rule-test mark from §4 (a file pasted twice, no check named, a check in the writing chat)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>On the Academy case.</strong> The case file holds the review's totals, not its rows (Academy case file §8):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Academy case (anecdote)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Window</td>
+<td>Six days; the project's whole history at the time</td>
+</tr>
+<tr>
+<td>Chats</td>
+<td>53</td>
+</tr>
+<tr>
+<td>Task type</td>
+<td>Labelled by hand; counts by type not in the case file</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>Read from commit trailers: Opus 31, Fable 18, both 4</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>Not among the review's labels</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>"Accepted", a proxy; 14 of 53 endings not seen</td>
+</tr>
+<tr>
+<td>My messages, corrections</td>
+<td>Turns counted; counts not in the case file</td>
+</tr>
+<tr>
+<td>Extra columns</td>
+<td>Not in the case file</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>On a neutral example</strong> (neutral example, invented). An analyst writing a quarterly market report reviews two weeks of chats, sixteen in all. Their routing table, built from BW2's template, puts extraction, summaries and code changes on the mid tier and drafts, critiques and research on the large tier; they have one skill, for extraction. Every row below is invented to show the sheet at work; none is evidence.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Date</th>
+<th>Task type</th>
+<th>Model</th>
+<th>Effort</th>
+<th>Outcome</th>
+<th>My msgs</th>
+<th>Corr.</th>
+<th>Two tasks</th>
+<th>Routing</th>
+<th>Procedure</th>
+<th>Repeat research</th>
+<th>Other marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>W1 Mon</td>
+<td>Research with search</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used after edits</td>
+<td>3</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>no check named</td>
+</tr>
+<tr>
+<td>2</td>
+<td>W1 Mon</td>
+<td>Summary</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used as is</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>W1 Tue</td>
+<td>Long draft</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used after edits</td>
+<td>6</td>
+<td>3</td>
+<td>Summary</td>
+<td></td>
+<td></td>
+<td></td>
+<td>data file pasted twice</td>
+</tr>
+<tr>
+<td>4</td>
+<td>W1 Tue</td>
+<td>Extraction</td>
+<td>mid</td>
+<td>not recorded</td>
+<td>redone</td>
+<td>4</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td>skill did not load</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>W1 Wed</td>
+<td>Extraction</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used as is</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>W1 Wed</td>
+<td>Critique</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used after edits</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>fresh chat</td>
+</tr>
+<tr>
+<td>7</td>
+<td>W1 Thu</td>
+<td>Research with search</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used after edits</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>W1 Fri</td>
+<td>Summary</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used as is</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>W2 Mon</td>
+<td>Long draft</td>
+<td>large</td>
+<td>not recorded</td>
+<td>abandoned</td>
+<td>5</td>
+<td>4</td>
+<td>Critique</td>
+<td></td>
+<td></td>
+<td></td>
+<td>check in the writing chat</td>
+</tr>
+<tr>
+<td>10</td>
+<td>W2 Mon</td>
+<td>Extraction</td>
+<td>mid</td>
+<td>not recorded</td>
+<td>used as is</td>
+<td>3</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td>skill did not load</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>W2 Tue</td>
+<td>Code change</td>
+<td>mid</td>
+<td>not recorded</td>
+<td>used as is</td>
+<td>2</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>W2 Wed</td>
+<td>Critique</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used after edits</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>fresh chat</td>
+</tr>
+<tr>
+<td>13</td>
+<td>W2 Wed</td>
+<td>Research with search</td>
+<td>large</td>
+<td>not recorded</td>
+<td>not seen</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>no check named</td>
+</tr>
+<tr>
+<td>14</td>
+<td>W2 Thu</td>
+<td>Summary</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used as is</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>W2 Thu</td>
+<td>Long draft</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used after edits</td>
+<td>4</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>data file pasted twice</td>
+</tr>
+<tr>
+<td>16</td>
+<td>W2 Fri</td>
+<td>Extraction</td>
+<td>large</td>
+<td>not recorded</td>
+<td>used as is</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+<td>yes</td>
+<td>skill did not load</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Tallies</strong> (arithmetic on the invented rows): task types: extraction 4, research 3, summary 3, long draft 3, critique 2, code change 1 (16). Model: large 13, mid 3; no switches; effort not recorded in 16 of 16. Outcome: used as is 7, used after edits 6, redone 1, abandoned 1, not seen 1. My messages: 41 in all, median 2. Corrections: 15 in all; 4 chats with two or more (3, 4, 9, 15) hold 12 of the 15. Two tasks: 2. Routing: 5. Skill expected in 4 extraction chats, loaded in 1. Repeat research: 1 question. Relabel check: chats 2, 6, 9, 11 and 14, drawn by number, got the same task type on relabelling, 5 of 5.</p>
+<p><strong>Template.</strong> Copy the definitions table above to the top of your sheet, then one row per chat:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Date</th>
+<th>Task type</th>
+<th>Model</th>
+<th>Effort</th>
+<th>Outcome</th>
+<th>My msgs</th>
+<th>Corr.</th>
+<th>Two tasks</th>
+<th>Routing</th>
+<th>Procedure</th>
+<th>Repeat research</th>
+<th>Other marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[<em>1, in order of first message</em>]</td>
+<td>[<em>date of the first message</em>]</td>
+<td>[<em>one of your types, defined at the top</em>]</td>
+<td>[<em>the model that ran, from a record; "not recorded" if none</em>]</td>
+<td>[<em>the level, from a record; "not recorded" if none</em>]</td>
+<td>[<em>one of the five values</em>]</td>
+<td>[<em>your messages, the first included</em>]</td>
+<td>[<em>your messages that fix, reject or narrow</em>]</td>
+<td>[<em>the second task's type, or blank</em>]</td>
+<td>[<em>yes if the model or effort differs from your routing row</em>]</td>
+<td>[<em>the procedure retyped, or the skill that did not load</em>]</td>
+<td>[<em>the number of the earlier chat that answered it</em>]</td>
+<td>[<em>a §4 mark in a few words; no names, no quotations</em>]</td>
+</tr>
+</tbody>
+</table></div>
+<p>Under the rows: <strong>Tallies</strong> [<em>counts per column, as in the example</em>]; <strong>Relabel check</strong> [<em>the five chats drawn by number, and how many kept their label</em>]; <strong>Window</strong> [<em>first and last date; whole history, or the share of chats sampled and how they were drawn</em>].</p>
+<h3>Part B · The gap report</h3>
+<p>Five sections. Section 1 sets your record beside DD-BW2's case report (Deliverable Part 1) line by line; Section 4 uses DD-BW2 Part 4's form for the ranked changes, with a "worked if" column added (§7).</p>
+<p><strong>On the Academy case</strong> (Academy case file §8; anecdote). The case file holds what follows, and no more.</p>
+<ol>
+<li><strong>Record.</strong> Window: six days, the project's whole history at the time. Chats: 53. By model: Opus 31, Fable 18, both 4, from commit trailers. By task type, by outcome, by turns: labelled by hand, counts not in the case file. Outcome: a proxy; 14 of 53 endings not seen. <em>Beside DD-BW2 Part 1:</em> line H ("53 chats in six days at the review: 31 Opus, 18 Fable, 4 both") holds the same counts; line B records effort as not recorded (case file §9).</li>
+<li><strong>Patterns.</strong> Not in the case file.</li>
+<li><strong>Rule tests.</strong> Not in the case file.</li>
+<li><strong>Ten changes.</strong> Ten, ranked, each tied to a count; the list is not in the case file.</li>
+<li><strong>Privacy.</strong> The case file records the review as counts and a description of its method, with no chat quoted; the file was compiled "with private details removed" (header).</li>
+</ol>
+<p><strong>On the neutral example</strong> (neutral example, invented).</p>
+<p><strong>Gap report · two weeks, 16 chats · compiled at the end of week 2.</strong> One person's record; an anecdote, compared only with their own next review.</p>
+<p><strong>1 · Record</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Value</th>
+<th>Beside DD-BW2 Part 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Window</td>
+<td>Two weeks; every chat in it</td>
+<td>A: period</td>
+</tr>
+<tr>
+<td>Chats, by task type</td>
+<td>16: extraction 4, research 3, summary 3, long draft 3, critique 2, code change 1</td>
+<td>A: outputs</td>
+</tr>
+<tr>
+<td>By model</td>
+<td>Large 13, mid 3; no switches</td>
+<td>B: writer model; H: chats by model</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>Not recorded, 16 of 16</td>
+<td>B: effort</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>Used as is 7, after edits 6, redone 1, abandoned 1, not seen 1</td>
+<td>No line; nearest is C, the check</td>
+</tr>
+<tr>
+<td>Messages and corrections</td>
+<td>41 messages, median 2 a chat; 15 corrections, 12 of them in 4 chats</td>
+<td>H: cost</td>
+</tr>
+<tr>
+<td>Not recorded</td>
+<td>Effort and start time, 16 of 16 chats</td>
+<td>I: limits</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>2 · Patterns</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Count</th>
+<th>Chats</th>
+<th>Unit with the fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Badly put: chats with two or more corrections</td>
+<td>4 chats, 12 of 15 corrections</td>
+<td>3, 4, 9, 15</td>
+<td>BW3 §3, §6</td>
+</tr>
+<tr>
+<td>Badly put: two tasks in one chat</td>
+<td>2</td>
+<td>3, 9</td>
+<td>BW3 §6</td>
+</tr>
+<tr>
+<td>Wrong tool: off the routing table</td>
+<td>5</td>
+<td>2, 5, 8, 14, 16</td>
+<td>BW2 Deliverable</td>
+</tr>
+<tr>
+<td>By hand: extraction skill did not load</td>
+<td>3 of 4 extraction chats</td>
+<td>4, 10, 16</td>
+<td>BW8 §3, §4</td>
+</tr>
+<tr>
+<td>Paid twice: question researched again</td>
+<td>1 question</td>
+<td>7 (repeats 1)</td>
+<td>BW10 rule 6</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>3 · Rule tests</strong> (verdicts from §4; grades as BW10 and DD-BW1 give them)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Verdict</th>
+<th>Rule</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BW10 1</td>
+<td>Broken, 2 (chats 3, 9)</td>
+<td>DD-BW1 1</td>
+<td>Broken, 2 (chats 1, 13)</td>
+</tr>
+<tr>
+<td>BW10 2</td>
+<td>Not testable: no times recorded</td>
+<td>DD-BW1 2</td>
+<td>Not marked on this sheet</td>
+</tr>
+<tr>
+<td>BW10 3</td>
+<td>Model kept; effort not recorded</td>
+<td>DD-BW1 3</td>
+<td>Broken, 1 (chat 9); kept in chats 6, 12</td>
+</tr>
+<tr>
+<td>BW10 4</td>
+<td>Broken, 2 (chats 3, 15)</td>
+<td>DD-BW1 4</td>
+<td>Not testable</td>
+</tr>
+<tr>
+<td>BW10 5</td>
+<td>Not counted</td>
+<td>DD-BW1 5</td>
+<td>Broken, 2 (chats 3, 9)</td>
+</tr>
+<tr>
+<td>BW10 6</td>
+<td>Broken, 1 (chat 7)</td>
+<td>DD-BW1 6</td>
+<td>Kept: research ran only on research tasks</td>
+</tr>
+<tr>
+<td>BW10 7</td>
+<td>Not testable</td>
+<td>DD-BW1 7</td>
+<td>Did not arise</td>
+</tr>
+<tr>
+<td>BW10 8</td>
+<td>Not testable: the list shows no project</td>
+<td>DD-BW1 8</td>
+<td>Broken, 1 (chat 7; as BW10 6)</td>
+</tr>
+<tr>
+<td>BW10 9</td>
+<td>Did not arise</td>
+<td>DD-BW1 9</td>
+<td>Not testable</td>
+</tr>
+<tr>
+<td>BW10 10</td>
+<td>Not testable</td>
+<td>DD-BW1 10</td>
+<td>First half kept; effort not recorded</td>
+</tr>
+<tr>
+<td>BW10 11</td>
+<td>Not testable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BW10 12</td>
+<td>Not testable</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>4 · Changes, ranked</strong> (DD-BW2 Part 2's rule: the count behind each, largest first; ties to the change whose failure reached a finished output, then to the one with more corrections in the chats behind it, this unit's addition; a count of one is a flag)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Change</th>
+<th>Count behind it</th>
+<th>Unit that teaches it</th>
+<th>Grade of the rule</th>
+<th>Worked if, at the next review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Open summaries and extractions on the mid tier my routing table names, and write the tier in the brief's first line</td>
+<td>5 of 16 chats off the table (Section 2)</td>
+<td>BW2, Deliverable Part 1</td>
+<td>Graded row by row in BW2 Part 1 (vendor documentation and benchmarks); its escalation rule documented practice</td>
+<td>Routing column at 0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Rewrite my long-draft brief from BW3's template 2, with an output contract and done-when lines</td>
+<td>4 chats hold 12 of 15 corrections; 3 of the 4 are long drafts</td>
+<td>BW3 §3; Deliverable, template 2</td>
+<td>Documented practice, vendor (BW3 §3)</td>
+<td>No long-draft chat with more than one correction</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Rewrite the extraction skill's description, add chats 4, 10 and 16 as should-trigger rows to its test set, and rerun the test</td>
+<td>Skill loaded in 1 of 4 chats that needed it</td>
+<td>BW8 §3, §4</td>
+<td>Documented practice (BW8 §4)</td>
+<td>Skill loads in every extraction chat</td>
+</tr>
+<tr>
+<td>4</td>
+<td>One task type per chat; a second task opens a new chat</td>
+<td>2 chats, 7 corrections between them</td>
+<td>BW3 §6; BW10 rule 1</td>
+<td>Documented practice</td>
+<td>Two-tasks column at 0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Keep the data file where the chat reads it by name, once</td>
+<td>2 chats, 5 corrections between them</td>
+<td>BW10 rule 4</td>
+<td>Documented practice</td>
+<td>No file pasted twice</td>
+</tr>
+<tr>
+<td>6</td>
+<td>End every research brief with its check: the sources to open and the sample to draw</td>
+<td>2 chats, 1 correction between them</td>
+<td>DD-BW1 rule 1; BW6 §5</td>
+<td>Stated opinion; one supporting mechanism measured on GPT-4 in 2023</td>
+<td>Every research chat names its check</td>
+</tr>
+<tr>
+<td>7</td>
+<td>None: no other pattern has a count of two</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Log model, effort and start time for every chat in one line</td>
+<td>Effort and time missing in 16 of 16 chats</td>
+<td>BW7 §7</td>
+<td>Stated opinion (BW7 §7)</td>
+<td>BW10 rules 2 and 3 testable</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Flagged, not ranked (count of one):</em> one question researched twice (chat 7; BW10 rule 6); one critique asked in the writing chat (chat 9; DD-BW1 rule 3); one outcome not seen (chat 13).</p>
+<p><strong>5 · Privacy.</strong> Export deleted after labelling; the sheet holds no names and no quotations; the patterns are described by kind.</p>
+<p><strong>Template.</strong></p>
+<p><strong>[Your project] · gap report · [first date] to [last date], [n] chats · compiled [date].</strong> One person's record; compared only with your own next review.</p>
+<p><strong>1 · Record</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Value</th>
+<th>Beside DD-BW2 Part 1 (or your own Part 3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Window</td>
+<td>[<em>dates; whole history, or the sample and how it was drawn</em>]</td>
+<td>A: period</td>
+</tr>
+<tr>
+<td>Chats, by task type</td>
+<td>[<em>total, then the count per type</em>]</td>
+<td>A: outputs</td>
+</tr>
+<tr>
+<td>By model</td>
+<td>[<em>count per model, and the switches</em>]</td>
+<td>B; H</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>[<em>count per level, or "not recorded, n of n"</em>]</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>[<em>count per value; "not seen" kept as its own count</em>]</td>
+<td>No line; nearest is C</td>
+</tr>
+<tr>
+<td>Messages and corrections</td>
+<td>[<em>total and median messages; total corrections, and the share in the chats with two or more</em>]</td>
+<td>H</td>
+</tr>
+<tr>
+<td>Not recorded</td>
+<td>[<em>each label or rule your record could not show, with its count</em>]</td>
+<td>I</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>2 · Patterns</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Count</th>
+<th>Chats</th>
+<th>Unit with the fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Badly put</td>
+<td>[<em>chats with two or more corrections, and their share of all corrections; chats with two tasks</em>]</td>
+<td>[<em>their numbers</em>]</td>
+<td>[<em>BW3 section</em>]</td>
+</tr>
+<tr>
+<td>Wrong tool</td>
+<td>[<em>chats off your routing table, by task type</em>]</td>
+<td>[<em>numbers</em>]</td>
+<td>[<em>BW2 row</em>]</td>
+</tr>
+<tr>
+<td>By hand</td>
+<td>[<em>procedures typed three or more times; skill loads against chats that needed the skill</em>]</td>
+<td>[<em>numbers</em>]</td>
+<td>[<em>BW8 §4 or §7</em>]</td>
+</tr>
+<tr>
+<td>Paid twice</td>
+<td>[<em>questions researched in more than one chat</em>]</td>
+<td>[<em>numbers</em>]</td>
+<td>[<em>BW10 rule 6</em>]</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>3 · Rule tests.</strong> [<em>BW10 rules 1 to 12 and DD-BW1 rules 1 to 10, each with one verdict from §4: kept, broken n (with the chats), did not arise, not testable; keep each rule's grade from its own table</em>]</p>
+<p><strong>4 · Changes, ranked</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Change</th>
+<th>Count behind it</th>
+<th>Unit that teaches it</th>
+<th>Grade of the rule</th>
+<th>Worked if, at the next review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 to 9</td>
+<td>[<em>the change, written so next month can check it</em>]</td>
+<td>[<em>the count, and the Section 2 or 3 line it comes from; a count of one goes under "Flagged"</em>]</td>
+<td>[<em>unit and section</em>]</td>
+<td>[<em>as that unit grades it</em>]</td>
+<td>[<em>the count at the next review that shows it worked</em>]</td>
+</tr>
+<tr>
+<td>10</td>
+<td>[<em>what to start recording, from Section 1's "not recorded" line</em>]</td>
+<td>[<em>the number of cells it would fill</em>]</td>
+<td>[<em>BW7 §7, or the unit for that field</em>]</td>
+<td>[<em>as that unit grades it</em>]</td>
+<td>[<em>the rules that become testable</em>]</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Flagged, not ranked:</em> [<em>each pattern with a count of one, with its chat and rule</em>]</p>
+<p><strong>5 · Privacy.</strong> [<em>export deleted on (date); sheet checked for names and quotations; who, if anyone, has seen this report</em>]</p>
+<h3>Part C · The review in sixty minutes</h3>
+<p><strong>The day before (not counted).</strong> Request the export on claude.ai (Settings &gt; Privacy &gt; "Export data"); the link comes by email and expires 24 hours after it is created (vendor, read 16 Nov 2026). For Claude Code, nothing to request: open <code>/resume</code>, and widen with <code>Ctrl+A</code>. Have your BW2 routing table, BW10's Deliverable Part 1 and DD-BW1's Deliverable Part 2 open.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Minutes</th>
+<th>Step</th>
+<th>Done when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td><strong>Set up.</strong> Choose the window by §2's rules. Copy Part A's definitions to the top of a new sheet. Write your task types, one line each, from your routing table.</td>
+<td>The window's dates and the task types are written down</td>
+</tr>
+<tr>
+<td>5–35</td>
+<td><strong>List and label.</strong> One row per chat, oldest first: date, task type, model, effort, outcome, messages, corrections, then the four extra columns and any §4 mark. Thirty seconds to a minute a chat (an estimate); at more than thirty chats, keep to thirty seconds. Write "not recorded" or "not seen" rather than guess. At more than about sixty chats, draw a sample by number instead and record that you did.</td>
+<td>Every chat in the window has a row; both ends of the list checked</td>
+</tr>
+<tr>
+<td>35–38</td>
+<td><strong>Relabel check.</strong> Draw five chats by number, cover their task type, label them again, count matches.</td>
+<td>The match count is written under the sheet</td>
+</tr>
+<tr>
+<td>38–45</td>
+<td><strong>Tally.</strong> Count each column; find the chats with two or more corrections and their share of all corrections. Fill gap-report Sections 1 and 2.</td>
+<td>Sections 1 and 2 have a number in every cell or "not recorded"</td>
+</tr>
+<tr>
+<td>45–50</td>
+<td><strong>Test the rules.</strong> For each of BW10's twelve and DD-BW1's ten, one verdict from §4. Fill Section 3.</td>
+<td>22 verdicts</td>
+</tr>
+<tr>
+<td>50–57</td>
+<td><strong>Rank.</strong> Each pattern or broken rule with a count of two or more becomes a change; rank by count, largest first; write each with its unit, grade and "worked if". Put the record change tenth. Counts of one go under "Flagged".</td>
+<td>Section 4 filled; each change checkable next month</td>
+</tr>
+<tr>
+<td>57–60</td>
+<td><strong>Close.</strong> Delete the export. Read the sheet once for names and quotations, and remove them. Put the next review's date in your calendar, four weeks out, with the same task types.</td>
+<td>Section 5 filled; the next date set</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="viz viz-flow"><div class="viz-scroll"><svg viewBox="0 0 694 152" width="694" height="152" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="flow"><g data-box=""><rect class="viz-node viz-t1" x="8" y="8" width="150" height="55" rx="2"/><text class="viz-nodelabel" x="20.0" y="31.3" text-anchor="start">Set up</text><text class="viz-note" x="20.0" y="48.3" text-anchor="start">0–5 min</text></g><path class="viz-arrow" d="M162,35.5 L178,35.5"/><g data-box=""><rect class="viz-node viz-t1" x="184" y="8" width="150" height="55" rx="2"/><text class="viz-nodelabel" x="196.0" y="31.3" text-anchor="start">List and label</text><text class="viz-note" x="196.0" y="48.3" text-anchor="start">5–35 min</text></g><path class="viz-arrow" d="M338,35.5 L354,35.5"/><g data-box=""><rect class="viz-node viz-t1" x="360" y="8" width="150" height="55" rx="2"/><text class="viz-nodelabel" x="372.0" y="31.3" text-anchor="start">Relabel check</text><text class="viz-note" x="372.0" y="48.3" text-anchor="start">35–38 min</text></g><path class="viz-arrow" d="M514,35.5 L530,35.5"/><g data-box=""><rect class="viz-node viz-t1" x="536" y="8" width="150" height="55" rx="2"/><text class="viz-nodelabel" x="548.0" y="31.3" text-anchor="start">Tally</text><text class="viz-note" x="548.0" y="48.3" text-anchor="start">38–45 min</text></g><path class="viz-arrow" d="M611.0,65 L611.0,76.0 L83.0,76.0 L83.0,85"/><g data-box=""><rect class="viz-node viz-t1" x="8" y="89" width="150" height="55" rx="2"/><text class="viz-nodelabel" x="20.0" y="112.3" text-anchor="start">Test the rules</text><text class="viz-note" x="20.0" y="129.3" text-anchor="start">45–50 min</text></g><path class="viz-arrow" d="M162,116.5 L178,116.5"/><g data-box=""><rect class="viz-node viz-t1" x="184" y="89" width="150" height="55" rx="2"/><text class="viz-nodelabel" x="196.0" y="112.3" text-anchor="start">Rank</text><text class="viz-note" x="196.0" y="129.3" text-anchor="start">50–57 min</text></g><path class="viz-arrow" d="M338,116.5 L354,116.5"/><g data-box=""><rect class="viz-node viz-t1" x="360" y="89" width="150" height="55" rx="2"/><text class="viz-nodelabel" x="372.0" y="112.3" text-anchor="start">Close</text><text class="viz-note" x="372.0" y="129.3" text-anchor="start">57–60 min</text></g><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>The review as a sixty-minute procedure, the table in Part C of this unit's Deliverable. The minutes are this unit's allocation (stated opinion), not a measure.</figcaption></figure>
+<h3>Part D · Changes for any project</h3>
+<p>The case's review produced ten ranked changes (Academy case file §8), but the case file does not hold them, so they cannot be restated here. What the case does hold, in a filed unit of this course, is the ten changes its project record supports (DD-BW2, Deliverable Part 2), ranked by the same rule. Below, each is restated for any project, with the count on your own sheet or records that would put it on your list. They come from the case's project records (its checks, audits and failures); none comes from its chats. The grade is the one DD-BW2 gives, and the case adds nothing to it.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Change, for any project</th>
+<th>It belongs on your list when</th>
+<th>Unit that teaches it</th>
+<th>Grade, as DD-BW2 Part 2 gives it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Check every output that matters in a context that did not write it, and record for each output whether it was checked, by which model, with what result</td>
+<td>Your sheet shows checks asked for in the writing chat, or outputs used with no check</td>
+<td>BW6 §4; BW2 §5</td>
+<td>Stated opinion on measured self-preference evidence (BW2 §5); documented practice, vendor (BW6 §4; DD-BW1 rule 3)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Put "qualifiers and figures the source does not carry" first in every checking brief, and have the checker quote the source's sentence beside each claim it passes</td>
+<td>Your checks find claims stretched beyond their source</td>
+<td>BW6 §2, §3</td>
+<td>Stated opinion, built on measured citation-error studies (BW6 §2)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>When one fact turns out stale, re-check every fact read from the same page or version, across everything you produced from it</td>
+<td>A stale fact appears in your record</td>
+<td>BW6 §5; BW1 §4</td>
+<td>Stated opinion (BW6 §5)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Record what happens to each finding of a check: applied, applied as corrected, rejected, with the reason</td>
+<td>Your record cannot say how many findings were wrong</td>
+<td>BW6 §6</td>
+<td>Stated opinion, built on vendor guidance (BW6 §4, §6)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Check every chart, table or figure against the text it draws from before handing in, and fix it until it passes</td>
+<td>A drawn or computed part of your output carried a number the text did not</td>
+<td>BW7 §6; the course's shared preamble</td>
+<td>Stated opinion, adapted from documented practice (BW7 §6)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Hand work between steps as files, so a lost session loses nothing</td>
+<td>Your record shows a session or result lost, or a result that reached a file only by copying from a chat</td>
+<td>BW7 §2; BW9 §9</td>
+<td>Stated opinion, on measured and vendor sources (BW7 §2)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Check that each deliverable exists and meets its done-when lines before anything is built on it</td>
+<td>Your sheet shows outputs redone because a part was missing</td>
+<td>BW5, Deliverable 1d; BW3</td>
+<td>Documented practice (DD-BW1 rule 2)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Log the model and version that actually ran, and keep what each run read</td>
+<td>Your model column has "not recorded" cells, or what ran differed from what you chose</td>
+<td>BW7 §7; BW2 §7</td>
+<td>Stated opinion (BW7 §7)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Run a script that checks published output for private terms before every publish</td>
+<td>Anything you publish is built from material that holds private terms</td>
+<td>BW4 §7; BW10 §7</td>
+<td>Stated opinion (BW4 §7)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Record hours and usage per output, so every other change can be weighed against its cost</td>
+<td>Your gap report's "not recorded" line includes time or usage</td>
+<td>BW10 §1, §4; BW7 §7</td>
+<td>Stated opinion (DD-BW2), on BW10 §1</td>
+</tr>
+</tbody>
+</table></div>
+<p>How the two lists meet: Part B's ranked changes come from your chats, Part D's from a project's record of its outputs. Where one change appears in both, as a record change does in the neutral example (Part B's tenth; Part D's eighth), rank it by the count on your own sheet, the only count about your work.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.556"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="118" data-rings="5"><path d="M192 66l-32-1-48 3-16 2-16 5-7 5-4 8 3 8 8 7 8 4 8 3 16 3 16 1 54-10 18-1M144 72l-40 3-14 5-6 8 4 7 8 6 7 3 17 4 16-1 56-12 16 0M192 73l-32-2-16 1M192 78l-40-3-32 2-16 3-8 8 6 8 2 1 8 4 16 2 16-2 24-4 24-7 8 0M128 80l-8 1-8 3-5 4 8 8 5 1 8 2 16-2 34-9-11-8-15-1zM128 86l-7 2 7 4 8 1 24-5-8-3-8 0z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="14" data-rings="0"><circle class="ct-spot" cx="168" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="18" data-rings="0"><circle class="ct-spot" cx="208" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="68" data-rings="3"><path d="M216 64l-24 2M264 60l-16-1-16 2-16 3M208 95l8 3 13 14M272 67l-16-2-24 1-40 7M232 71l-16 3-24 4M200 90l16 1 16 5M264 70l-16-1-16 2M216 80l-1 0 14 8 11 5M264 74l-16 0-8 0-24 6M240 80l16 18M256 78l-16 2"/><circle class="ct-spot" cx="240" cy="80" r="6"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="119" data-rings="5"><path d="M200 103l4 1 12 12 8 4 16 4 24 0 24-5 46-15 50-5M304 66l-40-6M229 112l11 4 8 2 24-1 64-20 32-3M312 74l-8 0-32-7M232 96l3 8 5 5 8 3 16 1 24-6 40-15M320 81l-8 0-8-1-24-7-16-3M240 93l4 3 2 8 10 3 16 0 12-3 22-8 5-8-31-10-16-4M256 98l8 5 8-1 21-6 1-8-20-8-18-2M264 85l-5 3 5 4 8 2 5-6z"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="17" data-rings="0"><circle class="ct-spot" cx="312" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="49" data-rings="2"><path d="M376 74l-10-2-14-6-16-3-32 3M374 80l-30-9-8 0-24 3M328 92l25-4-1-8-16-1-16 2"/><circle class="ct-spot" cx="344" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="35" data-rings="1"><path d="M384 99l24-5M415 80l-15-3-24-3M368 94l28-6-22-8"/><circle class="ct-spot" cx="376" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶9" data-words="18" data-rings="0"><path d="M408 94l13-6-6-8"/><circle class="ct-spot" cx="408" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶10" data-words="7" data-rings="0"><circle class="ct-spot" cx="448" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶11" data-words="27" data-rings="1"><path d="M472 83l-5 5 5 3 8 2 8-2 3-3-3-3-8-4z"/></g><g class="ct-rise ct-t5" data-label="¶12" data-words="3" data-rings="0"><circle class="ct-spot" cx="512" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶13" data-words="3" data-rings="0"><circle class="ct-spot" cx="552" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶14" data-words="14" data-rings="0"><path d="M589 80l2 16"/><circle class="ct-spot" cx="584" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶15" data-words="46" data-rings="2"><path d="M616 77l-27 3M591 96l-2 8 11 5 8 1 16-2 16-5 24-14M616 86l-8 2-2 8 2 2 8 3 8-2 10-3 9-8M632 84l-16 2"/><circle class="ct-spot" cx="616" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶16" data-words="33" data-rings="1"><path d="M640 71l-24 6M664 89l24-5M648 71l-8 0M643 88l-3-3-8-1"/><circle class="ct-spot" cx="648" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶17" data-words="21" data-rings="0"><path d="M688 84l10-4-10-7-40-2"/><circle class="ct-spot" cx="688" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶18" data-words="1" data-rings="0"><circle class="ct-spot" cx="720" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶19" data-words="26" data-rings="1"><path d="M744 86l-1 2 1 2 8 3 8-3 3-2-11-4z"/></g><g class="ct-rise ct-t5" data-label="¶20" data-words="3" data-rings="0"><circle class="ct-spot" cx="792" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶21" data-words="3" data-rings="0"><circle class="ct-spot" cx="824" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶22" data-words="42" data-rings="1"><path d="M832 88l-7 8 7 4 32 7 8 0 12-3 0-8-20-10-16-1z"/></g><g class="ct-rise ct-t5" data-label="¶23" data-words="4" data-rings="0"><circle class="ct-spot" cx="888" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶24" data-words="17" data-rings="0"><path d="M932 80l4 3 7 13"/><circle class="ct-spot" cx="928" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶25" data-words="22" data-rings="1"><path d="M943 96l9 6 8 3 8 2 88 7M962 96l6 2 72 9"/><circle class="ct-spot" cx="960" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶26" data-words="63" data-rings="2"><path d="M952 74l-20 6M1000 61l-25 11-14 8-3 8 4 8M988 72l-15 8-2 8 5 4 8 3 24 4M1000 72l-16 8-1 8 17 6M995 80l1 8 12 2"/><circle class="ct-spot" cx="992" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶27" data-words="108" data-rings="4"><path d="M1000 55l-48 19M1072 60l-16-7-16-3-16 0-16 2-8 3M1064 66l-8-5-8-3-8-1-16-1-16 3-8 2M1008 64l-20 8M1008 99l40 3M1073 80l-17-11-9-5-7-2-16-1-16 3M1000 94l56 4M1050 72l-10-5-16-2-8 1-16 6M1016 71l-21 9M1008 90l8 0 36-2-4-5-1-3-11-8-12-2-8 1"/><circle class="ct-spot" cx="1032" cy="80" r="7"/></g><g class="ct-rise ct-t5" data-label="¶28" data-words="58" data-rings="2"><path d="M1056 114l16-1 16-4 5-5 9-16-3-8-3-3-24-17M1040 107l24 1 8-1 8-3 7-8 4-8-6-8-21-14M1048 102l16 0 8-2 5-4 4-8-8-8M1056 98l9-2 6-8-21-16"/><circle class="ct-spot" cx="1064" cy="96" r="5"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-dd-bw3-7" data-step="7"><span>Previous · 8 of 9</span><b>On other tools</b></a><a class="snext send" href="#read-dd-bw3-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-dd-bw3-sources"><summary><span class="at" id="read-dd-bw3-9">Sources</span><span class="an">9</span></summary><div class="accb">
+<p>Web sources read on 16 November 2026 at the address a search returned; product facts carry that date.</p>
+<ul>
+<li>Claude Help Center. <em>Export your Claude data</em>. Labelled "Updated this week" (vendor). https://<wbr>support<wbr>.claude<wbr>.com/<wbr>en/<wbr>articles/<wbr>9450526-export-your-claude-data</li>
+<li>Anthropic. <em>Manage sessions</em>. Claude Code documentation (vendor). https://<wbr>code<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>sessions</li>
+<li>OpenAI Help Center. <em>How do I export my ChatGPT history and data?</em> Labelled "Updated over a week ago" (vendor). https://<wbr>help<wbr>.openai<wbr>.com/<wbr>en/<wbr>articles/<wbr>7260999-how-do-i-export-my-chatgpt-history-and-data</li>
+<li>Google. <em>Download your Gemini Apps data</em>. Gemini Apps Help (vendor). https://<wbr>support<wbr>.google<wbr>.com/<wbr>gemini/<wbr>answer/<wbr>16920332</li>
+<li>Tamkin, A., McCain, M., Handa, K., Durmus, E., Lovitt, L., Rathi, A. and colleagues. <em>Clio: Privacy-Preserving Insights into Real-World AI Use</em>. arXiv:2412.13678, 18 December 2024 (preprint; authors at Anthropic). https://<wbr>arxiv<wbr>.org/<wbr>html/<wbr>2412<wbr>.13678v1</li>
+<li>Chatterji, A., Cunningham, T., Deming, D. J., Hitzig, Z., Ong, C., Shan, C. Y. and Wadman, K. <em>How People Use ChatGPT</em>. NBER Working Paper 34255, September 2025 (working paper). https://<wbr>www<wbr>.nber<wbr>.org/<wbr>papers/<wbr>w34255</li>
+<li>Harkin, B., Webb, T., Chang, B. and colleagues. <em>Does Monitoring Goal Progress Promote Goal Attainment? A Meta-Analysis of the Experimental Evidence</em>. <em>Psychological Bulletin</em> 142(2), 2016, 198–229 (peer-reviewed; read at the repository record). https://<wbr>eprints<wbr>.whiterose<wbr>.ac<wbr>.uk/<wbr>91437/</li>
+<li>Academy case file (<code>generator/data/building-with-ai/case-academy.md</code>), compiled 11 Nov 2026 with notes of 15 and 16 Nov 2026: header, §1, §2, §7, §8, §9.</li>
+<li>Units of this course, pointed to by section: BW1 (§3, §4, §10), BW2 (§1, §5, §7; Deliverable), BW3 (§3, §6; Deliverable, template 2), BW4 (§7), BW5 (Deliverable 1d), BW6 (§2 to §6), BW7 (§2, §6, §7), BW8 (§3, §4, §7), BW9 (§9), BW10 (§1, §4, §6 to §9; Deliverable Part 1 and Template D), DD-BW1 (Deliverable Part 2), DD-BW2 (§10; Deliverable Parts 1 to 4).</li>
+</ul>
+</div></details><details class="acc note" id="read-dd-bw3-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>This unit has you read your own chats as evidence and write, from what they show, the changes that would save you the most. It gives the method (a window, a list, four labels per ask), the four patterns worth counting, a way to test the rules of BW10 and DD-BW1 against your record, what reading your own history exposes and how to keep it contained, and one worked example from Academy (Academy case). It ends with a classification sheet, a gap report, the review as a sixty-minute procedure and a set of changes restated for any project.</p>
+<p>It was written with search off for drafting; seven pages were read on the web on 16 November 2026 to check specific points: Anthropic's and OpenAI's export pages, Google's Gemini download page, Claude Code's sessions page, and the research cited in §1 and §5; every product fact carries that date. Vendor facts that other units of this course state (plan limits, retention periods, memory settings, caching) are not restated: the unit points to the section that states them, with the date it was read there, and you re-read the vendor's page on the day you act on it.</p>
+<p>What it assumes, by section and without restating: the routing table you built in BW2 (Deliverable); the three common briefing failures (BW3 §6); the skill trigger test and its pass rule (BW8 §4) and the count of repeats before automating (BW8 §7); the sampling arithmetic of BW6 §5; the run log of BW7 §7; the twelve usage rules of BW10 (Deliverable Part 1) and its sections on retention and on where material belongs (BW10 §6, §7); the ten operating rules of DD-BW1 (Deliverable Part 2); and the case report and the ten-change template of DD-BW2 (Deliverable Parts 1 to 4). Grades follow the course: <strong>measured</strong>, <strong>documented practice</strong>, <strong>stated opinion</strong>.</p>
+</div></details><details class="acc made" id="read-dd-bw3-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>The third and last deep dive of Building with AI: how to read your own chats as evidence and write, from what they show, the changes that would save you the most. It covers why a review of your own chats finds what a course cannot (population studies of how people use ChatGPT and Claude.ai, and a meta-analysis on recording progress, none of it about your own work); the method: a window, a list of every chat and four labels for each (task type, model, outcome, and your own messages and corrections, counted per chat); the four patterns worth counting: an ask that was badly put, a tool wrong for the job, work done by hand that a saved procedure already does, and research paid for twice; a test of the usage rules of BW10 and the operating rules of DD-BW1 against your record, rule by rule, with what can and cannot be read from chats; the privacy of exporting and reading your own history; one worked example from the Academy case, a review of 53 chats over six days, read for its method only (one person, an anecdote); how to turn counts into ten ranked changes; a section on other tools; and a deliverable in four parts: a classification sheet, a gap report set beside DD-BW2's case report, the review as a sixty-minute procedure, and ten changes restated for any project, each on the case, a labelled invented example and as a template. It was written by an AI model (Opus 5.5) from its brief, with search off for drafting; seven pages were read on the web on 16 Nov 2026 to check specific points (the export pages of Anthropic, OpenAI and Google, Claude Code's sessions page, and three research papers), and every product fact carries that date. A separate model (Opus 5.5), in a context that had not seen the writing, checked every claim, the deliverable against the brief and every figure against the text; its verdict was fix, with 1 error (a figure mark the text did not carry), 4 should-fix and 9 minor points; 12 were applied before filing and 2 minor points held: one would have credited Anthropic's export page with an item the page as read does not list, and one proposed no change. Known gaps: the case file holds none of the review's ten ranked changes, so the last part restates DD-BW2's ten changes from the project's record instead and says so; it also holds no breakdown of the 53 chats by task type, outcome or turns, no definition of an ask or a turn, no review date, and nothing on whether the six days were typical or how the review's working files were kept, so those cells say not in the case file; the unit's sheet (one row per chat, your own messages counted) is its own method, not the case's; Anthropic's export page names no file format, OpenAI's export page dates its plan scope to April 2023 and other plans were not checked, and Google's page does not say whether activity must be on or how work accounts differ; the session lists of OpenAI's and Google's coding agents and their chat search were not checked; Claude Code's sessions page covers the terminal only; the meta-analysis was read at its repository record, the ChatGPT study at its abstract page and the Claude.ai study in the first half of its preprint; the time a chat takes to label and the minutes of the sixty-minute procedure are the unit's estimates; the restated changes follow DD-BW2 as corrected on 16 Nov 2026 and must follow any later correction; and the opening of §1 describes the case in the course preamble's words, which the case file records as true of part of the library only.</p><h3 id="read-dd-bw3-10">Unsure list</h3>
+<ol>
+<li>§2, §8: <em>Export your Claude data</em> does not say what file format the export uses; the unit says so and claims no format.</li>
+<li>§8: <em>How do I export my ChatGPT history and data?</em> says it applies to Free and Plus users "as of April 11, 2023"; whether the same path holds on other current ChatGPT plans was not checked.</li>
+<li>§8: <em>Download your Gemini Apps data</em> does not say whether Gemini Apps Activity must be on for chats to be exported, or how work and school accounts differ; the unit claims neither.</li>
+<li>§1: Harkin et al. (2016) was read at its White Rose repository record (title, journal, 138 studies, N = 19,951, d+ = 0.40, moderators), not in the full article; the moderator wording ("physically recorded", "reported or made public") is paraphrased from that record.</li>
+<li>§1, §5: Chatterji et al.'s figures ("nearly 80%", 53% to more than 70%) and "privacy-preserving automated pipeline" come from the NBER abstract page; the full paper was not read, and the authors' affiliations were not checked (the unit names no affiliation).</li>
+<li>§1, §2, §5: Clio's one million conversations, the turns facet, the 94% reconstruction on a synthetic dataset, the cluster thresholds and "without the need for human reviewers to read raw conversations" were read in the arXiv v1 HTML (first 100,000 of about 190,000 characters); later versions were not checked.</li>
+<li>§2: the 30-day default retention of Claude Code transcripts and the picker's row contents are as <em>Manage sessions</em> read on 16 Nov 2026; the page describes the CLI only, and the desktop app, claude.ai/code and VS Code lists were not read.</li>
+<li>§2, Part C: thirty seconds to a minute a chat, and the minute allocation of the sixty-minute procedure, are this unit's estimates; no source measures labelling time.</li>
+<li>§2, §6: case file §8 says each ask was classified and gives "number of turns" without defining turn or ask; the unit's sheet (one row per chat, own messages and corrections counted) is its own definition and is not presented as the case's.</li>
+<li>Part D: the restated changes and their grades are copied from DD-BW2 Deliverable Part 2 as filed (corrected 16 Nov 2026); if a later correction changes that table's grades, Part D must follow.
+Object: none</li>
+</ol>
+<p>Correction 16 Nov 2026, found by DD-BW3's filer (flag F123, as F52, F98 and F112): §1 now describes the case in the case file's own wording; corrections check <code>audits/building-with-ai/corrections-2026-11-16-DD-BW3-r2-DD-BW3.md</code>.</p><h3>Fresh check</h3><p>Fresh check 2026-11-16 (Opus 5.5): fix · 1 errors, 4 should-fix, 9 minor; report <code>audits/building-with-ai/fresh-check-DD-BW3.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: review your own chats and write the ten changes that would save you the most
+Takes: DD-B2 as source material, for its method and its counts only, every personal detail removed; BW10, DD-BW1, DD-BW2.
+Gives: nothing; it is the course&#x27;s last unit.
+
+Deep dive BW3, Audit your own usage. Written last. Cover: why a review of your own chats finds what a course cannot; the method (choose a window, list every chat, classify each ask by task type, model, outcome and number of turns), with each label defined and its limits said; the patterns to look for (an ask that was badly put, a tool wrong for the job, work done by hand that a saved procedure already does, research paid for twice); testing the rules of BW10 and DD-BW1 against your own record; the privacy of doing this at all; and the worked example from the Academy case file, one person&#x27;s review of 53 chats over six days, labelled as an anecdote. Deliverable: a classification sheet, a gap-report template, the review as a sixty-minute procedure, and the worked example&#x27;s highest-leverage changes restated so they apply to any reader.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>

@@ -14,13 +14,13 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | W-DD-BW3 | AI | Write the deep dive in which the reader reviews their own usage; course BW complete. |
-| 2 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
+| 1 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-16 | DD-BW3 | AI | DD-BW3, Deep dive: audit your own usage, written; course BW complete. |
 | 2026-11-16 | DD-BW2 | AI | DD-BW2, Deep dive: one project, with its numbers, written. |
 | 2026-11-16 | DD-BW1 | AI | DD-BW1, Deep dive: how the best practitioners work, written. |
 | 2026-11-16 | BW10 | AI | BW10, Cost, limits, privacy, written. |
