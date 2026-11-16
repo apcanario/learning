@@ -20,7 +20,7 @@ Rules for an entry (`docs/method.md` §8):
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
-| 2026-11-16 | DD-BW3 | AI | DD-BW3, Deep dive: audit your own usage, written; course BW complete. |
+| 2026-11-16 | DD-BW3 | AI | DD-BW3, the deep dive in which the reader reviews their own usage, written; course BW complete. |
 | 2026-11-16 | DD-BW2 | AI | DD-BW2, Deep dive: one project, with its numbers, written. |
 | 2026-11-16 | DD-BW1 | AI | DD-BW1, Deep dive: how the best practitioners work, written. |
 | 2026-11-16 | BW10 | AI | BW10, Cost, limits, privacy, written. |
