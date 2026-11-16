@@ -20,19 +20,7 @@ Grades follow the course: **measured**, **documented practice**, **stated opinio
 At 11 November 2026 Academy held five written courses in four subjects: two history courses of 78 and 79 long-form reports, a marketing course of 11 units, an AI course of 11 units and a UX course of 15 units, 194 units in all (case file §1). A unit is a long-form report in Markdown, 2,000 to 6,000 words by guide, with sources cited in place and a closing deliverable built in full; the longest UX unit is about 16,900 words (§1). Everything lives in one private repository (texts, briefs, build scripts, method, backlog and changelog), and the site is built from it by script, with no page styled by hand (§1).
 
 ```viz
-{
-  "kind": "compare",
-  "unit": "units",
-  "max": 80,
-  "rows": [
-    {"label": "History course (78)", "value": 78, "tone": 1},
-    {"label": "History course (79)", "value": 79, "tone": 1},
-    {"label": "UX course", "value": 15, "tone": 3},
-    {"label": "Marketing course", "value": 11, "tone": 4},
-    {"label": "AI course", "value": 11, "tone": 4}
-  ],
-  "caption": "Units written per course at 11 Nov 2026, 194 in all: §1 of this unit, from Academy case file §1 (one project, an anecdote). The case file does not say which history course holds which count."
-}
+{"kind": "compare", "unit": "units", "max": 80, "rows": [{"label": "History course (78)", "value": 78, "tone": 1}, {"label": "History course (79)", "value": 79, "tone": 1}, {"label": "UX course", "value": 15, "tone": 3}, {"label": "Marketing course", "value": 11, "tone": 4}, {"label": "AI course", "value": 11, "tone": 4}], "caption": "Units written per course at 11 Nov 2026, 194 in all: §1 of this unit, from Academy case file §1 (one project, an anecdote)."}
 ```
 
 This course is a sixth, written after that count. By 16 November 2026 its folder held BW1 to BW10 and DD-BW1, one Markdown file per unit (case file §1, notes of 16 Nov 2026). Each unit's reading page on the site opens by saying that an AI model wrote it, naming the model, and that a separate model in a context that had not seen the writing checked it, with the check's counts (§1, note).
@@ -112,37 +100,11 @@ What the table says, by arithmetic on it:
 - **The courses look alike.** Marketing: 8 of 11 drafts with an error; 15 errors, 71 should-fix, 81 minor. AI: 8 of 10; 17, 58, 89. UX: 12 of 15; 26, 108, 133.
 
 ```viz
-{
-  "kind": "compare",
-  "unit": "drafts",
-  "max": 10,
-  "rows": [
-    {"label": "No error", "value": 8, "tone": 3},
-    {"label": "1 error", "value": 9, "tone": 4},
-    {"label": "2 errors", "value": 9, "tone": 4},
-    {"label": "3 errors", "value": 9, "tone": 1},
-    {"label": "4 errors", "value": 1, "tone": 1}
-  ],
-  "caption": "The 36 fresh-checked drafts of three courses by the number of errors the checker found in each: §3 of this unit, counted from the table in Academy case file §5 (one project, an anecdote)."
-}
+{"kind": "compare", "unit": "drafts", "max": 10, "rows": [{"label": "No error", "value": 8, "tone": 3}, {"label": "1 error", "value": 9, "tone": 4}, {"label": "2 errors", "value": 9, "tone": 4}, {"label": "3 errors", "value": 9, "tone": 1}, {"label": "4 errors", "value": 1, "tone": 1, "display": "1 draft"}], "caption": "The 36 fresh-checked drafts of three courses by the number of errors the checker found in each: §3 of this unit, counted from the table in Academy case file §5 (one project, an anecdote)."}
 ```
 
 ```viz
-{
-  "kind": "bars",
-  "mode": "stacked",
-  "series": [
-    {"name": "Errors", "tone": 1},
-    {"name": "Should-fix", "tone": 4},
-    {"name": "Minor", "tone": 3}
-  ],
-  "rows": [
-    {"label": "Marketing (11 drafts)", "values": [15, 71, 81]},
-    {"label": "AI (10 drafts)", "values": [17, 58, 89]},
-    {"label": "UX (15 drafts)", "values": [26, 108, 133]}
-  ],
-  "caption": "Fresh-check findings by grade and course, 598 in all: §3 of this unit, summed from the table in Academy case file §5. The courses differ in subject, units, dates and checkers, and there is no control (§3), so the bars compare nothing causal."
-}
+{"kind": "bars", "mode": "stacked", "series": [{"name": "Errors", "tone": 1}, {"name": "Should-fix", "tone": 4}, {"name": "Minor", "tone": 3}], "rows": [{"label": "Marketing (11 drafts)", "values": [15, 71, 81]}, {"label": "AI (10 drafts)", "values": [17, 58, 89]}, {"label": "UX (15 drafts)", "values": [26, 108, 133]}], "caption": "Fresh-check findings by grade and course, 598 in all; errors 15 marketing, 17 AI, 26 UX: §3 of this unit, summed from the table in Academy case file §5. The courses differ in subject, units, dates and checkers, and there is no control (§3), so the bars compare nothing causal."}
 ```
 
 **What the table cannot be read for.** It cannot rank the checker models. BW6 §4 and BW2 §5 already say so: units, courses and dates differ, and there is no control (case file §9). It cannot say which model wrote each draft: the method names Opus 5.5 as the writer and says the writing model is recorded (§2), but the table does not list it per draft. It cannot say whether the fresh check made later drafts better: the file does not say the rows are in order of writing. And an error count is a count of what one checker found, not of what was there: the case file does not count findings the maintainer rejected after verifying them, so the checkers' false-alarm rate is unknown, and nothing measures what they missed. The nearest evidence on both is in §5 below.
