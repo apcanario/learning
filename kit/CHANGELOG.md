@@ -159,6 +159,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - `kit/p95_library.py`: `personal-brand-pb` and `building-with-ai-bw` in `TEXTS`; three outlines (`at-sign`, `link`, `spec`, Phosphor, MIT) and the courses added to 19 existing rows (`table` also takes 'metrics sheet' and 'the sheet'); `folder` and `checklist` left `SPARE`.
 - `kit/verify.py`: both courses in `REL_COURSES` (ten outlines in use each, every outline in use or spare); `kit/p96_uses.py`: `NAMES` and 23 `MAP` rows; `kit/p95_sheet.py`: `TONE` and `NAME`.
 - `python3 p96_uses.py`: 123 pages with a relief, 97 none; Personal brand (public) 12 outlines in use, Building with AI (public) 11.
+- Published: artifact 1794862364-92ba → 1794871003-edec (26 changed files plus the wrapped shell, patch; sha256 of all 27 read back, matching); Pages: academy@beb5482, run 43978014916 success.
 
 ## 16 Nov 2026 · Session S-SP0 · Sport Psychology for Coaches registered
 
