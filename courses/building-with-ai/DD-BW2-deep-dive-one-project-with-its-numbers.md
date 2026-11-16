@@ -97,7 +97,7 @@ What the table says, by arithmetic on it:
 - **Most drafts had an error.** 28 of the 36 had at least one; 8 had none (§5). That is 77.8%. A count kept in one AI unit at the time it was written gives the same picture from earlier: fifteen of the first twenty drafts had an error at first check (§5), 75%.
 - **Errors were few per draft; findings were many.** 58 errors across 36 drafts is 1.6 a draft: 8 drafts had none, 9 had one, 9 had two, 9 had three and 1 had four. All findings together number 598, from 8 to 34 a draft, 16.6 on average. Errors are 9.7% of the findings, should-fix 39.6%, minor 50.7%.
 - **A clean draft still got work.** Of the 8 drafts with no error, 4 were kept as they were and 4 were sent back to fix on their should-fix findings. Every "keep" had no error. The one "rewrite" (row 17) had the most errors, 4.
-- **The courses look alike.** Marketing: 8 of 11 drafts with an error; 15 errors, 71 should-fix, 81 minor. AI: 8 of 10; 17, 58, 89. UX: 12 of 15; 26, 108, 133.
+- **The courses look alike.** Marketing: 8 of 11 drafts with an error; 15 errors, 71 should-fix, 81 minor, 167 findings. AI: 8 of 10; 17, 58, 89, 164. UX: 12 of 15; 26, 108, 133, 267.
 
 ```viz
 {"kind": "compare", "unit": "drafts", "max": 10, "rows": [{"label": "No error", "value": 8, "tone": 3}, {"label": "1 error", "value": 9, "tone": 4}, {"label": "2 errors", "value": 9, "tone": 4}, {"label": "3 errors", "value": 9, "tone": 1}, {"label": "4 errors", "value": 1, "tone": 1, "display": "1 draft"}], "caption": "The 36 fresh-checked drafts of three courses by the number of errors the checker found in each: §3 of this unit, counted from the table in Academy case file §5 (one project, an anecdote)."}
