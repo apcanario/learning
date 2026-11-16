@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **thin.py `fixes` and `save-report`** (16 Nov 2026, row W-BW10): read a finding's severity tag with or without brackets, and unescape \" in its Current and Fix text; BW10's fresh checker wrote both forms.
 - **16 Nov 2026 · BW9 Agents filed (row W-BW9).** Written by Opus 5.5 with search on (11,363 words, 3 figures, 25 sources); fresh check by Opus 5.5: keep, 0 errors, 7 should-fix, 11 minor, all 18 applied. Two corrections checks passed 9 replacements, all applied: BW6 (5), BW8 (3), BW9 (1). 8 flags raised; F56 and F65 carried; two corrections (C-BW9-1, C-BW9-2) left for W-BW10. Hub v10.
 - **BW8 Skills and automation** (row W-BW8, 16 Nov 2026): written by Opus 5.5 with search off, 13,799 words, 4 figures, 14 sources; fresh check fix (3 errors, 9 should-fix, 11 minor), 22 applied, 1 held; a private source unit corrected (11 replacements, two rounds) and BW4 (2 replacements, its Skills cell); 10 flags raised, 8 carried; case file §1 gains the repository's course index and build order.
 - **BW7 Pipelines: raw material to finished output** written by Opus 5.5 and filed (16 Nov 2026, row W-BW7, search off): 10,499 words, 3 figures, 15 sources; fresh check fix (2 errors, 7 should-fix, 11 minor), all applied, 22 replacements, 0 held; 3 corrections applied to B7; 7 flags raised; building-with-ai v8.
@@ -147,6 +148,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16 Nov 2026 · Session W-BW10 · BW10 Cost, limits, privacy
+
+BW10 written by a fresh Opus 5.5 agent from its brief with search on (9,344 words, 4 figures, 26 sources), fresh-checked by another (fix, 0 errors, 7 should-fix, 11 minor) and filed after an applier applied all 18 findings, 4 of them in a second pass from corrected fixes. Two corrections rounds: 4 of 5 replacements passed and applied to B8, BW1 and BW4, 1 failed; a fresh agent re-checked one, pass. The main chat ran Opus 5.5 though Sonnet 5.5 was asked, and is recorded as such. thin.py's fixes and save-report now accept an unbracketed severity tag and unescape \" in Current and Fix. Carried proposal CP-1 (Project copies) worked at close. Next: DD-BW1.
 
 ## 16 Nov 2026 · Session W-BW9 · BW9 Agents
 
