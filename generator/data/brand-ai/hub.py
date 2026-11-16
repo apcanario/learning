@@ -17,7 +17,7 @@ BAR = 'BRAND + AI'                         # top-bar label
 BRAND_HTML = 'BRAND <span>+</span> AI'     # drawer header
 OUT = 'brand-and-ai-courses.html'
 THEME_KEY = 'hub-theme'                    # localStorage key for the theme toggle (per artifact)
-VERSION = 'v9.21 · 16 Nov 2026'
+VERSION = 'v9.22 · 16 Nov 2026'
 LEARN_C, BUILD_C = 'var(--red)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -229,6 +229,7 @@ TEMPLATE_BLOCKS = [
 
 # newest first; {A} and {B} are the course names
 CHANGELOG = [
+    ('2026-11-16 04:30', "v9.22. Erratum (row W-BW8, step 6): B5 corrected where BW8's writer found it wrong, confirmed by BW8's fresh check and two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-BW8-B5-BW4.md, Changes 1 to 5; corrections-2026-11-16-BW8-r2-B5.md, Changes 1 to 6): the help page's title and address (now Use skills in Claude), the custom-skills visibility sentence, sharing on Team and Enterprise, the dated data-persistence sentence, and the 1,536-character cap given as Claude Code's default. 11 exact replacements, each with a dated note in the unit."),
     ('2026-11-16 03:00', "v9.21. Erratum (row W-BW7, step 6): B7 corrected where BW7's writer found it wrong, confirmed by BW7's fresh check and a corrections check by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-BW7-B7.md): Doshi and Hauser's sample and model, and the model of Agarwal and colleagues' study. 3 exact replacements."),
     ('2026-11-16 01:00', "v9.20. Erratum (row W-BW5, step 6): DD-B3 corrected where BW5's writer found it wrong, confirmed by BW5's fresh check and a corrections check by Opus 5.5 (audits/building-with-ai/corrections-2026-11-15-BW5-DD-B3.md): Harper Reed's plan step and Kiro's task links. 2 exact replacements; a third, the Claude Code quotation in §2.1, failed the check and was not applied."),
     ('2026-11-15 23:45', "v9.19. Correction (row W-BW5, step 1b): B4's leftovers from W-BW4's erratum corrected after two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-15-BW5-BW1-B4.md and -BW5-r2-BW1-B4.md): the opening's token and window figures and opened dates, the Models overview entry in Sources, and the erratum's attribution of Models overview. 4 exact replacements."),
