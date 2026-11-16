@@ -17,7 +17,7 @@ What this unit assumes, by section, without restating it: the layers of a projec
 
 By the time you reach this unit you repeat several procedures: the checker brief of BW6, the stages of your BW7 pipeline, the rot check of BW4. Each can live in one of three forms, and they differ in one thing: when the text reaches the model's window (BW1 §1).
 
-**A saved prompt.** A brief you keep in a file and paste, or attach, when you need it: BW3's ten templates are saved prompts. It enters the window only when you put it there, so it costs nothing in the chats that do not use it and it never fires by mistake. Its cost is that you must remember it exists and fetch it. Claude Code has a form of the same thing that you call by name: "Custom commands have been merged into skills", and a skill whose front matter sets `disable-model-invocation: true` is one Claude cannot load on its own, only you with `/name` ([Anthropic, *Extend Claude with skills*, Claude Code documentation](https://code.claude.com/docs/en/skills.md), read 16 Nov 2026; vendor).
+**A saved prompt.** A brief you keep in a file and paste, or attach, when you need it: BW3's ten templates are saved prompts. It enters the window only when you put it there, so it costs nothing in the chats that do not use it and it never fires by mistake. Its cost is that you must remember it exists and fetch it. Claude Code has a form of the same thing that you call by name: "Custom commands have been merged into skills", and a skill whose front matter sets `disable-model-invocation: true` is one Claude cannot load on its own, only you with `/name` ([Anthropic, *Extend Claude with skills*, Claude Code documentation](https://code.claude.com/docs/en/skills), read 16 Nov 2026; vendor).
 
 **A project instruction.** Text that reaches every turn of every chat in one project (BW4 §1). It is the right home for a rule every chat must obey and the wrong home for a procedure: Claude Code's own rule for its instruction file is to move a multi-step procedure into a skill, which BW4 §1 applies to claude.ai's project instructions by inference. Academy (Academy case) is a library of self-study courses built by one person with Claude in October and November 2026; it is one project, so everything it shows is an anecdote. A structure audit of that project found project instructions that carried procedures and paraphrased the method file (Academy case file §1, §7; BW4 §7).
 
@@ -1322,7 +1322,7 @@ All web pages read 16 November 2026. Most vendor documentation and help-centre p
 - Agent Skills. *Optimizing skill descriptions*. agentskills.io (the format's documentation). https://agentskills.io/skill-creation/optimizing-descriptions.md
 - Anthropic. *Agent Skills*. Claude Platform Docs. https://platform.claude.com/docs/agents-and-tools/agent-skills/overview
 - Anthropic. *Skill authoring best practices*. Claude Platform Docs. https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices.md
-- Anthropic. *Extend Claude with skills*. Claude Code documentation. https://code.claude.com/docs/en/skills.md
+- Anthropic. *Extend Claude with skills*. Claude Code documentation. https://code.claude.com/docs/en/skills
 - Anthropic. *Automate work with scheduled tasks*. Claude Code documentation (research preview); read at https://code.claude.com/docs/en/web-scheduled-tasks?mode=reply. https://code.claude.com/docs/en/web-scheduled-tasks
 - Anthropic. *Run prompts on a schedule*. Claude Code documentation. https://code.claude.com/docs/en/scheduled-tasks
 - Anthropic. *Schedule recurring tasks in Claude Code Desktop*. Claude Code documentation. https://code.claude.com/docs/en/desktop-scheduled-tasks
@@ -1367,3 +1367,5 @@ Fresh check 2026-11-16 (Opus 5.5 (claude-opus-5-5)): fix · 3 errors, 9 should-f
 Correction 2026-11-16, found by the figure re-check of row W-BW8 (corrections check `audits/building-with-ai/corrections-2026-11-16-BW8-r3-BW8.md`, Changes 1 and 2).
 
 Correction 2026-11-16 (second round), found by the corrections check of row W-BW8 (`audits/building-with-ai/corrections-2026-11-16-BW8-r4-BW8.md`, Changes 1 and 2): the vendor's two tables match on the page; its .md copy is older.
+
+Correction 2026-11-16, found by BW9's writer (corrections check `audits/building-with-ai/corrections-2026-11-16-BW9-BW6-BW8.md`, Changes 6 and 7: the page of Extend Claude with skills, not its .md copy).
