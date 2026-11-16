@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **BW6 Research and verification** filed 16 Nov 2026 (row W-BW6): written by Opus 5.5 from its brief, search off; fresh check by Opus 5.5, fix (1 error, 7 should-fix, 3 minor), 12 applied, 1 held (search flag); 9 flags raised, 4 carried; 6 of 13 written.
 - **Matrices on a 320 px phone; filer rules (16 Nov 2026, row W-BW5).** Site: every matrix figure gets a second drawing for screens of 360 px and below (a narrow label column, columns and legend inside a 320 px frame); verify.py checks every matrix at 320 px; the build keeps the frame's --stick on history pages; theme 6.11; all 112 matrix figures re-checked from 320 px shots until each passed. Kit: thin.py's fixes parser reads the full Current and Fix and an empty Fix deletes (12 of 12 on fresh-check-BW4.md); thin.py gains `correct` and `stage corrections`; the filer's packet carries the filer rules and thin.py insert runs index_check.py, restoring every file if it fails; the writer's packet carries the course map; the build runs verify.py --shots in the background with a one-hour timeout.
 - **BW4 Context engineering filed (W-BW4, 15 Nov 2026).** Reading page read-bw4, status written 15 Nov, next unit BW5, v5; fresh check fix (2 errors, 5 should-fix, 5 minor, applied); BW1 §8 connector row corrected; 10 flags raised, F8 and F20 carried.
 - **Scatter figures drawn for the phone (P124, row W-BW3, 15 Nov 2026).** `kit/viz.py` draws scatter figures for phone width and `kit/verify.py` checks them.
@@ -143,6 +144,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16 Nov 2026 · Session W-BW6 · BW6 filed
+
+Same night chat as W-BW5, run thin (P31): a fresh Opus 5.5 agent wrote BW6 from its packet (10,025 words, 4 figures, 17 sources; search off, live reads only to re-verify), a second checked it (fix: 1 error, 7 should-fix, 3 minor), a third applied 12 changes and held 1 (the search flag, raised as a flag for the syllabus review), a fourth wrote the filing records. No correction elsewhere. Flags: 9 raised; F5, F12, F13 and F36 carried; F18 and F19 stay open. Next: BW7.
 
 ## 16 Nov 2026 · Session W-BW5 · BW5 filed; matrices on a 320 px phone
 
