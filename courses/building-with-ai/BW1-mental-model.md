@@ -53,7 +53,7 @@ A big window is a ceiling. It says how much text can be placed in front of the m
 
 ### What a token is
 
-A token is the smallest unit a language model works in; it can be a word, part of a word, a character or a byte. For Claude, how many characters make a token depends on the model and the language. Claude 4.7 and later models use a tokenizer that produces about 30 percent more tokens for the same text than earlier models, on which a token is about 3.5 English characters ([*Glossary*](https://platform.claude.com/docs/en/about-claude/glossary.md), read 15 Nov 2026). Anthropic's model page gives the current tokenizer's own conversion: 1M tokens is roughly 555k words or 2.5M Unicode characters, about 2.5 characters a token ([*Models overview*](https://platform.claude.com/docs/en/models/overview), read 15 Nov 2026; the per-token division is this unit's arithmetic). The glossary gives no figure for other languages, and points to Anthropic's token-counting endpoint for exact counts (same page).
+A token is the smallest unit a language model works in; it can be a word, part of a word, a character or a byte. For Claude, how many characters make a token depends on the model and the language. Claude 4.7 and later models use a tokenizer that produces about 30 percent more tokens for the same text than earlier models, on which a token is about 3.5 English characters ([*Glossary*](https://platform.claude.com/docs/en/about-claude/glossary.md), read 15 Nov 2026). On 15 November 2026 Anthropic's model page gave the current tokenizer's own conversion: 1M tokens is roughly 555k words or 2.5M Unicode characters, about 2.5 characters a token ([*Models overview*](https://platform.claude.com/docs/en/models/overview), read 15 Nov 2026; the per-token division is this unit's arithmetic); on 16 November 2026 the page no longer carried the figure (read 16 Nov 2026). The glossary gives no figure for other languages, and points to Anthropic's token-counting endpoint for exact counts (same page).
 
 ### Tokens as cost
 
@@ -450,3 +450,5 @@ Correction 15 Nov 2026, found by BW3's corrections check (Opus 5.5, row W-BW3, f
 Correction 15 Nov 2026, found by W-BW4's round-two corrections check and confirmed by a corrections check (Opus 5.5, row W-BW5; `audits/building-with-ai/corrections-2026-11-15-BW5-BW1-B4.md`, change 3): the Sources note no longer says help-centre pages show no exact date; the connector page is dated 16 March 2026.
 
 Correction 15 Nov 2026, found by W-BW5's corrections check and confirmed by its round-two check (Opus 5.5; `audits/building-with-ai/corrections-2026-11-15-BW5-r2-BW1-B4.md`, changes 1 and 2): the opening and unsure item 6 say most help-centre pages, not all, carry no exact date.
+
+Correction 2026-11-16, found by BW10's writer (corrections check `audits/building-with-ai/corrections-2026-11-16-BW10-B8-BW1-BW4.md`, Change 3).
