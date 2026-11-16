@@ -1628,15 +1628,30 @@ def matrix(d, narrow=None):
     if d.get('legend'):
         y += 14
         x, lrow = 8, 24
-        LWd = min(Wd, NARROW_FRAME - 20 if narrow is not None else PHONE_FRAME)   # C1 re-check: the narrow drawing's legend fits a 320 px frame   # W-DD-PB1 (13 Nov 2026): a drawing wider than the phone frame keeps its legend inside the frame's width, so the first frame shows every key whole
+        LWd = min(Wd, NARROW_FRAME - 36 if narrow is not None else PHONE_FRAME)   # C1 re-check: the narrow drawing's legend fits a 320 px frame   # W-DD-PB1 (13 Nov 2026): a drawing wider than the phone frame keeps its legend inside the frame's width, so the first frame shows every key whole
         for item in d['legend']:
             m, means = item.get('mark', ''), item.get('means', '')
             mw = _tw(m, 10.5, 'mono') + 16
             room = LWd - 16 - mw - 8 - 18                    # a key's text keeps to one line when the drawing has room
+            if narrow is not None and max([_tw(w, 11) for w in str(means).split()] or [0]) + 4 > room:
+                # C1 re-check: in the 320 px drawing a key whose words do not fit beside its band sits on rows of its own, the text under the band
+                txt = _lines(means, T_ATTR, LWd - 16 - 18)
+                if x > 8:
+                    x, y, lrow = 8, y + lrow + 8, 24
+                body += _g(f'<rect class="viz-band viz-t{_tone(item, 4, K)}" x="{x:.1f}" y="{y:.1f}" width="{mw:.1f}" height="24"/>'
+                           + _text([m], T_MARK, x + mw / 2, y + 5.5, 'middle')) + _text(txt, T_ATTR, 8, y + 30)
+                x, y, lrow = 8, y + 30 + len(txt) * 14 + 8, 24
+                continue
             txt = _lines(means, T_ATTR, room if _tw(means, 11) <= room else min(220, room))
             iw = mw + 8 + _width(txt, T_ATTR) + 18
             if x > 8 and x + iw > LWd - 8:
                 x, y, lrow = 8, y + lrow + 8, 24
+            if narrow is not None and len(txt) == 3:          # C1 re-check: in the 320 px drawing a three-line key hangs from its band's top too
+                body += _g(f'<rect class="viz-band viz-t{_tone(item, 4, K)}" x="{x:.1f}" y="{y:.1f}" width="{mw:.1f}" height="24"/>'
+                           + _text([m], T_MARK, x + mw / 2, y + 5.5, 'middle')) + _text(txt, T_ATTR, x + mw + 8, y - 2)
+                x += iw
+                lrow = max(lrow, len(txt) * 14)
+                continue
             body += _g(f'<rect class="viz-band viz-t{_tone(item, 4, K)}" x="{x:.1f}" y="{y:.1f}" width="{mw:.1f}" height="24"/>'
                        + _text([m], T_MARK, x + mw / 2, y + 5.5, 'middle')) + _text(txt, T_ATTR, x + mw + 8, y + 12 - (len(txt) * 7 if len(txt) <= 3 else 14))   # U-7: a key of four lines or more starts at its band's top and hangs down, never up over the row above
             x += iw
@@ -1645,7 +1660,7 @@ def matrix(d, narrow=None):
     if narrow is not None:
         return _r(Wd), _r(y + 8), body, (8 + LW, stick, grid_h)
     nar = None
-    if Wd > NARROW_FRAME and (LW > NARROW_LW or max(cws) > NARROW_FRAME - (8 + min(LW, NARROW_LW)) - 12):   # C1: a second drawing for 360 px and below, with its own narrow column (or narrower columns)
+    if Wd > NARROW_FRAME:   # C1: a second drawing for 360 px and below, with its own narrow column (or narrower columns)
         nw, nh, nb, nst = matrix(d, narrow=NARROW_LW)
         nar = (nw, nh, nb, nst if nw > NARROW_FRAME else None)
     return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide,
@@ -2795,7 +2810,7 @@ def _heat(d, narrow=None):
     if narrow is not None:
         return _r(Wd), _r(y + 8), body, (8 + LW, stick, grid_h)
     nar = None
-    if Wd > NARROW_FRAME and (LW > NARROW_LW or cw > NARROW_FRAME - (8 + min(LW, NARROW_LW)) - 12):   # C1: as matrix()
+    if Wd > NARROW_FRAME:   # C1: as matrix()
         nw, nh, nb, nst = _heat(d, narrow=NARROW_LW)
         nar = (nw, nh, nb, nst if nw > NARROW_FRAME else None)
     return _svg(_r(Wd), _r(y + 8), body, 'matrix viz-numeric', d.get('title'), d.get('caption'), wide=wide,

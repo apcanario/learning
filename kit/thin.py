@@ -539,6 +539,8 @@ def cmd_stage(argv):
             '4. thin.py insert runs kit/index_check.py after inserting and restores every file if it fails.\n', encoding='utf-8')
         secs = re.split(r'(?m)^(?=## )', ix)                  # C4: the course's whole section (count line, last filed row, this row)
         sec = next((s for s in secs if c['vault'] in s), None)
+        stl = next((s for s in secs if s.startswith('## Staleness')), '')   # W-BW5: the staleness table, where a search-on unit gets its row
+        sec = (sec or '') + ('\n' + stl if stl else '')
         (out / 'index-rows.txt').write_text(sec if sec else '\n'.join(ln for ln in ix.splitlines() if re.search(r'\b' + re.escape(code) + r'\b', ln)), encoding='utf-8')
         (out / 'records.template.json').write_text(json.dumps(dict(
             row=opt['row'], code=code, course=c['id'], date='YYYY-MM-DD hh:mm',

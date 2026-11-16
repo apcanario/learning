@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Matrices on a 320 px phone; filer rules (16 Nov 2026, row W-BW5).** Site: every matrix figure gets a second drawing for screens of 360 px and below (a narrow label column, columns and legend inside a 320 px frame); verify.py checks every matrix at 320 px; the build keeps the frame's --stick on history pages; theme 6.11; all 112 matrix figures re-checked from 320 px shots until each passed. Kit: thin.py's fixes parser reads the full Current and Fix and an empty Fix deletes (12 of 12 on fresh-check-BW4.md); thin.py gains `correct` and `stage corrections`; the filer's packet carries the filer rules and thin.py insert runs index_check.py, restoring every file if it fails; the writer's packet carries the course map; the build runs verify.py --shots in the background with a one-hour timeout.
 - **BW4 Context engineering filed (W-BW4, 15 Nov 2026).** Reading page read-bw4, status written 15 Nov, next unit BW5, v5; fresh check fix (2 errors, 5 should-fix, 5 minor, applied); BW1 §8 connector row corrected; 10 flags raised, F8 and F20 carried.
 - **Scatter figures drawn for the phone (P124, row W-BW3, 15 Nov 2026).** `kit/viz.py` draws scatter figures for phone width and `kit/verify.py` checks them.
 - **P123 (15 Nov 2026): `line` figures get a phone drawing.** `line` figures now carry a phone drawing, PHONE_NARROW (258) units wide, via kit/viz.py: `line` draws `_line_draw` twice, and a label with no room falls back to "ends" in the phone drawing only; verify.py's `check_phone_lines` checks it at 320 and 390 px. The `fixes` parser of kit/thin.py now accepts `. Fix:` and a literal `\n` inside a Fix. Nothing in design/theme.css changed.
@@ -142,6 +143,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16 Nov 2026 · Session W-BW5 · BW5 filed; matrices on a 320 px phone
+
+BW5 Specifying a project was written by Opus 5.5 with search on and filed after a fresh check (fix · 1 error, 5 should-fix, 12 minor; 17 applied, 1 held). Matrix figures: each now has a second drawing for screens of 360 px and below, with a narrow label column and its columns and legend inside a 320 px frame; verify.py checks every matrix at 320 px; history pages keep the frame's --stick; theme 6.11. All 112 matrix figures on the site were re-checked from 320 px screenshots by Opus 5.5 agents, over several rounds, until each passed. Kit: thin.py's fixes parser now reads the full Current and Fix, and an empty Fix deletes (tested on fresh-check-BW4.md: 12 of 12); thin.py gains `correct` and `stage corrections`; the filer's packet carries the filer rules, and thin.py insert runs index_check.py and restores every file if it fails; the writer's packet carries the course map (course-map.txt) and a deep dive's fresh-check report; the build step runs verify.py --shots in the background with a one-hour timeout.
 
 ## 15 Nov 2026 · Session W-BW4 · BW4 Context engineering filed
 
