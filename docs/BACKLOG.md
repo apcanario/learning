@@ -142,8 +142,7 @@ Corrections to filed units or records left open by an earlier chat. From W-PB7 o
 
 | # | Correction | Why |
 |---|---|---|
-| C-BW9-1 | BW9 §4, the bullet on `disable-model-invocation` (courses/building-with-ai/BW9-agents.md): insert "session-scoped" before "scheduled task", as the page of *Extend Claude with skills* (https://code.claude.com/docs/en/skills, read 16 Nov 2026) words it: "from running when a session-scoped scheduled task fires with the skill as its prompt" | Found outside its scope by the second corrections check of row W-BW9 (`audits/building-with-ai/corrections-2026-11-16-BW9-r2-BW8-BW9.md`, Outside scope 1); W-BW9's second round had ended |
-| C-BW9-2 | BW9 cites https://code.claude.com/docs/en/skills?m=1 twice (the "Four facts" lead-in in §4 and its Sources entry): re-read the other three facts of that list on the bare page https://code.claude.com/docs/en/skills and, where they hold, move both citations to the bare address | The ?m=1 address serves an older version of the page (same report, Outside scope 2; flag F70) |
+| — | none open | — |
 
 ## Carried proposals (appended to the next prompt and worked in that chat unless Pedro removes them)
 
