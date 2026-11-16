@@ -185,7 +185,7 @@ A scheduled task is a saved prompt that runs on its own at set times, in a sessi
 - **Run more often than hourly.** "Expressions that run more often than once per hour are rejected." A run set exactly on the hour "can start several minutes late", so the page suggests a few minutes past it.
 - **Run for free.** Runs "draw down subscription usage the same way interactive sessions do", and past 100 scheduled runs an hour on one account, a run waits until the hour resets.
 
-The prompt "must be self-contained and explicit about what to do and what success looks like" (same page). The three ways Claude Code can schedule work differ in what they reach, by the comparison table as *Schedule recurring tasks in Claude Code Desktop* prints it ([Anthropic, Claude Code documentation](https://code.claude.com/docs/en/desktop-scheduled-tasks), read 16 Nov 2026; vendor). The copy of that table on *Run prompts on a schedule* gives the Desktop task's minimum interval as 1 minute and the cloud task's permission prompts as "No (runs autonomously)", so two of the vendor's own pages differ: a cloud task runs on Anthropic's cloud, needs neither your machine nor an open session, works on a fresh clone with no local files, starts in auto mode and runs at most hourly; a Desktop task runs on your machine, which must be on, needs no open session, reaches local files, has its permission prompts set per task, and runs at most hourly in its forms or every minute when Claude sets it; `/loop` runs on your machine, which must be on, inside an open session, reaches local files, takes that session's permissions and can repeat every minute (all by the Desktop page's table); a recurring `/loop` task expires seven days after it is created (*Run prompts on a schedule*, read 16 Nov 2026; vendor).
+The prompt "must be self-contained and explicit about what to do and what success looks like" (same page). The three ways Claude Code can schedule work differ in what they reach, by the comparison table as *Schedule recurring tasks in Claude Code Desktop* prints it ([Anthropic, Claude Code documentation](https://code.claude.com/docs/en/desktop-scheduled-tasks), read 16 Nov 2026; vendor): a cloud task runs on Anthropic's cloud, needs neither your machine nor an open session, works on a fresh clone with no local files, starts in auto mode and runs at most hourly; a Desktop task runs on your machine, which must be on, needs no open session, reaches local files, has its permission prompts set per task, and runs at most hourly in its forms or every minute when Claude sets it; `/loop` runs on your machine, which must be on, inside an open session, reaches local files, takes that session's permissions and can repeat every minute (all by the Desktop page's table); a recurring `/loop` task expires seven days after it is created (*Run prompts on a schedule*, read 16 Nov 2026; vendor).
 
 ```viz
 {
@@ -199,7 +199,7 @@ The prompt "must be self-contained and explicit about what to do and what succes
     {"label": "Permission prompts", "cells": ["auto mode", "set per task", "as the session"]},
     {"label": "Minimum interval", "cells": ["1 hour", "1 hour in forms, 1 minute by Claude", "1 minute"]}
   ],
-  "caption": "Claude Code's three ways to schedule work, by what each reaches (§6 of this unit). From Anthropic, Schedule recurring tasks in Claude Code Desktop, its comparison table, read 16 Nov 2026 (vendor); the copy of the table on Run prompts on a schedule differs on two cells (§6). A /loop task also expires seven days after it is created, by Run prompts on a schedule."
+  "caption": "Claude Code's three ways to schedule work, by what each reaches (§6 of this unit). From Anthropic, Schedule recurring tasks in Claude Code Desktop, its comparison table, read 16 Nov 2026 (vendor). A /loop task also expires seven days after it is created, by Run prompts on a schedule."
 }
 ```
 
@@ -1365,3 +1365,5 @@ Object: the check-against-sources skill folder (its SKILL.md and scripts/check.p
 Fresh check 2026-11-16 (Opus 5.5 (claude-opus-5-5)): fix · 3 errors, 9 should-fix, 11 minor; report `audits/building-with-ai/fresh-check-BW8.md`
 
 Correction 2026-11-16, found by the figure re-check of row W-BW8 (corrections check `audits/building-with-ai/corrections-2026-11-16-BW8-r3-BW8.md`, Changes 1 and 2).
+
+Correction 2026-11-16 (second round), found by the corrections check of row W-BW8 (`audits/building-with-ai/corrections-2026-11-16-BW8-r4-BW8.md`, Changes 1 and 2): the vendor's two tables match on the page; its .md copy is older.
