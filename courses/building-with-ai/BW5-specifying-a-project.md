@@ -109,7 +109,7 @@ Write each dependency down in two directions. **Takes** names the earlier units 
     {"label": "BW9", "cells": [null, null, null, null, "takes", "takes", "takes", "takes", null]},
     {"label": "BW10", "cells": [null, "takes", null, null, "takes", null, null, null, "takes"]}
   ],
-  "legend": [{"mark": "takes", "means": "the row's unit is built against the column's Gives line", "tone": 2}],
+  "legend": [{"mark": "takes", "means": "the row's unit is built against the column's Gives line", "tone": 4}],
   "caption": "The core units of this course as a dependency grid: each row takes from the columns marked. Data from the build order in Deliverable 1b of this unit, read from the Gives lines of this course's map; BW5's Gives line names every later unit. Every mark sits left of the row's own unit: nothing takes from a later unit."
 }
 ```

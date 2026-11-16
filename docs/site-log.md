@@ -14,16 +14,15 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | W-BW5 | AI | Write BW5, Specifying a project. |
-| 2 | W-BW6 | AI | Write BW6, Research and verification. |
-| 3 | W-BW7 | AI | Write BW7, Pipelines: raw material to finished output. |
-| 4 | W-BW8 | AI | Write BW8, Skills and automation. |
-| 5 | W-BW9 | AI | Write BW9, Agents. |
-| 6 | W-BW10 | AI | Write BW10, Cost, limits, privacy. |
-| 7 | W-DD-BW1 | AI | Write the deep dive on how the best practitioners work. |
-| 8 | W-DD-BW2 | AI | Write the deep dive that follows one project, with its numbers. |
-| 9 | W-DD-BW3 | AI | Write the deep dive in which the reader reviews their own usage; course BW complete. |
-| 10 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
+| 1 | W-BW6 | AI | Write BW6, Research and verification. |
+| 2 | W-BW7 | AI | Write BW7, Pipelines: raw material to finished output. |
+| 3 | W-BW8 | AI | Write BW8, Skills and automation. |
+| 4 | W-BW9 | AI | Write BW9, Agents. |
+| 5 | W-BW10 | AI | Write BW10, Cost, limits, privacy. |
+| 6 | W-DD-BW1 | AI | Write the deep dive on how the best practitioners work. |
+| 7 | W-DD-BW2 | AI | Write the deep dive that follows one project, with its numbers. |
+| 8 | W-DD-BW3 | AI | Write the deep dive in which the reader reviews their own usage; course BW complete. |
+| 9 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
 
 ## Done
 
@@ -33,6 +32,7 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-11-15 | BW2 | AI | BW2, Choosing the model and the effort, written. |
 | 2026-11-15 | BW3 | AI | BW3, Briefing: prompts that hold up, written. |
 | 2026-11-15 | BW4 | AI | BW4, Context engineering, written. |
+| 2026-11-15 | BW5 | AI | BW5, Specifying a project, written. |
 | 2026-10-22 | G0–9 | Mythology | The Greece syllabus set out, then its core written: fifty reports from the sources and the geography, through myth, history, religion and art, to a final exam. |
 | 2026-10-22 | G10 | Mythology | Greece gains its first deep dive, the Trojan War, in twelve reports. |
 | 2026-10-24 | G11 | Mythology | Greece gains a second deep dive, Alexander, in eight reports. |
