@@ -981,7 +981,7 @@ Python 3, standard library only, so it runs where a skill's network access is pa
 
 **Claude Code** (read 16 Nov 2026: *Extend Claude with skills*):
 
-1. Commit the folder at `.claude/skills/check-against-sources/` in the repository. It then loads in sessions in that repository and in scheduled runs that clone it, but not in cloud threads inside a project.
+1. Commit the folder at `.claude/skills/check-against-sources/` in the repository. It then loads in sessions in that repository and in cloud sessions on it, including cloud scheduled tasks, but not in cloud threads inside a project.
 2. In a session, ask "What skills are available?"; the skill must be listed.
 3. A skill switched on in claude.ai also loads in cloud and Cowork sessions, and in terminal sessions signed in with the account from version 2.1.273, by this page; the developer documentation says it does not (§2, disagreement). The committed copy is the route both document.
 
@@ -1369,3 +1369,5 @@ Correction 2026-11-16, found by the figure re-check of row W-BW8 (corrections ch
 Correction 2026-11-16 (second round), found by the corrections check of row W-BW8 (`audits/building-with-ai/corrections-2026-11-16-BW8-r4-BW8.md`, Changes 1 and 2): the vendor's two tables match on the page; its .md copy is older.
 
 Correction 2026-11-16, found by BW9's writer (corrections check `audits/building-with-ai/corrections-2026-11-16-BW9-BW6-BW8.md`, Changes 6 and 7: the page of Extend Claude with skills, not its .md copy).
+
+Correction 2026-11-16 (second round), found by the first corrections check of row W-BW9 (`audits/building-with-ai/corrections-2026-11-16-BW9-r2-BW8-BW9.md`, Change 1).
