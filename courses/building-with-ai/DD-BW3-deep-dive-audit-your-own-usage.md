@@ -25,7 +25,7 @@ A second reason is structural. The rules you set for a project cover the tasks y
 
 The third reason is the evidence on recording itself. A meta-analysis of 138 randomised studies (N = 19,951) found that interventions which increased how often people monitored their progress improved goal attainment, d+ = 0.40, with larger effects when progress was physically recorded and when it was reported to others ([Harkin, Webb, Chang and colleagues, *Does Monitoring Goal Progress Promote Goal Attainment? A Meta-Analysis of the Experimental Evidence*, *Psychological Bulletin* 142(2), 2016, 198–229](https://eprints.whiterose.ac.uk/91437/); measured, on personal goals outside AI use (the repository record does not list their domains), none of them about AI tools). That an audit of your own chats works the same way is this unit's inference, not something any study has measured.
 
-**The case** (Academy case). Academy is a library of self-study courses built by one person with Claude in October and November 2026, each unit written by one model from a brief, checked by a fresh context and audited by sample (Academy case file §1, §2). Its owner's chats in the project were reviewed for one deep dive: 53 chats over six days, the project's whole history at the time (case file §8). One review of one person's chats is an anecdote; §6 reads it for its method only.
+**The case** (Academy case). Academy is a library of self-study courses built by one person with Claude in October and November 2026, with a method of one brief per unit, a fresh check and sample audits that the case file records as run on part of the library (Academy case file §1, §2, §5, §9). Its owner's chats in the project were reviewed for one deep dive: 53 chats over six days, the project's whole history at the time (case file §8). One review of one person's chats is an anecdote; §6 reads it for its method only.
 
 **Grade of this section's claim** that a review of your own chats finds what a course cannot: stated opinion, built on measured population data that shows how much use varies and on measured evidence for recording progress in other domains.
 
@@ -484,3 +484,5 @@ Web sources read on 16 November 2026 at the address a search returned; product f
 Object: none
 
 Fresh check 2026-11-16 (Opus 5.5): fix · 1 errors, 4 should-fix, 9 minor; report `audits/building-with-ai/fresh-check-DD-BW3.md`
+
+Correction 16 Nov 2026, found by DD-BW3's filer (flag F123, as F52, F98 and F112): §1 now describes the case in the case file's own wording; corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW3-r2-DD-BW3.md`.
