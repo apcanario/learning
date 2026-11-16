@@ -21,7 +21,7 @@ BW1 §8 mapped the layers of a current assistant by what they put in the window.
 | Project instructions | Every chat in one project | Every turn | The few rules every chat in the project must obey, and where everything else is | Procedures, lists that change, copies of other files |
 | Project knowledge (files) | Every chat in one project | Whole while small; searched once the project nears the window limit | Reference every chat needs whole: the rules, the map, the current queue | Records, superseded drafts, anything a chat can be pointed to when it needs it |
 | Memory | Account, plus one store per project | As the app inserts it; how much is not stated | Facts about you that come up unprompted | Rules, and anything already in a file |
-| Skills | Account | Name and description every turn; body when a request matches | One procedure for one kind of task | Facts and standing rules |
+| Skills | Account (claude.ai); a machine or a repository (Claude Code: [*Extend Claude with skills*](https://code.claude.com/docs/en/skills), read 16 Nov 2026) | Name and description every turn; body when a request matches | One procedure for one kind of task | Facts and standing rules |
 | Connectors and tools | Account | By setting: at the start, by Claude's choice, or when searched for | Live access to a service a task uses | Services no task in the project uses |
 | Scheduled tasks | Account | Their own session, run by run | Unattended, repeatable jobs with a clear outcome | Work that needs a judgement mid-run |
 
@@ -376,6 +376,7 @@ All web pages read on 15 November 2026. Anthropic's help-centre pages show no ex
 - Anthropic. *Agent Skills*. Claude Platform Docs. https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
 - Anthropic. *How Claude remembers your project*. Claude Code Docs. https://code.claude.com/docs/en/memory
 - Anthropic. *Automate work with scheduled tasks*. Claude Code Docs. https://code.claude.com/docs/en/web-scheduled-tasks
+- Anthropic. *Extend Claude with skills*. Claude Code Docs. https://code.claude.com/docs/en/skills
 - Rajasekaran, P., Dixon, E., Ryan, C. and Hadfield, J. (Anthropic Applied AI team). *Effective context engineering for AI agents*. Anthropic Engineering, 29 September 2025. https://anthropic.com/engineering/effective-context-engineering-for-ai-agents
 
 **Vendor documentation: OpenAI, Google, GitHub**
@@ -416,3 +417,5 @@ All web pages read on 15 November 2026. Anthropic's help-centre pages show no ex
 Object: none
 
 Fresh check 2026-11-15 (claude-opus-5-5): fix · 2 errors, 5 should-fix, 5 minor; report `audits/building-with-ai/fresh-check-BW4.md`
+
+Correction 2026-11-16, found by BW8's writer (corrections check `audits/building-with-ai/corrections-2026-11-16-BW8-B5-BW4.md`, Changes 6 and 7).
