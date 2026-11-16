@@ -197,7 +197,7 @@ The prompt "must be self-contained and explicit about what to do and what succes
     {"label": "Session must be open", "cells": ["no", "no", "yes"]},
     {"label": "Local files", "cells": [{"mark": "no: fresh clone", "tone": 1}, {"mark": "yes", "tone": 3}, {"mark": "yes", "tone": 3}]},
     {"label": "Permission prompts", "cells": ["auto mode", "set per task", "as the session"]},
-    {"label": "Minimum interval", "cells": ["1 hour", "1 hour in forms, 1 minute by Claude", "1 minute"]}
+    {"label": "Minimum interval", "cells": ["1 hour", "forms: 1 hour; Claude: 1 minute", "1 minute"]}
   ],
   "caption": "Claude Code's three ways to schedule work, by what each reaches (§6 of this unit). From Anthropic, Schedule recurring tasks in Claude Code Desktop, its comparison table, read 16 Nov 2026 (vendor). A /loop task also expires seven days after it is created, by Run prompts on a schedule."
 }

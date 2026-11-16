@@ -1054,6 +1054,11 @@ def frames(pg, fig, path, label):
     fig.scroll_into_view_if_needed(); pg.wait_for_timeout(60)
     sw, cw, x_open, x0 = sc.evaluate("s => [s.scrollWidth, s.clientWidth, s.scrollLeft, +s.getAttribute('data-x0px') || 0]")
     x, xs, shots = min(x0, x_open), [], []
+    # W-BW8 (16 Nov 2026): beside a sticky label column (and its 36 px fades) the clear room is narrower than the frame; the
+    # step is a third of that room, so a matrix column up to two thirds of it is clear of both fades in at least one frame
+    # (BW8 figure 4's Desktop column was under a fade in every half-frame stop at 360 and 390 px)
+    stick = sc.evaluate("s => { for (const e of s.children) if (e.matches('.viz-stick,.viz-stickn') && getComputedStyle(e).display !== 'none') return e.getBoundingClientRect().width; return 0; }")
+    step = max(cw // 2, 1) if not stick else max((cw - int(stick) - 72) // 3, 16)
     while True:
         sc.evaluate(f's => {{ s.scrollLeft = {x}; }}'); pg.wait_for_timeout(120)
         x = sc.evaluate('s => s.scrollLeft'); xs.append(x)
@@ -1061,7 +1066,7 @@ def frames(pg, fig, path, label):
         fig.screenshot(path=str(tmp), timeout=120000); shots.append(tmp)
         if x + cw >= sw - 1 or len(shots) >= 60:
             break
-        x = min(x + max(cw // 2, 1), sw - cw)
+        x = min(x + step, sw - cw)
     sc.evaluate(f's => {{ s.scrollLeft = {x_open}; }}')
     pg.evaluate("() => { for (const el of document.querySelectorAll('[data-p89]')) { el.style.removeProperty(el.dataset.p89 === 's' ? 'position' : 'visibility'); delete el.dataset.p89; } }")
     ims = [Image.open(s) for s in shots]
