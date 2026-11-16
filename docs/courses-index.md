@@ -148,6 +148,26 @@ The public course **BW · Building with AI**, created 11 Nov 2026 (row G-0): Bra
 | 12 | DD-BW2 | BW | Deep dive: one project, with its numbers | written 16 Nov 2026 (fresh check `audits/building-with-ai/fresh-check-DD-BW2.md`) | Opus 5.5 | off | `courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md` |
 | 13 | DD-BW3 | BW | Deep dive: audit your own usage | written 16 Nov 2026 (fresh check `audits/building-with-ai/fresh-check-DD-BW3.md`) | Opus 5.5 | off | `courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md` |
 
+## Sport Psychology (public)
+
+The public course **SP · Sport Psychology for Coaches**, created 16 Nov 2026 (row S-SP0; syllabus drafted the same day on Fable 5.2, `docs/sport-psychology-syllabus.md`): written for a coach of athletes aged about 10 to 25 in any sport, with no training in psychology, an exception to the single-reader rule; the reader is the persona in each brief's preamble. Adapted from nothing: no source units; a seed bibliography of 97 references checked for existence only (`gen/data/sport-psychology/bibliography.md`). The running case is three fictional athletes, Dani, Milan and Sara (`gen/data/sport-psychology/case-facts.md`). Ten core units in four parts and three deep dives, in the Coaching track. 0 of 13 written. A unit is written when its file is in `courses/sport-psychology/` (the folder appears with the first one). Briefs: the course's Briefs page in Academy (`gen/data/sport-psychology/units_data.py`, with `AIMS`). Build order: the Build order page, in syllabus order; search on for SP9, DD-SP1 and DD-SP2 only. Sourcing: `docs/sourcing-standard.md` Parts 1 and 7. Syllabus flags: `gen/data/sport-psychology/syllabus-flags.md`. Decisions: `docs/public-courses.md`. Prompts: `docs/sport-psychology-prompts.md`, printed by `kit/next_prompt.py`.
+
+| # | Unit | Course | Title | Status | Model | Search | Path |
+|---|---|---|---|---|---|---|---|
+| 1 | SP1 | SP | What a coach can do, and how to tell evidence from noise | not written | Opus 5.5 | off | `courses/sport-psychology/SP1-what-a-coach-can-do-and-how-to-tell-evidence-from-noise.md` |
+| 2 | SP2 | SP | The developing athlete, 10 to 25 | not written | Opus 5.5 | off | `courses/sport-psychology/SP2-the-developing-athlete-10-to-25.md` |
+| 3 | SP3 | SP | Motivation and the climate you create | not written | Opus 5.5 | off | `courses/sport-psychology/SP3-motivation-and-the-climate-you-create.md` |
+| 4 | SP4 | SP | Anxiety, arousal and performing under pressure | not written | Opus 5.5 | off | `courses/sport-psychology/SP4-anxiety-arousal-and-performing-under-pressure.md` |
+| 5 | SP5 | SP | The cognitive-behavioural toolkit | not written | Opus 5.5 | off | `courses/sport-psychology/SP5-the-cognitive-behavioural-toolkit.md` |
+| 6 | SP6 | SP | Training under pressure | not written | Opus 5.5 | off | `courses/sport-psychology/SP6-training-under-pressure.md` |
+| 7 | SP7 | SP | Reading and responding to an athlete | not written | Opus 5.5 | off | `courses/sport-psychology/SP7-reading-and-responding-to-an-athlete.md` |
+| 8 | SP8 | SP | Competition day | not written | Opus 5.5 | off | `courses/sport-psychology/SP8-competition-day.md` |
+| 9 | SP9 | SP | Wellbeing, red flags and referral | not written | Opus 5.5 | on | `courses/sport-psychology/SP9-wellbeing-red-flags-and-referral.md` |
+| 10 | SP10 | SP | The season plan | not written | Opus 5.5 | off | `courses/sport-psychology/SP10-the-season-plan.md` |
+| 11 | DD-SP1 | SP | Deep dive: the coach's line with minors | not written | Opus 5.5 | on | `courses/sport-psychology/DD-SP1-deep-dive-the-coachs-line-with-minors.md` |
+| 12 | DD-SP2 | SP | Deep dive: weight, body and who decides | not written | Opus 5.5 | on | `courses/sport-psychology/DD-SP2-deep-dive-weight-body-and-who-decides.md` |
+| 13 | DD-SP3 | SP | Deep dive: tuning out the noise | not written | Opus 5.5 | off | `courses/sport-psychology/DD-SP3-deep-dive-tuning-out-the-noise.md` |
+
 ## Personal Mythology
 
 One reader, one civilisation at a time; each module a long-form report with named sources, dispute boxes, a ten-question self-test and three carry-forward ideas. Model column: the model that wrote the report (`kit/provenance.json`). All modules: search off.

@@ -1,6 +1,6 @@
 # Sourcing standard
 
-One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 6 are each course family's own rules, taken from its brief preamble and its spec; a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
+One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 7 are each course family's own rules, taken from its brief preamble and its spec; a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
 
 A **checkable claim** is any sentence that carries a number, a date, a named source, an attribution ("X argued Y", "the source says"), a mechanism or a recommendation. The auditor's sample is drawn from these (method.md §6).
 
@@ -99,3 +99,27 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] The deliverable is built in full on the case (or on a neutral example whose invented content is labelled) and then given as a template whose blanks say what goes in them.
 - [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
 - [ ] Links are given as links, so the course bibliography can collect them.
+
+## Part 7 · Sport Psychology for Coaches (from the shared preamble of `generator/data/sport-psychology/units_data.py`)
+
+- [ ] Every claim that carries a number, a mechanism or a recommendation is sourced where it is made.
+- [ ] Each source is one of: a consensus or position statement of the IOC, ISSP, FEPSAC, AASP, AAP, ACSM or a national body of the same kind, labelled as consensus; a systematic review or meta-analysis; a peer-reviewed primary study; a standard textbook or handbook cited by edition and chapter; for safeguarding and rules, the issuing body's own page, dated.
+- [ ] No video, podcast, social-media post, blog, coaching influencer, popular book or press report of a study is cited as a source; one may be named only as the claim under examination.
+- [ ] Every reference in Sources is in the unit's source log with the address opened, what was read (abstract or full text) and the date; a claim that rests on an abstract alone says so.
+- [ ] Every Sources entry matches its publisher's or Crossref's record: authors, title, journal, year, volume, pages, DOI.
+- [ ] Every technique and recommendation carries one of the five grades (strong, moderate, weak, contested, practice), and the grade follows SP1's key.
+- [ ] A study's finding states its sample (children, adolescents, students, adult athletes, non-athletes) and its design; a correlation is called a correlation.
+- [ ] A finding from adults, students or non-athletes applied to younger athletes is labelled as the unit's inference.
+- [ ] An effect size is given in the source's own terms, with the sample it comes from, or not given.
+- [ ] A popular claim on the course's list is named as a claim and set against its evidence, or against "no peer-reviewed source found".
+- [ ] The unit stays inside the coach's part: nothing teaches assessment, diagnosis or treatment, and each topic of mental health, eating, injury or abuse says where the coach's part ends and who takes over.
+- [ ] No weight-loss method, calorie figure or target weight appears; nothing describes a method of self-harm.
+- [ ] No law is stated as the reader's; a legal or reporting duty is a question with the body to consult; the unit says it is information, not legal, medical or psychological advice.
+- [ ] No real athlete, coach or club is named as an example of abuse, illness or failure unless a cited court, public inquiry or peer-reviewed source names them.
+- [ ] Examples come from at least three kinds of sport, and no single sport supplies more than a third of them.
+- [ ] Every fact about Dani, Milan and Sara is labelled "(fictional)" on first use, agrees with `case-facts.md`, and is never used as evidence.
+- [ ] Nothing about the Project's owner, his sport, his club or his athletes appears (`python3 kit/private_terms.py` prints OK).
+- [ ] Where the search flag is on (SP9, DD-SP1, DD-SP2), every code, rule, tool, service or reporting route carries the date it was read on the issuing body's own page.
+- [ ] The deliverable is built in full on the case athletes the brief names and then given as a template whose blanks say what goes in them.
+- [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
+- [ ] Links are given as links, the DOI address for a paper, so the course bibliography can collect them.
