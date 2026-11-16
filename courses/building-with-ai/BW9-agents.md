@@ -128,10 +128,10 @@ Two reasons, each documented. **Isolation keeps noise out of your window**: the 
 
 ### What a subagent loads, and how BW8's skill reaches it
 
-BW8's skill form (BW8, Deliverable, and its §2 to §6) is what an agent in this unit loads when it needs a procedure. Four facts about that path, re-read on 16 Nov 2026 on Anthropic's *Extend Claude with skills* ([Claude Code documentation](https://code.claude.com/docs/en/skills?m=1); vendor):
+BW8's skill form (BW8, Deliverable, and its §2 to §6) is what an agent in this unit loads when it needs a procedure. Four facts about that path, re-read on 16 Nov 2026 on Anthropic's *Extend Claude with skills* ([Claude Code documentation](https://code.claude.com/docs/en/skills); vendor):
 
 - A subagent given a skill in its `skills` field has the skill's full content injected at startup, unlike a skill that loads when a request matches its description (same page).
-- `disable-model-invocation: true` keeps Claude from loading a skill on its own, also prevents the skill from being preloaded into subagents, and from running when a scheduled task fires with the skill as its prompt. A skill you mark this way cannot be handed to an agent.
+- `disable-model-invocation: true` keeps Claude from loading a skill on its own, also prevents the skill from being preloaded into subagents, and from running when a session-scoped scheduled task fires with the skill as its prompt. A skill you mark this way cannot be handed to an agent.
 - An invoked skill's text enters the conversation once and "Claude Code does not re-read the skill file on later turns"; the page's advice is to write guidance that must hold throughout a task as standing instructions.
 - After compaction Claude Code re-attaches the most recent invocation of each skill, keeping its first 5,000 tokens, within a combined 25,000; older skills can drop out. A long agent run that invoked many skills may lose the earliest.
 
@@ -496,7 +496,7 @@ All web pages read on 16 November 2026 at the address a web search returned. Ven
 - Anthropic. *Manage costs effectively*. Claude Code documentation (read at this address). https://code.claude.com/docs/en/costs?ref=t01.li
 - Anthropic. *Security*. Claude Code documentation (read at this address). https://code.claude.com/docs/en/security?web=1
 - Anthropic. *Automate work with scheduled tasks*. Claude Code documentation. https://code.claude.com/docs/en/web-scheduled-tasks
-- Anthropic. *Extend Claude with skills*. Claude Code documentation (read at this address). https://code.claude.com/docs/en/skills?m=1
+- Anthropic. *Extend Claude with skills*. Claude Code documentation. https://code.claude.com/docs/en/skills
 - Hadfield, J., Zhang, B., Lien, K., Scholz, F., Fox, J. and Ford, D. *How we built our multi-agent research system*. Anthropic Engineering, 13 June 2025. https://www.anthropic.com/engineering/multi-agent-research-system
 - Anthropic. *Mitigating the risk of prompt injections in browser use* (page title: Mitigating prompt injections in browser use). 24 November 2025. https://anthropic.com/research/prompt-injection-defenses
 - Anthropic. *How Anthropic teams use Claude Code*. 24 July 2025. https://claude.com/resources/articles/how-anthropic-teams-use-claude-code
@@ -533,3 +533,5 @@ Object: none
 Fresh check 2026-11-16 (Opus 5.5 (claude-opus-5-5)): keep · 0 errors, 7 should-fix, 11 minor; report `audits/building-with-ai/fresh-check-BW9.md`
 
 Correction 2026-11-16, found by the corrections check of row W-BW9 (`audits/building-with-ai/corrections-2026-11-16-BW9-r2-BW8-BW9.md`, Change 2: no version on the page).
+
+Correction 2026-11-16, corrections C-BW9-1 and C-BW9-2, worked at W-BW10 step 1b (`audits/building-with-ai/corrections-2026-11-16-BW10-C-BW9.md`).
