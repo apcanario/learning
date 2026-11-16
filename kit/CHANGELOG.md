@@ -161,6 +161,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 - `kit/thin.py`: `sourcing_text` (the standard's opening, Part 1 and the course's part); `stage writer` gives a course with no source units its `bibliography.md` and no `sources/`; `stage checker --sources F`; `insert` drops the case register's placeholder row with the first fact; filer rule 5 for `case_lines`. building-with-ai packets unchanged (W-BW5, byte for byte).
 - `kit/next_prompt.py`: `sport-psychology` in `QUEUE`; `doc_parts` and `prompt_doc` print a row from the template, safety reader and row paragraphs in the course's `prompts_doc`. building-with-ai prompts unchanged.
 - Registration check (fresh Opus 5.5 agent): PASS 10 of 10, `audits/sport-psychology/registration-2026-11-16.md`.
+- Build, `verify.py` and `verify.py --shots --page sport-psychology-sp --page sport-psychology-sp-build`: ALL CHECKS PASSED. Published: artifact 1794862364-92ba (6 files, sha256 read back); Pages academy 78222bd, run 43954358072 success.
 
 ## 16 Nov 2026 · Session W-DD-BW3 · DD-BW3 Deep dive: audit your own usage
 
