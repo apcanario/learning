@@ -2533,7 +2533,8 @@
    "file": "money.svg",
    "depicts": "a banknote (the sign for money)",
    "courses": [
-    "brand-a"
+    "brand-a",
+    "personal-brand-pb"
    ],
    "keywords": [
     "money",
@@ -2587,6 +2588,40 @@
       "courses/brand-ai/A6-how-growth-works-per-platform.md",
       2
      ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB9-monetisation-what-pays-at-each-audience-size.md",
+      23
+     ],
+     [
+      "courses/personal-brand/PB1-what-to-expect-odds-timeline-cost.md",
+      14
+     ],
+     [
+      "courses/personal-brand/PB10-read-your-numbers-the-quarterly-review.md",
+      13
+     ],
+     [
+      "courses/personal-brand/DD-PB1-deep-dive-creators-who-did-this.md",
+      7
+     ],
+     [
+      "courses/personal-brand/DD-PB2-deep-dive-the-quit-your-job-math.md",
+      5
+     ],
+     [
+      "courses/personal-brand/PB8-voice-disclosure-and-the-rules.md",
+      5
+     ],
+     [
+      "courses/personal-brand/PB6-how-youtube-growth-works.md",
+      2
+     ],
+     [
+      "courses/personal-brand/PB3-audience-and-the-two-platforms.md",
+      1
+     ]
     ]
    }
   },
@@ -2636,7 +2671,8 @@
    "depicts": "a phone",
    "courses": [
     "brand-a",
-    "ux-ia"
+    "ux-ia",
+    "personal-brand-pb"
    ],
    "keywords": [
     "phone",
@@ -2682,7 +2718,61 @@
       9
      ],
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      4
+     ],
+     [
+      "courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md",
+      2
+     ],
+     [
+      "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      1
+     ],
+     [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
+      1
+     ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB5-production-craft-with-a-phone.md",
+      45
+     ],
+     [
+      "courses/personal-brand/PB4-the-content-system.md",
+      14
+     ],
+     [
+      "courses/personal-brand/PB6-how-youtube-growth-works.md",
+      10
+     ],
+     [
+      "courses/personal-brand/PB1-what-to-expect-odds-timeline-cost.md",
+      8
+     ],
+     [
+      "courses/personal-brand/PB7-how-instagram-growth-works.md",
+      5
+     ],
+     [
+      "courses/personal-brand/PB10-read-your-numbers-the-quarterly-review.md",
+      3
+     ],
+     [
+      "courses/personal-brand/PB2-positioning-the-sentence-a-stranger-can-repeat.md",
+      3
+     ],
+     [
+      "courses/personal-brand/PB3-audience-and-the-two-platforms.md",
+      2
+     ],
+     [
+      "courses/personal-brand/DD-PB1-deep-dive-creators-who-did-this.md",
+      1
+     ],
+     [
+      "courses/personal-brand/DD-PB2-deep-dive-the-quit-your-job-math.md",
       1
      ]
     ]
@@ -2694,7 +2784,8 @@
    "depicts": "a calendar",
    "courses": [
     "brand-a",
-    "brand-b"
+    "brand-b",
+    "personal-brand-pb"
    ],
    "keywords": [
     "calendar",
@@ -2765,6 +2856,24 @@
       "courses/brand-ai/B8-cost-limits-hygiene.md",
       2
      ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB4-the-content-system.md",
+      8
+     ],
+     [
+      "courses/personal-brand/PB1-what-to-expect-odds-timeline-cost.md",
+      4
+     ],
+     [
+      "courses/personal-brand/PB8-voice-disclosure-and-the-rules.md",
+      3
+     ],
+     [
+      "courses/personal-brand/PB3-audience-and-the-two-platforms.md",
+      1
+     ]
     ]
    }
   },
@@ -2797,6 +2906,10 @@
    "texts": {
     "ux-ia": [
      [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      104
+     ],
+     [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
       56
      ],
@@ -2813,8 +2926,24 @@
       43
      ],
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      39
+     ],
+     [
       "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
       39
+     ],
+     [
+      "courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md",
+      36
+     ],
+     [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      34
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      33
      ],
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
@@ -2896,6 +3025,18 @@
       11
      ],
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      10
+     ],
+     [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      8
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      5
+     ],
+     [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
       4
      ],
@@ -2914,6 +3055,10 @@
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
       2
+     ],
+     [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      1
      ],
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
@@ -3029,6 +3174,10 @@
       9
      ],
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      4
+     ],
+     [
       "courses/ux/IA8-level-4-the-system-map.md",
       4
      ],
@@ -3037,8 +3186,24 @@
       3
      ],
      [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      2
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      2
+     ],
+     [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
       2
+     ],
+     [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      1
+     ],
+     [
+      "courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md",
+      1
      ],
      [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
@@ -3057,7 +3222,8 @@
    "depicts": "a folder",
    "courses": [
     "brand-a",
-    "brand-b"
+    "brand-b",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "folder",
@@ -3112,16 +3278,46 @@
       "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
       1
      ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      36
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      15
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      14
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      4
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      3
+     ],
+     [
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      3
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      3
+     ]
     ]
-   },
-   "spare": "named in passing; kept"
+   }
   },
   {
    "id": "terminal",
    "file": "terminal.svg",
    "depicts": "a terminal window (the sign for Claude Code)",
    "courses": [
-    "brand-b"
+    "brand-b",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "terminal",
@@ -3179,6 +3375,60 @@
      ],
      [
       "courses/brand-ai/B6-research-and-verification.md",
+      1
+     ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      69
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      35
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      34
+     ],
+     [
+      "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
+      20
+     ],
+     [
+      "courses/building-with-ai/BW1-mental-model.md",
+      17
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      15
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      12
+     ],
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      8
+     ],
+     [
+      "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
+      8
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      7
+     ],
+     [
+      "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
+      5
+     ],
+     [
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
       1
      ]
     ]
@@ -3369,7 +3619,8 @@
    "depicts": "a checklist",
    "courses": [
     "brand-b",
-    "ux-ia"
+    "ux-ia",
+    "personal-brand-pb"
    ],
    "keywords": [
     "checklist",
@@ -3417,6 +3668,10 @@
       10
      ],
      [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      8
+     ],
+     [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
       5
      ],
@@ -3429,12 +3684,37 @@
       2
      ],
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      1
+     ],
+     [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       1
      ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB8-voice-disclosure-and-the-rules.md",
+      6
+     ],
+     [
+      "courses/personal-brand/PB4-the-content-system.md",
+      3
+     ],
+     [
+      "courses/personal-brand/PB5-production-craft-with-a-phone.md",
+      3
+     ],
+     [
+      "courses/personal-brand/DD-PB1-deep-dive-creators-who-did-this.md",
+      1
+     ],
+     [
+      "courses/personal-brand/DD-PB2-deep-dive-the-quit-your-job-math.md",
+      1
+     ]
     ]
-   },
-   "spare": "kept for a deliverable that is a checklist"
+   }
   },
   {
    "id": "database",
@@ -3574,16 +3854,36 @@
       29
      ],
      [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      22
+     ],
+     [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       19
+     ],
+     [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      18
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
       10
      ],
      [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      8
+     ],
+     [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      8
+     ],
+     [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
       7
+     ],
+     [
+      "courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md",
+      1
      ]
     ]
    }
@@ -3647,6 +3947,18 @@
       3
      ],
      [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      1
+     ],
+     [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      1
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      1
+     ],
+     [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
       1
      ],
@@ -3686,6 +3998,14 @@
    "texts": {
     "ux-ia": [
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      75
+     ],
+     [
+      "courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md",
+      40
+     ],
+     [
       "courses/ux/IA8-level-4-the-system-map.md",
       36
      ],
@@ -3696,6 +4016,18 @@
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       25
+     ],
+     [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      23
+     ],
+     [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      20
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      15
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -3785,6 +4117,14 @@
       9
      ],
      [
+      "courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md",
+      8
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      8
+     ],
+     [
       "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
       8
      ],
@@ -3793,12 +4133,24 @@
       7
      ],
      [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      6
+     ],
+     [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      5
+     ],
+     [
       "courses/ux/IA6-level-2-the-client-app.md",
       5
      ],
      [
       "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
       4
+     ],
+     [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      3
      ]
     ]
    }
@@ -3832,6 +4184,10 @@
    "excludes": [],
    "texts": {
     "ux-ia": [
+     [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      11
+     ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       8
@@ -3880,6 +4236,10 @@
    "texts": {
     "ux-ia": [
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      7
+     ],
+     [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
       7
      ],
@@ -3898,6 +4258,10 @@
      [
       "courses/ux/IA6-level-2-the-client-app.md",
       2
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      1
      ]
     ]
    },
@@ -3931,6 +4295,10 @@
    "texts": {
     "ux-ia": [
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      35
+     ],
+     [
       "courses/ux/IA6-level-2-the-client-app.md",
       21
      ],
@@ -3941,6 +4309,10 @@
      [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
       6
+     ],
+     [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      4
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
@@ -4016,11 +4388,23 @@
       6
      ],
      [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      5
+     ],
+     [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      4
+     ],
+     [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
       1
      ],
      [
       "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
+      1
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
       1
      ],
      [
@@ -4074,6 +4458,10 @@
       30
      ],
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      19
+     ],
+     [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       12
      ],
@@ -4092,6 +4480,10 @@
      [
       "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
       1
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      1
      ]
     ]
    }
@@ -4102,7 +4494,9 @@
    "depicts": "a magnifying glass (the sign for search)",
    "courses": [
     "brand-b",
-    "ux-ia"
+    "ux-ia",
+    "personal-brand-pb",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "search",
@@ -4170,16 +4564,32 @@
     ],
     "ux-ia": [
      [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      109
+     ],
+     [
       "courses/ux/IA3-how-people-find-and-understand-things.md",
       61
+     ],
+     [
+      "courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md",
+      60
      ],
      [
       "courses/ux/IA5-level-1-the-sales-and-product-website.md",
       28
      ],
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      23
+     ],
+     [
       "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
       23
+     ],
+     [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      20
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
@@ -4188,6 +4598,10 @@
      [
       "courses/ux/IA7-level-3-the-backoffice.md",
       15
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      13
      ],
      [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
@@ -4208,6 +4622,102 @@
      [
       "courses/ux/IA8-level-4-the-system-map.md",
       4
+     ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB6-how-youtube-growth-works.md",
+      31
+     ],
+     [
+      "courses/personal-brand/PB7-how-instagram-growth-works.md",
+      24
+     ],
+     [
+      "courses/personal-brand/PB2-positioning-the-sentence-a-stranger-can-repeat.md",
+      20
+     ],
+     [
+      "courses/personal-brand/PB8-voice-disclosure-and-the-rules.md",
+      17
+     ],
+     [
+      "courses/personal-brand/PB10-read-your-numbers-the-quarterly-review.md",
+      11
+     ],
+     [
+      "courses/personal-brand/PB9-monetisation-what-pays-at-each-audience-size.md",
+      5
+     ],
+     [
+      "courses/personal-brand/PB3-audience-and-the-two-platforms.md",
+      3
+     ],
+     [
+      "courses/personal-brand/PB4-the-content-system.md",
+      3
+     ],
+     [
+      "courses/personal-brand/DD-PB1-deep-dive-creators-who-did-this.md",
+      2
+     ],
+     [
+      "courses/personal-brand/DD-PB2-deep-dive-the-quit-your-job-math.md",
+      1
+     ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      49
+     ],
+     [
+      "courses/building-with-ai/BW1-mental-model.md",
+      26
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      20
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      19
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      17
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      15
+     ],
+     [
+      "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
+      14
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      9
+     ],
+     [
+      "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
+      9
+     ],
+     [
+      "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
+      5
+     ],
+     [
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      5
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      4
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      3
      ]
     ]
    }
@@ -6581,6 +7091,7 @@
    "courses": [
     "rome",
     "brand-a",
+    "personal-brand-pb",
     "greece"
    ],
    "keywords": [
@@ -6856,6 +7367,24 @@
      [
       "courses/brand-ai/A7-monetisation-through-shomen.md",
       1
+     ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB8-voice-disclosure-and-the-rules.md",
+      50
+     ],
+     [
+      "courses/personal-brand/DD-PB2-deep-dive-the-quit-your-job-math.md",
+      8
+     ],
+     [
+      "courses/personal-brand/PB9-monetisation-what-pays-at-each-audience-size.md",
+      3
+     ],
+     [
+      "courses/personal-brand/PB1-what-to-expect-odds-timeline-cost.md",
+      2
      ]
     ],
     "greece": [
@@ -7307,11 +7836,11 @@
      ],
      [
       "courses/brand-ai/A9-what-to-expect-benchmarks.md",
-      82
+      83
      ],
      [
       "courses/brand-ai/A6-how-growth-works-per-platform.md",
-      72
+      74
      ],
      [
       "courses/brand-ai/A4-voice-disclosure-and-the-record.md",
@@ -7353,7 +7882,8 @@
    "file": "audience.svg",
    "depicts": "three people (the sign for an audience)",
    "courses": [
-    "brand-a"
+    "brand-a",
+    "personal-brand-pb"
    ],
    "keywords": [
     "audience",
@@ -7422,6 +7952,56 @@
       "courses/brand-ai/A3-the-journey-system.md",
       1
      ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB3-audience-and-the-two-platforms.md",
+      36
+     ],
+     [
+      "courses/personal-brand/PB10-read-your-numbers-the-quarterly-review.md",
+      23
+     ],
+     [
+      "courses/personal-brand/PB2-positioning-the-sentence-a-stranger-can-repeat.md",
+      19
+     ],
+     [
+      "courses/personal-brand/PB6-how-youtube-growth-works.md",
+      19
+     ],
+     [
+      "courses/personal-brand/PB7-how-instagram-growth-works.md",
+      14
+     ],
+     [
+      "courses/personal-brand/PB8-voice-disclosure-and-the-rules.md",
+      14
+     ],
+     [
+      "courses/personal-brand/DD-PB2-deep-dive-the-quit-your-job-math.md",
+      12
+     ],
+     [
+      "courses/personal-brand/DD-PB1-deep-dive-creators-who-did-this.md",
+      8
+     ],
+     [
+      "courses/personal-brand/PB9-monetisation-what-pays-at-each-audience-size.md",
+      7
+     ],
+     [
+      "courses/personal-brand/PB1-what-to-expect-odds-timeline-cost.md",
+      5
+     ],
+     [
+      "courses/personal-brand/PB4-the-content-system.md",
+      3
+     ],
+     [
+      "courses/personal-brand/PB5-production-craft-with-a-phone.md",
+      3
+     ]
     ]
    }
   },
@@ -7431,7 +8011,8 @@
    "depicts": "a notebook (the sign for the record)",
    "courses": [
     "brand-a",
-    "ux-ia"
+    "ux-ia",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "the record",
@@ -7497,12 +8078,32 @@
       26
      ],
      [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      23
+     ],
+     [
       "courses/ux/IA10-touchpoints-what-each-part-of-the-business-needs-from-the-ia.md",
       16
      ],
      [
+      "courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md",
+      10
+     ],
+     [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      9
+     ],
+     [
       "courses/ux/IA7-level-3-the-backoffice.md",
       8
+     ],
+     [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      5
+     ],
+     [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      3
      ],
      [
       "courses/ux/IA6-level-2-the-client-app.md",
@@ -7524,6 +8125,52 @@
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       1
      ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      38
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      18
+     ],
+     [
+      "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
+      16
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      3
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      2
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      2
+     ],
+     [
+      "courses/building-with-ai/BW1-mental-model.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      1
+     ]
     ]
    }
   },
@@ -7532,7 +8179,8 @@
    "file": "chart.svg",
    "depicts": "a rising trend line (the sign for growth benchmarks)",
    "courses": [
-    "brand-a"
+    "brand-a",
+    "personal-brand-pb"
    ],
    "keywords": [
     "benchmark",
@@ -7593,6 +8241,44 @@
       "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
       2
      ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB1-what-to-expect-odds-timeline-cost.md",
+      13
+     ],
+     [
+      "courses/personal-brand/PB7-how-instagram-growth-works.md",
+      12
+     ],
+     [
+      "courses/personal-brand/PB10-read-your-numbers-the-quarterly-review.md",
+      5
+     ],
+     [
+      "courses/personal-brand/PB6-how-youtube-growth-works.md",
+      5
+     ],
+     [
+      "courses/personal-brand/PB3-audience-and-the-two-platforms.md",
+      3
+     ],
+     [
+      "courses/personal-brand/DD-PB1-deep-dive-creators-who-did-this.md",
+      2
+     ],
+     [
+      "courses/personal-brand/DD-PB2-deep-dive-the-quit-your-job-math.md",
+      2
+     ],
+     [
+      "courses/personal-brand/PB5-production-craft-with-a-phone.md",
+      2
+     ],
+     [
+      "courses/personal-brand/PB9-monetisation-what-pays-at-each-audience-size.md",
+      2
+     ]
     ]
    }
   },
@@ -7601,7 +8287,8 @@
    "file": "piggy-bank.svg",
    "depicts": "a piggy bank (the sign for savings)",
    "courses": [
-    "brand-a"
+    "brand-a",
+    "personal-brand-pb"
    ],
    "keywords": [
     "savings",
@@ -7626,6 +8313,12 @@
       "courses/brand-ai/DD-A2-deep-dive-the-exit-math.md",
       30
      ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/DD-PB2-deep-dive-the-quit-your-job-math.md",
+      49
+     ]
     ]
    }
   },
@@ -7634,7 +8327,8 @@
    "file": "context-window.svg",
    "depicts": "an app window (the sign for the context window)",
    "courses": [
-    "brand-b"
+    "brand-b",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "context window",
@@ -7661,7 +8355,7 @@
      ],
      [
       "courses/brand-ai/B8-cost-limits-hygiene.md",
-      7
+      8
      ],
      [
       "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
@@ -7669,7 +8363,7 @@
      ],
      [
       "courses/brand-ai/B4-context-engineering.md",
-      4
+      5
      ],
      [
       "courses/brand-ai/B5-skills-and-automation.md",
@@ -7683,6 +8377,52 @@
       "courses/brand-ai/B3-prompting-that-holds-up.md",
       1
      ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/BW1-mental-model.md",
+      22
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      6
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      6
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      5
+     ],
+     [
+      "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
+      3
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      3
+     ],
+     [
+      "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
+      2
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      2
+     ],
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      1
+     ]
     ]
    }
   },
@@ -7691,7 +8431,8 @@
    "file": "cost.svg",
    "depicts": "coins (the sign for cost)",
    "courses": [
-    "brand-b"
+    "brand-b",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "cost",
@@ -7759,6 +8500,60 @@
       "courses/brand-ai/B7-content-pipeline.md",
       3
      ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
+      128
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      47
+     ],
+     [
+      "courses/building-with-ai/BW1-mental-model.md",
+      19
+     ],
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      18
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      15
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      11
+     ],
+     [
+      "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
+      10
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      10
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      8
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      7
+     ],
+     [
+      "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
+      7
+     ],
+     [
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      5
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      1
+     ]
     ]
    }
   },
@@ -7767,7 +8562,8 @@
    "file": "chat.svg",
    "depicts": "a speech bubble (the sign for a chat)",
    "courses": [
-    "brand-b"
+    "brand-b",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "chat",
@@ -7804,7 +8600,7 @@
      ],
      [
       "courses/brand-ai/B1-mental-model.md",
-      73
+      74
      ],
      [
       "courses/brand-ai/B5-skills-and-automation.md",
@@ -7834,6 +8630,60 @@
       "courses/brand-ai/B7-content-pipeline.md",
       4
      ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
+      212
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      134
+     ],
+     [
+      "courses/building-with-ai/BW1-mental-model.md",
+      93
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      74
+     ],
+     [
+      "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
+      38
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      24
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      24
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      23
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      22
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      22
+     ],
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      15
+     ],
+     [
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      15
+     ],
+     [
+      "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
+      6
+     ]
     ]
    }
   },
@@ -7842,7 +8692,8 @@
    "file": "stack.svg",
    "depicts": "a stack of layers (the sign for the layers of context)",
    "courses": [
-    "brand-b"
+    "brand-b",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "layer",
@@ -7891,6 +8742,44 @@
       "courses/brand-ai/B8-cost-limits-hygiene.md",
       3
      ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/BW1-mental-model.md",
+      35
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      28
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      6
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      6
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      3
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      2
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      1
+     ]
     ]
    }
   },
@@ -7899,7 +8788,8 @@
    "file": "battery.svg",
    "depicts": "a half-charged battery (the sign for usage limits)",
    "courses": [
-    "brand-b"
+    "brand-b",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "limit",
@@ -7923,7 +8813,7 @@
     "brand-b": [
      [
       "courses/brand-ai/B8-cost-limits-hygiene.md",
-      116
+      118
      ],
      [
       "courses/brand-ai/B2-choosing-the-model.md",
@@ -7935,19 +8825,19 @@
      ],
      [
       "courses/brand-ai/B4-context-engineering.md",
-      24
+      25
      ],
      [
       "courses/brand-ai/B5-skills-and-automation.md",
       18
      ],
      [
-      "courses/brand-ai/B1-mental-model.md",
-      17
-     ],
-     [
       "courses/brand-ai/B6-research-and-verification.md",
       16
+     ],
+     [
+      "courses/brand-ai/B1-mental-model.md",
+      15
      ],
      [
       "courses/brand-ai/B3-prompting-that-holds-up.md",
@@ -7965,6 +8855,60 @@
       "courses/brand-ai/DD-B3-deep-dive-how-the-best-practitioners-use-the-tool.md",
       6
      ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      150
+     ],
+     [
+      "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
+      53
+     ],
+     [
+      "courses/building-with-ai/BW1-mental-model.md",
+      23
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      21
+     ],
+     [
+      "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
+      19
+     ],
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      17
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      16
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      14
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      14
+     ],
+     [
+      "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
+      6
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      4
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      4
+     ],
+     [
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      2
+     ]
     ]
    }
   },
@@ -7973,7 +8917,8 @@
    "file": "pen-nib.svg",
    "depicts": "a pen nib (the sign for writing a brief)",
    "courses": [
-    "brand-b"
+    "brand-b",
+    "building-with-ai-bw"
    ],
    "keywords": [
     "brief",
@@ -8038,6 +8983,60 @@
       "courses/brand-ai/B2-choosing-the-model.md",
       2
      ]
+    ],
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
+      95
+     ],
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      68
+     ],
+     [
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      31
+     ],
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      27
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
+      27
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      23
+     ],
+     [
+      "courses/building-with-ai/BW4-context-engineering.md",
+      18
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      16
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      11
+     ],
+     [
+      "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
+      11
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      9
+     ],
+     [
+      "courses/building-with-ai/BW1-mental-model.md",
+      6
+     ],
+     [
+      "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
+      4
+     ]
     ]
    }
   },
@@ -8080,12 +9079,20 @@
       10
      ],
      [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      4
+     ],
+     [
       "courses/ux/IA1-what-information-architecture-is-and-where-it-sits.md",
       2
      ],
      [
       "courses/ux/IA4-organisation-systems-schemes-structures-objects-taxonomies.md",
       2
+     ],
+     [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      1
      ],
      [
       "courses/ux/IA8-level-4-the-system-map.md",
@@ -8099,12 +9106,15 @@
    "file": "table.svg",
    "depicts": "a table with a header row and a label column (the sign for a matrix)",
    "courses": [
-    "ux-ia"
+    "ux-ia",
+    "personal-brand-pb"
    ],
    "keywords": [
     "matrix",
     "matrices",
-    "touchpoint matrix"
+    "touchpoint matrix",
+    "metrics sheet",
+    "the sheet"
    ],
    "source": {
     "repository": "phosphor-icons/core",
@@ -8130,15 +9140,216 @@
       20
      ],
      [
+      "courses/ux/IA11-validating-an-ia-evidence-methods-numbers.md",
+      13
+     ],
+     [
+      "courses/ux/IA12-when-the-inputs-are-missing-building-the-backbone-anyway.md",
+      13
+     ],
+     [
       "courses/ux/IA2-the-shapes-ia-takes-the-artefact-catalogue-and-the-course-notation.md",
       5
+     ],
+     [
+      "courses/ux/DD-IA1-deep-dive-five-information-architectures-read-closely.md",
+      3
      ],
      [
       "courses/ux/IA8-level-4-the-system-map.md",
       3
      ],
      [
+      "courses/ux/DD-IA2-deep-dive-what-ia-costs-and-returns.md",
+      2
+     ],
+     [
+      "courses/ux/DD-IA3-deep-dive-taxonomy-and-governance-at-scale.md",
+      2
+     ],
+     [
       "courses/ux/IA9-ia-in-the-product-development-lifecycle.md",
+      1
+     ]
+    ],
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB10-read-your-numbers-the-quarterly-review.md",
+      12
+     ],
+     [
+      "courses/personal-brand/PB7-how-instagram-growth-works.md",
+      3
+     ],
+     [
+      "courses/personal-brand/PB6-how-youtube-growth-works.md",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "at-sign",
+   "file": "at-sign.svg",
+   "depicts": "an @ sign (the sign for a handle)",
+   "courses": [
+    "personal-brand-pb"
+   ],
+   "keywords": [
+    "handle",
+    "handles"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/at-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/at-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "set": "phosphor",
+   "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
+   "background_removed": false,
+   "excludes": [],
+   "texts": {
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB2-positioning-the-sentence-a-stranger-can-repeat.md",
+      62
+     ],
+     [
+      "courses/personal-brand/PB3-audience-and-the-two-platforms.md",
+      1
+     ],
+     [
+      "courses/personal-brand/PB4-the-content-system.md",
+      1
+     ],
+     [
+      "courses/personal-brand/PB7-how-instagram-growth-works.md",
+      1
+     ],
+     [
+      "courses/personal-brand/PB8-voice-disclosure-and-the-rules.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "link",
+   "file": "link.svg",
+   "depicts": "a chain link (the sign for a profile link)",
+   "courses": [
+    "personal-brand-pb"
+   ],
+   "keywords": [
+    "profile link",
+    "profile links",
+    "link in bio",
+    "a link"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/link-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/link-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "set": "phosphor",
+   "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
+   "background_removed": false,
+   "excludes": [],
+   "texts": {
+    "personal-brand-pb": [
+     [
+      "courses/personal-brand/PB7-how-instagram-growth-works.md",
+      13
+     ],
+     [
+      "courses/personal-brand/PB10-read-your-numbers-the-quarterly-review.md",
+      2
+     ],
+     [
+      "courses/personal-brand/PB3-audience-and-the-two-platforms.md",
+      1
+     ],
+     [
+      "courses/personal-brand/PB4-the-content-system.md",
+      1
+     ],
+     [
+      "courses/personal-brand/PB5-production-craft-with-a-phone.md",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "spec",
+   "file": "spec.svg",
+   "depicts": "a text document (the sign for a specification)",
+   "courses": [
+    "building-with-ai-bw"
+   ],
+   "keywords": [
+    "specification",
+    "specifications",
+    "spec",
+    "specs"
+   ],
+   "source": {
+    "repository": "phosphor-icons/core",
+    "path": "assets/fill/file-text-fill.svg",
+    "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+    "url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/fill/file-text-fill.svg"
+   },
+   "author": "Phosphor Icons",
+   "licence": "MIT",
+   "credit": "Icon: Phosphor Icons, phosphoricons.com, MIT",
+   "set": "phosphor",
+   "licence_url": "https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
+   "background_removed": false,
+   "excludes": [],
+   "texts": {
+    "building-with-ai-bw": [
+     [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      85
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      13
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      11
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      4
+     ],
+     [
+      "courses/building-with-ai/BW6-research-and-verification.md",
+      3
+     ],
+     [
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      2
+     ],
+     [
+      "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
+      2
+     ],
+     [
+      "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/BW9-agents.md",
       1
      ]
     ]

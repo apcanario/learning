@@ -123,7 +123,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | B5 (`read-b5`) | clock | 31 | 4 · Scheduled tasks: what they can and cannot touch |
 | B6 (`read-b6`) | magnifier | 37 | 1 · Ask, search or deep research |
 | B7 (`read-b7`) | picture | 19 | 3 · Thumbnail copy in the Shōmen stylesheet |
-| B8 (`read-b8`) | battery | 116 | 2 · What burns usage for no gain |
+| B8 (`read-b8`) | battery | 118 | 2 · What burns usage for no gain |
 | DD-B1 (`read-dd-b1`) | terminal | 41 | 2 · Claude Code and subagents in practice |
 | DD-B2 (`read-dd-b2`) | chat | 162 | The evidence is this Project's own chat history, read through three past-chat tools. `recent_chats` lists chats by when they were last updated, with each chat's title, its first message, a stretch of its opening or closing turns and, for some chats, a summary. |
 
@@ -149,7 +149,50 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | IA8 (`read-ia8`) | credit-card | 6 | The Perqo card is cancelled at once. A card left Active would let a leaver spend the client's money; a Frozen one could be unfrozen by its holder (IA4, A.3). |
 | IA9 (`read-ia9`) | notebook | 26 | Perqo's IA decision log is one list of entries, kept by the IA designer, each with an identifier DL-001 onward, never reused (Perqo, fictional). |
 
-**None:** DD-IA1 (`read-dd-ia1`), no outline named; DD-IA2 (`read-dd-ia2`), no outline named; DD-IA3 (`read-dd-ia3`), no outline named.
+**None:** DD-IA1 (`read-dd-ia1`), magnifier 109; DD-IA2 (`read-dd-ia2`), magnifier 60; DD-IA3 (`read-dd-ia3`), tag 104.
+
+
+## Personal brand (public)
+
+12 pages with a relief, 12 outlines in use (at-sign, audience, calendar, chart, checklist, link, magnifier, money, phone, piggy-bank, scales, table); 0 pages with none.
+
+| Page | Outline | Names | Deciding sentence |
+|---|---|---|---|
+| DD-PB1 (`read-dd-pb1`) | checklist | 1 | PB1 §9's six-point checklist is applied to every creator, in a short block at the end of each section: (1) the denominator, (2) cadence and hours against yours, (3) the start (an audience elsewhere, a job that gives material or credibility, a thin niche), (4) numbers kept apart from the creator's advice, (5) the date, since platform rules and formats change, (6) the sample's exclusions. |
+| DD-PB2 (`read-dd-pb2`) | piggy-bank | 49 | What runway is for. Runway is the number of months of survivable floor saved and held apart before an exit. |
+| PB1 (`read-pb1`) | chart | 13 | One planning assumption is needed before any benchmark can be applied to her, because most datasets split accounts by how often they post. |
+| PB10 (`read-pb10`) | table | 12 | Three rules shape the sheet. |
+| PB2 (`read-pb2`) | at-sign | 62 | The handle is the scarce part, because only one account on each platform can hold it. |
+| PB3 (`read-pb3`) | audience | 36 | A useful audience description therefore answers four questions, each with its own evidence: |
+| PB4 (`read-pb4`) | calendar | 8 | The calendar runs two weeks ahead, so the next season's first video is already edited when the review sits (D2); the change starts at that season's second video, and from there the season keeps one format, consistent in YouTube's sense. |
+| PB5 (`read-pb5`) | phone | 45 | The clamp holds the phone horizontal on the far edge of the table, about 1.0 metre from where she sits, looking slightly down at the work, with the piece in the middle third and her hands and face in frame when she speaks. |
+| PB6 (`read-pb6`) | magnifier | 31 | And the quality signal is about a channel's standing on a topic, which is one reason a channel that stays on one topic (PB2's positioning) is better placed in search than one that moves around (inference from the page; YouTube gives no weight). |
+| PB7 (`read-pb7`) | link | 13 | The path a stranger takes. A non-follower who meets a Reel can reach YouTube only through the profile: tap the name, tap a link, and the video opens in the in-app browser or the phone's browser (this unit's reading of the sources above; no source lays the path out). |
+| PB8 (`read-pb8`) | scales | 50 | §6 and §7 are the rules: what law and the platforms require of an account that publishes in English to anyone. |
+| PB9 (`read-pb9`) | money | 23 | Lines a platform opens at a threshold. YouTube's fan funding at 500 subscribers and 3,000 watch hours, its ad revenue share at 1,000 subscribers and, for new applicants from 1 February 2027, 8,000 watch hours (§2). |
+
+**None:** every page has one.
+
+
+## Building with AI (public)
+
+11 pages with a relief, 11 outlines in use (battery, chat, context-window, cost, folder, magnifier, notebook, pen-nib, spec, stack, terminal); 2 pages with none.
+
+| Page | Outline | Names | Deciding sentence |
+|---|---|---|---|
+| BW1 (`read-bw1`) | context-window | 22 | 1 · The context window is the one thing you control |
+| BW10 (`read-bw10`) | battery | 150 | You can budget it in what enters each window, which you control (BW1 §1), and read the result on the usage bars. |
+| BW2 (`read-bw2`) | cost | 128 | The cost of a task is the input tokens times the input price, plus the output tokens times the output price, summed over every turn the task takes, with the history re-sent on each turn (BW1 §2). |
+| BW3 (`read-bw3`) | pen-nib | 95 | A brief survives when a reader with no context can act on it without coming back with a question. |
+| BW4 (`read-bw4`) | stack | 28 | Here the question is the next one: given how each layer reaches the window, what should you put in it. |
+| BW5 (`read-bw5`) | spec | 85 | A specification is the text that says what the finished project is, written before any part of it is built, and kept as the thing every part is checked against. |
+| BW6 (`read-bw6`) | magnifier | 49 | What it changes. Search puts a page in the window, so a claim can point to something. |
+| BW8 (`read-bw8`) | folder | 36 | A skill. A folder the assistant reads in two steps: its name and description in every chat where it is installed, its body only when a request matches the description (§2). |
+| BW9 (`read-bw9`) | terminal | 69 | In Claude Code the slider is the permission mode. |
+| DD-BW2 (`read-dd-bw2`) | notebook | 38 | "October and November 2026" and 194 units is as far as the record goes; a rate per day cannot be computed from it, because the file gives no start date. |
+| DD-BW3 (`read-dd-bw3`) | chat | 212 | A chat history is the one record every assistant keeps whether or not you planned to keep one, so it is the one place a task you never wrote a rule for shows up with a count. |
+
+**None:** BW7 (`read-bw7`), pen-nib 31; DD-BW1 (`read-dd-bw1`), chat 24.
 
 
 ## Spare outlines
@@ -170,11 +213,9 @@ In the library and on no page yet, kept for the texts that name them (`spare` in
 - **microphone**: Personal brand A5 takes the phone; kept
 - **tag**: Information architecture: kept for the units on labelling still to come
 - **receipt**: Personal brand A8 takes the scales; kept for Information architecture
-- **folder**: named in passing; kept
 - **plug**: Building with AI B5 takes the clock, its scheduled tasks discussed at length, where plugins are named in passing (P96 check M1); kept
 - **servers**: named in passing; kept
 - **book**: named in passing; kept
-- **checklist**: kept for a deliverable that is a checklist
 - **database**: named in passing; kept
 - **laptop**: named in passing; kept
 - **bicycle**: Information architecture: kept for the Perqo units still to come

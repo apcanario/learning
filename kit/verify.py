@@ -1582,7 +1582,7 @@ def check_seps(br, fails):
 # P95 (8 Nov 2026) · the object reliefs: the library (design/outlines/) and every page uses.json maps
 OUTL = R.parent / 'design' / 'outlines'
 REL_FIELDS = ('id', 'file', 'depicts', 'courses', 'keywords', 'source', 'author', 'licence', 'licence_url', 'credit', 'texts')
-REL_COURSES = ('greece', 'rome', 'brand-a', 'brand-b', 'ux-ia')
+REL_COURSES = ('greece', 'rome', 'brand-a', 'brand-b', 'ux-ia', 'personal-brand-pb', 'building-with-ai-bw')
 REL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
 REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
   const P = document.getElementById(pid), out = {bad: [], bytes: 0, poses: 0};

@@ -22,7 +22,7 @@ import p95_library as L
 R = pathlib.Path(__file__).resolve().parent
 ROOT = R.parent
 LIB = ROOT / 'design' / 'outlines'
-NAMES = {'greece': 'Greece', 'rome': 'Rome', 'brand-a': 'Personal brand', 'brand-b': 'Building with AI', 'ux-ia': 'Information architecture'}
+NAMES = {'greece': 'Greece', 'rome': 'Rome', 'brand-a': 'Personal brand', 'brand-b': 'Building with AI', 'ux-ia': 'Information architecture', 'personal-brand-pb': 'Personal brand (public)', 'building-with-ai-bw': 'Building with AI (public)'}
 
 # panel id, outline, the words of its deciding sentence (as they stand in the page's prose)
 MAP = [
@@ -131,6 +131,30 @@ MAP = [
     ('read-ia10', 'table', 'The deliverable is the Perqo touchpoint matrix'),
     ('read-ia11', 'tree', 'The text-only tree of the Perqo app as designed'),
     ('read-ia12', 'table', 'The register is one table, one row per structural decision or assumption'),
+    # G-R (16 Nov 2026): the public courses, from the mapping agent's out/map.json
+    ('read-pb1', 'chart', 'One planning assumption is needed before any benchmark can be applied to her, because most datasets split accounts by how often they post.'),
+    ('read-pb2', 'at-sign', 'The handle is the scarce part, because only one account on each platform can hold it.'),
+    ('read-pb3', 'audience', 'A useful audience description therefore answers four questions, each with its own evidence:'),
+    ('read-pb4', 'calendar', "The calendar runs two weeks ahead, so the next season's first video is already edited when the review sits (D2); the change starts at that season's second video, and from there the season keeps one format, consistent in YouTube's sense."),
+    ('read-pb5', 'phone', 'The clamp holds the phone horizontal on the far edge of the table, about 1.0 metre from where she sits, looking slightly down at the work, with the piece in the middle third and her hands and face in frame when she speaks.'),
+    ('read-pb6', 'magnifier', "And the quality signal is about a channel's standing on a topic, which is one reason a channel that stays on one topic (PB2's positioning) is better placed in search than one that moves around (inference from the page; YouTube gives no weight)."),
+    ('read-pb7', 'link', "A non-follower who meets a Reel can reach YouTube only through the profile: tap the name, tap a link, and the video opens in the in-app browser or the phone's browser (this unit's reading of the sources above; no source lays the path out)."),
+    ('read-pb8', 'scales', '§6 and §7 are the rules: what law and the platforms require of an account that publishes in English to anyone.'),
+    ('read-pb9', 'money', "YouTube's fan funding at 500 subscribers and 3,000 watch hours, its ad revenue share at 1,000 subscribers and, for new applicants from 1 February 2027, 8,000 watch hours (§2)."),
+    ('read-pb10', 'table', 'Three rules shape the sheet.'),
+    ('read-dd-pb1', 'checklist', "**PB1 §9's six-point checklist** is applied to every creator, in a short block at the end of each section: (1) the denominator, (2) cadence and hours against yours, (3) the start (an audience elsewhere, a job that gives material or credibility, a thin niche), (4) numbers kept apart from the creator's advice, (5) the date, since platform rules and formats change, (6) the sample's exclusions."),
+    ('read-dd-pb2', 'piggy-bank', 'Runway is the number of months of survivable floor saved and held apart before an exit.'),
+    ('read-bw1', 'context-window', 'The context window is the one thing you control'),
+    ('read-bw2', 'cost', 'The cost of a task is the input tokens times the input price, plus the output tokens times the output price, summed over every turn the task takes, with the history re-sent on each turn (BW1 §2).'),
+    ('read-bw3', 'pen-nib', 'A brief survives when a reader with no context can act on it without coming back with a question.'),
+    ('read-bw4', 'stack', 'Here the question is the next one: given how each layer reaches the window, what should you put in it.'),
+    ('read-bw5', 'spec', 'A specification is the text that says what the finished project is, written before any part of it is built, and kept as the thing every part is checked against.'),
+    ('read-bw6', 'magnifier', 'Search puts a page in the window, so a claim can point to something.'),
+    ('read-bw8', 'folder', 'A folder the assistant reads in two steps: its name and description in every chat where it is installed, its body only when a request matches the description (§2).'),
+    ('read-bw9', 'terminal', 'In Claude Code the slider is the permission mode.'),
+    ('read-bw10', 'battery', 'You can budget it in what enters each window, which you control (BW1 §1), and read the result on the usage bars.'),
+    ('read-dd-bw2', 'notebook', '"October and November 2026" and 194 units is as far as the record goes; a rate per day cannot be computed from it, because the file gives no start date.'),
+    ('read-dd-bw3', 'chat', 'A chat history is the one record every assistant keeps whether or not you planned to keep one, so it is the one place a task you never wrote a rule for shows up with a count.'),
 ]
 
 
