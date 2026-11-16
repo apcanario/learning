@@ -163,9 +163,9 @@ A merchant side exists (the shops where the card is accepted); this unit leaves 
   {"label": "Buyer at a prospective client", "tone": 1, "cells": [{"mark": "primary", "tone": 2}, null, null]},
   {"label": "HR manager", "tone": 4, "cells": ["sign in", {"mark": "primary", "tone": 2}, null]},
   {"label": "Finance manager", "tone": 4, "cells": ["sign in", {"mark": "primary", "tone": 2}, null]},
-  {"label": "Employee", "tone": 3, "cells": ["help, download", null, {"mark": "primary", "tone": 2}]}
+  {"label": "Employee", "tone": 3, "cells": [{"mark": "help, download", "tone": 3}, null, {"mark": "primary", "tone": 2}]}
  ],
- "legend": [{"mark": "primary", "means": "the surface built for this person", "tone": 2}, {"mark": "sign in", "means": "passes through on the way to another surface"}]}
+ "legend": [{"mark": "primary", "means": "the surface built for this person", "tone": 2}, {"mark": "sign in", "means": "passes through on the way to another surface"}, {"mark": "help, download", "means": "only for help articles and the link to download the app", "tone": 3}]}
 ```
 
 The three surfaces carry three kinds of IA, and the four systems weigh differently in each.

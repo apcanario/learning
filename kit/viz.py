@@ -223,6 +223,26 @@ Contract change at P53 (1 Nov 2026):
               at every width, never stretched to the column), at least 320 units and wide enough for its widest legend item.
               U-9 (9 Nov 2026): no shared column is narrower than its longest word or hyphen-split piece, in its header
               or its cells; a column below it takes the width from the columns above theirs, in proportion.
+Contract change at P84 (16 Nov 2026), from Rome 11.4 and 11.5 (spans read as a legend key, not as periods):
+  timeline    a span is a period on the axis. Lane 0 sits just above the axis and the other lanes stack upwards; each
+              bar's two ends drop to the axis by a dashed guide (.viz-spanend), and with spans the tick labels stand above
+              the top lane, a gridline (.viz-grid) running from each to the axis. Every span label carries its years: a
+              label that names both ends (the years as numbers, an abbreviated run such as 1914–18, or a century, as
+              date_names reads them) is drawn as written; otherwise the span's optional "date" (its dates as the unit writes
+              them, "c. 670–640 BC", which must name both ends in the figure's era) or its years as yr prints them (58–57 BC,
+              27 BC–AD 14, AD 14–37, 2018–2020) follow it after a comma; a span with no label draws its years alone. A label
+              beside its bar sits on a plate of the card colour (.viz-lblbg). A lane is taken only where the span's guides
+              cross no outside label below it and no guide from above crosses its own (_guides_clear), unless no lane allows
+              that. The timeline has one drawing at every width (it scrolls in its phone frame), so the rule holds on the
+              phone and the desktop alike. Each span is <g data-span="from to" data-text="label as drawn">; verify.py checks
+              every span label names its years (span_names) and every bar end has its guide to the axis. A timeline
+              without spans is drawn as before.
+Contract change at P109 (16 Nov 2026):
+  matrix      a matrix is drawn wide (keeps its size and scrolls on a desktop) only when its drawing is wider than 700; one
+              whose columns had to share the width but whose drawing is 700 or less scales to the column (PB8 figure 4
+              overflowed its 698 px frame by 2 px, and the second frame's fade lay over its keys). A legend key's tone is
+              the tone of the cells it explains: a cell takes its row's tone unless it gives its own, so a mark whose key
+              has another tone is given that tone in its cell.
 Contract change at P50 (1 Nov 2026): sitemap, objects, decision, states and wireflow centre their drawing in the
   700-unit width; their svg carries data-x0 (where the drawing starts, less 8) as a narrow tree's does since P58, so a
   phone frame opens on the drawing. Desktop scaling is unchanged. verify.py checks that every figure of these kinds
@@ -1738,7 +1758,9 @@ def matrix(d, narrow=None):
     if Wd > NARROW_FRAME:   # C1: a second drawing for 360 px and below, with its own narrow column (or narrower columns)
         nw, nh, nb, nst = matrix(d, narrow=NARROW_LW)
         nar = (nw, nh, nb, nst if nw > NARROW_FRAME else None)
-    return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide,
+    # P109 (16 Nov 2026): a matrix whose columns had to share the width but whose drawing still fits it (PB8 figure 4, 700 units)
+    # is not wide: it scales to the column like any other, and never overflows a 698 px desktop frame by 2 px under its fade.
+    return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide and Wd > W,
                 stick=(8 + LW, stick, grid_h) if Wd > NARROW_FRAME else None, narrow=nar)   # C1: a column wherever a 320 px frame scrolls
 
 

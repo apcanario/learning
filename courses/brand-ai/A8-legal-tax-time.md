@@ -252,15 +252,15 @@ Who acts on each block of lines, drawn from the owner and professional columns:
 {"kind": "matrix",
  "cols": ["Him", "Accountant", "Lawyer", "Club", "Parents", "Platform"],
  "rows": [
-  {"label": "Tax and social security (R1–R12)", "tone": 4, "cells": ["owns", "confirms", null, null, null, null]},
-  {"label": "Employment contract (R13–R14)", "tone": 4, "cells": ["owns", null, "if unclear", null, null, null]},
-  {"label": "Health data (R15–R16)", "tone": 4, "cells": ["owns", null, "optional", null, null, null]},
-  {"label": "Disclosure (R17–R18)", "tone": 4, "cells": ["owns", null, null, null, null, "label"]},
-  {"label": "Training partners (R19–R20)", "tone": 4, "cells": ["owns", null, "optional", null, null, null]},
-  {"label": "Sponsored athletes (R21–R25)", "tone": 4, "cells": ["owns", null, "reviews", "policy", "sign", "label"]},
-  {"label": "Pre-orders (R26)", "tone": 4, "cells": ["owns", null, "reviews", null, null, null]},
-  {"label": "Music and footage (R27–R29)", "tone": 4, "cells": ["owns", null, null, null, null, "enforces"]},
-  {"label": "Time (R30–R32)", "tone": 4, "cells": ["owns", null, null, null, null, null]}
+  {"label": "Tax and social security (R1–R12)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, {"mark": "confirms", "tone": 2}, null, null, null, null]},
+  {"label": "Employment contract (R13–R14)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "if unclear", "tone": 5}, null, null, null]},
+  {"label": "Health data (R15–R16)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "optional", "tone": 5}, null, null, null]},
+  {"label": "Disclosure (R17–R18)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, null, {"mark": "label", "tone": 2}]},
+  {"label": "Training partners (R19–R20)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "optional", "tone": 5}, null, null, null]},
+  {"label": "Sponsored athletes (R21–R25)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "reviews", "tone": 1}, {"mark": "policy", "tone": 6}, {"mark": "sign", "tone": 6}, {"mark": "label", "tone": 2}]},
+  {"label": "Pre-orders (R26)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "reviews", "tone": 1}, null, null, null]},
+  {"label": "Music and footage (R27–R29)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, null, {"mark": "enforces", "tone": 2}]},
+  {"label": "Time (R30–R32)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, null, null]}
  ],
  "legend": [
   {"mark": "owns", "means": "he acts on it or chases it", "tone": 3},
