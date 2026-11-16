@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **BW7 Pipelines: raw material to finished output** written by Opus 5.5 and filed (16 Nov 2026, row W-BW7, search off): 10,499 words, 3 figures, 15 sources; fresh check fix (2 errors, 7 should-fix, 11 minor), all applied, 22 replacements, 0 held; 3 corrections applied to B7; 7 flags raised; building-with-ai v8.
 - **BW6 Research and verification** filed 16 Nov 2026 (row W-BW6): written by Opus 5.5 from its brief, search off; fresh check by Opus 5.5, fix (1 error, 7 should-fix, 3 minor), 12 applied, 1 held (search flag); 9 flags raised, 4 carried; 6 of 13 written.
 - **Matrices on a 320 px phone; filer rules (16 Nov 2026, row W-BW5).** Site: every matrix figure gets a second drawing for screens of 360 px and below (a narrow label column, columns and legend inside a 320 px frame); verify.py checks every matrix at 320 px; the build keeps the frame's --stick on history pages; theme 6.11; all 112 matrix figures re-checked from 320 px shots until each passed. Kit: thin.py's fixes parser reads the full Current and Fix and an empty Fix deletes (12 of 12 on fresh-check-BW4.md); thin.py gains `correct` and `stage corrections`; the filer's packet carries the filer rules and thin.py insert runs index_check.py, restoring every file if it fails; the writer's packet carries the course map; the build runs verify.py --shots in the background with a one-hour timeout.
 - **BW4 Context engineering filed (W-BW4, 15 Nov 2026).** Reading page read-bw4, status written 15 Nov, next unit BW5, v5; fresh check fix (2 errors, 5 should-fix, 5 minor, applied); BW1 §8 connector row corrected; 10 flags raised, F8 and F20 carried.
@@ -144,6 +145,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16 Nov 2026 · Session W-BW7 · BW7 filed
+
+Writer, fresh checker, applier, filer and corrections checker each a fresh Opus 5.5 agent (P31), staged by the main chat. BW7 filed at courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md with its fresh check at audits/building-with-ai/fresh-check-BW7.md: fix, 2 errors, 7 should-fix, 11 minor; 22 replacements applied, 0 held. The writer's 3 source errors in B7 passed a corrections check and were applied (B7 hub v9.21). Case file: 3 lines added. Flags: 7 raised; F11, F14, F37 carried; F19 open. Index: 7 of 13 written; no staleness row (search off).
 
 ## 16 Nov 2026 · Session W-BW6 · BW6 filed
 

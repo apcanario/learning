@@ -1,0 +1,760 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#building-with-ai-bw" data-target="building-with-ai-bw">Course BW · Building with AI · public</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">BW7</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--purple)">BUILDING WITH AI · PUBLIC</span> · BW7 <span class="pill live">BW7</span></div>
+    <h1>Pipelines: raw material to finished output</h1>
+    <p class="scope">Chaining steps, routing each to a model, where a model helps a writer and where it flattens a voice, and the rule that the final pass is human.</p>
+  </header>
+  <div class="stepbar" data-n="10"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 10</span><span class="stt">What a pipeline is</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-bw7-0" data-step="0"><span class="n">01</span><span class="t">What a pipeline is</span></a></li><li><a href="#read-bw7-1" data-step="1"><span class="n">02</span><span class="t">Hand-offs as files, not as conversation</span></a></li><li><a href="#read-bw7-2" data-step="2"><span class="n">03</span><span class="t">The human gate: where it sits and what it checks</span></a></li><li><a href="#read-bw7-3" data-step="3"><span class="n">04</span><span class="t">What the studies on writing with language models found</span></a></li><li><a href="#read-bw7-4" data-step="4"><span class="n">05</span><span class="t">The rule that the final pass is yours</span></a></li><li><a href="#read-bw7-5" data-step="5"><span class="n">06</span><span class="t">Steps that can be re-run without harm</span></a></li><li><a href="#read-bw7-6" data-step="6"><span class="n">07</span><span class="t">Logging what ran</span></a></li><li><a href="#read-bw7-7" data-step="7"><span class="n">08</span><span class="t">The Academy case&#x27;s pipeline, and where it failed</span></a></li><li><a href="#read-bw7-8" data-step="8"><span class="n">09</span><span class="t">On other tools</span></a></li><li><a href="#read-bw7-9" data-step="9"><span class="n">10</span><span class="t">Deliverable · A pipeline written as a runnable procedure</span></a></li></ol><div class="secx"><a href="#read-bw7-sources" data-acc>Sources</a><a href="#read-bw7-note" data-acc>The writer's opening note</a><a href="#read-bw7-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-bw7-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">What a pipeline is</span></span></h2>
+<p>A pipeline is your project's repeated work written down as a fixed sequence of <strong>stages</strong>. Each stage has four things and only four: a defined <strong>input</strong> (named files), a defined <strong>output</strong> (one named file, in a stated form), <strong>one model</strong> (or none, where a script or you do the work), and a <strong>gate</strong> that the output must pass before the next stage may read it. The pipeline is the list of stages in order, plus a log of every run.</p>
+<p>The idea is not new, and the vendors document it under another name. Anthropic's engineering post <em>Building effective agents</em> calls it prompt chaining: it "decomposes a task into a sequence of steps", each call working on the output of the one before, and "You can add programmatic checks" on any intermediate step, which its diagram labels a "gate". It is ideal, the post says, when a task "can be easily and cleanly decomposed into fixed subtasks", and the aim is to trade latency for accuracy by making each call an easier task; its two examples are marketing copy then its translation, and an outline that is checked against criteria before the document is written from it (<a target="_blank" rel="noopener" href="https://anthropic.com/engineering/building-effective-agents">Anthropic, <em>Building effective agents</em>, 19 Dec 2024</a>, read 16 Nov 2026; vendor, documented practice). The same post separates such <strong>workflows</strong>, "orchestrated through predefined code paths", from <strong>agents</strong>, which "dynamically direct their own processes and tool usage" (same page). A pipeline in this unit is a workflow: you fix the stages in advance. Which stages, if any, you then hand to an agent is BW9's question; this unit gives it the procedure to decide on.</p>
+<p>Anthropic's current prompting reference keeps the pattern for a narrower case. On 16 Nov 2026 it says that with adaptive thinking and subagents, Claude "handles most multistep reasoning internally", and that explicit chaining "is still useful when you need to inspect intermediate outputs or enforce a specific pipeline structure"; each step is a separate call "so you can log, evaluate, or branch at any point" (<a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/chain-prompts">Anthropic, <em>Prompting best practices</em>, section "Chain complex prompts"</a>, read 16 Nov 2026; vendor). That is the test for when a pipeline is worth its overhead (stated opinion, built on the two pages above): the work repeats, its parts can be fixed in advance, and you need to see and check what each part produced before the next one builds on it. Work done once, or whose steps change each time, is a brief (BW3), not a pipeline.</p>
+<p><strong>Why one model per stage.</strong> Each stage is one task in one window. BW3 §6 gives the evidence against stacking unrelated tasks in one prompt: each task's material is irrelevant context for the others, and every added instruction competes for adherence. A stage that does one thing can also be routed on its own: BW2's routing table sets a tier and an effort per task, so a stage takes the row for its task (BW2, Deliverable Part 1), written by tier and effort with the model and the date it was read, so that the stage survives a change of lineup (BW2 §7, rule 1). This unit uses BW2's tier words throughout: small, mid, large, and large top rung. A stage that no BW2 row covers says so and names the row it borrows by analogy, as BW3's templates do.</p>
+<p><strong>What a stage is not.</strong> A stage is not a chat that wanders across several tasks, and it is not "the model" in general. If two parts of the work need different material, different models or different checks, they are two stages.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="81" data-rings="2"><path d="M224 70l-96 7-18 3-14 8 12 8 4 1 96 19M232 76l-51 4-21 4-12 4 14 8 62 13M240 83l-43 5 11 8 31 8"/><circle class="ct-spot" cx="216" cy="88" r="7"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="195" data-rings="5"><path d="M432 60l-96 8-112 2M208 116l48 7 56 2 152 1 40 0 32-3 95-11M424 67l-80 8-112 1M224 109l48 7 56 3 160 0 32-3 96-11M440 71l-96 9-104 3M239 104l57 7 48 3 104 1 32-1 32-3 88-12M424 77l-64 7-75 4-21 4-12 4 36 8 40 4 120 2 48-3 104-14M456 80l-48 4-88 12 36 8 76 2 43-2 77-13M432 88l-8 0-16 4-20 4 44 3 38-3 2-3 8-5z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="145" data-rings="4"><path d="M712 50l-64-1-32 0-32 2-41 5-111 4M631 112l185-2M712 60l-64-3-32 0-84 7-108 3M616 105l176-3M608 64l-56 4-112 3M600 99l184-3M712 68l-72-4-32 0M576 72l-152 5M600 93l80-3 98-2M680 76l-56-6-24 0-24 2M552 91l27-3 13-5 17-3-57-1-96 1"/><circle class="ct-spot" cx="600" cy="80" r="9"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="140" data-rings="3"><path d="M760 48l-48 2M816 110l32-2 56-8 16-1M928 84l-8-4-3-16-11-8-18-5-24-4-32-2-32 0-40 3M776 56l-64 4M792 102l32-2 30-4 19-8 8-16-6-8-19-6-24-3-24 0-32 1M784 96l32-3 24-5 7-8 3-8-10-4-16-4-40-1-48 5-24 0M778 88l22-4 13-4-5-4-14-4-11 0-39 4-32 1-32-1"/><circle class="ct-spot" cx="792" cy="80" r="9"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="42" data-rings="1"><path d="M920 99l24 1 24 4 24 1 9-1 7-5 2-3-2-3-6-5-18-1-40 0-16-3"/><circle class="ct-spot" cx="984" cy="96" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-bw7-1" data-step="1"><span>Next · 2 of 10</span><b>Hand-offs as files, not as conversation</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-bw7-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">Hand-offs as files, not as conversation</span></span></h2>
+<p>Between stages, the output of one becomes the input of the next. The rule this unit uses (stated opinion, on the sources below): <strong>every hand-off is a file</strong>, written by the stage that produced it, read by name by the stage that uses it; no stage takes its input from the conversation of another.</p>
+<p>Four reasons; the first three are sourced, and the fourth is an anecdote that illustrates the first.</p>
+<ol>
+<li><strong>A new context sees only what it is given.</strong> Across chats nothing persists except what a layer re-inserts (BW1 §3), and BW4 §4's test for leaving a chat is whether a fresh chat could do the next step from the files alone. A stage that must run in a fresh context, such as a check (BW2 §5; BW6 §4), can only be fed by files.</li>
+<li><strong>A brief given in pieces does worse than the same brief given whole.</strong> That is Laban and colleagues' measurement across 15 models and six generation tasks, summarised in BW3 §5 (<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2505.06120">Laban, Hayashi, Zhou and Neville, <em>LLMs Get Lost In Multi-Turn Conversation</em>, arXiv 2505.06120</a>; preprint). A hand-off made by continuing a conversation feeds the next stage its instructions in pieces, mixed with the last stage's reasoning.</li>
+<li><strong>A file can be inspected, logged and re-run from.</strong> Anthropic gives exactly this reason for separate calls: you can "log, evaluate, or branch at any point" (<em>Prompting best practices</em>, read 16 Nov 2026). A gate needs something fixed to check; a log needs something to point to (§7).</li>
+<li><strong>Files survive the loss of a session.</strong> In Academy (Academy case), a library of self-study courses built by one person with Claude in October and November 2026, whose method writes each unit in its own context from a brief, gives it a fresh check before filing (36 units in the case file's count) and audits by sample, writer agents were lost to container restarts: one deep dive lost two writers, and the third resumed from the second's working files (Academy case file §1, §2, §5, §7). One project, an anecdote; it shows a file hand-off carrying a stage across a lost session.</li>
+</ol>
+<p><strong>What a hand-off file holds.</strong> The output in the form the stage's brief names (BW3 §3, output contracts), and a header that the next stage and the log can read: the stage, the date, the input files it read, the model and version that ran it. The input files are never edited by the stage that reads them; it writes a new file (§6 says why).</p>
+<p><strong>Where the case fell back on conversation.</strong> When this course's first unit, BW1, was given its fresh check, the checker was a separate context that read only its packet; its write of its report was refused, and the chat saved the report from the checker's reply (Academy case file §7). The hand-off still reached a file, but through the conversation of the stage that was meant only to receive it. Nothing in the case file says the report was altered; the point is that the path the file took was not the one the method sets, and only the case file's note records it.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.7"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="55" data-rings="2"><path d="M248 72l-72 1-24 2-26 5-7 8 17 7 8 2 24 4 40 5 40 2 40-3 32-6 24-7 10-4-1-8-17-5-24-4-32-1zM192 80l-8 1-15 7 30 8 25 2 24 1 24-2 9-1 25-8-8-8-18-2z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="17" data-rings="0"><circle class="ct-spot" cx="480" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="66" data-rings="3"><path d="M781 56l-125 7-24 3-16 4-7 2-9 8 4 8 16 8 28 6 32 3 32 0 32-3 40-6 24-1M816 64l-72 1-72 4-18 3-14 8 8 8 16 5 24 3 24 1 16-1 48-8 40-3 24 2M736 72l-40 4-18 4 19 8 30 0 45-8-4-3-8-4-8-1z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="104" data-rings="5"><path d="M848 48l-67 8M808 95l12 1 52 11 24 3 56 4 56 0 48-3 32-5 16-5 11-5 2-8-13-8-49-16-23-11-24-6-16-3-32-3-40-1-40 3-32 5M872 55l-32 6-24 3M840 87l30 9 18 4 32 4 64 2 56-3 16-3 17-4 8-8-10-8-26-8-37-15-32-6-32-2-40 2-32 4M944 56l-32 1-24 4-12 3-14 8 4 8 12 8 10 3 20 5 20 2 56 2 24-1 24-3 8-2 14-6-8-8-26-8-20-9-24-5zM920 64l-16 4-9 4 1 8 10 8 6 2 32 4 32 0 24-1 25-5-3-8-30-11-16-4-24-3zM936 71l-5 1-6 8 11 5 8 2 16 1 16 0 8-2 10-6-26-9-16-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw7-0" data-step="0"><span>Previous · 1 of 10</span><b>What a pipeline is</b></a><a class="snext" href="#read-bw7-2" data-step="2"><span>Next · 3 of 10</span><b>The human gate: where it sits and what it checks</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-bw7-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">The human gate: where it sits and what it checks</span></span></h2>
+<p>A gate is a check an output must pass before the next stage may read it. There are three kinds, and a pipeline uses all three.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Who runs it</th>
+<th>What it can check</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Code gate</strong></td>
+<td>A script</td>
+<td>Anything countable or matchable: length, word count, required headings, every quotation found verbatim in its source, every number present in the source</td>
+<td>Anthropic's "programmatic checks" between chained calls (<em>Building effective agents</em>)</td>
+</tr>
+<tr>
+<td><strong>Model check</strong></td>
+<td>A fresh context, ideally a different model from the writer</td>
+<td>Claims against their sources, the output against its brief</td>
+<td>BW6's verification protocol, steps B to F</td>
+</tr>
+<tr>
+<td><strong>Human gate</strong></td>
+<td>You</td>
+<td>Judgement no source can settle: whether the structure serves the reader, which option to take, whether a line is true of you, whether to publish</td>
+<td>The final pass (§5)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Code gates are the cheapest and run on every output. Model checks run where claims must be checked against sources, on BW6's sampling rule. This section is about the third kind, because it is the one with a fixed budget: your attention.</p>
+<p><strong>Where a human gate sits.</strong> Four places, each with its basis.</p>
+<ol>
+<li><strong>After a stage whose output fixes everything downstream.</strong> Anthropic's chaining example checks the outline before the document is written from it (<em>Building effective agents</em>). BW3's template 7 makes the same cut: a plan is approved before anything is built from it. A structure you approve early costs one reading; a structure you reject after the draft costs the draft.</li>
+<li><strong>Before anything irreversible.</strong> Publishing, sending, filing where others will build on it. Once out, a correction is made in the open, with a date and a reason (BW6, Deliverable Part 1, step G).</li>
+<li><strong>At BW5's boundaries.</strong> BW5's flag-and-review rule holds every flag raised during the work until a boundary fixed in advance, where you decide each one (BW5 §9 and Deliverable 2e). In a pipeline, the end of each run and the end of each group of runs are those boundaries: a human gate is placed there, and the flags the stages raised are decided there and nowhere else. This unit does not restate the rule; it places the gates on it.</li>
+<li><strong>Where the task may be outside what the model does well.</strong> Fabrizio Dell'Acqua and colleagues gave 758 consultants GPT-4 access, with or without a prompt-engineering overview, against a control without AI. On tasks inside what they called the frontier of the model's capability, consultants with AI "completed 12.2% more tasks on average, and completed tasks 25.1% more quickly", with quality more than 40% higher than the control; on a task chosen to fall outside it, "consultants using AI were 19 percentage points less likely to produce correct solutions compared to those without AI" (<a target="_blank" rel="noopener" href="https://mitsloan.mit.edu/sites/default/files/2023-10/SSRN-id4573321.pdf">Dell'Acqua et al., <em>Navigating the Jagged Technological Frontier</em>, Harvard Business School Working Paper 24-013, 22 Sep 2023</a>; measured; a working paper, GPT-4 in 2023, consulting tasks). The transfer is this unit's inference: you cannot tell in advance which side of the line a given output fell on, so a stage whose output you cannot check by source or by code needs your gate.</li>
+</ol>
+<p><strong>What a human gate checks.</strong> Lines you can answer yes or no, written into the stage before it runs: the stage's own done-when lines (BW3's DONE WHEN; BW5, Deliverable 1d) and the questions only you can answer. A gate that says "review the draft" checks nothing in particular. Each failed line names the stage the output goes back to.</p>
+<p><strong>What a human gate does not do.</strong> It does not re-check what a code gate or a model check already checked; your reading is the scarcest resource in the pipeline, and BW6 §6 already sets how much of a checker's work you re-open. It does not edit the output silently: a change at a gate is a new version of the stage's output file, logged (§7).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.4"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="26" data-rings="2"><path d="M152 80l-11 8 6 8 13 4 24 2 56 0 32 1M296 77l-104-3-24 2-16 4"/><circle class="ct-spot" cx="216" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="42" data-rings="3"><path d="M272 103l56 13 32 3 40-1 48-6 56-5 15-3 23-8 1-8-31-6-32-4-88-3-96 2M320 88l-2 0-6 8 20 8 12 3 32 4 24 0 66-7 28-8-11-8-19-3-24-2-64-1zM368 93l-6 3 6 3 16 5 8 0 10 0 51-8-21-5-32-2-16 0z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="11" data-rings="0"><path d="M640 78l-40-2-16 1-9 3-7 8 56 4"/><circle class="ct-spot" cx="600" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="59" data-rings="4"><path d="M736 55l-16 4-37 13-19 4-24 2M624 92l48 14 32 5 40 1 64 0M936 63l-80-11-48-3-40 1-32 5M744 63l-50 17-12 8 8 8 22 5 24 3 96-1M928 73l-16-2-56-10-48-4-32 1-32 5M776 64l-24 5-32 11-8 8 16 7 16 3 32 0 40-2 24 0 24 4M920 81l-24-3-32-8-32-5-32-2-24 1M768 72l-23 8-2 8 9 2 24 2 94-4-6-2-3-6-29-8-32-3-16 1z"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="66" data-rings="5"><path d="M808 112l72 11 40 3 48 1 48-1 32-3 32-7 10-4 16-8 11-8 7-8 0-8-10-8-18-6-32-5-40-1-72 3-16 0M832 103l56 11 32 4 32 2 40 0 24-1 24-3 16-4 19-8 11-8 7-8-4-8-9-4-16-4-24-3-40-1-48 4-24 1M864 100l32 8 24 4 32 2 40 0 32-2 24-7 15-9 5-8-10-8-26-5-40 0-48 5-24 1M992 80l-48 6-47 2-5 8 23 8 29 4 40 1 32-3 11-2 15-8 3-8-21-7-16-1zM976 88l-45 8 21 5 16 2 16 0 16-2 17-5-5-8-20-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw7-1" data-step="1"><span>Previous · 2 of 10</span><b>Hand-offs as files, not as conversation</b></a><a class="snext" href="#read-bw7-3" data-step="3"><span>Next · 4 of 10</span><b>What the studies on writing with language models found</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-bw7-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">What the studies on writing with language models found</span></span></h2>
+<p>The stages of a pipeline that produces prose divide into those where a model's contribution is safe to take and those where it changes the writing in ways you may not see. Nine studies bear on where that line falls. None tested a current model, and none tested your material; every transfer below is this unit's inference.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Study</th>
+<th>Models</th>
+<th>Task</th>
+<th>Finding</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Noy and Zhang, <em>Science</em> 2023; working paper 10 Mar 2023</td>
+<td>ChatGPT (version not named in the working paper)</td>
+<td>453 college-educated professionals; occupation-specific writing tasks: press releases, short reports, analysis plans, delicate emails</td>
+<td>Time down 40%, quality up 18%; time shifted away from rough-drafting toward ideas and editing</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Dell'Acqua et al., HBS working paper, 2023</td>
+<td>GPT-4</td>
+<td>758 consultants; consulting tasks inside and outside the model's frontier</td>
+<td>Faster and better inside; 19 points less likely to be correct outside; less variable ideas</td>
+<td>Measured (working paper)</td>
+</tr>
+<tr>
+<td>Doshi and Hauser, <em>Science Advances</em> 2024</td>
+<td>GPT-4</td>
+<td>Eight-sentence stories; 293 writers analysed, 600 evaluators</td>
+<td>Ideas from the model raised novelty and usefulness, most for the least creative writers; stories became more similar to each other</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Padmakumar and He, ICLR 2024</td>
+<td>GPT-3 (davinci), InstructGPT (text-davinci-003)</td>
+<td>38 writers; argumentative essays of about 300 words</td>
+<td>InstructGPT, not GPT-3, reduced diversity; the reduction came from the model's text, not the writers'</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Chakrabarty, Laban and Wu, arXiv preprint, v5 2025</td>
+<td>GPT-4o, Claude-3.5-Sonnet, Llama-3.1-70b</td>
+<td>18 MFA-trained writers edited 1,057 model paragraphs</td>
+<td>8,035 edits; writer-edited text preferred most</td>
+<td>Measured (preprint)</td>
+</tr>
+<tr>
+<td>Agarwal, Naaman and Vashistha, CHI 2025</td>
+<td>GPT-4o</td>
+<td>118 participants in India and the US; four short culturally grounded essays in English</td>
+<td>Suggestions moved Indian participants toward Western styles</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Jentzsch and Kersting, WASSA 2023</td>
+<td>ChatGPT</td>
+<td>1,008 jokes requested</td>
+<td>Over 90% were the same 25 jokes</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Gorenz and Schwarz, <em>PLOS ONE</em> 2024 (via a report)</td>
+<td>ChatGPT 3.5</td>
+<td>Acronyms, fill-in-the-blank and roast jokes against lay writers; satirical headlines against <em>The Onion</em></td>
+<td>Outperformed most lay writers on all three tasks; headlines not significantly different from <em>The Onion</em>'s</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Jakesch et al., CHI 2023</td>
+<td>GPT-3 (text-davinci-002), steered for or against</td>
+<td>1,506 participants wrote on whether social media is good for society</td>
+<td>Writers adopted the model's side about twice as often, and were often unaware of its influence</td>
+<td>Measured</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources are cited at each finding below.</p>
+<h3>Where a model helps: structure, cuts and options</h3>
+<p><strong>Structure.</strong> In Shakked Noy and Whitney Zhang's experiment, 453 college-educated professionals did occupation-specific writing tasks, and with ChatGPT "The average time taken decreased by 40% and output quality rose by 18%" (<a target="_blank" rel="noopener" href="https://scale.stanford.edu/publications/experimental-evidence-productivity-effects-generative-artificial-intelligence">Noy and Zhang, <em>Experimental evidence on the productivity effects of generative artificial intelligence</em>, <em>Science</em>, Jul 2023, abstract on Stanford SCALE</a>, read 16 Nov 2026). Their working paper describes how: before treatment participants spent about a quarter of their time brainstorming, half on a rough draft and a quarter editing, and ChatGPT "restructures tasks towards idea-generation and editing and away from rough-drafting"; the share of time on the rough draft fell by more than half (<a target="_blank" rel="noopener" href="https://economics.mit.edu/sites/default/files/inline-files/Noy_Zhang_1_0.pdf">Noy and Zhang, <em>Experimental Evidence on the Productivity Effects of Generative Artificial Intelligence</em>, MIT working paper, 10 Mar 2023</a>, read 16 Nov 2026; the working paper is not peer-reviewed, and the published abstract read does not carry the restructuring sentence). The tasks were 20 to 30 minutes long and written with the ChatGPT of early 2023. What it supports for a pipeline (inference): the model takes the rough-draft work, and your time moves to choosing and editing, which is where the gates are. The study measured time and graded quality, not the model's arranging of a text; grade for structure: stated opinion, built on this finding and Anthropic's outline example (§1).</p>
+<p><strong>Cuts.</strong> No study found measures a model cutting a writer's own text. Two findings bear on it indirectly. Vishakh Padmakumar and He He found that the loss of diversity in co-written essays "is mainly attributable to InstructGPT contributing less diverse text", while "user-contributed text remains unaffected by model collaboration" (<a target="_blank" rel="noopener" href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/02dec8877fb7c6aa9a79f81661baca7c-Abstract-Conference.html">Padmakumar and He, <em>Does Writing with Language Models Reduce Content Diversity?</em>, ICLR 2024, pp. 642–669</a>, read 16 Nov 2026). A stage that selects and reorders your sentences, and writes none of its own, adds no model text for that effect to work on (inference). And the professional writers in Chakrabarty and colleagues' study (below) spent 18% of their edits removing unnecessary or redundant exposition from model paragraphs: a model writing its own prose tends to need cutting, which argues for giving it your text to cut rather than asking it to write and cutting after. Grade for cuts: stated opinion, built on those two findings.</p>
+<p><strong>Options.</strong> Anil Doshi and Oliver Hauser had writers produce eight-sentence stories with no AI, with one idea from GPT-4, or with up to five; 600 evaluators rated them, and 293 writers were analysed. Writers with up to five ideas wrote stories rated 8.1% more novel and 9.0% more useful than those with none, and less creative writers gained more: 10.7% in novelty and 11.5% in usefulness (<a target="_blank" rel="noopener" href="https://ore.exeter.ac.uk/rest/bitstreams/199326/retrieve">Doshi and Hauser, <em>Generative AI enhances individual creativity but reduces the collective diversity of novel content</em>, <em>Science Advances</em> 10, eadn5290, 12 Jul 2024</a>, repository copy read 16 Nov 2026; measured). Fiction, rated by strangers, with GPT-4 as it was before the paper's submission on 14 December 2023. The transfer (inference): ask a stage for several options where you have least practice, and choose at a gate. The same study gives the cost, below.</p>
+<h3>Where a model flattens: first-person prose, humour and endings</h3>
+<p><strong>First-person prose.</strong> Five studies point the same way: text the model writes pulls writing toward the model's average.</p>
+<ul>
+<li><em>The reduction comes from the model's sentences.</em> Padmakumar and He's 38 writers wrote argumentative essays of about 300 words alone, with GPT-3 (davinci) or with InstructGPT (text-davinci-003); writing with InstructGPT "(but not the GPT3) results in a statistically significant reduction in diversity" (<a target="_blank" rel="noopener" href="https://arxiv.org/html/2309.05196v3">arXiv v3</a>, read 16 Nov 2026), and the effect sits in the model's contributed text (above).</li>
+<li><em>Ideas converge too.</em> In Doshi and Hauser's study the stories written with the model's ideas were more similar to each other; the paper expresses the increase for one and five ideas as "10.7% and 8.9% of the total range" of its similarity score, and describes the result as resembling a social dilemma: each writer gains, and the collection loses variety (repository copy, read 16 Nov 2026). Dell'Acqua and colleagues report the same in their consultants' ideas: "a marked reduction in the variability of these ideas compared to those not using AI" (working paper, §3.1, read 16 Nov 2026).</li>
+<li><em>Professional writers rewrite model prose heavily.</em> Tuhin Chakrabarty, Philippe Laban and Chien-Sheng Wu had 18 writers with MFA backgrounds edit 1,057 paragraphs written by GPT-4o, Claude-3.5-Sonnet and Llama-3.1-70b, gathering 8,035 edits, "about 8 edits per paragraph"; the four largest of seven categories were awkward word choice and phrasing (28% of edits), poor sentence structure (20%), unnecessary or redundant exposition (18%) and clichés (17%) (§5.1). They warn of "a reduction in linguistic diversity and individual voice" (§7.4) (<a target="_blank" rel="noopener" href="https://arxiv.org/html/2409.14509v5">Chakrabarty, Laban and Wu, <em>Can AI writing be salvaged? Mitigating Idiosyncrasies and Improving Human-AI Alignment in the Writing Process through Edits</em>, arXiv 2409.14509 v5, 4 Mar 2025</a>, read 16 Nov 2026; preprint, no venue on the copy read).</li>
+<li><em>The model's style displaces the writer's own.</em> Dhruv Agarwal, Mor Naaman and Aditya Vashistha had 118 participants from India and the United States write four short essays in English, with or without GPT-4o's inline suggestions: "AI suggestions led Indian participants to adopt Western writing styles", "altering not just what is written but also how it is written" (<a target="_blank" rel="noopener" href="https://arxiv.org/html/2409.11360v3">Agarwal, Naaman and Vashistha, <em>AI Suggestions Homogenize Writing Toward Western Styles and Diminish Cultural Nuances</em>, arXiv 2409.11360 v3</a>, read 16 Nov 2026; the paper's ACM reference line names CHI '25, Yokohama).</li>
+</ul>
+<p>The four largest kinds of edit the professional writers made, by share of all edits:</p>
+<figure class="viz viz-compare"><div class="viz-scroll" data-alt=""><svg viewBox="0 0 700 132" width="700" height="132" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="227.4" y="27.3" text-anchor="end">Awkward word choice and phrasing</text><rect class="viz-track" x="237.38912000000002" y="16.0" width="421.3" height="14"/><rect class="viz-bar viz-t5" x="237.38912000000002" y="16.0" width="393.2" height="14"/><text class="viz-value" x="664.7" y="26.8">28%</text><text class="viz-label" x="227.4" y="57.3" text-anchor="end">Poor sentence structure</text><rect class="viz-track" x="237.38912000000002" y="46.0" width="421.3" height="14"/><rect class="viz-bar viz-t5" x="237.38912000000002" y="46.0" width="280.9" height="14"/><text class="viz-value" x="526.3" y="56.8">20%</text><text class="viz-label" x="227.4" y="87.3" text-anchor="end">Unnecessary or redundant exposition</text><rect class="viz-track" x="237.38912000000002" y="76.0" width="421.3" height="14"/><rect class="viz-bar viz-t5" x="237.38912000000002" y="76.0" width="252.8" height="14"/><text class="viz-value" x="498.2" y="86.8">18%</text><text class="viz-label" x="227.4" y="117.3" text-anchor="end">Clichés</text><rect class="viz-track" x="237.38912000000002" y="106.0" width="421.3" height="14"/><rect class="viz-bar viz-t5" x="237.38912000000002" y="106.0" width="238.8" height="14"/><text class="viz-value" x="484.1" y="116.8">17%</text></svg><svg class="viz-alt" viewBox="0 0 258 190" width="258" height="190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="100.0" y="25.3" text-anchor="end">Awkward word</text><text class="viz-label" x="100.0" y="39.3" text-anchor="end">choice and</text><text class="viz-label" x="100.0" y="53.3" text-anchor="end">phrasing</text><rect class="viz-track" x="110.03072000000002" y="28.0" width="106.7" height="14"/><rect class="viz-bar viz-t5" x="110.03072000000002" y="28.0" width="99.6" height="14"/><text class="viz-value" x="222.7" y="38.8">28%</text><text class="viz-label" x="100.0" y="79.3" text-anchor="end">Poor sentence</text><text class="viz-label" x="100.0" y="93.3" text-anchor="end">structure</text><rect class="viz-track" x="110.03072000000002" y="75.0" width="106.7" height="14"/><rect class="viz-bar viz-t5" x="110.03072000000002" y="75.0" width="71.1" height="14"/><text class="viz-value" x="189.2" y="85.8">20%</text><text class="viz-label" x="100.0" y="119.3" text-anchor="end">Unnecessary or</text><text class="viz-label" x="100.0" y="133.3" text-anchor="end">redundant</text><text class="viz-label" x="100.0" y="147.3" text-anchor="end">exposition</text><rect class="viz-track" x="110.03072000000002" y="122.0" width="106.7" height="14"/><rect class="viz-bar viz-t5" x="110.03072000000002" y="122.0" width="64.0" height="14"/><text class="viz-value" x="182.0" y="132.8">18%</text><text class="viz-label" x="100.0" y="175.3" text-anchor="end">Clichés</text><rect class="viz-track" x="110.03072000000002" y="164.0" width="106.7" height="14"/><rect class="viz-bar viz-t5" x="110.03072000000002" y="164.0" width="60.5" height="14"/><text class="viz-value" x="178.5" y="174.8">17%</text></svg></div><figcaption>§4: the four largest of seven categories among 8,035 edits that 18 professional writers with MFA backgrounds made to 1,057 paragraphs from GPT-4o, Claude-3.5-Sonnet and Llama-3.1⁠-⁠70b. Chakrabarty, Laban and Wu, Can AI writing be salvaged?, arXiv 2409.14509 v5 (preprint), §5.1, read 16 Nov 2026.</figcaption></figure>
+<p>What the five have in common (inference): the flattening is carried by the sentences the model writes, and a writer's sentences used as they are do not carry it. A stage that drafts first-person prose for you is the stage most likely to change how you sound without your noticing.</p>
+<p><strong>Humour.</strong> Two studies, measuring different things. Sophie Jentzsch and Kristian Kersting asked ChatGPT for jokes 1,008 times: "Over 90% of 1008 generated jokes were the same 25 Jokes" (<a target="_blank" rel="noopener" href="https://aclanthology.org/2023.wassa-1.29">Jentzsch and Kersting, <em>ChatGPT is fun, but it is not funny! Humor is still challenging Large Language Models</em>, WASSA 2023, pp. 325–340</a>, read 16 Nov 2026; the paper describes the model as GPT-3-based). Drew Gorenz and Norbert Schwarz compared ChatGPT 3.5's jokes with those of lay writers on three tasks and found that it outperformed 73% of the human participants on acronyms, 63% on fill-in-the-blank prompts and 87% on roast jokes, and that its satirical headlines did not differ significantly in rated funniness from <em>The Onion</em>'s (<em>PLOS ONE</em>, 2024, as reported by Eric W. Dolan in <a target="_blank" rel="noopener" href="https://www.psypost.org/ai-outshines-humans-in-humor-study-finds-chatgpt-is-as-funny-as-the-onion/">PsyPost, <em>AI outshines humans in humor: Study finds ChatGPT is as funny as The Onion</em>, 4 Jul 2024</a>, read 16 Nov 2026; the paper itself was not opened). Read together: one measures whether strangers laugh at a joke on a set prompt; the other whether the model's jokes vary. Neither measures whether a joke sounds like a particular person. For a pipeline (stated opinion): a joke in your voice is a claim about how you talk, and a stage that writes it is inventing that claim. The model may mark a line in your material that you meant as a joke; it writes none.</p>
+<p><strong>Endings.</strong> No study found measures endings directly. The nearest evidence concerns conclusions. Maurice Jakesch and colleagues had 1,506 participants write on whether social media is good for society, with GPT-3 (text-davinci-002) prompted to argue one side; those with the supportive model were "2.04 times more likely than control group participants" to argue that it is good, and those with the critical model "2.0 times more likely" to argue that it is bad; their opinions in a later survey moved too, and "participants were often unaware of the model's opinion and influence" (<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2302.00560">Jakesch, Bhat, Buschek, Zalmanson and Naaman, <em>Co-Writing with Opinionated Language Models Affects Users' Views</em>, CHI 2023, arXiv 2302.00560</a>, read 16 Nov 2026). An ending is where a text states what it means. The transfer (inference): a stage that drafts your ending supplies your conclusion, and the evidence suggests you may not notice it was supplied.</p>
+<p>The division of the work that follows (stated opinion, on the findings above), used by every pipeline in the Deliverable. For structure, cuts of your own text and options, the model's stage drafts and its output is taken, then gated: you approve the structure, check the cuts and choose among the options. For first-person prose, humour and the ending, the model writes none of the final words: in first-person text it may write a marked bridge only (defined below), it never writes humour, and for the ending it points to candidates in your material; you write the prose and the humour and decide the ending.</p>
+<figure class="viz viz-matrix viz-fit"><div class="viz-scroll" style="--stickn:108px;--stick:220.0px" data-altn=""><svg viewBox="0 0 448.0 342" width="448.0" height="342" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-fit"><text class="viz-colhead" x="293.5" y="15.6" text-anchor="middle">The model&#x27;s stage</text><text class="viz-colhead" x="403.5" y="15.6" text-anchor="middle">Your gate</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Structure: order, outline, sections</text><g data-box=""><rect class="viz-band viz-t2" x="222.0" y="34.0" width="143.0" height="28.0"/><text class="viz-mark" x="293.5" y="51.8" text-anchor="middle">drafts</text></g><g data-box=""><rect class="viz-band viz-t4" x="369.0" y="34.0" width="69.0" height="28.0"/><text class="viz-mark" x="403.5" y="51.8" text-anchor="middle">approves</text></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Cuts of your own text</text><g data-box=""><rect class="viz-band viz-t2" x="222.0" y="66.0" width="143.0" height="28.0"/><text class="viz-mark" x="293.5" y="83.8" text-anchor="middle">drafts</text></g><g data-box=""><rect class="viz-band viz-t4" x="369.0" y="66.0" width="69.0" height="28.0"/><text class="viz-mark" x="403.5" y="83.8" text-anchor="middle">checks</text></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Options</text><g data-box=""><rect class="viz-band viz-t2" x="222.0" y="98.0" width="143.0" height="28.0"/><text class="viz-mark" x="293.5" y="115.8" text-anchor="middle">drafts</text></g><g data-box=""><rect class="viz-band viz-t4" x="369.0" y="98.0" width="69.0" height="28.0"/><text class="viz-mark" x="403.5" y="115.8" text-anchor="middle">chooses</text></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">First-person prose</text><g data-box=""><rect class="viz-band viz-t1" x="222.0" y="130.0" width="143.0" height="28.0"/><text class="viz-mark" x="293.5" y="147.8" text-anchor="middle">marked bridge only</text></g><g data-box=""><rect class="viz-band viz-t4" x="369.0" y="130.0" width="69.0" height="28.0"/><text class="viz-mark" x="403.5" y="147.8" text-anchor="middle">writes</text></g><text class="viz-label" x="8.0" y="180.3" text-anchor="start">Humour</text><g data-box=""><rect class="viz-band viz-t1" x="222.0" y="162.0" width="143.0" height="28.0"/><text class="viz-mark" x="293.5" y="179.8" text-anchor="middle">never</text></g><g data-box=""><rect class="viz-band viz-t4" x="369.0" y="162.0" width="69.0" height="28.0"/><text class="viz-mark" x="403.5" y="179.8" text-anchor="middle">writes</text></g><text class="viz-label" x="8.0" y="212.3" text-anchor="start">The ending</text><g data-box=""><rect class="viz-band viz-t1" x="222.0" y="194.0" width="143.0" height="28.0"/><text class="viz-mark" x="293.5" y="211.8" text-anchor="middle">points to candidates</text></g><g data-box=""><rect class="viz-band viz-t4" x="369.0" y="194.0" width="69.0" height="28.0"/><text class="viz-mark" x="403.5" y="211.8" text-anchor="middle">decides</text></g><g data-box=""><rect class="viz-band viz-t2" x="8.0" y="238.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="253.8" text-anchor="middle">drafts</text></g><text class="viz-attr" x="70.6" y="254.0" text-anchor="start">the model&#x27;s output is taken, then gated</text><g data-box=""><rect class="viz-band viz-t1" x="8.0" y="270.0" width="150.9" height="24"/><text class="viz-mark" x="83.5" y="285.8" text-anchor="middle">bridge, never, points</text></g><text class="viz-attr" x="166.9" y="279.0" text-anchor="start">the model writes none of</text><text class="viz-attr" x="166.9" y="293.0" text-anchor="start">the final words</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="306.0" width="80.3" height="24"/><text class="viz-mark" x="48.1" y="321.8" text-anchor="middle">your marks</text></g><text class="viz-attr" x="96.3" y="315.0" text-anchor="start">you approve, check, choose, write or</text><text class="viz-attr" x="96.3" y="329.0" text-anchor="start">decide</text></svg><svg class="viz-altn" viewBox="0 0 327 436" width="327" height="436" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="matrix viz-fit"><text class="viz-colhead" x="177.0" y="15.6" text-anchor="middle">The model&#x27;s stage</text><text class="viz-colhead" x="282.5" y="15.6" text-anchor="middle">Your gate</text><text class="viz-label" x="8.0" y="49.3" text-anchor="start">Structure:</text><text class="viz-label" x="8.0" y="63.3" text-anchor="start">order, outline,</text><text class="viz-label" x="8.0" y="77.3" text-anchor="start">sections</text><g data-box=""><rect class="viz-band viz-t2" x="110.0" y="34.0" width="134.0" height="50.0"/><text class="viz-mark" x="177.0" y="62.8" text-anchor="middle">drafts</text></g><g data-box=""><rect class="viz-band viz-t4" x="248.0" y="34.0" width="69.0" height="50.0"/><text class="viz-mark" x="282.5" y="62.8" text-anchor="middle">approves</text></g><text class="viz-label" x="8.0" y="103.3" text-anchor="start">Cuts of your</text><text class="viz-label" x="8.0" y="117.3" text-anchor="start">own text</text><g data-box=""><rect class="viz-band viz-t2" x="110.0" y="88.0" width="134.0" height="36.0"/><text class="viz-mark" x="177.0" y="109.8" text-anchor="middle">drafts</text></g><g data-box=""><rect class="viz-band viz-t4" x="248.0" y="88.0" width="69.0" height="36.0"/><text class="viz-mark" x="282.5" y="109.8" text-anchor="middle">checks</text></g><text class="viz-label" x="8.0" y="146.3" text-anchor="start">Options</text><g data-box=""><rect class="viz-band viz-t2" x="110.0" y="128.0" width="134.0" height="28.0"/><text class="viz-mark" x="177.0" y="145.8" text-anchor="middle">drafts</text></g><g data-box=""><rect class="viz-band viz-t4" x="248.0" y="128.0" width="69.0" height="28.0"/><text class="viz-mark" x="282.5" y="145.8" text-anchor="middle">chooses</text></g><text class="viz-label" x="8.0" y="175.3" text-anchor="start">First-person</text><text class="viz-label" x="8.0" y="189.3" text-anchor="start">prose</text><g data-box=""><rect class="viz-band viz-t1" x="110.0" y="160.0" width="134.0" height="36.0"/><text class="viz-mark" x="177.0" y="181.8" text-anchor="middle">marked bridge only</text></g><g data-box=""><rect class="viz-band viz-t4" x="248.0" y="160.0" width="69.0" height="36.0"/><text class="viz-mark" x="282.5" y="181.8" text-anchor="middle">writes</text></g><text class="viz-label" x="8.0" y="218.3" text-anchor="start">Humour</text><g data-box=""><rect class="viz-band viz-t1" x="110.0" y="200.0" width="134.0" height="28.0"/><text class="viz-mark" x="177.0" y="217.8" text-anchor="middle">never</text></g><g data-box=""><rect class="viz-band viz-t4" x="248.0" y="200.0" width="69.0" height="28.0"/><text class="viz-mark" x="282.5" y="217.8" text-anchor="middle">writes</text></g><text class="viz-label" x="8.0" y="254.3" text-anchor="start">The ending</text><g data-box=""><rect class="viz-band viz-t1" x="110.0" y="232.0" width="134.0" height="36.0"/><text class="viz-mark" x="177.0" y="247.3" text-anchor="middle">points to</text><text class="viz-mark" x="177.0" y="260.3" text-anchor="middle">candidates</text></g><g data-box=""><rect class="viz-band viz-t4" x="248.0" y="232.0" width="69.0" height="36.0"/><text class="viz-mark" x="282.5" y="253.8" text-anchor="middle">decides</text></g><g data-box=""><rect class="viz-band viz-t2" x="8.0" y="284.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="299.8" text-anchor="middle">drafts</text></g><text class="viz-attr" x="70.6" y="293.0" text-anchor="start">the model&#x27;s output is</text><text class="viz-attr" x="70.6" y="307.0" text-anchor="start">taken, then gated</text><g data-box=""><rect class="viz-band viz-t1" x="8.0" y="320.0" width="150.9" height="24"/><text class="viz-mark" x="83.5" y="335.8" text-anchor="middle">bridge, never, points</text></g><text class="viz-attr" x="8.0" y="361.0" text-anchor="start">the model writes none of the final</text><text class="viz-attr" x="8.0" y="375.0" text-anchor="start">words</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="386.0" width="80.3" height="24"/><text class="viz-mark" x="48.1" y="401.8" text-anchor="middle">your marks</text></g><text class="viz-attr" x="96.3" y="395.0" text-anchor="start">you approve,</text><text class="viz-attr" x="96.3" y="409.0" text-anchor="start">check, choose,</text><text class="viz-attr" x="96.3" y="423.0" text-anchor="start">write or decide</text></svg><div class="viz-stickn" aria-hidden="true"><svg viewBox="0 0 108 436" width="108" height="436" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="108" height="272"/><text class="viz-label" x="8.0" y="49.3" text-anchor="start">Structure:</text><text class="viz-label" x="8.0" y="63.3" text-anchor="start">order, outline,</text><text class="viz-label" x="8.0" y="77.3" text-anchor="start">sections</text><text class="viz-label" x="8.0" y="103.3" text-anchor="start">Cuts of your</text><text class="viz-label" x="8.0" y="117.3" text-anchor="start">own text</text><text class="viz-label" x="8.0" y="146.3" text-anchor="start">Options</text><text class="viz-label" x="8.0" y="175.3" text-anchor="start">First-person</text><text class="viz-label" x="8.0" y="189.3" text-anchor="start">prose</text><text class="viz-label" x="8.0" y="218.3" text-anchor="start">Humour</text><text class="viz-label" x="8.0" y="254.3" text-anchor="start">The ending</text></svg></div><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 220.0 342" width="220.0" height="342" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="220.0" height="226"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">Structure: order, outline, sections</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">Cuts of your own text</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">Options</text><text class="viz-label" x="8.0" y="148.3" text-anchor="start">First-person prose</text><text class="viz-label" x="8.0" y="180.3" text-anchor="start">Humour</text><text class="viz-label" x="8.0" y="212.3" text-anchor="start">The ending</text></svg></div></div><figcaption>§4's division of the work. Structure from Noy and Zhang (2023) and Anthropic's chaining example; cuts from Padmakumar and He (ICLR 2024) and Chakrabarty, Laban and Wu (arXiv 2409.14509); options from Doshi and Hauser (Science Advances, 2024); first-person prose from those three and Agarwal, Naaman and Vashistha (CHI 2025); humour from Jentzsch and Kersting (WASSA 2023) and Gorenz and Schwarz (PLOS ONE, 2024, via PsyPost); the ending from Jakesch et al. (CHI 2023). The division itself is this unit's (stated opinion).</figcaption></figure>
+<p>A <strong>marked bridge</strong> is one sentence the model may write to join two of yours, tagged so that a code gate finds it and you rewrite or cut it at the final pass. It is the only model-written sentence the division allows into first-person text.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.1"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="57" data-rings="1"><path d="M128 70l-8 4-8 6 0 8 9 8 23 6 32 4 32 3M160 78l-9 2-3 8 20 7 16 3"/><circle class="ct-spot" cx="160" cy="88" r="7"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="7" data-rings="0"><circle class="ct-spot" cx="240" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="223" data-rings="5"><path d="M288 48l-56 6-88 12-16 4M208 109l80 3 80 11 40 3M392 44l-24-2-32 1-48 5M288 55l-48 6-48 11-32 6M184 98l40 3 58 3 94 12 72 2M392 51l-32-2-32 1-40 5M320 56l-59 8-31 8-14 8-8 8 34 8 54 4 48 7 24 3 80 2M368 54l-24 0-24 2M296 64l-40 8-12 8 5 8 23 5 72 10 56 3 64-1M384 60l-40-2-24 2-24 4M328 63l-48 9-12 8 11 8 49 9 48 4 48 0M368 62l-24 0-16 1M312 71l-6 1-16 8 19 8 43 8 32 1 24 0M384 68l-24-2-16 0-32 5M336 71l-4 1-17 8 19 8 18 2 32 2 24-2M384 72l-24-2-24 1"/><circle class="ct-spot" cx="320" cy="80" r="11"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="157" data-rings="3"><path d="M544 64l-64-11-88-9M480 62l-24-4-64-7M472 67l-24-4-80-9M456 69l-72-9M470 80l-26-8-12-2-64-8M408 97l32-4M448 80l-8-2-24-6-32-4M408 90l12-2 1-8-37-8"/><circle class="ct-spot" cx="400" cy="80" r="9"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="142" data-rings="3"><path d="M408 126l40 1 32-2 58-13 62-10 16-1M600 71l-56-7M448 118l32-2 64-13 27-7 11-8-14-9-88-17M448 112l32-3 48-10 11-3 10-8-21-8-56-13M464 105l16-3 28-6 8-8-21-8-39-11M424 101l48-5 12-8-14-8M440 93l16-5-8-8"/><circle class="ct-spot" cx="480" cy="96" r="9"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="18" data-rings="0"><circle class="ct-spot" cx="560" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="15" data-rings="0"><circle class="ct-spot" cx="640" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="50" data-rings="1"><circle class="ct-spot" cx="720" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶9" data-words="236" data-rings="5"><path d="M616 101l16 1 40 9 40 5 64 4 48 5 48 1 24-2 32-4 72-5M792 50l-96 9-72 11-24 1M824 55l-128 13-21 4-25 8-3 8 14 8 19 7 16 3 24 4 96 8 40 1 24-2 40-6 56-3M792 64l-80 8-16 4-13 4-5 8 9 8 25 7 24 3 88 8 32-1 64-9 64-4M840 64l-40 3-72 9-20 4-9 8 10 8 19 4 24 4 64 5 32 0 64-8 49-5M800 72l-60 8-12 3-8 4-1 1 13 8 20 3 64 6 24 1 24-3 72-11M840 72l-32 3-34 5-31 8 17 8 56 5 24 1 32-4 54-10M808 79l-34 9 29 8 21 1 31-1 37-8M864 76l-32 1-24 2"/><circle class="ct-spot" cx="800" cy="88" r="11"/></g><g class="ct-rise ct-t5" data-label="¶10" data-words="149" data-rings="3"><path d="M944 51l-48-5-40-1-64 5M936 59l-32-5-24-1-24 0-32 2M936 65l-32-5-24-2-24 0-64 6M936 71l-24-5-32-3-40 1M948 80l-30-8-30-4-32-1-56 5M926 88l-2-8-37-8-23-1-24 1M892 88l3-8-31-4"/><circle class="ct-spot" cx="880" cy="80" r="9"/></g><g class="ct-rise ct-t5" data-label="¶11" data-words="105" data-rings="2"><path d="M1000 115l40-4M1024 69l-80-18M976 108l37-4 19-4M1039 88l-14-8-9-3-24-6-56-12M984 100l19-4 9-8-13-8-7-2-56-13M961 96l15-4 7-4-11-8-36-9M936 92l19-4-7-8"/><circle class="ct-spot" cx="960" cy="88" r="8"/></g><g class="ct-rise ct-t5" data-label="¶12" data-words="45" data-rings="1"><path d="M1040 111l16-3 14-4 12-8-8-8-50-19M1032 100l12-4-5-8"/><circle class="ct-spot" cx="1040" cy="96" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw7-2" data-step="2"><span>Previous · 3 of 10</span><b>The human gate: where it sits and what it checks</b></a><a class="snext" href="#read-bw7-4" data-step="4"><span>Next · 5 of 10</span><b>The rule that the final pass is yours</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-bw7-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">The rule that the final pass is yours</span></span></h2>
+<p>The rule (stated opinion, on the evidence below): <strong>nothing leaves the pipeline until you have made the last pass over it</strong>, and that pass is a short list of lines you answer yes or no. It is the last human gate, and it is never handed to a model or an agent.</p>
+<p>Four things support it.</p>
+<ol>
+<li><strong>Edited text was preferred, and unedited model text was least preferred.</strong> In Chakrabarty and colleagues' preference study, writer-edited paragraphs were marked the most preferred variant "65% of the time", and unedited model paragraphs were "least preferred 60% of the time" (§6.3, arXiv v5, read 16 Nov 2026; preprint). Their writers edited model prose; your final pass may be mostly over your own arranged text, so the transfer is partial (inference).</li>
+<li><strong>Influence passes unnoticed.</strong> Jakesch and colleagues' writers were often unaware of the model's opinion and influence (§4). A gate that relies on noticing will miss what was not noticed; a gate that asks a fixed question ("is the ending a line I wrote?") does not rely on noticing.</li>
+<li><strong>A model grades its own work too kindly, and does not reliably correct itself without outside input.</strong> BW2 §5 gives the studies; BW6 §4 what a fresh context removes and what it does not. A model check is a check on sources; it is not a check on whether the text is yours.</li>
+<li><strong>Outside the frontier, the output looks as good and is wrong more often.</strong> Dell'Acqua and colleagues' 19-point drop (§3) was on a task designed so that GPT-4 would make an error, and the AI users' recommendations were still rated higher in quality whether or not they were correct. The final pass is where you ask whether this run's output is one you could defend.</li>
+</ol>
+<p><strong>What the final pass contains.</strong> Only lines no earlier gate covers (this unit's list; each line traces to §4 or to BW6):</p>
+<ul>
+<li>every marked bridge is rewritten in your words or cut;</li>
+<li>every line of humour is one you made;</li>
+<li>the ending is yours, chosen by you;</li>
+<li>every first-person statement is one you would make;</li>
+<li>every open item the model check left (BW6, Deliverable Part 1, steps F and G) is closed;</li>
+<li>the output meets the brief's purpose for its reader, read as that reader would;</li>
+<li>the run's log line is written (§7).</li>
+</ul>
+<p><strong>What it costs.</strong> No source measures the time a final pass takes on any task in this unit; the case file holds no measure of hours per unit (Academy case file §9). Keep the list short enough to answer in one sitting, and move any line a script can answer into a code gate.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.8"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="53" data-rings="5"><path d="M224 63l-80 6-32 4-27 7-10 8 5 8 20 8 28 6 40 5 32 2 40 1 32 0 24-3 32-6 32-10 24-11 9-8-2-8-7-4-16-6-24-4-32-1-32 0-32 2zM200 71l-40 3-24 4-10 2-13 8 7 8 16 5 32 6 40 3 48 1 40-5 24-6 24-9 7-3 7-8-8-8-6-2-16-3-24-3-40 1zM248 71l-88 9-17 8 9 8 40 7 40 3 40-2 24-5 16-5 13-6 5-8-10-5-16-4-24-1zM208 80l-16 2-22 6 16 8 30 3 24 1 24-1 15-3 22-8 1-8-14-3-24-2zM208 87l-3 1 11 3 24 2 16-1 15-4-7-3-8-2z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="4" data-rings="0"><circle class="ct-spot" cx="480" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="22" data-rings="2"><path d="M752 61l-24 2-61 9-22 8 6 8 13 4 24 4 24 2 32-2 48-14 16-2M696 79l-4 1 12 4 16 2 16-3 11-3-3-3-8-3-16 1z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="54" data-rings="5"><path d="M912 48l-32 3-64 11-64-1M808 80l8 1 24 6 48 20 32 8 24 3 24 2 48-2 24-4 16-6 8-4 5-8-1-8 2-8 5-8 1-8-10-8-10-4-16-3-40-5-48 0-40 4M920 55l-24 4-24 5-17 8 4 8 21 10 24 10 32 8 24 2 24 1 24-2 20-5 14-8 2-16 6-8-4-8-6-3-16-5-16-2-40-2zM912 63l-16 4-13 5 0 8 37 17 16 4 16 2 24 1 16-1 24-6 3-1 6-8 0-8 5-8-11-8-27-5-40 0zM912 71l-3 1-5 8 17 8 23 7 24 2 24-2 8-3 7-4 0-8 2-8-17-5-24-2-32 2zM960 72l-16 2-14 6 22 8 16 1 10-1 8-8-2-2-8-6z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw7-3" data-step="3"><span>Previous · 4 of 10</span><b>What the studies on writing with language models found</b></a><a class="snext" href="#read-bw7-5" data-step="5"><span>Next · 6 of 10</span><b>Steps that can be re-run without harm</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-bw7-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">Steps that can be re-run without harm</span></span></h2>
+<p>A stage will be run again: its model check fails, a session is lost, a source changes, a better model arrives. A pipeline is safe to re-run only if each stage can be repeated without damaging anything that came before or after it.</p>
+<p>The practice comes from data engineering, where the scheduler retries failed tasks. Apache Airflow's best-practice page says: "You should treat tasks in Airflow equivalent to transactions in a database", which means "you should never produce incomplete results from your tasks", and "the tasks should produce the same outcome on every re-run"; it warns against a step that appends ("Do not use INSERT during a task re-run", which may duplicate rows) and against reading "the latest available data", recommending a fixed partition instead (<a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/2.3.3/best-practices.html">Apache Airflow, <em>Best Practices</em>, documentation version 2.3.3</a>, read 16 Nov 2026; documented practice in data engineering, not written for language models; an older documentation version).</p>
+<p><strong>What changes with a model in the stage.</strong> A model stage cannot "produce the same outcome on every re-run": the same window can produce a different text on each run (BW1 §5). Re-runnable, for a model stage, means three things (this unit's adaptation, stated opinion):</p>
+<ol>
+<li><strong>Same inputs, named.</strong> The stage reads named, dated files, never "the latest draft" or whatever is in the chat. Airflow's fixed partition becomes a file name with a version.</li>
+<li><strong>A new output, never an edit in place.</strong> The stage writes a new versioned file (<code>draft-v2</code>), and never appends to or edits its input; a re-run replaces only its own output. That is Airflow's warning against INSERT: an appended re-run leaves two outputs mixed in one file.</li>
+<li><strong>Everything downstream is re-gated.</strong> Because the new output is a new draw, every gate after it runs again on it, and nothing downstream built on the old version stands until it does. "Same outcome" becomes "same contract, passed again".</li>
+</ol>
+<p>A stage that cannot meet these (one that sends an email, publishes a page, posts) is not re-runnable, and is marked so in the procedure: it runs only after the final pass, once.</p>
+<p><strong>The case.</strong> Two of Academy's loops show re-running in practice (anecdote). A figure that failed its check was fixed and checked again by a new agent; under the early rule a figure failing three times was dropped (two were), and under the later rule set by the owner figures are fixed until they pass, and one sitemap figure passed on its eighth check (Academy case file §6). And a lost writer was resumed from working files (§7). The case file does not say how the re-runs were recorded, which is the next section's subject.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.5"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="43" data-rings="2"><path d="M192 71l-16 4-7 5-2 8-5 8 14 6 16 2 16 1 48-2 27 1M264 72l-40-3-32 2M216 80l-8 0-8 4-4 4 4 4 8 2 16 1 40-3 16 1M264 85l-32-5-16 0"/><circle class="ct-spot" cx="216" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="110" data-rings="5"><path d="M283 104l59 8 50 13 48 4 40-1 16-3 16-4 8-3 9-6 2-8 5-5 3-3 5-1 32-2M488 72l-48-4-40-1-48 1-64 5-24-1M280 93l9 3 79 15 24 6 32 4 32 0 24-3 17-6 6-8-2-16-23-8-30-4-40-2-48 1-32 3-48 7-16 0M368 80l-24 3-22 5 2 8 68 15 24 4 32 0 19-3 14-8-1-8-8-8-16-5-16-2-24-2zM360 87l-7 1-5 8 52 12 16 2 16 0 16-2 11-4 0-8-12-8-7-1-16-2-24-1zM376 96l40 8 8-1 8-3 4-4-12-4-16-2-16 1z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="45" data-rings="2"><path d="M576 93l48 0 24-2 17-3 10-8-14-8-5-1-16-3-24-2-104 7-24-1"/><circle class="ct-spot" cx="600" cy="80" r="6"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="33" data-rings="1"><path d="M752 72l-14 8 14 6 8 2 24 2 72-4 16 2M856 74l-80-4-24 2"/><circle class="ct-spot" cx="792" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="94" data-rings="4"><path d="M872 88l19 8 10 16 3 2 16 5 24 5 40 1 48-3 40-7 11-3 14-8-2-8-18-8-61-18-32-4-32-2-24 1-56 8-16 1M912 79l-3 1-2 8 9 8 3 8 12 8 13 3 32 3 32-1 33-5 25-8 0-8-2-1-24-9-40-10-24-3-24 0-24 2zM952 80l-16 4-7 4 6 8 4 8 13 5 8 1 32 1 32-3 15-4 5-8-28-9-24-6-16-2zM960 87l-4 1-1 8 5 5 8 3 16 1 18-1 6-2 12-6-28-9-16-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw7-4" data-step="4"><span>Previous · 5 of 10</span><b>The rule that the final pass is yours</b></a><a class="snext" href="#read-bw7-6" data-step="6"><span>Next · 7 of 10</span><b>Logging what ran</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-bw7-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class="bt">Logging what ran</span></span></h2>
+<p>A pipeline's log is one line per stage run. BW5 §7's changelog records each finished row of work; the run log records each stage inside it, so that when an output is wrong you can say which stage made it, from which inputs, on which model.</p>
+<p><strong>What a line holds</strong> (this unit's form, stated opinion; each field traces to the source named):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date and time</td>
+<td>Order of runs; the six-month re-check</td>
+<td>BW2 §7</td>
+</tr>
+<tr>
+<td>Stage and run number</td>
+<td>Which stage, which attempt</td>
+<td>§6 above</td>
+</tr>
+<tr>
+<td>Input files, with versions</td>
+<td>What the stage could see</td>
+<td>BW1 §1; §2 above</td>
+</tr>
+<tr>
+<td>Model, version and effort</td>
+<td>What actually ran, not what was intended</td>
+<td>BW2 §7, rule 5; BW6 §6, rule 5</td>
+</tr>
+<tr>
+<td>Output file</td>
+<td>What the next stage read</td>
+<td>§2 above</td>
+</tr>
+<tr>
+<td>Gate and result</td>
+<td>Pass, fail, and back to which stage</td>
+<td>§3 above</td>
+</tr>
+<tr>
+<td>Who ran the gate</td>
+<td>You, a script, or which checker</td>
+<td>BW6 §6</td>
+</tr>
+</tbody>
+</table></div>
+<p>Anthropic's reason for chaining is the same: each step separate "so you can log, evaluate, or branch at any point" (<em>Prompting best practices</em>, read 16 Nov 2026; vendor).</p>
+<p><strong>Why the model field records what ran.</strong> In the case, a session's model named "fable" resolved to a newer version than the method names, so the checks it ran were recorded as owed again on the named version (Academy case file §7). A log that had recorded only the requested name would have shown those checks as done. <strong>Why the log keeps evidence of what was read.</strong> Some sessions kept no agent transcript on disk, so scripted checks of what each agent had read could not run, and the agents' own reports stood in their place (Academy case file §7; BW6 §6, rule 6). Both are anecdotes from one project; they show two ways a log without the right field stops being evidence.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.2"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="46" data-rings="2"><path d="M224 71l-24 3-27 6-8 8 19 6 48 8 32 3 16 0 16-2 8-3 9-4-10-8-15-8-16-6-24-3z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="16" data-rings="0"><circle class="ct-spot" cx="480" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="30" data-rings="1"><path d="M704 71l-8 2-12 7 12 6 8 2 24 2 37-2-2-8-17-8-18-2z"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="123" data-rings="5"><path d="M872 48l-16 4-16 8-23 20-6 8 18 8 27 7 24 4 32 4 56 3 48 1 32-2 32-4 19-5 14-8-2-8-15-8-23-8-33-19-32-8-32-4-40 0-40 2zM896 54l-16 5-12 5-9 8-6 8 2 8 17 7 16 4 24 3 40 4 32 1 32-1 24-2 24-5 9-3 5-8-13-8-22-8-19-11-24-8-24-3-32-1-24 2zM904 62l-7 2-9 5-4 3-6 8 3 8 15 5 16 3 40 4 48 0 37-4 15-8-11-8-20-8-13-8-16-4-24-3-24 0-24 2zM936 64l-16 3-13 5-7 8 8 8 28 5 40 2 24-2 25-5-6-8-27-12-8-2-24-3zM944 72l-8 2-9 6 17 6 16 2 16 0 8-2 8-6-20-8-12-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw7-5" data-step="5"><span>Previous · 6 of 10</span><b>Steps that can be re-run without harm</b></a><a class="snext" href="#read-bw7-7" data-step="7"><span>Next · 8 of 10</span><b>The Academy case&#x27;s pipeline, and where it failed</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-bw7-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">The Academy case's pipeline, and where it failed</span></span></h2>
+<p>Academy's method, read as a pipeline (anecdote: one project, one person, no control; Academy case file §9). Each stage below is as the case file records it; where it records nothing, the cell says so. The case's flow of a unit through the method is in BW5 §10; this section reads the same method stage by stage for its inputs, outputs, models, gates and failures.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Input → output</th>
+<th>Model</th>
+<th>Gate</th>
+<th>Where it failed (case file)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · Brief</td>
+<td>Shared preamble + unit brief, never reworded (§2) → one self-contained brief</td>
+<td>None recorded</td>
+<td>Not recorded</td>
+<td>No failure recorded at this stage</td>
+</tr>
+<tr>
+<td>2 · Writer</td>
+<td>The brief and the units already filed (§2) → the unit, a long-form report with sources cited in place and a deliverable built in full (§1), and up to ten unverified claims (§2)</td>
+<td>Opus 5.5 (§2)</td>
+<td>The writer's own pass: the sourcing checklist (§2)</td>
+<td>Writers lost to container restarts; one deep dive lost two, and the third resumed from the second's working files (§7). Before the fresh check existed, Audit 1 found three units whose deliverables did not exist and two table rows resting on figures the cited vendor pages did not contain (§3)</td>
+</tr>
+<tr>
+<td>3 · Fresh check</td>
+<td>The unit, in a context that has not seen it written (§2) → findings graded error, should-fix and minor; it never edits (§2)</td>
+<td>Fable 5.1 on 19 drafts, Opus 5.5 on 12, Fable 5.2 on 5 (§5)</td>
+<td>Model check</td>
+<td>28 of 36 drafts had at least one error; 58 errors in all (§5). A "fable" session resolved to a newer version, and its checks were recorded as owed again (§7). BW1's checker could not write its report; the chat saved it from the reply (§7)</td>
+</tr>
+<tr>
+<td>4 · Applying findings</td>
+<td>The unit and the findings → the corrected unit</td>
+<td>Not recorded: the file names "a maintainer" (§2)</td>
+<td>Human or maintainer gate: each finding verified, then applied as an exact replacement (§2)</td>
+<td>No failure recorded at this stage</td>
+</tr>
+<tr>
+<td>5 · Filing</td>
+<td>The corrected unit → the unit filed; the backlog row moved to the changelog; the writing model recorded (§2)</td>
+<td>None recorded</td>
+<td>Not recorded</td>
+<td>No failure recorded at this stage</td>
+</tr>
+<tr>
+<td>6 · Build</td>
+<td>The repository → the website, built by script; no page styled by hand (§1); figures declared as data and drawn by script (§6)</td>
+<td>None: a script (§1, §6)</td>
+<td>Not recorded</td>
+<td>Not recorded</td>
+</tr>
+<tr>
+<td>7 · Checks</td>
+<td>Each figure against the unit's text (§6)</td>
+<td>A separate agent (§6); model not recorded</td>
+<td>Model check: every label and number must already be in the text (§6)</td>
+<td>Figures failed and were re-checked by new agents; two were dropped under the early rule; one sitemap passed on its eighth check (§6). Some sessions kept no transcript, so scripted checks of what agents had read could not run (§7)</td>
+</tr>
+<tr>
+<td>8 · Publishing</td>
+<td>The built site → one website with one design (§1)</td>
+<td>Not recorded</td>
+<td>Not recorded</td>
+<td>A structure audit of the project found private terms (words meant to stay out of the public site) reaching a public build (§7)</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="viz viz-flow"><div class="viz-scroll"><svg viewBox="0 0 694 191" width="694" height="191" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="flow"><g data-box=""><rect class="viz-node viz-t3" x="8" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="20.0" y="31.3" text-anchor="start">Brief</text><text class="viz-note" x="20.0" y="48.3" text-anchor="start">never reworded</text></g><path class="viz-arrow" d="M162,42.0 L178,42.0"/><g data-box=""><rect class="viz-node viz-t1" x="184" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="196.0" y="31.3" text-anchor="start">Writer</text><text class="viz-note" x="196.0" y="48.3" text-anchor="start">writers lost to</text><text class="viz-note" x="196.0" y="61.3" text-anchor="start">restarts</text></g><path class="viz-arrow" d="M338,42.0 L354,42.0"/><g data-box=""><rect class="viz-node viz-t2" x="360" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="372.0" y="31.3" text-anchor="start">Fresh check</text><text class="viz-note" x="372.0" y="48.3" text-anchor="start">28 of 36 drafts</text><text class="viz-note" x="372.0" y="61.3" text-anchor="start">with an error</text></g><path class="viz-arrow" d="M514,42.0 L530,42.0"/><g data-box=""><rect class="viz-node viz-t3" x="536" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="548.0" y="31.3" text-anchor="start">Applying findings</text><text class="viz-note" x="548.0" y="48.3" text-anchor="start">each verified,</text><text class="viz-note" x="548.0" y="61.3" text-anchor="start">exact replacement</text></g><path class="viz-arrow" d="M611.0,78 L611.0,89.0 L83.0,89.0 L83.0,98"/><g data-box=""><rect class="viz-node viz-t3" x="8" y="102" width="150" height="81" rx="2"/><text class="viz-nodelabel" x="20.0" y="125.3" text-anchor="start">Filing</text><text class="viz-note" x="20.0" y="142.3" text-anchor="start">row to changelog,</text><text class="viz-note" x="20.0" y="155.3" text-anchor="start">model recorded</text></g><path class="viz-arrow" d="M162,142.5 L178,142.5"/><g data-box=""><rect class="viz-node viz-t3" x="184" y="102" width="150" height="81" rx="2"/><text class="viz-nodelabel" x="196.0" y="125.3" text-anchor="start">Build</text><text class="viz-note" x="196.0" y="142.3" text-anchor="start">by script</text></g><path class="viz-arrow" d="M338,142.5 L354,142.5"/><g data-box=""><rect class="viz-node viz-t1" x="360" y="102" width="150" height="81" rx="2"/><text class="viz-nodelabel" x="372.0" y="125.3" text-anchor="start">Checks</text><text class="viz-note" x="372.0" y="142.3" text-anchor="start">a sitemap passed on</text><text class="viz-note" x="372.0" y="155.3" text-anchor="start">its eighth check</text></g><path class="viz-arrow" d="M514,142.5 L530,142.5"/><g data-box=""><rect class="viz-node viz-t1" x="536" y="102" width="150" height="81" rx="2"/><text class="viz-nodelabel" x="548.0" y="125.3" text-anchor="start">Publishing</text><text class="viz-note" x="548.0" y="142.3" text-anchor="start">private terms</text><text class="viz-note" x="548.0" y="155.3" text-anchor="start">reached a public</text><text class="viz-note" x="548.0" y="168.3" text-anchor="start">build</text></g><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>§8: the Academy case's method read as eight stages, with the failure the case file records at each where it records one. From the table in §8 of this unit; Academy case file §1, §2, §5, §6, §7 (one project, an anecdote).</figcaption></figure>
+<p><strong>What the failures share.</strong> Read against §2 to §7 (this unit's reading, stated opinion):</p>
+<ul>
+<li><strong>Hand-offs as files held where they were used.</strong> The lost writers were recovered because the second writer's working files existed (§2 above). The one hand-off that went through conversation, BW1's check report, is the one the record had to annotate.</li>
+<li><strong>The gates the case file records sit before filing; it records none before publishing.</strong> The fresh check found an error in 28 of 36 drafts before filing (Academy case file §5); Audit 1's missing deliverables are the failure a writer stage produces when no gate checks the output against its brief (§3). The private terms in a public build (§7) are what a publishing stage produces without a gate of its own; the case file does not say whether one was added.</li>
+<li><strong>The log was missing two fields.</strong> The model that actually ran, and the evidence of what each agent read (§7 above).</li>
+<li><strong>Re-running worked where the stage wrote a new version and was re-checked from scratch.</strong> The figure loop (§6).</li>
+</ul>
+<p><strong>What the case cannot show.</strong> No unit was written without the method, so nothing here shows the pipeline beats a lighter one; there is no measure of hours or money per unit (Academy case file §9). The case shows one person running these stages, with a fresh check before filing on 36 units (§5), and where they broke.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.9"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="65" data-rings="5"><path d="M200 55l-16 3-16 4-4 2-10 8 2 8 5 8-6 16 6 8 15 7 24 5 24 2 32 1 32-1 32-3 32-7 24-7 37-13 13-8 1-8-13-8-22-7-32-6-48-6-32-2-48 1zM216 63l-16 3-14 6-3 8 5 8-3 8 0 8 15 8 16 3 24 3 24 0 24-1 24-2 24-5 24-8 17-6 15-8-1-8-7-3-16-6-32-6-32-4-32-1-32 0zM216 72l-11 8 4 8-3 8 6 8 12 4 16 2 40 1 32-4 38-11 17-8-4-8-3-1-24-7-24-3-32-3-24 0-24 2zM232 78l-6 2 2 8-2 8 14 6 10 2 22 1 24-2 28-7 19-8-8-8-39-7-24-1-16 1zM264 80l-8 3-4 5 4 6 3 2 13 1 18-1 24-8-10-4-15-4z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="14" data-rings="1"><path d="M576 94l-5 2 29 7 16-2 9-5-9-3-16-2-16 1z"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="58" data-rings="4"><path d="M800 55l-23 9-7 8 2 8 10 8 18 7 16 4 24 4 32 3 32 1 104-2 32-2 24-4 15-3 16-8-3-8-28-9-24-4-64-7-56-9-32-2-32 0-32 2zM824 63l-8 4-8 5 1 8 11 8 4 1 16 5 24 4 48 2 72-1 35-3 30-8 0-8-28-8-61-7-40-7-32-1-24 0-24 3zM872 64l-16 2-17 6-1 8 14 8 28 5 56 1 48-2 27-4 4-8-36-8-59-8-24-1zM880 71l-6 1-7 8 23 8 38 1 36-1 12-5 5-3-61-10-24-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw7-6" data-step="6"><span>Previous · 7 of 10</span><b>Logging what ran</b></a><a class="snext" href="#read-bw7-8" data-step="8"><span>Next · 9 of 10</span><b>On other tools</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-bw7-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class="bt">On other tools</span></span></h2>
+<p>The principles of §1 to §7 (fixed stages, one model per stage, file hand-offs, three kinds of gate, a final pass that stays yours, re-runnable stages, a run log) need no particular product. Their evidence is from studies of several vendors' models and from data-engineering practice. What is specific to a vendor, as read on 16 November 2026:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Claim in this unit</th>
+<th>Claude</th>
+<th>ChatGPT and OpenAI</th>
+<th>Gemini and Google</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chaining fixed steps, each working on the last one's output, with checks between (§1)</td>
+<td>Prompt chaining with programmatic "gate" checks: <a target="_blank" rel="noopener" href="https://anthropic.com/engineering/building-effective-agents"><em>Building effective agents</em></a> (Dec 2024; the page notes its tooling has changed since)</td>
+<td>OpenAI Agents SDK: "Chaining multiple agents by transforming the output of one into the input of the next", e.g. research, outline, write, critique, improve: <a target="_blank" rel="noopener" href="https://openai.github.io/openai-agents-python/multi_agent/"><em>Agent orchestration</em></a></td>
+<td>Vertex AI documentation: "make each step a prompt and chain the prompts together in a sequence", where "the output of one prompt in the sequence becomes the input of the next prompt": <a target="_blank" rel="noopener" href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/break-down-prompts"><em>Break down complex tasks into simpler prompts</em></a> (last updated 12 Nov 2026)</td>
+</tr>
+<tr>
+<td>Explicit chaining for inspecting intermediate outputs, logging each step (§1, §7)</td>
+<td>"so you can log, evaluate, or branch at any point": <a target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/chain-prompts"><em>Prompting best practices</em></a></td>
+<td>No equivalent sentence found on the page read</td>
+<td>Smaller prompts "can help you improve controllability, debugging, and accuracy": same Vertex AI page</td>
+</tr>
+<tr>
+<td>A check run in a loop until the output passes (§3, §6)</td>
+<td>Self-correction chain: draft, review against criteria, refine, each a separate call (<em>Prompting best practices</em>)</td>
+<td>An evaluator agent in a loop that stops "when the evaluator says the output passes the required criteria" (<em>Agent orchestration</em>)</td>
+<td>Not found on the page read</td>
+</tr>
+<tr>
+<td>A fresh context for the check (§3)</td>
+<td>BW6 §4</td>
+<td>As BW6 §8 records: not checked</td>
+<td>As BW6 §8 records: Gemini CLI subagents</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two limits. The OpenAI and Google pages are developer documentation for code that calls a model; neither describes the consumer chat products (ChatGPT, the Gemini app), whose pages were not read for this unit. Google's Gemini API page on prompt design strategies could not be fetched on 16 Nov 2026 and was not checked. In any chat product the pipeline in this unit can be run by hand: one chat per stage, files saved and attached by you, gates run by you or by a script; BW8 turns the procedure into something that runs itself.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.6"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="58" data-rings="3"><path d="M280 63l-16 3-15 6-1 8 7 8-2 8 1 8 16 8 26 5 48 2 32-1 24-3 40-8 34-11 15-8-1-8-16-6-24-6-40-6-32-2-40-1-32 1zM312 71l-16 4-10 5 5 8-1 8 12 8 18 3 40 1 32-3 34-9 18-8-7-8-41-8-44-3zM344 80l-8 1-8 7 8 8 16 1 22-1 25-8-15-5-12-3z"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="95" data-rings="5"><path d="M696 63l-24 4-15 5-14 8-2 8 6 8 12 8 13 6 24 7 40 7 40 3 56 1 80 0 56-2 40-4 32-5 19-5 12-8-4-8-23-8-12-3-56-7-67-6-69-10-32-3-40-1-40 1zM720 72l-26 8-7 8 4 8 13 8 16 6 16 4 24 3 32 3 40 1 96-2 56-5 16-4 17-6-2-8-27-8-28-4-48-4-72-10-32-3-32 0-32 2zM736 80l-14 8 3 8 14 8 13 4 23 4 17 2 72 1 71-3 17-3 22-5 1-8-31-8-120-14-48 0-24 3zM800 80l-24 3-20 5 1 8 17 8 18 3 40 3 64-2 35-4 7-8-34-7-64-7zM808 88l-8 3-6 5 14 4 16 2 40 0 16-2 13-4-53-8z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw7-7" data-step="7"><span>Previous · 8 of 10</span><b>The Academy case&#x27;s pipeline, and where it failed</b></a><a class="snext" href="#read-bw7-9" data-step="9"><span>Next · 10 of 10</span><b>A pipeline written as a runnable procedure</b></a></nav></section><section class="sec" data-step="9"><h2 id="read-bw7-9" class="band"><span class="bn" aria-hidden="true">10</span><span class="bh"><span class=bk>Deliverable</span><span class="bt">A pipeline written as a runnable procedure</span></span></h2>
+<p>Three parts. Part 1 is the Academy case's pipeline, written as a procedure you could run: numbered steps, each with its input, output, model, gate, done-when lines, a re-run rule and a log line. Part 2 is a short second pipeline on neutral material, interview notes to a report, a summary and an email, whose content is invented and labelled so. Part 3 is the template for your project. BW8 turns a procedure in this form into a skill and a scheduled run; BW9 decides which of its steps an agent may take.</p>
+<p>Conventions, as in BW3 to BW6. Every fact about Academy comes from the Academy case file and is cited by section; where the case file holds no value, the cell says <code>[NOT IN CASE FILE: …]</code>, a blank for the project's owner and never a claim. Anything marked <strong>(proposal)</strong> is this unit's addition to what the case records (stated opinion, traced to the section named). File paths are this unit's naming, after BW4's Part 3 folders and BW5's <code>records/</code>; the case file names no paths. The <strong>Model</strong> line gives a BW2 routing-table row by tier and effort, with the model in that tier as BW2 read it on 15 Nov 2026; where BW2 has no row, it says so and names the row borrowed. Gate kinds are §3's: <strong>code</strong>, <strong>model check</strong>, <strong>human</strong>.</p>
+<h3>Part 1 · The Academy case's pipeline</h3>
+<p><strong>Pipeline card</strong></p>
+<ul>
+<li><strong>What it produces:</strong> one unit of a course: a long-form report in Markdown, 2,000 to 6,000 words by guide, sources cited in place, a closing deliverable built in full (Academy case file §1).</li>
+<li><strong>Trigger:</strong> one backlog row; every chat works one row (§2).</li>
+<li><strong>Stages:</strong> 1 Packet, 2 Write, 3 Fresh check, 4 Apply findings, 5 File, 6 Build, 7 Checks, 8 Publish (§8 of this unit).</li>
+<li><strong>Boundaries</strong> (BW5 §9): the end of each unit's run, at step 8's gate; and every four units, at the sample audit (case file §2; audits 3 onward had not run at 11 Nov 2026, case file §9). Flags raised by any step wait for one of these.</li>
+<li><strong>Run log:</strong> <code>records/run-log.md</code>, one line per step run (§7). <strong>(proposal;</strong> the case file records a changelog per row, §2, and no per-step log<strong>)</strong></li>
+</ul>
+<h4>Step 0 · Before the run</h4>
+<ul>
+<li>[ ] The unit's brief exists, with the course's shared preamble (case file §2).</li>
+<li>[ ] Every unit the brief's Takes line names is filed (case file §2: the writer sees "the units already filed").</li>
+<li>[ ] No open flag touches this unit (BW5 §9, step 5).</li>
+<li>[ ] <code>records/run-log.md</code> exists.</li>
+</ul>
+<h4>Step 1 · Packet</h4>
+<ul>
+<li><strong>Input:</strong> <code>briefs/&lt;course&gt;/preamble.md</code>, <code>briefs/&lt;course&gt;/&lt;code&gt;.md</code>, the filed units the Takes line names, the sourcing standard.</li>
+<li><strong>Output:</strong> <code>packets/&lt;code&gt;/</code> holding <code>brief.txt</code> (preamble, then unit brief) and the files above, nothing else.</li>
+<li><strong>Model:</strong> none; a script copies (proposal, so that no model can reword the brief).</li>
+<li><strong>Gate (code):</strong> <code>brief.txt</code> matches the approved brief character for character (case file §2: one brief per unit, never reworded).</li>
+<li><strong>Done when:</strong> the packet holds only the brief and the units already filed, as the method sets (case file §2).</li>
+<li><strong>Re-run:</strong> safe; rebuilt from the same files.</li>
+<li><strong>Log:</strong> date · 1 Packet · run n · inputs and their versions · script · gate pass/fail.</li>
+</ul>
+<h4>Step 2 · Write</h4>
+<ul>
+<li><strong>Input:</strong> <code>packets/&lt;code&gt;/</code>, in a new chat or a fresh agent context (case file §2).</li>
+<li><strong>Output:</strong> <code>packets/&lt;code&gt;/out/unit-v1.md</code> and <code>unsure.md</code> (up to ten claims the writer could not verify, case file §2).</li>
+<li><strong>Model:</strong> BW2 row 4, a long first draft · large · Opus 5.5, high. The case records Opus 5.5 as the writing model (§2) and not the effort (<code>[NOT IN CASE FILE: effort per unit]</code>).</li>
+<li><strong>Gate (code):</strong> the file has a Sources list and a Deliverable heading; <code>unsure.md</code> has at most ten items. <strong>(proposal;</strong> from the case's Audit 1, where three deliverables did not exist, case file §3<strong>)</strong></li>
+<li><strong>Done when:</strong> the writer's own pass is done: the sourcing checklist run and the unsure list written (case file §2); BW5 Deliverable 1d, its first four lines.</li>
+<li><strong>Re-run:</strong> safe in a new context from the packet. A writer lost mid-run is resumed from its working files, as the case's third writer was (case file §7); the resumed run writes <code>unit-v1.md</code> afresh and the log records both runs.</li>
+<li><strong>Log:</strong> date · 2 Write · run n · packet version · model and version as run, effort · <code>unit-v1.md</code> · code gate result.</li>
+</ul>
+<h4>Step 3 · Fresh check</h4>
+<ul>
+<li><strong>Input:</strong> <code>unit-v1.md</code>, <code>brief.txt</code>, the sourcing standard; never the writer's conversation (case file §2: a context that has not seen the unit written).</li>
+<li><strong>Output:</strong> <code>checks/&lt;code&gt;-fresh-check.md</code>: findings graded error, should-fix and minor; the checker edits nothing (case file §2). Each finding gives the current text and its replacement, so step 4 can apply it as an exact replacement (proposal; the case file records only that findings are applied that way, §2).</li>
+<li><strong>Model:</strong> BW2 row 5, critique of a draft · large top rung · Fable 5.2, high, in a fresh context; override: Opus 5.5, high, in a fresh context; the log records that the checker ran on the writer's model. The case ran Fable 5.1 on 19 drafts, Opus 5.5 on 12, Fable 5.2 on 5 (case file §5).</li>
+<li><strong>Gate (code):</strong> the report file exists, written by the checker itself, and names the model and version that ran. <strong>(proposal;</strong> from BW1's check, whose report was saved from the checker's reply, and the "fable" session that resolved to a newer version, case file §7<strong>)</strong></li>
+<li><strong>Done when:</strong> every cited claim has been checked against its source and the deliverable against the brief (case file §2); BW6, Deliverable Part 1, steps D and E.</li>
+<li><strong>Re-run:</strong> safe; a new context writes <code>-fresh-check-v2.md</code>. A check whose model resolved to another version than the one named is recorded as owed again on the named version (case file §7).</li>
+<li><strong>Log:</strong> date · 3 Fresh check · run n · <code>unit-v1.md</code> · model requested, model and version as run · report path · verdict and counts.</li>
+</ul>
+<h4>Step 4 · Apply findings</h4>
+<ul>
+<li><strong>Input:</strong> <code>unit-v1.md</code> and the check report.</li>
+<li><strong>Output:</strong> <code>unit-v2.md</code> and <code>checks/&lt;code&gt;-decisions.md</code>: for each finding, applied, changed or rejected, with the reason.</li>
+<li><strong>Model:</strong> <code>[NOT IN CASE FILE: whether the maintainer who applies findings is a person or a model, and which]</code>. BW2 has no row for applying verified replacements; the reading is row 5's kind of work and the edit is mechanical.</li>
+<li><strong>Gate (maintainer; whether a person or a model is <code>[NOT IN CASE FILE]</code>):</strong> each finding is verified at its source before it is applied, and applied as an exact replacement (case file §2; BW6 §6, rule 1).</li>
+<li><strong>Done when:</strong> every finding has a decision line; every applied replacement is found once in <code>unit-v2.md</code>.</li>
+<li><strong>Re-run:</strong> safe; it starts again from the unchanged <code>unit-v1.md</code> and the report.</li>
+<li><strong>Log:</strong> date · 4 Apply · run n · report path · applied / changed / rejected counts · who verified.</li>
+</ul>
+<h4>Step 5 · File</h4>
+<ul>
+<li><strong>Input:</strong> <code>unit-v2.md</code>.</li>
+<li><strong>Output:</strong> the unit in the course's folder; the backlog row moved to the changelog with the date, the model that wrote the unit and a one-line result; the prompt for the next chat (case file §2; BW5 §7).</li>
+<li><strong>Model:</strong> none recorded in the case file.</li>
+<li><strong>Gate (code):</strong> the changelog row names a model; the row is no longer in the backlog (BW5 §7: a row in both files is a row nobody knows the state of).</li>
+<li><strong>Done when:</strong> BW5 Deliverable 1d, its last two lines.</li>
+<li><strong>Re-run:</strong> safe if filing replaces the unit's file rather than adding a second copy (§6).</li>
+<li><strong>Log:</strong> date · 5 File · unit path · changelog row.</li>
+</ul>
+<h4>Step 6 · Build</h4>
+<ul>
+<li><strong>Input:</strong> the repository (case file §1).</li>
+<li><strong>Output:</strong> the site's files, built by script, with no page styled by hand; figures declared as data in the units and drawn by script (case file §1, §6).</li>
+<li><strong>Model:</strong> none; a script.</li>
+<li><strong>Gate (code):</strong> the build completes. <code>[NOT IN CASE FILE: the build's own checks]</code>.</li>
+<li><strong>Done when (proposal):</strong> every filed unit has its page.</li>
+<li><strong>Re-run:</strong> safe by construction: the output is rebuilt from source and never edited in place (§6; BW4 §5).</li>
+<li><strong>Log:</strong> date · 6 Build · commit or folder version · pass/fail.</li>
+</ul>
+<h4>Step 7 · Checks</h4>
+<ul>
+<li><strong>Input:</strong> the built pages and each unit's text.</li>
+<li><strong>Output:</strong> <code>checks/&lt;code&gt;-figures.md</code> (one verdict per figure) and <code>checks/&lt;code&gt;-terms.md</code>.</li>
+<li><strong>Model:</strong> for the figure check, a separate agent (case file §6), <code>[NOT IN CASE FILE: its model]</code>; BW2 has no row, and row 5 (critique against a text) is the nearest. The terms check: none, a script.</li>
+<li><strong>Gate (model check):</strong> every label and number in a figure is already in the unit's text (case file §6). A figure that fails is fixed and checked again by a new agent, until it passes; figures are never dropped (case file §6).</li>
+<li><strong>Gate (code) (proposal):</strong> search the built output for every term on a private list kept outside the repository; pass if nothing is found. From the structure audit that found private terms reaching a public build (case file §7); the check is BW4's rot-check step 6.</li>
+<li><strong>Done when:</strong> every figure has passed; the terms search has found nothing.</li>
+<li><strong>Re-run:</strong> safe; each re-check is a new agent and a new verdict file (case file §6).</li>
+<li><strong>Log:</strong> date · 7 Checks · figure id · check n · verdict; terms search · count found.</li>
+</ul>
+<h4>Step 8 · Publish</h4>
+<ul>
+<li><strong>Input:</strong> the built site that passed step 7.</li>
+<li><strong>Output:</strong> the published site (case file §1). <code>[NOT IN CASE FILE: the publishing steps and where the site is published]</code>.</li>
+<li><strong>Model:</strong> none.</li>
+<li><strong>Gate (human) (proposal; the case file records no gate here):</strong> the final pass of §5, answered yes on each line for the new unit:</li>
+<li>[ ] Every finding in <code>checks/&lt;code&gt;-decisions.md</code> has a decision, and every rejection a reason.</li>
+<li>[ ] Every line on <code>unsure.md</code> is either sourced now, said in the unit to be unsourced, or cut.</li>
+<li>[ ] Every figure has passed, and the terms search found nothing.</li>
+<li>[ ] The unit's deliverable is built in full and answers its brief, read as the course's reader would.</li>
+<li>[ ] The flags this run raised are written down for the next boundary (BW5 §9).</li>
+<li>[ ] The log has a line for every step of this run.</li>
+<li><strong>Done when:</strong> the gate's lines are all yes and the site is live.</li>
+<li><strong>Re-run:</strong> <strong>not re-runnable.</strong> Once published, a correction is made in the open, with the date and the reason (BW6, Deliverable Part 1, step G).</li>
+<li><strong>Log:</strong> date · 8 Publish · what went live · gate answered by.</li>
+</ul>
+<h4>Every four units · Boundary</h4>
+<p>The sample audit: one claim drawn from every section of each unit and checked against its source; a unit with more than one sampled claim in ten failing is audited in full; verdicts pass, full audit, rewrite (case file §2; BW6 §5). This is the pipeline's second boundary: open flags are decided here (BW5 §9). Model: BW2 row 9, an audit against sources · large top rung · Fable 5.2, high, a model other than the writer's; the method names Fable 5.1 (case file §2).</p>
+<h4>The run log, on the case</h4>
+<p>Lines the case file supports, in §7's form. Every blank is a field the case did not record, which is the point of keeping it.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Step · run</th>
+<th>Inputs</th>
+<th>Model as run</th>
+<th>Output</th>
+<th>Gate · result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[NOT IN CASE FILE]</code></td>
+<td>2 Write · run 3, one deep dive</td>
+<td>The packet and the second writer's working files</td>
+<td><code>[NOT IN CASE FILE]</code></td>
+<td>The unit</td>
+<td>Resumed after two writers were lost to container restarts (case file §7)</td>
+</tr>
+<tr>
+<td><code>[NOT IN CASE FILE]</code></td>
+<td>3 Fresh check · <code>[NOT IN CASE FILE: unit]</code></td>
+<td><code>[NOT IN CASE FILE]</code></td>
+<td>Requested "fable"; resolved to a newer version than the method names</td>
+<td>Findings</td>
+<td>Recorded as owed again on the named version (case file §7)</td>
+</tr>
+<tr>
+<td>15 Nov 2026</td>
+<td>3 Fresh check · BW1</td>
+<td>The checker's packet only</td>
+<td><code>[NOT IN CASE FILE]</code></td>
+<td>Report saved by the chat from the checker's reply; the checker's write was refused</td>
+<td>Run from a Claude Code session on claude.ai (case file §7)</td>
+</tr>
+<tr>
+<td><code>[NOT IN CASE FILE]</code></td>
+<td>7 Checks · a sitemap figure, check 8</td>
+<td>The unit's text</td>
+<td>A new agent each time; <code>[NOT IN CASE FILE: model]</code></td>
+<td>Verdict</td>
+<td>Pass on the eighth check (case file §6)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Part 2 · A second pipeline, on neutral material</h3>
+<p><strong>Everything in this part's content is invented</strong> for the example: the project, the interviews, the quotes, the names of themes and the numbers. Only the procedure is the unit's.</p>
+<p><strong>Pipeline card (invented example).</strong> A researcher runs eight 40-minute interviews with operations managers at regional food wholesalers about late deliveries. From the notes, the pipeline produces a findings report of about 3,000 words for the client, a one-page summary for the client's director, and a thank-you email to the eight interviewees. It runs once per study, about four times a year. Boundaries: after step 3 (the structure) and at step 8 (the final pass). Log: <code>records/run-log.md</code>.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Input → output</th>
+<th>Model (BW2 row)</th>
+<th>Gate</th>
+<th>Done when</th>
+<th>Re-run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 · Tidy notes</strong></td>
+<td><code>notes/raw/int-01.md</code> … <code>int-08.md</code> → <code>notes/clean/int-0n.md</code>, headings added, every word kept</td>
+<td>Row 1 · small · Haiku 5.5, low</td>
+<td><strong>Code:</strong> the clean file holds every word of the raw file, in order</td>
+<td>Eight clean files, each passing</td>
+<td>Safe</td>
+</tr>
+<tr>
+<td><strong>2 · Extract</strong></td>
+<td>The clean notes → <code>records/quotes.md</code>: one row per quote, with interview, quote and theme</td>
+<td>Row 2 · small · Haiku 5.5, high; counts by script</td>
+<td><strong>Code:</strong> every quote is found verbatim in its interview's clean file; theme counts computed by script</td>
+<td>Every row passes; no quote paraphrased</td>
+<td>Safe; writes <code>quotes-v2.md</code></td>
+</tr>
+<tr>
+<td><strong>3 · Structure options</strong></td>
+<td><code>quotes.md</code> → <code>outline-v1.md</code>: three outlines for the report, each with its sections and the quotes each section uses</td>
+<td>Row 10 · large · Opus 5.5, high (a plan)</td>
+<td><strong>Human:</strong> you choose one outline, or merge two, and approve its section list (§4, structure and options; §3, place 1)</td>
+<td>One approved outline, saved as <code>outline-approved.md</code></td>
+<td>Safe; boundary: flags decided here</td>
+</tr>
+<tr>
+<td><strong>4 · Draft findings</strong></td>
+<td><code>outline-approved.md</code>, <code>quotes.md</code> → <code>report-v1.md</code>: the findings sections only; any joining sentence tagged <code>[BRIDGE]</code>; the recommendations and the closing section left as <code>[YOURS]</code></td>
+<td>Row 4 · large · Opus 5.5, high</td>
+<td><strong>Code:</strong> quotes verbatim; <code>[YOURS]</code> present for recommendations and close; <code>[BRIDGE]</code> lines counted</td>
+<td>Every finding section drafted; the two <code>[YOURS]</code> slots untouched</td>
+<td>Safe; writes a new draft version (<code>report-v1b.md</code>); steps 5 to 8 re-run on it</td>
+</tr>
+<tr>
+<td><strong>5 · Fresh check</strong></td>
+<td><code>report-v1.md</code>, the clean notes → <code>checks/report-check.md</code>, then the verified findings applied → <code>report-v2.md</code></td>
+<td>Row 5 · large top rung · Fable 5.2, high, fresh context</td>
+<td><strong>Model check</strong>, then <strong>human:</strong> each finding verified before it is applied (BW6 §6, rule 1)</td>
+<td>BW6, Deliverable Part 1, steps D to F</td>
+<td>Safe; new report file</td>
+</tr>
+<tr>
+<td><strong>6 · Your sections</strong></td>
+<td><code>report-v2.md</code> → <code>report-final.md</code></td>
+<td>None: you</td>
+<td><strong>Human:</strong> you write the recommendations and the close; every <code>[BRIDGE]</code> rewritten or cut (§4, first-person prose and the ending)</td>
+<td>No tag left; the code gate finds none</td>
+<td>Safe</td>
+</tr>
+<tr>
+<td><strong>7 · Summary and email draft</strong></td>
+<td><code>report-final.md</code> → <code>summary-v1.md</code> (one page) and <code>email-v1.md</code> (three subject lines and a skeleton with slots)</td>
+<td>Summary: row 3 · mid · Sonnet 5.5, medium. Email: no BW2 row; row 3 by analogy</td>
+<td><strong>Code:</strong> every number in the summary is in the report; the summary is at most 400 words</td>
+<td>Summary drafted; the email's body slots empty</td>
+<td>Safe</td>
+</tr>
+<tr>
+<td><strong>8 · Final pass, then send</strong></td>
+<td>Everything above → the report and summary sent to the client; the email sent to the eight interviewees</td>
+<td>None: you</td>
+<td><strong>Human:</strong> §5's list, plus: the email's sentences are yours, its subject line one you chose</td>
+<td>All yes</td>
+<td><strong>Not re-runnable:</strong> sending is irreversible</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Three outputs from the run (invented content):</strong></p>
+<p><em>Step 2, two rows of <code>records/quotes.md</code>:</em></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Interview</th>
+<th>Quote</th>
+<th>Theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int-03</td>
+<td>"We find out the truck is late when the shelf is empty."</td>
+<td>No advance warning</td>
+</tr>
+<tr>
+<td>int-06</td>
+<td>"Our drivers call me, not the system."</td>
+<td>Informal tracking</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Step 3, the three outline options, as the stage returned them (headings only):</em> A · by theme (warning, tracking, cost); B · by the delivery's timeline (order, dispatch, arrival, shelf); C · by who acts (supplier, driver, store). You choose B, because the client's director thinks in that order, and move C's last section into it as the recommendations' frame.</p>
+<p><em>Step 7, the email skeleton the stage returns:</em> three subject lines ("Thank you, and what we found", "Your interview on late deliveries: the summary", "Eight conversations about late trucks"), then a body of slots: <code>[YOURS: thanks, in one sentence]</code>, <code>[YOURS: the one finding they will recognise]</code>, a link line to the summary, <code>[YOURS: sign-off]</code>. You write the four sentences.</p>
+<p><strong>Run log, the first three lines (invented):</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Step · run</th>
+<th>Inputs</th>
+<th>Model as run</th>
+<th>Output</th>
+<th>Gate · result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 Mar</td>
+<td>1 Tidy · run 1</td>
+<td><code>notes/raw/int-01…08.md</code></td>
+<td>Haiku 5.5, low</td>
+<td><code>notes/clean/</code></td>
+<td>Code: pass, 8 of 8</td>
+</tr>
+<tr>
+<td>3 Mar</td>
+<td>2 Extract · run 1</td>
+<td><code>notes/clean/</code></td>
+<td>Haiku 5.5, high</td>
+<td><code>quotes-v1.md</code></td>
+<td>Code: fail, 2 quotes not verbatim</td>
+</tr>
+<tr>
+<td>3 Mar</td>
+<td>2 Extract · run 2</td>
+<td><code>notes/clean/</code></td>
+<td>Haiku 5.5, high</td>
+<td><code>quotes-v2.md</code></td>
+<td>Code: pass, 41 of 41</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Part 3 · Template: your pipeline</h3>
+<p>Copy into <code>records/pipeline-[name].md</code>. Fill every blank; delete what does not apply. Each blank says what goes in it. Write one pipeline per kind of repeated work.</p>
+<p><strong>Pipeline card</strong></p>
+<ul>
+<li><strong>What it produces:</strong> [<em>the finished output, its form and its reader</em>]</li>
+<li><strong>Trigger:</strong> [<em>what starts a run: a backlog row, a date, new raw material arriving</em>]</li>
+<li><strong>How often:</strong> [<em>runs a week or a month</em>]</li>
+<li><strong>Raw material:</strong> [<em>what goes in at the first step, and where it lives</em>]</li>
+<li><strong>Boundaries:</strong> [<em>the points where open flags are decided: at least the end of each run, and every [number] runs; from BW5's BUILD-ORDER.md</em>]</li>
+<li><strong>Run log:</strong> [<em>the file, e.g. records/run-log.md</em>]</li>
+</ul>
+<p><strong>Step 0 · Before the run</strong></p>
+<ul>
+<li>[ ] [<em>every input the first step needs exists, with its version</em>]</li>
+<li>[ ] [<em>the briefs for every model step exist, in BW3's form, from template 7</em>]</li>
+<li>[ ] No open flag touches this run (BW5 §9, step 5).</li>
+<li>[ ] The run log exists.</li>
+</ul>
+<p><strong>Step [n] · [name]</strong> (copy this block once per step)</p>
+<ul>
+<li><strong>Input:</strong> [<em>the named files, with versions; never "the latest"; never a chat</em>]</li>
+<li><strong>Output:</strong> [<em>one new file, its path and version, and the form the brief sets for it</em>]</li>
+<li><strong>Model:</strong> [<em>the BW2 row by number and name · tier · model, effort, with the date you read it; or "no BW2 row: row [n] by analogy, because [reason]"; or "none: a script" or "none: you"</em>]</li>
+<li><strong>Model's part:</strong> [<em>from §4's division: drafts structure / cuts your text / gives options; or writes no final words here: marked bridges only / never / points to candidates</em>]</li>
+<li><strong>Gate ([<em>code / model check / human</em>]):</strong> [<em>the yes-or-no lines; for code, what the script compares with what; for a model check, the BW6 step it runs; for a human gate, only what no script or source can settle</em>]</li>
+<li><strong>Done when:</strong> [<em>the lines from the brief's DONE WHEN that this step must meet</em>]</li>
+<li><strong>Re-run:</strong> [<em>"safe: reads the same named inputs and writes a new version; every later gate runs again", or "not re-runnable: [why], runs once after the final pass"</em>]</li>
+<li><strong>Log:</strong> date · [step] · run n · [inputs and versions] · [model and version as run, effort] · [output file] · [gate result, and back to which step on failure]</li>
+</ul>
+<p><strong>Final step · The final pass, then release</strong> (yours; never handed to a model or an agent)</p>
+<ul>
+<li>[ ] Every marked bridge is rewritten in my words or cut.</li>
+<li>[ ] Every line of humour is one I made.</li>
+<li>[ ] The ending is mine.</li>
+<li>[ ] Every first-person statement is one I would make.</li>
+<li>[ ] Every open item from the model check is closed (BW6, Deliverable Part 1, steps F and G).</li>
+<li>[ ] The output does its job for [<em>its reader</em>], read as that reader would.</li>
+<li>[ ] [<em>a line only you can answer for this kind of output</em>]</li>
+<li>[ ] The log has a line for every step of this run.</li>
+<li><strong>Re-run:</strong> [<em>not re-runnable if release is publishing or sending; where a correction goes: [the page or file where corrections are listed with date and reason]</em>]</li>
+</ul>
+<p><strong>Checks on the pipeline itself, before the first run</strong></p>
+<ul>
+<li>[ ] Every step has exactly one output file, and no step edits another's.</li>
+<li>[ ] Every model step names a BW2 row, not only a model name.</li>
+<li>[ ] Every step whose output is first-person prose, humour or an ending gives the model no final words.</li>
+<li>[ ] A human gate sits after the step that fixes the structure, before every irreversible step, and at every boundary.</li>
+<li>[ ] Every step that is not re-runnable comes after the final pass.</li>
+<li>[ ] Re-decide the model rows on BW2 §7's events, and by [<em>the date six months after you read the vendor pages</em>].</li>
+</ul>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.3"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t5" data-label="¶1" data-words="93" data-rings="3"><path d="M152 63l-32 6-16 6-7 5-4 8 0 8 4 8 15 10 32 11M168 61l-16 2M144 70l-16 4-14 6-5 8 0 8 7 8 20 9 16 5M168 67l-24 3M168 71l-16 3-22 6-9 8 2 8 5 4 8 5 16 6M152 79l-5 1-12 8 4 8 16 8M168 80l-16 8 17 8"/><circle class="ct-spot" cx="144" cy="88" r="7"/></g><g class="ct-rise ct-t5" data-label="¶2" data-words="137" data-rings="5"><path d="M144 125l24 5 16 0 24-3 8-3 28-12 20-5 40-1M240 65l-48-5-24 1M152 118l24 4 16 0 24-6 46-20 2-3 8 1M256 80l-40-10-16-3-32 0M152 111l24 5 24-1 16-5 27-14-1-8-14-8-12-4-24-5-24 0M155 104l21 6 16 1 8-1 16-6 15-8-3-8-16-8-12-3-24-2-24 4M169 96l13 8 18 0 18-8-3-8-15-6-16-3-16 1"/><circle class="ct-spot" cx="200" cy="96" r="8"/></g><g class="ct-rise ct-t5" data-label="¶3" data-words="2" data-rings="0"><circle class="ct-spot" cx="256" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶4" data-words="85" data-rings="3"><path d="M304 106l48-3M360 84l-5-4-6-8-13-7-16-5-16-3-24 0-16 3-16 4-8 1M272 94l7 2 17 2 20-2 12-5 5-3 3-8-8-9-16-5-16-1-16 1-8 3-6 3-2 5-8 3M296 72l-8 4-2 4 5 8 13 1 7-1 9-8-8-5-8-3z"/></g><g class="ct-rise ct-t5" data-label="¶5" data-words="25" data-rings="1"><path d="M352 103l40-8M376 86l-8 0-8-2"/><circle class="ct-spot" cx="360" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶6" data-words="29" data-rings="1"><path d="M392 95l16 1 16 3 16 2M392 84l-16 2M417 88l15 5"/><circle class="ct-spot" cx="416" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶7" data-words="77" data-rings="3"><path d="M440 101l32 1 24-5 8-3 8-6-8-8-11-16-5-3-8-3-8-1-16 0-8 1-8 3-16 12-32 11M448 69l-31 19M432 93l16 1 24-1 8-1 10-4-1-8-6-8-3-3-8-3-8-1-8 1-8 3"/><circle class="ct-spot" cx="464" cy="80" r="6"/></g><g class="ct-rise ct-t5" data-label="¶8" data-words="7" data-rings="0"><circle class="ct-spot" cx="520" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶9" data-words="7" data-rings="0"><circle class="ct-spot" cx="576" cy="88" r="5"/></g><g class="ct-rise ct-t5" data-label="¶10" data-words="60" data-rings="2"><path d="M600 63l-8 5-4 4 5 8 1 8 6 5 8 4 16 2 24 1M624 61l-16 1-8 1M616 70l-7 2-1 8 6 8 2 1 8 2 32 2M640 71l-16-1-8 0"/><circle class="ct-spot" cx="624" cy="80" r="6"/></g><g class="ct-rise ct-t5" data-label="¶11" data-words="62" data-rings="2"><path d="M648 100l24 7 16 1 16-4 12-8 0-8-4-8-8-4-8-3-24-5-48-7M656 93l16 4 8 1 12-2 6-8-9-8-9-2-40-7"/><circle class="ct-spot" cx="680" cy="88" r="6"/></g><g class="ct-rise ct-t5" data-label="¶12" data-words="7" data-rings="0"><circle class="ct-spot" cx="736" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶13" data-words="27" data-rings="1"><circle class="ct-spot" cx="784" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶14" data-words="2" data-rings="0"><circle class="ct-spot" cx="840" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶15" data-words="6" data-rings="0"><circle class="ct-spot" cx="896" cy="96" r="5"/></g><g class="ct-rise ct-t5" data-label="¶16" data-words="10" data-rings="0"><circle class="ct-spot" cx="944" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶17" data-words="17" data-rings="0"><circle class="ct-spot" cx="1000" cy="80" r="5"/></g><g class="ct-rise ct-t5" data-label="¶18" data-words="9" data-rings="0"><circle class="ct-spot" cx="1056" cy="88" r="5"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-bw7-8" data-step="8"><span>Previous · 9 of 10</span><b>On other tools</b></a><a class="snext send" href="#read-bw7-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-bw7-sources"><summary><span class="at" id="read-bw7-10">Sources</span><span class="an">18</span></summary><div class="accb">
+<p>All web sources read 16 November 2026 unless marked. Product facts carried from BW2 are as BW2 read them on 15 November 2026.</p>
+<ul>
+<li>Agarwal, Dhruv, Mor Naaman and Aditya Vashistha. <em>AI Suggestions Homogenize Writing Toward Western Styles and Diminish Cultural Nuances</em>. arXiv 2409.11360 v3; the paper's ACM reference line names CHI '25, Yokohama, 2025. https://<wbr>arxiv<wbr>.org/<wbr>html/<wbr>2409<wbr>.11360v3</li>
+<li>Anthropic (Erik S. and Barry Zhang, as the page names them). <em>Building effective agents</em>. Anthropic Engineering, 19 December 2024 (vendor). https://<wbr>anthropic<wbr>.com/<wbr>engineering/<wbr>building-effective-agents</li>
+<li>Anthropic. <em>Prompting best practices</em>, section "Chain complex prompts". Claude API documentation (vendor). https://<wbr>platform<wbr>.claude<wbr>.com/<wbr>docs/<wbr>en/<wbr>build-with-claude/<wbr>prompt-engineering/<wbr>chain-prompts</li>
+<li>Apache Airflow. <em>Best Practices</em>. Airflow documentation, version 2.3.3. https://<wbr>airflow<wbr>.apache<wbr>.org/<wbr>docs/<wbr>apache-airflow/<wbr>2<wbr>.3<wbr>.3/<wbr>best-practices<wbr>.html</li>
+<li>Chakrabarty, Tuhin, Philippe Laban and Chien-Sheng Wu. <em>Can AI writing be salvaged? Mitigating Idiosyncrasies and Improving Human-AI Alignment in the Writing Process through Edits</em>. arXiv 2409.14509 v5, 4 March 2025 (preprint). https://<wbr>arxiv<wbr>.org/<wbr>html/<wbr>2409<wbr>.14509v5</li>
+<li>Dell'Acqua, Fabrizio, Edward McFowland III, Ethan Mollick and others. <em>Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality</em>. Harvard Business School Working Paper 24-013, 22 September 2023. https://<wbr>mitsloan<wbr>.mit<wbr>.edu/<wbr>sites/<wbr>default/<wbr>files/<wbr>2023-10/<wbr>SSRN-id4573321<wbr>.pdf</li>
+<li>Dolan, Eric W. <em>AI outshines humans in humor: Study finds ChatGPT is as funny as The Onion</em>. PsyPost, 4 July 2024 (reporting Gorenz and Schwarz, <em>How funny is ChatGPT? A comparison of human- and A.I.-produced jokes</em>, <em>PLOS ONE</em>, 2024, not opened). https://<wbr>www<wbr>.psypost<wbr>.org/<wbr>ai-outshines-humans-in-humor-study-finds-chatgpt-is-as-funny-as-the-onion/</li>
+<li>Doshi, Anil R. and Oliver P. Hauser. <em>Generative AI enhances individual creativity but reduces the collective diversity of novel content</em>. <em>Science Advances</em> 10, eadn5290, 12 July 2024 (University of Exeter repository copy). https://<wbr>ore<wbr>.exeter<wbr>.ac<wbr>.uk/<wbr>rest/<wbr>bitstreams/<wbr>199326/<wbr>retrieve</li>
+<li>Google Cloud. <em>Break down complex tasks into simpler prompts</em>. Vertex AI documentation, last updated 12 November 2026 (vendor). https://<wbr>docs<wbr>.cloud<wbr>.google<wbr>.com/<wbr>vertex-ai/<wbr>generative-ai/<wbr>docs/<wbr>learn/<wbr>prompts/<wbr>break-down-prompts</li>
+<li>Jakesch, Maurice, Advait Bhat, Daniel Buschek, Lior Zalmanson and Mor Naaman. <em>Co-Writing with Opinionated Language Models Affects Users' Views</em>. CHI 2023; arXiv 2302.00560. https://<wbr>arxiv<wbr>.org/<wbr>pdf/<wbr>2302<wbr>.00560</li>
+<li>Jentzsch, Sophie and Kristian Kersting. <em>ChatGPT is fun, but it is not funny! Humor is still challenging Large Language Models</em>. WASSA 2023, pp. 325–340, doi:10.18653/v1/2023.wassa-1.29. https://<wbr>aclanthology<wbr>.org/<wbr>2023<wbr>.wassa-1<wbr>.29</li>
+<li>Laban, Hayashi, Zhou and Neville. <em>LLMs Get Lost In Multi-Turn Conversation</em>. arXiv 2505.06120 (preprint). https://<wbr>arxiv<wbr>.org/<wbr>pdf/<wbr>2505<wbr>.06120</li>
+<li>Noy, Shakked and Whitney Zhang. <em>Experimental evidence on the productivity effects of generative artificial intelligence</em>. <em>Science</em>, July 2023, doi:10.1126/science.adh2586 (Stanford SCALE abstract page). https://<wbr>scale<wbr>.stanford<wbr>.edu/<wbr>publications/<wbr>experimental-evidence-productivity-effects-generative-artificial-intelligence</li>
+<li>Noy, Shakked and Whitney Zhang. <em>Experimental Evidence on the Productivity Effects of Generative Artificial Intelligence</em>. MIT working paper, 10 March 2023 (not peer-reviewed). https://<wbr>economics<wbr>.mit<wbr>.edu/<wbr>sites/<wbr>default/<wbr>files/<wbr>inline-files/<wbr>Noy_Zhang_1_0<wbr>.pdf</li>
+<li>OpenAI. <em>Agent orchestration</em>. OpenAI Agents SDK documentation (vendor). https://<wbr>openai<wbr>.github<wbr>.io/<wbr>openai-agents-python/<wbr>multi_agent/</li>
+<li>Padmakumar, Vishakh and He He. <em>Does Writing with Language Models Reduce Content Diversity?</em> ICLR 2024, pp. 642–669. https://<wbr>proceedings<wbr>.iclr<wbr>.cc/<wbr>paper_files/<wbr>paper/<wbr>2024/<wbr>hash/<wbr>02dec8877fb7c6aa9a79f81661baca7c-Abstract-Conference<wbr>.html; arXiv v3: https://<wbr>arxiv<wbr>.org/<wbr>html/<wbr>2309<wbr>.05196v3</li>
+<li>Academy case file (<code>generator/data/building-with-ai/case-academy.md</code>), §1, §2, §3, §5, §6, §7, §9.</li>
+<li>Units of this course cited by section: BW1 (§1, §3, §5); BW2 (§5, §7, Deliverable Part 1, rows 1 to 5, 9 and 10); BW3 (§3, §5, §6, Deliverable template 7); BW4 (§4, §5, Deliverable Part 3, Deliverable Part 4, step 6); BW5 (§7, §9, §10, Deliverable 1d and 2e); BW6 (§4, §5, §6, §8, Deliverable Part 1, steps B to G).</li>
+</ul>
+</div></details><details class="acc note" id="read-bw7-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>This unit was written with search off. Searches were used only to re-verify each source it cites, on 16 November 2026, and every product fact (a feature, a page's advice, a model name) carries the date it was read on the vendor's own page; most documentation pages show no date of their own. Each practice carries an evidence grade, as in BW1 to BW6: <strong>measured</strong> (a study or a test with numbers), <strong>documented practice</strong> (a vendor or a named practitioner says to do it; nobody measured it here) or <strong>stated opinion</strong>. Every study names the models and the task it tested; carrying its finding to a current model or to your work is this unit's inference, and is said to be. Three earlier units are used by name throughout: BW2's routing table (a stage takes its model from a row of it), BW3's brief form (each stage's brief is written in it, from its template 7) and BW5's flag-and-review rule (BW5 §9 and Deliverable 2e; a human gate is placed at its boundaries). None of them is restated here.</p>
+</div></details><details class="acc made" id="read-bw7-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>The seventh unit of Building with AI: how to turn a project's repeated work into a pipeline, a fixed sequence of stages, each with a named input, one named output, one model or none, and a gate the output must pass: what a pipeline is and when it is worth its overhead (Anthropic's prompt chaining, read as documented practice); hand-offs as files, not as conversation; where a human gate sits and what it checks, at the boundaries set in BW5; what nine studies of writing with language models found about where a model helps (structure, options) and where it flattens (first-person prose, humour), each graded by its evidence, with the claims on cuts and endings graded as inference because no study measures them; the rule that the final pass is yours; which steps can be re-run without harm and which cannot (publishing, sending); logging what ran; the Academy case's pipeline and where it failed; a section on other tools; and a deliverable, a pipeline written as a runnable procedure, built on the Academy case with its run log, then on an invented interview study (a findings report, a one-page summary and a thank-you email), then as a template. It was written by an AI model (Opus 5.5) on 16 Nov 2026 from its brief and the course's source material, with search off: searches were used only to re-read each source it cites, and every product fact is dated by that reading. A separate model (Opus 5.5), in a context that had not seen the writing, checked every cited claim, the deliverable against the brief and every figure against the text; its verdict was fix, with 2 errors, 7 should-fix and 11 minor points; all 20 were applied before filing, with 2 companion edits they implied (a matching count and a Sources entry), and none was held. Known gaps: the Academy case file, as the writer had it, did not record whether whoever applies the fresh check's findings is a person or a model, the build's own checks, the publishing steps and where the site is published, the model of the figure-checking agents or the effort used per unit, so those cells of the deliverable are marked [NOT IN CASE FILE] as blanks for the project's owner; BW2's routing table has no row for applying findings, checking a figure against a text or drafting an email, so the deliverable borrows its critique and summary rows by analogy and says so; Gorenz and Schwarz were read only through a press report (PsyPost, 4 Jul 2024), so their 73%, 63% and 87% are that report's account; Doshi and Hauser were read through a university repository copy, and the issue number was not confirmed; Chakrabarty, Laban and Wu is a preprint (arXiv v5, 4 Mar 2025), and whether all 18 writers held an MFA was not confirmed; Noy and Zhang's finding on how time moved from rough-drafting to ideas and editing is from their March 2023 working paper, not the published text, which was not opened; Dell'Acqua and colleagues is a working paper; Jentzsch and Kersting do not name the exact ChatGPT version; Anthropic's post on agents dates from December 2024, and its chaining pattern was read as current from Anthropic's prompting guide; the Apache Airflow page cited documents an older version (2.3.3), and its use for model stages is the unit's adaptation; and Google's Gemini prompt-design page refused the fetch and the ChatGPT and Gemini consumer products were not read, so the section on other tools covers developer documentation only.</p><h3 id="read-bw7-11">Unsure list</h3>
+<ol>
+<li>Gorenz and Schwarz (PLOS ONE, 2024) was read only through Eric W. Dolan's PsyPost report (4 Jul 2024); the paper's PubMed Central copy is reached by a redirect and was not opened. The 73%, 63% and 87% figures and "no significant difference" from The Onion are the report's account.</li>
+<li>Doshi and Hauser was read through the University of Exeter repository copy; the PubMed Central copy refused the fetch. Volume 10 and article eadn5290 are from that copy; the issue number was not confirmed. The 293 analysed writers (of 500 recruited) and GPT-4 are from the same copy, as the fetch tool reported them.</li>
+<li>Chakrabarty, Laban and Wu is a preprint (arXiv v5, 4 Mar 2025) with no venue on the copy read; the 28/20/18/17% shares (§5.1), the 65% and 60% preference figures (§6.3) and the §7.4 quotation are as the fetch tool reported them from v5. "18 writers with MFA backgrounds" rests on §4.2 and Table 4 as reported; whether every one of the 18 held an MFA was not confirmed.</li>
+<li>Noy and Zhang's restructuring finding ("towards idea-generation and editing and away from rough-drafting", the 25/50/25 split, the rough-draft share falling by more than half) is from the MIT working paper of 10 Mar 2023; the Science abstract page read does not carry it, and the published version's text was not opened. The ChatGPT version is not named in the working paper.</li>
+<li>Dell'Acqua et al. is a working paper; the "marked reduction in the variability of these ideas" quotation is from its §3.1 as the fetch tool reported it.</li>
+<li>Jentzsch and Kersting describe the model only as OpenAI's ChatGPT, "The GPT3-based model"; the exact version is not given on the page read.</li>
+<li>No study found measures a model cutting a writer's own text, or measures endings; §4's "cuts" and "endings" claims are this unit's inference from Padmakumar and He, Chakrabarty et al. and Jakesch et al., and are graded as such.</li>
+<li>Anthropic's Building effective agents names its authors on the page as "Erik S. and Barry Zhang", and notes that much of its tooling landscape "has changed since December 2024"; the chaining pattern was read as still current from Anthropic's Prompting best practices (16 Nov 2026).</li>
+<li>The Apache Airflow page cited is the documentation for version 2.3.3, an older version; the current version's wording was not checked. Its use for model stages is this unit's adaptation.</li>
+<li>Google's Gemini API page on prompt design strategies was refused and not checked; the ChatGPT and Gemini consumer products' equivalents of a chained pipeline were not read, so the On other tools table covers developer documentation only.
+Object: none</li>
+</ol>
+<h3>Fresh check</h3><p>Fresh check 2026-11-16 (Opus 5.5): fix · 2 errors, 7 should-fix, 11 minor; all 20 applied, with 2 companion edits (22 replacements); report <code>audits/building-with-ai/fresh-check-BW7.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: write your project&#x27;s repeated work as a pipeline with a model per stage and a human gate
+Takes: B7 as source material, for its studies and its pipeline form only; BW2, BW3, BW5, BW6.
+Gives: the procedure BW8 automates and BW9 hands in part to an agent.
+
+Unit BW7, Pipelines: raw material to finished output. Cover: what a pipeline is (stages, each with a defined input and output and one model); hand-offs as files rather than as conversation; where a human gate sits and what it checks; what the studies on writing with language models found, where a model helps (structure, cuts, options) and where it flattens (first-person prose, humour, endings), with the models and tasks each study used; the rule that the final pass is yours; steps that can be re-run without harm; logging what ran; the Academy case&#x27;s pipeline (brief, writer, fresh check, applying findings, filing, build, checks, publishing) with the points where it failed. Deliverable: a pipeline written as a runnable procedure (numbered steps, input, output, model, gate, done-when), worked on the Academy case; a second, short worked example on neutral material (interview notes to a report, a summary and an email), its content invented and labelled; then the template for your project.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>
