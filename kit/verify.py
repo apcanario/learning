@@ -1238,6 +1238,23 @@ def figure_rules(page, name):
                     t = H.unescape(re.sub(r'<[^>]+>', '', t))
                     if not any(viz.date_names(t, round(at) + k) for k in (-1, 0, 1) if round(at) + k):
                         bad.append(f'{where}: the date line "{t}" names neither the year its dot stands at ({round(at)}) nor a century or span that contains it')
+        if kind == 'timeline' and 'viz-span ' in svg:         # P84 (16 Nov 2026): a span is a period on the axis, not a key
+            ax = re.search(r'<line class="viz-axis" x1="[-\d.]+" y1="([-\d.]+)"', svg)
+            guides = [(float(a), float(b)) for a, b in re.findall(r'<line class="viz-spanend" x1="([-\d.]+)" y1="[-\d.]+" x2="[-\d.]+" y2="([-\d.]+)"', svg)]
+            groups = re.findall(r'<g data-span="(-?\d+) (-?\d+)" data-text="([^"]*)">(.*?)</g></g>', svg, re.S)
+            if len(groups) != svg.count('class="viz-span '):
+                bad.append(f'{where}: a span drawn without its data-span group (rebuild with the P84 viz.py)')
+            for a, b, want, inner in groups:
+                got = ' '.join(t for c, x, y, t in _texts(inner) if c in ('viz-spanlabel', 'viz-colhead'))
+                if got != H.unescape(want):
+                    bad.append(f'{where}: the span {a} to {b} is labelled {got!r}, not {H.unescape(want)!r}')
+                if not viz.span_names(got, a, b):
+                    bad.append(f'{where}: the span label {got!r} does not carry its years ({a} to {b})')
+                r = re.search(r'<rect class="viz-span[^"]*" x="([-\d.]+)" y="[-\d.]+" width="([-\d.]+)"', inner)
+                x1, x2 = float(r.group(1)), float(r.group(1)) + float(r.group(2))
+                for gx in (x1, x2):
+                    if not ax or not any(abs(g - gx) < 0.2 and abs(y2 - float(ax.group(1))) < 0.2 for g, y2 in guides):
+                        bad.append(f'{where}: the span {got!r} has no guide from its end at {gx:.0f} to the axis')
         if kind == 'timeline':                               # P58 (by eye): no stem runs through another event's text
             import viz as V
             stems = [(float(a), float(b), float(c)) for a, b, c in re.findall(r'<line class="viz-stem" x1="([-\d.]+)" y1="([-\d.]+)" x2="[-\d.]+" y2="([-\d.]+)"', svg)]

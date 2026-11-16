@@ -19,8 +19,8 @@ FIC = 'Perqo is fictional; every name and number in this figure is invented for 
 
 # (kind, what it draws, its fields, the example block)
 EXAMPLES = [
-    ('timeline', 'Dated events on an axis, with spans as bands above it; a dense one widens and scrolls.',
-     'start, end, ticks [year], events [{at, label, date, tone}], spans [{from, to, label, tone}]',
+    ('timeline', 'Dated events on an axis, with spans as periods on it (P84: lanes stacked from the axis, ends dropped to it, every span label with its years); a dense one widens and scrolls.',
+     'start, end, ticks [year], events [{at, label, date, tone}], spans [{from, to, label, date, tone}]',
      {'kind': 'timeline', 'title': 'Perqo, 2018 to 2026 (fictional)', 'start': 2018, 'end': 2027,
       'ticks': [2018, 2020, 2022, 2024, 2026],
       'spans': [{'from': 2018, 'to': 2020, 'label': 'Seed', 'tone': 2}, {'from': 2020, 'to': 2024, 'label': 'Growth', 'tone': 3},
@@ -217,6 +217,13 @@ CASES = [
                 {'from': -241, 'to': -218, 'label': 'Interval', 'tone': 6}, {'from': -218, 'to': -201, 'label': 'Second war', 'tone': 3},
                 {'from': -149, 'to': -146, 'label': 'Third', 'tone': 4}],
       'events': [{'at': -264, 'label': 'The war begins'}],
+      'caption': CASE}),
+    ('timeline-span-years', 'P84 (16 Nov 2026): spans are periods on the axis, not a key. Lane 0 sits on the axis, the others stack upwards, each bar\u2019s ends drop to the axis by a dashed guide, and every span label carries its years: a label that names them is drawn as written ("Siege, 41\u201340"), one that does not gets them after a comma ("Kings" becomes "Kings, 753\u2013509 BC"), a span may give its own "date" as the unit writes it ("c. 670\u2013640 BC"), and a span across 1 BC to AD 1 prints both eras. A guide never runs through a label placed lower (Rome 11.4, 11.5).',
+     {'kind': 'timeline', 'title': 'Spans with their years', 'start': -800, 'end': 100, 'ticks': [-800, -600, -400, -200, 1],
+      'spans': [{'from': -753, 'to': -509, 'label': 'Kings', 'tone': 1}, {'from': -670, 'to': -640, 'label': 'A reign', 'date': 'c. 670\u2013640 BC', 'tone': 2},
+                {'from': -41, 'to': -40, 'label': 'Siege, 41\u201340', 'tone': 3}, {'from': -27, 'to': 14, 'label': 'A principate', 'tone': 4},
+                {'from': -509, 'to': -27, 'label': 'Republic', 'tone': 5}],
+      'events': [{'at': -753, 'label': 'A foundation, by one count'}, {'at': -509, 'label': 'A first election'}, {'at': 14, 'label': 'A death'}],
       'caption': CASE}),
     ('timeline-edges', 'Event labels at both ends of the axis, and a BC to AD axis: labels stay inside the drawing, and the year after 1 BC is AD 1 (Rome 6.4, 1.6; a tick at 0 stops the build, see below). P58: two events two years apart at the edge, and neither stem runs through the other’s label (Greek 0.3, 5.2, 10.2, 11.8; Rome 0.3).',
      {'kind': 'timeline', 'title': 'Labels at the edges', 'start': -500, 'end': 200, 'ticks': [-500, -250, 1, 200],

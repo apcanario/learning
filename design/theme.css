@@ -34,6 +34,7 @@
       section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
       the scope line
    Version 6.11, 15 Nov 2026 (C1, W-BW5): a matrix carries a narrow-label drawing (svg.viz-altn, .viz-stickn) shown at 360 px and below, 4i.
+   Version 6.13, 16 Nov 2026 (P84, H-4): a timeline span's end guides to the axis, .viz-spanend, 4i.
    Version 6.12, 16 Nov 2026 (W-BW8): a matrix's narrow-label drawing (svg.viz-altn, .viz-stickn) is shown below 768 px, on every phone, 4i.
    Version 6.10, 12 Nov 2026 (P98, W-PB5): a bars figure's phone drawing (svg.viz-alt) is 258 units wide, as a compare's,
    and 4i shows it at its own size, so it never scrolls on a 320 px phone; viz.py keeps a compare's value wholly on its
@@ -576,6 +577,7 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
 @media (hover:hover){.viz a.viz-a:hover .viz-node{fill:color-mix(in srgb,var(--c) 34%,var(--card))}}
 .viz-t1{--c:var(--viz-1)}.viz-t2{--c:var(--viz-2)}.viz-t3{--c:var(--viz-3)}.viz-t4{--c:var(--viz-4)}.viz-t5{--c:var(--viz-5)}.viz-t6{--c:var(--viz-6)}
 .viz-span{opacity:.85}
+.viz-spanend{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 3;fill:none}            /* P84: a span's ends dropped to the axis */
 .viz-dot{stroke:var(--card);stroke-width:2}
 .panel.home .viz{margin:0}
 /* the IA kinds (V1, 29 Oct 2026): sitemap, objects, decision, matrix, states, swimlanes, wireflow. Their text classes are

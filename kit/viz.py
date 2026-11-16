@@ -483,38 +483,98 @@ def _lane_free(o, placed):
     return True
 
 
-def _span_lanes(spans, x, Wd):
+def _guides_clear(o, lane, placed_all):
+    """P84: a span's end guides drop from its bar to the axis through every lane below it. A lane is clear of guides when
+    no guide below crosses an outside label placed lower, and no guide from a span placed higher crosses this one's."""
+    def hit(lab, xs):
+        return lab and any(lab[0] - 3 <= gx <= lab[1] + 3 for gx in xs)
+    for ql, q in placed_all:
+        if ql < lane and hit(q[2], o[1]):
+            return False
+        if ql > lane and hit(o[2], q[1]):
+            return False
+    return True
+
+
+def span_text(s, era='BC', kind='timeline'):
+    """P84 (16 Nov 2026): a span's label as drawn, carrying its years. A label that already names both its ends (date_names:
+    the years as numbers, an abbreviated span such as 1914–18, or a century) is drawn as written; otherwise its "date" (the
+    span's dates as the unit writes them, which must name both ends) or its years as yr prints them (58–57 BC, 27 BC–AD 14,
+    AD 14–37, 2018–2020) follow it after a comma. A span with no label is drawn with its years alone."""
+    a, b = int(s['from']), int(s['to'])
+    lab = str(s.get('label') or '').strip()
+    names = lambda t: date_names(t, a) and date_names(t, b)
+    if lab and names(lab):
+        return lab
+    if 'date' in s:
+        t = s['date']
+        if not isinstance(t, str) or not t.strip() or not names(t):
+            _fail(kind, f'the span {lab!r} ({a} to {b}): its "date" {t!r} must name both its years, e.g. "c. 670–640 BC"')
+        wrong = r'\b(BC|AD)\b' if era == 'BCE' else r'\b(BCE|CE)\b'
+        if re.search(wrong, t):
+            _fail(kind, f'the span {lab!r}: its date {t!r} mixes notations; the figure\'s era is {era}')
+        yrs = t.strip()
+    else:
+        ya, yb = yr(a, kind, era), yr(b, kind, era)
+        suf = ' BCE' if era == 'BCE' else ' BC'
+        if ya.endswith(suf) and yb.endswith(suf):
+            yrs = f'{ya[:-len(suf)]}–{yb}'
+        elif ya.startswith('AD ') and yb.startswith('AD '):
+            yrs = f'{ya}–{yb[3:]}'
+        elif ya.endswith(' CE') and yb.endswith(' CE'):
+            yrs = f'{ya[:-3]}–{yb}'
+        else:
+            yrs = f'{ya}–{yb}'
+    return f'{lab}, {yrs}' if lab else yrs
+
+
+def span_names(t, a, b):
+    """P84: whether a drawn span label names both its years (verify.py reads it back from the built figure)."""
+    return date_names(t, int(a)) and date_names(t, int(b))
+
+
+def _span_lanes(spans, x, Wd, texts=None):
     """P55: timeline spans in lanes. A span's label is drawn inside its bar when it fits there with 6 units either side,
-    else beside the bar (right or left, the side that sits over fewer other bars) in the page's muted colour; each span
-    takes the first lane _lane_free allows, so spans that overlap in time never share a lane.
+    else beside the bar (right or left, the side that sits over fewer other bars) on a plate of the card colour; each span
+    takes the first lane _lane_free allows, so spans that overlap in time never share a lane. P84: lane 0 sits on the
+    axis and lanes stack upwards; a lane is taken only when the span's end guides cross no outside label below it and
+    no guide from above crosses its own label (_guides_clear), unless no lane up to one per span allows that.
     Returns [(span index, lane, side, label x0, label x1)], or None when a label fits on neither side (the caller widens)."""
-    out, lanes = [], []
+    texts = texts or [str(s.get('label') or '') for s in spans]
+    out, lanes, placed_all = [], [], []
     order = sorted(range(len(spans)), key=lambda k: (spans[k]['from'], spans[k]['to'], k))
     for k in order:
         s = spans[k]
         x1, x2 = x(s['from']), x(s['to'])
-        tw = _tw(str(s.get('label') or '').upper(), 10, 'mono', 0.4)
+        tw = _tw(texts[k].upper(), 10, 'mono', 0.4)
         opts = []                                            # (side, bar, outside label or None, label x0, x1)
-        if not s.get('label') or tw + 12 <= x2 - x1:
+        if not texts[k] or tw + 12 <= x2 - x1:
             opts.append(('in', (x1, x2), None, (x1 + x2 - tw) / 2, (x1 + x2 + tw) / 2))
         if x2 + 6 + tw <= Wd - 4:
-            opts.append(('right', (x1, x2), (x2 + 6, x2 + 6 + tw), x2 + 6, x2 + 6 + tw))
+            opts.append(('right', (x1, x2), (x2 + 2, x2 + 10 + tw), x2 + 6, x2 + 6 + tw))
         if x1 - 6 - tw >= 4:
-            opts.append(('left', (x1, x2), (x1 - 6 - tw, x1 - 6), x1 - 6 - tw, x1 - 6))
+            opts.append(('left', (x1, x2), (x1 - 10 - tw, x1 - 2), x1 - 6 - tw, x1 - 6))
         if not opts:
             return None
         bars_ = [(x(t['from']), x(t['to'])) for j, t in enumerate(spans) if j != k]
         blocks = lambda o: sum(1 for a, b in bars_ if a < o[4] + 6 and o[3] - 6 < b)   # bars an outside label would sit over
-        lane = 0
-        while True:
-            if lane == len(lanes):
-                lanes.append([])
-            free = [o for o in opts if _lane_free(o, lanes[lane])]
-            if free:
-                o = min(free, key=lambda o: (o[0] != 'in', blocks(o) if o[0] != 'in' else 0, opts.index(o)))
-                lanes[lane].append(o); out.append((k, lane, o[0], o[3], o[4]))
+        pick = None
+        for strict_ in (True, False):
+            lane = 0
+            while lane <= len(spans):
+                while lane >= len(lanes):
+                    lanes.append([])
+                free = [o for o in opts if _lane_free(o, lanes[lane]) and (not strict_ or _guides_clear(o, lane, placed_all))]
+                if free:
+                    pick = (lane, min(free, key=lambda o: (o[0] != 'in', blocks(o) if o[0] != 'in' else 0, opts.index(o))))
+                    break
+                lane += 1
+            if pick:
                 break
-            lane += 1
+        lane, o = pick
+        lanes[lane].append(o); placed_all.append((lane, o)); out.append((k, lane, o[0], o[3], o[4]))
+    while lanes and not lanes[-1]:
+        lanes.pop()
     return sorted(out)
 
 
@@ -537,6 +597,7 @@ def timeline(d):
             _fail(K, f'the span {s.get("label")!r} ({s["from"]} to {s["to"]}) must run forwards inside start..end ({start}..{end})')
     era = _era(d, K)
     dates = [_date_text(e, era) for e in events]
+    stext = [span_text(s, era, K) for s in spans]                # P84: every span label carries its years
     wrap = lambda s: _unglue(_wrap(_glue(s), 22))
     tlab = [yr(t, K, era) for t in ticks]
     tw_max = max((_tw(t, 10.5, 'mono') for t in tlab), default=0)
@@ -554,7 +615,7 @@ def timeline(d):
             x = lambda y: L + (R - L) * (y - start) / (end - start)
             txs = sorted(x(t) for t in ticks)
             need = max([(tw_max + 8) / (b - a) for a, b in zip(txs, txs[1:]) if b > a] + [1])
-            lanes = _span_lanes(spans, x, W) if spans else []
+            lanes = _span_lanes(spans, x, W, stext) if spans else []
             ev_w = max((max([_tw(dt, 10.5, 'mono')] + [_tw(ln, 12) for ln in wrap(e['label'])]) for e, dt in zip(events, dates)), default=0)
             if lanes is not None and need <= 1 and ev_w <= W - 8:
                 break
@@ -565,26 +626,40 @@ def timeline(d):
                     _fail(K, f'the ticks {a_} and {b_} are too close to label both ({yr(a_)}, {yr(b_)}); drop one or space the ticks out')
                 _fail(K, 'a span or event label does not fit even with the drawing at its widest; shorten it')
         body = ''
-        y0 = 24
+        # P84 (16 Nov 2026): spans sit in lanes tied to the axis: lane 0 just above it, the others stacked upwards, each
+        # bar's ends dropped to the axis by a dashed guide; with spans, the tick labels stand above the top lane and a
+        # gridline runs from each down to the axis. A timeline without spans is drawn as before.
+        nl = (max(lane for _, lane, *_ in lanes) + 1) if spans else 0
         if spans:
+            top = 22 if ticks else 6
+            axis = top + nl * 24 + 4
+            for t in ticks:
+                body += f'<line class="viz-grid" x1="{x(t):.1f}" y1="{top - 4}" x2="{x(t):.1f}" y2="{axis}"/>'
+            for k, lane, side, l0, l1 in lanes:
+                s = spans[k]
+                x1, x2, yy = x(s['from']), x(s['to']), top + (nl - 1 - lane) * 24
+                for gx in (x1, x2):
+                    body += f'<line class="viz-spanend" x1="{gx:.1f}" y1="{yy + 18}" x2="{gx:.1f}" y2="{axis}"/>'
             for k, lane, side, l0, l1 in lanes:
                 s = spans[k]
                 tone = _tone(s, k % TONES + 1, K)
-                x1, x2, yy = x(s['from']), x(s['to']), y0 + lane * 24
+                x1, x2, yy = x(s['from']), x(s['to']), top + (nl - 1 - lane) * 24
                 rect = f'<rect class="viz-span viz-t{tone}" x="{x1:.1f}" y="{yy}" width="{x2 - x1:.1f}" height="18"/>'
-                if not s.get('label'):
-                    body += _g(rect)
-                elif side == 'in':
-                    body += _g(rect + f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{yy + 13}" text-anchor="middle">{esc(s["label"])}</text>')
+                g = f'<g data-span="{int(s["from"])} {int(s["to"])}" data-text="{esc(stext[k])}">'
+                if side == 'in':
+                    body += g + _g(rect + f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{yy + 13}" text-anchor="middle">{esc(stext[k])}</text>') + '</g>'
                 else:
-                    body += _g(rect) + f'<text class="viz-colhead" x="{l0:.1f}" y="{yy + 13}">{esc(s["label"])}</text>'
-            y0 += (max(lane for _, lane, *_ in lanes) + 1) * 24 + 6
-        axis = y0 + 22                           # tick labels sit above the axis, events hang below it
+                    tw = l1 - l0
+                    plate = f'<rect class="viz-lblbg" x="{l0 - 4:.1f}" y="{yy + 1}" width="{tw + 8:.1f}" height="16"/>'
+                    body += g + _g(rect) + _g(plate + f'<text class="viz-colhead" x="{l0:.1f}" y="{yy + 13}">{esc(stext[k])}</text>') + '</g>'
+        else:
+            axis = 24 + 22                       # tick labels sit above the axis, events hang below it
         body += f'<line class="viz-axis" x1="{L}" y1="{axis}" x2="{R}" y2="{axis}"/>'
         for t, tl in zip(ticks, tlab):
             tx = x(t)
             anchor = 'start' if tx < L + 20 else ('end' if tx > R - 20 else 'middle')
-            body += f'<line class="viz-tick" x1="{tx:.1f}" y1="{axis - 6}" x2="{tx:.1f}" y2="{axis}"/><text class="viz-ticklabel" x="{tx:.1f}" y="{axis - 10}" text-anchor="{anchor}">{esc(tl)}</text>'
+            ty = 14 if spans else axis - 10
+            body += f'<line class="viz-tick" x1="{tx:.1f}" y1="{axis - 6}" x2="{tx:.1f}" y2="{axis}"/><text class="viz-ticklabel" x="{tx:.1f}" y="{ty}" text-anchor="{anchor}">{esc(tl)}</text>'
         # events (P40, 29 Oct 2026): each label faces right from its stem, left to it or centres on it, in a row below the
         # axis. Given the directions, a label sits below every event whose stem it would cover (so that stem ends above it)
         # and in the first such row its neighbours leave free; the directions are then improved one event at a time until
@@ -3224,7 +3299,7 @@ COMMON = {'kind', 'caption', 'title'}
 _TREE = {'label', 'tone', 'children'}
 VIZ_KEYS = {
     'timeline': {'.': {'start', 'end', 'ticks', 'events', 'spans', 'era'},
-                 'events': {'at', 'label', 'date', 'tone'}, 'spans': {'from', 'to', 'label', 'tone'}},
+                 'events': {'at', 'label', 'date', 'tone'}, 'spans': {'from', 'to', 'label', 'date', 'tone'}},
     'compare': {'.': {'unit', 'max', 'decimals', 'rows'}, 'rows': {'label', 'value', 'display', 'tone'}},
     'tree': {'.': {'root'}, 'root': _TREE, 'children': _TREE},
     'flow': {'.': {'steps', 'per_row'}, 'steps': {'label', 'note', 'tone'}},
