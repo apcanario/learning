@@ -24,6 +24,9 @@ THEMES = [
          lede='Working with AI models as tools: which model for which task, how to brief, how to keep a project from rotting, how to verify what the machine wrote before you trust it.'),
     dict(id='ux', name='User Experience', color='var(--blue)',
          lede='The practice of UX design, written to be handed to other designers: how to read, build and edit the structure behind a product at any scale, where that work sits in the product cycle and the business, and how to deliver it when the inputs are missing. Every unit sourced to the field\'s standard works and research, rich in figures, ending in a shipped deliverable.'),
+    # S-SP0 (16 Nov 2026): Sport Psychology for Coaches needed a track of its own (syllabus decision D1)
+    dict(id='coaching', name='Coaching', color='var(--orange)',
+         lede='Coaching athletes with what the evidence says about the mind in sport: how young athletes develop, the climate a coach creates, the skills a coach may teach, and where a coach\'s part ends. Every recommendation graded by its evidence, every unit ending in a shipped deliverable.'),
 ]
 
 GREECE = dict(
@@ -177,7 +180,22 @@ BUILDING_WITH_AI = dict(
     eyebrow='BUILDING WITH AI',
 )
 
-COURSES = [GREECE, ROME, BRAND_AI, UX, PERSONAL_BRAND, BUILDING_WITH_AI]
+# The third public course (16 Nov 2026, row S-SP0; docs/sport-psychology-syllabus.md): written for any coach, adapted from
+# nothing. `source_units=False` tells kit/thin.py that its writer's packet has no source units, carries the course's seed
+# bibliography, and holds only Parts 1 and 7 of the sourcing standard.
+SPORT_PSYCHOLOGY = dict(
+    id='sport-psychology', family='markdown', short='Sport Psychology (public)', label='SPORT PSYCHOLOGY', name='Sport Psychology for Coaches', color='var(--orange)',
+    home_id='sport-psychology', status='in progress',
+    tracks={'SP': ('coaching', 'Sport psychology · public')},
+    tiles={'SP': 'Coaching athletes aged 10 to 25: mental skills, climate, and where a coach\'s part ends.'},
+    data='generator/data/sport-psychology/hub.py',
+    vault='courses/sport-psychology',
+    sourcing_part='Part 7',
+    source_units=False,
+    eyebrow='SPORT PSYCHOLOGY',
+)
+
+COURSES = [GREECE, ROME, BRAND_AI, UX, PERSONAL_BRAND, BUILDING_WITH_AI, SPORT_PSYCHOLOGY]
 
 # Editions (P70, 1 Nov 2026): a build of Academy with only some courses, from the same sources, theme, shell and rules.
 # `courses`: the ids of the courses it holds (None: every course); `omit`: what it leaves out, by panel kind

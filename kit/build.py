@@ -870,7 +870,8 @@ def md_blocks(lines):
 # order, and "## Done" (Date, Code, Area, What happened), dates as YYYY-MM-DD; method.md §8 says who writes them.
 SL_AREAS = [   # (name, what it holds, the track whose tone it takes); the order of the per-area tables
     ('Mythology', 'Greece and Rome', 'history'), ('Marketing', 'Courses A and PB', 'marketing'),
-    ('AI', 'Courses B and BW', 'technology'), ('UX', 'Course IA', 'ux'), ('Academy', 'The site and its method', None)]
+    ('AI', 'Courses B and BW', 'technology'), ('UX', 'Course IA', 'ux'), ('Coaching', 'Course SP', 'coaching'),   # S-SP0
+    ('Academy', 'The site and its method', None)]
 SL_TONE = {n: next((t['color'] for t in THEMES if t['id'] == tid), 'var(--gold)') for n, _, tid in SL_AREAS}
 
 

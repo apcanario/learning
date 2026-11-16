@@ -12,7 +12,7 @@ import pathlib, re, sys
 
 R = pathlib.Path(__file__).resolve().parent
 ROOT = R.parent
-PUBLIC = ('personal-brand', 'building-with-ai')
+PUBLIC = ('personal-brand', 'building-with-ai', 'sport-psychology')
 
 
 def terms():

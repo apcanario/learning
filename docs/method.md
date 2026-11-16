@@ -197,7 +197,7 @@ Run the `file-unit` skill, or by hand. Since A5 (`academy.md`) the vault is the 
 
 ## 8 · Backlog and changelog
 
-`docs/BACKLOG.md` holds every chat still to run, in order, one row each with the model and the prompt to paste. `docs/CHANGELOG.md` holds every chat that has run, newest first. The kit keeps its own `kit/CHANGELOG.md` for the site; a kit session writes both. None of the three is on the site: Academy's Backlog and Changelog pages are rendered from `docs/site-log.md` alone (S-PAGES, 15 Nov 2026), a plain overview by area (Mythology, Marketing, AI, UX, Academy) with one entry per unit, course milestone or visible site change; its header gives the rules of an entry (plain words, no private term, housekeeping and corrections folded into the item they served).
+`docs/BACKLOG.md` holds every chat still to run, in order, one row each with the model and the prompt to paste. `docs/CHANGELOG.md` holds every chat that has run, newest first. The kit keeps its own `kit/CHANGELOG.md` for the site; a kit session writes both. None of the three is on the site: Academy's Backlog and Changelog pages are rendered from `docs/site-log.md` alone (S-PAGES, 15 Nov 2026), a plain overview by area (Mythology, Marketing, AI, UX, Coaching, Academy) with one entry per unit, course milestone or visible site change; its header gives the rules of an entry (plain words, no private term, housekeeping and corrections folded into the item they served).
 
 At the end of every chat that works a backlog row:
 1. Move the row from the Queue to `docs/CHANGELOG.md`: date, spec, model, one-line result, commit.
