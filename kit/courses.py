@@ -192,6 +192,7 @@ SPORT_PSYCHOLOGY = dict(
     vault='courses/sport-psychology',
     sourcing_part='Part 7',
     source_units=False,
+    prompts_doc='docs/sport-psychology-prompts.md',   # kit/next_prompt.py prints this course's rows from the template there
     eyebrow='SPORT PSYCHOLOGY',
 )
 

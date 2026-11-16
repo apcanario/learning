@@ -13,7 +13,8 @@ flag and Takes line (the course's data folder), the source units those lines nam
 course already filed, the open flags of syllabus-flags.md that name the unit, and the rows of the Corrections section of
 docs/BACKLOG.md, which every prompt works first (step 1b). Every proposal a chat raises is dealt with in that chat (step 7b;
 Pedro, 12 Nov 2026, 21:31). One template, so every row is briefed
-to the same standard and nothing drifts from chat to chat.
+to the same standard and nothing drifts from chat to chat. A course with `prompts_doc` in kit/courses.py (S-SP0, 16 Nov 2026:
+sport-psychology, docs/sport-psychology-prompts.md) keeps its own template in that document; prompt_doc fills its slots.
 """
 import importlib.util, pathlib, re, sys
 
@@ -141,8 +142,58 @@ THIN_CHAT = ("**This is a thin main chat** (S-BW1, 15 Nov 2026; method §4: the 
              "(6) Units are not mirrored into the Project (Pedro, 15 Nov 2026): the chat uploads no unit.")
 TRIAL = (" **Trial (S-BW1 rule 6):** this row is the first run of the thin chat. It passes if `verify.py` and `index_check.py` pass and the chat leaves no correction row; if it fails, say so in the reply and the next prompt runs on Opus 5.5 with rules (2) to (5) kept.")
 
+def doc_parts(c):
+    """S-SP0 (16 Nov 2026): a course whose rows' prompts are kept in a document (`prompts_doc` in kit/courses.py) has there
+    the writing template (the code block under "## Rows W-"), the safety reader (the code block under "### The safety reader",
+    added as step 5b to the rows the table names) and the table "This row in particular" (row -> paragraph)."""
+    t = (ROOT / c['prompts_doc']).read_text(encoding='utf-8')
+    block = lambda head: re.search(r'(?m)^' + re.escape(head) + r'.*?\n```\n(.*?)\n```\n', t, flags=re.S).group(1)
+    tpl, safety = block('## Rows W-'), block('### The safety reader')
+    part = {}
+    for ln in t.split('### This row in particular', 1)[1].splitlines():
+        cells = [x.strip() for x in ln.strip().strip('|').split(' | ')]
+        if ln.startswith('| W-') and len(cells) >= 4:
+            part[cells[0]] = cells[3]
+    return tpl, safety, part
+
+
+def prompt_doc(r, nxt):
+    """The prompt of a row whose course keeps its template in a document (doc_parts), its slots filled from the sources."""
+    c, code = r['c'], r['code']
+    tpl, safety, part = doc_parts(c)
+    if r['row'] not in part:
+        raise SystemExit(f"{r['row']}: no paragraph in the table \"This row in particular\" of {c['prompts_doc']}")
+    done = [r['filed'][x] for x in r['order'] if x in r['filed']]
+    cor, car, fl = corrections(), carried(), flags(r)
+    if nxt:
+        nx = f"{nxt['row']} (unit {nxt['code']})"
+    else:
+        nx = "the next row in the Queue of `docs/BACKLOG.md` (no unit of this course is left; its reliefs, row G-R-SP, wait for Pedro's confirmation)"
+    slots = {
+        'ROW': r['row'], 'CODE': code, 'TITLE': r['unit'][1], 'SEARCH': r['search'], 'PAGE': 'read-' + code.lower(), 'NEXT': nx,
+        'FILED': ', '.join(f'`{rel(f)}`' for f in done) if done else 'none yet',
+        'FLAGS': '\n'.join(f'- {x}' for x in fl) if fl else 'none',
+        'CORRECTIONS': ('\n'.join(f'- **{a}.** {b}' for a, b in cor if a not in ('\u2014', '—')) + '\n\n' + LIMITS)
+                       if [a for a, _ in cor if a not in ('\u2014', '—')] else '- none open',
+        'PROPOSALS': '\n'.join(f'- **{a}.** {b}' + (f' ⚠ {x}' if x and not x.startswith('⚠') else f' {x}') for a, b, x in car if a not in ('—',))
+                     if [a for a, _, _ in car if a != '—'] else '- none open',
+        'PARTICULAR': part[r['row']],
+    }
+    out = re.sub(r'\{([A-Z]+)\}', lambda m: slots.get(m.group(1), m.group(0)), tpl)
+    left = re.findall(r'\{[A-Z]+\}', out)
+    if left:
+        raise SystemExit(f'unfilled slots: {left}')
+    if 'Step 5b runs.' in part[r['row']]:          # the safety reader, for the rows whose paragraph says so (SP9, DD-SP1, DD-SP2)
+        s = re.sub(r'\{([A-Z]+)\}', lambda m: slots.get(m.group(1), m.group(0)), safety)
+        i = out.index('\n\n**6. ')
+        out = out[:i] + '\n\n' + s + out[i:]
+    return out
+
+
 def prompt(r, nxt):
     c, d, u, code = r['c'], r['d'], r['unit'], r['code']
+    if c.get('prompts_doc'):
+        return prompt_doc(r, nxt)
     cid, data, vault = c['id'], (ROOT / c['data']).parent, c['vault']
     takes = d.AIMS[code][1]
     src = sources(takes)
