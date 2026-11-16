@@ -14,13 +14,12 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | W-BW8 | AI | Write BW8, Skills and automation. |
-| 2 | W-BW9 | AI | Write BW9, Agents. |
-| 3 | W-BW10 | AI | Write BW10, Cost, limits, privacy. |
-| 4 | W-DD-BW1 | AI | Write the deep dive on how the best practitioners work. |
-| 5 | W-DD-BW2 | AI | Write the deep dive that follows one project, with its numbers. |
-| 6 | W-DD-BW3 | AI | Write the deep dive in which the reader reviews their own usage; course BW complete. |
-| 7 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
+| 1 | W-BW9 | AI | Write BW9, Agents. |
+| 2 | W-BW10 | AI | Write BW10, Cost, limits, privacy. |
+| 3 | W-DD-BW1 | AI | Write the deep dive on how the best practitioners work. |
+| 4 | W-DD-BW2 | AI | Write the deep dive that follows one project, with its numbers. |
+| 5 | W-DD-BW3 | AI | Write the deep dive in which the reader reviews their own usage; course BW complete. |
+| 6 | G-R | Academy | Give the pages of the two public courses, PB and BW, their object pictures. |
 
 ## Done
 
@@ -33,6 +32,7 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-11-15 | BW5 | AI | BW5, Specifying a project, written. |
 | 2026-11-16 | BW6 | AI | BW6, Research and verification, written. |
 | 2026-11-16 | BW7 | AI | BW7, Pipelines: raw material to finished output, written. |
+| 2026-11-16 | BW8 | AI | BW8, Skills and automation, written. |
 | 2026-10-22 | G0–9 | Mythology | The Greece syllabus set out, then its core written: fifty reports from the sources and the geography, through myth, history, religion and art, to a final exam. |
 | 2026-10-22 | G10 | Mythology | Greece gains its first deep dive, the Trojan War, in twelve reports. |
 | 2026-10-24 | G11 | Mythology | Greece gains a second deep dive, Alexander, in eight reports. |
