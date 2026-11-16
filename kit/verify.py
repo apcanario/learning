@@ -1694,7 +1694,7 @@ def check_reliefs(br, fails):
             crs.setdefault(c, []).append(pid)
         inuse = {}
         for c, pids in crs.items():
-            if c is None:   # W-PB10 (13 Nov 2026): the public courses (no REL_COURSES entry) show no relief until row G-R (public-courses.md rule 10)
+            if c is None:   # a course with no REL_COURSES entry (Sport Psychology for Coaches until row G-R-SP, public-courses.md rule 10) shows no relief
                 continue
             ids = {mapped[p] for p in pids if p in mapped}
             need = 10 if len(pids) >= 10 else sum(1 for p in pids if p in mapped)

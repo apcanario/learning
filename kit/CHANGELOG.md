@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Reliefs of the public courses PB and BW** (16 Nov 2026, row G-R, Sonnet 5.5 main chat, one Opus 5.5 mapping agent): both courses registered in the outline library; PB 12 pages with a relief, BW 11; three outlines added (an @ sign, a chain link, a text document); `verify.py` now checks ten outlines in use for each.
 - **Sport Psychology for Coaches** registered 16 Nov 2026, row S-SP0 (Opus 5.5): a markdown course of 13 units in a new Coaching track, no unit written; `thin.py` stages courses with no source units, `next_prompt.py` prints the course's rows from `docs/sport-psychology-prompts.md`; next row of the course W-SP1.
 - **DD-BW3 · Deep dive: audit your own usage** written (Opus 5.5, search off) and filed 16 Nov 2026, row W-DD-BW3: fresh check fix, 1 error, 4 should-fix, 9 minor, 12 applied and 2 minor held; CP-2 applied to DD-BW2 first (17 replacements, F101 resolved); 11 flags raised. Building with AI is complete: 13 of 13 written; hub v15.
 - **DD-BW2 · Deep dive: one project, with its numbers** (16 Nov 2026, Opus 5.5, search off): filed at `courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md`; fresh check fix 2/12/10 (`audits/building-with-ai/fresh-check-DD-BW2.md`), all 24 resolved in 29 replacements; corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW2-contradictions.md`, 0 text changes. 12 of 13 written; next DD-BW3.
@@ -152,6 +153,12 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16 Nov 2026 · Session G-R · The reliefs of PB and BW
+
+- `kit/p95_library.py`: `personal-brand-pb` and `building-with-ai-bw` in `TEXTS`; three outlines (`at-sign`, `link`, `spec`, Phosphor, MIT) and the courses added to 19 existing rows (`table` also takes 'metrics sheet' and 'the sheet'); `folder` and `checklist` left `SPARE`.
+- `kit/verify.py`: both courses in `REL_COURSES` (ten outlines in use each, every outline in use or spare); `kit/p96_uses.py`: `NAMES` and 23 `MAP` rows; `kit/p95_sheet.py`: `TONE` and `NAME`.
+- `python3 p96_uses.py`: 123 pages with a relief, 97 none; Personal brand (public) 12 outlines in use, Building with AI (public) 11.
 
 ## 16 Nov 2026 · Session S-SP0 · Sport Psychology for Coaches registered
 
