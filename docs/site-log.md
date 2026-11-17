@@ -29,6 +29,7 @@ Rules for an entry (`docs/method.md` §8):
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-17 | R-SP1 | Coaching | SP1 to SP3 reviewed and corrected. |
 | 2026-11-17 | SP3 | Coaching | SP3, Motivation and the climate you create, written. |
 | 2026-11-17 | SP2 | Coaching | SP2, The developing athlete, 10 to 25, written; five Building with AI units also had remaining statements about how Academy was built corrected. |
 | 2026-11-17 | SP1 | Coaching | SP1, What a coach can do, and how to tell evidence from noise, written; the Building with AI units also gained the facts about how Academy was built that they had been missing. |
