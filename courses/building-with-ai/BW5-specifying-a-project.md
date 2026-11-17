@@ -144,7 +144,7 @@ A spec says what the project is. A decision log says why it is that way and not 
 - *Figures.* The early rule dropped a figure that failed its check three times, and two were dropped. The owner later replaced it: figures are never dropped; they are fixed until they pass. One sitemap figure passed on its eighth check (§6). That is a superseded decision, and the record keeps both.
 - *Models.* A session's model named "fable" (Fable 5.1 is the project's auditing model, Academy case file §2) resolved to a newer version than the method names, so the checks it ran were recorded as owed again on the named version (§7).
 
-One project, an anecdote: the case shows that the decisions worth logging are the ones a later chat would otherwise undo, and nothing about how much the log saved. The case file holds no dates for these decisions.
+One project, an anecdote: the case shows that the decisions worth logging are the ones a later chat would otherwise undo, and nothing about how much the log saved. The case file dates two of them: the per-unit fresh check made a rule for the marketing and AI courses after Audit 1 on 28 Oct 2026, and figures fixed until they pass, never dropped, on 3 Nov 2026 (Academy case file §2); it gives no date for the early figure rule or for the model-version decision.
 
 **When a decision is due for re-checking.** Decisions that rest on current facts (a model, a price, a feature) go stale. This course uses one interval: six months from the day the facts were read, the same interval as Academy's staleness check for units written with live search (Academy case file §2; BW2 §7). For this unit that date is 15 May 2027.
 
@@ -242,7 +242,7 @@ Every element of §2 to §9 appears in one project's method. This section reads 
 - **A staleness check** six months after any unit written with live search (§2).
 - **A backlog and a changelog**, with proposals held until confirmed (§2; this unit's §7 and §8).
 
-**What the record shows.** The fresh check found work to do on almost every draft: of the 36 units that got one before filing, 28 had at least one error and 8 had none; the checkers' findings totalled 58 errors, 237 should-fix and 303 minor (Academy case file §5). The first audit, run before units of that family got a fresh check, found the failures a spec and a check are meant to catch: three units whose deliverables did not exist, and two table rows resting on figures the cited vendor pages did not contain (§3). The second audit's four units all passed (§4); the case file does not say whether those four had a fresh check, so nothing here says the check caused the pass.
+**What the record shows.** The fresh check found work to do on almost every draft: of the 36 units that got one before filing, 28 had at least one error and 8 had none; the checkers' findings totalled 58 errors, 237 should-fix and 303 minor (Academy case file §5). The first audit, run before units of that family got a fresh check, found the failures a spec and a check are meant to catch: three units whose deliverables did not exist, and two table rows resting on figures the cited vendor pages did not contain (§3). The second audit's four units, B2, B3, B4 and A1, all passed (§4), and all four are among the 36 that had a fresh check before filing (§5); with no unit written without the method to compare (§9), nothing here says the check caused the pass.
 
 **What it cannot show.** One project by one person; no unit was written without the method to compare; no measure of hours or money per unit (Academy case file §9). It shows one person running the method across five courses and 194 units, with a fresh check before filing on 36 of them (Academy case file §1, §5). It does not show the method beats a lighter one. That claim would need the comparison the case lacks, and the only measured comparison in this unit is Tufano and colleagues' (§1), on software tests.
 
@@ -276,7 +276,7 @@ The case file holds no spec document for Academy as a whole. The spec below is r
 
 > **Project.** Academy: a library of self-study courses, published as one website with one design (Academy case file §1).
 >
-> **Reader.** Each course names its own reader in its shared preamble (§2). [NOT IN CASE FILE: the reader of any course.]
+> **Reader.** Each course names its own reader in its shared preamble (§2). Building with AI's reader: an experienced professional who reasons and writes well, uses a chat assistant with no method, may not write code, and brings one real project (§2). [NOT IN CASE FILE: the reader of the other courses.]
 >
 > **Goal (one sentence).** A library of self-study courses, each unit a long-form report with its sources cited in place and a closing deliverable built in full, published from one repository as one website (§1).
 >
@@ -292,13 +292,13 @@ The case file holds no spec document for Academy as a whole. The spec below is r
 >
 > **Definition of done, for every unit.** See 1d.
 >
-> **Out of the spec, by pointer.** The method's full procedure: the rules folder (BW4, Part 3; the case file does not record Academy's own layout). Each course's preamble and briefs: `briefs/<course>/`. Open flags and proposals: `records/backlog.md`. Decisions: `records/decisions.md`.
+> **Out of the spec, by pointer.** The method's full procedure: the rules folder (BW4, Part 3; in Academy's own layout no file named INDEX.md, INSTRUCTIONS.md or BUILD-ORDER.md appears in the records, and their equivalents are `docs/courses-index.md`, `docs/project-instructions.md` and each course's build order as a list in its data file, §1). Each course's preamble and briefs: `briefs/<course>/`. Open flags and proposals: `records/backlog.md`. Decisions: `records/decisions.md`.
 >
 > **Re-check by.** Six months after the facts were read, on the method's staleness interval (§2).
 
 #### 1b · The build order (`BUILD-ORDER.md`)
 
-The case file records the method's order (syllabus, briefs, units in order, check, file, audit every four units) and no course's unit list. This build order is worked on this course, Building with AI, from its own course map, which you can read; each Takes entry is read from the Gives lines of the units named. The boundaries are set on the case's four-unit audit interval (Academy case file §2).
+The case file records the method's order (syllabus, briefs, units in order, check, file, audit every four units) and one unit list: the two private courses' 22 units in build order, with the date each was written (Academy case file §1); it gives no Takes or Gives for them. This build order is worked on this course, Building with AI, from its own course map, which you can read; each Takes entry is read from the Gives lines of the units named. The boundaries are set on the case's four-unit audit interval (Academy case file §2).
 
 | # | Unit | Takes from | Gives to | Boundary after it |
 |---|---|---|---|---|
@@ -320,11 +320,11 @@ Check before starting: every "Takes from" entry sits higher in the table than it
 
 #### 1c · A unit brief, on the case
 
-Academy's brief is a shared preamble joined to a unit brief (Academy case file §2). The case file describes both and holds the text of neither, so the preamble's contents are marked. The unit block is worked on this unit, BW5, from the Aim and Gives lines of this course's map; the rest follows BW3's form.
+Academy's brief is a shared preamble joined to a unit brief (Academy case file §2). The case file describes both and holds the text of neither; for this course it gives the reader and the goal (§2), and the rest of the preamble's contents are marked. The unit block is worked on this unit, BW5, from the Aim and Gives lines of this course's map; the rest follows BW3's form.
 
     SHARED PREAMBLE (identical for every unit of the course)
-    READER: [NOT IN CASE FILE: the course's reader, as the preamble states it]
-    GOAL: [NOT IN CASE FILE: the course goal in one sentence]
+    READER: an experienced professional who reasons and writes well, uses a chat assistant with no method, may not write code, and brings one real project (as the case file gives it, §2)
+    GOAL: by the end of the course the reader can say what the model saw when an output fails; brief a task so that the first output is usable and keep a project structure that does not rot; verify AI-written work by sample before trusting it; and decide what to hand to an agent, with one real project of their own specified and running (as the case file gives it, §2)
     SOURCING STANDARD: [NOT IN CASE FILE: the standard's text; the case file records only that a sourcing checklist exists and that the writer runs it (§2)]
     TONE: [NOT IN CASE FILE: the tone rules]
 
@@ -365,10 +365,10 @@ Format after Nygard (§6), with a re-check date added (§6). Dates the case file
 
 | # | Title | Context | Decision | Status | Consequences | Date · re-check by |
 |---|---|---|---|---|---|---|
-| D1 | One context per unit | Leaked context is how a course starts repeating itself (§2) | Each unit is written in a new chat or a fresh agent context that sees only its brief and the units already filed (§2) | accepted | A unit must be buildable from files alone; lost writers can be resumed from working files (§7) | [NOT IN CASE FILE] |
-| D2 | Fresh check before filing | Audit 1: 23 of 91 claims failed in three units; the deliverables did not exist (§3) | Every unit of that family gets a fresh check before filing (§3) | accepted | 36 units checked; 28 drafts had at least one error (§5) | [NOT IN CASE FILE] |
+| D1 | One context per unit | Leaked context is how a course starts repeating itself (§2) | Each unit is written in a new chat or a fresh agent context that sees only its brief and the units already filed (§2) | accepted | A unit must be buildable from files alone; lost writers can be resumed from working files (§7) | [NOT IN CASE FILE: the one-chat rule's date]; an isolated agent context counted as a new chat from 29 Oct 2026 (§2) · [NOT IN CASE FILE] |
+| D2 | Fresh check before filing | Audit 1: 23 of 91 claims failed in three units; the deliverables did not exist (§3) | Every unit of that family gets a fresh check before filing (§3) | accepted | 36 units checked; 28 drafts had at least one error (§5) | 28 Oct 2026 (§2) · [NOT IN CASE FILE] |
 | D3 | Drop a figure after three failures | Figures fail their check (§6) | A figure that fails three times is dropped (§6) | superseded by D4 | Two figures dropped (§6) | [NOT IN CASE FILE] |
-| D4 | Figures are never dropped | Set by the owner, replacing D3 (§6) | Figures are fixed until they pass (§6) | accepted | One sitemap figure passed on its eighth check (§6) | [NOT IN CASE FILE] |
+| D4 | Figures are never dropped | Set by the owner, replacing D3 (§6) | Figures are fixed until they pass (§6) | accepted | One sitemap figure passed on its eighth check (§6) | 3 Nov 2026 (§2) · [NOT IN CASE FILE] |
 | D5 | Checks run on the named model version | A session's "fable" resolved to a newer version than the method names (§7) | Checks it ran are recorded as owed again on the named version (§7) | accepted | [NOT IN CASE FILE: whether they were re-run] | [NOT IN CASE FILE] |
 
 #### 1f · Backlog, changelog and flag rows, on the case
@@ -536,3 +536,5 @@ Never edit an accepted row. To reverse it, add a new row and mark the old one su
 Object: none
 
 Fresh check 2026-11-15 (Opus 5.5): fix · 1 errors, 5 should-fix, 12 minor; 17 applied, 1 held (f18, the 1c reader line: the maintainer's call, held); report `audits/building-with-ai/fresh-check-BW5.md`
+
+Correction 17 Nov 2026 (CP-4), found by W-SP1, each change checked by a fresh Opus 5.5 agent against case-academy.md

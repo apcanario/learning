@@ -175,7 +175,7 @@ The practice comes from data engineering, where the scheduler retries failed tas
 
 A stage that cannot meet these (one that sends an email, publishes a page, posts) is not re-runnable, and is marked so in the procedure: it runs only after the final pass, once.
 
-**The case.** Two of Academy's loops show re-running in practice (anecdote). A figure that failed its check was fixed and checked again by a new agent; under the early rule a figure failing three times was dropped (two were), and under the later rule set by the owner figures are fixed until they pass, and one sitemap figure passed on its eighth check (Academy case file §6). And a lost writer was resumed from working files (§7). The case file does not say how the re-runs were recorded, which is the next section's subject.
+**The case.** Two of Academy's loops show re-running in practice (anecdote). A figure that failed its check was fixed and checked again by a new agent; under the early rule a figure failing three times was dropped (two were), and under the later rule set by the owner figures are fixed until they pass, and one sitemap figure passed on its eighth check (Academy case file §6). And a lost writer was resumed from working files (§7). The case recorded them in place: each figure's check count in its unit's course-index row and in the fresh-check report's maintainer note, and a row run again as its own changelog row (Academy case file §6); how to log a re-run is the next section's subject.
 
 ## 7 · Logging what ran
 
@@ -206,11 +206,11 @@ Academy's method, read as a pipeline (anecdote: one project, one person, no cont
 | 1 · Brief | Shared preamble + unit brief, never reworded (§2) → one self-contained brief | None recorded | Not recorded | No failure recorded at this stage |
 | 2 · Writer | The brief and the units already filed (§2) → the unit, a long-form report with sources cited in place and a deliverable built in full (§1), and up to ten unverified claims (§2) | Opus 5.5 (§2) | The writer's own pass: the sourcing checklist (§2) | Writers lost to container restarts; one deep dive lost two, and the third resumed from the second's working files (§7). Before the fresh check existed, Audit 1 found three units whose deliverables did not exist and two table rows resting on figures the cited vendor pages did not contain (§3) |
 | 3 · Fresh check | The unit, in a context that has not seen it written (§2) → findings graded error, should-fix and minor; it never edits (§2) | Fable 5.1 on 19 drafts, Opus 5.5 on 12, Fable 5.2 on 5 (§5) | Model check | 28 of 36 drafts had at least one error; 58 errors in all (§5). A "fable" session resolved to a newer version, and its checks were recorded as owed again (§7). BW1's checker could not write its report; the chat saved it from the reply (§7) |
-| 4 · Applying findings | The unit and the findings → the corrected unit | Not recorded: the file names "a maintainer" (§2) | Human or maintainer gate: each finding verified, then applied as an exact replacement (§2) | No failure recorded at this stage |
+| 4 · Applying findings | The unit and the findings → the corrected unit | Until 14 Nov 2026 the chat that orchestrated and filed the row, recorded as "the maintainer", on Opus 5.5 except in three UX rows; from 15 Nov 2026 a separate Opus 5.5 agent, the applier (§2) | Human or maintainer gate: each finding verified, then applied as an exact replacement (§2) | No failure recorded at this stage |
 | 5 · Filing | The corrected unit → the unit filed; the backlog row moved to the changelog; the writing model recorded (§2) | None recorded | Not recorded | No failure recorded at this stage |
-| 6 · Build | The repository → the website, built by script; no page styled by hand (§1); figures declared as data and drawn by script (§6) | None: a script (§1, §6) | Not recorded | Not recorded |
-| 7 · Checks | Each figure against the unit's text (§6) | A separate agent (§6); model not recorded | Model check: every label and number must already be in the text (§6) | Figures failed and were re-checked by new agents; two were dropped under the early rule; one sitemap passed on its eighth check (§6). Some sessions kept no transcript, so scripted checks of what agents had read could not run (§7) |
-| 8 · Publishing | The built site → one website with one design (§1) | Not recorded | Not recorded | A structure audit of the project found private terms (words meant to stay out of the public site) reaching a public build (§7) |
+| 6 · Build | The repository → the website, built by script; no page styled by hand (§1); figures declared as data and drawn by script (§6) | None: a script (§1, §6) | Code: the build's verify script (§1) | Not recorded |
+| 7 · Checks | Each figure against the unit's text (§6) | A separate Opus 5.5 agent (§6) | Model check: every label and number must already be in the text (§6) | Figures failed and were re-checked by new agents; two were dropped under the early rule; one sitemap passed on its eighth check (§6). Some sessions kept no transcript, so scripted checks of what agents had read could not run (§7) |
+| 8 · Publishing | The built site → one website with one design, published first as an artifact on claude.ai and then on GitHub Pages (§1) | Not recorded | Code: the verify script, the course-index check and the private-terms check must pass, then the publish is read back by sha256 (§1) | A structure audit of the project found private terms (words meant to stay out of the public site) reaching a public build (§7) |
 
 ```viz
 {"kind": "flow",
@@ -230,7 +230,7 @@ Academy's method, read as a pipeline (anecdote: one project, one person, no cont
 **What the failures share.** Read against §2 to §7 (this unit's reading, stated opinion):
 
 - **Hand-offs as files held where they were used.** The lost writers were recovered because the second writer's working files existed (§2 above). The one hand-off that went through conversation, BW1's check report, is the one the record had to annotate.
-- **The gates the case file records sit before filing; it records none before publishing.** The fresh check found an error in 28 of 36 drafts before filing (Academy case file §5); Audit 1's missing deliverables are the failure a writer stage produces when no gate checks the output against its brief (§3). The private terms in a public build (§7) are what a publishing stage produces without a gate of its own; the case file does not say whether one was added.
+- **The gates the case file records sit before filing; before publishing it records only scripts.** The fresh check found an error in 28 of 36 drafts before filing (Academy case file §5); Audit 1's missing deliverables are the failure a writer stage produces when no gate checks the output against its brief (§3). The private terms in a public build (§7) are what a publishing stage produces without a gate of its own; one was added on 11–12 Nov 2026, after the structure audit: a script that fails the build on a private term in a public course, now among the scripts that must pass before a publish (§1, §7).
 - **The log was missing two fields.** The model that actually ran, and the evidence of what each agent read (§7 above).
 - **Re-running worked where the stage wrote a new version and was re-checked from scratch.** The figure loop (§6).
 
@@ -306,8 +306,8 @@ Conventions, as in BW3 to BW6. Every fact about Academy comes from the Academy c
 
 - **Input:** `unit-v1.md` and the check report.
 - **Output:** `unit-v2.md` and `checks/<code>-decisions.md`: for each finding, applied, changed or rejected, with the reason.
-- **Model:** `[NOT IN CASE FILE: whether the maintainer who applies findings is a person or a model, and which]`. BW2 has no row for applying verified replacements; the reading is row 5's kind of work and the edit is mechanical.
-- **Gate (maintainer; whether a person or a model is `[NOT IN CASE FILE]`):** each finding is verified at its source before it is applied, and applied as an exact replacement (case file §2; BW6 §6, rule 1).
+- **Model:** in the case, until 14 Nov 2026, the chat that orchestrated and filed the row, recorded as "the maintainer", on Opus 5.5 except in three UX rows (two on Fable 5.1, one on Fable 5.2); from 15 Nov 2026 a separate Opus 5.5 agent, the applier (case file §2). BW2 has no row for applying verified replacements; the reading is row 5's kind of work and the edit is mechanical.
+- **Gate (maintainer; in the case the filing chat, then the applier, case file §2):** each finding is verified at its source before it is applied, and applied as an exact replacement (case file §2; BW6 §6, rule 1).
 - **Done when:** every finding has a decision line; every applied replacement is found once in `unit-v2.md`.
 - **Re-run:** safe; it starts again from the unchanged `unit-v1.md` and the report.
 - **Log:** date · 4 Apply · run n · report path · applied / changed / rejected counts · who verified.
@@ -327,7 +327,7 @@ Conventions, as in BW3 to BW6. Every fact about Academy comes from the Academy c
 - **Input:** the repository (case file §1).
 - **Output:** the site's files, built by script, with no page styled by hand; figures declared as data in the units and drawn by script (case file §1, §6).
 - **Model:** none; a script.
-- **Gate (code):** the build completes. `[NOT IN CASE FILE: the build's own checks]`.
+- **Gate (code):** the build completes. In the case the build is checked by its verify script (case file §1).
 - **Done when (proposal):** every filed unit has its page.
 - **Re-run:** safe by construction: the output is rebuilt from source and never edited in place (§6; BW4 §5).
 - **Log:** date · 6 Build · commit or folder version · pass/fail.
@@ -336,7 +336,7 @@ Conventions, as in BW3 to BW6. Every fact about Academy comes from the Academy c
 
 - **Input:** the built pages and each unit's text.
 - **Output:** `checks/<code>-figures.md` (one verdict per figure) and `checks/<code>-terms.md`.
-- **Model:** for the figure check, a separate agent (case file §6), `[NOT IN CASE FILE: its model]`; BW2 has no row, and row 5 (critique against a text) is the nearest. The terms check: none, a script.
+- **Model:** for the figure check, a separate agent (case file §6), Opus 5.5 for every check and re-check; BW2 has no row, and row 5 (critique against a text) is the nearest. The terms check: none, a script.
 - **Gate (model check):** every label and number in a figure is already in the unit's text (case file §6). A figure that fails is fixed and checked again by a new agent, until it passes; figures are never dropped (case file §6).
 - **Gate (code) (proposal):** search the built output for every term on a private list kept outside the repository; pass if nothing is found. From the structure audit that found private terms reaching a public build (case file §7); the check is BW4's rot-check step 6.
 - **Done when:** every figure has passed; the terms search has found nothing.
@@ -346,9 +346,9 @@ Conventions, as in BW3 to BW6. Every fact about Academy comes from the Academy c
 #### Step 8 · Publish
 
 - **Input:** the built site that passed step 7.
-- **Output:** the published site (case file §1). `[NOT IN CASE FILE: the publishing steps and where the site is published]`.
+- **Output:** the published site (case file §1). In the case, after each filing the site is rebuilt, verified and published in two places, first as an artifact on claude.ai and then on GitHub Pages (case file §1).
 - **Model:** none.
-- **Gate (human) (proposal; the case file records no gate here):** the final pass of §5, answered yes on each line for the new unit:
+- **Gate (human) (proposal; the case's own gates here are scripts: the verify script, the course-index check and the private-terms check must pass, then the publish is read back by sha256, case file §1):** the final pass of §5, answered yes on each line for the new unit:
   - [ ] Every finding in `checks/<code>-decisions.md` has a decision, and every rejection a reason.
   - [ ] Every line on `unsure.md` is either sourced now, said in the unit to be unsourced, or cut.
   - [ ] Every figure has passed, and the terms search found nothing.
@@ -369,10 +369,10 @@ Lines the case file supports, in §7's form. Every blank is a field the case did
 
 | Date | Step · run | Inputs | Model as run | Output | Gate · result |
 |---|---|---|---|---|---|
-| `[NOT IN CASE FILE]` | 2 Write · run 3, one deep dive | The packet and the second writer's working files | `[NOT IN CASE FILE]` | The unit | Resumed after two writers were lost to container restarts (case file §7) |
+| 2–3 Nov 2026 (case file §8) | 2 Write · run 3, one deep dive | The packet and the second writer's working files | Opus 5.5 (case file §5, §8) | The unit | Resumed after two writers were lost to container restarts (case file §7) |
 | `[NOT IN CASE FILE]` | 3 Fresh check · `[NOT IN CASE FILE: unit]` | `[NOT IN CASE FILE]` | Requested "fable"; resolved to a newer version than the method names | Findings | Recorded as owed again on the named version (case file §7) |
-| 15 Nov 2026 | 3 Fresh check · BW1 | The checker's packet only | `[NOT IN CASE FILE]` | Report saved by the chat from the checker's reply; the checker's write was refused | Run from a Claude Code session on claude.ai (case file §7) |
-| `[NOT IN CASE FILE]` | 7 Checks · a sitemap figure, check 8 | The unit's text | A new agent each time; `[NOT IN CASE FILE: model]` | Verdict | Pass on the eighth check (case file §6) |
+| 15 Nov 2026 | 3 Fresh check · BW1 | The checker's packet only | Opus 5.5 (case file §5) | Report saved by the chat from the checker's reply; the checker's write was refused | Run from a Claude Code session on claude.ai (case file §7) |
+| `[NOT IN CASE FILE]` | 7 Checks · a sitemap figure, check 8 | The unit's text | A new Opus 5.5 agent each time (case file §6) | Verdict | Pass on the eighth check (case file §6) |
 
 ### Part 2 · A second pipeline, on neutral material
 
@@ -506,3 +506,5 @@ Fresh check 2026-11-16 (Opus 5.5): fix · 2 errors, 7 should-fix, 11 minor; all 
 Correction 2026-11-16, found by DD-BW1's writer (corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW1-DD-B3-BW7.md`, Change 6).
 
 *Correction, 17 November 2026: changed by this course's syllabus review (BW-1, row S-BW) after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md); see the course's changelog for what changed.*
+
+Correction 17 Nov 2026 (CP-4), found by W-SP1, each change checked by a fresh Opus 5.5 agent against case-academy.md
