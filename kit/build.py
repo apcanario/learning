@@ -484,7 +484,7 @@ def sep_kit(tone):
 COURSE_TOPO = [dict(name='tall', width=1000, height=1000, box=(.29, .27, .71, .67), view=(.25, .25, .75, .7), place=ct_lattice),
                dict(name='wide', width=1000, height=500, box=(.1, .12, .9, .66), view=(.04, .1, .96, .84), place=ct_lattice)]
 NEW_TOPO = [dict(name='tall', width=1000, height=625, box=(.24, .3, .76, .64), view=(.18, .27, .82, .67), place=ct_ridge),
-            dict(name='wide', width=1000, height=270, box=(.12, .26, .88, .66), view=(.1, .12, .9, .8), place=ct_ridge)]   # views with a margin for a shorter hero (an edition's eyebrow is a line shorter)
+            dict(name='wide', width=1000, height=270, box=(.17, .26, .83, .66), view=(.1, .12, .9, .8), place=ct_ridge)]   # views with a margin for a shorter hero (an edition's eyebrow is a line shorter)
 NEW_INTERVAL = 11000    # words between two of What's new's contour levels: its largest day (22 Oct 2026, 221,673 words) stands 20, inside the 10 to 25 the row sets (verify.py checks it), and its smallest (30 Oct, 14,178) 1.29 levels, a ring of its own that reads (at 14,000 it stood 1.01 levels, a 2 px ring; P93 check)
 
 

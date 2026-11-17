@@ -158,7 +158,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## 17 Nov 2026 · Session W-SP1 · SP1 filed
 
-Row W-SP1. SP1 written by claude-opus-5-5 with search off, fresh-checked by claude-opus-5-5 (verdict fix: 2 errors, 30 should-fix, 16 minor; audits/sport-psychology/fresh-check-SP1.md). Two applier runs: 33 findings applied, fallback fixes f2b to f2b.7 applied in place of the held error f2, 15 fixes held because their reference could not be opened at a publisher, PubMed, PMC, Europe PMC or DOI address. Ego depletion ungraded. Case register: 6 facts added. Syllabus flags: 11 open, none blocking SP2. Hub v2; courses-index 1 of 13. Object: none.
+Row W-SP1. SP1 written by claude-opus-5-5 with search off, fresh-checked by claude-opus-5-5 (verdict fix: 2 errors, 30 should-fix, 16 minor; audits/sport-psychology/fresh-check-SP1.md). Two applier runs: 33 findings applied, fallback fixes f2b to f2b.7 applied in place of the held error f2, 15 fixes held because their reference could not be opened at a publisher, PubMed, PMC, Europe PMC or DOI address. Ego depletion ungraded. Case register: 6 facts added. Syllabus flags: 11 open, none blocking SP2. Hub v2; courses-index 1 of 13. Kit fix: What's new's wide hero box narrowed from (.12 to .88) to (.17 to .83) in kit/build.py, because the day SP1 added moved the ridge's first rise out of the view. Object: none.
 
 ## 17 Nov 2026 · Session S-BW · Syllabus review of Building with AI; CP-3
 

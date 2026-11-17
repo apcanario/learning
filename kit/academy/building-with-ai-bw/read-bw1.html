@@ -399,7 +399,7 @@
 <td>Retrieval mode fetched other passages (§3, §4)</td>
 <td>Name the file in the request; trim project knowledge below the point where retrieval switches on</td>
 <td>Vendor documentation: <a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects"><em>RAG for projects</em></a></td>
-<td>No instance in the case file</td>
+<td>No instance in the case file: the Project's knowledge held 33 files, 907,260 characters (about 363,000 tokens), and whether the Project ran in retrieval mode was not known (§7); the record does not say whether any failure was traced to retrieval mode (§9)</td>
 <td>BW4</td>
 </tr>
 <tr>
@@ -407,7 +407,7 @@
 <td>Long chats re-send their history every turn; tools and connectors are token-intensive (§2)</td>
 <td>Start a new chat per task; switch off connectors the task does not need</td>
 <td>Vendor documentation: longer conversations that trigger automatic context management consume more of the limit, and the page suggests a new conversation; tools and connectors are token-intensive: <a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/11647753-understanding-usage-and-length-limits"><em>How do usage and length limits work?</em></a></td>
-<td>No instance in the case file (it holds no measure of usage spent, §9)</td>
+<td>The largest history writing session (28 reports) stopped twice on usage limits and resumed both times; an audit chat was stopped by a shorter-window limit of the auditing model after 18% of that model's weekly allowance (§7); no measure of usage per unit (§9)</td>
 <td>BW4, BW10 (erratum 15 Nov 2026: was BW4)</td>
 </tr>
 </tbody>
@@ -586,7 +586,8 @@ Object: the context window (§1 and §2)</li>
 <p>Correction 15 Nov 2026, found by BW3's corrections check (Opus 5.5, row W-BW3, flag F3): 7 exact replacements applied to §8 (the layer map names the unit that treats each layer) and to the "Treated in" column of the diagnosis table (Parts 3 and 4), each checked against the course's briefs; <code>audits/building-with-ai/corrections-2026-11-15-BW1-B3.md</code>.</p>
 <p>Correction 15 Nov 2026, found by W-BW4's round-two corrections check and confirmed by a corrections check (Opus 5.5, row W-BW5; <code>audits/building-with-ai/corrections-2026-11-15-BW5-BW1-B4.md</code>, change 3): the Sources note no longer says help-centre pages show no exact date; the connector page is dated 16 March 2026.</p>
 <p>Correction 15 Nov 2026, found by W-BW5's corrections check and confirmed by its round-two check (Opus 5.5; <code>audits/building-with-ai/corrections-2026-11-15-BW5-r2-BW1-B4.md</code>, changes 1 and 2): the opening and unsure item 6 say most help-centre pages, not all, carry no exact date.</p>
-<p>Correction 2026-11-16, found by BW10's writer (corrections check <code>audits/building-with-ai/corrections-2026-11-16-BW10-B8-BW1-BW4.md</code>, Change 3).</p><h3>Fresh check</h3><p>Fresh check 2026-11-15 (claude-opus-5-5): fix · 1 errors, 7 should-fix, 7 minor; report <code>audits/building-with-ai/fresh-check-BW1.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: say what the model could see when an output fails, and what to change
+<p>Correction 2026-11-16, found by BW10's writer (corrections check <code>audits/building-with-ai/corrections-2026-11-16-BW10-B8-BW1-BW4.md</code>, Change 3).</p>
+<p>Correction 17 Nov 2026 (CP-4), found by W-SP1, each change checked by a fresh Opus 5.5 agent against case-academy.md</p><h3>Fresh check</h3><p>Fresh check 2026-11-15 (claude-opus-5-5): fix · 1 errors, 7 should-fix, 7 minor; report <code>audits/building-with-ai/fresh-check-BW1.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: say what the model could see when an output fails, and what to change
 Takes: B1 as source material.
 Gives: the vocabulary every later unit uses; the diagnosis table BW3, BW4 and BW6 point back to.
 
