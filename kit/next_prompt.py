@@ -105,18 +105,20 @@ def sources(takes):
 
 
 def flags(r):
-    """Open rows of the course's syllabus-flags.md whose Affects cell names this unit, alone or inside a range."""
+    """Open and carried rows of the course's syllabus-flags.md whose Affects cell names this unit, alone or inside a range.
+    A carried row is passed too (Pedro, 17 Nov 2026): it was carried by an earlier unit, and a unit not yet written that it
+    names still has to follow it (F8, the grade key; F14, the interim rule-2 grading)."""
     f = (ROOT / r['c']['data']).parent / 'syllabus-flags.md'
     out, order = [], r['order']
     for ln in f.read_text(encoding='utf-8').splitlines():
         cells = [x.strip() for x in ln.strip().strip('|').split('|')]
-        if len(cells) < 7 or not re.match(r'F\d+$', cells[0]) or cells[6] != 'open':
+        if len(cells) < 7 or not re.match(r'F\d+$', cells[0]) or cells[6] not in ('open', 'carried'):
             continue
         aff, hit = cells[3], False
         for a, b in re.findall(r'((?:DD-)?[A-Z]+\d+) to ((?:DD-)?[A-Z]+\d+)', aff):
             if a in order and b in order and order.index(a) <= order.index(r['code']) <= order.index(b): hit = True
         if r['code'] in re.findall(r'(?:DD-)?[A-Z]+\d+', re.sub(r'(?:DD-)?[A-Z]+\d+ to (?:DD-)?[A-Z]+\d+', '', aff)): hit = True
-        if hit: out.append(f'{cells[0]} ({cells[1]}, raised by {cells[2]}): {cells[4]}. Proposed: {cells[5]}.')
+        if hit: out.append(f'{cells[0]} ({cells[1]}, raised by {cells[2]}{", carried" if cells[6] == "carried" else ""}): {cells[4]}. Proposed: {cells[5]}.')
     return out
 
 
