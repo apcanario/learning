@@ -6,7 +6,7 @@ The ordered queue of chats for the Learning Project. One row is one chat. Take t
 
 Order decided by Pedro, 31 Oct 2026, 08:25: (1) housekeeping, the reading layout first; (2) finish Rome; (3) finish Brand + AI, courses A (the personal brand) and B (AI) interleaved in their build order; (4) finish Information Architecture; (5) the Fable 5.1 stage, withdrawn on 15 Nov 2026 (P113, with S-NOAUDIT). Every row in stages 1 to 4 runs on Opus 5.5, DD-B2 included (its Fable 5.1 exception in the build order is set aside). Fable 5.1 checks and audits were to wait for stage 5; the Fable stage was closed on 15 Nov 2026 (S-NOAUDIT): no four-unit audit and no Fable 5.1 fresh check runs, and the Opus 5.5 fresh check of every unit before filing stands. Pedro fires each row himself in a new session by pasting its prompt; one chat may run several units when each is written by a fresh agent (P31).
 
-Next up: **S-BW**, then W-SP1 (Pedro, 16 Nov 2026, 23:45: housekeeping first, then the psychology course; H-4 closed 17 Nov 2026); each prompt is saved in its row.
+Next up: **W-SP1** (Pedro, 16 Nov 2026, 23:45: housekeeping first, then the psychology course; H-4 closed 17 Nov 2026, S-BW closed 17 Nov 2026); each prompt is saved in its row.
 
 ### 1 · Housekeeping, in three sessions
 
@@ -45,39 +45,10 @@ Two courses for any reader, adapted from Brand + AI's A and B: PB · Building a 
 
 ### 4c0 · Housekeeping before Sport Psychology (Pedro, 16 Nov 2026, 23:45: "House keeping first and then we start on the psychology course")
 
-Two chats, then W-SP1. Each ends by giving the next one's prompt, with its proposals written into the next prompt's step 1c.
+Two chats, then W-SP1: H-4 and S-BW, both done 17 Nov 2026 (`CHANGELOG.md`).
 
 | # | Spec | Model | Prompt to paste |
 |---|---|---|---|
-| S-BW | Syllabus review of Building with AI (P125), Pedro present to confirm each brief change | Fable (main chat; the proposal's fresh check and every corrections check a fresh Opus 5.5 agent) | Clone `apcanario/learning` (attach it with add_repo, push access; one shallow clone with a generous timeout, about ten minutes; call `register_repo_root` if the session offers it; the repo has no CLAUDE.md). Row S-BW of `docs/BACKLOG.md`, in this chat, with Pedro present: the syllabus review of Building with AI (P125). Read every open flag of `generator/data/building-with-ai/syllabus-flags.md`, sort each, propose every brief change as an exact replacement, apply only what Pedro confirms, correct what sits in filed units or the case file, then build, verify, publish Academy once (the artifact, then GitHub Pages), push everything, close the row and end with the next row's prompt (W-SP1).
-
-Read first: `docs/public-courses.md` (§3, rules 6, 7 and 12), `docs/method.md` §8, `docs/syllabus-review-PB-1.md` (the precedent: its sorting, its proposal, its fresh check), `generator/data/building-with-ai/syllabus-flags.md`, `generator/data/building-with-ai/units_data.py` and `generator/data/building-with-ai/case-academy.md`. The course is complete (13 of 13), so no unit is blocked; the aim is briefs that match what was filed.
-
-**Models.** The main chat runs on Fable and records the model it ran as; a different model is recorded and the row carries on. Keep Fable for the review itself: the proposal's fresh check, every corrections check and every other agent is a fresh Agent on model opus, isolated on a packet staged by script, writing its full output to files in its `out/` folder and replying in at most six lines (its model first; if it is not claude-opus-5-5, stop at once, change nothing and say so in one line); no agent uses a memory, past-chat, Projects, connector, Artifact or Agent tool or an `mcp__` tool, and none publishes. Commit and push after every agent returns and after every step, on `main`. If the session's permission check refuses to run the repo's own scripts, stop, say so in one line and ask Pedro; never work around it. The safety check refuses an `rm -rf` whose target is a shell variable: use a literal absolute path. Before any build, save the start build's `kit/academy/` outside the repo.
-
-**1. Gate.** No REWRITE verdict is open in `docs/courses-index.md`.
-
-**1b. Corrections first.** The rows of the Corrections section of `docs/BACKLOG.md`, worked under rule 12's limits:
-- none open
-
-**1c. Carried proposals**, worked now unless Pedro removed one from this list:
-- CP-3 · Matrix keys that still print the renderer's tone names ("tone 3", "tone 6", "tone 5/1/4") in their swatches or captions, found as minor notes by H-4's figure re-checkers (IA6 figure 5, DD-IA2 figure 3, DD-IA3 figure 1; IA4 figure 8 was fixed in H-4): rename each key to what its cells mean and reword the caption to match, figure declarations only, each figure re-checked by a fresh Opus 5.5 agent from its frames sheets (`kit/reviews/p84/round3-group4.md`, `round2-group6.md`, `round2-group7.md`). ⚠ None: figures, captions and keys of three UX units only; a hub CHANGELOG line and a dated note in each unit.
-
-**2. Sort the flags** into `docs/syllabus-review-BW-1.md`, one line per open flag, as S-PB1 did: (a) a brief change, with the exact replacement in `units_data.py` (Current, once; Replacement; the flag; the units it touches); (b) a correction to a filed unit or record, with its exact replacement and source; (c) a case-file change; (d) left open, with the reason. Among them F113 (DD-BW3's brief asks for the review's own ten changes, which the case file does not hold: "the changes the worked record supports (DD-BW2 Part 2), restated so they apply to any reader"), F99 (DD-BW2's "a publish that had to be repeated, if the record holds one") and the case-fact needs F83, F92, F108, F109, F116 to F118.
-
-**3. Fresh check of the proposal.** One fresh agent on model opus, isolated on a packet holding the proposal, the flags, `units_data.py`, `case-academy.md` and the filed units of the course (`courses/building-with-ai/`): for each line, PASS or FIX (the flag is real; the replacement fixes it; it contradicts no filed unit and no other brief). Its report is saved verbatim under the proposal; every finding is applied to the proposal or answered there.
-
-**4. Pedro confirms.** Put each (a) change to Pedro with AskUserQuestion (up to four a question; confirm, change or reject) and wait. Apply only what he confirms, exactly, to `units_data.py`; a rejected change leaves its flag open with his reason. (b) and (c) need no confirmation: each (b) is checked by a fresh corrections checker on model opus with live search under the web rule (`python3 kit/thin.py stage corrections ...`), its report saved as `audits/building-with-ai/corrections-<date>-S-BW.md` before anything is applied, applied with `python3 kit/thin.py correct`, a dated note in the unit and a `CHANGELOG` line in the hub; (c) is written into `case-academy.md`. Every flag ends resolved, carried with a note, or open with the reason; the hub's `VERSION` and `CHANGELOG` record the review.
-
-**5. Checks.** `python3 kit/index_check.py`; `python3 kit/private_terms.py` (OK).
-
-**6. Build and verify.** `cd kit && python3 build.py` (read its last line), then `python3 verify.py` in the background with a one-hour timeout (ALL CHECKS PASSED), then `--shots --page building-with-ai-bw-briefs` (check the id it prints) and look at it at phone and desktop.
-
-**7. Publish Academy once**, exactly as row H-4's step 9 says (records closed first; the artifact read first; changed files and the wrapped shell in one patch; sha256 read back; then `./deploy.sh` once with `apcanario/academy` attached and `gh run` confirming the deployment; identifiers recorded after, without republishing).
-
-**8. Close** per `docs/method.md` §8, steps 1 to 5: S-BW and P125 moved to `docs/CHANGELOG.md` with the date, the model and a one-line result; its entry in `docs/site-log.md` moved from Next to Done, dated, one plain sentence, Next renumbered; `kit/CHANGELOG.md` gets its session entry; every proposal the work could not do is a row of the Carried proposals section of `docs/BACKLOG.md` with its ⚠ flag; a correction left open is a row of the Corrections section; "Next up" set to W-SP1; then `python3 kit/next_prompt.py --row W-SP1 --save` saves W-SP1's prompt in its row, which appends the Corrections and Carried proposals sections at its steps 1b and 1c; the Project copies `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` rewritten from `docs/`, and `claude/building-with-ai-units_data.py`, `claude/building-with-ai-hub.py` and `claude/building-with-ai-syllabus-flags.md` refreshed (read each with `project_read` first, then write it with `local_path`).
-
-**Reply:** the flags sorted by kind (counts), each brief change with Pedro's answer, each correction made, the flags left open with their reasons; verify's result; the publish and the deploy; the choices taken; the backlog hand-off; every proposal listed with its ⚠ flag, stating it is in W-SP1's step 1c; then W-SP1's prompt from its row, in a code block. |
 
 ### 4c · Sport Psychology for Coaches (registered 16 Nov 2026, row S-SP0)
 
@@ -97,7 +68,7 @@ Read first: `docs/public-courses.md`, `docs/method.md` §4, §5, §7 and §8, `s
 - none open
 
 **1c. Carried proposals**, worked now unless Pedro removed one from this list:
-- none open
+- **CP-4.** Fill the Building with AI units' "not in the case file" cells, and correct their statements the case file now contradicts, from the lines syllabus review BW-1 added to `case-academy.md` on 17 Nov 2026 (flags F4, F18, F26, F28, F35, F46, F47, F53, F62, F63, F64, F71, F83, F92, F103 to F110, F114, F116 to F118, each `carried` until then; BW1, BW2, BW4 to BW10, DD-BW1 to DD-BW3; also whether DD-BW3 repeats DD-BW2's old 'records none' on the repeated publish, F99), each replacement drafted by a fresh Opus 5.5 agent from the case file and checked by a fresh corrections checker before it is applied (`docs/syllabus-review-BW-1.md` §5) ⚠ A pass over twelve filed units of BW: it puts a BW corrections pass into W-SP1's thin chat, off that row's subject; Pedro may remove it there and keep it for a housekeeping row after W-DD-SP3. Until it runs, published BW units say the case file lacks facts it now holds
 
 **2. Stage the writer's packet** in one folder outside the repo with `python3 kit/thin.py stage writer --row W-SP1 <folder>`. It holds: `brief.txt`, built by script with `open_brief` (the preamble, the Aim, Takes and Gives lines, the unit brief; never reworded, never retyped); `skills/write-unit/SKILL.md`; `docs/sourcing-standard.md` Parts 1 and 7; the figure kinds; `generator/data/sport-psychology/case-facts.md`; `generator/data/sport-psychology/bibliography.md`; every unit of this course already filed: none yet; `flags.txt`. The chat opens none of it.
 
@@ -173,7 +144,7 @@ Standing rule (Pedro, 15 Nov 2026; `docs/method.md` §8 step 2): every proposal 
 
 | # | Proposal | ⚠ Disruption elsewhere |
 |---|---|---|
-| CP-3 | Matrix keys that still print the renderer's tone names ("tone 3", "tone 6", "tone 5/1/4") in their swatches or captions, found as minor notes by H-4's figure re-checkers (IA6 figure 5, DD-IA2 figure 3, DD-IA3 figure 1; IA4 figure 8 was fixed in H-4): rename each key to what its cells mean and reword the caption to match, figure declarations only, each figure re-checked by a fresh Opus 5.5 agent from its frames sheets (`kit/reviews/p84/round3-group4.md`, `round2-group6.md`, `round2-group7.md`) | ⚠ None: three UX deep-dive and unit figures, captions and keys only; a hub CHANGELOG line and a dated note in each unit |
+| CP-4 | Fill the Building with AI units' "not in the case file" cells, and correct their statements the case file now contradicts, from the lines syllabus review BW-1 added to `case-academy.md` on 17 Nov 2026 (flags F4, F18, F26, F28, F35, F46, F47, F53, F62, F63, F64, F71, F83, F92, F103 to F110, F114, F116 to F118, each `carried` until then; BW1, BW2, BW4 to BW10, DD-BW1 to DD-BW3; also whether DD-BW3 repeats DD-BW2's old 'records none' on the repeated publish, F99), each replacement drafted by a fresh Opus 5.5 agent from the case file and checked by a fresh corrections checker before it is applied (`docs/syllabus-review-BW-1.md` §5) | ⚠ A pass over twelve filed units of BW: it puts a BW corrections pass into W-SP1's thin chat, off that row's subject; Pedro may remove it there and keep it for a housekeeping row after W-DD-SP3. Until it runs, published BW units say the case file lacks facts it now holds |
 
 ## Proposed (awaiting Pedro's confirmation)
 

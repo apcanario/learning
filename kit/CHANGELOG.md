@@ -155,6 +155,16 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
 
+## 17 Nov 2026 · Session S-BW · Syllabus review of Building with AI; CP-3
+
+One chat on Opus 5.5 (claude-opus-5-5; the row asked for Fable). Every other context was a fresh Opus 5.5 agent on a packet staged by script.
+
+- `generator/data/building-with-ai/units_data.py`: the shared preamble's case line, BW6's Takes line and DD-BW3's brief, as Pedro confirmed (`docs/syllabus-review-BW-1.md`, A1 to A3); hub v16.
+- Units corrected, each with a dated note: BW3, BW6, BW7, BW8, BW9, DD-BW2 (`audits/building-with-ai/corrections-2026-11-17-S-BW.md`).
+- `case-academy.md`: 104 lines and 16 §9 lines from the Project's records; `syllabus-flags.md`: every sorted flag given its status and note; `docs/courses-index.md`: a note under the staleness heading.
+- CP-3: IA6 figure 5, DD-IA2 figure 3 and DD-IA3 figure 1 keys named for their cells, captions and legend sentences to match, dated notes; re-checked (`kit/reviews/cp3/`); ux hub v20.1.
+- Build, verify and publish: recorded below once done.
+
 ## 16–17 Nov 2026 · Session H-4 · Timeline spans on the axis, figure keys, OGIS 338, private audit files, B4's fixes listed
 
 One chat on Opus 5.5 (claude-opus-5-5), which wrote the kit code; every figure re-check, both corrections checks and the P30 list were fresh Opus 5.5 agents on packets staged by script.
