@@ -1156,6 +1156,12 @@ def check_files(fails):
     noanch = [h[:80] for h in must if ' data-src="' in h and ' data-kind="report"' not in h and ' data-anchors="' not in h]
     if noanch: fails.append(f'split: fetched panels without data-anchors: {noanch[:2]}')
     stubs = re.findall(r'(<section class="panel[^"]*"[^>]* data-src="[^"]+"[^>]*>)(.*?)</section>', shell, re.S)
+    for h in heads:                                          # P24 (16 Nov 2026): every How-it-was-built page says its audit files are private
+        m = re.search(r' id="([a-z0-9-]+-built)"[^>]* data-src="([^"]+)"', h)
+        if m and (SITE / m.group(2)).exists():
+            pg = (SITE / m.group(2)).read_text(); i, j = pg.find('data-private=""'), pg.find('https://github.com/')
+            if i < 0 or (j >= 0 and j < i):
+                fails.append(f'{m.group(1)}: no line saying its audit files are private above its first file link (P24)')
     full = [h for h, body in stubs if body.strip()]
     if full: fails.append(f'split: {len(full)} stubs still hold content: {full[0][:80]}')
     on_disk = sorted(str(f.relative_to(SITE)) for f in SITE.rglob('*.html') if f.name != 'index.html')

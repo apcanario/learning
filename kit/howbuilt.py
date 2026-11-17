@@ -12,7 +12,8 @@ are headings, column labels and the sentences that say where each fact comes fro
   markdown courses          courses/<slug>/*.md front matter (code, title, model, written, search); the data file's
                             AUDIT_LOG, STATUS and DONE_ROWS; audits/<slug>/fresh-check-<code>.md front matter
 
-Links to files point at the file in the repo on GitHub (the repo is private: they open for its owner).
+Links to files point at the file in the repo on GitHub (the repo is private: they open for its owner). P24 (Pedro, 16 Nov
+2026): the audit files stay private, and every page says so in one line (PRIVATE), above its first file link.
 The site's Changelog page stays the cross-course record.
 """
 import calendar, datetime, html, json, pathlib, re, subprocess
@@ -144,6 +145,10 @@ def credits_section(pages, course):
             f'holds {n} outline{"s" if n != 1 else ""} for this course, each taken because its texts name the object.</p>')
     return (f'<section class="howto" style="--hc:var(--teal)"><h2>Illustration credits</h2>{note}'
             + (f'<ul>{rows}</ul>' if rows else '<p>No reading page of this course shows a relief yet.</p>') + '</section>' + lic)
+
+
+PRIVATE = ('<p class="hnote" data-private="">The audit and review files linked here are kept in a private repository and open '
+           'only for the site\'s owner.</p>')   # P24 (16 Nov 2026): nothing private is published; the links stay, and say so
 
 
 def flags_section(flags):
@@ -309,6 +314,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
     <p class="lede">The model that wrote each of the {c['nrep']} reports, every check and audit run on it with its verdict, the flags still open, and the rules the course was written to. Reports by provenance: {by_model}.</p>
     {stats([(c['nrep'], f'of {c["content_mods"]} reports written'), (sum(1 for i in c['index'] if prov.get(i, c['default_model']).startswith('Fable 5.1')), 'written with Fable 5.1'), (reviewed, 'reviewed with Fable 5.1')])}
   </header>
+  {PRIVATE}
   {flags_section(flags)}
   <h2 class="hsec">Who wrote what, and the checks run</h2>
   <p class="hnote">One table per syllabus unit. "Written with" is the report's entry in {gh("kit/provenance.json")}. Checks come from the review folders ({", ".join(gh(rel(fo["path"] / "BRIEF.md"), fo["label"].lower() + " brief") for fo in folders)}) and the Fable audits in <code>kit/audits/</code>. Under the model is the date the report was filed, from the same file's <code>written</code> map: the date of the work session that filed it, read from the Changelog (P91); where that session ran over several days, its first day, marked approximate.</p>
@@ -440,6 +446,7 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
     <p class="lede">The model that wrote each of the {len(order)} written units, when, with or without search, every fresh check and audit run on it with its verdict, the flags still open, and the rules the course is written to. Units by model: {by_model or 'none yet'}.</p>
     {stats([(len(order), f'of {len(codes)} units written'), (sum(1 for x in order if x in checks), 'fresh-checked'), (sum(1 for x in order if x in audited), 'in an audit')])}
   </header>
+  {PRIVATE}
   {flags_section(flags)}
   <h2 class="hsec">Who wrote what, and the checks run</h2>
   <p class="hnote">One row per written unit, in writing order. Model, date and search flag are the unit's front matter in <code>courses/{e(slug)}/</code>; status is the data file's STATUS; fresh checks are <code>audits/{e(slug)}/fresh-check-&lt;code&gt;.md</code>; audits are the data file's AUDIT_LOG, the record of the audits run before the Fable stage closed (S-NOAUDIT, 15 Nov 2026). Sources cited by the units are on the <a href="#{ctx}-bibliography" data-target="{ctx}-bibliography">Bibliography</a> page.</p>
