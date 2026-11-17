@@ -1,0 +1,271 @@
+---
+code: SP2
+title: The developing athlete, 10 to 25
+course: sport-psychology · SP · Sport Psychology for Coaches
+model: claude-opus-5-5
+written: 2026-11-17
+search: off
+---
+
+# SP2 · The developing athlete, 10 to 25
+
+This unit is information, not legal, medical or psychological advice. Every technique and recommendation carries a grade in square brackets from SP1's grade key (section 9 of SP1: five rules applied in order, "several" meaning three or more, and two labels, direction and inference). A grade from adults, students or non-athletes applied to an athlete under 18 carries the label *inference*.
+
+The unit works in four age bands: about 10 to 12, 13 to 15, 16 to 18 and 19 to 25. The bands come from the course brief; no study opened for this unit draws its boundaries there, and section 4 says what the brain data do and do not show about them. Where a study sampled other ages, the unit says so.
+
+The three case athletes return: Dani (fictional), 14, judo; Milan (fictional), 17, football; Sara (fictional), 20, 400 metres. They illustrate; they are never evidence.
+
+## 1. Three clocks that run apart
+
+Three different ages describe every athlete you coach.
+
+- **Chronological age**: years since birth. It decides the age group, the school year and most selection dates.
+- **Biological age**: how far the body has gone towards a mature state. The National Strength and Conditioning Association (NSCA), a US professional body, defines maturation in its position statement on long-term athletic development as progress towards a mature state that varies in timing, tempo and magnitude between bodily systems, and states that "individuals of the same chronological age can differ markedly with respect to biological maturity" ([Lloyd et al., 2016, consensus](https://doi.org/10.1519/JSC.0000000000001387)).
+- **Training age**: in this course, the years of systematic training in the sport. The NSCA statement does not use the term; it asks that training be set by "the technical competency, training history, and stage of growth and development of the child", which is the same idea ([Lloyd et al., 2016](https://doi.org/10.1519/JSC.0000000000001387)).
+
+The International Olympic Committee's (IOC) consensus statement on youth athletic development, written after an expert meeting in November 2014, describes maturation as running through roughly the first two decades of life, and says that changes in a young athlete's performance may be "more related to biological clocks than to coaching and training" ([Bergeron et al., 2015, consensus](https://doi.org/10.1136/bjsports-2015-094962)).
+
+Two athletes of the same chronological age can therefore differ by years on the other two clocks. A swimmer of 12 who began at 6 and has not started her growth spurt, and a swimmer of 12 who began at 11 and is mid-spurt, will give you the same date of birth and different bodies and different skill histories.
+
+What to do with this: record the three clocks separately for every athlete under about 16, and set technical and load demands by training history and growth stage as well as by age group [practice; consensus of the NSCA and IOC; no study opened for this unit tests recording the three clocks against not recording them].
+
+## 2. The timing of puberty: performance, selection and self-image
+
+**Performance.** A systematic review and meta-analysis of 13 studies (1,431 young athletes, 1,323 boys and 108 girls; mostly football, basketball and handball; girls aged 9 to 15, boys 12 to 16) compared early and late maturers within the same age groups. In boys, early maturers were taller and heavier and did better on tests of throwing, grip, jumping, sprinting and agility; endurance (the Yo-Yo test) and flexibility did not differ by maturity. In girls only height and body mass differed, from very few studies ([Albaladejo-Saura et al., 2021](https://doi.org/10.3390/ijerph18010328)). The studies compare groups at one point in time; they show an association with maturity status, not a cause.
+
+The IOC statement gives the growth in the numbers: from 8 to 16 years peak aerobic power rises by about 80% in girls and about 150% in boys, and girls often outscore boys on peak power until about 12 because they mature earlier ([Bergeron et al., 2015](https://doi.org/10.1136/bjsports-2015-094962)). The NSCA statement adds that during the growth spurt a child may lose some motor control and whole-body coordination for a time, "commonly termed 'adolescent awkwardness'" ([Lloyd et al., 2016](https://doi.org/10.1519/JSC.0000000000001387)).
+
+**Selection.** The IOC statement describes youth sport as selective, with a "maturity-associated selection/exclusion process commonly occurring during the interval of puberty", mostly between about 9 and 15, and a "maturity-related gradient in selection favouring early maturing males in many sports" ([Bergeron et al., 2015](https://doi.org/10.1136/bjsports-2015-094962)). It names no sport in which late-maturing girls are favoured, and this unit opened no study that does. The bibliography's review of maturation in youth athletes (Malina et al., 2015) could not be opened, so no figure from it is used.
+
+So in a basketball trial for under-13s, or an under-14 football squad, the boy who is bigger, faster and stronger today may be the one who started puberty first. Do not select or drop a 10- to 15-year-old on size, speed or strength alone; judge those against how far through growth the athlete is and against their own rate of improvement [moderate, positive, for the maturity–performance association in boys (one meta-analysis of small studies in athletes, rule 4); practice, for the selection rule (IOC consensus; no study opened tests it, rule 2)].
+
+**Self-image and mood.** The brief asks what maturation does to self-image. No study of body image and pubertal timing could be opened for this unit; that part is unsourced here. On mood, a 2025 systematic review and meta-analysis of 13 studies (434,838 girls and women, not athletes; 5 cohort, 8 cross-sectional) found earlier menarche associated with more depression than menarche at the usual age (odds ratio 1.36, 95% CI 1.20 to 1.53; in adolescents 1.34, 1.15 to 1.56), and later menarche not associated with less depression. Heterogeneity was high, there was evidence of publication bias, most studies were cross-sectional, and confounders such as body mass and adversity were not consistently controlled, so the direction of the link is unknown ([Ghadirzadeh et al., 2025](https://doi.org/10.1016/j.clinsp.2025.100695)). Boys were not studied.
+
+For a coach this is a reason to notice and nothing more. A girl who matures early is not at risk because of it, and you cannot tell from her growth who is low in mood. If you notice persistent change against her own baseline, your part is the first conversation and the referral route in your SP1 scope card; assessing mood belongs to a doctor or a licensed or registered mental health professional, and SP9 builds the route [weak, for the association (studies outside sport, rule 5); inference for athletes; the referral rule is the course's scope line, practice].
+
+## 3. Relative age effects
+
+When children are grouped by year of birth, those born early in the selection year are up to almost twelve months older than those born late. The IOC statement puts it plainly: grouped by age, "older individuals generally outperform younger ones" ([Bergeron et al., 2015](https://doi.org/10.1136/bjsports-2015-094962)).
+
+The meta-analysis in the bibliography on relative age in sport (Cobley et al., 2009) could not be opened. The one opened is on female sport: 57 studies, 308 independent samples, 25 sports, data from 1984 to 2016. Girls and women born in the first quarter of the selection year were over-represented against those born in the last quarter, odds ratio 1.25 (95% CI 1.21 to 1.30), which the authors call small. The effect was larger in pre-adolescent (11 and under) and adolescent (12 to 14) groups, at higher levels of competition, and in team sports and individual sports with high physical demands ([Smith et al., 2018, abstract read](https://doi.org/10.1007/s40279-018-0890-8)). Birth quarter and selection are correlated here; the design cannot separate maturity, size, experience and selectors' expectations.
+
+Relative age and maturation are two different clocks. A girl born in the last month of the selection year can still mature early; a boy born in the first month can mature late. In a handball club's under-12 squad the two can add up or cancel out.
+
+What to do: list your squad's birth months beside each selection decision for under-15s, and ask, for every athlete you are about to leave out, whether you would make the same call if they were six months older [practice; no study opened tests this check; the existence of the effect in female sport is moderate (one meta-analysis in athletes, its sensitivity analyses and study quality not read, rule 4)].
+
+## 4. The brain from adolescence into the twenties, and the claim that it "finishes at 25"
+
+What is established, from the sources opened:
+
+- **Brain change is protracted and differs by measure and region.** The largest charting study pooled 123,984 MRI scans from 101,457 people aged from before birth to 100 years, from more than 100 earlier studies, about 10% of them longitudinal. Cortical grey matter volume peaked at 5.9 years (95% interval 5.8 to 6.1); regional grey matter peaks ranged from about 2 to 10 years across 34 cortical areas; subcortical grey matter peaked at 14.4 (14.0 to 14.7); white matter volume peaked at 28.7 (28.1 to 29.2). The data were "biased towards European and North American populations" ([Bethlehem et al., 2022](https://doi.org/10.1038/s41586-022-04554-y)). This is a description of volumes by age in non-athletes; it measures no ability.
+- **Individuals differ from the average.** A review of adolescent brain development argues that the field's reliance on group averages "obscures meaningful individual variation in development", and that socioeconomic status, culture and peers shape individual trajectories ([Foulkes & Blakemore, 2018, abstract and figure captions read](https://doi.org/10.1038/s41593-018-0078-4)).
+- **Behaviour reaches adult levels before the brain stops changing.** A study of executive function (holding and updating information, inhibiting a response, switching between tasks) pooled four datasets, two longitudinal and two cross-sectional, 10,766 people aged 8 to 35 and 23 measures from 17 tasks. Performance changed fastest from about 10 to 15, less from 15 to 18, and was "stabilizing to adult-levels in late adolescence (18–20 years old)". More than 95% of the age-related change in accuracy came before 18. The authors say individual variation around this average is expected ([Tervo-Clemmens et al., 2023](https://doi.org/10.1038/s41467-023-42540-8)). Non-athletes; laboratory tasks.
+
+**The claim examined.** "The brain finishes developing at 25" was set against its evidence in SP1. For this unit, three steps were taken. First, the papers in the course list that address the age of brain maturity directly, Somerville (2016) and Sawyer et al. (2018), could not be opened; this unit reports nothing from them. Second, a widely cited review of adolescent brain maturation was opened in abstract ([Arain et al., 2013](https://doi.org/10.2147/NDT.S39776)); the abstract names no age at which maturation ends. Third, the measures opened put no line at 25. White matter volume is still rising after 25. Executive function reaches adult levels at 18 to 20. Grey matter volumes peak in childhood and early adolescence. No source opened for this unit states 25 as an end point, and none shows a single end point. Whether some other measure ends near 25 cannot be settled from what was opened; the claim is neither confirmed nor refuted for every measure, and for the measures opened it does not hold.
+
+```viz
+{"kind": "range", "caption": "Brain and behaviour measures by age, in years, set against the popular claim of 25. From section 4 of this unit: Bethlehem et al. (2022), Nature, peak ages with 95% bootstrap intervals and the 2 to 10 year spread of regional grey matter peaks across 34 cortical areas; Tervo-Clemmens et al. (2023), Nature Communications, the age at which executive function reaches adult levels. Neither study sampled athletes.", "unit": " yrs", "min": 0, "max": 32, "ticks": [0, 5, 10, 15, 20, 25, 30], "decimals": 1, "rows": [{"label": "Regional grey matter volume peaks, 34 areas (Bethlehem)", "low": 2, "high": 10, "tone": 3}, {"label": "Grey matter volume peak (Bethlehem)", "low": 5.8, "high": 6.1, "point": 5.9, "tone": 3}, {"label": "Subcortical grey matter peak (Bethlehem)", "low": 14.0, "high": 14.7, "point": 14.4, "tone": 3}, {"label": "Executive function reaches adult levels (Tervo-Clemmens)", "low": 18, "high": 20, "tone": 2}, {"label": "The popular claim", "low": 25, "high": 25, "tone": 1}, {"label": "White matter volume peak (Bethlehem)", "low": 28.1, "high": 29.2, "point": 28.7, "tone": 3}]}
+```
+
+For coaching: nothing in the brain-imaging data tells you what to ask of an athlete. The behavioural data do bear on one thing: in the study opened, the cognitive control measured in the laboratory was at adult levels by 18 to 20. Do not withhold decisions about training, selection or their own career from a 19- to 25-year-old on the ground that their brain is "not finished" [weak, against the claim; one large behavioural study outside sport, rule 5]. Sara (fictional), 20, has told her coach she "isn't finished yet" (SP1's claim-check sheet); this unit adds that, of the measures opened, the one closest to self-control in action, executive function, was at adult levels by 18 to 20.
+
+## 5. Reward, peers and evaluation: what does not follow from a brain image
+
+A review of developmental imaging studies argues that the popular account of adolescence as a time when a slow-maturing frontal "brake" lags a fast "accelerator" fits the data poorly. The authors report that evidence for slow maturation of cognitive-control regions is inconsistent, while limbic responses to rewards, emotional faces and social feedback are more consistently heightened, peaking in mid-adolescence. They propose, as a heuristic model, that adolescence is a period of social and emotional engagement in which goals and motives are reorganised, with adaptive value as well as risk ([Crone & Dahl, 2012, abstract and key points read](https://doi.org/10.1038/nrn3313)).
+
+A heightened brain response is not a behaviour. Two behavioural experiments opened for this unit tested what the popular version predicts, that teenagers take more risks when peers watch:
+
+- A laboratory gambling task with 40 adolescents aged 11 to 18 and 24 adults aged 20 to 38 (the peers were photographs of fictitious same-age participants). Alone, adolescents and adults did not differ. Under observation, adolescents took more high-risk gambles than adults, *d* = 0.95; the gap arose because the adults became more cautious when observed, while the adolescents did not change ([Haddad et al., 2014](https://doi.org/10.3389/fpsyg.2014.01476)).
+- A balloon-pumping risk task with 184 participants aged about 9 to 19, alone and with a same-age, same-sex peer apparently watching by webcam: "peer observation reduced risk-taking but increased exploration tendencies", with the largest exploration effect in younger adolescents and no change in boys ([Lorenz & Kray, 2022](https://doi.org/10.1007/s10964-022-01608-2)).
+
+Neither sampled athletes, both used strangers as peers, and neither tested a teammate, a crowd or a coach. The large cross-national study of sensation seeking and self-regulation from 10 to 30 in the course's reading (Steinberg et al., 2018) could not be opened, and the original driving-game study of peer influence (Gardner & Steinberg, 2005) was not opened.
+
+What follows for a coach: do not assume that a 13- to 15-year-old will take more risks because teammates are watching, and do not assume the opposite; watch what your athlete does in front of others, in your sport [weak; two behavioural experiments outside sport that agree only in part, rule 5; inference]. What does not follow: any coaching rule from the imaging finding alone, such as motivating with prizes because the teenage brain responds to reward. SP3 and SP7 grade their own advice on behavioural evidence.
+
+## 6. Self-regulation and emotion regulation across the four bands
+
+**Self-regulation (cognitive control).** The executive-function study in section 4 gives the shape for non-athletes: steep change from 10 to 15, smaller from 15 to 18, adult levels by 18 to 20 ([Tervo-Clemmens et al., 2023](https://doi.org/10.1038/s41467-023-42540-8)).
+
+**Emotion regulation.** One study was opened: 254 school pupils aged 9 to 16 in eight Spanish schools, completing two self-report questionnaires once. The 9- to 12-year-olds reported using fewer emotion regulation strategies than the 13- to 16-year-olds, and age, not gender, had a major effect on the overall score; girls scored higher than boys when younger and lower when older ([Sanchis-Sanchis et al., 2020, abstract read](https://doi.org/10.3389/fpsyg.2020.00946)). A single cross-sectional, self-report study; the bibliography's other studies were not opened. For 16 to 25, no source on emotion regulation was opened; that band is unsourced here.
+
+By band, as inference from non-athletes: at 10 to 12 both are developing fast, so prompt and model a routine and keep instructions short; at 13 to 15 cognitive control is still changing steeply; at 16 to 18 it approaches adult levels; from 18 to 20 it is at adult levels in the laboratory data [weak, for the description of change by band; inference under 18; one cross-sectional study and one behavioural study outside sport, rule 5; practice, for prompting, modelling a routine and keeping instructions short, which no study opened tests, rule 2]. The age-and-stage table carries these by band.
+
+Milan (fictional), 17, plays below his training level in the first fifteen minutes of matches and has done since about 12. Nothing in these data says a 17-year-old cannot regulate; they say the capacity measured is close to adult levels by 17 (*inference* from non-athletes). His pattern is a question for SP4 and SP5, not something to wait out.
+
+## 7. Identity from 16 to 25: junior to senior, and the end of a career
+
+The International Society of Sport Psychology (ISSP) position stand on career development and transitions treats an athlete as a whole person whose development has six interacting layers: athletic, psychological, psychosocial, academic-vocational, financial and legal ([Stambulova et al., 2021, consensus](https://doi.org/10.1080/1612197X.2020.1737836)). From it:
+
+- **Transitions come in kinds.** Normative transitions are predictable (junior to senior, retirement); non-normative ones are not (injury, deselection); the stand adds quasi-normative transitions, predictable for some athletes, such as a move abroad.
+- **Junior to senior.** The stand describes this transition as lasting months to years, citing research in Swedish ice hockey that divides it into preparation, orientation, adaptation and stabilisation phases; it gives no success rate.
+- **Dual career.** It defines a dual career as "a career with foci on sport and studies or work", and says that without support for balancing sport, study or work and private life, stress, poor mental health, burnout and dropout become more likely.
+- **The end of a career.** It reports a review of 126 studies (1968 to 2010) that found adjustment to retirement depends on athletic identity, education and finances, and is helped by planning, a new career or interest, and support. That review itself was not opened for this unit.
+
+Athletic identity is how far a person defines themselves by sport. The stand names it as a factor in how athletes adjust when a career ends; no study measuring it in 16- to 25-year-olds was opened for this unit, so no size of effect is given.
+
+What to do with athletes from about 16: ask, once a season, what they want from sport this year and from life outside it; keep study or work in the plan; and treat deselection, a long injury and the first senior season as transitions to prepare for [practice; ISSP consensus; the studies behind it were not opened, so the grade rests on the consensus alone]. Sara (fictional) is in three at once: first senior season, back from a season lost to injury, second year at university.
+
+## 8. Sleep need by age, and what the consensus statements say
+
+The hours below are given only as each consensus statement gives them, for the ages it names.
+
+- **6 to 12 years:** 9 to 12 hours per 24 hours, on a regular basis. **13 to 18 years:** 8 to 10 hours. Thirteen sleep medicine experts reviewed 864 articles by a modified RAND appropriateness method. Regularly sleeping the recommended hours is associated with better attention, behaviour, learning, memory, emotional regulation, quality of life, and mental and physical health; regularly sleeping less is associated with attention, behaviour and learning problems and with more accidents, injuries and depression ([Paruthi et al., 2016, American Academy of Sleep Medicine, consensus](https://doi.org/10.5664/jcsm.5866)). The evidence reviewed was in children and adolescents in general, not athletes.
+- **Adolescents (IOC):** a recommended optimal 8.5 to 9.5 hours, with later bedtimes and wake times in adolescence, widespread insufficient sleep made worse by training and competition schedules, and "preliminary evidence indicating an increased likelihood of injury with insufficient sleep" ([Bergeron et al., 2015, consensus](https://doi.org/10.1136/bjsports-2015-094962)). The IOC range sits inside the AASM range for 13 to 18.
+- **Adults 18 to 60:** 7 or more hours per night on a regular basis; regularly sleeping less is associated with weight gain, diabetes, high blood pressure, heart disease, depression and other harms; more than 9 hours a night "may be appropriate for young adults". Fifteen experts, 5,314 articles, the same method ([Watson et al., 2015, American Academy of Sleep Medicine and Sleep Research Society, consensus](https://doi.org/10.5665/sleep.4716)).
+
+The athlete-specific expert consensus on sleep in the course's reading (Walsh et al., 2021) could not be opened, so this unit gives no recommendation from it.
+
+```viz
+{"kind": "range", "caption": "Recommended sleep per 24 hours, by the age each consensus statement names. From section 8 of this unit: Paruthi et al. (2016), American Academy of Sleep Medicine, ages 6 to 12 and 13 to 18; Bergeron et al. (2015), IOC, adolescents; Watson et al. (2015), American Academy of Sleep Medicine and Sleep Research Society, adults 18 to 60, who give a floor of 7 hours and no ceiling. Paruthi et al. (2016) reviewed studies in children and adolescents in general, not athletes.", "unit": " h", "min": 6, "max": 13, "ticks": [6, 7, 8, 9, 10, 11, 12, 13], "decimals": 1, "rows": [{"label": "Children 6 to 12 (AASM)", "low": 9, "high": 12, "tone": 2}, {"label": "Teenagers 13 to 18 (AASM)", "low": 8, "high": 10, "tone": 2}, {"label": "Adolescents (IOC)", "low": 8.5, "high": 9.5, "tone": 4}, {"label": "Adults 18 to 60, at least (AASM and SRS)", "low": 7, "high": 7, "tone": 3}]}
+```
+
+What to do: ask each athlete how long they usually sleep on school or work nights, and set the time of early and late sessions so that the hours for their age are possible [weak, positive, for the hours by age (consensus built on studies outside sport, rule 5; inference for the athlete populations); practice, for asking and timing sessions, which no study opened tests, rule 2]. A sustained drop against an athlete's own usual sleep is something to notice and raise; treating it is outside your part: persistent sleep problems with low mood or withdrawal go to the route in your SP1 scope card, and SP9 builds it [practice; the course's scope line]. The IOC's tailored training and schooling schedules are its consensus, untested in any study opened here [practice].
+
+## 9. Early specialisation, sampling and the 10,000 hours
+
+**The consensus statements.** The IOC statement says that youth "should avoid early sport specialisation", that young people who specialise after puberty have fewer injuries and stay in sport longer than those who specialise early, and that diversification between and within sports should be encouraged ([Bergeron et al., 2015, consensus](https://doi.org/10.1136/bjsports-2015-094962)). The NSCA statement defines early specialisation as year-round intensive training in one sport to the exclusion of others, links it to overuse injury, possible overtraining or dropout and a narrower motor base, and says youth "should not train in excess of 8 months per year in a single sport" ([Lloyd et al., 2016, consensus](https://doi.org/10.1519/JSC.0000000000001387)). The American Academy of Pediatrics clinical report on specialisation (Brenner, 2016) could not be opened.
+
+**The studies of who becomes a champion.** A meta-analysis of 51 study reports (477 effect sizes, 6,096 athletes, 772 of them among the world's best) found that adult world-class athletes, compared with national-class athletes, had done more practice in other sports in childhood and adolescence, started their main sport later, progressed more slowly at first and accumulated less main-sport practice. Among youth athletes the pattern ran the other way: higher performers started their main sport earlier and did more of it ([Güllich et al., 2022, abstract read](https://doi.org/10.1177/1745691620974772)). Correlational: it compares groups by their histories and cannot show that the multi-sport practice caused the later success.
+
+A scoping review of 38 studies testing the developmental model of sport participation (sampling to about 12, specialising from about 13, investing from about 16) found the claim that sampling does not hinder elite participation supported in every retrospective elite-versus-non-elite study, and the claim that sampling goes with longer participation supported by six studies, five of them cross-sectional; most studies found that many successful athletes specialised only after 16, but "specific age ranges have yet to be consistently demonstrated". Most evidence came from elite athletes and 71% of studies were cross-sectional ([Gallant & Bélanger, 2021](https://doi.org/10.3389/fspor.2021.741495)). The model's own 2014 statement (Côté & Vierimaa) could not be opened.
+
+**The 10,000 hours, tested.** The claim as it circulates: 10,000 hours of practice makes a champion. A meta-analysis of deliberate practice and sports performance found that deliberate practice accounted for 18% of the variance in performance overall and "accounted for only 1% of the variance in performance among elite-level performers"; athletes who reached a high level had not started their sport earlier in childhood than lower-level athletes ([Macnamara et al., 2016, abstract read](https://doi.org/10.1177/1745691616635591)). The abstract does not mention 10,000 hours. The world-class athletes in Güllich et al. (2022) had accumulated *less* main-sport practice than national-class athletes. Against the evidence opened, the number of hours in the main sport did not separate the best from the very good, and no peer-reviewed source opened for this course states 10,000 hours as a threshold. A popular book that spread the figure is not a source and is not cited.
+
+What to do with athletes about 10 to 15: keep other sports and varied practice in their week and do not reward single-sport volume for its own sake [moderate, positive, for the association between early multi-sport practice and later world-class performance (one meta-analysis in athletes, read in abstract, its intervals and study quality not seen, rule 4); the age boundaries are practice, untested]. A 12-year-old tennis player who also plays football and swims has, on the evidence opened, the history more common among the world-class athletes in that meta-analysis. That is an association and promises nothing for this player.
+
+## 10. How weakly early success predicts adult success
+
+**Talent programmes.** A meta-analysis of 51 effect sizes from 6,233 athletes (82% male; studies from 2009 to 2022, nine countries; regional to international level) found that higher-performing juniors had entered talent promotion programmes younger (*d* = −0.53, 95% CI −0.74 to −0.32; 16 effects) and higher-performing seniors had entered them older (*d* = 0.56, 0.40 to 0.72; 34 effects). The primary studies were rated high quality. Citing earlier studies, the authors call successful juniors and successful seniors largely two disparate populations, and report annual athlete turnover of 25% to 47% in youth sport academies and 28% to 55% in federations' junior squads. The studies are correlational: the pattern could come from who is selected, from what programmes do, or both ([Güllich & Barth, 2024](https://doi.org/10.1007/s40279-023-01957-3)).
+
+```viz
+{"kind": "range", "caption": "Entry age to a talent promotion programme, higher against lower performers (Cohen's d, point estimate and 95% confidence interval). A negative value means the higher performers entered younger; a positive value, older. From section 10 of this unit: Güllich & Barth (2024), Sports Medicine, 51 effect sizes from 6,233 athletes; correlational.", "unit": "", "min": -1, "max": 1, "ticks": [-1, -0.5, 0, 0.5, 1], "decimals": 2, "rows": [{"label": "Junior performance (k = 16)", "low": -0.74, "high": -0.32, "point": -0.53, "tone": 4}, {"label": "Senior performance (k = 34)", "low": 0.40, "high": 0.72, "point": 0.56, "tone": 2}]}
+```
+
+**One sport, followed over time.** A retrospective study of Italian federation rankings from 1994 to 2014 followed 4,864 high and long jumpers from 12 to the end of their careers. Of the athletes who reached the top level as adults, only 10% to 25% had been top-level at 16, and most athletes who were top-level at 16 did not stay there; women's high jump was the exception. The athletes who became the best adults reached their personal bests later (about 21 to 23) and improved faster each year between 13 and 18; adding the yearly rate of improvement predicted adult personal bests better than performance alone ([Boccia et al., 2017](https://doi.org/10.1371/journal.pone.0170744)). One country, two events, observational.
+
+The IOC statement reaches the same place from its side: for most young athletes "the probability of elite success is highly unlikely", and it describes a disconnect between advocated talent systems and their outcomes ([Bergeron et al., 2015](https://doi.org/10.1136/bjsports-2015-094962)).
+
+**A champion of 13.** A national title at 13 is a fact about 13. Treat it as one data point [strong, for the association: entry to a talent programme at a younger age went with higher junior and lower senior performance (one meta-analysis in athletes, effects excluding zero, high-quality studies, no disagreeing review found, rule 3; correlational, so no causal claim); moderate, for junior success as a poor forecast of senior success (Güllich et al., 2022, a meta-analysis read in abstract, and Boccia et al., 2017, one study in athletics, rule 4)]. Keep the athlete's goals about improvement and skill, keep other sports and other parts of life in the week, and do not build the athlete's identity, or your own, around the title [practice, for these steps; untested]. Dani (fictional) won a national title at 13 and is now growing fast; on the evidence opened, neither fact tells you what she will be at 20.
+
+**A late developer of 17.** A 17-year-old who is behind today may be on the slower early trajectory that the world-class athletes in the meta-analyses showed. Keep the door open: where you control selection, record the athlete's rate of improvement over two or three seasons beside their current level, and say so to the athlete [weak, positive; rate of improvement has one opened study, in athletics, rule 5]. Milan (fictional) has played in the academy since 11 and faces a decision at the end of this season; his training performance and his match performance tell two different stories, and the decision-makers should have both.
+
+## Deliverable
+
+Two tools, built on the evidence above. The table gives the age bands SP3 to SP10 build on; the development note is built in full for Dani, Milan and Sara, then given as a template. Grades follow SP1's key; *inference* marks evidence from adults, students or non-athletes applied to athletes under 18.
+
+### A. Age-and-stage table
+
+| Band | What is changing | What to ask for | What to hold back | What to watch |
+|---|---|---|---|---|
+| **About 10 to 12** | Puberty starts in some, girls on average earlier; girls often outscore boys on peak power until about 12 (IOC) [weak; consensus summary of growth studies not opened for this unit]. Cognitive control changes fastest from about 10 to 15 (Tervo-Clemmens) [weak; inference]. Fewer emotion regulation strategies than at 13 to 16 (Sanchis-Sanchis) [weak; inference]. | Several sports and varied practice; broad skills [moderate, positive, for the association (Güllich et al., 2022); age boundaries practice]. Sleep of 9 to 12 hours is possible on training days (AASM, 6 to 12) [weak, consensus outside sport; inference]. | Selection or deselection on size, speed or birth month [moderate, for the maturity–performance association in boys; practice for the rule]. More than 8 months a year in one sport (NSCA) [practice]. | Birth-month spread of your selected squad [moderate, for relative age in female sport (Smith et al., 2018); practice for the check]. Enjoyment and dropout; the IOC statement names athlete burnout and the dropout that follows it as a recognised part of youth sport ([Bergeron et al., 2015](https://doi.org/10.1136/bjsports-2015-094962)) [practice]. |
+| **About 13 to 15** | Growth spurt; early-maturing boys bigger, faster, stronger than late-maturing peers of the same age [moderate]. Temporary loss of coordination, "adolescent awkwardness" (NSCA) [practice]. Subcortical grey matter peaks about 14.4 (Bethlehem) [weak; no coaching use]. Cognitive control still changing steeply [weak; inference]. | Judgement of performance against growth stage and the athlete's own rate of improvement [weak, positive; Boccia et al., 2017]. Other sports still in the week [moderate, association]. Sleep of 8 to 10 hours possible (AASM, 13 to 18; IOC 8.5 to 9.5 for adolescents) [weak; inference]. | Treating programme selection as a forecast [strong, for the association (Güllich & Barth, 2024)]; treating a national title as one [moderate, association (Güllich et al., 2022; Boccia et al., 2017)]. Any rule drawn from brain images about reward or peers [weak; section 5]. | Change in mood or withdrawal against the athlete's own baseline, including in girls who mature early; first conversation and referral, no assessment [weak, for the association (Ghadirzadeh et al., 2025); practice for the route]. Sleep falling below the consensus range [weak; inference]. |
+| **About 16 to 18** | Cognitive control approaching adult levels [weak; inference]. White matter volume still rising (peak 28.7, Bethlehem) [weak; no coaching use]. Junior-to-senior transition and selection decisions begin; dual career with school [practice; ISSP]. | A say in their own season plan and goals [practice; SP3 grades the climate evidence]. Study kept in the plan [practice; ISSP]. Sleep of 8 to 10 hours possible to 18 (AASM) [weak; inference]. | Reading junior rankings as senior forecasts [moderate, association; Güllich et al., 2022; Boccia et al., 2017]. Adding main-sport volume at the cost of other activity on the promise of later success [moderate, association; Güllich et al., 2022]. | Identity narrowing to sport alone; preparation for deselection or the first senior season [practice; ISSP]. Sleep and school load at exam times [practice]. |
+| **About 19 to 25** | Cognitive control at adult levels from 18 to 20 [weak, outside sport]. Brain volumes still changing; no end point at 25 in the data opened [weak; no coaching use]. Junior-to-senior transition, dual career, and for some the end of a career [practice; ISSP]. | Decisions about their own training, selection and career [weak, against the "not finished until 25" claim; Tervo-Clemmens et al., 2023]. At least 7 hours' sleep, more than 9 possibly appropriate (AASM and SRS, adults) [weak, consensus outside sport]. A plan for life outside sport [practice; ISSP]. | Using "the brain finishes at 25" to withhold responsibility [weak, against the claim]. | Transitions stacked together: first senior season, injury return, study, moving away [practice; ISSP]. Persistent sleep loss, flatness or withdrawal: first conversation and referral (SP1 scope card; SP9) [practice]. |
+
+### B. Development note
+
+One page per athlete, rewritten each season and whenever something on it changes. Facts marked *added* are invented by this unit for the case and listed in its notes; all other facts about the three athletes are set by the course.
+
+**Dani (fictional), 14, judo**
+
+| Line | Entry |
+|---|---|
+| Chronological age | 14. Born in October (*added*): if her age group runs by calendar year, she is among the youngest in it. |
+| Biological age | Grew 9 cm in the past twelve months: she is in a period of fast growth. No maturity estimate on file; if the club wants one, the person it has qualified to make it does so, and the result is recorded here. |
+| Training age | 6 years (started at 8). Trains five times a week. |
+| Sleep | Not yet asked. Consensus for her age: 8 to 10 hours (AASM, 13 to 18); 8.5 to 9.5 hours (IOC, adolescents). Action: ask, once, privately, how long she usually sleeps on school nights [weak; inference]. |
+| School load | Weekday school; end-of-year exams in June (*added*). Action: check the June competition and training plan against her exam dates [practice]. |
+| What changed this year | National title in her age group at 13. 9 cm of growth. Now at the top of the weight class she won in; her coach wants her to stay one more season; she has said once, quietly, that she wants to move up. Has started skipping the after-school snack on training days. |
+| What I ask for | Technical work set by her training history and growth: expect some temporary loss of coordination during fast growth [practice; NSCA]. Goals about skill and improvement; titles stay out of her goals [practice]. |
+| What I hold back | Any comment on her weight, body or food, and any decision on weight class taken without her: the weight-class question is hers to raise with her parents and the club's medical contact, and DD-SP2 deals with it [practice; the course's safety rule]. Reading her title at 13 as a forecast [moderate, association; Güllich et al., 2022; Boccia et al., 2017]. |
+| What I watch | The skipped snack: noticed and passed on by the route on her SP1 scope card, without comment to her on eating [practice]. Change in mood or withdrawal against her baseline [practice]. |
+| Next review | End of this season, or sooner if anything above changes. |
+
+**Milan (fictional), 17, football**
+
+| Line | Entry |
+|---|---|
+| Chronological age | 17. Born in January (*added*): if his age group runs by calendar year, he has been among the oldest in it since he was selected at 11. |
+| Biological age | No maturity estimate on file; at 17 none is needed for coaching decisions: maturity-associated selection falls mostly between about 9 and 15 (IOC) [practice]. |
+| Training age | At least 6 years in the academy (joined at 11); the age he started football is not recorded: ask him. |
+| Sleep | Sleeps badly the night before matches; feels sick on match mornings. Consensus for his age: 8 to 10 hours (AASM, 13 to 18). Action: ask how he sleeps on ordinary nights, to separate match-eve sleep from his baseline [practice]. If poor sleep and nausea spread beyond match days, refer by his SP1 scope card [practice]. |
+| School load | Final year of secondary school, with exams at the end of the season, the same weeks as the academy decision (*added*). Action: put the exam dates into the season plan now [practice; ISSP dual career]. |
+| What changed this year | A decision on whether the academy keeps him comes at the end of this season. Otherwise the pattern is long-standing: below his training level in the first fifteen minutes of matches since about 12. |
+| What I ask for | His view of the decision and what he wants from the season [practice; ISSP]. A record of his rate of improvement over the last three seasons, in training and in matches, for the people who decide [weak; Boccia et al., 2017]. |
+| What I hold back | "Just relax" and "play like you train" (SP1) [weak, positive, for phrasing instructions as what to do; inference]. Treating his early selection at 11 as a forecast of his senior level [strong, for the association (Güllich & Barth, 2024)], or his match play now as proof of his ceiling [moderate, association; Güllich et al., 2022; Boccia et al., 2017]. |
+| What I watch | Signs that his identity is all football as the decision nears; preparation for both outcomes [practice; ISSP]. Match-day nausea and avoidance against his baseline; SP4 tells nerves from a problem for a clinician. |
+| Next review | Before the academy decision, then after it. |
+
+**Sara (fictional), 20, 400 metres**
+
+| Line | Entry |
+|---|---|
+| Chronological age | 20. First season as a senior. |
+| Biological age | Not recorded; maturity questions of selection concern athletes of about 9 to 15 (IOC) [practice]. |
+| Training age | 8 years (started athletics at 12, *added*), including a full season lost to a hamstring injury; eight months back in training. |
+| Sleep | About five hours a night for six weeks. Consensus for adults 18 to 60: at least 7 hours; more than 9 may be appropriate for young adults (AASM and SRS) [weak, consensus outside sport]. Action: the first conversation on her SP1 scope card, and referral to her doctor or the university's student health or counselling service; you do not interpret the cause [practice]. |
+| School load | Second-year university student, living away from home; exam periods in January and June (*added*). Action: set the training plan around them [practice; ISSP dual career]. |
+| What changed this year | First senior season. Return from injury. Personal best in her second race back, slower in each race since. Flat in sessions; no longer stays to talk after training. |
+| What I ask for | Decisions about her own training and racing, as an adult [weak, against the "not finished until 25" claim]. Her own account of how the season is going. |
+| What I hold back | Reading her slower races as a ceiling; at 20 she is younger than the ages at which the best adult jumpers in one study set their personal bests [weak; Boccia et al., 2017, a different event]. Any reassurance that she "isn't finished yet" as a reason to wait. |
+| What I watch | Three transitions at once (senior, injury return, study away from home) [practice; ISSP]. Sleep, flatness and withdrawal: together they already call for the referral on her scope card [practice; SP1, SP9]. |
+| Next review | After the first conversation, then monthly this season. |
+
+**Template: development note.** Fill one per athlete; rewrite each season.
+
+| Line | What goes in it |
+|---|---|
+| Athlete | First name, age, sport and event or position. |
+| Chronological age | Age today and month of birth; the start and end of the selection year in your sport, and where in it the athlete falls. |
+| Biological age | Height measured at set dates and the change over the past twelve months; any maturity estimate, who made it, by what method and when; or "none on file". You record; a qualified person estimates. |
+| Training age | Years of systematic training in this sport, the age they started, other sports played now and before, and any season lost to injury. |
+| Sleep | Hours the athlete says they usually sleep on school or work nights, the date you asked, and the consensus range for their age with its source (AASM for 6 to 18; AASM and SRS for adults; IOC for adolescents). Write "not asked" if you have not asked. |
+| School load | School year or course, exam and assessment dates, work hours; the change you made to the plan for them. |
+| What changed this year | Growth, results, selection, injury, moves, changes in mood or behaviour you noticed against their baseline: facts, dated, in neutral words. |
+| What I ask for | Two or three demands set for this athlete's band and clocks, each with its grade from the age-and-stage table. |
+| What I hold back | What you will not ask, say or decide for this athlete this season, each with its grade. Anything touching weight, eating, injury, mood or abuse is listed here as "referred by my scope card", with nothing more. |
+| What I watch | The signs you will look for against this athlete's baseline, and the route on your SP1 scope card each one goes to. |
+| Next review | The date, and the event that would bring it forward. |
+
+## Sources
+
+- Albaladejo-Saura M, Vaquero-Cristóbal R, González-Gálvez N, Esparza-Ros F. Relationship between biological maturation, physical fitness, and kinanthropometric variables of young athletes: A systematic review and meta-analysis. *International Journal of Environmental Research and Public Health* 2021;18(1):328. https://doi.org/10.3390/ijerph18010328
+- Arain M, Haque M, Johal L, Mathur P, Nel W, Rais A, Sandhu R, Sharma S. Maturation of the adolescent brain. *Neuropsychiatric Disease and Treatment* 2013;9:449–461. https://doi.org/10.2147/NDT.S39776 (abstract read)
+- Bergeron MF, Mountjoy M, Armstrong N, et al. International Olympic Committee consensus statement on youth athletic development. *British Journal of Sports Medicine* 2015;49(13):843–851. https://doi.org/10.1136/bjsports-2015-094962 (consensus)
+- Bethlehem RAI, Seidlitz J, White SR, et al. Brain charts for the human lifespan. *Nature* 2022;604:525–533. https://doi.org/10.1038/s41586-022-04554-y
+- Boccia G, Moisè P, Franceschi A, Trova F, Panero D, La Torre A, et al. Career performance trajectories in track and field jumping events from youth to senior success: The importance of learning and development. *PLoS ONE* 2017;12(1):e0170744. https://doi.org/10.1371/journal.pone.0170744 (a correction was published, PMC5441632; not opened for this unit)
+- Crone EA, Dahl RE. Understanding adolescence as a period of social–affective engagement and goal flexibility. *Nature Reviews Neuroscience* 2012;13(9):636–650. https://doi.org/10.1038/nrn3313 (abstract and key points read)
+- Foulkes L, Blakemore S-J. Studying individual differences in human adolescent brain development. *Nature Neuroscience* 2018;21(3):315–323. https://doi.org/10.1038/s41593-018-0078-4 (abstract and figure captions read)
+- Gallant F, Bélanger M. Empirical support for the tenets of sport participation and physical activity-based models: A scoping review. *Frontiers in Sports and Active Living* 2021;3:741495. https://doi.org/10.3389/fspor.2021.741495
+- Ghadirzadeh E, Moosazadeh M, Shakeriastani K, Zarrinkamar M, Gheibi M, Elyasi F, Geran M. The association between age at menarche and depression: A systematic review and meta-analysis with meta-regression. *Clinics* 2025;80:100695. https://doi.org/10.1016/j.clinsp.2025.100695
+- Güllich A, Barth M. Effects of early talent promotion on junior and senior performance: A systematic review and meta-analysis. *Sports Medicine* 2024;54:697–710. https://doi.org/10.1007/s40279-023-01957-3
+- Güllich A, Macnamara BN, Hambrick DZ. What makes a champion? Early multidisciplinary practice, not early specialization, predicts world-class performance. *Perspectives on Psychological Science* 2022;17(1):6–29. https://doi.org/10.1177/1745691620974772 (abstract read)
+- Haddad ADM, Harrison F, Norman T, Lau JYF. Adolescent and adult risk-taking in virtual social contexts. *Frontiers in Psychology* 2014;5:1476. https://doi.org/10.3389/fpsyg.2014.01476
+- Lloyd RS, Cronin JB, Faigenbaum AD, Haff GG, Howard R, Kraemer WJ, Micheli LJ, Myer GD, Oliver JL. National Strength and Conditioning Association position statement on long-term athletic development. *Journal of Strength and Conditioning Research* 2016;30(6):1491–1509. https://doi.org/10.1519/JSC.0000000000001387 (consensus)
+- Lorenz C, Kray J. Explore with me: Peer observation decreases risk-taking but increases exploration tendencies across adolescence. *Journal of Youth and Adolescence* 2022;51(9):1693–1707. https://doi.org/10.1007/s10964-022-01608-2
+- Macnamara BN, Moreau D, Hambrick DZ. The relationship between deliberate practice and performance in sports: A meta-analysis. *Perspectives on Psychological Science* 2016;11(3):333–350. https://doi.org/10.1177/1745691616635591 (abstract read)
+- Paruthi S, Brooks LJ, D'Ambrosio C, Hall WA, Kotagal S, Lloyd RM, Malow BA, Maski K, Nichols C, Quan SF, Rosen CL, Troester MM, Wise MS. Recommended amount of sleep for pediatric populations: A consensus statement of the American Academy of Sleep Medicine. *Journal of Clinical Sleep Medicine* 2016;12(6):785–786. https://doi.org/10.5664/jcsm.5866 (consensus)
+- Sanchis-Sanchis A, Grau MD, Moliner AR, Morales-Murillo CP. Effects of age and gender in emotion regulation of children and adolescents. *Frontiers in Psychology* 2020;11:946. https://doi.org/10.3389/fpsyg.2020.00946 (abstract read)
+- Smith KL, Weir PL, Till K, Romann M, Cobley S. Relative age effects across and within female sport contexts: A systematic review and meta-analysis. *Sports Medicine* 2018;48(6):1451–1478. https://doi.org/10.1007/s40279-018-0890-8 (abstract read)
+- Stambulova NB, Ryba TV, Henriksen K. Career development and transitions of athletes: the International Society of Sport Psychology Position Stand Revisited. *International Journal of Sport and Exercise Psychology* 2021;19(4):524–550 (online 10 March 2020). https://doi.org/10.1080/1612197X.2020.1737836 (consensus)
+- Tervo-Clemmens B, Calabro FJ, Parr AC, Fedor J, Foran W, Luna B. A canonical trajectory of executive function maturation from adolescence to adulthood. *Nature Communications* 2023;14:6922. https://doi.org/10.1038/s41467-023-42540-8
+- Watson NF, Badr MS, Belenky G, Bliwise DL, Buxton OM, Buysse D, Dinges DF, Gangwisch J, Grandner MA, Kushida C, Malhotra RK, Martin JL, Patel SR, Quan SF, Tasali E. Recommended amount of sleep for a healthy adult: A joint consensus statement of the American Academy of Sleep Medicine and Sleep Research Society. *Sleep* 2015;38(6):843–844. https://doi.org/10.5665/sleep.4716 (consensus)
+
+## Unsure list
+
+# SP2 unsure list
+
+1. Section 9: Güllich et al. (2022) and Macnamara et al. (2016) were read in abstract on the APS journal pages, which showed title and journal only; authors, volume, pages and DOI are from the packet's Crossref list. The "moderate" grade for multi-sport practice was set without seeing the meta-analysis's intervals or study-quality ratings.
+2. Section 7: the ISSP position stand (Stambulova et al.) page did not display the author list, journal name, volume or issue; the entry gives "Stambulova NB, et al." from a repository record and the journal from the DOI prefix. Its account of a 126-study review (Park et al.) is cited as the stand reports it; the review was not opened.
+3. Sections 1, 2, 8, 9, 10: the IOC statement (Bergeron et al., 2015) page did not display its title or authors; those come from the packet. The 8.5–9.5 h figure rests on a reference (its ref. 43) not opened.
+4. Section 3: relative age rests on one meta-analysis in female sport, abstract only (Smith et al., 2018; pages not shown); Cobley et al. (2009) could not be opened, so nothing is said about the size of the effect in male sport.
+5. Section 4: the "25" claim was examined without Somerville (2016) or Sawyer et al. (2018), neither of which could be opened; Arain et al. (2013) was read in abstract only. The unit says the claim does not hold for the measures opened and cannot be settled for others.
+6. Section 8: Paruthi et al. (2016) and Watson et al. (2015) were read on PubMed Central copies, not the publishers' pages; the athlete sleep consensus (Walsh et al., 2021) could not be opened.
+7. Section 2: no source on pubertal timing and self-image or body image could be opened; the mood evidence is one meta-analysis in girls and women, not athletes (Ghadirzadeh et al., 2025).
+8. Section 6: emotion regulation rests on one cross-sectional self-report study of 9- to 16-year-olds read in abstract (Sanchis-Sanchis et al., 2020); nothing was opened for 16 to 25.
+9. Section 1: the NSCA statement's DOI is not printed on the page opened; it is taken from a search result pairing that DOI with the statement's PubMed record.
+10. Deliverable: the grade for "girls often outscore boys on peak power until about 12" rests on the IOC statement's summary of growth studies that were not opened; graded weak by rule 5 as studies outside the athlete populations in question.
+
+Object: none
+
+Fresh check 2026-11-17 (claude-opus-5-5): fix · 0 errors, 10 should-fix, 8 minor; report `audits/sport-psychology/fresh-check-SP2.md`
