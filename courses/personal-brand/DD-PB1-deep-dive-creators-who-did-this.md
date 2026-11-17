@@ -396,3 +396,5 @@ Copy this and fill each blank. Every blank you cannot fill from a page you opene
 Erratum 14 Nov 2026, Audit 4 (the final audit, a full read of the course; Fable 5.2, row F-PB): 2 exact replacements applied, A4-12, A4-18; each is quoted with its source in `audits/personal-brand/audit-4.md`.
 
 Erratum 15 Nov 2026, Audit 3 (stratified-sample audit; Fable 5.2, row F-PB): 9 exact replacements applied, DD-PB1-1, DD-PB1-2, DD-PB1-3, DD-PB1-4, DD-PB1-5, DD-PB1-6, DD-PB1-7, DD-PB1-8, DD-PB1-9; each is quoted with its source in `audits/personal-brand/audit-3.md`.
+
+Figure note 2026-11-17 (P84, row H-4): figure 2's span is labelled "Anderson: channel and pilot job, Sep 2016–Mar 2020" (it read "Anderson: pilot job", as if the bar were the job alone), and every span is now drawn on the axis with its years. Prose unchanged; re-checked by fresh Opus 5.5 agents (`kit/reviews/p84/`).

@@ -16,7 +16,7 @@ BAR = 'PERSONAL BRAND'
 BRAND_HTML = 'PERSONAL <span>/</span> BRAND'
 OUT = 'personal-brand.html'
 THEME_KEY = 'personal-brand-theme'
-VERSION = 'v16 · 15 Nov 2026'
+VERSION = 'v16.1 · 17 Nov 2026'
 LEARN_C, BUILD_C = 'var(--teal)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -164,6 +164,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-17 12:00', "v16.1. P84 and P109 (row H-4): every timeline span is drawn on the axis with its years (DD-PB1 figure 2, its span relabelled 'Anderson: channel and pilot job, Sep 2016–Mar 2020'); PB8 figure 4 fits its desktop frame and every matrix's keys sit under its frame; DD-PB2 figure 1's ads cell reads '0 until both thresholds met'. Re-checked by fresh Opus 5.5 agents (kit/reviews/p84/, kit/reviews/p109/); prose unchanged."),
     ('2026-11-15 14:00', "v16. Correction P107 (row W-BW1, step 1b): Decreto-Lei 109-G/2021, art. 5, in force since 28 May 2022, rewrote art. 19 of Decreto-Lei 57/2008; PB8 register line A3 now gives art. 19(1) with its third authority and art. 19(3)'s proviso, read on the Procuradoria-Geral Distrital de Lisboa consolidated text to Lei 10/2023, and Sources cites it and the amending act in place of the Banco de Portugal copy; checked by Opus 5.5 (audits/personal-brand/corrections-2026-11-15-P107.md), dated note in PB8's Unsure list."),
     ('2026-11-15 12:00', "v15. Audits 1 to 4 run on Fable 5.2 (row F-PB, in two parts, 14 and 15 Nov 2026): every unit PASS, 712 claims checked, 32 FAIL, none STALE, no full audit, no REWRITE; 103 errata applied across the twelve units, each with a dated note; 17 flags, 16 raised as F87 to F100; the final audit finds the course delivers its goal, its faults seam work between units."),
     ('2026-11-14 02:30', "v14. DD-PB2 Deep dive: the quit-your-job math written (Opus 5.5, own agent context, search off; row W-DD-PB2, P31), fresh-checked by Opus 5.5 in a separate context (fix, 1 error, 4 should-fix, 8 minor; all applied), its four figures passed, and filed: reading page, DD-PB2 marked written; the course's twelve units are written; Mara's register gains her household, floor, runway and threshold model; the nineteen flags it was given carried, F81 to F86 raised; no source error, no filed unit needed a correction. Writer's Object line: Object: none."),

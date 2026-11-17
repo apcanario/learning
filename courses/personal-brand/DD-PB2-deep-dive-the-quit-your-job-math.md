@@ -399,3 +399,5 @@ For each path you consider (a full exit carried by the account; a full exit carr
 Erratum 15 Nov 2026, Audit 3 (stratified-sample audit; Fable 5.2, row F-PB): 7 exact replacements applied, DD-PB2-1, DD-PB2-2, DD-PB2-3, DD-PB2-4, DD-PB2-6, DD-PB2-7, DD-PB2-8; each is quoted with its source in `audits/personal-brand/audit-3.md`.
 
 Erratum 15 Nov 2026, held errata of Audits 1 to 4 worked by the chat (Opus 5.5, row F-PB part 2, each checked at source): 2 exact replacements applied, C-15 (DD-PB2-9), C-16 (DD-PB2-9); listed in `audits/personal-brand/f-pb/chat/errata.json`.
+
+Figure note 2026-11-17 (P109, row H-4): figure 1's YouTube ads cell reads "0 until both thresholds met" (it named an RPM the text never uses), and its caption says what the untinted cells are. Prose unchanged; re-checked by a fresh Opus 5.5 agent (`kit/reviews/p84/`).

@@ -18,7 +18,7 @@ BAR = 'USER EXPERIENCE'
 BRAND_HTML = 'USER <span>/</span> EXPERIENCE'
 OUT = 'user-experience-courses.html'
 THEME_KEY = 'ux-theme'
-VERSION = 'v19 · 12 Nov 2026'
+VERSION = 'v20 · 17 Nov 2026'
 LEARN_C, BUILD_C = 'var(--blue)', 'var(--orange)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -173,6 +173,7 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-17 12:00', "v20. P84 and P109 (row H-4): a matrix's keys sit under its frame, so they never scroll or fade on a phone; one up to 15% wider than 700 units scales to the desktop column and a wider one keeps its row labels pinned; IA1 figure 4's 'help, download' cell has its key; IA3 figure 4, IA4 figure 8 and IA6 figure 5 no longer name the renderer's tones in keys or captions. Re-checked by fresh Opus 5.5 agents (kit/reviews/p84/, kit/reviews/p109/); prose unchanged."),
     ('2026-11-12 15:30', "v19. P98 (row W-PB5, step 1b): figure finishes. A bars figure's phone drawing is 258 units, drawn at its own size on a 320 px phone; a compare's value sits wholly on its track or wholly beyond its end. IA6 figure 3 prints 8, 3, 2 and 1 (its decimals dropped). Six changed figures (DD-IA2 1 and 4, IA10 1, IA11 2, IA4 2, IA6 3) re-checked by a fresh Opus 5.5 agent at 320, 390 and 1280 px, dark and light: all pass (kit/reviews/p98/)."),
     ('2026-11-10 22:55', "v18. DD-IA3 Deep dive: taxonomy and governance at scale written (Opus 5.5, isolated agent context, P31; search off, the standards and the published practice of GOV.UK, eBay and Shopify verified and dated), fresh-checked by a separate Fable 5.2 agent (fix, 3 errors, 8 should-fix, 5 minor; all applied as verified) and filed: reading page under course IA, DD-IA3 marked written, six figures in the course notation, all passed the fresh check; the deliverable is the Perqo governance model, the taxonomy change-request process and the twenty-term controlled-vocabulary starter, with DL-023 to DL-026, proposed; the Perqo register gains DD-IA3's facts; no relief (the text names no object as the vocabulary's sign); the course's fifteen units are written."),
     ('2026-11-10 20:05', "v17. DD-IA2 Deep dive: what IA costs and returns written (Opus 5.5, isolated agent context, P31; search on, every published figure with its source, sample, date and label, read 10 Nov 2026), fresh-checked by a separate Fable 5.2 agent (fix, 2 errors, 11 should-fix, 7 minor; all applied as verified) and filed: reading page under course IA, DD-IA2 marked written, six figures in the course notation (figures 3 to 6 passed the fresh check; figures 1 and 2, changed by its findings, passed their fourth check, each by a separate re-checker); the evidence register RD-16 to RD-31, the measurement model of fifteen metrics (M-12 to M-19 new), the business-case template and the case filled for Perqo Admin, with DL-021 and DL-022, proposed; the Perqo register gains DD-IA2's facts; no relief (its object, the business case, is a document's argument no outline draws); next unit DD-IA3; Audit 4 at 2 of 3."),

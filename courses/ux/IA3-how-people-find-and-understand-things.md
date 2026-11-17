@@ -376,3 +376,5 @@ The as-is sitemap, in the notation: square-cornered boxes with type tags, every 
 - Bates 1989: volume, issue and pages (13(5), 407 to 424) confirmed from a bibliographic record at the fresh check.
 - Rosch and others 1976: the furniture, chair, kitchen chair example is in the paper's Table 1, confirmed at the fresh check.
 - Fresh check 2026-11-03 (Fable 5.1): keep · 0 errors, 2 should-fix, 6 minor; all applied (A2's list and two wordings adjusted, as the report's maintainer's note says); figure 5 fixed after two FIX re-checks and passed its third; figures 1 to 4 passed; report `audits/ux/fresh-check-IA3.md`
+
+Figure note 2026-11-17 (P109, row H-4): figure 4's caption no longer names the renderer's tones; it says what the 'covered' and 'may look here' cells mean, as their keys do. Prose unchanged; re-checked by a fresh Opus 5.5 agent (`kit/reviews/p84/`).
