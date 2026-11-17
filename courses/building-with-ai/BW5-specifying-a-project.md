@@ -210,7 +210,7 @@ A spec that can never change is wrong by the third unit; a spec that changes whe
 }
 ```
 
-**Choosing the boundary.** Too rarely, and the work runs on a spec everyone knows is wrong; too often, and the review costs more than the units. Academy runs a sample audit every four units (Academy case file §2), which gives a natural boundary. The case file records the method's backlog and proposal rules; it does not record a separate flag mechanism, how often the spec of a course changed, or at which points it was reviewed.
+**Choosing the boundary.** Too rarely, and the work runs on a spec everyone knows is wrong; too often, and the review costs more than the units. The method of Academy sets a sample audit every four units (Academy case file §2), a natural boundary; audits 3 onward had not run at 11 Nov 2026, and on 15 Nov 2026 the owner retired the four-unit audit (§9). Beside the method's backlog and proposal rules, the case file records a flag mechanism for this course: a chat that writes a unit raises a flag for each contradiction between units or briefs and each need the syllabus does not meet, and a flag that would change a brief waits for a syllabus review that the owner confirms, with no fixed date set; at 16 Nov 2026 none of 34 flags had been resolved by such a review (§2). It records syllabus reviews on 3 Nov 2026 (the UX course) and 17 Nov 2026 (this course) (§2), and not how often the spec of a course changed.
 
 ## 10 · The Academy case's method, as the worked example
 
@@ -238,7 +238,7 @@ Every element of §2 to §9 appears in one project's method. This section reads 
 - **One context per unit.** Each unit is written in a new chat or a fresh agent context that sees only its brief and the units already filed; the stated reason is that leaked context is how a course starts repeating itself (§2).
 - **The writer's own pass** against the sourcing checklist, with up to ten claims it could not verify listed (§2).
 - **A fresh check.** A separate context that has not seen the unit written checks every cited claim against its source and the deliverable against the brief, writes findings graded error, should-fix and minor, and never edits; a maintainer verifies each finding and applies it as an exact replacement (§2). Anthropic gives the same reason for separate review: "A fresh context improves code review since Claude won't be biased toward code it just wrote" (*Best practices for Claude Code*, read 15 Nov 2026; vendor).
-- **A sample audit every four units**: one claim drawn from every section of each unit and checked; a unit with more than one sampled claim in ten failing is audited in full (§2). How to set your own threshold is BW6's subject.
+- **A sample audit every four units**: one claim drawn from every section of each unit and checked; a unit with more than one sampled claim in ten failing is audited in full (§2). On 15 Nov 2026 the owner retired the four-unit audit, leaving the fresh check and the staleness check as the guards (§9). How to set your own threshold is BW6's subject.
 - **A staleness check** six months after any unit written with live search (§2).
 - **A backlog and a changelog**, with proposals held until confirmed (§2; this unit's §7 and §8).
 
@@ -387,7 +387,7 @@ Row formats are this unit's proposal; the rules are the case's (§2).
     records/changelog.md
     | Date | Row | Model | Result in one line |
 
-The case file records proposals and the backlog-to-changelog move; it does not record a flag mechanism, so the Flags section is this unit's proposal.
+The case file records proposals and the backlog-to-changelog move, and for this course flags raised for each contradiction between units or briefs and each need the syllabus does not meet, a flag that would change a brief waiting for a syllabus review the owner confirms (§2); the Flags section's place in the backlog and its row format are this unit's proposal.
 
 ### Part 2 · Templates for your project
 
@@ -538,3 +538,7 @@ Object: none
 Fresh check 2026-11-15 (Opus 5.5): fix · 1 errors, 5 should-fix, 12 minor; 17 applied, 1 held (f18, the 1c reader line: the maintainer's call, held); report `audits/building-with-ai/fresh-check-BW5.md`
 
 Correction 17 Nov 2026 (CP-4), found by W-SP1, each change checked by a fresh Opus 5.5 agent against case-academy.md
+
+Correction 17 Nov 2026 (CP-5), found by the flag F124 pass and checked by a fresh Opus 5.5 agent against the Academy case file; report audits/building-with-ai/corrections-2026-11-17-CP5-BW5-BW7-BW8-DD-BW2-DD-BW3.md.
+
+Correction 17 Nov 2026 (CP-5, second pass), found by the flag F124 pass and checked by a fresh Opus 5.5 agent against the Academy case file; report audits/building-with-ai/corrections-2026-11-17-CP5b-BW5-BW7.md.

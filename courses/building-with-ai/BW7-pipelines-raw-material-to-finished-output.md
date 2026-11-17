@@ -253,7 +253,7 @@ Two limits. The OpenAI and Google pages are developer documentation for code tha
 
 Three parts. Part 1 is the Academy case's pipeline, written as a procedure you could run: numbered steps, each with its input, output, model, gate, done-when lines, a re-run rule and a log line. Part 2 is a short second pipeline on neutral material, interview notes to a report, a summary and an email, whose content is invented and labelled so. Part 3 is the template for your project. BW8 turns one stage in this form into a skill and schedules a different, date-driven check; BW9 decides which of its steps an agent may take.
 
-Conventions, as in BW3 to BW6. Every fact about Academy comes from the Academy case file and is cited by section; where the case file holds no value, the cell says `[NOT IN CASE FILE: …]`, a blank for the project's owner and never a claim. Anything marked **(proposal)** is this unit's addition to what the case records (stated opinion, traced to the section named). File paths are this unit's naming, after BW4's Part 3 folders and BW5's `records/`; the case file names no paths. The **Model** line gives a BW2 routing-table row by tier and effort, with the model in that tier as BW2 read it on 15 Nov 2026; where BW2 has no row, it says so and names the row borrowed. Gate kinds are §3's: **code**, **model check**, **human**.
+Conventions, as in BW3 to BW6. Every fact about Academy comes from the Academy case file and is cited by section; where the case file holds no value, the cell says `[NOT IN CASE FILE: …]`, a blank for the project's owner and never a claim. Anything marked **(proposal)** is this unit's addition to what the case records (stated opinion, traced to the section named). File paths are this unit's naming, after BW4's Part 3 folders and BW5's `records/`; the paths of the case's own that the case file names (`docs/courses-index.md`, `docs/method.md`, `docs/CHANGELOG.md`, `docs/project-instructions.md`, `courses/building-with-ai/` and files under `audits/building-with-ai/`; Academy case file header, §1, §2, §5) are not used here. The **Model** line gives a BW2 routing-table row by tier and effort, with the model in that tier as BW2 read it on 15 Nov 2026; where BW2 has no row, it says so and names the row borrowed. Gate kinds are §3's: **code**, **model check**, **human**.
 
 ### Part 1 · The Academy case's pipeline
 
@@ -262,7 +262,7 @@ Conventions, as in BW3 to BW6. Every fact about Academy comes from the Academy c
 - **What it produces:** one unit of a course: a long-form report in Markdown, 2,000 to 6,000 words by guide, sources cited in place, a closing deliverable built in full (Academy case file §1).
 - **Trigger:** one backlog row; every chat works one row (§2).
 - **Stages:** 1 Packet, 2 Write, 3 Fresh check, 4 Apply findings, 5 File, 6 Build, 7 Checks, 8 Publish (§8 of this unit).
-- **Boundaries** (BW5 §9): the end of each unit's run, at step 8's gate; and every four units, at the sample audit (case file §2; audits 3 onward had not run at 11 Nov 2026, case file §9). Flags raised by any step wait for one of these.
+- **Boundaries** (BW5 §9): the end of each unit's run, at step 8's gate; and every four units, at the sample audit (case file §2; audits 3 onward had not run at 11 Nov 2026, and on 15 Nov 2026 the owner retired the four-unit audit, case file §9). Flags raised by any step wait for one of these.
 - **Run log:** `records/run-log.md`, one line per step run (§7). **(proposal;** the case file records a changelog per row, §2, and no per-step log**)**
 
 #### Step 0 · Before the run
@@ -361,7 +361,7 @@ Conventions, as in BW3 to BW6. Every fact about Academy comes from the Academy c
 
 #### Every four units · Boundary
 
-The sample audit: one claim drawn from every section of each unit and checked against its source; a unit with more than one sampled claim in ten failing is audited in full; verdicts pass, full audit, rewrite (case file §2; BW6 §5). This is the pipeline's second boundary: open flags are decided here (BW5 §9). Model: BW2 row 9, an audit against sources · large top rung · Fable 5.2, high, a model other than the writer's; the method names Fable 5.1 (case file §2).
+The sample audit: one claim drawn from every section of each unit and checked against its source; a unit with more than one sampled claim in ten failing is audited in full; verdicts pass, full audit, rewrite (case file §2; BW6 §5). This is the pipeline's second boundary: open flags are decided here (BW5 §9). Model: BW2 row 9, an audit against sources · large top rung · Fable 5.2, high, a model other than the writer's; the method names Fable 5.1 (case file §2). In the case the owner retired this audit on 15 Nov 2026, leaving the fresh check and the staleness check as the guards (case file §9).
 
 #### The run log, on the case
 
@@ -508,3 +508,7 @@ Correction 2026-11-16, found by DD-BW1's writer (corrections check `audits/build
 *Correction, 17 November 2026: changed by this course's syllabus review (BW-1, row S-BW) after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md); see the course's changelog for what changed.*
 
 Correction 17 Nov 2026 (CP-4), found by W-SP1, each change checked by a fresh Opus 5.5 agent against case-academy.md
+
+Correction 17 Nov 2026 (CP-5), found by the flag F124 pass and checked by a fresh Opus 5.5 agent against the Academy case file; report audits/building-with-ai/corrections-2026-11-17-CP5-BW5-BW7-BW8-DD-BW2-DD-BW3.md.
+
+Correction 17 Nov 2026 (CP-5, second pass), found by the flag F124 pass and checked by a fresh Opus 5.5 agent against the Academy case file; report audits/building-with-ai/corrections-2026-11-17-CP5b-BW5-BW7.md.

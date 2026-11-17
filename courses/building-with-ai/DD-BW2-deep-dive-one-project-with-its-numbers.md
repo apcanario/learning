@@ -38,7 +38,7 @@ The method is laid out as a spec in BW5 §10 and as a pipeline in BW7 §8; this 
 1. **The fresh check became a rule after a failure.** The first three marketing units were written from one research report produced by research agents across five tracks, without a fresh check; Audit 1 sent them to rewrite, and "from then on every unit of that family got a fresh check before filing" (§3). The first AI unit predates the rule (§5).
 2. **Three checker models ran the fresh check:** Fable 5.1 on 19 drafts, Opus 5.5 on 12, Fable 5.2 on 5 (§5, by count of its table). The method names Fable 5.1 as the auditing model (§2); it names no model for the fresh check.
 3. **The figure rule changed.** At first a figure that failed its check three times was dropped, and two were; the owner later ruled that figures are never dropped and are fixed until they pass (§6).
-4. **The applying step became an agent.** From BW7 of this course (16 Nov 2026), a separate agent, the applier, running Opus 5.5, applied the fresh check's findings and could add companion edits a finding implies; writer, checker, applier, filer and corrections checker were each a fresh agent (§2, note). For the 36 units of §5's table the findings were verified and applied by the chat that orchestrated and filed the row, recorded as "the maintainer", on Opus 5.5 except in three rows (Fable 5.1 in two UX rows, Fable 5.2 in one) (§2, added 17 Nov 2026).
+4. **The applying step became an agent.** From BW1 of this course (15 Nov 2026), a separate Opus 5.5 agent, the applier, applied the fresh check's findings (§2, added 17 Nov 2026); BW7's row record (16 Nov 2026) adds that it could add companion edits a finding implies, and that writer, checker, applier, filer and corrections checker were each a fresh agent (§2, note). For the 36 units of §5's table the findings were verified and applied by the chat that orchestrated and filed the row, recorded as "the maintainer", on Opus 5.5 except in three rows (Fable 5.1 in two UX rows, Fable 5.2 in one) (§2, added 17 Nov 2026).
 5. **A thinner main chat was asked for and not run.** For BW10 and for DD-BW1, the row's prompt asked for a main chat on a smaller model (Sonnet 5.5) that only staged packets, filed and recorded; both sessions ran Opus 5.5 and were recorded as such (§2, notes). DD-BW1's row was the second of three rows run in one main chat (§2, note).
 6. **Checks were added.** A script now checks this course's data folder against a list of private terms, and its fresh checker checks each unit against the same list (§7, note); the script that fails the build on a private term in a public course was added on 11–12 Nov 2026, when the two public courses were created, after the structure audit of 29 Oct 2026 that found private terms in a public build (§7, added 17 Nov 2026). A script also checks the course index after each filing chat and restores every file if the check fails (§1, note).
 
@@ -130,7 +130,7 @@ The sampling arithmetic for both audits is in BW6 §5 and §7; this section give
 
 **Audit 2** covered four units: 28 claims sampled, 96 checked in all. No sampled claim failed; one incidental claim outside the sample failed, a miscited caption. Ten claims were stale, all in one unit and from one cause: an independent benchmark published a new index version the day before the unit read its leaderboard. All four units passed, and 26 errata were applied the same day (§4).
 
-*What it led to.* Errata, the same day (§4). The case file records no change of method after Audit 2. Audit 2 ran on 29 Oct 2026, on Fable 5.1 with live search, in its own agent context that had not seen the writing, over four units, three of the AI course and one of the marketing course; 3 of the ten stale claims were among the 28 sampled and 7 were found beyond the sample, and the decision rule was applied to the sample only (§4, added 17 Nov 2026).
+*What it led to.* Errata, the same day (§4). The case file ties no change of method to Audit 2. Audit 2 ran on 29 Oct 2026, on Fable 5.1 with live search, in its own agent context that had not seen the writing, over four units, three of the AI course and one of the marketing course; 3 of the ten stale claims were among the 28 sampled and 7 were found beyond the sample, and the decision rule was applied to the sample only (§4, added 17 Nov 2026).
 
 **What did not happen.** Audits 3 onward of the marketing, AI and UX courses had not run at 11 November 2026 (§9). The method calls for an audit every four units (§2); the three courses together had 37 units at that date (§1), so, on this unit's reading of the method's schedule (the case file does not say whether it counts units per course or across courses), more audits were due than had run. The record gives the order of events, not a cause: after Audit 2, Audits 3 to 6 of the marketing and AI courses were recorded as owed to a later stage reserved for the auditing model; an ask of 29–30 Oct 2026 records the owner low on that model's allowance and moves its check to a later row; on 15 Nov 2026 the owner closed that stage, retired the four-unit audit and left the fresh check and the staleness check as the guards (§9, added 17 Nov 2026). Two audits on eight units (four each) is the whole of the case's sample-audit evidence.
 
@@ -236,25 +236,25 @@ Three verdicts (this unit's reading, stated opinion): **supported by a count**, 
 | A spec and a build order before building (BW5) | Consistent | Every course started from a syllabus (§2). Not tested |
 | Route by tier and effort (BW2) | Silent (effort); models partly recorded | Writer and checker models recorded (§2, §5); effort not recorded (§9) |
 | The simplest setup that does the job (DD-BW1 rule 6; BW9 §2) | Silent | No lighter setup was run (§9) |
-| Guardrails on agent runs: scopes, budgets, commits (BW9 §7; DD-BW1 rule 7) | Silent | Tools, permission modes, commits and caps not recorded (§7 notes, §9) |
-| Usage rules and budgets (BW10) | Silent | No usage, token or cost measure (§7 note, §9) |
-| Never the trifecta (DD-BW1 rule 9; BW9 §8) | Silent | Which tools each agent held is not recorded (§9) |
+| Guardrails on agent runs: scopes, budgets, commits (BW9 §7; DD-BW1 rule 7) | Consistent | A checkpoint commit after every agent; caps on agents, searches and attempts on some runs; writers' and page checkers' tool use checked by script where transcripts were kept (§7, added 17 Nov 2026). Not tested: permission modes and spend caps not recorded (§9) |
+| Usage rules and budgets (BW10) | Supported by a count | Usage limits stopped two sessions, three times in all, one after 18% of the auditing model's weekly allowance (§7, added 17 Nov 2026). Not tested: no usage, token or cost measure per unit (§9) |
+| Never the trifecta (DD-BW1 rule 9; BW9 §8) | Consistent | Where transcripts were kept, writers used search and fetch and no connector, memory, Projects or Artifact tool, and page checkers only read, glob and grep inside their folder; the usage-review writer alone was given the past-chat tools (§7, added 17 Nov 2026). Not tested: which tools each agent held, and any injected instruction met, not recorded (§9) |
 
 ```viz
 {
   "kind": "compare",
   "unit": "rules",
-  "max": 10,
+  "max": 11,
   "rows": [
-    {"label": "Supported by a count", "value": 10, "tone": 3},
-    {"label": "Consistent", "value": 2, "tone": 4},
-    {"label": "Silent", "value": 5, "tone": 1}
+    {"label": "Supported by a count", "value": 11, "tone": 3},
+    {"label": "Consistent", "value": 4, "tone": 4},
+    {"label": "Silent", "value": 2, "tone": 1}
   ],
   "caption": "The seventeen rules of the table in §10 of this unit by what the Academy record says about each: this unit's reading of Academy case file §2 to §9 (one project, an anecdote)."
 }
 ```
 
-Of the seventeen rules, ten are supported by a count, two are consistent with the record and five meet silence. The split is the unit's main finding, and it has a shape: the record supports the rules about checking, and is silent on the rules about cost and control. That follows from what the project chose to count. It counted errors at every check, because the method made checking a stage with a written output; it never counted hours, tokens, effort or tools, because no stage wrote them down. A record supports the rules its stages produce numbers for, and no others.
+Of the seventeen rules, eleven are supported by a count, four are consistent with the record and two meet silence. The split is the unit's main finding, and it has a shape: the record supports the rules about checking with counts from every check, and on the rules about cost and control holds incidents and batch totals, which support one (usage limits stopped sessions) and leave two more consistent with it. That follows from what the project chose to count. It counted errors at every check, because the method made checking a stage with a written output; it never counted hours or effort, or tokens and tools per unit or per agent, because no stage wrote them down; what it holds on them (limit stops, caps, batch token totals, tool use checked where transcripts were kept) comes from the changelogs and the usage review (§7, added 17 Nov 2026; §9). A record supports the rules its stages produce numbers for, and on the rest holds only what someone happened to note.
 
 ## 11 · On other tools
 
@@ -292,7 +292,7 @@ Four parts. Part 1 is the case report: the record of §1 to §9 as one form, eac
 | Checker models (fresh check) | Fable 5.1: 19; Opus 5.5: 12 plus BW1 to BW10 and DD-BW1; Fable 5.2: 5 | §5; §5 notes |
 | Audit model | Fable 5.1 for Audits 1 and 2; Fable 5.2 for the public marketing course's four audits | §2, §4 |
 | Effort settings | Not recorded | §9 |
-| Changes while running | Fresh check made a rule after Audit 1; figure rule from drop-after-three to fix-until-pass; applier agent from BW7; thin main chat asked for on two rows and not run | §3, §6, §2 notes |
+| Changes while running | Fresh check made a rule after Audit 1; figure rule from drop-after-three to fix-until-pass; applier agent from BW1 (15 Nov 2026); thin main chat asked for on two rows and not run | §3, §6, §2 notes |
 
 **C. The fresh check**
 
@@ -418,7 +418,7 @@ Rank by the count behind each change, largest first; a change you cannot tie to 
 
 ## Sources
 
-- Academy case file (`generator/data/building-with-ai/case-academy.md`), compiled 11 Nov 2026 from the project's own records, with notes of 15 and 16 Nov 2026: header, §1 to §9.
+- Academy case file (`generator/data/building-with-ai/case-academy.md`), compiled 11 Nov 2026 from the project's own records, with notes of 15 and 16 Nov 2026 and lines added 17 Nov 2026: header, §1 to §9.
 - Units of this course, pointed to by section: BW1 (Mental model), BW2 (Choosing the model and the effort), BW3 (Briefing: prompts that hold up), BW4 (Context engineering), BW5 (Specifying a project), BW6 (Research and verification), BW7 (Pipelines: raw material to finished output), BW9 (Agents), BW10 (Cost, limits, privacy), DD-BW1 (Deep dive: how the best practitioners work).
 - The course's shared preamble, its rule for figures ("a figure adds no fact"), and Academy case file §6.
 - Google. *Subagents*. Gemini CLI documentation (vendor). https://geminicli.com/docs/core/subagents/ (read 16 Nov 2026 for BW6 §8; not re-read for this unit).
@@ -435,7 +435,7 @@ This unit cites one outside page, the Gemini CLI page in §11, as BW6 §8 read i
 4. §5 and Part 2 change 4: "6 of 53 fixes held" adds BW10's 4 of 18 and DD-BW1's 2 of 35 (case file §5 notes); the notes describe the held fixes as "itself wrong" (BW10) and "itself incomplete or wrong" (DD-BW1), and the unit treats both as one count.
 5. §8 and Part 2: "205 units" is 194 at 11 Nov 2026 plus this course's 11 by 16 Nov 2026; the case file does not say whether the other courses' counts changed between those dates.
 6. §11: no vendor documentation was read for this unit (search off); the On other tools section points to BW2 §8, BW6 §8 and BW9 §10, which read the vendors' pages on 15 and 16 Nov 2026, and says no equivalent page on model-name resolution is cited in the course.
-7. §10: the three verdicts (supported, consistent, silent) and the assignment of each of the seventeen rules are this unit's reading; a different reader could count "route by tier and effort" as partly supported, which would change the split to 10, 3, 4.
+7. §10: the three verdicts (supported, consistent, silent) and the assignment of each of the seventeen rules are this unit's reading; a different reader could count "route by tier and effort" as partly supported, which would change the split to 11, 5, 1.
 8. Part 2: the grades given for changes 5, 6, 8, 9 and 10 summarise the grade the named unit gives its rule; BW7 §6's grade ("this unit's adaptation, stated opinion" of Airflow's documented practice) and BW10 §4's (no explicit grade found for the budget rule) were read in passing, not re-checked line by line.
 9. §1: "Each filed unit's reading page" rests on case file §1 (note of 16 Nov 2026, "the course's data file"); the note may cover only this course's reading pages.
 
@@ -450,3 +450,5 @@ Correction 16 Nov 2026, found by the W-DD-BW3 chat (carried proposal CP-2, flag 
 *Correction, 17 November 2026: changed by this course's syllabus review (BW-1, row S-BW) after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md); see the course's changelog for what changed.*
 
 Correction 17 Nov 2026 (CP-4), found by W-SP1, each change checked by a fresh Opus 5.5 agent against case-academy.md
+
+Correction 17 Nov 2026 (CP-5), found by the flag F124 pass and checked by a fresh Opus 5.5 agent against the Academy case file; report audits/building-with-ai/corrections-2026-11-17-CP5-BW5-BW7-BW8-DD-BW2-DD-BW3.md.
