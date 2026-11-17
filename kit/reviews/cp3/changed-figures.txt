@@ -1,0 +1,3 @@
+ux-ia/read-ia6.html figure 5 (matrix)
+ux-ia/read-dd-ia2.html figure 3 (matrix)
+ux-ia/read-dd-ia3.html figure 1 (matrix)

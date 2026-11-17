@@ -188,7 +188,7 @@ M-16 and M-19 need two records Perqo does not keep today: a find-field event and
 
 ### 3.4 · The model, drawn
 
-Figure 3 draws the model's fifteen metrics with four columns: kind, data, cadence and the rung a read reaches (IA11, section 6.4). Rows for the leading metrics are tone 5, shared, because a method serves any surface; rows read from the Help centre on perqo.com are tone 1; rows read from Admin's records are tone 4. Its legend reads "tone 5: shared: a method serves any surface", "tone 1: perqo.com: the Help centre's search" and "tone 4: Perqo Admin's records". The rows and their cells, as drawn:
+Figure 3 draws the model's fifteen metrics with four columns: kind, data, cadence and the rung a read reaches (IA11, section 6.4). Rows for the leading metrics are tone 5, shared, because a method serves any surface; rows read from the Help centre on perqo.com are tone 1; rows read from Admin's records are tone 4. Its legend reads "shared: a method serves any surface", "perqo.com: the Help centre's search" and "Admin: Perqo Admin's records". The rows and their cells, as drawn:
 
 - M-01 Success rate: leading; tree test; each FO-07 cycle; RV-11; C2 at 12, C3 at 50.
 - M-02 Directness: leading; tree test; with M-01; C2 or C3.
@@ -207,7 +207,7 @@ Figure 3 draws the model's fifteen metrics with four columns: kind, data, cadenc
 - M-19 Flow completion: lagging; Admin events; quarterly, RV-06; C5.
 
 ```viz
-{"kind": "matrix", "caption": "Measurement model: the fifteen metrics for an IA, leading (measured on a structure before release) and lagging (measured in use), with the data each is read from, its cadence and the rung a read reaches; supports the decision on what to measure, when, and how much each read can decide (section 3.4; Deliverable A). Metrics M-01 to M-11 as IA11, section 1.2 defines them; M-12 to M-14 after GOV.UK's search measures (Fraser, Sutter and Stockford, Inside GOV.UK, 2024; maker's report); M-15 to M-19 defined in section 3.2; cadence from IA9, Deliverable C, and IA10, A.2; rungs from IA11, section 6.4. Tone 5 shared: a method serves any surface; tone 1 perqo.com, the Help centre's search; tone 4 Perqo Admin's records. Perqo is fictional.", "cols": ["Kind", "Data", "Cadence", "Rung"], "rows": [
+{"kind": "matrix", "caption": "Measurement model: the fifteen metrics for an IA, leading (measured on a structure before release) and lagging (measured in use), with the data each is read from, its cadence and the rung a read reaches; supports the decision on what to measure, when, and how much each read can decide (section 3.4; Deliverable A). Metrics M-01 to M-11 as IA11, section 1.2 defines them; M-12 to M-14 after GOV.UK's search measures (Fraser, Sutter and Stockford, Inside GOV.UK, 2024; maker's report); M-15 to M-19 defined in section 3.2; cadence from IA9, Deliverable C, and IA10, A.2; rungs from IA11, section 6.4. Tone 5, keyed 'shared': a method serves any surface; tone 1, keyed 'perqo.com': the Help centre's search; tone 4, keyed 'Admin': Perqo Admin's records. Perqo is fictional.", "cols": ["Kind", "Data", "Cadence", "Rung"], "rows": [
  {"label": "M-01 Success rate", "tone": 5, "cells": ["leading", "tree test", "each FO-07 cycle; RV-11", "C2 at 12, C3 at 50"]},
  {"label": "M-02 Directness", "tone": 5, "cells": ["leading", "tree test", "with M-01", "C2 or C3"]},
  {"label": "M-03 First click", "tone": 5, "cells": ["leading", "first-click test", "each FO-07 cycle", "C2 or C3"]},
@@ -223,8 +223,10 @@ Figure 3 draws the model's fifteen metrics with four columns: kind, data, cadenc
  {"label": "M-17 Landing match", "tone": 4, "cells": ["lagging", "first actions", "quarterly, RV-06", "C5"]},
  {"label": "M-18 Overdue share", "tone": 4, "cells": ["lagging", "claim records", "quarterly, RV-06", "C5"]},
  {"label": "M-19 Flow completion", "tone": 4, "cells": ["lagging", "Admin events", "quarterly, RV-06", "C5"]}],
- "legend": [{"mark": "tone 5", "means": "shared: a method serves any surface", "tone": 5}, {"mark": "tone 1", "means": "perqo.com: the Help centre's search", "tone": 1}, {"mark": "tone 4", "means": "Perqo Admin's records", "tone": 4}]}
+ "legend": [{"mark": "shared", "means": "a method serves any surface", "tone": 5}, {"mark": "perqo.com", "means": "the Help centre's search", "tone": 1}, {"mark": "Admin", "means": "Perqo Admin's records", "tone": 4}]}
 ```
+
+*Note, 17 November 2026: this figure's key no longer prints the drawing's tone names; each swatch now names what its cells mean, and the caption and the sentence before the metric list say so (carried proposal CP-3, row S-BW; re-checked by a fresh Opus 5.5 agent from its frames). No cell changed.*
 
 ### 3.5 · What the model means for a backoffice with few users
 
