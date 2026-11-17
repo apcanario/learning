@@ -640,7 +640,10 @@ def span_lines(t):
             else:
                 cur += p_
         tail.append(cur.rstrip())
-    return (wrap(head) if head.strip() else []) + tail
+    hl = wrap(head) if head.strip() else []
+    if hl and w(hl[-1] + ' ' + tail[0]) <= SPAN_WRAP:       # round 4: the date joins the last line when both fit on it
+        hl[-1] = hl[-1] + ' ' + tail[0]; tail = tail[1:]
+    return hl + tail
 
 
 def _span_lanes(spans, x, Wd, texts=None):

@@ -85,7 +85,7 @@ PB9 sorted the lines by who opens them; PB10 reads them every quarter. For a thr
   {"label": "Instagram tools", "tone": 4, "cells": ["no threshold published", {"mark": "none", "tone": 6}, "0, unfilled"]},
   {"label": "Affiliate links", "tone": 4, "cells": ["not in year one", {"mark": "none", "tone": 6}, "0, unfilled"]},
   {"label": "Brand deals", "tone": 4, "cells": ["inbound, from 6 Jul 2027", {"mark": "none", "tone": 6}, "signed contracts only"]},
-  {"label": "Own digital product", "tone": 3, "cells": ["since 8 Jun 2027", {"mark": "her count only", "tone": 3}, "her net sales"]},
+  {"label": "Own digital product", "tone": 4, "cells": ["since 8 Jun 2027", {"mark": "her count only", "tone": 3}, "her net sales"]},
   {"label": "Physical product", "tone": 4, "cells": ["not in year one", {"mark": "none", "tone": 6}, "0, unfilled"]},
   {"label": "Paid tier", "tone": 4, "cells": ["list of about 1,613", {"mark": "none", "tone": 6}, "0, unfilled"]},
   {"label": "Services, teaching", "tone": 4, "cells": ["open, no hours", {"mark": "none", "tone": 6}, "0, unfilled"]}

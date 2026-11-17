@@ -34,6 +34,7 @@
       section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
       the scope line
    Version 6.11, 15 Nov 2026 (C1, W-BW5): a matrix carries a narrow-label drawing (svg.viz-altn, .viz-stickn) shown at 360 px and below, 4i.
+   Version 6.15, 17 Nov 2026 (P84 round 4, H-4): figure text drawn with text-rendering:geometricPrecision, 4i.
    Version 6.14, 17 Nov 2026 (P109, H-4): a matrix's keys under its frame, svg.viz-key and svg.viz-keyn; a wide matrix's label column pinned on a desktop too; a timeline up to 15% over 700 units (viz-snug) scales to the column, 4i.
    Version 6.13, 16–17 Nov 2026 (P84, H-4): a timeline span's end guides to the axis, .viz-spanend; span labels without capitals and the side label's own class, .viz-spanside, 4i.
    Version 6.12, 16 Nov 2026 (W-BW8): a matrix's narrow-label drawing (svg.viz-altn, .viz-stickn) is shown below 768 px, on every phone, 4i.
@@ -586,7 +587,7 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
    written .viz .x so they win over .viz text; nodes reuse .viz-node and .viz-nodelabel, arrowheads .viz-head. */
 .viz-wide svg{width:auto}                                                       /* a figure wider than the column keeps its size and scrolls in its frame */
 .viz-fit svg{width:auto;min-width:0}                                            /* P53: a matrix sized to its cells keeps its own width, never stretched to the column */
-.viz text{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}  /* H-2: "->" in a label stays two characters, never a drawn arrow */
+.viz text{text-rendering:geometricPrecision;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}  /* H-2: "->" in a label stays two characters, never a drawn arrow; P84 round 4: geometric precision, since Chromium cut the ascenders of a wrapped label's second line in a timeline scaled 700 to 698 (Greek 1.2 figure 3) */
 @media (min-width:768px){.viz-timeline svg[width="700"],.viz-flow svg[width="700"]{width:100%;max-width:100%}}  /* H-2: a base-width timeline or flow fits its 698 px desktop frame instead of overflowing it by 2 px under the fade */
 .viz-link{stroke:var(--muted);stroke-width:1.25;fill:none}                      /* a connector: relationship, branch, transition, step link */
 .viz-line{stroke:var(--line-2);stroke-width:1.25;fill:none}                     /* a structural line: sitemap hierarchy, lane divider, object rule */

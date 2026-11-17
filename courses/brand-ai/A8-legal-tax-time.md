@@ -255,7 +255,7 @@ Who acts on each block of lines, drawn from the owner and professional columns:
   {"label": "Tax and social security (R1–R12)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, {"mark": "acts", "tone": 2}, null, null, null, null]},
   {"label": "Employment contract (R13–R14)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "if unclear", "tone": 5}, null, null, null]},
   {"label": "Health data (R15–R16)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "optional", "tone": 5}, null, null, null]},
-  {"label": "Disclosure (R17–R18)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, null, {"mark": "label", "tone": 2}]},
+  {"label": "Disclosure (R17–R18)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "if DGC writes", "tone": 5}, null, null, {"mark": "label", "tone": 2}]},
   {"label": "Training partners (R19–R20)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "optional", "tone": 5}, null, null, null]},
   {"label": "Sponsored athletes (R21–R25)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "reviews", "tone": 1}, {"mark": "policy", "tone": 6}, {"mark": "sign", "tone": 6}, {"mark": "label", "tone": 2}]},
   {"label": "Pre-orders (R26)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "reviews", "tone": 1}, null, null, null]},
@@ -268,6 +268,7 @@ Who acts on each block of lines, drawn from the owner and professional columns:
   {"mark": "reviews", "means": "a lawyer reviews the document before first use", "tone": 1},
   {"mark": "if unclear", "means": "a lawyer only if the contract's wording is unclear", "tone": 5},
   {"mark": "optional", "means": "a lawyer only if he wants the reading confirmed", "tone": 5},
+  {"mark": "if DGC writes", "means": "a lawyer only if the DGC writes about it", "tone": 5},
   {"mark": "policy", "means": "the club states its filming and image policy", "tone": 6},
   {"mark": "sign", "means": "the holders of parental responsibilities sign the terms", "tone": 6},
   {"mark": "label", "means": "the platform's own disclosure label is used", "tone": 2},
@@ -363,4 +364,4 @@ Fresh check 2026-11-02 (Opus 5.5): fix · 2 errors, 8 should-fix, 7 minor; all a
 
 Correction 2026-11-15, found by the W-BW1 correction check (P107, second round): the consolidated text of Decreto-Lei 57/2008 that this unit cited ran only to Decreto-Lei 9/2021; its citation, in the text on art. 9 and 19 and in Sources, now points to the Procuradoria-Geral Distrital de Lisboa consolidated text to Lei 10/2023, with the amending act (art. 5 of Decreto-Lei 109-G/2021) already cited; no claim changed; report `audits/brand-ai/corrections-2026-11-15-P107-A8.md`.
 
-Figure note 2026-11-17 (P109, row H-4): figure 3's cells now take the tones of their keys (owns, confirms, reviews, if unclear, optional, policy, sign, label, enforces); before, every cell was drawn in its row's blue while its key had another tone. Its second re-check (row H-4, P84 and P109 round 2, `kit/reviews/p84/round2-group2.md`) found the Accountant's cell understated the register: the Tax and social security row's "confirms" is now "acts" (a contabilista certificado does the line or confirms it, and owns R3 and R8), as the register's Professional column gives R1 to R12. Prose unchanged; the keys now sit under the figure's frame; the figure re-checked by fresh Opus 5.5 agents (`kit/reviews/p109/`, `kit/reviews/p84/`).
+Figure note 2026-11-17 (P109, row H-4): figure 3's cells now take the tones of their keys (owns, confirms, reviews, if unclear, optional, policy, sign, label, enforces); before, every cell was drawn in its row's blue while its key had another tone. Its second re-check (row H-4, P84 and P109 round 2, `kit/reviews/p84/round2-group2.md`) found the Accountant's cell understated the register: the Tax and social security row's "confirms" is now "acts" (a contabilista certificado does the line or confirms it, and owns R3 and R8), as the register's Professional column gives R1 to R12. Its third re-check added the Disclosure row's lawyer cell, "if DGC writes" (R17: "Neither; lawyer if the DGC writes"), with its key. Prose unchanged; the keys now sit under the figure's frame; the figure re-checked by fresh Opus 5.5 agents (`kit/reviews/p109/`, `kit/reviews/p84/`).
