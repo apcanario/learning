@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **17 Nov 2026 · W-SP3 · SP3 filed.** Motivation and the climate you create: Opus 5.5 writer, separate Opus 5.5 fresh check (fix · 2 errors, 12 should-fix, 4 minor; 17 applied, 1 held), fresh re-check (0 errors, 1 should-fix, 5 minor, all applied); search off; 5 case facts, 13 flags raised, F14 and F24 carried. Academy v4 · 17 Nov 2026. 3 of 13 written; next SP4.
 - **SP1 filed (W-SP1, 17 Nov 2026).** Sport Psychology for Coaches, unit 1 of 13, search off; fresh check fix, 48 findings, 33 applied, 15 held (Hagger 2016, Vohs 2021, Ranehill 2015, Sisk 2018, Lochbaum 2022 not opened at an accepted address); 6 case facts, 11 flags, none blocking SP2; next SP2.
 - **Timelines and figure keys** (16–17 Nov 2026, row H-4, Opus 5.5): every timeline span drawn on the axis with its years, matrix keys under their figures, PB8's overflow gone, all figures re-checked to PASS; Greek 7.3's OGIS 338 timing corrected; How-it-was-built pages say the audit files are private; B4's fixes listed for Pedro (P30).
 - **Reliefs of the public courses PB and BW** (16 Nov 2026, row G-R, Sonnet 5.5 main chat, one Opus 5.5 mapping agent): both courses registered in the outline library; PB 12 pages with a relief, BW 11; three outlines added (an @ sign, a chain link, a text document); `verify.py` now checks ten outlines in use for each.
@@ -155,6 +156,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 17 Nov 2026 · Session W-SP3 · SP3 filed
+
+Row W-SP3. Main chat Sonnet 5.5, thin; writer, fresh checker, applier (two passes), re-checker and filer each a fresh claude-opus-5-5 context. SP3 · Motivation and the climate you create written with search off (about 9,000 words, 3 figures; 18 references cited, 24 opened, 11 not opened). Fresh check `audits/sport-psychology/fresh-check-SP3.md`: fix · 2 errors, 12 should-fix, 4 minor; 17 applied (some in corrected form after source verification), finding 11 held (the Mossman figure stays a range: compare cannot draw negative values). Re-check: all three figures pass; 0 errors, 1 should-fix, 5 minor, all applied (two in corrected form). Five case facts appended to the register; 13 syllabus flags raised; F14 and F24 carried; F5 (Bartholomew reviews not opened), F18 (no behavioural study of peer or coach evaluation; lead Stein, Bloom & Sabiston 2012 for SP7) and F26 (SP4 to SP10) stay open. No brief changed. No staleness row (search off). Academy v4 · 17 Nov 2026: reading page read-sp3, build-order status 'written 17 Nov', next unit SP4; course index 3 of 13 written.
 
 ## 17 Nov 2026 · Session W-SP1 · SP1 filed
 

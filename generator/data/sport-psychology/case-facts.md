@@ -58,3 +58,8 @@ First names only, so that no real person is named.
 | SP2 | Milan is in his final year of secondary school, with exams at the end of the season, in the same weeks as the academy decision. | Milan |
 | SP2 | Sara started athletics at 12. | Sara |
 | SP2 | Sara has university exam periods in January and June. | Sara |
+| SP3 | Dani's coach was observed in one 90-minute club session of the 18-athlete squad, scored by a colleague; the counts in the climate self-audit (Dani's column) are invented. | Dani |
+| SP3 | Milan's coach was observed in one 90-minute academy training session of 20 players; the counts in Milan's column of the self-audit are invented, including one threat about selection and two public comparisons. | Milan |
+| SP3 | Sara's coach was observed in one 75-minute track session of the group of six; the counts in Sara's column of the self-audit are invented, including reading out the group's times in rank order three times. | Sara |
+| SP3 | Most of the exchanges Dani lost at her last competition were decided in the grip fight, before the first throw. | Dani |
+| SP3 | Sara loses most time in the third hundred metres of her 400 m. | Sara |

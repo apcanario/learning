@@ -2,7 +2,7 @@
 code: SP3
 title: Motivation and the climate you create
 course: sport-psychology · SP · Sport Psychology for Coaches
-model: claude-opus-5-5
+model: Opus 5.5
 written: 2026-11-17
 search: off
 ---
