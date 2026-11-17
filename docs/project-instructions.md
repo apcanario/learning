@@ -1,27 +1,20 @@
 # Learning · Project instructions
 
-**Reader.** One reader: Pedro, 35, Porto, ADHD; an educated adult who wants genuine depth, reads in order, on his phone, and checks the citations. The full profile is `reader.md`. Add nothing to it. Where a course's briefs name their own reader (the public courses, User Experience), that reader applies to that course.
+**Reader.** One reader: Pedro; the profile is `reader.md`, add nothing to it. Where a course's briefs name their own reader (User Experience, the public courses), that reader applies to that course.
 
-**Purpose.** This Project holds every course he runs: Personal Mythology (Greece and Rome complete), Brand + AI (A · Building a Marketable Personal Brand, B · Using AI to Build a Brand), User Experience, and the two public courses, Building a Personal Brand on Instagram and YouTube (PB, complete) and Building with AI (BW). Units are written, checked and filed here, and Academy, the one site that holds every course, kept current. `method.md` is the method. `courses-index.md` says what is written, what is next and where everything lives. Everything lives in the private repo `apcanario/learning`: `kit/` (Academy's builder `build.py`, `mdcourse.py`, `verify.py`, `deploy.sh`, `next_prompt.py`, `thin.py`, and the history courses' reports and syllabi), `design/theme.css`, `docs/` (method, index, backlog, changelog, site log), `generator/data/` (the markdown courses' data: briefs, build order), `courses/` (the vault: every filed unit), `skills/`. A chat clones it and ends with a commit and push. The Project's knowledge files are mirrors of the repo; the repo is canonical. Units are not mirrored.
+**Purpose.** Every course he runs is written, checked and filed here, and Academy, the one site that holds them all, kept current: Personal Mythology (Greece, Rome), Brand + AI (A, B), User Experience, and the public courses PB · Personal Brand, BW · Building with AI and SP · Sport Psychology for Coaches. `courses-index.md` says what is written and what is next.
 
-**Design rule.** Every page is built by `kit/build.py` from `design/theme.css`, inlined. Nothing is styled ad hoc: no page gets its own CSS. A style change goes into `theme.css`, copied to `kit/shell.css`, then Academy is rebuilt, verified and republished.
+**Repo.** The private repo `apcanario/learning` is canonical. A chat clones it and ends with a commit and push. The Project's knowledge files are mirrors of it; units are not mirrored.
 
-**Publishing.** Academy is one site: `kit/academy/`, a shell page plus one file per page → the artifact https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (read it first, publish once with its url, the shell as the page and the files `kit/publish_files.py` lists, never a new artifact, never forced, sha256 read back), then `kit/deploy.sh` → https://apcanario.github.io/academy/ (the session needs `apcanario/academy` with push access). Both, every time.
+**Method.** `method.md` is the method; follow it and the skills `write-unit`, `audit-units`, `file-unit` and `new-course`. One chat per unit (an isolated agent context counts as its own chat), models and the thin main chat: §4. Fresh check: §5. Staleness check: §6. Filing and figures: §7. Backlog and changelog: §8.
 
-**One chat per unit.** Each unit is written in its own new chat, from its brief, with its deliverable in that same chat. Never reuse a chat across units. An isolated agent context counts as its own chat (P31): one chat may run several units if each is written by a fresh agent that sees only its packet, each fresh check is a separate agent that has not seen the writing, and the chat itself only stages, files and records; the changelog row says so.
-
-**Models.** Main chat of a writing or filing row: Sonnet 5.5, thin (`method.md` Models): it never opens a unit, report or brief, stages packets with `kit/thin.py`, launches agents and reads only their short replies and stats. Writer, fresh checker, applier, filer and corrections checker: each a fresh Opus 5.5 agent. Course design and syllabus chats: Fable. Exceptions are named in the build order. Record the model that actually wrote each unit and the model the chat ran as.
-
-**Briefs.** Markdown courses: the course's Briefs page in Academy (source `generator/data/<course>/units_data.py`). Personal Mythology: the module's prompt in its syllabus, with `AGENT-SPEC.md`, `WRITER-BRIEF.md` and the module's lane note in `BACKLOG.md`. Use a brief as written; never reword it.
-
-**Output.** File each finished unit in the vault at `courses/<course>/<code>-<slug>.md` with the header in `method.md` §7. History units also go into the kit as `<course>/r-<id>.html`.
-
-**Sourcing.** Apply `sourcing-standard.md`: Part 1 to every unit, plus the course's own part. No invented citation, name, handle or number. A claim that cannot be sourced is said to be unsourced or left out.
-
-**Review.** Every unit gets an Opus 5.5 fresh check (`method.md` §5) before it is filed; its findings are applied in the same chat. The Fable stage closed on 15 Nov 2026: no periodic or stratified audit runs. Six months after any unit written with live search, run the staleness check (`method.md` §6, Opus 5.5). No new unit while a REWRITE verdict is open.
-
-**Backlog and changelog.** `docs/BACKLOG.md` is the one queue of chats; `docs/CHANGELOG.md` is the full record; `docs/site-log.md` is the plain-language source of Academy's Backlog and Changelog pages. Every chat that works a backlog row ends by: (1) marking the row done and moving it to `docs/CHANGELOG.md` with the date, the model and a one-line result, and moving its entry in `docs/site-log.md`; (2) listing every task the work uncovered as a proposal, each with what it does and a ⚠ flag on any disruption elsewhere in the project, written into the Carried proposals section of `docs/BACKLOG.md`; (3) saving the next row's prompt with `kit/next_prompt.py`, which already carries the instruction to resolve every proposal in that next chat; (4) handing the backlog to Pedro in the reply: the row just done, the proposals with their flags, the next row and its prompt; (5) refreshing the Project copies `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md`, and committing. Pedro does not confirm proposals; he vetoes. A vetoed proposal is struck from the prompt and the backlog; every other one is worked in the next chat. Nothing is done that is not a row, and no done row stays in the queue.
-
-**Tone.** Direct. No flattery, no filler, no preamble, no closing pleasantries, no motivational language.
-
-**Completeness.** A unit is written in full, with its deliverable built in full. Never outline it, summarise it or describe what it would contain.
+**Rules.**
+- **Models.** Main chat of a writing or filing row: Sonnet 5.5, thin. Writer, fresh checker, applier, filer and corrections checker: each a fresh Opus 5.5 agent. Course design and syllabus chats: Fable. Record the model that actually ran.
+- **Briefs.** Use a brief as written, from the course's Briefs page in Academy; never reword it.
+- **Completeness.** A unit is written in full, with its deliverable built in full.
+- **Sourcing.** `sourcing-standard.md` Part 1 plus the course's part. No invented citation, name, handle or number; a claim that cannot be sourced is said to be unsourced or left out.
+- **Review.** Every unit gets an Opus 5.5 fresh check before filing, its findings applied in the same chat. No new unit while a REWRITE verdict is open.
+- **Design.** Every page is built by `kit/build.py` from `design/theme.css`; no page gets its own CSS. A style change goes into `theme.css`, copied to `kit/shell.css`; then rebuild, verify, republish.
+- **Publishing.** Academy is one site, published twice every time: the artifact https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (read it first, publish once to its url, never a new artifact, never forced, sha256 read back), then `kit/deploy.sh` → https://apcanario.github.io/academy/.
+- **Backlog.** Nothing is done that is not a row of `docs/BACKLOG.md`, and no done row stays in the queue; close every row by §8. Pedro does not confirm proposals; he vetoes.
+- **Tone.** Direct. No flattery, no filler, no preamble, no closing pleasantries, no motivational language.
