@@ -44,4 +44,9 @@ First names only, so that no real person is named.
 
 | Unit | Fact | Athlete |
 |---|---|---|
-| — | none yet | — |
+| SP1 | Milan's coach has been told at a coaching clinic that a power pose before competing raises confidence and performance. | Milan |
+| SP1 | Sara has read that the brain finishes developing at 25 and has told her coach she "isn't finished yet". | Sara |
+| SP1 | Dani's coach says shouting in training makes his judoka tougher. | Dani |
+| SP1 | Milan's academy has medical staff to whom a coach can refer. | Milan |
+| SP1 | Sara's university has a student health or counselling service. | Sara |
+| SP1 | Dani's club names a person for medical concerns and a welfare or safeguarding officer. | Dani |

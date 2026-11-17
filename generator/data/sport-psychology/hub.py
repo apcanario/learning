@@ -17,7 +17,7 @@ BAR = 'SPORT PSYCHOLOGY'
 BRAND_HTML = 'SPORT PSYCHOLOGY <span>/</span> FOR COACHES'
 OUT = 'sport-psychology.html'
 THEME_KEY = 'sport-psychology-theme'
-VERSION = 'v1 · 16 Nov 2026'
+VERSION = 'v2 · 17 Nov 2026'
 LEARN_C, BUILD_C = 'var(--orange)', 'var(--gold)'
 
 # ---- units -----------------------------------------------------------------------------
@@ -38,7 +38,9 @@ COURSE_NOTE = 'Every unit is sourced to consensus statements, meta-analyses and 
 
 # ---- written material (reading pages) ---------------------------------------------------
 # A unit is written when its file is in the vault, courses/sport-psychology/ (A5); kit/build.py derives WRITTEN from it.
-READINGS = []
+READINGS = [
+    dict(id='read-sp1', course='SP', title='What a coach can do, and how to tell evidence from noise', covers=['SP1'], name='SP1 · What a coach can do, and how to tell evidence from noise', intro="The course's first unit. It sets out what sport psychology is and who may practise it, the coach's part and where it ends, the kinds of evidence and how to read a study in plain words, what the reviews say about psychology and performance, four cautionary cases from the replication record, the popular claims coaches hear set against their evidence, the five evidence grades that every later unit uses, and five questions to ask of any claim. Its deliverable is a scope-of-practice card, a claim-check sheet and the grade key, each worked on the three fictional athletes and then given as a template. How it was made: written on 17 Nov 2026 by Opus 5.5 with web search off, citing only sources opened in the writing session, then checked by a separate Opus 5.5 context that had not seen the writing (verdict: fix; 48 findings: 2 errors, 30 should-fix, 16 minor). 33 findings were applied and 15 held; in place of the held ego-depletion error, a set of fallback fixes removed the opinion article the case had rested on. Known gaps. (1) References named in the unit or in the writer's notes that the writer did not open, and on which no claim rests: the Delphi study on the coach's role in athlete mental health (Bissett et al., 2020); the 2022 review of sport psychology meta-analyses (Lochbaum et al., 2022), so the unit says nothing on how far psychological variables relate to performance; the original power-posing study and its replication (Ranehill et al., 2015); the two ego-depletion replications (Hagger et al., 2016; Vohs et al., 2021); the grit meta-analysis (Credé et al., 2017); the growth-mindset meta-analyses (Sisk et al., 2018); the reviews on controlling coaching (Bartholomew et al., 2009 and 2011; Fletcher and Sarkar, 2016); Wegner's papers on ironic effects (1994, 1998) and Woodman et al. (2015); Somerville (2016) and Güllich et al. (2022). (2) Claims read from an abstract or summary only: the IOC mental health tools (Gouttebarge et al., 2021), the intervention meta-analysis of Brown and Fletcher (2017), the deliberate-practice meta-analysis (Macnamara et al., 2016), the mental toughness review (Lin et al., 2017), the triune-brain review (Steffen et al., 2022) and the neuro-linguistic programming review (Sturt et al., 2012); the facial-expression review (Barrett et al., 2019) from the publisher's summary page only; the early-specialisation meta-analysis (Güllich and Barth, 2024) from its abstract and parts of the full text; the imagery EEG study (Mustile et al., 2024) from its abstract and methods. (3) 15 fixes from the check are held, because each needed a reference that could not be opened at its publisher's page, an index or a DOI address in the fixing session (search returned only repository copies or press releases, a redirect that may not be followed, or a blocked page), and no fix may rest on a source that was not opened: six on ego depletion (Hagger et al., 2016; Vohs et al., 2021), six on the power-posing replication (Ranehill et al., 2015), two on the size of growth-mindset effects (Sisk et al., 2018) and one on psychological variables and performance (Lochbaum et al., 2022). They will be applied when those references are opened at their publishers' pages. (4) Ego depletion carries no grade: no source of an accepted type on the replications was opened, so the grade key's contested row has no worked example. (5) The unit runs to about 7,000 words before its Sources, over the brief's length guide; it is kept at that length because the topic needs it: the scope line, the grades and the claim checks are what every later unit builds on."),
+]
 
 # ---- build order -----------------------------------------------------------------------
 DONE_ROWS = []
@@ -46,8 +48,8 @@ ORDER = [("SP1", "Opus 5.5", "off"), ("SP2", "Opus 5.5", "off"), ("SP3", "Opus 5
          ("SP5", "Opus 5.5", "off"), ("SP6", "Opus 5.5", "off"), ("SP7", "Opus 5.5", "off"), ("SP8", "Opus 5.5", "off"),
          ("SP9", "Opus 5.5", "on"), ("SP10", "Opus 5.5", "off"), ("DD-SP1", "Opus 5.5", "on"), ("DD-SP2", "Opus 5.5", "on"),
          ("DD-SP3", "Opus 5.5", "off")]
-STATUS = {}          # unit code -> status text in the build-order table once filed
-NEXT_UNIT = 'SP1'
+STATUS = {'SP1': 'written 17 Nov'}          # unit code -> status text in the build-order table once filed
+NEXT_UNIT = 'SP2'
 
 # ---- prose blocks (theme classes only) ---------------------------------------------------
 HOME_H1 = 'Sport Psychology for Coaches'
@@ -116,5 +118,6 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
+    ('2026-11-17 13:57', 'v2. SP1 filed (row W-SP1): What a coach can do, and how to tell evidence from noise, written by Opus 5.5 with search off. Fresh check by a separate Opus 5.5 context: fix, 48 findings (2 errors, 30 should-fix, 16 minor); 33 applied and 15 held for want of an opened source, with fallback fixes in place of the held ego-depletion error; ego depletion carries no grade. Six case facts added to the register; 11 syllabus flags raised, none blocking SP2. 1 of 13 written. Next: SP2.'),
     ('2026-11-16 19:30', "v1. Course created (new-course skill; row S-SP0): frame, goal and three outcomes, 13 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the fictional case register, a seed bibliography of 97 references checked for existence, the syllabus-flags file. No unit written."),
 ]

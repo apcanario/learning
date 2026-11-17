@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **SP1 filed (W-SP1, 17 Nov 2026).** Sport Psychology for Coaches, unit 1 of 13, search off; fresh check fix, 48 findings, 33 applied, 15 held (Hagger 2016, Vohs 2021, Ranehill 2015, Sisk 2018, Lochbaum 2022 not opened at an accepted address); 6 case facts, 11 flags, none blocking SP2; next SP2.
 - **Timelines and figure keys** (16–17 Nov 2026, row H-4, Opus 5.5): every timeline span drawn on the axis with its years, matrix keys under their figures, PB8's overflow gone, all figures re-checked to PASS; Greek 7.3's OGIS 338 timing corrected; How-it-was-built pages say the audit files are private; B4's fixes listed for Pedro (P30).
 - **Reliefs of the public courses PB and BW** (16 Nov 2026, row G-R, Sonnet 5.5 main chat, one Opus 5.5 mapping agent): both courses registered in the outline library; PB 12 pages with a relief, BW 11; three outlines added (an @ sign, a chain link, a text document); `verify.py` now checks ten outlines in use for each.
 - **Sport Psychology for Coaches** registered 16 Nov 2026, row S-SP0 (Opus 5.5): a markdown course of 13 units in a new Coaching track, no unit written; `thin.py` stages courses with no source units, `next_prompt.py` prints the course's rows from `docs/sport-psychology-prompts.md`; next row of the course W-SP1.
@@ -154,6 +155,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 17 Nov 2026 · Session W-SP1 · SP1 filed
+
+Row W-SP1. SP1 written by claude-opus-5-5 with search off, fresh-checked by claude-opus-5-5 (verdict fix: 2 errors, 30 should-fix, 16 minor; audits/sport-psychology/fresh-check-SP1.md). Two applier runs: 33 findings applied, fallback fixes f2b to f2b.7 applied in place of the held error f2, 15 fixes held because their reference could not be opened at a publisher, PubMed, PMC, Europe PMC or DOI address. Ego depletion ungraded. Case register: 6 facts added. Syllabus flags: 11 open, none blocking SP2. Hub v2; courses-index 1 of 13. Object: none.
 
 ## 17 Nov 2026 · Session S-BW · Syllabus review of Building with AI; CP-3
 
