@@ -122,6 +122,68 @@ def flags(r):
     return out
 
 
+QR = 'Quality review'   # a flag row whose text starts so records the quality-review rule (Pedro, 17 Nov 2026, 21:38)
+
+
+def _flag_rows(r):
+    f = (ROOT / r['c']['data']).parent / 'syllabus-flags.md'
+    out = []
+    for ln in f.read_text(encoding='utf-8').splitlines():
+        cells = [x.strip() for x in ln.strip().strip('|').split('|')]
+        if len(cells) >= 7 and re.match(r'F\d+$', cells[0]): out.append(cells)
+    return out
+
+
+def _names(aff, unit, order):
+    for a, b in re.findall(r'((?:DD-)?[A-Z]+\d+) to ((?:DD-)?[A-Z]+\d+)', aff):
+        if a in order and b in order and unit in order and order.index(a) <= order.index(unit) <= order.index(b): return True
+    return unit in re.findall(r'(?:DD-)?[A-Z]+\d+', re.sub(r'(?:DD-)?[A-Z]+\d+ to (?:DD-)?[A-Z]+\d+', '', aff))
+
+
+def quality(r):
+    """The quality-review rule (docs/public-courses.md §3 rule 13; Pedro, 17 Nov 2026, 21:38): a unit named by more than 5 flags
+    raised before it was written, or by more than 8 counting those raised before and after, is reviewed for quality. Rows whose
+    flag starts with 'Quality review' are the rule's own records and are not counted; a resolved one restarts the count after it.
+    Returns (before count for this row's unit, [(filed unit, before, total) over a threshold])."""
+    rows, order = _flag_rows(r), r['order']
+    def counts(u):
+        last = max([int(c[0][1:]) for c in rows if c[4].startswith(QR) and c[6] == 'resolved' and _names(c[3], u, order)] or [0])
+        hit = [c for c in rows if not c[4].startswith(QR) and int(c[0][1:]) > last and _names(c[3], u, order)]
+        raised = lambda c: re.match(r'(?:DD-)?[A-Z]+\d+', c[2]).group(0) if re.match(r'(?:DD-)?[A-Z]+\d+', c[2]) else ''
+        before = [c for c in hit if raised(c) in order and u in order and order.index(raised(c)) < order.index(u)]
+        return len(before), len(hit)
+    mine = counts(r['code'])[0]
+    over = []
+    for u in order:
+        if u in r['filed']:
+            b, n = counts(u)
+            if b > 5 or n > 8: over.append((u, b, n))
+    return mine, over
+
+
+def quality_text(r):
+    mine, over = quality(r)
+    code, cid = r['code'], r['c']['id'] if 'id' in r['c'] else 'sport-psychology'
+    if mine <= 5 and not over: return ''
+    s = ("**Quality-review rule** (Pedro, 17 Nov 2026, 21:38; `docs/public-courses.md` §3 rule 13): a unit named by more than 5 flags "
+         "raised before it is written, or by more than 8 counting those raised before and after, is reviewed for quality, and the rule is "
+         "recorded as a flag row whose text begins \"Quality review\" (open until the review is done, then resolved; a resolved row restarts the count). "
+         "A quality review is one fresh Agent on model opus, under step 3's agent rules, with live search, not shown the writing, any earlier check "
+         "or this chat's reasoning: it runs step 4's seven passes on the whole unit as it now stands, checks the brief and the deliverable are met "
+         "in full and every flag the unit was given is dealt with, and lists every claim it could not verify; its report is saved verbatim as "
+         "`audits/<course>/quality-review-<code>-<date>.md` before anything is applied; its findings are applied under step 1b's limits; what it "
+         "could not verify is cut or marked unverified in the unit, never left silent.")
+    if mine > 5:
+        s += (f" **{code}** is named by {mine} flags raised before it is written: after step 5 and before step 8, run that review on {code} as "
+              f"corrected, apply its findings as step 5 says, and set its \"Quality review\" flag row to resolved (add one if none is open).")
+    for u, b, n in over:
+        s += (f" **{u}** (filed) is named by {b} flags raised before it was written and {n} in all: run that review on it at step 1b, with the "
+              f"corrections, and set its \"Quality review\" flag row to resolved.")
+    s += (" At step 7, after this unit's flags are appended, count again with `python3 kit/next_prompt.py --quality`; for every unit newly over "
+          "a threshold add an open \"Quality review\" flag row, so the next prompt carries its review.")
+    return s
+
+
 def rel(p):
     return pathlib.Path(p).relative_to(ROOT).as_posix()
 
@@ -185,6 +247,10 @@ def prompt_doc(r, nxt):
     left = re.findall(r'\{[A-Z]+\}', out)
     if left:
         raise SystemExit(f'unfilled slots: {left}')
+    q = quality_text(r)
+    if q:
+        i = out.index('\n\n**3. ')
+        out = out[:i] + '\n\n' + q + out[i:]
     if 'Step 5b runs.' in part[r['row']]:          # the safety reader, for the rows whose paragraph says so (SP9, DD-SP1, DD-SP2)
         s = re.sub(r'\{([A-Z]+)\}', lambda m: slots.get(m.group(1), m.group(0)), safety)
         i = out.index('\n\n**6. ')
@@ -206,7 +272,7 @@ def prompt(r, nxt):
             else '`generator/data/building-with-ai/case-academy.md` (the Academy case file)')
     on = r['search'] == 'on'
     P = []
-    P.append(f"Clone `apcanario/learning` (attach it with add_repo, push access; one shallow clone with a generous timeout, about ten minutes; call `register_repo_root` if the session offers it; the repo has no CLAUDE.md). Row {r['row']} of `docs/BACKLOG.md`, in this chat: write, fresh-check and file unit {code}, \"{u[1]}\", of the public course {r['sc']['name']} (`kit/courses.py` entry `{cid}`: data `{rel(data)}/`, vault `{vault}/`, `docs/sourcing-standard.md` Parts 1 and {c['sourcing_part'][5:]}; search {r['search']}); correct every mistake the work finds; flag every contradiction or need that touches another unit; then build, verify, publish Academy once (the artifact, then GitHub Pages), push everything, close the row and end with the next row's prompt. Read first: `docs/public-courses.md` (the decisions and the twelve rules of these rows), `docs/method.md` §4, §5, §7 and §8, `skills/write-unit`, `skills/audit-units` §3, `skills/file-unit` and the docstring of `kit/thin.py` (the chat reads those, never a unit). {THIN_CHAT}{TRIAL if r['row'] == 'W-BW1' else ''} Commit and push after every agent returns and after every step, on `main`. If the session's permission check refuses to run the repo's own scripts after the fresh clone, stop at once, say so in one line and ask Pedro to approve; never work around it. The safety check refuses an `rm -rf` whose target is a shell variable: use a literal absolute path, or do without the removal. Where a choice is open, take the most reasonable reading, say so in the record, and carry on; ask only if genuinely blocked. Fix every error, should-fix and minor finding the work turns up in this chat; a minor whose own Fix is \"no change required\" is recorded and not applied.")
+    P.append(f"Clone `apcanario/learning` (attach it with add_repo, push access; one shallow clone with a generous timeout, about ten minutes; call `register_repo_root` if the session offers it; the repo has no CLAUDE.md). Row {r['row']} of `docs/BACKLOG.md`, in this chat: write, fresh-check and file unit {code}, \"{u[1]}\", of the public course {r['sc']['name']} (`kit/courses.py` entry `{cid}`: data `{rel(data)}/`, vault `{vault}/`, `docs/sourcing-standard.md` Parts 1 and {c['sourcing_part'][5:]}; search {r['search']}); correct every mistake the work finds; flag every contradiction or need that touches another unit; then build, verify, publish Academy once (the artifact, then GitHub Pages), push everything, close the row and end with the next row's prompt. Read first: `docs/public-courses.md` (the decisions and the thirteen rules of these rows), `docs/method.md` §4, §5, §7 and §8, `skills/write-unit`, `skills/audit-units` §3, `skills/file-unit` and the docstring of `kit/thin.py` (the chat reads those, never a unit). {THIN_CHAT}{TRIAL if r['row'] == 'W-BW1' else ''} Commit and push after every agent returns and after every step, on `main`. If the session's permission check refuses to run the repo's own scripts after the fresh clone, stop at once, say so in one line and ask Pedro to approve; never work around it. The safety check refuses an `rm -rf` whose target is a shell variable: use a literal absolute path, or do without the removal. Where a choice is open, take the most reasonable reading, say so in the record, and carry on; ask only if genuinely blocked. Fix every error, should-fix and minor finding the work turns up in this chat; a minor whose own Fix is \"no change required\" is recorded and not applied.")
     P.append("**1. Gate.** `python3 kit/next_prompt.py --list` shows this unit as the next one not filed"
              + (f" (it lists {', '.join(earlier)} as not filed: stop and say so, since the course is written in reading order)" if earlier else "")
              + ". No REWRITE verdict is open in `docs/courses-index.md`.")
@@ -273,6 +339,14 @@ def save(row, text):
 
 if __name__ == '__main__':
     rs = rows()
+    if '--quality' in sys.argv:
+        for r in rs:
+            if r['code'] in r['filed']: continue
+            mine, over = quality(r)
+            print(f"{r['code']}: {mine} flags before writing" + (' (over 5)' if mine > 5 else ''))
+            for u, b, n in over: print(f"{u}: {b} before, {n} in all (over the rule)")
+            break
+        sys.exit(0)
     if '--list' in sys.argv:
         for r in rs:
             print(f"{r['row']:10} {r['code']:7} search {r['search']:3} {'filed' if r['code'] in r['filed'] else 'not filed'}  {r['unit'][1]}")
