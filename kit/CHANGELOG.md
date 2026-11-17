@@ -163,7 +163,7 @@ One chat on Opus 5.5 (claude-opus-5-5; the row asked for Fable). Every other con
 - Units corrected, each with a dated note: BW3, BW6, BW7, BW8, BW9, DD-BW2 (`audits/building-with-ai/corrections-2026-11-17-S-BW.md`).
 - `case-academy.md`: 104 lines and 16 §9 lines from the Project's records; `syllabus-flags.md`: every sorted flag given its status and note; `docs/courses-index.md`: a note under the staleness heading.
 - CP-3: IA6 figure 5, DD-IA2 figure 3 and DD-IA3 figure 1 keys named for their cells, captions and legend sentences to match, dated notes; re-checked (`kit/reviews/cp3/`); ux hub v20.1.
-- Build, verify and publish: recorded below once done.
+- Build, `verify.py --shots` (page building-with-ai-bw-briefs, looked at on phone and desktop): ALL CHECKS PASSED. Published: artifact 1794885473-ebbd → 1794915285-48c2 (15 changed files plus the wrapped shell, one patch; the live files matched the start build on a sample of eleven and the live shell was reproduced to the byte from the start build; all 16 read back by sha256, matching); Pages: academy@11f6730, run 44075353302 success.
 
 ## 16–17 Nov 2026 · Session H-4 · Timeline spans on the axis, figure keys, OGIS 338, private audit files, B4's fixes listed
 

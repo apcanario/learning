@@ -57,8 +57,8 @@
 <p>A sample audit, as this course uses the term (stated opinion, generalised from the case's method in BW5 §10, which this unit does not restate):</p>
 <ol>
 <li><strong>List and count</strong> the checkable claims: every sentence that carries a number, a date, a named source, an attribution, a mechanism or a recommendation. Call the count N.</li>
-<li><strong>Stratify.</strong> Split the claims into groups that could fail together: the sections of a long text, the source classes of a research report, the claim types of a short piece (numbers, quotations, names, dates, links). Draw at least one claim from every stratum, then more from the largest until the sample reaches its size.</li>
-<li><strong>Draw by number, never by eye.</strong> Number the claims in each stratum and pick with a random number.</li>
+<li><strong>Stratify.</strong> Split the claims into groups that could fail together: the sections of a long text, the source classes of a research report, the claim types of a short piece (numbers, quotations, names, dates, links). Draw at least one claim from every stratum, then the rest at random from all remaining claims, so larger strata get more in proportion, until the sample reaches its size.</li>
+<li><strong>Draw by number, never by eye.</strong> Number the claims and pick each draw with a random number: within its stratum for each stratum's first claim, from all remaining claims for the rest.</li>
 <li><strong>Record the sample before opening any source</strong>, so that a claim that turns out hard to check cannot be swapped for an easy one.</li>
 <li><strong>Check each sampled claim</strong> against its source and give it one verdict: PASS, FAIL, STALE (true when written, superseded now) or UNVERIFIABLE (the source cannot be opened; drawn again from the same stratum, and the claim itself marked unsourced).</li>
 <li><strong>Let the sample decide.</strong> It is a trigger: a FAIL sends the whole text to a full check; a clean sample lets the rest stand, at a known risk.</li>
@@ -305,7 +305,7 @@
 <p><em>n</em> = ln(0.05) / ln(1 − <em>p*</em>), rounded up, for <em>p*</em> = 30%, 20%, 10%; upper bound = 1 − 0.05^(1/<em>n</em>); miss chance = 0.75ⁿ.</p>
 <ul>
 <li>[x] <strong>C1 · Census if small.</strong> If N ≤ <em>n</em>, check every claim.</li>
-<li>[x] <strong>C2 · Draw.</strong> One claim per stratum, then extra draws from the largest strata until the sample reaches <em>n</em>; within a stratum, by random number.</li>
+<li>[x] <strong>C2 · Draw.</strong> One claim per stratum, then the rest at random from all remaining claims, so larger strata get more in proportion, until the sample reaches <em>n</em>; by random number.</li>
 <li>[x] <strong>C3 · Record</strong> the sample (claim, stratum, cited source) before opening any source.</li>
 <li>[x] <strong>C4 · Verdicts.</strong> PASS · FAIL (wrong, unsupported, miscited, stretched or invented) · STALE (give the newer value and its source) · UNVERIFIABLE (draw again from the same stratum; mark the claim unsourced).</li>
 <li>[x] <strong>C5 · Decide.</strong></li>
@@ -335,7 +335,7 @@ READER: the maintainer, who verifies each finding at its source and applies it a
 
 SCOPE AND SAMPLE:
 - Tier 3 (published). Count the checkable claims: every sentence with a number, a date, a named source, an attribution, a mechanism or a recommendation. Give the count, N.
-- Check every cited claim (census). If the maintainer has set a sample instead, it is 29 claims: one per section, the deliverable as its own section, then extra draws from the largest sections, by random number.
+- Check every cited claim (census). If the maintainer has set a sample instead, it is 29 claims: one per section, the deliverable as its own section, then the rest at random from all remaining claims, so larger sections get more in proportion, by random number.
 - Before opening any source, list the claims you will check, with their section and cited source.
 - Check in full, outside any sample, every figure and citation in the deliverable.
 
@@ -472,7 +472,7 @@ TASK (again): check the unit above against its sources and its brief, and report
 READER: [FILL: who applies the findings, and how: exact replacements, or a decision to send it back].
 SCOPE AND SAMPLE:
 - Tier [FILL: 1, 2 or 3] ([FILL: why this tier]). Count the checkable claims and give N.
-- [FILL: "Check every cited claim (census)", or "Sample n = 9 / 14 / 29: one per stratum, then extra draws from the largest strata, by random number"]. Strata: [FILL: the strata from B].
+- [FILL: "Check every cited claim (census)", or "Sample n = 9 / 14 / 29: one per stratum, then the rest at random from all remaining claims, so larger strata get more in proportion, by random number"]. Strata: [FILL: the strata from B].
 - Before opening any source, list the claims you will check.
 - Check in full, outside the sample: [FILL: the claims the conclusion rests on].
 METHOD: keep steps 1 to 4 of Part 1; add to step 2 the failure kinds your own log has recorded: [FILL: from your log, or "none yet"].
@@ -558,8 +558,9 @@ TASK (again): check the text above against its sources and its brief, and report
 Object: none</li>
 </ol>
 <p>Correction 2026-11-16, found by BW9's writer (corrections check <code>audits/building-with-ai/corrections-2026-11-16-BW9-BW6-BW8.md</code>, Changes 1 to 5: the page of Best practices for Claude Code, not its older .md copy).</p>
-<p>Correction 2026-11-16 (second round), W-BW10 step 1b (<code>audits/building-with-ai/corrections-2026-11-16-BW10-r2-BW6-BW9.md</code>, Changes 1 to 3): bare page address (F70).</p><h3>Fresh check</h3><p>Fresh check 2026-11-16 (Opus 5.5): fix · 1 errors, 7 should-fix, 3 minor; 12 applied, 1 held (f11, the search flag: the build order sets it off; raised as a flag); report <code>audits/building-with-ai/fresh-check-BW6.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: verify AI-written work by sample before you trust it, and know what a clean sample proves
-Takes: B6 as source material; BW1, BW2, BW5.
+<p>Correction 2026-11-16 (second round), W-BW10 step 1b (<code>audits/building-with-ai/corrections-2026-11-16-BW10-r2-BW6-BW9.md</code>, Changes 1 to 3): bare page address (F70).</p>
+<p><em>Correction, 17 November 2026: changed by this course's syllabus review (BW-1, row S-BW) after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md); see the course's changelog for what changed.</em></p><h3>Fresh check</h3><p>Fresh check 2026-11-16 (Opus 5.5): fix · 1 errors, 7 should-fix, 3 minor; 12 applied, 1 held (f11, the search flag: the build order sets it off; raised as a flag); report <code>audits/building-with-ai/fresh-check-BW6.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: verify AI-written work by sample before you trust it, and know what a clean sample proves
+Takes: B6 as source material; BW1, BW2, BW3, BW5.
 Gives: the checker brief BW8 turns into a skill; the verifiability test BW9 uses to decide what to delegate.
 
 Unit BW6, Research and verification. Cover: when to ask directly, when to search, when to run multi-agent deep research, with the cost and time of each where a source states them; how models fail (confident, specific, wrong; stale facts presented as current; invented citations), with the studies that measured it; how to read a research report (the hierarchy of sources, vendor data, correlation against cause); why the writer of a text should not be its checker, and what a fresh context changes; the stratified-sample audit as a rule, with the arithmetic of what a clean sample can and cannot show; checking a checker; the Academy case&#x27;s own first-check and audit numbers, as an anecdote. Deliverable: a verification protocol as a checklist, with a sampling rule by the stakes of the text, the arithmetic shown, and a brief for a fresh checker; then the template for your project.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
