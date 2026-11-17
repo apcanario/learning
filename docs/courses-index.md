@@ -24,6 +24,8 @@ The Fable stage is closed (S-NOAUDIT, 15 Nov 2026; Pedro): no further Fable audi
 
 ## Staleness checks due (search-on units)
 
+The checks of 16 May 2027 also re-read BW6's live-read product facts and DD-BW3's four export and session pages, though both units are search off (syllabus review BW-1, F51, F119).
+
 | Unit | Written | Check due |
 |---|---|---|
 | A2 | 28 Oct 2026 (rewrite) | 28 Apr 2027 |

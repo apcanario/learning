@@ -162,8 +162,8 @@ BW2 §5 gives the evidence that a model grades its own work too kindly and does 
 A sample audit, as this course uses the term (stated opinion, generalised from the case's method in BW5 §10, which this unit does not restate):
 
 1. **List and count** the checkable claims: every sentence that carries a number, a date, a named source, an attribution, a mechanism or a recommendation. Call the count N.
-2. **Stratify.** Split the claims into groups that could fail together: the sections of a long text, the source classes of a research report, the claim types of a short piece (numbers, quotations, names, dates, links). Draw at least one claim from every stratum, then more from the largest until the sample reaches its size.
-3. **Draw by number, never by eye.** Number the claims in each stratum and pick with a random number.
+2. **Stratify.** Split the claims into groups that could fail together: the sections of a long text, the source classes of a research report, the claim types of a short piece (numbers, quotations, names, dates, links). Draw at least one claim from every stratum, then the rest at random from all remaining claims, so larger strata get more in proportion, until the sample reaches its size.
+3. **Draw by number, never by eye.** Number the claims and pick each draw with a random number: within its stratum for each stratum's first claim, from all remaining claims for the rest.
 4. **Record the sample before opening any source**, so that a claim that turns out hard to check cannot be swapped for an easy one.
 5. **Check each sampled claim** against its source and give it one verdict: PASS, FAIL, STALE (true when written, superseded now) or UNVERIFIABLE (the source cannot be opened; drawn again from the same stratum, and the claim itself marked unsourced).
 6. **Let the sample decide.** It is a trigger: a FAIL sends the whole text to a full check; a clean sample lets the rest stand, at a known risk.
@@ -306,7 +306,7 @@ The text is one unit of a course, written by one model from its brief and publis
 *n* = ln(0.05) / ln(1 − *p\**), rounded up, for *p\** = 30%, 20%, 10%; upper bound = 1 − 0.05^(1/*n*); miss chance = 0.75ⁿ.
 
 - [x] **C1 · Census if small.** If N ≤ *n*, check every claim.
-- [x] **C2 · Draw.** One claim per stratum, then extra draws from the largest strata until the sample reaches *n*; within a stratum, by random number.
+- [x] **C2 · Draw.** One claim per stratum, then the rest at random from all remaining claims, so larger strata get more in proportion, until the sample reaches *n*; by random number.
 - [x] **C3 · Record** the sample (claim, stratum, cited source) before opening any source.
 - [x] **C4 · Verdicts.** PASS · FAIL (wrong, unsupported, miscited, stretched or invented) · STALE (give the newer value and its source) · UNVERIFIABLE (draw again from the same stratum; mark the claim unsourced).
 - [x] **C5 · Decide.**
@@ -360,7 +360,7 @@ Run in a context that has not seen the unit written, on a model other than the w
 
     SCOPE AND SAMPLE:
     - Tier 3 (published). Count the checkable claims: every sentence with a number, a date, a named source, an attribution, a mechanism or a recommendation. Give the count, N.
-    - Check every cited claim (census). If the maintainer has set a sample instead, it is 29 claims: one per section, the deliverable as its own section, then extra draws from the largest sections, by random number.
+    - Check every cited claim (census). If the maintainer has set a sample instead, it is 29 claims: one per section, the deliverable as its own section, then the rest at random from all remaining claims, so larger sections get more in proportion, by random number.
     - Before opening any source, list the claims you will check, with their section and cited source.
     - Check in full, outside any sample, every figure and citation in the deliverable.
 
@@ -469,7 +469,7 @@ Copy it, fill each blank, and keep the rules as they are unless your log gives y
     READER: [FILL: who applies the findings, and how: exact replacements, or a decision to send it back].
     SCOPE AND SAMPLE:
     - Tier [FILL: 1, 2 or 3] ([FILL: why this tier]). Count the checkable claims and give N.
-    - [FILL: "Check every cited claim (census)", or "Sample n = 9 / 14 / 29: one per stratum, then extra draws from the largest strata, by random number"]. Strata: [FILL: the strata from B].
+    - [FILL: "Check every cited claim (census)", or "Sample n = 9 / 14 / 29: one per stratum, then the rest at random from all remaining claims, so larger strata get more in proportion, by random number"]. Strata: [FILL: the strata from B].
     - Before opening any source, list the claims you will check.
     - Check in full, outside the sample: [FILL: the claims the conclusion rests on].
     METHOD: keep steps 1 to 4 of Part 1; add to step 2 the failure kinds your own log has recorded: [FILL: from your log, or "none yet"].
@@ -545,3 +545,5 @@ Fresh check 2026-11-16 (Opus 5.5): fix · 1 errors, 7 should-fix, 3 minor; 12 ap
 Correction 2026-11-16, found by BW9's writer (corrections check `audits/building-with-ai/corrections-2026-11-16-BW9-BW6-BW8.md`, Changes 1 to 5: the page of Best practices for Claude Code, not its older .md copy).
 
 Correction 2026-11-16 (second round), W-BW10 step 1b (`audits/building-with-ai/corrections-2026-11-16-BW10-r2-BW6-BW9.md`, Changes 1 to 3): bare page address (F70).
+
+*Correction, 17 November 2026: changed by this course's syllabus review (BW-1, row S-BW) after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md); see the course's changelog for what changed.*

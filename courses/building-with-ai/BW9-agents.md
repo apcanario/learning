@@ -232,7 +232,7 @@ An agent reads material you did not write: web pages, documents, emails, issues,
 
 ## 9 · The Academy case: its agent failures and the rules that followed
 
-Academy (Academy case) is a library of self-study courses built by one person with Claude in October and November 2026, each unit written by one model from a brief, checked by a fresh context and audited by sample (Academy case file §1, §2). It is one project by one person: everything below is an anecdote, and none of it is evidence about agents in general (case file §9: no control, no second project).
+Academy (Academy case) is a library of self-study courses built by one person with Claude in October and November 2026, with a method of one brief per unit, a fresh check and sample audits that the case file records as run on part of the library (Academy case file §1, §2, §5, §9). It is one project by one person: everything below is an anecdote, and none of it is evidence about agents in general (case file §9: no control, no second project).
 
 The case is agent-heavy by design: each unit is written in a new chat or a fresh agent context that sees only its brief and the units already filed, for the stated reason that leaked context is how a course starts repeating itself (case file §2); from BW7 of this course, writer, checker, applier, filer and corrections checker were each a fresh agent (case file §2, note of 16 Nov 2026). The failures its record holds, and what followed each:
 
@@ -537,3 +537,5 @@ Correction 2026-11-16, found by the corrections check of row W-BW9 (`audits/buil
 Correction 2026-11-16, corrections C-BW9-1 and C-BW9-2, worked at W-BW10 step 1b (`audits/building-with-ai/corrections-2026-11-16-BW10-C-BW9.md`).
 
 Correction 2026-11-16 (second round), W-BW10 step 1b (`audits/building-with-ai/corrections-2026-11-16-BW10-r2-BW6-BW9.md`, Changes 4 to 11): bare page addresses (F70); §8's list of the Security page's protections now as that page states them.
+
+*Correction, 17 November 2026: changed by this course's syllabus review (BW-1, row S-BW) after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md); see the course's changelog for what changed.*

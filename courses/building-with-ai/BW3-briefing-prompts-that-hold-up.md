@@ -282,7 +282,7 @@ Every template has the same parts in the same order, each traced to this unit:
 - `[UNKNOWN: …]` in a worked example marks a real value the case file does not hold. Replace it before sending; never let the model guess it.
 - Tags such as `<material>` and `</material>` wrap pasted text, so instructions and material cannot be confused ([*Prompting best practices*](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)).
 - The **Model** line comes from BW2's routing table, read 15 Nov 2026; where BW2 has no row for the task, the line says so and the pick is an analogy.
-- One brief per chat. If the first output misses, change the brief and open a new chat (§5).
+- One brief per chat. If the first output misses, change the brief and open a new chat (§5). In a specified project, where briefs are not reworded once work starts, the miss is raised as a flag and the brief changes at a boundary (BW5 §5, §9).
 - Each avoid-list is a starting choice. Extend it from the first outputs, as Anthropic's Opus 5.5 guide advises for named patterns: check what the first result did instead "and extend the list if needed" ([*Prompting Claude Opus 5.5*](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5)).
 
 ### 1 · Research brief
@@ -1096,3 +1096,5 @@ All web pages read on 15 November 2026. Most vendor documentation pages show no 
 Object: the written brief (§1, and the Deliverable's brief form)
 
 Fresh check 2026-11-15 (Opus 5.5): fix · 0 errors, 8 should-fix, 11 minor; report `audits/building-with-ai/fresh-check-BW3.md`
+
+*Correction, 17 November 2026: changed by this course's syllabus review (BW-1, row S-BW) after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md); see the course's changelog for what changed.*

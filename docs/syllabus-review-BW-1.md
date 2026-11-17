@@ -288,3 +288,11 @@ Fresh check of the syllabus review BW-1 (S-BW) proposal, 17 Nov 2026. Packet onl
 
 No memory, past-chat, Project or web material was used. All facts come from the packet.
 
+
+## 7 · Outcome (17 Nov 2026)
+
+- **Pedro's answers** (AskUserQuestion, 17 Nov 2026): A1 confirmed, A2 confirmed, A3 confirmed; each applied exactly to `units_data.py`.
+- **Corrections** (`audits/building-with-ai/corrections-2026-11-17-S-BW.md`, a fresh Opus 5.5 corrections checker with live search): 13 of 13 changes PASS and applied with `kit/thin.py correct`, each unit given a dated note (B2 to B5, B7; B3 with its two companions in BW6 §2 step 3 and BW8's unsure item 9). B6 (F89): the first check found BW7's 22 Sep 2023 unsupported and proposed "September 2023"; a second fresh checker (`corrections-2026-11-17-S-BW-r2-BW7.md`) found 22 Sep 2023 on the title page of the PDF BW7 links, so BW7 stands.
+- **Case file:** 104 lines appended from the records extractor's report with the fresh check's corrections, and 16 §9 lines.
+- **Course index:** B8's note under the staleness heading; `kit/index_check.py` passes.
+- **Flags at close:** 23 open, 75 carried, 25 resolved (F1 to F123).
