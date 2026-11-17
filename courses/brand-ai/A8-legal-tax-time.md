@@ -252,7 +252,7 @@ Who acts on each block of lines, drawn from the owner and professional columns:
 {"kind": "matrix",
  "cols": ["Him", "Accountant", "Lawyer", "Club", "Parents", "Platform"],
  "rows": [
-  {"label": "Tax and social security (R1–R12)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, {"mark": "confirms", "tone": 2}, null, null, null, null]},
+  {"label": "Tax and social security (R1–R12)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, {"mark": "acts", "tone": 2}, null, null, null, null]},
   {"label": "Employment contract (R13–R14)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "if unclear", "tone": 5}, null, null, null]},
   {"label": "Health data (R15–R16)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, {"mark": "optional", "tone": 5}, null, null, null]},
   {"label": "Disclosure (R17–R18)", "tone": 4, "cells": [{"mark": "owns", "tone": 3}, null, null, null, null, {"mark": "label", "tone": 2}]},
@@ -264,7 +264,7 @@ Who acts on each block of lines, drawn from the owner and professional columns:
  ],
  "legend": [
   {"mark": "owns", "means": "he acts on it or chases it", "tone": 3},
-  {"mark": "confirms", "means": "a contabilista certificado confirms it", "tone": 2},
+  {"mark": "acts", "means": "a contabilista certificado does the line or confirms it, and owns R3 and R8", "tone": 2},
   {"mark": "reviews", "means": "a lawyer reviews the document before first use", "tone": 1},
   {"mark": "if unclear", "means": "a lawyer only if the contract's wording is unclear", "tone": 5},
   {"mark": "optional", "means": "a lawyer only if he wants the reading confirmed", "tone": 5},

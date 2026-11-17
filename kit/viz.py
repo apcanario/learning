@@ -613,14 +613,34 @@ SPAN_WRAP = 220   # P84 round 2: a label beside its bar wider than this breaks o
 
 def span_lines(t):
     """P84 round 2: a span label beside its bar, as lines: one line when it is SPAN_WRAP units or less; else its text and
-    its years on two lines (broken after the last comma, which stays on the first), the text wrapped further if needed."""
+    its years on two lines, the text wrapped further if needed. Round 3 (17 Nov 2026): the trailing date is kept whole on the
+    last line: a final parenthesis that names a year, decade or century ("(c. 1950–1450)", "(146 or 27 BC–AD 330)"), else what
+    follows the last comma when it holds a number; a date wider than SPAN_WRAP itself breaks only after a dash or "or"."""
     w = lambda u: _tw(u, 10, 'mono', 0.4)
     if w(t) <= SPAN_WRAP:
         return [t]
-    head, sep, tail = t.rpartition(', ')
-    if not sep:
-        return _wrap(t, 0, SPAN_WRAP, 10, 'mono', 0.4)
-    return _wrap(head + ',', 0, SPAN_WRAP, 10, 'mono', 0.4) + _wrap(tail, 0, SPAN_WRAP, 10, 'mono', 0.4)
+    wrap = lambda u: _wrap(u, 0, SPAN_WRAP, 10, 'mono', 0.4)
+    head, unit = t, None
+    m = re.search(r'\s(\([^()]*\d[^()]*\))$', t)
+    if m:
+        head, unit = t[:m.start()], m.group(1)
+    elif ', ' in t and re.search(r'\d', t.rpartition(', ')[2]):
+        h_, _, unit = t.rpartition(', ')
+        head = h_ + ','
+    if not unit or w(unit) > SPAN_WRAP:                   # no date at the end, or one too long to keep whole: wrap by width
+        return wrap(t)
+    if w(unit) <= SPAN_WRAP:
+        tail = [unit]
+    else:
+        parts = re.split(r'(?<=–)|(?<= or )', unit)
+        tail, cur = [], ''
+        for p_ in parts:
+            if cur and w(cur + p_) > SPAN_WRAP:
+                tail.append(cur.rstrip()); cur = p_
+            else:
+                cur += p_
+        tail.append(cur.rstrip())
+    return (wrap(head) if head.strip() else []) + tail
 
 
 def _span_lanes(spans, x, Wd, texts=None):
@@ -639,8 +659,9 @@ def _span_lanes(spans, x, Wd, texts=None):
         tin = _tw(texts[k], 10, 'mono', 0.4)                 # mono: the width does not depend on case
         tw = max(_tw(ln, 10, 'mono', 0.4) for ln in span_lines(texts[k])) if texts[k] else 0
         opts = []                                            # (side, bar, outside label or None, label x0, x1)
-        if not texts[k] or tin + 12 <= x2 - x1:
-            opts.append(('in', (x1, x2), None, (x1 + x2 - tin) / 2, (x1 + x2 + tin) / 2))
+        win = tin if tin <= SPAN_WRAP else max(_tw(ln, 10, 'mono', 0.4) for ln in span_lines(texts[k]))   # round 3: an in-bar label
+        if not texts[k] or win + 12 <= x2 - x1:              # wider than a 320 px frame breaks onto lines inside a taller bar
+            opts.append(('in', (x1, x2), None, (x1 + x2 - win) / 2, (x1 + x2 + win) / 2))
         if x2 + 6 + tw <= Wd - 4:
             opts.append(('right', (x1, x2), (x2 + 2, x2 + 10 + tw), x2 + 6, x2 + 6 + tw))
         if x1 - 6 - tw >= 4:
@@ -703,7 +724,8 @@ def timeline(d):
         W = max(W0, Wmin)
         for _ in range(40):
             L, R = 40, W - 40
-            x = lambda y: L + (R - L) * (y - start) / (end - start)
+            ast = lambda y: y + 1 if y < 0 else y            # P84 round 3: astronomical years, so no year 0 lies between 1 BC and AD 1
+            x = lambda y: L + (R - L) * (ast(y) - ast(start)) / (ast(end) - ast(start))
             txs = sorted(x(t) for t in ticks)
             need = max([(tw_max + 8) / (b - a) for a, b in zip(txs, txs[1:]) if b > a] + [1])
             # P84 round 2: a tick label pinned to an edge (anchored start or end) must also keep 8 units from its neighbour
@@ -733,10 +755,11 @@ def timeline(d):
             # P84 round 2 (17 Nov 2026): a lane is as tall as its tallest label (a side label of more than SPAN_WRAP units
             # breaks onto lines); two spans that abut in one lane are drawn 1.5 units short of the year they share, so they
             # never read as one bar; guides and gridlines break where they would cross a bar or a label's plate.
-            sl = {k: (span_lines(stext[k]) if side != 'in' else [stext[k]]) for k, lane, side, l0, l1 in lanes}
+            sl = {k: span_lines(stext[k]) for k, lane, side, l0, l1 in lanes}
+            bh = {k: (18 if side != 'in' or len(sl[k]) == 1 else 13 * len(sl[k]) + 6) for k, lane, side, l0, l1 in lanes}
             lh = [24] * nl
             for k, lane, side, l0, l1 in lanes:
-                lh[lane] = max(lh[lane], 13 * len(sl[k]) + 11)
+                lh[lane] = max(lh[lane], 13 * len(sl[k]) + 11, bh[k] + 6)
             top = 22 if ticks else 6
             ly = {}
             yy_ = top
@@ -753,7 +776,7 @@ def timeline(d):
                 yy = ly[lane]
                 ph = 13 * len(sl[k]) + 3
                 geo[k] = (x1, x2, b1, b2, yy, ph)
-                obst.append((b1, b2, yy, yy + 18))
+                obst.append((b1, b2, yy, yy + bh[k]))
                 if side != 'in':
                     obst.append((l0 - 4, l1 + 4, yy + 1, yy + 1 + ph))
             def vline(cls, gx, y1, y2):
@@ -771,15 +794,15 @@ def timeline(d):
             for k, lane, side, l0, l1 in lanes:
                 x1, x2, b1, b2, yy, ph = geo[k]
                 for gx in (x1, x2):
-                    body += vline('viz-spanend', gx, yy + 18, axis)
+                    body += vline('viz-spanend', gx, yy + bh[k], axis)
             for k, lane, side, l0, l1 in lanes:
                 s_ = spans[k]
                 tone = _tone(s_, k % TONES + 1, K)
                 x1, x2, b1, b2, yy, ph = geo[k]
-                rect = f'<rect class="viz-span viz-t{tone}" x="{b1:.1f}" y="{yy}" width="{max(b2 - b1, 0.5):.1f}" height="18"/>'
+                rect = f'<rect class="viz-span viz-t{tone}" x="{b1:.1f}" y="{yy}" width="{max(b2 - b1, 0.5):.1f}" height="{bh[k]}"/>'
                 g = f'<g data-span="{int(s_["from"])} {int(s_["to"])}" data-text="{esc(stext[k])}">'
                 if side == 'in':
-                    body += g + _g(rect + f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{yy + 13}" text-anchor="middle">{esc(stext[k])}</text>') + '</g>'
+                    body += g + _g(rect + ''.join(f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{yy + 13 + 13 * i}" text-anchor="middle">{esc(ln)}</text>' for i, ln in enumerate(sl[k] if bh[k] > 18 else [stext[k]]))) + '</g>'
                 else:
                     tw = l1 - l0
                     plate = f'<rect class="viz-lblbg" x="{l0 - 4:.1f}" y="{yy + 1}" width="{tw + 8:.1f}" height="{ph}"/>'
@@ -879,7 +902,7 @@ def timeline(d):
             cls = 'viz-date' if i == 0 else 'viz-label'
             body += f'<text class="{cls}" x="{ex:.1f}" y="{ty + i * 13}" text-anchor="{anchor}">{esc(ln)}</text>'
     h = axis + 36 + rows * lane_h + 4
-    return _svg(W, h, body, 'timeline', d.get('title'), d.get('caption'))
+    return _svg(W, h, body, 'timeline' + (' viz-snug' if 700 < W <= 1.15 * 700 else ''), d.get('title'), d.get('caption'))   # round 3: a few units over the column scales to it
 
 
 LABEL_COL = 240    # P55: the widest a compare or bars label column grows before its labels wrap

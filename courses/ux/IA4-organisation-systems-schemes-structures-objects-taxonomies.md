@@ -446,7 +446,7 @@ Twelve sample items (Perqo, fictional). The six from IA3 keep the categories IA3
 | BI-012 | Swimming pool entry | Health | Fitness | Perqo card, Claim | Single purchase, Pass | In person | none |
 
 ```viz
-{"kind": "matrix", "caption": "Facet grid: twelve Perqo catalogue items against the catalogue's facets, F2; supports the decision on how each item is filtered, searched and shown, and where a far member gets a second route (Deliverable B). Rows tone 5, shared terms; tone 3 marks a cross-listing shown in the app, assumed and untested (IA3, section 3.3; rule R6). Faceted structure from Hearst, CACM 49(4), 2006; polyhierarchy from Laubheimer, NN/g, 2018. Perqo is fictional; the first six items' categories from IA3, section 3.3, the rest from Deliverable B.", "cols": ["Category", "Narrower term", "Usual way to pay", "Purchase type", "Channel", "Also listed under"], "rows": [
+{"kind": "matrix", "caption": "Facet grid: twelve Perqo catalogue items against the catalogue's facets, F2; supports the decision on how each item is filtered, searched and shown, and where a far member gets a second route (Deliverable B). Each row's cells give the item's shared catalogue terms; a filled cell in the last column is a cross-listing shown in the app, assumed and untested (IA3, section 3.3; rule R6). Faceted structure from Hearst, CACM 49(4), 2006; polyhierarchy from Laubheimer, NN/g, 2018. Perqo is fictional; the first six items' categories from IA3, section 3.3, the rest from Deliverable B.", "cols": ["Category", "Narrower term", "Usual way to pay", "Purchase type", "Channel", "Also listed under"], "rows": [
  {"label": "Gym membership", "tone": 5, "cells": ["Health", "Fitness", "Perqo card, Claim", "Subscription", "In person", null]},
  {"label": "Yoga class", "tone": 5, "cells": ["Health", "Fitness", "Perqo card, Claim", "Single purchase, Pass", "In person, Online", {"mark": "Learning (assumed)", "tone": 3}]},
  {"label": "Therapy session", "tone": 5, "cells": ["Health", "Therapy", "Claim", "Single purchase", "In person, Online", null]},
@@ -459,7 +459,7 @@ Twelve sample items (Perqo, fictional). The six from IA3 keep the categories IA3
  {"label": "Restaurant meal", "tone": 5, "cells": ["Meals", "Restaurants", "Perqo card", "Single purchase", "In person", null]},
  {"label": "Groceries", "tone": 5, "cells": ["Meals", "Groceries", "Perqo card", "Single purchase", "In person, Online", null]},
  {"label": "Swimming pool entry", "tone": 5, "cells": ["Health", "Fitness", "Perqo card, Claim", "Single purchase, Pass", "In person", null]}],
- "legend": [{"mark": "tone 5", "means": "a catalogue term, shared across surfaces", "tone": 5}, {"mark": "tone 3", "means": "a cross-listing in the app, assumed", "tone": 3}]}
+ "legend": [{"mark": "term", "means": "a catalogue term, shared across surfaces", "tone": 5}, {"mark": "also listed", "means": "a cross-listing in the app, assumed", "tone": 3}]}
 ```
 
 ### B.4 · The rules for adding a value

@@ -80,7 +80,7 @@ PB9 sorted the lines by who opens them; PB10 reads them every quarter. For a thr
 {"kind": "matrix",
  "cols": ["Opens to Mara", "Timeline sourced", "Enters the model as"],
  "rows": [
-  {"label": "YouTube ads", "tone": 4, "cells": ["1,000 subs + 8,000 h", {"mark": "none", "tone": 6}, "0 until her own RPM"]},
+  {"label": "YouTube ads", "tone": 4, "cells": ["1,000 subs + 8,000 h", {"mark": "none", "tone": 6}, "0 until both thresholds met"]},
   {"label": "Fan funding, Partnerships, Shopping", "tone": 4, "cells": ["500 subs + 3,000 h", {"mark": "none", "tone": 6}, "0, unfilled"]},
   {"label": "Instagram tools", "tone": 4, "cells": ["no threshold published", {"mark": "none", "tone": 6}, "0, unfilled"]},
   {"label": "Affiliate links", "tone": 4, "cells": ["not in year one", {"mark": "none", "tone": 6}, "0, unfilled"]},
@@ -91,7 +91,7 @@ PB9 sorted the lines by who opens them; PB10 reads them every quarter. For a thr
   {"label": "Services, teaching", "tone": 4, "cells": ["open, no hours", {"mark": "none", "tone": 6}, "0, unfilled"]}
  ],
  "legend": [{"mark": "none", "means": "no source gives a time to income at her size", "tone": 6}, {"mark": "her count only", "means": "a rate exists only from her own sales", "tone": 3}],
- "caption": "§3, PB9's nine income lines for Mara (Mara, fictional): when each opens (PB9 §2 to §7 and D1, D4: YouTube Help answers 12843009 and 13429240, Instagram's creator page, her rules), whether any source gives a timeline at her size (PB1 §2, PB9 §3 to §7), and how each enters the threshold model. Her guide's dates and counts are PB10 D4's."}
+ "caption": "§3, PB9's nine income lines for Mara (Mara, fictional): when each opens (PB9 §2 to §7 and D1, D4: YouTube Help answers 12843009 and 13429240, Instagram's creator page, her rules), whether any source gives a timeline at her size (PB1 §2, PB9 §3 to §7), and how each enters the threshold model. Her guide's dates and counts are PB10 D4's. Blue cells carry the row tone only; the two keyed tones mark the timeline column's readings."}
 ```
 
 What the evidence supports, taken together: one line with a count, eight with none. A threshold model built honestly on these lines can extrapolate only from the reader's own counts, and has to say so on every date it prints.

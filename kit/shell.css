@@ -34,7 +34,7 @@
       section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
       the scope line
    Version 6.11, 15 Nov 2026 (C1, W-BW5): a matrix carries a narrow-label drawing (svg.viz-altn, .viz-stickn) shown at 360 px and below, 4i.
-   Version 6.14, 17 Nov 2026 (P109, H-4): a matrix's keys under its frame, svg.viz-key and svg.viz-keyn, 4i.
+   Version 6.14, 17 Nov 2026 (P109, H-4): a matrix's keys under its frame, svg.viz-key and svg.viz-keyn; a wide matrix's label column pinned on a desktop too; a timeline up to 15% over 700 units (viz-snug) scales to the column, 4i.
    Version 6.13, 16–17 Nov 2026 (P84, H-4): a timeline span's end guides to the axis, .viz-spanend; span labels without capitals and the side label's own class, .viz-spanside, 4i.
    Version 6.12, 16 Nov 2026 (W-BW8): a matrix's narrow-label drawing (svg.viz-altn, .viz-stickn) is shown below 768 px, on every phone, 4i.
    Version 6.10, 12 Nov 2026 (P98, W-PB5): a bars figure's phone drawing (svg.viz-alt) is 258 units wide, as a compare's,
@@ -645,6 +645,14 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
   .viz-scroll{--stick-m:var(--stick,0px)}
   .viz-stick{display:block;position:sticky;left:0;width:var(--stick,0px);height:0;z-index:1;pointer-events:none}
   .viz-stick svg{position:absolute;left:0;bottom:0;display:block;width:auto;min-width:0;max-width:none}
+}
+/* P109 round 3 (17 Nov 2026): a matrix drawn wide (more than 15 % over 700 units) scrolls on a desktop too, so its label column is
+   pinned there as on a phone, and the left fade starts past it. A timeline up to 15 % over 700 (viz-snug) scales to the column. */
+@media (min-width:768px){
+  .viz-matrix.viz-wide .viz-scroll{--stick-m:var(--stick,0px)}
+  .viz-matrix.viz-wide .viz-stick{display:block;position:sticky;left:0;width:var(--stick,0px);height:0;z-index:1;pointer-events:none}
+  .viz-matrix.viz-wide .viz-stick svg{position:absolute;left:0;bottom:0;display:block;width:auto;min-width:0;max-width:none}
+  .viz-timeline.viz-snug svg{width:100%;max-width:100%}
 }
 /* C1 (15 Nov 2026): a matrix whose label column is wider than 100 units also carries svg.viz-altn, the same grid with its row labels
    in a 100-unit column, and its own sticky copy in .viz-stickn (the frame carries data-altn and --stickn); below 768 px (at 360 px and below
