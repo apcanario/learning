@@ -187,7 +187,7 @@ SPORT_PSYCHOLOGY = dict(
     id='sport-psychology', family='markdown', short='Sport Psychology (public)', label='SPORT PSYCHOLOGY', name='Sport Psychology for Coaches', color='var(--orange)',
     home_id='sport-psychology', status='in progress',
     tracks={'SP': ('coaching', 'Sport psychology · public')},
-    tiles={'SP': 'Coaching athletes aged 10 to 25: mental skills, climate, and where a coach\'s part ends.'},
+    tiles={'SP': 'Mental skills, climate and referral for coaches of athletes aged 10 to 25.'},
     data='generator/data/sport-psychology/hub.py',
     vault='courses/sport-psychology',
     sourcing_part='Part 7',
