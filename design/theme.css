@@ -34,7 +34,8 @@
       section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
       the scope line
    Version 6.11, 15 Nov 2026 (C1, W-BW5): a matrix carries a narrow-label drawing (svg.viz-altn, .viz-stickn) shown at 360 px and below, 4i.
-   Version 6.13, 16 Nov 2026 (P84, H-4): a timeline span's end guides to the axis, .viz-spanend, 4i.
+   Version 6.14, 17 Nov 2026 (P109, H-4): a matrix's keys under its frame, svg.viz-key and svg.viz-keyn, 4i.
+   Version 6.13, 16–17 Nov 2026 (P84, H-4): a timeline span's end guides to the axis, .viz-spanend; span labels without capitals and the side label's own class, .viz-spanside, 4i.
    Version 6.12, 16 Nov 2026 (W-BW8): a matrix's narrow-label drawing (svg.viz-altn, .viz-stickn) is shown below 768 px, on every phone, 4i.
    Version 6.10, 12 Nov 2026 (P98, W-PB5): a bars figure's phone drawing (svg.viz-alt) is 258 units wide, as a compare's,
    and 4i shows it at its own size, so it never scrolls on a 320 px phone; viz.py keeps a compare's value wholly on its
@@ -562,7 +563,8 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
 .viz-label{font-size:12px}
 /* written .viz .x (P40, 29 Oct 2026): as plain classes they lost to .viz text and drew in the body colour */
 .viz .viz-date,.viz .viz-ticklabel,.viz .viz-value,.viz .viz-note{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
-.viz .viz-spanlabel{font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;fill:var(--on-accent)}
+.viz .viz-spanlabel{font-family:var(--mono);font-size:10px;letter-spacing:.04em;fill:var(--on-accent)}  /* P84 round 2: no capitals, which turned VIi into VII and 440s into 440S */
+.viz .viz-spanside{font-family:var(--mono);font-size:10px;letter-spacing:.04em;fill:var(--muted)}  /* P84 round 2: a span label beside its bar, on its plate */
 .viz-axis,.viz-tick,.viz-stem,.viz-edge{stroke:var(--line-2);fill:none}
 .viz-axis{stroke-width:2}
 .viz-arrow{stroke:var(--muted);stroke-width:1.5;fill:none;marker-end:url(#vizhead)}
@@ -647,6 +649,11 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
 /* C1 (15 Nov 2026): a matrix whose label column is wider than 100 units also carries svg.viz-altn, the same grid with its row labels
    in a 100-unit column, and its own sticky copy in .viz-stickn (the frame carries data-altn and --stickn); below 768 px (at 360 px and below
    until W-BW8) they replace the main svg and .viz-stick, so a 320 px phone shows cells beside the labels before the sideways scroll */
+/* P109 round 2 (17 Nov 2026): a matrix's keys are their own svg under the frame (svg.viz-key, and svg.viz-keyn for the narrow-label
+   drawing shown below 768 px), so they never scroll with the grid, clip at its edge or sit under a fade. viz-key1: the only key drawing. */
+.viz svg.viz-key,.viz svg.viz-keyn{display:block;width:auto;min-width:0;max-width:100%;height:auto;margin-top:4px}
+.viz svg.viz-keyn{display:none}
+@media (max-width:767.98px){.viz svg.viz-key:not(.viz-key1){display:none}.viz svg.viz-keyn{display:block}}
 .viz-scroll > svg.viz-altn,.viz-stickn{display:none}
 @media (max-width:767.98px){   /* W-BW8 (16 Nov 2026): every phone, not only 360 px and below: at 390 and 430 px the wide drawing's
      longest cells (BW8 figure 4) sat on one line wider than the frame, never whole in any frame */

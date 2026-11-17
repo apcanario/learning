@@ -1251,7 +1251,7 @@ def figure_rules(page, name):
             if len(groups) != svg.count('class="viz-span '):
                 bad.append(f'{where}: a span drawn without its data-span group (rebuild with the P84 viz.py)')
             for a, b, want, inner in groups:
-                got = ' '.join(t for c, x, y, t in _texts(inner) if c in ('viz-spanlabel', 'viz-colhead'))
+                got = ' '.join(t for c, x, y, t in _texts(inner) if c in ('viz-spanlabel', 'viz-spanside'))
                 if got != H.unescape(want):
                     bad.append(f'{where}: the span {a} to {b} is labelled {got!r}, not {H.unescape(want)!r}')
                 if not viz.span_names(got, a, b):
@@ -1259,7 +1259,7 @@ def figure_rules(page, name):
                 r = re.search(r'<rect class="viz-span[^"]*" x="([-\d.]+)" y="[-\d.]+" width="([-\d.]+)"', inner)
                 x1, x2 = float(r.group(1)), float(r.group(1)) + float(r.group(2))
                 for gx in (x1, x2):
-                    if not ax or not any(abs(g - gx) < 0.2 and abs(y2 - float(ax.group(1))) < 0.2 for g, y2 in guides):
+                    if not ax or not any(abs(g - gx) < 2 and abs(y2 - float(ax.group(1))) < 0.2 for g, y2 in guides):   # round 2: an abutting bar stops 1.5 short of its guide
                         bad.append(f'{where}: the span {got!r} has no guide from its end at {gx:.0f} to the axis')
         if kind == 'timeline':                               # P58 (by eye): no stem runs through another event's text
             import viz as V

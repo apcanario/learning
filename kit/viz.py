@@ -237,12 +237,25 @@ Contract change at P84 (16 Nov 2026), from Rome 11.4 and 11.5 (spans read as a l
               phone and the desktop alike. Each span is <g data-span="from to" data-text="label as drawn">; verify.py checks
               every span label names its years (span_names) and every bar end has its guide to the axis. A timeline
               without spans is drawn as before.
+              Round 2 (17 Nov 2026), from the 141 figures' re-checks (kit/reviews/p84/): a label also names its years by a
+              decade ("1360s", "480s or 470s"), an ordinal century written "c." ("8th c. BC") or a split year ("367/6"), and
+              a century drawn to its round end year (the ninth century BC drawn 900 to 800) names it; a label that names a
+              date but not both ends stops the build, so a year is never printed twice. A side label wider than SPAN_WRAP
+              (220 units) breaks onto lines, its years on the last, and its lane grows to fit; two spans abutting in one lane
+              are drawn 1.5 units short of the year they share; guides and gridlines break where they would cross a bar or a
+              plate; an edge-pinned tick label keeps 8 units from its neighbour (the drawing widens); span labels keep their
+              case (.viz-spanlabel, and .viz-spanside beside the bar), since capitals turned "VIi" into "VII".
 Contract change at P109 (16 Nov 2026):
   matrix      a matrix is drawn wide (keeps its size and scrolls on a desktop) only when its drawing is wider than 700; one
               whose columns had to share the width but whose drawing is 700 or less scales to the column (PB8 figure 4
               overflowed its 698 px frame by 2 px, and the second frame's fade lay over its keys). A legend key's tone is
               the tone of the cells it explains: a cell takes its row's tone unless it gives its own, so a mark whose key
               has another tone is given that tone in its cell.
+              Round 2 (17 Nov 2026), from the P109 re-check (kit/reviews/p109/): the keys are drawn in their own svg under
+              the frame, svg.viz-key (and svg.viz-keyn, the narrow-label drawing's keys, shown with it below 768 px), so they
+              never scroll with the grid, clip at its left edge or sit under a fade; the grid's svg ends under its last row. A
+              matrix up to 15 % wider than 700 scales to the column on a desktop, as a tree does (Rome 3.1 figure 3, 765
+              units, lost its row labels when it scrolled there).
 Contract change at P50 (1 Nov 2026): sitemap, objects, decision, states and wireflow centre their drawing in the
   700-unit width; their svg carries data-x0 (where the drawing starts, less 8) as a narrow tree's does since P58, so a
   phone frame opens on the drawing. Desktop scaling is unchanged. verify.py checks that every figure of these kinds
@@ -396,7 +409,7 @@ def _left(body):
     return min(xs) if xs else None
 
 
-def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=None, alt=None, narrow=None):
+def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=None, alt=None, narrow=None, keys=None):
     """stick (P83, 3 Nov 2026): (width, svg body) of the label column a matrix, a numeric matrix or a compare keeps in
     view while a phone frame scrolls: a copy of the labels on a card-coloured plate, drawn after the main svg in a
     .viz-stick holder that the theme shows only below 768 px, sticky at the frame's left edge (aria-hidden: the
@@ -435,8 +448,14 @@ def _svg(w, h, body, cls, title, caption, wide=False, x0=None, xr=None, stick=No
             nv += (f'<div class="viz-stickn" aria-hidden="true"><svg viewBox="0 0 {ns} {nh}" width="{ns}" height="{nh}" xmlns="http://www.w3.org/2000/svg">'
                    f'<rect class="viz-lblbg" x="0" y="0" width="{ns}" height="{nsh}"/>{nst[1]}</svg></div>')
     sv = nv + sv
+    kv = ''                                                  # P109 round 2: a matrix's keys, under the frame, never scrolled or faded
+    for kk, kc in zip(keys or (), ('viz-key', 'viz-keyn')):
+        if kk:
+            kv += f'<svg class="{kc}" viewBox="0 0 {kk[0]} {kk[1]}" width="{kk[0]}" height="{kk[1]}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="key">{kk[2]}</svg>'
+    if kv and keys[1] is None and keys[0]:
+        kv = kv.replace('class="viz-key"', 'class="viz-key viz-key1"', 1)
     return (f'<figure class="viz viz-{cls}{" viz-wide" if wide else ""}">{t}<div class="viz-scroll"{st}><svg viewBox="0 0 {w} {h}" width="{w}" height="{h}"{f' data-x0="{x0:.0f}"' if x0 else ''}{f' data-xr="{xr:.0f}"' if xr else ''} '
-            f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg>{av}{sv}</div>{c}</figure>')
+            f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(title or cls)}">{body}</svg>{av}{sv}</div>{kv}{c}</figure>')
 
 
 def _wrap(s, n, px=None, size=12, font='sans', ls=0.0):
@@ -516,19 +535,60 @@ def _guides_clear(o, lane, placed_all):
     return True
 
 
+_DEC = re.compile(r'\b(\d{2,3})0s\b')
+_CENTC = re.compile(r'\b(\d{1,2})(?:st|nd|rd|th)(?:\s*(?:–|-|to|or)\s*(\d{1,2})(?:st|nd|rd|th))?\s+c\.')
+_SPLIT = re.compile(r'\b(\d{2,4})/(\d{1,2})\b')
+_DATED = re.compile(r'\b\d{3,4}(?:s\b|/\d{1,2}\b|\b)|\b\d{2}0s\b|\(\d{2}\)|\b\d{1,2}(?:st|nd|rd|th)\s+c(?:\.|entur)|\b(?:' + '|'.join(_ORD) + r')\s+centur', re.I)
+
+
+def _names_year(t, y):
+    """P84 round 2: whether a span label names the year y: date_names (the year, a run such as 1914–18, a century in words
+    or "7th century"), or a decade ("1360s", "480s or 470s": 1360s is 1360 to 1369, the 440s BC 449 to 440 BC), an
+    ordinal century abbreviated "c." ("8th c. BC", "1st–2nd c."), or a split year ("367/6" names 367 and 366)."""
+    y = int(y)
+    if date_names(t, y):
+        return True
+    for m in _DEC.finditer(t):
+        d = int(m.group(1)) * 10
+        if (y < 0 and -(d + 9) <= y <= -d) or (y > 0 and d <= y <= d + 9):
+            return True
+    cs = [(int(m.group(1)), int(m.group(2) or m.group(1))) for m in _CENTC.finditer(t)]
+    ws = [_ORDS.get(w.lower()) or int(re.match(r'\d+', w).group()) for w in _CENT.findall(t)]
+    if ws:
+        cs.append((min(ws), max(ws)))
+    for lo, hi in cs:                                        # a span drawn to a round year ends a century inclusively: the
+        lo, hi = min(lo, hi), max(lo, hi)                    # ninth century BC drawn 900 to 800 BC names both its ends
+        if (y < 0 and -100 * hi <= y <= -100 * (lo - 1)) or (y > 0 and 100 * (lo - 1) <= y <= 100 * hi):
+            return True
+    for m in _SPLIT.finditer(t):
+        a_, b_ = m.group(1), m.group(2)
+        if abs(y) in (int(a_), int(a_[:len(a_) - len(b_)] + b_)):
+            return True
+    return False
+
+
+def span_names(t, a, b):
+    """P84: whether a drawn span label names both its years (verify.py reads it back from the built figure)."""
+    return _names_year(t, a) and _names_year(t, b)
+
+
 def span_text(s, era='BC', kind='timeline'):
-    """P84 (16 Nov 2026): a span's label as drawn, carrying its years. A label that already names both its ends (date_names:
-    the years as numbers, an abbreviated span such as 1914–18, or a century) is drawn as written; otherwise its "date" (the
-    span's dates as the unit writes them, which must name both ends) or its years as yr prints them (58–57 BC, 27 BC–AD 14,
-    AD 14–37, 2018–2020) follow it after a comma. A span with no label is drawn with its years alone."""
+    """P84 (16 Nov 2026): a span's label as drawn, carrying its years. A label that already names both its ends (span_names:
+    the years as numbers, an abbreviated run such as 1914–18, a decade, a century, a split year) is drawn as written; a label
+    that names a date but not both ends stops the build (give the span its "date", or take the date out of the label, so a
+    year is never printed twice). Otherwise its "date" (the span's dates as the unit writes them, which must name both ends)
+    or its years as yr prints them (58–57 BC, 27 BC–AD 14, AD 14–37, 2018–2020) follow it after a comma. A span with no label
+    is drawn with its years alone."""
     a, b = int(s['from']), int(s['to'])
     lab = str(s.get('label') or '').strip()
-    names = lambda t: date_names(t, a) and date_names(t, b)
-    if lab and names(lab):
+    if lab and span_names(lab, a, b):
         return lab
+    if lab and _DATED.search(lab):
+        _fail(kind, f'the span {lab!r} ({a} to {b}) names a date but not both its years: drop the date from the label and '
+                    'give the span "date", or make the label name both ends')
     if 'date' in s:
         t = s['date']
-        if not isinstance(t, str) or not t.strip() or not names(t):
+        if not isinstance(t, str) or not t.strip() or not span_names(t, a, b):
             _fail(kind, f'the span {lab!r} ({a} to {b}): its "date" {t!r} must name both its years, e.g. "c. 670–640 BC"')
         wrong = r'\b(BC|AD)\b' if era == 'BCE' else r'\b(BCE|CE)\b'
         if re.search(wrong, t):
@@ -548,9 +608,19 @@ def span_text(s, era='BC', kind='timeline'):
     return f'{lab}, {yrs}' if lab else yrs
 
 
-def span_names(t, a, b):
-    """P84: whether a drawn span label names both its years (verify.py reads it back from the built figure)."""
-    return date_names(t, int(a)) and date_names(t, int(b))
+SPAN_WRAP = 220   # P84 round 2: a label beside its bar wider than this breaks onto lines, so a 320 px phone frame shows it whole
+
+
+def span_lines(t):
+    """P84 round 2: a span label beside its bar, as lines: one line when it is SPAN_WRAP units or less; else its text and
+    its years on two lines (broken after the last comma, which stays on the first), the text wrapped further if needed."""
+    w = lambda u: _tw(u, 10, 'mono', 0.4)
+    if w(t) <= SPAN_WRAP:
+        return [t]
+    head, sep, tail = t.rpartition(', ')
+    if not sep:
+        return _wrap(t, 0, SPAN_WRAP, 10, 'mono', 0.4)
+    return _wrap(head + ',', 0, SPAN_WRAP, 10, 'mono', 0.4) + _wrap(tail, 0, SPAN_WRAP, 10, 'mono', 0.4)
 
 
 def _span_lanes(spans, x, Wd, texts=None):
@@ -566,10 +636,11 @@ def _span_lanes(spans, x, Wd, texts=None):
     for k in order:
         s = spans[k]
         x1, x2 = x(s['from']), x(s['to'])
-        tw = _tw(texts[k].upper(), 10, 'mono', 0.4)
+        tin = _tw(texts[k], 10, 'mono', 0.4)                 # mono: the width does not depend on case
+        tw = max(_tw(ln, 10, 'mono', 0.4) for ln in span_lines(texts[k])) if texts[k] else 0
         opts = []                                            # (side, bar, outside label or None, label x0, x1)
-        if not texts[k] or tw + 12 <= x2 - x1:
-            opts.append(('in', (x1, x2), None, (x1 + x2 - tw) / 2, (x1 + x2 + tw) / 2))
+        if not texts[k] or tin + 12 <= x2 - x1:
+            opts.append(('in', (x1, x2), None, (x1 + x2 - tin) / 2, (x1 + x2 + tin) / 2))
         if x2 + 6 + tw <= Wd - 4:
             opts.append(('right', (x1, x2), (x2 + 2, x2 + 10 + tw), x2 + 6, x2 + 6 + tw))
         if x1 - 6 - tw >= 4:
@@ -635,6 +706,14 @@ def timeline(d):
             x = lambda y: L + (R - L) * (y - start) / (end - start)
             txs = sorted(x(t) for t in ticks)
             need = max([(tw_max + 8) / (b - a) for a, b in zip(txs, txs[1:]) if b > a] + [1])
+            # P84 round 2: a tick label pinned to an edge (anchored start or end) must also keep 8 units from its neighbour
+            ext = []
+            for t_, tl_ in sorted(zip(ticks, tlab)):
+                tx_, w_ = x(t_), _tw(tl_, 10.5, 'mono')
+                a0 = tx_ if tx_ < L + 20 else (tx_ - w_ if tx_ > R - 20 else tx_ - w_ / 2)
+                ext.append((a0, a0 + w_))
+            if any(q[0] - p_[1] < 8 for p_, q in zip(ext, ext[1:])):
+                need = max(need, 1.15)
             lanes = _span_lanes(spans, x, W, stext) if spans else []
             ev_w = max((max([_tw(dt, 10.5, 'mono')] + [_tw(ln, 12) for ln in wrap(e['label'])]) for e, dt in zip(events, dates)), default=0)
             if lanes is not None and need <= 1 and ev_w <= W - 8:
@@ -651,27 +730,61 @@ def timeline(d):
         # gridline runs from each down to the axis. A timeline without spans is drawn as before.
         nl = (max(lane for _, lane, *_ in lanes) + 1) if spans else 0
         if spans:
+            # P84 round 2 (17 Nov 2026): a lane is as tall as its tallest label (a side label of more than SPAN_WRAP units
+            # breaks onto lines); two spans that abut in one lane are drawn 1.5 units short of the year they share, so they
+            # never read as one bar; guides and gridlines break where they would cross a bar or a label's plate.
+            sl = {k: (span_lines(stext[k]) if side != 'in' else [stext[k]]) for k, lane, side, l0, l1 in lanes}
+            lh = [24] * nl
+            for k, lane, side, l0, l1 in lanes:
+                lh[lane] = max(lh[lane], 13 * len(sl[k]) + 11)
             top = 22 if ticks else 6
-            axis = top + nl * 24 + 4
+            ly = {}
+            yy_ = top
+            for ln in range(nl - 1, -1, -1):
+                ly[ln] = yy_; yy_ += lh[ln]
+            axis = yy_ + 4
+            lane_of_k = {k: lane for k, lane, *_ in lanes}
+            geo, obst = {}, []
+            for k, lane, side, l0, l1 in lanes:
+                s_ = spans[k]
+                x1, x2 = x(s_['from']), x(s_['to'])
+                b1 = x1 + (1.5 if any(lane_of_k[j] == lane and j != k and spans[j]['to'] == s_['from'] for j in lane_of_k) else 0)
+                b2 = x2 - (1.5 if any(lane_of_k[j] == lane and j != k and spans[j]['from'] == s_['to'] for j in lane_of_k) else 0)
+                yy = ly[lane]
+                ph = 13 * len(sl[k]) + 3
+                geo[k] = (x1, x2, b1, b2, yy, ph)
+                obst.append((b1, b2, yy, yy + 18))
+                if side != 'in':
+                    obst.append((l0 - 4, l1 + 4, yy + 1, yy + 1 + ph))
+            def vline(cls, gx, y1, y2):
+                cuts = sorted((max(o[2] - 1, y1), min(o[3] + 1, y2)) for o in obst if o[0] - 0.5 <= gx <= o[1] + 0.5 and o[3] > y1 and o[2] < y2)
+                out, cur = '', y1
+                for c1, c2 in cuts:
+                    if c1 > cur + 1:
+                        out += f'<line class="{cls}" x1="{gx:.1f}" y1="{cur:.1f}" x2="{gx:.1f}" y2="{c1:.1f}"/>'
+                    cur = max(cur, c2)
+                if y2 > cur + 1:
+                    out += f'<line class="{cls}" x1="{gx:.1f}" y1="{cur:.1f}" x2="{gx:.1f}" y2="{y2:.1f}"/>'
+                return out
             for t in ticks:
-                body += f'<line class="viz-grid" x1="{x(t):.1f}" y1="{top - 4}" x2="{x(t):.1f}" y2="{axis}"/>'
+                body += vline('viz-grid', x(t), top - 4, axis)
             for k, lane, side, l0, l1 in lanes:
-                s = spans[k]
-                x1, x2, yy = x(s['from']), x(s['to']), top + (nl - 1 - lane) * 24
+                x1, x2, b1, b2, yy, ph = geo[k]
                 for gx in (x1, x2):
-                    body += f'<line class="viz-spanend" x1="{gx:.1f}" y1="{yy + 18}" x2="{gx:.1f}" y2="{axis}"/>'
+                    body += vline('viz-spanend', gx, yy + 18, axis)
             for k, lane, side, l0, l1 in lanes:
-                s = spans[k]
-                tone = _tone(s, k % TONES + 1, K)
-                x1, x2, yy = x(s['from']), x(s['to']), top + (nl - 1 - lane) * 24
-                rect = f'<rect class="viz-span viz-t{tone}" x="{x1:.1f}" y="{yy}" width="{x2 - x1:.1f}" height="18"/>'
-                g = f'<g data-span="{int(s["from"])} {int(s["to"])}" data-text="{esc(stext[k])}">'
+                s_ = spans[k]
+                tone = _tone(s_, k % TONES + 1, K)
+                x1, x2, b1, b2, yy, ph = geo[k]
+                rect = f'<rect class="viz-span viz-t{tone}" x="{b1:.1f}" y="{yy}" width="{max(b2 - b1, 0.5):.1f}" height="18"/>'
+                g = f'<g data-span="{int(s_["from"])} {int(s_["to"])}" data-text="{esc(stext[k])}">'
                 if side == 'in':
                     body += g + _g(rect + f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{yy + 13}" text-anchor="middle">{esc(stext[k])}</text>') + '</g>'
                 else:
                     tw = l1 - l0
-                    plate = f'<rect class="viz-lblbg" x="{l0 - 4:.1f}" y="{yy + 1}" width="{tw + 8:.1f}" height="16"/>'
-                    body += g + _g(rect) + _g(plate + f'<text class="viz-colhead" x="{l0:.1f}" y="{yy + 13}">{esc(stext[k])}</text>') + '</g>'
+                    plate = f'<rect class="viz-lblbg" x="{l0 - 4:.1f}" y="{yy + 1}" width="{tw + 8:.1f}" height="{ph}"/>'
+                    txt = ''.join(f'<text class="viz-spanside" x="{l0:.1f}" y="{yy + 13 + 13 * i}">{esc(ln)}</text>' for i, ln in enumerate(sl[k]))
+                    body += g + _g(rect) + _g(plate + txt) + '</g>'
         else:
             axis = 24 + 22                       # tick labels sit above the axis, events hang below it
         body += f'<line class="viz-axis" x1="{L}" y1="{axis}" x2="{R}" y2="{axis}"/>'
@@ -1720,8 +1833,10 @@ def matrix(d, narrow=None):
                        + _text(m, T_MARK, x + cw / 2, y + (rh - len(m) * 13) / 2, 'middle'))
         y += rh
     grid_h = y + 2
+    key = None
     if d.get('legend'):
         y += 14
+        ky0, kb0 = y - 8, len(body)   # P109 round 2: the keys are drawn in their own svg, outside the scroller
         x, lrow = 8, 24
         LWd = min(Wd, NARROW_FRAME - 36 if narrow is not None else PHONE_FRAME)   # C1 re-check: the narrow drawing's legend fits a 320 px frame   # W-DD-PB1 (13 Nov 2026): a drawing wider than the phone frame keeps its legend inside the frame's width, so the first frame shows every key whole
         for item in d['legend']:
@@ -1752,16 +1867,20 @@ def matrix(d, narrow=None):
             x += iw
             lrow = max(lrow, len(txt) * 14)
         y += lrow
+        key = (_r(LWd), _r(y + 8 - ky0), f'<g transform="translate(0,{-ky0:.1f})">{body[kb0:]}</g>')
+        body, y = body[:kb0], grid_h - 2
     if narrow is not None:
-        return _r(Wd), _r(y + 8), body, (8 + LW, stick, grid_h)
-    nar = None
+        return _r(Wd), _r(y + 8), body, (8 + LW, stick, grid_h), key
+    nar, keyn = None, None
     if Wd > NARROW_FRAME:   # C1: a second drawing for 360 px and below, with its own narrow column (or narrower columns)
-        nw, nh, nb, nst = matrix(d, narrow=NARROW_LW)
+        nw, nh, nb, nst, keyn = matrix(d, narrow=NARROW_LW)
         nar = (nw, nh, nb, nst if nw > NARROW_FRAME else None)
     # P109 (16 Nov 2026): a matrix whose columns had to share the width but whose drawing still fits it (PB8 figure 4, 700 units)
     # is not wide: it scales to the column like any other, and never overflows a 698 px desktop frame by 2 px under its fade.
-    return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide and Wd > W,
-                stick=(8 + LW, stick, grid_h) if Wd > NARROW_FRAME else None, narrow=nar)   # C1: a column wherever a 320 px frame scrolls
+    # P109 round 2 (17 Nov 2026): and one less than 15 % wider than 700 scales too, as a tree does (Rome 3.1 figure 3, 765 units,
+    # lost its row labels when scrolled on a desktop, where the label column is not sticky).
+    return _svg(_r(Wd), _r(y + 8), body, 'matrix' + (' viz-fit' if Wd < W - 24 else ''), d.get('title'), d.get('caption'), wide=wide and Wd > W * 1.15,
+                stick=(8 + LW, stick, grid_h) if Wd > NARROW_FRAME else None, narrow=nar, keys=(key, keyn))   # C1: a column wherever a 320 px frame scrolls
 
 
 def _gridflow(K, items, edges, per_row, bw, gap, gap_px, start=None):
