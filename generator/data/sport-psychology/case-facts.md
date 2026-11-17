@@ -50,3 +50,11 @@ First names only, so that no real person is named.
 | SP1 | Milan's academy has medical staff to whom a coach can refer. | Milan |
 | SP1 | Sara's university has a student health or counselling service. | Sara |
 | SP1 | Dani's club names a person for medical concerns and a welfare or safeguarding officer. | Dani |
+| SP2 | Dani was born in October. | Dani |
+| SP2 | Dani has end-of-year school exams in June. | Dani |
+| SP2 | Nobody has yet asked Dani how long she sleeps. | Dani |
+| SP2 | No maturity estimate is on file for Dani or Milan. | Dani, Milan |
+| SP2 | Milan was born in January. | Milan |
+| SP2 | Milan is in his final year of secondary school, with exams at the end of the season, in the same weeks as the academy decision. | Milan |
+| SP2 | Sara started athletics at 12. | Sara |
+| SP2 | Sara has university exam periods in January and June. | Sara |
