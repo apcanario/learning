@@ -307,3 +307,5 @@ A buyer books a demo on perqo.com; once the client has signed, its finance manag
 - Polar Bear book 2nd (2002) and 3rd (2006) edition years from knowledge and O'Reilly catalogue entries, not from the title pages.
 - Two Waves Books as the publisher of Living in Information, from knowledge; the publisher's page does not print it.
 - Fresh check 2026-10-30 (Opus 5.5): keep · 0 errors, 4 should-fix, 7 minor; all applied; report `audits/ux/fresh-check-IA1.md`
+
+Figure note 2026-11-17 (P109, row H-4): figure 4's green "help, download" cell gains its key (only for help articles and the link to download the app, section 5); before, it had none. Prose unchanged; the figure re-checked by a fresh Opus 5.5 agent (`kit/reviews/p109/`).

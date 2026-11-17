@@ -362,3 +362,5 @@ All web sources opened on 2 November 2026 unless another date is given.
 Fresh check 2026-11-02 (Opus 5.5): fix · 2 errors, 8 should-fix, 7 minor; all applied; report `audits/brand-ai/fresh-check-A8.md`.
 
 Correction 2026-11-15, found by the W-BW1 correction check (P107, second round): the consolidated text of Decreto-Lei 57/2008 that this unit cited ran only to Decreto-Lei 9/2021; its citation, in the text on art. 9 and 19 and in Sources, now points to the Procuradoria-Geral Distrital de Lisboa consolidated text to Lei 10/2023, with the amending act (art. 5 of Decreto-Lei 109-G/2021) already cited; no claim changed; report `audits/brand-ai/corrections-2026-11-15-P107-A8.md`.
+
+Figure note 2026-11-17 (P109, row H-4): figure 3's cells now take the tones of their keys (owns, confirms, reviews, if unclear, optional, policy, sign, label, enforces); before, every cell was drawn in its row's blue while its key had another tone. Data, labels and prose unchanged; the figure re-checked by a fresh Opus 5.5 agent (`kit/reviews/p109/`).

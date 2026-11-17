@@ -63,3 +63,7 @@ Fetches (WebFetch):
 - https://www.attalus.org/docs/other/inscr_217.html : read (irrelevant: Metrodoros)
 - https://elekpub.bib.uni-wuppertal.de/download/pdf/7523621.pdf : read (Mommsen, p. 65 n., quotes IvP 249's will clause)
 - https://en.wikipedia.org/wiki/Attalus_III : read (nothing on the decree)
+
+
+---
+Recorded 17 Nov 2026 by the H-4 chat (Opus 5.5): both places CONFIRMED; nothing applied from this report. Its separate lead (the decree's timing, "within weeks" and "just after") was checked by a second fresh Opus 5.5 checker, `corrections-2026-11-17-p64-timing.md`, whose two passed replacements were applied.
