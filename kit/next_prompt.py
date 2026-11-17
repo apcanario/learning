@@ -24,7 +24,7 @@ sys.path.insert(0, str(R))
 from courses import COURSES
 
 QUEUE = ('personal-brand', 'building-with-ai', 'sport-psychology')   # the courses, in the order their rows run (S-SP0, 16 Nov 2026: rows W-SP1 to W-DD-SP3 come from the hub's ORDER)
-HOLDS = {'W-PB5': 'S-PB1'}   # a writing row that waits for a review row: while the review row is in the queue of docs/BACKLOG.md, no prompt runs past it (Pedro, 12 Nov 2026, 08:30)
+HOLDS = {'W-PB5': 'S-PB1', 'W-SP4': 'R-SP1'}   # a writing row that waits for a review row: while the review row is in the queue of docs/BACKLOG.md, no prompt runs past it (Pedro, 12 Nov 2026, 08:30)
 SRC = ROOT / 'courses' / 'brand-ai'                      # the private source units
 ACADEMY = 'https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH'
 NOTES = {   # what one row needs beyond the template
