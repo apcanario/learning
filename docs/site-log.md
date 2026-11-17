@@ -14,22 +14,22 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | SP3 | Coaching | Write SP3, Motivation and the climate you create, for Sport Psychology for Coaches. |
-| 2 | SP4 | Coaching | Write SP4, Anxiety, arousal and performing under pressure, for Sport Psychology for Coaches. |
-| 3 | SP5 | Coaching | Write SP5, The cognitive-behavioural toolkit, for Sport Psychology for Coaches. |
-| 4 | SP6 | Coaching | Write SP6, Training under pressure, for Sport Psychology for Coaches. |
-| 5 | SP7 | Coaching | Write SP7, Reading and responding to an athlete, for Sport Psychology for Coaches. |
-| 6 | SP8 | Coaching | Write SP8, Competition day, for Sport Psychology for Coaches. |
-| 7 | SP9 | Coaching | Write SP9, Wellbeing, red flags and referral, for Sport Psychology for Coaches. |
-| 8 | SP10 | Coaching | Write SP10, The season plan, for Sport Psychology for Coaches. |
-| 9 | DD-SP1 | Coaching | Write DD-SP1, Deep dive: the coach's line with minors, for Sport Psychology for Coaches. |
-| 10 | DD-SP2 | Coaching | Write DD-SP2, Deep dive: weight, body and who decides, for Sport Psychology for Coaches. |
-| 11 | DD-SP3 | Coaching | Write DD-SP3, Deep dive: tuning out the noise, for Sport Psychology for Coaches. |
+| 1 | SP4 | Coaching | Write SP4, Anxiety, arousal and performing under pressure, for Sport Psychology for Coaches. |
+| 2 | SP5 | Coaching | Write SP5, The cognitive-behavioural toolkit, for Sport Psychology for Coaches. |
+| 3 | SP6 | Coaching | Write SP6, Training under pressure, for Sport Psychology for Coaches. |
+| 4 | SP7 | Coaching | Write SP7, Reading and responding to an athlete, for Sport Psychology for Coaches. |
+| 5 | SP8 | Coaching | Write SP8, Competition day, for Sport Psychology for Coaches. |
+| 6 | SP9 | Coaching | Write SP9, Wellbeing, red flags and referral, for Sport Psychology for Coaches. |
+| 7 | SP10 | Coaching | Write SP10, The season plan, for Sport Psychology for Coaches. |
+| 8 | DD-SP1 | Coaching | Write DD-SP1, Deep dive: the coach's line with minors, for Sport Psychology for Coaches. |
+| 9 | DD-SP2 | Coaching | Write DD-SP2, Deep dive: weight, body and who decides, for Sport Psychology for Coaches. |
+| 10 | DD-SP3 | Coaching | Write DD-SP3, Deep dive: tuning out the noise, for Sport Psychology for Coaches. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-17 | SP3 | Coaching | SP3, Motivation and the climate you create, written. |
 | 2026-11-17 | SP2 | Coaching | SP2, The developing athlete, 10 to 25, written; five Building with AI units also had remaining statements about how Academy was built corrected. |
 | 2026-11-17 | SP1 | Coaching | SP1, What a coach can do, and how to tell evidence from noise, written; the Building with AI units also gained the facts about how Academy was built that they had been missing. |
 | 2026-11-17 | S-BW | AI | The unit plans of Building with AI were brought in line with what was written, three units were corrected, and the record of how Academy was built gained the facts the units had asked for. |
