@@ -25,7 +25,7 @@ At 11 November 2026 Academy held five written courses in four subjects: two hist
 
 This course is a sixth, written after that count. By 16 November 2026 its folder held BW1 to BW10 and DD-BW1, one Markdown file per unit (case file §1, notes of 16 Nov 2026). Each unit's reading page on the site opens by saying that an AI model wrote it, naming the model, and that a separate model in a context that had not seen the writing checked it, with the check's counts (§1, note).
 
-Three things the count does not tell you. The case file gives no total of words written, so 194 units at 2,000 to 6,000 words each is a range by guide, not a measure. It does not say whether the history courses' 157 units had a fresh check: its table of fresh checks covers the marketing, AI and UX courses only (§5). And it does not say how long any unit took (§9). "October and November 2026" and 194 units is as far as the record goes; a rate per day cannot be computed from it, because the file gives no start date.
+Three things the count does not tell you. The case file gives no total of words written across all courses (§9); beside the two history courses' about 244,000 and 264,000 words (§1, added 17 Nov 2026), 2,000 to 6,000 words a unit is a range by guide, not a measure. It does not say which of the first history course's 78 reports had a fresh check, though the second's 79 were all checked by a fresh agent (§5, §9, added 17 Nov 2026); its table of fresh checks covers the marketing, AI and UX courses only (§5). And it does not say how long any unit took (§9). The work began with a first request on 22 Oct 2026 (§1, added 17 Nov 2026); with no total of words and no hours, this unit computes no rate.
 
 ## 2 · The method, as it was run
 
@@ -38,15 +38,15 @@ The method is laid out as a spec in BW5 §10 and as a pipeline in BW7 §8; this 
 1. **The fresh check became a rule after a failure.** The first three marketing units were written from one research report produced by research agents across five tracks, without a fresh check; Audit 1 sent them to rewrite, and "from then on every unit of that family got a fresh check before filing" (§3). The first AI unit predates the rule (§5).
 2. **Three checker models ran the fresh check:** Fable 5.1 on 19 drafts, Opus 5.5 on 12, Fable 5.2 on 5 (§5, by count of its table). The method names Fable 5.1 as the auditing model (§2); it names no model for the fresh check.
 3. **The figure rule changed.** At first a figure that failed its check three times was dropped, and two were; the owner later ruled that figures are never dropped and are fixed until they pass (§6).
-4. **The applying step became an agent.** From BW7 of this course (16 Nov 2026), a separate agent, the applier, running Opus 5.5, applied the fresh check's findings and could add companion edits a finding implies; writer, checker, applier, filer and corrections checker were each a fresh agent (§2, note). The record does not say who applied findings for the 42 earlier units of §5, the 36 of its table and BW1 to BW6 (§2, note; §5, note).
+4. **The applying step became an agent.** From BW7 of this course (16 Nov 2026), a separate agent, the applier, running Opus 5.5, applied the fresh check's findings and could add companion edits a finding implies; writer, checker, applier, filer and corrections checker were each a fresh agent (§2, note). For the 36 units of §5's table the findings were verified and applied by the chat that orchestrated and filed the row, recorded as "the maintainer", on Opus 5.5 except in three rows (Fable 5.1 in two UX rows, Fable 5.2 in one) (§2, added 17 Nov 2026).
 5. **A thinner main chat was asked for and not run.** For BW10 and for DD-BW1, the row's prompt asked for a main chat on a smaller model (Sonnet 5.5) that only staged packets, filed and recorded; both sessions ran Opus 5.5 and were recorded as such (§2, notes). DD-BW1's row was the second of three rows run in one main chat (§2, note).
-6. **Checks were added; the record does not date them.** A script now checks this course's data folder against a list of private terms, and its fresh checker checks each unit against the same list; the record does not say when this was added relative to the structure audit that found private terms in a public build (§7, note). A script also checks the course index after each filing chat and restores every file if the check fails (§1, note).
+6. **Checks were added.** A script now checks this course's data folder against a list of private terms, and its fresh checker checks each unit against the same list (§7, note); the script that fails the build on a private term in a public course was added on 11–12 Nov 2026, when the two public courses were created, after the structure audit of 29 Oct 2026 that found private terms in a public build (§7, added 17 Nov 2026). A script also checks the course index after each filing chat and restores every file if the check fails (§1, note).
 
 The proposal rule shows in the flag counts: the case file's method says a proposed row is not worked until the owner confirms it (§2), and the case file's syllabus-flags note says a flag that would change a brief waits for a syllabus review the owner confirms, with no fixed date for one; at 16 Nov 2026, before BW5's flags were added, of 34 flags raised at the course's creation and by BW1 to BW4, 26 were open, 7 carried, 1 resolved by a correction and none resolved by a syllabus review (§2, note). Read plainly (this unit's reading): proposals were raised faster than any review settled them.
 
 ## 3 · Errors per unit at the fresh check
 
-The fresh check is the one stage the record counts for every unit it covers. The table below is the case file's §5 table, with two changes: the private courses' unit codes are replaced by the row's number in the case file's order (the case file does not say that order is the order of writing), and this course's eleven units whose checks the case file records (BW1 to BW10 and DD-BW1) are added at the foot, with their totals and the totals of all 47 rows. Counts are the checker's findings on the writer's handed-in draft (§5).
+The fresh check is the one stage the record counts for every unit it covers. The table below is the case file's §5 table, with two changes: the private courses' unit codes are replaced by the row's number in the case file's order (the case file gives that order as the course index's build order, each unit's writing dated by the day, with no order within a day), and this course's eleven units whose checks the case file records (BW1 to BW10 and DD-BW1) are added at the foot, with their totals and the totals of all 47 rows. Counts are the checker's findings on the writer's handed-in draft (§5).
 
 | Row | Course | Checker | Verdict | Errors | Should-fix | Minor |
 |---|---|---|---|---|---|---|
@@ -107,7 +107,7 @@ What the table says, by arithmetic on it:
 
 - **Most drafts had an error.** Of all 47 drafts in the table, 36 had at least one and 11 had none: 76.6%. Of the 36 of three courses, 28 had at least one and 8 had none (§5), 77.8%; of this course's 11, 8 had at least one (§5, notes), 72.7%. A count kept in one AI unit at the time it was written gives the same picture from earlier: fifteen of the first twenty drafts had an error at first check (§5), 75%.
 - **Errors were few per draft; findings were many.** 72 errors across 47 drafts is 1.5 a draft: 11 drafts had none, 13 had one, 11 had two, 11 had three and 1 had four. All findings together number 803, from 8 to 35 a draft, 17.1 on average. Errors are 9.0% of the findings, should-fix 40.3%, minor 50.7%.
-- **A clean draft still got work.** Of the 11 drafts with no error, 5 were kept as they were and 6 were sent back to fix on their should-fix findings. Every "keep" had no error. The one "rewrite" (row 17) had the most errors, 4.
+- **A clean draft still got work.** Of the 11 drafts with no error, 5 were kept as they were and 6 were sent back to fix on their should-fix findings. Every "keep" had no error. The one "rewrite" (row 17) had the most errors, 4; the maintainer read it as fix under the method's definition, all its findings were applied, and the records show no rewrite and no re-check (§5, added 17 Nov 2026).
 - **The courses look alike.** Marketing: 8 of 11 drafts with an error; 15 errors, 71 should-fix, 81 minor, 167 findings. AI: 8 of 10; 17, 58, 89, 164. UX: 12 of 15; 26, 108, 133, 267. This course: 8 of 11; 14, 87, 104, 205.
 
 ```viz
@@ -118,7 +118,7 @@ What the table says, by arithmetic on it:
 {"kind": "bars", "mode": "stacked", "series": [{"name": "Errors", "tone": 1}, {"name": "Should-fix", "tone": 4}, {"name": "Minor", "tone": 3}], "rows": [{"label": "Marketing (11 drafts)", "values": [15, 71, 81]}, {"label": "AI (10 drafts)", "values": [17, 58, 89]}, {"label": "UX (15 drafts)", "values": [26, 108, 133]}, {"label": "This course (11 drafts)", "values": [14, 87, 104]}], "caption": "Fresh-check findings by grade and course, 803 in all; errors 15 marketing, 17 AI, 26 UX, 14 this course: §3 of this unit, summed from the table in Academy case file §5 and its notes. The courses differ in subject, units, dates and checkers, and there is no control (§3), so the bars compare nothing causal."}
 ```
 
-**What the table cannot be read for.** It cannot rank the checker models. BW6 §4 and BW2 §5 already say so: units, courses and dates differ, and there is no control (case file §9). It cannot say which model wrote each draft: the method names Opus 5.5 as the writer and says the writing model is recorded (§2), but the table does not list it per draft. It cannot say whether the fresh check made later drafts better: the file does not say the rows are in order of writing. And an error count is a count of what one checker found, not of what was there: the case file does not count findings the maintainer rejected after verifying them, so the checkers' false-alarm rate is unknown, and nothing measures what they missed. The nearest evidence on both is in §5 below.
+**What the table cannot be read for.** It cannot rank the checker models. BW6 §4 and BW2 §5 already say so: units, courses and dates differ, and there is no control (case file §9). The writer did not vary: every one of the 36 drafts was written by Opus 5.5 (§5, added 17 Nov 2026). It cannot say whether the fresh check made later drafts better: the rows are in build order, dated by the day with no order within a day (§5, added 17 Nov 2026), and there is no control (§9). And an error count is a count of what one checker found, not of what was there: the case file does not count findings the maintainer rejected after verifying them, so the checkers' false-alarm rate is unknown, and nothing measures what they missed. The nearest evidence on both is in §5 below.
 
 ## 4 · The two sample audits, and what each led to
 
@@ -130,9 +130,9 @@ The sampling arithmetic for both audits is in BW6 §5 and §7; this section give
 
 **Audit 2** covered four units: 28 claims sampled, 96 checked in all. No sampled claim failed; one incidental claim outside the sample failed, a miscited caption. Ten claims were stale, all in one unit and from one cause: an independent benchmark published a new index version the day before the unit read its leaderboard. All four units passed, and 26 errata were applied the same day (§4).
 
-*What it led to.* Errata, the same day (§4). The case file records no change of method after Audit 2. It does not give Audit 2's date, which units it covered, which model ran it, or whether any of the ten stale claims were among the 28 sampled (BW6, Deliverable H, marks these unknown).
+*What it led to.* Errata, the same day (§4). The case file records no change of method after Audit 2. Audit 2 ran on 29 Oct 2026, on Fable 5.1 with live search, in its own agent context that had not seen the writing, over four units, three of the AI course and one of the marketing course; 3 of the ten stale claims were among the 28 sampled and 7 were found beyond the sample, and the decision rule was applied to the sample only (§4, added 17 Nov 2026).
 
-**What did not happen.** Audits 3 onward of the marketing, AI and UX courses had not run at 11 November 2026 (§9). The method calls for an audit every four units (§2); the three courses together had 37 units at that date (§1), so, on this unit's reading of the method's schedule (the case file does not say whether it counts units per course or across courses), more audits were due than had run. The record does not say why. Two audits on eight units (four each) is the whole of the case's sample-audit evidence.
+**What did not happen.** Audits 3 onward of the marketing, AI and UX courses had not run at 11 November 2026 (§9). The method calls for an audit every four units (§2); the three courses together had 37 units at that date (§1), so, on this unit's reading of the method's schedule (the case file does not say whether it counts units per course or across courses), more audits were due than had run. The record gives the order of events, not a cause: after Audit 2, Audits 3 to 6 of the marketing and AI courses were recorded as owed to a later stage reserved for the auditing model; an ask of 29–30 Oct 2026 records the owner low on that model's allowance and moves its check to a later row; on 15 Nov 2026 the owner closed that stage, retired the four-unit audit and left the fresh check and the staleness check as the guards (§9, added 17 Nov 2026). Two audits on eight units (four each) is the whole of the case's sample-audit evidence.
 
 ## 5 · The kinds of error that recur
 
@@ -172,7 +172,7 @@ What fixing took, as far as the record goes:
 - **Under the later rule**, set by the owner, figures are never dropped and are fixed until they pass. One sitemap figure passed on its eighth check (§6): seven failures, each followed by a fix and a check by a new agent.
 - **At the fresh check**, all three errors in DD-BW1's draft were figures that carried facts the text did not (§5, note).
 
-What the record does not hold: how many figures the units declare, how many failed their first check, what each failure was, how long a fix took, or which model checked figures (BW7 §8 marks the last as not recorded). One figure at eight checks is the extreme; the record gives no typical case.
+What the record holds beyond that: every figure check and re-check was run by a separate Opus 5.5 agent; the figure passes added after writing kept 38 figures and dropped 4 in the marketing and AI courses' twelve filed units, and in the first history course 166 of 266 proposed passed their first check, 94 of the 95 fixed passed the re-check and 260 were kept; the verify script checked 509 figures on 152 pages on 30 Oct 2026 (§6, added 17 Nov 2026). What it does not hold: a total of figures declared at one date or a typical number of checks to pass (§9), what each failure was, or how long a fix took. One figure at eight checks is the extreme, beside two matrices that passed on their seventh (§6).
 
 The rule the figures obey is the course's own: a figure adds no fact (the course's shared preamble; Academy case file §6: every label and number must already be in the text). DD-BW1's count shows how it is broken: a fact placed in a figure with no sentence in the text that states and sources it.
 
@@ -182,26 +182,26 @@ The machinery around the text (case file §7, with the notes of 15 and 16 Nov 20
 
 | Failure | What it cost | What followed |
 |---|---|---|
-| **Lost agents.** Writer agents were lost to container restarts; one deep dive lost two writers, and the third resumed from the second's working files (§7) | Two writer runs | The third writer resumed from files; no rule recorded (BW9 §9) |
-| **No transcript.** Some sessions kept no agent transcript on disk, so scripted checks of what each agent had read could not run; the agents' own reports stood in their place (§7) | A check that could not run | No rule recorded |
+| **Lost agents.** Writer agents were lost to container restarts; one deep dive lost two writers, and the third resumed from the second's working files (§7) | Two writer runs | The third writer resumed from files, and the lost transcripts were checked by script (§7); no rule adopted after it is recorded (§9) |
+| **No transcript.** Some sessions kept no agent transcript on disk, so scripted checks of what each agent had read could not run; the agents' own reports stood in their place (§7) | A check that could not run | The record says so, and the model recorded is the one each agent stated (§7) |
 | **The wrong model ran.** A session's model named "fable" resolved to a newer version than the method names (§7) | Every check it ran, recorded as owed again on the named version | Checks re-owed |
 | **Refused report writes.** BW1's checker could not write its report; on BW9's row, the fresh checker and both corrections checkers were refused a write of their reports; on BW10's and DD-BW1's rows, every agent was (§7, notes) | Each report the record follows reached its file only through the main chat, which saved it from the agent's reply (verbatim on the records of BW9 and DD-BW1, and of BW10's fresh checker) | Saved before any change was applied (§7, note on BW9) |
 | **A thinner main chat not run.** Two rows asked for Sonnet 5.5 and ran on Opus 5.5 (§2, notes) | Not recorded | Recorded as run |
-| **Private terms in a public build.** One of seventeen findings of a structure audit of the project itself; another was project instructions that carried procedures and paraphrased the method file (§7) | Not recorded | A script check against a list of private terms, date not recorded (§7, note); BW4 §7 reads the two findings |
+| **Private terms in a public build.** One of seventeen findings of a structure audit of the project itself; another was project instructions that carried procedures and paraphrased the method file (§7) | Not recorded | A script check against a list of private terms, added 11–12 Nov 2026, after the structure audit (§7); BW4 §7 reads the two findings |
 
 **A publish that had to be repeated.** The site is published in two places after each filing, first as an artifact on claude.ai and then on GitHub Pages (§1, note), and a script restores every file if the course index check fails (§1, note). The case file records one repeated publish and one retriggered deploy (§7, added 17 Nov 2026): a layout fault found after a publish on 4 Nov 2026 was fixed and the site published a second time the same day, neither the change's checker nor the verify script having caught it; and on 9 Nov 2026 a GitHub Pages run failed with no job run and was retriggered with an empty commit. It also records publishes the tool first refused until the named files were read or checked against the build, and deploys that did not run when attaching the public repository was refused (§7).
 
-**What the failures have in common** (stated opinion). Four of the six are failures of the record: a run whose work survived only in files, a check with no evidence of what was read, a model name that did not say what ran, a report that reached its file by an unplanned path. The other two are not: a main chat that ran on another model than the one asked for, which the record logged as run (§2, notes), and private terms reaching a public build, a leak in the output; the case file records a private-terms check but does not date it against the leak (§7, note). In the four, what was at risk was the project's ability to say what had happened, which is the thing this unit, and DD-BW3 for your project, depends on.
+**What the failures have in common** (stated opinion). Four of the six are failures of the record: a run whose work survived only in files, a check with no evidence of what was read, a model name that did not say what ran, a report that reached its file by an unplanned path. The other two are not: a main chat that ran on another model than the one asked for, which the record logged as run (§2, notes), and private terms reaching a public build, a leak in the output; the case file dates the private-terms check to 11–12 Nov 2026, after the structure audit of 29 Oct 2026 that found the leak (§7). In the four, what was at risk was the project's ability to say what had happened, which is the thing this unit, and DD-BW3 for your project, depends on.
 
 ## 8 · What was recorded about cost, in chats and time, and what was not
 
-**Recorded: chats and models.** The owner's chats in the project were reviewed for one deep dive: 53 chats over six days, the project's whole history at the time (case file §8). By model, read from commit trailers: 31 on Opus, 18 on Fable, 4 on both (§8). Each ask was classified by task type, model, outcome and number of turns; the labels were applied by hand, "accepted" was a proxy, and 14 endings were not seen (§8). The review produced ten changes, ranked, each tied to a count (§8); the case file does not list them.
+**Recorded: chats and models.** The owner's chats in the project were reviewed for one deep dive: 53 chats over six days, the project's whole history at the time (case file §8). By model, read from commit trailers: 31 on Opus, 18 on Fable, 4 on both (§8). Each ask was classified by task type, model, outcome and number of turns; the labels were applied by hand, "accepted" was a proxy, and 14 endings were not seen (§8). The review produced ten changes, ranked, each tied to a count (§8), which the case file lists with their counts (§8, added 17 Nov 2026).
 
 **Recorded: agents per row.** On BW10's and DD-BW1's rows, writer, fresh checker, applier, two corrections checkers and filer were each a fresh Opus 5.5 agent, six to a row, under a main chat (§2, notes). One sitemap figure took eight checks by new agents (§6). One deep dive took three writers (§7).
 
-**Recorded: time, only as "the same day".** Audit 1's three units were rewritten the same day; Audit 2's 26 errata were applied the same day (§3, §4). The whole build ran in October and November 2026 (§1).
+**Recorded: time, by the day.** Audit 1's three units were rewritten the same day; Audit 2's 26 errata were applied the same day (§3, §4). The work began with a first request on 22 Oct 2026, and the private courses' build order dates each unit's writing by the day (§1, added 17 Nov 2026).
 
-**Not recorded.** No measure of hours or money spent per unit (§9). No plan, token, window or usage-bar measure for any unit or check (§7, note of 15 Nov 2026; BW10 §1 and Deliverable Part 1 mark the same gaps). No record of the effort setting for any unit (§9), or of any budget or stop set on agent runs (§9). BW2's routing table and BW10's budgets were built for the case with "not recorded" in every cost cell for this reason, and this unit takes no usage figure from either.
+**Not recorded.** No measure of hours or money spent per unit (§9). No plan, and no token or window measure for the writing of a single unit (§9; BW10 §1 and Deliverable Part 1 mark the same gaps); the token measures the record holds are batch totals: about 4.5 million tokens for the history courses' curated bibliographies over 26 unit groups, and 2.83 million for the public marketing course's twelve unit audits (§7, added 17 Nov 2026). Usage limits stopped two sessions, three times in all: the largest history writing session twice, and an audit chat once, after 18% of the auditing model's weekly allowance (§7). No record of the effort setting for any unit (§9) or of any spend cap on agent runs (§9); the caps recorded are on agents, searches and attempts: figure passes ran at most eight agents at a time, re-run auditors were held to 40 searches each, and four figure-pass asks gave an attempt cap (§7). BW2's routing table and BW10's budgets were built for the case with "not recorded" in every cost cell for this reason, and this unit takes no usage figure from either.
 
 The consequence is the largest single limit on what the record can support. Every change in this unit's deliverable adds work: a check, a log field, a re-run. The record can say what each change would have caught; it cannot say what any of them cost, so it cannot say whether one is worth its price. A reader who keeps one more column than Academy did (hours, or the usage bar before and after) can answer that for their own project.
 
@@ -209,7 +209,7 @@ The consequence is the largest single limit on what the record can support. Ever
 
 - **No control.** No unit was written without the method (§9). Nothing in the record shows the method beats a lighter one; BW5 §10, BW7 §8 and BW9 §9 each say the same.
 - **No second project and no second person** (§9). Every rate above is one person's, on one kind of output (long-form sourced reports), with one family of models.
-- **No before and after.** The fresh check was introduced after Audit 1; Audit 2's units passed; the case file does not say whether those units had a fresh check (BW5 §10, BW6 §7), so the record cannot say the check caused the pass.
+- **No before and after.** The fresh check was introduced after Audit 1; Audit 2's units passed; all four are among the 36 units of §5's table that had a fresh check before filing (§4, added 17 Nov 2026; §5), so Audit 2 has no unchecked unit to compare and the record cannot say the check caused the pass.
 - **No measure of what the checks missed.** The 72 errors in §3's table are what checkers found. Audit 2's incidental miscited caption outside the sample (§4) shows that errors survive a clean sample; how many survive a fresh check is not measured anywhere in the record.
 - **No model comparison.** Three checker models ran on different units, courses and dates (§5). Any difference between their counts is confounded with all three.
 - **A record compiled by the project itself.** The case file was compiled from the project's own records, with private details removed (case file header). Its counts are the project's counts of its own work, and the case file records no outside check of them.
@@ -280,17 +280,17 @@ Four parts. Part 1 is the case report: the record of §1 to §9 as one form, eac
 | Courses written | 5 at 11 Nov 2026 (two history, marketing, AI, UX), plus this course, BW1 to BW10 and DD-BW1, by 16 Nov 2026 | §1; §1 notes |
 | Units written | 194 at 11 Nov 2026: 78, 79, 11, 11, 15; plus 11 of this course by 16 Nov 2026 | §1; §1 notes |
 | Unit form | Long-form Markdown report, 2,000 to 6,000 words by guide (longest about 16,900), sources in place, deliverable built in full | §1 |
-| Total words | Not recorded | — |
-| Period | October and November 2026; start date not recorded | §1 |
+| Total words | Not recorded across all courses; the two history courses about 244,000 and 264,000 | §1, §9 |
+| Period | From a first request on 22 Oct 2026; the Project's chat history and the repository from 28 Oct 2026; to November 2026 | §1 |
 
 **B. The method as run**
 
 | Line | Value | Source |
 |---|---|---|
 | Stages | Syllabus; brief per unit, never reworded; one context per unit; writer's own pass; fresh check; sample audit every four units; staleness check at six months | §2 |
-| Writer model | Opus 5.5 named; per-draft model not in the table | §2, §5 |
+| Writer model | Opus 5.5 for all 36 drafts of §5's table | §2, §5 |
 | Checker models (fresh check) | Fable 5.1: 19; Opus 5.5: 12 plus BW1 to BW10 and DD-BW1; Fable 5.2: 5 | §5; §5 notes |
-| Audit model | Fable 5.1 named; per-audit model not recorded | §2 |
+| Audit model | Fable 5.1 for Audits 1 and 2; Fable 5.2 for the public marketing course's four audits | §2, §4 |
 | Effort settings | Not recorded | §9 |
 | Changes while running | Fresh check made a rule after Audit 1; figure rule from drop-after-three to fix-until-pass; applier agent from BW7; thin main chat asked for on two rows and not run | §3, §6, §2 notes |
 
@@ -305,7 +305,7 @@ Four parts. Part 1 is the case report: the record of §1 to §9 as one form, eac
 | This course | 11 drafts, each checked by Opus 5.5 (errors, should-fix, minor): BW1 1, 7, 7; BW2 1, 5, 10; BW3 0, 8, 11; BW4 2, 5, 5; BW5 1, 5, 12; BW6 1, 7, 3; BW7 2, 7, 11; BW8 3, 9, 11; BW9 0, 7, 11; BW10 0, 7, 11; DD-BW1 3 (all in figures), 20, 12. Together 14, 87, 104: 205 findings; 8 of 11 with an error; 10 fix, 1 keep (BW9) | §5 notes |
 | Fixes held as wrong or incomplete | BW10: 4 of 18. DD-BW1: 2 of 35. Earlier units: not recorded | §5 notes |
 | Findings rejected after verification | Not recorded | — |
-| History courses' 157 units checked? | Not recorded | — |
+| History courses' 157 units checked? | Second course: all 79 by a fresh agent. First course: from 25 Oct 2026 a script check, a fresh checker per report and a maintainer pass; which reports had one not recorded | §5, §9 |
 
 **D. Sample audits**
 
@@ -314,18 +314,18 @@ Four parts. Part 1 is the case report: the record of §1 to §9 as one form, eac
 | Audit 1 | 3 marketing units: 1 of 8 sampled failed; full audit 23 of 91 failed, 0 stale, 0 invented; verdict rewrite (no deliverables; 2 table rows on figures the vendor pages lacked). First AI unit: 7 of 7, pass | §3 |
 | What Audit 1 led to | Three units rewritten the same day; fresh check on every later unit of that family | §3 |
 | Audit 2 | 4 units: 0 of 28 sampled failed; 96 checked; 1 incidental fail (miscited caption); 10 stale in one unit, one cause; all passed; 26 errata the same day | §4 |
-| Audit 2's date, units, model | Not recorded | — |
-| Audits due and not run | Audits 3 onward not run at 11 Nov 2026 | §9 |
+| Audit 2's date, units, model | 29 Oct 2026; four units, three AI and one marketing; Fable 5.1, with live search; 3 of the 10 stale claims among the 28 sampled | §4 |
+| Audits due and not run | Audits 3 onward not run at 11 Nov 2026; owed to a stage for the auditing model, which the owner closed on 15 Nov 2026, retiring the four-unit audit | §9 |
 
 **E. Recurring errors.** A figure the cited page does not carry; a qualifier the source does not carry; an author named wrongly; a law that had changed; a quotation the page does not hold; a count that did not add up; a product fact differing between two of the vendor's pages (§3, §5). Batches from one cause: 10 stale claims (§4), 3 missing deliverables (§3), 3 figure errors in one unit (§5 note). Invented sources: none recorded (§3). Counts by kind: not recorded.
 
-**F. Figures.** Figures declared as data and drawn by script, each checked against the text by a separate agent (§6). 2 dropped under the early rule; one sitemap passed on its eighth check (§6). Figures declared, first-check failure rate, checker model: not recorded.
+**F. Figures.** Figures declared as data and drawn by script, each checked against the text by a separate agent (§6). 2 dropped under the early rule; one sitemap passed on its eighth check (§6). Every check by a separate Opus 5.5 agent; figure passes after writing: marketing and AI courses 38 kept, 4 dropped; first history course 166 of 266 passed their first check, 260 kept (§6). Figures declared at one date, typical checks to pass: not recorded (§9).
 
 **G. Operation.** 2 writers lost to restarts, third resumed from files (§7). Transcripts missing in some sessions; scripted reading checks could not run (§7). One "fable" session resolved to a newer version; its checks re-owed (§7). Report writes refused on 4 rows, reports saved from replies (§7 notes). Private terms in a public build, 1 of 17 structure-audit findings (§7). Repeated publish: 1, and 1 failed deploy retriggered (§7, added 17 Nov 2026).
 
-**H. Cost.** 53 chats in six days at the review: 31 Opus, 18 Fable, 4 both (§8). Six fresh agents a row on BW10 and DD-BW1 (§2 notes). Hours, money, tokens, usage, plan, effort, agent budgets: not recorded (§9; §7 note).
+**H. Cost.** 53 chats in six days at the review: 31 Opus, 18 Fable, 4 both (§8). Six fresh agents a row on BW10 and DD-BW1 (§2 notes). Hours, money, plan, effort, spend caps, and tokens or usage per unit: not recorded (§9). Token totals for two batches (history bibliographies about 4.5 million; the public marketing course's twelve unit audits 2.83 million) and three usage-limit stops in two sessions (§7, added 17 Nov 2026).
 
-**I. Limits.** No control, no second project, no second person (§9). No before-and-after: Audit 2's units' fresh check not recorded. No measure of misses. Counts compiled by the project itself (header).
+**I. Limits.** No control, no second project, no second person (§9). No before-and-after: Audit 2's four units each had a fresh check (§4, §5). No measure of misses. Counts compiled by the project itself (header).
 
 ### Part 2 · Ten changes the record supports, ranked
 
@@ -341,8 +341,8 @@ Each change is for the case's own method. **Ranking rule** (stated opinion): by 
 | 6 | **Give every agent a file to write its report to, and every writer working files that outlive it.** A report that can reach its file only through the main chat is a hand-off through conversation. | Report writes refused on 4 rows (§7 notes); 2 writers lost, the third resumed from files (§7) | BW7 §2; BW9 §9 | Stated opinion, on measured and vendor sources (BW7 §2) |
 | 7 | **Check each deliverable against its brief's done-when lines before any unit is built on its material,** and at Audit time check that the deliverable exists before sampling its claims. | 3 of 3 deliverables missing at Audit 1; verdict rewrite (§3) | BW5, Deliverable 1d; BW3 | Documented practice (DD-BW1 rule 2) |
 | 8 | **Log the model and version that ran, and keep each agent's transcript or reading list,** for every check and every main chat. | One "fable" session's checks re-owed (§7); 2 rows asked for Sonnet 5.5 and ran Opus 5.5 (§2 notes); transcripts missing in some sessions (§7) | BW7 §7; BW2 §7 | Stated opinion (BW7 §7) |
-| 9 | **Run the private-terms check on the built site before each publish, and record the date it was added.** A check on the source folder does not check what the build renders. | 1 of 17 structure-audit findings: private terms in a public build (§7); date of the check not recorded (§7 note) | BW4 §7; BW10 §7 | Stated opinion (BW4 §7) |
-| 10 | **Record hours and usage per unit,** at least the usage bar before and after each row and the clock time of each stage, so that changes 1 to 9 can be weighed against what they cost. | 0 measures of hours, money, tokens or effort across 205 units (§9; §7 note) | BW10 §1, §4; BW7 §7 | Stated opinion (this unit), on BW10 §1: no usage allowance is published, so the record must keep its own |
+| 9 | **Run the private-terms check on the built site before each publish, and record the date it was added.** A check on the source folder does not check what the build renders. | 1 of 17 structure-audit findings: private terms in a public build (§7); the check added 11–12 Nov 2026, after the structure audit (§7) | BW4 §7; BW10 §7 | Stated opinion (BW4 §7) |
+| 10 | **Record hours and usage per unit,** at least the usage bar before and after each row and the clock time of each stage, so that changes 1 to 9 can be weighed against what they cost. | 0 measures of hours, money or effort, and no token measure for a single unit's writing, across 205 units (§9) | BW10 §1, §4; BW7 §7 | Stated opinion (this unit), on BW10 §1: no usage allowance is published, so the record must keep its own |
 
 *Sources for Parts 1 and 2:* Academy case file §1 to §9, its notes of 15 and 16 Nov 2026 and its header; the units of this course named in each row. "205 units" is 194 at 11 Nov 2026 plus this course's 11 by 16 Nov 2026 (§1 and notes); "47" is the 36 of §5's table plus BW1 to BW10 and DD-BW1.
 
@@ -431,7 +431,7 @@ This unit cites one outside page, the Gemini CLI page in §11, as BW6 §8 read i
 
 1. §4: "more audits were due than had run" is this unit's inference, labelled as such in the text, from 37 units of three courses at 11 Nov 2026 (case file §1) and "a sample audit every four units" (§2); the case file does not say whether the schedule counts units per course or across courses, nor whether the history courses' units are audited on it.
 2. §2 item 2 and Part 1 B: "the method names no model for the fresh check" rests on case file §2 naming only a writing and an auditing model; a later record could name one.
-3. §3: replacing the private courses' unit codes with row numbers keeps the case file's row order; the case file does not say the order is the order of writing, and the unit says so.
+3. §3: replacing the private courses' unit codes with row numbers keeps the case file's row order; the case file gives the order as the course index's build order, dated by the day with no order within a day (§5, added 17 Nov 2026), and the unit says so.
 4. §5 and Part 2 change 4: "6 of 53 fixes held" adds BW10's 4 of 18 and DD-BW1's 2 of 35 (case file §5 notes); the notes describe the held fixes as "itself wrong" (BW10) and "itself incomplete or wrong" (DD-BW1), and the unit treats both as one count.
 5. §8 and Part 2: "205 units" is 194 at 11 Nov 2026 plus this course's 11 by 16 Nov 2026; the case file does not say whether the other courses' counts changed between those dates.
 6. §11: no vendor documentation was read for this unit (search off); the On other tools section points to BW2 §8, BW6 §8 and BW9 §10, which read the vendors' pages on 15 and 16 Nov 2026, and says no equivalent page on model-name resolution is cited in the course.
@@ -448,3 +448,5 @@ Correction 2026-11-16, found by DD-BW2's filer (flag F112, as F52 and F98) and c
 Correction 16 Nov 2026, found by the W-DD-BW3 chat (carried proposal CP-2, flag F101): §3's table extended with the fresh checks of BW1 to BW9 from case file §5 and every total, percentage and figure built on its rows recomputed; corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW3-CP2-DD-BW2.md`.
 
 *Correction, 17 November 2026: changed by this course's syllabus review (BW-1, row S-BW) after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md); see the course's changelog for what changed.*
+
+Correction 17 Nov 2026 (CP-4), found by W-SP1, each change checked by a fresh Opus 5.5 agent against case-academy.md

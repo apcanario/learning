@@ -240,16 +240,16 @@ The case is agent-heavy by design: each unit is written in a new chat or a fresh
 |---|---|---|
 | Three units written from one research report produced by research agents across five tracks; Audit 1 found 23 of 91 claims failing, the three deliverables missing, and qualifiers the sources do not carry (§3) | The three units rewritten the same day; every later unit of that family checked by a fresh context before filing (§3) | The research was parallel work with a check, but the check came after units were built on it. Box 8 puts it before anything is kept (§5, §7) |
 | Writer drafts with errors: 28 of 36 drafts had at least one error at the fresh check, 58 errors in all (§5) | The fresh check runs before filing; it never edits, and each finding is verified before it is applied (§2) | "Looks done" is not done (§6); the gate is a context that did not write the work (§7) |
-| Writer agents lost to container restarts; one deep dive lost two, and the third resumed from the second's working files (§7) | No rule is recorded [NOT IN CASE FILE] | Work that lives in files survives the agent; BW7 §2's hand-offs as files are the rule this suggests |
-| Some sessions kept no agent transcript, so scripted checks of what each agent had read could not run; the agents' own reports stood in (§7) | No rule is recorded [NOT IN CASE FILE] | An agent's report of its own work is a claim (§6); BW7 §7's log keeps evidence of what was read |
+| Writer agents lost to container restarts; one deep dive lost two, and the third resumed from the second's working files (§7) | The lost transcripts were checked by script; no rule adopted after the lost writers is recorded (§7, §9, lines added 17 Nov 2026) | Work that lives in files survives the agent; BW7 §2's hand-offs as files are the rule this suggests |
+| Some sessions kept no agent transcript, so scripted checks of what each agent had read could not run; the agents' own reports stood in (§7) | Where a session kept no transcript, the record says so and the model recorded is the one each agent stated (§7, added 17 Nov 2026) | An agent's report of its own work is a claim (§6); BW7 §7's log keeps evidence of what was read |
 | A session's model named "fable" resolved to a newer version than the method names (§7) | Its checks were recorded as owed again on the named version (§7) | Record what ran, not what was asked for (BW7 §7) |
 | BW1's checker could not write its report; the chat saved the report from the checker's reply (§7, note) | Recorded in the unit's check record (§7, note); no rule recorded [NOT IN CASE FILE] | The report survived only in the reply: the hand-off went through conversation instead of a file (BW7 §2) |
-| Private terms reached a public build (§7) | A script checks this course's data folder against a list of private terms, and the fresh checker checks each unit against it; when the check was added is not recorded (§7, note) | Publishing is a step no agent passes alone (§7); a deterministic check sits before it |
+| Private terms reached a public build (§7) | A script checks this course's data folder against a list of private terms, and the fresh checker checks each unit against it; the script that fails the build on a private term in a public course was added on 11–12 Nov 2026, when the two public courses were created, after the structure audit of 29 Oct 2026 (§7, added 17 Nov 2026) | Publishing is a step no agent passes alone (§7); a deterministic check sits before it |
 | Figures failed their check by a separate agent; under an early rule, a figure failing three times was dropped (two were) (§6) | The owner's later rule: figures are fixed until they pass; one sitemap passed on its eighth check (§6) | A loop with a pass-or-fail check, re-run by a new agent each time (§5) |
 | (Safeguard, not a failure) A script checks the course index after each filing chat inserts its records, and restores every file if the check fails (§1, note) | In place at filing (§1, note) | A deterministic undo of a scoped write (§7) |
 
 
-**What the case cannot show.** No unit was written without the method, so nothing here shows that the fresh agents and checks beat a lighter setup; there is no measure of hours or money per unit (case file §9). The record does not say which permission mode or surface the agents ran in beyond one check run from a Claude Code session on claude.ai (case file §7, note), whether any agent met injected instructions, whether the case ran any scheduled task, or whether work was committed before each agent run [NOT IN CASE FILE].
+**What the case cannot show.** No unit was written without the method, so nothing here shows that the fresh agents and checks beat a lighter setup; there is no measure of hours or money per unit (case file §9). The record does not say which permission mode the agents ran in, or whether any agent met injected instructions (case file §9). Filing and writing rows from 10 Nov 2026 on ran as Claude Code sessions on claude.ai attached to the Project; no scheduled task appears in the records; and the method has a checkpoint commit follow every agent (§7, lines added 17 Nov 2026).
 
 ## 10 · On other tools
 
@@ -347,12 +347,12 @@ Then box 6.
 
 | Case task (case file) | Box 1 | Box 2 | Box 3 | Boxes 4 to 7 | Outcome under this rule | What the case did (case file) |
 |---|---|---|---|---|---|---|
-| Writing a unit from its brief, with sources cited in place (§1, §2) | Private repository (§1) and web pages read with search on; a way out only if the writer can publish [NOT IN CASE FILE: the writer's tools] | No, if the writer only writes a draft file | Yes: claims cited in place (§1); a fresh context checks them (§2) | Several phases sharing context: shape (b), one context per unit; watched or not [NOT IN CASE FILE] | An agent, one per unit, no publish tool, its draft kept only after box 8 | One new chat or fresh agent per unit (§2); fresh check before filing (§3, §5) |
+| Writing a unit from its brief, with sources cited in place (§1, §2) | Private repository (§1) and web pages read with search on; a way out only if the writer can publish; where transcripts were kept, writers used search and fetch and no connector, memory, Projects or Artifact tool (§7) | No, if the writer only writes a draft file | Yes: claims cited in place (§1); a fresh context checks them (§2) | Several phases sharing context: shape (b), one context per unit; watched or not: several writing rows ran unattended overnight or with the owner away (§2, §7) | An agent, one per unit, no publish tool, its draft kept only after box 8 | One new chat or fresh agent per unit (§2); fresh check before filing (§3, §5) |
 | The fresh check (§2) | As the writer | No: it writes findings and never edits (§2) | Yes for each finding, which a maintainer verifies before applying (§2) | Reading a whole unit against its sources: a read-only agent | An agent, read-only, whose findings are claims checked before they are applied | A separate context that never edits (§2); from BW7, a fresh agent (§2, note) |
 | Applying the findings (§2) | No web needed | No | Yes: each finding is applied as an exact replacement, which a diff shows (§2) | Edits across one file: shape (a) | An agent, its write scope one file, the diff read by a checker that did not apply it | From BW7, a separate applier agent, then a corrections checker (§2, note) |
 | The figure check (§6) | No web needed | No | Yes: every label and number must already be in the text (§6), which a script can test | Many files, a summary back: shape (c) | An agent, read-only; better still a script, which Part 3 briefs | A separate agent; failed figures fixed and re-checked by a new agent (§6) |
 | Research across several tracks (§3) | Web only, if it holds no private material | No | Yes, but only by sampling its claims (BW6) | Several independent directions: Research | Research, then BW6's sampling rule before any unit is written from it | Three units written from it; Audit 1 then failed 23 of 91 claims (§3) |
-| Filing, rebuilding, publishing (§1, note) | Private repository and a public site | **Yes:** publishing reaches the public (§1, note) | The build is checked by script (§1, note) | Filing and the build are scripted steps | You publish, after your final pass; scripts and agents may file and build | The site is built by script, verified, and published in two places (§1, note); who starts the publish [NOT IN CASE FILE] |
+| Filing, rebuilding, publishing (§1, note) | Private repository and a public site | **Yes:** publishing reaches the public (§1, note) | The build is checked by script (§1, note) | Filing and the build are scripted steps | You publish, after your final pass; scripts and agents may file and build | The site is built by script, verified, and published in two places (§1, note); the session that works the row publishes and deploys, told to in 13 of 16 row asks read in full (§7) |
 | Confirming a proposed task (§2) | n/a | n/a | No check can be written: a judgement | n/a | No agent: the owner decides | A proposed row is not worked until the owner confirms it (§2) |
 
 ### Part 2 · The guardrail checklist, on the Academy case
@@ -361,26 +361,26 @@ One line per guard, answered yes or no before a run. The case column holds only 
 
 | # | Guard (section) | Academy case |
 |---|---|---|
-| 1 | No agent holds all three trifecta legs; the way out is removed first (§8) | [NOT IN CASE FILE: which tools each agent held] |
-| 2 | Steps that publish, send or cannot be re-run are done by a person, after the final pass (§7; BW7 §5, §6) | Publishing follows filing, a rebuild and a verify (§1, note); who starts it [NOT IN CASE FILE] |
+| 1 | No agent holds all three trifecta legs; the way out is removed first (§8) | Where transcripts were kept: writers used search and fetch and no connector, memory, Projects or Artifact tool; page checkers used only read, glob and grep inside their folder; figure re-checkers used no web tool (§7). Whether any agent held all three legs is not recorded |
+| 2 | Steps that publish, send or cannot be re-run are done by a person, after the final pass (§7; BW7 §5, §6) | Publishing follows filing, a rebuild and a verify (§1, note); the session that works the row starts it, told to in 13 of 16 row asks read in full (§7); several writing rows were published without waiting for the owner (§2) |
 | 3 | The task has a pass/fail check a context that did not do the work can run (§2; BW6 step I) | Yes for units and figures: a fresh check (§2) and a figure check (§6) |
-| 4 | A commit is saved before the run, and the run works on its own branch or worktree (§7) | [NOT IN CASE FILE] |
-| 5 | The agent's tools are an allowlist; a report-only task has read-only tools (§4, §7) | The fresh check never edits (§2); how that is enforced [NOT IN CASE FILE] |
+| 4 | A commit is saved before the run, and the run works on its own branch or worktree (§7) | A checkpoint commit follows every agent; the history courses' figure passes worked on side branches; of 39 row asks held as text, one names a branch and none a worktree (§7) |
+| 5 | The agent's tools are an allowlist; a report-only task has read-only tools (§4, §7) | The fresh check never edits (§2); how that is enforced is not recorded; where transcripts were kept, a script checked each agent's tool use (§7) |
 | 6 | Paths it must not touch are held by a deny rule or hook, not only by the brief (§7) | [NOT IN CASE FILE] |
-| 7 | No connector it does not need (§7) | [NOT IN CASE FILE] |
+| 7 | No connector it does not need (§7) | Eight connectors were connected and no Project procedure used one, a finding that still applied on 16 Nov 2026 (§7, structure audit F14); where transcripts were kept, writers used no connector (§7) |
 | 8 | Never `bypassPermissions` outside an isolated container without internet (§7) | Permission mode not recorded; one check ran in a Claude Code session on claude.ai (§7, note) |
 | 9 | The brief is complete enough that the agent never needs to ask; one context per task (§4) | One self-contained brief per unit, never reworded (§2) |
-| 10 | Every run has a stop: a turn or spend cap, and an attempt cap with what to do on reaching it (§6, §7) | [NOT IN CASE FILE] |
+| 10 | Every run has a stop: a turn or spend cap, and an attempt cap with what to do on reaching it (§6, §7) | Figure passes ran at most eight agents at a time and dropped a figure that failed twice; the public marketing course's re-run auditors were held to 40 searches each; four figure-pass asks gave an attempt cap (§7); no spend cap is recorded (§9) |
 | 11 | Work is written to files as it goes, so a lost agent can be resumed (§9; BW7 §2) | The third writer resumed from the second's working files (§7) |
 | 12 | The log records the model that ran and what the agent read (§9; BW7 §7) | Model recorded (§2); a "fable" session recorded as owed again (§7); transcripts missing in some sessions (§7) |
 | 13 | A reviewer that did not write the work reads the output before it is kept (§7) | Fresh check before filing on 36 units (§5) |
 | 14 | A deterministic check guards anything public (§7) | A private-terms script and the fresh checker's list check (§7, note); an index check that restores every file if it fails (§1, note) |
-| 15 | An unattended run has passed all of box 7, and its first runs are watched (§7) | Whether the case ran any scheduled task [NOT IN CASE FILE] |
+| 15 | An unattended run has passed all of box 7, and its first runs are watched (§7) | No scheduled task existed on the setup of 28 Oct 2026 or appears in the records of 16 Nov 2026; several rows ran unattended overnight or with the owner away instead (§7) |
 | 16 | After two failed corrections, a new session with a rewritten brief (§7) | A failed figure was fixed and checked again by a new agent each time (§6); a rule on rewriting a brief after two failed corrections [NOT IN CASE FILE] |
 
 ### Part 3 · A brief for a first agent task, on the Academy case
 
-The task: replace a judgement the case gives to an agent, the figure check (case file §6: every label and number in a figure must already be in the unit's text), with a script an agent writes and runs, so that the check moves from "a reader agrees" to pass or fail (§2). It is a good first task because it passes box 1 (no web, no connector, nothing sent), box 2 (it writes a script and a report, and changes no unit), and box 3 by construction (a fixture with a planted error is the check). It is written in BW3's brief form, with the lines an agent needs added; the folder names are not in the case file, so they are marked and must be filled before the brief is sent.
+The task: replace a judgement the case gives to an agent, the figure check (case file §6: every label and number in a figure must already be in the unit's text), with a script an agent writes and runs, so that the check moves from "a reader agrees" to pass or fail (§2). It is a good first task because it passes box 1 (no web, no connector, nothing sent), box 2 (it writes a script and a report, and changes no unit), and box 3 by construction (a fixture with a planted error is the check). It is written in BW3's brief form, with the lines an agent needs added; the folder of filed units is the one the case file names (§1, notes of 16 Nov 2026), and the report's date is marked to be filled before the brief is sent.
 
     TASK: Write and run a script that lists, for each figure block in the named units, every label and number that does not appear in the unit's text outside the figure.
 
@@ -391,10 +391,10 @@ The task: replace a judgement the case gives to an agent, the figure check (case
     - reports/figure-labels-[FILL: date].md: one section per unit, one line per missing label with the figure's caption, and a last line "units: N · figures: N · missing: N".
 
     SCOPE AND TOOLS (held by the session's settings, stated here as well):
-    - May read: [NOT IN CASE FILE: the folder of filed units] and checks/fixtures/.
+    - May read: courses/building-with-ai/ and checks/fixtures/.
     - May write: checks/figure_labels.py, checks/fixtures/, reports/ only.
     - May run: python3 on the script and its fixtures. No other commands.
-    - Must not edit any unit, any brief or anything in [NOT IN CASE FILE: the folder of filed units]. No web, no connectors, no git push.
+    - Must not edit any unit, any brief or anything in courses/building-with-ai/. No web, no connectors, no git push.
     - Mode: dontAsk with an allowed-tools list for the above, on a branch named claude/figure-labels.
 
     CONSTRAINTS:
@@ -421,7 +421,7 @@ The task: replace a judgement the case gives to an agent, the figure check (case
 
     MATERIAL:
     <material>
-    Units to check: [NOT IN CASE FILE: the list of filed unit files]
+    Units to check: every file in courses/building-with-ai/, one per unit, named by its code and title
     </material>
 
     TASK (again): Write and run the script, prove it on both fixtures, report, and change nothing else.
@@ -539,3 +539,5 @@ Correction 2026-11-16, corrections C-BW9-1 and C-BW9-2, worked at W-BW10 step 1b
 Correction 2026-11-16 (second round), W-BW10 step 1b (`audits/building-with-ai/corrections-2026-11-16-BW10-r2-BW6-BW9.md`, Changes 4 to 11): bare page addresses (F70); §8's list of the Security page's protections now as that page states them.
 
 *Correction, 17 November 2026: changed by this course's syllabus review (BW-1, row S-BW) after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md); see the course's changelog for what changed.*
+
+Correction 17 Nov 2026 (CP-4), found by W-SP1, each change checked by a fresh Opus 5.5 agent against case-academy.md

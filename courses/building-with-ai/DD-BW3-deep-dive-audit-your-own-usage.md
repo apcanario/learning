@@ -41,7 +41,7 @@ A window is a period and the chats in it. Three rules (stated opinion):
 2. **Short enough to label in one sitting.** The sixty-minute procedure in the Deliverable gives labelling thirty minutes: sixty chats at thirty seconds each, or thirty at a minute (an estimate, unmeasured). Take the shorter of four weeks and the most recent thirty to sixty chats.
 3. **Every chat in it, not the memorable ones.** Chats you remember are the ones that went unusually well or badly. If the window holds more chats than you can label, draw a sample by number, as BW6 §5 step 3 does for claims, and write down that you sampled.
 
-Write the window down with its first and last date, and say whether it was an ordinary stretch of work. The case's window was the project's whole history at the time, six days (case file §8), so it had no selection problem; the case file does not say whether those six days were typical of later work.
+Write the window down with its first and last date, and say whether it was an ordinary stretch of work. The case's window was the project's whole history at the time, six days (case file §8), so it had no selection problem; the review's own writer states that they were a week of heavy building, that every rate in it is a six-day rate not to be read as a habit over a season, and that the mix of tasks will not be a normal week's (case file §8, added 17 Nov 2026).
 
 ### List every chat
 
@@ -59,7 +59,7 @@ The unit of the sheet is the chat, labelled by its first **ask**, the message th
 **1 · Task type.** A short list of five to nine types, written down with a one-line definition each before you label anything. Take the types from your BW2 routing table, one per row, and add "other". Define each by the artefact it produces ("a table extracted from a document"), never by topic, so that two chats about the same subject but producing different things fall in different types.
 *Limits.* The labels are yours and applied by hand, as the case's were (case file §8). Boundary cases will fall between two types. To see how consistent you are, relabel five chats picked by number at the end of the sitting and count how many get the same label (stated opinion; a second reader would be a stronger check, and is rarely available). Large-scale studies label with a model instead: Clio reports reconstructing the true topic distribution of a synthetic dataset with 94% accuracy, and its authors still call its outputs preliminary and in need of further validation before decisions rest on them (Tamkin et al., preprint). A model labelling your chats raises a privacy question (§5).
 
-**2 · Model, and effort where recorded.** The model the chat actually ran on, read from a record: the model shown in the chat, a log line, a commit trailer, your BW7 run log. Never from memory. Where nothing records it, write "not recorded". Effort the same way. The case read its model from commit trailers (case file §8); its labels do not include effort.
+**2 · Model, and effort where recorded.** The model the chat actually ran on, read from a record: the model shown in the chat, a log line, a commit trailer, your BW7 run log. Never from memory. Where nothing records it, write "not recorded". Effort the same way. The case read its model from commit trailers (case file §8); it had an effort field and found effort recorded in none of 53 chats (§8, added 17 Nov 2026).
 *Limits.* What you asked for is not always what ran: in the case, a session's model named "fable" resolved to a newer version than the method named (case file §7), which is why BW7 §7 has the log record the model that ran. A chat that switched models mid-way gets both, marked as a switch.
 
 **3 · Outcome.** One of five values, defined before you start:
@@ -70,7 +70,7 @@ The unit of the sheet is the chat, labelled by its first **ask**, the message th
 - *not seen*: you cannot tell from the record.
 *Limits.* The chat records what the model wrote, rarely what you did with it. "Used" is a proxy, as the case's "accepted" was (case file §8), and the case could not see 14 of its 53 endings (§8). Do not guess an outcome to shrink that count: "not seen" is a finding about your record.
 
-**4 · Turns.** Count your own messages in the chat, and among them your **corrections**: messages that fix, reject or narrow what the model produced. The model's messages are not counted, because where a chat runs agents or tools the thread can hold many messages you did not trigger one by one (stated opinion; check what your tool shows).
+**4 · Turns.** Count your own messages in the chat, and among them your **corrections**: messages that fix, reject or narrow what the model produced. The model's messages are not counted, because where a chat runs agents or tools the thread can hold many messages you did not trigger one by one (stated opinion; check what your tool shows). The case's review counted every message on either side as a turn, each agent's completion notice included (case file §8); this unit counts only yours.
 *Limits.* Turns mix length with friction. A long chat can be a good working session and a two-message chat can be a bad answer you walked away from; read turns beside the outcome, never alone. Clio counts turns as a facet computed directly, without a model (Tamkin et al., preprint). A count needs no judgement, which makes this the most reliable of the four labels (stated opinion).
 
 ### The extra columns
@@ -174,7 +174,7 @@ BW10's twelve usage rules (Deliverable Part 1) and DD-BW1's ten operating rules 
 
 DD-BW1 says of its own ten that only rule 10 rests on measured studies, on older models, and that the rules as a set are its synthesis (DD-BW1, Deliverable Part 2). A count of "broken" on your sheet does not raise or lower that: it says how often your work met the situation the rule covers, which is what decides whether the rule is worth your attention.
 
-**The case.** The case file records that the case's review classified each ask and produced ten ranked changes, each tied to a count (§8); it does not say which of the course's rules the review tested, and DD-BW2 §10 is the only reading of the case against the rules. Its verdicts come from the project's records, not its chats.
+**The case.** The case file records that the case's review classified each ask and produced ten ranked changes, each tied to a count (§8); the review tested the AI course's rules (its operating, usage and agent rules, its decision rule and routing table, and its units on the mental model, skills and verification), each given a verdict (§8, added 17 Nov 2026), not this course's, and DD-BW2 §10 is the only reading of the case against this course's rules. Its verdicts come from the project's records, not its chats.
 
 ## 5 · The privacy of doing this at all
 
@@ -186,11 +186,11 @@ A review re-reads everything you told an assistant, and makes copies. Three copi
 
 **The sheet and the gap report.** Your chats name other people: clients, colleagues, family. The sheet does not need them, and the gap report should be something you could show a colleague. Three rules (stated opinion): the sheet holds labels and counts, never quotations longer than a few words; no row names a person other than you; a pattern is described by its kind ("two tasks in one chat"), never by what the chat was about when that would identify someone. If any chat in the window holds employer material, BW10 §8's five questions apply to the export and the sheet as they did to the chat.
 
-**The case.** The case file was compiled from the project's own records "with private details removed" (case file header), and its record of the review is counts and a description of the method, with no chat quoted (§8). That is the form this unit asks of your gap report. One project; it shows the form is workable, not that it is sufficient.
+**The case.** The case file was compiled from the project's own records "with private details removed" (case file header), and its record of the review is counts and a description of the method, with no chat quoted (§8). The review's working table, chat list, tallies and scripts were kept in its writer's packet folder in the session and are not published, and the chat history it read is private (§8, added 17 Nov 2026); whether those files were deleted is not recorded (§9). That is the form this unit asks of your gap report. One project; it shows the form is workable, not that it is sufficient.
 
 ## 6 · The worked example: one review of 53 chats (Academy case)
 
-What the case file records about the review, in full (case file §8):
+What the case file records about the review in its first lines (case file §8; the lines added on 17 Nov 2026 are under "What it does not show"):
 
 - The owner's chats in the project were reviewed for one deep dive: 53 chats over six days, the project's whole history at the time.
 - By model, read from commit trailers: 31 chats ran on Opus, 18 on Fable, 4 on both.
@@ -208,7 +208,7 @@ What the case file records about the review, in full (case file §8):
 3. **Outcome was the weakest label.** "Accepted" was a proxy and 14 of 53 endings were not seen (§8): about one chat in four (14 ÷ 53 = 26%, arithmetic). A label that cannot be read for a quarter of the chats can still rank changes, but every outcome-based count carries that gap.
 4. **Every change was tied to a count** (§8). That is the ranking rule DD-BW2 Part 2 uses for the record's own changes, and the one §7 asks of yours.
 
-**What it does not show.** The case file holds no breakdown of the 53 chats by task type, outcome or turns, no pattern counts, no rule verdicts, and none of the ten changes (§8). So this unit cannot set the case's list beside yours. What it can set beside your gap report is DD-BW2's case report, line by line (Deliverable, Part B), and DD-BW2's ten changes, the record's own, restated for any project (Deliverable, Part D). Nothing about the review is a benchmark: 53 chats in six days, or 18 on one model, says what one person did in one week of one project; compare your counts only with your own next review.
+**What it does not show.** Lines added to the case file on 17 Nov 2026 hold more (§8): the chats listed through the past-chat tools only; a turn defined as one message on either side; 872 turns in all, median 8; counts by task type and model; pattern counts; the AI course's rules the review tested; and the ten changes with their counts, which Deliverable Part B sets beside yours. They hold no definition of an ask (§9), and not the verdict given to each rule. What this unit also sets beside your gap report is DD-BW2's case report, line by line (Deliverable, Part B), and DD-BW2's ten changes, the record's own, restated for any project (Deliverable, Part D). Nothing about the review is a benchmark: 53 chats in six days, or 18 on one model, says what one person did in one week of one project; compare your counts only with your own next review.
 
 ## 7 · From counts to ten changes
 
@@ -268,12 +268,12 @@ Four parts. **Part A** is the classification sheet: its label definitions, the s
 |---|---|
 | Window | Six days; the project's whole history at the time |
 | Chats | 53 |
-| Task type | Labelled by hand; counts by type not in the case file |
+| Task type | Labelled by hand, seven types: unit writing 15, infrastructure 15, figure passes 7, audits and fresh checks 6, status questions 6, syllabus design 2, history-module writing 2 |
 | Model | Read from commit trailers: Opus 31, Fable 18, both 4 |
-| Effort | Not among the review's labels |
-| Outcome | "Accepted", a proxy; 14 of 53 endings not seen |
-| My messages, corrections | Turns counted; counts not in the case file |
-| Extra columns | Not in the case file |
+| Effort | A field; recorded in 0 of 53 chats |
+| Outcome | "Accepted", a proxy: a unit filed (7 chats) or a last reply reporting the row done with no later correction (32); 14 of 53 endings not seen |
+| My messages, corrections | Turns counted, one message on either side, an agent's completion notice included: 872 in all, median 8, range 2 to 134 |
+| Extra columns | None: the fields were date and first message, task type, turns, model, effort and outcome |
 
 **On a neutral example** (neutral example, invented). An analyst writing a quarterly market report reviews two weeks of chats, sixteen in all. Their routing table, built from BW2's template, puts extraction, summaries and code changes on the mid tier and drafts, critiques and research on the large tier; they have one skill, for extraction. Every row below is invented to show the sheet at work; none is evidence.
 
@@ -312,10 +312,10 @@ Five sections. Section 1 sets your record beside DD-BW2's case report (Deliverab
 
 **On the Academy case** (Academy case file §8; anecdote). The case file holds what follows, and no more.
 
-1. **Record.** Window: six days, the project's whole history at the time. Chats: 53. By model: Opus 31, Fable 18, both 4, from commit trailers. By task type, by outcome, by turns: labelled by hand, counts not in the case file. Outcome: a proxy; 14 of 53 endings not seen. *Beside DD-BW2 Part 1:* line H ("53 chats in six days at the review: 31 Opus, 18 Fable, 4 both") holds the same counts; line B records effort as not recorded (case file §9).
-2. **Patterns.** Not in the case file.
-3. **Rule tests.** Not in the case file.
-4. **Ten changes.** Ten, ranked, each tied to a count; the list is not in the case file.
+1. **Record.** Window: six days, the project's whole history at the time. Chats: 53. By model: Opus 31, Fable 18, both 4, from commit trailers. By task type, labelled by hand: unit writing 15, infrastructure 15, figure passes 7, audits and fresh checks 6, status questions 6, syllabus design 2, history-module writing 2. Turns: 872, median 8, range 2 to 134; 11 chats took two turns, 10 took 30 or more. Outcome: a proxy; 14 of 53 endings not seen. Effort: 0 of 53. *Beside DD-BW2 Part 1:* line H ("53 chats in six days at the review: 31 Opus, 18 Fable, 4 both") holds the same counts; line B records effort as not recorded (case file §9).
+2. **Patterns.** 6 one-line asks naming a code, 2 of them a code with two meanings; 5 chats opened with a status question; 16 asks name two or more rows (median 11.5 turns, against 8 for 31 naming one); 13 of 16 row asks read in full restate the publish procedure; 7 chats on the first day carried a whole unit pasted; 6 chats show a memory-tool call (case file §8).
+3. **Rule tests.** The AI course's operating rules 1–10, usage rules 11–24, agent rules 25–28 and decision rule, and its routing table, mental model, skills and verification units, each given a verdict; the verdicts are not in the case file (§8).
+4. **Ten changes.** Ten, ranked by the size of the count each rests on and the share of the work it touches (§8): the auditing model only for checking (17 of the 22 chats on it were not audits or fresh checks); a routing row for build and site work (30 of 53 chats of types the routing table had no row for); a fan-out's workers moved down once its check has passed (every agent call in the two saved reads that show one on the writing model); no deploy to the public site without the private-terms check (13 of 16 row asks read in full had the session deploy); one writer to the main branch at a time (10 of 53 chats began while an earlier one was open); model and effort in the first line and the changelog (effort in 0 of 53); the closing procedure in one skill (13 of 16 row asks restated it); an audit's confirmed claims carried forward (one rewrite opened 43 sources, 34 already opened by the audit); no overnight plan without a branch (of 39 asks, one names a branch); account memory off in the Project (6 of 53 chats).
 5. **Privacy.** The case file records the review as counts and a description of its method, with no chat quoted; the file was compiled "with private details removed" (header).
 
 **On the neutral example** (neutral example, invented).
@@ -438,7 +438,7 @@ Five sections. Section 1 sets your record beside DD-BW2's case report (Deliverab
 
 ### Part D · Changes for any project
 
-The case's review produced ten ranked changes (Academy case file §8), but the case file does not hold them, so they cannot be restated here. What the case does hold, in a filed unit of this course, is the ten changes its project record supports (DD-BW2, Deliverable Part 2), ranked by the same rule. Below, each is restated for any project, with the count on your own sheet or records that would put it on your list. They come from the case's project records (its checks, audits and failures); none comes from its chats. The grade is the one DD-BW2 gives, and the case adds nothing to it.
+The case's review produced ten ranked changes from its chats (Academy case file §8), which the case file lists with their counts (lines added 17 Nov 2026) and Part B, section 4 sets out: the auditing model only for checking; a routing row for build and site work; a fan-out's workers moved down once its check has passed; no deploy to the public site without the private-terms check; one writer to the main branch at a time; model and effort in the first line and the changelog; the closing procedure in one skill; an audit's confirmed claims carried forward; no overnight plan without a branch; account memory off in the Project. What the case also holds, in a filed unit of this course, is the ten changes its project record supports (DD-BW2, Deliverable Part 2), each tied to a count. Below, those ten are restated for any project, with the count on your own sheet or records that would put it on your list. They come from the case's project records (its checks, audits and failures); none comes from its chats. The grade is the one DD-BW2 gives, and the case adds nothing to it.
 
 | # | Change, for any project | It belongs on your list when | Unit that teaches it | Grade, as DD-BW2 Part 2 gives it |
 |---|---|---|---|---|
@@ -486,3 +486,5 @@ Object: none
 Fresh check 2026-11-16 (Opus 5.5): fix · 1 errors, 4 should-fix, 9 minor; report `audits/building-with-ai/fresh-check-DD-BW3.md`
 
 Correction 16 Nov 2026, found by DD-BW3's filer (flag F123, as F52, F98 and F112): §1 now describes the case in the case file's own wording; corrections check `audits/building-with-ai/corrections-2026-11-16-DD-BW3-r2-DD-BW3.md`.
+
+Correction 17 Nov 2026 (CP-4), found by W-SP1, each change checked by a fresh Opus 5.5 agent against case-academy.md
