@@ -23,6 +23,7 @@ with sync_playwright() as p:
                 pg.goto(V.URL + '#' + pid); pg.reload(); V.ready(pg); pg.wait_for_timeout(200)
                 all_ = pg.query_selector_all(f'[id="{pid}"] figure.viz')
                 for k, kind in figs:
+                    if (out / f'{name}-{pid}-fig-{k:02d}-{kind}-frames-{theme}.png').exists(): continue   # resume after an interrupted run
                     fig = all_[k - 1]
                     assert f'viz-{kind}' in fig.get_attribute('class'), (pid, k, kind)
                     fig.evaluate("f => { const s = f.closest('.sec'), p = f.closest('.panel'); if (s && !s.classList.contains('on')) p.querySelector('.seclist a[data-step=\"' + s.dataset.step + '\"]').click(); for (const d of p.querySelectorAll('details')) if (d.contains(f)) d.open = true; }")
