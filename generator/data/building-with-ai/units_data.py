@@ -18,7 +18,7 @@ PRE = ("Write one unit of a self-study course in the long-form report format of 
 "date every product fact (a limit, a price, a feature, a model name) to the day it was read on the vendor's own page; "
 "and end the body, before the deliverable, with a short section 'On other tools' that says which of the unit's claims are specific to Claude and where the equivalent is documented for ChatGPT and for Gemini, "
 "cited to the vendor's own documentation, or says that no equivalent was found. "
-"Running case: Academy (real), a library of self-study courses built by one person with Claude in October and November 2026, each unit written by one model from a brief, checked by a fresh context and audited by sample. "
+"Running case: Academy (real), a library of self-study courses built by one person with Claude in October and November 2026, with a method of one brief per unit, a fresh check and sample audits that the case file records as run on part of the library. "
 "Facts about Academy come only from generator/data/building-with-ai/case-academy.md, cited as 'Academy case file' with its section; never infer a fact about the case that the file does not hold "
 "(if the unit needs one, list it in the notes as a need). Label the case '(Academy case)' on its first use in the unit. One project is an anecdote: label it so, and never let it be the only support for a general claim. "
 "Deliverables are built twice: in full on the case (or, where the brief says so, on a neutral example with its invented content labelled), then as a template the reader fills for their own project, each blank saying what goes in it. "
@@ -86,7 +86,7 @@ BW = [
 ("DD-BW3", "Deep dive: audit your own usage",
  "A method for classifying your own chats by task, model, outcome and turns, with one person's findings as the worked example.",
  "gap-report template + a sixty-minute procedure",
- "Deep dive BW3, Audit your own usage. Written last. Cover: why a review of your own chats finds what a course cannot; the method (choose a window, list every chat, classify each ask by task type, model, outcome and number of turns), with each label defined and its limits said; the patterns to look for (an ask that was badly put, a tool wrong for the job, work done by hand that a saved procedure already does, research paid for twice); testing the rules of BW10 and DD-BW1 against your own record; the privacy of doing this at all; and the worked example from the Academy case file, one person's review of 53 chats over six days, labelled as an anecdote. Deliverable: a classification sheet, a gap-report template, the review as a sixty-minute procedure, and the worked example's highest-leverage changes restated so they apply to any reader."),
+ "Deep dive BW3, Audit your own usage. Written last. Cover: why a review of your own chats finds what a course cannot; the method (choose a window, list every chat, classify each ask by task type, model, outcome and number of turns), with each label defined and its limits said; the patterns to look for (an ask that was badly put, a tool wrong for the job, work done by hand that a saved procedure already does, research paid for twice); testing the rules of BW10 and DD-BW1 against your own record; the privacy of doing this at all; and the worked example from the Academy case file, one person's review of 53 chats over six days, labelled as an anecdote. Deliverable: a classification sheet, a gap-report template, the review as a sixty-minute procedure, and the changes the worked record supports (DD-BW2 Part 2), restated so they apply to any reader."),
 ]
 
 AIMS = {
@@ -106,7 +106,7 @@ AIMS = {
         "DD-B3, its spec-driven section, and docs/method.md as source material; this unit has no counterpart in the private course; BW3, BW4",
         "the spec and build order every later deliverable is built against; the flag-and-review rule BW7 and BW9 rely on"),
 'BW6': ("verify AI-written work by sample before you trust it, and know what a clean sample proves",
-        "B6 as source material; BW1, BW2, BW5",
+        "B6 as source material; BW1, BW2, BW3, BW5",
         "the checker brief BW8 turns into a skill; the verifiability test BW9 uses to decide what to delegate"),
 'BW7': ("write your project's repeated work as a pipeline with a model per stage and a human gate",
         "B7 as source material, for its studies and its pipeline form only; BW2, BW3, BW5, BW6",
