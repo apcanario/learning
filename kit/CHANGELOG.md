@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **Timelines and figure keys** (16–17 Nov 2026, row H-4, Opus 5.5): every timeline span drawn on the axis with its years, matrix keys under their figures, PB8's overflow gone, all figures re-checked to PASS; Greek 7.3's OGIS 338 timing corrected; How-it-was-built pages say the audit files are private; B4's fixes listed for Pedro (P30).
 - **Reliefs of the public courses PB and BW** (16 Nov 2026, row G-R, Sonnet 5.5 main chat, one Opus 5.5 mapping agent): both courses registered in the outline library; PB 12 pages with a relief, BW 11; three outlines added (an @ sign, a chain link, a text document); `verify.py` now checks ten outlines in use for each.
 - **Sport Psychology for Coaches** registered 16 Nov 2026, row S-SP0 (Opus 5.5): a markdown course of 13 units in a new Coaching track, no unit written; `thin.py` stages courses with no source units, `next_prompt.py` prints the course's rows from `docs/sport-psychology-prompts.md`; next row of the course W-SP1.
 - **DD-BW3 · Deep dive: audit your own usage** written (Opus 5.5, search off) and filed 16 Nov 2026, row W-DD-BW3: fresh check fix, 1 error, 4 should-fix, 9 minor, 12 applied and 2 minor held; CP-2 applied to DD-BW2 first (17 replacements, F101 resolved); 11 flags raised. Building with AI is complete: 13 of 13 written; hub v15.
@@ -153,6 +154,19 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 16–17 Nov 2026 · Session H-4 · Timeline spans on the axis, figure keys, OGIS 338, private audit files, B4's fixes listed
+
+One chat on Opus 5.5 (claude-opus-5-5), which wrote the kit code; every figure re-check, both corrections checks and the P30 list were fresh Opus 5.5 agents on packets staged by script.
+
+- `kit/viz.py` (P84): timeline spans on lanes stacked from the axis, dashed end guides and gridlines that break at bars and plates; every span label carries its years (`span_text`, `span_names`, `_names_year`; a label naming one end only stops the build); side labels over 220 units wrap with the date whole (`span_lines`), in-bar labels wrap in a taller bar; abutting spans stop 1.5 units short; astronomical year spacing (no year 0); edge tick labels kept 8 units apart; `viz-snug` for a timeline up to 15% over 700; spans' optional `date`. Docstring: P84 and round 2.
+- `kit/viz.py` (P109): a matrix is wide only past 15% over 700; its keys are their own svg under the frame (`svg.viz-key`, `svg.viz-keyn`); docstring P109 and round 2.
+- `design/theme.css` 6.13 to 6.15 (copied to `kit/shell.css`): `.viz-spanend`, `.viz-spanside`, span labels without capitals, keys under the frame, a wide matrix's label column pinned on a desktop, `viz-snug`, figure text with `text-rendering: geometricPrecision`.
+- `kit/verify.py`: every span label names its years and every bar end has its guide (P84); every How-it-was-built page says its audit files are private above its first file link (P24). `kit/howbuilt.py`: that line. `kit/viz_examples.py`: the hard case "Spans with their years"; `kit/epub.py` drops `svg.viz-keyn`.
+- Figures: 142 timelines and examples and 49 matrices re-checked in five rounds, every figure PASS at the end, none dropped (`kit/reviews/p84/README.md`, `kit/reviews/p109/`); 70 declaration replacements plus the Rome course home; notes in A8, IA1, IA3, IA4, IA6, DD-PB1, DD-PB2 and `provenance.json`; hubs brand-ai v9.25, ux v20, personal-brand v16.1.
+- Greek 7.3 (P64): OGIS 338's clause confirmed; the decree's timing corrected to "passed in 133, after" in two places (`kit/reviews/corrections-2026-11-17-p64*.md`).
+- `docs/p30-b4-fixes.md` (P30): 12 of B4's findings still apply, 2 done, 3 no longer apply; 12 rows under Proposed.
+- Published: PUBLISH_PENDING
 
 ## 16 Nov 2026 · Session G-R · The reliefs of PB and BW
 
