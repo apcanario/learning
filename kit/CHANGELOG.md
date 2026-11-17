@@ -166,7 +166,7 @@ One chat on Opus 5.5 (claude-opus-5-5), which wrote the kit code; every figure r
 - Figures: 142 timelines and examples and 49 matrices re-checked in five rounds, every figure PASS at the end, none dropped (`kit/reviews/p84/README.md`, `kit/reviews/p109/`); 70 declaration replacements plus the Rome course home; notes in A8, IA1, IA3, IA4, IA6, DD-PB1, DD-PB2 and `provenance.json`; hubs brand-ai v9.25, ux v20, personal-brand v16.1.
 - Greek 7.3 (P64): OGIS 338's clause confirmed; the decree's timing corrected to "passed in 133, after" in two places (`kit/reviews/corrections-2026-11-17-p64*.md`).
 - `docs/p30-b4-fixes.md` (P30): 12 of B4's findings still apply, 2 done, 3 no longer apply; 12 rows under Proposed.
-- Published: PUBLISH_PENDING
+- Build, `verify.py --shots` (pages read-a8, read-ia1, rm31, read-pb8, m12, rm03, read-dd-a1, read-dd-pb1): ALL CHECKS PASSED. Published: artifact 1794871003-edec → 1794885473-ebbd (141 changed files plus the wrapped shell, patch; the live files matched the start build before; sha256 read back on the shell and a sample of eight files, all matching); Pages: academy@08bd3fd, run 44009300091 success.
 
 ## 16 Nov 2026 · Session G-R · The reliefs of PB and BW
 
