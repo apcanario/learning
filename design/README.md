@@ -12,9 +12,9 @@ A published claude.ai artifact cannot load an external stylesheet. So the genera
 
 1. Edit `design/theme.css`. Change a token in section 1 before touching a component; most changes are a token.
 2. Copy it over the kit: `cp design/theme.css kit/shell.css`. The theme keeps every class name `shell.css` had, so `build.py` and `shell.js` need no change (verified 28 October 2026: no class undefined, `build.py` builds, `verify.py` passes).
-3. Rebuild every hub: `cd kit && python3 build.py && python3 verify.py`; from `generator/`, `python3 build_hub.py data/brand-ai` → `hubs/brand-and-ai-courses.html`; any other hub: `python3 build_hub.py data/<slug>`.
-4. Check each rebuilt page at the three widths (phone 390 or 400 px, tablet 768 px, desktop 1280 px) in dark and light: no horizontal scroll, no boxes closer than 6 px, every control at least 44 px tall, the drawer a drawer on the tablet and a sidebar on the desktop, light mode legible (the checks are listed below). `kit/verify.py` and `generator/check_page.py` run all of it.
-5. Republish each page to its existing artifact (never a new one). The links are in `docs/courses-index.md`.
+3. Rebuild Academy, the one site: `cd kit && python3 build.py && python3 verify.py`.
+4. Check each rebuilt page at the three widths (phone 390 or 400 px, tablet 768 px, desktop 1280 px) in dark and light: no horizontal scroll, no boxes closer than 6 px, every control at least 44 px tall, the drawer a drawer on the tablet and a sidebar on the desktop, light mode legible (the checks are listed below). `kit/verify.py` runs all of it.
+5. Republish Academy to its existing artifact (never a new one), then `kit/deploy.sh`.
 
 ## What is in the file
 

@@ -1,4 +1,6 @@
-# Backlog: the rest of Rome (writing)
+# Lane notes: the rest of Rome (writing)
+
+**Closed.** Rome was completed on 1 Nov 2026; this file was `kit/BACKLOG.md` until 17 Nov 2026 (P30-F4) and is kept as the record the Rome fresh checks cite as "BACKLOG.md". The queue of chats is `docs/BACKLOG.md`.
 
 This is the writing prompt that was `NEXT-SESSION.md` until 27 October 2026. It is now the backlog: the Fable review is under way and `NEXT-SESSION.md` resumes it. Run this file when the review reaches a clean point (after Rome 14.2/14.5 has cleared the written reports, or whenever you decide to write first). Nothing below has been done; two things have changed since it was written:
 

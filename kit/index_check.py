@@ -27,6 +27,12 @@ import html, importlib.util, json, pathlib, re, sys, unicodedata
 KIT = pathlib.Path(__file__).resolve().parent
 REPO = KIT.parent
 INDEX = REPO / 'docs' / 'courses-index.md'
+ARCHIVE = REPO / 'docs' / 'courses-index-archive.md'   # P30-F17 (17 Nov 2026): the finished courses' sections
+
+
+def index_text():
+    """The live index and the archive of finished courses, read as one index."""
+    return INDEX.read_text(encoding='utf-8') + ('\n' + ARCHIVE.read_text(encoding='utf-8') if ARCHIVE.exists() else '')
 sys.path.insert(0, str(KIT))
 from courses import HISTORY, MARKDOWN          # noqa: E402
 from howbuilt import front, plus_months        # noqa: E402
@@ -219,7 +225,7 @@ def check():
     fails, stale_want = [], {}
     if not INDEX.exists():
         return [f'{INDEX.relative_to(REPO)} is missing']
-    secs = sections(INDEX.read_text(encoding='utf-8'))
+    secs = sections(index_text())
     for c in HISTORY:
         history(c, secs, fails)
     for c in MARKDOWN:

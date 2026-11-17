@@ -9,17 +9,9 @@ Exact steps to stand up the Learning Project and run it.
 2. Open it, click **Set project instructions**, paste everything in `project-instructions.md` below its title line, and click **Save instructions**.
 
 ## 2. Project knowledge
-In the Project, click **+** in the knowledge panel and upload these files from the repo. The Project copies are mirrors; the repo is canonical.
+The Project copies are mirrors; the repo is canonical. The Project holds a named set and nothing else (`docs/method.md` §8 step 4; P30-F1, 17 Nov 2026): `reader.md`, `method.md`, `sourcing-standard.md`, `courses-index.md`, `claude/BACKLOG-chats.md`, `claude/CHANGELOG-chats.md`, and, only while a course is being written, that course's three data mirrors (`claude/<course>-hub.py`, `claude/<course>-units_data.py`, `claude/<course>-syllabus-flags.md`). Everything else (the kit's briefs and rubrics, the theme, the skills, the research files, the finished courses' data) is read from the clone.
 
-Method layer (`docs/`): `method.md`, `reader.md`, `sourcing-standard.md`, `courses-index.md`, `project-instructions.md`, `pm-status-2026-10-28.md`, `academy.md`, and the backlog and chats changelog as `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` (`method.md` §8 step 4).
-
-Design: `design/README.md` (uploaded as `design-README.md`), `design/theme.css`.
-
-Brand + AI (`generator/data/brand-ai/`): `units_data.py` (every brief and the shared preamble), `hub.py` (goals, build order, audit log and prompts), `audience-growth-across-platforms.md`, `research/research-*.md` (five files), and each filed unit (from the vault: `courses/brand-ai/<code>-<slug>.md`).
-
-Personal Mythology (`kit/`): `AGENT-SPEC.md`, `WRITER-BRIEF.md`, `BACKLOG.md` (the Rome writing prompt with the lane notes), `roman-syllabus.html` (every Rome prompt; Greece is complete), `reviews/units-9-13/BRIEF.md` (uploaded as `CHECKER-BRIEF.md`), `audits/AUDIT-BRIEF.md`, `audits/AUDIT-BRIEF-GREECE.md`, `audits/greece-13.1-rubric.md`, `audits/rome-14.1-rubric.md`.
-
-Replace a knowledge file whenever its source changes: `courses-index.md`, `hub.py` and the unit after every filing; `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` at the end of every chat; `method.md`, `theme.css` and `design-README.md` when they change; `kit/BACKLOG.md` after a kit session. From a chat, the Projects tool's `project_write` with the repo path does it.
+Replace a knowledge file whenever its source changes: `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` at the end of every chat; `courses-index.md`, `method.md` and the course's data mirrors when they change. From a chat, the Projects tool's `project_write` with the repo path does it.
 
 ## 3. Install the four skills
 Skills belong to your account, not the Project. For each folder in `skills/` (`write-unit`, `audit-units`, `file-unit`, `new-course`):
@@ -35,16 +27,16 @@ Every course is read in Academy, https://claude.ai/artifact/WwmQpUSqAUJvrcmLczpp
 
 ## 6. Writing a unit
 One new chat per unit, model **Opus 5.5** (the build order names any exception).
-- **Brand + AI:** paste the unit's brief from the course's Briefs page in Academy (course home → How it is built → Briefs; the Copy brief button). Turn web search on if the unit's search flag is on (`courses-index.md`; currently B2, A8, B8, DD-A1, DD-B3). Attach nothing else. The `write-unit` skill runs.
-- **Personal Mythology:** clone `apcanario/learning` and work in `kit/` (the reports named in the module's lane note and the quality-bar reports `greece/r-4.2.html`, `r-6.3.html`, `r-8.1.html` are there). Paste the module's prompt from the syllabus and its lane note from `BACKLOG.md`. Search stays off except to verify a doubtful point.
+- **Brand + AI:** paste the unit's brief from the course's Briefs page in Academy (course home → How it is built → Briefs; the Copy brief button). Turn web search on if the unit's search flag is on (the Search column of `courses-index.md`). Attach nothing else. The `write-unit` skill runs.
+- **Personal Mythology:** clone `apcanario/learning` and work in `kit/` (the reports named in the module's lane note and the quality-bar reports `greece/r-4.2.html`, `r-6.3.html`, `r-8.1.html` are there). Paste the module's prompt from the syllabus and its lane note from `kit/archive/LANES.md`. Search stays off except to verify a doubtful point.
 
 The chat ends by sending the unit file(s). It does not file them.
 
 ## 7. Filing a unit
 A new chat, any writing model. Attach the unit file(s); the chat clones `apcanario/learning`. The `file-unit` skill saves to the vault (for Brand + AI that file is what Academy renders), updates the course's data file and `courses-index.md`, rebuilds Academy, checks it (`verify.py`, which also checks `courses-index.md` with `kit/index_check.py`) and publishes it (the artifact, then `kit/deploy.sh` to GitHub Pages), and commits and pushes. Re-upload the changed knowledge files (step 2).
 
-## 8. Audits
-When `courses-index.md` shows four units since the last audit in a hub (Brand + AI: the first is due after B1), or a staleness date has come (A2, A6, A9: 27 April 2027): a new chat on **Fable 5.1** with web search on. The chat clones `apcanario/learning`; the units are in `courses/` and the history reports in `kit/`. Say "Run the audit." The `audit-units` skill uses the prompts in `method.md` §6 verbatim and records the result.
+## 8. Staleness checks
+No audit runs: the Fable stage closed on 15 Nov 2026 (`docs/method.md` §6). Every unit gets its fresh check before filing (§5). When a staleness date in `courses-index.md` has come (six months after a search-on unit was written): a new chat on **Opus 5.5** with web search on. The chat clones `apcanario/learning`; the `audit-units` skill uses the staleness prompt in `method.md` §6 verbatim and records the result.
 
 ## 9. After a theme change
 A change to `design/theme.css` reaches a page only when the page is rebuilt and republished.

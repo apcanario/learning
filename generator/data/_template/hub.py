@@ -1,6 +1,6 @@
-"""⟨Course family⟩ hub: the content. build_hub.py renders it on design/theme.css.
+"""⟨Course family⟩ hub: the content. kit/mdcourse.py renders it into Academy on design/theme.css.
 
-Copy data/_template/ to data/<slug>/, replace every ⟨…⟩, then: python3 build_hub.py data/<slug>
+Copy data/_template/ to data/<slug>/, replace every ⟨…⟩, add the course to kit/courses.py, then: cd kit && python3 build.py && python3 verify.py
 Prose blocks are HTML strings and may use only theme classes (design/README.md lists them).
 """
 import pathlib

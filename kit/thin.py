@@ -279,9 +279,15 @@ def cmd_insert(rec_path):
 
         if rec.get('index_edits'):
             ix = ROOT / 'docs' / 'courses-index.md'
+            ax = ROOT / 'docs' / 'courses-index-archive.md'   # P30-F17: a finished course's rows live here
             it = get(ix)
+            at = get(ax) if ax.exists() else ''
             for e in rec['index_edits']:
-                it = one(it, e['old'], e['new'], 'courses-index edit')
+                if e['old'] not in it and at.count(e['old']) == 1:
+                    at = one(at, e['old'], e['new'], 'courses-index-archive edit')
+                    files[ax] = at
+                else:
+                    it = one(it, e['old'], e['new'], 'courses-index edit')
             files[ix] = it
 
         if 'changelog_row' in rec:
@@ -550,6 +556,9 @@ def cmd_stage(argv):
         if case:
             put(case)
         ix = (ROOT / 'docs' / 'courses-index.md').read_text(encoding='utf-8')
+        _ax = ROOT / 'docs' / 'courses-index-archive.md'     # P30-F17: finished courses' sections, read with the live index
+        if _ax.exists():
+            ix += '\n' + _ax.read_text(encoding='utf-8')
         import datetime                                      # C4, 15 Nov 2026: what the filer counts from, and the forms it copies
         (out / 'corrections').mkdir()
         for f in sorted((ROOT / 'audits' / c['id']).glob(f"corrections-{opt.get('date', datetime.date.today().isoformat())}-*.md")):

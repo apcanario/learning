@@ -123,12 +123,15 @@ and a breath by transform only, at a phase none of the page's separators has, an
 of the breath every line inside its frame; nothing moving under reduced motion; the page's text naming the object; no
 page wider than the screen.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
+Then rot_check.py (P30-F11, P30-F16): kit/shell.css is design/theme.css, no live instruction names a retired thing, and
+every staleness date past or due within 30 days is printed as a warning.
 """
 import sys, json, pathlib, re, threading, functools, math, html as H
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
 import private_terms   # G-0: the public courses carry no private term
+import rot_check   # P30-F11, P30-F16: the theme copy, retired instructions, staleness dates due
 from courses import COURSES, THEMES, EDITIONS, NEXT
 # P70: --edition checks an edition's folder the same way, over the courses and pages it holds (default: the full Academy)
 EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else 'academy'
@@ -2748,6 +2751,9 @@ def main():
     pt = private_terms.check()   # G-0 (11 Nov 2026): no private term in a public course's vault, data folder or built pages
     fails += ['private term in a public course: ' + x for x in pt]
     print('private terms in the public courses: ' + (f'{len(pt)} found' if pt else 'none'))
+    rf, rw = rot_check.check()   # P30-F11, P30-F16 (17 Nov 2026)
+    fails += ['rot: ' + x for x in rf]
+    print('rot check: ' + (f'{len(rf)} failures' if rf else 'none') + ''.join('\n  warn ' + x for x in rw))
     print('\n'.join('FAIL ' + f for f in fails) if fails else 'ALL CHECKS PASSED')
     return 1 if fails else 0
 

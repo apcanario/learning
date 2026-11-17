@@ -156,8 +156,8 @@ LEARNING_NOTE = """<section class="howto edge" style="--hc:var(--blue)"><h2>Now 
 
 BUILD_LEDE = "Method, model rules, and the pages that hold the briefs and the sources. Nothing here is course content."
 BUILD_PICK = """<section class="howto edge" style="--hc:var(--red)"><h2>Pick</h2>
-  <p><strong>B1 first, written by Opus 5.5 in a new chat in a new Project.</strong></p>
-  <ul><li>B1 makes every later brief cheaper; it is the cheapest unit.</li><li>A separate Project keeps 21 units out of the personal assistant.</li></ul>
+  <p><strong>B1 first, written by Opus 5.5 in a new chat.</strong></p>
+  <ul><li>B1 makes every later brief cheaper; it is the cheapest unit.</li></ul>
   <p class="over"><strong>Override if:</strong> the brand course should move first; then A1 first, B1 second, same setup.</p>
 </section>"""
 BUILD_BODY = """<div class="report">
@@ -177,7 +177,7 @@ BUILD_BODY = """<div class="report">
   </ul>
 </div>
 <section class="howto edge" style="--hc:var(--gold)"><h2>Review rule</h2>
-  <p>Every unit gets a fresh check before filing: every cited claim against its source, the deliverable against the brief. Units written with live search (A2, A6, A9, A8, B2, B8, DD-B3) are re-checked for staleness six months after writing.</p>
+  <p>Every unit gets a fresh check before filing: every cited claim against its source, the deliverable against the brief. Units written with live search (the Search column of <code>courses-index.md</code> lists them) are re-checked for staleness six months after writing.</p>
 </section>"""
 
 ORDER_LEDE = "One row per unit in writing order. Opus 5.5 writes; a fresh context checks each unit before filing. The last deep dive was briefed for Fable 5.1 because it reviews the chat history; Pedro set that exception aside on 31 Oct 2026 and it was written by Opus 5.5 with the past-chat tools. \"Search\" means the unit is written with web search on because its facts are current."

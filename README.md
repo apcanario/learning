@@ -18,8 +18,8 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 ## Working in a chat
 
 1. Clone (or be given) this repo. Work in it; never from a zip.
-2. Kit work: `cd kit`, then `python3 build.py` and confirm it reproduces `academy/` byte for byte (`git status` clean) before changing anything (the rule in `kit/NEXT-SESSION.md`).
-3. End the session with a commit that names the session (`CHANGELOG.md` entry, `review_notes`, the next `NEXT-SESSION.md`), and push.
+2. Kit work: `cd kit`, then `python3 build.py` and confirm it reproduces `academy/` byte for byte (`git status` clean) before changing anything (the kit's standing rule).
+3. End the session with a commit that names the session (`CHANGELOG.md` entry, `review_notes`), and push.
 
 ## After a theme change
 
