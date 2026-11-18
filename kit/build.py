@@ -985,7 +985,7 @@ _HERO_AT = {            # where each area's rise stands (fractions of the layout
     # the Greece edition stopped here from P92 on)
     'history': ([.50, .48], [.46, .55]), 'marketing': ([.33, .15], [.14, .18]),   # W-PB2 (12 Nov 2026): .16 to .15 in the tall layout, so Marketing (86,699 words with PB2) still closes two rings of its own
     'technology': ([.66, .18], [.81, .26]), 'ux': ([.66, .82], [.78, .68]),
-    'coaching': ([.34, .80], [.18, .78]),   # S-SP0 (16 Nov 2026): the Coaching track; R-SP1 (17 Nov 2026): wide y .74 to .78, so the rise (22,995 words, one level) closes its ring of its own; W-SP4 (18 Nov 2026): wide x .24 to .18, so the rise (30,893 words with SP4, still one level) does
+    'coaching': ([.34, .80], [.14, .78]),   # S-SP0 (16 Nov 2026): the Coaching track; R-SP1 (17 Nov 2026): wide y .74 to .78, so the rise (22,995 words, one level) closes its ring of its own; W-SP4 (18 Nov 2026): wide x .24 to .18, so the rise (30,893 words with SP4, still one level) does; W-SP6 (18 Nov 2026): wide x .18 to .14, so the rise (49,932 words with SP6, two levels) closes two rings of its own
 }
 if [t['id'] for t in THEMES if t['id'] not in _HERO_AT]:
     raise SystemExit(f'build.py _HERO_AT has no place for the areas {[t["id"] for t in THEMES if t["id"] not in _HERO_AT]}: give each a place')
