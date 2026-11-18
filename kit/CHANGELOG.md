@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **SP7 filed (W-SP7):** no change to the kit code; the held SP7 figure is raised as a flag for a signed-values kind in kit/viz.py.
 
 - **SP4 filed (W-SP4), 18 Nov 2026.** Anxiety, arousal and performing under pressure; Sport Psychology for Coaches v7; 4 of 13 written; next SP5.
 - **17 Nov 2026 · W-SP3 · SP3 filed.** Motivation and the climate you create: Opus 5.5 writer, separate Opus 5.5 fresh check (fix · 2 errors, 12 should-fix, 4 minor; 17 applied, 1 held), fresh re-check (0 errors, 1 should-fix, 5 minor, all applied); search off; 5 case facts, 13 flags raised, F14 and F24 carried. Academy v4 · 17 Nov 2026. 3 of 13 written; next SP4.
@@ -162,6 +163,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 ## 
 
 
+
+## 18 Nov 2026 · Session W-SP7 · SP7 filed
+
+Nothing in the kit code was changed; SP7, its data and the corrections to SP2, SP3, SP5 and SP6 were built with the existing kit.
 
 ## 18 Nov 2026 · Session W-SP4 · SP4 filed (W-SP4)
 

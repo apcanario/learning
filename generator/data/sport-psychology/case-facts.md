@@ -81,3 +81,25 @@ First names only, so that no real person is named.
 | SP6 | Dani's squad did not run SP5's block. | Dani |
 | SP6 | Milan's referral to the academy's medical staff is under way and they have not yet seen him. | Milan |
 | SP6 | Sara's referral through her SP1 scope card is under way. | Sara |
+| SP7 | Dani's coach observed her baseline over six weeks of ordinary sessions. | Dani |
+| SP7 | Dani arrives at training on time and changes quickly. | Dani |
+| SP7 | Dani warms up beside the same two girls. | Dani |
+| SP7 | Under correction in training Dani listens, nods and tries it straight away. | Dani |
+| SP7 | After a mistake in training Dani repeats the drill without being asked. | Dani |
+| SP7 | Dani leaves training with her parents straight after. | Dani |
+| SP7 | Before competing Dani stays near her coach in the warm-up area. | Dani |
+| SP7 | After a win Dani says little and looks for her coach first. | Dani |
+| SP7 | After a lost contest Dani cries for a few minutes, then sits with the squad, and is back to baseline within about half an hour. | Dani |
+| SP7 | When over-aroused Dani rushes her grips in the first exchange. | Dani |
+| SP7 | In training Milan talks and jokes with teammates and organises the rondo. | Milan |
+| SP7 | When corrected in training Milan asks a question back and tries the change. | Milan |
+| SP7 | After a mistake in training Milan calls for the ball again at once. | Milan |
+| SP7 | Milan stays after training for finishing practice with two teammates. | Milan |
+| SP7 | Milan is quiet in the warm-up before matches. | Milan |
+| SP7 | Milan is quiet after matches. | Milan |
+| SP7 | No written baseline existed for Sara before the last six weeks; her baseline sheet is rebuilt from her training log and her coach's memory. | Sara |
+| SP7 | Before the last six weeks Sara arrived early and logged the session plan. | Sara |
+| SP7 | Before the last six weeks, after a poor repetition Sara checked her splits and asked what to change. | Sara |
+| SP7 | Under correction in training Sara asks for the numbers. | Sara |
+| SP7 | Sara keeps headphones on in the call room. | Sara |
+| SP7 | After a slow race Sara goes straight to her log. | Sara |
