@@ -112,5 +112,4 @@ First names only, so that no real person is named.
 | SP8 | Sara's event in the protocol is a two-day senior championship: her heat on the first evening (call room 18:10, heat 18:40 in the example) and the final on the second evening if she qualifies; she arrives about two hours before her heat. | Sara |
 | SP8 | Two athletes from her coach's other groups compete on the first day; one is in a field event (long jump in the example) whose session overlaps Sara's call room, and a coach from another group covers that athlete's warm-up. | Sara |
 | SP8 | Dani's routine between contests is her usual warm-up, shortened, ending in her cue. | Dani |
-| SP8 | Dani's SP6 cap is 3. | Dani |
-| SP8 | Dani's coach is working on normal volume (raising his voice in training is SP3's). | Dani |
+| SP8 | Dani's coach is working on normal volume (raising his voice in training is in the base entry; the change to normal volume was set by SP3's climate audit). | Dani |
