@@ -102,7 +102,8 @@ def parse_finding(ln):
         basis = [l for l in labels if l[0] == 'Basis' and l[1] > fx[1]]
         end = basis[-1][1] if basis else len(rest)
         raw = rest[fx[2]:end].strip()
-        fix = '' if raw.lower() in ('', '""', '\u201c\u201d', '(delete)', 'delete') else unquote(raw)
+        fix = '' if (raw.lower() in ('', '""', '\u201c\u201d', '(delete)', 'delete')
+                     or re.fullmatch(r'(""|\u201c\u201d)\s*\((?:delete|replace)[^)]*\)', raw.lower())) else unquote(raw)   # W-SP7: `"" (delete the row)` is a deletion too
     return sev, kind, where, cur, fix
 
 
