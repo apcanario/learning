@@ -78,3 +78,6 @@ First names only, so that no real person is named.
 | SP6 | The concern about Dani's skipped after-school snack has been passed on to the club's person for medical concerns, a referral under way; that person has not yet seen her. | Dani |
 | SP6 | Milan's squad's Tuesday and Thursday pressure slot is 15 minutes, in weeks 9 to 12 of the season's plan. | Milan |
 | SP6 | At SP5's week-8 review Sara kept breathing (early in the call room), her imagery scene of the third hundred and the self-talk phrase "Arms, tall, through". | Sara |
+| SP6 | Dani's squad did not run SP5's block. | Dani |
+| SP6 | Milan's referral to the academy's medical staff is under way and they have not yet seen him. | Milan |
+| SP6 | Sara's referral through her SP1 scope card is under way. | Sara |
