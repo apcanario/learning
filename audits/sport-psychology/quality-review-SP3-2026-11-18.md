@@ -1,0 +1,64 @@
+---
+check: quality review of SP3 (rule 13), W-SP4, 18 Nov 2026
+model: claude-opus-5-5 (stated by the agent)
+saved: by the main chat verbatim from the agent's reply (the harness refused the agent a report file)
+---
+
+Model: claude-opus-5-5. This is the quality review of SP3 (W-SP4) on the unit as it now stands. I edited nothing. I checked by script that every Current below occurs exactly once in files/SP3-motivation-and-the-climate-you-create.md.
+
+**Findings**
+[should-fix] [accuracy] §8; Current: "Persistent exhaustion, loss of interest in the sport, and a performance slide that rest does not fix are things to notice"; Problem: this is a sign list, but the unit says it gives "no definition, sign list or recovery time" from the overtraining statements it could not open. "A performance slide that rest does not fix" has no source. The sourced burnout dimensions are the Athlete Burnout Questionnaire's three, as measured in the footballers' study. Fix: "Persistent exhaustion, devaluing the sport and a reduced sense of accomplishment, the three dimensions the footballers' study measured, are things to notice"; Basis: Morales-Sánchez et al. 2020, full text https://mdpi-res.com/d_attachment/ijerph/ijerph-17-04909/article_deploy/ijerph-17-04909.pdf
+[should-fix] [grade] §8; Current: "Build a climate low in controlling behaviour and keep loads and rest planned [practice; IOC consensus; the studies behind it were not opened]."; Problem: SP1 rule 2 says a claim tested by correlational studies is not graded practice. Controlling style with burnout is tested in Morales-Sánchez 2020, and §2 grades it weak. Fix: "Build a climate low in controlling behaviour [weak, association, for controlling style with need thwarting and burnout in 12- to 17-year-old boys, section 2] and keep loads and rest planned [practice; IOC consensus; the studies behind it were not opened]."; Basis: SP1 §9 rule 2; Morales-Sánchez 2020 (as above)
+[minor] [accuracy] §2 table; Current: "one Spanish club, one questionnaire session, convenience sample"; Problem: the paper says questionnaires were self-administered before a training session. It does not say this was a single sitting. Fix: "one Spanish club, questionnaires completed before a training session, convenience sample"; Basis: Morales-Sánchez 2020 PDF (as above)
+[minor] [accuracy] §7; Current: "the designs are mixed: cross-sectional, qualitative and one prospective"; Problem: the review also includes one mixed-methods study (Gould et al., 1982). Fix: "the designs are mixed: cross-sectional, qualitative, one mixed-methods and one prospective"; Basis: Monteiro et al. 2017, https://pmc.ncbi.nlm.nih.gov/articles/PMC5968952
+[minor] [accuracy] §1; Current: "and the authors describe their model as a pattern of associations and do not claim it as a causal mechanism"; Problem: the paper's limitations call the model a pattern of association "rather than a confirmed causal mechanism", but its abstract uses causal wording ("psychological architect"). The unit's sentence overstates how consistently the authors avoid causal claims. Fix: "and the authors describe their model as a pattern of association rather than a confirmed causal mechanism, though their abstract uses causal wording"; Basis: Gu & Cheng 2026, https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1716745/full
+[minor] [deliverable] §Deliverable C, parents' page "Why"; Current: "and pressure with less self-driven motivation"; Problem: Gao et al. link parental pressure with more controlled motivation and with amotivation. "Less self-driven" blurs that. Fix: "and pressure with more motivation that depends on outside pressure, or none at all"; Basis: Gao et al. 2024, https://frontiersin.org/articles/10.3389/fpsyg.2023.1291711/full
+[minor] [figure] §1 figure 1; Current: "\"kind\": \"range\""; Problem: the figure shows four single point estimates, so by the kind rule it should be compare or bars. This is flag F40, still open; viz.render refuses negative values in compare. Fix: none in the text in this review; held under F40 (C-SP3); Basis: audit-units-SKILL.md §3 figures paragraph; syllabus-flags F40
+
+**Confirmed**
+- Mossman 2024 (abstract, informahealthcare.com/doi/abs): 1,320 correlations, 131 samples, N = 38,844; ρ .39, .16, −.01, −.19; no moderation by culture or by type of sport; related supports (competence, relatedness, structure, involvement). Ages are not in the abstract, as the unit says.
+- Gu & Cheng 2026 (Frontiers): 177 studies, 334 effect sizes; designs 313 / 12 / 9; r = 0.27 with CI 0.22–0.32 in the table and 0.20–0.32 in the text; I² = 98.45%; physical education and physical activity settings; coding of negative outcomes not stated; vol. 16, published 8 Jan 2026.
+- Gómez-López 2020 (mdpi.com and Crossref): 479 players (250 boys, 229 girls), ages 16–17, collected during the championship; both PMCSQ-2 items quoted verbatim; r = 0.43 and −0.31; task-climate path to fear of failure not significant; indirect paths to somatic and cognitive anxiety; bibliography matches Crossref field by field.
+- Morales-Sánchez 2020 (PDF): 103 boys aged 12–17, one club, convenience sample; the four CCBS subscales and the definition of negative conditional support; path 0.53; indirect effect 0.35; ABQ's three dimensions; "stronger" than absence of satisfaction; the autonomy-supportive recommendations.
+- Hu 2023 (Frontiers): 252 athletes, six provinces, ages 10 to 25 and over, team and individual sports, cross-sectional; γ = −0.455; direct effect not significant; constrained commitment mediates.
+- Zhang, Du & Tao 2025 (Frontiers): 325 athletes aged 12–18 in China, two waves two weeks apart, coach-rated development, "causation cannot be established"; vol. 15, 8 Jan 2025.
+- Zhang, Wang & Shao 2022 (Frontiers): 21 studies, 1,199 participants aged 5–19, 9 cross-sectional and 12 longitudinal; enjoyment r = 0.45 [0.42, 0.49] k = 4; coach support r = 0.43 [0.08, 0.69] k = 4; SMD 0.68 [0.27, 1.10] k = 5; intention SMD 1.13; enjoyment not pooled for actual persistence; sports list.
+- Smoll 2007 (jyd.pitt.edu): 34 teams and coaches; 151 athletes aged 9–15, mean 11.6; 82 intervention and 69 control analysed; workshops of 75 and 60 minutes; about 12 weeks; SAS-2 range 15–60; means 25.44→23.98 and 24.12→27.01; all interactions significant; quasi-experimental; only athletes whose parents attended counted; no behaviour data; first author delivered the workshops; no effect sizes; the coach guidelines list.
+- Tzioumakis 2026 (Frontiers): 68 coaches, 36 intervention and 32 control, four countries; MMCOS at three points; players aged 10–15; workshop about 6 hours; disempowering and ego-involving behaviour reduced; autonomy and relatedness support up only temporarily, "short-term, but not sustained"; no standardised effect sizes and no athlete outcomes. The 13 visible authors are in the unit's order, plus 5 hidden and Duda last; title, vol. 17 and 5 Aug 2026 match.
+- Adams 2024 (Frontiers): 20 former athletes, 9 sports, mean age 26.0, range 19–44, US; qualitative; most accepted some physical punishment; "arbitrary", "unsafe, cruel"; accounts of injury and fear.
+- Lewis 2023 (DOAJ abstract and Frontiers PDF): 48 analysed, non-disabled adults aged 18–40; no retention difference between positive comparative feedback and control; perceived competence rose with positive comparative feedback and not with response-time feedback alone.
+- Haberstock 2024 (link.springer.com): n = 101, mean age 28.68, no age range given, 39.6% para-athletes, team sports, cross-sectional; peer disempowering climate predicts autonomy and relatedness frustration; 54(4):609–614.
+- Monteiro 2017 (PMC): 6 studies, ages 5–30, 4 from Canada, studies from 1982 and 1985 among them, the listed reasons, quote "controllable by the athletes", the 727 vs ~955 total discrepancy.
+- Gao 2024 (Frontiers): 29 studies, 9,185 athletes and 2,191 parents, ages 10–19, 26 quantitative and 3 qualitative, 82.8% cross-sectional; the findings on autonomy support, pressure (one contrary study) and support with enjoyment; mixed results on parents vs coaches; quote "the manner and extent of their involvement are key"; vol. 14, 8 Jan 2024.
+- Burke 2021 (informahealthcare): 12 studies, ages 5–18, MMAT quality 20–100%, all 5 quantitative studies significant, absence of sport-specific measures of parents' behaviour, pp. 208–235, online 7 Nov 2021. Ulster's record confirms the authors and the journal (it gives pages 1–28 for the online version).
+- Fletcher & Sarkar 2016 (informahealthcare notes): notes 3 and 7 quotations verbatim; no model is named; no test of the programme is reported. The Loughborough repository gives 7(3):135–157.
+- Gustafsson 2011 (informahealthcare abstract): process and state perspectives; the components of the model; offered to stimulate research. The SCU repository gives authors, 4(1):3–24, 2011.
+- Bergeron 2015 (bjsm.bmj.com/content/49/13/843.full): all nine quoted phrases in §§5, 7, 8 and 9 found verbatim.
+
+**Figures (section 7)**
+- Fig 1, range, §1: every value traces to the §1 text and the caption names section and source. FIX held: the kind should be compare, flag F40.
+- Fig 2, compare, §1: 313, 12, 9, 334 and 177 all trace to the text; caption complete; kind fits. PASS.
+- Fig 3, line, §3: the four means, the 15–60 range, ages 9–15 and 12 weeks all trace to the text; caption complete; kind fits. PASS.
+
+**Passes**
+- Claims: 18 sources opened; 5 claims need fixing (above); the rest PASS. Bergeron's authors and end page not checked.
+- Bibliography: Gómez-López matches Crossref. Haberstock, Tzioumakis, Gao, Gu, Zhang ×2, Hu, Adams, Lewis, Smoll and Burke (pages, date) match the publisher pages. Mossman's volume and pages, Bergeron's authors and pages, and Fletcher & Sarkar's and Gustafsson's details were not shown at any publisher or Crossref page I could reach (the unit already says so); institutional repositories corroborate Fletcher & Sarkar and Gustafsson. No nonexistent reference.
+- Source log: PASS with a gap. Every abstract-only claim (Mossman, Gustafsson, Fletcher & Sarkar) says so in the unit. Ten entries give "the publisher's page" or PMC without the exact address opened, and the writer's own reading is unrecorded for most entries.
+- Grades: PASS except §8 (finding 2). Every other grade follows SP1 rules 2 to 5, and inference is labelled.
+- Population: PASS. Each finding names its sample and design; transfers to other ages are labelled inference (the scope of the label is still open under F48).
+- Scope and safety: PASS. No assessment or diagnosis is taught (§8 hands it to a doctor or mental health professional). No weight method, calorie figure or target weight. No self-harm content. No law stated as the reader's; filming consent is put as a question to the welfare officer. The disclaimer is present. No real person is named.
+- Any sport: PASS. The illustrations cover swimming, gymnastics, volleyball, rowing and tennis, one each; the case and deliverable examples are judo, football and 400 m in equal share; no sport exceeds a third. kit/private_terms.py is not in my folder, so it was not run; I saw nothing identifying the owner.
+- Part 7, line by line: PASS except the source-log addresses and §8 above. Case facts agree with case-facts.md, including the SP3 additions, and "(fictional)" is used on first use. The deliverable is built on all three squads and given as templates. The unit does not read as advice without evidence. Links are DOIs.
+- Coach read: usable alone. Each referral boundary is stated (Sara's SP1 card; weight to DD-SP2; Milan's symptoms to SP4).
+- Brief and flags: all brief items are covered. Burnout and overtraining coverage is thin because the AAP and ECSS/ACSM statements are unopened, which the unit discloses (F32). The audit has twenty behaviours; there are three session plans written twice (individual, team, timed); the parents' page has three versions and a template. Flags F5/F27, F18/F30, F31, F33, F34, F35, F36, F39 and F41 are each disclosed in the unit as described. F40 is still open.
+
+**Not verified**
+- Mossman 2024: volume 17(1):540–563, authors, and the ages and athlete share of its samples; its sensitivity analyses.
+- Bergeron 2015: full author list and end page.
+- Smoll 2007: that the first and second authors wrote the manuals.
+- Gómez-López 2020: the paper's internal inconsistency between its Table 1 (fear of failure with cognitive anxiety, r = −0.19) and its text and model. The unit uses only the model paths.
+- Fletcher & Sarkar 2016: the main text, and that it sets out the challenge-and-support model.
+- Burke 2021: the volume and issue of the version of record.
+- Not opened by anyone, as the unit already discloses: Bartholomew 2009, 2010 and 2011; Smith 2015 (MMCOS); Smith, Smoll & Cumming 2007; Deci 1999; Crane & Temple 2015; Brenner 2024; Meeusen 2013; Stein 2012.
+
+Verdict: SP3 · fix · 0 errors, 2 should-fix, 5 minor
