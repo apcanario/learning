@@ -14,16 +14,16 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | SP9 | Coaching | Write SP9, Wellbeing, red flags and referral, for Sport Psychology for Coaches. |
-| 2 | SP10 | Coaching | Write SP10, The season plan, for Sport Psychology for Coaches. |
-| 3 | DD-SP1 | Coaching | Write DD-SP1, Deep dive: the coach's line with minors, for Sport Psychology for Coaches. |
-| 4 | DD-SP2 | Coaching | Write DD-SP2, Deep dive: weight, body and who decides, for Sport Psychology for Coaches. |
-| 5 | DD-SP3 | Coaching | Write DD-SP3, Deep dive: tuning out the noise, for Sport Psychology for Coaches. |
+| 1 | SP10 | Coaching | Write SP10, The season plan, for Sport Psychology for Coaches. |
+| 2 | DD-SP1 | Coaching | Write DD-SP1, Deep dive: the coach's line with minors, for Sport Psychology for Coaches. |
+| 3 | DD-SP2 | Coaching | Write DD-SP2, Deep dive: weight, body and who decides, for Sport Psychology for Coaches. |
+| 4 | DD-SP3 | Coaching | Write DD-SP3, Deep dive: tuning out the noise, for Sport Psychology for Coaches. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-18 | SP9 | Coaching | SP9, Wellbeing, red flags and referral, written; SP1 and SP8 were also corrected. |
 | 2026-11-18 | SP8 | Coaching | SP8, Competition day, written. |
 | 2026-11-18 | SP7 | Coaching | SP7, Reading and responding to an athlete, written; SP2, SP3, SP5 and SP6 were also corrected. |
 | 2026-11-18 | SP6 | Coaching | SP6, Training under pressure, written; SP1, SP3 and SP5 were also corrected. |
