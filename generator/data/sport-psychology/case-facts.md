@@ -113,3 +113,13 @@ First names only, so that no real person is named.
 | SP8 | Two athletes from her coach's other groups compete on the first day; one is in a field event (long jump in the example) whose session overlaps Sara's call room, and a coach from another group covers that athlete's warm-up. | Sara |
 | SP8 | Dani's routine between contests is her usual warm-up, shortened, ending in her cue. | Dani |
 | SP8 | Dani's coach is working on normal volume (raising his voice in training is in the base entry; the change to normal volume was set by SP3's climate audit). | Dani |
+| SP9 | Sara chose the university's student health service for her referral, and an appointment is booked (extends SP6's "referral under way"). | Sara |
+| SP9 | Sara has agreed that her coach may tell the student health service what he has seen in training. | Sara |
+| SP9 | Sara's training group belongs to an athletics club that names a welfare officer. | Sara |
+| SP9 | Sara's parents have messaged her coach asking why her times are slower. | Sara |
+| SP9 | Whether Sara's worry, nausea or poor sleep spreads beyond competition has not yet been asked; it is to be asked at the next check-in. | Sara |
+| SP9 | Sara's coach records her words about her results as she says them, with the date, and does not label or sort them. | Sara |
+| SP9 | Sara's coach follows up within 24 hours of each conversation, after her first appointment, then every two weeks after a session. | Sara |
+| SP9 | Sara's coach's other two groups include athletes under 18. | Sara |
+| SP9 | Sara's coach is a man. | Sara |
+| SP9 | Sara's coach knows that she has been sleeping about five hours a night and says so to her in the first conversation (script C1), though the base entry says he has not asked about her sleep. | Sara |

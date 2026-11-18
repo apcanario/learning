@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **SP9 · Wellbeing, red flags and referral (W-SP9, 18 Nov 2026).** Written with search on; fresh check, safety read and quality review each by a fresh Opus 5.5 agent, all fix, 26, 39 and 30 changes applied; SMHRT-1's PDF and Reardon et al.'s Table 4 still unread (F53, F54, F98 raised again). 9 of 13 written; next SP10.
 - **SP8 · Competition day** filed 18 Nov 2026 (W-SP8): course data v11, 8 of 13 written.
 - **SP7 filed (W-SP7):** no change to the kit code; the held SP7 figure is raised as a flag for a signed-values kind in kit/viz.py.
 
@@ -164,6 +165,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 ## 
 
 
+
+## 18 Nov 2026 · Session W-SP9 · SP9 filed
+
+SP9, Wellbeing, red flags and referral, written by a fresh Opus 5.5 agent with search on, then checked three times by separate Opus 5.5 agents: a fresh check (fix; 28 findings; 26 changes applied, 6 findings held), a safety read (fix; 19 findings, 3 serious, all dealt with; 39 changes applied) and a quality review (fix; 20 findings; 30 changes applied, 1 held). The urgent steps now default to the emergency number when danger cannot be judged and keep a minor's concern about home away from the parents. The red flags are the ISSF page's; the tool's PDF and Reardon et al.'s Table 4 stay unread. In the same chat SP1 and SP8 got second quality reviews (12 and 30 replacements applied). 10 case facts added; 19 flags raised; 23 carried. The session number is not in the filer's packet, so the row stands in for it. The SMHRT-1 Object line's relief is left to `kit/p96_uses.py` (file-unit step 4b).
 
 ## 18 Nov 2026 · Session W-SP8 · SP8 filed
 
