@@ -147,7 +147,7 @@ def quality(r):
     Returns (before count for this row's unit, [(filed unit, before, total) over a threshold])."""
     rows, order = _flag_rows(r), r['order']
     def counts(u):
-        last = max([int(c[0][1:]) for c in rows if c[4].startswith(QR) and c[6] == 'resolved' and _names(c[3], u, order)] or [0])
+        last = max([int(c[0][1:]) for c in rows if c[4].startswith(QR) and c[6].startswith('resolved') and _names(c[3], u, order)] or [0])
         hit = [c for c in rows if not c[4].startswith(QR) and int(c[0][1:]) > last and _names(c[3], u, order)]
         raised = lambda c: re.match(r'(?:DD-)?[A-Z]+\d+', c[2]).group(0) if re.match(r'(?:DD-)?[A-Z]+\d+', c[2]) else ''
         before = [c for c in hit if raised(c) in order and u in order and order.index(raised(c)) < order.index(u)]
