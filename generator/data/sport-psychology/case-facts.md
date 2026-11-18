@@ -67,3 +67,8 @@ First names only, so that no real person is named.
 | SP4 | On the last match morning Milan rated his nerves 8 out of 10 on the coach's 0-to-10 check-in, against 2 before training. | Milan |
 | SP4 | Milan says a warm-up with many short passes helps a little. | Milan |
 | SP4 | Milan's coach has started the two check-in questions (section 9). | Milan |
+| SP5 | Milan's academy squad's Tuesday and Thursday sessions carry the ten-minute skills block. | Milan |
+| SP5 | Milan's squad plays one match a week, at the weekend. | Milan |
+| SP5 | In the skills block Milan chose the self-talk phrase "Scan, open, forward". | Milan |
+| SP5 | Sara's skills block uses her group's two track sessions each week. | Sara |
+| SP5 | Sara races in weeks 5 and 8 of the block. | Sara |

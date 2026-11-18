@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+
 - **SP4 filed (W-SP4), 18 Nov 2026.** Anxiety, arousal and performing under pressure; Sport Psychology for Coaches v7; 4 of 13 written; next SP5.
 - **17 Nov 2026 · W-SP3 · SP3 filed.** Motivation and the climate you create: Opus 5.5 writer, separate Opus 5.5 fresh check (fix · 2 errors, 12 should-fix, 4 minor; 17 applied, 1 held), fresh re-check (0 errors, 1 should-fix, 5 minor, all applied); search off; 5 case facts, 13 flags raised, F14 and F24 carried. Academy v4 · 17 Nov 2026. 3 of 13 written; next SP4.
 - **SP1 filed (W-SP1, 17 Nov 2026).** Sport Psychology for Coaches, unit 1 of 13, search off; fresh check fix, 48 findings, 33 applied, 15 held (Hagger 2016, Vohs 2021, Ranehill 2015, Sisk 2018, Lochbaum 2022 not opened at an accepted address); 6 case facts, 11 flags, none blocking SP2; next SP2.
@@ -157,6 +158,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 | 12 Nov | 74. Public course PB: PB4 The content system filed: the system checklist and Mara's 12-week calendar inside 6 hours a week (W-PB4) | | |
 | 12 Nov | 78. Public course PB: PB7 How Instagram growth works filed: Mara's Instagram playbook and her Instagram metric rows (W-PB7); P99 and P100 corrections | | |
 | 13 Nov | 79. Public course PB: PB8 Voice, disclosure and the rules filed: Mara's public policy, pre-mortem and rules register (W-PB8) | | |
+
+## 
+
+
 
 ## 18 Nov 2026 · Session W-SP4 · SP4 filed (W-SP4)
 
