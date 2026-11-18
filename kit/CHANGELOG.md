@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **SP8 · Competition day** filed 18 Nov 2026 (W-SP8): course data v11, 8 of 13 written.
 - **SP7 filed (W-SP7):** no change to the kit code; the held SP7 figure is raised as a flag for a signed-values kind in kit/viz.py.
 
 - **SP4 filed (W-SP4), 18 Nov 2026.** Anxiety, arousal and performing under pressure; Sport Psychology for Coaches v7; 4 of 13 written; next SP5.
@@ -163,6 +164,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 ## 
 
 
+
+## 18 Nov 2026 · Session W-SP8 · SP8 filed
+
+SP8 written (Opus 5.5, search off), fresh-checked and quality-reviewed (F115) by fresh Opus 5.5 agents, filed; hub v11; next SP9.
 
 ## 18 Nov 2026 · Session W-SP7 · SP7 filed
 

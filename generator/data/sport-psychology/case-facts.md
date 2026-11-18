@@ -103,3 +103,14 @@ First names only, so that no real person is named.
 | SP7 | Under correction in training Sara asks for the numbers. | Sara |
 | SP7 | Sara keeps headphones on in the call room. | Sara |
 | SP7 | After a slow race Sara goes straight to her log. | Sara |
+| SP8 | Dani's competition in the protocol is a one-day regional competition about 90 minutes' drive away, pools in the morning and a knockout after lunch, up to five contests for her. | Dani |
+| SP8 | Three other squad members compete the same day, two in the same session as Dani; in the afternoon one team-mate's contest clashes with Dani's and a second coach covers the team-mate. | Dani |
+| SP8 | Dani's competition-day cue is "Sleeve first", from the grip-fight process goal she practised calm and under pressure in SP6's block. | Dani |
+| SP8 | The club has a second coach who can be accredited for competitions. | Dani |
+| SP8 | Milan's match in the protocol is a weekend home league match, kick-off 11:00, meeting at 9:30; selection is announced on Thursday on the criteria the squad was given. | Milan |
+| SP8 | Milan chose, by SP7's script 1, to hear his coach's view of a match at Monday's session. | Milan |
+| SP8 | Sara's event in the protocol is a two-day senior championship: her heat on the first evening (call room 18:10, heat 18:40 in the example) and the final on the second evening if she qualifies; she arrives about two hours before her heat. | Sara |
+| SP8 | Two athletes from her coach's other groups compete on the first day; one is in a field event (long jump in the example) whose session overlaps Sara's call room, and a coach from another group covers that athlete's warm-up. | Sara |
+| SP8 | Dani's routine between contests is her usual warm-up, shortened, ending in her cue. | Dani |
+| SP8 | Dani's SP6 cap is 3. | Dani |
+| SP8 | Dani's coach is working on normal volume (raising his voice in training is SP3's). | Dani |
