@@ -72,3 +72,9 @@ First names only, so that no real person is named.
 | SP5 | In the skills block Milan chose the self-talk phrase "Scan, open, forward". | Milan |
 | SP5 | Sara's skills block uses her group's two track sessions each week. | Sara |
 | SP5 | Sara races in weeks 5 and 8 of the block. | Sara |
+| SP6 | Dani's squad practised a self-chosen process goal for the grip fight calm in the two weeks before SP6's pressure block. | Dani |
+| SP6 | Dani's squad's pressure slot is 15 minutes after the warm-up on Monday and Wednesday, two of its five weekly sessions. | Dani |
+| SP6 | A club competition falls at the weekend at the end of week 4 of Dani's pressure block. | Dani |
+| SP6 | The concern about Dani's skipped after-school snack has been passed on to the club's person for medical concerns, a referral under way; that person has not yet seen her. | Dani |
+| SP6 | Milan's squad's Tuesday and Thursday pressure slot is 15 minutes, in weeks 9 to 12 of the season's plan. | Milan |
+| SP6 | At SP5's week-8 review Sara kept breathing (early in the call room), her imagery scene of the third hundred and the self-talk phrase "Arms, tall, through". | Sara |
