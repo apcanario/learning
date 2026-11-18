@@ -63,3 +63,7 @@ First names only, so that no real person is named.
 | SP3 | Sara's coach was observed in one 75-minute track session of the group of six; the counts in Sara's column of the self-audit are invented, including reading out the group's times in rank order three times. | Sara |
 | SP3 | Most of the exchanges Dani lost at her last competition were decided in the grip fight, before the first throw. | Dani |
 | SP3 | Sara loses most time in the third hundred metres of her 400 m. | Sara |
+| SP4 | At a check-in Milan said: "If I give the ball away early, they'll decide I'm not good enough." | Milan |
+| SP4 | On the last match morning Milan rated his nerves 8 out of 10 on the coach's 0-to-10 check-in, against 2 before training. | Milan |
+| SP4 | Milan says a warm-up with many short passes helps a little. | Milan |
+| SP4 | Milan's coach has started the two check-in questions (section 9). | Milan |
