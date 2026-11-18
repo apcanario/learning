@@ -1,0 +1,378 @@
+---
+code: SP5
+title: The cognitive-behavioural toolkit
+course: sport-psychology · SP · Sport Psychology for Coaches
+model: Opus 5.5
+written: 2026-11-18
+search: off
+---
+
+# SP5 · The cognitive-behavioural toolkit
+
+This unit is information, not legal, medical or psychological advice. Every technique and recommendation carries a grade in square brackets from SP1's grade key (section 9 of SP1: five rules applied in order; "several" means three or more; the labels *direction* and *inference*). *Inference* marks evidence from adults, students or non-athletes applied to an athlete under 18, as SP1 words it; where a study sampled younger athletes than the band it is applied to, the unit says "outside the sampled ages" instead. Age bands are SP2's: about 10 to 12, 13 to 15, 16 to 18 and 19 to 25.
+
+Every reference was opened before it is cited; where only the abstract was read, the text says so. Several papers in the course's reading list could not be opened in this session: the 2022 review of sport psychology meta-analyses, the self-talk systematic review, the earlier imagery meta-analysis and two attentional-focus reviews (the goal-setting and self-talk meta-analyses and the external-focus bias re-analysis were read in abstract only). Each section says which, and what was opened in its place. Nothing in this unit rests on a paper that was not opened.
+
+The three case athletes return: Dani (fictional), 14, judo; Milan (fictional), 17, football; Sara (fictional), 20, 400 metres. They illustrate; they are never evidence. The deliverable is built for Milan's squad and for Sara.
+
+## 1. The cognitive-behavioural model in plain words, and where teaching ends
+
+**The model.** Cognitive-behavioural approaches rest on one idea: what an athlete feels and does after an event depends on what they make of it. A narrative review of rational emotive behaviour therapy (REBT), which it describes as regarded by many scholars as the original cognitive-behavioural therapy, sets this out as an ABC framework: an activating event (A), the beliefs about it (B), and the emotional and behavioural consequences (C), with A leading to C only through B ([Turner, 2016](https://doi.org/10.3389/fpsyg.2016.01423); a narrative review, outside the source types the course lists: the model is reported as this review states it, and no grade or recommendation rests on it).
+
+This unit uses a five-part plain-words version, which is its own and is not taken from any source:
+
+- **Situation**: what is happening. A tennis player serving at 4–5 in the third set; a swimmer in the call room; Milan (fictional) receiving the ball in the first fifteen minutes.
+- **Thought**: what goes through the athlete's mind. Milan's words at a check-in (SP4): "If I give the ball away early, they'll decide I'm not good enough."
+- **Feeling**: the emotion: fear, frustration, excitement.
+- **Body**: what the body does: a racing heart, nausea, tight shoulders.
+- **Behaviour**: what the athlete does: Milan passes backwards; the swimmer goes out too fast; the server pushes a safe second serve.
+
+Each part feeds the others. The skills in this unit give the athlete a way in at a different point: goals and self-talk work on the thought; breathing and relaxation on the body; attentional focus and imagery on the action itself, where attention goes during it and how it is rehearsed; mindfulness and acceptance on the athlete's relationship with the thought and the feeling, without trying to change them.
+
+```viz
+{"kind": "flow", "caption": "The five-part cognitive-behavioural model as section 1 of this unit states it in plain words: the unit's own version of the ABC framework set out by Turner (2016), Frontiers in Psychology. The notes give where each skill in section 3 enters; the situation note is Milan's (fictional) first fifteen minutes.", "steps": [{"label": "Situation", "note": "ball arrives, first fifteen minutes"}, {"label": "Thought", "note": "goals, self-talk"}, {"label": "Feeling", "note": "mindfulness and acceptance"}, {"label": "Body", "note": "breathing, relaxation"}, {"label": "Behaviour", "note": "attentional focus, imagery"}]}
+```
+
+**Teaching a skill against treating a problem.** The same model underlies cognitive-behavioural therapy, which clinicians use to treat anxiety disorders and other conditions. Teaching a skill and treating a problem differ in who, what and why:
+
+| | You, teaching a skill | A clinician, treating a problem |
+|---|---|---|
+| **Who** | The whole squad, or any athlete who wants it | One person referred with a problem |
+| **What** | A technique practised in training, for performing | An assessment, a formulation, a treatment plan |
+| **Why** | To perform and to train better | To relieve distress or impairment |
+| **Material** | The athlete's sport: the drill, the race, the match | Whatever the person brings, including life outside sport |
+
+The REBT review states that treating athletes for mental illness is "ethically beyond many practitioners' professional competencies", meaning sport psychology practitioners, not coaches ([Turner, 2016](https://doi.org/10.3389/fpsyg.2016.01423)). A coach is further from that line. So, under SP1's scope line [practice; the course's scope line]: you teach skills inside normal training; you do not use a skill to work on an athlete's beliefs about their worth, their life or their past; and when skill practice brings up distress, thoughts that reach beyond sport, or a sign on SP4's normal-or-refer table, you stop the exercise for that athlete, hold the first conversation and refer by your scope card. Milan's profile in SP4 already offers referral; the skills block in the deliverable runs alongside that referral and never replaces it [practice; SP4].
+
+## 2. What the meta-analyses of psychological skills training show overall, and on whom
+
+**Psychological interventions as a whole.** A meta-analysis of randomised controlled trials of psychological and psychosocial interventions in athletes, against no treatment or placebo, found at post-test *g* = 0.57 (95% CI 0.22 to 0.92; 35 studies, 997 participants) and at follow-up one to four weeks later *g* = 1.16 (0.25 to 2.08; 8 studies, 189 participants), with "some" evidence that effects were greatest when coaches delivered the intervention ([Brown & Fletcher, 2017, abstract read](https://doi.org/10.1007/s40279-016-0552-7)). The abstract gives no ages.
+
+**Three families of technique.** A 2024 review of 111 studies pooled 25 of them in five meta-analyses. Against controls: multimodal psychological skills training *g* = 0.83 (95% CI 0.21 to 1.45; 7 studies), mindfulness- and acceptance-based approaches *g* = 0.67 (0.01 to 1.32; 6 studies), imagery *g* = 0.75 (0.14 to 1.36; 5 studies). Restricted to randomised trials, none stayed significant: training *g* = 0.51 (−1.58 to 2.59), mindfulness and acceptance *g* = 0.66 (−0.11 to 1.43), imagery *g* = 0.81 (−0.14 to 1.75). Self-talk, goal setting and relaxation appeared only inside multimodal packages, and breathing was not reported. On whom: 54 of the 111 studies sampled university athletes, the reported mean ages in the meta-analyses ran from 19.1 to 35, and younger athletes were excluded by design: "High school athletes were considered equal to junior level participants and were therefore excluded." ([Reinebo et al., 2024, full text read](https://doi.org/10.1007/s40279-023-01931-z)). SP1 reports the same review; this unit adds the randomised-only values and the exclusion.
+
+**What psychological variables go with performance (flag F2).** The 2022 review of 30 sport psychology meta-analyses could not be opened in this session (both its DOI address and its publisher's page were refused by the session's permission check), so nothing here rests on it; SP1, section 6, reports its variables half from a full-text read on 18 Nov 2026 (facilitative variables *d* = 0.51, debilitative *d* = −0.21). A 2025 scoping review by two of the same authors, of 73 meta-analyses with athlete samples and performance outcomes published from 1988 to 2025, reports confidence–performance effects ranging from 0.25 to 0.30, describes three anxiety meta-analyses as suggesting a negligible or unreliable relationship with performance, and reports that process-goal setting, mindfulness and psychological skills training often produced medium-to-large effects while short-term breathing manipulations were negligible or inconsistent. Its authors did no quality appraisal and pooled nothing; its effect-size tables are images and were not read ([Lochbaum & Lane, 2025](https://doi.org/10.3390/sports13120420)). Its ages: athletes from youth to elite level, with no breakdown.
+
+Read together: positive pooled effects, wide intervals, effects that lose significance when only randomised trials are kept, and samples of adults, many of them university athletes. Teach psychological skills as part of training [moderate, positive (rule 4: meta-analyses in athletes with unstable estimates); samples aged 18 and over, the 2024 review excluding junior athletes, so for athletes under 18 an inference]. Where you can, teach them yourself, inside training [weak, positive: a moderator result in one meta-analysis read in abstract, rule 5].
+
+**Does any technique reach strong (flag F1)?** No. Every technique graded below fails rule 3: its meta-analyses report low certainty, unclear or high risk of bias, heterogeneity, or effects that do not survive restriction to randomised trials, or there is no meta-analysis in athletes at all. The best grade any skill earns here is moderate.
+
+```viz
+{"kind": "range", "caption": "Pooled effects of psychological skills on sport performance against controls: point estimate and 95% confidence interval (the mindfulness row in shooting and darts gives the 90% interval its authors report). Hedges' g or standardised mean difference, as each source gives it. From sections 2 and 3 of this unit: Brown & Fletcher (2017); Reinebo et al. (2024); Liu et al. (2025); Deng et al. (2024), players aged 9 to 18; Bühlmayer et al. (2017); Favre-Bulle et al. (2024), external against internal focus at retention, mostly novice adults.", "unit": "", "min": -1.6, "max": 2.6, "ticks": [-1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5], "decimals": 2, "rows": [{"label": "Psychological interventions, post-test (Brown & Fletcher)", "low": 0.22, "high": 0.92, "point": 0.57, "tone": 3}, {"label": "Skills training packages (Reinebo)", "low": 0.21, "high": 1.45, "point": 0.83, "tone": 4}, {"label": "Skills training packages, randomised only (Reinebo)", "low": -1.58, "high": 2.59, "point": 0.51, "tone": 1}, {"label": "Imagery, athletes (Liu)", "low": 0.34, "high": 0.67, "point": 0.5, "tone": 2}, {"label": "Imagery, tennis serve accuracy, ages 9 to 18 (Deng)", "low": 0.68, "high": 1.30, "point": 0.99, "tone": 2}, {"label": "Mindfulness and acceptance (Reinebo)", "low": 0.01, "high": 1.32, "point": 0.67, "tone": 5}, {"label": "Mindfulness, shooting and darts, 90% CI (Bühlmayer)", "low": 0.61, "high": 2.09, "point": 1.35, "tone": 5}, {"label": "External against internal focus, retention (Favre-Bulle)", "low": 0.20, "high": 0.92, "point": 0.56, "tone": 6}]}
+```
+
+## 3. The skills, one by one
+
+Each skill: what it is, the evidence opened with its sample and design, its grade, and how to teach it in each age band. The teaching steps by band are this unit's practice, untested in any study opened, unless a study is named beside them.
+
+### 3.1 Goal setting
+
+**What it is.** A goal is a standard the athlete aims at. Three kinds are distinguished in coaching and in the research the unit could reach: an **outcome goal** is about a result against others (win, medal, selection); a **performance goal** is about the athlete's own measured standard (a time, a percentage of first serves in); a **process goal** is about how the athlete performs an action (drive the arms through the bend, scan before receiving). These working definitions are the unit's.
+
+**The evidence opened.** The sport meta-analysis the brief points to, which compared the three kinds, was read in abstract only, on a university repository page: process goals had the largest effect on performance (*d* = 1.36), performance goals a smaller one (*d* = 0.44) and outcome goals a negligible one (*d* = 0.09); process goals also had a large effect on self-efficacy (*d* = 1.11), and specific and non-specific goals did not differ significantly (*d* = 0.37 against 0.72). The abstract does not say who took part, and gives no confidence intervals, no number of studies for each kind, no ages and no rating of study quality ([Williamson et al., 2024, abstract read](https://doi.org/10.1080/1750984X.2022.2116723)). A scoping review that reports it adds that "there are vastly different effect size values across process, performance, and outcome goals" ([Lochbaum & Lane, 2025](https://doi.org/10.3390/sports13120420)).
+
+One randomised study in young athletes was opened. In 24 male competitive swimmers aged 15.2 on average (12 per group, all nationally ranked), an individual time goal for the 100 m freestyle, set from the swimmer's own times, against the instruction to do their best, over eight weeks, went with a 4.3% improvement against 2.5% (p = 0.004); total mood disturbance on a mood questionnaire rose 47.1% in the goal group against 19.1% in the control group. Process goals were not tested ([Ferchichi et al., 2026](https://doi.org/10.3389/fspor.2026.1759066)). Its authors call it a time-based performance goal, which matches this unit's definition of a performance goal.
+
+**Grade.** Setting a specific, individual performance goal: [weak, positive; one randomised study in 24 male swimmers aged 15.2 on average, range not reported, rule 5; for 19 to 25 outside the sampled ages]. Preferring process goals for competition: [weak, positive; a sport meta-analysis read in abstract only, whose participants are not described and whose study quality, samples and ages were not seen, rule 5; for athletes under 18 an inference until the samples are seen]. Watch mood when you add a demanding goal: [weak; one study, the same swimmers].
+
+**Teaching by band.** About 10 to 12: one process goal per session, set by you, said in a few words, checked at the end ("Did you scan before you received?"). About 13 to 15: the athlete chooses one of two process goals you offer, and one performance goal per month from their own records, never from rankings (SP3's climate). About 16 to 18: the athlete writes a process goal for each competition and a performance goal for the block, and you agree them. About 19 to 25: the athlete owns the goals; you ask what they are and whether training serves them. Outcome goals stay out of training talk at every band [practice; SP3's task-involving climate].
+
+### 3.2 Self-talk
+
+**What it is.** Self-talk is what athletes say to themselves, aloud or silently. As a skill it is a short, planned phrase. **Instructional** self-talk says what to do ("Eyes up, scan"); **motivational** self-talk raises effort or confidence ("Go now", "I'm ready"). The usual advice is to match them to the task: instructional for skills that need precision, motivational for effort and endurance. These definitions and the matching advice are stated here as they circulate in coaching; the self-talk meta-analysis in the course's reading was read in abstract only: across 32 studies (62 effect sizes) self-talk gave a moderate positive effect on sport-task performance (ES = .48); it was more effective for fine than for gross tasks, and for fine tasks instructional self-talk was more effective than motivational. The abstract does not say how many participants were athletes or report a matching result for motivational self-talk on effort tasks ([Hatzigeorgiadis et al., 2011, abstract read](https://doi.org/10.1177/1745691611413136)). The systematic review in the reading list could not be opened.
+
+**The evidence opened.** Two randomised studies in athletes.
+
+- In 117 athletes aged 13 to 23 (mean 16.0; canoeing, gymnastics, swimming, wrestling, ice hockey, handball, volleyball), randomised to a one-week self-talk training (three 60-minute sessions), an eight-week training (three 20-minute sessions a week) or no training, athletes developed and practised their own self-talk. Coach-rated performance improved only in the eight-week group; somatic state anxiety fell in the one-week group by follow-up; the coaches knew who took part, which the authors list as a limitation ([Walter et al., 2019](https://doi.org/10.3390/sports7060148)).
+- In 42 male university basketball players (mean age 20.9), randomised to instructional, motivational or no self-talk, neither kind changed three-point shooting against no self-talk, in quiet or under noise (no significant intervention effect or interaction; the authors read a buffering of noise on static shots from simple effects), and the paper reports no direct comparison of the two kinds ([Yang et al., 2024](https://doi.org/10.3389/fspor.2023.1304911)).
+
+**Grade.** A planned self-talk phrase, practised for weeks: [weak, mixed; two controlled studies in athletes, one positive at eight weeks on coach ratings, one null on shooting, rule 5; the positive study sampled ages 13 to 23, so it covers 13 to 23; for 10 to 12 an inference from older athletes]. Instructional self-talk for fine, precise tasks: [weak, positive; a meta-analysis of sport-task studies read in abstract, participants not described as athletes, rule 5; inference for under-18s]. Motivational self-talk for effort and endurance: [practice; no result in the abstract read]. SP1 and SP4 graded Milan's practised what-to-do cue [practice]; with these two studies opened, a self-talk cue grades [weak, mixed].
+
+**Teaching by band.** About 10 to 12: one word or two, chosen with the child, linked to a movement they can see ("Reach"); say it aloud together in drills. About 13 to 15: the athlete writes their own phrase, as in the eight-week study; practise it aloud, then silently. About 16 to 18 and 19 to 25: the athlete writes phrases for set moments (before a serve, after a mistake, at the bell) and tests them in training. At every band, phrase it as what to do; SP1 sets instructions about what to avoid against the ironic-effects review [weak, positive; as SP1 grades it].
+
+### 3.3 Imagery
+
+**What it is.** Imagery is rehearsing an action or a situation in the mind, with as many senses as possible: seeing the bar, feeling the take-off, hearing the gun. SP1 set the popular claim that the brain cannot tell imagined from real action against its evidence; imagining and doing were not the same brain activity in the study it opened.
+
+**The evidence opened.**
+
+- **Athletes, all ages.** A 2025 multilevel meta-analysis of 86 randomised studies (3,593 athletes; ages not pooled, ten studies gave none) found SMD = 0.5 (95% CI 0.34 to 0.67). The authors rate the certainty of the evidence low; more than half of the studies were at unclear risk of bias, and the funnel plot was asymmetric, the pooled effect was no longer significant when only non-significant studies were kept, though their S-value analysis found no plausible level of bias that would remove the effect. Longer programmes went with larger effects (100 days 0.62, 50 days 0.47, 20 days 0.38), three sessions a week with larger effects than one (0.59 against 0.09) or seven (−0.13), and imagery combined with other skills with larger effects than imagery alone ([Liu et al., 2025](https://doi.org/10.3390/bs15050685)). On session length the paper's numbers do not settle it: ten-minute sessions 0.51, 20 minutes 0.22, 45 minutes 0.93 with an interval that crosses zero.
+- **Players aged 9 to 18.** A meta-analysis of nine trials of imagery for the tennis serve (548 participants aged 9 to 18, from beginners to national level) found serve accuracy improved, *g* = 0.99 (95% CI 0.68 to 1.30), and speed not significantly, with certainty low for both (very low for serve technique). Programmes ran 4 to 24 weeks, one to three sessions a week, 3 to 25 minutes a session (mean about 13) ([Deng et al., 2024](https://doi.org/10.3390/bs14030207)).
+- **Children and adolescents learning motor skills.** A review of 22 randomised trials in 934 participants aged 9 to 18 (pupils, young athletes in several sports, and children with motor or intellectual difficulties) could pool only two studies (SMDs 0.83 to 1.87), rated risk of bias from some concerns to high and certainty low, and concluded that imagery combined with physical practice may have high potential ([Behrendt et al., 2021](https://doi.org/10.3390/ijerph18189467)).
+- The 2024 review in section 2: *g* = 0.75 against controls, not significant in randomised trials alone ([Reinebo et al., 2024](https://doi.org/10.1007/s40279-023-01931-z)).
+
+**Grade.** [moderate, positive; meta-analyses in athletes that fail rule 3 on certainty and bias, rule 4; for ages 9 to 18 the evidence is the tennis serve, low to very low certainty, and imagery paired with physical practice]. Practise it about three times a week over months, not daily for a week [weak, positive; moderator results in one meta-analysis, rule 5].
+
+**Teaching by band.** About 10 to 12: one short scene of one skill, eyes open or closed, straight before doing it physically [weak, positive, for pairing with physical practice; low-certainty review, ages 9 to 18]. About 13 to 15: a 2- to 3-minute script of one action seen and felt, then the action. About 16 to 18 and 19 to 25: the athlete builds scenes of their own competitions, including recovering from a mistake; the athlete writes the script.
+
+### 3.4 Breathing and relaxation
+
+**What it is.** Slow breathing in one study opened meant about six breaths a minute, with a slightly longer out-breath (4.5 seconds in, 5.5 out) ([Laborde et al., 2019](https://doi.org/10.3389/fpsyg.2019.01923)). Progressive muscle relaxation means tensing and releasing muscle groups in turn.
+
+**What the breathing studies measured.** Mostly the heart, and some laboratory tasks; none opened measured performance in competition.
+
+- **Heart rate variability.** A meta-analysis of 223 studies of voluntary slow breathing found increases in vagally mediated heart rate variability (a heart-rhythm measure linked to the parasympathetic nervous system) during the breathing, immediately after a single session, and after multi-session programmes ([Laborde et al., 2022, abstract and parts of the text read](https://doi.org/10.1016/j.neubiorev.2022.104711)). The parts read give no pooled values and do not say how many participants were athletes. This is a physiological result. It says nothing about whether an athlete then plays, runs or fights better.
+- **A laboratory task after exercise.** In students at a sport university (two experiments, 107 analysed, ages 18 to 41; their sport background was not assessed), one 17-minute session of breathing at about six breaths a minute, against watching a documentary, went with fewer errors on a colour-word inhibition task (0.36 against 0.69), no change in reaction time and no change in perceived stress; the heart-rhythm measure did not explain the effect ([Laborde et al., 2019](https://doi.org/10.3389/fpsyg.2019.01923)).
+- **A laboratory motor task.** In 35 healthy kinesiology students whose athletic status was not reported (mean age 21.7), slow breathing raised heart rate variability and slowed reaction time on a precise grip task; fast breathing raised errors and breathlessness ([Buchanan & Janelle, 2022](https://doi.org/10.3389/fpsyg.2022.963711)).
+- Across meta-analyses with athlete samples, short-term breathing manipulations were negligible or inconsistent for performance ([Lochbaum & Lane, 2025](https://doi.org/10.3390/sports13120420); values not seen).
+
+**Relaxation.** In 24 collegiate track-and-field athletes (about 21 years; 14 trained, 10 controls; randomised within gender, with participants replaced after randomisation), progressive relaxation twice a week for a month before a provincial games went with higher self-confidence in weeks 1 and 2 only (*g* = 0.8 and 1.0), no difference in somatic or cognitive anxiety, and personal bests in 7 of 14 against 2 of 10, a difference the authors' model did not establish (one-sided p = 0.074) ([Liang et al., 2021](https://doi.org/10.3389/fpsyg.2020.617541)). In 59 male basketball players aged 14 to 19 at one club, 12 sessions of progressive muscle relaxation lowered heart rate against controls; the groups differed on cognitive anxiety before the start, and the sample was chosen for convenience by team availability, no randomisation is reported, and the trained group was older (mean 15.97 against 14.33) ([Battaglini et al., 2022, abstract read](https://doi.org/10.3390/ijerph192417065)).
+
+**Grade.** Slow breathing to raise heart rate variability: [weak, positive; a meta-analysis not limited to athletes, rule 5; inference for under-18s]. Slow breathing to improve performance: [weak, mixed in the laboratory, no competition outcome tested; laboratory studies in sport students and kinesiology students, one with fewer errors, one with slower reactions, rule 5]. Progressive muscle relaxation: [weak, mixed; two small controlled studies in athletes, ages 14 to 19 and about 21, rule 5]. So: teach breathing as a way to settle the body between efforts and early in a routine the athlete chooses, and say what it does in the studies: it changes heart rhythm. Do not tell an athlete it will make them play better [practice; the step from the studies to the instruction is the unit's]. Where a task needs a fast reaction (a sprint start, a goalkeeper facing a penalty), do not put slow breathing in the last seconds before it [weak; one laboratory study in students not described as athletes, rule 5; inference].
+
+**Teaching by band.** About 10 to 12: count breaths with the child (in for four, out for six) for one minute at the end of a session. About 13 to 15 and older: the athlete chooses where breathing goes in their routine, practises it after hard efforts in training, and stops if they feel dizzy or short of breath [practice].
+
+### 3.5 Attentional focus: external against internal
+
+**What it is.** An **internal** focus is attention on the body's movements ("bend your knees"). An **external** focus is attention on the movement's effect on the world ("push the floor away", "send the ball to the far post"). A distal external focus is further from the body (the target) than a proximal one (the racket face). These definitions are the unit's working ones.
+
+**The evidence opened.**
+
+- **Adults learning sport skills.** A network meta-analysis of 12 studies, one of them a counterbalanced crossover (566 healthy adults (eligible from 18 to 65; reported mean ages about 19 to 27), mostly novices; badminton, golf, basketball, volleyball, long jump, football, darts) found an external focus better than an internal one at retention, SMD = 0.56 (95% CI 0.20 to 0.92), and at transfer, 0.35 (0.02 to 0.68); subject blinding was at high risk of bias in every study, and allocation concealment and therapist blinding in all but one, and post-acquisition heterogeneity was substantial ([Favre-Bulle et al., 2024](https://doi.org/10.7717/peerj.17799)).
+- **Distance of the focus.** A meta-analysis of 20 randomised trials (497 physically fit participants, one study of children, mean age 7) found a distal external focus better than an internal one, SMD = 0.59 (0.14 to 1.05), and a proximal external focus better than internal, 0.32 (0.13 to 0.51). The benefit of a further focus appeared in experienced performers; on novices the authors write that "there is no evidence that novices can benefit from external focus at any distance" (distal against proximal) ([Zang et al., 2025](https://doi.org/10.7717/peerj.20012)).
+- **Athletes.** The 2024 review pooled four crossover studies (49 athletes in baseball, table tennis and golf, mean ages about 19) and found no significant difference between external and internal focus, which its authors say may reflect low power ([Reinebo et al., 2024](https://doi.org/10.1007/s40279-023-01931-z)).
+- **The bias re-analysis.** A 2024 robust Bayesian meta-analysis of the external-focus literature found moderate to strong evidence of publication bias in every analysis; after correction the estimated effects were negligible (performance *g* = 0.01, retention 0.15, transfer 0.09, distance effect −0.01), and its authors write that their results "contradict the existing consensus that an external focus is always more effective" than an internal focus ([McKay et al., 2024, abstract read](https://doi.org/10.1037/bul0000451)).
+- The reviews of Wulf (2013) and Chua and colleagues (2021) in the course's reading could not be opened in this session; nothing is reported from them.
+
+**Grade.** Give instructions and cues that point attention at the movement's effect: [contested; two meta-analyses disagree on whether the effect exists, one finding it in mostly novice adults and a bias-corrected re-analysis, read in abstract, finding it small to nil, rule 1; in athlete samples one small meta-analysis found no significant difference; samples mostly adults, so for under-18s an inference]. This fits SP4's self-focus account of choking, which says attention on mechanics under pressure can break an automatic skill.
+
+**Teaching by band.** At every band this is mainly a change in your words. About 10 to 12: give the target, not the joint ("Land like a cat on the mat"). About 13 to 15 and 16 to 18: before a drill, ask the athlete where they will put their attention, and offer an external option. About 19 to 25: the athlete chooses their cue; keep technical internal coaching for early learning in quiet blocks, away from competition [practice].
+
+### 3.6 Mindfulness and acceptance, the alternative to control
+
+**What it is.** The skills above mostly try to change something: a thought, a heart rate, a feeling. Mindfulness and acceptance approaches aim instead at noticing thoughts, feelings and sensations as they are, letting them be there, and keeping attention on the task and on what matters to the athlete. For an athlete who has been told "just relax" for years, as Milan has, the message changes from "get rid of the nerves" to "you can play with the nerves there". The description is the unit's; the reviews below define their interventions in their own terms.
+
+**The evidence and its quality.**
+
+- A meta-analysis of nine controlled trials (290 healthy athletes over 15, 13 sports, programmes from 4 weeks to over 2 years) rated the trials of fair quality (mean quality score 5.4 on the Physiotherapy Evidence Database scale) and found large effects on mindfulness scores (SMD 1.03, 90% CI 0.67 to 1.40), moderate-to-large effects on psychological measures (0.72, 0.46 to 0.98), and, in shooting and darts, on performance (1.35, 0.61 to 2.09) with very high heterogeneity (I² = 82%) ([Bühlmayer et al., 2017, abstract read](https://doi.org/10.1007/s40279-017-0752-9)).
+- A systematic review of 66 studies of any design (n = 3,908) reported large effects in randomised trials against no treatment on mindfulness, flow, performance and competitive anxiety, and graded the evidence low quality: "None of the included studies were rated as having a low risk of bias" ([Noetel et al., 2019, abstract read](https://doi.org/10.1080/1750984X.2017.1387803)).
+- The 2024 review: *g* = 0.67 (0.01 to 1.32), not significant in randomised trials alone or with an outlying study removed ([Reinebo et al., 2024](https://doi.org/10.1007/s40279-023-01931-z)).
+
+**Grade.** [moderate, positive; meta-analyses in athletes of fair-to-low quality whose estimates are unstable, rule 4; samples over 15, so for 10 to 15 an inference]. The reviews agree the evidence is weak in quality and that larger randomised trials are needed; the parts read report no harms and do not say whether harms were measured.
+
+**Teaching by band.** About 10 to 12: a minute of noticing sounds or the breath, framed as a focus game, nothing about feelings [practice; inference]. About 13 to 15: notice-and-name ("there's the worry; back to the ball") as part of a routine. About 16 to 18 and 19 to 25: short guided practices of a few minutes, and the acceptance message for athletes whose control strategies have not worked. Programmes in the studies ran for weeks to years with practice between sessions; a single talk is not the intervention that was tested [moderate, for the programmes as tested].
+
+```viz
+{"kind": "matrix", "caption": "Which age bands the studies opened for each skill sampled. From section 3 of this unit: goal setting, Ferchichi et al. (2026), mean age 15.2; self-talk, Walter et al. (2019), 13 to 23, and Yang et al. (2024), about 21; imagery, Deng et al. (2024) and Behrendt et al. (2021), 9 to 18, Reinebo et al. (2024), adults; breathing, Laborde et al. (2019), 18 to 41, and Buchanan & Janelle (2022), mean 21.7; relaxation, Battaglini et al. (2022), 14 to 19, and Liang et al. (2021), about 21; attentional focus, Favre-Bulle et al. (2024), 18 to 65, Reinebo et al. (2024), about 19; mindfulness, Bühlmayer et al. (2017), over 15. A blank cell means no study opened sampled that band; using the skill there is an inference or outside the sampled ages.", "cols": ["10 to 12", "13 to 15", "16 to 18", "19 to 25"], "rows": [{"label": "Goal setting", "cells": [null, {"mark": "sampled", "tone": 2}, null, null]}, {"label": "Self-talk", "cells": [null, {"mark": "sampled", "tone": 2}, {"mark": "sampled", "tone": 2}, {"mark": "sampled", "tone": 2}]}, {"label": "Imagery", "cells": [{"mark": "sampled", "tone": 2}, {"mark": "sampled", "tone": 2}, {"mark": "sampled", "tone": 2}, {"mark": "sampled", "tone": 2}]}, {"label": "Breathing", "cells": [null, null, null, {"mark": "sampled", "tone": 2}]}, {"label": "Relaxation", "cells": [null, {"mark": "sampled", "tone": 2}, {"mark": "sampled", "tone": 2}, {"mark": "sampled", "tone": 2}]}, {"label": "Attentional focus", "cells": [null, null, null, {"mark": "sampled", "tone": 2}]}, {"label": "Mindfulness and acceptance", "cells": [null, null, {"mark": "sampled", "tone": 2}, {"mark": "sampled", "tone": 2}]}], "legend": [{"mark": "sampled", "means": "a study opened sampled this band", "tone": 2}]}
+```
+
+## 4. How a skill is taught, and how long that takes
+
+Four stages, in order [practice; no study opened tests the sequence]:
+
+1. **Explain.** In two or three minutes: what the skill is, when it is used, and what the evidence says it does, with its grade. Ask the athlete where it might fit in their sport.
+2. **Practise calm.** In ordinary drills, with nothing at stake, until the athlete can do it without prompting.
+3. **Practise under pressure.** In drills with a score, a consequence or an audience. SP6 builds the pressure ladder and its step-down rule; in this unit's block the pressure is light: a scored game, a timed rep, a teammate watching.
+4. **Use in competition.** Only after stages 2 and 3, and first in a competition that matters less.
+
+**How long.** In the studies opened, interventions lasted weeks to months: skills-training packages from about 3.5 to 30 hours in total, mindfulness and acceptance programmes about 4 to 8 hours over several weeks ([Reinebo et al., 2024](https://doi.org/10.1007/s40279-023-01931-z)); mindfulness programmes from 4 weeks to over 2 years ([Bühlmayer et al., 2017, abstract read](https://doi.org/10.1007/s40279-017-0752-9)); imagery for the tennis serve 4 to 24 weeks, mean about 11 ([Deng et al., 2024](https://doi.org/10.3390/bs14030207)). Two findings speak to dose directly: imagery effects were larger after 100 days than after 20 ([Liu et al., 2025](https://doi.org/10.3390/bs15050685)), and in the self-talk trial the eight-week programme changed coach-rated performance where the one-week programme did not ([Walter et al., 2019](https://doi.org/10.3390/sports7060148)). So a fortnight introduces a skill; it does not finish it. Keep each skill going after its fortnight, a few minutes at a time, for the rest of the season [weak, positive, for longer practice; moderator results and one randomised comparison, rule 5].
+
+**Ten minutes inside the session.** The imagery sessions in the tennis studies averaged about 13 minutes ([Deng et al., 2024](https://doi.org/10.3390/bs14030207)), and the eight-week self-talk sessions were 20 minutes ([Walter et al., 2019](https://doi.org/10.3390/sports7060148)). Ten minutes is shorter than most sessions tested; it is chosen so that skills fit inside training, and is the unit's practice, untested [practice].
+
+```viz
+{"kind": "flow", "caption": "The four stages of teaching a skill, as section 4 of this unit sets them out [practice], and the keeping-going step that section 4 adds after them. The timings are the deliverable's fortnight per skill; the durations of the interventions in Reinebo et al. (2024), Deng et al. (2024) and Liu et al. (2025) are weeks to months.", "steps": [{"label": "Explain", "note": "2 to 3 minutes, first session"}, {"label": "Practise calm", "note": "week 1, no stakes"}, {"label": "Practise under pressure", "note": "week 2, scored drill; SP6"}, {"label": "Use in competition", "note": "after both, a lower-stakes event first"}, {"label": "Keep it going", "note": "a few minutes a week, all season"}]}
+```
+
+## 5. When an athlete does not take to a skill
+
+Most of the trials pooled averages; individual athletes varied, and the meta-analyses opened report heterogeneity or wide intervals for the skills they pooled. An athlete for whom a skill does nothing is common, not a failure of either of you. Steps, in order [practice; no study opened tests them]:
+
+- **Check the basics.** Did they practise it, and as many times as the plan said? Do they understand what it is for? Ask them to show you.
+- **Check the fit.** Is it the right skill for the moment? A swimmer who freezes on the blocks may need a breathing step before the call; one who fades in the last 25 metres may need a self-talk phrase there. Ask the athlete where the problem shows (SP4's profile).
+- **Let them change it.** Their own words, their own image, their own place in the routine. The self-talk trial had athletes develop their own phrases ([Walter et al., 2019](https://doi.org/10.3390/sports7060148)) [weak, positive]; choice fits SP3's autonomy support [moderate, for the association, as SP3 grades it].
+- **Offer the alternative to control.** If trying to calm down or stop a thought makes it worse, offer the acceptance approach in section 3.6 [practice, for offering it to this athlete; the approach itself moderate, positive; inference under 16].
+- **Drop it.** A skill is offered, not imposed. Keep the athlete's training and selection independent of whether they use it [practice; SP3's controlling behaviours].
+- **Stop and refer.** If practice brings distress, images or thoughts the athlete cannot set aside, or thoughts about more than sport, stop the exercise for that athlete, hold the first conversation, and use SP4's normal-or-refer table and your SP1 scope card [practice; the course's scope line]. A skill that does not help is not a reason to push harder.
+
+## 6. Why a skill is never first handed over on competition day
+
+A skill first met on competition day has had none of stages 2 and 3. Four reasons from this course's evidence, none of them a test of the rule itself:
+
+- **It has not been practised.** In the opened studies, effects came after weeks of practice; the one-week self-talk programme did not change performance ([Walter et al., 2019](https://doi.org/10.3390/sports7060148)).
+- **It moves attention onto the athlete's own process.** SP4's self-focus account says that attending to a skill that normally runs automatically can break it under pressure; a new technique asks for exactly that attention.
+- **It can backfire in ways nobody has seen yet.** Slow breathing slowed reactions in one laboratory study ([Buchanan & Janelle, 2022](https://doi.org/10.3389/fpsyg.2022.963711)); a breathing step tried for the first time before a race start might do the same, and you would find out in the race (the unit's inference from a laboratory study outside sport).
+- **The quick-fix studies are laboratory studies.** The single-session breathing study that its authors suggest as a quick fix tested a colour-word task in sport students after burpees, not a competition ([Laborde et al., 2019](https://doi.org/10.3389/fpsyg.2019.01923)).
+
+The rule: on competition day an athlete uses only skills they have practised calm and under pressure in training; nothing new is introduced from the night before to the end of the competition [practice; no study opened tests it; consistent with SP4's rule of no new technical instruction on match day]. SP8 builds the day's protocol from the skills this block has taught.
+
+## Deliverable
+
+Two tools, each built in full and then given as a template. A: an eight-week skills block inside normal sessions, ten minutes a session, one new skill a fortnight, with the words the coach says, built for Milan's squad and for Sara. B: one card per skill. The scripts are this unit's own examples; they are not tested wording, and no study opened tested any of them. Facts marked *added* are invented by this unit for the case and are listed in its notes; every other fact about the athletes comes from the case register or earlier units' added facts. Grades follow SP1's key.
+
+### A. Eight-week skills block
+
+**Built on the case: Milan's squad (fictional).** Academy squad of 20 players aged 16 to 18; Milan, 17, central midfielder. The block uses the first ten minutes after the warm-up in two sessions a week (*added*: the squad's Tuesday and Thursday sessions), and the squad plays one match a week at the weekend (*added*). Milan's anxiety profile (SP4) and his referral to the academy's medical staff stand; the block is for the whole squad and is not a treatment for Milan [practice; SP1 scope line].
+
+Order of skills and why: process goals first (the squad's goals for the first fifteen minutes), self-talk second (one phrase for receiving the ball), external focus third (where the eyes and the pass go), imagery fourth (rehearsing the first fifteen minutes). Breathing and mindfulness are offered in week 8 as options, not taught to the squad.
+
+| Week | Skill and stage | The ten minutes | The words the coach says (example, not tested wording) | Grade |
+|---|---|---|---|---|
+| 1 | **Process goals**: explain, practise calm | Tue: 3 min explain; each player writes one process goal for the passing drill on a card (e.g. "scan twice before receiving"). Thu: the drill with the goal; players mark the card after. | "Today's goal isn't winning the drill. It's one thing you do with the ball. Write it as an action: what your eyes or feet do. After the drill, tick it if you did it." | [weak, positive; Williamson et al., abstract read; for 16 to 18 an inference] |
+| 2 | **Process goals**: under pressure; first use | Tue: same goal in a scored 5-a-side, goals by count of process actions, not only by goals scored. Thu: each player writes one process goal for the first fifteen minutes of Saturday's match if you judge it lower-stakes; if not, the first use waits for the next match that is. | "In the match, your goal is the action, not the score. Two scans before every first touch in the first fifteen minutes. I'll ask you on Monday how many you think you did. I won't ask about the result." | [weak, positive; Williamson et al., abstract read; for 16 to 18 an inference] |
+| 3 | **Self-talk**: explain, practise calm | Tue: 3 min explain; each player writes a short what-to-do phrase for receiving under pressure, said aloud in a rondo. Thu: same phrase, said silently. | "When the ball's coming and a defender's close, what do you want to tell yourself to do? Short: two or three words, an action. Say it out loud in this rondo. Not 'don't lose it'; say what you'll do." | [weak, mixed; Walter et al. 2019 sampled 13 to 23] |
+| 4 | **Self-talk**: under pressure; first use | Tue: rondo with a scored penalty for losses; phrase silent. Thu: phrase written on the match card beside the process goal. | "Same phrase, now with points on it. If you lose it, you lose a point; the phrase stays the same. On Saturday, it's the only thing you say to yourself in the first fifteen minutes." | [weak, mixed] |
+| 5 | **External focus**: explain, practise calm | Tue: 3 min explain; passing pattern with cues aimed at the target ("send it to his front foot") instead of the body ("lock your ankle"). Thu: players choose their own external cue for the first pass after receiving. | "Watch where you put your attention. Not your ankle, not your hips: the spot you're sending the ball to. Pick the spot before it arrives. If you're thinking about your foot, move your eyes to the spot." | [contested, rule 1; inference] |
+| 6 | **External focus**: under pressure; first use | Tue: small-sided game, coach calls targets aloud. Thu: match card carries goal, phrase and target. | "Today I'll shout targets: far post, his feet, the channel. You answer with the pass. On Saturday the target's yours to pick before the ball comes." | [contested, rule 1; inference] |
+| 7 | **Imagery**: explain, practise calm | Tue: 3 min explain; 3-minute guided scene of the first fifteen minutes (scan, receive, play forward), then the same pattern on the pitch. Thu: each player writes their own scene in five lines. | "Close your eyes if you like. You're in the tunnel. You hear the noise. The first ball comes to you: you've scanned, you know where the space is, you feel your first touch go forward. Now go and do it on the pitch." | [moderate, positive; for 16 to 18, imagery evidence covers ages 9 to 18 for the tennis serve, low to very low certainty] |
+| 8 | **Imagery**: under pressure; review; options | Tue: own scene, then a scored game starting with the first fifteen minutes. Thu: 5 min review; players say which skill they will keep; breathing and mindfulness offered to anyone who asks, individually. | "Your scene, then straight into the game. Afterwards: which of the four is yours? Keep that one, a few minutes a week, for the rest of the season. If anyone wants to try a breathing or a noticing exercise, see me after." | [moderate, positive]; breathing [weak]; mindfulness [moderate, positive] |
+
+**Milan within the block.** The case register makes no claim about which skills will suit him. His profile records what he says helps (a warm-up with many short passes) and what he said at a check-in; at week 8 the coach asks him which skill he keeps, and records his answer on the profile [practice]. His process goal and phrase are his own; the phrase he chose (*added*: "Scan, open, forward") is listed in the notes. If anything in the block brings up distress, the coach stops it for him and goes to his profile and referral [practice; SP4].
+
+**Built on the case: Sara (fictional), individual.** 20, 400 metres, senior first season, training group of six; her coach sees her four times a week. The block uses ten minutes at the end of the warm-up in two of those sessions (*added*: the two track sessions each week), and Sara races in weeks 5 and 8 (*added*). Her SP1 card refers her for six weeks of short sleep, flat sessions and withdrawal; the block starts only after that first conversation has happened, does not replace the referral, and follows any advice from the person she is referred to [practice; SP1 scope card]. She loses most time in the third hundred metres (SP3's added fact), and she keeps a training log to the tenth of a second.
+
+| Week | Skill and stage | The ten minutes | The words the coach says (example, not tested wording) | Grade |
+|---|---|---|---|---|
+| 1 | **Process goals**: explain, practise calm | Session 1: 3 min explain; Sara writes one process goal for the third hundred (e.g. "arms drive, stay tall"). Session 2: 150 m reps from 200 m to 350 m with the goal; she rates it 1 to 5. | "Your log is full of times. For two weeks I'd like one line that isn't a time: what you do in the third hundred. You write it. After each rep, mark it for whether you did it, not for the clock." | [weak, positive; Williamson et al., abstract read, samples not seen] |
+| 2 | **Process goals**: under pressure | Session 1: timed reps against a group member, goal rated before the time is read. Session 2: process goal for the next race-pace session written in the log. | "Rate the goal first, then I'll read the time. If the time's off and the goal was a 5, that's information about the plan, not about you." | [weak, positive]; watch mood when you add a demanding time goal [weak; Ferchichi et al., 2026] |
+| 3 | **Breathing**: explain, practise calm | Session 1: 3 min explain: what the studies measured (heart rhythm), and that no study opened showed it makes runners faster. 2 min at about six breaths a minute after the last rep. Session 2: same, and she chooses whether it goes before the warm-up or after training. | "This is a way to bring your body down between efforts. The studies on it measured heart rhythm, not race times, so I'm not promising it'll make you faster. In for four, out for six, for two minutes. If you feel dizzy, stop and breathe normally." | [weak, positive, for heart-rate variability; weak, no performance benefit shown] |
+| 4 | **Breathing**: under pressure; decide | Session 1: two minutes of breathing between the two hardest reps of the session. Session 2: Sara decides whether breathing stays in her routine, and where; not in the last minute before the gun. | "Use it between the two hardest reps today. Then you decide: keep it, and where, or drop it. If you keep it, it goes early in the call-room routine, not on the blocks." | [weak]; not just before a reaction start [weak; inference from a laboratory study in students] |
+| 5 | **Imagery**: explain, practise calm; race | Session 1: 3 min explain; 3-minute scene of the third hundred, seen and felt, then a 300 m run with the same focus. Race at the weekend: process goal only; no new skill. | "Close your eyes. You're coming off the second bend. You feel your arms drive, you stay tall, the lane line runs under you. Now run the bend and do what you saw." Race day: "Same goal as in training. Nothing new today." | [moderate, positive; samples include adults]; nothing new on race day [practice] |
+| 6 | **Imagery**: under pressure | Session 1: own scene, including a moment when it goes wrong and she resets, then a timed 300 m. Session 2: scene written in the log in her words. | "Put a bad moment into your scene: someone goes past you at 250. What do you do? See that, then run it." | [moderate, positive] |
+| 7 | **Self-talk**: explain, practise calm | Session 1: 3 min explain; Sara writes a what-to-do phrase for the third hundred, said aloud on reps. Session 2: said silently. | "What do you want to hear at 250 metres? Your words, two or three, about what to do. Say them out loud on this rep; on the next, in your head." | [weak, mixed; Walter et al. 2019 sampled 13 to 23] |
+| 8 | **Self-talk**: under pressure; review; race | Session 1: race-pace 300 m against the group with the phrase. Session 2: 5 min review: which skills stay; mindfulness offered as an option if trying to control nerves has not worked. Race: goal, breathing if kept, phrase if practised under pressure. | "Which of these is yours? Keep that one in your log for the season. If trying to calm down hasn't worked for you, there's another way, noticing the nerves and running anyway; we can try it if you want." | [weak, mixed]; mindfulness [moderate, positive] |
+
+**Template: your eight-week skills block.** One for a squad, one for any athlete you build an individual block for.
+
+| Line | What goes in it |
+|---|---|
+| Athlete or squad | Name, age or ages, SP2 band, sport and event or position, squad size. |
+| Sessions used | Which two sessions a week, and when in the session the ten minutes fall (after the warm-up, before the main set). |
+| Competitions in the block | Dates, and which ones are lower-stakes enough for a first use. |
+| Referral status | Anything on the athlete's SP1 scope card or SP4 profile that is already referred; the block runs alongside it and never replaces it. |
+| Order of skills | Four skills, one a fortnight, with one line each on why that order for this athlete or squad, linked to where their problem shows (SP4 profile). |
+| Week 1, 3, 5, 7 | The skill; the explanation you will give in under three minutes, including its grade; the calm practice drill. |
+| Week 2, 4, 6, 8 | The pressure drill (score, consequence, audience); the first competition use. |
+| The words you will say | Your own script for each week, marked as your example, in short sentences, phrased as what to do. |
+| Grades | The grade from this unit beside each skill, and *inference* where the athlete is younger than the studies' samples. |
+| Week 8 review | The question you will ask ("Which one is yours?") and where you record the answer. |
+| Stop rule | What you will do if a skill brings up distress: stop for that athlete, first conversation, SP4 table, scope card. |
+| After the block | How each kept skill continues: minutes a week, for how many weeks. |
+
+### B. Skill cards
+
+One card per skill. "Tested on" names the samples of the studies this unit opened. Scripts are the unit's examples, not tested wording.
+
+**Card 1: Goal setting**
+
+| | |
+|---|---|
+| **What** | One process goal (how to perform an action) per session or competition; one performance goal (a standard from the athlete's own record) per block; outcome goals (results against others) kept out of training talk. |
+| **When** | Before a drill, a session or a competition; reviewed straight after. A gymnast before a beam routine: "Eyes on the end of the beam on the turn." A rower before a piece: "Hold the catch together for 20 strokes." |
+| **Script** | "Write one thing you'll do, not a result. After, tick it if you did it." |
+| **Grade** | Performance goal from own record: [weak, positive]. Process goals for competition: [weak, positive; sport meta-analysis read in abstract, samples not seen]. |
+| **Tested on** | One randomised study of 24 male nationally ranked swimmers aged about 15, over eight weeks ([Ferchichi et al., 2026](https://doi.org/10.3389/fspor.2026.1759066)). |
+| **When not to use it** | When a demanding goal is lowering the athlete's mood: in the swimmers, mood disturbance rose more in the goal group [weak]. When the goal is selection or a ranking. |
+
+**Card 2: Self-talk**
+
+| | |
+|---|---|
+| **What** | A short phrase the athlete chooses, said aloud then silently at set moments: instructional (what to do) or motivational (effort, readiness). |
+| **When** | Before a serve or a free throw, after a mistake, at a set point in a race. A judoka in the grip fight: "Inside first." A cyclist on the last climb: "Push the circle." |
+| **Script** | "What do you want to tell yourself to do there? Two or three words. Say them out loud on this rep." |
+| **Grade** | [weak, mixed]. Instructional for precise tasks: [weak, positive; meta-analysis read in abstract]. Motivational for effort: [practice]. |
+| **Tested on** | 117 athletes aged 13 to 23 in individual and team sports, eight weeks of training, coach-rated performance ([Walter et al., 2019](https://doi.org/10.3390/sports7060148)); 42 male university basketball players, no effect on shooting ([Yang et al., 2024](https://doi.org/10.3389/fspor.2023.1304911)). |
+| **When not to use it** | As a phrase about what to avoid ("don't miss"). As a way to argue the athlete out of a worry about their worth: that is beyond a coach's part (section 1). |
+
+**Card 3: Imagery**
+
+| | |
+|---|---|
+| **What** | Rehearsing an action or a scene in the mind with as many senses as possible, paired with doing it. |
+| **When** | Before practising the skill physically; in the days before competition; about three times a week. A tennis player before serving practice; a volleyball setter before a rotation drill; a judoka rehearsing a grip sequence. |
+| **Script** | "See it from your own eyes. Feel your feet, hear the ball. Run it once in your head, then do it." |
+| **Grade** | [moderate, positive]. For ages 9 to 18: tennis serve accuracy, low certainty. |
+| **Tested on** | 86 randomised studies of athletes, ages not pooled ([Liu et al., 2025](https://doi.org/10.3390/bs15050685)); nine trials of tennis players aged 9 to 18 ([Deng et al., 2024](https://doi.org/10.3390/bs14030207)); 22 trials of children and adolescents aged 9 to 18, athletes and non-athletes ([Behrendt et al., 2021](https://doi.org/10.3390/ijerph18189467)). |
+| **When not to use it** | When the images are of failing and the athlete cannot change them, or are intrusive: stop, first conversation, scope card [practice]. In place of physical practice. |
+
+**Card 4: Breathing and relaxation**
+
+| | |
+|---|---|
+| **What** | Slow breathing at about six breaths a minute with a longer out-breath; progressive muscle relaxation (tense and release muscle groups in turn). |
+| **When** | Between efforts, after training, early in a pre-competition routine. A swimmer between heats; a basketball player at a time-out; a 400 m runner in the call room. |
+| **Script** | "In for four, out for six, for two minutes. This changes your heart rhythm; it isn't a promise of a faster race. If you feel dizzy, stop." |
+| **Grade** | Breathing for heart-rate variability: [weak, positive; inference under 18]. Breathing for performance: [weak, no benefit shown in competition]. Relaxation: [weak, mixed]. |
+| **Tested on** | Breathing: a meta-analysis of 223 studies, not limited to athletes, measuring heart-rate variability ([Laborde et al., 2022, abstract and parts of the text read](https://doi.org/10.1016/j.neubiorev.2022.104711)); 107 sport students in a laboratory task ([Laborde et al., 2019](https://doi.org/10.3389/fpsyg.2019.01923)); 35 kinesiology students, athletic status not reported ([Buchanan & Janelle, 2022](https://doi.org/10.3389/fpsyg.2022.963711)). Relaxation: 24 collegiate track-and-field athletes ([Liang et al., 2021](https://doi.org/10.3389/fpsyg.2020.617541)); 59 basketball players aged 14 to 19 ([Battaglini et al., 2022](https://doi.org/10.3390/ijerph192417065)). |
+| **When not to use it** | In the last seconds before a reaction start or a fast decision [weak; one laboratory study in students not described as athletes; inference]. If the athlete feels dizzy or breathless. As a fix for poor sleep or low mood, which go to the scope card [practice]. |
+
+**Card 5: Attentional focus**
+
+| | |
+|---|---|
+| **What** | Cues that point attention at the movement's effect (target, ball flight, the floor) rather than at body parts. |
+| **When** | In instructions and cues, especially for skills already learned and in competition. A shot-putter: "Push the shot up to the roof." A rower: "Push the boat past the blade." A footballer: "Send it to his front foot." |
+| **Script** | "Pick the spot before it comes. Eyes and mind on the spot, not on your foot." |
+| **Grade** | [contested; rule 1: a bias-corrected re-analysis finds the effect small to nil; inference under 18]. In athlete samples, one small meta-analysis found no significant difference. |
+| **Tested on** | 566 adults aged 18 to 65 learning sport skills, mostly novices ([Favre-Bulle et al., 2024](https://doi.org/10.7717/peerj.17799)); 497 physically fit participants, one study of children ([Zang et al., 2025](https://doi.org/10.7717/peerj.20012)); 49 athletes in four crossover studies ([Reinebo et al., 2024](https://doi.org/10.1007/s40279-023-01931-z)). |
+| **When not to use it** | The parts read report no harms. Early learning of a new technique may still need some body cues in quiet practice, away from competition [practice]. |
+
+**Card 6: Mindfulness and acceptance**
+
+| | |
+|---|---|
+| **What** | Noticing thoughts, feelings and sensations, letting them be there, and returning attention to the task: an alternative to trying to control them. |
+| **When** | For athletes whose attempts to calm down or stop thoughts have not worked; as a short daily practice over weeks. A golfer between shots; a sprinter in the call room; a judoka between contests. |
+| **Script** | "Notice the nerves. Name them: 'there's the worry'. You don't have to make them go. Now, back to the next action." |
+| **Grade** | [moderate, positive; fair-to-low-quality evidence; samples over 15, so for 10 to 15 inference]. |
+| **Tested on** | Nine controlled trials, 290 athletes over 15 in 13 sports ([Bühlmayer et al., 2017, abstract read](https://doi.org/10.1007/s40279-017-0752-9)); 66 studies, 3,908 athletes, none at low risk of bias ([Noetel et al., 2019, abstract read](https://doi.org/10.1080/1750984X.2017.1387803)). |
+| **When not to use it** | When noticing brings up distress the athlete cannot set aside, or memories of harm: stop, first conversation, scope card; this is not therapy [practice; the course's scope line]. As a single talk in place of weeks of practice. |
+
+**Template: your skill card.** One per skill you teach.
+
+| Line | What goes in it |
+|---|---|
+| Skill | Its name, and one sentence on what the athlete does. |
+| What | The skill in your sport's words, with the kind (for goals: process, performance or outcome; for self-talk: instructional or motivational). |
+| When | The moments in your sport where it is used, in training and in competition, with two examples from your own sessions. |
+| Script | Your own words, marked as your example, short, phrased as what to do. |
+| Grade | The grade from this unit, with its direction, and *inference* where your athletes are younger than the samples. |
+| Tested on | The sample of each study behind the grade: who, how many, what age, what design. Copy it from this unit's card; do not drop it. |
+| When not to use it | The moments it should not be used, from this unit's card, and the stop rule: distress, intrusive images or thoughts beyond sport go to the first conversation and your SP1 scope card. |
+| Athlete's version | For each athlete who keeps it: their own words or scene, the date they chose it, and where it sits in their routine. |
+| Review | The date you will ask whether it still helps. |
+
+## Sources
+
+Addresses opened by the writer on 18 Nov 2026. Sources read only in abstract are marked so here and in the text.
+
+- Battaglini MP, Pessôa Filho DM, Calais SL, Miyazaki MCOS, Neiva CM, Espada MC, Moraes MG, Verardi CEL. Analysis of progressive muscle relaxation on psychophysiological variables in basketball athletes. *International Journal of Environmental Research and Public Health* 2022;19(24):17065. https://doi.org/10.3390/ijerph192417065 (abstract and methods summary read at the publisher's page, https://mdpi.com/1660-4601/19/24/17065)
+- Behrendt F, Zumbrunnen V, Brem L, Suica Z, Gäumann S, Ziller C, Gerth U, Schuster-Amft C. Effect of motor imagery training on motor learning in children and adolescents: A systematic review and meta-analysis. *International Journal of Environmental Research and Public Health* 2021;18(18):9467. https://doi.org/10.3390/ijerph18189467 (full text read in part at the publisher's page, https://www.mdpi.com/1660-4601/18/18/9467)
+- Brown DJ, Fletcher D. Effects of psychological and psychosocial interventions on sport performance: A meta-analysis. *Sports Medicine* 2017;47(1):77–99. https://doi.org/10.1007/s40279-016-0552-7 (abstract read at the publisher's page, https://link.springer.com/10.1007/s40279-016-0552-7; issue number not shown there)
+- Buchanan TL, Janelle CM. Emotions and ensuing motor performance are altered by regulating breathing frequency: Implications for emotion regulation and sport performance. *Frontiers in Psychology* 2022;13:963711. https://doi.org/10.3389/fpsyg.2022.963711 (full text read at the publisher's page)
+- Bühlmayer L, Birrer D, Röthlin P, Faude O, Donath L. Effects of mindfulness practice on performance-relevant parameters and performance outcomes in sports: A meta-analytical review. *Sports Medicine* 2017;47(11):2309–2321. https://doi.org/10.1007/s40279-017-0752-9 (abstract read at the publisher's page, https://link.springer.com/doi/10.1007/s40279-017-0752-9, which shows the first three authors, volume and pages; issue and the last two authors from the course's seed list: not verified)
+- Deng N, Soh KG, Abdullah BB, Huang D. Does motor imagery training improve service performance in tennis players? A systematic review and meta-analysis. *Behavioral Sciences* 2024;14(3):207. https://doi.org/10.3390/bs14030207 (full text read at the publisher's page)
+- Favre-Bulle E, Nyfeler S, Schorderet C, Risso G, Bassolino M, Sattelmayer KM. The effectiveness of different attentional foci on the acquisition of sport-specific motor skills in healthy adults: a systematic review with network meta-analysis. *PeerJ* 2024;12:e17799. https://doi.org/10.7717/peerj.17799 (full text read at the publisher's page, https://peerj.com/articles/17799; full author list from the publisher's PDF, https://peerj.com/articles/17799.pdf)
+- Ferchichi N, Amara S, Aouani H, Bouassida A, van den Tillaar R. Effects of personalized time-trial goal setting on swimming performance and psychological profiles in competitive swimmers. *Frontiers in Sports and Active Living* 2026;8:1759066. https://doi.org/10.3389/fspor.2026.1759066 (full text read at the publisher's file)
+- Hatzigeorgiadis A, Zourbanos N, Galanis E, Theodorakis Y. Self-talk and sports performance: A meta-analysis. *Perspectives on Psychological Science* 2011;6(4):348–356. https://doi.org/10.1177/1745691611413136 (abstract read at https://www.psychologicalscience.org/journals/perspectives/1745691611413136/)
+- Laborde S, Allen MS, Borges U, Dosseville F, Hosang TJ, Iskra M, Mosley E, Salvotti C, Spolverato L, Zammit N, Javelle F. Effects of voluntary slow breathing on heart rate and heart rate variability: A systematic review and a meta-analysis. *Neuroscience & Biobehavioral Reviews* 2022;138:104711. https://doi.org/10.1016/j.neubiorev.2022.104711 (abstract and parts of the text read at the publisher's page, https://www.sciencedirect.com/science/article/abs/pii/S0149763422002007)
+- Laborde S, Lentes T, Hosang TJ, Borges U, Mosley E, Dosseville F. Influence of slow-paced breathing on inhibition after physical exertion. *Frontiers in Psychology* 2019;10:1923. https://doi.org/10.3389/fpsyg.2019.01923 (full text read at the publisher's page)
+- Liang D, Chen S, Zhang W, Xu K, Li Y, Li D, Cheng H, Xiao J, Wan L, Liu C. Investigation of a progressive relaxation training intervention on precompetition anxiety and sports performance among collegiate student athletes. *Frontiers in Psychology* 2021;11:617541. https://doi.org/10.3389/fpsyg.2020.617541 (full text read in part at the publisher's page)
+- Liu Y, Zhao S, Zhang X, Zhang X, Liang T, Ning Z. The effects of imagery practice on athletes' performance: A multilevel meta-analysis with systematic review. *Behavioral Sciences* 2025;15(5):685. https://doi.org/10.3390/bs15050685 (full text read in part at the publisher's page, https://www.mdpi.com/3314846)
+- Lochbaum M, Lane AM. Mapping 50 years of sport psychology–performance meta-analyses: A PRISMA-ScR scoping review. *Sports* 2025;13(12):420. https://doi.org/10.3390/sports13120420 (text read in part at the publisher's page; its tables are images and were not read)
+- McKay B, Corson AE, Seedu J, De Faveri CS, Hasan H, Arnold K, Adams FC, Carter MJ. Reporting bias, not external focus: A robust Bayesian meta-analysis and systematic review of the external focus of attention literature. *Psychological Bulletin* 2024;150(11):1347–1362. https://doi.org/10.1037/bul0000451 (abstract read at https://experts.mcmaster.ca/display/publication3486012; journal, volume, issue, pages and DOI from https://experts.mcmaster.ca/scholarly-works/3486012)
+- Noetel M, Ciarrochi J, Van Zanden B, Lonsdale C. Mindfulness and acceptance approaches to sporting performance enhancement: a systematic review. *International Review of Sport and Exercise Psychology* 2019;12(1):139–175. https://doi.org/10.1080/1750984X.2017.1387803 (abstract read at the publisher's page, https://informahealthcare.com/doi/abs/10.1080/1750984X.2017.1387803, which shows the four authors but not the title, journal, year, volume or pages; those are from the course's seed list: not verified)
+- Reinebo G, Alfonsson S, Jansson-Fröjmark M, Rozental A, Lundgren T. Effects of psychological interventions to enhance athletic performance: A systematic review and meta-analysis. *Sports Medicine* 2024;54:347–373. https://doi.org/10.1007/s40279-023-01931-z (full text read at the publisher's PDF, https://link.springer.com/content/pdf/10.1007/s40279-023-01931-z.pdf; issue number not shown)
+- Turner MJ. Rational emotive behavior therapy (REBT), irrational and rational beliefs, and the mental health of athletes. *Frontiers in Psychology* 2016;7:1423. https://doi.org/10.3389/fpsyg.2016.01423 (full text read in part at the publisher's page; narrative review; article number from the DOI)
+- Walter N, Nikoleizig L, Alfermann D. Effects of self-talk training on competitive anxiety, self-efficacy, volitional skills, and performance: An intervention study with junior sub-elite athletes. *Sports* 2019;7(6):148. https://doi.org/10.3390/sports7060148 (full text read at the publisher's page)
+- Williamson O, Swann C, Bennett KJM, Bird MD, Goddard SG, Schweickle MJ, Jackman PC. The performance and psychological effects of goal setting in sport: A systematic review and meta-analysis. *International Review of Sport and Exercise Psychology* 2024;17(2):1050–1078 (online 2 Sep 2022). https://doi.org/10.1080/1750984X.2022.2116723 (abstract read at https://ro.uow.edu.au/test2021/6227)
+- Yang L, Tian Y, Wang Y. Noisy condition and three-point shot performance in skilled basketball players: the limited effect of self-talk. *Frontiers in Sports and Active Living* 2024;5:1304911. https://doi.org/10.3389/fspor.2023.1304911 (full text read at the publisher's page)
+- Zang et al. (not verified: the full author list) The farther, the better? The effect of attentional focus distance on motor performance: a systematic review and meta-analysis. *PeerJ* 2025;13:e20012. https://doi.org/10.7717/peerj.20012 (full text read at the publisher's page, https://peerj.com/articles/20012; the page shows the first author only: the remaining authors are not verified)
+
+## Unsure list
+
+# SP5 unsure list
+
+1. Section 2 (flag F2): Lochbaum et al. (2022, PLOS ONE) could not be opened (DOI address and publisher's page both refused by the session's permission check); the variables half is left to SP1 section 6, and the unit reports only the 2025 scoping review by Lochbaum & Lane, whose effect-size tables are images and were not read.
+2. Section 3.1: the goal-setting meta-analysis (Williamson et al.) was not opened (publisher's page failed; second address refused); the comparison of outcome, performance and process goals is unsourced in values, and the goal grade rests on one randomised study of 24 swimmers aged about 15 (Ferchichi et al., 2026).
+3. Section 3.2: Hatzigeorgiadis et al. (2011) and Tod et al. (2011) were not opened; the matching of instructional and motivational self-talk to the task is graded practice, and the self-talk grade rests on two randomised studies.
+4. Section 2 and 3.5: Reinebo et al. (2024) values, sensitivity analyses, the exclusion sentence and the sign of the attentional-focus estimate (Figure 8 caption) were taken from the fetch tool's extraction of the publisher's PDF; the imagery randomised-only lower limit is given as −0.14 from the extracted −0.136.
+5. Section 3.3: Liu et al. (2025) moderator values come from the first 100,000 of 153,095 characters; the session-length estimates are inconsistent (45 minutes 0.93 with an interval crossing zero), and age was listed as a moderator but no age result was found.
+6. Section 3.6: Bühlmayer et al. (2017) and Noetel et al. (2019) were read in abstract only; Bühlmayer's issue number and last two authors, and Noetel's title, journal, year, volume and pages, come from the seed list, not the page opened.
+7. Section 3.4: Laborde et al. (2022) read in abstract and parts of the text; the parts read give no pooled values and do not say how many participants were athletes. Battaglini et al. (2022) read in abstract; how players were assigned is not stated.
+8. Section 3.5: Favre-Bulle et al. (2024) and Zang et al. (2025) pages show only the first author; full author lists not verified. The reviews by Wulf (2013), Chua et al. (2021) and a 2024 bias re-analysis of external focus were not opened, so whether a review disagrees with the external-focus benefit (rule 1 or rule 3) was not settled.
+9. Every quotation (Reinebo, Turner, Noetel, Lochbaum & Lane, Zang) was taken from the fetch tool's extraction of the page, not checked word for word against a second copy.
+10. Deliverable: the ten-minute session length, the fortnight per skill, the order of skills and every script are the unit's practice; no study opened tests them, and the tested sessions were mostly longer (about 13 to 20 minutes).
+
+Object: none
+
+Fresh check 2026-11-18 (claude-opus-5-5): fix · 2 errors, 13 should-fix, 17 minor; report `audits/sport-psychology/fresh-check-SP5.md`
