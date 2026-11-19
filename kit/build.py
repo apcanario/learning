@@ -977,7 +977,7 @@ backlog = f"""
 # the same density (the spread keeps a neighbour's tail under a level, so a unit's rings rise with its words); the tile's
 # numbers say the rest.
 NEWEST = DATED[0] if DATED else None
-HERO_INTERVAL = 22000   # words between two of the hero's contour levels: History's 510k words stand 23 levels up, an area of 67k three
+HERO_INTERVAL = 23000   # words between two of the hero's contour levels: History's 510k words stand 22 levels up (W-DD-SP2, 19 Nov 2026: 22,000 to 23,000, because the hero's two layouts reached 20,661 B with Coaching's twelfth unit, over verify.py's 20 KB), an area of 67k three
 _HERO_AT = {            # where each area's rise stands (fractions of the layout's width and height), tall and wide
     # P92 checks: every rise inside a 390 px phone's view (x .27 to .73) and above the fade, each small rise closing two
     # rings of its own (verify.py checks it), Marketing clear of the sidebar at both ends of the drift. P93: keyed by
