@@ -391,3 +391,5 @@ Every address was opened by the writer on 18 Nov 2026. Read only in abstract whe
 Object: the IOC's Sport Mental Health Recognition Tool 1 (SMHRT-1), section 5
 
 Fresh check 2026-11-18 (claude-opus-5-5): fix · 3 errors, 22 should-fix, 3 minor; report `audits/sport-psychology/fresh-check-SP9.md`
+
+Correction 19 Nov 2026 (W-DD-SP1), found by the quality review of SP9 (`audits/sport-psychology/quality-review-SP9-2026-11-19-b.md`): 5 changes applied after a fresh applier's check: the Dazzi et al. editorial labelled as outside Part 7's source types; the competition-day cover coach left as a blank; the Bissett et al. panel setting and the Tranaeus et al. sample restated as the sources give them; one unsourced line removed from the parent script.
