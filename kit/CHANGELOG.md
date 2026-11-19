@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **SP10 filed (W-SP10, 19 Nov 2026):** The season plan; fresh check 20 of 21 applied, quality review 15 of 15 plus 7 follow-on fixes; quality reviews of SP4, SP7 and SP9 applied at step 1b; 10 of 13 written.
 - **SP9 · Wellbeing, red flags and referral (W-SP9, 18 Nov 2026).** Written with search on; fresh check, safety read and quality review each by a fresh Opus 5.5 agent, all fix, 26, 39 and 30 changes applied; SMHRT-1's PDF and Reardon et al.'s Table 4 still unread (F53, F54, F98 raised again). 9 of 13 written; next SP10.
 - **SP8 · Competition day** filed 18 Nov 2026 (W-SP8): course data v11, 8 of 13 written.
 - **SP7 filed (W-SP7):** no change to the kit code; the held SP7 figure is raised as a flag for a signed-values kind in kit/viz.py.
@@ -165,6 +166,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 ## 
 
 
+
+## 19 Nov 2026 · Session W-SP10 · SP10 filed
+
+SP10 · The season plan written by Opus 5.5 (search off), fresh-checked (fix, 0/4/17; 20 of 21 applied, f5 held) and quality-reviewed (F150; fix, 0/2/13; all 15 applied, f16 replaced by 7 follow-on fixes drafted and verified by two fresh Opus 5.5 agents). Step 1b: quality reviews of SP4 (9 of 10 applied), SP7 (9 of 11) and SP9 (15 of 16), F147 to F149. Main chat Sonnet 5.5; every other role a fresh Opus 5.5 agent; the SP10 quality reviewer resumed after a session restart. Next: DD-SP1.
 
 ## 18 Nov 2026 · Session W-SP9 · SP9 filed
 

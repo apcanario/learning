@@ -123,3 +123,11 @@ First names only, so that no real person is named.
 | SP9 | Sara's coach's other two groups include athletes under 18. | Sara |
 | SP9 | Sara's coach is a man. | Sara |
 | SP9 | Sara's coach knows that she has been sleeping about five hours a night and says so to her in the first conversation (script C1), though the base entry says he has not asked about her sleep. | Sara |
+| SP10 | Milan's (fictional) academy squad trains four sessions of 90 minutes a week, Monday to Thursday; Wednesday's is the hardest physical session and carries no pressure slot (extends SP5's Tuesday and Thursday slots, SP6's slot and SP8's Monday session). | Milan |
+| SP10 | Milan's squad's season: pre-season weeks 1 to 6 with a friendly each Saturday; league from week 7; a two-week winter break with no sessions in weeks 19 and 20; a weekend tournament in week 30; last league match in week 38; off-season weeks 39 to 44 (places SP5's weeks 1 to 8 and SP6's weeks 9 to 12). | Milan |
+| SP10 | Milan's squad's school year has three terms: weeks 1 to 15, 16 to 28 and 29 to 38. | Milan |
+| SP10 | Milan's final exams and the academy's decision fall in weeks 35 to 38 of the season plan (dates SP2's fact that they share the same weeks at the end of the season). | Milan |
+| SP10 | Milan's answer to the development note's question (his view of the decision and what he wants from the season) is not yet on file. | Milan |
+| SP10 | Nobody has yet asked Dani what she enjoys in training and what she would change. | Dani |
+| SP10 | Nobody has yet asked Dani what her look to her coach after each exchange is about. | Dani |
+| SP10 | Milan's squad's weekly match (at the weekend, SP5) is on Saturday. | Milan |
