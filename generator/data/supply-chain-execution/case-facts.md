@@ -8,7 +8,7 @@ Rules for every unit:
 - No case operation is ever said to use a real vendor's product. Their systems are "the warehouse system", "the transport system", "the order system", "the ERP"; where a unit needs a named product, it is one of the fictional vendors' below.
 - No fictional vendor stands for a real one. A unit never says or hints which real company one resembles.
 - Names of people are first names only. They are roles to hang a card on, not characters.
-- The names Corvane, Ostrel, Tandric, Halvern, Varnby and Kestrow were coined for this course. The setup row searches each once; a name that matches a real company in logistics, retail, food or software is replaced before any unit is written.
+- The names Corvane, Ostrel, Tandric, Halvern, Varnby and Kestrow were coined for this course. The setup row searches each once; a name that matches a real company in logistics, retail, food or software is replaced before any unit is written. (S-SCE0, 19 Nov 2026: one coined name matched a real software maker and was replaced; the six above are the names after that search.)
 
 ## Corvane (fictional): a fashion retailer
 

@@ -123,5 +123,5 @@ TEMPLATE_BLOCKS = []
 
 # newest first
 CHANGELOG = [
-    ('2026-11-19 20:22', "v1. Course created (new-course skill; row S-SCE0): frame, goal and three outcomes, 20 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the fictional case register of three operations and three vendors, a seed bibliography of 41 references checked for existence, the syllabus-flags file. No unit written."),
+    ('2026-11-19 20:22', "v1. Course created (new-course skill; row S-SCE0): frame, goal and three outcomes, 20 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the fictional case register of three operations and three vendors, a seed bibliography of 41 references, 37 checked for existence (3 seen only secondhand, 1 not opened), the syllabus-flags file. No unit written."),
 ]

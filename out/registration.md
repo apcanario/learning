@@ -2,7 +2,7 @@
 
 Registrar: one isolated Opus 5.5 agent (claude-opus-5-5), 19 Nov 2026. Inputs: the seven files in `/home/claude/scratch/sce` and the clone at `/home/claude/learning` (branch `main`, HEAD `382fee3`). Nothing committed or pushed. No unit written. No brief, no line of `PRE` and no `AIMS` line reworded; the only change to `units_data.py` is the name replacement of (a).
 
-This file is at `out/registration.md` in the clone. The repo does not track `out/` and `.gitignore` does not ignore it: a `git add -A` would pick it up.
+This file is at `out/registration.md` in the clone. The repo does not track `out/` and `.gitignore` does not ignore it; the checkpoint commit 82caee5 added this file, so it is now tracked (corrected by the registration check, finding 11).
 
 ## (a) Names
 
@@ -66,7 +66,7 @@ Replacement coined: **Varnby Software** ("Varnby" in short). One search ("Varnby
 - `private-terms.txt` gains a commented block and `employer: Infios`. An `employer:` line is read only by the new `employer()`; `terms()` skips it, so every other course is scanned exactly as before ("Infios" stays a plain fail line too).
 - On files of a course with `dated_lists=True` (its vault, data folder and built pages, or any file given with `--course supply-chain-execution`): an employer term fails anywhere except on a line inside a dated list: a Markdown list or table (lines starting `- `, `* `, `1. `, `|`), or a built page's `<ul>`/`<ol>`/table, whose lead-in line names an analyst firm or filing (`DATED_BY`: Gartner, Forrester, IDC, Nucleus Research, MarketScape, Magic Quadrant, Value Matrix, analyst, filing, annual report, 10-K) and a year 1900–2099. An `employer:` term that is not also a plain line (a product name) is checked only on that course's files.
 - Proof: (1) on the 97 files of the other public courses and the site log, the old and new scripts give identical hits and identical warnings (114); (2) dummy files: an employer entry in a Markdown list and a table after "Gartner's Magic Quadrant … (29 April 2026)" passes; the same name in a sentence, and in a list with no dated lead-in, fails; in built HTML, a `<ul>` after a `<p>` naming IDC's MarketScape of 2026 passes, a sentence and a table after an undated lead fail; the same file without `--course` fails as before; (3) a temporary `employer: Zorbex` fails on an SCE file outside a list and is not checked without the course (removed after). `python3 kit/private_terms.py`: 105 files, 0 private terms, OK.
-- **Not done: product names.** The repo holds no product name of the employer (searched every `.md`, `.py`, `.txt`, `.json`, vault included): only "Infios" in `private-terms.txt` and two private Brand + AI lines. I did not add names from memory. Each product name goes in as its own `employer:` line; until then the check guards only the employer's name.
+- **Not done: product names.** The repo holds no product name of the employer (searched every `.md`, `.py`, `.txt`, `.json`, vault included): only "Infios" in `private-terms.txt` and two private Brand + AI lines. I did not add names from memory. Each product name goes in as its own `employer:` line; until then the check guards only the employer's name. Row P-SCE11 of `docs/BACKLOG.md` asks Pedro for them (added by the registration check, finding 1).
 - **Limit:** the dated-list test is mechanical; it cannot tell a real analyst list from any list after a sentence that names an analyst and a year. The fresh checker's pass 4 (vendors) is the real guard.
 - **Risk carried forward (flag F1):** "ToolsGroup" (and any other company on the plain list) fails everywhere, list or not, so an analyst list naming it cannot be reproduced whole. Not changed: the instruction allows only the employer in a list.
 
@@ -117,7 +117,7 @@ Under Proposed in `docs/BACKLOG.md`: P-SCE1, P-SCE6, P-SCE7, each "*Proposed, fo
 
 ## Every file created or changed
 
-Created: `generator/data/supply-chain-execution/{hub.py, units_data.py, case-facts.md, bibliography.md, syllabus-flags.md}`, `docs/supply-chain-execution-syllabus.md`, `docs/supply-chain-execution-prompts.md`, `kit/academy/supply-chain-execution-sce/` (built), `out/registration.md` (this file; untracked).
+Created: `generator/data/supply-chain-execution/{hub.py, units_data.py, case-facts.md, bibliography.md, syllabus-flags.md}`, `docs/supply-chain-execution-syllabus.md`, `docs/supply-chain-execution-prompts.md`, `kit/academy/supply-chain-execution-sce/` (built), `out/registration.md` (this file; tracked since the checkpoint commit 82caee5).
 
 Changed: `kit/courses.py`, `kit/build.py`, `kit/verify.py`, `kit/thin.py`, `kit/next_prompt.py`, `kit/private_terms.py`, `kit/private-terms.txt`, `kit/README.md` and `kit/academy/index.html` (built), `docs/BACKLOG.md`, `docs/courses-index.md`, `docs/public-courses.md`, `docs/sourcing-standard.md`, `docs/method.md`, `docs/site-log.md`, `skills/new-course/SKILL.md`.
 
@@ -146,6 +146,6 @@ Changed: `kit/courses.py`, `kit/build.py`, `kit/verify.py`, `kit/thin.py`, `kit/
 
 ## Left undone
 
-- Product names of the employer in the private-terms list (none in the repo; see (e)).
+- Product names of the employer in the private-terms list (none in the repo; see (e)). Carried by row P-SCE11 of `docs/BACKLOG.md` (*proposed*, for Pedro, by hand; added by the registration check, finding 1): until Pedro supplies them, the course is gated only on the employer's own name.
 - No screenshots taken (main chat's step 4); built HTML checked by script only.
 - No commit, push, publish or Project write (the main chat's).
