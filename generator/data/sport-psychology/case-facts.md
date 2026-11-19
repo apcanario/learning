@@ -146,3 +146,10 @@ First names only, so that no real person is named.
 | DD-SP1 | Dani's coach talks to athletes after training at the edge of the mat while the squad stretches; Milan's coach holds Monday debriefs in a corner of the training ground while the squad cools down (Deliverable B, one-to-one). | Dani, Milan |
 | DD-SP1 | Sara's hamstring treatment is given by a physiotherapist, not by her coach; no physiotherapist is named (Deliverable B, touch). | Sara |
 | DD-SP1 | Milan's coach's sex is not given: after the fresh check (f24) Deliverable B reads "on the coach's own body" and D2 says "the coach"; the register does not give it. | Milan |
+| DD-SP2 | Both of Dani's parents attend her who-decides review (Deliverable A). | Dani |
+| DD-SP2 | Dani's review is held in the club's meeting room after a weekday session and takes about 30 minutes (A). | Dani |
+| DD-SP2 | At the review Dani chooses the class above the one she won in; her words: "I want to fight up this season."; her parents agree; no medical input is needed for that choice, and the eating-concern referral continues (A, C2, E). | Dani |
+| DD-SP2 | Until this unit, Dani's club had no written weighing policy and kept a set of scales in the corridor by the changing rooms for athletes to check themselves before competitions; under the policy the scales are removed (D, E). | Dani |
+| DD-SP2 | Where competition rules require an adult to accompany a minor into the weigh-in, Dani's club sends a parent, or the welfare officer or second coach of the same gender as the athlete (D, clause 7). | Dani |
+| DD-SP2 | The weigh-ins for the squad's club competition (end of week 4 of SP6's block) and for the regional competition (SP8) are held at the venue on the morning of the competition; for the example only (E). | Dani |
+| DD-SP2 | Illustrations, not events: an athlete who wants a class that would need restriction (C3); a parent at the edge of the mat pushing for the lower class (C6); a coach telling a 17-year-old midfielder like Milan "you need to fill out" (section 16). | Dani, Milan |

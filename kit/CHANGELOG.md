@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **W-DD-SP2 · 19 Nov 2026 · DD-SP2 filed.** Deep dive: weight, body and who decides; fresh check, safety read and quality review (F202) applied (UWW address held); step 1b quality reviews of DD-SP1, SP3 and SP6 corrections-checked; F206 to F217 raised; Academy v15; 12 of 13 written; next DD-SP3.
 - **DD-SP1 filed (W-DD-SP1, 19 Nov 2026).** Deep dive: the coach's line with minors, search on: fresh check fix (2 errors, 16 should-fix, 7 minor), safety read 18 changes, quality review fix (0 errors, 14 should-fix, 9 minor; 24 changes applied); SP2, SP9 and SP10 quality reviews at step 1b; 22 flags raised (F180 to F201); F176 to F179 resolved; staleness check due 19 May 2027. 11 of 13 written; next DD-SP2.
 - **SP10 filed (W-SP10, 19 Nov 2026):** The season plan; fresh check 20 of 21 applied, quality review 15 of 15 plus 7 follow-on fixes; quality reviews of SP4, SP7 and SP9 applied at step 1b; 10 of 13 written.
 - **SP9 · Wellbeing, red flags and referral (W-SP9, 18 Nov 2026).** Written with search on; fresh check, safety read and quality review each by a fresh Opus 5.5 agent, all fix, 26, 39 and 30 changes applied; SMHRT-1's PDF and Reardon et al.'s Table 4 still unread (F53, F54, F98 raised again). 9 of 13 written; next SP10.
@@ -167,6 +168,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 ## 
 
 
+
+## 19 Nov 2026 · Session W-DD-SP2 · DD-SP2 filed
+
+Main chat Sonnet 5.5, thin; writer, fresh checker, safety reader, applier, quality reviewer, corrections checkers and filer each a fresh Opus 5.5 agent. DD-SP2 written with search on, fresh-checked (fix · 2/7/10, all applied), safety-read (1 serious/5/4, all applied; an emergency route for an acutely unwell athlete added), quality-reviewed for F202 (fix · 1/9/15, 24 of 25 applied, UWW address held at the 2025-12 file read). Step 1b: quality reviews of DD-SP1, SP3 and SP6 with corrections checks (F203 to F205 resolved). viz.py rendered against a stub theme.css holding its two relief constants in the writer's scratch folder; the build uses design/theme.css. Flags F206 to F217 raised, 16 carried; F202 left to the main chat. None blocks DD-SP3. Staleness check due 19 May 2027.
 
 ## 19 Nov 2026 · Session W-DD-SP1 · DD-SP1 filed (W-DD-SP1)
 
