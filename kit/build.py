@@ -871,6 +871,7 @@ def md_blocks(lines):
 SL_AREAS = [   # (name, what it holds, the track whose tone it takes); the order of the per-area tables
     ('Mythology', 'Greece and Rome', 'history'), ('Marketing', 'Courses A and PB', 'marketing'),
     ('AI', 'Courses B and BW', 'technology'), ('UX', 'Course IA', 'ux'), ('Sports', 'Course SP', 'sports'),   # S-SP0; S-SPORTS: Sports
+    ('Supply Chain', 'Course SCE', 'supply-chain'),   # S-SCE0 (19 Nov 2026)
     ('Academy', 'The site and its method', None)]
 SL_TONE = {n: next((t['color'] for t in THEMES if t['id'] == tid), 'var(--gold)') for n, _, tid in SL_AREAS}
 
@@ -986,6 +987,7 @@ _HERO_AT = {            # where each area's rise stands (fractions of the layout
     'history': ([.50, .48], [.46, .55]), 'marketing': ([.33, .15], [.14, .18]),   # W-PB2 (12 Nov 2026): .16 to .15 in the tall layout, so Marketing (86,699 words with PB2) still closes two rings of its own
     'technology': ([.66, .18], [.81, .26]), 'ux': ([.66, .82], [.78, .68]),
     'sports': ([.34, .80], [.14, .78]),   # S-SPORTS (19 Nov 2026): the Coaching track renamed Sports; S-SP0 (16 Nov 2026): the track; R-SP1 (17 Nov 2026): wide y .74 to .78, so the rise (22,995 words, one level) closes its ring of its own; W-SP4 (18 Nov 2026): wide x .24 to .18, so the rise (30,893 words with SP4, still one level) does; W-SP6 (18 Nov 2026): wide x .18 to .14, so the rise (49,932 words with SP6, two levels) closes two rings of its own
+    'supply-chain': ([.50, .17], [.50, .13]),   # S-SCE0 (19 Nov 2026): the track, a planned ring until its first unit is filed; top centre, between Marketing and Technology
 }
 if [t['id'] for t in THEMES if t['id'] not in _HERO_AT]:
     raise SystemExit(f'build.py _HERO_AT has no place for the areas {[t["id"] for t in THEMES if t["id"] not in _HERO_AT]}: give each a place')
@@ -1054,7 +1056,7 @@ for t in THEMES:
     if mds: count += f' · {sum(m["nwritten"] for m in mds)} of {sum(m["nunits"] for m in mds)} units'
     if t['id'] == 'history' and NEXT: count += f' · {len(NEXT)} planned'
     elif soon and n: count += f' · {len(soon)} coming soon'
-    if PLANNED[t['id']]: count += f' · {len(PLANNED[t["id"]])} planned'
+    if PLANNED[t['id']]: count += f' · {len(PLANNED[t["id"]])} ' + (f'more {t["planned_heading"].lower()}' if t.get('planned_heading') else 'planned')   # S-SCE0: a track may call its planned courses "coming soon"
     extra = ''
     if t['id'] == 'history':
         planned = '' if not NEXT else f"""
@@ -1076,7 +1078,7 @@ for t in THEMES:
     if PLANNED[t['id']]:   # S-SPORTS: a track's own planned courses, folded as History's are
         extra += f"""
   <details class="howto rules planned" id="planned-{t['id']}">
-    <summary><h2>Planned</h2><span>{len(PLANNED[t['id']])} courses, in the intended order</span></summary>
+    <summary><h2>{html.escape(t.get('planned_heading', 'Planned'))}</h2><span>{len(PLANNED[t['id']])} courses, in the intended order</span></summary>
     <p class="hnote">{html.escape(t.get('planned_note', ''))}</p>
     <div class="cgrid">{own_cards}</div>
   </details>"""   # own_planned

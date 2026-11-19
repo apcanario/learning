@@ -5,7 +5,7 @@ The one source of Academy's Backlog and Changelog pages (S-PAGES, 15 Nov 2026): 
 Rules for an entry (`docs/method.md` §8):
 - **Next**: one row per item still to do, in the overall order (#, from 1, no gaps); **Done**: one row per item done, any order (the pages sort newest first), the date as `YYYY-MM-DD` (the first day, where the work ran over several).
 - **Code**: the item's short name: a unit's code (PB1, IA3), a history course's syllabus unit (G12 for Greece unit 12, R0–3 for Rome units 0 to 3), the backlog row's code for anything else (P96, S-PAGES), and K plus the session number for a site change of the kit's early sessions (K1 to K11), which had no row code. Keep it short: the column is narrow on a phone.
-- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (course SP; named Coaching until 19 Nov 2026), Academy (the site and its method).
+- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (course SP; named Coaching until 19 Nov 2026), Supply Chain (course SCE), Academy (the site and its method).
 - **Sentence**: one plain sentence for an ordinary reader: what it is (Next) or what happened (Done). No model names, token counts, script or file names, row mechanics (rows, chats, prompts, corrections, mirrors), agent or audit vocabulary, and no private term (`kit/private-terms.txt`; `python3 kit/private_terms.py` scans this file). No `|` in a sentence.
 - **One entry per item**: a unit, a course milestone or a visible site change. Housekeeping, corrections and re-checks are folded into the item they served, never listed on their own. A proposed item enters Next only when it is confirmed; a withdrawn one leaves it.
 - The chat that closes a backlog row moves its entry from Next to Done (or adds it to Done), renumbers Next, and adds an entry to Next for each item it confirms into the queue.
@@ -15,6 +15,26 @@ Rules for an entry (`docs/method.md` §8):
 | # | Code | Area | What it is |
 |---|---|---|---|
 | 1 | DD-SP3 | Sports | Write DD-SP3, Deep dive: tuning out the noise, for Sport Psychology for Coaches. |
+| 2 | SCE1 | Supply Chain | Write SCE1, The map, the words and the evidence, for Supply Chain Execution for Product Teams. |
+| 3 | SCE2 | Supply Chain | Write SCE2, Inbound and storage, for Supply Chain Execution for Product Teams. |
+| 4 | SCE3 | Supply Chain | Write SCE3, Outbound: release, pick, pack, ship, for Supply Chain Execution for Product Teams. |
+| 5 | SCE4 | Supply Chain | Write SCE4, Inventory and control, for Supply Chain Execution for Product Teams. |
+| 6 | SCE5 | Supply Chain | Write SCE5, The floor: people, devices and machines, for Supply Chain Execution for Product Teams. |
+| 7 | SCE6 | Supply Chain | Write SCE6, The warehouse system as a product, for Supply Chain Execution for Product Teams. |
+| 8 | SCE7 | Supply Chain | Write SCE7, Transportation in practice, for Supply Chain Execution for Product Teams. |
+| 9 | SCE8 | Supply Chain | Write SCE8, The transport system as a product, for Supply Chain Execution for Product Teams. |
+| 10 | SCE9 | Supply Chain | Write SCE9, Order management, for Supply Chain Execution for Product Teams. |
+| 11 | SCE10 | Supply Chain | Write SCE10, The seams, for Supply Chain Execution for Product Teams. |
+| 12 | SCE11 | Supply Chain | Write SCE11, The buying committee, for Supply Chain Execution for Product Teams. |
+| 13 | SCE12 | Supply Chain | Write SCE12, The sale, for Supply Chain Execution for Product Teams. |
+| 14 | SCE13 | Supply Chain | Write SCE13, Users by role, for Supply Chain Execution for Product Teams. |
+| 15 | SCE14 | Supply Chain | Write SCE14, Implementers and administrators, for Supply Chain Execution for Product Teams. |
+| 16 | SCE15 | Supply Chain | Write SCE15, Demo versus shift, for Supply Chain Execution for Product Teams. |
+| 17 | SCE16 | Supply Chain | Write SCE16, Money, for Supply Chain Execution for Product Teams. |
+| 18 | SCE17 | Supply Chain | Write SCE17, Reading the field, for Supply Chain Execution for Product Teams. |
+| 19 | SCE18 | Supply Chain | Write SCE18, Capstone: one strategy memo, for Supply Chain Execution for Product Teams. |
+| 20 | DD-SCE1 | Supply Chain | Write DD-SCE1, Deep dive: the logistics provider's business, for Supply Chain Execution for Product Teams. |
+| 21 | DD-SCE2 | Supply Chain | Write DD-SCE2, Deep dive: peak and exceptions, for Supply Chain Execution for Product Teams. |
 
 ## Done
 

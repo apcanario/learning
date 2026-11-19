@@ -15,6 +15,9 @@ docs/BACKLOG.md, which every prompt works first (step 1b). Every proposal a chat
 Pedro, 12 Nov 2026, 21:31). One template, so every row is briefed
 to the same standard and nothing drifts from chat to chat. A course with `prompts_doc` in kit/courses.py (S-SP0, 16 Nov 2026:
 sport-psychology, docs/sport-psychology-prompts.md) keeps its own template in that document; prompt_doc fills its slots.
+S-SCE0 (19 Nov 2026): supply-chain-execution, rows W-SCE1 to W-DD-SCE2, from docs/supply-chain-execution-prompts.md; a
+template with no safety reader is allowed; a row in GATES opens with a line saying it waits for its gate row while that
+row is still in docs/BACKLOG.md.
 """
 import importlib.util, pathlib, re, sys
 
@@ -23,8 +26,9 @@ ROOT = R.parent
 sys.path.insert(0, str(R))
 from courses import COURSES
 
-QUEUE = ('personal-brand', 'building-with-ai', 'sport-psychology')   # the courses, in the order their rows run (S-SP0, 16 Nov 2026: rows W-SP1 to W-DD-SP3 come from the hub's ORDER)
+QUEUE = ('personal-brand', 'building-with-ai', 'sport-psychology', 'supply-chain-execution')   # the courses, in the order their rows run (S-SP0, 16 Nov 2026: rows W-SP1 to W-DD-SP3 come from the hub's ORDER; S-SCE0, 19 Nov 2026: rows W-SCE1 to W-SCE18, W-DD-SCE1, W-DD-SCE2)
 HOLDS = {'W-PB5': 'S-PB1', 'W-SP4': 'R-SP1'}   # a writing row that waits for a review row: while the review row is in the queue of docs/BACKLOG.md, no prompt runs past it (Pedro, 12 Nov 2026, 08:30)
+GATES = {'W-SCE7': 'P-SCE6'}   # S-SCE0: a row printed while its gate row (a task for Pedro, under Proposed) is still in docs/BACKLOG.md opens with a line saying it is not to be run until he has closed it
 SRC = ROOT / 'courses' / 'brand-ai'                      # the private source units
 ACADEMY = 'https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH'
 NOTES = {   # what one row needs beyond the template
@@ -212,7 +216,8 @@ def doc_parts(c):
     added as step 5b to the rows the table names) and the table "This row in particular" (row -> paragraph)."""
     t = (ROOT / c['prompts_doc']).read_text(encoding='utf-8')
     block = lambda head: re.search(r'(?m)^' + re.escape(head) + r'.*?\n```\n(.*?)\n```\n', t, flags=re.S).group(1)
-    tpl, safety = block('## Rows W-'), block('### The safety reader')
+    tpl = block('## Rows W-')
+    safety = block('### The safety reader') if '\n### The safety reader' in t else None   # S-SCE0: a course may have no safety reader
     part = {}
     for ln in t.split('### This row in particular', 1)[1].splitlines():
         cells = [x.strip() for x in ln.strip().strip('|').split(' | ')]
@@ -232,7 +237,7 @@ def prompt_doc(r, nxt):
     if nxt:
         nx = f"{nxt['row']} (unit {nxt['code']})"
     else:
-        nx = "the next row in the Queue of `docs/BACKLOG.md` (no unit of this course is left; its reliefs, row G-R-SP, wait for Pedro's confirmation)"
+        nx = f"the next row in the Queue of `docs/BACKLOG.md` (no unit of this course is left; its reliefs, row G-R-{r['sc']['key']}, wait for Pedro's confirmation)"   # S-SCE0: the course's own G-R row
     slots = {
         'ROW': r['row'], 'CODE': code, 'TITLE': r['unit'][1], 'SEARCH': r['search'], 'PAGE': 'read-' + code.lower(), 'NEXT': nx,
         'FILED': ', '.join(f'`{rel(f)}`' for f in done) if done else 'none yet',
@@ -251,7 +256,10 @@ def prompt_doc(r, nxt):
     if q:
         i = out.index('\n\n**3. ')
         out = out[:i] + '\n\n' + q + out[i:]
-    if 'Step 5b runs.' in part[r['row']]:          # the safety reader, for the rows whose paragraph says so (SP9, DD-SP1, DD-SP2)
+    g = GATES.get(r['row'])
+    if g and re.search(r'^\| ' + re.escape(g) + r' \|', (ROOT / 'docs' / 'BACKLOG.md').read_text(encoding='utf-8'), flags=re.M):
+        out = f"Do not run until Pedro has closed {g}.\n\n" + out   # S-SCE0: the gate after W-SCE6 (syllabus §5, P-SCE6)
+    if safety and 'Step 5b runs.' in part[r['row']]:          # the safety reader, for the rows whose paragraph says so (SP9, DD-SP1, DD-SP2)
         s = re.sub(r'\{([A-Z]+)\}', lambda m: slots.get(m.group(1), m.group(0)), safety)
         i = out.index('\n\n**6. ')
         out = out[:i] + '\n\n' + s + out[i:]

@@ -1,0 +1,190 @@
+# Prompts: Supply Chain Execution for Product Teams
+
+- **S-SCE0**, once: the setup row. Its prompt is `setup-prompt.md`, pasted into a new chat on **Sonnet 5.5** with `supply-chain-execution-course.zip` attached. The chat is thin; a fresh **Opus 5.5** registrar does the repo work and a fresh Opus 5.5 agent checks it.
+- **W-SCE1 to W-DD-SCE2**, on **Sonnet 5.5**: thin chats that stage, launch fresh **Opus 5.5** agents, run scripts and record, and never open a unit, a report or a brief. Their prompt is printed by `kit/next_prompt.py` once S-SCE0 has registered the course.
+
+The writing template is not rewritten here. The repo holds a working one for a course of the same build, `docs/sport-psychology-prompts.md`, already corrected to the kit. S-SCE0 copies it and replaces its course-specific parts with sections 1 to 4 below. Everything else in the template (the thin chat's rules, the agents and their order, the scripts, the checkpoint commits, rule 13's quality review, the close) stays as the repo has it.
+
+## 1 · Writer rules
+
+The writer is one fresh Opus 5.5 agent with its packet and nothing else.
+
+1. **Open before citing.** Every reference is found by a search and read at its publisher's page, its DOI address or the issuing body's own page before it carries a claim. The seed bibliography says only that an entry exists.
+2. **Source log.** `out/sources.md`: one row per reference with the address opened, what was read (abstract, reprint or full text), the date, and the claims it carries. A reference that could not be opened is listed as not opened and carries nothing.
+3. **Fewer, better.** Prefer one source read in full to three read in abstract. Do not cite to decorate. If a section's support is one textbook's account, grade it practice and say so.
+4. **Grade every claim** by SCE1's key. From SCE2 on, the key arrives in the packet inside SCE1.
+5. **Vendors.** Assess, rank, compare or recommend no real vendor, and map no real vendor's product line. Name a real vendor only to attribute a dated public statement to it, graded vendor-reported, or as an entry in a dated list from a named analyst report or an audited filing, every vendor on the list alike. Worked product examples use Halvern Systems, Varnby Software and Kestrow, from the case register, labelled fictional. Never say or hint which real company a fictional one resembles.
+6. **Analyst reports.** Say how each was read. If only the abstract could be opened, the unit states only what the abstract states.
+7. **No private figures.** No price, revenue, margin or win rate of a private company unless it published it. Where a brief asks for a cost line with no public figure, write "no public figure".
+8. **The case** comes from `case-facts.md` only; invented facts go in the notes.
+9. **Scope.** No AI features. No interview framing. No craft method taught. Nothing about the Project's owner, his employer, his role or his work.
+10. **The two closing sections** before the deliverable: "On a site visit" and "Self-check", every answer drawn from the unit's sourced text.
+11. **Flags and corrections.** A contradiction with a filed unit or a brief, a mistake noticed in a filed unit, or a need the syllabus does not meet, is written to `out/flags.md` in the form of `syllabus-flags.md`, naming every unit it affects. It is carried by section 4. The writer never rewords a brief.
+12. **Hand-in.** The unit; `out/sources.md`; `out/flags.md`; the figures rendered; up to ten claims it is unsure of, closing with the `Object:` line; `out/stats.json`; a reply of six lines at most.
+
+## 2 · The fresh checker's seven passes
+
+One fresh Opus 5.5 agent that has not seen the unit written. It writes findings (error, should-fix, minor) and edits nothing. A reference that does not exist stops the row.
+
+1. **References exist and match.** Every Sources entry against its publisher's or Crossref's record: authors, title, journal, year, volume, pages, DOI.
+2. **Claims against sources.** Every cited claim opened and read against its source; "unverifiable" where the source will not open, never a pass.
+3. **Grades.** Each grade against SCE1's key; a vendor's statement never carries more than vendor-reported; an abstract-only reading is said to be one.
+4. **Vendors.** No real vendor assessed, ranked, compared, recommended or mapped; each real vendor named only as writer rule 5 allows; every list complete and alike; no private company's unpublished figure; no fictional vendor tied to a real one.
+5. **The case.** Every case fact against `case-facts.md`; labelled fictional; never used as evidence.
+6. **Scope and tone.** No AI features, no interview framing, no method teaching, nothing about the Project's owner or his employer; the preamble's tone rules; terms defined on first use.
+7. **Deliverable and figures.** The deliverable against the brief's wording, built in full and then as a template; "On a site visit" and "Self-check" present and agreeing with the body; every figure's labels and numbers traced to the text.
+
+## 3 · This row in particular
+
+One paragraph per row, appended to the template by `next_prompt.py`.
+
+| Row | Paragraph |
+|---|---|
+| W-SCE1 | Search on. This unit sets the grade key and the glossary that every later unit receives: define each grade so that two readers would agree, with one worked example each. Read the analyst firm's own published method page before describing how a quadrant is made. |
+| W-SCE2 | Search off. The first unit in the operations pattern; its flow-map form is reused by SCE3, SCE7 and SCE9, so fix the columns here. Benchmark values only if the report itself was read. |
+| W-SCE3 | Search off. Claims C1 and C2 of the bibliography's list belong here: trace each to the earliest source you can open and state its age. |
+| W-SCE4 | Search off. The inventory record research has a specific sample and setting; state both before any use of its numbers. |
+| W-SCE5 | Search off. Sets the role card form reused by SCE8, SCE9, SCE11 and SCE13: fix its fields here. Claims C3, C5 and C6 belong here. |
+| W-SCE6 | Search on. The first unit with a product map: it is Halvern's, from the case register. The real market appears as one dated list from the analyst report, every vendor alike. Claim C8 belongs here. **After this row the queue stops (P-SCE6).** Say so in the reply. Still deliver W-SCE7's prompt with every open correction and flag (section 4), under a first line: "Do not run until Pedro has closed P-SCE6." |
+| W-SCE7 | Search off. Say which region each document and term belongs to. Claim C12 belongs here. |
+| W-SCE8 | Search on. Keep the shipper and the provider apart throughout. Claim C11 belongs here. |
+| W-SCE9 | Search on. Order management has the least research of the three: say plainly where a section rests on practice alone. |
+| W-SCE10 | Search off. Claim C9 belongs here and in SCE16: attribute each side of the one-vendor argument to the kind of party that makes it, naming no vendor. |
+| W-SCE11 | Search on. The buying-centre research is decades old and from other industries: state its age and setting, and label the transfer as the unit's inference. |
+| W-SCE12 | Search on. Claim C13 belongs here. End the body with the questions for the reader's own sales and services colleagues. |
+| W-SCE13 | Search off. No new role is invented: a missing role is a flag. Claim C14 belongs here. |
+| W-SCE14 | Search off. Claim C7 belongs here: find the origin of any failure-rate figure or say none was found. |
+| W-SCE15 | Search off. Features are discussed as types, never as claims about a named product. |
+| W-SCE16 | Search on. Filings are read on the regulator's or the company's investor page and dated; the companies read are given alike, with no comparison drawn between them. No private company's figures. |
+| W-SCE17 | Search on. Real vendors appear as dated lists only. Where analyst firms differ, show it on their methods, never on a named vendor. The worked sheets are the three fictional vendors'. Claim C10 belongs here. |
+| W-SCE18 | Search off. The worked memo uses only public evidence and the case register; every figure marked fictional or sourced. |
+| W-DD-SCE1 | Search on. Margins and contract lengths only from audited filings or the industry's annual study, dated. |
+| W-DD-SCE2 | Search off. The last unit: its delivery is a closing corrections prompt (section 4, point 7). |
+
+## 4 · The carry-forward rule (Pedro, standing)
+
+Nothing found goes unrecorded or waits for a later audit. It applies to every row of this course, the last included.
+
+1. **What counts.** Any error, mistake, contradiction, unverified claim, missing source or unmet need, found before, during or after a unit is written: by the writer, the fresh checker, the applier, the filer, the corrections checker, a script, or Pedro.
+2. **About a unit already filed.** It goes into the next row's prompt as a correction, with the unit, the passage, what is wrong and the source. The next chat fixes it first, before it writes its own unit: each change is checked by a fresh agent against its source and the syllabus, applied as an exact replacement, and recorded.
+3. **About a unit not yet written.** It becomes a flag in `syllabus-flags.md` naming every unit it affects, and it is printed in each of those units' prompts as a guideline for the writer. A flag that would change a brief is proposed, never applied by the chat that raised it.
+4. **About the unit being written.** It is fixed in the same chat before filing. What cannot be fixed (a source that will not open) is cut or marked unverified in the unit, and carried as in 2.
+5. **Every delivery ends with the next prompt.** The reply of every row closes with the prompt for the next unit in a code block, as `kit/next_prompt.py` prints it, already holding: every correction still open on a filed unit, every open flag that names the next unit, and any guideline of this prompt that the row showed needs updating, with the update made. A row that finds a rule of the template wrong or unworkable corrects it in `docs/supply-chain-execution-prompts.md`, says what it changed, and the next prompt carries the corrected text.
+6. **Nothing is dropped silently.** A correction or flag leaves the next prompt only when it is resolved, with the row and the report that resolved it written beside it.
+7. **The last row** (W-DD-SCE2) delivers a closing corrections prompt in place of a next unit's, listing every correction and flag still open.
+
+---
+
+## Rows W-SCE1 to W-DD-SCE2 · write one unit
+
+Added by S-SCE0 (19 Nov 2026), proposal P-SCE3: the writing template of `docs/sport-psychology-prompts.md` as it stood in the repo, copied, with only its course-specific parts replaced: the course's name, code, slug and paths and its sourcing part (Part 8); the writer rules with section 1 above, the checker's passes with section 2 and the row table with section 3; the carry-forward rule of section 4 added word for word; step 5b (the safety reader) dropped, since the course has none. Rule 13 of `docs/public-courses.md` (the quality review) applies and is printed by `kit/next_prompt.py` when a unit's flags call for it. `kit/next_prompt.py` reads the code block below and the table "This row in particular", fills the slots and prints the result; a row that finds a guideline here wrong corrects it here (section 4, point 5).
+
+Corrected to the repo by S-SCE0, where section 1 and the template did not fit it: (1) writer rule 11: flags and corrections go into `out/notes.md` under Contradictions and Needs, since the filer, staged with `thin.py stage filer`, reads the notes and writes the flag rows into `syllabus-flags.md` (there is no `out/flags.md` in the filer's packet); (2) writer rule 12: the hand-in names `out/unit.md`, `out/notes.md` with its three lists and `out/unsure.md`, and `out/stats.json` is written by the chat with `thin.py stats`, not by the writer; (3) the sport-psychology template's own writer bullets on sourcing (opened before cited, the source log, the Sources entries, grades and samples, sources that never count) are replaced by section 1, which covers each; its agent rules (memory, tools, publishing, the web rule) and its line on `skills/write-unit` are kept; (4) the checker reads the unit "as the reader in the preamble would" in place of "as the coach"; (5) the Reply names the tasks for Pedro by hand as P-SCE1, P-SCE6 and P-SCE7; (6) the first line "Do not run until Pedro has closed P-SCE6." is printed by `kit/next_prompt.py` (`GATES`) on W-SCE7's prompt while row P-SCE6 is in `docs/BACKLOG.md`, so W-SCE6's paragraph is met by the script.
+
+Slots: `{ROW}` (W-SCE4), `{CODE}` (SCE4), `{TITLE}`, `{SEARCH}` (on or off), `{PAGE}` (read-sce4), `{NEXT}`, `{FILED}` (the paths of this course's filed units), `{FLAGS}`, `{CORRECTIONS}`, `{PROPOSALS}`, `{PARTICULAR}` (the row's paragraph from the table below).
+
+```
+Clone `apcanario/learning` (attach it with add_repo, push access; one shallow clone with a generous timeout; call `register_repo_root` if the session offers it; the repo has no CLAUDE.md). Row {ROW} of `docs/BACKLOG.md`, in this chat: write, fresh-check and file unit {CODE}, "{TITLE}", of the public course Supply Chain Execution for Product Teams (`kit/courses.py` entry `supply-chain-execution`: data `generator/data/supply-chain-execution/`, vault `courses/supply-chain-execution/`, `docs/sourcing-standard.md` Parts 1 and 8; search {SEARCH}); correct every mistake the work finds; flag every contradiction or need that touches another unit; then build, verify, publish Academy once (the artifact, then GitHub Pages), push everything, close the row and end with the next row's prompt.
+
+Read first: `docs/public-courses.md`, `docs/method.md` §4, §5, §7 and §8, `skills/write-unit`, `skills/audit-units` §3, `skills/file-unit` and the docstring of `kit/thin.py` (the chat reads those, never a unit).
+
+**This is a thin main chat** (method §4). (1) The chat runs on Sonnet 5.5 and the record says which model it ran as. The writer, the fresh checker, the applier, the filer and the corrections checker are each a fresh Agent on model opus, isolated on a packet. (2) The chat never opens a unit, a report or a brief. It stages each packet with `python3 kit/thin.py stage <writer|checker|applier|filer> --row {ROW} <folder>`, launches the agent, and reads only the agent's reply, at most six lines, and the `out/stats.json` that `python3 kit/thin.py stats <out folder>` writes. Every agent writes its full output to files in its `out/` folder. (3) Scripts, not the chat, check the result: `kit/index_check.py`, `kit/private_terms.py`, the last line of `build.py`, `verify.py`, the publish read-back by sha256. (4) A checkpoint commit and push follows every agent's return, on `main`. (5) No unit is uploaded to the Project. If the session's permission check refuses to run the repo's own scripts, stop, say so in one line and ask Pedro; never work around it. Where a choice is open, take the most reasonable reading, say so in the record and carry on; ask only if blocked. Fix every error, should-fix and minor finding the work turns up in this chat.
+
+**The carry-forward rule (Pedro, standing; `docs/supply-chain-execution-prompts.md` §4, `docs/method.md` §9).** Nothing found goes unrecorded or waits for a later audit. It applies to every row of this course, the last included.
+
+1. **What counts.** Any error, mistake, contradiction, unverified claim, missing source or unmet need, found before, during or after a unit is written: by the writer, the fresh checker, the applier, the filer, the corrections checker, a script, or Pedro.
+2. **About a unit already filed.** It goes into the next row's prompt as a correction, with the unit, the passage, what is wrong and the source. The next chat fixes it first, before it writes its own unit: each change is checked by a fresh agent against its source and the syllabus, applied as an exact replacement, and recorded.
+3. **About a unit not yet written.** It becomes a flag in `syllabus-flags.md` naming every unit it affects, and it is printed in each of those units' prompts as a guideline for the writer. A flag that would change a brief is proposed, never applied by the chat that raised it.
+4. **About the unit being written.** It is fixed in the same chat before filing. What cannot be fixed (a source that will not open) is cut or marked unverified in the unit, and carried as in 2.
+5. **Every delivery ends with the next prompt.** The reply of every row closes with the prompt for the next unit in a code block, as `kit/next_prompt.py` prints it, already holding: every correction still open on a filed unit, every open flag that names the next unit, and any guideline of this prompt that the row showed needs updating, with the update made. A row that finds a rule of the template wrong or unworkable corrects it in `docs/supply-chain-execution-prompts.md`, says what it changed, and the next prompt carries the corrected text.
+6. **Nothing is dropped silently.** A correction or flag leaves the next prompt only when it is resolved, with the row and the report that resolved it written beside it.
+7. **The last row** (W-DD-SCE2) delivers a closing corrections prompt in place of a next unit's, listing every correction and flag still open.
+
+**1. Gate.** `python3 kit/next_prompt.py --list` shows {CODE} as this course's next unit not filed. No REWRITE verdict is open in `docs/courses-index.md`.
+
+**1b. Corrections first** (`docs/public-courses.md` §3 rule 12), under that rule's limits, spelled out as (a) to (f) under the rows when there are any, each change checked by a fresh Agent on model opus against its source and the syllabus before it is applied, its report saved as `audits/supply-chain-execution/corrections-<date>-<codes>.md`:
+{CORRECTIONS}
+
+**1c. Carried proposals**, worked now unless Pedro removed one from this list:
+{PROPOSALS}
+
+**2. Stage the writer's packet** in one folder outside the repo with `python3 kit/thin.py stage writer --row {ROW} <folder>`. It holds: `brief.txt`, built by script with `open_brief` (the preamble, the Aim, Takes and Gives lines, the unit brief; never reworded, never retyped); `skills/write-unit/SKILL.md`; `docs/sourcing-standard.md` Parts 1 and 8; the figure kinds; `generator/data/supply-chain-execution/case-facts.md`; `generator/data/supply-chain-execution/bibliography.md`; every unit of this course already filed: {FILED}; `flags.txt`. The chat opens none of it.
+
+Open flags that name this unit:
+{FLAGS}
+
+**This row in particular.** {PARTICULAR}
+
+**3. The writer.** One fresh Agent on model opus, isolated, that sees only its folder. It states its model in its first line; if that is not claude-opus-5-5, stop at once, change nothing and say so in one line. Tell it:
+- A memory snapshot, project instructions or anything of that kind in its context is not a source and must not be used. It uses no memory, past-chat, Projects, connector, Artifact or Agent tool and no `mcp__` tool. It publishes nothing.
+- The web rule: WebSearch first; WebFetch only a URL that a search in the same agent returned verbatim, never one typed, printed in a file, edited or reached by a redirect; a refused, redirected or timed-out fetch is "not checked" and is never retried or fetched from a copy.
+- It follows `skills/write-unit` §4 to §5, renders every figure before handing in, and writes its files as it goes, so a restart loses little.
+- The writer rules of this course (`docs/supply-chain-execution-prompts.md` §1). The writer is one fresh Opus 5.5 agent with its packet and nothing else.
+1. **Open before citing.** Every reference is found by a search and read at its publisher's page, its DOI address or the issuing body's own page before it carries a claim. The seed bibliography says only that an entry exists.
+2. **Source log.** `out/sources.md`: one row per reference with the address opened, what was read (abstract, reprint or full text), the date, and the claims it carries. A reference that could not be opened is listed as not opened and carries nothing.
+3. **Fewer, better.** Prefer one source read in full to three read in abstract. Do not cite to decorate. If a section's support is one textbook's account, grade it practice and say so.
+4. **Grade every claim** by SCE1's key. From SCE2 on, the key arrives in the packet inside SCE1.
+5. **Vendors.** Assess, rank, compare or recommend no real vendor, and map no real vendor's product line. Name a real vendor only to attribute a dated public statement to it, graded vendor-reported, or as an entry in a dated list from a named analyst report or an audited filing, every vendor on the list alike. Worked product examples use Halvern Systems, Varnby Software and Kestrow, from the case register, labelled fictional. Never say or hint which real company a fictional one resembles.
+6. **Analyst reports.** Say how each was read. If only the abstract could be opened, the unit states only what the abstract states.
+7. **No private figures.** No price, revenue, margin or win rate of a private company unless it published it. Where a brief asks for a cost line with no public figure, write "no public figure".
+8. **The case** comes from `case-facts.md` only; invented facts go in the notes.
+9. **Scope.** No AI features. No interview framing. No craft method taught. Nothing about the Project's owner, his employer, his role or his work.
+10. **The two closing sections** before the deliverable: "On a site visit" and "Self-check", every answer drawn from the unit's sourced text.
+11. **Flags and corrections.** A contradiction with a filed unit or a brief, a mistake noticed in a filed unit, or a need the syllabus does not meet, is written to `out/notes.md` (a contradiction or a mistake under **Contradictions**, a mistake with the quoted passage, what is wrong, the source and the exact replacement; a need under **Needs**), naming every unit it affects and with a proposed change, so that the filer writes it into `syllabus-flags.md` in that file's form. It is carried by the carry-forward rule above. The writer never rewords a brief.
+12. **Hand-in.** The unit, `out/unit.md` (front matter, the unit, the deliverable, Sources); `out/sources.md`; `out/notes.md` with three lists, each item naming the unit codes it touches, an empty list written as "none": **Case facts** (rule 8), **Contradictions** and **Needs** (rule 11); the figures rendered; `out/unsure.md`, up to ten claims it is unsure of, closing with the `Object:` line; a reply of six lines at most (its model, the files it wrote, the counts of its lists, the number of references opened and not opened). `out/stats.json` is not the writer's: the chat writes it from these files with `python3 kit/thin.py stats`.
+
+**4. The fresh check.** A separate fresh Agent on model opus that has not seen the writing, under the same agent rules, **with live search**: the prompt of `skills/audit-units` §3 with its figures paragraph, on a packet made with `python3 kit/thin.py stage checker --row {ROW} <folder> --unit out/unit.md --notes out/notes.md --unsure out/unsure.md --sources out/sources.md`. It writes `out/report.md` (or returns it as its reply, which the chat saves verbatim, the agent's line `Verdict: {CODE} · keep|fix|rewrite · counts` ahead of it) and replies in at most six lines. Beyond the skill's items it runs the seven passes of `docs/supply-chain-execution-prompts.md` §2 and reports each by name. One fresh Opus 5.5 agent that has not seen the unit written. It writes findings (error, should-fix, minor) and edits nothing. A reference that does not exist stops the row.
+1. **References exist and match.** Every Sources entry against its publisher's or Crossref's record: authors, title, journal, year, volume, pages, DOI.
+2. **Claims against sources.** Every cited claim opened and read against its source; "unverifiable" where the source will not open, never a pass.
+3. **Grades.** Each grade against SCE1's key; a vendor's statement never carries more than vendor-reported; an abstract-only reading is said to be one.
+4. **Vendors.** No real vendor assessed, ranked, compared, recommended or mapped; each real vendor named only as writer rule 5 allows; every list complete and alike; no private company's unpublished figure; no fictional vendor tied to a real one.
+5. **The case.** Every case fact against `case-facts.md`; labelled fictional; never used as evidence.
+6. **Scope and tone.** No AI features, no interview framing, no method teaching, nothing about the Project's owner or his employer; the preamble's tone rules; terms defined on first use.
+7. **Deliverable and figures.** The deliverable against the brief's wording, built in full and then as a template; "On a site visit" and "Self-check" present and agreeing with the body; every figure's labels and numbers traced to the text.
+It also runs the unit against Part 8 line by line and reads it as the reader in the preamble would. Before any fix, `python3 kit/thin.py save-report --row {ROW} --report out/report.md --model <the model it stated> --chat <this session's link> --date <today>` saves the report as `audits/supply-chain-execution/fresh-check-{CODE}.md`; `python3 kit/thin.py assemble out/unit.md out/unsure.md "<the line it prints>"` gives the unit its unsure list. A `rewrite` verdict sends the unit to a new writer from the same brief, once; a second stops the row with a note.
+
+**5. Apply.** A fresh applier agent (staged with `thin.py stage applier --row {ROW} <folder> --unit <unit> --report <report>`) verifies each finding against the unit and the cited source and writes `out/apply.json` (`apply` or `hold`, with the reason); `python3 kit/thin.py apply <unit> fixes.json out/apply.json` applies it as exact replacements, the unit left unchanged if one fails, the applier re-run on the failures once. Every `hold` is recorded with its reason; a held error or should-fix is a flag. A figure that fails is fixed and re-checked by a new agent, as many times as it takes; figures are never dropped. Restarts: when the harness says it is resuming an agent, let it and say so in the record; if an agent is lost, re-run it from the start once; if lost again, start a fresh agent on the same packet that resumes from the lost run's working files. Look for agent transcripts (`.jsonl` under `/root/.claude/` or `/tmp/`); where they exist, check by script that each agent used no tool it was denied and read nothing outside its folder, and take its `"model"` field; where there are none, say so, and the model is the one the agent stated.
+
+**6. Mistakes in filed units of this course** are corrected where they sit, at step 7b. The course has no source units.
+
+**7. Syllabus flags.** Append every Contradiction and Need to `generator/data/supply-chain-execution/syllabus-flags.md` (next number, date, raised by {CODE}, the units affected, the flag, the proposed change, status open); set to `carried` each flag this unit was given and dealt with. The writer's Case facts reach the table "Added by units" of `case-facts.md` through the filer at step 8 (`case_lines` in `records.json`, one row each, inserted by `thin.py insert`); the chat does not open the notes. Change no brief: `units_data.py` is edited only by a syllabus review that Pedro confirms. If a flag means the next unit cannot be written as briefed, say so in the first line of the reply and write a syllabus-review prompt in place of the next unit's.
+
+**7b. Proposals now** (`docs/public-courses.md` §3 rule 12): every correction to a filed unit or a record, and every kit fix the work needs, is made in this chat before the build, under that rule's limits, each change to a unit checked by a fresh Agent on model opus first. Only a brief change and a task for Pedro stay *proposed*.
+
+**8. File** per `skills/file-unit`, by a fresh filer agent and a script: front matter (model: the model the writer stated) on `courses/supply-chain-execution/{CODE}-<slug>.md`; the filer, staged with `python3 kit/thin.py stage filer --row {ROW} <folder> --unit <unit> --notes <notes> --unsure <unsure> --report <report>`, writes `out/records.json` (the reading-page intro, saying what the unit is, how it was made and its known gaps, among them every reference not opened and every abstract-only claim; `STATUS`, `NEXT_UNIT`, `VERSION`, the hub `CHANGELOG` line, the case facts as `case_lines`, the flag rows, the `docs/courses-index.md` edits with a staleness row if search is on, both changelog entries, the `Object:` line); `python3 kit/thin.py insert out/records.json` inserts it and restores everything if it fails. Then `python3 kit/index_check.py` until it matches and `python3 kit/private_terms.py` prints OK.
+
+**9. Build and verify.** `cd kit && python3 build.py` (read its last line), `python3 verify.py` (ALL CHECKS PASSED), then `python3 verify.py --shots <dir> --page {PAGE}` (check the id it prints) in the background with a one-hour timeout; look at the page's shots at phone and desktop, dark and light, and at every figure's frames. A layout fault is fixed in `design/theme.css` (then `cp design/theme.css kit/shell.css`) or `kit/viz.py`, never in a page.
+
+**10. Publish Academy once.** Before the build you publish, move the row to `docs/CHANGELOG.md`, move its entry in `docs/site-log.md` from Next to Done and save the next prompt in its row (step 11), so the published Backlog and Changelog pages are current. Read the artifact https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH first and compare the live page with the build you started from (`get_artifact` for the live version id; `list_files` for every file's sha256 against `sha256sum` of the start build's files, the `kit/academy/` of the commit you cloned, saved outside the repo before any build). Send only the files that differ from the start build, found by script, and the shell inside the wrapper the live page carries (its first line and its closing `</body></html>`, taken from the saved live shell by script into a copy outside the repo), with `slug`, `base_version` and mode patch; read the sent files back and compare their sha256 with the build; never a new artifact, never forced. Then `./deploy.sh` once: attach `apcanario/academy` with add_repo (if refused, carry on and ask Pedro once at the end), clone it once, set `ACADEMY_DIR` to the clone, and confirm with `gh run` that the deployment succeeded. The publish and deploy identifiers go into the records after the publish, committed without republishing.
+
+**11. Close** per `docs/method.md` §8, steps 1 to 5: the row moved to `docs/CHANGELOG.md` with the date, the models and a one-line result; its entry in `docs/site-log.md` moved from Next to Done ("{CODE}, {TITLE}, written"; "course SCE complete" on the last unit); corrections left open go to the Corrections section, proposals to Carried proposals with their ⚠ flags; the Project copies `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` rewritten, and the course's `hub.py` and `syllabus-flags.md` mirrors refreshed; `python3 kit/next_prompt.py --save` saves the prompt of {NEXT}.
+
+**Reply:** what was filed where (words, figures, references opened and not opened); the fresh-check verdict and the result of each of the seven passes; each mistake corrected, in a line; each flag raised, with the units it affects and whether it blocks the next unit; the private-terms result; verify's result; the publish and the deploy; the choices taken; the backlog hand-off; every proposal listed with its ⚠ flag, and every task still open for Pedro by hand (the rows under Proposed marked for him: P-SCE1, P-SCE6 and P-SCE7), repeated in every reply until he marks it done; then the next prompt in a code block.
+```
+
+### This row in particular
+
+Section 3 above, word for word, in the form `kit/next_prompt.py` reads.
+
+| Row | Unit | Search | Paragraph for `{PARTICULAR}` |
+|---|---|---|---|
+| W-SCE1 | SCE1 | on | Search on. This unit sets the grade key and the glossary that every later unit receives: define each grade so that two readers would agree, with one worked example each. Read the analyst firm's own published method page before describing how a quadrant is made. |
+| W-SCE2 | SCE2 | off | Search off. The first unit in the operations pattern; its flow-map form is reused by SCE3, SCE7 and SCE9, so fix the columns here. Benchmark values only if the report itself was read. |
+| W-SCE3 | SCE3 | off | Search off. Claims C1 and C2 of the bibliography's list belong here: trace each to the earliest source you can open and state its age. |
+| W-SCE4 | SCE4 | off | Search off. The inventory record research has a specific sample and setting; state both before any use of its numbers. |
+| W-SCE5 | SCE5 | off | Search off. Sets the role card form reused by SCE8, SCE9, SCE11 and SCE13: fix its fields here. Claims C3, C5 and C6 belong here. |
+| W-SCE6 | SCE6 | on | Search on. The first unit with a product map: it is Halvern's, from the case register. The real market appears as one dated list from the analyst report, every vendor alike. Claim C8 belongs here. **After this row the queue stops (P-SCE6).** Say so in the reply. Still deliver W-SCE7's prompt with every open correction and flag (section 4), under a first line: "Do not run until Pedro has closed P-SCE6." |
+| W-SCE7 | SCE7 | off | Search off. Say which region each document and term belongs to. Claim C12 belongs here. |
+| W-SCE8 | SCE8 | on | Search on. Keep the shipper and the provider apart throughout. Claim C11 belongs here. |
+| W-SCE9 | SCE9 | on | Search on. Order management has the least research of the three: say plainly where a section rests on practice alone. |
+| W-SCE10 | SCE10 | off | Search off. Claim C9 belongs here and in SCE16: attribute each side of the one-vendor argument to the kind of party that makes it, naming no vendor. |
+| W-SCE11 | SCE11 | on | Search on. The buying-centre research is decades old and from other industries: state its age and setting, and label the transfer as the unit's inference. |
+| W-SCE12 | SCE12 | on | Search on. Claim C13 belongs here. End the body with the questions for the reader's own sales and services colleagues. |
+| W-SCE13 | SCE13 | off | Search off. No new role is invented: a missing role is a flag. Claim C14 belongs here. |
+| W-SCE14 | SCE14 | off | Search off. Claim C7 belongs here: find the origin of any failure-rate figure or say none was found. |
+| W-SCE15 | SCE15 | off | Search off. Features are discussed as types, never as claims about a named product. |
+| W-SCE16 | SCE16 | on | Search on. Filings are read on the regulator's or the company's investor page and dated; the companies read are given alike, with no comparison drawn between them. No private company's figures. |
+| W-SCE17 | SCE17 | on | Search on. Real vendors appear as dated lists only. Where analyst firms differ, show it on their methods, never on a named vendor. The worked sheets are the three fictional vendors'. Claim C10 belongs here. |
+| W-SCE18 | SCE18 | off | Search off. The worked memo uses only public evidence and the case register; every figure marked fictional or sourced. |
+| W-DD-SCE1 | DD-SCE1 | on | Search on. Margins and contract lengths only from audited filings or the industry's annual study, dated. |
+| W-DD-SCE2 | DD-SCE2 | off | Search off. The last unit: its delivery is a closing corrections prompt (section 4, point 7). |

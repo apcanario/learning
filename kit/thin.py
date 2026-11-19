@@ -437,6 +437,23 @@ def sourcing_text(c):
     return parts[0] + ''.join(x.rstrip('\n') + '\n\n' for x in keep)
 
 
+def case_rule(case):
+    """Filer rule 5 for a course adapted from nothing: the form of a row of its case file's table "Added by units". S-SCE0
+    (19 Nov 2026): read from that table's header, since supply-chain-execution's is "| Unit | Operation | Fact |"; a header of
+    "| Unit | Fact | Athlete |" (sport-psychology) keeps the S-SP0 wording unchanged."""
+    hdr = []
+    if case:
+        sec = case.read_text(encoding='utf-8').split('## Added by units', 1)
+        row = next((ln for ln in sec[1].splitlines() if ln.startswith('|')), '') if len(sec) == 2 else ''
+        hdr = [x.strip() for x in row.strip().strip('|').split('|')] if row else []
+    if not hdr or hdr == ['Unit', 'Fact', 'Athlete']:
+        return ('5. case_lines (S-SP0): every fact the writer invented about the case athletes, from the Case facts list of '
+                'notes.md, each as one row of the case file\'s table "Added by units": "| <code> | <the fact> | <athlete> |".\n')
+    form = '| ' + ' | '.join('<code>' if h.lower() == 'unit' else f'<{h.lower()}>' for h in hdr) + ' |'
+    return ('5. case_lines (S-SP0; S-SCE0): every fact the writer invented about the case, from the Case facts list of '
+            f'notes.md, each as one row of the case file\'s table "Added by units", in its columns ({", ".join(hdr)}): "{form}".\n')
+
+
 def cmd_stage(argv):
     kind = argv[0]
     opt = {}
@@ -578,9 +595,7 @@ def cmd_stage(argv):
             "3. index_edits always sets the course's count line (\"N of M written\") to the new count, and the unit's row; each old "
             'text is copied exactly from index-rows.txt and occurs once in docs/courses-index.md.\n'
             '4. thin.py insert runs kit/index_check.py after inserting and restores every file if it fails.\n'
-            + ('5. case_lines (S-SP0): every fact the writer invented about the case athletes, from the Case facts list of '
-               'notes.md, each as one row of the case file\'s table "Added by units": "| <code> | <the fact> | <athlete> |".\n'
-               if own else ''), encoding='utf-8')
+            + (case_rule(case) if own else ''), encoding='utf-8')
         secs = re.split(r'(?m)^(?=## )', ix)                  # C4: the course's whole section (count line, last filed row, this row)
         sec = next((s for s in secs if c['vault'] in s), None)
         stl = next((s for s in secs if s.startswith('## Staleness')), '')   # W-BW5: the staleness table, where a search-on unit gets its row

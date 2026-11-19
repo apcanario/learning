@@ -80,7 +80,37 @@ The public course **SP · Sport Psychology for Coaches**, created 16 Nov 2026 (r
 | 12 | DD-SP2 | SP | Deep dive: weight, body and who decides | written 19 Nov 2026, reviewed and corrected 19 Nov 2026 (W-DD-SP2) (fresh check: `audits/sport-psychology/fresh-check-DD-SP2.md`, fix · 2 errors, 7 should-fix, 10 minor; safety read: `audits/sport-psychology/safety-read-DD-SP2.md`, 1 serious, 5 should-fix, 4 minor, all applied; quality reviews: `audits/sport-psychology/quality-review-DD-SP2-2026-11-19.md`, fix · 1 error, 9 should-fix, 15 minor, 24 of 25 applied, 1 held (the UWW address); staleness check due 19 May 2027) | Opus 5.5 | on | `courses/sport-psychology/DD-SP2-weight-body-and-who-decides.md` |
 | 13 | DD-SP3 | SP | Deep dive: tuning out the noise | not written | Opus 5.5 | off | `courses/sport-psychology/DD-SP3-deep-dive-tuning-out-the-noise.md` |
 
+## Supply Chain Execution (public)
+
+The public course **SCE · Supply Chain Execution for Product Teams**, created 19 Nov 2026 (row S-SCE0; syllabus drafted the same day on Fable 5.2, `docs/supply-chain-execution-syllabus.md`): written for someone who builds, sells or implements order, warehouse or transport software, or is moving into that work, with no operations background, an exception to the single-reader rule; the reader is the persona in each brief's preamble. Adapted from nothing: no source units; a seed bibliography of 41 references checked for existence only (`gen/data/supply-chain-execution/bibliography.md`). The running case is three fictional operations, Corvane, Ostrel Foods and Tandric Logistics, and three fictional vendors, Halvern Systems, Varnby Software and Kestrow (`gen/data/supply-chain-execution/case-facts.md`). Eighteen core units in an opening and three parts, and two deep dives, in the Supply Chain track, the first of its courses. 0 of 20 written. A unit is written when its file is in `courses/supply-chain-execution/` (the folder appears with the first one). Briefs: the course's Briefs page in Academy (`gen/data/supply-chain-execution/units_data.py`, with `AIMS`). Build order: the Build order page, in syllabus order, with a gate after SCE6 (row P-SCE6); search on for SCE1, SCE6, SCE8, SCE9, SCE11, SCE12, SCE16, SCE17 and DD-SCE1. Sourcing: `docs/sourcing-standard.md` Parts 1 and 8. Syllabus flags: `gen/data/supply-chain-execution/syllabus-flags.md`. Decisions: `docs/public-courses.md`. Prompts: `docs/supply-chain-execution-prompts.md`, printed by `kit/next_prompt.py`. Fresh checks: `audits/supply-chain-execution/`.
+
+| # | Unit | Course | Title | Status | Model | Search | Path |
+|---|---|---|---|---|---|---|---|
+| 1 | SCE1 | SCE | The map, the words and the evidence | not written | Opus 5.5 | on | `courses/supply-chain-execution/SCE1-the-map-the-words-and-the-evidence.md` |
+| 2 | SCE2 | SCE | Inbound and storage | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE2-inbound-and-storage.md` |
+| 3 | SCE3 | SCE | Outbound: release, pick, pack, ship | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE3-outbound-release-pick-pack-ship.md` |
+| 4 | SCE4 | SCE | Inventory and control | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE4-inventory-and-control.md` |
+| 5 | SCE5 | SCE | The floor: people, devices and machines | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE5-the-floor-people-devices-and-machines.md` |
+| 6 | SCE6 | SCE | The warehouse system as a product | not written | Opus 5.5 | on | `courses/supply-chain-execution/SCE6-the-warehouse-system-as-a-product.md` |
+| 7 | SCE7 | SCE | Transportation in practice | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE7-transportation-in-practice.md` |
+| 8 | SCE8 | SCE | The transport system as a product | not written | Opus 5.5 | on | `courses/supply-chain-execution/SCE8-the-transport-system-as-a-product.md` |
+| 9 | SCE9 | SCE | Order management | not written | Opus 5.5 | on | `courses/supply-chain-execution/SCE9-order-management.md` |
+| 10 | SCE10 | SCE | The seams | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE10-the-seams.md` |
+| 11 | SCE11 | SCE | The buying committee | not written | Opus 5.5 | on | `courses/supply-chain-execution/SCE11-the-buying-committee.md` |
+| 12 | SCE12 | SCE | The sale | not written | Opus 5.5 | on | `courses/supply-chain-execution/SCE12-the-sale.md` |
+| 13 | SCE13 | SCE | Users by role | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE13-users-by-role.md` |
+| 14 | SCE14 | SCE | Implementers and administrators | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE14-implementers-and-administrators.md` |
+| 15 | SCE15 | SCE | Demo versus shift | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE15-demo-versus-shift.md` |
+| 16 | SCE16 | SCE | Money | not written | Opus 5.5 | on | `courses/supply-chain-execution/SCE16-money.md` |
+| 17 | SCE17 | SCE | Reading the field | not written | Opus 5.5 | on | `courses/supply-chain-execution/SCE17-reading-the-field.md` |
+| 18 | SCE18 | SCE | Capstone: one strategy memo | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE18-capstone-one-strategy-memo.md` |
+| 19 | DD-SCE1 | SCE | Deep dive: the logistics provider's business | not written | Opus 5.5 | on | `courses/supply-chain-execution/DD-SCE1-deep-dive-the-logistics-providers-business.md` |
+| 20 | DD-SCE2 | SCE | Deep dive: peak and exceptions | not written | Opus 5.5 | off | `courses/supply-chain-execution/DD-SCE2-deep-dive-peak-and-exceptions.md` |
+
 ## Courses to come (Personal Mythology)
 
 Listed in `kit/courses.py` (`NEXT`) as coming soon, with a scope and reading spine each: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese. A new course is added with the `new-course` skill.
 
+## Courses to come (Supply Chain)
+
+Listed in `kit/courses.py` (`planned` of the Supply Chain track in `THEMES`) as coming soon, after Supply Chain Execution for Product Teams and in this order, each with its title, its scope line and its teaser, word for word from the design chat's list of 19 Nov 2026 (syllabus decision D12): Supply Chain Planning for Product Teams; Warehouse Automation and Robotics; AI in Supply Chain Execution; Last Mile and Omni-channel Fulfilment. None has a syllabus, a brief, a data folder or a writing row; each needs its own design chat on Fable before anything is queued for it (row P-SCE10). A course on the logistics provider's business is left off: it is promised only if DD-SCE1 proves too thin.

@@ -39,6 +39,28 @@ THEMES = [
               "For the athlete below the level at which an agent takes interest, and the parent or coach acting as their manager: what an agent does, sponsorship and how to pitch it, making an athlete marketable, contracts and image rights as questions to ask, prize money and funding, and the career after sport. Marketing a minor is treated first as a safeguarding question.",
               "The public personal-brand course, for method. Sourced to industry practice, sponsor-side data and platform documentation, labelled as such; licensing rules for agents differ by sport and country, so the course says what to check."),
          ]),
+    # S-SCE0 (19 Nov 2026): Supply Chain Execution for Product Teams needed a track of its own (syllabus decision D2, docs/supply-chain-execution-syllabus.md);
+    # `planned` lists its four courses to come (syllabus decision D12), in the order of the design chat's list, each with its title, its scope line
+    # and its teaser word for word: the teaser's opening words are `planned_label`, its rest the tuple's last field, so the tile shows it whole
+    dict(id='supply-chain', name='Supply Chain', color='var(--gold)',
+         lede='How warehouses, transport and orders run, who works in them, how the software that runs them is bought, and what it costs, for people who build, sell or implement that software. Every claim graded by its evidence, no real vendor assessed, every unit ending in a shipped deliverable.',
+         planned_note='Four courses to follow Supply Chain Execution for Product Teams, each designed in its own chat before anything is written. Open a course to see its scope and what you will know after it.',
+         planned_label="After this you'll know how to",
+         planned_heading='Coming soon',
+         planned=[
+             ("Planning", "Supply Chain Planning for Product Teams", "var(--teal)",
+              "Forecasting, inventory targets, replenishment and the monthly planning cycle: the decisions that tell execution what to move.",
+              "read a demand forecast and say how wrong it is likely to be, explain why a company holds the stock it holds, and follow a replenishment decision from the plan to the purchase order. You'll be able to describe a planner's month, tell planning software from execution software at the points where they meet, and say what a planning tool needs from the systems downstream of it."),
+             ("Automation", "Warehouse Automation and Robotics", "var(--orange)",
+              "Conveyors, sorters, goods-to-person systems and mobile robots, and the control software between the machines and the warehouse system.",
+              "tell the main kinds of warehouse automation apart, say which order profile each one suits, and explain what each changes for the people on the floor. You'll be able to draw the line between the warehouse system and the control software, read an automation supplier's claim with the right questions, and say what a site gives up in flexibility when it automates."),
+             ("AI", "AI in Supply Chain Execution", "var(--purple)",
+              "Where prediction, optimisation and software agents are used in order, warehouse and transport work, and what the evidence says they do.",
+              "separate older optimisation from newer machine learning and from software agents, place a claimed AI feature on the operation it acts on, and judge it by who carries the risk when it is wrong. You'll be able to say what a person still decides at each level of automation, and grade a vendor's AI claim by the evidence behind it."),
+             ("Last mile", "Last Mile and Omni-channel Fulfilment", "var(--blue)",
+              "Store fulfilment, parcel networks, delivery promises and returns: the part of the order's journey the customer sees.",
+              "follow an online order from the buy button to the doorstep and back as a return, explain how a delivery promise is made and what it costs to keep, and compare shipping from a warehouse, a store and a small urban site. You'll be able to describe the work of the store associate, the parcel carrier and the customer service agent, and say where the order, warehouse and transport systems each take part."),
+         ]),
 ]
 
 GREECE = dict(
@@ -208,7 +230,25 @@ SPORT_PSYCHOLOGY = dict(
     eyebrow='SPORT PSYCHOLOGY',
 )
 
-COURSES = [GREECE, ROME, BRAND_AI, UX, PERSONAL_BRAND, BUILDING_WITH_AI, SPORT_PSYCHOLOGY]
+# The fourth public course (19 Nov 2026, row S-SCE0; docs/supply-chain-execution-syllabus.md): written for anyone who builds, sells or
+# implements order, warehouse or transport software, adapted from nothing, the first course of the Supply Chain track. Like
+# sport-psychology: no source units, a seed bibliography, its own prompts document. `dated_lists=True` tells kit/private_terms.py
+# that its pages may name the owner's employer as one entry of a dated analyst list, and nowhere else (syllabus §6, P-SCE2).
+SUPPLY_CHAIN_EXECUTION = dict(
+    id='supply-chain-execution', family='markdown', short='Supply Chain Execution (public)', label='SUPPLY CHAIN EXECUTION', name='Supply Chain Execution for Product Teams', color='var(--gold)',
+    home_id='supply-chain-execution', status='in progress',
+    tracks={'SCE': ('supply-chain', 'Supply chain execution · public')},
+    tiles={'SCE': 'How warehouses, transport and orders run, and how their software is bought.'},
+    data='generator/data/supply-chain-execution/hub.py',
+    vault='courses/supply-chain-execution',
+    sourcing_part='Part 8',
+    source_units=False,
+    prompts_doc='docs/supply-chain-execution-prompts.md',   # kit/next_prompt.py prints this course's rows from the template there
+    dated_lists=True,
+    eyebrow='SUPPLY CHAIN EXECUTION',
+)
+
+COURSES = [GREECE, ROME, BRAND_AI, UX, PERSONAL_BRAND, BUILDING_WITH_AI, SPORT_PSYCHOLOGY, SUPPLY_CHAIN_EXECUTION]
 
 # Editions (P70, 1 Nov 2026): a build of Academy with only some courses, from the same sources, theme, shell and rules.
 # `courses`: the ids of the courses it holds (None: every course); `omit`: what it leaves out, by panel kind

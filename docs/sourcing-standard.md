@@ -1,6 +1,6 @@
 # Sourcing standard
 
-One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 7 are each course family's own rules, taken from its brief preamble and its spec; a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
+One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 8 are each course family's own rules, taken from its brief preamble and its spec (Part 8 from its course's syllabus, section 6); a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
 
 A **checkable claim** is any sentence that carries a number, a date, a named source, an attribution ("X argued Y", "the source says"), a mechanism or a recommendation. The auditor's sample is drawn from these (method.md §6).
 
@@ -123,3 +123,28 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] The deliverable is built in full on the case athletes the brief names and then given as a template whose blanks say what goes in them.
 - [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
 - [ ] Links are given as links, the DOI address for a paper, so the course bibliography can collect them.
+
+## Part 8 · Supply Chain Execution for Product Teams (from section 6 of `docs/supply-chain-execution-syllabus.md`)
+
+- [ ] Every claim that carries a number, a mechanism or a recommendation is sourced where it is made.
+- [ ] Each source is one of: peer-reviewed research; a standard textbook cited by edition and chapter; an industry association's report or survey with its sample and year; an analyst report by firm, title and date; an audited company filing; a standards body's own page; a vendor's own page, release or documentation, dated.
+- [ ] No video, podcast, social-media post, unsigned blog, comparison or lead-generation site, or press rewrite of a release is cited as a source; one may be named only as the claim under examination.
+- [ ] Every claim carries one of the four grades (independent, analyst, vendor-reported, practice), and the grade follows SCE1's key.
+- [ ] An analyst report says how it was read: in full, in a public reprint, or in abstract. A claim that rests on an abstract alone says so.
+- [ ] No real vendor is assessed, ranked, compared or recommended, and no real vendor's product line is mapped.
+- [ ] A real vendor is named only to attribute a dated public statement to it, graded vendor-reported, or as an entry in a dated list from a named analyst report or an audited filing, every vendor on the list given alike.
+- [ ] Worked product examples use only the fictional vendors of `case-facts.md`, labelled "(fictional)"; no fictional vendor is said or hinted to stand for a real one.
+- [ ] A peer-review site is cited by market for what its reviewers say, with the number of reviews, never to assess a named vendor.
+- [ ] A number says whose figure it is, the sample and the year. No price, revenue or win rate of a private company appears unless that company published it.
+- [ ] A study's finding states its sample, setting and design; a finding from one site or industry applied to another is labelled as the unit's inference.
+- [ ] A common claim on the course's list is named as a claim and set against its evidence, or against "no independent source found".
+- [ ] Every reference in Sources is in the unit's source log with the address opened, what was read and the date.
+- [ ] Every Sources entry matches its publisher's or Crossref's record: authors, title, journal, year, volume, pages, DOI.
+- [ ] Every fact about Corvane, Ostrel Foods, Tandric Logistics, Halvern Systems, Varnby Software and Kestrow is labelled "(fictional)" on first use, agrees with `case-facts.md`, and is never used as evidence.
+- [ ] Nothing about the Project's owner, his employer, his role or his work appears (`python3 kit/private_terms.py` prints OK).
+- [ ] Nothing treats AI features; no unit is framed as interview preparation; no craft method is taught.
+- [ ] Where the search flag is on, every analyst list, market figure and filing figure carries the date it was read.
+- [ ] The deliverable is built in full on the case the brief names and then given as a template whose blanks say what goes in them.
+- [ ] "On a site visit" and "Self-check" are present, and every Self-check answer agrees with the body.
+- [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
+- [ ] Links are given as links, the DOI address for a paper.

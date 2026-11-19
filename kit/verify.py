@@ -2182,7 +2182,7 @@ def check_figures(br, fails):
     ctx.close()
 
 # S-PAGES (15 Nov 2026) · the Backlog and Changelog pages: a plain overview by area, rendered from docs/site-log.md alone
-SL_AREAS = ['Mythology', 'Marketing', 'AI', 'UX', 'Sports', 'Academy']   # S-SP0: course SP; S-SPORTS (19 Nov 2026): Coaching renamed Sports
+SL_AREAS = ['Mythology', 'Marketing', 'AI', 'UX', 'Sports', 'Supply Chain', 'Academy']   # S-SP0: course SP; S-SPORTS (19 Nov 2026): Coaching renamed Sports; S-SCE0: course SCE
 SL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('desktop', 1280, 800, False)]
 # the engine's words, which the two pages leave out (a unit's own title, such as "Agents" or "Prompting", is content)
 SL_PLAIN = re.compile(r'\b(Opus|Fable|Sonnet|Haiku|subagents?|(?:fresh|isolated|writer|checker|filer|applier|correction) agents?|'

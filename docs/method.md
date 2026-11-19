@@ -197,7 +197,7 @@ Run the `file-unit` skill, or by hand. Since A5 (`academy.md`) the vault is the 
 
 ## 8 · Backlog and changelog
 
-`docs/BACKLOG.md` holds every chat still to run, in order, one row each with the model and the prompt to paste. `docs/CHANGELOG.md` holds every chat that has run, newest first. The kit keeps its own `kit/CHANGELOG.md` for the site; a kit session writes both. None of the three is on the site: Academy's Backlog and Changelog pages are rendered from `docs/site-log.md` alone (S-PAGES, 15 Nov 2026), a plain overview by area (Mythology, Marketing, AI, UX, Coaching, Academy) with one entry per unit, course milestone or visible site change; its header gives the rules of an entry (plain words, no private term, housekeeping and corrections folded into the item they served).
+`docs/BACKLOG.md` holds every chat still to run, in order, one row each with the model and the prompt to paste. `docs/CHANGELOG.md` holds every chat that has run, newest first. The kit keeps its own `kit/CHANGELOG.md` for the site; a kit session writes both. None of the three is on the site: Academy's Backlog and Changelog pages are rendered from `docs/site-log.md` alone (S-PAGES, 15 Nov 2026), a plain overview by area (Mythology, Marketing, AI, UX, Sports, Supply Chain, Academy) with one entry per unit, course milestone or visible site change; its header gives the rules of an entry (plain words, no private term, housekeeping and corrections folded into the item they served).
 
 At the end of every chat that works a backlog row:
 1. Move the row from the Queue to `docs/CHANGELOG.md`: date, spec, model, one-line result, commit.
@@ -209,3 +209,30 @@ At the end of every chat that works a backlog row:
 
 A chat that finds nothing new still hands the backlog over with the next row named. A row that cannot be finished stays in the Queue with a one-line note of where it stopped.
 
+
+## 9 · Standing rules for every new course
+
+Two rules hold for every course designed from 19 Nov 2026 on, whatever its syllabus says, so that no later course has to be told them (Pedro, standing; first written for Supply Chain Execution for Product Teams, row S-SCE0, `docs/supply-chain-execution-prompts.md` §4). The `new-course` skill makes both part of each new course's preamble, sourcing part, prompts document and writing rows. They add to the rules above and change no existing course's briefs or filed units.
+
+### The carry-forward rule
+
+Nothing found goes unrecorded or waits for a later audit. It applies to every row of the course, the last included.
+
+1. **What counts.** Any error, mistake, contradiction, unverified claim, missing source or unmet need, found before, during or after a unit is written: by the writer, the fresh checker, the applier, the filer, the corrections checker, a script, or Pedro.
+2. **About a unit already filed.** It goes into the next row's prompt as a correction, with the unit, the passage, what is wrong and the source. The next chat fixes it first, before it writes its own unit: each change is checked by a fresh agent against its source and the syllabus, applied as an exact replacement, and recorded.
+3. **About a unit not yet written.** It becomes a flag in the course's `syllabus-flags.md` naming every unit it affects, and it is printed in each of those units' prompts as a guideline for the writer. A flag that would change a brief is proposed, never applied by the chat that raised it.
+4. **About the unit being written.** It is fixed in the same chat before filing. What cannot be fixed (a source that will not open) is cut or marked unverified in the unit, and carried as in 2.
+5. **Every delivery ends with the next prompt.** The reply of every row closes with the prompt for the next unit in a code block, as `kit/next_prompt.py` prints it, already holding: every correction still open on a filed unit, every open flag that names the next unit, and any guideline of the course's writing template that the row showed needs updating, with the update made. A row that finds a rule of the template wrong or unworkable corrects it in the course's prompts document (`docs/<course>-prompts.md`), says what it changed, and the next prompt carries the corrected text.
+6. **Nothing is dropped silently.** A correction or flag leaves the next prompt only when it is resolved, with the row and the report that resolved it written beside it.
+7. **The last row** (the course's last unit in its writing order) delivers a closing corrections prompt in place of a next unit's, listing every correction and flag still open.
+
+### The source-credibility floor
+
+- **Opened before cited.** Every reference is opened before it is cited: found by a search and read at its publisher's page, its DOI address or the issuing body's own page, and logged in the unit's source log with the address opened, what was read (abstract, reprint or full text) and the date. A reference that could not be opened carries no claim.
+- **A short seed bibliography, checked for existence only.** A course's seed bibliography is short, and each entry is checked for existence against Crossref's or the publisher's record before the first unit is written. It is never an authority on what a source says.
+- **Graded claims.** Every claim carries an evidence grade from a key that the course's first unit sets; every later unit uses that key.
+- **Never sources.** Videos, podcasts, social-media posts, unsigned blogs, lead-generation sites and press rewrites are never sources; one may be named only as the claim under examination.
+- **Interested parties.** A statement by an interested party (a vendor, a sponsor, a body that sells what it describes) is labelled as such.
+- **Fewer, better.** Fewer sources read in full are preferred to many read in abstract; a claim that rests on an abstract alone says so.
+- **Unsourced is said.** A claim that cannot be sourced is said to be unsourced or left out.
+- **The fresh checker verifies both.** The fresh checker verifies every reference's record (authors, title, journal or publisher, year, volume, pages, DOI) and every cited claim against its source; a source it cannot open is "not opened", never a pass.
