@@ -14,13 +14,13 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | DD-SP2 | Coaching | Write DD-SP2, Deep dive: weight, body and who decides, for Sport Psychology for Coaches. |
-| 2 | DD-SP3 | Coaching | Write DD-SP3, Deep dive: tuning out the noise, for Sport Psychology for Coaches. |
+| 1 | DD-SP3 | Coaching | Write DD-SP3, Deep dive: tuning out the noise, for Sport Psychology for Coaches. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-19 | DD-SP2 | Coaching | DD-SP2, Deep dive: weight, body and who decides, written; SP3, SP6 and DD-SP1 were also corrected. |
 | 2026-11-19 | DD-SP1 | Coaching | DD-SP1, Deep dive: the coach's line with minors, written; SP2, SP9 and SP10 were also corrected. |
 | 2026-11-19 | SP10 | Coaching | SP10, The season plan, written. |
 | 2026-11-18 | SP9 | Coaching | SP9, Wellbeing, red flags and referral, written; SP1 and SP8 were also corrected. |
