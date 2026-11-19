@@ -32,7 +32,7 @@ Drafted 16 Nov 2026 in a design chat on Fable 5.2. **Not in the repo.** Nothing 
 | Data | `generator/data/sport-psychology/` |
 | Vault | `courses/sport-psychology/` |
 | Fresh checks | `audits/sport-psychology/` |
-| Track | New: Coaching (no existing track fits) |
+| Track | New: Coaching (no existing track fits); renamed Sports on 19 Nov 2026 (S-SPORTS) |
 | Reader | A coach of athletes aged about 10 to 25, any sport, no psychology training. In the preamble. A public course: the Project's single-reader rule does not apply |
 | Case | Three fictional athletes: Dani, 14, judo; Milan, 17, football; Sara, 20, 400 m (`case-facts.md`) |
 | Sourcing | `sourcing-standard.md` Part 1 and a new Part 7 (section 6 below) |

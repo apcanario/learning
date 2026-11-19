@@ -914,7 +914,8 @@ def check_tiles(pg, pid, label, fails, expect):
             if (t['plan'] or []) != want_p: fails.append(f'{pid} {label}: {code}: its patch marks {t["plan"]} planned, the sources {want_p}')
     if pid == 'home':
         gh = [t for t in ts if t['kind'] == 'ghost']
-        if gh and [t['name'] for t in gh] != [n[1] for n in NEXT]: fails.append(f'home {label}: the ghost tiles are {[t["name"] for t in gh]}, courses.py plans {[n[1] for n in NEXT]}')
+        plans = [n[1] for t in THEMES for n in (NEXT if t['id'] == 'history' else t.get('planned', []))]   # S-SPORTS: a track's own planned courses too
+        if gh and [t['name'] for t in gh] != plans: fails.append(f'home {label}: the ghost tiles are {[t["name"] for t in gh]}, courses.py plans {plans}')
         for t in gh:
             if t['stats'] or t['rises'] or len(t['plan'] or []) != 1: fails.append(f'home {label}: the ghost {t["name"]} shows stats {t["stats"]} or rises, or not one dashed ring ({t["plan"]})')
     return r
@@ -2181,7 +2182,7 @@ def check_figures(br, fails):
     ctx.close()
 
 # S-PAGES (15 Nov 2026) · the Backlog and Changelog pages: a plain overview by area, rendered from docs/site-log.md alone
-SL_AREAS = ['Mythology', 'Marketing', 'AI', 'UX', 'Coaching', 'Academy']   # S-SP0: Coaching, course SP
+SL_AREAS = ['Mythology', 'Marketing', 'AI', 'UX', 'Sports', 'Academy']   # S-SP0: course SP; S-SPORTS (19 Nov 2026): Coaching renamed Sports
 SL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('desktop', 1280, 800, False)]
 # the engine's words, which the two pages leave out (a unit's own title, such as "Agents" or "Prompting", is content)
 SL_PLAIN = re.compile(r'\b(Opus|Fable|Sonnet|Haiku|subagents?|(?:fresh|isolated|writer|checker|filer|applier|correction) agents?|'

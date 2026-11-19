@@ -24,9 +24,21 @@ THEMES = [
          lede='Working with AI models as tools: which model for which task, how to brief, how to keep a project from rotting, how to verify what the machine wrote before you trust it.'),
     dict(id='ux', name='User Experience', color='var(--blue)',
          lede='The practice of UX design, written to be handed to other designers: how to read, build and edit the structure behind a product at any scale, where that work sits in the product cycle and the business, and how to deliver it when the inputs are missing. Every unit sourced to the field\'s standard works and research, rich in figures, ending in a shipped deliverable.'),
-    # S-SP0 (16 Nov 2026): Sport Psychology for Coaches needed a track of its own (syllabus decision D1)
-    dict(id='coaching', name='Coaching', color='var(--orange)',
-         lede='Coaching athletes with what the evidence says about the mind in sport: how young athletes develop, the climate a coach creates, the skills a coach may teach, and where a coach\'s part ends. Every recommendation graded by its evidence, every unit ending in a shipped deliverable.'),
+    # S-SP0 (16 Nov 2026): Sport Psychology for Coaches needed a track of its own (syllabus decision D1);
+    # S-SPORTS (19 Nov 2026): renamed Sports from Coaching, since the track's later courses are read by athletes and
+    # parents too; `planned` lists its courses to come (docs/sports-track-coming-soon.md), drawn as ghost tiles
+    dict(id='sports', name='Sports', color='var(--orange)',
+         lede='Coaching and managing young athletes with what the evidence says: how they develop, the climate a coach creates, the skills a coach may teach, and where a coach\'s part ends. Every recommendation graded by its evidence, every unit ending in a shipped deliverable.',
+         planned_note='Two courses to follow Sport Psychology for Coaches, each designed once it is complete. Open a course to see its scope and what it builds on.',
+         planned_label='Builds on',
+         planned=[
+             ("Squad", "Running a Squad", "var(--orange)",
+              "For the coach or team manager of a club squad, in an individual or a team sport: how a group becomes a team, roles, cliques and leadership among athletes; selection, playing time and conflict; one-to-one and group meetings; parents; staff and the club; and the logistics of a season, from the calendar to travel with minors.",
+              "Sport Psychology for Coaches: the climate a coach creates, parents, competition day and the coach's line with minors. Logistics has almost no research, so those units are checklists and templates graded as practice."),
+             ("Career", "Managing an Athlete's Career", "var(--gold)",
+              "For the athlete below the level at which an agent takes interest, and the parent or coach acting as their manager: what an agent does, sponsorship and how to pitch it, making an athlete marketable, contracts and image rights as questions to ask, prize money and funding, and the career after sport. Marketing a minor is treated first as a safeguarding question.",
+              "The public personal-brand course, for method. Sourced to industry practice, sponsor-side data and platform documentation, labelled as such; licensing rules for agents differ by sport and country, so the course says what to check."),
+         ]),
 ]
 
 GREECE = dict(
@@ -186,7 +198,7 @@ BUILDING_WITH_AI = dict(
 SPORT_PSYCHOLOGY = dict(
     id='sport-psychology', family='markdown', short='Sport Psychology (public)', label='SPORT PSYCHOLOGY', name='Sport Psychology for Coaches', color='var(--orange)',
     home_id='sport-psychology', status='in progress',
-    tracks={'SP': ('coaching', 'Sport psychology · public')},
+    tracks={'SP': ('sports', 'Sport psychology · public')},
     tiles={'SP': 'Mental skills, climate and referral for coaches of athletes aged 10 to 25.'},
     data='generator/data/sport-psychology/hub.py',
     vault='courses/sport-psychology',

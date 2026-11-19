@@ -870,7 +870,7 @@ def md_blocks(lines):
 # order, and "## Done" (Date, Code, Area, What happened), dates as YYYY-MM-DD; method.md §8 says who writes them.
 SL_AREAS = [   # (name, what it holds, the track whose tone it takes); the order of the per-area tables
     ('Mythology', 'Greece and Rome', 'history'), ('Marketing', 'Courses A and PB', 'marketing'),
-    ('AI', 'Courses B and BW', 'technology'), ('UX', 'Course IA', 'ux'), ('Coaching', 'Course SP', 'coaching'),   # S-SP0
+    ('AI', 'Courses B and BW', 'technology'), ('UX', 'Course IA', 'ux'), ('Sports', 'Course SP', 'sports'),   # S-SP0; S-SPORTS: Sports
     ('Academy', 'The site and its method', None)]
 SL_TONE = {n: next((t['color'] for t in THEMES if t['id'] == tid), 'var(--gold)') for n, _, tid in SL_AREAS}
 
@@ -985,7 +985,7 @@ _HERO_AT = {            # where each area's rise stands (fractions of the layout
     # the Greece edition stopped here from P92 on)
     'history': ([.50, .48], [.46, .55]), 'marketing': ([.33, .15], [.14, .18]),   # W-PB2 (12 Nov 2026): .16 to .15 in the tall layout, so Marketing (86,699 words with PB2) still closes two rings of its own
     'technology': ([.66, .18], [.81, .26]), 'ux': ([.66, .82], [.78, .68]),
-    'coaching': ([.34, .80], [.14, .78]),   # S-SP0 (16 Nov 2026): the Coaching track; R-SP1 (17 Nov 2026): wide y .74 to .78, so the rise (22,995 words, one level) closes its ring of its own; W-SP4 (18 Nov 2026): wide x .24 to .18, so the rise (30,893 words with SP4, still one level) does; W-SP6 (18 Nov 2026): wide x .18 to .14, so the rise (49,932 words with SP6, two levels) closes two rings of its own
+    'sports': ([.34, .80], [.14, .78]),   # S-SPORTS (19 Nov 2026): the Coaching track renamed Sports; S-SP0 (16 Nov 2026): the track; R-SP1 (17 Nov 2026): wide y .74 to .78, so the rise (22,995 words, one level) closes its ring of its own; W-SP4 (18 Nov 2026): wide x .24 to .18, so the rise (30,893 words with SP4, still one level) does; W-SP6 (18 Nov 2026): wide x .18 to .14, so the rise (49,932 words with SP6, two levels) closes two rings of its own
 }
 if [t['id'] for t in THEMES if t['id'] not in _HERO_AT]:
     raise SystemExit(f'build.py _HERO_AT has no place for the areas {[t["id"] for t in THEMES if t["id"] not in _HERO_AT]}: give each a place')
@@ -1019,12 +1019,12 @@ def tile_patch(c, phase=None):
     return patch_block(us, _TONE[c['color']], phase)
 
 
-def ghost_tile(theme, short, name, col, scope, spine, phase=None):
+def ghost_tile(theme, short, name, col, scope, spine, phase=None, label='Spine'):
     """P93: a planned course on the home, a ghost tile (the chip, the title, its scope in two lines, no stats, a
     dashed patch: one flat ring, nothing written), the summary of a disclosure that opens to its spine, its scope then
     shown whole (theme 4h), as the planned course's row showed both."""
     return tile([theme, short], col, name, html.escape(scope), patch=patch_block([(short, None)], _TONE[col], phase),
-                disclosure=f'<p class="nspine"><span>Spine</span>{html.escape(spine)}</p>', cls=' ghost')
+                disclosure=f'<p class="nspine"><span>{html.escape(label)}</span>{html.escape(spine)}</p>', cls=' ghost')
 
 
 def md_card(m, phase=None):
@@ -1033,7 +1033,8 @@ def md_card(m, phase=None):
 
 # P93: the home's drawings in page order (the hero, each live course's tile, History's eight planned courses), each
 # starting at its own point of the cycle
-HOME_PH = iter(phases(1 + len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon') + len(NEXT)))   # G-0: one phase per drawing on the home; a course with nothing filed has none
+PLANNED = {t['id']: ([] if 'planned' in OMIT else t.get('planned', [])) for t in THEMES}   # S-SPORTS: a track's own planned courses (History's are NEXT)
+HOME_PH = iter(phases(1 + len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon') + len(NEXT) + sum(len(v) for v in PLANNED.values())))   # G-0: one phase per drawing on the home; a course with nothing filed has none
 HERO_TOPO['phase'] = round(next(HOME_PH), 3)
 hero_topo = viz.render(HERO_TOPO)
 tracks = ''
@@ -1042,6 +1043,7 @@ for t in THEMES:
     mds = [m for m in MD if m['theme'] == t['id']]
     cards = ''.join(root_card(c, next(HOME_PH)) for c in hist)
     soon_cards = ''.join(ghost_tile(t['name'], short, name, col, scope, spine, next(HOME_PH)) for short, name, col, scope, spine in NEXT) if t['id'] == 'history' else ''
+    own_cards = ''.join(ghost_tile(t['name'], short, name, col, scope, spine, next(HOME_PH), t.get('planned_label', 'Spine')) for short, name, col, scope, spine in PLANNED[t['id']])
     soon = [m for m in mds if m['status'] == 'coming soon']   # a markdown course with nothing written is planned, not live
     # G-0 (12 Nov 2026): such a course has no tile on the home (verify.py's home_expect: "a course with nothing filed is
     # not live: no tile"; its patch would be empty); it is counted as coming soon here and listed in the drawer
@@ -1052,6 +1054,7 @@ for t in THEMES:
     if mds: count += f' · {sum(m["nwritten"] for m in mds)} of {sum(m["nunits"] for m in mds)} units'
     if t['id'] == 'history' and NEXT: count += f' · {len(NEXT)} planned'
     elif soon and n: count += f' · {len(soon)} coming soon'
+    if PLANNED[t['id']]: count += f' · {len(PLANNED[t["id"]])} planned'
     extra = ''
     if t['id'] == 'history':
         planned = '' if not NEXT else f"""
@@ -1070,6 +1073,13 @@ for t in THEMES:
     <p>The Greeks drew that line themselves. Herodotus calls his work a <em>historiē</em>, an inquiry, and still reports what the Persians and Egyptians told him. Thucydides warns that his history leaves out the <em>mythōdes</em>, the storylike, and will seem less pleasant for it (1.22). Plato expels the poets from his ideal city and then ends the <em>Republic</em> with a myth of his own.</p>
     <p>The tidy story of a clean progress "from mythos to logos" (the title of Wilhelm Nestle's book of 1940) is now itself treated as a modern myth: the Greeks never stopped telling myths; their philosophers used them, their historians argued with them, and their cities were governed by them. So each course reads a culture's myths and its history together, asks who told each story and what they gained by it, and keeps the evidence in view. The aim is not to debunk the myths but to understand them as well as the history. Later courses point back to earlier ones where they touch: Rome to Greece's units 7 and 10, Persia to units 6 and 11, Egypt to units 1 and 7.</p>
   </details>{planned}"""
+    if PLANNED[t['id']]:   # S-SPORTS: a track's own planned courses, folded as History's are
+        extra += f"""
+  <details class="howto rules planned" id="planned-{t['id']}">
+    <summary><h2>Planned</h2><span>{len(PLANNED[t['id']])} courses, in the intended order</span></summary>
+    <p class="hnote">{html.escape(t.get('planned_note', ''))}</p>
+    <div class="cgrid">{own_cards}</div>
+  </details>"""   # own_planned
     tracks += f"""
   <section class="track" id="track-{t['id']}" style="--c:{t['color']}">
     <header class="thead"><div class="ttx"><span class="cname">Track</span><h2>{html.escape(t['name'])}</h2><p>{html.escape(t['lede'])}</p></div><span class="tmeta">{count}</span></header>

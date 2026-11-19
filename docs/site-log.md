@@ -5,7 +5,7 @@ The one source of Academy's Backlog and Changelog pages (S-PAGES, 15 Nov 2026): 
 Rules for an entry (`docs/method.md` §8):
 - **Next**: one row per item still to do, in the overall order (#, from 1, no gaps); **Done**: one row per item done, any order (the pages sort newest first), the date as `YYYY-MM-DD` (the first day, where the work ran over several).
 - **Code**: the item's short name: a unit's code (PB1, IA3), a history course's syllabus unit (G12 for Greece unit 12, R0–3 for Rome units 0 to 3), the backlog row's code for anything else (P96, S-PAGES), and K plus the session number for a site change of the kit's early sessions (K1 to K11), which had no row code. Keep it short: the column is narrow on a phone.
-- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Coaching (course SP), Academy (the site and its method).
+- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (course SP; named Coaching until 19 Nov 2026), Academy (the site and its method).
 - **Sentence**: one plain sentence for an ordinary reader: what it is (Next) or what happened (Done). No model names, token counts, script or file names, row mechanics (rows, chats, prompts, corrections, mirrors), agent or audit vocabulary, and no private term (`kit/private-terms.txt`; `python3 kit/private_terms.py` scans this file). No `|` in a sentence.
 - **One entry per item**: a unit, a course milestone or a visible site change. Housekeeping, corrections and re-checks are folded into the item they served, never listed on their own. A proposed item enters Next only when it is confirmed; a withdrawn one leaves it.
 - The chat that closes a backlog row moves its entry from Next to Done (or adds it to Done), renumbers Next, and adds an entry to Next for each item it confirms into the queue.
@@ -14,29 +14,30 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | DD-SP3 | Coaching | Write DD-SP3, Deep dive: tuning out the noise, for Sport Psychology for Coaches. |
+| 1 | DD-SP3 | Sports | Write DD-SP3, Deep dive: tuning out the noise, for Sport Psychology for Coaches. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
-| 2026-11-19 | DD-SP2 | Coaching | DD-SP2, Deep dive: weight, body and who decides, written; SP3, SP6 and DD-SP1 were also corrected. |
-| 2026-11-19 | DD-SP1 | Coaching | DD-SP1, Deep dive: the coach's line with minors, written; SP2, SP9 and SP10 were also corrected. |
-| 2026-11-19 | SP10 | Coaching | SP10, The season plan, written. |
-| 2026-11-18 | SP9 | Coaching | SP9, Wellbeing, red flags and referral, written; SP1 and SP8 were also corrected. |
-| 2026-11-18 | SP8 | Coaching | SP8, Competition day, written. |
-| 2026-11-18 | SP7 | Coaching | SP7, Reading and responding to an athlete, written; SP2, SP3, SP5 and SP6 were also corrected. |
-| 2026-11-18 | SP6 | Coaching | SP6, Training under pressure, written; SP1, SP3 and SP5 were also corrected. |
-| 2026-11-18 | SP5 | Coaching | SP5, The cognitive-behavioural toolkit, written; SP1 to SP3 were also corrected. |
-| 2026-11-18 | SP4 | Coaching | SP4, Anxiety, arousal and performing under pressure, written; SP1 to SP3 were also corrected and reviewed again. |
-| 2026-11-17 | R-SP1 | Coaching | SP1 to SP3 reviewed and corrected. |
-| 2026-11-17 | SP3 | Coaching | SP3, Motivation and the climate you create, written. |
-| 2026-11-17 | SP2 | Coaching | SP2, The developing athlete, 10 to 25, written; five Building with AI units also had remaining statements about how Academy was built corrected. |
-| 2026-11-17 | SP1 | Coaching | SP1, What a coach can do, and how to tell evidence from noise, written; the Building with AI units also gained the facts about how Academy was built that they had been missing. |
+| 2026-11-19 | S-SPORTS | Sports | The Coaching area is renamed Sports, and lists two courses to come: Running a Squad, and Managing an Athlete's Career. |
+| 2026-11-19 | DD-SP2 | Sports | DD-SP2, Deep dive: weight, body and who decides, written; SP3, SP6 and DD-SP1 were also corrected. |
+| 2026-11-19 | DD-SP1 | Sports | DD-SP1, Deep dive: the coach's line with minors, written; SP2, SP9 and SP10 were also corrected. |
+| 2026-11-19 | SP10 | Sports | SP10, The season plan, written. |
+| 2026-11-18 | SP9 | Sports | SP9, Wellbeing, red flags and referral, written; SP1 and SP8 were also corrected. |
+| 2026-11-18 | SP8 | Sports | SP8, Competition day, written. |
+| 2026-11-18 | SP7 | Sports | SP7, Reading and responding to an athlete, written; SP2, SP3, SP5 and SP6 were also corrected. |
+| 2026-11-18 | SP6 | Sports | SP6, Training under pressure, written; SP1, SP3 and SP5 were also corrected. |
+| 2026-11-18 | SP5 | Sports | SP5, The cognitive-behavioural toolkit, written; SP1 to SP3 were also corrected. |
+| 2026-11-18 | SP4 | Sports | SP4, Anxiety, arousal and performing under pressure, written; SP1 to SP3 were also corrected and reviewed again. |
+| 2026-11-17 | R-SP1 | Sports | SP1 to SP3 reviewed and corrected. |
+| 2026-11-17 | SP3 | Sports | SP3, Motivation and the climate you create, written. |
+| 2026-11-17 | SP2 | Sports | SP2, The developing athlete, 10 to 25, written; five Building with AI units also had remaining statements about how Academy was built corrected. |
+| 2026-11-17 | SP1 | Sports | SP1, What a coach can do, and how to tell evidence from noise, written; the Building with AI units also gained the facts about how Academy was built that they had been missing. |
 | 2026-11-17 | S-BW | AI | The unit plans of Building with AI were brought in line with what was written, three units were corrected, and the record of how Academy was built gained the facts the units had asked for. |
 | 2026-11-16 | H-4 | Academy | Every timeline now draws its periods on the axis with their years, figure keys sit under their figures and match their colours, and one dating in the Greek course was corrected. |
 | 2026-11-16 | G-R | Academy | The pages of the two public courses, PB and BW, now show their object pictures. |
-| 2026-11-16 | S-SP0 | Coaching | Sport Psychology for Coaches, a new course, added: 13 units to write. |
+| 2026-11-16 | S-SP0 | Sports | Sport Psychology for Coaches, a new course, added: 13 units to write. |
 | 2026-11-16 | DD-BW3 | AI | DD-BW3, the deep dive in which the reader reviews their own usage, written; course BW complete. |
 | 2026-11-16 | DD-BW2 | AI | DD-BW2, Deep dive: one project, with its numbers, written. |
 | 2026-11-16 | DD-BW1 | AI | DD-BW1, Deep dive: how the best practitioners work, written. |
