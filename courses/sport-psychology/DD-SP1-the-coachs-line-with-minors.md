@@ -2,7 +2,7 @@
 code: DD-SP1
 title: "Deep dive: the coach's line with minors"
 course: sport-psychology · SP · Sport Psychology for Coaches
-model: claude-opus-5-5
+model: Opus 5.5
 written: 2026-11-19
 search: on
 ---

@@ -131,3 +131,18 @@ First names only, so that no real person is named.
 | SP10 | Nobody has yet asked Dani what she enjoys in training and what she would change. | Dani |
 | SP10 | Nobody has yet asked Dani what her look to her coach after each exchange is about. | Dani |
 | SP10 | Milan's squad's weekly match (at the weekend, SP5) is on Saturday. | Milan |
+| DD-SP1 | In one session Dani's coach shouted across the mat after she lost a grip exchange, in the second round: "Wake up! You're fighting like a beginner!" (words for SP1's raised voice and SP3's seven counts; Deliverable A, comment 1; D1). | Dani |
+| DD-SP1 | Milan's coach's threat about selection (SP3's C10) was "Anyone who misses the standard runs, and I'll remember it on Thursday." (Deliverable A, comment 5; D2). | Milan |
+| DD-SP1 | Sara's coach read the times out as "Fastest to slowest: ... and Sara, last again." (words for SP3's C8; Deliverable A, comment 9; D3). | Sara |
+| DD-SP1 | Illustration, not an event: a half-time comment to Milan in front of the squad, "You've gone missing again. Same as every match." (Deliverable A, comment 7); not stated as having happened. | Milan |
+| DD-SP1 | Illustration, not an event: a comment to Sara after a slower race, "Maybe the injury's in your head now." (Deliverable A, comment 10); not stated as having happened. | Sara |
+| DD-SP1 | Athletes in Dani's squad travel to the regional competition with their parents or in the club's shared transport with two adults (Deliverable B, travel). | Dani |
+| DD-SP1 | At Dani's club athletes change in separate rooms and the coach does not enter while they change; squad prizes at the end-of-season event are given by a rule announced in advance (Deliverable B). | Dani |
+| DD-SP1 | Milan's squad travels to away matches by team coach with two staff; the academy changing room has two staff when supervision is needed; the squad message group has parents copied (Deliverable B). | Milan |
+| DD-SP1 | Illustration, not an event: in Dani's squad a volunteer at the club gives one 13-year-old lifts home alone and messages her in the evening, noticed on two dates (Deliverable C). | Dani |
+| DD-SP1 | Illustration, not an event: in Milan's squad older players plan an initiation for 16-year-olds joining the squad (Deliverable C). | Milan |
+| DD-SP1 | Illustration, not an event: a coach of one of the other two groups sends a 15-year-old a private late-night message, which she shows to Sara's coach (Deliverable C). | Sara |
+| DD-SP1 | Milan's coach's words after a miss in pressure block 1: week 9 "Under your standard today. What did you see before you received?"; week 10 "Two forward out of six. Next time scan before the ball's played."; week 11 "Went back. Fine. What did your phrase tell you?"; week 12 "Their ball. Reset." (Deliverable E1). | Milan |
+| DD-SP1 | Dani's coach talks to athletes after training at the edge of the mat while the squad stretches; Milan's coach holds Monday debriefs in a corner of the training ground while the squad cools down (Deliverable B, one-to-one). | Dani, Milan |
+| DD-SP1 | Sara's hamstring treatment is given by a physiotherapist, not by her coach; no physiotherapist is named (Deliverable B, touch). | Sara |
+| DD-SP1 | Milan's coach's sex is not given: after the fresh check (f24) Deliverable B reads "on the coach's own body" and D2 says "the coach"; the register does not give it. | Milan |
