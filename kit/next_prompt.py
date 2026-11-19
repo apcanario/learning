@@ -238,6 +238,7 @@ def prompt_doc(r, nxt):
         nx = f"{nxt['row']} (unit {nxt['code']})"
     else:
         nx = f"the next row in the Queue of `docs/BACKLOG.md` (no unit of this course is left; its reliefs, row G-R-{r['sc']['key']}, wait for Pedro's confirmation)"   # S-SCE0: the course's own G-R row
+    last = r['code'] == r['order'][-1]   # S-SCE0 registration recheck (19 Nov 2026): the last row of this course, not of the queue
     slots = {
         'ROW': r['row'], 'CODE': code, 'TITLE': r['unit'][1], 'SEARCH': r['search'], 'PAGE': 'read-' + code.lower(), 'NEXT': nx,
         'FILED': ', '.join(f'`{rel(f)}`' for f in done) if done else 'none yet',
@@ -248,14 +249,15 @@ def prompt_doc(r, nxt):
                      if [a for a, _, _ in car if a != '—'] else '- none open',
         'PARTICULAR': part[r['row']],
         # registration check of S-SCE0 (19 Nov 2026): the last row writes a closing corrections prompt (prompts doc §4, point 7)
-        'SAVE': f"`python3 kit/next_prompt.py --save` saves the prompt of {nx}" if nxt else
+        'SAVE': f"`python3 kit/next_prompt.py --save` saves the prompt of {nx}" if not last else
                 ("there is no next unit (the carry-forward rule, point 7): in place of a next unit's prompt, write a closing corrections prompt to the "
                  "standard of this one, listing every row still open in the Corrections section of `docs/BACKLOG.md` and every flag still open in "
                  f"`{pathlib.Path(c['data']).parent.as_posix()}/syllabus-flags.md`, each with its unit, the passage or flag, what is wrong and its "
                  "source, to be worked under the limits (a) to (f) of step 1b; add it as row C-" + r['sc']['key'] + " at the end of this course's "
                  "section of the Queue of `docs/BACKLOG.md`, the prompt in its prompt cell, and set the backlog's \"Next up\" line to it; do not run "
                  "`--save`; if nothing is open, say so and add no row. The course's reliefs, row G-R-" + r['sc']['key'] + ", wait for Pedro's confirmation"),
-        'NEXTPROMPT': 'the next prompt' if nxt else 'the closing corrections prompt (or the line saying nothing is open)',
+        'NEXTPROMPT': 'the next prompt' if not last else 'the closing corrections prompt (or the line saying nothing is open)',
+        'SAVEROW': 'save the next prompt in its row (step 11)' if not last else 'add the closing corrections row, if any, as step 11 says',
     }
     out = re.sub(r'\{([A-Z]+)\}', lambda m: slots.get(m.group(1), m.group(0)), tpl)
     left = re.findall(r'\{[A-Z]+\}', out)

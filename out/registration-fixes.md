@@ -439,3 +439,124 @@ Held: the existing G-0 rule, not a regression; the checker asks only for a look 
 - `python3 private_terms.py`: "105 files, 0 private terms, 114 warnings: OK".
 - `python3 kit/next_prompt.py --row W-SCE1` (3,137 words) and `--row W-SCE2` (3,117 words) print with no unfilled slot; W-SCE1's holds rule 2's new sentence, rules 11 and 12 identical to §1's, the mirror clause, the `--save` line naming W-SCE2 and P-SCE11. `--row W-DD-SCE2` prints the closing-corrections clause and Reply. No `--save` was run.
 - Every PB, BW and SP row's prompt from the changed `next_prompt.py` is byte-identical to 82caee5's (worktree of HEAD, removed afterwards).
+
+## Round 2
+
+Applier: one isolated, fresh Opus 5.5 agent (claude-opus-5-5), 19 Nov 2026. Packet: `out/registration-recheck.md` (1 should-fix, 4 minor), this file, the clone at 4d12203, the seven originals in `/home/claude/scratch/sce` (not changed). Seven exact replacements, every count checked in a dry run before any write (script stops on a mismatch): `/home/claude/scratch/apply2/apply.py`. No brief, no preamble line, nothing of another course changed. Nothing committed or pushed. All five findings applied; none held.
+
+- `kit/next_prompt.py`, count 1 (should-fix 1)
+
+  Old:
+
+  ````
+      slots = {
+          'ROW':
+  ````
+
+  New:
+
+  ````
+      last = r['code'] == r['order'][-1]   # S-SCE0 registration recheck (19 Nov 2026): the last row of this course, not of the queue
+      slots = {
+          'ROW':
+  ````
+
+- `kit/next_prompt.py`, count 1 (should-fix 1)
+
+  Old:
+
+  ````
+  'SAVE': f"`python3 kit/next_prompt.py --save` saves the prompt of {nx}" if nxt else
+  ````
+
+  New:
+
+  ````
+  'SAVE': f"`python3 kit/next_prompt.py --save` saves the prompt of {nx}" if not last else
+  ````
+
+- `kit/next_prompt.py`, count 1 (minor 2)
+
+  Old:
+
+  ````
+  'NEXTPROMPT': 'the next prompt' if nxt else 'the closing corrections prompt (or the line saying nothing is open)',
+  ````
+
+  New:
+
+  ````
+  'NEXTPROMPT': 'the next prompt' if not last else 'the closing corrections prompt (or the line saying nothing is open)',
+          'SAVEROW': 'save the next prompt in its row (step 11)' if not last else 'add the closing corrections row, if any, as step 11 says',
+  ````
+
+- `docs/supply-chain-execution-prompts.md`, count 1 (minor 2)
+
+  Old:
+
+  ````
+  from Next to Done and save the next prompt in its row (step 11), so the published
+  ````
+
+  New:
+
+  ````
+  from Next to Done and {SAVEROW}, so the published
+  ````
+
+- `docs/supply-chain-execution-prompts.md`, count 1 (minor 3)
+
+  Old:
+
+  ````
+  they are added by the row that files sport-psychology's last unit (W-DD-SP3), which deletes that course's, and a row of this course
+  ````
+
+  New:
+
+  ````
+  the Project holds the data mirrors only of the course being written, and the row that files that course's last unit deletes them, so this course's are added by the row that files the last unit of whichever course is being written when they are due; a row of this course
+  ````
+
+- `docs/supply-chain-execution-prompts.md`, count 1 (minor 4, minor 2)
+
+  Old:
+
+  ````
+  `{PAGE}` (read-sce4), `{NEXT}`, `{SAVE}` (step 11's last clause: the `--save` line, or on the last row the closing corrections prompt), `{NEXTPROMPT}` (the Reply's last item),
+  ````
+
+  New:
+
+  ````
+  `{PAGE}` (read-sce4), `{SAVE}` (step 11's last clause: the `--save` line, or on the last row the closing corrections prompt), `{SAVEROW}` (step 10's clause on the next prompt), `{NEXTPROMPT}` (the Reply's last item),
+  ````
+
+- `out/registration.md`, count 1 (minor 5)
+
+  Old:
+
+  ````
+  The repo does not track `out/` and `.gitignore` does not ignore it; the checkpoint commit 82caee5 added this file, so it is now tracked
+  ````
+
+  New:
+
+  ````
+  `out/` is not ignored by `.gitignore`; the checkpoint commit 82caee5 added this file, so it is tracked
+  ````
+
+Notes:
+- Should-fix 1: `SAVE` and `NEXTPROMPT` now key on `last = r['code'] == r['order'][-1]` (the course's own last ORDER row), not on `nxt`. `NEXT` is unchanged (sport-psychology's template reads it; W-DD-SP3's prompt must stay as it is). Proof, in memory only (no file changed, nothing to revert, no `--save`): a dummy row W-ZZ1 of personal-brand appended after W-DD-SCE2 becomes its `nxt`; W-DD-SCE2's prompt still carries the closing corrections clause, no "saves the prompt of", no W-ZZ1, and is identical to its prompt without the dummy.
+- Minor 2: step 10 now reads `{SAVEROW}`: "save the next prompt in its row (step 11)" on every row but the last (text unchanged there); on W-DD-SCE2, "add the closing corrections row, if any, as step 11 says".
+- Minor 3: the mirror clause no longer says W-DD-SP3 adds this course's mirrors; it states the §8 step 4 rule (the Project holds only the data mirrors of the course being written; the row filing that course's last unit deletes them) and that this course's are added by the row that files the last unit of whichever course is being written when they are due. W-DD-SP3's prompt is unchanged.
+- Minor 4: `{NEXT}` was read by nothing in this course's template (only the Slots line named it), so it is dropped from the SCE Slots line; the `NEXT` key in `next_prompt.py` stays, read by sport-psychology's template.
+- Minor 5: the opening sentence of `out/registration.md` corrected as the recheck proposed.
+
+Checks after Round 2:
+- `python3 build.py`: last line ends "site 23.60 MB" (Supply Chain Execution (public): 0/20 units).
+- `python3 verify.py`: last line "ALL CHECKS PASSED", exit 0, no FAIL line.
+- `python3 index_check.py`: "courses-index.md matches the sources".
+- `python3 private_terms.py`: "105 files, 0 private terms, 114 warnings: OK".
+- `python3 kit/next_prompt.py --row` W-SCE1 (3,166 words), W-SCE2 (3,146), W-DD-SCE2 (3,260): no unfilled slot; W-SCE1 and W-SCE2 save the next prompt in their row and name W-SCE2 / W-SCE3 in `--save`; W-DD-SCE2 never says to save the next prompt. No `--save` run.
+- All 38 PB, BW and SP rows' prompts byte-identical to HEAD 4d12203's (sha256, worktree of HEAD, removed afterwards).

@@ -2,7 +2,7 @@
 
 Registrar: one isolated Opus 5.5 agent (claude-opus-5-5), 19 Nov 2026. Inputs: the seven files in `/home/claude/scratch/sce` and the clone at `/home/claude/learning` (branch `main`, HEAD `382fee3`). Nothing committed or pushed. No unit written. No brief, no line of `PRE` and no `AIMS` line reworded; the only change to `units_data.py` is the name replacement of (a).
 
-This file is at `out/registration.md` in the clone. The repo does not track `out/` and `.gitignore` does not ignore it; the checkpoint commit 82caee5 added this file, so it is now tracked (corrected by the registration check, finding 11).
+This file is at `out/registration.md` in the clone. `out/` is not ignored by `.gitignore`; the checkpoint commit 82caee5 added this file, so it is tracked (corrected by the registration check, finding 11).
 
 ## (a) Names
 
