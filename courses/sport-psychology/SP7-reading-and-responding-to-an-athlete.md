@@ -194,7 +194,7 @@ A coach who repairs a misreading also models what section 4 asked of the younges
 
 ## Deliverable
 
-Three tools, each built in full on the case and then given as a template: **A**, a baseline sheet per athlete; **B**, a state-response table of the seven states; **C**, five asking scripts. SP8 uses A and B on the day; SP9 reads them for red flags. Facts marked *added* are invented by this unit for the case and are listed in its notes; every other fact about the athletes comes from the case register or from earlier units' added facts. Scripts are this unit's own wording; no study opened tested any of them. Events named inside the scripts (a raised voice after a round, a touchline shout, a starting place) illustrate the wording and are not facts added to the case. Grades follow SP1's key.
+Three tools, each built in full on the case and then given as a template: **A**, a baseline sheet per athlete; **B**, a state-response table of the seven states; **C**, five asking scripts. SP8 uses A and B on the day; SP9 reads them for red flags. Facts marked *added* are invented by this unit for the case and are entered in the case register under SP7; every other fact about the athletes comes from the case register or from earlier units' added facts. Scripts are this unit's own wording; no study opened tested any of them. Events named inside the scripts (a raised voice after a round, a touchline shout, a starting place) illustrate the wording and are not facts added to the case. Grades follow SP1's key.
 
 ### A. Baseline sheet
 
@@ -226,7 +226,7 @@ One per athlete. Fill it over four to six weeks of ordinary training before you 
 | **Training: arrival and warm-up** | Talks and jokes with teammates; organises the rondo (*added*). | Coach's observation. |
 | **Training: under correction** | Asks a question back; tries the change (*added*). | Coach's observation. |
 | **Training: after a mistake** | Calls for the ball again at once (*added*). One of the two best passers in the squad. | Case register; *added*. |
-| **Training: leaving** | Stays for a few minutes of finishing practice with two teammates (*added*). | Coach's observation. |
+| **Training: leaving** | Stays after training for finishing practice with two teammates (*added*). | Coach's observation. |
 | **Before matches** | Sleeps badly the night before; feels sick on match mornings; quiet in the warm-up (*added*); asks whether he is starting and whether the coach thinks he will play well. A warm-up with many short passes helps a little (his words, SP4). | Case register; SP4 added facts. |
 | **Check-in (SP4)** | Nervousness: 2 before training, 8 on the last match morning. In his words: "If I give the ball away early, they'll decide I'm not good enough." Continue for six weeks. | SP4 added facts. |
 | **Pressure sessions (SP6)** | "How much pressure, 0 to 10?" on its own line after each Tuesday and Thursday slot; never compared with the nervousness rating. | SP6. |
@@ -366,7 +366,7 @@ Each script is said in private unless it says otherwise, and the athlete's answe
 2. "I've noticed you've stopped staying for finishing practice this week. How are things, with football and with exams?"
 3. "What did you see on that pass?" Then one thing: "Next time, scan before it comes." Then: "Your second half was full of forward passes."
 4. Reassurance ("Do you think I'll play well?"): "I can't predict that. You're starting, on the criteria I gave the squad. In the first five minutes I want two scans before every first touch." To be told what to do (before kick-off): "Scan, open, forward." Then, on Monday: "What would you choose for next week?"
-5. "On Saturday I shouted at you from the touchline after five minutes. That didn't help you. From now on I'll give you the one phrase we agreed and nothing else. How did it feel out there?"
+5. "At the weekend I shouted at you from the touchline after five minutes. That didn't help you. From now on I'll give you the one phrase we agreed and nothing else. How did it feel out there?"
 
 **Sara (fictional), 20, 400 metres**
 
