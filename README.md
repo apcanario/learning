@@ -1,6 +1,6 @@
 # learning
 
-The one home of the Learning Project (Pedro's self-study courses): the Personal Mythology kit, the design theme, the method docs, the Brand + AI generator and the course vault. Decided 28 October 2026 (`docs/pm-status-2026-10-28.md`, D4): the kit no longer travels as a zip; a chat clones this repo and ends with a commit.
+The one home of the Learning Project (Pedro's self-study courses): the Personal Mythology kit, the design theme, the method docs and the course vault (with each markdown course's data, its pack). Decided 28 October 2026 (`docs/pm-status-2026-10-28.md`, D4): the kit no longer travels as a zip; a chat clones this repo and ends with a commit.
 
 ## Layout
 
@@ -9,11 +9,10 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 | `kit/` | Academy: the site builder (`build.py`, with `mdcourse.py` for markdown courses), `verify.py`, `deploy.sh`, both history courses' reports, syllabi, audits, bibliographies, the site changelog. `kit/README.md` is its own guide. |
 | `design/theme.css` | The one stylesheet for every page in the Project. `design/README.md` says how to change it and propagate the change. |
 | `docs/` | The method layer: `method.md`, `courses-index.md`, `BACKLOG.md` (the queue of chats: start here), `CHANGELOG.md` (chats done), `academy.md` (the one-artifact plan), `sourcing-standard.md`, `reader.md`, `project-instructions.md`, the status notes. The claude.ai Project "Learning" holds mirrors of these; this repo is canonical. |
-| `generator/` | The data of the markdown courses not yet moved into their pack (no generator since A3; S-DEC2 moves each course's data to `courses/<slug>/`: `course.toml` `[pack]`, `briefs.md`, `pages/`, `notes/`, read by `kit/pack.py`; Brand + AI moved first, 20 Nov 2026) and `data/_template/` for a new markdown course. `kit/build.py` renders them through `kit/mdcourse.py`. |
 | `skills/` | The four account skills (`write-unit`, `audit-units`, `file-unit`, `new-course`); install per `SETUP.md` §3. |
 | `SETUP.md` | How the Project, knowledge, skills and vault are set up and kept current. |
 | `audits/` | Audit reports that are not kit files (Brand + AI Audit 1). |
-| `courses/` | The vault: finished units filed at `courses/<course>/<code>-<slug>.md` (`docs/method.md` §7). The source of the markdown courses' units since A5. |
+| `courses/` | The vault: finished units filed at `courses/<course>/<code>-<slug>.md` (`docs/method.md` §7). The source of the markdown courses' units since A5, and of their data since S-DEC2 (20 Nov 2026; no generator since A3, and `generator/` is gone): each course's pack, `course.toml` `[pack]`, `briefs.md`, `pages/`, `notes/`, read by `kit/pack.py` and rendered by `kit/build.py` through `kit/mdcourse.py`; `courses/_template/` is the pack of a new markdown course. |
 
 ## Working in a chat
 

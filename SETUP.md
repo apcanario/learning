@@ -1,6 +1,6 @@
 # Setup
 
-**28 October 2026:** the repository is https://github.com/apcanario/learning. Every session clones it and ends with a commit and push; nothing travels as a zip. `kit/` is Academy's builder with the history courses, `generator/data/` the markdown courses' data, `courses/` the vault (since A5 the source of the markdown courses' units), `docs/` the method layer, `skills/` the four account skills.
+**28 October 2026:** the repository is https://github.com/apcanario/learning. Every session clones it and ends with a commit and push; nothing travels as a zip. `kit/` is Academy's builder with the history courses, `courses/` the vault (since A5 the source of the markdown courses' units; since S-DEC2 also their data, each course's pack), `docs/` the method layer, `skills/` the four account skills.
 
 Exact steps to stand up the Learning Project and run it.
 
@@ -46,4 +46,4 @@ A change to `design/theme.css` reaches a page only when the page is rebuilt and 
 4. Add the session to `kit/CHANGELOG.md` and the version note to `design/README.md`; re-upload `design/theme.css` and `design/README.md` to the Project knowledge; commit and push.
 
 ## 10. A new course
-A new chat, clone the repo, and say what the course is. The `new-course` skill drafts the frame and asks you to confirm the pick, then builds the syllabus, the briefs and the course's folder (`kit/<id>/` for a history course, `generator/data/<slug>/` for a markdown one), writes its entry, `courses/<id>/course.toml`, and its section in `courses-index.md`, builds, verifies and publishes Academy. The folders are the whole course; no existing file under `kit/` is edited (a history course adds its folder `kit/<id>/`) (A5; S-DEC1).
+A new chat, clone the repo, and say what the course is. The `new-course` skill drafts the frame and asks you to confirm the pick, then builds the syllabus, the briefs and the course's folder (`kit/<id>/` for a history course, `courses/<slug>/`, a copy of `courses/_template/`, for a markdown one), writes its entry, `courses/<id>/course.toml`, and its section in `courses-index.md`, builds, verifies and publishes Academy. The folders are the whole course; no existing file under `kit/` is edited (a history course adds its folder `kit/<id>/`) (A5; S-DEC1).
