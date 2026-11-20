@@ -81,7 +81,7 @@ The six rows run in four chats (Pedro, 20 Nov 2026): chat 1 = S-DEC0 + S-DEC1, c
 | **S-DEC4** · Verify by scope | `verify.py` keeps a hash of each page's sources and checks only pages whose sources changed; a change to `kit/*.py`, `shell.js` or `theme.css` forces the full run; `--full` always available. Course names leave the checks (67 lines) for data read from the packs. | A one-unit filing verifies only that unit's pages plus the home; a theme change still runs everything; both runs timed and recorded |
 | **S-DEC5** · History packs and the template test | Greece and Rome inputs (`*-syllabus.html`, `prompts-*.json`, their `provenance.json` entries, `kit/bibliography/<course>/`) into their course folders. Then the done-when test of §1, and a `README` section "Bring your own course". | Output byte-identical for history; the template test passes in a repo copy |
 
-**When units may resume:** after S-DEC4 has closed (Pedro, 20 Nov 2026). No unit row runs until then.
+**When units may resume:** S-DEC4 closed on 20 Nov 2026; units resume (Pedro, 20 Nov 2026: no unit row ran until then).
 
 **The chain rule (Pedro, 20 Nov 2026).** Every chat of the refactor ends with the paste-ready prompt for the next chat, carrying any correction found. The last chat (S-DEC4) ends instead with a "pick your adventure": one entry per course in Academy, each with its state (units written of total, the next unit and its backlog row, anything blocking it such as a gate or a task waiting on Pedro), plus the non-unit work waiting (the CSS and styling rows, proposed rows), and the paste-ready prompt for each option's first chat. Built from `courses-index.md` and `docs/BACKLOG.md` as they stand at that moment, not from memory.
 

@@ -30,6 +30,8 @@ Read first: `docs/public-courses.md`, `docs/method.md` §4, §5, §7 and §8, `s
 **1c. Carried proposals**, worked now unless Pedro removed one from this list:
 - none open
 
+**1d. The hero contour budget** (carried from S-DEC2's dry run; S-DEC4 left the budget as written): the first SCE filing pushes the home hero's contour SVG past `verify.py`'s 20 KB limit (about 168 B added against 90 to 180 B of headroom). Before filing SCE1, fix it in `kit/build.py` (`HERO_INTERVAL`, currently 23000, or the budget), as W-DD-SP2 did, and list the changed hero layers as expected differences of this row; `python3 kit/baseline.py` re-records the manifest for them only after the diff is proved to be those layers.
+
 **2. Stage the writer's packet** in one folder outside the repo with `python3 kit/thin.py stage writer --row W-SCE1 <folder>`. It holds: `brief.txt`, built by script with `open_brief` (the preamble, the Aim, Takes and Gives lines, the unit brief; never reworded, never retyped); `skills/write-unit/SKILL.md`; `docs/sourcing-standard.md` Parts 1 and 8; the figure kinds; `courses/supply-chain-execution/notes/case-facts.md`; `courses/supply-chain-execution/notes/bibliography.md`; every unit of this course already filed: none yet; `flags.txt`. The chat opens none of it.
 
 Open flags that name this unit:
