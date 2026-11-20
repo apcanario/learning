@@ -82,6 +82,18 @@ next = [
   ],
 ]
 
+# `log_areas` (S-DEC5 checker; until then SL_AREAS in kit/build.py): the areas of docs/site-log.md that hold courses, in
+# the order of the per-area tables: [name, what it holds, the track whose tone it takes]. A new track or course in a
+# new area is a line here; the site's own area comes from the brand (`log_area`) and is always last.
+log_areas = [
+  ["Mythology", "Greece and Rome", "history"],
+  ["Marketing", "Courses A and PB", "marketing"],
+  ["AI", "Courses B and BW", "technology"],
+  ["UX", "Course IA", "ux"],
+  ["Sports", "Course SP", "sports"],
+  ["Supply Chain", "Course SCE", "supply-chain"],
+]
+
 [[tracks]]
 id = "history"
 hero = [[0.50, 0.48], [0.46, 0.55]]
@@ -180,4 +192,5 @@ planned = [
     "follow an online order from the buy button to the doorstep and back as a return, explain how a delivery promise is made and what it costs to keep, and compare shipping from a warehouse, a store and a small urban site. You'll be able to describe the work of the store associate, the parcel carrier and the customer service agent, and say where the order, warehouse and transport systems each take part.",
   ],
 ]
+
 

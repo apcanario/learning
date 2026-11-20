@@ -23,7 +23,7 @@
 #   [howbuilt]  optional (S-DEC5): the docs the "How it was built" pages quote: `method` (its section 1) with
 #               `method_columns` ({family: column of its table}), `sourcing` with `sourcing_parts` ({family: "Part n"});
 #               a brand without the table shows neither section and links neither doc
-#   strip_comments  optional (S-DEC5), false when absent: true leaves the comments of design/theme.css and kit/shell.js
+#   strip_comments  optional (S-DEC5), true when absent: true leaves the comments of design/theme.css and kit/shell.js
 #               (the maintainer's notes: dates, row ids, private names) out of the built shell. Academy keeps them
 #   [[rules]]   "How every course works", the constants, in order: `head` (bold) and `text`. An edition may hold its
 #               own [[rules]] in its file instead. `names`: the course ids the text names; the line is shown in an
@@ -38,6 +38,8 @@ repo = "https://github.com/apcanario/learning"
 id_base = "https://apcanario.github.io/academy/"
 fonts_href = "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Gentium+Book+Plus&display=swap"
 log_area = ["Academy", "The site and its method"]
+# S-DEC5 checker: comments stay out of a brand's shell unless it says false; Academy keeps them (byte identity)
+strip_comments = false
 
 # S-DEC5: the How it was built pages' "The method in force" (section 1 of `method`, the column `method_columns` names for
 # the course's family) and "The sources policy" (Part 1 of `sourcing` and the course's part); paths from the repo root
@@ -69,7 +71,13 @@ text = "A unit names its sources and says where they disagree; a claim that cann
 [[rules]]
 head = "One unit per chat, built in full."
 text = "Each unit is written from a published brief or prompt, in its own chat, with its closing artefact: a self-test and carry-forward ideas for the history courses, a shipped deliverable for Brand + AI."
+names = ["brand-ai", "greece"]
+
+[[rules.alt]]
+# S-DEC5 checker: an edition with Brand + AI and no history course
+text = "Each unit is written from a published brief, in its own chat, with its closing artefact: a shipped deliverable."
 names = ["brand-ai"]
+families = ["markdown"]
 
 [[rules.alt]]
 # P80 (1 Nov 2026): the greece edition's line, until S-DEC3 in editions/greece.toml

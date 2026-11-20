@@ -56,6 +56,13 @@ SRCREPO="${SRCREPO#https://github.com/}"
 # they are gone)
 DEPLOY_DIR="${DEPLOY_DIR:-${ACADEMY_DIR:-$(cd "$KIT/../.." && pwd)/$(basename "$REMOTE" .git)}}"
 
+HAVE=""
+if [ -d "$DEPLOY_DIR/.git" ]; then
+  HAVE="$(git -C "$DEPLOY_DIR" remote get-url origin 2>/dev/null || true)"
+  # S-DEC5 checker: never write one edition into another edition's clone (DEPLOY_DIR / ACADEMY_DIR apply to every edition)
+  [ "${HAVE%.git}" = "${REMOTE%.git}" ] || { echo "$DEPLOY_DIR is a clone of ${HAVE:-nothing}, not $REMOTE: set DEPLOY_DIR" >&2; exit 1; }
+fi
+
 INDEX="$SITE/index.html"
 [ -s "$INDEX" ] || { echo "no built site at $SITE: run python3 build.py --edition $EDITION first" >&2; exit 1; }
 grep -qF "<title>$TITLE</title>" "$INDEX" || { echo "$INDEX is not the $TITLE page (title)" >&2; exit 1; }
@@ -64,7 +71,7 @@ if [ "$DRY" = 1 ]; then
   echo "edition:  $EDITION"
   echo "site:     $SITE ($(find "$SITE" -type f | wc -l | tr -d ' ') files; title '$TITLE' found)"
   echo "remote:   $REMOTE"
-  echo "into:     $DEPLOY_DIR"
+  echo "into:     $DEPLOY_DIR ($([ -n "$HAVE" ] && echo "a clone of $HAVE" || echo "a new clone"))"
   echo "url:      $URL"
   echo "commit:   $NAME build from $(basename "$SRCREPO")@$(git -C "$KIT" rev-parse --short HEAD 2>/dev/null || echo unknown)"
   echo "dry run: nothing cloned, written or pushed"

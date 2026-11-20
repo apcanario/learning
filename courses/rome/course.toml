@@ -4,6 +4,7 @@
 
 id = "rome"
 family = "history"
+family_label = "Personal Mythology"   # shown in the course home's eyebrow (S-DEC5 checker; was typed in kit/build.py)
 theme = "history"
 num = 2
 short = "Rome"

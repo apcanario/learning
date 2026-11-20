@@ -12,14 +12,6 @@ log_area = ["Workbench", "The site and its method"]
 # S-DEC5: the theme's and shell.js's comments (the maintainer's notes) stay out of this brand's shell
 strip_comments = true
 
-# S-DEC5: the How it was built pages' "The method in force" (section 1 of `method`, the column `method_columns` names for
-# the course's family) and "The sources policy" (Part 1 of `sourcing` and the course's part); paths from the repo root
-[howbuilt]
-method = "docs/method.md"
-method_columns = { history = "Personal Mythology", markdown = "Brand + AI" }
-sourcing = "docs/sourcing-standard.md"
-sourcing_parts = { history = "Part 3", markdown = "Part 2" }
-
 [storage]
 theme = "wb-theme"
 tab = "wb-last-report"

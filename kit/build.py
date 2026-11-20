@@ -17,7 +17,7 @@ are namespaced (#rome, #rome-syllabus, #rm01).
 """
 import json, re, html, pathlib, importlib.util, math
 import markdown
-from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES, EDITIONS, HERO_AT as _HERO_AT, DEFAULT_EDITION, brand, path as cpath, provenance
+from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES, EDITIONS, HERO_AT as _HERO_AT, LOG_AREAS, DEFAULT_EDITION, brand, path as cpath, provenance
 import sys
 # P70: an edition filters the course list here, before anything renders; the full site is the default edition (the first
 # in catalog.toml `edition_order`)
@@ -528,7 +528,7 @@ def course_home(c):
   <header class="hero has-topo">
     {layer}
     {crumbs((SITE_NAME, 'home'), (THEME[c['theme']]['name'], 'track-' + c['theme']), (f"Course {c['num']} · {c['short']}", None))}
-    <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['eyebrow']}</span> · Personal Mythology{' · <span class="u" style="--c:var(--gold)">IN PROGRESS</span>' if c['status'] != 'available' else ' · <span class="u" style="--c:var(--teal)">COMPLETE</span>'}</div>
+    <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['eyebrow']}</span>{(' · ' + c['family_label']) if c.get('family_label') else ''}{' · <span class="u" style="--c:var(--gold)">IN PROGRESS</span>' if c['status'] != 'available' else ' · <span class="u" style="--c:var(--teal)">COMPLETE</span>'}</div>
     <h1>{c['h1']}</h1>
     <p class="lede">{fill(c['lede'], c)}</p>
     <div class="stats" data-n="4"><div><b>{c['nrep']}</b><span>of {c['content_mods']} reports written</span></div><div><b>{c['units_complete']}</b><span>of {nunits} units complete</span></div><div><b>{c['words']//1000}k</b><span>words so far</span></div><div><b>{hours(c['words'])}</b><span>hours of reading</span></div></div>
@@ -875,10 +875,7 @@ def md_blocks(lines):
 # for an ordinary reader, not the engine's records. docs/BACKLOG.md, docs/CHANGELOG.md and kit/CHANGELOG.md stay in the
 # repo and are not on the site. The file holds two pipe tables: "## Next" (#, Code, Area, What it is), in the overall
 # order, and "## Done" (Date, Code, Area, What happened), dates as YYYY-MM-DD; method.md §8 says who writes them.
-SL_AREAS = [   # (name, what it holds, the track whose tone it takes); the order of the per-area tables
-    ('Mythology', 'Greece and Rome', 'history'), ('Marketing', 'Courses A and PB', 'marketing'),
-    ('AI', 'Courses B and BW', 'technology'), ('UX', 'Course IA', 'ux'), ('Sports', 'Course SP', 'sports'),   # S-SP0; S-SPORTS: Sports
-    ('Supply Chain', 'Course SCE', 'supply-chain'),   # S-SCE0 (19 Nov 2026)
+SL_AREAS = [*LOG_AREAS,   # (name, what it holds, the track whose tone it takes): catalog.toml `log_areas`, the order of the per-area tables
     (*B['log_area'], None)]   # S-DEC3: the site's own area (brands/<name>.toml `log_area`)
 SL_TONE = {n: next((t['color'] for t in THEMES if t['id'] == tid), 'var(--gold)') for n, _, tid in SL_AREAS}
 
@@ -1305,7 +1302,7 @@ for _k, _v in STORE.items():
 assert '__STORE_' not in JS, 'shell.js names a storage key the brand does not give'
 # S-DEC5: a brand with `strip_comments = true` leaves the comments of design/theme.css (shell.css) and shell.js out of its
 # shell: they are the maintainer's notes (dates, rows, private names). A brand without it (academy) keeps them, byte for byte
-if B.get('strip_comments'):
+if B.get('strip_comments', True):
     CSS = re.sub(r'/\*.*?\*/', '', CSS, flags=re.S)
     JS = re.sub(r'^[ \t]*//[^\n]*\n', '', JS, flags=re.M)   # whole-line comments only: a // inside a line may be a string
 

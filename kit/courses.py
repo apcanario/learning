@@ -139,6 +139,7 @@ _CATALOG = _load(_ROOT / 'catalog.toml')
 
 # S-DEC3: a track's `hero` (its place on the home hero) leaves the track's dict for HERO_AT, so THEMES is unchanged
 HERO_AT = {t['id']: tuple(t['hero']) for t in _CATALOG['tracks'] if 'hero' in t}
+LOG_AREAS = [tuple(a) for a in _CATALOG.get('log_areas', [])]   # S-DEC5 checker: catalog.toml `log_areas`
 THEMES = [dict({k: v for k, v in t.items() if k != 'hero'}, **({'planned': _rows(t['planned'])} if 'planned' in t else {})) for t in _CATALOG['tracks']]
 NEXT = _rows(_CATALOG.get('next', []))
 
