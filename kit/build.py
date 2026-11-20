@@ -206,7 +206,7 @@ def drawer(c):
             out += f'<div class="dsec">{c["sections"][u]}</div>'
         col = c['unit_colors'][u]; have = sum(1 for m in mods if m[0] in c['done'])
         cnt = f'{have}/{len(mods)}' if have < len(mods) else str(len(mods))
-        dkey = u if c['id'] == 'greece' else f'{c["id"]}:{u}'
+        dkey = c.get('unit_key', '{id}:{unit}').format(id=c['id'], unit=u)   # course.toml `unit_key` (M6, S-DEC4): greece keeps its legacy '{unit}'
         out += f'<div class="dunit closed" data-unit="{dkey}" data-ulabel="{c["label"]} · UNIT {u}" style="--c:{col}"><button class="duh" type="button" aria-expanded="false"><span class="un">UNIT {u}</span><span class="ut">{html.escape(name)}</span><span class="cnt">{cnt}</span>{ICON_CHEV}</button><div class="ditems">'
         for mid, t, w in mods:
             if mid in c['done']:

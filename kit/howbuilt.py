@@ -323,7 +323,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
     if un:
         flags.append(f'Registered before their fresh check: {", ".join(un)}.')
     # review notes that name this course
-    word = {'greece': r'\bGree(k|ce)\b', 'rome': r'\bRom(e|an)\b'}.get(cid, re.escape(c['short']))
+    word = c.get('notes_match') or re.escape(c['short'])   # course.toml `notes_match` (M6, S-DEC4): a regex; absent, the course's short name
     notes = [n for n in PROV.get('review_notes', []) if re.search(word, n)]
     notes_html = ''.join(f'<li>{e(n)}</li>' for n in notes)
 

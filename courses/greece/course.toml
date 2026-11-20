@@ -5,6 +5,8 @@
 id = "greece"
 family = "history"
 family_label = "Personal Mythology"   # shown in the course home's eyebrow (S-DEC5 checker; was typed in kit/build.py)
+unit_key = "{unit}"          # the drawer's data-unit key (localStorage); absent: "{id}:{unit}" (S-DEC4, was typed in kit/build.py)
+notes_match = '\bGree(k|ce)\b'   # regex picking this course's kit/provenance.json review notes; absent: the short name (S-DEC4, was typed in kit/howbuilt.py)
 theme = "history"
 num = 1
 short = "Greece"

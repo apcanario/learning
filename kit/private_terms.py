@@ -2,7 +2,14 @@
 
 python3 kit/private_terms.py            every public course: its vault, its pack and its built pages (but built.html),
                                         and docs/site-log.md, the source of the Backlog and Changelog pages (S-PAGES)
-python3 kit/private_terms.py <file>...  only these files (a writer's or a checker's draft)
+python3 kit/private_terms.py <file>...  only these files (a writer's or a checker's draft, or a built edition's pages:
+                                        `python3 kit/private_terms.py $(find kit/editions/<site> -type f)`)
+python3 kit/private_terms.py --edition <name>   every file of that edition's built site (kit/<site>/, built.html
+                                        included), whatever courses it holds (S-DEC4); edition_files(name) for verify.py
+
+The no-argument run is academy's: PUBLIC and the kit/academy glob below name its public courses and its site. An
+edition's own output is checked with --edition or explicit files. A given file that is not UTF-8 text is skipped and
+named (S-DEC4); the no-argument run reads only text.
 
 The public courses are the courses (courses/<id>/course.toml) named in PUBLIC. The terms are kit/private-terms.txt: one per line,
 whole word, case-insensitive; "warn:" lines are printed and do not fail. Prints OK and exits 0 when nothing fails.
@@ -99,6 +106,31 @@ def files():
     return out
 
 
+def edition_files(name):
+    """S-DEC4: every file of an edition's built site, sorted (kit/<site>/, from editions/<name>.toml `site`)."""
+    sys.path.insert(0, str(R))
+    from courses import EDITIONS
+    if name not in EDITIONS:
+        raise SystemExit(f'--edition {name}: no editions/{name}.toml (editions: {", ".join(EDITIONS)})')
+    site = R / EDITIONS[name]['site']
+    if not site.is_dir():
+        raise SystemExit(f'--edition {name}: {site.relative_to(ROOT)} not built (python3 kit/build.py --edition {name})')
+    return sorted(f for f in site.rglob('*') if f.is_file())
+
+
+def text_only(fs):
+    """S-DEC4: the given files that read as UTF-8 text; each other one is named and skipped."""
+    out = []
+    for f in fs:
+        try:
+            pathlib.Path(f).read_text(encoding='utf-8')
+        except UnicodeDecodeError:
+            print(f'skip {f}: not UTF-8 text')
+            continue
+        out.append(f)
+    return out
+
+
 def scan(fs):
     fail, warn = terms()
     F, W = rx(fail), rx(warn)
@@ -141,7 +173,12 @@ if __name__ == '__main__':
             print(f'--course {cid}: not a course with dated_lists; the files are checked as before')
         else:
             DATED.update(pathlib.Path(a) for a in args)
-    fs = [pathlib.Path(a) for a in args] or files()
+    if '--edition' in args:                                  # S-DEC4: an edition's own built pages
+        i = args.index('--edition')
+        if i + 1 >= len(args):
+            raise SystemExit('usage: python3 kit/private_terms.py --edition <name>')
+        args[i:i + 2] = [str(f) for f in edition_files(args[i + 1])]
+    fs = text_only([pathlib.Path(a) for a in args]) if args else files()
     hits, warns = scan(fs)
     for w in warns:
         print('warn', w)

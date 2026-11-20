@@ -4,6 +4,11 @@
                                     of every file each build writes
   python3 kit/baseline.py --check   rebuilds both and lists every file that differs from kit/baseline.json
                                     (added, removed, changed); exit 1 if any does, 0 if none
+  any other argument                stops with the usage line and writes nothing (S-DEC4)
+
+The editions recorded are EDITION_NAMES, academy's own pair (academy, greece): the manifest is this repo's guard for
+its refactor, not a per-edition check; another edition (marketing-ai, a template copy's) is compared by building it
+before and after and diffing the two trees.
 
 What each build writes (kit/build.py):
   academy  kit/academy/ (the site), kit/README.md (the size table), kit/bibliography/ (biblio.py's README) and each
@@ -60,8 +65,14 @@ def run():
     return got
 
 
+USAGE = 'usage: python3 kit/baseline.py [--check]   (no argument: rebuild and re-record kit/baseline.json; --check: compare)'
+
+
 if __name__ == '__main__':
-    check = '--check' in sys.argv
+    # S-DEC4: any argument but a lone --check used to re-record the manifest; now it stops, nothing written
+    if sys.argv[1:] not in ([], ['--check']):
+        raise SystemExit(USAGE)
+    check = sys.argv[1:] == ['--check']
     if check and not MANIFEST.exists():
         raise SystemExit(f'no {MANIFEST.name}: run baseline.py without --check first')
     got = run()

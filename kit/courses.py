@@ -27,6 +27,11 @@ The home card (P90, 4 Nov 2026) carries one sentence per course, two lines at mo
 markdown course's `tiles` keyed like its `tracks` (the data file's own tile stays on the course's pages). The longer
 `card` text the home carried before is gone with it.
 
+Optional history-course keys, each with the engine's default when absent (S-DEC4, M6; they were course ids typed in
+the engine): `unit_key`, the drawer's data-unit (localStorage) key, default "{id}:{unit}" (greece keeps its legacy
+"{unit}"); `notes_match`, the regex that picks the course's review notes of kit/provenance.json for its How it was
+built page, default the escaped `short` (greece and rome set their own).
+
 Text fields may use these placeholders, filled per course at build time:
 {content_mods} modules excluding the audit unit · {total_mods} all modules · {nrep} reports written · {kwords} thousands of words written
 
