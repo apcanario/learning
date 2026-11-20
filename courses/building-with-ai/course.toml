@@ -8,6 +8,7 @@
 
 id = "building-with-ai"
 family = "markdown"
+reliefs = true   # S-DEC4, for kit/verify.py: its pages draw object reliefs from design/outlines (was REL_COURSES in verify.py)
 short = "Building with AI (public)"
 label = "BUILDING WITH AI"
 name = "Building with AI"

@@ -8,6 +8,7 @@
 
 id = "personal-brand"
 family = "markdown"
+reliefs = true   # S-DEC4, for kit/verify.py: its pages draw object reliefs from design/outlines (was REL_COURSES in verify.py)
 short = "Personal Brand (public)"
 label = "PERSONAL BRAND"
 name = "Building a Personal Brand on Instagram and YouTube"

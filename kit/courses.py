@@ -32,6 +32,13 @@ the engine): `unit_key`, the drawer's data-unit (localStorage) key, default "{id
 "{unit}"); `notes_match`, the regex that picks the course's review notes of kit/provenance.json for its How it was
 built page, default the escaped `short` (greece and rome set their own).
 
+Keys for the checks (S-DEC4, read by kit/verify.py only; the build ignores them; each false when absent): `private`, the
+owner's own course, not public (an edition holding one is not checked for private terms over its own built files;
+private_terms.py PUBLIC still lists the public ones for its no-argument run, and verify.py fails if a course is both);
+`reliefs`, its pages draw object reliefs from design/outlines (the relief library's courses, REL_COURSES in verify.py
+before); `verify_sample`, its homes are among those the per-page passes visit (drawer, topography, motion, the P92
+tiles, shots; an edition holding no such course samples every course it holds).
+
 Text fields may use these placeholders, filled per course at build time:
 {content_mods} modules excluding the audit unit · {total_mods} all modules · {nrep} reports written · {kwords} thousands of words written
 

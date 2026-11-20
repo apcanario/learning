@@ -1,6 +1,12 @@
 """Browser checks for academy/, the Academy site (run after build.py).
 
 python3 verify.py [--edition NAME] [--shots DIR] [--page ID ...]
+S-DEC4 (20 Nov 2026): the courses named below are Academy's; the checks name none and read the edition's own courses
+(see LEAD, SECOND, MDNAV, SAMPLE and PRIVATE after SITE). A check needing a property the edition's courses lack (a
+history course with Greece's structure, a second history course, a markdown course) prints what it leaves out and why;
+an edition without a history course runs the split on a markdown course (check_split_md). What's new's 10 to 25 levels
+hold for an edition holding every course; another is held to the build's scale (NEW_INTERVAL). Private terms: the
+default edition's public courses; another edition's own files, unless it holds a course marked `private`.
 The site is a shell plus one file per report (docs/academy.md A2), since P20 one file per syllabus and per Brand + AI
 briefs and bibliography page, and since P22 one file per history course home, so it is served over local HTTP from
 academy/, as the artifact and Pages serve it, and every pass that measures a fetched panel first navigates to it
@@ -133,7 +139,8 @@ import pack   # S-DEC2: a markdown course's data (its pack)
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
 import private_terms   # G-0: the public courses carry no private term
 import rot_check   # P30-F11, P30-F16: the theme copy, retired instructions, staleness dates due
-from courses import COURSES, THEMES, EDITIONS, NEXT, DEFAULT_EDITION, brand, path as cpath, provenance
+from courses import COURSES, THEMES, EDITIONS, NEXT, DEFAULT_EDITION, LOG_AREAS, brand, path as cpath, provenance
+ALL_COURSES = list(COURSES)   # S-DEC4: every course of the repo, before the edition's filter below (the relief library serves them all)
 # P70: --edition checks an edition's folder the same way, over the courses and pages it holds (default: the full site,
 # the first edition in catalog.toml `edition_order`)
 EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else DEFAULT_EDITION
@@ -150,7 +157,7 @@ if ED['courses'] is not None:
     _tracks = {c.get('theme') for c in COURSES} | {tr for c in COURSES for tr, _ in c.get('tracks', {}).values()}
     THEMES = [t for t in THEMES if t['id'] in _tracks]
 HAS = {c['id'] for c in COURSES}
-ROME, BRAND = 'rome' in HAS, 'brand-ai' in HAS
+FULL = ED['courses'] is None   # S-DEC4: the edition holds every course (academy)
 import viz, viz_examples   # P55: the examples page's hard cases and the blocks that must stop the build
 # each track and its course cards as the home must show them, from courses.py (A5: a new course needs no edit here)
 # G-0 (12 Nov 2026): a markdown course with no unit filed is not live and has no tile on the home (home_expect says the
@@ -166,6 +173,41 @@ HOME_TRACKS = [t['name'] + ':' + ','.join(
 R = pathlib.Path(__file__).resolve().parent
 SITE = R / ED['site']
 SHELL_MAX = 1024 * 1024   # A2: the shell stays under 1 MB
+
+# S-DEC4 (20 Nov 2026): no course is named in this file. The checks that open a given course's pages read them from the
+# edition's own courses (courses/<id>/course.toml): its family, prefix, home and syllabus ids, number, short name and
+# label, its tracks (a markdown course's sub-courses), `unit_key`, and three keys kept for the checks: `private` (a
+# course of the owner's own, not public: an edition holding one is not checked for private terms over its own files),
+# `reliefs` (its pages draw object reliefs from design/outlines; was REL_COURSES) and `verify_sample` (its homes are the
+# ones the per-page passes sample: drawer, topography, motion, shots; an edition holding none samples every course).
+# A check that needs a property the edition's courses lack prints what it leaves out and why.
+def sub_pages(c):
+    """A course's home pages: a history course's one home; a markdown course's one per sub-course (its tracks key),
+    <prefix or id>-<key> (build.py md_courses)."""
+    if c['family'] == 'history': return [c['home_id']]
+    return [f"{c.get('prefix', c['id'])}-{k.lower()}" for k in c.get('tracks', {})]
+def rid(c, mod):
+    """A history course's report id for a module code ('2.3' -> m23 in a course with prefix m)."""
+    return c['prefix'] + mod.replace('.', '')
+SHELL_IDS = set(re.findall(r'<section class="panel[^"]*" id="([^"]+)"', (SITE / 'index.html').read_text())) if (SITE / 'index.html').exists() else set()
+HIST = [c for c in COURSES if c['family'] == 'history']
+# the split, navigation and desktop checks open reports 2.3 to 2.5 (one unit's run of three), 5.2 and 5.5 of a history
+# course (Greece's structure): LEAD, the first history course of the edition holding them; SECOND, another history
+# course with a report 1.2, whose home stays unopened until the split check's failed-fetch test
+SPLIT_MODS = ('2.3', '2.4', '2.5', '5.2', '5.5')
+LEAD = next((c for c in HIST if all(rid(c, m) in SHELL_IDS for m in SPLIT_MODS)), None)
+SECOND = next((c for c in HIST if c is not LEAD and rid(c, '1.2') in SHELL_IDS), None) if LEAD else None
+# the markdown navigation block runs on the edition's first markdown course with a unit filed, each of its live
+# sub-courses: (page id, short name, key, briefs page id, brief anchor prefix), as build.py md_courses names them
+MDNAV = next((c for c in COURSES if c['family'] == 'markdown' and any(_live(c, k) for k in c.get('tracks', {}))), None)
+MDSUBS = [(f"{MDNAV.get('prefix', MDNAV['id'])}-{k.lower()}", short, k,
+           f'briefs-{k.lower()}' if MDNAV.get('legacy_ids') else f"{MDNAV.get('prefix', MDNAV['id'])}-{k.lower()}-briefs",
+           'b-' if MDNAV.get('legacy_ids') else f"{MDNAV.get('prefix', MDNAV['id'])}-{k.lower()}-b-")
+          for k, (tr, short) in MDNAV['tracks'].items() if _live(MDNAV, k)] if MDNAV else []
+_samp = [c for c in COURSES if c.get('verify_sample')] or COURSES
+SAMPLE = [p for c in _samp for p in sub_pages(c)]   # the course homes the per-page passes visit, in course order
+PRIVATE = [c['id'] for c in COURSES if c.get('private')]
+HIST_HOMES = {c['home_id'] for c in HIST}
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self, *a): pass
 class Server(ThreadingHTTPServer):
@@ -604,8 +646,9 @@ def check_home(pg, label, fails, expect, motion=False):
         if c['href'] != '#' + home: fails.append(f'home {label}: {e["short"]}\'s tile links to {c["href"]}')
     want_rows = [[x['kind'], x['pid']] for x in expect['rows'][:6]]
     if r.get('rows') != want_rows: fails.append(f'home {label}: New since lists {r.get("rows")}, What\'s new leads with {want_rows}')
-    if expect['rows'][:6] and r.get('since') != f"New since {int(expect['rows'][5]['date'][8:])} {MON3[int(expect['rows'][5]['date'][5:7]) - 1]}":
-        fails.append(f'home {label}: New since\'s heading reads {r.get("since")!r}, its oldest row is {expect["rows"][5]["date"]}')
+    old6 = expect['rows'][:6][-1] if expect['rows'] else None   # S-DEC4: the oldest of the (at most) six rows, as build.py's RECENT[-1]; an edition with fewer filings lists fewer
+    if old6 and r.get('since') != f"New since {int(old6['date'][8:])} {MON3[int(old6['date'][5:7]) - 1]}":
+        fails.append(f'home {label}: New since\'s heading reads {r.get("since")!r}, its oldest row is {old6["date"]}')
     want_site = [x for x, k in (('#backlog', 'backlog'), ('#viz-examples', 'figures'), ('#changelog', 'changelog')) if k not in OMIT]
     if r.get('site') != want_site: fails.append(f'home {label}: the site links above New since are {r.get("site")}, expected {want_site}')
     an = r.get('anims', [])
@@ -800,6 +843,15 @@ def texts_contrast(pg, pid, label, fails, tag=''):
     print(f'{pid} {label}{tag} ({pg.evaluate("innerWidth")} px): hero texts over the contours, {len(items)} measured pixel by pixel, lowest {worst[0]}:1 ({worst[1]})')
     return worst[0]
 
+def _build_const(name):
+    """S-DEC4: a constant of kit/build.py, read from its source (importing build.py would build the site)."""
+    import ast
+    for n in ast.parse((R / 'build.py').read_text(encoding='utf-8')).body:
+        if isinstance(n, ast.Assign) and any(getattr(t, 'id', None) == name for t in n.targets): return ast.literal_eval(n.value)
+    raise SystemExit(f'verify.py: no {name} in kit/build.py')
+NEW_INTERVAL = _build_const('NEW_INTERVAL')   # words between two of What's new's contour levels
+_NEW_SAID = []
+
 def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
     """P93: one page's topography against the sources: the hero's layer (a course home: one rise per unit of the course
     in its order, a written unit by its words, a planned one flat; What's new: one rise per day it lists, oldest first,
@@ -837,7 +889,14 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
                     fails.append(f'{pid} {label}: the days are drawn in {strokes}, not each in the tone of the course that filed the most words that day ({want_t})')
                 if pid == 'new':
                     top = max(rs, key=lambda x: x[1] or 0)
-                    if not 10 <= top[2] <= 25: fails.append(f'{pid} {label}: its largest day ({top[0]}) stands {top[2]} levels, not 10 to 25')
+                    if FULL:   # the range Academy's filings set (P93); S-DEC4: an edition holding fewer courses is held to the build's scale
+                        if not 10 <= top[2] <= 25: fails.append(f'{pid} {label}: its largest day ({top[0]}) stands {top[2]} levels, not 10 to 25')
+                    else:
+                        if top[2] != int(top[1] // NEW_INTERVAL) or top[2] > 25: fails.append(f'{pid} {label}: its largest day ({top[0]}, {top[1]} words) stands {top[2]} levels, not {int(top[1] // NEW_INTERVAL)} (a level every {NEW_INTERVAL} words, build.py NEW_INTERVAL) at most 25')
+                        if not _NEW_SAID:
+                            _NEW_SAID.append(1)
+                            print(f"What's new: edition {EDITION} holds {len(HAS)} of {len(ALL_COURSES)} courses; its largest day ({top[0]}, {top[1]:,} words) is checked against the build's scale, "
+                                  f"{int(top[1] // NEW_INTERVAL)} levels at {NEW_INTERVAL:,} words a level, at most 25; the 10 to 25 range is Academy's filings' and is left out here")
             c = h.get('cover') or {}
             if c.get('bad'): fails.append(f'{pid} {label}: the frame\'s corners {c["bad"]} fall outside the turned layout {c.get("size")}: an edge of the drawing shows')
             if h.get('outside') and w >= 390: fails.append(f'{pid} {label}: the rises {h["outside"]} have rings outside the frame or in its fade')
@@ -1128,6 +1187,15 @@ def check_panels(pg, label, fails):
 
 FONTS = R / 'fonts'
 FONT_CSS = (FONTS / 'fonts.css').read_text()
+# S-DEC4: the vendored faces the edition's theme uses: design/theme.css --sans, --mono and --serif, as the brand's [tokens]
+# leaves or sets them (P39: Academy's three). A face a brand names that is not vendored is never served here (the browser
+# draws its fallback); the desktop pass says so
+_TOK = {}
+for _k, _v in re.findall(r'^\s*--(sans|mono|serif)\s*:\s*([^;]+);', (R.parent / 'design' / 'theme.css').read_text(), re.M): _TOK.setdefault(_k, _v)
+_TOK.update({k: v for k, v in (brand(EDITION).get('tokens') or {}).items() if k in ('sans', 'mono', 'serif')})
+VENDORED = list(dict.fromkeys(re.findall(r"font-family:\s*'([^']+)'", FONT_CSS)))
+THEME_FONTS = [f for f in VENDORED if any(f in v for v in _TOK.values())]
+UNSERVED = [v.split(',')[0].strip().strip('"\'') for v in _TOK.values() if not any(f in v for f in VENDORED)]
 def font_file(route):
     f = FONTS / route.request.url.rsplit('/', 1)[1]
     if '/learning-vendored/' in route.request.url and f.suffix == '.woff2' and f.exists():
@@ -1616,7 +1684,7 @@ def check_seps(br, fails):
 # P95 (8 Nov 2026) · the object reliefs: the library (design/outlines/) and every page uses.json maps
 OUTL = R.parent / 'design' / 'outlines'
 REL_FIELDS = ('id', 'file', 'depicts', 'courses', 'keywords', 'source', 'author', 'licence', 'licence_url', 'credit', 'texts')
-REL_COURSES = ('greece', 'rome', 'brand-a', 'brand-b', 'ux-ia', 'personal-brand-pb', 'building-with-ai-bw')
+REL_COURSES = tuple(p for c in ALL_COURSES if c.get('reliefs') for p in sub_pages(c))   # S-DEC4: course.toml `reliefs`, every course of the repo (the library serves them all)
 REL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
 REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
   const P = document.getElementById(pid), out = {bad: [], bytes: 0, poses: 0};
@@ -1724,11 +1792,11 @@ def check_reliefs(br, fails):
     if len(mapped) == len(mdcourse.USES):   # the full site, not an edition
         crs = {}
         for pid in pages:
-            c = ('greece' if pid.startswith('m') else 'rome' if pid.startswith('rm') else None) or next((k for k in REL_COURSES if (SITE / k / f'{pid}.html').exists()), None)
+            c = next((h['home_id'] for h in ALL_COURSES if h['family'] == 'history' and re.match(re.escape(h['prefix']) + r'\d', pid)), None) or next((k for k in REL_COURSES if (SITE / k / f'{pid}.html').exists()), None)   # a history report by its course's prefix
             crs.setdefault(c, []).append(pid)
         inuse = {}
         for c, pids in crs.items():
-            if c is None:   # a course with no REL_COURSES entry (Sport Psychology for Coaches until row G-R-SP, public-courses.md rule 10) shows no relief
+            if c is None:   # a course without `reliefs` (REL_COURSES) (Sport Psychology for Coaches until row G-R-SP, public-courses.md rule 10) shows no relief
                 continue
             ids = {mapped[p] for p in pids if p in mapped}
             need = 10 if len(pids) >= 10 else sum(1 for p in pids if p in mapped)
@@ -1844,35 +1912,45 @@ def check_reading(br, fails):
 
 def check_split(br, fails):
     """In the browser: a stub is empty until opened, its file is fetched once and kept, a section link into an unopened
-    report loads it and lands on the section, a failed fetch shows the retry state and the retry loads it."""
+    report loads it and lands on the section, a failed fetch shows the retry state and the retry loads it. S-DEC4: on a
+    history course of the edition with reports 2.3 to 2.5, 5.2 and 5.5 (LEAD); an edition without one checks the same
+    on a markdown course's reading pages (check_split_md) and says so."""
+    if LEAD is None:
+        print('split: no history course with reports ' + ', '.join(SPLIT_MODS) + ' in this edition; the history split checks '
+              '(report pager, syllabus, course-home continue) are left out and the stub checks run on a markdown course')
+        return check_split_md(br, fails)
+    L, S = LEAD, SECOND
+    r23, r24, r25 = (rid(L, m) for m in ('2.3', '2.4', '2.5'))
+    f23, f24, f25 = (f'{L["home_id"]}/r-{m}.html' for m in ('2.3', '2.4', '2.5'))
     hits, fail = {}, {'on': False}
     def handler(route):
         u = route.request.url.split(str(SERVER.server_port), 1)[1]
         hits[u] = hits.get(u, 0) + 1
-        if fail['on'] and u == '/greece/r-2.5.html': route.fulfill(status=503, body='down'); return
-        if fail.get('home') and u == '/rome/home.html': route.fulfill(status=503, body='down'); return
+        if fail['on'] and u == '/' + f25: route.fulfill(status=503, body='down'); return
+        if fail.get('home') and u == f'/{S["home_id"]}/home.html': route.fulfill(status=503, body='down'); return
         route.continue_()
     errs = []
     ctx, pg, _ = new_page(None, br, errs, 'split', 390, 844, True)
     ctx.route('**/*.html', handler)
-    stub = pg.evaluate("(() => { const p = document.getElementById('m23'); return [p.getAttribute('data-src'), p.innerHTML.length, p.hasAttribute('data-loaded')]; })()")
-    if stub != ['greece/r-2.3.html', 0, False]: fails.append(f'split: #m23 before opening is {stub}, expected an empty stub fetching greece/r-2.3.html')
-    pg.evaluate("location.hash = 'm23'"); ready(pg)
-    got = pg.evaluate("[document.getElementById('m23').hasAttribute('data-loaded'), document.querySelectorAll('#m23 .report h2').length, document.querySelector('#m23 .pager').children.length]")
-    if not (got[0] and got[1] and got[2] == 2): fails.append(f'split: #m23 after opening (loaded, sections, pager links) = {got}')
-    pg.evaluate("location.hash = 'greece'"); ready(pg); pg.evaluate("location.hash = 'm23'"); ready(pg)
-    if hits.get('/greece/r-2.3.html') != 1: fails.append(f'split: greece/r-2.3.html fetched {hits.get("/greece/r-2.3.html")} times, expected once')
+    stub = pg.evaluate(f"(() => {{ const p = document.getElementById('{r23}'); return [p.getAttribute('data-src'), p.innerHTML.length, p.hasAttribute('data-loaded')]; }})()")
+    if stub != [f23, 0, False]: fails.append(f'split: #{r23} before opening is {stub}, expected an empty stub fetching {f23}')
+    pg.evaluate(f"location.hash = '{r23}'"); ready(pg)
+    got = pg.evaluate(f"[document.getElementById('{r23}').hasAttribute('data-loaded'), document.querySelectorAll('#{r23} .report h2').length, document.querySelector('#{r23} .pager').children.length]")
+    if not (got[0] and got[1] and got[2] == 2): fails.append(f'split: #{r23} after opening (loaded, sections, pager links) = {got}')
+    pg.evaluate(f"location.hash = '{L['home_id']}'"); ready(pg); pg.evaluate(f"location.hash = '{r23}'"); ready(pg)
+    if hits.get('/' + f23) != 1: fails.append(f'split: {f23} fetched {hits.get("/" + f23)} times, expected once')
     pg.wait_for_timeout(700)   # the next report is fetched in the background
-    if not pg.evaluate("document.getElementById('m24').hasAttribute('data-loaded')"): fails.append('split: the next report (#m24) was not prefetched')
-    pg.evaluate("document.querySelector('#m23 .pager a.next').click()"); ready(pg)   # P68: the cards show after the last section; clicked as a link
-    if pg.evaluate("location.hash") != '#m24' or hits.get('/greece/r-2.4.html') != 1: fails.append(f'split: pager to #m24: hash {pg.evaluate("location.hash")}, fetched {hits.get("/greece/r-2.4.html")} times')
+    if not pg.evaluate(f"document.getElementById('{r24}').hasAttribute('data-loaded')"): fails.append(f'split: the next report (#{r24}) was not prefetched')
+    pg.evaluate(f"document.querySelector('#{r23} .pager a.next').click()"); ready(pg)   # P68: the cards show after the last section; clicked as a link
+    if pg.evaluate("location.hash") != f'#{r24}' or hits.get('/' + f24) != 1: fails.append(f'split: pager to #{r24}: hash {pg.evaluate("location.hash")}, fetched {hits.get("/" + f24)} times')
     # a section link into a report not yet opened, on a fresh load
     retried = []
-    deep, dpan = ('rm12-2', 'rm12') if ROME else ('m52-2', 'm52')   # P70: an edition without Rome checks a Greek report
+    deep, dpan = (rid(S, '1.2') + '-2', rid(S, '1.2')) if S else (rid(L, '5.2') + '-2', rid(L, '5.2'))   # P70: an edition without a second history course checks one of LEAD's
     sec = fresh_land(pg, deep, retried)
     if sec[0] != dpan or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #{deep} on a fresh load gave panel {sec[0]}, section found {sec[1]}, top {sec[2]}')
     # a syllabus is a stub too (P20): empty until opened, fetched once, its prompts and copy buttons present
-    sy, sc, sa = ('rome-syllabus', 'rome', 'rs-u3') if ROME else ('syllabus', 'greece', 's-u3')
+    Y = S or L
+    sy, sc, sa = Y['syl_id'], Y['home_id'], f'{Y["syl_anchor"]}-u3'
     stub = pg.evaluate(f"(() => {{ const p = document.getElementById('{sy}'); return [p.getAttribute('data-src'), p.innerHTML.length, (p.getAttribute('data-anchors') || '').split(' ').includes('{sa}')]; }})()")
     if stub != [f'{sc}/syllabus.html', 0, True]: fails.append(f'split: #{sy} before opening is {stub}, expected an empty stub fetching {sc}/syllabus.html with its anchors')
     pg.evaluate(f"location.hash = '{sy}'"); ready(pg)
@@ -1881,42 +1959,128 @@ def check_split(br, fails):
     pg.evaluate(f"location.hash = '{sc}'"); ready(pg); pg.evaluate(f"location.hash = '{sy}'"); ready(pg)
     if hits.get(f'/{sc}/syllabus.html') != 1: fails.append(f'split: {sc}/syllabus.html fetched {hits.get(f"/{sc}/syllabus.html")} times, expected once')
     # a link into an unopened syllabus (a unit anchor) and into unopened briefs (a brief's card), on a fresh load
-    for h, want in (('rs-u3', 'rome-syllabus'), ('s-m23', 'syllabus'), ('b-a2', 'briefs-a'), ('b-b3', 'briefs-b'), ('greece-u3', 'greece'), ('rome-u1', 'rome')):
+    links = ([(f'{S["syl_anchor"]}-u3', S['syl_id'])] if S else []) + [(f'{L["syl_anchor"]}-{r23}', L['syl_id'])]
+    if MDNAV:   # each live sub-course's briefs page, at the brief of its second unit (S-DEC4: was b-a2 and b-b3)
+        units = {sc_['key']: sc_['units'] for sc_ in pack.load(MDNAV).COURSES}
+        links += [(ba + units[k][min(1, len(units[k]) - 1)][0].lower(), bp) for _, _, k, bp, ba in MDSUBS]
+    links += [(f'{L["home_id"]}-u3', L['home_id'])] + ([(f'{S["home_id"]}-u1', S['home_id'])] if S else [])
+    for h, want in links:
         if not pg.evaluate(f"!!document.getElementById('{want}')"): continue   # P70: a page the edition does not hold
         sec = fresh_land(pg, h, retried)
         if sec[0] != want or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #{h} on a fresh load gave panel {sec[0]}, element found {sec[1]}, top {sec[2]}')
     # a failed fetch, then the retry
     fail['on'] = True
-    pg.evaluate("location.hash = 'm25'"); ready(pg)
-    st = pg.evaluate("[document.getElementById('m25').hasAttribute('data-failed'), !!document.querySelector('#m25 a.hbtn[data-target=\"m25\"]'), document.querySelector('#m25 h1') && document.querySelector('#m25 h1').textContent]")
+    pg.evaluate(f"location.hash = '{r25}'"); ready(pg)
+    st = pg.evaluate(f"[document.getElementById('{r25}').hasAttribute('data-failed'), !!document.querySelector('#{r25} a.hbtn[data-target=\"{r25}\"]'), document.querySelector('#{r25} h1') && document.querySelector('#{r25} h1').textContent]")
     if not (st[0] and st[1] and st[2]): fails.append(f'split: failed fetch state (failed, retry button, title) = {st}')
     fail['on'] = False
-    pg.click('#m25 a.hbtn[data-target="m25"]'); ready(pg)
-    if not pg.evaluate("document.getElementById('m25').hasAttribute('data-loaded') && !!document.querySelector('#m25 .report')"): fails.append('split: retry after a failed fetch did not load the report')
+    pg.click(f'#{r25} a.hbtn[data-target="{r25}"]'); ready(pg)
+    if not pg.evaluate(f"document.getElementById('{r25}').hasAttribute('data-loaded') && !!document.querySelector('#{r25} .report')"): fails.append('split: retry after a failed fetch did not load the report')
     # a course home is a stub too (P22): its continue button and unit cards arrive with the fetch, and a failed fetch is retried
-    stub = pg.evaluate("(() => { const p = document.getElementById('rome'); return p && [p.getAttribute('data-src'), (p.getAttribute('data-anchors') || '').split(' ').includes('rome-u3')]; })()") if ROME else ['rome/home.html', True]
-    if stub != ['rome/home.html', True]: fails.append(f'split: #rome stub is {stub}, expected rome/home.html with its unit-card anchors')
-    pg.evaluate("localStorage.clear()"); pg.goto(URL + '#greece'); pg.reload(); ready(pg); pg.wait_for_timeout(100)
-    hm = pg.evaluate("[document.getElementById('greece').hasAttribute('data-loaded'), document.querySelectorAll('#greece details[data-mods]').length, document.querySelectorAll('#greece details[data-mods][open]').length, document.querySelector('#greece .hbtn.cont').hidden, document.querySelector('#greece .hbtn.start').hidden]")
-    if not (hm[0] and hm[1] >= 10 and hm[2] == 1 and hm[3] and not hm[4]): fails.append(f'split: #greece on a fresh load (loaded, cards, cards open, continue hidden, start shown) = {hm}')
-    n0 = hits.get('/greece/home.html', 0)   # fetched once on this load (earlier fresh loads fetched it too)
-    pg.evaluate("location.hash = 'm23'"); ready(pg); pg.evaluate("location.hash = 'greece'"); ready(pg); pg.wait_for_timeout(50)
-    hm = pg.evaluate("[document.querySelector('#greece .hbtn.cont').hidden, document.querySelector('#greece .hbtn.cont b').textContent, document.querySelector('#greece .hbtn.start').hidden]")
-    if hm[0] or not hm[1].startswith('2.3 ') or not hm[2]: fails.append(f'split: #greece continue after reading 2.3 (continue hidden, label, start hidden) = {hm}')
-    if hits.get('/greece/home.html', 0) != n0: fails.append(f'split: greece/home.html fetched again on a second visit ({hits.get("/greece/home.html")} in all)')
-    fail['home'] = ROME   # P70: the failed course-home fetch is tried on Rome's home, unopened until here; an edition without Rome skips it
-    if not ROME: print('split: no unopened course home in this edition; the failed course-home fetch is not tried')
-    else: pg.evaluate("location.hash = 'rome'"); ready(pg)
-    if ROME:
-        st = pg.evaluate("[document.getElementById('rome').hasAttribute('data-failed'), !!document.querySelector('#rome a.hbtn[data-target=\"rome\"]')]")
+    if S:
+        stub = pg.evaluate(f"(() => {{ const p = document.getElementById('{S['home_id']}'); return p && [p.getAttribute('data-src'), (p.getAttribute('data-anchors') || '').split(' ').includes('{S['home_id']}-u3')]; }})()")
+        if stub != [f'{S["home_id"]}/home.html', True]: fails.append(f'split: #{S["home_id"]} stub is {stub}, expected {S["home_id"]}/home.html with its unit-card anchors')
+    H_ = L['home_id']
+    pg.evaluate("localStorage.clear()"); pg.goto(URL + '#' + H_); pg.reload(); ready(pg); pg.wait_for_timeout(100)
+    hm = pg.evaluate(f"[document.getElementById('{H_}').hasAttribute('data-loaded'), document.querySelectorAll('#{H_} details[data-mods]').length, document.querySelectorAll('#{H_} details[data-mods][open]').length, document.querySelector('#{H_} .hbtn.cont').hidden, document.querySelector('#{H_} .hbtn.start').hidden]")
+    if not (hm[0] and hm[1] >= 10 and hm[2] == 1 and hm[3] and not hm[4]): fails.append(f'split: #{H_} on a fresh load (loaded, cards, cards open, continue hidden, start shown) = {hm}')
+    n0 = hits.get(f'/{H_}/home.html', 0)   # fetched once on this load (earlier fresh loads fetched it too)
+    pg.evaluate(f"location.hash = '{r23}'"); ready(pg); pg.evaluate(f"location.hash = '{H_}'"); ready(pg); pg.wait_for_timeout(50)
+    hm = pg.evaluate(f"[document.querySelector('#{H_} .hbtn.cont').hidden, document.querySelector('#{H_} .hbtn.cont b').textContent, document.querySelector('#{H_} .hbtn.start').hidden]")
+    if hm[0] or not hm[1].startswith('2.3 ') or not hm[2]: fails.append(f'split: #{H_} continue after reading 2.3 (continue hidden, label, start hidden) = {hm}')
+    if hits.get(f'/{H_}/home.html', 0) != n0: fails.append(f'split: {H_}/home.html fetched again on a second visit ({hits.get(f"/{H_}/home.html")} in all)')
+    fail['home'] = bool(S)   # P70: the failed course-home fetch is tried on the second history course's home, unopened until here; an edition without one skips it
+    if not S: print('split: no unopened course home in this edition; the failed course-home fetch is not tried')
+    else:
+        T_ = S['home_id']
+        pg.evaluate(f"location.hash = '{T_}'"); ready(pg)
+        st = pg.evaluate(f"[document.getElementById('{T_}').hasAttribute('data-failed'), !!document.querySelector('#{T_} a.hbtn[data-target=\"{T_}\"]')]")
         if st != [True, True]: fails.append(f'split: failed course-home fetch state (failed, retry button) = {st}')
         fail['home'] = False
-        pg.click('#rome a.hbtn[data-target="rome"]'); ready(pg); pg.wait_for_timeout(50)
-        if not pg.evaluate("document.getElementById('rome').hasAttribute('data-loaded') && document.querySelectorAll('#rome details[data-mods]').length > 5"): fails.append('split: retry after a failed course-home fetch did not load the home')
+        pg.click(f'#{T_} a.hbtn[data-target="{T_}"]'); ready(pg); pg.wait_for_timeout(50)
+        if not pg.evaluate(f"document.getElementById('{T_}').hasAttribute('data-loaded') && document.querySelectorAll('#{T_} details[data-mods]').length > 5"): fails.append('split: retry after a failed course-home fetch did not load the home')
     other = [e for e in errs if 'fonts.g' not in e and '503' not in e]
     if other: fails.append('split: console errors: ' + ' | '.join(other[:3]))
     if retried: print(f'split: fresh-load anchors that landed only on the retry: {", ".join(retried)}')
     print('split: stubs empty until opened; fetched once, kept and the next report prefetched; links into an unopened report, syllabus, briefs page and course home; failed fetch and retry (report and course home); a course home\'s continue button')
+    ctx.close()
+
+def check_split_md(br, fails):
+    """S-DEC4: the split on an edition without a history course of LEAD's structure, on the first markdown course with
+    three reading pages in one sub-course: its course home and first reading page are empty stubs until opened, each
+    fetched once and kept; the next reading page is prefetched and its pager link opens it; a link into an unopened
+    briefs page lands on the brief; a failed fetch shows the retry state and the retry loads the page; a failed course
+    home fetch likewise."""
+    shell = (SITE / 'index.html').read_text()
+    reads = re.findall(r'<section class="panel" id="([^"]+)" data-ctx="([^"]+)" data-kind="report"[^>]* data-src="([^"]+)"', shell)
+    ctxs = [c_ for c_ in dict.fromkeys(x[1] for x in reads) if sum(1 for x in reads if x[1] == c_) >= 2]
+    if not ctxs:
+        fails.append('split: no course in this edition has two reading pages; the split is not checked'); return
+    cx = ctxs[0]
+    mine = [x for x in reads if x[1] == cx]
+    (r1, _, f1), (r2, _, f2) = mine[:2]
+    # the failed fetch: the course's third reading page, or (a course of two) another of its fetched pages, unopened until then
+    r3, f3 = (mine[2][0], mine[2][2]) if len(mine) > 2 else next(((i_, s_) for i_, s_ in re.findall(r'<section class="panel[^"]*" id="([^"]+)" data-ctx="' + re.escape(cx) + r'" data-kind="build"[^>]* data-src="([^"]+)"', shell)
+                                                                 if i_ not in (r1, r2)), (None, None))
+    homes = {h_: s_ for h_, s_ in re.findall(r'<section class="panel home" id="([^"]+)"[^>]* data-src="([^"]+)"', shell)}
+    other_home = next((h_ for h_ in homes if h_ != cx), None)   # a course home not opened before the failed-fetch test
+    hits, fail = {}, {'on': False, 'home': False}
+    def handler(route):
+        u = route.request.url.split(str(SERVER.server_port), 1)[1]
+        hits[u] = hits.get(u, 0) + 1
+        if fail['on'] and u == '/' + f3: route.fulfill(status=503, body='down'); return
+        if fail['home'] and other_home and u == '/' + homes[other_home]: route.fulfill(status=503, body='down'); return
+        route.continue_()
+    errs, retried = [], []
+    ctx, pg, _ = new_page(None, br, errs, 'split', 390, 844, True)
+    ctx.route('**/*.html', handler)
+    for pid, f in ((cx, homes.get(cx)), (r1, f1)):
+        stub = pg.evaluate(f"(() => {{ const p = document.getElementById('{pid}'); return [p.getAttribute('data-src'), p.innerHTML.length, p.hasAttribute('data-loaded')]; }})()")
+        if stub != [f, 0, False]: fails.append(f'split: #{pid} before opening is {stub}, expected an empty stub fetching {f}')
+    pg.evaluate(f"location.hash = '{cx}'"); ready(pg)
+    if not pg.evaluate(f"document.getElementById('{cx}').hasAttribute('data-loaded') && !!document.querySelector('#{cx} a.course')"): fails.append(f'split: #{cx} after opening holds no unit tiles')
+    pg.evaluate(f"location.hash = '{r1}'"); ready(pg)
+    got = pg.evaluate(f"[document.getElementById('{r1}').hasAttribute('data-loaded'), document.querySelectorAll('#{r1} .report .sec').length]")
+    if not (got[0] and got[1]): fails.append(f'split: #{r1} after opening (loaded, sections) = {got}')
+    pg.evaluate(f"location.hash = '{cx}'"); ready(pg); pg.evaluate(f"location.hash = '{r1}'"); ready(pg)
+    if hits.get('/' + f1) != 1: fails.append(f'split: {f1} fetched {hits.get("/" + f1)} times, expected once')
+    if hits.get('/' + homes[cx]) != 1: fails.append(f'split: {homes[cx]} fetched {hits.get("/" + homes[cx])} times, expected once')
+    pg.wait_for_timeout(700)   # the next page is fetched in the background
+    if not pg.evaluate(f"document.getElementById('{r2}').hasAttribute('data-loaded')"): fails.append(f'split: the next reading page (#{r2}) was not prefetched')
+    nx = pg.evaluate(f"(() => {{ const a = document.querySelector('#{r1} .pager a.next'); return a && a.getAttribute('href'); }})()")
+    if nx != f'#{r2}': fails.append(f'split: #{r1}\'s pager links {nx}, expected #{r2}')
+    else:
+        pg.evaluate(f"document.querySelector('#{r1} .pager a.next').click()"); ready(pg)
+        if pg.evaluate("location.hash") != f'#{r2}' or hits.get('/' + f2) != 1: fails.append(f'split: pager to #{r2}: hash {pg.evaluate("location.hash")}, fetched {hits.get("/" + f2)} times')
+    # a link into an unopened briefs page, on a fresh load: its first anchor
+    bm = re.search(r'<section class="panel stack" id="([^"]+)" data-ctx="' + re.escape(cx) + r'"[^>]* data-anchors="([^" ]+)', shell)
+    if bm:
+        sec = fresh_land(pg, bm.group(2), retried)
+        if sec[0] != bm.group(1) or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #{bm.group(2)} on a fresh load gave panel {sec[0]}, element found {sec[1]}, top {sec[2]}')
+    else: print(f'split: {cx} has no fetched page with anchors; the link into an unopened page is not tried')
+    if r3 is None: fails.append(f'split: {cx} has no third reading page and no other fetched page; the failed fetch is not tried')
+    else:
+        pg.goto(URL + '#home'); pg.reload(); ready(pg)   # a fresh load: nothing of the course opened or prefetched
+        fail['on'] = True
+        pg.evaluate(f"location.hash = '{r3}'"); ready(pg)
+        st = pg.evaluate(f"[document.getElementById('{r3}').hasAttribute('data-failed'), !!document.querySelector('#{r3} a.hbtn[data-target=\"{r3}\"]')]")
+        if st != [True, True]: fails.append(f'split: failed fetch state of #{r3} (failed, retry button) = {st}')
+        fail['on'] = False
+        pg.click(f'#{r3} a.hbtn[data-target="{r3}"]'); ready(pg)
+        if not pg.evaluate(f"document.getElementById('{r3}').hasAttribute('data-loaded') && !document.getElementById('{r3}').hasAttribute('data-failed')"): fails.append(f'split: retry after a failed fetch did not load #{r3}')
+    if other_home:
+        fail['home'] = True
+        pg.evaluate(f"location.hash = '{other_home}'"); ready(pg)
+        st = pg.evaluate(f"[document.getElementById('{other_home}').hasAttribute('data-failed'), !!document.querySelector('#{other_home} a.hbtn[data-target=\"{other_home}\"]')]")
+        if st != [True, True]: fails.append(f'split: failed course-home fetch state (failed, retry button) = {st}')
+        fail['home'] = False
+        pg.click(f'#{other_home} a.hbtn[data-target="{other_home}"]'); ready(pg); pg.wait_for_timeout(50)
+        if not pg.evaluate(f"document.getElementById('{other_home}').hasAttribute('data-loaded') && !!document.querySelector('#{other_home} a.course')"): fails.append('split: retry after a failed course-home fetch did not load the home')
+    else: print('split: no second course home in this edition; the failed course-home fetch is not tried')
+    other = [e for e in errs if 'fonts.g' not in e and '503' not in e]
+    if other: fails.append('split: console errors: ' + ' | '.join(other[:3]))
+    if retried: print(f'split: fresh-load anchors that landed only on the retry: {", ".join(retried)}')
+    print(f'split (markdown, {cx}): stubs empty until opened; course home and reading page fetched once and kept, the next page prefetched and its pager link; a link into an unopened page; failed fetch and retry' + (' (reading page and course home)' if other_home else ' (reading page)'))
     ctx.close()
 
 # V1, every kind since P55 (30 Oct 2026): inside every figure, the geometry the eye would otherwise have to check.
@@ -2189,7 +2353,7 @@ def check_figures(br, fails):
     ctx.close()
 
 # S-PAGES (15 Nov 2026) · the Backlog and Changelog pages: a plain overview by area, rendered from docs/site-log.md alone
-SL_AREAS = ['Mythology', 'Marketing', 'AI', 'UX', 'Sports', 'Supply Chain', brand(EDITION)['log_area'][0]]   # S-DEC3: the site's own area from the brand   # S-SP0: course SP; S-SPORTS (19 Nov 2026): Coaching renamed Sports; S-SCE0: course SCE
+SL_AREAS = [a[0] for a in LOG_AREAS] + [brand(EDITION)['log_area'][0]]   # S-DEC4: catalog.toml `log_areas` (courses.LOG_AREAS), as build.py reads them   # S-DEC3: the site's own area from the brand   # S-SP0: course SP; S-SPORTS (19 Nov 2026): Coaching renamed Sports; S-SCE0: course SCE
 SL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('desktop', 1280, 800, False)]
 # the engine's words, which the two pages leave out (a unit's own title, such as "Agents" or "Prompting", is content)
 SL_PLAIN = re.compile(r'\b(Opus|Fable|Sonnet|Haiku|subagents?|(?:fresh|isolated|writer|checker|filer|applier|correction) agents?|'
@@ -2312,7 +2476,7 @@ def main():
         check_panels(pg, 'phone light', fails)
         pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
         # drawer in each context, every unit expanded
-        for pid in ['home', 'greece', 'rome', 'brand-a', 'brand-b']:
+        for pid in ['home'] + [c['home_id'] for c in (LEAD, SECOND) if c] + [m[0] for m in MDSUBS]:   # S-DEC4: the courses the navigation below visits
             if not pg.evaluate(f"!!document.getElementById('{pid}')"): continue   # P70: not in this edition
             pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
             pg.click('#menuB'); pg.wait_for_timeout(250)
@@ -2352,60 +2516,66 @@ def main():
             pg.click('#homeB'); pg.wait_for_timeout(80)
         else:   # P70: an edition without the changelog has no button to it and no panel
             if pg.evaluate("!!document.querySelector('a[href=\"#changelog\"], #changelog, a[href=\"#backlog\"], #backlog')"): fails.append(f'edition {EDITION}: a changelog or backlog page or link is built')
-        rome_reps = []
-        if ROME:
-            pg.click('#home a.course[href="#rome"]'); pg.wait_for_timeout(80)
-            step('rome home', dict(id='rome', nav='rome', u='COURSE 2', t='Rome', arrows=True, prev=False, next=True))
-            rome_reps = pg.eval_on_selector_all('#rome a.hrow', 'as => as.map(a => a.dataset.target)')
+        rome_reps = []   # SECOND's reports (S-DEC4: the second history course; Rome in Academy)
+        if SECOND:
+            S_ = SECOND['home_id']
+            pg.click(f'#home a.course[href="#{S_}"]'); pg.wait_for_timeout(80)
+            step(f'{S_} home', dict(id=S_, nav=S_, u=f'COURSE {SECOND["num"]}', t=SECOND['short'], arrows=True, prev=False, next=True))
+            rome_reps = pg.eval_on_selector_all(f'#{S_} a.hrow', 'as => as.map(a => a.dataset.target)')
         if rome_reps:
-            pg.evaluate("document.querySelectorAll('#rome details[data-mods]').forEach(d => d.open = true)")
+            pg.evaluate(f"document.querySelectorAll('#{S_} details[data-mods]').forEach(d => d.open = true)")
             first = rome_reps[min(4, len(rome_reps) - 1)]
-            pg.click(f'#rome a.hrow[data-target="{first}"]'); pg.wait_for_timeout(80)
-            step('rome report', dict(id=first, nav='rome', u=lambda u: u.startswith('ROME · UNIT ') and u.count(' · ') == 2, arrows=True))
+            pg.click(f'#{S_} a.hrow[data-target="{first}"]'); pg.wait_for_timeout(80)
+            step(f'{S_} report', dict(id=first, nav=S_, u=lambda u: u.startswith(SECOND['label'] + ' · UNIT ') and u.count(' · ') == 2, arrows=True))
             pg.click('#nextB'); pg.wait_for_timeout(50)
-            step('rome next', dict(nav='rome', id=lambda i: i.startswith('rm') or i in ('rome', 'rome-syllabus')))
-            rome_last = pg.eval_on_selector_all('nav[data-navctx="rome"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
+            step(f'{S_} next', dict(nav=S_, id=lambda i: re.match(re.escape(SECOND['prefix']) + r'\d', i) or i in (S_, SECOND['syl_id'])))
+            rome_last = pg.eval_on_selector_all(f'nav[data-navctx="{S_}"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
             pg.evaluate(f"location.hash = '{rome_last}'"); pg.wait_for_timeout(50)
-            step('rome last report', dict(id=rome_last, nav='rome', next=False))
+            step(f'{S_} last report', dict(id=rome_last, nav=S_, next=False))
             pg.evaluate(f"location.hash = '{rome_reps[0]}'"); pg.wait_for_timeout(50)
             pg.click('#prevB'); pg.wait_for_timeout(50)
-            step('rome prev from first report', dict(id='rome-syllabus', nav='rome', u='ROME', t='Syllabus and prompts'))
+            step(f'{S_} prev from first report', dict(id=SECOND['syl_id'], nav=S_, u=SECOND['label'], t='Syllabus and prompts'))
             pg.evaluate(f"location.hash = '{first}'"); pg.wait_for_timeout(50)
         # A4: each history course's "How it was built" page, fetched through the shell, one row per written report
-        for cid in [c for c in ('greece', 'rome') if c in HAS and 'build' not in OMIT]:
+        for cid in [c['home_id'] for c in HIST if 'build' not in OMIT]:
             pg.evaluate(f"location.hash = '{cid}-built'"); pg.wait_for_timeout(50)
             step(f'{cid} how it was built', dict(id=f'{cid}-built', nav=cid, t='How it was built', arrows=True))
             nrow = pg.evaluate(f"document.querySelectorAll('#{cid}-built tr[data-mod]').length")
             nrep = pg.evaluate(f"document.querySelectorAll('nav[data-navctx=\"{cid}\"] .dunit a.ditem[data-target]').length")
             if nrow != nrep or not nrow: fails.append(f'{cid}-built: {nrow} report rows for {nrep} written reports')
         if 'build' in OMIT and pg.evaluate("!!document.querySelector('[id$=\"-built\"], a[href$=\"-built\"]')"): fails.append(f'edition {EDITION}: a "How it was built" page or link is built')
-        pg.evaluate(f"location.hash = '{first}'" if rome_reps else ("location.hash = 'rome'" if ROME else "location.hash = 'home'")); pg.wait_for_timeout(50)
+        pg.evaluate(f"location.hash = '{first}'" if rome_reps else (f"location.hash = '{SECOND['home_id']}'" if SECOND else "location.hash = 'home'")); pg.wait_for_timeout(50)
         pg.click('#homeB'); pg.wait_for_timeout(80)
         step('home again', dict(id='home', nav='root', arrows=False, cont=''))   # P91: no Continue on the home
-        pg.click('#home a.course[href="#greece"]'); pg.wait_for_timeout(80)
-        step('greece home', dict(id='greece', nav='greece', u='COURSE 1', t='Greece', prev=False, cont='(hidden)'))
-        pg.evaluate("document.querySelectorAll('#greece details[data-mods]').forEach(d => d.open = true)")
-        pg.click('#greece a.hrow[data-target="m23"]'); pg.wait_for_timeout(80)
-        step('greek report', dict(id='m23', nav='greece', u='GREECE · UNIT 2 · 2.3', arrows=True, prev=True, next=True))
-        pg.click('#nextB'); pg.wait_for_timeout(50)
-        step('greek next', dict(id='m24', nav='greece'))
-        greek_last = pg.eval_on_selector_all('nav[data-navctx="greece"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
-        pg.evaluate(f"location.hash = '{greek_last}'"); pg.wait_for_timeout(50)
-        step('greek last', dict(id=greek_last, nav='greece', next=False))
-        pg.evaluate("location.hash = 'm24'"); pg.wait_for_timeout(50)
-        pg.click('#homeB'); pg.wait_for_timeout(80)
-        step('home last', dict(id='home', cont=''))
+        if LEAD:   # S-DEC4: the first history course with reports 2.3 and 2.4 (Greece in Academy)
+            L_, r23, r24 = LEAD['home_id'], rid(LEAD, '2.3'), rid(LEAD, '2.4')
+            pg.click(f'#home a.course[href="#{L_}"]'); pg.wait_for_timeout(80)
+            step(f'{L_} home', dict(id=L_, nav=L_, u=f'COURSE {LEAD["num"]}', t=LEAD['short'], prev=False, cont='(hidden)'))
+            pg.evaluate(f"document.querySelectorAll('#{L_} details[data-mods]').forEach(d => d.open = true)")
+            pg.click(f'#{L_} a.hrow[data-target="{r23}"]'); pg.wait_for_timeout(80)
+            step(f'{L_} report', dict(id=r23, nav=L_, u=f'{LEAD["label"]} · UNIT 2 · 2.3', arrows=True, prev=True, next=True))
+            pg.click('#nextB'); pg.wait_for_timeout(50)
+            step(f'{L_} next', dict(id=r24, nav=L_))
+            greek_last = pg.eval_on_selector_all(f'nav[data-navctx="{L_}"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
+            pg.evaluate(f"location.hash = '{greek_last}'"); pg.wait_for_timeout(50)
+            step(f'{L_} last', dict(id=greek_last, nav=L_, next=False))
+            pg.evaluate(f"location.hash = '{r24}'"); pg.wait_for_timeout(50)
+            pg.click('#homeB'); pg.wait_for_timeout(80)
+            step('home last', dict(id='home', cont=''))
+        else: print('nav: no history course with reports ' + ', '.join(SPLIT_MODS) + ' in this edition; its course home, report, next and last steps are left out (the markdown course steps below run)')
         if rome_reps:
-            pg.click('#home a.course[href="#rome"]'); pg.wait_for_timeout(80)
-            step('rome home resumes rome', dict(id='rome', cont=lambda c: c.startswith('Continue ') and 'Greece' not in c and c != '(hidden)'))
+            pg.click(f'#home a.course[href="#{SECOND["home_id"]}"]'); pg.wait_for_timeout(80)
+            step(f'{SECOND["home_id"]} home resumes {SECOND["home_id"]}', dict(id=SECOND['home_id'], cont=lambda c: c.startswith('Continue ') and LEAD['short'] not in c and c != '(hidden)'))
         pg.click('#menuB'); pg.wait_for_timeout(250)
         dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
-        if rome_reps and dr[:3] != [SITE_NAME, 'Rome: course home', 'Syllabus and prompts']: fails.append(f'rome drawer top: {dr}')
+        if rome_reps and dr[:3] != [SITE_NAME, f'{SECOND["short"]}: course home', 'Syllabus and prompts']: fails.append(f'{SECOND["home_id"]} drawer top: {dr}')
         pg.click('#closeB'); pg.wait_for_timeout(200)
         # the Brand + AI courses (A under Marketing, B under Technology, A3): each its own drawer context with a Units group
         # and a "How it is built" group; written units open reading pages inside the site (never a link out); the reading
         # page is a report (prev/next, continue); the briefs, build order, bibliography and changelog are pages too
-        for bid, short, key in ((('brand-a', 'Personal brand', 'A'), ('brand-b', 'Building with AI', 'B')) if BRAND else ()):
+        if not MDSUBS: print('nav: no markdown course with a unit filed in this edition; the markdown course steps are left out')
+        md_read = None   # the first reading page visited, the tablet pass's report in an edition without a history course
+        for bid, short, key, briefs_id, _ in MDSUBS:   # S-DEC4: the edition's first markdown course with a unit filed (Brand + AI in Academy)
             pg.click('#homeB'); pg.wait_for_timeout(80)
             pg.click(f'#home a.course[href="#{bid}"]'); pg.wait_for_timeout(80)
             step(f'{bid} home', dict(id=bid, nav=bid, u=f'COURSE {key}', t=short, arrows=True, prev=False))
@@ -2418,9 +2588,10 @@ def main():
             # navigation never leaves the site: no artifact link in a hero, a button row or the drawer (a unit's own citations may cite one)
             ext = pg.evaluate(f"[...document.querySelectorAll('.panel[data-ctx=\"{bid}\"] .hero a, .panel[data-ctx=\"{bid}\"] .hlinks a, .panel[data-ctx=\"{bid}\"] .hrows a.hrow:not([target]), [data-navctx=\"{bid}\"] a')].filter(a => a.getAttribute('href').startsWith('http')).map(a => a.href)")
             if ext: fails.append(f'{bid} navigation links out of the site: {ext[:3]}')
+            md_read = md_read or ba[0][1:]
             pg.click(f'#{bid} a.course.live[href="{ba[0]}"]'); pg.wait_for_timeout(80)
             step(f'{bid} reading', dict(id=ba[0][1:], nav=bid, u=lambda u: u.startswith(short.upper() + ' · '), arrows=True, prev=True))
-            for pid, t in ((f'{bid}-build', 'How it is built'), (f'{bid}-order', 'Build order'), (f'briefs-{key.lower()}', 'Briefs'), (f'{bid}-bibliography', 'Bibliography'), (f'{bid}-changelog', 'Changelog')):
+            for pid, t in ((f'{bid}-build', 'How it is built'), (f'{bid}-order', 'Build order'), (briefs_id, 'Briefs'), (f'{bid}-bibliography', 'Bibliography'), (f'{bid}-changelog', 'Changelog')):
                 pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(50)
                 step(f'{bid} {t}', dict(id=pid, nav=bid, t=t))
             # A4: the course's "How it was built" page, generated: one row per written unit, read from the front matter
@@ -2445,22 +2616,29 @@ def main():
         if dr != want_top: fails.append(f'root drawer top: {dr}, expected {want_top}')
         gr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dunit')].map(u => u.querySelector('.ut').textContent + (u.classList.contains('closed') ? ':closed' : ':open'))")
         # a track's group is open once a page in it was visited in this run (shell.js show()); the ones the run above
-        # visited (greece, rome, brand-a, brand-b) are open, any other track from courses.py starts closed
-        seen = {'history'} | ({'marketing', 'technology'} if BRAND else set())
+        # visited (S-DEC4: the tracks of the courses visited above, history and markdown) are open, any other track from
+        # courses.py starts closed
+        seen = {c['theme'] for c in (LEAD, SECOND) if c} | {MDNAV['tracks'][k][0] for _, _, k, _, _ in MDSUBS}
         want = [t['name'] + (':open' if t['id'] in seen else ':closed') for t in THEMES]
         if gr != want: fails.append(f'root drawer groups: {gr}, expected {want}')
-        pg.click('[data-navctx="root"] .dunit[data-unit="track:history"] .duh'); pg.wait_for_timeout(50)
-        if not pg.evaluate("document.querySelector('[data-navctx=\"root\"] .dunit[data-unit=\"track:history\"]').classList.contains('closed')"): fails.append('root drawer: the History group does not collapse')
-        pg.click('[data-navctx="root"] .dunit[data-unit="track:history"] .duh'); pg.wait_for_timeout(50)
+        t0 = next(t for t in THEMES if t['id'] in seen) if seen else THEMES[0]   # the first open track's group folds and opens again
+        pg.click(f'[data-navctx="root"] .dunit[data-unit="track:{t0["id"]}"] .duh'); pg.wait_for_timeout(50)
+        if not pg.evaluate(f"document.querySelector('[data-navctx=\"root\"] .dunit[data-unit=\"track:{t0['id']}\"]').classList.contains('closed')"): fails.append(f'root drawer: the {t0["name"]} group does not collapse')
+        pg.click(f'[data-navctx="root"] .dunit[data-unit="track:{t0["id"]}"] .duh'); pg.wait_for_timeout(50)
         pg.click('#closeB'); pg.wait_for_timeout(200)
-        # a course drawer is an accordion: opening a second unit closes the first
-        pg.evaluate("location.hash = 'greece'"); pg.wait_for_timeout(50)
-        pg.click('#menuB'); pg.wait_for_timeout(250)
-        pg.click('[data-navctx="greece"] .dunit[data-unit="1"] .duh'); pg.wait_for_timeout(30)
-        pg.click('[data-navctx="greece"] .dunit[data-unit="2"] .duh'); pg.wait_for_timeout(30)
-        op = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"greece\"] .dunit:not(.closed)')].map(u => u.dataset.unit)")
-        if op != ['2']: fails.append(f'greece drawer accordion: open units {op}, expected [\'2\']')
-        pg.click('#closeB'); pg.wait_for_timeout(200)
+        # a course drawer is an accordion: opening a second unit closes the first (S-DEC4: a history course's drawer, its
+        # units keyed by the course's unit_key; a markdown course's drawer has no unit groups to fold)
+        AC = HIST[0] if HIST else None
+        if AC:
+            ac, uk = AC['home_id'], AC.get('unit_key', '{id}:{unit}')
+            pg.evaluate(f"location.hash = '{ac}'"); pg.wait_for_timeout(50)
+            pg.click('#menuB'); pg.wait_for_timeout(250)
+            pg.click(f'[data-navctx="{ac}"] .dunit[data-unit="{uk.format(id=AC["id"], unit="1")}"] .duh'); pg.wait_for_timeout(30)
+            pg.click(f'[data-navctx="{ac}"] .dunit[data-unit="{uk.format(id=AC["id"], unit="2")}"] .duh'); pg.wait_for_timeout(30)
+            op = pg.evaluate(f"[...document.querySelectorAll('[data-navctx=\"{ac}\"] .dunit:not(.closed)')].map(u => u.dataset.unit)")
+            if op != [uk.format(id=AC['id'], unit='2')]: fails.append(f'{ac} drawer accordion: open units {op}, expected [{uk.format(id=AC["id"], unit="2")!r}]')
+            pg.click('#closeB'); pg.wait_for_timeout(200)
+        else: print('nav: no history course in this edition; the course drawer accordion (a history course\'s unit groups) is not tried')
         # the backlog page (S-PAGES): the overall order, then the areas, from docs/site-log.md
         if 'backlog' not in OMIT:
             pg.evaluate("location.hash = 'backlog'"); pg.wait_for_timeout(50)
@@ -2476,8 +2654,13 @@ def main():
         title = pg.title()
         if title != ED['title']: fails.append(f'page title {title!r}, expected {ED["title"]}')
         for label, s in log: print(f'  {label:28} {s["id"]:14} nav={s["nav"]:7} {s["u"]} | {s["t"][:40]} | arrows={s["arrows"]} prev={s["prev"]} next={s["next"]} | {s["cont"][:60]}')
-        rp = rome_reps[3] if len(rome_reps) > 3 else (rome_reps[0] if rome_reps else ('rome-syllabus' if ROME else 'm55'))
-        TAB = 'rome' if ROME else 'greece'   # P70: the tablet pass reads the second course's home, or Greece's in an edition without Rome
+        # S-DEC4: the tablet pass reads the second history course's home and one of its reports, or the first's (its report
+        # 5.5) in an edition without a second, or the first markdown course's home and first reading page in an edition
+        # without a history course
+        rp = rome_reps[3] if len(rome_reps) > 3 else (rome_reps[0] if rome_reps else (SECOND['syl_id'] if SECOND else (rid(LEAD, '5.5') if LEAD else md_read)))
+        TAB = SECOND['home_id'] if SECOND else (LEAD['home_id'] if LEAD else MDSUBS[0][0])   # P70
+        TAB_GRID = f'#{TAB} .part .cgrid' if (SECOND or LEAD) else f'#{TAB} .cgrid'   # a markdown course home has no parts
+        DESK = rid(LEAD, '2.3') if LEAD else md_read   # S-DEC4: the desktop pass's report
         ctx.close()
 
         # ---- tablet: wider column, two-column cards, the drawer still a drawer -----------------------------------
@@ -2488,7 +2671,7 @@ def main():
         t = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
           return {off: r.right <= 0, menu: getComputedStyle(document.getElementById('menuB')).display !== 'none',
                   main: document.querySelector('main').getBoundingClientRect().width,
-                  cols: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#''' + TAB + ''' .part .cgrid')).gridTemplateColumns),
+                  cols: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector(''' + json.dumps(TAB_GRID) + ''')).gridTemplateColumns),
                   home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns)}; }''')
         if not t['off']: fails.append('tablet: drawer is on screen before the menu button is pressed')
         if not t['menu']: fails.append('tablet: menu button hidden')
@@ -2522,7 +2705,7 @@ def main():
         ctx, pg, lay = new_page(p, br, errors, 'desktop', 1280, 800, False)
         if lay[0] != 1280: fails.append(f'desktop layout {lay}: expected width 1280')
         check_panels(pg, 'desktop', fails)
-        pg.evaluate("location.hash = 'm23'"); ready(pg); pg.wait_for_timeout(80)
+        pg.evaluate(f"location.hash = '{DESK}'"); ready(pg); pg.wait_for_timeout(80)
         s = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
           const main = document.querySelector('main').getBoundingClientRect(), top = document.querySelector('.top').getBoundingClientRect();
           const act = d.querySelector('[data-navctx]:not([hidden]) .ditem.is-active');
@@ -2532,12 +2715,12 @@ def main():
                   backdrop: getComputedStyle(document.getElementById('backdrop')).display,
                   mainLeft: main.left, mainW: main.width, topLeft: top.left, topRight: top.right,
                   active: act ? act.dataset.target : null, listScroll: list ? getComputedStyle(list).overflowY : null,
-                  measure: getComputedStyle(document.querySelector('#m23 .report p')).maxWidth,
-                  ch68: (() => { const p = document.querySelector('#m23 .report p'), t = document.createElement('span');
+                  measure: getComputedStyle(document.querySelector('#''' + DESK + ''' .report p')).maxWidth,
+                  ch68: (() => { const p = document.querySelector('#''' + DESK + ''' .report p'), t = document.createElement('span');
                     t.style.whiteSpace = 'nowrap'; t.textContent = '0'.repeat(68); p.appendChild(t); const w = t.getBoundingClientRect().width; t.remove(); return w; })(),
-                  fonts: ['DM Sans', 'Space Mono', 'Gentium Book Plus'].filter(n => ![...document.fonts].some(f => f.family.replace(/"/g, '') === n && f.status === 'loaded')),
+                  fonts: ''' + json.dumps(THEME_FONTS) + '''.filter(n => ![...document.fonts].some(f => f.family.replace(/"/g, '') === n && f.status === 'loaded')),
                   home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns),
-                  ml: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns)}; }''')
+                  ml: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(document.querySelector('#home .ml-grid') ? getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns : '')}; }''')
         if s['left'] != 0 or s['w'] != SIDE or s['h'] < s['vh'] - 1: fails.append(f'desktop: sidebar not at the left edge, {SIDE} px, full height: {s}')
         if s['hidden'] != 'false': fails.append(f'desktop: sidebar aria-hidden={s["hidden"]}')
         if s['menu'] != 'none' or s['close'] != 'none': fails.append(f'desktop: menu/close buttons shown ({s["menu"]}, {s["close"]})')
@@ -2545,13 +2728,15 @@ def main():
         if s['mainLeft'] < SIDE: fails.append(f'desktop: content starts at {s["mainLeft"]}px, under the sidebar')
         if not 740 <= s['mainW'] <= 768: fails.append(f'desktop: main column {s["mainW"]}px, expected about 760')
         if s['topLeft'] != SIDE or s['topRight'] != 1280: fails.append(f'desktop: top bar spans {s["topLeft"]}..{s["topRight"]}, expected {SIDE}..1280')
-        if s['active'] != 'm23': fails.append(f'desktop: sidebar does not highlight the current report ({s["active"]})')
+        if s['active'] != DESK: fails.append(f'desktop: sidebar does not highlight the current report ({s["active"]})')
         if s['listScroll'] != 'auto': fails.append(f'desktop: sidebar list overflow-y {s["listScroll"]}, expected auto')
         # P39: the measure is 68ch of the report's own font (DM Sans, about 744 px), and fits the 760 px column
         mw = float(s['measure'].replace('px', '')) if s['measure'].endswith('px') else 0
         if abs(mw - s['ch68']) > 2 or not 560 <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
         if s['fonts']: fails.append(f'desktop: theme fonts not loaded from fonts/: {s["fonts"]}')
-        if s['home'] != 2 or s['ml'] != 2: fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')
+        if UNSERVED: print(f'desktop: the brand names {UNSERVED}, not in fonts/ (verify.py serves only {VENDORED}); its fallback is drawn and measured, and its loading is not checked')
+        if s['home'] != 2 or (HIST and s['ml'] != 2): fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')
+        if not HIST: print('desktop: no history course in this edition; the home\'s mythos/logos block (History\'s) is not measured')
         # the sidebar's own targets and gaps, every unit open
         pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed'))")
         res = pg.evaluate(BOX_JS, ['#drawer', GAP])
@@ -2571,7 +2756,8 @@ def main():
             pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
             check_home(pg, name + ' light', fails, EXPECT)
             if name == 'desktop':
-                for sel in ('a.course.live[data-target="greece"]', 'a.course.live[data-target^="brand-"]', 'a.course.live[data-target^="ux-"]', 'a.hnew'):   # P92: a tile of each family and the quiet link
+                hs, ms = [x for x in SAMPLE if x in HIST_HOMES], [x for x in SAMPLE if x not in HIST_HOMES]   # S-DEC4: the sampled courses' tiles: the first history one, the first and last markdown ones
+                for sel in [f'a.course.live[data-target="{x}"]' for x in dict.fromkeys(hs[:1] + ms[:1] + ms[-1:])] + ['a.hnew']:   # P92: a tile of each family and the quiet link
                     pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(60)
                     t = pg.evaluate(f"(() => {{ const a = document.querySelector('#home {sel}'); return a && a.getAttribute('data-target'); }})()")
                     if not t:
@@ -2587,7 +2773,7 @@ def main():
         # P93: the course homes, What's new and the pages without a topography, at every width, dark and light, under
         # reduced motion: each page's topography and tiles against the sources (check_topo, check_tiles), two history
         # unit tiles opened (their rows, their line whole); the home's tiles too
-        TOPO_PAGES = [x for x in ('greece', 'rome', 'brand-a', 'brand-b', 'ux-ia') if x in HAS or x in EXPECT['courses']] + ['new']
+        TOPO_PAGES = [x for x in SAMPLE if x in HIST_HOMES or x in EXPECT['courses']] + ['new']   # S-DEC4: course.toml `verify_sample` (every course where the edition holds none)
         NONE_PAGES = [x for x in ('changelog', 'backlog', 'viz-examples') if (x != 'viz-examples' or 'figures' not in OMIT) and (x not in ('changelog', 'backlog') or x not in OMIT)]
         for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:
             ctx, pg, _ = new_page(p, br, errors, name + ' pages', w, h, mobile)
@@ -2630,7 +2816,10 @@ def main():
         for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:   # P92 check: every width, not two
             ctx, pg, _ = new_page(p, br, errors, name + ' motion', w, h, mobile, motion=True)
             if name == 'phone':
-                for pid in ('home', 'greece', 'new'):
+                PERF_PAGES = ['home'] + TOPO_PAGES[:1] + ['new']   # S-DEC4: a course home the edition holds (Greece in Academy), never one it lacks
+                if len(PERF_PAGES) < 3 or TOPO_PAGES[0] == 'new': fails.append('phone motion: the edition holds no course home to measure LCP and the longest task on')
+                for pid in [x for x in dict.fromkeys(PERF_PAGES)]:
+                    if not pg.evaluate(f"!!document.getElementById('{pid}')"): fails.append(f'phone motion: #{pid} is not in the edition; nothing measured on it'); continue
                     PERF[pid] = perf_of(pg, pid)
                     print(f"{pid} phone motion: LCP {PERF[pid]['lcp']:.0f} ms, longest task {PERF[pid]['lt']:.0f} ms ({PERF[pid]['n']} long tasks over 50 ms), on a fresh load from the local server")
                 pg.evaluate("location.hash = 'home'"); ready(pg)
@@ -2706,7 +2895,7 @@ def main():
             from PIL import Image, ImageDraw, ImageFont
             for name, w, h, mobile in (('phone', 390, 844, True), ('desktop', 1280, 800, False)):
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile, motion=True)
-                for pid in [x for x in ('home', 'greece', 'ux-ia') if x == 'home' or x in TOPO_PAGES]:
+                for pid in ['home'] + list(dict.fromkeys([x for x in TOPO_PAGES[:-1] if x in HIST_HOMES][:1] + [x for x in TOPO_PAGES[:-1] if x not in HIST_HOMES][-1:])):   # S-DEC4: a history course home and the last sampled markdown one
                     sel = '#home .hhome > .topo' if pid == 'home' else f'#{pid} > header.hero > .topo'   # the layer's own frame: from the top bar to the hero's foot, the full width beside the sidebar (the hero's box is the column), the texts on it
                     for theme in ('dark', 'light'):
                         pg.evaluate(f"localStorage.clear(); localStorage.setItem('{THEME_KEY}', '{theme}')"); pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(500)
@@ -2756,9 +2945,23 @@ def main():
     ix = index_check.check()   # A5: docs/courses-index.md against the sources it summarises
     fails += ['courses-index.md: ' + x for x in ix]
     print('courses-index.md: ' + (f'{len(ix)} mismatches' if ix else 'matches the sources'))
-    pt = private_terms.check()   # G-0 (11 Nov 2026): no private term in a public course's vault, data folder or built pages
-    fails += ['private term in a public course: ' + x for x in pt]
-    print('private terms in the public courses: ' + (f'{len(pt)} found' if pt else 'none'))
+    # G-0 (11 Nov 2026): no private term in a public course's vault, data folder or built pages. S-DEC4: the default
+    # edition (Academy) as before, its public courses (private_terms.py with no argument); another edition over its own
+    # built files (private_terms.py --edition), unless it holds a course marked `private` in its course.toml (the
+    # owner's own courses, which name him), where it is left out and said so
+    bad_pub = [c['id'] for c in ALL_COURSES if c.get('private') and c['id'] in private_terms.PUBLIC]
+    if bad_pub: fails.append(f'private terms: {bad_pub} marked private in course.toml and public in private_terms.PUBLIC')
+    if EDITION == DEFAULT_EDITION:
+        pt = private_terms.check()
+        fails += ['private term in a public course: ' + x for x in pt]
+        print('private terms in the public courses: ' + (f'{len(pt)} found' if pt else 'none'))
+    elif PRIVATE:
+        print(f'private terms: edition {EDITION} holds a private course ({", ".join(PRIVATE)}), which names its owner; its files are not checked (the public courses are, in the default edition)')
+    else:
+        fs = private_terms.text_only(private_terms.edition_files(EDITION))
+        pt = private_terms.scan(fs)[0]
+        fails += ['private term in the edition: ' + x for x in pt]
+        print(f'private terms in edition {EDITION}: {len(fs)} files, ' + (f'{len(pt)} found' if pt else 'none'))
     rf, rw = rot_check.check()   # P30-F11, P30-F16 (17 Nov 2026)
     fails += ['rot: ' + x for x in rf]
     print('rot check: ' + (f'{len(rf)} failures' if rf else 'none') + ''.join('\n  warn ' + x for x in rw))
