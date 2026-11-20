@@ -354,7 +354,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
   {credits_section({c['slug'](i): i for i in c['index']}, cid)}
   {method_section('history', md_inline)}
   {sources_section('history', md_blocks)}
-  {footer([gh(c['provenance']), '<code>kit/reviews/</code>', '<code>kit/audits/</code>', *doc_links()])}'''
+  {footer([gh(c['provenance']), gh('kit/provenance.json', 'kit/provenance.json'), '<code>kit/reviews/</code>', '<code>kit/audits/</code>', *doc_links()])}'''
     return panel(f'{c["home_id"]}-built', cid, color, c['label'], body)
 
 
