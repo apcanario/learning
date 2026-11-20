@@ -1,0 +1,27 @@
+# brand-ai: one Academy course, read by kit/courses.py (S-DEC1, 20 Nov 2026). The keys are the course dict build.py reads;
+# kit/courses.py turns `parts`, `eras` and `ticks` rows and `tracks` values into tuples. Text fields may use the
+# placeholders {content_mods} {total_mods} {nrep} {kwords} (kit/courses.py docstring).
+
+id = "brand-ai"
+family = "markdown"
+short = "Brand + AI"
+label = "BRAND + AI"
+name = "Brand + AI: two courses for one reader"
+color = "var(--teal)"
+home_id = "brand-ai"
+status = "in progress"
+# panel ids brand-a, brand-b (a new markdown course defaults to its id)
+prefix = "brand"
+# keeps #briefs-a and #b-a2 from A3; a new course gets #<id>-<key>-briefs, #<id>-<key>-b-<code>
+legacy_ids = true
+# each course in the data file's COURSES becomes its own Academy course: key -> [track, short name for the top bar and drawer]
+tracks.A = ["marketing", "Personal brand"]
+tracks.B = ["technology", "Building with AI"]
+# P90: each course's one sentence on the home card, two lines at most (the data file's longer tile stays on its pages)
+tiles.A = "Who pays, for what, how long it takes, and what the record-as-brand changes."
+tiles.B = "Which model for which task, how to brief, and where the setup leaks."
+# content and status come from the hub's own data file; build.py reads it, nothing here is typed by hand
+data = "generator/data/brand-ai/hub.py"
+# the filed units (method.md §7); a unit is written when its file is here (A5)
+vault = "courses/brand-ai"
+eyebrow = "BRAND + AI"

@@ -1,0 +1,174 @@
+# The Academy catalog (S-DEC1, 20 Nov 2026), read by kit/courses.py.
+#
+# `course_order`: the order of the courses (courses/<id>/course.toml) on the home, in the drawer and in every list;
+# a course folder not named here follows them, sorted by id. `edition_order` does the same for editions/<name>.toml.
+#
+# `tracks` (THEMES): the Academy home and the root drawer group courses by subject. Every course names its track.
+# A track's `planned` rows are [short, name, colour, scope, the rest of the teaser]; kit/courses.py makes each a tuple.
+# A new track also needs its place on the home hero (_HERO_AT in kit/build.py).
+
+course_order = [
+  "greece",
+  "rome",
+  "brand-ai",
+  "ux",
+  "personal-brand",
+  "building-with-ai",
+  "sport-psychology",
+  "supply-chain-execution",
+]
+edition_order = ["academy", "greece"]
+
+# The planned history courses (NEXT), in the intended order: [short, name, colour, scope, sources] per row.
+next = [
+  [
+    "Egypt",
+    "Egyptian history and mythology",
+    "var(--gold)",
+    "Three thousand years, thirty-one dynasties, and a religion the Greeks themselves treated as the oldest in the world. Predynastic unification, the Old Kingdom and the pyramids, the Middle and New Kingdoms, Akhenaten, Ramesses and the Sea Peoples, the Late Period and Persian rule, the Ptolemies you met in unit 7; then the cosmogonies of Heliopolis, Memphis and Hermopolis, the Osiris cycle, the solar journey, ma'at, the Book of the Dead and the afterlife, temple and priesthood, and how to read hieroglyphs enough to recognise a cartouche.",
+    "Pyramid Texts · Coffin Texts · Book of the Dead · the Shabaka Stone · Herodotus book 2 · Wilkinson, The Rise and Fall of Ancient Egypt · Assmann, The Search for God in Ancient Egypt",
+  ],
+  [
+    "Persia",
+    "Persian history and mythology",
+    "var(--blue)",
+    "The other side of units 6 and 11, told from Persepolis rather than Athens. Elam and the Medes, Cyrus and the Achaemenid empire, Darius and Xerxes as the Persians saw them, the satrapal system, Zoroaster and the Avesta, Ahura Mazda and the dualist cosmos, the Parthians, the Sasanians and their wars with Rome, the Zoroastrian apocalyptic, then the Shahnameh as the national epic that fused myth and history into one narrative of kings.",
+    "Behistun inscription · the Avesta (Gathas, Yashts) · Herodotus · Xenophon, Cyropaedia · Firdausi, Shahnameh · Briant, From Cyrus to Alexander · Boyce, Zoroastrians",
+  ],
+  [
+    "Norse",
+    "Viking and Norse history and mythology",
+    "var(--teal)",
+    "The Scandinavian Iron Age and the Viking expansion, 793 to 1066 and beyond: raids, trade routes to Byzantium and Baghdad, the settlement of Iceland, Greenland and Vinland, the Danelaw, Normandy, the Rus, the conversion. Then the mythology as the two Eddas preserve it: Ymir and the world's making, Yggdrasil and the nine worlds, Odin, Thor, Loki, Freyja and the Vanir war, the death of Baldr, Ragnarok, the heroic legends of Sigurd and the Volsungs, and the problem of a pagan mythology written down by Christians two centuries late.",
+    "Poetic Edda · Snorri, Prose Edda · Heimskringla · Saga of the Volsungs · Egil's Saga · Njal's Saga · Price, Children of Ash and Elm · Lindow, Norse Mythology",
+  ],
+  [
+    "Celts",
+    "Celtic history and mythology",
+    "var(--purple)",
+    "Hallstatt and La Tène, the Celtic expansion across Europe, the sack of Rome and Delphi, Gaul and Caesar's conquest, the druids as the Greeks and Romans described them, Roman Britain, then the two literary survivals: the Irish cycles (the Mythological Cycle and the Tuatha Dé Danann, the Ulster Cycle and Cú Chulainn, the Fenian Cycle, the Kings' Cycle) and the Welsh Mabinogion, with the question of how much is pre-Christian myth and how much medieval literature.",
+    "Caesar, Gallic War · Lebor Gabála Érenn · Táin Bó Cúailnge · the Mabinogion · Cunliffe, The Ancient Celts · Koch, Celtic Culture",
+  ],
+  [
+    "England",
+    "English history and mythology",
+    "var(--orange)",
+    "From Roman Britain and the Anglo-Saxon settlement through Alfred, the Conquest, the Angevins, Magna Carta, the Wars of the Roses, the Tudors and the Reformation, the Civil War, and the making of the constitutional state. Alongside it the legendary matter: Beowulf and the Germanic inheritance, Bede's England, Geoffrey of Monmouth's invented history and the Arthurian cycle from Nennius to Malory, Robin Hood, the Green Man, and how England manufactured a national past.",
+    "Beowulf · Bede · the Anglo-Saxon Chronicle · Geoffrey of Monmouth · Malory, Le Morte d'Arthur · Tombs, The English and Their History · Morris, The Anglo-Saxons",
+  ],
+  [
+    "Scotland",
+    "Scottish history and mythology",
+    "var(--teal)",
+    "Picts, Scots, Britons and Angles; Dál Riata and the kingdom of Alba; Macbeth as he was; the Wars of Independence, Wallace and Bruce; the Stewarts, the Reformation and Knox, the Union of Crowns and of Parliaments, the Jacobite risings, the Clearances, the Enlightenment. Then the mythology and legend: the Pictish stones, the Celtic saints (Columba, Iona), the Fenian material in Gaelic Scotland, the kelpies, selkies and the Sìth, the Border ballads, Ossian and the eighteenth-century invention of Highland tradition.",
+    "Adomnán, Life of Columba · the Declaration of Arbroath · Barbour, The Brus · the Child Ballads · Macpherson's Ossian · Devine, The Scottish Nation · Fraser, From Caledonia to Pictland",
+  ],
+  [
+    "China",
+    "Chinese history and mythology",
+    "var(--gold)",
+    "The Shang and the oracle bones, the Zhou and the Mandate of Heaven, the Warring States and the hundred schools, Qin unification, the Han, the period of division, Tang, Song, Yuan, Ming and Qing down to 1911. Then the mythology, which China kept largely in philosophy and ritual rather than epic: Pangu and Nüwa, the Three Sovereigns and Five Emperors, Yu and the flood, the Queen Mother of the West, the Jade Emperor and the bureaucratic heaven, Daoist immortals, Buddhist arrivals, and the great vernacular novels as a late mythology (Journey to the West, Investiture of the Gods).",
+    "Shijing · Shangshu · Sima Qian, Records of the Grand Historian · Shanhaijing · Zhuangzi · Journey to the West · Lewis, The Early Chinese Empires · Birrell, Chinese Mythology",
+  ],
+  [
+    "Japan",
+    "Japanese history and mythology",
+    "var(--red)",
+    "Jōmon and Yayoi, the Yamato state and the Chinese model, Nara and Heian court culture, the rise of the warriors, Kamakura, the Mongol invasions, the Sengoku wars and unification, Tokugawa isolation, Meiji. Then the mythology as the Kojiki and Nihon Shoki set it down to legitimise the imperial house: Izanagi and Izanami, Amaterasu and the cave, Susanoo and the serpent, the descent of Ninigi, Jimmu; Shinto as practice, kami and shrines, the Buddhist synthesis, the yōkai tradition, and the Tale of the Heike as a national epic of defeat.",
+    "Kojiki · Nihon Shoki · Man'yōshū · Tale of Genji · Tale of the Heike · Totman, A History of Japan · Breen and Teeuwen, A New History of Shinto",
+  ],
+]
+
+[[tracks]]
+id = "history"
+name = "History"
+color = "var(--red)"
+lede = "The history and mythology of one culture at a time, read together: who told each story, what they gained by it, and what the evidence says. Long sourced reports with disputes named, a self-test and a syllabus you can rerun."
+
+[[tracks]]
+id = "marketing"
+name = "Marketing"
+color = "var(--teal)"
+lede = "Building a personal brand from the record of what you actually do: audience, platform economics, cadence, benchmarks. Every unit sourced to platform data or peer-reviewed work and ending in a shipped deliverable."
+
+[[tracks]]
+id = "technology"
+name = "Technology"
+color = "var(--purple)"
+lede = "Working with AI models as tools: which model for which task, how to brief, how to keep a project from rotting, how to verify what the machine wrote before you trust it."
+
+[[tracks]]
+id = "ux"
+name = "User Experience"
+color = "var(--blue)"
+lede = "The practice of UX design, written to be handed to other designers: how to read, build and edit the structure behind a product at any scale, where that work sits in the product cycle and the business, and how to deliver it when the inputs are missing. Every unit sourced to the field's standard works and research, rich in figures, ending in a shipped deliverable."
+
+# S-SP0 (16 Nov 2026): Sport Psychology for Coaches needed a track of its own (syllabus decision D1);
+# S-SPORTS (19 Nov 2026): renamed Sports from Coaching, since the track's later courses are read by athletes and
+# parents too; `planned` lists its courses to come (docs/sports-track-coming-soon.md), drawn as ghost tiles
+[[tracks]]
+id = "sports"
+name = "Sports"
+color = "var(--orange)"
+lede = "Coaching and managing young athletes with what the evidence says: how they develop, the climate a coach creates, the skills a coach may teach, and where a coach's part ends. Every recommendation graded by its evidence, every unit ending in a shipped deliverable."
+planned_note = "Two courses to follow Sport Psychology for Coaches, each designed once it is complete. Open a course to see its scope and what it builds on."
+planned_label = "Builds on"
+planned = [
+  [
+    "Squad",
+    "Running a Squad",
+    "var(--orange)",
+    "For the coach or team manager of a club squad, in an individual or a team sport: how a group becomes a team, roles, cliques and leadership among athletes; selection, playing time and conflict; one-to-one and group meetings; parents; staff and the club; and the logistics of a season, from the calendar to travel with minors.",
+    "Sport Psychology for Coaches: the climate a coach creates, parents, competition day and the coach's line with minors. Logistics has almost no research, so those units are checklists and templates graded as practice.",
+  ],
+  [
+    "Career",
+    "Managing an Athlete's Career",
+    "var(--gold)",
+    "For the athlete below the level at which an agent takes interest, and the parent or coach acting as their manager: what an agent does, sponsorship and how to pitch it, making an athlete marketable, contracts and image rights as questions to ask, prize money and funding, and the career after sport. Marketing a minor is treated first as a safeguarding question.",
+    "The public personal-brand course, for method. Sourced to industry practice, sponsor-side data and platform documentation, labelled as such; licensing rules for agents differ by sport and country, so the course says what to check.",
+  ],
+]
+
+# S-SCE0 (19 Nov 2026): Supply Chain Execution for Product Teams needed a track of its own (syllabus decision D2, docs/supply-chain-execution-syllabus.md);
+# `planned` lists its four courses to come (syllabus decision D12), in the order of the design chat's list, each with its title, its scope line
+# and its teaser word for word: the teaser's opening words are `planned_label`, its rest the row's last field, so the tile shows it whole
+[[tracks]]
+id = "supply-chain"
+name = "Supply Chain"
+color = "var(--gold)"
+lede = "How warehouses, transport and orders run, who works in them, how the software that runs them is bought, and what it costs, for people who build, sell or implement that software. Every claim graded by its evidence, no real vendor assessed, every unit ending in a shipped deliverable."
+planned_note = "Four courses to follow Supply Chain Execution for Product Teams, each designed in its own chat before anything is written. Open a course to see its scope and what you will know after it."
+planned_label = "After this you'll know how to"
+planned_heading = "Coming soon"
+planned = [
+  [
+    "Planning",
+    "Supply Chain Planning for Product Teams",
+    "var(--teal)",
+    "Forecasting, inventory targets, replenishment and the monthly planning cycle: the decisions that tell execution what to move.",
+    "read a demand forecast and say how wrong it is likely to be, explain why a company holds the stock it holds, and follow a replenishment decision from the plan to the purchase order. You'll be able to describe a planner's month, tell planning software from execution software at the points where they meet, and say what a planning tool needs from the systems downstream of it.",
+  ],
+  [
+    "Automation",
+    "Warehouse Automation and Robotics",
+    "var(--orange)",
+    "Conveyors, sorters, goods-to-person systems and mobile robots, and the control software between the machines and the warehouse system.",
+    "tell the main kinds of warehouse automation apart, say which order profile each one suits, and explain what each changes for the people on the floor. You'll be able to draw the line between the warehouse system and the control software, read an automation supplier's claim with the right questions, and say what a site gives up in flexibility when it automates.",
+  ],
+  [
+    "AI",
+    "AI in Supply Chain Execution",
+    "var(--purple)",
+    "Where prediction, optimisation and software agents are used in order, warehouse and transport work, and what the evidence says they do.",
+    "separate older optimisation from newer machine learning and from software agents, place a claimed AI feature on the operation it acts on, and judge it by who carries the risk when it is wrong. You'll be able to say what a person still decides at each level of automation, and grade a vendor's AI claim by the evidence behind it.",
+  ],
+  [
+    "Last mile",
+    "Last Mile and Omni-channel Fulfilment",
+    "var(--blue)",
+    "Store fulfilment, parcel networks, delivery promises and returns: the part of the order's journey the customer sees.",
+    "follow an online order from the buy button to the doorstep and back as a return, explain how a delivery promise is made and what it costs to keep, and compare shipping from a warehouse, a store and a small urban site. You'll be able to describe the work of the store associate, the parcel carrier and the customer service agent, and say where the order, warehouse and transport systems each take part.",
+  ],
+]
+

@@ -11,7 +11,7 @@ description: File a finished Learning Project unit, then update its course data 
 
 Turns a written unit into a filed one: vault, course data, Academy, index. The procedure is `method.md` §7. The design rule holds throughout: Academy is rebuilt by `kit/build.py` from `design/theme.css`; nothing is styled by hand.
 
-**The course's entry.** Every course is one entry in `kit/courses.py`. For a markdown course (Brand + AI, User Experience, any new one) the entry gives the paths used below: `id` (its fresh-check reports go in `audits/<id>/`), `data` (the course's `hub.py`), `vault` (the folder the unit is filed in) and `sourcing_part` (its own part of `sourcing-standard.md`; Part 2 for a markdown course without the key). Below, `<id>`, `<data>` and `<vault>` mean those values for the unit's course; no step names one course's folders.
+**The course's entry.** Every course is one entry, `courses/<id>/course.toml`, read by `kit/courses.py` (S-DEC1). For a markdown course (Brand + AI, User Experience, any new one) the entry gives the paths used below: `id` (its fresh-check reports go in `audits/<id>/`), `data` (the course's `hub.py`), `vault` (the folder the unit is filed in) and `sourcing_part` (its own part of `sourcing-standard.md`; Part 2 for a markdown course without the key). Below, `<id>`, `<data>` and `<vault>` mean those values for the unit's course; no step names one course's folders.
 
 ## 1. Check the unit
 - It is complete: every brief item covered, the deliverable (a markdown course) or Self-test and Carry forward (history) built in full, a Sources list or bibliography file present.

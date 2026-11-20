@@ -1,0 +1,110 @@
+# rome: one Academy course, read by kit/courses.py (S-DEC1, 20 Nov 2026). The keys are the course dict build.py reads;
+# kit/courses.py turns `parts`, `eras` and `ticks` rows and `tracks` values into tuples. Text fields may use the
+# placeholders {content_mods} {total_mods} {nrep} {kwords} (kit/courses.py docstring).
+
+id = "rome"
+family = "history"
+theme = "history"
+num = 2
+short = "Rome"
+label = "ROME"
+name = "Roman history and mythology"
+color = "var(--purple)"
+syllabus = "roman-syllabus.html"
+vault = "courses/rome"
+prompts = "prompts-rome.json"
+prefix = "rm"
+home_id = "rome"
+syl_id = "rome-syllabus"
+syl_anchor = "rs"
+unit_colors.0 = "var(--gold)"
+unit_colors.1 = "var(--orange)"
+unit_colors.2 = "var(--purple)"
+unit_colors.3 = "var(--teal)"
+unit_colors.4 = "var(--red)"
+unit_colors.5 = "var(--orange)"
+unit_colors.6 = "var(--purple)"
+unit_colors.7 = "var(--blue)"
+unit_colors.8 = "var(--teal)"
+unit_colors.9 = "var(--gold)"
+unit_colors.10 = "var(--blue)"
+unit_colors.11 = "var(--red)"
+unit_colors.12 = "var(--purple)"
+unit_colors.13 = "var(--gold)"
+unit_colors.14 = "var(--teal)"
+sections.0 = "Core course"
+sections.11 = "Deep dives"
+sections.14 = "Quality"
+audit_unit = "14"
+default_model = "Opus 5.5"
+parts = [
+  ["I", "Ground rules and origins", ["0", "1", "2"], "c. 1000 to 509 BC, and the gods throughout", "Where the evidence comes from, the land and peoples of Italy, the legends Rome told about its birth, and the religion everything after it ran on."],
+  ["II", "The Republic", ["3", "4", "5"], "509 to 30 BC", "From the expulsion of the kings to Actium: the conquest of Italy, Carthage and the East, then a century of reformers, generals and civil war."],
+  ["III", "The Empire", ["6", "7", "8"], "31 BC to AD 476, and on to 1453", "Augustus and the Principate, the third-century crisis and the Christian empire, to the last emperor in the West and the eastern empire that outlived him."],
+  ["IV", "Practice and legacy", ["9", "10"], "across the whole span", "Law, the army, the household and the city; Ovid, the imperial writers, the art, and how all of it reached you. Ends with the capstone exam."],
+  ["+", "Deep dives", ["11", "12", "13"], "optional", "The fall of the Republic, the Aeneid and Roman philosophy taken to the depth the survey could not reach. Best after the material they extend, or after the capstone."],
+  [
+    "✓",
+    "Quality audit",
+    ["14"],
+    "run when ready",
+    "A check on the course itself, written for the Fable review that closed on 15 Nov 2026 (S-NOAUDIT): the Greek rubric, the cross-references back to Greece, the syllabus itself, and fixes for what falls short.",
+  ],
+]
+eras = [
+  ["Iron Age Italy", -1000, -753, "var(--orange)", "modules 1.1 and 1.2"],
+  ["Regal period", -753, -509, "var(--gold)", "modules 1.3 to 1.6, all of it legend written down five centuries later"],
+  ["Early and middle Republic", -509, -133, "var(--teal)", "units 3 and 4"],
+  ["Late Republic", -133, -27, "var(--red)", "unit 5 and deep dive 11"],
+  ["Principate", -27, 284, "var(--purple)", "units 6 and 7, and module 8.1"],
+  ["Late empire", 284, 476, "var(--blue)", "unit 8; the eastern empire runs on to 1453"],
+]
+era_title = "1,500 years, to scale"
+era_range = "1000 BC → AD 476"
+era_aria = "Timeline from 1000 BC to AD 476, to scale: the regal period is a sixth of it; the late Republic is a thin red slice."
+# each tick's position: (years from 1000 BC / 1476) x 100, one decimal (was an f-string in courses.py)
+ticks = [["1000 BC", "0"], ["509 BC", "33.3%"], ["AD 1", "67.8%"], ["476", "100%"]]
+era_note = "The late Republic that most people mean by \"ancient Rome\" is the thin red slice: about a century. The kings in the gold band were written about by Romans living in it, five hundred years after the fact. The eastern empire that kept the Roman name until 1453 runs off the right-hand edge."
+eyebrow = "COURSE 2 · ROME"
+h1 = "Roman history and mythology"
+lede = "Four parts and three deep dives, {content_mods} modules, plus a quality audit. History and myth are interleaved more tightly than in the Greek course, because Rome told its myths as history: the legends sit inside the periods that produced them. Every module is a long-form report with named primary sources, the places where the accounts disagree, a ten-question self-test and three ideas to carry forward."
+rules = '''
+<li><strong>Parts I to IV in order.</strong> Each report assumes the ones before it. Part I matters more here than in Greece: the evidence for Rome's first four centuries is late and partisan, and every later report assumes you know how late. Part IV ends with a capstone exam.</li>
+      <li><strong>Deep dives when you want them.</strong> Unit 11 (the fall of the Republic) extends unit 5; unit 12 (the Aeneid) extends module 6.3 and, for Aeneas, module 1.3; unit 13 (Roman philosophy) extends modules 4.5, 5.6, 7.3 and 10.2. Take each straight after the material it extends, or after the capstone.</li>
+      <li><strong>Greece behind you.</strong> Rome points back to the Greek course instead of repeating it: Greek 7.3 and 7.4 for the Greek side of the conquest, 2.2 for the Olympians, 9.3 and 10.12 for reception. Open the Greek module when a report names it.</li>
+      <li><strong>One or two a sitting, self-test before moving on.</strong> Under 7 of 10, re-read. The carry-forward ideas are the ones later reports lean on.</li>
+      <li><strong>A study text, not scripture.</strong> Citations are given so you can check them against the primary sources. Where sources disagree, the report says so in a red-edged box.</li>'''
+rules_count = "five rules"
+spine = '''
+<p>The reports keep naming these. Read the primary ones at least once each, in this order, any decent translation: Livy, books 1 to 5 and then 21 to 30 · Polybius, books 1 to 6 · Virgil, Aeneid (book 8 with module 1.3) · Ovid, Fasti, then Metamorphoses · Sallust, The War with Catiline · Caesar, The Gallic War · Cicero, selected letters (Shackleton Bailey's translation) and the Second Philippic · Plutarch's Roman Lives as each name comes up · Augustus, Res Gestae · Tacitus, Annals · Suetonius, The Twelve Caesars · Seneca, Letters to Lucilius (a selection), Epictetus, Handbook, and Marcus Aurelius, Meditations (with deep dive 13) · Ammianus Marcellinus, books 14 to 31.</p>
+    <p>Secondary, three only: T. J. Cornell, The Beginnings of Rome; Mary Beard, John North and Simon Price, Religions of Rome; Mary Beard, SPQR, with Peter Heather, The Fall of the Roman Empire.</p>'''
+closing = "Rome is the second course, after Greece. Eight more are coming: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese."
+tile = "The Palatine huts to the last emperor in the West, myth read against history."
+figure.kind = "timeline"
+figure.title = "The Struggle of the Orders: what the plebs won, and when"
+figure.start = -500
+figure.end = -160
+figure.ticks = [-500, -400, -300, -200]
+figure.caption = "Dates as module 3.1 gives them, from Livy (Varronian years). Bars: the decemvirate, 451–449; military tribunes with consular power in place of the consuls in about two years out of three, 444–367; the offices opened from the Licinian-Sextian laws to the lex Hortensia, 367–287. Events: the tribunate after the secession of 494; the Twelve Tables 451–449; the quaestorship opened in 421 and first held by plebeians in 409; the consulship from the Licinian-Sextian laws, Lucius Sextius consul in 366; the first plebeian dictator 356 and censor 351; the Publilian laws 339; the lex Ogulnia opening the pontificate and augurate in 300; the secession of 287; both consuls plebeian for the first time in 172."
+figure.spans = [
+  {from = -451, to = -449, label = "Decemvirs", tone = 6},
+  {from = -444, to = -367, label = "consular tribunes", tone = 4},
+  {from = -367, to = -287, label = "offices open", tone = 5},
+]
+figure.events = [
+  {at = -494, label = "Tribunes of the plebs", tone = 6},
+  {at = -451, label = "Twelve Tables", tone = 6},
+  {at = -421, label = "Quaestorship opened", tone = 4},
+  {at = -409, label = "First plebeian quaestors", tone = 4},
+  {at = -366, label = "Sextius consul", tone = 5},
+  {at = -356, label = "First plebeian dictator", tone = 5},
+  {at = -351, label = "First plebeian censor", tone = 5},
+  {at = -339, label = "Publilian laws", tone = 5},
+  {at = -300, label = "Lex Ogulnia: priesthoods", tone = 5},
+  {at = -287, label = "Secession; lex Hortensia", tone = 1},
+  {at = -172, label = "Both consuls plebeian", tone = 1},
+]
+card_units = 14
+status = "available"
+# modules queued for the next writing session: shown with a 'next' pill until written
+next_up = []

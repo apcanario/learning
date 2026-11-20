@@ -1,0 +1,15 @@
+# Edition 'greece' (P70, 1 Nov 2026; S-DEC1, 20 Nov 2026): a build of Academy with only some courses, from the same
+# sources, theme, shell and rules. `courses`: the ids of the courses it holds ("all": every course); `omit`: what it
+# leaves out, by panel kind ('changelog', 'backlog', 'build': a course's "How it was built" and build pages, 'figures':
+# the Figure kinds page) and 'planned' (the planned courses on the home); `site`: the folder build.py writes, relative
+# to kit/. `python3 kit/build.py --edition <name>` builds one; the full Academy is the edition "academy" and the default.
+# kit/courses.py turns `courses` and `omit` into tuples and "all" into None.
+
+title = "Academy · Greece"
+courses = ["greece"]
+omit = ["changelog", "backlog", "build", "figures", "planned"]
+site = "editions/greece"
+# P80: its own private artifact
+artifact = "https://claude.ai/artifact/M9g881qokC98jC5VEo1Tk3"
+# P80: the edition's own constants where the shared line names a course it does not hold (Brand + AI)
+rules."One unit per chat, built in full." = "Each report is written from its published prompt, in its own chat, with its closing artefact: a ten-question self-test and three ideas to carry forward."

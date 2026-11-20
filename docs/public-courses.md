@@ -36,7 +36,7 @@ Two courses written to be shared with anyone, adapted from the private courses B
 
 | | PB · Building a Personal Brand on Instagram and YouTube | BW · Building with AI | SP · Sport Psychology for Coaches | SCE · Supply Chain Execution for Product Teams |
 |---|---|---|---|---|
-| `kit/courses.py` entry | `personal-brand` | `building-with-ai` | `sport-psychology` | `supply-chain-execution` |
+| course entry (`courses/<id>/course.toml`) | `personal-brand` | `building-with-ai` | `sport-psychology` | `supply-chain-execution` |
 | Data | `generator/data/personal-brand/` | `generator/data/building-with-ai/` | `generator/data/sport-psychology/` | `generator/data/supply-chain-execution/` |
 | Vault | `courses/personal-brand/` | `courses/building-with-ai/` | `courses/sport-psychology/` | `courses/supply-chain-execution/` |
 | Fresh checks | `audits/personal-brand/` | `audits/building-with-ai/` | `audits/sport-psychology/` (and `safety-read-<code>.md` for SP9, DD-SP1, DD-SP2) | `audits/supply-chain-execution/` (no safety reader) |

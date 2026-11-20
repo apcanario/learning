@@ -1,0 +1,22 @@
+# building-with-ai: one Academy course, read by kit/courses.py (S-DEC1, 20 Nov 2026). The keys are the course dict build.py reads;
+# kit/courses.py turns `parts`, `eras` and `ticks` rows and `tracks` values into tuples. Text fields may use the
+# placeholders {content_mods} {total_mods} {nrep} {kwords} (kit/courses.py docstring).
+#
+# The public courses (11 Nov 2026, backlog row G-0; docs/public-courses.md): adapted from Brand + AI's A and B for
+# any reader, each in its own data folder and vault so the private courses can move to a private site later. Each sits
+# in the same track as its private original for now. No private term may reach either (kit/private_terms.py).
+
+id = "building-with-ai"
+family = "markdown"
+short = "Building with AI (public)"
+label = "BUILDING WITH AI"
+name = "Building with AI"
+color = "var(--purple)"
+home_id = "building-with-ai"
+status = "in progress"
+tracks.BW = ["technology", "Building with AI · public"]
+tiles.BW = "A working method for building a real project with AI."
+data = "generator/data/building-with-ai/hub.py"
+vault = "courses/building-with-ai"
+sourcing_part = "Part 6"
+eyebrow = "BUILDING WITH AI"

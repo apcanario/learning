@@ -10,7 +10,7 @@ Paths, all in the repo https://github.com/apcanario/learning: `kit/` is the Pers
 |---|---|---|---|
 | Academy | The one site: the Academy home listing every course by track, with the Changelog and the Backlog; Greece and Rome in full (syllabi, every report); Brand + AI as two courses (A, B), each with its units, briefs, build order, bibliography and changelog; User Experience with its first course IA (coming soon, 29 Oct 2026); the eight history courses to come | https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH (version 55 onward, 28 Oct) · GitHub Pages: https://apcanario.github.io/academy/ (`kit/deploy.sh` through the public repo `apcanario/academy`) | kit `build.py` from `kit/courses.py` (`family` history or markdown; markdown through `kit/mdcourse.py`), `shell.css` = `design/theme.css`; A1, A3 and A2 of `academy.md` done 28 Oct: the build is `kit/academy/`, a shell plus one file per report fetched on navigation (sizes in `kit/README.md`); publish with `kit/publish_files.py` |
 
-A5 done 28 Oct 2026: the Brand + AI units are read from the vault, `courses/brand-ai/` (no copy under `gen/`); a new course of either family is a folder plus a `kit/courses.py` entry.
+A5 done 28 Oct 2026: the Brand + AI units are read from the vault, `courses/brand-ai/` (no copy under `gen/`); a new course of either family is a folder plus a `kit/courses.py` entry (since S-DEC1, 20 Nov 2026: a folder whose `course.toml` is the entry; no existing file under `kit/` is edited (a history course adds its folder `kit/<id>/`)).
 
 A4 done 28 Oct 2026: every course has a generated "How it was built" page (`#greece-built`, `#rome-built`, `#brand-a-built`, `#brand-b-built`; `kit/howbuilt.py`).
 
@@ -109,8 +109,8 @@ The public course **SCE · Supply Chain Execution for Product Teams**, created 1
 
 ## Courses to come (Personal Mythology)
 
-Listed in `kit/courses.py` (`NEXT`) as coming soon, with a scope and reading spine each: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese. A new course is added with the `new-course` skill.
+Listed in `catalog.toml` (`next`; `NEXT` in `kit/courses.py`) as coming soon, with a scope and reading spine each: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese. A new course is added with the `new-course` skill.
 
 ## Courses to come (Supply Chain)
 
-Listed in `kit/courses.py` (`planned` of the Supply Chain track in `THEMES`) as coming soon, after Supply Chain Execution for Product Teams and in this order, each with its title, its scope line and its teaser, word for word from the design chat's list of 19 Nov 2026 (syllabus decision D12): Supply Chain Planning for Product Teams; Warehouse Automation and Robotics; AI in Supply Chain Execution; Last Mile and Omni-channel Fulfilment. None has a syllabus, a brief, a data folder or a writing row; each needs its own design chat on Fable before anything is queued for it (row P-SCE10). A course on the logistics provider's business is left off: it is promised only if DD-SCE1 proves too thin.
+Listed in `catalog.toml` (`planned` of the Supply Chain track in `tracks`, `THEMES` in `kit/courses.py`) as coming soon, after Supply Chain Execution for Product Teams and in this order, each with its title, its scope line and its teaser, word for word from the design chat's list of 19 Nov 2026 (syllabus decision D12): Supply Chain Planning for Product Teams; Warehouse Automation and Robotics; AI in Supply Chain Execution; Last Mile and Omni-channel Fulfilment. None has a syllabus, a brief, a data folder or a writing row; each needs its own design chat on Fable before anything is queued for it (row P-SCE10). A course on the logistics provider's business is left off: it is promised only if DD-SCE1 proves too thin.

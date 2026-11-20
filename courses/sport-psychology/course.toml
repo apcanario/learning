@@ -1,0 +1,25 @@
+# sport-psychology: one Academy course, read by kit/courses.py (S-DEC1, 20 Nov 2026). The keys are the course dict build.py reads;
+# kit/courses.py turns `parts`, `eras` and `ticks` rows and `tracks` values into tuples. Text fields may use the
+# placeholders {content_mods} {total_mods} {nrep} {kwords} (kit/courses.py docstring).
+#
+# The third public course (16 Nov 2026, row S-SP0; docs/sport-psychology-syllabus.md): written for any coach, adapted from
+# nothing. `source_units = false` tells kit/thin.py that its writer's packet has no source units, carries the course's seed
+# bibliography, and holds only Parts 1 and 7 of the sourcing standard.
+
+id = "sport-psychology"
+family = "markdown"
+short = "Sport Psychology (public)"
+label = "SPORT PSYCHOLOGY"
+name = "Sport Psychology for Coaches"
+color = "var(--orange)"
+home_id = "sport-psychology"
+status = "in progress"
+tracks.SP = ["sports", "Sport psychology · public"]
+tiles.SP = "Mental skills, climate and referral for coaches of athletes aged 10 to 25."
+data = "generator/data/sport-psychology/hub.py"
+vault = "courses/sport-psychology"
+sourcing_part = "Part 7"
+source_units = false
+# kit/next_prompt.py prints this course's rows from the template there
+prompts_doc = "docs/sport-psychology-prompts.md"
+eyebrow = "SPORT PSYCHOLOGY"
