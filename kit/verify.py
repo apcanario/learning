@@ -13,7 +13,8 @@ S-DEC4 (20 Nov 2026): the courses named below are Academy's; the checks name non
 (see LEAD, SECOND, MDNAV, SAMPLE and PRIVATE after SITE). A check needing a property the edition's courses lack (a
 history course with Greece's structure, a second history course, a markdown course) prints what it leaves out and why;
 an edition without a history course runs the split on a markdown course (check_split_md). What's new's 10 to 25 levels
-hold for an edition holding every course; another is held to the build's scale (NEW_INTERVAL). Private terms: the
+hold for an edition holding every course and for any edition whose largest day reaches 10 levels at the build's scale
+(10 x NEW_INTERVAL words); a smaller one is held to that scale only, 0 levels included, and the run says so. Private terms: the
 default edition's public courses; another edition's own files, unless it holds a course marked `private`.
 The site is a shell plus one file per report (docs/academy.md A2), since P20 one file per syllabus and per Brand + AI
 briefs and bibliography page, and since P22 one file per history course home, so it is served over local HTTP from
@@ -905,14 +906,14 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
                     fails.append(f'{pid} {label}: the days are drawn in {strokes}, not each in the tone of the course that filed the most words that day ({want_t})')
                 if pid == 'new':
                     top = max(rs, key=lambda x: x[1] or 0)
-                    if FULL:   # the range Academy's filings set (P93); S-DEC4: an edition holding fewer courses is held to the build's scale
+                    if FULL or (top[1] or 0) >= 10 * NEW_INTERVAL:   # the range Academy's filings set (P93); S-DEC4: any edition whose largest day can reach 10 levels at the build's scale is held to it
                         if not 10 <= top[2] <= 25: fails.append(f'{pid} {label}: its largest day ({top[0]}) stands {top[2]} levels, not 10 to 25')
                     else:
-                        if top[2] != int(top[1] // NEW_INTERVAL) or top[2] > 25: fails.append(f'{pid} {label}: its largest day ({top[0]}, {top[1]} words) stands {top[2]} levels, not {int(top[1] // NEW_INTERVAL)} (a level every {NEW_INTERVAL} words, build.py NEW_INTERVAL) at most 25')
+                        if top[2] != int((top[1] or 0) // NEW_INTERVAL) or top[2] > 25: fails.append(f'{pid} {label}: its largest day ({top[0]}, {top[1]} words) stands {top[2]} levels, not {int((top[1] or 0) // NEW_INTERVAL)} (a level every {NEW_INTERVAL} words, build.py NEW_INTERVAL) at most 25')
                         if not _NEW_SAID:
                             _NEW_SAID.append(1)
-                            print(f"What's new: edition {EDITION} holds {len(HAS)} of {len(ALL_COURSES)} courses; its largest day ({top[0]}, {top[1]:,} words) is checked against the build's scale, "
-                                  f"{int(top[1] // NEW_INTERVAL)} levels at {NEW_INTERVAL:,} words a level, at most 25; the 10 to 25 range is Academy's filings' and is left out here")
+                            print(f"What's new: edition {EDITION}'s largest day ({top[0]}, {top[1] or 0:,} words) is under {10 * NEW_INTERVAL:,} words, so the build's scale ({NEW_INTERVAL:,} words a level) cannot raise it to 10 levels; it is checked against that scale, "
+                                  f"{int((top[1] or 0) // NEW_INTERVAL)} levels, at most 25; the 10 to 25 range is left out here" + (' (it stands 0 levels: no rise is drawn)' if top[2] == 0 else ''))
             c = h.get('cover') or {}
             if c.get('bad'): fails.append(f'{pid} {label}: the frame\'s corners {c["bad"]} fall outside the turned layout {c.get("size")}: an edge of the drawing shows')
             if h.get('outside') and w >= 390: fails.append(f'{pid} {label}: the rises {h["outside"]} have rings outside the frame or in its fade')
@@ -2543,6 +2544,7 @@ def main():
             pg.click(f'#home a.course[href="#{S_}"]'); pg.wait_for_timeout(80)
             step(f'{S_} home', dict(id=S_, nav=S_, u=f'COURSE {SECOND["num"]}', t=SECOND['short'], arrows=True, prev=False, next=True))
             rome_reps = pg.eval_on_selector_all(f'#{S_} a.hrow', 'as => as.map(a => a.dataset.target)')
+        else: print('nav: no second history course in this edition; its course home, report, next, last report, prev and resume steps are left out')
         if rome_reps:
             pg.evaluate(f"document.querySelectorAll('#{S_} details[data-mods]').forEach(d => d.open = true)")
             first = rome_reps[min(4, len(rome_reps) - 1)]
@@ -2679,9 +2681,10 @@ def main():
         # 5.5) in an edition without a second, or the first markdown course's home and first reading page in an edition
         # without a history course
         rp = rome_reps[3] if len(rome_reps) > 3 else (rome_reps[0] if rome_reps else (SECOND['syl_id'] if SECOND else (rid(LEAD, '5.5') if LEAD else md_read)))
-        TAB = SECOND['home_id'] if SECOND else (LEAD['home_id'] if LEAD else MDSUBS[0][0])   # P70
+        TAB = SECOND['home_id'] if SECOND else (LEAD['home_id'] if LEAD else (MDSUBS[0][0] if MDSUBS else 'home'))   # P70
         TAB_GRID = f'#{TAB} .part .cgrid' if (SECOND or LEAD) else f'#{TAB} .cgrid'   # a markdown course home has no parts
         DESK = rid(LEAD, '2.3') if LEAD else md_read   # S-DEC4: the desktop pass's report
+        if rp is None or DESK is None: fails.append('tablet and desktop: the edition holds no history course with reports ' + ', '.join(SPLIT_MODS) + ' and no markdown course with a unit filed; their report checks have no page to open')   # S-DEC4: fail with a reason, never crash
         ctx.close()
 
         # ---- tablet: wider column, two-column cards, the drawer still a drawer -----------------------------------
@@ -2712,52 +2715,54 @@ def main():
         pg.click('#closeB'); pg.wait_for_timeout(300)
         if not pg.evaluate("document.getElementById('drawer').getBoundingClientRect().right <= 0"): fails.append('tablet: drawer did not close')
         # a report, reached through the shell (P13): the column and measure once the fetch has landed
-        pg.evaluate(f"location.hash = '{rp}'"); ready(pg); pg.wait_for_timeout(50)
-        tr = pg.evaluate(f"""() => ({{loaded: document.getElementById('{rp}').hasAttribute('data-loaded'),
-          main: document.querySelector('main').getBoundingClientRect().width,
-          sw: document.documentElement.scrollWidth - document.documentElement.clientWidth,
-          ps: document.querySelectorAll('#{rp} .report p').length}})""")
-        if not tr['loaded'] or not tr['ps']: fails.append(f'tablet: report {rp} not loaded through the shell: {tr}')
-        if not 740 <= tr['main'] <= 768 or tr['sw'] > 0: fails.append(f'tablet: report {rp} column {tr["main"]}px, horizontal scroll {tr["sw"]}px')
-        print('tablet: drawer is a drawer (off screen, 360 px with backdrop when open); column', t['main'], 'px; report', rp, 'loaded through the shell,', tr['ps'], 'paragraphs')
+        if rp:   # S-DEC4: None only in an edition the guard above already fails
+            pg.evaluate(f"location.hash = '{rp}'"); ready(pg); pg.wait_for_timeout(50)
+            tr = pg.evaluate(f"""() => ({{loaded: document.getElementById('{rp}').hasAttribute('data-loaded'),
+              main: document.querySelector('main').getBoundingClientRect().width,
+              sw: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+              ps: document.querySelectorAll('#{rp} .report p').length}})""")
+            if not tr['loaded'] or not tr['ps']: fails.append(f'tablet: report {rp} not loaded through the shell: {tr}')
+            if not 740 <= tr['main'] <= 768 or tr['sw'] > 0: fails.append(f'tablet: report {rp} column {tr["main"]}px, horizontal scroll {tr["sw"]}px')
+            print('tablet: drawer is a drawer (off screen, 360 px with backdrop when open); column', t['main'], 'px; report', rp, 'loaded through the shell,', tr['ps'], 'paragraphs')
         ctx.close()
 
         # ---- desktop: persistent sidebar ----------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'desktop', 1280, 800, False)
         if lay[0] != 1280: fails.append(f'desktop layout {lay}: expected width 1280')
         check_panels(pg, 'desktop', fails)
-        pg.evaluate(f"location.hash = '{DESK}'"); ready(pg); pg.wait_for_timeout(80)
-        s = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
-          const main = document.querySelector('main').getBoundingClientRect(), top = document.querySelector('.top').getBoundingClientRect();
-          const act = d.querySelector('[data-navctx]:not([hidden]) .ditem.is-active');
-          const list = d.querySelector('[data-navctx]:not([hidden])');
-          return {left: r.left, w: r.width, h: r.height, vh: innerHeight, hidden: d.getAttribute('aria-hidden'),
-                  menu: getComputedStyle(document.getElementById('menuB')).display, close: getComputedStyle(document.getElementById('closeB')).display,
-                  backdrop: getComputedStyle(document.getElementById('backdrop')).display,
-                  mainLeft: main.left, mainW: main.width, topLeft: top.left, topRight: top.right,
-                  active: act ? act.dataset.target : null, listScroll: list ? getComputedStyle(list).overflowY : null,
-                  measure: getComputedStyle(document.querySelector('#''' + DESK + ''' .report p')).maxWidth,
-                  ch68: (() => { const p = document.querySelector('#''' + DESK + ''' .report p'), t = document.createElement('span');
-                    t.style.whiteSpace = 'nowrap'; t.textContent = '0'.repeat(68); p.appendChild(t); const w = t.getBoundingClientRect().width; t.remove(); return w; })(),
-                  fonts: ''' + json.dumps(THEME_FONTS) + '''.filter(n => ![...document.fonts].some(f => f.family.replace(/"/g, '') === n && f.status === 'loaded')),
-                  home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns),
-                  ml: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(document.querySelector('#home .ml-grid') ? getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns : '')}; }''')
-        if s['left'] != 0 or s['w'] != SIDE or s['h'] < s['vh'] - 1: fails.append(f'desktop: sidebar not at the left edge, {SIDE} px, full height: {s}')
-        if s['hidden'] != 'false': fails.append(f'desktop: sidebar aria-hidden={s["hidden"]}')
-        if s['menu'] != 'none' or s['close'] != 'none': fails.append(f'desktop: menu/close buttons shown ({s["menu"]}, {s["close"]})')
-        if s['backdrop'] != 'none': fails.append('desktop: backdrop present')
-        if s['mainLeft'] < SIDE: fails.append(f'desktop: content starts at {s["mainLeft"]}px, under the sidebar')
-        if not 740 <= s['mainW'] <= 768: fails.append(f'desktop: main column {s["mainW"]}px, expected about 760')
-        if s['topLeft'] != SIDE or s['topRight'] != 1280: fails.append(f'desktop: top bar spans {s["topLeft"]}..{s["topRight"]}, expected {SIDE}..1280')
-        if s['active'] != DESK: fails.append(f'desktop: sidebar does not highlight the current report ({s["active"]})')
-        if s['listScroll'] != 'auto': fails.append(f'desktop: sidebar list overflow-y {s["listScroll"]}, expected auto')
-        # P39: the measure is 68ch of the report's own font (DM Sans, about 744 px), and fits the 760 px column
-        mw = float(s['measure'].replace('px', '')) if s['measure'].endswith('px') else 0
-        if abs(mw - s['ch68']) > 2 or not 560 <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
-        if s['fonts']: fails.append(f'desktop: theme fonts not loaded from fonts/: {s["fonts"]}')
-        if UNSERVED: print(f'desktop: the brand names {UNSERVED}, not in fonts/ (verify.py serves only {VENDORED}); its fallback is drawn and measured, and its loading is not checked')
-        if s['home'] != 2 or (HIST and s['ml'] != 2): fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')
-        if not HIST: print('desktop: no history course in this edition; the home\'s mythos/logos block (History\'s) is not measured')
+        if DESK:   # S-DEC4: None only in an edition the guard above already fails
+            pg.evaluate(f"location.hash = '{DESK}'"); ready(pg); pg.wait_for_timeout(80)
+            s = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
+              const main = document.querySelector('main').getBoundingClientRect(), top = document.querySelector('.top').getBoundingClientRect();
+              const act = d.querySelector('[data-navctx]:not([hidden]) .ditem.is-active');
+              const list = d.querySelector('[data-navctx]:not([hidden])');
+              return {left: r.left, w: r.width, h: r.height, vh: innerHeight, hidden: d.getAttribute('aria-hidden'),
+                      menu: getComputedStyle(document.getElementById('menuB')).display, close: getComputedStyle(document.getElementById('closeB')).display,
+                      backdrop: getComputedStyle(document.getElementById('backdrop')).display,
+                      mainLeft: main.left, mainW: main.width, topLeft: top.left, topRight: top.right,
+                      active: act ? act.dataset.target : null, listScroll: list ? getComputedStyle(list).overflowY : null,
+                      measure: getComputedStyle(document.querySelector('#''' + DESK + ''' .report p')).maxWidth,
+                      ch68: (() => { const p = document.querySelector('#''' + DESK + ''' .report p'), t = document.createElement('span');
+                        t.style.whiteSpace = 'nowrap'; t.textContent = '0'.repeat(68); p.appendChild(t); const w = t.getBoundingClientRect().width; t.remove(); return w; })(),
+                      fonts: ''' + json.dumps(THEME_FONTS) + '''.filter(n => ![...document.fonts].some(f => f.family.replace(/"/g, '') === n && f.status === 'loaded')),
+                      home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns),
+                      ml: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(document.querySelector('#home .ml-grid') ? getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns : '')}; }''')
+            if s['left'] != 0 or s['w'] != SIDE or s['h'] < s['vh'] - 1: fails.append(f'desktop: sidebar not at the left edge, {SIDE} px, full height: {s}')
+            if s['hidden'] != 'false': fails.append(f'desktop: sidebar aria-hidden={s["hidden"]}')
+            if s['menu'] != 'none' or s['close'] != 'none': fails.append(f'desktop: menu/close buttons shown ({s["menu"]}, {s["close"]})')
+            if s['backdrop'] != 'none': fails.append('desktop: backdrop present')
+            if s['mainLeft'] < SIDE: fails.append(f'desktop: content starts at {s["mainLeft"]}px, under the sidebar')
+            if not 740 <= s['mainW'] <= 768: fails.append(f'desktop: main column {s["mainW"]}px, expected about 760')
+            if s['topLeft'] != SIDE or s['topRight'] != 1280: fails.append(f'desktop: top bar spans {s["topLeft"]}..{s["topRight"]}, expected {SIDE}..1280')
+            if s['active'] != DESK: fails.append(f'desktop: sidebar does not highlight the current report ({s["active"]})')
+            if s['listScroll'] != 'auto': fails.append(f'desktop: sidebar list overflow-y {s["listScroll"]}, expected auto')
+            # P39: the measure is 68ch of the report's own font (DM Sans, about 744 px), and fits the 760 px column
+            mw = float(s['measure'].replace('px', '')) if s['measure'].endswith('px') else 0
+            if abs(mw - s['ch68']) > 2 or not 560 <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
+            if s['fonts']: fails.append(f'desktop: theme fonts not loaded from fonts/: {s["fonts"]}')
+            if UNSERVED: print(f'desktop: the brand names {UNSERVED}, not in fonts/ (verify.py serves only {VENDORED}); its fallback is drawn and measured, and its loading is not checked')
+            if s['home'] != 2 or (HIST and s['ml'] != 2): fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')
+            if not HIST: print('desktop: no history course in this edition; the home\'s mythos/logos block (History\'s) is not measured')
         # the sidebar's own targets and gaps, every unit open
         pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed'))")
         res = pg.evaluate(BOX_JS, ['#drawer', GAP])
@@ -2971,8 +2976,6 @@ def main():
     # edition (Academy) as before, its public courses (private_terms.py with no argument); another edition over its own
     # built files (private_terms.py --edition), unless it holds a course marked `private` in its course.toml (the
     # owner's own courses, which name him), where it is left out and said so
-    bad_pub = [c['id'] for c in ALL_COURSES if c.get('private') and c['id'] in private_terms.PUBLIC]
-    if bad_pub: fails.append(f'private terms: {bad_pub} marked private in course.toml and public in private_terms.PUBLIC')
     if EDITION == DEFAULT_EDITION:
         pt = private_terms.check()
         fails += ['private term in a public course: ' + x for x in pt]

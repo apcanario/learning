@@ -22,7 +22,9 @@ What every page depends on (GLOBAL) forces the full run when it changed: kit/*.p
 design/theme.css, kit/fonts/, catalog.toml, the edition's editions/<name>.toml and its brand's brands/<name>.toml.
 A first run with no record for the edition is a full run; `--full` always is. The record is written only after ALL
 CHECKS PASSED, so a failed run never marks a page as checked. kit/verify-hashes.json is committed with the site: a
-chat clones the repo, so a record left out of git would make every chat's first run a full one.
+chat clones the repo, so a record left out of git would make every chat's first run a full one. A record that is
+missing, unreadable or of the wrong shape for the edition gives a full run, and the first line says which.
+Tool versions (Python markdown, Playwright, Chromium) are not hashed: run `--full` after a tool upgrade.
 """
 import hashlib, json, pathlib, re
 
@@ -120,12 +122,18 @@ class Scope:
             elif c:
                 parts += ['course ' + c['id'], course_all[c['id']]]
             self.pages_now[pid] = _sha(*parts)
-        rec = self._load().get(edition)
+        self.unreadable = False
+        st = self._load()
+        rec = st.get(edition)
+        bad = rec is not None and not (isinstance(rec, dict) and isinstance(rec.get('global'), dict) and isinstance(rec.get('pages'), dict))
+        if bad: rec = None
         self.changed = []
         if full:
             self.pages, self.mode = None, 'full: --full'
         elif not shell:
             self.pages, self.mode = None, f'full: {site.name}/index.html missing'
+        elif self.unreadable or bad:
+            self.pages, self.mode = None, f'full: {state.name} unreadable or malformed for edition {edition}'
         elif not rec:
             self.pages, self.mode = None, f'full: no passed run recorded for edition {edition} ({state.name})'
         else:
@@ -150,9 +158,16 @@ class Scope:
 
     def _load(self):
         try:
-            return json.loads(self.state_path.read_text())
-        except (FileNotFoundError, ValueError):
+            st = json.loads(self.state_path.read_text())
+        except FileNotFoundError:
             return {}
+        except (ValueError, UnicodeDecodeError):
+            self.unreadable = True
+            return {}
+        if not isinstance(st, dict):
+            self.unreadable = True
+            return {}
+        return st
 
     @property
     def full(self):

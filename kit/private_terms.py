@@ -7,11 +7,11 @@ python3 kit/private_terms.py <file>...  only these files (a writer's or a checke
 python3 kit/private_terms.py --edition <name>   every file of that edition's built site (kit/<site>/, built.html
                                         included), whatever courses it holds (S-DEC4); edition_files(name) for verify.py
 
-The no-argument run is academy's: PUBLIC and the kit/academy glob below name its public courses and its site. An
+The no-argument run is academy's: PUBLIC (below) gives its public courses and the kit/academy glob its site. An
 edition's own output is checked with --edition or explicit files. A given file that is not UTF-8 text is skipped and
 named (S-DEC4); the no-argument run reads only text.
 
-The public courses are the courses (courses/<id>/course.toml) named in PUBLIC. The terms are kit/private-terms.txt: one per line,
+The public courses (PUBLIC) are every course whose courses/<id>/course.toml does not set `private = true` (S-DEC4). The terms are kit/private-terms.txt: one per line,
 whole word, case-insensitive; "warn:" lines are printed and do not fail. Prints OK and exits 0 when nothing fails.
 verify.py runs check() and fails the build on any hit.
 
@@ -28,7 +28,9 @@ import pathlib, re, sys
 
 R = pathlib.Path(__file__).resolve().parent
 ROOT = R.parent
-PUBLIC = ('personal-brand', 'building-with-ai', 'sport-psychology', 'supply-chain-execution')
+sys.path.insert(0, str(R))
+from courses import COURSES as _ALL
+PUBLIC = tuple(c['id'] for c in _ALL if not c.get('private'))   # S-DEC4 (checker M2): every course without `private = true` in its course.toml
 # S-SCE0: what a dated list's lead-in line must name (one of these, case-insensitive) besides a year
 DATED_BY = ('Gartner', 'Forrester', 'IDC', 'Nucleus Research', 'MarketScape', 'Magic Quadrant', 'Value Matrix', 'analyst', 'filing', 'annual report', '10-K')
 
