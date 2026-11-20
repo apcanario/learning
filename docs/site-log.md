@@ -40,6 +40,7 @@ Rules for an entry (`docs/method.md` §8):
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-19 | S-SCE0 | Supply Chain | Supply Chain Execution for Product Teams, a new course, added: 20 units to write; four more courses listed as coming soon in the Supply Chain track. |
 | 2026-11-19 | S-SPORTS | Sports | The Coaching area is renamed Sports, and lists two courses to come: Running a Squad, and Managing an Athlete's Career. |
 | 2026-11-19 | DD-SP2 | Sports | DD-SP2, Deep dive: weight, body and who decides, written; SP3, SP6 and DD-SP1 were also corrected. |
 | 2026-11-19 | DD-SP1 | Sports | DD-SP1, Deep dive: the coach's line with minors, written; SP2, SP9 and SP10 were also corrected. |
