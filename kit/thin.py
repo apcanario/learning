@@ -303,7 +303,7 @@ def cmd_insert(rec_path):
         ic = subprocess.run([sys.executable, str(R / 'index_check.py')], cwd=str(R), capture_output=True, text=True)
         if ic.returncode != 0:
             raise ValueError('kit/index_check.py failed: ' + (ic.stdout + ic.stderr).strip()[-1500:])
-    except Exception as ex:                                  # restore everything
+    except (Exception, SystemExit) as ex:                    # restore everything (pack.load stops with SystemExit)
         for p, txt in old.items():
             pathlib.Path(p).write_text(txt, encoding='utf-8')
         die(f'insert failed, every file restored: {ex}')
@@ -460,7 +460,7 @@ def cmd_stage(argv):
     c, code = r['c'], r['code']
     import pack
     data = ROOT / c['data']
-    ddir = pack.data_dir(c)                                   # S-DEC2: the pack's notes/ or the old data folder
+    ddir = pack.data_dir(c)                                   # S-DEC2: the pack's notes/
     case = next(ddir.glob('case-*.md'), None) or next(ddir.glob('case-facts.md'), None)
     sp = c['sourcing_part'][5:]
     own = c.get('source_units', True) is False                # S-SP0: a course adapted from nothing
@@ -581,9 +581,11 @@ def cmd_stage(argv):
         stl = next((s for s in secs if s.startswith('## Staleness')), '')   # W-BW5: the staleness table, where a search-on unit gets its row
         sec = (sec or '') + ('\n' + stl if stl else '')
         (out / 'index-rows.txt').write_text(sec if sec else '\n'.join(ln for ln in ix.splitlines() if re.search(r'\b' + re.escape(code) + r'\b', ln)), encoding='utf-8')
+        import pack                                          # insert derives title from the filed unit's front matter
+        _tt = pack.vault(c).get(code, (None, {}))[1].get('title', r['unit'][1])
         (out / 'records.template.json').write_text(json.dumps(dict(
             row=opt['row'], code=code, course=c['id'], date='YYYY-MM-DD hh:mm',
-            reading=dict(id=f'read-{code.lower()}', course=r['sc']['key'], title=r['unit'][1], covers=[code], name=f'{code} · {r["unit"][1]}', intro='…'),
+            reading=dict(id=f'read-{code.lower()}', course=r['sc']['key'], title=_tt, covers=[code], name=f'{code} · {_tt}', intro='…'),
             status='written D Mon', next_unit='…', version='vN · D Mon 2026', hub_changelog='vN. …',
             case_lines=[], flag_rows=[dict(date='D Mon 2026', raised_by=code, affects='…', flag='…', proposed='…')], flags_carried=[],
             index_edits=[dict(old='exact text of the row now', new='the row as filed')],

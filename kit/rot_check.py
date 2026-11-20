@@ -16,7 +16,7 @@ ROOT = R.parent
 RETIRED = ('python3 build_hub.py', 'personal-assistant Project', 'personal assistant', 'named `learning-project`',
            'due after B1', 'kit/BACKLOG.md`', 'kit/NEXT-SESSION.md', 'docs/handoffs/', 'check_page.py` run')
 ALLOW = ('until 17 Nov 2026', 'once `kit/BACKLOG.md`', 'RETIRED')   # a line that says the thing is gone may name it
-LIVE = ['SETUP.md', 'README.md', 'design/README.md', 'generator/README.md', 'kit/README.md', 'kit/next_prompt.py',
+LIVE = ['SETUP.md', 'README.md', 'design/README.md', 'kit/README.md', 'kit/next_prompt.py',
         'docs/method.md', 'docs/project-instructions.md', 'docs/public-courses.md', 'docs/sport-psychology-prompts.md']
 MON = {m: i + 1 for i, m in enumerate('Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split())}
 

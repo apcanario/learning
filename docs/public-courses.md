@@ -47,7 +47,7 @@ Two courses written to be shared with anyone, adapted from the private courses B
 | Track | Marketing | Technology | Coaching (new) | Supply Chain (new) |
 | Flags | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` |
 
-The reader of each is the persona in its preamble (`PRE` in its `units_data.py`). `reader.md` is unchanged. With the User Experience family these are the Project's exceptions to its single-reader rule.
+The reader of each is the persona in its preamble (the `. `reader.md` is unchanged. With the User Experience family these are the Project's exceptions to its single-reader rule.
 
 ## 3 · Rules every writing row follows
 

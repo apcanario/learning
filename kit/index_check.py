@@ -39,7 +39,7 @@ from howbuilt import front, plus_months        # noqa: E402
 import pack                                    # noqa: E402
 
 MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-ALIAS = {'gen/': 'generator/', 'vault/': 'courses/'}
+ALIAS = {'vault/': 'courses/'}
 
 
 def short_date(iso):

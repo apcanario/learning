@@ -261,10 +261,14 @@ def insert(c, rec, get):
         if t.count('\n[pack.status]\n') != 1:
             raise ValueError(f'{c["data"]}: no [pack.status] table for the status {rec["status"]!r}')
         i = t.index('\n[pack.status]\n') + len('\n[pack.status]\n')
-        out[path] = t[:i] + f'{code} = {toml_str(rec["status"])}\n' + t[i:]
+        line = f'{code} = {toml_str(rec["status"])}'
+        if re.search(rf'(?m)^{re.escape(code)} = .*$', t):
+            out[path] = re.sub(rf'(?m)^{re.escape(code)} = .*$', lambda _m: line, t, count=1)
+        else:
+            out[path] = t[:i] + line + '\n' + t[i:]
     if 'hub_changelog' in rec:
         t = out.get(path) or get(path)
-        block = f"[[pack.changelog]]\ndate = {toml_str(rec['date'])}\ntext = {toml_str(rec['hub_changelog'])}\n"
+        block = f"[[pack.changelog]]\ndate = {toml_str(rec['date'])}\ntext = {toml_str(rec['hub_changelog'])}\n\n"
         if '\n[[pack.changelog]]\n' in t:
             i = t.index('\n[[pack.changelog]]\n') + 1
             out[path] = t[:i] + block + t[i:]
