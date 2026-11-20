@@ -5,6 +5,8 @@ course: ux · IA · Information Architecture
 model: Opus 5.5
 written: 2026-10-30
 search: off
+name: IA1 · What IA is
+intro: Unit IA1, written 30 Oct 2026 by Opus 5.5 in an isolated agent context that saw only its brief (P31), search off (used only to verify editions, chapters, dates and URLs); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: keep, 0 errors, 4 should-fix, 7 minor, all applied. Four definitions (Rosenfeld, Morville and Arango; Covert; Arango; Garrett), the four lines between IA and navigation, the interface, content strategy and the data model, the discipline's history, what an IA deliverable is for, and a first look at Perqo's three surfaces; six figures. Deliverables: a one-page definition sheet for a product team and the Perqo surfaces map later units build on. Known gaps: About Face's argument is from knowledge of the section, not a re-read; Wurman's 1975 coinage is reported secondhand (Resmini and Rosati, from Morville).
 ---
 
 # IA1 · What information architecture is, and where it sits

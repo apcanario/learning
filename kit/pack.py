@@ -1,20 +1,17 @@
-"""A markdown course's pack: the loader shim that replaces generator/data/<slug>/hub.py (S-DEC2, 20 Nov 2026;
-docs/decoupling.md §4). kit/build.py, kit/verify.py, kit/howbuilt.py, kit/index_check.py, kit/next_prompt.py, kit/thin.py
-and kit/private_terms.py read a markdown course's data through load(c), data_dir(c) and files(c) here, never by path.
+"""A markdown course's pack: the loader of a markdown course's data (S-DEC2, 20 Nov 2026; docs/decoupling.md §4), which
+replaced generator/data/<slug>/hub.py. kit/build.py, kit/verify.py, kit/howbuilt.py, kit/index_check.py, kit/next_prompt.py,
+kit/thin.py and kit/private_terms.py read a markdown course's data through load(c), data_dir(c) and files(c) here, never by path.
 
   load(c)       an object with the attribute names hub.py had (COURSES, PRE, AIMS, READINGS, ORDER, STATUS, NEXT_UNIT,
                 VERSION, CHANGELOG, DONE_ROWS, AUDIT_LOG, FRAME, BUILD_*, ORDER_*, BRIEFS_LEDE, ...); a new object on every
                 call (build.py fills in READINGS paths and sets WRITTEN on it)
   data_dir(c)   the folder of the course's other files (case-*.md, syllabus-flags.md, bibliography.md, research): an
                 `md` path of a READINGS entry is relative to it
-  files(c)      the course's data files, for private_terms.py (what it scanned in the data folder before)
+  files(c)      the course's data files, for private_terms.py
   source(c)     the repo path the "How it was built" page's footer names as the data file
 
-Two shapes, told apart by the course's `data` key in courses/<slug>/course.toml (until the last course has moved and
-generator/ is removed):
-
-  data = "generator/data/<slug>/hub.py"     the old data file, run as a module (data_dir: its folder)
-  data = "courses/<slug>/course.toml"       the pack (data_dir: courses/<slug>/notes/)
+A markdown course's `data` key in courses/<slug>/course.toml is that same file, `data = "courses/<slug>/course.toml"`.
+courses/_template/ is the pack of a new course, with ⟨…⟩ placeholders (kit/courses.py skips a folder starting with '_').
 
 The pack (one folder, no Python):
 
@@ -29,7 +26,8 @@ The pack (one folder, no Python):
 The `[pack]` table (every key optional unless marked):
 
   [pack]
-  source = "generator/data/<slug>/hub.py"   the path the How it was built footer names (byte identity until S-DEC3)
+  source = "generator/data/<slug>/hub.py"   the path the How it was built footer names, where it is not course.toml
+                                            (the moved courses keep their old hub.py's path: byte identity until S-DEC3)
   course_note = "..."                       any plain string key becomes the attribute of its name upper-cased:
   order_lede = "..."                        COURSE_NOTE, ORDER_LEDE, ORDER_FOOT, BIB_NOTE, BRIEF_LABEL, BUILD_LEDE,
   order_foot = "..."                        LEARN_LEDE, TITLE, BAR, ... (a key repeating DEFAULTS below is left out)
@@ -74,7 +72,7 @@ Derived, never typed (decoupling §4):
 
 DEFAULTS below are the engine's generic copy (identical in every course when it moved); a course key overrides one.
 """
-import datetime, importlib.util, json, pathlib, re, tomllib, types
+import datetime, json, pathlib, re, tomllib, types
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -89,28 +87,24 @@ DEFAULTS = dict(
 _SPECIAL = {'source', 'version', 'order', 'done_rows', 'status', 'courses', 'readings'}
 
 
-def is_pack(c):
-    return c['data'].endswith('.toml')
+def _path(c):
+    if not c['data'].endswith('.toml'):
+        raise SystemExit(f'{c["id"]}: data {c["data"]!r} is not a pack (courses/<slug>/course.toml; kit/pack.py)')
+    return ROOT / c['data']
 
 
 def data_dir(c):
-    p = ROOT / c['data']
-    return p.parent / 'notes' if is_pack(c) else p.parent
+    return _path(c).parent / 'notes'
 
 
 def source(c):
     """The data file the How it was built footer names."""
-    if not is_pack(c):
-        return c['data']
     return _toml(c)['pack'].get('source', c['data'])
 
 
 def files(c):
-    """The course's data files (not its units): before, the .py and .md files of the data folder; now course.toml,
-    briefs.md, pages/*.md and the .md files directly in notes/."""
-    p = ROOT / c['data']
-    if not is_pack(c):
-        return sorted(f for f in p.parent.iterdir() if f.suffix in ('.py', '.md'))
+    """The course's data files (not its units): course.toml, briefs.md, pages/*.md and the .md files directly in notes/."""
+    p = _path(c)
     out = [p] + [f for f in [p.parent / 'briefs.md'] if f.exists()]
     out += sorted((p.parent / 'pages').glob('*.md'))
     out += sorted(f for f in data_dir(c).glob('*.md')) if data_dir(c).is_dir() else []
@@ -118,7 +112,7 @@ def files(c):
 
 
 def _toml(c):
-    with open(ROOT / c['data'], 'rb') as f:
+    with open(_path(c), 'rb') as f:
         return tomllib.load(f)
 
 
@@ -172,18 +166,9 @@ def _value(v):
     return v
 
 
-def _old(c):
-    spec = importlib.util.spec_from_file_location('hub_' + c['id'].replace('-', '_'), ROOT / c['data'])
-    d = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(d)
-    return d
-
-
 def load(c):
     """The course's data as an object with hub.py's attribute names (a fresh object on every call)."""
-    if not is_pack(c):
-        return _old(c)
-    path = ROOT / c['data']
+    path = _path(c)
     pk = _toml(c).get('pack')
     if pk is None:
         raise SystemExit(f'{c["data"]}: no [pack] table')

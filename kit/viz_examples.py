@@ -1,7 +1,7 @@
 """The figure examples page (V1, 29 Oct 2026): one example of every kind kit/viz.py draws (eleven at V1; P44, 29 Oct 2026, added line, bars, scatter, range and
 the matrix's numeric mode, sixteen figures in all), each built on
 Perqo, the fictional flexible-benefits platform of the Information Architecture course brief
-(generator/data/ux/units_data.py). Every Perqo name and number here is invented for this page and labelled so.
+(courses/ux/briefs.md). Every Perqo name and number here is invented for this page and labelled so.
 
 build.py calls write(SITE, crumbs) after it has written the fetched files: this writes academy/viz-examples.html,
 the panel's content, rendered from Markdown with ```viz fences by mdcourse.render_md (the path a markdown unit takes,

@@ -22,9 +22,9 @@ TEXTS = {   # where each course's texts are (the files Academy reads its reading
     'brand-a': sorted((V / 'brand-ai').glob('A*.md')) + sorted((V / 'brand-ai').glob('DD-A*.md'))
                + [ROOT / 'courses/brand-ai/notes/audience-growth-across-platforms.md'],
     'brand-b': sorted((V / 'brand-ai').glob('B*.md')) + sorted((V / 'brand-ai').glob('DD-B*.md')),
-    'ux-ia': sorted((V / 'ux').glob('*.md')),
-    'personal-brand-pb': sorted((V / 'personal-brand').glob('*.md')),   # G-R (16 Nov 2026)
-    'building-with-ai-bw': sorted((V / 'building-with-ai').glob('*.md')),
+    'ux-ia': [f for f in sorted((V / 'ux').glob('*.md')) if f.name != 'briefs.md'],   # S-DEC2: the pack's briefs.md is no text
+    'personal-brand-pb': [f for f in sorted((V / 'personal-brand').glob('*.md')) if f.name != 'briefs.md'],   # G-R (16 Nov 2026)
+    'building-with-ai-bw': [f for f in sorted((V / 'building-with-ai').glob('*.md')) if f.name != 'briefs.md'],
 }
 SETS = {
     'game-icons': dict(repo='game-icons/icons', clone='game-icons_icons', licence='CC BY 3.0', site='game-icons.net', licence_file='license.txt',

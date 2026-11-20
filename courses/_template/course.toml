@@ -1,0 +1,95 @@
+# _template: the pack of a new markdown course, one course and three placeholder units. Copy this folder to
+# courses/<slug>/, rename `_template` and replace every ⟨…⟩ (in this file, briefs.md and pages/), then:
+# cd kit && python3 build.py && python3 verify.py
+# kit/courses.py skips this folder (its name starts with '_'), so the build never reads the placeholders.
+#
+# The keys above [pack] are the course's entry: the course dict build.py reads (copy the keys a course of the same family
+# has that this one needs, e.g. `prompts_doc`, `source_units`, `dated_lists`). Everything under [pack] is the course data,
+# read by kit/pack.py, whose docstring is the schema; kit/courses.py strips it from the registry dict. Also in the pack:
+# briefs.md (the shared preamble and every brief), pages/*.md (the long HTML blocks, theme classes only: design/README.md
+# lists them) and, once there is one, notes/ (case file, syllabus-flags.md, bibliography.md). The units are filed in this
+# folder, courses/<slug>/<code>-<slug>.md, with the front matter of docs/method.md §7 (A5).
+#
+# Derived, not typed here (kit/pack.py): STATUS (each filed unit's `written`; [pack.status] only where the text differs),
+# NEXT_UNIT (the first ORDER code not filed), WRITTEN (kit/build.py, from the vault), each unit's reading page (its front
+# matter `intro`, and `name` where it is not "<code> · <title>"), VERSION (the top changelog row's "v<n>. " and date).
+
+id = "⟨slug⟩"
+family = "markdown"
+short = "⟨Short name⟩"
+label = "⟨SHORT NAME⟩"
+name = "⟨Course family name⟩"
+color = "var(--⟨colour⟩)"
+home_id = "⟨slug⟩"
+status = "in progress"
+# one track per course key under [[pack.courses]]: [track id in catalog.toml, label]; tiles: its home-card sentence
+tracks.A = ["⟨track id⟩", "⟨Track label⟩"]
+tiles.A = "⟨One line for the Learn tile.⟩"
+# the course data: the [pack] table below, read by kit/pack.py
+data = "courses/⟨slug⟩/course.toml"
+vault = "courses/⟨slug⟩"
+# docs/sourcing-standard.md: the course's own part (howbuilt.py)
+sourcing_part = "Part ⟨n⟩"
+eyebrow = "⟨SHORT NAME⟩"
+
+[pack]
+course_note = '⟨One line: the sourcing standard and the deliverable rule, as the reader should see them.⟩'
+order_lede = 'One row per unit in writing order.'
+order_foot = 'The count starts at {start}.'
+bib_note = 'Every link cited in the written material, alphabetical by title.'
+# not read by any kit/ script (the v5.1 standalone hub's identity and tiles); kept as in the other packs
+title = '⟨Hub title⟩'
+bar = '⟨SHORT NAME⟩'
+brand_html = '⟨SHORT⟩ <span>/</span> ⟨NAME⟩'
+out = '⟨slug⟩.html'
+theme_key = '⟨slug⟩-theme'
+learn_c = 'var(--red)'
+build_c = 'var(--orange)'
+home_lede = '⟨One or two sentences.⟩ <strong>Learn</strong> is where the finished units are read. <strong>Build</strong> is where they get made.'
+home_h1 = '⟨Two hubs: one to learn from, one to build with⟩'
+learn_note = '⟨Order of writing, one sentence.⟩'
+template_lede = 'What a project hub needs before the first unit is written: see the new-course skill and design/README.md.'
+template_note = ''
+learn_tile = ['The courses', 'Goals, outcomes, units, and the written material to read.']
+build_tile = ['How the courses get made', 'Procedure, model rules, every brief, bibliography, changelog.']
+# writing order: (code, model, search). The remaining count is derived by kit/mdcourse.py from ORDER and STATUS; do not type it
+order = [
+  ['A1', 'Opus 5.5', 'off'],
+  ['A2', 'Opus 5.5', 'on'],
+  ['DD-A1', 'Opus 5.5', 'off'],
+]
+
+# STATUS where the text is not "written <d Mon>" of the unit's front matter `written`
+[pack.status]
+
+[[pack.courses]]
+key = 'A'
+name = '⟨Course A name⟩'
+color = 'var(--teal)'
+slug = '⟨course-slug⟩'
+goal = 'by the end of the course the reader can ⟨one sentence⟩.'
+tile = '⟨One line for the Learn tile.⟩'
+intro = '⟨Two sentences: what the course is and is not; how many core units and deep dives (8–10 core, 2 or 3 deep dives).⟩'
+outcomes = '<li><strong>Outcome 1</strong> — ⟨measurable⟩ (A1).</li><li><strong>Outcome 2</strong> — ⟨measurable⟩ (A2).</li><li><strong>Outcome 3</strong> — ⟨measurable⟩ (DD-A1).</li>'
+# each unit: code, title, one-line scope, what it ships (its brief is the `## <code>` section of briefs.md); 8–10 core
+# units plus 2 or 3 deep dives (DD-), written last. Optional: aim, takes, gives (the brief's Aim, Takes and Gives lines)
+[[pack.courses.units]]
+code = 'A1'
+title = '⟨Unit title⟩'
+scope = '⟨One-line scope.⟩'
+deliverable = '⟨deliverable⟩'
+[[pack.courses.units]]
+code = 'A2'
+title = '⟨Unit title⟩'
+scope = '⟨One-line scope.⟩'
+deliverable = '⟨deliverable⟩'
+[[pack.courses.units]]
+code = 'DD-A1'
+title = 'Deep dive: ⟨title⟩'
+scope = '⟨One-line scope.⟩'
+deliverable = '⟨deliverable⟩'
+
+# newest first; the top row's "v<n>. " and date are the course's version
+[[pack.changelog]]
+date = '⟨yyyy-mm-dd hh:mm⟩'
+text = 'v1. Hub created from the template on design/theme.css.'

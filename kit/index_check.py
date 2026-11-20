@@ -162,7 +162,7 @@ def markdown(c, secs, fails, stale_want):
     head = c['short']
     if head not in secs:
         return fails.append(f'no "## {head}" section')
-    d = pack.load(c)                    # S-DEC2: the course's pack or its old hub.py
+    d = pack.load(c)                    # S-DEC2: the course's pack
     units = {u[0]: (sc['key'], u[1]) for sc in d.COURSES for u in sc['units']}
     order = {o[0]: o for o in d.ORDER}
     vault = {}

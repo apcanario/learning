@@ -5,6 +5,8 @@ course: ux · IA · Information Architecture
 model: Opus 5.5
 written: 2026-10-30
 search: off
+name: IA2 · The shapes IA takes
+intro: Unit IA2, written 30 Oct 2026 by Opus 5.5 in an isolated agent context that saw only its brief, the writing skill, sourcing Parts 1 and 4, the figure kinds and IA1 (P31), search off (used only to verify editions, chapters, dates and URLs); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 3 errors (three figures that read backwards or added labels the text lacked), 10 should-fix, 17 minor, all applied. The catalogue of ten IA artefacts, each with the question it answers, its readers, its fidelity by stage and what it must not be mistaken for; Garrett's visual vocabulary and Brown's site maps and flowcharts, and what each standardises; the five faults to look for first in someone else's artefact; editing without breaking what others rely on; and the course notation every later figure uses; eight figures, one per artefact family plus the legend. Deliverables: the course notation sheet and the artefact decision table. Known gaps: Brown's chapters and the Polar Bear book's navigation and vocabulary chapters were read only at their openings and headings; Garrett's Quick Reference is undated; Shostack 1984 and Harel 1987 from their abstracts and summaries; UML multiplicity from knowledge.
 ---
 
 # IA2 · The shapes IA takes: the artefact catalogue and the course notation

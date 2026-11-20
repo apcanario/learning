@@ -23,8 +23,9 @@ MON = {m: i + 1 for i, m in enumerate('Jan Feb Mar Apr May Jun Jul Aug Sep Oct N
 
 def live_files():
     fs = [ROOT / f for f in LIVE]
-    fs += sorted((ROOT / 'skills').glob('*/SKILL.md')) + sorted((ROOT / 'generator' / 'data').glob('*/hub.py'))
-    # S-DEC2: a course's data is its course.toml and its pack (briefs.md, pages/*.md), as the hub.py files were before
+    fs += sorted((ROOT / 'skills').glob('*/SKILL.md'))
+    # S-DEC2: a course's data is its course.toml and its pack (briefs.md, pages/*.md), as the hub.py files were before;
+    # courses/_template/ too, the pack a new course copies
     for c in sorted((ROOT / 'courses').glob('*/course.toml')):
         fs += [c] + [f for f in [c.parent / 'briefs.md'] if f.exists()] + sorted((c.parent / 'pages').glob('*.md'))
     return [f for f in fs if f.exists()]

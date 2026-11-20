@@ -1,4 +1,4 @@
-"""Assemble the Academy site in academy/ from the course data in courses.py: academy/index.html, the shell (home,
+"""Assemble the Academy site in academy/ from the course data kit/courses.py loads: academy/index.html, the shell (home,
 drawer, course homes, build pages, changelog, backlog), and one file per report, fetched by the shell on navigation
 (docs/academy.md A2): academy/<course>/r-<id>.html for a history report, academy/<course>/<reading id>.html for a
 markdown course's reading page. Since P20 each syllabus (academy/<course>/syllabus.html) and a markdown course's briefs
@@ -7,7 +7,7 @@ README.md is regenerated on every build.
 
 The root home is Academy (docs/academy.md, A1): every course of both families. History courses (Greece, Rome) are
 built from their kit folders; a markdown course (Brand + AI) is built by mdcourse.py from its data file
-(kit/pack.py: courses/<slug>/course.toml [pack], or generator/data/<slug>/hub.py until it moves; AD5, S-DEC2) into one Academy course per course in that file (AD6, A3): a course home, a
+(kit/pack.py: courses/<slug>/course.toml [pack], briefs.md, pages/; AD5, S-DEC2) into one Academy course per course in that file (AD6, A3): a course home, a
 reading page per written unit, and the "How it is built" pages (method, build order, briefs, bibliography,
 changelog). The site also renders the Project's backlog and chat changelog (docs/) as a Backlog page.
 
@@ -630,7 +630,7 @@ for c in HISTORY:
 
 def load_markdown(c):
     """A markdown course: its data (kit/pack.py: the course's pack, courses/<slug>/course.toml [pack] with briefs.md
-    and pages/, or a not-yet-moved generator/data/<slug>/hub.py; courses, units, briefs, audit log, status) and
+    and pages/: courses, units, briefs, audit log, status) and
     its filed units, read from the vault (courses/<slug>/, A5). A unit is written when its file is in the vault with
     front matter; the data's READINGS add a page's intro and top-bar name, and its research pages (an `md` path
     relative to the data folder, pack.data_dir). WRITTEN is derived here, never typed."""
@@ -698,7 +698,7 @@ def md_courses(c):
                         brief_anchor='b-' if legacy else f'{pid}-b-', parent=c, sc=sc, theme=theme, short=short, key=sc['key'],
                         name=sc['name'], color=sc['color'], units=sc['units'], done=done, nunits=len(sc['units']), nwritten=len(done),
                         status=('available' if len(done) == len(sc['units']) else 'in progress') if done else 'coming soon',
-                        tile=c.get('tiles', {}).get(sc['key'], sc['tile'])))   # P90: courses.py's one sentence for the home card   # a course with no unit filed is coming soon; every unit filed is complete ('available', as a finished history course is; A-5, 3 Nov 2026)
+                        tile=c.get('tiles', {}).get(sc['key'], sc['tile'])))   # P90: course.toml's `tiles` sentence for the home card   # a course with no unit filed is coming soon; every unit filed is complete ('available', as a finished history course is; A-5, 3 Nov 2026)
     return out
 
 

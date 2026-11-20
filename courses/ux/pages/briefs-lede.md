@@ -1,0 +1,1 @@
+One brief per unit, self-contained: the shared preamble (the reader persona, the Perqo example, the course goal, the sourcing standard, the figure rule, the tone) is baked into every open brief. Copy, paste into a new chat, one unit per chat. Written units show their note instead. The course itself is read in <a href="#course-{k}" data-target="course-{k}">Learn · Course {K}</a>.

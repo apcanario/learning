@@ -1,6 +1,6 @@
 """Fail if a private term reaches a public course (G-0, 11 Nov 2026; docs/public-courses.md; extends backlog row P29).
 
-python3 kit/private_terms.py            every public course: its vault, its data folder and its built pages (but built.html),
+python3 kit/private_terms.py            every public course: its vault, its pack and its built pages (but built.html),
                                         and docs/site-log.md, the source of the Backlog and Changelog pages (S-PAGES)
 python3 kit/private_terms.py <file>...  only these files (a writer's or a checker's draft)
 
@@ -11,7 +11,7 @@ verify.py runs check() and fails the build on any hit.
 S-SCE0 (19 Nov 2026; docs/supply-chain-execution-syllabus.md §6, proposal P-SCE2): a course with `dated_lists=True` in
 its course.toml (supply-chain-execution) may name the owner's employer as one entry of a dated list taken from an analyst
 report or a filing, and nowhere else. The employer's terms are the "employer:" lines of private-terms.txt (its name and its
-product names). On that course's files (its vault, its data folder, its built pages; or any file given with --course <id>)
+product names). On that course's files (its vault, its pack, its built pages; or any file given with --course <id>)
 an employer term fails anywhere but inside a dated list: a Markdown list or table (lines starting "- ", "* ", "1. " or "|"),
 or a built page's <ul>, <ol> or table, whose lead-in line (the last line before it that is not part of it) names an analyst
 firm or a filing (DATED_BY) and a year. Every other course is checked exactly as before: an employer term that is also a
@@ -85,7 +85,8 @@ def files():
         if c['id'] not in PUBLIC:
             continue
         mine = sorted((ROOT / c['vault']).glob('*.md'))
-        mine += pack.files(c)              # S-DEC2: its data files (the pack's, or the old data folder's .py and .md)
+        mine += pack.files(c)              # S-DEC2: its data files (course.toml, briefs.md, pages/, notes/)
+        mine = list(dict.fromkeys(mine))   # briefs.md is in the vault folder and in the pack: read once
         # built.html is left out: the "How it was built" page is generated from docs/method.md and links the private
         # repository by its owner's handle on every course; what it shows publicly is row P24's decision
         mine += sorted(f for f in (R / 'academy').glob(f'{c["id"]}-*/*.html') if f.name != 'built.html')

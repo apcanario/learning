@@ -1,0 +1,1 @@
+One brief per unit, self-contained: the shared preamble is baked into every open brief. Copy, paste into a new chat in the Learning Project, one unit per chat. The course itself is read in <a href="#course-{k}">Learn · Course {K}</a>.

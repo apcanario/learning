@@ -1,6 +1,6 @@
 """The markdown course family for build.py (docs/academy.md A3): Brand + AI, and any course whose units are
 Markdown files and whose content is the data object kit/pack.py loads (the old hub.py's names: COURSES, PRE, READINGS,
-ORDER, STATUS, ...; from the course's pack, courses/<slug>/course.toml [pack], or a not-yet-moved hub.py; AD5, S-DEC2).
+ORDER, STATUS, ...; from the course's pack, courses/<slug>/course.toml [pack], briefs.md, pages/; AD5, S-DEC2).
 
 One Academy course per entry in the data file's COURSES (AD6), each its own drawer context, with:
   the course home        goal, outcomes, progress, the units in writing order

@@ -41,7 +41,7 @@ NOTES = {   # what one row needs beyond the template
 
 
 def load(c):
-    return pack.load(c)                 # S-DEC2: the course's pack or its old hub.py
+    return pack.load(c)                 # S-DEC2: the course's pack
 
 
 def rows():
@@ -303,7 +303,7 @@ def prompt(r, nxt):
     if car:
         P.append("**1c. Carried proposals** (standing rule, Pedro, 15 Nov 2026: a proposal is listed in the reply on delivery, appended to the next prompt and worked in that chat unless he removes it). Each row below was raised by an earlier chat with its ⚠ flag on what it disturbs elsewhere in the project; work each now, after step 1b and before the packet is staged, a correction to a unit under the limits of step 1b, a kit or record change as it is written; a row Pedro removed from this list before the prompt was pasted is not worked. A brief change or a task only Pedro can do is not in this list; it stays *proposed*. Each row worked moves to `docs/CHANGELOG.md` with this row's close.\n"
                  + '\n'.join(f'- **{a}.** {b}' + (f' ⚠ {c}' if c and not c.startswith('⚠') else f' {c}') for a, b, c in car))
-    packet = [f"`brief.txt`, built by script with `kit/mdcourse.py`'s `open_brief(d, sc, u)` from `{rel(ROOT / c['data'])}`{' and its briefs.md' if pack.is_pack(c) else ''} (the preamble, the Aim, Takes and Gives lines, the unit brief; never reworded, never retyped)",
+    packet = [f"`brief.txt`, built by script with `kit/mdcourse.py`'s `open_brief(d, sc, u)` from `{rel(ROOT / c['data'])}` and its briefs.md (the preamble, the Aim, Takes and Gives lines, the unit brief; never reworded, never retyped)",
               "`skills/write-unit/SKILL.md`", f"`docs/sourcing-standard.md` Parts 1 and {c['sourcing_part'][5:]}", "the figure kinds (`kit/viz.py`'s docstring and `VIZ_KEYS`)", case]
     if src:
         packet.append("the source units its Takes line names, each with its fresh-check report from `audits/brand-ai/` where one exists: " + ', '.join(f'`{rel(f)}`' for f in src))

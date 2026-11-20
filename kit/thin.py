@@ -17,7 +17,7 @@ half-done change.
         checker unit.md, brief.txt, notes.md, unsure.md, the sourcing standard, the case file, skills/audit-units;
                 with --sources F also sources.md (the writer's source log, S-SP0)
         applier unit.md, report.md (the fresh-check report), fixes.json (made from the report by `fixes`)
-        filer   unit.md, notes.md, unsure.md, report.md, the course's hub.py (a pack: its course.toml), syllabus-flags.md and case file, the course's rows
+        filer   unit.md, notes.md, unsure.md, report.md, the course's course.toml, syllabus-flags.md and case file, the course's rows
                 of docs/courses-index.md, a template of records.json, filer-rules.txt, the day's corrections reports of the course
                 (corrections/, --date, default today) and the stats files given with --stats (C4)
   python3 kit/thin.py fixes REPORT.md FIXES.json
@@ -43,14 +43,14 @@ half-done change.
 
 records.json
   row, code, course (the course id, courses/<id>/), date ("2026-11-15 12:00" for the hub changelog),
-  reading   {id, course, title, covers, name, intro}                 -> READINGS of the course's hub.py (a pack: the unit's
-                                                                        front matter `intro`, and `name` if not "<code> · <title>")
-  status    "written 15 Nov"                                          -> STATUS[code] (a pack: derived from `written`;
-                                                                        [pack.status] only where it differs)
-  next_unit "BW2"  (or "—")                                           -> NEXT_UNIT (a pack: derived, checked)
-  version   "v2 · 15 Nov 2026"                                        -> VERSION (a pack: the changelog row's "v2. ", checked)
-  hub_changelog  "v2. BW1 ... filed ..."                              -> top of CHANGELOG (with `date`; a pack:
-                                                                        a [[pack.changelog]] above the first)
+  reading   {id, course, title, covers, name, intro}                 -> the unit's front matter `intro`, and `name` if not
+                                                                        "<code> · <title>" (READINGS is derived by kit/pack.py)
+  status    "written 15 Nov"                                          -> STATUS[code]: derived from `written`; a line under
+                                                                        [pack.status] only where it differs
+  next_unit "BW2"  (or "—")                                           -> NEXT_UNIT: derived, checked
+  version   "v2 · 15 Nov 2026"                                        -> VERSION: the changelog row's "v2. ", checked
+  hub_changelog  "v2. BW1 ... filed ..."                              -> a [[pack.changelog]] above the first in the
+                                                                        course.toml (with `date`)
   case_lines     ["..."]                                              -> appended to the course's case file
   flag_rows      [{date, raised_by, affects, flag, proposed}]         -> new rows of syllabus-flags.md (numbered, open)
   flags_carried  ["F3"]                                               -> those rows set to carried
@@ -222,7 +222,6 @@ def cmd_insert(rec_path):
     if not c:
         die(f"no course {rec['course']} (no courses/{rec['course']}/course.toml)")
     import pack
-    data = ROOT / c['data']
     ddir = pack.data_dir(c)
     files = {}                      # path -> new text
     old = {}                        # path -> old text, for the restore
@@ -235,35 +234,7 @@ def cmd_insert(rec_path):
         return files[p]
 
     try:
-        if pack.is_pack(c):         # S-DEC2: the course's pack (kit/pack.py); no Python file is edited
-            files.update(pack.insert(c, rec, get))
-        t = '' if pack.is_pack(c) else get(data)
-        if 'reading' in rec and not pack.is_pack(c):
-            r = rec['reading']
-            if r['covers'] != [rec['code']]:
-                raise ValueError('reading.covers must be [code]')
-            ent = '    dict(' + ', '.join(f'{k}={v!r}' for k, v in r.items()) + '),\n'
-            if re.search(r'^READINGS = \[\]', t, flags=re.M):
-                t = re.sub(r'^READINGS = \[\]', 'READINGS = [\n' + ent + ']', t, count=1, flags=re.M)
-            else:
-                i = t.index('READINGS = [')
-                j = t.index('\n]', i)
-                t = t[:j + 1] + ent + t[j + 1:]
-        if 'status' in rec and not pack.is_pack(c):
-            m = re.search(r'^STATUS = \{(.*)\}', t, flags=re.M)
-            if not m:
-                raise ValueError('STATUS is not a one-line dict')
-            inner = m.group(1).strip()
-            add = f"{rec['code']!r}: {rec['status']!r}"
-            t = t[:m.start()] + 'STATUS = {' + (inner + ', ' if inner else '') + add + '}' + t[m.end():]
-        if 'next_unit' in rec and not pack.is_pack(c):
-            t = re.sub(r"^NEXT_UNIT = .*$", f"NEXT_UNIT = {rec['next_unit']!r}", t, count=1, flags=re.M)
-        if 'version' in rec and not pack.is_pack(c):
-            t = re.sub(r"^VERSION = .*$", f"VERSION = {rec['version']!r}", t, count=1, flags=re.M)
-        if 'hub_changelog' in rec and not pack.is_pack(c):
-            t = one(t, 'CHANGELOG = [\n', f"CHANGELOG = [\n    ({rec['date']!r}, {rec['hub_changelog']!r}),\n", 'hub CHANGELOG')
-        if not pack.is_pack(c):
-            files[data] = t
+        files.update(pack.insert(c, rec, get))   # S-DEC2: the course's pack (kit/pack.py); no Python file is edited
 
         if rec.get('case_lines'):
             case = next((f for f in ddir.glob('case-*.md')), None)
@@ -321,10 +292,9 @@ def cmd_insert(rec_path):
             if str(p).endswith('.py'):
                 compile(pathlib.Path(p).read_text(encoding='utf-8'), str(p), 'exec')
         mod = pack.load(c)                                   # S-DEC2: the pack, derived again from the files just written
-        if pack.is_pack(c):
-            for k, a in (('next_unit', 'NEXT_UNIT'), ('version', 'VERSION')):
-                if k in rec and (getattr(mod, a) if k == 'next_unit' else getattr(mod, a).split(' · ')[0]) != (rec[k] if k == 'next_unit' else rec[k].split(' · ')[0]):
-                    raise ValueError(f'{a} is derived ({getattr(mod, a)!r}), not {rec[k]!r}: check the vault and the changelog row')
+        for k, a in (('next_unit', 'NEXT_UNIT'), ('version', 'VERSION')):
+            if k in rec and (getattr(mod, a) if k == 'next_unit' else getattr(mod, a).split(' · ')[0]) != (rec[k] if k == 'next_unit' else rec[k].split(' · ')[0]):
+                raise ValueError(f'{a} is derived ({getattr(mod, a)!r}), not {rec[k]!r}: check the vault and the changelog row')
         if rec.get('status') and mod.STATUS.get(rec['code']) != rec['status']:
             raise ValueError('STATUS did not take')
         if rec.get('reading') and not any(rec['code'] in x['covers'] for x in mod.READINGS):
@@ -579,7 +549,7 @@ def cmd_stage(argv):
             if k not in opt:
                 die(f'--{k} is required')
             put(opt[k], f'{k}.md')
-        put(data, 'course.toml' if pack.is_pack(c) else 'hub.py')   # S-DEC2: a pack's course data is its course.toml
+        put(data, 'course.toml')   # S-DEC2: a course's data is its pack's course.toml
         put(ddir / 'syllabus-flags.md')
         if case:
             put(case)

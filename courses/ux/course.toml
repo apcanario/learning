@@ -13,9 +13,253 @@ status = "in progress"
 # panel ids default to <id>-<key>: ux-ia, ux-ia-briefs, ux-ia-b-ia1 (no prefix, no legacy_ids)
 tracks.IA = ["ux", "Information architecture"]
 tiles.IA = "How to read, build and edit a product's structure, from sitemap to system map."
-data = "generator/data/ux/hub.py"
+# the course data: the [pack] table below, read by kit/pack.py (S-DEC2)
+data = "courses/ux/course.toml"
 # the filed units (method.md §7), in this folder beside course.toml
 vault = "courses/ux"
 # sourcing-standard.md: this family's own part (howbuilt.py)
 sourcing_part = "Part 4"
 eyebrow = "USER EXPERIENCE"
+
+# ---- the pack (S-DEC2, 20 Nov 2026): the course data, read by kit/pack.py (its docstring is the schema) -------
+# Everything below sits under [pack]; kit/courses.py strips it from the registry dict. Also in the pack: briefs.md
+# (the preamble and every brief, word for word), pages/*.md (the long HTML blocks), notes/ (case and syllabus-flags
+# files). Derived, not typed here: STATUS (from each unit's `written`; [pack.status] only where the typed string
+# differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top changelog row).
+[pack]
+# the data file the How it was built footer names (byte identity until S-DEC3 changes it on purpose)
+source = 'generator/data/ux/hub.py'
+course_note = "Every unit is sourced to the field's standard works, Nielsen Norman Group research or peer-reviewed studies, labels vendor guidance and practice as such, carries its figures as drawings built from the unit's own content, and ends with a shipped deliverable built on the fictional Perqo."
+order_lede = 'One row per unit in writing order. Opus 5.5 writes; a fresh context checks each unit before filing. "Search" means the unit is written with web search on because its facts are current.'
+order_foot = 'The count starts at {start}.'
+# not read by any kit/ script (the v5.1 standalone hub's identity and tiles); kept as the record. TEMPLATE_BLOCKS was [].
+title = 'User Experience Courses'
+bar = 'USER EXPERIENCE'
+brand_html = 'USER <span>/</span> EXPERIENCE'
+out = 'user-experience-courses.html'
+theme_key = 'ux-theme'
+learn_c = 'var(--blue)'
+build_c = 'var(--orange)'
+home_lede = 'Courses on the practice of UX, written to be handed to other designers. The first is Information Architecture.'
+home_h1 = 'User Experience: the courses'
+learn_note = 'Order of writing: the four parts in order (IA1 to IA12), then the three deep dives, DD-IA1 and DD-IA2 with search on.'
+template_lede = 'What a project hub needs before the first unit is written: see the new-course skill and design/README.md.'
+template_note = ''
+learn_tile = ['The courses', 'Goals, outcomes, units, and the written material to read.']
+build_tile = ['How the courses get made', 'Procedure, model rules, every brief, bibliography, changelog.']
+# writing order: (code, model, search)
+order = [
+  ['IA1', 'Opus 5.5', 'off'],
+  ['IA2', 'Opus 5.5', 'off'],
+  ['IA3', 'Opus 5.5', 'off'],
+  ['IA4', 'Opus 5.5', 'off'],
+  ['IA5', 'Opus 5.5', 'off'],
+  ['IA6', 'Opus 5.5', 'off'],
+  ['IA7', 'Opus 5.5', 'off'],
+  ['IA8', 'Opus 5.5', 'off'],
+  ['IA9', 'Opus 5.5', 'off'],
+  ['IA10', 'Opus 5.5', 'off'],
+  ['IA11', 'Opus 5.5', 'off'],
+  ['IA12', 'Opus 5.5', 'off'],
+  ['DD-IA1', 'Opus 5.5', 'on'],
+  ['DD-IA2', 'Opus 5.5', 'on'],
+  ['DD-IA3', 'Opus 5.5', 'off'],
+]
+
+# STATUS where the typed string is not "written <d Mon>" of the unit's front matter `written`
+[pack.status]
+
+[[pack.courses]]
+key = 'IA'
+name = 'Information Architecture'
+color = 'var(--blue)'
+slug = 'ia'
+goal = "by the end of the course the reader can read any information-architecture artefact a team hands them and say what it claims and what it leaves out; choose and build the right artefact for a system of a given complexity, from a website's sitemap to a cross-surface interaction map that joins the product map to its decision trees and lifecycles; place that work inside a product development cycle with a named touchpoint for product management, engineering, content, sales, support and clients; and deliver a defensible IA when the research, the content or the stakeholders are missing, with every assumption labelled and a test named for each."
+tile = 'How to read, build and edit the structure behind a product, from a sitemap to a system map, and how to deliver it when the inputs are missing.'
+intro = 'For a mid-level UX designer, written to be handed on: what information architecture is, the shapes it takes, how to build it at four levels of complexity on one fictional product (Perqo: a website, an employee app, a backoffice), where it sits in the product cycle and in the business, how to validate it, and how to deliver it anyway when the research, the content or the stakeholders are missing. Twelve core units in four parts and three deep dives.'
+outcomes = '<li><strong>Outcome 1</strong> — reads any IA artefact and draws one in the course notation, chooses an organisation system, and judges a structure by the behavioural evidence on scent, mental models, categories and labels (IA1, IA2, IA3, IA4; DD-IA1 reads five real products this way).</li><li><strong>Outcome 2</strong> — delivers the four Perqo IAs at rising complexity, ending in the interaction map that joins product map, decision trees and lifecycles (IA5, IA6, IA7, IA8).</li><li><strong>Outcome 3</strong> — runs IA inside a product cycle and keeps it whole: a touchpoint matrix, a validation plan with evidence, an incomplete-inputs playbook with an assumption register, and the measurement, governance and shared vocabulary that follow (IA9, IA10, IA11, IA12; DD-IA2, DD-IA3).</li>'
+[[pack.courses.units]]
+code = 'IA1'
+title = 'What information architecture is, and where it sits'
+scope = 'The definitions that hold up, the four systems, the five planes, and the lines between IA and navigation, UI, content strategy and the data model.'
+deliverable = 'one-page definition sheet for a product team + the Perqo surfaces map'
+aim = 'After this unit the reader can define information architecture in four published senses and hold the line between IA and navigation, the interface, content strategy and the data model.'
+takes = 'nothing'
+gives = 'the Perqo surfaces map (every later unit); the four systems (IA3, IA4)'
+[[pack.courses.units]]
+code = 'IA2'
+title = 'The shapes IA takes: the artefact catalogue and the course notation'
+scope = 'Every artefact from sitemap to interaction map: what each is for, who reads it, at what fidelity, and one notation for the whole course.'
+deliverable = 'the course notation sheet + the artefact decision table'
+aim = 'After this unit the reader can name every IA artefact, say what question it answers and who reads it at which fidelity, read one someone else made, and draw one in the course notation.'
+takes = "IA1's surfaces map"
+gives = "the course notation (every figure from IA3 on); the catalogue (IA9's definition of done per artefact); the decision table's 'unit that builds it' column (IA4 to IA8, DD-IA3)"
+[[pack.courses.units]]
+code = 'IA3'
+title = 'How people find and understand things'
+scope = 'Information scent and foraging, mental models, categorisation, labelling: the behavioural research a structure is judged by.'
+deliverable = 'the findability and labelling checklist, applied to a Perqo navigation'
+aim = "After this unit the reader can judge a structure by the behavioural evidence: whether its labels carry scent, whether it matches the user's model, how its categories will be read, and when people search rather than browse."
+takes = "IA1's labelling and search systems; IA2's notation"
+gives = "the criteria IA4's schemes and IA6's navigation are chosen by; the as-is Perqo app navigation IA6 replaces; the behaviour IA11's methods measure; search logs as proxy evidence (IA12)"
+[[pack.courses.units]]
+code = 'IA4'
+title = 'Organisation systems: schemes, structures, objects, taxonomies'
+scope = 'Exact and ambiguous schemes, hierarchy and polyhierarchy, faceted classification, object-oriented UX, taxonomy versus folksonomy.'
+deliverable = 'the Perqo object map + a faceted taxonomy for the benefits catalogue'
+aim = "After this unit the reader can choose an organisation scheme and structure for a given content set, find a product's objects before its pages, and build a faceted taxonomy with its rules."
+takes = "IA3's categorisation and labelling evidence; IA1's surfaces map"
+gives = 'the Perqo object map (IA6, IA7 extends it, IA8); the benefits taxonomy (IA5, DD-IA3)'
+[[pack.courses.units]]
+code = 'IA5'
+title = 'Level 1 · the sales and product website'
+scope = 'From content inventory to sitemap for perqo.com: page types, audiences, depth, and the constraints marketing and search bring.'
+deliverable = 'the perqo.com content inventory and sitemap, with page templates'
+aim = 'After this unit the reader can inventory a marketing site, choose its structure, and hand marketing, engineering and content a sitemap and template catalogue each can read.'
+takes = "IA1's surfaces map; IA2's inventory and sitemap entries; IA3's labelling; IA4's schemes"
+gives = "the perqo.com sitemap and templates (IA8's surface layer; IA10's content touchpoint; DD-IA3's localisation)"
+[[pack.courses.units]]
+code = 'IA6'
+title = 'Level 2 · the client app'
+scope = 'Task-based IA for the Perqo employee app: task inventory, app map, mobile navigation patterns, the core flows as wireflows.'
+deliverable = 'the Perqo app task inventory, app map and three core wireflows'
+aim = 'After this unit the reader can build a task-based app IA, choose its navigation pattern on the evidence, and draw its core flows as wireflows.'
+takes = "IA4's Perqo object map; IA3's as-is navigation and checklist; IA2's wireflow entry"
+gives = "the Perqo app map and three wireflows (IA8; IA11's validation plan tests this IA)"
+[[pack.courses.units]]
+code = 'IA7'
+title = 'Level 3 · the backoffice'
+scope = 'Multi-entity enterprise IA for Perqo Admin: objects, roles and permissions, list-and-detail patterns, workflows and states.'
+deliverable = 'the Perqo Admin object-relationship map, role matrix, navigation model and approval state diagram'
+aim = 'After this unit the reader can build a multi-entity backoffice IA: objects and relationships, roles as a layer, list-and-detail navigation, and a state diagram per lifecycle.'
+takes = "IA4's Perqo object map; IA2's state diagram, matrix and navigation model entries"
+gives = "the Perqo Admin IA (IA8; IA12's assumption register records its decisions; DD-IA2's business case is for Admin)"
+[[pack.courses.units]]
+code = 'IA8'
+title = 'Level 4 · the system map'
+scope = 'The cross-surface interaction map that joins the product map to the decision trees and the purchase and benefit lifecycles.'
+deliverable = 'the Perqo interaction map, in layers, with its decision trees and lifecycle swimlanes'
+aim = 'After this unit the reader can draw a system of several surfaces, actors and lifecycles as one layered map and read it one layer at a time.'
+takes = "IA5, IA6 and IA7's Perqo IAs; IA2's blueprint and cross-surface map entries"
+gives = "the Perqo interaction map (IA10's briefs are built from IA4 to IA8; DD-IA1's comparison)"
+[[pack.courses.units]]
+code = 'IA9'
+title = 'IA in the product development lifecycle'
+scope = 'Where IA work happens in discovery, definition, delivery and maintenance; agile and IA debt; definitions of done; the living document.'
+deliverable = 'the IA workflow across a product cycle, with a definition of done per artefact and a maintenance cadence'
+aim = 'After this unit the reader can place IA work in a product cycle, state when each artefact is done, and keep an IA current under change.'
+takes = "IA2's catalogue; the Perqo artefacts of IA5 to IA8"
+gives = "the IA workflow, definitions of done and maintenance cadence (IA12's loop back; DD-IA3's change control)"
+[[pack.courses.units]]
+code = 'IA10'
+title = 'Touchpoints: what each part of the business needs from the IA'
+scope = 'Product management, engineering, content and marketing, sales, customer success, support, clients, legal: the question each asks and the artefact that answers it.'
+deliverable = 'the touchpoint matrix + three one-page IA briefs (product management, engineering, sales)'
+aim = 'After this unit the reader can say what each function of the business asks of the IA and answer it with the right artefact at the fidelity that function can read.'
+takes = "IA4 to IA8's Perqo IA; IA2's readers and fidelities"
+gives = "the touchpoint matrix and three one-page briefs (DD-IA3's governance forums)"
+[[pack.courses.units]]
+code = 'IA11'
+title = 'Validating an IA: evidence, methods, numbers'
+scope = 'Card sorting, tree testing, first-click tests, search-log and analytics review, usability tests: what each proves, what it costs, how to read the results.'
+deliverable = 'a validation plan for the Perqo app IA, with a tree-test script, a closed card-sort protocol and the analysis template'
+aim = 'After this unit the reader can choose the method that tests a given IA question, run it cheaply, read its numbers, and say when a result is too weak to act on.'
+takes = "IA6's Perqo app IA; IA3's findability evidence"
+gives = "the validation plan, scripts and templates (IA12's tests per assumption; DD-IA2's measurement model)"
+[[pack.courses.units]]
+code = 'IA12'
+title = 'When the inputs are missing: building the backbone anyway'
+scope = 'Faulty or absent information, uncooperative or missing stakeholders, no content, contradictory requirements: how to still deliver a defensible IA.'
+deliverable = 'the incomplete-inputs playbook: triage decision tree, assumption register, stakeholder map, decision log'
+aim = 'After this unit the reader can deliver a defensible IA from proxy evidence, an assumption register, a stakeholder map and a decision log, and keep it revisable.'
+takes = "IA7's Perqo Admin decisions; IA3's search logs as proxies; IA9's cadence and IA11's methods"
+gives = "the incomplete-inputs playbook; the course goal's last clause"
+[[pack.courses.units]]
+code = 'DD-IA1'
+title = 'Deep dive: five information architectures read closely'
+scope = 'Five real products at rising complexity, read from their public screens and published write-ups: what shape each IA takes and why.'
+deliverable = 'five IA readings in the course notation, with a comparison table'
+aim = "After this unit the reader can read a real product's IA from its public screens and published write-ups, in the course notation, and say which decision shaped it."
+takes = "IA2's notation; the four levels (IA5 to IA8) as the frame"
+gives = 'five readings and the lessons for Perqo'
+[[pack.courses.units]]
+code = 'DD-IA2'
+title = 'Deep dive: what IA costs and returns'
+scope = 'The evidence on what bad IA costs and what good IA returns, with every number labelled; a measurement model and a business-case template.'
+deliverable = 'the IA measurement model + a business-case template with sourced ranges'
+aim = 'After this unit the reader can say what findability failure costs on the published evidence, measure an IA with leading and lagging indicators, and build a business case with every number labelled.'
+takes = "IA7's Perqo Admin; IA11's metrics"
+gives = 'the measurement model and business-case template'
+[[pack.courses.units]]
+code = 'DD-IA3'
+title = 'Deep dive: taxonomy and governance at scale'
+scope = 'Enterprise taxonomy, metadata, controlled vocabularies, ownership and change control, localisation: keeping an IA whole as the system grows.'
+deliverable = 'the Perqo governance model + taxonomy change process + controlled vocabulary starter'
+aim = 'After this unit the reader can tell an enterprise taxonomy from a navigation hierarchy, set ownership and change control for both, and detect drift as the system grows.'
+takes = "IA4's taxonomy; IA9's change control; IA10's forums"
+gives = 'the Perqo governance model, change process and controlled vocabulary'
+
+# newest first
+[[pack.changelog]]
+date = '2026-11-17 13:00'
+text = "v20.1. Carried proposal CP-3 (row S-BW): IA6 figure 5, DD-IA2 figure 3 and DD-IA3 figure 1 no longer print the renderer's tone names in their keys; each swatch names what its cells mean ('app' and 'stop'; 'shared', 'perqo.com' and 'Admin'; 'taxonomy' and 'navigation'), and each caption and the sentence that reads the legend say so, with a dated note in each unit (v20's line had counted IA6 figure 5 as done; its keys still read 'tone 3' and 'tone 6'). Re-checked by fresh Opus 5.5 agents from their frames (kit/reviews/cp3/); no cell changed."
+[[pack.changelog]]
+date = '2026-11-17 12:00'
+text = "v20. P84 and P109 (row H-4): a matrix's keys sit under its frame, so they never scroll or fade on a phone; one up to 15% wider than 700 units scales to the desktop column and a wider one keeps its row labels pinned; IA1 figure 4's 'help, download' cell has its key; IA3 figure 4, IA4 figure 8 and IA6 figure 5 no longer name the renderer's tones in keys or captions. Re-checked by fresh Opus 5.5 agents (kit/reviews/p84/, kit/reviews/p109/); prose unchanged."
+[[pack.changelog]]
+date = '2026-11-12 15:30'
+text = "v19. P98 (row W-PB5, step 1b): figure finishes. A bars figure's phone drawing is 258 units, drawn at its own size on a 320 px phone; a compare's value sits wholly on its track or wholly beyond its end. IA6 figure 3 prints 8, 3, 2 and 1 (its decimals dropped). Six changed figures (DD-IA2 1 and 4, IA10 1, IA11 2, IA4 2, IA6 3) re-checked by a fresh Opus 5.5 agent at 320, 390 and 1280 px, dark and light: all pass (kit/reviews/p98/)."
+[[pack.changelog]]
+date = '2026-11-10 22:55'
+text = "v18. DD-IA3 Deep dive: taxonomy and governance at scale written (Opus 5.5, isolated agent context, P31; search off, the standards and the published practice of GOV.UK, eBay and Shopify verified and dated), fresh-checked by a separate Fable 5.2 agent (fix, 3 errors, 8 should-fix, 5 minor; all applied as verified) and filed: reading page under course IA, DD-IA3 marked written, six figures in the course notation, all passed the fresh check; the deliverable is the Perqo governance model, the taxonomy change-request process and the twenty-term controlled-vocabulary starter, with DL-023 to DL-026, proposed; the Perqo register gains DD-IA3's facts; no relief (the text names no object as the vocabulary's sign); the course's fifteen units are written."
+[[pack.changelog]]
+date = '2026-11-10 20:05'
+text = "v17. DD-IA2 Deep dive: what IA costs and returns written (Opus 5.5, isolated agent context, P31; search on, every published figure with its source, sample, date and label, read 10 Nov 2026), fresh-checked by a separate Fable 5.2 agent (fix, 2 errors, 11 should-fix, 7 minor; all applied as verified) and filed: reading page under course IA, DD-IA2 marked written, six figures in the course notation (figures 3 to 6 passed the fresh check; figures 1 and 2, changed by its findings, passed their fourth check, each by a separate re-checker); the evidence register RD-16 to RD-31, the measurement model of fifteen metrics (M-12 to M-19 new), the business-case template and the case filled for Perqo Admin, with DL-021 and DL-022, proposed; the Perqo register gains DD-IA2's facts; no relief (its object, the business case, is a document's argument no outline draws); next unit DD-IA3; Audit 4 at 2 of 3."
+[[pack.changelog]]
+date = '2026-11-10 17:30'
+text = 'v16. DD-IA1 Deep dive: five information architectures read closely written (Opus 5.5, isolated agent context, P31; search on, every observation dated 10 Nov 2026), fresh-checked by a separate Fable 5.2 agent (fix, 2 errors, 12 should-fix, 20 minor; all applied as verified) and filed: reading page under course IA, DD-IA1 marked written, eight figures in the course notation, each passed by a separate re-checker; GOV.UK, the Monzo app, the Stripe Dashboard, Airbnb and Shopify read closely; register rows RD-01 to RD-15, the comparison table and DL-020, proposed; no relief (its object, the Stripe PaymentIntent, is an API record no outline draws); the states figures now widen their gaps to the longest label word; next unit DD-IA2; Audit 4 at 1 of 3.'
+[[pack.changelog]]
+date = '2026-11-10 13:10'
+text = "v15. IA12 When the inputs are missing: building the backbone anyway written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.2 agent (fix, 3 errors, 8 should-fix, 13 minor; all applied as verified) and filed: reading page under course IA, IA12 marked written, six figures in the course notation (2, 3 and 4 passed the check; 5 its second, 1 and 6 their third); the deliverable is the incomplete-inputs playbook: the triage decision tree, the assumption register for Perqo Admin AR-01 to AR-49, the Perqo stakeholder map and the decision log template with DL-017 to DL-019, proposed; the Perqo register gains IA12's facts; the table outline serves the page, for the assumption register; the twelve core units are written; next unit DD-IA1."
+[[pack.changelog]]
+date = '2026-11-10 12:00'
+text = "v14. IA11 Validating an IA: evidence, methods, numbers written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.2 agent (fix, 2 errors, 13 should-fix, 10 minor; all applied as verified, one in part) and filed: reading page under course IA, IA11 marked written, six figures in the course notation (2, 3 and 5 passed the check; 4 its third, 1 and 6 their fifth); the deliverable is the Perqo app validation plan V-01 to V-17 with A.2, the tree-test script TT-1, the closed card-sort protocol CS-1 and the analysis templates TT-A, CS-A, FC-A, UT-A and SG-A, DL-016 proposed; the Perqo register gains IA11's facts; the tree outline serves the page, for the app's tree as tested; Audit 3 at 3 of 4; next unit IA12."
+[[pack.changelog]]
+date = '2026-11-09 19:00'
+text = "v13. IA10 Touchpoints: what each part of the business needs from the IA written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.1 agent (fix, 3 errors, 3 should-fix, 3 minor; all applied as verified, one minor recorded at its own Fix of no change) and filed: reading page under course IA, IA10 marked written, six figures in the course notation (figures 1 to 4 and 6 passed the check; 5 passed its second); the deliverable is the Perqo touchpoint matrix TP-01 to TP-12 with its forums FO-01 to FO-09, the told list per join and decision log entries DL-011 to DL-015 (proposed), and three one-page IA briefs for product management, engineering and sales; the Perqo register gains IA10's facts; the table outline joins the library and the page shows it, for the touchpoint matrix; Audit 3 at 2 of 4; next unit IA11."
+[[pack.changelog]]
+date = '2026-11-09 12:00'
+text = "v12. IA9 IA in the product development lifecycle written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.1 agent (fix, 1 error, 3 should-fix, 8 minor; all applied as verified) and filed: reading page under course IA, IA9 marked written, seven figures in the course notation (figures 1 to 5 passed the check; 6 passed its third, 7 its fourth); IA6 figure 5 and IA7 figures 3 and 4, changed by the filing, passed their third, fourth and second checks; the renderer keeps a matrix column at least as wide as its longest word and the two counts of a level line apart; the deliverable is Perqo's IA workflow across one product cycle, the definition of done for each artefact, the maintenance cadence and the change control with its decision log; its filing applied IA8's decisions where IA4, IA6 and IA7 had not carried them (IA7's card status, model fields, invite condition and object figure; IA6's category-screen state and its figure) and added the version and amendment rule to IA2, re-stamping the faces it names, each with a dated note; the Perqo register gains IA9's facts; the page shows the notebook relief, for the decision log; Audit 3 at 1 of 4; next unit IA10."
+[[pack.changelog]]
+date = '2026-11-09 06:00'
+text = "v11. IA8 Level 4 · the system map written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.1 agent (fix, 1 error, 3 should-fix, 9 minor; applied as verified but the search flag, kept off) and filed: reading page under course IA, IA8 marked written, eight figures in the course notation (figures 3, 4, 5 and 7 passed the check; 1, 2 and 8 their second; 6, the surface layer, its third); the deliverable is the Perqo interaction map in three layers and their connections, with a reading guide; it decides IA6's declined attempt (a notification; IA6's C.2 wireflow, B.4 and notes updated, its figure 7 checked again) and IA7's three open questions (IA7 and IA4 noted); the Perqo register gains IA8's facts; the page shows the Perqo card relief; next unit IA9."
+[[pack.changelog]]
+date = '2026-11-04 01:15'
+text = "v10. IA7 Level 3 · the backoffice written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.1 agent (fix, 0 errors, 6 should-fix, 3 minor; all applied as verified) and filed: reading page under course IA, IA7 marked written, eight figures in the course notation (figures 1 to 4 and 8 passed the check; figure 6, the sitemap, passed on its eighth check, figures 5 and 7, the matrices, on their seventh, each fixed against every report); the deliverable is the Perqo Admin IA (object-relationship map, role-by-section matrix, navigation model, claim-approval state diagram); IA4's, IA5's and IA6's pointers to IA7 answered, each with a dated note; the Perqo register's IA5 proposal decided and IA7's facts appended; a matrix key of four lines or more now hangs down in viz.py; next unit IA8; neither gates a unit."
+[[pack.changelog]]
+date = '2026-11-03 20:40'
+text = "v9. IA6 Level 2 · the client app written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.1 agent (fix, 2 errors, 4 should-fix, 11 minor; all applied but one pointer that held) and filed: reading page under course IA, IA6 marked written, eight figures in the course notation (figure 1 passed on its third check; figures 4, 5 and 8 on their fourth; figures 2, 3, 6 and 7 passed); the deliverables are the Perqo app task inventory, the app map and three wireflows; IA3's What IA6 keeps corrected to name Recent activity; the Perqo register's IA6 proposals decided (all eight taken) and IA6's facts appended; next unit IA7; neither gates a unit."
+[[pack.changelog]]
+date = '2026-11-03 17:30'
+text = "v8. IA5 Level 1 · the sales and product website written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.1 agent (fix, 2 errors, 3 should-fix, 5 minor; all applied) and filed: reading page under course IA, IA5 marked written, seven figures in the course notation (figure 4 passed its first re-check; figure 6, the sitemap, fixed twice and passed on its third check); the deliverables are the perqo.com content inventory, the F3 sitemap and the template catalogue; the Perqo register gains IA5's pages, owners, audit findings, plans, campaign rules, Help centre additions and template counts; next unit IA6; neither gates a unit."
+[[pack.changelog]]
+date = '2026-11-03 13:55'
+text = "v7. IA4 Organisation systems: schemes, structures, objects, taxonomies written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.1 agent (fix, 2 errors, 18 should-fix, 9 minor; all applied) and filed: reading page under course IA, IA4 marked written, eight figures in the course notation (figures 2 and 7 passed their first re-check, figures 5 and 6 their second), the Perqo register gains IA4's objects, relationships and benefits taxonomy; next unit IA5."
+[[pack.changelog]]
+date = '2026-11-03 09:35'
+text = "v6. IA3 How people find and understand things written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Fable 5.1 agent (keep, 0 errors, 2 should-fix, 6 minor; all applied) and filed: reading page under course IA, IA3 marked written, five figures in the course notation (the as-is sitemap fixed after two figure checks and passed on the third); the deliverable is the findability and labelling checklist applied to the as-is Perqo app IA6 replaces; the Perqo register gains IA3's facts, among them the first merchant fact (card offers); IA4 next."
+[[pack.changelog]]
+date = '2026-11-03 07:30'
+text = "v5. Syllabus review (backlog row S-1; Pedro, 3 Nov 2026, 06:35: IA3 'should make sense before IA4 and after IA2 and as a part of the course'; Fable 5.1 reviewed, Pedro approved every edit). Every unit gains an Aim (what the reader can do after it), Takes (the filed units it builds on) and Gives (what later units take from it), printed in every open brief between the preamble and the unit brief and on every unit card (units_data.py AIMS; kit/mdcourse.py open_brief). Four briefs gain one closing sentence each to close two seams: IA3's as-is Perqo app navigation is the structure IA6 replaces, and IA6 keeps the labels IA3's checklist passed; IA4's object map covers the whole product and IA7 extends it for Admin, renaming nothing. IA9's brief points forward to IA11 rather than back. IA3's scope line reads 'the behavioural research a structure is judged by' (its old line described IA11's job). Spencer (2nd ed., 2014) and Hedden (3rd ed., 2022) get their edition and year in the preamble. The three outcomes are rewritten so each unit, the deep dives included, sits under the outcome it serves. The order note says where the audits fall (after Parts 1, 2 and 4; Parts 3 and 4 share one). A register of Perqo's invented facts, generator/data/ux/perqo-facts.md, starts from IA1 and IA2 and is appended at every filing. IA1 and IA2 are unchanged; IA3 is next, from its brief as it now reads."
+[[pack.changelog]]
+date = '2026-11-01 14:00'
+text = "v4. Errata (backlog row H-3; Opus 5.5, own agent contexts, P31: one drafter, one checker before anything was applied, one fresh figure-checker per changed figure). IA2 (P74, P75): the notation gains the reading-direction mark, a small triangle by a relationship label that cannot read left to right or top to bottom, pointing at the object it reads towards (section 5.2 Lines and Labels, the legend, the notation sheet); the legend's Screen row says a button is a control, its Surface: Label row says the title is in lower case, a row says nothing is drawn dashed, and its caption names WCAG 2.2, 1.4.1 and says the tones were added; the cross-surface map is redrawn on a grid with two crossings and every label clear, two labels marked, its surface-to-surface labels made verbs from IA1's table (the paragraph before it changed with them), a count at each end of the object lines, approves in Approvals [over the limit], and its caption's fidelity and citations brought to the text. IA1 (P76): figure 2's caption says what it places and why the structure row is shaded. The Fable 5.1 checks owed (P49) cover both."
+[[pack.changelog]]
+date = '2026-10-30 23:50'
+text = 'v3. IA2 The shapes IA takes: the artefact catalogue and the course notation written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Opus 5.5 agent (fix, 3 errors, 10 should-fix, 17 minor; all applied) and filed: reading page under course IA, IA2 marked written, eight figures; the course notation is set for every later figure; IA3 next; Audit 1 counter 2 of 4 (deferred by Pedro, P49).'
+[[pack.changelog]]
+date = '2026-10-30 19:30'
+text = 'v2. IA1 What information architecture is, and where it sits written (Opus 5.5, isolated agent context, P31; search off), fresh-checked by a separate Opus 5.5 agent (keep, 0 errors, 4 should-fix, 7 minor; all applied) and filed: reading page under course IA, IA1 marked written, six figures; IA2 next; Audit 1 counter 1 of 4 (deferred by Pedro, P49).'
+[[pack.changelog]]
+date = '2026-10-29 22:30'
+text = 'v1. Course IA · Information Architecture created from the template on design/theme.css: the frame, the syllabus (twelve core units in four parts, three deep dives), the shared preamble with the reader persona and the fictional Perqo, one brief per unit, the build order with an audit after each part. Status coming soon; nothing written. The figure kinds the course needs are a backlog row before IA1.'

@@ -15,8 +15,8 @@ order entry with no file each stop the build with the file named.
 Every course has a `family`: 'history' (Greece, Rome and the eight to come: one Markdown report per module in the vault,
 `vault`, since P71-3 (1 Nov 2026; vault.py, mdcourse.history_html), a syllabus with prompts, provenance.json) or
 'markdown' (Brand + AI: units as Markdown in the vault, `vault`, read directly since A5; the course data at `data`:
-the `[pack]` table of this same course.toml, or generator/data/<slug>/hub.py for a course not yet moved; kit/pack.py
-reads either, and this loader drops `pack` from the dict). The root home is Academy and lists every course of both families (docs/academy.md, A1).
+the `[pack]` table of this same course.toml, with briefs.md and pages/ beside it; kit/pack.py reads it, and this
+loader drops `pack` from the dict). The root home is Academy and lists every course of both families (docs/academy.md, A1).
 A markdown course is built by mdcourse.py from its data file into one Academy course per course in that file (A3).
 
 The home card (P90, 4 Nov 2026) carries one sentence per course, two lines at most: a history course's `tile`, a

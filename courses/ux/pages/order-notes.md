@@ -1,0 +1,5 @@
+<div class="report"><ul>
+  <li><strong>Why this order:</strong> Part I (IA1 to IA4) gives the definitions, the notation, the research base and the organisation systems every later figure uses; Part II (IA5 to IA8) builds Perqo one level at a time, each level reusing the previous one's objects and labels, so the levels are written in order; Part III (IA9 to IA12) places the finished IA in the cycle and the business and ends with the missing-inputs playbook, which reuses IA7's decisions as its register; the deep dives last, the comparables and the cost one with search on.</li>
+  <li><strong>Before IA1:</strong> the figure kinds the course needs (a sitemap and object map with notes, a decision tree with labelled branches, a matrix, a state diagram, a swimlane map, a wireflow) are added to <code>kit/viz.py</code> and <code>design/theme.css</code> §4i as their own backlog row; no unit is written until they draw.</li>
+  <li><strong>Rewrite gate:</strong> no new unit starts while a rewrite verdict is open on an earlier one.</li>
+</ul></div>
