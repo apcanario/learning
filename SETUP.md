@@ -9,7 +9,7 @@ Exact steps to stand up the Learning Project and run it.
 2. Open it, click **Set project instructions**, paste everything in `project-instructions.md` below its title line, and click **Save instructions**.
 
 ## 2. Project knowledge
-The Project copies are mirrors; the repo is canonical. The Project holds a named set and nothing else (`docs/method.md` §8 step 4; P30-F1, 17 Nov 2026): `reader.md`, `method.md`, `sourcing-standard.md`, `courses-index.md`, `claude/BACKLOG-chats.md`, `claude/CHANGELOG-chats.md`, and, only while a course is being written, that course's three data mirrors (`claude/<course>-hub.py`, `claude/<course>-units_data.py`, `claude/<course>-syllabus-flags.md`). Everything else (the kit's briefs and rubrics, the theme, the skills, the research files, the finished courses' data) is read from the clone.
+The Project copies are mirrors; the repo is canonical. The Project holds a named set and nothing else (`docs/method.md` §8 step 4; P30-F1, 17 Nov 2026): `reader.md`, `method.md`, `sourcing-standard.md`, `courses-index.md`, `claude/BACKLOG-chats.md`, `claude/CHANGELOG-chats.md`, and, only while a course is being written, that course's three data mirrors (`claude/<course>-course.toml`, `claude/<course>-briefs.md`, `claude/<course>-syllabus-flags.md`). Everything else (the kit's briefs and rubrics, the theme, the skills, the research files, the finished courses' data) is read from the clone.
 
 Replace a knowledge file whenever its source changes: `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` at the end of every chat; `courses-index.md`, `method.md` and the course's data mirrors when they change. From a chat, the Projects tool's `project_write` with the repo path does it.
 
