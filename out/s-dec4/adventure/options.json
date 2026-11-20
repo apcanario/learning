@@ -1,0 +1,309 @@
+[
+ {
+  "id": "greece",
+  "kind": "course",
+  "title": "Personal Mythology · Greece",
+  "state": "Finished: 78 of 78 content reports written (83 modules with the audit unit; `docs/courses-index-archive.md`). Search off: no staleness check is due.",
+  "next": "nothing queued",
+  "row": null,
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": null
+ },
+ {
+  "id": "rome",
+  "kind": "course",
+  "title": "Personal Mythology · Rome",
+  "state": "Finished: 79 of 79 content reports written (85 modules with the audit unit; `docs/courses-index-archive.md`). Search off: no staleness check is due.",
+  "next": "nothing queued",
+  "row": null,
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": null
+ },
+ {
+  "id": "brand-ai",
+  "kind": "course",
+  "title": "Brand + AI (A and B)",
+  "state": "Finished: 22 of 22 units written (A 11 of 11, B 11 of 11; the build order in `course.toml` lists 19, A2, A6 and A9 being the rewrites of 28 Oct 2026). Private course (`private = true`). Staleness checks due: A2, A6, A9, B1, B2 on 28 Apr 2027; DD-B3 on 29 Apr 2027; A8, B8, DD-A1 on 2 May 2027.",
+  "next": "nothing queued",
+  "row": null,
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": null
+ },
+ {
+  "id": "ux",
+  "kind": "course",
+  "title": "User Experience · Information Architecture",
+  "state": "Finished: 15 of 15 units written. Private course (`private = true`). Staleness checks due: DD-IA1 and DD-IA2 on 10 May 2027.",
+  "next": "nothing queued",
+  "row": null,
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": null
+ },
+ {
+  "id": "personal-brand",
+  "kind": "course",
+  "title": "PB · Building a Personal Brand on Instagram and YouTube",
+  "state": "Finished: 12 of 12 units written; reliefs done (G-R, 16 Nov 2026). Staleness checks due: PB1, PB3, PB6, PB7 on 12 May 2027; PB8, PB9, DD-PB1 on 13 May 2027.",
+  "next": "nothing queued",
+  "row": null,
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": null
+ },
+ {
+  "id": "building-with-ai",
+  "kind": "course",
+  "title": "BW · Building with AI",
+  "state": "Finished: 13 of 13 units written; reliefs done (G-R, 16 Nov 2026); CP-4 worked in W-SP1 (17 Nov 2026). Staleness checks due: BW1, BW2, BW5 on 15 May 2027; BW9, BW10, DD-BW1 on 16 May 2027 (those of 16 May 2027 also re-read BW6 and DD-BW3, F51, F119).",
+  "next": "nothing queued",
+  "row": null,
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": null
+ },
+ {
+  "id": "sport-psychology",
+  "kind": "course",
+  "title": "SP · Sport Psychology for Coaches",
+  "state": "12 of 13 units written (SP1 to SP10, DD-SP1, DD-SP2); staleness checks SP9 18 May 2027, DD-SP1 and DD-SP2 19 May 2027",
+  "next": "DD-SP3, Deep dive: tuning out the noise (search off; last unit of the course)",
+  "row": "W-DD-SP3",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/sport-psychology.md"
+ },
+ {
+  "id": "supply-chain-execution",
+  "kind": "course",
+  "title": "SCE · Supply Chain Execution for Product Teams",
+  "state": "0 of 20 units written",
+  "next": "SCE1, The map, the words and the evidence (search on)",
+  "row": "W-SCE1",
+  "blocked_by": [
+   "inside the row: the hero contour budget (kit/build.py), worked at step 7b",
+   "later: P-SCE11 before W-SCE6; P-SCE6 gate holds W-SCE7 to W-DD-SCE2"
+  ],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/supply-chain-execution.md"
+ },
+ {
+  "id": "P-SCE1",
+  "kind": "non-unit",
+  "title": "Read the employer's policy on outside publishing",
+  "state": "proposed, for Pedro, by hand",
+  "next": "before the SCE course's link is shared outside Academy",
+  "row": "P-SCE1",
+  "blocked_by": [],
+  "hand_by_pedro": true,
+  "prompt_file": null
+ },
+ {
+  "id": "P-SCE6",
+  "kind": "non-unit",
+  "title": "The SCE gate: read SCE1 to SCE6 and say go, change or stop",
+  "state": "proposed, for Pedro, by hand; not yet due (SCE1 to SCE6 unwritten)",
+  "next": "after W-SCE6; holds W-SCE7 to W-DD-SCE2",
+  "row": "P-SCE6",
+  "blocked_by": [
+   "W-SCE1 to W-SCE6 written"
+  ],
+  "hand_by_pedro": true,
+  "prompt_file": null
+ },
+ {
+  "id": "P-SCE11",
+  "kind": "non-unit",
+  "title": "Supply the employer's product names as `employer:` lines in kit/private-terms.txt",
+  "state": "proposed, for Pedro, by hand",
+  "next": "before W-SCE6",
+  "row": "P-SCE11",
+  "blocked_by": [],
+  "hand_by_pedro": true,
+  "prompt_file": null
+ },
+ {
+  "id": "P-DEC12",
+  "kind": "non-unit",
+  "title": "History track's id and copy out of the engine",
+  "state": "proposed; worked in grouped chat DEC-A",
+  "next": "chat DEC-A (P-DEC12, P-DEC10, P-DEC13, P-DEC14)",
+  "row": "P-DEC12",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-A.md"
+ },
+ {
+  "id": "P-DEC10",
+  "kind": "non-unit",
+  "title": "Private-terms check of an edition registers dated_lists courses",
+  "state": "proposed; worked in grouped chat DEC-A",
+  "next": "chat DEC-A (P-DEC12, P-DEC10, P-DEC13, P-DEC14)",
+  "row": "P-DEC10",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-A.md"
+ },
+ {
+  "id": "P-DEC13",
+  "kind": "non-unit",
+  "title": "Private terms on an edition mixing private and public courses",
+  "state": "proposed; worked in grouped chat DEC-A",
+  "next": "chat DEC-A (P-DEC12, P-DEC10, P-DEC13, P-DEC14)",
+  "row": "P-DEC13",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-A.md"
+ },
+ {
+  "id": "P-DEC14",
+  "kind": "non-unit",
+  "title": "A full verify checks every course's drawer",
+  "state": "proposed; worked in grouped chat DEC-A",
+  "next": "chat DEC-A (P-DEC12, P-DEC10, P-DEC13, P-DEC14)",
+  "row": "P-DEC14",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-A.md"
+ },
+ {
+  "id": "P-DEC4",
+  "kind": "non-unit",
+  "title": "Harden kit/pack.py (changelog rows by key, clear insert errors, briefs and status guards)",
+  "state": "proposed; worked in grouped chat DEC-B",
+  "next": "chat DEC-B (P-DEC4, P-DEC9, P-DEC6)",
+  "row": "P-DEC4",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-B.md"
+ },
+ {
+  "id": "P-DEC9",
+  "kind": "non-unit",
+  "title": "Relief tools (p95_library, p96_uses, p95_sheet) derive their lists from reliefs = true",
+  "state": "proposed; worked in grouped chat DEC-B",
+  "next": "chat DEC-B (P-DEC4, P-DEC9, P-DEC6)",
+  "row": "P-DEC9",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-B.md"
+ },
+ {
+  "id": "P-DEC6",
+  "kind": "non-unit",
+  "title": "biblio.py and BIBLIO-BRIEF.md name courses/<course>/bibliography/",
+  "state": "proposed; worked in grouped chat DEC-B",
+  "next": "chat DEC-B (P-DEC4, P-DEC9, P-DEC6)",
+  "row": "P-DEC6",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-B.md"
+ },
+ {
+  "id": "P-DEC8",
+  "kind": "non-unit",
+  "title": "Markdown 'How it was built': drop the AUDIT_LOG clause where a course has none",
+  "state": "proposed; worked in grouped chat DEC-C",
+  "next": "chat DEC-C (P-DEC8, P-DEC11, P-DEC15)",
+  "row": "P-DEC8",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-C.md"
+ },
+ {
+  "id": "P-DEC11",
+  "kind": "non-unit",
+  "title": "Small course's motion rises and the briefs page landing",
+  "state": "proposed; worked in grouped chat DEC-C",
+  "next": "chat DEC-C (P-DEC8, P-DEC11, P-DEC15)",
+  "row": "P-DEC11",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-C.md"
+ },
+ {
+  "id": "P-DEC15",
+  "kind": "non-unit",
+  "title": "What's new level scale per edition",
+  "state": "proposed; worked in grouped chat DEC-C",
+  "next": "chat DEC-C (P-DEC8, P-DEC11, P-DEC15)",
+  "row": "P-DEC15",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/DEC-C.md"
+ },
+ {
+  "id": "P-DEC5",
+  "kind": "non-unit",
+  "title": "Let a brand set --sans and --mono (viz.py metrics, verify.py faces)",
+  "state": "proposed",
+  "next": "its own chat (figure geometry: kept apart from the other P-DEC rows); before P-DEC16 if the styling pass wants new body or mono faces",
+  "row": "P-DEC5",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/P-DEC5.md"
+ },
+ {
+  "id": "P-DEC16",
+  "kind": "non-unit",
+  "title": "Academy CSS and styling pass (theme.css and the brand file only)",
+  "state": "proposed by S-DEC4 (20 Nov 2026): no CSS or styling row existed",
+  "next": "its own chat, Pedro present",
+  "row": "P-DEC16",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/P-DEC16.md"
+ },
+ {
+  "id": "G-R-SP",
+  "kind": "non-unit",
+  "title": "Reliefs of Sport Psychology for Coaches",
+  "state": "proposed",
+  "next": "after W-DD-SP3",
+  "row": "G-R-SP",
+  "blocked_by": [
+   "W-DD-SP3"
+  ],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/G-R-SP.md"
+ },
+ {
+  "id": "G-R-SCE",
+  "kind": "non-unit",
+  "title": "Reliefs of Supply Chain Execution for Product Teams",
+  "state": "proposed",
+  "next": "after W-DD-SCE2",
+  "row": "G-R-SCE",
+  "blocked_by": [
+   "W-SCE1 to W-DD-SCE2 (20 units)",
+   "P-SCE6"
+  ],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/G-R-SCE.md"
+ },
+ {
+  "id": "S-SP1",
+  "kind": "non-unit",
+  "title": "Syllabus review of Sport Psychology for Coaches (F13, F14, F15, F47, F48)",
+  "state": "proposed, for Pedro (a brief or preamble change; he is present in the chat)",
+  "next": "before W-DD-SP3 if Pedro wants DD-SP3 graded under the settled key; otherwise any time (not a gate)",
+  "row": "S-SP1",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/S-SP1.md"
+ },
+ {
+  "id": "P-SCE10",
+  "kind": "non-unit",
+  "title": "Design chats for the four coming-soon Supply Chain courses",
+  "state": "proposed; none designed",
+  "next": "one Fable design chat per course, in catalog order, first Supply Chain Planning for Product Teams",
+  "row": "P-SCE10",
+  "blocked_by": [],
+  "hand_by_pedro": false,
+  "prompt_file": "out/s-dec4/adventure/P-SCE10.md"
+ }
+]
