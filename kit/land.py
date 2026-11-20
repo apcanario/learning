@@ -11,10 +11,12 @@ land, in order: refuse a dirty tree, a rebase in progress or conflict markers; t
 pushed alone to main: the first push wins); rebase on origin/main, resolving by script only the conflicts listed in
 docs/parallel-landing.md (add-only union for docs/*.md; docs/BACKLOG.md by record, "Next up" kept from upstream with
 ours in out/<row>/land-notes.md; catalog.toml arrays and kit/next_prompt.py constants merged as data;
-kit/baseline.json by key; build output regenerated); after a merge, saved row prompts that were purely generated are
+docs/site-log.md Next merged by code and renumbered, Done by date and code; kit/baseline.json by key, a same-key
+conflict on a build-output key (BUILD_OUTPUT_KEY) taken from upstream and rebuilt, on a source key a stop; build output
+regenerated); after a merge, saved row prompts that were purely generated are
 re-saved from the merged tree (kit/next_prompt.py --row/--save); the preservation check (every line and file upstream added since the start is still in HEAD);
 sanity (markers, JSON/TOML parse, index_check); the build check (baseline.py --check: every differing output declared in
---expected or by upstream's own baseline.json edits, then re-recorded and checked clean); verify.py; a plain push of
+--expected or in D, the keys either side's own commits changed in baseline.json; then re-recorded and checked clean); verify.py; a plain push of
 HEAD to main (a rejected push fetches and goes round again, 6 attempts); release the lock (always, in a finally).
 
 --expected FILE: one entry per line, '#' comments. A path (kit-relative as baseline.py prints it, repo-relative, or a
@@ -41,6 +43,12 @@ NOBUILD = re.compile(r'^(out/|docs/landing\.lock$|docs/BACKLOG\.md$|docs/CHANGEL
 OURS_FIRST = {'docs/CHANGELOG.md'}   # newest first: the landing chat's row goes on top
 KEYED = {'docs/BACKLOG.md'}
 BASELINE = 'kit/baseline.json'
+# baseline.json keys (kit-relative, as baseline.py records them) that are build OUTPUT: the site pages, the greece
+# edition, the bibliography READMEs, the size table and biblio.py's unit-<n>.md. A same-key conflict on one of these is
+# not a stop: upstream's hash is taken and the rebuild decides. Every other key (a curated courses/<id>/bibliography/
+# r-<id>.md) is a source, and a same-key conflict on it stops.
+BUILD_OUTPUT_KEY = re.compile(r'^(academy/|editions/|bibliography/|README\.md$|\.\./courses/[^/]+/bibliography/unit-[^/]+\.md$)')
+SITE_LOG = 'docs/site-log.md'
 M_OPEN, M_MID, M_CLOSE = '<' * 7, '=' * 7, '>' * 7
 EXIT_OK, EXIT_STOP, EXIT_TIMEOUT = 0, 2, 3
 
@@ -294,6 +302,7 @@ class Ctx:
     automatic merge rewrote on purpose (the preservation check counts them as preserved)."""
     def __init__(self, row):
         self.row, self.notes, self.superseded, self.regen_rows = row, [], set(), set()
+        self.need_build, self.baseline_taken = False, []
 
     def note(self, text):
         self.notes.append(f'## {now().isoformat(timespec="seconds")}\n\n{text}\n\n')
@@ -634,6 +643,89 @@ def structured_merge(b, u, o, kind, ctx, path):
     return re.sub(r'\0([^\0]+)\0', fill, merged)
 
 
+# -- docs/site-log.md: the Next table merged by Code (renumbered), the Done table by date and code
+
+def split_cells(line):
+    return [c.strip() for c in line.strip().strip('|').split(' | ')]
+
+
+def log_tables(lines):
+    """{'Next': (first_row, end), 'Done': (...)}: the row lines of each table under '## Next' and '## Done'."""
+    res, head = {}, None
+    i = 0
+    while i < len(lines):
+        s = lines[i].strip()
+        if s.startswith('## '):
+            head = s[3:].strip()
+        if head in ('Next', 'Done') and head not in res and s.startswith('|') and i + 1 < len(lines) \
+                and re.match(r'^\|[-:| ]+\|$', lines[i + 1].strip()):
+            j = i + 2
+            while j < len(lines) and lines[j].lstrip().startswith('|'):
+                j += 1
+            res[head] = (i + 2, j)
+            i = j
+            continue
+        i += 1
+    return res
+
+
+def merge_rows(B, U, O, key, content, ctx, what):
+    """Rows by key: the set rule ((base ∩ ours ∩ theirs) ∪ ours-added ∪ theirs-added; a row a side removed is gone),
+    theirs' order with ours' additions after their predecessor; a row changed on both sides: theirs, ours to the notes."""
+    def d(rows):
+        return {key(r): r for r in rows}
+    Bd, Ud, Od = d(B), d(U), d(O)
+    res, keys = [], []
+    for r in U:
+        k = key(r)
+        if k in Bd and k not in Od:
+            continue                                   # removed (closed) by ours
+        o = Od.get(k)
+        if o is not None and content(o) != content(r):
+            base = Bd.get(k)
+            if base is not None and content(r) == content(base):
+                r = o                                  # only ours changed it
+            elif base is None or content(o) != content(base):
+                ctx.note(f'{SITE_LOG} {what} {k}: changed on both sides; upstream\'s kept. Ours was:\n\n{o.rstrip()}')
+                say(f'site log {what} {k} changed on both sides: upstream\'s kept, ours in out/{ctx.row}/land-notes.md')
+        res.append(r); keys.append(k)
+    prev = None
+    for r in O:
+        k = key(r)
+        if k not in Bd and k not in Ud:
+            pos = keys.index(prev) + 1 if prev in keys else len(keys)
+            while pos < len(keys) and keys[pos] not in Bd and keys[pos] not in Od:   # ours after theirs' additions
+                pos += 1
+            res.insert(pos, r); keys.insert(pos, k)
+        if k in keys:
+            prev = k
+    return res
+
+
+def merge_site_log(b, u, o, ctx):
+    L = [t.splitlines(keepends=True) for t in (b, u, o)]
+    T = [log_tables(x) for x in L]
+    if any(set(t) != {'Next', 'Done'} for t in T):
+        return ''.join(merge3(*L, union_resolver()))       # no recognisable tables: plain add-only union
+    def rows(x, t, name):
+        s, e = t[name]
+        return x[s:e]
+    def mask(x, t):
+        x = list(x)
+        for name in sorted(t, key=lambda n: -t[n][0]):
+            s, e = t[name]
+            x[s:e] = [f'\0{name}\0\n']
+        return x
+    merged = ''.join(merge3(*(mask(x, t) for x, t in zip(L, T)), union_resolver()))
+    code = lambda r: split_cells(r)[1] if len(split_cells(r)) > 1 else r.strip()
+    nxt = merge_rows(*(rows(x, t, 'Next') for x, t in zip(L, T)), key=code,
+                     content=lambda r: split_cells(r)[1:], ctx=ctx, what='Next row')
+    nxt = [f'| {n} | ' + ' | '.join(split_cells(r)[1:]) + ' |\n' for n, r in enumerate(nxt, 1)]
+    done = merge_rows(*(rows(x, t, 'Done') for x, t in zip(L, T)), key=lambda r: tuple(split_cells(r)[:2]),
+                      content=lambda r: split_cells(r), ctx=ctx, what='Done row')
+    return merged.replace('\0Next\0\n', ''.join(nxt)).replace('\0Done\0\n', ''.join(done))
+
+
 # -- validation of a merged file
 
 def cells(line):
@@ -691,11 +783,16 @@ def resolve_file(path, ctx):
         except ValueError as e:
             raise Unresolvable(f'does not parse: {e}')
         conflicts = []
-        m = json_merge3(b, u, o, [], conflicts)
-        if conflicts:
-            raise Unresolvable('the same key changed to different values on both sides:\n' + '\n'.join(
-                f'    {k}\n      upstream: {uv}\n      ours:     {ov}' for k, uv, ov in conflicts))
+        m = json_merge3(b, u, o, [], conflicts)   # a conflicting key keeps upstream's value
+        src = [c for c in conflicts if not (c[0].startswith('editions/') and BUILD_OUTPUT_KEY.match(c[0].split('/', 2)[-1]))]
+        if src:
+            raise Unresolvable('the same source key changed to different values on both sides:\n' + '\n'.join(
+                f'    {k}\n      upstream: {uv}\n      ours:     {ov}' for k, uv, ov in src))
         (ROOT / path).write_text(json.dumps(m, indent=1, sort_keys=True) + '\n')
+        if conflicts:
+            ctx.need_build = True
+            ctx.baseline_taken += [c[0].split('/', 2)[-1] for c in conflicts]
+            return f'json-merged; {len(conflicts)} same-key build outputs: upstream\'s hash, rebuilt'
         return 'json-merged'
     try:
         b, u, o = (stages[s].decode('utf-8') for s in (1, 2, 3))
@@ -704,6 +801,9 @@ def resolve_file(path, ctx):
     if path in KEYED:
         m = ''.join(merge3(*(units(t.splitlines(keepends=True)) for t in (b, u, o)), keyed_resolver(ctx)))
         kind = 'rows merged by id'
+    elif path == SITE_LOG:
+        m = merge_site_log(b, u, o, ctx)
+        kind = 'Next and Done merged by code, Next renumbered'
     elif path in STRUCT:
         m = structured_merge(b, u, o, STRUCT[path], ctx, path)
         kind = 'literals merged as data' + (', rest by union' if STRUCT[path] == 'toml' else '')
@@ -772,7 +872,7 @@ def rebase_onto(up, build_allowed, ctx):
                 stops.append(f'{p}: {e}')
                 details += both_sides(p)
                 continue
-            if how == 'regenerate':
+            if how == 'regenerate' or ctx.need_build:
                 regen = True
             merged[p] = how
             git('add', '--', p)
@@ -976,7 +1076,7 @@ def commit_all(msg):
     return False
 
 
-def integrate(row, start, up, o, expected, drops, rep, ctx, lock_row):
+def integrate(row, start, up, o, expected, drops, rep, ctx, lock_row, orig):
     """Rebase on up and run every check; leaves HEAD ready to push or raises Stop."""
     if not is_ancestor(up, 'HEAD'):
         merged, regen = rebase_onto(up, not o.no_build, ctx)
@@ -1043,8 +1143,11 @@ def integrate(row, start, up, o, expected, drops, rep, ctx, lock_row):
         else:
             say(f'build check: baseline.py --check ({len(build_paths)} build-relevant paths changed by us)')
             diff = baseline_check()
-            declared_up = {p for _, p in diff_keys(bk_start or {}, bk_up or {})}
-            undeclared = sorted(f'{e}: {t} {p}' for e, t, p in diff if p not in expected and p not in declared_up)
+            # D: the keys either side's own commits changed in kit/baseline.json ("declared by someone")
+            mb = out('merge-base', orig, up)
+            D = {p for _, p in diff_keys(bk_start or {}, bk_up or {}) | diff_keys(baseline_keys(mb) or {}, baseline_keys(orig) or {})}
+            undeclared = sorted(f'{e}: {t} {p}' for e, t, p in diff if p not in expected and p not in D)
+            rep['declared'] = (len(D), sum(1 for _, _, p in diff if p in D), sum(1 for _, _, p in diff if p in expected and p not in D))
             if undeclared:
                 git('reset', '-q', '--hard', 'HEAD')
                 raise Stop('output changed by the combination, not declared by anyone:\n  ' + '\n  '.join(undeclared),
@@ -1058,7 +1161,9 @@ def integrate(row, start, up, o, expected, drops, rep, ctx, lock_row):
                 commit_all(f'land {row}: baseline re-recorded for expected differences')
                 if baseline_check():
                     raise Stop('baseline.py --check is not clean after re-recording', 'the build is not deterministic: investigate')
-                rep['baseline'] = f're-recorded ({len(diff)} expected differences), then clean'
+                n_d, n_e = rep['declared'][1], rep['declared'][2]
+                rep['baseline'] = (f're-recorded ({len(diff)} differences: {n_d} declared by a side\'s baseline.json, '
+                                   f'{n_e} by --expected), then clean')
             else:
                 rep['baseline'] = 'clean'
             commit_all(f'land {row}: build output after rebase')
@@ -1068,13 +1173,16 @@ def integrate(row, start, up, o, expected, drops, rep, ctx, lock_row):
         rep['verify'] = 'skipped (--no-verify)'
     else:
         say('verify.py (scoped)')
-        r = run([sys.executable, 'verify.py'], cwd=ROOT / 'kit')
+        t0 = time.time()
+        r = run([sys.executable, 'verify.py'], cwd=ROOT / 'kit')   # verify.py resolves its paths from its own file; run from kit/ as documented
+        say(f'verify.py took {time.time() - t0:.0f} s')
         if r.returncode or 'ALL CHECKS PASSED' not in r.stdout:
             git('reset', '-q', '--hard', 'HEAD')
             raise Stop('verify.py did not pass on the combined tree:\n' + (r.stdout + r.stderr)[-2000:],
                        'fix what it names, commit, land again')
         commit_all(f'land {row}: verify record')
-        rep['verify'] = 'ALL CHECKS PASSED'
+        first = next((l for l in r.stdout.splitlines() if l.strip()), '')
+        rep['verify'] = f'ALL CHECKS PASSED (first line: {first.strip()[:160]})'
     if git('status', '--porcelain', '--untracked-files=no').stdout.strip():
         commit_all(f'land {row}: build output after rebase')
 
@@ -1093,6 +1201,10 @@ def load_start(row):
     return shas[-1], 'the oldest reflog entry of origin/main (no land-start.json: run start next time)'
 
 
+def localdir():
+    return pathlib.Path(out('rev-parse', '--absolute-git-dir')) / 'land'
+
+
 def cmd_start(a):
     fetch()
     f = rowdir(a.row) / 'land-start.json'
@@ -1101,8 +1213,12 @@ def cmd_start(a):
         return EXIT_OK
     sha = out('rev-parse', a.at) if a.at else upstream()
     f.parent.mkdir(parents=True, exist_ok=True)
-    f.write_text(json.dumps({'row': a.row, 'start': sha, 'utc': now().isoformat(timespec='seconds'),
-                             'host': socket.gethostname(), 'head': out('rev-parse', 'HEAD')}, indent=1) + '\n')
+    rec = json.dumps({'row': a.row, 'start': sha, 'utc': now().isoformat(timespec='seconds'),
+                      'host': socket.gethostname(), 'head': out('rev-parse', 'HEAD')}, indent=1) + '\n'
+    f.write_text(rec)
+    started = localdir() / 'started'                 # this clone's record of rows started: never committed, never pushed
+    started.mkdir(parents=True, exist_ok=True)
+    (started / f'{a.row}.json').write_text(rec)
     say(f'start {sha[:9]} recorded in {f.relative_to(ROOT)}')
     return EXIT_OK
 
@@ -1119,6 +1235,16 @@ def cmd_status(a):
         start, src = out('merge-base', 'HEAD', up), f'merge-base ({e.what})'
     s = subjects(start, up)
     say(f'start {start[:9]} ({src}); {len(s)} upstream commits since:', *['  ' + x for x in s])
+    st = sorted((localdir() / 'started').glob('*.json'))
+    rows = []
+    for f in st:
+        try:
+            r = json.loads(f.read_text())
+        except ValueError:
+            continue
+        landed = (rowdir(r['row']) / 'landing-report.md').exists()
+        rows.append(f"  {r['row']}: started {r['utc']} at {r['start'][:9]}" + (', landed at least once' if landed else ''))
+    say(f'rows started in this clone: {len(rows)}', *rows)
     ahead = int(out('rev-list', '--count', f'{up}..HEAD'))
     behind = int(out('rev-list', '--count', f'HEAD..{up}'))
     say(f'ahead {ahead}, behind {behind}' + ('; working tree dirty' if git('status', '--porcelain', '--untracked-files=no').stdout.strip() else ''))
@@ -1181,7 +1307,7 @@ def cmd_land(a):
             rep['attempts'] += 1
             fetch()
             up = upstream()
-            integrate(a.row, start, up, a, expected, drops, rep, ctx, a.row)
+            integrate(a.row, start, up, a, expected, drops, rep, ctx, a.row, orig)
             hook('before_push')
             ok, err = push('HEAD')
             if ok:
@@ -1217,7 +1343,7 @@ def cmd_land(a):
              *([f'- notes for a human: {len(ctx.notes)}, in out/{a.row}/land-notes.md'] if ctx.notes else []),
              f'- saved row prompts: {rep.get("prompts", "no merge, not checked")}',
              f'- files auto-merged: ' + (', '.join(f'{p} ({h})' for p, h in sorted(rep['merged'].items())) or 'none'),
-             f'- baseline: {rep.get("baseline")}', f'- index_check: {rep.get("index", "not present")}',
+             f'- baseline: {rep.get("baseline")}' + (f'; same-key build outputs taken from upstream and rebuilt: {", ".join(ctx.baseline_taken)}' if ctx.baseline_taken else ''), f'- index_check: {rep.get("index", "not present")}',
              f'- verify: {rep.get("verify")}',
              f'- lock: {"took over a stale lock of row " + str(lock.took_over.get("row")) + " (" + str(lock.took_over.get("age_min")) + " min old); " if lock.took_over else ""}{rel}',
              f'- push attempts: {rep["attempts"]}', f'- pushed: {pushed}', '']
