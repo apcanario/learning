@@ -5,6 +5,7 @@ course: personal-brand · PB · Building a Personal Brand on Instagram and YouTu
 model: Opus 5.5
 written: 2026-11-13
 search: off
+intro: Unit PB10, written 13 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register, PB1 to PB9 and its source material, search off (used only to re-check facts at their source); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 0 errors, 8 should-fix, 33 minor, all applied. The full metrics sheet from PB6's and PB7's rows; leading and lagging numbers; small-number noise and how many posts a rate needs before it means anything; the quarter against PB1's expectation sheet; the items earlier units hand the review, each placed inside or beside the sixty minutes; the four verdicts and their evidence; one change at a time; hours spent against the budget; how to pause or stop without deleting the record. Deliverable: the metrics sheet, the review as a sixty-minute procedure run on Mara's first two quarters with her invented numbers labelled, a one-page annual review, then the templates. Known gaps: no source gives the time a review takes; Instagram's in-app demographics threshold was not checked beside Meta's API reference; the intervals treat impressions as independent.
 ---
 
 # Read your numbers: the quarterly review

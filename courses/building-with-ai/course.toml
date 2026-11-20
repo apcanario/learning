@@ -2,7 +2,7 @@
 # kit/courses.py turns `parts`, `eras` and `ticks` rows and `tracks` values into tuples. Text fields may use the
 # placeholders {content_mods} {total_mods} {nrep} {kwords} (kit/courses.py docstring).
 #
-# The public courses (11 Nov 2026, backlog row G-0; docs/public-courses.md): adapted from Brand + AI's A and B for
+# The public courses (11 Nov 2026, backlog row G-0; docs/public-courses.md): adapted from the private course's A and B for
 # any reader, each in its own data folder and vault so the private courses can move to a private site later. Each sits
 # in the same track as its private original for now. No private term may reach either (kit/private_terms.py).
 
@@ -16,7 +16,239 @@ home_id = "building-with-ai"
 status = "in progress"
 tracks.BW = ["technology", "Building with AI · public"]
 tiles.BW = "A working method for building a real project with AI."
-data = "generator/data/building-with-ai/hub.py"
+# the course data: the [pack] table below, read by kit/pack.py (S-DEC2)
+data = "courses/building-with-ai/course.toml"
 vault = "courses/building-with-ai"
 sourcing_part = "Part 6"
 eyebrow = "BUILDING WITH AI"
+
+# ---- the pack (S-DEC2, 20 Nov 2026): the course data, read by kit/pack.py (its docstring is the schema) -------
+# Everything below sits under [pack]; kit/courses.py strips it from the registry dict. Also in the pack: briefs.md
+# (the preamble and every brief, word for word), pages/*.md (the long HTML blocks), notes/ (case and syllabus-flags
+# files). Derived, not typed here: STATUS (from each unit's `written`; [pack.status] only where the typed string
+# differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top changelog row).
+[pack]
+# the data file the How it was built footer names (byte identity until S-DEC3 changes it on purpose)
+source = 'generator/data/building-with-ai/hub.py'
+course_note = "Every unit is sourced to peer-reviewed work, vendor documentation or a practitioner's own words, grades each method by its evidence, dates every product fact, says what holds only for one tool, and ends with a deliverable built in full on a real project and then as a template."
+order_lede = 'One row per unit in writing order, which is the reading order. Opus 5.5 writes; a fresh Opus 5.5 context checks each unit before filing. "Search" means the unit is written with web search on because its facts are current.'
+order_foot = 'The count starts at {start}.'
+# not read by any kit/ script (the v5.1 standalone hub's identity and tiles); kept as the record. TEMPLATE_BLOCKS was [].
+title = 'Building with AI'
+bar = 'BUILDING WITH AI'
+brand_html = 'BUILDING <span>/</span> WITH AI'
+out = 'building-with-ai.html'
+theme_key = 'building-with-ai-theme'
+learn_c = 'var(--purple)'
+build_c = 'var(--orange)'
+home_lede = 'A working method for people who already think well and want to build a real project with AI: brief, structure, specify, verify, automate. Every claim sourced.'
+home_h1 = 'Building with AI'
+learn_note = 'Order of writing: the ten core units in reading order, BW1 to BW10, then the three deep dives, DD-BW3 last; BW1, BW2, BW5, BW9, BW10 and DD-BW1 with search on.'
+template_lede = 'What a course needs before the first unit is written: see the new-course skill and design/README.md.'
+template_note = ''
+learn_tile = ['The course', 'Goal, outcomes, units, and the written material to read.']
+build_tile = ['How the course gets made', 'Procedure, model rules, every brief, bibliography, changelog.']
+# writing order: (code, model, search)
+order = [
+  ['BW1', 'Opus 5.5', 'on'],
+  ['BW2', 'Opus 5.5', 'on'],
+  ['BW3', 'Opus 5.5', 'off'],
+  ['BW4', 'Opus 5.5', 'off'],
+  ['BW5', 'Opus 5.5', 'on'],
+  ['BW6', 'Opus 5.5', 'off'],
+  ['BW7', 'Opus 5.5', 'off'],
+  ['BW8', 'Opus 5.5', 'off'],
+  ['BW9', 'Opus 5.5', 'on'],
+  ['BW10', 'Opus 5.5', 'on'],
+  ['DD-BW1', 'Opus 5.5', 'on'],
+  ['DD-BW2', 'Opus 5.5', 'off'],
+  ['DD-BW3', 'Opus 5.5', 'off'],
+]
+
+# STATUS where the typed string is not "written <d Mon>" of the unit's front matter `written`
+[pack.status]
+
+[[pack.courses]]
+key = 'BW'
+name = 'Building with AI'
+color = 'var(--purple)'
+slug = 'bw'
+goal = 'by the end of the course you can say what the model saw when an output fails; brief a task so that the first output is usable and keep a project structure that does not rot; verify AI-written work by sample before you trust it; and decide what to hand to an agent, with one real project of your own specified and running.'
+tile = 'A working method for people who already think well and want to build a real project with AI: brief, structure, specify, verify, automate. Every claim sourced.'
+intro = 'For an experienced professional who reasons and writes well and uses a chat assistant with no method: how the tool works, which model for which task, how to brief, how to structure and specify a project, how to verify what the machine wrote, how to chain, automate and delegate the work, and what it costs. Principles stated for any assistant, worked on Claude with every product fact dated, and on one real project, Academy, with its own error counts. Ten core units in three parts and three deep dives.'
+outcomes = '<li><strong>Outcome 1</strong> — a working model of the tool and a routing table with cost (BW1, BW2, BW10).</li><li><strong>Outcome 2</strong> — a specified project that produces usable first outputs (BW3, BW4, BW5, BW8; DD-BW1 sets it beside the documented methods).</li><li><strong>Outcome 3</strong> — a verification protocol, a pipeline and an agent rule, run on your own project (BW6, BW7, BW9; DD-BW2 and DD-BW3).</li>'
+[[pack.courses.units]]
+code = 'BW1'
+title = 'Mental model'
+scope = 'The context window, tokens as cost and attention, what persists and what does not, trained against retrieved knowledge, why the same prompt answers differently.'
+deliverable = 'the five-minute model + a table for diagnosing a failed output'
+aim = 'say what the model could see when an output fails, and what to change'
+takes = 'B1 as source material'
+gives = 'the vocabulary every later unit uses; the diagnosis table BW3, BW4 and BW6 point back to'
+[[pack.courses.units]]
+code = 'BW2'
+title = 'Choosing the model and the effort'
+scope = 'Cost per task, when the small model is the right one, what effort settings do; the method in the unit and the lineup in a dated appendix.'
+deliverable = 'routing table for ten common project tasks'
+aim = 'route each recurring task of your project to a model tier and an effort level, with the reason'
+takes = 'B2 as source material; its lineup and prices are re-read, not carried over; BW1'
+gives = 'the routing table BW7 assigns stages from and BW10 budgets'
+[[pack.courses.units]]
+code = 'BW3'
+title = 'Briefing: prompts that hold up'
+scope = 'The four parts of a brief that survives, output contracts, negative examples, and the common ways an ask fails.'
+deliverable = 'ten brief templates, each with a worked example'
+aim = 'brief a task so that the first output is usable'
+takes = 'B3 as source material; its ten templates are replaced by ten for general project work; BW1, BW2'
+gives = 'the brief form BW5 uses per unit, the checker brief BW6 builds and the stage briefs of BW7'
+[[pack.courses.units]]
+code = 'BW4'
+title = 'Context engineering'
+scope = 'Instructions, files, memory, skills, connectors: what belongs where, what loads every turn, when to start a new chat, how a project rots.'
+deliverable = 'project-structure template + rot check'
+aim = 'lay out a project so that the model is told what it needs each turn and nothing stale'
+takes = 'B4 as source material; its audit is summarised in the Academy case file; BW1, BW3'
+gives = 'the project structure BW5 specifies into and BW8 automates'
+[[pack.courses.units]]
+code = 'BW5'
+title = 'Specifying a project'
+scope = 'From idea to spec to build order: units of work one context can finish, a definition of done, a decision log, and how a spec changes.'
+deliverable = 'one-page spec + build order + unit-brief template'
+aim = 'turn an idea into a one-page spec and a build order that one context per unit can finish'
+takes = 'DD-B3, its spec-driven section, and docs/method.md as source material; this unit has no counterpart in the private course; BW3, BW4'
+gives = 'the spec and build order every later deliverable is built against; the flag-and-review rule BW7 and BW9 rely on'
+[[pack.courses.units]]
+code = 'BW6'
+title = 'Research and verification'
+scope = 'Ask, search or deep research, with cost and time; how models fail; how to read a research report; sampling before trusting.'
+deliverable = 'verification protocol with a sampling rule'
+aim = 'verify AI-written work by sample before you trust it, and know what a clean sample proves'
+takes = 'B6 as source material; BW1, BW2, BW3, BW5'
+gives = 'the checker brief BW8 turns into a skill; the verifiability test BW9 uses to decide what to delegate'
+[[pack.courses.units]]
+code = 'BW7'
+title = 'Pipelines: raw material to finished output'
+scope = 'Chaining steps, routing each to a model, where a model helps a writer and where it flattens a voice, and the rule that the final pass is human.'
+deliverable = 'a pipeline as a runnable procedure'
+aim = "write your project's repeated work as a pipeline with a model per stage and a human gate"
+takes = 'B7 as source material, for its studies and its pipeline form only; BW2, BW3, BW5, BW6'
+gives = 'the procedure BW8 automates and BW9 hands in part to an agent'
+[[pack.courses.units]]
+code = 'BW8'
+title = 'Skills and automation'
+scope = 'What a skill is, why its description carries the trigger, scheduled tasks and their limits, and when a procedure is worth automating.'
+deliverable = 'one skill written in full, with a trigger test set'
+aim = 'write one reusable skill for your project and test that it triggers'
+takes = 'B5 as source material; its deliverable is replaced; BW4, BW6, BW7'
+gives = "the skill form BW9's agents load"
+[[pack.courses.units]]
+code = 'BW9'
+title = 'Agents'
+scope = 'Agent against chat, the autonomy slider, what agents do well and what they quietly wreck, and the guardrails.'
+deliverable = 'agent-use decision rule + guardrail checklist'
+aim = 'decide which tasks to hand to an agent and with what guardrails'
+takes = 'DD-B1 as source material; BW5, BW6, BW7, BW8'
+gives = "the decision rule DD-BW1's methods are tested against; the agent rules BW10 costs"
+[[pack.courses.units]]
+code = 'BW10'
+title = 'Cost, limits, privacy'
+scope = 'What a plan measures, what burns usage for no gain, when a new chat is cheaper, and what the vendor keeps.'
+deliverable = 'usage rules + a table of what material belongs where'
+aim = "keep a project inside its plan's limits and keep the wrong material out of the tool"
+takes = 'B8 as source material; every limit, price and retention fact is re-read; BW1, BW2, BW4, BW9'
+gives = "the usage rules DD-BW3 tests against a reader's own record"
+[[pack.courses.units]]
+code = 'DD-BW1'
+title = 'Deep dive: how the best practitioners work'
+scope = 'The documented methods that have a named author and a primary source, each graded by its evidence and tested for transfer from code to knowledge work.'
+deliverable = 'method cards + ten operating rules'
+aim = 'name the documented methods worth adopting, with the evidence each rests on'
+takes = 'DD-B3 as source material; BW1 to BW10'
+gives = 'the operating rules DD-BW3 tests'
+[[pack.courses.units]]
+code = 'DD-BW2'
+title = 'Deep dive: one project, with its numbers'
+scope = "What the Academy case built, its error counts at first check, what each audit caught and what failed in operation, taken from the project's own records."
+deliverable = 'the case report + a ranked list of changes the record supports'
+aim = "read one real project's record and say which of the course's rules its numbers support"
+takes = 'the Academy case file and the records its row stages (fresh-check reports, audit reports, the changelog), private details removed; B6, for its count of first drafts with an error; BW1 to BW10'
+gives = "the worked record DD-BW3 sets a reader's own review beside"
+[[pack.courses.units]]
+code = 'DD-BW3'
+title = 'Deep dive: audit your own usage'
+scope = "A method for classifying your own chats by task, model, outcome and turns, with one person's findings as the worked example."
+deliverable = 'gap-report template + a sixty-minute procedure'
+aim = 'review your own chats and write the ten changes that would save you the most'
+takes = 'DD-B2 as source material, for its method and its counts only, every personal detail removed; BW10, DD-BW1, DD-BW2'
+gives = "nothing; it is the course's last unit"
+
+# newest first
+[[pack.changelog]]
+date = '2026-11-17 12:00'
+text = "v16. Syllabus review BW-1 (row S-BW, docs/syllabus-review-BW-1.md): 66 flags sorted, the proposal fresh-checked by an Opus 5.5 agent (21 findings applied). Three brief changes confirmed by the owner: the shared preamble's case line now matches the case file (F52); BW6's Takes line adds BW3 (F43); DD-BW3's brief asks for DD-BW2 Part 2's changes restated (F113). Corrections after a corrections check by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-17-S-BW.md): BW3's convention points to BW5 §5 and §9 (F42); BW6's stratified draw takes the rest at random from all remaining claims, in four places and step 3, with BW8's two companion texts (F61); BW7's two pointers say BW8 automates one stage (F60); BW9 §8 cites the case file's wording (F52); DD-BW2 §7 and Part 1 G record the repeated publish and the retriggered deploy (F99). BW7's 22 Sep 2023 date confirmed by a second check (F89). The case file gains the facts the Project's records hold for 32 needs, and §9 lines for what they do not; filling the units' remaining 'not in the case file' cells is carried proposal CP-4."
+[[pack.changelog]]
+date = '2026-11-16 18:15'
+text = "v15. Correction (row W-DD-BW3, step 7b): DD-BW3's §1 now describes the case in the case file's own wording (flag F123, as F52, F98 and F112), checked by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-16-DD-BW3-r2-DD-BW3.md); F123 resolved."
+[[pack.changelog]]
+date = '2026-11-16 18:00'
+text = "v15. DD-BW3 Deep dive: audit your own usage written (Opus 5.5) and filed; row W-DD-BW3, the last unit of the course: 13 of 13 written, the course is complete. 10,268 words, 4 figures, 7 sources at hand-in, written from its brief with search off (live reads only to check its product facts and research, dated 16 Nov 2026). The prompt asked for a thin main chat on Sonnet 5.5; the session ran Opus 5.5 and is recorded as such. Writer, fresh checker, applier, corrections checker and filer were each a fresh Opus 5.5 agent. Fresh check (Opus 5.5, separate context; audits/building-with-ai/fresh-check-DD-BW3.md): fix, 1 error (a figure mark the text did not carry), 4 should-fix, 9 minor; 12 applied, 2 minor held (f11: the export page as read does not state what the finding claimed, so the sentence stands; f14: its fix was 'no change required'). Step 1c, carried proposal CP-2, before writing (v14): DD-BW2's §3 table extended with BW1 to BW9 and two figures recomputed, 17 replacements passed by a corrections check by Opus 5.5 and 17 applied (audits/building-with-ai/corrections-2026-11-16-DD-BW3-CP2-DD-BW2.md); F101 resolved; DD-BW2's two changed figures to be re-checked on the page shots after the build. No source errors. The writer's packet put flag F108 and case file §8 to use: Part D restates DD-BW2 Part 2's ten changes for any project, because the case file does not hold the review's own. Flags: 11 raised (10 from the writer's notes; 1 at filing: §1 repeats the preamble's wording on the case, as F52, F98 and F112); F67, F79, F80, F81, F83, F84, F92, F93, F95, F99, F100, F108, F109 and F111 carried. Object: none"
+[[pack.changelog]]
+date = '2026-11-16 16:10'
+text = "v14. Correction (row W-DD-BW3, step 1c, carried proposal CP-2): DD-BW2's §3 table extended with the fresh checks of BW1 to BW9 from case file §5, and every total, percentage and figure built on its rows recomputed (17 replacements, two figures; flag F101), checked by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-16-DD-BW3-CP2-DD-BW2.md); F101 resolved."
+[[pack.changelog]]
+date = '2026-11-16 16:45'
+text = "v13. Correction (row W-DD-BW2, step 7b): DD-BW2's opening now describes the case in the case file's own wording (flag F112, as F52 and F98), checked by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-16-DD-BW2-r2-DD-BW2.md); F112 resolved."
+[[pack.changelog]]
+date = '2026-11-16 16:30'
+text = "v13. DD-BW2 Deep dive: one project, with its numbers written (Opus 5.5) and filed; row W-DD-BW2, the third of three rows run in one chat: 8,529 words, 4 figures, no outside page cited at hand-in (the case file and the course's units; one vendor page added from the fresh check, as BW6 §8 read it), written from its brief with search off; the writer was not given the fresh-check reports, audit reports or changelog the brief names. Fresh check (Opus 5.5, separate context, given the course's filed units to check pointers; audits/building-with-ai/fresh-check-DD-BW2.md): fix, 2 errors, 12 should-fix, 10 minor; 21 applied and 3 held in a first pass, where the problem was real but the proposed fix wrong, then 8 entries applied in a second pass (5 companion edits and corrected fixes for the 3 held): all 24 resolved, 29 replacements, 0 held. The applier was stopped once by a server restart and resumed from its transcript. Corrections check of the writer's 3 contradictions by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-DD-BW2-contradictions.md): 0 text changes, 3 not a text change. Case file: BW1 to BW9's fresh-check counts added to §5 from their reports; DD-BW2's §3 table not changed in this row. Flags: 14 raised; F58 and F85 carried; F18, F45, F46, F47, F71, F79, F83 and F95 stay open (case facts still needed, or rules that also bind DD-BW3). Object: none."
+[[pack.changelog]]
+date = '2026-11-16 14:00'
+text = "v12. Correction (row W-DD-BW1, step 7b): DD-BW1's Deliverable intro now describes the case in the case file's own wording (flag F98, as F52), checked by a fresh Opus 5.5 agent (audits/building-with-ai/corrections-2026-11-16-DD-BW1-r3-DD-BW1.md); F98 resolved."
+[[pack.changelog]]
+date = '2026-11-16 13:45'
+text = "v12. DD-BW1 Deep dive: how the best practitioners work written (Opus 5.5) and filed; row W-DD-BW1, the second of three rows run in one chat: 9,958 words, 3 figures, 38 sources at hand-in, written from its brief with search on. Fresh check (Opus 5.5, separate context; audits/building-with-ai/fresh-check-DD-BW1.md): fix, 3 errors (figure facts not in the text), 20 should-fix, 12 minor; 33 applied and 2 held in a first pass, where the proposed fix was itself incomplete or wrong (a case cell that needed 'From BW7 on'; a Willison quotation that is about tasks), then the 2 applied in a second pass from corrected fixes: all 35 applied, 0 held. Corrected elsewhere, by two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-DD-BW1-DD-B3-BW7.md and -DD-BW1-r2-DD-B3.md): 8 exact replacements checked, 7 passed and applied, 1 failed and not applied (an author line whose address no search returned); the second round re-checked 2 of the 7, pass. A private source unit, 6 (its erratum is recorded in that course's data); BW7, 1 (Change 6: §4's table row for Dell'Acqua et al. now says the working paper has since been published in Organization Science, DOI 10.1287/orsc.2025.21838), with a dated note. Figures to be re-checked on the page shots after the build. Flags: 10 raised; F39, F57 and F86 carried; F75's re-read of Building effective agents for BW7 §1 done (the page loaded and agrees), F75 open for the auto-mode figures; F41, F69, F70, F73, F74, F77, F78, F79, F80 and F87 stay open (pages still not read, the keynote recording not watched, or rules that also bind DD-BW2 and DD-BW3). Object: none."
+[[pack.changelog]]
+date = '2026-11-16 10:30'
+text = "v11. BW10 Cost, limits, privacy written (Opus 5.5) and filed; row W-BW10: 9,344 words, 4 figures, 26 sources at hand-in, written from its brief with search on. Fresh check (Opus 5.5, separate context): fix, 0 errors, 7 should-fix, 11 minor; 14 applied and 4 held in a first pass, where the proposed fix was itself wrong (a quotation's case, an OpenAI rate and its companion edit, a parenthetical), then the 4 applied in a second pass from corrected fixes: all 18 applied, 0 held. Corrected elsewhere, by two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-BW10-B8-BW1-BW4.md and -BW10-r2-B8.md): 5 exact replacements checked, 4 passed and applied, 1 failed and not applied; the second round re-checked one of the 4, pass. A private source unit, 2 (its erratum is recorded in that course's data); BW1, 1 (Change 3: §2's conversion of 1M tokens to roughly 555k words or 2.5M characters now dated as read on Anthropic's model page on 15 Nov 2026 and no longer there on 16 Nov 2026); BW4, 1 (Change 4: the same, in §2); a dated note in each. Flags: 10 raised; F7, F15, F33, F40, F49, F66 and F72 carried; F4, F18, F48, F68, F69, F70, F71, F74, F77 and F78 stay open (case facts still needed, pages still not read, or rules that also bind DD-BW1). Object: none."
+[[pack.changelog]]
+date = '2026-11-16 08:40'
+text = "v10.1. Corrections C-BW9-1 and C-BW9-2 and a second round (row W-BW10, step 1b; audits/building-with-ai/corrections-2026-11-16-BW10-C-BW9.md and -r2-BW6-BW9.md, Opus 5.5): BW9 says 'session-scoped scheduled task' as the skills page does; BW6 and BW9 cite Claude Code's pages at their bare addresses (flag F70); BW9 §8 lists the Security page's protections as that page states them. 17 exact replacements, a dated note in each unit."
+[[pack.changelog]]
+date = '2026-11-16 09:00'
+text = "v10. BW9 Agents written (Opus 5.5) and filed; row W-BW9: 11,363 words, 3 figures, 25 sources at hand-in, written from its brief with search on. Fresh check (Opus 5.5, separate context): keep, 0 errors, 7 should-fix, 11 minor; all 18 applied before filing, 0 held. Corrected elsewhere, by two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-BW9-BW6-BW8.md and -BW9-r2-BW8-BW9.md), 9 exact replacements, all passed and applied: BW6, 5 (Changes 1 to 5: §4's two passages, the §8 review row, Deliverable step I and the Sources entry now quote and cite Best practices for Claude Code at its page, not its older .md copy); BW8, 3 (Changes 6 and 7: Extend Claude with skills cited at its page address in the text and in Sources; second round, Change 1: Deliverable Claude Code step 1 reworded to the page, so a project skill loads in cloud sessions on the repository, including cloud scheduled tasks); BW9, 1 (second round, Change 2: §4 no longer ties the scheduled-task clause of disable-model-invocation to v2.1.196, which the page does not). Flags: 8 raised; F56 and F65 carried; F4, F48, F64 and F69 stay open. Two corrections to BW9's skills-page citations are left for the next row."
+[[pack.changelog]]
+date = '2026-11-16 06:30'
+text = "v9.1. BW8 corrected after its figure re-check (row W-BW8, step 7b): §6 now says /loop runs on your machine, which must be on, and reaches local files, cites the Desktop page's comparison table for the cells, and no longer says the two vendor pages differ (the page and its older .md copy differ, flag F69); figure 4's caption to match. Two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-16-BW8-r3-BW8.md, -r4-BW8.md), 4 exact replacements, a dated note each. Matrix figures show their narrow-label drawing on every phone (theme 6.12)."
+[[pack.changelog]]
+date = '2026-11-16 05:00'
+text = "v9. BW8 Skills and automation written (Opus 5.5) and filed; row W-BW8: 13,799 words, 4 figures, 14 sources at hand-in, written from its brief with search off (live reads only to re-verify its sources and date its product facts). Fresh check (Opus 5.5, separate context): fix, 3 errors, 9 should-fix, 11 minor; 22 applied before filing, 1 held (a minor: the claude.ai install step's Team-plan default, which the help page states for the skills feature, not for code execution). Corrected elsewhere: a private source unit, 11 replacements in two rounds (the writer's source errors and the follow-ups the first check named), passed by two corrections checks by Opus 5.5 and applied; BW4, 2 replacements (Changes 6 and 7 of audits/building-with-ai/corrections-2026-11-16-BW8-B5-BW4.md, passed by the same corrections check and applied): the Skills row of its §1 layer table now reads that a skill reaches the account on claude.ai and a machine or a repository in Claude Code, citing Anthropic's Extend Claude with skills (read 16 Nov 2026), which is added to BW4's Sources. Case file: the repository's course index and this course's build order added to §1 from the course's own records. Flags: 10 raised; F31, F32, F38, F44, F50, F53, F54 and F55 carried; F18 and F34 stay open. Object: the check-against-sources skill folder (its SKILL.md and scripts/check.py), Deliverable Part 1, sections B and C"
+[[pack.changelog]]
+date = '2026-11-16 03:30'
+text = "v8. BW7 Pipelines: raw material to finished output written (Opus 5.5) and filed; row W-BW7: 10,499 words, 3 figures, 15 sources at hand-in, written from its brief with search off (live reads only to re-verify its sources and date its product facts). Fresh check (Opus 5.5, separate context): fix, 2 errors, 7 should-fix, 11 minor; all 20 applied before filing, with 2 companion edits the applier added (a matching count and a Sources entry): 22 replacements, 0 held. Corrected elsewhere: a private source unit, 3 replacements (the writer's 3 source errors, all confirmed by the fresh check), passed by a corrections check by Opus 5.5 and applied. No correction or carried proposal was open. Case file: the publishing steps, the build's checks, the private-terms check and this unit's applier added from the course's own records. Flags: 7 raised; F11, F14 and F37 carried; F19 stays open. Object: none"
+[[pack.changelog]]
+date = '2026-11-16 04:00'
+text = "v7. BW6 Research and verification written (Opus 5.5) and filed; row W-BW6: 10,025 words, 4 figures, 17 sources at hand-in, written from its brief with search off (live reads only to re-verify its sources and date its product facts). Fresh check (Opus 5.5, separate context): fix, 1 error, 7 should-fix, 3 minor; 12 applied before filing (with two Sources entries the findings asked for), 1 held (a minor: the front matter's search flag, which the build order sets to off; raised as a flag for the syllabus review). No correction elsewhere: the writer found no source error in its source unit, and no correction or carried proposal was open. Flags: 9 raised; F5, F12, F13 and F36 carried; F18 and F19 stay open. Object: none"
+[[pack.changelog]]
+date = '2026-11-16 02:00'
+text = "v6. BW5 Specifying a project written (Opus 5.5) and filed; row W-BW5: 9,492 words, 4 figures, 19 sources, written from its brief with search on. Fresh check (Opus 5.5, separate context): fix, 1 error, 5 should-fix, 12 minor; 17 applied before filing, 1 held (a minor: the READER line of Deliverable 1c, which fills the preamble only from the case file). Corrected elsewhere: a private source unit (4 replacements) and BW1 (3, its own row above), 7 replacements passed by two corrections checks by Opus 5.5 and applied; a second private source unit, 3 of the writer's 4 source errors confirmed by the fresh check, 2 passed the corrections check and were applied, 1 failed (the page that unit cites still carries its wording) and was not applied. Flags: 8 raised; F1, F16, F17, F22, F27 and F30 carried; F19 stays open; F25 resolved. Site: every matrix figure gets a second drawing for screens of 360 px and below, checked at 320 px (112 figures re-checked until each passed); theme 6.11. Carried proposals C1 to C4 done. Object: none"
+[[pack.changelog]]
+date = '2026-11-15 23:45'
+text = "v5. Correction (row W-BW5, step 1b): BW1's Sources note, opening and unsure item 6 now say most help-centre pages, not all, carry no exact date (the connector page is dated 16 March 2026); checked by two corrections checks by Opus 5.5 (audits/building-with-ai/corrections-2026-11-15-BW5-BW1-B4.md and -BW5-r2-BW1-B4.md). 3 exact replacements."
+[[pack.changelog]]
+date = '2026-11-15 22:45'
+text = 'v5. BW4 Context engineering written (Opus 5.5) and filed; row W-BW4: about 5,500 words of body and 2,400 of deliverable, 4 figures, written from its brief with search off. Fresh check (Opus 5.5, separate context): fix, 2 errors, 5 should-fix, 5 minor, all applied before filing. Corrected elsewhere: a private source unit (20 replacements, 6 named by the check and 14 follow-ups that keep its token arithmetic consistent; 2 proposed changes failed the check and were not applied); BW1 §8, whose "Tools and connectors" row now names the three connector modes, Always available, Auto and On demand (audits/building-with-ai/corrections-2026-11-15-BW1-B4.md). Object: none'
+[[pack.changelog]]
+date = '2026-11-15 20:00'
+text = "v4. BW3 Briefing: prompts that hold up written (Opus 5.5) and filed; row W-BW3: about 14,000 words, 3 figures, written from its brief with search off. Fresh check (Opus 5.5, separate context): fix, 0 errors, 8 should-fix, 11 minor, all applied before filing. Corrected elsewhere: a private unit (1 replacement); BW1 (7 errata, v3.1). Object: the written brief (§1, and the Deliverable's brief form)"
+[[pack.changelog]]
+date = '2026-11-15 19:41'
+text = "v3.1. Correction (row W-BW3, step 7b, flag F3): BW1's layer map (§8) and the 'Treated in' column of its diagnosis table (Parts 3 and 4) now name the units whose briefs treat each layer and problem, 7 exact replacements checked against the briefs by Opus 5.5 (audits/building-with-ai/corrections-2026-11-15-BW1-B3.md); the F3 flag is carried by BW3."
+[[pack.changelog]]
+date = '2026-11-15 17:55'
+text = 'v3. BW2 Choosing the model and the effort filed (row W-BW2): about 10,000 words, 4 figures, written by Opus 5.5 from its brief with search on. Fresh check (Opus 5.5, separate context): fix, 1 error, 5 should-fix, 10 minor, all applied before filing. Corrected elsewhere: a private unit (2 replacements, each with a dated note). Object: none'
+[[pack.changelog]]
+date = '2026-11-15 15:00'
+text = 'v2. BW1 Mental model filed (row W-BW1): 6,431 words of body and 2,951 of deliverable, 3 figures, written by Opus 5.5 from its brief with search on. Fresh check (Opus 5.5, separate context): fix, 1 error, 7 should-fix, 7 minor, all applied before filing. Corrected elsewhere: a private unit (18 replacements and a note); PB8 and a private legal unit, their citation of Decreto-Lei 57/2008. Object: the context window (§1 and §2)'
+[[pack.changelog]]
+date = '2026-11-11 23:59'
+text = 'v1. Course created (new-course skill; backlog row G-0): frame, goal and three outcomes, 13 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the build order in syllabus order, the syllabus-flags file. Adapted from a private course of the Learning Project; no unit written.'

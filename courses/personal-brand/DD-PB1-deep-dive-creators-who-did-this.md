@@ -5,6 +5,7 @@ course: personal-brand · PB · Building a Personal Brand on Instagram and YouTu
 model: Opus 5.5
 written: 2026-11-13
 search: on
+intro: Deep dive DD-PB1, written 13 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register, PB1 to PB10 and its source material, search on (every page opened on 13 Nov 2026); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: 7 errors (misquoted phrases and one unsupported clause), 13 should-fix, 9 minor, all applied. Six documented creators chosen for spread (three Instagram-first, three beside a full-time job, four outside the United States, no minors), with who was considered and left out and why; for each, start, platform mix, cadence, hours, numbers at 12, 24 and 36 months, breakout piece, what they stopped, how they earn and what they say they got wrong, each figure dated and labelled by source; each history read against the rules of PB6 and PB7 that can be checked from outside an account; what a sample of survivors cannot show. Deliverable: a comparables brief for Mara (what all six held constant, the items per creator, a matrix of what each documents), then the template. Known gaps: only one of the eighteen 12-, 24- and 36-month points has a count dated at that point; no source gives weekly hours for any of the six; several start and exit dates disagree between sources and are given side by side.
 ---
 
 # DD-PB1 · Deep dive: creators who did this

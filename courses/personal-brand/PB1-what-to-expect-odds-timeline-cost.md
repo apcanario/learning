@@ -5,6 +5,8 @@ course: personal-brand · PB · Building a Personal Brand on Instagram and YouTu
 model: Opus 5.5
 written: 2026-11-12
 search: on
+name: PB1 · What to expect
+intro: Unit PB1, written 12 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register and its source material, search on (every changeable fact dated, checked 12 Nov 2026); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 1 error, 6 should-fix, 7 minor, all applied. What a one-person account can expect on YouTube and on Instagram from the largest datasets found (vidIQ's studies of 33 million and 137,000 channels, Metricool, Socialinsider, Buffer), each with its sample, date and label; the milestones and the monetisation thresholds as YouTube states them, with the 1 February 2027 change; months to each milestone where data exists; the plateau, who continues, the cost of a phone-only setup, survivor bias and what no dataset measures; four figures. Deliverables: Mara's expectation sheet (21 rows), her hours-and-money budget, her stop rule and the four checkpoint dates of her first year, then all three as templates. Known gaps: the Instagram data is thin: no dataset covers accounts under 1,000 followers or follows new accounts, so the Instagram row for followers at 12, 24 and 36 months is unsourced and left for PB7; Instagram states no thresholds for its earning tools on its public pages; Buffer's frequency model is unpublished and Metricool's growth figure undefined; no dataset follows YouTube channels past 360 days. About 8,200 words with the deliverable.
 ---
 
 # What to expect: odds, timeline, cost

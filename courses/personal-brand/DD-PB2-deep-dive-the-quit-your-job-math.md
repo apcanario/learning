@@ -5,6 +5,7 @@ course: personal-brand · PB · Building a Personal Brand on Instagram and YouTu
 model: Opus 5.5
 written: 2026-11-14
 search: off
+intro: Deep dive DD-PB2, the course's last unit, written 14 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register, PB1 to PB10, DD-PB1 and its source material (for the model's structure only), search off (used only to verify six points, each dated 14 Nov 2026); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 1 error, 4 should-fix, 8 minor, all applied. Advises neither quitting nor staying. How a household floor is computed and what a survivable floor leaves out; runway, the guidance on its length and its grade; each income line of PB9 with the timeline the evidence supports, or an unfilled input; tax as one input the model does not compute; reduced hours, a sabbatical and contract work as questions; sensitivity to the two assumptions that move the date most. Deliverable: Mara's threshold model with three paths and the earliest honest date on each, the arithmetic shown, then the template and its inputs. Known gaps: no dataset measures the time from leaving a job to creator income replacing a salary; runway guidance is consumer guidance for emergencies; the reduced-hours path's take-home is a planning value until payroll gives a figure.
 ---
 
 # Deep dive: the quit-your-job math

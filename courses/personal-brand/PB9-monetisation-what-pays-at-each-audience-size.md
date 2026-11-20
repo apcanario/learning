@@ -5,6 +5,7 @@ course: personal-brand · PB · Building a Personal Brand on Instagram and YouTu
 model: Opus 5.5
 written: 2026-11-13
 search: on
+intro: Unit PB9, written 13 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register, PB1 to PB8 and its source material, search on (13 Nov 2026); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 3 errors, 5 should-fix, 10 minor, all applied. The income lines open to a small account in the order they open: platform revenue share (YouTube's thresholds from 1 Feb 2027; Instagram, which publishes none), affiliate links, brand deals, an own product, a paid membership or newsletter, services and teaching, each with the evidence that exists and where none does; why sales to a small audience are small-number events; platform and payment fees; when a line is worth starting; sponsorship load. Deliverable: Mara's twelve-month revenue model in three scenarios, every assumption in one table with its source and grade, the arithmetic shown and the rule for which line starts first, then the template. Known gaps: no creator affiliate conversion rate, own-product buy share or brand-deal offer rate for small accounts meets the standard; Instagram's Help Centre pages on Subscriptions and Gifts were not returned; Gumroad's page does not say whether card processing is inside its fee; the postal price is a 2020 tariff.
 ---
 
 # Monetisation: what pays at each audience size

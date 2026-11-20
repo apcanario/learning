@@ -5,6 +5,7 @@ course: personal-brand · PB · Building a Personal Brand on Instagram and YouTu
 model: Opus 5.5
 written: 2026-11-12
 search: on
+intro: Unit PB6, written 12 Nov 2026 by Opus 5.5 in an isolated agent context that saw only its brief (with the Aim, Takes and Gives lines), the writing skill, sourcing Parts 1 and 5, the figure kinds, Mara's register, PB1 to PB5 and its source material, search on (12 Nov 2026); fresh check the same day by a separate Opus 5.5 agent that had not seen the writing: fix, 2 errors, 12 should-fix, 14 minor, all applied. What YouTube says its recommendations use, and what it does not say; traffic sources and what each measures; click-through rate and impressions, read together, with a decision figure for one upload; retention and the first 30 seconds; the first week and the back catalogue; Shorts and long-form weighed both ways; cadence and breaks; titles, descriptions and search; what changed in 2025 and 2026, dated; four figures. Deliverables: Mara's YouTube rules, each with its evidence, grade and label, and her metric rows read on her phone, then the blank templates. Known gaps: no click-through or retention dataset with a stated sample; no traffic-source split for a small long-form channel; no measured Shorts-to-long-form transfer rate; the app paths rest on the Android help page. About 10,400 words with the deliverable and templates, above the brief's guide; nothing was cut to meet it.
 ---
 
 # How YouTube growth works
