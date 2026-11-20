@@ -1,0 +1,13 @@
+# Packet 3: verify by scope (work part 2, done-when 4)
+Report: out/s-dec4/03-scope.md
+Files you may change: kit/verify.py, new kit/verify_scope.py if a helper is cleaner, a kit/verify-hashes.json (or similar) state file with its .gitignore line decision recorded. Not output.
+Read also: out/s-dec4/01-engine.md and out/s-dec4/02-verify-names.md (the state of verify.py after packets 1 and 2).
+
+Work
+1. `verify.py` keeps a hash of each page's sources and, in the default (scoped) run, checks only pages whose sources changed since the last PASSED run. Define "page sources" from what the build reads: the unit's Markdown (front matter and body), its briefs entry, the course.toml, the pack's pages, the brand and edition files for that edition. The home page and the edition-wide checks (home, index, site log, What's new, contrast of the home, panel/widths of the home, private terms, rot check, index_check) always run: "a one-unit filing verifies only that unit's pages plus the home".
+2. A change to any kit/*.py, kit/shell.js, kit/shell.css or design/theme.css, brand/edition/catalog files that affect every page, forces the full run. `--full` always runs everything. A first run with no state file is a full run. The state file is written only after ALL CHECKS PASSED; a failed run never marks pages as checked. A run says on its first line which mode it took and why ("scoped: 1 unit + home", "full: kit/verify.py changed", "full: --full").
+3. Per edition: state is kept per edition (`--edition X` has its own hashes).
+4. Prove it. In a copy of the repo under a literal /tmp path (e.g. /tmp/s-dec4-scope): (a) full run once, ALL CHECKS PASSED, timed; (b) a dry-run one-unit filing (use `kit/thin.py` as the filer does, or a front-matter-only edit of one filed unit's `written` date or a dummy unit if thin.py documents a dry run: see S-DEC2's dry run in docs/decoupling.md) then a scoped run, timed: it must verify only that unit's pages plus the home; list the pages it checked; (c) a change to design/theme.css (copied to kit/shell.css as the Design rule says) then a run: it must run everything, timed; (d) `--full` timed. Record all four timings and the page lists in the report. Nothing from the copy is committed.
+5. Scope must not hide a failure: add a self-check mode or a test run showing that a unit edited so a check fails (e.g. a figure block with a bad key) is caught by the scoped run.
+6. The scoped logic must work for the markdown editions and for greece (the history course pages): where a history page's sources are HTML under courses/<id>/ or kit, treat a change there as that page's source.
+End: baseline clean in the main tree; `cd kit && python3 verify.py --full` is NOT yours to run in the main tree; the main chat runs it.
