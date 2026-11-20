@@ -17,7 +17,7 @@ are namespaced (#rome, #rome-syllabus, #rm01).
 """
 import json, re, html, pathlib, importlib.util, math
 import markdown
-from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES, EDITIONS, HERO_AT as _HERO_AT, DEFAULT_EDITION, brand
+from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES, EDITIONS, HERO_AT as _HERO_AT, DEFAULT_EDITION, brand, path as cpath, provenance
 import sys
 # P70: an edition filters the course list here, before anything renders; the full site is the default edition (the first
 # in catalog.toml `edition_order`)
@@ -46,9 +46,10 @@ import viz
 import viz_examples
 mdcourse.SITE_NAME = howbuilt.SITE_NAME = viz_examples.SITE_NAME = SITE_NAME   # S-DEC3
 howbuilt.GH = B['repo']   # S-DEC3: the brand's repo link base, not the clone's remote
+howbuilt.HB = B.get('howbuilt', {})   # S-DEC5: the brand's method and sourcing docs for the How it was built pages
 
 R = pathlib.Path(__file__).resolve().parent
-PROV = json.load(open(R / 'provenance.json'))
+PROV = provenance()   # S-DEC5: kit/provenance.json with each history course's own part (courses.py)
 ICON_CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'
 
 
@@ -107,7 +108,7 @@ for _c in HISTORY:
 
 def load(c):
     """Parse a course's syllabus and prompts index; build its report panels."""
-    syl = (R / c['syllabus']).read_text()
+    syl = cpath(c, 'syllabus').read_text()
     units = []
     for m in re.finditer(r'<section class="unit" id="u(\d+)"[^>]*>.*?<h2>(.*?)</h2>.*?<p class="unit-why">(.*?)</p>(.*?)</section>', syl, re.S):
         u, name, why, body = m.groups()
@@ -121,7 +122,7 @@ def load(c):
     intro = re.search(r'<section class="intro">(.*?)</section>', syl, re.S).group(1)
     c['syl_intro'] = re.sub(r'<h2>.*?</h2>', '', intro, count=1, flags=re.S).replace('<span class="tag">copy</span>', '<em>copy prompt</em>')
     order = [m[0] for x in units for m in x[3]]
-    idx = json.load(open(R / c['prompts']))
+    idx = json.load(open(cpath(c, 'prompts')))
     c['index'] = {k: idx[k] for k in order if k in idx}
     c['done'] = set(c['index'])
     c['first'] = next(iter(c['index']), None)  # the first written report, where a new reader starts (None in a new course)
@@ -152,7 +153,7 @@ def load(c):
         # as Sources, and its provenance, the writer's unsure list, its checks and audits and its prompt as
         # "How this unit was made"
         why = next((w for mid, _, w in c['umap'][u][2] if mid == i), '')
-        bib = R / 'bibliography' / c['id'] / f'r-{i}.md'
+        bib = cpath(c, 'bibliography') / f'r-{i}.md'
         src, nsrc = '', 0
         if bib.exists():
             bt = re.sub(r'\A# .*\n', '', bib.read_text(encoding='utf-8'))
@@ -1302,6 +1303,11 @@ JS = open(R / 'shell.js').read()
 for _k, _v in STORE.items():
     JS = JS.replace(f'__STORE_{_k.upper()}__', _v)
 assert '__STORE_' not in JS, 'shell.js names a storage key the brand does not give'
+# S-DEC5: a brand with `strip_comments = true` leaves the comments of design/theme.css (shell.css) and shell.js out of its
+# shell: they are the maintainer's notes (dates, rows, private names). A brand without it (academy) keeps them, byte for byte
+if B.get('strip_comments'):
+    CSS = re.sub(r'/\*.*?\*/', '', CSS, flags=re.S)
+    JS = re.sub(r'^[ \t]*//[^\n]*\n', '', JS, flags=re.M)   # whole-line comments only: a // inside a line may be a string
 
 page = f'''<meta charset="utf-8">
 <title>{ED['title']}</title>

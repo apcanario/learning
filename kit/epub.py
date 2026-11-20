@@ -3,7 +3,7 @@ writes `editions/<edition>.epub` from the same sources, so the same files can be
 
 What goes in, per course of the edition, in syllabus or build order:
   history course    each written report: its vault file (courses/<course>/<id>-<slug>.md, P71-3), every ```viz block drawn to SVG
-                    by viz.py, then its Sources (the curated bibliography/<course>/r-<id>.md, as the site's Sources)
+                    by viz.py, then its Sources (the curated courses/<course>/bibliography/r-<id>.md, as the site's Sources)
   markdown course   each filed unit from its vault: the text from the first heading on, every ```viz block drawn by
                     viz.py; its own ## Sources section ends it
 Left out: everything about how a unit was made ("How this unit was made", the writer's opening note, the prompt, the
@@ -18,6 +18,7 @@ import re, html, json, uuid, zipfile, pathlib, datetime, shutil
 import markdown
 import viz
 import vault
+from courses import path as cpath   # S-DEC5: a history course's bibliography folder
 
 R = pathlib.Path(__file__).resolve().parent
 THEME = R.parent / 'design' / 'theme.css'
@@ -113,7 +114,7 @@ def chapters(courses, md_units):
                 frag = re.sub(r'<style.*?</style>|<script.*?</script>', '', frag, flags=re.S | re.I)
                 frag = re.sub(r'\sstyle="[^"]*"', '', frag)
                 frag = re.sub(r'<a\b[^>]*href="#[^"]*"[^>]*>(.*?)</a>', r'\1', frag, flags=re.S)   # no link into the site
-                bib = R / 'bibliography' / c['id'] / f'r-{mid}.md'
+                bib = cpath(c, 'bibliography') / f'r-{mid}.md'
                 src = ''
                 if bib.exists():
                     bt = re.sub(r'\A# .*\n', '', bib.read_text(encoding='utf-8'))

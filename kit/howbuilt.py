@@ -3,12 +3,15 @@
 Every fact on the page is read from a file at build time; nothing on it is typed here. The words this module adds
 are headings, column labels and the sentences that say where each fact comes from.
 
-  the method in force       docs/method.md section 1 (the course family's column and the common rule)
-  the sources policy        docs/sourcing-standard.md, Part 1 and the course's own part
-  history courses           kit/provenance.json (model per report, artefacts, review_notes); kit/reviews/<folder>/
+  the method in force       the brand's [howbuilt] `method` doc (academy: docs/method.md) section 1 (the course family's
+                            column, `method_columns`, and the common rule)
+  the sources policy        the brand's `sourcing` doc (academy: docs/sourcing-standard.md), Part 1 and the course's own
+                            part (`sourcing_part`, else the brand's `sourcing_parts`); a brand without them shows neither
+  history courses           courses/<course>/inputs/provenance.json (model per report, dates, the course's artefacts)
+                            and kit/provenance.json (the kit's artefacts, review_notes); kit/reviews/<folder>/
                             (the quality pass and the fresh checks: verdict per report, date and model from BRIEF.md);
                             kit/audits/<course>-*.md (the Fable audits: date and model from their "Run with" line,
-                            verdict, mean and factual errors from each scorecard); kit/bibliography/<course>/r-<id>.md
+                            verdict, mean and factual errors from each scorecard); courses/<course>/bibliography/r-<id>.md
   markdown courses          courses/<slug>/*.md front matter (code, title, model, written, search); the data file's
                             AUDIT_LOG, STATUS and DONE_ROWS; audits/<slug>/fresh-check-<code>.md front matter
 
@@ -18,14 +21,18 @@ The site's Changelog page stays the cross-course record.
 """
 import calendar, datetime, html, json, pathlib, re, subprocess
 import pack   # S-DEC2: a markdown course's data file, for the footer
+from courses import HISTORY, path as cpath, provenance   # S-DEC5: a history course's inputs in its folder
 
 e = html.escape
 KIT = pathlib.Path(__file__).resolve().parent
 REPO = KIT.parent
 DOCS = REPO / 'docs'
 REVIEW_KIND = {'2026-quality-pass': 'Quality pass', 'units-9-13': 'Fresh check'}   # labels for the two review folders
-FAMILY_COL = {'history': 'Personal Mythology', 'markdown': 'Brand + AI'}       # method.md section 1 column names
-SOURCING_PART = {'history': 'Part 3', 'markdown': 'Part 2'}                     # sourcing-standard.md parts
+# S-DEC5 (20 Nov 2026): the brand's [howbuilt] table, set by build.py: `method` (the repo path of the method doc whose
+# section 1 is "The method in force") with `method_columns` (its table's column for each course family), `sourcing`
+# (the sourcing standard's path) with `sourcing_parts` (each family's part). A brand without them gets neither section
+# and no link to either doc in the footer; the column names and parts were typed here before (FAMILY_COL, SOURCING_PART)
+HB = {}
 
 
 def _github():
@@ -77,47 +84,52 @@ def front(path):
 
 def method_rows(family):
     """docs/method.md section 1: (topic, this family's practice, common rule), parsed from its table."""
-    txt = (DOCS / 'method.md').read_text(encoding='utf-8')
+    txt = (REPO / HB['method']).read_text(encoding='utf-8')
     sec = re.search(r'^## 1 · .*?$(.*?)^## ', txt, re.S | re.M).group(1)
     rows = [[c.strip() for c in ln.strip().strip('|').split('|')] for ln in sec.split('\n') if ln.startswith('|')]
     head, body = rows[0], rows[2:]
-    i = head.index(FAMILY_COL[family])
+    i = head.index(HB['method_columns'][family])
     j = head.index('Common rule')
     return [(r[0], r[i], r[j]) for r in body]
 
 
 def sourcing_parts(family, part=None):
     """docs/sourcing-standard.md: [(heading, lines)] for Part 1 and the family's part (or the course's own `sourcing_part`)."""
-    txt = (DOCS / 'sourcing-standard.md').read_text(encoding='utf-8')
+    txt = (REPO / HB['sourcing']).read_text(encoding='utf-8')
     out = []
     for m in re.finditer(r'^## (Part \d[^\n]*)\n(.*?)(?=^## |\Z)', txt, re.S | re.M):
-        if m.group(1).startswith(('Part 1', part or SOURCING_PART[family])):
+        if m.group(1).startswith(('Part 1', part or HB['sourcing_parts'][family])):
             out.append((m.group(1), [ln.replace('- [ ] ', '- ') for ln in m.group(2).split('\n')]))
     return out
 
 
 def method_decisions():
     """docs/method.md section 1: each decision's name, its pick and its override line (with any 'Triggered' note)."""
-    txt = (DOCS / 'method.md').read_text(encoding='utf-8')
+    txt = (REPO / HB['method']).read_text(encoding='utf-8')
     sec = re.search(r'^## 1 · .*?$(.*?)^## ', txt, re.S | re.M).group(1)
     return re.findall(r'^\*\*([^*]+?)\.\*\* Pick: (.*?)$.*?^Override if: (.*?)$', sec, re.S | re.M)
 
 
 def method_section(family, md_inline):
-    col = FAMILY_COL[family]
+    if not HB.get('method'):
+        return ''
+    col = HB['method_columns'][family]
+    doc = pathlib.PurePosixPath(HB['method']).name
     rows = ''.join(f'<tr><td>{md_inline(t)}</td><td>{md_inline(a)}</td><td>{md_inline(b)}</td></tr>' for t, a, b in method_rows(family))
     picks = ''.join(f'<li><strong>{md_inline(n)}.</strong> Pick: {md_inline(p)} <em>Override if:</em> {md_inline(o)}</li>' for n, p, o in method_decisions())
-    return (f'<details class="howto rules"><summary><h2>The method in force</h2><span>method.md §1</span></summary>'
-            f'<p class="hnote">From {gh("docs/method.md")} §1: where {e(col)}\'s own method differed from the other course family\'s, and the common rule that holds now. Units written before the merge stay valid as they were written.</p>'
+    return (f'<details class="howto rules"><summary><h2>The method in force</h2><span>{e(doc)} §1</span></summary>'
+            f'<p class="hnote">From {gh(HB["method"])} §1: where {e(col)}\'s own method differed from the other course family\'s, and the common rule that holds now. Units written before the merge stay valid as they were written.</p>'
             f'<div class="report"><div class="tbl"><table><thead><tr><th>Topic</th><th>{e(col)} before the merge</th><th>Common rule, in force</th></tr></thead>'
             f'<tbody>{rows}</tbody></table></div></div>'
             f'<details class="prompt"><summary>The decisions and their overrides</summary><div class="report"><ul>{picks}</ul></div></details></details>')
 
 
 def sources_section(family, md_blocks, part=None):
+    if not HB.get('sourcing'):
+        return ''
     parts = ''.join(f'<details class="prompt"><summary>{e(h)}</summary><div class="report">{md_blocks(lines)}</div></details>' for h, lines in sourcing_parts(family, part))
-    return (f'<details class="howto rules"><summary><h2>The sources policy</h2><span>sourcing-standard.md</span></summary>'
-            f'<p class="hnote">From {gh("docs/sourcing-standard.md")}: Part 1 applies to every course, the second part to this one. A unit must pass both.</p>{parts}</details>')
+    return (f'<details class="howto rules"><summary><h2>The sources policy</h2><span>{e(pathlib.PurePosixPath(HB["sourcing"]).name)}</span></summary>'
+            f'<p class="hnote">From {gh(HB["sourcing"])}: Part 1 applies to every course, the second part to this one. A unit must pass both.</p>{parts}</details>')
 
 
 SET_NAME = {'game-icons': 'game-icons.net', 'phosphor': 'Phosphor Icons', 'tabler': 'Tabler Icons'}
@@ -167,6 +179,11 @@ def stats(items):
 def panel(pid, ctx, color, label, body, kind='build'):
     return (f'<section class="panel stack" id="{pid}" data-ctx="{ctx}" data-kind="{kind}" data-t="How it was built" data-u="{e(label)}" '
             f'data-c="{color}" data-split="built" style="--cc:{color}" hidden>{body}</section>')
+
+
+def doc_links():
+    """The footer's links to the brand's method and sourcing docs (HB), those it names."""
+    return [gh(HB[k]) for k in ('method', 'sourcing') if HB.get(k)]
 
 
 def footer(sources):
@@ -226,7 +243,8 @@ def _audits(course):
 def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
     """The "How it was built" panel of a history course; c is the course dict after build.py:load."""
     cid, prov = c['id'], c['prov']
-    PROV = json.load(open(KIT / 'provenance.json'))
+    PROV = provenance()   # S-DEC5: kit/provenance.json with each history course's own part
+    own = json.loads(cpath(c, 'provenance').read_text(encoding='utf-8')).get('artefacts', {})
     folders = _review_folders()
     audits = _audits(cid)
     by_report = {}
@@ -271,7 +289,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
                 f = fo['path'] / f'{cid}-{mid}-writer.md'
                 if f.exists():
                     files.append(f'writer\'s unsure list {gh(rel(f))}')
-            b = KIT / 'bibliography' / cid / f'r-{mid}.md'
+            b = cpath(c, 'bibliography') / f'r-{mid}.md'
             if b.exists():
                 files.append(f'bibliography {gh(rel(b))}')
             rows += (f'<tr data-mod="{e(mid)}"><td><a href="#{c["slug"](mid)}" data-target="{c["slug"](mid)}">{e(mid)}</a> {e(t)}</td><td>{e(model)}{pills}{when}</td>'
@@ -281,11 +299,14 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
                    f'<tbody>{rows}</tbody></table></div></div></details>')
 
     # the course's own material other than reports, and the kit-wide material, from provenance.json artefacts
-    own_keys = [k for k in PROV.get('artefacts', {}) if k.startswith(c['syllabus']) or k == f'courses.py:{cid.upper()}']
+    # S-DEC5: the course's own artefacts are the ones in its own provenance file; their keys are labels of what was
+    # edited when (`courses.py:GREECE` names the file the course's dict sat in then), kept as they were
+    own_keys = [k for k in PROV.get('artefacts', {}) if k in own]
     def art_rows(keys):
         return ''.join(f'<tr><td><code>{e(k)}</code></td><td>{e(PROV["artefacts"][k]["model"])}</td><td>{e(PROV["artefacts"][k].get("review", ""))}</td><td>{e(PROV["artefacts"][k]["what"])}</td></tr>' for k in keys)
     art_head = '<thead><tr><th>Item</th><th>Model</th><th>Review</th><th>What</th></tr></thead>'
-    other_keys = [k for k in PROV.get('artefacts', {}) if k not in own_keys and not re.match(r'(greek|roman)-syllabus|courses\.py:', k)]
+    others = {k for h in HISTORY for k in json.loads(cpath(h, 'provenance').read_text(encoding='utf-8')).get('artefacts', {})}
+    other_keys = [k for k in PROV.get('artefacts', {}) if k not in others]
 
     # audits and checks run, newest information from the files themselves
     arows = ''.join(f'<div class="logrow"><span class="dt">{e(a["date"])}</span><span><strong>{e(a["id"])}</strong> · {e(a["title"])} · {e(a["model"])}'
@@ -321,7 +342,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
   {PRIVATE}
   {flags_section(flags)}
   <h2 class="hsec">Who wrote what, and the checks run</h2>
-  <p class="hnote">One table per syllabus unit. "Written with" is the report's entry in {gh("kit/provenance.json")}. Checks come from the review folders ({", ".join(gh(rel(fo["path"] / "BRIEF.md"), fo["label"].lower() + " brief") for fo in folders)}) and the Fable audits in <code>kit/audits/</code>. Under the model is the date the report was filed, from the same file's <code>written</code> map: the date of the work session that filed it, read from the Changelog (P91); where that session ran over several days, its first day, marked approximate.</p>
+  <p class="hnote">One table per syllabus unit. "Written with" is the report's entry in {gh(c["provenance"])}. Checks come from the review folders ({", ".join(gh(rel(fo["path"] / "BRIEF.md"), fo["label"].lower() + " brief") for fo in folders)}) and the Fable audits in <code>kit/audits/</code>. Under the model is the date the report was filed, from the same file's <code>written</code> map: the date of the work session that filed it, read from the Changelog (P91); where that session ran over several days, its first day, marked approximate.</p>
   <div>{groups}</div>
   <section class="howto" style="--hc:var(--gold)"><h2>Audits and checks run</h2>{f'<div class="logrows">{arows}</div>' if arows else '<p>None yet.</p>'}</section>
   <details class="howto rules"><summary><h2>Course material other than reports</h2><span>{len(own_keys)} item{"s" if len(own_keys) != 1 else ""}</span></summary>
@@ -333,7 +354,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
   {credits_section({c['slug'](i): i for i in c['index']}, cid)}
   {method_section('history', md_inline)}
   {sources_section('history', md_blocks)}
-  {footer([gh('kit/provenance.json'), '<code>kit/reviews/</code>', '<code>kit/audits/</code>', gh('docs/method.md'), gh('docs/sourcing-standard.md')])}'''
+  {footer([gh(c['provenance']), '<code>kit/reviews/</code>', '<code>kit/audits/</code>', *doc_links()])}'''
     return panel(f'{c["home_id"]}-built', cid, color, c['label'], body)
 
 
@@ -460,5 +481,5 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
   {credits_section(m.get('pages', {}), ctx)}
   {method_section('markdown', md_inline)}
   {sources_section('markdown', md_blocks, c.get('sourcing_part'))}
-  {footer([f'<code>courses/{e(slug)}/</code> front matter', f'<code>audits/{e(slug)}/</code>', gh(rel(REPO / pack.source(c))) + ' (AUDIT_LOG, STATUS, DONE_ROWS)', gh('docs/method.md'), gh('docs/sourcing-standard.md')])}'''
+  {footer([f'<code>courses/{e(slug)}/</code> front matter', f'<code>audits/{e(slug)}/</code>', gh(rel(REPO / pack.source(c))) + ' (AUDIT_LOG, STATUS, DONE_ROWS)', *doc_links()])}'''
     return panel(f'{ctx}-built', ctx, col, label, body)

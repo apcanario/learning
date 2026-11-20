@@ -16,7 +16,8 @@ module name is already taken, an edition without `title` or `site` or with `cour
 order entry with no file each stop the build with the file named.
 
 Every course has a `family`: 'history' (Greece, Rome and the eight to come: one Markdown report per module in the vault,
-`vault`, since P71-3 (1 Nov 2026; vault.py, mdcourse.history_html), a syllabus with prompts, provenance.json) or
+`vault`, since P71-3 (1 Nov 2026; vault.py, mdcourse.history_html), a syllabus with prompts, provenance and a
+bibliography folder, all in the course's folder since S-DEC5 and named by `syllabus`, `prompts`, `provenance`, `bibliography`) or
 'markdown' (Brand + AI: units as Markdown in the vault, `vault`, read directly since A5; the course data at `data`:
 the `[pack]` table of this same course.toml, with briefs.md and pages/ beside it; kit/pack.py reads it, and this
 loader drops `pack` from the dict). The root home is Academy and lists every course of both families (docs/academy.md, A1).
@@ -39,6 +40,7 @@ What TOML cannot hold, converted here, the same way every time, so the dicts equ
   long HTML  `rules` and `spine`: TOML multi-line literal strings ('''), the newline after the opening quotes dropped
   computed   the history timelines' `ticks` positions were f-strings; the files hold the strings they gave
 """
+import json
 import pathlib
 import tomllib
 
@@ -62,7 +64,7 @@ def _rows(v):
 
 
 # the keys a course file cannot do without, by family (build.py reads them before anything else)
-_FAMILY_KEYS = {'history': ('syllabus', 'vault', 'prompts'), 'markdown': ('data', 'vault', 'tracks')}
+_FAMILY_KEYS = {'history': ('syllabus', 'vault', 'prompts', 'provenance', 'bibliography'), 'markdown': ('data', 'vault', 'tracks')}
 _TAKEN = {'THEMES', 'NEXT', 'COURSES', 'EDITIONS', 'HISTORY', 'MARKDOWN'}
 
 
@@ -162,3 +164,58 @@ def brand(edition):
 
 HISTORY = [c for c in COURSES if c['family'] == 'history']
 MARKDOWN = [c for c in COURSES if c['family'] == 'markdown']
+
+
+# S-DEC5 (20 Nov 2026): a history course's inputs live in its folder, named by its course.toml (paths from the repo
+# root): `syllabus` and `prompts` (courses/<id>/inputs/), `provenance` (its own part of what kit/provenance.json held),
+# `bibliography` (the curated r-<id>.md and biblio.py's unit-<n>.md). kit/provenance.json keeps the kit's own part.
+def path(c, key):
+    """The file or folder a course names by `key` (a path from the repo root): an absolute Path."""
+    return _ROOT / c[key]
+
+
+_KIT_PROV = _ROOT / 'kit' / 'provenance.json'
+
+
+def provenance():
+    """The provenance dict as kit/provenance.json held it before S-DEC5: {<course id>: {module: model}, 'artefacts',
+    'review_notes', 'review_mark', 'written': {<course id>: {module: date}}, 'written_approx': {<course id>: [modules]}}.
+    Built from kit/provenance.json (the kit's artefacts, review_notes, review_mark) and each history course's
+    `provenance` file ({'reports', 'artefacts', 'written', 'written_approx'}); a course's artefacts follow the kit's."""
+    kit = json.loads(_KIT_PROV.read_text(encoding='utf-8'))
+    out = {c['id']: {} for c in HISTORY}
+    out['artefacts'] = dict(kit.get('artefacts', {}))
+    for k, v in kit.items():
+        if k != 'artefacts':
+            out[k] = v
+    out['written'], out['written_approx'] = {}, {}
+    for c in HISTORY:
+        own = json.loads(path(c, 'provenance').read_text(encoding='utf-8'))
+        out[c['id']] = own.get('reports', {})
+        out['artefacts'].update(own.get('artefacts', {}))
+        out['written'][c['id']] = own.get('written', {})
+        out['written_approx'][c['id']] = own.get('written_approx', [])
+    return out
+
+
+def save_provenance(prov):
+    """Write a dict of provenance()'s shape back: each course's part to its own file (an artefact goes to the course
+    file that already holds it, a new one to kit/provenance.json), the rest to kit/provenance.json."""
+    def dump(p, d):
+        p.write_text(json.dumps(d, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')
+    ids = {c['id'] for c in HISTORY}
+    taken = set()
+    for c in HISTORY:
+        f = path(c, 'provenance')
+        mine = list(json.loads(f.read_text(encoding='utf-8')).get('artefacts', {})) if f.exists() else []
+        taken |= set(mine)
+        dump(f, {'reports': prov.get(c['id'], {}),
+                 'artefacts': {k: prov['artefacts'][k] for k in mine if k in prov.get('artefacts', {})},
+                 'written': prov.get('written', {}).get(c['id'], {}),
+                 'written_approx': prov.get('written_approx', {}).get(c['id'], [])})
+    kit = {}
+    for k, v in prov.items():
+        if k in ids or k in ('written', 'written_approx'):
+            continue
+        kit[k] = {a: x for a, x in v.items() if a not in taken} if k == 'artefacts' else v
+    dump(_KIT_PROV, kit)

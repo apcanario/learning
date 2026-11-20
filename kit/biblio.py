@@ -1,21 +1,23 @@
 """Sources and bibliography per unit, extracted from the reports (the vault files, P71-3; vault.py) for future checks.
 
-python3 biblio.py            writes bibliography/<course>/unit-<n>.md for every course and unit (run by build.py)
+python3 biblio.py            writes unit-<n>.md for every course and unit into the course's `bibliography` folder
+                             (course.toml; courses/<course>/bibliography/ since S-DEC5) and bibliography/README.md (run by build.py)
 python3 biblio.py rome 5     prints one unit
 
 Machine-extracted from the citations the reports carry inline (Pedro's rule, 27 October 2026: every unit keeps its
 sources and bibliography). It is a check aid, not a finished bibliography: it lists what each report cites, grouped
 as ancient works (author, work, locators), ancient authors cited by bare locator, modern works (name, title, year) and
 corpora or inscriptions, with the reports that cite each. A curated bibliography written by the report's writer, when
-one exists, sits beside it as bibliography/<course>/r-<id>.md (see AGENT-SPEC.md) and is linked from the unit file.
+one exists, sits beside it as r-<id>.md (see AGENT-SPEC.md) and is linked from the unit file. The text this writes still
+says `bibliography/<course>/...` (the path from kit/ before S-DEC5), so the files stay byte-identical.
 """
 import sys, re, html, json, pathlib
 from collections import defaultdict
-from courses import HISTORY as COURSES
+from courses import HISTORY as COURSES, path as cpath
 import vault
 
 R = pathlib.Path(__file__).resolve().parent
-OUT = R / 'bibliography'
+OUT = R / 'bibliography'   # the README only; each course's files go to its `bibliography` folder (S-DEC5)
 YEAR = r'(?:1[5-9]\d\d|20\d\d)'
 NAME = r"(?:[A-Z][\w'’\-]*\.? ){0,3}[A-Z][\w'’\-]+(?: (?:de|van|von|della|du|di|le) [A-Z][\w'’\-]+)?"
 LOC = r'\d+(?:[.:]\d+)*[a-e]?(?: ?[–-] ?\d+(?:[.:]\d+)*[a-e]?)?(?:, \d+(?:[.:]\d+)*[a-e]?(?: ?[–-] ?\d+(?:[.:]\d+)*[a-e]?)?)*'
@@ -75,13 +77,13 @@ def lockey(s):
     return ([int(x) if x.isdigit() else x for x in re.split(r'(\d+)', s)], s)
 
 def unit_md(c, u, ids):
-    idx = json.load(open(R / c['prompts']))
+    idx = json.load(open(cpath(c, 'prompts')))
     lines = [f"# {c['short']} unit {u}: sources cited", '',
              f"Machine-extracted by `biblio.py` from the inline citations of the {len(ids)} report{'s' if len(ids) != 1 else ''} in unit {u} on every build; a check aid, not a finished bibliography. A curated `bibliography/{c['id']}/r-<id>.md`, where one exists, is linked under its report.", '']
     for i in ids:
         if not vault.report_path(c, i): continue
         anc, bare, mod, corp = extract(vault.report_html(c, i, draw=False))
-        cur = OUT / c['id'] / f'r-{i}.md'
+        cur = cpath(c, 'bibliography') / f'r-{i}.md'
         lines += [f"## {i} {idx.get(i, {}).get('title', '')}", '']
         if cur.exists(): lines += [f"Curated bibliography: `bibliography/{c['id']}/r-{i}.md`.", '']
         lines += ['### Ancient works']
@@ -99,7 +101,7 @@ def unit_md(c, u, ids):
     return '\n'.join(lines) + '\n'
 
 def units_of(c):
-    syl = (R / c['syllabus']).read_text()
+    syl = cpath(c, 'syllabus').read_text()
     units = defaultdict(list)
     for i in re.findall(r'data-id="([\d.]+)"', syl):
         u = i.split('.')[0]
@@ -109,7 +111,7 @@ def units_of(c):
 def write_all():
     n = 0
     for c in COURSES:
-        d = OUT / c['id']; d.mkdir(parents=True, exist_ok=True)
+        d = cpath(c, 'bibliography'); d.mkdir(parents=True, exist_ok=True)
         for u, ids in units_of(c).items():
             have = [i for i in ids if vault.report_path(c, i)]
             if not have: continue

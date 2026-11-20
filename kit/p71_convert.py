@@ -11,11 +11,11 @@ The fragments left the kit with this conversion (they are in git history before 
 import html as H, json, re, sys, pathlib
 from html.parser import HTMLParser
 import mdcourse, viz
-from courses import HISTORY
+from courses import HISTORY, path as cpath, provenance
 
 R = pathlib.Path(__file__).resolve().parent
 REPO = R.parent
-PROV = json.load(open(R / 'provenance.json'))
+PROV = provenance()
 
 # `written` from the record (kit/CHANGELOG.md's sessions; the vault for 1 Nov 2026); a module whose session spans two
 # days is left without one (docs/p71-3.md lists them)
@@ -298,7 +298,7 @@ def main():
     frags = pathlib.Path(next(a for a in sys.argv[1:] if not a.startswith('--')))
     bad, n = [], 0
     for c in HISTORY:
-        c['index'] = json.load(open(R / c['prompts']))
+        c['index'] = json.load(open(cpath(c, 'prompts')))
         (REPO / 'courses' / c['id']).mkdir(parents=True, exist_ok=True)
         for i, meta in c['index'].items():
             src = frags / c['id'] / f'r-{i}.html'

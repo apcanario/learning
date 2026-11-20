@@ -6,7 +6,7 @@ P91 (4 Nov 2026): it also records the day it registers a report in provenance.js
 and the course's "How it was built" page show), unless the report already has one; `--date YYYY-MM-DD` gives another day.
 """
 import sys, json, re, html, pathlib
-from courses import HISTORY as COURSES
+from courses import HISTORY as COURSES, path as cpath, provenance, save_provenance
 from check import check, target_for
 import vault
 
@@ -18,9 +18,9 @@ if '--date' in args:
     k = args.index('--date'); day = datetime.date.fromisoformat(args[k + 1]).isoformat(); del args[k:k + 2]
 cid, model, ids = args[0], args[1], args[2:]
 c = next(x for x in COURSES if x['id'] == cid)
-syl = (R / c['syllabus']).read_text()
-idx_path = R / c['prompts']; idx = json.load(open(idx_path))
-prov = json.load(open(R / 'provenance.json')); prov.setdefault(cid, {})
+syl = cpath(c, 'syllabus').read_text()
+idx_path = cpath(c, 'prompts'); idx = json.load(open(idx_path))
+prov = provenance(); prov.setdefault(cid, {})   # S-DEC5: the course's own provenance file and kit/provenance.json
 order = re.findall(r'data-id="([\d.]+)"', syl)
 for i in ids:
     f = vault.report_path(c, i)
@@ -38,4 +38,4 @@ idx = {k: idx[k] for k in order if k in idx}
 prov[cid] = {k: prov[cid][k] for k in order if k in prov[cid]}
 w = prov.setdefault('written', {}).setdefault(cid, {}); prov['written'][cid] = {k: w[k] for k in order if k in w}
 json.dump(idx, open(idx_path, 'w'), indent=1, ensure_ascii=False)
-json.dump(prov, open(R / 'provenance.json', 'w'), indent=1, ensure_ascii=False)
+save_provenance(prov)

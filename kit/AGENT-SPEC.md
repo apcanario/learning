@@ -33,7 +33,7 @@ Then use only these forms (`kit/mdcourse.py`, `history_html`, reads each one):
   - `## Carry forward`, then a numbered list of exactly 3 items, the three ideas the reader must keep for later modules.
 
 ## Sources and bibliography (Pedro's rule, 27 October 2026)
-Every report keeps its sources for future checks. The report itself cites inline, as below. Beside it the writer leaves `bibliography/<course>/r-<id>.md`: every ancient author and work cited, with the passages used and the edition or translation relied on where known; every modern work cited, with author, full title, place or journal and year of the edition named. `biblio.py` (run by `build.py`) also extracts a machine-made list per unit from the inline citations, `bibliography/<course>/unit-<n>.md`, as a check aid; where the curated file exists the unit file links to it. Reports written before this rule have the machine list only until a curated file is made for them.
+Every report keeps its sources for future checks. The report itself cites inline, as below. Beside it the writer leaves `courses/<course>/bibliography/r-<id>.md` (in the course folder since S-DEC5, 20 Nov 2026): every ancient author and work cited, with the passages used and the edition or translation relied on where known; every modern work cited, with author, full title, place or journal and year of the edition named. `biblio.py` (run by `build.py`) also extracts a machine-made list per unit from the inline citations, `courses/<course>/bibliography/unit-<n>.md`, as a check aid; where the curated file exists the unit file links to it. Reports written before this rule have the machine list only until a curated file is made for them.
 
 ## Content rules
 
@@ -69,4 +69,4 @@ Every report keeps its sources for future checks. The report itself cites inline
   - Greek philosophers by the Greek course's conventions (Diels–Kranz, Stephanus, Bekker, *SVF*, Diogenes Laertius by book and section).
 
 ## Provenance and the Fable review flag (for the maintainer, not the writer)
-Every new report must be added to `provenance.json`, under its course, with the model that actually wrote it (`register.py` does this). Non-report material written with another model (a syllabus, course-home text, specs, code) goes under `artefacts` in `provenance.json`. Nothing is flagged for Fable review: the Fable stage closed on 15 Nov 2026 (S-NOAUDIT); every report still gets its fresh check before it is registered.
+Every new report must be added to its course's `courses/<course>/inputs/provenance.json` (`reports`), with the model that actually wrote it (`register.py` does this). Non-report material written with another model (a syllabus, course-home text, specs, code) goes under `artefacts` in the course's provenance file, or in `kit/provenance.json` when it is the kit's. Nothing is flagged for Fable review: the Fable stage closed on 15 Nov 2026 (S-NOAUDIT); every report still gets its fresh check before it is registered.

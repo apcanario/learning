@@ -133,7 +133,7 @@ import pack   # S-DEC2: a markdown course's data (its pack)
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
 import private_terms   # G-0: the public courses carry no private term
 import rot_check   # P30-F11, P30-F16: the theme copy, retired instructions, staleness dates due
-from courses import COURSES, THEMES, EDITIONS, NEXT, DEFAULT_EDITION, brand
+from courses import COURSES, THEMES, EDITIONS, NEXT, DEFAULT_EDITION, brand, path as cpath, provenance
 # P70: --edition checks an edition's folder the same way, over the courses and pages it holds (default: the full site,
 # the first edition in catalog.toml `edition_order`)
 EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else DEFAULT_EDITION
@@ -290,15 +290,15 @@ def _wc(frag):
     return len(re.sub(r'<[^>]+>', ' ', body).split())
 def home_expect():
     import importlib.util, vault
-    prov = json.load(open(R / 'provenance.json'))
+    prov = provenance()
     from howbuilt import front
     courses, dated, areas = {}, [], []
     for t in THEMES:
         aw = 0
         for c in COURSES:
             if c['family'] == 'history' and c['theme'] == t['id']:
-                syl = (R / c['syllabus']).read_text()
-                idx = json.load(open(R / c['prompts']))
+                syl = cpath(c, 'syllabus').read_text()
+                idx = json.load(open(cpath(c, 'prompts')))
                 units = [(u, re.findall(r'data-id="([\d.]+)">', body)) for u, body in re.findall(r'<section class="unit" id="u(\d+)"[^>]*>(.*?)</section>', syl, re.S)]
                 order = [m for _, ms in units for m in ms]
                 def rw(m):

@@ -50,7 +50,7 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] Citation conventions for the course are followed (Greek: Diels–Kranz, Stephanus, Bekker, *SVF*, LS, Diogenes Laertius by book and section; Rome: Cicero's treatises by English title, speeches by Latin title, invectives in English; Dio by Loeb book with the Loeb's margin (traditional) number in brackets where they differ; Seneca's *Letters* by number and section; the full list is `AGENT-SPEC.md`).
 - [ ] "Module X covers Y" is written only after opening module X and checking that it does.
 - [ ] Every Self-test answer agrees with the body.
-- [ ] The writer leaves `bibliography/<course>/r-<id>.md`: every ancient author and work with passages and the edition or translation relied on where known; every modern work with author, full title, place or journal and year of the edition named.
+- [ ] The writer leaves `courses/<course>/bibliography/r-<id>.md`: every ancient author and work with passages and the edition or translation relied on where known; every modern work with author, full title, place or journal and year of the edition named.
 - [ ] Web search is used to verify a specific date or contested point the writer is unsure of, not to write from (search flag off).
 
 ## Part 4 · User Experience (from the shared preamble of `courses/ux/briefs.md`)

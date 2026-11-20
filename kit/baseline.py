@@ -6,25 +6,27 @@
                                     (added, removed, changed); exit 1 if any does, 0 if none
 
 What each build writes (kit/build.py):
-  academy  kit/academy/ (the site), kit/README.md (the size table) and kit/bibliography/ (biblio.py)
+  academy  kit/academy/ (the site), kit/README.md (the size table), kit/bibliography/ (biblio.py's README) and each
+           history course's `bibliography` folder (biblio.py's unit-<n>.md beside the curated r-<id>.md; S-DEC5,
+           courses/<id>/bibliography/, kit/bibliography/<id>/ before)
   greece   kit/editions/<site>/ (courses.py EDITIONS['greece']['site'], ignored by git)
-Paths in the manifest are relative to kit/, sorted; the manifest holds no time or machine detail, so the same tree
+Paths in the manifest are relative to kit/ (a file outside it, such as a course's bibliography, as ../<path>), sorted; the manifest holds no time or machine detail, so the same tree
 gives the same file.
 """
-import hashlib, json, pathlib, subprocess, sys, time
+import hashlib, json, os, pathlib, subprocess, sys, time
 
 K = pathlib.Path(__file__).resolve().parent
 MANIFEST = K / 'baseline.json'
 EDITION_NAMES = ('academy', 'greece')
 sys.path.insert(0, str(K))
-from courses import EDITIONS
+from courses import EDITIONS, HISTORY, path as cpath
 
 
 def outputs(edition):
     """The roots one edition's build writes, relative to kit/."""
     roots = [K / EDITIONS[edition]['site']]
     if edition == 'academy':
-        roots += [K / 'README.md', K / 'bibliography']
+        roots += [K / 'README.md', K / 'bibliography'] + [cpath(c, 'bibliography') for c in HISTORY]
     return roots
 
 
@@ -45,7 +47,7 @@ def hashes(edition):
         for f in files:
             if '__pycache__' in f.parts:
                 continue
-            out[f.relative_to(K).as_posix()] = hashlib.sha256(f.read_bytes()).hexdigest()
+            out[pathlib.Path(os.path.relpath(f, K)).as_posix()] = hashlib.sha256(f.read_bytes()).hexdigest()
     return dict(sorted(out.items()))
 
 

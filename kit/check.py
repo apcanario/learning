@@ -20,6 +20,13 @@ import viz
 import mdcourse
 
 R = pathlib.Path(__file__).resolve().parent
+
+
+def _syllabus(path):
+    """The syllabus of the history course whose vault folder holds path (S-DEC5: named by its course.toml), or None."""
+    from courses import HISTORY, path as cpath
+    c = next((c for c in HISTORY if pathlib.Path(c['vault']).name == path.resolve().parent.name), None)
+    return cpath(c, 'syllabus') if c else None
 ALLOWED = {'h2', 'h3', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'blockquote', 'table', 'thead', 'tbody', 'tr', 'th', 'td',
            'div', 'pre', 'aside', 'details', 'summary', 'sub', 'sup', 'br'}
 VOID = {'br'}
@@ -32,10 +39,10 @@ def report_id(path):
 
 def prompt_for(path):
     m = report_id(path)
-    course = {'greece': 'greek-syllabus.html', 'rome': 'roman-syllabus.html'}.get(path.parent.name)
+    course = _syllabus(path)
     if not (m and course):
         return None
-    pm = re.search(r'data-id="%s">.*?<pre>(.*?)</pre>' % re.escape(m), (R / course).read_text(), re.S)
+    pm = re.search(r'data-id="%s">.*?<pre>(.*?)</pre>' % re.escape(m), course.read_text(), re.S)
     return html.unescape(pm.group(1)) if pm else None
 
 def capstone_for(path):
@@ -48,10 +55,10 @@ def capstone_for(path):
 
 def target_for(path):
     m = report_id(path)
-    course = {'greece': 'greek-syllabus.html', 'rome': 'roman-syllabus.html'}.get(path.parent.name)
+    course = _syllabus(path)
     if not (m and course):
         return None
-    syl = (R / course).read_text()
+    syl = course.read_text()
     pm = re.search(r'data-id="%s">.*?<pre>(.*?)</pre>' % re.escape(m), syl, re.S)
     t = re.search(r'about (\d+) words', html.unescape(pm.group(1))) if pm else None
     return int(t.group(1)) if t else None

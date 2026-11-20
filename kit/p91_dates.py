@@ -19,7 +19,8 @@ import json, re, sys, pathlib, datetime
 
 R = pathlib.Path(__file__).resolve().parent
 CL = (R / 'CHANGELOG.md').read_text(encoding='utf-8').split('\n')
-INDEX = {c: list(json.load(open(R / f'prompts-{f}.json'))) for c, f in (('greece', 'greece'), ('rome', 'rome'))}
+from courses import HISTORY, path as cpath, provenance, save_provenance   # S-DEC5: the inputs are in the course folders
+INDEX = {c['id']: list(json.load(open(cpath(c, 'prompts')))) for c in HISTORY}
 MONTHS = {m: i for i, m in enumerate(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                                       'September', 'October', 'November', 'December'], 1)}
 SKIP = re.compile(r'pointer|repoint|correction|flagged|logged|audit', re.I)
@@ -174,8 +175,8 @@ if __name__ == '__main__':
     print(f'dated: {sum(len(v) for v in written.values())}; approximate: {sum(len(v) for v in approx.values())}; '
           f'undated: {sum(len(v) for v in undated.values())} {undated if any(undated.values()) else ""}')
     if '--write' in sys.argv:
-        prov = json.load(open(R / 'provenance.json'))
+        prov = provenance()
         prov['written'] = written
         prov['written_approx'] = approx
-        json.dump(prov, open(R / 'provenance.json', 'w'), indent=1, ensure_ascii=False)
+        save_provenance(prov)
         print('provenance.json: written and written_approx filled')

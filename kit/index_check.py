@@ -34,7 +34,7 @@ def index_text():
     """The live index and the archive of finished courses, read as one index."""
     return INDEX.read_text(encoding='utf-8') + ('\n' + ARCHIVE.read_text(encoding='utf-8') if ARCHIVE.exists() else '')
 sys.path.insert(0, str(KIT))
-from courses import HISTORY, MARKDOWN          # noqa: E402
+from courses import HISTORY, MARKDOWN, path as cpath, provenance          # noqa: E402
 from howbuilt import front, plus_months        # noqa: E402
 import pack                                    # noqa: E402
 
@@ -100,14 +100,14 @@ def history(c, secs, fails):
     head = next((h for h in secs if h.startswith(f'{c["short"]} (course')), None)
     if not head:
         return fails.append(f'no "### {c["short"]} (course N)" section')
-    syl = (KIT / c['syllabus']).read_text()
+    syl = cpath(c, 'syllabus').read_text()
     mods = {}
     for m in re.finditer(r'<section class="unit" id="u(\d+)"[^>]*>(.*?)</section>', syl, re.S):
         u, body = m.groups()
         for a, t in re.findall(r'data-id="([\d.]+)">.*?<h3>(.*?)</h3>', body, re.S):
             mods[a] = (u, html.unescape(t))
-    idx = json.load(open(KIT / c['prompts']))
-    prov = json.load(open(KIT / 'provenance.json')).get(c['id'], {})
+    idx = json.load(open(cpath(c, 'prompts')))
+    prov = provenance().get(c['id'], {})
     content = [a for a, (u, _) in mods.items() if u != c['audit_unit']]
     written = [a for a in content if a in idx]
     hdr, rows = table(secs[head])

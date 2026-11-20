@@ -6,7 +6,7 @@ visible text equal (entities resolved, whitespace runs collapsed) and every figu
 """
 import re, sys, pathlib, json, html as H
 from html.parser import HTMLParser
-from courses import HISTORY
+from courses import HISTORY, path as cpath
 
 R = pathlib.Path(__file__).resolve().parent
 
@@ -49,7 +49,7 @@ def main(before):
     before = pathlib.Path(before)
     bad, n, nfig = [], 0, 0
     for c in HISTORY:
-        for i in json.load(open(R / c['prompts'])):
+        for i in json.load(open(cpath(c, 'prompts'))):
             a = (before / c['id'] / f'r-{i}.html').read_text(encoding='utf-8')
             b = (R / 'academy' / c['id'] / f'r-{i}.html').read_text(encoding='utf-8')
             n += 1
