@@ -1,6 +1,14 @@
 """Browser checks for academy/, the Academy site (run after build.py).
 
-python3 verify.py [--edition NAME] [--shots DIR] [--page ID ...]
+python3 verify.py [--edition NAME] [--full] [--shots DIR] [--page ID ...]
+S-DEC4 (20 Nov 2026), verify by scope (kit/verify_scope.py): the default run checks only the pages whose sources changed
+since the edition's last passed run, recorded in kit/verify-hashes.json, plus the home, What's new, the Changelog and
+the Backlog, and runs every edition-wide check (files and the shell, figure keys, opening notes, figure rules, the
+split, navigation and the tablet and desktop layouts, the home at every width with and without motion, the root drawer,
+private terms, index_check, the rot check). A page's sources are its built section and fetched file and the course files
+the checks hold it against (verify_scope.py says which). A change to kit/*.py, kit/shell.js, kit/shell.css,
+design/theme.css, kit/fonts/, catalog.toml or the edition's or its brand's file runs everything, as do a first run with
+no record and --full. The first line says which mode and why; the record is written only after ALL CHECKS PASSED.
 S-DEC4 (20 Nov 2026): the courses named below are Academy's; the checks name none and read the edition's own courses
 (see LEAD, SECOND, MDNAV, SAMPLE and PRIVATE after SITE). A check needing a property the edition's courses lack (a
 history course with Greece's structure, a second history course, a markdown course) prints what it leaves out and why;
@@ -208,6 +216,14 @@ _samp = [c for c in COURSES if c.get('verify_sample')] or COURSES
 SAMPLE = [p for c in _samp for p in sub_pages(c)]   # the course homes the per-page passes visit, in course order
 PRIVATE = [c['id'] for c in COURSES if c.get('private')]
 HIST_HOMES = {c['home_id'] for c in HIST}
+# S-DEC4 (20 Nov 2026): verify by scope (verify_scope.py). The default run checks the pages whose sources changed since
+# the edition's last passed run (kit/verify-hashes.json) plus the home, What's new, the Changelog and the Backlog, and
+# runs every edition-wide check; a change to kit/*.py, shell.js, shell.css, theme.css, the fonts, catalog.toml or the
+# edition's or brand's file, a first run and --full check everything. Its first line says which and why. The per-page
+# passes below take their pages through SCOPE.only(); the record is written only after ALL CHECKS PASSED.
+import verify_scope
+SCOPE = verify_scope.Scope(SITE, EDITION, ED['brand'], COURSES, sub_pages, full='--full' in sys.argv)
+print(SCOPE.mode, flush=True)
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self, *a): pass
 class Server(ThreadingHTTPServer):
@@ -1077,7 +1093,7 @@ def check_contrast(pg, fails):
     firsts = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => {
       const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
     homes = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"course\"]')].map(p => p.id)")
-    pids = [x for x in ['home', 'new', 'changelog', 'backlog'] if x not in OMIT] + homes + firsts   # P91: What's new
+    pids = SCOPE.only([x for x in ['home', 'new', 'changelog', 'backlog'] if x not in OMIT] + homes + firsts)   # P91: What's new   # S-DEC4: the run's pages
     worst, total = [99, ''], 0
     for pid in pids:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(40)
@@ -1156,7 +1172,7 @@ def frames(pg, fig, path, label):
 
 def check_panels(pg, label, fails):
     """Every panel, every <details> open: horizontal scroll, 6 px gaps, 44 px targets. Returns (tightest gap, panel count)."""
-    ids = pg.eval_on_selector_all('.panel', 'ps => ps.map(p => p.id)')
+    ids = SCOPE.only(pg.eval_on_selector_all('.panel', 'ps => ps.map(p => p.id)'))   # S-DEC4: the run's pages
     worst, frames, figs = [], [0, 0], [0, 0]
     for pid in ids:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(30)
@@ -1649,7 +1665,7 @@ def check_seps(br, fails):
     per_page, low = {}, 1e9
     for name, w, h, mobile in SEP_WIDTHS:
         ctx, pg, _ = new_page(None, br, errs, f'seps {name}', w, h, mobile, motion=True)
-        ids = pg.eval_on_selector_all('.panel[data-kind="report"]', 'ps => ps.map(p => p.id)')
+        ids = SCOPE.only(pg.eval_on_selector_all('.panel[data-kind="report"]', 'ps => ps.map(p => p.id)'))   # S-DEC4: the run's pages
         for pid in ids:
             pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
             pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
@@ -1820,6 +1836,7 @@ def check_reliefs(br, fails):
     for name, w, h, mobile in REL_WIDTHS:
         ctx, pg, _ = new_page(None, br, errs, f'reliefs {name}', w, h, mobile, motion=True)
         for pid, oid in mapped.items():
+            if not SCOPE.has(pid): continue   # S-DEC4: the run's pages (the library and the mapping above are checked whole)
             o = lb[oid]
             want = dict(id=oid, caption=mdcourse.relief_caption(o), credit=o['credit'], kw=o['keywords'], lic=o['licence_url'], licence=o['licence'])
             pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
@@ -1842,7 +1859,7 @@ def check_reliefs(br, fails):
     fails += ['reliefs ' + b for b in bad[:30]]
     if len(bad) > 30: fails.append(f'reliefs: {len(bad) - 30} more')
     if errs: fails.append('reliefs: console errors: ' + ' | '.join(errs[:3]))
-    print(f'reliefs: {len(mapped)} mapped pages ({", ".join(f"{p} {o} {sizes.get(p, 0):,} B" for p, o in mapped.items())}), {len(pages) - len(mapped)} reading pages without one; '
+    print(f'reliefs: {len(mapped)} mapped pages, {len(SCOPE.only(mapped))} in this run ({", ".join(f"{p} {o} {sizes.get(p, 0):,} B" for p, o in mapped.items() if SCOPE.has(p))}), {len(pages) - len(mapped)} reading pages without one; '
           f'checked at {", ".join(str(x[1]) for x in REL_WIDTHS)} px, dark and light, with and without motion; frames {"; ".join(phs)}; '
           f'the closest line {low:.1f} px from its frame over the poses with motion')
 
@@ -1853,7 +1870,7 @@ def check_reading(br, fails):
     errs = []
     ctx, pg, _ = new_page(None, br, errs, 'reading', 390, 844, True)
     pg.evaluate('localStorage.clear()')
-    ids = pg.eval_on_selector_all('.panel[data-kind="report"]', 'ps => ps.map(p => p.id)')
+    ids = SCOPE.only(pg.eval_on_selector_all('.panel[data-kind="report"]', 'ps => ps.map(p => p.id)'))   # S-DEC4: the run's pages
     nsec, bad = 0, []
     for pid in ids:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(20)
@@ -2156,7 +2173,7 @@ def check_phone_figures(br, fails):
     bars figure's phone drawing was 328 units and scrolled on a 320 px phone, and a value could straddle its track's end."""
     idx = (SITE / 'index.html').read_text()
     pids = [pid for pid, src in re.findall(r'<section class="panel" id="([^"]+)"[^>]*data-src="([^"]+)"', idx)
-            if (SITE / src).exists() and re.search(r'viz-(compare|bars)\b', (SITE / src).read_text())]
+            if SCOPE.has(pid) and (SITE / src).exists() and re.search(r'viz-(compare|bars)\b', (SITE / src).read_text())]   # S-DEC4: the run's pages
     n, nt, bad = 0, 0, []
     for name, w, h in TRACK_WIDTHS:
         errs = []
@@ -2215,7 +2232,7 @@ def check_matrix_320(br, fails):
     the sideways scroll (BW4 figure 1 showed only its labels at 320 px)."""
     idx = (SITE / 'index.html').read_text()
     pids = [pid for pid, src in re.findall(r'<section class="panel" id="([^"]+)"[^>]*data-src="([^"]+)"', idx)
-            if (SITE / src).exists() and 'viz-matrix' in (SITE / src).read_text()]
+            if SCOPE.has(pid) and (SITE / src).exists() and 'viz-matrix' in (SITE / src).read_text()]   # S-DEC4: the run's pages
     errs, bad, n, sc = [], [], 0, 0
     ctx, pg, _ = new_page(None, br, errs, 'phone320', 320, 640, True)
     for pid in pids:
@@ -2261,7 +2278,7 @@ def check_phone_lines(br, fails):
     units on a phone and scrolled, so its y-axis and title left the frame and a label could sit at its edge."""
     idx = (SITE / 'index.html').read_text()
     pids = [pid for pid, src in re.findall(r'<section class="panel" id="([^"]+)"[^>]*data-src="([^"]+)"', idx)
-            if (SITE / src).exists() and re.search(r'viz-linechart\b', (SITE / src).read_text())]
+            if SCOPE.has(pid) and (SITE / src).exists() and re.search(r'viz-linechart\b', (SITE / src).read_text())]   # S-DEC4: the run's pages
     n, bad = 0, []
     for name, w, h in CMP_WIDTHS:
         errs = []
@@ -2305,7 +2322,7 @@ def check_phone_scatters(br, fails):
     on a phone and scrolled, so its y-axis and title left the frame and a label could sit at its edge."""
     idx = (SITE / 'index.html').read_text()
     pids = [pid for pid, src in re.findall(r'<section class="panel" id="([^"]+)"[^>]*data-src="([^"]+)"', idx)
-            if (SITE / src).exists() and re.search(r'viz-scatter\b', (SITE / src).read_text())]
+            if SCOPE.has(pid) and (SITE / src).exists() and re.search(r'viz-scatter\b', (SITE / src).read_text())]   # S-DEC4: the run's pages
     n, bad = 0, []
     for name, w, h in CMP_WIDTHS:
         errs = []
@@ -2334,6 +2351,8 @@ def check_figures(br, fails):
     """The examples page (V1) through the shell: VX_FIGS figures, one per kind, and the geometry of each (FIG_JS)."""
     if 'figures' in OMIT:
         print(f'figures: edition {EDITION} leaves out the examples page; the figure blocks are still checked (figure keys)'); return
+    if not SCOPE.has('viz-examples'):   # S-DEC4: its sources are the kit's (viz.py, viz_examples.py), whose change forces the full run
+        print('figures: the examples page is unchanged since the last passed run; left out of this scoped run'); return
     errs = []
     ctx, pg, _ = new_page(None, br, errs, 'figures', 390, 844, True)
     pg.evaluate("location.hash = 'viz-examples'"); ready(pg); pg.wait_for_timeout(200)
@@ -2476,7 +2495,9 @@ def main():
         check_panels(pg, 'phone light', fails)
         pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
         # drawer in each context, every unit expanded
-        for pid in ['home'] + [c['home_id'] for c in (LEAD, SECOND) if c] + [m[0] for m in MDSUBS]:   # S-DEC4: the courses the navigation below visits
+        DRAWERS = ['home'] + [c['home_id'] for c in (LEAD, SECOND) if c] + [m[0] for m in MDSUBS]   # S-DEC4: the courses the navigation below visits
+        if not SCOPE.full: DRAWERS = ['home'] + list(dict.fromkeys(SCOPE.ctx[q] for q in SCOPE.changed if SCOPE.ctx.get(q, 'root') != 'root'))   # scoped: the root drawer and the drawer of each course a changed page is in
+        for pid in DRAWERS:
             if not pg.evaluate(f"!!document.getElementById('{pid}')"): continue   # P70: not in this edition
             pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
             pg.click('#menuB'); pg.wait_for_timeout(250)
@@ -2773,8 +2794,9 @@ def main():
         # P93: the course homes, What's new and the pages without a topography, at every width, dark and light, under
         # reduced motion: each page's topography and tiles against the sources (check_topo, check_tiles), two history
         # unit tiles opened (their rows, their line whole); the home's tiles too
-        TOPO_PAGES = [x for x in SAMPLE if x in HIST_HOMES or x in EXPECT['courses']] + ['new']   # S-DEC4: course.toml `verify_sample` (every course where the edition holds none)
-        NONE_PAGES = [x for x in ('changelog', 'backlog', 'viz-examples') if (x != 'viz-examples' or 'figures' not in OMIT) and (x not in ('changelog', 'backlog') or x not in OMIT)]
+        TOPO_ALL = [x for x in SAMPLE if x in HIST_HOMES or x in EXPECT['courses']] + ['new']   # S-DEC4: course.toml `verify_sample` (every course where the edition holds none)
+        NONE_ALL = [x for x in ('changelog', 'backlog', 'viz-examples') if (x != 'viz-examples' or 'figures' not in OMIT) and (x not in ('changelog', 'backlog') or x not in OMIT)]
+        TOPO_PAGES, NONE_PAGES = SCOPE.only(TOPO_ALL), SCOPE.only(NONE_ALL)   # S-DEC4: the run's pages (the shots and the LCP pages below take every sampled one)
         for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:
             ctx, pg, _ = new_page(p, br, errors, name + ' pages', w, h, mobile)
             reads = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => { const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
@@ -2784,7 +2806,7 @@ def main():
                 pg.evaluate("document.querySelectorAll('#planned-courses').forEach(d => d.open = true)"); pg.wait_for_timeout(60)
                 check_topo(pg, 'home', f'{name} {theme}', fails, EXPECT); check_tiles(pg, 'home', f'{name} {theme}', fails, EXPECT)
                 pg.evaluate("document.querySelectorAll('#planned-courses').forEach(d => d.open = false)")
-                for pid in TOPO_PAGES + NONE_PAGES + reads:
+                for pid in TOPO_PAGES + NONE_PAGES + SCOPE.only(reads):
                     pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(120)
                     t = check_topo(pg, pid, f'{name} {theme}', fails, EXPECT)
                     if pid in TOPO_PAGES and pid != 'new':
@@ -2816,8 +2838,8 @@ def main():
         for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:   # P92 check: every width, not two
             ctx, pg, _ = new_page(p, br, errors, name + ' motion', w, h, mobile, motion=True)
             if name == 'phone':
-                PERF_PAGES = ['home'] + TOPO_PAGES[:1] + ['new']   # S-DEC4: a course home the edition holds (Greece in Academy), never one it lacks
-                if len(PERF_PAGES) < 3 or TOPO_PAGES[0] == 'new': fails.append('phone motion: the edition holds no course home to measure LCP and the longest task on')
+                PERF_PAGES = ['home'] + TOPO_ALL[:1] + ['new']   # S-DEC4: a course home the edition holds (Greece in Academy), never one it lacks
+                if len(PERF_PAGES) < 3 or TOPO_ALL[0] == 'new': fails.append('phone motion: the edition holds no course home to measure LCP and the longest task on')
                 for pid in [x for x in dict.fromkeys(PERF_PAGES)]:
                     if not pg.evaluate(f"!!document.getElementById('{pid}')"): fails.append(f'phone motion: #{pid} is not in the edition; nothing measured on it'); continue
                     PERF[pid] = perf_of(pg, pid)
@@ -2862,7 +2884,7 @@ def main():
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile)
                 for theme in ('dark', 'light'):
                     pg.evaluate(f"localStorage.setItem('{THEME_KEY}', '{theme}')")
-                    COURSE_SHOTS = ['home', 'new'] + TOPO_PAGES[:-1]   # P93: the home, What's new and every course home at every width
+                    COURSE_SHOTS = ['home', 'new'] + TOPO_ALL[:-1]   # P93: the home, What's new and every course home at every width
                     for pid in ((COURSE_SHOTS + [x for x in PAGES if x not in COURSE_SHOTS]) if name.startswith('phone3') or name == 'phone430' else COURSE_SHOTS + [x for x in [TAB, rp] + PAGES if x not in COURSE_SHOTS]):
                         pg.evaluate(f"localStorage.removeItem('pm-sec-{pid}')")   # P68: each shot opens on section 1
                         if pid == 'home':   # P90: the home is shot as a fresh visit (P91: nothing on it depends on the visit, but the shot stays clean)
@@ -2895,7 +2917,7 @@ def main():
             from PIL import Image, ImageDraw, ImageFont
             for name, w, h, mobile in (('phone', 390, 844, True), ('desktop', 1280, 800, False)):
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile, motion=True)
-                for pid in ['home'] + list(dict.fromkeys([x for x in TOPO_PAGES[:-1] if x in HIST_HOMES][:1] + [x for x in TOPO_PAGES[:-1] if x not in HIST_HOMES][-1:])):   # S-DEC4: a history course home and the last sampled markdown one
+                for pid in ['home'] + list(dict.fromkeys([x for x in TOPO_ALL[:-1] if x in HIST_HOMES][:1] + [x for x in TOPO_ALL[:-1] if x not in HIST_HOMES][-1:])):   # S-DEC4: a history course home and the last sampled markdown one
                     sel = '#home .hhome > .topo' if pid == 'home' else f'#{pid} > header.hero > .topo'   # the layer's own frame: from the top bar to the hero's foot, the full width beside the sidebar (the hero's box is the column), the texts on it
                     for theme in ('dark', 'light'):
                         pg.evaluate(f"localStorage.clear(); localStorage.setItem('{THEME_KEY}', '{theme}')"); pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(500)
@@ -2965,6 +2987,9 @@ def main():
     rf, rw = rot_check.check()   # P30-F11, P30-F16 (17 Nov 2026)
     fails += ['rot: ' + x for x in rf]
     print('rot check: ' + (f'{len(rf)} failures' if rf else 'none') + ''.join('\n  warn ' + x for x in rw))
+    if fails: print(f'{SCOPE.mode}\nverify-hashes.json: not written (a failed run marks no page as checked)')
+    else:   # S-DEC4: only a passed run records the pages' sources as checked
+        SCOPE.save(); print(f'{SCOPE.mode}\nverify-hashes.json: edition {EDITION} recorded, {len(SCOPE.pages_now)} pages')
     print('\n'.join('FAIL ' + f for f in fails) if fails else 'ALL CHECKS PASSED')
     return 1 if fails else 0
 
