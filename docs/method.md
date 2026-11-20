@@ -236,3 +236,8 @@ Nothing found goes unrecorded or waits for a later audit. It applies to every ro
 - **Fewer, better.** Fewer sources read in full are preferred to many read in abstract; a claim that rests on an abstract alone says so.
 - **Unsourced is said.** A claim that cannot be sourced is said to be unsourced or left out.
 - **The fresh checker verifies both.** The fresh checker verifies every reference's record (authors, title, journal or publisher, year, volume, pages, DOI) and every cited claim against its source; a source it cannot open is "not opened", never a pass.
+
+
+## 10 · Parallel chats
+
+Several chats may run at once, each in its own clone, all landing on `main` (20 Nov 2026). From now on every chat lands with `kit/land.py`, never a bare `git push`: `python3 kit/land.py start <row>` once after cloning, `python3 kit/land.py land <row> --expected <file>` in place of the push at the end (the "commit and push" of §8 step 4 and the filing steps). It takes the landing lock, rebases on what others landed, checks that every line and file they added is still there, runs the build check and `verify.py` on the combined tree, pushes plainly and releases the lock. Exit 0 is landed; 2 is a stop for a human (the output says what to do); 3 is a lock wait that timed out. The protocol, each stop and what the checks prove and do not prove: `docs/parallel-landing.md`.
