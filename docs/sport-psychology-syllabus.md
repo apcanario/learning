@@ -29,7 +29,7 @@ Drafted 16 Nov 2026 in a design chat on Fable 5.2. **Not in the repo.** Nothing 
 | Title | Sport Psychology for Coaches |
 | Code | SP (units SP1 to SP10, DD-SP1 to DD-SP3) |
 | `kit/courses.py` entry | `sport-psychology`, family `markdown` |
-| Data | `generator/data/sport-psychology/` |
+| Data | `courses/sport-psychology/course.toml` (`[pack]`), `briefs.md`, `notes/` |
 | Vault | `courses/sport-psychology/` |
 | Fresh checks | `audits/sport-psychology/` |
 | Track | New: Coaching (no existing track fits); renamed Sports on 19 Nov 2026 (S-SPORTS) |

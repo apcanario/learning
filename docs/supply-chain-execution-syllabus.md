@@ -37,7 +37,7 @@ Drafted 19 Nov 2026 in a design chat on Fable 5.2, first as a private course, th
 | Title | Supply Chain Execution for Product Teams |
 | Code | SCE (units SCE1 to SCE18, DD-SCE1, DD-SCE2) |
 | `kit/courses.py` entry | `supply-chain-execution`, family `markdown` |
-| Data | `generator/data/supply-chain-execution/` |
+| Data | `courses/supply-chain-execution/course.toml` (`[pack]`), `briefs.md`, `notes/` |
 | Vault | `courses/supply-chain-execution/` |
 | Fresh checks | `audits/supply-chain-execution/` |
 | Track | New: Supply Chain (no existing track fits) |

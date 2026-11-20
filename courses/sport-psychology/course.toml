@@ -16,10 +16,227 @@ home_id = "sport-psychology"
 status = "in progress"
 tracks.SP = ["sports", "Sport psychology · public"]
 tiles.SP = "Mental skills, climate and referral for coaches of athletes aged 10 to 25."
-data = "generator/data/sport-psychology/hub.py"
+# the course data: the [pack] table below, read by kit/pack.py (S-DEC2)
+data = "courses/sport-psychology/course.toml"
 vault = "courses/sport-psychology"
 sourcing_part = "Part 7"
 source_units = false
 # kit/next_prompt.py prints this course's rows from the template there
 prompts_doc = "docs/sport-psychology-prompts.md"
 eyebrow = "SPORT PSYCHOLOGY"
+
+# ---- the pack (S-DEC2, 20 Nov 2026): the course data, read by kit/pack.py (its docstring is the schema) -------
+# Everything below sits under [pack]; kit/courses.py strips it from the registry dict. Also in the pack: briefs.md
+# (the preamble and every brief, word for word), pages/*.md (the long HTML blocks), notes/ (case and syllabus-flags
+# files). Derived, not typed here: STATUS (from each unit's `written`; [pack.status] only where the typed string
+# differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top changelog row).
+[pack]
+# the data file the How it was built footer names (byte identity until S-DEC3 changes it on purpose)
+source = 'generator/data/sport-psychology/hub.py'
+course_note = "Every unit is sourced to consensus statements, meta-analyses and peer-reviewed studies, grades each recommendation by its evidence, names the sample behind each finding, says where a coach's part ends, and ends with a deliverable built in full on three fictional athletes and then as a template."
+order_lede = 'One row per unit in writing order, which is the reading order. Opus 5.5 writes; a fresh Opus 5.5 context checks each unit before filing. "Search" means the unit is written with web search on because its facts are current.'
+order_foot = 'The count starts at {start}.'
+# not read by any kit/ script (the v5.1 standalone hub's identity and tiles); kept as the record. TEMPLATE_BLOCKS was [].
+title = 'Sport Psychology for Coaches'
+bar = 'SPORT PSYCHOLOGY'
+brand_html = 'SPORT PSYCHOLOGY <span>/</span> FOR COACHES'
+out = 'sport-psychology.html'
+theme_key = 'sport-psychology-theme'
+learn_c = 'var(--orange)'
+build_c = 'var(--gold)'
+home_lede = "For coaches of athletes aged 10 to 25: how young athletes develop, how to teach mental skills that hold under pressure, how to respond on the day, and where a coach's part ends. Every claim sourced and graded."
+home_h1 = 'Sport Psychology for Coaches'
+learn_note = 'Order of writing: the ten core units in reading order, SP1 to SP10, then the three deep dives; SP9, DD-SP1 and DD-SP2 with search on.'
+template_lede = 'What a course needs before the first unit is written: see the new-course skill and design/README.md.'
+template_note = ''
+learn_tile = ['The course', 'Goal, outcomes, units, and the written material to read.']
+build_tile = ['How the course gets made', 'Procedure, model rules, every brief, bibliography, changelog.']
+# writing order: (code, model, search)
+order = [
+  ['SP1', 'Opus 5.5', 'off'],
+  ['SP2', 'Opus 5.5', 'off'],
+  ['SP3', 'Opus 5.5', 'off'],
+  ['SP4', 'Opus 5.5', 'off'],
+  ['SP5', 'Opus 5.5', 'off'],
+  ['SP6', 'Opus 5.5', 'off'],
+  ['SP7', 'Opus 5.5', 'off'],
+  ['SP8', 'Opus 5.5', 'off'],
+  ['SP9', 'Opus 5.5', 'on'],
+  ['SP10', 'Opus 5.5', 'off'],
+  ['DD-SP1', 'Opus 5.5', 'on'],
+  ['DD-SP2', 'Opus 5.5', 'on'],
+  ['DD-SP3', 'Opus 5.5', 'off'],
+]
+
+# STATUS where the typed string is not "written <d Mon>" of the unit's front matter `written`
+[pack.status]
+
+[[pack.courses]]
+key = 'SP'
+name = 'Sport Psychology for Coaches'
+color = 'var(--orange)'
+slug = 'sp'
+goal = "by the end of the course you can adjust what you ask of an athlete to their age and stage; teach a small set of evidence-graded psychological skills in practice and use them on competition day; respond to an athlete's state from their baseline and their own words; keep your language, your handling of weight and your authority on the right side of a line you can state; and recognise the signs that mean referral, with a season plan written for your own squad."
+tile = "For coaches of athletes aged 10 to 25: how young athletes develop, how to teach mental skills that hold under pressure, how to respond on the day, and where a coach's part ends. Every claim sourced and graded."
+intro = "For a coach in any sport with no training in psychology: what changes in an athlete between 10 and 25, the climate your own behaviour creates, what anxiety is and how it is kept going, the skills a coach may teach and how strong the evidence is for each, training under pressure, reading and responding to an athlete, competition day, the signs that mean referral, and a season plan. Three deep dives: the coach's line with minors, weight and who decides, and the techniques an athlete carries into competition. Worked on three fictional athletes in three sports. Ten core units in four parts and three deep dives."
+outcomes = "<li><strong>Outcome 1 · Know the athlete and the evidence.</strong> An age-and-stage table, a climate audit of your own coaching, and a claim-check you can run on anything you are told (SP1, SP2, SP3).</li><li><strong>Outcome 2 · Skills in practice and on the day.</strong> An anxiety profile, a skills block, a pressure-training block, a response table, a competition-day protocol, a pocket toolkit and a season plan (SP4 to SP8, SP10, DD-SP3).</li><li><strong>Outcome 3 · Wellbeing and the coach's line.</strong> A red-flag table and referral plan, a conduct code and comment test, and a protocol for who decides a weight class (SP9, DD-SP1, DD-SP2).</li>"
+[[pack.courses.units]]
+code = 'SP1'
+title = 'What a coach can do, and how to tell evidence from noise'
+scope = "The coach's part and where it ends, how to read a study, the evidence grades, and the popular claims that do not hold."
+deliverable = 'scope-of-practice card + claim-check sheet + the grade key'
+aim = 'say what is yours to do as a coach and what is not, and grade any claim about the mind in sport by its evidence'
+takes = "nothing; it is the course's first unit"
+gives = 'the scope line and the grade key every later unit uses; the claim-check sheet the reader keeps'
+[[pack.courses.units]]
+code = 'SP2'
+title = 'The developing athlete, 10 to 25'
+scope = 'Three clocks (age, maturation, training age), what is and is not known about the adolescent brain, sleep, identity, and early success.'
+deliverable = 'age-and-stage table + an athlete development note'
+aim = 'adjust what you ask of an athlete to their age, maturation and training age'
+takes = 'SP1'
+gives = 'the age bands and the development note SP3 to SP10 build on; the maturation evidence DD-SP2 relies on'
+[[pack.courses.units]]
+code = 'SP3'
+title = 'Motivation and the climate you create'
+scope = 'Autonomy, competence and relatedness; task and ego climates; controlling and autonomy-supportive coaching; enjoyment, dropout and burnout.'
+deliverable = "climate self-audit + three session rewrites + a parents' page"
+aim = 'see the climate your own behaviour creates and change three things in it'
+takes = 'SP1, SP2'
+gives = "the autonomy-supportive and controlling behaviours SP7 decides by and DD-SP1 draws its line through; the parents' page SP8 and SP10 extend"
+[[pack.courses.units]]
+code = 'SP4'
+title = 'Anxiety, arousal and performing under pressure'
+scope = 'What anxiety is and is not, what the data show about anxiety and performance, attention under pressure, and how nerves become a years-long problem.'
+deliverable = 'athlete anxiety profile + a normal-or-refer table'
+aim = "describe one athlete's competition anxiety precisely, and tell ordinary nerves from a problem that needs a clinician"
+takes = 'SP1, SP2, SP3'
+gives = 'the anxiety profile SP5, SP6 and SP8 work from; the normal-or-refer table SP9 completes; the attention account DD-SP3 uses'
+[[pack.courses.units]]
+code = 'SP5'
+title = 'The cognitive-behavioural toolkit'
+scope = 'The model in plain words and the skills a coach may teach: goals, self-talk, imagery, breathing, attention, acceptance, each with its grade.'
+deliverable = 'eight-week skills block + skill cards'
+aim = 'teach a small set of psychological skills inside normal training, knowing how strong the evidence is for each'
+takes = 'SP1, SP2, SP4'
+gives = 'the skills SP6 puts under pressure, SP8 uses on the day and SP10 places in the season; the skill cards DD-SP3 extends'
+[[pack.courses.units]]
+code = 'SP6'
+title = 'Training under pressure'
+scope = 'Why calm practice does not transfer, what pressure training shows, how to build pressure into sessions with minors, and routines.'
+deliverable = 'four-week pressure-training block + a routine builder'
+aim = 'build pressure into practice safely, so that skills hold in competition'
+takes = 'SP3, SP4, SP5'
+gives = 'the pressure ladder and step-down rule DD-SP1 examines and DD-SP3 trains its techniques on; the routine builder SP8 uses'
+[[pack.courses.units]]
+code = 'SP7'
+title = 'Reading and responding to an athlete'
+scope = 'What faces can and cannot tell you, baselines, asking, how one person steadies another, and the response an athlete needs against the one they want.'
+deliverable = 'baseline sheet + state-response table + asking scripts'
+aim = "respond to an athlete's state from their baseline and their own words, and choose the response they need"
+takes = 'SP2, SP3, SP4'
+gives = 'the baseline sheet and state-response table SP8 uses on the day and SP9 reads for red flags'
+[[pack.courses.units]]
+code = 'SP8'
+title = 'Competition day'
+scope = "The day in phases, what the coach controls in each, the last minute, between rounds, after a loss and after a win, parents, and the coach's own state."
+deliverable = "competition-day protocol + debrief card + a parents' note"
+aim = 'run a competition day by a written protocol, including what you say in the last minute and after the result'
+takes = 'SP4, SP5, SP6, SP7'
+gives = "the protocol SP10 places in the season; the coach's own noise, which DD-SP3 points back to"
+[[pack.courses.units]]
+code = 'SP9'
+title = 'Wellbeing, red flags and referral'
+scope = 'What the consensus statements ask of a coach, recognising without diagnosing, the first conversation, urgent risk, and the referral route.'
+deliverable = 'red-flag table + referral plan + three conversation scripts'
+aim = 'recognise the signs that mean referral, hold the first conversation, and know the route before you need it'
+takes = 'SP1, SP2, SP4, SP7'
+gives = 'the red-flag table and referral plan SP10, DD-SP1 and DD-SP2 point to'
+[[pack.courses.units]]
+code = 'SP10'
+title = 'The season plan'
+scope = 'Putting it together: a one-page formulation per athlete, skills across the season, parents, measuring, and what it costs in time.'
+deliverable = 'two formulations + a season plan + a weekly review'
+aim = 'write a season plan for your own squad and a one-page formulation for two athletes'
+takes = 'SP2 to SP9'
+gives = "the plan the deep dives' deliverables are added to"
+[[pack.courses.units]]
+code = 'DD-SP1'
+title = "Deep dive: the coach's line with minors"
+scope = 'Power, the definitions of abuse, what harsh coaching does and does not do, a test for any comment, touch, one-to-one and messaging, and the duty to act.'
+deliverable = 'comment test with worked rewrites + a conduct code + a report-or-not table'
+aim = 'state where demanding coaching ends and harm begins, test any comment against it, and act when someone else crosses it'
+takes = 'SP1, SP2, SP3, SP6, SP9'
+gives = 'the definitions and the comment test DD-SP2 maps weight pressure onto'
+[[pack.courses.units]]
+code = 'DD-SP2'
+title = 'Deep dive: weight, body and who decides'
+scope = "Weight-class, judged and endurance sports: low energy availability, rapid weight loss, body image, and the coach's pressure over a class."
+deliverable = 'who-decides protocol + language card + conversation scripts + a club weighing policy'
+aim = 'handle weight and body shape so that the athlete decides, the growing body is protected, and your language does no harm'
+takes = 'SP2, SP3, SP9, DD-SP1'
+gives = 'nothing a later unit depends on; DD-SP3 does not treat weight'
+[[pack.courses.units]]
+code = 'DD-SP3'
+title = 'Deep dive: tuning out the noise'
+scope = 'The techniques an athlete can carry into competition: cue words, distanced self-talk, reappraisal, if-then plans, resets, breathing, acceptance.'
+deliverable = 'twelve technique cards + a cue-word builder + a four-week plan + a pocket card'
+aim = 'give each athlete a small set of trained techniques for shutting out noise in competition, each with its grade'
+takes = 'SP4, SP5, SP6, SP7, SP8'
+gives = "nothing; it is the course's last unit"
+
+# newest first
+[[pack.changelog]]
+date = '2026-11-19 17:31'
+text = "v15. DD-SP2 filed (row W-DD-SP2): Deep dive: weight, body and who decides, written by Opus 5.5 with search on. Main chat Sonnet 5.5; writer, fresh checker, safety reader, applier, quality reviewer and filer each a fresh Opus 5.5 agent. Fresh check by a separate Opus 5.5 agent: fix; 2 errors, 7 should-fix, 10 minor, 19 findings, all applied. Safety read: 1 serious (no emergency route for an acutely unwell athlete), 5 should-fix, 4 minor, all applied. Quality review by a fresh Opus 5.5 agent with live search (flag F202): fix; 1 error, 9 should-fix, 15 minor, 25 findings; 24 applied, 1 held (the UWW address, kept at the December 2025 file read). In the same chat, step 1b, quality reviews of DD-SP1 (F205, `quality-review-DD-SP1-2026-11-19-b.md`), SP3 (F203, `quality-review-SP3-2026-11-19.md`) and SP6 (F204, `quality-review-SP6-2026-11-19.md`), each corrections-checked by a fresh Opus 5.5 agent with live search: DD-SP1, 33 replacements checked, 32 passed (13 findings, 12 passed, 1 failed with an alternative; 20 new changes, all passed); SP3, round 1 17 checked, 9 passed (13 findings, 5 passed, 8 failed, 7 with an alternative; 4 new changes, all passed), round 2 15 checked, 14 passed (9 items, 8 passed, 1 failed with an alternative; 6 new changes, all passed, 2 optional); SP6, 17 checked, 16 passed (11 findings, 10 passed, 1 failed with an alternative; 6 new changes, all passed); every passed replacement applied, and each failed one with an alternative applied by hand as an exact replacement. 3 figures, 32 sources (27 read, 5 named and not opened). Not opened: Carl et al. (2017), Burke et al. (2021) and Sundgot-Borgen et al. (2013), so the brief's item on what the consensus positions say about rapid weight loss for minors is uncovered; Malina et al. (2015); Stirling and Kerr (2008), Gervis and Dunn (2004) and FEPSAC's 2025 statement (F185, F191 not met). 7 case facts added (one row of illustrations, not events); 12 flags raised (F206 to F217); F8, F14, F16, F24, F47, F102, F120, F123, F124, F139, F140, F168, F171, F182, F185 and F191 carried. Staleness check due 19 May 2027. 12 of 13 written. Next: DD-SP3."
+[[pack.changelog]]
+date = '2026-11-19 11:02'
+text = "v14. DD-SP1 filed (row W-DD-SP1): Deep dive: the coach's line with minors, written by Opus 5.5 with search on. Writer, fresh checker, safety reader, applier, quality reviewers and filer each a fresh Opus 5.5 agent. Fresh check by a separate Opus 5.5 agent: fix; 2 errors, 16 should-fix, 7 minor, 25 findings; f21 held (the method of the 2024 IOC statement, F200). Safety read: 18 changes. Quality review by a fresh Opus 5.5 agent with live search (flag F176): fix; 0 errors, 14 should-fix, 9 minor; 24 changes applied. In the same chat, step 1b, quality reviews of SP2 (F177, `quality-review-SP2-2026-11-19.md`), SP9 (F178, `quality-review-SP9-2026-11-19-b.md`) and SP10 (F179, `quality-review-SP10-2026-11-19-b.md`). 17,500 words, 3 figures, 37 sources (28 read, 9 named and not opened). Not opened: Bartholomew et al. (2009, 2010, 2011), Stirling and Kerr (2008), Gervis and Dunn (2004), the International Safeguards, Kent et al., Kegelaers et al., Low et al., Neely et al. (2016) and FEPSAC's 2025 statement (F5, F31, F86, F158 not met). 15 case facts added (five as illustrations, not events); 22 flags raised (F180 to F201); F5, F8, F14, F31, F34, F47, F78, F79, F82, F86, F101, F121, F134, F139, F158 and F168 carried; F176 to F179 resolved. Staleness check due 19 May 2027. 11 of 13 written. Next: DD-SP2."
+[[pack.changelog]]
+date = '2026-11-19 05:00'
+text = "v13. SP10 filed (row W-SP10): The season plan, written by Opus 5.5 with search off. Main chat Sonnet 5.5; writer, fresh checker, appliers, quality reviewers, follow-on drafter and verifier, and filer each a fresh Opus 5.5 agent; the SP10 quality reviewer was resumed after a session restart. Fresh check by a separate Opus 5.5 agent: fix; 0 errors, 4 should-fix, 17 minor, 21 findings; 20 applied (19 in pass 1, f3 in pass 2, the transition sheet built on Milan) and 1 held (f5: the applier could not open Ferreira et al.'s full text; the unit's wording is not wrong). Quality review by a fresh Opus 5.5 agent with live search (flag F150): fix; 0 errors, 2 should-fix, 13 minor, 15 findings; all 15 applied; a 16th change (f16, the Silva wording) held and replaced by 7 follow-on fixes (Silva's details marked as resting on the writer's fetch-tool reading; check-ins begin in week 1; the A2 pointer wording; Saturday marked added and listed), drafted by one fresh Opus 5.5 agent and verified by another, all applied; 42 replacements applied to SP10 in all. The quality reviewer opened 1 of the 6 new references, the fresh checker 5; Silva's full-text details were confirmed by neither. In the same chat, step 1b, quality reviews by fresh Opus 5.5 agents with live search: SP4 (F147): fix; 0 errors, 6 should-fix, 4 minor; 9 of 10 applied in two passes, f6 held (F59). SP7 (F148): fix; 0 errors, 4 should-fix, 7 minor; 9 of 11 applied in three passes (f4, the F135 pointer to SP9 section 8, in the third), f6 and f10 held. SP9 (F149): keep; 0 errors, 7 should-fix, 9 minor; 15 of 16 applied in two passes, f10 held. Not opened: Park et al. (2013), Neely et al. (2016), Walsh et al. (2021), Gouttebarge et al. (2019) and the SMHRT-1 PDF (F20, F108, F130, F131 not met); F132 and F142 partly met. 8 case facts added; 25 flags raised (F151 to F175); F7, F8, F14, F21, F24, F26, F37, F38, F47, F48, F63, F67, F70, F85, F117, F118, F124, F137 and F139 carried; F147, F148, F149 and F150 set to carried, not resolved, because the filing record carries flags only; F59 stays open. 10 of 13 written. Next: DD-SP1."
+[[pack.changelog]]
+date = '2026-11-18 23:27'
+text = "v12. SP9 filed (row W-SP9): Wellbeing, red flags and referral, written by Opus 5.5 with search on. Writer, fresh checker, safety reader, applier, quality reviewers and filer each a fresh Opus 5.5 agent. Fresh check by a separate Opus 5.5 agent: fix; 3 errors, 22 should-fix, 3 minor, 28 findings; 22 applied and 6 held (f4 and f5 wrong against the source, f8 and f15 replaced by the applier's fixes X1 and X2, f20 and f24 not needed), with 4 further fixes, 26 applied in all. Safety read by a third Opus 5.5 context: fix; 3 serious, 11 should-fix, 5 minor, 19 findings, all dealt with (11 applied directly, 8 merged into 28 further exact replacements, all applied); no serious finding held. Quality review by a fresh Opus 5.5 agent with live search (flag F127): fix; 0 errors, 8 should-fix, 12 minor, 20 findings; 19 applied and 1 held (f1: the toolkit's words are \"All sporting organisations\"), with 11 further fixes, 30 applied in all. The SMHRT-1 PDF returned a server error and Reardon et al.'s Table 4 was not on the publisher's page (F53, F54, F98 not met, raised again); the red flags are the ISSF page's, the fifth now in full. In the same chat: a second quality review of SP1, 12 replacements applied to SP1; a second quality review of SP8, 30 replacements applied to SP8 (f13 held and replaced by an SP2-wording fix, f24 held: Rubio et al.'s DOI unchecked); the case register's SP8 row on Dani's SP6 cap removed and the coach-volume row corrected. 10 case facts added; 19 flags raised (F128 to F146); F3, F8, F14, F17, F21, F24, F47, F48, F53, F54, F69, F87, F98, F99, F100, F117, F121, F122, F123 and F124 carried; F116, F126 and F127 set to carried, not resolved, because the filing record carries flags only. 9 of 13 written. Next: SP10."
+[[pack.changelog]]
+date = '2026-11-18 21:00'
+text = "v11. SP8 filed (row W-SP8): Competition day, written by Opus 5.5 with search off. Main chat Sonnet 5.5; writer, fresh checker, applier (two rounds), quality reviewer and filer each a fresh Opus 5.5 agent. Fresh check by a separate Opus 5.5 agent: fix; 0 errors, 10 should-fix, 12 minor, 22 findings; 19 applied and 3 held (one finding wrong: Murray et al. analysed 153 of 163 recruited; one fix too broad; one grade wording needing a check against SP5). Quality review by a fresh Opus 5.5 agent with live search (flag F115): fix; 2 errors, 11 should-fix, 13 minor, 25 findings; 18 applied and 7 held, replaced by 18 further corrections, all applied (second round: 36 applied, 7 held). Almost nothing a coach does on competition day has been tested as a whole; the protocols, the one-cue rule, the reset order, the clash rule and the debrief card are the unit's practice. Walsh et al. (2021) read on a repository copy, not the publisher's page (F21 partly met). 12 case facts added; 9 flags raised; F7, F8, F14, F21, F24, F37, F47, F48, F63, F66, F73, F84, F96, F97 and F100 carried; F115 resolved. 8 of 13 written. Next: SP9."
+[[pack.changelog]]
+date = '2026-11-18 17:50'
+text = 'v10. SP7 filed (row W-SP7): Reading and responding to an athlete, written by Opus 5.5 with search off; fresh check 0 errors, 7 should-fix, 9 minor, 15 of 16 applied, 1 held (the section 3 figure kind); quality review (F90) 1 error, 4 should-fix, 4 minor, 8 of 9 applied, 1 held (the same figure). In the same chat: corrections check C-SP6, 29 of 29 changes passed and applied with New 1 (30 in all) to SP2, SP3, SP5 and SP6; quality reviews of SP5 (19 of 22 applied, 3 held; F91) and SP6 (16 of 16 applied; F92). 22 case facts added; 22 flags raised; F7, F8, F14, F24, F29, F47, F48 and F88 carried; F90, F91 and F92 resolved. 7 of 13 written. Next: SP8.'
+[[pack.changelog]]
+date = '2026-11-18 14:13'
+text = "v9. SP6 filed (row W-SP6): Training under pressure, written by Opus 5.5 with search off. Main chat Sonnet 5.5; writers, fresh checkers, appliers, quality reviewer, marking agent, corrections checkers and filer each a fresh Opus 5.5 agent. The first draft's fresh check gave rewrite (4 errors, 8 should-fix, 10 minor); a new writer wrote the filed draft from the same brief. Fresh check by a separate Opus 5.5 agent: fix; 2 errors, 11 should-fix, 7 minor, 20 findings; 18 applied by script and 2 held, both then applied in the applier's corrected wording, plus 7 follow-on changes. Quality review by a fresh Opus 5.5 agent with live search (flag F75): fix; 1 error, 14 should-fix, 10 minor, 25 findings; 16 applied by script and 9 held, all 9 then applied in the applier's corrected wording, plus 15 follow-on changes; a marking agent made 7 consistency replacements to the three deliverable plans. Pressure training and pre-performance routines are graded moderate; no technique reaches strong (F1); the six-level ladder, the eight rules and the step-down rule are the unit's practice, untested. SP5's week-4 rondo is counted as level 5 on the ladder. Six case facts about Dani's squad, Milan's squad and Sara added to the register; 14 flags raised; F1, F7, F8, F14, F24, F52, F63, F64 and F65 carried; F75 resolved; F47, F48 and F57 stay open. 6 of 13 written. Next: SP7."
+[[pack.changelog]]
+date = '2026-11-18 13:10'
+text = "v8b. SP1 corrected again, row W-SP6 step 1b, round 2 of C-SP5: 3 of 4 changes passed and were applied (Ranehill et al.'s result in Deliverable B; Hagger et al.'s sample; the Vohs et al. read label in section 8, settled as full text on a repository copy). Sawyer et al. (2018) could not be opened (publisher page refused) and stays marked in SP2 (F23). Of the 15 held fixes of F11, 14 were found already in the filed text and one (Lochbaum et al.) closed earlier."
+[[pack.changelog]]
+date = '2026-11-18 12:50'
+text = "v8a. SP1, SP3 and SP5 corrected, row W-SP6 step 1b (corrections C-SP5, before SP6 was written). One corrections check by a fresh Opus 5.5 agent with live search: 12 of 24 changes passed with no syllabus conflict and were applied (SP1 5, SP3 3, SP5 4); 12 could not be checked because the sources could not be opened (or, for the held fixes of F11, were not in the packet) and stay marked. SP1: the full author list of Vohs et al. (2021) and the exclusion of high school and junior athletes in Reinebo et al. (2024) written in (F62 resolved). SP3: the definitions of overtraining syndrome and burnout from the AAP clinical report, now opened at its publisher's page. SP5: the full author list of Zang et al. (2025) and the sample of Walter et al. (2019) corrected against its text."
+[[pack.changelog]]
+date = '2026-11-18 09:27'
+text = "v8. SP5 filed (row W-SP5): The cognitive-behavioural toolkit, written by Opus 5.5 with search off. Main chat Sonnet 5.5; writer, fresh checker, applier, quality reviewer, corrections checker and filer each a fresh Opus 5.5 agent. Fresh check by a separate Opus 5.5 agent: fix; 2 errors, 13 should-fix, 17 minor, 32 findings; all 32 applied, none held. Quality review by a fresh Opus 5.5 agent with live search (flag F58): fix; 3 errors, 19 should-fix, 9 minor, 31 findings; 30 applied after a fresh agent checked each against its source, 1 held (the list of added case facts, which reaches the case register instead). The goal-setting trial's goal is now reported as its authors' time-based performance goal; attentional focus is graded contested under rule 1, process goals for competition weak, instructional self-talk for fine tasks weak; no technique reaches strong (F1). Five case facts about Milan's squad and Sara added to the register; 16 flags raised; F1, F2, F7, F8, F14, F24 and F52 carried; F47, F48 and F57 stay open. 5 of 13 written. Next: SP6."
+[[pack.changelog]]
+date = '2026-11-18 09:30'
+text = "v7a. SP1 to SP3 corrected, row W-SP5 step 1b (corrections C-SP4, before SP5 was written). One corrections check by a fresh Opus 5.5 agent with live search: 32 of 32 changes passed with no syllabus conflict and were applied (SP1 19, SP2 6, SP3 7). SP1: the grit review's competitive-performance wording corrected (five of six studies found higher grit at higher levels); Ranehill et al. (2015), Hagger et al. (2016), Vohs et al. (2021, full text) and Sisk et al. (2018) opened on copies, not the publishers' pages, and their claims and references written in. SP2: Cobley et al. (2009) abstract read on a database record and graded moderate under rule 4; Boccia et al. authors confirmed. SP3: the parents' sentence on pressure and motivation corrected against Gao et al. (2024); the MMCOS described as the trial authors' word, with its development paper (Smith et al., 2015) read in abstract; Fletcher and Sarkar details confirmed. Flags F11, F22, F23, F42 and others stay open as the report states."
+[[pack.changelog]]
+date = '2026-11-18 02:45'
+text = "v7. SP4 filed (row W-SP4): Anxiety, arousal and performing under pressure, written by Opus 5.5 with search off. Fresh check by a separate Opus 5.5 context: fix, 17 findings (1 error, 8 should-fix, 8 minor); all 17 applied, none held (15 by script, 2 by exact replacement). Quality review by a fresh Opus 5.5 agent with live search (flag F45): keep; 0 errors, 7 should-fix, 7 minor, all 14 applied. The unit no longer gives a design for the Mastery Approach study, which could not be opened; the IOC consensus statement was read on a university-hosted copy, not the publisher's page. Four case facts about Milan added to the register; flags F52 to F57 raised; F9, F19, F26 and F38 carried; F33 stays open for SP5 or SP6; none blocking SP5. 4 of 13 written. Next: SP5."
+[[pack.changelog]]
+date = '2026-11-18 02:30'
+text = 'v6. SP1 to SP3 corrected and reviewed again, row W-SP4 (before SP4 was written). Three corrections checks by fresh Opus 5.5 agents with live search: 22 of 29 changes passed and were applied (SP1 15, SP2 7), the rest could not be checked because the sources could not be opened and stay marked. Three further quality reviews by fresh Opus 5.5 agents with live search (a sixth for SP1, a sixth for SP2, a seventh for SP3), every verdict fix, 0 errors, 10 should-fix and 21 minor in all; 24 findings were applied after a fresh agent checked each against its source and the syllabus, and the rest were held or left open. SP1 now covers how far psychological variables relate to performance (Lochbaum et al., 2022, read in full) and no longer relies on an editorial; the IOC survey of 360 is corrected to include coaches and governing-body representatives; SP2 and SP3 gain smaller source and grade fixes. The three reading pages list what is still unopened. 3 of 13 written. Next: SP4.'
+[[pack.changelog]]
+date = '2026-11-17 23:55'
+text = 'v5. SP1 to SP3 reviewed and corrected, row R-SP1; no unit written. Each unit corrected in two rounds, every change checked against its source by a fresh Opus 5.5 checker before it was applied, and given quality reviews by fresh Opus 5.5 contexts with live search (five for SP1, five for SP2, six for SP3), every verdict fix. A cross-unit check found 10 disagreements: 8 corrected in the units, 2 on the grade key itself raised as flags F47 and F48 for a syllabus review. Ego depletion is now graded contested on Vohs et al. (2021); the power-posing replication, the review of meta-analyses and the athletics study behind the rate-of-improvement advice still could not be opened and are marked so. The three reading pages now list only what each unit still marks. 3 of 13 written. Next: SP4.'
+[[pack.changelog]]
+date = '2026-11-17 19:55'
+text = 'v4. SP3 filed (row W-SP3): Motivation and the climate you create, written by Opus 5.5 with search off. Fresh check by a separate Opus 5.5 context: fix, 18 findings (2 errors, 12 should-fix, 4 minor); 17 applied, some in corrected form after checking at the source, and 1 held (the autonomy-support figure stays a range). Re-check by a fresh Opus 5.5 context: all three figures pass; 0 errors, 1 should-fix, 5 minor, all applied. Harsh coaching stays [weak, against] on three cross-sectional surveys; the Bartholomew reviews remain unopened. Five case facts added to the register; 13 syllabus flags raised and F14 and F24 carried; F5, F18 and F26 stay open, none blocking SP4. 3 of 13 written. Next: SP4.'
+[[pack.changelog]]
+date = '2026-11-17 17:30'
+text = 'v3. SP2 filed (row W-SP2): The developing athlete, 10 to 25, written by Opus 5.5 with search off. Fresh check by a separate Opus 5.5 context: fix, 18 findings (0 errors, 10 should-fix, 8 minor); 16 applied, 2 held and re-worked, then applied, and 2 further fixes found by the applier, all applied; nothing held. Self-image and emotion regulation from 16 to 25 remain thin. Eight case facts added to the register; 15 syllabus flags raised and F4, F7 and F8 carried, none blocking SP3. 2 of 13 written. Next: SP3.'
+[[pack.changelog]]
+date = '2026-11-17 13:57'
+text = 'v2. SP1 filed (row W-SP1): What a coach can do, and how to tell evidence from noise, written by Opus 5.5 with search off. Fresh check by a separate Opus 5.5 context: fix, 48 findings (2 errors, 30 should-fix, 16 minor); 33 applied and 15 held for want of an opened source, with fallback fixes in place of the held ego-depletion error; ego depletion carries no grade. Six case facts added to the register; 11 syllabus flags raised, none blocking SP2. 1 of 13 written. Next: SP2.'
+[[pack.changelog]]
+date = '2026-11-16 19:30'
+text = 'v1. Course created (new-course skill; row S-SP0): frame, goal and three outcomes, 13 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the fictional case register, a seed bibliography of 97 references checked for existence, the syllabus-flags file. No unit written.'

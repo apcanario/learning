@@ -17,7 +17,8 @@ home_id = "supply-chain-execution"
 status = "in progress"
 tracks.SCE = ["supply-chain", "Supply chain execution · public"]
 tiles.SCE = "How warehouses, transport and orders run, and how their software is bought."
-data = "generator/data/supply-chain-execution/hub.py"
+# the course data: the [pack] table below, read by kit/pack.py (S-DEC2)
+data = "courses/supply-chain-execution/course.toml"
 vault = "courses/supply-chain-execution"
 sourcing_part = "Part 8"
 source_units = false
@@ -25,3 +26,231 @@ source_units = false
 prompts_doc = "docs/supply-chain-execution-prompts.md"
 dated_lists = true
 eyebrow = "SUPPLY CHAIN EXECUTION"
+
+# ---- the pack (S-DEC2, 20 Nov 2026): the course data, read by kit/pack.py (its docstring is the schema) -------
+# Everything below sits under [pack]; kit/courses.py strips it from the registry dict. Also in the pack: briefs.md
+# (the preamble and every brief, word for word), pages/*.md (the long HTML blocks), notes/ (case and syllabus-flags
+# files). Derived, not typed here: STATUS (from each unit's `written`; [pack.status] only where the typed string
+# differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top changelog row).
+[pack]
+# the data file the How it was built footer names (byte identity until S-DEC3 changes it on purpose)
+source = 'generator/data/supply-chain-execution/hub.py'
+course_note = "Every unit is sourced to operations research, standard textbooks, industry surveys, analyst reports, audited filings and vendors' own dated pages, grades every claim (independent, analyst, vendor-reported, practice), assesses no real vendor, and ends with a deliverable built in full on the fictional case and then as a template."
+order_lede = 'One row per unit in writing order, which is the reading order. Opus 5.5 writes; a fresh Opus 5.5 context checks each unit before filing. "Search" means the unit is written with web search on because its facts are current.'
+order_foot = 'The count starts at {start}.'
+# not read by any kit/ script (the v5.1 standalone hub's identity and tiles); kept as the record. TEMPLATE_BLOCKS was [].
+title = 'Supply Chain Execution for Product Teams'
+bar = 'SUPPLY CHAIN EXECUTION'
+brand_html = 'SUPPLY CHAIN EXECUTION <span>/</span> FOR PRODUCT TEAMS'
+out = 'supply-chain-execution.html'
+theme_key = 'supply-chain-execution-theme'
+learn_c = 'var(--gold)'
+build_c = 'var(--teal)'
+home_lede = 'For people who build, sell or implement order, warehouse or transport software with no operations background: how warehouses, transport and orders run, who works in them, how the software that runs them is bought, and what it costs. Every claim sourced and graded.'
+home_h1 = 'Supply Chain Execution for Product Teams'
+learn_note = 'Order of writing: the eighteen core units in reading order, SCE1 to SCE18, then DD-SCE1 and DD-SCE2; SCE1, SCE6, SCE8, SCE9, SCE11, SCE12, SCE16, SCE17 and DD-SCE1 with search on.'
+template_lede = 'What a course needs before the first unit is written: see the new-course skill and design/README.md.'
+template_note = ''
+learn_tile = ['The course', 'Goal, outcomes, units, and the written material to read.']
+build_tile = ['How the course gets made', 'Procedure, model rules, every brief, bibliography, changelog.']
+# writing order: (code, model, search)
+order = [
+  ['SCE1', 'Opus 5.5', 'on'],
+  ['SCE2', 'Opus 5.5', 'off'],
+  ['SCE3', 'Opus 5.5', 'off'],
+  ['SCE4', 'Opus 5.5', 'off'],
+  ['SCE5', 'Opus 5.5', 'off'],
+  ['SCE6', 'Opus 5.5', 'on'],
+  ['SCE7', 'Opus 5.5', 'off'],
+  ['SCE8', 'Opus 5.5', 'on'],
+  ['SCE9', 'Opus 5.5', 'on'],
+  ['SCE10', 'Opus 5.5', 'off'],
+  ['SCE11', 'Opus 5.5', 'on'],
+  ['SCE12', 'Opus 5.5', 'on'],
+  ['SCE13', 'Opus 5.5', 'off'],
+  ['SCE14', 'Opus 5.5', 'off'],
+  ['SCE15', 'Opus 5.5', 'off'],
+  ['SCE16', 'Opus 5.5', 'on'],
+  ['SCE17', 'Opus 5.5', 'on'],
+  ['SCE18', 'Opus 5.5', 'off'],
+  ['DD-SCE1', 'Opus 5.5', 'on'],
+  ['DD-SCE2', 'Opus 5.5', 'off'],
+]
+
+# STATUS where the typed string is not "written <d Mon>" of the unit's front matter `written`
+[pack.status]
+
+[[pack.courses]]
+key = 'SCE'
+name = 'Supply Chain Execution for Product Teams'
+color = 'var(--gold)'
+slug = 'sce'
+goal = 'by the end, the reader can take any screen, feature or roadmap item in order, warehouse or transport software, say what physical work it stands for, who uses it and who pays for it, and argue from that what the product should do.'
+tile = 'For people who build, sell or implement order, warehouse or transport software with no operations background: how warehouses, transport and orders run, who works in them, how the software that runs them is bought, and what it costs. Every claim sourced and graded.'
+intro = 'Learning the domain: how warehouses, transport and orders run, who works in them, how the software that runs them is bought, and what it costs. Operations first, then people, then money, with the warehouse given the most room; AI features are out of scope, no real vendor is assessed, and the worked examples use three fictional operations and three fictional vendors. Eighteen core units in an opening and three parts, and two deep dives.'
+outcomes = "<li><strong>Outcome 1 · Operations.</strong> Walks one order from promise to delivery and names, at every step, the physical event, the system, the user role and the common failure, without notes (SCE1 to SCE10, DD-SCE2).</li><li><strong>Outcome 2 · Buyers and users.</strong> For a given feature, writes a two-sided case: each buyer card's reason to pay and each role card's reason to use or avoid it, with the grade of the evidence (SCE5, SCE8, SCE9, SCE11 to SCE15, DD-SCE1).</li><li><strong>Outcome 3 · The market and the money.</strong> Builds a competitor sheet and a total-cost model for a real market from public sources, and writes a product strategy memo that rests on them (SCE6, SCE16, SCE17, SCE18).</li>"
+[[pack.courses.units]]
+code = 'SCE1'
+title = 'The map, the words and the evidence'
+scope = 'What supply chain execution is, where each system starts and stops, and how to grade what vendors, analysts and researchers say.'
+deliverable = 'execution map + working glossary + the grade key'
+aim = 'draw the execution map from memory, place any product module on it, and grade a claim by its source'
+takes = "nothing; it is the course's first unit"
+gives = 'the map, the glossary and the grade key every later unit uses'
+[[pack.courses.units]]
+code = 'SCE2'
+title = 'Inbound and storage'
+scope = 'From the truck at the gate to stock in a location: receiving, putaway, storage and replenishment, and what the warehouse system does at each step.'
+deliverable = 'inbound flow map + failure list'
+aim = 'describe how goods enter a warehouse and reach a location, and what the system does and needs at each step'
+takes = 'SCE1'
+gives = 'the flow-map form SCE3, SCE7 and SCE9 reuse; storage and replenishment, which SCE3 and SCE4 build on'
+[[pack.courses.units]]
+code = 'SCE3'
+title = 'Outbound: release, pick, pack, ship'
+scope = "How orders reach the floor and leave the building: release, the picking methods, packing, and the day's clock."
+deliverable = 'picking-method decision table + outbound flow map'
+aim = 'match a picking method to an order profile and say what order release does'
+takes = 'SCE1, SCE2'
+gives = 'the outbound steps SCE4 traces errors through, SCE5 staffs and SCE10 hands to transport'
+[[pack.courses.units]]
+code = 'SCE4'
+title = 'Inventory and control'
+scope = 'How the record and the building come to disagree, and what sites do about it: locations, lots, counting, slotting and returns.'
+deliverable = 'inventory-error cause tree + count plan'
+aim = 'explain how inventory records go wrong, how sites find it, and what one error costs downstream'
+takes = 'SCE2, SCE3'
+gives = "the error chain SCE9's promise depends on and DD-SCE2's exceptions draw from"
+[[pack.courses.units]]
+code = 'SCE5'
+title = 'The floor: people, devices and machines'
+scope = 'Who works in a warehouse and under what conditions, the devices in their hands, how labour is measured, and the machines the system has to work with.'
+deliverable = 'five warehouse role cards'
+aim = "describe each warehouse role's day, device and measures, and where the system ends and the machines begin"
+takes = 'SCE2, SCE3, SCE4'
+gives = 'the role card form and five cards that SCE8, SCE9, SCE11 and SCE13 reuse'
+[[pack.courses.units]]
+code = 'SCE6'
+title = 'The warehouse system as a product'
+scope = 'The warehouse management system as something built, sold and implemented: tiers, configuration, integrations, and a product line mapped onto the operation.'
+deliverable = 'capability map of a warehouse product line'
+aim = 'map any warehouse product line onto the operation, with the grade of each claim'
+takes = 'SCE1 to SCE5'
+gives = 'the capability map form SCE8, SCE9 and SCE17 reuse; the implementation topics SCE14 takes up'
+[[pack.courses.units]]
+code = 'SCE7'
+title = 'Transportation in practice'
+scope = 'Who moves freight and how they are paid, and one shipment followed from plan to payment.'
+deliverable = 'shipment lifecycle map'
+aim = 'walk a shipment from plan to payment, naming the parties, the documents and the failures'
+takes = 'SCE1, SCE3'
+gives = 'the shipment lifecycle SCE8 places a product on and SCE10 joins to the warehouse'
+[[pack.courses.units]]
+code = 'SCE8'
+title = 'The transport system as a product'
+scope = "The transport management system as a product: who sits in it all day, and how a shipper's needs differ from a provider's."
+deliverable = 'transport role cards + shipper-versus-provider comparison'
+aim = "describe who works in a transport system, and how a shipper's needs differ from a provider's"
+takes = 'SCE5, SCE6, SCE7'
+gives = 'the transport role cards for SCE13; the shipper and provider split DD-SCE1 develops'
+[[pack.courses.units]]
+code = 'SCE9'
+title = 'Order management'
+scope = 'How a promise to a customer is made and kept: availability across locations, sourcing, splits, store fulfilment, changes and returns, and the system that runs them.'
+deliverable = 'order lifecycle map + order management role cards'
+aim = 'explain how a promise is made and kept across locations, and who works the orders'
+takes = 'SCE1, SCE4, SCE5, SCE6'
+gives = 'the order lifecycle SCE10 joins to warehouse and transport; the order role cards for SCE13'
+[[pack.courses.units]]
+code = 'SCE10'
+title = 'The seams'
+scope = 'The handoffs between order, warehouse, transport and finance systems: what crosses each, who owns which fact, and how they fail.'
+deliverable = 'system-of-record table + handoff failure catalogue'
+aim = 'name each handoff between the systems, the fact that crosses it and what breaks'
+takes = 'SCE2 to SCE9'
+gives = 'the system-of-record table SCE15 and SCE18 argue from; the handoff failures DD-SCE2 extends'
+[[pack.courses.units]]
+code = 'SCE11'
+title = 'The buying committee'
+scope = 'Who decides to buy execution software, what each of them is accountable for, and how the room differs by kind of company.'
+deliverable = 'buyer cards'
+aim = 'describe each member of a buying committee: accountable for what, afraid of what, moved by what'
+takes = 'SCE1, SCE5'
+gives = 'the buyer cards SCE12, SCE15 and SCE18 use'
+[[pack.courses.units]]
+code = 'SCE12'
+title = 'The sale'
+scope = 'A selection from long list to signature: what decides each stage, and what each stage cannot see.'
+deliverable = 'stage-by-stage sheet'
+aim = 'describe a selection stage by stage, what decides each and what each cannot see'
+takes = 'SCE6, SCE11'
+gives = 'the stages SCE14 follows into implementation and SCE15 sets against the shift'
+[[pack.courses.units]]
+code = 'SCE13'
+title = 'Users by role'
+scope = 'The role cards of the whole course set side by side: working patterns, shared needs, and the conflicts between roles.'
+deliverable = 'full role card set + conflict matrix'
+aim = 'group every user role by working pattern and name the standing conflicts between them'
+takes = 'SCE5, SCE8, SCE9'
+gives = 'the full card set and conflict matrix SCE15, SCE18 and DD-SCE2 use'
+[[pack.courses.units]]
+code = 'SCE14'
+title = 'Implementers and administrators'
+scope = 'The months between signature and go-live, the people who configure the product, and the administrators who inherit it.'
+deliverable = 'implementation timeline + two role cards'
+aim = "describe an implementation's phases and treat implementers and administrators as users"
+takes = 'SCE6, SCE12, SCE13'
+gives = 'the implementation effort SCE16 prices; two more role cards'
+[[pack.courses.units]]
+code = 'SCE15'
+title = 'Demo versus shift'
+scope = "What sells against what works on the floor, the four kinds of feature, and how to state one feature's value to a buyer and to a user."
+deliverable = 'two-sided case template + three worked cases'
+aim = "write a two-sided case for any feature: each buyer's reason to pay and each user's reason to use it"
+takes = 'SCE10 to SCE14'
+gives = "the two-sided case, which is the core of SCE18's memo"
+[[pack.courses.units]]
+code = 'SCE16'
+title = 'Money'
+scope = "What a customer pays over the life of a system, what public filings show about the vendors' economics, and why customers switch or stay."
+deliverable = 'total-cost model'
+aim = "break down what a customer pays over a system's life and say which lines product design can move"
+takes = 'SCE6, SCE12, SCE14'
+gives = "the cost model SCE18's memo draws on; the filings SCE17 reads again"
+[[pack.courses.units]]
+code = 'SCE17'
+title = 'Reading the field'
+scope = "The kinds of vendor, how analysts sort them and why they disagree, and how to build a competitor sheet without taking anyone's word."
+deliverable = 'competitor sheet method + worked sheets on the fictional vendors'
+aim = 'sort the vendors of a market by kind and build a competitor sheet from public evidence, with the grade of each line'
+takes = 'SCE1, SCE6, SCE8, SCE9, SCE16'
+gives = "the competitor sheet method and the worked sheets SCE18's memo draws on"
+[[pack.courses.units]]
+code = 'SCE18'
+title = 'Capstone: one strategy memo'
+scope = "One opportunity argued in full from the course's own material, as a model for the memo the reader writes on real work."
+deliverable = 'worked strategy memo + memo template'
+aim = "write a product strategy memo from the course's deliverables"
+takes = 'SCE1 to SCE17'
+gives = "the memo template the deep dives' deliverables can be added to"
+[[pack.courses.units]]
+code = 'DD-SCE1'
+title = "Deep dive: the logistics provider's business"
+scope = "How a provider wins, prices and runs other companies' logistics, and why it is a different buyer and a different user."
+deliverable = 'contract-to-cash flow + provider buyer and role cards'
+aim = 'explain how a logistics provider makes money and why it buys and uses software differently'
+takes = 'SCE7, SCE8, SCE11, SCE13, SCE16'
+gives = 'nothing a later unit depends on'
+[[pack.courses.units]]
+code = 'DD-SCE2'
+title = 'Deep dive: peak and exceptions'
+scope = 'The worst days: peak season and the daily exceptions, who finds out, how fast, and what they can do from where they stand.'
+deliverable = 'exception catalogue by role + peak readiness checklist'
+aim = 'map the common exceptions to who sees them first and who can fix them, and say what peak changes'
+takes = 'SCE4, SCE5, SCE10, SCE13'
+gives = "nothing; it is the course's last unit"
+
+# newest first
+[[pack.changelog]]
+date = '2026-11-19 20:22'
+text = 'v1. Course created (new-course skill; row S-SCE0): frame, goal and three outcomes, 20 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the fictional case register of three operations and three vendors, a seed bibliography of 41 references, 37 checked for existence (3 seen only secondhand, 1 not opened), the syllabus-flags file. No unit written.'
