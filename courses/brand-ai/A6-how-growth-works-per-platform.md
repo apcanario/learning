@@ -5,6 +5,8 @@ course: brand-ai · A · Building a Marketable Personal Brand
 model: Opus 5.5
 written: 2026-10-28
 search: on
+name: A6 · Growth per platform
+intro: Unit A6, rewritten 28 Oct 2026 by Opus 5.5 in its own chat, search on; fresh check the same day (Fable 5.1): fix, 1 error, 9 should-fix, 7 minor, all applied. Deliverables: the per-platform playbook (each rule names its evidence; his own conventions marked) and the metrics sheet read once a quarter on A9's checkpoint dates. Unverified: Studio and Instagram menu locations. Staleness check due 28 Apr 2027.
 ---
 
 # A6 · How growth works, per platform

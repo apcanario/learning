@@ -5,6 +5,8 @@ course: brand-ai · A · Building a Marketable Personal Brand
 model: Opus 5.5
 written: 2026-10-28
 search: on
+name: A9 · Benchmarks
+intro: Unit A9, rewritten 28 Oct 2026 by Opus 5.5 in its own chat, search on, from its brief after Audit 1; fresh check the same day (Fable 5.1): fix, 2 errors, 15 should-fix, 8 minor, all applied. Deliverables: the expectation sheet (one row per benchmark, source and label on each) and the quarterly checkpoint schedule with its four verdicts. Replaces the research page as the written material for A9. Staleness check due 28 Apr 2027.
 ---
 
 # A9 · What to expect: benchmarks

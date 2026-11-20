@@ -20,7 +20,7 @@ TEXTS = {   # where each course's texts are (the files Academy reads its reading
     'greece': sorted((V / 'greece').glob('*.md')),
     'rome': sorted((V / 'rome').glob('*.md')),
     'brand-a': sorted((V / 'brand-ai').glob('A*.md')) + sorted((V / 'brand-ai').glob('DD-A*.md'))
-               + [ROOT / 'generator/data/brand-ai/audience-growth-across-platforms.md'],
+               + [ROOT / 'courses/brand-ai/notes/audience-growth-across-platforms.md'],
     'brand-b': sorted((V / 'brand-ai').glob('B*.md')) + sorted((V / 'brand-ai').glob('DD-B*.md')),
     'ux-ia': sorted((V / 'ux').glob('*.md')),
     'personal-brand-pb': sorted((V / 'personal-brand').glob('*.md')),   # G-R (16 Nov 2026)

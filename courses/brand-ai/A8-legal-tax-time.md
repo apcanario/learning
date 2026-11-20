@@ -5,6 +5,7 @@ course: brand-ai · A · Building a Marketable Personal Brand
 model: Opus 5.5
 written: 2026-11-02
 search: on
+intro: Unit A8, written 2 Nov 2026 by Opus 5.5 in its own agent context, beside B6, search on (Portuguese and EU primary sources first: the AT's codes, circulars and leaflet, Segurança Social's decree and gov.pt, the GDPR and the CJEU, the Código Civil through the courts, consumer and advertising law, YouTube's and Instagram's terms); fresh check by Opus 5.5 in a separate context: fix, 2 errors, 8 should-fix, 7 minor, all 31 edits verified and applied (the errors: the ato isolado's €25,000 IVA ceiling, gone since 1 July 2025, and Decreto-Lei 57/2008's letters, relettered in 2022); its decision figure fixed twice and passed its third check, its range and matrix figures passed. Information, not legal or tax advice. Deliverable: a constraints register of 32 lines, each with its source, dated status, owner and whether it needs an accountant or a lawyer, answering by name the questions A2, A4, A5, A7 and B3 left to it. Gaps: Diário da República texts did not load, so three statutes were read in reproductions; no SC Braga image policy was found; the hours for a 1:45 half marathon and for SC Braga are unsourced. Staleness check due 2 May 2027.
 ---
 
 # A8 · Legal, tax, time

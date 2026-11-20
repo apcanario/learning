@@ -5,6 +5,7 @@ course: brand-ai · A · Building a Marketable Personal Brand
 model: Opus 5.5
 written: 2026-10-29
 search: off
+intro: Unit A4, written 29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to verify the three studies the brief names, four creator cases, the pratfall experiment, a study of ADHD videos, GDPR Art. 9, YouTube and Strava help pages, ICMJE's corrections guidance and the UK influencer guide); fresh check by Fable 5.1 in a separate context: fix, 2 errors, 3 should-fix, 8 minor, all applied (the errors: the Frontiers study's authors were named by their given names; they are Muhmin, Syah and Anggraeni). Honesty as register against confession as content (Elle Mills, Tom Scott, Haushofer's CV of failures, Hank Green, his two episodes), what the Frontiers, ASQ and New Media &amp; Society studies found and where the brief overstates them (attractiveness does predict purchase intention directly), how a public record stays truthful, and what 'ADHD is public' commits him to. Deliverable: a ten-clause disclosure policy (it also sets B5's publish_numbers list), a pre-mortem set in 2028 with eight causes and a quarterly check, and five record rules. Known gaps, from the writer's unsure list: the ASQ and New Media &amp; Society papers were read through their abstracts, PsyPost and Cornell's release, not in full; three creator videos were not watched; whether body weight counts as health data under GDPR, and Portuguese and EU disclosure law, are left to A8.
 ---
 
 # A4 · Voice, disclosure and the record

@@ -5,6 +5,7 @@ course: brand-ai · B · Using AI to Build a Brand
 model: Opus 5.5
 written: 2026-10-28
 search: on
+intro: Unit B1, written 28 Oct 2026 by Opus 5.5 in its own chat, with live search (Anthropic product facts checked and dated that day; staleness check due 28 Apr 2027). Seven sections in the brief's order, then the deliverable: the five-minute model of how Claude works, as plain prose. Known gaps, from the writer's unsure list: the 200K claude.ai window is taken from an undated help article; the 2.7 characters-per-token figure is arithmetic on Anthropic's glossary, not a measurement; the skill-description cost uses Anthropic's per-skill average; whether claude.ai usage reflects prompt caching, and how much memory a new chat receives, are undocumented; the nondeterminism study was run on Qwen, not Claude.
 ---
 
 # B1 · Mental model

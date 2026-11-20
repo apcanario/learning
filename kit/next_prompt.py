@@ -8,12 +8,12 @@ python3 kit/next_prompt.py --bundle 2      the next two rows in one unattended c
                                            and a tail that has the chat print and work each following row after the one before is closed
 
 The queue is course PB in its ORDER, then course BW in its ORDER (QUEUE below; reorder it there). Everything a prompt
-names is read from the sources at the time it is printed: the course entry (kit/courses.py), the unit's title, search
-flag and Takes line (the course's data folder), the source units those lines name (courses/brand-ai/), the units of the
+names is read from the sources at the time it is printed: the course entry (courses/<id>/course.toml), the unit's title, search
+flag and Takes line (the course's data: kit/pack.py), the source units those lines name (courses/brand-ai/), the units of the
 course already filed, the open flags of syllabus-flags.md that name the unit, and the rows of the Corrections section of
 docs/BACKLOG.md, which every prompt works first (step 1b). Every proposal a chat raises is dealt with in that chat (step 7b;
 Pedro, 12 Nov 2026, 21:31). One template, so every row is briefed
-to the same standard and nothing drifts from chat to chat. A course with `prompts_doc` in kit/courses.py (S-SP0, 16 Nov 2026:
+to the same standard and nothing drifts from chat to chat. A course with `prompts_doc` in its courses/<id>/course.toml (S-SP0, 16 Nov 2026:
 sport-psychology, docs/sport-psychology-prompts.md) keeps its own template in that document; prompt_doc fills its slots.
 S-SCE0 (19 Nov 2026): supply-chain-execution, rows W-SCE1 to W-DD-SCE2, from docs/supply-chain-execution-prompts.md; a
 template with no safety reader is allowed; a row in GATES opens with a line saying it waits for its gate row while that
@@ -25,6 +25,7 @@ R = pathlib.Path(__file__).resolve().parent
 ROOT = R.parent
 sys.path.insert(0, str(R))
 from courses import COURSES
+import pack
 
 QUEUE = ('personal-brand', 'building-with-ai', 'sport-psychology', 'supply-chain-execution')   # the courses, in the order their rows run (S-SP0, 16 Nov 2026: rows W-SP1 to W-DD-SP3 come from the hub's ORDER; S-SCE0, 19 Nov 2026: rows W-SCE1 to W-SCE18, W-DD-SCE1, W-DD-SCE2)
 HOLDS = {'W-PB5': 'S-PB1', 'W-SP4': 'R-SP1'}   # a writing row that waits for a review row: while the review row is in the queue of docs/BACKLOG.md, no prompt runs past it (Pedro, 12 Nov 2026, 08:30)
@@ -40,9 +41,7 @@ NOTES = {   # what one row needs beyond the template
 
 
 def load(c):
-    spec = importlib.util.spec_from_file_location('np_' + c['id'].replace('-', '_'), ROOT / c['data'])
-    d = importlib.util.module_from_spec(spec); spec.loader.exec_module(d)
-    return d
+    return pack.load(c)                 # S-DEC2: the course's pack or its old hub.py
 
 
 def rows():
@@ -112,7 +111,7 @@ def flags(r):
     """Open and carried rows of the course's syllabus-flags.md whose Affects cell names this unit, alone or inside a range.
     A carried row is passed too (Pedro, 17 Nov 2026): it was carried by an earlier unit, and a unit not yet written that it
     names still has to follow it (F8, the grade key; F14, the interim rule-2 grading)."""
-    f = (ROOT / r['c']['data']).parent / 'syllabus-flags.md'
+    f = pack.data_dir(r['c']) / 'syllabus-flags.md'
     out, order = [], r['order']
     for ln in f.read_text(encoding='utf-8').splitlines():
         cells = [x.strip() for x in ln.strip().strip('|').split('|')]
@@ -130,7 +129,7 @@ QR = 'Quality review'   # a flag row whose text starts so records the quality-re
 
 
 def _flag_rows(r):
-    f = (ROOT / r['c']['data']).parent / 'syllabus-flags.md'
+    f = pack.data_dir(r['c']) / 'syllabus-flags.md'
     out = []
     for ln in f.read_text(encoding='utf-8').splitlines():
         cells = [x.strip() for x in ln.strip().strip('|').split('|')]
@@ -211,7 +210,7 @@ THIN_CHAT = ("**This is a thin main chat** (S-BW1, 15 Nov 2026; method §4: the 
 TRIAL = (" **Trial (S-BW1 rule 6):** this row is the first run of the thin chat. It passes if `verify.py` and `index_check.py` pass and the chat leaves no correction row; if it fails, say so in the reply and the next prompt runs on Opus 5.5 with rules (2) to (5) kept.")
 
 def doc_parts(c):
-    """S-SP0 (16 Nov 2026): a course whose rows' prompts are kept in a document (`prompts_doc` in kit/courses.py) has there
+    """S-SP0 (16 Nov 2026): a course whose rows' prompts are kept in a document (`prompts_doc` in its courses/<id>/course.toml) has there
     the writing template (the code block under "## Rows W-"), the safety reader (the code block under "### The safety reader",
     added as step 5b to the rows the table names) and the table "This row in particular" (row -> paragraph)."""
     t = (ROOT / c['prompts_doc']).read_text(encoding='utf-8')
@@ -252,7 +251,7 @@ def prompt_doc(r, nxt):
         'SAVE': f"`python3 kit/next_prompt.py --save` saves the prompt of {nx}" if not last else
                 ("there is no next unit (the carry-forward rule, point 7): in place of a next unit's prompt, write a closing corrections prompt to the "
                  "standard of this one, listing every row still open in the Corrections section of `docs/BACKLOG.md` and every flag still open in "
-                 f"`{pathlib.Path(c['data']).parent.as_posix()}/syllabus-flags.md`, each with its unit, the passage or flag, what is wrong and its "
+                 f"`{pack.data_dir(c).relative_to(ROOT).as_posix()}/syllabus-flags.md`, each with its unit, the passage or flag, what is wrong and its "
                  "source, to be worked under the limits (a) to (f) of step 1b; add it as row C-" + r['sc']['key'] + " at the end of this course's "
                  "section of the Queue of `docs/BACKLOG.md`, the prompt in its prompt cell, and set the backlog's \"Next up\" line to it; do not run "
                  "`--save`; if nothing is open, say so and add no row. The course's reliefs, row G-R-" + r['sc']['key'] + ", wait for Pedro's confirmation"),
@@ -281,7 +280,7 @@ def prompt(r, nxt):
     c, d, u, code = r['c'], r['d'], r['unit'], r['code']
     if c.get('prompts_doc'):
         return prompt_doc(r, nxt)
-    cid, data, vault = c['id'], (ROOT / c['data']).parent, c['vault']
+    cid, data, vault = c['id'], pack.data_dir(c), c['vault']
     takes = d.AIMS[code][1]
     src = sources(takes)
     done = [r['filed'][x] for x in r['order'] if x in r['filed']]
@@ -291,7 +290,7 @@ def prompt(r, nxt):
             else '`generator/data/building-with-ai/case-academy.md` (the Academy case file)')
     on = r['search'] == 'on'
     P = []
-    P.append(f"Clone `apcanario/learning` (attach it with add_repo, push access; one shallow clone with a generous timeout, about ten minutes; call `register_repo_root` if the session offers it; the repo has no CLAUDE.md). Row {r['row']} of `docs/BACKLOG.md`, in this chat: write, fresh-check and file unit {code}, \"{u[1]}\", of the public course {r['sc']['name']} (`kit/courses.py` entry `{cid}`: data `{rel(data)}/`, vault `{vault}/`, `docs/sourcing-standard.md` Parts 1 and {c['sourcing_part'][5:]}; search {r['search']}); correct every mistake the work finds; flag every contradiction or need that touches another unit; then build, verify, publish Academy once (the artifact, then GitHub Pages), push everything, close the row and end with the next row's prompt. Read first: `docs/public-courses.md` (the decisions and the thirteen rules of these rows), `docs/method.md` §4, §5, §7 and §8, `skills/write-unit`, `skills/audit-units` §3, `skills/file-unit` and the docstring of `kit/thin.py` (the chat reads those, never a unit). {THIN_CHAT}{TRIAL if r['row'] == 'W-BW1' else ''} Commit and push after every agent returns and after every step, on `main`. If the session's permission check refuses to run the repo's own scripts after the fresh clone, stop at once, say so in one line and ask Pedro to approve; never work around it. The safety check refuses an `rm -rf` whose target is a shell variable: use a literal absolute path, or do without the removal. Where a choice is open, take the most reasonable reading, say so in the record, and carry on; ask only if genuinely blocked. Fix every error, should-fix and minor finding the work turns up in this chat; a minor whose own Fix is \"no change required\" is recorded and not applied.")
+    P.append(f"Clone `apcanario/learning` (attach it with add_repo, push access; one shallow clone with a generous timeout, about ten minutes; call `register_repo_root` if the session offers it; the repo has no CLAUDE.md). Row {r['row']} of `docs/BACKLOG.md`, in this chat: write, fresh-check and file unit {code}, \"{u[1]}\", of the public course {r['sc']['name']} (`courses/{cid}/course.toml`: data `{rel(data)}/`, vault `{vault}/`, `docs/sourcing-standard.md` Parts 1 and {c['sourcing_part'][5:]}; search {r['search']}); correct every mistake the work finds; flag every contradiction or need that touches another unit; then build, verify, publish Academy once (the artifact, then GitHub Pages), push everything, close the row and end with the next row's prompt. Read first: `docs/public-courses.md` (the decisions and the thirteen rules of these rows), `docs/method.md` §4, §5, §7 and §8, `skills/write-unit`, `skills/audit-units` §3, `skills/file-unit` and the docstring of `kit/thin.py` (the chat reads those, never a unit). {THIN_CHAT}{TRIAL if r['row'] == 'W-BW1' else ''} Commit and push after every agent returns and after every step, on `main`. If the session's permission check refuses to run the repo's own scripts after the fresh clone, stop at once, say so in one line and ask Pedro to approve; never work around it. The safety check refuses an `rm -rf` whose target is a shell variable: use a literal absolute path, or do without the removal. Where a choice is open, take the most reasonable reading, say so in the record, and carry on; ask only if genuinely blocked. Fix every error, should-fix and minor finding the work turns up in this chat; a minor whose own Fix is \"no change required\" is recorded and not applied.")
     P.append("**1. Gate.** `python3 kit/next_prompt.py --list` shows this unit as the next one not filed"
              + (f" (it lists {', '.join(earlier)} as not filed: stop and say so, since the course is written in reading order)" if earlier else "")
              + ". No REWRITE verdict is open in `docs/courses-index.md`.")
@@ -304,7 +303,7 @@ def prompt(r, nxt):
     if car:
         P.append("**1c. Carried proposals** (standing rule, Pedro, 15 Nov 2026: a proposal is listed in the reply on delivery, appended to the next prompt and worked in that chat unless he removes it). Each row below was raised by an earlier chat with its ⚠ flag on what it disturbs elsewhere in the project; work each now, after step 1b and before the packet is staged, a correction to a unit under the limits of step 1b, a kit or record change as it is written; a row Pedro removed from this list before the prompt was pasted is not worked. A brief change or a task only Pedro can do is not in this list; it stays *proposed*. Each row worked moves to `docs/CHANGELOG.md` with this row's close.\n"
                  + '\n'.join(f'- **{a}.** {b}' + (f' ⚠ {c}' if c and not c.startswith('⚠') else f' {c}') for a, b, c in car))
-    packet = [f"`brief.txt`, built by script with `kit/mdcourse.py`'s `open_brief(d, sc, u)` from `{rel(data)}/hub.py` (the preamble, the Aim, Takes and Gives lines, the unit brief; never reworded, never retyped)",
+    packet = [f"`brief.txt`, built by script with `kit/mdcourse.py`'s `open_brief(d, sc, u)` from `{rel(ROOT / c['data'])}`{' and its briefs.md' if pack.is_pack(c) else ''} (the preamble, the Aim, Takes and Gives lines, the unit brief; never reworded, never retyped)",
               "`skills/write-unit/SKILL.md`", f"`docs/sourcing-standard.md` Parts 1 and {c['sourcing_part'][5:]}", "the figure kinds (`kit/viz.py`'s docstring and `VIZ_KEYS`)", case]
     if src:
         packet.append("the source units its Takes line names, each with its fresh-check report from `audits/brand-ai/` where one exists: " + ', '.join(f'`{rel(f)}`' for f in src))
@@ -322,7 +321,7 @@ def prompt(r, nxt):
              + "the web rule holds (WebSearch first; WebFetch only a URL that a search in the same agent returned verbatim, never one typed, printed in a file, edited or reached by a redirect; a refused, redirected or timed-out fetch is \"not checked\" and is never retried or fetched from a copy); it re-verifies at its source every claim it carries over from a source unit, and anything it could not re-verify goes on the unsure list or stays out; it follows `skills/write-unit` §4 to §5, renders every figure before handing in, and writes as it goes, so a restart loses little: `out/unit.md` (front matter, the unit, the deliverable, Sources), `out/unsure.md` (up to ten claims, then the `Object:` line) and `out/notes.md` with three lists, each item naming the unit codes it touches: **Source errors** (every mistake found in a source unit: the quoted text, what is wrong, the source that shows it, the exact replacement), **Contradictions** (where this unit's evidence disagrees with a filed unit of this course or with the brief of an unwritten one, read on the course's Briefs data in the packet) and **Needs** (what the unit needed that the syllabus does not give, and what a later unit must now cover or avoid). An empty list is written as \"none\". Its reply to the chat is at most six lines: its model, the files it wrote, the counts of its lists. **Sources and attribution (S-BW1, from what row F-PB found: attribution failed at 8.8 per 100 claims, numbers at 1.1):** a Sources title is the cited page's own headline as the page shows it, never its URL slug and never a site name joined to a page name; a quotation is credited to the person who said it, with the outlet as where it was said, never to the outlet alone; words inside quotation marks are exactly the source's words, and a paraphrase is never put in quotation marks; a figure is cited to the page that states it for that very thing, not to a page that mentions the topic or to a page that repeats it. Each Sources entry is checked against its page's headline before the unit is handed in.")
     P.append(f"**4. The fresh check.** A separate fresh Agent on model opus that has not seen the writing, under the same agent rules, with live search: the prompt of `skills/audit-units` §3 with its figures paragraph, filled from the course's entry, on a packet made with `python3 kit/thin.py stage checker --row {r['row']} <folder> --unit out/unit.md --notes out/notes.md --unsure out/unsure.md` (the unit, its brief, the sourcing parts, {case.split(' (')[0]} and the writer's notes), writing its report to `out/report.md` and replying in at most six lines (its model, the verdict, the counts); where the harness refuses a subagent a report file (W-BW1, 15 Nov 2026: `Subagents should return findings as text`), the agent returns the report as its reply and the chat saves it verbatim to `out/report.md`, with the agent's own line `Verdict: <code> · keep|fix|rewrite · counts` ahead of it, which `save-report` reads. It also (8) verifies each item of the writer's Source errors list against the source named (confirmed / not confirmed), (9) runs the unit against the course's part of the sourcing standard line by line, and (10) reads the unit as the persona in the preamble would and says where it assumes something only the private course's reader would know, and (11) runs an attribution pass: every Sources title against its page's headline, every quotation against its speaker, every pair of quotation marks against the source's exact words, every figure against the page that states it for that thing. Before any fix, `python3 kit/thin.py save-report --row {r['row']} --report <out/report.md> --model <the model it stated> --chat <this session's link> --date <today>` saves the report verbatim as `audits/{cid}/fresh-check-{code}.md` with the front matter `audits/README.md` sets out and prints the fresh-check line; `python3 kit/thin.py assemble out/unit.md out/unsure.md \"<that line>\"` gives the unit its unsure list. A `rewrite` verdict sends the unit back to a new writer from the same brief, once; a second `rewrite` stops the row with a note of where it stopped.")
     P.append("**5. Apply.** A fresh applier agent (staged with `thin.py stage applier --row ROW <folder> --unit <unit> --report <report>`, which makes `fixes.json` from the report) verifies each finding against the unit and the cited source line and writes `out/apply.json` (`apply` or `hold`, with the reason), replying in at most six lines; `python3 kit/thin.py apply <unit> fixes.json out/apply.json` applies it as exact replacements (each Current counted once; the unit is left unchanged if one fails, and the applier is then re-run on the failures once). Every `hold` is recorded with its reason, and a held error or should-fix is a flag. A figure that fails is fixed and re-checked by a new agent from the unit's text without its figures, the captions and the frames `verify.py --shots` saves, as many times as it takes; figures are never dropped (Pedro, 3 Nov 2026). Restarts: when the harness says it is resuming an agent, let it and say so in the record; if an agent is lost, re-run it from the start once; if lost again, start a fresh agent on the same packet that resumes from the lost run's working files. Look for agent transcripts (`.jsonl` under `/root/.claude/` or `/tmp/`); where there are some, check by script that each agent used no tool it was denied and read nothing outside its folder, and take its `\"model\"` field; where there are none, say so, and the model is the one the agent stated.")
-    P.append(f"**6. Mistakes elsewhere.** Every confirmed Source error is corrected where it sits: an exact replacement in the private unit under `courses/brand-ai/`, a dated note in that unit (\"Erratum <date>, found by {code}'s writer\"), a `CHANGELOG` row and a `VERSION` bump in `generator/data/brand-ai/hub.py`. A mistake the work finds in a filed unit of this course is fixed the same way in `{rel(data)}/hub.py`. An item the checker did not confirm is recorded and not applied. Each correction is one line in the reply.")
+    P.append(f"**6. Mistakes elsewhere.** Every confirmed Source error is corrected where it sits: an exact replacement in the private unit under `courses/brand-ai/`, a dated note in that unit (\"Erratum <date>, found by {code}'s writer\"), a changelog row in `courses/brand-ai/course.toml` (a new `[[pack.changelog]]` table above the first, its text starting with the next version, `v<n>. `, which is the course's version; kit/pack.py). A mistake the work finds in a filed unit of this course is fixed the same way in `{rel(ROOT / c['data'])}`. An item the checker did not confirm is recorded and not applied. Each correction is one line in the reply.")
     P.append(f"**7. Syllabus flags.** Append every Contradiction and Need to `{rel(data)}/syllabus-flags.md` as a new row (next number, date, raised by {code}, the units affected, the flag, the proposed change, status open); set to `carried` each flag this unit was given and dealt with. A Contradiction whose remedy is a change to a filed unit's text, not to a brief, is corrected in this chat at step 7b. Change no brief: `units_data.py` is edited only by a syllabus review that Pedro confirms (`docs/public-courses.md` §3, rules 6 and 7). If a flag means the next unit cannot be written as briefed, say so in the first line of the reply and write, as the next prompt, a syllabus-review prompt in place of the unit's.")
     P.append("**7b. Proposals now** (`docs/public-courses.md` §3 rule 12; Pedro, 12 Nov 2026, 21:31: proposals are dealt with before the chat in which they appear ends). Nothing this work uncovers is left as a proposal for later: every correction to a filed unit or a record, and every fix to the kit it needs, is made in this chat before the build of step 9, and one found later (at the build, verify or publish) is made before the publish, rebuilt and re-verified. For corrections to units: " + LIMITS + " Two kinds stay proposed, since this chat may not decide them: a change to a brief (a syllabus review, rule 7, which Pedro confirms) and a task only Pedro can do by hand; each is a *proposed* row, and the reply says why it could not be done. Commit and push after this step.")
     P.append(f"**8. File** per `skills/file-unit` §1, §2, §4, §5 and §6, by a fresh filer agent and a script, not by the chat: front matter (model: the model the writer stated) on `{vault}/{code}-<slug>.md`; the filer, staged with `python3 kit/thin.py stage filer --row {r['row']} <folder> --unit <unit> --notes <notes> --unsure <unsure> --report <report>`, writes `out/records.json` (the reading-page intro, which says what the unit is, how it was made and its known gaps with no private term; `STATUS`, `NEXT_UNIT`, `VERSION`, the hub `CHANGELOG` line, "

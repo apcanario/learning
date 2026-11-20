@@ -5,6 +5,8 @@ course: brand-ai · B · Using AI to Build a Brand
 model: Opus 5.5
 written: 2026-10-29
 search: on
+name: DD-B3 · How the best practitioners use the tool
+intro: Deep dive DD-B3, written 29 Oct 2026 by Opus 5.5 in its own context, search on (every fact dated that day; staleness check due 29 Apr 2027); fresh check by Fable 5.1 in a separate context: fix, 1 error, 3 should-fix, 9 minor, all applied. Karpathy's documented practice rebuilt from his own posts, talks and repositories ('the Karpathy method' is a label others made), then Anthropic, OpenAI, Willison, Mollick and the BCG experiment, spec-driven workflows and the prompting literature, each graded by evidence and tested for transfer to his work. Deliverable: 26 method cards and ten operating rules, each traced to a card. Known gaps, from the writer's unsure list: none of Karpathy's X posts could be opened, so their text comes from named reproductions; the autoresearch run count and the knowledge-base word count are reporters' paraphrases; the Software 3.0 quotes rest on a third-party transcription; the 'How I use LLMs' video and Mollick's book were not opened; the Sequoia summary on his blog is LLM-generated, as he labels it.
 ---
 
 # DD-B3 · Deep dive: how the best practitioners use the tool

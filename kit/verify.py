@@ -129,6 +129,7 @@ every staleness date past or due within 30 days is printed as a warning.
 import sys, json, pathlib, re, threading, functools, math, html as H
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
+import pack   # S-DEC2: a markdown course's data (its pack or its old hub.py)
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
 import private_terms   # G-0: the public courses carry no private term
 import rot_check   # P30-F11, P30-F16: the theme copy, retired instructions, staleness dates due
@@ -316,8 +317,7 @@ def home_expect():
         for c in COURSES:
             if c['family'] != 'markdown':
                 continue
-            spec = importlib.util.spec_from_file_location('hubv_' + c['id'], R.parent / c['data'])
-            d = importlib.util.module_from_spec(spec); spec.loader.exec_module(d)
+            d = pack.load(c)                                   # S-DEC2: the course's pack or its old hub.py
             vlt = {}
             for f in (sorted((R.parent / c['vault']).glob('*.md')) if (R.parent / c['vault']).is_dir() else []):
                 fm = front(f)

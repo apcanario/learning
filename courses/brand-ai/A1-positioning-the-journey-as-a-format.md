@@ -5,6 +5,8 @@ course: brand-ai · A · Building a Marketable Personal Brand
 model: Opus 5.5
 written: 2026-10-28
 search: off
+name: A1 · Positioning
+intro: Unit A1, written 28–29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to verify the five creators' counts and About texts, the name and character rules and which handles are taken; each dated); fresh check by Fable 5.1 in a separate context: fix, 1 error, 4 should-fix, 6 minor, all applied. Deliverable: the positioning statement (one sentence and a 60-word expansion), three channel-name options with one pick, and the YouTube description and Instagram bio in full. §6 rewritten on 29 Oct 2026 from the two episodes themselves (channel @apcanario, read in Chrome with YouTube's auto-generated captions; evidence in audits/brand-ai/evidence/), with the pick changed to keep the handle @apcanario; fresh check of the revision by Fable 5.1: fix, 1 error, 1 should-fix, 3 minor, all applied. Known gaps, from the writer's unsure list: §6 rests on machine captions, one stretch of episode 2 unread; Instagram's character limits rest on third-party pages; the method-versus-topic evidence is one vendor's survivor sample and the brand-extension literature.
 ---
 
 # A1 · Positioning: the journey as a format

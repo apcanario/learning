@@ -5,6 +5,7 @@ course: brand-ai · B · Using AI to Build a Brand
 model: Opus 5.5
 written: 2026-11-02
 search: off
+intro: Unit B6, written 2 Nov 2026 by Opus 5.5 in its own agent context, beside A8, search off (search used only to verify Anthropic's multi-agent research post and Research pages, two studies of invented citations, three on model failure and self-checking, a Cochrane review of sponsorship bias, Bradford Hill and the rule of three); fresh check by Opus 5.5 in a separate context: fix, 3 errors, 8 should-fix, 12 minor, all verified and applied (the errors: the count of units with an error at first check, a misdescribed failure in Walters and Wilder and in Audit 2, and Research's run time, which Anthropic does state); its two decision figures were fixed and re-checked until they passed, and the text gaps the figure checks found were closed. When to ask, search or run deep research, with cost and time; how models fail; how to read a research report; and Audit 1's sampling rule generalised. Deliverable: a verification protocol as a checklist, with a sampling rule by tier, the arithmetic of what a clean sample can and cannot show, and a rule for checking a checker's own output. Gaps: no source gives a time for asking directly or for one search; the thresholds are the unit's own design, argued from its arithmetic.
 ---
 
 # B6 · Research and verification

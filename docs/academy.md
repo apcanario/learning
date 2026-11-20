@@ -24,7 +24,7 @@ Decided 28 October 2026. One artifact holds every course Pedro runs: the ancient
 ## Course families
 
 - **History** (Greece, Rome, the eight to come): HTML fragments per module in `kit/<course>/r-<id>.html`, syllabus with prompts, audit unit, bibliography files, `provenance.json`. Unchanged.
-- **Brand + AI** (courses A and B; the pattern for any Markdown course): units as Markdown in `courses/brand-ai/`, briefs and build order from `generator/data/brand-ai/units_data.py`, bibliography collected from the units' links. Rendered by `build.py` through a Markdown renderer onto the same theme classes.
+- **Brand + AI** (courses A and B; the pattern for any Markdown course): units as Markdown in `courses/brand-ai/`, briefs and build order from `courses/brand-ai/briefs.md` and `course.toml` `[pack]` (S-DEC2; `generator/data/brand-ai/units_data.py` before), bibliography collected from the units' links. Rendered by `build.py` through a Markdown renderer onto the same theme classes.
 
 Every course page shows the same things: the course home (goal, outcomes, progress, unit cards), the reading pages, the syllabus or build order with the briefs, the bibliography, and the course's own "How it was built" page (A4). (A markdown course's Audits page and audit rows were removed by S-NOAUDIT, 15 Nov 2026, when the Fable stage closed; How it was built keeps the audits that ran as the record.)
 

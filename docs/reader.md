@@ -1,6 +1,6 @@
 # The reader
 
-Every brief in this Project is written for one reader. This profile is extracted from the Brand + AI hub's shared preamble (`PRE` in `generator/data/brand-ai/units_data.py`) and from the Personal Mythology kit (`AGENT-SPEC.md`, the course pages and syllabi, `README.md`, `NEXT-SESSION.md`). Nothing is added: each line says where it comes from. A brief copies what it needs from here and nothing else.
+Every brief in this Project is written for one reader. This profile is extracted from the Brand + AI hub's shared preamble (`PRE`, now the `## Preamble` of `courses/brand-ai/briefs.md`) and from the Personal Mythology kit (`AGENT-SPEC.md`, the course pages and syllabi, `README.md`, `NEXT-SESSION.md`). Nothing is added: each line says where it comes from. A brief copies what it needs from here and nothing else.
 
 ## Who he is (Brand + AI preamble)
 

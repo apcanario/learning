@@ -1,0 +1,1 @@
+One brief per unit, self-contained: the shared preamble (reader, brand thesis, course goal, sourcing standard, tone, citation rules) is baked into every open brief. Copy, paste into a new Opus chat, one unit per chat. Written units show their note instead. The course itself is read in <a href="#course-{k}" data-target="course-{k}">Learn · Course {K}</a>.

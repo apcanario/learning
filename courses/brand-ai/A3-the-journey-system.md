@@ -5,6 +5,7 @@ course: brand-ai · A · Building a Marketable Personal Brand
 model: Opus 5.5
 written: 2026-10-29
 search: off
+intro: Unit A3, written 29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to verify six YouTube Help pages, Instagram's scheduling limit and seven study citations); fresh check by Fable 5.1 in a separate context: keep, 0 errors, 1 should-fix, 9 minor, all applied. The capture, recap and derivative layers, the season and the Athens handover, and two-window batching; where the brief and a filed unit disagree it follows the filed unit (one Short per episode and two Instagram posts a week from A2, episodes about 10 minutes, A9's checkpoint dates shifted 14 days). Deliverable: the journey template as a reusable checklist and a 12-week calendar from 3 Nov 2026 with hours per item, 77 h in all, every week inside 5–7 h. Known gaps, from the writer's unsure list: the capture-and-journal hours, the 300-word email limit and the framing rule are the writer's own; Instagram's 75-day window rests on a 2022 report; the related-video option for Shorts needs advanced feature access, not checked for his channel; the half-marathon date is unset, so the season-two episode count is arithmetic.
 ---
 
 # A3 · The journey system

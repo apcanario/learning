@@ -5,6 +5,7 @@ course: brand-ai · B · Using AI to Build a Brand
 model: Opus 5.5
 written: 2026-10-29
 search: off
+intro: Unit B5, written 29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to verify Anthropic's Agent Skills, Claude Code and Help Center pages, GitHub's file limits and YouTube's title limit); fresh check by Fable 5.1 in a separate context: fix, 1 error, 4 should-fix, 5 minor, all applied (the error: claude.ai skills do reach his cloud sessions and scheduled tasks, by the Claude Code docs, which the developer docs contradict; both are now given). What a skill is, how triggering works and why the description carries it, how his 19 installed skills fire (counts by script), scheduled tasks and their limits, the GitHub vault and pcblueprint as backends, and skill versus saved preference. Deliverable: the journey-chain skill in full (SKILL.md, a quotation-check script, install steps for claude.ai and Claude Code, a 16-request trigger test set, a weekly scheduled task, done-when), following A3 where it revised the brief. Known gaps, from the writer's unsure list: claude.ai's description limit (200 or 1,024 characters) was not tested; trigger reliability has no published figure; pcblueprint's endpoints and exposure are undocumented; the journey repository does not exist yet; scheduled tasks are in research preview.
 ---
 
 # B5 · Skills and automation

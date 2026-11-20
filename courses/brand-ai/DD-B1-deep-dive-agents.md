@@ -5,6 +5,8 @@ course: brand-ai · B · Using AI to Build a Brand
 model: Opus 5.5
 written: 2026-11-02
 search: off
+name: DD-B1 · Agents
+intro: Deep dive DD-B1, written 2 Nov 2026 by Opus 5.5 in its own agent context, search off (searches used only to check Claude Code's documentation and two Anthropic posts, each product fact dated to the page read that day); fresh check by Opus 5.5 in a separate context: fix, 0 errors, 10 should-fix, 14 minor, all verified and applied (among them: auto mode as the starting mode depends on the Claude Code version; `--allowedTools` pre-approves and needs `dontAsk` to restrict; the first model for a new agent loop reconciled with B2). What an agent is against a chat, the autonomy slider in his setup, Claude Code and subagents in practice, his three cases (pcblueprint, AIssistant, Strider, the last undocumented and worked only as a hypothetical), what agents do well and what they quietly wreck, and the guardrails. Deliverable: the agent-use decision rule, nine boxes in prose with an 'on every path' line, its spine also drawn; three figures, the matrix fixed once and passed. Answers B5 §5 (no connector for pcblueprint, with the threat model; the export file stands), takes or declines each of DD-B3 §5's flags by name, does the same with the rest of OpenAI's agent guide, and adds a B7 rule (the pipeline stays chats) and usage rules 25 to 28 after B8's. Known gaps, from the writer's unsure list: the best-practice page no longer shows the five questions DD-B3 recorded, so they are taken on DD-B3's record; Anthropic's 4x and 15x token figures are its 2025 system's; AIssistant's tools and approvals, and everything about Strider, are undocumented; rules 25 to 28 are untested.
 ---
 
 # DD-B1 · Deep dive: agents

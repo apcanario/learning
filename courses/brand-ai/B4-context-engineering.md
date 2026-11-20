@@ -5,6 +5,7 @@ course: brand-ai · B · Using AI to Build a Brand
 model: Opus 5.5
 written: 2026-10-29
 search: off
+intro: Unit B4, written 29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to check claude.ai and Claude Code behaviour against Anthropic's help centre and docs, dated that day); fresh check by Fable 5.1 in a separate context: fix, 0 errors, 7 should-fix, 9 minor, all applied. Deliverable: an audit of the Learning Project's own structure, every size and count measured from the repository, seventeen findings with evidence and fix, revised project instructions, a rot check, and the fix list ranked by effort. Known gaps, from the writer's unsure list: whether the Project's knowledge is in retrieval mode is inferred, not observed; connector and memory costs per chat are undocumented; Claude Code guidance is applied to claude.ai by analogy; effort figures are the writer's estimates.
 ---
 
 # B4 · Context engineering

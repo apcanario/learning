@@ -7,7 +7,7 @@ README.md is regenerated on every build.
 
 The root home is Academy (docs/academy.md, A1): every course of both families. History courses (Greece, Rome) are
 built from their kit folders; a markdown course (Brand + AI) is built by mdcourse.py from its data file
-(generator/data/<slug>/hub.py, AD5) into one Academy course per course in that file (AD6, A3): a course home, a
+(kit/pack.py: courses/<slug>/course.toml [pack], or generator/data/<slug>/hub.py until it moves; AD5, S-DEC2) into one Academy course per course in that file (AD6, A3): a course home, a
 reading page per written unit, and the "How it is built" pages (method, build order, briefs, bibliography,
 changelog). The site also renders the Project's backlog and chat changelog (docs/) as a Backlog page.
 
@@ -36,6 +36,7 @@ if ED['courses'] is not None:
 if 'planned' in OMIT:
     NEXT = []
 import mdcourse
+import pack
 import vault
 import howbuilt
 import viz
@@ -628,14 +629,14 @@ for c in HISTORY:
 
 
 def load_markdown(c):
-    """A markdown course: its data file (generator/data/<slug>/hub.py: courses, units, briefs, audit log, status) and
+    """A markdown course: its data (kit/pack.py: the course's pack, courses/<slug>/course.toml [pack] with briefs.md
+    and pages/, or a not-yet-moved generator/data/<slug>/hub.py; courses, units, briefs, audit log, status) and
     its filed units, read from the vault (courses/<slug>/, A5). A unit is written when its file is in the vault with
-    front matter; the data file's READINGS add a page's intro and top-bar name, and its research pages (an `md` path
-    relative to the data folder). WRITTEN is derived here, never typed."""
-    spec = importlib.util.spec_from_file_location('hubdata_' + c['id'], R.parent / c['data'])
-    d = importlib.util.module_from_spec(spec); spec.loader.exec_module(d)
+    front matter; the data's READINGS add a page's intro and top-bar name, and its research pages (an `md` path
+    relative to the data folder, pack.data_dir). WRITTEN is derived here, never typed."""
+    d = pack.load(c)
     c['hub'] = d
-    c['data_dir'] = (R.parent / c['data']).parent
+    c['data_dir'] = pack.data_dir(c)
     c['vault'] = R.parent / c['vault']
     codes = {u[0]: (sc, u) for sc in d.COURSES for u in sc['units']}
     vault = {}

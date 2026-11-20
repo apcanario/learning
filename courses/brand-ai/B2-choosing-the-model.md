@@ -5,6 +5,7 @@ course: brand-ai · B · Using AI to Build a Brand
 model: Opus 5.5
 written: 2026-10-28
 search: on
+intro: Unit B2, written 28 Oct 2026 by Opus 5.5 in its own chat, search on (lineup, prices, plan rules and benchmarks dated that day; staleness check due 28 Apr 2027); fresh check the same day (Fable 5.1): fix, 3 errors, 10 should-fix, 14 minor. Deliverable: the model-routing table for his recurring tasks, with effort, the evidence behind each pick and an override trigger per row. Known gaps, from the writer's unsure list: Artificial Analysis's per-task costs differ between its leaderboard and model pages; the per-model rate at which claude.ai usage is drawn is undocumented; the Shōmen token counts are assumptions; whether self-preference bias carries between sibling models is untested.
 ---
 
 # B2 · Choosing the model

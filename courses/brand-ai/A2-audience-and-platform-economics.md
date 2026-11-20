@@ -5,6 +5,8 @@ course: brand-ai · A · Building a Marketable Personal Brand
 model: Opus 5.5
 written: 2026-10-28
 search: on
+name: A2 · Audience and platforms
+intro: Unit A2, rewritten 28 Oct 2026 by Opus 5.5 in its own chat, search on; fresh check the same day (Fable 5.1): fix, 3 errors, 13 should-fix, 11 minor, all applied. Deliverables: the audience profile (one sentence, with the basis and label for each trait) and the platform allocation for 5–7 hours a week, with the bad-fortnight cut order. Flags for A3: the evidence supports one Short per episode, not the brief's 2–3. Erratum 2 Nov 2026 (P45, found by A4's fresh check): the Frontiers in Communication study's authors are Muhmin, Syah and Anggraeni, not their given names. Staleness check due 28 Apr 2027.
 ---
 
 # A2 · Audience and platform economics

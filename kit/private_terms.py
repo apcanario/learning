@@ -4,12 +4,12 @@ python3 kit/private_terms.py            every public course: its vault, its data
                                         and docs/site-log.md, the source of the Backlog and Changelog pages (S-PAGES)
 python3 kit/private_terms.py <file>...  only these files (a writer's or a checker's draft)
 
-The public courses are the entries of kit/courses.py named in PUBLIC. The terms are kit/private-terms.txt: one per line,
+The public courses are the courses (courses/<id>/course.toml) named in PUBLIC. The terms are kit/private-terms.txt: one per line,
 whole word, case-insensitive; "warn:" lines are printed and do not fail. Prints OK and exits 0 when nothing fails.
 verify.py runs check() and fails the build on any hit.
 
 S-SCE0 (19 Nov 2026; docs/supply-chain-execution-syllabus.md §6, proposal P-SCE2): a course with `dated_lists=True` in
-kit/courses.py (supply-chain-execution) may name the owner's employer as one entry of a dated list taken from an analyst
+its course.toml (supply-chain-execution) may name the owner's employer as one entry of a dated list taken from an analyst
 report or a filing, and nowhere else. The employer's terms are the "employer:" lines of private-terms.txt (its name and its
 product names). On that course's files (its vault, its data folder, its built pages; or any file given with --course <id>)
 an employer term fails anywhere but inside a dated list: a Markdown list or table (lines starting "- ", "* ", "1. " or "|"),
@@ -79,12 +79,13 @@ DATED = set()   # S-SCE0: the files of the courses with dated_lists=True, filled
 def files():
     sys.path.insert(0, str(R))
     from courses import COURSES
+    import pack
     out = []
     for c in COURSES:
         if c['id'] not in PUBLIC:
             continue
         mine = sorted((ROOT / c['vault']).glob('*.md'))
-        mine += sorted(f for f in (ROOT / c['data']).parent.iterdir() if f.suffix in ('.py', '.md'))
+        mine += pack.files(c)              # S-DEC2: its data files (the pack's, or the old data folder's .py and .md)
         # built.html is left out: the "How it was built" page is generated from docs/method.md and links the private
         # repository by its owner's handle on every course; what it shows publicly is row P24's decision
         mine += sorted(f for f in (R / 'academy').glob(f'{c["id"]}-*/*.html') if f.name != 'built.html')

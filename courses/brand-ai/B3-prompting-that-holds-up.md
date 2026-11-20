@@ -5,6 +5,7 @@ course: brand-ai · B · Using AI to Build a Brand
 model: Opus 5.5
 written: 2026-10-28
 search: off
+intro: Unit B3, written 28–29 Oct 2026 by Opus 5.5 in its own context, search off (search used only to confirm sources, quotations and venues); fresh check by Fable 5.1 in a separate context: fix, 1 error, 4 should-fix, 9 minor, all applied. Deliverable: the prompt library, ten templates for his recurring tasks, each with a worked example that can be pasted as it stands; the examples repeat their template's lines on purpose, which is most of the unit's length. Known gaps, from the writer's unsure list: Anthropic's 'up to 30 percent' figure for putting the question last publishes no method; the multi-turn and negation studies tested models from 2022 to 2025, none current; the contrastive-examples evidence is a preprint; the model-specific guides are written for the API, and carrying them into claude.ai chat is the writer's inference.
 ---
 
 # B3 · Prompting that holds up

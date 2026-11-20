@@ -17,6 +17,7 @@ Links to files point at the file in the repo on GitHub (the repo is private: the
 The site's Changelog page stays the cross-course record.
 """
 import calendar, datetime, html, json, pathlib, re, subprocess
+import pack   # S-DEC2: a markdown course's data file, for the footer
 
 e = html.escape
 KIT = pathlib.Path(__file__).resolve().parent
@@ -456,5 +457,5 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
   {credits_section(m.get('pages', {}), ctx)}
   {method_section('markdown', md_inline)}
   {sources_section('markdown', md_blocks, c.get('sourcing_part'))}
-  {footer([f'<code>courses/{e(slug)}/</code> front matter', f'<code>audits/{e(slug)}/</code>', gh(rel(REPO / c['data'])) + ' (AUDIT_LOG, STATUS, DONE_ROWS)', gh('docs/method.md'), gh('docs/sourcing-standard.md')])}'''
+  {footer([f'<code>courses/{e(slug)}/</code> front matter', f'<code>audits/{e(slug)}/</code>', gh(rel(REPO / pack.source(c))) + ' (AUDIT_LOG, STATUS, DONE_ROWS)', gh('docs/method.md'), gh('docs/sourcing-standard.md')])}'''
     return panel(f'{ctx}-built', ctx, col, label, body)

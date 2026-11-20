@@ -14,7 +14,7 @@ A5 done 28 Oct 2026: the Brand + AI units are read from the vault, `courses/bran
 
 A4 done 28 Oct 2026: every course has a generated "How it was built" page (`#greece-built`, `#rome-built`, `#brand-a-built`, `#brand-b-built`; `kit/howbuilt.py`).
 
-A3 done 28 Oct 2026: the Brand + AI courses are read in Academy (`#brand-a`, `#brand-b`; each unit at `#read-<code>`, the superseded research at `#read-audience-growth`), built by `kit/build.py` through `kit/mdcourse.py` from `gen/data/brand-ai/hub.py`. The Brand + AI hub artifact and the Audience Growth artifact are retired.
+A3 done 28 Oct 2026: the Brand + AI courses are read in Academy (`#brand-a`, `#brand-b`; each unit at `#read-<code>`, the superseded research at `#read-audience-growth`), built by `kit/build.py` through `kit/mdcourse.py` from `vault/brand-ai/course.toml` (its `[pack]`, read by `kit/pack.py`). The Brand + AI hub artifact and the Audience Growth artifact are retired.
 
 Retired 28 October 2026 (deleted): the standalone Hellas Syllabus and Roma Syllabus artifacts, and the three stray draft pages (r-3.2, r-3.3, r-11.6). The site's `#syllabus` and `#rome-syllabus` panels are the only published syllabi; `kit/greek-syllabus.html` and `kit/roman-syllabus.html` remain as build inputs.
 

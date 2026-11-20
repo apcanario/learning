@@ -36,6 +36,7 @@ def index_text():
 sys.path.insert(0, str(KIT))
 from courses import HISTORY, MARKDOWN          # noqa: E402
 from howbuilt import front, plus_months        # noqa: E402
+import pack                                    # noqa: E402
 
 MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 ALIAS = {'gen/': 'generator/', 'vault/': 'courses/'}
@@ -161,8 +162,7 @@ def markdown(c, secs, fails, stale_want):
     head = c['short']
     if head not in secs:
         return fails.append(f'no "## {head}" section')
-    spec = importlib.util.spec_from_file_location('ix_' + c['id'], REPO / c['data'])
-    d = importlib.util.module_from_spec(spec); spec.loader.exec_module(d)
+    d = pack.load(c)                    # S-DEC2: the course's pack or its old hub.py
     units = {u[0]: (sc['key'], u[1]) for sc in d.COURSES for u in sc['units']}
     order = {o[0]: o for o in d.ORDER}
     vault = {}

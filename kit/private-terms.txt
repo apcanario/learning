@@ -33,7 +33,7 @@ warn: Portugal
 warn: Portuguese
 warn: his setup
 # S-SCE0 (19 Nov 2026): the owner's employer and its product names, one per "employer:" line. On the pages of a course with
-# dated_lists=True in kit/courses.py (supply-chain-execution) each fails anywhere but inside a dated analyst or filing list
+# dated_lists = true in its courses/<id>/course.toml (supply-chain-execution) each fails anywhere but inside a dated analyst or filing list
 # (kit/private_terms.py, dated_lines); every other public course is checked by the plain lines above, unchanged. The repo
 # held no product name of the employer on 19 Nov 2026: add each as its own "employer:" line.
 # Row P-SCE11 of docs/BACKLOG.md asks Pedro for them; until then the course is gated only on the employer's own name.
