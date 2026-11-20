@@ -165,12 +165,14 @@ def serialise(chs, css):
     return out
 
 
-def write(name, ed, courses, md_units):
+def write(name, ed, courses, md_units, brand):
+    """brand: the edition's brand dict (S-DEC3; brands/<name>.toml): its `name` is the creator and the cover's line,
+    its `id_base` the identifier's namespace."""
     chs = chapters(courses, md_units)
     css = stylesheet()
     xs = serialise(chs, css)
     path = R / 'editions' / f'{name}.epub'
-    uid = 'urn:uuid:' + str(uuid.uuid5(uuid.NAMESPACE_URL, f'https://apcanario.github.io/academy/#{name}'))
+    uid = 'urn:uuid:' + str(uuid.uuid5(uuid.NAMESPACE_URL, f'{brand["id_base"]}#{name}'))
     now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     title = ed['title']
     fonts = sorted(f.name for f in (R / 'fonts').glob('*.woff2'))
@@ -194,7 +196,7 @@ def write(name, ed, courses, md_units):
             for un, us in units) + '</ol></li>' for cn, units in tree) + '</ol>'
     nav = xhtml('Contents', f'<nav epub:type="toc" id="toc"><h1>Contents</h1>{nav_ol}</nav>')
     words = sum(len(re.sub(r'<[^>]+>', ' ', h).split()) for *_, h in chs)
-    cover = xhtml(title, f'<p class="eyebrow">Academy · edition</p><h1>{html.escape(title)}</h1>'
+    cover = xhtml(title, f'<p class="eyebrow">{html.escape(brand["name"])} · edition</p><h1>{html.escape(title)}</h1>'
                          f'<p class="scope">{len(chs)} reports, {words:,} words. Each report ends with its sources. Built {now[:10]} from the course files by kit/epub.py.</p>')
     items = [('cover', 'cover.xhtml', 'application/xhtml+xml', ''), ('nav', 'nav.xhtml', 'application/xhtml+xml', ' properties="nav"'),
              ('css', 'style.css', 'text/css', '')]
@@ -202,7 +204,7 @@ def write(name, ed, courses, md_units):
     items += [(f'f{k}', f'fonts/{f}', 'font/woff2', '') for k, f in enumerate(fonts)]
     opf = ('<?xml version="1.0" encoding="utf-8"?>\n<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="uid" xml:lang="en-GB">'
            f'<metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="uid">{uid}</dc:identifier><dc:title>{html.escape(title)}</dc:title>'
-           f'<dc:language>en-GB</dc:language><dc:creator>Academy</dc:creator><meta property="dcterms:modified">{now}</meta></metadata>'
+           f'<dc:language>en-GB</dc:language><dc:creator>{html.escape(brand["name"])}</dc:creator><meta property="dcterms:modified">{now}</meta></metadata>'
            '<manifest>' + ''.join(f'<item id="{i}" href="{h}" media-type="{t}"{p}/>' for i, h, t, p in items) + '</manifest>'
            '<spine><itemref idref="cover"/><itemref idref="nav"/>' + ''.join(f'<itemref idref="c{k}"/>' for k in range(len(chs))) + '</spine></package>\n')
     path.parent.mkdir(parents=True, exist_ok=True)

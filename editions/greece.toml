@@ -4,12 +4,16 @@
 # the Figure kinds page) and 'planned' (the planned courses on the home); `site`: the folder build.py writes, relative
 # to kit/. `python3 kit/build.py --edition <name>` builds one; the full Academy is the edition "academy" and the default.
 # kit/courses.py turns `courses` and `omit` into tuples and "all" into None.
+# S-DEC3 (20 Nov 2026): `brand`, the brand file it is built with (brands/<brand>.toml: the site name, copy, rules lines,
+# colours, fonts; required); `artifact`, its claude.ai artifact; `url` and `deploy_remote`, the GitHub Pages address and
+# the public repo kit/deploy.sh <edition> pushes the build to (an edition without `deploy_remote` is not deployed by
+# it); `title`, the page title (deploy.sh checks the built page carries it); optional [[rules]], the edition's own
+# "How every course works" lines in place of the brand's (the brand file says how).
 
 title = "Academy · Greece"
 courses = ["greece"]
 omit = ["changelog", "backlog", "build", "figures", "planned"]
 site = "editions/greece"
+brand = "academy"
 # P80: its own private artifact
 artifact = "https://claude.ai/artifact/M9g881qokC98jC5VEo1Tk3"
-# P80: the edition's own constants where the shared line names a course it does not hold (Brand + AI)
-rules."One unit per chat, built in full." = "Each report is written from its published prompt, in its own chat, with its closing artefact: a ten-question self-test and three ideas to carry forward."

@@ -4,8 +4,17 @@
 # the Figure kinds page) and 'planned' (the planned courses on the home); `site`: the folder build.py writes, relative
 # to kit/. `python3 kit/build.py --edition <name>` builds one; the full Academy is the edition "academy" and the default.
 # kit/courses.py turns `courses` and `omit` into tuples and "all" into None.
+# S-DEC3 (20 Nov 2026): `brand`, the brand file it is built with (brands/<brand>.toml: the site name, copy, rules lines,
+# colours, fonts; required); `artifact`, its claude.ai artifact; `url` and `deploy_remote`, the GitHub Pages address and
+# the public repo kit/deploy.sh <edition> pushes the build to (an edition without `deploy_remote` is not deployed by
+# it); `title`, the page title (deploy.sh checks the built page carries it); optional [[rules]], the edition's own
+# "How every course works" lines in place of the brand's (the brand file says how).
 
 title = "Academy"
 courses = "all"
 omit = []
 site = "academy"
+brand = "academy"
+artifact = "https://claude.ai/artifact/WwmQpUSqAUJvrcmLczppEH"
+url = "https://apcanario.github.io/academy/"
+deploy_remote = "https://github.com/apcanario/academy"

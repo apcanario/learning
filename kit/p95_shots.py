@@ -9,6 +9,9 @@ breath, as verify.py poses it. Every shot is under 8,000 px tall.
 """
 import functools, json, pathlib, sys, threading
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from courses import brand, DEFAULT_EDITION
+THEME_KEY = brand(DEFAULT_EDITION)['storage']['theme']   # S-DEC3: the brand's theme key
 
 R = pathlib.Path(__file__).resolve().parent
 SITE = R / 'academy'
@@ -60,7 +63,7 @@ def main():
                     pg = ctx.new_page()
                     pg.goto(url + '#home'); pg.wait_for_timeout(300)
                     if theme == 'light':
-                        pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                        pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                     for pid, oid in uses.items():
                         pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(900)
                         pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(100)

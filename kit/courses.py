@@ -2,7 +2,10 @@
 
   courses/<id>/course.toml   one course: the dict build.py reads (COURSES)
   catalog.toml               `tracks` (THEMES), `next` (NEXT: the planned history courses), `course_order`, `edition_order`
-  editions/<name>.toml       one edition (EDITIONS[<name>])
+  editions/<name>.toml       one edition (EDITIONS[<name>]); DEFAULT_EDITION is the first in `edition_order`
+  brands/<name>.toml         one brand (BRANDS[<name>]; S-DEC3): the site name, copy, rules lines, storage keys,
+                             tokens and fonts, chosen by an edition's `brand`; brand(edition) returns it
+  catalog.toml `hero`        each track's place on the home hero, taken out of the track into HERO_AT[<track id>]
 
 Adding a course is a folder: courses/<id>/course.toml (and its units). No edit here. A course folder that
 `course_order` does not name comes after the named ones, sorted by id; an edition file `edition_order` does not name
@@ -87,7 +90,7 @@ def _course(path, d):
 
 
 def _edition(path, d):
-    for k in ('title', 'site'):
+    for k in ('title', 'site', 'brand'):
         if k not in d:
             _fail(path, f'no `{k}` (required)')
     if 'courses' in d:
@@ -99,6 +102,26 @@ def _edition(path, d):
             _fail(path, f'courses must be "all" or a list of course ids, not {d["courses"]!r}')
     if 'omit' in d:
         d['omit'] = tuple(d['omit'])
+    if d['brand'] not in BRANDS:
+        _fail(path, f'brand {d["brand"]!r} has no file brands/{d["brand"]}.toml')
+    return d
+
+
+# S-DEC3: the keys a brand file cannot do without (brands/academy.toml says what each is)
+_BRAND_KEYS = ('name', 'mark', 'lede', 'repo', 'id_base', 'fonts_href', 'log_area', 'storage')
+_STORAGE_KEYS = ('theme', 'tab', 'units', 'last', 'section')
+
+
+def _brand(path, d):
+    for k in _BRAND_KEYS:
+        if k not in d:
+            _fail(path, f'no `{k}` (required)')
+    for k in _STORAGE_KEYS:
+        if k not in d['storage']:
+            _fail(path, f'no `storage.{k}` (required)')
+    d.setdefault('tokens', {})
+    d.setdefault('tokens_light', {})
+    d.setdefault('rules', [])
     return d
 
 
@@ -112,7 +135,9 @@ def _ordered(found, order, where):
 
 _CATALOG = _load(_ROOT / 'catalog.toml')
 
-THEMES = [dict(t, **({'planned': _rows(t['planned'])} if 'planned' in t else {})) for t in _CATALOG['tracks']]
+# S-DEC3: a track's `hero` (its place on the home hero) leaves the track's dict for HERO_AT, so THEMES is unchanged
+HERO_AT = {t['id']: tuple(t['hero']) for t in _CATALOG['tracks'] if 'hero' in t}
+THEMES = [dict({k: v for k, v in t.items() if k != 'hero'}, **({'planned': _rows(t['planned'])} if 'planned' in t else {})) for t in _CATALOG['tracks']]
 NEXT = _rows(_CATALOG.get('next', []))
 
 # courses/_template/ and any other folder starting with '_' is not a course
@@ -124,8 +149,16 @@ if len(set(_ids)) != len(_ids):
 for _c in COURSES:
     globals()[_c['id'].upper().replace('-', '_')] = _c
 
+BRANDS = {p.stem: _brand(p, _load(p)) for p in sorted((_ROOT / 'brands').glob('*.toml'))}
+
 _found = {p.stem: p for p in (_ROOT / 'editions').glob('*.toml')}
 EDITIONS = {n: _edition(_found[n], _load(_found[n])) for n in _ordered(_found, _CATALOG.get('edition_order', []), 'edition_order')}
+DEFAULT_EDITION = next(iter(EDITIONS))
+
+
+def brand(edition):
+    """The brand dict an edition is built with (S-DEC3)."""
+    return BRANDS[EDITIONS[edition]['brand']]
 
 HISTORY = [c for c in COURSES if c['family'] == 'history']
 MARKDOWN = [c for c in COURSES if c['family'] == 'markdown']

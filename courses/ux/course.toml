@@ -27,8 +27,6 @@ eyebrow = "USER EXPERIENCE"
 # files). Derived, not typed here: STATUS (from each unit's `written`; [pack.status] only where the typed string
 # differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top changelog row).
 [pack]
-# the data file the How it was built footer names (byte identity until S-DEC3 changes it on purpose)
-source = 'generator/data/ux/hub.py'
 course_note = "Every unit is sourced to the field's standard works, Nielsen Norman Group research or peer-reviewed studies, labels vendor guidance and practice as such, carries its figures as drawings built from the unit's own content, and ends with a shipped deliverable built on the fictional Perqo."
 order_lede = 'One row per unit in writing order. Opus 5.5 writes; a fresh context checks each unit before filing. "Search" means the unit is written with web search on because its facts are current.'
 order_foot = 'The count starts at {start}.'

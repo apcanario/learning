@@ -22,7 +22,7 @@
   function isReport(id){return kindOf[id]==='report';}
   function seqFor(ctx){return ids.filter(function(i){return ctxOf[i]===ctx;});}
   // KEY keeps the last report read in any course (the name predates the second course); LKEY+ctx the last per course.
-  var KEY='hellas-reports-tab', LKEY='pm-last-', UKEY='hellas-units-open';
+  var KEY='__STORE_TAB__', LKEY='__STORE_LAST__', UKEY='__STORE_UNITS__';
   var drawer=document.getElementById('drawer'),backdrop=document.getElementById('backdrop'),menuB=document.getElementById('menuB'),closeB=document.getElementById('closeB'),prevB=document.getElementById('prevB'),nextB=document.getElementById('nextB'),homeB=document.getElementById('homeB'),arrows=document.getElementById('arrows');
   var curU=document.getElementById('curU'),curT=document.getElementById('curT'),cur=document.getElementById('cur');
   var current=null;
@@ -100,7 +100,7 @@
   // reload reopens it there. A link to an id inside the page (the menu, a section's next and previous, a deep link
   // #m54-3, a link into the Sources or "How this unit was made" accordion) shows that section or opens that accordion
   // first, then scrolls to it. "Whole unit" shows every section for search and print; the bar then follows the scroll.
-  var SKEY='pm-sec-';
+  var SKEY='__STORE_SECTION__';
   function stepsOf(p){var r=p&&p.querySelector('.report.steps');return r?[].slice.call(r.children).filter(function(s){return s.classList.contains('sec');}):[];}
   function isWhole(p){var r=p&&p.querySelector('.report.steps');return !!r&&r.classList.contains('whole');}
   function initSteps(p){
@@ -255,7 +255,7 @@
 
   var themeB=document.getElementById('themeB');
   function effTheme(){var d=document.documentElement.getAttribute('data-theme');if(d==='light'||d==='dark')return d;return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}
-  themeB.addEventListener('click',function(){var next=effTheme()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);put('hellas-theme',next);});
+  themeB.addEventListener('click',function(){var next=effTheme()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);put('__STORE_THEME__',next);});
 
   document.addEventListener('click',function(e){
     var bt=e.target.closest&&e.target.closest('.copy');if(!bt||bt.classList.contains('ok'))return;

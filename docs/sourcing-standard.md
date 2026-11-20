@@ -53,7 +53,7 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] The writer leaves `bibliography/<course>/r-<id>.md`: every ancient author and work with passages and the edition or translation relied on where known; every modern work with author, full title, place or journal and year of the edition named.
 - [ ] Web search is used to verify a specific date or contested point the writer is unsure of, not to write from (search flag off).
 
-## Part 4 · User Experience (from the shared preamble of `generator/data/ux/units_data.py`)
+## Part 4 · User Experience (from the shared preamble of `courses/ux/briefs.md`)
 
 - [ ] Every claim that carries a number, a named source, a mechanism or a recommendation is sourced where it is made.
 - [ ] Each source is one of: a standard work of the field cited by author, title, edition and year with the page or chapter the claim is drawn from; a Nielsen Norman Group article or report with author, title, date and URL; peer-reviewed HCI or information-science research with venue and year; platform, standards or vendor documentation labelled as such; a practitioner's article or talk with a named author and date, labelled as practice.
@@ -68,7 +68,7 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
 - [ ] Links are given as links, so the course bibliography can collect them.
 
-## Part 5 · Building a Personal Brand on Instagram and YouTube (from the shared preamble of `generator/data/personal-brand/units_data.py`)
+## Part 5 · Building a Personal Brand on Instagram and YouTube (from the shared preamble of `courses/personal-brand/briefs.md`)
 
 - [ ] Every claim that carries a number, a mechanism or a recommendation is sourced where it is made.
 - [ ] Each source is one of: peer-reviewed work; platform-official documentation or statements; a large-sample vendor dataset, named, with sample size and date; a documented creator case with verifiable numbers.
@@ -76,7 +76,7 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] A claim about growth, formats or metrics says which platform it holds for.
 - [ ] Every claim carried over from a source unit of the private course was re-verified at its source by the writer; nothing rests on the source unit alone.
 - [ ] Nothing about the private course's reader appears, and the unit never refers to the private course or its units (`python3 kit/private_terms.py` prints OK).
-- [ ] Every fact about Mara Venn, the fictional running example, is labelled "(Mara, fictional)" on its first use in the unit, agrees with `generator/data/personal-brand/case-facts.md`, and is never used as evidence for a claim about the world; every benchmark she is set against is sourced.
+- [ ] Every fact about Mara Venn, the fictional running example, is labelled "(Mara, fictional)" on its first use in the unit, agrees with `courses/personal-brand/notes/case-facts.md`, and is never used as evidence for a claim about the world; every benchmark she is set against is sourced.
 - [ ] No country's tax rate or threshold is stated as the reader's; an amount is in its source's currency with its date; a legal point is a question with the primary source to open for the EU, the UK and the US, and the unit says it is information, not legal or tax advice.
 - [ ] No uncited figures; no invented handles, names, studies or numbers (Mara's labelled facts apart); a claim that cannot be sourced is said to be unsourced and is left out of the deliverable.
 - [ ] Where the unit's search flag is on, every fact that can change (platform rules and thresholds, features, prices, published benchmarks) carries the date it was checked.
@@ -84,7 +84,7 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
 - [ ] Links are given as links, so the course bibliography can collect them.
 
-## Part 6 · Building with AI (from the shared preamble of `generator/data/building-with-ai/units_data.py`)
+## Part 6 · Building with AI (from the shared preamble of `courses/building-with-ai/briefs.md`)
 
 - [ ] Every claim that carries a number, a mechanism or a recommendation is sourced where it is made.
 - [ ] Each source is one of: peer-reviewed work; a preprint, labelled as one; vendor documentation or statements, labelled as vendor and dated; a named practitioner's own post, talk or repository, labelled as practice; an independent benchmark with its version and date.
@@ -94,13 +94,13 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] The body ends with a section "On other tools" that says which claims are specific to Claude and cites the other vendors' own documentation for each equivalent, or says none was found.
 - [ ] Every claim carried over from a source unit of the private course was re-verified at its source by the writer; nothing rests on the source unit alone.
 - [ ] Nothing about the private course's reader appears, and the unit never refers to the private course or its units (`python3 kit/private_terms.py` prints OK).
-- [ ] Every fact about the Academy case is in `generator/data/building-with-ai/case-academy.md`, is cited to its section, is labelled "(Academy case)" on first use and as an anecdote, and is never the only support for a general claim.
+- [ ] Every fact about the Academy case is in `courses/building-with-ai/notes/case-academy.md`, is cited to its section, is labelled "(Academy case)" on first use and as an anecdote, and is never the only support for a general claim.
 - [ ] No uncited figures; no invented names, studies, quotations or numbers; a claim that cannot be sourced is said to be unsourced and is left out of the deliverable.
 - [ ] The deliverable is built in full on the case (or on a neutral example whose invented content is labelled) and then given as a template whose blanks say what goes in them.
 - [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
 - [ ] Links are given as links, so the course bibliography can collect them.
 
-## Part 7 · Sport Psychology for Coaches (from the shared preamble of `generator/data/sport-psychology/units_data.py`)
+## Part 7 · Sport Psychology for Coaches (from the shared preamble of `courses/sport-psychology/briefs.md`)
 
 - [ ] Every claim that carries a number, a mechanism or a recommendation is sourced where it is made.
 - [ ] Each source is one of: a consensus or position statement of the IOC, ISSP, FEPSAC, AASP, AAP, ACSM or a national body of the same kind, labelled as consensus; a systematic review or meta-analysis; a peer-reviewed primary study; a standard textbook or handbook cited by edition and chapter; for safeguarding and rules, the issuing body's own page, dated.

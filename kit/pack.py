@@ -1,5 +1,5 @@
 """A markdown course's pack: the loader of a markdown course's data (S-DEC2, 20 Nov 2026; docs/decoupling.md §4), which
-replaced generator/data/<slug>/hub.py. kit/build.py, kit/verify.py, kit/howbuilt.py, kit/index_check.py, kit/next_prompt.py,
+replaced the old generator's per-course hub.py (S-DEC2). kit/build.py, kit/verify.py, kit/howbuilt.py, kit/index_check.py, kit/next_prompt.py,
 kit/thin.py and kit/private_terms.py read a markdown course's data through load(c), data_dir(c) and files(c) here, never by path.
 
   load(c)       an object with the attribute names hub.py had (COURSES, PRE, AIMS, READINGS, ORDER, STATUS, NEXT_UNIT,
@@ -26,8 +26,9 @@ The pack (one folder, no Python):
 The `[pack]` table (every key optional unless marked):
 
   [pack]
-  source = "generator/data/<slug>/hub.py"   the path the How it was built footer names, where it is not course.toml
-                                            (the moved courses keep their old hub.py's path: byte identity until S-DEC3)
+  source = "courses/<slug>/other.toml"     the path the How it was built footer names, where it is not the course's
+                                            `data` file (none sets it since S-DEC3, 20 Nov 2026: every footer names
+                                            courses/<slug>/course.toml)
   course_note = "..."                       any plain string key becomes the attribute of its name upper-cased:
   order_lede = "..."                        COURSE_NOTE, ORDER_LEDE, ORDER_FOOT, BIB_NOTE, BRIEF_LABEL, BUILD_LEDE,
   order_foot = "..."                        LEARN_LEDE, TITLE, BAR, ... (a key repeating DEFAULTS below is left out)

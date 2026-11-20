@@ -16,6 +16,9 @@ import html as H, json, pathlib, re
 import markdown
 import viz
 
+# S-DEC3: the site name (the edition's brand, brands/<name>.toml `name`); build.py sets it before building a course
+SITE_NAME = None
+
 # P95 (8 Nov 2026) · the object reliefs: design/outlines/uses.json maps a reading page (its panel id: a history report's,
 # m61 or rm14, or a markdown unit's, read-a5) to an outline of the library (outlines.json, each outline's lines in
 # <id>.json, written by relief.py); `reading` shows it under the page's scope line, before the section bar, with its
@@ -493,7 +496,7 @@ def build(m, crumbs, theme, pill_next, chev, kit):
             end = end.replace('<span class="at">Sources</span>', f'<span class="at" id="{src_id}">Sources</span>', 1)
         P.append(panel(r['id'], 'report', f'''
   <header class="phead">
-    {crumbs(('Academy', 'home'), course_crumb, (code or r['name'], None))}
+    {crumbs((SITE_NAME, 'home'), course_crumb, (code or r['name'], None))}
     {(eyebrow((ulabel, col), (code, None)) if code else eyebrow((ulabel, col))).replace('</div>', ' ' + pills + '</div>') if pills else (eyebrow((ulabel, col), (code, None)) if code else eyebrow((ulabel, col)))}
     <h1>{e(r['title'])}</h1>
     {head}
@@ -530,7 +533,7 @@ def build(m, crumbs, theme, pill_next, chev, kit):
     P.insert(0, panel(ctx, 'course', f'''
   <header class="hero has-topo">
     {layer}
-    {crumbs(('Academy', 'home'), (t['name'], 'track-' + m['theme']), (course_crumb[0], None))}
+    {crumbs((SITE_NAME, 'home'), (t['name'], 'track-' + m['theme']), (course_crumb[0], None))}
     {eyebrow((f'COURSE {key}', col), (c['short'], None), (('COMPLETE', 'var(--teal)') if m['status'] == 'available' else (m['status'].upper(), 'var(--gold)')))}
     <h1>{e(m['name'])}</h1>
     <p class="lede">{sc['intro']}</p>
@@ -543,7 +546,7 @@ def build(m, crumbs, theme, pill_next, chev, kit):
   {frame}
   <a class="hbtn alt wide" href="#{ctx}-build" data-target="{ctx}-build"><span>How it is built</span><b>Method, build order, briefs, sources, changelog.</b></a>
   <a class="hbtn alt wide" href="#{ctx}-built" data-target="{ctx}-built"><span>How it was built</span><b>The model behind each unit, every check with its verdict, the flags still open.</b></a>
-  <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>Back to every course.</b></a>''', t=m['short'], u=f'COURSE {key}', cls='home', split='home'))   # P93: fetched, as a history course home is (P22), so its tiles and topography never weigh on the shell
+  <a class="hbtn alt wide" href="#home" data-target="home"><span>{H.escape(SITE_NAME)}</span><b>Back to every course.</b></a>''', t=m['short'], u=f'COURSE {key}', cls='home', split='home'))   # P93: fetched, as a history course home is (P22), so its tiles and topography never weigh on the shell
 
 
     # ---- How it is built ----------------------------------------------------------------------
@@ -553,7 +556,7 @@ def build(m, crumbs, theme, pill_next, chev, kit):
              (f'{ctx}-bibliography', 'BIB', 'Bibliography', f'{len(biblio)} sources'), (f'{ctx}-changelog', 'LOG', 'Changelog', d.VERSION.split(' · ')[0]),
              (f'{ctx}-built', '✓', 'How it was built', 'models, checks, flags')]   # the page itself is howbuilt.py's (A4)
     prow = ''.join(f'<a class="hrow" href="#{h}" data-target="{h}" style="--c:{col}"><span class="n">{n}</span><span class="t">{tt}<small>{e(s)}</small></span></a>' for h, n, tt, s in pages)
-    bc = (('Academy', 'home'), course_crumb)
+    bc = ((SITE_NAME, 'home'), course_crumb)
     P.append(panel(bid, 'build', f'''
   <header class="hero">{crumbs(*bc, ('How it is built', None))}{eyebrow((ulabel, col), ('HOW IT IS BUILT', None))}<h1>How the course gets made</h1><p class="lede">{d.BUILD_LEDE}</p></header>
   {d.LEARNING_NOTE}<section class="howto" style="--hc:{col}"><h2>Build pages</h2><div class="hrows">{prow}</div></section>
@@ -603,7 +606,7 @@ def build(m, crumbs, theme, pill_next, chev, kit):
     names = {x['key']: x['name'] for x in courses}
     cl = [(dt, tt.format(A=names.get('A', ''), B=names.get('B', ''))) for dt, tt in d.CHANGELOG]
     P.append(panel(f'{ctx}-changelog', 'build', f'''
-  <header class="hero">{crumbs(*bc, ('Changelog', None))}{eyebrow((ulabel, col), ('CHANGELOG', None))}<h1>What changed, when</h1><p class="lede">The course's own record, newest first; the site's changelog is on the Academy home.</p></header>
+  <header class="hero">{crumbs(*bc, ('Changelog', None))}{eyebrow((ulabel, col), ('CHANGELOG', None))}<h1>What changed, when</h1><p class="lede">The course's own record, newest first; the site's changelog is on the {H.escape(SITE_NAME)} home.</p></header>
   {logrows(cl)}''', t='Changelog', u=ulabel))
 
     # ---- drawer -------------------------------------------------------------------------------
@@ -622,7 +625,7 @@ def build(m, crumbs, theme, pill_next, chev, kit):
     def group(gid, name, cnt, body, open_):
         return (f'<div class="dunit closed" data-unit="{ctx}:{gid}"{" data-open" if open_ else ""} data-ulabel="{ulabel}" style="--c:{col}"><button class="duh" type="button" aria-expanded="false"><span class="ut">{name}</span><span class="cnt">{cnt}</span>{chev}</button><div class="ditems">{body}</div></div>')
     nav = (f'<nav class="dlist" data-navctx="{ctx}" aria-label="{e(m["short"])} course" hidden>'
-           f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">Academy</span></a>'
+           f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">{H.escape(SITE_NAME)}</span></a>'
            f'<a class="ditem dhome" href="#{ctx}" data-target="{ctx}"><span class="n">⌂</span><span class="t">{e(m["short"])}: course home</span></a></div>'
            + group('units', 'Units', f'{m["nwritten"]}/{m["nunits"]}', units, True)
            + group('build', 'How it is built', str(len(pages)), bitems, False) + '</nav>')

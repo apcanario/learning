@@ -133,12 +133,17 @@ import pack   # S-DEC2: a markdown course's data (its pack)
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
 import private_terms   # G-0: the public courses carry no private term
 import rot_check   # P30-F11, P30-F16: the theme copy, retired instructions, staleness dates due
-from courses import COURSES, THEMES, EDITIONS, NEXT
-# P70: --edition checks an edition's folder the same way, over the courses and pages it holds (default: the full Academy)
-EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else 'academy'
+from courses import COURSES, THEMES, EDITIONS, NEXT, DEFAULT_EDITION, brand
+# P70: --edition checks an edition's folder the same way, over the courses and pages it holds (default: the full site,
+# the first edition in catalog.toml `edition_order`)
+EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else DEFAULT_EDITION
 if EDITION not in EDITIONS:
     raise SystemExit(f'no edition {EDITION!r} in courses.py EDITIONS: {", ".join(EDITIONS)}')
 ED = EDITIONS[EDITION]
+# S-DEC3: the edition's brand (brands/<name>.toml): the site name the pages carry and the theme's localStorage key
+SITE_NAME = brand(EDITION)['name']
+THEME_KEY = brand(EDITION)['storage']['theme']
+SITE_JSON = json.dumps(SITE_NAME)
 OMIT = set(ED['omit'])
 if ED['courses'] is not None:
     COURSES = [c for c in COURSES if c['id'] in ED['courses']]
@@ -378,7 +383,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
   const copy = hero.querySelector(':scope > .hcopy');
   out.copy = copy ? [...copy.children].map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ') : '';
   if (out.copy !== 'h1. p.harea p.harea-all p.lede a.hnew') bad.push(`the hero's copy runs ${out.copy}, expected the headline, the area line, the static line, the lede and the link`);
-  const h1 = copy && copy.querySelector(':scope > h1'); if (!h1 || h1.textContent !== 'Academy') bad.push('the headline is not "Academy"');
+  const h1 = copy && copy.querySelector(':scope > h1'); if (!h1 || h1.textContent !== __SITE__) bad.push('the headline is not the site name ' + __SITE__);
   // the area line: the four names, in order, each in its tone, hidden from a screen reader; the static line for one
   const al = copy && copy.querySelector('.harea'), st = copy && copy.querySelector('.harea-all');
   const probe = document.createElement('span'); hero.appendChild(probe);
@@ -496,6 +501,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
     return [t.className && typeof t.className === 'string' ? t.className : (t.getAttribute('class') || t.tagName), props, a.playState, !!t.closest('.course'), a.animationName]; });
   return out;
 }'''
+HOME_JS = HOME_JS.replace('__SITE__', SITE_JSON)   # S-DEC3: the brand's site name, as a JS string
 MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 # P92: the hero's texts against the pixels actually under them (the contour lines, the page), in the theme in use: each
@@ -569,7 +575,7 @@ def check_home(pg, label, fails, expect, motion=False):
     if r.get('staticAria') is not None: fails.append(f'home {label}: the static line is hidden from a screen reader ({r.get("staticAria")})')
     if motion and (not r.get('lineShown') or r.get('staticShown')): fails.append(f'home {label}: with motion allowed the cycling line shows {r.get("lineShown")} and the static line {r.get("staticShown")}, expected the cycling line only')
     if not motion and (r.get('lineShown') or not r.get('staticShown')): fails.append(f'home {label}: under reduced motion the cycling line shows {r.get("lineShown")} and the static line {r.get("staticShown")}, expected the static line only')
-    if r.get('lede') != 'Every self-study course in one place. Pick up where you left off.': fails.append(f'home {label}: the lede reads {r.get("lede")!r}')
+    if r.get('lede') != brand(EDITION)['lede']: fails.append(f'home {label}: the lede reads {r.get("lede")!r}')
     nw = expect['newest']
     want_link = f"What's new · {nw['code']} · {int(nw['date'][8:])} {MON3[int(nw['date'][5:7]) - 1]}" if nw else None
     if r.get('link') and r['link'][0] != want_link: fails.append(f'home {label}: the What\'s new link reads {r["link"][0]!r}, expected {want_link!r}')
@@ -926,7 +932,7 @@ NEW_JS = r'''() => {
   const p = document.getElementById('new'), bad = [], out = {bad};
   const resolves = t => !!document.getElementById(t) || [...document.querySelectorAll('.panel[data-anchors]')].some(q => (' ' + q.getAttribute('data-anchors') + ' ').includes(' ' + t + ' '));
   const crumbs = p.querySelector('.hero .crumbs'), cr = crumbs ? [...crumbs.children].filter(e => !e.classList.contains('sep')).map(e => e.textContent).join(' › ') : '';
-  if (cr !== "Academy › What's new") bad.push(`the breadcrumbs read "${cr}", not Academy › What's new`);
+  if (cr !== __SITE__ + " › What's new") bad.push(`the breadcrumbs read "${cr}", not ${__SITE__} › What's new`);
   if (!p.querySelector('.hero h1') || p.querySelector('.hero h1').textContent !== "What's new") bad.push('no "What\'s new" title');
   const days = [...p.querySelectorAll(':scope > section.newday')];
   out.days = days.map(d => d.getAttribute('data-day'));
@@ -943,6 +949,7 @@ NEW_JS = r'''() => {
   const de = document.documentElement; if (de.scrollWidth > de.clientWidth) bad.push(`the page scrolls sideways (${de.scrollWidth} in ${de.clientWidth} px)`);
   return out;
 }'''
+NEW_JS = NEW_JS.replace('__SITE__', SITE_JSON)   # S-DEC3: the brand's site name, as a JS string
 
 def check_new(pg, label, fails, expect):
     """P91: What's new against home_expect()'s rows: each once, in order, grouped by day, approximate dates marked."""
@@ -1007,7 +1014,7 @@ CONTRAST_JS = r'''(scope) => {
 def check_contrast(pg, fails):
     """P90: the light theme's contrast on the home, the drawer, the changelog and backlog, each course home and the
     first reading page of each course, at phone width, every <details> open."""
-    pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')"); pg.wait_for_timeout(50)
+    pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')"); pg.wait_for_timeout(50)
     firsts = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => {
       const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
     homes = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"course\"]')].map(p => p.id)")
@@ -1027,7 +1034,7 @@ def check_contrast(pg, fails):
     if r['min'] < worst[0]: worst = [r['min'], f'drawer {r["minAt"]}']
     if r['nbad']: fails.append(f'contrast light drawer: {r["nbad"]} texts under 4.5:1: ' + '; '.join(r['bad']))
     pg.click('#closeB'); pg.wait_for_timeout(250)
-    pg.evaluate("localStorage.removeItem('hellas-theme'); document.documentElement.removeAttribute('data-theme')")
+    pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
     print(f'contrast (light, phone): {total} texts on {len(pids)} panels and the drawer, lowest {worst[0]}:1 ({worst[1]})')
 
 SHOT_H = 2600
@@ -1163,7 +1170,7 @@ def check_files(fails):
     for h in heads:                                          # P24 (16 Nov 2026): every How-it-was-built page says its audit files are private
         m = re.search(r' id="([a-z0-9-]+-built)"[^>]* data-src="([^"]+)"', h)
         if m and (SITE / m.group(2)).exists():
-            pg = (SITE / m.group(2)).read_text(); i, j = pg.find('data-private=""'), pg.find('https://github.com/')
+            pg = (SITE / m.group(2)).read_text(); i, j = pg.find('data-private=""'), pg.find(brand(EDITION)['repo'] + '/')   # S-DEC3: the brand's repo link base
             if i < 0 or (j >= 0 and j < i):
                 fails.append(f'{m.group(1)}: no line saying its audit files are private above its first file link (P24)')
     full = [h for h, body in stubs if body.strip()]
@@ -1178,10 +1185,10 @@ def check_files(fails):
     by = {}
     for x in on_disk:
         by.setdefault(x.split('/')[0] if '/' in x else '.', []).append((len((SITE / x).read_bytes()), x))   # V1: root pages under ./
-    table = re.search(r'<!-- sizes:start -->\n(.*?)<!-- sizes:end -->', (R / 'README.md').read_text(), re.S) if EDITION == 'academy' else True
+    table = re.search(r'<!-- sizes:start -->\n(.*?)<!-- sizes:end -->', (R / 'README.md').read_text(), re.S) if EDITION == DEFAULT_EDITION else True
     kb = lambda n: f'{n / 1024:,.0f} KB' if n < 1024 * 1024 else f'{n / 1024 / 1024:.2f} MB'
     if not table: fails.append('README.md has no size table (sizes:start/sizes:end)')
-    elif table is True: print(f'edition {EDITION}: no size table (README.md keeps the full Academy\'s)')
+    elif table is True: print(f'edition {EDITION}: no size table (README.md keeps the default edition\'s)')
     else:
         rows = {r.split(' | ')[0].strip('| '): r for r in table.group(1).splitlines()}
         want = {'Shell (`index.html`)': f'| 1 | {kb(size)} | {kb(size)} |'}
@@ -1576,10 +1583,10 @@ def check_seps(br, fails):
         ctx, pg, _ = new_page(None, br, errs, f'seps {name}', w, h, mobile, motion=True)
         ids = pg.eval_on_selector_all('.panel[data-kind="report"]', 'ps => ps.map(p => p.id)')
         for pid in ids:
-            pg.evaluate("localStorage.removeItem('hellas-theme'); document.documentElement.removeAttribute('data-theme')")
+            pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
             pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
             for theme in ('dark', 'light'):
-                if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                if theme == 'light': pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                 for motion in (False, True):
                     pg.emulate_media(reduced_motion='no-preference' if motion else 'reduce'); pg.wait_for_timeout(20)
                     r = pg.evaluate(SEP_JS, [pid, list(POSES), CYCLE, BTIME, motion])
@@ -1747,10 +1754,10 @@ def check_reliefs(br, fails):
         for pid, oid in mapped.items():
             o = lb[oid]
             want = dict(id=oid, caption=mdcourse.relief_caption(o), credit=o['credit'], kw=o['keywords'], lic=o['licence_url'], licence=o['licence'])
-            pg.evaluate("localStorage.removeItem('hellas-theme'); document.documentElement.removeAttribute('data-theme')")
+            pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
             pg.evaluate(f"location.hash = '{pid}'"); ready(pg)
             for theme in ('dark', 'light'):
-                if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                if theme == 'light': pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                 for motion in (False, True):
                     pg.emulate_media(reduced_motion='no-preference' if motion else 'reduce'); pg.wait_for_timeout(20)
                     r = pg.evaluate(REL_JS, [pid, list(POSES), CYCLE, BTIME, motion, want])
@@ -2182,7 +2189,7 @@ def check_figures(br, fails):
     ctx.close()
 
 # S-PAGES (15 Nov 2026) · the Backlog and Changelog pages: a plain overview by area, rendered from docs/site-log.md alone
-SL_AREAS = ['Mythology', 'Marketing', 'AI', 'UX', 'Sports', 'Supply Chain', 'Academy']   # S-SP0: course SP; S-SPORTS (19 Nov 2026): Coaching renamed Sports; S-SCE0: course SCE
+SL_AREAS = ['Mythology', 'Marketing', 'AI', 'UX', 'Sports', 'Supply Chain', brand(EDITION)['log_area'][0]]   # S-DEC3: the site's own area from the brand   # S-SP0: course SP; S-SPORTS (19 Nov 2026): Coaching renamed Sports; S-SCE0: course SCE
 SL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('desktop', 1280, 800, False)]
 # the engine's words, which the two pages leave out (a unit's own title, such as "Agents" or "Prompting", is content)
 SL_PLAIN = re.compile(r'\b(Opus|Fable|Sonnet|Haiku|subagents?|(?:fresh|isolated|writer|checker|filer|applier|correction) agents?|'
@@ -2242,7 +2249,7 @@ def check_site_log(br, fails):
             errs = []
             ctx, pg, _ = new_page(None, br, errs, name, w, h, mobile)
             if theme == 'light':
-                pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
             where = f'{w} px {theme}'
             for pid in [x for x in ('backlog', 'changelog') if x not in OMIT]:
                 pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(80)
@@ -2301,9 +2308,9 @@ def main():
         if lay != [390, 1]: fails.append(f'phone layout {lay}: expected [390, 1] (missing viewport tag?)')
         else: print('phone layout: 390 px at scale 1')
         check_panels(pg, 'phone', fails)
-        pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')"); pg.wait_for_timeout(50)
+        pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')"); pg.wait_for_timeout(50)
         check_panels(pg, 'phone light', fails)
-        pg.evaluate("localStorage.removeItem('hellas-theme'); document.documentElement.removeAttribute('data-theme')")
+        pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
         # drawer in each context, every unit expanded
         for pid in ['home', 'greece', 'rome', 'brand-a', 'brand-b']:
             if not pg.evaluate(f"!!document.getElementById('{pid}')"): continue   # P70: not in this edition
@@ -2321,7 +2328,7 @@ def main():
         EXPECT = home_expect()
         check_home(pg, 'phone', fails, EXPECT)
         check_new(pg, 'phone', fails, EXPECT)
-        pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+        pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
         check_home(pg, 'phone light', fails, EXPECT)
         check_contrast(pg, fails)
         pg.evaluate('localStorage.clear()'); pg.goto(URL + '#home'); pg.reload(); pg.wait_for_timeout(300)
@@ -2341,7 +2348,7 @@ def main():
         step('home', dict(id='home', nav='root', u='HOME', arrows=False))
         if 'changelog' not in OMIT:
             pg.click('#home a.hbtn[href="#changelog"]'); pg.wait_for_timeout(80)
-            step('changelog', dict(id='changelog', nav='root', u='ACADEMY', t='Changelog', arrows=False))
+            step('changelog', dict(id='changelog', nav='root', u=SITE_NAME.upper(), t='Changelog', arrows=False))
             pg.click('#homeB'); pg.wait_for_timeout(80)
         else:   # P70: an edition without the changelog has no button to it and no panel
             if pg.evaluate("!!document.querySelector('a[href=\"#changelog\"], #changelog, a[href=\"#backlog\"], #backlog')"): fails.append(f'edition {EDITION}: a changelog or backlog page or link is built')
@@ -2393,7 +2400,7 @@ def main():
             step('rome home resumes rome', dict(id='rome', cont=lambda c: c.startswith('Continue ') and 'Greece' not in c and c != '(hidden)'))
         pg.click('#menuB'); pg.wait_for_timeout(250)
         dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
-        if rome_reps and dr[:3] != ['Academy', 'Rome: course home', 'Syllabus and prompts']: fails.append(f'rome drawer top: {dr}')
+        if rome_reps and dr[:3] != [SITE_NAME, 'Rome: course home', 'Syllabus and prompts']: fails.append(f'rome drawer top: {dr}')
         pg.click('#closeB'); pg.wait_for_timeout(200)
         # the Brand + AI courses (A under Marketing, B under Technology, A3): each its own drawer context with a Units group
         # and a "How it is built" group; written units open reading pages inside the site (never a link out); the reading
@@ -2428,7 +2435,7 @@ def main():
             step(f'{bid} home resumes', dict(id=bid, cont=lambda c: c.startswith('Continue ') and c != '(hidden)'))
             pg.click('#menuB'); pg.wait_for_timeout(250)
             dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
-            if dr[:2] != ['Academy', f'{short}: course home']: fails.append(f'{bid} drawer top: {dr}')
+            if dr[:2] != [SITE_NAME, f'{short}: course home']: fails.append(f'{bid} drawer top: {dr}')
             pg.click('#closeB'); pg.wait_for_timeout(200)
         # the root drawer: Home, Changelog, Backlog, then a collapsible group per track, open by default
         pg.click('#homeB'); pg.wait_for_timeout(80)
@@ -2457,7 +2464,7 @@ def main():
         # the backlog page (S-PAGES): the overall order, then the areas, from docs/site-log.md
         if 'backlog' not in OMIT:
             pg.evaluate("location.hash = 'backlog'"); pg.wait_for_timeout(50)
-            step('backlog', dict(id='backlog', nav='root', u='ACADEMY', t='Backlog', arrows=False))
+            step('backlog', dict(id='backlog', nav='root', u=SITE_NAME.upper(), t='Backlog', arrows=False))
             nt = pg.evaluate("document.querySelectorAll('#backlog [data-sl=\"order\"] table.sl').length")
             if nt != 1: fails.append(f'backlog page: {nt} order tables, expected one (S-PAGES; check_site_log checks the rest)')
         # the home lists every live course under its track, in courses.py order (history courses, then markdown courses)
@@ -2561,7 +2568,7 @@ def main():
             ctx, pg, _ = new_page(p, br, errors, name, w, h, mobile)
             check_home(pg, name, fails, EXPECT)
             check_new(pg, name, fails, EXPECT)
-            pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+            pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
             check_home(pg, name + ' light', fails, EXPECT)
             if name == 'desktop':
                 for sel in ('a.course.live[data-target="greece"]', 'a.course.live[data-target^="brand-"]', 'a.course.live[data-target^="ux-"]', 'a.hnew'):   # P92: a tile of each family and the quiet link
@@ -2586,7 +2593,7 @@ def main():
             ctx, pg, _ = new_page(p, br, errors, name + ' pages', w, h, mobile)
             reads = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => { const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
             for theme in ('dark', 'light'):
-                if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                if theme == 'light': pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                 pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(120)
                 pg.evaluate("document.querySelectorAll('#planned-courses').forEach(d => d.open = true)"); pg.wait_for_timeout(60)
                 check_topo(pg, 'home', f'{name} {theme}', fails, EXPECT); check_tiles(pg, 'home', f'{name} {theme}', fails, EXPECT)
@@ -2640,7 +2647,7 @@ def main():
                 if not 2 <= v <= 12: fails.append(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners, outside 2 to 12 px/s (seen, and still slow; Pedro, 5 Nov 2026: \"it could be faster\")")
                 if m0 == m1: fails.append('home phone motion: the layer did not move in 2 s')
             for theme in ('dark', 'light'):
-                if theme == 'light': pg.evaluate("localStorage.setItem('hellas-theme', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                if theme == 'light': pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                 pg.evaluate("location.hash = 'new'"); ready(pg); pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(200)   # the home shown afresh, each drawing at its own phase, before any pose
                 check_topo(pg, 'home', f'{name} motion {theme}', fails, EXPECT, motion=True)
                 check_home(pg, name + (' motion' if theme == 'dark' else ' motion light'), fails, EXPECT, motion=True)
@@ -2665,12 +2672,12 @@ def main():
             for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:   # P91: the home and What's new at 320, 360 and 430 px too
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile)
                 for theme in ('dark', 'light'):
-                    pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
+                    pg.evaluate(f"localStorage.setItem('{THEME_KEY}', '{theme}')")
                     COURSE_SHOTS = ['home', 'new'] + TOPO_PAGES[:-1]   # P93: the home, What's new and every course home at every width
                     for pid in ((COURSE_SHOTS + [x for x in PAGES if x not in COURSE_SHOTS]) if name.startswith('phone3') or name == 'phone430' else COURSE_SHOTS + [x for x in [TAB, rp] + PAGES if x not in COURSE_SHOTS]):
                         pg.evaluate(f"localStorage.removeItem('pm-sec-{pid}')")   # P68: each shot opens on section 1
                         if pid == 'home':   # P90: the home is shot as a fresh visit (P91: nothing on it depends on the visit, but the shot stays clean)
-                            pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')")
+                            pg.evaluate(f"localStorage.clear(); localStorage.setItem('{THEME_KEY}', '{theme}')")
                         pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(250); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(50)
                         if pid == 'home':   # P90: the home whole, to New since and the changelog link at its foot (it is a few screens long)
                             pg.screenshot(path=str(SHOTS / f'{name}-{pid}-{theme}.png'), full_page=True, timeout=120000)
@@ -2702,7 +2709,7 @@ def main():
                 for pid in [x for x in ('home', 'greece', 'ux-ia') if x == 'home' or x in TOPO_PAGES]:
                     sel = '#home .hhome > .topo' if pid == 'home' else f'#{pid} > header.hero > .topo'   # the layer's own frame: from the top bar to the hero's foot, the full width beside the sidebar (the hero's box is the column), the texts on it
                     for theme in ('dark', 'light'):
-                        pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')"); pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(500)
+                        pg.evaluate(f"localStorage.clear(); localStorage.setItem('{THEME_KEY}', '{theme}')"); pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(500)
                         ims, tags = [], []
                         for k, p_ in enumerate(POSES):
                             pose(pg, p_, k * 3000); pg.wait_for_timeout(60)
@@ -2723,7 +2730,7 @@ def main():
             for name, w, h, mobile in (VIEWPORTS if 'figures' not in OMIT else []):
                 ctx, pg, _ = new_page(p, br, [], name, w, h, mobile)
                 for theme in ('dark', 'light'):
-                    pg.evaluate(f"localStorage.setItem('hellas-theme', '{theme}')")
+                    pg.evaluate(f"localStorage.setItem('{THEME_KEY}', '{theme}')")
                     pg.goto(URL + '#viz-examples'); pg.reload(); ready(pg); pg.wait_for_timeout(250)
                     shots = []
                     for k, fig in enumerate(pg.query_selector_all('#viz-examples figure.viz')):

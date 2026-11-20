@@ -1,0 +1,33 @@
+# Edition 'marketing-ai' (S-DEC3, 20 Nov 2026; docs/decoupling.md §6): the two public courses on marketing and on
+# building with AI, under the second brand (brands/workbench.toml), the proof that a brand is one file. The keys are the
+# ones editions/academy.toml describes. Its `url` and `deploy_remote` are placeholders on a reserved domain: deploy.sh
+# is only ever run on it with --dry-run. Its site folder is under kit/editions/, ignored by git like greece's.
+
+title = "Workbench · Marketing and AI"
+courses = ["personal-brand", "building-with-ai"]
+omit = ["changelog", "backlog"]
+site = "editions/marketing-ai"
+brand = "workbench"
+url = "https://example.org/workbench/"
+deploy_remote = "https://example.org/git/workbench-site.git"
+
+# its own "How every course works" lines, in place of the brand's
+[[rules]]
+head = "One reader."
+text = "Each course names its reader in its preamble and is written for that reader, to be read in order, on a phone."
+
+[[rules]]
+head = "Sources first."
+text = "A unit names its sources and says where they disagree; a claim that cannot be sourced is marked unsourced or left out."
+
+[[rules]]
+head = "One unit per chat, built in full."
+text = "Each unit is written from its published brief, in its own chat, and ends with its deliverable built in full."
+
+[[rules]]
+head = "Checked before filing."
+text = "Every unit is checked by a fresh reader that has not seen it written: each cited claim against its source, the deliverable against its brief. The model that wrote each unit is recorded."
+
+[[rules]]
+head = "An open syllabus."
+text = "Every brief is published with its course, so any unit can be regenerated, extended or checked."

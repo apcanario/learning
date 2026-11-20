@@ -1,0 +1,72 @@
+# Brand 'academy' (S-DEC3, 20 Nov 2026; docs/decoupling.md §4): every string, colour and font of the site that is the
+# brand rather than a course, read by kit/courses.py (BRANDS) and chosen by an edition's `brand` key
+# (editions/<name>.toml). kit/ types no brand string: build.py, mdcourse.py, howbuilt.py, viz_examples.py, epub.py and
+# verify.py read these. A new brand is a new file here; every key below is required unless marked optional.
+#
+#   name        the site name: the home's headline and panel title, the root of every breadcrumb trail, the drawer's
+#               back link, the button back to the home, "<name> home" (the home button's label), the root pages' unit
+#               label (upper-cased), the EPUB's creator and cover line
+#   mark        the drawer head's mark (HTML)
+#   lede        the home's lede, under the headline
+#   repo        the repo link base: every "How it was built" page links files at <repo>/blob/<branch>/<path>
+#   id_base     the namespace of the EPUB's identifier (never fetched): uuid5 of <id_base>#<edition>
+#   fonts_href  the stylesheet the shell links for the theme's fonts, written into the href as it stands (& not escaped);
+#               design/theme.css names the families in --sans, --mono, --serif, and a brand that changes them sets
+#               those tokens below
+#   log_area    the area of docs/site-log.md that is the site itself, and what it holds (the Changelog and Backlog
+#               pages: one section per area); an edition that omits both pages does not read the site log
+#   [storage]   the browser's localStorage keys: theme (light or dark), tab (the last report read), units (the drawer's
+#               open groups), last and section (prefixes: + a course, + a page id). A new brand takes its own prefix,
+#               so two sites on one origin keep apart
+#   [tokens]    optional: CSS custom properties appended to the theme after design/theme.css, for both themes
+#               (`sans = '"Inter",system-ui,sans-serif'` writes --sans); [tokens_light] for the light theme only
+#   [[rules]]   "How every course works", the constants, in order: `head` (bold) and `text`. An edition may hold its
+#               own [[rules]] in its file instead. `names`: the course ids the text names; the line is shown in an
+#               edition only if it holds them all, else its first [[rules.alt]] that fits: an alt's `names` must all be
+#               held and, where it gives `families`, every course the edition holds must be of one of them. A line with
+#               nothing that fits stops the build, so no edition shows a line about a course it lacks.
+
+name = "Academy"
+mark = "ACA<span>/</span>DEMY"
+lede = "Every self-study course in one place. Pick up where you left off."
+repo = "https://github.com/apcanario/learning"
+id_base = "https://apcanario.github.io/academy/"
+fonts_href = "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Gentium+Book+Plus&display=swap"
+log_area = ["Academy", "The site and its method"]
+
+[storage]
+theme = "hellas-theme"
+tab = "hellas-reports-tab"
+units = "hellas-units-open"
+last = "pm-last-"
+section = "pm-sec-"
+
+[tokens]
+
+[tokens_light]
+
+[[rules]]
+head = "One reader."
+text = "Every course is written for the same person and read in order, on a phone, with the citations checked."
+
+[[rules]]
+head = "Sources first."
+text = "A unit names its sources and says where they disagree; a claim that cannot be sourced is marked unsourced or left out."
+
+[[rules]]
+head = "One unit per chat, built in full."
+text = "Each unit is written from a published brief or prompt, in its own chat, with its closing artefact: a self-test and carry-forward ideas for the history courses, a shipped deliverable for Brand + AI."
+names = ["brand-ai"]
+
+[[rules.alt]]
+# P80 (1 Nov 2026): the greece edition's line, until S-DEC3 in editions/greece.toml
+text = "Each report is written from its published prompt, in its own chat, with its closing artefact: a ten-question self-test and three ideas to carry forward."
+families = ["history"]
+
+[[rules]]
+head = "Checked before filing."
+text = "Every new unit is checked by a fresh reader that has not seen it written: each cited claim against its source, the deliverable against its brief. A unit written with live search is checked again six months on. The model that wrote each unit is recorded."
+
+[[rules]]
+head = "An open syllabus."
+text = "Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked."

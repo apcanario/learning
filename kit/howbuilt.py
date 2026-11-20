@@ -35,13 +35,16 @@ def _github():
             return subprocess.run(['git', '-C', str(REPO), *a], capture_output=True, text=True, check=True).stdout.strip()
         except Exception:
             return ''
-    url = git('remote', 'get-url', 'origin') or 'https://github.com/apcanario/learning'
+    url = git('remote', 'get-url', 'origin')
     url = re.sub(r'\.git$', '', re.sub(r'^git@github\.com:', 'https://github.com/', url))
     url = re.sub(r'https://[^@/]+@', 'https://', url)
     head = git('symbolic-ref', '--short', 'refs/remotes/origin/HEAD')
     return url, (head.split('/', 1)[1] if '/' in head else 'main')
 
 GH, BRANCH = _github()
+# S-DEC3: the site name and the repo link base come from the edition's brand (brands/<name>.toml `name`, `repo`):
+# build.py sets SITE_NAME and GH before it builds a page; GH from git stays the default for the other tools
+SITE_NAME = None
 
 
 def gh(path, label=None):
@@ -309,7 +312,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
     t = theme[c['theme']]
     body = f'''
   <header class="hero">
-    {crumbs(('Academy', 'home'), (c['short'], c['home_id']), ('How it was built', None))}
+    {crumbs((SITE_NAME, 'home'), (c['short'], c['home_id']), ('How it was built', None))}
     <div class="eyebrow"><span class="u" style="--c:{color}">{c['label']}</span> · <span class="u" style="--c:var(--gold)">HOW IT WAS BUILT</span> · from provenance.json, the reviews and the audits</div>
     <h1>{e(c['short'])}: how it was built</h1>
     <p class="lede">The model that wrote each of the {c['nrep']} reports, every check and audit run on it with its verdict, the flags still open, and the rules the course was written to. Reports by provenance: {by_model}.</p>
@@ -441,7 +444,7 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
     label = m['short'].upper()
     body = f'''
   <header class="hero">
-    {crumbs(('Academy', 'home'), (f"Course {key} · {m['short']}", ctx), ('How it was built', None))}
+    {crumbs((SITE_NAME, 'home'), (f"Course {key} · {m['short']}", ctx), ('How it was built', None))}
     <div class="eyebrow"><span class="u" style="--c:{col}">{e(label)}</span> · <span class="u" style="--c:var(--gold)">HOW IT WAS BUILT</span> · from the units' front matter and the audit log</div>
     <h1>{e(m['short'])}: how it was built</h1>
     <p class="lede">The model that wrote each of the {len(order)} written units, when, with or without search, every fresh check and audit run on it with its verdict, the flags still open, and the rules the course is written to. Units by model: {by_model or 'none yet'}.</p>

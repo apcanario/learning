@@ -11,6 +11,9 @@ The site is served from academy/ (the build), the fonts from the vendored copy, 
 every drawing stands at rest."""
 import sys, pathlib, threading, functools
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from courses import brand, DEFAULT_EDITION
+THEME_KEY = brand(DEFAULT_EDITION)['storage']['theme']   # S-DEC3: the brand's theme key
 from playwright.sync_api import sync_playwright
 
 R = pathlib.Path(__file__).resolve().parent
@@ -49,7 +52,7 @@ def context(br, w, h):
 
 def open_page(pg, url, pid, theme):
     pg.goto(url + '#home'); pg.wait_for_timeout(200)
-    pg.evaluate(f"localStorage.clear(); localStorage.setItem('hellas-theme', '{theme}')")
+    pg.evaluate(f"localStorage.clear(); localStorage.setItem('{THEME_KEY}', '{theme}')")
     pg.goto(url + '#' + pid); pg.reload()
     pg.wait_for_function(f"() => document.fonts.status === 'loaded' && !document.getElementById('{pid}').hidden && document.querySelector('#{pid} .report.steps.stepping')")
     pg.wait_for_timeout(300)

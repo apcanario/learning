@@ -33,8 +33,6 @@ eyebrow = "BRAND + AI"
 # string differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top
 # changelog row). A1's title is the one the old hub substituted into units_data.py ("Personal Mythology" -> "the journey").
 [pack]
-# the data file the How it was built footer names (byte identity until S-DEC3 changes it on purpose)
-source = 'generator/data/brand-ai/hub.py'
 course_note = 'Not content for its own sake: every unit is sourced to peer-reviewed, platform-official or large-sample data, labels anecdote and vendor data as such, and ends with a shipped deliverable.'
 order_lede = 'One row per unit in writing order. Opus 5.5 writes; a fresh context checks each unit before filing. The last deep dive was briefed for Fable 5.1 because it reviews the chat history; Pedro set that exception aside on 31 Oct 2026 and it was written by Opus 5.5 with the past-chat tools. "Search" means the unit is written with web search on because its facts are current.'
 order_foot = 'A2, A6 and A9 are already written as the audience-growth research, which is why the count starts at {start}.'

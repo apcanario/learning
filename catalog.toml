@@ -5,7 +5,10 @@
 #
 # `tracks` (THEMES): the Academy home and the root drawer group courses by subject. Every course names its track.
 # A track's `planned` rows are [short, name, colour, scope, the rest of the teaser]; kit/courses.py makes each a tuple.
-# A new track also needs its place on the home hero (_HERO_AT in kit/build.py).
+# `hero` (S-DEC3, 20 Nov 2026; until then _HERO_AT in kit/build.py): where the track's rise stands on the home hero,
+# [[x, y] tall, [x, y] wide], fractions of the layout's width and height; the tall layout below 1100 px (keep every rise
+# inside a 390 px phone's view, x .27 to .73), the wide one from 1100 px. Every track needs one (build.py stops without).
+# kit/courses.py takes it out of the track's dict into HERO_AT.
 
 course_order = [
   "greece",
@@ -81,24 +84,28 @@ next = [
 
 [[tracks]]
 id = "history"
+hero = [[0.50, 0.48], [0.46, 0.55]]
 name = "History"
 color = "var(--red)"
 lede = "The history and mythology of one culture at a time, read together: who told each story, what they gained by it, and what the evidence says. Long sourced reports with disputes named, a self-test and a syllabus you can rerun."
 
 [[tracks]]
 id = "marketing"
+hero = [[0.33, 0.15], [0.14, 0.18]]   # W-PB2 (12 Nov 2026): tall y .16 to .15, so Marketing (86,699 words with PB2) still closes two rings of its own
 name = "Marketing"
 color = "var(--teal)"
 lede = "Building a personal brand from the record of what you actually do: audience, platform economics, cadence, benchmarks. Every unit sourced to platform data or peer-reviewed work and ending in a shipped deliverable."
 
 [[tracks]]
 id = "technology"
+hero = [[0.66, 0.18], [0.81, 0.26]]
 name = "Technology"
 color = "var(--purple)"
 lede = "Working with AI models as tools: which model for which task, how to brief, how to keep a project from rotting, how to verify what the machine wrote before you trust it."
 
 [[tracks]]
 id = "ux"
+hero = [[0.66, 0.82], [0.78, 0.68]]
 name = "User Experience"
 color = "var(--blue)"
 lede = "The practice of UX design, written to be handed to other designers: how to read, build and edit the structure behind a product at any scale, where that work sits in the product cycle and the business, and how to deliver it when the inputs are missing. Every unit sourced to the field's standard works and research, rich in figures, ending in a shipped deliverable."
@@ -108,6 +115,7 @@ lede = "The practice of UX design, written to be handed to other designers: how 
 # parents too; `planned` lists its courses to come (docs/sports-track-coming-soon.md), drawn as ghost tiles
 [[tracks]]
 id = "sports"
+hero = [[0.34, 0.80], [0.14, 0.78]]   # R-SP1 (17 Nov 2026): wide y .74 to .78; W-SP4 (18 Nov): wide x .24 to .18; W-SP6 (18 Nov): wide x .18 to .14, so the rise closes its rings of its own
 name = "Sports"
 color = "var(--orange)"
 lede = "Coaching and managing young athletes with what the evidence says: how they develop, the climate a coach creates, the skills a coach may teach, and where a coach's part ends. Every recommendation graded by its evidence, every unit ending in a shipped deliverable."
@@ -135,6 +143,7 @@ planned = [
 # and its teaser word for word: the teaser's opening words are `planned_label`, its rest the row's last field, so the tile shows it whole
 [[tracks]]
 id = "supply-chain"
+hero = [[0.50, 0.17], [0.50, 0.13]]   # S-SCE0 (19 Nov 2026): top centre, between Marketing and Technology
 name = "Supply Chain"
 color = "var(--gold)"
 lede = "How warehouses, transport and orders run, who works in them, how the software that runs them is bought, and what it costs, for people who build, sell or implement that software. Every claim graded by its evidence, no real vendor assessed, every unit ending in a shipped deliverable."

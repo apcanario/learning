@@ -92,7 +92,7 @@ if __name__ == '__main__':
         under = [('the page', bg)] + [(f'a {tn} line at {a}', mix(rgb(t[tn]), bg, a)) for _, tn in AREAS]
         print(f"P92 hero pairs, {name} (--bg {t['bg']}, contour lines at --topo-a {a}):")
         texts = [(f'area word {w} ({tn}, large)', rgb(t[tn]), 3) for w, tn in AREAS]
-        texts += [('headline Academy (fg, large)', fg, 3), ('static line dots (muted)', mu, 4.5), ('lede (muted)', mu, 4.5),
+        texts += [('headline (fg, large)', fg, 3), ('static line dots (muted)', mu, 4.5), ('lede (muted)', mu, 4.5),
                   ("What's new link (fg)", fg, 4.5), ("What's new arrow (muted)", mu, 4.5)]
         for what, c, bar in texts:
             vs = [(where, ratio(c, b)) for where, b in under]

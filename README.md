@@ -7,6 +7,7 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 | Path | What |
 |---|---|
 | `kit/` | Academy: the site builder (`build.py`, with `mdcourse.py` for markdown courses), `verify.py`, `deploy.sh`, both history courses' reports, syllabi, audits, bibliographies, the site changelog. `kit/README.md` is its own guide. |
+| `catalog.toml`, `editions/`, `brands/` | The site's registry outside the engine (`docs/decoupling.md`): `catalog.toml` the tracks (each with its place on the home hero), the planned courses and the orders; `editions/<name>.toml` one build each (courses held, pages left out, its brand, artifact, Pages URL and deploy remote; `academy` is the default); `brands/<name>.toml` one brand each (S-DEC3: site name, home copy, "How every course works" lines, repo link base, storage keys, colour and font tokens appended to the theme). |
 | `design/theme.css` | The one stylesheet for every page in the Project. `design/README.md` says how to change it and propagate the change. |
 | `docs/` | The method layer: `method.md`, `courses-index.md`, `BACKLOG.md` (the queue of chats: start here), `CHANGELOG.md` (chats done), `academy.md` (the one-artifact plan), `sourcing-standard.md`, `reader.md`, `project-instructions.md`, the status notes. The claude.ai Project "Learning" holds mirrors of these; this repo is canonical. |
 | `skills/` | The four account skills (`write-unit`, `audit-units`, `file-unit`, `new-course`); install per `SETUP.md` §3. |

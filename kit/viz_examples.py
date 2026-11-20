@@ -14,6 +14,9 @@ import html, json
 import viz
 from mdcourse import render_md
 
+# S-DEC3: the site name and the root pages' unit label; build.py sets SITE_NAME (brands/<name>.toml `name`)
+SITE_NAME = None
+
 PANEL_ID = 'viz-examples'
 FIC = 'Perqo is fictional; every name and number in this figure is invented for the examples page.'
 
@@ -363,7 +366,7 @@ def fragment(crumbs):
         pre = html.escape('```viz\n' + json.dumps(block, ensure_ascii=False, indent=1) + '\n```')
         body = body.replace(f'<p>{sid}BLOCK</p>', f'<details class="prompt"><summary>The viz block, to copy into a unit</summary><pre>{pre}</pre></details>', 1)
     return f'''<header class="phead">
-    {crumbs(('Academy', 'home'), ('Figure kinds', None))}
+    {crumbs((SITE_NAME, 'home'), ('Figure kinds', None))}
     <div class="eyebrow"><span class="u" style="--c:var(--blue)">FIGURES</span> · {len(viz.KINDS)} kinds · kit/viz.py</div>
     <h1>Figure kinds</h1>
     <nav class="toc" aria-label="Kinds">{toc}</nav>
@@ -379,7 +382,7 @@ def write(site, crumbs):
     (site / 'viz-examples.html').write_text(frag)
     import re
     anchors = ' '.join(re.findall(r' id="([^"]+)"', frag))
-    return (f'\n<section class="panel" id="{PANEL_ID}" data-ctx="root" data-kind="figures" data-t="Figure kinds" data-u="ACADEMY" '
+    return (f'\n<section class="panel" id="{PANEL_ID}" data-ctx="root" data-kind="figures" data-t="Figure kinds" data-u="{html.escape(SITE_NAME.upper())}" '
             f'data-c="var(--blue)" data-src="viz-examples.html" data-anchors="{anchors}" hidden></section>')
 
 

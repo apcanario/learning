@@ -17,15 +17,18 @@ are namespaced (#rome, #rome-syllabus, #rm01).
 """
 import json, re, html, pathlib, importlib.util, math
 import markdown
-from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES, EDITIONS
+from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES, EDITIONS, HERO_AT as _HERO_AT, DEFAULT_EDITION, brand
 import sys
-# P70: an edition filters the course list here, before anything renders; the full Academy is the edition 'academy'
-EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else 'academy'
+# P70: an edition filters the course list here, before anything renders; the full site is the default edition (the first
+# in catalog.toml `edition_order`)
+EDITION = sys.argv[sys.argv.index('--edition') + 1] if '--edition' in sys.argv else DEFAULT_EDITION
 if '--epub' in sys.argv:   # P71 (2): `--epub <edition>` builds that edition, then its EPUB (epub.py)
     EDITION = sys.argv[sys.argv.index('--epub') + 1]
 if EDITION not in EDITIONS:
     raise SystemExit(f'no edition {EDITION!r} in courses.py EDITIONS: {", ".join(EDITIONS)}')
 ED = EDITIONS[EDITION]
+B = brand(EDITION)   # S-DEC3: the edition's brand (brands/<name>.toml): every site string, the rules lines, keys, tokens, fonts
+SITE_NAME = B['name']
 OMIT = set(ED['omit'])
 if ED['courses'] is not None:
     COURSES = [c for c in COURSES if c['id'] in ED['courses']]
@@ -41,6 +44,8 @@ import vault
 import howbuilt
 import viz
 import viz_examples
+mdcourse.SITE_NAME = howbuilt.SITE_NAME = viz_examples.SITE_NAME = SITE_NAME   # S-DEC3
+howbuilt.GH = B['repo']   # S-DEC3: the brand's repo link base, not the clone's remote
 
 R = pathlib.Path(__file__).resolve().parent
 PROV = json.load(open(R / 'provenance.json'))
@@ -172,7 +177,7 @@ def load(c):
         panels.append(f'''
 <section class="panel" id="{sl}" data-unit="{u}" data-ctx="{c['id']}" data-kind="report" data-split="r-{i}" style="--cc:{c['color']}" hidden>
   <header class="phead">
-    {crumbs(('Academy', 'home'), (c['short'], c['home_id']), (f'Unit {u}', f'{c["home_id"]}-u{u}'), (i, None))}
+    {crumbs((SITE_NAME, 'home'), (c['short'], c['home_id']), (f'Unit {u}', f'{c["home_id"]}-u{u}'), (i, None))}
     <div class="eyebrow">{eyebrow_segs(f'<span class="u" style="--c:{c["color"]}">{c["label"]}</span>', f'<span class="u" style="--c:{ucol[u]}">UNIT {u}</span>', c['umap'][u][0], f'<span class="mono">{i}</span>', f'{n:,} words')}{' ' + PILL_UNCK if unchecked(model) else ''}</div>
     <h1>{html.escape(meta['title'])}</h1>
     {scope}
@@ -210,7 +215,7 @@ def drawer(c):
                 pill = PILL_NEXT if mid in c.get('next_up', ()) else '<span class="pill">soon</span>'
                 out += f'<div class="dsoon"><span class="n">{mid}</span><span class="t">{html.escape(t)}</span>{pill}</div>'
         out += '</div></div>'
-    top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">Academy</span></a>'
+    top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">{html.escape(SITE_NAME)}</span></a>'
            f'<a class="ditem dhome" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span class="n">⌂</span><span class="t">{c["short"]}: course home</span></a>'
            f'<a class="ditem dhome" href="#{c["syl_id"]}" data-target="{c["syl_id"]}"><span class="n">§</span><span class="t">Syllabus and prompts</span></a>'
            + ('' if 'build' in OMIT else f'<a class="ditem dhome" href="#{c["home_id"]}-built" data-target="{c["home_id"]}-built"><span class="n">✓</span><span class="t">How it was built</span></a>') + '</div>')
@@ -521,7 +526,7 @@ def course_home(c):
 <section class="panel home" id="{c['home_id']}" data-ctx="{c['id']}" data-kind="course" data-split="home" data-t="{c['short']}" data-u="COURSE {c['num']}" data-c="{c['color']}" style="--cc:{c['color']}" hidden>
   <header class="hero has-topo">
     {layer}
-    {crumbs(('Academy', 'home'), (THEME[c['theme']]['name'], 'track-' + c['theme']), (f"Course {c['num']} · {c['short']}", None))}
+    {crumbs((SITE_NAME, 'home'), (THEME[c['theme']]['name'], 'track-' + c['theme']), (f"Course {c['num']} · {c['short']}", None))}
     <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['eyebrow']}</span> · Personal Mythology{' · <span class="u" style="--c:var(--gold)">IN PROGRESS</span>' if c['status'] != 'available' else ' · <span class="u" style="--c:var(--teal)">COMPLETE</span>'}</div>
     <h1>{c['h1']}</h1>
     <p class="lede">{fill(c['lede'], c)}</p>
@@ -553,7 +558,7 @@ def course_home(c):
     {c['spine']}
   </details>
   <a class="hbtn alt wide" href="#{c['home_id']}-built" data-target="{c['home_id']}-built"><span>How it was built</span><b>The model behind each report, every check and audit with its verdict, the flags still open.</b></a>
-  <a class="hbtn alt wide" href="#home" data-target="home"><span>Academy</span><b>{c['closing']}</b></a>
+  <a class="hbtn alt wide" href="#home" data-target="home"><span>{html.escape(SITE_NAME)}</span><b>{c['closing']}</b></a>
 </section>'''
 
 
@@ -573,7 +578,7 @@ def syllabus(c):
     return f'''
 <section class="panel syl" id="{c['syl_id']}" data-ctx="{c['id']}" data-kind="syllabus" data-split="syllabus" data-t="Syllabus and prompts" data-u="{c['label']}" data-c="var(--gold)" style="--cc:{c['color']}" hidden>
   <header class="hero">
-    {crumbs(('Academy', 'home'), (c['short'], c['home_id']), ('Syllabus', None))}
+    {crumbs((SITE_NAME, 'home'), (c['short'], c['home_id']), ('Syllabus', None))}
     <div class="eyebrow"><span class="u" style="--c:{c['color']}">{c['label']}</span> · <span class="u" style="--c:var(--gold)">SYLLABUS</span> · {c['total_mods']} modules · every prompt in full</div>
     <h1>{c['short']}: syllabus and prompts</h1>
     <p class="lede">This is the complete syllabus the reports were generated from. Each module has its drop-in prompt; copy it into a new chat to regenerate a report yourself, extend one, or compare a fresh answer against the one here. Where a report exists it is linked.</p>
@@ -873,7 +878,7 @@ SL_AREAS = [   # (name, what it holds, the track whose tone it takes); the order
     ('Mythology', 'Greece and Rome', 'history'), ('Marketing', 'Courses A and PB', 'marketing'),
     ('AI', 'Courses B and BW', 'technology'), ('UX', 'Course IA', 'ux'), ('Sports', 'Course SP', 'sports'),   # S-SP0; S-SPORTS: Sports
     ('Supply Chain', 'Course SCE', 'supply-chain'),   # S-SCE0 (19 Nov 2026)
-    ('Academy', 'The site and its method', None)]
+    (*B['log_area'], None)]   # S-DEC3: the site's own area (brands/<name>.toml `log_area`)
 SL_TONE = {n: next((t['color'] for t in THEMES if t['id'] == tid), 'var(--gold)') for n, _, tid in SL_AREAS}
 
 
@@ -901,7 +906,8 @@ def site_log(path):
     return nxt, done
 
 
-SL_NEXT, SL_DONE = site_log(R.parent / 'docs' / 'site-log.md')
+# S-DEC3: an edition that leaves out both pages does not read the site log (it is the default edition's record)
+SL_NEXT, SL_DONE = site_log(R.parent / 'docs' / 'site-log.md') if not {'changelog', 'backlog'} <= OMIT else ([], [])
 # newest first; on one day the entry lower in the file (written later) first
 SL_DONE_SORTED = [e for _, e in sorted(enumerate(SL_DONE), key=lambda ke: (ke[1][0], ke[0]), reverse=True)]
 cl_title, bl_title = 'Changelog', 'Backlog'
@@ -931,9 +937,9 @@ for name, held, _ in SL_AREAS:
     cl_body += sl_section(name, held, sl_table(('c-date', 'c-code', 'c-text'), ('Date', 'Code', 'What happened'), rows)
                           if rows else '<p class="slnone">Nothing yet.</p>', 'done')
 changelog = f"""
-<section class="panel log slog" id="changelog" data-ctx="root" data-kind="changelog" data-t="{cl_title}" data-u="ACADEMY" data-c="var(--gold)" hidden>
+<section class="panel log slog" id="changelog" data-ctx="root" data-kind="changelog" data-t="{cl_title}" data-u="{html.escape(SITE_NAME.upper())}" data-c="var(--gold)" hidden>
   <header class="hero">
-    {crumbs(('Academy', 'home'), ('Changelog', None))}
+    {crumbs((SITE_NAME, 'home'), ('Changelog', None))}
     <div class="eyebrow"><span class="u" style="--c:var(--gold)">CHANGELOG</span> · {len(SL_DONE)} items {cl_since}</div>
     <h1>{cl_title}</h1>
     <p class="lede">What has been done, area by area, newest first: each unit written, each course started or finished, and each change to the site a reader can see. What is still to come is in the <a href="#backlog" data-target="backlog">Backlog</a>.</p>
@@ -956,9 +962,9 @@ for name, held, _ in SL_AREAS:
     bl_body += sl_section(name, held, sl_table(('c-code', 'c-text'), ('Code', 'What it is'), rows)
                           if rows else '<p class="slnone">Nothing queued.</p>', 'next')
 backlog = f"""
-<section class="panel log slog" id="backlog" data-ctx="root" data-kind="backlog" data-t="{bl_title}" data-u="ACADEMY" data-c="var(--orange)" hidden>
+<section class="panel log slog" id="backlog" data-ctx="root" data-kind="backlog" data-t="{bl_title}" data-u="{html.escape(SITE_NAME.upper())}" data-c="var(--orange)" hidden>
   <header class="hero">
-    {crumbs(('Academy', 'home'), ('Backlog', None))}
+    {crumbs((SITE_NAME, 'home'), ('Backlog', None))}
     <div class="eyebrow"><span class="u" style="--c:var(--orange)">BACKLOG</span> · {len(SL_NEXT)} items next · {len(SL_DONE)} done</div>
     <h1>{bl_title}</h1>
     <p class="lede">What comes next: first everything in the order it will be done, then the same items area by area. What is done is in the <a href="#changelog" data-target="changelog">Changelog</a>.</p>
@@ -980,18 +986,12 @@ backlog = f"""
 # numbers say the rest.
 NEWEST = DATED[0] if DATED else None
 HERO_INTERVAL = 23000   # words between two of the hero's contour levels: History's 510k words stand 22 levels up (W-DD-SP2, 19 Nov 2026: 22,000 to 23,000, because the hero's two layouts reached 20,661 B with Coaching's twelfth unit, over verify.py's 20 KB), an area of 67k three
-_HERO_AT = {            # where each area's rise stands (fractions of the layout's width and height), tall and wide
-    # P92 checks: every rise inside a 390 px phone's view (x .27 to .73) and above the fade, each small rise closing two
-    # rings of its own (verify.py checks it), Marketing clear of the sidebar at both ends of the drift. P93: keyed by
-    # area, so an edition that holds fewer areas (Greece: History only) takes its areas' places (keyed by THEMES order,
-    # the Greece edition stopped here from P92 on)
-    'history': ([.50, .48], [.46, .55]), 'marketing': ([.33, .15], [.14, .18]),   # W-PB2 (12 Nov 2026): .16 to .15 in the tall layout, so Marketing (86,699 words with PB2) still closes two rings of its own
-    'technology': ([.66, .18], [.81, .26]), 'ux': ([.66, .82], [.78, .68]),
-    'sports': ([.34, .80], [.14, .78]),   # S-SPORTS (19 Nov 2026): the Coaching track renamed Sports; S-SP0 (16 Nov 2026): the track; R-SP1 (17 Nov 2026): wide y .74 to .78, so the rise (22,995 words, one level) closes its ring of its own; W-SP4 (18 Nov 2026): wide x .24 to .18, so the rise (30,893 words with SP4, still one level) does; W-SP6 (18 Nov 2026): wide x .18 to .14, so the rise (49,932 words with SP6, two levels) closes two rings of its own
-    'supply-chain': ([.50, .17], [.50, .13]),   # S-SCE0 (19 Nov 2026): the track, a planned ring until its first unit is filed; top centre, between Marketing and Technology
-}
+# _HERO_AT (S-DEC3: catalog.toml, each track's `hero`; kit/courses.py HERO_AT): where each area's rise stands (fractions
+# of the layout's width and height), tall and wide. P92 checks: every rise inside a 390 px phone's view (x .27 to .73)
+# and above the fade, each small rise closing two rings of its own (verify.py checks it), Marketing clear of the sidebar
+# at both ends of the drift. P93: keyed by area, so an edition that holds fewer areas takes its areas' places
 if [t['id'] for t in THEMES if t['id'] not in _HERO_AT]:
-    raise SystemExit(f'build.py _HERO_AT has no place for the areas {[t["id"] for t in THEMES if t["id"] not in _HERO_AT]}: give each a place')
+    raise SystemExit(f'catalog.toml: the tracks {[t["id"] for t in THEMES if t["id"] not in _HERO_AT]} have no `hero` (their place on the home hero): give each one')
 HERO_AT = {'tall': [_HERO_AT[t['id']][0] for t in THEMES], 'wide': [_HERO_AT[t['id']][1] for t in THEMES]}
 AREA_WORDS = {t['id']: sum(c['words'] for c in HISTORY if c['theme'] == t['id']) + sum(m['words'] for m in MD if m['theme'] == t['id'] and m['status'] != 'coming soon')
               for t in THEMES}
@@ -1135,10 +1135,10 @@ def _day_tone(xs):
 NEW_TONES = [_day_tone(xs) for d, xs in reversed(_days)]
 new_layer = hero_layer(NEW_DAYS, NEW_TONES, NEW_INTERVAL, NEW_TOPO) if NEW_DAYS else ''
 whatsnew = f"""
-<section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="ACADEMY" data-c="var(--gold)" hidden>
+<section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="{html.escape(SITE_NAME.upper())}" data-c="var(--gold)" hidden>
   <header class="hero has-topo">
     {new_layer}
-    {crumbs(('Academy', 'home'), ("What's new", None))}
+    {crumbs((SITE_NAME, 'home'), ("What's new", None))}
     <div class="eyebrow">{eyebrow_segs(*['<span class="u" style="--c:var(--gold)">WHAT\'S NEW</span>', f'{nr} history reports', f'{nu} units', f'{nc} courses'] + ([f'since {howbuilt.date_long(WHATSNEW[-1]["date"])}'] if WHATSNEW else []))}</div>
     <h1>What's new</h1>
     <p class="lede">Every unit and every history report filed, and every course started, newest first, by the day it was filed. A history report is dated by the work session that filed it; where that session ran over several days, by its first day, marked ≈. What else was done is in the Changelog.</p>
@@ -1155,27 +1155,31 @@ _sep = '<span aria-hidden="true"> ·</span><span class="hsr">,</span> '   # P92 
 hero_new = (f'<a class="hnew" href="#new" data-target="new"><span>What\'s new{_sep}{html.escape(NEWEST["code"])}{_sep}{short_date(NEWEST["date"]).rsplit(" ", 1)[0]}</span>'
             '<span class="hnew-a" aria-hidden="true">→</span></a>') if NEWEST else ''
 new_link = '<div class="hlinks" data-one><a class="hbtn alt" href="#new" data-target="new"><span>What\'s new</span><b>Every unit and report filed and every course started, by day</b></a></div>'
-# "How every course works": the constants. P80 (1 Nov 2026): an edition replaces any line that names a course it does
-# not hold with its own (EDITIONS[...]['rules'], keyed by the line's bold head); the full Academy keeps these as written.
-RULE_LINES = [
-    ('One reader.', 'Every course is written for the same person and read in order, on a phone, with the citations checked.'),
-    ('Sources first.', 'A unit names its sources and says where they disagree; a claim that cannot be sourced is marked unsourced or left out.'),
-    ('One unit per chat, built in full.', 'Each unit is written from a published brief or prompt, in its own chat, with its closing artefact: a self-test and carry-forward ideas for the history courses, a shipped deliverable for Brand + AI.'),
-    ('Checked before filing.', 'Every new unit is checked by a fresh reader that has not seen it written: each cited claim against its source, the deliverable against its brief. A unit written with live search is checked again six months on. The model that wrote each unit is recorded.'),
-    ('An open syllabus.', 'Every prompt and brief is published with its course, so any unit can be regenerated, extended or checked.'),
-]
-_own = ED.get('rules', {})
-if set(_own) - {h for h, _ in RULE_LINES}:
-    raise SystemExit(f'EDITIONS[{EDITION!r}] rules name no constants line: {sorted(set(_own) - {h for h, _ in RULE_LINES})}')
-RULES = '\n'.join(f'      <li><strong>{h}</strong> {_own.get(h, t)}</li>' for h, t in RULE_LINES)
+# "How every course works": the constants (S-DEC3: the brand's [[rules]], or the edition's own; brands/academy.toml says
+# how). P80 (1 Nov 2026): a line that names a course the edition does not hold is never shown: its first alt that fits
+# is, and a line with nothing that fits stops the build.
+_HELD = {c['id'] for c in COURSES}
+_FAMS = {c['family'] for c in COURSES}
+def _fits(v):
+    return set(v.get('names', ())) <= _HELD and ('families' not in v or _FAMS <= set(v['families']))
+def _rule(line):
+    for v in [line] + line.get('alt', []):
+        if _fits(v):
+            return v['text']
+    raise SystemExit(f'edition {EDITION!r}: the rules line {line["head"]!r} names a course the edition does not hold and has no alt that fits: '
+                     f'give it one in brands/{ED["brand"]}.toml or the edition its own [[rules]]')
+RULE_LINES = ED.get('rules') or B['rules']
+if not RULE_LINES:
+    raise SystemExit(f'edition {EDITION!r}: no rules lines in brands/{ED["brand"]}.toml or in the edition')
+RULES = '\n'.join(f'      <li><strong>{r["head"]}</strong> {_rule(r)}</li>' for r in RULE_LINES)
 roothome = f"""
-<section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="Academy" data-u="HOME" data-c="var(--red)" hidden>
+<section class="panel root" id="home" data-ctx="root" data-kind="root" data-t="{html.escape(SITE_NAME)}" data-u="HOME" data-c="var(--red)" hidden>
   <header class="hero hhome">
     {hero_topo}
     <div class="hcopy">
-      <h1>Academy</h1>
+      <h1>{html.escape(SITE_NAME)}</h1>
       {hero_areas}
-      <p class="lede">Every self-study course in one place. Pick up where you left off.</p>
+      <p class="lede">{B['lede']}</p>
       {hero_new}
     </div>
   </header>
@@ -1284,19 +1288,32 @@ root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div cla
 navs = root_nav + ''.join(drawer(c) for c in HISTORY) + ''.join(m['nav'] for m in MD)
 
 CSS = open(R / 'shell.css').read()
+# S-DEC3: the brand's tokens, appended to the theme as CSS custom properties ([tokens] both themes, [tokens_light] light)
+def _decl(t):
+    return ';'.join(f'--{k}:{v}' for k, v in t.items())
+if B['tokens']:
+    CSS += f':root{{{_decl(B["tokens"])}}}\n'
+if B['tokens_light']:
+    CSS += (f'@media (prefers-color-scheme:light){{:root:not([data-theme="dark"]){{{_decl(B["tokens_light"])}}}}}\n'
+            f':root[data-theme="light"]{{{_decl(B["tokens_light"])}}}\n')
+# S-DEC3: shell.js names its localStorage keys as __STORE_<KEY>__; the brand's [storage] fills them
+STORE = B['storage']
 JS = open(R / 'shell.js').read()
+for _k, _v in STORE.items():
+    JS = JS.replace(f'__STORE_{_k.upper()}__', _v)
+assert '__STORE_' not in JS, 'shell.js names a storage key the brand does not give'
 
 page = f'''<meta charset="utf-8">
 <title>{ED['title']}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Gentium+Book+Plus&display=swap">
+<link rel="stylesheet" href="{B['fonts_href']}">
 <style>{CSS}</style>
-<script>try{{var t=localStorage.getItem('hellas-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}}catch(e){{}}</script>
+<script>try{{var t=localStorage.getItem('{STORE['theme']}');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}}catch(e){{}}</script>
 <header class="top">
   <div class="top-in">
     <button class="ib" id="menuB" type="button" aria-label="Open contents" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <a class="ib" id="homeB" href="#home" aria-label="Academy home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg></a>
+    <a class="ib" id="homeB" href="#home" aria-label="{html.escape(SITE_NAME)} home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg></a>
     <div class="cur" id="cur"><span class="cur-u" id="curU"></span><span class="cur-t" id="curT"></span></div>
     <button class="ib" id="themeB" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     <div class="arrows" id="arrows">
@@ -1307,7 +1324,7 @@ page = f'''<meta charset="utf-8">
 </header>
 <div class="backdrop" id="backdrop"></div>
 <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Contents">
-  <div class="dhead"><div class="brand">ACA<span>/</span>DEMY</div><button class="ib" id="closeB" type="button" aria-label="Close contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dhead"><div class="brand">{B['mark']}</div><button class="ib" id="closeB" type="button" aria-label="Close contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   {navs}
 </aside>
 <main>
@@ -1317,7 +1334,7 @@ page = f'''<meta charset="utf-8">
 '''
 # P70: in an edition, a link to a page it lacks is not a link: a navigation button or row to it is dropped, any other
 # link (a pointer in a report's text into a course the edition does not hold) is kept as its plain text
-if EDITION != 'academy':
+if EDITION != DEFAULT_EDITION:
     _ids = set(re.findall(r' id="([^"]+)"', page)) | {i for b in REPORTS.values() for i in re.findall(r' id="([^"]+)"', b)}
     _nav = re.compile(r'<a class="(?:[^"]*\b(?:hbtn|ditem|hrow)\b[^"]*)"[^>]* href="#([^"]+)"[^>]*>.*?</a>', re.S)
     _any = re.compile(r'<a\b[^>]* href="#([^"]+)"[^>]*>(.*?)</a>', re.S)
@@ -1353,11 +1370,11 @@ SIZE_TABLE = ('| Part | Files | Total | Largest file | Note |\n|---|---|---|---|
               + f'| Whole site | {sum(r[1] for r in rows)} | {kb(allb)} | | the artifact page is capped at 16 MB; the shell must stay under 1 MB |\n')
 readme = (R / 'README.md').read_text(encoding='utf-8')
 readme = re.sub(r'(<!-- sizes:start -->\n).*?(<!-- sizes:end -->)', lambda mm: mm.group(1) + SIZE_TABLE + mm.group(2), readme, flags=re.S)
-if EDITION == 'academy':   # P70: the repo's files are the full Academy's; an edition writes only its folder
+if EDITION == DEFAULT_EDITION:   # P70: the repo's files are the full Academy's; an edition writes only its folder
     (R / 'README.md').write_text(readme, encoding='utf-8')
 
 # S-NOAUDIT (15 Nov 2026): the Fable review queue (FABLE-REVIEW.md) and the review_due.py line are retired with the Fable stage
-if EDITION == 'academy':
+if EDITION == DEFAULT_EDITION:
     from biblio import write_all as _biblio
     print(f'bibliography: {_biblio()} unit files')
 else:
@@ -1371,4 +1388,4 @@ if '--epub' in sys.argv:
         _order = [u[0] if isinstance(u, (tuple, list)) else u for u in getattr(c['hub'], 'ORDER', [])]
         for code, (f, fm) in sorted(c['vault_units'].items(), key=lambda kv: _order.index(kv[0]) if kv[0] in _order else 999):
             _mdu.append((c, code, fm.get('title', code), f))
-    epub.write(EDITION, ED, HISTORY, _mdu)
+    epub.write(EDITION, ED, HISTORY, _mdu, B)

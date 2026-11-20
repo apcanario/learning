@@ -31,8 +31,6 @@ eyebrow = "SPORT PSYCHOLOGY"
 # files). Derived, not typed here: STATUS (from each unit's `written`; [pack.status] only where the typed string
 # differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top changelog row).
 [pack]
-# the data file the How it was built footer names (byte identity until S-DEC3 changes it on purpose)
-source = 'generator/data/sport-psychology/hub.py'
 course_note = "Every unit is sourced to consensus statements, meta-analyses and peer-reviewed studies, grades each recommendation by its evidence, names the sample behind each finding, says where a coach's part ends, and ends with a deliverable built in full on three fictional athletes and then as a template."
 order_lede = 'One row per unit in writing order, which is the reading order. Opus 5.5 writes; a fresh Opus 5.5 context checks each unit before filing. "Search" means the unit is written with web search on because its facts are current.'
 order_foot = 'The count starts at {start}.'
