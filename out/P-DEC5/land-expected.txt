@@ -1,0 +1,5 @@
+# P-DEC5 expected build-output differences: the prose of kit/README.md (P-DEC5 checker: the [metrics] entry), copied
+# into academy/README.md by the build. Given as the whole baseline.py --check line, which land.py maps to the path
+# baseline.py compares ("README.md"); the repo-relative form is listed too.
+academy: changed README.md
+academy/README.md
