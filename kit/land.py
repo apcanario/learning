@@ -1,11 +1,14 @@
 """Land a chat's commits on origin/main safely while other chats land theirs (docs/parallel-landing.md; method.md §10).
 
   python3 kit/land.py start <row>                  once, right after cloning: records origin/main as the start commit
-                                                   in out/<row>/land-start.json (kept if it exists; --reset replaces it)
+                                                   in .git/land/started/<row>.json (never committed; a gitignored copy in
+                                                   out/<row>/land-start.json) and installs the pre-push guard that
+                                                   refuses a bare push to main (--reset replaces the record)
   python3 kit/land.py land <row> [--expected FILE] the one way a chat pushes to main (never a bare `git push`)
   python3 kit/land.py status [<row>]               lock holder, upstream commits since the start, ahead/behind
-  python3 kit/land.py unlock <row>                 removes docs/landing.lock from main if it names <row> (after a
-                                                   killed landing; a live landing releases its own lock)
+  python3 kit/land.py unlock <row> [--force]       removes docs/landing.lock from main if it names <row> and this clone
+                                                   holds its token (after a killed landing); --force is for a human who
+                                                   made sure the holder is dead (a stale lock is taken over anyway)
 
 land, in order: refuse a dirty tree, a rebase in progress or conflict markers; take the landing lock (docs/landing.lock
 pushed alone to main: the first push wins); rebase on origin/main, resolving by script only the conflicts listed in
@@ -23,12 +26,14 @@ HEAD to main (a rejected push fetches and goes round again, 6 attempts); release
 whole `baseline.py --check` line) is an output the row is expected to change. `drop: <path> :: <line>` accepts that an
 upstream line no longer in HEAD was removed on purpose by this row.
 
-Exit codes: 0 landed (or nothing to land), 2 stopped for a human (the output says what to do), 3 lock wait timed out.
+Exit codes: 0 landed (or nothing to land; warnings may follow, e.g. a lock not released), 2 stopped for a human, nothing
+landed (an unexpected error is a clean 2 too), 3 lock wait timed out. The lock is re-touched every 5 min while held
+(heartbeat) and is stale after 25 min untouched; the wait gives up after 40.
 Test-only flags (--no-build, --no-verify, timings) need LAND_TEST=1 in the environment and are refused with LAND_REAL=1.
 Standard library and git only. Does not edit kit/baseline.py or kit/verify*.py; runs them.
 """
 import argparse, ast, collections, datetime, difflib, json, os, pathlib, random, re, signal, socket, subprocess, sys, time
-import tomllib, uuid
+import shutil, threading, tomllib, uuid
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LOCK = 'docs/landing.lock'
@@ -51,6 +56,23 @@ BUILD_OUTPUT_KEY = re.compile(r'^(academy/|editions/|bibliography/|README\.md$|\
 SITE_LOG = 'docs/site-log.md'
 M_OPEN, M_MID, M_CLOSE = '<' * 7, '=' * 7, '>' * 7
 EXIT_OK, EXIT_STOP, EXIT_TIMEOUT = 0, 2, 3
+STALE_MIN, WAIT_MIN, HEARTBEAT_S = 25, 40, 300   # a live landing re-touches its lock every 5 min; 25 min untouched = stale
+GITNET = threading.RLock()                       # fetches and pushes of the main thread and the heartbeat, one at a time
+PRE_PUSH = '''#!/bin/sh
+# Installed by kit/land.py (docs/parallel-landing.md): a push to main must come from kit/land.py, never a bare git push.
+gd="$(git rev-parse --absolute-git-dir)"
+input="$(cat)"
+echo "$input" | while read lref lsha rref rsha; do
+  if [ "$rref" = "refs/heads/main" ]; then
+    if [ -z "$LAND_PUSH_TOKEN" ] || [ "$LAND_PUSH_TOKEN" != "$(cat "$gd/land/push-token" 2>/dev/null)" ]; then
+      echo "push to main refused: land with python3 kit/land.py land <row> (method.md section 10, docs/parallel-landing.md)" >&2
+      exit 1
+    fi
+  fi
+done || exit 1
+if [ -x "$gd/hooks/pre-push" ]; then echo "$input" | "$gd/hooks/pre-push" "$@" || exit 1; fi
+exit 0
+'''
 
 
 class Stop(Exception):
@@ -91,6 +113,8 @@ def is_test():
 
 
 def hook(stage):
+    if is_test() and os.environ.get('LAND_TEST_CRASH') == stage:
+        raise RuntimeError(f'test crash at {stage}')
     cmd = os.environ.get(f'LAND_TEST_HOOK_{stage.upper()}')
     if cmd and is_test():
         r = subprocess.run(cmd, shell=True, cwd=ROOT)
@@ -105,7 +129,8 @@ def rowdir(row):
 # ---------------------------------------------------------------- git state
 
 def fetch():
-    git('fetch', '-q', 'origin', '+refs/heads/main:refs/remotes/origin/main')
+    with GITNET:
+        git('fetch', '-q', 'origin', '+refs/heads/main:refs/remotes/origin/main')
 
 
 def upstream():
@@ -186,7 +211,7 @@ def read_lock(rev):
 
 def commit_on(parent, files, msg):
     """A commit on parent changing only `files` (path -> bytes, None to delete), built in a temporary index."""
-    idx = ROOT / '.git' / f'land-index-{os.getpid()}'
+    idx = pathlib.Path(out('rev-parse', '--absolute-git-dir')) / f'land-index-{os.getpid()}-{threading.get_ident()}'
     env = {'GIT_INDEX_FILE': str(idx)}
     try:
         git('read-tree', parent, env=env)
@@ -202,9 +227,78 @@ def commit_on(parent, files, msg):
         idx.unlink(missing_ok=True)
 
 
+def localdir():
+    return pathlib.Path(out('rev-parse', '--absolute-git-dir')) / 'land'
+
+
+def push_token():
+    f = localdir() / 'push-token'
+    if not f.exists():
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_text(uuid.uuid4().hex)
+    return f.read_text().strip()
+
+
+def install_hook():
+    """The pre-push guard: core.hooksPath -> .git/land/hooks, whose pre-push refuses refs/heads/main unless the push
+    carries this clone's token (only land.py sets it). The clone's own hooks keep running (copied; pre-push chained).
+    `git push --no-verify` skips every pre-push hook: the guard stops accidents, not intent (docs)."""
+    hd = localdir() / 'hooks'
+    hd.mkdir(parents=True, exist_ok=True)
+    push_token()
+    (hd / 'pre-push').write_text(PRE_PUSH)
+    (hd / 'pre-push').chmod(0o755)
+    cur = git('config', '--get', 'core.hooksPath', check=False).stdout.strip()
+    if cur and pathlib.Path(cur).resolve() != hd.resolve():
+        say(f'WARNING: core.hooksPath is already {cur}: the push guard is not installed')
+        return False
+    if not cur:
+        old = localdir().parent / 'hooks'
+        for f in (old.iterdir() if old.exists() else []):
+            if f.is_file() and not f.name.endswith('.sample') and f.name != 'pre-push' and not (hd / f.name).exists():
+                shutil.copy2(f, hd / f.name)
+        git('config', 'core.hooksPath', str(hd))
+    return True
+
+
 def push(rev):
-    r = git('push', '-q', 'origin', f'{rev}:refs/heads/main', check=False)
+    with GITNET:
+        r = git('push', '-q', 'origin', f'{rev}:refs/heads/main', check=False, env={'LAND_PUSH_TOKEN': push_token()})
     return r.returncode == 0, (r.stderr.strip().splitlines() or [''])[-1]
+
+
+class Heartbeat(threading.Thread):
+    """While land holds the lock, re-touch it (a commit updating its utc, pushed alone) every few minutes, so a live
+    landing never looks stale; a lock no longer ours is reported to the main thread (lost)."""
+    def __init__(self, lock, every):
+        super().__init__(daemon=True)
+        self.lock, self.every, self.stop_ev, self.lost, self.beats = lock, every, threading.Event(), None, 0
+
+    def run(self):
+        while not self.stop_ev.wait(self.every):
+            try:
+                with GITNET:
+                    if self.stop_ev.is_set():
+                        return
+                    fetch()
+                    tip = upstream()
+                    lk = read_lock(tip)
+                    if not lk or lk.get('token') != self.lock.token:
+                        self.lost = lk or {'row': '(none)'}
+                        return
+                    body = dict(self.lock.body or {}, utc=now().isoformat(timespec='seconds'))
+                    ok, _ = push(commit_on(tip, {LOCK: (json.dumps(body, indent=1) + '\n').encode()},
+                                           f'land {self.lock.row}: lock heartbeat'))
+                    if ok:
+                        self.lock.body = body
+                        self.beats += 1
+            except Exception:
+                pass                                   # a missed beat is retried at the next one
+
+    def stop(self):
+        self.stop_ev.set()
+        if self.is_alive():
+            self.join(timeout=120)
 
 
 class Lock:
@@ -215,6 +309,7 @@ class Lock:
         self.mine = pathlib.Path(out('rev-parse', '--absolute-git-dir')) / 'land' / f'{row}-lock.json'
         self.held = False
         self.took_over = None
+        self.body = None
 
     def ours(self, lk):
         if lk.get('token') == self.token:
@@ -237,6 +332,7 @@ class Lock:
             lk = read_lock(tip)
             if lk and self.ours(lk):
                 self.held = True
+                self.body = {k: v for k, v in lk.items() if not k.startswith('_')}
                 say(f'lock already ours (row {self.row}, from an earlier run in this clone)')
                 return
             if lk and lk['_age_min'] < self.o.stale_minutes:
@@ -260,6 +356,7 @@ class Lock:
             ok, err = push(sha)
             if ok:
                 self.held = True
+                self.body = body
                 self.mine.parent.mkdir(parents=True, exist_ok=True)
                 self.mine.write_text(json.dumps({'token': self.token, 'utc': body['utc']}) + '\n')
                 say(f'lock taken ({sha[:9]})' + (f" after taking over the stale lock of row {lk.get('row')}" if lk else ''))
@@ -286,6 +383,8 @@ class Lock:
                     return 'released'
             except Stop as e:
                 err = e.what
+            except Exception as e:
+                err = f'{e.__class__.__name__}: {e}'
             time.sleep(random.uniform(*self.o.jitter))
         say(f'LOCK NOT RELEASED ({err}); run: python3 kit/land.py unlock {self.row}')
         return 'NOT released'
@@ -461,14 +560,18 @@ def keyed_resolver(ctx):
                     f'out/{ctx.row}/land-notes.md')
                 ctx.note(f'docs/BACKLOG.md row {k}: prompt cell changed on both sides; regenerated by next_prompt.py '
                          f'on the merged tree. Ours was:\n\n{ov.rstrip()}')
-            elif bv and (uv is None or ov is None) and first_cells(uv or bv) == first_cells(ov or bv):
-                # one side closed (removed) the row, the other only refreshed its prompt cell: the removal stands
+            elif bv and ov is None and uv:
+                # we closed (removed) the row, upstream edited it: upstream's record is kept, for a human to reconcile
+                res[k] = uv
+                say(f'BACKLOG row {k}: removed by us but edited upstream: upstream\'s record kept; see '
+                    f'out/{ctx.row}/land-notes.md')
+                ctx.note(f'docs/BACKLOG.md row {k}: we removed it, but upstream edited it, so upstream\'s record was '
+                         f'kept. Close it again if it is done:\n\n{uv.rstrip()}')
+            elif bv and uv is None and ov and first_cells(ov) == first_cells(bv):
+                # upstream closed the row, we only refreshed its prompt cell: the removal stands, ours to the notes
                 res[k] = None
-                kept = ov if uv is None else uv
-                say(f'BACKLOG row {k}: removed by one side, prompt changed by the other: removed; the changed record '
-                    f'is in out/{ctx.row}/land-notes.md')
-                ctx.note(f'docs/BACKLOG.md row {k} was removed by {"upstream" if uv is None else "us"}; the other '
-                         f'side had changed its prompt cell to:\n\n{kept.rstrip()}')
+                say(f'BACKLOG row {k}: removed upstream, prompt changed by us: removed; ours in out/{ctx.row}/land-notes.md')
+                ctx.note(f'docs/BACKLOG.md row {k} was removed upstream; we had changed its prompt cell to:\n\n{ov.rstrip()}')
             else:
                 raise Unresolvable(f'row {k} changed on both sides:\n    upstream: {(uv or "(removed)").strip()[:160]}'
                                    f'\n    ours:     {(ov or "(removed)").strip()[:160]}')
@@ -573,43 +676,56 @@ def elem_key(raw, kind, opener):
     return json.dumps(v, sort_keys=True, default=repr)
 
 
-def merge_literal(tb, tu, to, spans, kind):
-    """Merge one literal (spans: (open, close) in b, u, o; None where absent) as data."""
+def elem_id(canon, opener):
+    """An element's identity: a dict entry by its key; a list element that is itself a list (a catalog.toml `planned`
+    row) by its first item; any other element by its value."""
+    v = json.loads(canon)
+    if opener == '{' or (isinstance(v, list) and v):
+        return json.dumps(v[0], sort_keys=True)
+    return canon
+
+
+def merge_literal(tb, tu, to, spans, kind, ctx, path):
+    """Merge one literal (spans: (open, close) in b, u, o) as data, element by element, keyed by elem_id: an element
+    one side added, changed or removed is taken from that side; the same element changed (or changed and removed) on
+    both sides stops. Order: theirs', ours' additions after theirs'."""
     (sb, su, so) = spans
     opener = tu[su[0]]
     def items(t, sp):
-        return [(t[s:e], elem_key(t[s:e], kind, opener)) for s, e in elements(t, *sp)] if sp else []
-    B, U, O = items(tb, sb), items(tu, su), items(to, so)
-    if [k for _, k in U] == [k for _, k in O]:
-        return tu[su[0]:su[1] + 1]
-    bk, uk, ok = ({k for _, k in X} for X in (B, U, O))
-    if opener == '{':   # dict: three-way by key
-        def kv(X):
-            return {json.dumps(json.loads(k)[0]): (r, k) for r, k in X}
-        Bd, Ud, Od = kv(B), kv(U), kv(O)
         res = []
-        for key in list(Ud) + [x for x in Od if x not in Ud]:
-            b_, u_, o_ = (D.get(key, (None, None))[1] for D in (Bd, Ud, Od))
-            if u_ == o_ or o_ == b_:
-                pick = Ud.get(key)
-            elif u_ == b_:
-                pick = Od.get(key)
-            else:
-                raise Unresolvable(f'key {key} changed on both sides')
-            if pick:
-                res.append(pick[0])
-    else:               # list or array: (base ∩ ours ∩ theirs) ∪ ours-added ∪ theirs-added, theirs' order
-        res = [r for r, k in U if k not in bk or k in ok]
-        keys = [k for r, k in U if k not in bk or k in ok]
-        prev = None
-        for r, k in O:
-            if k not in bk and k not in uk and k not in keys:
-                pos = keys.index(prev) + 1 if prev in keys else len(keys)
-                while pos < len(keys) and keys[pos] not in bk and keys[pos] not in ok:   # ours after theirs' insertions
-                    pos += 1
-                res.insert(pos, r); keys.insert(pos, k)
-            if k in keys:
-                prev = k
+        for s, e in (elements(t, *sp) if sp else []):
+            c = elem_key(t[s:e], kind, opener)
+            res.append((elem_id(c, opener), t[s:e], c))
+        ids = [i for i, _, _ in res]
+        if len(ids) != len(set(ids)):
+            raise Unresolvable(f'{path}: a literal holds the same element twice')
+        return res
+    B, U, O = items(tb, sb), items(tu, su), items(to, so)
+    if [c for _, _, c in U] == [c for _, _, c in O]:
+        return tu[su[0]:su[1] + 1]
+    Bd, Ud, Od = ({i: (r, c) for i, r, c in X} for X in (B, U, O))
+    pick = {}
+    for i in Bd.keys() | Ud.keys() | Od.keys():
+        b_, u_, o_ = (D.get(i, (None, None))[1] for D in (Bd, Ud, Od))
+        if u_ == o_ or o_ == b_:
+            pick[i] = Ud.get(i)
+        elif u_ == b_:
+            pick[i] = Od.get(i)
+        else:
+            raise Unresolvable(f'{path}: element {json.loads(i)!r} changed on both sides (or changed on one, removed on '
+                               f'the other):\n    upstream: {(Ud.get(i) or ("(removed)",))[0][:120]}\n'
+                               f'    ours:     {(Od.get(i) or ("(removed)",))[0][:120]}')
+    keys = [i for i, _, _ in U if pick.get(i)]
+    prev = None
+    for i, _, _ in O:
+        if pick.get(i) and i not in keys:
+            pos = keys.index(prev) + 1 if prev in keys else len(keys)
+            while pos < len(keys) and keys[pos] not in Bd and keys[pos] not in Od:   # ours after theirs' insertions
+                pos += 1
+            keys.insert(pos, i)
+        if i in keys:
+            prev = i
+    res = [pick[i][0] for i in keys]
     el = elements(tu, *su)
     inner = tu[su[0] + 1:su[1]]
     if el:
@@ -620,7 +736,19 @@ def merge_literal(tb, tu, to, spans, kind):
     if opener == '(' and len(res) == 1 and not suffix.lstrip().startswith(','):
         suffix = ',' + suffix
     body = prefix + sep.join(res) + suffix if res else ''
-    return tu[su[0]] + body + tu[su[1]]
+    merged = tu[su[0]] + body + tu[su[1]]
+    # the literal was re-rendered on purpose: upstream's lines of it that the rendering replaced count as preserved,
+    # but only when every element upstream added or changed is in the result
+    if all(pick.get(i) == Ud.get(i) for i in Ud if Ud[i][1] != (Bd.get(i) or (None, None))[1]):
+        line_start = tu.rfind('\n', 0, su[0]) + 1
+        line_end = tu.find('\n', su[1]); line_end = len(tu) if line_end < 0 else line_end
+        old = tu[line_start:line_end]
+        new = old[:su[0] - line_start] + merged + old[su[1] + 1 - line_start:]
+        kept = {l.strip() for l in new.splitlines()}
+        for l in old.splitlines():
+            if keep(l) and l.strip() not in kept:
+                ctx.superseded.add((path, l.strip()))
+    return merged
 
 
 def structured_merge(b, u, o, kind, ctx, path):
@@ -637,7 +765,7 @@ def structured_merge(b, u, o, kind, ctx, path):
         lid = m.group(1)
         sb, su, so = (l.get(lid) for l in L)
         if su and so:
-            return merge_literal(b, u, o, (sb, su, so), kind)
+            return merge_literal(b, u, o, (sb, su, so), kind, ctx, path)
         t, s = (u, su) if su else (o, so)
         return t[s[0]:s[1] + 1]
     return re.sub(r'\0([^\0]+)\0', fill, merged)
@@ -679,7 +807,13 @@ def merge_rows(B, U, O, key, content, ctx, what):
     for r in U:
         k = key(r)
         if k in Bd and k not in Od:
-            continue                                   # removed (closed) by ours
+            if content(r) == content(Bd[k]):
+                if r != Bd[k] and keep(r):             # upstream only renumbered it: the renumbering rule, on purpose
+                    ctx.superseded.add((SITE_LOG, r.strip()))
+                continue                               # removed (closed) by ours, untouched upstream
+            # closed by ours but edited upstream: upstream's row is kept, for a human to reconcile
+            ctx.note(f'{SITE_LOG} {what} {k}: removed by us, but upstream edited it; upstream\'s row was kept:\n\n{r.rstrip()}')
+            say(f'site log {what} {k}: removed by us but edited upstream: upstream\'s row kept; see out/{ctx.row}/land-notes.md')
         o = Od.get(k)
         if o is not None and content(o) != content(r):
             base = Bd.get(k)
@@ -692,6 +826,8 @@ def merge_rows(B, U, O, key, content, ctx, what):
     prev = None
     for r in O:
         k = key(r)
+        if k in Bd and k not in Ud and content(r) != content(Bd[k]):
+            ctx.note(f'{SITE_LOG} {what} {k}: we edited it, but upstream removed it; the removal stands. Ours was:\n\n{r.rstrip()}')
         if k not in Bd and k not in Ud:
             pos = keys.index(prev) + 1 if prev in keys else len(keys)
             while pos < len(keys) and keys[pos] not in Bd and keys[pos] not in Od:   # ours after theirs' additions
@@ -720,7 +856,13 @@ def merge_site_log(b, u, o, ctx):
     code = lambda r: split_cells(r)[1] if len(split_cells(r)) > 1 else r.strip()
     nxt = merge_rows(*(rows(x, t, 'Next') for x, t in zip(L, T)), key=code,
                      content=lambda r: split_cells(r)[1:], ctx=ctx, what='Next row')
-    nxt = [f'| {n} | ' + ' | '.join(split_cells(r)[1:]) + ' |\n' for n, r in enumerate(nxt, 1)]
+    renum = [f'| {n} | ' + ' | '.join(split_cells(r)[1:]) + ' |\n' for n, r in enumerate(nxt, 1)]
+    # renumbering rewrites upstream's Next rows on purpose: a row whose number alone changed counts as preserved
+    out_content = {tuple(split_cells(r)[1:]) for r in renum}
+    for r in rows(L[1], T[1], 'Next'):
+        if keep(r) and r not in renum and tuple(split_cells(r)[1:]) in out_content:
+            ctx.superseded.add((SITE_LOG, r.strip()))
+    nxt = renum
     done = merge_rows(*(rows(x, t, 'Done') for x, t in zip(L, T)), key=lambda r: tuple(split_cells(r)[:2]),
                       content=lambda r: split_cells(r), ctx=ctx, what='Done row')
     return merged.replace('\0Next\0\n', ''.join(nxt)).replace('\0Done\0\n', ''.join(done))
@@ -814,10 +956,8 @@ def resolve_file(path, ctx):
     else:
         raise Unresolvable('not a file the script may merge')
     validate(path, m, u, o)
-    mlines = collections.Counter(l.strip() for l in m.splitlines())
-    for l in u.splitlines():
-        if keep(l) and mlines[l.strip()] == 0:
-            ctx.superseded.add((path, l.strip()))
+    # no blanket excuse: an upstream line this merge dropped counts as preserved only where a rule marked it on
+    # purpose (ctx.superseded: a renumbered Next row, a re-rendered literal, a regenerated prompt)
     (ROOT / path).write_text(m, encoding='utf-8')
     return kind
 
@@ -1190,36 +1330,47 @@ def integrate(row, start, up, o, expected, drops, rep, ctx, lock_row, orig):
 # ---------------------------------------------------------------- commands
 
 def load_start(row):
+    """The start commit: this clone's own record (.git/land/started/<row>.json, written by `start`, never committed);
+    else an untracked out/<row>/land-start.json (a committed one may be another chat's); else the oldest reflog entry."""
+    rec = localdir() / 'started' / f'{row}.json'
+    if rec.exists():
+        try:
+            return json.loads(rec.read_text())['start'], f'.git/land/started/{row}.json'
+        except (ValueError, KeyError):
+            raise Stop(f'the start record {rec} is unreadable', f'run: python3 kit/land.py start {row} --reset --at <the sha you cloned at>')
     f = rowdir(row) / 'land-start.json'
-    if f.exists():
-        return json.loads(f.read_text())['start'], 'out/' + row + '/land-start.json'
-    # no start file: origin/main as first fetched into this clone (the oldest reflog entry)
+    if f.exists() and git('ls-files', '--error-unmatch', str(f.relative_to(ROOT)), check=False).returncode:
+        try:
+            return json.loads(f.read_text())['start'], f'out/{row}/land-start.json'
+        except (ValueError, KeyError):
+            raise Stop(f'{f.relative_to(ROOT)} is unreadable', f'run: python3 kit/land.py start {row} --reset --at <sha>')
+    # no start record: origin/main as first fetched into this clone (the oldest reflog entry)
     r = git('reflog', 'show', '--format=%H', 'refs/remotes/origin/main', check=False)
     shas = r.stdout.split()
     if r.returncode or not shas:
         raise Stop(f'no start commit for row {row}', f'run: python3 kit/land.py start {row} --at <the sha you cloned at>')
-    return shas[-1], 'the oldest reflog entry of origin/main (no land-start.json: run start next time)'
-
-
-def localdir():
-    return pathlib.Path(out('rev-parse', '--absolute-git-dir')) / 'land'
+    return shas[-1], 'the oldest reflog entry of origin/main (no start record: run start next time)'
 
 
 def cmd_start(a):
     fetch()
-    f = rowdir(a.row) / 'land-start.json'
-    if f.exists() and not a.reset:
-        say(f"start already recorded: {json.loads(f.read_text())['start'][:9]} ({f.relative_to(ROOT)}); --reset replaces it")
-        return EXIT_OK
+    install_hook()
+    rec = localdir() / 'started' / f'{a.row}.json'   # this clone's record of rows started: never committed, never pushed
+    if rec.exists() and not a.reset:
+        try:
+            say(f"start already recorded: {json.loads(rec.read_text())['start'][:9]} (.git/land/started/{a.row}.json); --reset replaces it")
+            return EXIT_OK
+        except (ValueError, KeyError):
+            raise Stop(f'the start record {rec} is unreadable', f'run: python3 kit/land.py start {a.row} --reset')
     sha = out('rev-parse', a.at) if a.at else upstream()
+    body = json.dumps({'row': a.row, 'start': sha, 'utc': now().isoformat(timespec='seconds'),
+                       'host': socket.gethostname(), 'head': out('rev-parse', 'HEAD')}, indent=1) + '\n'
+    rec.parent.mkdir(parents=True, exist_ok=True)
+    rec.write_text(body)
+    f = rowdir(a.row) / 'land-start.json'          # a copy for people to read; gitignored, never read when tracked
     f.parent.mkdir(parents=True, exist_ok=True)
-    rec = json.dumps({'row': a.row, 'start': sha, 'utc': now().isoformat(timespec='seconds'),
-                      'host': socket.gethostname(), 'head': out('rev-parse', 'HEAD')}, indent=1) + '\n'
-    f.write_text(rec)
-    started = localdir() / 'started'                 # this clone's record of rows started: never committed, never pushed
-    started.mkdir(parents=True, exist_ok=True)
-    (started / f'{a.row}.json').write_text(rec)
-    say(f'start {sha[:9]} recorded in {f.relative_to(ROOT)}')
+    f.write_text(body)
+    say(f'start {sha[:9]} recorded in .git/land/started/{a.row}.json; push guard installed (bare pushes to main refused)')
     return EXIT_OK
 
 
@@ -1228,7 +1379,7 @@ def cmd_status(a):
     up = upstream()
     lk = read_lock(up)
     say('lock: free' if not lk else f"lock: row {lk.get('row')} on {lk.get('host')}, {lk['_age_min']:.1f} min old"
-        + (' (STALE)' if lk['_age_min'] >= 90 else ''))
+        + (f' (STALE: older than {STALE_MIN} min)' if lk['_age_min'] >= STALE_MIN else ''))
     try:
         start, src = load_start(a.row) if a.row else (out('merge-base', 'HEAD', up), 'merge-base of HEAD and origin/main')
     except Stop as e:
@@ -1252,6 +1403,8 @@ def cmd_status(a):
 
 
 def cmd_unlock(a):
+    """Remove the lock if this clone holds its token (a run of this row was killed). Without the token: only with
+    --force, which is for a human who has made sure the holder is dead (a stale lock is taken over anyway)."""
     fetch()
     up = upstream()
     lk = read_lock(up)
@@ -1261,7 +1414,16 @@ def cmd_unlock(a):
     if lk.get('row') != a.row:
         say(f"the lock names row {lk.get('row')}, not {a.row}: not removed")
         return EXIT_STOP
-    ok, err = push(commit_on(up, {LOCK: None}, f'land {a.row}: unlock (by hand)'))
+    try:
+        mine = json.loads((localdir() / f'{a.row}-lock.json').read_text())['token']
+    except (OSError, ValueError, KeyError):
+        mine = None
+    if lk.get('token') != mine and not a.force:
+        say(f"this clone does not hold the lock of row {a.row} (no matching token): not removed")
+        say(f"to do: if its landing is live, wait; it is stale after {STALE_MIN} min untouched and then taken over. "
+            "Only a human who has made sure the holder is dead runs unlock with --force")
+        return EXIT_STOP
+    ok, err = push(commit_on(up, {LOCK: None}, f'land {a.row}: unlock (by hand{", forced" if lk.get("token") != mine else ""})'))
     say('lock removed' if ok else f'push rejected ({err}): run again')
     return EXIT_OK if ok else EXIT_STOP
 
@@ -1281,12 +1443,17 @@ def cmd_land(a):
     if out('rev-parse', '--abbrev-ref', 'HEAD') == 'HEAD':
         raise Stop('HEAD is detached', 'check out your branch (main), then land again')
     expected, drops = read_expected(a.expected)
+    install_hook()
     fetch()
     start, src = load_start(a.row)
     up = upstream()
     if not is_ancestor(start, up) or not is_ancestor(start, 'HEAD'):
         raise Stop(f'start {start[:9]} is not an ancestor of both origin/main and HEAD', 'ask Pedro: main was rewritten?')
     if is_ancestor('HEAD', up):
+        lk, own = read_lock(up), Lock(a.row, a)
+        if lk and own.ours(lk):                       # an earlier run of this row landed, then could not release
+            own.held = True
+            say(f'an earlier run of row {a.row} left its lock on main: {own.release()}')
         say('nothing to land: HEAD is already in origin/main')
         return EXIT_OK
     orig = out('rev-parse', 'HEAD')
@@ -1296,12 +1463,14 @@ def cmd_land(a):
     if ours_del & up_mod:
         raise Stop('files we deleted were changed upstream since our start:\n  ' + '\n  '.join(sorted(ours_del & up_mod)),
                    'restore them (keep upstream\'s version) or agree the deletion with the row that changed them')
-    rep = {'merged': {}, 'regen': False, 'attempts': 0}
+    rep = {'merged': {}, 'regen': False, 'attempts': 0, 'beats_rebased': 0}
     lock = Lock(a.row, a)
     ctx = Ctx(a.row)
+    hb = Heartbeat(lock, a.heartbeat_seconds)
     pushed = None
     try:
         lock.acquire()
+        hb.start()
         hook('after_lock')
         while rep['attempts'] < MAX_ATTEMPTS:
             rep['attempts'] += 1
@@ -1309,7 +1478,25 @@ def cmd_land(a):
             up = upstream()
             integrate(a.row, start, up, a, expected, drops, rep, ctx, a.row, orig)
             hook('before_push')
-            ok, err = push('HEAD')
+            for _ in range(20):
+                if hb.lost:
+                    raise Stop(f"the lock was taken from us (now: row {hb.lost.get('row')})",
+                               'someone took over the lock as stale: check `python3 kit/land.py status`, then land again')
+                ok, err = push('HEAD')
+                if ok:
+                    break
+                # main moved: if only by our own lock heartbeats, move onto them without redoing the checks
+                fetch()
+                nu = upstream()
+                if is_ancestor(up, nu) and set(changed(up, nu)) <= {LOCK} and \
+                        all(re.match(r'^\w+ land [^ ]+: lock', s) for s in subjects(up, nu)):
+                    if git('rebase', '-q', nu, check=False).returncode:
+                        git('rebase', '--abort', check=False)
+                        break
+                    up = nu
+                    rep['beats_rebased'] += 1
+                    continue
+                break
             if ok:
                 pushed = out('rev-parse', 'HEAD')
                 rep['up'] = up
@@ -1319,41 +1506,62 @@ def cmd_land(a):
         else:
             raise Stop(f'{MAX_ATTEMPTS} pushes rejected', 'someone is pushing without the lock: find out who, then land again')
     except BaseException:
-        if rebase_dir():
-            git('rebase', '--abort', check=False)
-        if out('rev-parse', 'HEAD') != orig:
-            git('reset', '-q', '--hard', orig)
-            say(f'branch {branch} restored to {orig[:9]}')
+        if pushed is None:
+            if rebase_dir():
+                git('rebase', '--abort', check=False)
+            if out('rev-parse', 'HEAD') != orig:
+                git('reset', '-q', '--hard', orig)
+                say(f'branch {branch} restored to {orig[:9]}')
         raise
     finally:
+        hb.stop()
         rel = lock.release()
         ctx.flush()
-    fetch()
-    git('merge', '-q', '--ff-only', 'refs/remotes/origin/main', check=False)
+    # landed: from here nothing may turn the exit code into a failure, only into a warning
+    warnings = []
+    if rel not in ('released', 'already gone'):
+        warnings.append(f'lock {rel}: run `python3 kit/land.py unlock {a.row}` from this clone (it holds the token), '
+                        f'or it goes stale after {STALE_MIN} min')
+    try:
+        fetch()
+        git('merge', '-q', '--ff-only', 'refs/remotes/origin/main', check=False)
+    except Exception as e:
+        warnings.append(f'could not fetch after landing ({str(e)[:120]}): run `git pull --ff-only` before publishing')
+    try:
+        lines = report(a, start, src, rep, ctx, lock, rel, pushed)
+        print('\n'.join(lines), flush=True)
+        f = rowdir(a.row) / 'landing-report.md'
+        f.parent.mkdir(parents=True, exist_ok=True)
+        with f.open('a', encoding='utf-8') as fh:
+            fh.write('\n'.join(lines) + '\n')
+        say(f'landed {pushed[:9]}; report appended to {f.relative_to(ROOT)} (commit it with your next landing)')
+    except Exception as e:
+        say(f'landed {pushed[:9]}; the report could not be written ({e.__class__.__name__}: {e})')
+    for w in warnings:
+        say('WARNING (landed anyway): ' + w)
+    return EXIT_OK
+
+
+def report(a, start, src, rep, ctx, lock, rel, pushed):
     pv = rep.get('preserved', {})
     absorbed = [s for s in subjects(start, rep['up']) if not re.match(r'^\w+ land [^ ]+: (un)?lock', s)]
-    lines = [f'## land {a.row} · {now().isoformat(timespec="seconds")}', '',
-             f'- start: {start[:9]} ({src})',
-             f'- upstream commits absorbed: {len(absorbed)}', *[f'  - {s}' for s in absorbed],
-             f'- lines preserved: {pv.get("checked", 0)} upstream-added lines in {pv.get("files", 0)} files, all present'
-             + (f'; {len(pv["review"])} changed by us, review:' if pv.get('review') else ''),
-             *[f'  - {x}' for x in pv.get('review', [])],
-             *([f'- accepted drops (--expected): {len(pv["accepted"])}'] + [f'  - {x}' for x in pv['accepted']] if pv.get('accepted') else []),
-             *([f'- upstream lines rewritten by an automatic merge (counted as preserved): {len(pv["auto"])}'] + [f'  - {x}' for x in pv['auto']] if pv.get('auto') else []),
-             *([f'- notes for a human: {len(ctx.notes)}, in out/{a.row}/land-notes.md'] if ctx.notes else []),
-             f'- saved row prompts: {rep.get("prompts", "no merge, not checked")}',
-             f'- files auto-merged: ' + (', '.join(f'{p} ({h})' for p, h in sorted(rep['merged'].items())) or 'none'),
-             f'- baseline: {rep.get("baseline")}' + (f'; same-key build outputs taken from upstream and rebuilt: {", ".join(ctx.baseline_taken)}' if ctx.baseline_taken else ''), f'- index_check: {rep.get("index", "not present")}',
-             f'- verify: {rep.get("verify")}',
-             f'- lock: {"took over a stale lock of row " + str(lock.took_over.get("row")) + " (" + str(lock.took_over.get("age_min")) + " min old); " if lock.took_over else ""}{rel}',
-             f'- push attempts: {rep["attempts"]}', f'- pushed: {pushed}', '']
-    print('\n'.join(lines), flush=True)
-    f = rowdir(a.row) / 'landing-report.md'
-    f.parent.mkdir(parents=True, exist_ok=True)
-    with f.open('a', encoding='utf-8') as fh:
-        fh.write('\n'.join(lines) + '\n')
-    say(f'landed {pushed[:9]}; report appended to {f.relative_to(ROOT)} (untracked: commit it with your next landing)')
-    return EXIT_OK
+    return [f'## land {a.row} · {now().isoformat(timespec="seconds")}', '',
+            f'- start: {start[:9]} ({src})',
+            f'- upstream commits absorbed: {len(absorbed)}', *[f'  - {s}' for s in absorbed],
+            f'- lines preserved: {pv.get("checked", 0)} upstream-added lines in {pv.get("files", 0)} files, all present'
+            + (f'; {len(pv["review"])} changed by us, review:' if pv.get('review') else ''),
+            *[f'  - {x}' for x in pv.get('review', [])],
+            *([f'- accepted drops (--expected): {len(pv["accepted"])}'] + [f'  - {x}' for x in pv['accepted']] if pv.get('accepted') else []),
+            *([f'- upstream lines a merge rule rewrote on purpose (renumbered, re-rendered, regenerated; counted as preserved): {len(pv["auto"])}'] + [f'  - {x}' for x in pv['auto']] if pv.get('auto') else []),
+            *([f'- notes for a human: {len(ctx.notes)}, in out/{a.row}/land-notes.md'] if ctx.notes else []),
+            f'- saved row prompts: {rep.get("prompts", "no merge, not checked")}',
+            f'- files auto-merged: ' + (', '.join(f'{p} ({h})' for p, h in sorted(rep['merged'].items())) or 'none'),
+            f'- baseline: {rep.get("baseline")}' + (f'; same-key build outputs taken from upstream and rebuilt: {", ".join(ctx.baseline_taken)}' if ctx.baseline_taken else ''),
+            f'- index_check: {rep.get("index", "not present")}',
+            f'- verify: {rep.get("verify")}',
+            f'- lock: {"took over a stale lock of row " + str(lock.took_over.get("row")) + " (" + str(lock.took_over.get("age_min")) + " min old); " if lock.took_over else ""}{rel}'
+            + (f'; moved onto {rep["beats_rebased"]} of our own lock heartbeats before the push' if rep.get('beats_rebased') else ''),
+            f'- push attempts: {rep["attempts"]}', f'- pushed: {pushed}', '']
 
 
 def main(argv=None):
@@ -1361,19 +1569,20 @@ def main(argv=None):
     sub = p.add_subparsers(dest='cmd', required=True)
     s = sub.add_parser('start'); s.add_argument('row'); s.add_argument('--at'); s.add_argument('--reset', action='store_true')
     s = sub.add_parser('status'); s.add_argument('row', nargs='?')
-    s = sub.add_parser('unlock'); s.add_argument('row')
+    s = sub.add_parser('unlock'); s.add_argument('row'); s.add_argument('--force', action='store_true')
     s = sub.add_parser('land'); s.add_argument('row'); s.add_argument('--expected')
     s.add_argument('--no-build', action='store_true'); s.add_argument('--no-verify', action='store_true')
     s.add_argument('--poll-seconds', type=float); s.add_argument('--wait-minutes', type=float)
-    s.add_argument('--stale-minutes', type=float)
+    s.add_argument('--stale-minutes', type=float); s.add_argument('--heartbeat-seconds', type=float)
     a = p.parse_args(argv)
     if getattr(a, 'row', None) and not re.fullmatch(r'[A-Za-z0-9._-]+', a.row):
         p.error('row: letters, digits, . _ - only')
     if a.cmd == 'land':
-        a.test_timing = any(v is not None for v in (a.poll_seconds, a.wait_minutes, a.stale_minutes))
+        a.test_timing = any(v is not None for v in (a.poll_seconds, a.wait_minutes, a.stale_minutes, a.heartbeat_seconds))
         a.poll_seconds = 30 if a.poll_seconds is None else a.poll_seconds
-        a.wait_minutes = 40 if a.wait_minutes is None else a.wait_minutes
-        a.stale_minutes = 90 if a.stale_minutes is None else a.stale_minutes
+        a.wait_minutes = WAIT_MIN if a.wait_minutes is None else a.wait_minutes
+        a.stale_minutes = STALE_MIN if a.stale_minutes is None else a.stale_minutes
+        a.heartbeat_seconds = HEARTBEAT_S if a.heartbeat_seconds is None else a.heartbeat_seconds
         a.jitter = (0.2, 1.0) if a.test_timing else (1.0, 6.0)
     for sig in (signal.SIGTERM, signal.SIGHUP):
         signal.signal(sig, lambda n, f: (_ for _ in ()).throw(KeyboardInterrupt(f'signal {n}')))
@@ -1390,6 +1599,10 @@ def main(argv=None):
         return EXIT_TIMEOUT
     except KeyboardInterrupt as e:
         say(f'interrupted ({e}); lock released if it was held')
+        return EXIT_STOP
+    except Exception as e:                            # never a traceback: a clean stop (the lock is released in land's finally)
+        say(f'STOPPED: unexpected error: {e.__class__.__name__}: {str(e)[:400]}')
+        say('to do: nothing was landed unless the output above says "landed"; run `python3 kit/land.py status`, then report this')
         return EXIT_STOP
 
 

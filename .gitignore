@@ -4,3 +4,4 @@ __pycache__/
 *.zip
 kit/shots/
 kit/editions/
+out/*/land-start.json
