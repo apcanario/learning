@@ -4,7 +4,7 @@
 
 **Purpose.** Every course he runs is written, checked and filed here, and Academy, the one site that holds them all, kept current: Personal Mythology (Greece, Rome), Brand + AI (A, B), User Experience, and the public courses PB · Personal Brand, BW · Building with AI and SP · Sport Psychology for Coaches. `courses-index.md` says what is written and what is next.
 
-**Repo.** The private repo `apcanario/learning` is canonical. A chat clones it and ends with a commit and push. The Project's knowledge files are mirrors of it; units are not mirrored.
+**Repo.** The private repo `apcanario/learning` is canonical. A chat clones it, runs `python3 kit/land.py start <row>`, and ends with a commit landed by `python3 kit/land.py land <row>` (method §10; never a bare push); Academy is published only after the landing. The Project's knowledge files are mirrors of it; units are not mirrored.
 
 **Method.** `method.md` is the method; follow it and the skills `write-unit`, `audit-units`, `file-unit` and `new-course`. One chat per unit (an isolated agent context counts as its own chat), models and the thin main chat: §4. Fresh check: §5. Staleness check: §6. Filing and figures: §7. Backlog and changelog: §8.
 

@@ -1468,6 +1468,7 @@ def cmd_land(a):
     ctx = Ctx(a.row)
     hb = Heartbeat(lock, a.heartbeat_seconds)
     pushed = None
+    late = []
     try:
         lock.acquire()
         hb.start()
@@ -1484,12 +1485,20 @@ def cmd_land(a):
                                'someone took over the lock as stale: check `python3 kit/land.py status`, then land again')
                 ok, err = push('HEAD')
                 if ok:
+                    pushed = out('rev-parse', 'HEAD')      # landed: from here on, nothing can make it a failure
+                    rep['up'] = up
+                    hook('after_push')
                     break
-                # main moved: if only by our own lock heartbeats, move onto them without redoing the checks
+                # main moved: if only by OUR OWN lock heartbeats (this row's subject and our token still on main), move
+                # onto them without redoing the checks; a lock commit of anyone else means the lock was taken from us
                 fetch()
                 nu = upstream()
+                if hb.lost or ((read_lock(nu) or {}).get('token') != lock.token):
+                    holder = hb.lost or read_lock(nu) or {'row': '(none)'}
+                    raise Stop(f"the lock was taken from us (now: row {holder.get('row')})",
+                               'someone took over the lock as stale: check `python3 kit/land.py status`, then land again')
                 if is_ancestor(up, nu) and set(changed(up, nu)) <= {LOCK} and \
-                        all(re.match(r'^\w+ land [^ ]+: lock', s) for s in subjects(up, nu)):
+                        all(s.split(' ', 1)[1] == f'land {a.row}: lock heartbeat' for s in subjects(up, nu)):
                     if git('rebase', '-q', nu, check=False).returncode:
                         git('rebase', '--abort', check=False)
                         break
@@ -1498,27 +1507,46 @@ def cmd_land(a):
                     continue
                 break
             if ok:
-                pushed = out('rev-parse', 'HEAD')
-                rep['up'] = up
                 break
             say(f'push rejected (attempt {rep["attempts"]} of {MAX_ATTEMPTS}): {err}; fetching and going round again')
             time.sleep(random.uniform(*a.jitter))
         else:
             raise Stop(f'{MAX_ATTEMPTS} pushes rejected', 'someone is pushing without the lock: find out who, then land again')
-    except BaseException:
+    except BaseException as e:
         if pushed is None:
             if rebase_dir():
                 git('rebase', '--abort', check=False)
             if out('rev-parse', 'HEAD') != orig:
                 git('reset', '-q', '--hard', orig)
                 say(f'branch {branch} restored to {orig[:9]}')
-        raise
+            raise
+        late.append(f'interrupted after the push ({e.__class__.__name__}: {str(e)[:120]})')
     finally:
-        hb.stop()
-        rel = lock.release()
-        ctx.flush()
+        rel = 'NOT released'
+        try:
+            hb.stop()
+            rel = lock.release()
+        except BaseException as e:
+            if pushed is None:
+                raise
+            late.append(f'releasing the lock failed ({e.__class__.__name__})')
+        try:
+            ctx.flush()
+        except BaseException as e:
+            if pushed is None:
+                raise
+            late.append(f'out/{a.row}/land-notes.md could not be written ({e.__class__.__name__}: {str(e)[:120]})')
     # landed: from here nothing may turn the exit code into a failure, only into a warning
-    warnings = []
+    try:
+        return after_push(a, start, src, rep, ctx, lock, rel, pushed, late)
+    except BaseException as e:                         # SIGTERM, Ctrl-C or anything else after the push
+        say(f'landed {pushed[:9]}; WARNING (landed anyway): stopped while finishing ({e.__class__.__name__}); '
+            'run `python3 kit/land.py status` and `git pull --ff-only`')
+        return EXIT_OK
+
+
+def after_push(a, start, src, rep, ctx, lock, rel, pushed, late):
+    warnings = list(late)
     if rel not in ('released', 'already gone'):
         warnings.append(f'lock {rel}: run `python3 kit/land.py unlock {a.row}` from this clone (it holds the token), '
                         f'or it goes stale after {STALE_MIN} min')
