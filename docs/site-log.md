@@ -14,25 +14,24 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | SCE2 | Supply Chain | Write SCE2, Inbound and storage, for Supply Chain Execution for Product Teams. |
-| 2 | SCE3 | Supply Chain | Write SCE3, Outbound: release, pick, pack, ship, for Supply Chain Execution for Product Teams. |
-| 3 | SCE4 | Supply Chain | Write SCE4, Inventory and control, for Supply Chain Execution for Product Teams. |
-| 4 | SCE5 | Supply Chain | Write SCE5, The floor: people, devices and machines, for Supply Chain Execution for Product Teams. |
-| 5 | SCE6 | Supply Chain | Write SCE6, The warehouse system as a product, for Supply Chain Execution for Product Teams. |
-| 6 | SCE7 | Supply Chain | Write SCE7, Transportation in practice, for Supply Chain Execution for Product Teams. |
-| 7 | SCE8 | Supply Chain | Write SCE8, The transport system as a product, for Supply Chain Execution for Product Teams. |
-| 8 | SCE9 | Supply Chain | Write SCE9, Order management, for Supply Chain Execution for Product Teams. |
-| 9 | SCE10 | Supply Chain | Write SCE10, The seams, for Supply Chain Execution for Product Teams. |
-| 10 | SCE11 | Supply Chain | Write SCE11, The buying committee, for Supply Chain Execution for Product Teams. |
-| 11 | SCE12 | Supply Chain | Write SCE12, The sale, for Supply Chain Execution for Product Teams. |
-| 12 | SCE13 | Supply Chain | Write SCE13, Users by role, for Supply Chain Execution for Product Teams. |
-| 13 | SCE14 | Supply Chain | Write SCE14, Implementers and administrators, for Supply Chain Execution for Product Teams. |
-| 14 | SCE15 | Supply Chain | Write SCE15, Demo versus shift, for Supply Chain Execution for Product Teams. |
-| 15 | SCE16 | Supply Chain | Write SCE16, Money, for Supply Chain Execution for Product Teams. |
-| 16 | SCE17 | Supply Chain | Write SCE17, Reading the field, for Supply Chain Execution for Product Teams. |
-| 17 | SCE18 | Supply Chain | Write SCE18, Capstone: one strategy memo, for Supply Chain Execution for Product Teams. |
-| 18 | DD-SCE1 | Supply Chain | Write DD-SCE1, Deep dive: the logistics provider's business, for Supply Chain Execution for Product Teams. |
-| 19 | DD-SCE2 | Supply Chain | Write DD-SCE2, Deep dive: peak and exceptions, for Supply Chain Execution for Product Teams. |
+| 1 | SCE3 | Supply Chain | Write SCE3, Outbound: release, pick, pack, ship, for Supply Chain Execution for Product Teams. |
+| 2 | SCE4 | Supply Chain | Write SCE4, Inventory and control, for Supply Chain Execution for Product Teams. |
+| 3 | SCE5 | Supply Chain | Write SCE5, The floor: people, devices and machines, for Supply Chain Execution for Product Teams. |
+| 4 | SCE6 | Supply Chain | Write SCE6, The warehouse system as a product, for Supply Chain Execution for Product Teams. |
+| 5 | SCE7 | Supply Chain | Write SCE7, Transportation in practice, for Supply Chain Execution for Product Teams. |
+| 6 | SCE8 | Supply Chain | Write SCE8, The transport system as a product, for Supply Chain Execution for Product Teams. |
+| 7 | SCE9 | Supply Chain | Write SCE9, Order management, for Supply Chain Execution for Product Teams. |
+| 8 | SCE10 | Supply Chain | Write SCE10, The seams, for Supply Chain Execution for Product Teams. |
+| 9 | SCE11 | Supply Chain | Write SCE11, The buying committee, for Supply Chain Execution for Product Teams. |
+| 10 | SCE12 | Supply Chain | Write SCE12, The sale, for Supply Chain Execution for Product Teams. |
+| 11 | SCE13 | Supply Chain | Write SCE13, Users by role, for Supply Chain Execution for Product Teams. |
+| 12 | SCE14 | Supply Chain | Write SCE14, Implementers and administrators, for Supply Chain Execution for Product Teams. |
+| 13 | SCE15 | Supply Chain | Write SCE15, Demo versus shift, for Supply Chain Execution for Product Teams. |
+| 14 | SCE16 | Supply Chain | Write SCE16, Money, for Supply Chain Execution for Product Teams. |
+| 15 | SCE17 | Supply Chain | Write SCE17, Reading the field, for Supply Chain Execution for Product Teams. |
+| 16 | SCE18 | Supply Chain | Write SCE18, Capstone: one strategy memo, for Supply Chain Execution for Product Teams. |
+| 17 | DD-SCE1 | Supply Chain | Write DD-SCE1, Deep dive: the logistics provider's business, for Supply Chain Execution for Product Teams. |
+| 18 | DD-SCE2 | Supply Chain | Write DD-SCE2, Deep dive: peak and exceptions, for Supply Chain Execution for Product Teams. |
 
 ## Done
 
@@ -40,6 +39,7 @@ Rules for an entry (`docs/method.md` §8):
 |---|---|---|---|
 | 2026-11-21 | DD-SP3 | Sports | DD-SP3, Deep dive: tuning out the noise, written; course SP complete. |
 | 2026-11-21 | SCE1 | Supply Chain | SCE1, The map, the words and the evidence, written: the course's first unit, with the supply chain execution map, a glossary, and the key for grading evidence.
+| 2026-11-21 | SCE2 | Supply Chain | SCE2, Inbound and storage, written: from the truck at the gate to stock in a location, with an inbound flow map for two fictional warehouses and a blank one to fill in. |
 | 2026-11-19 | S-SCE0 | Supply Chain | Supply Chain Execution for Product Teams, a new course, added: 20 units to write; four more courses listed as coming soon in the Supply Chain track. |
 | 2026-11-19 | S-SPORTS | Sports | The Coaching area is renamed Sports, and lists two courses to come: Running a Squad, and Managing an Athlete's Career. |
 | 2026-11-19 | DD-SP2 | Sports | DD-SP2, Deep dive: weight, body and who decides, written; SP3, SP6 and DD-SP1 were also corrected. |

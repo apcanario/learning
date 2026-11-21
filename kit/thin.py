@@ -17,7 +17,8 @@ half-done change.
         checker unit.md, brief.txt, notes.md, unsure.md, the sourcing standard, the case file, skills/audit-units, the filed
                 units of the course (filed/, W-SCE2: for the unit's pointers to them);
                 with --sources F also sources.md (the writer's source log, S-SP0)
-        applier unit.md, report.md (the fresh-check report), fixes.json (made from the report by `fixes`)
+        applier unit.md, report.md (the fresh-check report), fixes.json (made from the report by `fixes`), the filed units of
+                the course (filed/) and, with --sources F, sources.md (W-SCE2: for the report's could-not-verify list)
         filer   unit.md, notes.md, unsure.md, report.md, the course's course.toml, syllabus-flags.md and case file, the course's rows
                 of docs/courses-index.md, a template of records.json, filer-rules.txt, the day's corrections reports of the course
                 (corrections/, --date, default today) and the stats files given with --stats (C4)
@@ -548,6 +549,12 @@ def cmd_stage(argv):
                 die(f'--{k} is required')
             put(opt[k], f'{k}.md')
         cmd_fixes(opt['report'], str(out / 'fixes.json'))
+        if 'sources' in opt:                                 # W-SCE2: the writer's source log, for the could-not-verify list
+            put(opt['sources'], 'sources.md')
+        (out / 'filed').mkdir()                              # W-SCE2: the course's filed units, for the unit's pointers to them
+        for x in r['order']:
+            if x in r['filed']:
+                put(r['filed'][x], 'filed/' + r['filed'][x].name)
         (out / 'out').mkdir()
     else:
         for k in ('unit', 'notes', 'unsure', 'report'):
