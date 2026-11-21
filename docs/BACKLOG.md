@@ -1847,6 +1847,7 @@ Standing rule (Pedro, 15 Nov 2026; `docs/method.md` §8 step 2): every proposal 
 | # | Proposal | ⚠ Disruption elsewhere |
 |---|---|---|
 | P-DEC24 | *Carried (DEC-A checker S1, P-DEC13 probe).* A mixed edition still fails the private-terms check on a private course's own text that lives in the shell: the unsplit panels of that course stay in `index.html` (probe: brand-ai with personal-brand fails 28 times before any plant; ux with personal-brand, 4 hits in ux-ia's changelog rows), plus its home tile, the root drawer and a What's new row. Drop a private course's `data-ctx` panels from the scan (the balanced-section walk of `verify_scope.panels()`), settle what the drawer, the home tiles and What's new may name, and say it in the run's output. Not needed until the first real mixed edition. | ⚠ None (`kit/private_terms.py`, `kit/verify.py`; no output change) |
+| P-DEC27 | *Carried (HK-2, P-DEC17 agent).* Tabler's upstream has moved past the recorded commit 58f60538: `kit/p95_library.py` stays pinned there (all SVG and relief files came out byte-identical). Decide whether to move the pin, which would re-measure the Tabler outlines and may change reliefs. ⚠ A moved pin can change a relief on any page that uses a Tabler outline, hence built output and a publish. |
 
 ## Proposed (awaiting Pedro's confirmation)
 
