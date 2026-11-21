@@ -15,7 +15,8 @@ history course with Greece's structure, a second history course, a markdown cour
 an edition without a history course runs the split on a markdown course (check_split_md). What's new's 10 to 25 levels
 hold for every edition whose largest day is 10 words or more (P-DEC15): the build draws an edition whose largest day is under 10 x NEW_INTERVAL words at its
 own scale (build.py new_interval, a tenth of that day), checked against that scale, and the run says so. Private terms: the
-default edition's public courses; another edition's own files, unless it holds a course marked `private`.
+default edition's public courses; another edition's own files, but for the folders of its courses marked `private`
+(P-DEC13; an edition of private courses only is not checked; a `dated_lists` course's pages as in academy, P-DEC10).
 The site is a shell plus one file per report (docs/academy.md A2), since P20 one file per syllabus and per Brand + AI
 briefs and bibliography page, and since P22 one file per history course home, so it is served over local HTTP from
 academy/, as the artifact and Pages serve it, and every pass that measures a fetched panel first navigates to it
@@ -187,7 +188,7 @@ SHELL_MAX = 1024 * 1024   # A2: the shell stays under 1 MB
 # S-DEC4 (20 Nov 2026): no course is named in this file. The checks that open a given course's pages read them from the
 # edition's own courses (courses/<id>/course.toml): its family, prefix, home and syllabus ids, number, short name and
 # label, its tracks (a markdown course's sub-courses), `unit_key`, and three keys kept for the checks: `private` (a
-# course of the owner's own, not public: an edition holding one is not checked for private terms over its own files),
+# course of the owner's own, not public: its pages are left out of an edition's private-terms check, P-DEC13),
 # `reliefs` (its pages draw object reliefs from design/outlines; was REL_COURSES) and `verify_sample` (its homes are the
 # ones the per-page passes sample: drawer, topography, motion, shots; an edition holding none samples every course).
 # A check that needs a property the edition's courses lack prints what it leaves out and why.
@@ -2999,18 +3000,22 @@ def main():
     print('courses-index.md: ' + (f'{len(ix)} mismatches' if ix else 'matches the sources'))
     # G-0 (11 Nov 2026): no private term in a public course's vault, data folder or built pages. S-DEC4: the default
     # edition (Academy) as before, its public courses (private_terms.py with no argument); another edition over its own
-    # built files (private_terms.py --edition), unless it holds a course marked `private` in its course.toml (the
-    # owner's own courses, which name him), where it is left out and said so
+    # built files (private_terms.py --edition; a `dated_lists` course's pages as academy's, P-DEC10). An edition holding
+    # only courses marked `private` in their course.toml (the owner's own courses, which name him) is left out and said
+    # so; a mixed edition (P-DEC13) is checked over every file but the private courses' folders, which it names
     if EDITION == DEFAULT_EDITION:
         pt = private_terms.check()
         fails += ['private term in a public course: ' + x for x in pt]
         print('private terms in the public courses: ' + (f'{len(pt)} found' if pt else 'none'))
-    elif PRIVATE:
+    elif PRIVATE and len(PRIVATE) == len(COURSES):
         print(f'private terms: edition {EDITION} holds a private course ({", ".join(PRIVATE)}), which names its owner; its files are not checked (the public courses are, in the default edition)')
     else:
-        fs = private_terms.text_only(private_terms.edition_files(EDITION))
+        fs = private_terms.text_only(private_terms.edition_files(EDITION, skip=PRIVATE))
         pt = private_terms.scan(fs)[0]
         fails += ['private term in the edition: ' + x for x in pt]
+        if PRIVATE:
+            print(f'private terms: edition {EDITION} holds a private course ({", ".join(PRIVATE)}), which names its owner; its pages are not checked ('
+                  + ', '.join(d + '/' for c in COURSES if c['id'] in PRIVATE for d in private_terms.folders(c)) + '), every other file of the edition is')
         print(f'private terms in edition {EDITION}: {len(fs)} files, ' + (f'{len(pt)} found' if pt else 'none'))
     rf, rw = rot_check.check()   # P30-F11, P30-F16 (17 Nov 2026)
     fails += ['rot: ' + x for x in rf]

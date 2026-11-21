@@ -35,7 +35,7 @@ the engine): `unit_key`, the drawer's data-unit (localStorage) key, default "{id
 built page, default the escaped `short` (greece and rome set their own).
 
 Keys for the checks (S-DEC4, read by kit/verify.py only; the build ignores them; each false when absent): `private`, the
-owner's own course, not public (an edition holding one is not checked for private terms over its own built files;
+owner's own course, not public (its pages are left out of an edition's private-terms check, P-DEC13;
 private_terms.py PUBLIC, the courses its no-argument run checks, is every course without it);
 `reliefs`, its pages draw object reliefs from design/outlines (the relief library's courses, REL_COURSES in verify.py
 before); `verify_sample`, its homes are among those the per-page passes visit (drawer, topography, motion, the P92

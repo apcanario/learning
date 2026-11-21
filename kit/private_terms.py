@@ -5,7 +5,9 @@ python3 kit/private_terms.py            every public course: its vault, its pack
 python3 kit/private_terms.py <file>...  only these files (a writer's or a checker's draft, or a built edition's pages:
                                         `python3 kit/private_terms.py $(find kit/editions/<site> -type f)`)
 python3 kit/private_terms.py --edition <name>   every file of that edition's built site (kit/<site>/, built.html
-                                        included), whatever courses it holds (S-DEC4); edition_files(name) for verify.py
+                                        included), whatever courses it holds (S-DEC4); edition_files(name) for verify.py,
+                                        which leaves a mixed edition's private courses' folders out (P-DEC13); a
+                                        `dated_lists` course's pages are checked as in academy's run (P-DEC10)
 
 The no-argument run is academy's: PUBLIC (below) gives its public courses and the kit/academy glob its site. An
 edition's own output is checked with --edition or explicit files. A given file that is not UTF-8 text is skipped and
@@ -82,7 +84,7 @@ def rx(ts):
     return re.compile(r'(?<![\w@.-])(?:' + '|'.join(re.escape(t) for t in sorted(ts, key=len, reverse=True)) + r')(?![\w-])', re.I)
 
 
-DATED = set()   # S-SCE0: the files of the courses with dated_lists=True, filled by files()
+DATED = set()   # S-SCE0: the files of the courses with dated_lists=True, filled by files() and (P-DEC10) edition_files()
 
 
 def files():
@@ -108,16 +110,35 @@ def files():
     return out
 
 
-def edition_files(name):
-    """S-DEC4: every file of an edition's built site, sorted (kit/<site>/, from editions/<name>.toml `site`)."""
+def folders(c):
+    """P-DEC10, P-DEC13: the top-level folders of a built site that hold a course's split pages (build.py split(): a
+    page goes to <data-ctx>/): a markdown course's one per sub-course, <prefix or id>-<key> (build.py md_courses:
+    brand-a, supply-chain-execution-sce), a history course's <id> (greece)."""
+    if c['family'] == 'history':
+        return [c['id']]
+    return [f"{c.get('prefix', c['id'])}-{k.lower()}" for k in c.get('tracks', {})]
+
+
+def edition_files(name, skip=()):
+    """S-DEC4: every file of an edition's built site, sorted (kit/<site>/, from editions/<name>.toml `site`).
+    P-DEC10: the pages of an edition's course with `dated_lists` (its folders, folders()) go into DATED, as files()
+    puts academy's, so scan() checks them as academy's run does. P-DEC13: `skip`, course ids whose folders are left out
+    (verify.py passes the edition's `private` courses on a mixed edition); every other file, the shell included, stays."""
     sys.path.insert(0, str(R))
-    from courses import EDITIONS
+    from courses import EDITIONS, COURSES
     if name not in EDITIONS:
         raise SystemExit(f'--edition {name}: no editions/{name}.toml (editions: {", ".join(EDITIONS)})')
     site = R / EDITIONS[name]['site']
     if not site.is_dir():
         raise SystemExit(f'--edition {name}: {site.relative_to(ROOT)} not built (python3 kit/build.py --edition {name})')
-    return sorted(f for f in site.rglob('*') if f.is_file())
+    held = [c for c in COURSES if EDITIONS[name]['courses'] is None or c['id'] in EDITIONS[name]['courses']]
+    out = sorted(f for f in site.rglob('*') if f.is_file())
+    top = lambda f: f.relative_to(site).parts[0] if len(f.relative_to(site).parts) > 1 else None   # a file at the root is in no course's folder
+    gone = {d for c in held if c['id'] in skip for d in folders(c)}
+    out = [f for f in out if top(f) not in gone]
+    dated = {d for c in held if c.get('dated_lists') for d in folders(c)}
+    DATED.update(f for f in out if top(f) in dated)
+    return out
 
 
 def text_only(fs):
