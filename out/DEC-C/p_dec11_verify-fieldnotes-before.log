@@ -1,0 +1,308 @@
+full: --full
+edition fieldnotes: no size table (README.md keeps the default edition's)
+viz-examples.html: 34 figures
+split: shell 92 KB (limit 1,024 KB), 8 fetched files in 2 folders, largest viz-examples.html 199 KB
+  home-composting-hc/   6 files      47 KB, largest home-composting-hc/read-hc2.html 15 KB
+  ./           2 files     202 KB, largest viz-examples.html 199 KB
+figure keys (P52): 34 blocks read, 0 undocumented keys
+opening notes (P73): 0 units with an opening, each with its closed note after Sources; 2 without, none shown
+figure rules (P58): 34 built figures read, 0 faults
+split: no history course with reports 2.3, 2.4, 2.5, 5.2, 5.5 in this edition; the history split checks (report pager, syllabus, course-home continue) are left out and the stub checks run on a markdown course
+split: no second course home in this edition; the failed course-home fetch is not tried
+split: fresh-load anchors that landed only on the retry: #home-composting-hc-b-hc1 (top 343)
+split (markdown, home-composting-hc): stubs empty until opened; course home and reading page fetched once and kept, the next page prefetched and its pager link; a link into an unopened page; failed fetch and retry (reading page)
+figures: 16 kinds and 18 hard cases on the examples page (timeline, compare, tree, flow, sitemap, objects, decision, matrix, states, swimlanes, wireflow, linechart, bars, scatter, range, matrix-numeric, timeline, timeline, timeline, timeline, compare, bars, tree, objects, range, range, timeline, timeline, objects, range, tree, objects, objects, timeline); 0 geometry faults; 9 blocks stop the build as they should
+compare and bars on a phone (P97, P98): 8 figure frames on 1 pages at 320 and 390 px, every bar and value whole in the opening frame; 12 drawings at 320, 390 and 1280 px checked for a value across its track's end; 0 faults
+matrix figures at 320 px (C1): 2 on 1 pages, 2 scrolling, each with a label column at most 45% of its frame; 0 faults
+line figures on a phone (P123): 2 figure frames on 1 pages at 320 and 390 px, every part whole in the opening frame, no sideways scroll; 0 faults
+scatter figures on a phone (P124): 2 figure frames on 1 pages at 320 and 390 px, every part whole in the opening frame, no sideways scroll; 0 faults
+reading: 2 units and reports, 6 sections, each reached by next, previous and the menu, "Whole unit" on and off, both accordions closed after the text and Sources opened by its links; deep links to a section (1 of 1), to Sources and to the opening note (0), and Continue and a reload resuming at the section, on one page of each course (read-hc2)
+separators: 2 reading pages, 6 sections, 6 separators, 0 sections without a paragraph and so without one; 10,309 bytes in all, the largest 1,822 B, the page with most read-hc2 (5,178 B over 3); checked at 320, 390, 768, 1280 px, dark and light, with and without motion; 240 separator poses with motion allowed, the closest line 2.2 px from its frame
+reliefs: the library holds 81 outlines (greece 34, rome 35, brand-a 16, brand-b 19, ux-ia 18, personal-brand-pb 12, building-with-ai-bw 11), 51 rejected; licences ['CC BY 3.0', 'MIT']
+reliefs: 0 mapped pages, 0 in this run (), 2 reading pages without one; checked at 320, 390, 768, 1280 px, dark and light, with and without motion; frames ; the closest line 1000000000.0 px from its frame over the poses with motion
+site log: edition fieldnotes leaves out the Backlog and Changelog pages
+phone layout: 390 px at scale 1
+phone: panels checked: 12; tightest stacked gap 6px (viz-examples); 34 figure frames at natural size, 28 scrolling with the cue; geometry of 34 figures on 1 panels checked
+phone light: panels checked: 12; tightest stacked gap 6px (viz-examples); 34 figure frames at natural size, 28 scrolling with the cue
+home phone: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 711 px; New since 3 rows; animations 0; page [390, 390]
+home phone (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (span "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Garden 5.95/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5
+what's new phone: 2 unit rows, 1 course rows, 0 approximate, on 2 days
+home phone light: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 711 px; New since 3 rows; animations 0; page [390, 390]
+home phone light (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (span "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Garden 5.07/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5
+contrast (light, phone): 203 texts on 4 panels and the drawer, lowest 4.36:1 (read-hc1 span.bn)
+nav: no second history course in this edition; its course home, report, next, last report, prev and resume steps are left out
+nav: no history course with reports 2.3, 2.4, 2.5, 5.2, 5.5 in this edition; its course home, report, next and last steps are left out (the markdown course steps below run)
+nav: no history course in this edition; the course drawer accordion (a history course's unit groups) is not tried
+  home                         home           nav=root    HOME | Fieldnotes | arrows=False prev=False next=True | 
+  home again                   home           nav=root    HOME | Fieldnotes | arrows=False prev=False next=True | 
+  home-composting-hc home      home-composting-hc nav=home-composting-hc COURSE HC | Home composting | arrows=True prev=False next=True | (hidden)
+  home-composting-hc reading   read-hc1       nav=home-composting-hc HOME COMPOSTING · HC1 | Setting up the heap | arrows=True prev=True next=True | 
+  home-composting-hc How it is built home-composting-hc-build nav=home-composting-hc HOME COMPOSTING | How it is built | arrows=True prev=True next=True | 
+  home-composting-hc Build order home-composting-hc-order nav=home-composting-hc HOME COMPOSTING | Build order | arrows=True prev=True next=True | 
+  home-composting-hc Briefs    home-composting-hc-briefs nav=home-composting-hc HOME COMPOSTING | Briefs | arrows=True prev=True next=True | 
+  home-composting-hc Bibliography home-composting-hc-bibliography nav=home-composting-hc HOME COMPOSTING | Bibliography | arrows=True prev=True next=True | 
+  home-composting-hc Changelog home-composting-hc-changelog nav=home-composting-hc HOME COMPOSTING | Changelog | arrows=True prev=True next=True | 
+  home-composting-hc How it was built home-composting-hc-built nav=home-composting-hc HOME COMPOSTING | How it was built | arrows=True prev=True next=False | 
+  home after home-composting-hc home           nav=root    HOME | Fieldnotes | arrows=False prev=False next=True | 
+  home-composting-hc home resumes home-composting-hc nav=home-composting-hc COURSE HC | Home composting | arrows=True prev=False next=True | Continue HC1 Setting up the heap
+tablet: panels checked: 12; tightest stacked gap 6px (viz-examples)
+tablet: drawer is a drawer (off screen, 360 px with backdrop when open); column 760 px; report read-hc1 loaded through the shell, 9 paragraphs
+desktop: panels checked: 12; tightest stacked gap 6px (viz-examples); 34 figure frames, 4 wider than their frame with the cue, the rest without
+desktop: the brand names ['Source Serif 4'], not in fonts/ (verify.py serves only ['DM Sans', 'Space Mono', 'Gentium Book Plus']); its fallback is drawn and measured, and its loading is not checked
+desktop: no history course in this edition; the home's mythos/logos block (History's) is not measured
+desktop: sidebar 300 px at the left, content column 760 px from 410 px, current item read-hc1, measure 744.193px
+home phone320: hero [448, 640, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 568 px; New since 3 rows; animations 0; page [320, 320]
+home phone320 (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (span "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Garden 5.95/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5
+what's new phone320: 2 unit rows, 1 course rows, 0 approximate, on 2 days
+home phone320 light: hero [448, 640, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 568 px; New since 3 rows; animations 0; page [320, 320]
+home phone320 light (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (span "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Garden 5.07/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5
+home phone360: hero [546, 780, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 666 px; New since 3 rows; animations 0; page [360, 360]
+home phone360 (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (span "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Garden 5.95/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5
+what's new phone360: 2 unit rows, 1 course rows, 0 approximate, on 2 days
+home phone360 light: hero [546, 780, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 666 px; New since 3 rows; animations 0; page [360, 360]
+home phone360 light (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (span "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Garden 5.07/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5
+home phone430: hero [652, 932, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 772 px; New since 3 rows; animations 0; page [430, 430]
+home phone430 (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (span "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Garden 5.95/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5
+what's new phone430: 2 unit rows, 1 course rows, 0 approximate, on 2 days
+home phone430 light: hero [652, 932, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 772 px; New since 3 rows; animations 0; page [430, 430]
+home phone430 light (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (span "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Garden 5.07/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5
+home tablet: hero [717, 1024, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[True, True, True, True]]; first area at 858 px; New since 3 rows; animations 0; page [768, 768]
+home tablet (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (span "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Garden 5.95/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5
+what's new tablet: 2 unit rows, 1 course rows, 0 approximate, on 2 days
+home tablet light: hero [717, 1024, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[True, True, True, True]]; first area at 858 px; New since 3 rows; animations 0; page [768, 768]
+home tablet light (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (span "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Garden 5.07/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5
+home desktop: hero [560, 800, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['wide'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[True, True, True, True]]; first area at 701 px; New since 3 rows; animations 0; page [1280, 1280]
+home desktop (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (span "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Garden 5.95/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5
+what's new desktop: 2 unit rows, 1 course rows, 0 approximate, on 2 days
+home desktop light: hero [560, 800, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown False, static shown True; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['wide'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[True, True, True, True]]; first area at 701 px; New since 3 rows; animations 0; page [1280, 1280]
+home desktop light (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (span "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Garden 5.07/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5
+home desktop: a.course.live[data-target="home-composting-hc"] opens #home-composting-hc on home-composting-hc, at 78 px
+home desktop: a.hnew opens #new on new, at 78 px
+home-composting-hc phone320: layer 3628 B, layout ['tall'], frame [0, 320, 56, 540]; 2 tiles, 2 patches, grids [[1, 2, None, 138]]
+What's new: edition fieldnotes's largest day (2026-11-18, 1,231 words) is under 110,000 words, so the build's scale (11,000 words a level) cannot raise it to 10 levels; it is checked against that scale, 0 levels, at most 25; the 10 to 25 range is left out here (it stands 0 levels: no rise is drawn)
+new phone320: layer 1221 B, layout ['tall'], frame [0, 320, 56, 401], days [('2026-11-18', 0), ('2026-11-19', 0)]
+home-composting-hc phone360: layer 3628 B, layout ['tall'], frame [0, 360, 56, 475]; 2 tiles, 2 patches, grids [[1, 2, None, 158]]
+new phone360: layer 1221 B, layout ['tall'], frame [0, 360, 56, 358], days [('2026-11-18', 0), ('2026-11-19', 0)]
+home-composting-hc phone430: layer 3628 B, layout ['tall'], frame [0, 430, 56, 373]; 2 tiles, 2 patches, grids [[1, 2, None, 193]]
+new phone430: layer 1221 B, layout ['tall'], frame [0, 430, 56, 332], days [('2026-11-18', 0), ('2026-11-19', 0)]
+home-composting-hc phone: layer 3628 B, layout ['tall'], frame [0, 390, 56, 432]; 2 tiles, 2 patches, grids [[1, 2, None, 173]]
+new phone: layer 1221 B, layout ['tall'], frame [0, 390, 56, 332], days [('2026-11-18', 0), ('2026-11-19', 0)]
+home-composting-hc tablet: layer 3628 B, layout ['tall'], frame [0, 768, 56, 347]; 2 tiles, 2 patches, grids [[2, 2, None, 358]]
+new tablet: layer 1221 B, layout ['tall'], frame [0, 768, 56, 238], days [('2026-11-18', 0), ('2026-11-19', 0)]
+home-composting-hc desktop: layer 3628 B, layout ['wide'], frame [300, 1280, 56, 347]; 2 tiles, 2 patches, grids [[2, 2, None, 358]]
+new desktop: layer 1221 B, layout ['wide'], frame [300, 1280, 56, 238], days [('2026-11-18', 0), ('2026-11-19', 0)]
+home phone320 motion: hero [448, 640, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 568 px; New since 3 rows; animations 3; page [320, 320]
+home phone320 motion (pose 0 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone320 motion (pose 0.25 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone320 motion (pose 0.5 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone320 motion (pose 0.75 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone320 motion (pose 1 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home-composting-hc phone320 motion dark pose 0 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone320 motion dark pose 0.25 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone320 motion dark pose 0.5 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone320 motion dark pose 0.75 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone320 motion dark pose 1 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+new phone320 motion dark pose 0 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone320 motion dark pose 0.25 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone320 motion dark pose 0.5 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone320 motion dark pose 0.75 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone320 motion dark pose 1 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+home phone320 motion light: hero [448, 640, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 568 px; New since 3 rows; animations 3; page [320, 320]
+home phone320 motion light (pose 0 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone320 motion light (pose 0.25 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone320 motion light (pose 0.5 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone320 motion light (pose 0.75 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone320 motion light (pose 1 of the sweep, Garden shown) (320 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home-composting-hc phone320 motion light pose 0 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone320 motion light pose 0.25 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone320 motion light pose 0.5 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone320 motion light pose 0.75 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone320 motion light pose 1 (320 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+new phone320 motion light pose 0 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone320 motion light pose 0.25 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone320 motion light pose 0.5 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone320 motion light pose 0.75 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone320 motion light pose 1 (320 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+home phone360 motion: hero [546, 780, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 666 px; New since 3 rows; animations 3; page [360, 360]
+home phone360 motion (pose 0 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone360 motion (pose 0.25 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone360 motion (pose 0.5 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone360 motion (pose 0.75 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone360 motion (pose 1 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home-composting-hc phone360 motion dark pose 0 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone360 motion dark pose 0.25 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone360 motion dark pose 0.5 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone360 motion dark pose 0.75 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone360 motion dark pose 1 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+new phone360 motion dark pose 0 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone360 motion dark pose 0.25 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone360 motion dark pose 0.5 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone360 motion dark pose 0.75 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone360 motion dark pose 1 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+home phone360 motion light: hero [546, 780, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 666 px; New since 3 rows; animations 3; page [360, 360]
+home phone360 motion light (pose 0 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone360 motion light (pose 0.25 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone360 motion light (pose 0.5 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone360 motion light (pose 0.75 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone360 motion light (pose 1 of the sweep, Garden shown) (360 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home-composting-hc phone360 motion light pose 0 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone360 motion light pose 0.25 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone360 motion light pose 0.5 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone360 motion light pose 0.75 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone360 motion light pose 1 (360 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+new phone360 motion light pose 0 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone360 motion light pose 0.25 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone360 motion light pose 0.5 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone360 motion light pose 0.75 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone360 motion light pose 1 (360 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+home phone430 motion: hero [652, 932, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 772 px; New since 3 rows; animations 3; page [430, 430]
+home phone430 motion (pose 0 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone430 motion (pose 0.25 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone430 motion (pose 0.5 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone430 motion (pose 0.75 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone430 motion (pose 1 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home-composting-hc phone430 motion dark pose 0 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone430 motion dark pose 0.25 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone430 motion dark pose 0.5 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone430 motion dark pose 0.75 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone430 motion dark pose 1 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+new phone430 motion dark pose 0 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone430 motion dark pose 0.25 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone430 motion dark pose 0.5 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone430 motion dark pose 0.75 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone430 motion dark pose 1 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+home phone430 motion light: hero [652, 932, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 772 px; New since 3 rows; animations 3; page [430, 430]
+home phone430 motion light (pose 0 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone430 motion light (pose 0.25 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone430 motion light (pose 0.5 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone430 motion light (pose 0.75 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone430 motion light (pose 1 of the sweep, Garden shown) (430 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home-composting-hc phone430 motion light pose 0 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone430 motion light pose 0.25 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone430 motion light pose 0.5 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone430 motion light pose 0.75 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone430 motion light pose 1 (430 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+new phone430 motion light pose 0 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone430 motion light pose 0.25 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone430 motion light pose 0.5 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone430 motion light pose 0.75 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone430 motion light pose 1 (430 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+home phone motion: LCP 60 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+home-composting-hc phone motion: LCP 100 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+new phone motion: LCP 84 ms, longest task 0 ms (0 long tasks over 50 ms), on a fresh load from the local server
+home phone motion: the move peaks at 11.4 px/s at the layer's corners (390 x 613 px frame, 6 degrees over 10 s, a breath to 1.1 over 6 s); moved in 2 s: True
+home phone motion: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 711 px; New since 3 rows; animations 3; page [390, 390]
+home phone motion (pose 0 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone motion (pose 0.25 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone motion (pose 0.5 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone motion (pose 0.75 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home phone motion (pose 1 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 14.18/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home-composting-hc phone motion dark pose 0 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone motion dark pose 0.25 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone motion dark pose 0.5 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone motion dark pose 0.75 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+home-composting-hc phone motion dark pose 1 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (lede "A two-unit course ")
+new phone motion dark pose 0 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone motion dark pose 0.25 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone motion dark pose 0.5 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone motion dark pose 0.75 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new phone motion dark pose 1 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+home phone motion light: hero [591, 844, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[False, True, False, False]]; first area at 711 px; New since 3 rows; animations 3; page [390, 390]
+home phone motion light (pose 0 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone motion light (pose 0.25 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone motion light (pose 0.5 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone motion light (pose 0.75 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home phone motion light (pose 1 of the sweep, Garden shown) (390 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 10.98/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home-composting-hc phone motion light pose 0 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone motion light pose 0.25 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone motion light pose 0.5 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone motion light pose 0.75 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+home-composting-hc phone motion light pose 1 (390 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.75:1 (span "Start the course")
+new phone motion light pose 0 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone motion light pose 0.25 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone motion light pose 0.5 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone motion light pose 0.75 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new phone motion light pose 1 (390 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+home tablet motion: hero [717, 1024, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[True, True, True, True]]; first area at 858 px; New since 3 rows; animations 3; page [768, 768]
+home tablet motion (pose 0 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home tablet motion (pose 0.25 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home tablet motion (pose 0.5 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home tablet motion (pose 0.75 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home tablet motion (pose 1 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home-composting-hc tablet motion dark pose 0 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (span "Briefs")
+home-composting-hc tablet motion dark pose 0.25 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (span "Briefs")
+home-composting-hc tablet motion dark pose 0.5 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (span "Briefs")
+home-composting-hc tablet motion dark pose 0.75 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (span "Briefs")
+home-composting-hc tablet motion dark pose 1 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (span "Briefs")
+new tablet motion dark pose 0 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new tablet motion dark pose 0.25 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new tablet motion dark pose 0.5 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new tablet motion dark pose 0.75 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new tablet motion dark pose 1 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+home tablet motion light: hero [717, 1024, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['tall'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[True, True, True, True]]; first area at 858 px; New since 3 rows; animations 3; page [768, 768]
+home tablet motion light (pose 0 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home tablet motion light (pose 0.25 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home tablet motion light (pose 0.5 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home tablet motion light (pose 0.75 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home tablet motion light (pose 1 of the sweep, Garden shown) (768 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home-composting-hc tablet motion light pose 0 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.16:1 (u "COMPLETE")
+home-composting-hc tablet motion light pose 0.25 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.16:1 (u "COMPLETE")
+home-composting-hc tablet motion light pose 0.5 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.16:1 (u "COMPLETE")
+home-composting-hc tablet motion light pose 0.75 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.16:1 (u "COMPLETE")
+home-composting-hc tablet motion light pose 1 (768 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.16:1 (u "COMPLETE")
+new tablet motion light pose 0 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new tablet motion light pose 0.25 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new tablet motion light pose 0.5 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new tablet motion light pose 0.75 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new tablet motion light pose 1 (768 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+home desktop motion: hero [560, 800, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['wide'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[True, True, True, True]]; first area at 701 px; New since 3 rows; animations 3; page [1280, 1280]
+home desktop motion (pose 0 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home desktop motion (pose 0.25 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home desktop motion (pose 0.5 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home desktop motion (pose 0.75 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home desktop motion (pose 1 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.95:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 16.80/3; Short courses for  7.11/4.5; What's new ·, HC2  16.80/4.5; → 7.11/4.5; Garden 5.95/3
+home-composting-hc desktop motion dark pose 0 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (eyebrow "COURSE HC · Home c")
+home-composting-hc desktop motion dark pose 0.25 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (eyebrow "COURSE HC · Home c")
+home-composting-hc desktop motion dark pose 0.5 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (eyebrow "COURSE HC · Home c")
+home-composting-hc desktop motion dark pose 0.75 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (eyebrow "COURSE HC · Home c")
+home-composting-hc desktop motion dark pose 1 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 6.0:1 (eyebrow "COURSE HC · Home c")
+new desktop motion dark pose 0 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.06:1 (lede "Every unit and eve")
+new desktop motion dark pose 0.25 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.23:1 (lede "Every unit and eve")
+new desktop motion dark pose 0.5 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.45:1 (lede "Every unit and eve")
+new desktop motion dark pose 0.75 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+new desktop motion dark pose 1 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.0:1 (lede "Every unit and eve")
+home desktop motion light: hero [560, 800, 70] (px, screen, %), copy 'h1. p.harea p.harea-all p.lede a.hnew'; area line ['Garden'], shown True, static shown False; link ["What's new · HC2 · 19 Nov", '#new', 'new', 44]; contours 801 B, layout ['wide'], rises [('Garden', 0, 0)]; tiles [('home-composting-hc', 2, 0)]; heads [[True, True, True, True]]; first area at 701 px; New since 3 rows; animations 3; page [1280, 1280]
+home desktop motion light (pose 0 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home desktop motion light (pose 0.25 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home desktop motion light (pose 0.5 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home desktop motion light (pose 0.75 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home desktop motion light (pose 1 of the sweep, Garden shown) (1280 px): hero texts over the contours, 5 measured pixel by pixel, lowest 5.07:1 (harea-w "Garden"); each (lowest/needed): Fieldnotes 13.84/3; Short courses for  7.40/4.5; What's new ·, HC2  13.84/4.5; → 7.40/4.5; Garden 5.07/3
+home-composting-hc desktop motion light pose 0 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.32:1 (u "COMPLETE")
+home-composting-hc desktop motion light pose 0.25 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.32:1 (u "COMPLETE")
+home-composting-hc desktop motion light pose 0.5 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.32:1 (u "COMPLETE")
+home-composting-hc desktop motion light pose 0.75 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.32:1 (u "COMPLETE")
+home-composting-hc desktop motion light pose 1 (1280 px): hero texts over the contours, 20 measured pixel by pixel, lowest 5.32:1 (u "COMPLETE")
+new desktop motion light pose 0 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.94:1 (lede "Every unit and eve")
+new desktop motion light pose 0.25 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.03:1 (lede "Every unit and eve")
+new desktop motion light pose 0.5 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 6.25:1 (lede "Every unit and eve")
+new desktop motion light pose 0.75 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+new desktop motion light pose 1 (1280 px): hero texts over the contours, 11 measured pixel by pixel, lowest 5.87:1 (lede "Every unit and eve")
+courses-index.md: 3 mismatches
+private terms in edition fieldnotes: 9 files, none
+rot check: none
+full: --full
+verify-hashes.json: not written (a failed run marks no page as checked)
+FAIL split: #home-composting-hc-b-hc1 on a fresh load gave panel home-composting-hc-briefs, element found True, top 343
+FAIL home-composting-hc desktop motion dark pose 0: the rises ['HC2'] have rings outside the frame or in its fade
+FAIL home-composting-hc desktop motion dark pose 0.25: the rises ['HC2'] have rings outside the frame or in its fade
+FAIL home-composting-hc desktop motion dark pose 0.5: the rises ['HC2'] have rings outside the frame or in its fade
+FAIL home-composting-hc desktop motion dark pose 0.75: the rises ['HC1'] have rings outside the frame or in its fade
+FAIL home-composting-hc desktop motion dark pose 1: the rises ['HC1'] have rings outside the frame or in its fade
+FAIL home-composting-hc desktop motion light pose 0: the rises ['HC2'] have rings outside the frame or in its fade
+FAIL home-composting-hc desktop motion light pose 0.25: the rises ['HC2'] have rings outside the frame or in its fade
+FAIL home-composting-hc desktop motion light pose 0.5: the rises ['HC2'] have rings outside the frame or in its fade
+FAIL home-composting-hc desktop motion light pose 0.75: the rises ['HC1'] have rings outside the frame or in its fade
+FAIL home-composting-hc desktop motion light pose 1: the rises ['HC1'] have rings outside the frame or in its fade
+FAIL courses-index.md: Home composting HC1: 0 rows, expected one
+FAIL courses-index.md: Home composting HC2: 0 rows, expected one
+FAIL courses-index.md: Home composting: the line above the table should say "2 of 2 written"

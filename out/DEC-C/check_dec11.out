@@ -1,0 +1,3 @@
+bytes: 539 files compared with the post-P-DEC8 state, 0 differ
+baseline --check: 4 changed, all P-DEC8's 4: True
+P-DEC11 check: PASSED (only P-DEC8's 4 files differ from the manifest; each unchanged by this row)

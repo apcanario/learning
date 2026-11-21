@@ -1486,14 +1486,24 @@ def check_figure_rules(fails):
 # P56 (30 Oct 2026): a link into an unopened panel lands once the fetch is in and the shell has scrolled to the anchor,
 # which can take longer than a fixed wait (#s-m23 once measured at top 7319, then passed on a re-run). SETTLE_JS waits,
 # frame by frame for up to 3 s, until the anchor's top has held still for 5 frames inside the landing band (-5..200),
-# and returns [panel, found, top]; fresh_land() measures that way and, if it is still off, reloads and measures once more.
+# and returns [panel, found, top, at the foot]; fresh_land() measures that way and, if it is still off, reloads and measures once more.
+# P-DEC11 (21 Nov 2026): a page too short to scroll its anchor up to the band (a two-brief briefs page: 248 to 343 px)
+# lands when the page stands scrolled to its foot (scrollY within 1 px of its most) with the anchor's top inside the
+# window: the furthest the shell can take it. A page that can scroll further is still held to the band (lands()).
 SETTLE_JS = '''async (id) => { let last = null, same = 0; const t0 = performance.now();
+  const foot = () => { const s = document.scrollingElement; return s.scrollTop >= s.scrollHeight - innerHeight - 1; };
   while (performance.now() - t0 < 3000) { await new Promise(r => requestAnimationFrame(r));
     const el = document.getElementById(id), t = el ? Math.round(el.getBoundingClientRect().top) : null;
     same = (t !== null && t === last) ? same + 1 : 0; last = t;
-    if (same >= 5 && t >= -5 && t <= 200) break; }
+    if (same >= 5 && t >= -5 && t <= 200) break; }   // a page that stops short of the band is read after the full 3 s
   const el = document.getElementById(id), p = [...document.querySelectorAll('.panel')].find(p => !p.hidden);
-  return [p && p.id, !!el, el ? Math.round(el.getBoundingClientRect().top) : null]; }'''
+  const top = el ? Math.round(el.getBoundingClientRect().top) : null;
+  return [p && p.id, !!el, top, top !== null && top > 200 && top < innerHeight && foot()]; }'''
+
+def lands(sec):
+    """P-DEC11: the anchor is found and its top is in the landing band (-5..200), or past it only because the page is
+    too short to scroll further (SETTLE_JS's fourth value: scrolled to its foot, the anchor inside the window)."""
+    return bool(sec[1]) and sec[2] is not None and (-5 <= sec[2] <= 200 or bool(sec[3]))
 
 def fresh_land(pg, h, retried):
     """Open URL#h on a fresh load and return [visible panel, anchor found, anchor top] once the anchor has settled;
@@ -1501,7 +1511,7 @@ def fresh_land(pg, h, retried):
     for attempt in (0, 1):
         pg.goto(URL + '#' + h); pg.reload(); ready(pg)
         sec = pg.evaluate(SETTLE_JS, h)
-        if sec[1] and sec[2] is not None and -5 <= sec[2] <= 200:
+        if lands(sec):
             return sec
         if attempt == 0: retried.append(f'#{h} (top {sec[2]})')
     return sec
@@ -1896,7 +1906,7 @@ def check_reading(br, fails):
         pg.evaluate('localStorage.clear()')
         sec = fresh_land(pg, sid, retried)
         st = pg.evaluate(f"[+document.getElementById('{pid}').dataset.step, [...document.querySelectorAll('#{pid} .report.steps > .sec')].filter(s => s.offsetHeight > 0).length]")
-        if sec[0] != pid or not sec[1] or not -5 <= sec[2] <= 200 or st != [k, 1]: fails.append(f'reading: deep link #{sid} gave panel {sec[0]}, top {sec[2]}, step and sections shown {st}, expected {pid} at section {k + 1}')
+        if sec[0] != pid or not lands(sec) or st != [k, 1]: fails.append(f'reading: deep link #{sid} gave panel {sec[0]}, top {sec[2]}, step and sections shown {st}, expected {pid} at section {k + 1}')
         else: landed += 1
         # the accordion is at the page's end, so on a short section it lands in view rather than at the top
         pg.goto(URL + f'#{pid}-sources'); pg.reload(); ready(pg); sec = pg.evaluate(SETTLE_JS, f'{pid}-sources')
@@ -1965,7 +1975,7 @@ def check_split(br, fails):
     retried = []
     deep, dpan = (rid(S, '1.2') + '-2', rid(S, '1.2')) if S else (rid(L, '5.2') + '-2', rid(L, '5.2'))   # P70: an edition without a second history course checks one of LEAD's
     sec = fresh_land(pg, deep, retried)
-    if sec[0] != dpan or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #{deep} on a fresh load gave panel {sec[0]}, section found {sec[1]}, top {sec[2]}')
+    if sec[0] != dpan or not lands(sec): fails.append(f'split: #{deep} on a fresh load gave panel {sec[0]}, section found {sec[1]}, top {sec[2]}')
     # a syllabus is a stub too (P20): empty until opened, fetched once, its prompts and copy buttons present
     Y = S or L
     sy, sc, sa = Y['syl_id'], Y['home_id'], f'{Y["syl_anchor"]}-u3'
@@ -1985,7 +1995,7 @@ def check_split(br, fails):
     for h, want in links:
         if not pg.evaluate(f"!!document.getElementById('{want}')"): continue   # P70: a page the edition does not hold
         sec = fresh_land(pg, h, retried)
-        if sec[0] != want or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #{h} on a fresh load gave panel {sec[0]}, element found {sec[1]}, top {sec[2]}')
+        if sec[0] != want or not lands(sec): fails.append(f'split: #{h} on a fresh load gave panel {sec[0]}, element found {sec[1]}, top {sec[2]}')
     # a failed fetch, then the retry
     fail['on'] = True
     pg.evaluate(f"location.hash = '{r25}'"); ready(pg)
@@ -2074,7 +2084,7 @@ def check_split_md(br, fails):
     bm = re.search(r'<section class="panel stack" id="([^"]+)" data-ctx="' + re.escape(cx) + r'"[^>]* data-anchors="([^" ]+)', shell)
     if bm:
         sec = fresh_land(pg, bm.group(2), retried)
-        if sec[0] != bm.group(1) or not sec[1] or not -5 <= sec[2] <= 200: fails.append(f'split: #{bm.group(2)} on a fresh load gave panel {sec[0]}, element found {sec[1]}, top {sec[2]}')
+        if sec[0] != bm.group(1) or not lands(sec): fails.append(f'split: #{bm.group(2)} on a fresh load gave panel {sec[0]}, element found {sec[1]}, top {sec[2]}')
     else: print(f'split: {cx} has no fetched page with anchors; the link into an unopened page is not tried')
     if r3 is None: fails.append(f'split: {cx} has no third reading page and no other fetched page; the failed fetch is not tried')
     else:

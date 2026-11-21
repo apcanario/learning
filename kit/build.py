@@ -323,13 +323,14 @@ def ct_fit(rises, iv, specs, maxbytes=19500):
     lays = []
     for sp in specs:
         W, H, box = sp['width'], sp['height'], sp['box']
+        view = sp['small'][1] if 'small' in sp and len(rises) <= sp['small'][0] else sp['view']   # P-DEC11
         at = sp['place'](len(rises), box, W, H)
         near = min((math.hypot((a[0] - b[0]) * W, (a[1] - b[1]) * H) for i, a in enumerate(at) for b in at[i + 1:]), default=W / 4)
         s = near / 2.2 / W
         for _ in range(24):
             lay = dict(name=sp['name'], width=W, height=H, spread=round(s, 4), grid=sp.get('grid', 5), simplify=.8, at=at)
             rr = viz.contours_rings(dict(kind='contours', interval=iv, rises=rises, layouts=[lay]))[sp['name']]
-            inside = all(turned_inside(b, W, H, view=sp['view']) for _, _, _, b in rr)   # at every pose of the move, not at rest only
+            inside = all(turned_inside(b, W, H, view=view) for _, _, _, b in rr)   # at every pose of the move, not at rest only
             if inside and all(own >= min(2, lv) for _, lv, own, _ in rr):
                 break
             s *= .9
@@ -488,8 +489,15 @@ def sep_kit(tone):
 # boxes as far as their number allows. What's new's hero is flatter (about 390 x 360 on a phone, 980 x 260 from 768
 # px), so its tall layout is 1.6:1 (a phone shows x .16 to .84, the tablet y .22 to .78, faded from .72) and its wide
 # one 3.7:1.
+# P-DEC11 (21 Nov 2026): `small` = (n, view): a hero of n rises or fewer is held to that view instead. One or two rises stand
+# in one row, their spread set by the width between them, so their rings are the tallest any course draws (two: about 45%
+# of the layout's height) and reach the top and the fade of a hero shorter than the 400 px the view assumes (a course
+# with a one-line lede: the template test's home-composting, 980 x 347 at 1280 px, shows y .153 to .847, faded from
+# .778; 10 desktop motion failures). Its view is the band a 330 px hero shows: y .17 to .76 (.17 + .9 x .66). Academy's
+# course homes (11 to 15 rises, heroes 398 to 500 px) keep their view and their bytes.
 COURSE_TOPO = [dict(name='tall', width=1000, height=1000, box=(.29, .27, .71, .67), view=(.25, .25, .75, .7), place=ct_lattice),
-               dict(name='wide', width=1000, height=500, box=(.1, .12, .9, .66), view=(.04, .1, .96, .84), place=ct_lattice)]
+               dict(name='wide', width=1000, height=500, box=(.1, .12, .9, .66), view=(.04, .1, .96, .84), place=ct_lattice,
+                    small=(2, (.04, .17, .96, .76)))]
 NEW_TOPO = [dict(name='tall', width=1000, height=625, box=(.24, .3, .76, .64), view=(.18, .27, .82, .67), place=ct_ridge),
             dict(name='wide', width=1000, height=270, box=(.17, .26, .83, .66), view=(.1, .12, .9, .8), place=ct_ridge)]   # views with a margin for a shorter hero (an edition's eyebrow is a line shorter)
 NEW_INTERVAL = 11000    # words between two of What's new's contour levels: its largest day (22 Oct 2026, 221,673 words) stands 20, inside the 10 to 25 the row sets (verify.py checks it), and its smallest (30 Oct, 14,178) 1.29 levels, a ring of its own that reads (at 14,000 it stood 1.01 levels, a 2 px ring; P93 check)

@@ -1,0 +1,3 @@
+verify-hashes.json: edition academy recorded, 292 pages
+ALL CHECKS PASSED
+academy exit 0

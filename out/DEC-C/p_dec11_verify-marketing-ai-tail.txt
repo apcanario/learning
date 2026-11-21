@@ -1,0 +1,3 @@
+verify-hashes.json: edition marketing-ai recorded, 42 pages
+ALL CHECKS PASSED
+ma exit 0

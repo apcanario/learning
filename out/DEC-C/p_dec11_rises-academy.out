@@ -1,0 +1,17 @@
+data   brand-ai                     A    rises  11  layer yes
+data   brand-ai                     B    rises  11  layer yes
+data   ux                           IA   rises  15  layer yes
+data   personal-brand               PB   rises  12  layer yes
+data   building-with-ai             BW   rises  13  layer yes
+data   sport-psychology             SP   rises  13  layer yes
+data   supply-chain-execution       SCE  rises  20  layer no
+built  brand-a                      -    rises  11  layer yes
+built  brand-b                      -    rises  11  layer yes
+built  building-with-ai-bw          -    rises  13  layer yes
+built  greece                       -    rises  13  layer yes
+built  personal-brand-pb            -    rises  12  layer yes
+built  rome                         -    rises  14  layer yes
+built  sport-psychology-sp          -    rises  13  layer yes
+built  supply-chain-execution-sce   -    rises   0  layer no
+built  ux-ia                        -    rises  15  layer yes
+course homes with a hero layer of two or fewer rises in academy: 0 in the built site, 0 in the markdown course data (none)
