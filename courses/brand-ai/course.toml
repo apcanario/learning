@@ -4,9 +4,9 @@
 
 id = "brand-ai"
 family = "markdown"
-private = true   # S-DEC4, for kit/verify.py: the owner's own course, not public: an edition holding it is not checked for private terms over its own files
+private = true   # S-DEC4, for kit/verify.py: the owner's own course, not public: its pages are left out of an edition's private-terms check (P-DEC13; an edition of private courses only is not checked)
 reliefs = true   # S-DEC4, for kit/verify.py: its pages draw object reliefs from design/outlines (was REL_COURSES in verify.py)
-verify_sample = true   # S-DEC4, for kit/verify.py: its homes are among those verify.py's per-page passes visit (drawer, topography, motion, shots)
+verify_sample = true   # S-DEC4, for kit/verify.py: its homes are among those verify.py's per-page passes visit (topography, motion, shots; the drawer is checked for every course, P-DEC14)
 short = "Brand + AI"
 label = "BRAND + AI"
 name = "Brand + AI: two courses for one reader"

@@ -35,11 +35,11 @@ the engine): `unit_key`, the drawer's data-unit (localStorage) key, default "{id
 built page, default the escaped `short` (greece and rome set their own).
 
 Keys for the checks (S-DEC4, read by kit/verify.py only; the build ignores them; each false when absent): `private`, the
-owner's own course, not public (its pages are left out of an edition's private-terms check, P-DEC13;
+owner's own course, not public (its pages are left out of an edition's private-terms check, P-DEC13; an edition holding only private courses is not checked at all;
 private_terms.py PUBLIC, the courses its no-argument run checks, is every course without it);
 `reliefs`, its pages draw object reliefs from design/outlines (the relief library's courses, REL_COURSES in verify.py
-before); `verify_sample`, its homes are among those the per-page passes visit (drawer, topography, motion, the P92
-tiles, shots; an edition holding no such course samples every course it holds).
+before); `verify_sample`, its homes are among those the per-page passes visit (topography, motion, the P92
+tiles, shots; the drawer is checked for every course on a full run, P-DEC14; an edition holding no such course samples every course it holds).
 
 Text fields may use these placeholders, filled per course at build time:
 {content_mods} modules excluding the audit unit · {total_mods} all modules · {nrep} reports written · {kwords} thousands of words written
@@ -180,6 +180,7 @@ def _ordered(found, order, where):
 _CATALOG = _load(_ROOT / 'catalog.toml')
 
 # S-DEC3: a track's `hero` (its place on the home hero) leaves the track's dict for HERO_AT, so THEMES is unchanged
+if 'next' in _CATALOG: _fail("catalog.toml: top-level `next` moved to the History track's `planned` (P-DEC12)")
 HERO_AT = {t['id']: tuple(t['hero']) for t in _CATALOG['tracks'] if 'hero' in t}
 LOG_AREAS = [tuple(a) for a in _CATALOG.get('log_areas', [])]   # S-DEC5 checker: catalog.toml `log_areas`
 THEMES = [dict({k: v for k, v in t.items() if k != 'hero'}, **({'planned': _rows(t['planned'])} if 'planned' in t else {})) for t in _CATALOG['tracks']]

@@ -167,6 +167,8 @@ if ED['courses'] is not None:
     _tracks = {c.get('theme') for c in COURSES} | {tr for c in COURSES for tr, _ in c.get('tracks', {}).values()}
     THEMES = [t for t in THEMES if t['id'] in _tracks]
 HAS = {c['id'] for c in COURSES}
+# the folded planned lists the topography/tile passes open: each track's own `planned_anchor` (catalog.toml; N1, DEC-A checker); an empty match list is a selector that finds nothing
+PLANNED_SEL = ', '.join('#' + t['planned_anchor'] for t in THEMES if t.get('planned_anchor')) or '[data-none]'
 FULL = ED['courses'] is None   # S-DEC4: the edition holds every course (academy)
 import viz, viz_examples   # P55: the examples page's hard cases and the blocks that must stop the build
 viz.set_metrics(brand(EDITION))   # P-DEC5: the brand's font metrics, as build.py draws with them
@@ -2835,9 +2837,9 @@ def main():
             for theme in ('dark', 'light'):
                 if theme == 'light': pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                 pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(120)
-                pg.evaluate("document.querySelectorAll('#planned-courses').forEach(d => d.open = true)"); pg.wait_for_timeout(60)
+                pg.evaluate(f"document.querySelectorAll({PLANNED_SEL!r}).forEach(d => d.open = true)"); pg.wait_for_timeout(60)
                 check_topo(pg, 'home', f'{name} {theme}', fails, EXPECT); check_tiles(pg, 'home', f'{name} {theme}', fails, EXPECT)
-                pg.evaluate("document.querySelectorAll('#planned-courses').forEach(d => d.open = false)")
+                pg.evaluate(f"document.querySelectorAll({PLANNED_SEL!r}).forEach(d => d.open = false)")
                 for pid in TOPO_PAGES + NONE_PAGES + SCOPE.only(reads):
                     pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(120)
                     t = check_topo(pg, pid, f'{name} {theme}', fails, EXPECT)
