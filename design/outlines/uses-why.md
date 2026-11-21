@@ -192,7 +192,7 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | DD-BW2 (`read-dd-bw2`) | notebook | 34 | Every rate above is one person's, on one kind of output (long-form sourced reports), with one family of models. |
 | DD-BW3 (`read-dd-bw3`) | chat | 227 | A chat history is the one record every assistant keeps whether or not you planned to keep one, so it is the one place a task you never wrote a rule for shows up with a count. |
 
-**None:** BW7 (`read-bw7`), pen-nib 31; DD-BW1 (`read-dd-bw1`), chat 24.
+**None:** BW7 (`read-bw7`), pen-nib 31; DD-BW1 (`read-dd-bw1`), chat 25.
 
 
 ## Spare outlines

@@ -2390,7 +2390,7 @@
       7
      ],
      [
-      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      "courses/brand-ai/notes/audience-growth-across-platforms.md",
       4
      ],
      [
@@ -2508,7 +2508,7 @@
       1
      ],
      [
-      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      "courses/brand-ai/notes/audience-growth-across-platforms.md",
       1
      ]
     ],
@@ -2581,7 +2581,7 @@
       7
      ],
      [
-      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      "courses/brand-ai/notes/audience-growth-across-platforms.md",
       3
      ],
      [
@@ -2819,7 +2819,7 @@
       2
      ],
      [
-      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      "courses/brand-ai/notes/audience-growth-across-platforms.md",
       2
      ],
      [
@@ -3106,7 +3106,7 @@
       18
      ],
      [
-      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      "courses/brand-ai/notes/audience-growth-across-platforms.md",
       12
      ],
      [
@@ -3285,15 +3285,19 @@
       36
      ],
      [
-      "courses/building-with-ai/BW9-agents.md",
-      15
-     ],
-     [
       "courses/building-with-ai/BW4-context-engineering.md",
       14
      ],
      [
+      "courses/building-with-ai/BW9-agents.md",
+      14
+     ],
+     [
       "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      5
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
       4
      ],
      [
@@ -3305,8 +3309,12 @@
       3
      ],
      [
-      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
-      3
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      1
+     ],
+     [
+      "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
+      1
      ]
     ]
    }
@@ -4677,7 +4685,7 @@
      ],
      [
       "courses/building-with-ai/BW4-context-engineering.md",
-      20
+      21
      ],
      [
       "courses/building-with-ai/BW8-skills-and-automation.md",
@@ -4685,11 +4693,11 @@
      ],
      [
       "courses/building-with-ai/BW10-cost-limits-privacy.md",
-      17
+      18
      ],
      [
       "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
-      15
+      16
      ],
      [
       "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
@@ -4697,11 +4705,15 @@
      ],
      [
       "courses/building-with-ai/BW9-agents.md",
-      9
+      11
      ],
      [
       "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
       9
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      7
      ],
      [
       "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
@@ -4710,10 +4722,6 @@
      [
       "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
       5
-     ],
-     [
-      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
-      4
      ],
      [
       "courses/building-with-ai/BW5-specifying-a-project.md",
@@ -7859,7 +7867,7 @@
       54
      ],
      [
-      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      "courses/brand-ai/notes/audience-growth-across-platforms.md",
       51
      ],
      [
@@ -7909,7 +7917,7 @@
       25
      ],
      [
-      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      "courses/brand-ai/notes/audience-growth-across-platforms.md",
       18
      ],
      [
@@ -8129,7 +8137,7 @@
     "building-with-ai-bw": [
      [
       "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
-      38
+      34
      ],
      [
       "courses/building-with-ai/BW5-specifying-a-project.md",
@@ -8141,10 +8149,10 @@
      ],
      [
       "courses/building-with-ai/BW9-agents.md",
-      3
+      4
      ],
      [
-      "courses/building-with-ai/BW10-cost-limits-privacy.md",
+      "courses/building-with-ai/BW1-mental-model.md",
       2
      ],
      [
@@ -8152,15 +8160,11 @@
       2
      ],
      [
-      "courses/building-with-ai/BW1-mental-model.md",
+      "courses/building-with-ai/BW10-cost-limits-privacy.md",
       1
      ],
      [
       "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
-      1
-     ],
-     [
-      "courses/building-with-ai/BW4-context-engineering.md",
       1
      ],
      [
@@ -8214,7 +8218,7 @@
       6
      ],
      [
-      "generator/data/brand-ai/audience-growth-across-platforms.md",
+      "courses/brand-ai/notes/audience-growth-across-platforms.md",
       5
      ],
      [
@@ -8634,55 +8638,55 @@
     "building-with-ai-bw": [
      [
       "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
-      212
+      227
      ],
      [
       "courses/building-with-ai/BW10-cost-limits-privacy.md",
-      134
+      143
      ],
      [
       "courses/building-with-ai/BW1-mental-model.md",
-      93
+      94
      ],
      [
       "courses/building-with-ai/BW4-context-engineering.md",
-      74
+      79
      ],
      [
       "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
       38
      ],
      [
+      "courses/building-with-ai/BW5-specifying-a-project.md",
+      27
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      27
+     ],
+     [
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      25
+     ],
+     [
+      "courses/building-with-ai/BW8-skills-and-automation.md",
+      24
+     ],
+     [
       "courses/building-with-ai/BW9-agents.md",
       24
      ],
      [
-      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
-      24
-     ],
-     [
-      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
-      23
-     ],
-     [
-      "courses/building-with-ai/BW5-specifying-a-project.md",
-      22
-     ],
-     [
-      "courses/building-with-ai/BW8-skills-and-automation.md",
-      22
+      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
+      18
      ],
      [
       "courses/building-with-ai/BW6-research-and-verification.md",
       15
      ],
      [
-      "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
-      15
-     ],
-     [
       "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
-      6
+      12
      ]
     ]
    }
@@ -8750,7 +8754,7 @@
      ],
      [
       "courses/building-with-ai/BW4-context-engineering.md",
-      28
+      29
      ],
      [
       "courses/building-with-ai/BW10-cost-limits-privacy.md",
@@ -8859,7 +8863,7 @@
     "building-with-ai-bw": [
      [
       "courses/building-with-ai/BW10-cost-limits-privacy.md",
-      150
+      158
      ],
      [
       "courses/building-with-ai/BW2-choosing-the-model-and-the-effort.md",
@@ -8867,7 +8871,11 @@
      ],
      [
       "courses/building-with-ai/BW1-mental-model.md",
-      23
+      26
+     ],
+     [
+      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
+      24
      ],
      [
       "courses/building-with-ai/BW4-context-engineering.md",
@@ -8875,7 +8883,7 @@
      ],
      [
       "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",
-      19
+      21
      ],
      [
       "courses/building-with-ai/BW6-research-and-verification.md",
@@ -8890,19 +8898,15 @@
       14
      ],
      [
-      "courses/building-with-ai/DD-BW2-deep-dive-one-project-with-its-numbers.md",
-      14
-     ],
-     [
       "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
       6
      ],
      [
-      "courses/building-with-ai/BW5-specifying-a-project.md",
-      4
+      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      5
      ],
      [
-      "courses/building-with-ai/DD-BW1-deep-dive-how-the-best-practitioners-work.md",
+      "courses/building-with-ai/BW5-specifying-a-project.md",
       4
      ],
      [
@@ -8987,11 +8991,11 @@
     "building-with-ai-bw": [
      [
       "courses/building-with-ai/BW3-briefing-prompts-that-hold-up.md",
-      95
+      97
      ],
      [
       "courses/building-with-ai/BW5-specifying-a-project.md",
-      68
+      73
      ],
      [
       "courses/building-with-ai/BW7-pipelines-raw-material-to-finished-output.md",
@@ -9019,7 +9023,7 @@
      ],
      [
       "courses/building-with-ai/BW10-cost-limits-privacy.md",
-      11
+      12
      ],
      [
       "courses/building-with-ai/DD-BW3-deep-dive-audit-your-own-usage.md",

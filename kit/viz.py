@@ -503,9 +503,14 @@ _SANSB = [244, 291, 344, 841, 597, 868, 767, 186, 395, 395, 503, 571, 227, 565, 
           242, 242, 428, 428, 236, 652, 0, 0, 872, 880, 571, 0, 0, 357]
 _ADV = {'sans': dict(zip(_CH, _SANS)), 'sansb': dict(zip(_CH, _SANSB))}
 _MONO = 0.612   # the mono face's advance, in em (every glyph of a monospace face has the same)
+# the mono face's hhea line box in em, above and below the baseline (P-DEC22, 21 Nov 2026): Space Mono's by default; a
+# brand's [metrics] `mono_ascent` and `mono_descent` name its face's, and _BASE['mono'] moves by half the difference of
+# (ascent - descent) from Space Mono's, so the face's box sits on the line where Space Mono's does (Space Mono: 0.36)
+_MONO_BOX = (1.120, 0.361)
 # where _text puts a line's baseline below the middle of its line height, in em of its size, per face (P-DEC5): 0.36 for
 # DM Sans and Space Mono, set by hand at A8; a brand's sans table with its face's ascent and descent centres that face's
-# line box on the line instead ((ascent - descent) / 2), so a face with a deeper descender stays inside its plate
+# line box on the line instead ((ascent - descent) / 2), so a face with a deeper descender stays inside its plate; a
+# brand's mono_ascent and mono_descent move the mono one from 0.36 (_MONO_BOX, P-DEC22)
 _BASE = {'sans': 0.36, 'sansb': 0.36, 'mono': 0.36}   # hand-set, DM Sans' own line box would give 0.341: a [metrics] table is for a face other than DM Sans
 _DEFAULT = (_ADV, _MONO, _BASE)
 
@@ -514,9 +519,11 @@ def set_metrics(brand):
     """Size text with the faces a brand's theme draws (P-DEC5): its optional `[metrics]` table, `sans` and `sansb` (paths
     from the repo root of JSON tables {"face", "from", "chars", "adv", "ascent", "descent"}: advance widths per 1000 em
     of the --sans face at 400 and 600, 0 for a character it lacks; the face's line box, per 1000 em, places _text's
-    baselines) and `mono` (the --mono face's advance in em). A key the brand leaves out keeps the default (DM Sans,
-    Space Mono, the 0.36 baseline); a brand without the table, or None, restores them all, so a process that builds two
-    editions starts each from the defaults."""
+    baselines), `mono` (the --mono face's advance in em) and `mono_ascent` and `mono_descent` (its hhea line box in em,
+    P-DEC22: the mono baseline moves from Space Mono's 0.36 by half the change in ascent - descent, so it is 0.36 with
+    Space Mono's 1.120 and 0.361). A key the brand leaves out keeps the default (DM Sans, Space Mono, the 0.36
+    baseline); a brand without the table, or None, restores them all, so a process that builds two editions starts each
+    from the defaults."""
     global _ADV, _MONO, _BASE
     _ADV, _MONO, _BASE = dict(_DEFAULT[0]), _DEFAULT[1], dict(_DEFAULT[2])
     m = (brand or {}).get('metrics') or {}
@@ -531,6 +538,9 @@ def set_metrics(brand):
                 _BASE[k] = (t['ascent'] - t['descent']) / 2000
     if 'mono' in m:
         _MONO = float(m['mono'])
+    box = (m.get('mono_ascent', _MONO_BOX[0]), m.get('mono_descent', _MONO_BOX[1]))
+    if box != _MONO_BOX:   # Space Mono's own box keeps the hand-set 0.36 exactly (academy and greece byte-identical)
+        _BASE['mono'] = round(_DEFAULT[2]['mono'] + ((box[0] - box[1]) - (_MONO_BOX[0] - _MONO_BOX[1])) / 2, 9)
 
 
 def _tw(s, size, font='sans', ls=0.0):
@@ -840,11 +850,11 @@ def timeline(d):
                 rect = f'<rect class="viz-span viz-t{tone}" x="{b1:.1f}" y="{yy}" width="{max(b2 - b1, 0.5):.1f}" height="{bh[k]}"/>'
                 g = f'<g data-span="{int(s_["from"])} {int(s_["to"])}" data-text="{esc(stext[k])}">'
                 if side == 'in':
-                    body += g + _g(rect + ''.join(f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{yy + 13 + 13 * i}" text-anchor="middle">{esc(ln)}</text>' for i, ln in enumerate(sl[k] if bh[k] > 18 else [stext[k]]))) + '</g>'
+                    body += g + _g(rect + ''.join(f'<text class="viz-spanlabel" x="{(x1 + x2) / 2:.1f}" y="{_my(yy + 13 + 13 * i, 10)}" text-anchor="middle">{esc(ln)}</text>' for i, ln in enumerate(sl[k] if bh[k] > 18 else [stext[k]]))) + '</g>'
                 else:
                     tw = l1 - l0
                     plate = f'<rect class="viz-lblbg" x="{l0 - 4:.1f}" y="{yy + 1}" width="{tw + 8:.1f}" height="{ph}"/>'
-                    txt = ''.join(f'<text class="viz-spanside" x="{l0:.1f}" y="{yy + 13 + 13 * i}">{esc(ln)}</text>' for i, ln in enumerate(sl[k]))
+                    txt = ''.join(f'<text class="viz-spanside" x="{l0:.1f}" y="{_my(yy + 13 + 13 * i, 10)}">{esc(ln)}</text>' for i, ln in enumerate(sl[k]))
                     body += g + _g(rect) + _g(plate + txt) + '</g>'
         else:
             axis = 24 + 22                       # tick labels sit above the axis, events hang below it
@@ -853,7 +863,7 @@ def timeline(d):
             tx = x(t)
             anchor = 'start' if tx < L + 20 else ('end' if tx > R - 20 else 'middle')
             ty = 14 if spans else axis - 10
-            body += f'<line class="viz-tick" x1="{tx:.1f}" y1="{axis - 6}" x2="{tx:.1f}" y2="{axis}"/><text class="viz-ticklabel" x="{tx:.1f}" y="{ty}" text-anchor="{anchor}">{esc(tl)}</text>'
+            body += f'<line class="viz-tick" x1="{tx:.1f}" y1="{axis - 6}" x2="{tx:.1f}" y2="{axis}"/><text class="viz-ticklabel" x="{tx:.1f}" y="{_my(ty, 10.5)}" text-anchor="{anchor}">{esc(tl)}</text>'
         # events (P40, 29 Oct 2026): each label faces right from its stem, left to it or centres on it, in a row below the
         # axis. Given the directions, a label sits below every event whose stem it would cover (so that stem ends above it)
         # and in the first such row its neighbours leave free; the directions are then improved one event at a time until
@@ -938,7 +948,7 @@ def timeline(d):
         body += f'<circle class="viz-dot viz-t{e.get("tone", 1)}" cx="{ex:.1f}" cy="{axis}" r="4"/>'
         for i, ln in enumerate(lines):
             cls = 'viz-date' if i == 0 else 'viz-label'
-            body += f'<text class="{cls}" x="{ex:.1f}" y="{ty + i * 13}" text-anchor="{anchor}">{esc(ln)}</text>'
+            body += f'<text class="{cls}" x="{ex:.1f}" y="{_my(ty + i * 13, 10.5 if i == 0 else 0)}" text-anchor="{anchor}">{esc(ln)}</text>'
     h = axis + 36 + rows * lane_h + 4
     return _svg(W, h, body, 'timeline' + (' viz-snug' if 700 < W <= 1.15 * 700 else ''), d.get('title'), d.get('caption'))   # round 3: a few units over the column scales to it
 
@@ -983,7 +993,7 @@ def compare(d):
         body += lt; stick += lt
         body += f'<rect class="viz-track" x="{bar_x}" y="{cy - 7:.1f}" width="{bar_w:.1f}" height="14"/>'
         body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{cy - 7:.1f}" width="{wv:.1f}" height="14"/>'
-        body += f'<text class="viz-value" x="{_val_x(bar_x, wv, bar_w, v):.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
+        body += f'<text class="viz-value" x="{_val_x(bar_x, wv, bar_w, v):.1f}" y="{_my(cy + 3.8, 10.5):.1f}">{esc(v)}</text>'
         y += rh
     alt = _compare_phone(rows, vals, mx, K)
     return _svg(W, _r(y + 4), body, 'compare', d.get('title'), d.get('caption'), stick=None if alt else (bar_x - 4, stick), alt=alt)
@@ -1023,7 +1033,7 @@ def _compare_phone(rows, vals, mx, K):
             body += _text(lab, T_LABEL, bar_x - 10, cy - len(lab) * 7, 'end')
             body += f'<rect class="viz-track" x="{bar_x}" y="{cy - 7:.1f}" width="{bar_w:.1f}" height="14"/>'
             body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{cy - 7:.1f}" width="{wv:.1f}" height="14"/>'
-            body += f'<text class="viz-value" x="{_val_x(bar_x, wv, bar_w, v):.1f}" y="{cy + 3.8:.1f}">{esc(v)}</text>'
+            body += f'<text class="viz-value" x="{_val_x(bar_x, wv, bar_w, v):.1f}" y="{_my(cy + 3.8, 10.5):.1f}">{esc(v)}</text>'
             y += rh
     else:                                                         # stacked: each label above its bar, the bar the drawing's width
         bar_x, bar_w = 8, PW - 16 - VW
@@ -1034,7 +1044,7 @@ def _compare_phone(rows, vals, mx, K):
             wv = bar_w * float(r['value']) / mx
             body += f'<rect class="viz-track" x="{bar_x}" y="{y:.1f}" width="{bar_w:.1f}" height="14"/>'
             body += f'<rect class="viz-bar viz-t{_tone(r, 1, K)}" x="{bar_x}" y="{y:.1f}" width="{wv:.1f}" height="14"/>'
-            body += f'<text class="viz-value" x="{_val_x(bar_x, wv, bar_w, v):.1f}" y="{y + 10.8:.1f}">{esc(v)}</text>'
+            body += f'<text class="viz-value" x="{_val_x(bar_x, wv, bar_w, v):.1f}" y="{_my(y + 10.8, 10.5):.1f}">{esc(v)}</text>'
             y += 14 + 12
     return (PW, _r(y + 4), body)
 
@@ -1193,8 +1203,16 @@ def _width(lines, role):
     return max((_tw(ln, size, font, ls) for ln in lines), default=0)
 
 
+def _my(y, size):
+    """A mono text's baseline y placed by hand (an offset tuned to Space Mono), moved with the brand's mono line box as
+    _text moves it (P-DEC22): unchanged, the same value and type, while the mono baseline is Space Mono's 0.36."""
+    d = _BASE['mono'] - _DEFAULT[2]['mono']
+    return y if not d or not size else round(y + size * d, 1)
+
+
 def _text(lines, role, x, top, anchor='start'):
-    """Lines of one role from the top of their block; each line's baseline sits in the middle of its line height."""
+    """Lines of one role from the top of their block; each line's baseline sits _BASE[font] em of its size below the
+    middle of its line height (set_metrics: the brand's sans and mono line boxes)."""
     cls, font, size, _, lh = role
     return ''.join(f'<text class="{cls}" x="{x:.1f}" y="{top + lh / 2 + size * _BASE[font] + i * lh:.1f}" text-anchor="{anchor}">{esc(ln)}</text>'
                    for i, ln in enumerate(lines))
@@ -1591,7 +1609,7 @@ def objects(d):
                 ox, oy, ow, oh = own                         # N7: on a slanted line near a box's corner the
                 if (ox - tw / 2 - 2 < cx < ox + ow + tw / 2 + 2 and oy - 9 < cy < oy + oh + 9):   # count fell on the
                     cx, cy = cx - 2 * nx * off, cy - 2 * ny * off                                    # box: other side
-                links += f'<text class="viz-small" x="{cx:.1f}" y="{cy + 3.6:.1f}" text-anchor="middle">{esc(e[end])}</text>'
+                links += f'<text class="viz-small" x="{cx:.1f}" y="{_my(cy + 3.6, 10):.1f}" text-anchor="middle">{esc(e[end])}</text>'
                 taken.append((cx - tw / 2, cy - 6, tw, 12))
         if e.get('label'):
             level = abs(uy) < 0.01
@@ -2532,7 +2550,7 @@ def _line_draw(d, W):
     for t, tl in zip(yt, ylab):
         yy = py(t)
         grid += _line([(L, yy), (R, yy)], 'viz-base' if t == 0 else 'viz-grid')
-        grid += f'<text class="viz-ticklabel" x="{L - 6:.1f}" y="{yy + 3.6:.1f}" text-anchor="end">{esc(tl)}</text>'
+        grid += f'<text class="viz-ticklabel" x="{L - 6:.1f}" y="{_my(yy + 3.6, 10.5):.1f}" text-anchor="end">{esc(tl)}</text>'
     # x tick labels: every x value when they fit, else every k-th (always the first and the last)
     xl = [fx(v) for v in xs]
     if numeric:
@@ -2548,7 +2566,7 @@ def _line_draw(d, W):
             show.pop(-2)
         xlh = 13
         for v in show:
-            body += f'<line class="viz-grid" x1="{px(v):.1f}" y1="{PB}" x2="{px(v):.1f}" y2="{PB + 4}"/><text class="viz-ticklabel" x="{px(v):.1f}" y="{PB + 16:.1f}" text-anchor="middle">{esc(lab_of[v])}</text>'
+            body += f'<line class="viz-grid" x1="{px(v):.1f}" y1="{PB}" x2="{px(v):.1f}" y2="{PB + 4}"/><text class="viz-ticklabel" x="{px(v):.1f}" y="{_my(PB + 16, 10.5):.1f}" text-anchor="middle">{esc(lab_of[v])}</text>'
     else:
         cw = (R - L) / n
         wrapped = [_wrap(t, 0, px=max(24, cw - 6), size=10.5, font='mono') for t in xl]
@@ -2605,7 +2623,7 @@ def _line_draw(d, W):
             labs += _plate_at(rect, lab, T_VAL)
     H = PB + 6 + xlh + 8
     if d.get('xlabel'):
-        body += f'<text class="viz-colhead" x="{R:.1f}" y="{H + 6:.1f}" text-anchor="end">{esc(d["xlabel"])}</text>'
+        body += f'<text class="viz-colhead" x="{R:.1f}" y="{_my(H + 6, 10):.1f}" text-anchor="end">{esc(d["xlabel"])}</text>'
         H += 16
     # the figure's class is viz-linechart: viz-line is already the class of a structural line, and would style the figure
     return W, _r(H), grid + body + marks + labs
@@ -2681,7 +2699,7 @@ def _bars_wide(d):
                 wv = bw * v / mx
                 if wv > 0:
                     marks += f'<rect class="viz-bar viz-t{s["_t"]}" x="{bx:.1f}" y="{yy:.1f}" width="{wv:.1f}" height="{BH}"/>'
-                marks += f'<text class="viz-value" x="{bx + wv + 6:.1f}" y="{yy + BH / 2 + 3.8:.1f}">{esc(_fmt(v, dec) + unit)}</text>'
+                marks += f'<text class="viz-value" x="{bx + wv + 6:.1f}" y="{_my(yy + BH / 2 + 3.8, 10.5):.1f}">{esc(_fmt(v, dec) + unit)}</text>'
         else:
             xx = bx
             for s, v in zip(series, r['values']):
@@ -2695,7 +2713,7 @@ def _bars_wide(d):
                 else:
                     marks += rect
                 xx += wv
-            marks += f'<text class="viz-value" x="{xx + 6:.1f}" y="{by + BH / 2 + 3.8:.1f}">{esc(_fmt(t, dec) + unit)}</text>'
+            marks += f'<text class="viz-value" x="{xx + 6:.1f}" y="{_my(by + BH / 2 + 3.8, 10.5):.1f}">{esc(_fmt(t, dec) + unit)}</text>'
         y += rh + 14
     base = _line([(bx, top - 4), (bx, y - 10)], 'viz-base')
     return body + base + marks, W, _r(y - 14 + 8)
@@ -2754,7 +2772,7 @@ def _bars_phone(d):
                 wv = bw * v / mx
                 if wv > 0:
                     marks += f'<rect class="viz-bar viz-t{s["_t"]}" x="{bx:.1f}" y="{yy:.1f}" width="{wv:.1f}" height="{BH}"/>'
-                marks += f'<text class="viz-value" x="{bx + wv + 6:.1f}" y="{yy + BH / 2 + 3.8:.1f}">{esc(_fmt(v, dec) + unit)}</text>'
+                marks += f'<text class="viz-value" x="{bx + wv + 6:.1f}" y="{_my(yy + BH / 2 + 3.8, 10.5):.1f}">{esc(_fmt(v, dec) + unit)}</text>'
             block = ns * BH + (ns - 1) * BG
         else:
             xx = bx
@@ -2769,7 +2787,7 @@ def _bars_phone(d):
                 else:
                     marks += rect
                 xx += wv
-            marks += f'<text class="viz-value" x="{xx + 6:.1f}" y="{by + BH / 2 + 3.8:.1f}">{esc(_fmt(t, dec) + unit)}</text>'
+            marks += f'<text class="viz-value" x="{xx + 6:.1f}" y="{_my(by + BH / 2 + 3.8, 10.5):.1f}">{esc(_fmt(t, dec) + unit)}</text>'
             block = BH
         y = by + block + 14
     base = _line([(bx, top - 2), (bx, y - 12)], 'viz-base')
@@ -2814,7 +2832,7 @@ def _scatter_draw(d, W, height=None, wrap=150):
     X = lambda v: L + (v - ax['x']['lo']) / (ax['x']['hi'] - ax['x']['lo']) * (R - L)
     Y = lambda v: PB - (v - ax['y']['lo']) / (ax['y']['hi'] - ax['y']['lo']) * PH
     for t in ax['y']['ticks']:
-        body += _line([(L, Y(t)), (R, Y(t))], 'viz-grid') + f'<text class="viz-ticklabel" x="{L - 6:.1f}" y="{Y(t) + 3.6:.1f}" text-anchor="end">{esc(tl("y", t))}</text>'
+        body += _line([(L, Y(t)), (R, Y(t))], 'viz-grid') + f'<text class="viz-ticklabel" x="{L - 6:.1f}" y="{_my(Y(t) + 3.6, 10.5):.1f}" text-anchor="end">{esc(tl("y", t))}</text>'
     xt = ax['x']['ticks']
     if W < 400:                                              # P124: on a phone's drawing keep every k-th x tick, the fewest that leaves 6 units between two tick labels
         for k_ in range(1, len(xt)):
@@ -2826,7 +2844,7 @@ def _scatter_draw(d, W, height=None, wrap=150):
     for i, t in enumerate(xt):
         hw_ = _tw(tl('x', t), 10.5, 'mono') / 2
         anchor = 'start' if X(t) - hw_ < 4 else ('end' if X(t) + hw_ > W - 4 else 'middle')
-        body += _line([(X(t), PT), (X(t), PB)], 'viz-grid') + f'<text class="viz-ticklabel" x="{X(t):.1f}" y="{PB + 16:.1f}" text-anchor="{anchor}">{esc(tl("x", t))}</text>'
+        body += _line([(X(t), PT), (X(t), PB)], 'viz-grid') + f'<text class="viz-ticklabel" x="{X(t):.1f}" y="{_my(PB + 16, 10.5):.1f}" text-anchor="{anchor}">{esc(tl("x", t))}</text>'
     body += _line([(L, PB), (R, PB)], 'viz-base') + _line([(L, PT), (L, PB)], 'viz-base')
     plates, marks = [], ''
     dots = [(X(p['x']) - 5.5, Y(p['y']) - 5.5, 11, 11) for p in pts]
@@ -2882,7 +2900,7 @@ def _scatter_draw(d, W, height=None, wrap=150):
         labs += _plate_at(rect, lab, T_LABEL)
     H = PB + 24
     if ax['x']['label']:
-        body += f'<text class="viz-colhead" x="{R:.1f}" y="{H + 4:.1f}" text-anchor="end">{esc(ax["x"]["label"])}</text>'
+        body += f'<text class="viz-colhead" x="{R:.1f}" y="{_my(H + 4, 10):.1f}" text-anchor="end">{esc(ax["x"]["label"])}</text>'
         H += 16
     return W, _r(H), body + marks + labs
 
@@ -3010,10 +3028,10 @@ def range_(d):
         tl = yr(tk, K, era) if years else _fmt(tk, dec) + unit
         hw = _tw(tl, 10.5, 'mono') / 2
         anchor = 'start' if X(tk) - hw < 4 else ('end' if X(tk) + hw > W - 4 else 'middle')
-        grid += f'<text class="viz-ticklabel" x="{X(tk):.1f}" y="{y + 6:.1f}" text-anchor="{anchor}">{esc(tl)}</text>'
+        grid += f'<text class="viz-ticklabel" x="{X(tk):.1f}" y="{_my(y + 6, 10.5):.1f}" text-anchor="{anchor}">{esc(tl)}</text>'
     H = y + 14
     if d.get('xlabel'):
-        grid += f'<text class="viz-colhead" x="{PR:.1f}" y="{H + 6:.1f}" text-anchor="end">{esc(d["xlabel"])}</text>'
+        grid += f'<text class="viz-colhead" x="{PR:.1f}" y="{_my(H + 6, 10):.1f}" text-anchor="end">{esc(d["xlabel"])}</text>'
         H += 16
     return _svg(W, _r(H), grid + marks, 'range', d.get('title'), d.get('caption'))
 

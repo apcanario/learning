@@ -26,10 +26,12 @@
 #               metrics.json) {"face", "from", "chars", "adv", "ascent", "descent"}: the --sans face's advances per
 #               1000 em at 400 and 600 for viz._CH (0 for a glyph the face lacks) and its hhea line box per 1000 em
 #               (figure text's baselines centre it), read from the vendored woff2 with fontTools (`python3 kit/font_metrics.py table <out.json> "<face>" <subset.woff2>...` and `... mono <woff2>`; needs fontTools and brotli); `mono`: the --mono
-#               face's advance in em (IBM Plex Mono 0.6; its baseline stays where Space Mono's is, so a mono face's
-#               line box must reach no further than Space Mono's: 1.120 em above the baseline, 0.361 below).
-#               A key left out keeps the default: DM Sans 400 and 600 (viz._SANS, viz._SANSB) and Space Mono (0.612),
-#               which is Academy's case (no table, figures byte-identical). verify.py serves a face only if its woff2 are
+#               face's advance in em (IBM Plex Mono 0.6); `mono_ascent` and `mono_descent` (P-DEC22, a pair): its
+#               hhea line box in em above and below the baseline (IBM Plex Mono 1.025 and 0.275; `font_metrics.py mono`
+#               prints all three), from which figure text's mono baselines are placed; the box may be no taller than
+#               Space Mono's (1.481 em), and a brand whose [tokens] change --mono names all three.
+#               A key left out keeps the default: DM Sans 400 and 600 (viz._SANS, viz._SANSB) and Space Mono (0.612;
+#               line box 1.120 and 0.361), which is Academy's case (no table, figures byte-identical). verify.py serves a face only if its woff2 are
 #               in kit/fonts/ with a kit/fonts/<face>.css of @font-face rules (and its OFL notice), added when the
 #               tokens name the family; a face not vendored is drawn and measured in its fallback (the desktop pass says so)
 #   [howbuilt]  optional (S-DEC5): the docs the "How it was built" pages quote: `method` (its section 1) with

@@ -88,29 +88,6 @@ Do them in that order, each by a fresh Opus agent staged on a packet holding the
 Save the next prompt: row HK-2's prompt is already saved in its row; set the backlog's Next up line to HK-2 and give that prompt at the end of the reply.
 
 **Reply:** what changed where; each difference in the build output and the proof it is only the intended one; the checker's verdict and what was applied; verify's result; the publish and the deploy; the choices taken; every proposal with its ⚠ flag and every task open for Pedro by hand (P-SCE1, P-SCE6, P-DEC26), repeated until he marks them done; then the prompt of HK-2 in a code block. |
-| HK-2 | P-DEC22 and P-DEC17: the mono baseline in a brand's `[metrics]`, and the outline library's index refreshed; academy byte-identical, one full verify, nothing published | Sonnet 5.5 (thin main chat); the changes and the checker each a fresh Opus 5.5 agent | Clone `apcanario/learning` (attach it with add_repo, push access; one shallow clone with a generous timeout; call `register_repo_root` if the session offers it; the repo has no CLAUDE.md). Right after cloning, run `python3 kit/land.py start <this row>`. Row HK-2 of `docs/BACKLOG.md`, in this chat: two housekeeping proposals that leave Academy byte-identical, worked together under one full verify. Start with `python3 kit/baseline.py --check` (clean).
-
-**P-DEC22.** *Proposed (P-DEC5 checker, minor 9).* A brand's `[metrics]` sets only the `--mono` advance; the mono baseline stays Space Mono's and nothing checks a mono face's line box against it (documented limit: 1.120 em above, 0.361 below). Add `mono_ascent` and `mono_descent` to `[metrics]`, have `viz._text` place mono baselines from them and `courses._brand` check them.
-
-**P-DEC17.** *Proposed (DEC-B, P-DEC9 agent; first half resolved by W-SCE1, 21 Nov 2026: the `read-dd-bw2` `MAP` entry fixed, `p96_uses.py` runs, `uses-why.md` refreshed, baseline clean).* Still open: re-run `p95_library.py` (it needs the four icon-set clones from GitHub, `python3 kit/p95_library.py <clones folder>`, then `relief.py`) and `p96_extract.py` to refresh `design/outlines/outlines.json`, which still carries the old `generator/data` path and the pre-correction BW counts.
-
-P-DEC22 by a fresh Opus agent: `mono_ascent` and `mono_descent` in a brand's `[metrics]` (defaults Space Mono's, so academy and greece are unchanged), `viz._text` placing mono baselines from them, `courses._brand` checking them, the brand template and `docs/decoupling.md` made true; prove it on the `marketing-ai` probe with a mono face whose line box differs (the figure geometry checks pass; they failed before). P-DEC17 by a second fresh Opus agent: clone the icon sets the docstring of `kit/p95_library.py` names into a folder outside the repo, run `python3 kit/p95_library.py <clones folder>`, then `relief.py` and `p96_extract.py`; `design/outlines/outlines.json` must lose the old `generator/data` path and carry the corrected BW counts; if a clone cannot be fetched (the workspace allows only package registries and GitHub), say which and leave that outline's record as it is.
-
-**Test.** `python3 kit/baseline.py --check` clean after each (academy and greece byte-identical; the only manifest changes are files under `design/outlines/` if their hashes are in it, each shown to differ only by the intended fields), one `python3 kit/verify.py --full` (ALL CHECKS PASSED), `--edition marketing-ai` and `--edition greece`. A fresh Opus checker that has not seen the work reviews both diffs; apply its findings in this chat.
-
-Nothing built changes, so nothing is published; say so in the reply.
-
-**This is a thin main chat** (method §4): Sonnet 5.5, recorded as the model that ran. Each piece of work (the change, the checker) is a fresh Agent on model opus on a packet folder outside the repo; the chat reads only each agent's reply (at most six lines) and files it writes to `out/`, and scripts, not the chat, check the result (`kit/baseline.py --check`, `kit/verify.py`, `kit/index_check.py`, `kit/private_terms.py`). If the permission check refuses to run the repo's own scripts, stop, say so in one line and ask Pedro; never work around it. Where a choice is open take the most reasonable reading, say so in the record and carry on. **Carry-forward rule (Pedro, standing):** nothing found goes unrecorded; fix every error, should-fix and minor finding in this chat, and write every proposal you cannot do here as a row of Carried proposals with its ⚠ flag.
-
-**Read first:** `docs/method.md` §4, §8 and §10, `docs/decoupling.md` §5 and §6, `kit/README.md`, the docstrings of `kit/baseline.py` and `kit/land.py`.
-
-
-
-**Close** per `docs/method.md` §8 steps 1 to 5: the row moved to `docs/CHANGELOG.md` with the date, the models and a one-line result; its rows removed from this section; a `kit/CHANGELOG.md` entry; the Project copies `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` rewritten from `docs/` (`project_read` each path first, then `project_write` with `local_path`); never a unit. **Land before you publish** (`docs/method.md` §10): `python3 kit/land.py land <this row> --expected <file>`, publish only after it exits 0.
-
-When both bundles are closed, housekeeping is done: set the backlog's Next up line to "units resume: W-SCE2" and give the saved prompt of W-SCE2 (`python3 kit/next_prompt.py --row W-SCE2`) at the end of the reply.
-
-**Reply:** what changed where; each difference in the build output and the proof it is only the intended one; the checker's verdict and what was applied; verify's result; the publish and the deploy; the choices taken; every proposal with its ⚠ flag and every task open for Pedro by hand (P-SCE1, P-SCE6, P-DEC26), repeated until he marks them done; then the prompt of W-SCE2 in a code block. |
 
 ### 4c · Sport Psychology for Coaches (registered 16 Nov 2026, row S-SP0)
 

@@ -55,6 +55,7 @@ What TOML cannot hold, converted here, the same way every time, so the dicts equ
   computed   the history timelines' `ticks` positions were f-strings; the files hold the strings they gave
 """
 import json
+import math
 import pathlib
 import tomllib
 
@@ -140,8 +141,8 @@ def _brand(path, d):
     d.setdefault('rules', [])
     m = d.get('metrics', {})   # P-DEC5: optional, the font metrics of a brand that changes --sans or --mono (viz.set_metrics)
     for k in m:
-        if k not in ('sans', 'sansb', 'mono'):
-            _fail(path, f'`metrics.{k}` is not sans, sansb or mono')
+        if k not in ('sans', 'sansb', 'mono', 'mono_ascent', 'mono_descent'):
+            _fail(path, f'`metrics.{k}` is not sans, sansb, mono, mono_ascent or mono_descent')
     for k in ('sans', 'sansb'):
         if k in m:
             f = (_ROOT / m[k]).resolve()
@@ -158,14 +159,25 @@ def _brand(path, d):
                 _fail(path, f'`metrics.{k}` ({m[k]}) is not a metrics table: `chars` and `adv` of one length, numbers, and an advance for "0"')
     if 'mono' in m and (isinstance(m['mono'], bool) or not isinstance(m['mono'], (int, float)) or m['mono'] <= 0):
         _fail(path, '`metrics.mono` is the mono face\'s advance in em, a number above 0')
+    # P-DEC22: the mono face's hhea line box in em (viz._MONO_BOX, Space Mono's 1.120 and 0.361 by default), named as a
+    # pair; figure text's mono baselines move with it, and no taller than Space Mono's 1.481 em, the most the plates fit
+    for k in ('mono_ascent', 'mono_descent'):
+        if k in m and (isinstance(m[k], bool) or not isinstance(m[k], (int, float)) or not math.isfinite(m[k]) or m[k] <= 0):
+            _fail(path, f'`metrics.{k}` is the mono face\'s hhea {k[5:]} in em, a number above 0')
+    if ('mono_ascent' in m) != ('mono_descent' in m):
+        _fail(path, '`metrics.mono_ascent` and `metrics.mono_descent` are a pair: name both or neither')
+    if 'mono_ascent' in m and m['mono_ascent'] + m['mono_descent'] > 1.481 + 1e-9:
+        _fail(path, f'`metrics.mono_ascent` + `mono_descent` is {m["mono_ascent"] + m["mono_descent"]:.3f} em, taller than '
+                    'Space Mono\'s 1.481, the most a figure\'s plates and boxes fit')
     # P-DEC5: a brand that changes a face without naming its metrics would draw figure boxes from DM Sans / Space Mono
     # widths (S-DEC3's first probe: 24 figure-geometry failures), so the build stops instead
     fam = lambda v: v.split(',')[0].strip().strip('"\'')
     t = d['tokens']
     if 'sans' in t and fam(t['sans']) != 'DM Sans' and not ('sans' in m and 'sansb' in m):
         _fail(path, '`tokens.sans` changes the face: name its metrics in [metrics] `sans` and `sansb` (brands/academy.toml header)')
-    if 'mono' in t and fam(t['mono']) != 'Space Mono' and 'mono' not in m:
-        _fail(path, '`tokens.mono` changes the face: name its advance in [metrics] `mono` (brands/academy.toml header)')
+    if 'mono' in t and fam(t['mono']) != 'Space Mono' and not all(k in m for k in ('mono', 'mono_ascent', 'mono_descent')):
+        _fail(path, '`tokens.mono` changes the face: name its advance and line box in [metrics] `mono`, `mono_ascent` '
+                    'and `mono_descent` (brands/academy.toml header)')
     return d
 
 

@@ -2,7 +2,9 @@
 
   python3 kit/font_metrics.py table <out.json> <face name> <subset.woff2>...   advances per 1000 em of viz._CH,
                                                                                       and the face's ascent and descent
-  python3 kit/font_metrics.py mono <subset.woff2>                              the advance in em
+  python3 kit/font_metrics.py mono <subset.woff2>                              the advance, then the hhea ascent and
+                                                                                      descent, in em ([metrics] `mono`,
+                                                                                      `mono_ascent`, `mono_descent`; P-DEC22)
   python3 kit/font_metrics.py proof                                            DM Sans and Space Mono vs viz's literals
 
 Needs fontTools and brotli (woff2); neither is needed by the build. For each character the first subset whose cmap
@@ -36,6 +38,12 @@ def mono(f):
     return ws.pop() / ft['head'].unitsPerEm
 
 
+def mono_box(f):
+    """P-DEC22: the face's hhea line box in em, (ascent, descent), to 3 places: [metrics] `mono_ascent`, `mono_descent`."""
+    ft = TTFont(f); u = ft['head'].unitsPerEm
+    return round(ft['hhea'].ascent / u, 3), round(-ft['hhea'].descent / u, 3)
+
+
 if __name__ == '__main__':
     if len(sys.argv) < 2 or sys.argv[1] not in ('table', 'mono', 'proof'):
         raise SystemExit(__doc__)
@@ -48,7 +56,7 @@ if __name__ == '__main__':
         pathlib.Path(out).write_text(json.dumps({'face': face, 'from': rel, 'chars': viz._CH, 'adv': table(files), **box},
                                                 ensure_ascii=False) + '\n')
     elif cmd == 'mono':
-        print(mono(sys.argv[2]))
+        print(mono(sys.argv[2]), *mono_box(sys.argv[2]))
     elif cmd == 'proof':
         F = ROOT / 'kit' / 'fonts'
         for w, ref in (('400', viz._SANS), ('600', viz._SANSB)):
@@ -57,3 +65,5 @@ if __name__ == '__main__':
             print(f'DM Sans {w}: {len(ref)} literal values, {len(got)} regenerated, {len(d)} differ' + (f': {d}' if d else ''))
         m = mono(F / 'space-mono-latin-400-normal.woff2')
         print(f'Space Mono 400: regenerated {m!r} em, literal 0.612: {"equal" if m == 0.612 else "DIFFER"}')
+        b = mono_box(F / 'space-mono-latin-400-normal.woff2')
+        print(f'Space Mono 400 line box: regenerated {b}, viz._MONO_BOX {viz._MONO_BOX}: {"equal" if b == viz._MONO_BOX else "DIFFER"}')
