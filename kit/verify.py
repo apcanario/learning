@@ -1625,7 +1625,8 @@ SEP_JS = r"""([pid, poses, cyc, bt, motion]) => {
     if (t.getAttribute('aria-hidden') !== 'true') out.bad.push(`section ${k + 1}: the separator is not aria-hidden`);
     if (t.textContent.trim() || t.querySelector('text, title, desc')) out.bad.push(`section ${k + 1}: the separator holds text`);
     const b = new Blob([t.outerHTML]).size; out.bytes += b; out.maxb = Math.max(out.maxb, b);
-    if (b > 6144) out.bad.push(`section ${k + 1}: the separator is ${b} bytes, over 6 KB`);
+    const cap = 6144 + 135 * Math.max(0, t.querySelectorAll('svg.topo-l g.ct-rise').length - 38);   // W-SCE2: build.py SEP_MAX, SEP_PER for each rise over SEP_FREE
+    if (b > cap) out.bad.push(`section ${k + 1}: the separator is ${b} bytes, over ${cap}`);
     const gs = [...t.querySelectorAll('svg.topo-l g.ct-rise')], got = gs.map(g => +g.getAttribute('data-words'));
     if (t.querySelectorAll('svg.topo-l').length !== 1 || t.querySelector('g.ct-plan')) out.bad.push(`section ${k + 1}: ${t.querySelectorAll('svg.topo-l').length} layouts, or a planned ring`);
     const blank = gs.filter(g => !g.querySelector('circle.ct-spot') && !(g.querySelector('path') && g.querySelector('path').getAttribute('d'))).map(g => g.getAttribute('data-label'));   // P94 check: every paragraph shows

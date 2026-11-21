@@ -1,0 +1,737 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#supply-chain-execution-sce" data-target="supply-chain-execution-sce">Course SCE · Supply chain execution · public</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">SCE2</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--gold)">SUPPLY CHAIN EXECUTION · PUBLIC</span> · SCE2 <span class="pill live">SCE2</span></div>
+    <h1>Inbound and storage</h1>
+    <p class="scope">From the truck at the gate to stock in a location: receiving, putaway, storage and replenishment, and what the warehouse system does at each step.</p>
+  </header>
+  <div class="stepbar" data-n="12"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 12</span><span class="stt">1. What a warehouse is for</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-sce2-0" data-step="0"><span class="n">01</span><span class="t">1. What a warehouse is for</span></a></li><li><a href="#read-sce2-1" data-step="1"><span class="n">02</span><span class="t">2. The units goods arrive in: pallet, case, each</span></a></li><li><a href="#read-sce2-2" data-step="2"><span class="n">03</span><span class="t">3. The inbound sequence, step by step</span></a></li><li><a href="#read-sce2-3" data-step="3"><span class="n">04</span><span class="t">4. Storage media and when each is used</span></a></li><li><a href="#read-sce2-4" data-step="4"><span class="n">05</span><span class="t">5. Reserve and forward pick locations</span></a></li><li><a href="#read-sce2-5" data-step="5"><span class="n">06</span><span class="t">6. Replenishment and what triggers it</span></a></li><li><a href="#read-sce2-6" data-step="6"><span class="n">07</span><span class="t">7. What the warehouse system does at each step, and what it needs</span></a></li><li><a href="#read-sce2-7" data-step="7"><span class="n">08</span><span class="t">8. The inbound measures the benchmark surveys report</span></a></li><li><a href="#read-sce2-8" data-step="8"><span class="n">09</span><span class="t">9. Date-coded and temperature-controlled goods</span></a></li><li><a href="#read-sce2-9" data-step="9"><span class="n">10</span><span class="t">On a site visit</span></a></li><li><a href="#read-sce2-10" data-step="10"><span class="n">11</span><span class="t">Self-check</span></a></li><li><a href="#read-sce2-11" data-step="11"><span class="n">12</span><span class="t">Deliverable: the inbound flow map</span></a></li></ol><div class="secx"><a href="#read-sce2-sources" data-acc>Sources</a><a href="#read-sce2-note" data-acc>The writer's opening note</a><a href="#read-sce2-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-sce2-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">1. What a warehouse is for</span></span></h2>
+<p>Bartholdi and Hackman open with the question "Why have a warehouse?" (§1.1) and list its uses under two headings [practice]:</p>
+<ul>
+<li><strong>To match supply with demand.</strong> A warehouse holds stock against seasonal surges, unreliable transport, unreliable demand or price increases; in their words, warehouses can buffer the supply chain against collapsing demand (§1.1) [practice].</li>
+<li><strong>To consolidate.</strong> A distributor may consolidate shipments from vendors into large shipments for downstream customers, which reduces transport cost (§1.1) [practice].</li>
+</ul>
+<p>They add two further uses: <strong>postponement</strong>, holding product undifferentiated until nearer the customer, and centralising tasks such as price labelling (§1.1) [practice]. And they describe the <strong>crossdock</strong> (in this course, cross-dock), where each facility receives product from many vendors, sorts it, and prepares loads for each store (§1.1) [practice]. A cross-dock is a warehouse that consolidates without storing.</p>
+<p>What this means for software, as this unit's inference: a warehouse system is judged on two things that pull apart. It must keep an accurate record of goods that wait (the buffer), and it must move goods through fast (the consolidation). Inbound is where both start: a pallet that is received wrongly is wrong in the record for as long as it waits, and a pallet that waits on the dock delays every order that needs it.</p>
+<p>Bartholdi and Hackman's types of warehouse (§1.2) matter for this unit in one place: a <strong>perishables warehouse</strong> may handle food, fresh flowers, vaccines or other product needing refrigeration; product there dwells for very short times, frequently only hours; and such warehouses may have requirements to ship product by FIFO (first in, first out) or FEFO (first expired, first out) (§1.2) [practice]. Section 10 takes these up.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="20" data-rings="1"><path d="M256 74l-24 0-16 2-21 4-12 8 22 8 27 5 32 5 112 10"/><circle class="ct-spot" cx="240" cy="88" r="6"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="59" data-rings="4"><path d="M440 72l-64 2-48 4-24 0-48-4M376 116l120 8 48 0 104-8M464 77l-72 5-42 6-24 8 31 8 27 4 80 7 40 2 40-2 88-7M472 82l-64 5-5 1-15 8 27 8 57 5 32 1 32-1 72-7 128-1M475 88l-27 5-13 3 37 6 24 2 104-10"/><circle class="ct-spot" cx="480" cy="96" r="9"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="77" data-rings="5"><path d="M744 47l-56 5-128 6-120 14M648 116l96-2 120-10 24 0M872 44l-72-1-56 4M728 56l-32 2-104 5-128 14M632 108l112-2 88-8 32-2M848 51l-64 0-56 5M800 56l-40 2-64 5-64 2-48 4-112 13M736 101l80-8 32-1 56 0M840 56l-40 0M736 64l-32 3-48 2-39 3-33 5-109 11M600 94l128 2 80-7 40-2 56 0M840 61l-56 0-48 3M696 72l-24 2-40 6 16 5 16 3 40 2 40-1 48-5 40-3 112 0M808 67l-48 0-64 5"/><circle class="ct-spot" cx="720" cy="80" r="10"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="66" data-rings="4"><path d="M888 104l56 7 40 3 48-1 32-3 24-4 24-9 8-7 2-2 1-8-7-8-18-8-10-3-24-4-32-4-160-9M864 96l32 1 80 8 24 0 24-1 24-3 16-5 15-8 2-8-8-8-17-6-16-3-32-3-160-9M904 92l64 6 40-1 16-2 16-5 4-2 4-6 1-2-11-8-14-3-32-4-96-7-56-2M904 87l64 5 24-2 14-2 10-8-16-8-8-1-89-7-63-3M944 81l22-1-30-5-15-3-113-5"/><circle class="ct-spot" cx="960" cy="80" r="9"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-sce2-1" data-step="1"><span>Next · 2 of 12</span><b>2. The units goods arrive in: pallet, case, each</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-sce2-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">2. The units goods arrive in: pallet, case, each</span></span></h2>
+<p><strong>Stock keeping unit (SKU).</strong> Bartholdi and Hackman define it as "the smallest physical unit of a product that is tracked by an organization" (§2.2) [practice]. Corvane (fictional), a fashion retailer, counts each size and colour as its own item and has about 18,000 of them (case register).</p>
+<p><strong>Units of handling.</strong> Goods travel in different units at different points in the chain. Bartholdi and Hackman's account: product generally flows upstream in larger units such as pallets, then to local warehouses in cases, and finally to stores in inner-packs or individual pieces (§2.2) [practice]. The course uses three words:</p>
+<ul>
+<li><strong>Pallet</strong> (also unit load): a platform of goods handled as one load by a forklift.</li>
+<li><strong>Case</strong> (also carton): a supplier's sealed box of a fixed number of units.</li>
+<li><strong>Each</strong> (also piece, single item): one saleable unit.</li>
+</ul>
+<p>Their reasoning for why the change from one unit to another is where labour goes is one sentence: "In general, the smaller the handling unit, the greater the handling cost" (ch. 3 introduction) [practice]. A pallet is moved once with one truck trip; the same goods as forty cases are forty handlings; as several hundred eaches, several hundred. Every place where a larger unit is broken into smaller ones (a pallet opened to pick cases, a case opened to pick eaches) multiplies the handlings that follow. This unit opened no study that measures the multiplier; the direction is the textbook's, and the arithmetic is this unit's illustration.</p>
+<p>The two case operations sit at different points on that ladder. Ostrel Foods (fictional), a food distributor, picks by the case onto roll cages; Corvane (fictional) replenishes stores by carton and by single item and ships web orders of one to three items (case register). Corvane therefore breaks units twice (pallet to carton, carton to each); Ostrel once (pallet to case). This is this unit's reading of the register, and it is why later units treat their picking differently (SCE3).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.364"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="47" data-rings="2"><path d="M376 82l-96-9-48-1-32 2-16 2-16 4-17 8-2 8 19 6 24 3 24 0 56-4 72-2 16 1M200 88l-1 0 1 1 8 5 16 2 69-8-21-4-32-3-16 1z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="50" data-rings="2"><path d="M456 77l-80 5M360 100l32 7 24 2 120 5 200-1M528 87l-48-2-38 3-22 8 12 4 16 3 64 3 88-3"/><circle class="ct-spot" cx="480" cy="96" r="7"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="107" data-rings="5"><path d="M704 47l-24 4-54 13-66 11-24 2-80 0M736 113l48-4 56-9 32-2M872 48l-56-5-32-1-48 1-32 4M704 55l-40 9-43 8-45 12-16 2-32 1M600 103l128 2 48-3 56-11 24-2M800 52l-32-1-32 1-32 3M696 63l-76 17-9 8 13 5 8 2 32 3 56 2 24-1 24-3 24-5 36-11 17-8-25-8-44-6-40 0-24 2zM736 64l-24 2-64 14 1 8 31 5 32 1 32-1 28-5 17-8 8-8-13-4-16-4zM720 72l-40 8 8 4 16 3 16 1 16-1 22-7-3-8-19-1z"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="80" data-rings="4"><path d="M872 98l32 2 80 9 32 0 32-1 24-4 16-6 4-2-1-8-14-8-22-8-23-11-32-8-40-3-88-2M856 89l56 4 56 7 40 1 16-1 21-4 10-8-12-8-35-15-16-3-16-2-32-1-72 1-72-8M888 71l-8 1-4 8 49 8 35 4 24 1 24-1 14-4-7-8-19-8-20-5-16-1-24 0z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-0" data-step="0"><span>Previous · 1 of 12</span><b>1. What a warehouse is for</b></a><a class="snext" href="#read-sce2-2" data-step="2"><span>Next · 3 of 12</span><b>3. The inbound sequence, step by step</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-sce2-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">3. The inbound sequence, step by step</span></span></h2>
+<p>Bartholdi and Hackman's inbound processes are <strong>receiving</strong> and <strong>put-away</strong>, before order-picking, checking, packing and shipping (ch. 3) [practice]. The brief's sequence below splits receiving into the steps a product team will meet as separate screens. For each: the physical event, the people, what the system does, how it fails, and its measure. Section 8 gives the measures' sources; section 7 gathers the system's work and data.</p>
+<figure class="viz viz-flow"><p class="viz-title">Inbound, from order to location</p><div class="viz-scroll"><svg viewBox="0 0 694 179" width="694" height="179" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Inbound, from order to location"><g data-box=""><rect class="viz-node viz-t1" x="8" y="8" width="150" height="69" rx="2"/><text class="viz-nodelabel" x="20.0" y="31.3" text-anchor="start">Purchase order and</text><text class="viz-nodelabel" x="20.0" y="45.3" text-anchor="start">advance notice</text><text class="viz-note" x="20.0" y="62.3" text-anchor="start">what is coming</text></g><path class="viz-arrow" d="M162,42.5 L178,42.5"/><g data-box=""><rect class="viz-node viz-t1" x="184" y="8" width="150" height="69" rx="2"/><text class="viz-nodelabel" x="196.0" y="31.3" text-anchor="start">Appointment and</text><text class="viz-nodelabel" x="196.0" y="45.3" text-anchor="start">dock</text><text class="viz-note" x="196.0" y="62.3" text-anchor="start">when, which door</text></g><path class="viz-arrow" d="M338,42.5 L354,42.5"/><g data-box=""><rect class="viz-node viz-t1" x="360" y="8" width="150" height="69" rx="2"/><text class="viz-nodelabel" x="372.0" y="31.3" text-anchor="start">Unload</text><text class="viz-note" x="372.0" y="48.3" text-anchor="start">staged for put-away</text></g><path class="viz-arrow" d="M514,42.5 L530,42.5"/><g data-box=""><rect class="viz-node viz-t1" x="536" y="8" width="150" height="69" rx="2"/><text class="viz-nodelabel" x="548.0" y="31.3" text-anchor="start">Check and count</text><text class="viz-note" x="548.0" y="48.3" text-anchor="start">exceptions noted</text></g><path class="viz-arrow" d="M611.0,79 L611.0,90.0 L83.0,90.0 L83.0,99"/><g data-box=""><rect class="viz-node viz-t1" x="8" y="103" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="20.0" y="126.3" text-anchor="start">Quality hold</text><text class="viz-note" x="20.0" y="143.3" text-anchor="start">where inspection</text><text class="viz-note" x="20.0" y="156.3" text-anchor="start">applies</text></g><path class="viz-arrow" d="M162,137.0 L178,137.0"/><g data-box=""><rect class="viz-node viz-t1" x="184" y="103" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="196.0" y="126.3" text-anchor="start">Label</text><text class="viz-note" x="196.0" y="143.3" text-anchor="start">SSCC on the</text><text class="viz-note" x="196.0" y="156.3" text-anchor="start">logistic unit</text></g><path class="viz-arrow" d="M338,137.0 L354,137.0"/><g data-box=""><rect class="viz-node viz-t3" x="360" y="103" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="372.0" y="126.3" text-anchor="start">Cross-dock or store</text><text class="viz-note" x="372.0" y="143.3" text-anchor="start">to shipping, or to</text><text class="viz-note" x="372.0" y="156.3" text-anchor="start">put-away</text></g><path class="viz-arrow" d="M514,137.0 L530,137.0"/><g data-box=""><rect class="viz-node viz-t2" x="536" y="103" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="548.0" y="126.3" text-anchor="start">Put away</text><text class="viz-note" x="548.0" y="143.3" text-anchor="start">location chosen,</text><text class="viz-note" x="548.0" y="156.3" text-anchor="start">location scanned</text></g><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>The inbound steps of section 3 of this unit, in order. Step names follow the course brief; the notes come from Bartholdi and Hackman, Warehouse & Distribution Science, release 0.98 (2017), sections 1.1, 3.1, 3.2 and 4.3, and GS1's Logistic Label Guideline, release 1.3 (July 2019), as cited in section 3.</figcaption></figure>
+<h3>3.1 The purchase order and the advance notice</h3>
+<p><strong>Physical event.</strong> None yet: this step is paper or data. A <strong>purchase order</strong> (PO) is the buyer's order to a supplier; it says what should arrive. An <strong>advance notice</strong> says what has actually been sent.</p>
+<p><strong>What the sources say.</strong> "Receiving may begin with advance notification of the arrival of goods" (Bartholdi &amp; Hackman §3.1) [practice]. The textbook does not use the term advance shipping notice. GS1, the standards body for barcodes and business messages, names the message "Despatch Advice / ASN" and says it should specify, for each logistic unit, its SSCC (the unit's serial number, §3.6) and the trade items it contains (<a target="_blank" rel="noopener" href="https://www.gs1.org/standards/gs1-logistic-label-guideline">GS1 Logistic Label Guideline, release 1.3, July 2019</a>) [independent]. <strong>Region note:</strong> you will meet both names, "despatch advice" and "advance ship notice" (ASN), for the same message; GS1 writes them as one name, and this unit opened no source on which region uses which, so it makes no claim about it.</p>
+<p><strong>People.</strong> The buyer who placed the PO and the supplier who sends the notice; neither works in the warehouse. The ERP holds the PO (SCE1 placed purchase orders in the ERP as a working placement).</p>
+<p><strong>System.</strong> The warehouse system receives the expected receipt from the ERP and, where the supplier sends one, the advance notice. With an advance notice that lists each pallet's SSCC, receipt can be confirmed per pallet by scan rather than per line by count; that is this unit's inference from GS1's rule, not a measured result.</p>
+<p><strong>Common failure.</strong> No notice, a late notice, or a notice that does not match the truck. This unit opened no source that measures how often; it is named as a failure the next steps must catch (section 3.4).</p>
+<p><strong>Measure.</strong> WERC asks for the percentage of supplier orders received with correct documents (section 8) [practice].</p>
+<h3>3.2 The appointment and the dock</h3>
+<p><strong>Physical event.</strong> A truck arrives at the yard and is given a <strong>dock door</strong> (a loading bay where a trailer backs up to the building).</p>
+<p><strong>What the sources say.</strong> "It is not unusual for warehouses to schedule trucks to within 30-minute time windows" (§3.1) [practice]. Bartholdi and Hackman list appointment scheduling among the basic features of a warehouse management system (WMS) (§4.3) [practice], and yard management among the high-end ones (§4.3) [practice].</p>
+<p><strong>People.</strong> The supplier's or carrier's driver; at the site, whoever books appointments and assigns doors. Neither case operation's register names this person.</p>
+<p><strong>System.</strong> Holds the appointment calendar and the door assignment. SCE1 §4 places dock doors under yard management, which may be a module of the warehouse system or a separate system; it says nothing about appointments.</p>
+<p><strong>Common failure.</strong> A truck arriving outside its window, or unbooked, queues at the gate or takes a door planned for another. Named, not measured: no source was opened.</p>
+<p><strong>Measure.</strong> WERC asks for on-time receipts from suppliers (section 8) [practice].</p>
+<h3>3.3 Unloading</h3>
+<p><strong>Physical event.</strong> "Once the product has arrived, it is unloaded and possibly staged for put away" (§3.1) [practice]. <strong>Staging</strong> is setting goods down in a marked floor area near the dock until the next step.</p>
+<p><strong>People.</strong> Forklift or pallet-truck drivers; at Ostrel Foods (fictional), Bram drives a reach truck for put-away and replenishment on nights (case register); who unloads is not in the register.</p>
+<p><strong>System.</strong> Records that the trailer is being unloaded and, if it tracks staging lanes as locations, where each pallet was set down. Bartholdi and Hackman's standard is that a good WMS tracks every place product can be, down to the forks of individual forklift trucks (§4.2) [practice].</p>
+<p><strong>Common failure.</strong> Goods left in staging are in the building but not in a location the record knows (this unit's inference from §4.2).</p>
+<h3>3.4 Checking and counting</h3>
+<p><strong>Physical event.</strong> Product is inspected and exceptions noted, "such as damage, incorrect counts, wrong descriptions" (§3.1) [practice]. It "is likely to be scanned to register its arrival so that ownership is assumed" (§3.1) [practice]: the moment of receipt is the moment the goods become the buyer's on the record.</p>
+<p><strong>People.</strong> Receiving clerks or checkers. Neither register names them.</p>
+<p><strong>System.</strong> This is the step the warehouse system exists for. "The most fundamental capability of a WMS is to record receipt of inventory into the warehouse" (§4.1) [practice], and that receipt drives the paying of bills to suppliers upstream (§4.1) [practice]. The system compares what arrived with the PO and the notice, records the differences, and sends the receipt to the ERP (SCE1 §3).</p>
+<p><strong>Common failure.</strong> Damage, wrong counts and wrong descriptions are the textbook's own list (§3.1) [practice]. Two consequences follow as this unit's inference: a count accepted without checking puts an error into the stock record that every later promise inherits (Corvane's known trouble, web orders promised from stock the centre cannot find, is the kind of failure this produces; SCE4 traces it); and a receipt recorded wrongly pays the supplier wrongly.</p>
+<p><strong>Measure.</strong> Percentage of supplier orders received damage free (WERC, section 8) [practice].</p>
+<h3>3.5 Quality hold</h3>
+<p><strong>Physical event.</strong> Goods that must be inspected before use are set aside and may not be picked until released.</p>
+<p><strong>What the sources say.</strong> Bartholdi and Hackman list quality assurance among a WMS's basic features (§4.3) [practice], without describing it. This unit opened no source that describes a quality hold as a process, so what follows is a working description, not a claim: a <strong>hold</strong> is a status on stock that keeps it in the record but blocks it from being allocated to orders until someone releases it.</p>
+<p><strong>People.</strong> Whoever has authority to release; neither register names one.</p>
+<p><strong>System.</strong> Puts received stock into a held status, keeps it out of available stock, and records who released it and when (working description).</p>
+<p><strong>Common failure.</strong> Held stock released without the check, or good stock forgotten on hold. Named, not measured.</p>
+<p><strong>Measure.</strong> No inbound benchmark for holds was found in the sources opened.</p>
+<h3>3.6 Labelling</h3>
+<p><strong>Physical event.</strong> Each pallet or case is given a label the warehouse can scan, if the supplier's label is missing or unusable.</p>
+<p><strong>What the sources say.</strong> GS1 defines a <strong>logistic unit</strong> as any combination of trade items packaged together for storage and/or transport, such as a case, pallet or parcel, and the <strong>SSCC</strong> (Serial Shipping Container Code) as the number that identifies it (<a target="_blank" rel="noopener" href="https://www.gs1.org/standards/id-keys/sscc">GS1, SSCC page</a>) [independent]. The GS1 Logistic Label Guideline says the label allows each logistic unit to be identified uniquely, and that the one mandatory element is that unique serial number (release 1.3) [independent]. A label can carry only one batch number and only one date value; best-before, expiry and sell-by dates are optional, and where used must relate to the trade item on the label (same guideline) [independent].</p>
+<p><strong>People.</strong> Receiving staff, where the site relabels.</p>
+<p><strong>System.</strong> Prints a label with a new identifier, or reads the supplier's SSCC and links it to the pallet's contents (this unit's inference from the GS1 rule above).</p>
+<p><strong>Common failure.</strong> A pallet whose trade items carry different dates or batches cannot show them on one GS1 label: rules [4-20] and [4-24] allow one date value and one batch number per label, and rule [4-21], a best practice, says that where items with several best-before dates are loaded together the earliest date is used on the label and on the despatch advice (same guideline) [independent]; mixed-batch pallets are therefore split or labelled by the site's own scheme (this unit's inference).</p>
+<h3>3.7 Cross-docking: the alternative to storing</h3>
+<p><strong>Physical event.</strong> Goods go from the receiving dock to the shipping dock without being put away. Section 1 gives the textbook's description (§1.1) [practice].</p>
+<p><strong>System.</strong> Bartholdi and Hackman list flow-through processing among a WMS's high-end features (§4.3) [practice]. To cross-dock, the system must know at receipt which outbound order or destination the goods are for, which means the outbound demand has to be in the system before the truck is unloaded (this unit's inference).</p>
+<p><strong>Common failure.</strong> Goods arrive for which no outbound load is ready, and so are stored after all, or wait on the dock. Named, not measured.</p>
+<p><strong>Where it fits the case.</strong> Ostrel's work starts in the evening for delivery the next morning, and Corvane replenishes 60 stores (case register). Whether either cross-docks is not in the register.</p>
+<h3>3.8 Put-away</h3>
+<p><strong>Physical event.</strong> The pallet or case is moved from the dock to a storage location and set down.</p>
+<p><strong>What the sources say.</strong> "Before product can be put away, an appropriate storage location must be determined" (§3.2) [practice], and where it is stored largely decides how quickly it can be retrieved later (§3.2) [practice]. Choosing locations means "managing a second inventory, not of product, but of storage locations" (§3.2) [practice]. The storage location should itself be scanned to record where the product was placed (§3.2) [practice]. Put-away can take a fair amount of labour because product may travel a long way to its location (§3.2) [practice].</p>
+<p><strong>People.</strong> Lift-truck drivers. At Ostrel Foods (fictional), Bram, on nights (case register).</p>
+<p><strong>System.</strong> Directs the move. Bartholdi and Hackman name "directed put-away and directed picking" as functions of the stock locator system (§4.2) [practice]: the system chooses the location, sends the task to the driver's device, and waits for the driver to scan the location as confirmation. It can also pair a put-away with a retrieval nearby, which they describe as interleaving put-aways and retrievals to reduce deadheading, the empty travel between tasks (ch. 6) [practice]; they list task interleaving among high-end WMS features (§4.3) [practice].</p>
+<p><strong>Common failure.</strong> Goods put in a location other than the one the system recorded. The textbook's rule to scan the location (§3.2) exists to prevent it; the consequence, stock the record shows in one place and the shelf has in another, is SCE4's subject.</p>
+<p><strong>Measure.</strong> Dock-to-stock cycle time and lines received and put away per hour (section 8) [practice].</p>
+<p><strong>Two cost shares you will hear.</strong> Bartholdi and Hackman say receiving accounts for only about 10% of operating costs in a typical distribution centre, and put-away about 15%, crediting both to Frazelle's <em>World-Class Warehousing</em> (1996) and, for receiving, also his <em>World-Class Warehousing and Material Handling</em> (2002) (§3.1, §3.2; bibliography [21], [22]) [practice]. This unit did not open Frazelle, so the origin is not traced and both figures are graded practice under SCE1's key.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.727"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="67" data-rings="3"><path d="M93 88l59 17M112 92l137-4M119 88l21 8M135 88l67 0"/><circle class="ct-spot" cx="128" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="35" data-rings="1"><path d="M152 105l230-9M140 96l93 0"/><circle class="ct-spot" cx="152" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="121" data-rings="5"><path d="M152 62l-59 26M168 63l-56 29M160 70l-41 18M168 71l-33 17M202 88l-34-17M168 76l-16 12 44-8z"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="35" data-rings="1"><circle class="ct-spot" cx="200" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="55" data-rings="2"><path d="M233 96l-73-26"/><circle class="ct-spot" cx="216" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="38" data-rings="1"><path d="M249 88l-81-25"/><circle class="ct-spot" cx="240" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶7" data-words="16" data-rings="0"><circle class="ct-spot" cx="264" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶8" data-words="25" data-rings="1"><circle class="ct-spot" cx="280" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶9" data-words="47" data-rings="2"><circle class="ct-spot" cx="304" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶10" data-words="22" data-rings="1"><circle class="ct-spot" cx="328" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶11" data-words="35" data-rings="1"><circle class="ct-spot" cx="352" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶12" data-words="28" data-rings="1"><path d="M382 96l-230-34"/><circle class="ct-spot" cx="368" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶13" data-words="11" data-rings="0"><circle class="ct-spot" cx="392" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶14" data-words="35" data-rings="1"><path d="M390 80l50 21"/><circle class="ct-spot" cx="416" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶15" data-words="29" data-rings="1"><path d="M440 101l272-20"/><circle class="ct-spot" cx="440" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶16" data-words="47" data-rings="2"><path d="M456 69l-66 11"/><circle class="ct-spot" cx="456" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶17" data-words="23" data-rings="1"><circle class="ct-spot" cx="480" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶18" data-words="49" data-rings="2"><path d="M504 79l56 18"/><circle class="ct-spot" cx="504" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶19" data-words="9" data-rings="0"><circle class="ct-spot" cx="520" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶20" data-words="64" data-rings="2"><path d="M536 79l50 9M552 80l19 8"/><circle class="ct-spot" cx="544" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶21" data-words="70" data-rings="3"><path d="M560 97l100-17M586 88l-50-9M571 88l-19-8"/><circle class="ct-spot" cx="568" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶22" data-words="12" data-rings="0"><circle class="ct-spot" cx="592" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶23" data-words="19" data-rings="0"><circle class="ct-spot" cx="608" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶24" data-words="68" data-rings="3"><path d="M660 80l-156-1"/><circle class="ct-spot" cx="632" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶25" data-words="10" data-rings="0"><circle class="ct-spot" cx="656" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶26" data-words="23" data-rings="1"><circle class="ct-spot" cx="680" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶27" data-words="17" data-rings="0"><circle class="ct-spot" cx="696" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶28" data-words="12" data-rings="0"><circle class="ct-spot" cx="720" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶29" data-words="22" data-rings="1"><circle class="ct-spot" cx="744" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶30" data-words="112" data-rings="5"><path d="M728 63l-16 15-256-9M712 81l248 26M728 71l24 24 133 1M744 70l0 19 43-1z"/></g><g class="ct-rise ct-t6" data-label="¶31" data-words="7" data-rings="0"><circle class="ct-spot" cx="784" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶32" data-words="28" data-rings="1"><circle class="ct-spot" cx="808" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶33" data-words="81" data-rings="3"><path d="M832 68l-104 3"/><circle class="ct-spot" cx="832" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶34" data-words="24" data-rings="1"><circle class="ct-spot" cx="848" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶35" data-words="50" data-rings="2"><path d="M885 96l-53-28"/><circle class="ct-spot" cx="872" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶36" data-words="25" data-rings="1"><circle class="ct-spot" cx="896" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶37" data-words="31" data-rings="1"><circle class="ct-spot" cx="920" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶38" data-words="18" data-rings="0"><circle class="ct-spot" cx="936" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶39" data-words="87" data-rings="3"><path d="M960 107l120-4M944 78l-13 18 21 6 136-14M960 79l-8 20 128-11"/><circle class="ct-spot" cx="960" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶40" data-words="12" data-rings="0"><circle class="ct-spot" cx="984" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶41" data-words="84" data-rings="3"><circle class="ct-spot" cx="1000" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶42" data-words="44" data-rings="2"><circle class="ct-spot" cx="1024" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶43" data-words="15" data-rings="0"><circle class="ct-spot" cx="1048" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶44" data-words="73" data-rings="3"><path d="M1080 103l18-23-370-17M1088 88l-144-10M1080 88l-120-9"/><circle class="ct-spot" cx="1072" cy="88" r="5"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-1" data-step="1"><span>Previous · 2 of 12</span><b>2. The units goods arrive in: pallet, case, each</b></a><a class="snext" href="#read-sce2-3" data-step="3"><span>Next · 4 of 12</span><b>4. Storage media and when each is used</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-sce2-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">4. Storage media and when each is used</span></span></h2>
+<p><strong>Storage media</strong> are the physical means of holding goods. Bartholdi and Hackman's chapter 5 and chapter 6 give the choices and the trade-off that runs through them: deeper storage needs fewer aisles and gives up direct access to each load (ch. 5, ch. 6) [practice]. "Aisles provide accessibility, not storage" (ch. 6) [practice].</p>
+<ul>
+<li><strong>Floor storage (block stacking).</strong> The simplest way of storing pallets, typically arranged in lanes, one SKU per lane to avoid double-handling (§5.1.1, ch. 6) [practice]. As a lane empties, its space cannot be used by another SKU until the lane is clear; "This loss of space is called honey-combing" (§5.1.1) [practice]. Deeper lanes are more exposed to honeycombing; shallow lanes spend more space on access (ch. 6) [practice]. It suits pallets that stack: heavy, fragile or uneven pallets cannot be stacked high (ch. 6) [practice].</li>
+<li><strong>Selective (single-deep) pallet rack.</strong> One pallet deep, each pallet reachable on its own, at the price of more aisle space (§5.1.1) [practice]. Installing rack lets pallets be stored independently of each other where they cannot be stacked (ch. 6) [practice].</li>
+<li><strong>Double-deep, drive-in and push-back rack.</strong> Deeper rack for fewer aisles: double-deep is two single-deep racks one behind the other; drive-in lets a lift truck drive into the rack frame, floor storage for product that is not otherwise stackable; push-back lanes pull out like a drawer (§5.1.1) [practice]. Of drive-in and drive-through rack, only drive-through rack, entered from both ends, lets product move first-in-first-out (§5.1.1) [practice].</li>
+<li><strong>Pallet flow rack.</strong> Deep lanes with slanted, roller-lined shelving: pallets are put in at one side and taken out at the other, and the textbook calls it appropriate for high-throughput facilities (§5.1.1) [practice].</li>
+<li><strong>Shelving (bin-shelving, static rack).</strong> The most basic and least expensive storage, for slower-moving or small items (§5.1.2) [practice].</li>
+<li><strong>Flow rack (carton flow).</strong> Tilted shelves with rollers that bring cases forward for picking; it is restocked from the back, independently of picking, so restocking never interferes with picking as it does with static shelving (§5.1.3) [practice]. The textbook's summary puts it as flow rack for cartons of faster-moving items (ch. 5) [practice].</li>
+<li><strong>Automated storage and retrieval systems (AS/RS)</strong>, at the level of a mention: machines that store and fetch loads; in a unit-load AS/RS a stacker crane does the handling (§5.1.1) [practice]. SCE5 treats the machines.</li>
+</ul>
+<figure class="viz viz-matrix"><p class="viz-title">Storage media: what each holds and is used for</p><div class="viz-scroll" style="--stickn:108px;--stick:133.5px" data-altn=""><svg viewBox="0 0 700.0 276" width="700.0" height="276" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Storage media: what each holds and is used for"><text class="viz-colhead" x="176.0" y="27.6" text-anchor="middle">Holds</text><text class="viz-colhead" x="269.5" y="15.6" text-anchor="middle">Each pallet</text><text class="viz-colhead" x="269.5" y="27.6" text-anchor="middle">reachable</text><text class="viz-colhead" x="365.9" y="27.6" text-anchor="middle">Fewer aisles</text><text class="viz-colhead" x="476.7" y="15.6" text-anchor="middle">First in,</text><text class="viz-colhead" x="476.7" y="27.6" text-anchor="middle">first out</text><text class="viz-colhead" x="616.9" y="27.6" text-anchor="middle">Used for</text><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Floor storage</text><g data-box=""><rect class="viz-band viz-t1" x="135.5" y="46.0" width="81.0" height="28.0"/><text class="viz-mark" x="176.0" y="63.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-track" x="220.5" y="46.0" width="97.8" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="322.4" y="46.0" width="87.1" height="28.0"/><text class="viz-mark" x="365.9" y="63.8" text-anchor="middle">deep lanes</text></g><g data-box=""><rect class="viz-track" x="413.5" y="46.0" width="126.3" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="543.8" y="46.0" width="146.2" height="28.0"/><text class="viz-mark" x="616.9" y="63.8" text-anchor="middle">stackable pallets</text></g><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Selective rack</text><g data-box=""><rect class="viz-band viz-t2" x="135.5" y="78.0" width="81.0" height="28.0"/><text class="viz-mark" x="176.0" y="95.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-band viz-t2" x="220.5" y="78.0" width="97.8" height="28.0"/><text class="viz-mark" x="269.5" y="95.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t2" x="322.4" y="78.0" width="87.1" height="28.0"/><text class="viz-mark" x="365.9" y="95.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-track" x="413.5" y="78.0" width="126.3" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t2" x="543.8" y="78.0" width="146.2" height="28.0"/><text class="viz-mark" x="616.9" y="95.8" text-anchor="middle">pallets stored singly</text></g><text class="viz-label" x="8.0" y="128.3" text-anchor="start">Double-deep rack</text><g data-box=""><rect class="viz-band viz-t2" x="135.5" y="110.0" width="81.0" height="28.0"/><text class="viz-mark" x="176.0" y="127.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-band viz-t2" x="220.5" y="110.0" width="97.8" height="28.0"/><text class="viz-mark" x="269.5" y="127.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t2" x="322.4" y="110.0" width="87.1" height="28.0"/><text class="viz-mark" x="365.9" y="127.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-track" x="413.5" y="110.0" width="126.3" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t2" x="543.8" y="110.0" width="146.2" height="28.0"/><text class="viz-mark" x="616.9" y="127.8" text-anchor="middle">fewer aisles</text></g><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Drive-in rack</text><g data-box=""><rect class="viz-band viz-t2" x="135.5" y="142.0" width="81.0" height="28.0"/><text class="viz-mark" x="176.0" y="159.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-band viz-t2" x="220.5" y="142.0" width="97.8" height="28.0"/><text class="viz-mark" x="269.5" y="159.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t2" x="322.4" y="142.0" width="87.1" height="28.0"/><text class="viz-mark" x="365.9" y="159.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t2" x="413.5" y="142.0" width="126.3" height="28.0"/><text class="viz-mark" x="476.7" y="159.8" text-anchor="middle">drive-through only</text></g><g data-box=""><rect class="viz-band viz-t2" x="543.8" y="142.0" width="146.2" height="28.0"/><text class="viz-mark" x="616.9" y="159.8" text-anchor="middle">non-stackable pallets</text></g><text class="viz-label" x="8.0" y="192.3" text-anchor="start">Pallet flow rack</text><g data-box=""><rect class="viz-band viz-t2" x="135.5" y="174.0" width="81.0" height="28.0"/><text class="viz-mark" x="176.0" y="191.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-track" x="220.5" y="174.0" width="97.8" height="28.0"/></g><g data-box=""><rect class="viz-track" x="322.4" y="174.0" width="87.1" height="28.0"/></g><g data-box=""><rect class="viz-track" x="413.5" y="174.0" width="126.3" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t2" x="543.8" y="174.0" width="146.2" height="28.0"/><text class="viz-mark" x="616.9" y="191.8" text-anchor="middle">high throughput</text></g><text class="viz-label" x="8.0" y="224.3" text-anchor="start">Shelving</text><g data-box=""><rect class="viz-band viz-t3" x="135.5" y="206.0" width="81.0" height="28.0"/><text class="viz-mark" x="176.0" y="223.8" text-anchor="middle">small items</text></g><g data-box=""><rect class="viz-track" x="220.5" y="206.0" width="97.8" height="28.0"/></g><g data-box=""><rect class="viz-track" x="322.4" y="206.0" width="87.1" height="28.0"/></g><g data-box=""><rect class="viz-track" x="413.5" y="206.0" width="126.3" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="543.8" y="206.0" width="146.2" height="28.0"/><text class="viz-mark" x="616.9" y="223.8" text-anchor="middle">slow or small items</text></g><text class="viz-label" x="8.0" y="256.3" text-anchor="start">Carton flow rack</text><g data-box=""><rect class="viz-band viz-t3" x="135.5" y="238.0" width="81.0" height="28.0"/><text class="viz-mark" x="176.0" y="255.8" text-anchor="middle">cases</text></g><g data-box=""><rect class="viz-track" x="220.5" y="238.0" width="97.8" height="28.0"/></g><g data-box=""><rect class="viz-track" x="322.4" y="238.0" width="87.1" height="28.0"/></g><g data-box=""><rect class="viz-track" x="413.5" y="238.0" width="126.3" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="543.8" y="238.0" width="146.2" height="28.0"/><text class="viz-mark" x="616.9" y="255.8" text-anchor="middle">fast-moving cartons</text></g></svg><svg class="viz-altn" viewBox="0 0 662.3 308" width="662.3" height="308" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Storage media: what each holds and is used for"><text class="viz-colhead" x="150.5" y="27.6" text-anchor="middle">Holds</text><text class="viz-colhead" x="243.9" y="15.6" text-anchor="middle">Each pallet</text><text class="viz-colhead" x="243.9" y="27.6" text-anchor="middle">reachable</text><text class="viz-colhead" x="340.4" y="27.6" text-anchor="middle">Fewer aisles</text><text class="viz-colhead" x="451.1" y="15.6" text-anchor="middle">First in,</text><text class="viz-colhead" x="451.1" y="27.6" text-anchor="middle">first out</text><text class="viz-colhead" x="585.3" y="27.6" text-anchor="middle">Used for</text><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Floor storage</text><g data-box=""><rect class="viz-band viz-t1" x="110.0" y="46.0" width="81.0" height="28.0"/><text class="viz-mark" x="150.5" y="63.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-track" x="195.0" y="46.0" width="97.8" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="296.8" y="46.0" width="87.1" height="28.0"/><text class="viz-mark" x="340.4" y="63.8" text-anchor="middle">deep lanes</text></g><g data-box=""><rect class="viz-track" x="388.0" y="46.0" width="126.3" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t1" x="518.3" y="46.0" width="134.0" height="28.0"/><text class="viz-mark" x="585.3" y="63.8" text-anchor="middle">stackable pallets</text></g><text class="viz-label" x="8.0" y="100.3" text-anchor="start">Selective rack</text><g data-box=""><rect class="viz-band viz-t2" x="110.0" y="78.0" width="81.0" height="36.0"/><text class="viz-mark" x="150.5" y="99.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-band viz-t2" x="195.0" y="78.0" width="97.8" height="36.0"/><text class="viz-mark" x="243.9" y="99.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t2" x="296.8" y="78.0" width="87.1" height="36.0"/><text class="viz-mark" x="340.4" y="99.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-track" x="388.0" y="78.0" width="126.3" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t2" x="518.3" y="78.0" width="134.0" height="36.0"/><text class="viz-mark" x="585.3" y="93.3" text-anchor="middle">pallets</text><text class="viz-mark" x="585.3" y="106.3" text-anchor="middle">stored singly</text></g><text class="viz-label" x="8.0" y="133.3" text-anchor="start">Double-deep</text><text class="viz-label" x="8.0" y="147.3" text-anchor="start">rack</text><g data-box=""><rect class="viz-band viz-t2" x="110.0" y="118.0" width="81.0" height="36.0"/><text class="viz-mark" x="150.5" y="139.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-band viz-t2" x="195.0" y="118.0" width="97.8" height="36.0"/><text class="viz-mark" x="243.9" y="139.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t2" x="296.8" y="118.0" width="87.1" height="36.0"/><text class="viz-mark" x="340.4" y="139.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-track" x="388.0" y="118.0" width="126.3" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t2" x="518.3" y="118.0" width="134.0" height="36.0"/><text class="viz-mark" x="585.3" y="139.8" text-anchor="middle">fewer aisles</text></g><text class="viz-label" x="8.0" y="180.3" text-anchor="start">Drive-in rack</text><g data-box=""><rect class="viz-band viz-t2" x="110.0" y="158.0" width="81.0" height="36.0"/><text class="viz-mark" x="150.5" y="179.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-band viz-t2" x="195.0" y="158.0" width="97.8" height="36.0"/><text class="viz-mark" x="243.9" y="179.8" text-anchor="middle">no</text></g><g data-box=""><rect class="viz-band viz-t2" x="296.8" y="158.0" width="87.1" height="36.0"/><text class="viz-mark" x="340.4" y="179.8" text-anchor="middle">yes</text></g><g data-box=""><rect class="viz-band viz-t2" x="388.0" y="158.0" width="126.3" height="36.0"/><text class="viz-mark" x="451.1" y="179.8" text-anchor="middle">drive-through only</text></g><g data-box=""><rect class="viz-band viz-t2" x="518.3" y="158.0" width="134.0" height="36.0"/><text class="viz-mark" x="585.3" y="173.3" text-anchor="middle">non-stackable</text><text class="viz-mark" x="585.3" y="186.3" text-anchor="middle">pallets</text></g><text class="viz-label" x="8.0" y="216.3" text-anchor="start">Pallet flow rack</text><g data-box=""><rect class="viz-band viz-t2" x="110.0" y="198.0" width="81.0" height="28.0"/><text class="viz-mark" x="150.5" y="215.8" text-anchor="middle">pallets</text></g><g data-box=""><rect class="viz-track" x="195.0" y="198.0" width="97.8" height="28.0"/></g><g data-box=""><rect class="viz-track" x="296.8" y="198.0" width="87.1" height="28.0"/></g><g data-box=""><rect class="viz-track" x="388.0" y="198.0" width="126.3" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t2" x="518.3" y="198.0" width="134.0" height="28.0"/><text class="viz-mark" x="585.3" y="215.8" text-anchor="middle">high throughput</text></g><text class="viz-label" x="8.0" y="248.3" text-anchor="start">Shelving</text><g data-box=""><rect class="viz-band viz-t3" x="110.0" y="230.0" width="81.0" height="28.0"/><text class="viz-mark" x="150.5" y="247.8" text-anchor="middle">small items</text></g><g data-box=""><rect class="viz-track" x="195.0" y="230.0" width="97.8" height="28.0"/></g><g data-box=""><rect class="viz-track" x="296.8" y="230.0" width="87.1" height="28.0"/></g><g data-box=""><rect class="viz-track" x="388.0" y="230.0" width="126.3" height="28.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="518.3" y="230.0" width="134.0" height="28.0"/><text class="viz-mark" x="585.3" y="247.8" text-anchor="middle">slow or small items</text></g><text class="viz-label" x="8.0" y="277.3" text-anchor="start">Carton</text><text class="viz-label" x="8.0" y="291.3" text-anchor="start">flow rack</text><g data-box=""><rect class="viz-band viz-t3" x="110.0" y="262.0" width="81.0" height="36.0"/><text class="viz-mark" x="150.5" y="283.8" text-anchor="middle">cases</text></g><g data-box=""><rect class="viz-track" x="195.0" y="262.0" width="97.8" height="36.0"/></g><g data-box=""><rect class="viz-track" x="296.8" y="262.0" width="87.1" height="36.0"/></g><g data-box=""><rect class="viz-track" x="388.0" y="262.0" width="126.3" height="36.0"/></g><g data-box=""><rect class="viz-band viz-t3" x="518.3" y="262.0" width="134.0" height="36.0"/><text class="viz-mark" x="585.3" y="283.8" text-anchor="middle">fast-moving cartons</text></g></svg><div class="viz-stickn" aria-hidden="true"><svg viewBox="0 0 108 308" width="108" height="308" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="108" height="302"/><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Floor storage</text><text class="viz-label" x="8.0" y="100.3" text-anchor="start">Selective rack</text><text class="viz-label" x="8.0" y="133.3" text-anchor="start">Double-deep</text><text class="viz-label" x="8.0" y="147.3" text-anchor="start">rack</text><text class="viz-label" x="8.0" y="180.3" text-anchor="start">Drive-in rack</text><text class="viz-label" x="8.0" y="216.3" text-anchor="start">Pallet flow rack</text><text class="viz-label" x="8.0" y="248.3" text-anchor="start">Shelving</text><text class="viz-label" x="8.0" y="277.3" text-anchor="start">Carton</text><text class="viz-label" x="8.0" y="291.3" text-anchor="start">flow rack</text></svg></div><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 133.5 276" width="133.5" height="276" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="133.5" height="270"/><text class="viz-label" x="8.0" y="64.3" text-anchor="start">Floor storage</text><text class="viz-label" x="8.0" y="96.3" text-anchor="start">Selective rack</text><text class="viz-label" x="8.0" y="128.3" text-anchor="start">Double-deep rack</text><text class="viz-label" x="8.0" y="160.3" text-anchor="start">Drive-in rack</text><text class="viz-label" x="8.0" y="192.3" text-anchor="start">Pallet flow rack</text><text class="viz-label" x="8.0" y="224.3" text-anchor="start">Shelving</text><text class="viz-label" x="8.0" y="256.3" text-anchor="start">Carton flow rack</text></svg></div></div><svg class="viz-key" viewBox="0 0 328 76" width="328" height="76" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="key"><g transform="translate(0,-274.0)"><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="282.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="297.8" text-anchor="middle">a word</text></g><text class="viz-attr" x="70.6" y="291.0" text-anchor="start">as Bartholdi and Hackman state it for</text><text class="viz-attr" x="70.6" y="305.0" text-anchor="start">that medium</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="318.0" width="48.1" height="24"/><text class="viz-mark" x="32.1" y="333.8" text-anchor="middle">blank</text></g><text class="viz-attr" x="64.1" y="334.0" text-anchor="start">the source read does not say</text></g></svg><svg class="viz-keyn" viewBox="0 0 222 94" width="222" height="94" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="key"><g transform="translate(0,-306.0)"><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="314.0" width="54.6" height="24"/><text class="viz-mark" x="35.3" y="329.8" text-anchor="middle">a word</text></g><text class="viz-attr" x="70.6" y="323.0" text-anchor="start">as Bartholdi and</text><text class="viz-attr" x="70.6" y="337.0" text-anchor="start">Hackman state it for</text><text class="viz-attr" x="70.6" y="351.0" text-anchor="start">that medium</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="364.0" width="48.1" height="24"/><text class="viz-mark" x="32.1" y="379.8" text-anchor="middle">blank</text></g><text class="viz-attr" x="64.1" y="373.0" text-anchor="start">the source read does</text><text class="viz-attr" x="64.1" y="387.0" text-anchor="start">not say</text></g></svg><figcaption>The storage media of section 4 of this unit and the properties Bartholdi and Hackman, Warehouse & Distribution Science, release 0.98 (2017), §5.1 and ch. 6, state for each. Blank cells are not stated in the source read; AS/RS is mentioned in the text and not drawn.</figcaption></figure>
+<p>Which medium Ostrel or Corvane uses is not in the case register.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.091"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="53" data-rings="5"><path d="M320 56l-72 4-48 8-16 4-16 7-2 1-7 8-1 8 6 8 13 8 7 3 16 4 24 5 56 5 64 0 40-3 32-4 32-6 42-12 38-6 47-10 18-8 2-8-18-8-17-4-24-3-40-3-80-2zM320 64l-48 3-33 5-26 8-8 8 0 8 11 9 24 8 40 5 32 2 32 0 32-2 24-3 24-5 24-7 78-15 15-8-7-8-6-2-24-5-32-3-72-2zM296 72l-24 3-22 5-10 8 2 8 13 8 9 2 24 4 24 2 40 0 40-3 54-13 42-8 13-8-19-8-50-5-64 0zM288 80l-15 8 4 8 11 4 18 4 38 2 24-1 16-2 32-8 37-7 7-8-28-5-40-2-64 2zM360 80l-24 2-24 6 13 8 19 1 24 0 43-9-11-6-7-2z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="12" data-rings="1"><path d="M824 87l-16 4-14 5 38 7 16 2 24-1 7-8-22-8z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-2" data-step="2"><span>Previous · 3 of 12</span><b>3. The inbound sequence, step by step</b></a><a class="snext" href="#read-sce2-4" data-step="4"><span>Next · 5 of 12</span><b>5. Reserve and forward pick locations</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-sce2-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">5. Reserve and forward pick locations</span></span></h2>
+<p>A warehouse usually keeps more than one location per SKU. Bartholdi and Hackman's terms:</p>
+<ul>
+<li><strong>Reserve</strong> (also bulk): where most of the stock is held, in large units.</li>
+<li><strong>Forward pick area</strong> (also fast-pick area): "A particularly convenient region that is replenished from within the warehouse" (ch. 7) [practice]. Many of the most popular SKUs are stored there in relatively small amounts, so that it works as a "warehouse within the warehouse" (§8.1) [practice].</li>
+</ul>
+<p>In the simplest layout, for picking cases from pallets, the forward area is the ground-floor pallet locations and the reserve is all the higher locations; popular SKUs are picked from ground level and replenished by dropping overstock pallets from above (ch. 7) [practice].</p>
+<p><strong>The reasoning for a forward area.</strong> Picks are concentrated in a small, convenient space, so pickers travel less per pick. The cost is restocking: the forward area must be replenished from reserve, and for some SKUs "the cost of restocking them can outweigh any savings in pick costs" (§8.1) [practice]. Slow-moving SKUs are better picked from reserve, which leaves forward space for the popular ones (§8.4) [practice]. So the decision is per SKU: which SKUs go forward, and how much of each.</p>
+<p>On how much, the textbook tests two rules commonly used: give every SKU the same space (Equal Space), or the same number of days of supply (Equal Time). It shows that Equal Time requires the same total restocks as Equal Space, contrary to the belief that it reduces them, and that neither is optimal (§8.3.2, Theorem 8.3) [practice]; for two warehouses it reports that Equal Time needed about 1.45 times the restocks of the optimal allocation for 6,000 fast-moving SKUs of a major drug-store chain, and about 2.44 times for 4,000 SKUs of a telecommunications company (§8.3.3) [practice]. This unit did not read the data behind the two ratios, so they are graded practice; they show the size of the difference the rule can make, not a figure to expect.</p>
+<p>What this means for software, as this unit's inference: a system that supports a forward area must hold two kinds of location for one SKU (forward and reserve), a capacity for each forward location, and a rule for which SKUs are assigned forward. The assignment itself is <strong>slotting</strong>; Halvern Warehouse (fictional) sells it as a separate Slotting module, and Kestrow WMS (fictional) lists no such module (case register). Both are facts of the case register, graded nothing, and say nothing about real products.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.455"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="14" data-rings="0"><circle class="ct-spot" cx="216" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="43" data-rings="1"><path d="M384 81l-24 4-9 3-9 8-2 8 12 6 7 2 17 2 32 1 64-6M422 88l-14 3-16 5 8 3 8 2 64-2"/><circle class="ct-spot" cx="408" cy="96" r="7"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="82" data-rings="3"><path d="M592 47l-40 6-37 11-38 8-93 9M472 109l80-2 64-3 24 0 160 14M592 56l-32 6-32 10-16 4-40 7-50 5M472 99l88 0 80-2 56 4M592 63l-16 3-43 14-7 8 34 4 112 2M624 59l-32 4M616 67l-27 5-14 8 9 3 16 2 112 6M656 72l-4 0-11 8 143 11"/><circle class="ct-spot" cx="600" cy="80" r="8"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="130" data-rings="5"><path d="M800 118l104 5M824 53l-120-9-64 0-48 3M696 101l96 8 112 6M944 66l-64-5-72-2-56-5-40-2-72 0-48 4M672 94l112 8 128 6M936 74l-64-8-64-2-56-5-40-2-48 0-40 2M648 64l-32 3M712 91l72 6 160 5M928 84l-16-2-42-10-70-4-40-4-48-2-64 2M784 91l32-1 33-2 6-8-31-5-64-6-48 0-56 3"/><circle class="ct-spot" cx="792" cy="80" r="10"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="84" data-rings="3"><path d="M904 123l80-1 56-3 32-6 25-9 11-8 5-8-2-8-15-8-24-6-40-5-208-8M904 115l56 0 48-2 32-4 18-5 12-8 5-8-7-8-12-4-21-4-27-3-64-3M912 108l40 1 40-2 29-3 18-8 4-8-18-8-25-3-64-3M944 102l32-2 24-3 3-1 1-8-20-3-56-1"/><circle class="ct-spot" cx="984" cy="96" r="8"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-3" data-step="3"><span>Previous · 4 of 12</span><b>4. Storage media and when each is used</b></a><a class="snext" href="#read-sce2-5" data-step="5"><span>Next · 6 of 12</span><b>6. Replenishment and what triggers it</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-sce2-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">6. Replenishment and what triggers it</span></span></h2>
+<p><strong>Replenishment</strong> (also restocking) is moving stock from reserve to a forward location. Bartholdi and Hackman describe three triggers:</p>
+<ol>
+<li><strong>Empty location.</strong> When a ground-level pallet location is emptied, a restocker is dispatched with a high-reach forklift to bring down a pallet of the same SKU from above (ch. 7, §7.1.1) [practice].</li>
+<li><strong>A pick larger than what is forward.</strong> If a pick quantity exceeds the amount in the forward area at that time, a restock is triggered (§8.2) [practice].</li>
+<li><strong>A reorder point.</strong> A forward reorder point per SKU triggers restocks, with safety stock held to guard against stockout in the forward area (§8.3.6, §8.5.2, exercise 8.9) [practice].</li>
+</ol>
+<p><strong>Timing.</strong> Restocks can happen during picking or on another shift, when timing may be less critical (§8.2) [practice]; one option is to defer all restocks until the end of the pick wave, so the forward area can be restocked without interfering with picking (ch. 7) [practice]. Extra pallets forward allow restocks to be scheduled rather than made in reaction to need (§7.1.2) [practice].</p>
+<p><strong>Why it matters.</strong> Stockouts at the forward location can disrupt order-picking, which is the reason for carrying safety stock forward (§8.5.2) [practice]. One of the textbook's exercises states a rule of at least two pallets forward for any SKU, to avoid stockouts while waiting for replenishment (exercise 7.20) [practice]; it is an exercise's premise, not a finding.</p>
+<p><strong>At the case operation.</strong> At Ostrel Foods (fictional), Bram does put-away and replenishment on nights, and picking starts in the evening (case register). Both the put-away and the replenishment work therefore compete for the same driver in the same hours (this unit's reading of the register). Pairing a put-away with a retrieval from reserve on one trip is the textbook's interleaving of put-aways and retrievals, which cuts deadheading (§6.2.1) [practice]; whether it eases Bram's nights is this unit's inference.</p>
+<p><strong>System.</strong> Bartholdi and Hackman list replenishment among high-end WMS features (§4.3) [practice]. The system computes the trigger, creates the task, directs the driver to the reserve location and then to the forward location, and asks for a scan at each (this unit's inference from §4.2's directed tasks).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.818"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="18" data-rings="1"><path d="M208 76l-21 4-18 8 4 8 19 3 56 3M254 88l18 4"/><circle class="ct-spot" cx="216" cy="88" r="6"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="63" data-rings="4"><path d="M376 59l-40 2-128 15M248 102l10 2 46 12 48 6 64 2 64 1 40-2 64-6 32-2M392 68l-32 1-32 3-48 8-26 8M272 92l48 16 22 4 26 3 64 2 40 0 32-3 64-7 40-1M456 77l-48-2-40 1-28 4-22 8 7 8 19 8 24 4 40 2 32 1 32-2 24-2 48-8 24-1M368 87l-5 1 0 8 21 5 16 2 48 1 47-8-7-8-2 0-38-2-32-3-24 0z"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="57" data-rings="3"><path d="M544 56l-80 3-88 0M616 115l176-1M576 61l-104 7-80 0M608 106l216 1M592 66l-64 5-48 6-24 0M568 98l168 3M656 64l-71 8-46 8 6 8 79 5 120 3M648 71l-6 1-31 8 21 3 63 5"/><circle class="ct-spot" cx="600" cy="80" r="9"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="79" data-rings="5"><path d="M632 47l-88 9M792 114l56 2M976 64l-119-8-73-10-32-3-64 0-56 4M632 55l-56 6M824 107l48 3M960 71l-104-9-88-11-64-1-40 2-32 3M696 56l-56 4-48 6M736 101l96 0 112 8M952 77l-120-12-64-8-32-2-40 1M744 96l96 0 112 5M936 82l-75-10-45-4-40-5-56-2-64 3M695 88l73 3 114-3-10-3-6-5-98-13-48 0-72 4"/><circle class="ct-spot" cx="792" cy="80" r="10"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="47" data-rings="3"><path d="M848 116l88 8 48 1 32-3 24-5 65-21 14-8-2-8-13-5-16-4-24-3-88-4M872 110l72 6 40 0 24-2 16-4 44-14 11-8-13-8-26-5-80-4M944 109l40-1 24-3 29-9 6-8-19-6-15-2-57-3M952 101l24 0 25-5-3-8-62-6"/><circle class="ct-spot" cx="984" cy="96" r="8"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-4" data-step="4"><span>Previous · 5 of 12</span><b>5. Reserve and forward pick locations</b></a><a class="snext" href="#read-sce2-6" data-step="6"><span>Next · 7 of 12</span><b>7. What the warehouse system does at each step, and what it needs</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-sce2-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class="bt">7. What the warehouse system does at each step, and what it needs</span></span></h2>
+<p>Three mechanisms recur through sections 3 to 6.</p>
+<ul>
+<li><strong>Directed tasks.</strong> The system tells a person what to do next, where, and with what; Bartholdi and Hackman's terms are directed put-away and directed picking, and RF-directed operation (tasks sent to radio-frequency terminals) among the high-end features (§4.2, §4.3) [practice].</li>
+<li><strong>Location choice.</strong> The system allocates available locations (ch. 4 introduction) [practice]; locations may be <strong>dedicated</strong> (each reserved for one product only) or <strong>shared</strong> (a product may be stored in more than one location, and an emptied location can be reassigned) (§2.4) [practice].</li>
+<li><strong>Confirmation by scan.</strong> Product "should be scanned at all key decision points" (ch. 3 introduction) [practice]: at arrival to register ownership (§3.1), and at the storage location to record where it went (§3.2) [practice]. Because several people update the same records at once, the record needs transaction processing to stay consistent (§4.2) [practice].</li>
+</ul>
+<p><strong>The data it needs.</strong> A typical WMS knows every item in the warehouse, its physical dimensions and how the vendor packs it, and every storage location with its address and dimensions (ch. 4 introduction) [practice]. Set out step by step, as this unit's working list built from the sections above:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Data the system needs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purchase order and notice</td>
+<td>The PO lines (item, quantity, supplier, due date); the notice's logistic units, each with its SSCC and contents (GS1)</td>
+</tr>
+<tr>
+<td>Appointment and dock</td>
+<td>Supplier or carrier, expected time window, door</td>
+</tr>
+<tr>
+<td>Check and count</td>
+<td>Item master: identifiers, pack (units per case, cases per pallet), dimensions; tolerances for over- and under-delivery</td>
+</tr>
+<tr>
+<td>Quality hold</td>
+<td>Which items or suppliers require inspection; who may release</td>
+</tr>
+<tr>
+<td>Label</td>
+<td>Label format; for dated goods, the one date type and the batch per logistic unit (GS1)</td>
+</tr>
+<tr>
+<td>Cross-dock</td>
+<td>Outbound demand by destination, known before receipt</td>
+</tr>
+<tr>
+<td>Put-away</td>
+<td>Locations with address, dimensions, type, zone; dedicated or shared rule; current contents</td>
+</tr>
+<tr>
+<td>Replenishment</td>
+<td>Forward location per SKU, its capacity, its trigger (empty, pick larger than stock, reorder point)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The tolerance and zone fields are this unit's inference from the steps, not listed in a source.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.182"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="8" data-rings="0"><circle class="ct-spot" cx="280" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="50" data-rings="5"><path d="M520 64l-24 5-24 7-34 12-16 8-1 8 3 2 13 6 27 6 40 7 64 6 40 1 48 0 40-2 40-5 17-5 12-8-4-8-11-8-3-8 8-8-4-8-31-8-40-5-56-3-56 2-24 2zM536 72l-16 3-24 7-16 6-16 8 1 8 23 8 16 3 32 4 48 4 40 1 32-1 32-2 24-5 11-4 3-8-11-8-4-8-1-8-14-6-16-4-32-4-40-1-40 2zM544 78l-32 10-17 8 4 8 29 7 56 6 56 0 24-2 22-3 12-8-9-8-3-8-8-8-22-5-24-2-32 0-32 2zM584 80l-32 5-9 3-19 8 10 8 42 6 40 2 32-2 22-6-5-8-3-8-14-5-24-4zM584 88l-26 8 26 7 16 1 22 0 10-4 3-4-11-8-16-1z"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="17" data-rings="1"><path d="M824 71l-3 1 2 8 65 11 32 2 32 0 24-2 17-3 18-8-24-8-27-2-88-2z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-5" data-step="5"><span>Previous · 6 of 12</span><b>6. Replenishment and what triggers it</b></a><a class="snext" href="#read-sce2-7" data-step="7"><span>Next · 8 of 12</span><b>8. The inbound measures the benchmark surveys report</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-sce2-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">8. The inbound measures the benchmark surveys report</span></span></h2>
+<p><strong>WERC</strong> (the Warehousing Education and Research Council) runs an annual benchmarking survey of distribution centres. Its 2025 survey asked for calendar-2024 performance on five inbound measures (<a target="_blank" rel="noopener" href="https://wercmetrics.werc.org/WERC-DC-Measures-Survey-2025.pdf">WERC DC Measures Survey - 2025</a>) [practice]:</p>
+<ol>
+<li>Dock to Stock Cycle Time, in Hours</li>
+<li>Lines Received and Put-away per Hour</li>
+<li>Percent of Supplier Orders Received with Correct Documents</li>
+<li>Percent of Supplier Orders Received Damage Free</li>
+<li>On Time Receipts - Supplier</li>
+</ol>
+<p>The survey document gives no definitions (they appear in pop-ups in the online tool, which this unit did not open), no sample and no values; its profile questions ask respondents' region, with North America, Europe and Asia among the options. The grade is practice because no sample is stated in what was read. The 2026 report with values is paid or members-only and was not opened, so <strong>no value is given here</strong>.</p>
+<p><strong>Definitions.</strong> APQC, a benchmarking organisation, describes the measure as the average dock-to-stock cycle time in hours for supplier deliveries: the cycle begins when the business receives the delivery from the supplier and continues until the goods are put away in inventory after being recorded in its inventory management system; the page shows no formula and no values (<a target="_blank" rel="noopener" href="https://www.apqc.org/what-we-do/benchmarking/open-standards-benchmarking/measures/dock-stock-cycle-time-hours-supplier">APQC, measure page</a>) [practice]. The working definitions below are this course's own, written so that a team can compute each from a warehouse system's records; they are not WERC's wording.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Measure (WERC's name)</th>
+<th>Working definition</th>
+<th>Data it needs from the system</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dock to Stock Cycle Time, in Hours</td>
+<td>Average time from a delivery's arrival at the dock to its goods being recorded in a storage location and available</td>
+<td>Arrival timestamp; put-away confirmation timestamp</td>
+</tr>
+<tr>
+<td>Lines Received and Put-away per Hour</td>
+<td>Receipt lines both received and put away, divided by the labour hours spent on them</td>
+<td>Lines; hours booked to inbound</td>
+</tr>
+<tr>
+<td>Percent of Supplier Orders Received with Correct Documents</td>
+<td>Supplier orders whose paperwork or notice matched what arrived, over all received</td>
+<td>A match flag per receipt</td>
+</tr>
+<tr>
+<td>Percent of Supplier Orders Received Damage Free</td>
+<td>Supplier orders received with no damage recorded, over all received</td>
+<td>Damage exception per receipt</td>
+</tr>
+<tr>
+<td>On Time Receipts - Supplier</td>
+<td>Supplier orders arriving within their due date or window, over all received</td>
+<td>Due date or appointment; arrival time</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The research view.</strong> Staudt, Alpan, Di Mascolo and Rodriguez's literature review collects operational warehouse performance indicators from published papers, classifies them by time, cost, quality and productivity, and defines them (<a target="_blank" rel="noopener" href="https://doi.org/10.1080/00207543.2015.1030466">2015, abstract read</a>) [independent]. On the abstract alone, this unit can say only that the four dimensions exist; the five WERC measures fall into them as one time, one productivity, two quality measures and one that is both time and quality (this unit's sorting).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.545"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="35" data-rings="2"><path d="M336 80l-48-6-32-1-75 7-27 8 10 8 12 2 24 2 56 2 64 0"/><circle class="ct-spot" cx="240" cy="88" r="6"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="73" data-rings="4"><path d="M568 72l-48 1-88-2-40 3-40 5-16 1M320 102l16 2 32 10 16 4 24 3 24 2 32-1 160-11 40 0M584 79l-64 1-72-3-24 2-24 4-15 5-7 8 7 8 25 8 30 3 32 0 80-6 72-8 128 7M424 87l-4 1-10 8 6 6 2 2 6 2 24 3 24 0 68-5 34-8-6-4-8-4-24-2-72-3-24 1zM448 94l-6 2 14 5 8 2 16-1 48-6-24-4-32-2-16 1z"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="89" data-rings="5"><path d="M656 46l-24 6-32 13-32 7M664 111l64 5 40 1 32-2 64-5 72 0M824 58l-48-12-24-4-48-1-24 2-24 3M664 56l-16 4-40 15-24 4M752 108l40-2 64-8M816 72l-32-13-16-5-16-2-24-2-24 0-24 2-16 4M672 62l-16 5-28 13-4 6-3 2 19 4 64 8 48 2 24-2 24-3 4-1 15-8-35-16-12-8-20-5-16-2-24 0-24 2zM704 64l-16 2-16 5-16 9 6 8 34 5 40 3 32-2 19-6-10-8-17-10-8-3-24-4zM704 72l-21 8 13 6 10 2 14 1 31-1 2-8-15-8-18-2z"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="76" data-rings="4"><path d="M936 110l32-1 24-3 72-14 24-7 15-5 7-8-6-7-8-3-16-4-32-4-32-1-64 4-112 3-16-2M856 98l16 0 56 4 40-1 24-3 56-12 18-6 5-8-15-7-8-2-24-2-24-1-104 5-64 8-16-1M896 72l-20 8 10 8 34 6 24 2 32-2 40-8 21-6 1-8-22-5-24-1-72 3zM976 72l-40 3-24 5 22 8 18 1 19-1 35-8-6-5-8-3z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-6" data-step="6"><span>Previous · 7 of 12</span><b>7. What the warehouse system does at each step, and what it needs</b></a><a class="snext" href="#read-sce2-8" data-step="8"><span>Next · 9 of 12</span><b>9. Date-coded and temperature-controlled goods</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-sce2-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class="bt">9. Date-coded and temperature-controlled goods</span></span></h2>
+<p>Ostrel Foods (fictional) carries about 4,500 items, chilled, frozen and ambient, most of them dated, in one warehouse with three temperature zones; its known trouble is short-dated stock found too late (case register). What changes at each step:</p>
+<p><strong>Dates and the rotation rule.</strong> Perishables warehouses may have requirements to ship by <strong>FIFO</strong> (first in, first out: oldest receipt first) or <strong>FEFO</strong> (first expired, first out: earliest date first) (Bartholdi &amp; Hackman §1.2) [practice]. Under FEFO the system must know each pallet's date, which means the date is captured at receipt (this unit's inference). Storage media differ here (section 4): a lane loaded and emptied from one end gives up its oldest pallet last (this unit's inference).</p>
+<p><strong>What the date means differs by region.</strong></p>
+<ul>
+<li><strong>European Union.</strong> Ireland's food safety authority states that under Article 24(1) of Regulation (EU) No 1169/2011, after the "use by" date a food is deemed unsafe and placing it on the market is illegal, while nothing in legislation prevents a packaged food being sold on or after its "best before" date if it is still fully acceptable (<a target="_blank" rel="noopener" href="https://www.fsai.ie/Business-Advice/Running-a-Food-Business/Food-Safety-and-Hygiene/Shelf-life/Labelling">FSAI, "Labelling Requirements and Shelf Life"</a>) [practice]. The grade is practice because this is the authority's guidance; the regulation's own text on EUR-Lex could not be read.</li>
+<li><strong>United States.</strong> The USDA's Food Safety and Inspection Service states: "Except for infant formula, product dating is not required by Federal regulations." It describes "Best if Used By/Before" as a quality date and not a purchase or safety date, and "Sell-By" as telling the store how long to display the product (<a target="_blank" rel="noopener" href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating">USDA FSIS, "Food Product Dating"</a>) [practice]. State rules were not checked.</li>
+</ul>
+<p>So a system that blocks expired stock must know which kind of date it holds; the GS1 label carries one date value, normally of the same type as the date on the product (GS1 guideline) [independent]. Which dates an operation may sell past, and when, is a legal question: put it to the operation's quality or legal team, or to the national food authority.</p>
+<p><strong>Traceability: the batch.</strong> FSAI states that Regulation (EC) No 178/2002 requires every food business to have a traceability system, with a legal minimum of one-up-one-down (what you received and from whom; what you dispatched and to whom); that "It is not necessary in law to trace to the batch level"; and that recording batch codes and quantities at goods inwards and dispatch is best practice (<a target="_blank" rel="noopener" href="https://www.fsai.ie/business-advice/starting-a-food-business/traceability/traceability">FSAI, "Traceability - FAQ"</a>) [practice]. For the warehouse system, recording the batch at receipt is what makes a recall of one batch possible without pulling every pallet of the item (this unit's inference).</p>
+<p><strong>Temperature.</strong> In the UK, GOV.UK's business guidance states: "Chilled food must be kept at 8°C or below," a legal requirement in England, Wales and Northern Ireland and a recommendation in Scotland; it advises putting frozen food in the freezer as soon as it is delivered (<a target="_blank" rel="noopener" href="https://www.gov.uk/food-hygiene-businesses/chilling-and-freezing">GOV.UK, "Food hygiene for businesses: Chilling and freezing", last updated 25 Jun 2026</a>) [practice]. The EU's hygiene regulation and the US federal rules for food warehousing could not be opened here (source log), so this unit states no rule for the EU or the US. For the inbound sequence, the consequence is this unit's inference: chilled and frozen goods cannot wait in an ambient staging lane, so the step order shortens, and the system needs each item's temperature zone and each location's zone so that it never directs a frozen pallet to an ambient location. Which temperature rule binds a given site is a legal question for the site's food safety authority.</p>
+<p><strong>The short-dated failure.</strong> Ostrel's trouble, short-dated stock found too late (case register), is the kind of failure a system produces when it does not hold dates at receipt or does not rotate by them; this is this unit's reading, and the register does not say which is the cause. SCE4 takes up how records go wrong.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.909"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="38" data-rings="1"><path d="M176 75l-16 2-16 3-6 8 10 8 20 5 64 13M208 87l-7 1 10 8 37 8"/><circle class="ct-spot" cx="192" cy="88" r="6"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="78" data-rings="2"><path d="M416 76l-80 1-160-2M232 114l40 4 32 0 24-1 136-17 32-1 66 5M248 104l40 5 40-1 77-12-11-8-26-2-88-2-72 3"/><circle class="ct-spot" cx="328" cy="96" r="8"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="7" data-rings="0"><circle class="ct-spot" cx="464" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="64" data-rings="2"><path d="M664 65l-30-1-34-3-32-1-40 3-56 9-56 4M600 68l-24 1-29 3-25 8 4 8 10 2 104 17M608 75l-16 1-20 4 4 8 88 17M643 80l-11 2-12 6"/><circle class="ct-spot" cx="600" cy="80" r="7"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="100" data-rings="3"><path d="M562 104l86 13 72 8 80 2M640 107l64 10 32 2 48 1M664 105l56 8 32 2 32 1M620 88l36 10 40 7 40 5 56 1M688 85l-25 3 15 8 47 8 27 2 32 1M725 88l-5 2-6 6 38 5 32 1"/><circle class="ct-spot" cx="736" cy="96" r="8"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="159" data-rings="5"><path d="M936 48l-48 3-96 13-24 1-48 1-56-1M800 127l96-2 32-2 48-5 48-9 40-11M1080 59l-24-5-48-5-40-2-32 1M928 56l-48 3-64 8-72 4-40 1-104-4M784 120l112-3 32-2 32-4 56-11 32-9M1056 66l-24-5-24-3-32-2-48 0M896 63l-88 9-80 4-120-1M784 116l88-3 56-4 48-8 48-11M1024 68l-24-4-48-3-56 2M864 71l-32 3-88 5-101 1M792 111l88-3 42-4 44-8 35-8 15-8-11-8-37-5-48 0-56 4M784 80l-96 5M784 107l72-2 48-4 27-5 34-8 15-8-20-5-32-2-144 7M880 80l-88 3-67 5M784 102l48-1 48-3 15-2 23-8-6-4-8-2-24-2M784 88l-13 8 29 1 30-1 31-8-37-1z"/></g><g class="ct-rise ct-t6" data-label="¶7" data-words="56" data-rings="1"><path d="M1064 98l41-18 3-8-12-8-16-5M1048 91l23-11 0-8-15-6M1024 90l20-10-5-8-15-4"/><circle class="ct-spot" cx="1008" cy="80" r="7"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-7" data-step="7"><span>Previous · 8 of 12</span><b>8. The inbound measures the benchmark surveys report</b></a><a class="snext" href="#read-sce2-9" data-step="9"><span>Next · 10 of 12</span><b>On a site visit</b></a></nav></section><section class="sec" data-step="9"><h2 id="read-sce2-9" class="band"><span class="bn" aria-hidden="true">10</span><span class="bh"><span class="bt">On a site visit</span></span></h2>
+<p>At the receiving dock and in storage, look for, and ask:</p>
+<ul>
+<li><strong>Is there an advance notice, and does it list each pallet?</strong> Ask what share of suppliers send one, and what the receivers do when the truck does not match it (section 3.1).</li>
+<li><strong>Where are the trucks booked, and how wide are the windows?</strong> Bartholdi and Hackman report 30-minute windows as not unusual (section 3.2).</li>
+<li><strong>Watch a pallet from trailer to location.</strong> Count how often it is set down, and whether each place it waits is a location the system knows (sections 3.3, 3.8).</li>
+<li><strong>What do the receivers check, and what happens to an exception?</strong> Damage, wrong count, wrong description: who records it, where, and who decides (section 3.4).</li>
+<li><strong>Is the location scanned at put-away, or only the pallet?</strong> (Section 3.8.)</li>
+<li><strong>Which goods are on hold now, since when, and who can release them?</strong> (Section 3.5.)</li>
+<li><strong>Where is the forward area, what triggers a restock, and who does it in which hours?</strong> Ask whether pickers wait for replenishment, and when restocks are done relative to picking (sections 5, 6).</li>
+<li><strong>For dated goods: is the date captured at receipt, and does the system direct picks by it?</strong> For chilled and frozen goods: how long may a pallet wait outside its zone, and who decided that (section 9).</li>
+<li><strong>Which of WERC's five inbound measures does the site track, and from which timestamps?</strong> (Section 8.)</li>
+</ul>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.273"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="11" data-rings="5"><path d="M440 48l-56 5-48 8-9 3-16 8-2 8 13 8 30 8 32 6 75 10 61 13 40 7 56 5 48 2 48 0 48-3 40-6 32-8 4-2 12-8 2-8-5-8-9-8-12-9-16-9-14-6-18-5-40-7-64-6-72-2-88 0zM496 56l-48 3-35 5-30 8-8 8 11 8 32 8 70 10 64 13 32 4 40 3 40 1 40-1 32-3 24-4 23-7 9-8-2-8-8-8-11-8-11-6-24-8-24-5-40-4-56-3-64 0zM512 64l-40 3-29 5-17 8 8 8 36 8 50 7 56 11 32 3 32 1 56-2 29-4 11-4 10-4 2-8-7-8-11-8-10-4-10-4-30-5-32-3-40-2-48 0zM520 72l-24 3-20 5 4 8 104 19 40 3 40-1 32-5 12-8-6-8-12-8-35-8-63-3zM552 80l-8 1-10 7 50 9 16 2 32 0 23-3 1-8-21-8-11-1-32-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-8" data-step="8"><span>Previous · 9 of 12</span><b>9. Date-coded and temperature-controlled goods</b></a><a class="snext" href="#read-sce2-10" data-step="10"><span>Next · 11 of 12</span><b>Self-check</b></a></nav></section><section class="sec" data-step="10"><h2 id="read-sce2-10" class="band"><span class="bn" aria-hidden="true">11</span><span class="bh"><span class="bt">Self-check</span></span></h2>
+<ol>
+<li><strong>Give the two headed uses of a warehouse in Bartholdi and Hackman's §1.1.</strong>
+   To match supply with demand (buffering against surges, unreliable transport, unreliable demand or price increases) and to consolidate shipments from vendors to reduce transport cost; they add postponement and centralised tasks such as price labelling (section 1).</li>
+<li><strong>Why does labour concentrate where pallets are broken into cases and cases into eaches?</strong>
+   Because, in Bartholdi and Hackman's words, the smaller the handling unit, the greater the handling cost; each break multiplies the handlings that follow (section 2).</li>
+<li><strong>What does a WMS record at receipt, and what does that receipt drive in the ERP?</strong>
+   The receipt of inventory into the warehouse, its most fundamental capability; the receipt drives the paying of bills to suppliers (section 3.4).</li>
+<li><strong>What does GS1 say the despatch advice or ASN should contain?</strong>
+   For each logistic unit, its SSCC and the trade items it contains (section 3.1).</li>
+<li><strong>What is honeycombing, and which storage choice makes it worse?</strong>
+   Space lost in a lane that cannot be used by another SKU while it empties; deeper lanes are more exposed to it (section 4).</li>
+<li><strong>What is the trade-off in a forward pick area?</strong>
+   Picks are concentrated in a small convenient space, but the area must be restocked from reserve, and for some SKUs the restocking cost outweighs the pick savings (section 5).</li>
+<li><strong>Name three things that trigger a replenishment in Bartholdi and Hackman's account.</strong>
+   An emptied forward location; a pick larger than the quantity forward; a forward reorder point (section 6).</li>
+<li><strong>Under FSAI's account of EU law, may a food be sold after its use-by date, and after its best-before date?</strong>
+   Not after use-by (it is deemed unsafe); after best-before, nothing in legislation prevents it if the food is still fully acceptable (section 9).</li>
+</ol>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-9" data-step="9"><span>Previous · 10 of 12</span><b>On a site visit</b></a><a class="snext" href="#read-sce2-11" data-step="11"><span>Next · 12 of 12</span><b>Deliverable: the inbound flow map</b></a></nav></section><section class="sec" data-step="11"><h2 id="read-sce2-11" class="band"><span class="bn" aria-hidden="true">12</span><span class="bh"><span class="bt">Deliverable: the inbound flow map</span></span></h2>
+<p>The flow map has six columns, fixed here for SCE3, SCE7 and SCE9: <strong>Step</strong>, <strong>People</strong>, <strong>System touchpoint</strong>, <strong>Data needed</strong>, <strong>Common failure</strong>, <strong>Measure</strong>. Rows are numbered so later units can refer to them. Every cell comes from this unit's sections (named in brackets) or from the case register; a cell the register does not fill says "not in the register". A failure listed for a case operation is a failure to look for there, not a claim that the operation has it, unless the cell says "known trouble".</p>
+<h3>A. Ostrel Foods (fictional)</h3>
+<p>Ostrel Foods (fictional): a food distributor buying from producers and delivering to restaurants, canteens and small shops; about 4,500 items, chilled, frozen and ambient, most dated; one warehouse with three temperature zones; picking by the case onto roll cages, work starting in the evening for delivery the next morning; an ERP with a warehouse module; known trouble includes short-dated stock found too late (case register). People in the register who touch inbound: Bram, reach-truck driver for put-away and replenishment on nights; Ilse, team lead for chilled picking, whose pickers depend on replenishment (this unit's reading); Aart, operations director (case register).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Step</th>
+<th>People</th>
+<th>System touchpoint</th>
+<th>Data needed</th>
+<th>Common failure</th>
+<th>Measure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Purchase order and advance notice</td>
+<td>Ostrel's buyer and the producer; not named in the register</td>
+<td>ERP holds the PO; warehouse module receives the expected receipt and any notice (3.1)</td>
+<td>PO lines; per pallet, SSCC, contents, batch and date (3.1, 3.6, 9)</td>
+<td>No notice, or one that does not match the truck (3.1)</td>
+<td>Percent of supplier orders with correct documents (8)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Appointment and dock</td>
+<td>Producer's driver; door assignment not in the register</td>
+<td>Appointment calendar and door, in the warehouse module or none (3.2)</td>
+<td>Supplier, window, door, temperature zone of the load (3.2, 9)</td>
+<td>Unbooked or late trucks queue; chilled loads wait (3.2, 9)</td>
+<td>On time receipts, supplier (8)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Unload</td>
+<td>Not in the register</td>
+<td>Records unloading; staging lane as a location if tracked (3.3)</td>
+<td>Staging locations by temperature zone (9)</td>
+<td>Chilled or frozen goods waiting outside their zone (9, inference)</td>
+<td>Dock-to-stock time starts here (8)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Check and count</td>
+<td>Not in the register</td>
+<td>Records the receipt against PO and notice; sends receipt to ERP for supplier payment (3.4)</td>
+<td>Item master with case and pallet pack; date and batch per pallet (3.4, 9)</td>
+<td>Damage, wrong count, wrong description (3.4); date not captured, so rotation cannot work (9)</td>
+<td>Percent received damage free (8)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Quality hold</td>
+<td>Not in the register</td>
+<td>Held status that blocks allocation until released (3.5, working description)</td>
+<td>Which items need inspection; who may release (3.5)</td>
+<td>Released unchecked, or forgotten on hold (3.5)</td>
+<td>No benchmark found (3.5)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Label</td>
+<td>Receiving staff, where Ostrel relabels; not in the register</td>
+<td>Reads the producer's SSCC or prints a label (3.6)</td>
+<td>One batch and one date per logistic unit (GS1, 3.6)</td>
+<td>Mixed pallet with two dates or batches (3.6)</td>
+<td>Percent with correct documents (8)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Cross-dock or store</td>
+<td>Not in the register</td>
+<td>Flow-through processing where used (3.7)</td>
+<td>Next morning's route demand, known before receipt (3.7)</td>
+<td>No outbound load ready; whether Ostrel cross-docks is not in the register (3.7)</td>
+<td>No benchmark found</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Put away</td>
+<td>Bram, reach-truck driver, nights (register)</td>
+<td>Directed put-away by zone; scan of the location (3.8, 9)</td>
+<td>Locations with zone, type, dimensions; FEFO rule (3.8, 9)</td>
+<td>Wrong location; frozen pallet to a wrong zone (3.8, 9)</td>
+<td>Dock-to-stock time; lines received and put away per hour (8)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Replenish forward</td>
+<td>Bram, nights (register); Ilse, team lead, chilled picking (register), whose pickers depend on it (this unit's reading)</td>
+<td>Trigger, task, scan at reserve and forward (6)</td>
+<td>Forward location per item, capacity, trigger, dates for FEFO (6, 9)</td>
+<td>Forward empty when picking starts in the evening; put-away and replenishment compete for one driver (6, reading of register)</td>
+<td>No WERC inbound measure; stockouts at the pick face (6)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Known trouble mapped to the rows (case register): short-dated stock found too late touches rows 4, 8 and 9, as this unit's reading (section 9).</p>
+<h3>B. Corvane (fictional)</h3>
+<p>Corvane (fictional): a fashion retailer with 60 stores in four European countries and one website; one 28,000 m² distribution centre, two shifts and a third in peak; about 18,000 items counted by size and colour, two main seasons a year; store replenishment by carton and single item, web orders of one to three items, returns from web and stores; about 140 staff in a normal week and 260 in peak; a warehouse system about twelve years old near the end of its vendor's support; known trouble includes web orders promised from stock the centre cannot find (case register). People who touch inbound: Carla, inventory controller, answers for the stock record at receiving and put-away (register, added by SCE1); Marek, site manager (register).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Step</th>
+<th>People</th>
+<th>System touchpoint</th>
+<th>Data needed</th>
+<th>Common failure</th>
+<th>Measure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Purchase order and advance notice</td>
+<td>Buyer and supplier; not named in the register</td>
+<td>ERP holds the PO; warehouse system receives the expected receipt and any notice (3.1)</td>
+<td>PO lines by size and colour; per carton or pallet, SSCC and contents (3.1, 3.6)</td>
+<td>No notice, or one that does not match (3.1)</td>
+<td>Percent of supplier orders with correct documents (8)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Appointment and dock</td>
+<td>Supplier's driver; door assignment not in the register</td>
+<td>Appointment calendar and door (3.2)</td>
+<td>Supplier, window, door (3.2)</td>
+<td>Unbooked or late trucks queue (3.2)</td>
+<td>On time receipts, supplier (8)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Unload</td>
+<td>Not in the register</td>
+<td>Records unloading; staging as a location if tracked (3.3)</td>
+<td>Staging locations (3.3)</td>
+<td>Goods in staging the record does not know (3.3)</td>
+<td>Dock-to-stock time starts here (8)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Check and count</td>
+<td>Not in the register; Carla answers for the record (register)</td>
+<td>Receipt against PO and notice; receipt to ERP (3.4)</td>
+<td>Item master per size and colour; units per carton (3.4)</td>
+<td>Wrong count or wrong description of size or colour (3.4)</td>
+<td>Percent received damage free (8)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Quality hold</td>
+<td>Not in the register</td>
+<td>Held status where used (3.5, working description)</td>
+<td>Which items need inspection; who releases (3.5)</td>
+<td>Released unchecked, or forgotten (3.5)</td>
+<td>No benchmark found (3.5)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Label</td>
+<td>Not in the register</td>
+<td>Reads supplier SSCC or prints a label (3.6)</td>
+<td>Logistic unit and contents (3.6)</td>
+<td>Label not linked to contents (3.6, inference)</td>
+<td>Percent with correct documents (8)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Cross-dock or store</td>
+<td>Not in the register</td>
+<td>Flow-through for store replenishment where used (3.7)</td>
+<td>Store demand by destination before receipt (3.7)</td>
+<td>No store load ready; whether Corvane cross-docks is not in the register (3.7)</td>
+<td>No benchmark found</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Put away</td>
+<td>Not in the register; Carla answers for the record (register)</td>
+<td>Directed put-away; scan of the location (3.8)</td>
+<td>Locations; dedicated or shared rule (3.8, 7)</td>
+<td>Goods put where the record does not say; known trouble: stock the centre cannot find (register, as this unit's reading)</td>
+<td>Dock-to-stock time; lines received and put away per hour (8)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Replenish forward</td>
+<td>Not in the register; web pickers such as Mina, operator (register), depend on it</td>
+<td>Trigger, task, scan (6)</td>
+<td>Forward location per size and colour, capacity, trigger (6)</td>
+<td>Forward location empty when a web pick arrives (6)</td>
+<td>No WERC inbound measure; stockouts at the pick face (6)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Corvane breaks units twice, pallet to carton and carton to each (section 2), so rows 8 and 9 carry more locations per item than at Ostrel; that is this unit's reading of the register.</p>
+<h3>C. Template: the inbound flow map</h3>
+<p>Fill one row per step for a real operation, or for a product by naming the screen or module at each step. Keep the step numbers; add a row where the operation has a step the map lacks, and say why. Mark each cell's grade (independent, analyst, vendor-reported, practice) or "observed" for what you saw yourself.</p>
+<p>Operation or product: <strong><em>_</em>_ (name; kind of company; region, North America or Europe or other) · Goods: </strong><strong><em>_ (unit loads received: pallet, case, each; dated or not; temperature zones) · Date filled: </em></strong><strong><em> · Sources used: </em></strong>___ (each with its grade)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Step</th>
+<th>People</th>
+<th>System touchpoint</th>
+<th>Data needed</th>
+<th>Common failure</th>
+<th>Measure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Purchase order and advance notice</td>
+<td>______ (who orders, who sends the notice)</td>
+<td>______ (which system holds the PO; which receives the notice, and in what message: despatch advice, ASN, other)</td>
+<td>______ (fields per line and per logistic unit)</td>
+<td>______ (what happens when the notice is missing or wrong)</td>
+<td>______ (correct documents, or the site's own)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Appointment and dock</td>
+<td>______ (who books, who assigns doors)</td>
+<td>______ (calendar, yard system or none)</td>
+<td>______ (window, door, load type)</td>
+<td>______ (what happens to an unbooked or late truck)</td>
+<td>______ (on-time receipts)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Unload</td>
+<td>______ (who unloads, with what truck)</td>
+<td>______ (is staging a location in the system?)</td>
+<td>______ (staging locations; temperature zones)</td>
+<td>______ (where goods wait that the record does not know)</td>
+<td>______ (start of dock-to-stock)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Check and count</td>
+<td>______ (who checks)</td>
+<td>______ (how the receipt is recorded and passed to the ERP)</td>
+<td>______ (item master fields; tolerances)</td>
+<td>______ (damage, count, description, other)</td>
+<td>______ (damage free)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Quality hold</td>
+<td>______ (who may release)</td>
+<td>______ (hold status; who records release)</td>
+<td>______ (which items or suppliers are inspected)</td>
+<td>______ (stock released unchecked, or left on hold)</td>
+<td>______ (the site's own, or none found)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Label</td>
+<td>______ (who labels)</td>
+<td>______ (supplier SSCC read, or own label printed)</td>
+<td>______ (identifier, batch, date)</td>
+<td>______ (missing, unreadable or mixed-content labels)</td>
+<td>______ (correct documents, or the site's own)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Cross-dock or store</td>
+<td>______ (who decides at the dock)</td>
+<td>______ (flow-through function or none)</td>
+<td>______ (outbound demand known when)</td>
+<td>______ (goods with no outbound load ready)</td>
+<td>______ (the site's own, or none found)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Put away</td>
+<td>______ (who drives, which shift)</td>
+<td>______ (directed or chosen by the driver; what is scanned)</td>
+<td>______ (location attributes; dedicated or shared; rotation rule)</td>
+<td>______ (goods put where the record does not say; wrong zone)</td>
+<td>______ (dock-to-stock; lines per hour)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Replenish forward</td>
+<td>______ (who restocks, which hours)</td>
+<td>______ (trigger; task; scans)</td>
+<td>______ (forward location, capacity, trigger)</td>
+<td>______ (forward location empty when picking needs it)</td>
+<td>______ (pick-face stockouts, or the site's own)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Below the table: the storage media in use and where (<strong><em>_</em>_), the share of goods that cross-dock (</strong><strong><em>_, with source), the legal questions about dates and temperatures and the body they were put to (</em></strong><strong><em>), and the step where the operation's known trouble starts (</em></strong>___).</p>
+<h3>D. Glossary lines</h3>
+<p>Added to SCE1's working glossary; each term as this unit uses it.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Working definition</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock keeping unit (SKU)</td>
+<td>The smallest physical unit of a product an organisation tracks</td>
+<td>Bartholdi &amp; Hackman §2.2 [practice]</td>
+</tr>
+<tr>
+<td>Pallet; unit load</td>
+<td>A platform of goods handled as one load by a forklift</td>
+<td>Course term; units of handling from Bartholdi &amp; Hackman §2.2 [practice]</td>
+</tr>
+<tr>
+<td>Case; carton</td>
+<td>A supplier's sealed box of a fixed number of units</td>
+<td>Course term</td>
+</tr>
+<tr>
+<td>Each; piece</td>
+<td>One saleable unit</td>
+<td>Course term; Bartholdi &amp; Hackman §2.2 name individual pieces [practice]</td>
+</tr>
+<tr>
+<td>Purchase order (PO)</td>
+<td>The buyer's order to a supplier, saying what should arrive</td>
+<td>Course term</td>
+</tr>
+<tr>
+<td>Despatch advice; advance ship notice (ASN)</td>
+<td>The supplier's message saying what was sent, per logistic unit</td>
+<td>GS1 Logistic Label Guideline [independent]</td>
+</tr>
+<tr>
+<td>Logistic unit</td>
+<td>Any combination of trade items packaged together for storage or transport</td>
+<td>GS1 SSCC page [independent]</td>
+</tr>
+<tr>
+<td>Serial Shipping Container Code (SSCC)</td>
+<td>The GS1 number that identifies one logistic unit</td>
+<td>GS1 SSCC page [independent]</td>
+</tr>
+<tr>
+<td>Dock door</td>
+<td>A loading bay where a trailer backs up to the building</td>
+<td>Course term</td>
+</tr>
+<tr>
+<td>Staging</td>
+<td>Setting goods down in a marked area near the dock until the next step</td>
+<td>Course term; Bartholdi &amp; Hackman §3.1 [practice]</td>
+</tr>
+<tr>
+<td>Quality hold</td>
+<td>A status that keeps stock in the record but blocks it from orders until released</td>
+<td>Working description; not sourced</td>
+</tr>
+<tr>
+<td>Directed task</td>
+<td>A task the system assigns with its location, confirmed by scan</td>
+<td>Bartholdi &amp; Hackman §4.2 [practice]</td>
+</tr>
+<tr>
+<td>Dedicated and shared storage</td>
+<td>A location reserved for one product; or a product stored in several locations, each reassignable when empty</td>
+<td>Bartholdi &amp; Hackman §2.4 [practice]</td>
+</tr>
+<tr>
+<td>Honeycombing</td>
+<td>Lane space lost to other SKUs while a lane empties</td>
+<td>Bartholdi &amp; Hackman §5.1.1 [practice]</td>
+</tr>
+<tr>
+<td>Selective, double-deep, drive-in, push-back, pallet flow rack</td>
+<td>Pallet rack from one pallet deep and fully reachable to deep lanes with fewer aisles</td>
+<td>Bartholdi &amp; Hackman §5.1.1 [practice]</td>
+</tr>
+<tr>
+<td>Shelving; carton flow rack</td>
+<td>Static shelves for slow or small items; tilted roller shelves for fast cartons, restocked from the back</td>
+<td>Bartholdi &amp; Hackman §5.1.2–5.1.3 [practice]</td>
+</tr>
+<tr>
+<td>Automated storage and retrieval system (AS/RS)</td>
+<td>Machines that store and fetch loads</td>
+<td>Bartholdi &amp; Hackman ch. 5 [practice]; SCE5</td>
+</tr>
+<tr>
+<td>Reserve; bulk</td>
+<td>Where most stock is held in large units</td>
+<td>Bartholdi &amp; Hackman §8.1 [practice]</td>
+</tr>
+<tr>
+<td>Forward pick area; fast-pick area</td>
+<td>A convenient area holding small amounts of popular SKUs, replenished from reserve</td>
+<td>Bartholdi &amp; Hackman ch. 7, §8.1 [practice]</td>
+</tr>
+<tr>
+<td>Slotting</td>
+<td>Assigning SKUs to locations, including which go forward</td>
+<td>Course term</td>
+</tr>
+<tr>
+<td>Replenishment; restock</td>
+<td>Moving stock from reserve to a forward location</td>
+<td>Bartholdi &amp; Hackman ch. 7, §8.2 [practice]</td>
+</tr>
+<tr>
+<td>Task interleaving</td>
+<td>Pairing a put-away with a retrieval to cut empty travel</td>
+<td>Bartholdi &amp; Hackman ch. 6, §4.3 [practice]</td>
+</tr>
+<tr>
+<td>Dock-to-stock cycle time</td>
+<td>Time from a delivery's arrival to its goods being stored and available</td>
+<td>Named by WERC and APQC [practice]; wording the course's</td>
+</tr>
+<tr>
+<td>FIFO; FEFO</td>
+<td>First in, first out; first expired, first out</td>
+<td>Bartholdi &amp; Hackman §1.2 [practice]</td>
+</tr>
+<tr>
+<td>Use by; best before</td>
+<td>In EU law as FSAI states it: unsafe after use-by; may be sold after best-before if fully acceptable</td>
+<td>FSAI [practice]</td>
+</tr>
+<tr>
+<td>One-up-one-down</td>
+<td>The legal minimum of EU food traceability as FSAI states it: what came in from whom, what went out to whom</td>
+<td>FSAI [practice]</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.636"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="93" data-rings="4"><path d="M176 68l-56 0-22 4-10 4-7 4 1 8 16 8 14 4 63 12 49 12M224 72l-48 2-32 0-16 1-17 5-3 8 21 8 71 13 40 9M144 79l-4 1-4 2-5 6 5 2 32 8 40 4 32 9M200 78l-56 1M160 88l-2 0 10 2 16 2 32-3 8 1 8 3M224 87l-40-2-24 3"/><circle class="ct-spot" cx="176" cy="88" r="7"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="100" data-rings="4"><path d="M344 71l-16 0-48-5-40-1-64 3M224 124l24 3 24 0 24-4 24-8 48-20 16-3M240 118l32 1 24-4 45-19 3-4 5-4-13-6-40-7-32-3-40 0M240 111l16 2 16 0 16-3 16-5 19-9-1-8-2-1-24-6-24-3-72 0M232 93l13 11 19 3 16-1 8-2 18-8-9-8-17-3-16-2-16 1-24 3"/><circle class="ct-spot" cx="280" cy="96" r="7"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="25" data-rings="1"><path d="M384 92l8-1 24 3M400 77l-8 3 24 4"/><circle class="ct-spot" cx="384" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="122" data-rings="5"><path d="M416 55l-32 11-40 5M416 94l32 9 24 4 32 1 56-2 40 4M624 75l-48-9-56-8-32-6-16-1-32 0-24 4M424 64l-17 8-7 5M416 84l40 13 16 3 24 1 56-2 48 1M595 80l-27-9-16-3-37-4-27-5-32-2-16 2-16 5M456 63l-8 2-16 7-1 8 19 8 22 6 16 2 24 0 48-4 16-4-7-8-24-8-65-9zM456 71l-3 1-1 8 17 8 19 3 24 0 27-3 8-8-19-5-40-7-16 0zM480 75l-8 5 16 5 16 0 19-5-35-6z"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="34" data-rings="1"><path d="M600 110l24-2 11-4 5-3 8-3M600 100l13-4 2-8-20-8"/><circle class="ct-spot" cx="600" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="56" data-rings="2"><path d="M648 98l40 4 56 0 40-3M752 79l-24-2-40-7-16 1-32 5-16-1M688 79l-8 3-6 6 14 5 8 2 16 0 16-1 16-6-24-4-16-4z"/></g><g class="ct-rise ct-t6" data-label="¶7" data-words="41" data-rings="1"><path d="M784 99l48-8 16-1 32 3M832 66l-24 1-8 2-24 8-24 2"/><circle class="ct-spot" cx="816" cy="80" r="5"/></g><g class="ct-rise ct-t6" data-label="¶8" data-words="50" data-rings="2"><path d="M880 93l32 9 24 1 16-2 8-3 5-2 8-8-12-8-9-2-120-12M904 84l-8 4 24 5 8-1 12-4-20-4z"/></g><g class="ct-rise ct-t6" data-label="¶9" data-words="12" data-rings="0"><circle class="ct-spot" cx="1024" cy="88" r="5"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce2-10" data-step="10"><span>Previous · 11 of 12</span><b>Self-check</b></a><a class="snext send" href="#read-sce2-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-sce2-sources"><summary><span class="at" id="read-sce2-12">Sources</span><span class="an">10</span></summary><div class="accb">
+<p>All addresses opened on 21 November 2026; the source log (sources.md) gives what was read at each.</p>
+<ul>
+<li>Bartholdi, J. J., III &amp; Hackman, S. T. <em>Warehouse &amp; Distribution Science</em>, release 0.98, revised 28 August 2017. Chapters 1–8 and bibliography. https://<wbr>www2<wbr>.isye<wbr>.gatech<wbr>.edu/<wbr>~jjb/<wbr>wh/<wbr>book/<wbr>editions/<wbr>wh-sci-0<wbr>.98<wbr>.pdf</li>
+<li>APQC. "Dock-to-stock cycle time in hours for supplier deliveries". Open Standards Benchmarking measure page, undated. https://<wbr>www<wbr>.apqc<wbr>.org/<wbr>what-we-do/<wbr>benchmarking/<wbr>open-standards-benchmarking/<wbr>measures/<wbr>dock-stock-cycle-time-hours-supplier</li>
+<li>Food Safety Authority of Ireland. "Labelling Requirements and Shelf Life". Undated. https://<wbr>www<wbr>.fsai<wbr>.ie/<wbr>Business-Advice/<wbr>Running-a-Food-Business/<wbr>Food-Safety-and-Hygiene/<wbr>Shelf-life/<wbr>Labelling</li>
+<li>Food Safety Authority of Ireland. "Traceability - FAQ". Undated. https://<wbr>www<wbr>.fsai<wbr>.ie/<wbr>business-advice/<wbr>starting-a-food-business/<wbr>traceability/<wbr>traceability</li>
+<li>GOV.UK. "Food hygiene for businesses: Chilling and freezing". Last updated 25 June 2026. https://<wbr>www<wbr>.gov<wbr>.uk/<wbr>food-hygiene-businesses/<wbr>chilling-and-freezing</li>
+<li>GS1. <em>GS1 Logistic Label Guideline</em>. Release 1.3, ratified July 2019. https://<wbr>www<wbr>.gs1<wbr>.org/<wbr>standards/<wbr>gs1-logistic-label-guideline</li>
+<li>GS1. Serial Shipping Container Code (SSCC) page, no headline shown, undated. https://<wbr>www<wbr>.gs1<wbr>.org/<wbr>standards/<wbr>id-keys/<wbr>sscc</li>
+<li>Staudt, F. H., Alpan, G., Di Mascolo, M. &amp; Rodriguez, C. M. T. (2015). Warehouse performance measurement: a literature review. <em>International Journal of Production Research</em> 53(18), 5524–5544. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1080/<wbr>00207543<wbr>.2015<wbr>.1030466 (abstract, read at https://<wbr>informahealthcare<wbr>.com/<wbr>doi/<wbr>abs/<wbr>10<wbr>.1080/<wbr>00207543<wbr>.2015<wbr>.1030466)</li>
+<li>USDA Food Safety and Inspection Service. "Food Product Dating". Undated. https://<wbr>www<wbr>.fsis<wbr>.usda<wbr>.gov/<wbr>food-safety/<wbr>safe-food-handling-and-preparation/<wbr>food-safety-basics/<wbr>food-product-dating</li>
+<li>WERC. "WERC DC Measures Survey - 2025". https://<wbr>wercmetrics<wbr>.werc<wbr>.org/<wbr>WERC-DC-Measures-Survey-2025<wbr>.pdf</li>
+</ul>
+</div></details><details class="acc note" id="read-sce2-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>Grades follow SCE1's key: every claim that carries a number, a mechanism or a recommendation ends with [independent], [analyst], [vendor-reported] or [practice]. Most of this unit's support is one textbook, Bartholdi and Hackman's <em>Warehouse &amp; Distribution Science</em> (release 0.98, revised 28 August 2017, read as full text, in targeted passes, at the authors' Georgia Tech address), so most of it is graded practice: an account of how the work is done, with no measurement behind it. Where this unit opened no source for something, it says so and makes no claim. Lines marked as this unit's inference carry no grade.</p>
+<p>This is the course's first unit in the operations pattern. Each step is treated as the physical event, the people doing it, what the software does, how it commonly fails, and the measure that shows it improved. The deliverable's flow map fixes the columns SCE3, SCE7 and SCE9 reuse.</p>
+</div></details><details class="acc made" id="read-sce2-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>SCE2 follows goods from the truck at the gate to stock in a location: pallet, case and each; the purchase order and advance notice, the appointment and dock, unloading, checking and counting, quality hold, labelling, cross-docking and put-away; storage media; reserve and forward locations and replenishment; what the warehouse system does and needs at each step; the inbound measures the benchmark surveys name; and date-coded and chilled goods. Its deliverable is two inbound flow maps built on the fictional case (Ostrel Foods and Corvane), a blank flow-map template whose columns SCE3, SCE7 and SCE9 reuse, and glossary lines. Written 21 Nov 2026 by Opus 5.5 with search off (references still opened live, all on 21 Nov 2026) and fresh-checked by a separate Opus 5.5 context before filing (verdict fix; every finding applied). Known gaps: most of the unit rests on one textbook, Bartholdi and Hackman's Warehouse & Distribution Science, release 0.98, read through a tool's extraction, so most claims are graded practice, sections are cited without page numbers, and its quotations and some section placements (the SKU definition, the handling-cost sentence, Theorem 8.3, FIFO in drive-through and pallet flow rack) were not re-read against the PDF; the later release 0.98.1 was not opened; ten seed references were not opened, among them Gu, Goetschalckx and McGinnis (2007) and Rouwenhorst et al. (2000); Staudt et al. (2015) was read in abstract only, so the unit says only that its four dimensions exist; the quality hold is a working description, unsourced; the five inbound measures carry the course's working definitions, because WERC keeps its definitions in an online tool that was not opened and its 2026 report with values is paid, so no benchmark values are given; the EU and US regulation texts could not be read, so no EU or US storage-temperature rule is stated and EU date law is given only as Ireland's food safety authority states it, unchecked against the regulation; the FSAI and USDA pages are undated; whether the GS1 label rules quoted are the guideline's normative text or its summary was not confirmed; regional pallet sizes are not covered.</p><h3 id="read-sce2-13">Unsure list</h3>
+<h1>Unsure: SCE2</h1>
+<ol>
+<li>All Bartholdi &amp; Hackman quotations ("the smaller the handling unit, the greater the handling cost"; "Receiving may begin with advance notification of the arrival of goods"; "managing a second inventory, not of product, but of storage locations"; "This loss of space is called honey-combing"; "directed put-away and directed picking"; "warehouse within the warehouse") were taken from a fetch tool's extraction of the 0.98 PDF and not re-read against the PDF itself; page numbers were not reliable in the extraction, so the unit cites sections only.</li>
+<li>The SKU definition is attributed to §2.2 and the handling-cost sentence to the chapter 3 introduction as the extraction placed them; the section placement should be checked.</li>
+<li>Equal Time versus Equal Space (§8.3.2, Theorem 8.3): the unit says Equal Time requires the same total restocks as Equal Space; the extraction quoted the theorem only as "Equal Time allocations require the same total restocks". The 1.45 and 2.44 ratios (§8.3.3) are given as "ratios of Equal Time to the optimal allocation"; what quantity the ratio compares was not confirmed.</li>
+<li>FIFO in pallet storage: the extraction said only drive-through rack (of drive-in and drive-through) supports FIFO, and also that FIFO is discussed for pallet flow rack; the unit claims FIFO only for drive-through and draws no FIFO mark for pallet flow rack.</li>
+<li>The "two pallets forward" rule is from exercise 7.20 of the textbook, as extracted; it is an exercise's premise.</li>
+<li>The Staudt et al. (2015) abstract was read at an informahealthcare.com address whose extraction did not show the publisher, authors, journal or DOI; the bibliographic details are the seed's Crossref record.</li>
+<li>The WERC survey document (2025) lists the five inbound measures under "2024 Level of Performance"; that the 2026 report uses the same names was not checked.</li>
+<li>GOV.UK page: "updated 22 October 2026" is the page's timestamp as extracted.</li>
+<li>FSAI pages are undated (footer copyright 2026 only); their statement of Article 24(1) of Reg. (EU) 1169/2011 was not checked against the regulation's text, which could not be read.</li>
+<li>The GS1 Logistic Label Guideline was read at its landing page; whether the quoted rules (one batch number, one date value per label; Despatch Advice / ASN gives each unit's SSCC) are the guideline's normative text or its summary was not confirmed.</li>
+</ol>
+<p>Object: the pallet, as it moves from trailer to storage location (sections 2, 3.3 to 3.8 and 4)</p>
+<h3>Fresh check</h3><p>Fresh check 2026-11-21 (Opus 5.5): fix · 1 errors, 10 should-fix, 16 minor; report <code>audits/supply-chain-execution/fresh-check-SCE2.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: describe how goods enter a warehouse and reach a location, and what the system does and needs at each step
+Takes: SCE1.
+Gives: the flow-map form SCE3, SCE7 and SCE9 reuse; storage and replenishment, which SCE3 and SCE4 build on.
+
+Unit SCE2, Inbound and storage. Cover: what a warehouse is for, from the textbooks&#x27; own account; the inbound sequence step by step (the purchase order and the advance notice, the appointment and the dock, unloading, checking and counting, quality hold, labelling, cross-docking as the alternative to storing, putaway); the unit loads goods arrive in (pallet, case, each) and why the change from one to another is where labour goes; storage media and when each is used (floor, pallet rack, shelving, flow rack, automated storage at the level of a mention); reserve and forward pick locations and the reasoning for a forward pick area; replenishment and what triggers it; what the warehouse system does at each step (directed tasks, location choice, confirmation by scan) and what data it needs to do it; how each step commonly fails; the inbound measures the benchmark surveys report (their definitions, not their values unless read and dated); what differs for date-coded and temperature-controlled goods. Deliverable: an inbound flow map (step, people, system touchpoint, data needed, common failure, measure), built in full for Ostrel Foods and for Corvane; then the template.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>

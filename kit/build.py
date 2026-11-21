@@ -414,6 +414,9 @@ def patch_block(rises, tone, phase=None):
 SEP_W, SEP_H = 1200, 170   # the separator's layout: the column's width at 1200 by 170 units (about 7:1)
 SEP_BOX = (.1, .42, .9, .58)   # where its rises stand: along a ridge across the frame, swinging gently about its middle
 SEP_MAX = 6 * 1024   # bytes, at most
+SEP_FREE, SEP_PER = 38, 135   # W-SCE2 (21 Nov 2026): a rise costs about 125 bytes before any line (its <g>, label, words, spot), so a
+# section of over SEP_FREE paragraphs gets SEP_PER bytes more for each one beyond (SCE2 §3, 44 paragraphs: no simplifying brings
+# it under 6 KB); verify.py's separator check allows the same
 SEP_SY, SEP_STRETCH, SEP_STRETCH_MIN = 24, 6, 2.5   # the hills' first spread across the ridge, in units, and how far each is drawn out along it, at most and at least
 
 
@@ -426,7 +429,7 @@ def sep_block(paras, tone, phase=None, label=''):
     and at the top of the breath): its hills start SEP_SY units across the ridge and drawn out along it as far as the
     next rise (stretch, at most SEP_STRETCH times), so neighbours meet in one ridge; where a pose takes a line past the
     top or bottom the hills are lowered, past an end they are drawn out less (then lowered once at SEP_STRETCH_MIN); then its lines are
-    simplified a step further until it is at most SEP_MAX bytes (no rise is ever dropped). Each rise is labelled by its
+    simplified a step further until it is at most SEP_MAX bytes, plus SEP_PER for each rise over SEP_FREE (no rise is ever dropped). Each rise is labelled by its
     place (¶1, ¶2 ...); label, the section's id, seeds their outlines (the ripple), so each separator's are its own."""
     n, top = len(paras), max(paras)
     at = ct_ridge(n, SEP_BOX, SEP_W, SEP_H)
@@ -462,10 +465,11 @@ def sep_block(paras, tone, phase=None, label=''):
     if phase is not None:
         blk['phase'] = round(phase, 3)
     out = viz.render(blk)
-    while sep_bytes(out) > SEP_MAX:
+    cap = SEP_MAX + SEP_PER * max(0, n - SEP_FREE)
+    while sep_bytes(out) > cap:
         lay['simplify'] = round(lay['simplify'] * 1.25, 3)
         if lay['simplify'] > 60:   # W-PB8 (13 Nov 2026): raised from 12 so a section of 38 paragraphs (PB8 §6) still fits SEP_MAX; no rise dropped
-            raise SystemExit(f'build.py sep_block: the separator of {label} ({paras}) stays over {SEP_MAX} bytes even simplified')
+            raise SystemExit(f'build.py sep_block: the separator of {label} ({paras}) stays over {cap} bytes even simplified')
         out = viz.render(blk)
     return out
 
