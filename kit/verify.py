@@ -190,7 +190,8 @@ SHELL_MAX = 1024 * 1024   # A2: the shell stays under 1 MB
 # label, its tracks (a markdown course's sub-courses), `unit_key`, and three keys kept for the checks: `private` (a
 # course of the owner's own, not public: its pages are left out of an edition's private-terms check, P-DEC13),
 # `reliefs` (its pages draw object reliefs from design/outlines; was REL_COURSES) and `verify_sample` (its homes are the
-# ones the per-page passes sample: drawer, topography, motion, shots; an edition holding none samples every course).
+# ones the per-page passes sample: topography, motion, shots; an edition holding none samples every course; a full run
+# checks every course's drawer, P-DEC14).
 # A check that needs a property the edition's courses lack prints what it leaves out and why.
 def sub_pages(c):
     """A course's home pages: a history course's one home; a markdown course's one per sub-course (its tracks key),
@@ -2519,7 +2520,7 @@ def main():
         check_panels(pg, 'phone light', fails)
         pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
         # drawer in each context, every unit expanded
-        DRAWERS = ['home'] + [c['home_id'] for c in (LEAD, SECOND) if c] + [m[0] for m in MDSUBS]   # S-DEC4: the courses the navigation below visits
+        DRAWERS = ['home'] + [q for c in COURSES for q in sub_pages(c)]   # P-DEC14: full: the root drawer and every course's drawer context (a history course's home, each markdown sub-course's), not only the ones the navigation visits
         if not SCOPE.full: DRAWERS = ['home'] + list(dict.fromkeys(SCOPE.ctx[q] for q in SCOPE.changed if SCOPE.ctx.get(q, 'root') != 'root'))   # scoped: the root drawer and the drawer of each course a changed page is in
         for pid in DRAWERS:
             if not pg.evaluate(f"!!document.getElementById('{pid}')"): continue   # P70: not in this edition
