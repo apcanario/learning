@@ -36,7 +36,8 @@ The `[pack]` table (every key optional unless marked):
   version = "v1 · 1 Jan 2027"               only where the top changelog row does not start "v<n>. " (below)
   order = [["B1", "Opus 5.5", "off"], ...]  ORDER: (code, model, search) rows, writing order          (required)
   done_rows = [[...6 cells...], ...]        DONE_ROWS: earlier material, rows of six cells
-  [pack.status]                             STATUS overrides, only where the derived string is not the typed one
+  [pack.status]                             STATUS overrides, only where the derived string is not the typed one; a
+                                            code that is no unit, or has no file in the vault, stops the build
   A2 = "rewritten 28 Oct"
   [[pack.courses]]                          COURSES, in order: key, name, color, slug, goal, tile, intro, outcomes (required)
   key = "A"  ...
@@ -44,14 +45,17 @@ The `[pack]` table (every key optional unless marked):
   code = "A1"  title = "..."  ...           takes, gives where the course has Aim lines (AIMS); the brief is briefs.md's
   [[pack.readings]]                         READINGS that are not a unit's: id, md (relative to notes/), course, title,
   id = "read-..."  md = "..."  ...          covers = [], name, intro
-  [[pack.changelog]]                        CHANGELOG, newest first: date, text ({A}, {B} = course names)
-  [[pack.audit_log]]                        AUDIT_LOG: date, text
+  [[pack.changelog]]                        CHANGELOG, newest first: date, text ({A}, {B} = course names); read by
+                                            key name, so (date, text) in either order; any other key stops the build
+  [[pack.audit_log]]                        AUDIT_LOG: date, text (read the same way)
   [[pack.template_blocks]]                  any other array of tables: a list of tuples of its values, in key order
                                             (TEMPLATE_BLOCKS: heading, html)
 
 briefs.md: a `## Preamble` section (PRE; `{GOAL}` is filled with the course goal) and one `## <code>` section per unit,
 each section's text between the blank line after its heading and the next heading, its final newlines dropped. Text above
-the first `## ` is a note for the reader and is not read. A brief holds no line that starts with `## `.
+the first `## ` is a note for the reader and is not read. A brief holds no line that starts with `## `. The build stops
+(P-DEC4) on a `## ` line not followed by a blank line, a section given twice, a unit with no section and a section that
+is neither `Preamble` nor a unit's code.
 
 pages/<name>.md: the block NAME (name upper-cased, '-' as '_'), the file's text less its final newline: FRAME (frame.md),
 BUILD_BODY, BUILD_PICK, BRIEFS_LEDE, LEARNING_NOTE, ORDER_NOTES, TEMPLATE_NOTE. The blocks are theme-class HTML, which
@@ -85,7 +89,18 @@ DEFAULTS = dict(
     LEARNING_NOTE='', BUILD_PICK='', FRAME='',
 )
 # the [pack] keys that are not a plain attribute
-_SPECIAL = {'source', 'version', 'order', 'done_rows', 'status', 'courses', 'readings'}
+_SPECIAL = {'source', 'version', 'order', 'done_rows', 'status', 'courses', 'readings', 'changelog', 'audit_log'}
+
+
+def _rows(c, pk, key):
+    """[[pack.changelog]] or [[pack.audit_log]] as (date, text) tuples, read by key name, not key order (P-DEC4)."""
+    out = []
+    for i, r in enumerate(pk.get(key, []), 1):
+        if not isinstance(r, dict) or set(r) != {'date', 'text'}:
+            got = ', '.join(r) if isinstance(r, dict) else type(r).__name__
+            raise SystemExit(f'{c["data"]}: [[pack.{key}]] row {i} needs exactly the keys date and text, not {got}')
+        out.append((r['date'], r['text']))
+    return out
 
 
 def _path(c):
@@ -135,9 +150,21 @@ def vault(c):
 
 
 def briefs(path):
-    """briefs.md: {section name: text}."""
-    parts = re.split(r'(?m)^## (.+)\n\n', path.read_text(encoding='utf-8'))
-    return {parts[i].strip(): parts[i + 1].rstrip('\n') for i in range(1, len(parts), 2)}
+    """briefs.md: {section name: text}. Stops on a `## ` line that is not a section heading followed by a blank line
+    (it would be read into the brief above it) and on a section name given twice (P-DEC4)."""
+    t = path.read_text(encoding='utf-8')
+    where = path.relative_to(ROOT) if path.is_relative_to(ROOT) else path
+    parts = re.split(r'(?m)^## (.+)\n\n', t)
+    names = [parts[i].strip() for i in range(1, len(parts), 2)]
+    heads = re.findall(r'(?m)^## .*$', t)
+    if len(heads) != len(names):
+        bad = [h for h in heads if not re.search(rf'(?m)^{re.escape(h)}\n\n', t)]
+        raise SystemExit(f'{where}: {", ".join(repr(h) for h in bad)} is not a section heading followed by a blank line '
+                         '(a brief holds no line that starts with "## "; kit/pack.py)')
+    dup = sorted({n for n in names if names.count(n) > 1})
+    if dup:
+        raise SystemExit(f'{where}: section {", ".join("## " + n for n in dup)} given more than once')
+    return {n: parts[2 * i + 2].rstrip('\n') for i, n in enumerate(names)}
 
 
 def status_text(written):
@@ -195,14 +222,24 @@ def load(c):
             if 'aim' in u:
                 d.AIMS[u['code']] = (u['aim'], u['takes'], u['gives'])
         d.COURSES.append(dict({k: v for k, v in sc.items() if k != 'units'}, units=units))
+    codes = [u[0] for sc in d.COURSES for u in sc['units']]
+    extra = [n for n in bf if n != 'Preamble' and n not in codes]
+    if extra:
+        raise SystemExit(f'{c["data"]}: briefs.md has {", ".join("## " + n for n in extra)}, which is no unit of '
+                         '[[pack.courses.units]]')
     d.ORDER = [tuple(o) for o in pk['order']]
     d.DONE_ROWS = [tuple(r) for r in pk.get('done_rows', [])]
-    d.CHANGELOG = getattr(d, 'CHANGELOG', [])
-    d.AUDIT_LOG = getattr(d, 'AUDIT_LOG', [])
+    d.CHANGELOG = _rows(c, pk, 'changelog')
+    d.AUDIT_LOG = _rows(c, pk, 'audit_log')
     d.VERSION = version(d.CHANGELOG, pk.get('version'))
     # derived from the vault: STATUS, NEXT_UNIT, the units' READINGS
     v = vault(c)
     over = pk.get('status', {})
+    for code in over:
+        if code not in codes:
+            raise SystemExit(f'{c["data"]}: [pack.status] {code} is no unit of [[pack.courses.units]]')
+        if code not in v:
+            raise SystemExit(f'{c["data"]}: [pack.status] {code} has no file in {c["vault"]} (STATUS is only for filed units)')
     d.STATUS = {code: over.get(code) or status_text(fm['written']) for code, (f, fm) in v.items()}
     d.NEXT_UNIT = next((o[0] for o in d.ORDER if o[0] not in v), '—')
     d.READINGS = [dict(r) for r in pk.get('readings', [])]
@@ -233,6 +270,22 @@ def insert(c, rec, get):
     out = {}
     path = ROOT / c['data']
     code = rec['code']
+    # P-DEC4: a missing key says which, before anything is read or written (a bare KeyError printed only 'date')
+    if 'hub_changelog' in rec:
+        dt = rec.get('date')
+        if not isinstance(dt, str) or not dt.strip():
+            raise ValueError('records.json: hub_changelog needs `date` ("YYYY-MM-DD hh:mm"), the new changelog row\'s date')
+        try:
+            datetime.date.fromisoformat(dt[:10])
+        except ValueError:
+            raise ValueError(f'records.json: `date` {dt!r} does not start with a date YYYY-MM-DD')
+    if 'reading' in rec:
+        nm = rec['reading'].get('name') if isinstance(rec['reading'], dict) else None
+        if not isinstance(nm, str) or not nm.strip():
+            raise ValueError('records.json: reading needs `name` ("<code> · <title>" unless the unit\'s reading page is '
+                             'named otherwise)')
+        if not isinstance(rec['reading'].get('intro'), str):
+            raise ValueError('records.json: reading needs `intro` (one line)')
     v = vault(c)
     if ('reading' in rec or 'status' in rec) and code not in v:
         raise ValueError(f'{code} has no file in {c["vault"]}: put the unit, with its front matter, in the vault first')
