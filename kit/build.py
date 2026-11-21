@@ -513,6 +513,49 @@ def new_interval(top):
     return NEW_INTERVAL if top >= 10 * NEW_INTERVAL else max(1, int(top) // 10)
 
 
+# P-DEC5 (21 Nov 2026): a brand's --sans changes how many lines a hero's lede takes, and so the hero's height. The
+# lede's measure is 62ch, and ch is the face's "0": Source Sans 3's (0.497 em) is narrower than DM Sans' (0.684 em), so
+# the measure narrows by more than the text does and a lede of five lines in DM Sans takes seven (Personal Brand: a 471
+# px hero becomes 522). The wide layout is fitted for heroes of 400 to 480 px (above); a taller one is drawn larger
+# (slice) and its sides cut off, so the end rises' rings left the frame (verify.py's desktop motion poses). course_topo
+# takes the extra lines into account: in DM Sans' metrics (any edition whose brand keeps them) it returns COURSE_TOPO
+# itself, so Academy's layers are unchanged.
+_LEDE = {k: v for rule in re.findall(r'(?<![\w.-])\.lede\{([^}]*)\}', _TT) for k, v in re.findall(r'([\w-]+):([^;]+)', rule)}
+LEDE_CH, LEDE_PX, LEDE_LH = float(_LEDE['max-width'].removesuffix('ch')), float(_LEDE['font-size'].removesuffix('px')), float(_LEDE['line-height'])
+HERO_TALL = 480 + 22   # the tallest hero frame (hero and the 22 px above it) the wide layout is fitted for
+
+
+def lede_lines(text, adv):
+    """Lines a hero's lede takes at its measure (LEDE_CH of the face's "0"), wrapped at spaces, in the advances adv
+    (viz's per-1000-em table for the --sans face at 400)."""
+    words = html.unescape(re.sub(r'<[^>]+>', '', text)).split()
+    w = lambda s: sum(adv.get(ch) or 900 for ch in s) / 1000 * LEDE_PX
+    measure, sp = LEDE_CH * w('0'), w(' ')
+    n, line = (1 if words else 0), 0.0
+    for x in words:
+        add = w(x) if not line else sp + w(x)
+        if line and line + add > measure:
+            n, line = n + 1, w(x)
+        else:
+            line += add
+    return n
+
+
+def course_topo(lede):
+    """COURSE_TOPO for a course home whose lede is lede: as it stands if the brand's --sans wraps it in no more lines than
+    DM Sans does (always, in DM Sans' metrics); else its wide layout's box and view drawn in towards the middle by the
+    ratio of the tallest hero the layout is fitted for to that hero with the extra lines, as a slice into a taller frame
+    shows that much less of the layout's width. P-DEC11's `small` view (a hero of one or two rises) is drawn in by the same
+    ratio, so the two compose."""
+    extra = (lede_lines(lede, viz._ADV['sans']) - lede_lines(lede, viz._DEFAULT[0]['sans'])) * LEDE_PX * LEDE_LH
+    if extra <= 0:
+        return COURSE_TOPO
+    k = HERO_TALL / (HERO_TALL + extra)
+    pull = lambda f: (round(.5 - (.5 - f[0]) * k, 4), f[1], round(.5 + (f[2] - .5) * k, 4), f[3])
+    small = lambda sp: dict(small=(sp['small'][0], pull(sp['small'][1]))) if 'small' in sp else {}   # P-DEC11's band of one or two rises, drawn in alike
+    return [sp if sp['name'] != 'wide' else dict(sp, box=pull(sp['box']), view=pull(sp['view']), **small(sp)) for sp in COURSE_TOPO]
+
+
 def hero_layer(rises, tone, iv, specs, phase=0.0):
     """A hero's topography (a course home's, What's new's): rises [(label, words or None)] and their tone (one for all,
     or one per rise); the layer with its two layouts (tall below 1100 px, wide from it), placed and sized by ct_fit."""
@@ -528,7 +571,7 @@ def course_home(c):
     rises = unit_rises(c)
     top = max((w for _, w in rises if w), default=0)
     ph = phases(1 + sum(len(us) for _, _, us, _, _ in c['parts']))
-    layer = hero_layer(rises, _TONE[c['color']], top / 5.5, COURSE_TOPO, ph[0]) if top else ''
+    layer = hero_layer(rises, _TONE[c['color']], top / 5.5, course_topo(fill(c['lede'], c)), ph[0]) if top else ''
     parts, k = '', 1
     for num, title, us, when, ctx in c['parts']:
         nmods = sum(len(c['umap'][u][2]) for u in us)
@@ -731,7 +774,7 @@ for c in MARKDOWN:
 MD = [m for c in MARKDOWN for m in md_courses(c)]
 MDKIT = dict(wc=wc, tile=tile, patch=patch_block, hero=hero_layer, hours=hours, phases=phases, tone=_TONE, topo=COURSE_TOPO, pill=status_pill, sep=sep_kit)
 for m in MD:
-    m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV, MDKIT)
+    m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV, dict(MDKIT, topo=course_topo(m['sc']['intro'])))   # P-DEC5: the hero's layouts for its lede in the brand's face
     # P90 (4 Nov 2026): a markdown course's words, as a history course's are counted (wc, figures left out), for the
     # hours of reading on its home card. P93: each written unit's words are its reading page's sections, each counted
     # as its text alone (mdcourse.section_text: not its next and previous buttons or its band's numeral, which P90's

@@ -1,0 +1,9 @@
+academy: built in 129 s, 457 files
+greece: built in 36 s, 82 files
+academy: 457 files, 0 differ
+greece: 82 files, 0 differ
+baseline: clean
+
+real	2m45.198s
+user	2m34.976s
+sys	0m0.679s

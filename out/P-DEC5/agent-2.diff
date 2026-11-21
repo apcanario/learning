@@ -1,0 +1,89 @@
+diff --git a/kit/build.py b/kit/build.py
+index 9e673a3..89c3417 100644
+--- a/kit/build.py
++++ b/kit/build.py
+@@ -496,6 +496,47 @@ NEW_TOPO = [dict(name='tall', width=1000, height=625, box=(.24, .3, .76, .64), v
+ NEW_INTERVAL = 11000    # words between two of What's new's contour levels: its largest day (22 Oct 2026, 221,673 words) stands 20, inside the 10 to 25 the row sets (verify.py checks it), and its smallest (30 Oct, 14,178) 1.29 levels, a ring of its own that reads (at 14,000 it stood 1.01 levels, a 2 px ring; P93 check)
+ 
+ 
++# P-DEC5 (21 Nov 2026): a brand's --sans changes how many lines a hero's lede takes, and so the hero's height. The
++# lede's measure is 62ch, and ch is the face's "0": Source Sans 3's (0.497 em) is narrower than DM Sans' (0.684 em), so
++# the measure narrows by more than the text does and a lede of five lines in DM Sans takes seven (Personal Brand: a 471
++# px hero becomes 522). The wide layout is fitted for heroes of 400 to 480 px (above); a taller one is drawn larger
++# (slice) and its sides cut off, so the end rises' rings left the frame (verify.py's desktop motion poses). course_topo
++# takes the extra lines into account: in DM Sans' metrics (any edition whose brand keeps them) it returns COURSE_TOPO
++# itself, so Academy's layers are unchanged.
++_LEDE = {k: v for rule in re.findall(r'(?<![\w.-])\.lede\{([^}]*)\}', _TT) for k, v in re.findall(r'([\w-]+):([^;]+)', rule)}
++LEDE_CH, LEDE_PX, LEDE_LH = float(_LEDE['max-width'].removesuffix('ch')), float(_LEDE['font-size'].removesuffix('px')), float(_LEDE['line-height'])
++HERO_TALL = 480 + 22   # the tallest hero frame (hero and the 22 px above it) the wide layout is fitted for
++
++
++def lede_lines(text, adv):
++    """Lines a hero's lede takes at its measure (LEDE_CH of the face's "0"), wrapped at spaces, in the advances adv
++    (viz's per-1000-em table for the --sans face at 400)."""
++    words = html.unescape(re.sub(r'<[^>]+>', '', text)).split()
++    w = lambda s: sum(adv.get(ch) or 900 for ch in s) / 1000 * LEDE_PX
++    measure, sp = LEDE_CH * w('0'), w(' ')
++    n, line = (1 if words else 0), 0.0
++    for x in words:
++        add = w(x) if not line else sp + w(x)
++        if line and line + add > measure:
++            n, line = n + 1, w(x)
++        else:
++            line += add
++    return n
++
++
++def course_topo(lede):
++    """COURSE_TOPO for a course home whose lede is lede: as it stands if the brand's --sans wraps it in no more lines than
++    DM Sans does (always, in DM Sans' metrics); else its wide layout's box and view drawn in towards the middle by the
++    ratio of the tallest hero the layout is fitted for to that hero with the extra lines, as a slice into a taller frame
++    shows that much less of the layout's width."""
++    extra = (lede_lines(lede, viz._ADV['sans']) - lede_lines(lede, viz._DEFAULT[0]['sans'])) * LEDE_PX * LEDE_LH
++    if extra <= 0:
++        return COURSE_TOPO
++    k = HERO_TALL / (HERO_TALL + extra)
++    pull = lambda f: (round(.5 - (.5 - f[0]) * k, 4), f[1], round(.5 + (f[2] - .5) * k, 4), f[3])
++    return [sp if sp['name'] != 'wide' else dict(sp, box=pull(sp['box']), view=pull(sp['view'])) for sp in COURSE_TOPO]
++
++
+ def hero_layer(rises, tone, iv, specs, phase=0.0):
+     """A hero's topography (a course home's, What's new's): rises [(label, words or None)] and their tone (one for all,
+     or one per rise); the layer with its two layouts (tall below 1100 px, wide from it), placed and sized by ct_fit."""
+@@ -511,7 +552,7 @@ def course_home(c):
+     rises = unit_rises(c)
+     top = max((w for _, w in rises if w), default=0)
+     ph = phases(1 + sum(len(us) for _, _, us, _, _ in c['parts']))
+-    layer = hero_layer(rises, _TONE[c['color']], top / 5.5, COURSE_TOPO, ph[0]) if top else ''
++    layer = hero_layer(rises, _TONE[c['color']], top / 5.5, course_topo(fill(c['lede'], c)), ph[0]) if top else ''
+     parts, k = '', 1
+     for num, title, us, when, ctx in c['parts']:
+         nmods = sum(len(c['umap'][u][2]) for u in us)
+@@ -714,7 +755,7 @@ for c in MARKDOWN:
+ MD = [m for c in MARKDOWN for m in md_courses(c)]
+ MDKIT = dict(wc=wc, tile=tile, patch=patch_block, hero=hero_layer, hours=hours, phases=phases, tone=_TONE, topo=COURSE_TOPO, pill=status_pill, sep=sep_kit)
+ for m in MD:
+-    m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV, MDKIT)
++    m['panels'], m['nav'], m['nbib'] = mdcourse.build(m, crumbs, THEME, PILL_NEXT, ICON_CHEV, dict(MDKIT, topo=course_topo(m['sc']['intro'])))   # P-DEC5: the hero's layouts for its lede in the brand's face
+     # P90 (4 Nov 2026): a markdown course's words, as a history course's are counted (wc, figures left out), for the
+     # hours of reading on its home card. P93: each written unit's words are its reading page's sections, each counted
+     # as its text alone (mdcourse.section_text: not its next and previous buttons or its band's numeral, which P90's
+diff --git a/kit/verify.py b/kit/verify.py
+index 47f98d8..5cb26e2 100644
+--- a/kit/verify.py
++++ b/kit/verify.py
+@@ -2762,9 +2762,12 @@ def main():
+             if s['topLeft'] != SIDE or s['topRight'] != 1280: fails.append(f'desktop: top bar spans {s["topLeft"]}..{s["topRight"]}, expected {SIDE}..1280')
+             if s['active'] != DESK: fails.append(f'desktop: sidebar does not highlight the current report ({s["active"]})')
+             if s['listScroll'] != 'auto': fails.append(f'desktop: sidebar list overflow-y {s["listScroll"]}, expected auto')
+-            # P39: the measure is 68ch of the report's own font (DM Sans, about 744 px), and fits the 760 px column
++            # P39: the measure is 68ch of the report's own font (DM Sans, about 744 px), and fits the 760 px column; P-DEC5:
++            # at least 560 px in DM Sans, and in a brand's --sans 560 px scaled by its "0" against DM Sans' (its ch: Source
++            # Sans 3's 68ch is 541 px), from the brand's [metrics] (viz.set_metrics); in DM Sans' metrics exactly 560
++            floor = 560 * viz._ADV['sans']['0'] / viz._DEFAULT[0]['sans']['0']
+             mw = float(s['measure'].replace('px', '')) if s['measure'].endswith('px') else 0
+-            if abs(mw - s['ch68']) > 2 or not 560 <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
++            if abs(mw - s['ch68']) > 2 or not floor <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
+             if s['fonts']: fails.append(f'desktop: theme fonts not loaded from fonts/: {s["fonts"]}')
+             if UNSERVED: print(f'desktop: the brand names {UNSERVED}, not in fonts/ (verify.py serves only {VENDORED}); its fallback is drawn and measured, and its loading is not checked')
+             if s['home'] != 2 or (HIST and s['ml'] != 2): fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')

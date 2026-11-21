@@ -2776,9 +2776,12 @@ def main():
             if s['topLeft'] != SIDE or s['topRight'] != 1280: fails.append(f'desktop: top bar spans {s["topLeft"]}..{s["topRight"]}, expected {SIDE}..1280')
             if s['active'] != DESK: fails.append(f'desktop: sidebar does not highlight the current report ({s["active"]})')
             if s['listScroll'] != 'auto': fails.append(f'desktop: sidebar list overflow-y {s["listScroll"]}, expected auto')
-            # P39: the measure is 68ch of the report's own font (DM Sans, about 744 px), and fits the 760 px column
+            # P39: the measure is 68ch of the report's own font (DM Sans, about 744 px), and fits the 760 px column; P-DEC5:
+            # at least 560 px in DM Sans, and in a brand's --sans 560 px scaled by its "0" against DM Sans' (its ch: Source
+            # Sans 3's 68ch is 541 px), from the brand's [metrics] (viz.set_metrics); in DM Sans' metrics exactly 560
+            floor = 560 * viz._ADV['sans']['0'] / viz._DEFAULT[0]['sans']['0']
             mw = float(s['measure'].replace('px', '')) if s['measure'].endswith('px') else 0
-            if abs(mw - s['ch68']) > 2 or not 560 <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
+            if abs(mw - s['ch68']) > 2 or not floor <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
             if s['fonts']: fails.append(f'desktop: theme fonts not loaded from fonts/: {s["fonts"]}')
             if UNSERVED: print(f'desktop: the brand names {UNSERVED}, not in fonts/ (verify.py serves only {VENDORED}); its fallback is drawn and measured, and its loading is not checked')
             if s['home'] != 2 or (HIST and s['ml'] != 2): fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')
