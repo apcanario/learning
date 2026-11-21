@@ -1,0 +1,59 @@
+--- 
++++ 
+@@ -355,55 +355,13 @@
+ fresh
+  
+ checks
+  
+ are
+  
+-<code>audits/supply-chain-execution/fresh-check-&lt;code&gt;.md</code>;
+- 
+-audits
+- 
+-are
+- 
+-the
+- 
+-data
+- 
+-file's
+- 
+-AUDIT_LOG,
+- 
+-the
+- 
+-record
+- 
+-of
+- 
+-the
+- 
+-audits
+- 
+-run
+- 
+-before
+- 
+-the
+- 
+-Fable
+- 
+-stage
+- 
+-closed
+- 
+-(S-NOAUDIT,
+- 
+-15
+- 
+-Nov
+- 
+-2026).
++<code>audits/supply-chain-execution/fresh-check-&lt;code&gt;.md</code>.
+  
+ Sources
+  
+ cited
+  
+ by

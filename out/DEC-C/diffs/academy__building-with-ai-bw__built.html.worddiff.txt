@@ -1,0 +1,59 @@
+--- 
++++ 
+@@ -445,55 +445,13 @@
+ fresh
+  
+ checks
+  
+ are
+  
+-<code>audits/building-with-ai/fresh-check-&lt;code&gt;.md</code>;
+- 
+-audits
+- 
+-are
+- 
+-the
+- 
+-data
+- 
+-file's
+- 
+-AUDIT_LOG,
+- 
+-the
+- 
+-record
+- 
+-of
+- 
+-the
+- 
+-audits
+- 
+-run
+- 
+-before
+- 
+-the
+- 
+-Fable
+- 
+-stage
+- 
+-closed
+- 
+-(S-NOAUDIT,
+- 
+-15
+- 
+-Nov
+- 
+-2026).
++<code>audits/building-with-ai/fresh-check-&lt;code&gt;.md</code>.
+  
+ Sources
+  
+ cited
+  
+ by

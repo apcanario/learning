@@ -461,6 +461,9 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
     arows += ''.join(f'<div class="logrow"><span class="dt">{e(checks[x].get("date", ""))}</span><span><strong>Fresh check</strong> · {e(checks[x].get("unit", x))} · {e(checks[x].get("model", ""))} · {e(checks[x].get("verdict", ""))} · {gh(rel(checks[x]["path"]))}</span></div>'
                      for x in order if x in checks)
 
+    # P-DEC8 (21 Nov 2026): the AUDIT_LOG clause only where the course's [[pack.audit_log]] has rows
+    audit_clause = ("; audits are the data file's AUDIT_LOG, the record of the audits run before the Fable stage closed "
+                    '(S-NOAUDIT, 15 Nov 2026)') if d.AUDIT_LOG else ''
     by_model = ' · '.join(f'{n} {e(mm)}' for mm, n in sorted(models.items(), key=lambda x: -x[1]))
     label = m['short'].upper()
     body = f'''
@@ -474,7 +477,7 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
   {PRIVATE}
   {flags_section(flags)}
   <h2 class="hsec">Who wrote what, and the checks run</h2>
-  <p class="hnote">One row per written unit, in writing order. Model, date and search flag are the unit's front matter in <code>courses/{e(slug)}/</code>; status is the data file's STATUS; fresh checks are <code>audits/{e(slug)}/fresh-check-&lt;code&gt;.md</code>; audits are the data file's AUDIT_LOG, the record of the audits run before the Fable stage closed (S-NOAUDIT, 15 Nov 2026). Sources cited by the units are on the <a href="#{ctx}-bibliography" data-target="{ctx}-bibliography">Bibliography</a> page.</p>
+  <p class="hnote">One row per written unit, in writing order. Model, date and search flag are the unit's front matter in <code>courses/{e(slug)}/</code>; status is the data file's STATUS; fresh checks are <code>audits/{e(slug)}/fresh-check-&lt;code&gt;.md</code>{audit_clause}. Sources cited by the units are on the <a href="#{ctx}-bibliography" data-target="{ctx}-bibliography">Bibliography</a> page.</p>
   <div class="report"><div class="tbl"><table><thead><tr><th>Unit</th><th>Written</th><th>Checks and audits</th></tr></thead><tbody>{rows}</tbody></table></div></div>
   {f'<section class="howto" style="--hc:var(--orange)"><h2>Earlier material</h2><ul>{earlier_html}</ul></section>' if earlier_html else ''}
   <section class="howto" style="--hc:var(--gold)"><h2>Audits and checks run</h2>{f'<div class="logrows">{arows}</div>' if arows else '<p>None yet.</p>'}</section>
