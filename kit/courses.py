@@ -1,7 +1,9 @@
 """Course data for build.py, read from the repo's data files (S-DEC1, 20 Nov 2026; docs/decoupling.md §4).
 
   courses/<id>/course.toml   one course: the dict build.py reads (COURSES)
-  catalog.toml               `tracks` (THEMES), `next` (NEXT: the planned history courses), `course_order`, `edition_order`
+  catalog.toml               `tracks` (THEMES; a track's planned courses are its `planned` rows, History's included since
+                             P-DEC12, when the top-level `next` and NEXT went; a track's `extra` page must exist),
+                             `course_order`, `edition_order`
   editions/<name>.toml       one edition (EDITIONS[<name>]); DEFAULT_EDITION is the first in `edition_order`
   brands/<name>.toml         one brand (BRANDS[<name>]; S-DEC3): the site name, copy, rules lines, storage keys,
                              tokens and fonts, chosen by an edition's `brand`; brand(edition) returns it
@@ -43,8 +45,8 @@ Text fields may use these placeholders, filled per course at build time:
 {content_mods} modules excluding the audit unit · {total_mods} all modules · {nrep} reports written · {kwords} thousands of words written
 
 What TOML cannot hold, converted here, the same way every time, so the dicts equal the ones courses.py typed before:
-  tuples     a course's `parts`, `eras` and `ticks` rows, its `tracks` values, a track's `planned` rows, the `next`
-             rows, an edition's `courses` and `omit`: TOML arrays, made tuples (lists inside a row, such as a part's
+  tuples     a course's `parts`, `eras` and `ticks` rows, its `tracks` values, a track's `planned` rows, an
+             edition's `courses` and `omit`: TOML arrays, made tuples (lists inside a row, such as a part's
              units, stay lists)
   None       an edition's `courses = "all"` (every course)
   key order  kept: tomllib keeps the file's order, and a course file writes a nested dict as dotted keys
@@ -77,7 +79,7 @@ def _rows(v):
 
 # the keys a course file cannot do without, by family (build.py reads them before anything else)
 _FAMILY_KEYS = {'history': ('syllabus', 'vault', 'prompts', 'provenance', 'bibliography'), 'markdown': ('data', 'vault', 'tracks')}
-_TAKEN = {'THEMES', 'NEXT', 'COURSES', 'EDITIONS', 'HISTORY', 'MARKDOWN'}
+_TAKEN = {'THEMES', 'COURSES', 'EDITIONS', 'HISTORY', 'MARKDOWN'}
 
 
 def _course(path, d):
@@ -181,7 +183,9 @@ _CATALOG = _load(_ROOT / 'catalog.toml')
 HERO_AT = {t['id']: tuple(t['hero']) for t in _CATALOG['tracks'] if 'hero' in t}
 LOG_AREAS = [tuple(a) for a in _CATALOG.get('log_areas', [])]   # S-DEC5 checker: catalog.toml `log_areas`
 THEMES = [dict({k: v for k, v in t.items() if k != 'hero'}, **({'planned': _rows(t['planned'])} if 'planned' in t else {})) for t in _CATALOG['tracks']]
-NEXT = _rows(_CATALOG.get('next', []))
+for _t in THEMES:   # P-DEC12: a track's own copy (`extra`, a path from the repo root) must exist
+    if _t.get('extra') and not (_ROOT / _t['extra']).is_file():
+        _fail(_ROOT / 'catalog.toml', f'track {_t["id"]!r}: extra {_t["extra"]!r} has no file')
 
 # courses/_template/ and any other folder starting with '_' is not a course
 _found = {p.parent.name: p for p in sorted((_ROOT / 'courses').glob('*/course.toml')) if not p.parent.name.startswith('_')}

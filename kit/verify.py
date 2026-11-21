@@ -148,7 +148,7 @@ import pack   # S-DEC2: a markdown course's data (its pack)
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
 import private_terms   # G-0: the public courses carry no private term
 import rot_check   # P30-F11, P30-F16: the theme copy, retired instructions, staleness dates due
-from courses import COURSES, THEMES, EDITIONS, NEXT, DEFAULT_EDITION, LOG_AREAS, brand, path as cpath, provenance
+from courses import COURSES, THEMES, EDITIONS, DEFAULT_EDITION, LOG_AREAS, brand, path as cpath, provenance
 ALL_COURSES = list(COURSES)   # S-DEC4: every course of the repo, before the edition's filter below (the relief library serves them all)
 # P70: --edition checks an edition's folder the same way, over the courses and pages it holds (default: the full site,
 # the first edition in catalog.toml `edition_order`)
@@ -553,7 +553,9 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
       const gw = g.getBoundingClientRect().width, cw = cs[0].getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
       if (Math.abs(cw - (gw - gap) / 2) > 2) bad.push(`${t.id}: its only tile is ${cw.toFixed(0)} px of a ${gw.toFixed(0)} px grid, expected half`);
     }
-    if (t.id === 'track-history' && (!t.querySelector('details.howto.rules:not(.planned)') || (opt.planned && !t.querySelector('details.planned#planned-courses')))) bad.push('History lost "Why history and myth together" or its folded Planned list');
+    const tk = opt.tracks[t.id.slice(6)];   // P-DEC12: a track with its own copy (catalog.toml `extra`) or planned courses keeps them
+    if (tk && tk.extra && !t.querySelector('details.howto.rules:not(.planned)')) bad.push(`${t.id}: lost its own copy (${tk.extra})`);
+    if (tk && tk.plan && opt.planned && !t.querySelector(`details.planned#${tk.plan}`)) bad.push(`${t.id}: lost its folded planned list #${tk.plan}`);
   });
   // what runs: with reduced motion nothing on the home; with motion allowed only transform and opacity, none on a tile
   out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && h.contains(a.effect.target)).map(a => {   // P93: animations; the transitions of a hover or the theme switch are not
@@ -624,7 +626,7 @@ def check_home(pg, label, fails, expect, motion=False):
     pg.evaluate("location.hash = 'home'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(160)
     # a theme switched by the test fades the tiles' colours (section 7's .15 s transitions): read the page once they are done
     pg.wait_for_function("() => !document.getAnimations().some(a => typeof CSSTransition !== 'undefined' && a instanceof CSSTransition && a.playState === 'running')", timeout=5000)
-    r = pg.evaluate(HOME_JS, [[a['color'] for a in expect['areas']], {'planned': 'planned' not in OMIT, 'site': any(k not in OMIT for k in ('backlog', 'figures', 'changelog'))}])
+    r = pg.evaluate(HOME_JS, [[a['color'] for a in expect['areas']], {'planned': 'planned' not in OMIT, 'site': any(k not in OMIT for k in ('backlog', 'figures', 'changelog')), 'tracks': {t['id']: {'extra': t.get('extra'), 'plan': t.get('planned_anchor', 'planned-' + t['id']) if t.get('planned') else None} for t in THEMES}}])
     fails += [f'home {label}: {b}' for b in r['bad']]
     names = [a['name'] for a in expect['areas']]
     if [w for w, _ in r.get('words', [])] != names: fails.append(f'home {label}: the area line reads {[w for w, _ in r.get("words", [])]}, THEMES gives {names}')
@@ -1001,7 +1003,7 @@ def check_tiles(pg, pid, label, fails, expect):
             if (t['plan'] or []) != want_p: fails.append(f'{pid} {label}: {code}: its patch marks {t["plan"]} planned, the sources {want_p}')
     if pid == 'home':
         gh = [t for t in ts if t['kind'] == 'ghost']
-        plans = [n[1] for t in THEMES for n in (NEXT if t['id'] == 'history' else t.get('planned', []))]   # S-SPORTS: a track's own planned courses too
+        plans = [n[1] for t in THEMES for n in t.get('planned', [])]   # S-SPORTS: a track's own planned courses; P-DEC12: History's too (catalog.toml `next` before)
         if gh and [t['name'] for t in gh] != plans: fails.append(f'home {label}: the ghost tiles are {[t["name"] for t in gh]}, courses.py plans {plans}')
         for t in gh:
             if t['stats'] or t['rises'] or len(t['plan'] or []) != 1: fails.append(f'home {label}: the ghost {t["name"]} shows stats {t["stats"]} or rises, or not one dashed ring ({t["plan"]})')

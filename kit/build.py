@@ -17,7 +17,7 @@ are namespaced (#rome, #rome-syllabus, #rm01).
 """
 import json, re, html, pathlib, importlib.util, math
 import markdown
-from courses import COURSES, HISTORY, MARKDOWN, NEXT, THEMES, EDITIONS, HERO_AT as _HERO_AT, LOG_AREAS, DEFAULT_EDITION, brand, path as cpath, provenance
+from courses import COURSES, HISTORY, MARKDOWN, THEMES, EDITIONS, HERO_AT as _HERO_AT, LOG_AREAS, DEFAULT_EDITION, brand, path as cpath, provenance
 import sys
 # P70: an edition filters the course list here, before anything renders; the full site is the default edition (the first
 # in catalog.toml `edition_order`)
@@ -36,8 +36,6 @@ if ED['courses'] is not None:
     MARKDOWN = [c for c in MARKDOWN if c['id'] in ED['courses']]
     _tracks = {c['theme'] for c in HISTORY} | {tr for c in MARKDOWN for tr, _ in c['tracks'].values()}
     THEMES = [t for t in THEMES if t['id'] in _tracks]
-if 'planned' in OMIT:
-    NEXT = []
 import mdcourse
 import pack
 import vault
@@ -1093,10 +1091,10 @@ def md_card(m, phase=None):
     return card(THEME[m['theme']]['name'], m['color'], f'Course {m["key"]}', m['name'], html.escape(m['tile']), m['nwritten'], m['nunits'], m['words'], m['status'], f'#{m["home_id"]}', patch=tile_patch(m, phase))
 
 
-# P93: the home's drawings in page order (the hero, each live course's tile, History's eight planned courses), each
+# P93: the home's drawings in page order (the hero, each live course's tile, each track's planned courses), each
 # starting at its own point of the cycle
-PLANNED = {t['id']: ([] if 'planned' in OMIT else t.get('planned', [])) for t in THEMES}   # S-SPORTS: a track's own planned courses (History's are NEXT)
-HOME_PH = iter(phases(1 + len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon') + len(NEXT) + sum(len(v) for v in PLANNED.values())))   # G-0: one phase per drawing on the home; a course with nothing filed has none
+PLANNED = {t['id']: ([] if 'planned' in OMIT else t.get('planned', [])) for t in THEMES}   # S-SPORTS: a track's own planned courses (P-DEC12: History's too, the `next` rows before)
+HOME_PH = iter(phases(1 + len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon') + sum(len(v) for v in PLANNED.values())))   # G-0: one phase per drawing on the home; a course with nothing filed has none
 HERO_TOPO['phase'] = round(next(HOME_PH), 3)
 hero_topo = viz.render(HERO_TOPO)
 tracks = ''
@@ -1104,7 +1102,6 @@ for t in THEMES:
     hist = [c for c in HISTORY if c['theme'] == t['id']]
     mds = [m for m in MD if m['theme'] == t['id']]
     cards = ''.join(root_card(c, next(HOME_PH)) for c in hist)
-    soon_cards = ''.join(ghost_tile(t['name'], short, name, col, scope, spine, next(HOME_PH)) for short, name, col, scope, spine in NEXT) if t['id'] == 'history' else ''
     own_cards = ''.join(ghost_tile(t['name'], short, name, col, scope, spine, next(HOME_PH), t.get('planned_label', 'Spine')) for short, name, col, scope, spine in PLANNED[t['id']])
     soon = [m for m in mds if m['status'] == 'coming soon']   # a markdown course with nothing written is planned, not live
     # G-0 (12 Nov 2026): such a course has no tile on the home (verify.py's home_expect: "a course with nothing filed is
@@ -1114,30 +1111,14 @@ for t in THEMES:
     count = f'{n} course{"s" if n != 1 else ""}' if n else f'{len(soon)} course{"s" if len(soon) != 1 else ""} coming soon'
     if hist: count += f' · {sum(c["nrep"] for c in hist)} reports'
     if mds: count += f' · {sum(m["nwritten"] for m in mds)} of {sum(m["nunits"] for m in mds)} units'
-    if t['id'] == 'history' and NEXT: count += f' · {len(NEXT)} planned'
-    elif soon and n: count += f' · {len(soon)} coming soon'
+    if soon and n: count += f' · {len(soon)} coming soon'
     if PLANNED[t['id']]: count += f' · {len(PLANNED[t["id"]])} ' + (f'more {t["planned_heading"].lower()}' if t.get('planned_heading') else 'planned')   # S-SCE0: a track may call its planned courses "coming soon"
-    extra = ''
-    if t['id'] == 'history':
-        planned = '' if not NEXT else f"""
-  <details class="howto rules planned" id="planned-courses">
-    <summary><h2>Planned</h2><span>{len(NEXT)} courses, in the intended order</span></summary>
-    <p class="hnote">The two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Open a course to see its scope and spine.</p>
-    <div class="cgrid">{soon_cards}</div>
-  </details>"""
-        extra = f"""
-  <details class="howto rules">
-    <summary><h2>Why history and myth together</h2><span>the method of the track</span></summary>
-    <div class="ml-grid">
-      <div class="ml"><span class="gk">μῦθος</span><b>mythos</b><p>In Homer, simply what someone says with authority: a speech, a command, a tale. By the fifth century it had come to mean the story you cannot check.</p></div>
-      <div class="ml"><span class="gk">λόγος</span><b>logos</b><p>A word, a count, an account. By the same century it meant the argued explanation, the one that gives its reasons and invites you to test them.</p></div>
-    </div>
-    <p>The Greeks drew that line themselves. Herodotus calls his work a <em>historiē</em>, an inquiry, and still reports what the Persians and Egyptians told him. Thucydides warns that his history leaves out the <em>mythōdes</em>, the storylike, and will seem less pleasant for it (1.22). Plato expels the poets from his ideal city and then ends the <em>Republic</em> with a myth of his own.</p>
-    <p>The tidy story of a clean progress "from mythos to logos" (the title of Wilhelm Nestle's book of 1940) is now itself treated as a modern myth: the Greeks never stopped telling myths; their philosophers used them, their historians argued with them, and their cities were governed by them. So each course reads a culture's myths and its history together, asks who told each story and what they gained by it, and keeps the evidence in view. The aim is not to debunk the myths but to understand them as well as the history. Later courses point back to earlier ones where they touch: Rome to Greece's units 7 and 10, Persia to units 6 and 11, Egypt to units 1 and 7.</p>
-  </details>{planned}"""
-    if PLANNED[t['id']]:   # S-SPORTS: a track's own planned courses, folded as History's are
+    # P-DEC12: a track's own copy is the page its catalog.toml `extra` names (raw HTML, the file's text less its final
+    # newline), shown above its planned courses; the History track's "Why history and myth together" is pages/track-history.md
+    extra = '\n' + cpath(t, 'extra').read_text(encoding='utf-8').removesuffix('\n') if t.get('extra') else ''
+    if PLANNED[t['id']]:   # S-SPORTS: a track's own planned courses, folded; P-DEC12: History's too (the `next` rows before), its anchor `planned_anchor`
         extra += f"""
-  <details class="howto rules planned" id="planned-{t['id']}">
+  <details class="howto rules planned" id="{t.get('planned_anchor', 'planned-' + t['id'])}">
     <summary><h2>{html.escape(t.get('planned_heading', 'Planned'))}</h2><span>{len(PLANNED[t['id']])} courses, in the intended order</span></summary>
     <p class="hnote">{html.escape(t.get('planned_note', ''))}</p>
     <div class="cgrid">{own_cards}</div>
@@ -1331,11 +1312,12 @@ def root_nav_track(t):
     out = ''
     out += ''.join(f'<a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">{c["num"]}</span><span class="t">{c["short"]}<small>{c["card_units"]} units · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"]) + " reports"}</small></span></a>' for c in hist)
     out += ''.join(f'<a class="ditem dcourse" href="#{m["home_id"]}" data-target="{m["home_id"]}" style="--c:{m["color"]}"><span class="n">{m["key"]}</span><span class="t">{html.escape(m["short"])}<small>{m["nwritten"]} of {m["nunits"]} units</small></span></a>' for m in mds)
-    if t['id'] == 'history' and NEXT:
-        # the planned courses fold into one row; open it to see them in order
-        out += (f'<details class="dplan"><summary class="dsoon"><span class="n">+{len(NEXT)}</span><span class="t">planned, in order</span>{ICON_CHEV}</summary>'
-                + ''.join(f'<div class="dsoon" style="--c:{col}"><span class="n">{k + len(HISTORY) + 1}</span><span class="t">{html.escape(s)}</span><span class="pill">soon</span></div>' for k, (s, _, col, _, _) in enumerate(NEXT)) + '</details>')
     n = len(hist) + len(mds)
+    if t.get('planned_drawer') and PLANNED[t['id']]:
+        # P-DEC12: a track's planned courses (catalog.toml `planned_drawer`, History's) fold into one row, numbered on
+        # from the track's courses; open it to see them in order
+        out += (f'<details class="dplan"><summary class="dsoon"><span class="n">+{len(PLANNED[t["id"]])}</span><span class="t">planned, in order</span>{ICON_CHEV}</summary>'
+                + ''.join(f'<div class="dsoon" style="--c:{col}"><span class="n">{k + n + 1}</span><span class="t">{html.escape(s)}</span><span class="pill">soon</span></div>' for k, (s, _, col, _, _) in enumerate(PLANNED[t['id']])) + '</details>')
     # a collapsible group: closed unless the reader opened it; shell.js opens the track of the last report read (else the first)
     return (f'<div class="dunit closed" data-unit="track:{t["id"]}" data-ulabel="{html.escape(t["name"]).upper()}" style="--c:{t["color"]}">'
             f'<button class="duh" type="button" aria-expanded="false"><span class="un">■</span><span class="ut">{html.escape(t["name"])}</span><span class="cnt">{n}</span>{ICON_CHEV}</button><div class="ditems">{out}</div></div>')

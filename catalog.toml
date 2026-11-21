@@ -9,6 +9,11 @@
 # [[x, y] tall, [x, y] wide], fractions of the layout's width and height; the tall layout below 1100 px (keep every rise
 # inside a 390 px phone's view, x .27 to .73), the wide one from 1100 px. Every track needs one (build.py stops without).
 # kit/courses.py takes it out of the track's dict into HERO_AT.
+# P-DEC12 (21 Nov 2026): a track's optional keys, read by kit/build.py with the default when absent: `extra`, a page
+# of the track's own copy shown on the home above its planned courses (a path from the repo root; raw HTML, the file's
+# text less its final newline); `planned_heading` ("Planned"), `planned_note` (""), `planned_label` ("Spine", the
+# word before a ghost tile's teaser), `planned_anchor` (the id of the folded list, "planned-<id>"), `planned_drawer`
+# (false: true also lists the planned courses in the root drawer, folded under the track's courses).
 
 course_order = [
   "greece",
@@ -22,8 +27,30 @@ course_order = [
 ]
 edition_order = ["academy", "greece"]
 
-# The planned history courses (NEXT), in the intended order: [short, name, colour, scope, sources] per row.
-next = [
+# `log_areas` (S-DEC5 checker; until then SL_AREAS in kit/build.py): the areas of docs/site-log.md that hold courses, in
+# the order of the per-area tables: [name, what it holds, the track whose tone it takes]. A new track or course in a
+# new area is a line here; the site's own area comes from the brand (`log_area`) and is always last.
+log_areas = [
+  ["Mythology", "Greece and Rome", "history"],
+  ["Marketing", "Courses A and PB", "marketing"],
+  ["AI", "Courses B and BW", "technology"],
+  ["UX", "Course IA", "ux"],
+  ["Sports", "Course SP", "sports"],
+  ["Supply Chain", "Course SCE", "supply-chain"],
+]
+
+[[tracks]]
+id = "history"
+hero = [[0.50, 0.48], [0.46, 0.55]]
+name = "History"
+color = "var(--red)"
+lede = "The history and mythology of one culture at a time, read together: who told each story, what they gained by it, and what the evidence says. Long sourced reports with disputes named, a self-test and a syllabus you can rerun."
+extra = "pages/track-history.md"
+planned_anchor = "planned-courses"
+planned_drawer = true
+planned_note = "The two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Open a course to see its scope and spine."
+# the planned history courses (the top-level `next` until P-DEC12), in the intended order: [short, name, colour, scope, sources]
+planned = [
   [
     "Egypt",
     "Egyptian history and mythology",
@@ -81,25 +108,6 @@ next = [
     "Kojiki · Nihon Shoki · Man'yōshū · Tale of Genji · Tale of the Heike · Totman, A History of Japan · Breen and Teeuwen, A New History of Shinto",
   ],
 ]
-
-# `log_areas` (S-DEC5 checker; until then SL_AREAS in kit/build.py): the areas of docs/site-log.md that hold courses, in
-# the order of the per-area tables: [name, what it holds, the track whose tone it takes]. A new track or course in a
-# new area is a line here; the site's own area comes from the brand (`log_area`) and is always last.
-log_areas = [
-  ["Mythology", "Greece and Rome", "history"],
-  ["Marketing", "Courses A and PB", "marketing"],
-  ["AI", "Courses B and BW", "technology"],
-  ["UX", "Course IA", "ux"],
-  ["Sports", "Course SP", "sports"],
-  ["Supply Chain", "Course SCE", "supply-chain"],
-]
-
-[[tracks]]
-id = "history"
-hero = [[0.50, 0.48], [0.46, 0.55]]
-name = "History"
-color = "var(--red)"
-lede = "The history and mythology of one culture at a time, read together: who told each story, what they gained by it, and what the evidence says. Long sourced reports with disputes named, a self-test and a syllabus you can rerun."
 
 [[tracks]]
 id = "marketing"

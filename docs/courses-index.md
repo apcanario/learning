@@ -109,7 +109,7 @@ The public course **SCE · Supply Chain Execution for Product Teams**, created 1
 
 ## Courses to come (Personal Mythology)
 
-Listed in `catalog.toml` (`next`; `NEXT` in `kit/courses.py`) as coming soon, with a scope and reading spine each: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese. A new course is added with the `new-course` skill.
+Listed in `catalog.toml` (the History track's `planned`; the top-level `next` until P-DEC12) as coming soon, with a scope and reading spine each: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese. A new course is added with the `new-course` skill.
 
 ## Courses to come (Supply Chain)
 
