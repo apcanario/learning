@@ -3,3 +3,4 @@
 README.md
 academy/index.html
 editions/greece/index.html
+greece: changed editions/greece/index.html
