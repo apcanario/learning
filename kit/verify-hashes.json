@@ -1,7 +1,7 @@
 {
  "academy": {
   "global": {
-   "brands/academy.toml": "2a6009040aed63eb3e295244077c5cc2986332ac2e8bd636f87bdf829901847c",
+   "brands/academy.toml": "b27cc2444d58fa08f9c4b809aefb2f8ecf5df259b402be6a1c45474a574edbc4",
    "catalog.toml": "f603392334539a2f4a27b9138677ac6a426c84f16b266fc0c1fa0bb54105fb15",
    "design/theme.css": "055e51d069c1315664cf91bb606f9836f2fd8f5e7fad4fc586cbab8d3ed3f3ef",
    "editions/academy.toml": "91c916145dfbaa02b6e6e9072912765e3698df695178307b67f2882226783d21",
@@ -10,10 +10,10 @@
    "kit/build.py": "5d8572530c650a94566c2345345a908010e97fdfaafffa0e77da8f06a8bb4f47",
    "kit/check.py": "f38f3b6450d658105561a8d5451ce8289e35625a16890266ec114227d78aac28",
    "kit/contrast.py": "005ab366b302f0873f76e3d633201cdc81ca320782a51f1647994e81d79dba64",
-   "kit/courses.py": "9d0b98830e266132e5c0eb0fdec6fa30605ff45dc0d0ef5b3eb56d1e5e0193af",
+   "kit/courses.py": "d85faa0afefb88c33c4a8d4c97c90ecb1db13d44fff503f8cff351077be9168b",
    "kit/crosscheck.py": "57183815c9ffb4e166952e8bdaf9f6b975e08c1661350e9090ee76545cb09212",
    "kit/epub.py": "d1635984b15a2607aadce63b55f0b6818b30cd4432a4b3e8bc1c734a7d641844",
-   "kit/font_metrics.py": "b555fe7ca3ab67e6831698d1151877e6184ef992e82c992be4fe7233fa51588d",
+   "kit/font_metrics.py": "d55972b2881d8b981068d96f6ab22c7b7d283e9c7fe10df2f6c4f8ec47fa67f2",
    "kit/fonts/OFL-ibm-plex-mono.txt": "94d8f14e1834105b75c8f3963e0f90b9d7a2a220aa3e1566cfec626f131d9081",
    "kit/fonts/OFL-source-sans-3.txt": "45e9631ad760ce9a483a9405d2686c7befc981fb7f1f350701d39943261d9561",
    "kit/fonts/OFL.txt": "21de1de97fea54cef3a79ccc4d60df1ca08cc8aad782c2e387d54dad6dbf0aff",
@@ -73,7 +73,7 @@
    "kit/vault.py": "cf89a2212b3b7a85485ed20d15cd8b3a0485732b16699ed8b83bf51c0483f63d",
    "kit/verify.py": "afe128e928c4ab665de725177211ec8ba82321daa0e47b6740a66dc2a163131d",
    "kit/verify_scope.py": "e172ab66262e909dd0f6db19b6ba5cdddc539b6117c910b630bc721beb4de4db",
-   "kit/viz.py": "afe912a6034638df2d23474f55e297c611c986b9669d4219da0fb469a0aaa8d3",
+   "kit/viz.py": "53d5e2a27b59923827e9fbcd856cbc1c831788653d987c8e7703167322f46850",
    "kit/viz_examples.py": "cb912556afc61ba922465afc43d647f75c7b0b3d90fdbb532acb2ae4dbf2e060"
   },
   "pages": {
