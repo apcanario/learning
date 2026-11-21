@@ -131,3 +131,19 @@ stays home → course → unit.
 ## Blockers
 
 None. No permission check refused a script. Scratch harnesses and logs are in `/tmp/snav1b/` (not in the repo).
+
+## Fix: 320 px home
+
+Model: Opus 5.5 (claude-opus-5-5), a fresh agent. 21 Nov 2026.
+
+- Cause: at 320 x 640 the hero stood 70svh (448 px) and the first area tile's title sits 86 px into the tile, below its
+  contour patch, so it started at 636 px; the check wants it at 630 or above. The step's own narrow harness had run
+  320 at 700 px tall, not verify's 640.
+- Change (design/theme.css, copied identically to kit/shell.css): the existing `@media (max-width:400px)` rule gains
+  `.panel.root>.hero.hhome{min-height:66svh}`; the hero comment says so. No markup, verify.py or page CSS changed.
+- Result: hero 422 px (66%, inside the 60 to 80% check), title at 610 px at 320 x 640; 360 and 390 px heroes 66% too.
+  `check_home` (plus `check_topo` with motion) at 320, 360, 430, 390, 768 and 1280 px, dark and light, without and with
+  motion (320, 390, 768, 1280): HOME CHECKS PASSED on academy, greece and marketing-ai, no console errors
+  (`/tmp/snav1fix/home.py`, nothing recorded).
+- `python3 kit/baseline.py --check`: academy `README.md`, `academy/index.html`; greece `editions/greece/index.html`.
+  All three were already in `expected-B.txt`; nothing appended.

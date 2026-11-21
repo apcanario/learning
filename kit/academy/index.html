@@ -414,7 +414,8 @@ details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter
    all four (.harea-all: read by a screen reader, and the line a reader sees under reduced motion, when nothing moves);
    the lede; the quiet link to What's new (.hnew: outlined, text weight, not a filled button). It bleeds to the full
    width beside the sidebar (100cqw of the body, section 3) with its text kept in the column, and stands 70% of the
-   screen tall, so on a phone the first area's heading peeks at the bottom. */
+   screen tall (66% to 400 px wide, so at 320 x 640 the first area tile's title, below its contour patch, still starts on
+   the first screen), so on a phone the first area's heading peeks at the bottom. */
 .panel.root>.hero.hhome{position:relative;isolation:isolate;margin-inline:calc((100% - 100cqw) / 2);padding:0 calc((100cqw - 100%) / 2) clamp(28px,9svh,96px);
   min-height:70svh;display:flex;flex-direction:column;justify-content:flex-end}   /* the copy in the lower part, the contours above it (a centred copy floated in the empty box on a large phone or tablet) */
 .hcopy{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
@@ -456,7 +457,7 @@ details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter
 .course.live>p,.course.live>summary>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
 .course.live .cstats{margin-bottom:0}
 /* P91: on a narrow phone (320 and 360 px) the track band and the tile give the line the width its two lines need */
-@media (max-width:400px){.panel.root .track,.panel.area>.track{padding-left:12px;padding-right:12px}.course.live{padding:14px 12px}.course.live>p,.course.live>summary>p{font-size:13.5px}.course.live .cstats{gap:4px 12px}}
+@media (max-width:400px){.panel.root>.hero.hhome{min-height:66svh}.panel.root .track,.panel.area>.track{padding-left:12px;padding-right:12px}.course.live{padding:14px 12px}.course.live>p,.course.live>summary>p{font-size:13.5px}.course.live .cstats{gap:4px 12px}}
 /* the tile's chip breaks only between its two parts, the track and the course (or the course and the unit) */
 .cname .cpart{white-space:nowrap}
 .course.live .cname{max-width:100%}   /* the chip on one line where it fits; where it does not (Information architecture · DD-IA1/2/3 at 320 px, P93 check) it breaks between its two parts, never widening the tile; the status pill under it */
