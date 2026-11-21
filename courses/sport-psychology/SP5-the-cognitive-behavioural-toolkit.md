@@ -88,7 +88,7 @@ One randomised study in young athletes was opened. In 24 male competitive swimme
 
 **Grade.** A planned self-talk phrase, practised for weeks: [weak, mixed; two controlled studies in athletes, one positive at eight weeks on coach ratings, one null on shooting, rule 5; the positive study sampled ages 13 to 23, so it covers 13 to 23; for 10 to 12 an inference from older athletes]. Instructional self-talk for fine, precise tasks: [weak, positive; a meta-analysis of sport-task studies read in abstract, participants not described as athletes, rule 5; inference for under-18s]. Motivational self-talk for effort and endurance: [practice; no result in the abstract read]. SP1 and SP4 graded Milan's practised what-to-do cue [practice]; with these two studies opened, a self-talk cue grades [weak, mixed].
 
-**Teaching by band.** About 10 to 12: one word or two, chosen with the child, linked to a movement they can see ("Reach"); say it aloud together in drills. About 13 to 15: the athlete writes their own phrase, as in the eight-week study; practise it aloud, then silently. About 16 to 18 and 19 to 25: the athlete writes phrases for set moments (before a serve, after a mistake, at the bell) and tests them in training. At every band, phrase it as what to do; SP1 sets instructions about what to avoid against the ironic-effects review [weak, positive; as SP1 grades it].
+**Teaching by band.** About 10 to 12: one word or two, chosen with the child, linked to a movement they can see ("Reach"); say it aloud together in drills. About 13 to 15: the athlete writes their own phrase, as in the eight-week study; practise it aloud, then silently. About 16 to 18 and 19 to 25: the athlete writes phrases for set moments (before a serve, after a mistake, at the bell) and tests them in training. At every band, phrase it as what to do; SP1 sets instructions about what to avoid against the ironic-effects review [weak, positive; as SP1 grades it]. DD-SP3 (section 2) opened the review's one study with under-18s: in 43 female volleyball players aged 13 to 16, serving under low and then high pressure in a fixed order with no control group, serve performance did not change overall and no ironic effect was shown, so it grades the effect for 13 to 16 [weak, no effect shown in the one study opened] and keeps [weak, positive] for the what-to-do rule.
 
 ### 3.3 Imagery
 
@@ -385,3 +385,5 @@ Correction 2026-11-18, found by the corrections check of row W-SP6 (C-SP5; repor
 Correction 18 Nov 2026 (C-SP6, row W-SP7), found by the corrections check `audits/sport-psychology/corrections-2026-11-18-C-SP6.md`: references opened or their records corrected as that report sets out.
 
 Correction 18 Nov 2026, found by the quality review of SP5 (flag F91; `audits/sport-psychology/quality-review-SP5-2026-11-18-b.md`): 19 of 22 findings applied; 3 held and flagged.
+
+Correction 21 Nov 2026, found by DD-SP3

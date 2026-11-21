@@ -153,3 +153,15 @@ First names only, so that no real person is named.
 | DD-SP2 | Where competition rules require an adult to accompany a minor into the weigh-in, Dani's club sends a parent, or the welfare officer or second coach of the same gender as the athlete (D, clause 7). | Dani |
 | DD-SP2 | The weigh-ins for the squad's club competition (end of week 4 of SP6's block) and for the regional competition (SP8) are held at the venue on the morning of the competition; for the example only (E). | Dani |
 | DD-SP2 | Illustrations, not events: an athlete who wants a class that would need restriction (C3); a parent at the edge of the mat pushing for the lower class (C6); a coach telling a 17-year-old midfielder like Milan "you need to fill out" (section 16). | Dani, Milan |
+| DD-SP3 | At SP5's week-8 review Milan kept his self-talk phrase "Scan, open, forward" (SP10 left the kept skill unfilled). | Milan |
+| DD-SP3 | Milan's squad runs DD-SP3's four-week noise block in weeks 13 to 16 of SP10's season plan: Tuesday 10 minutes plus use inside the Tuesday pressure slot, Thursday 5 minutes calm. | Milan |
+| DD-SP3 | Milan filled in the cue-word builder in session 1 of week 13 (Deliverable B); moment: first touch in the first fifteen minutes; now: takes it facing back and plays it back. | Milan |
+| DD-SP3 | Milan chose the own-name version of his cue, "Milan: scan, open, forward", in session 2. | Milan |
+| DD-SP3 | Milan's four if-then plans: "If I give the ball away, then I call for it again"; "If I get booed or shouted at, then I find my man and scan"; "If I see the coach shouting, then I look at the ball"; "If I'm not starting, then I warm up as a starter and know my first job". | Milan |
+| DD-SP3 | Milan's reset after an error or a call: clap once, breath out, "Call, show, again" (extends SP7's training habit). | Milan |
+| DD-SP3 | Milan's notice-name-return line: "There's the nerves. Next ball." | Milan |
+| DD-SP3 | Milan was offered breathing at SP5's week 8 and did not take it up; he was offered reading arousal as readiness in week 15 of DD-SP3's block and did not keep it; he added no separate outward-attention cue. | Milan |
+| DD-SP3 | Milan used to read the squad message group and social media in the dressing room before matches; under the block's rule his phone is in the bag from 9:30, and he listens to his own playlist in the car on the way to matches (SP8). | Milan |
+| DD-SP3 | At week 16 Milan keeps Cards 1 to 3, 5, 6 (his staged pre-match routine from SP8, in his order), 7, 10 and 11, and writes the pocket card in Deliverable D, including "no match chat after 21:00" the night before. | Milan |
+| DD-SP3 | Illustrations, not events: an opposing midfielder talks to Milan at a corner (Card 12); touchline words of the kind a loud coach uses, rewritten for Milan ("Show for it" for "Stop hiding!"; "Scan, open, forward" for "Don't play it back") (Card 1). | Milan |
+| DD-SP3 | Milan's cue-word build runs calm in SP5's weeks 3 and 4, then under pressure in SP6's block at levels 1 to 3 (Deliverable B). | Milan |
