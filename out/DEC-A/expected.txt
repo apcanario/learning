@@ -1,2 +1,3 @@
 # DEC-A: kit/README.md prose (P-DEC12 History planned, P-DEC14 drawers); manifest entry re-recorded
 academy: changed README.md
+drop: kit/baseline.json :: "README.md": "a43174d7d0046ff0ec55b13e7fec1df93de0867e567e6664d0cc57536a90b503",
