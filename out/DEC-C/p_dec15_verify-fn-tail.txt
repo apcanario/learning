@@ -1,0 +1,5 @@
+full: no passed run recorded for edition fieldnotes (verify-hashes.json)
+What's new: edition fieldnotes's largest day (2026-11-18, 1,231 words) is under 110,000 words, so it is drawn at its own scale, a level every 123 words (build.py new_interval, not NEW_INTERVAL's 11,000), 10 levels
+verify-hashes.json: edition fieldnotes recorded, 12 pages
+ALL CHECKS PASSED
+exit 0

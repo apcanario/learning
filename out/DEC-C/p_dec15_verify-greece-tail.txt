@@ -1,0 +1,4 @@
+full: no passed run recorded for edition greece (verify-hashes.json)
+verify-hashes.json: edition greece recorded, 82 pages
+ALL CHECKS PASSED
+exit 0

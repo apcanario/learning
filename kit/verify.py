@@ -13,8 +13,8 @@ S-DEC4 (20 Nov 2026): the courses named below are Academy's; the checks name non
 (see LEAD, SECOND, MDNAV, SAMPLE and PRIVATE after SITE). A check needing a property the edition's courses lack (a
 history course with Greece's structure, a second history course, a markdown course) prints what it leaves out and why;
 an edition without a history course runs the split on a markdown course (check_split_md). What's new's 10 to 25 levels
-hold for an edition holding every course and for any edition whose largest day reaches 10 levels at the build's scale
-(10 x NEW_INTERVAL words); a smaller one is held to that scale only, 0 levels included, and the run says so. Private terms: the
+hold for every edition (P-DEC15): the build draws an edition whose largest day is under 10 x NEW_INTERVAL words at its
+own scale (build.py new_interval, a tenth of that day), checked against that scale, and the run says so. Private terms: the
 default edition's public courses; another edition's own files, unless it holds a course marked `private`.
 The site is a shell plus one file per report (docs/academy.md A2), since P20 one file per syllabus and per Brand + AI
 briefs and bibliography page, and since P22 one file per history course home, so it is served over local HTTP from
@@ -867,6 +867,10 @@ def _build_const(name):
         if isinstance(n, ast.Assign) and any(getattr(t, 'id', None) == name for t in n.targets): return ast.literal_eval(n.value)
     raise SystemExit(f'verify.py: no {name} in kit/build.py')
 NEW_INTERVAL = _build_const('NEW_INTERVAL')   # words between two of What's new's contour levels
+def new_interval(top):
+    """P-DEC15: build.py new_interval, repeated (importing build.py would build the site): NEW_INTERVAL for an edition
+    whose largest day reaches 10 levels at it, else a tenth of that day, rounded down, at least 1."""
+    return NEW_INTERVAL if top >= 10 * NEW_INTERVAL else max(1, int(top) // 10)
 _NEW_SAID = []
 
 def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
@@ -906,14 +910,14 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
                     fails.append(f'{pid} {label}: the days are drawn in {strokes}, not each in the tone of the course that filed the most words that day ({want_t})')
                 if pid == 'new':
                     top = max(rs, key=lambda x: x[1] or 0)
-                    if FULL or (top[1] or 0) >= 10 * NEW_INTERVAL:   # the range Academy's filings set (P93); S-DEC4: any edition whose largest day can reach 10 levels at the build's scale is held to it
+                    iv = new_interval(top[1] or 0)
+                    if (top[1] or 0) >= 10:   # P93's 10 to 25 levels; P-DEC15: every edition, at its own scale
                         if not 10 <= top[2] <= 25: fails.append(f'{pid} {label}: its largest day ({top[0]}) stands {top[2]} levels, not 10 to 25')
-                    else:
-                        if top[2] != int((top[1] or 0) // NEW_INTERVAL) or top[2] > 25: fails.append(f'{pid} {label}: its largest day ({top[0]}, {top[1]} words) stands {top[2]} levels, not {int((top[1] or 0) // NEW_INTERVAL)} (a level every {NEW_INTERVAL} words, build.py NEW_INTERVAL) at most 25')
-                        if not _NEW_SAID:
-                            _NEW_SAID.append(1)
-                            print(f"What's new: edition {EDITION}'s largest day ({top[0]}, {top[1] or 0:,} words) is under {10 * NEW_INTERVAL:,} words, so the build's scale ({NEW_INTERVAL:,} words a level) cannot raise it to 10 levels; it is checked against that scale, "
-                                  f"{int((top[1] or 0) // NEW_INTERVAL)} levels, at most 25; the 10 to 25 range is left out here" + (' (it stands 0 levels: no rise is drawn)' if top[2] == 0 else ''))
+                    if top[2] != int((top[1] or 0) // iv): fails.append(f'{pid} {label}: its largest day ({top[0]}, {top[1]} words) stands {top[2]} levels, not {int((top[1] or 0) // iv)} (a level every {iv:,} words, build.py new_interval)')
+                    if iv != NEW_INTERVAL and not _NEW_SAID:
+                        _NEW_SAID.append(1)
+                        print(f"What's new: edition {EDITION}'s largest day ({top[0]}, {top[1] or 0:,} words) is under {10 * NEW_INTERVAL:,} words, so it is drawn at its own scale, "
+                              f"a level every {iv:,} words (build.py new_interval, not NEW_INTERVAL's {NEW_INTERVAL:,}), {int((top[1] or 0) // iv)} levels")
             c = h.get('cover') or {}
             if c.get('bad'): fails.append(f'{pid} {label}: the frame\'s corners {c["bad"]} fall outside the turned layout {c.get("size")}: an edge of the drawing shows')
             if h.get('outside') and w >= 390: fails.append(f'{pid} {label}: the rises {h["outside"]} have rings outside the frame or in its fade')

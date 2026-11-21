@@ -1,0 +1,6 @@
+119d2dca884fe452184fbd3da4ed4db98d4cfffee8a369f0b029ff99ae6e4040  kit/academy/building-with-ai-bw/built.html
+89699f9f6d8e3593d71929c510a6fefbffe2ede04f50ef090d7edc2abdd0bf22  kit/academy/sport-psychology-sp/built.html
+2b4f15e323bf27f377ac841e33be7ae89263756ec44621fdd385ffb008e53dd9  kit/academy/supply-chain-execution-sce/built.html
+9e1bc86a99769f63e21d04042394701aea01dff8907924baced7a923265a306f  kit/academy/ux-ia/built.html
+c75182701c5cf05091afe11c9147b92e97c19a2e2490f1b47c45b4a2c234597a  kit/academy/new.html
+7dde8dcc19ce4d7986c7f6bce1e5839b3cc41ff64b3944b5032dd3cd179fc4d9  kit/editions/greece/new.html

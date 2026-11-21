@@ -503,6 +503,15 @@ NEW_TOPO = [dict(name='tall', width=1000, height=625, box=(.24, .3, .76, .64), v
 NEW_INTERVAL = 11000    # words between two of What's new's contour levels: its largest day (22 Oct 2026, 221,673 words) stands 20, inside the 10 to 25 the row sets (verify.py checks it), and its smallest (30 Oct, 14,178) 1.29 levels, a ring of its own that reads (at 14,000 it stood 1.01 levels, a 2 px ring; P93 check)
 
 
+def new_interval(top):
+    """P-DEC15 (21 Nov 2026): What's new's interval for an edition whose largest day is top words. NEW_INTERVAL where
+    that day reaches 10 levels at it (110,000 words: academy and greece, byte-identical); else a tenth of the day,
+    rounded down (at least 1), so a smaller edition's largest day also stands 10 levels (top // (top // 10) is 10 to
+    19) and its What's new shows a rise (marketing-ai: 79,671 words, 7,967 a level; it stood 7 at 11,000; the template
+    test's fieldnotes stood 0). verify.py repeats this rule."""
+    return NEW_INTERVAL if top >= 10 * NEW_INTERVAL else max(1, int(top) // 10)
+
+
 def hero_layer(rises, tone, iv, specs, phase=0.0):
     """A hero's topography (a course home's, What's new's): rises [(label, words or None)] and their tone (one for all,
     or one per rise); the layer with its two layouts (tall below 1100 px, wide from it), placed and sized by ct_fit."""
@@ -1129,8 +1138,9 @@ nr = sum(1 for x in WHATSNEW if x['kind'] == 'unit' and x['hist'])
 nc = sum(1 for x in WHATSNEW if x['kind'] == 'course')
 # P93: What's new's topography (Pedro: "expand that to other pages"): one rise per day it lists, oldest at the left,
 # its height the words filed that day (the units' and reports' words, as the cards count them), a contour every
-# NEW_INTERVAL words, along a ridge; each day's rise in the tone of the course that filed the most words that day, as
-# its rows carry their courses' tones
+# NEW_INTERVAL words (P-DEC15: new_interval, a tenth of the largest day in an edition whose largest is under 110,000),
+# along a ridge; each day's rise in the tone of the course that filed the most words that day, as its rows carry their
+# courses' tones
 NEW_DAYS = [(d, sum(x['words'] for x in xs if x['kind'] == 'unit')) for d, xs in reversed(_days)]
 def _day_tone(xs):
     by = {}
@@ -1139,7 +1149,7 @@ def _day_tone(xs):
             by[x['color']] = by.get(x['color'], 0) + x['words']
     return _TONE[max(by, key=by.get)]
 NEW_TONES = [_day_tone(xs) for d, xs in reversed(_days)]
-new_layer = hero_layer(NEW_DAYS, NEW_TONES, NEW_INTERVAL, NEW_TOPO) if NEW_DAYS else ''
+new_layer = hero_layer(NEW_DAYS, NEW_TONES, new_interval(max(w for _, w in NEW_DAYS)), NEW_TOPO) if NEW_DAYS else ''
 whatsnew = f"""
 <section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="{html.escape(SITE_NAME.upper())}" data-c="var(--gold)" hidden>
   <header class="hero has-topo">

@@ -1,0 +1,5 @@
+full: no passed run recorded for edition marketing-ai (verify-hashes.json)
+What's new: edition marketing-ai's largest day (2026-11-16, 79,671 words) is under 110,000 words, so it is drawn at its own scale, a level every 7,967 words (build.py new_interval, not NEW_INTERVAL's 11,000), 10 levels
+verify-hashes.json: edition marketing-ai recorded, 42 pages
+ALL CHECKS PASSED
+exit 0

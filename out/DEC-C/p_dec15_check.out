@@ -1,0 +1,11 @@
+same  kit/academy/building-with-ai-bw/built.html
+same  kit/academy/sport-psychology-sp/built.html
+same  kit/academy/supply-chain-execution-sce/built.html
+same  kit/academy/ux-ia/built.html
+same  kit/academy/new.html
+same  kit/editions/greece/new.html
+same  kit/academy/new.html against HEAD
+marketing-ai: 36 files before, 36 after, added [], removed [], differ ['new.html']
+P-DEC15 CHECK PASSED
+kit/README.md: differs from HEAD only by the P-DEC15 phrase
+P-DEC15 README CHECK PASSED
