@@ -1,0 +1,6 @@
+land: lock taken (425e50b84)
+land: branch main restored to baf25e5b9
+land: lock released
+land: STOPPED: PRESERVATION CHECK FAILED: upstream work since our start is missing from HEAD:
+  kit/baseline.json: academy README.md upstream a43174d7d004, HEAD 8c20b3adfb64
+land: to do: your commits (or a conflict you resolved by hand) dropped it: restore those lines; if a removal is deliberate, list it in --expected as "drop: <path> :: <line>"; then land again
