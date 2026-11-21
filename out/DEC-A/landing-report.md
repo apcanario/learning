@@ -1,0 +1,43 @@
+## land DEC-A · 2026-11-21T09:16:33+00:00
+
+- start: e855c10d4 (.git/land/started/DEC-A.json)
+- upstream commits absorbed: 29
+  - 0cdc7d7 land P-DEC5: verify record
+  - 38417b0 land P-DEC5: baseline re-recorded for expected differences
+  - 2ad2d96 P-DEC5: rebase records (probe and real-brand verify, topo composition test), decoupling §6 note on P-DEC11, agent 4 report
+  - 3fb4b93 P-DEC5: land --expected file (academy README.md prose); rebase baseline check
+  - edca2a0 P-DEC5 closed: row moved to CHANGELOG, proposals P-DEC22/23, P-DEC16 text, next prompt saved
+  - 4e835ec P-DEC5: checker findings applied (brand stops at load without metrics, metrics validation, docs, manifest README entry)
+  - d8fd3b6 P-DEC5: face-independent report measure floor and course topo (agent 2, Opus 5.5)
+  - 0eb37a5 P-DEC5: brand font metrics for viz.py, brand faces served by verify.py (agent 1, Opus 5.5)
+  - b117fb8 DEC-C: landing report
+  - cf5d0de DEC-C: declare the CHANGELOG row rewrite for land
+  - f3a3bea DEC-C: Pages deploy identifiers in the CHANGELOG row
+  - 016e727 DEC-C: publish identifiers; W-DD-SP3 prompt re-saved with P-DEC20 and P-DEC21; landing report
+  - 8f932eb land DEC-C: verify record
+  - f0731bc land DEC-C: baseline re-recorded for expected differences
+  - 617d885 DEC-C: kit/baseline.json back to upstream's; land.py re-records it for the declared differences
+  - 52f4e5a DEC-C: land --expected file
+  - e3778c4 DEC-C: manifest re-recorded on the rebased tree after the diff proved only the five expected files
+  - d9f19f5 DEC-C: close P-DEC8, P-DEC11, P-DEC15; proposals P-DEC17, P-DEC18
+  - 3596542 DEC-C: apply checker findings (Known limits wording, geo.py saved, docstrings, decoupling marks)
+  - 22ad605 P-DEC15: What's new scales per edition, a tenth of the largest day under 110,000 words
+  - 2a7679b P-DEC11: a hero of one or two rises held to a 330 px hero's band; a page too short to scroll lands at its foot
+  - f174e22 P-DEC8: markdown How it was built drops the S-NOAUDIT AUDIT_LOG clause where the course has no audit_log rows
+  - 791e400 DEC-B: W-DD-SP3 prompt re-saved with carried proposals P-DEC17-19; landing report
+  - b882b51 DEC-B: verify --full ALL CHECKS PASSED; verify-hashes.json
+  - 4d064da DEC-B close: P-DEC4, P-DEC9, P-DEC6 to CHANGELOG; proposals P-DEC17-19
+  - 98800ea DEC-B checker findings applied (README, decoupling §6, pack heading name, biblio path from cpath); manifest rehash for kit/README.md
+  - de180ed P-DEC6: biblio text names courses/<course>/bibliography/; 29 expected differences, manifest re-recorded
+  - 48b62cf P-DEC9: derive relief tool course lists from course.toml reliefs=true
+  - 89c0881 P-DEC4: harden kit/pack.py (changelog by key, insert name/date, briefs and pack.status stops)
+- lines preserved: 6941 upstream-added lines in 102 files, all present
+- saved row prompts: no merge, not checked
+- files auto-merged: none
+- baseline: re-recorded (1 differences: 1 declared by a side's baseline.json, 0 by --expected), then clean
+- index_check: ok
+- verify: ALL CHECKS PASSED (first line: full: catalog.toml, kit/build.py, kit/courses.py, kit/private_terms.py and 1 more changed)
+- lock: released; moved onto 1 of our own lock heartbeats before the push
+- push attempts: 1
+- pushed: bfa342d758dafc92fe6372f949d64204bc0b9255
+
