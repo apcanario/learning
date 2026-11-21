@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **SCE1 filed (W-SCE1, 21 Nov 2026).** First unit of Supply Chain Execution for Product Teams; fresh check fix, 25 of 27 findings applied, 2 held (f4, f20); 13 syllabus flags; 1 of 20 written.
 - **S-DEC1 · 20 Nov 2026 · the registry out of the engine.** `kit/courses.py` is a loader: each course's dict is `courses/<id>/course.toml`, the tracks and the planned history courses are `catalog.toml` (with `course_order` and `edition_order`), each edition is `editions/<name>.toml`; read with `tomllib`, the dicts equal the ones typed before (deep equality, types and key order). Adding a course is a folder; no existing file under `kit/` is edited (a history course adds its folder `kit/<id>/`). Output byte-identical (`kit/baseline.py --check`; the manifest's `README.md` entry rehashed for the prose of "Adding a course"). No site change.
 - **S-DEC0 · 20 Nov 2026 · the byte baseline.** `kit/baseline.py` builds the academy and greece editions and writes the sha256 of every output file to `kit/baseline.json` (academy 457, greece 82); `--check` rebuilds and lists every file added, removed or changed. The test of every row of the decoupling refactor (`docs/decoupling.md` §5). No site change.
 - **S-SCE0 · 19–20 Nov 2026 · Supply Chain Execution registered.** New track Supply Chain and course `supply-chain-execution` (`kit/courses.py`); four courses listed as coming soon in the track, each with its teaser shown under its title (`kit/build.py`, the Sports track's `planned` form); a hero place and site-log area for Supply Chain; `kit/private_terms.py` fails SCE pages on the owner's employer outside a dated analyst list and is unchanged for every other course; `kit/thin.py` filer rule 5 reads the case table's header; `kit/next_prompt.py` prints SCE rows 1 to 20 (a gate line on W-SCE7 only while P-SCE6 is open; W-DD-SCE2 writes a closing corrections prompt tied to the last row of the course; the other courses' prompts byte-identical, W-DD-SP3's step 11 hands on to W-SCE1); `verify.py` and `index_check.py` cover the course. Built and verified (ALL CHECKS PASSED). Published: artifact 1795119202-4ca6 to 1795133836-f5d2 (6 files, patch; sha256 read back, matching); Pages academy 9354f7e, run 44644712194 success.
@@ -172,6 +173,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 ## 
 
 
+
+## 21 Nov 2026 · Session W-SCE1 · SCE1 filed
+
+SCE1 · The map, the words and the evidence was written (search on), fresh-checked, corrected and filed, each step by a fresh claude-opus-5-5 agent. Fresh check verdict fix: 1 error, 2 should-fix, 24 minor. The applier applied 24 and held f1, f4 and f20; the main chat overrode the f1 hold after re-reading Gartner's index and applied it with three companion edits. Held: f4 (Gartner index DOM row unverified; re-open at the staleness check of 21 May 2027) and f20 (no text change unless the brief replacement for SCE1 §11 is vetoed). Process exceptions: the writer ran without worktree isolation because the harness denied it; the checker's Write was refused and the main chat saved its report. Six case facts appended to "Added by units"; 13 syllabus flags raised (1 contradiction on SCE1's brief, 12 needs). Next unit: SCE2 · Inbound and storage.
 
 ## 19 Nov 2026 · Session W-DD-SP2 · DD-SP2 filed
 

@@ -124,3 +124,9 @@ Empty until the first unit is filed. One row per fact: unit, operation, fact.
 
 | Unit | Operation | Fact |
 |---|---|---|
+| SCE1 | Corvane | Freya (store associate) answers for web orders sourced to a store (map step 3). |
+| SCE1 | Corvane | Tobias (outbound shift supervisor) answers for release of orders to the shift and for pack and ship (map steps 4 and 7). |
+| SCE1 | Corvane | Carla (inventory controller) answers for the stock record at receiving and put-away (map step 5). |
+| SCE1 | Corvane | Jonas (customer service agent) answers customers about shipments in transit (map step 9). |
+| SCE1 | Corvane | Settlement is held in the ERP, and Helene (chief financial officer) answers for the financial record (map step 11); a working placement. |
+| SCE1 | Corvane | The replacement decision covers map steps 1 to 9 and 12 (SCE1's reading of "replace the warehouse system and buy order and transport systems from the same vendor"). |
