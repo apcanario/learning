@@ -115,7 +115,7 @@ def data_dir(c):
 
 def source(c):
     """The data file the How it was built footer names."""
-    return _toml(c)['pack'].get('source', c['data'])
+    return toml_of(c)['pack'].get('source', c['data'])
 
 
 def files(c):
@@ -127,7 +127,7 @@ def files(c):
     return out
 
 
-def _toml(c):
+def toml_of(c):
     with open(_path(c), 'rb') as f:
         return tomllib.load(f)
 
@@ -167,6 +167,14 @@ def briefs(path):
     return {n: parts[2 * i + 2].rstrip('\n') for i, n in enumerate(names)}
 
 
+def _written(code, fm, where=''):
+    """P-DEC19: a unit's `written` date, or a clear error naming the unit (a bare KeyError printed only 'written')."""
+    w = fm.get('written')
+    if not w:
+        raise ValueError(f'{where}{code}: front matter has no `written` (YYYY-MM-DD)')
+    return w
+
+
 def status_text(written):
     d = datetime.date.fromisoformat(written)
     return f'written {d.day} {d:%b}'
@@ -197,7 +205,7 @@ def _value(v):
 def load(c):
     """The course's data as an object with hub.py's attribute names (a fresh object on every call)."""
     path = _path(c)
-    pk = _toml(c).get('pack')
+    pk = toml_of(c).get('pack')
     if pk is None:
         raise SystemExit(f'{c["data"]}: no [pack] table')
     d = types.SimpleNamespace(**DEFAULTS)
@@ -240,7 +248,7 @@ def load(c):
             raise SystemExit(f'{c["data"]}: [pack.status] {code} is no unit of [[pack.courses.units]]')
         if code not in v:
             raise SystemExit(f'{c["data"]}: [pack.status] {code} has no file in {c["vault"]} (STATUS is only for filed units)')
-    d.STATUS = {code: over.get(code) or status_text(fm['written']) for code, (f, fm) in v.items()}
+    d.STATUS = {code: over.get(code) or status_text(_written(code, fm, c['vault'] + ': ')) for code, (f, fm) in v.items()}
     d.NEXT_UNIT = next((o[0] for o in d.ORDER if o[0] not in v), '—')
     d.READINGS = [dict(r) for r in pk.get('readings', [])]
     for sc in d.COURSES:
@@ -310,7 +318,7 @@ def insert(c, rec, get):
         m = re.match(r'---\n(.*?)\n---\n', t, re.S)
         add = (f'\nname: {r["name"]}' if r['name'] != f'{code} · {title}' else '') + f'\nintro: {intro}'
         out[f] = t[:m.end(1)] + add + t[m.end(1):]
-    if 'status' in rec and rec['status'] != status_text(v[code][1]['written']):
+    if 'status' in rec and rec['status'] != status_text(_written(code, v[code][1], c['vault'] + ': ')):
         t = out.get(path) or get(path)
         if t.count('\n[pack.status]\n') != 1:
             raise ValueError(f'{c["data"]}: no [pack.status] table for the status {rec["status"]!r}')

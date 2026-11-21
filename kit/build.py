@@ -17,7 +17,7 @@ are namespaced (#rome, #rome-syllabus, #rm01).
 """
 import json, re, html, pathlib, importlib.util, math
 import markdown
-from courses import COURSES, HISTORY, MARKDOWN, THEMES, EDITIONS, HERO_AT as _HERO_AT, LOG_AREAS, DEFAULT_EDITION, brand, path as cpath, provenance
+from courses import COURSES, HISTORY, MARKDOWN, THEMES, EDITIONS, HERO_AT as _HERO_AT, LOG_AREAS, DEFAULT_EDITION, brand, path as cpath, provenance, sub_page_id
 import sys
 # P70: an edition filters the course list here, before anything renders; the full site is the default edition (the first
 # in catalog.toml `edition_order`)
@@ -757,7 +757,7 @@ def md_courses(c):
         sc['k'] = sc['key'].lower()
         theme, short = c['tracks'][sc['key']]
         done = [u for u in sc['units'] if u[0] in c['written']]
-        pid = f'{c.get("prefix", c["id"])}-{sc["k"]}'   # brand-a, brand-b; a new course: <id>-<key>
+        pid = sub_page_id(c, sc['key'])   # brand-a, brand-b; a new course: <id>-<key>
         legacy = c.get('legacy_ids')                   # Brand + AI keeps the anchors it had at A3 (#briefs-a, #b-a2)
         out.append(dict(id=pid, home_id=pid, briefs_id=f'briefs-{sc["k"]}' if legacy else f'{pid}-briefs',
                         brief_anchor='b-' if legacy else f'{pid}-b-', parent=c, sc=sc, theme=theme, short=short, key=sc['key'],

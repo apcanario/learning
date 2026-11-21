@@ -215,6 +215,20 @@ MARKDOWN = [c for c in COURSES if c['family'] == 'markdown']
 # S-DEC5 (20 Nov 2026): a history course's inputs live in its folder, named by its course.toml (paths from the repo
 # root): `syllabus` and `prompts` (courses/<id>/inputs/), `provenance` (its own part of what kit/provenance.json held),
 # `bibliography` (the curated r-<id>.md and biblio.py's unit-<n>.md). kit/provenance.json keeps the kit's own part.
+def sub_page_id(c, key):
+    """P-DEC25 (21 Nov 2026): the id of a markdown course's sub-course page, and the top-level folder of its split pages
+    (build.py split(): data-ctx), <prefix or id>-<key lower>: brand-a, supply-chain-execution-sce. The one place the rule is written."""
+    return f"{c.get('prefix', c['id'])}-{key.lower()}"
+
+
+def sub_pages(c):
+    """P-DEC25: a course's home pages and the folders of its split pages: a history course's one (its home_id; its folder
+    is its id), a markdown course's one per `tracks` key (sub_page_id)."""
+    if c['family'] == 'history':
+        return [c['home_id']]
+    return [sub_page_id(c, k) for k in c.get('tracks', {})]
+
+
 def path(c, key):
     """The file or folder a course names by `key` (a path from the repo root): an absolute Path."""
     return _ROOT / c[key]

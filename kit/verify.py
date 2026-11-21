@@ -149,7 +149,7 @@ import pack   # S-DEC2: a markdown course's data (its pack)
 import index_check   # (P39: the browser gets the theme fonts from fonts/, never the network)
 import private_terms   # G-0: the public courses carry no private term
 import rot_check   # P30-F11, P30-F16: the theme copy, retired instructions, staleness dates due
-from courses import COURSES, THEMES, EDITIONS, DEFAULT_EDITION, LOG_AREAS, brand, path as cpath, provenance
+from courses import COURSES, THEMES, EDITIONS, DEFAULT_EDITION, LOG_AREAS, brand, path as cpath, provenance, sub_pages as _sub_pages
 ALL_COURSES = list(COURSES)   # S-DEC4: every course of the repo, before the edition's filter below (the relief library serves them all)
 # P70: --edition checks an edition's folder the same way, over the courses and pages it holds (default: the full site,
 # the first edition in catalog.toml `edition_order`)
@@ -198,8 +198,7 @@ SHELL_MAX = 1024 * 1024   # A2: the shell stays under 1 MB
 def sub_pages(c):
     """A course's home pages: a history course's one home; a markdown course's one per sub-course (its tracks key),
     <prefix or id>-<key> (build.py md_courses)."""
-    if c['family'] == 'history': return [c['home_id']]
-    return [f"{c.get('prefix', c['id'])}-{k.lower()}" for k in c.get('tracks', {})]
+    return _sub_pages(c)
 def rid(c, mod):
     """A history course's report id for a module code ('2.3' -> m23 in a course with prefix m)."""
     return c['prefix'] + mod.replace('.', '')

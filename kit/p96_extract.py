@@ -19,7 +19,8 @@ sys.path.insert(0, str(R))
 import p95_library as L   # noqa: E402
 import p96_uses as U      # noqa: E402
 
-GROUPS = {'H': ['greece', 'rome'], 'M': ['brand-a', 'brand-b', 'ux-ia']}
+# P-DEC19: derived from the courses with a relief (history courses: a prefix; the rest: markdown), never typed
+GROUPS = {'H': [k for k, r in L.RELIEFS.items() if r.prefix], 'M': [k for k, r in L.RELIEFS.items() if not r.prefix]}
 
 
 def title(f):

@@ -181,16 +181,16 @@ Written by `kit/p96_uses.py` (P96, 8 Nov 2026) from its `MAP`; `uses.json` is wr
 | Page | Outline | Names | Deciding sentence |
 |---|---|---|---|
 | BW1 (`read-bw1`) | context-window | 22 | 1 · The context window is the one thing you control |
-| BW10 (`read-bw10`) | battery | 150 | You can budget it in what enters each window, which you control (BW1 §1), and read the result on the usage bars. |
+| BW10 (`read-bw10`) | battery | 158 | You can budget it in what enters each window, which you control (BW1 §1), and read the result on the usage bars. |
 | BW2 (`read-bw2`) | cost | 128 | The cost of a task is the input tokens times the input price, plus the output tokens times the output price, summed over every turn the task takes, with the history re-sent on each turn (BW1 §2). |
-| BW3 (`read-bw3`) | pen-nib | 95 | A brief survives when a reader with no context can act on it without coming back with a question. |
-| BW4 (`read-bw4`) | stack | 28 | Here the question is the next one: given how each layer reaches the window, what should you put in it. |
+| BW3 (`read-bw3`) | pen-nib | 97 | A brief survives when a reader with no context can act on it without coming back with a question. |
+| BW4 (`read-bw4`) | stack | 29 | Here the question is the next one: given how each layer reaches the window, what should you put in it. |
 | BW5 (`read-bw5`) | spec | 85 | A specification is the text that says what the finished project is, written before any part of it is built, and kept as the thing every part is checked against. |
 | BW6 (`read-bw6`) | magnifier | 49 | What it changes. Search puts a page in the window, so a claim can point to something. |
 | BW8 (`read-bw8`) | folder | 36 | A skill. A folder the assistant reads in two steps: its name and description in every chat where it is installed, its body only when a request matches the description (§2). |
 | BW9 (`read-bw9`) | terminal | 69 | In Claude Code the slider is the permission mode. |
-| DD-BW2 (`read-dd-bw2`) | notebook | 38 | "October and November 2026" and 194 units is as far as the record goes; a rate per day cannot be computed from it, because the file gives no start date. |
-| DD-BW3 (`read-dd-bw3`) | chat | 212 | A chat history is the one record every assistant keeps whether or not you planned to keep one, so it is the one place a task you never wrote a rule for shows up with a count. |
+| DD-BW2 (`read-dd-bw2`) | notebook | 34 | Every rate above is one person's, on one kind of output (long-form sourced reports), with one family of models. |
+| DD-BW3 (`read-dd-bw3`) | chat | 227 | A chat history is the one record every assistant keeps whether or not you planned to keep one, so it is the one place a task you never wrote a rule for shows up with a count. |
 
 **None:** BW7 (`read-bw7`), pen-nib 31; DD-BW1 (`read-dd-bw1`), chat 24.
 

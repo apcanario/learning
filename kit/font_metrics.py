@@ -1,16 +1,15 @@
-"""P-DEC5: write a brand's metrics table (viz.set_metrics) from vendored woff2 subsets, or print a mono face's advance.
+"""P-DEC5 (moved to kit/ by P-DEC23, 21 Nov 2026): write a brand's metrics table (viz.set_metrics) from vendored woff2 subsets, or print a mono face's advance.
 
-  python3 out/P-DEC5/font_metrics.py table <out.json> <face name> <subset.woff2>...   advances per 1000 em of viz._CH,
+  python3 kit/font_metrics.py table <out.json> <face name> <subset.woff2>...   advances per 1000 em of viz._CH,
                                                                                       and the face's ascent and descent
-  python3 out/P-DEC5/font_metrics.py mono <subset.woff2>                              the advance in em
-  python3 out/P-DEC5/font_metrics.py proof                                            DM Sans and Space Mono vs viz's literals
+  python3 kit/font_metrics.py mono <subset.woff2>                              the advance in em
+  python3 kit/font_metrics.py proof                                            DM Sans and Space Mono vs viz's literals
 
 Needs fontTools and brotli (woff2); neither is needed by the build. For each character the first subset whose cmap
 holds it gives round(advance * 1000 / unitsPerEm); a character no subset holds is 0 (_tw counts it at 900).
 """
 import json, pathlib, sys
-sys.path.insert(0, '/tmp/pdec5/pylib')
-ROOT = pathlib.Path(__file__).resolve().parents[2]
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'kit'))
 from fontTools.ttLib import TTFont
 import viz
@@ -38,6 +37,8 @@ def mono(f):
 
 
 if __name__ == '__main__':
+    if len(sys.argv) < 2 or sys.argv[1] not in ('table', 'mono', 'proof'):
+        raise SystemExit(__doc__)
     cmd = sys.argv[1]
     if cmd == 'table':
         out, face, files = sys.argv[2], sys.argv[3], sys.argv[4:]

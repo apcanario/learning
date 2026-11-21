@@ -25,7 +25,7 @@
 #               page draws. `sans` and `sansb`: paths from the repo root of JSON tables (kit/fonts/<face>-<weight>.
 #               metrics.json) {"face", "from", "chars", "adv", "ascent", "descent"}: the --sans face's advances per
 #               1000 em at 400 and 600 for viz._CH (0 for a glyph the face lacks) and its hhea line box per 1000 em
-#               (figure text's baselines centre it), read from the vendored woff2 with fontTools (`python3 out/P-DEC5/font_metrics.py table <out.json> "<face>" <subset.woff2>...` and `... mono <woff2>`; needs fontTools and brotli); `mono`: the --mono
+#               (figure text's baselines centre it), read from the vendored woff2 with fontTools (`python3 kit/font_metrics.py table <out.json> "<face>" <subset.woff2>...` and `... mono <woff2>`; needs fontTools and brotli); `mono`: the --mono
 #               face's advance in em (IBM Plex Mono 0.6; its baseline stays where Space Mono's is, so a mono face's
 #               line box must reach no further than Space Mono's: 1.120 em above the baseline, 0.361 below).
 #               A key left out keeps the default: DM Sans 400 and 600 (viz._SANS, viz._SANSB) and Space Mono (0.612),

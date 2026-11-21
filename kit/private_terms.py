@@ -115,8 +115,9 @@ def folders(c):
     page goes to <data-ctx>/): a markdown course's one per sub-course, <prefix or id>-<key> (build.py md_courses:
     brand-a, supply-chain-execution-sce), a history course's <id> (greece)."""
     if c['family'] == 'history':
-        return [c['id']]
-    return [f"{c.get('prefix', c['id'])}-{k.lower()}" for k in c.get('tracks', {})]
+        return [c['id']]   # a history course's split pages sit in <id>/, its home page id is home_id
+    from courses import sub_pages
+    return sub_pages(c)
 
 
 def edition_files(name, skip=()):

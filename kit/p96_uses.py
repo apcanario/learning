@@ -153,7 +153,7 @@ MAP = [
     ('read-bw8', 'folder', 'A folder the assistant reads in two steps: its name and description in every chat where it is installed, its body only when a request matches the description (§2).'),
     ('read-bw9', 'terminal', 'In Claude Code the slider is the permission mode.'),
     ('read-bw10', 'battery', 'You can budget it in what enters each window, which you control (BW1 §1), and read the result on the usage bars.'),
-    ('read-dd-bw2', 'notebook', '"October and November 2026" and 194 units is as far as the record goes; a rate per day cannot be computed from it, because the file gives no start date.'),
+    ('read-dd-bw2', 'notebook', 'Every rate above is one person\'s, on one kind of output (long-form sourced reports), with one family of models.'),
     ('read-dd-bw3', 'chat', 'A chat history is the one record every assistant keeps whether or not you planned to keep one, so it is the one place a task you never wrote a rule for shows up with a count.'),
 ]
 

@@ -38,7 +38,7 @@ def _reliefs():
                                                       files=[f for f in sorted(vault.glob('*.md')) if f.name != 'briefs.md'])
             continue
         p = pack.load(c)
-        raw = pack._toml(c)['pack'].get('readings', [])
+        raw = pack.toml_of(c)['pack'].get('readings', [])
         for k, (_, short) in c.get('tracks', {}).items():
             sc = next((s for s in p.COURSES if s['key'] == k), None)
             if sc is None: raise SystemExit(f"{c['data']}: tracks.{k} has no [[pack.courses]] with key {k!r} (p95_library: the relief pages)")

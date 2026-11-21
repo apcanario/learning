@@ -8,7 +8,7 @@ KIT = the kit folder you are given. Paths below are relative to it, except `cour
 Its purpose is future checking: someone must be able to open each source the report relies on. It lists exactly what the report cites or plainly relies on, completed to a full reference. It is not a reading list and adds nothing the report does not use.
 
 ## Inputs, for each report id
-1. `KIT/<course>/r-<id>.html`: read the whole report. Every citation is inline: ancient authors with works and locators, modern scholars as "Name (Title, year)", "Name (year)", inscriptions and corpora (ILS, RRC, FGrH, DK, SVF ...).
+1. `courses/<course>/<id>-<slug>.md`: the report, a vault Markdown file; read the whole report. Every citation is inline: ancient authors with works and locators, modern scholars as "Name (Title, year)", "Name (year)", inscriptions and corpora (ILS, RRC, FGrH, DK, SVF ...).
 2. `courses/<course>/bibliography/unit-<n>.md`: the machine-extracted list for the unit. Use it as a checklist so you miss nothing. It is incomplete in known ways: it misses a citation whose work is named only earlier in the paragraph, and gives a modern work with no title when the report names only "Name (year)". Do not copy it blindly; the report is the authority.
 3. `KIT/reviews/` (optional): a writer's unsure list or a checker's findings (`reviews/units-9-13/<course>-<id>-writer.md`, `reviews/2026-quality-pass/rome-<id>.md`) tells you which references were hardest; if a reference there was flagged unverifiable, say so in the file.
 
