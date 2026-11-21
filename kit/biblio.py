@@ -80,13 +80,13 @@ def lockey(s):
 def unit_md(c, u, ids):
     idx = json.load(open(cpath(c, 'prompts')))
     lines = [f"# {c['short']} unit {u}: sources cited", '',
-             f"Machine-extracted by `biblio.py` from the inline citations of the {len(ids)} report{'s' if len(ids) != 1 else ''} in unit {u} on every build; a check aid, not a finished bibliography. A curated `courses/{c['id']}/bibliography/r-<id>.md`, where one exists, is linked under its report.", '']
+             f"Machine-extracted by `biblio.py` from the inline citations of the {len(ids)} report{'s' if len(ids) != 1 else ''} in unit {u} on every build; a check aid, not a finished bibliography. A curated `{cpath(c, 'bibliography').relative_to(R.parent).as_posix()}/r-<id>.md`, where one exists, is linked under its report.", '']
     for i in ids:
         if not vault.report_path(c, i): continue
         anc, bare, mod, corp = extract(vault.report_html(c, i, draw=False))
         cur = cpath(c, 'bibliography') / f'r-{i}.md'
         lines += [f"## {i} {idx.get(i, {}).get('title', '')}", '']
-        if cur.exists(): lines += [f"Curated bibliography: `courses/{c['id']}/bibliography/r-{i}.md`.", '']
+        if cur.exists(): lines += [f"Curated bibliography: `{cpath(c, 'bibliography').relative_to(R.parent).as_posix()}/r-{i}.md`.", '']
         lines += ['### Ancient works']
         for (a, w), locs in sorted(anc.items(), key=lambda x: (x[0][0] or '~', x[0][1])):
             lines.append(f"- {(a + ', ') if a else ''}*{w}* {'; '.join(sorted(locs, key=lockey))}")

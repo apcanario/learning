@@ -158,7 +158,7 @@ def briefs(path):
     names = [parts[i].strip() for i in range(1, len(parts), 2)]
     heads = re.findall(r'(?m)^## .*$', t)
     if len(heads) != len(names):
-        bad = [h for h in heads if not re.search(rf'(?m)^{re.escape(h)}\n\n', t)]
+        bad = [m.group(0) for m in re.finditer(r'(?m)^## .*$', t) if t[m.end():m.end() + 2] != '\n\n']
         raise SystemExit(f'{where}: {", ".join(repr(h) for h in bad)} is not a section heading followed by a blank line '
                          '(a brief holds no line that starts with "## "; kit/pack.py)')
     dup = sorted({n for n in names if names.count(n) > 1})
