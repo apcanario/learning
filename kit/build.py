@@ -248,10 +248,28 @@ def unit_tile(c, u, phase=None):
 
 
 THEME = {t['id']: t for t in THEMES}
+# S-NAV1 step B (21 Nov 2026; Pedro: "the homepage with just the entry points for each area, and then a sub homepage for
+# the courses within that area"): an edition of two or more tracks has an area level, one page `track-<id>` per track
+# (area_page below), between the home and its courses; an edition of one track (greece) skips it: its home lists the
+# track's courses as before and no crumb names the area. AREA_OF: each course page's id (a history course's home, a
+# markdown sub-course's) to its track.
+MULTI = len(THEMES) > 1
+AREA_OF = {c['home_id']: c['theme'] for c in HISTORY} | {sub_page_id(c, k): tr for c in MARKDOWN for k, (tr, _) in c['tracks'].items()}
 def crumbs(*items):
-    """Breadcrumb trail: (label, target panel id) pairs; the last item is the current page and has no link."""
-    out = []
+    """Breadcrumb trail: (label, target panel id) pairs; the last item is the current page and has no link.
+    S-NAV1 step B: Home › Area › Course › Unit. Where an edition has area pages (MULTI), a crumb that links to a course
+    page is preceded by its area's (the track's name, to track-<id>) unless the trail already names it; in an edition of
+    one track a crumb to track-<id> (a course home names its area) is left out, as there is no area page."""
+    seq = []
     for label, tgt in items:
+        if tgt and tgt.startswith('track-') and not MULTI:
+            continue
+        a = AREA_OF.get(tgt) if MULTI and tgt else None
+        if a and not (seq and seq[-1][1] == 'track-' + a):
+            seq.append((THEME[a]['name'], 'track-' + a))
+        seq.append((label, tgt))
+    out = []
+    for label, tgt in seq:
         out.append(f'<a href="#{tgt}" data-target="{tgt}">{html.escape(str(label))}</a>' if tgt else f'<span aria-current="page">{html.escape(str(label))}</span>')
     return '<nav class="crumbs" aria-label="You are here">' + '<span class="sep" aria-hidden="true">›</span>'.join(out) + '</nav>'
 
@@ -1116,7 +1134,7 @@ def md_card(m, phase=None):
 # P93: the home's drawings in page order (the hero, each live course's tile, each track's planned courses), each
 # starting at its own point of the cycle
 PLANNED = {t['id']: ([] if 'planned' in OMIT else t.get('planned', [])) for t in THEMES}   # S-SPORTS: a track's own planned courses (P-DEC12: History's too, the `next` rows before)
-HOME_PH = iter(phases(1 + len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon') + sum(len(v) for v in PLANNED.values())))   # G-0: one phase per drawing on the home; a course with nothing filed has none
+HOME_PH = iter(phases(1 + (len(THEMES) if MULTI else len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon') + sum(len(v) for v in PLANNED.values()))))   # G-0: one phase per drawing on the home; a course with nothing filed has none; S-NAV1 step B: with area pages, the hero and one tile per track
 HERO_TOPO['phase'] = round(next(HOME_PH), 3)
 
 
@@ -1145,16 +1163,20 @@ def hero_interval(topo, step=100):
 
 HERO_INTERVAL, hero_topo = hero_interval(HERO_TOPO)
 HERO_TOPO['interval'] = HERO_INTERVAL
-tracks = ''
-for t in THEMES:
+def track_body(t, ph):
+    """A track's course tiles, its own copy and its folded planned courses, and its count line, each drawing taking the
+    next phase of ph in page order (its history courses' tiles, its planned courses' ghosts, its markdown courses'
+    tiles: the order the home has drawn them in since P93). Returns (the tiles, the copy and planned list, the count,
+    the courses: [(label, words or None)] its history and live markdown courses by their words, its coming-soon markdown
+    courses and its planned courses flat)."""
     hist = [c for c in HISTORY if c['theme'] == t['id']]
     mds = [m for m in MD if m['theme'] == t['id']]
-    cards = ''.join(root_card(c, next(HOME_PH)) for c in hist)
-    own_cards = ''.join(ghost_tile(t['name'], short, name, col, scope, spine, next(HOME_PH), t.get('planned_label', 'Spine')) for short, name, col, scope, spine in PLANNED[t['id']])
+    cards = ''.join(root_card(c, next(ph)) for c in hist)
+    own_cards = ''.join(ghost_tile(t['name'], short, name, col, scope, spine, next(ph), t.get('planned_label', 'Spine')) for short, name, col, scope, spine in PLANNED[t['id']])
     soon = [m for m in mds if m['status'] == 'coming soon']   # a markdown course with nothing written is planned, not live
     # G-0 (12 Nov 2026): such a course has no tile on the home (verify.py's home_expect: "a course with nothing filed is
     # not live: no tile"; its patch would be empty); it is counted as coming soon here and listed in the drawer
-    cards += ''.join(md_card(m, next(HOME_PH)) for m in mds if m not in soon)
+    cards += ''.join(md_card(m, next(ph)) for m in mds if m not in soon)
     n = len(hist) + len(mds) - len(soon)
     count = f'{n} course{"s" if n != 1 else ""}' if n else f'{len(soon)} course{"s" if len(soon) != 1 else ""} coming soon'
     if hist: count += f' · {sum(c["nrep"] for c in hist)} reports'
@@ -1171,11 +1193,59 @@ for t in THEMES:
     <p class="hnote">{html.escape(t.get('planned_note', ''))}</p>
     <div class="cgrid">{own_cards}</div>
   </details>"""   # own_planned
-    tracks += f"""
+    live = [m for m in mds if m not in soon]
+    rises = ([(c['short'], c['words'] or None) for c in hist] + [(m['short'], m['words'] or None) for m in live]
+             + [(m['short'], None) for m in soon] + [(short, None) for short, *_ in PLANNED[t['id']]])
+    units = (sum(c['units_complete'] for c in hist) + sum(m['nwritten'] for m in live), sum(c['card_units'] for c in hist) + sum(m['nunits'] for m in live))
+    return cards, extra, count, rises, dict(n=n, units=units, words=sum(c['words'] for c in hist) + sum(m['words'] for m in live),
+                                            status='complete' if all(c['status'] == 'available' for c in hist) and all(m['status'] == 'available' for m in live) and not soon and not PLANNED[t['id']] else 'in progress')
+
+
+tracks = ''
+AREA_PANELS = []
+if not MULTI:   # an edition of one track: the home lists its courses under the track's header, as before S-NAV1
+    for t in THEMES:
+        cards, extra, count, _, _ = track_body(t, HOME_PH)
+        tracks += f"""
   <section class="track" id="track-{t['id']}" style="--c:{t['color']}">
     <header class="thead"><div class="ttx"><span class="cname">Track</span><h2>{html.escape(t['name'])}</h2><p>{html.escape(t['lede'])}</p></div><span class="tmeta">{count}</span></header>
     <div class="cgrid">{cards}</div>{extra}
   </section>"""
+else:
+    # S-NAV1 step B: the home shows one tile per track (the chip "Area" and its name, the status pill, the name, its
+    # lede in two lines, three stats: its live courses, their units written and in all, and its patch: one rise per
+    # course of the track, a live course by its words, a course coming soon or planned flat); each tile opens the area
+    # page, track-<id>: a hero over the same courses' topography (crumbs Home › Area, the eyebrow AREA with its count, the
+    # name, the lede, three stats), then the track's band: its course tiles, its own copy and its folded planned courses,
+    # as the home showed them before. Each page's drawings take their phases in page order (the hero first, at 0).
+    area_tiles = ''
+    for t in THEMES:
+        aph = iter(phases(1 + sum(1 for c in HISTORY if c['theme'] == t['id']) + sum(1 for m in MD if m['theme'] == t['id'] and m['status'] != 'coming soon') + len(PLANNED[t['id']])))
+        hero_ph = next(aph)
+        cards, extra, count, rises, st = track_body(t, aph)
+        top = max((w for _, w in rises if w), default=0)
+        tone = _TONE[t['color']]
+        layer = hero_layer(rises, tone, top / 5.5, course_topo(html.escape(t['lede'])), hero_ph) if top else ''
+        aid = 'track-' + t['id']
+        AREA_PANELS.append(f"""
+<section class="panel home area" id="{aid}" data-ctx="root" data-kind="area" data-t="{html.escape(t['name'])}" data-u="AREA" data-c="{t['color']}" style="--cc:{t['color']}" hidden>
+  <header class="hero has-topo">
+    {layer}
+    {crumbs((SITE_NAME, 'home'), (t['name'], None))}
+    <div class="eyebrow">{eyebrow_segs(f'<span class="u" style="--c:{t["color"]}">AREA</span>', *count.split(' · '))}</div>
+    <h1>{html.escape(t['name'])}</h1>
+    <p class="lede">{html.escape(t['lede'])}</p>
+    <div class="stats" data-n="3"><div><b>{st['n']}</b><span>course{"s" if st['n'] != 1 else ""}</span></div><div><b>{st['units'][0]}</b><span>of {st['units'][1]} units written</span></div><div><b>{hours(st['words'])}</b><span>hours of reading</span></div></div>
+  </header>
+  <section class="track" style="--c:{t['color']}">
+    <div class="cgrid">{cards}</div>{extra}
+  </section>
+</section>""")
+        area_tiles += tile(['Area', t['name']], t['color'], t['name'], html.escape(t['lede']),
+                           stats=[(st['n'], 'courses' if st['n'] != 1 else 'course'), (st['units'][0], 'units written'), (st['units'][1], 'in all')],
+                           pill=status_pill(st['status']), patch=patch_block(rises, tone, next(HOME_PH)) if top else '', href='#' + aid)
+    tracks = f"""
+  <div class="cgrid areas">{area_tiles}</div>"""
 
 # What's new (P91): every unit filed and every course started, newest first, grouped by day; and its first six rows
 # as New since at the foot of the home
@@ -1295,7 +1365,7 @@ for c in HISTORY:
 for m in MD:
     m['panels'].append(howbuilt.markdown_page(m, crumbs, THEME, md_inline, md_blocks))
 
-panels = [roothome, changelog, backlog]
+panels = [roothome, *AREA_PANELS, changelog, backlog]   # S-NAV1 step B: the area pages, in the shell (no fetch), after the home
 for c in HISTORY:
     panels += [course_home(c), c['built'], syllabus(c)] + c['report_panels']
 for m in MD:
@@ -1358,6 +1428,8 @@ def root_nav_track(t):
     hist = [c for c in HISTORY if c['theme'] == t['id']]
     mds = [m for m in MD if m['theme'] == t['id']]
     out = ''
+    if MULTI:   # S-NAV1 step B: the track's area page heads its group (step C makes the navigation two levels)
+        out += f'<a class="ditem dcourse darea" href="#track-{t["id"]}" data-target="track-{t["id"]}" style="--c:{t["color"]}"><span class="n">■</span><span class="t">{html.escape(t["name"])}<small>the area\'s home</small></span></a>'
     out += ''.join(f'<a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">{c["num"]}</span><span class="t">{c["short"]}<small>{c["card_units"]} units · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"]) + " reports"}</small></span></a>' for c in hist)
     out += ''.join(f'<a class="ditem dcourse" href="#{m["home_id"]}" data-target="{m["home_id"]}" style="--c:{m["color"]}"><span class="n">{m["key"]}</span><span class="t">{html.escape(m["short"])}<small>{m["nwritten"]} of {m["nunits"]} units</small></span></a>' for m in mds)
     n = len(hist) + len(mds)

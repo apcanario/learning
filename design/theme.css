@@ -451,7 +451,7 @@ details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter
 .course.live>p,.course.live>summary>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
 .course.live .cstats{margin-bottom:0}
 /* P91: on a narrow phone (320 and 360 px) the track band and the tile give the line the width its two lines need */
-@media (max-width:400px){.panel.root .track{padding-left:12px;padding-right:12px}.course.live{padding:14px 12px}.course.live>p,.course.live>summary>p{font-size:13.5px}.course.live .cstats{gap:4px 12px}}
+@media (max-width:400px){.panel.root .track,.panel.area>.track{padding-left:12px;padding-right:12px}.course.live{padding:14px 12px}.course.live>p,.course.live>summary>p{font-size:13.5px}.course.live .cstats{gap:4px 12px}}
 /* the tile's chip breaks only between its two parts, the track and the course (or the course and the unit) */
 .cname .cpart{white-space:nowrap}
 .course.live .cname{max-width:100%}   /* the chip on one line where it fits; where it does not (Information architecture · DD-IA1/2/3 at 320 px, P93 check) it breaks between its two parts, never widening the tile; the status pill under it */

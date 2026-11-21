@@ -97,6 +97,15 @@ Contrast (P90): in the light theme, every text in the home, What's new (P91), th
 home and one reading page of each course, at phone width with every <details> open, reaches 4.5:1 against the
 background it sits on (3:1 for large text), the text's opacity and every tint it sits on composited, and no text
 and no background under it is pure white; figures are left to the figure checks.
+Area pages (S-NAV1 step B, 21 Nov 2026): in an edition of two or more tracks the home's tiles are one per track (the
+chip, the status pill, the name, its lede, three stats, its patch: one rise per course of the track, a live course by its
+words, a course coming soon or planned flat), each the link to its area page track-<id>; each area page (check_area,
+in every run) holds a hero over its courses' topography (check_topo against the sources: the same rises), the
+breadcrumbs Home › Area, the eyebrow AREA, the name, the lede and three stats, then the track's band: its live courses'
+tiles in catalog order, its own copy and its folded planned list (check_tiles, its ghosts its own planned courses); the
+home's tile counts what the band holds; the area pages join the topography, motion, contrast and shot passes; the
+navigation walk and the desktop taps reach a course through its area page; the history walk is home -> area -> course
+-> unit with three backs. In an edition of one track (greece) none of this applies and the home lists the courses.
 Topographies and tiles (P93, 4 Nov 2026), at 320, 360, 390, 430, 768 and 1280 px, dark and light: each course home and
 What's new carries a contour layer behind its hero (check_topo), against the sources (home_expect: a course home one
 rise per unit of the course in its order, a written unit by its words, a planned unit flat; What's new one rise per
@@ -221,6 +230,14 @@ _samp = [c for c in COURSES if c.get('verify_sample')] or COURSES
 SAMPLE = [p for c in _samp for p in sub_pages(c)]   # the course homes the per-page passes visit, in course order
 PRIVATE = [c['id'] for c in COURSES if c.get('private')]
 HIST_HOMES = {c['home_id'] for c in HIST}
+# S-NAV1 step B (21 Nov 2026): an edition of two or more tracks has an area page per track, track-<id> (build.py
+# area pages), between the home and its courses: the home shows one tile per track, each area page its courses' tiles,
+# its own copy and its planned courses. An edition of one track has none and its home lists the track's courses, as
+# before. AREA_OF: each course page (a history course's home, a markdown sub-course's) to its track.
+AREA_IDS = ['track-' + t['id'] for t in THEMES] if len(THEMES) > 1 else []
+MULTI = bool(AREA_IDS)
+AREA_OF = {c['home_id']: c['theme'] for c in HIST} | {f"{c.get('prefix', c['id'])}-{k.lower()}": tr for c in COURSES if c['family'] == 'markdown' for k, (tr, _) in c['tracks'].items()}
+HOME_GRID = '#home > .cgrid.areas' if MULTI else '#home .track .cgrid'   # the home's tile grid the tablet and desktop passes measure
 # S-DEC4 (20 Nov 2026): verify by scope (verify_scope.py). The default run checks the pages whose sources changed since
 # the edition's last passed run (kit/verify-hashes.json) plus the home, What's new, the Changelog and the Backlog, and
 # runs every edition-wide check; a change to kit/*.py, shell.js, shell.css, theme.css, the fonts, catalog.toml or the
@@ -355,9 +372,10 @@ def home_expect():
     import importlib.util, vault
     prov = provenance()
     from howbuilt import front
-    courses, dated, areas = {}, [], []
+    courses, dated, areas, area_pages = {}, [], [], {}
     for t in THEMES:
         aw = 0
+        crs, lives, soon = [], [], []   # S-NAV1 step B: the track's courses for its area page and its home tile: [(short, words)], live markdown ones, markdown ones coming soon
         for c in COURSES:
             if c['family'] == 'history' and c['theme'] == t['id']:
                 syl = cpath(c, 'syllabus').read_text()
@@ -377,6 +395,7 @@ def home_expect():
                     done = all(m in idx for m in ms)
                     us.append((f'U{u}', sum(rw(m) for m in ms) if done else None))
                 aw += sum(rw(m) for m in idx if m in order)
+                crs.append((c['home_id'], c['short'], sum(rw(m) for m in idx if m in order) or None))
                 courses[c['home_id']] = dict(short=c['short'], units=us, tiles=tiles, family='history', tone=c['color'])
                 ap = set(prov.get('written_approx', {}).get(c['id'], []))
                 for m, d in prov.get('written', {}).get(c['id'], {}).items():
@@ -394,7 +413,10 @@ def home_expect():
             order = [o[0] if isinstance(o, (tuple, list)) else o for o in getattr(d, 'ORDER', [])]
             for sc in d.COURSES:
                 tr, short = c['tracks'][sc['key']]
-                if tr != t['id'] or not any(u[0] in vlt for u in sc['units']):
+                if tr != t['id']:
+                    continue
+                if not any(u[0] in vlt for u in sc['units']):
+                    soon.append(short)
                     continue                                   # a course with nothing filed is not live: no tile
                 pid = f'{c.get("prefix", c["id"])}-{sc["key"].lower()}'
                 read = lambda code: rid.get(code, f'read-{c["id"]}-{code.lower()}')
@@ -407,6 +429,7 @@ def home_expect():
                 sw = {u[0]: secs(u[0]) for u in sc['units'] if u[0] in vlt}
                 us = [(u[0], sum(sw[u[0]]) if u[0] in vlt else None) for u in sc['units']]
                 aw += sum(w for _, w in us if w)
+                lives.append((pid, short, sum(w for _, w in us if w) or None))
                 courses[pid] = dict(short=short, units=us, tiles=[(u[0], sw.get(u[0])) for u in sc['units']], family='markdown', tone=sc['color'],
                                     pages={u[0]: read(u[0]) for u in sc['units'] if u[0] in vlt}, briefs={u[0]: (f'{pid}-b-' if not c.get('legacy_ids') else 'b-') + u[0].lower() for u in sc['units']})
                 for k, u in enumerate(sc['units']):
@@ -414,6 +437,9 @@ def home_expect():
                         dated.append(dict(date=str(vlt[u[0]]['written']), rank=order.index(u[0]) if u[0] in order else len(order) + k, home=pid,
                                           code=u[0], pid=read(u[0]), approx=False, course=short, words=sum(sw[u[0]])))
         areas.append(dict(name=t['name'], color=t['color'], words=aw))
+        plan = [] if 'planned' in OMIT else t.get('planned', [])
+        area_pages['track-' + t['id']] = dict(name=t['name'], color=t['color'], lede=t['lede'], courses=[h for h, _, _ in crs + lives], plans=[x[1] for x in plan],
+                                              rises=[(l, w) for _, l, w in crs + lives] + [(l, None) for l in soon] + [(x[0], None) for x in plan])
     dated.sort(key=lambda x: (x['date'], x['rank']), reverse=True)
     rows = [dict(x, kind='unit') for x in dated]
     for home in dict.fromkeys(x['home'] for x in dated):
@@ -425,7 +451,7 @@ def home_expect():
     for x in dated:
         days[x['date']] = days.get(x['date'], 0) + x['words']
         dom.setdefault(x['date'], {}); dom[x['date']][tone_of[x['home']]] = dom[x['date']].get(tone_of[x['home']], 0) + x['words']
-    return dict(courses=courses, areas=areas, newest=dated[0] if dated else None, rows=rows, days=sorted(days.items()),
+    return dict(courses=courses, areas=areas, area_pages=area_pages if MULTI else {}, newest=dated[0] if dated else None, rows=rows, days=sorted(days.items()),
                 day_tones=[max(dom[d], key=dom[d].get) for d in sorted(days)])
 
 # P92 (4 Nov 2026): the home's layout, read on the visible home panel at one width. Returns what was found and the
@@ -492,7 +518,10 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
   const hr = hero.getBoundingClientRect(); out.heroH = [Math.round(hr.height), innerHeight, Math.round(100 * hr.height / innerHeight)];
   if (phone && (hr.height < .6 * innerHeight || hr.height > .8 * innerHeight)) bad.push(`the hero is ${out.heroH[2]}% of the screen, not 60 to 80%`);
   const kids = [...h.children], tracks = kids.filter(e => e.classList.contains('track'));
-  const th = tracks.length && tracks[0].querySelector('.thead h2');
+  const ag = h.querySelector(':scope > .cgrid.areas');   // S-NAV1 step B: with area pages, one tile per track (opt.areas)
+  if (opt.areas && (!ag || tracks.length)) bad.push(`the home holds ${tracks.length} track sections and ${ag ? 'a' : 'no'} grid of area tiles; with area pages, one grid of area tiles and no track section`);
+  if (!opt.areas && ag) bad.push('the home of an edition of one track holds a grid of area tiles');
+  const th = opt.areas ? ag && ag.querySelector('.ctitle') : tracks.length && tracks[0].querySelector('.thead h2');
   out.first = th ? Math.round(th.getBoundingClientRect().top + scrollY) : null;
   if (phone && th && out.first + 10 > innerHeight) bad.push(`the first area's heading starts at ${out.first} px, not inside the first screen (${innerHeight} px)`);
   // nothing sideways, nothing on the hero past the screen
@@ -502,7 +531,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
     const r = e.getBoundingClientRect(); if (r.width && (r.right > de.clientWidth + .5 || r.left < -.5)) bad.push(`${e.className || e.tagName} on the hero runs off the screen`); });
   // the order: hero, the area sections, the constants, the site pages, New since, its one link
   out.order = kids.map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ');
-  const want = ['header.hero.hhome', ...tracks.map(() => 'section.track'), 'details.howto.rules', ...(opt.site ? ['div.hlinks'] : []), 'section.recent', 'div.hlinks'].join(' ');
+  const want = ['header.hero.hhome', ...(opt.areas ? ['div.cgrid.areas'] : tracks.map(() => 'section.track')), 'details.howto.rules', ...(opt.site ? ['div.hlinks'] : []), 'section.recent', 'div.hlinks'].join(' ');
   if (out.order !== want) bad.push(`the home runs ${out.order}`);
   // the area headers: from 768 px the label, the name, the lede and the count; below it the name only
   out.heads = tracks.map(t => { const hd = t.querySelector('.thead'); return [t.id, vis(hd.querySelector('.cname')), vis(hd.querySelector('h2')), vis(hd.querySelector('p')), vis(hd.querySelector('.tmeta'))]; });
@@ -521,7 +550,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
   }
   h.querySelectorAll('.hbtn b, .hbtn span').forEach(el => { if (el.getBoundingClientRect().width > 0 && el.scrollWidth > el.clientWidth + 1) bad.push(`a button's text is cut short: "${el.textContent.trim().slice(0, 40)}"`); });
   // the tiles: every one the same fields, its own contour patch, the whole tile the link
-  const cards = [...h.querySelectorAll('.track .cgrid > a.course.live')];
+  const cards = [...h.querySelectorAll(opt.areas ? ':scope > .cgrid.areas > a.course.live' : '.track .cgrid > a.course.live')];
   out.cards = cards.map(c => { const p = c.querySelector(':scope > .topo.topo-patch'), s = p && p.querySelector('svg');
     return {home: c.getAttribute('data-target'), href: c.getAttribute('href'),
             rises: p ? [...p.querySelectorAll('g.ct-rise')].map(g => [g.getAttribute('data-label'), +g.getAttribute('data-words')]) : null,
@@ -537,7 +566,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
     const n = c.querySelectorAll('.cstats > span').length; if (n !== 3) bad.push(`${name}: ${n} stats, expected 3`);
     const ctop = c.querySelector('.ctop'); if (!ctop || !ctop.querySelector('.cname') || !ctop.querySelector('.pill')) bad.push(`${name}: no chip and status pill`);
     const pp = c.querySelector(':scope > p'), lh = parseFloat(getComputedStyle(pp).lineHeight);
-    if (pp.scrollHeight > pp.clientHeight + 1) bad.push(`${name}: the tile line is clipped (${pp.scrollHeight} px of ${pp.clientHeight})`);
+    if (!opt.areas && pp.scrollHeight > pp.clientHeight + 1) bad.push(`${name}: the tile line is clipped (${pp.scrollHeight} px of ${pp.clientHeight})`);   // S-NAV1 step B: an area tile's line is the track's lede, held to two lines by the tile's clamp as every closed tile's line; the area page shows it whole
     if (Math.round(pp.clientHeight / lh) > 2) bad.push(`${name}: the tile line runs to ${Math.round(pp.clientHeight / lh)} lines`);
     if (c.scrollWidth > c.clientWidth + 1) bad.push(`${name}: the tile scrolls sideways`);
     if (c.querySelectorAll('a').length) bad.push(`${name}: a link inside the tile (the whole tile is the link)`);
@@ -547,16 +576,16 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
       if (r.left < cr.left || r.right > cr.right + .5) bad.push(`${name}: the patch runs out of its tile`); }
   });
   if (new Set(cards.map(c => c.className)).size > 1) bad.push('the course tiles are not one style');
-  tracks.forEach(t => {
-    const g = t.querySelector('.cgrid'), cs = [...g.querySelectorAll(':scope > a.course')];
+  (opt.areas ? (ag ? [{id: 'the area tiles', g: ag}] : []) : tracks.map(t => ({id: t.id, g: t.querySelector('.cgrid'), t}))).forEach(({id: tid, g, t}) => {
+    const cs = [...g.querySelectorAll(':scope > a.course')];
     const cols = (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(g).gridTemplateColumns);
-    if (phone && cols !== 1) bad.push(`${t.id}: ${cols} columns below 768 px`);
-    if (!phone && cols !== 2) bad.push(`${t.id}: ${cols} column(s) from 768 px, expected 2`);
+    if (phone && cols !== 1) bad.push(`${tid}: ${cols} columns below 768 px`);
+    if (!phone && cols !== 2) bad.push(`${tid}: ${cols} column(s) from 768 px, expected 2`);
     if (!phone && cs.length === 1) {
       const gw = g.getBoundingClientRect().width, cw = cs[0].getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
-      if (Math.abs(cw - (gw - gap) / 2) > 2) bad.push(`${t.id}: its only tile is ${cw.toFixed(0)} px of a ${gw.toFixed(0)} px grid, expected half`);
+      if (Math.abs(cw - (gw - gap) / 2) > 2) bad.push(`${tid}: its only tile is ${cw.toFixed(0)} px of a ${gw.toFixed(0)} px grid, expected half`);
     }
-    const tk = opt.tracks[t.id.slice(6)];   // P-DEC12: a track with its own copy (catalog.toml `extra`) or planned courses keeps them
+    const tk = t && opt.tracks[t.id.slice(6)];   // P-DEC12: a track with its own copy (catalog.toml `extra`) or planned courses keeps them
     if (tk && tk.extra && !t.querySelector('details.howto.rules:not(.planned)')) bad.push(`${t.id}: lost its own copy (${tk.extra})`);
     if (tk && tk.plan && opt.planned && !t.querySelector(`details.planned#${tk.plan}`)) bad.push(`${t.id}: lost its folded planned list #${tk.plan}`);
   });
@@ -629,7 +658,7 @@ def check_home(pg, label, fails, expect, motion=False):
     pg.evaluate("location.hash = 'home'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(160)
     # a theme switched by the test fades the tiles' colours (section 7's .15 s transitions): read the page once they are done
     pg.wait_for_function("() => !document.getAnimations().some(a => typeof CSSTransition !== 'undefined' && a instanceof CSSTransition && a.playState === 'running')", timeout=5000)
-    r = pg.evaluate(HOME_JS, [[a['color'] for a in expect['areas']], {'planned': 'planned' not in OMIT, 'site': any(k not in OMIT for k in ('backlog', 'figures', 'changelog')), 'tracks': {t['id']: {'extra': t.get('extra'), 'plan': t.get('planned_anchor', 'planned-' + t['id']) if t.get('planned') else None} for t in THEMES}}])
+    r = pg.evaluate(HOME_JS, [[a['color'] for a in expect['areas']], {'planned': 'planned' not in OMIT, 'site': any(k not in OMIT for k in ('backlog', 'figures', 'changelog')), 'tracks': {t['id']: {'extra': t.get('extra'), 'plan': t.get('planned_anchor', 'planned-' + t['id']) if t.get('planned') else None} for t in THEMES}, 'areas': MULTI}])
     fails += [f'home {label}: {b}' for b in r['bad']]
     names = [a['name'] for a in expect['areas']]
     if [w for w, _ in r.get('words', [])] != names: fails.append(f'home {label}: the area line reads {[w for w, _ in r.get("words", [])]}, THEMES gives {names}')
@@ -656,8 +685,11 @@ def check_home(pg, label, fails, expect, motion=False):
         if byw != sorted(byw): fails.append(f'home {label}: the {name} rises stand {rings} levels high, not in the order of their words')
         if [s for _, _, _, s, _ in rs] != r.get('tones'): fails.append(f'home {label}: the {name} rises are drawn in {[x[3] for x in rs]}, not their areas\' tones')
     got = {c['home']: c for c in r.get('cards', [])}
-    if list(got) != list(expect['courses']): fails.append(f'home {label}: the tiles are {list(got)}, the sources give {list(expect["courses"])}')
-    for home, e in expect['courses'].items():
+    # S-NAV1 step B: with area pages the home's tiles are the areas, each its courses as rises (a live course by its
+    # words, one coming soon or planned flat), each the link to its area page
+    tiles_want = {a: dict(short=e['name'], units=e['rises']) for a, e in expect['area_pages'].items()} if MULTI else expect['courses']
+    if list(got) != list(tiles_want): fails.append(f'home {label}: the tiles are {list(got)}, the sources give {list(tiles_want)}')
+    for home, e in tiles_want.items():
         c = got.get(home)
         if not c: continue
         want_r = [(k, w) for k, w in e['units'] if w]
@@ -897,6 +929,8 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
         want = [(d, wd) for d, wd in expect['days']]
     elif pid in expect['courses']:
         want = [(k, wd) for k, wd in expect['courses'][pid]['units']]
+    elif pid in expect.get('area_pages', {}) and any(wd for _, wd in expect['area_pages'][pid]['rises']):   # S-NAV1 step B: an area page, one rise per course of the track
+        want = list(expect['area_pages'][pid]['rises'])
     if want is not None:
         if not h: fails.append(f'{pid} {label}: no topography behind the hero')
         else:
@@ -948,7 +982,7 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
         close = [(a, b) for a, b in zip(phs, phs[1:]) if b - a < .9 / max(nt, 1)]
         if phase and (close or len(phs) < len(r['patches']) + (1 if h else 0)): fails.append(f'{pid} {label}: drawings share or lack a phase ({close[:3]}; {len(phs)} phases)')
     elif an: fails.append(f'{pid} {label}: under reduced motion {len(an)} animations run: {an[:2]}')
-    if want is None and pid != 'home' and r['anyTopo']: fails.append(f'{pid} {label}: a topography on a page that has none')
+    if want is None and pid != 'home' and pid not in AREA_IDS and r['anyTopo']: fails.append(f'{pid} {label}: a topography on a page that has none')
     return r
 
 def check_tiles(pg, pid, label, fails, expect):
@@ -1004,12 +1038,61 @@ def check_tiles(pg, pid, label, fails, expect):
             if [tuple(x) for x in t['rises'] or []] != want_r: fails.append(f'{pid} {label}: {code}: its patch gives {t["rises"]}, the sources {want_r}')
             if ('pending' in t['mods']) != (not want_r): fails.append(f'{pid} {label}: {code}: marked pending {"pending" in t["mods"]}, but {len(want_r)} of its parts are written')
             if (t['plan'] or []) != want_p: fails.append(f'{pid} {label}: {code}: its patch marks {t["plan"]} planned, the sources {want_p}')
-    if pid == 'home':
+    if pid == 'home' or pid in AREA_IDS:   # S-NAV1 step B: with area pages, each area page holds its track's planned courses and the home none
         gh = [t for t in ts if t['kind'] == 'ghost']
-        plans = [n[1] for t in THEMES for n in t.get('planned', [])]   # S-SPORTS: a track's own planned courses; P-DEC12: History's too (catalog.toml `next` before)
-        if gh and [t['name'] for t in gh] != plans: fails.append(f'home {label}: the ghost tiles are {[t["name"] for t in gh]}, courses.py plans {plans}')
+        plans = [n[1] for t in THEMES if pid == 'home' or pid == 'track-' + t['id'] for n in t.get('planned', [])]   # S-SPORTS: a track's own planned courses; P-DEC12: History's too (catalog.toml `next` before)
+        if (MULTI and pid == 'home') or 'planned' in OMIT: plans = []
+        if (gh or pid in AREA_IDS) and [t['name'] for t in gh] != plans: fails.append(f'{pid} {label}: the ghost tiles are {[t["name"] for t in gh]}, courses.py plans {plans}')
         for t in gh:
             if t['stats'] or t['rises'] or len(t['plan'] or []) != 1: fails.append(f'home {label}: the ghost {t["name"]} shows stats {t["stats"]} or rises, or not one dashed ring ({t["plan"]})')
+    return r
+
+# S-NAV1 step B (21 Nov 2026): an area page (track-<id>), read on the shown page at one width: the breadcrumbs (the
+# site, then the area, current), the eyebrow AREA, the area's name and lede, three stats; its hero's layer (check_topo
+# holds it against the sources); then the track's band: its live courses' tiles in catalog order, each the link to its
+# course, its own copy (catalog.toml `extra`) and its folded planned list; nothing sideways. And the home's tile for it:
+# its three stats are the band's: its course tiles, their units written and in all.
+AREA_JS = r"""(pid) => {
+  const P = document.getElementById(pid), out = {bad: []}, bad = out.bad;
+  if (!P || P.hidden) { bad.push('not shown'); return out; }
+  const hero = P.querySelector(':scope > header.hero.has-topo');
+  if (!hero) bad.push('no hero over a topography (header.hero.has-topo)');
+  const cr = P.querySelector('.hero .crumbs');
+  out.crumbs = cr ? [...cr.children].filter(e => !e.classList.contains('sep')).map(e => [e.textContent, e.getAttribute('href')]) : null;
+  out.eyebrow = (P.querySelector('.hero .eyebrow .u') || {}).textContent || null;
+  out.h1 = (P.querySelector('.hero h1') || {}).textContent || null;
+  out.lede = (P.querySelector('.hero .lede') || {}).textContent || null;
+  out.stats = [...P.querySelectorAll('.hero .stats > div > b')].map(b => b.textContent);
+  out.kids = [...P.children].map(e => e.tagName.toLowerCase() + '.' + [...e.classList].join('.')).join(' ');
+  const band = P.querySelector(':scope > section.track');
+  out.tiles = band ? [...band.querySelectorAll(':scope > .cgrid > a.course.live')].map(a => [a.getAttribute('href'), a.getAttribute('data-target'), [...a.querySelectorAll('.cstats > span > b')].map(b => b.textContent)]) : [];
+  out.extra = band ? !!band.querySelector(':scope > details.howto.rules:not(.planned)') : false;
+  out.plan = band ? [...band.querySelectorAll(':scope > details.planned')].map(d => d.id) : [];
+  const home = document.querySelector('#home a.course.live[data-target="' + pid + '"]');
+  out.homeTile = home ? [...home.querySelectorAll('.cstats > span > b')].map(b => b.textContent) : null;
+  const de = document.documentElement; if (de.scrollWidth > de.clientWidth) bad.push(`the page scrolls sideways (${de.scrollWidth} in ${de.clientWidth} px)`);
+  return out;
+}"""
+
+def check_area(pg, pid, label, fails, expect):
+    """S-NAV1 step B: one area page against catalog.toml and the sources (AREA_JS), and the home's tile for it."""
+    pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(80)
+    e = expect['area_pages'][pid]
+    t = next(x for x in THEMES if 'track-' + x['id'] == pid)
+    r = pg.evaluate(AREA_JS, pid)
+    fails += [f'{pid} {label}: {b}' for b in r['bad']]
+    if r.get('crumbs') != [[SITE_NAME, '#home'], [e['name'], None]]: fails.append(f'{pid} {label}: the breadcrumbs are {r.get("crumbs")}, expected {SITE_NAME} › {e["name"]}')
+    if r.get('eyebrow') != 'AREA' or r.get('h1') != e['name'] or r.get('lede') != e['lede']: fails.append(f'{pid} {label}: the hero reads {r.get("eyebrow")!r}, {r.get("h1")!r}, {(r.get("lede") or "")[:40]!r}; expected AREA, its name and its lede')
+    if r.get('kids') != 'header.hero.has-topo section.track': fails.append(f'{pid} {label}: the page holds {r.get("kids")}, expected the hero and the track\'s band')
+    got = [h for h, _, _ in r.get('tiles', [])]
+    if got != ['#' + c for c in e['courses']] or any(h != '#' + tg for h, tg, _ in r.get('tiles', [])): fails.append(f'{pid} {label}: the course tiles link to {got}, the sources give {e["courses"]}')
+    if t.get('extra') and not r.get('extra'): fails.append(f'{pid} {label}: lost its own copy ({t["extra"]})')
+    want_plan = [t.get('planned_anchor', 'planned-' + t['id'])] if t.get('planned') and 'planned' not in OMIT else []
+    if r.get('plan') != want_plan: fails.append(f'{pid} {label}: its folded planned lists are {r.get("plan")}, expected {want_plan}')
+    sums = [str(len(r.get('tiles', []))), str(sum(int(s[0]) for _, _, s in r.get('tiles', []))), str(sum(int(s[1]) for _, _, s in r.get('tiles', [])))]
+    if r.get('homeTile') != sums: fails.append(f'{pid} {label}: the home\'s tile counts {r.get("homeTile")}, its band holds {sums} (courses, units written, in all)')
+    if (r.get('stats') or [None])[:2] != sums[:2]: fails.append(f'{pid} {label}: the hero\'s stats read {r.get("stats")}, its band holds {sums[:2]} (courses, units written)')
+    print(f'{pid} {label}: crumbs {" › ".join(x for x, _ in r.get("crumbs") or [])}; {len(got)} course tiles; copy {r.get("extra")}; planned {r.get("plan")}; home tile {r.get("homeTile")}; stats {r.get("stats")}')
     return r
 
 # P91: What's new (#new), fetched through the shell: every dated unit and every course start once, newest first,
@@ -1104,7 +1187,7 @@ def check_contrast(pg, fails):
     firsts = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => {
       const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
     homes = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"course\"]')].map(p => p.id)")
-    pids = SCOPE.only([x for x in ['home', 'new', 'changelog', 'backlog'] if x not in OMIT] + homes + firsts)   # P91: What's new   # S-DEC4: the run's pages
+    pids = SCOPE.only([x for x in ['home', 'new', 'changelog', 'backlog'] if x not in OMIT] + AREA_IDS + homes + firsts)   # S-NAV1 step B: the area pages   # P91: What's new   # S-DEC4: the run's pages
     worst, total = [99, ''], 0
     for pid in pids:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(40)
@@ -2492,14 +2575,20 @@ def check_site_log(br, fails):
 
 # S-NAV1 (21 Nov 2026), step A: history. Every move is a real history entry (shell.js go() pushes '#'+id), so a back swipe
 # walks the site instead of leaving it; popstate restores the panel and the scroll its entry kept; the first load pushes
-# nothing. At 390 px: a fresh load holds as many entries as a plain page (no push); home -> course -> unit by the links a reader taps (each at a scroll part
+# nothing. At 390 px: a fresh load holds as many entries as a plain page (no push); home -> area (step B: an edition of
+# two or more tracks) -> course -> unit by the links a reader taps (each at a scroll part
 # way down, read back before the tap), then history.back() once per level lands on each in turn with its scroll restored
 # (2 px), and history.forward() lands on the unit with its own. Then the artifact case: with pushState refused (it throws,
 # as a sandboxed frame may) go() falls back to replaceState, the behaviour before S-NAV1: the pages still change and no
 # entry is added; and inside a same-origin sandboxed iframe the walk and one back work as at the top level.
 HIST_PATH_JS = r'''() => {   // the links a reader taps, level by level: [selector of the link, the panel it opens]
   const kind = id => { const p = document.getElementById(id); return p && p.getAttribute('data-kind'); };
-  const course = [...document.querySelectorAll('#home a.course[data-target]')].map(a => a.dataset.target).find(t => kind(t) === 'course');
+  const first = (from, k) => [...document.querySelectorAll('#' + from + ' a.course[data-target]')].map(a => a.dataset.target).find(t => kind(t) === k);
+  // S-NAV1 step B: with area pages, the home's first area tile, then that area page's first course tile
+  const area = first('home', 'area');
+  if (area) { const course = first(area, 'course');
+    return course ? [['#home a.course[data-target="' + area + '"]', area], ['#' + area + ' a.course[data-target="' + course + '"]', course]] : []; }
+  const course = first('home', 'course');
   return course ? [['#home a.course[data-target="' + course + '"]', course]] : []; }'''
 HIST_UNIT_JS = r'''(cid) => { const p = document.getElementById(cid); p.querySelectorAll('details').forEach(d => d.open = true);
   const a = [...p.querySelectorAll('a[data-target]')].find(a => { const t = document.getElementById(a.dataset.target); return t && t.getAttribute('data-kind') === 'report'; });
@@ -2515,18 +2604,18 @@ def _hist_walk(fr, label, fails, scroll=True):
     at = fr.evaluate(HIST_AT_JS)
     if at['id'] != 'home': fails.append(f'history {label}: the fresh load shows {at["id"]}, not the home'); return None
     links = fr.evaluate(HIST_PATH_JS)
-    # ---- EXTENSION POINT, S-NAV1 Step B (area pages): insert the area level here, between the home and the course: the
-    # home's link to the course's area page, then the area page's link to the course, so the walk reads
-    # home -> area -> course -> unit and the backs below cover three levels. HIST_PATH_JS then returns
-    # [[home's link to the area, area id], [area's link to the course, course id]]; nothing else here changes.
+    # S-NAV1 step B: with area pages HIST_PATH_JS returns two levels, [[the home's link to the area, area id], [the area's
+    # link to the course, course id]], so the walk reads home -> area -> course -> unit and the backs cover three levels;
+    # an edition of one track keeps the one level, home -> course -> unit
+    if MULTI and len(links) != 2: fails.append(f'history {label}: the walk found {links}, expected the home\'s area tile, then the area\'s course tile'); return None
     if not links: fails.append(f'history {label}: no course tile on the home'); return None
     levels = []
     def leave(sel, want):
         at = fr.evaluate(HIST_AT_JS)
-        if scroll:
-            fr.evaluate(f'window.scrollTo(0, {int(at["max"] * .4)})'); fr.wait_for_timeout(350)   # past the save's 200 ms debounce
+        if scroll:   # 40% of the page's height; a page with less than 250 px to scroll (S-NAV1 step B: an area page of one course, marketing-ai's) to its foot
+            fr.evaluate(f'window.scrollTo(0, {int(at["max"] * .4) if at["max"] * .4 >= 100 else at["max"]})'); fr.wait_for_timeout(350)   # past the save's 200 ms debounce
             at = fr.evaluate(HIST_AT_JS)
-            if at['y'] < 100: fails.append(f'history {label}: {at["id"]} scrolls only {at["max"]} px, too short to test its restore')
+            if at['y'] < 30: fails.append(f'history {label}: {at["id"]} scrolls only {at["max"]} px, too short to test its restore')
         levels.append((at['id'], at['y']))
         fr.evaluate('(s) => document.querySelector(s).click()', sel)   # a tap, without Playwright scrolling the link into view
         _hist_ready(fr)
@@ -2676,6 +2765,16 @@ def main():
             for k, v in expect.items():
                 ok = v(s[k]) if callable(v) else s[k] == v
                 if not ok: fails.append(f'nav {label}: {k} = {s[k]!r}, expected {v if not callable(v) else "check"}')
+        def tap_course(target):
+            """S-NAV1 step B: open a course page from the home as a reader does: with area pages, the home's tile for the
+            course's area (the area page checked as a step), then the course's tile there; else the course's tile."""
+            if MULTI:
+                aid = 'track-' + AREA_OF[target]
+                pg.click(f'#home a.course[href="#{aid}"]'); pg.wait_for_timeout(80)
+                step(f'{aid} area', dict(id=aid, nav='root', u='AREA', t=next(x['name'] for x in THEMES if 'track-' + x['id'] == aid), arrows=False))
+                pg.click(f'#{aid} a.course[href="#{target}"]'); pg.wait_for_timeout(80)
+            else:
+                pg.click(f'#home a.course[href="#{target}"]'); pg.wait_for_timeout(80)
         step('home', dict(id='home', nav='root', u='HOME', arrows=False))
         if 'changelog' not in OMIT:
             pg.click('#home a.hbtn[href="#changelog"]'); pg.wait_for_timeout(80)
@@ -2686,7 +2785,7 @@ def main():
         rome_reps = []   # SECOND's reports (S-DEC4: the second history course; Rome in Academy)
         if SECOND:
             S_ = SECOND['home_id']
-            pg.click(f'#home a.course[href="#{S_}"]'); pg.wait_for_timeout(80)
+            tap_course(S_)
             step(f'{S_} home', dict(id=S_, nav=S_, u=f'COURSE {SECOND["num"]}', t=SECOND['short'], arrows=True, prev=False, next=True))
             rome_reps = pg.eval_on_selector_all(f'#{S_} a.hrow', 'as => as.map(a => a.dataset.target)')
         else: print('nav: no second history course in this edition; its course home, report, next, last report, prev and resume steps are left out')
@@ -2717,7 +2816,7 @@ def main():
         step('home again', dict(id='home', nav='root', arrows=False, cont=''))   # P91: no Continue on the home
         if LEAD:   # S-DEC4: the first history course with reports 2.3 and 2.4 (Greece in Academy)
             L_, r23, r24 = LEAD['home_id'], rid(LEAD, '2.3'), rid(LEAD, '2.4')
-            pg.click(f'#home a.course[href="#{L_}"]'); pg.wait_for_timeout(80)
+            tap_course(L_)
             step(f'{L_} home', dict(id=L_, nav=L_, u=f'COURSE {LEAD["num"]}', t=LEAD['short'], prev=False, cont='(hidden)'))
             pg.evaluate(f"document.querySelectorAll('#{L_} details[data-mods]').forEach(d => d.open = true)")
             pg.click(f'#{L_} a.hrow[data-target="{r23}"]'); pg.wait_for_timeout(80)
@@ -2732,7 +2831,7 @@ def main():
             step('home last', dict(id='home', cont=''))
         else: print('nav: no history course with reports ' + ', '.join(SPLIT_MODS) + ' in this edition; its course home, report, next and last steps are left out (the markdown course steps below run)')
         if rome_reps:
-            pg.click(f'#home a.course[href="#{SECOND["home_id"]}"]'); pg.wait_for_timeout(80)
+            tap_course(SECOND['home_id'])
             step(f'{SECOND["home_id"]} home resumes {SECOND["home_id"]}', dict(id=SECOND['home_id'], cont=lambda c: c.startswith('Continue ') and LEAD['short'] not in c and c != '(hidden)'))
         pg.click('#menuB'); pg.wait_for_timeout(250)
         dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
@@ -2745,7 +2844,7 @@ def main():
         md_read = None   # the first reading page visited, the tablet pass's report in an edition without a history course
         for bid, short, key, briefs_id, _ in MDSUBS:   # S-DEC4: the edition's first markdown course with a unit filed (Brand + AI in Academy)
             pg.click('#homeB'); pg.wait_for_timeout(80)
-            pg.click(f'#home a.course[href="#{bid}"]'); pg.wait_for_timeout(80)
+            tap_course(bid)
             step(f'{bid} home', dict(id=bid, nav=bid, u=f'COURSE {key}', t=short, arrows=True, prev=False))
             pg.click('#menuB'); pg.wait_for_timeout(250)
             gr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dunit')].map(u => u.querySelector('.ut').textContent + (u.classList.contains('closed') ? ':closed' : ':open'))")
@@ -2770,7 +2869,7 @@ def main():
                 fails.append(f'{bid}-built: {nrow} unit rows for {len(ba)} written units, or not fetched through the shell')
             pg.click('#homeB'); pg.wait_for_timeout(80)
             step(f'home after {bid}', dict(id='home', cont=''))
-            pg.click(f'#home a.course[href="#{bid}"]'); pg.wait_for_timeout(80)
+            tap_course(bid)
             step(f'{bid} home resumes', dict(id=bid, cont=lambda c: c.startswith('Continue ') and c != '(hidden)'))
             pg.click('#menuB'); pg.wait_for_timeout(250)
             dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
@@ -2815,7 +2914,12 @@ def main():
             if nt != 1: fails.append(f'backlog page: {nt} order tables, expected one (S-PAGES; check_site_log checks the rest)')
         # the home lists every live course under its track, in courses.py order (history courses, then markdown courses)
         pg.click('#homeB'); pg.wait_for_timeout(80)
-        tr = pg.evaluate("[...document.querySelectorAll('#home .track')].map(t => t.querySelector('h2').textContent + ':' + [...t.querySelectorAll('.cgrid a.course')].map(a => a.getAttribute('href')).join(','))")
+        if MULTI:   # S-NAV1 step B: the home holds one tile per track, in catalog order; each area page its live courses
+            ht = pg.evaluate("[...document.querySelectorAll('#home > .cgrid.areas > a.course')].map(a => a.getAttribute('href'))")
+            if ht != ['#' + a for a in AREA_IDS]: fails.append(f'home area tiles: {ht}, catalog.toml gives {["#" + a for a in AREA_IDS]}')
+            tr = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"area\"]')].map(p => p.querySelector('.hero h1').textContent + ':' + [...p.querySelectorAll(':scope > .track > .cgrid > a.course')].map(a => a.getAttribute('href')).join(','))")
+        else:
+            tr = pg.evaluate("[...document.querySelectorAll('#home .track')].map(t => t.querySelector('h2').textContent + ':' + [...t.querySelectorAll('.cgrid a.course')].map(a => a.getAttribute('href')).join(','))")
         if tr != HOME_TRACKS: fails.append(f'home tracks: {tr}, courses.py gives {HOME_TRACKS}')
         h1 = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"course\"] h1, #home h1')].map(h => h.textContent)")
         if any(' in the order' in t or t.startswith('The courses') for t in h1): fails.append(f'course titles not self-evident: {h1}')
@@ -2841,7 +2945,7 @@ def main():
           return {off: r.right <= 0, menu: getComputedStyle(document.getElementById('menuB')).display !== 'none',
                   main: document.querySelector('main').getBoundingClientRect().width,
                   cols: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector(''' + json.dumps(TAB_GRID) + ''')).gridTemplateColumns),
-                  home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns)}; }''')
+                  home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector(''' + json.dumps(HOME_GRID) + ''')).gridTemplateColumns)}; }''')
         if not t['off']: fails.append('tablet: drawer is on screen before the menu button is pressed')
         if not t['menu']: fails.append('tablet: menu button hidden')
         if not 740 <= t['main'] <= 768: fails.append(f'tablet: main column {t["main"]}px, expected about 760')
@@ -2890,8 +2994,8 @@ def main():
                       ch68: (() => { const p = document.querySelector('#''' + DESK + ''' .report p'), t = document.createElement('span');
                         t.style.whiteSpace = 'nowrap'; t.textContent = '0'.repeat(68); p.appendChild(t); const w = t.getBoundingClientRect().width; t.remove(); return w; })(),
                       fonts: ''' + json.dumps(THEME_FONTS) + '''.filter(n => ![...document.fonts].some(f => f.family.replace(/"/g, '') === n && f.status === 'loaded')),
-                      home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector('#home .track .cgrid')).gridTemplateColumns),
-                      ml: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(document.querySelector('#home .ml-grid') ? getComputedStyle(document.querySelector('#home .ml-grid')).gridTemplateColumns : '')}; }''')
+                      home: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(document.querySelector(''' + json.dumps(HOME_GRID) + ''')).gridTemplateColumns),
+                      ml: (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(document.querySelector(''' + json.dumps('.ml-grid' if MULTI else '#home .ml-grid') + ''') ? getComputedStyle(document.querySelector(''' + json.dumps('.ml-grid' if MULTI else '#home .ml-grid') + ''')).gridTemplateColumns : '')}; }''')
             if s['left'] != 0 or s['w'] != SIDE or s['h'] < s['vh'] - 1: fails.append(f'desktop: sidebar not at the left edge, {SIDE} px, full height: {s}')
             if s['hidden'] != 'false': fails.append(f'desktop: sidebar aria-hidden={s["hidden"]}')
             if s['menu'] != 'none' or s['close'] != 'none': fails.append(f'desktop: menu/close buttons shown ({s["menu"]}, {s["close"]})')
@@ -2931,23 +3035,26 @@ def main():
             check_home(pg, name + ' light', fails, EXPECT)
             if name == 'desktop':
                 hs, ms = [x for x in SAMPLE if x in HIST_HOMES], [x for x in SAMPLE if x not in HIST_HOMES]   # S-DEC4: the sampled courses' tiles: the first history one, the first and last markdown ones
-                for sel in [f'a.course.live[data-target="{x}"]' for x in dict.fromkeys(hs[:1] + ms[:1] + ms[-1:])] + ['a.hnew']:   # P92: a tile of each family and the quiet link
-                    pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(60)
-                    t = pg.evaluate(f"(() => {{ const a = document.querySelector('#home {sel}'); return a && a.getAttribute('data-target'); }})()")
+                # S-NAV1 step B: with area pages a course's tile is tapped on its area page, and the home's first area tile too
+                taps = [('track-' + AREA_OF[x] if MULTI else 'home', f'a.course.live[data-target="{x}"]') for x in dict.fromkeys(hs[:1] + ms[:1] + ms[-1:])] + [('home', 'a.hnew')]
+                if MULTI: taps.insert(0, ('home', f'a.course.live[data-target="{AREA_IDS[0]}"]'))
+                for at, sel in taps:   # P92: a tile of each family and the quiet link
+                    pg.evaluate(f"location.hash = '{at}'"); ready(pg); pg.wait_for_timeout(60)
+                    t = pg.evaluate(f"(() => {{ const a = document.querySelector('#{at} {sel}'); return a && a.getAttribute('data-target'); }})()")
                     if not t:
                         continue
-                    pg.click(f'#home {sel}'); pg.wait_for_timeout(300); ready(pg); pg.wait_for_timeout(300)
+                    pg.click(f'#{at} {sel}'); pg.wait_for_timeout(300); ready(pg); pg.wait_for_timeout(300)
                     land = pg.evaluate(LAND_JS, t)
                     if not land[1] or (land[2] is not None and not (-5 if land[0] == t else 56) <= land[2] <= land[4]) or land[3] is False:   # an id inside a page stops clear of the 56 px bar
-                        fails.append(f'home desktop: tapping {sel} (#{t}) lands on {land}')
+                        fails.append(f'{at} desktop: tapping {sel} (#{t}) lands on {land}')
                     else:
-                        print(f'home desktop: {sel} opens #{t} on {land[0]}, at {land[2]} px' + (', its card open' if land[3] else ''))
+                        print(f'{at} desktop: {sel} opens #{t} on {land[0]}, at {land[2]} px' + (', its card open' if land[3] else ''))
             ctx.close()
 
         # P93: the course homes, What's new and the pages without a topography, at every width, dark and light, under
         # reduced motion: each page's topography and tiles against the sources (check_topo, check_tiles), two history
         # unit tiles opened (their rows, their line whole); the home's tiles too
-        TOPO_ALL = [x for x in SAMPLE if x in HIST_HOMES or x in EXPECT['courses']] + ['new']   # S-DEC4: course.toml `verify_sample` (every course where the edition holds none)
+        TOPO_ALL = [x for x in SAMPLE if x in HIST_HOMES or x in EXPECT['courses']] + AREA_IDS + ['new']   # S-DEC4: course.toml `verify_sample` (every course where the edition holds none); S-NAV1 step B: every area page
         NONE_ALL = [x for x in ('changelog', 'backlog', 'viz-examples') if (x != 'viz-examples' or 'figures' not in OMIT) and (x not in ('changelog', 'backlog') or x not in OMIT)]
         TOPO_PAGES, NONE_PAGES = SCOPE.only(TOPO_ALL), SCOPE.only(NONE_ALL)   # S-DEC4: the run's pages (the shots and the LCP pages below take every sampled one)
         for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:
@@ -2961,11 +3068,15 @@ def main():
                 pg.evaluate(f"document.querySelectorAll({PLANNED_SEL!r}).forEach(d => d.open = false)")
                 for pid in TOPO_PAGES + NONE_PAGES + SCOPE.only(reads):
                     pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(120)
+                    if pid in AREA_IDS:   # S-NAV1 step B: an area page whole (check_area), its planned courses opened for the tile checks
+                        check_area(pg, pid, f'{name} {theme}', fails, EXPECT)
+                        pg.evaluate(f"document.querySelectorAll({PLANNED_SEL!r}).forEach(d => d.open = true)"); pg.wait_for_timeout(60)
                     t = check_topo(pg, pid, f'{name} {theme}', fails, EXPECT)
                     if pid in TOPO_PAGES and pid != 'new':
                         pg.evaluate(f"document.querySelectorAll('#{pid} details[data-mods]').forEach((d, k) => d.open = k < 2)"); pg.wait_for_timeout(60)
                         tl = check_tiles(pg, pid, f'{name} {theme}', fails, EXPECT)
                         pg.evaluate(f"document.querySelectorAll('#{pid} details[data-mods]').forEach(d => d.open = false)")
+                        if pid in AREA_IDS: pg.evaluate(f"document.querySelectorAll({PLANNED_SEL!r}).forEach(d => d.open = false)")
                         if theme == 'dark': print(f"{pid} {name}: layer {t['hero'] and t['hero']['bytes']} B, layout {t['hero'] and t['hero']['shown']}, frame {t['hero'] and t['hero'].get('frame')}; {len(tl['tiles'])} tiles, {len(t['patches'])} patches, grids {tl['grids'][:2]}")
                     elif pid == 'new' and theme == 'dark':
                         print(f"new {name}: layer {t['hero'] and t['hero']['bytes']} B, layout {t['hero'] and t['hero']['shown']}, frame {t['hero'] and t['hero'].get('frame')}, days {[(l, k) for l, _, k, _, _ in t['hero']['layouts'][0][1]] if t['hero'] else None}")

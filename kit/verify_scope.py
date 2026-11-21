@@ -16,7 +16,9 @@ A page's sources (page_hash):
     courses/<id>/ (course.toml, briefs.md, pages/, notes/, inputs/, bibliography/ and the units, whose words its tiles
     and tables count). A unit page with no unit file of its own (read-audience-growth, from brand-ai's notes/) counts
     as a course page.
-A page of no course (the home, What's new, Changelog, Backlog, Figure kinds) has only the first.
+A page of no course (the home, What's new, Changelog, Backlog, Figure kinds, an area page) has only the first.
+S-NAV1 step B (21 Nov 2026): an area page (data-kind="area", track-<id>, in an edition of two or more tracks) runs in
+every run, as the home does: it shows its track's course tiles, which every filing in the track changes.
 
 What every page depends on (GLOBAL) forces the full run when it changed: kit/*.py, kit/shell.js, kit/shell.css,
 design/theme.css, kit/fonts/, catalog.toml, the edition's editions/<name>.toml and its brand's brands/<name>.toml.
@@ -103,11 +105,13 @@ class Scope:
         course_all = {c['id']: _sha(*[x for p in sorted((ROOT / 'courses' / c['id']).rglob('*')) if p.is_file()
                                       for x in (str(p.relative_to(ROOT)), p.read_bytes())]) for c in courses}
         self.kind, self.ctx = {}, {}   # page id: unit, course or site; page id: its drawer context (data-ctx)
+        self.areas = []   # S-NAV1 step B: the area pages, checked in every run as the home is
         for pid, (attrs, frag) in panels(shell).items():
             parts = [frag]
             src = re.search(r' data-src="([^"]+)"', attrs)
             if src and (site / src.group(1)).exists(): parts.append((site / src.group(1)).read_bytes())
             kind = re.search(r' data-kind="([^"]+)"', attrs); kind = kind.group(1) if kind else ''
+            if kind == 'area': self.areas.append(pid)
             ctx = re.search(r' data-ctx="([^"]+)"', attrs); c = ctx_course.get(ctx.group(1)) if ctx else None
             self.ctx[pid] = ctx.group(1) if ctx else 'root'
             self.kind[pid] = 'unit' if kind == 'report' else ('course' if c else 'site')
@@ -144,17 +148,17 @@ class Scope:
             else:
                 old = rec.get('pages', {})
                 self.changed = [p for p in self.pages_now if old.get(p) != self.pages_now[p]]
-                self.pages = set(self.changed) | {p for p in ALWAYS if p in self.pages_now}
+                self.pages = set(self.changed) | {p for p in ALWAYS if p in self.pages_now} | set(self.areas)
                 n_u = [p for p in self.changed if self.kind[p] == 'unit']
                 n_c = [p for p in self.changed if self.kind[p] == 'course']
-                n_s = [p for p in self.changed if self.kind[p] == 'site' and p not in ALWAYS]
+                n_s = [p for p in self.changed if self.kind[p] == 'site' and p not in ALWAYS and p not in self.areas]
                 what = []
                 if n_u: what.append(f'{len(n_u)} unit' + ('s' if len(n_u) != 1 else '') + f' ({", ".join(n_u)})')
                 if n_c: what.append(f'{len(n_c)} course page' + ('s' if len(n_c) != 1 else '') + f' ({", ".join(n_c)})')
                 if n_s: what.append(f'{len(n_s)} site page' + ('s' if len(n_s) != 1 else '') + f' ({", ".join(n_s)})')
                 self.mode = ('scoped: ' + (', '.join(what) if what else 'no page changed') + ' + home'
                              + f'; {len(self.pages)} of {len(self.pages_now)} pages checked'
-                             + f' ({", ".join(p for p in ALWAYS if p in self.pages_now)} always), and the edition-wide checks')
+                             + f' ({", ".join([p for p in ALWAYS if p in self.pages_now] + self.areas)} always), and the edition-wide checks')
 
     def _load(self):
         try:
