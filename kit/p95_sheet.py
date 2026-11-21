@@ -7,12 +7,15 @@ its courses. Shots are written under 8,000 px tall.
 """
 import html, json, pathlib, sys
 
+import p95_library
 import viz
 
 R = pathlib.Path(__file__).resolve().parent
 LIB = R.parent / 'design' / 'outlines'
-TONE = {'greece': 1, 'rome': 5, 'brand-a': 3, 'brand-b': 5, 'ux-ia': 4, 'personal-brand-pb': 3, 'building-with-ai-bw': 5}
-NAME = {'greece': 'Greece', 'rome': 'Rome', 'brand-a': 'Personal brand', 'brand-b': 'Building with AI', 'ux-ia': 'Information architecture', 'personal-brand-pb': 'Personal brand (public)', 'building-with-ai-bw': 'Building with AI (public)'}
+# P-DEC9 (21 Nov 2026): derived from the courses with `reliefs = true` (p95_library._reliefs), never typed: each page's
+# tone is its course's or sub-course's `color` as build.py's _TONE maps it, its name its `short` or `tracks` name
+TONE = p95_library.TONE
+NAME = p95_library.NAMES
 # the sheet's own layout: only a grid of cards on the theme's tokens; the drawing and its caption are the pages' rules
 CSS = '''body{margin:0;padding:16px;background:var(--bg);color:var(--fg);font-family:var(--sans)}
 .sheet{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;--relief-h:230px}

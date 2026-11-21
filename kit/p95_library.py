@@ -10,22 +10,51 @@ under "rejected" with the reason.
 
     python3 p95_library.py <folder holding the four clones>    writes the SVGs and outlines.json (then run relief.py)
 """
-import json, pathlib, re, subprocess, sys
+import ast, json, pathlib, re, subprocess, sys, types
+
+import courses, pack
 
 R = pathlib.Path(__file__).resolve().parent
 ROOT = R.parent
 LIB = ROOT / 'design' / 'outlines'
-V = ROOT / 'courses'
-TEXTS = {   # where each course's texts are (the files Academy reads its reading pages from)
-    'greece': sorted((V / 'greece').glob('*.md')),
-    'rome': sorted((V / 'rome').glob('*.md')),
-    'brand-a': sorted((V / 'brand-ai').glob('A*.md')) + sorted((V / 'brand-ai').glob('DD-A*.md'))
-               + [ROOT / 'courses/brand-ai/notes/audience-growth-across-platforms.md'],
-    'brand-b': sorted((V / 'brand-ai').glob('B*.md')) + sorted((V / 'brand-ai').glob('DD-B*.md')),
-    'ux-ia': [f for f in sorted((V / 'ux').glob('*.md')) if f.name != 'briefs.md'],   # S-DEC2: the pack's briefs.md is no text
-    'personal-brand-pb': [f for f in sorted((V / 'personal-brand').glob('*.md')) if f.name != 'briefs.md'],   # G-R (16 Nov 2026)
-    'building-with-ai-bw': [f for f in sorted((V / 'building-with-ai').glob('*.md')) if f.name != 'briefs.md'],
-}
+
+
+def _reliefs():
+    """P-DEC9 (21 Nov 2026): the relief library's pages, derived, never typed: every course of the repo with `reliefs = true`
+    in its course.toml, in course order, one entry per page id as verify.py sub_pages() names it (a history course's
+    `home_id`; a markdown course's <prefix or id>-<key lower> per `tracks` key). Each entry: `course` (its dict),
+    `name` (a history course's `short`; a markdown sub-course's `tracks` short name, a trailing " · x" written " (x)"),
+    `tone` (the house accent of the course's or sub-course's `color`, by build.py's _TONE, 4 if none, as mdcourse.py),
+    `prefix` (a history course's report-id prefix, None for markdown), `files` (the texts its reading pages are read
+    from: a history course's vault `*.md`; a markdown sub-course's vault files `<code>-*.md` of its pack units, sorted,
+    then the notes/ file of each of its [[pack.readings]]) and `readings` (that notes file -> its reading-page id)."""
+    tone_of = ast.literal_eval(re.search(r'^_TONE = (\{.*\})$', (R / 'build.py').read_text(), re.M).group(1))
+    out = {}
+    for c in courses.COURSES:
+        if not c.get('reliefs'): continue
+        vault = ROOT / c['vault']
+        if c['family'] == 'history':
+            out[c['home_id']] = types.SimpleNamespace(course=c, name=c['short'], tone=tone_of.get(c.get('color'), 4), prefix=c['prefix'], readings={},
+                                                      files=[f for f in sorted(vault.glob('*.md')) if f.name != 'briefs.md'])
+            continue
+        p = pack.load(c)
+        raw = pack._toml(c)['pack'].get('readings', [])
+        for k, (_, short) in c.get('tracks', {}).items():
+            sc = next((s for s in p.COURSES if s['key'] == k), None)
+            if sc is None: raise SystemExit(f"{c['data']}: tracks.{k} has no [[pack.courses]] with key {k!r} (p95_library: the relief pages)")
+            codes = [u[0] for u in sc['units']]
+            files = sorted(f for f in vault.glob('*.md') if any(f.name.startswith(code + '-') for code in codes))
+            notes = {pack.data_dir(c) / r['md']: r['id'] for r in raw if r.get('course') == k and r.get('md')}
+            out[f"{c.get('prefix', c['id'])}-{k.lower()}"] = types.SimpleNamespace(
+                course=c, name=re.sub(r' · (.+)$', r' (\1)', short), tone=tone_of.get(sc.get('color'), 4), prefix=None,
+                files=files + list(notes), readings=notes)
+    return out
+
+
+RELIEFS = _reliefs()
+TEXTS = {pid: r.files for pid, r in RELIEFS.items()}   # where each course's texts are (the files Academy reads its reading pages from)
+NAMES = {pid: r.name for pid, r in RELIEFS.items()}    # p96_uses.py's headings, p95_sheet.py's captions
+TONE = {pid: r.tone for pid, r in RELIEFS.items()}     # p95_sheet.py: each card in the tone of the first course it serves
 SETS = {
     'game-icons': dict(repo='game-icons/icons', clone='game-icons_icons', licence='CC BY 3.0', site='game-icons.net', licence_file='license.txt',
                        bg=re.compile(r'<path d="M0 0h512v512H0z"/>')),

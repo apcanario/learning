@@ -22,7 +22,7 @@ import p95_library as L
 R = pathlib.Path(__file__).resolve().parent
 ROOT = R.parent
 LIB = ROOT / 'design' / 'outlines'
-NAMES = {'greece': 'Greece', 'rome': 'Rome', 'brand-a': 'Personal brand', 'brand-b': 'Building with AI', 'ux-ia': 'Information architecture', 'personal-brand-pb': 'Personal brand (public)', 'building-with-ai-bw': 'Building with AI (public)'}
+NAMES = L.NAMES   # P-DEC9 (21 Nov 2026): derived from the courses with `reliefs = true` (p95_library._reliefs), never typed
 
 # panel id, outline, the words of its deciding sentence (as they stand in the page's prose)
 MAP = [
@@ -166,16 +166,16 @@ NEIGHBOURS_OK = {
 def pages():
     """Every reading page: panel id -> (course, its file, its code), from the vault as Academy reads it."""
     out = {}
-    for c, files in L.TEXTS.items():
-        for f in files:
-            if f.parent.name == 'greece' or f.parent.name == 'rome':
+    for c, r in L.RELIEFS.items():
+        for f in r.files:
+            if r.prefix:                            # a history report: the course's prefix and its module code (m23, rm14)
                 code = f.name.split('-')[0]
-                out[('m' if c == 'greece' else 'rm') + code.replace('.', '')] = (c, f, code)
-            elif f.parent.parent.name == 'courses':
+                out[r.prefix + code.replace('.', '')] = (c, f, code)
+            elif f in r.readings:                   # a reading that is not a unit's ([[pack.readings]], notes/): read-audience-growth
+                out[r.readings[f]] = (c, f, 'research')
+            else:
                 code = re.match(r'(DD-[A-Z]+\d+|[A-Z]+\d+)', f.name).group(1)
                 out['read-' + code.lower()] = (c, f, code)
-            else:                                   # courses/brand-ai/notes/audience-growth-across-platforms.md
-                out['read-audience-growth'] = (c, f, 'research')
     return out
 
 
@@ -207,7 +207,7 @@ def main():
     # neighbours: two reports of one unit, next to each other, with one outline
     def unit_key(pid):
         c, f, code = P[pid]
-        if c in ('greece', 'rome'):
+        if L.RELIEFS[c].prefix:   # a history course's reports (P-DEC9: by its prefix, not its name)
             u, m = code.split('.')
             return (c, int(u)), int(m)
         return None, None

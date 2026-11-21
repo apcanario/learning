@@ -17,7 +17,10 @@
 id = "⟨slug⟩"
 family = "markdown"
 # private = true          # S-DEC4, kit/verify.py: the owner's own course, not public (an edition holding it skips the private-terms check of its files)
-# reliefs = true          # S-DEC4, kit/verify.py: once its pages draw object reliefs from design/outlines
+# reliefs = true          # S-DEC4, kit/verify.py: once its pages draw object reliefs from design/outlines; P-DEC9: the outline
+#                         # tools (kit/p95_library.py, p96_uses.py, p95_sheet.py) then read the course from here, no kit edit: one
+#                         # page per `tracks` key, named by its short name (" · x" shown " (x)"), toned by its [[pack.courses]]
+#                         # `color`, its texts the vault's units of that course plus its [[pack.readings]] notes files
 # verify_sample = true    # S-DEC4, kit/verify.py: its homes among those verify.py's per-page passes visit
 short = "⟨Short name⟩"
 label = "⟨SHORT NAME⟩"
