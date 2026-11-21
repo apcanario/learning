@@ -1,0 +1,43 @@
+## land W-DD-SP3 · 2026-11-21T13:23:40+00:00
+
+- start: 33a3f8d80 (.git/land/started/W-DD-SP3.json)
+- upstream commits absorbed: 5
+  - 383ce0b W-SCE1: record publish identifiers; landing report
+  - 7fa1c5e land W-SCE1: baseline re-recorded for expected differences
+  - ab7ab9d W-SCE1: SCE1 filed; hero budget; close row; next prompt W-SCE2
+  - 43b6135 W-SCE1 checkpoint: SCE1 filed (fresh check, applied, records inserted)
+  - 5a1946f W-SCE1 checkpoint: P-DEC17 (MAP), P-DEC18, P-DEC19, P-DEC23, P-DEC25 kit tidies; baseline clean except re-recorded README and BIBLIO-BRIEF hashes
+- lines preserved: 543 upstream-added lines in 23 files, all present; 1 changed by us, review:
+  - docs/BACKLOG.md: - **P-DEC24.** *Carried (DEC-A checker S1, P-DEC13 probe).* A mixed edition still fails the private-terms check on a private course's own text that lives in the
+- accepted drops (--expected): 22
+  - docs/BACKLOG.md: - **P-DEC17.** *Proposed (DEC-B, P-DEC9 agent; first half resolved by W-SCE1, 21 Nov 2026: the `read-dd-bw2` `MAP` entry fixed, `p96_uses.py` runs, `uses-why.md
+  - docs/BACKLOG.md: - **P-HERO1.** *Proposed (W-SCE1, 21 Nov 2026).* The home hero's contour SVG grows with every unit written (about 100 to 170 B each) and `HERO_INTERVAL` is rais
+  - docs/BACKLOG.md: **11. Close** per `docs/method.md` §8, steps 1 to 5: the row moved to `docs/CHANGELOG.md` with the date, the models and a one-line result; its entry in `docs/si
+  - docs/site-log.md: | 2 | SCE2 | Supply Chain | Write SCE2, Inbound and storage, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 3 | SCE3 | Supply Chain | Write SCE3, Outbound: release, pick, pack, ship, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 4 | SCE4 | Supply Chain | Write SCE4, Inventory and control, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 5 | SCE5 | Supply Chain | Write SCE5, The floor: people, devices and machines, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 6 | SCE6 | Supply Chain | Write SCE6, The warehouse system as a product, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 7 | SCE7 | Supply Chain | Write SCE7, Transportation in practice, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 8 | SCE8 | Supply Chain | Write SCE8, The transport system as a product, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 9 | SCE9 | Supply Chain | Write SCE9, Order management, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 10 | SCE10 | Supply Chain | Write SCE10, The seams, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 11 | SCE11 | Supply Chain | Write SCE11, The buying committee, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 12 | SCE12 | Supply Chain | Write SCE12, The sale, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 13 | SCE13 | Supply Chain | Write SCE13, Users by role, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 14 | SCE14 | Supply Chain | Write SCE14, Implementers and administrators, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 15 | SCE15 | Supply Chain | Write SCE15, Demo versus shift, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 16 | SCE16 | Supply Chain | Write SCE16, Money, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 17 | SCE17 | Supply Chain | Write SCE17, Reading the field, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 18 | SCE18 | Supply Chain | Write SCE18, Capstone: one strategy memo, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 19 | DD-SCE1 | Supply Chain | Write DD-SCE1, Deep dive: the logistics provider's business, for Supply Chain Execution for Product Teams. |
+  - docs/site-log.md: | 20 | DD-SCE2 | Supply Chain | Write DD-SCE2, Deep dive: peak and exceptions, for Supply Chain Execution for Product Teams. |
+- saved row prompts: no merge, not checked
+- files auto-merged: none
+- baseline: re-recorded (14 differences: 4 declared by a side's baseline.json, 10 by --expected), then clean
+- index_check: ok
+- verify: ALL CHECKS PASSED (first line: scoped: no page changed + home; 4 of 294 pages checked (home, new, changelog, backlog always), and the edition-wide checks)
+- lock: released; moved onto 1 of our own lock heartbeats before the push
+- push attempts: 1
+- pushed: 4df34e2321ce0631151107a2cce6d8690a31d97c
+
