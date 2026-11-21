@@ -250,6 +250,10 @@ gives = "nothing; it is the course's last unit"
 
 # newest first
 [[pack.changelog]]
+date = '2026-11-21 18:00'
+text = "v3. SCE2 Inbound and storage written (Opus 5.5) and filed (row W-SCE2): what a warehouse is for; pallet, case and each; the inbound sequence from purchase order and advance notice through appointment, unloading, checking, quality hold, labelling and cross-docking to put-away; storage media; reserve and forward locations and replenishment; what the warehouse system does and needs at each step; the inbound measures; date-coded and temperature-controlled goods; with the deliverable (inbound flow maps for Ostrel Foods and Corvane, the flow-map template whose columns SCE3, SCE7 and SCE9 reuse, glossary lines). Search off; 10 references cited. Fresh check: fix (1 error, 10 should-fix, 16 minor); 27 edits applied, 0 held, and one more fix (X1, §3.2: a pointer to SCE1 §4 that SCE1 does not carry) from the applier's check of the checker's could-not-verify list. No case facts added; 10 syllabus flags raised; F11 carried. 2 of 20 written."
+
+[[pack.changelog]]
 date = '2026-11-21 12:00'
 text = "v2. SCE1 written and filed (row W-SCE1): the execution map, the systems of record, the analyst categories with dates, how an analyst evaluation is made and paid for, the four-grade key and the fourteen common claims, with the deliverable (Corvane's map, a 30-term glossary, the grade key with worked examples, the template). Fresh check: fix (1 error, 2 should-fix, 24 minor); 28 edits applied, 2 held (f4, f20). Six case facts added to the register; 13 syllabus flags raised. 1 of 20 written."
 
