@@ -1,0 +1,109 @@
+land: lock taken (3b301d4fa)
+land: lock released
+land: STOPPED: rebase conflict the script may not resolve:
+  kit/verify.py: not a file the script may merge
+  --- upstream (kit/verify.py) ---
+  """Browser checks for academy/, the Academy site (run after build.py).
+  
+  python3 verify.py [--edition NAME] [--full] [--shots DIR] [--page ID ...]
+  S-DEC4 (20 Nov 2026), verify by scope (kit/verify_scope.py): the default run checks only the pages whose sources changed
+  since the edition's last passed run, recorded in kit/verify-hashes.json, plus the home, What's new, the Changelog and
+  the Backlog, and runs every edition-wide check (files and the shell, figure keys, opening notes, figure rules, the
+  split, navigation and the tablet and desktop layouts, the home at every width with and without motion, the root drawer,
+  private terms, index_check, the rot check). A page's sources are its built section and fetched file and the course files
+  the checks hold it against (verify_scope.py says which). A change to kit/*.py, kit/shell.js, kit/shell.css,
+  design/theme.css, kit/fonts/, catalog.toml or the edition's or its brand's file runs everything, as do a first run with
+  no record and --full. The first line says which mode and why; the record is written only after ALL CHECKS PASSED.
+  S-DEC4 (20 Nov 2026): the courses named below are Academy's; the checks name none and read the edition's own courses
+  (see LEAD, SECOND, MDNAV, SAMPLE and PRIVATE after SITE). A check needing a property the edition's courses lack (a
+  history course with Greece's structure, a second history course, a markdown course) prints what it leaves out and why;
+  an edition without a history course runs the split on a markdown course (check_split_md). What's new's 10 to 25 levels
+  hold for every edition whose largest day is 10 words or more (P-DEC15): the build draws an edition whose largest day is under 10 x NEW_INTERVAL words at its
+  own scale (build.py new_interval, a tenth of that day), checked against that scale, and the run says so. Private terms: the
+  default edition's public courses; another edition's own files, unless it holds a course marked `private`.
+  The site is a shell plus one file per report (docs/academy.md A2), since P20 one file per syllabus and per Brand + AI
+  briefs and bibliography page, and since P22 one file per history course home, so it is served over local HTTP from
+  academy/, as the artifact and Pages serve it, and every pass that measures a fetched panel first navigates to it
+  through the shell and waits for the fetch. The split itself is checked: every report, syllabus, briefs, bibliography
+  and history course home panel is an empty stub whose data-src file exists, no file in academy/ is left unreferenced,
+  a report is fetched once and kept, a section link into an unopened report, syllabus, briefs page or course home
+  (a unit card) loads it, a failed fetch shows the retry state (a report and a course home, whose continue button and
+  unit cards arrive with the fetch), the shell is under 1 MB and the size table in README.md matches the files.
+  Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800. On every panel of every
+  width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
+  under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
+  navigation context (drawer, title, arrows, continue) across home -> Rome -> report -> home -> Greece -> report ->
+  a Brand + AI course and its reading and build pages, every course's "How it was built" page (A4: fetched through the
+  shell, one row per written report or unit), the drawer groups (tracks open by default, a course's units as an
+  accordion) and the Backlog page; the same panel checks again in the light theme. The Backlog and Changelog pages
+  (S-PAGES, 15 Nov 2026; check_site_log): rendered from docs/site-log.md alone, every entry in its area and order, newest
+  first on the Changelog, in plain words with no private term, at 320, 390 and 1280 px, dark and light, without sideways scroll. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
+  Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
+  its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
+  and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35; the home whole, P90; P92: and the hero's motion sheets, five moments of the area line and the drift, at 390 and 1280 px) at the three widths
+  of home, What's new (P91; the home and What's new at 320, 360 and 430 px too), Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
+  and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png, the figure as its frame
+  --- ours (kit/verify.py) ---
+  """Browser checks for academy/, the Academy site (run after build.py).
+  
+  python3 verify.py [--edition NAME] [--full] [--shots DIR] [--page ID ...]
+  S-DEC4 (20 Nov 2026), verify by scope (kit/verify_scope.py): the default run checks only the pages whose sources changed
+  since the edition's last passed run, recorded in kit/verify-hashes.json, plus the home, What's new, the Changelog and
+  the Backlog, and runs every edition-wide check (files and the shell, figure keys, opening notes, figure rules, the
+  split, navigation and the tablet and desktop layouts, the home at every width with and without motion, the root drawer,
+  private terms, index_check, the rot check). A page's sources are its built section and fetched file and the course files
+  the checks hold it against (verify_scope.py says which). A change to kit/*.py, kit/shell.js, kit/shell.css,
+  design/theme.css, kit/fonts/, catalog.toml or the edition's or its brand's file runs everything, as do a first run with
+  no record and --full. The first line says which mode and why; the record is written only after ALL CHECKS PASSED.
+  S-DEC4 (20 Nov 2026): the courses named below are Academy's; the checks name none and read the edition's own courses
+  (see LEAD, SECOND, MDNAV, SAMPLE and PRIVATE after SITE). A check needing a property the edition's courses lack (a
+  history course with Greece's structure, a second history course, a markdown course) prints what it leaves out and why;
+  an edition without a history course runs the split on a markdown course (check_split_md). What's new's 10 to 25 levels
+  hold for an edition holding every course and for any edition whose largest day reaches 10 levels at the build's scale
+  (10 x NEW_INTERVAL words); a smaller one is held to that scale only, 0 levels included, and the run says so. Private terms: the
+  default edition's public courses; another edition's own files, but for the folders of its courses marked `private`
+  (P-DEC13; an edition of private courses only is not checked; a `dated_lists` course's pages as in academy, P-DEC10).
+  The site is a shell plus one file per report (docs/academy.md A2), since P20 one file per syllabus and per Brand + AI
+  briefs and bibliography page, and since P22 one file per history course home, so it is served over local HTTP from
+  academy/, as the artifact and Pages serve it, and every pass that measures a fetched panel first navigates to it
+  through the shell and waits for the fetch. The split itself is checked: every report, syllabus, briefs, bibliography
+  and history course home panel is an empty stub whose data-src file exists, no file in academy/ is left unreferenced,
+  a report is fetched once and kept, a section link into an unopened report, syllabus, briefs page or course home
+  (a unit card) loads it, a failed fetch shows the retry state (a report and a course home, whose continue button and
+  unit cards arrive with the fetch), the shell is under 1 MB and the size table in README.md matches the files.
+  Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800. On every panel of every
+  width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
+  under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
+  navigation context (drawer, title, arrows, continue) across home -> Rome -> report -> home -> Greece -> report ->
+  a Brand + AI course and its reading and build pages, every course's "How it was built" page (A4: fetched through the
+  shell, one row per written report or unit), the drawer groups (tracks open by default, a course's units as an
+  accordion) and the Backlog page; the same panel checks again in the light theme. The Backlog and Changelog pages
+  (S-PAGES, 15 Nov 2026; check_site_log): rendered from docs/site-log.md alone, every entry in its area and order, newest
+  first on the Changelog, in plain words with no private term, at 320, 390 and 1280 px, dark and light, without sideways scroll. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
+  Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
+  its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
+  and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35; the home whole, P90; P92: and the hero's motion sheets, five moments of the area line and the drift, at 390 and 1280 px) at the three widths
+  of home, What's new (P91; the home and What's new at 320, 360 and 430 px too), Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
+  --- conflict hunks ---
+  diff --cc kit/verify.py
+  index ec872dc,e43f94a..0000000
+  --- a/kit/verify.py
+  +++ b/kit/verify.py
+  @@@ -13,9 -13,10 +13,16 @@@ S-DEC4 (20 Nov 2026): the courses name
+    (see LEAD, SECOND, MDNAV, SAMPLE and PRIVATE after SITE). A check needing a property the edition's courses lack (a
+    history course with Greece's structure, a second history course, a markdown course) prints what it leaves out and why;
+    an edition without a history course runs the split on a markdown course (check_split_md). What's new's 10 to 25 levels
+  ++<<<<<<< HEAD
+   +hold for every edition whose largest day is 10 words or more (P-DEC15): the build draws an edition whose largest day is under 10 x NEW_INTERVAL words at its
+   +own scale (build.py new_interval, a tenth of that day), checked against that scale, and the run says so. Private terms: the
+   +default edition's public courses; another edition's own files, unless it holds a course marked `private`.
+  ++=======
+  + hold for an edition holding every course and for any edition whose largest day reaches 10 levels at the build's scale
+  + (10 x NEW_INTERVAL words); a smaller one is held to that scale only, 0 levels included, and the run says so. Private terms: the
+  + default edition's public courses; another edition's own files, but for the folders of its courses marked `private`
+  + (P-DEC13; an edition of private courses only is not checked; a `dated_lists` course's pages as in academy, P-DEC10).
+  ++>>>>>>> d9fccb0 (P-DEC10, P-DEC13: edition private-terms check registers DATED and scans mixed editions outside private courses)
+    The site is a shell plus one file per report (docs/academy.md A2), since P20 one file per syllabus and per Brand + AI
+    briefs and bibliography page, and since P22 one file per history course home, so it is served over local HTTP from
+    academy/, as the artifact and Pages serve it, and every pass that measures a fetched panel first navigates to it
+land: to do: make the two changes agree by hand in your clone (keep upstream's lines), commit, then land again

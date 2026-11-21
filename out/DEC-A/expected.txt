@@ -1,0 +1,2 @@
+# DEC-A: kit/README.md prose (P-DEC12 History planned, P-DEC14 drawers); manifest entry re-recorded
+academy: changed README.md
