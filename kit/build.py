@@ -44,6 +44,7 @@ import vault
 import howbuilt
 import viz
 import viz_examples
+viz.set_metrics(B)   # P-DEC5: figure text is sized with the brand's --sans and --mono faces (DM Sans, Space Mono by default)
 mdcourse.SITE_NAME = howbuilt.SITE_NAME = viz_examples.SITE_NAME = SITE_NAME   # S-DEC3
 howbuilt.GH = B['repo']   # S-DEC3: the brand's repo link base, not the clone's remote
 howbuilt.HB = B.get('howbuilt', {})   # S-DEC5: the brand's method and sourcing docs for the How it was built pages

@@ -1,0 +1,3 @@
+DM Sans 400: 134 literal values, 134 regenerated, 0 differ
+DM Sans 600: 134 literal values, 134 regenerated, 0 differ
+Space Mono 400: regenerated 0.612 em, literal 0.612: equal

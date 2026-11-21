@@ -20,6 +20,18 @@
 #               so two sites on one origin keep apart
 #   [tokens]    optional: CSS custom properties appended to the theme after design/theme.css, for both themes
 #               (`sans = '"Inter",system-ui,sans-serif'` writes --sans); [tokens_light] for the light theme only
+#   [metrics]   optional (P-DEC5, 21 Nov 2026), required in effect by a brand whose [tokens] change --sans or --mono:
+#               kit/viz.py sizes every figure's boxes from the faces' advance widths, so it must know the faces the
+#               page draws. `sans` and `sansb`: paths from the repo root of JSON tables (kit/fonts/<face>-<weight>.
+#               metrics.json) {"face", "from", "chars", "adv", "ascent", "descent"}: the --sans face's advances per
+#               1000 em at 400 and 600 for viz._CH (0 for a glyph the face lacks) and its hhea line box per 1000 em
+#               (figure text's baselines centre it), read from the vendored woff2 with fontTools; `mono`: the --mono
+#               face's advance in em (IBM Plex Mono 0.6; its baseline stays where Space Mono's is, so a mono face's
+#               line box must reach no further than Space Mono's: 1.120 em above the baseline, 0.361 below).
+#               A key left out keeps the default: DM Sans 400 and 600 (viz._SANS, viz._SANSB) and Space Mono (0.612),
+#               which is Academy's case (no table, figures byte-identical). verify.py serves a face only if its woff2 are
+#               in kit/fonts/ with a kit/fonts/<face>.css of @font-face rules (and its OFL notice), added when the
+#               tokens name the family; a face not vendored is drawn and measured in its fallback (the desktop pass says so)
 #   [howbuilt]  optional (S-DEC5): the docs the "How it was built" pages quote: `method` (its section 1) with
 #               `method_columns` ({family: column of its table}), `sourcing` with `sourcing_parts` ({family: "Part n"});
 #               a brand without the table shows neither section and links neither doc

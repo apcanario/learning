@@ -19,9 +19,9 @@ units = "wb-groups-open"
 last = "wb-last-"
 section = "wb-sec-"
 
-# both themes: the serif face, then the dark palette (the theme's default). Only --serif changes: kit/viz.py sizes a
-# figure's boxes from DM Sans and Space Mono advance widths and verify.py serves only those faces (kit/fonts/), so a
-# brand that changes --sans or --mono breaks figure geometry (S-DEC3's first marketing-ai probe: 24 figure-geometry failures)
+# both themes: the serif face, then the dark palette (the theme's default). Only --serif changes. A brand may change
+# --sans or --mono too, naming the faces' metrics in [metrics] (P-DEC5; brands/academy.toml header): S-DEC3's first
+# probe changed them without metrics and failed figure geometry 24 times
 [tokens]
 serif = '"Source Serif 4",Georgia,"Times New Roman",serif'
 bg = "#0d1117"

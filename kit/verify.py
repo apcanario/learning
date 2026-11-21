@@ -168,6 +168,7 @@ if ED['courses'] is not None:
 HAS = {c['id'] for c in COURSES}
 FULL = ED['courses'] is None   # S-DEC4: the edition holds every course (academy)
 import viz, viz_examples   # P55: the examples page's hard cases and the blocks that must stop the build
+viz.set_metrics(brand(EDITION))   # P-DEC5: the brand's font metrics, as build.py draws with them
 # each track and its course cards as the home must show them, from courses.py (A5: a new course needs no edit here)
 # G-0 (12 Nov 2026): a markdown course with no unit filed is not live and has no tile on the home (home_expect says the
 # same); a unit's file is named by its code, the course's key and a number (A9, DD-IA2, PB1)
@@ -1207,13 +1208,18 @@ def check_panels(pg, label, fails):
     return m[0], len(ids)
 
 FONTS = R / 'fonts'
-FONT_CSS = (FONTS / 'fonts.css').read_text()
 # S-DEC4: the vendored faces the edition's theme uses: design/theme.css --sans, --mono and --serif, as the brand's [tokens]
 # leaves or sets them (P39: Academy's three). A face a brand names that is not vendored is never served here (the browser
 # draws its fallback); the desktop pass says so
 _TOK = {}
 for _k, _v in re.findall(r'^\s*--(sans|mono|serif)\s*:\s*([^;]+);', (R.parent / 'design' / 'theme.css').read_text(), re.M): _TOK.setdefault(_k, _v)
 _TOK.update({k: v for k, v in (brand(EDITION).get('tokens') or {}).items() if k in ('sans', 'mono', 'serif')})
+# P-DEC5: fonts.css holds the theme's own faces; a brand's other faces are each a fonts/<face>.css of their own, added
+# when the edition's tokens name its family (so an edition that names none serves fonts.css alone, as before)
+_FAM = lambda css: re.findall(r"font-family:\s*'([^']+)'", css)
+FONT_CSS = (FONTS / 'fonts.css').read_text() + ''.join(
+    css for f in sorted(FONTS.glob('*.css')) if f.name != 'fonts.css'
+    for css in [f.read_text()] if any(fam in v for fam in set(_FAM(css)) for v in _TOK.values()))
 VENDORED = list(dict.fromkeys(re.findall(r"font-family:\s*'([^']+)'", FONT_CSS)))
 THEME_FONTS = [f for f in VENDORED if any(f in v for v in _TOK.values())]
 UNSERVED = [v.split(',')[0].strip().strip('"\'') for v in _TOK.values() if not any(f in v for f in VENDORED)]

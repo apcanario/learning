@@ -483,6 +483,11 @@ def _wrap(s, n, px=None, size=12, font='sans', ls=0.0):
 
 # Advance widths (per 1000 em) of DM Sans 400 and 600 for the characters a figure is likely to carry, read from the
 # fonts the theme loads (V1, 29 Oct 2026); Space Mono is fixed at 612. _tw adds 4 % so a system fallback still fits.
+# A 0 is a character the face lacks (_tw counts it at 900). These tables are the defaults: a brand that sets --sans or
+# --mono names its own metrics (P-DEC5, 21 Nov 2026; brands/academy.toml header, `[metrics]`) and build.py and
+# verify.py hand the brand to set_metrics() before drawing. Regenerated from kit/fonts/dm-sans-latin(-ext)-{400,600}
+# with fontTools (first subset holding the glyph, round(advance * 1000 / unitsPerEm), missing 0), they equal these
+# literals in every value (P-DEC5 report); the literals stay so the build needs no font library.
 _CH = ''.join(chr(c) for c in range(32, 127)) + '€£éèáàãõçíóúâêôüöäñÉÁÇ×–—’‘“”·…→←↑↓±≤≥°'
 _SANS = [266, 250, 291, 804, 580, 786, 734, 159, 373, 373, 480, 550, 182, 541, 198, 392, 684, 312, 576, 591, 607, 610, 628, 534,
          608, 628, 202, 227, 550, 550, 550, 524, 1005, 664, 603, 717, 688, 565, 535, 758, 681, 234, 501, 584, 527, 841, 691, 774,
@@ -497,13 +502,43 @@ _SANSB = [244, 291, 344, 841, 597, 868, 767, 186, 395, 395, 503, 571, 227, 565, 
           620, 592, 592, 574, 574, 574, 605, 596, 254, 605, 604, 574, 592, 605, 604, 605, 574, 604, 578, 696, 732, 571, 688, 905,
           242, 242, 428, 428, 236, 652, 0, 0, 872, 880, 571, 0, 0, 357]
 _ADV = {'sans': dict(zip(_CH, _SANS)), 'sansb': dict(zip(_CH, _SANSB))}
+_MONO = 0.612   # the mono face's advance, in em (every glyph of a monospace face has the same)
+# where _text puts a line's baseline below the middle of its line height, in em of its size, per face (P-DEC5): 0.36 for
+# DM Sans and Space Mono, set by hand at A8; a brand's sans table with its face's ascent and descent centres that face's
+# line box on the line instead ((ascent - descent) / 2), so a face with a deeper descender stays inside its plate
+_BASE = {'sans': 0.36, 'sansb': 0.36, 'mono': 0.36}
+_DEFAULT = (_ADV, _MONO, _BASE)
+
+
+def set_metrics(brand):
+    """Size text with the faces a brand's theme draws (P-DEC5): its optional `[metrics]` table, `sans` and `sansb` (paths
+    from the repo root of JSON tables {"face", "from", "chars", "adv", "ascent", "descent"}: advance widths per 1000 em
+    of the --sans face at 400 and 600, 0 for a character it lacks; the face's line box, per 1000 em, places _text's
+    baselines) and `mono` (the --mono face's advance in em). A key the brand leaves out keeps the default (DM Sans,
+    Space Mono, the 0.36 baseline); a brand without the table, or None, restores them all, so a process that builds two
+    editions starts each from the defaults."""
+    global _ADV, _MONO, _BASE
+    _ADV, _MONO, _BASE = dict(_DEFAULT[0]), _DEFAULT[1], dict(_DEFAULT[2])
+    m = (brand or {}).get('metrics') or {}
+    root = pathlib.Path(__file__).resolve().parent.parent
+    for k in ('sans', 'sansb'):
+        if k in m:
+            t = json.loads((root / m[k]).read_text())
+            if len(t['chars']) != len(t['adv']):
+                raise SystemExit(f'{m[k]}: {len(t["chars"])} chars but {len(t["adv"])} advances')
+            _ADV[k] = dict(zip(t['chars'], t['adv']))
+            if 'ascent' in t and 'descent' in t:
+                _BASE[k] = (t['ascent'] - t['descent']) / 2000
+    if 'mono' in m:
+        _MONO = float(m['mono'])
 
 
 def _tw(s, size, font='sans', ls=0.0):
-    """Measured width of s in user units: font is sans (DM Sans 400), sansb (600) or mono (Space Mono); ls is letter-spacing."""
+    """Measured width of s in user units: font is sans (the --sans face at 400; DM Sans unless the brand's metrics say
+    otherwise), sansb (600) or mono (the --mono face; Space Mono by default); ls is letter-spacing."""
     s = str(s)
     if font == 'mono':
-        return len(s) * (0.612 * size + ls)
+        return len(s) * (_MONO * size + ls)
     t = _ADV[font]
     return sum(t.get(ch) or 900 for ch in s) / 1000 * size * 1.04 + len(s) * ls
 
@@ -1160,8 +1195,8 @@ def _width(lines, role):
 
 def _text(lines, role, x, top, anchor='start'):
     """Lines of one role from the top of their block; each line's baseline sits in the middle of its line height."""
-    cls, _, size, _, lh = role
-    return ''.join(f'<text class="{cls}" x="{x:.1f}" y="{top + lh / 2 + size * 0.36 + i * lh:.1f}" text-anchor="{anchor}">{esc(ln)}</text>'
+    cls, font, size, _, lh = role
+    return ''.join(f'<text class="{cls}" x="{x:.1f}" y="{top + lh / 2 + size * _BASE[font] + i * lh:.1f}" text-anchor="{anchor}">{esc(ln)}</text>'
                    for i, ln in enumerate(lines))
 
 

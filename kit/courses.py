@@ -136,6 +136,15 @@ def _brand(path, d):
     d.setdefault('tokens', {})
     d.setdefault('tokens_light', {})
     d.setdefault('rules', [])
+    m = d.get('metrics', {})   # P-DEC5: optional, the font metrics of a brand that changes --sans or --mono (viz.set_metrics)
+    for k in m:
+        if k not in ('sans', 'sansb', 'mono'):
+            _fail(path, f'`metrics.{k}` is not sans, sansb or mono')
+    for k in ('sans', 'sansb'):
+        if k in m and not (_ROOT / m[k]).is_file():
+            _fail(path, f'`metrics.{k}` names {m[k]}, which is not a file')
+    if 'mono' in m and not isinstance(m['mono'], (int, float)):
+        _fail(path, '`metrics.mono` is the mono face\'s advance in em, a number')
     return d
 
 
