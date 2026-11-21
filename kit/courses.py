@@ -141,10 +141,29 @@ def _brand(path, d):
         if k not in ('sans', 'sansb', 'mono'):
             _fail(path, f'`metrics.{k}` is not sans, sansb or mono')
     for k in ('sans', 'sansb'):
-        if k in m and not (_ROOT / m[k]).is_file():
-            _fail(path, f'`metrics.{k}` names {m[k]}, which is not a file')
-    if 'mono' in m and not isinstance(m['mono'], (int, float)):
-        _fail(path, '`metrics.mono` is the mono face\'s advance in em, a number')
+        if k in m:
+            f = (_ROOT / m[k]).resolve()
+            if pathlib.Path(m[k]).is_absolute() or not f.is_file() or (_ROOT / 'kit' / 'fonts').resolve() not in f.parents:
+                _fail(path, f'`metrics.{k}` names {m[k]}, which must be a file under kit/fonts/ (path from the repo root)')
+            try:
+                t = json.loads(f.read_text())
+                ok = len(t['chars']) == len(t['adv']) and all(isinstance(a, (int, float)) for a in t['adv']) \
+                    and all(isinstance(t.get(x, 0), (int, float)) for x in ('ascent', 'descent'))
+                zero = t['adv'][t['chars'].index('0')]
+            except (ValueError, KeyError, TypeError):
+                ok, zero = False, 0
+            if not ok or not zero:
+                _fail(path, f'`metrics.{k}` ({m[k]}) is not a metrics table: `chars` and `adv` of one length, numbers, and an advance for "0"')
+    if 'mono' in m and (isinstance(m['mono'], bool) or not isinstance(m['mono'], (int, float)) or m['mono'] <= 0):
+        _fail(path, '`metrics.mono` is the mono face\'s advance in em, a number above 0')
+    # P-DEC5: a brand that changes a face without naming its metrics would draw figure boxes from DM Sans / Space Mono
+    # widths (S-DEC3's first probe: 24 figure-geometry failures), so the build stops instead
+    fam = lambda v: v.split(',')[0].strip().strip('"\'')
+    t = d['tokens']
+    if 'sans' in t and fam(t['sans']) != 'DM Sans' and not ('sans' in m and 'sansb' in m):
+        _fail(path, '`tokens.sans` changes the face: name its metrics in [metrics] `sans` and `sansb` (brands/academy.toml header)')
+    if 'mono' in t and fam(t['mono']) != 'Space Mono' and 'mono' not in m:
+        _fail(path, '`tokens.mono` changes the face: name its advance in [metrics] `mono` (brands/academy.toml header)')
     return d
 
 

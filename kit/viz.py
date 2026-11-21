@@ -506,7 +506,7 @@ _MONO = 0.612   # the mono face's advance, in em (every glyph of a monospace fac
 # where _text puts a line's baseline below the middle of its line height, in em of its size, per face (P-DEC5): 0.36 for
 # DM Sans and Space Mono, set by hand at A8; a brand's sans table with its face's ascent and descent centres that face's
 # line box on the line instead ((ascent - descent) / 2), so a face with a deeper descender stays inside its plate
-_BASE = {'sans': 0.36, 'sansb': 0.36, 'mono': 0.36}
+_BASE = {'sans': 0.36, 'sansb': 0.36, 'mono': 0.36}   # hand-set, DM Sans' own line box would give 0.341: a [metrics] table is for a face other than DM Sans
 _DEFAULT = (_ADV, _MONO, _BASE)
 
 

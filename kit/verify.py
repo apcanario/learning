@@ -2779,7 +2779,7 @@ def main():
             # P39: the measure is 68ch of the report's own font (DM Sans, about 744 px), and fits the 760 px column; P-DEC5:
             # at least 560 px in DM Sans, and in a brand's --sans 560 px scaled by its "0" against DM Sans' (its ch: Source
             # Sans 3's 68ch is 541 px), from the brand's [metrics] (viz.set_metrics); in DM Sans' metrics exactly 560
-            floor = 560 * viz._ADV['sans']['0'] / viz._DEFAULT[0]['sans']['0']
+            floor = 560 * (viz._ADV['sans'].get('0') or viz._DEFAULT[0]['sans']['0']) / viz._DEFAULT[0]['sans']['0']   # the brand's metrics describe the face its tokens name (courses._brand checks "0" is in the table)
             mw = float(s['measure'].replace('px', '')) if s['measure'].endswith('px') else 0
             if abs(mw - s['ch68']) > 2 or not floor <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
             if s['fonts']: fails.append(f'desktop: theme fonts not loaded from fonts/: {s["fonts"]}')
