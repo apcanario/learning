@@ -1,0 +1,21 @@
+# P-DEC20 verify runs (probe copies; full logs in /tmp/dec20/verify-*.log, not kept)
+## fieldnotes, start CSS (/tmp/probe-dec20-before)
+n=6: desktop motion FAIL 12, tablet motion FAIL 10, other FAIL 1
+n=8: desktop motion FAIL 10, tablet motion FAIL 10, other FAIL 1
+n=10: desktop motion FAIL 12, tablet motion FAIL 12, other FAIL 1
+FAIL home-composting-hc tablet motion dark pose 0: the rises ['HC1', 'HC2', 'HC5'] have rings outside the frame or in its fade
+FAIL home-composting-hc tablet motion dark pose 0.25: the rises ['HC1', 'HC2', 'HC5'] have rings outside the frame or in its fade
+FAIL home-composting-hc tablet motion dark pose 0.5: the rises ['HC1', 'HC2', 'HC5'] have rings outside the frame or in its fade
+FAIL home-composting-hc tablet motion dark pose 0.75: the rises ['HC1', 'HC2'] have rings outside the frame or in its fade
+## fieldnotes, P-DEC20 CSS (/tmp/probe-dec20)
+n=6: desktop motion FAIL 0, tablet motion FAIL 0, other FAIL 1: FAIL courses-index.md: Home composting: the line above the table should say "6 of 6 written"
+n=7: desktop motion FAIL 0, tablet motion FAIL 0, other FAIL 1: FAIL courses-index.md: Home composting: the line above the table should say "7 of 7 written"
+n=8: desktop motion FAIL 0, tablet motion FAIL 0, other FAIL 1: FAIL courses-index.md: Home composting: the line above the table should say "8 of 8 written"
+n=9: desktop motion FAIL 0, tablet motion FAIL 0, other FAIL 1: FAIL courses-index.md: Home composting: the line above the table should say "9 of 9 written"
+n=10: desktop motion FAIL 0, tablet motion FAIL 0, other FAIL 1: FAIL courses-index.md: Home composting: the line above the table should say "10 of 10 written"
+## sce-probe (SCE alone, SCE2..SCEn copies of SCE1), P-DEC20 CSS (/tmp/probe-dec20-sce)
+n=6: course-home motion FAIL 0, 'rings outside' 0, course-home pose checks run 20, other FAIL 93 (probe artifacts: academy brand's private term in a one-course edition, omitted build panels and planned tiles, courses-index rows, the home's track rise)
+n=7: course-home motion FAIL 0, 'rings outside' 0, course-home pose checks run 20, other FAIL 98 (probe artifacts: academy brand's private term in a one-course edition, omitted build panels and planned tiles, courses-index rows, the home's track rise)
+n=8: course-home motion FAIL 0, 'rings outside' 0, course-home pose checks run 20, other FAIL 102 (probe artifacts: academy brand's private term in a one-course edition, omitted build panels and planned tiles, courses-index rows, the home's track rise)
+n=9: course-home motion FAIL 0, 'rings outside' 0, course-home pose checks run 20, other FAIL 106 (probe artifacts: academy brand's private term in a one-course edition, omitted build panels and planned tiles, courses-index rows, the home's track rise)
+n=10: course-home motion FAIL 0, 'rings outside' 0, course-home pose checks run 20, other FAIL 111 (probe artifacts: academy brand's private term in a one-course edition, omitted build panels and planned tiles, courses-index rows, the home's track rise)

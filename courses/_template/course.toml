@@ -43,6 +43,10 @@ course_note = '⟨One line: the sourcing standard and the deliverable rule, as t
 order_lede = 'One row per unit in writing order.'
 order_foot = 'The count starts at {start}.'
 bib_note = 'Every link cited in the written material, alphabetical by title.'
+# P-DEC21: the How it was built page's Audit cadence row (kit/howbuilt.py) reads `audit_cadence`; left out here, as
+# kit/pack.py leaves out a key that repeats its DEFAULTS, so the course takes DEFAULTS' AUDIT_CADENCE (no periodic audit:
+# the fresh check of docs/method.md §5 and the staleness check of §6). Only where the course's cadence differs:
+# audit_cadence = "⟨the course's own audit cadence, one or two sentences, Markdown inline⟩"
 # not read by any kit/ script (the v5.1 standalone hub's identity and tiles); kept as in the other packs
 title = '⟨Hub title⟩'
 bar = '⟨SHORT NAME⟩'

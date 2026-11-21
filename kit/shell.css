@@ -34,6 +34,7 @@
       section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
       the scope line
    Version 6.11, 15 Nov 2026 (C1, W-BW5): a matrix carries a narrow-label drawing (svg.viz-altn, .viz-stickn) shown at 360 px and below, 4i.
+   Version 6.16, 21 Nov 2026 (P-DEC20): a course home's hero is at least 380 px tall from 768 px, so a course of six to ten units keeps its rings in its layer's frame on a tablet and a desktop, 6.
    Version 6.15, 17 Nov 2026 (P84 round 4, H-4): figure text drawn with text-rendering:geometricPrecision, 4i.
    Version 6.14, 17 Nov 2026 (P109, H-4): a matrix's keys under its frame, svg.viz-key and svg.viz-keyn; a wide matrix's label column pinned on a desktop too; a timeline up to 15% over 700 units (viz-snug) scales to the column, 4i.
    Version 6.13, 16–17 Nov 2026 (P84, H-4): a timeline span's end guides to the axis, .viz-spanend; span labels without capitals and the side label's own class, .viz-spanside, 4i.
@@ -834,6 +835,15 @@ details.clog[open]>summary::after{content:"–"}
   .panel.root .tmeta{display:inline}
   .panel.root .thead h2{margin:0 0 6px}
   .panel.root .thead{border-bottom:2px solid var(--c);padding-bottom:12px}
+  /* P-DEC20: a course home's hero is at least 380 px tall, so its layer's frame (the hero and the 22 px above it) is at
+     least 402. build.py's ct_fit keeps every ring inside its layout's view: the wide layout's from .1 of its height
+     (desktop), the tall one's from .25 to .7 (tablet). A frame W x H shows the layout (slice, over the overscan --ox) from
+     .5 - H / (W + 2 * --ox) of a 2:1 layout's height, and .5 - H / (2 * (W + 2 * --ox)) of a square one's, fading over
+     the last 10%; so the wide view's top is shown from H = .4 * (W + 2px) / (1 - .4 * sin(--topo-turn)), 401.2 px at
+     1280 (W 980; its foot, .84, is in the fade below a 427 px frame, and no ring of 1 to 24 rises reaches it), and the whole tall view
+     from H = .5 * (W + 2px) / (1 - .5 * sin(--topo-turn)), 395.4 px at 768. Below them a course of six to ten units had
+     rings past its frame (out/HK-1/p-dec20.md). */
+  .panel.home>.hero.has-topo{min-height:380px}
 }
 @media (min-width:1100px){
   /* the drawer is a sidebar: always open, no backdrop, no menu or close button; its list scrolls on its own */

@@ -1,0 +1,7 @@
+marketing-ai: 36 files at the start, 36 now; added [], removed []
+  index.html: identical once P-DEC20 CSS (the rule alone, comments stripped by the brand) are set aside
+  hero layer: start 4,356 B / 4,380 B as verify counts; now 4,356 / 4,380; byte-identical; rises Marketing 100892 words 4 rings, Technology 128186 words 5 rings
+fieldnotes: 9 files at the start, 9 now; added [], removed []
+  index.html: identical once P-DEC20 CSS (the rule alone, comments stripped by the brand) are set aside
+  hero layer: start 773 B / 801 B as verify counts; now 773 / 801; byte-identical; rises Garden 2461 words 0 rings
+VERDICT: PASS

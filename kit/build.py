@@ -1042,7 +1042,25 @@ backlog = f"""
 # the same density (the spread keeps a neighbour's tail under a level, so a unit's rings rise with its words); the tile's
 # numbers say the rest.
 NEWEST = DATED[0] if DATED else None
-HERO_INTERVAL = 24000   # words between two of the hero's contour levels: History's 510k words stand 22 levels up (W-DD-SP2, 19 Nov 2026: 22,000 to 23,000, because the hero's two layouts reached 20,661 B with Coaching's twelfth unit, over verify.py's 20 KB), an area of 67k three (W-SCE1, 21 Nov 2026: 23,000 to 24,000, because the hero reached 20,573 B with the first Supply Chain Execution unit, over verify.py's 20 KB; the fix P-DEC20 and the contour rule both want is still a size budget not tied to the unit count)
+# P-HERO1 (21 Nov 2026): the interval is derived, not raised by hand (W-DD-SP2 took it from 22,000 to 23,000, W-SCE1 to
+# 24,000, each time the layer passed verify.py's 20 KB). HERO_INTERVAL_MIN is the floor: the hero is never drawn finer.
+# 24,000 is not a measured design density: P92 drew the hero at 22,000 (kit/reviews/p92/check-hero-3.md); 24,000 is the
+# value W-SCE1 raised it to by hand, frozen as the floor by decision (HK-1, 21 Nov 2026) so that no edition's hero moves
+# (at 22,000 greece's and every other edition's would). At 24,000 History's 510k words stand 21 levels up, an area of 67k
+# two. The rule: the hero's interval is HERO_INTERVAL_MIN, or, where the contour layer (the div.topo with both layouts,
+# tall and wide, at its phase) would be more than HERO_BUDGET bytes there, the smallest whole hundred of words above it
+# at which the layer is at most HERO_BUDGET, for the written units of the courses the edition being built holds. The
+# bytes are verify.py's (new Blob([topo.outerHTML]).size): the layer as the browser re-serialises it, each self-closed
+# <path/> and <circle/> written out with its end tag (sep_bytes), 88 B more than the source string for academy's layer.
+# hero_interval: one drawing when the floor fits; else one at the coarsest interval, then a scan upward from the floor,
+# one drawing (about 0.43 s) per hundred words (academy: 7 drawings, about 3 s; the bisection it replaced drew 14),
+# because the layer shrinks overall as the interval grows but not at every step (academy: +5 to +87 B at six steps of
+# 22,000 to 30,000), so a bisection could step over the smallest. The budget only ever raises the
+# interval above the floor. HERO_BUDGET is the one place to change the budget: 19 KB, so verify.py's 20 KB stays the
+# hard limit with 1 KB of headroom. As units are written the interval grows with the words by itself (academy, 21 Nov
+# 2026: 24,500, History 20 levels, 19,388 B as verify counts; greece: 24,000, in budget).
+HERO_INTERVAL_MIN = 24000   # the floor (words between two contour levels): W-SCE1's value, frozen at HK-1; P92 drew 22,000
+HERO_BUDGET = 19 * 1024     # bytes of the layer as verify.py measures it (outerHTML), under verify.py's 20 KB
 # _HERO_AT (S-DEC3: catalog.toml, each track's `hero`; kit/courses.py HERO_AT): where each area's rise stands (fractions
 # of the layout's width and height), tall and wide. P92 checks: every rise inside a 390 px phone's view (x .27 to .73)
 # and above the fade, each small rise closing two rings of its own (verify.py checks it), Marketing clear of the sidebar
@@ -1052,7 +1070,7 @@ if [t['id'] for t in THEMES if t['id'] not in _HERO_AT]:
 HERO_AT = {'tall': [_HERO_AT[t['id']][0] for t in THEMES], 'wide': [_HERO_AT[t['id']][1] for t in THEMES]}
 AREA_WORDS = {t['id']: sum(c['words'] for c in HISTORY if c['theme'] == t['id']) + sum(m['words'] for m in MD if m['theme'] == t['id'] and m['status'] != 'coming soon')
               for t in THEMES}
-HERO_TOPO = dict(kind='contours', interval=HERO_INTERVAL,
+HERO_TOPO = dict(kind='contours', interval=None,   # hero_interval(), once the phase is known
                  rises=[dict(label=t['name'], tone=_TONE[t['color']], **(dict(words=AREA_WORDS[t['id']]) if AREA_WORDS[t['id']] else dict(planned=True))) for t in THEMES],
                  layouts=[dict(name='tall', width=1000, height=1000, spread=.095, at=HERO_AT['tall']),
                           dict(name='wide', width=1000, height=571, spread=.095, at=HERO_AT['wide'])])
@@ -1096,7 +1114,33 @@ def md_card(m, phase=None):
 PLANNED = {t['id']: ([] if 'planned' in OMIT else t.get('planned', [])) for t in THEMES}   # S-SPORTS: a track's own planned courses (P-DEC12: History's too, the `next` rows before)
 HOME_PH = iter(phases(1 + len(HISTORY) + sum(1 for m in MD if m['status'] != 'coming soon') + sum(len(v) for v in PLANNED.values())))   # G-0: one phase per drawing on the home; a course with nothing filed has none
 HERO_TOPO['phase'] = round(next(HOME_PH), 3)
-hero_topo = viz.render(HERO_TOPO)
+
+
+def hero_interval(topo, step=100):
+    """P-HERO1: HERO_INTERVAL_MIN if the layer viz.render(topo) draws there is at most HERO_BUDGET bytes as verify.py
+    measures it (sep_bytes: the outerHTML the browser writes, every self-closed element with its end tag); else the
+    smallest whole `step` of words above it at which it is, found by a scan upward from the floor (the size is not
+    monotone in the interval, so no bisection), after one drawing at the largest area's words rounded up (where every
+    rise stands at most one level) proves some interval fits; returns (interval, the layer drawn at it)."""
+    drawn = {}
+    def fits(k):
+        if k not in drawn:
+            drawn[k] = viz.render(dict(topo, interval=k * step))
+        return sep_bytes(drawn[k]) <= HERO_BUDGET
+    lo = HERO_INTERVAL_MIN // step   # a whole number of steps
+    if fits(lo):
+        return lo * step, drawn[lo]
+    top = max(lo + 1, -(-max((r.get('words', 0) for r in topo['rises']), default=0) // step))
+    if not fits(top):
+        raise SystemExit(f'the home hero\'s contour layer is {sep_bytes(drawn[top]):,} bytes (outerHTML) at {top * step:,} words a level, over HERO_BUDGET ({HERO_BUDGET:,}): no interval keeps it in budget')
+    # the scan draws each step from the floor up (about 0.43 s per 100 words): 7 drawings at 24,500, about 62 (27 s) at
+    # 30,000. Size is not strictly falling as the interval grows, so a bisection could skip the smallest fit (HK-1 M1).
+    k = next(k for k in range(lo + 1, top + 1) if fits(k))
+    return k * step, drawn[k]
+
+
+HERO_INTERVAL, hero_topo = hero_interval(HERO_TOPO)
+HERO_TOPO['interval'] = HERO_INTERVAL
 tracks = ''
 for t in THEMES:
     hist = [c for c in HISTORY if c['theme'] == t['id']]

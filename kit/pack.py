@@ -32,6 +32,10 @@ The `[pack]` table (every key optional unless marked):
   course_note = "..."                       any plain string key becomes the attribute of its name upper-cased:
   order_lede = "..."                        COURSE_NOTE, ORDER_LEDE, ORDER_FOOT, BIB_NOTE, BRIEF_LABEL, BUILD_LEDE,
   order_foot = "..."                        LEARN_LEDE, TITLE, BAR, ... (a key repeating DEFAULTS below is left out)
+  audit_cadence = "..."                     AUDIT_CADENCE (P-DEC21, 21 Nov 2026): the "Common rule, in force" cell of the
+                                            Audit cadence row in the How it was built page's method table (kit/howbuilt.py),
+                                            Markdown inline; only where the course's own cadence is not DEFAULTS' (the
+                                            template names it in a comment, the key left out)
   learn_tile = ["...", "..."]               an array of strings: a tuple
   version = "v1 · 1 Jan 2027"               only where the top changelog row does not start "v<n>. " (below)
   order = [["B1", "Opus 5.5", "off"], ...]  ORDER: (code, model, search) rows, writing order          (required)
@@ -87,6 +91,10 @@ DEFAULTS = dict(
     BRIEF_LABEL='Opus brief',
     BIB_NOTE='Every link cited in the written material, alphabetical by title. New units add to this list; a source that fails a staleness check is marked here.',
     LEARNING_NOTE='', BUILD_PICK='', FRAME='',
+    # P-DEC21 (21 Nov 2026): the Audit cadence row's rule for a course that sets none; it replaced the method doc's
+    # cell, which named a closed stage of this repo's history on every course's page
+    AUDIT_CADENCE=('No periodic audit. Every new unit gets a fresh check before filing, and a unit written with live '
+                   'search is re-checked for staleness six months after writing.'),
 )
 # the [pack] keys that are not a plain attribute
 _SPECIAL = {'source', 'version', 'order', 'done_rows', 'status', 'courses', 'readings', 'changelog', 'audit_log'}

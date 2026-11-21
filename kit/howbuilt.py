@@ -14,6 +14,8 @@ are headings, column labels and the sentences that say where each fact comes fro
                             verdict, mean and factual errors from each scorecard); courses/<course>/bibliography/r-<id>.md
   markdown courses          courses/<slug>/*.md front matter (code, title, model, written, search); the data file's
                             AUDIT_LOG, STATUS and DONE_ROWS; audits/<slug>/fresh-check-<code>.md front matter
+  the Audit cadence row     a markdown course's [pack] `audit_cadence` (kit/pack.py DEFAULTS where it has none), not the
+                            method doc's common rule (P-DEC21); a history course's row is the method doc's
 
 Links to files point at the file in the repo on GitHub (the repo is private: they open for its owner). P24 (Pedro, 16 Nov
 2026): the audit files stay private, and every page says so in one line (PRIVATE), above its first file link.
@@ -110,12 +112,22 @@ def method_decisions():
     return re.findall(r'^\*\*([^*]+?)\.\*\* Pick: (.*?)$.*?^Override if: (.*?)$', sec, re.S | re.M)
 
 
-def method_section(family, md_inline):
+# P-DEC21 (21 Nov 2026): the method table's row whose common rule a markdown course states itself
+CADENCE_TOPIC = 'Audit cadence'
+
+
+def method_section(family, md_inline, cadence=None):
+    """cadence (a markdown course's AUDIT_CADENCE, kit/pack.py) replaces the common rule of the CADENCE_TOPIC row; the
+    method doc's own cell there named the closed stage of this repo's history on every course's page (P-DEC21)."""
     if not HB.get('method'):
         return ''
     col = HB['method_columns'][family]
     doc = pathlib.PurePosixPath(HB['method']).name
-    rows = ''.join(f'<tr><td>{md_inline(t)}</td><td>{md_inline(a)}</td><td>{md_inline(b)}</td></tr>' for t, a, b in method_rows(family))
+    if cadence is not None and sum(t == CADENCE_TOPIC for t, _, _ in method_rows(family)) != 1:   # HK-1 S2: never the old cell by default
+        raise SystemExit(f"{HB['method']} §1 has no single '{CADENCE_TOPIC}' row: kit/howbuilt.py CADENCE_TOPIC names the row "
+                         f"whose common rule a markdown course's audit_cadence replaces; rename it to match the table")
+    rows = ''.join(f'<tr><td>{md_inline(t)}</td><td>{md_inline(a)}</td><td>{md_inline(cadence if cadence is not None and t == CADENCE_TOPIC else b)}</td></tr>'
+                   for t, a, b in method_rows(family))
     picks = ''.join(f'<li><strong>{md_inline(n)}.</strong> Pick: {md_inline(p)} <em>Override if:</em> {md_inline(o)}</li>' for n, p, o in method_decisions())
     return (f'<details class="howto rules"><summary><h2>The method in force</h2><span>{e(doc)} §1</span></summary>'
             f'<p class="hnote">From {gh(HB["method"])} §1: where {e(col)}\'s own method differed from the other course family\'s, and the common rule that holds now. Units written before the merge stay valid as they were written.</p>'
@@ -482,7 +494,7 @@ def markdown_page(m, crumbs, theme, md_inline, md_blocks):
   {f'<section class="howto" style="--hc:var(--orange)"><h2>Earlier material</h2><ul>{earlier_html}</ul></section>' if earlier_html else ''}
   <section class="howto" style="--hc:var(--gold)"><h2>Audits and checks run</h2>{f'<div class="logrows">{arows}</div>' if arows else '<p>None yet.</p>'}</section>
   {credits_section(m.get('pages', {}), ctx)}
-  {method_section('markdown', md_inline)}
+  {method_section('markdown', md_inline, d.AUDIT_CADENCE)}
   {sources_section('markdown', md_blocks, c.get('sourcing_part'))}
   {footer([f'<code>courses/{e(slug)}/</code> front matter', f'<code>audits/{e(slug)}/</code>', gh(rel(REPO / pack.source(c))) + ' (AUDIT_LOG, STATUS, DONE_ROWS)', *doc_links()])}'''
     return panel(f'{ctx}-built', ctx, col, label, body)

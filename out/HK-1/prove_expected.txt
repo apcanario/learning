@@ -1,0 +1,98 @@
+0 · start versions and the list of differing files
+  info: the manifest used is 9447f39's kit/baseline.json; the working kit/baseline.json is re-recorded since (not used here)
+  ok: academy: start versions of all 459 manifest files match the start manifest
+  ok: greece: start versions of all 82 manifest files match the start manifest
+  changed  README.md
+  changed  academy/brand-a/built.html
+  changed  academy/brand-b/built.html
+  changed  academy/building-with-ai-bw/built.html
+  changed  academy/index.html
+  changed  academy/personal-brand-pb/built.html
+  changed  academy/sport-psychology-sp/built.html
+  changed  academy/supply-chain-execution-sce/built.html
+  changed  academy/ux-ia/built.html
+  changed  editions/greece/index.html
+  ok: 10 files differ, exactly the 10 expected; 0 added, 0 removed; no bibliography file
+
+1 · the P-DEC20 CSS change itself (kit/shell.css, not in the manifest)
+  ok: kit/shell.css == design/theme.css
+  ok: kit/shell.css: lines added only, 2 hunks, 10 lines, 1153 B; nothing removed
+    +    Version 6.16, 21 Nov 2026 (P-DEC20): a course home's hero is at least 380 px tall from 768 px, so a course of six to ten units keeps its 
+    +   /* P-DEC20: a course home's hero is at least 380 px tall, so its layer's frame (the hero and the 22 px above it) is at
+    +      least 402. build.py's ct_fit keeps every ring inside its layout's view: the wide layout's from .1 of its height
+    +      (desktop), the tall one's from .25 to .7 (tablet). A frame W x H shows the layout (slice, over the overscan --ox) from
+    +      .5 - H / (W + 2 * --ox) of a 2:1 layout's height, and .5 - H / (2 * (W + 2 * --ox)) of a square one's, fading over
+    +      the last 10%; so the wide view's top is shown from H = .4 * (W + 2px) / (1 - .4 * sin(--topo-turn)), 401.2 px at
+    +      1280 (W 980; its foot, .84, is in the fade below a 427 px frame, and no ring of 1 to 24 rises reaches it), and the whole tall view
+    +      from H = .5 * (W + 2px) / (1 - .5 * sin(--topo-turn)), 395.4 px at 768. Below them a course of six to ten units had
+    +      rings past its frame (out/HK-1/p-dec20.md). */
+    +   .panel.home>.hero.has-topo{min-height:380px}
+  ok: comments aside, the CSS differs by one added rule ['.panel.home>.hero.has-topo{min-height:380px}'] and nothing removed
+  ok: the "Version 6.16" line is inside the file's opening comment (a comment, not CSS)
+  ok: the rule sits in the block '@media (min-width:768px)'
+
+2 · academy/index.html (P-HERO1 hero layer + P-DEC20 CSS)
+  ok: start file holds the start kit/shell.css verbatim once (1)
+  ok: new file holds the new kit/shell.css verbatim once; swapped for the start's
+  ok: start == new once the CSS is swapped back and the one div.topo layer is replaced by a placeholder
+    hero layer bytes: start 19825, new 19300 (-525)
+  ok: div.topo opening tag unchanged: <div class="topo" aria-hidden="true" style="--ph:0">
+  ok: same layouts and rises in both (12 rise groups)
+    layout  rise            words    rings start>new  subpaths start>new  group
+    tall    History          510493   21 > 20          28 > 26         redrawn
+    tall    Marketing        173321    7 > 7           10 > 10         redrawn
+    tall    Sports           134022    5 > 5            5 > 5          redrawn
+    tall    Supply Chain       7150    0 > 0            0 > 0          identical
+    tall    Technology       208507    8 > 8            8 > 8          redrawn
+    tall    User Experience   166744    6 > 6            7 > 6          redrawn
+    wide    History          510493   21 > 20          25 > 24         redrawn
+    wide    Marketing        173321    7 > 7            9 > 9          redrawn
+    wide    Sports           134022    5 > 5            6 > 5          redrawn
+    wide    Supply Chain       7150    0 > 0            0 > 0          identical
+    wide    Technology       208507    8 > 8           11 > 11         redrawn
+    wide    User Experience   166744    6 > 6            9 > 9          redrawn
+    tall svg bytes: 9917 > 9685
+    wide svg bytes: 9850 > 9557
+  ok: ring counts: History 21 > 20 in both layouts, every other rise unchanged
+  ok: file size 564464 > 565092 (+628 B) = CSS +1153 + hero -525
+
+2b · the hero layers are the drawings themselves (HK-1 M2)
+  ok: build.py: HERO_INTERVAL_MIN 24,000, HERO_BUDGET 19,456 (want 24,000, 19,456)
+  ok: start layer == viz.render(HERO_TOPO, interval=24,000) (19,825 B; 19,913 B as verify counts)
+  ok: build.py hero_interval() gives 24,500; a full scan from 24,000 in steps of 100 gives 24,500
+  ok: new layer == viz.render(HERO_TOPO, interval=24,500) (19,300 B; 19,388 B as verify counts, budget 19,456)
+  ok: 24,500 fits and 24,400 does not (19,516 B as verify counts)
+
+3 · editions/greece/index.html (P-DEC20 CSS only)
+  ok: start == new once the new kit/shell.css is swapped for the start's (hero layer byte-identical too)
+    size 169772 > 170925 (+1153 B)
+
+4 · the seven built.html (P-DEC21 Audit cadence cell)
+  ok: academy/brand-a/built.html: identical once the cell is replaced (-115 B)
+  ok: academy/brand-b/built.html: identical once the cell is replaced (-115 B)
+  ok: academy/building-with-ai-bw/built.html: identical once the cell is replaced (-115 B)
+  ok: academy/personal-brand-pb/built.html: identical once the cell is replaced (-115 B)
+  ok: academy/sport-psychology-sp/built.html: identical once the cell is replaced (-115 B)
+  ok: academy/supply-chain-execution-sce/built.html: identical once the cell is replaced (-115 B)
+  ok: academy/ux-ia/built.html: identical once the cell is replaced (-115 B)
+  ok: the same old and new cell in all seven
+    old: None since 15 Nov 2026 (S-NOAUDIT): the Fable stage is closed and the four-unit audit retired; the fresh check (§5) and the six-month staleness check (§6) stand. (From 28 Oct to 15 Nov 2026 the rule was a stratified-sample claim audit every four units written in a hub.)
+    new: No periodic audit. Every new unit gets a fresh check before filing, and a unit written with live search is re-checked for staleness six months after writing.
+
+5 · README.md (kit/README.md)
+    1 line(s) changed in the size table, 1 outside it
+    table - | Shell (`index.html`) | 1 | 551 KB | 551 KB | home, drawer, the build pages of the markdown courses, backlog |
+    table + | Shell (`index.html`) | 1 | 552 KB | 552 KB | home, drawer, the build pages of the markdown courses, backlog |
+  ok: size table: only the Shell row changed, and both rows match the files (564464 B = 551 KB, 565092 B = 552 KB)
+  ok: the start Shell row is the start index.html's size
+  ok: README.md == the start file with exactly the build.py row (one phrase replaced by P-HERO1's text) and the Shell row (recomputed) changed; every other byte identical
+    git diff 9447f39 kit/README.md: +2 -2 lines (the build.py row and the Shell row)
+
+SUMMARY
+  P-HERO1 hero layer: 1 file(s): academy/index.html
+  P-DEC20 CSS: 2 file(s): academy/index.html, editions/greece/index.html
+  P-HERO1 build.py row: 1 file(s): README.md
+  size table Shell row: 1 file(s): README.md
+  P-DEC21 Audit cadence cell: 7 file(s): academy/brand-a/built.html, academy/brand-b/built.html, academy/building-with-ai-bw/built.html, academy/personal-brand-pb/built.html, academy/sport-psychology-sp/built.html, academy/supply-chain-execution-sce/built.html, academy/ux-ia/built.html
+  distinct files differing: 10 (expected 10)
+  VERDICT: PASS, every difference is intended
