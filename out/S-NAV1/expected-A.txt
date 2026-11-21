@@ -1,0 +1,5 @@
+# S-NAV1 Step A (history): outputs the change to kit/shell.js is expected to alter (kit-relative, as baseline.py --check prints them)
+# the shell inlines shell.js, so the academy shell and the greece edition's shell change, and the size table follows the shell's size
+README.md
+academy/index.html
+editions/greece/index.html

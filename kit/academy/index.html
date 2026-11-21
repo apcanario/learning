@@ -1916,7 +1916,22 @@ details.acc[open]>summary::after{content:"–"}
     openCards();}
   // P91: a target that is not a panel but an id inside one (a shelf spine's #greece-u3, a unit's breadcrumb) is routed
   // as a link to it would be: its panel is shown (fetched first if need be) and the id revealed
-  function go(id){history.replaceState(null,'','#'+id);if(ids.indexOf(id)<0){route();return;}show(id,true);}
+  // S-NAV1 (21 Nov 2026): each move is a real history entry, so a back swipe walks the site, not out of it. go() saves the
+  // scroll of the entry it leaves in that entry's state ({y}), then pushes '#'+id; popstate (back, forward, a plain hash
+  // link) routes and puts back the y its entry kept, once the panel holds its content. The first load only routes (no
+  // push). Where pushState throws (the artifact's sandboxed frame may refuse it) go() falls back to replaceState, the
+  // behaviour before S-NAV1; where that throws too, the panel is shown without touching the address.
+  try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(e){}
+  var saveT=0,routed=null;
+  function saveY(){clearTimeout(saveT);try{var y=Math.round(window.scrollY||0),s=history.state;if(!s||s.y!==y)history.replaceState({y:y},'');}catch(e){}}
+  window.addEventListener('scroll',function(){clearTimeout(saveT);saveT=setTimeout(saveY,200);},{passive:true});
+  function go(id){
+    var h='#'+id;
+    if(location.hash!==h){saveY();
+      try{history.pushState({y:0},'',h);}
+      catch(e){try{history.replaceState(null,'',h);}catch(e2){}}}
+    routed=location.hash;
+    if(ids.indexOf(id)<0){route();return;}show(id,true);}
   prevB.addEventListener('click',function(){var seq=seqFor(ctxOf[current]),k=seq.indexOf(current);if(k>0)go(seq[k-1]);});
   nextB.addEventListener('click',function(){var seq=seqFor(ctxOf[current]),k=seq.indexOf(current);if(k<seq.length-1)go(seq[k+1]);});
   homeB.addEventListener('click',function(e){e.preventDefault();go('home');});
@@ -1938,21 +1953,28 @@ details.acc[open]>summary::after{content:"–"}
     function fb(){try{var r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);bt.textContent='selected, copy manually';}catch(e){}}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fb);}else{fb();}});
 
+  // route() returns a promise that settles once the panel holds its content (and any target inside it is revealed)
   function route(){
+    routed=location.hash;
     var h=(location.hash||'').slice(1);
     if(h==='next')h='home';
-    if(!h){show('home',false);return;}
-    if(ids.indexOf(h)>=0){show(h,true);return;}
+    if(!h)return show('home',false);
+    if(ids.indexOf(h)>=0)return show(h,true);
     var el=document.getElementById(h);
-    if(el){var p=el.closest('.panel');if(p){show(p.id,false).then(function(){if(current===p.id)reveal(el);});return;}}
+    if(el){var p=el.closest('.panel');if(p)return show(p.id,false).then(function(){if(current===p.id)reveal(el);});}
     // an id inside a file not yet fetched: a report section (#m23-2) by its numbering, its accordions (#m23-sources,
     // #m23-made, P68; #m23-note, P73) by their suffix, any other (#rs-u3) by data-anchors
     var pid=h.replace(/-(\d+|sources|made|note)$/,'');
     if(pid===h||!isReport(pid)){pid=null;panels.some(function(p){if((' '+(p.getAttribute('data-anchors')||'')+' ').indexOf(' '+h+' ')>=0){pid=p.id;return true;}});}
-    if(pid){show(pid,false).then(function(){var t=document.getElementById(h);if(t&&current===pid)reveal(t);});return;}
-    show('home',false);
+    if(pid)return show(pid,false).then(function(){var t=document.getElementById(h);if(t&&current===pid)reveal(t);});
+    return show('home',false);
   }
-  window.addEventListener('hashchange',route);
-  route();
+  // route, then put back the scroll the entry kept (an entry without one keeps what route did: the top, or the target)
+  function routeTo(st){clearTimeout(saveT);var y=st&&typeof st.y==='number'?st.y:null,h=location.hash;
+    route().then(function(){if(y!==null&&location.hash===h)window.scrollTo(0,y);});}
+  window.addEventListener('popstate',function(e){routeTo(e.state);});
+  // a hash change popstate has not routed already (an older browser fires hashchange alone for a plain hash link)
+  window.addEventListener('hashchange',function(){if(location.hash!==routed)routeTo(history.state);});
+  routeTo(history.state);
 })();
 </script>

@@ -2490,6 +2490,124 @@ def check_site_log(br, fails):
     print(f'site log (S-PAGES): {len(nxt)} next and {len(done)} done in docs/site-log.md; Backlog and Changelog checked {seen} times at '
           f'{", ".join(str(x[1]) for x in SL_WIDTHS)} px, dark and light (plain words, private terms, order, areas, no sideways scroll); {len(bad)} faults')
 
+# S-NAV1 (21 Nov 2026), step A: history. Every move is a real history entry (shell.js go() pushes '#'+id), so a back swipe
+# walks the site instead of leaving it; popstate restores the panel and the scroll its entry kept; the first load pushes
+# nothing. At 390 px: a fresh load holds as many entries as a plain page (no push); home -> course -> unit by the links a reader taps (each at a scroll part
+# way down, read back before the tap), then history.back() once per level lands on each in turn with its scroll restored
+# (2 px), and history.forward() lands on the unit with its own. Then the artifact case: with pushState refused (it throws,
+# as a sandboxed frame may) go() falls back to replaceState, the behaviour before S-NAV1: the pages still change and no
+# entry is added; and inside a same-origin sandboxed iframe the walk and one back work as at the top level.
+HIST_PATH_JS = r'''() => {   // the links a reader taps, level by level: [selector of the link, the panel it opens]
+  const kind = id => { const p = document.getElementById(id); return p && p.getAttribute('data-kind'); };
+  const course = [...document.querySelectorAll('#home a.course[data-target]')].map(a => a.dataset.target).find(t => kind(t) === 'course');
+  return course ? [['#home a.course[data-target="' + course + '"]', course]] : []; }'''
+HIST_UNIT_JS = r'''(cid) => { const p = document.getElementById(cid); p.querySelectorAll('details').forEach(d => d.open = true);
+  const a = [...p.querySelectorAll('a[data-target]')].find(a => { const t = document.getElementById(a.dataset.target); return t && t.getAttribute('data-kind') === 'report'; });
+  return a ? a.dataset.target : null; }'''
+HIST_AT_JS = '''() => ({id: [...document.querySelectorAll('.panel')].find(p => !p.hidden).id, y: Math.round(scrollY),
+  max: Math.round(document.documentElement.scrollHeight - innerHeight), n: history.length, hash: location.hash})'''
+def _hist_ready(fr):
+    fr.wait_for_function(READY_JS, timeout=15000); fr.wait_for_timeout(350)   # the fetch landed and the restore ran
+
+def _hist_walk(fr, label, fails, scroll=True):
+    """home -> (area, Step B) -> course -> unit, tapping each link in the page; returns [(panel, y)] per level, home first."""
+    _hist_ready(fr)
+    at = fr.evaluate(HIST_AT_JS)
+    if at['id'] != 'home': fails.append(f'history {label}: the fresh load shows {at["id"]}, not the home'); return None
+    links = fr.evaluate(HIST_PATH_JS)
+    # ---- EXTENSION POINT, S-NAV1 Step B (area pages): insert the area level here, between the home and the course: the
+    # home's link to the course's area page, then the area page's link to the course, so the walk reads
+    # home -> area -> course -> unit and the backs below cover three levels. HIST_PATH_JS then returns
+    # [[home's link to the area, area id], [area's link to the course, course id]]; nothing else here changes.
+    if not links: fails.append(f'history {label}: no course tile on the home'); return None
+    levels = []
+    def leave(sel, want):
+        at = fr.evaluate(HIST_AT_JS)
+        if scroll:
+            fr.evaluate(f'window.scrollTo(0, {int(at["max"] * .4)})'); fr.wait_for_timeout(350)   # past the save's 200 ms debounce
+            at = fr.evaluate(HIST_AT_JS)
+            if at['y'] < 100: fails.append(f'history {label}: {at["id"]} scrolls only {at["max"]} px, too short to test its restore')
+        levels.append((at['id'], at['y']))
+        fr.evaluate('(s) => document.querySelector(s).click()', sel)   # a tap, without Playwright scrolling the link into view
+        _hist_ready(fr)
+        now = fr.evaluate(HIST_AT_JS)
+        if now['id'] != want: fails.append(f'history {label}: {sel} opened {now["id"]}, expected {want}'); return False
+        if now['y'] != 0: fails.append(f'history {label}: {want} opened at y={now["y"]}, expected the top')
+        return True
+    for sel, want in links:
+        if not leave(sel, want): return None
+    cid = links[-1][1]
+    unit = fr.evaluate(HIST_UNIT_JS, cid)
+    if not unit: fails.append(f'history {label}: no unit link on {cid}'); return None
+    if not leave(f'#{cid} a[data-target="{unit}"]', unit): return None
+    at = fr.evaluate(HIST_AT_JS)
+    if scroll:
+        fr.evaluate(f'window.scrollTo(0, {int(at["max"] * .4)})'); fr.wait_for_timeout(350); at = fr.evaluate(HIST_AT_JS)
+    levels.append((at['id'], at['y']))
+    return levels
+
+def _hist_ctx(br, **kw):
+    ctx = br.new_context(color_scheme='dark', reduced_motion='reduce', **kw)
+    ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=FONT_CSS))
+    ctx.route('**/fonts.gstatic.com/**', font_file)
+    return ctx
+
+def check_history(br, fails):
+    lines = []
+    # 1 · the walk and the backs, at the top level
+    ctx = _hist_ctx(br, viewport={'width': 390, 'height': 844}, device_scale_factor=3, is_mobile=True, has_touch=True)
+    blank = URL.replace('index.html', '__blank_test.html')   # a page with no script: the entries a plain first load holds
+    ctx.route(blank, lambda r: r.fulfill(status=200, content_type='text/html', body='<!DOCTYPE html><title>x</title>'))
+    pb = ctx.new_page(); pb.goto(blank); base = pb.evaluate('history.length'); pb.close()   # Playwright's about:blank counts
+    pg = ctx.new_page(); pg.goto(URL + '#home')
+    _hist_ready(pg)
+    n0 = pg.evaluate('history.length')
+    if n0 != base: fails.append(f'history: the first load holds {n0} entries, a plain page {base} (it must replace, never push)')
+    lv = _hist_walk(pg, 'top', fails)
+    if lv:
+        n = pg.evaluate('history.length')
+        if n != n0 + len(lv) - 1: fails.append(f'history: {len(lv)} pages walked left {n} entries, expected {n0 + len(lv) - 1}')
+        for want, y in reversed(lv[:-1]):
+            pg.evaluate('history.back()'); _hist_ready(pg)
+            at = pg.evaluate(HIST_AT_JS)
+            ok = at['id'] == want and abs(at['y'] - y) <= 2
+            if not ok: fails.append(f'history back: {at["id"]} at y={at["y"]}, expected {want} at y={y}')
+            lines.append(f'back -> {at["id"]} y={at["y"]} (kept {y})' + ('' if ok else ' FAIL'))
+        for _ in lv[1:-1]: pg.evaluate('history.forward()'); _hist_ready(pg)
+        pg.evaluate('history.forward()'); _hist_ready(pg)
+        at, (want, y) = pg.evaluate(HIST_AT_JS), lv[-1]
+        ok = at['id'] == want and abs(at['y'] - y) <= 2
+        if not ok: fails.append(f'history forward: {at["id"]} at y={at["y"]}, expected {want} at y={y}')
+        lines.append(f'forward to the end -> {at["id"]} y={at["y"]} (kept {y})' + ('' if ok else ' FAIL'))
+        print('history: ' + ' -> '.join(f'{i} (y={y})' for i, y in lv) + '; ' + '; '.join(lines))
+    ctx.close()
+    # 2 · pushState refused: the fallback is replaceState, the pages still change, no entry is added
+    ctx = _hist_ctx(br, viewport={'width': 390, 'height': 844}, is_mobile=True, has_touch=True)
+    ctx.add_init_script("history.pushState = function(){ throw new DOMException('refused', 'SecurityError'); };")
+    pg = ctx.new_page(); errs = []; pg.on('pageerror', lambda e: errs.append(str(e)))
+    pg.goto(URL + '#home'); _hist_ready(pg); n0 = pg.evaluate('history.length')
+    lv = _hist_walk(pg, 'pushState refused', fails, scroll=False)
+    if lv:
+        at = pg.evaluate(HIST_AT_JS)
+        if at['n'] != n0 or at['hash'] != '#' + lv[-1][0]: fails.append(f'history pushState refused: {at["n"]} entries, address {at["hash"]}; expected {n0} (as loaded) and #{lv[-1][0]}')
+        else: print(f'history, pushState refused: replaceState fallback, {" -> ".join(i for i, _ in lv)} shown, no entry added ({n0}), address {at["hash"]}')
+    if errs: fails.append('history pushState refused: page errors ' + ' | '.join(errs[:3]))
+    ctx.close()
+    # 3 · inside a sandboxed iframe (allow-scripts allow-same-origin), as an artifact viewer may hold the page
+    ctx = _hist_ctx(br, viewport={'width': 420, 'height': 900})
+    host = URL.replace('index.html', '__frame_test.html')
+    ctx.route(host, lambda r: r.fulfill(status=200, content_type='text/html',
+              body='<!DOCTYPE html><iframe sandbox="allow-scripts allow-same-origin" src="index.html#home" style="width:390px;height:844px;border:0"></iframe>'))
+    pg = ctx.new_page(); pg.goto(host); pg.wait_for_timeout(300)
+    fr = pg.frames[1]
+    lv = _hist_walk(fr, 'iframe', fails)
+    if lv:
+        fr.evaluate('history.back()'); _hist_ready(fr)
+        at, (want, y) = fr.evaluate(HIST_AT_JS), lv[-2]
+        if at['id'] != want or abs(at['y'] - y) > 2: fails.append(f'history iframe back: {at["id"]} at y={at["y"]}, expected {want} at y={y}')
+        else: print(f'history, sandboxed iframe: {" -> ".join(i for i, _ in lv)}, back -> {at["id"]} y={at["y"]} (kept {y})')
+    ctx.close()
+
 def short(iso):
     import datetime
     return datetime.date.fromisoformat(iso).strftime('%-d %b %Y')
@@ -2512,6 +2630,7 @@ def main():
         check_seps(br, fails)
         check_reliefs(br, fails)   # P95
         check_site_log(br, fails)   # S-PAGES
+        check_history(br, fails)   # S-NAV1 step A
 
         # ---- phone ------------------------------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)
