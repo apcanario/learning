@@ -13,7 +13,7 @@ S-DEC4 (20 Nov 2026): the courses named below are Academy's; the checks name non
 (see LEAD, SECOND, MDNAV, SAMPLE and PRIVATE after SITE). A check needing a property the edition's courses lack (a
 history course with Greece's structure, a second history course, a markdown course) prints what it leaves out and why;
 an edition without a history course runs the split on a markdown course (check_split_md). What's new's 10 to 25 levels
-hold for every edition (P-DEC15): the build draws an edition whose largest day is under 10 x NEW_INTERVAL words at its
+hold for every edition whose largest day is 10 words or more (P-DEC15): the build draws an edition whose largest day is under 10 x NEW_INTERVAL words at its
 own scale (build.py new_interval, a tenth of that day), checked against that scale, and the run says so. Private terms: the
 default edition's public courses; another edition's own files, unless it holds a course marked `private`.
 The site is a shell plus one file per report (docs/academy.md A2), since P20 one file per syllabus and per Brand + AI
@@ -1510,7 +1510,7 @@ def lands(sec):
     return bool(sec[1]) and sec[2] is not None and (-5 <= sec[2] <= 200 or bool(sec[3]))
 
 def fresh_land(pg, h, retried):
-    """Open URL#h on a fresh load and return [visible panel, anchor found, anchor top] once the anchor has settled;
+    """Open URL#h on a fresh load and return [visible panel, anchor found, anchor top, page at its foot] once the anchor has settled;
     one retry (a second fresh load) when it has not landed, recorded in retried."""
     for attempt in (0, 1):
         pg.goto(URL + '#' + h); pg.reload(); ready(pg)
