@@ -1,0 +1,6 @@
+# DEC-C expected build-output differences (P-DEC8 four built.html; P-DEC15 prose in kit/README.md, copied into academy/README.md)
+academy/building-with-ai-bw/built.html
+academy/sport-psychology-sp/built.html
+academy/supply-chain-execution-sce/built.html
+academy/ux-ia/built.html
+academy/README.md
