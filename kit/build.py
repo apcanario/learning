@@ -1042,7 +1042,7 @@ backlog = f"""
 # the same density (the spread keeps a neighbour's tail under a level, so a unit's rings rise with its words); the tile's
 # numbers say the rest.
 NEWEST = DATED[0] if DATED else None
-HERO_INTERVAL = 23000   # words between two of the hero's contour levels: History's 510k words stand 22 levels up (W-DD-SP2, 19 Nov 2026: 22,000 to 23,000, because the hero's two layouts reached 20,661 B with Coaching's twelfth unit, over verify.py's 20 KB), an area of 67k three
+HERO_INTERVAL = 24000   # words between two of the hero's contour levels: History's 510k words stand 22 levels up (W-DD-SP2, 19 Nov 2026: 22,000 to 23,000, because the hero's two layouts reached 20,661 B with Coaching's twelfth unit, over verify.py's 20 KB), an area of 67k three (W-SCE1, 21 Nov 2026: 23,000 to 24,000, because the hero reached 20,573 B with the first Supply Chain Execution unit, over verify.py's 20 KB; the fix P-DEC20 and the contour rule both want is still a size budget not tied to the unit count)
 # _HERO_AT (S-DEC3: catalog.toml, each track's `hero`; kit/courses.py HERO_AT): where each area's rise stands (fractions
 # of the layout's width and height), tall and wide. P92 checks: every rise inside a 390 px phone's view (x .27 to .73)
 # and above the fade, each small rise closing two rings of its own (verify.py checks it), Marketing clear of the sidebar
