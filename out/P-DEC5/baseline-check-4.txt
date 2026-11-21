@@ -1,0 +1,6 @@
+academy: built in 112 s, 457 files
+greece: built in 33 s, 82 files
+academy: changed README.md
+academy: 457 files, 1 differ (0 added, 0 removed, 1 changed)
+greece: 82 files, 0 differ
+baseline: 1 files differ
