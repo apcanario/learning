@@ -14,7 +14,8 @@ half-done change.
                 its courses/<id>/course.toml (S-SP0, 16 Nov 2026: sport-psychology) gets no sources/ folder, its data folder's bibliography.md,
                 and a sourcing-standard.md holding only the standard's opening, Part 1 and the course's own part (also in the
                 checker's and the corrections checker's packets)
-        checker unit.md, brief.txt, notes.md, unsure.md, the sourcing standard, the case file, skills/audit-units;
+        checker unit.md, brief.txt, notes.md, unsure.md, the sourcing standard, the case file, skills/audit-units, the filed
+                units of the course (filed/, W-SCE2: for the unit's pointers to them);
                 with --sources F also sources.md (the writer's source log, S-SP0)
         applier unit.md, report.md (the fresh-check report), fixes.json (made from the report by `fixes`)
         filer   unit.md, notes.md, unsure.md, report.md, the course's course.toml, syllabus-flags.md and case file, the course's rows
@@ -518,6 +519,10 @@ def cmd_stage(argv):
         standard()
         if case:
             put(case)
+        (out / 'filed').mkdir()                              # W-SCE2 (21 Nov 2026): the course's filed units, so the checker can verify
+        for x in r['order']:                                 # the unit's pointers to them and the writer's Contradictions (errata item 6)
+            if x in r['filed']:
+                put(r['filed'][x], 'filed/' + r['filed'][x].name)
         (out / 'out').mkdir()
     elif kind == 'corrections':                              # W-BW5 (15 Nov 2026): the corrections checker's packet (steps 1b and 7b)
         if 'text' not in opt:
