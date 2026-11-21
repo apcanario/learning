@@ -1,10 +1,10 @@
 # Greece unit 3: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 7 reports in unit 3 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 7 reports in unit 3 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 3.1 What a hero is, and Perseus
 
-Curated bibliography: `bibliography/greece/r-3.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-3.1.md`.
 
 ### Ancient works
 - Answer, *Iliad* 12.23; 14.319–320; 19.95–133
@@ -50,7 +50,7 @@ Curated bibliography: `bibliography/greece/r-3.1.md`.
 
 ## 3.2 Heracles
 
-Curated bibliography: `bibliography/greece/r-3.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-3.2.md`.
 
 ### Ancient works
 - Answer Sophocles, *Women of Trachis* 930–931
@@ -86,7 +86,7 @@ Curated bibliography: `bibliography/greece/r-3.2.md`.
 
 ## 3.3 Theseus and Athens
 
-Curated bibliography: `bibliography/greece/r-3.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-3.3.md`.
 
 ### Ancient works
 - Aeschylus, *Eumenides* 685–690
@@ -119,7 +119,7 @@ Curated bibliography: `bibliography/greece/r-3.3.md`.
 
 ## 3.4 Jason, the Argonauts and Medea
 
-Curated bibliography: `bibliography/greece/r-3.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-3.4.md`.
 
 ### Ancient works
 
@@ -135,7 +135,7 @@ Curated bibliography: `bibliography/greece/r-3.4.md`.
 
 ## 3.5 The Theban cycle: Cadmus to Antigone
 
-Curated bibliography: `bibliography/greece/r-3.5.md`.
+Curated bibliography: `courses/greece/bibliography/r-3.5.md`.
 
 ### Ancient works
 - Aeschylus, *Seven* 375–652; 423–456; 742; 742–757; 752–757; 782–783; 805–820
@@ -177,7 +177,7 @@ Curated bibliography: `bibliography/greece/r-3.5.md`.
 
 ## 3.6 The other heroes: Bellerophon, Meleager, Atalanta, Pelops, Tantalus
 
-Curated bibliography: `bibliography/greece/r-3.6.md`.
+Curated bibliography: `courses/greece/bibliography/r-3.6.md`.
 
 ### Ancient works
 - Aeschylus, *Agamemnon* 1583–1602
@@ -219,7 +219,7 @@ Curated bibliography: `bibliography/greece/r-3.6.md`.
 
 ## 3.7 Love, hubris and metamorphosis
 
-Curated bibliography: `bibliography/greece/r-3.7.md`.
+Curated bibliography: `courses/greece/bibliography/r-3.7.md`.
 
 ### Ancient works
 - Aeschylus, *Seven Against Thebes* 423–446

@@ -1,10 +1,10 @@
 # Greece unit 1: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 3 reports in unit 1 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 3 reports in unit 1 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 1.1 Minoan Crete
 
-Curated bibliography: `bibliography/greece/r-1.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-1.1.md`.
 
 ### Ancient works
 - Apollodorus, *Epitome* 1.12–15
@@ -30,7 +30,7 @@ Curated bibliography: `bibliography/greece/r-1.1.md`.
 
 ## 1.2 Mycenaean Greece
 
-Curated bibliography: `bibliography/greece/r-1.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-1.2.md`.
 
 ### Ancient works
 - *Journal of Hellenic Studies* 73
@@ -44,7 +44,7 @@ Curated bibliography: `bibliography/greece/r-1.2.md`.
 
 ## 1.3 The collapse of 1200 and the Dark Age
 
-Curated bibliography: `bibliography/greece/r-1.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-1.3.md`.
 
 ### Ancient works
 - Apollodorus, *Library* 2.8.2–5

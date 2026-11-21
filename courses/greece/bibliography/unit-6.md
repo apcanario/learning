@@ -1,10 +1,10 @@
 # Greece unit 6: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 7 reports in unit 6 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 7 reports in unit 6 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 6.1 The Persian Wars
 
-Curated bibliography: `bibliography/greece/r-6.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-6.1.md`.
 
 ### Ancient works
 - Aristotle, *Constitution* 22
@@ -26,7 +26,7 @@ Curated bibliography: `bibliography/greece/r-6.1.md`.
 
 ## 6.2 The Athenian empire and the radical democracy
 
-Curated bibliography: `bibliography/greece/r-6.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-6.2.md`.
 
 ### Ancient works
 - *Republic* 557a–564a
@@ -49,7 +49,7 @@ Curated bibliography: `bibliography/greece/r-6.2.md`.
 
 ## 6.3 The Peloponnesian War
 
-Curated bibliography: `bibliography/greece/r-6.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-6.3.md`.
 
 ### Ancient works
 - Aristotle's, *Constitution of the Athenians* 29–33
@@ -82,7 +82,7 @@ Curated bibliography: `bibliography/greece/r-6.3.md`.
 
 ## 6.4 Tragedy and comedy
 
-Curated bibliography: `bibliography/greece/r-6.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-6.4.md`.
 
 ### Ancient works
 - Aeschines, *Against Ctesiphon* 41–8
@@ -142,7 +142,7 @@ Curated bibliography: `bibliography/greece/r-6.4.md`.
 
 ## 6.5 The Sophists, Socrates, Plato and Aristotle
 
-Curated bibliography: `bibliography/greece/r-6.5.md`.
+Curated bibliography: `courses/greece/bibliography/r-6.5.md`.
 
 ### Ancient works
 - Aristotle, *Rhetoric* 3.1, 3.8
@@ -197,7 +197,7 @@ Curated bibliography: `bibliography/greece/r-6.5.md`.
 
 ## 6.6 The fourth century: Sparta, Thebes, Philip
 
-Curated bibliography: `bibliography/greece/r-6.6.md`.
+Curated bibliography: `courses/greece/bibliography/r-6.6.md`.
 
 ### Ancient works
 - Aristotle, *Politics* 1311b
@@ -222,7 +222,7 @@ Curated bibliography: `bibliography/greece/r-6.6.md`.
 
 ## 6.7 Alexander
 
-Curated bibliography: `bibliography/greece/r-6.7.md`.
+Curated bibliography: `courses/greece/bibliography/r-6.7.md`.
 
 ### Ancient works
 - Aristotle, *Politics* 1311b

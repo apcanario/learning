@@ -1,10 +1,10 @@
 # Rome unit 4: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 4 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 4 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 4.1 Carthage and Dido
 
-Curated bibliography: `bibliography/rome/r-4.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-4.1.md`.
 
 ### Ancient works
 - Arrian, *Anabasis* 2.24.5
@@ -42,7 +42,7 @@ Curated bibliography: `bibliography/rome/r-4.1.md`.
 
 ## 4.2 The First Punic War
 
-Curated bibliography: `bibliography/rome/r-4.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-4.2.md`.
 
 ### Ancient works
 - Cicero, *On Old Age* 44
@@ -77,7 +77,7 @@ Curated bibliography: `bibliography/rome/r-4.2.md`.
 
 ## 4.3 Hannibal and the Second Punic War
 
-Curated bibliography: `bibliography/rome/r-4.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-4.3.md`.
 
 ### Ancient works
 - Cicero, *On Divination* 1.49
@@ -105,7 +105,7 @@ Curated bibliography: `bibliography/rome/r-4.3.md`.
 
 ## 4.4 East and West: Macedon, Spain and the year 146
 
-Curated bibliography: `bibliography/rome/r-4.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-4.4.md`.
 
 ### Ancient works
 - Appian, *Iberica* 43–44; 59–60; 69; 70, 74; 75; 79; 83; 90–93; 97–98
@@ -143,7 +143,7 @@ Curated bibliography: `bibliography/rome/r-4.4.md`.
 
 ## 4.5 Polybius, Cato and the Greek invasion of Rome
 
-Curated bibliography: `bibliography/rome/r-4.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-4.5.md`.
 
 ### Ancient works
 - Cicero, *Brutus* 60; 71; 72; 79

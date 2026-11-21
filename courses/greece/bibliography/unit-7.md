@@ -1,10 +1,10 @@
 # Greece unit 7: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 4 reports in unit 7 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 4 reports in unit 7 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 7.1 The Successors and the kingdoms
 
-Curated bibliography: `bibliography/greece/r-7.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-7.1.md`.
 
 ### Ancient works
 - Aelian, *Varia Historia* 2.20
@@ -42,7 +42,7 @@ Curated bibliography: `bibliography/greece/r-7.1.md`.
 
 ## 7.2 Alexandria: science, scholarship and the new philosophies
 
-Curated bibliography: `bibliography/greece/r-7.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-7.2.md`.
 
 ### Ancient works
 - Answer Strabo, *Geography* 17.1.8
@@ -85,7 +85,7 @@ Curated bibliography: `bibliography/greece/r-7.2.md`.
 
 ## 7.3 Rome conquers Greece
 
-Curated bibliography: `bibliography/greece/r-7.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-7.3.md`.
 
 ### Ancient works
 - Appian, *Mithridatic Wars* 30–39; 111–113
@@ -134,7 +134,7 @@ Curated bibliography: `bibliography/greece/r-7.3.md`.
 
 ## 7.4 Greece under the Empire and the end of antiquity
 
-Curated bibliography: `bibliography/greece/r-7.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-7.4.md`.
 
 ### Ancient works
 - Answer, *Codex Theodosianus* 16.10.10

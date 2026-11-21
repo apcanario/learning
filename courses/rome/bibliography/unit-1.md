@@ -1,10 +1,10 @@
 # Rome unit 1: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 1 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 1 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 1.1 The peoples of Iron Age Italy
 
-Curated bibliography: `bibliography/rome/r-1.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-1.1.md`.
 
 ### Ancient works
 - Plutarch, *Romulus* 14.1
@@ -35,7 +35,7 @@ Curated bibliography: `bibliography/rome/r-1.1.md`.
 
 ## 1.2 The Etruscans
 
-Curated bibliography: `bibliography/rome/r-1.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-1.2.md`.
 
 ### Ancient works
 - Cicero, *On Divination* 1.92; 2.50
@@ -81,7 +81,7 @@ Curated bibliography: `bibliography/rome/r-1.2.md`.
 
 ## 1.3 Before Romulus: Evander, Hercules and Aeneas
 
-Curated bibliography: `bibliography/rome/r-1.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-1.3.md`.
 
 ### Ancient works
 - Answer, *Iliad* 20.307–308
@@ -129,7 +129,7 @@ Curated bibliography: `bibliography/rome/r-1.3.md`.
 
 ## 1.4 Romulus and Remus
 
-Curated bibliography: `bibliography/rome/r-1.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-1.4.md`.
 
 ### Ancient works
 - Cicero, *Against Catiline* 3.19
@@ -171,7 +171,7 @@ Curated bibliography: `bibliography/rome/r-1.4.md`.
 
 ## 1.5 The seven kings
 
-Curated bibliography: `bibliography/rome/r-1.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-1.5.md`.
 
 ### Ancient works
 - Arnobius, *Against the Pagans* 6.7
@@ -212,7 +212,7 @@ Curated bibliography: `bibliography/rome/r-1.5.md`.
 
 ## 1.6 The fall of the monarchy: Lucretia, Brutus and Porsenna
 
-Curated bibliography: `bibliography/rome/r-1.6.md`.
+Curated bibliography: `courses/rome/bibliography/r-1.6.md`.
 
 ### Ancient works
 - Answer Tacitus, *Histories* 3.72

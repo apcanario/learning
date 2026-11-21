@@ -1,10 +1,10 @@
 # Rome unit 13: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 13 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 13 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 13.1 Philosophy comes to Rome
 
-Curated bibliography: `bibliography/rome/r-13.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-13.1.md`.
 
 ### Ancient works
 - Cicero, *Tusculan Disputations* 2.1; 2.61; 5.113
@@ -59,7 +59,7 @@ Curated bibliography: `bibliography/rome/r-13.1.md`.
 
 ## 13.2 Stoicism made Roman
 
-Curated bibliography: `bibliography/rome/r-13.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-13.2.md`.
 
 ### Ancient works
 - Cicero, *On Duties* 1.8; 1.46; 1.53–55; 1.57–58; 1.107, 1.115
@@ -98,7 +98,7 @@ Curated bibliography: `bibliography/rome/r-13.2.md`.
 
 ## 13.3 The rival schools at Rome
 
-Curated bibliography: `bibliography/rome/r-13.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-13.3.md`.
 
 ### Ancient works
 - Answer, *On the Laws* 1.21; 1.39
@@ -157,7 +157,7 @@ Curated bibliography: `bibliography/rome/r-13.3.md`.
 
 ## 13.4 Cato and the Stoic opposition
 
-Curated bibliography: `bibliography/rome/r-13.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-13.4.md`.
 
 ### Ancient works
 - Epictetus, *Discourses* 1.2.19–21
@@ -192,7 +192,7 @@ Curated bibliography: `bibliography/rome/r-13.4.md`.
 
 ## 13.5 Seneca
 
-Curated bibliography: `bibliography/rome/r-13.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-13.5.md`.
 
 ### Ancient works
 - Tacitus, *Annals* 12.8.2; 13.2; 13.15–17; 13.42; 13.42.3; 13.42–43, 14.52; 14.7; 14.52; 14.52–56; 14.53–56; 14.55–56; 15.22.2; 15.45; 15.60; 15.60–64; 15.62–64; 15.63; 16.17
@@ -227,7 +227,7 @@ Curated bibliography: `bibliography/rome/r-13.5.md`.
 
 ## 13.6 Musonius Rufus and Epictetus
 
-Curated bibliography: `bibliography/rome/r-13.6.md`.
+Curated bibliography: `courses/rome/bibliography/r-13.6.md`.
 
 ### Ancient works
 - Philostratus, *Life of Apollonius* 7.16
@@ -260,7 +260,7 @@ Curated bibliography: `bibliography/rome/r-13.6.md`.
 
 ## 13.7 Marcus Aurelius: a life
 
-Curated bibliography: `bibliography/rome/r-13.7.md`.
+Curated bibliography: `courses/rome/bibliography/r-13.7.md`.
 
 ### Ancient works
 - Eleusis, *Marcus* 27.1
@@ -291,7 +291,7 @@ Curated bibliography: `bibliography/rome/r-13.7.md`.
 
 ## 13.8 The Meditations and the afterlife of Roman Stoicism
 
-Curated bibliography: `bibliography/rome/r-13.8.md`.
+Curated bibliography: `courses/rome/bibliography/r-13.8.md`.
 
 ### Ancient works
 - *Avidius Cassius* 3

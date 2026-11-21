@@ -1,10 +1,10 @@
 # Rome unit 7: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 7 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 7 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 7.1 The Julio-Claudians
 
-Curated bibliography: `bibliography/rome/r-7.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-7.1.md`.
 
 ### Ancient works
 - Aurelius Victor, *Caesares* 5.2
@@ -50,7 +50,7 @@ Curated bibliography: `bibliography/rome/r-7.1.md`.
 
 ## 7.2 The year of four emperors and the Flavians
 
-Curated bibliography: `bibliography/rome/r-7.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-7.2.md`.
 
 ### Ancient works
 - Josephus, *Jewish War* 2.293; 6.236–266; 6.420; 7.123–157; 7.252–406
@@ -91,7 +91,7 @@ Curated bibliography: `bibliography/rome/r-7.2.md`.
 
 ## 7.3 The adoptive emperors
 
-Curated bibliography: `bibliography/rome/r-7.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-7.3.md`.
 
 ### Ancient works
 - Eusebius, *Church History* 4.2; 4.6
@@ -128,7 +128,7 @@ Curated bibliography: `bibliography/rome/r-7.3.md`.
 
 ## 7.4 The Severans and the citizenship of 212
 
-Curated bibliography: `bibliography/rome/r-7.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-7.4.md`.
 
 ### Ancient works
 - April, *Severus* 1.2; 1.3; 3.9
@@ -160,7 +160,7 @@ Curated bibliography: `bibliography/rome/r-7.4.md`.
 
 ## 7.5 How the empire worked
 
-Curated bibliography: `bibliography/rome/r-7.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-7.5.md`.
 
 ### Ancient works
 - Josephus, *Jewish Antiquities* 18.1–10

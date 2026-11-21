@@ -1,10 +1,10 @@
 # Greece unit 2: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 2 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 2 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 2.1 Cosmogony: Chaos to Zeus
 
-Curated bibliography: `bibliography/greece/r-2.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-2.1.md`.
 
 ### Ancient works
 - Apollodorus, *Library* 1.1.2–1.2.1; 1.1.6; 1.2.1; 1.6.1–2; 1.6.3
@@ -39,7 +39,7 @@ Curated bibliography: `bibliography/greece/r-2.1.md`.
 
 ## 2.2 The Twelve Olympians
 
-Curated bibliography: `bibliography/greece/r-2.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-2.2.md`.
 
 ### Ancient works
 - Aeschylus, *Eumenides* 1–19
@@ -71,7 +71,7 @@ Curated bibliography: `bibliography/greece/r-2.2.md`.
 
 ## 2.3 The underworld and the chthonic gods
 
-Curated bibliography: `bibliography/greece/r-2.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-2.3.md`.
 
 ### Ancient works
 - Answer, *Iliad* 3.103–104; 5.395–404; 8.13–16, 478–481; 8.367; 8.367–369; 8.368; 8.369; 9.158–159; 9.454, 571; 9.457; 15.187–193; 16.671–683; 20.61–65; 23.100
@@ -130,7 +130,7 @@ Curated bibliography: `bibliography/greece/r-2.3.md`.
 
 ## 2.4 Prometheus, Pandora, the Five Ages and the Flood
 
-Curated bibliography: `bibliography/greece/r-2.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-2.4.md`.
 
 ### Ancient works
 - Apollodorus, *Library* 1.7.1; 1.7.2; 1.7.3
@@ -162,7 +162,7 @@ Curated bibliography: `bibliography/greece/r-2.4.md`.
 
 ## 2.5 The lesser divinities and personifications
 
-Curated bibliography: `bibliography/greece/r-2.5.md`.
+Curated bibliography: `courses/greece/bibliography/r-2.5.md`.
 
 ### Ancient works
 - Aeschylus, *Eumenides* 1–8; 321
@@ -212,7 +212,7 @@ Curated bibliography: `bibliography/greece/r-2.5.md`.
 
 ## 2.6 The monsters and their genealogy
 
-Curated bibliography: `bibliography/greece/r-2.6.md`.
+Curated bibliography: `courses/greece/bibliography/r-2.6.md`.
 
 ### Ancient works
 - Apollodorus, *Epitome* 1.20; 7.18–19

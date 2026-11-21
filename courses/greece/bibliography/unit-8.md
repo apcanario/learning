@@ -1,10 +1,10 @@
 # Greece unit 8: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 8 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 8 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 8.1 Ritual practice: sacrifice, temples, priests, pollution
 
-Curated bibliography: `bibliography/greece/r-8.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-8.1.md`.
 
 ### Ancient works
 - Aeschylus, *Eumenides* 107; 280–283
@@ -64,7 +64,7 @@ Curated bibliography: `bibliography/greece/r-8.1.md`.
 
 ## 8.2 Oracles and mystery cults
 
-Curated bibliography: `bibliography/greece/r-8.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-8.2.md`.
 
 ### Ancient works
 - Apuleius, *Metamorphoses* 11
@@ -138,7 +138,7 @@ Curated bibliography: `bibliography/greece/r-8.2.md`.
 
 ## 8.3 Festivals and the games
 
-Curated bibliography: `bibliography/greece/r-8.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-8.3.md`.
 
 ### Ancient works
 - Apollodorus, *Library* 3.6.4
@@ -178,7 +178,7 @@ Curated bibliography: `bibliography/greece/r-8.3.md`.
 
 ## 8.4 Death, the afterlife and hero cult
 
-Curated bibliography: `bibliography/greece/r-8.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-8.4.md`.
 
 ### Ancient works
 - Aeschylus, *Eumenides* 94–139
@@ -217,7 +217,7 @@ Curated bibliography: `bibliography/greece/r-8.4.md`.
 
 ## 8.5 Households, women, slaves, the symposium and sexuality
 
-Curated bibliography: `bibliography/greece/r-8.5.md`.
+Curated bibliography: `courses/greece/bibliography/r-8.5.md`.
 
 ### Ancient works
 - Aristophanes, *Clouds* 961–983

@@ -1,10 +1,10 @@
 # Greece unit 5: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 5 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 5 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 5.1 The eighth-century renaissance
 
-Curated bibliography: `bibliography/greece/r-5.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-5.1.md`.
 
 ### Ancient works
 - Aelian, *Varia Historia* 13.14
@@ -56,7 +56,7 @@ Curated bibliography: `bibliography/greece/r-5.1.md`.
 
 ## 5.2 The polis and colonisation
 
-Curated bibliography: `bibliography/greece/r-5.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-5.2.md`.
 
 ### Ancient works
 - Aristotle, *Constitution of the Athenians* 6; 7; 21
@@ -90,7 +90,7 @@ Curated bibliography: `bibliography/greece/r-5.2.md`.
 
 ## 5.3 Hoplites, lawgivers and tyrants
 
-Curated bibliography: `bibliography/greece/r-5.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-5.3.md`.
 
 ### Ancient works
 - Answer, *Politics* 4.1297b
@@ -121,7 +121,7 @@ Curated bibliography: `bibliography/greece/r-5.3.md`.
 
 ## 5.4 Sparta
 
-Curated bibliography: `bibliography/greece/r-5.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-5.4.md`.
 
 ### Ancient works
 - Aristotle, *Politics* 1269b; 1270a; 1270b; 1271a; 1313a
@@ -162,7 +162,7 @@ Curated bibliography: `bibliography/greece/r-5.4.md`.
 
 ## 5.5 Athens from Solon to Cleisthenes
 
-Curated bibliography: `bibliography/greece/r-5.5.md`.
+Curated bibliography: `courses/greece/bibliography/r-5.5.md`.
 
 ### Ancient works
 
@@ -181,7 +181,7 @@ Curated bibliography: `bibliography/greece/r-5.5.md`.
 
 ## 5.6 Lyric poets and the first philosophers
 
-Curated bibliography: `bibliography/greece/r-5.6.md`.
+Curated bibliography: `courses/greece/bibliography/r-5.6.md`.
 
 ### Ancient works
 - Aristotle, *Constitution of the Athenians* 5–12

@@ -1,10 +1,10 @@
 # Rome unit 12: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 12 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 12 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 12.1 Virgil and the making of the poem
 
-Curated bibliography: `bibliography/rome/r-12.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-12.1.md`.
 
 ### Ancient works
 - Cicero, *On Old Age* 10
@@ -37,7 +37,7 @@ Curated bibliography: `bibliography/rome/r-12.1.md`.
 
 ## 12.2 Books 1 to 6: the Odyssean Aeneid
 
-Curated bibliography: `bibliography/rome/r-12.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-12.2.md`.
 
 ### Ancient works
 - Suetonius, *Augustus* 18.2
@@ -62,7 +62,7 @@ Curated bibliography: `bibliography/rome/r-12.2.md`.
 
 ## 12.3 Books 7 to 12: the Iliadic Aeneid
 
-Curated bibliography: `bibliography/rome/r-12.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-12.3.md`.
 
 ### Ancient works
 - Doloneia, *Iliad* 2; 2.1–40; 2.484–493; 2.816–877; 3; 4; 4.141–147; 5; 5.449–453; 7; 7.132–157, 11.670–761; 8.306–308; 10; 12.127–194; 14.153–351; 16.102–111; 16.249–252; 16–17; 18; 18.249–313; 19.15–17; 19.400–403; 20.164–175; 20.285–287; 21.26–32; 21.26–32, 23.175–176; 21.34–135; 22; 22.189–193; 22.199–201; 22.213; 22.338–343; 23; 23–24
@@ -85,7 +85,7 @@ Curated bibliography: `bibliography/rome/r-12.3.md`.
 
 ## 12.4 Dido
 
-Curated bibliography: `bibliography/rome/r-12.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-12.4.md`.
 
 ### Ancient works
 - Appian, *Punica* 136
@@ -132,7 +132,7 @@ Curated bibliography: `bibliography/rome/r-12.4.md`.
 
 ## 12.5 Book 6: the underworld and the parade of heroes
 
-Curated bibliography: `bibliography/rome/r-12.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-12.5.md`.
 
 ### Ancient works
 - Ajax, *Odyssey* 11.563–564
@@ -178,7 +178,7 @@ Curated bibliography: `bibliography/rome/r-12.5.md`.
 
 ## 12.6 The gods of the Aeneid
 
-Curated bibliography: `bibliography/rome/r-12.6.md`.
+Curated bibliography: `courses/rome/bibliography/r-12.6.md`.
 
 ### Ancient works
 - Dido's, *fata Iovis* 4.614
@@ -213,7 +213,7 @@ Curated bibliography: `bibliography/rome/r-12.6.md`.
 
 ## 12.7 Augustan or anti-Augustan?
 
-Curated bibliography: `bibliography/rome/r-12.7.md`.
+Curated bibliography: `courses/rome/bibliography/r-12.7.md`.
 
 ### Ancient works
 - Aristotle, *Nicomachean Ethics* 1125b
@@ -256,7 +256,7 @@ Curated bibliography: `bibliography/rome/r-12.7.md`.
 
 ## 12.8 The Aeneid after Rome
 
-Curated bibliography: `bibliography/rome/r-12.8.md`.
+Curated bibliography: `courses/rome/bibliography/r-12.8.md`.
 
 ### Ancient works
 - Augustine, *City of God* 1.3; 10.27

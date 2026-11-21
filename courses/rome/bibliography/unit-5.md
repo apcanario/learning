@@ -1,10 +1,10 @@
 # Rome unit 5: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 5 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 5 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 5.1 The Gracchi
 
-Curated bibliography: `bibliography/rome/r-5.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-5.1.md`.
 
 ### Ancient works
 - Cicero, *Against Catiline* 1.4
@@ -49,7 +49,7 @@ Curated bibliography: `bibliography/rome/r-5.1.md`.
 
 ## 5.2 Marius and Sulla
 
-Curated bibliography: `bibliography/rome/r-5.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-5.2.md`.
 
 ### Ancient works
 - Appian, *Civil Wars* 1.3, 1.104; 1.29–31; 1.34–39; 1.35; 1.49; 1.55–56; 1.57; 1.64–65; 1.78; 1.84–85; 1.95; 1.98–99
@@ -92,7 +92,7 @@ Curated bibliography: `bibliography/rome/r-5.2.md`.
 
 ## 5.3 Pompey, Crassus, Cicero and Catiline
 
-Curated bibliography: `bibliography/rome/r-5.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-5.3.md`.
 
 ### Ancient works
 - Appian, *Civil Wars* 1.105, 1.107; 1.107; 1.116; 2.5–6; 2.9
@@ -130,7 +130,7 @@ Curated bibliography: `bibliography/rome/r-5.3.md`.
 
 ## 5.4 Caesar
 
-Curated bibliography: `bibliography/rome/r-5.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-5.4.md`.
 
 ### Ancient works
 - Appian, *Civil Wars* 2.30; 2.110
@@ -158,7 +158,7 @@ Curated bibliography: `bibliography/rome/r-5.4.md`.
 
 ## 5.5 Antony, Octavian and Cleopatra
 
-Curated bibliography: `bibliography/rome/r-5.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-5.5.md`.
 
 ### Ancient works
 - Appian, *Civil Wars* 3–5
@@ -199,7 +199,7 @@ Curated bibliography: `bibliography/rome/r-5.5.md`.
 
 ## 5.6 Writing in a falling Republic
 
-Curated bibliography: `bibliography/rome/r-5.6.md`.
+Curated bibliography: `courses/rome/bibliography/r-5.6.md`.
 
 ### Ancient works
 - Appian, *Civil Wars* 2.9

@@ -1,10 +1,10 @@
 # Greece unit 12: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 12 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 12 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 12.1 The Presocratics
 
-Curated bibliography: `bibliography/greece/r-12.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-12.1.md`.
 
 ### Ancient works
 - Aristotle, *Physics* 1.4, 187a; 186a; 198b; 204b; 209a; 233a
@@ -70,7 +70,7 @@ Curated bibliography: `bibliography/greece/r-12.1.md`.
 
 ## 12.2 The Sophists and Socrates
 
-Curated bibliography: `bibliography/greece/r-12.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-12.2.md`.
 
 ### Ancient works
 - Cicero, *On Invention* 1.51–53
@@ -137,7 +137,7 @@ Curated bibliography: `bibliography/greece/r-12.2.md`.
 
 ## 12.3 Plato
 
-Curated bibliography: `bibliography/greece/r-12.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-12.3.md`.
 
 ### Ancient works
 - Plutarch, *Against Colotes* 1126c
@@ -202,7 +202,7 @@ Curated bibliography: `bibliography/greece/r-12.3.md`.
 
 ## 12.4 Aristotle
 
-Curated bibliography: `bibliography/greece/r-12.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-12.4.md`.
 
 ### Ancient works
 - Aristotle, *On the Soul* 2.3; 3.5
@@ -259,7 +259,7 @@ Curated bibliography: `bibliography/greece/r-12.4.md`.
 
 ## 12.5 Cynics, Cyrenaics and the other Socratic schools
 
-Curated bibliography: `bibliography/greece/r-12.5.md`.
+Curated bibliography: `courses/greece/bibliography/r-12.5.md`.
 
 ### Ancient works
 - Cicero, *Academica* 1.8
@@ -297,7 +297,7 @@ Curated bibliography: `bibliography/greece/r-12.5.md`.
 
 ## 12.6 Epicurus and the Garden
 
-Curated bibliography: `bibliography/greece/r-12.6.md`.
+Curated bibliography: `courses/greece/bibliography/r-12.6.md`.
 
 ### Ancient works
 - Cicero, *On Ends* 1.19; 1.22; 1.30; 1.37–38; 1.65–70; 2; 2.96; 5.3
@@ -348,7 +348,7 @@ Curated bibliography: `bibliography/greece/r-12.6.md`.
 
 ## 12.7 The Stoa from Zeno to Posidonius
 
-Curated bibliography: `bibliography/greece/r-12.7.md`.
+Curated bibliography: `courses/greece/bibliography/r-12.7.md`.
 
 ### Ancient works
 - Alexander, *On Aristotle's Prior Analytics* 177–178
@@ -408,7 +408,7 @@ Curated bibliography: `bibliography/greece/r-12.7.md`.
 
 ## 12.8 Sceptics and Neoplatonists: the late schools to 529
 
-Curated bibliography: `bibliography/greece/r-12.8.md`.
+Curated bibliography: `courses/greece/bibliography/r-12.8.md`.
 
 ### Ancient works
 - Cicero, *Brutus* 306

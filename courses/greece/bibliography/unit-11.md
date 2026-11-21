@@ -1,10 +1,10 @@
 # Greece unit 11: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 11.1 Macedon before Alexander
 
-Curated bibliography: `bibliography/greece/r-11.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-11.1.md`.
 
 ### Ancient works
 - Aelian, *Varia Historia* 14.17
@@ -56,7 +56,7 @@ Curated bibliography: `bibliography/greece/r-11.1.md`.
 
 ## 11.2 Alexander's generalship: the battles and sieges
 
-Curated bibliography: `bibliography/greece/r-11.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-11.2.md`.
 
 ### Ancient works
 - Frontinus, *Stratagems* 4.1.6
@@ -79,7 +79,7 @@ Curated bibliography: `bibliography/greece/r-11.2.md`.
 
 ## 11.3 The Achaemenid side
 
-Curated bibliography: `bibliography/greece/r-11.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-11.3.md`.
 
 ### Ancient works
 - Aristophanes, *Acharnians* 91–125
@@ -110,7 +110,7 @@ Curated bibliography: `bibliography/greece/r-11.3.md`.
 
 ## 11.4 Alexander and the gods
 
-Curated bibliography: `bibliography/greece/r-11.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-11.4.md`.
 
 ### Ancient works
 - Aelian, *Varia Historia* 2.19; 5.12; 12.7
@@ -143,7 +143,7 @@ Curated bibliography: `bibliography/greece/r-11.4.md`.
 
 ## 11.5 The court: Companions, conspiracies and the orientalising policy
 
-Curated bibliography: `bibliography/greece/r-11.5.md`.
+Curated bibliography: `courses/greece/bibliography/r-11.5.md`.
 
 ### Ancient works
 - Arrian, *Anabasis* 3.6.5
@@ -168,7 +168,7 @@ Curated bibliography: `bibliography/greece/r-11.5.md`.
 
 ## 11.6 The eastern campaign: Bactria, Sogdiana, India and the return
 
-Curated bibliography: `bibliography/greece/r-11.6.md`.
+Curated bibliography: `courses/greece/bibliography/r-11.6.md`.
 
 ### Ancient works
 - Arrian, *Anabasis* 3.21.10; 5.15.4
@@ -190,7 +190,7 @@ Curated bibliography: `bibliography/greece/r-11.6.md`.
 
 ## 11.7 The sources for Alexander
 
-Curated bibliography: `bibliography/greece/r-11.7.md`.
+Curated bibliography: `courses/greece/bibliography/r-11.7.md`.
 
 ### Ancient works
 - Lucian, *Macrobii* 22
@@ -231,7 +231,7 @@ Curated bibliography: `bibliography/greece/r-11.7.md`.
 
 ## 11.8 Death, body and afterlives
 
-Curated bibliography: `bibliography/greece/r-11.8.md`.
+Curated bibliography: `courses/greece/bibliography/r-11.8.md`.
 
 ### Ancient works
 - Appian, *Mithridatic Wars* 117

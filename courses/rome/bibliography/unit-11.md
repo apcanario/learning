@@ -1,10 +1,10 @@
 # Rome unit 11: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 8 reports in unit 11 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 11.1 How the Republic worked at its height
 
-Curated bibliography: `bibliography/rome/r-11.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-11.1.md`.
 
 ### Ancient works
 - Appian, *Punica* 112
@@ -54,7 +54,7 @@ Curated bibliography: `bibliography/rome/r-11.1.md`.
 
 ## 11.2 Generals and their armies
 
-Curated bibliography: `bibliography/rome/r-11.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-11.2.md`.
 
 ### Ancient works
 - Appian, *Civil Wars* 2.47; 3.43; 5.13; 5.17
@@ -96,7 +96,7 @@ Curated bibliography: `bibliography/rome/r-11.2.md`.
 
 ## 11.3 Politics in the street
 
-Curated bibliography: `bibliography/rome/r-11.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-11.3.md`.
 
 ### Ancient works
 - Appian, *Civil Wars* 1.29–30
@@ -151,7 +151,7 @@ Curated bibliography: `bibliography/rome/r-11.3.md`.
 
 ## 11.4 Women and the late Republic
 
-Curated bibliography: `bibliography/rome/r-11.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-11.4.md`.
 
 ### Ancient works
 - Cicero, *On the Orator* 2.44
@@ -207,7 +207,7 @@ Curated bibliography: `bibliography/rome/r-11.4.md`.
 
 ## 11.5 Cicero through his letters
 
-Curated bibliography: `bibliography/rome/r-11.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-11.5.md`.
 
 ### Ancient works
 - Caesar, *Civil War* 3.20–22
@@ -242,7 +242,7 @@ Curated bibliography: `bibliography/rome/r-11.5.md`.
 
 ## 11.6 Caesar's Commentaries and Gaul
 
-Curated bibliography: `bibliography/rome/r-11.6.md`.
+Curated bibliography: `courses/rome/bibliography/r-11.6.md`.
 
 ### Ancient works
 - Plutarch, *Sulla* 37
@@ -273,7 +273,7 @@ Curated bibliography: `bibliography/rome/r-11.6.md`.
 
 ## 11.7 The Ides of March
 
-Curated bibliography: `bibliography/rome/r-11.7.md`.
+Curated bibliography: `courses/rome/bibliography/r-11.7.md`.
 
 ### Ancient works
 - Caesar, *Gallic War* 3.11
@@ -311,7 +311,7 @@ Curated bibliography: `bibliography/rome/r-11.7.md`.
 
 ## 11.8 Why the Republic fell
 
-Curated bibliography: `bibliography/rome/r-11.8.md`.
+Curated bibliography: `courses/rome/bibliography/r-11.8.md`.
 
 ### Ancient works
 - Appian, *Civil Wars* 1.1–6

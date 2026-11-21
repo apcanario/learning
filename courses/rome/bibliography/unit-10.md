@@ -1,10 +1,10 @@
 # Rome unit 10: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 10 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 10 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 10.1 Ovid and the Roman remaking of Greek myth
 
-Curated bibliography: `bibliography/rome/r-10.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-10.1.md`.
 
 ### Ancient works
 - *Amores* 2.18
@@ -29,7 +29,7 @@ Curated bibliography: `bibliography/rome/r-10.1.md`.
 
 ## 10.2 Imperial literature, Seneca to Apuleius
 
-Curated bibliography: `bibliography/rome/r-10.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-10.2.md`.
 
 ### Ancient works
 - Hesiod, *Works and Days* 109–201
@@ -69,7 +69,7 @@ Curated bibliography: `bibliography/rome/r-10.2.md`.
 
 ## 10.3 Reading Roman art and architecture
 
-Curated bibliography: `bibliography/rome/r-10.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-10.3.md`.
 
 ### Ancient works
 - Pliny, *Natural History* 35.22–23; 35.154
@@ -104,7 +104,7 @@ Curated bibliography: `bibliography/rome/r-10.3.md`.
 
 ## 10.4 Reception: how Rome reached you
 
-Curated bibliography: `bibliography/rome/r-10.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-10.4.md`.
 
 ### Ancient works
 - Plutarch, *Coriolanus* 5.3; 6
@@ -170,7 +170,7 @@ Curated bibliography: `bibliography/rome/r-10.4.md`.
 
 ## 10.5 Capstone: the whole thing in one sitting
 
-Curated bibliography: `bibliography/rome/r-10.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-10.5.md`.
 
 ### Ancient works
 - Appian, *Punica* 76–81

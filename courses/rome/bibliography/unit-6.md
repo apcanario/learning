@@ -1,10 +1,10 @@
 # Rome unit 6: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 4 reports in unit 6 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 4 reports in unit 6 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 6.1 From Octavian to Augustus
 
-Curated bibliography: `bibliography/rome/r-6.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-6.1.md`.
 
 ### Ancient works
 - Against, *Res Gestae* 4.4; 5–6; 6; 8; 14.1; 34.1; 34.2; 34.3; 35.1
@@ -36,7 +36,7 @@ Curated bibliography: `bibliography/rome/r-6.1.md`.
 
 ## 6.2 The city of marble and the restored religion
 
-Curated bibliography: `bibliography/rome/r-6.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-6.2.md`.
 
 ### Ancient works
 - Augustine, *City of God* 6.2
@@ -79,7 +79,7 @@ Curated bibliography: `bibliography/rome/r-6.2.md`.
 
 ## 6.3 Virgil, Horace, Livy and Ovid: the Augustan myth
 
-Curated bibliography: `bibliography/rome/r-6.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-6.3.md`.
 
 ### Ancient works
 - Donatus, *Life* 27; 32
@@ -127,7 +127,7 @@ Curated bibliography: `bibliography/rome/r-6.3.md`.
 
 ## 6.4 Empire without end
 
-Curated bibliography: `bibliography/rome/r-6.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-6.4.md`.
 
 ### Ancient works
 - Josephus, *Jewish Antiquities* 15.187–201; 18.1–2

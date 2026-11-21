@@ -1,10 +1,10 @@
 # Rome unit 0: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 3 reports in unit 0 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 3 reports in unit 0 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 0.1 How we know anything: the sources
 
-Curated bibliography: `bibliography/rome/r-0.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-0.1.md`.
 
 ### Ancient works
 - Augustine, *City of God* 6.3; 6.5
@@ -64,7 +64,7 @@ Curated bibliography: `bibliography/rome/r-0.1.md`.
 
 ## 0.2 Italy and the Mediterranean: the shape of Rome's world
 
-Curated bibliography: `bibliography/rome/r-0.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-0.2.md`.
 
 ### Ancient works
 
@@ -90,7 +90,7 @@ Curated bibliography: `bibliography/rome/r-0.2.md`.
 
 ## 0.3 The timeline spine, 1000 BC to AD 476
 
-Curated bibliography: `bibliography/rome/r-0.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-0.3.md`.
 
 ### Ancient works
 - Halicarnassus, *Roman Antiquities* 1.74; 4.6–7

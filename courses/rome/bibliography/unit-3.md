@@ -1,10 +1,10 @@
 # Rome unit 3: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 3 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 3 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 3.1 The Struggle of the Orders
 
-Curated bibliography: `bibliography/rome/r-3.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-3.1.md`.
 
 ### Ancient works
 - Cicero, *On the Republic* 2.2; 2.63
@@ -43,7 +43,7 @@ Curated bibliography: `bibliography/rome/r-3.1.md`.
 
 ## 3.2 The legends of the early Republic
 
-Curated bibliography: `bibliography/rome/r-3.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-3.2.md`.
 
 ### Ancient works
 - Cicero, *De domo sua* 101
@@ -90,7 +90,7 @@ Curated bibliography: `bibliography/rome/r-3.2.md`.
 
 ## 3.3 Veii, the Gauls and Camillus
 
-Curated bibliography: `bibliography/rome/r-3.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-3.3.md`.
 
 ### Ancient works
 - Pliny, *Natural History* 3.57; 29.57; 35.157
@@ -119,7 +119,7 @@ Curated bibliography: `bibliography/rome/r-3.3.md`.
 
 ## 3.4 The Samnite Wars and the Roman system in Italy
 
-Curated bibliography: `bibliography/rome/r-3.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-3.4.md`.
 
 ### Ancient works
 - Aristotle, *Politics* 1270a; 1326b
@@ -153,7 +153,7 @@ Curated bibliography: `bibliography/rome/r-3.4.md`.
 
 ## 3.5 Pyrrhus and the Greek south
 
-Curated bibliography: `bibliography/rome/r-3.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-3.5.md`.
 
 ### Ancient works
 - Aelian, *On Animals* 1.38

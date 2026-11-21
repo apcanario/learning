@@ -1,10 +1,10 @@
 # Greece unit 9: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 4 reports in unit 9 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 4 reports in unit 9 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 9.1 Reading Greek art: temples, sculpture, vases
 
-Curated bibliography: `bibliography/greece/r-9.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-9.1.md`.
 
 ### Ancient works
 - Arrian, *Anabasis* 3.16.7
@@ -39,7 +39,7 @@ Curated bibliography: `bibliography/greece/r-9.1.md`.
 
 ## 9.2 Reading a site: Athens on foot
 
-Curated bibliography: `bibliography/greece/r-9.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-9.2.md`.
 
 ### Ancient works
 - Aeschylus, *Eumenides* 681–710
@@ -74,7 +74,7 @@ Curated bibliography: `bibliography/greece/r-9.2.md`.
 
 ## 9.3 Reception: how it all reached you
 
-Curated bibliography: `bibliography/greece/r-9.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-9.3.md`.
 
 ### Ancient works
 - Aeschines, *Against Timarchus* 142–50
@@ -132,7 +132,7 @@ Curated bibliography: `bibliography/greece/r-9.3.md`.
 
 ## 9.4 Capstone: the whole thing in one sitting
 
-Curated bibliography: `bibliography/greece/r-9.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-9.4.md`.
 
 ### Ancient works
 - Aristotle, *Constitution of the Athenians* 1.2; 18; 25

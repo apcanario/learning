@@ -1,10 +1,10 @@
 # Greece unit 0: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 3 reports in unit 0 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 3 reports in unit 0 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 0.1 How we know anything: the sources
 
-Curated bibliography: `bibliography/greece/r-0.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-0.1.md`.
 
 ### Ancient works
 - Answer Pindar, *Olympian* 1; 1.28–29; 1.36–53; 9.35–41
@@ -34,7 +34,7 @@ Curated bibliography: `bibliography/greece/r-0.1.md`.
 
 ## 0.2 Geography, dialects and the shape of Greece
 
-Curated bibliography: `bibliography/greece/r-0.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-0.2.md`.
 
 ### Ancient works
 
@@ -53,7 +53,7 @@ Curated bibliography: `bibliography/greece/r-0.2.md`.
 
 ## 0.3 The timeline spine, 3000 BC to AD 529
 
-Curated bibliography: `bibliography/greece/r-0.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-0.3.md`.
 
 ### Ancient works
 

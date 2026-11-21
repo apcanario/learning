@@ -1,10 +1,10 @@
 # Greece unit 10: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 12 reports in unit 10 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 12 reports in unit 10 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 10.1 Achilles
 
-Curated bibliography: `bibliography/greece/r-10.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.1.md`.
 
 ### Ancient works
 - Aeschines, *Against Timarchus* 141–150
@@ -65,7 +65,7 @@ Curated bibliography: `bibliography/greece/r-10.1.md`.
 
 ## 10.2 Agamemnon and the kingship of the Atreids
 
-Curated bibliography: `bibliography/greece/r-10.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.2.md`.
 
 ### Ancient works
 - Apollodorus, *Epitome* 2.10–15; 5.1
@@ -95,7 +95,7 @@ Curated bibliography: `bibliography/greece/r-10.2.md`.
 
 ## 10.3 Hector, Priam and the Trojan side
 
-Curated bibliography: `bibliography/greece/r-10.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.3.md`.
 
 ### Ancient works
 - Aeschylus, *Agamemnon* 1050–1051; 1202–1212
@@ -130,7 +130,7 @@ Curated bibliography: `bibliography/greece/r-10.3.md`.
 
 ## 10.4 Odysseus
 
-Curated bibliography: `bibliography/greece/r-10.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.4.md`.
 
 ### Ancient works
 - Apollodorus, *Epitome* 3.7; 3.8
@@ -175,7 +175,7 @@ Curated bibliography: `bibliography/greece/r-10.4.md`.
 
 ## 10.5 Helen, Menelaus and Sparta
 
-Curated bibliography: `bibliography/greece/r-10.5.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.5.md`.
 
 ### Ancient works
 
@@ -206,7 +206,7 @@ Curated bibliography: `bibliography/greece/r-10.5.md`.
 
 ## 10.6 Reading the Iliad closely: Books 1, 6, 9, 16, 18, 22, 24
 
-Curated bibliography: `bibliography/greece/r-10.6.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.6.md`.
 
 ### Ancient works
 - Hesiod, *Shield of Heracles* 156–159
@@ -221,7 +221,7 @@ Curated bibliography: `bibliography/greece/r-10.6.md`.
 
 ## 10.7 Reading the Odyssey closely: the Telemachy, the Apologoi, the Nekyia, the recognitions
 
-Curated bibliography: `bibliography/greece/r-10.7.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.7.md`.
 
 ### Ancient works
 - Kirchhoff, *Die homerische Odyssee* 2
@@ -244,7 +244,7 @@ Curated bibliography: `bibliography/greece/r-10.7.md`.
 
 ## 10.8 The other Greeks at Troy
 
-Curated bibliography: `bibliography/greece/r-10.8.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.8.md`.
 
 ### Ancient works
 - Apollodorus, *Epitome* 5.22; 6.9; 6.10
@@ -295,7 +295,7 @@ Curated bibliography: `bibliography/greece/r-10.8.md`.
 
 ## 10.9 The gods at Troy
 
-Curated bibliography: `bibliography/greece/r-10.9.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.9.md`.
 
 ### Ancient works
 - *atasthaliai* 1.7
@@ -317,7 +317,7 @@ Curated bibliography: `bibliography/greece/r-10.9.md`.
 
 ## 10.10 Troy the place: Hisarlik and the historicity question
 
-Curated bibliography: `bibliography/greece/r-10.10.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.10.md`.
 
 ### Ancient works
 - *Studia Troica* 9, 1999
@@ -338,7 +338,7 @@ Curated bibliography: `bibliography/greece/r-10.10.md`.
 
 ## 10.11 Homeric society and Homeric warfare
 
-Curated bibliography: `bibliography/greece/r-10.11.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.11.md`.
 
 ### Ancient works
 - *Iliad* 1; 1.37–42; 1.447–474; 2.100–108; 3.125–128; 4.297–309; 6.119–236; 6.145–211; 6.168–170; 6.433–439; 9; 9.128–140; 10.261–265; 11.241–245; 12.310–321; 13.130–133; 15.679–684; 18.497–508
@@ -366,7 +366,7 @@ Curated bibliography: `bibliography/greece/r-10.11.md`.
 
 ## 10.12 Troy after antiquity
 
-Curated bibliography: `bibliography/greece/r-10.12.md`.
+Curated bibliography: `courses/greece/bibliography/r-10.12.md`.
 
 ### Ancient works
 - Answer, *Iliad* 5.9; 20.302–308

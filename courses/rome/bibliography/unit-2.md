@@ -1,10 +1,10 @@
 # Rome unit 2: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 2 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 2 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 2.1 What Roman religion was
 
-Curated bibliography: `bibliography/rome/r-2.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-2.1.md`.
 
 ### Ancient works
 - Cato, *On Agriculture* 132, 139, 141; 139
@@ -50,7 +50,7 @@ Curated bibliography: `bibliography/rome/r-2.1.md`.
 
 ## 2.2 The gods of Rome and their Greek doubles
 
-Curated bibliography: `bibliography/rome/r-2.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-2.2.md`.
 
 ### Ancient works
 - Cato, *On Agriculture* 1.1.4; 141
@@ -99,7 +99,7 @@ Curated bibliography: `bibliography/rome/r-2.2.md`.
 
 ## 2.3 Priests, augury and the calendar
 
-Curated bibliography: `bibliography/rome/r-2.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-2.3.md`.
 
 ### Ancient works
 - Censorinus, *De die natali* 20.2–3
@@ -157,7 +157,7 @@ Curated bibliography: `bibliography/rome/r-2.3.md`.
 
 ## 2.4 House, family and the dead
 
-Curated bibliography: `bibliography/rome/r-2.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-2.4.md`.
 
 ### Ancient works
 - Augustine, *City of God* 2.9
@@ -209,7 +209,7 @@ Curated bibliography: `bibliography/rome/r-2.4.md`.
 
 ## 2.5 New gods: Cybele, Bacchus, Isis, Mithras and the Christians
 
-Curated bibliography: `bibliography/rome/r-2.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-2.5.md`.
 
 ### Ancient works
 - Chrestus Suetonius, *Claudius* 25.4

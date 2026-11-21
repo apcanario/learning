@@ -1,10 +1,10 @@
 # Greece unit 4: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 4 on every build; a check aid, not a finished bibliography. A curated `bibliography/greece/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 4 on every build; a check aid, not a finished bibliography. A curated `courses/greece/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 4.1 Causes of the war and the gathering at Aulis
 
-Curated bibliography: `bibliography/greece/r-4.1.md`.
+Curated bibliography: `courses/greece/bibliography/r-4.1.md`.
 
 ### Ancient works
 - Achilles, *Iliad* 21.34–135
@@ -56,7 +56,7 @@ Curated bibliography: `bibliography/greece/r-4.1.md`.
 
 ## 4.2 The Iliad
 
-Curated bibliography: `bibliography/greece/r-4.2.md`.
+Curated bibliography: `courses/greece/bibliography/r-4.2.md`.
 
 ### Ancient works
 - *Poetics* 23
@@ -78,7 +78,7 @@ Curated bibliography: `bibliography/greece/r-4.2.md`.
 
 ## 4.3 The fall of Troy: the lost Epic Cycle
 
-Curated bibliography: `bibliography/greece/r-4.3.md`.
+Curated bibliography: `courses/greece/bibliography/r-4.3.md`.
 
 ### Ancient works
 - Aeschylus, *Agamemnon* 1202–1212
@@ -120,7 +120,7 @@ Curated bibliography: `bibliography/greece/r-4.3.md`.
 
 ## 4.4 The Returns and the Odyssey
 
-Curated bibliography: `bibliography/greece/r-4.4.md`.
+Curated bibliography: `courses/greece/bibliography/r-4.4.md`.
 
 ### Ancient works
 - Answer, *Paean* 6
@@ -143,7 +143,7 @@ Curated bibliography: `bibliography/greece/r-4.4.md`.
 
 ## 4.5 The house of Atreus after Troy
 
-Curated bibliography: `bibliography/greece/r-4.5.md`.
+Curated bibliography: `courses/greece/bibliography/r-4.5.md`.
 
 ### Ancient works
 - Aeschylus, *Ag.* 1372–1398; 1372–1398, 1528

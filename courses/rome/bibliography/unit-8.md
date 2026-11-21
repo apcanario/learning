@@ -1,10 +1,10 @@
 # Rome unit 8: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 8 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 6 reports in unit 8 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 8.1 The third-century crisis
 
-Curated bibliography: `bibliography/rome/r-8.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-8.1.md`.
 
 ### Ancient works
 - Cyprian, *Letters* 80
@@ -46,7 +46,7 @@ Curated bibliography: `bibliography/rome/r-8.1.md`.
 
 ## 8.2 Diocletian and the Tetrarchy
 
-Curated bibliography: `bibliography/rome/r-8.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-8.2.md`.
 
 ### Ancient works
 - Eusebius, *Church History* 8.1.7–8; 8.2.4; 8.4; 8.17
@@ -77,7 +77,7 @@ Curated bibliography: `bibliography/rome/r-8.2.md`.
 
 ## 8.3 Constantine
 
-Curated bibliography: `bibliography/rome/r-8.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-8.3.md`.
 
 ### Ancient works
 - Aurelius Victor, *Caesares* 40.25
@@ -116,7 +116,7 @@ Curated bibliography: `bibliography/rome/r-8.3.md`.
 
 ## 8.4 Julian, Theodosius and the end of the old gods
 
-Curated bibliography: `bibliography/rome/r-8.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-8.4.md`.
 
 ### Ancient works
 - Ambrose, *Letter* 17; 18; 22; 36; 51
@@ -155,7 +155,7 @@ Curated bibliography: `bibliography/rome/r-8.4.md`.
 
 ## 8.5 The fall of the West, 395 to 476
 
-Curated bibliography: `bibliography/rome/r-8.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-8.5.md`.
 
 ### Ancient works
 - Possidius, *Life of Augustine* 28–31
@@ -196,7 +196,7 @@ Curated bibliography: `bibliography/rome/r-8.5.md`.
 
 ## 8.6 The Rome that did not fall
 
-Curated bibliography: `bibliography/rome/r-8.6.md`.
+Curated bibliography: `courses/rome/bibliography/r-8.6.md`.
 
 ### Ancient works
 - Procopius, *Secret History* 19.7

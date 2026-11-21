@@ -1,10 +1,10 @@
 # Rome unit 9: sources cited
 
-Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 9 on every build; a check aid, not a finished bibliography. A curated `bibliography/rome/r-<id>.md`, where one exists, is linked under its report.
+Machine-extracted by `biblio.py` from the inline citations of the 5 reports in unit 9 on every build; a check aid, not a finished bibliography. A curated `courses/rome/bibliography/r-<id>.md`, where one exists, is linked under its report.
 
 ## 9.1 Roman law
 
-Curated bibliography: `bibliography/rome/r-9.1.md`.
+Curated bibliography: `courses/rome/bibliography/r-9.1.md`.
 
 ### Ancient works
 - Augustine, *City of God* 2.21
@@ -48,7 +48,7 @@ Curated bibliography: `bibliography/rome/r-9.1.md`.
 
 ## 9.2 The army
 
-Curated bibliography: `bibliography/rome/r-9.2.md`.
+Curated bibliography: `courses/rome/bibliography/r-9.2.md`.
 
 ### Ancient works
 - Appian, *Illyrian Wars* 26
@@ -91,7 +91,7 @@ Curated bibliography: `bibliography/rome/r-9.2.md`.
 
 ## 9.3 Family, women and slaves
 
-Curated bibliography: `bibliography/rome/r-9.3.md`.
+Curated bibliography: `courses/rome/bibliography/r-9.3.md`.
 
 ### Ancient works
 - Cicero, *On Old Age* 14
@@ -160,7 +160,7 @@ Curated bibliography: `bibliography/rome/r-9.3.md`.
 
 ## 9.4 Bread, baths and games
 
-Curated bibliography: `bibliography/rome/r-9.4.md`.
+Curated bibliography: `courses/rome/bibliography/r-9.4.md`.
 
 ### Ancient works
 - Gaius, *Institutes* 1.32c
@@ -223,7 +223,7 @@ Curated bibliography: `bibliography/rome/r-9.4.md`.
 
 ## 9.5 Reading a site: Rome on foot
 
-Curated bibliography: `bibliography/rome/r-9.5.md`.
+Curated bibliography: `courses/rome/bibliography/r-9.5.md`.
 
 ### Ancient works
 - Plutarch, *Marius* 26
