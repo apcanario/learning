@@ -308,7 +308,8 @@ HOME_WIDTHS = [('phone320', 320, 640, True), ('phone360', 360, 780, True), ('pho
 # P91: where a tapped link landed (P92: a tile, the What's new link): [visible panel, its target inside it, the target's top, a <details> target open, the viewport height]
 LAND_JS = '''(t) => { const v = [...document.querySelectorAll('.panel')].find(p => !p.hidden), e = document.getElementById(t);
   return [v && v.id, !!e && !!v && v.contains(e), e ? Math.round(e.getBoundingClientRect().top) : null, e && e.tagName === 'DETAILS' ? e.open : null, innerHeight]; }'''
-SIDE = 300  # desktop sidebar width (theme.css --side)
+SIDE = 240  # the sidebar's width at 1280 x 800, the desktop pass's viewport (theme.css --side; S-NAV2 step C: 240 px in the tablet landscape
+            # layout, 1100 px or wider and under 860 px tall; 300 px before; on a desktop 860 px tall or more clamp(240px, 18vw, 300px))
 
 BOX_JS = r'''([scope, gap]) => {
   const root = document.querySelector(scope);
@@ -549,7 +550,8 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
     out.layouts = [...topo.querySelectorAll('svg.topo-l')].map(s => [s.getAttribute('data-layout'), [...s.querySelectorAll('g.ct-rise, g.ct-plan')].map(g => [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), +g.getAttribute('data-rings'), getComputedStyle(g.querySelector('path, circle')).stroke, [...g.querySelectorAll('path')].map(e => e.getAttribute('d')).join('').split('z').length - 1])]);
     const tr = topo.getBoundingClientRect(), m = document.querySelector('main').getBoundingClientRect(), cr = copy.getBoundingClientRect();
     out.topoBox = [Math.round(tr.left), Math.round(tr.right), Math.round(cr.left), Math.round(cr.right), Math.round(m.left), Math.round(m.right)];
-    if (Math.abs(tr.left - (desk ? 300 : 0)) > 1 || Math.abs(tr.right - de.clientWidth) > 1) bad.push(`the contour layer spans ${tr.left.toFixed(0)}..${tr.right.toFixed(0)}, not the full width beside the sidebar (${desk ? 300 : 0}..${de.clientWidth})`);
+    const side = desk && innerHeight < 860 ? 240 : 0;   // S-NAV2 step C: the 240 px sidebar of the tablet landscape layout; a desktop home (860 px tall or more) has none
+    if (Math.abs(tr.left - side) > 1 || Math.abs(tr.right - de.clientWidth) > 1) bad.push(`the contour layer spans ${tr.left.toFixed(0)}..${tr.right.toFixed(0)}, not the full width beside the sidebar (${side}..${de.clientWidth})`);
     if (cr.left < m.left + 15 || cr.right > m.right - 15) bad.push(`the hero's text runs ${cr.left.toFixed(0)}..${cr.right.toFixed(0)}, outside the column ${m.left.toFixed(0)}..${m.right.toFixed(0)}`);
   } else bad.push('no contour layer');
   // the hero's height: on a phone 60 to 80% of the screen, the first area's heading starting inside the first screen
@@ -618,7 +620,8 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
     const cs = [...g.querySelectorAll(':scope > a.course')];
     const cols = (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(g).gridTemplateColumns);
     if (phone && cols !== 1) bad.push(`${tid}: ${cols} columns below 768 px`);
-    if (!phone && cols !== 2) bad.push(`${tid}: ${cols} column(s) from 768 px, expected 2`);
+    const want = parseFloat(getComputedStyle(document.body).width) >= 960 ? 3 : 2;   // S-NAV2 step C: three across once the width beside the sidebar reaches 960 px (theme.css section 6)
+    if (!phone && cols !== want) bad.push(`${tid}: ${cols} column(s) from 768 px, expected ${want}`);
     if (!phone && cs.length === 1) {
       const gw = g.getBoundingClientRect().width, cw = cs[0].getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
       if (Math.abs(cw - (gw - gap) / 2) > 2) bad.push(`${tid}: its only tile is ${cw.toFixed(0)} px of a ${gw.toFixed(0)} px grid, expected half`);
@@ -1138,9 +1141,10 @@ def check_tiles(pg, pid, label, fails, expect):
         if t['sw']: fails.append(f'{pid} {label}: {nm}: the tile scrolls sideways')
         if t['unseen']: fails.append(f'{pid} {label}: {nm}: the written parts {t["unseen"]} draw no ring of their own (P93 check: a part under one level takes a spot ring)')
         if (t['kind'] == 'ghost') != ('ghost' in t['mods']): fails.append(f'{pid} {label}: {nm}: a ghost tile without the ghost class, or the reverse')
+    want = 3 if pg.evaluate('parseFloat(getComputedStyle(document.body).width)') >= 960 else 2   # S-NAV2 step C: three across once the width beside the sidebar reaches 960 px
     for cols, n, lone, half in r['grids']:
         if w < 768 and cols != 1: fails.append(f'{pid} {label}: a tile grid in {cols} columns below 768 px')
-        if w >= 768 and cols != 2: fails.append(f'{pid} {label}: a tile grid in {cols} column(s) from 768 px')
+        if w >= 768 and cols != want: fails.append(f'{pid} {label}: a tile grid in {cols} column(s) from 768 px, expected {want}')
         if w >= 768 and lone is not None and abs(lone - half) > 2: fails.append(f'{pid} {label}: a lone tile {lone} px wide, half the grid is {half}')
     e = expect['courses'].get(pid)
     if e:
@@ -3636,7 +3640,7 @@ def main():
             if abs(mw - s['ch68']) > 2 or not floor <= mw <= s['mainW']: fails.append(f'desktop: report measure {s["measure"]}, expected 68ch ({s["ch68"]:.0f} px) inside the {s["mainW"]:.0f} px column')
             if s['fonts']: fails.append(f'desktop: theme fonts not loaded from fonts/: {s["fonts"]}')
             if UNSERVED: print(f'desktop: the brand names {UNSERVED}, not in fonts/ (verify.py serves only {VENDORED}); its fallback is drawn and measured, and its loading is not checked')
-            if s['home'] != 2 or (HIST and s['ml'] != 2): fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')
+            if s['home'] != 3 or (HIST and s['ml'] != 2): fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 3 and 2')   # S-NAV2 step C: three across at 1280 x 800 (1040 px beside the sidebar)
             if not HIST: print('desktop: no history course in this edition; the home\'s mythos/logos block (History\'s) is not measured')
         # the sidebar's own targets and gaps, every unit open
         pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed'))")

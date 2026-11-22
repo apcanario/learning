@@ -26,7 +26,9 @@
    8  Swiss pass (version 5): type scale up, colour as a field, hard corners, rules not shadows
    5  Components added for hubs (the history site has no equivalent)
    6  Responsive: tablet (from 768 px) and desktop (from 1100 px); the phone
-      layout below 768 px is the one every rule above describes and does not change
+      layout below 768 px is the one every rule above describes and does not change; since 6.22 (S-NAV2 step C)
+      tablet portrait (768 px), tablet landscape (900 px, or 1100 px and under 860 px tall) and desktop (1100 px and
+      860 px tall), the top bar's main nav, the outline at a unit's right and the heroes' bound in container units
    7  Interaction: hover and pressed states for every clickable thing, on devices
       that can hover; equal-height catalogue cards with the button on one line
    9  Reading layout (P68): scope line, sticky section bar, one section at a time,
@@ -56,6 +58,16 @@
    Version 6.21, 22 Nov 2026 (S-NAV2 step B, Fix 2, P-NAV7): section 10, the history readout (.dbg, .dbg-min, .dbg-sum,
    .dbg-bar, .dbg-b, .dbg-log), a small panel fixed at the foot of the screen that kit/shell.js adds only when the
    address carries ?debug; without it no element has these classes and nothing on any page changes.
+   Version 6.22, 22 Nov 2026 (S-NAV2 step C; Pedro, 21 Nov 2026: the desktop "just looks like a stretched out mobile"):
+   four layouts, 6, CSS only on the existing markup, the phone (under 768 px) unchanged. Tablet portrait (768 to 899 px):
+   the drawer, the column the screen's width. Tablet landscape (900 to 1099 px, and 1100 px or wider under 860 px tall):
+   the homes up to 1080 px, tiles three across from 960 px beside the sidebar (a lone tile half the grid), the heroes'
+   wide layout from 900 px, the home's hero 40cqw - 22 px; from 1100 px a 240 px sidebar (300 before). Desktop (1100 px
+   or wider, 860 px tall or more): the top bar across the screen with the brand and the main nav, the sidebar (240 to
+   300 px) the sub-nav only and only where there is one, an 860 px column (homes 1200 px), the on-this-page outline at a
+   unit's right (its section menu shown by ::details-content). Every hero's height is bound in container units (P-HK1):
+   a course home's and an area page's at least 50cqw - 22 px from 768 px and 40cqw - 22 px once wide, What's new's
+   27cqw - 22 px once wide.
    Version 6.17, 21 Nov 2026 (S-NAV1 step C): the navigation is two levels in the drawer's list (.dlist): nav.main-nav,
    Home and the areas (.darea, the area's tone), ruled off as the old top rows (.dtop) were, and nav.sub-nav, the
    section's group (.sub-sec): an area's courses, a course's pages and units; none on the home. Phone look unchanged
@@ -906,6 +918,94 @@ details.clog[open]>summary::after{content:"–"}
   .topo-wide{display:block}
   .harea,.harea-all{font-size:34px}
 }
+
+/* S-NAV2 step C (22 Nov 2026, theme 6.22; Pedro, 21 Nov 2026: the desktop "just looks like a stretched out mobile"; "a
+   better version for tablets... especially in landscape"). Four layouts by the viewport, CSS only, on the existing
+   markup. The phone (under 768 px) is untouched: every rule below sits under a media query of 768 px or wider, or a
+   container query of 960 px, which no phone reaches.
+   - Tablet portrait, 768 to 899 px: the drawer; tiles two across; the column the screen's width less its 16 px gutters.
+   - Tablet landscape, 900 to 1099 px, and 1100 px or wider but under 860 px tall (a 1280 x 800 tablet): the homes (the
+     Academy home, an area page, a course home) up to 1080 px wide, tiles three across once the width beside the
+     sidebar reaches 960 px (two below it); every hero's contours the wide layout; the Academy home's hero as tall as its
+     contours need, not 70% of the screen, so the first tiles show; from 1100 px a 240 px sidebar holding both navs.
+     Under 1100 px it stays the drawer: kit/shell.js turns the drawer into the sidebar (aria-hidden false) at 1100 px,
+     so a sidebar from 900 px needs a script change (out/S-NAV2/step-C.md, NEEDS PEDRO).
+   - Desktop, 1100 px or wider and 860 px tall or more: one top bar across the screen, the brand over the sidebar, then
+     the main nav (Home and the areas, the reader's marked by a rule in its tone), then the theme and the arrows (the
+     current-page line and the home button stand down: the main nav and the page's own crumbs carry them); the sidebar
+     (--side, 240 to 300 px) holds the sub-nav and stands only where there is one (not on the home or the site pages
+     under it); the column centred, 860 px for a page and 1200 px for a home, tiles three across; a reading page's text
+     keeps its 68ch, so its figures, tables and bands run wider than the text; at the right of a unit page the
+     on-this-page outline (--toc, 200 to 280 px): the page's own section list (.seclist, one entry per h2 of the unit)
+     with its Sources links and "Whole unit", shown beside the section bar and stuck with it (the menu's
+     ::details-content, a browser without it keeps the menu).
+   The heroes (P-HK1, the bound at every width): a hero's layer is the width beside the sidebar (100cqw of the body) by
+   the hero and the 22 px above it, drawn slice (S-NAV1 step D); a 2:1 wide layout shows its view (from .1 of its
+   height) when H >= .4 W, a square tall layout its whole view when H >= .5 W. So a course home's and an area page's
+   hero is at least 50cqw - 22 px from 768 px (370 px at 768, as before) and 40cqw - 22 px once the layout is wide, never
+   under 370 px: 1024 px 388, 1280 x 800 394 (the sidebar 240), 1440 x 900 450, 1920 x 1080 626. The Academy home's
+   hero (no sidebar on a desktop home) is at least 40cqw - 22 px too, at most 54cqw - 22 px (wider, the 2:1 layout's
+   sides would be cut), and 62% of the screen tall on a desktop between the two. */
+@media (min-width:768px) and (max-width:899.98px){
+  main,.top-in{max-width:none}
+  .panel.home>.hero.has-topo{min-height:max(370px,calc(50cqw - 22px))}
+  .panel.root>.hero.hhome{min-height:min(70svh,calc(100cqw - 22px))}   /* the tall (square) layout's sides stay whole */
+  .hero.has-topo{display:flex;flex-direction:column}
+  .hero.has-topo>.crumbs+*{margin-top:auto}
+}
+@media (min-width:900px){
+  main:has(>.panel.root:not([hidden])),main:has(>.panel.home:not([hidden])){max-width:1080px}
+  .topo-tall{display:none}
+  .topo-wide{display:block}
+  .panel.home>.hero.has-topo{min-height:max(370px,calc(40cqw - 22px))}
+  .panel.log>.hero.has-topo{min-height:calc(27cqw - 22px)}   /* What's new's wide layout is 1000 x 270: its frame that shape, so no day's rings fall past it */
+  .panel.root>.hero.hhome{min-height:calc(40cqw - 22px)}
+  /* a hero taller than its copy: the crumbs at its top, the copy at its foot, the contours between (as the home's) */
+  .hero.has-topo{display:flex;flex-direction:column}
+  .hero.has-topo>.crumbs+*{margin-top:auto}
+  /* a wide home's running text keeps a measure */
+  .panel.root .howto :is(p,ul,ol),.panel.home .howto :is(p,ul,ol){max-width:72ch}
+}
+@container (min-width:960px){
+  .panel.root .cgrid,.panel.home .cgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  /* a lone tile keeps half the grid (P90): its track and a half and half the 12 px gap */
+  .panel.root .cgrid>:only-child,.panel.home .cgrid>:only-child{width:calc(150% + 6px)}
+}
+@media (min-width:1100px){
+  :root{--side:240px}
+}
+@media (min-width:1100px) and (min-height:860px){
+  :root{--side:clamp(240px,18vw,300px);--toc:clamp(200px,16vw,280px)}
+  main{max-width:860px}
+  main:has(>.panel.root:not([hidden])),main:has(>.panel.home:not([hidden])){max-width:1200px}
+  .panel.root>.hero.hhome{min-height:clamp(calc(40cqw - 22px),62svh,calc(54cqw - 22px))}
+  /* the top bar across the screen: the brand (the drawer's head) over the sidebar, the main nav, the theme and arrows */
+  .top{left:0;padding-left:calc(var(--side) + 8px)}
+  .top-in{max-width:none;width:auto;margin:0 0 0 auto;flex:0 0 auto}
+  #homeB,.cur{display:none}
+  .drawer{top:var(--bar)}
+  .dhead{position:fixed;top:0;left:0;width:var(--side);box-sizing:border-box;border-bottom:0;background:transparent}
+  .main-nav{position:fixed;top:0;left:var(--side);right:calc(3 * 44px + 24px);height:var(--bar);display:flex;align-items:center;gap:2px;margin:0;padding:0 8px;border:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+  .main-nav .ditem{flex:0 0 auto;min-height:44px;padding:0 12px;gap:8px;border-left:0;border-radius:0;white-space:nowrap;box-shadow:inset 0 -2px 0 transparent}
+  .main-nav .ditem .n{flex:0 0 auto;font-size:9px}
+  .main-nav .ditem.is-active,.main-nav .ditem[aria-current]{background:transparent;color:var(--fg);box-shadow:inset 0 -2px 0 var(--c,var(--fg))}
+  /* the sidebar only where there is a sub-nav: the home and its site pages take the screen's width */
+  body:has(.sub-nav[hidden]){padding-left:0}
+  body:has(.sub-nav[hidden]) .drawer{visibility:hidden}
+  body:has(.sub-nav[hidden]) .dhead,body:has(.sub-nav[hidden]) .main-nav{visibility:visible}
+}
+@supports selector(::details-content){@media (min-width:1100px) and (min-height:860px){
+  /* the on-this-page outline: the unit's section menu, open beside the section bar */
+  body:has(.panel[data-kind="report"]:not([hidden]) .secmenu){padding-right:var(--toc)}
+  .panel[data-kind="report"] .secmenu::details-content{content-visibility:visible;position:absolute;top:0;left:calc(100% + 24px);width:calc(var(--toc) - 40px);max-height:calc(100vh - var(--bar) - 24px);overflow-y:auto;overscroll-behavior:contain;padding:8px 0 0;border-left:1px solid var(--line)}
+  .panel[data-kind="report"] .secmenu>summary{pointer-events:none}
+  .panel[data-kind="report"] .secmenu .chev{display:none}
+  .panel[data-kind="report"] .seclist{max-height:none;overflow:visible;border-top:0;padding:0}
+  .panel[data-kind="report"] .seclist a{padding:4px 0 4px 12px;font-size:13.5px;border-left:2px solid transparent;margin-left:-1px}
+  .panel[data-kind="report"] .seclist a[aria-current]{border-left-color:var(--cc,var(--red))}
+  .panel[data-kind="report"] .secx{flex-direction:column;align-items:flex-start;padding:8px 0 8px 12px}
+  .panel[data-kind="report"] .secx .whole{margin:4px 0 0}
+}}
 
 /* 7 · Interaction ------------------------------------------------------------ */
 /* A tile is a flex column so that side-by-side tiles share a height and their stats and patches sit level at the

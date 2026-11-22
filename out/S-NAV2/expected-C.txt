@@ -1,0 +1,16 @@
+# S-NAV2 Step C (layouts): the shell inlines the theme CSS; the size table follows
+README.md
+academy/index.html
+editions/greece/index.html
+drop: design/theme.css :: layout below 768 px is the one every rule above describes and does not change
+drop: kit/README.md :: | Shell (`index.html`) | 1 | 620 KB | 620 KB | home, drawer, the build pages of the markdown courses, backlog |
+drop: kit/academy/index.html :: layout below 768 px is the one every rule above describes and does not change
+drop: kit/baseline.json :: "README.md": "0672a0e07cc1b02cf9e01bba255a6d79cbb879fe602b0fb62b66551fc3fef58b",
+drop: kit/baseline.json :: "academy/index.html": "3c622882c35bc1d55fda3e28c0e7b8c0a6e06cf3c53d126caddf90eb51b96a7f",
+drop: kit/baseline.json :: "editions/greece/index.html": "4a380e0abe476d2ef50fe9f8c73cee11793fa53d3f9b10934c606d8a3048100e",
+drop: kit/shell.css :: layout below 768 px is the one every rule above describes and does not change
+drop: kit/verify.py :: SIDE = 300  # desktop sidebar width (theme.css --side)
+drop: kit/verify.py :: if (Math.abs(tr.left - (desk ? 300 : 0)) > 1 || Math.abs(tr.right - de.clientWidth) > 1) bad.push(`the contour layer spans ${tr.left.toFixed(0)}..${tr.right.toFixed(0)}, not the full width beside the sidebar (${desk ? 300 : 0}..${de.clientWidth})`);
+drop: kit/verify.py :: if (!phone && cols !== 2) bad.push(`${tid}: ${cols} column(s) from 768 px, expected 2`);
+drop: kit/verify.py :: if w >= 768 and cols != 2: fails.append(f'{pid} {label}: a tile grid in {cols} column(s) from 768 px')
+drop: kit/verify.py :: if s['home'] != 2 or (HIST and s['ml'] != 2): fails.append(f'desktop: home course cards {s["home"]} col, mythos/logos {s["ml"]} col, expected 2 and 2')
