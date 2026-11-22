@@ -6,7 +6,7 @@ The ordered queue of chats for the Learning Project. One row is one chat. Take t
 
 Order decided by Pedro, 31 Oct 2026, 08:25: (1) housekeeping, the reading layout first; (2) finish Rome; (3) finish Brand + AI, courses A (the personal brand) and B (AI) interleaved in their build order; (4) finish Information Architecture; (5) the Fable 5.1 stage, withdrawn on 15 Nov 2026 (P113, with S-NOAUDIT). Every row in stages 1 to 4 runs on Opus 5.5, DD-B2 included (its Fable 5.1 exception in the build order is set aside). Fable 5.1 checks and audits were to wait for stage 5; the Fable stage was closed on 15 Nov 2026 (S-NOAUDIT): no four-unit audit and no Fable 5.1 fresh check runs, and the Opus 5.5 fresh check of every unit before filing stands. Pedro fires each row himself in a new session by pasting its prompt; one chat may run several units when each is written by a fresh agent (P31).
 
-Next up: **W-SCE3** (SCE2 filed by W-SCE2, 21 Nov 2026; Sport Psychology is complete with W-DD-SP3, 21 Nov 2026), or any other non-unit row under Proposed. S-NAV2 closed on 22 Nov 2026; S-NAV1, HK-1 and HK-2 closed on 21 to 22 Nov 2026.
+Next up: **W-SCE3** (SCE2 filed by W-SCE2, 21 Nov 2026; Sport Psychology is complete with W-DD-SP3, 21 Nov 2026), or any other non-unit row under Proposed. S-NAV2 closed on 22 Nov 2026; S-NAV1, HK-1 and HK-2 closed on 21 to 22 Nov 2026. The five rows S-PROMPT1, S-SCP0, S-AIE0, S-AC0 and S-EG0 are queued, each runs alone on the repo, and the order among them and against the rows already queued is Pedro's pick.
 
 ### 1 · Housekeeping, in three sessions
 
@@ -1662,6 +1662,41 @@ Two rows, two chats, in order. S-NAV1 (history, area homes, two-level navigation
 
 | # | Spec | Model | Prompt to paste |
 |---|---|---|---|
+
+### 4f · Kit and docs: one run plan for every course (designed 21 Nov 2026 on Fable 5.2, filed by S-INBOX1; row S-PROMPT1)
+
+| # | Spec | Model | Prompt to paste |
+|---|---|---|---|
+| S-PROMPT1 | Brings every course's prompts to one plan: the plain clone line, `--course`, `--starter`, bundles of four. Kit and docs only; nothing published. Designed with Supply Chain Planning, 21 Nov 2026. | Sonnet 5.5 chat, Opus 5.5 agents | Clone apcanario/learning (shallow, push access).
+Row S-PROMPT1. Thin main chat on Sonnet 5.5; every agent a fresh Opus 5.5 agent. Work `inbox/s-prompt1/prompt.md` in full, unattended, as if it were pasted here. Delete `inbox/s-prompt1/` when the row closes. |
+
+### 4g · Supply Chain Planning for Product Teams (designed 21 Nov 2026 on Fable 5.2, filed by S-INBOX1; row S-SCP0)
+
+| # | Spec | Model | Prompt to paste |
+|---|---|---|---|
+| S-SCP0 | Setup of the public course SCP (16 core, 2 deep dives): files the design, builds, verifies, publishes. Writes no unit. | Sonnet 5.5 chat, Opus 5.5 agents | Clone apcanario/learning (shallow, push access).
+Row S-SCP0. Thin main chat on Sonnet 5.5; every agent a fresh Opus 5.5 agent. Work `inbox/supply-chain-planning/setup-prompt.md` in full, unattended, as if it were pasted here. Its design files are already in `inbox/supply-chain-planning/`, extracted from the design and hash-checked (`inbox/SHA256SUMS`): use them in place of reading the artifact. Take the next free part of `docs/sourcing-standard.md` on the day; if it is not 9, use that number wherever the design says Part 9, briefs untouched, and say so in the reply. Delete `inbox/supply-chain-planning/` when the row closes. |
+
+### 4h · AI in Supply Chain Execution (designed 21 Nov 2026 on Fable 5.2, filed by S-INBOX1; row S-AIE0)
+
+| # | Spec | Model | Prompt to paste |
+|---|---|---|---|
+| S-AIE0 | Setup of the public course AIE (13 core, 1 deep dive): files the design, builds, verifies, publishes. Writes no unit. | Sonnet 5.5 chat, Opus 5.5 agents | Clone apcanario/learning (shallow, push access).
+Row S-AIE0. Thin main chat on Sonnet 5.5; every agent a fresh Opus 5.5 agent. Work `inbox/ai-in-supply-chain-execution/setup-prompt.md` in full, unattended, as if it were pasted here. Take the next free part of `docs/sourcing-standard.md` on the day; if it is not 9, use that number wherever the design says Part 9, briefs untouched, and say so in the reply. |
+
+### 4i · Managing an Athlete's Career (designed 21 Nov 2026 on Fable 5.2, filed by S-INBOX1; row S-AC0)
+
+| # | Spec | Model | Prompt to paste |
+|---|---|---|---|
+| S-AC0 | Setup of the public course AC (15 core, 3 deep dives): files the design, builds, verifies, publishes. Writes no unit. | Sonnet 5.5 chat, Opus 5.5 agents | Clone apcanario/learning (shallow, push access).
+Row S-AC0. Thin main chat on Sonnet 5.5; every agent a fresh Opus 5.5 agent. Work `inbox/athlete-career/docs/athlete-career-S-AC0-prompt.md` in full, unattended, as if it were pasted here. Its design files are already in `inbox/athlete-career/`, extracted from the design and hash-checked (`inbox/SHA256SUMS`): use them in place of reading the artifact. Take the next free part of `docs/sourcing-standard.md` on the day; if it is not 9, use that number wherever the design says Part 9, briefs untouched, and say so in the reply. Delete `inbox/athlete-career/` when the row closes. |
+
+### 4j · Egyptian history and mythology (designed 21 Nov 2026 on Fable 5.2, filed by S-INBOX1; row S-EG0)
+
+| # | Spec | Model | Prompt to paste |
+|---|---|---|---|
+| S-EG0 | Setup of the private course EG (57 core modules, 21 deep-dive modules): files the design, builds, verifies, publishes. Writes no unit. | Sonnet 5.5 chat, Opus 5.5 agents | Clone apcanario/learning (shallow, push access).
+Row S-EG0. Thin main chat on Sonnet 5.5; every agent a fresh Opus 5.5 agent. Work `inbox/egypt/setup-prompt.md` in full, unattended, as if it were pasted here. Its design files are already in `inbox/egypt/`, extracted from the design and hash-checked (`inbox/SHA256SUMS`): use them in place of reading the artifact. Take the next free part of `docs/sourcing-standard.md` on the day; if it is not 9, use that number wherever the design says Part 9, briefs untouched, and say so in the reply. Delete `inbox/egypt/` when the row closes. |
 
 ## Corrections (worked first by the next prompt)
 
