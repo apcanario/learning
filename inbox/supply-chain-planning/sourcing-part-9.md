@@ -1,0 +1,30 @@
+## Part 9 · Supply Chain Planning for Product Teams (from section 6 of `docs/supply-chain-planning-syllabus.md`)
+
+- [ ] Every claim that carries a number, a mechanism or a recommendation is sourced where it is made.
+- [ ] Each source is one of: peer-reviewed research; the published results of a forecasting competition; a standard textbook cited by edition and chapter; an industry association's report or survey with its sample and year; an analyst report by firm, title and date; an audited company filing; a standards body's own page; a vendor's own page, release or documentation, dated.
+- [ ] No video, podcast, social-media post, unsigned blog, comparison or lead-generation site, or press rewrite of a release is cited as a source; one may be named only as the claim under examination.
+- [ ] Every claim carries one of the four grades (independent, analyst, vendor-reported, practice), and the grade follows SCP1's key.
+- [ ] A finding states what kind of evidence it is (forecasting competition, field experiment, laboratory experiment, simulation, single-company case study, survey), with its data, setting and year; a simulation is not presented as a field result; a correlation is called a correlation.
+- [ ] A finding from one industry, company or dataset applied to another is labelled as the unit's inference.
+- [ ] No formula and no worked calculation appears; a method is described by what goes in, what comes out, what it assumes and when it fails. A number is a sourced finding in its source's own terms, or a case fact marked fictional.
+- [ ] Statistical, machine-learning and optimisation methods are treated on published evidence. Nothing treats generative AI, language-model assistants or agents; a vendor's word "AI" is reported as the vendor's word.
+- [ ] An analyst report says how it was read: in full, in a public reprint, or in abstract. A claim that rests on an abstract alone says so.
+- [ ] No real vendor is assessed, ranked, compared or recommended, and no real vendor's product line is mapped.
+- [ ] A real vendor is named only to attribute a dated public statement to it, graded vendor-reported, or as an entry in a dated list from a named analyst report or an audited filing, every vendor on the list given alike.
+- [ ] Worked product examples use only the fictional vendors of `case-facts.md`, labelled "(fictional)"; no fictional vendor is said or hinted to stand for a real one.
+- [ ] A real company's planning practice is described only from a peer-reviewed paper, a published case with named authors or its own audited filing; an account co-written by the company's staff or its software supplier is labelled an interested party's account.
+- [ ] A book or article by someone who sells the method it describes is labelled an interested party's account.
+- [ ] A peer-review site is cited by market for what its reviewers say, with where any count was read, never to assess a named vendor.
+- [ ] A number says whose figure it is, the sample and the year. No price, revenue or win rate of a private company appears unless that company published it. No return, saving or payback is promised to the reader.
+- [ ] A common claim on the course's list is named as a claim and set against its evidence, or against "no independent source found".
+- [ ] Every reference in Sources is in the unit's source log with the address opened, what was read (abstract, reprint or full text) and the date; the edition or release cited is the one opened.
+- [ ] The source log gives every reference's kind of venue (peer-reviewed journal, academic or professional publisher's book, forecasting competition, association, analyst firm, audited filing, standards body, vendor) and any commercial interest its authors have in what they describe.
+- [ ] Every Sources entry matches its publisher's or Crossref's record: authors, title, journal or publisher, year, volume, pages, DOI.
+- [ ] Every fact about Corvane, Ostrel Foods, Pellward, Lathmoor, Ebbfield and Varnby Software is labelled "(fictional)" on first use, agrees with `case-facts.md`, and is never used as evidence.
+- [ ] Nothing about the Project's owner, his employer, his role or his work appears (`python3 kit/private_terms.py` prints OK).
+- [ ] No unit is framed as interview preparation; no craft method is taught.
+- [ ] Where the search flag is on, every analyst list, market figure, filing figure and vendor page carries the date it was read.
+- [ ] The deliverable is built in full on the case the brief names and then given as a template whose blanks say what goes in them.
+- [ ] "In the planning meeting" and "Self-check" are present, and every Self-check answer agrees with the body.
+- [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
+- [ ] Links are given as links, the DOI address for a paper.
