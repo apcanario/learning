@@ -4,8 +4,24 @@ python3 kit/next_prompt.py                 the next row: the first unit, in queu
 python3 kit/next_prompt.py --row W-PB3     that row
 python3 kit/next_prompt.py --list          every row with its unit, search flag and whether it is filed
 python3 kit/next_prompt.py --save          also write the prompt into the row's prompt cell in docs/BACKLOG.md
-python3 kit/next_prompt.py --bundle 2      the next two rows in one unattended chat: the first row's prompt between a preface
-                                           and a tail that has the chat print and work each following row after the one before is closed
+python3 kit/next_prompt.py --bundle 2      the next two rows of one course in one unattended chat: the clone line, a preface, the first
+                                           row's prompt and a tail that has the chat print and work each following row after the one before
+                                           is closed, and end its one reply with the course's starter line in a code block
+python3 kit/next_prompt.py --course supply-chain-execution [--bundle 4] [--save]
+                                           start at that course's first unit not filed, in place of the queue's; exits saying so when
+                                           none is left or the id is not in QUEUE
+python3 kit/next_prompt.py --starter supply-chain-execution
+                                           the course's starter line (exits saying so when no unit of it is left)
+
+S-PROMPT1 (22 Nov 2026; Pedro, 21 Nov 2026): the first line of everything printed is CLONE, `Clone apcanario/learning (shallow,
+push access).`, and nothing else is said about cloning, attaching the repo or approval. A bundle holds rows of one course only and
+stops before a row in GATES or HOLDS (a gate row may start a bundle; a hold that is still open refuses to start, as before). Its
+tail names the course's starter line (`--starter`), never a bare `--bundle <n>`, unless a hold follows (then the review row's saved
+prompt). The layout in docs/BACKLOG.md: a course's writing rows grouped in fours from its first unit not filed, the first row of each
+group holding the starter line in its prompt cell, the others "runs in the chat of <first row>". `--save` keeps that layout: a cell
+reading "runs in the chat of ..." is kept, a cell holding the starter line gets it again; `--bundle n --save` writes the starter
+line into the bundle's first row, whatever its cell held. A GATES row printed while its gate row is in docs/BACKLOG.md carries, after
+its first paragraph, the instruction to move the gate row to docs/CHANGELOG.md as "closed by Pedro starting the chat" (gate()).
 
 The queue is course PB in its ORDER, then course BW in its ORDER (QUEUE below; reorder it there). Everything a prompt
 names is read from the sources at the time it is printed: the course entry (courses/<id>/course.toml), the unit's title, search
@@ -16,8 +32,8 @@ Pedro, 12 Nov 2026, 21:31). One template, so every row is briefed
 to the same standard and nothing drifts from chat to chat. A course with `prompts_doc` in its courses/<id>/course.toml (S-SP0, 16 Nov 2026:
 sport-psychology, docs/sport-psychology-prompts.md) keeps its own template in that document; prompt_doc fills its slots.
 S-SCE0 (19 Nov 2026): supply-chain-execution, rows W-SCE1 to W-DD-SCE2, from docs/supply-chain-execution-prompts.md; a
-template with no safety reader is allowed; a row in GATES opens with a line saying it waits for its gate row while that
-row is still in docs/BACKLOG.md.
+template with no safety reader is allowed; a row in GATES opened with a line saying it waits for its gate row while that
+row was still in docs/BACKLOG.md (replaced by S-PROMPT1, above).
 """
 import importlib.util, pathlib, re, sys
 
@@ -29,7 +45,8 @@ import pack
 
 QUEUE = ('personal-brand', 'building-with-ai', 'sport-psychology', 'supply-chain-execution')   # the courses, in the order their rows run (S-SP0, 16 Nov 2026: rows W-SP1 to W-DD-SP3 come from the hub's ORDER; S-SCE0, 19 Nov 2026: rows W-SCE1 to W-SCE18, W-DD-SCE1, W-DD-SCE2)
 HOLDS = {'W-PB5': 'S-PB1', 'W-SP4': 'R-SP1'}   # a writing row that waits for a review row: while the review row is in the queue of docs/BACKLOG.md, no prompt runs past it (Pedro, 12 Nov 2026, 08:30)
-GATES = {'W-SCE7': 'P-SCE6'}   # S-SCE0: a row printed while its gate row (a task for Pedro, under Proposed) is still in docs/BACKLOG.md opens with a line saying it is not to be run until he has closed it
+GATES = {'W-SCE7': 'P-SCE6'}   # S-SCE0: a gate row (a task for Pedro, under Proposed). S-PROMPT1: a bundle stops before a GATES row; Pedro pasting the course's starter line is his go, and the prompt of the gate row, printed while its gate row is still in docs/BACKLOG.md, tells that chat to close the gate row
+CLONE = 'Clone apcanario/learning (shallow, push access).'   # S-PROMPT1 (Pedro, 21 Nov 2026): the first line of everything this script prints
 SRC = ROOT / 'courses' / 'brand-ai'                      # the private source units
 ACADEMY = EDITIONS[DEFAULT_EDITION]['artifact']   # S-DEC3: the default edition's artifact (editions/<name>.toml)
 NOTES = {   # what one row needs beyond the template
@@ -266,9 +283,7 @@ def prompt_doc(r, nxt):
     if q:
         i = out.index('\n\n**3. ')
         out = out[:i] + '\n\n' + q + out[i:]
-    g = GATES.get(r['row'])
-    if g and re.search(r'^\| ' + re.escape(g) + r' \|', (ROOT / 'docs' / 'BACKLOG.md').read_text(encoding='utf-8'), flags=re.M):
-        out = f"Do not run until Pedro has closed {g}.\n\n" + out   # S-SCE0: the gate after W-SCE6 (syllabus §5, P-SCE6)
+    out = gate(r, out)
     if safety and 'Step 5b runs.' in part[r['row']]:          # the safety reader, for the rows whose paragraph says so (SP9, DD-SP1, DD-SP2)
         s = re.sub(r'\{([A-Z]+)\}', lambda m: slots.get(m.group(1), m.group(0)), safety)
         i = out.index('\n\n**6. ')
@@ -290,7 +305,7 @@ def prompt(r, nxt):
             else f'`{rel(data)}/case-academy.md` (the Academy case file)')
     on = r['search'] == 'on'
     P = []
-    P.append(f"Clone `apcanario/learning` (attach it with add_repo, push access; one shallow clone with a generous timeout, about ten minutes; call `register_repo_root` if the session offers it; the repo has no CLAUDE.md). Right after cloning, run `python3 kit/land.py start <this row>` (it records the start commit and installs the push guard). Row {r['row']} of `docs/BACKLOG.md`, in this chat: write, fresh-check and file unit {code}, \"{u[1]}\", of the public course {r['sc']['name']} (`courses/{cid}/course.toml`: data `{rel(data)}/`, vault `{vault}/`, `docs/sourcing-standard.md` Parts 1 and {c['sourcing_part'][5:]}; search {r['search']}); correct every mistake the work finds; flag every contradiction or need that touches another unit; then build, verify, land (`kit/land.py land`), then publish Academy once from a fresh build of the landed HEAD (the artifact, then GitHub Pages), close the row and end with the next row's prompt. Read first: `docs/public-courses.md` (the decisions and the thirteen rules of these rows), `docs/method.md` §4, §5, §7 and §8, `skills/write-unit`, `skills/audit-units` §3, `skills/file-unit` and the docstring of `kit/thin.py` (the chat reads those, never a unit). {THIN_CHAT}{TRIAL if r['row'] == 'W-BW1' else ''} Commit after every agent returns and after every step, on `main`; every push is a landing with `python3 kit/land.py land <this row>` (`docs/method.md` §10; a bare `git push` is refused by the clone's guard), and the row lands before it publishes (step 10). If the session's permission check refuses to run the repo's own scripts after the fresh clone, stop at once, say so in one line and ask Pedro to approve; never work around it. The safety check refuses an `rm -rf` whose target is a shell variable: use a literal absolute path, or do without the removal. Where a choice is open, take the most reasonable reading, say so in the record, and carry on; ask only if genuinely blocked. Fix every error, should-fix and minor finding the work turns up in this chat; a minor whose own Fix is \"no change required\" is recorded and not applied.")
+    P.append(f"{CLONE}\nRight after cloning, run `python3 kit/land.py start <this row>` (it records the start commit and installs the push guard). Row {r['row']} of `docs/BACKLOG.md`, in this chat: write, fresh-check and file unit {code}, \"{u[1]}\", of the public course {r['sc']['name']} (`courses/{cid}/course.toml`: data `{rel(data)}/`, vault `{vault}/`, `docs/sourcing-standard.md` Parts 1 and {c['sourcing_part'][5:]}; search {r['search']}); correct every mistake the work finds; flag every contradiction or need that touches another unit; then build, verify, land (`kit/land.py land`), then publish Academy once from a fresh build of the landed HEAD (the artifact, then GitHub Pages), close the row and end with the next row's prompt. Read first: `docs/public-courses.md` (the decisions and the thirteen rules of these rows), `docs/method.md` §4, §5, §7 and §8, `skills/write-unit`, `skills/audit-units` §3, `skills/file-unit` and the docstring of `kit/thin.py` (the chat reads those, never a unit). {THIN_CHAT}{TRIAL if r['row'] == 'W-BW1' else ''} Commit after every agent returns and after every step, on `main`; every push is a landing with `python3 kit/land.py land <this row>` (`docs/method.md` §10; a bare `git push` is refused by the clone's guard), and the row lands before it publishes (step 10). If the session's permission check refuses to run the repo's own scripts after the fresh clone, stop at once, say so in one line and ask Pedro to approve; never work around it. The safety check refuses an `rm -rf` whose target is a shell variable: use a literal absolute path, or do without the removal. Where a choice is open, take the most reasonable reading, say so in the record, and carry on; ask only if genuinely blocked. Fix every error, should-fix and minor finding the work turns up in this chat; a minor whose own Fix is \"no change required\" is recorded and not applied.")
     P.append("**1. Gate.** `python3 kit/next_prompt.py --list` shows this unit as the next one not filed"
              + (f" (it lists {', '.join(earlier)} as not filed: stop and say so, since the course is written in reading order)" if earlier else "")
              + ". No REWRITE verdict is open in `docs/courses-index.md`.")
@@ -328,7 +343,7 @@ def prompt(r, nxt):
              + ("the facts the unit set about Mara with their sections and what it left free, " if cid == 'personal-brand' else "any fact the Needs list asked for that the Project's records hold, private details removed, for `case-academy.md`, ")
              + "the flag rows and the flags carried, the `docs/courses-index.md` edits (the row with the fresh-check path, the count line, the counter, a staleness row if search is on), both changelog entries, and the writer's `Object:` line kept in the changelog row), replying in at most six lines; `python3 kit/thin.py insert out/records.json` inserts it and restores everything if it fails. Then `python3 kit/index_check.py` until it matches and `python3 kit/private_terms.py` prints OK (a hit is fixed in the unit, never in the list). No relief until row G-R.")
     P.append("**9. Build and verify.** `cd kit && python3 build.py` (about five minutes; read its last line, since a build that stops leaves the site stale), then `python3 verify.py` (ALL CHECKS PASSED; read every FAIL line), then `python3 verify.py --shots <dir> --page read-" + code.lower() + "` (check the id it prints; it runs for up to half an hour, so start it in the background with a one-hour timeout and wait for it to end before any figure re-check reads its frames: C3, 15 Nov 2026) and look at the page's shots at phone and desktop, dark and light, and at every figure's frames. A layout fault is fixed in `design/theme.css` (then `cp design/theme.css kit/shell.css`) or `kit/viz.py`, never in a page.")
-    P.append(f"**10. Publish Academy once.** Before the build you publish, move the row to `docs/CHANGELOG.md`, move its entry in `docs/site-log.md` from Next to Done (step 11), set the backlog's \"Next up\" line and save the next prompt in its row (step 11), so the published Backlog and Changelog pages, which Academy renders from `docs/site-log.md` alone, are current. **Land before you publish** (`docs/method.md` §10): commit everything above, then `python3 kit/land.py land <this row> --expected <file>`; publish only after it exits 0. Right before the publish, `git fetch` and require `git rev-parse HEAD` to equal `git rev-parse origin/main` (if main has moved, `git pull --ff-only` first), rebuild that HEAD (`cd kit && python3 build.py`) and publish that build, never one built before landing. Read the artifact {ACADEMY} first and compare the live page with the build you started from (`get_artifact` for the live version id; `list_files` for every file's sha256 against `sha256sum` of the start build's files, which are the `kit/academy/` of the commit you cloned). `publish_files` patches (a republish changes only the files it names) and refuses a shell that does not begin with a doctype: send the files that differ from the live artifact's (their sha256 in `list_files`), found by script, and the shell inside the wrapper the live page carries (its first line and its closing `</body></html>`, taken from the saved live shell by script into a copy outside the repo), with `slug`, `base_version` and mode patch; then read the sent files back and compare their sha256 with the build; never a new artifact, never forced. Then `./deploy.sh` once: attach `apcanario/academy` with add_repo (if refused, carry on and ask Pedro once at the end), clone it once, set `DEPLOY_DIR` to the clone, and confirm with `gh run` that the deployment of the new build succeeded. The publish and deploy identifiers go into the records after the publish, committed and landed again with `kit/land.py`, without republishing.")
+    P.append(f"**10. Publish Academy once.** Before the build you publish, move the row to `docs/CHANGELOG.md`, move its entry in `docs/site-log.md` from Next to Done (step 11), set the backlog's \"Next up\" line and save the next prompt in its row (step 11), so the published Backlog and Changelog pages, which Academy renders from `docs/site-log.md` alone, are current. **Land before you publish** (`docs/method.md` §10): commit everything above, then `python3 kit/land.py land <this row> --expected <file>`; publish only after it exits 0. Right before the publish, `git fetch` and require `git rev-parse HEAD` to equal `git rev-parse origin/main` (if main has moved, `git pull --ff-only` first), rebuild that HEAD (`cd kit && python3 build.py`) and publish that build, never one built before landing. Read the artifact {ACADEMY} first and compare the live page with the build you started from (`get_artifact` for the live version id; `list_files` for every file's sha256 against `sha256sum` of the start build's files, which are the `kit/academy/` of the commit you cloned). `publish_files` patches (a republish changes only the files it names) and refuses a shell that does not begin with a doctype: send the files that differ from the live artifact's (their sha256 in `list_files`), found by script, and the shell inside the wrapper the live page carries (its first line and its closing `</body></html>`, taken from the saved live shell by script into a copy outside the repo), with `slug`, `base_version` and mode patch; then read the sent files back and compare their sha256 with the build; never a new artifact, never forced. Then `./deploy.sh` once: clone `apcanario/academy` once (shallow, push access; if refused, carry on and ask Pedro once at the end), set `DEPLOY_DIR` to the clone, and confirm with `gh run` that the deployment of the new build succeeded. The publish and deploy identifiers go into the records after the publish, committed and landed again with `kit/land.py`, without republishing.")
     P.append("**11. Close** per `docs/method.md` §8, steps 1 to 5: the row done and moved to `docs/CHANGELOG.md` with the date, the models and a one-line result;"
              + f"its entry in `docs/site-log.md` (§8 step 1b) moved from Next to Done, dated, one plain sentence (\"{code}, {u[1]}, written\", ending \"course <code> complete\" if it is the course's last unit; no model name, file name, agent, audit or row word, no private term), Next renumbered; "
              + "`kit/CHANGELOG.md` gets its session entry; every task the work uncovered has been done at step 7b, but a brief change or a task for Pedro, each a new row marked *proposed* (a syllabus review, if a flag asks for one, is such a row); every other proposal the work uncovered and could not do at step 7b is a row of the Carried proposals section of `docs/BACKLOG.md` with its ⚠ flag on any disruption elsewhere in the project, and the next prompt, which this step saves, appends it (step 1c); a correction left open after step 7b's second round, or by a row that stopped, is a row of the Corrections section of `docs/BACKLOG.md`, which the next prompt works at its step 1b (rule 12); the rows worked at step 1b move to `docs/CHANGELOG.md` with this row; the Project copies `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` rewritten from `docs/`, and the Project mirrors refreshed with the Projects tool, never a unit (Pedro, 15 Nov 2026: units are not mirrored): only `claude/BACKLOG-chats.md` and `claude/CHANGELOG-chats.md` every time, and the method, `courses-index.md`, the course's `course.toml`, `briefs.md`, `syllabus-flags.md` and the skill mirrors when this row changed them (read each existing path with `project_read` first, then write it from its repo file with `local_path`). The next prompt is not written by hand: `python3 kit/next_prompt.py --save` prints the prompt of the next unit not filed"
@@ -336,10 +351,40 @@ def prompt(r, nxt):
              + " and saves it in that row of `docs/BACKLOG.md`; run it after filing and before the final build."
              + (f" Here the next row is {hold(nxt)}, the review that holds {nxt['row']}: its prompt is already saved in its row, so `--save` is not run; set the backlog's \"Next up\" line to {hold(nxt)} and give its saved prompt at the end of the reply." if hold(nxt) else ''))
     P.append("**Reply:** what was filed where (words, figures, search used or not); the fresh-check verdict and counts; each mistake corrected, in a line, with the file it was in; each flag raised, with the units it affects and whether it blocks the next unit; the private-terms result; verify's result; the publish and the deploy; the choices taken; the backlog hand-off (row done, the corrections and proposals dealt with in this chat, any left with the reason, next up); **every proposal listed**, each with what it does and a ⚠ flag on any disruption elsewhere in the project, stating that it is appended to the next row's prompt and worked in that chat unless Pedro removes it; then the next prompt in a code block.")
-    return '\n\n'.join(P)
+    return gate(r, '\n\n'.join(P))
 
 
-def save(row, text):
+def gate(r, out):
+    """S-PROMPT1 (rule E): a row in GATES printed while its gate row is still in docs/BACKLOG.md gets, after its first paragraph,
+    the instruction to close the gate row: Pedro pasting the course's starter line is his go (S-SCE0's first line "Do not run until
+    Pedro has closed ..." is gone)."""
+    g = GATES.get(r['row'])
+    if not g or not re.search(r'^\| ' + re.escape(g) + r' \|', (ROOT / 'docs' / 'BACKLOG.md').read_text(encoding='utf-8'), flags=re.M):
+        return out
+    s = (f"**Gate {g}: Pedro's go.** {r['row']} is the first row after the gate {g}, and Pedro pasting the starter line that began this chat is his go. "
+         f"Before step 1, move row {g} from the Proposed section of `docs/BACKLOG.md` to `docs/CHANGELOG.md` as \"closed by Pedro starting the chat\" (today's date, this row), "
+         f"and remove from `docs/BACKLOG.md` every line or clause saying that {r['row']} is not to be run or waits until Pedro has closed {g}; commit; it is landed with the row.")
+    i = out.index('\n\n')
+    return out[:i] + '\n\n' + s + out[i:]
+
+
+def starter(cid):
+    """S-PROMPT1 (rule D): the course's starter line, the one prompt Pedro pastes to run its next bundle."""
+    if cid not in QUEUE:
+        raise SystemExit(f"no course {cid} in QUEUE ({', '.join(QUEUE)})")
+    rs = [r for r in rows() if r['c']['id'] == cid]
+    if not [r for r in rs if r['code'] not in r['filed']]:
+        raise SystemExit(f'{cid}: every unit is filed; no starter line')
+    return (f"{CLONE}\n{rs[0]['sc']['name']}, next bundle. Thin main chat on Sonnet 5.5; every agent a fresh Opus 5.5 agent. "
+            f"Run `python3 kit/next_prompt.py --course {cid} --bundle 4` and work what it prints in full, unattended.")
+
+
+RUNS_IN = 'runs in the chat of '
+
+
+def save(row, text, force=False):
+    """Write text into the row's prompt cell of docs/BACKLOG.md. S-PROMPT1: unless force, a cell reading "runs in the chat of <row>"
+    is kept, and a cell holding the course's starter line gets the starter line again, never the long prompt."""
     p = ROOT / 'docs' / 'BACKLOG.md'
     lines = p.read_text(encoding='utf-8').split('\n')
     starts = [i for i, ln in enumerate(lines) if ln.startswith(f'| {row} |')]
@@ -351,6 +396,12 @@ def save(row, text):
         j += 1
     cells = lines[i].split(' | ')
     head = ' | '.join(cells[:3])
+    cell = '\n'.join(lines[i:j + 1])[len(head) + 3:]
+    if not force and cell.startswith(RUNS_IN):          # S-PROMPT1: a row inside a group of four keeps "runs in the chat of <first row>"
+        print(f'{row}: {cell.rstrip(" |")}; its prompt cell is kept', file=sys.stderr)
+        return
+    if not force and cell.startswith(CLONE) and '--bundle' in cell and len(cell) < 700:   # S-PROMPT1: a group's first row holds the starter line
+        text = starter(next(r['c']['id'] for r in rows() if r['row'] == row))
     lines[i:j + 1] = (head + ' | ' + text + ' |').split('\n')
     p.write_text('\n'.join(lines), encoding='utf-8')
 
@@ -369,37 +420,54 @@ if __name__ == '__main__':
         for r in rs:
             print(f"{r['row']:10} {r['code']:7} search {r['search']:3} {'filed' if r['code'] in r['filed'] else 'not filed'}  {r['unit'][1]}")
         sys.exit(0)
+    if '--starter' in sys.argv:
+        print(starter(sys.argv[sys.argv.index('--starter') + 1]))
+        sys.exit(0)
+    course = sys.argv[sys.argv.index('--course') + 1] if '--course' in sys.argv else None
+    if course and course not in QUEUE:
+        raise SystemExit(f"no course {course} in QUEUE ({', '.join(QUEUE)})")
     if '--row' in sys.argv:
         want = sys.argv[sys.argv.index('--row') + 1]
         k = next((i for i, r in enumerate(rs) if r['row'] == want), None)
         if k is None: raise SystemExit(f'no row {want}')
     else:
-        k = next((i for i, r in enumerate(rs) if r['code'] not in r['filed']), None)
-        if k is None: raise SystemExit('every public unit is filed; the next row is G-R')
+        k = next((i for i, r in enumerate(rs) if r['code'] not in r['filed'] and (not course or r['c']['id'] == course)), None)
+        if k is None:
+            raise SystemExit(f'{course}: every unit of this course is filed; nothing is left to write' if course else 'every public unit is filed; the next row is G-R')
         if hold(rs[k]): raise SystemExit(f"{rs[k]['row']} waits for {hold(rs[k])}: run that row first (its prompt is saved in its row of docs/BACKLOG.md)")
     nxt = next((r for r in rs[k + 1:] if r['code'] not in r['filed']), None)
     text = prompt(rs[k], nxt)
-    if '--bundle' in sys.argv:      # several rows in one unattended chat (method §4, P31): this row's prompt between a preface and a tail
+    first = rs[k]
+    if '--bundle' in sys.argv:      # several rows of one course in one unattended chat (method §4, P31): this row's prompt between a preface and a tail
         n = int(sys.argv[sys.argv.index('--bundle') + 1])
+        cid = rs[k]['c']['id']
         todo = []
-        for r in [r for r in rs[k:] if r['code'] not in r['filed']]:
-            if len(todo) == n or (todo and hold(r)): break
+        for r in [r for r in rs[k:] if r['code'] not in r['filed'] and r['c']['id'] == cid]:
+            if len(todo) == n or (todo and (hold(r) or r['row'] in GATES or r['row'] in HOLDS)): break   # S-PROMPT1: gates and holds are boundaries
             todo.append(r)
         if len(todo) > 1:
             names = ', then '.join(f"{r['row']} (unit {r['code']})" for r in todo)
-            after = next((r for r in rs[rs.index(todo[-1]) + 1:] if r['code'] not in r['filed']), None)
+            after = next((r for r in rs[rs.index(todo[-1]) + 1:] if r['code'] not in r['filed'] and r['c']['id'] == cid), None)
             pre = (f"This chat runs {len(todo)} rows one after the other, unattended (Pedro is away; method §4, P31): {names}. "
                    "Work the first exactly as its prompt below says, to the end of its step 11: filed, built, verified, landed with `kit/land.py`, then published to the artifact and deployed to Pages from a fresh build of the landed HEAD, its row closed. "
                    "Each unit ends published before the next begins, so a failure later in the night strands nothing. Never ask a question: where the prompt says ask, take the most reasonable reading and record it; "
                    "where it says stop (the permission check refuses the repo's scripts; a writer or checker states a model that is not claude-opus-5-5; a second `rewrite`; a flag that blocks the next unit), stop there, leave what is finished published and pushed, and say in the first line of the reply which row stopped and why. "
                    "Do not write the first row's reply; go on.")
+            if hold(after):
+                nextp = f"the prompt already saved in row {hold(after)} of `docs/BACKLOG.md` (the review that holds {after['row']}; do not run `--bundle`)"
+            elif after:
+                nextp = (f"the course's starter line, already in the prompt cell of row {after['row']} (`python3 kit/next_prompt.py --course {cid} --bundle {n} --save` refreshes it there; "
+                         f"`--starter {cid}` prints it):\n\n```\n{starter(cid)}\n```\n\nThe one reply ends with that line in a code block, never with a long prompt, unless a stop left something only Pedro can decide, which the reply then says first")
+            else:
+                nextp = f"what {todo[-1]['row']}'s own step 11 says (no unit of this course is left after it)"
             tail = (f"**Then the next row{'s' if len(todo) > 2 else ''}, in this same chat.** After each row is closed, run `python3 kit/next_prompt.py --row <the next row>` ("
                     + ', '.join(r['row'] for r in todo[1:]) + ") and work what it prints in full, the same way: a new packet folder, a new writer and a new checker, each a fresh agent that has seen nothing of the earlier unit but its filed file; "
                     "the start build for its publish is the build the row before published; clone nothing again. "
-                    f"After {todo[-1]['row']} is closed, stop. The next prompt, saved in its row and given at the end of the one reply, is "
-                    + (f"the prompt already saved in row {hold(after)} of `docs/BACKLOG.md` (the review that holds {after['row']}; do not run `--bundle`)" if hold(after) else f"`python3 kit/next_prompt.py --bundle {n} --save` (from {after['row']})" if after else "the prompt of row G-R, written to the standard of this one")
+                    f"After {todo[-1]['row']} is closed, stop. The next prompt is " + nextp
                     + ". **One reply for the whole chat:** per row, what its own Reply paragraph asks, under the row's name; then the backlog hand-off and the next prompt in a code block.")
-            text = pre + '\n\n' + text + '\n\n' + tail
+            body = text[len(CLONE) + 1:] if text.startswith(CLONE + '\n') else text
+            text = CLONE + '\n' + pre + '\n\n' + body + '\n\n' + tail
     if '--save' in sys.argv:
-        save(rs[k]['row'], text)
+        if '--bundle' in sys.argv: save(first['row'], starter(first['c']['id']), force=True)   # S-PROMPT1: a bundle's first row holds the starter line
+        else: save(first['row'], text)
     print(text)
