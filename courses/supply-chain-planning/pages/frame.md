@@ -1,0 +1,13 @@
+<h2 class="hsec">Frame</h2>
+<section class="howto edge" style="--hc:var(--red)"><h2>Pick</h2>
+  <p><strong>Teach planning as a cascade of decisions, from a demand forecast to a released order, with demand and inventory given seven of the sixteen core units.</strong></p>
+  <ul><li>Every planning screen serves one decision on one horizon; that is the map.</li><li>Demand and inventory are common to retailers, distributors and manufacturers.</li><li>The reader's craft needs the decision and its owner, not the mathematics.</li></ul>
+  <p class="over"><strong>Override if:</strong> the reader's product work is mainly in manufacturing scheduling; then SCP9 splits into two units and SCP10 shrinks.</p>
+</section>
+<div class="report"><ul>
+  <li><strong>What the course is for.</strong> Learning the domain: the planning decisions from a demand forecast to a released order, for a retailer, a distributor and a manufacturer, the people who make them, the data and the software they make them with, who buys that software and what it is said to be worth. It is the second course of the Supply Chain track and assumes no other course. No unit is interview preparation.</li>
+  <li><strong>Concepts, no calculation.</strong> No formula and no worked calculation appears in any unit. A method is described by what goes in, what comes out, what it assumes and when it fails.</li>
+  <li><strong>Out of scope.</strong> Generative AI, language-model assistants, agents and any vendor's AI branding. Statistical forecasting, machine-learning forecasting and mathematical optimisation are in, as methods judged on their published evidence.</li>
+  <li><strong>No real vendor is assessed.</strong> Worked product examples use fictional vendors. Real vendors appear only as the source of a dated public statement or as entries in a dated list from an analyst report or a filing, all alike. Real operating companies may appear as documented cases from peer-reviewed or published accounts, labelled where the company co-wrote them.</li>
+  <li><strong>Where the evidence pushes back.</strong> Forecasting and inventory are mathematics, and a unit without calculation can slide into vocabulary; the fresh checker fails a method that is only named. Independent measurement of what a planning system returns is thin: the value of planning software is mostly vendor-told. Research on sales and operations planning is mostly single-company cases and surveys. The forecasting competitions used particular datasets, so applying them to a company's own demand is an inference. Published company cases are survivors. Every finding states its kind of evidence, so a simulation is never taken for a field result.</li>
+</ul></div>
