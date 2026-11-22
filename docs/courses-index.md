@@ -88,10 +88,35 @@ The public course **SCE · Supply Chain Execution for Product Teams**, created 1
 | 19 | DD-SCE1 | SCE | Deep dive: the logistics provider's business | not written | Opus 5.5 | on | `courses/supply-chain-execution/DD-SCE1-deep-dive-the-logistics-providers-business.md` |
 | 20 | DD-SCE2 | SCE | Deep dive: peak and exceptions | not written | Opus 5.5 | off | `courses/supply-chain-execution/DD-SCE2-deep-dive-peak-and-exceptions.md` |
 
+## Supply Chain Planning (public)
+
+The public course **SCP · Supply Chain Planning for Product Teams**, created 22 Nov 2026 (row S-SCP0; syllabus designed 21 Nov 2026 on Fable 5.2, `docs/supply-chain-planning-syllabus.md`): written for someone who builds, sells or implements planning software with no planning background, an exception to the single-reader rule; the reader is the persona in each brief's preamble. Adapted from nothing: no source units; a seed bibliography of 46 references, 44 checked for existence only (2 not opened) (`vault/supply-chain-planning/notes/bibliography.md`). The running case is three fictional companies, Corvane, Ostrel Foods and Pellward, and three fictional vendors, Lathmoor, Ebbfield and Varnby Software (`vault/supply-chain-planning/notes/case-facts.md`). Sixteen core units in an opening and four parts, and two deep dives, in the Supply Chain track, the second of its courses. 0 of 18 written. A unit is written when its file is in `courses/supply-chain-planning/`. Briefs: the course's Briefs page in Academy (`vault/supply-chain-planning/briefs.md`, with the Aim lines in `vault/supply-chain-planning/course.toml`). Build order: the Build order page, in syllabus order (SCP1 to SCP16, then DD-SCP1 and DD-SCP2), with no gate; search on for SCP1, SCP13, SCP15, DD-SCP1 and DD-SCP2. Sourcing: `docs/sourcing-standard.md` Parts 1 and 9. Syllabus flags: `vault/supply-chain-planning/notes/syllabus-flags.md`. Decisions: the syllabus's §8 and `docs/public-courses.md`. Prompts: `docs/supply-chain-planning-prompts.md`, printed by `kit/next_prompt.py`. Fresh checks: `audits/supply-chain-planning/`.
+
+| # | Unit | Course | Title | Status | Model | Search | Path |
+|---|---|---|---|---|---|---|---|
+| 1 | SCP1 | SCP | The planning map, the words and the evidence | not written | Opus 5.5 | on | `courses/supply-chain-planning/SCP1-the-planning-map-the-words-and-the-evidence.md` |
+| 2 | SCP2 | SCP | Demand and its data | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP2-demand-and-its-data.md` |
+| 3 | SCP3 | SCP | Forecasting methods | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP3-forecasting-methods.md` |
+| 4 | SCP4 | SCP | Forecast error and what it is used for | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP4-forecast-error-and-what-it-is-used-for.md` |
+| 5 | SCP5 | SCP | Judgment, overrides and the demand planner | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP5-judgment-overrides-and-the-demand-planner.md` |
+| 6 | SCP6 | SCP | Why inventory exists and how much | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP6-why-inventory-exists-and-how-much.md` |
+| 7 | SCP7 | SCP | Replenishment | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP7-replenishment.md` |
+| 8 | SCP8 | SCP | The network: stock in more than one place | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP8-the-network-stock-in-more-than-one-place.md` |
+| 9 | SCP9 | SCP | Supply planning for makers | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP9-supply-planning-for-makers.md` |
+| 10 | SCP10 | SCP | Retail and distribution planning | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP10-retail-and-distribution-planning.md` |
+| 11 | SCP11 | SCP | Sales and operations planning | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP11-sales-and-operations-planning.md` |
+| 12 | SCP12 | SCP | Where the plan meets execution | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP12-where-the-plan-meets-execution.md` |
+| 13 | SCP13 | SCP | The planning system as a product | not written | Opus 5.5 | on | `courses/supply-chain-planning/SCP13-the-planning-system-as-a-product.md` |
+| 14 | SCP14 | SCP | Planners as users | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP14-planners-as-users.md` |
+| 15 | SCP15 | SCP | Buying planning software: what differs | not written | Opus 5.5 | on | `courses/supply-chain-planning/SCP15-buying-planning-software-what-differs.md` |
+| 16 | SCP16 | SCP | Capstone: one planning product memo | not written | Opus 5.5 | off | `courses/supply-chain-planning/SCP16-capstone-one-planning-product-memo.md` |
+| 17 | DD-SCP1 | SCP | Deep dive: planning as companies have published it | not written | Opus 5.5 | on | `courses/supply-chain-planning/DD-SCP1-deep-dive-planning-as-companies-have-published-it.md` |
+| 18 | DD-SCP2 | SCP | Deep dive: the hard numbers | not written | Opus 5.5 | on | `courses/supply-chain-planning/DD-SCP2-deep-dive-the-hard-numbers.md` |
+
 ## Courses to come (Personal Mythology)
 
 Listed in `catalog.toml` (the History track's `planned`; the top-level `next` until P-DEC12) as coming soon, with a scope and reading spine each: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese. A new course is added with the `new-course` skill.
 
 ## Courses to come (Supply Chain)
 
-Listed in `catalog.toml` (`planned` of the Supply Chain track in `tracks`, `THEMES` in `kit/courses.py`) as coming soon, after Supply Chain Execution for Product Teams and in this order, each with its title, its scope line and its teaser, word for word from the design chat's list of 19 Nov 2026 (syllabus decision D12): Supply Chain Planning for Product Teams; Warehouse Automation and Robotics; AI in Supply Chain Execution; Last Mile and Omni-channel Fulfilment. None has a syllabus, a brief, a data folder or a writing row; each needs its own design chat on Fable before anything is queued for it (row P-SCE10). A course on the logistics provider's business is left off: it is promised only if DD-SCE1 proves too thin.
+Listed in `catalog.toml` (`planned` of the Supply Chain track in `tracks`, `THEMES` in `kit/courses.py`) as coming soon, after Supply Chain Execution for Product Teams and Supply Chain Planning for Product Teams and in this order, each with its title, its scope line and its teaser, word for word from the design chat's list of 19 Nov 2026 (syllabus decision D12): Warehouse Automation and Robotics; AI in Supply Chain Execution; Last Mile and Omni-channel Fulfilment. None has a syllabus, a brief, a data folder or a writing row; each needs its own design chat on Fable before anything is queued for it (row P-SCE10). A course on the logistics provider's business is left off: it is promised only if DD-SCE1 proves too thin.
