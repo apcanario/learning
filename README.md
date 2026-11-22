@@ -25,7 +25,7 @@ The one home of the Learning Project (Pedro's self-study courses): the Personal 
 
 1. Edit `design/theme.css` (a token in section 1 before a component).
 2. Copy it over `kit/shell.css`: `cp design/theme.css kit/shell.css`.
-3. `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED).
+3. `cd kit && python3 build.py && python3 verify.py` (ALL CHECKS PASSED). `check_phone_identity` holds the phone (390 px and below) to the theme at `PHONE_REF` in `kit/verify.py`; a row that changes the phone's design on purpose re-pins it deliberately, in that row's record (S-NAV2, 22 Nov 2026).
 4. Publish Academy: the built site to its existing artifact (link in `docs/courses-index.md`), never a new one: the shell `kit/academy/index.html` with the fetched files `python3 publish_files.py` lists as `files` (`kit/README.md`, Site layout and sizes); then `./deploy.sh` for GitHub Pages.
 
 ## Bring your own course

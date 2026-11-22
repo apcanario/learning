@@ -71,3 +71,29 @@
 - push attempts: 1
 - pushed: 49eba6d0566a6d04e9686c5626c750af6bcd4c99
 
+## land S-NAV2 · 2026-11-22T18:20:34+00:00
+
+- start: 445b0c4dd (.git/land/started/S-NAV2.json)
+- upstream commits absorbed: 8
+  - 49eba6d land S-NAV2: verify record
+  - 47cde7f land S-NAV2: baseline re-recorded (D)
+  - c3aa941 land S-NAV2: verify record
+  - 7a525a3 land S-NAV2: baseline re-recorded (C)
+  - fd8ef30 land S-NAV2: verify record
+  - e13b165 land S-NAV2: baseline re-recorded (B)
+  - d1872fd land S-NAV2: verify record
+  - 7696290 land S-NAV2: baseline re-recorded (A)
+- lines preserved: 1655 upstream-added lines in 18 files, all present
+- accepted drops (--expected): 3
+  - design/README.md: At 390 or 400 px, 768 px, 1280 px and (since S-NAV2) 1920 px wide, in dark and in light, on every page with every `<details>` open: the document is not wider th
+  - design/theme.css: .main-nav{position:fixed;top:0;left:var(--side);right:calc(3 * 44px + 24px);height:var(--bar);display:flex;align-items:center;gap:2px;margin:0;padding:0 8px;bor
+  - kit/shell.css: .main-nav{position:fixed;top:0;left:var(--side);right:calc(3 * 44px + 24px);height:var(--bar);display:flex;align-items:center;gap:2px;margin:0;padding:0 8px;bor
+- saved row prompts: no merge, not checked
+- files auto-merged: none
+- baseline: clean
+- index_check: ok
+- verify: ALL CHECKS PASSED (first line: full: design/theme.css, kit/build.py, kit/shell.css, kit/verify.py changed)
+- lock: released; moved onto 1 of our own lock heartbeats before the push
+- push attempts: 1
+- pushed: 7a7437f64afef5d379d9a882865f88251b1e75df
+

@@ -110,7 +110,7 @@ figure kinds a unit declares (the Figure kinds page shows those):
             order along the width, 6% clear at each side, evenly spaced, alternately above and below the middle. The layer is <div class="topo">
             ("patch": true adds topo-patch), aria-hidden, with no text in it; the theme (4h, 4i) gives every stroke and
             opacity, shows one layout per width and drifts the hero's, never a patch's. The hero declares two layouts
-            (tall below 1100 px, wide from it), one rise per area of knowledge (its words written); each course tile one
+            (tall below 900 px, wide from it; 1100 px before theme 6.22), one rise per area of knowledge (its words written); each course tile one
             layout, "patch", one rise per unit of the course, a planned unit flat. A rise without a label or tone, a
             written rise without words, an "at" that does not give one point per rise, or no written rise raises.
 

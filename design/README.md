@@ -17,7 +17,7 @@ A published claude.ai artifact cannot load an external stylesheet. So the genera
 1. Edit `design/theme.css`. Change a token in section 1 before touching a component; most changes are a token.
 2. Copy it over the kit: `cp design/theme.css kit/shell.css`. The theme keeps every class name `shell.css` had, so `build.py` and `shell.js` need no change (verified 28 October 2026: no class undefined, `build.py` builds, `verify.py` passes).
 3. Rebuild Academy, the one site: `cd kit && python3 build.py && python3 verify.py`.
-4. Check each rebuilt page at the three widths (phone 390 or 400 px, tablet 768 px, desktop 1280 px) in dark and light: no horizontal scroll, no boxes closer than 6 px, every control at least 44 px tall, the drawer a drawer on the tablet and a sidebar on the desktop, light mode legible (the checks are listed below). `kit/verify.py` runs all of it.
+4. Check each rebuilt page at the three widths (phone 390 or 400 px, tablet 768 px, 1280 x 800 px, the tablet landscape layout since 6.22) and at the S-NAV2 layouts (1024 x 768, 1440 x 900, 1920 x 1080) in dark and light: no horizontal scroll, no boxes closer than 6 px, every control at least 44 px tall, the drawer a drawer below 1100 px, a sidebar from 1100 px, the top bar and the outline on a desktop, light mode legible (the checks are listed below). `kit/verify.py` runs all of it. A theme change must leave the phone (390 px and below) as it was at `PHONE_REF` (`check_phone_identity`); a row that changes the phone's design on purpose re-pins `PHONE_REF` to its own start, deliberately and recorded, never to silence a FAIL.
 5. Republish Academy to its existing artifact (never a new one), then `kit/deploy.sh`.
 
 ## What is in the file
