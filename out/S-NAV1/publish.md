@@ -33,3 +33,25 @@ Not tested. The S-NAV1 build is not on the artifact, so the live page cannot sho
 
 ## To finish
 The user needs to allow artifact publishing for this session, or publish themselves. Then: get_artifact (it must still be 1795290172-9fea, otherwise re-check), send the two batches above in mode patch to slug f27e8dc3-7579-4b08-91d2-516bfe862526, read every sent file back by sha256, then do the same for Greece (read the live page, wrap its shell, send the 81 files), then deploy.sh once the attach is allowed.
+
+## P-NAV5 run (22 Nov 2026)
+
+Publisher: a fresh agent, model claude-opus-5-5 (Opus 5.5). Authorised by Pedro in chat, 22 Nov 2026 09:28 ("Run p-nav5 now ahead of s-nav2"). Verdict: PUBLISHED, both artifacts, every sent file read back equal. deploy.sh not run (main chat deploys); nothing committed or pushed.
+
+### Before
+- Repo HEAD 6c6d230; kit/academy (273 files) and kit/editions/greece (82 files) equal kit/baseline.json at HEAD, 0 mismatches. 272 academy and 81 greece files differ from the start build 797b1d479.
+- Wrapped shell /home/claude/snav1-publish/academy-index-wrapped.html still present: sha256 e6e8981e…918546a, 626,365 B = 531 B live wrapper + HEAD shell (2962210b…) + `</body></html>\n`. Staged for sending at out/S-NAV1/publish-stage/ (deleted afterwards, never tracked).
+- Academy artifact (slug f27e8dc3-7579-4b08-91d2-516bfe862526): version 1795290172-9fea, read `owner`, 273 files, index.html sha256 107ad4ae… (566,776 B) as recorded above; 22 sampled files across all courses equal the start build by sha256 prefix.
+- Greece artifact (slug a32cd568-8a8b-4ff8-b138-6025a169c568, https://claude.ai/artifact/M9g881qokC98jC5VEo1Tk3): version 1794184734-79fa, read `owner`, 82 files (same paths as the build: 81 from `publish_files.py --edition greece` plus index.html). Its shell carries the same hosting wrapper (first line identical, last line `</body></html>`), so the Greece shell was wrapped the same way: 531 B wrapper + kit/editions/greece/index.html (e2bef81c…, 178,806 B) + `</body></html>\n` = 179,352 B, sha256 090e3aa7544af146f5166ee2542e43d61bd60adb0ed40d7cbc49107e1557cef0.
+
+### Sent (mode patch, no new artifact, nothing forced, no shared_live)
+- Academy patch 1: 255 files (wrapped shell + brand-a/bibliography.html … ux-ia/briefs.html) on 1795290172-9fea → 1795339954-d30e.
+- Academy patch 2: 17 files (ux-ia/built.html, home.html, read-dd-ia1–3, read-ia1–12) on 1795339954-d30e → 1795339982-8d2e. Total 272 sent; viz-examples.html unchanged and not sent. own_file_count 273.
+- Greece patch: 82 files (wrapped shell + 81) on 1794184734-79fa → 1795340119-ca40. own_file_count 82.
+
+### Read-back (list_files after publishing)
+- Academy 1795339982-8d2e: 273 files, path set equal to the build; index.html full sha256 e6e8981ed7ab406d85b41a35329a99a0619e59c2e97efcad86bdf58b3918546a = wrapped shell; the other 272 equal the build by 12-hex sha256 prefix (viz-examples.html still 481ab8e3…). 0 mismatches.
+- Greece 1795340119-ca40: 82 files, path set equal; index.html full sha256 090e3aa7… = wrapped Greece shell; the other 81 equal the build by 12-hex prefix. 0 mismatches (one first-pass mismatch on greece/r-11.3.html was a transcription slip; live 51821262932e… = build).
+
+### Browser history test
+Not tested: Claude in Chrome was not connected in this session. A left-edge swipe cannot be tested with a desktop browser in any case.
