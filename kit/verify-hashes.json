@@ -74,11 +74,11 @@
    "kit/vault.py": "cf89a2212b3b7a85485ed20d15cd8b3a0485732b16699ed8b83bf51c0483f63d",
    "kit/verify.py": "ba084dec657cbb1d0107f08e996f3f40a4f68163cb6b09461bf52d951553a4a2",
    "kit/verify_scope.py": "4152cb9606f2b099b7349d704f6cc309551702a92cf7bc2e50b5c030549e4344",
-   "kit/viz.py": "310e93ed0c4009a91adf63050e2a5e5c61823955e7c6099d696e317c4fe16e1e",
+   "kit/viz.py": "97eedc2f01760dcb4990def1ea53d4dbf31d35a6e7021c0ff8c3cc8c025cae15",
    "kit/viz_examples.py": "cb912556afc61ba922465afc43d647f75c7b0b3d90fdbb532acb2ae4dbf2e060"
   },
   "pages": {
-   "backlog": "6df15fc47f300f71a07501440d52331dd9ab03a754f44c55b7a6cfa2f6dcfddb",
+   "backlog": "b91b02b9f4051a68ad50ad78cce1251182f3b8872425437615c96df40c4b91c1",
    "brand-a": "4134a3a456b0b58600452999d72674bd1922a9ccfe5080dd909c7a64838726a4",
    "brand-a-bibliography": "9191fb50f8a771c741fd85f583ad007a0290fa719a504bec97855856659f6275",
    "brand-a-build": "e5a47d5c370b2be3d4bda6a5d07500354cd7f18dce5ae7c19f9d9a79b620dcc4",
@@ -100,7 +100,7 @@
    "building-with-ai-bw-built": "7d8cc958b1766bf522f20be0ff1daab374fba9d27ecb6059dd9d6c645ab86a37",
    "building-with-ai-bw-changelog": "66f267e5ea4fad66ffd0d488387a47effd0584439a0c2c4be80c72142f9443b8",
    "building-with-ai-bw-order": "cfff0bac9665fe1293816b6900d1baa34692bbf6df1ff92c582a93f0efbd9ada",
-   "changelog": "d5abbe952354aa5d8aa78b920bf31c1ac2bc627e2adbf6d45686c6ca056c3e21",
+   "changelog": "518b338614e5a01343687857482bf8d4ac8827bcd50201b2b95c8e3864ae8aaa",
    "greece": "21cc821db471c36c1407cf08a4c5602e543a31a8ec2539727ec554bb8522ba85",
    "greece-built": "61ad96e2506e56e162d265def000f9140a641b56569b0a0b7bf860a98e6e2432",
    "home": "6701fda0f75b71e575ba83a27746e93cc4cd450c42d4b9a6a67a86c27c3b8d98",
