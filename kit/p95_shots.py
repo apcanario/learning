@@ -1,8 +1,11 @@
 """P95 (8 Nov 2026) · shots of the pages that show an object relief (design/outlines/uses.json), for the second fresh
 checker and for Pedro: the top of each page (the header with its scope line, relief and caption, and the section bar
 under it) at 320, 360, 390, 430, 768 and 1280 px, dark and light, at rest (reduced motion); and, at 390 px dark with
-motion allowed, the relief alone at the five poses of the turn (0, .25, .5, .75, 1 of the sweep) at the top of the
-breath, as verify.py poses it. Every shot is under 8,000 px tall.
+motion allowed, the relief alone at the five poses of the swell (0, .25, .5, .75, 1 of the sweep), as verify.py poses it.
+Every shot is under 8,000 px tall.
+S-NAV1 step F (22 Nov 2026): the turn and the whole-layer breath are gone (step D); each line (path) of a relief swells
+about its piece's core from 1 to 1 + --d x --topo-grow over --topo-breath (topo-swell). A pose p is the point p of that
+sweep (0 at rest, 1 at its top), each line's phase (negative delay) honoured, as verify.py's swellAt does.
 
     python3 p95_shots.py <folder>                                  every mapped page
     python3 p95_shots.py <folder> m11 read-a4 --widths 390,1280      (P96) a sample of pages, at some of the widths
@@ -17,11 +20,10 @@ R = pathlib.Path(__file__).resolve().parent
 SITE = R / 'academy'
 USES = json.loads((R.parent / 'design' / 'outlines' / 'uses.json').read_text())['uses']
 WIDTHS = [320, 360, 390, 430, 768, 1280]
-POSE_JS = r"""([p, sel]) => { const t = document.querySelector(sel), sv = t.querySelector('svg');
-  const cs = getComputedStyle(document.documentElement), cyc = parseFloat(cs.getPropertyValue('--topo-cycle')) * 1000, bt = parseFloat(cs.getPropertyValue('--topo-breath')) * 1000;
-  document.getAnimations().filter(a => a.effect && a.effect.target === sv).forEach(a => { a.pause();
-    if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let x = p * cyc + d; if (x < 0) x = 2 * cyc - p * cyc + d; a.currentTime = x; }
-    else { let x = a.effect.getTiming().delay + .9999 * bt; if (x < 0) x += 2 * bt; a.currentTime = x; } }); }"""
+POSE_JS = r"""([p, sel]) => { const t = document.querySelector(sel);
+  const bt = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--topo-breath')) * 1000;   // S-NAV1 step F: the swell's sweep
+  document.getAnimations().filter(a => a.effect && a.effect.target && t.contains(a.effect.target)).forEach(a => { a.pause();
+    if (a.animationName === 'topo-swell') { const d = a.effect.getTiming().delay; let x = p * bt + d; if (x < 0) x = 2 * bt - p * bt + d; a.currentTime = x; } }); }"""
 
 
 def font_file(route):

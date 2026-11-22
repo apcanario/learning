@@ -2,8 +2,11 @@
 pages and twenty more chosen by script across the five courses, seeded, so the choice repeats), from the built site
 in a browser at 390 px with motion allowed, every section: its top-level paragraphs (their text and words, read from
 the page), its separator's HTML, its rises (label, words, the contour levels it stands, its own closed rings), and its
-frame and the box of all its lines at the five poses of the turn at the top of the breath, in CSS pixels, with the
-clearance each side. Writes <out>/extract/<page>.md (to read) and <out>/extract/<page>.json, and
+frame and the box of all its lines at the five poses of the swell, in CSS pixels, with the clearance each side.
+S-NAV1 step E (22 Nov 2026): the turn and the whole-layer breath are gone (step D); each line (path) of a separator
+swells about its rise's core from 1 to 1 + --d x --topo-grow over --topo-breath (topo-swell). A pose p is the point p
+of that sweep (0 at rest, 1 at its top), each line's phase taken into account as verify.py's pose() does; per pose
+the extract also gives the scale range its lines stand at (a still line at 1). Writes <out>/extract/<page>.md (to read) and <out>/extract/<page>.json, and
 <out>/extract/choice.txt (how the pages were chosen).
 
   python3 p94_extract.py OUT"""
@@ -12,12 +15,11 @@ from playwright.sync_api import sync_playwright
 import p94_shots as S
 
 R = pathlib.Path(__file__).resolve().parent
-TURN_CSS = (R / 'shell.css').read_text()
-_TM = re.search(r'--topo-turn:([\d.]+)deg;--topo-cycle:([\d.]+)s;[^\n]*\n\s*--topo-grow:([\d.]+);--topo-breath:([\d.]+)s', TURN_CSS)
-TURN, CYC, GROW, BT = float(_TM.group(1)), float(_TM.group(2)) * 1000, float(_TM.group(3)), float(_TM.group(4)) * 1000
-POSES = (0, .25, .5, .75, 1)
+_TM = re.search(r'--topo-grow:([\d.]+);--topo-breath:([\d.]+)s', (R / 'shell.css').read_text())
+GROW, BT = float(_TM.group(1)), float(_TM.group(2)) * 1000   # S-NAV1 step E: the swell's tokens (step D removed --topo-turn, --topo-cycle)
+POSES = (0, .25, .5, .75, 1)   # the point of the swell: 0 at rest, 1 at its top
 
-JS = r"""([pid, poses, cyc, bt]) => {
+JS = r"""([pid, poses, bt]) => {
   const P = document.getElementById(pid), r = P.querySelector('.report.steps'), whole = P.querySelector('.stepbar .whole');
   const words = e => { let t = ''; const walk = n => { for (const c of n.childNodes) { if (c.nodeType === 3) t += c.data; else if (c.nodeType === 1) { t += ' '; walk(c); t += ' '; } } }; walk(e); return t.split(/\s+/).filter(Boolean); };
   whole.click();
@@ -40,14 +42,14 @@ JS = r"""([pid, poses, cyc, bt]) => {
   const an = document.getAnimations().filter(a => a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('#' + pid + ' .topo-sep'));
   for (const p of poses) {
     an.forEach(a => { a.pause();
-      if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let t = p * cyc + d; if (t < 0) t = 2 * cyc - p * cyc + d; a.currentTime = t; }
-      else { let t = a.effect.getTiming().delay + .9999 * bt; if (t < 0) t += 2 * bt; a.currentTime = t; } });
+      if (a.animationName === 'topo-swell') { const d = a.effect.getTiming().delay; let t = p * bt + d; if (t < 0) t = 2 * bt - p * bt + d; a.currentTime = t; } });
     secs.forEach(([o, t]) => { if (!t) return; const fr = t.getBoundingClientRect(); let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
       t.querySelectorAll('path, circle').forEach(e => { const q = e.getBoundingClientRect(); if (!q.width && !q.height) return; x0 = Math.min(x0, q.left); y0 = Math.min(y0, q.top); x1 = Math.max(x1, q.right); y1 = Math.max(y1, q.bottom); });
       const f = v => Math.round(v * 10) / 10;
       o.sep.poses.push({pose: p, frame: [f(fr.left), f(fr.top), f(fr.width), f(fr.height)], lines: [f(x0), f(y0), f(x1 - x0), f(y1 - y0)],
                         clear: {left: f(x0 - fr.left), top: f(y0 - fr.top), right: f(fr.right - x1), bottom: f(fr.bottom - y1)},
-                        transform: getComputedStyle(t.querySelector('svg')).transform}); });
+                        scale: (() => { const s = [...t.querySelectorAll('path')].map(e => { const m = getComputedStyle(e).transform; return m === 'none' ? 1 : new DOMMatrix(m).a; });
+                                        return s.length ? [Math.round(Math.min(...s) * 1e4) / 1e4, Math.round(Math.max(...s) * 1e4) / 1e4] : null; })()}); });
   }
   an.forEach(a => a.play()); whole.click();
   return {pid, title: P.querySelector('h1').textContent.trim(), width: innerWidth, anims: an.map(a => a.animationName), sections: secs.map(([o]) => o)};
@@ -108,10 +110,11 @@ def main(out):
             pg.evaluate(f"location.hash = '{pid}'")
             pg.wait_for_function(f"() => document.fonts.status === 'loaded' && !document.getElementById('{pid}').hidden && document.querySelector('#{pid} .report.steps.stepping')")
             pg.wait_for_timeout(150)
-            d = pg.evaluate(JS, [pid, list(POSES), CYC, BT])
+            d = pg.evaluate(JS, [pid, list(POSES), BT])
             (out / f'{pid}.json').write_text(json.dumps(d, indent=1, ensure_ascii=False))
             md = [f'# {pid} · {d["title"]}', '', f'Read at {d["width"]} px with motion allowed. Animations on the separators: {len(d["anims"])} '
-                  f'({", ".join(sorted(set(d["anims"])))}). Poses: the turn at {", ".join(str(x) for x in POSES)} of its sweep, each at the top of the breath.', '']
+                  f'({", ".join(sorted(set(d["anims"])))}). Poses: the swell at {", ".join(str(x) for x in POSES)} of its sweep (0 at rest, 1 at its top, '
+                  f'the outermost line at 1 + {GROW:g}).', '']
             for s in d['sections']:
                 md += [f'## Section {s["k"]} · {s["heading"]}', '', 'Children, in order: ' + ' '.join(s['children']), '',
                        f'Top-level paragraphs: {len(s["paras"])}' + (f' (words: {", ".join(str(p["words"]) for p in s["paras"])})' if s['paras'] else ''), '']
@@ -125,10 +128,10 @@ def main(out):
                 md += [f'Separator: class "{sp["cls"]}", aria-hidden {sp["aria"]}, {sp["bytes"]:,} bytes, phase {sp["ph"]}, followed by {sp["next"]}; '
                        f'viewBox {sp["viewBox"]} ({sp["fit"]}); the page\'s tone {sp["tone"]}, its lines {sp["stroke"]} at opacity {sp["opacity"]}.', '',
                        'Rises: ' + '; '.join(f'{r["label"]} {r["words"]} words, {r["levels"]} levels, {r["rings"]} rings in its path' + (', a spot ring' if r['spot'] else '') for r in sp['rises']), '',
-                       '| Pose | Frame (x, y, w, h) | Lines (x, y, w, h) | Clear left, top, right, bottom |', '|---|---|---|---|']
+                       '| Pose | Frame (x, y, w, h) | Lines (x, y, w, h) | Clear left, top, right, bottom | Line scales (min, max) |', '|---|---|---|---|---|']
                 for q in sp['poses']:
                     c = q['clear']
-                    md.append(f'| {q["pose"]} | {", ".join(str(v) for v in q["frame"])} | {", ".join(str(v) for v in q["lines"])} | {c["left"]}, {c["top"]}, {c["right"]}, {c["bottom"]} |')
+                    md.append(f'| {q["pose"]} | {", ".join(str(v) for v in q["frame"])} | {", ".join(str(v) for v in q["lines"])} | {c["left"]}, {c["top"]}, {c["right"]}, {c["bottom"]} | {", ".join(str(v) for v in q["scale"] or ())} |')
                 md += ['', 'Its HTML:', '', '```html', sp['html'], '```', '']
             (out / f'{pid}.md').write_text('\n'.join(md))
             print('extract', pid, sum(1 for s in d['sections'] if s['sep']), 'separators')
