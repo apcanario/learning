@@ -130,3 +130,26 @@ Empty until the first unit is filed. One row per fact: unit, operation, fact.
 | SCE1 | Corvane | Jonas (customer service agent) answers customers about shipments in transit (map step 9). |
 | SCE1 | Corvane | Settlement is held in the ERP, and Helene (chief financial officer) answers for the financial record (map step 11); a working placement. |
 | SCE1 | Corvane | The replacement decision covers map steps 1 to 9 and 12 (SCE1's reading of "replace the warehouse system and buy order and transport systems from the same vendor"). |
+| from Supply Chain Planning | Corvane | Edda (vice-president, supply chain) sponsors the purchase of a retail planning system. |
+| from Supply Chain Planning | Corvane | Buying: most of each season's range is ordered six to nine months ahead from suppliers in Asia and Turkey; a small part is bought close to the season from nearer suppliers. |
+| from Supply Chain Planning | Corvane | Range life: about a third of the range carries over between seasons (basics); the rest is new each season and has no sales history of its own; four smaller drops a year sit inside the two main seasons. |
+| from Supply Chain Planning | Corvane | Stock: held in the distribution centre and in the 60 stores; a web order can be filled from either. |
+| from Supply Chain Planning | Corvane | Planning today: a merchandise financial plan in spreadsheets; first allocation to stores by store grade; store replenishment of basics proposed by the ERP and edited by allocators; end-of-season markdown decided in a weekly trading meeting. |
+| from Supply Chain Planning | Corvane | Known trouble (planning): stores graded on last year's sales receive the wrong sizes; basics run out in the best stores while slow stores hold them; markdown starts late. |
+| from Supply Chain Planning | Corvane | What it is deciding (planning): whether to buy a retail planning system, and whether allocation or the financial plan comes first. |
+| from Supply Chain Planning | Corvane | Signe: head of merchandise planning. |
+| from Supply Chain Planning | Corvane | Lorenzo: merchandise planner, womenswear. |
+| from Supply Chain Planning | Corvane | Agnes: allocator. |
+| from Supply Chain Planning | Corvane | Tomasz: demand planner, basics and web. |
+| from Supply Chain Planning | Ostrel Foods | Aart (operations director) sponsors the purchase of a planning system. |
+| from Supply Chain Planning | Ostrel Foods | Demand: a few hundred fast items and a long tail of slow items ordered by a few customers each; a strong weekly pattern, holiday peaks, and supplier promotions several times a year. |
+| from Supply Chain Planning | Ostrel Foods | Supply: producers deliver on fixed days with minimum orders; chilled items have shelf lives counted in days. |
+| from Supply Chain Planning | Ostrel Foods | Planning today: one demand planner and a team of buyers who each own a set of suppliers; reorder proposals from the ERP, often overridden; forecast accuracy reported monthly at total level only. |
+| from Supply Chain Planning | Ostrel Foods | Known trouble (planning): waste on chilled items after promotions; shortages on slow items that matter to a few large customers; buyers do not trust the ERP's proposals. |
+| from Supply Chain Planning | Ostrel Foods | What it is deciding: whether to buy a planning system for demand and replenishment. |
+| from Supply Chain Planning | Ostrel Foods | Wim: demand planner. |
+| from Supply Chain Planning | Ostrel Foods | Greta: senior buyer, chilled. |
+| from Supply Chain Planning | Ostrel Foods | Samir: replenishment analyst. |
+| from Supply Chain Planning | Ostrel Foods | Marta: commercial manager, plans promotions. |
+| from Supply Chain Planning | Ostrel Foods | Joris: finance director. |
+| from Supply Chain Planning | Varnby Software | Planning line: Varnby Planning, sold with the ERP: a demand forecasting module, requirements planning, and a planning workbench; no separate retail planning. |

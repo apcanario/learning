@@ -21,11 +21,11 @@ Filed facts, from the Execution register, unchanged:
 |---|---|
 | What it sells | Clothing and accessories, own label, mid-priced |
 | Channels | 60 stores in four European countries, one website |
-| Distribution | One distribution centre of 28,000 m² |
+| Distribution | One distribution centre of 28,000 m², one shift pattern of two shifts, a third in peak |
 | Range | About 18,000 items (size and colour counted separately), two main seasons a year |
 | Flows | Store replenishment by carton and by single item; web orders of one to three items; returns from web and from stores |
 | Peak | Mid-November to early January; web volume about four times a normal week |
-| Systems | An ERP, a warehouse system, an order system for the website |
+| Systems | An ERP, a warehouse system about twelve years old on its own servers, an order system for the website, carriers booked through each carrier's own portal |
 
 Planning facts, added for this course:
 
@@ -58,11 +58,11 @@ Filed facts, from the Execution register, unchanged:
 |---|---|
 | What it does | Buys from producers and delivers to restaurants, canteens and small shops |
 | Range | About 4,500 items: chilled, frozen and ambient; most carry a date |
-| Distribution | One warehouse with three temperature zones |
-| Delivery | Its own fleet of 40 vehicles, about 600 delivery points a day |
-| Orders | By phone, by a web shop and from sales staff, with a cut-off in the late afternoon, for delivery next morning |
-| Known trouble | Short-dated stock found too late; substitutions agreed by phone and not recorded |
-| Systems | An ERP with a warehouse module |
+| Distribution | One warehouse with three temperature zones; picking by the case onto roll cages; work starts in the evening for delivery next morning |
+| Delivery | Its own fleet of 40 vehicles, about 600 delivery points a day, fixed routes adjusted daily |
+| Orders | By phone, by a web shop and from sales staff, with a cut-off in the late afternoon |
+| Known trouble | Short-dated stock found too late; substitutions agreed by phone and not recorded; drivers returning with refused goods |
+| Systems | An ERP with a warehouse module, a routing tool for the fleet, paper delivery notes on some routes |
 
 Planning facts, added for this course:
 
