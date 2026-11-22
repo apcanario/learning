@@ -23,6 +23,9 @@ S-NAV1 step C (21 Nov 2026): the navigation, nav.main-nav and nav.sub-nav, sits 
 panel, so it reaches no page's hash; its checks (verify.py check_nav, the drawer boxes on the home, every area page and
 each changed page's course) are edition-wide and run in every run. A page's context (data-ctx) names its section's group
 of the sub-nav: a course's id, or "root" for the home, its site pages and the area pages (whose group is their own id).
+S-NAV1 step D (22 Nov 2026): the swell check (verify.py check_swell) visits a fixed sample, the home, the first area
+page, the first sampled course home, What's new and the first reading page with a relief, in every run: the motion is
+the theme's and viz.py's, which are GLOBAL, so any change to it is a full run anyway.
 
 What every page depends on (GLOBAL) forces the full run when it changed: kit/*.py, kit/shell.js, kit/shell.css,
 design/theme.css, kit/fonts/, catalog.toml, the edition's editions/<name>.toml and its brand's brands/<name>.toml.

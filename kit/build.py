@@ -286,7 +286,8 @@ def hours(words):
 # drawing is viz.py's home kind `contours`, declared here from the data: the home's hero (HERO_TOPO, P92), each course
 # home's hero (one rise per unit of the course), What's new's hero (one rise per day it lists), and the patch of every
 # tile (a course's units, a history unit's modules, a markdown unit's sections; a planned course one dashed ring). The
-# theme (4i) turns and grows each one slowly; `phase` starts each drawing of a page at its own point of the cycle.
+# theme (4i) swells each one slowly (S-NAV1 step D: each line about its rise's core, by its distance from it; the turn
+# and the whole-layer breath are gone); `phase` starts each drawing of a page at its own point of the cycle.
 _TONE = {'var(--red)': 1, 'var(--orange)': 2, 'var(--teal)': 3, 'var(--blue)': 4, 'var(--purple)': 5, 'var(--gold)': 6}
 
 
@@ -348,7 +349,7 @@ def ct_fit(rises, iv, specs, maxbytes=19500):
         for _ in range(24):
             lay = dict(name=sp['name'], width=W, height=H, spread=round(s, 4), grid=sp.get('grid', 5), simplify=.8, at=at)
             rr = viz.contours_rings(dict(kind='contours', interval=iv, rises=rises, layouts=[lay]))[sp['name']]
-            inside = all(turned_inside(b, W, H, view=view) for _, _, _, b in rr)   # at every pose of the move, not at rest only
+            inside = all(swell_inside(b, W, H, view=view) for _, _, _, b in rr)   # at every pose of the swell (the boxes are its extremes)
             if inside and all(own >= min(2, lv) for _, lv, own, _ in rr):
                 break
             s *= .9
@@ -365,40 +366,23 @@ def ct_fit(rises, iv, specs, maxbytes=19500):
 
 
 _TT = (pathlib.Path(__file__).resolve().parent.parent / 'design/theme.css').read_text()
-TOPO_TURN, TOPO_GROW = float(re.search(r'--topo-turn:([\d.]+)deg', _TT).group(1)), float(re.search(r'--topo-grow:([\d.]+);', _TT).group(1))   # the move every drawing makes, from the theme (P93; read from it since the follow-up of 5 Nov): the turn, and the most the breath grows a drawing
+# S-NAV1 step D (22 Nov 2026): the turn (topo-turn, --topo-turn, TOPO_TURN) and the whole-layer breath are gone. Every line
+# of a drawing swells about its own rise's core by 1 + d x --topo-grow (viz.swell_box), so viz.contours_rings gives each
+# rise's own rings' box and every line's extent over every pose of the swell already; the checks here are plain boxes.
 
 
-def turned_inside(b, W, H, pad=6, view=None):   # P93 check: 6 units (about 2.5 px on a 320 px phone's patch; at 3 the closest came to 1.1 px)
-    """Whether a box (x0, y0, x1, y1) in a W x H drawing stays inside it, pad units clear (or inside view, fractions of
-    the drawing: a hero's window), at both ends of the move: the drawing turned by -TOPO_TURN at scale 1 and by
-    +TOPO_TURN at TOPO_GROW (and the two other corners of that range), about its centre. A ring near the end of a 4:1
-    patch rises and falls by a tenth of its height; one at the centre does not move."""
-    cx, cy = W / 2, H / 2
+def swell_inside(b, W, H, pad=6, view=None):   # P93 check: 6 units (about 2.5 px on a 320 px phone's patch; at 3 the closest came to 1.1 px)
+    """Whether a box (x0, y0, x1, y1) in a W x H drawing, already taken over every pose of the swell (viz.swell_box: the
+    box contours_rings gives), stays inside it, pad units clear (or inside view, fractions of the drawing: a hero's
+    window). P93's turned_inside, which turned and grew the box here, before S-NAV1 step D."""
     lo_x, lo_y, hi_x, hi_y = (view[0] * W, view[1] * H, view[2] * W, view[3] * H) if view else (pad, pad, W - pad, H - pad)
-    for a in (-TOPO_TURN, TOPO_TURN):
-        ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
-        for g in (1, TOPO_GROW):
-            for x, y in ((b[0], b[1]), (b[2], b[1]), (b[0], b[3]), (b[2], b[3])):
-                dx, dy = x - cx, y - cy
-                u, v = cx + g * (dx * ca - dy * sa), cy + g * (dx * sa + dy * ca)
-                if not (lo_x <= u <= hi_x and lo_y <= v <= hi_y):
-                    return False
-    return True
+    return lo_x <= b[0] and b[2] <= hi_x and lo_y <= b[1] and b[3] <= hi_y
 
 
-def turned_clear(b, W, H, pad=6):
-    """P94: turned_inside split by direction: whether the box stays pad units clear of the drawing's left and right
-    edges, and of its top and bottom, at every pose of the move (both are true exactly when turned_inside is)."""
-    cx, cy, ok_x, ok_y = W / 2, H / 2, True, True
-    for a in (-TOPO_TURN, TOPO_TURN):
-        ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
-        for g in (1, TOPO_GROW):
-            for x, y in ((b[0], b[1]), (b[2], b[1]), (b[0], b[3]), (b[2], b[3])):
-                dx, dy = x - cx, y - cy
-                u, v = cx + g * (dx * ca - dy * sa), cy + g * (dx * sa + dy * ca)
-                ok_x &= pad <= u <= W - pad
-                ok_y &= pad <= v <= H - pad
-    return ok_x, ok_y
+def swell_clear(b, W, H, pad=6):
+    """P94 (turned_clear until S-NAV1 step D): swell_inside split by direction: whether the box (over every pose of the
+    swell) stays pad units clear of the drawing's left and right edges, and of its top and bottom (both are true exactly when swell_inside is)."""
+    return pad <= b[0] and b[2] <= W - pad, pad <= b[1] and b[3] <= H - pad
 
 
 def patch_block(rises, tone, phase=None):
@@ -406,7 +390,7 @@ def patch_block(rises, tone, phase=None):
     rises [(label, words or None)], one per part in order, a written part by its words, a planned one flat (a dashed
     ring); a contour every 5.5th part of the largest, so every patch reads at one density (the stats give the size);
     4:1, the tile's width. P93: the spread .40 over the parts, narrowed by a tenth until no line reaches the patch's
-    edge and every part's rings stay inside the frame at every pose of the move (turned_inside); a planned course (no
+    edge and every part's rings stay inside the frame at every pose of the swell (swell_inside); a planned course (no
     part written) is one dashed ring at the patch's centre."""
     top = max((w for _, w in rises if w), default=0)
     lay = dict(name='patch', width=720, height=180, spread=round(.40 / len(rises), 4), grid=6, simplify=.5,
@@ -417,7 +401,7 @@ def patch_block(rises, tone, phase=None):
         for _ in range(30):
             rr = viz.contours_rings(blk)
             ext = rr[('patch', 'extent')]
-            if not rr[('patch', 'edge')] and (ext is None or turned_inside(ext, 720, 180)) and all(turned_inside(b, 720, 180) for _, _, _, b in rr['patch']):
+            if not rr[('patch', 'edge')] and (ext is None or swell_inside(ext, 720, 180)) and all(swell_inside(b, 720, 180) for _, _, _, b in rr['patch']):
                 break
             lay['spread'] = round(lay['spread'] * .9, 4)
         else:
@@ -444,8 +428,8 @@ def sep_block(paras, tone, phase=None, label=''):
     ridge (ct_ridge, as What's new's days), in the course's tone, a contour every 5.5th of the section's largest
     paragraph (as a tile's patch steps by its largest part); 1200 by 170 units fitted whole in its frame (meet). Its
     spread is fitted as patch_block fits a tile's patch, narrowed by a tenth until no line reaches the frame and every
-    rise's rings and every line stay clear of it at every pose of the move (turned_inside: both ends of the turn, at rest
-    and at the top of the breath): its hills start SEP_SY units across the ridge and drawn out along it as far as the
+    rise's rings and every line stay clear of it at every pose of the swell (swell_inside, on the boxes
+    viz.contours_rings takes over the swell: at rest and at its top): its hills start SEP_SY units across the ridge and drawn out along it as far as the
     next rise (stretch, at most SEP_STRETCH times), so neighbours meet in one ridge; where a pose takes a line past the
     top or bottom the hills are lowered, past an end they are drawn out less (then lowered once at SEP_STRETCH_MIN); then its lines are
     simplified a step further until it is at most SEP_MAX bytes, plus SEP_PER for each rise over SEP_FREE (no rise is ever dropped). Each rise is labelled by its
@@ -467,7 +451,7 @@ def sep_block(paras, tone, phase=None, label=''):
     for _ in range(80):
         rr = viz.contours_rings(blk)
         boxes = [b for _, _, _, b in rr['ridge']] + ([rr[('ridge', 'extent')]] if rr[('ridge', 'extent')] else [])
-        cl = [turned_clear(b, SEP_W, SEP_H) for b in boxes]
+        cl = [swell_clear(b, SEP_W, SEP_H) for b in boxes]
         ok_x, ok_y = all(x for x, _ in cl), all(y for _, y in cl)
         if ok_x and ok_y and not rr[('ridge', 'edge')]:
             break
@@ -480,7 +464,7 @@ def sep_block(paras, tone, phase=None, label=''):
                 lay['spread'] = round(lay['spread'] * .9, 5)
     else:
         raise SystemExit(f'build.py sep_block: no spread keeps the separator of {label} clear of its frame')
-    assert all(turned_inside(b, SEP_W, SEP_H) for b in boxes)
+    assert all(swell_inside(b, SEP_W, SEP_H) for b in boxes)
     if phase is not None:
         blk['phase'] = round(phase, 3)
     out = viz.render(blk)

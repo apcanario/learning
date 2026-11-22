@@ -3122,6 +3122,20 @@ SEP_SPOT = 5    # P94 check 4: a separator's spot ring is at least 5 units in ra
 SEP_SPECK = 6   # P94 check: a separator's closed ring under 6 units both ways (about 1.5 px on a 320 px phone) is a speck and is dropped   # the bump's outline: two angular harmonics, so a rise reads as land, not a target; its peak is unchanged
 
 
+def swell_scale(d):
+    """S-NAV1 step D: the scale a line of normalised distance d reaches at the top of the swell, 1 + d x GROW."""
+    return 1 + d * GROW
+
+
+def swell_box(p, d, o):
+    """S-NAV1 step D: the box of the points p over every pose of the swell: at rest and scaled by swell_scale(d) about
+    o (a scale about a point moves every point along its ray from o, so the two ends of the move bound every pose)."""
+    xs, ys, s = [x for x, _ in p], [y for _, y in p], swell_scale(d)
+    x0, y0, x1, y1 = min(xs), min(ys), max(xs), max(ys)
+    u0, v0, u1, v1 = o[0] + (x0 - o[0]) * s, o[1] + (y0 - o[1]) * s, o[0] + (x1 - o[0]) * s, o[1] + (y1 - o[1]) * s
+    return (min(x0, u0), min(y0, v0), max(x1, u1), max(y1, v1))
+
+
 def _ct_bump(r, cx, cy, sx, sy, salt=''):
     """One rise as a function of (x, y): its words at its centre, falling off as a Gaussian whose outline is pushed in
     and out by two harmonics of the angle, their phases from the rise's label (the same drawing on every build), after
@@ -3310,6 +3324,7 @@ def _ct_field(d, lay, rises, iv, live):
     def dom(p):
         i, j = min(nx - 1, max(0, round(p[0] / g))), min(ny - 1, max(0, round(p[1] / g)))
         return max(live, key=lambda k: val(k, i, j))
+    parents = []   # S-NAV1 step D: each contour line whole, its level and its stretches [(rise, points, closed)]
     for lv in range(1, int(top // iv) + 1):
         for p, closed in _ct_march(F, nx, ny, g, lv * iv):
             p = _ct_simplify(p, closed, eps)
@@ -3321,24 +3336,62 @@ def _ct_field(d, lay, rises, iv, live):
                     continue
             ds = [dom(x) for x in p]
             if len(set(ds)) == 1:
-                per[ds[0]].append((p, closed)); continue
+                parents.append((lv, [(ds[0], p, closed)])); continue
             seq, dd = (p + [p[0]], ds + [ds[0]]) if closed else (p, ds)
-            run, who = [seq[0]], dd[0]
+            run, who, runs = [seq[0]], dd[0], []
             for x, w in zip(seq[1:], dd[1:]):   # a stretch per dominating rise; neighbours share their boundary point
                 run.append(x)
                 if w != who:
-                    per[who].append((run, False)); run, who = [x], w
-            per[who].append((run, False))
+                    runs.append((who, run, False)); run, who = [x], w
+            runs.append((who, run, False))
+            parents.append((lv, runs))
+    # S-NAV1 step D, the swell: every line scales about its rise's core (the peak, `at`) by 1 + d x GROW, d its
+    # normalised distance from the core: 0 for the rise's innermost line (its highest level), 1 for its outermost
+    # (its lowest), linear in the level between. A line shared by neighbouring rises (stretches dominated by more than
+    # one) takes one origin and one d for the whole line, the blend of its rises' cores and d's weighted by the length
+    # each dominates, so its stretches move as one and no join opens.
+    lo_lv, hi_lv = {}, {}
+    for lv, runs in parents:
+        for k, _, _ in runs:
+            lo_lv[k], hi_lv[k] = min(lo_lv.get(k, lv), lv), max(hi_lv.get(k, lv), lv)
+    def dk(k, lv):
+        return 0.0 if hi_lv[k] == lo_lv[k] else (hi_lv[k] - lv) / (hi_lv[k] - lo_lv[k])
+    core = {k: (round(at[k][0] * W), round(at[k][1] * H)) for k in live}
+    tone = lambda k: rises[k].get('tone')
+    for lv, runs in parents:
+        wt = {}
+        for k, run, _ in runs:
+            wt[k] = wt.get(k, 0.0) + sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(run, run[1:])) + 1e-6
+        tot = sum(wt.values())
+        o = (round(sum(core[k][0] * v for k, v in wt.items()) / tot), round(sum(core[k][1] * v for k, v in wt.items()) / tot))
+        dl = round(sum(dk(k, lv) * v for k, v in wt.items()) / tot, 2)
+        if len(runs) == 1:
+            k, run, closed = runs[0]
+            per[k].append((run, closed, dl, o, False))
+            continue
+        # a shared line: its stretches in one tone are drawn as one run (they move as one, so nothing is lost and no join
+        # is written), held by the rise of that tone that dominates the most of it; a ring wholly in one tone stays whole
+        if len({tone(k) for k, _, _ in runs}) == 1:
+            seg = [(runs[0][0], [x for _, r, _ in runs for x in r[:-1]] + [runs[-1][1][-1]], wt)]
+        else:
+            seg = []
+            for k, run, _ in runs:
+                if seg and tone(seg[-1][0]) == tone(k):
+                    seg[-1][1].extend(run[1:]); seg[-1][2][k] = seg[-1][2].get(k, 0.0) + wt[k]
+                else:
+                    seg.append((k, list(run), {k: wt[k]}))
+        for k0, run, ws in seg:
+            per[max(ws, key=ws.get)].append((run, False, dl, o, True))   # a shared line is never closed with z: z marks a rise's own ring
     for k in live:
         lv_of[k] = int(rises[k]['words'] // iv)   # P93 check: its own height in levels, one count for every layout (with the field at its peak Rome's U11, 4.996 levels, read 4 in one layout and 5 in the other)
-        rings = [p for p, closed in per[k] if closed]
-        own[k] = len([1 for p in rings if len({(round(x), round(y)) for x, y in p}) >= 2])
+        rings = [(p, dl, o) for p, closed, dl, o, sh in per[k] if closed and not sh]
+        own[k] = len([1 for p, _, _ in rings if len({(round(x), round(y)) for x, y in p}) >= 2])
         if _ct_spotted(d, lv_of[k], own[k]):   # P93 check: a part under one level is marked by a spot ring at its peak (spot_r), its box that ring's; P94 check: in a separator, any rise with no ring of its own (one under a level its neighbours have not ringed, or one whose rings merged into its neighbours' lines)
             sr = _ct_spot_r(rises[k], sp, W, wmax, d.get('sep'))
-            rings = [[(at[k][0] * W - sr, at[k][1] * H - sr), (at[k][0] * W + sr, at[k][1] * H + sr)]]
-        xs = [x for p in rings for x, _ in p] or [at[k][0] * W]
-        ys = [y for p in rings for _, y in p] or [at[k][1] * H]
-        box[k] = (min(xs), min(ys), max(xs), max(ys))
+            box[k] = (at[k][0] * W - sr, at[k][1] * H - sr, at[k][0] * W + sr, at[k][1] * H + sr)   # the spot does not move
+        else:   # S-NAV1 step D: its own rings' box at every pose, at rest and at the top of the swell
+            bs = [swell_box(p, dl, o) for p, dl, o in rings]
+            box[k] = (min(b[0] for b in bs), min(b[1] for b in bs), max(b[2] for b in bs), max(b[3] for b in bs)) if bs else (at[k][0] * W, at[k][1] * H, at[k][0] * W, at[k][1] * H)
     return W, H, at, sp, per, lv_of, own, box, edge
 
 
@@ -3354,6 +3407,12 @@ def _ct_spot_r(r, sp, W, wmax, sep=False):
     return max(SEP_SPOT if sep else 3.0, .5 * sp * W * (r['words'] / wmax) ** (1 / 3))
 
 
+def _dfmt(v):
+    """S-NAV1 step D: a line's d as the page carries it: two decimals, no leading zero (.43, 1)."""
+    t = f'{v:.2f}'.rstrip('0').rstrip('.')
+    return t[1:] if t.startswith('0.') else t
+
+
 def contours_rings(d):
     """P93: for each layout, each written rise's (label, levels its peak stands above, own closed rings, box of its own
     rings in the layout's units), so a declaration can be checked before it is drawn (build.py sizes and places the
@@ -3365,8 +3424,8 @@ def contours_rings(d):
         W, H, at, sp, per, lv_of, own, box, edge = _ct_field(d, lay, rises, iv, live)
         out[lay.get('name')] = [(rises[k]['label'], lv_of[k], own[k], box[k]) for k in live]
         out[(lay.get('name'), 'edge')] = edge
-        xy = [pt for k in live for run, _ in per[k] for pt in run]
-        out[(lay.get('name'), 'extent')] = (min(x for x, _ in xy), min(y for _, y in xy), max(x for x, _ in xy), max(y for _, y in xy)) if xy else None   # P93: every line's box
+        bs = [swell_box(run, dl, o) for k in live for run, _, dl, o, _ in per[k]]
+        out[(lay.get('name'), 'extent')] = (min(b[0] for b in bs), min(b[1] for b in bs), max(b[2] for b in bs), max(b[3] for b in bs)) if bs else None   # P93: every line's box; S-NAV1 step D: over every pose of the swell
     return out
 
 
@@ -3400,10 +3459,24 @@ def contours(d):
             spot = (f'<circle class="ct-spot" cx="{at[k][0] * W:.0f}" cy="{at[k][1] * H:.0f}" r="{_ct_spot_r(r, sp, W, max(rises[j]["words"] for j in live), d.get('sep')):.0f}"/>'
                     if _ct_spotted(d, lv_of[k], own[k]) else '')   # P93 check: a written part under one level still shows, as a spot ring
             where = '' if d.get('sep') else f' data-at="{at[k][0] * W:.0f} {at[k][1] * H:.0f}" data-box="{bx}"'   # P94: a separator keeps to 6 KB; its place and box serve no check
-            dd = _ct_d(per[k])
-            path = '' if (d.get('sep') and not dd) else f'<path d="{dd}"/>'   # P94 check 3: a separator's spot-only rise carries no empty path
+            # S-NAV1 step D: one path per (d, origin) of the rise: its own lines of one level share both; a shared line's
+            # stretch carries the line's blended origin (--o) beside its d; the rise's group carries its core as --o
+            co = (round(at[k][0] * W), round(at[k][1] * H))
+            grp = {}
+            for run, closed, dl, o, _ in per[k]:
+                grp.setdefault((dl, o if dl else co), []).append((run, closed))
+            path, at_co = '', False
+            for (dl, o), runs in grp.items():
+                dd = _ct_d(runs)
+                if not dd:
+                    continue
+                at_co |= o == co and bool(dl)
+                st = ([f'--d:{_dfmt(dl)}'] if dl else []) + ([f'--o:{o[0]}px {o[1]}px'] if o != co and dl else [])   # a line of d 0 never moves: no origin
+                path += f'<path{" style=" + chr(34) + ";".join(st) + chr(34) if st else ""} d="{dd}"/>'
+            if not d.get('sep') and not path:   # a spot-only rise of a hero or patch kept its (empty) path before; keep the markup
+                path = '<path d=""/>'
             body += (f'<g class="ct-rise{tc}" data-label="{esc(r["label"])}" data-words="{round(r["words"])}" data-rings="{lv_of[k]}"'
-                     f'{where}>{path}{spot}</g>')
+                     f'{where}{f" style={chr(34)}--o:{co[0]}px {co[1]}px{chr(34)}" if at_co else ""}>{path}{spot}</g>')   # the core, where a line of the rise moves about it
         nm = esc(lay.get('name', ''))
         fit = 'meet' if d.get('patch') else 'slice'
         svgs.append(f'<svg class="topo-l topo-{nm}" data-layout="{nm}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid {fit}" '
@@ -3419,15 +3492,16 @@ def contours(d):
 # each a sourced file with its credit in outlines.json) drawn as the lines of a relief map of its own silhouette, the
 # outline and the levels inside it solid (path.rl-in), two faint halo levels outside it (path.rl-out), in the page's tone.
 # kit/relief.py computes the lines once, when an outline is added (the silhouette's distance field, contoured at even
-# steps), and writes <id>.json; this draws that JSON, so the build stays pure Python. The frame is the drawing's box
-# grown so that, turned to either end of the turn at the top of the breath about its centre (the move every contour
-# drawing makes, read from the theme), every line stays REL_PAD units clear of it; its aspect goes to the page as --ar.
+# steps), and writes <id>.json; this draws that JSON, so the build stays pure Python. S-NAV1 step D (22 Nov 2026): the
+# relief swells as every contour drawing does (rel_lines: the contour level is the distance, each separate piece of the
+# silhouette its own core), and its frame is the box of every line over every pose of the swell, REL_PAD units clear;
+# its aspect goes to the page as --ar.
 _THEME = (pathlib.Path(__file__).resolve().parent.parent / 'design' / 'theme.css').read_text()
-REL_TURN = float(re.search(r'--topo-turn:([\d.]+)deg', _THEME).group(1))
-REL_GROW = float(re.search(r'--topo-grow:([\d.]+);', _THEME).group(1))
+GROW = float(re.search(r'--topo-grow:([\d.]+);', _THEME).group(1))   # S-NAV1 step D: the swell, 1 + d x GROW at its top for a line of distance d
 REL_PAD = 14        # units of the 1000-unit drawing kept clear of the frame at every pose (about 4 px at 280 px tall)
 REL_MAX = 12 * 1024  # bytes, as the page holds the element (the parser writes <path ...></path>)
 REL_SPECK = 8       # a closed ring under this many units both ways (about 2 px at 280 px) is a speck, dropped
+REL_EPS = 6         # S-NAV1 step D: the most a relief is simplified (units) before its inside levels are thinned instead
 
 
 def rel_bytes(h):
@@ -3435,33 +3509,123 @@ def rel_bytes(h):
     return len(re.sub(r'<(\w+)([^<>]*?)/>', r'<\1\2></\1>', h).encode())
 
 
-def rel_frame(w, h):
-    """The frame (W, H) round a w by h drawing, so that the drawing turned by +/- REL_TURN and grown to REL_GROW about
-    its centre stays REL_PAD units inside it."""
-    a = math.radians(REL_TURN)
-    c, s = math.cos(a), math.sin(a)
-    return round(REL_GROW * (w * c + h * s) + 2 * REL_PAD), round(REL_GROW * (w * s + h * c) + 2 * REL_PAD)
+def _in_poly(pt, poly):
+    """Whether the point pt lies inside the closed polygon poly (even-odd ray cast)."""
+    x, y, c = pt[0], pt[1], False
+    for (x0, y0), (x1, y1) in zip(poly, poly[1:] + poly[:1]):
+        if (y0 > y) != (y1 > y) and x < x0 + (y - y0) * (x1 - x0) / (y1 - y0):
+            c = not c
+    return c
+
+
+def _poly_area(poly):
+    return abs(sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(poly, poly[1:] + poly[:1]))) / 2
+
+
+def rel_lines(lines):
+    """S-NAV1 step D: each line of a relief (lv: 0 the outline, above it the levels inside, below it the halo) with its
+    distance d and origin o, in the outline's units: [(line, d, o)]. A piece is a separate part of the silhouette: an
+    outline ring inside an even number of other outline rings (one inside an odd number is a hole). Each piece's core is
+    the centre of the box of its deepest level's rings; every line inside the piece (its outline, its holes, its levels)
+    scales about that core, d = (deepest - lv) / (deepest - lowest halo level): its deepest level 0, fixed, the outline
+    moving, the outer halo 1, furthest. A halo ring round several pieces takes the blend of their cores and d's,
+    weighted by each piece's area; a halo ring round none (one in a hole) takes the piece it lies in."""
+    rings = [ln for ln in lines if ln['closed'] and len(ln['pts']) >= 3]
+    zero = [ln for ln in rings if ln['lv'] == 0]
+    depth = {id(r): sum(1 for q in zero if q is not r and _in_poly(r['pts'][0], q['pts'])) for r in zero}
+    outer = [r for r in zero if depth[id(r)] % 2 == 0]
+    area = {id(r): _poly_area(r['pts']) for r in outer}
+    def piece_of(ln):   # the innermost piece whose outline holds the line (the outline itself: its own piece)
+        if ln['lv'] == 0 and id(ln) in area:
+            return ln
+        hold = [r for r in outer if r is not ln and _in_poly(ln['pts'][0], r['pts'])]
+        return min(hold, key=lambda r: area[id(r)]) if hold else None
+    lo = min((ln['lv'] for ln in lines), default=0)
+    members = {id(r): [] for r in outer}
+    for ln in lines:
+        if ln['lv'] >= 0:
+            pc = piece_of(ln)
+            if pc is not None:
+                members[id(pc)].append(ln)
+    deep, core = {}, {}
+    for r in outer:
+        ms = members[id(r)] or [r]
+        dl = max(m['lv'] for m in ms)
+        pts = [pt for m in ms if m['lv'] == dl for pt in m['pts']]
+        deep[id(r)] = dl
+        core[id(r)] = ((min(x for x, _ in pts) + max(x for x, _ in pts)) / 2, (min(y for _, y in pts) + max(y for _, y in pts)) / 2)
+    def dist(r, lv):
+        return 0.0 if deep[id(r)] == lo else max(0.0, (deep[id(r)] - lv) / (deep[id(r)] - lo))
+    out = []
+    for ln in lines:
+        if ln['lv'] >= 0:
+            pc = piece_of(ln)
+            ws = [(pc, 1.0)] if pc is not None else []
+        else:
+            ws = [(r, area[id(r)]) for r in outer if _in_poly(r['pts'][0], ln['pts'])] if ln['closed'] else []
+            if not ws:
+                pc = piece_of(ln)
+                ws = [(pc, 1.0)] if pc is not None else []
+        if not ws:   # a line in no piece (none in the library): the nearest core
+            if not outer:
+                out.append((ln, 0.0, (0.0, 0.0))); continue
+            x, y = ln['pts'][0]
+            r = min(outer, key=lambda r: (core[id(r)][0] - x) ** 2 + (core[id(r)][1] - y) ** 2)
+            ws = [(r, 1.0)]
+        tot = sum(v for _, v in ws) or 1.0
+        o = (sum(core[id(r)][0] * v for r, v in ws) / tot, sum(core[id(r)][1] * v for r, v in ws) / tot)
+        out.append((ln, sum(dist(r, ln['lv']) * v for r, v in ws) / tot, o))
+    return out
+
+
+def rel_frame(w, h, lines=None):
+    """The frame round a w by h drawing: (W, H, ox, oy), the drawing placed at (ox, oy). S-NAV1 step D: the box of every
+    line over every pose of the swell (rel_lines; swell_box), REL_PAD units clear on every side; without lines, the
+    drawing's own box."""
+    if lines:
+        bs = [swell_box(ln['pts'], round(dl, 2), o) for ln, dl, o in lines]
+        X0, Y0, X1, Y1 = min(min(b[0] for b in bs), 0), min(min(b[1] for b in bs), 0), max(max(b[2] for b in bs), w), max(max(b[3] for b in bs), h)
+    else:
+        X0, Y0, X1, Y1 = 0, 0, w, h
+    ox, oy = REL_PAD - math.floor(X0), REL_PAD - math.floor(Y0)
+    return math.ceil(X1) + ox + REL_PAD + 1, math.ceil(Y1) + oy + REL_PAD + 1, ox, oy   # +1: the origins are rounded to the unit
 
 
 def relief(d):
-    """The relief layer: div.topo.relief (aria-hidden, textless) holding one svg.topo-l in the tone's class, its lines in
-    two paths, rl-out (the halo) and rl-in (the outline and the levels inside it); --ph its phase, --ar the frame's
-    aspect. The lines are simplified further (viz's RDP) until the element is at most REL_MAX bytes as the page holds
-    it. The caption is the page's, outside the drawing (mdcourse.reading)."""
+    """The relief layer: div.topo.relief (aria-hidden, textless) holding one svg.topo-l in the tone's class; --ph its
+    phase, --ar the frame's aspect. S-NAV1 step D: its lines grouped by origin (<g style="--o:x y">, a piece's core or a
+    halo's blend), each level a path, rl-out (the halo) or rl-in (the outline and the levels inside it), carrying its
+    distance --d (rel_lines). The lines are simplified further (viz's RDP) until the element is at most REL_MAX bytes as
+    the page holds it. S-NAV1 step D, the interval from the budget (as the home hero's, build.py hero_interval): where
+    simplifying by REL_EPS units does not bring it under REL_MAX (the --d and --o a level of each piece carries: the
+    wall, 24 bricks of ten levels), the levels inside the outline are thinned, every k-th kept (k = 2, 3, ...), before any
+    further simplifying; the outline and the halo are always drawn. The caption is the page's, outside the drawing
+    (mdcourse.reading)."""
     o = d['outline']
     w, h, lines = o['width'], o['height'], o['lines']
     if not lines or not all(isinstance(v, (int, float)) and v > 0 for v in (w, h)):
         _fail('relief', f'outline {o.get("id")!r}: no lines or no size')
-    W, H = rel_frame(w, h)
-    ox, oy = (W - w) / 2, (H - h) / 2
+    deep = max(ln['lv'] for ln in lines)
+    for step in range(1, max(2, deep + 1)):
+        out = _relief_at(d, o, w, h, [ln for ln in lines if ln['lv'] <= 0 or ln['lv'] % step == 0], REL_EPS if step < max(1, deep) else 40)
+        if out:
+            return out
+    _fail('relief', f'outline {o.get("id")!r} stays over {REL_MAX} bytes even simplified')
+
+
+def _relief_at(d, o, w, h, lines, eps_max):
+    """S-NAV1 step D: relief()'s drawing of the given lines, simplified a step at a time up to eps_max units until it is
+    at most REL_MAX bytes; None if it never is."""
+    dl = rel_lines(lines)
+    W, H, ox, oy = rel_frame(w, h, dl)
     t = d.get('tone')
     tc = f' ct-t{t}' if t else ''
     ph = d.get('phase')
     st = f' style="--ph:{ph:g};--ar:{W / H:.4f}"' if isinstance(ph, (int, float)) else f' style="--ar:{W / H:.4f}"'
     eps = 0
     while True:
-        runs = {'out': [], 'in': []}
-        for ln in lines:
+        grp = {}   # origin: {(class, d): runs}
+        for ln, dv, org in dl:
             p = [(x + ox, y + oy) for x, y in ln['pts']]
             if eps:
                 p = _ct_simplify(p, ln['closed'], eps)
@@ -3471,15 +3635,21 @@ def relief(d):
                 xs, ys = [x for x, _ in p], [y for _, y in p]
                 if max(xs) - min(xs) < REL_SPECK and max(ys) - min(ys) < REL_SPECK:
                     continue
-            runs['out' if ln['lv'] < 0 else 'in'].append((p, ln['closed']))
-        body = ''.join(f'<path class="rl-{k}" d="{_ct_d(runs[k])}"/>' for k in ('out', 'in') if runs[k])
+            dv = round(dv, 2)
+            og = (round(org[0] + ox), round(org[1] + oy)) if dv else None
+            grp.setdefault(og, {}).setdefault(('out' if ln['lv'] < 0 else 'in', dv), []).append((p, ln['closed']))
+        body = ''
+        for og, paths in grp.items():
+            ps = ''.join(f'<path class="rl-{k}"{f" style={chr(34)}--d:{_dfmt(dv)}{chr(34)}" if dv else ""} d="{_ct_d(runs)}"/>'
+                         for (k, dv), runs in sorted(paths.items(), key=lambda x: (x[0][0] != 'out', -x[0][1])))
+            body += ps if og is None else f'<g style="--o:{og[0]}px {og[1]}px">{ps}</g>'
         out = (f'<div class="topo relief" aria-hidden="true" data-outline="{esc(o.get("id", ""))}"{st}><svg class="topo-l{tc}" viewBox="0 0 {W} {H}" '
                f'preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false">{body}</svg></div>')
         if rel_bytes(out) <= REL_MAX:
             return out
         eps = 1.5 if not eps else eps * 1.3
-        if eps > 40:
-            _fail('relief', f'outline {o.get("id")!r} stays over {REL_MAX} bytes even simplified')
+        if eps > eps_max:
+            return None
 
 
 KINDS = {'timeline': timeline, 'compare': compare, 'tree': tree, 'flow': flow,

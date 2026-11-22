@@ -1,0 +1,889 @@
+# S-NAV1 Step D (motion: the swell on every line illustration): outputs the change is expected to alter (kit-relative, as baseline.py --check prints them; no file added or removed)
+# every page with a contour drawing (heroes, tile patches, section separators, object reliefs) changes its SVG line attributes, the shells inline the new theme CSS, and the size table follows the sizes
+# no upstream-added line since the row's start is removed by this step: no drop entries
+README.md
+academy/brand-a/home.html
+academy/brand-a/read-a1.html
+academy/brand-a/read-a2.html
+academy/brand-a/read-a3.html
+academy/brand-a/read-a4.html
+academy/brand-a/read-a5.html
+academy/brand-a/read-a6.html
+academy/brand-a/read-a7.html
+academy/brand-a/read-a8.html
+academy/brand-a/read-a9.html
+academy/brand-a/read-audience-growth.html
+academy/brand-a/read-dd-a1.html
+academy/brand-a/read-dd-a2.html
+academy/brand-b/home.html
+academy/brand-b/read-b1.html
+academy/brand-b/read-b2.html
+academy/brand-b/read-b3.html
+academy/brand-b/read-b4.html
+academy/brand-b/read-b5.html
+academy/brand-b/read-b6.html
+academy/brand-b/read-b7.html
+academy/brand-b/read-b8.html
+academy/brand-b/read-dd-b1.html
+academy/brand-b/read-dd-b2.html
+academy/brand-b/read-dd-b3.html
+academy/building-with-ai-bw/home.html
+academy/building-with-ai-bw/read-bw1.html
+academy/building-with-ai-bw/read-bw10.html
+academy/building-with-ai-bw/read-bw2.html
+academy/building-with-ai-bw/read-bw3.html
+academy/building-with-ai-bw/read-bw4.html
+academy/building-with-ai-bw/read-bw5.html
+academy/building-with-ai-bw/read-bw6.html
+academy/building-with-ai-bw/read-bw7.html
+academy/building-with-ai-bw/read-bw8.html
+academy/building-with-ai-bw/read-bw9.html
+academy/building-with-ai-bw/read-dd-bw1.html
+academy/building-with-ai-bw/read-dd-bw2.html
+academy/building-with-ai-bw/read-dd-bw3.html
+academy/greece/home.html
+academy/greece/r-0.1.html
+academy/greece/r-0.2.html
+academy/greece/r-0.3.html
+academy/greece/r-1.1.html
+academy/greece/r-1.2.html
+academy/greece/r-1.3.html
+academy/greece/r-10.1.html
+academy/greece/r-10.10.html
+academy/greece/r-10.11.html
+academy/greece/r-10.12.html
+academy/greece/r-10.2.html
+academy/greece/r-10.3.html
+academy/greece/r-10.4.html
+academy/greece/r-10.5.html
+academy/greece/r-10.6.html
+academy/greece/r-10.7.html
+academy/greece/r-10.8.html
+academy/greece/r-10.9.html
+academy/greece/r-11.1.html
+academy/greece/r-11.2.html
+academy/greece/r-11.3.html
+academy/greece/r-11.4.html
+academy/greece/r-11.5.html
+academy/greece/r-11.6.html
+academy/greece/r-11.7.html
+academy/greece/r-11.8.html
+academy/greece/r-12.1.html
+academy/greece/r-12.2.html
+academy/greece/r-12.3.html
+academy/greece/r-12.4.html
+academy/greece/r-12.5.html
+academy/greece/r-12.6.html
+academy/greece/r-12.7.html
+academy/greece/r-12.8.html
+academy/greece/r-2.1.html
+academy/greece/r-2.2.html
+academy/greece/r-2.3.html
+academy/greece/r-2.4.html
+academy/greece/r-2.5.html
+academy/greece/r-2.6.html
+academy/greece/r-3.1.html
+academy/greece/r-3.2.html
+academy/greece/r-3.3.html
+academy/greece/r-3.4.html
+academy/greece/r-3.5.html
+academy/greece/r-3.6.html
+academy/greece/r-3.7.html
+academy/greece/r-4.1.html
+academy/greece/r-4.2.html
+academy/greece/r-4.3.html
+academy/greece/r-4.4.html
+academy/greece/r-4.5.html
+academy/greece/r-5.1.html
+academy/greece/r-5.2.html
+academy/greece/r-5.3.html
+academy/greece/r-5.4.html
+academy/greece/r-5.5.html
+academy/greece/r-5.6.html
+academy/greece/r-6.1.html
+academy/greece/r-6.2.html
+academy/greece/r-6.3.html
+academy/greece/r-6.4.html
+academy/greece/r-6.5.html
+academy/greece/r-6.6.html
+academy/greece/r-6.7.html
+academy/greece/r-7.1.html
+academy/greece/r-7.2.html
+academy/greece/r-7.3.html
+academy/greece/r-7.4.html
+academy/greece/r-8.1.html
+academy/greece/r-8.2.html
+academy/greece/r-8.3.html
+academy/greece/r-8.4.html
+academy/greece/r-8.5.html
+academy/greece/r-9.1.html
+academy/greece/r-9.2.html
+academy/greece/r-9.3.html
+academy/greece/r-9.4.html
+academy/index.html
+academy/new.html
+academy/personal-brand-pb/home.html
+academy/personal-brand-pb/read-dd-pb1.html
+academy/personal-brand-pb/read-dd-pb2.html
+academy/personal-brand-pb/read-pb1.html
+academy/personal-brand-pb/read-pb10.html
+academy/personal-brand-pb/read-pb2.html
+academy/personal-brand-pb/read-pb3.html
+academy/personal-brand-pb/read-pb4.html
+academy/personal-brand-pb/read-pb5.html
+academy/personal-brand-pb/read-pb6.html
+academy/personal-brand-pb/read-pb7.html
+academy/personal-brand-pb/read-pb8.html
+academy/personal-brand-pb/read-pb9.html
+academy/rome/home.html
+academy/rome/r-0.1.html
+academy/rome/r-0.2.html
+academy/rome/r-0.3.html
+academy/rome/r-1.1.html
+academy/rome/r-1.2.html
+academy/rome/r-1.3.html
+academy/rome/r-1.4.html
+academy/rome/r-1.5.html
+academy/rome/r-1.6.html
+academy/rome/r-10.1.html
+academy/rome/r-10.2.html
+academy/rome/r-10.3.html
+academy/rome/r-10.4.html
+academy/rome/r-10.5.html
+academy/rome/r-11.1.html
+academy/rome/r-11.2.html
+academy/rome/r-11.3.html
+academy/rome/r-11.4.html
+academy/rome/r-11.5.html
+academy/rome/r-11.6.html
+academy/rome/r-11.7.html
+academy/rome/r-11.8.html
+academy/rome/r-12.1.html
+academy/rome/r-12.2.html
+academy/rome/r-12.3.html
+academy/rome/r-12.4.html
+academy/rome/r-12.5.html
+academy/rome/r-12.6.html
+academy/rome/r-12.7.html
+academy/rome/r-12.8.html
+academy/rome/r-13.1.html
+academy/rome/r-13.2.html
+academy/rome/r-13.3.html
+academy/rome/r-13.4.html
+academy/rome/r-13.5.html
+academy/rome/r-13.6.html
+academy/rome/r-13.7.html
+academy/rome/r-13.8.html
+academy/rome/r-2.1.html
+academy/rome/r-2.2.html
+academy/rome/r-2.3.html
+academy/rome/r-2.4.html
+academy/rome/r-2.5.html
+academy/rome/r-3.1.html
+academy/rome/r-3.2.html
+academy/rome/r-3.3.html
+academy/rome/r-3.4.html
+academy/rome/r-3.5.html
+academy/rome/r-4.1.html
+academy/rome/r-4.2.html
+academy/rome/r-4.3.html
+academy/rome/r-4.4.html
+academy/rome/r-4.5.html
+academy/rome/r-5.1.html
+academy/rome/r-5.2.html
+academy/rome/r-5.3.html
+academy/rome/r-5.4.html
+academy/rome/r-5.5.html
+academy/rome/r-5.6.html
+academy/rome/r-6.1.html
+academy/rome/r-6.2.html
+academy/rome/r-6.3.html
+academy/rome/r-6.4.html
+academy/rome/r-7.1.html
+academy/rome/r-7.2.html
+academy/rome/r-7.3.html
+academy/rome/r-7.4.html
+academy/rome/r-7.5.html
+academy/rome/r-8.1.html
+academy/rome/r-8.2.html
+academy/rome/r-8.3.html
+academy/rome/r-8.4.html
+academy/rome/r-8.5.html
+academy/rome/r-8.6.html
+academy/rome/r-9.1.html
+academy/rome/r-9.2.html
+academy/rome/r-9.3.html
+academy/rome/r-9.4.html
+academy/rome/r-9.5.html
+academy/sport-psychology-sp/home.html
+academy/sport-psychology-sp/read-dd-sp1.html
+academy/sport-psychology-sp/read-dd-sp2.html
+academy/sport-psychology-sp/read-dd-sp3.html
+academy/sport-psychology-sp/read-sp1.html
+academy/sport-psychology-sp/read-sp10.html
+academy/sport-psychology-sp/read-sp2.html
+academy/sport-psychology-sp/read-sp3.html
+academy/sport-psychology-sp/read-sp4.html
+academy/sport-psychology-sp/read-sp5.html
+academy/sport-psychology-sp/read-sp6.html
+academy/sport-psychology-sp/read-sp7.html
+academy/sport-psychology-sp/read-sp8.html
+academy/sport-psychology-sp/read-sp9.html
+academy/supply-chain-execution-sce/home.html
+academy/supply-chain-execution-sce/read-sce1.html
+academy/supply-chain-execution-sce/read-sce2.html
+academy/ux-ia/home.html
+academy/ux-ia/read-dd-ia1.html
+academy/ux-ia/read-dd-ia2.html
+academy/ux-ia/read-dd-ia3.html
+academy/ux-ia/read-ia1.html
+academy/ux-ia/read-ia10.html
+academy/ux-ia/read-ia11.html
+academy/ux-ia/read-ia12.html
+academy/ux-ia/read-ia2.html
+academy/ux-ia/read-ia3.html
+academy/ux-ia/read-ia4.html
+academy/ux-ia/read-ia5.html
+academy/ux-ia/read-ia6.html
+academy/ux-ia/read-ia7.html
+academy/ux-ia/read-ia8.html
+academy/ux-ia/read-ia9.html
+editions/greece/greece/home.html
+editions/greece/greece/r-0.1.html
+editions/greece/greece/r-0.2.html
+editions/greece/greece/r-0.3.html
+editions/greece/greece/r-1.1.html
+editions/greece/greece/r-1.2.html
+editions/greece/greece/r-1.3.html
+editions/greece/greece/r-10.1.html
+editions/greece/greece/r-10.10.html
+editions/greece/greece/r-10.11.html
+editions/greece/greece/r-10.12.html
+editions/greece/greece/r-10.2.html
+editions/greece/greece/r-10.3.html
+editions/greece/greece/r-10.4.html
+editions/greece/greece/r-10.5.html
+editions/greece/greece/r-10.6.html
+editions/greece/greece/r-10.7.html
+editions/greece/greece/r-10.8.html
+editions/greece/greece/r-10.9.html
+editions/greece/greece/r-11.1.html
+editions/greece/greece/r-11.2.html
+editions/greece/greece/r-11.3.html
+editions/greece/greece/r-11.4.html
+editions/greece/greece/r-11.5.html
+editions/greece/greece/r-11.6.html
+editions/greece/greece/r-11.7.html
+editions/greece/greece/r-11.8.html
+editions/greece/greece/r-12.1.html
+editions/greece/greece/r-12.2.html
+editions/greece/greece/r-12.3.html
+editions/greece/greece/r-12.4.html
+editions/greece/greece/r-12.5.html
+editions/greece/greece/r-12.6.html
+editions/greece/greece/r-12.7.html
+editions/greece/greece/r-12.8.html
+editions/greece/greece/r-2.1.html
+editions/greece/greece/r-2.2.html
+editions/greece/greece/r-2.3.html
+editions/greece/greece/r-2.4.html
+editions/greece/greece/r-2.5.html
+editions/greece/greece/r-2.6.html
+editions/greece/greece/r-3.1.html
+editions/greece/greece/r-3.2.html
+editions/greece/greece/r-3.3.html
+editions/greece/greece/r-3.4.html
+editions/greece/greece/r-3.5.html
+editions/greece/greece/r-3.6.html
+editions/greece/greece/r-3.7.html
+editions/greece/greece/r-4.1.html
+editions/greece/greece/r-4.2.html
+editions/greece/greece/r-4.3.html
+editions/greece/greece/r-4.4.html
+editions/greece/greece/r-4.5.html
+editions/greece/greece/r-5.1.html
+editions/greece/greece/r-5.2.html
+editions/greece/greece/r-5.3.html
+editions/greece/greece/r-5.4.html
+editions/greece/greece/r-5.5.html
+editions/greece/greece/r-5.6.html
+editions/greece/greece/r-6.1.html
+editions/greece/greece/r-6.2.html
+editions/greece/greece/r-6.3.html
+editions/greece/greece/r-6.4.html
+editions/greece/greece/r-6.5.html
+editions/greece/greece/r-6.6.html
+editions/greece/greece/r-6.7.html
+editions/greece/greece/r-7.1.html
+editions/greece/greece/r-7.2.html
+editions/greece/greece/r-7.3.html
+editions/greece/greece/r-7.4.html
+editions/greece/greece/r-8.1.html
+editions/greece/greece/r-8.2.html
+editions/greece/greece/r-8.3.html
+editions/greece/greece/r-8.4.html
+editions/greece/greece/r-8.5.html
+editions/greece/greece/r-9.1.html
+editions/greece/greece/r-9.2.html
+editions/greece/greece/r-9.3.html
+editions/greece/greece/r-9.4.html
+editions/greece/index.html
+editions/greece/new.html
+
+# lines replaced by Step D
+drop: kit/verify.py :: home, every running animation animates only transform or opacity, every shown contour drawing moves (the theme's
+drop: kit/verify.py :: topo-turn: a turn of --topo-turn each way and a growth to --topo-grow over --topo-cycle, read from shell.css), each at
+drop: kit/verify.py :: its own point of the cycle, and at five poses of the sweep (its two ends, its quarters and its middle; on the home with
+drop: kit/verify.py :: each area word shown in turn) every layer covers its frame, every rise and patch stays inside it and every text over
+drop: kit/verify.py :: above and of the next and previous below (in "Whole unit", of the next section); with motion allowed a turn and a
+drop: kit/verify.py :: breath on each, transform only, each at its own phase, and at five poses of the turn at the top of the breath every
+drop: kit/verify.py :: tone, the halo fainter; its frame at the drawing's aspect, the column's width or 280 px tall (340 from 768 px); a turn
+drop: kit/verify.py :: and a breath by transform only, at a phase none of the page's separators has, and at five poses of the turn at the top
+drop: kit/verify.py :: of the breath every line inside its frame; nothing moving under reduced motion; the page's text naming the object; no
+drop: kit/verify.py :: page wider than the screen.
+drop: kit/verify.py :: """P92: with motion allowed, every moment that matters; P93: at the five poses of the slow move (POSES: its two ends,
+drop: kit/verify.py :: its quarters and its middle) and, at each, each area word in turn (its animation set to the middle of its showing),
+drop: kit/verify.py :: nb = sum(1 for a in an if a[4] == 'topo-breathe')   # P93 follow-up: every drawing breathes, as it turns
+drop: kit/verify.py :: if nb != sum(1 for a in an if a[4] == 'topo-turn'): fails.append(f'home {label}: {nb} drawings breathe, {sum(1 for a in an if a[4] == "topo-turn")} turn')
+drop: kit/verify.py :: an = [a for a in an if a[4] != 'topo-breathe']
+drop: kit/verify.py :: kinds = sorted({a[0].split()[0] for a in an})
+drop: kit/verify.py :: npatch = pg.evaluate("document.querySelectorAll('#home .topo.topo-patch').length")   # a patch in the closed Planned list is not drawn, but its move runs
+drop: kit/verify.py :: if kinds != ['harea-w', 'topo-l'] or sum(1 for a in an if a[0].startswith('harea-w')) != len(names) or sum(1 for a in an if a[0].startswith('topo-l')) != 1 + npatch:
+drop: kit/verify.py :: fails.append(f'home {label}: with motion allowed the animations are {[(a[0], a[1]) for a in an]}, expected the {len(names)} area words, the shown contour layout and every tile\'s patch ({npatch}; P93)')
+drop: kit/verify.py :: sv.querySelectorAll('g.ct-rise[data-box]').forEach(g => { const b = g.getAttribute('data-box').split(' ').map(Number);   // P93 follow-up: data-box is the rings at the top of the breath
+drop: kit/verify.py :: out.anyTopo = P.querySelectorAll('.topo:not(.topo-sep):not(.relief)').length; out.allPatches = P.querySelectorAll('.topo.topo-patch:not(.topo-sep)').length;   // P94: a reading page's section separators are checked by check_seps; P96: its relief by check_reliefs
+drop: kit/verify.py :: _TM = re.search(r'--topo-turn:([\d.]+)deg;--topo-cycle:([\d.]+)s;[^\n]*\n\s*--topo-grow:([\d.]+);--topo-breath:([\d.]+)s', (R / 'shell.css').read_text())
+drop: kit/verify.py :: TURN, CYCLE, GROW, BTIME = float(_TM.group(1)), float(_TM.group(2)) * 1000, float(_TM.group(3)), float(_TM.group(4)) * 1000   # P93: the turn and (follow-up, 5 Nov) the breath, from the theme
+drop: kit/verify.py :: POSES = (0, .25, .5, .75, 1)   # the two ends of the sweep, its quarters and its middle
+drop: kit/verify.py :: POSE_JS = r"""([p, ta, cyc, bt]) => { document.getAnimations().forEach(a => { if (!a.animationName) { a.finish(); return; }   // a transition (a hover, the theme switch) is let run out: paused half-way it would outrank every rule
+drop: kit/verify.py :: a.pause();
+drop: kit/verify.py :: if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let t = p * cyc + d; if (t < 0) t = 2 * cyc - p * cyc + d; a.currentTime = t; }
+drop: kit/verify.py :: else if (a.animationName === 'topo-breathe') { let t = a.effect.getTiming().delay + .9999 * bt; if (t < 0) t += 2 * bt; a.currentTime = t; }   // P93 follow-up: every drawing at the top of its breath
+drop: kit/verify.py :: else if (ta !== null) a.currentTime = ta; }); }"""
+drop: kit/verify.py :: """Every contour drawing on the page paused at the point p (0 to 1) of its sweep, its own phase taken into account;
+drop: kit/verify.py :: pg.evaluate(POSE_JS, [p, ta, CYCLE, BTIME]); pg.wait_for_timeout(80)
+drop: kit/verify.py :: if c.get('bad'): fails.append(f'{pid} {label}: the frame\'s corners {c["bad"]} fall outside the turned layout {c.get("size")}: an edge of the drawing shows')
+drop: kit/verify.py :: tp = [a for a in an if a[3] == 'topo-turn']
+drop: kit/verify.py :: if len([a for a in an if a[3] == 'topo-breathe']) != nt: fails.append(f'{pid} {label}: {len([a for a in an if a[3] == "topo-breathe"])} drawings breathe, the page has {nt} (P93 follow-up)')
+drop: kit/verify.py :: if len(tp) != nt: fails.append(f'{pid} {label}: {len(tp)} contour drawings move, the page has {nt}')
+drop: kit/verify.py :: # allowed, each separator's turn and breath (transform only) and at five poses of the turn, at the top of the breath,
+drop: kit/verify.py :: # every line inside its frame; the page no wider than the screen.
+drop: kit/verify.py :: SEP_JS = r"""([pid, poses, cyc, bt, motion]) => {
+drop: kit/verify.py :: seps.forEach(([k, t]) => { const l = t.querySelector('svg.topo-l'), mine = an.filter(a => a.effect.target === l).map(a => a.animationName).sort().join();
+drop: kit/verify.py :: if (mine !== 'topo-breathe,topo-turn') out.bad.push(`section ${k + 1}: the separator's animations are [${mine}], not a turn and a breath`); });
+drop: kit/verify.py :: an.forEach(a => { a.pause();
+drop: kit/verify.py :: if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let t = p * cyc + d; if (t < 0) t = 2 * cyc - p * cyc + d; a.currentTime = t; }
+drop: kit/verify.py :: else { let t = a.effect.getTiming().delay + .9999 * bt; if (t < 0) t += 2 * bt; a.currentTime = t; } });
+drop: kit/verify.py :: r = pg.evaluate(SEP_JS, [pid, list(POSES), CYCLE, BTIME, motion])
+drop: kit/verify.py :: REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
+drop: kit/verify.py :: const paths = [...sv.children];
+drop: kit/verify.py :: if (!paths.length || paths.some(p => p.tagName !== 'path' || !['rl-in', 'rl-out'].includes(p.getAttribute('class')) || [...p.attributes].some(a => !['class', 'd'].includes(a.name)))) out.bad.push('the drawing holds more than rl-in and rl-out paths with a class and a d');
+drop: kit/verify.py :: const an = document.getAnimations().filter(a => a.effect && a.effect.target === sv);
+drop: kit/verify.py :: out.anims = an.map(a => a.animationName).sort().join();
+drop: kit/verify.py :: if (out.anims !== 'topo-breathe,topo-turn') out.bad.push(`animations [${out.anims}], not a turn and a breath`);
+drop: kit/verify.py :: an.forEach(a => { a.pause();
+drop: kit/verify.py :: if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let x = p * cyc + d; if (x < 0) x = 2 * cyc - p * cyc + d; a.currentTime = x; }
+drop: kit/verify.py :: else { let x = a.effect.getTiming().delay + .9999 * bt; if (x < 0) x += 2 * bt; a.currentTime = x; } });
+drop: kit/verify.py :: 12 KB, the page's tone, the halo fainter, its frame, a turn and a breath by transform only at a phase of its own, its
+drop: kit/verify.py :: lines inside the frame at five poses at the top of the breath, still under reduced motion, the page's text naming
+drop: kit/verify.py :: r = pg.evaluate(REL_JS, [pid, list(POSES), CYCLE, BTIME, motion, want])
+drop: kit/verify.py :: # point of the cycle; nothing else on a page without one), and at the five poses of the sweep every layer covers
+drop: kit/verify.py :: # move ran, at 0.6 px/s at most, and read as still. The move must be seen and still be slow: the peak speed of a
+drop: kit/verify.py :: # corner of the home's layer at 390 px, from the tokens (turn, growth, cycle; CSS ease-in-out peaks at 1.6 times
+drop: kit/verify.py :: # the average), between 2 and 8 px/s; and the layer must have moved between two reads 2 s apart
+drop: kit/verify.py :: fw, fh = pg.evaluate("(() => { const t = document.querySelector('#home .hhome > .topo'); return [t.clientWidth, t.clientHeight]; })()")
+drop: kit/verify.py :: rc = math.hypot(fw, fh) / 2
+drop: kit/verify.py :: v = 1.6 * rc * math.hypot(math.radians(2 * TURN) / (CYCLE / 1000), (GROW - 1) / (BTIME / 1000))   # the turn and the breath, each at its peak
+drop: kit/verify.py :: m0 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform"); pg.wait_for_timeout(2000)
+drop: kit/verify.py :: m1 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform")
+drop: kit/verify.py :: print(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners ({fw} x {fh} px frame, {2 * TURN:g} degrees over {CYCLE / 1000:g} s, a breath to {GROW:g} over {BTIME / 1000:g} s); moved in 2 s: {m0 != m1}")
+drop: kit/verify.py :: if not 2 <= v <= 12: fails.append(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners, outside 2 to 12 px/s (seen, and still slow; Pedro, 5 Nov 2026: \"it could be faster\")")
+drop: kit/verify.py :: if m0 == m1: fails.append('home phone motion: the layer did not move in 2 s')
+drop: kit/verify.py :: # P92: the hero at five moments; P93: at the five poses of the slow move (POSES: the two ends of the sweep,
+drop: kit/verify.py :: # its quarters and its middle; the home's area line at 0, 3, 6, 9 and 12 s of its cycle), at 390 and 1280 px
+drop: kit/verify.py :: tags.append(f'{name} · {pid} · {theme} · pose {k + 1} of 5: {p_:g} of the sweep ({p_ * CYCLE / 1000:.0f} s of {CYCLE / 1000:.0f} s: turn {-TURN + 2 * TURN * eased(p_):+.2f}°, scale {1 + (GROW - 1) * eased(p_):.3f})' + (f'; area line at {k * 3:.0f} s of its 12 s cycle' if pid == 'home' else ''))
+drop: kit/baseline.json :: "README.md": "6bcad79bcd54e470db7172903bdcd94bcc50be44eeef7754e55c329d6e597d0b",
+drop: kit/baseline.json :: "academy/brand-a/home.html": "a1aea1bf6db517a200e30fa0d769fe77af1b12b7d4c1d40aa0d46032f2505094",
+drop: kit/baseline.json :: "academy/brand-a/read-a1.html": "e05010ce2adf32114007334229e3a4baa53653d27238316920604eb9811bf134",
+drop: kit/baseline.json :: "academy/brand-a/read-a2.html": "124fd445a55b356aa9371189fc66e9eb1ac88506e5b7f8294178b264342c6d2b",
+drop: kit/baseline.json :: "academy/brand-a/read-a3.html": "810e05757442b72fa2f50f3032c754d938add056c133b65ea1bc15f5dcac4d72",
+drop: kit/baseline.json :: "academy/brand-a/read-a4.html": "ce6d6684fc7d318ee57d97fc19d8442ba76277414167d824eaffda27a26c072e",
+drop: kit/baseline.json :: "academy/brand-a/read-a5.html": "0ea3ac7d254f25601cf560b89d74508582eecf59668f5b3067778c5e5a0f1323",
+drop: kit/baseline.json :: "academy/brand-a/read-a6.html": "121b95a11f5be02bd74dcceff37638677b20953886bda154e10676c0cde55842",
+drop: kit/baseline.json :: "academy/brand-a/read-a7.html": "c9adbfcc7f5f55870fe83bb189faad355863e1ed947ef9440167ef8ff47f24a3",
+drop: kit/baseline.json :: "academy/brand-a/read-a8.html": "d3a785f0018628d4eac3b3ae5429b6a9f63b0f8f18c47ffb1ea4ae6c9c15b20e",
+drop: kit/baseline.json :: "academy/brand-a/read-a9.html": "c274de1367ac83b1e1cd08cce1859fdba915fbd9c0d8e3959765c17add267886",
+drop: kit/baseline.json :: "academy/brand-a/read-audience-growth.html": "d5a13b6a5fef8974cd9fe411f230003dce7bca693f5f270e44d771ad385d3718",
+drop: kit/baseline.json :: "academy/brand-a/read-dd-a1.html": "70aee90e3f9f3fdc4191e480ae27959fd720d49c5f478c7958ac5c196be4e52a",
+drop: kit/baseline.json :: "academy/brand-a/read-dd-a2.html": "1f44f9df02b5f03e020f37988f020a67c66a45dbdc50d5deaef412e345ddc1a1",
+drop: kit/baseline.json :: "academy/brand-b/home.html": "1eac2ef5aa1c9b779f2a9c9522c158f09e92625b52af11cbca4b37e3913c9da9",
+drop: kit/baseline.json :: "academy/brand-b/read-b1.html": "ea22edfe66c946ff29f44d337e797c3fcf25eeec0170e702d2c3f2ddee5f8fe8",
+drop: kit/baseline.json :: "academy/brand-b/read-b2.html": "14f5f902fc6524c108666abec3452c4c4f32ace6564af8228cfd64ee4bcfc1a4",
+drop: kit/baseline.json :: "academy/brand-b/read-b3.html": "bb2cf826ac80f8f1c1497fe55302b7d99b32bdf10f910736067cec87f7ec79e2",
+drop: kit/baseline.json :: "academy/brand-b/read-b4.html": "7fd5e1ef66b3db2f0a056b07fb35bbbd6955a00cabdcfefc4b68877214f7639a",
+drop: kit/baseline.json :: "academy/brand-b/read-b5.html": "9b4ceb6b00c6b917dbb94ea493748122ad00e5e0278e733c8adf4dc56821d3b8",
+drop: kit/baseline.json :: "academy/brand-b/read-b6.html": "0d8923ffff1bd5c0648883cba3e582ce8ecd7584dc80b7111e22f83e2633db13",
+drop: kit/baseline.json :: "academy/brand-b/read-b7.html": "2313ad4da0d697f2fcb3b70963224467992d37dc82895d5d2428e220d18aa6b5",
+drop: kit/baseline.json :: "academy/brand-b/read-b8.html": "a962b4f246d334c2551d313428f00fb70ed31897ef6a388b3f4aaf6deec12dc0",
+drop: kit/baseline.json :: "academy/brand-b/read-dd-b1.html": "9b7ea0e450f61928a5dcb271cc341db221a066e022fe9a3b836ced3c03ff94a0",
+drop: kit/baseline.json :: "academy/brand-b/read-dd-b2.html": "0ec820c19c64d23c2899d0cedb1164e296de4c91b68ffe31654e850ead5fce5b",
+drop: kit/baseline.json :: "academy/brand-b/read-dd-b3.html": "8572059f480f80e60039c393791814e5107d544c8ed6cd3b8234fa31e8aa56aa",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/home.html": "92bdb6f704a9ff01b087c41fc11fd71049f0b36e92e2485bad304555d19e18c3",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw1.html": "b4609ff406310a2b194ebbe5a78384b3506b6c0d99ea699dbd086b7766e62e35",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw10.html": "8547d937dd390209ab52c2fa0d2e4c925d1c40333efa430df7501ab2f19f6842",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw2.html": "28d212050b1a86b1f1dc14809e6d1cfbe594d72b7cbff3e45cd467caa1623ab1",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw3.html": "6fea9666508871edf5d4b6de6ee8e7dfffdfcda1db9f1764f278dfd701b2d6d8",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw4.html": "d9a542edf671be451c0f5336b1f7204369caf63445ba6949f2ca635750699d6b",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw5.html": "df423ed888327b6b85cc01c46f54bacb2145cec97891dfbda2c2e2ec168c98aa",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw6.html": "af8ac1a5b4c155c3e25380de7efd7457893f14c9d90325cad3974b9c5f625c31",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw7.html": "c784adaa9d672bbffebe72c8a79930547fdb5ce66a652bf0d67c4c746c44e2ce",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw8.html": "95c69137756a39ea218a02647e7e7763c5522aba7e461f8d25022e958cac89da",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-bw9.html": "b5653f2c5a3e36c206acc57e67a2471151ecff2b6aa934eb41fc74306d9a0c95",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-dd-bw1.html": "6a9404ce10edbf605a75bbc7e1d0b4da11c6ecdc4fa7dbb6653bfb27422b2b99",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-dd-bw2.html": "ac0d25f0207963c09d951c44c39b49fcdd4816cce0abb32f9a815ef0b43980cc",
+drop: kit/baseline.json :: "academy/building-with-ai-bw/read-dd-bw3.html": "ea93f58153554e60ebcadd52bf9d9e2b392038d9050a7b443a20adefd591e7e7",
+drop: kit/baseline.json :: "academy/greece/home.html": "954829215c73e9f992ed9c9cfbd18a2c591a1c14bfd50531a254d7e991130416",
+drop: kit/baseline.json :: "academy/greece/r-0.1.html": "a7f188cc55db1e09fe81fbc612c064275d149faa6ce4f269772a4750d6bffa5a",
+drop: kit/baseline.json :: "academy/greece/r-0.2.html": "31538097832316f9cefb0056339eb8bf7b9e8ef0353925bd248e7a43c8b33547",
+drop: kit/baseline.json :: "academy/greece/r-0.3.html": "8ec15c7ce51840caf450ad4d50faced89e952d4702d5c148b7399c9ee1345af4",
+drop: kit/baseline.json :: "academy/greece/r-1.1.html": "775af8390513f5b9dbef999485b68048dee510c3591022f942176a28253dca88",
+drop: kit/baseline.json :: "academy/greece/r-1.2.html": "a8c7db3d83b5e98bba7bb9d69d7cfd9da8457e0895664be62608c6647b4431cf",
+drop: kit/baseline.json :: "academy/greece/r-1.3.html": "d7ee037b4b1ffbbbdb906c26c0d3832ca6cd9748fec7dddd2d52d67755bd9681",
+drop: kit/baseline.json :: "academy/greece/r-10.1.html": "1d2b394dd08de81ca126ab411267800d34dfc133b04c430b24f28a1fdb4460dc",
+drop: kit/baseline.json :: "academy/greece/r-10.10.html": "8388b6e838de81a518c350cdf771c86428a9c3f0ed7478096818a1344f109d15",
+drop: kit/baseline.json :: "academy/greece/r-10.11.html": "35c8bb89e86cd601d9cfc7829e58052063da03cecfbc2f0872e718c9a648e5d8",
+drop: kit/baseline.json :: "academy/greece/r-10.12.html": "8f1688616df575ca70a2ca9c18761e89b92964a00afc9c372c66902204a63284",
+drop: kit/baseline.json :: "academy/greece/r-10.2.html": "3a1e9ad7fb3896ef7128bd6b93f757fe63b28d2e43ae89f8d152fb93664f3f8a",
+drop: kit/baseline.json :: "academy/greece/r-10.3.html": "99ab5e499d08abcea3aba6b144d2dea03c0c2822513de8b354d44525a82a2307",
+drop: kit/baseline.json :: "academy/greece/r-10.4.html": "1700f917714b0bb53cf8c62693a92c6f8750927c6c211b9a71f172e4d6fafd24",
+drop: kit/baseline.json :: "academy/greece/r-10.5.html": "2a570287691e6b8d91705f832cf1127a60d634dcf92a34fc785833da23d49f4b",
+drop: kit/baseline.json :: "academy/greece/r-10.6.html": "62b050fd8320c5269462469a26ee42b5ddf68e74bf46ce41236a3fdf3b533409",
+drop: kit/baseline.json :: "academy/greece/r-10.7.html": "9dd5f72b16142360778bfe01d704bbcd84ba4b47031e3e24874121a25f1a7bb4",
+drop: kit/baseline.json :: "academy/greece/r-10.8.html": "78585b62e293afd17959d89ede6100814536207a237366032cee157de6b326b5",
+drop: kit/baseline.json :: "academy/greece/r-10.9.html": "fed0a3db1191ae0fac6c252a9ea51efef2fbfdbd75f2ee2dd5dcb669f8f3c83a",
+drop: kit/baseline.json :: "academy/greece/r-11.1.html": "392d47135e7dbf861f3d43c09bcf51ceab6b481338574d6494f8e32a6a55b7cc",
+drop: kit/baseline.json :: "academy/greece/r-11.2.html": "90ee491973f78834d2e0a3976fd43e9ab500528059042b6970bfb6708bc981aa",
+drop: kit/baseline.json :: "academy/greece/r-11.3.html": "05f169580edbef8ab9ff26b5b7554cabbca506f866b2d2f078cc4cbd18214cca",
+drop: kit/baseline.json :: "academy/greece/r-11.4.html": "252cdfaa7a59b47e8b852014506477798a1869a19af9946891d91eec9155827b",
+drop: kit/baseline.json :: "academy/greece/r-11.5.html": "00bb52d0d8d54aacdede2b2a403b2dfbcaa0eef4dafcb06747ded095e30ce92d",
+drop: kit/baseline.json :: "academy/greece/r-11.6.html": "f3cec61c21173223ae173b13267ce0b4618169e84b0cacb002c79db3e78abc13",
+drop: kit/baseline.json :: "academy/greece/r-11.7.html": "cad6bc11b2bbc4348fa0f7627e6b4e8820a446a6aff19db5d2fafa6886a37028",
+drop: kit/baseline.json :: "academy/greece/r-11.8.html": "6b4972e86d304be8a2cf0079cf892b4e9ec702626d1deff7d9658375f116a8e2",
+drop: kit/baseline.json :: "academy/greece/r-12.1.html": "fd09fed5296934dccb656a92034f271534725adec6a0d1d2800070071d009f54",
+drop: kit/baseline.json :: "academy/greece/r-12.2.html": "8f98a131fc08972230f0d90778a8e3c477e448dc7248d6e1de134d0a58826ad6",
+drop: kit/baseline.json :: "academy/greece/r-12.3.html": "0298f336720ef7cf42d6249621045ad50d31ceeef723ecb9bbe0dd7de29f31dd",
+drop: kit/baseline.json :: "academy/greece/r-12.4.html": "7d8ee59a92666d77eb5a8b24facdc0ed9f983b5389afffb09885fdf42a59bd75",
+drop: kit/baseline.json :: "academy/greece/r-12.5.html": "d03c3e7c83213a20029451a57eaea7008cb8578d2e8cd39c21c945703570fdf6",
+drop: kit/baseline.json :: "academy/greece/r-12.6.html": "97fb767243884218d5aaf416dbfc2687a1677f10cba5a7b85a4d2a2e5a046bba",
+drop: kit/baseline.json :: "academy/greece/r-12.7.html": "c3b96c5abc3e890089d045973db9f983d632aab84d75476544d5b53c3fa69dd3",
+drop: kit/baseline.json :: "academy/greece/r-12.8.html": "4dedefc8b72a98dab6e9730d9066f0e5486a732a0c65fa9ec7d04ef60ee8d270",
+drop: kit/baseline.json :: "academy/greece/r-2.1.html": "b826a42f97e4519942a746c8c4c555776505debfa0730ce763477921365de0a2",
+drop: kit/baseline.json :: "academy/greece/r-2.2.html": "e1a936a19981be2207a478c92369bb6086e15d3ccb999db12f8585d0766a3531",
+drop: kit/baseline.json :: "academy/greece/r-2.3.html": "1c8eda9c5dc45a0fbfd1c5dd8a13598f29cebc72f17ee595f030180fa714647c",
+drop: kit/baseline.json :: "academy/greece/r-2.4.html": "ee94eb8568cbc71a55ff2a02ffea9b890e6cca1dd793a987966e4497a6db29a0",
+drop: kit/baseline.json :: "academy/greece/r-2.5.html": "2587ac0046a446c8e2fddcb4d010886039ce99439f3fc634789c31a5bc8e0164",
+drop: kit/baseline.json :: "academy/greece/r-2.6.html": "6e7c953bd918871c5a6ea581c6b03f1e8e1de8ef7355ab3e3835cd7534d8e2d7",
+drop: kit/baseline.json :: "academy/greece/r-3.1.html": "0ec2217d4e42c9c55edee84026f87f83b4362da19c81cba090958f7218f46db8",
+drop: kit/baseline.json :: "academy/greece/r-3.2.html": "930e5fe3177da29f6bf5f05380da30d2626f81abf757007e337ca76b9fd26021",
+drop: kit/baseline.json :: "academy/greece/r-3.3.html": "dbf68b51ba9204728b87b8c8e603f463f26735764557cc46ba1c0b9d004d05bd",
+drop: kit/baseline.json :: "academy/greece/r-3.4.html": "f46e69924209c0c35af73bc5f04b306161454343f721a33133de6c134dda1df8",
+drop: kit/baseline.json :: "academy/greece/r-3.5.html": "891507f72df186b3ae3aec499d6d4847adb90363929e703c47f477c3e42c3ebb",
+drop: kit/baseline.json :: "academy/greece/r-3.6.html": "9e19da4140f81e0b9e3aece01d712cbef2cc528e270b00f8f8f8d9a3f0a10b1b",
+drop: kit/baseline.json :: "academy/greece/r-3.7.html": "21a4e0abf147e36ed61e534f0836d5570833aea62128bfb06189cf3f72003457",
+drop: kit/baseline.json :: "academy/greece/r-4.1.html": "ad84eca694b5c569c6d4733ed516475c6f0928afa7c2102c96dbadaecdee57bf",
+drop: kit/baseline.json :: "academy/greece/r-4.2.html": "10c3f5d88512a64f344e1a9123b6f5ef6a5478b6c7b23b68a03fd733a4ee9e8a",
+drop: kit/baseline.json :: "academy/greece/r-4.3.html": "26ea7ed12da18efe5d49f510368201b2ef1821c7cd39110be311a3c00b867710",
+drop: kit/baseline.json :: "academy/greece/r-4.4.html": "fea816c66feca4e18859e511afc775d75aee56dafb95eb2b0df6e9814f8d82d8",
+drop: kit/baseline.json :: "academy/greece/r-4.5.html": "b2aaf14c6ed3876e00b429a33092fefe53e152685c52ee91cef7d4f12a8fdbff",
+drop: kit/baseline.json :: "academy/greece/r-5.1.html": "8871b0c58b4593f70e06ee9d771398c73a1db602e69e846ceeaca1ffcbc95b10",
+drop: kit/baseline.json :: "academy/greece/r-5.2.html": "e03b9634b68dd0ceee463141441dba0b5c0cccbdef5ad7857affcea349033300",
+drop: kit/baseline.json :: "academy/greece/r-5.3.html": "42e41847e1afa945b403295490ace17ad3af822b96b54fca68d2ae92c841162a",
+drop: kit/baseline.json :: "academy/greece/r-5.4.html": "49a15ee364e043804798cb65a13b3893069d81106ce671869ba3a883a34868e2",
+drop: kit/baseline.json :: "academy/greece/r-5.5.html": "ff42bf524e09c76f52c61335e347dde01c44b7dcbc20a66ed45c850df31ae336",
+drop: kit/baseline.json :: "academy/greece/r-5.6.html": "f1129c2ad97149e335452a3b0538cbc7009f63f93dbb8ab952cb3240497ce2bd",
+drop: kit/baseline.json :: "academy/greece/r-6.1.html": "a49629ede6339cafde591777d37ed216c36ad13f9bdc8e35b82958182676a24e",
+drop: kit/baseline.json :: "academy/greece/r-6.2.html": "688ad59f7ef4cfb5f485b3536072ba96354f4b12cc6a8c8ab5cbe49d8190893b",
+drop: kit/baseline.json :: "academy/greece/r-6.3.html": "b63a98a909549064f896b42ed8be2dd936b291b65edf1f32794a4e6d042bfbb1",
+drop: kit/baseline.json :: "academy/greece/r-6.4.html": "c7decaf6978a0fc4b5a2c08ef6299dbd11c0c30939dfede1ca623d7e83b6c067",
+drop: kit/baseline.json :: "academy/greece/r-6.5.html": "0aa449c0618ecda6d5308806df1b8e00c1b2bc4119a4a8240a94406b1151e97a",
+drop: kit/baseline.json :: "academy/greece/r-6.6.html": "3db65e45048c06687c1de56c1f720acac0ce439a6569981cf7925a9b05618820",
+drop: kit/baseline.json :: "academy/greece/r-6.7.html": "50af1cdfe81b052c5206e2d889930d4246582722f4c091f3f5a699aedd7094c3",
+drop: kit/baseline.json :: "academy/greece/r-7.1.html": "2e82ac937c9c07cc9b415ff4ed18645d0cfa65aa3b6051aa825f7d46dcba4cfd",
+drop: kit/baseline.json :: "academy/greece/r-7.2.html": "dfdc89bb9cec488e9faa5710051d67c95055de733d83dbb8e8749bb0cbd111d0",
+drop: kit/baseline.json :: "academy/greece/r-7.3.html": "f5aa040939df567cff221fb75dafe7e0747acd87d66bd2d0c62bacead5df5b87",
+drop: kit/baseline.json :: "academy/greece/r-7.4.html": "77860f4e4ba0c339280f5721939d13da78d39b2b306d5a589ba61b82ae68d52c",
+drop: kit/baseline.json :: "academy/greece/r-8.1.html": "e62254b0b47931bbba18a5d413d5a1a244af9f735adf46fe89a9faf96d06fdff",
+drop: kit/baseline.json :: "academy/greece/r-8.2.html": "a630b2e2fa0eaf574b36e5ef781ec05c5009a74135c2bae0eee9abbaa1b7ec83",
+drop: kit/baseline.json :: "academy/greece/r-8.3.html": "e74088b518f72123fd2775d0a3a42f2f992c90d89076badf7dff5362a5a7194f",
+drop: kit/baseline.json :: "academy/greece/r-8.4.html": "cff15de88bfc0b4ec20bb274b636fe1691ca979c14b5927ec65a9885b8464731",
+drop: kit/baseline.json :: "academy/greece/r-8.5.html": "cab2700f24d33da1ea7874aa70f4c799f7b72e0c134d21f48f67e2ce02a13a20",
+drop: kit/baseline.json :: "academy/greece/r-9.1.html": "0821f36f0153bdc61881ae2ec47334f17dfd2f4c4d934b9f37881f05fddcd3fa",
+drop: kit/baseline.json :: "academy/greece/r-9.2.html": "e1f5548fc5cbbfd9cc5355aec1746b3b7d67784fe39af31badc3fb859d6aee51",
+drop: kit/baseline.json :: "academy/greece/r-9.3.html": "c1f4900cd513bb0d0f66511a74a0e0088c0c544ac5b41b9df34a068ca2d095c2",
+drop: kit/baseline.json :: "academy/greece/r-9.4.html": "efba4997783d2b52c7835f288d94e24fa515a58a32904c025f7a6c3435c771e0",
+drop: kit/baseline.json :: "academy/index.html": "9ac86a768992f95c8a46d9e63934203d296f74f87dbe2f4db3237f49877af56a",
+drop: kit/baseline.json :: "academy/new.html": "35dd5739404baf852eb67fd35794850e53fa9071c13883765a07e88ccffd9a1b",
+drop: kit/baseline.json :: "academy/personal-brand-pb/home.html": "14d3af95c07682f45bc5275e2807654a098785637670492eb86b19017d999f82",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-dd-pb1.html": "88ee110d432b4ed7395be18b667485df9c2866964b71a2fb4efc98de8a20528b",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-dd-pb2.html": "e89b68d3f07aed7886ad034d5d753fa0f4acc59c73e9ef837f3dd01badd916e8",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb1.html": "8686f441402251c47d25e96388d6c092a39326fff731a2dbcb4bc6b082571eec",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb10.html": "929155ef3690facc1ad99f49c1110e28739c94fc595f2092df2e022014bc2526",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb2.html": "362b48a8b56e5b24422ae952c5b09811cc8cb8e702b659d50e506b65eafe38f2",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb3.html": "4d7d9f6c96575f46859766e0b26848c92f6771b54cbdbe6d2114df1e52ce560a",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb4.html": "5f7bf1c8d4756d72e9ad48638235db945241c9b03038cbdf25a25c9a9fe0c76b",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb5.html": "55a7e0168a869712bd0026a87764d603a2d8fe9ff67d52abe14f419a09e8baff",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb6.html": "81ed2ec1c886e6db71d8c9c700969caee30890e4a1f7c720f86dee3e56c647c2",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb7.html": "3f9587801ea69d45a50b7e792cd6740838cde5633f658f165e7fbee58e9b53d9",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb8.html": "d01398a6315c906cea1727eaef9f6d2c385fa3340b36dfceb358e88fa1689c7c",
+drop: kit/baseline.json :: "academy/personal-brand-pb/read-pb9.html": "17fd1be6e94db5fdaba59591218e1b71c996870192a6a33b38a2e232dfb364ee",
+drop: kit/baseline.json :: "academy/rome/home.html": "61777e802dbd96982fb31cb9713a18a250830258f6a576e7ac625a76a1980338",
+drop: kit/baseline.json :: "academy/rome/r-0.1.html": "b299af79a4d489a8d6e1de39144f213f5f1574fb78d8c847b91aa4ba52a7f4b8",
+drop: kit/baseline.json :: "academy/rome/r-0.2.html": "1544dc43f1a90ce9adfb4c052685fa7f6a4b9118d65d18e9a1391d0152d02590",
+drop: kit/baseline.json :: "academy/rome/r-0.3.html": "161acf581150c76756c9eb651df3c5d128e8ab51f0b4774eeba7cb2e8e0b2297",
+drop: kit/baseline.json :: "academy/rome/r-1.1.html": "8a61f9efe2e47237c98654d73e2084818478e494f1100e27dcf19a9b076c2cf5",
+drop: kit/baseline.json :: "academy/rome/r-1.2.html": "10554aa2cfc60c82eb3f94bbcdf36a02d716248b1f14d0ba84fe185c0c287000",
+drop: kit/baseline.json :: "academy/rome/r-1.3.html": "05d27778ae46eb8067091702cd40d9cbae012ef4d11f91a8f36f689a75ce2f2e",
+drop: kit/baseline.json :: "academy/rome/r-1.4.html": "704dc4030325fc6eddc339e51e7e0bbd63d8147c43e43d826c1bfa1e22dc9af1",
+drop: kit/baseline.json :: "academy/rome/r-1.5.html": "254fcd1bae1bfe3fac5aa9cc99b39e3600a960c79915ee6cd962ef5d22fe358a",
+drop: kit/baseline.json :: "academy/rome/r-1.6.html": "f52f5f321d6778a55608e2d2e4e0d5ac974da5eb4493ab151c2687c6895788ac",
+drop: kit/baseline.json :: "academy/rome/r-10.1.html": "3f70ac496dcc6fb7792a2743faea7f2339f365f6ca3467a1414c7fa860f35612",
+drop: kit/baseline.json :: "academy/rome/r-10.2.html": "6d4b69e469978cf2cf45fc368283825a2694b62a07e8550796e9d799204837e4",
+drop: kit/baseline.json :: "academy/rome/r-10.3.html": "5b639b1e1dea448cdb8edfe23ce55a02ad648e79a88e421206f6f0b17def2cec",
+drop: kit/baseline.json :: "academy/rome/r-10.4.html": "420b31ef793f41dbfb2af0459fe1447204583d2fb926a25ac0dd35b18654c5c0",
+drop: kit/baseline.json :: "academy/rome/r-10.5.html": "1df72ef29822b1489706adfa7c25bfe13e9c34d68abdd141ef1a1f41a43b52f1",
+drop: kit/baseline.json :: "academy/rome/r-11.1.html": "deaef514ed2b8b34b55bb563aa5bb7e8ba55125cada0b750e9dbda5c30d91511",
+drop: kit/baseline.json :: "academy/rome/r-11.2.html": "a58592d09972ecc74239870d48407f61b0ebbbd82db090b4473920c3604cf9cc",
+drop: kit/baseline.json :: "academy/rome/r-11.3.html": "8270665853e093a7173e31f7c2182191ec441038f90b714a39b3c423abecebc7",
+drop: kit/baseline.json :: "academy/rome/r-11.4.html": "107b756408e8126e2b6d99524a87e1458dba8a233fb6294a07844f1b581ccaf2",
+drop: kit/baseline.json :: "academy/rome/r-11.5.html": "712c5be7fbddf43a0050f87f8c55f320262c306d1e90dcb7eee839865e872903",
+drop: kit/baseline.json :: "academy/rome/r-11.6.html": "b43b7339a1216f67bd1a00817fdb016ec1ec97e1c3a5534666a9121b5500c45d",
+drop: kit/baseline.json :: "academy/rome/r-11.7.html": "74bac250c4494b93b44be54778d51e0abf11bee3fff23277e8d385563319e6d4",
+drop: kit/baseline.json :: "academy/rome/r-11.8.html": "e5ec7c9377d5cfc7a7c4c2a7e5100eae36bc1b50a79edd48824849ef29443718",
+drop: kit/baseline.json :: "academy/rome/r-12.1.html": "ada9548a703966288b52bd3c3e4f5c7bd732ba460cb46b034b247c26c0618abd",
+drop: kit/baseline.json :: "academy/rome/r-12.2.html": "7d82f53af62f524be06849ceed0afb5ecc4be206bef5e4d753d9a3e3fe530e31",
+drop: kit/baseline.json :: "academy/rome/r-12.3.html": "d46178893f917617125a081a370e94828733f727e973630741746c92532adf51",
+drop: kit/baseline.json :: "academy/rome/r-12.4.html": "31460784a614df14d7c9c984c92714a3fafab33cb74ce0f28dbda2fa6d42c348",
+drop: kit/baseline.json :: "academy/rome/r-12.5.html": "3b2c3e5b72bd9d9eae5b93f2bdea9f5de97d483f09f2a96f0d638bc4ff094cbd",
+drop: kit/baseline.json :: "academy/rome/r-12.6.html": "0cf4b86eb6ed539e61435cfa0743be94ecc473fd794688e5e2f119bf740c13ad",
+drop: kit/baseline.json :: "academy/rome/r-12.7.html": "a0a1322681c3e98014cdad4ebea624fcdfe0bfe8279cab1bbc27a7ae1f3ef7c6",
+drop: kit/baseline.json :: "academy/rome/r-12.8.html": "0ccd5edd72819d31a96d74f68974ebe9bdec8c4c534e762fc117ba003ba908dc",
+drop: kit/baseline.json :: "academy/rome/r-13.1.html": "4ed8de5a7586011d8fb0dd76acc27cda16f08f854de89472282769f2f5d79ef2",
+drop: kit/baseline.json :: "academy/rome/r-13.2.html": "e07f872ecbe6bdbc0765c1547703f3a0363aea3451cbda9e8091d62ed3221e7c",
+drop: kit/baseline.json :: "academy/rome/r-13.3.html": "1c2a44da3cd9388b40cda8caa31525d28bcff8004b9101e2a82f0e42eecafa30",
+drop: kit/baseline.json :: "academy/rome/r-13.4.html": "831a2bd7c1fa429fa321c641cef44f0e234ed4d3876ad0336c83f9286c3c070a",
+drop: kit/baseline.json :: "academy/rome/r-13.5.html": "c7ced8055374fad30d9f8024adadf46a42c4b1d68654e106d7199f01558b30e5",
+drop: kit/baseline.json :: "academy/rome/r-13.6.html": "39b19f3bfc7b8545aeb305af31c9cdb163daccc7f57ee650a77abda05aea3a50",
+drop: kit/baseline.json :: "academy/rome/r-13.7.html": "645622fe925ed5763cf406dfaf62f1bb8c93368ccc65cf65f0258ec949aa00e4",
+drop: kit/baseline.json :: "academy/rome/r-13.8.html": "106b050566e80953ebc916b83f125bf43653032a72f7ac83bc72968461609ebf",
+drop: kit/baseline.json :: "academy/rome/r-2.1.html": "475096c36b1b03b4f788b09aced5261eedf4684f6a00a39c0a1961f4fe9fcf47",
+drop: kit/baseline.json :: "academy/rome/r-2.2.html": "9def7fe4ca5f658f1396a48c4f624123e56a2f0975478941f678b9e84fc9a988",
+drop: kit/baseline.json :: "academy/rome/r-2.3.html": "c7d16e81c0889c03672b22206eff31fd85ceb956fc8e1a6347a4e2a881fcc23d",
+drop: kit/baseline.json :: "academy/rome/r-2.4.html": "845baa825ae56865e139827b741c0ea7f9176d4cb2c8599e0f9a0ff3cb900878",
+drop: kit/baseline.json :: "academy/rome/r-2.5.html": "bfc3b57ad4e970afffe4ec616136e864dbd8962f2b870bb8413e70ec1c27e62b",
+drop: kit/baseline.json :: "academy/rome/r-3.1.html": "6c5236a5bf8d069b775c8e7680a6a116164628e1452d22e47750632d8cbaeae5",
+drop: kit/baseline.json :: "academy/rome/r-3.2.html": "8ccd2fcc453d93adcbbaea1a54f88a2cb7fa63ad64c906b9900e5e26ca83c44a",
+drop: kit/baseline.json :: "academy/rome/r-3.3.html": "6aa67be30d34eff054df43fbe25f22ffb4c2464ff1aa76eee345e3609dd38c45",
+drop: kit/baseline.json :: "academy/rome/r-3.4.html": "6091c41751db544b8fba9dd6a7d34395d5a1fb739c90170f99d84171c8297f9a",
+drop: kit/baseline.json :: "academy/rome/r-3.5.html": "da82c1d1d8d4ba4b68dca523befce6c90e72e5c72b4daaae884bd7bf2872c5e1",
+drop: kit/baseline.json :: "academy/rome/r-4.1.html": "3aa44ecf0cd9b6c130ef06af81e46f9d0e0c6ac5b3eaa112eb59a909d1dfb55e",
+drop: kit/baseline.json :: "academy/rome/r-4.2.html": "3aa313c0f7b8dab15758efebdd2c16094855b4d9e390a5739fc986108d5da891",
+drop: kit/baseline.json :: "academy/rome/r-4.3.html": "01f048da4b4b65bfdc4b145f60021796f3f618cf6c042d184b63b1354162871b",
+drop: kit/baseline.json :: "academy/rome/r-4.4.html": "43833eb430f3d8b6eb9514af3dff3ba3e89243035be893a95d4b27541a7d0007",
+drop: kit/baseline.json :: "academy/rome/r-4.5.html": "676e7c399e9782799964fe04e41dff4a27c10f1e94f3774910bd3749024e47ca",
+drop: kit/baseline.json :: "academy/rome/r-5.1.html": "59d51b2da46f20e49182f865000600763e99736e8618a3e8422afd8d9c96ff1d",
+drop: kit/baseline.json :: "academy/rome/r-5.2.html": "ce110dce95d37248c88f35d13f4028e462dd3040f2aa693d93f2c4e1cc1cd3ea",
+drop: kit/baseline.json :: "academy/rome/r-5.3.html": "21334b918511a8bdf8cce01c8715990fabb182bc71105aba39c37743b321b597",
+drop: kit/baseline.json :: "academy/rome/r-5.4.html": "6f8898d7bb7849093db596f346580d133061b760307cee4592c8ea65cce3e69b",
+drop: kit/baseline.json :: "academy/rome/r-5.5.html": "e1a54ead1335e24692d327f1de94cc0b50eed43962945f22fc94c1be77a9f78d",
+drop: kit/baseline.json :: "academy/rome/r-5.6.html": "8a364e38a8ec90dfb058ecc6cbef28ddcf42a1ad9e2b2aa45cba86ffe77c6f1c",
+drop: kit/baseline.json :: "academy/rome/r-6.1.html": "8657dd64666afddcc0aa9f6803ba6e87c90bdbacaf75714cd776187a81ae67d4",
+drop: kit/baseline.json :: "academy/rome/r-6.2.html": "aef80ee8e20536002b59931fd0b43e504c47f33299179d0a0d29c1f7b48abca6",
+drop: kit/baseline.json :: "academy/rome/r-6.3.html": "c32fbf5b76649b489252fe01387a016dddd1f9f501ce4371353737daf94c72bc",
+drop: kit/baseline.json :: "academy/rome/r-6.4.html": "33a4aec0ed8fbae3d4ffb25a862f9f43825a70c010527b8980ec291fa3bf2ec9",
+drop: kit/baseline.json :: "academy/rome/r-7.1.html": "a294349d08babe1c6057d4db88e374ba4a3d763667f2aa081f689ce384c3e896",
+drop: kit/baseline.json :: "academy/rome/r-7.2.html": "3c1aca9bb5712dde0b29bb29a6e10714135e16e108408cbfc4872505dca0a7a7",
+drop: kit/baseline.json :: "academy/rome/r-7.3.html": "418042674ea21aee9a8e7d33577baedc8631420a4eed9e3db0ec35cb6a18a1c4",
+drop: kit/baseline.json :: "academy/rome/r-7.4.html": "8cf0517eaaf2c16f5824b35cf2e01add8b2bbcb0d8f54b9199c7c26206a68079",
+drop: kit/baseline.json :: "academy/rome/r-7.5.html": "b61cc035ed5ac32aa60b9040e18002fcd49f8191929c5d4820673655225e1499",
+drop: kit/baseline.json :: "academy/rome/r-8.1.html": "e54c7369df07f643624b03f056e05fb3f704f9091d804e4563c93d53665a6e98",
+drop: kit/baseline.json :: "academy/rome/r-8.2.html": "9d15df8d5fac6c3cf8ddf615c77bdd0c5e6e6def8b6a314c69000371fa1f56de",
+drop: kit/baseline.json :: "academy/rome/r-8.3.html": "c85b36aaa5c04832884ea778371334688103835cd9ae153bd54db942ae26e8ee",
+drop: kit/baseline.json :: "academy/rome/r-8.4.html": "a478b868a129e3727b116e55bb245b8087118e6a652a601b43b843cb647d3007",
+drop: kit/baseline.json :: "academy/rome/r-8.5.html": "7a10ee57c91b58563f771a9a88319c5f0b4016cc5f4fbe338915f3eaf19b42b2",
+drop: kit/baseline.json :: "academy/rome/r-8.6.html": "1f6d78f1762c65096fb8f04722da3212c3fc2618fe1cc473453f92ccd2fa1330",
+drop: kit/baseline.json :: "academy/rome/r-9.1.html": "9f7a8637d7878c9cd169ee494d6ce0ffc07468e224810559610ca0b2cd698736",
+drop: kit/baseline.json :: "academy/rome/r-9.2.html": "1f07b364c12cf98611d8286fda75afe5e7529ad4a6d9fcdca41bc4a25425e548",
+drop: kit/baseline.json :: "academy/rome/r-9.3.html": "b25ba809fee369701ff8d32a7fc61d60aa0568bb1d874ec7df6d2bbb94b97d26",
+drop: kit/baseline.json :: "academy/rome/r-9.4.html": "9c886e1831db146ff4a5ba6ec673d1bd21dfdf42e5f97ab265a174328ea5e141",
+drop: kit/baseline.json :: "academy/rome/r-9.5.html": "b46e5cf0e7e831d045021ec005d9902f4a36df2cd929cf579fa16787113599fc",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/home.html": "6f55062c586d763b896960586020b090ae846c4f5a0740845668f3ca8f2eac37",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-dd-sp1.html": "1ffb58d9ca6d06f36b293ea1c6b74eae4a8d08e91104d57712ace6eb4086fd00",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-dd-sp2.html": "71e9ddc8d24e49d835f269b53e2239f54abd3d142432fcad202d8f31535abb90",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-dd-sp3.html": "5d20aa76bc54d7025064c4ecdc9548f8d865938389852b8cf314ef071e3f7f75",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp1.html": "f87d4f69ee167dd20e43d2563dd1d8adee97f09df97bdb42a8969e6787f69e63",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp10.html": "5c9d15149397ab0aadc64e722799246366f85c7f517d8b323f5e675061147a6e",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp2.html": "6644562a97fcf8d96e01dd7f218c315049c8feb2a8bc19c5cfe3d153f80057d5",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp3.html": "395f2d21a0c2fe520729c3520495dd1c645a70f2f5583274ce17b8c51b83b7b2",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp4.html": "9310690ef3d821451aa5c6b4cc51df990eee2d67978c320827ba3f1a92dd1937",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp5.html": "81fcc0564ac854a6d2b0af876ac21d599265daa6644418a618a4ed4f0fe1f18b",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp6.html": "5a0f8472439c6d72ab896901830b04401a9155fee8019b12c69602a8c26560b5",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp7.html": "c542a580e88364161e55933a7efe61dda037e58aa0ba080892aadf317350ad98",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp8.html": "6e8821b8568fd2b6b67b0892fdb8c7e044e9e929dbf322fa9c226bc571ea6801",
+drop: kit/baseline.json :: "academy/sport-psychology-sp/read-sp9.html": "b9645f8cb0240b106f8f2b18aad595b3033f041e82ccd4397a1366a3bb456f23",
+drop: kit/baseline.json :: "academy/supply-chain-execution-sce/home.html": "98c31b18181e4f7ab2fe1aacda0602a9b93ab097e426f673261c6d20c1b243e0",
+drop: kit/baseline.json :: "academy/supply-chain-execution-sce/read-sce1.html": "c395f223b73fbb314d6cb3013f480d41b07ec086d5dcdbd139c47208d0c6f782",
+drop: kit/baseline.json :: "academy/supply-chain-execution-sce/read-sce2.html": "aaceedbb3627a0d41c290c6adbcc482a4d26bc8211413785f5202a48ea9e3d63",
+drop: kit/baseline.json :: "academy/ux-ia/home.html": "c24775429f228918bef56a0f61d2a2e6143b263e22d83069194bb451e696a1ee",
+drop: kit/baseline.json :: "academy/ux-ia/read-dd-ia1.html": "99c69b19bdf52f0072179ad2e435657388643c3e28e30074d766ae09cd6823c6",
+drop: kit/baseline.json :: "academy/ux-ia/read-dd-ia2.html": "7ee36f6e6c60cd833e15a77391e66aeb6f09b308bb8e58f45a4899a616ae0841",
+drop: kit/baseline.json :: "academy/ux-ia/read-dd-ia3.html": "b94325639f65d636b267bd752f14e48cf58c579143df2ebc8a19728722cb86e3",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia1.html": "a7f0510c806336ed2d7b0d15658f3191c14ddd889cb7f3b781a5d15f21e4bbe8",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia10.html": "c00a3f7a1296abcc32ba3358f756cd2d90d1e48d600494a351dca4d87475fc27",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia11.html": "5e0719c1045816d40f1a0b14d9a51d9d365335c30c5b8163683743573b5d16f8",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia12.html": "6b4efcf3d2fb4a229e08ac0455daba1c25b56514220791b1567b8cc20a114a87",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia2.html": "73f827cf1cc55f4e2be781f618e0262163c6f4225479f52eeeb0d3056f0f4d37",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia3.html": "3940c19f424bc993606202992a3c3fef572ad2cd2b2dd99a6dcc701ab79e32e3",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia4.html": "b2c779bd6aa14469f8f179c2987c4ff200ea559e17bcfa2c4d4c93488b4c072b",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia5.html": "844b6d01d66bf1f84d0886de01c5002a3a7b92fe5b31a41b21d934f44de0a2f2",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia6.html": "4a04fa480a77fd4d0f02bbf7da08e47d4370387d681b99ab8922d60ad8d85aa2",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia7.html": "6f80a424c89fc4e1aa0873a52e281e177eae4596a7424f270e797f5ff5ff7e8b",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia8.html": "fe014b8b640a68a3f62eb9d69e40433ff7c1a6d695dc39ca1254114fb5b0dcc6",
+drop: kit/baseline.json :: "academy/ux-ia/read-ia9.html": "03de5cf2f7b269a62e3fd49d23f8a51a41dcfa89e3d81bd3b74ce49866f938ad",
+drop: kit/baseline.json :: "editions/greece/greece/home.html": "b702e66967ce94fde439d89d877e6612a51f66952ea2c83f8d8824eaae4ac94e",
+drop: kit/baseline.json :: "editions/greece/greece/r-0.1.html": "3034d84647e2852cbd95aa04ddbd7f9bf57541e479eb47e008515e25ad01da7b",
+drop: kit/baseline.json :: "editions/greece/greece/r-0.2.html": "5469bbb9625dd5d009e2b99df197b4c5fc15b4cf66b7b17dd26da3152efedcae",
+drop: kit/baseline.json :: "editions/greece/greece/r-0.3.html": "0c2fa91ba40efd3748f62af89dc253a7eb5d9cb3b998704543f7cf80bc940b9b",
+drop: kit/baseline.json :: "editions/greece/greece/r-1.1.html": "5ec6002232ab284fe48e6b980e48bab0db15c6e744b50d1d2790ec4897d44d72",
+drop: kit/baseline.json :: "editions/greece/greece/r-1.2.html": "4d3c6928699dd60ce7fc73cb8b23a01dc2b1fe8157e4863e21515cf3d9244c2b",
+drop: kit/baseline.json :: "editions/greece/greece/r-1.3.html": "b6bd45b4265d6ca00684d55f43857f4b4b33db8c560ab7adfb350848306f6d90",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.1.html": "06ec3a6786a96c4f41efcaac26a32477d2dd3f1bcdec7740dd1b65e191dc7321",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.10.html": "bd43468eb3409ea55244cba1bac5a1a4fccc2d12f72f0f426cbd312dd14e7ff3",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.11.html": "46e322b515e290aab79411e33732e3f9d50e1f680cf787f50bc05dfed6f6a96c",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.12.html": "c654e3974ac4305f26b6f64c1fa17ccfb6c73dbec522459184fbe528fe71a78f",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.2.html": "4cbbd17c0ddf7ccada90d51104a8e32ce622e6b64d4e747a3af6b5024f7a30e0",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.3.html": "466e3d75ee581b6d704237d7ae012f206242f447cd310cc9480356d022851ade",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.4.html": "c1e2e7068f156e93411c4ea68204ccde3715bf4955a0ec8846e82da67e4823c5",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.5.html": "fe1e322fe63fc6a24a134e4d3bc32fcdde757c21b9cc89682fc7a3b5b095f17c",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.6.html": "6affd62c510c958a08a9cc8d0d1e58bdb9a044ac64a1138a2dec67e67ef10ab4",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.7.html": "44e089050a9674687d6ab3fb2137ea0ed69eea352edad92f37ebdca32c2b014e",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.8.html": "cbcee71e0d4db9ffac0e593b5f52561c1baa5b98dfc158e782ac818d79aa3d78",
+drop: kit/baseline.json :: "editions/greece/greece/r-10.9.html": "98392c39ba2e40bafc108e28cd0117ae6a73445cba58d5ce84a20579afd00dd9",
+drop: kit/baseline.json :: "editions/greece/greece/r-11.1.html": "6cbf9d4ff7f5f0051c321636cbf5a6fa25eded699c6f65f5ab7fcec91d740a30",
+drop: kit/baseline.json :: "editions/greece/greece/r-11.2.html": "a810a0e298d1fce1c1abeebfe1f7c2b7c4756209712c42277a18d5cf8db4594c",
+drop: kit/baseline.json :: "editions/greece/greece/r-11.3.html": "feebbf42fdd66aad33ce08bd9946b3f8e6177beb0da235c34d91fdd1674ade63",
+drop: kit/baseline.json :: "editions/greece/greece/r-11.4.html": "7f4661074f3d596c2230d8eb996af7eb966a1e1b86b00aad1fa43d5b83ce05ad",
+drop: kit/baseline.json :: "editions/greece/greece/r-11.5.html": "fadfe135a0dbf3bba0854df1091a5af996737f2079796556b8abe65aa828214b",
+drop: kit/baseline.json :: "editions/greece/greece/r-11.6.html": "7259e6d4906632cb19e4e0bb8da6e7b98408d0f5c7842ef403f10340b47f67c3",
+drop: kit/baseline.json :: "editions/greece/greece/r-11.7.html": "ee8045041d97d073507728f205058448975fbc6548bcc9af5f23f270d053057b",
+drop: kit/baseline.json :: "editions/greece/greece/r-11.8.html": "0cf8609909d6a374ecd00a4b2f5d9a7ade99441b2896713350c7d44930cb6a08",
+drop: kit/baseline.json :: "editions/greece/greece/r-12.1.html": "72213477d14d5211635a7731cb24a141a08538693a388b7318735c93e174d106",
+drop: kit/baseline.json :: "editions/greece/greece/r-12.2.html": "440e7b28da343f33464c38ee666465b97a80c033870db1f44c96c89716c960d7",
+drop: kit/baseline.json :: "editions/greece/greece/r-12.3.html": "2e79f563f9e9711b98bcb105576eacfdee22aefde9737429e1bd4afff999c714",
+drop: kit/baseline.json :: "editions/greece/greece/r-12.4.html": "1ca33c4de73b21485b414c83a5fdd0cf35e2ae210e18a3d545af553d9e9e2f77",
+drop: kit/baseline.json :: "editions/greece/greece/r-12.5.html": "c4b5df894457a3ad61657e4bb90d0f78958ad3b2859f0bba176a281d70eb16e1",
+drop: kit/baseline.json :: "editions/greece/greece/r-12.6.html": "7b5475ec310cdfa58c68a73bfdea95a31c5de2676d13c731385e19d76906e35d",
+drop: kit/baseline.json :: "editions/greece/greece/r-12.7.html": "5cfdcdf986c73c4931890b6878ed26781ceb6984e4cc3edcb152ae5f3c11a96b",
+drop: kit/baseline.json :: "editions/greece/greece/r-12.8.html": "d2577c2e342f9c9152ea42e5374e6ea89f28554ae87fbcf1cea52392ba837c4b",
+drop: kit/baseline.json :: "editions/greece/greece/r-2.1.html": "65d6f4527a18b83d14d7cc42f1424a4d2e6f1cee81c6e00abbe57f6a0ec4c2a6",
+drop: kit/baseline.json :: "editions/greece/greece/r-2.2.html": "51ba858a33a1f1a275a47dc51ecd5a6f79684fa3ae99b644a56f0749f9315b6a",
+drop: kit/baseline.json :: "editions/greece/greece/r-2.3.html": "b3b675187c7b322335154e7dba0527cfdc61361a3958a561763b4b18de203892",
+drop: kit/baseline.json :: "editions/greece/greece/r-2.4.html": "ce49512715b973fe6a8225dde50dac5d96150712306e1dd0f4a9f0553edde8ef",
+drop: kit/baseline.json :: "editions/greece/greece/r-2.5.html": "57df4edea41311be440b55b554f0f0bb08deeb40d64392f1f84fead38900a898",
+drop: kit/baseline.json :: "editions/greece/greece/r-2.6.html": "706ccfb6df9377948c5f200397e9f35535168af53ad5e3a34e61349e15dd2d35",
+drop: kit/baseline.json :: "editions/greece/greece/r-3.1.html": "1d2df2bf4268b67ebb2fb659ef28286a4cfb7f962cce14698113bc831ec2757f",
+drop: kit/baseline.json :: "editions/greece/greece/r-3.2.html": "f32f9747413a881a8d9d2f8256530ae9aa08924185e0a1da436ea018cb3957f1",
+drop: kit/baseline.json :: "editions/greece/greece/r-3.3.html": "f77b0b42f6060eadae166c1c6774f3de9e8f2c523b42c62f7996c0e63272f544",
+drop: kit/baseline.json :: "editions/greece/greece/r-3.4.html": "053ee92c6e384bbaf17ec89d5e23c27e8df2e2b25cb2040c09a021da4353bd1b",
+drop: kit/baseline.json :: "editions/greece/greece/r-3.5.html": "f22e04eec21e3023a6ba9d2e341f193c6f606a31079779221c02acd4446c417b",
+drop: kit/baseline.json :: "editions/greece/greece/r-3.6.html": "768a9a71583d7353ab909de31555abcec196421c335faab1ef980d9cd09aedf8",
+drop: kit/baseline.json :: "editions/greece/greece/r-3.7.html": "eeae62f9750d350d6b3417314c0fd0e9ea6774f8f54b9ac28c3ec4d68afdccec",
+drop: kit/baseline.json :: "editions/greece/greece/r-4.1.html": "e7d0a23b87fad54714bbbe9a84cb7a8b3a61234574743bfcb319ad243913714a",
+drop: kit/baseline.json :: "editions/greece/greece/r-4.2.html": "83efc199081a71dba5063598608b68f54f732e71d945e84b7e4bb27b695f61f6",
+drop: kit/baseline.json :: "editions/greece/greece/r-4.3.html": "7c8174ec85ee4562e1da99cb609950f4dd48bb75df31f342cbc0f1820b45b8a6",
+drop: kit/baseline.json :: "editions/greece/greece/r-4.4.html": "40289584585e78d9a8cb8088f3105db133dde217ed575ac15150daa7f9cdd8b9",
+drop: kit/baseline.json :: "editions/greece/greece/r-4.5.html": "2dad7a24bec82ee5493ac06e2f0b997b90cb455a7379afbefcca7ed7bad83c1a",
+drop: kit/baseline.json :: "editions/greece/greece/r-5.1.html": "83b555bcb26a29bd8a05e7cd9898a8d1363a247d174aaa2c9adf70ad79d3896f",
+drop: kit/baseline.json :: "editions/greece/greece/r-5.2.html": "01f598307f396a12957545ee3a6b27472ee813c115ca92b387a43c3b824d1421",
+drop: kit/baseline.json :: "editions/greece/greece/r-5.3.html": "0b27c816f7c70dcee5199bb2dd3a1ea854d8473d659138f9c98d081d6dd92d1d",
+drop: kit/baseline.json :: "editions/greece/greece/r-5.4.html": "19241cfdaae25895876bc00f352af0381788c837db546a3c40dcba13eb72bafb",
+drop: kit/baseline.json :: "editions/greece/greece/r-5.5.html": "d14fc41243f78688f94322e7d44554c4a73b4f26469f2aa82a3ce0c61423d795",
+drop: kit/baseline.json :: "editions/greece/greece/r-5.6.html": "b57de00efc256607367e99c6a4dad01df05bb2fc886eaa84dcea3abec08ab90a",
+drop: kit/baseline.json :: "editions/greece/greece/r-6.1.html": "e40e77840250e5479b7ed1ee8e8a24923bc1065997dd5897bf79c5a4d4c0b802",
+drop: kit/baseline.json :: "editions/greece/greece/r-6.2.html": "63a0328537b248e17a3b371d2d6d6c8f5f2a45247f8ab98ebb437380efc34dbb",
+drop: kit/baseline.json :: "editions/greece/greece/r-6.3.html": "6d536c288a89472d681c06bcb08a66c7693cfffe7c2b26a11f3d36b09e0d241a",
+drop: kit/baseline.json :: "editions/greece/greece/r-6.4.html": "c2f7250adb99fb7763c5c9d2653625b2217a54d7cabbbff6b1b37c3573f4b49e",
+drop: kit/baseline.json :: "editions/greece/greece/r-6.5.html": "ce0ed8b736032f20af5027a2f0c1d6183b4d6d66755d0e26c852f22466aaac00",
+drop: kit/baseline.json :: "editions/greece/greece/r-6.6.html": "dc0e0157c2f445f77d1b4c1bb0839e47c17fa82a269732f295efdd080c54d7a6",
+drop: kit/baseline.json :: "editions/greece/greece/r-6.7.html": "7b1b0bf5041f2eaed8b0fabb87f6ea58884c8f266fa5836eaf10b701b8b072a6",
+drop: kit/baseline.json :: "editions/greece/greece/r-7.1.html": "ce37763f82fd933b78a585ba552e83ee9b804193d17a4db91696c19673e30575",
+drop: kit/baseline.json :: "editions/greece/greece/r-7.2.html": "a7b4f98df7e05d4839befbec8f6cb72056d6827c6d2baff091f8efc3bb067b6c",
+drop: kit/baseline.json :: "editions/greece/greece/r-7.3.html": "cef52c3053e5e3e6ea75f089125d6d60e05268b026eb9d1c0b4787805a77b9aa",
+drop: kit/baseline.json :: "editions/greece/greece/r-7.4.html": "2f424ac33f56c55d6cb94ecf0db2026651b276c2d16df1b328906a66e4946871",
+drop: kit/baseline.json :: "editions/greece/greece/r-8.1.html": "65b99fbfcd55cb9177f081b621087ebac76cb87061094ea904a292cd402810d0",
+drop: kit/baseline.json :: "editions/greece/greece/r-8.2.html": "fd38cfb856e26dcb0d0af10124d9a2ade9e25d5f45d73d5c993bfb04a7bbb5fb",
+drop: kit/baseline.json :: "editions/greece/greece/r-8.3.html": "acc7558f3aaea1cdf1c1f76e2dba1437b84a7f4cfe405448059a68487e46e6c9",
+drop: kit/baseline.json :: "editions/greece/greece/r-8.4.html": "31d24c2c5908e8ab966afa9f0bb3d948487569ae19b85703dd068f260bbcf00a",
+drop: kit/baseline.json :: "editions/greece/greece/r-8.5.html": "8f1b208bde0732200802b661b28cbd5e13df4e720c975ec1a4dfb4f07ac39e98",
+drop: kit/baseline.json :: "editions/greece/greece/r-9.1.html": "3abbda587e7c2e99a2d51a7c7d7a2b560fa9a391daf7861d8ffbdfc056c21058",
+drop: kit/baseline.json :: "editions/greece/greece/r-9.2.html": "e73f3401dcfbb7224a88acfd0f2008be40eefd727001b64838d2b17b61f56fb1",
+drop: kit/baseline.json :: "editions/greece/greece/r-9.3.html": "a58688577a69b3f5a3b49dacbccddbdcabd9d62362d6482dd684b371446e2327",
+drop: kit/baseline.json :: "editions/greece/greece/r-9.4.html": "5758df0091b6db0f4a7174cb0075464f8458d38d71bd670bc7eff8d1a26c42c1",
+drop: kit/baseline.json :: "editions/greece/index.html": "cc851dfc9ef94fe1803652998a42506ba2bef56e71decb96f729793e6a564ad1",
+drop: kit/baseline.json :: "editions/greece/new.html": "7dde8dcc19ce4d7986c7f6bce1e5839b3cc41ff64b3944b5032dd3cd179fc4d9"
+drop: kit/build.py :: # theme (4i) turns and grows each one slowly; `phase` starts each drawing of a page at its own point of the cycle.
+drop: kit/build.py :: inside = all(turned_inside(b, W, H, view=view) for _, _, _, b in rr)   # at every pose of the move, not at rest only
+drop: kit/build.py :: TOPO_TURN, TOPO_GROW = float(re.search(r'--topo-turn:([\d.]+)deg', _TT).group(1)), float(re.search(r'--topo-grow:([\d.]+);', _TT).group(1))   # the move every drawing makes, from the theme (P93; read from it since the follow-up of 5 Nov): the turn, and the most the breath grows a drawing
+drop: kit/build.py :: def turned_inside(b, W, H, pad=6, view=None):   # P93 check: 6 units (about 2.5 px on a 320 px phone's patch; at 3 the closest came to 1.1 px)
+drop: kit/build.py :: """Whether a box (x0, y0, x1, y1) in a W x H drawing stays inside it, pad units clear (or inside view, fractions of
+drop: kit/build.py :: the drawing: a hero's window), at both ends of the move: the drawing turned by -TOPO_TURN at scale 1 and by
+drop: kit/build.py :: +TOPO_TURN at TOPO_GROW (and the two other corners of that range), about its centre. A ring near the end of a 4:1
+drop: kit/build.py :: patch rises and falls by a tenth of its height; one at the centre does not move."""
+drop: kit/build.py :: cx, cy = W / 2, H / 2
+drop: kit/build.py :: for a in (-TOPO_TURN, TOPO_TURN):
+drop: kit/build.py :: ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
+drop: kit/build.py :: for g in (1, TOPO_GROW):
+drop: kit/build.py :: for x, y in ((b[0], b[1]), (b[2], b[1]), (b[0], b[3]), (b[2], b[3])):
+drop: kit/build.py :: dx, dy = x - cx, y - cy
+drop: kit/build.py :: u, v = cx + g * (dx * ca - dy * sa), cy + g * (dx * sa + dy * ca)
+drop: kit/build.py :: if not (lo_x <= u <= hi_x and lo_y <= v <= hi_y):
+drop: kit/build.py :: return False
+drop: kit/build.py :: return True
+drop: kit/build.py :: def turned_clear(b, W, H, pad=6):
+drop: kit/build.py :: """P94: turned_inside split by direction: whether the box stays pad units clear of the drawing's left and right
+drop: kit/build.py :: edges, and of its top and bottom, at every pose of the move (both are true exactly when turned_inside is)."""
+drop: kit/build.py :: cx, cy, ok_x, ok_y = W / 2, H / 2, True, True
+drop: kit/build.py :: for a in (-TOPO_TURN, TOPO_TURN):
+drop: kit/build.py :: ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
+drop: kit/build.py :: for g in (1, TOPO_GROW):
+drop: kit/build.py :: for x, y in ((b[0], b[1]), (b[2], b[1]), (b[0], b[3]), (b[2], b[3])):
+drop: kit/build.py :: dx, dy = x - cx, y - cy
+drop: kit/build.py :: u, v = cx + g * (dx * ca - dy * sa), cy + g * (dx * sa + dy * ca)
+drop: kit/build.py :: ok_x &= pad <= u <= W - pad
+drop: kit/build.py :: ok_y &= pad <= v <= H - pad
+drop: kit/build.py :: return ok_x, ok_y
+drop: kit/build.py :: edge and every part's rings stay inside the frame at every pose of the move (turned_inside); a planned course (no
+drop: kit/build.py :: if not rr[('patch', 'edge')] and (ext is None or turned_inside(ext, 720, 180)) and all(turned_inside(b, 720, 180) for _, _, _, b in rr['patch']):
+drop: kit/build.py :: rise's rings and every line stay clear of it at every pose of the move (turned_inside: both ends of the turn, at rest
+drop: kit/build.py :: and at the top of the breath): its hills start SEP_SY units across the ridge and drawn out along it as far as the
+drop: kit/build.py :: cl = [turned_clear(b, SEP_W, SEP_H) for b in boxes]
+drop: kit/build.py :: assert all(turned_inside(b, SEP_W, SEP_H) for b in boxes)
+drop: kit/viz.py :: per[ds[0]].append((p, closed)); continue
+drop: kit/viz.py :: run, who = [seq[0]], dd[0]
+drop: kit/viz.py :: per[who].append((run, False)); run, who = [x], w
+drop: kit/viz.py :: per[who].append((run, False))
+drop: kit/viz.py :: rings = [p for p, closed in per[k] if closed]
+drop: kit/viz.py :: own[k] = len([1 for p in rings if len({(round(x), round(y)) for x, y in p}) >= 2])
+drop: kit/viz.py :: rings = [[(at[k][0] * W - sr, at[k][1] * H - sr), (at[k][0] * W + sr, at[k][1] * H + sr)]]
+drop: kit/viz.py :: xs = [x for p in rings for x, _ in p] or [at[k][0] * W]
+drop: kit/viz.py :: ys = [y for p in rings for _, y in p] or [at[k][1] * H]
+drop: kit/viz.py :: box[k] = (min(xs), min(ys), max(xs), max(ys))
+drop: kit/viz.py :: xy = [pt for k in live for run, _ in per[k] for pt in run]
+drop: kit/viz.py :: out[(lay.get('name'), 'extent')] = (min(x for x, _ in xy), min(y for _, y in xy), max(x for x, _ in xy), max(y for _, y in xy)) if xy else None   # P93: every line's box
+drop: kit/viz.py :: dd = _ct_d(per[k])
+drop: kit/viz.py :: path = '' if (d.get('sep') and not dd) else f'<path d="{dd}"/>'   # P94 check 3: a separator's spot-only rise carries no empty path
+drop: kit/viz.py :: f'{where}>{path}{spot}</g>')
+drop: kit/viz.py :: # steps), and writes <id>.json; this draws that JSON, so the build stays pure Python. The frame is the drawing's box
+drop: kit/viz.py :: # grown so that, turned to either end of the turn at the top of the breath about its centre (the move every contour
+drop: kit/viz.py :: # drawing makes, read from the theme), every line stays REL_PAD units clear of it; its aspect goes to the page as --ar.
+drop: kit/viz.py :: REL_TURN = float(re.search(r'--topo-turn:([\d.]+)deg', _THEME).group(1))
+drop: kit/viz.py :: REL_GROW = float(re.search(r'--topo-grow:([\d.]+);', _THEME).group(1))
+drop: kit/viz.py :: def rel_frame(w, h):
+drop: kit/viz.py :: """The frame (W, H) round a w by h drawing, so that the drawing turned by +/- REL_TURN and grown to REL_GROW about
+drop: kit/viz.py :: its centre stays REL_PAD units inside it."""
+drop: kit/viz.py :: a = math.radians(REL_TURN)
+drop: kit/viz.py :: c, s = math.cos(a), math.sin(a)
+drop: kit/viz.py :: return round(REL_GROW * (w * c + h * s) + 2 * REL_PAD), round(REL_GROW * (w * s + h * c) + 2 * REL_PAD)
+drop: kit/viz.py :: """The relief layer: div.topo.relief (aria-hidden, textless) holding one svg.topo-l in the tone's class, its lines in
+drop: kit/viz.py :: two paths, rl-out (the halo) and rl-in (the outline and the levels inside it); --ph its phase, --ar the frame's
+drop: kit/viz.py :: aspect. The lines are simplified further (viz's RDP) until the element is at most REL_MAX bytes as the page holds
+drop: kit/viz.py :: it. The caption is the page's, outside the drawing (mdcourse.reading)."""
+drop: kit/viz.py :: W, H = rel_frame(w, h)
+drop: kit/viz.py :: ox, oy = (W - w) / 2, (H - h) / 2
+drop: kit/viz.py :: runs = {'out': [], 'in': []}
+drop: kit/viz.py :: for ln in lines:
+drop: kit/viz.py :: runs['out' if ln['lv'] < 0 else 'in'].append((p, ln['closed']))
+drop: kit/viz.py :: body = ''.join(f'<path class="rl-{k}" d="{_ct_d(runs[k])}"/>' for k in ('out', 'in') if runs[k])
+drop: kit/viz.py :: if eps > 40:
+drop: kit/viz.py :: _fail('relief', f'outline {o.get("id")!r} stays over {REL_MAX} bytes even simplified')
+drop: design/theme.css :: --topo-turn:3deg;--topo-cycle:10s;   /* P93: the contours' turn, both themes: +/- 3 degrees over 10 s each way (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile": at 120 s a corner of the home's layer moved 0.6 px/s at most and read as still; 5 Nov, 04:11, at 20 s: "it could be faster") */
+drop: design/theme.css :: --topo-grow:1.1;--topo-breath:6s;   /* P93 follow-up (Pedro, 5 Nov 2026, 07:49, on that morning's heartbeat, a pop of the inner rings every 1.6 s: "It wasn't supposed to be that fast and to pop within the outer line. The whole drawing was supposed to flowingly expand and contract, slowishly but fluidly. Even the outer edges"): the whole drawing breathes, from 1 to 1.1 about its centre and back, 6 s each way (until then it grew to 1.06 with the turn) */
+drop: design/theme.css :: The move (P93, Pedro: "very slow, expanding and rotating movements, across the board"): where motion is welcome
+drop: design/theme.css :: every drawing turns from -3 to +3 degrees about its centre over 10 s each way and (5 Nov) breathes, swelling from 1
+drop: design/theme.css :: to 1.1 and back over 6 s each way, both eased at both ends and alternating; transform only (the compositor's work, nothing on the main thread); each drawing of a page
+drop: design/theme.css :: starts at its own point of the cycle (--ph, 0 to 1, set by build.py), so none moves in lockstep with another; under
+drop: design/theme.css :: reduced motion nothing moves. The overscan: a frame W x H turned by a is covered by a layer about its centre W + H
+drop: design/theme.css :: sin a wide and H + W sin a tall (a scale over 1 only adds), so each layout stands out of its frame by half of that
+drop: design/theme.css :: on each side, plus a pixel, measured on the frame itself (.topo is a size container: 100cqw and 100cqh are its
+drop: design/theme.css :: width and height), so no edge or corner of a drawing ever shows; a hero's layout covers its box (slice), a patch's
+drop: design/theme.css :: fits inside it (meet), its rings clear of the frame at every pose (verify.py checks both). */
+drop: design/theme.css :: .topo-l{--ox:calc(100cqh * sin(var(--topo-turn)) / 2 + 1px);--oy:calc(100cqw * sin(var(--topo-turn)) / 2 + 1px);
+drop: design/theme.css :: display:none;position:absolute;left:calc(-1 * var(--ox));top:calc(-1 * var(--oy));width:calc(100% + 2 * var(--ox));height:calc(100% + 2 * var(--oy));transform-origin:50% 50%}
+drop: design/theme.css :: .topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:butt}   /* butt: where one rise's stretch of a line hands over to the next, the two ends abut, never overlap (round caps doubled the line there) */
+drop: design/theme.css :: .topo-patch .topo-l{display:block;--ox:0px;--oy:0px}   /* a patch's drawing fits its frame (meet) and is transparent: it needs no overscan; its rings are placed clear of the frame at every pose (build.py turned_inside) */
+drop: design/theme.css :: @media (prefers-reduced-motion:no-preference){.topo-l{animation:topo-turn var(--topo-cycle) ease-in-out calc(var(--ph,0) * -1 * var(--topo-cycle)) infinite alternate both,topo-breathe var(--topo-breath) ease-in-out calc(var(--ph,0) * -2 * var(--topo-breath)) infinite alternate both;animation-composition:replace,add}}
+drop: design/theme.css :: @keyframes topo-turn{from{transform:rotate(calc(-1 * var(--topo-turn)))}to{transform:rotate(var(--topo-turn))}}
+drop: design/theme.css :: @keyframes topo-breathe{from{transform:scale(1)}to{transform:scale(var(--topo-grow))}}
+drop: design/theme.css :: /* P93 follow-up, the breath (Pedro, 5 Nov 2026, 07:49; it replaces that morning's heartbeat, a pop of the inner rings
+drop: design/theme.css :: every 1.6 s, and the growth that rode on the turn): the whole drawing swells about its centre from 1 to --topo-grow and
+drop: design/theme.css :: back over --topo-breath each way, eased, alternating, added to the turn (animation-composition), every line and gap
+drop: design/theme.css :: growing with it, the outer edges furthest; each drawing at its own phase (--ph). Transform only, on the layer, so the
+drop: design/theme.css :: compositor does the work; still under reduced motion. build.py keeps every ring clear of its frame at the top of the
+drop: design/theme.css :: breath and both ends of the turn. */
+drop: design/theme.css :: /* P-DEC20: a course home's hero is at least 380 px tall, so its layer's frame (the hero and the 22 px above it) is at
+drop: design/theme.css :: least 402. build.py's ct_fit keeps every ring inside its layout's view: the wide layout's from .1 of its height
+drop: design/theme.css :: (desktop), the tall one's from .25 to .7 (tablet). A frame W x H shows the layout (slice, over the overscan --ox) from
+drop: design/theme.css :: .5 - H / (W + 2 * --ox) of a 2:1 layout's height, and .5 - H / (2 * (W + 2 * --ox)) of a square one's, fading over
+drop: design/theme.css :: the last 10%; so the wide view's top is shown from H = .4 * (W + 2px) / (1 - .4 * sin(--topo-turn)), 401.2 px at
+drop: design/theme.css :: 1280 (W 980; its foot, .84, is in the fade below a 427 px frame, and no ring of 1 to 24 rises reaches it), and the whole tall view
+drop: design/theme.css :: from H = .5 * (W + 2px) / (1 - .5 * sin(--topo-turn)), 395.4 px at 768. Below them a course of six to ten units had
+drop: design/theme.css :: rings past its frame (out/HK-1/p-dec20.md). */
+drop: design/theme.css :: .panel.home>.hero.has-topo{min-height:380px}
+drop: design/theme.css :: previous (30 px clear of the text above and of them below); in "Whole unit" it stands between two sections. It turns
+drop: design/theme.css :: and breathes as every contour drawing does (4i), each separator of a page at its own phase; still under reduced
+drop: design/theme.css :: motion. Its drawing fits its frame (meet) and its lines stay clear of it at every pose (build.py turned_inside), so
+drop: design/theme.css :: it needs no overscan; the layer carries the opacity, --topo-s. */
+drop: design/theme.css :: on a phone); the drawing fits it (meet) and its lines stay clear of it at every pose of the move (viz.py rel_frame),
+drop: design/theme.css :: so it needs no overscan. It turns and breathes as every contour drawing does (4i), at its own phase; still under
+drop: design/theme.css :: reduced motion; the layer carries the opacity, --topo-r, and the halo --topo-rh of it. */
+drop: design/theme.css :: .topo.relief .topo-l{display:block;--ox:0px;--oy:0px;opacity:var(--topo-r)}
+drop: kit/shell.css :: --topo-turn:3deg;--topo-cycle:10s;   /* P93: the contours' turn, both themes: +/- 3 degrees over 10 s each way (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile": at 120 s a corner of the home's layer moved 0.6 px/s at most and read as still; 5 Nov, 04:11, at 20 s: "it could be faster") */
+drop: kit/shell.css :: --topo-grow:1.1;--topo-breath:6s;   /* P93 follow-up (Pedro, 5 Nov 2026, 07:49, on that morning's heartbeat, a pop of the inner rings every 1.6 s: "It wasn't supposed to be that fast and to pop within the outer line. The whole drawing was supposed to flowingly expand and contract, slowishly but fluidly. Even the outer edges"): the whole drawing breathes, from 1 to 1.1 about its centre and back, 6 s each way (until then it grew to 1.06 with the turn) */
+drop: kit/shell.css :: The move (P93, Pedro: "very slow, expanding and rotating movements, across the board"): where motion is welcome
+drop: kit/shell.css :: every drawing turns from -3 to +3 degrees about its centre over 10 s each way and (5 Nov) breathes, swelling from 1
+drop: kit/shell.css :: to 1.1 and back over 6 s each way, both eased at both ends and alternating; transform only (the compositor's work, nothing on the main thread); each drawing of a page
+drop: kit/shell.css :: starts at its own point of the cycle (--ph, 0 to 1, set by build.py), so none moves in lockstep with another; under
+drop: kit/shell.css :: reduced motion nothing moves. The overscan: a frame W x H turned by a is covered by a layer about its centre W + H
+drop: kit/shell.css :: sin a wide and H + W sin a tall (a scale over 1 only adds), so each layout stands out of its frame by half of that
+drop: kit/shell.css :: on each side, plus a pixel, measured on the frame itself (.topo is a size container: 100cqw and 100cqh are its
+drop: kit/shell.css :: width and height), so no edge or corner of a drawing ever shows; a hero's layout covers its box (slice), a patch's
+drop: kit/shell.css :: fits inside it (meet), its rings clear of the frame at every pose (verify.py checks both). */
+drop: kit/shell.css :: .topo-l{--ox:calc(100cqh * sin(var(--topo-turn)) / 2 + 1px);--oy:calc(100cqw * sin(var(--topo-turn)) / 2 + 1px);
+drop: kit/shell.css :: display:none;position:absolute;left:calc(-1 * var(--ox));top:calc(-1 * var(--oy));width:calc(100% + 2 * var(--ox));height:calc(100% + 2 * var(--oy));transform-origin:50% 50%}
+drop: kit/shell.css :: .topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:butt}   /* butt: where one rise's stretch of a line hands over to the next, the two ends abut, never overlap (round caps doubled the line there) */
+drop: kit/shell.css :: .topo-patch .topo-l{display:block;--ox:0px;--oy:0px}   /* a patch's drawing fits its frame (meet) and is transparent: it needs no overscan; its rings are placed clear of the frame at every pose (build.py turned_inside) */
+drop: kit/shell.css :: @media (prefers-reduced-motion:no-preference){.topo-l{animation:topo-turn var(--topo-cycle) ease-in-out calc(var(--ph,0) * -1 * var(--topo-cycle)) infinite alternate both,topo-breathe var(--topo-breath) ease-in-out calc(var(--ph,0) * -2 * var(--topo-breath)) infinite alternate both;animation-composition:replace,add}}
+drop: kit/shell.css :: @keyframes topo-turn{from{transform:rotate(calc(-1 * var(--topo-turn)))}to{transform:rotate(var(--topo-turn))}}
+drop: kit/shell.css :: @keyframes topo-breathe{from{transform:scale(1)}to{transform:scale(var(--topo-grow))}}
+drop: kit/shell.css :: /* P93 follow-up, the breath (Pedro, 5 Nov 2026, 07:49; it replaces that morning's heartbeat, a pop of the inner rings
+drop: kit/shell.css :: every 1.6 s, and the growth that rode on the turn): the whole drawing swells about its centre from 1 to --topo-grow and
+drop: kit/shell.css :: back over --topo-breath each way, eased, alternating, added to the turn (animation-composition), every line and gap
+drop: kit/shell.css :: growing with it, the outer edges furthest; each drawing at its own phase (--ph). Transform only, on the layer, so the
+drop: kit/shell.css :: compositor does the work; still under reduced motion. build.py keeps every ring clear of its frame at the top of the
+drop: kit/shell.css :: breath and both ends of the turn. */
+drop: kit/shell.css :: /* P-DEC20: a course home's hero is at least 380 px tall, so its layer's frame (the hero and the 22 px above it) is at
+drop: kit/shell.css :: least 402. build.py's ct_fit keeps every ring inside its layout's view: the wide layout's from .1 of its height
+drop: kit/shell.css :: (desktop), the tall one's from .25 to .7 (tablet). A frame W x H shows the layout (slice, over the overscan --ox) from
+drop: kit/shell.css :: .5 - H / (W + 2 * --ox) of a 2:1 layout's height, and .5 - H / (2 * (W + 2 * --ox)) of a square one's, fading over
+drop: kit/shell.css :: the last 10%; so the wide view's top is shown from H = .4 * (W + 2px) / (1 - .4 * sin(--topo-turn)), 401.2 px at
+drop: kit/shell.css :: 1280 (W 980; its foot, .84, is in the fade below a 427 px frame, and no ring of 1 to 24 rises reaches it), and the whole tall view
+drop: kit/shell.css :: from H = .5 * (W + 2px) / (1 - .5 * sin(--topo-turn)), 395.4 px at 768. Below them a course of six to ten units had
+drop: kit/shell.css :: rings past its frame (out/HK-1/p-dec20.md). */
+drop: kit/shell.css :: .panel.home>.hero.has-topo{min-height:380px}
+drop: kit/shell.css :: previous (30 px clear of the text above and of them below); in "Whole unit" it stands between two sections. It turns
+drop: kit/shell.css :: and breathes as every contour drawing does (4i), each separator of a page at its own phase; still under reduced
+drop: kit/shell.css :: motion. Its drawing fits its frame (meet) and its lines stay clear of it at every pose (build.py turned_inside), so
+drop: kit/shell.css :: it needs no overscan; the layer carries the opacity, --topo-s. */
+drop: kit/shell.css :: on a phone); the drawing fits it (meet) and its lines stay clear of it at every pose of the move (viz.py rel_frame),
+drop: kit/shell.css :: so it needs no overscan. It turns and breathes as every contour drawing does (4i), at its own phase; still under
+drop: kit/shell.css :: reduced motion; the layer carries the opacity, --topo-r, and the halo --topo-rh of it. */
+drop: kit/shell.css :: .topo.relief .topo-l{display:block;--ox:0px;--oy:0px;opacity:var(--topo-r)}

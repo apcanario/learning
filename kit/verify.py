@@ -131,10 +131,11 @@ course's ghost no stats and one dashed ring), a history unit's tile opens to its
 and hours from the vault, a markdown unit's links to its reading page (its brief while it is not written) with its
 sections and words from that page, each section's own text counted; one column below 768 px, two from it, a lone tile
 half the width; nothing past an edge, no sideways scroll. With motion allowed, on every one of these pages and the
-home, every running animation animates only transform or opacity, every shown contour drawing moves (the theme's
-topo-turn: a turn of --topo-turn each way and a growth to --topo-grow over --topo-cycle, read from shell.css), each at
-its own point of the cycle, and at five poses of the sweep (its two ends, its quarters and its middle; on the home with
-each area word shown in turn) every layer covers its frame, every rise and patch stays inside it and every text over
+home, every running animation animates only transform or opacity, every line of every shown contour drawing swells
+(S-NAV1 step D: topo-swell, each line from 1 to 1 + --d x --topo-grow about its rise's core over --topo-breath, read
+from shell.css; topo-turn and the whole-layer topo-breathe are gone), each drawing at its own point of the cycle, and at
+five poses of the swell (at rest, its quarters, its middle and its top; on the home with each area word shown in turn)
+every layer covers its frame, every rise and patch stays inside it and every text over
 a topography keeps 4.5:1 (3:1 large) against the pixels under it; under reduced motion no animation runs on any of
 them. At 390 px with motion allowed, LCP and the longest task are printed for the home, Greece's home and What's new.
 With --shots: the home, What's new and the five course homes at the six widths, and the motion sheets of the home,
@@ -144,8 +145,8 @@ motion and with motion allowed (check_seps): every section with a top-level para
 its next and previous, and a section without one has none; its rises, one per paragraph in order, carry the words read
 from the page (the cue shell.js puts under a wide figure left out); div.topo.topo-patch.topo-sep, aria-hidden, textless,
 at most 6 KB, its lines in the page's tone, its frame 1200:170 and the column's width, 20 px clear at least of the text
-above and of the next and previous below (in "Whole unit", of the next section); with motion allowed a turn and a
-breath on each, transform only, each at its own phase, and at five poses of the turn at the top of the breath every
+above and of the next and previous below (in "Whole unit", of the next section); with motion allowed a swell on each of
+its lines (S-NAV1 step D), transform only, each separator at its own phase, and at five poses of the swell every
 line inside its frame; none moving under reduced motion; no page wider than the screen. The other topography checks
 leave the separators to this one.
 Object reliefs (P95, 8 Nov 2026; check_reliefs): the outline library (design/outlines/outlines.json) holds at least ten
@@ -155,10 +156,18 @@ maps it one; and each mapped page at 320, 390, 768 and 1280 px, dark and light, 
 the scope line as the header's last block, before the section bar; its caption printed exactly (what it shows, "a
 stylised outline drawn as a relief from an icon", the credit) with the licence linked to its text; div.topo.relief
 aria-hidden and textless, one svg.topo-l with only path.rl-in and path.rl-out (class and d), at most 12 KB, in the page's
-tone, the halo fainter; its frame at the drawing's aspect, the column's width or 280 px tall (340 from 768 px); a turn
-and a breath by transform only, at a phase none of the page's separators has, and at five poses of the turn at the top
-of the breath every line inside its frame; nothing moving under reduced motion; the page's text naming the object; no
-page wider than the screen.
+tone, the halo fainter; its frame at the drawing's aspect, the column's width or 280 px tall (340 from 768 px); a swell
+on each of its lines (S-NAV1 step D; the paths in groups of one origin, --o, each level's --d) by transform only, at a
+phase none of the page's separators has, and at five poses of the swell every line inside its frame; nothing moving
+under reduced motion; the page's text naming the object; no page wider than the screen.
+The swell (S-NAV1 step D, 22 Nov 2026; check_swell): on the home, an area page, a course home, What's new and a reading
+page with a relief and separators, at 320, 390, 768 and 1280 px, dark and light: with motion allowed only transform and
+opacity animate, and only the area words and the contour lines; every line of every shown drawing swells, one phase a
+drawing; every --d is 0 to 1 (a relief's outer halo 1, a contour drawing's outermost line above 0, an innermost line 0), a rise's own lines move about
+its core; at the five poses no join between two lines' stretches opens more than 0.5 px, every patch's, separator's and
+relief's lines stay inside the frame, every fitted hero's rises' own rings inside its frame and above its fade (from
+390 px); at the top of the swell an innermost line is unmoved and every other at 1 + d x --topo-grow; under reduced
+motion no animation runs at all.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 Then rot_check.py (P30-F11, P30-F16): kit/shell.css is design/theme.css, no live instruction names a retired thing, and
 every staleness date past or due within 30 days is printed as a warning.
@@ -608,6 +617,9 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
   return out;
 }'''
 HOME_JS = HOME_JS.replace('__SITE__', SITE_JSON)   # S-DEC3: the brand's site name, as a JS string
+# S-NAV1 step D: the lines (paths) of the contour drawings shown in an element, a hero's shown layout and every tile's
+# patch (a reading page's separators and relief are check_seps' and check_reliefs')
+SWELL_LINES_JS = r"""(sel) => [...document.querySelectorAll(sel + ' .topo:not(.topo-sep):not(.relief) > svg.topo-l')].filter(s => getComputedStyle(s).display !== 'none').reduce((n, s) => n + s.querySelectorAll('path').length, 0)"""
 MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 # P92: the hero's texts against the pixels actually under them (the contour lines, the page), in the theme in use: each
@@ -620,8 +632,8 @@ HERO_TEXTS_JS = r'''() => { const out = [], copy = document.querySelector('#home
     out.push({what: (e.className || e.tagName.toLowerCase()) + ' "' + e.textContent.trim().slice(0, 18) + '"', color: cs.color, large, x: r.left, y: r.top, w: r.width, h: r.height}); });
   return out; }'''
 def hero_contrast(pg, label, fails, motion=False):
-    """P92: with motion allowed, every moment that matters; P93: at the five poses of the slow move (POSES: its two ends,
-    its quarters and its middle) and, at each, each area word in turn (its animation set to the middle of its showing),
+    """P92: with motion allowed, every moment that matters; P93: at the five poses of the slow move (POSES; since S-NAV1
+    step D the swell: at rest, its top, its quarters and its middle) and, at each, each area word in turn (its animation set to the middle of its showing),
     every animation paused there."""
     if not motion:
         return _hero_contrast(pg, label, fails)
@@ -721,13 +733,12 @@ def check_home(pg, label, fails, expect, motion=False):
     an = r.get('anims', [])
     if motion:
         if [a for a in an if any(p not in ('transform', 'opacity') for p in a[1])]: fails.append(f'home {label}: an animation runs on more than transform and opacity: {[a for a in an if any(p not in ("transform", "opacity") for p in a[1])]}')
-        nb = sum(1 for a in an if a[4] == 'topo-breathe')   # P93 follow-up: every drawing breathes, as it turns
-        if nb != sum(1 for a in an if a[4] == 'topo-turn'): fails.append(f'home {label}: {nb} drawings breathe, {sum(1 for a in an if a[4] == "topo-turn")} turn')
-        an = [a for a in an if a[4] != 'topo-breathe']
-        kinds = sorted({a[0].split()[0] for a in an})
-        npatch = pg.evaluate("document.querySelectorAll('#home .topo.topo-patch').length")   # a patch in the closed Planned list is not drawn, but its move runs
-        if kinds != ['harea-w', 'topo-l'] or sum(1 for a in an if a[0].startswith('harea-w')) != len(names) or sum(1 for a in an if a[0].startswith('topo-l')) != 1 + npatch:
-            fails.append(f'home {label}: with motion allowed the animations are {[(a[0], a[1]) for a in an]}, expected the {len(names)} area words, the shown contour layout and every tile\'s patch ({npatch}; P93)')
+        # S-NAV1 step D: every line (path) of the shown contour layout and of every tile's patch swells (topo-swell), and
+        # nothing else of theirs moves; besides them only the area words
+        sw, other = [a for a in an if a[4] == SWELL], [a for a in an if a[4] != SWELL]
+        nlines = pg.evaluate(SWELL_LINES_JS, '#home')   # a patch in the closed Planned list is not drawn, but its lines' swell runs
+        if sorted({a[0].split()[0] for a in other}) != ['harea-w'] or len(other) != len(names) or len(sw) != nlines or any(a[0] != 'path' for a in sw):
+            fails.append(f'home {label}: with motion allowed the animations are {len(other)} others ({sorted({(a[0], a[4]) for a in other})[:4]}) and {len(sw)} swells on {sorted({a[0] for a in sw})}, expected the {len(names)} area words and one swell on each of the {nlines} lines of the shown contour layout and every tile\'s patch (S-NAV1 step D)')
     elif an: fails.append(f'home {label}: under reduced motion {len(an)} animations run: {an[:3]}')
     print(f'home {label}: hero {r.get("heroH")} (px, screen, %), copy {r.get("copy")!r}; area line {[w for w, _ in r.get("words", [])]}, shown {r.get("lineShown")}, static shown {r.get("staticShown")}; '
           f'link {r.get("link") and r["link"][:4]}; contours {r.get("topoBytes")} B, layout {r.get("layout")}, rises {[(l, k, z) for _, rs in r.get("layouts", [])[:1] for l, _, k, _, z in rs]}; '
@@ -773,7 +784,7 @@ TOPO_JS = r"""(pid) => {
       const fr = t.getBoundingClientRect(), m = sv.getScreenCTM();
       if (hero) {
         r.outside = [];
-        sv.querySelectorAll('g.ct-rise[data-box]').forEach(g => { const b = g.getAttribute('data-box').split(' ').map(Number);   // P93 follow-up: data-box is the rings at the top of the breath
+        sv.querySelectorAll('g.ct-rise[data-box]').forEach(g => { const b = g.getAttribute('data-box').split(' ').map(Number);   // S-NAV1 step D: data-box is the rings' box over every pose of the swell (viz.swell_box)
           for (const [x, y] of [[b[0], b[1]], [b[2], b[1]], [b[0], b[3]], [b[2], b[3]]]) { const q = new DOMPoint(x, y).matrixTransform(m);
             if (q.x < fr.left - .5 || q.x > fr.right + .5 || q.y < fr.top - .5 || q.y > fr.top + .9 * fr.height + .5) { r.outside.push(g.getAttribute('data-label')); break; } } });
         r.frame = [Math.round(fr.left), Math.round(fr.right), Math.round(fr.top + scrollY), Math.round(fr.height)];
@@ -788,7 +799,8 @@ TOPO_JS = r"""(pid) => {
   };
   const hl = P.querySelector(':scope > header.hero > .topo');
   out.hero = hl ? one(hl, true) : null;
-  out.anyTopo = P.querySelectorAll('.topo:not(.topo-sep):not(.relief)').length; out.allPatches = P.querySelectorAll('.topo.topo-patch:not(.topo-sep)').length;   // P94: a reading page's section separators are checked by check_seps; P96: its relief by check_reliefs
+  out.anyTopo = P.querySelectorAll('.topo:not(.topo-sep):not(.relief)').length; out.allPatches = P.querySelectorAll('.topo.topo-patch:not(.topo-sep)').length;
+  out.lines = [...P.querySelectorAll('.topo:not(.topo-sep):not(.relief) > svg.topo-l')].filter(s => getComputedStyle(s).display !== 'none').reduce((n, s) => n + s.querySelectorAll('path').length, 0);   // S-NAV1 step D   // P94: a reading page's section separators are checked by check_seps; P96: its relief by check_reliefs
   P.querySelectorAll('.topo.topo-patch:not(.topo-sep)').forEach(t => { if (vis(t)) out.patches.push(one(t, false)); });
   out.anims = document.getAnimations().filter(a => a.animationName && a.effect && a.effect.target && P.contains(a.effect.target) && !a.effect.target.closest('.topo-sep')).map(a => {   // animations, not the transitions of a hover or the theme switch
     const t = a.effect.target, props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(k => !['offset', 'computedOffset', 'easing', 'composite'].includes(k)))];
@@ -839,9 +851,10 @@ TILES_JS = r"""(pid) => {
   return out;
 }"""
 
-_TM = re.search(r'--topo-turn:([\d.]+)deg;--topo-cycle:([\d.]+)s;[^\n]*\n\s*--topo-grow:([\d.]+);--topo-breath:([\d.]+)s', (R / 'shell.css').read_text())
-TURN, CYCLE, GROW, BTIME = float(_TM.group(1)), float(_TM.group(2)) * 1000, float(_TM.group(3)), float(_TM.group(4)) * 1000   # P93: the turn and (follow-up, 5 Nov) the breath, from the theme
-POSES = (0, .25, .5, .75, 1)   # the two ends of the sweep, its quarters and its middle
+_TM = re.search(r'--topo-grow:([\d.]+);--topo-breath:([\d.]+)s', (R / 'shell.css').read_text())
+GROW, BTIME = float(_TM.group(1)), float(_TM.group(2)) * 1000   # S-NAV1 step D: the swell, from the theme: the outermost line's growth (1 + GROW at the top) and the time of one sweep
+POSES = (0, .25, .5, .75, 1)   # the two ends of the swell (at rest, at its top), its quarters and its middle
+SWELL = 'topo-swell'   # S-NAV1 step D: the one animation of a contour drawing's lines (topo-turn and topo-breathe are gone)
 def eased(p):
     """CSS ease-in-out, cubic-bezier(.42, 0, .58, 1), at the point p of the sweep: the share of the move made."""
     lo, hi = 0.0, 1.0
@@ -851,15 +864,16 @@ def eased(p):
         lo, hi = (t, hi) if x < p else (lo, t)
     t = (lo + hi) / 2
     return 3 * (1 - t) * t * t + t ** 3
-POSE_JS = r"""([p, ta, cyc, bt]) => { document.getAnimations().forEach(a => { if (!a.animationName) { a.finish(); return; }   // a transition (a hover, the theme switch) is let run out: paused half-way it would outrank every rule
-  a.pause();
-  if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let t = p * cyc + d; if (t < 0) t = 2 * cyc - p * cyc + d; a.currentTime = t; }
-  else if (a.animationName === 'topo-breathe') { let t = a.effect.getTiming().delay + .9999 * bt; if (t < 0) t += 2 * bt; a.currentTime = t; }   // P93 follow-up: every drawing at the top of its breath
-  else if (ta !== null) a.currentTime = ta; }); }"""
+# S-NAV1 step D: a swell paused at the point p (0 at rest, 1 at its top) of its sweep, its phase (the negative delay)
+# taken into account: in the forward iteration where that time is not before the start, else in the reverse one
+SWELL_AT_JS = r"""const swellAt = (a, p, bt) => { const d = a.effect.getTiming().delay; let t = p * bt + d; if (t < 0) t = 2 * bt - p * bt + d; a.pause(); a.currentTime = t; };"""
+POSE_JS = r"""([p, ta, bt]) => { """ + SWELL_AT_JS + r""" document.getAnimations().forEach(a => { if (!a.animationName) { a.finish(); return; }   // a transition (a hover, the theme switch) is let run out: paused half-way it would outrank every rule
+  if (a.animationName === 'topo-swell') swellAt(a, p, bt);
+  else { a.pause(); if (ta !== null) a.currentTime = ta; } }); }"""
 def pose(pg, p, ta=None):
-    """Every contour drawing on the page paused at the point p (0 to 1) of its sweep, its own phase taken into account;
+    """Every contour drawing on the page paused at the point p (0 to 1) of its swell, its own phase taken into account;
     the area words (the home) at ta ms of their cycle."""
-    pg.evaluate(POSE_JS, [p, ta, CYCLE, BTIME]); pg.wait_for_timeout(80)
+    pg.evaluate(POSE_JS, [p, ta, BTIME]); pg.wait_for_timeout(80)
 
 # the texts of a hero over a topography (a course home's, What's new's), as the eye reads them: every element of the
 # hero with a text of its own, its colour, the opacity it is drawn at and whether it is large text
@@ -971,7 +985,7 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
                         print(f"What's new: edition {EDITION}'s largest day ({top[0]}, {top[1] or 0:,} words) is under {10 * NEW_INTERVAL:,} words, so it is drawn at its own scale, "
                               f"a level every {iv:,} words (build.py new_interval, not NEW_INTERVAL's {NEW_INTERVAL:,}), {int((top[1] or 0) // iv)} levels")
             c = h.get('cover') or {}
-            if c.get('bad'): fails.append(f'{pid} {label}: the frame\'s corners {c["bad"]} fall outside the turned layout {c.get("size")}: an edge of the drawing shows')
+            if c.get('bad'): fails.append(f'{pid} {label}: the frame\'s corners {c["bad"]} fall outside the layout {c.get("size")}: an edge of the drawing shows')
             if h.get('outside') and w >= 390: fails.append(f'{pid} {label}: the rises {h["outside"]} have rings outside the frame or in its fade')
             elif h.get('outside') and not motion: print(f'{pid} {label}: below 390 px the rises {h["outside"]} reach past the narrower window (the row sets 390 px)')
     for k, pt in enumerate(r['patches']):
@@ -982,10 +996,10 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
     if motion:
         odd = [a for a in an if any(x not in ('transform', 'opacity') for x in a[1])]
         if odd: fails.append(f'{pid} {label}: an animation runs on more than transform and opacity: {odd[:3]}')
-        tp = [a for a in an if a[3] == 'topo-turn']
         nt = (1 if h else 0) + r['allPatches']
-        if len([a for a in an if a[3] == 'topo-breathe']) != nt: fails.append(f'{pid} {label}: {len([a for a in an if a[3] == "topo-breathe"])} drawings breathe, the page has {nt} (P93 follow-up)')
-        if len(tp) != nt: fails.append(f'{pid} {label}: {len(tp)} contour drawings move, the page has {nt}')
+        sw = [a for a in an if a[3] == SWELL]   # S-NAV1 step D: one swell on each line of each drawing, nothing else moving there
+        if len(sw) != r['lines'] or any(a[0] != 'path' for a in sw): fails.append(f'{pid} {label}: {len(sw)} lines swell, the page\'s {nt} contour drawings have {r["lines"]} lines')
+        if [a for a in an if a[3] not in (SWELL, 'harea')]: fails.append(f'{pid} {label}: other animations run: {[a for a in an if a[3] not in (SWELL, "harea")][:3]}')
         # each drawing at its own point of the cycle: the phases build.py gives (--ph), at least 0.9 / n apart for the n
         # drawings of the page (P93 follow-up: at a 10 s sweep the measured progress also carried when each drawing was
         # first shown, a fifth of a second for the tiles in History's Planned list opened after the home, so the check
@@ -1700,9 +1714,9 @@ READING_SHOTS = [
 # 6 KB; one rise per paragraph in order, its data-words that paragraph's words; every line in the page's tone (the
 # panel's --cc); the frame 1200:170 and the column's width; in one-section view the text above and the next and
 # previous below at least 20 px clear, in "Whole unit" the text above and the next section's band; then, with motion
-# allowed, each separator's turn and breath (transform only) and at five poses of the turn, at the top of the breath,
-# every line inside its frame; the page no wider than the screen.
-SEP_JS = r"""([pid, poses, cyc, bt, motion]) => {
+# allowed, each separator's swell (S-NAV1 step D: one topo-swell on each of its lines, transform only) and at the five
+# poses of the swell every line inside its frame; the page no wider than the screen.
+SEP_JS = r"""([pid, poses, bt, motion]) => { """ + SWELL_AT_JS + r"""
   const P = document.getElementById(pid), out = {secs: 0, seps: 0, none: 0, bytes: 0, maxb: 0, bad: [], ph: [], anims: 0, poses: 0};
   if (!P) { out.bad.push('no page'); return out; }
   const r = P.querySelector('.report.steps'), bar = P.querySelector('.stepbar'), whole = bar.querySelector('.whole');
@@ -1755,14 +1769,13 @@ SEP_JS = r"""([pid, poses, cyc, bt, motion]) => {
   out.anims = an.length;
   if (!motion) { if (an.length) out.bad.push(`${an.length} animations run on the separators under reduced motion`); }
   else {
-    seps.forEach(([k, t]) => { const l = t.querySelector('svg.topo-l'), mine = an.filter(a => a.effect.target === l).map(a => a.animationName).sort().join();
-      if (mine !== 'topo-breathe,topo-turn') out.bad.push(`section ${k + 1}: the separator's animations are [${mine}], not a turn and a breath`); });
+    seps.forEach(([k, t]) => { const ls = [...t.querySelectorAll('svg.topo-l path')], mine = an.filter(a => ls.includes(a.effect.target));
+      if (mine.length !== ls.length || mine.some(a => a.animationName !== 'topo-swell') || an.some(a => t.contains(a.effect.target) && !ls.includes(a.effect.target)))
+        out.bad.push(`section ${k + 1}: ${mine.length} of its ${ls.length} lines swell (${[...new Set(mine.map(a => a.animationName))].join()}), and nothing else may move`); });
     an.forEach(a => { const props = [...new Set(a.effect.getKeyframes().flatMap(f => Object.keys(f)).filter(x => !['offset', 'computedOffset', 'easing', 'composite'].includes(x)))];
       if (props.some(x => x !== 'transform')) out.bad.push(`a separator animates ${props.join(',')}, not transform alone`); });
     for (const p of poses) {
-      an.forEach(a => { a.pause();
-        if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let t = p * cyc + d; if (t < 0) t = 2 * cyc - p * cyc + d; a.currentTime = t; }
-        else { let t = a.effect.getTiming().delay + .9999 * bt; if (t < 0) t += 2 * bt; a.currentTime = t; } });
+      an.forEach(a => swellAt(a, p, bt));
       out.poses++;
       seps.forEach(([k, t]) => { const fr = t.getBoundingClientRect(); let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
         t.querySelectorAll('path, circle').forEach(e => { const q = e.getBoundingClientRect(); if (!q.width && !q.height) return; x0 = Math.min(x0, q.left); y0 = Math.min(y0, q.top); x1 = Math.max(x1, q.right); y1 = Math.max(y1, q.bottom); });
@@ -1796,7 +1809,7 @@ def check_seps(br, fails):
                 if theme == 'light': pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                 for motion in (False, True):
                     pg.emulate_media(reduced_motion='no-preference' if motion else 'reduce'); pg.wait_for_timeout(20)
-                    r = pg.evaluate(SEP_JS, [pid, list(POSES), CYCLE, BTIME, motion])
+                    r = pg.evaluate(SEP_JS, [pid, list(POSES), BTIME, motion])
                     tag = f'{pid} {name} {theme}{" motion" if motion else ""}'
                     bad += [f'{tag}: {b}' for b in r['bad'][:3]]
                     if r['scroll'][0] > r['scroll'][1]: bad.append(f'{tag}: the page is {r["scroll"][0]} px wide on a {r["scroll"][1]} px screen')
@@ -1825,7 +1838,7 @@ OUTL = R.parent / 'design' / 'outlines'
 REL_FIELDS = ('id', 'file', 'depicts', 'courses', 'keywords', 'source', 'author', 'licence', 'licence_url', 'credit', 'texts')
 REL_COURSES = tuple(p for c in ALL_COURSES if c.get('reliefs') for p in sub_pages(c))   # S-DEC4: course.toml `reliefs`, every course of the repo (the library serves them all)
 REL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
-REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
+REL_JS = r"""([pid, poses, bt, motion, want]) => { """ + SWELL_AT_JS + r"""
   const P = document.getElementById(pid), out = {bad: [], bytes: 0, poses: 0};
   if (!P) { out.bad.push('no page'); return out; }
   const figs = P.querySelectorAll('figure.relief-fig'), f = figs[0], hd = P.querySelector(':scope > header.phead');
@@ -1846,8 +1859,11 @@ REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
   if (t.textContent.trim() || t.querySelector('text, title, desc')) out.bad.push('the drawing holds text');
   const svgs = t.querySelectorAll('svg'), sv = svgs[0];
   if (svgs.length !== 1 || !sv.classList.contains('topo-l')) out.bad.push(`${svgs.length} svgs, or not svg.topo-l`);
-  const paths = [...sv.children];
-  if (!paths.length || paths.some(p => p.tagName !== 'path' || !['rl-in', 'rl-out'].includes(p.getAttribute('class')) || [...p.attributes].some(a => !['class', 'd'].includes(a.name)))) out.bad.push('the drawing holds more than rl-in and rl-out paths with a class and a d');
+  // S-NAV1 step D: the paths, each in a group of one origin (<g style="--o:...">) where it moves, a level's d in its style
+  const paths = [...sv.querySelectorAll('path')], gs = [...sv.querySelectorAll('g')];
+  if (!paths.length || [...sv.children].some(e => !['path', 'g'].includes(e.tagName)) || gs.some(g => g.parentElement !== sv || [...g.children].some(e => e.tagName !== 'path') || [...g.attributes].some(a => a.name !== 'style') || !/^--o:-?\d+px -?\d+px$/.test(g.getAttribute('style') || ''))
+      || paths.some(p => !['rl-in', 'rl-out'].includes(p.getAttribute('class')) || [...p.attributes].some(a => !['class', 'd', 'style'].includes(a.name)) || (p.hasAttribute('style') && !/^--d:(?:1|\.\d\d?)$/.test(p.getAttribute('style')))))
+    out.bad.push('the drawing holds more than rl-in and rl-out paths (a class, a d, a --d) in groups of one origin (--o)');
   if (!sv.querySelector('path.rl-in') || !sv.querySelector('path.rl-out')) out.bad.push('no outline or no halo');
   out.bytes = new Blob([t.outerHTML]).size;
   if (out.bytes > 12288) out.bad.push(`the drawing is ${out.bytes} bytes, over 12 KB`);
@@ -1865,19 +1881,17 @@ REL_JS = r"""([pid, poses, cyc, bt, motion, want]) => {
   if (fr.height > maxh + .5) out.bad.push(`frame ${fr.height.toFixed(1)} px tall, over ${maxh}`);
   if (Math.abs(fr.height - maxh) > .5 && Math.abs(fr.width - col.width) > .5) out.bad.push(`frame ${fr.width.toFixed(1)} x ${fr.height.toFixed(1)}: neither the column's width nor ${maxh} px tall`);
   out.scroll = [document.documentElement.scrollWidth, document.documentElement.clientWidth];
-  const an = document.getAnimations().filter(a => a.effect && a.effect.target === sv);
-  out.anims = an.map(a => a.animationName).sort().join();
+  const an = document.getAnimations().filter(a => a.effect && a.effect.target && t.contains(a.effect.target));
+  out.anims = [...new Set(an.map(a => a.animationName))].join();
   if (!motion) { if (an.length) out.bad.push(`${an.length} animations under reduced motion`); }
   else {
-    if (out.anims !== 'topo-breathe,topo-turn') out.bad.push(`animations [${out.anims}], not a turn and a breath`);
+    if (out.anims !== 'topo-swell' || an.length !== paths.length || paths.some(p => !an.some(a => a.effect.target === p))) out.bad.push(`animations [${out.anims}] on ${an.length} of its ${paths.length} lines, not a swell on each (S-NAV1 step D)`);
     an.forEach(a => { const props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(x => !['offset', 'computedOffset', 'easing', 'composite'].includes(x)))];
       if (props.some(x => x !== 'transform')) out.bad.push(`animates ${props.join(',')}, not transform alone`); });
     out.ph = parseFloat(getComputedStyle(t).getPropertyValue('--ph'));
     out.sepph = [...P.querySelectorAll('.topo-sep')].map(s => parseFloat(getComputedStyle(s).getPropertyValue('--ph')));
     for (const p of poses) {
-      an.forEach(a => { a.pause();
-        if (a.animationName === 'topo-turn') { const d = a.effect.getTiming().delay; let x = p * cyc + d; if (x < 0) x = 2 * cyc - p * cyc + d; a.currentTime = x; }
-        else { let x = a.effect.getTiming().delay + .9999 * bt; if (x < 0) x += 2 * bt; a.currentTime = x; } });
+      an.forEach(a => swellAt(a, p, bt));
       out.poses++;
       const r = t.getBoundingClientRect(); let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
       paths.forEach(e => { const q = e.getBoundingClientRect(); x0 = Math.min(x0, q.left); y0 = Math.min(y0, q.top); x1 = Math.max(x1, q.right); y1 = Math.max(y1, q.bottom); });
@@ -1899,8 +1913,8 @@ def check_reliefs(br, fails):
     SVG and its relief JSON, and a text of each course it serves naming it); every page uses.json maps (in this
     edition) at 320, 390, 768 and 1280 px, dark and light, with and without motion (REL_JS: its place under the scope
     line before the section bar, its caption and credit printed exactly, classes only, aria-hidden and textless, at most
-    12 KB, the page's tone, the halo fainter, its frame, a turn and a breath by transform only at a phase of its own, its
-    lines inside the frame at five poses at the top of the breath, still under reduced motion, the page's text naming
+    12 KB, the page's tone, the halo fainter, its frame, a swell on each line by transform only at a phase of its own, its
+    lines inside the frame at the five poses of the swell, still under reduced motion, the page's text naming
     the object, no sideways scroll); and no other reading page holding a relief."""
     import mdcourse
     lib = json.loads((OUTL / 'outlines.json').read_text())
@@ -1968,7 +1982,7 @@ def check_reliefs(br, fails):
                 if theme == 'light': pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                 for motion in (False, True):
                     pg.emulate_media(reduced_motion='no-preference' if motion else 'reduce'); pg.wait_for_timeout(20)
-                    r = pg.evaluate(REL_JS, [pid, list(POSES), CYCLE, BTIME, motion, want])
+                    r = pg.evaluate(REL_JS, [pid, list(POSES), BTIME, motion, want])
                     tag = f'{pid} {name} {theme}{" motion" if motion else ""}'
                     bad += [f'{tag}: {b}' for b in r['bad'][:4]]
                     if r.get('scroll') and r['scroll'][0] > r['scroll'][1]: bad.append(f'{tag}: the page is {r["scroll"][0]} px wide on a {r["scroll"][1]} px screen')
@@ -1985,6 +1999,160 @@ def check_reliefs(br, fails):
     print(f'reliefs: {len(mapped)} mapped pages, {len(SCOPE.only(mapped))} in this run ({", ".join(f"{p} {o} {sizes.get(p, 0):,} B" for p, o in mapped.items() if SCOPE.has(p))}), {len(pages) - len(mapped)} reading pages without one; '
           f'checked at {", ".join(str(x[1]) for x in REL_WIDTHS)} px, dark and light, with and without motion; frames {"; ".join(phs)}; '
           f'the closest line {low:.1f} px from its frame over the poses with motion')
+
+
+# S-NAV1 step D (22 Nov 2026) · the swell (Pedro: "the core will stay the same... the outward lines are moving away from
+# the core proportionally to their distance to the core"): every line illustration drawn by viz.py (a hero's layer, a
+# tile's patch, a section separator, an object relief) moves its lines only, each about its rise's core by
+# 1 + --d x --topo-grow. LINES_JS reads a drawing's lines as the page draws them: each path's subpaths in the drawing's
+# units (viz.py writes M x y, then whole-unit relative steps l dx dy, z for a closed ring), its d and its origin.
+LINES_JS = r"""const subpaths = d => { const out = []; let cur = null, x = 0, y = 0; const tk = d.match(/[Mlz]|-?\d*\.?\d+/g) || [];
+  for (let i = 0; i < tk.length;) { const t = tk[i];
+    if (t === 'M') { x = +tk[i + 1]; y = +tk[i + 2]; cur = {pts: [[x, y]], closed: false}; out.push(cur); i += 3; }
+    else if (t === 'l') i++;
+    else if (t === 'z') { cur.closed = true; i++; }
+    else { x += +tk[i]; y += +tk[i + 1]; cur.pts.push([x, y]); i += 2; } }
+  return out; };
+const lineOf = p => { const cs = getComputedStyle(p); return {p, d: parseFloat(cs.getPropertyValue('--d')) || 0, o: cs.transformOrigin.split(' ').map(parseFloat), subs: subpaths(p.getAttribute('d') || '')}; };
+const scr = (m, x, y) => new DOMPoint(x, y).matrixTransform(m);"""
+# the amplitude (px) of the furthest-moving point of a line inside a hero's frame, and the frame's size
+SWELL_AMP_JS = r"""(sel) => { """ + LINES_JS + r"""
+  const t = document.querySelector(sel), fr = t.getBoundingClientRect(), g = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--topo-grow'));
+  const sv = [...t.querySelectorAll(':scope > svg.topo-l')].find(s => getComputedStyle(s).display !== 'none'), m = sv.getScreenCTM();
+  let amp = 0;
+  sv.querySelectorAll('path').forEach(p => { const l = lineOf(p), o = scr(m, l.o[0], l.o[1]);
+    l.subs.forEach(s => s.pts.forEach(([x, y]) => { const q = scr(m, x, y);
+      if (q.x >= fr.left && q.x <= fr.right && q.y >= fr.top && q.y <= fr.bottom) amp = Math.max(amp, l.d * g * Math.hypot(q.x - o.x, q.y - o.y)); })); });
+  return [amp, Math.round(fr.width), Math.round(fr.height)]; }"""
+# one page: every contour drawing in it (the hero's shown layout, the tiles' patches, the separators of every section
+# shown at once, the relief), with motion allowed: what animates; each line's d, origin and scale at the top of the
+# swell; every join between two lines (an end of one line's open stretch on an end of another's) at each pose; and every
+# drawing's lines in its frame at each pose (a hero: each rise's own rings, its closed rings, inside the frame and above
+# its fade; a patch, a separator, a relief: every line inside its frame). Under reduced motion: no animation at all.
+SWELL_JS = r"""([pid, poses, bt, motion, phone]) => { """ + SWELL_AT_JS + LINES_JS + r"""
+  const P = document.getElementById(pid), out = {bad: [], drawings: 0, lines: 0, joins: 0, gap: {}, clear: 1e9, moved: 0};
+  if (!P) { out.bad.push('no page'); return out; }
+  const whole = P.querySelector('.stepbar .whole'), wasWhole = whole && whole.getAttribute('aria-pressed') === 'true';
+  if (whole && !wasWhole) whole.click();   // every section's separator shown at once
+  const css = [...document.getAnimations()].filter(a => a.animationName !== undefined);
+  if (!motion) { if (css.length) out.bad.push(`under reduced motion ${css.length} animations run (${[...new Set(css.map(a => a.animationName))].join()})`);
+    if (whole && !wasWhole) whole.click(); return out; }
+  const g = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--topo-grow'));
+  css.forEach(a => { const props = [...new Set(a.effect.getKeyframes().flatMap(k => Object.keys(k)).filter(k => !['offset', 'computedOffset', 'easing', 'composite'].includes(k)))];
+    if (props.some(x => x !== 'transform' && x !== 'opacity')) out.bad.push(`${a.animationName} animates ${props.join(',')}`); });
+  const mine = css.filter(a => a.effect && a.effect.target && P.contains(a.effect.target));
+  const allPaths = [...P.querySelectorAll('.topo svg.topo-l path')];
+  mine.forEach(a => { if (a.animationName === 'topo-swell' && !allPaths.includes(a.effect.target)) out.bad.push(`a swell on ${a.effect.target.tagName}, not a contour line`);
+    else if (a.animationName !== 'topo-swell' && a.animationName !== 'harea') out.bad.push(`${a.animationName} runs on ${a.effect.target.tagName}.${a.effect.target.getAttribute('class')}`); });   // a spot or planned ring (a circle) never moves
+  const swell = new Map(mine.filter(a => a.animationName === 'topo-swell').map(a => [a.effect.target, a]));
+  const vis = e => !!e && e.getBoundingClientRect().width > 0 && getComputedStyle(e).display !== 'none';
+  const draws = [...P.querySelectorAll('.topo')].filter(vis).map(t => ({t, sv: [...t.querySelectorAll(':scope > svg.topo-l')].find(s => getComputedStyle(s).display !== 'none')})).filter(x => x.sv);
+  const kind = t => t.classList.contains('relief') ? 'relief' : t.classList.contains('topo-sep') ? 'sep' : t.classList.contains('topo-patch') ? 'patch' : 'hero';
+  const lines = new Map();
+  draws.forEach(({t, sv}) => { out.drawings++;
+    const ps = [...sv.querySelectorAll('path')], ls = ps.map(lineOf); lines.set(t, ls); out.lines += ps.length;
+    const miss = ps.filter(p => !swell.has(p) && (p.getAttribute('d') || '').length);
+    if (miss.length) out.bad.push(`${kind(t)}: ${miss.length} of its ${ps.length} lines do not swell`);
+    const delays = new Set(ps.filter(p => swell.has(p)).map(p => swell.get(p).effect.getTiming().delay));
+    if (delays.size > 1) out.bad.push(`${kind(t)}: its lines swell at ${delays.size} phases, not one`);
+    const ds = ls.map(l => l.d);
+    if (ds.some(d => !(d >= 0 && d <= 1))) out.bad.push(`${kind(t)}: a --d outside 0 to 1`);
+    // the relief's outer halo is 1; in a contour drawing a line shared with a rise of one level (its only line is its
+    // innermost, 0) blends below 1, so there the outermost line only has to move
+    if (kind(t) === 'relief' ? Math.max(...ds) !== 1 : (ds.length > 1 && sv.querySelector('g.ct-rise path[d^="M"]') && !(Math.max(...ds) > 0))) out.bad.push(`${kind(t)}: its outermost line has --d ${Math.max(...ds)}`);
+    if (kind(t) !== 'relief' && ls.length && !ls.some(l => l.d === 0) && sv.querySelector('g.ct-rise path')) out.bad.push(`${kind(t)}: no line stands still (an innermost line has --d 0)`);
+    sv.querySelectorAll('g.ct-rise[data-at]').forEach(gr => { const at = gr.getAttribute('data-at').split(' ').map(Number);   // a line of the rise's own moves about its core
+      gr.querySelectorAll('path').forEach(p => { const l = ls[ps.indexOf(p)]; if (!l.d || p.style.getPropertyValue('--o')) return;
+        if (Math.abs(l.o[0] - at[0]) > .5 || Math.abs(l.o[1] - at[1]) > .5) out.bad.push(`${kind(t)} ${gr.dataset.label}: a line of its own moves about ${l.o}, its core is ${at}`); }); });
+  });
+  // the joins: an end of an open stretch on the end of another line's stretch, at rest
+  const ends = [];
+  draws.forEach(({t}) => lines.get(t).forEach(l => l.subs.forEach(s => { if (!s.closed && s.pts.length > 1) { ends.push([t, l, s.pts[0]]); ends.push([t, l, s.pts[s.pts.length - 1]]); } })));
+  const key = new Map(); ends.forEach(e => { const kk = e[2][0] + ',' + e[2][1]; if (!key.has(kk)) key.set(kk, []); key.get(kk).push(e); });
+  const joins = []; key.forEach(es => { for (let i = 0; i < es.length; i++) for (let j = i + 1; j < es.length; j++) if (es[i][0] === es[j][0] && es[i][1] !== es[j][1]) joins.push([es[i], es[j]]); });
+  out.joins = joins.length;
+  const anims = [...swell.values()];
+  for (const p of poses) {
+    anims.forEach(a => swellAt(a, p, bt));
+    let gap = 0;
+    joins.forEach(([a, b]) => { const qa = scr(a[1].p.getScreenCTM(), ...a[2]), qb = scr(b[1].p.getScreenCTM(), ...b[2]); gap = Math.max(gap, Math.hypot(qa.x - qb.x, qa.y - qb.y)); });
+    out.gap[p] = Math.round(gap * 1000) / 1000;
+    if (gap > .5) out.bad.push(`at pose ${p} a join opens ${gap.toFixed(2)} px`);
+    draws.forEach(({t, sv}) => { const fr = t.getBoundingClientRect(), k = kind(t);
+      if (k === 'hero') {   // each rise's own rings (its closed stretches) inside the frame and above its fade; the home's hero is
+        if (phone || pid === 'home') return;   // not fitted to its frame (P92: its rises' peaks are placed in the phone's view; History's outer rings span it), as check_topo
+        sv.querySelectorAll('g.ct-rise').forEach(gr => gr.querySelectorAll('path').forEach(pth => { const l = lineOf(pth), m = pth.getScreenCTM();
+          l.subs.forEach(s => { if (!s.closed) return; s.pts.forEach(([x, y]) => { const q = scr(m, x, y);
+            const c = Math.min(q.x - fr.left, fr.right - q.x, q.y - fr.top, fr.top + .9 * fr.height - q.y); out.clear = Math.min(out.clear, c);
+            if (c < -.5) { out.bad.push(`hero ${gr.dataset.label}: at pose ${p} its own ring leaves the frame or reaches its fade by ${(-c).toFixed(1)} px`); } }); }); })); }
+      else { let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+        sv.querySelectorAll('path, circle').forEach(e => { const q = e.getBoundingClientRect(); if (!q.width && !q.height) return; x0 = Math.min(x0, q.left); y0 = Math.min(y0, q.top); x1 = Math.max(x1, q.right); y1 = Math.max(y1, q.bottom); });
+        const c = Math.min(x0 - fr.left, y0 - fr.top, fr.right - x1, fr.bottom - y1); out.clear = Math.min(out.clear, c);
+        if (c < -.5) out.bad.push(`${k}: at pose ${p} its lines leave the frame by ${(-c).toFixed(1)} px`); } });
+    if (p === 1) draws.forEach(({t}) => lines.get(t).forEach(l => { const m = new DOMMatrix(getComputedStyle(l.p).transform === 'none' ? undefined : getComputedStyle(l.p).transform);
+      if (!l.d) { if (!m.isIdentity) out.bad.push(`${kind(t)}: an innermost line (--d 0) moves (${getComputedStyle(l.p).transform})`); }
+      else { out.moved++; if (Math.abs(m.a - (1 + l.d * g)) > 2e-3 || Math.abs(m.d - (1 + l.d * g)) > 2e-3 || Math.abs(m.b) > 1e-6 || Math.abs(m.c) > 1e-6) out.bad.push(`${kind(t)}: a line of --d ${l.d} is at scale ${m.a.toFixed(4)} at the top of the swell, not ${(1 + l.d * g).toFixed(4)}`); } }));
+  }
+  anims.forEach(a => a.play());
+  if (whole && !wasWhole) whole.click();
+  return out; }"""
+
+
+def swell_pages():
+    """S-NAV1 step D: the pages check_swell visits: the home, the first area page (an edition of one track has none),
+    the first sampled course home, What's new, and the first reading page that shows an object relief (its separators
+    with it)."""
+    import mdcourse
+    shell = (SITE / 'index.html').read_text()
+    reads = re.findall(r'<section class="panel[^"]*" id="([^"]+)"[^>]*data-kind="report"', shell)
+    rel = next((p for p in reads if p in mdcourse.USES), None)
+    course = next((x for x in SAMPLE if x in HIST_HOMES or x in home_expect()['courses']), None)
+    return [x for x in ['home'] + AREA_IDS[:1] + [course, 'new', rel] if x]
+
+
+SWELL_WIDTHS = [('phone320', 320, 640, True), ('phone', 390, 844, True), ('tablet', 768, 1024, True), ('desktop', 1280, 800, False)]
+
+def check_swell(br, fails, pages=None):
+    """S-NAV1 step D: SWELL_JS on the home, an area page, a course home, What's new and a reading page with a relief and
+    separators (swell_pages), at 320, 390, 768 and 1280 px, dark and light, with motion allowed and under reduced
+    motion: with motion, only transform and opacity animate on the page and only the area words and the lines move;
+    every line of every shown drawing swells, one phase a drawing; every --d is 0 to 1, a relief's outer halo at 1, a
+    contour drawing's outermost line moving (a line it shares with a rise of one level, whose only line is its innermost
+    and so 0, blends below 1) and an innermost at 0, and a rise's own lines move about its core; at the five poses of the swell
+    (POSES) no join between two lines opens more than 0.5 px, every patch's, separator's and relief's lines stay inside
+    its frame and every hero rise's own rings inside the hero's frame and above its fade (from 390 px, and not on the
+    home, whose hero is not fitted to its frame, as check_topo);
+    at the top of the swell an innermost line has not moved and every other is at 1 + d x --topo-grow; under reduced
+    motion no animation runs at all. Prints each page's joins, its widest gap at each pose and its closest clearance."""
+    pages = pages or swell_pages()
+    errs, bad, rows = [], [], {}
+    for name, w, h, mobile in SWELL_WIDTHS:
+        for motion in (True, False):
+            ctx, pg, _ = new_page(None, br, errs, f'swell {name}', w, h, mobile, motion=motion)
+            for theme in ('dark', 'light'):
+                if theme == 'light': pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+                for pid in pages:
+                    pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(150)
+                    if pid in AREA_IDS or pid == 'home': pg.evaluate(f"document.querySelectorAll({PLANNED_SEL!r}).forEach(d => d.open = true)"); pg.wait_for_timeout(60)
+                    r = pg.evaluate(SWELL_JS, [pid, list(POSES), BTIME, motion, w < 390])
+                    tag = f'{pid} {name} {theme}{" motion" if motion else " reduced"}'
+                    bad += [f'{tag}: {b}' for b in r['bad'][:4]]
+                    if motion:
+                        rw = rows.setdefault(pid, dict(drawings=0, lines=0, joins=0, gap=0.0, clear=1e9, moved=0, runs=0))
+                        rw['runs'] += 1; rw['drawings'] = max(rw['drawings'], r['drawings']); rw['lines'] = max(rw['lines'], r['lines']); rw['joins'] = max(rw['joins'], r['joins'])
+                        rw['gap'] = max([rw['gap']] + list(r['gap'].values())); rw['clear'] = min(rw['clear'], r['clear']); rw['moved'] = max(rw['moved'], r['moved'])
+                        rw.setdefault('gaps', {})
+                        for k_, v_ in r['gap'].items(): rw['gaps'][k_] = max(rw['gaps'].get(k_, 0), v_)
+                    if pid in AREA_IDS or pid == 'home': pg.evaluate(f"document.querySelectorAll({PLANNED_SEL!r}).forEach(d => d.open = false)")
+            ctx.close()
+    fails += ['swell ' + b for b in bad[:30]]
+    if len(bad) > 30: fails.append(f'swell: {len(bad) - 30} more')
+    if errs: fails.append('swell: console errors: ' + ' | '.join(errs[:3]))
+    for pid, rw in rows.items():
+        print(f'swell {pid}: {rw["drawings"]} drawings, {rw["lines"]} lines ({rw["moved"]} moving), {rw["joins"]} joins; widest join at each pose '
+              + ', '.join(f'{k}: {v:.3f} px' for k, v in sorted(rw.get('gaps', {}).items())) + f'; closest line {rw["clear"]:.1f} px inside its frame; {rw["runs"]} runs with motion')
+    print(f'swell: {len(pages)} pages ({", ".join(pages)}) at {", ".join(str(x[1]) for x in SWELL_WIDTHS)} px, dark and light, with motion and under reduced motion')
+    return rows
 
 
 def check_reading(br, fails):
@@ -2852,6 +3020,7 @@ def main():
         check_reading(br, fails)
         check_seps(br, fails)
         check_reliefs(br, fails)   # P95
+        check_swell(br, fails)   # S-NAV1 step D
         check_site_log(br, fails)   # S-PAGES
         check_history(br, fails)   # S-NAV1 step A
         check_nav(br, fails)   # S-NAV1 step C: phone, dark
@@ -3214,7 +3383,7 @@ def main():
         # line shows and the static line is for a screen reader only; the hero's texts over the contours; and at 390 px
         # the weight of a fresh load (LCP and the longest task, from the browser's performance entries). P93: on every
         # page: every contour drawing moves (the hero's layer and every tile's patch, transform only, each at its own
-        # point of the cycle; nothing else on a page without one), and at the five poses of the sweep every layer covers
+        # point of the cycle; nothing else on a page without one; S-NAV1 step D: every line swells), and at the five poses of the swell every layer covers
         # its frame, every rise and patch stays inside it, and every text over a topography keeps its contrast; LCP and
         # the longest task on the home, a course home and What's new
         def perf_of(pg, pid):
@@ -3238,17 +3407,18 @@ def main():
                     print(f"{pid} phone motion: LCP {PERF[pid]['lcp']:.0f} ms, longest task {PERF[pid]['lt']:.0f} ms ({PERF[pid]['n']} long tasks over 50 ms), on a fresh load from the local server")
                 pg.evaluate("location.hash = 'home'"); ready(pg)
                 # P93 follow-up (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile"): at 120 s a sweep the
-                # move ran, at 0.6 px/s at most, and read as still. The move must be seen and still be slow: the peak speed of a
-                # corner of the home's layer at 390 px, from the tokens (turn, growth, cycle; CSS ease-in-out peaks at 1.6 times
-                # the average), between 2 and 8 px/s; and the layer must have moved between two reads 2 s apart
-                fw, fh = pg.evaluate("(() => { const t = document.querySelector('#home .hhome > .topo'); return [t.clientWidth, t.clientHeight]; })()")
-                rc = math.hypot(fw, fh) / 2
-                v = 1.6 * rc * math.hypot(math.radians(2 * TURN) / (CYCLE / 1000), (GROW - 1) / (BTIME / 1000))   # the turn and the breath, each at its peak
-                m0 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform"); pg.wait_for_timeout(2000)
-                m1 = pg.evaluate("getComputedStyle(document.querySelector('#home .hhome > .topo .topo-tall')).transform")
-                print(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners ({fw} x {fh} px frame, {2 * TURN:g} degrees over {CYCLE / 1000:g} s, a breath to {GROW:g} over {BTIME / 1000:g} s); moved in 2 s: {m0 != m1}")
-                if not 2 <= v <= 12: fails.append(f"home phone motion: the move peaks at {v:.1f} px/s at the layer's corners, outside 2 to 12 px/s (seen, and still slow; Pedro, 5 Nov 2026: \"it could be faster\")")
-                if m0 == m1: fails.append('home phone motion: the layer did not move in 2 s')
+                # move ran, at 0.6 px/s at most, and read as still. The move must be seen and still be slow. S-NAV1 step D: the
+                # peak speed of the furthest-moving point of a line in the home's frame at 390 px (its distance from its core
+                # times its d times --topo-grow, over --topo-breath; CSS ease-in-out peaks at 1.6 times the average), between 2
+                # and 12 px/s; and an outer line must have moved between two reads 2 s apart
+                amp, fw, fh = pg.evaluate(SWELL_AMP_JS, '#home .hhome > .topo')
+                v = 1.6 * amp / (BTIME / 1000)
+                sel = "[...document.querySelectorAll('#home .hhome > .topo .topo-tall path')].find(p => +getComputedStyle(p).getPropertyValue('--d') === 1)"
+                m0 = pg.evaluate(f"getComputedStyle({sel}).transform"); pg.wait_for_timeout(2000)
+                m1 = pg.evaluate(f"getComputedStyle({sel}).transform")
+                print(f"home phone motion: the swell peaks at {v:.1f} px/s at its furthest-moving point in the frame ({fw} x {fh} px frame, {amp:.1f} px each way, the outermost lines to {1 + GROW:g} over {BTIME / 1000:g} s); an outer line moved in 2 s: {m0 != m1}")
+                if not 2 <= v <= 12: fails.append(f"home phone motion: the swell peaks at {v:.1f} px/s, outside 2 to 12 px/s (seen, and still slow; Pedro, 5 Nov 2026: \"it could be faster\")")
+                if m0 == m1: fails.append('home phone motion: the outer lines did not move in 2 s')
             for theme in ('dark', 'light'):
                 if theme == 'light': pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
                 pg.evaluate("location.hash = 'new'"); ready(pg); pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(200)   # the home shown afresh, each drawing at its own phase, before any pose
@@ -3301,8 +3471,8 @@ def main():
                                 print(f'shots: {name} {pid} figure {k + 1} ({kind}) {theme}: {nf} frame' + ('s' if nf != 1 else ''))
                             pg.evaluate('window.scrollTo(0, 0)')
                 ctx.close()
-            # P92: the hero at five moments; P93: at the five poses of the slow move (POSES: the two ends of the sweep,
-            # its quarters and its middle; the home's area line at 0, 3, 6, 9 and 12 s of its cycle), at 390 and 1280 px
+            # P92: the hero at five moments; P93: at the five poses of the slow move (POSES: since S-NAV1 step D the
+            # swell at rest, at its top, its quarters and its middle; the home's area line at 0, 3, 6, 9 and 12 s of its cycle), at 390 and 1280 px
             # with motion allowed, dark and light, for the home, a history course home (Greece) and a markdown course
             # home (Information architecture): every animation paused and set to the pose, the hero shot, the five
             # stacked with their times in one sheet (<width>-<page>-motion-<theme>.png)
@@ -3319,7 +3489,7 @@ def main():
                             tmp = SHOTS / f'_{name}-{pid}-{k}.png'
                             pg.locator(sel).screenshot(path=str(tmp), animations='allow')
                             ims.append(Image.open(tmp)); tmp.unlink()
-                            tags.append(f'{name} · {pid} · {theme} · pose {k + 1} of 5: {p_:g} of the sweep ({p_ * CYCLE / 1000:.0f} s of {CYCLE / 1000:.0f} s: turn {-TURN + 2 * TURN * eased(p_):+.2f}°, scale {1 + (GROW - 1) * eased(p_):.3f})' + (f'; area line at {k * 3:.0f} s of its 12 s cycle' if pid == 'home' else ''))
+                            tags.append(f'{name} · {pid} · {theme} · pose {k + 1} of 5: {p_:g} of the swell ({p_ * BTIME / 1000:.1f} s of {BTIME / 1000:.0f} s: the outermost lines at {1 + GROW * eased(p_):.3f}, the innermost still)' + (f'; area line at {k * 3:.0f} s of its 12 s cycle' if pid == 'home' else ''))
                         sc = max(1, round(ims[0].width / pg.evaluate(f"document.querySelector('{sel}').getBoundingClientRect().width")))
                         font, band = ImageFont.load_default(size=12 * sc), 26 * sc
                         sheet = Image.new('RGB', (ims[0].width, sum(i.height + band for i in ims)), (128, 128, 128))

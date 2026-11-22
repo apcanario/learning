@@ -34,6 +34,15 @@
       section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
       the scope line
    Version 6.11, 15 Nov 2026 (C1, W-BW5): a matrix carries a narrow-label drawing (svg.viz-altn, .viz-stickn) shown at 360 px and below, 4i.
+   Version 6.18, 22 Nov 2026 (S-NAV1 step D; Pedro: "the core will stay the same... the outward lines are moving away
+   from the core proportionally to their distance to the core", on every line illustration, "instead of the zoom out
+   animation"): the turn (topo-turn, --topo-turn, --topo-cycle) and the whole-layer breath (topo-breathe) are gone, and
+   with them each layer's overscan (--ox, --oy). Every line of every contour drawing (heroes, tile patches, section
+   separators, object reliefs) swells about its rise's core (--o, a transform-origin in the drawing's units, set by
+   viz.py) by 1 + --d x --topo-grow, --d its distance from the core (0 the innermost line, fixed; 1 the outermost),
+   over --topo-breath each way: topo-swell, transform only, still under reduced motion, 4i. --topo-grow is now the
+   growth of the outermost line (.1; it was the whole drawing's scale, 1.1). A course home's hero from 768 px is at
+   least 370 px tall (380 with the turn's overscan), 6.
    Version 6.17, 21 Nov 2026 (S-NAV1 step C): the navigation is two levels in the drawer's list (.dlist): nav.main-nav,
    Home and the areas (.darea, the area's tone), ruled off as the old top rows (.dtop) were, and nav.sub-nav, the
    section's group (.sub-sec): an area's courses, a course's pages and units; none on the home. Phone look unchanged
@@ -103,8 +112,7 @@
   --on-accent:#000;   /* P91: black, so text on the blue accent (a spine, an IA button or chip) reaches 4.57:1; #0a0a0c gave 4.31 */
   --topo-r:.85;--topo-rh:.4;--relief-h:280px;   /* P95 (6.8): an object relief's lines (the layer's opacity), its halo's share of that (the faint lines outside the outline) and its frame's most height on a phone (section 9) */
   --topo-a:.16;--topo-p:.62;--topo-s:.62;   /* P94: --topo-s, a section separator's lines (section 9). P92: the hero's contour lines (every text over them keeps its contrast, measured on the built page; P93: .16, from .2, so the course homes' and What's new's texts, which stand over the lines, keep theirs at every pose of the move) and a tile's patch */
-  --topo-turn:3deg;--topo-cycle:10s;   /* P93: the contours' turn, both themes: +/- 3 degrees over 10 s each way (Pedro, 4 Nov 2026, 20:16: "The animations dont work, at least on mobile": at 120 s a corner of the home's layer moved 0.6 px/s at most and read as still; 5 Nov, 04:11, at 20 s: "it could be faster") */
-  --topo-grow:1.1;--topo-breath:6s;   /* P93 follow-up (Pedro, 5 Nov 2026, 07:49, on that morning's heartbeat, a pop of the inner rings every 1.6 s: "It wasn't supposed to be that fast and to pop within the outer line. The whole drawing was supposed to flowingly expand and contract, slowishly but fluidly. Even the outer edges"): the whole drawing breathes, from 1 to 1.1 about its centre and back, 6 s each way (until then it grew to 1.06 with the turn) */
+  --topo-grow:.1;--topo-breath:6s;   /* S-NAV1 step D (22 Nov 2026; Pedro: "the core will stay the same... the outward lines are moving away from the core proportionally to their distance to the core"): every line swells about its rise's core from 1 to 1 + --d x --topo-grow and back, 6 s each way, the outermost line (--d 1) to 1.1, the innermost (--d 0) not at all. P93 follow-up (Pedro, 5 Nov 2026, 07:49: "The whole drawing was supposed to flowingly expand and contract, slowishly but fluidly. Even the outer edges"): the pace and the outer lines' growth are the breath's (1 to 1.1, 6 s each way); its turn (+/- 3 degrees over 10 s, --topo-turn) is gone */
   --bar-bg:rgba(10,10,12,.94);--hover:rgba(255,255,255,.05);--scrim:rgba(0,0,0,.55);--shadow:rgba(0,0,0,.5);--code:#0e0e11;
   --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -528,36 +536,36 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
    hero's layer (.topo) runs from the top bar to the hero's foot across the full width beside the sidebar; one layout
    shows at a time (tall below 1100 px, wide from it). A patch (.topo-patch) is the tile's own drawing, the full width
    of its content at 4:1.
-   The move (P93, Pedro: "very slow, expanding and rotating movements, across the board"): where motion is welcome
-   every drawing turns from -3 to +3 degrees about its centre over 10 s each way and (5 Nov) breathes, swelling from 1
-   to 1.1 and back over 6 s each way, both eased at both ends and alternating; transform only (the compositor's work, nothing on the main thread); each drawing of a page
-   starts at its own point of the cycle (--ph, 0 to 1, set by build.py), so none moves in lockstep with another; under
-   reduced motion nothing moves. The overscan: a frame W x H turned by a is covered by a layer about its centre W + H
-   sin a wide and H + W sin a tall (a scale over 1 only adds), so each layout stands out of its frame by half of that
-   on each side, plus a pixel, measured on the frame itself (.topo is a size container: 100cqw and 100cqh are its
-   width and height), so no edge or corner of a drawing ever shows; a hero's layout covers its box (slice), a patch's
-   fits inside it (meet), its rings clear of the frame at every pose (verify.py checks both). */
+   The move (S-NAV1 step D, 22 Nov 2026, Pedro: "the core will stay the same... the outward lines are moving away from
+   the core proportionally to their distance to the core"; it replaces P93's turn and the whole-layer breath): where
+   motion is welcome every line (path) of a drawing swells about its rise's core, its transform-origin --o (in the
+   drawing's own units: transform-box view-box), from 1 to 1 + --d x --topo-grow and back over --topo-breath each way,
+   eased at both ends and alternating (topo-swell). --d is the line's distance from the core, 0 to 1, set by viz.py:
+   0 the rise's innermost line, which does not move, 1 its outermost; a line shared by neighbouring rises carries the
+   blend of their cores and d's, so its stretches move as one and no join opens. Transform only; each drawing of a page
+   starts at its own point of the cycle (--ph, 0 to 1, set by build.py; inherited by its lines), so none moves in
+   lockstep with another; under reduced motion nothing moves. The layout no longer turns, so it fills its frame exactly:
+   a hero's layout covers its box (slice), a patch's fits inside it (meet), and build.py keeps every rise's rings inside
+   the window (a hero) or clear of the frame (a patch) at the top of the swell (verify.py checks both). */
 .ct-t1{--c:var(--viz-1)}.ct-t2{--c:var(--viz-2)}.ct-t3{--c:var(--viz-3)}.ct-t4{--c:var(--viz-4)}.ct-t5{--c:var(--viz-5)}.ct-t6{--c:var(--viz-6)}
 .topo{position:absolute;top:-22px;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;pointer-events:none;container-type:size;-webkit-mask-image:linear-gradient(#000 90%,transparent);mask-image:linear-gradient(#000 90%,transparent)}   /* the lines fade out over the hero's last 10%, not cut */
-.topo-l{--ox:calc(100cqh * sin(var(--topo-turn)) / 2 + 1px);--oy:calc(100cqw * sin(var(--topo-turn)) / 2 + 1px);
-  display:none;position:absolute;left:calc(-1 * var(--ox));top:calc(-1 * var(--oy));width:calc(100% + 2 * var(--ox));height:calc(100% + 2 * var(--oy));transform-origin:50% 50%}
+.topo-l{--d:0;display:none;position:absolute;left:0;top:0;width:100%;height:100%}
 .topo-tall{display:block}
-.topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:butt}   /* butt: where one rise's stretch of a line hands over to the next, the two ends abut, never overlap (round caps doubled the line there) */
+.topo path,.topo circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:butt}
+.topo path{transform-box:view-box;transform-origin:var(--o,0 0)}   /* S-NAV1 step D: a line swells about its rise's core, in the drawing's units */   /* butt: where one rise's stretch of a line hands over to the next, the two ends abut, never overlap (round caps doubled the line there) */
 .topo .ct-rise path,.topo .ct-spot{stroke:var(--c)}   /* P93 check: .ct-spot, the ring that marks a written part under one level, as a map marks a spot height */
 .topo .topo-l{opacity:var(--topo-a)}   /* P93 follow-up: the layer, not each line, carries the opacity, so lines that touch or cross (two lines of a dense rise, now separate paths) composite as one line, never darker; a text over them keeps its contrast */
 .topo .ct-plan circle{stroke:var(--c);stroke-dasharray:3 3}
 .topo.topo-patch{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;margin:14px 0 0;aspect-ratio:4 / 1;overflow:hidden;-webkit-mask-image:none;mask-image:none}
-.topo-patch .topo-l{display:block;--ox:0px;--oy:0px}   /* a patch's drawing fits its frame (meet) and is transparent: it needs no overscan; its rings are placed clear of the frame at every pose (build.py turned_inside) */
+.topo-patch .topo-l{display:block}   /* a patch's drawing fits its frame (meet) and is transparent; its rings are placed clear of the frame at every pose of the swell (build.py swell_inside) */
 .topo.topo-patch .topo-l{opacity:var(--topo-p)}
-@media (prefers-reduced-motion:no-preference){.topo-l{animation:topo-turn var(--topo-cycle) ease-in-out calc(var(--ph,0) * -1 * var(--topo-cycle)) infinite alternate both,topo-breathe var(--topo-breath) ease-in-out calc(var(--ph,0) * -2 * var(--topo-breath)) infinite alternate both;animation-composition:replace,add}}
-@keyframes topo-turn{from{transform:rotate(calc(-1 * var(--topo-turn)))}to{transform:rotate(var(--topo-turn))}}
-@keyframes topo-breathe{from{transform:scale(1)}to{transform:scale(var(--topo-grow))}}
-/* P93 follow-up, the breath (Pedro, 5 Nov 2026, 07:49; it replaces that morning's heartbeat, a pop of the inner rings
-   every 1.6 s, and the growth that rode on the turn): the whole drawing swells about its centre from 1 to --topo-grow and
-   back over --topo-breath each way, eased, alternating, added to the turn (animation-composition), every line and gap
-   growing with it, the outer edges furthest; each drawing at its own phase (--ph). Transform only, on the layer, so the
-   compositor does the work; still under reduced motion. build.py keeps every ring clear of its frame at the top of the
-   breath and both ends of the turn. */
+@media (prefers-reduced-motion:no-preference){.topo-l path{animation:topo-swell var(--topo-breath) ease-in-out calc(var(--ph,0) * -2 * var(--topo-breath)) infinite alternate both}}
+@keyframes topo-swell{from{transform:scale(1)}to{transform:scale(calc(1 + var(--d) * var(--topo-grow)))}}
+/* S-NAV1 step D, the swell: each line from 1 to 1 + --d x --topo-grow about its core and back, over --topo-breath each
+   way, eased, alternating; every line of a drawing at the drawing's phase (--ph), so a drawing swells as one: its core
+   still, its outer lines furthest. Transform only, on each line; still under reduced motion. build.py and viz.py keep
+   every ring clear of its frame at the top of the swell. A spot ring (.ct-spot) and a planned ring (.ct-plan) are
+   circles, not lines: they do not move. */
 /* P93: a course home's and What's new's hero over its topography: the layer the full width beside the sidebar (it
    bleeds out of the column to 100cqw of the body, section 3), from the top bar to the hero's foot; the hero keeps its
    own height (a course home's holds its stats and buttons, whose boxes are opaque, so the lines pass under them) */
@@ -841,15 +849,15 @@ details.clog[open]>summary::after{content:"–"}
   .panel.root .tmeta{display:inline}
   .panel.root .thead h2{margin:0 0 6px}
   .panel.root .thead{border-bottom:2px solid var(--c);padding-bottom:12px}
-  /* P-DEC20: a course home's hero is at least 380 px tall, so its layer's frame (the hero and the 22 px above it) is at
-     least 402. build.py's ct_fit keeps every ring inside its layout's view: the wide layout's from .1 of its height
-     (desktop), the tall one's from .25 to .7 (tablet). A frame W x H shows the layout (slice, over the overscan --ox) from
-     .5 - H / (W + 2 * --ox) of a 2:1 layout's height, and .5 - H / (2 * (W + 2 * --ox)) of a square one's, fading over
-     the last 10%; so the wide view's top is shown from H = .4 * (W + 2px) / (1 - .4 * sin(--topo-turn)), 401.2 px at
-     1280 (W 980; its foot, .84, is in the fade below a 427 px frame, and no ring of 1 to 24 rises reaches it), and the whole tall view
-     from H = .5 * (W + 2px) / (1 - .5 * sin(--topo-turn)), 395.4 px at 768. Below them a course of six to ten units had
-     rings past its frame (out/HK-1/p-dec20.md). */
-  .panel.home>.hero.has-topo{min-height:380px}
+  /* P-DEC20: a course home's hero is at least this tall, so its layer's frame (the hero and the 22 px above it) shows
+     the whole window build.py's ct_fit keeps every ring inside (at the top of the swell): the wide layout's from .1 of
+     its height (desktop), the tall one's from .25 to .7 (tablet). S-NAV1 step D: the layout no longer turns, so it has no
+     overscan and fills its frame W x H exactly (slice): it shows a 2:1 layout from .5 - H / W of its height and a square
+     one from .5 - H / (2 * W), fading over the last 10%; so the wide view's top is shown from H = .4 * W, 392 px at 1280
+     (W 980), and the whole tall view from H = .5 * W, 384 px at 768: a hero of 392 - 22 = 370 px (it was 380, for the
+     turn's overscan: 401.2 and 395.4 px). Below them a course of six to ten units had rings past its frame
+     (out/HK-1/p-dec20.md). */
+  .panel.home>.hero.has-topo{min-height:370px}
 }
 @media (min-width:1100px){
   /* the drawer is a sidebar: always open, no backdrop, no menu or close button; its list scrolls on its own */
@@ -997,10 +1005,10 @@ a.course:active{transform:translateY(0);box-shadow:none}
 /* P94 (theme 6.7): the section separator. Every section with a paragraph ends on a horizontal topography of its
    paragraphs (kit/build.py sep_block, viz.py's contours with sep: one rise per top-level paragraph by its words, along a
    ridge, in the course's tone), aria-hidden and textless, the column's width at 1200 by 170, before the next and
-   previous (30 px clear of the text above and of them below); in "Whole unit" it stands between two sections. It turns
-   and breathes as every contour drawing does (4i), each separator of a page at its own phase; still under reduced
-   motion. Its drawing fits its frame (meet) and its lines stay clear of it at every pose (build.py turned_inside), so
-   it needs no overscan; the layer carries the opacity, --topo-s. */
+   previous (30 px clear of the text above and of them below); in "Whole unit" it stands between two sections. It swells
+   as every contour drawing does (4i; S-NAV1 step D), each separator of a page at its own phase; still under reduced
+   motion. Its drawing fits its frame (meet) and its lines stay clear of it at every pose of the swell (build.py
+   swell_inside); the layer carries the opacity, --topo-s. */
 .topo.topo-patch.topo-sep{aspect-ratio:1200 / 170;margin:30px 0 0}
 .topo.topo-sep .topo-l{opacity:var(--topo-s)}
 /* P95 (theme 6.8): the object relief. A reading page whose text discusses an object at length shows it under its scope
@@ -1009,12 +1017,13 @@ a.course:active{transform:translateY(0);box-shadow:none}
    the levels inside it (.rl-in) in the page's tone, two halo levels outside it (.rl-out) fainter; aria-hidden and
    textless, its caption (what it shows, that it is a stylised outline, the credit) in the figure caption's style. The
    frame is the drawing's own aspect (--ar, from viz.py), the column's width at most and --relief-h tall at most (280 px
-   on a phone); the drawing fits it (meet) and its lines stay clear of it at every pose of the move (viz.py rel_frame),
-   so it needs no overscan. It turns and breathes as every contour drawing does (4i), at its own phase; still under
-   reduced motion; the layer carries the opacity, --topo-r, and the halo --topo-rh of it. */
+   on a phone); the drawing fits it (meet) and its lines stay clear of it at every pose of the swell (viz.py rel_frame).
+   It swells as every contour drawing does (4i; S-NAV1 step D: the contour level is the distance, the deepest level
+   fixed, the outline moving, the halo furthest, about the core of each separate piece of the silhouette), at its own
+   phase; still under reduced motion; the layer carries the opacity, --topo-r, and the halo --topo-rh of it. */
 .relief-fig{margin:20px 0 0}
 .topo.relief{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;overflow:hidden;-webkit-mask-image:none;mask-image:none;aspect-ratio:var(--ar,1);width:min(100%,calc(var(--relief-h) * var(--ar,1)))}
-.topo.relief .topo-l{display:block;--ox:0px;--oy:0px;opacity:var(--topo-r)}
+.topo.relief .topo-l{display:block;opacity:var(--topo-r)}
 .topo.relief .rl-in,.topo.relief .rl-out{stroke:var(--c)}
 .topo.relief .rl-out{stroke-opacity:var(--topo-rh)}
 /* process last: two closed accordions after the text */

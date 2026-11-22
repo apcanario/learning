@@ -55,3 +55,31 @@
 - push attempts: 1
 - pushed: 8a7ab424e796d5e909d9e1f8fc7dd7b6036af761
 
+## land S-NAV1 · 2026-11-22T00:57:49+00:00
+
+- start: 797b1d479 (.git/land/started/S-NAV1.json)
+- upstream commits absorbed: 10
+  - 8a7ab42 land S-NAV1: verify record
+  - 119ce57 land S-NAV1: baseline re-recorded (step B fix: 320 px home hero)
+  - 830a82c land S-NAV1: baseline re-recorded (step B outputs; kit/baseline.json recorded in the step B commit and verified unchanged)
+  - a0eeaab S-NAV1 step B: declare replaced lines
+  - cecd554 S-NAV1 step B: an area home per track, one tile per track on the home, crumbs Home > Area > Course > Unit
+  - 2792169 land S-NAV1: verify record
+  - 0948722 S-NAV1 step A: re-record the build manifest
+  - 0a8d31a S-NAV1 step A: declare greece edition shell as expected
+  - 300300f S-NAV1 step A: real history entries, popstate routing, per-entry scroll
+  - 0898ff6 S-NAV1: register S-NAV1 and S-NAV2, close P-DEC16 as superseded
+- lines preserved: 1166 upstream-added lines in 13 files, all present
+- accepted drops (--expected): 3
+  - kit/build.py: if MULTI:   # S-NAV1 step B: the track's area page heads its group (step C makes the navigation two levels)
+  - kit/build.py: out += f'<a class="ditem dcourse darea" href="#track-{t["id"]}" data-target="track-{t["id"]}" style="--c:{t["color"]}"><span class="n">■</span><span class="t">{
+  - kit/verify.py: step(f'{aid} area', dict(id=aid, nav='root', u='AREA', t=next(x['name'] for x in THEMES if 'track-' + x['id'] == aid), arrows=False))
+- saved row prompts: no merge, not checked
+- files auto-merged: none
+- baseline: clean
+- index_check: ok
+- verify: ALL CHECKS PASSED (first line: full: design/theme.css, kit/build.py, kit/mdcourse.py, kit/shell.css and 3 more changed)
+- lock: released; moved onto 1 of our own lock heartbeats before the push
+- push attempts: 1
+- pushed: 731bd686df8e9f5450bf4cf2db36916acc0cd052
+
