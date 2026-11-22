@@ -265,21 +265,70 @@
   // link) routes and puts back the y its entry kept, once the panel holds its content. The first load only routes (no
   // push). Where pushState throws (the artifact's sandboxed frame may refuse it) go() falls back to replaceState, the
   // behaviour before S-NAV1; where that throws too, the panel is shown without touching the address.
+  // S-NAV2 Fix 2 (P-NAV7, 22 Nov 2026): a readout of history, only with ?debug in the page's address (Pedro: the left-edge
+  // swipe leaves the artifact's frame but walks the site on Pages). Without it DBG stays null: no element, no listener,
+  // no storage key, and every dbg() call returns at once, so go(), popstate and hashchange behave exactly as before.
+  // With it: a small fixed panel (theme section 10, .dbg) lists the frame's context on load (top level or a frame, the
+  // address, the referrer, history.length and state), each go() (which branch: pushState, replaceState for a place inside
+  // the page, pushState threw and the replaceState fallback, or the same address), each popstate and hashchange, a
+  // replaceState refused while saving the scroll, and pagehide; its first line is the summary (history.length, whether
+  // pushState threw, the last branch). The log is kept in localStorage (KEY+'.debug', the last 300 lines), so a swipe that
+  // leaves the frame and comes back shows the earlier load's lines above the new ones; Copy puts the whole text on the
+  // clipboard (or selects it, where the frame refuses the clipboard), Clear empties it, Hide folds the panel to its bar.
+  var DBG=null;
+  try{if(/[?&]debug(=|&|$)/.test(location.search))DBG={lines:[],threw:0,last:'none yet',t0:Date.now()};}catch(e){}
+  function dbgH(){try{return location.hash||'(none)';}catch(e){return '?';}}
+  function dbgS(s){try{return s===null||s===undefined?String(s):JSON.stringify(s);}catch(e){return '?';}}
+  function dbgSum(){if(!DBG||!DBG.sum)return;var n='?';try{n=history.length;}catch(e){}
+    DBG.sum.textContent='history.length '+n+' · pushState threw '+(DBG.threw?'yes ('+DBG.threw+')':'no')+' · last go(): '+DBG.last;}
+  function dbg(s){if(!DBG)return;var n='?';try{n=history.length;}catch(e){}
+    var line='+'+((Date.now()-DBG.t0)/1000).toFixed(2)+'s  '+s+'  [length '+n+', hash '+dbgH()+']';
+    DBG.lines.push(line);try{localStorage.setItem(KEY+'.debug',JSON.stringify(DBG.prev.concat(DBG.lines).slice(-300)));}catch(e){}
+    if(DBG.pre){DBG.pre.textContent=DBG.prev.concat(DBG.lines).join('\n');DBG.pre.scrollTop=DBG.pre.scrollHeight;}
+    dbgSum();}
+  if(DBG){(function(){
+    var prev=[];try{prev=JSON.parse(localStorage.getItem(KEY+'.debug')||'[]')||[];}catch(e){prev=[];}
+    DBG.prev=prev.length?prev.concat(['--- a new load ---']):[];
+    var box=document.createElement('section');box.className='dbg';box.setAttribute('aria-label','History readout');
+    var bar=document.createElement('div');bar.className='dbg-bar';
+    var sum=document.createElement('p');sum.className='dbg-sum';
+    function btn(t,f){var b=document.createElement('button');b.type='button';b.className='dbg-b';b.textContent=t;b.addEventListener('click',f);bar.appendChild(b);return b;}
+    var pre=document.createElement('pre');pre.className='dbg-log';
+    btn('Copy',function(){var t=sum.textContent+'\n'+pre.textContent;
+      function sel(){try{var r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}catch(e){}}
+      try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){dbg('copied to the clipboard');},function(){sel();dbg('clipboard refused: the text is selected, copy it by hand');});else sel();}catch(e){sel();}});
+    btn('Clear',function(){DBG.prev=[];DBG.lines=[];try{localStorage.removeItem(KEY+'.debug');}catch(e){}pre.textContent='';dbg('cleared');});
+    btn('Hide',function(){var on=box.classList.toggle('dbg-min');this.textContent=on?'Show':'Hide';});
+    box.appendChild(sum);box.appendChild(bar);box.appendChild(pre);
+    (document.body||document.documentElement).appendChild(box);
+    DBG.sum=sum;DBG.pre=pre;
+    var top='?';try{top=window.top===window?'top level':'in a frame';}catch(e){top='in a frame (top not readable)';}
+    var anc='';try{if(location.ancestorOrigins&&location.ancestorOrigins.length)anc=[].slice.call(location.ancestorOrigins).join(' < ');}catch(e){}
+    dbg('load: '+top+(anc?' (ancestors '+anc+')':''));
+    dbg('address '+location.origin+location.pathname+location.search+' · referrer '+(document.referrer||'(none)'));
+    var sr='?';try{sr=history.scrollRestoration;}catch(e){}
+    dbg('state '+dbgS(history.state)+' · scrollRestoration '+sr+' · '+navigator.userAgent);
+    window.addEventListener('pagehide',function(e){dbg('pagehide'+(e.persisted?' (to the back-forward cache)':''));});
+    window.addEventListener('pageshow',function(e){if(e.persisted)dbg('pageshow from the back-forward cache');});
+  })();}
   try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(e){}
   var saveT=0,routed=null;
-  function saveY(){clearTimeout(saveT);try{var y=Math.round(window.scrollY||0),s=history.state;if(!s||s.y!==y)history.replaceState({y:y},'');}catch(e){}}
+  function saveY(){clearTimeout(saveT);try{var y=Math.round(window.scrollY||0),s=history.state;if(!s||s.y!==y)history.replaceState({y:y},'');}catch(e){if(DBG)dbg('saveY: replaceState threw '+e.name);}}
   window.addEventListener('scroll',function(){clearTimeout(saveT);saveT=setTimeout(saveY,200);},{passive:true});
   // S-NAV1 step G (the fresh check's finding 8): a link the browser follows itself (a unit's pager card, a plain hash
   // link) saves the scroll first, at once, so a tap inside the debounce (a momentum scroll) leaves the entry its y
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a)saveY();},true);
   function go(id){
-    var h='#'+id;
+    var h='#'+id,br='the same address, no history call',n0=DBG?history.length:0;
     if(location.hash!==h){saveY();
       // S-NAV1 step G (finding 9): a place inside the page shown (an edition of one track: its area's band on the home,
       // #track-<id>) changes the address without a new entry, since the reader has not left the page
       var el=ids.indexOf(id)<0&&document.getElementById(id),pn=el&&el.closest('.panel'),here=!!pn&&pn.id===current;
-      try{if(here)history.replaceState(history.state,'',h);else history.pushState({y:0},'',h);}
-      catch(e){try{history.replaceState(null,'',h);}catch(e2){}}}
+      // br names the branch taken, for the ?debug readout only
+      try{if(here){history.replaceState(history.state,'',h);br='replaceState (a place inside the page shown)';}else{history.pushState({y:0},'',h);br='pushState';}}
+      catch(e){br=(here?'replaceState':'pushState')+' threw '+e.name;if(DBG&&!here)DBG.threw++;
+        try{history.replaceState(null,'',h);br+=', replaceState fallback';}catch(e2){br+=', the fallback threw '+e2.name+' too: the address is unchanged';}}}
+    if(DBG){DBG.last=br;dbg('go '+id+': '+br+' (length was '+n0+')');}
     routed=location.hash;
     if(ids.indexOf(id)<0){route();return;}show(id,true);}
   prevB.addEventListener('click',function(){var seq=seqFor(ctxOf[current]),k=seq.indexOf(current);if(k>0)go(seq[k-1]);});
@@ -322,8 +371,9 @@
   // route, then put back the scroll the entry kept (an entry without one keeps what route did: the top, or the target)
   function routeTo(st){clearTimeout(saveT);var y=st&&typeof st.y==='number'?st.y:null,h=location.hash;
     route().then(function(){if(y!==null&&location.hash===h)window.scrollTo(0,y);});}
-  window.addEventListener('popstate',function(e){routeTo(e.state);});
+  window.addEventListener('popstate',function(e){if(DBG)dbg('popstate, state '+dbgS(e.state));routeTo(e.state);});
   // a hash change popstate has not routed already (an older browser fires hashchange alone for a plain hash link)
-  window.addEventListener('hashchange',function(){if(location.hash!==routed)routeTo(history.state);});
+  window.addEventListener('hashchange',function(e){if(DBG)dbg('hashchange '+String(e.oldURL||'').replace(/^[^#]*/,'')+' -> '+String(e.newURL||'').replace(/^[^#]*/,'')+(location.hash!==routed?', routed here':', already routed'));
+    if(location.hash!==routed)routeTo(history.state);});
   routeTo(history.state);
 })();

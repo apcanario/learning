@@ -33,6 +33,7 @@
       numbered section bands, next and previous, Sources and "How this unit was made"; since 6.7 (P94) each
       section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
       the scope line
+   10 Debug readout (S-NAV2 Fix 2): the history readout shell.js builds only with ?debug in the address (.dbg)
    Version 6.11, 15 Nov 2026 (C1, W-BW5): a matrix carries a narrow-label drawing (svg.viz-altn, .viz-stickn) shown at 360 px and below, 4i.
    Version 6.18, 22 Nov 2026 (S-NAV1 step D; Pedro: "the core will stay the same... the outward lines are moving away
    from the core proportionally to their distance to the core", on every line illustration, "instead of the zoom out
@@ -52,6 +53,9 @@
    .harea, written by kit/build.py): n x 3 s a cycle, each word 100/n percent of it, by linear() easings whose stops
    are calc()ed from --n (harea, opacity; harea-y, the rise), so a new area needs no CSS edit; a browser without them
    shows the static line, 4h.
+   Version 6.21, 22 Nov 2026 (S-NAV2 step B, Fix 2, P-NAV7): section 10, the history readout (.dbg, .dbg-min, .dbg-sum,
+   .dbg-bar, .dbg-b, .dbg-log), a small panel fixed at the foot of the screen that kit/shell.js adds only when the
+   address carries ?debug; without it no element has these classes and nothing on any page changes.
    Version 6.17, 21 Nov 2026 (S-NAV1 step C): the navigation is two levels in the drawer's list (.dlist): nav.main-nav,
    Home and the areas (.darea, the area's tone), ruled off as the old top rows (.dtop) were, and nav.sub-nav, the
    section's group (.sub-sec): an area's courses, a course's pages and units; none on the home. Phone look unchanged
@@ -1086,3 +1090,14 @@ details.acc[open]>summary::after{content:"–"}
 .report .tbl[data-more="l"]{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 36px),transparent)}
 .report .tbl[data-more="lr"]{-webkit-mask-image:linear-gradient(to right,transparent,#000 36px,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(to right,transparent,#000 36px,#000 calc(100% - 36px),transparent)}
 .report .tbl+.viz-cue{margin:-8px 0 16px}
+
+/* 10 · Debug readout (S-NAV2 Fix 2, P-NAV7, 22 Nov 2026) ------------------------------------------------------
+   Only with ?debug in the address: kit/shell.js then adds section.dbg to the body (the summary .dbg-sum, the buttons
+   .dbg-bar .dbg-b, the log pre.dbg-log); without it no element carries these classes. A small panel fixed at the foot,
+   above the drawer, its text plain and selectable so it can be copied whole; .dbg-min folds it to its summary and bar. */
+.dbg{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:60;max-width:560px;margin:0 auto;display:flex;flex-direction:column;max-height:40vh;background:var(--card);color:var(--fg);border:1px solid var(--line-2);font-family:var(--mono);font-size:11px;line-height:1.45;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.dbg-sum{margin:0;padding:8px 10px 4px;font-weight:700;overflow-wrap:anywhere;-webkit-user-select:text;user-select:text}
+.dbg-bar{display:flex;gap:6px;padding:0 10px 6px}
+.dbg-b{min-height:44px;min-width:64px;padding:0 12px;background:transparent;color:var(--fg);border:1px solid var(--line-2);font:inherit;cursor:pointer}
+.dbg-log{flex:1 1 auto;min-height:0;margin:0;padding:6px 10px 10px;border-top:1px solid var(--line);overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;-webkit-user-select:text;user-select:text}
+.dbg.dbg-min .dbg-log{display:none}

@@ -180,6 +180,11 @@ The area line's cycle (S-NAV2 step A, Fix 1; check_harea): at every viewport of 
 most one word above opacity .5 (exactly one but at a cross-fade's middle), never three drawn, two drawn together for
 at most the .36 s cross-fade plus a sample, each word shown three seconds a cycle in turn, at rest while fully shown.
 PHONE_EXPECTED lists the phone's expected differences from S-NAV2's start (the theme CSS and this line).
+The history readout (S-NAV2 step B, Fix 2; check_debug): without ?debug no element, listener or storage key of it
+exists and the body is the built shell's; with ?debug at 390 px the panel shows inside the screen, the walk home ->
+area -> course -> unit is the same as without it, the log names each go() (pushState, length rising by one) and the
+popstate of a history.back(); with pushState refused it names the replaceState fallback on each level; in a sandboxed
+iframe it says so; at 1280 x 800 the panel sits inside the screen.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 Then rot_check.py (P30-F11, P30-F16): kit/shell.css is design/theme.css, no live instruction names a retired thing, and
 every staleness date past or due within 30 days is printed as a warning.
@@ -3077,6 +3082,118 @@ def check_history(br, fails):
         else: print(f'history, sandboxed iframe: {" -> ".join(i for i, _ in lv)}, back -> {at["id"]} y={at["y"]} (kept {y})')
     ctx.close()
 
+# S-NAV2 step B (22 Nov 2026), Fix 2 (P-NAV7): the history readout behind ?debug (kit/shell.js, theme section 10).
+# Without ?debug (the address every reader and every other check uses): no element of the readout (.dbg or any dbg-
+# class), the body's children exactly the built shell's, no pagehide or pageshow listener on the window (the readout's
+# only listeners), the window's and the document's listeners the same types as at the start, no readout key in
+# localStorage after the walk. With ?debug at 390 px: the panel is shown, fixed inside the screen, no sideways scroll, its
+# three buttons 44 px tall; the walk home -> area -> course -> unit (check_history's links) gives the same panels, scrolls
+# and history lengths as without it, and the log holds the load (top level), one "go <id>: pushState" line a level with
+# the length rising by one each, then history.back() logs a popstate landing on the course; the summary says pushState
+# never threw; Hide folds it, a reload keeps the earlier load's lines, Clear empties the log and its key. With pushState
+# refused the log names the fallback on every level ("pushState threw SecurityError, replaceState fallback") and the
+# summary counts the throws; inside a same-origin sandboxed iframe it says "in a frame"; at 1280 x 800 the panel sits
+# inside the screen. No page error in any pass.
+DBG_JS = r"""() => { const b = document.querySelector('.dbg'), r = b && b.getBoundingClientRect();
+  return {n: document.querySelectorAll('.dbg, [class*="dbg"]').length, shown: !!b && getComputedStyle(b).display !== 'none',
+    pos: b ? getComputedStyle(b).position : null, box: r ? [r.left, r.top, r.right, r.bottom].map(Math.round) : null,
+    vw: innerWidth, vh: innerHeight, sw: document.documentElement.scrollWidth,
+    btns: b ? [...b.querySelectorAll('button.dbg-b')].map(x => [x.textContent, Math.round(x.getBoundingClientRect().height)]) : [],
+    sum: b ? b.querySelector('.dbg-sum').textContent : '', log: b ? b.querySelector('.dbg-log').textContent : '',
+    logShown: !!b && getComputedStyle(b.querySelector('.dbg-log')).display !== 'none',
+    keys: Object.keys(localStorage).filter(k => /\.debug$/.test(k))}; }"""
+DBG_BODY_JS = r"""async () => { const sig = els => [...els].map(e => e.tagName + '#' + e.id + '.' + e.className).join(' | ');
+  const t = await (await fetch(location.pathname)).text(), d = new DOMParser().parseFromString(t, 'text/html');
+  return [sig(d.body.children), sig(document.body.children)]; }"""
+def _listeners(pg):
+    """The event types listened for on the window and the document (CDP DOMDebugger.getEventListeners)."""
+    cdp = pg.context.new_cdp_session(pg); out = {}
+    for name in ('window', 'document'):
+        oid = cdp.send('Runtime.evaluate', {'expression': name})['result']['objectId']
+        out[name] = sorted(l['type'] for l in cdp.send('DOMDebugger.getEventListeners', {'objectId': oid})['listeners'])
+    cdp.detach(); return out
+
+def check_debug(br, fails):
+    bad = []
+    def ctx_page(**kw):
+        ctx = _hist_ctx(br, viewport=kw.pop('viewport', {'width': 390, 'height': 844}), **kw)
+        pg = ctx.new_page(); errs = []; pg.on('pageerror', lambda e: errs.append(str(e))); return ctx, pg, errs
+    # 1 · without ?debug: nothing of the readout exists
+    ctx, pg, errs = ctx_page(is_mobile=True, has_touch=True)
+    pg.goto(URL + '#home'); _hist_ready(pg)
+    l0 = _listeners(pg); body = pg.evaluate(DBG_BODY_JS); st = pg.evaluate(DBG_JS)
+    if st['n']: bad.append(f'debug off: {st["n"]} readout elements without ?debug')
+    if body[0] != body[1]: bad.append(f'debug off: the body\'s children {body[1]} are not the built shell\'s {body[0]}')
+    if any(t in ('pagehide', 'pageshow') for t in l0['window']): bad.append(f'debug off: the window listens for {l0["window"]}')
+    base = _hist_walk(pg, 'debug off', bad)
+    l1 = _listeners(pg); st = pg.evaluate(DBG_JS); n_off = pg.evaluate('history.length')
+    if l1 != l0: bad.append(f'debug off: the listeners changed during the walk: {l0} -> {l1}')
+    if st['n'] or st['keys']: bad.append(f'debug off: after the walk {st["n"]} readout elements, storage keys {st["keys"]}')
+    if errs: bad.append('debug off: page errors ' + ' | '.join(errs[:3]))
+    ctx.close()
+    # 2 · with ?debug: the panel, the walk and a back
+    ctx, pg, errs = ctx_page(is_mobile=True, has_touch=True)
+    pg.goto(URL + '?debug#home'); _hist_ready(pg)
+    st = pg.evaluate(DBG_JS); n0 = pg.evaluate('history.length'); l2 = _listeners(pg)
+    if not st['shown'] or st['pos'] != 'fixed': bad.append(f'debug on: the panel shown {st["shown"]}, position {st["pos"]}')
+    elif st['box'][0] < 0 or st['box'][2] > st['vw'] or st['box'][1] < 0 or st['box'][3] > st['vh']: bad.append(f'debug on: the panel {st["box"]} leaves the {st["vw"]} x {st["vh"]} screen')
+    if st['sw'] > st['vw']: bad.append(f'debug on: the page scrolls sideways ({st["sw"]} > {st["vw"]})')
+    if [t for t, _ in st['btns']] != ['Copy', 'Clear', 'Hide'] or any(h < 44 for _, h in st['btns']): bad.append(f'debug on: buttons {st["btns"]}')
+    extra = sorted(set(l2['window']) - set(l0['window']))
+    if extra != ['pagehide', 'pageshow']: bad.append(f'debug on: the readout adds window listeners {extra}, expected pagehide and pageshow')
+    if 'load: top level' not in st['log']: bad.append('debug on: the log does not say the page loaded at the top level')
+    lv = _hist_walk(pg, 'debug on', bad)
+    if lv and base:
+        if lv != base: bad.append(f'debug on: the walk {lv} differs from the walk without ?debug {base}')
+        if pg.evaluate('history.length') - n0 != n_off - n0: bad.append('debug on: the walk added a different number of history entries than without ?debug')
+        log = pg.evaluate(DBG_JS)['log']
+        gos = re.findall(r'go (\S+): pushState \(length was (\d+)\)\s+\[length (\d+)', log)
+        want = [i for i, _ in lv[1:]]
+        if [g[0] for g in gos] != want: bad.append(f'debug on: the log\'s go() lines {[g[0] for g in gos]}, expected {want}')
+        elif any(int(b) != int(a) + 1 for _, a, b in gos): bad.append(f'debug on: a go() line\'s length did not rise by one: {gos}')
+        pg.evaluate('history.back()'); _hist_ready(pg)
+        st = pg.evaluate(DBG_JS)
+        tail = st['log'].split('\n')[-3:]
+        if not any(re.search(r'popstate, state \{"y":\d+\}.*hash #' + re.escape(lv[-2][0]) + r'\]', x) for x in tail): bad.append(f'debug on: no popstate to #{lv[-2][0]} after history.back(): {tail}')
+        if 'pushState threw no' not in st['sum'] or f'history.length {n0 + len(lv) - 1}' not in st['sum']: bad.append(f'debug on: the summary reads {st["sum"]!r}')
+        print(f'debug: without ?debug no readout, listeners {l0["window"].count("popstate")} popstate and {l0["window"].count("hashchange")} hashchange on the window, unchanged by the walk; '
+              f'with it {" -> ".join(i for i, _ in lv)} the same walk, {len(gos)} pushState lines, back -> popstate #{lv[-2][0]}; summary: {st["sum"]}')
+    pg.click('.dbg .dbg-b:text("Hide")'); st = pg.evaluate(DBG_JS)
+    if st['logShown'] or [t for t, _ in st['btns']][2] != 'Show': bad.append('debug on: Hide does not fold the log')
+    pg.reload(); _hist_ready(pg); st = pg.evaluate(DBG_JS)
+    if '--- a new load ---' not in st['log'] or 'go ' not in st['log'].split('--- a new load ---')[0]: bad.append('debug on: a reload does not keep the earlier load\'s lines')
+    pg.click('.dbg .dbg-b:text("Clear")'); st = pg.evaluate(DBG_JS)
+    if 'go ' in st['log'] or not st['log'].strip().endswith(']') or 'cleared' not in st['log']: bad.append(f'debug on: Clear left {st["log"]!r}')
+    if errs: bad.append('debug on: page errors ' + ' | '.join(errs[:3]))
+    ctx.close()
+    # 3 · with ?debug and pushState refused: the fallback named on every level
+    ctx, pg, errs = ctx_page(is_mobile=True, has_touch=True)
+    ctx.add_init_script("history.pushState = function(){ throw new DOMException('refused', 'SecurityError'); };")
+    pg.goto(URL + '?debug#home'); _hist_ready(pg)
+    lv = _hist_walk(pg, 'debug, pushState refused', bad, scroll=False)
+    if lv:
+        st = pg.evaluate(DBG_JS); k = len(lv) - 1
+        got = len(re.findall(r': pushState threw SecurityError, replaceState fallback', st['log']))
+        if got != k or f'pushState threw yes ({k})' not in st['sum']: bad.append(f'debug, pushState refused: {got} fallback lines, summary {st["sum"]!r}; expected {k}')
+        else: print(f'debug, pushState refused: {got} fallback lines; summary: {st["sum"]}')
+    if errs: bad.append('debug, pushState refused: page errors ' + ' | '.join(errs[:3]))
+    ctx.close()
+    # 4 · with ?debug inside a same-origin sandboxed iframe; 5 · at 1280 x 800
+    ctx, pg, errs = ctx_page(viewport={'width': 420, 'height': 900})
+    host = URL.replace('index.html', '__frame_test.html')
+    ctx.route(host, lambda r: r.fulfill(status=200, content_type='text/html',
+              body='<!DOCTYPE html><iframe sandbox="allow-scripts allow-same-origin" src="index.html?debug#home" style="width:390px;height:844px;border:0"></iframe>'))
+    pg.goto(host); pg.wait_for_timeout(300); fr = pg.frames[1]; _hist_ready(fr)
+    if 'load: in a frame' not in fr.evaluate(DBG_JS)['log']: bad.append('debug, iframe: the log does not say the page is in a frame')
+    ctx.close()
+    ctx, pg, errs = ctx_page(viewport={'width': 1280, 'height': 800})
+    pg.goto(URL + '?debug#home'); _hist_ready(pg); st = pg.evaluate(DBG_JS)
+    if not st['shown'] or st['box'][0] < 0 or st['box'][2] > st['vw'] or st['box'][3] > st['vh'] or st['sw'] > st['vw']: bad.append(f'debug, 1280 x 800: the panel {st["box"]}, page width {st["sw"]}')
+    if errs: bad.append('debug, 1280: page errors ' + ' | '.join(errs[:3]))
+    ctx.close()
+    fails += bad
+    print(f'debug readout (S-NAV2 Fix 2): off and on at 390 px, pushState refused, a sandboxed iframe, 1280 x 800; {len(bad)} faults')
+
 # S-NAV1 step C (21 Nov 2026): two levels of navigation, each built once as one element in the drawer's list (build.py
 # main_nav, sub_nav): nav.main-nav, Home and the areas in catalog order (an edition of one track: Home and its area,
 # whose entry goes to the track's band on the home, #track-<id>), and nav.sub-nav, one group ([data-navctx]) per
@@ -3231,6 +3348,7 @@ def main():
         check_pause(br, fails)   # S-NAV1 step G: a drawing out of view holds still
         check_site_log(br, fails)   # S-PAGES
         check_history(br, fails)   # S-NAV1 step A
+        check_debug(br, fails)   # S-NAV2 step B (Fix 2): the ?debug history readout
         check_nav(br, fails)   # S-NAV1 step C: phone, dark
         check_nav(br, fails, theme='light')
         check_nav(br, fails, 1280, 800)

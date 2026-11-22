@@ -1,0 +1,21 @@
+# S-NAV2 Step B (Fix 2, ?debug readout): the shell inlines shell.js and the theme CSS; the size table follows
+README.md
+academy/index.html
+editions/greece/index.html
+drop: kit/README.md :: | Shell (`index.html`) | 1 | 613 KB | 613 KB | home, drawer, the build pages of the markdown courses, backlog |
+drop: kit/README.md :: | Whole site | 273 | 24.74 MB | | the artifact page is capped at 16 MB; the shell must stay under 1 MB |
+drop: kit/academy/index.html :: function saveY(){clearTimeout(saveT);try{var y=Math.round(window.scrollY||0),s=history.state;if(!s||s.y!==y)history.replaceState({y:y},'');}catch(e){}}
+drop: kit/academy/index.html :: var h='#'+id;
+drop: kit/academy/index.html :: try{if(here)history.replaceState(history.state,'',h);else history.pushState({y:0},'',h);}
+drop: kit/academy/index.html :: catch(e){try{history.replaceState(null,'',h);}catch(e2){}}}
+drop: kit/academy/index.html :: window.addEventListener('popstate',function(e){routeTo(e.state);});
+drop: kit/academy/index.html :: window.addEventListener('hashchange',function(){if(location.hash!==routed)routeTo(history.state);});
+drop: kit/baseline.json :: "README.md": "e646c3cfeaaebb1ddbf75e34052634101c56b891ab4ef0be3d50b3c90e934be1",
+drop: kit/baseline.json :: "academy/index.html": "ed6c2a3a3aeb7c97c1b00909f173e256d03da437eb98c022185e75bcc54127b6",
+drop: kit/baseline.json :: "editions/greece/index.html": "98fc40569fa51da14721564e1f6b56ed4e12f2714181a5de30148ee652370c5a",
+drop: kit/shell.js :: function saveY(){clearTimeout(saveT);try{var y=Math.round(window.scrollY||0),s=history.state;if(!s||s.y!==y)history.replaceState({y:y},'');}catch(e){}}
+drop: kit/shell.js :: var h='#'+id;
+drop: kit/shell.js :: try{if(here)history.replaceState(history.state,'',h);else history.pushState({y:0},'',h);}
+drop: kit/shell.js :: catch(e){try{history.replaceState(null,'',h);}catch(e2){}}}
+drop: kit/shell.js :: window.addEventListener('popstate',function(e){routeTo(e.state);});
+drop: kit/shell.js :: window.addEventListener('hashchange',function(){if(location.hash!==routed)routeTo(history.state);});
