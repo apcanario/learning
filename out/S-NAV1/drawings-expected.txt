@@ -1,0 +1,28 @@
+# S-NAV1 step G: drawings whose lines may differ from the start build (797b1d4), for kit/nav_diff_check.py --expect.
+# Step B (area pages, spec item B): on a home of more than one track the tiles are one per area, not one per course,
+# so every tile patch of the home draws other rises (the area's courses, not a course's units) or is gone.
+academy kit/academy/index.html home/patch-1
+academy kit/academy/index.html home/patch-2
+academy kit/academy/index.html home/patch-3
+academy kit/academy/index.html home/patch-4
+academy kit/academy/index.html home/patch-5
+academy kit/academy/index.html home/patch-6
+academy kit/academy/index.html home/patch-7
+academy kit/academy/index.html home/patch-8
+academy kit/academy/index.html home/patch-9
+academy kit/academy/index.html home/patch-10
+academy kit/academy/index.html home/patch-11
+academy kit/academy/index.html home/patch-12
+academy kit/academy/index.html home/patch-13
+academy kit/academy/index.html home/patch-14
+academy kit/academy/index.html home/patch-15
+academy kit/academy/index.html home/patch-16
+academy kit/academy/index.html home/patch-17
+academy kit/academy/index.html home/patch-18
+academy kit/academy/index.html home/patch-19
+academy kit/academy/index.html home/patch-20
+academy kit/academy/index.html home/patch-21
+academy kit/academy/index.html home/patch-22
+academy kit/academy/index.html home/patch-23
+marketing-ai kit/editions/marketing-ai/index.html home/patch-1
+marketing-ai kit/editions/marketing-ai/index.html home/patch-2

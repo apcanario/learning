@@ -109,3 +109,31 @@
 - push attempts: 1
 - pushed: d2cdd04c99e2baa840d6d8176034b254b86b060d
 
+## land S-NAV1 · 2026-11-22T03:31:20+00:00
+
+- start: 797b1d479 (.git/land/started/S-NAV1.json)
+- upstream commits absorbed: 14
+  - d2cdd04 land S-NAV1: verify record
+  - 66de205 land S-NAV1: baseline re-recorded (step D: line illustrations move from their core)
+  - 731bd68 land S-NAV1: verify record
+  - 9617d2d land S-NAV1: baseline re-recorded (step C: two-level navigation)
+  - 8a7ab42 land S-NAV1: verify record
+  - 119ce57 land S-NAV1: baseline re-recorded (step B fix: 320 px home hero)
+  - 830a82c land S-NAV1: baseline re-recorded (step B outputs; kit/baseline.json recorded in the step B commit and verified unchanged)
+  - a0eeaab S-NAV1 step B: declare replaced lines
+  - cecd554 S-NAV1 step B: an area home per track, one tile per track on the home, crumbs Home > Area > Course > Unit
+  - 2792169 land S-NAV1: verify record
+  - 0948722 S-NAV1 step A: re-record the build manifest
+  - 0a8d31a S-NAV1 step A: declare greece edition shell as expected
+  - 300300f S-NAV1 step A: real history entries, popstate routing, per-entry scroll
+  - 0898ff6 S-NAV1: register S-NAV1 and S-NAV2, close P-DEC16 as superseded
+- lines preserved: 3198 upstream-added lines in 19 files, all present
+- saved row prompts: no merge, not checked
+- files auto-merged: none
+- baseline: clean
+- index_check: ok
+- verify: ALL CHECKS PASSED (first line: full: kit/nav_diff_check.py, kit/p94_extract.py, kit/p95_shots.py changed)
+- lock: released; moved onto 1 of our own lock heartbeats before the push
+- push attempts: 1
+- pushed: c6a65d6e64bad63cbe6909c8e0d9868549e57850
+

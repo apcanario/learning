@@ -3437,8 +3437,8 @@ def contours(d):
     data-at (its peak, in the layout's units) and data-box (the box of its own closed rings, P93: verify.py maps both
     to the screen to check every rise in view); a planned one ("planned": true) a dashed ring, <g class="ct-plan">, flat
     (no height, in no line). P93: a patch may be all planned (a planned course's ghost tile, a planned unit), its rings
-    only; a patch's layout is fitted whole inside its frame (meet), so the frame's overscan for the turn never crops a
-    rise, where the hero's layouts cover theirs (slice). P94: with "sep" the patch is a section separator (the layer
+    only; a patch's layout is fitted whole inside its frame (meet), so no rise is cropped at any pose of the swell, where
+    the hero's layouts cover theirs (slice). P94: with "sep" the patch is a section separator (the layer
     .topo.topo-patch.topo-sep; its rises carry no data-at or data-box, which only a hero's checks read, so it keeps to
     6 KB); "seed" salts every rise's outline (a separator labels its rises by place, ¶1, ¶2 ..., and is seeded by its
     section); a layout's "stretch" draws each hill out along x by that factor (a separator's hills meet in one ridge)."""
@@ -3490,7 +3490,8 @@ def contours(d):
 # P95 (8 Nov 2026; Pedro, 5 Nov 2026: "we can even fetch svg outlines of things ... and then use the topographical
 # method and animation to illustrate the articles") · the object relief: an outline from the library (design/outlines/,
 # each a sourced file with its credit in outlines.json) drawn as the lines of a relief map of its own silhouette, the
-# outline and the levels inside it solid (path.rl-in), two faint halo levels outside it (path.rl-out), in the page's tone.
+# outline and the levels inside it solid (a path without a class; path.rl-in until S-NAV1 step G), two faint halo levels
+# outside it (path.rl-out), in the page's tone.
 # kit/relief.py computes the lines once, when an outline is added (the silhouette's distance field, contoured at even
 # steps), and writes <id>.json; this draws that JSON, so the build stays pure Python. S-NAV1 step D (22 Nov 2026): the
 # relief swells as every contour drawing does (rel_lines: the contour level is the distance, each separate piece of the
@@ -3499,7 +3500,11 @@ def contours(d):
 _THEME = (pathlib.Path(__file__).resolve().parent.parent / 'design' / 'theme.css').read_text()
 GROW = float(re.search(r'--topo-grow:([\d.]+);', _THEME).group(1))   # S-NAV1 step D: the swell, 1 + d x GROW at its top for a line of distance d
 REL_PAD = 14        # units of the 1000-unit drawing kept clear of the frame at every pose (about 4 px at 280 px tall)
-REL_MAX = 12 * 1024  # bytes, as the page holds the element (the parser writes <path ...></path>)
+REL_MAX = 17821     # bytes, as the page holds the element (the parser writes <path ...></path>). S-NAV1 step G (checker
+                    # finding 3; a proposal for Pedro to veto): 12 KB (12,288) until step D's --d and --o made the wall (24
+                    # bricks of ten levels) thin its levels to fit; 17,821 is the wall drawn as before (every level, not
+                    # simplified) after the inside lines lost their class, the smallest budget that keeps every outline's
+                    # levels and rings (verify.py REL_JS holds the same number)
 REL_SPECK = 8       # a closed ring under this many units both ways (about 2 px at 280 px) is a speck, dropped
 REL_EPS = 6         # S-NAV1 step D: the most a relief is simplified (units) before its inside levels are thinned instead
 
@@ -3528,7 +3533,8 @@ def rel_lines(lines):
     outline ring inside an even number of other outline rings (one inside an odd number is a hole). Each piece's core is
     the centre of the box of its deepest level's rings; every line inside the piece (its outline, its holes, its levels)
     scales about that core, d = (deepest - lv) / (deepest - lowest halo level): its deepest level 0, fixed, the outline
-    moving, the outer halo 1, furthest. A halo ring round several pieces takes the blend of their cores and d's,
+    moving, the outer halo 1, furthest; a piece with no level inside its outline counts its deepest as 1 (step G), so its
+    outline moves too. A halo ring round several pieces takes the blend of their cores and d's,
     weighted by each piece's area; a halo ring round none (one in a hole) takes the piece it lies in."""
     rings = [ln for ln in lines if ln['closed'] and len(ln['pts']) >= 3]
     zero = [ln for ln in rings if ln['lv'] == 0]
@@ -3554,8 +3560,9 @@ def rel_lines(lines):
         pts = [pt for m in ms if m['lv'] == dl for pt in m['pts']]
         deep[id(r)] = dl
         core[id(r)] = ((min(x for x, _ in pts) + max(x for x, _ in pts)) / 2, (min(y for _, y in pts) + max(y for _, y in pts)) / 2)
-    def dist(r, lv):
-        return 0.0 if deep[id(r)] == lo else max(0.0, (deep[id(r)] - lv) / (deep[id(r)] - lo))
+    def dist(r, lv):   # S-NAV1 step G (checker finding 5): a piece with no level inside its outline (deepest 0) is
+        dl = max(deep[id(r)], 1)   # measured from one level in, so its outline moves (1 / (1 - lo)), as every outline does
+        return 0.0 if dl == lo else max(0.0, (dl - lv) / (dl - lo))
     out = []
     for ln in lines:
         if ln['lv'] >= 0:
@@ -3594,7 +3601,8 @@ def rel_frame(w, h, lines=None):
 def relief(d):
     """The relief layer: div.topo.relief (aria-hidden, textless) holding one svg.topo-l in the tone's class; --ph its
     phase, --ar the frame's aspect. S-NAV1 step D: its lines grouped by origin (<g style="--o:x y">, a piece's core or a
-    halo's blend), each level a path, rl-out (the halo) or rl-in (the outline and the levels inside it), carrying its
+    halo's blend), each level a path, rl-out (the halo) or without a class (the outline and the levels inside it; rl-in
+    until S-NAV1 step G, whose bytes the wall's levels needed), carrying its
     distance --d (rel_lines). The lines are simplified further (viz's RDP) until the element is at most REL_MAX bytes as
     the page holds it. S-NAV1 step D, the interval from the budget (as the home hero's, build.py hero_interval): where
     simplifying by REL_EPS units does not bring it under REL_MAX (the --d and --o a level of each piece carries: the
@@ -3640,7 +3648,7 @@ def _relief_at(d, o, w, h, lines, eps_max):
             grp.setdefault(og, {}).setdefault(('out' if ln['lv'] < 0 else 'in', dv), []).append((p, ln['closed']))
         body = ''
         for og, paths in grp.items():
-            ps = ''.join(f'<path class="rl-{k}"{f" style={chr(34)}--d:{_dfmt(dv)}{chr(34)}" if dv else ""} d="{_ct_d(runs)}"/>'
+            ps = ''.join(f'<path{" class=" + chr(34) + "rl-out" + chr(34) if k == "out" else ""}{f" style={chr(34)}--d:{_dfmt(dv)}{chr(34)}" if dv else ""} d="{_ct_d(runs)}"/>'   # step G: an inside line carries no class (the halo is rl-out)
                          for (k, dv), runs in sorted(paths.items(), key=lambda x: (x[0][0] != 'out', -x[0][1])))
             body += ps if og is None else f'<g style="--o:{og[0]}px {og[1]}px">{ps}</g>'
         out = (f'<div class="topo relief" aria-hidden="true" data-outline="{esc(o.get("id", ""))}"{st}><svg class="topo-l{tc}" viewBox="0 0 {W} {H}" '

@@ -1,19 +1,24 @@
 # The Academy catalog (S-DEC1, 20 Nov 2026), read by kit/courses.py.
 #
-# `course_order`: the order of the courses (courses/<id>/course.toml) on the home, in the drawer and in every list;
+# `course_order`: the order of the courses (courses/<id>/course.toml) on the area pages, in the drawer and in every list;
 # a course folder not named here follows them, sorted by id. `edition_order` does the same for editions/<name>.toml.
 #
-# `tracks` (THEMES): the Academy home and the root drawer group courses by subject. Every course names its track.
+# `tracks` (THEMES): the areas. Every course names its track. S-NAV1 (21 Nov 2026): the home shows one tile per track,
+# each track has its own page (#track-<id>: its courses, `extra`, its planned courses) and its entry in the drawer's
+# main navigation (nav.main-nav), its courses in its group of the sub-navigation (nav.sub-nav); an edition of one track
+# has no area page, its band of courses stays on the home (#track-<id>, the home's own section).
 # A track's `planned` rows are [short, name, colour, scope, the rest of the teaser]; kit/courses.py makes each a tuple.
 # `hero` (S-DEC3, 20 Nov 2026; until then _HERO_AT in kit/build.py): where the track's rise stands on the home hero,
 # [[x, y] tall, [x, y] wide], fractions of the layout's width and height; the tall layout below 1100 px (keep every rise
 # inside a 390 px phone's view, x .27 to .73), the wide one from 1100 px. Every track needs one (build.py stops without).
 # kit/courses.py takes it out of the track's dict into HERO_AT.
 # P-DEC12 (21 Nov 2026): a track's optional keys, read by kit/build.py with the default when absent: `extra`, a page
-# of the track's own copy shown on the home above its planned courses (a path from the repo root; raw HTML, the file's
+# of the track's own copy shown on its area page (S-NAV1; on the home before, and still in an edition of one track)
+# above its planned courses (a path from the repo root; raw HTML, the file's
 # text less its final newline); `planned_heading` ("Planned"), `planned_note` (""), `planned_label` ("Spine", the
 # word before a ghost tile's teaser), `planned_anchor` (the id of the folded list, "planned-<id>"), `planned_drawer`
-# (false: true also lists the planned courses in the root drawer, folded under the track's courses).
+# (false: true also lists the planned courses in the track's group of the sub-navigation, folded under its courses;
+# the root drawer before S-NAV1).
 
 course_order = [
   "greece",

@@ -93,6 +93,16 @@
       f.scrollLeft=Math.max(a,(+sv.getAttribute('data-xr')||0)*k-f.clientWidth);f.setAttribute('data-x0px',a);}
     vizEdge(f);});}
   window.addEventListener('resize',function(){vizFrames(document.querySelector('.panel:not([hidden])'));});
+  // S-NAV1 step G (the fresh check's finding 1): every line of a drawing swells by its own SVG transform, which runs on
+  // the main thread, so a drawing (.topo: a hero's layer, a tile's patch, a separator, a relief) out of the viewport
+  // holds still: one IntersectionObserver marks it .off (theme 4i pauses its lines' swell there) and unmarks it in
+  // view, where its lines go on from where they stopped. A hidden panel's drawings never intersect, so they hold still
+  // too; a panel fetched later has its drawings watched when it lands (load). Under reduced motion nothing animates and
+  // the class changes nothing; without IntersectionObserver every drawing runs, as before.
+  var topoSeen=typeof WeakSet==='function'?new WeakSet():null,topoIO=null;
+  try{if(topoSeen&&window.IntersectionObserver)topoIO=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('off',!e.isIntersecting);});});}catch(e){topoIO=null;}
+  function watchTopo(root){if(!topoIO||!root)return;[].slice.call(root.querySelectorAll('.topo')).forEach(function(t){if(topoSeen.has(t))return;topoSeen.add(t);topoIO.observe(t);});}
+  watchTopo(document);
   document.addEventListener('toggle',function(e){if(e.target&&e.target.querySelector)vizFrames(e.target);},true);
   // P68 · the reading layout (1 Nov 2026). A unit or report (built by mdcourse.reading) reads one section at a time:
   // .report.steps holds one .sec per h2; the sticky .stepbar shows "Section n of N", the progress bar, the section
@@ -209,7 +219,7 @@
     if(!p.innerHTML||p.hasAttribute('data-failed'))p.innerHTML='<p class="hnote">Loading…</p>';
     p.removeAttribute('data-failed');
     loading[id]=fetch(src).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text();}).then(function(t){
-      p.innerHTML=t;p.setAttribute('data-loaded','');p.removeAttribute('data-failed');delete loading[id];vizFrames(p);return true;
+      p.innerHTML=t;p.setAttribute('data-loaded','');p.removeAttribute('data-failed');delete loading[id];vizFrames(p);watchTopo(p);return true;
     },function(err){
       delete loading[id];p.setAttribute('data-failed','');
       var m=meta[id]||{},esc=function(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
@@ -259,10 +269,16 @@
   var saveT=0,routed=null;
   function saveY(){clearTimeout(saveT);try{var y=Math.round(window.scrollY||0),s=history.state;if(!s||s.y!==y)history.replaceState({y:y},'');}catch(e){}}
   window.addEventListener('scroll',function(){clearTimeout(saveT);saveT=setTimeout(saveY,200);},{passive:true});
+  // S-NAV1 step G (the fresh check's finding 8): a link the browser follows itself (a unit's pager card, a plain hash
+  // link) saves the scroll first, at once, so a tap inside the debounce (a momentum scroll) leaves the entry its y
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a)saveY();},true);
   function go(id){
     var h='#'+id;
     if(location.hash!==h){saveY();
-      try{history.pushState({y:0},'',h);}
+      // S-NAV1 step G (finding 9): a place inside the page shown (an edition of one track: its area's band on the home,
+      // #track-<id>) changes the address without a new entry, since the reader has not left the page
+      var el=ids.indexOf(id)<0&&document.getElementById(id),pn=el&&el.closest('.panel'),here=!!pn&&pn.id===current;
+      try{if(here)history.replaceState(history.state,'',h);else history.pushState({y:0},'',h);}
       catch(e){try{history.replaceState(null,'',h);}catch(e2){}}}
     routed=location.hash;
     if(ids.indexOf(id)<0){route();return;}show(id,true);}

@@ -68,7 +68,8 @@ layer and the copy, nothing else: the headline "Academy"; the area line, the fou
 its tone, aria-hidden, no link or focus stop in it; the static line naming all four in their tones, for a screen
 reader, and the line shown under reduced motion (with motion allowed the cycling line shows and the static line is for
 a screen reader only); the lede; the quiet link "What's new · <code> · <day>" naming the newest dated unit, to #new, at
-least 44 px tall, outlined, not filled. The contour layer: aria-hidden, no text, at most 20 KB, one layout shown (tall
+least 44 px tall, outlined, not filled. The contour layer: aria-hidden, no text, at most HOME_TOPO_MAX (24,148 B from
+S-NAV1 step G; 20 KB before), one layout shown (tall
 below 1100 px, wide from it), running the full width beside the sidebar while the copy keeps the column; in each layout
 one rise per area, its words the area's words as the sources give them (home_expect: a history unit's reports counted
 from the vault, a markdown unit from its reading page), standing in the order of its words, in the area's tone. On a
@@ -155,7 +156,8 @@ relief JSON, and a text of each course it serves naming it; every reading page m
 maps it one; and each mapped page at 320, 390, 768 and 1280 px, dark and light, with and without motion: the relief under
 the scope line as the header's last block, before the section bar; its caption printed exactly (what it shows, "a
 stylised outline drawn as a relief from an icon", the credit) with the licence linked to its text; div.topo.relief
-aria-hidden and textless, one svg.topo-l with only path.rl-in and path.rl-out (class and d), at most 12 KB, in the page's
+aria-hidden and textless, one svg.topo-l with only paths, the halo's path.rl-out and the others without a class (step
+G; path.rl-in before), at most viz.REL_MAX bytes (17,821 from S-NAV1 step G; 12 KB before), in the page's
 tone, the halo fainter; its frame at the drawing's aspect, the column's width or 280 px tall (340 from 768 px); a swell
 on each of its lines (S-NAV1 step D; the paths in groups of one origin, --o, each level's --d) by transform only, at a
 phase none of the page's separators has, and at five poses of the swell every line inside its frame; nothing moving
@@ -167,7 +169,11 @@ drawing; every --d is 0 to 1 (a relief's outer halo 1, a contour drawing's outer
 its core; at the five poses no join between two lines' stretches opens more than 0.5 px, every patch's, separator's and
 relief's lines stay inside the frame, every fitted hero's rises' own rings inside its frame and above its fade (from
 390 px); at the top of the swell an innermost line is unmoved and every other at 1 + d x --topo-grow; under reduced
-motion no animation runs at all.
+motion no animation runs at all; every relief outline of the library moves (--d > 0; S-NAV1 step G).
+Out of view (S-NAV1 step G; check_pause): at 390 px with motion, on the home and a course home (top and foot), back
+home through history, at the top level and in a sandboxed iframe: every drawing in view runs and moves, every one out of
+view is .off (shell.js's IntersectionObserver), its swells paused and still, every drawing of a hidden panel .off;
+under reduced motion no swell exists. The byte and class checks read a drawing without the runtime .off.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 Then rot_check.py (P30-F11, P30-F16): kit/shell.css is design/theme.css, no live instruction names a retired thing, and
 every staleness date past or due within 30 days is printed as a warning.
@@ -523,7 +529,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
   // the contour layer: aria-hidden, no text, one layout shown (tall below 1100 px, wide from it), one rise per area
   const topo = hero.querySelector(':scope > .topo');
   if (topo) {
-    out.topoBytes = new Blob([topo.outerHTML]).size;
+    out.topoBytes = new Blob([(e => { if (!e.classList.contains('off')) return e.outerHTML; const c = e.cloneNode(true); c.classList.remove('off'); return c.outerHTML; })(topo)]).size;   // S-NAV1 step G: the drawing as built, without shell.js's runtime .off
     if (topo.getAttribute('aria-hidden') !== 'true') bad.push('the contour layer is not aria-hidden');
     if (topo.querySelector('text, title, desc') || topo.textContent.trim()) bad.push('the contour layer holds text');
     const shown = [...topo.querySelectorAll('svg.topo-l')].filter(vis);
@@ -582,7 +588,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
             ph: p ? Math.round(p.getBoundingClientRect().height) : 0, sw: s ? Math.round(s.getBoundingClientRect().width) : 0}; });
   cards.forEach(c => {
     const name = c.querySelector('.ctitle').textContent;
-    const kidc = [...c.children].map(e => e.tagName.toLowerCase() + (e.className && typeof e.className === 'string' ? '.' + e.className : '')).join(' ');
+    const kidc = [...c.children].map(e => e.tagName.toLowerCase() + (e.className && typeof e.className === 'string' ? '.' + [...e.classList].filter(x => x !== 'off').join(' ') : '')).join(' ');   // S-NAV1 step G: not the runtime .off
     if (kidc !== 'div.ctop span.ctitle p div.cstats div.topo topo-patch') bad.push(`${name}: the tile holds ${kidc}, expected the chip row, the title, the tile line, the stats and the patch`);
     const n = c.querySelectorAll('.cstats > span').length; if (n !== 3) bad.push(`${name}: ${n} stats, expected 3`);
     const ctop = c.querySelector('.ctop'); if (!ctop || !ctop.querySelector('.cname') || !ctop.querySelector('.pill')) bad.push(`${name}: no chip and status pill`);
@@ -625,6 +631,11 @@ MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'N
 # P92: the hero's texts against the pixels actually under them (the contour lines, the page), in the theme in use: each
 # text's box and colour are read, every text of the copy is made transparent, the hero is shot, and each text's colour
 # is measured against every pixel in its box (4.5:1, 3:1 for large text); the texts are put back.
+# S-NAV1 step G (checker finding 2; a proposal for Pedro to veto): the home hero's layer at most 24,148 B (20 KB, 20,480,
+# before), 1 KB over build.py's HERO_BUDGET (23,124), raised by the bytes step D's swell attributes (a path and a --d
+# per line) took, so the hero keeps its levels (academy: 24,500 words a level, History 20). A course home's, an area's
+# and What's new's layers keep 20 KB (check_topo).
+HOME_TOPO_MAX = 24148
 HERO_TEXTS_JS = r'''() => { const out = [], copy = document.querySelector('#home .hcopy');
   copy.querySelectorAll('h1, .harea-w, .harea-all > span, .lede, .hnew > span').forEach(e => { const cs = getComputedStyle(e), r = e.getBoundingClientRect();
     if (!r.width || cs.display === 'none' || (e.closest('.harea-all') && getComputedStyle(e.closest('.harea-all')).clipPath !== 'none')) return;   // the static line read by a screen reader only
@@ -697,7 +708,7 @@ def check_home(pg, label, fails, expect, motion=False):
     nw = expect['newest']
     want_link = f"What's new · {nw['code']} · {int(nw['date'][8:])} {MON3[int(nw['date'][5:7]) - 1]}" if nw else None
     if r.get('link') and r['link'][0] != want_link: fails.append(f'home {label}: the What\'s new link reads {r["link"][0]!r}, expected {want_link!r}')
-    if (r.get('topoBytes') or 0) > 20 * 1024: fails.append(f'home {label}: the hero\'s contour SVG is {r["topoBytes"]} bytes, over 20 KB')
+    if (r.get('topoBytes') or 0) > HOME_TOPO_MAX: fails.append(f'home {label}: the hero\'s contour SVG is {r["topoBytes"]} bytes, over {HOME_TOPO_MAX:,}')
     for name, rs in r.get('layouts', []):
         got = [(l, w) for l, w, _, _, _ in rs]
         want = [(a['name'], a['words'] or None) for a in expect['areas']]
@@ -775,7 +786,7 @@ TOPO_JS = r"""(pid) => {
     return [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-rings'),
             getComputedStyle(pa).stroke, g.classList.contains('ct-plan') ? 0 : ([...g.querySelectorAll('path')].map(e => e.getAttribute('d')).join('').split('z').length - 1)]; });
   const one = (t, hero) => {
-    const r = {bytes: new Blob([t.outerHTML]).size, aria: t.getAttribute('aria-hidden'), text: !!(t.querySelector('text, title, desc') || t.textContent.trim()),
+    const r = {bytes: new Blob([(e => { if (!e.classList.contains('off')) return e.outerHTML; const c = e.cloneNode(true); c.classList.remove('off'); return c.outerHTML; })(t)]).size, aria: t.getAttribute('aria-hidden'), text: !!(t.querySelector('text, title, desc') || t.textContent.trim()),
                shown: [...t.querySelectorAll(':scope > svg.topo-l')].filter(vis).map(x => x.getAttribute('data-layout')),
                layouts: [...t.querySelectorAll(':scope > svg.topo-l')].map(x => [x.getAttribute('data-layout'), rises(x)]), ph: getComputedStyle(t).getPropertyValue('--ph').trim()};
     const sv = [...t.querySelectorAll(':scope > svg.topo-l')].find(vis);
@@ -818,7 +829,8 @@ TILES_JS = r"""(pid) => {
   P.querySelectorAll('.course.live').forEach(t => {
     if (!vis(t)) return;
     const disc = t.tagName === 'DETAILS', box = disc ? t.querySelector(':scope > summary') : t;
-    const kids = [...box.children].map(e => e.tagName.toLowerCase() + ((e.getAttribute('class') || '') ? '.' + e.getAttribute('class').split(' ').join('.') : '')).join(' ');
+    const kids = [...box.children].map(e => { const k = [...e.classList].filter(x => x !== 'off');   // S-NAV1 step G: not the runtime .off
+      return e.tagName.toLowerCase() + (k.length ? '.' + k.join('.') : ''); }).join(' ');
     const p = box.querySelector(':scope > p'), lh = p ? parseFloat(getComputedStyle(p).lineHeight) : 1;
     const patch = box.querySelector(':scope > .topo.topo-patch'), pr = patch && patch.getBoundingClientRect(), tr = t.getBoundingClientRect();
     const sv = patch && patch.querySelector('svg');
@@ -1730,11 +1742,11 @@ SEP_JS = r"""([pid, poses, bt, motion]) => { """ + SWELL_AT_JS + r"""
     if (!paras.length) { out.none++; if (ts.length) out.bad.push(`section ${k + 1}: no paragraph, yet ${ts.length} drawing(s)`); return; }
     if (ts.length !== 1 || !t) { out.bad.push(`section ${k + 1}: ${paras.length} paragraphs, ${ts.length} drawings, separator ${!!t}`); return; }
     out.seps++; seps.push([k, t]);
-    if (t.className !== 'topo topo-patch topo-sep' || t.tagName !== 'DIV') out.bad.push(`section ${k + 1}: the separator is ${t.tagName}.${t.className}`);
+    if ([...t.classList].filter(x => x !== 'off').join(' ') !== 'topo topo-patch topo-sep' || t.tagName !== 'DIV') out.bad.push(`section ${k + 1}: the separator is ${t.tagName}.${t.className}`);
     if (!t.nextElementSibling || !t.nextElementSibling.matches('nav.secnav')) out.bad.push(`section ${k + 1}: the separator is not last before the next and previous`);
     if (t.getAttribute('aria-hidden') !== 'true') out.bad.push(`section ${k + 1}: the separator is not aria-hidden`);
     if (t.textContent.trim() || t.querySelector('text, title, desc')) out.bad.push(`section ${k + 1}: the separator holds text`);
-    const b = new Blob([t.outerHTML]).size; out.bytes += b; out.maxb = Math.max(out.maxb, b);
+    const b = new Blob([(e => { if (!e.classList.contains('off')) return e.outerHTML; const c = e.cloneNode(true); c.classList.remove('off'); return c.outerHTML; })(t)]).size; out.bytes += b; out.maxb = Math.max(out.maxb, b);
     const cap = 6144 + 135 * Math.max(0, t.querySelectorAll('svg.topo-l g.ct-rise').length - 38);   // W-SCE2: build.py SEP_MAX, SEP_PER for each rise over SEP_FREE
     if (b > cap) out.bad.push(`section ${k + 1}: the separator is ${b} bytes, over ${cap}`);
     const gs = [...t.querySelectorAll('svg.topo-l g.ct-rise')], got = gs.map(g => +g.getAttribute('data-words'));
@@ -1855,22 +1867,23 @@ REL_JS = r"""([pid, poses, bt, motion, want]) => { """ + SWELL_AT_JS + r"""
   if (!cap.textContent.includes(want.credit)) out.bad.push('the credit is not printed exactly');
   const la = cap.querySelectorAll('a');
   if (la.length !== 1 || la[0].getAttribute('href') !== want.lic || la[0].textContent !== want.licence) out.bad.push('the licence is not linked to its text');
-  if (t.className !== 'topo relief' || t.getAttribute('aria-hidden') !== 'true') out.bad.push(`the drawing is ${t.className}, aria-hidden ${t.getAttribute('aria-hidden')}`);
+  if ([...t.classList].filter(x => x !== 'off').join(' ') !== 'topo relief' || t.getAttribute('aria-hidden') !== 'true')   // S-NAV1 step G: shell.js's runtime .off aside out.bad.push(`the drawing is ${t.className}, aria-hidden ${t.getAttribute('aria-hidden')}`);
   if (t.textContent.trim() || t.querySelector('text, title, desc')) out.bad.push('the drawing holds text');
   const svgs = t.querySelectorAll('svg'), sv = svgs[0];
   if (svgs.length !== 1 || !sv.classList.contains('topo-l')) out.bad.push(`${svgs.length} svgs, or not svg.topo-l`);
   // S-NAV1 step D: the paths, each in a group of one origin (<g style="--o:...">) where it moves, a level's d in its style
   const paths = [...sv.querySelectorAll('path')], gs = [...sv.querySelectorAll('g')];
   if (!paths.length || [...sv.children].some(e => !['path', 'g'].includes(e.tagName)) || gs.some(g => g.parentElement !== sv || [...g.children].some(e => e.tagName !== 'path') || [...g.attributes].some(a => a.name !== 'style') || !/^--o:-?\d+px -?\d+px$/.test(g.getAttribute('style') || ''))
-      || paths.some(p => !['rl-in', 'rl-out'].includes(p.getAttribute('class')) || [...p.attributes].some(a => !['class', 'd', 'style'].includes(a.name)) || (p.hasAttribute('style') && !/^--d:(?:1|\.\d\d?)$/.test(p.getAttribute('style')))))
-    out.bad.push('the drawing holds more than rl-in and rl-out paths (a class, a d, a --d) in groups of one origin (--o)');
-  if (!sv.querySelector('path.rl-in') || !sv.querySelector('path.rl-out')) out.bad.push('no outline or no halo');
-  out.bytes = new Blob([t.outerHTML]).size;
-  if (out.bytes > 12288) out.bad.push(`the drawing is ${out.bytes} bytes, over 12 KB`);
+      || paths.some(p => (p.hasAttribute('class') && p.getAttribute('class') !== 'rl-out') || [...p.attributes].some(a => !['class', 'd', 'style'].includes(a.name)) || (p.hasAttribute('style') && !/^--d:(?:1|\.\d\d?)$/.test(p.getAttribute('style')))))
+    out.bad.push('the drawing holds more than inside paths (no class) and rl-out paths (a d, a --d) in groups of one origin (--o)');
+  // S-NAV1 step G: an inside line (the outline and the levels inside it) carries no class; only the halo is rl-out
+  if (!sv.querySelector('path:not([class])') || !sv.querySelector('path.rl-out')) out.bad.push('no outline or no halo');
+  out.bytes = new Blob([(e => { if (!e.classList.contains('off')) return e.outerHTML; const c = e.cloneNode(true); c.classList.remove('off'); return c.outerHTML; })(t)]).size;
+  if (out.bytes > __REL_MAX__) out.bad.push(`the drawing is ${out.bytes} bytes, over __REL_MAX__`);
   const probe = document.createElement('i'); P.appendChild(probe); probe.style.color = 'var(--cc)'; const tone = getComputedStyle(probe).color; probe.remove();
   const st = [...new Set(paths.map(p => getComputedStyle(p).stroke))];
   if (st.length !== 1 || st[0] !== tone) out.bad.push(`lines in ${st.join(' ')}, the page's tone ${tone}`);
-  const op = parseFloat(getComputedStyle(sv).opacity), ho = parseFloat(getComputedStyle(sv.querySelector('path.rl-out')).strokeOpacity), io = parseFloat(getComputedStyle(sv.querySelector('path.rl-in')).strokeOpacity);
+  const op = parseFloat(getComputedStyle(sv).opacity), ho = parseFloat(getComputedStyle(sv.querySelector('path.rl-out')).strokeOpacity), io = parseFloat(getComputedStyle(sv.querySelector('path:not([class])')).strokeOpacity);
   if (!(op > 0 && op < 1) || !(ho < io)) out.bad.push(`the layer at ${op}, the halo at ${ho} of the lines' ${io}`);
   // the frame: the drawing's aspect, the column's width at most, 280 px tall at most on a phone (340 from 768)
   const fr = t.getBoundingClientRect(), col = hd.getBoundingClientRect(), vb = sv.viewBox.baseVal;
@@ -1905,7 +1918,7 @@ REL_JS = r"""([pid, poses, bt, motion, want]) => { """ + SWELL_AT_JS + r"""
   const txt = P.querySelector('.report.steps').textContent;
   if (!new RegExp('\\b(?:' + want.kw.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i').test(txt)) out.bad.push('the page\'s text does not name the object');
   return out;
-}"""
+}""".replace('__REL_MAX__', str(viz.REL_MAX))   # S-NAV1 step G: the budget is viz.py's (17,821 B; 12 KB before)
 
 
 def check_reliefs(br, fails):
@@ -1913,7 +1926,7 @@ def check_reliefs(br, fails):
     SVG and its relief JSON, and a text of each course it serves naming it); every page uses.json maps (in this
     edition) at 320, 390, 768 and 1280 px, dark and light, with and without motion (REL_JS: its place under the scope
     line before the section bar, its caption and credit printed exactly, classes only, aria-hidden and textless, at most
-    12 KB, the page's tone, the halo fainter, its frame, a swell on each line by transform only at a phase of its own, its
+    viz.REL_MAX bytes (17,821 from S-NAV1 step G; 12 KB before), the page's tone, the halo fainter, its frame, a swell on each line by transform only at a phase of its own, its
     lines inside the frame at the five poses of the swell, still under reduced motion, the page's text naming
     the object, no sideways scroll); and no other reading page holding a relief."""
     import mdcourse
@@ -2123,9 +2136,19 @@ def check_swell(br, fails, pages=None):
     its frame and every hero rise's own rings inside the hero's frame and above its fade (from 390 px, and not on the
     home, whose hero is not fitted to its frame, as check_topo);
     at the top of the swell an innermost line has not moved and every other is at 1 + d x --topo-grow; under reduced
-    motion no animation runs at all. Prints each page's joins, its widest gap at each pose and its closest clearance."""
+    motion no animation runs at all; and (S-NAV1 step G) every relief outline of the library moves, --d > 0. Prints each
+    page's joins, its widest gap at each pose and its closest clearance."""
     pages = pages or swell_pages()
     errs, bad, rows = [], [], {}
+    # S-NAV1 step G (the fresh check's finding 5): every relief outline (level 0) in the library moves, d > 0 as the page
+    # carries it (two decimals), a piece with no level inside its outline too (trireme, toga, bough)
+    lib, still = json.loads((OUTL / 'outlines.json').read_text())['outlines'], []
+    for o in lib:
+        ls = viz.rel_lines(json.loads((OUTL / f'{o["id"]}.json').read_text())['lines'])
+        n = sum(1 for ln, dl, _ in ls if ln['lv'] == 0 and not round(dl, 2) > 0)
+        if n: still.append(f'{o["id"]} ({n})')
+    if still: fails.append(f'swell: relief outlines that do not move (--d 0): {", ".join(still)}')
+    print(f'swell: every outline of the {len(lib)} in the library moves (its outline rings at --d > 0)' if not still else f'swell: outlines held still: {still}')
     for name, w, h, mobile in SWELL_WIDTHS:
         for motion in (True, False):
             ctx, pg, _ = new_page(None, br, errs, f'swell {name}', w, h, mobile, motion=motion)
@@ -2153,6 +2176,99 @@ def check_swell(br, fails, pages=None):
               + ', '.join(f'{k}: {v:.3f} px' for k, v in sorted(rw.get('gaps', {}).items())) + f'; closest line {rw["clear"]:.1f} px inside its frame; {rw["runs"]} runs with motion')
     print(f'swell: {len(pages)} pages ({", ".join(pages)}) at {", ".join(str(x[1]) for x in SWELL_WIDTHS)} px, dark and light, with motion and under reduced motion')
     return rows
+
+
+# S-NAV1 step G (the fresh check's finding 1): a drawing out of view holds still. shell.js's IntersectionObserver marks
+# every .topo out of the viewport .off, and theme 4i pauses its lines' swell there. PAUSE_JS: each drawing of the page
+# shown (its shown layout), whether it is in the viewport (2 px clear of an edge, so an edge case reads either way), its
+# .off, its swells' play states and current times; and how many drawings of hidden panels are not marked .off.
+PAUSE_JS = r"""(pid) => { const P = document.getElementById(pid), out = {draws: [], hiddenOn: 0, swells: 0};
+  if (!P) return out;
+  const vh = innerHeight, vw = innerWidth;
+  out.swells = document.getAnimations().filter(a => a.animationName === 'topo-swell').length;
+  [...P.querySelectorAll('.topo')].forEach((t, i) => {
+    const sv = [...t.querySelectorAll(':scope > svg.topo-l')].find(s => getComputedStyle(s).display !== 'none'); if (!sv) return;
+    const r = t.getBoundingClientRect(); if (!r.width || !r.height) return;
+    const inView = r.bottom > 2 && r.top < vh - 2 && r.right > 2 && r.left < vw - 2, outView = r.bottom < -2 || r.top > vh + 2 || r.right < -2 || r.left > vw + 2;
+    if (!inView && !outView) return;
+    const an = t.getAnimations({subtree: true}).filter(a => a.animationName === 'topo-swell');
+    out.draws.push({i, view: inView, kind: t.classList.contains('relief') ? 'relief' : t.classList.contains('topo-sep') ? 'sep' : t.classList.contains('topo-patch') ? 'patch' : 'hero',
+      off: t.classList.contains('off'), st: [...new Set(an.map(a => a.playState))].join(), n: an.length, ct: an.slice(0, 3).map(a => a.currentTime)}); });
+  out.hiddenOn = [...document.querySelectorAll('.panel[hidden] .topo')].filter(t => !t.classList.contains('off')).length;
+  return out; }"""
+
+
+# the page scrolled so its last drawing that moves (not a planned one, rings only) stands in the middle of the window
+# (its hero then out of view)
+PAUSE_LAST_JS = r"""(pid) => { const ts = [...document.getElementById(pid).querySelectorAll('.topo')].filter(t => t.getBoundingClientRect().height && t.getAnimations({subtree: true}).length);
+  const r = ts[ts.length - 1].getBoundingClientRect(); window.scrollTo(0, scrollY + r.top + r.height / 2 - innerHeight / 2); }"""
+
+
+def _pause_probe(fr, pid, label, fails, need=('on', 'off')):
+    """Two looks at the page 300 ms apart: every drawing in view is not .off, its swells running and moving; every one
+    out of view .off, its swells paused and still; no drawing of a hidden panel unmarked. Returns (in view, out of view)."""
+    fr.wait_for_timeout(400)   # the observer's callbacks after the last scroll or route
+    a = fr.evaluate(PAUSE_JS, pid); fr.wait_for_timeout(300); b = fr.evaluate(PAUSE_JS, pid)
+    bi = {d['i']: d for d in b['draws']}
+    on = off = 0
+    for d in a['draws']:
+        e = bi.get(d['i'])
+        if not e or e['view'] != d['view'] or not d['n']: continue
+        if d['view']:
+            on += 1
+            if d['off'] or d['st'] != 'running' or e['ct'] == d['ct']: fails.append(f'pause {label} {pid}: a {d["kind"]} in view is {"off" if d["off"] else "on"}, its swells {d["st"]}, {"still" if e["ct"] == d["ct"] else "moving"}; expected on, running, moving')
+        else:
+            off += 1
+            if not d['off'] or d['st'] != 'paused' or e['ct'] != d['ct']: fails.append(f'pause {label} {pid}: a {d["kind"]} out of view is {"off" if d["off"] else "on"}, its swells {d["st"]}, {"still" if e["ct"] == d["ct"] else "moving"}; expected off, paused, still')
+    if b['hiddenOn']: fails.append(f'pause {label} {pid}: {b["hiddenOn"]} drawings of hidden panels are not marked off')
+    if 'on' in need and not on: fails.append(f'pause {label} {pid}: no drawing in view to check')
+    if 'off' in need and not off: fails.append(f'pause {label} {pid}: no drawing out of view to check')
+    return on, off
+
+
+def check_pause(br, fails, w=390, h=844, theme='dark'):
+    """S-NAV1 step G: at 390 px (or w by h, in theme) with motion allowed, on the home and a course home (its hero in view, its tiles' patches
+    below) and the same course home scrolled to its last drawing (the hero then out of view, that patch in it), after a route
+    through history (the course home, then back to the home) and inside a sandboxed iframe (allow-scripts
+    allow-same-origin, as check_history): every drawing in view runs and moves, every one out of view is .off, paused and
+    still, every drawing of a hidden panel .off; under reduced motion no swell exists at all, scrolled or not."""
+    course = next((x for x in swell_pages() if x not in ('home', 'new') and x not in AREA_IDS and x in (HIST_HOMES | set(home_expect()['courses']))), None)
+    if not course: fails.append('pause: no course home to check'); return
+    errs, seen = [], []
+    light = f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')"
+    def walk(fr, label):
+        if theme == 'light': fr.evaluate(light)
+        fr.evaluate(f"location.hash = '{course}'"); fr.wait_for_function(READY_JS, timeout=15000)
+        fr.evaluate('window.scrollTo(0, 0)'); seen.append(_pause_probe(fr, course, label, fails))
+        fr.evaluate(PAUSE_LAST_JS, course); seen.append(_pause_probe(fr, course, label + ' at its last drawing', fails))
+        fr.evaluate('history.back()'); fr.wait_for_function(READY_JS, timeout=15000)
+        fr.evaluate('window.scrollTo(0, 0)'); seen.append(_pause_probe(fr, 'home', label + ' back home', fails, need=('on',)))
+    tag = f'{w} {theme}'
+    ctx, pg, _ = new_page(None, br, errs, 'pause', w, h, w < 1100, motion=True)
+    ready(pg); seen.append(_pause_probe(pg, 'home', tag, fails, need=('on',)))
+    walk(pg, tag)
+    ctx.close()
+    ctx, pg, _ = new_page(None, br, errs, 'pause reduced', w, h, w < 1100, motion=False)
+    pg.evaluate(f"location.hash = '{course}'"); ready(pg)
+    for y in ('0', 'document.documentElement.scrollHeight'):
+        pg.evaluate(f'window.scrollTo(0, {y})'); pg.wait_for_timeout(400)
+        n = pg.evaluate(PAUSE_JS, course)['swells']
+        if n: fails.append(f'pause reduced {course}: {n} swells exist under reduced motion')
+    ctx.close()
+    ctx = br.new_context(viewport={'width': w + 30, 'height': h + 56}, color_scheme='dark', reduced_motion='no-preference')
+    ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=FONT_CSS))
+    ctx.route('**/fonts.gstatic.com/**', font_file)
+    host = URL.replace('index.html', '__frame_pause.html')
+    ctx.route(host, lambda r: r.fulfill(status=200, content_type='text/html',
+              body=f'<!DOCTYPE html><iframe sandbox="allow-scripts allow-same-origin" src="index.html#home" style="width:{w}px;height:{h}px;border:0"></iframe>'))
+    pg = ctx.new_page(); pg.on('pageerror', lambda e: errs.append(f'pause iframe: {e}')); pg.goto(host); pg.wait_for_timeout(300)
+    fr = pg.frames[1]; fr.wait_for_function(READY_JS, timeout=15000)
+    seen.append(_pause_probe(fr, 'home', tag + ' iframe', fails, need=('on',)))
+    walk(fr, tag + ' iframe')
+    ctx.close()
+    if errs: fails.append('pause: console errors: ' + ' | '.join(errs[:3]))
+    print(f'pause: {course} and the home at {w} px {theme}, top level and in a sandboxed iframe, with a route back through history: '
+          f'{sum(a for a, _ in seen)} drawings in view and {sum(b for _, b in seen)} out of view checked (in, out per look: {seen}); none under reduced motion')
 
 
 def check_reading(br, fails):
@@ -2928,7 +3044,8 @@ def check_nav(br, fails, w=390, h=844, theme='dark', motion=False, label=None):
     itself marked) on each of its pages; What's new, the Changelog and the Backlog at the home's foot and in neither nav.
     Then the drawer: below 1100 px the menu opens it with both navs on screen and the focus on its close button, the
     current item scrolled into its list, Escape closes it and gives the focus back; an area entry tapped in it closes it
-    and opens the area (in an edition of one track, the home at the track's band), and a back returns. From 1100 px the
+    and opens the area (in an edition of one track, the home at the track's band), and a back returns; in an edition of
+    one track, tapped on the home it adds no history entry (S-NAV1 step G). From 1100 px the
     two navs stand in the sidebar without the menu. Every page error and console error fails."""
     label = label or f'{w}x{h} {theme}' + (' motion' if motion else '')
     main, area, sec = nav_expect()
@@ -2995,6 +3112,13 @@ def check_nav(br, fails, w=390, h=844, theme='dark', motion=False, label=None):
     pg.evaluate('history.back()'); pg.wait_for_timeout(120); ready(pg)
     back = pg.evaluate("[...document.querySelectorAll('.panel')].find(p => !p.hidden).id")
     if back != page: fails.append(f'nav {label}: back from the area lands on {back}, expected {page}')
+    if not MULTI:   # S-NAV1 step G (the fresh check's finding 9): on the home, the area entry (its band, on the home) adds no entry
+        pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(60)
+        n0h = pg.evaluate('history.length')
+        if w < 1100: pg.click('#menuB'); pg.wait_for_timeout(wait)
+        pg.click(f'#drawer nav.main-nav a.ditem[data-target="{tr}"]'); pg.wait_for_timeout(wait); ready(pg)
+        at = pg.evaluate("() => [[...document.querySelectorAll('.panel')].find(p => !p.hidden).id, location.hash, history.length]")
+        if at != ['home', '#' + tr, n0h]: fails.append(f'nav {label}: on the home the main nav\'s {tr} gives {at}, expected the home at #{tr} with no new entry ({n0h})')
     if errs: fails.append(f'nav {label}: console errors ' + ' | '.join(errs[:3]))
     ctx.close()
     if len(fails) == n0: print(f'nav {label}: {len(pages)} pages, main nav {" · ".join(x[1] for x in main)}; sub-nav per section; site links at the home\'s foot; drawer from {page} -> {tr} and back')
@@ -3021,6 +3145,7 @@ def main():
         check_seps(br, fails)
         check_reliefs(br, fails)   # P95
         check_swell(br, fails)   # S-NAV1 step D
+        check_pause(br, fails)   # S-NAV1 step G: a drawing out of view holds still
         check_site_log(br, fails)   # S-PAGES
         check_history(br, fails)   # S-NAV1 step A
         check_nav(br, fails)   # S-NAV1 step C: phone, dark

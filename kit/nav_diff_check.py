@@ -4,9 +4,11 @@ reading page's text unchanged once its navigation and its line drawings are stri
   python3 kit/nav_diff_check.py START NOW [--edition E ...]
         START and NOW are two repo roots (a clone or a git worktree), each already built (kit/baseline.py's build of
         each edition compared); compares the files each edition's build writes
-  python3 kit/nav_diff_check.py --build COMMIT [--now REV] [--edition E ...] [--keep]
+  python3 kit/nav_diff_check.py --build COMMIT [--now REV | --now-tree DIR] [--edition E ...] [--keep] [--expect FILE]
+                                [--refit-out FILE]
         makes two temporary git worktrees under /tmp (COMMIT, and REV, default HEAD), builds every edition compared in
-        each with that tree's own kit/baseline.py build(), compares them, then removes the worktrees (--keep leaves them)
+        each with that tree's own kit/baseline.py build(), compares them, then removes the worktrees (--keep leaves them);
+        --now-tree DIR compares against DIR as it is built (a working tree), building only COMMIT
 
 Editions compared: academy, greece and marketing-ai (EDITIONS below), or those given with --edition. Exit 0 when every
 difference is classified and every reading page is identical; 1 otherwise, each failure printed with its file and context.
@@ -53,6 +55,25 @@ built page; new.html, changelog.html and viz-examples.html included), is put bac
 every <nav> element (crumbs, any nav) and every <svg> element, and without the style attribute of a line-illustration
 wrapper's start tag (a relief's --ar and a drawing's --ph sit there, outside the <svg>); the result must be byte
 identical between START and NOW. A panel or file present on one side only fails.
+
+The drawing content (S-NAV1 step G, the fresh check's finding 4: "SVG lines" takes a whole drawing, so a change in
+which lines are drawn passed as a change of attributes). Every line drawing of every HTML file (an outermost element
+the "SVG lines" rule matches, wherever it sits: inside the home and the area pages too) gets a key, (the file, the
+id of the panel holding it or the file itself, its kind, its order among the drawings of that kind there; kinds: hero,
+patch, sep, relief), and a digest of what it draws that ignores --d, --o, the <g> grouping, the merging of stretches
+into one path, the simplification of a line and every coordinate: for each of its layouts (svg.topo-l, by
+data-layout), each rise in order (g.ct-rise: its data-label and data-rings, the levels it stands; g.ct-plan: its label
+and rings); for a relief, its inside rings and lines (every path not .rl-out: closed subpaths, open subpaths) and its
+halo's (path.rl-out). Two digests that differ are
+the class "drawing content", listed one by one (file, key, what changed) and a failure unless the file given with
+--expect names that key (one line each: "<edition> <file> <key>", the key as printed; # starts a comment). A drawing
+on one side only is listed too, a failure unless --expect names it or it sits in a region that may come or go (an
+area page). A changed frame (the viewBox) is counted as "drawing frame" and not failed (step D re-derived every
+frame from the swell's clearances, by design). A rise's own closed rings (the subpaths a "z" closes) and its spot
+rings (circle.ct-spot) depend on where its neighbours' hills meet, so on the spread each drawing is fitted with: a
+change of those alone is counted as "drawing refit", not failed (step D refitted every patch and separator to the
+swell's clearances, the fresh check's finding 12), and each is written to the file given with --refit-out. The
+summary prints, per edition, how many drawings draw the same lines and levels.
 
 The size table: kit/README.md, written by build.py, holds a table of the site's file sizes between the markers it
 writes; a README difference passes only if each changed line on both sides lies inside that table (README_TABLE).
@@ -332,6 +353,95 @@ def first_diff(a, b):
     return i, a[max(0, i - 120):i + 200], b[max(0, i - 120):i + 200]
 
 
+# ---- the drawing content (S-NAV1 step G) ----------------------------------------------------------------------------
+
+def _subpaths(d):
+    """(closed, open) subpaths of a path's d: every M starts one, a z closes the current one."""
+    toks = re.findall(r'[MmZz]', d or '')
+    closed = sum(1 for t in toks if t in 'Zz')
+    return closed, sum(1 for t in toks if t in 'Mm') - closed
+
+
+def drawings(text):
+    """Every line drawing of a file: [(key, digest, frame)] in document order (docstring, "The drawing content")."""
+    toks = Tokeniser(text).toks
+    out, stack, k, ordinals = [], [], 0, {}
+    while k < len(toks):
+        t = toks[k]
+        if t.kind == 'start' and is_line_drawing(t.tag, t.attrs):
+            c = classes_of(t.attrs)
+            kind = 'relief' if 'relief' in c else 'sep' if 'topo-sep' in c else 'patch' if 'topo-patch' in c else 'hero'
+            panel = next((a.get('id') for tg, a in reversed(stack) if tg == 'section' and 'panel' in classes_of(a) and a.get('id')), '')
+            ordinals[(panel, kind)] = ordinals.get((panel, kind), 0) + 1
+            key = '%s/%s-%d' % (panel or '-', kind, ordinals[(panel, kind)])
+            area = panel.startswith('track-')
+            depth, j, lays, frames, cur, grp = 1, k + 1, [], [], None, None
+            rel = {'in': [0, 0], 'out': [0, 0]}
+            while j < len(toks) and depth:
+                u = toks[j]
+                if u.kind == 'start' and u.tag not in VOID:
+                    depth += 1
+                elif u.kind == 'end':
+                    depth -= 1
+                if u.kind in ('start', 'startend'):
+                    uc = classes_of(u.attrs)
+                    if u.tag == 'svg':
+                        cur = [u.attrs.get('data-layout') or ' '.join(x for x in uc if x != 'topo-l'), []]
+                        lays.append(cur); frames.append(u.attrs.get('viewbox') or u.attrs.get('viewBox'))
+                    elif u.tag == 'g' and ('ct-rise' in uc or 'ct-plan' in uc) and cur is not None:
+                        grp = ['plan' if 'ct-plan' in uc else 'rise', u.attrs.get('data-label'), u.attrs.get('data-rings'), 0, 0]
+                        cur[1].append(grp)
+                    elif u.tag == 'path':
+                        cl, op = _subpaths(u.attrs.get('d'))
+                        if kind == 'relief':
+                            r = rel['out' if 'rl-out' in uc else 'in']; r[0] += cl; r[1] += op
+                        elif grp is not None:
+                            grp[3] += cl
+                    elif u.tag == 'circle' and grp is not None:
+                        grp[4] += 1
+                if u.kind == 'end' and u.tag == 'g':
+                    grp = None
+                j += 1
+            if kind == 'relief':
+                dig = 'inside %d rings %d lines; halo %d rings %d lines' % (rel['in'][0], rel['in'][1], rel['out'][0], rel['out'][1])
+                own = ''
+            else:
+                dig = '; '.join('%s: %s' % (nm, ', '.join(
+                    ('%s plan %d rings' % (g[1], g[4])) if g[0] == 'plan' else ('%s %s levels' % (g[1], g[2])) for g in gs)) for nm, gs in lays)
+                own = '; '.join('%s: %s' % (nm, ', '.join(
+                    '%s %d own rings%s' % (g[1], g[3], ' %d spot' % g[4] if g[4] else '') for g in gs if g[0] != 'plan')) for nm, gs in lays)
+            out.append((key, dig, ' | '.join(str(f) for f in frames), area, own))
+            k = j
+            continue
+        if t.kind == 'start' and t.tag not in VOID:
+            stack.append((t.tag, t.attrs))
+        elif t.kind == 'end' and any(tg == t.tag for tg, _ in stack):
+            while stack:
+                if stack.pop()[0] == t.tag:
+                    break
+        k += 1
+    return out
+
+
+def compare_drawings(rel, a, b, expect, res):
+    """Adds to res: same, frame (frames changed), exceptions [(line, expected)], refit [lines]."""
+    da, db = {x[0]: x for x in drawings(a)}, {x[0]: x for x in drawings(b)}
+    for key in list(da) + [k for k in db if k not in da]:
+        x, y = da.get(key), db.get(key)
+        if x and y:
+            if x[2] != y[2]:
+                res['frame'] += 1
+            if x[4] != y[4]:
+                res['refit'].append('%s %s: %s  ->  %s' % (rel, key, x[4], y[4]))
+            if x[1] == y[1]:
+                res['same'] += 1
+                continue
+            res['exc'].append(('%s %s: %s  ->  %s' % (rel, key, x[1], y[1]), (rel, key) in expect))
+        else:
+            z = x or y
+            res['exc'].append(('%s %s: only %s (%s)' % (rel, key, 'at start' if x else 'now', z[1]), (rel, key) in expect or z[3]))
+
+
 # ---- README size table ----------------------------------------------------------------------------------------------
 
 def table_lines(text):
@@ -364,9 +474,10 @@ def readme_ok(a, b):
 
 # ---- one edition ----------------------------------------------------------------------------------------------------
 
-def check(start, now, edition):
+def check(start, now, edition, expect=frozenset()):
     fa, fb = files(start, edition), files(now, edition)
     counts, fails, touched = {}, [], {}
+    draw = {'same': 0, 'frame': 0, 'exc': [], 'refit': []}
     reading = {'same': 0, 'kinds': {}}
     for rel in sorted(set(fa) - set(fb)):
         fails.append('%s: removed' % rel)
@@ -391,6 +502,7 @@ def check(start, now, edition):
         if not html:
             continue
         ta, tb = a.decode(), b.decode()
+        compare_drawings(rel, ta, tb, {(r, k) for e, r, k in expect if e == edition}, draw)
         if rel.endswith('/index.html') and rel.count('/') <= 3 and '<main' in ta:
             pa, pb = panels(ta), panels(tb)
             for pid in sorted(set(pa) ^ set(pb)):
@@ -411,7 +523,8 @@ def check(start, now, edition):
             else:
                 i, x, y = first_diff(sa, sb)
                 fails.append('%s: reading text differs at %d:\n    start: %r\n    now:   %r' % (rel, i, x, y))
-    return counts, touched, fails, reading, (len(fa), len(fb), sum(1 for r in set(fa) & set(fb) if fa[r].read_bytes() != fb[r].read_bytes()))
+    fails += ['drawing content: ' + line for line, ok in draw['exc'] if not ok]
+    return counts, touched, fails, reading, (len(fa), len(fb), sum(1 for r in set(fa) & set(fb) if fa[r].read_bytes() != fb[r].read_bytes())), draw
 
 
 # ---- --build --------------------------------------------------------------------------------------------------------
@@ -442,32 +555,51 @@ def main():
     ap.add_argument('trees', nargs='*')
     ap.add_argument('--build')
     ap.add_argument('--now', default='HEAD')
+    ap.add_argument('--now-tree', help='with --build: compare against this tree, already built (a working tree with changes not yet committed), instead of a worktree of --now')
     ap.add_argument('--edition', action='append', choices=EDITIONS)
     ap.add_argument('--keep', action='store_true')
+    ap.add_argument('--expect', help='a file of drawings whose content may change: "<edition> <file> <key>" per line')
+    ap.add_argument('--refit-out', help='write every drawing whose own rings or spots changed (the "drawing refit" count) to this file')
     o = ap.parse_args()
+    expect = set()
+    if o.expect:
+        for ln in pathlib.Path(o.expect).read_text().splitlines():
+            ln = ln.split('#', 1)[0].split()
+            if len(ln) == 3:
+                expect.add(tuple(ln))
     eds = o.edition or list(EDITIONS)
     made = []
     if o.build:
         if o.trees:
             ap.error('give two trees or --build, not both')
         start = build_tree(git('rev-parse', o.build), eds, '/tmp'); made.append(start)
-        now = build_tree(git('rev-parse', o.now), eds, '/tmp'); made.append(now)
+        if o.now_tree:
+            now = pathlib.Path(o.now_tree).resolve()
+        else:
+            now = build_tree(git('rev-parse', o.now), eds, '/tmp'); made.append(now)
     elif len(o.trees) == 2:
         start, now = (pathlib.Path(x).resolve() for x in o.trees)
     else:
         ap.error('give <start-tree> <now-tree>, or --build <start-commit>')
-    bad = 0
+    bad, refit_lines = 0, []
     try:
         for e in eds:
-            counts, touched, fails, reading, (na, nb, nd) = check(start, now, e)
+            counts, touched, fails, reading, (na, nb, nd), draw = check(start, now, e, expect)
             print('== %s: %d files at start, %d now, %d differ' % (e, na, nb, nd))
             for c in CLASSES:
                 if c in counts:
                     print('  %-11s %4d stretches in %3d files' % (c, counts[c], len(touched.get(c, ()))))
             print('  reading pages identical once nav and SVG are stripped: %d (%s)' % (
                 reading['same'], ', '.join('%s %d' % kv for kv in sorted(reading['kinds'].items()))))
+            nexp = sum(1 for _, ok in draw['exc'] if ok)
+            print('  drawing content: %d drawings draw the same lines and levels; %d changed or on one side only (%d expected); drawing frame: %d viewBoxes changed; drawing refit: %d drawings with other own or spot rings' % (
+                draw['same'], len(draw['exc']), nexp, draw['frame'], len(draw['refit'])))
+            refit_lines += ['%s %s' % (e, x) for x in draw['refit']]
+            for line, ok in draw['exc']:
+                if ok:
+                    print('    expected: ' + line[:400])
             for f in fails:
-                print('  FAIL ' + f)
+                print('  FAIL ' + f[:1500])
             print('  %s: %s' % (e, 'OK' if not fails else '%d unclassified or changed' % len(fails)))
             bad += len(fails)
     finally:
@@ -475,6 +607,8 @@ def main():
             for d in made:
                 git('worktree', 'remove', '--force', str(d))
             git('worktree', 'prune')
+    if o.refit_out:
+        pathlib.Path(o.refit_out).write_text(''.join(x + '\n' for x in refit_lines))
     print('NAV DIFF CHECK PASSED' if not bad else 'NAV DIFF CHECK FAILED: %d' % bad)
     sys.exit(1 if bad else 0)
 

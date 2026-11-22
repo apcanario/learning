@@ -43,6 +43,11 @@
    over --topo-breath each way: topo-swell, transform only, still under reduced motion, 4i. --topo-grow is now the
    growth of the outermost line (.1; it was the whole drawing's scale, 1.1). A course home's hero from 768 px is at
    least 370 px tall (380 with the turn's overscan), 6.
+   Version 6.19, 22 Nov 2026 (S-NAV1 step G, the fresh check's findings 1 and 3): a drawing out of view holds still
+   (.topo.off: shell.js marks it with an IntersectionObserver; its lines' swell paused where it stands, resumed in
+   view), so a course home's hundreds of lines no longer animate on the main thread off screen, 4i; an object relief's
+   inside lines carry no class (only the halo is .rl-out), every line of it in the page's tone, so the drawing keeps
+   every level within its budget, 4i.
    Version 6.17, 21 Nov 2026 (S-NAV1 step C): the navigation is two levels in the drawer's list (.dlist): nav.main-nav,
    Home and the areas (.darea, the area's tone), ruled off as the old top rows (.dtop) were, and nav.sub-nav, the
    section's group (.sub-sec): an area's courses, a course's pages and units; none on the home. Phone look unchanged
@@ -546,7 +551,10 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
    starts at its own point of the cycle (--ph, 0 to 1, set by build.py; inherited by its lines), so none moves in
    lockstep with another; under reduced motion nothing moves. The layout no longer turns, so it fills its frame exactly:
    a hero's layout covers its box (slice), a patch's fits inside it (meet), and build.py keeps every rise's rings inside
-   the window (a hero) or clear of the frame (a patch) at the top of the swell (verify.py checks both). */
+   the window (a hero) or clear of the frame (a patch) at the top of the swell (verify.py checks both).
+   Out of view (S-NAV1 step G): every SVG path transform runs on the main thread, so a drawing that is not in the
+   viewport (shell.js's IntersectionObserver marks it .off; a hidden panel's too) holds its lines where they are, and
+   they go on from there when it scrolls back into view; a drawing moves as one, so no join opens. */
 .ct-t1{--c:var(--viz-1)}.ct-t2{--c:var(--viz-2)}.ct-t3{--c:var(--viz-3)}.ct-t4{--c:var(--viz-4)}.ct-t5{--c:var(--viz-5)}.ct-t6{--c:var(--viz-6)}
 .topo{position:absolute;top:-22px;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;pointer-events:none;container-type:size;-webkit-mask-image:linear-gradient(#000 90%,transparent);mask-image:linear-gradient(#000 90%,transparent)}   /* the lines fade out over the hero's last 10%, not cut */
 .topo-l{--d:0;display:none;position:absolute;left:0;top:0;width:100%;height:100%}
@@ -561,6 +569,7 @@ details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
 .topo.topo-patch .topo-l{opacity:var(--topo-p)}
 @media (prefers-reduced-motion:no-preference){.topo-l path{animation:topo-swell var(--topo-breath) ease-in-out calc(var(--ph,0) * -2 * var(--topo-breath)) infinite alternate both}}
 @keyframes topo-swell{from{transform:scale(1)}to{transform:scale(calc(1 + var(--d) * var(--topo-grow)))}}
+.topo.off path{animation-play-state:paused}   /* S-NAV1 step G: out of view, still (shell.js) */
 /* S-NAV1 step D, the swell: each line from 1 to 1 + --d x --topo-grow about its core and back, over --topo-breath each
    way, eased, alternating; every line of a drawing at the drawing's phase (--ph), so a drawing swells as one: its core
    still, its outer lines furthest. Transform only, on each line; still under reduced motion. build.py and viz.py keep
@@ -1014,7 +1023,7 @@ a.course:active{transform:translateY(0);box-shadow:none}
 /* P95 (theme 6.8): the object relief. A reading page whose text discusses an object at length shows it under its scope
    line, before the section bar: an outline from the library (design/outlines/, a sourced file credited in
    outlines.json) drawn by viz.py's kind "relief" as the lines of a relief map of its own silhouette, the outline and
-   the levels inside it (.rl-in) in the page's tone, two halo levels outside it (.rl-out) fainter; aria-hidden and
+   the levels inside it (no class; S-NAV1 step G: before, .rl-in) in the page's tone, two halo levels outside it (.rl-out) fainter; aria-hidden and
    textless, its caption (what it shows, that it is a stylised outline, the credit) in the figure caption's style. The
    frame is the drawing's own aspect (--ar, from viz.py), the column's width at most and --relief-h tall at most (280 px
    on a phone); the drawing fits it (meet) and its lines stay clear of it at every pose of the swell (viz.py rel_frame).
@@ -1024,7 +1033,7 @@ a.course:active{transform:translateY(0);box-shadow:none}
 .relief-fig{margin:20px 0 0}
 .topo.relief{position:relative;top:auto;left:auto;right:auto;bottom:auto;z-index:auto;overflow:hidden;-webkit-mask-image:none;mask-image:none;aspect-ratio:var(--ar,1);width:min(100%,calc(var(--relief-h) * var(--ar,1)))}
 .topo.relief .topo-l{display:block;opacity:var(--topo-r)}
-.topo.relief .rl-in,.topo.relief .rl-out{stroke:var(--c)}
+.topo.relief path{stroke:var(--c)}
 .topo.relief .rl-out{stroke-opacity:var(--topo-rh)}
 /* process last: two closed accordions after the text */
 .process{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:40px}

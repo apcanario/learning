@@ -1063,11 +1063,17 @@ NEWEST = DATED[0] if DATED else None
 # one drawing (about 0.43 s) per hundred words (academy: 7 drawings, about 3 s; the bisection it replaced drew 14),
 # because the layer shrinks overall as the interval grows but not at every step (academy: +5 to +87 B at six steps of
 # 22,000 to 30,000), so a bisection could step over the smallest. The budget only ever raises the
-# interval above the floor. HERO_BUDGET is the one place to change the budget: 19 KB, so verify.py's 20 KB stays the
-# hard limit with 1 KB of headroom. As units are written the interval grows with the words by itself (academy, 21 Nov
+# interval above the floor. HERO_BUDGET is the one place to change the budget: 23,124 B since S-NAV1 step G (19 KB before),
+# so verify.py's HOME_TOPO_MAX (24,148 B; 20 KB before) stays the hard limit with 1 KB of headroom. As units are written the interval grows with the words by itself (academy, 21 Nov
 # 2026: 24,500, History 20 levels, 19,388 B as verify counts; greece: 24,000, in budget).
 HERO_INTERVAL_MIN = 24000   # the floor (words between two contour levels): W-SCE1's value, frozen at HK-1; P92 drew 22,000
-HERO_BUDGET = 19 * 1024     # bytes of the layer as verify.py measures it (outerHTML), under verify.py's 20 KB
+HERO_BUDGET = 23124         # bytes of the layer as verify.py measures it (outerHTML), 1 KB under verify.py's HOME_TOPO_MAX
+# S-NAV1 step G (checker finding 2; a proposal for Pedro to veto): 19 KB (19,456) until step D gave every line of the
+# swell its own path and --d (and a shared line its --o): at 19 KB academy's interval rose from 24,500 to 29,000 words a
+# level (History 20 -> 17 levels). No cut of those attributes that leaves the drawing unchanged fits (without any style
+# at all the layer is 20,996 B at 24,500), so the budget is raised by the least that draws the hero as before: 23,124 B,
+# academy's layer at 24,500 (at 24,400 it is 23,254 B, so the scan still stops at 24,500), +3,668 B; verify.py's cap
+# rose by the same, 20,480 -> 24,148.
 # _HERO_AT (S-DEC3: catalog.toml, each track's `hero`; kit/courses.py HERO_AT): where each area's rise stands (fractions
 # of the layout's width and height), tall and wide. P92 checks: every rise inside a 390 px phone's view (x .27 to .73)
 # and above the fade, each small rise closing two rings of its own (verify.py checks it), Marketing clear of the sidebar
