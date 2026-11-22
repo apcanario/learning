@@ -1,0 +1,29 @@
+# S-NAV2 Step D (verify.py, docs): no built output changes
+drop: design/README.md :: | 6 Responsive | Tablet from 768 px: `main` and `.top-in` at 760 px, `.cgrid` (course cards), `.ucards`, `.smods` and `.soonlist` in two columns. Desktop from 1100 px: `--side` 300 px, `body` padded by it, `.top` starts at it, `.drawer` always open with no backdrop and no menu or close button |
+drop: design/README.md :: At 390 or 400 px, 768 px and 1280 px wide, in dark and in light, on every page with every `<details>` open: the document is not wider than the viewport; no two boxed elements are closer than 6 px; no button, summary or block link is under 44 px tall; no console error; on the tablet the drawer is off screen until the menu button and 360 px with a backdrop when open; on the desktop it is a 300 px sidebar at the left, the content column starts beside it, the top bar spans the column, the current page is highlighted and report text keeps its 68ch measure; text tokens keep at least 4.5:1 against `--bg` and `--card`. `python3 kit/verify.py` (Academy) measures all of it for every panel at every width in both themes (`verify.py` measures contrast since P90: every text of the home, the drawer, the changelog, the backlog, each course home and one reading page per course in the light theme, against the background it actually sits on) and end with ALL CHECKS PASSED or FAIL (Playwright with Chromium); `--shots DIR` saves the three widths.
+drop: kit/verify.py :: Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800. On every panel of every
+drop: kit/verify.py :: Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
+drop: kit/verify.py :: its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
+drop: kit/verify.py :: Home (P92, 4 Nov 2026; P91's shelf, P90's map and Continue gone), at 320, 360, 390, 430, 768 and 1280 px, dark and
+drop: kit/verify.py :: below 1100 px, wide from it), running the full width beside the sidebar while the copy keeps the column; in each layout
+drop: kit/verify.py :: 768 px, two from 768, a track's only tile half the width; History's two folded blocks; the order hero, the area
+drop: kit/verify.py :: Navigation (S-NAV1 step C, 21 Nov 2026; check_nav, at 390 px dark and light and at 1280 px): two levels, each one
+drop: kit/verify.py :: entry tapped in it closes it, opens the area and a back returns; from 1100 px both navs stand in the sidebar. No console
+drop: kit/verify.py :: Topographies and tiles (P93, 4 Nov 2026), at 320, 360, 390, 430, 768 and 1280 px, dark and light: each course home and
+drop: kit/verify.py :: sections and words from that page, each section's own text counted; one column below 768 px, two from it, a lone tile
+drop: kit/verify.py :: half the width; nothing past an edge, no sideways scroll. With motion allowed, on every one of these pages and the
+drop: kit/verify.py :: 390, 768 and 1280 px), the real line (--n on p.harea the number of its words, the tracks) and a probe copy of it with
+drop: kit/verify.py :: const phone = innerWidth < 768, desk = innerWidth >= 1100, de = document.documentElement;
+drop: kit/verify.py :: // the contour layer: aria-hidden, no text, one layout shown (tall below 1100 px, wide from it), one rise per area
+drop: kit/verify.py :: const side = desk && innerHeight < 860 ? 240 : 0;   // S-NAV2 step C: the 240 px sidebar of the tablet landscape layout; a desktop home (860 px tall or more) has none
+drop: kit/verify.py :: const want = parseFloat(getComputedStyle(document.body).width) >= 960 ? 3 : 2;   // S-NAV2 step C: three across once the width beside the sidebar reaches 960 px (theme.css section 6)
+drop: kit/verify.py :: shown (tall below 1100 px, wide from it), each written rise closing min(2, levels) rings of its own, in its tone,
+drop: kit/verify.py :: desk = w >= 1100
+drop: kit/verify.py :: of two lines at most while closed; one column below 768 px, two from it, a lone tile half the width; nothing past
+drop: kit/verify.py :: an edge, no sideways scroll."""
+drop: kit/verify.py :: want = 3 if pg.evaluate('parseFloat(getComputedStyle(document.body).width)') >= 960 else 2   # S-NAV2 step C: three across once the width beside the sidebar reaches 960 px
+drop: kit/verify.py :: one track, tapped on the home it adds no history entry (S-NAV1 step G). From 1100 px the
+drop: kit/verify.py :: two navs stand in the sidebar without the menu. Every page error and console error fails."""
+drop: kit/verify.py :: else:
+drop: kit/verify.py :: for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS[1:]:
+drop: kit/verify.py :: for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:

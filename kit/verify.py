@@ -25,7 +25,8 @@ and history course home panel is an empty stub whose data-src file exists, no fi
 a report is fetched once and kept, a section link into an unopened report, syllabus, briefs page or course home
 (a unit card) loads it, a failed fetch shows the retry state (a report and a course home, whose continue button and
 unit cards arrive with the fetch), the shell is under 1 MB and the size table in README.md matches the files.
-Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800. On every panel of every
+Three widths (design/theme.css section 6): phone 390x844, tablet 768x1024, desktop 1280x800 (the 'desktop' pass; since theme
+6.22 the tablet landscape layout), and since S-NAV2 step D a desktop at 1920x1080 for the panel checks. On every panel of every
 width, with every <details> opened: no horizontal scroll, no boxed elements closer than 6 px, no interactive target
 under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
 navigation context (drawer, title, arrows, continue) across home -> Rome -> report -> home -> Greece -> report ->
@@ -33,8 +34,8 @@ a Brand + AI course and its reading and build pages, every course's "How it was 
 shell, one row per written report or unit), the drawer groups (a course's units as an accordion) and the Backlog page; the same panel checks again in the light theme. The Backlog and Changelog pages
 (S-PAGES, 15 Nov 2026; check_site_log): rendered from docs/site-log.md alone, every entry in its area and order, newest
 first on the Changelog, in plain words with no private term, at 320, 390 and 1280 px, dark and light, without sideways scroll. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
-Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
-its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
+Desktop pass at 1280 x 800: the drawer is a persistent 240 px sidebar (300 px before theme 6.22; no backdrop, no menu
+button, current item highlighted, scrolls on its own) and the top bar spans the content column. Figures (P44): at phone width every figure draws at its natural size
 and its frame scrolls to the whole drawing; the cue line shows exactly on the frames that overflow (phone and desktop). With --shots, saves dark and light screenshots (the top 2,600 px, captured from a viewport that tall, P35; the home whole, P90; P92: and the hero's motion sheets, five moments of the area line and the drift, at 390 and 1280 px) at the three widths
 of home, What's new (P91; the home and What's new at 320, 360 and 430 px too), Rome and one Rome report, plus every panel id given with --page (a new unit's reading page, a new course home),
 and (P41) each figure in a --page panel on its own: <width>-<panel>-fig-<nn>-<kind>-<theme>.png, the figure as its frame
@@ -62,7 +63,7 @@ Figure keys (P52): every viz block in the vault, every history figure declaratio
 examples block uses only the keys viz.VIZ_KEYS documents for its kind, and viz.render leaves the block it draws unchanged.
 Opening notes (P73): a markdown unit's text before its first heading is a closed accordion after Sources, "The writer's
 opening note", on every unit that has one and on none that has not; section 1 opens on its heading; a deep link lands.
-Home (P92, 4 Nov 2026; P91's shelf, P90's map and Continue gone), at 320, 360, 390, 430, 768 and 1280 px, dark and
+Home (P92, 4 Nov 2026; P91's shelf, P90's map and Continue gone), at 320, 360, 390, 430, 768, 1024, 1280 and 1920 px, dark and
 light, with reduced motion emulated, and once more at every width with motion allowed: the hero holds the contour
 layer and the copy, nothing else: the headline "Academy"; the area line, the areas in courses.py's order, each in
 its tone, aria-hidden, no link or focus stop in it; the static line naming them all in their tones, for a screen
@@ -70,7 +71,7 @@ reader, and the line shown under reduced motion (with motion allowed the cycling
 a screen reader only); the lede; the quiet link "What's new · <code> · <day>" naming the newest dated unit, to #new, at
 least 44 px tall, outlined, not filled. The contour layer: aria-hidden, no text, at most HOME_TOPO_MAX (24,148 B from
 S-NAV1 step G; 20 KB before), one layout shown (tall
-below 1100 px, wide from it), running the full width beside the sidebar while the copy keeps the column; in each layout
+below 900 px, wide from it; 1100 px before theme 6.22), running the full width beside the sidebar while the copy keeps the column; in each layout
 one rise per area, its words the area's words as the sources give them (home_expect: a history unit's reports counted
 from the vault, a markdown unit from its reading page), standing in the order of its words, in the area's tone. On a
 phone the hero is 60 to 80% of the screen and the first area's heading starts inside it; no live totals, no shelf, no
@@ -79,7 +80,7 @@ name only; every tile the chip row with its pill, the title, a tile line of at m
 contour patch (aria-hidden, 4:1, inside the tile; one rise per written unit with its words as the sources give them,
 each planned unit marked planned), the whole tile the link and no other link in it; one tile style (P93: History's
 planned courses are ghost tiles, checked with every tile by check_tiles); one column below
-768 px, two from 768, a track's only tile half the width; History's two folded blocks; the order hero, the area
+768 px, two from 768 (three once the width beside the sidebar reaches 960 px, theme 6.22), a track's only tile half the width; History's two folded blocks; the order hero, the area
 sections, the constants, the site links (Backlog, Figure kinds, Changelog), New since (What's new's first six rows, its
 heading naming its oldest day) and one link to #new, last; no sideways scroll. Every text of the hero is measured
 against the pixels under it (the contour lines and the page, shot with the texts made transparent): 4.5:1, 3:1 for
@@ -106,7 +107,7 @@ tiles in catalog order, its own copy and its folded planned list (check_tiles, i
 home's tile counts what the band holds; the area pages join the topography, motion, contrast and shot passes; the
 navigation walk and the desktop taps reach a course through its area page; the history walk is home -> area -> course
 -> unit with three backs. In an edition of one track (greece) none of this applies and the home lists the courses.
-Navigation (S-NAV1 step C, 21 Nov 2026; check_nav, at 390 px dark and light and at 1280 px): two levels, each one
+Navigation (S-NAV1 step C, 21 Nov 2026; check_nav, at 390 px dark and light and at 1024 x 768, 1280 x 800 and 1920 x 1080): two levels, each one
 element in the drawer's list, nav.main-nav before nav.sub-nav, once in the page and in no panel. The main nav is Home and
 the areas in catalog order (an edition of one track: Home and its area, whose entry opens the home at the track's band,
 #track-<id>, as it has no area page) and marks where the reader is: Home on the home and the site pages under it (What's
@@ -116,10 +117,11 @@ courses (history, then markdown, as courses.py lists them) on its page, a course
 itself marked) on its home, syllabus and first reading page. What's new, the Changelog and the Backlog are links at the
 home's foot, after its courses, and in neither nav. Below 1100 px the menu opens the drawer with both navs on screen, the
 focus on its close button and the current item scrolled into its list; Escape closes it and gives the focus back; an area
-entry tapped in it closes it, opens the area and a back returns; from 1100 px both navs stand in the sidebar. No console
+entry tapped in it closes it, opens the area and a back returns; from 1100 px under 860 px tall both navs stand in the
+sidebar; on a desktop (1100 px and 860 px tall or more) the main nav stands in the top bar and the sub-nav in the sidebar. No console
 error. The drawer box checks run on the home, every area page and every course; the light contrast check measures every
 group of the sub-nav at once.
-Topographies and tiles (P93, 4 Nov 2026), at 320, 360, 390, 430, 768 and 1280 px, dark and light: each course home and
+Topographies and tiles (P93, 4 Nov 2026), at 320, 360, 390, 430, 768, 1024, 1280 and 1920 px, dark and light: each course home and
 What's new carries a contour layer behind its hero (check_topo), against the sources (home_expect: a course home one
 rise per unit of the course in its order, a written unit by its words, a planned unit flat; What's new one rise per
 day it lists, oldest first, its words the units' and reports' filed that day, the largest day 10 to 25 levels high),
@@ -130,8 +132,8 @@ page. Every tile on every page (check_tiles) has the same classes and fields (th
 the title, a line of at most two lines while closed and whole when opened, three stats, its own patch; a planned
 course's ghost no stats and one dashed ring), a history unit's tile opens to its module rows with its modules, words
 and hours from the vault, a markdown unit's links to its reading page (its brief while it is not written) with its
-sections and words from that page, each section's own text counted; one column below 768 px, two from it, a lone tile
-half the width; nothing past an edge, no sideways scroll. With motion allowed, on every one of these pages and the
+sections and words from that page, each section's own text counted; one column below 768 px, two from it (three once the
+width beside the sidebar reaches 960 px), a lone tile half the width; nothing past an edge, no sideways scroll. With motion allowed (at 1024 and 1920 px the home alone), on every one of these pages and the
 home, every running animation animates only transform or opacity, every line of every shown contour drawing swells
 (S-NAV1 step D: topo-swell, each line from 1 to 1 + --d x --topo-grow about its rise's core over --topo-breath, read
 from shell.css; topo-turn and the whole-layer topo-breathe are gone), each drawing at its own point of the cycle, and at
@@ -175,7 +177,7 @@ home through history, at the top level and in a sandboxed iframe: every drawing 
 view is .off (shell.js's IntersectionObserver), its swells paused and still, every drawing of a hidden panel .off;
 under reduced motion no swell exists. The byte and class checks read a drawing without the runtime .off.
 The area line's cycle (S-NAV2 step A, Fix 1; check_harea): at every viewport of the home's motion pass (320, 360, 430,
-390, 768 and 1280 px), the real line (--n on p.harea the number of its words, the tracks) and a probe copy of it with
+390, 768 and 1280 px, and since step D 1024 and 1920 px), the real line (--n on p.harea the number of its words, the tracks) and a probe copy of it with
 3, 4 and 8 words, sampled every 50 ms over two cycles: each word runs harea and harea-y over n x 3 s; at every sample at
 most one word above opacity .5 (exactly one but at a cross-fade's middle), never three drawn, two drawn together for
 at most the .36 s cross-fade plus a sample, each word shown three seconds a cycle in turn, at rest while fully shown.
@@ -185,6 +187,22 @@ exists and the body is the built shell's; with ?debug at 390 px the panel shows 
 area -> course -> unit is the same as without it, the log names each go() (pushState, length rising by one) and the
 popstate of a history.back(); with pushState refused it names the replaceState fallback on each level; in a sandboxed
 iframe it says so; at 1280 x 800 the panel sits inside the screen.
+The tablet and desktop layouts (S-NAV2 step D, theme 6.22; check_layouts, check_frames, check_phone_identity,
+check_webkit): at 390 x 844, 800 x 1100, 1024 x 768, 1280 x 800, 1440 x 900 and 1920 x 1080, on the home, What's new, the
+Changelog, an area page, two course homes and the first reading page of every course, the sidebar, the top bar and the
+outline where the spec puts them and nowhere else (a desktop, 1100 px and 860 px tall or more: the top bar across the
+screen with the main nav in it, the sidebar only where there is a sub-nav, the outline at a reading page's right; from
+1100 px under 860 px tall the 240 px sidebar with both navs, no outline; below 1100 px the drawer), no sideways scroll,
+no heading, figure or table past the column, under the sidebar or the outline, cut or clipped; the home's first tiles'
+titles and stats above the fold at 1024 x 768 and 1280 x 800; the hero bound (P-HK1) at 1024, 1280 and 1920 px. The 4x
+CPU throttle frame test of S-NAV1's fresh check at 1280 x 800 (the median frame and the longest task, check_frames).
+The phone byte identity: at 320, 360 and 390 px, under reduced motion, the current shell laid out and drawn exactly as
+with the start build's theme (PHONE_REF) in its <style>, every element's box and computed style and the screenshot;
+PHONE_EXPECTED lists what is expected to differ. WebKit (P-NAV3): check_history and check_pause again in Playwright's
+WebKit, or one line saying it is not installed. The home, What's new, topography, tile, area and navigation passes run
+at 1024 x 768 and 1920 x 1080 as well, and the panel checks at 1920 x 1080. A subset runs from a script that imports
+this file and calls the checks (each takes the browser and the fails list): out/S-NAV2/step-D-probe.py runs step D's
+checks alone (--only names them, --edition as here), step-D-probe2.py the home, topography, tile and area passes at given viewports.
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 Then rot_check.py (P30-F11, P30-F16): kit/shell.css is design/theme.css, no live instruction names a retired thing, and
 every staleness date past or due within 30 days is printed as a warning.
@@ -497,7 +515,7 @@ def home_expect():
 # faults (bad); check_home compares the hero, the tiles and New since with home_expect().
 HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an edition may omit the planned courses and the site links)
   const h = document.getElementById('home'), bad = [], out = {bad};
-  const phone = innerWidth < 768, desk = innerWidth >= 1100, de = document.documentElement;
+  const phone = innerWidth < 768, desk = innerWidth >= 900, de = document.documentElement;   // S-NAV2 step D: the wide contour layout from 900 px since theme 6.22 (1100 before)
   const vis = e => !!e && getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0;
   const hero = h.querySelector(':scope > header.hero.hhome');
   if (!hero) { bad.push('no hero (header.hero.hhome)'); return out; }
@@ -538,7 +556,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
     if (!out.linkSr) bad.push('the What\'s new link\'s dots are not aria-hidden with a comma for a screen reader');
     if (ln.getAttribute('href') !== '#new' || ln.getAttribute('data-target') !== 'new') bad.push('the What\'s new link does not open #new'); }
   else bad.push('no quiet link to What\'s new');
-  // the contour layer: aria-hidden, no text, one layout shown (tall below 1100 px, wide from it), one rise per area
+  // the contour layer: aria-hidden, no text, one layout shown (tall below 900 px, wide from it; 1100 before 6.22), one rise per area
   const topo = hero.querySelector(':scope > .topo');
   if (topo) {
     out.topoBytes = new Blob([(e => { if (!e.classList.contains('off')) return e.outerHTML; const c = e.cloneNode(true); c.classList.remove('off'); return c.outerHTML; })(topo)]).size;   // S-NAV1 step G: the drawing as built, without shell.js's runtime .off
@@ -550,7 +568,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
     out.layouts = [...topo.querySelectorAll('svg.topo-l')].map(s => [s.getAttribute('data-layout'), [...s.querySelectorAll('g.ct-rise, g.ct-plan')].map(g => [g.getAttribute('data-label'), g.classList.contains('ct-plan') ? null : +g.getAttribute('data-words'), +g.getAttribute('data-rings'), getComputedStyle(g.querySelector('path, circle')).stroke, [...g.querySelectorAll('path')].map(e => e.getAttribute('d')).join('').split('z').length - 1])]);
     const tr = topo.getBoundingClientRect(), m = document.querySelector('main').getBoundingClientRect(), cr = copy.getBoundingClientRect();
     out.topoBox = [Math.round(tr.left), Math.round(tr.right), Math.round(cr.left), Math.round(cr.right), Math.round(m.left), Math.round(m.right)];
-    const side = desk && innerHeight < 860 ? 240 : 0;   // S-NAV2 step C: the 240 px sidebar of the tablet landscape layout; a desktop home (860 px tall or more) has none
+    const side = innerWidth >= 1100 && innerHeight < 860 ? 240 : 0;   // S-NAV2 step C: the 240 px sidebar of the tablet landscape layout from 1100 px (900 to 1099 px keep the drawer); a desktop home (860 px tall or more) has none
     if (Math.abs(tr.left - side) > 1 || Math.abs(tr.right - de.clientWidth) > 1) bad.push(`the contour layer spans ${tr.left.toFixed(0)}..${tr.right.toFixed(0)}, not the full width beside the sidebar (${side}..${de.clientWidth})`);
     if (cr.left < m.left + 15 || cr.right > m.right - 15) bad.push(`the hero's text runs ${cr.left.toFixed(0)}..${cr.right.toFixed(0)}, outside the column ${m.left.toFixed(0)}..${m.right.toFixed(0)}`);
   } else bad.push('no contour layer');
@@ -620,7 +638,7 @@ HOME_JS = r'''([tones, opt]) => {   // P93: opt says what the edition holds (an 
     const cs = [...g.querySelectorAll(':scope > a.course')];
     const cols = (t => { if (t.startsWith('repeat(')) return +t.slice(7, t.indexOf(',')); let d = 0, n = 1; for (const ch of t.trim()) { if (ch === '(') d++; else if (ch === ')') d--; else if (ch === ' ' && !d) n++; } return n; })(getComputedStyle(g).gridTemplateColumns);
     if (phone && cols !== 1) bad.push(`${tid}: ${cols} columns below 768 px`);
-    const want = parseFloat(getComputedStyle(document.body).width) >= 960 ? 3 : 2;   // S-NAV2 step C: three across once the width beside the sidebar reaches 960 px (theme.css section 6)
+    const bs = getComputedStyle(document.body), want = document.body.clientWidth - parseFloat(bs.paddingLeft) - parseFloat(bs.paddingRight) >= 960 ? 3 : 2;   // S-NAV2 step C: three across once the width beside the sidebar reaches 960 px (theme.css section 6; step D: the body's content box, the container the query reads, not its border box)
     if (!phone && cols !== want) bad.push(`${tid}: ${cols} column(s) from 768 px, expected ${want}`);
     if (!phone && cs.length === 1) {
       const gw = g.getBoundingClientRect().width, cw = cs[0].getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
@@ -1044,14 +1062,14 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
     """P93: one page's topography against the sources: the hero's layer (a course home: one rise per unit of the course
     in its order, a written unit by its words, a planned one flat; What's new: one rise per day it lists, oldest first,
     its words that day's; the largest day standing 10 to 25 levels), aria-hidden, no text, at most 20 KB, one layout
-    shown (tall below 1100 px, wide from it), each written rise closing min(2, levels) rings of its own, in its tone,
+    shown (tall below 900 px, wide from it; 1100 before theme 6.22), each written rise closing min(2, levels) rings of its own, in its tone,
     the frame covered at the pose it is in, each rise's own rings inside the frame and above the fade (at 390 px: inside
     the phone's view); every patch 4:1, its lines inside its frame; with motion allowed only transform or opacity
     animating, every drawing at its own point of the cycle; under reduced motion nothing running. Returns the layer's
     info."""
     r = pg.evaluate(TOPO_JS, pid)
     w = pg.evaluate('innerWidth')
-    desk = w >= 1100
+    desk = w >= 900   # S-NAV2 step D: every hero's contours the wide layout from 900 px (theme 6.22; 1100 before)
     h = r.get('hero')
     want = None
     if pid == 'new':
@@ -1119,8 +1137,8 @@ def check_tiles(pg, pid, label, fails, expect):
     modules as rises by their words, the modules written, in all and its hours) opens to its module rows; a markdown
     unit's (its sections by their words; sections, words, hours) links to its reading page, or its brief while it is not
     written; a planned course's ghost (the chip, the title, its scope, no stats, one dashed ring); one class set; a line
-    of two lines at most while closed; one column below 768 px, two from it, a lone tile half the width; nothing past
-    an edge, no sideways scroll."""
+    of two lines at most while closed; one column below 768 px, two from it (three once the width beside the sidebar
+    reaches 960 px), a lone tile half the width; nothing past an edge, no sideways scroll."""
     r = pg.evaluate(TILES_JS, pid)
     w = pg.evaluate('innerWidth')
     fails += [f'{pid} {label}: {b}' for b in r['bad']]
@@ -1141,7 +1159,7 @@ def check_tiles(pg, pid, label, fails, expect):
         if t['sw']: fails.append(f'{pid} {label}: {nm}: the tile scrolls sideways')
         if t['unseen']: fails.append(f'{pid} {label}: {nm}: the written parts {t["unseen"]} draw no ring of their own (P93 check: a part under one level takes a spot ring)')
         if (t['kind'] == 'ghost') != ('ghost' in t['mods']): fails.append(f'{pid} {label}: {nm}: a ghost tile without the ghost class, or the reverse')
-    want = 3 if pg.evaluate('parseFloat(getComputedStyle(document.body).width)') >= 960 else 2   # S-NAV2 step C: three across once the width beside the sidebar reaches 960 px
+    want = 3 if pg.evaluate('(s => document.body.clientWidth - parseFloat(s.paddingLeft) - parseFloat(s.paddingRight))(getComputedStyle(document.body))') >= 960 else 2   # S-NAV2 step C: three across once the width beside the sidebar reaches 960 px (step D: the body's content box)
     for cols, n, lone, half in r['grids']:
         if w < 768 and cols != 1: fails.append(f'{pid} {label}: a tile grid in {cols} columns below 768 px')
         if w >= 768 and cols != want: fails.append(f'{pid} {label}: a tile grid in {cols} column(s) from 768 px, expected {want}')
@@ -3249,8 +3267,11 @@ def check_nav(br, fails, w=390, h=844, theme='dark', motion=False, label=None):
     Then the drawer: below 1100 px the menu opens it with both navs on screen and the focus on its close button, the
     current item scrolled into its list, Escape closes it and gives the focus back; an area entry tapped in it closes it
     and opens the area (in an edition of one track, the home at the track's band), and a back returns; in an edition of
-    one track, tapped on the home it adds no history entry (S-NAV1 step G). From 1100 px the
-    two navs stand in the sidebar without the menu. Every page error and console error fails."""
+    one track, tapped on the home it adds no history entry (S-NAV1 step G). From 1100 px under 860 px tall the
+    two navs stand in the sidebar without the menu (S-NAV2 step C, theme 6.22); on a desktop (1100 px and 860 px tall or
+    more) the main nav stands in the top bar from the sidebar's edge and the sub-nav in the sidebar under the bar (S-NAV2
+    step D). Run at 390 x 844 (dark and light), 1024 x 768, 1280 x 800 and 1920 x 1080. Every page error and console
+    error fails."""
     label = label or f'{w}x{h} {theme}' + (' motion' if motion else '')
     main, area, sec = nav_expect()
     ctx = br.new_context(viewport={'width': w, 'height': h}, color_scheme=theme, reduced_motion='no-preference' if motion else 'reduce',
@@ -3307,9 +3328,16 @@ def check_nav(br, fails, w=390, h=844, theme='dark', motion=False, label=None):
         d = pg.evaluate(NAV_DRAWER_JS)
         if d['on'] or d['locked'] or d['focus'] != 'menuB' or d['hidden'] != 'true': fails.append(f'nav {label}: Escape leaves the drawer {d}')
         pg.click('#menuB'); pg.wait_for_timeout(wait)
-    else:
+    elif h < 860:   # S-NAV2 step C: 1100 px or wider under 860 px tall (the tablet landscape layout), both navs in the 240 px sidebar
         d = pg.evaluate(NAV_DRAWER_JS)
         if not d['main'] or not d['sub'] or d['main'][0] < 0 or d['hidden'] != 'false' or not d['sub'][3]: fails.append(f'nav {label}: the sidebar does not show both navs: {d}')
+        if d['main'] and d['main'][1] > side_px(w, h) + 1: fails.append(f'nav {label}: the main nav runs {d["main"][:2]}, outside the {side_px(w, h):.0f} px sidebar')
+    else:   # S-NAV2 step D: a desktop (1100 px and 860 px tall or more): the main nav in the top bar, fixed beside the brand; the sub-nav in the sidebar
+        d = pg.evaluate(NAV_DRAWER_JS)
+        bar = pg.evaluate("Math.round(document.querySelector('.top').getBoundingClientRect().height)")
+        sp = side_px(w, h)
+        if not d['main'] or d['main'][2] != 0 or d['main'][3] > bar + 1 or abs(d['main'][0] - sp) > 1 or d['main'][1] > w: fails.append(f'nav {label}: the main nav at {d["main"]}, expected in the top bar (top 0, at most {bar} px tall) from the {sp:.0f} px sidebar\'s edge')
+        if not d['sub'] or d['sub'][0] < 0 or d['sub'][1] > sp + 1 or d['sub'][2] < bar - 1 or d['hidden'] != 'false' or not d['sub'][3]: fails.append(f'nav {label}: the sub-nav at {d["sub"]} (aria-hidden {d["hidden"]}), expected in the {sp:.0f} px sidebar under the {bar} px bar')
     pg.click(f'#drawer nav.main-nav a.ditem[data-target="{tr}"]'); pg.wait_for_timeout(wait); ready(pg)
     at = pg.evaluate("() => [[...document.querySelectorAll('.panel')].find(p => !p.hidden).id, location.hash, document.getElementById('drawer').classList.contains('on')]")
     if at != [tr if MULTI else 'home', '#' + tr, False]: fails.append(f'nav {label}: the main nav\'s {tr} lands on {at}, expected {[tr if MULTI else "home", "#" + tr, False]}')
@@ -3326,6 +3354,296 @@ def check_nav(br, fails, w=390, h=844, theme='dark', motion=False, label=None):
     if errs: fails.append(f'nav {label}: console errors ' + ' | '.join(errs[:3]))
     ctx.close()
     if len(fails) == n0: print(f'nav {label}: {len(pages)} pages, main nav {" · ".join(x[1] for x in main)}; sub-nav per section; site links at the home\'s foot; drawer from {page} -> {tr} and back')
+
+# ---- S-NAV2 step D (22 Nov 2026): the tablet and desktop layouts of theme 6.22 (S-NAV2 step C), the phone unchanged --
+# The spec (Pedro, 21 Nov 2026): a desktop (1100 px wide and 860 px tall or more) has the main nav in a top bar, the
+# sub-nav in a persistent sidebar where there is one, a centred column and an on-this-page outline at a unit page's
+# right; a tablet landscape (900 to 1099 px, or wider but under 860 px tall) a narrower sidebar from 1100 px (900 to
+# 1099 px keep the drawer: step C, NEEDS PEDRO 1, shell.js turns the drawer into the sidebar at 1100 px) and no
+# outline; a tablet portrait (768 to 899 px) the drawer; a phone the drawer, untouched.
+NEW_VIEWPORTS = [('tab1024', 1024, 768, False), ('wide1920', 1920, 1080, False)]   # beside VIEWPORTS' 1280 x 800 ('desktop': the tablet landscape layout since 6.22)
+LAYOUTS = [(390, 844), (800, 1100), (1024, 768), (1280, 800), (1440, 900), (1920, 1080)]   # one of each layout, the desktop at two widths
+HERO_AT = (1024, 1280, 1920)   # P-HK1: the hero bound checked at these widths
+FOLD_AT = ((1024, 768), (1280, 800))   # the tablet landscape homes whose first tiles must show above the fold
+def layout_of(w, h):
+    """Which of theme 6.22's layouts a w x h viewport gets (design/theme.css section 6, the S-NAV2 step C block)."""
+    if w < 768: return 'phone'
+    if w < 900: return 'portrait'
+    if w < 1100: return 'landscape'   # the drawer (step C, NEEDS PEDRO 1)
+    return 'landscape-side' if h < 860 else 'desktop'
+def side_px(w, h):
+    """The sidebar's width in px: 240 in the tablet landscape layout from 1100 px, clamp(240px, 18vw, 300px) on a desktop."""
+    k = layout_of(w, h)
+    return 240 if k == 'landscape-side' else min(300, max(240, .18 * w)) if k == 'desktop' else 0
+
+REGIONS_JS = r"""(pid) => { const de = document.documentElement, P = document.getElementById(pid), r = e => e.getBoundingClientRect();
+  const dr = document.getElementById('drawer'), drr = r(dr), tp = r(document.querySelector('.top')), mn = document.querySelector('nav.main-nav'), mr = r(mn);
+  const sn = document.querySelector('nav.sub-nav'), sr = r(sn), mainR = r(document.querySelector('main')), bs = getComputedStyle(document.body);
+  const sm = P.querySelector('.secmenu'), ol = sm && sm.querySelector('.seclist'), sb = P.querySelector('.stepbar');
+  if (sb) { window.scrollTo(0, 0); window.scrollTo(0, Math.max(0, sb.getBoundingClientRect().top - tp.height)); }   // the section bar stuck under the top bar, as the outline beside it is read
+  const olr = ol && r(ol), mh = sm ? parseFloat(getComputedStyle(sm, '::details-content').maxHeight) : NaN;   // the outline scrolls inside the menu's ::details-content, at most the window less the bar
+  const box = b => [b.left, b.right, b.top, b.bottom].map(Math.round);
+  return {W: de.clientWidth, H: innerHeight, kind: P.getAttribute('data-kind'),
+    sidebar: getComputedStyle(dr).visibility === 'visible' && drr.right > 0 && drr.width > 0 && !dr.classList.contains('on'),
+    drawer: box(drr), aria: dr.getAttribute('aria-hidden'), menu: getComputedStyle(document.getElementById('menuB')).display !== 'none',
+    top: box(tp), mainNav: box(mr), mainFixed: getComputedStyle(mn).position === 'fixed', mainVis: getComputedStyle(mn).visibility,
+    subHidden: sn.hidden, sub: box(sr), main: box(mainR), pad: [parseFloat(bs.paddingLeft), parseFloat(bs.paddingRight)],
+    menuOpen: !!(sm && sm.open), outline: sm && !sm.open && ol.checkVisibility() && olr.width > 0 && olr.height > 0 ? [olr.left, olr.right, olr.top, olr.top + Math.min(olr.height, mh || Infinity)].map(Math.round) : null,   // shown while the menu is closed: the outline (a closed menu's list is content-visibility hidden)
+    supports: CSS.supports('selector(::details-content)'), scroll: [de.scrollWidth, de.clientWidth]}; }"""
+# every heading, figure and table of the shown panel (a reading page whole, every <details> but its section menu open):
+# inside the column and the screen, beside the sidebar, clear of the outline; a heading that hides its overflow not
+# cut; a figure's frame that is narrower than its drawing scrolls (overflow-x auto or scroll), never clips; a table that
+# scrolls inside its own frame (.tbl) measured by that frame
+CLIP_JS = r"""([pid, side, outline]) => { const P = document.getElementById(pid), W = document.documentElement.clientWidth, bad = [];
+  P.querySelectorAll('.stepbar .whole[aria-pressed="false"]').forEach(b => b.click());
+  P.querySelectorAll('details:not(.secmenu)').forEach(d => d.open = true);
+  const m = document.querySelector('main').getBoundingClientRect(), lo = Math.max(side, m.left) - 1, hi = Math.min(W, m.right) + 1;
+  const name = e => e.tagName.toLowerCase() + (typeof e.className === 'string' && e.className ? '.' + e.className.split(' ')[0] : '') + ' "' + e.textContent.trim().slice(0, 30) + '"';
+  let n = 0;
+  const scroller = e => { for (let a = e.parentElement; a && a !== P; a = a.parentElement) if (['auto', 'scroll'].includes(getComputedStyle(a).overflowX)) return a; return null; };
+  for (const t of P.querySelectorAll('h1, h2, h3, figure, table')) { const e = t.tagName === 'TABLE' && scroller(t) || t;   // a table scrolls inside its own frame (.tbl): the frame is measured
+    const b = e.getBoundingClientRect(); if (!b.width || !b.height) continue; n++;
+    if (b.left < lo || b.right > hi) bad.push(`${name(e)} runs ${Math.round(b.left)}..${Math.round(b.right)}, past the column ${Math.round(lo + 1)}..${Math.round(hi - 1)}`);
+    if (outline && b.right > outline[0] + 1 && b.left < outline[1]) bad.push(`${name(e)} under the outline`);
+    if (/^H[123]$/.test(e.tagName) && getComputedStyle(e).overflowX !== 'visible' && e.scrollWidth > e.clientWidth + 1) bad.push(`${name(e)} cut: ${e.scrollWidth} px in ${e.clientWidth}`);
+    if (e.tagName === 'FIGURE') e.querySelectorAll('.viz-scroll').forEach(f => { if (f.clientWidth && f.scrollWidth > f.clientWidth + 1 && !['auto', 'scroll'].includes(getComputedStyle(f).overflowX)) bad.push(`${name(e)}: its frame clips its drawing (${f.scrollWidth} px in ${f.clientWidth}, overflow-x ${getComputedStyle(f).overflowX})`); }); }
+  return {n, bad: bad.slice(0, 6)}; }"""
+FOLD_JS = r"""() => { const g = document.querySelector('#home > .cgrid.areas') || document.querySelector('#home .track .cgrid'); if (!g) return null;
+  const ts = [...g.querySelectorAll(':scope > a.course')], t0 = ts.length && ts[0].getBoundingClientRect().top;
+  return ts.filter(t => Math.abs(t.getBoundingClientRect().top - t0) < 2).map(t => [t.getAttribute('data-target'), Math.round(t.querySelector('.ctitle').getBoundingClientRect().bottom), Math.round(t.querySelector('.cstats').getBoundingClientRect().bottom), Math.round(t.getBoundingClientRect().top)]); }"""
+HERO_BOUND_JS = r"""(pid) => { const P = document.getElementById(pid), h = P && P.querySelector(':scope > header.hero'); if (!h) return null;
+  const bs = getComputedStyle(document.body), W = document.body.clientWidth - parseFloat(bs.paddingLeft) - parseFloat(bs.paddingRight);
+  return {H: h.getBoundingClientRect().height, W, root: P.classList.contains('root'), log: P.classList.contains('log'), topo: h.classList.contains('has-topo') || P.classList.contains('root')}; }"""
+
+def layout_pages():
+    """The pages the layout check opens: the home, What's new and the Changelog (no sub-nav), the first area page, the
+    sampled course homes (the first history and the first markdown one) and the first reading page of every course."""
+    hs, ms = [x for x in SAMPLE if x in HIST_HOMES], [x for x in SAMPLE if x not in HIST_HOMES]
+    return (['home', 'new'] + [x for x in ('changelog',) if x not in OMIT] + AREA_IDS[:1] + hs[:1] + ms[:1],
+            ['home', 'new'] + AREA_IDS + SAMPLE)
+
+def check_layouts(br, fails):
+    """S-NAV2 step D: at 390 x 844, 800 x 1100, 1024 x 768, 1280 x 800, 1440 x 900 and 1920 x 1080 (one of each layout of
+    theme 6.22, the desktop twice), dark, on the home, What's new, the Changelog, an area page, a history and a markdown
+    course home and the first reading page of every course: the sidebar, the top bar and the outline where the spec puts
+    them and nowhere else (layout_of: a phone, a tablet portrait and a 900 to 1099 px tablet landscape the drawer off
+    screen with its menu button, no sidebar, no outline, the top bar the screen's width; from 1100 px under 860 px tall
+    the 240 px sidebar holding both navs, the top bar beside it, no outline; a desktop the top bar across the screen
+    with the main nav fixed in it from the sidebar's edge, the sidebar (clamp(240px, 18vw, 300px)) only where there is a
+    sub-nav, the content beside it, the outline (the unit's section list, ::details-content) at the right of every
+    reading page clear of the column and inside the window, where the browser supports ::details-content, and on no
+    other page); no sideways scroll; no heading, figure or table past the column or the screen, under the sidebar or the
+    outline, a heading cut or a figure's frame clipping its drawing (CLIP_JS, a reading page whole). At 1024 x 768 and
+    1280 x 800 the home's first row of tiles shows its titles and stats above the fold (in an edition of one track, whose
+    band header stands between the hero and the tiles, the row starts at least 44 px above it: out/S-NAV2/step-D.md
+    BUGS 1). At 1024, 1280 and 1920 px (P-HK1)
+    every hero holds its bound (W the width beside the sidebar): a course home's and an area page's at least
+    max(370, .4 W - 22) px, What's new's at least .27 W - 22, the home's between .4 W - 22 and .54 W - 22."""
+    errs, n0, said = [], len(fails), []
+    pages, heroes = layout_pages()
+    with_reads = None
+    for w, h in LAYOUTS:
+        kind, sp = layout_of(w, h), side_px(w, h)
+        ctx, pg, _ = new_page(None, br, errs, f'layout {w}x{h}', w, h, w < 900)
+        if with_reads is None:   # the first reading page of every course context, as the shell orders them
+            with_reads = pages + pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => { const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
+        nclip = 0
+        for pid in with_reads:
+            if not pg.evaluate(f"!!document.getElementById('{pid}')"): continue
+            pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(120)
+            g = pg.evaluate(REGIONS_JS, pid)
+            tag, bad = f'layout {w}x{h} ({kind}) #{pid}', []
+            report = g['kind'] == 'report'
+            if g['scroll'][0] > g['scroll'][1]: bad.append(f'scrolls sideways ({g["scroll"][0]} in {g["scroll"][1]} px)')
+            if kind in ('phone', 'portrait', 'landscape'):
+                if g['sidebar'] or g['drawer'][1] > 0 or not g['menu'] or g['aria'] != 'true': bad.append(f'expected the drawer off screen with its menu button: drawer {g["drawer"]}, menu {g["menu"]}, aria-hidden {g["aria"]}')
+                if g['top'][0] != 0 or abs(g['top'][1] - g['W']) > 1: bad.append(f'the top bar spans {g["top"][:2]}, expected 0..{g["W"]}')
+                if g['mainFixed'] or g['mainNav'][1] > 0: bad.append(f'the main nav at {g["mainNav"]} (fixed {g["mainFixed"]}), expected inside the closed drawer')
+                if g['outline']: bad.append(f'an outline at {g["outline"]}, none below the desktop')
+            elif kind == 'landscape-side':
+                if not g['sidebar'] or g['drawer'][0] != 0 or abs(g['drawer'][1] - sp) > 1 or g['menu'] or g['aria'] != 'false': bad.append(f'expected the {sp} px sidebar, no menu button: drawer {g["drawer"]}, menu {g["menu"]}, aria-hidden {g["aria"]}')
+                if abs(g['top'][0] - sp) > 1 or abs(g['top'][1] - g['W']) > 1: bad.append(f'the top bar spans {g["top"][:2]}, expected {sp}..{g["W"]}')
+                if g['mainFixed'] or g['mainNav'][0] < 0 or g['mainNav'][1] > sp + 1: bad.append(f'the main nav at {g["mainNav"]}, expected in the sidebar')
+                if not g['subHidden'] and (g['sub'][0] < 0 or g['sub'][1] > sp + 1): bad.append(f'the sub-nav at {g["sub"]}, expected in the sidebar')
+                if g['main'][0] < sp - 1: bad.append(f'the column starts at {g["main"][0]} px, under the sidebar')
+                if g['outline']: bad.append(f'an outline at {g["outline"]}, none in the tablet landscape layout')
+            else:   # desktop
+                if g['top'][0] != 0 or abs(g['top'][1] - g['W']) > 1: bad.append(f'the top bar spans {g["top"][:2]}, expected across the screen 0..{g["W"]}')
+                if not g['mainFixed'] or g['mainNav'][2] != 0 or g['mainNav'][3] > g['top'][3] + 1 or abs(g['mainNav'][0] - sp) > 1 or g['mainVis'] != 'visible': bad.append(f'the main nav at {g["mainNav"]} (fixed {g["mainFixed"]}, {g["mainVis"]}), expected in the top bar from {sp:.0f} px')
+                if g['menu']: bad.append('the menu button is shown')
+                if g['subHidden']:
+                    if g['sidebar'] or g['pad'][0]: bad.append(f'a sidebar ({g["drawer"]}, body padded {g["pad"][0]} px) on a page without a sub-nav')
+                else:
+                    if not g['sidebar'] or g['drawer'][0] != 0 or abs(g['drawer'][1] - sp) > 1 or g['aria'] != 'false': bad.append(f'expected the {sp:.0f} px sidebar: drawer {g["drawer"]}, aria-hidden {g["aria"]}')
+                    if g['sub'][0] < 0 or g['sub'][1] > sp + 1 or g['sub'][2] < g['top'][3] - 1: bad.append(f'the sub-nav at {g["sub"]}, expected in the sidebar under the bar')
+                    if g['main'][0] < sp - 1: bad.append(f'the column starts at {g["main"][0]} px, under the sidebar')
+                if report and g['supports']:
+                    o = g['outline']
+                    if not o: bad.append('no outline beside the reading page')
+                    elif o[0] < g['main'][1] - 1 or o[1] > g['W'] + 1 or o[2] < g['top'][3] - 1 or o[3] > g['H'] + 1: bad.append(f'the outline at {o}, expected right of the column (to {g["main"][1]}) and inside the window')
+                elif report and not said: said.append(1); print(f'layout: this browser has no ::details-content; the outline is not expected (the section menu stays)')
+                if not report and g['outline']: bad.append(f'an outline at {g["outline"]} on a page that is not a unit')
+            c = pg.evaluate(CLIP_JS, [pid, sp if g['sidebar'] else 0, g['outline']]); nclip += c['n']
+            bad += c['bad']
+            if bad: fails.append(f'{tag}: ' + '; '.join(bad))
+        if (w, h) in FOLD_AT:   # the first tiles above the fold on a tablet landscape home
+            pg.evaluate("location.hash = 'home'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(120)
+            f = pg.evaluate(FOLD_JS)
+            if not f: fails.append(f'layout {w}x{h}: no tiles on the home')
+            elif MULTI:
+                low = [x[:3] for x in f if x[1] > h or x[2] > h]
+                if low: fails.append(f'layout {w}x{h}: the home\'s first tiles {low} end their title or stats below the {h} px fold')
+                else: print(f'layout {w}x{h}: the home\'s first row of {len(f)} tiles shows its titles and stats above the fold (lowest stats at {max(x[2] for x in f)} of {h} px)')
+            else:   # an edition of one track: its band's header stands between the hero and the tiles; the row must start above the fold (step D, BUGS: its titles and stats fall below it, for Pedro)
+                low = [x for x in f if x[3] > h - 44]
+                if low: fails.append(f'layout {w}x{h}: the home\'s first tiles {low} start below the {h} px fold')
+                else: print(f'layout {w}x{h}: one track: the home\'s first row of {len(f)} tiles starts above the fold (at {min(x[3] for x in f)} px), its titles end at {max(x[1] for x in f)} and its stats at {max(x[2] for x in f)} of {h} px (S-NAV2 step D BUGS 1)')
+        if w in HERO_AT:   # P-HK1: the hero bound at every width
+            hb = []
+            for pid in heroes:
+                if not pg.evaluate(f"!!document.getElementById('{pid}')"): continue
+                pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(60)
+                b = pg.evaluate(HERO_BOUND_JS, pid)
+                if not b or not b['topo']: continue
+                W = b['W']
+                lo, hi = ((.4 * W - 22, .54 * W - 22) if b['root'] else (.27 * W - 22, None) if b['log'] else (max(370, (.4 if w >= 900 else .5) * W - 22), None))
+                if b['H'] < lo - 1 or (hi and b['H'] > hi + 1): fails.append(f'hero {w}x{h} #{pid}: {b["H"]:.0f} px tall beside {W:.0f} px, expected {lo:.0f}' + (f' to {hi:.0f}' if hi else ' or more') + ' (P-HK1)')
+                hb.append(f'{pid} {b["H"]:.0f}')
+            print(f'hero bound {w}x{h}: ' + ', '.join(hb))
+        print(f'layout {w}x{h} ({kind}): {len(with_reads)} pages, {nclip} headings, figures and tables inside the column' + (f', sidebar {sp:.0f} px' if sp else ''))
+        ctx.close()
+    if errs: fails.append('layout: console errors: ' + ' | '.join(errs[:3]))
+
+# The 4x CPU throttle frame test of S-NAV1's fresh check (out/S-NAV1/checker.md finding 1, its /tmp/ckscripts/perf.py:
+# 5 s of requestAnimationFrame with motion allowed under Emulation.setCPUThrottlingRate 4), here at 1280 x 800. The fault
+# it found was the main thread's: p50 frames of 33 to 50 ms and long tasks of 0.9 to 3 s on a course home under the
+# throttle (the start build 16.7 ms and none). Measured at S-NAV2 step D (22 Nov 2026) at 1280 x 800, 4x: the course
+# and area homes 16.6 to 17.5 ms, no long task; the home 21.1 to 28.3 ms from run to run, and the build before theme
+# 6.22's layouts the same (21.1 to 25.3 ms, three runs each): its wide hero's paint on this machine, which draws without
+# a GPU. The fault put back (IntersectionObserver removed, so no drawing is paused) gives greece, rome and ux-ia 30.8
+# to 32.6 ms at 1280 x 800. So the budget: a course or area home's median at most FRAME_P50_MAX[0] ms, the home's at
+# most FRAME_P50_MAX[1] ms (its own paint), no long task over LONGTASK_MAX ms.
+FRAMES_JS = r"""async (ms) => { const ts = []; const t0 = performance.now(); let last = t0; window.__lt = 0;
+  new PerformanceObserver(l => l.getEntries().forEach(e => { window.__lt = Math.max(window.__lt, e.duration); })).observe({type: 'longtask'});
+  while (performance.now() - t0 < ms) { await new Promise(r => requestAnimationFrame(r)); const n = performance.now(); ts.push(n - last); last = n; }
+  ts.sort((a, b) => a - b); return {n: ts.length, p50: ts[Math.floor(ts.length / 2)], p95: ts[Math.floor(ts.length * .95)], lt: window.__lt}; }"""
+FRAME_P50_MAX, LONGTASK_MAX = (22, 32), 250   # ms: a course or area home (16.6 to 17.5 measured, the fault 30.8 or more), the home (to 28.3 measured); ms
+def check_frames(br, fails, w=1280, h=800):
+    """S-NAV2 step D: at 1280 x 800 with motion allowed and the CPU throttled 4x (CDP Emulation.setCPUThrottlingRate),
+    5 s of requestAnimationFrame on the home, the first area page and the sampled history and markdown course homes:
+    the median frame at most FRAME_P50_MAX ms (the home its second value) and no long task over LONGTASK_MAX ms."""
+    hs, ms = [x for x in SAMPLE if x in HIST_HOMES], [x for x in SAMPLE if x not in HIST_HOMES]
+    out = []
+    for pid in ['home'] + AREA_IDS[:1] + hs[:1] + ms[:1]:
+        errs = []
+        ctx, pg, _ = new_page(None, br, errs, 'frames', w, h, False, motion=True)
+        pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(800)
+        cdp = ctx.new_cdp_session(pg); cdp.send('Emulation.setCPUThrottlingRate', {'rate': 4}); pg.wait_for_timeout(300)
+        r = pg.evaluate(FRAMES_JS, 5000)
+        ctx.close()
+        out.append(f'{pid} {r["n"]} frames, p50 {r["p50"]:.1f} ms, p95 {r["p95"]:.1f} ms, longest task {r["lt"]:.0f} ms')
+        top = FRAME_P50_MAX[pid == 'home']
+        if r['p50'] > top or r['lt'] > LONGTASK_MAX: fails.append(f'frames {w}x{h} 4x throttle #{pid}: p50 {r["p50"]:.1f} ms (at most {top}), longest task {r["lt"]:.0f} ms (at most {LONGTASK_MAX})')
+        if errs: fails.append(f'frames #{pid}: console errors ' + ' | '.join(errs[:3]))
+    print(f'frames {w}x{h}, 4x CPU throttle, motion, 5 s: ' + '; '.join(out))
+
+# The phone byte identity (S-NAV2 spec: "a byte-for-byte check that nothing at 390 px or below changes (computed layout
+# and screenshots, and nav_diff_check.py classes: the only differences are theme CSS)"). A stored fixture of computed
+# layout would not survive the next unit filed (every page it touches moves), so the start build's phone is derived:
+# nav_diff_check proved S-NAV2's every built difference is the theme CSS, the shell JS (the ?debug readout, inert
+# without ?debug) and the home's --n on p.harea (inert under the start's CSS); so the current shell served with the
+# start's theme in its <style> (PHONE_REF's kit/shell.css, the brand's tokens and comment strip applied as build.py
+# applies them) is the start build's phone. Both are loaded at 320 x 640 and 360 x 780 (dark) and 390 x 844 (dark and
+# light), under reduced motion, on the home, the first area page, a course home, a reading page (its drawer open too)
+# and What's new: every element's box and 35 computed properties of the bar, the drawer and the shown panel, and the
+# full-page screenshot, must be identical (a difference must persist in three tries). Expected and not measured here:
+# PHONE_EXPECTED (the theme CSS itself; the area line's motion, which reduced motion does not run: check_harea). A row
+# that changes the phone on purpose sets PHONE_REF to its own start.
+PHONE_REF = '445b0c4ddac9a034074ee05c06ea7166eff50209'   # S-NAV2's start (land.py start, 22 Nov 2026), theme 6.19
+PHONE_ID_AT = [(320, 640, 'dark'), (360, 780, 'dark'), (390, 844, 'dark'), (390, 844, 'light')]
+DUMP_JS = r"""() => { const props = ['display','position','width','height','margin-top','margin-bottom','margin-left','margin-right','padding-top','padding-left','padding-right','padding-bottom','font-size','line-height','color','background-color','grid-template-columns','min-height','max-width','visibility','opacity','transform','border-left-width','box-shadow','content-visibility','overflow-x','overflow-y','top','left','right','bottom','flex-direction','justify-content','column-gap','row-gap','z-index'];
+  const out = [], els = [document.documentElement, document.body, ...document.querySelectorAll('.top, .top *, #drawer, #drawer *, #backdrop, main, main > .panel:not([hidden]), main > .panel:not([hidden]) *')];
+  for (const e of els) { const r = e.getBoundingClientRect(), cs = getComputedStyle(e);
+    out.push([e.tagName, e.id, e.getAttribute('class'), Math.round(r.left * 10) / 10, Math.round(r.top * 10) / 10, Math.round(r.width * 10) / 10, Math.round(r.height * 10) / 10, props.map(p => cs.getPropertyValue(p)).join('|')]); }
+  return [document.documentElement.scrollWidth, document.documentElement.scrollHeight, out]; }"""
+def _ref_css():
+    """PHONE_REF's kit/shell.css as build.py inlines it for this edition (its tokens appended, its comments stripped
+    where the brand strips them), and the current shell.css the same way; None and the reason if PHONE_REF cannot be read
+    (a shallow clone fetches the one commit first)."""
+    import subprocess
+    def show():
+        return subprocess.run(['git', 'show', f'{PHONE_REF}:kit/shell.css'], cwd=R.parent, capture_output=True, text=True)
+    g = show()
+    if g.returncode:
+        subprocess.run(['git', 'fetch', '-q', '--depth', '1', 'origin', PHONE_REF], cwd=R.parent, capture_output=True, text=True, timeout=300)
+        g = show()
+    if g.returncode: return None, None, (g.stderr.strip().splitlines() or ['git show failed'])[0]
+    strip = brand(EDITION).get('strip_comments', True)
+    t = (lambda c: re.sub(r'/\*.*?\*/', '', c, flags=re.S)) if strip else (lambda c: c)
+    return t((R / 'shell.css').read_text()), t(g.stdout), None
+def check_phone_identity(br, fails):
+    import hashlib
+    cur, ref, why = _ref_css()
+    if why: fails.append(f'phone identity: the reference theme ({PHONE_REF[:7]}) cannot be read: {why}'); return
+    shell = (SITE / 'index.html').read_text()
+    if cur not in shell: fails.append('phone identity: the built shell does not inline kit/shell.css as build.py does (rebuild first)'); return
+    old = shell.replace(cur, ref, 1).encode()
+    hs, ms = [x for x in SAMPLE if x in HIST_HOMES], [x for x in SAMPLE if x not in HIST_HOMES]
+    reads = [rid(LEAD, '2.3')] if LEAD else []
+    pages = ['home'] + AREA_IDS[:1] + (hs[:1] or ms[:1]) + (reads or [])
+    if not reads:   # an edition without a history course: the first markdown reading page in the shell
+        m = re.search(r'<section class="panel[^"]*" id="(read-[^"]+)"', shell); pages += [m.group(1)] if m else []
+    pages += ['new']
+    def measure(start, w, h, th):
+        ctx = br.new_context(viewport={'width': w, 'height': h}, device_scale_factor=1, is_mobile=True, has_touch=True, color_scheme=th, reduced_motion='reduce')
+        ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=FONT_CSS))
+        ctx.route('**/fonts.gstatic.com/**', font_file)
+        if start: ctx.route(URL, lambda r: r.fulfill(status=200, content_type='text/html', body=old))
+        pg = ctx.new_page(); pg.goto(URL + '#home'); pg.wait_for_timeout(200)
+        pg.evaluate(f"localStorage.setItem('{THEME_KEY}', '{th}')")
+        res = {}
+        for pid in pages:
+            pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(500)
+            res[pid] = (pg.evaluate(DUMP_JS), hashlib.sha256(pg.screenshot(full_page=True)).hexdigest())
+            if pid in reads or pid.startswith('read-'):
+                pg.evaluate("document.getElementById('menuB').click()"); pg.wait_for_timeout(500)
+                res[pid + ' drawer'] = (pg.evaluate(DUMP_JS), hashlib.sha256(pg.screenshot()).hexdigest())
+        ctx.close()
+        return res
+    n = retried = nd = 0
+    for w, h, th in PHONE_ID_AT:
+        for k in range(3):
+            a, b = measure(True, w, h, th), measure(False, w, h, th)
+            diff = [pid for pid in a if a[pid] != b.get(pid)]
+            if not diff: break
+            retried += 1
+        n += len(a); nd += len(diff)
+        for pid in diff:
+            la, lb = a[pid][0], b[pid][0]
+            first = next((f'{x} -> {y}' for x, y in zip(la[2], lb[2]) if x != y), f'{len(la[2])} -> {len(lb[2])} elements' if len(la[2]) != len(lb[2]) else f'the page {la[:2]} -> {lb[:2]}' if la[:2] != lb[:2] else 'pixels only')
+            fails.append(f'phone identity {w}x{h} {th} #{pid}: the layout differs from the start build ({PHONE_REF[:7]}) in three tries: layout {la == lb}, pixels {a[pid][1] == b[pid][1]}; first: {str(first)[:300]}')
+    print(f'phone identity: {n} views ({", ".join(pages)}, a reading page\'s drawer open; {", ".join(f"{w}x{h} {th}" for w, h, th in PHONE_ID_AT)}, reduced motion) '
+          + (f'{nd} differ from' if nd else 'laid out and drawn byte for byte as') + f' the start build ({PHONE_REF[:7]}, its theme in the current shell); {retried} retries; expected and not measured here: ' + '; '.join(PHONE_EXPECTED))
+
+def check_webkit(p, fails):
+    """P-NAV3 (S-NAV2 step D): check_history (go()'s pushes, popstate on back and forward, each entry's scroll kept, the
+    replaceState fallback, the sandboxed iframe) and check_pause (the IntersectionObserver's .topo.off, top level and in
+    a sandboxed iframe) run again in Playwright's WebKit. Where WebKit is not installed it is left out with one line,
+    and the check is Pedro's on an iPhone."""
+    try:
+        wk = p.webkit.launch()
+    except Exception as e:
+        print(f'webkit: not available here ({str(e).strip().splitlines()[0][:140]}); history, the scroll save and the pause observer left to an iPhone (P-NAV3)')
+        return
+    wf = []
+    try:
+        print(f'webkit {wk.version}:')
+        check_history(wk, wf)
+        check_pause(wk, wf)
+    finally:
+        wk.close()
+    fails += ['webkit: ' + x for x in wf]
+    print('webkit: history, the scroll save and the pause observer ' + (f'{len(wf)} faults' if wf else 'pass'))
 
 def short(iso):
     import datetime
@@ -3356,6 +3674,12 @@ def main():
         check_nav(br, fails)   # S-NAV1 step C: phone, dark
         check_nav(br, fails, theme='light')
         check_nav(br, fails, 1280, 800)
+        check_nav(br, fails, 1024, 768)   # S-NAV2 step D: the tablet landscape drawer and the desktop
+        check_nav(br, fails, 1920, 1080)
+        check_layouts(br, fails)   # S-NAV2 step D: the sidebar, top bar and outline where the spec puts them; the fold; the hero bound (P-HK1)
+        check_frames(br, fails)   # S-NAV2 step D: S-NAV1's 4x CPU throttle frame test, at 1280 x 800
+        check_phone_identity(br, fails)   # S-NAV2 step D: the phone as the start build's, byte for byte
+        check_webkit(p, fails)   # S-NAV2 step D (P-NAV3): history, the scroll save and the pause observer in WebKit, if installed
 
         # ---- phone ------------------------------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)
@@ -3650,11 +3974,16 @@ def main():
         if not sw: fails.append('desktop sidebar: horizontal overflow')
         print(f'desktop: sidebar {s["w"]} px at the left, content column {s["mainW"]} px from {s["mainLeft"]} px, current item {s["active"]}, measure {s["measure"]}')
         ctx.close()
+        # S-NAV2 step D: the panel checks on a desktop (1920 x 1080: the top bar, the sidebar where there is a sub-nav, the
+        # outline beside a unit); 1024 x 768 and 1280 x 800 keep the drawer's and the 1280 pass's columns, checked above
+        ctx, pg, _ = new_page(p, br, errors, 'wide1920', 1920, 1080, False)
+        check_panels(pg, 'wide1920', fails)
+        ctx.close()
 
         # P91: the home and What's new at 320, 360 and 430 px (390 is the phone pass above), tablet and desktop, dark and
         # light; P92: on the desktop a history tile, a markdown tile, the IA tile and the hero's What's new link each open
         # their page
-        for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS[1:]:
+        for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS[1:] + NEW_VIEWPORTS:   # S-NAV2 step D: and 1024 x 768, 1920 x 1080
             ctx, pg, _ = new_page(p, br, errors, name, w, h, mobile)
             check_home(pg, name, fails, EXPECT)
             check_new(pg, name, fails, EXPECT)
@@ -3684,7 +4013,7 @@ def main():
         TOPO_ALL = [x for x in SAMPLE if x in HIST_HOMES or x in EXPECT['courses']] + AREA_IDS + ['new']   # S-DEC4: course.toml `verify_sample` (every course where the edition holds none); S-NAV1 step B: every area page
         NONE_ALL = [x for x in ('changelog', 'backlog', 'viz-examples') if (x != 'viz-examples' or 'figures' not in OMIT) and (x not in ('changelog', 'backlog') or x not in OMIT)]
         TOPO_PAGES, NONE_PAGES = SCOPE.only(TOPO_ALL), SCOPE.only(NONE_ALL)   # S-DEC4: the run's pages (the shots and the LCP pages below take every sampled one)
-        for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS:
+        for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS + NEW_VIEWPORTS:   # S-NAV2 step D: and 1024 x 768, 1920 x 1080
             ctx, pg, _ = new_page(p, br, errors, name + ' pages', w, h, mobile)
             reads = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => { const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
             for theme in ('dark', 'light'):
@@ -3769,6 +4098,15 @@ def main():
                             check_topo(pg, pid, f'{name} motion {theme} pose {p_:g}', fails, EXPECT, motion=True, phase=False)
                             lows.append(texts_contrast(pg, pid, f'{name} motion {theme}', fails, f' pose {p_:g}'))
                         pg.evaluate("() => document.getAnimations().forEach(a => a.play())")
+            ctx.close()
+        # S-NAV2 step D: at 1024 x 768 and 1920 x 1080 the home with motion allowed (its layer, its texts, the area line's
+        # cycle); the course and area pages' poses stay at the widths above
+        for name, w, h, mobile in NEW_VIEWPORTS:
+            ctx, pg, _ = new_page(p, br, errors, name + ' motion', w, h, mobile, motion=True)
+            pg.evaluate("location.hash = 'new'"); ready(pg); pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(200)
+            check_topo(pg, 'home', f'{name} motion', fails, EXPECT, motion=True)
+            check_home(pg, name + ' motion', fails, EXPECT, motion=True)
+            check_harea(pg, name + ' motion', fails)
             ctx.close()
 
         if SHOTS:
