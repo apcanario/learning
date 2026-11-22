@@ -225,3 +225,37 @@
 - push attempts: 1
 - pushed: 338eec37120557127ab7293b39060c3bd13a2b6a
 
+## land S-NAV1 · 2026-11-22T06:48:42+00:00
+
+- start: 797b1d479 (.git/land/started/S-NAV1.json)
+- upstream commits absorbed: 20
+  - 338eec3 land S-NAV1: verify record
+  - 132989f land S-NAV1: baseline re-recorded (close: changelog, site log, backlog, S-NAV2 prompt)
+  - efea5bd land S-NAV1: verify record
+  - e0c2f6a land S-NAV1: baseline re-recorded (checker fixes: pause off-screen drawings, levels kept, drawing digest)
+  - c6a65d6 land S-NAV1: verify record
+  - e463597 S-NAV1 steps E and F: nav_diff_check.py, p94/p95 pose the swell
+  - d2cdd04 land S-NAV1: verify record
+  - 66de205 land S-NAV1: baseline re-recorded (step D: line illustrations move from their core)
+  - 731bd68 land S-NAV1: verify record
+  - 9617d2d land S-NAV1: baseline re-recorded (step C: two-level navigation)
+  - 8a7ab42 land S-NAV1: verify record
+  - 119ce57 land S-NAV1: baseline re-recorded (step B fix: 320 px home hero)
+  - 830a82c land S-NAV1: baseline re-recorded (step B outputs; kit/baseline.json recorded in the step B commit and verified unchanged)
+  - a0eeaab S-NAV1 step B: declare replaced lines
+  - cecd554 S-NAV1 step B: an area home per track, one tile per track on the home, crumbs Home > Area > Course > Unit
+  - 2792169 land S-NAV1: verify record
+  - 0948722 S-NAV1 step A: re-record the build manifest
+  - 0a8d31a S-NAV1 step A: declare greece edition shell as expected
+  - 300300f S-NAV1 step A: real history entries, popstate routing, per-entry scroll
+  - 0898ff6 S-NAV1: register S-NAV1 and S-NAV2, close P-DEC16 as superseded
+- lines preserved: 5005 upstream-added lines in 36 files, all present
+- saved row prompts: no merge, not checked
+- files auto-merged: none
+- baseline: not needed (no build-relevant change of ours)
+- index_check: ok
+- verify: ALL CHECKS PASSED (first line: scoped: no page changed + home; 10 of 301 pages checked (home, new, changelog, backlog, track-history, track-marketing, track-technology, track-ux, track-sports)
+- lock: released; moved onto 1 of our own lock heartbeats before the push
+- push attempts: 1
+- pushed: b939d1cd30c9c2c71051d102bb0c1e28f3fe2a4e
+
