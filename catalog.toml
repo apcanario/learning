@@ -29,6 +29,7 @@ course_order = [
   "building-with-ai",
   "sport-psychology",
   "supply-chain-execution",
+  "supply-chain-planning",
 ]
 edition_order = ["academy", "greece"]
 
@@ -165,24 +166,18 @@ planned = [
 
 # S-SCE0 (19 Nov 2026): Supply Chain Execution for Product Teams needed a track of its own (syllabus decision D2, docs/supply-chain-execution-syllabus.md);
 # `planned` lists its four courses to come (syllabus decision D12), in the order of the design chat's list, each with its title, its scope line
-# and its teaser word for word: the teaser's opening words are `planned_label`, its rest the row's last field, so the tile shows it whole
+# and its teaser word for word: the teaser's opening words are `planned_label`, its rest the row's last field, so the tile shows it whole.
+# S-SCP0 (22 Nov 2026): Supply Chain Planning for Product Teams left `planned` for course_order once registered; three remain (the note says three).
 [[tracks]]
 id = "supply-chain"
 hero = [[0.50, 0.17], [0.50, 0.13]]   # S-SCE0 (19 Nov 2026): top centre, between Marketing and Technology
 name = "Supply Chain"
 color = "var(--gold)"
 lede = "How warehouses, transport and orders run, who works in them, how the software that runs them is bought, and what it costs, for people who build, sell or implement that software. Every claim graded by its evidence, no real vendor assessed, every unit ending in a shipped deliverable."
-planned_note = "Four courses to follow Supply Chain Execution for Product Teams, each designed in its own chat before anything is written. Open a course to see its scope and what you will know after it."
+planned_note = "Three courses to follow Supply Chain Execution for Product Teams, each designed in its own chat before anything is written. Open a course to see its scope and what you will know after it."
 planned_label = "After this you'll know how to"
 planned_heading = "Coming soon"
 planned = [
-  [
-    "Planning",
-    "Supply Chain Planning for Product Teams",
-    "var(--teal)",
-    "Forecasting, inventory targets, replenishment and the monthly planning cycle: the decisions that tell execution what to move.",
-    "read a demand forecast and say how wrong it is likely to be, explain why a company holds the stock it holds, and follow a replenishment decision from the plan to the purchase order. You'll be able to describe a planner's month, tell planning software from execution software at the points where they meet, and say what a planning tool needs from the systems downstream of it.",
-  ],
   [
     "Automation",
     "Warehouse Automation and Robotics",
