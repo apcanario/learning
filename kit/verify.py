@@ -64,8 +64,8 @@ Opening notes (P73): a markdown unit's text before its first heading is a closed
 opening note", on every unit that has one and on none that has not; section 1 opens on its heading; a deep link lands.
 Home (P92, 4 Nov 2026; P91's shelf, P90's map and Continue gone), at 320, 360, 390, 430, 768 and 1280 px, dark and
 light, with reduced motion emulated, and once more at every width with motion allowed: the hero holds the contour
-layer and the copy, nothing else: the headline "Academy"; the area line, the four areas in courses.py's order, each in
-its tone, aria-hidden, no link or focus stop in it; the static line naming all four in their tones, for a screen
+layer and the copy, nothing else: the headline "Academy"; the area line, the areas in courses.py's order, each in
+its tone, aria-hidden, no link or focus stop in it; the static line naming them all in their tones, for a screen
 reader, and the line shown under reduced motion (with motion allowed the cycling line shows and the static line is for
 a screen reader only); the lede; the quiet link "What's new · <code> · <day>" naming the newest dated unit, to #new, at
 least 44 px tall, outlined, not filled. The contour layer: aria-hidden, no text, at most HOME_TOPO_MAX (24,148 B from
@@ -86,7 +86,7 @@ against the pixels under it (the contour lines and the page, shot with the texts
 large text. With motion allowed the hero's texts are measured at the five poses of the move (P93; P92's drift, at both
 ends and the middle, is gone) with each area word shown in turn. With
 reduced motion no animation runs on the home; with motion allowed only transform and opacity animate
-(document.getAnimations(), each effect's keyframes), the four area words, the shown contour layout and (P93) every shown
+(document.getAnimations(), each effect's keyframes), the area words (each harea and harea-y since S-NAV2 step A), the shown contour layout and (P93) every shown
 tile's patch.
 At 390 px with motion allowed the fresh load's LCP and longest task are printed. On the desktop a history tile, a
 markdown tile, the IA tile and the What's new link are clicked and each lands on its page. What's new (P91), at the
@@ -174,6 +174,12 @@ Out of view (S-NAV1 step G; check_pause): at 390 px with motion, on the home and
 home through history, at the top level and in a sandboxed iframe: every drawing in view runs and moves, every one out of
 view is .off (shell.js's IntersectionObserver), its swells paused and still, every drawing of a hidden panel .off;
 under reduced motion no swell exists. The byte and class checks read a drawing without the runtime .off.
+The area line's cycle (S-NAV2 step A, Fix 1; check_harea): at every viewport of the home's motion pass (320, 360, 430,
+390, 768 and 1280 px), the real line (--n on p.harea the number of its words, the tracks) and a probe copy of it with
+3, 4 and 8 words, sampled every 50 ms over two cycles: each word runs harea and harea-y over n x 3 s; at every sample at
+most one word above opacity .5 (exactly one but at a cross-fade's middle), never three drawn, two drawn together for
+at most the .36 s cross-fade plus a sample, each word shown three seconds a cycle in turn, at rest while fully shown.
+PHONE_EXPECTED lists the phone's expected differences from S-NAV2's start (the theme CSS and this line).
 Last, index_check.py: docs/courses-index.md against the syllabi, provenance, the vault and the data files (A5).
 Then rot_check.py (P30-F11, P30-F16): kit/shell.css is design/theme.css, no live instruction names a retired thing, and
 every staleness date past or due within 30 days is printed as a warning.
@@ -686,6 +692,82 @@ def _hero_contrast(pg, label, fails, only=None):
         if lo < need - .005: fails.append(f'home {label}: {it["what"]} reaches {lo:.2f}:1 over the contours under it (needs {need}:1)')
     print(f'home {label} ({pg.evaluate("innerWidth")} px): hero texts over the contours, {len(items)} measured pixel by pixel, lowest {worst[0]}:1 ({worst[1]}); each (lowest/needed): ' + '; '.join(each))
 
+# S-NAV2 step A (Fix 1; Pedro, 22 Nov 2026, his phone: "Sports" and "History" drawn on top of each other under
+# "Academy"): the area line's cycle, read from the running animations. The theme times it by --n on p.harea (n x 3 s a
+# cycle, each word 100/n percent of it, by linear() easings whose stops are calc()ed from --n, theme 4h), so a new area
+# needs no CSS edit. Sampled over two cycles, each animation paused at the time: at every sample at most one word is
+# above opacity .5, and exactly one but where two cross at .5 (the middle of a cross-fade); two words are both drawn
+# (opacity over .01) for at most the cross-fade, HAREA_CROSS (.36 s, 12% of a word's three seconds), plus a sample; three
+# never; each word is shown (above .5) for its three seconds in each cycle, in its order, at rest (no transform) while
+# fully shown; each word runs harea (opacity) and harea-y (transform) over n x 3 s. The real line (its --n the number
+# of its words, the number of tracks), then a probe: a copy of the line beside it with 3, 4 and 8 words (HAREA_PROBES),
+# its --n set to match, measured and removed (the catalog untouched).
+# The phone byte-identity check (S-NAV2) expects this one difference on the phone besides the inlined theme CSS:
+# PHONE_EXPECTED lists it.
+HAREA_STEP, HAREA_WORD, HAREA_CROSS = 50, 3000, 360   # ms: the sampling step; a word's share of the cycle; the cross-fade
+HAREA_PROBES = (3, 4, 8)
+PHONE_EXPECTED = ('the inlined theme CSS (design/theme.css = kit/shell.css)',
+                  'the home hero\'s area line (S-NAV2 Fix 1): style="--n:<number of areas>" on p.harea, and its animation '
+                  '(harea and harea-y over n x 3 s, each word 100/n percent of it); every other phone pixel and byte the same')
+HAREA_JS = r"""([probe, step, word, cross]) => {
+  const real = document.querySelector('#home .harea'), bad = [];
+  if (!real) return {bad: ['no area line (p.harea)']};
+  let al = real;
+  if (probe) {   // a copy of the line beside it with probe words, the real words' tones reused in turn
+    al = real.cloneNode(false); al.classList.add('harea-probe'); al.style.setProperty('--n', String(probe));
+    const src = [...real.querySelectorAll('.harea-w')];
+    for (let i = 0; i < probe; i++) { const w = src[i % src.length].cloneNode(false); w.textContent = 'Probe ' + (i + 1); w.style.setProperty('--k', String(i)); al.appendChild(w); }
+    real.after(al);
+  }
+  const ws = [...al.querySelectorAll('.harea-w')], n = ws.length;
+  getComputedStyle(ws[0]).opacity;   // the probe's animations made
+  const nv = getComputedStyle(al).getPropertyValue('--n').trim();
+  if (+nv !== n) bad.push(`--n on the line is ${nv || 'missing'}, the line has ${n} words`);
+  const an = document.getAnimations().filter(a => a.animationName && a.effect && ws.includes(a.effect.target));
+  ws.forEach((w, i) => { const mine = an.filter(a => a.effect.target === w), names = mine.map(a => a.animationName).sort().join();
+    if (names !== 'harea,harea-y') bad.push(`word ${i + 1} runs ${names || 'nothing'}, expected harea and harea-y`);
+    mine.forEach(a => { const d = a.effect.getTiming().duration; if (Math.abs(d - n * word) > 1) bad.push(`word ${i + 1}'s ${a.animationName} lasts ${d} ms, expected ${n} x ${word}`); }); });
+  const all = document.getAnimations(), state = all.map(a => [a, a.playState, a.currentTime]);
+  an.forEach(a => a.pause());
+  const D = n * word, out = {n, samples: 0, zero: 0, multi: [], three: [], overlapMax: 0, shown: ws.map(() => 0), order: [], moved: []};
+  let run = 0, last = -1;
+  for (let t = 7; t < 2 * D; t += step) {   // 7 ms off the step's grid, so no sample lands on a cross-fade's exact middle
+    an.forEach(a => { a.currentTime = t; });
+    const op = ws.map(w => parseFloat(getComputedStyle(w).opacity)); out.samples++;
+    const up = op.map((o, i) => o > .5 ? i : -1).filter(i => i >= 0), drawn = op.filter(o => o > .01).length;
+    if (up.length > 1) out.multi.push([t, op.map(o => +o.toFixed(2))]);
+    if (!up.length && Math.max(...op) < .45) out.zero++;   // none shown, away from the middle of a cross-fade
+    if (drawn > 2) out.three.push([t, op.map(o => +o.toFixed(2))]);
+    run = drawn > 1 ? run + step : 0; out.overlapMax = Math.max(out.overlapMax, run);
+    if (t >= D && up.length === 1) { out.shown[up[0]] += step; if (up[0] !== last) { out.order.push(up[0]); last = up[0]; } }
+    op.forEach((o, i) => { if (o > .999) { const m = getComputedStyle(ws[i]).transform; if (m !== 'none' && !/^matrix\(1, 0, 0, 1, 0, 0\)$/.test(m)) out.moved.push([t, i, m]); } });
+  }
+  state.forEach(([a, ps, ct]) => { if (!an.includes(a)) return; a.currentTime = ct; if (ps === 'running') a.play(); });
+  if (probe) al.remove();
+  out.bad = bad; return out;
+}"""
+def check_harea(pg, label, fails):
+    """S-NAV2 step A (Fix 1): the area line's cycle at this viewport, the real line and each probe (HAREA_JS); with
+    motion allowed, on the home."""
+    pg.evaluate("location.hash = 'home'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(60)
+    rows = []
+    for probe in (None,) + HAREA_PROBES:
+        r = pg.evaluate(HAREA_JS, [probe, HAREA_STEP, HAREA_WORD, HAREA_CROSS])
+        tag = f'home {label}: the area line' + (f' (probe of {probe} words)' if probe else f' ({r.get("n")} areas)')
+        fails += [f'{tag}: {b}' for b in r['bad']]
+        if 'samples' not in r: continue
+        n = r['n']
+        if r['multi']: fails.append(f'{tag}: two or more words above opacity .5 at {len(r["multi"])} sampled times, the first {r["multi"][:2]}')
+        if r['zero']: fails.append(f'{tag}: no word shown at {r["zero"]} sampled times')
+        if r['three']: fails.append(f'{tag}: three or more words drawn at once at {len(r["three"])} sampled times, the first {r["three"][:2]}')
+        if r['overlapMax'] > HAREA_CROSS + HAREA_STEP: fails.append(f'{tag}: two words drawn together for {r["overlapMax"]} ms, over the {HAREA_CROSS} ms cross-fade')
+        if any(abs(x - HAREA_WORD) > 2 * HAREA_STEP for x in r['shown']): fails.append(f'{tag}: the words are shown {r["shown"]} ms in a cycle, expected {HAREA_WORD} each')
+        want = [(k + (r['order'][0] if r['order'] else 0)) % n for k in range(len(r['order']))]
+        if r['order'] != want or len(r['order']) < n: fails.append(f'{tag}: the words show in the order {r["order"]}, expected each in turn')
+        if r['moved']: fails.append(f'{tag}: a fully shown word is not at rest at {len(r["moved"])} sampled times, the first {r["moved"][:2]}')
+        rows.append(f'{n} words: {r["samples"]} samples, shown {sorted(set(r["shown"]))} ms each, overlap at most {r["overlapMax"]} ms')
+    print(f'home {label}: the area line cycles one word at a time (step {HAREA_STEP} ms, cross-fade {HAREA_CROSS} ms): ' + '; '.join(rows))
+
 def check_home(pg, label, fails, expect, motion=False):
     """P92: the home's layout at one width (HOME_JS): the hero (the headline, the area line and its static line, the
     lede, the quiet link, the contour layer, its rises against the sources), its height, the area headers, the tiles and
@@ -748,8 +830,9 @@ def check_home(pg, label, fails, expect, motion=False):
         # nothing else of theirs moves; besides them only the area words
         sw, other = [a for a in an if a[4] == SWELL], [a for a in an if a[4] != SWELL]
         nlines = pg.evaluate(SWELL_LINES_JS, '#home')   # a patch in the closed Planned list is not drawn, but its lines' swell runs
-        if sorted({a[0].split()[0] for a in other}) != ['harea-w'] or len(other) != len(names) or len(sw) != nlines or any(a[0] != 'path' for a in sw):
-            fails.append(f'home {label}: with motion allowed the animations are {len(other)} others ({sorted({(a[0], a[4]) for a in other})[:4]}) and {len(sw)} swells on {sorted({a[0] for a in sw})}, expected the {len(names)} area words and one swell on each of the {nlines} lines of the shown contour layout and every tile\'s patch (S-NAV1 step D)')
+        # S-NAV2 step A: two animations a word, harea (opacity) and harea-y (transform)
+        if sorted({a[0].split()[0] for a in other}) != ['harea-w'] or sorted(a[4] for a in other) != sorted(['harea', 'harea-y'] * len(names)) or len(sw) != nlines or any(a[0] != 'path' for a in sw):
+            fails.append(f'home {label}: with motion allowed the animations are {len(other)} others ({sorted({(a[0], a[4]) for a in other})[:4]}) and {len(sw)} swells on {sorted({a[0] for a in sw})}, expected harea and harea-y on each of the {len(names)} area words and one swell on each of the {nlines} lines of the shown contour layout and every tile\'s patch (S-NAV1 step D)')
     elif an: fails.append(f'home {label}: under reduced motion {len(an)} animations run: {an[:3]}')
     print(f'home {label}: hero {r.get("heroH")} (px, screen, %), copy {r.get("copy")!r}; area line {[w for w, _ in r.get("words", [])]}, shown {r.get("lineShown")}, static shown {r.get("staticShown")}; '
           f'link {r.get("link") and r["link"][:4]}; contours {r.get("topoBytes")} B, layout {r.get("layout")}, rises {[(l, k, z) for _, rs in r.get("layouts", [])[:1] for l, _, k, _, z in rs]}; '
@@ -1011,7 +1094,7 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
         nt = (1 if h else 0) + r['allPatches']
         sw = [a for a in an if a[3] == SWELL]   # S-NAV1 step D: one swell on each line of each drawing, nothing else moving there
         if len(sw) != r['lines'] or any(a[0] != 'path' for a in sw): fails.append(f'{pid} {label}: {len(sw)} lines swell, the page\'s {nt} contour drawings have {r["lines"]} lines')
-        if [a for a in an if a[3] not in (SWELL, 'harea')]: fails.append(f'{pid} {label}: other animations run: {[a for a in an if a[3] not in (SWELL, "harea")][:3]}')
+        if [a for a in an if a[3] not in (SWELL, 'harea', 'harea-y')]: fails.append(f'{pid} {label}: other animations run: {[a for a in an if a[3] not in (SWELL, "harea", "harea-y")][:3]}')   # S-NAV2 step A: the area words' two
         # each drawing at its own point of the cycle: the phases build.py gives (--ph), at least 0.9 / n apart for the n
         # drawings of the page (P93 follow-up: at a 10 s sweep the measured progress also carried when each drawing was
         # first shown, a fifth of a second for the tiles in History's Planned list opened after the home, so the check
@@ -2056,7 +2139,7 @@ SWELL_JS = r"""([pid, poses, bt, motion, phone]) => { """ + SWELL_AT_JS + LINES_
   const mine = css.filter(a => a.effect && a.effect.target && P.contains(a.effect.target));
   const allPaths = [...P.querySelectorAll('.topo svg.topo-l path')];
   mine.forEach(a => { if (a.animationName === 'topo-swell' && !allPaths.includes(a.effect.target)) out.bad.push(`a swell on ${a.effect.target.tagName}, not a contour line`);
-    else if (a.animationName !== 'topo-swell' && a.animationName !== 'harea') out.bad.push(`${a.animationName} runs on ${a.effect.target.tagName}.${a.effect.target.getAttribute('class')}`); });   // a spot or planned ring (a circle) never moves
+    else if (a.animationName !== 'topo-swell' && a.animationName !== 'harea' && a.animationName !== 'harea-y') out.bad.push(`${a.animationName} runs on ${a.effect.target.tagName}.${a.effect.target.getAttribute('class')}`); });   // a spot or planned ring (a circle) never moves
   const swell = new Map(mine.filter(a => a.animationName === 'topo-swell').map(a => [a.effect.target, a]));
   const vis = e => !!e && e.getBoundingClientRect().width > 0 && getComputedStyle(e).display !== 'none';
   const draws = [...P.querySelectorAll('.topo')].filter(vis).map(t => ({t, sv: [...t.querySelectorAll(':scope > svg.topo-l')].find(s => getComputedStyle(s).display !== 'none')})).filter(x => x.sv);
@@ -3549,6 +3632,7 @@ def main():
                 pg.evaluate("location.hash = 'new'"); ready(pg); pg.evaluate("location.hash = 'home'"); ready(pg); pg.wait_for_timeout(200)   # the home shown afresh, each drawing at its own phase, before any pose
                 check_topo(pg, 'home', f'{name} motion {theme}', fails, EXPECT, motion=True)
                 check_home(pg, name + (' motion' if theme == 'dark' else ' motion light'), fails, EXPECT, motion=True)
+                if theme == 'dark': check_harea(pg, name + ' motion', fails)   # S-NAV2 step A: one area word at a time, at every viewport
                 for p_ in POSES:
                     pose(pg, p_, 1500)
                     check_topo(pg, 'home', f'{name} motion {theme} pose {p_:g}', fails, EXPECT, motion=True, phase=False)

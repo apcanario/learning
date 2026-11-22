@@ -48,6 +48,10 @@
    view), so a course home's hundreds of lines no longer animate on the main thread off screen, 4i; an object relief's
    inside lines carry no class (only the halo is .rl-out), every line of it in the page's tone, so the drawing keeps
    every level within its budget, 4i.
+   Version 6.20, 22 Nov 2026 (S-NAV2 step A, Fix 1): the home hero's area words cycle by the number of areas (--n on
+   .harea, written by kit/build.py): n x 3 s a cycle, each word 100/n percent of it, by linear() easings whose stops
+   are calc()ed from --n (harea, opacity; harea-y, the rise), so a new area needs no CSS edit; a browser without them
+   shows the static line, 4h.
    Version 6.17, 21 Nov 2026 (S-NAV1 step C): the navigation is two levels in the drawer's list (.dlist): nav.main-nav,
    Home and the areas (.darea, the area's tone), ruled off as the old top rows (.dtop) were, and nav.sub-nav, the
    section's group (.sub-sec): an area's courses, a course's pages and units; none on the home. Phone look unchanged
@@ -422,9 +426,9 @@ details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter
    on the home (P91): each course home keeps its own.
    The hero (P92, Pedro 4 Nov 2026 from 13:16, after research into 2026 heroes: type first, the action in view, motion
    beside the headline, never heavy motion behind it, a still fallback for every animation): the topography (.topo,
-   4i) behind the headline "Academy"; under it the four areas cycling (.harea: the words stacked in one cell, each in
+   4i) behind the headline "Academy"; under it the areas cycling (.harea: the words stacked in one cell, each in
    its area's tone, shown in turn by opacity and transform, hidden from a screen reader) and the static line that names
-   all four (.harea-all: read by a screen reader, and the line a reader sees under reduced motion, when nothing moves);
+   them all (.harea-all: read by a screen reader, and the line a reader sees under reduced motion, when nothing moves);
    the lede; the quiet link to What's new (.hnew: outlined, text weight, not a filled button). It bleeds to the full
    width beside the sidebar (100cqw of the body, section 3) with its text kept in the column, and stands 70% of the
    screen tall (66% to 400 px wide, so at 320 x 640 the first area tile's title, below its contour patch, still starts on
@@ -445,14 +449,27 @@ details.course.live>.nspine span{font-family:var(--mono);font-size:10.5px;letter
 .hnew-a{color:var(--muted)}
 @media (hover:hover){.hnew:hover{border-color:var(--muted);background:var(--hover)}}
 .hnew:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-@media (prefers-reduced-motion:no-preference){
+/* S-NAV2 step A (Pedro, 22 Nov 2026: "Sports" and "History" drawn on top of each other): the cycle is the number of
+   areas, --n (kit/build.py writes it on .harea), times three seconds, and each word is in for 100/n percent of it, so
+   any number of areas cycles with no CSS edit (the 12 s cycle and 25% windows of 6.5 held four; a fifth and sixth
+   word started at 12 and 15 s, inside the same cycle, over the first two). A keyframe's offsets cannot take var(), so
+   the window is in the easing: one linear() per property, its stops calc()ed from --n (--hw, one word's share of the
+   cycle): the word fades in over .36 s (12% of its three seconds), holds to its share's end and fades out over .36 s
+   as the next word fades in, so the two cross for .36 s and never more; opacity and transform are two animations,
+   harea (opacity, up then down) and harea-y (the rise, from .3em below to .3em above, the middle held), as one
+   easing cannot draw both. --hs is where both start: 0, or with one area 1 (the word stays, never blinking at the
+   cycle's turn). A browser without linear() stops in calc() shows the static line, as under reduced motion. */
+@media (prefers-reduced-motion:no-preference){@supports (animation-timing-function:linear(clamp(0, 1, 1), 1 calc(50% * .12), 0)){
   .harea{display:grid}
-  .harea-w{grid-area:1 / 1;opacity:0;animation:harea 12s linear calc(var(--k,0) * 3s - .4s) infinite both}
+  .harea-w{grid-area:1 / 1;opacity:0;--hw:calc(100% / var(--n,4));--hs:clamp(0, 2 - var(--n,4), 1);
+    animation-name:harea,harea-y;animation-duration:calc(var(--n,4) * 3s);animation-delay:calc(var(--k,0) * 3s - .4s);
+    animation-iteration-count:infinite;animation-fill-mode:both;
+    animation-timing-function:linear(var(--hs), 1 calc(var(--hw) * .12), 1 var(--hw), 0 calc(var(--hw) * 1.12), 0),
+      linear(calc(var(--hs) * .5), .5 calc(var(--hw) * .12), .5 var(--hw), 1 calc(var(--hw) * 1.12), 1)}
   .harea-all{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0}   /* for a screen reader only */
-}
-/* each word in for a quarter of the cycle (three seconds): it fades in over the first 3%, holds, and fades out over the
-   next 3% as the next word fades in, so the two cross */
-@keyframes harea{0%{opacity:0;transform:translateY(.3em)}3%,25%{opacity:1;transform:none}28%,100%{opacity:0;transform:translateY(-.3em)}}
+}}
+@keyframes harea{from{opacity:0}to{opacity:1}}
+@keyframes harea-y{from{transform:translateY(.3em)}to{transform:translateY(-.3em)}}
 /* the area sections: on a phone the header is the area's name only (Pedro: the lede "on the desktop only, and on mobile
    also ignore the count"); from 768 px it holds the "Track" label, the name, the lede and the count (section 6) */
 .panel.root .thead .cname,.panel.root .thead p,.panel.root .tmeta{display:none}

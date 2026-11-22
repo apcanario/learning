@@ -1,0 +1,42 @@
+# S-NAV2 Step A (Fix 1, area words): the home carries --n; the shell inlines the theme CSS; the size table follows
+README.md
+academy/index.html
+editions/greece/index.html
+drop: design/theme.css :: 4i) behind the headline "Academy"; under it the four areas cycling (.harea: the words stacked in one cell, each in
+drop: design/theme.css :: all four (.harea-all: read by a screen reader, and the line a reader sees under reduced motion, when nothing moves);
+drop: design/theme.css :: @media (prefers-reduced-motion:no-preference){
+drop: design/theme.css :: .harea-w{grid-area:1 / 1;opacity:0;animation:harea 12s linear calc(var(--k,0) * 3s - .4s) infinite both}
+drop: design/theme.css :: }
+drop: design/theme.css :: /* each word in for a quarter of the cycle (three seconds): it fades in over the first 3%, holds, and fades out over the
+drop: design/theme.css :: next 3% as the next word fades in, so the two cross */
+drop: design/theme.css :: @keyframes harea{0%{opacity:0;transform:translateY(.3em)}3%,25%{opacity:1;transform:none}28%,100%{opacity:0;transform:translateY(-.3em)}}
+drop: kit/README.md :: | Shell (`index.html`) | 1 | 611 KB | 611 KB | home, drawer, the build pages of the markdown courses, backlog |
+drop: kit/academy/index.html :: 4i) behind the headline "Academy"; under it the four areas cycling (.harea: the words stacked in one cell, each in
+drop: kit/academy/index.html :: all four (.harea-all: read by a screen reader, and the line a reader sees under reduced motion, when nothing moves);
+drop: kit/academy/index.html :: @media (prefers-reduced-motion:no-preference){
+drop: kit/academy/index.html :: .harea-w{grid-area:1 / 1;opacity:0;animation:harea 12s linear calc(var(--k,0) * 3s - .4s) infinite both}
+drop: kit/academy/index.html :: }
+drop: kit/academy/index.html :: /* each word in for a quarter of the cycle (three seconds): it fades in over the first 3%, holds, and fades out over the
+drop: kit/academy/index.html :: next 3% as the next word fades in, so the two cross */
+drop: kit/academy/index.html :: @keyframes harea{0%{opacity:0;transform:translateY(.3em)}3%,25%{opacity:1;transform:none}28%,100%{opacity:0;transform:translateY(-.3em)}}
+drop: kit/academy/index.html :: <p class="harea" aria-hidden="true"><span class="harea-w" style="--c:var(--red);--k:0">History</span><span class="harea-w" style="--c:var(--teal);--k:1">Marketing</span><span class="harea-w" style="--c:var(--purple);--k:2">Technology</span><span class="harea-w" style="--c:var(--blue);--k:3">User Experience</span><span class="harea-w" style="--c:var(--orange);--k:4">Sports</span><span class="harea-w" style="--c:var(--gold);--k:5">Supply Chain</span></p><p class="harea-all"><span style="--c:var(--red)">History</span><span class="harea-dot"><span aria-hidden="true">&nbsp;·</span><span class="hsr">,</span> </span><span style="--c:var(--teal)">Marketing</span><span class="harea-dot"><span aria-hidden="true">&nbsp;·</span><span class="hsr">,</span> </span><span style="--c:var(--purple)">Technology</span><span class="harea-dot"><span aria-hidden="true">&nbsp;·</span><span class="hsr">,</span> </span><span style="--c:var(--blue)">User Experience</span><span class="harea-dot"><span aria-hidden="true">&nbsp;·</span><span class="hsr">,</span> </span><span style="--c:var(--orange)">Sports</span><span class="harea-dot"><span aria-hidden="true">&nbsp;·</span><span class="hsr">,</span> </span><span style="--c:var(--gold)">Supply Chain</span></p>
+drop: kit/baseline.json :: "README.md": "72cd47d57a5213ac04cb42d31ec10bf869ed739539aea819ac0563f339b2d929",
+drop: kit/baseline.json :: "academy/index.html": "2962210b78631a5ef6ae929ba116824695dc0fbd1b7dc7a727512ce11b8876e2",
+drop: kit/baseline.json :: "editions/greece/index.html": "e2bef81ca554041b092c699e0593b9d8160da3607c2041b294a4ea5117ea29e6",
+drop: kit/build.py :: # P92 (4 Nov 2026) · the hero's area line (Pedro: the area word cycling under "Academy", each in its colour): the four
+drop: kit/build.py :: hero_areas = ('<p class="harea" aria-hidden="true">' + ''.join(f'<span class="harea-w" style="--c:{t["color"]};--k:{k}">{html.escape(t["name"])}</span>' for k, t in enumerate(THEMES)) + '</p>'
+drop: kit/shell.css :: 4i) behind the headline "Academy"; under it the four areas cycling (.harea: the words stacked in one cell, each in
+drop: kit/shell.css :: all four (.harea-all: read by a screen reader, and the line a reader sees under reduced motion, when nothing moves);
+drop: kit/shell.css :: @media (prefers-reduced-motion:no-preference){
+drop: kit/shell.css :: .harea-w{grid-area:1 / 1;opacity:0;animation:harea 12s linear calc(var(--k,0) * 3s - .4s) infinite both}
+drop: kit/shell.css :: }
+drop: kit/shell.css :: /* each word in for a quarter of the cycle (three seconds): it fades in over the first 3%, holds, and fades out over the
+drop: kit/shell.css :: next 3% as the next word fades in, so the two cross */
+drop: kit/shell.css :: @keyframes harea{0%{opacity:0;transform:translateY(.3em)}3%,25%{opacity:1;transform:none}28%,100%{opacity:0;transform:translateY(-.3em)}}
+drop: kit/verify.py :: layer and the copy, nothing else: the headline "Academy"; the area line, the four areas in courses.py's order, each in
+drop: kit/verify.py :: its tone, aria-hidden, no link or focus stop in it; the static line naming all four in their tones, for a screen
+drop: kit/verify.py :: (document.getAnimations(), each effect's keyframes), the four area words, the shown contour layout and (P93) every shown
+drop: kit/verify.py :: if sorted({a[0].split()[0] for a in other}) != ['harea-w'] or len(other) != len(names) or len(sw) != nlines or any(a[0] != 'path' for a in sw):
+drop: kit/verify.py :: fails.append(f'home {label}: with motion allowed the animations are {len(other)} others ({sorted({(a[0], a[4]) for a in other})[:4]}) and {len(sw)} swells on {sorted({a[0] for a in sw})}, expected the {len(names)} area words and one swell on each of the {nlines} lines of the shown contour layout and every tile\'s patch (S-NAV1 step D)')
+drop: kit/verify.py :: if [a for a in an if a[3] not in (SWELL, 'harea')]: fails.append(f'{pid} {label}: other animations run: {[a for a in an if a[3] not in (SWELL, "harea")][:3]}')
+drop: kit/verify.py :: else if (a.animationName !== 'topo-swell' && a.animationName !== 'harea') out.bad.push(`${a.animationName} runs on ${a.effect.target.tagName}.${a.effect.target.getAttribute('class')}`); });   // a spot or planned ring (a circle) never moves

@@ -1295,11 +1295,15 @@ whatsnew = f"""
   </header>
   {''.join(f'<section class="newday" data-day="{d}"><h2 class="hsec">{short_date(d)}</h2><div class="hrows">{"".join(new_row(x) for x in xs)}</div></section>' for d, xs in _days)}
 </section>"""
-# P92 (4 Nov 2026) · the hero's area line (Pedro: the area word cycling under "Academy", each in its colour): the four
+# P92 (4 Nov 2026) · the hero's area line (Pedro: the area word cycling under "Academy", each in its colour): the
 # areas of knowledge stacked in one cell, shown in turn by the theme's keyframes (opacity and transform, no script),
 # hidden from a screen reader, which reads the static line after it; under reduced motion the static line shows and
 # nothing moves. And the quiet link to What's new, naming the newest unit and its day, as P91's shelf label did.
-hero_areas = ('<p class="harea" aria-hidden="true">' + ''.join(f'<span class="harea-w" style="--c:{t["color"]};--k:{k}">{html.escape(t["name"])}</span>' for k, t in enumerate(THEMES)) + '</p>'
+# S-NAV2 step A (Fix 1, 22 Nov 2026): the line carries the number of areas, --n, from which the theme's harea easings
+# take the cycle (n x 3 s) and each word's share of it (100/n percent), so a track added to catalog.toml needs no CSS
+# edit; any n of one or more cycles (the theme's 4h).
+assert THEMES, 'the hero\'s area line needs at least one area'
+hero_areas = (f'<p class="harea" aria-hidden="true" style="--n:{len(THEMES)}">' + ''.join(f'<span class="harea-w" style="--c:{t["color"]};--k:{k}">{html.escape(t["name"])}</span>' for k, t in enumerate(THEMES)) + '</p>'
               + '<p class="harea-all">' + '<span class="harea-dot"><span aria-hidden="true">&nbsp;·</span><span class="hsr">,</span> </span>'.join(f'<span style="--c:{t["color"]}">{html.escape(t["name"])}</span>' for t in THEMES) + '</p>')
 _sep = '<span aria-hidden="true"> ·</span><span class="hsr">,</span> '   # P92 check: the dot never read aloud; a comma for the pause
 hero_new = (f'<a class="hnew" href="#new" data-target="new"><span>What\'s new{_sep}{html.escape(NEWEST["code"])}{_sep}{short_date(NEWEST["date"]).rsplit(" ", 1)[0]}</span>'
