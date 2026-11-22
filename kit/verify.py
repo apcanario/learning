@@ -1,6 +1,7 @@
 """Browser checks for academy/, the Academy site (run after build.py).
 
 python3 verify.py [--edition NAME] [--full] [--shots DIR] [--page ID ...]
+python3 verify.py [--edition NAME] --layout-shots DIR   (S-NAV2 step E: only the shot layouts, no check, nothing recorded)
 S-DEC4 (20 Nov 2026), verify by scope (kit/verify_scope.py): the default run checks only the pages whose sources changed
 since the edition's last passed run, recorded in kit/verify-hashes.json, plus the home, What's new, the Changelog and
 the Backlog, and runs every edition-wide check (files and the shell, figure keys, opening notes, figure rules, the
@@ -196,6 +197,12 @@ screen with the main nav in it, the sidebar only where there is a sub-nav, the o
 no heading, figure or table past the column, under the sidebar or the outline, cut or clipped; the home's first tiles'
 titles and stats above the fold at 1024 x 768 and 1280 x 800; the hero bound (P-HK1) at 1024, 1280 and 1920 px. The 4x
 CPU throttle frame test of S-NAV1's fresh check at 1280 x 800 (the median frame and the longest task, check_frames).
+The desktop top bar (S-NAV2 step E, check_topbar): at 1100, 1120, 1140, 1280 and 1440 x 900 and 1920 x 1080, dark and
+light, on the home and an area page, with the edition's areas and a probe copy of the bar holding eight: the main nav
+does not scroll, no item of it is cut or past its edge, and it ends left of the theme and arrow buttons.
+The shot layouts (S-NAV2 step E, layout_shots): --shots DIR, and --layout-shots DIR alone, write the first screen of
+the home, an area page, a course home and a unit page at 1440 x 900 (desktop), 1280 x 800 (tablet-landscape) and
+800 x 1100 (tablet-portrait), dark and light, as <page>-<layout>-<theme>.png.
 The phone byte identity: at 320, 360 and 390 px, under reduced motion, the current shell laid out and drawn exactly as
 with the start build's theme (PHONE_REF) in its <style>, every element's box and computed style and the screenshot;
 PHONE_EXPECTED lists what is expected to differ. WebKit (P-NAV3): check_history and check_pause again in Playwright's
@@ -3514,6 +3521,80 @@ def check_layouts(br, fails):
         ctx.close()
     if errs: fails.append('layout: console errors: ' + ' | '.join(errs[:3]))
 
+# The desktop top bar's main nav (S-NAV2 step E, the fresh check's finding 1: at 1100 to about 1140 px the six areas'
+# items needed 745 px in a 704 px bar and "Supply Chain" was cut under the theme button, with the scrollbar hidden).
+TOPBAR_AT = [(1100, 900), (1120, 900), (1140, 900), (1280, 900), (1440, 900), (1920, 1080)]
+TOPBAR_PROBE = 8   # areas in the probe copy of the bar: the real items, then copies of the first areas to make eight
+TOPBAR_JS = r"""(probe) => { const n = document.querySelector('nav.main-nav');
+  if (probe) { const ar = [...n.querySelectorAll(':scope > .ditem')].slice(1); for (let k = 0; ar.length + k < probe; k++) { const c = ar[k % ar.length].cloneNode(true); c.removeAttribute('aria-current'); c.classList.remove('is-active'); c.setAttribute('aria-hidden', 'true'); c.removeAttribute('href'); n.appendChild(c); } }
+  const r = n.getBoundingClientRect(), cs = getComputedStyle(n), lo = r.left + n.clientLeft, hi = lo + n.clientWidth;
+  const btn = [...document.querySelectorAll('.top-in > *')].filter(e => e.getBoundingClientRect().width > 0).map(e => e.getBoundingClientRect().left);
+  const its = [...n.querySelectorAll(':scope > .ditem')].map(a => { const b = a.getBoundingClientRect(); return [a.textContent.trim(), Math.round(b.left), Math.round(b.right), a.scrollWidth > a.clientWidth + 1]; });
+  return {fixed: cs.position === 'fixed', items: its, lo: Math.round(lo), hi: Math.round(hi), sw: n.scrollWidth, cw: n.clientWidth, sl: n.scrollLeft, btn: btn.length ? Math.round(Math.min(...btn)) : null}; }"""
+def check_topbar(br, fails, body=None):
+    """S-NAV2 step E: at 1100, 1120, 1140 and 1280 x 900, 1440 x 900 and 1920 x 1080 (the desktop layout, 860 px tall or
+    more), dark and light, on the home and the first area page, with the edition's real areas and with a probe copy of
+    the bar holding TOPBAR_PROBE areas (copies of its first areas appended): the main nav is fixed in the top bar, does
+    not scroll (scrollWidth at most clientWidth), every item lies whole inside it and is not cut itself, and the nav ends
+    left of the theme and arrow buttons. body: serve this HTML in place of the built shell (the fail-test's hook)."""
+    errs, out = [], []
+    for w, h in TOPBAR_AT:
+        for th in ('dark', 'light'):
+            ctx = br.new_context(viewport={'width': w, 'height': h}, device_scale_factor=1, color_scheme=th, reduced_motion='reduce')
+            ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=FONT_CSS))
+            ctx.route('**/fonts.gstatic.com/**', font_file)
+            if body: ctx.route(URL, lambda r: r.fulfill(status=200, content_type='text/html', body=body))
+            pg = ctx.new_page()
+            pg.on('console', lambda m: errs.append(f'topbar {w}x{h}: {m.text}') if m.type == 'error' else None)
+            pg.goto(URL + '#home'); pg.wait_for_timeout(150)
+            pg.evaluate(f"localStorage.setItem('{THEME_KEY}', '{th}')")
+            for pid in ['home'] + AREA_IDS[:1]:
+                for probe in (0, TOPBAR_PROBE):
+                    pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(100)
+                    g = pg.evaluate(TOPBAR_JS, probe)
+                    tag, bad = f'topbar {w}x{h} {th} #{pid}' + (f' (probe: {TOPBAR_PROBE} areas)' if probe else ''), []
+                    if not g['fixed']: bad.append('the main nav is not in the top bar (not the desktop layout)')
+                    if g['sw'] > g['cw'] + 1: bad.append(f'the main nav overflows: {g["sw"]} px of items in {g["cw"]}')
+                    cut = [f'{t} {a}..{b}' for t, a, b, c in g['items'] if a < g['lo'] - 1 or b > g['hi'] + 1 or c]
+                    if cut: bad.append(f'items cut or past the bar {g["lo"]}..{g["hi"]}: {", ".join(cut)}')
+                    if g['btn'] is not None and g['hi'] > g['btn'] + 1: bad.append(f'the main nav runs to {g["hi"]}, under the buttons from {g["btn"]}')
+                    if bad: fails.append(f'{tag}: ' + '; '.join(bad))
+                    if pid == 'home' and th == 'dark': out.append(f'{w}: {len(g["items"]) - 1} areas {g["items"][-1][2] - g["lo"] + 8} of {g["cw"]} px')
+            ctx.close()
+    if errs: fails.append('topbar: console errors: ' + ' | '.join(errs[:3]))
+    print('top bar (desktop, dark and light, the home and an area page; real and a probe of ' + f'{TOPBAR_PROBE} areas): ' + '; '.join(out))
+
+# S-NAV2's shot layouts (the row's "Before publishing, stop": shots to Pedro): the first screen of the home, an area
+# page, a course home and a unit page in the three layouts he judges, dark and light, reduced motion, scale 1.
+LAYOUT_SHOTS = [('desktop', 1440, 900, False), ('tablet-landscape', 1280, 800, True), ('tablet-portrait', 800, 1100, True)]
+LAYOUT_SHOTS_DIR = pathlib.Path(sys.argv[sys.argv.index('--layout-shots') + 1]) if '--layout-shots' in sys.argv else None
+def layout_shots(br, out):
+    """Writes <page>-<layout>-<theme>.png to out: page home, area (the first area page), course (the first history
+    course home, or the first sampled one) and unit (that course's report 2.3, or the first reading page in the shell);
+    layout desktop 1440 x 900, tablet-landscape 1280 x 800, tablet-portrait 800 x 1100; theme dark and light. Each is
+    the first screen, as the reader opens the page (a unit on section 1). Run alone with --layout-shots DIR (no check
+    runs and nothing is recorded); --shots DIR also writes them into DIR."""
+    out = pathlib.Path(out); out.mkdir(parents=True, exist_ok=True)
+    shell = (SITE / 'index.html').read_text()
+    course = LEAD['home_id'] if LEAD else ([x for x in SAMPLE if x in HIST_HOMES] + SAMPLE)[0]
+    m = re.search(r'<section class="panel[^"]*" id="(read-[^"]+)"', shell)
+    unit = rid(LEAD, '2.3') if LEAD else (m.group(1) if m else None)
+    pages = [('home', 'home'), ('area', AREA_IDS[0] if AREA_IDS else None), ('course', course), ('unit', unit)]
+    n = 0
+    for lay, w, h, touch in LAYOUT_SHOTS:
+        for th in ('dark', 'light'):
+            ctx = br.new_context(viewport={'width': w, 'height': h}, device_scale_factor=1, is_mobile=touch and w < 900, has_touch=touch, color_scheme=th, reduced_motion='reduce')
+            ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=FONT_CSS))
+            ctx.route('**/fonts.gstatic.com/**', font_file)
+            pg = ctx.new_page(); pg.goto(URL + '#home'); pg.wait_for_timeout(150)
+            for name, pid in pages:
+                if not pid or not pg.evaluate(f"!!document.getElementById('{pid}')"): print(f'layout shots: no {name} page in this edition'); continue
+                pg.evaluate(f"localStorage.clear(); localStorage.setItem('{THEME_KEY}', '{th}')")
+                pg.goto(URL + '#' + pid); pg.reload(); ready(pg); pg.wait_for_timeout(300); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(60)
+                pg.screenshot(path=str(out / f'{name}-{lay}-{th}.png')); n += 1
+            ctx.close()
+    print(f'layout shots: {n} in {out} (' + ', '.join(f'{a} #{b}' for a, b in pages if b) + '; ' + ', '.join(f'{l} {w}x{h}' for l, w, h, _ in LAYOUT_SHOTS) + '; dark and light)')
+
 # The 4x CPU throttle frame test of S-NAV1's fresh check (out/S-NAV1/checker.md finding 1, its /tmp/ckscripts/perf.py:
 # 5 s of requestAnimationFrame with motion allowed under Emulation.setCPUThrottlingRate 4), here at 1280 x 800. The fault
 # it found was the main thread's: p50 frames of 33 to 50 ms and long tasks of 0.9 to 3 s on a course home under the
@@ -3559,6 +3640,7 @@ def check_frames(br, fails, w=1280, h=800):
 # full-page screenshot, must be identical (a difference must persist in three tries). Expected and not measured here:
 # PHONE_EXPECTED (the theme CSS itself; the area line's motion, which reduced motion does not run: check_harea). A row
 # that changes the phone on purpose sets PHONE_REF to its own start.
+# The phone CSS is frozen at this commit for the byte-identity check: re-pin PHONE_REF deliberately when a row changes the phone's design.
 PHONE_REF = '445b0c4ddac9a034074ee05c06ea7166eff50209'   # S-NAV2's start (land.py start, 22 Nov 2026), theme 6.19
 PHONE_ID_AT = [(320, 640, 'dark'), (360, 780, 'dark'), (390, 844, 'dark'), (390, 844, 'light')]
 DUMP_JS = r"""() => { const props = ['display','position','width','height','margin-top','margin-bottom','margin-left','margin-right','padding-top','padding-left','padding-right','padding-bottom','font-size','line-height','color','background-color','grid-template-columns','min-height','max-width','visibility','opacity','transform','border-left-width','box-shadow','content-visibility','overflow-x','overflow-y','top','left','right','bottom','flex-direction','justify-content','column-gap','row-gap','z-index'];
@@ -3650,6 +3732,10 @@ def short(iso):
     return datetime.date.fromisoformat(iso).strftime('%-d %b %Y')
 
 def main():
+    if LAYOUT_SHOTS_DIR:   # S-NAV2 step E: the shot layouts alone
+        with sync_playwright() as p:
+            br = p.chromium.launch(); layout_shots(br, LAYOUT_SHOTS_DIR); br.close()
+        return
     errors, fails = [], []
     check_files(fails)
     check_viz_keys(fails)
@@ -3676,6 +3762,7 @@ def main():
         check_nav(br, fails, 1280, 800)
         check_nav(br, fails, 1024, 768)   # S-NAV2 step D: the tablet landscape drawer and the desktop
         check_nav(br, fails, 1920, 1080)
+        check_topbar(br, fails)   # S-NAV2 step E: no main nav item cut in the desktop top bar, 1100 to 1920 px
         check_layouts(br, fails)   # S-NAV2 step D: the sidebar, top bar and outline where the spec puts them; the fold; the hero bound (P-HK1)
         check_frames(br, fails)   # S-NAV2 step D: S-NAV1's 4x CPU throttle frame test, at 1280 x 800
         check_phone_identity(br, fails)   # S-NAV2 step D: the phone as the start build's, byte for byte
@@ -4141,7 +4228,8 @@ def main():
                             pg.evaluate('window.scrollTo(0, 0)')
                 ctx.close()
             # P92: the hero at five moments; P93: at the five poses of the slow move (POSES: since S-NAV1 step D the
-            # swell at rest, at its top, its quarters and its middle; the home's area line at 0, 3, 6, 9 and 12 s of its cycle), at 390 and 1280 px
+            # swell at rest, at its top, its quarters and its middle; the home's area line at 0, 3, 6, 9 and 12 s of its n x 3 s cycle, n its words (S-NAV2 Fix 1: 18 s with six areas,
+            # so words 1 to 5 are posed and the sixth is not; check_harea samples every word), at 390 and 1280 px
             # with motion allowed, dark and light, for the home, a history course home (Greece) and a markdown course
             # home (Information architecture): every animation paused and set to the pose, the hero shot, the five
             # stacked with their times in one sheet (<width>-<page>-motion-<theme>.png)
@@ -4158,7 +4246,7 @@ def main():
                             tmp = SHOTS / f'_{name}-{pid}-{k}.png'
                             pg.locator(sel).screenshot(path=str(tmp), animations='allow')
                             ims.append(Image.open(tmp)); tmp.unlink()
-                            tags.append(f'{name} · {pid} · {theme} · pose {k + 1} of 5: {p_:g} of the swell ({p_ * BTIME / 1000:.1f} s of {BTIME / 1000:.0f} s: the outermost lines at {1 + GROW * eased(p_):.3f}, the innermost still)' + (f'; area line at {k * 3:.0f} s of its 12 s cycle' if pid == 'home' else ''))
+                            tags.append(f'{name} · {pid} · {theme} · pose {k + 1} of 5: {p_:g} of the swell ({p_ * BTIME / 1000:.1f} s of {BTIME / 1000:.0f} s: the outermost lines at {1 + GROW * eased(p_):.3f}, the innermost still)' + (f'; area line at {k * 3:.0f} s of its {3 * len(THEMES)} s cycle, word {k % len(THEMES) + 1} of {len(THEMES)}' if pid == 'home' else ''))
                         sc = max(1, round(ims[0].width / pg.evaluate(f"document.querySelector('{sel}').getBoundingClientRect().width")))
                         font, band = ImageFont.load_default(size=12 * sc), 26 * sc
                         sheet = Image.new('RGB', (ims[0].width, sum(i.height + band for i in ims)), (128, 128, 128))
@@ -4191,6 +4279,7 @@ def main():
                     except ImportError:
                         pass
                 ctx.close()
+            layout_shots(br, SHOTS)   # S-NAV2 step E: the row's three shot layouts
             print('screenshots in', SHOTS)
         br.close()
     errs = [e for e in errors if 'fonts.g' not in e]

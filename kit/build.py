@@ -563,7 +563,7 @@ def course_topo(lede):
 
 def hero_layer(rises, tone, iv, specs, phase=0.0):
     """A hero's topography (a course home's, What's new's): rises [(label, words or None)] and their tone (one for all,
-    or one per rise); the layer with its two layouts (tall below 1100 px, wide from it), placed and sized by ct_fit."""
+    or one per rise); the layer with its two layouts (tall below 900 px, wide from it; 1100 px before theme 6.22), placed and sized by ct_fit."""
     tones = tone if isinstance(tone, list) else [tone] * len(rises)
     rs = [dict(label=k, tone=t, **(dict(words=w) if w else dict(planned=True))) for (k, w), t in zip(rises, tones)]
     lays = ct_fit(rs, iv, specs)
@@ -1042,8 +1042,8 @@ backlog = f"""
 # viz.py's home kind "contours", declared here from the course data and drawn when the site is built. The hero: one
 # rise per area of knowledge (THEMES, in order), its height the words written in its live courses (a history course's
 # reports, a markdown course's reading pages, as the cards count them), a contour every HERO_INTERVAL words, in two
-# fixed layouts: tall (below 1100 px; every rise inside the part of the square drawing a phone's hero shows) and wide
-# (from 1100 px, across the full width beside the sidebar). Each course tile: one rise per unit of the course in its
+# fixed layouts: tall (below 900 px since theme 6.22, 1100 px before; every rise inside the part of the square drawing a phone's hero shows) and wide
+# (from 900 px, across the full width beside the sidebar). Each course tile: one rise per unit of the course in its
 # order (a history course's syllabus units, the audit unit left out; a markdown course's units), a written unit by its
 # words, a planned one flat (a dashed ring), a contour every 5.5th part of the course's largest unit, so every tile reads at
 # the same density (the spread keeps a neighbour's tail under a level, so a unit's rings rise with its words); the tile's
