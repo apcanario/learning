@@ -5,7 +5,7 @@ The one source of Academy's Backlog and Changelog pages (S-PAGES, 15 Nov 2026): 
 Rules for an entry (`docs/method.md` §8):
 - **Next**: one row per item still to do, in the overall order (#, from 1, no gaps); **Done**: one row per item done, any order (the pages sort newest first), the date as `YYYY-MM-DD` (the first day, where the work ran over several).
 - **Code**: the item's short name: a unit's code (PB1, IA3), a history course's syllabus unit (G12 for Greece unit 12, R0–3 for Rome units 0 to 3), the backlog row's code for anything else (P96, S-PAGES), and K plus the session number for a site change of the kit's early sessions (K1 to K11), which had no row code. Keep it short: the column is narrow on a phone.
-- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (course SP; named Coaching until 19 Nov 2026), Supply Chain (course SCE), Academy (the site and its method).
+- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (course SP; named Coaching until 19 Nov 2026), Supply Chain (courses SCE and SCP), Academy (the site and its method).
 - **Sentence**: one plain sentence for an ordinary reader: what it is (Next) or what happened (Done). No model names, token counts, script or file names, row mechanics (rows, chats, prompts, corrections, mirrors), agent or audit vocabulary, and no private term (`kit/private-terms.txt`; `python3 kit/private_terms.py` scans this file). No `|` in a sentence.
 - **One entry per item**: a unit, a course milestone or a visible site change. Housekeeping, corrections and re-checks are folded into the item they served, never listed on their own. A proposed item enters Next only when it is confirmed; a withdrawn one leaves it.
 - The chat that closes a backlog row moves its entry from Next to Done (or adds it to Done), renumbers Next, and adds an entry to Next for each item it confirms into the queue.
@@ -32,11 +32,30 @@ Rules for an entry (`docs/method.md` §8):
 | 16 | SCE18 | Supply Chain | Write SCE18, Capstone: one strategy memo, for Supply Chain Execution for Product Teams. |
 | 17 | DD-SCE1 | Supply Chain | Write DD-SCE1, Deep dive: the logistics provider's business, for Supply Chain Execution for Product Teams. |
 | 18 | DD-SCE2 | Supply Chain | Write DD-SCE2, Deep dive: peak and exceptions, for Supply Chain Execution for Product Teams. |
+| 19 | SCP1 | Supply Chain | Write SCP1, The planning map, the words and the evidence, for Supply Chain Planning for Product Teams. |
+| 20 | SCP2 | Supply Chain | Write SCP2, Demand and its data, for Supply Chain Planning for Product Teams. |
+| 21 | SCP3 | Supply Chain | Write SCP3, Forecasting methods, for Supply Chain Planning for Product Teams. |
+| 22 | SCP4 | Supply Chain | Write SCP4, Forecast error and what it is used for, for Supply Chain Planning for Product Teams. |
+| 23 | SCP5 | Supply Chain | Write SCP5, Judgment, overrides and the demand planner, for Supply Chain Planning for Product Teams. |
+| 24 | SCP6 | Supply Chain | Write SCP6, Why inventory exists and how much, for Supply Chain Planning for Product Teams. |
+| 25 | SCP7 | Supply Chain | Write SCP7, Replenishment, for Supply Chain Planning for Product Teams. |
+| 26 | SCP8 | Supply Chain | Write SCP8, The network: stock in more than one place, for Supply Chain Planning for Product Teams. |
+| 27 | SCP9 | Supply Chain | Write SCP9, Supply planning for makers, for Supply Chain Planning for Product Teams. |
+| 28 | SCP10 | Supply Chain | Write SCP10, Retail and distribution planning, for Supply Chain Planning for Product Teams. |
+| 29 | SCP11 | Supply Chain | Write SCP11, Sales and operations planning, for Supply Chain Planning for Product Teams. |
+| 30 | SCP12 | Supply Chain | Write SCP12, Where the plan meets execution, for Supply Chain Planning for Product Teams. |
+| 31 | SCP13 | Supply Chain | Write SCP13, The planning system as a product, for Supply Chain Planning for Product Teams. |
+| 32 | SCP14 | Supply Chain | Write SCP14, Planners as users, for Supply Chain Planning for Product Teams. |
+| 33 | SCP15 | Supply Chain | Write SCP15, Buying planning software: what differs, for Supply Chain Planning for Product Teams. |
+| 34 | SCP16 | Supply Chain | Write SCP16, Capstone: one planning product memo, for Supply Chain Planning for Product Teams. |
+| 35 | DD-SCP1 | Supply Chain | Write DD-SCP1, Deep dive: planning as companies have published it, for Supply Chain Planning for Product Teams. |
+| 36 | DD-SCP2 | Supply Chain | Write DD-SCP2, Deep dive: the hard numbers, for Supply Chain Planning for Product Teams. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-22 | S-SCP0 | Supply Chain | Supply Chain Planning for Product Teams, a new course, added: designed; 18 units to write. |
 | 2026-11-22 | S-NAV2 | Academy | Academy now has its own layouts for desktop and tablet screens, with a sidebar, a top bar, wider homes and an outline beside each unit, the phone is unchanged, and the area names in the home's heading no longer overlap. |
 | 2026-11-21 | S-NAV1 | Academy | Academy's back swipe now stays on the site, each area has its own home page with its courses, the menu has two levels, and every line drawing moves outward from its centre. |
 | 2026-11-21 | DD-SP3 | Sports | DD-SP3, Deep dive: tuning out the noise, written; course SP complete. |
