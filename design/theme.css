@@ -34,6 +34,10 @@
       section's separator, a horizontal topography of its paragraphs; since 6.8 (P95) the object relief under
       the scope line
    Version 6.11, 15 Nov 2026 (C1, W-BW5): a matrix carries a narrow-label drawing (svg.viz-altn, .viz-stickn) shown at 360 px and below, 4i.
+   Version 6.17, 21 Nov 2026 (S-NAV1 step C): the navigation is two levels in the drawer's list (.dlist): nav.main-nav,
+   Home and the areas (.darea, the area's tone), ruled off as the old top rows (.dtop) were, and nav.sub-nav, the
+   section's group (.sub-sec): an area's courses, a course's pages and units; none on the home. Phone look unchanged
+   but for the structure; S-NAV2 places the two with CSS alone, 3.
    Version 6.16, 21 Nov 2026 (P-DEC20): a course home's hero is at least 380 px tall from 768 px, so a course of six to ten units keeps its rings in its layer's frame on a tablet and a desktop, 6.
    Version 6.15, 17 Nov 2026 (P84 round 4, H-4): figure text drawn with text-rendering:geometricPrecision, 4i.
    Version 6.14, 17 Nov 2026 (P109, H-4): a matrix's keys under its frame, svg.viz-key and svg.viz-keyn; a wide matrix's label column pinned on a desktop too; a timeline up to 15% over 700 units (viz-snug) scales to the column, 4i.
@@ -167,7 +171,8 @@ a.ib{text-decoration:none}
 /* narrow phones: keep the top-bar context on one line; JS shortens it only if it still overflows */
 @media (max-width:420px){.cur{padding:0 2px}.cur-u{font-size:10px;letter-spacing:0}}
 
-/* drawer: full-height, slides from the left, one nav per context */
+/* drawer: full-height, slides from the left; its list (.dlist) holds the two levels of navigation (S-NAV1 step C):
+   nav.main-nav (Home and the areas) and nav.sub-nav (the current section's group, .sub-sec; hidden on the home) */
 .backdrop{position:fixed;inset:0;z-index:30;background:var(--scrim);opacity:0;pointer-events:none}
 .backdrop.on{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;left:0;bottom:0;z-index:40;width:min(86vw,360px);background:var(--card);border-right:1px solid var(--line-2);transform:translateX(-102%);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);box-shadow:0 0 40px var(--shadow)}
@@ -190,7 +195,7 @@ a.ib{text-decoration:none}
 .ditem .t{flex:1 1 auto;min-width:0}
 .ditem.is-active{color:var(--fg);background:var(--hover);border-left-color:var(--c)}
 .dfoot{flex:0 0 auto;padding:10px 16px;border-top:1px solid var(--line);color:var(--dim);font-size:11px}
-.dtop{margin-bottom:8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.dtop,.main-nav{margin-bottom:8px;border-bottom:1px solid var(--line);padding-bottom:6px}
 .dhome{margin:0;border:0;border-radius:8px 8px 0 0;padding-bottom:8px}
 .dhome .n{color:var(--muted)}
 .dsec{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding:14px 10px 6px}

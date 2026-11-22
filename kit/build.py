@@ -215,11 +215,12 @@ def drawer(c):
                 pill = PILL_NEXT if mid in c.get('next_up', ()) else '<span class="pill">soon</span>'
                 out += f'<div class="dsoon"><span class="n">{mid}</span><span class="t">{html.escape(t)}</span>{pill}</div>'
         out += '</div></div>'
-    top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">{html.escape(SITE_NAME)}</span></a>'
-           f'<a class="ditem dhome" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span class="n">⌂</span><span class="t">{c["short"]}: course home</span></a>'
+    # S-NAV1 step C: the course's group of the sub-nav (its pages, then its units); the way back to the site is the main
+    # nav's (Home and the areas), so the group no longer opens on a link to the home
+    top = (f'<div class="dtop"><a class="ditem dhome" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span class="n">⌂</span><span class="t">{c["short"]}: course home</span></a>'
            f'<a class="ditem dhome" href="#{c["syl_id"]}" data-target="{c["syl_id"]}"><span class="n">§</span><span class="t">Syllabus and prompts</span></a>'
            + ('' if 'build' in OMIT else f'<a class="ditem dhome" href="#{c["home_id"]}-built" data-target="{c["home_id"]}-built"><span class="n">✓</span><span class="t">How it was built</span></a>') + '</div>')
-    return f'<nav class="dlist" data-navctx="{c["id"]}" data-accordion aria-label="{c["short"]} course" hidden>{top}{out}</nav>'
+    return f'<div class="sub-sec" data-navctx="{c["id"]}" data-accordion role="group" aria-label="{c["short"]} course" hidden>{top}{out}</div>'
 
 
 def unit_tile(c, u, phase=None):
@@ -1424,13 +1425,21 @@ if 'changelog' not in OMIT:
     (SITE / 'changelog.html').write_text(_cl_body)
     panels[_k] = '\n' + _cl_head[:-len(' hidden>')] + f' data-src="changelog.html" data-anchors="{" ".join(re.findall(r' id="([^"]+)"', _cl_body))}" hidden></section>'
 
-def root_nav_track(t):
+# S-NAV1 step C (21 Nov 2026): the navigation is two levels, built once, each a single element with stable classes, so
+# S-NAV2 places them with CSS alone: nav.main-nav, Home and the areas (THEMES, catalog order), and nav.sub-nav, the
+# section the reader is in, one group (.sub-sec, data-navctx) per section, of which shell.js shows the current one: an
+# area page's courses (data-navctx track-<id>), a course's pages and units (data-navctx the course's ctx); none on the
+# home or the site pages under it (What's new, the Changelog, the Backlog, Figure kinds), which the home's foot links.
+# Both sit in the drawer's list (.dlist), as the one root list and the course lists did. An edition of one track has
+# no area page: its area entry goes to the track's band on the home (#track-<id>, the home's own section), and it has
+# no area group in the sub-nav. Each area entry names the course sections it holds (data-secs), so shell.js marks the
+# area the reader is in.
+def area_courses(t):
+    """The track's group of the sub-nav, shown on its area page: its live courses (history, then markdown, as the area
+    page's tiles) and, where the track asks for it (`planned_drawer`), its planned courses folded under them."""
     hist = [c for c in HISTORY if c['theme'] == t['id']]
     mds = [m for m in MD if m['theme'] == t['id']]
-    out = ''
-    if MULTI:   # S-NAV1 step B: the track's area page heads its group (step C makes the navigation two levels)
-        out += f'<a class="ditem dcourse darea" href="#track-{t["id"]}" data-target="track-{t["id"]}" style="--c:{t["color"]}"><span class="n">■</span><span class="t">{html.escape(t["name"])}<small>the area\'s home</small></span></a>'
-    out += ''.join(f'<a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">{c["num"]}</span><span class="t">{c["short"]}<small>{c["card_units"]} units · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"]) + " reports"}</small></span></a>' for c in hist)
+    out = ''.join(f'<a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">{c["num"]}</span><span class="t">{c["short"]}<small>{c["card_units"]} units · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"]) + " reports"}</small></span></a>' for c in hist)
     out += ''.join(f'<a class="ditem dcourse" href="#{m["home_id"]}" data-target="{m["home_id"]}" style="--c:{m["color"]}"><span class="n">{m["key"]}</span><span class="t">{html.escape(m["short"])}<small>{m["nwritten"]} of {m["nunits"]} units</small></span></a>' for m in mds)
     n = len(hist) + len(mds)
     if t.get('planned_drawer') and PLANNED[t['id']]:
@@ -1438,16 +1447,18 @@ def root_nav_track(t):
         # from the track's courses; open it to see them in order
         out += (f'<details class="dplan"><summary class="dsoon"><span class="n">+{len(PLANNED[t["id"]])}</span><span class="t">planned, in order</span>{ICON_CHEV}</summary>'
                 + ''.join(f'<div class="dsoon" style="--c:{col}"><span class="n">{k + n + 1}</span><span class="t">{html.escape(s)}</span><span class="pill">soon</span></div>' for k, (s, _, col, _, _) in enumerate(PLANNED[t['id']])) + '</details>')
-    # a collapsible group: closed unless the reader opened it; shell.js opens the track of the last report read (else the first)
-    return (f'<div class="dunit closed" data-unit="track:{t["id"]}" data-ulabel="{html.escape(t["name"]).upper()}" style="--c:{t["color"]}">'
-            f'<button class="duh" type="button" aria-expanded="false"><span class="un">■</span><span class="ut">{html.escape(t["name"])}</span><span class="cnt">{n}</span>{ICON_CHEV}</button><div class="ditems">{out}</div></div>')
+    return f'<div class="sub-sec" data-navctx="track-{t["id"]}" role="group" aria-label="{html.escape(t["name"])} courses" style="--c:{t["color"]}" hidden><div class="ditems">{out}</div></div>'
 
-root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a>'
-            + '<a class="ditem dhome" href="#new" data-target="new"><span class="n">+</span><span class="t">What\'s new</span></a>'   # P91
-            + ('' if 'changelog' in OMIT else '<a class="ditem dhome" href="#changelog" data-target="changelog"><span class="n">≡</span><span class="t">Changelog</span></a>')
-            + ('' if 'backlog' in OMIT else '<a class="ditem dhome" href="#backlog" data-target="backlog"><span class="n">☐</span><span class="t">Backlog</span></a>') + '</div>'
-            + ''.join(root_nav_track(t) for t in THEMES) + '</nav>')
-navs = root_nav + ''.join(drawer(c) for c in HISTORY) + ''.join(m['nav'] for m in MD)
+def main_item(t):
+    secs = ' '.join([c['id'] for c in HISTORY if c['theme'] == t['id']] + [m['id'] for m in MD if m['theme'] == t['id']])
+    return (f'<a class="ditem darea" href="#track-{t["id"]}" data-target="track-{t["id"]}" data-secs="{secs}" style="--c:{t["color"]}">'
+            f'<span class="n">■</span><span class="t">{html.escape(t["name"])}</span></a>')
+
+main_nav = ('<nav class="main-nav" aria-label="Main"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a>'
+            + ''.join(main_item(t) for t in THEMES) + '</nav>')
+sub_nav = ('<nav class="sub-nav" aria-label="In this section" hidden>' + (''.join(area_courses(t) for t in THEMES) if MULTI else '')
+           + ''.join(drawer(c) for c in HISTORY) + ''.join(m['nav'] for m in MD) + '</nav>')
+navs = f'<div class="dlist">{main_nav}{sub_nav}</div>'
 
 CSS = open(R / 'shell.css').read()
 # S-DEC3: the brand's tokens, appended to the theme as CSS custom properties ([tokens] both themes, [tokens_light] light)

@@ -4,7 +4,7 @@ python3 verify.py [--edition NAME] [--full] [--shots DIR] [--page ID ...]
 S-DEC4 (20 Nov 2026), verify by scope (kit/verify_scope.py): the default run checks only the pages whose sources changed
 since the edition's last passed run, recorded in kit/verify-hashes.json, plus the home, What's new, the Changelog and
 the Backlog, and runs every edition-wide check (files and the shell, figure keys, opening notes, figure rules, the
-split, navigation and the tablet and desktop layouts, the home at every width with and without motion, the root drawer,
+split, navigation and the tablet and desktop layouts, the home at every width with and without motion, the navigation (check_nav),
 private terms, index_check, the rot check). A page's sources are its built section and fetched file and the course files
 the checks hold it against (verify_scope.py says which). A change to kit/*.py, kit/shell.js, kit/shell.css,
 design/theme.css, kit/fonts/, catalog.toml or the edition's or its brand's file runs everything, as do a first run with
@@ -30,8 +30,7 @@ width, with every <details> opened: no horizontal scroll, no boxed elements clos
 under 44 px tall (inline links in running text exempt), no console error. Phone: the drawer in each context and the
 navigation context (drawer, title, arrows, continue) across home -> Rome -> report -> home -> Greece -> report ->
 a Brand + AI course and its reading and build pages, every course's "How it was built" page (A4: fetched through the
-shell, one row per written report or unit), the drawer groups (tracks open by default, a course's units as an
-accordion) and the Backlog page; the same panel checks again in the light theme. The Backlog and Changelog pages
+shell, one row per written report or unit), the drawer groups (a course's units as an accordion) and the Backlog page; the same panel checks again in the light theme. The Backlog and Changelog pages
 (S-PAGES, 15 Nov 2026; check_site_log): rendered from docs/site-log.md alone, every entry in its area and order, newest
 first on the Changelog, in plain words with no private term, at 320, 390 and 1280 px, dark and light, without sideways scroll. Tablet: the drawer is still a drawer (off screen until the menu button, 360 px, backdrop).
 Desktop: the drawer is a persistent 300 px sidebar (no backdrop, no menu button, current item highlighted, scrolls on
@@ -92,7 +91,7 @@ At 390 px with motion allowed the fresh load's LCP and longest task are printed.
 markdown tile, the IA tile and the What's new link are clicked and each lands on its page. What's new (P91), at the
 same widths: every dated unit and every course start once, newest first, as home_expect orders them, grouped by day
 under its heading, each row linking to a page that exists, the approximate dates (provenance.json's written_approx)
-marked and no other; its breadcrumbs and title. The root drawer's top rows: Home, What's new, Changelog, Backlog.
+marked and no other; its breadcrumbs and title. The drawer on the home: the main nav alone (S-NAV1 step C).
 Contrast (P90): in the light theme, every text in the home, What's new (P91), the drawer, the changelog and backlog, each course
 home and one reading page of each course, at phone width with every <details> open, reaches 4.5:1 against the
 background it sits on (3:1 for large text), the text's opacity and every tint it sits on composited, and no text
@@ -106,6 +105,19 @@ tiles in catalog order, its own copy and its folded planned list (check_tiles, i
 home's tile counts what the band holds; the area pages join the topography, motion, contrast and shot passes; the
 navigation walk and the desktop taps reach a course through its area page; the history walk is home -> area -> course
 -> unit with three backs. In an edition of one track (greece) none of this applies and the home lists the courses.
+Navigation (S-NAV1 step C, 21 Nov 2026; check_nav, at 390 px dark and light and at 1280 px): two levels, each one
+element in the drawer's list, nav.main-nav before nav.sub-nav, once in the page and in no panel. The main nav is Home and
+the areas in catalog order (an edition of one track: Home and its area, whose entry opens the home at the track's band,
+#track-<id>, as it has no area page) and marks where the reader is: Home on the home and the site pages under it (What's
+new, the Changelog, the Backlog, Figure kinds), an area on its page (aria-current page) and on every page of its courses
+(aria-current true). The sub-nav shows the reader's section alone: none on the home and its site pages, an area's
+courses (history, then markdown, as courses.py lists them) on its page, a course's group (its home first, the page
+itself marked) on its home, syllabus and first reading page. What's new, the Changelog and the Backlog are links at the
+home's foot, after its courses, and in neither nav. Below 1100 px the menu opens the drawer with both navs on screen, the
+focus on its close button and the current item scrolled into its list; Escape closes it and gives the focus back; an area
+entry tapped in it closes it, opens the area and a back returns; from 1100 px both navs stand in the sidebar. No console
+error. The drawer box checks run on the home, every area page and every course; the light contrast check measures every
+group of the sub-nav at once.
 Topographies and tiles (P93, 4 Nov 2026), at 320, 360, 390, 430, 768 and 1280 px, dark and light: each course home and
 What's new carries a contour layer behind its hero (check_topo), against the sources (home_expect: a course home one
 rise per unit of the course in its order, a written unit by its words, a planned unit flat; What's new one rise per
@@ -1198,7 +1210,8 @@ def check_contrast(pg, fails):
         if r['min'] < worst[0]: worst = [r['min'], f'{pid} {r["minAt"]}']
         if r['nbad']: fails.append(f'contrast light {pid}: {r["nbad"]} texts under 4.5:1 (3:1 large): ' + '; '.join(r['bad']))
     pg.click('#menuB'); pg.wait_for_timeout(250)
-    pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed')); document.querySelectorAll('#drawer details').forEach(d => d.open = true)")
+    # S-NAV1 step C: every group of the sub-nav shown at once (each area's, each course's), so every nav text is measured
+    pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed')); document.querySelectorAll('#drawer details').forEach(d => d.open = true); document.querySelectorAll('#drawer .sub-nav, #drawer .sub-nav [data-navctx]').forEach(n => n.hidden = false)")
     r = pg.evaluate(CONTRAST_JS, '#drawer'); total += r['n']
     if r['min'] < worst[0]: worst = [r['min'], f'drawer {r["minAt"]}']
     if r['nbad']: fails.append(f'contrast light drawer: {r["nbad"]} texts under 4.5:1: ' + '; '.join(r['bad']))
@@ -2697,6 +2710,127 @@ def check_history(br, fails):
         else: print(f'history, sandboxed iframe: {" -> ".join(i for i, _ in lv)}, back -> {at["id"]} y={at["y"]} (kept {y})')
     ctx.close()
 
+# S-NAV1 step C (21 Nov 2026): two levels of navigation, each built once as one element in the drawer's list (build.py
+# main_nav, sub_nav): nav.main-nav, Home and the areas in catalog order (an edition of one track: Home and its area,
+# whose entry goes to the track's band on the home, #track-<id>), and nav.sub-nav, one group ([data-navctx]) per
+# section, the reader's shown: an area page's courses, a course's pages and units, none on the home and the site pages
+# under it. What's new, the Changelog and the Backlog are links at the home's foot, in neither nav.
+NAV_JS = '''() => { const mains = [...document.querySelectorAll('nav.main-nav')], subs = [...document.querySelectorAll('nav.sub-nav')];
+  const m = mains[0], s = subs[0], vis = s ? [...s.querySelectorAll('[data-navctx]')].filter(g => !g.hidden) : [];
+  const site = ['#new', '#changelog', '#backlog'];
+  return {nMain: mains.length, nSub: subs.length, inPanels: document.querySelectorAll('.panel nav.main-nav, .panel nav.sub-nav').length,
+    inDrawer: !!(m && s && m.parentElement === s.parentElement && m.closest('#drawer')),
+    order: m && s ? !!(m.compareDocumentPosition(s) & Node.DOCUMENT_POSITION_FOLLOWING) : false,
+    main: m ? [...m.querySelectorAll('a.ditem')].map(a => [a.dataset.target, a.querySelector('.t').textContent, a.classList.contains('is-active'), a.getAttribute('aria-current')]) : [],
+    mainOther: m ? m.querySelectorAll(':scope > :not(a.ditem)').length : -1,
+    subHidden: s ? s.hidden : null, groups: vis.map(g => g.dataset.navctx),
+    subLinks: vis.length ? [...vis[0].querySelectorAll('a.ditem')].map(a => a.dataset.target) : [],
+    subActive: vis.length ? [...vis[0].querySelectorAll('a.ditem.is-active')].map(a => a.dataset.target) : [],
+    siteInNav: [...document.querySelectorAll('nav.main-nav a, nav.sub-nav a')].filter(a => site.includes(a.getAttribute('href'))).map(a => a.getAttribute('href'))}; }'''
+# where each of the home's links to What's new, the Changelog and the Backlog sits: true when every one follows the
+# home's courses (the area tiles, or the last track band in an edition of one track), null when there is none
+NAV_FOOT_JS = '''() => { const h = document.getElementById('home'), g = h.querySelector(':scope > .cgrid.areas') || [...h.querySelectorAll(':scope > .track')].pop();
+  const out = {}; for (const t of ['new', 'changelog', 'backlog']) { const as = [...h.querySelectorAll(':scope > .hlinks a[href="#' + t + '"]')];
+    out[t] = as.length && g ? as.every(a => !!(g.compareDocumentPosition(a) & Node.DOCUMENT_POSITION_FOLLOWING)) : (as.length ? false : null); }
+  return out; }'''
+NAV_DRAWER_JS = '''() => { const d = document.getElementById('drawer'), m = d.querySelector('nav.main-nav'), s = d.querySelector('nav.sub-nav'), l = d.querySelector('.dlist');
+  const box = e => { if (!e || e.hidden) return null; const r = e.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.right), Math.round(r.top), Math.round(r.height)]; };
+  const act = d.querySelector('.sub-nav:not([hidden]) [data-navctx]:not([hidden]) .ditem.is-active'), lr = l.getBoundingClientRect(), ar = act && act.getBoundingClientRect();
+  return {on: d.classList.contains('on'), locked: document.documentElement.classList.contains('locked'), focus: document.activeElement && document.activeElement.id,
+    hidden: d.getAttribute('aria-hidden'), expanded: document.getElementById('menuB').getAttribute('aria-expanded'), main: box(m), sub: box(s), vw: innerWidth,
+    actIn: ar ? ar.top >= lr.top - 1 && ar.bottom <= lr.bottom + 1 : null}; }'''
+
+def nav_expect():
+    """What the navigation holds, from courses.py (the edition's courses and tracks, catalog order): the main nav's
+    entries; each area's courses (its group of the sub-nav: history courses, then markdown sub-courses, as build.py
+    lists them); each course section (its data-ctx) to its track and its home."""
+    main = [['home', 'Home']] + [['track-' + t['id'], t['name']] for t in THEMES]
+    area = {'track-' + t['id']: [c['home_id'] for c in HIST if c['theme'] == t['id']]
+            + [f"{c.get('prefix', c['id'])}-{k.lower()}" for c in COURSES if c['family'] == 'markdown' for k, (tr, _) in c['tracks'].items() if tr == t['id']]
+            for t in THEMES}
+    sec = {c['id']: (c['theme'], c['home_id']) for c in HIST}
+    sec |= {f"{c.get('prefix', c['id'])}-{k.lower()}": (tr, f"{c.get('prefix', c['id'])}-{k.lower()}") for c in COURSES if c['family'] == 'markdown' for k, (tr, _) in c['tracks'].items()}
+    return main, area, sec
+
+def check_nav(br, fails, w=390, h=844, theme='dark', motion=False, label=None):
+    """S-NAV1 step C: nav.main-nav and nav.sub-nav once in the page, in the drawer's list, main before sub, in no panel;
+    the main nav Home and the areas in catalog order, marking where the reader is (Home on the home and the site pages
+    under it, the area on its page, aria-current page, and on every page of its courses, aria-current true); the sub-nav
+    hidden on the home and the site pages, an area's courses on its page, a course's group (its home first, the page
+    itself marked) on each of its pages; What's new, the Changelog and the Backlog at the home's foot and in neither nav.
+    Then the drawer: below 1100 px the menu opens it with both navs on screen and the focus on its close button, the
+    current item scrolled into its list, Escape closes it and gives the focus back; an area entry tapped in it closes it
+    and opens the area (in an edition of one track, the home at the track's band), and a back returns. From 1100 px the
+    two navs stand in the sidebar without the menu. Every page error and console error fails."""
+    label = label or f'{w}x{h} {theme}' + (' motion' if motion else '')
+    main, area, sec = nav_expect()
+    ctx = br.new_context(viewport={'width': w, 'height': h}, color_scheme=theme, reduced_motion='no-preference' if motion else 'reduce',
+                         is_mobile=w < 1100, has_touch=w < 1100)
+    ctx.route('**/fonts.googleapis.com/**', lambda r: r.fulfill(status=200, content_type='text/css', body=FONT_CSS))
+    ctx.route('**/fonts.gstatic.com/**', font_file)
+    pg = ctx.new_page(); errs = []
+    pg.on('pageerror', lambda e: errs.append(str(e)))
+    pg.on('console', lambda m: errs.append(m.text) if m.type == 'error' else None)
+    pg.goto(URL + '#home'); ready(pg)
+    roots = ['home', 'new'] + [x for x in ('changelog', 'backlog') if x not in OMIT] + ([] if 'figures' in OMIT else ['viz-examples'])
+    firsts = pg.evaluate("""() => { const o = {}; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => { const c = p.getAttribute('data-ctx'); if (!o[c]) o[c] = p.id; }); return o; }""")
+    pages = [(x, 'root') for x in roots] + [(a, 'area') for a in AREA_IDS]
+    for cx, (tr, home) in sec.items():
+        if not pg.evaluate(f"!!document.getElementById('{home}')"): continue
+        pages += [(home, cx)] + [(c['syl_id'], cx) for c in HIST if c['id'] == cx and pg.evaluate(f"!!document.getElementById('{c['syl_id']}')")] + ([(firsts[cx], cx)] if cx in firsts else [])
+    n0 = len(fails)
+    for pid, kind in pages:
+        pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(30)
+        r = pg.evaluate(NAV_JS)
+        bad = []
+        if (r['nMain'], r['nSub'], r['inPanels']) != (1, 1, 0) or not r['inDrawer'] or not r['order']: bad.append(f"{r['nMain']} main-nav, {r['nSub']} sub-nav, {r['inPanels']} in a panel, in the drawer's list {r['inDrawer']}, main first {r['order']}")
+        if [x[:2] for x in r['main']] != main or r['mainOther']: bad.append(f"main nav {[x[:2] for x in r['main']]} (+{r['mainOther']} other), expected {main}")
+        want = ('home' if kind == 'root' else pid if kind == 'area' else 'track-' + sec[kind][0])
+        cur = 'page' if want == pid else 'true'
+        act = [[x[0], x[3]] for x in r['main'] if x[2]]
+        if act != [[want, cur]]: bad.append(f'main nav marks {act}, expected {[[want, cur]]}')
+        if r['siteInNav']: bad.append(f"links to {r['siteInNav']} in the navs")
+        if kind == 'root':
+            if not r['subHidden'] or r['groups']: bad.append(f"sub-nav shown ({r['groups']}) on a page of the home")
+        elif kind == 'area':
+            if r['subHidden'] or r['groups'] != [pid] or r['subLinks'] != area[pid]: bad.append(f"sub-nav {r['groups']} {r['subLinks']}, expected [{pid}] {area[pid]}")
+        else:
+            if r['subHidden'] or r['groups'] != [kind] or not r['subLinks'] or r['subLinks'][0] != sec[kind][1] or r['subActive'] != [pid]:
+                bad.append(f"sub-nav {r['groups']}, first {r['subLinks'][:1]}, marked {r['subActive']}, expected [{kind}], first {sec[kind][1]}, marked [{pid}]")
+        if bad: fails.append(f'nav {label} #{pid}: ' + '; '.join(bad))
+    pg.evaluate("location.hash = 'home'"); ready(pg)
+    foot = pg.evaluate(NAV_FOOT_JS)
+    want = {'new': True, 'changelog': None if 'changelog' in OMIT else True, 'backlog': None if 'backlog' in OMIT else True}
+    if foot != want: fails.append(f'nav {label}: the home\'s links to What\'s new, the Changelog and the Backlog {foot}, expected at its foot {want}')
+    # the drawer, from the first course's first reading page (or its home)
+    cx = next(iter(firsts), None) or next(iter(sec), None)
+    page = firsts.get(cx) or sec[cx][1]
+    tr = 'track-' + sec[cx][0]
+    pg.evaluate(f"location.hash = '{page}'"); ready(pg); pg.wait_for_timeout(60)
+    wait = 400 if motion else 120
+    if w < 1100:
+        pg.click('#menuB'); pg.wait_for_timeout(wait)
+        d = pg.evaluate(NAV_DRAWER_JS)
+        if not (d['on'] and d['locked'] and d['focus'] == 'closeB' and d['hidden'] == 'false' and d['expanded'] == 'true'): fails.append(f'nav {label}: the menu does not open the drawer as before: {d}')
+        if not d['main'] or not d['sub'] or d['main'][0] < 0 or d['sub'][0] < 0 or max(d['main'][1], d['sub'][1]) > d['vw'] or not d['main'][3] or not d['sub'][3]: fails.append(f'nav {label}: open drawer, main nav {d["main"]}, sub-nav {d["sub"]}, not both on screen')
+        if d['actIn'] is False: fails.append(f'nav {label}: the current item is not scrolled into the drawer\'s list')
+        pg.keyboard.press('Escape'); pg.wait_for_timeout(wait)
+        d = pg.evaluate(NAV_DRAWER_JS)
+        if d['on'] or d['locked'] or d['focus'] != 'menuB' or d['hidden'] != 'true': fails.append(f'nav {label}: Escape leaves the drawer {d}')
+        pg.click('#menuB'); pg.wait_for_timeout(wait)
+    else:
+        d = pg.evaluate(NAV_DRAWER_JS)
+        if not d['main'] or not d['sub'] or d['main'][0] < 0 or d['hidden'] != 'false' or not d['sub'][3]: fails.append(f'nav {label}: the sidebar does not show both navs: {d}')
+    pg.click(f'#drawer nav.main-nav a.ditem[data-target="{tr}"]'); pg.wait_for_timeout(wait); ready(pg)
+    at = pg.evaluate("() => [[...document.querySelectorAll('.panel')].find(p => !p.hidden).id, location.hash, document.getElementById('drawer').classList.contains('on')]")
+    if at != [tr if MULTI else 'home', '#' + tr, False]: fails.append(f'nav {label}: the main nav\'s {tr} lands on {at}, expected {[tr if MULTI else "home", "#" + tr, False]}')
+    pg.evaluate('history.back()'); pg.wait_for_timeout(120); ready(pg)
+    back = pg.evaluate("[...document.querySelectorAll('.panel')].find(p => !p.hidden).id")
+    if back != page: fails.append(f'nav {label}: back from the area lands on {back}, expected {page}')
+    if errs: fails.append(f'nav {label}: console errors ' + ' | '.join(errs[:3]))
+    ctx.close()
+    if len(fails) == n0: print(f'nav {label}: {len(pages)} pages, main nav {" · ".join(x[1] for x in main)}; sub-nav per section; site links at the home\'s foot; drawer from {page} -> {tr} and back')
+
 def short(iso):
     import datetime
     return datetime.date.fromisoformat(iso).strftime('%-d %b %Y')
@@ -2720,6 +2854,9 @@ def main():
         check_reliefs(br, fails)   # P95
         check_site_log(br, fails)   # S-PAGES
         check_history(br, fails)   # S-NAV1 step A
+        check_nav(br, fails)   # S-NAV1 step C: phone, dark
+        check_nav(br, fails, theme='light')
+        check_nav(br, fails, 1280, 800)
 
         # ---- phone ------------------------------------------------------------------------------------------
         ctx, pg, lay = new_page(p, br, errors, 'phone', 390, 844, True)
@@ -2730,8 +2867,8 @@ def main():
         check_panels(pg, 'phone light', fails)
         pg.evaluate(f"localStorage.removeItem('{THEME_KEY}'); document.documentElement.removeAttribute('data-theme')")
         # drawer in each context, every unit expanded
-        DRAWERS = ['home'] + [q for c in COURSES for q in sub_pages(c)]   # P-DEC14: full: the root drawer and every course's drawer context (a history course's home, each markdown sub-course's), not only the ones the navigation visits
-        if not SCOPE.full: DRAWERS = ['home'] + list(dict.fromkeys(SCOPE.ctx[q] for q in SCOPE.changed if SCOPE.ctx.get(q, 'root') != 'root'))   # scoped: the root drawer and the drawer of each course a changed page is in
+        DRAWERS = ['home'] + AREA_IDS + [q for c in COURSES for q in sub_pages(c)]   # P-DEC14: full: the root drawer and every course's drawer context (a history course's home, each markdown sub-course's), not only the ones the navigation visits
+        if not SCOPE.full: DRAWERS = ['home'] + AREA_IDS + list(dict.fromkeys(SCOPE.ctx[q] for q in SCOPE.changed if SCOPE.ctx.get(q, 'root') != 'root'))   # scoped: the root drawer and the drawer of each course a changed page is in
         for pid in DRAWERS:
             if not pg.evaluate(f"!!document.getElementById('{pid}')"): continue   # P70: not in this edition
             pg.evaluate(f"location.hash = '{pid}'"); pg.wait_for_timeout(30)
@@ -2755,7 +2892,7 @@ def main():
         def state():
             ready(pg)
             return pg.evaluate('''() => ({id: [...document.querySelectorAll('.panel')].find(p => !p.hidden).id,
-              nav: [...document.querySelectorAll('[data-navctx]')].filter(n => !n.hidden).map(n => n.dataset.navctx).join(','),
+              nav: document.querySelector('nav.sub-nav').hidden ? 'none' : [...document.querySelectorAll('nav.sub-nav [data-navctx]')].filter(n => !n.hidden).map(n => n.dataset.navctx).join(','),
               u: document.getElementById('curU').textContent, t: document.getElementById('curT').textContent,
               arrows: !document.getElementById('arrows').hidden, prev: !document.getElementById('prevB').disabled, next: !document.getElementById('nextB').disabled,
               cont: [...document.querySelectorAll('.panel:not([hidden]) .hbtn.cont')].map(b => b.hidden ? '(hidden)' : b.querySelector('span').textContent + ' ' + b.querySelector('b').textContent).join('|')})''')
@@ -2771,14 +2908,14 @@ def main():
             if MULTI:
                 aid = 'track-' + AREA_OF[target]
                 pg.click(f'#home a.course[href="#{aid}"]'); pg.wait_for_timeout(80)
-                step(f'{aid} area', dict(id=aid, nav='root', u='AREA', t=next(x['name'] for x in THEMES if 'track-' + x['id'] == aid), arrows=False))
+                step(f'{aid} area', dict(id=aid, nav=aid, u='AREA', t=next(x['name'] for x in THEMES if 'track-' + x['id'] == aid), arrows=False))
                 pg.click(f'#{aid} a.course[href="#{target}"]'); pg.wait_for_timeout(80)
             else:
                 pg.click(f'#home a.course[href="#{target}"]'); pg.wait_for_timeout(80)
-        step('home', dict(id='home', nav='root', u='HOME', arrows=False))
+        step('home', dict(id='home', nav='none', u='HOME', arrows=False))
         if 'changelog' not in OMIT:
             pg.click('#home a.hbtn[href="#changelog"]'); pg.wait_for_timeout(80)
-            step('changelog', dict(id='changelog', nav='root', u=SITE_NAME.upper(), t='Changelog', arrows=False))
+            step('changelog', dict(id='changelog', nav='none', u=SITE_NAME.upper(), t='Changelog', arrows=False))
             pg.click('#homeB'); pg.wait_for_timeout(80)
         else:   # P70: an edition without the changelog has no button to it and no panel
             if pg.evaluate("!!document.querySelector('a[href=\"#changelog\"], #changelog, a[href=\"#backlog\"], #backlog')"): fails.append(f'edition {EDITION}: a changelog or backlog page or link is built')
@@ -2796,7 +2933,7 @@ def main():
             step(f'{S_} report', dict(id=first, nav=S_, u=lambda u: u.startswith(SECOND['label'] + ' · UNIT ') and u.count(' · ') == 2, arrows=True))
             pg.click('#nextB'); pg.wait_for_timeout(50)
             step(f'{S_} next', dict(nav=S_, id=lambda i: re.match(re.escape(SECOND['prefix']) + r'\d', i) or i in (S_, SECOND['syl_id'])))
-            rome_last = pg.eval_on_selector_all(f'nav[data-navctx="{S_}"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
+            rome_last = pg.eval_on_selector_all(f'.sub-nav [data-navctx="{S_}"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
             pg.evaluate(f"location.hash = '{rome_last}'"); pg.wait_for_timeout(50)
             step(f'{S_} last report', dict(id=rome_last, nav=S_, next=False))
             pg.evaluate(f"location.hash = '{rome_reps[0]}'"); pg.wait_for_timeout(50)
@@ -2808,12 +2945,12 @@ def main():
             pg.evaluate(f"location.hash = '{cid}-built'"); pg.wait_for_timeout(50)
             step(f'{cid} how it was built', dict(id=f'{cid}-built', nav=cid, t='How it was built', arrows=True))
             nrow = pg.evaluate(f"document.querySelectorAll('#{cid}-built tr[data-mod]').length")
-            nrep = pg.evaluate(f"document.querySelectorAll('nav[data-navctx=\"{cid}\"] .dunit a.ditem[data-target]').length")
+            nrep = pg.evaluate(f"document.querySelectorAll('.sub-nav [data-navctx=\"{cid}\"] .dunit a.ditem[data-target]').length")
             if nrow != nrep or not nrow: fails.append(f'{cid}-built: {nrow} report rows for {nrep} written reports')
         if 'build' in OMIT and pg.evaluate("!!document.querySelector('[id$=\"-built\"], a[href$=\"-built\"]')"): fails.append(f'edition {EDITION}: a "How it was built" page or link is built')
         pg.evaluate(f"location.hash = '{first}'" if rome_reps else (f"location.hash = '{SECOND['home_id']}'" if SECOND else "location.hash = 'home'")); pg.wait_for_timeout(50)
         pg.click('#homeB'); pg.wait_for_timeout(80)
-        step('home again', dict(id='home', nav='root', arrows=False, cont=''))   # P91: no Continue on the home
+        step('home again', dict(id='home', nav='none', arrows=False, cont=''))   # P91: no Continue on the home
         if LEAD:   # S-DEC4: the first history course with reports 2.3 and 2.4 (Greece in Academy)
             L_, r23, r24 = LEAD['home_id'], rid(LEAD, '2.3'), rid(LEAD, '2.4')
             tap_course(L_)
@@ -2823,7 +2960,7 @@ def main():
             step(f'{L_} report', dict(id=r23, nav=L_, u=f'{LEAD["label"]} · UNIT 2 · 2.3', arrows=True, prev=True, next=True))
             pg.click('#nextB'); pg.wait_for_timeout(50)
             step(f'{L_} next', dict(id=r24, nav=L_))
-            greek_last = pg.eval_on_selector_all(f'nav[data-navctx="{L_}"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
+            greek_last = pg.eval_on_selector_all(f'.sub-nav [data-navctx="{L_}"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
             pg.evaluate(f"location.hash = '{greek_last}'"); pg.wait_for_timeout(50)
             step(f'{L_} last', dict(id=greek_last, nav=L_, next=False))
             pg.evaluate(f"location.hash = '{r24}'"); pg.wait_for_timeout(50)
@@ -2835,7 +2972,7 @@ def main():
             step(f'{SECOND["home_id"]} home resumes {SECOND["home_id"]}', dict(id=SECOND['home_id'], cont=lambda c: c.startswith('Continue ') and LEAD['short'] not in c and c != '(hidden)'))
         pg.click('#menuB'); pg.wait_for_timeout(250)
         dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
-        if rome_reps and dr[:3] != [SITE_NAME, f'{SECOND["short"]}: course home', 'Syllabus and prompts']: fails.append(f'{SECOND["home_id"]} drawer top: {dr}')
+        if rome_reps and dr[:2] != [f'{SECOND["short"]}: course home', 'Syllabus and prompts']: fails.append(f'{SECOND["home_id"]} drawer top: {dr}')   # S-NAV1 step C: the way home is the main nav's
         pg.click('#closeB'); pg.wait_for_timeout(200)
         # the Brand + AI courses (A under Marketing, B under Technology, A3): each its own drawer context with a Units group
         # and a "How it is built" group; written units open reading pages inside the site (never a link out); the reading
@@ -2873,25 +3010,16 @@ def main():
             step(f'{bid} home resumes', dict(id=bid, cont=lambda c: c.startswith('Continue ') and c != '(hidden)'))
             pg.click('#menuB'); pg.wait_for_timeout(250)
             dr = pg.evaluate("[...document.querySelectorAll('[data-navctx]:not([hidden]) .dtop .ditem .t')].map(t => t.textContent)")
-            if dr[:2] != [SITE_NAME, f'{short}: course home']: fails.append(f'{bid} drawer top: {dr}')
+            if dr[:1] != [f'{short}: course home']: fails.append(f'{bid} drawer top: {dr}')   # S-NAV1 step C: the way home is the main nav's
             pg.click('#closeB'); pg.wait_for_timeout(200)
-        # the root drawer: Home, Changelog, Backlog, then a collapsible group per track, open by default
+        # S-NAV1 step C: the drawer on the home holds the main nav alone, Home and the areas (check_nav checks every
+        # section's sub-nav, the marks and the drawer's behaviour; the root drawer's top rows and track groups are gone)
         pg.click('#homeB'); pg.wait_for_timeout(80)
         pg.click('#menuB'); pg.wait_for_timeout(250)
-        dr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dtop .ditem .t')].map(t => t.textContent)")
-        want_top = ['Home', "What's new"] + [n for n, k in (('Changelog', 'changelog'), ('Backlog', 'backlog')) if k not in OMIT]   # P91: What's new
-        if dr != want_top: fails.append(f'root drawer top: {dr}, expected {want_top}')
-        gr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dunit')].map(u => u.querySelector('.ut').textContent + (u.classList.contains('closed') ? ':closed' : ':open'))")
-        # a track's group is open once a page in it was visited in this run (shell.js show()); the ones the run above
-        # visited (S-DEC4: the tracks of the courses visited above, history and markdown) are open, any other track from
-        # courses.py starts closed
-        seen = {c['theme'] for c in (LEAD, SECOND) if c} | {MDNAV['tracks'][k][0] for _, _, k, _, _ in MDSUBS}
-        want = [t['name'] + (':open' if t['id'] in seen else ':closed') for t in THEMES]
-        if gr != want: fails.append(f'root drawer groups: {gr}, expected {want}')
-        t0 = next(t for t in THEMES if t['id'] in seen) if seen else THEMES[0]   # the first open track's group folds and opens again
-        pg.click(f'[data-navctx="root"] .dunit[data-unit="track:{t0["id"]}"] .duh'); pg.wait_for_timeout(50)
-        if not pg.evaluate(f"document.querySelector('[data-navctx=\"root\"] .dunit[data-unit=\"track:{t0['id']}\"]').classList.contains('closed')"): fails.append(f'root drawer: the {t0["name"]} group does not collapse')
-        pg.click(f'[data-navctx="root"] .dunit[data-unit="track:{t0["id"]}"] .duh'); pg.wait_for_timeout(50)
+        dr = pg.evaluate("[...document.querySelectorAll('#drawer nav.main-nav .ditem .t')].map(t => t.textContent)")
+        want_top = ['Home'] + [t['name'] for t in THEMES]
+        if dr != want_top: fails.append(f'main nav on the home: {dr}, expected {want_top}')
+        if not pg.evaluate("document.querySelector('#drawer nav.sub-nav').hidden"): fails.append('the sub-nav is shown on the home')
         pg.click('#closeB'); pg.wait_for_timeout(200)
         # a course drawer is an accordion: opening a second unit closes the first (S-DEC4: a history course's drawer, its
         # units keyed by the course's unit_key; a markdown course's drawer has no unit groups to fold)
@@ -2909,7 +3037,7 @@ def main():
         # the backlog page (S-PAGES): the overall order, then the areas, from docs/site-log.md
         if 'backlog' not in OMIT:
             pg.evaluate("location.hash = 'backlog'"); pg.wait_for_timeout(50)
-            step('backlog', dict(id='backlog', nav='root', u=SITE_NAME.upper(), t='Backlog', arrows=False))
+            step('backlog', dict(id='backlog', nav='none', u=SITE_NAME.upper(), t='Backlog', arrows=False))
             nt = pg.evaluate("document.querySelectorAll('#backlog [data-sl=\"order\"] table.sl').length")
             if nt != 1: fails.append(f'backlog page: {nt} order tables, expected one (S-PAGES; check_site_log checks the rest)')
         # the home lists every live course under its track, in courses.py order (history courses, then markdown courses)
@@ -2983,8 +3111,8 @@ def main():
             pg.evaluate(f"location.hash = '{DESK}'"); ready(pg); pg.wait_for_timeout(80)
             s = pg.evaluate('''() => { const d = document.getElementById('drawer'), r = d.getBoundingClientRect();
               const main = document.querySelector('main').getBoundingClientRect(), top = document.querySelector('.top').getBoundingClientRect();
-              const act = d.querySelector('[data-navctx]:not([hidden]) .ditem.is-active');
-              const list = d.querySelector('[data-navctx]:not([hidden])');
+              const act = d.querySelector('.sub-nav [data-navctx]:not([hidden]) .ditem.is-active');
+              const list = d.querySelector('.dlist');   // S-NAV1 step C: the list holding the main nav and the sub-nav scrolls
               return {left: r.left, w: r.width, h: r.height, vh: innerHeight, hidden: d.getAttribute('aria-hidden'),
                       menu: getComputedStyle(document.getElementById('menuB')).display, close: getComputedStyle(document.getElementById('closeB')).display,
                       backdrop: getComputedStyle(document.getElementById('backdrop')).display,

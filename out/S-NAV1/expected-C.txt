@@ -1,0 +1,80 @@
+# S-NAV1 Step C (navigation): outputs the change is expected to alter (kit-relative, as baseline.py --check prints them; no file added or removed)
+# the shell carries the drawer's two navs (nav.main-nav, nav.sub-nav), theme.css and shell.js, so the academy shell and the greece edition's shell change, and the size table follows the shell's size; no split page changes
+README.md
+academy/index.html
+editions/greece/index.html
+
+# lines replaced by Step C
+drop: kit/verify.py :: split, navigation and the tablet and desktop layouts, the home at every width with and without motion, the root drawer,
+drop: kit/verify.py :: shell, one row per written report or unit), the drawer groups (tracks open by default, a course's units as an
+drop: kit/verify.py :: accordion) and the Backlog page; the same panel checks again in the light theme. The Backlog and Changelog pages
+drop: kit/verify.py :: marked and no other; its breadcrumbs and title. The root drawer's top rows: Home, What's new, Changelog, Backlog.
+drop: kit/verify.py :: pg.evaluate("document.querySelectorAll('.dunit').forEach(u => u.classList.remove('closed')); document.querySelectorAll('#drawer details').forEach(d => d.open = true)")
+drop: kit/verify.py :: DRAWERS = ['home'] + [q for c in COURSES for q in sub_pages(c)]   # P-DEC14: full: the root drawer and every course's drawer context (a history course's home, each markdown sub-course's), not only the ones the navigation visits
+drop: kit/verify.py :: if not SCOPE.full: DRAWERS = ['home'] + list(dict.fromkeys(SCOPE.ctx[q] for q in SCOPE.changed if SCOPE.ctx.get(q, 'root') != 'root'))   # scoped: the root drawer and the drawer of each course a changed page is in
+drop: kit/verify.py :: nav: [...document.querySelectorAll('[data-navctx]')].filter(n => !n.hidden).map(n => n.dataset.navctx).join(','),
+drop: kit/verify.py :: step(f'{aid} area', dict(id=aid, nav='root', u='AREA', t=next(x['name'] for x in THEMES if 'track-' + x['id'] == aid), arrows=False))
+drop: kit/verify.py :: step('home', dict(id='home', nav='root', u='HOME', arrows=False))
+drop: kit/verify.py :: step('changelog', dict(id='changelog', nav='root', u=SITE_NAME.upper(), t='Changelog', arrows=False))
+drop: kit/verify.py :: rome_last = pg.eval_on_selector_all(f'nav[data-navctx="{S_}"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
+drop: kit/verify.py :: nrep = pg.evaluate(f"document.querySelectorAll('nav[data-navctx=\"{cid}\"] .dunit a.ditem[data-target]').length")
+drop: kit/verify.py :: step('home again', dict(id='home', nav='root', arrows=False, cont=''))   # P91: no Continue on the home
+drop: kit/verify.py :: greek_last = pg.eval_on_selector_all(f'nav[data-navctx="{L_}"] .dunit a.ditem[data-target]', 'as => as.map(a => a.dataset.target)')[-1]
+drop: kit/verify.py :: if rome_reps and dr[:3] != [SITE_NAME, f'{SECOND["short"]}: course home', 'Syllabus and prompts']: fails.append(f'{SECOND["home_id"]} drawer top: {dr}')
+drop: kit/verify.py :: if dr[:2] != [SITE_NAME, f'{short}: course home']: fails.append(f'{bid} drawer top: {dr}')
+drop: kit/verify.py :: # the root drawer: Home, Changelog, Backlog, then a collapsible group per track, open by default
+drop: kit/verify.py :: dr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dtop .ditem .t')].map(t => t.textContent)")
+drop: kit/verify.py :: want_top = ['Home', "What's new"] + [n for n, k in (('Changelog', 'changelog'), ('Backlog', 'backlog')) if k not in OMIT]   # P91: What's new
+drop: kit/verify.py :: if dr != want_top: fails.append(f'root drawer top: {dr}, expected {want_top}')
+drop: kit/verify.py :: gr = pg.evaluate("[...document.querySelectorAll('[data-navctx=\"root\"] .dunit')].map(u => u.querySelector('.ut').textContent + (u.classList.contains('closed') ? ':closed' : ':open'))")
+drop: kit/verify.py :: # a track's group is open once a page in it was visited in this run (shell.js show()); the ones the run above
+drop: kit/verify.py :: # visited (S-DEC4: the tracks of the courses visited above, history and markdown) are open, any other track from
+drop: kit/verify.py :: # courses.py starts closed
+drop: kit/verify.py :: seen = {c['theme'] for c in (LEAD, SECOND) if c} | {MDNAV['tracks'][k][0] for _, _, k, _, _ in MDSUBS}
+drop: kit/verify.py :: want = [t['name'] + (':open' if t['id'] in seen else ':closed') for t in THEMES]
+drop: kit/verify.py :: if gr != want: fails.append(f'root drawer groups: {gr}, expected {want}')
+drop: kit/verify.py :: t0 = next(t for t in THEMES if t['id'] in seen) if seen else THEMES[0]   # the first open track's group folds and opens again
+drop: kit/verify.py :: pg.click(f'[data-navctx="root"] .dunit[data-unit="track:{t0["id"]}"] .duh'); pg.wait_for_timeout(50)
+drop: kit/verify.py :: if not pg.evaluate(f"document.querySelector('[data-navctx=\"root\"] .dunit[data-unit=\"track:{t0['id']}\"]').classList.contains('closed')"): fails.append(f'root drawer: the {t0["name"]} group does not collapse')
+drop: kit/verify.py :: pg.click(f'[data-navctx="root"] .dunit[data-unit="track:{t0["id"]}"] .duh'); pg.wait_for_timeout(50)
+drop: kit/verify.py :: step('backlog', dict(id='backlog', nav='root', u=SITE_NAME.upper(), t='Backlog', arrows=False))
+drop: kit/verify.py :: const act = d.querySelector('[data-navctx]:not([hidden]) .ditem.is-active');
+drop: kit/verify.py :: const list = d.querySelector('[data-navctx]:not([hidden])');
+drop: kit/baseline.json :: "README.md": "41240ad7d9bd25d83e0023d46e894969175d74c7410f5d9d81a6d13d2e7a3311",
+drop: kit/baseline.json :: "academy/index.html": "e002e4ab4f87e1f60dff9b3e879fd27b2a19eb0547e06ad5313049ea159df889",
+drop: kit/baseline.json :: "editions/greece/index.html": "4e7ae38dfec4eaeceb11020e6ab7f53f4a25534570f40567dc3915c00434e6a5",
+drop: kit/build.py :: top = (f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">{html.escape(SITE_NAME)}</span></a>'
+drop: kit/build.py :: f'<a class="ditem dhome" href="#{c["home_id"]}" data-target="{c["home_id"]}"><span class="n">⌂</span><span class="t">{c["short"]}: course home</span></a>'
+drop: kit/build.py :: return f'<nav class="dlist" data-navctx="{c["id"]}" data-accordion aria-label="{c["short"]} course" hidden>{top}{out}</nav>'
+drop: kit/build.py :: def root_nav_track(t):
+drop: kit/build.py :: out = ''
+drop: kit/build.py :: if MULTI:   # S-NAV1 step B: the track's area page heads its group (step C makes the navigation two levels)
+drop: kit/build.py :: out += f'<a class="ditem dcourse darea" href="#track-{t["id"]}" data-target="track-{t["id"]}" style="--c:{t["color"]}"><span class="n">■</span><span class="t">{html.escape(t["name"])}<small>the area\'s home</small></span></a>'
+drop: kit/build.py :: out += ''.join(f'<a class="ditem dcourse" href="#{c["home_id"]}" data-target="{c["home_id"]}" style="--c:{c["color"]}"><span class="n">{c["num"]}</span><span class="t">{c["short"]}<small>{c["card_units"]} units · {c["nrep"]} {"reports" if c["status"] == "available" else "of " + str(c["content_mods"]) + " reports"}</small></span></a>' for c in hist)
+drop: kit/build.py :: # a collapsible group: closed unless the reader opened it; shell.js opens the track of the last report read (else the first)
+drop: kit/build.py :: return (f'<div class="dunit closed" data-unit="track:{t["id"]}" data-ulabel="{html.escape(t["name"]).upper()}" style="--c:{t["color"]}">'
+drop: kit/build.py :: f'<button class="duh" type="button" aria-expanded="false"><span class="un">■</span><span class="ut">{html.escape(t["name"])}</span><span class="cnt">{n}</span>{ICON_CHEV}</button><div class="ditems">{out}</div></div>')
+drop: kit/build.py :: root_nav = ('<nav class="dlist" data-navctx="root" aria-label="Courses"><div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">⌂</span><span class="t">Home</span></a>'
+drop: kit/build.py :: + '<a class="ditem dhome" href="#new" data-target="new"><span class="n">+</span><span class="t">What\'s new</span></a>'   # P91
+drop: kit/build.py :: + ('' if 'changelog' in OMIT else '<a class="ditem dhome" href="#changelog" data-target="changelog"><span class="n">≡</span><span class="t">Changelog</span></a>')
+drop: kit/build.py :: + ('' if 'backlog' in OMIT else '<a class="ditem dhome" href="#backlog" data-target="backlog"><span class="n">☐</span><span class="t">Backlog</span></a>') + '</div>'
+drop: kit/build.py :: + ''.join(root_nav_track(t) for t in THEMES) + '</nav>')
+drop: kit/build.py :: navs = root_nav + ''.join(drawer(c) for c in HISTORY) + ''.join(m['nav'] for m in MD)
+drop: kit/shell.js :: var navs=[].slice.call(document.querySelectorAll('[data-navctx]'));
+drop: kit/shell.js :: var act=drawer.querySelector('[data-navctx]:not([hidden]) .ditem.is-active');if(act){try{act.scrollIntoView({block:'center'});}catch(e){}}
+drop: kit/shell.js :: // default; the root tracks are independent and open by default. The reader's choice is remembered per group
+drop: kit/shell.js :: // the root tracks start closed; with no remembered choice, the track of the last report read opens (else the first)
+drop: kit/shell.js :: (function(){var root=document.querySelector('[data-navctx="root"]');if(!root)return;
+drop: kit/shell.js :: var groups=[].slice.call(root.querySelectorAll('.dunit'));if(!groups.length||groups.some(function(g){return opened[g.getAttribute('data-unit')]!==undefined;}))return;
+drop: kit/shell.js :: var s=lastAny(),hit=null;if(s){var a=root.querySelector('.ditem[data-target="'+ctxOf[s]+'"]');if(a)hit=a.closest('.dunit');}
+drop: kit/shell.js :: setOpen(hit||groups[0],true);})();
+drop: kit/shell.js :: navs.forEach(function(n){n.hidden=n.getAttribute('data-navctx')!==ctx;});
+drop: design/theme.css :: /* drawer: full-height, slides from the left, one nav per context */
+drop: design/theme.css :: .dtop{margin-bottom:8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+drop: kit/shell.css :: /* drawer: full-height, slides from the left, one nav per context */
+drop: kit/shell.css :: .dtop{margin-bottom:8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+drop: kit/mdcourse.py :: nav = (f'<nav class="dlist" data-navctx="{ctx}" aria-label="{e(m["short"])} course" hidden>'
+drop: kit/mdcourse.py :: f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">{H.escape(SITE_NAME)}</span></a>'
+drop: kit/mdcourse.py :: f'<a class="ditem dhome" href="#{ctx}" data-target="{ctx}"><span class="n">⌂</span><span class="t">{e(m["short"])}: course home</span></a></div>'
+drop: kit/mdcourse.py :: + group('build', 'How it is built', str(len(pages)), bitems, False) + '</nav>')
+drop: kit/verify_scope.py :: self.kind, self.ctx = {}, {}   # page id: unit, course or site; page id: its drawer context (data-ctx)

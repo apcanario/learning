@@ -19,6 +19,10 @@ A page's sources (page_hash):
 A page of no course (the home, What's new, Changelog, Backlog, Figure kinds, an area page) has only the first.
 S-NAV1 step B (21 Nov 2026): an area page (data-kind="area", track-<id>, in an edition of two or more tracks) runs in
 every run, as the home does: it shows its track's course tiles, which every filing in the track changes.
+S-NAV1 step C (21 Nov 2026): the navigation, nav.main-nav and nav.sub-nav, sits in the shell's drawer outside every
+panel, so it reaches no page's hash; its checks (verify.py check_nav, the drawer boxes on the home, every area page and
+each changed page's course) are edition-wide and run in every run. A page's context (data-ctx) names its section's group
+of the sub-nav: a course's id, or "root" for the home, its site pages and the area pages (whose group is their own id).
 
 What every page depends on (GLOBAL) forces the full run when it changed: kit/*.py, kit/shell.js, kit/shell.css,
 design/theme.css, kit/fonts/, catalog.toml, the edition's editions/<name>.toml and its brand's brands/<name>.toml.
@@ -104,7 +108,7 @@ class Scope:
         units = {c['id']: unit_files(c) for c in courses}
         course_all = {c['id']: _sha(*[x for p in sorted((ROOT / 'courses' / c['id']).rglob('*')) if p.is_file()
                                       for x in (str(p.relative_to(ROOT)), p.read_bytes())]) for c in courses}
-        self.kind, self.ctx = {}, {}   # page id: unit, course or site; page id: its drawer context (data-ctx)
+        self.kind, self.ctx = {}, {}   # page id: unit, course or site; page id: its context (data-ctx), its sub-nav group's id unless root
         self.areas = []   # S-NAV1 step B: the area pages, checked in every run as the home is
         for pid, (attrs, frag) in panels(shell).items():
             parts = [frag]

@@ -17,7 +17,12 @@
     if(kind==='report')(reportsBy[ctx]=reportsBy[ctx]||[]).push(p.id);
   });
   var items=[].slice.call(document.querySelectorAll('.ditem'));
-  var navs=[].slice.call(document.querySelectorAll('[data-navctx]'));
+  // S-NAV1 step C: two levels of navigation. nav.main-nav holds Home and the areas; nav.sub-nav one group per section
+  // ([data-navctx]: an area page's id, track-<id>, or a course's ctx), of which show() shows the reader's (none on the
+  // home and the site pages under it). An area entry lists the course sections it holds (data-secs).
+  var subNav=document.querySelector('.sub-nav'),navs=[].slice.call(document.querySelectorAll('.sub-nav [data-navctx]'));
+  var mainItems=[].slice.call(document.querySelectorAll('.main-nav .ditem'));
+  function secOf(id){var c=ctxOf[id];if(c&&c!=='root')return c;return kindOf[id]==='area'?id:null;}
   items.forEach(function(a){var un=a.closest('.dunit');if(!un||meta[a.getAttribute('data-target')])return;meta[a.getAttribute('data-target')]={t:a.querySelector('.t').textContent,n:a.querySelector('.n').textContent,u:un.getAttribute('data-ulabel'),c:un.style.getPropertyValue('--c')};});
   function isReport(id){return kindOf[id]==='report';}
   function seqFor(ctx){return ids.filter(function(i){return ctxOf[i]===ctx;});}
@@ -35,7 +40,7 @@
   function put(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 
   function openDrawer(){drawer.classList.add('on');backdrop.classList.add('on');drawer.setAttribute('aria-hidden','false');menuB.setAttribute('aria-expanded','true');document.documentElement.classList.add('locked');
-    var act=drawer.querySelector('[data-navctx]:not([hidden]) .ditem.is-active');if(act){try{act.scrollIntoView({block:'center'});}catch(e){}}
+    var act=drawer.querySelector('.sub-nav:not([hidden]) [data-navctx]:not([hidden]) .ditem.is-active')||drawer.querySelector('.main-nav .ditem.is-active');if(act){try{act.scrollIntoView({block:'center'});}catch(e){}}
     closeB.focus();}
   function closeDrawer(){drawer.classList.remove('on');backdrop.classList.remove('on');drawer.setAttribute('aria-hidden',(wide&&wide.matches)?'false':'true');menuB.setAttribute('aria-expanded','false');document.documentElement.classList.remove('locked');}
   menuB.addEventListener('click',openDrawer);
@@ -48,7 +53,7 @@
   if(wide){if(wide.addEventListener)wide.addEventListener('change',syncWide);else if(wide.addListener)wide.addListener(syncWide);syncWide();}
 
   // collapsible groups in the drawer (.dunit): a course's units are an accordion, one open at a time, closed by
-  // default; the root tracks are independent and open by default. The reader's choice is remembered per group
+  // default (a markdown course's groups are independent, Units open by default). The reader's choice is remembered per group
   // (1 open, 0 closed; keys are namespaced per course).
   var opened={};try{opened=JSON.parse(get(UKEY)||'{}')||{};}catch(e){}
   function setOpen(un,on){un.classList.toggle('closed',!on);un.querySelector('.duh').setAttribute('aria-expanded',on?'true':'false');}
@@ -66,11 +71,6 @@
   });
   // an accordion keeps one group open: the stored state may hold several from before, so keep only the first
   navs.forEach(function(n){if(!n.hasAttribute('data-accordion'))return;var open=[].slice.call(n.querySelectorAll('.dunit:not(.closed)'));open.slice(1).forEach(function(o){setOpen(o,false);});});
-  // the root tracks start closed; with no remembered choice, the track of the last report read opens (else the first)
-  (function(){var root=document.querySelector('[data-navctx="root"]');if(!root)return;
-    var groups=[].slice.call(root.querySelectorAll('.dunit'));if(!groups.length||groups.some(function(g){return opened[g.getAttribute('data-unit')]!==undefined;}))return;
-    var s=lastAny(),hit=null;if(s){var a=root.querySelector('.ditem[data-target="'+ctxOf[s]+'"]');if(a)hit=a.closest('.dunit');}
-    setOpen(hit||groups[0],true);})();
 
   // figure frames (P44, 29 Oct 2026): below 768 px a figure keeps its natural size and scrolls sideways in its .viz-scroll
   // frame; data-more names the edge(s) with more drawing (the theme fades them) and the cue line under the frame shows
@@ -165,9 +165,16 @@
     current=id;var ctx=ctxOf[id];
     panels.forEach(function(p){p.hidden=p.id!==id;});
     vizFrames(document.getElementById(id));
-    navs.forEach(function(n){n.hidden=n.getAttribute('data-navctx')!==ctx;});
+    var sec=secOf(id),any=false;
+    navs.forEach(function(n){var on=n.getAttribute('data-navctx')===sec;n.hidden=!on;any=any||on;});
+    if(subNav)subNav.hidden=!any;
     items.forEach(function(a){var on=a.getAttribute('data-target')===id;a.classList.toggle('is-active',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
       if(on){var un=a.closest('.dunit');if(un&&un.classList.contains('closed'))openGroup(un,false);}});
+    // the main nav marks where the reader is: Home on the home and the site pages under it, an area on its page and on
+    // every page of its courses (aria-current "page" on the page itself, "true" inside its section)
+    mainItems.forEach(function(a){var t=a.getAttribute('data-target'),secs=' '+(a.getAttribute('data-secs')||'')+' ';
+      var exact=t===id,here=exact||(t==='home'?!sec:!!sec&&(t===sec||secs.indexOf(' '+sec+' ')>=0));
+      a.classList.toggle('is-active',here);if(here)a.setAttribute('aria-current',exact?'page':'true');else a.removeAttribute('aria-current');});
     var m=meta[id]||{};
     curFull=m.n?(m.u||'')+' · '+m.n:(m.u||'');fitCur();curT.textContent=m.t||'';cur.style.setProperty('--c',m.c||'');
     homeB.classList.toggle('is-here',id==='home');

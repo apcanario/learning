@@ -624,9 +624,9 @@ def build(m, crumbs, theme, pill_next, chev, kit):
     bitems = ''.join(f'<a class="ditem" href="#{h}" data-target="{h}"><span class="n">{n}</span><span class="t">{tt}</span></a>' for h, n, tt, _ in pages)
     def group(gid, name, cnt, body, open_):
         return (f'<div class="dunit closed" data-unit="{ctx}:{gid}"{" data-open" if open_ else ""} data-ulabel="{ulabel}" style="--c:{col}"><button class="duh" type="button" aria-expanded="false"><span class="ut">{name}</span><span class="cnt">{cnt}</span>{chev}</button><div class="ditems">{body}</div></div>')
-    nav = (f'<nav class="dlist" data-navctx="{ctx}" aria-label="{e(m["short"])} course" hidden>'
-           f'<div class="dtop"><a class="ditem dhome" href="#home" data-target="home"><span class="n">←</span><span class="t">{H.escape(SITE_NAME)}</span></a>'
-           f'<a class="ditem dhome" href="#{ctx}" data-target="{ctx}"><span class="n">⌂</span><span class="t">{e(m["short"])}: course home</span></a></div>'
+    # S-NAV1 step C: the course's group of the shell's sub-nav (build.py puts it in nav.sub-nav); the main nav holds Home
+    nav = (f'<div class="sub-sec" data-navctx="{ctx}" role="group" aria-label="{e(m["short"])} course" hidden>'
+           f'<div class="dtop"><a class="ditem dhome" href="#{ctx}" data-target="{ctx}"><span class="n">⌂</span><span class="t">{e(m["short"])}: course home</span></a></div>'
            + group('units', 'Units', f'{m["nwritten"]}/{m["nunits"]}', units, True)
-           + group('build', 'How it is built', str(len(pages)), bitems, False) + '</nav>')
+           + group('build', 'How it is built', str(len(pages)), bitems, False) + '</div>')
     return P, nav, len(biblio)
