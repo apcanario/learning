@@ -50,12 +50,26 @@ Rules for an entry (`docs/method.md` §8):
 | 34 | SCP16 | Supply Chain | Write SCP16, Capstone: one planning product memo, for Supply Chain Planning for Product Teams. |
 | 35 | DD-SCP1 | Supply Chain | Write DD-SCP1, Deep dive: planning as companies have published it, for Supply Chain Planning for Product Teams. |
 | 36 | DD-SCP2 | Supply Chain | Write DD-SCP2, Deep dive: the hard numbers, for Supply Chain Planning for Product Teams. |
-| 37 | AIE | Supply Chain | Write AI in Supply Chain Execution, a course of fourteen units on how to judge the AI features of order, warehouse and transport software: what each decides, what a person still decides, and what the evidence shows. |
+| 37 | AIE1 | Supply Chain | Write AIE1, What counts as AI here, for AI in Supply Chain Execution. |
+| 38 | AIE2 | Supply Chain | Write AIE2, Optimisation and rules: the AI that was already there, for AI in Supply Chain Execution. |
+| 39 | AIE3 | Supply Chain | Write AIE3, Prediction: what machine learning adds, for AI in Supply Chain Execution. |
+| 40 | AIE4 | Supply Chain | Write AIE4, Generative models and agents, for AI in Supply Chain Execution. |
+| 41 | AIE5 | Supply Chain | Write AIE5, The field evidence, read in full, for AI in Supply Chain Execution. |
+| 42 | AIE6 | Supply Chain | Write AIE6, In the warehouse, for AI in Supply Chain Execution. |
+| 43 | AIE7 | Supply Chain | Write AIE7, In transport, for AI in Supply Chain Execution. |
+| 44 | AIE8 | Supply Chain | Write AIE8, In order management, for AI in Supply Chain Execution. |
+| 45 | AIE9 | Supply Chain | Write AIE9, The person in the loop, for AI in Supply Chain Execution. |
+| 46 | AIE10 | Supply Chain | Write AIE10, Risk, rules and accountability, for AI in Supply Chain Execution. |
+| 47 | AIE11 | Supply Chain | Write AIE11, Reading an AI claim, for AI in Supply Chain Execution. |
+| 48 | AIE12 | Supply Chain | Write AIE12, Money and the pilot, for AI in Supply Chain Execution. |
+| 49 | AIE13 | Supply Chain | Write AIE13, Capstone: one feature, argued, for AI in Supply Chain Execution. |
+| 50 | DD-AIE1 | Supply Chain | Write DD-AIE1, Deep dive: algorithmic management on the floor, for AI in Supply Chain Execution. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-23 | S-AIE0 | Supply Chain | AI in Supply Chain Execution, a new course, added: designed; 14 units to write. |
 | 2026-11-22 | S-SCP0 | Supply Chain | Supply Chain Planning for Product Teams, a new course, added: designed; 18 units to write. |
 | 2026-11-22 | S-NAV2 | Academy | Academy now has its own layouts for desktop and tablet screens, with a sidebar, a top bar, wider homes and an outline beside each unit, the phone is unchanged, and the area names in the home's heading no longer overlap. |
 | 2026-11-21 | S-NAV1 | Academy | Academy's back swipe now stays on the site, each area has its own home page with its courses, the menu has two levels, and every line drawing moves outward from its centre. |
