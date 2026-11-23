@@ -236,4 +236,4 @@ gives = "nothing; it is the course's last unit"
 # newest first
 [[pack.changelog]]
 date = '2026-11-22 22:30'
-text = 'v1. Course created (new-course skill; row S-SCP0) from the design of 21 Nov 2026 (Fable 5.2): frame, goal and three outcomes, 18 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the fictional case register of three companies and three vendors, a seed bibliography of 46 references, 44 checked for existence (R3 in part; 2 not opened), the syllabus-flags file. No unit written.'
+text = 'v1. Course created (new-course skill; row S-SCP0) from the design of 21 Nov 2026 (Fable 5.2): frame, goal and three outcomes, 18 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the fictional case register of three companies and three vendors, a seed bibliography of 46 references, 43 checked for existence, R3 in part, 2 not opened, the syllabus-flags file. No unit written.'

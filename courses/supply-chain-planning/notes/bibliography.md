@@ -2,7 +2,7 @@
 
 Compiled 21 Nov 2026 by the design chat (Fable 5.2). **Checked for existence only.** Nobody has checked what any entry says. A writer opens an entry before citing it, and an entry that cannot be opened carries no claim (preamble, sourcing standard).
 
-Kept short on purpose: 46 entries; 44 checked for existence (R3 in part), 2 not opened. Four entries of the first draft that had no Crossref record and duplicated the support of others were dropped rather than left unchecked (two general textbooks, one trade book, one magazine article). A unit may add a source it finds and opens; it lists the addition in its notes so this file can take it.
+Kept short on purpose: 46 entries: 43 checked for existence, R3 in part (one of its pages opened), 2 not opened. Four entries of the first draft that had no Crossref record and duplicated the support of others were dropped rather than left unchecked (two general textbooks, one trade book, one magazine article). A unit may add a source it finds and opens; it lists the addition in its notes so this file can take it.
 
 How each entry was checked:
 - **Crossref**: the record at `api.crossref.org` was read on 21 Nov 2026 (a search of the works index by authors and title, or the record at `/works/<DOI>`), and the authors, title, journal or publisher, year, volume, issue and pages below are as it gives them.
