@@ -84,7 +84,7 @@ Not added to Carried proposals of `docs/BACKLOG.md`, because every carried propo
 - `python3 kit/index_check.py`: courses-index.md matches the sources.
 - `python3 kit/private_terms.py`: OK.
 - `kit/pack.py` loads the course (14 units, NEXT_UNIT AIE1, VERSION v1 · 23 Nov 2026, the five page blocks); `open_brief` builds AIE1's brief with `{GOAL}` filled.
-- Scratch build in a copy (`/tmp/aie-buildcheck`, not the repo): last line ends "AI in Supply Chain Execution (public): 0/14 units · shell 674 KB, 277 fetched files, site 25.36 MB"; its `kit/academy/ai-in-supply-chain-execution-aie/` was built. The repo's `kit/academy/` was not rebuilt. A scratch `verify.py` run was started there; its result is in `/tmp/aie-verify.log` (see the reply).
+- Scratch build in a copy (`/tmp/aie-buildcheck`, not the repo): last line ends "AI in Supply Chain Execution (public): 0/14 units · shell 674 KB, 277 fetched files, site 25.36 MB"; its `kit/academy/ai-in-supply-chain-execution-aie/` was built. The repo's `kit/academy/` was not rebuilt. A scratch `verify.py` run there did not finish inside its 3,000 s limit (stopped in the tablet hero passes; the Playwright driver then died with EPIPE): it printed no FAIL line up to that point, so it is inconclusive, not a pass. The main chat's own verify (step 4) decides. Log: `/tmp/aie-verify.log`.
 
 ## Bibliography counts
 
