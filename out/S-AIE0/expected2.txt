@@ -1,0 +1,3 @@
+README.md
+academy/changelog.html
+academy/index.html
