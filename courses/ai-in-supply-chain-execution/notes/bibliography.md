@@ -5,11 +5,11 @@ Compiled 21 Nov 2026 in the design chat. **Checked for existence only.** Nobody 
 Kept short on purpose: 72 entries, 11 of them shared with the track's first course. Bibliography check of 23 Nov 2026 (row S-AIE0): the 25 entries then marked Not checked, Secondhand or Search were looked for again. Now, of the 72 entries, checked in full (Crossref record read, or entry's own record/page read): 37 Crossref + 14 page read = 51, plus 11 carried from the first course's seed list (checked there on 19 Nov 2026, not re-read here); checked in part (search listing or a page that did not give the record): 9 (not counted as checked); not opened: 1. Leads, not found: 0. Of the 37 Crossref records, 36 were read on 21 Nov and 1 on 23 Nov 2026; "page read" rows are marked "Page read", rows checked in part "Search" or "Secondhand" (with what was and was not opened), the one not opened (F7, a class of pages) "Not checked", the carried ones "SCE seed". An entry opened in part is not counted as checked. A unit may add a source it finds and opens; it lists the addition in its notes so this file can take it.
 
 How each entry was checked:
-- **Crossref**: the record at `api.crossref.org/works/<DOI>` was read on 21 Nov 2026 and the authors, title, journal, year, volume, issue and pages below are as it gives them.
+- **Crossref**: the record at `api.crossref.org/works/<DOI>` was read on 21 or 23 Nov 2026 and the authors, title, journal, year, volume, issue and pages below are as it gives them.
 - **SCE seed**: the entry is in `courses/supply-chain-execution/notes/bibliography.md`, whose Crossref check is dated 19 Nov 2026; not re-read here.
-- **Search**: found by web search on 21 Nov 2026 at the address given; details as that page's search listing gives them. The page itself was not read.
+- **Search**: found by web search on 21 or 23 Nov 2026 at the address given; details as that page's search listing gives them. The page itself was not read.
 - **Secondhand**: seen only as reported by other pages. The writer finds the original or uses it only as a claim under examination.
-- **Not checked**: named from memory as a starting point. No record was read. Three of these are entries whose recalled DOI failed, said in the row.
+- **Not checked**: named from memory as a starting point. No record was read. Since the check of 23 Nov 2026 one entry is Not checked: F7, a class of pages the unit chooses, not one entry to find.
 - **Page read**: on 23 Nov 2026 the page named (the issuer's, publisher's or conference's own page, or a repository record) was opened and the details below are as it gives them. Only bibliographic details were read; nothing about what the source says.
 - Search and Secondhand rows dated 23 Nov 2026 say in the cell what was opened and what was not; such a row is not counted as checked.
 

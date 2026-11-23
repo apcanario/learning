@@ -42,6 +42,8 @@ Registrar: claude-opus-5-5, a fresh agent, 23 Nov 2026. Packet `/home/claude/pac
 13. `catalog.toml` and `QUEUE`: the setup says "after `supply-chain-execution`"; the design was written when that course was the track's last. The id is placed after `supply-chain-planning` in both (still after the Execution course; the track reads Execution, Planning, AI, as the design's "third course of the track" says; nothing printed for another course's rows changes, since `rows()` and the "next unfiled row" of the queue are unchanged before it). `log_areas`' "Course SCE" label left as the Planning row left it.
 14. `docs/BACKLOG.md`: the bundle headings are `####` under section 4h, each with its own table header (`kit/next_prompt.py`'s `save()` finds rows by their `| <row> |` line; `--save`, `--bundle` and the starter-cell rule work across them). The G-R-AIE row's unit per object is the registrar's expectation from the briefs' scopes (the design names the objects only; of their words only "truck" and "dock", AIE7, and "wearable", DD-AIE1, appear in a brief); the row says so.
 15. `docs/site-log.md`: one Next entry for the course (as the setup says), where the Planning row added one per unit.
+16. Difference 8 (the syllabus-flags table holds F1, not an empty table; registration check M2): accepted by the main chat per overrides 3 and 10.
+17. Difference 13 (`QUEUE` and `course_order` after `supply-chain-planning`; registration check M3): accepted by the main chat per overrides 3 and 10.
 
 ## Case-fact changes (override 5)
 
