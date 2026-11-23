@@ -1,3 +1,4 @@
 README.md
 academy/changelog.html
 academy/index.html
+drop: docs/site-log.md :: | 37 | AIE | Supply Chain | Write AI in Supply Chain Execution, a course of fourteen units on how to judge the AI features of order, warehouse and transport software: what each decides, what a person still decides, and what the evidence shows. |
