@@ -5,7 +5,7 @@ The one source of Academy's Backlog and Changelog pages (S-PAGES, 15 Nov 2026): 
 Rules for an entry (`docs/method.md` §8):
 - **Next**: one row per item still to do, in the overall order (#, from 1, no gaps); **Done**: one row per item done, any order (the pages sort newest first), the date as `YYYY-MM-DD` (the first day, where the work ran over several).
 - **Code**: the item's short name: a unit's code (PB1, IA3), a history course's syllabus unit (G12 for Greece unit 12, R0–3 for Rome units 0 to 3), the backlog row's code for anything else (P96, S-PAGES), and K plus the session number for a site change of the kit's early sessions (K1 to K11), which had no row code. Keep it short: the column is narrow on a phone.
-- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (course SP; named Coaching until 19 Nov 2026), Supply Chain (courses SCE, SCP and AIE), Academy (the site and its method).
+- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (courses SP and AC; named Coaching until 19 Nov 2026), Supply Chain (courses SCE, SCP and AIE), Academy (the site and its method).
 - **Sentence**: one plain sentence for an ordinary reader: what it is (Next) or what happened (Done). No model names, token counts, script or file names, row mechanics (rows, chats, prompts, corrections, mirrors), agent or audit vocabulary, and no private term (`kit/private-terms.txt`; `python3 kit/private_terms.py` scans this file). No `|` in a sentence.
 - **One entry per item**: a unit, a course milestone or a visible site change. Housekeeping, corrections and re-checks are folded into the item they served, never listed on their own. A proposed item enters Next only when it is confirmed; a withdrawn one leaves it.
 - The chat that closes a backlog row moves its entry from Next to Done (or adds it to Done), renumbers Next, and adds an entry to Next for each item it confirms into the queue.
@@ -64,11 +64,30 @@ Rules for an entry (`docs/method.md` §8):
 | 48 | AIE12 | Supply Chain | Write AIE12, Money and the pilot, for AI in Supply Chain Execution. |
 | 49 | AIE13 | Supply Chain | Write AIE13, Capstone: one feature, argued, for AI in Supply Chain Execution. |
 | 50 | DD-AIE1 | Supply Chain | Write DD-AIE1, Deep dive: algorithmic management on the floor, for AI in Supply Chain Execution. |
+| 51 | AC1 | Sports | Write AC1, The job, the map and the evidence, for Managing an Athlete's Career. |
+| 52 | AC2 | Sports | Write AC2, Three hats: coach, sponsor, representative, for Managing an Athlete's Career. |
+| 53 | AC3 | Sports | Write AC3, The rules that bind what an athlete may sell, for Managing an Athlete's Career. |
+| 54 | AC4 | Sports | Write AC4, The minor first, for Managing an Athlete's Career. |
+| 55 | AC5 | Sports | Write AC5, Funding and the season's money, for Managing an Athlete's Career. |
+| 56 | AC6 | Sports | Write AC6, What the athlete has to sell, for Managing an Athlete's Career. |
+| 57 | AC7 | Sports | Write AC7, Building marketability without building a persona, for Managing an Athlete's Career. |
+| 58 | AC8 | Sports | Write AC8, What a sponsor buys, for Managing an Athlete's Career. |
+| 59 | AC9 | Sports | Write AC9, Being the sponsor: a small brand's athlete programme, for Managing an Athlete's Career. |
+| 60 | AC10 | Sports | Write AC10, Finding other sponsors for the athlete, for Managing an Athlete's Career. |
+| 61 | AC11 | Sports | Write AC11, Closing and keeping a sponsor, for Managing an Athlete's Career. |
+| 62 | AC12 | Sports | Write AC12, Contracts and image rights as questions, for Managing an Athlete's Career. |
+| 63 | AC13 | Sports | Write AC13, Agents: the profession, the handover, and where your help stops, for Managing an Athlete's Career. |
+| 64 | AC14 | Sports | Write AC14, The career alongside and after sport, for Managing an Athlete's Career. |
+| 65 | AC15 | Sports | Write AC15, Capstone: the one-year career plan, for Managing an Athlete's Career. |
+| 66 | DD-AC2 | Sports | Write DD-AC2, Deep dive: hard numbers, what the money is, for Managing an Athlete's Career. |
+| 67 | DD-AC1 | Sports | Write DD-AC1, Deep dive: comparables, documented careers below the agency level, for Managing an Athlete's Career. |
+| 68 | DD-AC3 | Sports | Write DD-AC3, Deep dive: Portugal, end to end, for Managing an Athlete's Career. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-23 | S-AC0 | Sports | Managing an Athlete's Career, a new course, added: designed; 18 units to write; Running a Squad is still to come in the Sports track. |
 | 2026-11-23 | S-AIE0 | Supply Chain | AI in Supply Chain Execution, a new course, added: designed; 14 units to write. |
 | 2026-11-22 | S-SCP0 | Supply Chain | Supply Chain Planning for Product Teams, a new course, added: designed; 18 units to write. |
 | 2026-11-22 | S-NAV2 | Academy | Academy now has its own layouts for desktop and tablet screens, with a sidebar, a top bar, wider homes and an outline beside each unit, the phone is unchanged, and the area names in the home's heading no longer overlap. |

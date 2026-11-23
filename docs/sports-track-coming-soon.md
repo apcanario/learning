@@ -1,6 +1,6 @@
 # Sports track: coming soon
 
-Decided in a design chat on 19 Nov 2026; the track was renamed the same day (row S-SPORTS). Neither course below is a backlog row yet. This file is the record a later syllabus chat starts from; it holds no brief and no unit.
+Decided in a design chat on 19 Nov 2026; the track was renamed the same day (row S-SPORTS). Running a Squad is not a backlog row yet; Managing an Athlete's Career was designed on 21 Nov 2026 and set up by row S-AC0 on 23 Nov 2026. This file is the record a later syllabus chat starts from; it holds no brief and no unit.
 
 ## The track
 
@@ -13,9 +13,9 @@ Decided in a design chat on 19 Nov 2026; the track was renamed the same day (row
 |---|---|---|
 | 1 | SP · Sport Psychology for Coaches | 11 of 13 units filed on 19 Nov 2026; DD-SP2 and DD-SP3 to write |
 | 2 | Running a Squad | coming soon; no syllabus |
-| 3 | Managing an Athlete's Career | coming soon; no syllabus |
+| 3 | Managing an Athlete's Career | syllabus written 21 Nov 2026 |
 
-Neither syllabus is written before Sport Psychology is complete, so that what its fresh checks and syllabus flags show about the grading rule and the any-sport rule goes into the next preamble.
+Running a Squad's syllabus is not written before Sport Psychology is complete, so that what its fresh checks and syllabus flags show about the grading rule and the any-sport rule goes into its preamble. Managing an Athlete's Career's syllabus was written on 21 Nov 2026 (`docs/athlete-career-syllabus.md`).
 
 ### 2 · Running a Squad
 
@@ -32,7 +32,8 @@ Neither syllabus is written before Sport Psychology is complete, so that what it
 
 ### 3 · Managing an Athlete's Career
 
-- **Reader:** the athlete below the level at which an agent takes interest, and the parent or coach acting as their informal manager.
+- **Now:** syllabus written 21 Nov 2026, set up 23 Nov 2026 (row S-AC0), 0 of 18 units written. Where the scope below differs from `docs/athlete-career-syllabus.md`, the syllabus wins; the lines below are the record of 19 Nov.
+- **Reader:** a coach of an athlete in an Olympic or federation sport, below the agency level, who also sponsors the athlete through a business of their own, helps them unpaid as representative, or both. In the preamble. A public course: the single-reader rule does not apply.
 - **Scope:** what an agent does; sponsorship (what a sponsor buys, how to find one and pitch it); making an athlete marketable; contracts and image rights as questions to ask; prize money and funding; the career after sport.
 - **Where the evidence pushes back:**
   - It is industry practice, sponsor-side data and platform documentation, not science. It is sourced like the personal-brand course, with anecdote and vendor data labelled.
@@ -50,4 +51,4 @@ Neither syllabus is written before Sport Psychology is complete, so that what it
 
 ## What a later chat does with this file
 
-1. A design chat writes the syllabus of Running a Squad with the `new-course` skill, then of Managing an Athlete's Career.
+1. A design chat writes the syllabus of Running a Squad with the `new-course` skill. Managing an Athlete's Career was designed first, on 21 Nov 2026 (its syllabus, P-AC7).

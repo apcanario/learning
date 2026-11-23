@@ -134,6 +134,31 @@ The public course **AIE · AI in Supply Chain Execution**, created 23 Nov 2026 (
 | 13 | AIE13 | AIE | Capstone: one feature, argued | not written | Opus 5.5 | off | `courses/ai-in-supply-chain-execution/AIE13-capstone-one-feature-argued.md` |
 | 14 | DD-AIE1 | AIE | Deep dive: algorithmic management on the floor | not written | Opus 5.5 | on | `courses/ai-in-supply-chain-execution/DD-AIE1-deep-dive-algorithmic-management-on-the-floor.md` |
 
+## Managing an Athlete's Career (public)
+
+The public course **AC · Managing an Athlete's Career**, created 23 Nov 2026 (row S-AC0; syllabus designed 21 Nov 2026 on Fable 5.2, `docs/athlete-career-syllabus.md`): written for a coach of an athlete in an Olympic or federation sport, below the agency level, who also sponsors the athlete through a business of their own, helps them unpaid as representative, or both, an exception to the single-reader rule; the reader is the persona in each brief's preamble. Adapted from nothing: no source units; a seed bibliography of 38 references, checked for existence only (of the 38 entries, checked in full 19; checked in part 17 (not counted as checked); not opened 2; `vault/athlete-career/notes/bibliography.md`). The running case is Sport Psychology for Coaches' three athletes, Sara, Dani and Milan, with their coaches and a commercial layer: fictional sponsors, clubs and agents, and two coaches' small labels (`vault/athlete-career/notes/case-facts.md`, which agrees with that course's register). Fifteen core units in five parts, and three deep dives, in the Sports track, the second of its courses. 0 of 18 written. A unit is written when its file is in `courses/athlete-career/`. Briefs: the course's Briefs page in Academy (`vault/athlete-career/briefs.md`, with the Aim lines in `vault/athlete-career/course.toml`). Build order: the Build order page, in writing order (AC1 to AC15, then DD-AC2, DD-AC1 and DD-AC3), with no gate; search on for every unit but AC6, AC7, AC10 and AC15. Sourcing: `docs/sourcing-standard.md` Parts 1 and 11. Syllabus flags: `vault/athlete-career/notes/syllabus-flags.md`. Decisions: the syllabus's §8 and `docs/public-courses.md`. Prompts: `docs/athlete-career-prompts.md`, printed by `kit/next_prompt.py`, in five bundles of up to four units. Fresh checks: `audits/athlete-career/`.
+
+| # | Unit | Course | Title | Status | Model | Search | Path |
+|---|---|---|---|---|---|---|---|
+| 1 | AC1 | AC | The job, the map and the evidence | not written | Opus 5.5 | on | `courses/athlete-career/AC1-the-job-the-map-and-the-evidence.md` |
+| 2 | AC2 | AC | Three hats: coach, sponsor, representative | not written | Opus 5.5 | on | `courses/athlete-career/AC2-three-hats-coach-sponsor-representative.md` |
+| 3 | AC3 | AC | The rules that bind what an athlete may sell | not written | Opus 5.5 | on | `courses/athlete-career/AC3-the-rules-that-bind-what-an-athlete-may-sell.md` |
+| 4 | AC4 | AC | The minor first | not written | Opus 5.5 | on | `courses/athlete-career/AC4-the-minor-first.md` |
+| 5 | AC5 | AC | Funding and the season's money | not written | Opus 5.5 | on | `courses/athlete-career/AC5-funding-and-the-seasons-money.md` |
+| 6 | AC6 | AC | What the athlete has to sell | not written | Opus 5.5 | off | `courses/athlete-career/AC6-what-the-athlete-has-to-sell.md` |
+| 7 | AC7 | AC | Building marketability without building a persona | not written | Opus 5.5 | off | `courses/athlete-career/AC7-building-marketability-without-building-a-persona.md` |
+| 8 | AC8 | AC | What a sponsor buys | not written | Opus 5.5 | on | `courses/athlete-career/AC8-what-a-sponsor-buys.md` |
+| 9 | AC9 | AC | Being the sponsor: a small brand's athlete programme | not written | Opus 5.5 | on | `courses/athlete-career/AC9-being-the-sponsor-a-small-brands-athlete-programme.md` |
+| 10 | AC10 | AC | Finding other sponsors for the athlete | not written | Opus 5.5 | off | `courses/athlete-career/AC10-finding-other-sponsors-for-the-athlete.md` |
+| 11 | AC11 | AC | Closing and keeping a sponsor | not written | Opus 5.5 | on | `courses/athlete-career/AC11-closing-and-keeping-a-sponsor.md` |
+| 12 | AC12 | AC | Contracts and image rights as questions | not written | Opus 5.5 | on | `courses/athlete-career/AC12-contracts-and-image-rights-as-questions.md` |
+| 13 | AC13 | AC | Agents: the profession, the handover, and where your help stops | not written | Opus 5.5 | on | `courses/athlete-career/AC13-agents-the-profession-the-handover-and-where-your-help-stops.md` |
+| 14 | AC14 | AC | The career alongside and after sport | not written | Opus 5.5 | on | `courses/athlete-career/AC14-the-career-alongside-and-after-sport.md` |
+| 15 | AC15 | AC | Capstone: the one-year career plan | not written | Opus 5.5 | off | `courses/athlete-career/AC15-capstone-the-one-year-career-plan.md` |
+| 16 | DD-AC2 | AC | Deep dive: hard numbers, what the money is | not written | Opus 5.5 | on | `courses/athlete-career/DD-AC2-deep-dive-hard-numbers-what-the-money-is.md` |
+| 17 | DD-AC1 | AC | Deep dive: comparables, documented careers below the agency level | not written | Opus 5.5 | on | `courses/athlete-career/DD-AC1-deep-dive-comparables-documented-careers-below-the-agency-level.md` |
+| 18 | DD-AC3 | AC | Deep dive: Portugal, end to end | not written | Opus 5.5 | on | `courses/athlete-career/DD-AC3-deep-dive-portugal-end-to-end.md` |
+
 ## Courses to come (Personal Mythology)
 
 Listed in `catalog.toml` (the History track's `planned`; the top-level `next` until P-DEC12) as coming soon, with a scope and reading spine each: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese. A new course is added with the `new-course` skill.

@@ -1,6 +1,6 @@
 # Sourcing standard
 
-One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 10 are each course family's own rules, taken from its brief preamble and its spec (Parts 8 to 10 from their courses' syllabuses, section 6); a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
+One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 11 are each course family's own rules, taken from its brief preamble and its spec (Parts 8 to 10 from their courses' syllabuses, section 6; Part 11 from its course's shared preamble); a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
 
 A **checkable claim** is any sentence that carries a number, a date, a named source, an attribution ("X argued Y", "the source says"), a mechanism or a recommendation. The auditor's sample is drawn from these (method.md §6).
 
@@ -208,5 +208,34 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] Where the search flag is on, every law, date, standard, analyst list, survey figure and product fact carries the date it was read.
 - [ ] The deliverable is built in full on the case the brief names and then given as a template whose blanks say what goes in them.
 - [ ] "In a demo or a pilot review" and "Self-check" are present, and every Self-check answer agrees with the body.
+- [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
+- [ ] Links are given as links, the DOI address for a paper.
+
+## Part 11 · Managing an Athlete's Career (from the shared preamble of `courses/athlete-career/briefs.md`)
+
+- [ ] Every claim that carries a number, a mechanism or a recommendation is sourced where it is made.
+- [ ] Each source is one of: peer-reviewed research or a systematic review; a position or consensus statement of the ISSP, the IOC or a body of the same kind, labelled as consensus; a standard textbook cited by edition and chapter; a rule-maker's own text on its own page, dated; legislation or official guidance at its issuing body's page, dated; a court's judgment or press release at the court's own page; a public authority's own statement of what a law it administers requires, for that statement, dated; a funding body's or event organiser's own published figures; a survey with its sample and year; an agency's, sponsor's, platform's, vendor's or advocacy group's own page or report, labelled interested party and dated, as evidence of what that party says, offers or requires and never of how things are; an athlete's own published statement about their own case, labelled anecdote.
+- [ ] No law firm's note or press report is the source for what a law, a rule or a judgment says; the text itself is read and cited.
+- [ ] No video, podcast, social-media post, unsigned blog, recruiting-service or lead-generation site, or press rewrite of a release is cited as a source; one may be named only as the claim under examination.
+- [ ] Every claim carries one of the five grades (research, rule, data, interested party, practice), and the grade follows AC1's key.
+- [ ] A study's finding states its sample, setting and design; a correlation is called a correlation; a finding from famous athletes, large sponsorships or consumers applied to an unknown athlete is labelled as the unit's inference.
+- [ ] No rule or law is stated as the reader's: each is given as its issuing body's text, with the sport and country it belongs to and the date read, followed by the question for the reader's own federation, event or authority.
+- [ ] The unit says once that it is information and not legal, tax, financial or medical advice; nothing advises on investing money.
+- [ ] No fee, rate, commission or "typical deal" is stated unless a named source published it, with whose figure it is, the sample, the year and the currency; where none exists the unit says so.
+- [ ] Where the brief asks for it, the section "In Portugal" is present, every text in it was read at its issuing body's page and dated, it is labelled one country's worked example, and a Portuguese text is cited in Portuguese with its article number and rendered in English as the unit's translation.
+- [ ] Nothing proposes for a minor a sponsor in alcohol, gambling, supplements or weight management, a sexualised presentation, or the publication of where the child lives, studies or trains; from AC5 on, "If the athlete is under 18" is present and agrees with AC4.
+- [ ] No supplement is recommended; a supplement sponsor is treated as an anti-doping risk.
+- [ ] No real athlete, coach or family is named as an example of hardship, exploitation, bankruptcy or failure unless they said it themselves in a cited source or a court or public inquiry names them, and then only as that source states it.
+- [ ] No real agent, agency or sponsor is assessed, ranked or recommended; a real company is named only to attribute a dated public statement or rule to it.
+- [ ] Nothing teaches how to get around an eligibility or advertising rule.
+- [ ] The conflict between the reader's roles (coach, sponsor, representative) is named wherever the coach or the coach's business has a stake in the decision the unit describes.
+- [ ] Examples come from at least three kinds of sport, and no single sport supplies more than a third of them.
+- [ ] Every fact about Sara, Dani, Milan, their coaches and families, and the fictional sponsors, clubs and agents is labelled "(fictional)" on first use, agrees with `case-facts.md`, and is never used as evidence.
+- [ ] Nothing about the Project's owner, his sport, his club or his athletes appears (`python3 kit/private_terms.py` prints OK).
+- [ ] Every reference in Sources is in the unit's source log with the address opened, what was read (abstract, summary or full text) and the date; a claim that rests on an abstract alone says so.
+- [ ] Every Sources entry matches its publisher's, Crossref's or its issuing body's record: authors, title, journal or publisher, year, volume, pages, DOI; for a law, its number, date and official-journal reference.
+- [ ] Where the search flag is on, every rule, law, programme, amount, schedule and ruling carries the date it was read on the issuing body's own page.
+- [ ] The deliverable is built in full on the case the brief names and then given as a template whose blanks say what goes in them.
+- [ ] "Check before you act" and "Self-check" are present, and every Self-check answer agrees with the body.
 - [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
 - [ ] Links are given as links, the DOI address for a paper.

@@ -1,0 +1,242 @@
+# athlete-career: one Academy course, read by kit/courses.py (S-DEC1, 20 Nov 2026). The keys are the course dict build.py reads;
+# kit/courses.py turns `parts`, `eras` and `ticks` rows and `tracks` values into tuples. Text fields may use the
+# placeholders {content_mods} {total_mods} {nrep} {kwords} (kit/courses.py docstring).
+#
+# The seventh public course (designed 21 Nov 2026 on Fable 5.2, filed 23 Nov 2026 by row S-AC0; docs/athlete-career-syllabus.md):
+# written for a coach who also sponsors an athlete they coach through a business of their own, helps them unpaid as representative,
+# or both, adapted from nothing, the second course of the Sports track. Like sport-psychology and supply-chain-execution: no source
+# units, a seed bibliography, its own prompts document. Its case is Sport Psychology for Coaches' three athletes with a commercial
+# layer (proposal P-AC1; that course's register wins on any conflict). `dated_lists` is not set: the course names no software vendor.
+# Registry keys copied from courses/supply-chain-execution/course.toml and changed for this course; the [pack] table is the design's
+# docs/athlete-career-units.toml and syllabus sections 1 to 5, with the keys the schema needs filled in the Execution course's form.
+# The design gives no Takes or Gives line (kit/pack.py needs both beside an Aim): Takes names the units before it in writing order
+# (the preamble: each unit assumes the ones before it), Gives repeats the design's Ships line. `reliefs` is not set: the outlines
+# wait for row G-R-AC (override 2 of row S-AC0).
+
+id = "athlete-career"
+family = "markdown"
+short = "Managing an Athlete's Career (public)"
+label = "ATHLETE'S CAREER"
+name = "Managing an Athlete's Career"
+color = "var(--gold)"
+home_id = "athlete-career"
+status = "in progress"
+tracks.AC = ["sports", "Athlete's career · public"]
+tiles.AC = "Funding, sponsors, contracts and the career after sport, for the coach who also sponsors or represents the athlete."
+# the course data: the [pack] table below, read by kit/pack.py (S-DEC2)
+data = "courses/athlete-career/course.toml"
+vault = "courses/athlete-career"
+sourcing_part = "Part 11"
+source_units = false
+# kit/next_prompt.py prints this course's rows from the template there
+prompts_doc = "docs/athlete-career-prompts.md"
+eyebrow = "ATHLETE'S CAREER"
+
+# ---- the pack (S-DEC2, 20 Nov 2026): the course data, read by kit/pack.py (its docstring is the schema) -------
+# Everything below sits under [pack]; kit/courses.py strips it from the registry dict. Also in the pack: briefs.md
+# (the preamble and every brief, word for word), pages/*.md (the long HTML blocks), notes/ (case and syllabus-flags
+# files). Derived, not typed here: STATUS (from each unit's `written`; [pack.status] only where the typed string
+# differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top changelog row).
+# The design gave each unit a `part` key; kit/pack.py has no part field, so the parts are in pages/order-notes.md.
+[pack]
+course_note = "Every unit is sourced to peer-reviewed research, rule-makers' own texts, legislation and official guidance at the issuing body's page, court judgments, funders' and organisers' own figures and surveys, grades every claim (research, rule, data, interested party, practice), states no rule as the reader's, gives no legal, tax or financial advice, assesses no real agent, agency or sponsor, and ends with a deliverable built in full on the fictional case and then as a template."
+order_lede = 'One row per unit in writing order, which is the reading order but for the deep dives (DD-AC2 is written before DD-AC1). Opus 5.5 writes; a fresh Opus 5.5 context checks each unit before filing. "Search" means the unit is written with web search on because its facts are current.'
+order_foot = 'The count starts at {start}.'
+# not read by any kit/ script (the v5.1 standalone hub's identity and tiles); kept as the record. TEMPLATE_BLOCKS was [].
+title = "Managing an Athlete's Career"
+bar = "ATHLETE'S CAREER"
+brand_html = "MANAGING <span>/</span> AN ATHLETE'S CAREER"
+out = 'athlete-career.html'
+theme_key = 'athlete-career-theme'
+learn_c = 'var(--gold)'
+build_c = 'var(--orange)'
+home_lede = "For the coach of an athlete in an Olympic or federation sport who also sponsors the athlete through a business of their own, helps them unpaid as representative to other sponsors and funders, or both: the rules that bind what the athlete may sell, funding and the season's money, sponsorship from both seats, contracts and agents as questions, and the career alongside and after sport, with the conflict between the roles declared and managed in writing. Every claim sourced and graded."
+home_h1 = "Managing an Athlete's Career"
+learn_note = 'Order of writing: the fifteen core units in reading order, AC1 to AC15, then DD-AC2, DD-AC1 and DD-AC3; every unit with search on but AC6, AC7, AC10 and AC15.'
+template_lede = 'What a course needs before the first unit is written: see the new-course skill and design/README.md.'
+template_note = ''
+learn_tile = ['The course', 'Goal, outcomes, units, and the written material to read.']
+build_tile = ['How the course gets made', 'Procedure, model rules, every brief, bibliography, changelog.']
+# writing order: (code, model, search)
+order = [
+  ['AC1', 'Opus 5.5', 'on'],
+  ['AC2', 'Opus 5.5', 'on'],
+  ['AC3', 'Opus 5.5', 'on'],
+  ['AC4', 'Opus 5.5', 'on'],
+  ['AC5', 'Opus 5.5', 'on'],
+  ['AC6', 'Opus 5.5', 'off'],
+  ['AC7', 'Opus 5.5', 'off'],
+  ['AC8', 'Opus 5.5', 'on'],
+  ['AC9', 'Opus 5.5', 'on'],
+  ['AC10', 'Opus 5.5', 'off'],
+  ['AC11', 'Opus 5.5', 'on'],
+  ['AC12', 'Opus 5.5', 'on'],
+  ['AC13', 'Opus 5.5', 'on'],
+  ['AC14', 'Opus 5.5', 'on'],
+  ['AC15', 'Opus 5.5', 'off'],
+  ['DD-AC2', 'Opus 5.5', 'on'],
+  ['DD-AC1', 'Opus 5.5', 'on'],
+  ['DD-AC3', 'Opus 5.5', 'on'],
+]
+
+# STATUS where the typed string is not "written <d Mon>" of the unit's front matter `written`
+[pack.status]
+
+[[pack.courses]]
+key = 'AC'
+name = "Managing an Athlete's Career"
+color = 'var(--gold)'
+slug = 'ac'
+goal = 'By the end of the course you can help an athlete you coach on the business side without harming the athlete or the coaching: as their sponsor through a business of your own, as their unpaid representative to other sponsors and funders, or both, with the conflicts between those roles written down and managed. You know which rules bind what the athlete may sell, you have found the funding the athlete is entitled to and built a season budget, you can say what the athlete offers a sponsor and prove it, run your own sponsorship of athletes fairly, find other sponsors, agree terms and keep them, read a contract well enough to know what to ask and when to pay a lawyer, tell when a professional should take over, and plan the career alongside and after sport, with a one-year plan written for your own athlete.'
+tile = "For the coach of an athlete in an Olympic or federation sport who also sponsors the athlete through a business of their own, helps them unpaid as representative to other sponsors and funders, or both: the rules that bind what the athlete may sell, funding and the season's money, sponsorship from both seats, contracts and agents as questions, and the career alongside and after sport, with the conflict between the roles declared and managed in writing. Every claim sourced and graded."
+intro = "Helping an athlete you coach on the business side: as their sponsor through a business of your own, as their unpaid representative to other sponsors and funders, or both, with the conflict between those roles declared and managed in writing from AC2 on. Rules are taught as questions, with Portugal worked as one country's example; commercial work around a minor is a safeguarding question first; no real agent, agency or sponsor is assessed, and the worked examples use Sport Psychology for Coaches' fictional athletes, Sara (400 m), Dani (judo) and Milan (football, the contrast), with a commercial layer. Fifteen core units in five parts, and three deep dives."
+outcomes = '<li><strong>Outcome 1 · Stand on safe ground.</strong> A function map, a roles declaration, mandate and conflict register, a rules register, and a safeguard protocol where the athlete is a minor (AC1 to AC4).</li><li><strong>Outcome 2 · Fund the season and sell honestly.</strong> A season budget and funding log, an asset inventory, a marketability plan and athlete profile, a sponsor table, a sponsorship policy and agreement for your own business, a prospect list with a written proposal and pipeline, a servicing calendar and sponsor report, checked against documented cases and published numbers (AC5 to AC11, DD-AC1, DD-AC2).</li><li><strong>Outcome 3 · Sign, hand over and plan.</strong> A contract question sheet, a representation decision, a dual-career and exit plan, the one-year career plan, and the Portugal register (AC12 to AC15, DD-AC3).</li>'
+[[pack.courses.units]]
+code = 'AC1'
+title = 'The job, the map and the evidence'
+scope = 'What managing a career consists of when no agency does it, who does each part, and how this course grades what it tells you.'
+deliverable = 'Function map for Sara and Dani; the five-grade key; glossary; template'
+aim = 'name every function of career management, say who performs it for your athlete today, and grade a claim about athlete careers'
+takes = "nothing; it is the course's first unit"
+gives = 'Function map for Sara and Dani; the five-grade key; glossary; template'
+[[pack.courses.units]]
+code = 'AC2'
+title = 'Three hats: coach, sponsor, representative'
+scope = "Where the interests of a coach, of the coach's business and of the athlete part, why working unpaid does not settle it, and the written arrangement that manages it."
+deliverable = "Roles declaration and written mandate for Sara's coach and for Dani's coach with Dani's parents; conflict register; templates"
+aim = 'declare every role you hold for the athlete, what you gain from each, and how the athlete can refuse or leave one without losing the others'
+takes = 'AC1'
+gives = "Roles declaration and written mandate for Sara's coach and for Dani's coach with Dani's parents; conflict register; templates"
+[[pack.courses.units]]
+code = 'AC3'
+title = 'The rules that bind what an athlete may sell'
+scope = 'The rule-makers stacked over one athlete and the clauses that limit kit marks, personal sponsors, Games-time advertising and eligibility.'
+deliverable = 'Rules register for Sara and Dani; template with the steps to fill it'
+aim = 'find your own rulebooks, read the clauses that limit commercial work, and get answers in writing'
+takes = 'AC1, AC2'
+gives = 'Rules register for Sara and Dani; template with the steps to fill it'
+[[pack.courses.units]]
+code = 'AC4'
+title = 'The minor first'
+scope = 'Commercial work around a child as a safeguarding question: consent, earnings, image, pressure, refusals, and doing nothing yet.'
+deliverable = 'Commercial safeguard protocol for Dani; coach–parent–child agreement; refusal list; templates'
+aim = 'decide what is and is not done commercially around a child, who decides it, and where the money goes'
+takes = 'AC1 to AC3'
+gives = 'Commercial safeguard protocol for Dani; coach–parent–child agreement; refusal list; templates'
+[[pack.courses.units]]
+code = 'AC5'
+title = "Funding and the season's money"
+scope = 'Every source of money before a sponsor, what a season costs, the shortfall, and the tax and insurance questions to ask.'
+deliverable = 'Season budget and income map for Sara and Dani; funding log; templates'
+aim = 'build the season budget, find the funding the athlete is entitled to, and know the shortfall you are asking sponsors to cover'
+takes = 'AC1 to AC4'
+gives = 'Season budget and income map for Sara and Dani; funding log; templates'
+[[pack.courses.units]]
+code = 'AC6'
+title = 'What the athlete has to sell'
+scope = 'What research says makes an athlete valuable to a brand, and the assets of an unknown athlete as a sponsor can verify them.'
+deliverable = 'Asset inventory for Sara; a shorter one for Dani; template'
+aim = 'list what your athlete can offer, with the evidence for each item and the limits on it'
+takes = 'AC1 to AC5'
+gives = 'Asset inventory for Sara; a shorter one for Dani; template'
+[[pack.courses.units]]
+code = 'AC7'
+title = 'Building marketability without building a persona'
+scope = 'What can be built in a year: results record, story, local standing, channels, and the time it takes from training.'
+deliverable = 'Twelve-month marketability plan and one-page athlete profile for Sara; templates'
+aim = 'plan a year of public work that produces evidence a sponsor accepts, inside limits the athlete and you set'
+takes = 'AC1 to AC6'
+gives = 'Twelve-month marketability plan and one-page athlete profile for Sara; templates'
+[[pack.courses.units]]
+code = 'AC8'
+title = 'What a sponsor buys'
+scope = "Sponsorship from the sponsor's seat: what businesses seek, the kinds of sponsor and deal at this level, donation against sponsorship."
+deliverable = 'Sponsor table and deal-type sheet on the fictional sponsors; templates'
+aim = 'say what each kind of sponsor wants, who decides, and how it will judge the deal'
+takes = 'AC1 to AC7'
+gives = 'Sponsor table and deal-type sheet on the fictional sponsors; templates'
+[[pack.courses.units]]
+code = 'AC9'
+title = "Being the sponsor: a small brand's athlete programme"
+scope = 'Sponsoring athletes from a small business of your own, including ones you coach: criteria, what to give and ask, the agreement, and keeping it apart from the coaching.'
+deliverable = "Sponsorship policy for the label Sara's coach part-owns; plain-words agreements with Sara and with Dani's parents; yearly review sheet; templates"
+aim = 'run your own sponsorship of athletes by written criteria, on terms the athlete can refuse or leave, with someone else deciding where you coach the athlete'
+takes = 'AC1 to AC8'
+gives = "Sponsorship policy for the label Sara's coach part-owns; plain-words agreements with Sara and with Dani's parents; yearly review sheet; templates"
+[[pack.courses.units]]
+code = 'AC10'
+title = 'Finding other sponsors for the athlete'
+scope = 'Prospecting, speaking for the athlete, the proposal, price, the meeting, negotiating for someone you coach, the pipeline.'
+deliverable = 'Prospect list, full proposal, approach message and pipeline tracker for Sara; templates'
+aim = "build a prospect list, write the proposal, price it and run the approach as the athlete's representative"
+takes = 'AC1 to AC9'
+gives = 'Prospect list, full proposal, approach message and pipeline tracker for Sara; templates'
+[[pack.courses.units]]
+code = 'AC11'
+title = 'Closing and keeping a sponsor'
+scope = 'From yes to paper, servicing, disclosure, reporting, bad seasons, exclusivity, renewal and ending.'
+deliverable = 'Servicing calendar, end-of-season sponsor report and renewal note for Sara; templates'
+aim = 'deliver what was promised, report it, and renew or end the deal properly'
+takes = 'AC1 to AC10'
+gives = 'Servicing calendar, end-of-season sponsor report and renewal note for Sara; templates'
+[[pack.courses.units]]
+code = 'AC12'
+title = 'Contracts and image rights as questions'
+scope = 'A sponsorship agreement read clause by clause, image rights across legal systems, and when a lawyer is worth the fee.'
+deliverable = 'Contract question sheet; an annotated fictional agreement; term sheet; templates'
+aim = 'read a sponsorship contract well enough to know what to ask, what should stop you, and when to pay a lawyer'
+takes = 'AC1 to AC11'
+gives = 'Contract question sheet; an annotated fictional agreement; term sheet; templates'
+[[pack.courses.units]]
+code = 'AC13'
+title = 'Agents: the profession, the handover, and where your help stops'
+scope = 'What agents do and who regulates them, the representation agreement, when to hand over, and where unpaid help ends and regulated representation begins.'
+deliverable = "Representation decision sheet for Sara and Milan; agent due-diligence checklist; 'may I act' question list; templates"
+aim = 'tell when a professional should take over, check one who approaches, and know where your unpaid help must stop'
+takes = 'AC1 to AC12'
+gives = "Representation decision sheet for Sara and Milan; agent due-diligence checklist; 'may I act' question list; templates"
+[[pack.courses.units]]
+code = 'AC14'
+title = 'The career alongside and after sport'
+scope = "Transitions, dual career, athletic identity and retirement in the research, and the representative's part in each."
+deliverable = 'Dual-career plan and exit plan for Sara and for Milan; templates'
+aim = 'keep study and work options open and plan an exit that is funded, with your own interest in the athlete continuing declared'
+takes = 'AC1 to AC13'
+gives = 'Dual-career plan and exit plan for Sara and for Milan; templates'
+[[pack.courses.units]]
+code = 'AC15'
+title = 'Capstone: the one-year career plan'
+scope = "Every earlier deliverable assembled into one plan and one calendar, with what is the athlete's alone to decide."
+deliverable = 'Two worked plans (Sara, Dani); plan template; review checklist'
+aim = "write the one-year plan for your own athlete from the course's deliverables"
+takes = 'AC1 to AC14'
+gives = 'Two worked plans (Sara, Dani); plan template; review checklist'
+[[pack.courses.units]]
+code = 'DD-AC1'
+title = 'Deep dive: comparables, documented careers below the agency level'
+scope = 'Six to eight documented athletes across sports and countries: how each career was funded and who represented it.'
+deliverable = "Comparables table; 'What these cases cannot tell you'"
+aim = "read a real career's funding from its documents and say what does and does not transfer"
+takes = 'AC1 to AC15, DD-AC2'
+gives = "Comparables table; 'What these cases cannot tell you'"
+[[pack.courses.units]]
+code = 'DD-AC2'
+title = 'Deep dive: hard numbers, what the money is'
+scope = 'Prize schedules, grant amounts, income surveys, commission rules, each with whose figure, sample, year and currency.'
+deliverable = 'Numbers sheet; a sourced income scenario for Sara; the numbers to get from your own federation'
+aim = 'know which numbers exist in public, what they are, and which you must ask for'
+takes = 'AC1 to AC15'
+gives = 'Numbers sheet; a sourced income scenario for Sara; the numbers to get from your own federation'
+[[pack.courses.units]]
+code = 'DD-AC3'
+title = 'Deep dive: Portugal, end to end'
+scope = 'Every Portugal section re-read at source: representation law, high-performance regime, minors in advertising, patronage, image, tax.'
+deliverable = 'Portugal register; year calendar of published deadlines; who to ask for each open question'
+aim = "work the whole course's questions on Portuguese sources and know who answers each one"
+takes = 'AC1 to AC15, DD-AC2, DD-AC1'
+gives = 'Portugal register; year calendar of published deadlines; who to ask for each open question'
+
+# newest first
+[[pack.changelog]]
+date = '2026-11-23 09:10'
+text = "v1. Course created (new-course skill; row S-AC0) from the design of 21 Nov 2026 (Fable 5.2; proposals P-AC1 to P-AC12 accepted by the Project's owner that day): frame, goal and three outcomes, 18 units (15 core in five parts, 3 deep dives) with one brief each and their Aim lines, the shared preamble with the reader persona, the case register (Sport Psychology for Coaches' three athletes with a commercial layer, fictional sponsors, clubs and agents), a seed bibliography of 38 references (checked again on 23 Nov 2026: of the 38 entries, checked in full 19; checked in part 17 (not counted as checked); not opened 2), the syllabus-flags file, sourcing standard Part 11. No unit written."

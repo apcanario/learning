@@ -1,6 +1,6 @@
 # Case register · Managing an Athlete's Career
 
-The athletes, their coaches and families are those of Sport Psychology for Coaches. **Their facts are in `courses/sport-psychology/notes/case-facts.md`, and that file wins on any conflict.** This file adds a commercial layer only. It was reconciled with that register on 21 Nov 2026 (repo commit 3188250, read only).
+The athletes, their coaches and families are those of Sport Psychology for Coaches. **Their facts are in `courses/sport-psychology/notes/case-facts.md`, and that file wins on any conflict.** This file adds a commercial layer only. It was reconciled with that register on 21 Nov 2026 (repo commit 3188250, read only), and compared again with the register as it stood on 23 Nov 2026 by row S-AC0: no fact disagreed, and none was changed.
 
 Everything here is invented. First names only for people, as in that register; coaches and parents have no names ("Sara's coach", "Dani's parents"). Every amount is in euros and invented. No case company stands for a real one, and none is ever said to deal with a real company.
 
@@ -58,7 +58,7 @@ These states matter here: nothing commercial is added to Sara's or Dani's load w
 | Brannoch Mutual | A regional insurer with a community-sponsorship programme and a marketing manager | AC8, AC10, AC11, AC12 |
 | Hadleigh Marsh Sports Management | An agency | AC13 |
 
-Each name is searched once by row S-AC0. One that matches a real business in sport, sponsorship or its trade is replaced, here first.
+Each name was searched once by row S-AC0 on 23 Nov 2026, as an exact phrase. None matched a real business in sport, sponsorship or its trade, so none was replaced.
 
 ## Facts later units add
 

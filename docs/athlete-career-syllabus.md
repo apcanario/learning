@@ -1,6 +1,6 @@
 # Managing an Athlete's Career · syllabus
 
-Drafted 21 Nov 2026 in the design chat (Fable 5.2), from the Sports track plan of 19 Nov 2026 and Pedro's answers and corrections of 21 Nov 2026. Nothing here is in the repo yet: row S-AC0 files it. The repo was opened read-only at commit 3188250 to reconcile the case register and the prompts document's form; nothing in it was changed.
+Drafted 21 Nov 2026 in the design chat (Fable 5.2), from the Sports track plan of 19 Nov 2026 and the owner's answers and corrections of 21 Nov 2026. Row S-AC0 filed this document on 23 Nov 2026 (section 9, "Done by row S-AC0"), with Part 11 wherever the design said Part 9 and the owner's first name written "the owner". The repo was opened read-only at commit 3188250 to reconcile the case register and the prompts document's form; nothing in it was changed.
 
 ## 1 · Frame
 
@@ -12,7 +12,7 @@ Drafted 21 Nov 2026 in the design chat (Fable 5.2), from the Sports track plan o
 
 **Override if:** you want the course to serve coaches with no business of their own first; then AC9 becomes optional reading and AC2 shrinks to coach and representative.
 
-Pedro's answers and corrections, 21 Nov 2026:
+The owner's answers and corrections, 21 Nov 2026:
 
 | Question | Answer |
 |---|---|
@@ -58,7 +58,7 @@ Every law, rule, ruling and paper named in this list was seen in web search resu
 | Second readers | A parent or an athlete doing the same work; one sentence where their position differs |
 | Case | Sara, 20, 400 m and Dani, 14, judo, with their coaches; Milan, 17, football, as the contrast. Sport Psychology's athletes, with a commercial layer added and reconciled with their register (`notes/case-facts.md`) |
 | Portugal layer | "In Portugal" in AC2 to AC5, AC8, AC9, AC11 to AC14; DD-AC3 assembles |
-| Sourcing | `sourcing-standard.md` Part 1 and a new Part 9 |
+| Sourcing | `sourcing-standard.md` Part 1 and a new Part 11 (the design said Part 9; Parts 9 and 10 were taken by Supply Chain Planning and AI in Supply Chain Execution) |
 | Adapted from | Nothing. No source units |
 | Builds on, by pointer | Sport Psychology for Coaches (the coach's line with minors, wellbeing); the public personal-brand course (audience-building method) |
 | Out of scope | Team-sport transfers and employment contracts beyond the contrast case; investing; coaching and psychology method; audience-building method; US college recruiting |
@@ -146,7 +146,7 @@ Managing an Athlete's Career, next bundle. Thin main chat on Sonnet 5.5; every a
 | 18 | Bundle 5 | W-DD-AC3 | DD-AC3 | Deep dive: Portugal, end to end | Opus 5.5 | on | `courses/athlete-career/DD-AC3-deep-dive-portugal-end-to-end.md` |
 
 - **One unit at a time.** Each unit is checked, filed, landed and published before the next begins, so a chat that stops strands nothing. No units are written in parallel.
-- **No gate rows.** A point where Pedro reads before more is written sits on a bundle boundary; starting the next chat is the go. After bundle 1 the grade key, the roles declaration, the rules register and the minor's protocol exist.
+- **No gate rows.** A point where the owner reads before more is written sits on a bundle boundary; starting the next chat is the go. After bundle 1 the grade key, the roles declaration, the rules register and the minor's protocol exist.
 - **Closing corrections.** The last chat works every correction and flag still open itself, and delivers a closing prompt only if something remains, saying why.
 - **One forward pointer.** AC9's brief reads its agreement with AC12's contract sheet, which is written later. AC9 builds against the clause list in AC12's brief and raises a Need; AC12 tests its sheet on AC9's agreements. Both rows' prompts say so; no brief changes.
 - **Rewrite gate:** as `method.md` §3.
@@ -182,7 +182,7 @@ AC1 states each claim as it circulates, sets it against whatever AC1 itself open
 
 ## 8 · Proposals
 
-P-AC1 to P-AC8 were accepted by Pedro on 21 Nov 2026 at 22:18. P-AC9 to P-AC12 follow from his messages of 22:17 and 22:22 and were accepted at 22:26. All twelve are built into this design; none is left to work.
+P-AC1 to P-AC8 were accepted by the owner on 21 Nov 2026 at 22:18. P-AC9 to P-AC12 follow from his messages of 22:17 and 22:22 and were accepted at 22:26. All twelve are built into this design; none is left to work.
 
 | # | Proposal | ⚠ Disruption elsewhere |
 |---|---|---|
@@ -190,16 +190,16 @@ P-AC1 to P-AC8 were accepted by Pedro on 21 Nov 2026 at 22:18. P-AC9 to P-AC12 f
 | P-AC2 | Fourteen core units, three deep dives. | Accepted at fourteen; now fifteen, see P-AC9. |
 | P-AC3 | Third deep dive is Portugal end to end. | None. |
 | P-AC4 | The reader is the coach (as corrected: sponsor, unpaid representative, or both); parents and athletes are second readers. | ⚠ The coming-soon scope line on the Sports track ("For the athlete below the level at which an agent takes interest, and the parent or coach acting as their manager…") is replaced by the course's own lede when it leaves `planned`. |
-| P-AC5 | `sourcing-standard.md` gains Part 9. | ⚠ Changes a Project mirror; no other course's part changes. |
+| P-AC5 | `sourcing-standard.md` gains Part 11 (designed as Part 9). | ⚠ Changes a Project mirror; no other course's part changes. |
 | P-AC6 | Gate after AC5: a syllabus review on Fable. | Withdrawn by the run plan of 22:43: no gate rows. |
 | P-AC7 | This course is designed before Running a Squad, which was the 19 Nov pick to go first. | ⚠ The Sports track's planned list keeps Running a Squad alone. |
-| P-AC8 | Add to `sourcing-standard.md` Part 9 what SCE flags F9 and F18 asked for in Part 8 (a treaty's or law's text at its issuing body's page; a public authority's own statement of a law it administers). Already written into Part 9 here. | None for this course. SCE's flags stay SCE's. |
+| P-AC8 | Add to `sourcing-standard.md` Part 11 (designed as Part 9) what SCE flags F9 and F18 asked for in Part 8 (a treaty's or law's text at its issuing body's page; a public authority's own statement of a law it administers). Already written into Part 11 here. | None for this course. SCE's flags stay SCE's. |
 | P-AC9 | A fifteenth core unit, AC9, Being the sponsor: a small brand's athlete programme; the later units move up one. | One more writing row than P-AC2 accepted. |
 | P-AC10 | The two fictional coaches each own a small label (running kit; training wear for combat-sport clubs). | ⚠ The second sits near the Project owner's own position. The public text says nothing of him; `private_terms.py` is the check. Veto and Dani's coach's label becomes a club shop. |
 | P-AC11 | Writer rule for the Portugal layer: two Portuguese city names fail the private-terms check; a source that cannot be cited without one is raised as a Need. | ⚠ A Portuguese source may have to be left out. |
-| P-AC12 | The run plan. Accepted as six bundled sessions; replaced at 22:43 by Pedro's plan in section 5: the setup alone, then bundles of four from one starter, no gate rows, the reliefs without a confirmation row. | ⚠ A failed fresh check stops the chat at that unit; the units before it are already published. |
+| P-AC12 | The run plan. Accepted as six bundled sessions; replaced at 22:43 by the owner's plan in section 5: the setup alone, then bundles of four from one starter, no gate rows, the reliefs without a confirmation row. | ⚠ A failed fresh check stops the chat at that unit; the units before it are already published. |
 
-No task is left for Pedro by hand by this design. His open by-hand rows from other courses are in `docs/BACKLOG.md` (the Project's copy named P-SCE1 and P-SCE6 on 21 Nov 2026).
+No task is left for the owner by hand by this design. His open by-hand rows from other courses are in `docs/BACKLOG.md` (the Project's copy named P-SCE1 and P-SCE6 on 21 Nov 2026).
 
 ## 9 · What the setup must still reconcile
 
@@ -211,3 +211,11 @@ Left for the setup:
 2. **Seed bibliography.** Each entry is checked for existence against Crossref's, the publisher's or the issuing body's record. The status column says what the design chat saw.
 3. **Private terms.** `kit/private_terms.py` on the briefs. "Portugal" and "Portuguese" are warn lines. If a failing term is in a brief, raise a flag; do not reword a brief.
 4. **Outlines.** Ten for the library (`new-course` step 5b), from: a running spike, a starting block, a judogi, a judo belt, a medal, a relay baton, a stopwatch, a competition bib, a kit bag, a fountain pen, a ledger, a passport, a graduation cap, a football boot.
+
+Done by row S-AC0 (23 Nov 2026):
+
+- Item 1: the six fictional companies of `courses/athlete-career/notes/case-facts.md` were each searched once; none matched a real business in sport, sponsorship or its trade, so no name was replaced (`out/S-AC0/registration.md`, "Case names"). The case register agrees with Sport Psychology's; no fact changed.
+- Item 2: every one of the 38 entries of `courses/athlete-career/notes/bibliography.md` was looked for again: checked in full 19; checked in part 17 (not counted as checked); not opened 2. The status column now says what was checked on 23 Nov 2026.
+- Item 3: `kit/private_terms.py` run on 23 Nov 2026 over every file of the course: OK, no failing term in any file, the briefs included; "Portugal" and "Portuguese" print as warn lines, as expected. No flag raised, no brief reworded.
+- Item 4: waived at setup (row S-AC0, override 2), as for the courses before it; the candidates are kept in row G-R-AC of `docs/BACKLOG.md`.
+- Part 11 of `docs/sourcing-standard.md` holds the part this design wrote as Part 9, every item unchanged.

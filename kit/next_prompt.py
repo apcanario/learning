@@ -43,7 +43,7 @@ sys.path.insert(0, str(R))
 from courses import COURSES, EDITIONS, DEFAULT_EDITION
 import pack
 
-QUEUE = ('personal-brand', 'building-with-ai', 'sport-psychology', 'supply-chain-execution', 'supply-chain-planning', 'ai-in-supply-chain-execution')   # the courses, in the order their rows run (S-SP0, 16 Nov 2026: rows W-SP1 to W-DD-SP3 come from the hub's ORDER; S-SCE0, 19 Nov 2026: rows W-SCE1 to W-SCE18, W-DD-SCE1, W-DD-SCE2)
+QUEUE = ('personal-brand', 'building-with-ai', 'sport-psychology', 'supply-chain-execution', 'supply-chain-planning', 'ai-in-supply-chain-execution', 'athlete-career')   # the courses, in the order their rows run (S-SP0, 16 Nov 2026: rows W-SP1 to W-DD-SP3 come from the hub's ORDER; S-SCE0, 19 Nov 2026: rows W-SCE1 to W-SCE18, W-DD-SCE1, W-DD-SCE2)
 HOLDS = {'W-PB5': 'S-PB1', 'W-SP4': 'R-SP1'}   # a writing row that waits for a review row: while the review row is in the queue of docs/BACKLOG.md, no prompt runs past it (Pedro, 12 Nov 2026, 08:30)
 GATES = {'W-SCE7': 'P-SCE6'}   # S-SCE0: a gate row (a task for Pedro, under Proposed). S-PROMPT1: a bundle stops before a GATES row; Pedro pasting the course's starter line is his go, and the prompt of the gate row, printed while its gate row is still in docs/BACKLOG.md, tells that chat to close the gate row
 CLONE = 'Clone apcanario/learning (shallow, push access).'   # S-PROMPT1 (Pedro, 21 Nov 2026): the first line of everything this script prints
