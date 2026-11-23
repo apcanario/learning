@@ -1,0 +1,9 @@
+# Syllabus flags: AI in Supply Chain Execution
+
+Raised by the chats that write this course's units. A flag is a contradiction between units or briefs, or a need the syllabus does not meet. A brief is never reworded by the chat that raises a flag: a flag that would change a brief not yet written is settled at the start of the next writing chat by a fresh agent, as an exact replacement or declined with its reason, and listed in that chat's reply for the Project's owner to veto (syllabus decision D10; `docs/ai-in-supply-chain-execution-prompts.md` section 5, point 6). `kit/next_prompt.py` passes every open flag that names a unit to that unit's writer.
+
+Status: open (not yet acted on), carried (the named unit's writer was given it and its unit deals with it), resolved (a brief review changed a brief or decided not to), dropped.
+
+| # | Date | Raised by | Affects | Flag | Proposed change | Status |
+|---|---|---|---|---|---|---|
+| F1 | 23 Nov 2026 | S-AIE0 | AIE4, AIE11 | `kit/private_terms.py` passes the owner's employer on this course's pages (`dated_lists = true`) only as an entry of a dated list: a Markdown list, or a table, that follows a lead-in line naming the analyst firm, the report or the filing, and a year. Anywhere else on the page, the employer's name fails the build. Any other company on the private-terms list fails everywhere, list or not, so a dated list that names one cannot be given whole. | Each unit that gives a dated list of vendors or model providers writes it in that form, every entry alike; if the list names a company the private-terms check fails outside the employer rule, the writer leaves the list out, says that the list could not be reproduced here, cites where to read it, and raises a flag. The fresh checker confirms, at pass 6, that every list in which the script lets the employer pass is a real analyst or filing list, copied whole. No brief changes. | open |

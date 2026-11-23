@@ -30,6 +30,7 @@ course_order = [
   "sport-psychology",
   "supply-chain-execution",
   "supply-chain-planning",
+  "ai-in-supply-chain-execution",
 ]
 edition_order = ["academy", "greece"]
 
@@ -168,13 +169,14 @@ planned = [
 # `planned` lists its four courses to come (syllabus decision D12), in the order of the design chat's list, each with its title, its scope line
 # and its teaser word for word: the teaser's opening words are `planned_label`, its rest the row's last field, so the tile shows it whole.
 # S-SCP0 (22 Nov 2026): Supply Chain Planning for Product Teams left `planned` for course_order once registered; three remain (the note says three).
+# S-AIE0 (23 Nov 2026): AI in Supply Chain Execution left `planned` for course_order once registered; two remain (the note says two).
 [[tracks]]
 id = "supply-chain"
 hero = [[0.50, 0.17], [0.50, 0.13]]   # S-SCE0 (19 Nov 2026): top centre, between Marketing and Technology
 name = "Supply Chain"
 color = "var(--gold)"
 lede = "How warehouses, transport and orders run, who works in them, how the software that runs them is bought, and what it costs, for people who build, sell or implement that software. Every claim graded by its evidence, no real vendor assessed, every unit ending in a shipped deliverable."
-planned_note = "Three courses to follow Supply Chain Execution for Product Teams, each designed in its own chat before anything is written. Open a course to see its scope and what you will know after it."
+planned_note = "Two courses to follow Supply Chain Execution for Product Teams, each designed in its own chat before anything is written. Open a course to see its scope and what you will know after it."
 planned_label = "After this you'll know how to"
 planned_heading = "Coming soon"
 planned = [
@@ -184,13 +186,6 @@ planned = [
     "var(--orange)",
     "Conveyors, sorters, goods-to-person systems and mobile robots, and the control software between the machines and the warehouse system.",
     "tell the main kinds of warehouse automation apart, say which order profile each one suits, and explain what each changes for the people on the floor. You'll be able to draw the line between the warehouse system and the control software, read an automation supplier's claim with the right questions, and say what a site gives up in flexibility when it automates.",
-  ],
-  [
-    "AI",
-    "AI in Supply Chain Execution",
-    "var(--purple)",
-    "Where prediction, optimisation and software agents are used in order, warehouse and transport work, and what the evidence says they do.",
-    "separate older optimisation from newer machine learning and from software agents, place a claimed AI feature on the operation it acts on, and judge it by who carries the risk when it is wrong. You'll be able to say what a person still decides at each level of automation, and grade a vendor's AI claim by the evidence behind it.",
   ],
   [
     "Last mile",

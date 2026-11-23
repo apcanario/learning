@@ -5,7 +5,7 @@ The one source of Academy's Backlog and Changelog pages (S-PAGES, 15 Nov 2026): 
 Rules for an entry (`docs/method.md` §8):
 - **Next**: one row per item still to do, in the overall order (#, from 1, no gaps); **Done**: one row per item done, any order (the pages sort newest first), the date as `YYYY-MM-DD` (the first day, where the work ran over several).
 - **Code**: the item's short name: a unit's code (PB1, IA3), a history course's syllabus unit (G12 for Greece unit 12, R0–3 for Rome units 0 to 3), the backlog row's code for anything else (P96, S-PAGES), and K plus the session number for a site change of the kit's early sessions (K1 to K11), which had no row code. Keep it short: the column is narrow on a phone.
-- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (course SP; named Coaching until 19 Nov 2026), Supply Chain (courses SCE and SCP), Academy (the site and its method).
+- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (course SP; named Coaching until 19 Nov 2026), Supply Chain (courses SCE, SCP and AIE), Academy (the site and its method).
 - **Sentence**: one plain sentence for an ordinary reader: what it is (Next) or what happened (Done). No model names, token counts, script or file names, row mechanics (rows, chats, prompts, corrections, mirrors), agent or audit vocabulary, and no private term (`kit/private-terms.txt`; `python3 kit/private_terms.py` scans this file). No `|` in a sentence.
 - **One entry per item**: a unit, a course milestone or a visible site change. Housekeeping, corrections and re-checks are folded into the item they served, never listed on their own. A proposed item enters Next only when it is confirmed; a withdrawn one leaves it.
 - The chat that closes a backlog row moves its entry from Next to Done (or adds it to Done), renumbers Next, and adds an entry to Next for each item it confirms into the queue.
@@ -50,6 +50,7 @@ Rules for an entry (`docs/method.md` §8):
 | 34 | SCP16 | Supply Chain | Write SCP16, Capstone: one planning product memo, for Supply Chain Planning for Product Teams. |
 | 35 | DD-SCP1 | Supply Chain | Write DD-SCP1, Deep dive: planning as companies have published it, for Supply Chain Planning for Product Teams. |
 | 36 | DD-SCP2 | Supply Chain | Write DD-SCP2, Deep dive: the hard numbers, for Supply Chain Planning for Product Teams. |
+| 37 | AIE | Supply Chain | Write AI in Supply Chain Execution, a course of fourteen units on how to judge the AI features of order, warehouse and transport software: what each decides, what a person still decides, and what the evidence shows. |
 
 ## Done
 

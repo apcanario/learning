@@ -1,0 +1,207 @@
+# ai-in-supply-chain-execution: one Academy course, read by kit/courses.py (S-DEC1, 20 Nov 2026). The keys are the course dict build.py reads;
+# kit/courses.py turns `parts`, `eras` and `ticks` rows and `tracks` values into tuples. Text fields may use the
+# placeholders {content_mods} {total_mods} {nrep} {kwords} (kit/courses.py docstring).
+#
+# The sixth public course (designed 21 Nov 2026 on Fable 5.2, filed 23 Nov 2026 by row S-AIE0; docs/ai-in-supply-chain-execution-syllabus.md):
+# written for anyone who builds, sells or implements order, warehouse or transport software and knows the ground of the track's first
+# course, adapted from nothing, the third course of the Supply Chain track. Like supply-chain-execution: no source units, a seed
+# bibliography, its own prompts document. `dated_lists = true` tells kit/private_terms.py that its pages may name the owner's employer
+# as one entry of a dated analyst list, and nowhere else (syllabus section 6; syllabus flag F1), as for the track's other two courses.
+# Registry keys copied from courses/supply-chain-execution/course.toml and changed as the design's units.toml header says; the [pack]
+# table is that file's data, with the keys the schema needs filled in the Execution course's form. `reliefs` is not set: the outlines
+# wait for row G-R-AIE (syllabus decision D12, proposal P-AIE6).
+
+id = "ai-in-supply-chain-execution"
+family = "markdown"
+short = "AI in Supply Chain Execution (public)"
+label = "AI IN SUPPLY CHAIN EXECUTION"
+name = "AI in Supply Chain Execution"
+color = "var(--purple)"
+home_id = "ai-in-supply-chain-execution"
+status = "in progress"
+tracks.AIE = ["supply-chain", "AI in execution · public"]
+tiles.AIE = "Where prediction, optimisation and software agents are used in order, warehouse and transport work, and what the evidence says they do."
+# the course data: the [pack] table below, read by kit/pack.py (S-DEC2)
+data = "courses/ai-in-supply-chain-execution/course.toml"
+vault = "courses/ai-in-supply-chain-execution"
+sourcing_part = "Part 10"
+source_units = false
+# kit/next_prompt.py prints this course's rows from the template there
+prompts_doc = "docs/ai-in-supply-chain-execution-prompts.md"
+dated_lists = true
+eyebrow = "AI IN SUPPLY CHAIN EXECUTION"
+
+# ---- the pack (S-DEC2, 20 Nov 2026): the course data, read by kit/pack.py (its docstring is the schema) -------
+# Everything below sits under [pack]; kit/courses.py strips it from the registry dict. Also in the pack: briefs.md
+# (the preamble and every brief, word for word), pages/*.md (the long HTML blocks), notes/ (case and syllabus-flags
+# files). Derived, not typed here: STATUS (from each unit's `written`; [pack.status] only where the typed string
+# differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top changelog row).
+# The design's units.toml gives the goal, the order, the search flags and the units; kit/pack.py has no part field, so the
+# parts (syllabus section 4) are in pages/order-notes.md.
+[pack]
+
+course_note = "Every unit is sourced to peer-reviewed research, standards bodies' and regulators' own pages, the text of laws at their issuing bodies' pages, analyst reports, surveys, audited filings and vendors' and model providers' own dated pages, grades every claim (independent, analyst, vendor-reported, practice), tags every claim about performance by its setting, assesses no real vendor or model provider, and ends with a deliverable built in full on the fictional case and then as a template."
+order_lede = 'One row per unit in writing order, which is the reading order. Opus 5.5 writes; a fresh Opus 5.5 context checks each unit before filing. "Search" means the unit is written with web search on because its facts are current.'
+order_foot = 'The count starts at {start}.'
+# not read by any kit/ script (the v5.1 standalone hub's identity and tiles); kept as the record. TEMPLATE_BLOCKS was [].
+title = 'AI in Supply Chain Execution'
+bar = 'AI IN SUPPLY CHAIN EXECUTION'
+brand_html = 'AI <span>/</span> IN SUPPLY CHAIN EXECUTION'
+out = 'ai-in-supply-chain-execution.html'
+theme_key = 'ai-in-supply-chain-execution-theme'
+learn_c = 'var(--purple)'
+build_c = 'var(--gold)'
+home_lede = 'For people who build, sell or implement order, warehouse or transport software and know its ground: what a claimed AI feature decides, which kind of technique does the work, what a person still decides, who carries the cost when it is wrong, and how strong the evidence is that it works. Every claim sourced, graded and tagged by its setting.'
+home_h1 = 'AI in Supply Chain Execution'
+learn_note = 'Order of writing: the thirteen core units in reading order, AIE1 to AIE13, then DD-AIE1; AIE1, AIE4, AIE10, AIE11, AIE12 and DD-AIE1 with search on.'
+template_lede = 'What a course needs before the first unit is written: see the new-course skill and design/README.md.'
+template_note = ''
+learn_tile = ['The course', 'Goal, outcomes, units, and the written material to read.']
+build_tile = ['How the course gets made', 'Procedure, model rules, every brief, bibliography, changelog.']
+# writing order: (code, model, search)
+order = [
+  ['AIE1', 'Opus 5.5', 'on'],
+  ['AIE2', 'Opus 5.5', 'off'],
+  ['AIE3', 'Opus 5.5', 'off'],
+  ['AIE4', 'Opus 5.5', 'on'],
+  ['AIE5', 'Opus 5.5', 'off'],
+  ['AIE6', 'Opus 5.5', 'off'],
+  ['AIE7', 'Opus 5.5', 'off'],
+  ['AIE8', 'Opus 5.5', 'off'],
+  ['AIE9', 'Opus 5.5', 'off'],
+  ['AIE10', 'Opus 5.5', 'on'],
+  ['AIE11', 'Opus 5.5', 'on'],
+  ['AIE12', 'Opus 5.5', 'on'],
+  ['AIE13', 'Opus 5.5', 'off'],
+  ['DD-AIE1', 'Opus 5.5', 'on'],
+]
+
+# STATUS where the typed string is not "written <d Mon>" of the unit's front matter `written`
+[pack.status]
+
+[[pack.courses]]
+key = 'AIE'
+name = 'AI in Supply Chain Execution'
+color = 'var(--purple)'
+slug = 'aie'
+goal = 'By the end, the reader can take any claimed AI feature in order, warehouse or transport software and say which decision it makes or supports, which kind of technique is doing the work, what a person still decides, who carries the cost when it is wrong, and how strong the evidence is that it works.'
+tile = 'For people who build, sell or implement order, warehouse or transport software and know its ground: what a claimed AI feature decides, which kind of technique does the work, what a person still decides, who carries the cost when it is wrong, and how strong the evidence is that it works. Every claim sourced, graded and tagged by its setting.'
+intro = "Learning to read AI features in order, warehouse and transport software: which decision each makes or supports, which of four families of technique does the work, what a person still decides, who carries the cost when it is wrong, and how strong the evidence is. The decision first, the technique second, the claim third; demand forecasting, inventory planning and robots are out of scope, no real vendor or model provider is assessed, and the worked examples use the track's three fictional operations and three fictional vendors, with fictional AI features and six fictional claims. Thirteen core units in an opening and three parts, and one deep dive."
+outcomes = "<li><strong>Outcome 1.</strong> Given a feature description, names the decision, places it in one of four families and on one of five rungs, and says what the person still decides, so that a second reader using the keys agrees (AIE1 to AIE4, AIE6 to AIE8).</li><li><strong>Outcome 2.</strong> For a decision automated at a given rung, writes the override sheet and the risk register: who carries the cost, how the error is noticed, which text governs it where (AIE9, AIE10, DD-AIE1).</li><li><strong>Outcome 3.</strong> Grades a vendor's AI claim on the claim sheet, designs a pilot that could show it false, and writes a feature brief that rests on both (AIE5, AIE11, AIE12, AIE13).</li>"
+[[pack.courses.units]]
+code = 'AIE1'
+title = 'What counts as AI here'
+scope = 'Four families of technique under one label, a ladder of automation, and the keys every later unit grades by.'
+deliverable = 'family key + five-rung ladder + grade and setting key + decision map'
+aim = 'place a feature in a family and on a rung, and grade a claim about it'
+takes = 'none'
+gives = 'the family key, the ladder, the grade and setting key and the decision map that every later unit uses'
+[[pack.courses.units]]
+code = 'AIE2'
+title = 'Optimisation and rules: the AI that was already there'
+scope = "The execution decisions that have been computed for decades, what 'optimal' means, and what people do around an optimiser."
+deliverable = 'decision inventory across the three operations'
+aim = 'say which execution decisions are already computed, by what, and what the computation leaves out'
+takes = 'AIE1'
+gives = 'the decision inventory AIE6 to AIE8 walk, and the older family AIE3 and AIE4 are set against'
+[[pack.courses.units]]
+code = 'AIE3'
+title = 'Prediction: what machine learning adds'
+scope = 'What is predicted in execution work, what a prediction is worth, and the ways a predictive claim goes wrong.'
+deliverable = 'prediction sheet, four worked'
+aim = 'state what a prediction feeds, what it is compared with and what each kind of error costs'
+takes = 'AIE1, AIE2'
+gives = 'the prediction sheet and the baseline question that AIE6 to AIE8, AIE11 and AIE12 reuse'
+[[pack.courses.units]]
+code = 'AIE4'
+title = 'Generative models and agents'
+scope = 'What a language model and an agent are, what they are sold to do in execution software, and how they fail.'
+deliverable = 'agent permission sheet, two worked'
+aim = 'say what an assistant or an agent may read, call and do alone, and how it fails'
+takes = 'AIE1, AIE2, AIE3'
+gives = 'the permission sheet AIE10 and AIE13 reuse, and the failure modes AIE10 brings together'
+[[pack.courses.units]]
+code = 'AIE5'
+title = 'The field evidence, read in full'
+scope = 'Eight field studies of people working with algorithms, read closely: setting, design, effect, and what transfers.'
+deliverable = "evidence table + 'a study you can lean on' sheet"
+aim = 'report a study by its setting, design and comparison, and say what transfers'
+takes = 'AIE1 to AIE4'
+gives = 'the evidence table AIE6 to AIE9, AIE12 and DD-AIE1 cite from'
+[[pack.courses.units]]
+code = 'AIE6'
+title = 'In the warehouse'
+scope = "The warehouse's decisions one by one: the family at work, the rung, who carries the cost, and the evidence."
+deliverable = 'six warehouse decision cards'
+aim = 'take a warehouse decision apart by family, rung, failure and cost-carrier'
+takes = 'AIE1, AIE2, AIE3, AIE5'
+gives = 'the decision card form AIE7 and AIE8 reuse, and the cards AIE9, AIE10 and DD-AIE1 build on'
+[[pack.courses.units]]
+code = 'AIE7'
+title = 'In transport'
+scope = "Transport's decisions one by one, and how the same feature differs for a shipper and for a provider."
+deliverable = 'six transport decision cards + shipper-against-provider table'
+aim = 'take a transport decision apart, for a shipper and for a provider'
+takes = 'AIE1, AIE2, AIE3, AIE5, AIE6'
+gives = "transport cards for AIE9 and AIE13; the freight-desk decisions AIE4's agent acts on"
+[[pack.courses.units]]
+code = 'AIE8'
+title = 'In order management'
+scope = 'The promise, the sourcing choice and the rest, with one promise traced through every prediction and rule under it.'
+deliverable = 'five order decision cards + one traced promise'
+aim = 'trace a delivery promise through every prediction, optimisation and rule it rests on'
+takes = 'AIE1, AIE2, AIE3, AIE5, AIE6'
+gives = 'order cards and the traced promise for AIE9 and AIE13'
+[[pack.courses.units]]
+code = 'AIE9'
+title = 'The person in the loop'
+scope = 'What research found about people who monitor, follow and override automation, and what follows for execution roles.'
+deliverable = 'override sheet, three worked + cost-carrier matrix'
+aim = 'say what a person can really review, change and be held to at a given rung'
+takes = 'AIE1, AIE5, AIE6, AIE7, AIE8'
+gives = 'the override sheet and the cost-carrier matrix for AIE10, AIE13 and DD-AIE1'
+[[pack.courses.units]]
+code = 'AIE10'
+title = 'Risk, rules and accountability'
+scope = 'Failure modes by family, the frameworks, the law by jurisdiction, and who answers when a feature errs.'
+deliverable = 'risk register for one feature + questions for counsel and vendor'
+aim = "list a feature's risks by family and name the framework, the text and the owner for each"
+takes = 'AIE2, AIE3, AIE4, AIE6, AIE9'
+gives = 'the risk register AIE13 uses, and the legal texts DD-AIE1 reads further'
+[[pack.courses.units]]
+code = 'AIE11'
+title = 'Reading an AI claim'
+scope = 'The parts and kinds of a claim, the statistics that circulate traced to their origin, and a sheet for grading any claim.'
+deliverable = 'claim sheet: six fictional claims and four circulating statistics worked'
+aim = "grade a vendor's or an analyst's AI claim on the claim sheet"
+takes = 'AIE1, AIE3, AIE4, AIE5'
+gives = 'the claim sheet for AIE12 and AIE13'
+[[pack.courses.units]]
+code = 'AIE12'
+title = 'Money and the pilot'
+scope = 'The cost lines an AI feature adds, why returns arrive late, and the pilot designed as an experiment.'
+deliverable = 'pilot plan + cost-line table'
+aim = 'design a pilot that could show a feature does not work, and list what it costs'
+takes = 'AIE3, AIE5, AIE6, AIE11'
+gives = "the pilot plan and cost lines AIE13's brief draws on"
+[[pack.courses.units]]
+code = 'AIE13'
+title = 'Capstone: one feature, argued'
+scope = "One AI feature argued from decision to pilot, on the case, from the course's own evidence."
+deliverable = 'worked feature brief + template + checklist'
+aim = 'write a brief for an AI feature that an operations lead, a data scientist and a sales lead can each check'
+takes = 'AIE1 to AIE12'
+gives = "the course's closing artefact"
+[[pack.courses.units]]
+code = 'DD-AIE1'
+title = 'Deep dive: algorithmic management on the floor'
+scope = 'Work assigned, measured and monitored by software: the evidence, the law by jurisdiction, and what the worker is shown.'
+deliverable = "transparency sheet (worker's and supervisor's view) + questions for representatives and counsel"
+aim = 'say what a labour feature collects, computes and shows, and which texts govern it where'
+takes = 'AIE5, AIE6, AIE9, AIE10'
+gives = "the course's last unit; its row also works every open correction and flag"
+
+# newest first
+[[pack.changelog]]
+date = '2026-11-23 03:30'
+text = "v1. Course created (new-course skill; row S-AIE0) from the design of 21 Nov 2026 (Fable 5.2): frame, goal and three outcomes, 14 units with one brief each and their Aim, Takes and Gives lines, the shared preamble with the reader persona, the case register (the track's three fictional operations and three fictional vendors, with fictional AI features and six fictional claims; one feature name changed after a search), a seed bibliography of 72 references (checked again on 23 Nov 2026: of the 72 entries, checked in full (Crossref record read, or entry's own record/page read): 37 Crossref + 14 page read = 51, plus 11 carried from the first course's seed list (checked there on 19 Nov 2026, not re-read here); checked in part (search listing or a page that did not give the record): 9 (not counted as checked); not opened: 1. Leads, not found: 0), the syllabus-flags file. No unit written."
