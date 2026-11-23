@@ -16,3 +16,4 @@ academy/sport-psychology-sp/built.html
 academy/supply-chain-execution-sce/built.html
 academy/supply-chain-planning-scp/built.html
 academy/ux-ia/built.html
+editions/greece/index.html
