@@ -1,6 +1,6 @@
 # Sourcing standard
 
-One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 11 are each course family's own rules, taken from its brief preamble and its spec (Parts 8 to 10 from their courses' syllabuses, section 6; Part 11 from its course's shared preamble); a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
+One checklist for the writer (before handing a unit in) and the auditor (when sampling it). Part 1 applies to every course. Parts 2 to 12 are each course family's own rules, taken from its brief preamble and its spec (Parts 8 to 10 and 12 from their courses' syllabuses, section 6; Part 11 from its course's shared preamble); a unit must also pass its own course's part. Every item is phrased so it can be answered yes or no about one claim or one unit.
 
 A **checkable claim** is any sentence that carries a number, a date, a named source, an attribution ("X argued Y", "the source says"), a mechanism or a recommendation. The auditor's sample is drawn from these (method.md §6).
 
@@ -238,4 +238,28 @@ A **checkable claim** is any sentence that carries a number, a date, a named sou
 - [ ] The deliverable is built in full on the case the brief names and then given as a template whose blanks say what goes in them.
 - [ ] "Check before you act" and "Self-check" are present, and every Self-check answer agrees with the body.
 - [ ] The unit does not read as advice without evidence. (If it does, the unit fails.)
+- [ ] Links are given as links, the DOI address for a paper.
+
+## Part 12 · Egyptian history and mythology (from section 6 of `docs/egypt-syllabus.md`)
+
+- [ ] Every claim that carries a date, a number, a name, an attribution or an interpretation is sourced where it is made.
+- [ ] Each source is one of: an Egyptian text in a named, opened edition or translation; an object or monument by museum and accession number, excavation number or standard designation; a classical author by book and chapter; a peer-reviewed journal article; a monograph or edited volume from an academic press; the UCLA Encyclopedia of Egyptology; an excavation report or the page of the mission or institute that dug; a museum's own collection record; a peer-reviewed scientific study.
+- [ ] No video, documentary, podcast, social-media post, unsigned web page, general encyclopaedia or wiki, travel or tour site, press report, popular book by a non-specialist, or translation by E. A. Wallis Budge is cited as a source; one may be named only as the claim under examination.
+- [ ] Every reference in Sources is in the module's source log with the address opened, what was read (full text, chapter, abstract or catalogue record) and the date; a claim that rests on an abstract or a record alone says so.
+- [ ] Every Sources entry matches its publisher's or Crossref's record: authors or editors, title, journal or press, year, volume, pages, DOI or ISBN.
+- [ ] Every claim carries one of the seven grades (attested, later tradition, consensus, contested, scientific, announced, conjecture), and the grade follows EG1's key.
+- [ ] An Egyptian text is cited by its standard designation and by the translation opened; the translator is named; a quotation is under 15 words and was read in that translation.
+- [ ] A later source is never cited as if contemporary: the module states the gap in centuries between the source and what it describes (Manetho, Herodotus, Diodorus, Plutarch, a Ptolemaic temple text, a Ramesside king list).
+- [ ] Every date before 664 BC is approximate and names the chronology it follows (EG3's convention); a disputed date gives the range.
+- [ ] Every number (years of reign, troops, blocks, workers, dimensions, counts of texts or objects) names whose figure it is.
+- [ ] A modern scholar is named for a view only from that scholar's own opened text, or from an opened peer-reviewed review or encyclopaedia article that reports it, named as the reporter.
+- [ ] Every disagreement between sources or between scholars is in a dispute box with a named source or scholar on each side.
+- [ ] A scientific result states its sample, its method and its published criticism, if any; a result on one body or one site is not generalised.
+- [ ] A discovery known only from an announcement is graded announced, dated, and never built upon.
+- [ ] A popular claim is named as a claim, stated as it circulates, set against its evidence or against "no peer-reviewed source found", and not mocked.
+- [ ] Topics that touch living faiths or identities (EG23, EG28, EG56, DD-EG10, DD-EG21) report evidence and named positions and argue for no confession or camp.
+- [ ] A hieroglyphic sign is given by Gardiner number and described in words; a Unicode sign is added only if the build renders it (flag F1).
+- [ ] "Module X covers Y", "Greek module X" and "Rome module X" are written only after opening that module.
+- [ ] Where the search flag is on, every current fact carries the date it was read.
+- [ ] Every Self-test answer agrees with the body; the deliverable adds no unsourced claim.
 - [ ] Links are given as links, the DOI address for a paper.

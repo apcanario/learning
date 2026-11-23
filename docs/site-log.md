@@ -5,7 +5,7 @@ The one source of Academy's Backlog and Changelog pages (S-PAGES, 15 Nov 2026): 
 Rules for an entry (`docs/method.md` §8):
 - **Next**: one row per item still to do, in the overall order (#, from 1, no gaps); **Done**: one row per item done, any order (the pages sort newest first), the date as `YYYY-MM-DD` (the first day, where the work ran over several).
 - **Code**: the item's short name: a unit's code (PB1, IA3), a history course's syllabus unit (G12 for Greece unit 12, R0–3 for Rome units 0 to 3), the backlog row's code for anything else (P96, S-PAGES), and K plus the session number for a site change of the kit's early sessions (K1 to K11), which had no row code. Keep it short: the column is narrow on a phone.
-- **Area**: one of Mythology (Greece, Rome), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (courses SP and AC; named Coaching until 19 Nov 2026), Supply Chain (courses SCE, SCP and AIE), Academy (the site and its method).
+- **Area**: one of Mythology (Greece, Rome, Egypt), Marketing (courses A and PB), AI (courses B and BW), UX, Sports (courses SP and AC; named Coaching until 19 Nov 2026), Supply Chain (courses SCE, SCP and AIE), Academy (the site and its method).
 - **Sentence**: one plain sentence for an ordinary reader: what it is (Next) or what happened (Done). No model names, token counts, script or file names, row mechanics (rows, chats, prompts, corrections, mirrors), agent or audit vocabulary, and no private term (`kit/private-terms.txt`; `python3 kit/private_terms.py` scans this file). No `|` in a sentence.
 - **One entry per item**: a unit, a course milestone or a visible site change. Housekeeping, corrections and re-checks are folded into the item they served, never listed on their own. A proposed item enters Next only when it is confirmed; a withdrawn one leaves it.
 - The chat that closes a backlog row moves its entry from Next to Done (or adds it to Done), renumbers Next, and adds an entry to Next for each item it confirms into the queue.
@@ -82,11 +82,90 @@ Rules for an entry (`docs/method.md` §8):
 | 66 | DD-AC2 | Sports | Write DD-AC2, Deep dive: hard numbers, what the money is, for Managing an Athlete's Career. |
 | 67 | DD-AC1 | Sports | Write DD-AC1, Deep dive: comparables, documented careers below the agency level, for Managing an Athlete's Career. |
 | 68 | DD-AC3 | Sports | Write DD-AC3, Deep dive: Portugal, end to end, for Managing an Athlete's Career. |
+| 69 | EG1 | Mythology | Write EG1, How we know anything: the sources and the evidence key, for Egyptian history and mythology. |
+| 70 | EG2 | Mythology | Write EG2, The land: river, flood, desert and neighbours, for Egyptian history and mythology. |
+| 71 | EG3 | Mythology | Write EG3, The timeline spine and how the dates are made, for Egyptian history and mythology. |
+| 72 | EG4 | Mythology | Write EG4, Predynastic Egypt, for Egyptian history and mythology. |
+| 73 | EG5 | Mythology | Write EG5, Unification and Narmer, for Egyptian history and mythology. |
+| 74 | EG6 | Mythology | Write EG6, The first two dynasties, for Egyptian history and mythology. |
+| 75 | EG7 | Mythology | Write EG7, Kingship: the idea that held three thousand years, for Egyptian history and mythology. |
+| 76 | EG8 | Mythology | Write EG8, Djoser and the Third Dynasty, for Egyptian history and mythology. |
+| 77 | EG9 | Mythology | Write EG9, The Fourth Dynasty: Sneferu to Menkaure, for Egyptian history and mythology. |
+| 78 | EG10 | Mythology | Write EG10, The Fifth and Sixth Dynasties, for Egyptian history and mythology. |
+| 79 | EG11 | Mythology | Write EG11, How the Old Kingdom worked, for Egyptian history and mythology. |
+| 80 | EG12 | Mythology | Write EG12, The end of the Old Kingdom and the First Intermediate Period, for Egyptian history and mythology. |
+| 81 | EG13 | Mythology | Write EG13, Reunification and the Twelfth Dynasty, for Egyptian history and mythology. |
+| 82 | EG14 | Mythology | Write EG14, The Middle Kingdom state: forts, towns and foreigners, for Egyptian history and mythology. |
+| 83 | EG15 | Mythology | Write EG15, The classical literature, for Egyptian history and mythology. |
+| 84 | EG16 | Mythology | Write EG16, The Second Intermediate Period, for Egyptian history and mythology. |
+| 85 | EG17 | Mythology | Write EG17, Ahmose and the making of the New Kingdom, for Egyptian history and mythology. |
+| 86 | EG18 | Mythology | Write EG18, Hatshepsut, for Egyptian history and mythology. |
+| 87 | EG19 | Mythology | Write EG19, Thutmose III and the empire, for Egyptian history and mythology. |
+| 88 | EG20 | Mythology | Write EG20, Amenhotep III: Egypt at its height, for Egyptian history and mythology. |
+| 89 | EG21 | Mythology | Write EG21, Akhenaten to Horemheb: the core account, for Egyptian history and mythology. |
+| 90 | EG22 | Mythology | Write EG22, Seti I and Ramesses II, for Egyptian history and mythology. |
+| 91 | EG23 | Mythology | Write EG23, Merneptah, the Libyans and the Exodus question, for Egyptian history and mythology. |
+| 92 | EG24 | Mythology | Write EG24, Ramesses III and the Sea Peoples, for Egyptian history and mythology. |
+| 93 | EG25 | Mythology | Write EG25, Deir el-Medina, for Egyptian history and mythology. |
+| 94 | EG26 | Mythology | Write EG26, The end of the New Kingdom, for Egyptian history and mythology. |
+| 95 | EG27 | Mythology | Write EG27, The Third Intermediate Period, for Egyptian history and mythology. |
+| 96 | EG28 | Mythology | Write EG28, Kush and the Twenty-fifth Dynasty, for Egyptian history and mythology. |
+| 97 | EG29 | Mythology | Write EG29, The Saite renaissance, for Egyptian history and mythology. |
+| 98 | EG30 | Mythology | Write EG30, Persian Egypt and the last native kings, for Egyptian history and mythology. |
+| 99 | EG31 | Mythology | Write EG31, Herodotus in Egypt: Book 2 as a source, for Egyptian history and mythology. |
+| 100 | EG32 | Mythology | Write EG32, The Ptolemies from the Egyptian side, for Egyptian history and mythology. |
+| 101 | EG33 | Mythology | Write EG33, Two cultures in one country, for Egyptian history and mythology. |
+| 102 | EG34 | Mythology | Write EG34, Cleopatra VII and the Roman conquest, for Egyptian history and mythology. |
+| 103 | EG35 | Mythology | Write EG35, Roman Egypt and the end of the old religion, for Egyptian history and mythology. |
+| 104 | EG36 | Mythology | Write EG36, What Egyptian religion was, for Egyptian history and mythology. |
+| 105 | EG37 | Mythology | Write EG37, The cosmogonies, for Egyptian history and mythology. |
+| 106 | EG38 | Mythology | Write EG38, The gods: a field guide, for Egyptian history and mythology. |
+| 107 | EG39 | Mythology | Write EG39, Osiris, Isis, Seth and Horus, for Egyptian history and mythology. |
+| 108 | EG40 | Mythology | Write EG40, The sun's journey and the myths of Re, for Egyptian history and mythology. |
+| 109 | EG41 | Mythology | Write EG41, Ma'at, for Egyptian history and mythology. |
+| 110 | EG42 | Mythology | Write EG42, The person and the dead, for Egyptian history and mythology. |
+| 111 | EG43 | Mythology | Write EG43, Mummification, for Egyptian history and mythology. |
+| 112 | EG44 | Mythology | Write EG44, The afterlife: judgement and the Field of Reeds, for Egyptian history and mythology. |
+| 113 | EG45 | Mythology | Write EG45, Tombs, for Egyptian history and mythology. |
+| 114 | EG46 | Mythology | Write EG46, Tutankhamun's tomb, for Egyptian history and mythology. |
+| 115 | EG47 | Mythology | Write EG47, The temple: the house of the god, for Egyptian history and mythology. |
+| 116 | EG48 | Mythology | Write EG48, Priests and the god's estate, for Egyptian history and mythology. |
+| 117 | EG49 | Mythology | Write EG49, Personal religion and magic, for Egyptian history and mythology. |
+| 118 | EG50 | Mythology | Write EG50, Family, women, law and work, for Egyptian history and mythology. |
+| 119 | EG51 | Mythology | Write EG51, Grain, beer and the economy, for Egyptian history and mythology. |
+| 120 | EG52 | Mythology | Write EG52, Number, sky and body: Egyptian knowledge, for Egyptian history and mythology. |
+| 121 | EG53 | Mythology | Write EG53, The scripts and the decipherment, for Egyptian history and mythology. |
+| 122 | EG54 | Mythology | Write EG54, Reading a cartouche, for Egyptian history and mythology. |
+| 123 | EG55 | Mythology | Write EG55, Reading Egyptian art, a site and a museum, for Egyptian history and mythology. |
+| 124 | EG56 | Mythology | Write EG56, Reception: how Egypt reached you, for Egyptian history and mythology. |
+| 125 | EG57 | Mythology | Write EG57, Capstone: the whole thing in one sitting, for Egyptian history and mythology. |
+| 126 | DD-EG1 | Mythology | Write DD-EG1, From mastaba to true pyramid, for Egyptian history and mythology. |
+| 127 | DD-EG2 | Mythology | Write DD-EG2, Quarry, river and harbour, for Egyptian history and mythology. |
+| 128 | DD-EG3 | Mythology | Write DD-EG3, Raising the stone: ramps and their rivals, for Egyptian history and mythology. |
+| 129 | DD-EG4 | Mythology | Write DD-EG4, Who built them: the workers' town, for Egyptian history and mythology. |
+| 130 | DD-EG5 | Mythology | Write DD-EG5, Inside the Great Pyramid, for Egyptian history and mythology. |
+| 131 | DD-EG6 | Mythology | Write DD-EG6, The complex and its meaning, for Egyptian history and mythology. |
+| 132 | DD-EG7 | Mythology | Write DD-EG7, After Giza, and what is still unknown, for Egyptian history and mythology. |
+| 133 | DD-EG8 | Mythology | Write DD-EG8, Before the break: Amenhotep III and the sun, for Egyptian history and mythology. |
+| 134 | DD-EG9 | Mythology | Write DD-EG9, The revolution year by year, for Egyptian history and mythology. |
+| 135 | DD-EG10 | Mythology | Write DD-EG10, The theology of the Aten, for Egyptian history and mythology. |
+| 136 | DD-EG11 | Mythology | Write DD-EG11, Akhetaten: the city, for Egyptian history and mythology. |
+| 137 | DD-EG12 | Mythology | Write DD-EG12, The Amarna letters, for Egyptian history and mythology. |
+| 138 | DD-EG13 | Mythology | Write DD-EG13, Art, Nefertiti and the succession puzzle, for Egyptian history and mythology. |
+| 139 | DD-EG14 | Mythology | Write DD-EG14, Aftermath and afterlives, for Egyptian history and mythology. |
+| 140 | DD-EG15 | Mythology | Write DD-EG15, The Pyramid Texts, for Egyptian history and mythology. |
+| 141 | DD-EG16 | Mythology | Write DD-EG16, The Coffin Texts, for Egyptian history and mythology. |
+| 142 | DD-EG17 | Mythology | Write DD-EG17, The Book of the Dead: how it was made, for Egyptian history and mythology. |
+| 143 | DD-EG18 | Mythology | Write DD-EG18, The Book of the Dead: reading it, for Egyptian history and mythology. |
+| 144 | DD-EG19 | Mythology | Write DD-EG19, The books of the netherworld, for Egyptian history and mythology. |
+| 145 | DD-EG20 | Mythology | Write DD-EG20, The last afterlife texts, for Egyptian history and mythology. |
+| 146 | DD-EG21 | Mythology | Write DD-EG21, What the Egyptians expected of death: the synthesis, for Egyptian history and mythology. |
 
 ## Done
 
 | Date | Code | Area | What happened |
 |---|---|---|---|
+| 2026-11-23 | S-EG0 | Mythology | Egyptian history and mythology, a new course, added: designed; 78 modules to write; Persia is still to come in the History track. |
 | 2026-11-23 | S-AC0 | Sports | Managing an Athlete's Career, a new course, added: designed; 18 units to write; Running a Squad is still to come in the Sports track. |
 | 2026-11-23 | S-AIE0 | Supply Chain | AI in Supply Chain Execution, a new course, added: designed; 14 units to write. |
 | 2026-11-22 | S-SCP0 | Supply Chain | Supply Chain Planning for Product Teams, a new course, added: designed; 18 units to write. |

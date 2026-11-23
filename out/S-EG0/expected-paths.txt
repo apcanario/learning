@@ -1,0 +1,48 @@
+# S-EG0: outputs this row is expected to change (kit-relative, as kit/baseline.py --check prints them)
+# the course's four new pages
+academy/egypt-eg/home.html
+academy/egypt-eg/briefs.html
+academy/egypt-eg/bibliography.html
+academy/egypt-eg/built.html
+# the shell: home course list, History area page and drawer, the course's panels, Backlog (site-log Next rows)
+academy/index.html
+# the Changelog page (site-log Done entry S-EG0, added at the close)
+academy/changelog.html
+# the size table
+README.md
+# Part 12 shows on every course's How it was built page until P-AIE8 is fixed (kit/howbuilt.py sourcing_parts() keeps every heading starting "Part 1")
+academy/ai-in-supply-chain-execution-aie/built.html
+academy/athlete-career-ac/built.html
+academy/brand-a/built.html
+academy/brand-b/built.html
+academy/building-with-ai-bw/built.html
+academy/greece/built.html
+academy/personal-brand-pb/built.html
+academy/rome/built.html
+academy/sport-psychology-sp/built.html
+academy/supply-chain-execution-sce/built.html
+academy/supply-chain-planning-scp/built.html
+academy/ux-ia/built.html
+# sources this row changed outside courses/egypt (repo-relative)
+catalog.toml
+docs/BACKLOG.md
+docs/courses-index.md
+docs/site-log.md
+docs/sourcing-standard.md
+docs/egypt-prompts.md
+docs/egypt-syllabus.md
+kit/AGENT-SPEC.md
+kit/next_prompt.py
+kit/verify-hashes.json
+skills/new-course/SKILL.md
+out/S-EG0/registration.md
+out/S-EG0/expected-paths.txt
+# added at the close: the changelog row, and the inbox deleted (override 11)
+docs/CHANGELOG.md
+inbox/SHA256SUMS
+inbox/egypt/bibliography.md
+inbox/egypt/briefs.md
+inbox/egypt/egypt-prompts.md
+inbox/egypt/egypt-syllabus.md
+inbox/egypt/setup-prompt.md
+inbox/egypt/starter.txt

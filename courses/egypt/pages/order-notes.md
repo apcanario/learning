@@ -1,0 +1,9 @@
+<div class="report"><ul>
+  <li><strong>Why this order:</strong> the code order, EG1 to EG57, then DD-EG1 to DD-EG21. EG1 comes first because it sets the grade key. Each module is written after every module before it is filed, so the four written from others (EG57, DD-EG7, DD-EG14, DD-EG21) already stand last in their groups.</li>
+  <li><strong>Units:</strong> 0 · Foundations, EG1 to EG3; 1 · Before the pyramids, EG4 to EG7; 2 · The Old Kingdom, EG8 to EG12; 3 · The Middle Kingdom, EG13 to EG16; 4 · The New Kingdom: empire, EG17 to EG21; 5 · The New Kingdom: Ramessides, EG22 to EG26; 6 · The first millennium, EG27 to EG31; 7 · Greek and Roman Egypt, EG32 to EG35; 8 · The gods, EG36 to EG41; 9 · Death and the afterlife, EG42 to EG46; 10 · Temple and society, EG47 to EG52; 11 · Writing, art, legacy, EG53 to EG57; 12 · Deep dive I: the pyramids, DD-EG1 to DD-EG7; 13 · Deep dive II: Amarna, DD-EG8 to DD-EG14; 14 · Deep dive III: the afterlife books, DD-EG15 to DD-EG21.</li>
+  <li><strong>Chats:</strong> setup alone, then twenty writing chats of four modules each in writing order (the last takes DD-EG20 and DD-EG21 and works the closing corrections), all started from the same two-line starter.</li>
+  <li><strong>Read points:</strong> after bundle 1 (EG1 to EG4, the test of the access rule) and after bundle 15 (the core complete); starting the next writing chat is the go. No gate row.</li>
+  <li><strong>Brief changes:</strong> a flag that would change a brief is proposed, never applied by the chat that raised it; a writer never rewords a brief.</li>
+  <li><strong>Rewrite gate:</strong> no new module starts while a rewrite verdict is open on an earlier one.</li>
+  <li><strong>Carry forward:</strong> an error found in a filed module goes into the next module's prompt and is fixed there first; a flag that names a later module travels to its writer.</li>
+</ul></div>

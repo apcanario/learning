@@ -159,9 +159,94 @@ The public course **AC · Managing an Athlete's Career**, created 23 Nov 2026 (r
 | 17 | DD-AC1 | AC | Deep dive: comparables, documented careers below the agency level | not written | Opus 5.5 | on | `courses/athlete-career/DD-AC1-deep-dive-comparables-documented-careers-below-the-agency-level.md` |
 | 18 | DD-AC3 | AC | Deep dive: Portugal, end to end | not written | Opus 5.5 | on | `courses/athlete-career/DD-AC3-deep-dive-portugal-end-to-end.md` |
 
+## Egypt
+
+The private course **EG · Egyptian history and mythology**, created 23 Nov 2026 (row S-EG0; syllabus designed 21 Nov 2026 on Fable 5.2, `docs/egypt-syllabus.md`): the third course of Personal Mythology, after Greece and Rome, read by the Project's own reader (`docs/reader.md`), on the History track. A markdown course (P71; syllabus decision D6), not the history family's form: its modules are EG1 to EG57 and DD-EG1 to DD-EG21 (decision D7), filed as `courses/egypt/<code>-<slug>.md`, in Personal Mythology's module anatomy (`kit/AGENT-SPEC.md`, its Egypt section). Written under the source-credibility floor (`docs/method.md` §9): no source units; a seed bibliography of 70 references, checked for existence only (of the 70 entries, checked in full 30; checked in part 40 (not counted as checked); not opened 0; struck 0; `vault/egypt/notes/bibliography.md`); no case register. Fifty-seven core modules in twelve syllabus units, and three deep dives of seven (the pyramids, Amarna, the afterlife books). 0 of 78 written. A module is written when its file is in `courses/egypt/`. Briefs: the course's Briefs page in Academy (`vault/egypt/briefs.md`, with the Takes lines in `vault/egypt/course.toml`). Build order: the Build order page, in code order (EG1 to EG57, then DD-EG1 to DD-EG21), with no gate; the search flag means a staleness check is owed, on for EG18, EG46, EG55, EG56 and DD-EG5. Sourcing: `docs/sourcing-standard.md` Parts 1 and 12. Syllabus flags: `vault/egypt/notes/syllabus-flags.md`. Decisions: the syllabus's §8. Prompts: `docs/egypt-prompts.md`, printed by `kit/next_prompt.py`, in twenty bundles of up to four modules. Fresh checks: `audits/egypt/`.
+
+| # | Unit | Course | Title | Status | Model | Search | Path |
+|---|---|---|---|---|---|---|---|
+| 1 | EG1 | EG | How we know anything: the sources and the evidence key | not written | Opus 5.5 | off | `courses/egypt/EG1-how-we-know-anything-the-sources-and-the-evidence-key.md` |
+| 2 | EG2 | EG | The land: river, flood, desert and neighbours | not written | Opus 5.5 | off | `courses/egypt/EG2-the-land-river-flood-desert-and-neighbours.md` |
+| 3 | EG3 | EG | The timeline spine and how the dates are made | not written | Opus 5.5 | off | `courses/egypt/EG3-the-timeline-spine-and-how-the-dates-are-made.md` |
+| 4 | EG4 | EG | Predynastic Egypt | not written | Opus 5.5 | off | `courses/egypt/EG4-predynastic-egypt.md` |
+| 5 | EG5 | EG | Unification and Narmer | not written | Opus 5.5 | off | `courses/egypt/EG5-unification-and-narmer.md` |
+| 6 | EG6 | EG | The first two dynasties | not written | Opus 5.5 | off | `courses/egypt/EG6-the-first-two-dynasties.md` |
+| 7 | EG7 | EG | Kingship: the idea that held three thousand years | not written | Opus 5.5 | off | `courses/egypt/EG7-kingship-the-idea-that-held-three-thousand-years.md` |
+| 8 | EG8 | EG | Djoser and the Third Dynasty | not written | Opus 5.5 | off | `courses/egypt/EG8-djoser-and-the-third-dynasty.md` |
+| 9 | EG9 | EG | The Fourth Dynasty: Sneferu to Menkaure | not written | Opus 5.5 | off | `courses/egypt/EG9-the-fourth-dynasty-sneferu-to-menkaure.md` |
+| 10 | EG10 | EG | The Fifth and Sixth Dynasties | not written | Opus 5.5 | off | `courses/egypt/EG10-the-fifth-and-sixth-dynasties.md` |
+| 11 | EG11 | EG | How the Old Kingdom worked | not written | Opus 5.5 | off | `courses/egypt/EG11-how-the-old-kingdom-worked.md` |
+| 12 | EG12 | EG | The end of the Old Kingdom and the First Intermediate Period | not written | Opus 5.5 | off | `courses/egypt/EG12-the-end-of-the-old-kingdom-and-the-first-intermediate-period.md` |
+| 13 | EG13 | EG | Reunification and the Twelfth Dynasty | not written | Opus 5.5 | off | `courses/egypt/EG13-reunification-and-the-twelfth-dynasty.md` |
+| 14 | EG14 | EG | The Middle Kingdom state: forts, towns and foreigners | not written | Opus 5.5 | off | `courses/egypt/EG14-the-middle-kingdom-state-forts-towns-and-foreigners.md` |
+| 15 | EG15 | EG | The classical literature | not written | Opus 5.5 | off | `courses/egypt/EG15-the-classical-literature.md` |
+| 16 | EG16 | EG | The Second Intermediate Period | not written | Opus 5.5 | off | `courses/egypt/EG16-the-second-intermediate-period.md` |
+| 17 | EG17 | EG | Ahmose and the making of the New Kingdom | not written | Opus 5.5 | off | `courses/egypt/EG17-ahmose-and-the-making-of-the-new-kingdom.md` |
+| 18 | EG18 | EG | Hatshepsut | not written | Opus 5.5 | on | `courses/egypt/EG18-hatshepsut.md` |
+| 19 | EG19 | EG | Thutmose III and the empire | not written | Opus 5.5 | off | `courses/egypt/EG19-thutmose-iii-and-the-empire.md` |
+| 20 | EG20 | EG | Amenhotep III: Egypt at its height | not written | Opus 5.5 | off | `courses/egypt/EG20-amenhotep-iii-egypt-at-its-height.md` |
+| 21 | EG21 | EG | Akhenaten to Horemheb: the core account | not written | Opus 5.5 | off | `courses/egypt/EG21-akhenaten-to-horemheb-the-core-account.md` |
+| 22 | EG22 | EG | Seti I and Ramesses II | not written | Opus 5.5 | off | `courses/egypt/EG22-seti-i-and-ramesses-ii.md` |
+| 23 | EG23 | EG | Merneptah, the Libyans and the Exodus question | not written | Opus 5.5 | off | `courses/egypt/EG23-merneptah-the-libyans-and-the-exodus-question.md` |
+| 24 | EG24 | EG | Ramesses III and the Sea Peoples | not written | Opus 5.5 | off | `courses/egypt/EG24-ramesses-iii-and-the-sea-peoples.md` |
+| 25 | EG25 | EG | Deir el-Medina | not written | Opus 5.5 | off | `courses/egypt/EG25-deir-el-medina.md` |
+| 26 | EG26 | EG | The end of the New Kingdom | not written | Opus 5.5 | off | `courses/egypt/EG26-the-end-of-the-new-kingdom.md` |
+| 27 | EG27 | EG | The Third Intermediate Period | not written | Opus 5.5 | off | `courses/egypt/EG27-the-third-intermediate-period.md` |
+| 28 | EG28 | EG | Kush and the Twenty-fifth Dynasty | not written | Opus 5.5 | off | `courses/egypt/EG28-kush-and-the-twenty-fifth-dynasty.md` |
+| 29 | EG29 | EG | The Saite renaissance | not written | Opus 5.5 | off | `courses/egypt/EG29-the-saite-renaissance.md` |
+| 30 | EG30 | EG | Persian Egypt and the last native kings | not written | Opus 5.5 | off | `courses/egypt/EG30-persian-egypt-and-the-last-native-kings.md` |
+| 31 | EG31 | EG | Herodotus in Egypt: Book 2 as a source | not written | Opus 5.5 | off | `courses/egypt/EG31-herodotus-in-egypt-book-2-as-a-source.md` |
+| 32 | EG32 | EG | The Ptolemies from the Egyptian side | not written | Opus 5.5 | off | `courses/egypt/EG32-the-ptolemies-from-the-egyptian-side.md` |
+| 33 | EG33 | EG | Two cultures in one country | not written | Opus 5.5 | off | `courses/egypt/EG33-two-cultures-in-one-country.md` |
+| 34 | EG34 | EG | Cleopatra VII and the Roman conquest | not written | Opus 5.5 | off | `courses/egypt/EG34-cleopatra-vii-and-the-roman-conquest.md` |
+| 35 | EG35 | EG | Roman Egypt and the end of the old religion | not written | Opus 5.5 | off | `courses/egypt/EG35-roman-egypt-and-the-end-of-the-old-religion.md` |
+| 36 | EG36 | EG | What Egyptian religion was | not written | Opus 5.5 | off | `courses/egypt/EG36-what-egyptian-religion-was.md` |
+| 37 | EG37 | EG | The cosmogonies | not written | Opus 5.5 | off | `courses/egypt/EG37-the-cosmogonies.md` |
+| 38 | EG38 | EG | The gods: a field guide | not written | Opus 5.5 | off | `courses/egypt/EG38-the-gods-a-field-guide.md` |
+| 39 | EG39 | EG | Osiris, Isis, Seth and Horus | not written | Opus 5.5 | off | `courses/egypt/EG39-osiris-isis-seth-and-horus.md` |
+| 40 | EG40 | EG | The sun's journey and the myths of Re | not written | Opus 5.5 | off | `courses/egypt/EG40-the-suns-journey-and-the-myths-of-re.md` |
+| 41 | EG41 | EG | Ma'at | not written | Opus 5.5 | off | `courses/egypt/EG41-maat.md` |
+| 42 | EG42 | EG | The person and the dead | not written | Opus 5.5 | off | `courses/egypt/EG42-the-person-and-the-dead.md` |
+| 43 | EG43 | EG | Mummification | not written | Opus 5.5 | off | `courses/egypt/EG43-mummification.md` |
+| 44 | EG44 | EG | The afterlife: judgement and the Field of Reeds | not written | Opus 5.5 | off | `courses/egypt/EG44-the-afterlife-judgement-and-the-field-of-reeds.md` |
+| 45 | EG45 | EG | Tombs | not written | Opus 5.5 | off | `courses/egypt/EG45-tombs.md` |
+| 46 | EG46 | EG | Tutankhamun's tomb | not written | Opus 5.5 | on | `courses/egypt/EG46-tutankhamuns-tomb.md` |
+| 47 | EG47 | EG | The temple: the house of the god | not written | Opus 5.5 | off | `courses/egypt/EG47-the-temple-the-house-of-the-god.md` |
+| 48 | EG48 | EG | Priests and the god's estate | not written | Opus 5.5 | off | `courses/egypt/EG48-priests-and-the-gods-estate.md` |
+| 49 | EG49 | EG | Personal religion and magic | not written | Opus 5.5 | off | `courses/egypt/EG49-personal-religion-and-magic.md` |
+| 50 | EG50 | EG | Family, women, law and work | not written | Opus 5.5 | off | `courses/egypt/EG50-family-women-law-and-work.md` |
+| 51 | EG51 | EG | Grain, beer and the economy | not written | Opus 5.5 | off | `courses/egypt/EG51-grain-beer-and-the-economy.md` |
+| 52 | EG52 | EG | Number, sky and body: Egyptian knowledge | not written | Opus 5.5 | off | `courses/egypt/EG52-number-sky-and-body-egyptian-knowledge.md` |
+| 53 | EG53 | EG | The scripts and the decipherment | not written | Opus 5.5 | off | `courses/egypt/EG53-the-scripts-and-the-decipherment.md` |
+| 54 | EG54 | EG | Reading a cartouche | not written | Opus 5.5 | off | `courses/egypt/EG54-reading-a-cartouche.md` |
+| 55 | EG55 | EG | Reading Egyptian art, a site and a museum | not written | Opus 5.5 | on | `courses/egypt/EG55-reading-egyptian-art-a-site-and-a-museum.md` |
+| 56 | EG56 | EG | Reception: how Egypt reached you | not written | Opus 5.5 | on | `courses/egypt/EG56-reception-how-egypt-reached-you.md` |
+| 57 | EG57 | EG | Capstone: the whole thing in one sitting | not written | Opus 5.5 | off | `courses/egypt/EG57-capstone-the-whole-thing-in-one-sitting.md` |
+| 58 | DD-EG1 | EG | From mastaba to true pyramid | not written | Opus 5.5 | off | `courses/egypt/DD-EG1-from-mastaba-to-true-pyramid.md` |
+| 59 | DD-EG2 | EG | Quarry, river and harbour | not written | Opus 5.5 | off | `courses/egypt/DD-EG2-quarry-river-and-harbour.md` |
+| 60 | DD-EG3 | EG | Raising the stone: ramps and their rivals | not written | Opus 5.5 | off | `courses/egypt/DD-EG3-raising-the-stone-ramps-and-their-rivals.md` |
+| 61 | DD-EG4 | EG | Who built them: the workers' town | not written | Opus 5.5 | off | `courses/egypt/DD-EG4-who-built-them-the-workers-town.md` |
+| 62 | DD-EG5 | EG | Inside the Great Pyramid | not written | Opus 5.5 | on | `courses/egypt/DD-EG5-inside-the-great-pyramid.md` |
+| 63 | DD-EG6 | EG | The complex and its meaning | not written | Opus 5.5 | off | `courses/egypt/DD-EG6-the-complex-and-its-meaning.md` |
+| 64 | DD-EG7 | EG | After Giza, and what is still unknown | not written | Opus 5.5 | off | `courses/egypt/DD-EG7-after-giza-and-what-is-still-unknown.md` |
+| 65 | DD-EG8 | EG | Before the break: Amenhotep III and the sun | not written | Opus 5.5 | off | `courses/egypt/DD-EG8-before-the-break-amenhotep-iii-and-the-sun.md` |
+| 66 | DD-EG9 | EG | The revolution year by year | not written | Opus 5.5 | off | `courses/egypt/DD-EG9-the-revolution-year-by-year.md` |
+| 67 | DD-EG10 | EG | The theology of the Aten | not written | Opus 5.5 | off | `courses/egypt/DD-EG10-the-theology-of-the-aten.md` |
+| 68 | DD-EG11 | EG | Akhetaten: the city | not written | Opus 5.5 | off | `courses/egypt/DD-EG11-akhetaten-the-city.md` |
+| 69 | DD-EG12 | EG | The Amarna letters | not written | Opus 5.5 | off | `courses/egypt/DD-EG12-the-amarna-letters.md` |
+| 70 | DD-EG13 | EG | Art, Nefertiti and the succession puzzle | not written | Opus 5.5 | off | `courses/egypt/DD-EG13-art-nefertiti-and-the-succession-puzzle.md` |
+| 71 | DD-EG14 | EG | Aftermath and afterlives | not written | Opus 5.5 | off | `courses/egypt/DD-EG14-aftermath-and-afterlives.md` |
+| 72 | DD-EG15 | EG | The Pyramid Texts | not written | Opus 5.5 | off | `courses/egypt/DD-EG15-the-pyramid-texts.md` |
+| 73 | DD-EG16 | EG | The Coffin Texts | not written | Opus 5.5 | off | `courses/egypt/DD-EG16-the-coffin-texts.md` |
+| 74 | DD-EG17 | EG | The Book of the Dead: how it was made | not written | Opus 5.5 | off | `courses/egypt/DD-EG17-the-book-of-the-dead-how-it-was-made.md` |
+| 75 | DD-EG18 | EG | The Book of the Dead: reading it | not written | Opus 5.5 | off | `courses/egypt/DD-EG18-the-book-of-the-dead-reading-it.md` |
+| 76 | DD-EG19 | EG | The books of the netherworld | not written | Opus 5.5 | off | `courses/egypt/DD-EG19-the-books-of-the-netherworld.md` |
+| 77 | DD-EG20 | EG | The last afterlife texts | not written | Opus 5.5 | off | `courses/egypt/DD-EG20-the-last-afterlife-texts.md` |
+| 78 | DD-EG21 | EG | What the Egyptians expected of death: the synthesis | not written | Opus 5.5 | off | `courses/egypt/DD-EG21-what-the-egyptians-expected-of-death-the-synthesis.md` |
+
 ## Courses to come (Personal Mythology)
 
-Listed in `catalog.toml` (the History track's `planned`; the top-level `next` until P-DEC12) as coming soon, with a scope and reading spine each: Egypt, Persia, Norse, Celtic, English, Scottish, Chinese, Japanese. A new course is added with the `new-course` skill.
+Listed in `catalog.toml` (the History track's `planned`; the top-level `next` until P-DEC12) as coming soon, with a scope and reading spine each: Persia, Norse, Celtic, English, Scottish, Chinese, Japanese (Egypt left the list on 23 Nov 2026 for its own section above, row S-EG0). A new course is added with the `new-course` skill.
 
 ## Courses to come (Supply Chain)
 

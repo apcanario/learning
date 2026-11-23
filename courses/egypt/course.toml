@@ -1,0 +1,786 @@
+# egypt: one Academy course, read by kit/courses.py (S-DEC1, 20 Nov 2026). The keys are the course dict build.py reads;
+# kit/courses.py turns `parts`, `eras` and `ticks` rows and `tracks` values into tuples. Text fields may use the
+# placeholders {content_mods} {total_mods} {nrep} {kwords} (kit/courses.py docstring).
+#
+# The third course of Personal Mythology, after Greece and Rome (designed 21 Nov 2026 on Fable 5.2, filed 23 Nov 2026 by row
+# S-EG0; docs/egypt-syllabus.md): private, read by the Project's own reader (docs/reader.md), on the History track. Unlike
+# Greece and Rome it is a markdown course (skills/new-course §1, P71; syllabus decision D6), not the history family's
+# courses/<id>/inputs/ form: its modules are filed as courses/egypt/<code>-<slug>.md and Academy reads them through
+# kit/pack.py. Like the public courses since sport-psychology: no source units, a seed bibliography (notes/bibliography.md),
+# its own prompts document. Codes EG1 to EG57 and DD-EG1 to DD-EG21 (syllabus D7), not the dotted unit.module form.
+# Registry keys copied from courses/ai-in-supply-chain-execution/course.toml and changed for this course, plus `private` and
+# `family_label` as Rome's has them. The [pack] table is the syllabus's sections 2 to 5 and 8 in the AI course's form: the
+# design gives each module a Takes line but no Aim or Gives line (kit/pack.py needs all three beside each other), so Aim
+# repeats the syllabus's one-line scope and Gives the brief's Deliverable. kit/pack.py has no part field, so the fifteen
+# syllabus units are in pages/order-notes.md. `reliefs` is not set: the outlines wait for row G-R-EG (override 2 of row
+# S-EG0; syllabus proposal P-EG6).
+
+id = "egypt"
+family = "markdown"
+private = true   # S-DEC4, for kit/verify.py: the owner's own course, not public, like Greece and Rome
+family_label = "Personal Mythology"   # as Greece and Rome have it (S-DEC5 checker)
+short = "Egypt"
+label = "EGYPT"
+name = "Egyptian history and mythology"
+color = "var(--gold)"
+home_id = "egypt"
+status = "in progress"
+tracks.EG = ["history", "Egypt"]
+tiles.EG = "Ancient Egypt from the first kings to the closing of the last temple: its history, its gods and its dead, told from Egyptian evidence first, every claim sourced to an opened text and graded."
+# the course data: the [pack] table below, read by kit/pack.py (S-DEC2)
+data = "courses/egypt/course.toml"
+vault = "courses/egypt"
+sourcing_part = "Part 12"
+source_units = false
+# kit/next_prompt.py prints this course's rows from the template there
+prompts_doc = "docs/egypt-prompts.md"
+eyebrow = "EGYPT"
+
+# ---- the pack (S-DEC2, 20 Nov 2026): the course data, read by kit/pack.py (its docstring is the schema) -------
+# Everything below sits under [pack]; kit/courses.py strips it from the registry dict. Also in the pack: briefs.md
+# (the preamble and every brief, word for word), pages/*.md (the long HTML blocks), notes/ (bibliography, syllabus-flags
+# and names files). Derived, not typed here: STATUS (from each unit's `written`; [pack.status] only where the typed string
+# differs), NEXT_UNIT, the units' READINGS (their front matter `intro` and `name`), VERSION (the top changelog row).
+[pack]
+
+course_note = "Every module is sourced to Egyptian texts in named, opened translations, objects by museum and accession number, classical authors by book and chapter, peer-reviewed articles, academic monographs, the UCLA Encyclopedia of Egyptology, excavation reports and museum records, each opened before it is cited and logged; grades every claim (attested, later tradition, consensus, contested, scientific, announced, conjecture); gives every date before 664 BC as approximate with its chronology; cites no translation by Budge; and ends with its deliverable, then the Self-test and Carry forward."
+order_lede = "One row per module in writing order, which is the code order: EG1 to EG57, then DD-EG1 to DD-EG21. Opus 5.5 writes; a fresh Opus 5.5 context checks each module before filing. Every writer searches to open its sources; \"Search on\" means the module states facts that can change and owes the six-month staleness check."
+order_foot = 'The count starts at {start}.'
+# not read by any kit/ script (the v5.1 standalone hub's identity and tiles); kept as the record. TEMPLATE_BLOCKS was [].
+title = 'Egyptian history and mythology'
+bar = 'EGYPT'
+brand_html = 'EGYPT <span>/</span> HISTORY AND MYTHOLOGY'
+out = 'egypt.html'
+theme_key = 'egypt-theme'
+learn_c = 'var(--gold)'
+build_c = 'var(--orange)'
+home_lede = "Ancient Egypt from the first kings to the closing of the last temple, its history, its gods and its dead, told from Egyptian evidence first and from Greek and Roman observers second. Every claim is sourced to an opened text and graded; every early date names its chronology."
+home_h1 = 'Egyptian history and mythology'
+learn_note = "Order of writing: the code order, EG1 to EG57, then DD-EG1 to DD-EG21; search on (a staleness check owed) for EG18, EG46, EG55, EG56 and DD-EG5."
+template_lede = 'What a course needs before the first unit is written: see the new-course skill and design/README.md.'
+template_note = ''
+learn_tile = ['The course', 'Goal, outcomes, modules, and the written material to read.']
+build_tile = ['How the course gets made', 'Procedure, model rules, every brief, bibliography, changelog.']
+# writing order: (code, model, search)
+order = [
+  ['EG1', 'Opus 5.5', 'off'],
+  ['EG2', 'Opus 5.5', 'off'],
+  ['EG3', 'Opus 5.5', 'off'],
+  ['EG4', 'Opus 5.5', 'off'],
+  ['EG5', 'Opus 5.5', 'off'],
+  ['EG6', 'Opus 5.5', 'off'],
+  ['EG7', 'Opus 5.5', 'off'],
+  ['EG8', 'Opus 5.5', 'off'],
+  ['EG9', 'Opus 5.5', 'off'],
+  ['EG10', 'Opus 5.5', 'off'],
+  ['EG11', 'Opus 5.5', 'off'],
+  ['EG12', 'Opus 5.5', 'off'],
+  ['EG13', 'Opus 5.5', 'off'],
+  ['EG14', 'Opus 5.5', 'off'],
+  ['EG15', 'Opus 5.5', 'off'],
+  ['EG16', 'Opus 5.5', 'off'],
+  ['EG17', 'Opus 5.5', 'off'],
+  ['EG18', 'Opus 5.5', 'on'],
+  ['EG19', 'Opus 5.5', 'off'],
+  ['EG20', 'Opus 5.5', 'off'],
+  ['EG21', 'Opus 5.5', 'off'],
+  ['EG22', 'Opus 5.5', 'off'],
+  ['EG23', 'Opus 5.5', 'off'],
+  ['EG24', 'Opus 5.5', 'off'],
+  ['EG25', 'Opus 5.5', 'off'],
+  ['EG26', 'Opus 5.5', 'off'],
+  ['EG27', 'Opus 5.5', 'off'],
+  ['EG28', 'Opus 5.5', 'off'],
+  ['EG29', 'Opus 5.5', 'off'],
+  ['EG30', 'Opus 5.5', 'off'],
+  ['EG31', 'Opus 5.5', 'off'],
+  ['EG32', 'Opus 5.5', 'off'],
+  ['EG33', 'Opus 5.5', 'off'],
+  ['EG34', 'Opus 5.5', 'off'],
+  ['EG35', 'Opus 5.5', 'off'],
+  ['EG36', 'Opus 5.5', 'off'],
+  ['EG37', 'Opus 5.5', 'off'],
+  ['EG38', 'Opus 5.5', 'off'],
+  ['EG39', 'Opus 5.5', 'off'],
+  ['EG40', 'Opus 5.5', 'off'],
+  ['EG41', 'Opus 5.5', 'off'],
+  ['EG42', 'Opus 5.5', 'off'],
+  ['EG43', 'Opus 5.5', 'off'],
+  ['EG44', 'Opus 5.5', 'off'],
+  ['EG45', 'Opus 5.5', 'off'],
+  ['EG46', 'Opus 5.5', 'on'],
+  ['EG47', 'Opus 5.5', 'off'],
+  ['EG48', 'Opus 5.5', 'off'],
+  ['EG49', 'Opus 5.5', 'off'],
+  ['EG50', 'Opus 5.5', 'off'],
+  ['EG51', 'Opus 5.5', 'off'],
+  ['EG52', 'Opus 5.5', 'off'],
+  ['EG53', 'Opus 5.5', 'off'],
+  ['EG54', 'Opus 5.5', 'off'],
+  ['EG55', 'Opus 5.5', 'on'],
+  ['EG56', 'Opus 5.5', 'on'],
+  ['EG57', 'Opus 5.5', 'off'],
+  ['DD-EG1', 'Opus 5.5', 'off'],
+  ['DD-EG2', 'Opus 5.5', 'off'],
+  ['DD-EG3', 'Opus 5.5', 'off'],
+  ['DD-EG4', 'Opus 5.5', 'off'],
+  ['DD-EG5', 'Opus 5.5', 'on'],
+  ['DD-EG6', 'Opus 5.5', 'off'],
+  ['DD-EG7', 'Opus 5.5', 'off'],
+  ['DD-EG8', 'Opus 5.5', 'off'],
+  ['DD-EG9', 'Opus 5.5', 'off'],
+  ['DD-EG10', 'Opus 5.5', 'off'],
+  ['DD-EG11', 'Opus 5.5', 'off'],
+  ['DD-EG12', 'Opus 5.5', 'off'],
+  ['DD-EG13', 'Opus 5.5', 'off'],
+  ['DD-EG14', 'Opus 5.5', 'off'],
+  ['DD-EG15', 'Opus 5.5', 'off'],
+  ['DD-EG16', 'Opus 5.5', 'off'],
+  ['DD-EG17', 'Opus 5.5', 'off'],
+  ['DD-EG18', 'Opus 5.5', 'off'],
+  ['DD-EG19', 'Opus 5.5', 'off'],
+  ['DD-EG20', 'Opus 5.5', 'off'],
+  ['DD-EG21', 'Opus 5.5', 'off'],
+]
+
+# STATUS where the typed string is not "written <d Mon>" of the unit's front matter `written`
+[pack.status]
+
+[[pack.courses]]
+key = 'EG'
+name = 'Egyptian history and mythology'
+color = 'var(--gold)'
+slug = 'eg'
+goal = "To know ancient Egypt from the first kings to the closing of the last temple, its history, its gods and its dead, well enough to place any monument, text or claim in its period and to say what kind of evidence it rests on."
+tile = "Ancient Egypt from the first kings to the closing of the last temple: its history, its gods and its dead, told from Egyptian evidence first, every claim sourced to an opened text and graded."
+intro = "Ancient Egypt from the first kings to the closing of the last temple, told from Egyptian evidence first and from Greek and Roman observers second, with every claim sourced to an opened text and graded on the seven-grade key EG1 sets. Fifty-seven core modules in twelve syllabus units, then three deep dives of seven modules each: the pyramids, Amarna, and the afterlife books. The third course of Personal Mythology, after Greece and Rome, which it points back to."
+outcomes = "<li><strong>Outcome 1.</strong> Place any king, monument or text within its period and dynasty, and say how firm the date is; measured by EG57's examination, sections 1 and 2, and the anchor-date table of EG3 from memory (EG2 to EG35).</li><li><strong>Outcome 2.</strong> Give the main gods, the creation accounts, the Osiris cycle and the afterlife as Egyptian sources state them, naming the earliest source for each element; measured by EG57, section 3, and the source table of EG39 (EG36 to EG49, DD-EG15 to DD-EG21).</li><li><strong>Outcome 3.</strong> Grade a claim about Egypt on the seven-grade key, and name what would change the grade; measured by EG57, section 4, and the claims audit of DD-EG7 (EG1, EG31, EG56, DD-EG1 to DD-EG14).</li><li><strong>A fourth, smaller outcome.</strong> Read a royal cartouche and the offering formula on sight (EG53, EG54).</li>"
+[[pack.courses.units]]
+code = "EG1"
+title = "How we know anything: the sources and the evidence key"
+scope = "The record by kind, Manetho, the Greeks, Egyptology; sets the grade key."
+deliverable = "the grade key as a one-page table (grade, definition, test, worked example), which every later module uses; then the Self-test and Carry forward"
+aim = "The record by kind, Manetho, the Greeks, Egyptology; sets the grade key"
+takes = "none"
+gives = "the grade key as a one-page table (grade, definition, test, worked example), which every later module uses; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG2"
+title = "The land: river, flood, desert and neighbours"
+scope = "Geography as cause; the gazetteer."
+deliverable = "a north-to-south gazetteer table (site, ancient name, what is there, the modules that use it); then the Self-test and Carry forward"
+aim = "Geography as cause; the gazetteer"
+takes = "EG1"
+gives = "a north-to-south gazetteer table (site, ancient name, what is there, the modules that use it); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG3"
+title = "The timeline spine and how the dates are made"
+scope = "Periods, dynasties, and how firm each date is."
+deliverable = "the anchor-date table (about 30 dates, each with the chronology it follows and its margin) and a timeline figure drawn from it; then the Self-test and Carry forward"
+aim = "Periods, dynasties, and how firm each date is"
+takes = "EG1"
+gives = "the anchor-date table (about 30 dates, each with the chronology it follows and its margin) and a timeline figure drawn from it; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG4"
+title = "Predynastic Egypt"
+scope = "Badarian to Naqada III, Hierakonpolis, tomb U-j."
+deliverable = "Self-test and Carry forward"
+aim = "Badarian to Naqada III, Hierakonpolis, tomb U-j"
+takes = "EG2, EG3"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG5"
+title = "Unification and Narmer"
+scope = "The palette, the state, Menes."
+deliverable = "Self-test and Carry forward"
+aim = "The palette, the state, Menes"
+takes = "EG2, EG3"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG6"
+title = "The first two dynasties"
+scope = "Abydos, Saqqara, Horus and Seth."
+deliverable = "Self-test and Carry forward"
+aim = "Abydos, Saqqara, Horus and Seth"
+takes = "EG2, EG3"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG7"
+title = "Kingship: the idea that held three thousand years"
+scope = "Titulary, regalia, sed festival, how divine."
+deliverable = "a titulary table worked for three kings of different periods (each name in transliteration and translation, sourced); then the Self-test and Carry forward"
+aim = "Titulary, regalia, sed festival, how divine"
+takes = "EG3"
+gives = "a titulary table worked for three kings of different periods (each name in transliteration and translation, sourced); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG8"
+title = "Djoser and the Third Dynasty"
+scope = "The Step Pyramid; Imhotep, real and later."
+deliverable = "Self-test and Carry forward"
+aim = "The Step Pyramid; Imhotep, real and later"
+takes = "EG3, EG7"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG9"
+title = "The Fourth Dynasty: Sneferu to Menkaure"
+scope = "Giza as history; Khufu's reputation."
+deliverable = "Self-test and Carry forward"
+aim = "Giza as history; Khufu's reputation"
+takes = "EG3, EG7"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG10"
+title = "The Fifth and Sixth Dynasties"
+scope = "Sun kings, Weni and Harkhuf, Pepi II."
+deliverable = "Self-test and Carry forward"
+aim = "Sun kings, Weni and Harkhuf, Pepi II"
+takes = "EG3, EG7"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG11"
+title = "How the Old Kingdom worked"
+scope = "Court, labour, estates, mastabas."
+deliverable = "Self-test and Carry forward"
+aim = "Court, labour, estates, mastabas"
+takes = "EG3, EG7"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG12"
+title = "The end of the Old Kingdom and the First Intermediate Period"
+scope = "Why it ended; Ankhtifi; Herakleopolis and Thebes."
+deliverable = "Self-test and Carry forward"
+aim = "Why it ended; Ankhtifi; Herakleopolis and Thebes"
+takes = "EG3, EG7"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG13"
+title = "Reunification and the Twelfth Dynasty"
+scope = "Mentuhotep II to Sobekneferu."
+deliverable = "Self-test and Carry forward"
+aim = "Mentuhotep II to Sobekneferu"
+takes = "EG3, EG12"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG14"
+title = "The Middle Kingdom state: forts, towns and foreigners"
+scope = "Nubian forts, Lahun, Levantines."
+deliverable = "Self-test and Carry forward"
+aim = "Nubian forts, Lahun, Levantines"
+takes = "EG3, EG12"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG15"
+title = "The classical literature"
+scope = "Sinuhe and the rest, read."
+deliverable = "a reading list in order (text, what it is, which opened translation, how long it takes); then the Self-test and Carry forward"
+aim = "Sinuhe and the rest, read"
+takes = "EG3, EG12"
+gives = "a reading list in order (text, what it is, which opened translation, how long it takes); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG16"
+title = "The Second Intermediate Period"
+scope = "Hyksos, Kerma, Thebes."
+deliverable = "Self-test and Carry forward"
+aim = "Hyksos, Kerma, Thebes"
+takes = "EG3, EG12"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG17"
+title = "Ahmose and the making of the New Kingdom"
+scope = "Expulsion, Amun, the Valley begins."
+deliverable = "Self-test and Carry forward"
+aim = "Expulsion, Amun, the Valley begins"
+takes = "EG3, EG16"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG18"
+title = "Hatshepsut"
+scope = "Regent to king; the proscription."
+deliverable = "Self-test and Carry forward"
+aim = "Regent to king; the proscription"
+takes = "EG3, EG7"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG19"
+title = "Thutmose III and the empire"
+scope = "Megiddo; how the empire worked."
+deliverable = "Self-test and Carry forward"
+aim = "Megiddo; how the empire worked"
+takes = "EG3, EG16"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG20"
+title = "Amenhotep III: Egypt at its height"
+scope = "Diplomacy, building, the sun."
+deliverable = "Self-test and Carry forward"
+aim = "Diplomacy, building, the sun"
+takes = "EG3, EG7"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG21"
+title = "Akhenaten to Horemheb: the core account"
+scope = "Amarna in one module."
+deliverable = "Self-test and Carry forward"
+aim = "Amarna in one module"
+takes = "EG3, EG7"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG22"
+title = "Seti I and Ramesses II"
+scope = "Kadesh, the treaty, the builder."
+deliverable = "Self-test and Carry forward"
+aim = "Kadesh, the treaty, the builder"
+takes = "EG3, EG19, EG21"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG23"
+title = "Merneptah, the Libyans and the Exodus question"
+scope = "The \"Israel\" stela; what the evidence carries."
+deliverable = "Self-test and Carry forward"
+aim = "The \"Israel\" stela; what the evidence carries"
+takes = "EG3, EG19"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG24"
+title = "Ramesses III and the Sea Peoples"
+scope = "Medinet Habu, the strike, the conspiracy."
+deliverable = "Self-test and Carry forward"
+aim = "Medinet Habu, the strike, the conspiracy"
+takes = "EG3, EG19"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG25"
+title = "Deir el-Medina"
+scope = "The workmen's village and the robbery trials."
+deliverable = "Self-test and Carry forward"
+aim = "The workmen's village and the robbery trials"
+takes = "EG3, EG17"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG26"
+title = "The end of the New Kingdom"
+scope = "Wenamun, Herihor, the caches."
+deliverable = "Self-test and Carry forward"
+aim = "Wenamun, Herihor, the caches"
+takes = "EG3, EG21"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG27"
+title = "The Third Intermediate Period"
+scope = "Tanis, Thebes, the Libyans."
+deliverable = "Self-test and Carry forward"
+aim = "Tanis, Thebes, the Libyans"
+takes = "EG3, EG26"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG28"
+title = "Kush and the Twenty-fifth Dynasty"
+scope = "Piye to Tantamani; Assyria."
+deliverable = "Self-test and Carry forward"
+aim = "Piye to Tantamani; Assyria"
+takes = "EG3, EG14, EG26"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG29"
+title = "The Saite renaissance"
+scope = "Dynasty 26, Greeks, archaism."
+deliverable = "Self-test and Carry forward"
+aim = "Dynasty 26, Greeks, archaism"
+takes = "EG3, EG26"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG30"
+title = "Persian Egypt and the last native kings"
+scope = "Cambyses to Nectanebo II."
+deliverable = "Self-test and Carry forward"
+aim = "Cambyses to Nectanebo II"
+takes = "EG3, EG26"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG31"
+title = "Herodotus in Egypt: Book 2 as a source"
+scope = "What he saw, heard and garbled."
+deliverable = "a table of ten of his claims about Egypt, each with the Egyptian evidence and a grade; then the Self-test and Carry forward"
+aim = "What he saw, heard and garbled"
+takes = "EG1, EG3"
+gives = "a table of ten of his claims about Egypt, each with the Egyptian evidence and a grade; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG32"
+title = "The Ptolemies from the Egyptian side"
+scope = "Decrees, priests, revolt."
+deliverable = "Self-test and Carry forward"
+aim = "Decrees, priests, revolt"
+takes = "EG3, EG30"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG33"
+title = "Two cultures in one country"
+scope = "Law, economy, Serapis, the late temples."
+deliverable = "Self-test and Carry forward"
+aim = "Law, economy, Serapis, the late temples"
+takes = "EG3, EG30"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG34"
+title = "Cleopatra VII and the Roman conquest"
+scope = "The Egyptian evidence."
+deliverable = "Self-test and Carry forward"
+aim = "The Egyptian evidence"
+takes = "EG3, EG30"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG35"
+title = "Roman Egypt and the end of the old religion"
+scope = "Papyri, Christianity, Philae."
+deliverable = "Self-test and Carry forward"
+aim = "Papyri, Christianity, Philae"
+takes = "EG3, EG30"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG36"
+title = "What Egyptian religion was"
+scope = "Netjer, forms, the one and the many."
+deliverable = "Self-test and Carry forward"
+aim = "Netjer, forms, the one and the many"
+takes = "EG7"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG37"
+title = "The cosmogonies"
+scope = "Heliopolis, Hermopolis, Memphis, Thebes."
+deliverable = "a comparison table of the four main accounts (centre, creator, means, earliest source, date of that source); then the Self-test and Carry forward"
+aim = "Heliopolis, Hermopolis, Memphis, Thebes"
+takes = "EG7, EG28"
+gives = "a comparison table of the four main accounts (centre, creator, means, earliest source, date of that source); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG38"
+title = "The gods: a field guide"
+scope = "About 25 gods in a fixed form."
+deliverable = "the field guide as one table the reader can keep; then the Self-test and Carry forward"
+aim = "About 25 gods in a fixed form"
+takes = "EG7"
+gives = "the field guide as one table the reader can keep; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG39"
+title = "Osiris, Isis, Seth and Horus"
+scope = "The cycle and its scattered sources."
+deliverable = "a source table (element of the story, earliest source, date, grade); then the Self-test and Carry forward"
+aim = "The cycle and its scattered sources"
+takes = "EG7, EG31"
+gives = "a source table (element of the story, earliest source, date, grade); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG40"
+title = "The sun's journey and the myths of Re"
+scope = "Barques, Apophis, the Eye."
+deliverable = "Self-test and Carry forward"
+aim = "Barques, Apophis, the Eye"
+takes = "EG7, EG10"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG41"
+title = "Ma'at"
+scope = "Order, justice and the king's task."
+deliverable = "Self-test and Carry forward"
+aim = "Order, justice and the king's task"
+takes = "EG7, EG15"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG42"
+title = "The person and the dead"
+scope = "Ka, ba, akh; the cult of the dead."
+deliverable = "Self-test and Carry forward"
+aim = "Ka, ba, akh; the cult of the dead"
+takes = "EG36, EG39"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG43"
+title = "Mummification"
+scope = "The method and its evidence."
+deliverable = "Self-test and Carry forward"
+aim = "The method and its evidence"
+takes = "EG36, EG31"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG44"
+title = "The afterlife: judgement and the Field of Reeds"
+scope = "The three corpora in brief."
+deliverable = "Self-test and Carry forward"
+aim = "The three corpora in brief"
+takes = "EG39, EG41"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG45"
+title = "Tombs"
+scope = "Mastaba to Valley of the Kings."
+deliverable = "Self-test and Carry forward"
+aim = "Mastaba to Valley of the Kings"
+takes = "EG11, EG17"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG46"
+title = "Tutankhamun's tomb"
+scope = "The find, the body, the claims."
+deliverable = "Self-test and Carry forward"
+aim = "The find, the body, the claims"
+takes = "EG21"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG47"
+title = "The temple: the house of the god"
+scope = "Plan, ritual, festival, estate."
+deliverable = "Self-test and Carry forward"
+aim = "Plan, ritual, festival, estate"
+takes = "EG36, EG17"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG48"
+title = "Priests and the god's estate"
+scope = "Ranks, purity, the God's Wife."
+deliverable = "Self-test and Carry forward"
+aim = "Ranks, purity, the God's Wife"
+takes = "EG36, EG27"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG49"
+title = "Personal religion and magic"
+scope = "Heka, amulets, piety."
+deliverable = "Self-test and Carry forward"
+aim = "Heka, amulets, piety"
+takes = "EG36, EG25"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG50"
+title = "Family, women, law and work"
+scope = "Households, courts, labour."
+deliverable = "Self-test and Carry forward"
+aim = "Households, courts, labour"
+takes = "EG14, EG25"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG51"
+title = "Grain, beer and the economy"
+scope = "Land, tax, prices."
+deliverable = "Self-test and Carry forward"
+aim = "Land, tax, prices"
+takes = "EG11, EG25"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG52"
+title = "Number, sky and body: Egyptian knowledge"
+scope = "Mathematics, calendar, medicine."
+deliverable = "two worked problems from the Rhind papyrus, set out step by step from an opened edition; then the Self-test and Carry forward"
+aim = "Mathematics, calendar, medicine"
+takes = "EG14, EG3"
+gives = "two worked problems from the Rhind papyrus, set out step by step from an opened edition; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG53"
+title = "The scripts and the decipherment"
+scope = "Four scripts; Young and Champollion."
+deliverable = "the uniliteral sign table (sign described, Gardiner number, transliteration, conventional sound); then the Self-test and Carry forward"
+aim = "Four scripts; Young and Champollion"
+takes = "EG32, EG35"
+gives = "the uniliteral sign table (sign described, Gardiner number, transliteration, conventional sound); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG54"
+title = "Reading a cartouche"
+scope = "Ten names, ten signs."
+deliverable = "a one-page cartouche crib (the ten names and the ten signs); then the Self-test and Carry forward"
+aim = "Ten names, ten signs"
+takes = "EG7, EG53"
+gives = "a one-page cartouche crib (the ten names and the ten signs); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG55"
+title = "Reading Egyptian art, a site and a museum"
+scope = "The rules, then where to go."
+deliverable = "a one-page reading checklist for a wall and a statue; then the Self-test and Carry forward"
+aim = "The rules, then where to go"
+takes = "EG8, EG9, EG45, EG47"
+gives = "a one-page reading checklist for a wall and a statue; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG56"
+title = "Reception: how Egypt reached you"
+scope = "Hermes to restitution."
+deliverable = "Self-test and Carry forward"
+aim = "Hermes to restitution"
+takes = "EG31, EG35, EG53"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "EG57"
+title = "Capstone: the whole thing in one sitting"
+scope = "Map and forty-question examination."
+deliverable = "the one-page course map and the forty-question examination in place of the ten-question Self-test; then Carry forward, as the three ideas to take into the deep dives"
+aim = "Map and forty-question examination"
+takes = "all of EG1 to EG56 (index and Carry forward sections)"
+gives = "the one-page course map and the forty-question examination in place of the ten-question Self-test; then Carry forward, as the three ideas to take into the deep dives"
+[[pack.courses.units]]
+code = "DD-EG1"
+title = "From mastaba to true pyramid"
+scope = "The engineering sequence."
+deliverable = "a table of the major pyramids from Djoser to Menkaure (king, site, base, height, angle, volume where published, source of the figures); then the Self-test and Carry forward"
+aim = "The engineering sequence"
+takes = "EG8, EG9"
+gives = "a table of the major pyramids from Djoser to Menkaure (king, site, base, height, angle, volume where published, source of the figures); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG2"
+title = "Quarry, river and harbour"
+scope = "Stone, the Merer journal, the lost branch."
+deliverable = "a supply-chain map of one casing block from Tura to the pyramid (step, evidence, grade); then the Self-test and Carry forward"
+aim = "Stone, the Merer journal, the lost branch"
+takes = "EG9, EG2"
+gives = "a supply-chain map of one casing block from Tura to the pyramid (step, evidence, grade); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG3"
+title = "Raising the stone: ramps and their rivals"
+scope = "Every proposal, graded."
+deliverable = "a comparison table of the ramp proposals (proponent, source, evidence for, objection, grade); then the Self-test and Carry forward"
+aim = "Every proposal, graded"
+takes = "EG9"
+gives = "a comparison table of the ramp proposals (proponent, source, evidence for, objection, grade); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG4"
+title = "Who built them: the workers' town"
+scope = "Not slaves: the evidence."
+deliverable = "Self-test and Carry forward"
+aim = "Not slaves: the evidence"
+takes = "EG9, EG11"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG5"
+title = "Inside the Great Pyramid"
+scope = "Chambers, shafts, muons."
+deliverable = "Self-test and Carry forward"
+aim = "Chambers, shafts, muons"
+takes = "EG9"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG6"
+title = "The complex and its meaning"
+scope = "Temples, boats, orientation, the Sphinx."
+deliverable = "Self-test and Carry forward"
+aim = "Temples, boats, orientation, the Sphinx"
+takes = "EG9, EG10, EG40"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG7"
+title = "After Giza, and what is still unknown"
+scope = "Later pyramids; the claims audit."
+deliverable = "the three lists as one table; then the Self-test and Carry forward"
+aim = "Later pyramids; the claims audit"
+takes = "DD-EG1 to DD-EG6"
+gives = "the three lists as one table; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG8"
+title = "Before the break: Amenhotep III and the sun"
+scope = "The Aten before Akhenaten; co-regency."
+deliverable = "Self-test and Carry forward"
+aim = "The Aten before Akhenaten; co-regency"
+takes = "EG20, EG21, EG40"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG9"
+title = "The revolution year by year"
+scope = "A dated account."
+deliverable = "a year-by-year table (regnal year, event, evidence, grade) and a timeline figure drawn from it; then the Self-test and Carry forward"
+aim = "A dated account"
+takes = "EG21"
+gives = "a year-by-year table (regnal year, event, evidence, grade) and a timeline figure drawn from it; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG10"
+title = "The theology of the Aten"
+scope = "The hymn; monotheism or not."
+deliverable = "Self-test and Carry forward"
+aim = "The hymn; monotheism or not"
+takes = "EG21, EG36, EG40"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG11"
+title = "Akhetaten: the city"
+scope = "Plan, houses, the cemetery."
+deliverable = "Self-test and Carry forward"
+aim = "Plan, houses, the cemetery"
+takes = "EG21"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG12"
+title = "The Amarna letters"
+scope = "Great kings and vassals."
+deliverable = "Self-test and Carry forward"
+aim = "Great kings and vassals"
+takes = "EG19, EG21"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG13"
+title = "Art, Nefertiti and the succession puzzle"
+scope = "The competing reconstructions."
+deliverable = "a table of the competing reconstructions (who was Neferneferuaten, who lies in KV55, who wrote to the Hittites: proponent, evidence, grade); then the Self-test and Carry forward"
+aim = "The competing reconstructions"
+takes = "EG21, EG46"
+gives = "a table of the competing reconstructions (who was Neferneferuaten, who lies in KV55, who wrote to the Hittites: proponent, evidence, grade); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG14"
+title = "Aftermath and afterlives"
+scope = "Erasure, memory, modern Akhenatens."
+deliverable = "the three lists as one table; then the Self-test and Carry forward"
+aim = "Erasure, memory, modern Akhenatens"
+takes = "DD-EG8 to DD-EG13"
+gives = "the three lists as one table; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG15"
+title = "The Pyramid Texts"
+scope = "Unas to Ibi."
+deliverable = "Self-test and Carry forward"
+aim = "Unas to Ibi"
+takes = "EG10, EG44"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG16"
+title = "The Coffin Texts"
+scope = "Spells, Two Ways, democratisation."
+deliverable = "Self-test and Carry forward"
+aim = "Spells, Two Ways, democratisation"
+takes = "EG12, EG44"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG17"
+title = "The Book of the Dead: how it was made"
+scope = "Repertoire, workshop, manuscripts."
+deliverable = "Self-test and Carry forward"
+aim = "Repertoire, workshop, manuscripts"
+takes = "EG44"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG18"
+title = "The Book of the Dead: reading it"
+scope = "The key spells, closely."
+deliverable = "a table of the forty-two declarations grouped by kind of wrong, from the opened translation; then the Self-test and Carry forward"
+aim = "The key spells, closely"
+takes = "EG44, EG41"
+gives = "a table of the forty-two declarations grouped by kind of wrong, from the opened translation; then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG19"
+title = "The books of the netherworld"
+scope = "Amduat, Gates, Caverns."
+deliverable = "an hour-by-hour table of the Amduat (hour, place, event, key figures); then the Self-test and Carry forward"
+aim = "Amduat, Gates, Caverns"
+takes = "EG40, EG45"
+gives = "an hour-by-hour table of the Amduat (hour, place, event, key figures); then the Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG20"
+title = "The last afterlife texts"
+scope = "Breathing, Traversing Eternity."
+deliverable = "Self-test and Carry forward"
+aim = "Breathing, Traversing Eternity"
+takes = "EG35, EG44"
+gives = "Self-test and Carry forward"
+[[pack.courses.units]]
+code = "DD-EG21"
+title = "What the Egyptians expected of death: the synthesis"
+scope = "Written last in the course."
+deliverable = "a one-page table of change over time (period, texts, who used them, destination, judgement); then the Self-test and Carry forward"
+aim = "Written last in the course"
+takes = "EG42 to EG46, DD-EG15 to DD-EG20"
+gives = "a one-page table of change over time (period, texts, who used them, destination, judgement); then the Self-test and Carry forward"
+
+# newest first
+[[pack.changelog]]
+date = '2026-11-23 14:00'
+text = "v1. Course created (new-course skill; row S-EG0) from the design of 21 Nov 2026 (Fable 5.2): frame, goal and three outcomes with a fourth, 78 modules (57 core in twelve syllabus units, three deep dives of seven) with one brief each and their Takes lines, the shared preamble, sourcing standard Part 12, flags F1 to F5, and a seed bibliography of 70 references checked for existence on 23 Nov 2026 (checked in full, the publisher's or issuing body's record read and giving the whole entry: 30; checked in part, search listings, a third party's page, or a record that gives only part of the entry: 40, not counted as checked; not opened: 0; struck: 0). No module written."

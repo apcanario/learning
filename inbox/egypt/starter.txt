@@ -1,2 +1,0 @@
-Clone apcanario/learning (shallow, push access).
-Egyptian history and mythology, next bundle. Thin main chat on Sonnet 5.5; every agent a fresh Opus 5.5 agent. Run `python3 kit/next_prompt.py --course egypt --bundle 4` and work what it prints in full, unattended.

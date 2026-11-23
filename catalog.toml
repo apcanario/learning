@@ -23,6 +23,7 @@
 course_order = [
   "greece",
   "rome",
+  "egypt",
   "brand-ai",
   "ux",
   "personal-brand",
@@ -56,16 +57,9 @@ lede = "The history and mythology of one culture at a time, read together: who t
 extra = "pages/track-history.md"
 planned_anchor = "planned-courses"
 planned_drawer = true
-planned_note = "The two civilisations that border the Greek story, then the northern and insular traditions, then East Asia. Open a course to see its scope and spine."
+planned_note = "Persia, the other civilisation that borders the Greek story, then the northern and insular traditions, then East Asia. Open a course to see its scope and spine."   # S-EG0 (23 Nov 2026): Egypt left `planned` for courses/egypt/
 # the planned history courses (the top-level `next` until P-DEC12), in the intended order: [short, name, colour, scope, sources]
 planned = [
-  [
-    "Egypt",
-    "Egyptian history and mythology",
-    "var(--gold)",
-    "Three thousand years, thirty-one dynasties, and a religion the Greeks themselves treated as the oldest in the world. Predynastic unification, the Old Kingdom and the pyramids, the Middle and New Kingdoms, Akhenaten, Ramesses and the Sea Peoples, the Late Period and Persian rule, the Ptolemies you met in unit 7; then the cosmogonies of Heliopolis, Memphis and Hermopolis, the Osiris cycle, the solar journey, ma'at, the Book of the Dead and the afterlife, temple and priesthood, and how to read hieroglyphs enough to recognise a cartouche.",
-    "Pyramid Texts · Coffin Texts · Book of the Dead · the Shabaka Stone · Herodotus book 2 · Wilkinson, The Rise and Fall of Ancient Egypt · Assmann, The Search for God in Ancient Egypt",
-  ],
   [
     "Persia",
     "Persian history and mythology",

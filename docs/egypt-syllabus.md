@@ -1,12 +1,12 @@
 # Egyptian history and mythology · syllabus
 
-Designed 21 Nov 2026 in a design chat on Fable 5.2, in the chat only: nothing in the repo was changed (it was read at commit `3188250`). Registration is row S-EG0, to be run when the repo is free.
+Designed 21 Nov 2026 in a design chat on Fable 5.2, in the chat only: nothing in the repo was changed (it was read at commit `3188250`). Registration is row S-EG0, which filed this document on 23 Nov 2026 with two kinds of edit and no other: Part 12 of `sourcing-standard.md` where the design said Part 9 (Parts 9 to 11 were taken by other courses by the day), and "the owner" for the owner's first name; what it did is at the end of section 9.
 
 ## 1 · Frame
 
 **Pick: a Personal Mythology course at Rome's scale, registered as a markdown course, written under the source-credibility floor, in twenty chats of four units after one setup chat.**
 
-- Rome's scale is Pedro's choice (21 Nov 2026): 57 core modules, 21 deep-dive modules.
+- Rome's scale is the owner's choice (21 Nov 2026): 57 core modules, 21 deep-dive modules.
 - The floor (`method.md` §9) applies: sources opened and logged, claims graded.
 - Bundles of four cut 78 chats to 20; one two-line starter, pasted each time.
 
@@ -171,11 +171,11 @@ Fifteen syllabus units: twelve core, three deep dives. "Takes" names the filed m
 
 Every writing chat starts from the same two lines, the starter (prompts §6), which also resume a chat that stopped part-way. The backlog's writing rows are grouped under these twenty headings.
 
-**No gate rows.** A point where Pedro reads before more is written sits on a bundle boundary, and his starting the next chat is the go: after bundle 1 (the access rule's test) and after bundle 15 (the core complete).
+**No gate rows.** A point where the owner reads before more is written sits on a bundle boundary, and his starting the next chat is the go: after bundle 1 (the access rule's test) and after bundle 15 (the core complete).
 
 **Search flag.** Under the floor every writer searches in order to open its sources, so the flag here means one thing only: the module states facts that can change, and owes the six-month staleness check. On: EG18, EG46, EG55, EG56, DD-EG5. Off: the rest.
 
-## 6 · Sourcing: the course's part (Part 9 of `sourcing-standard.md`)
+## 6 · Sourcing: the course's part (Part 12 of `sourcing-standard.md`; the design said Part 9)
 
 - [ ] Every claim that carries a date, a number, a name, an attribution or an interpretation is sourced where it is made.
 - [ ] Each source is one of: an Egyptian text in a named, opened edition or translation; an object or monument by museum and accession number, excavation number or standard designation; a classical author by book and chapter; a peer-reviewed journal article; a monograph or edited volume from an academic press; the UCLA Encyclopedia of Egyptology; an excavation report or the page of the mission or institute that dug; a museum's own collection record; a peer-reviewed scientific study.
@@ -213,35 +213,35 @@ Every writing chat starts from the same two lines, the starter (prompts §6), wh
 
 | # | Decision | By |
 |---|---|---|
-| D1 | Rome's scale: 57 core modules and three deep dives of 7 | Pedro |
-| D2 | Deep dives: the pyramids, Amarna, the afterlife books (reading hieroglyphs stays inside the core, EG53 and EG54) | Pedro |
-| D3 | Bundle units into Sonnet chats; least manual work (set at four per chat by D9) | Pedro |
-| D4 | The result stays in a chat artifact; the repo is read, not changed | Pedro |
-| D5 | Sources reputable and verifiable: the floor of `method.md` §9 applies in full | Pedro, standing |
+| D1 | Rome's scale: 57 core modules and three deep dives of 7 | The owner |
+| D2 | Deep dives: the pyramids, Amarna, the afterlife books (reading hieroglyphs stays inside the core, EG53 and EG54) | The owner |
+| D3 | Bundle units into Sonnet chats; least manual work (set at four per chat by D9) | The owner |
+| D4 | The result stays in a chat artifact; the repo is read, not changed | The owner |
+| D5 | Sources reputable and verifiable: the floor of `method.md` §9 applies in full | The owner, standing |
 | D6 | Registered as a markdown course, with Personal Mythology's module anatomy | design; `new-course` §1 and P71 |
 | D7 | Codes EG1 to EG57 and DD-EG1 to DD-EG21, so the kit's parsers need no change | design |
 | D8 | No audit unit: the Fable stage closed on 15 Nov 2026 (S-NOAUDIT) | design |
-| D9 | Setup alone, then twenty chats of four units in writing order with `--bundle 4`; one two-line starter; no gate rows; the last chat works the closing corrections; a reply ends with the starter (prompts §0) | Pedro, run plan of 21 Nov 2026 |
+| D9 | Setup alone, then twenty chats of four units in writing order with `--bundle 4`; one two-line starter; no gate rows; the last chat works the closing corrections; a reply ends with the starter (prompts §0) | The owner, run plan of 21 Nov 2026 |
 | D10 | The search flag means "owes a staleness check"; on for five modules | design |
 | D11 | Seven evidence grades, set by EG1 | design |
 | D12 | The Exodus, race and restitution questions are treated as evidence with named positions | design |
 | D13 | Budge's translations are never sources | design |
 | D14 | The seed bibliography's existence check moves to S-EG0, before EG1 is written | design, to save Fable |
-| D15 | Every pasted prompt opens with exactly "Clone apcanario/learning (shallow, push access)." and says nothing else about cloning, attaching, registering or approval | Pedro |
+| D15 | Every pasted prompt opens with exactly "Clone apcanario/learning (shallow, push access)." and says nothing else about cloning, attaching, registering or approval | The owner |
 
 ## 9 · Proposals and flags
 
-Accepted by Pedro, 21 Nov 2026. P-EG2 to P-EG6 are worked by S-EG0; P-EG7 runs as prompts §5b sets out. P-EG1 stays withdrawn. ⚠ marks disruption elsewhere.
+Accepted by the owner, 21 Nov 2026. P-EG2 to P-EG6 are worked by S-EG0; P-EG7 runs as prompts §5b sets out. P-EG1 stays withdrawn. ⚠ marks disruption elsewhere.
 
 | # | Proposal | Disruption |
 |---|---|---|
 | P-EG1 | Withdrawn 21 Nov 2026 (run plan): no wave is built. The kit's existing `--bundle 4` runs the units one after another; in `kit/next_prompt.py` setup only adds the course to `QUEUE` | none |
 | P-EG2 | Confirm that a pack course renders the dispute box and the Self-test's closed answers as the history family does (`mdcourse.py`, `history_html`). If it does not, add the two forms to the pack's reading page | ⚠ touches the shared renderer; every course's pages must rebuild unchanged (`baseline.py --check`) |
-| P-EG3 | Add Part 9 (section 6 above) to `docs/sourcing-standard.md`, and an Egypt section to `kit/AGENT-SPEC.md` (names in their standard English forms; transliteration conventions; date style) | none |
+| P-EG3 | Add Part 12, designed as Part 9 (section 6 above), to `docs/sourcing-standard.md`, and an Egypt section to `kit/AGENT-SPEC.md` (names in their standard English forms; transliteration conventions; date style) | none |
 | P-EG4 | Fix `skills/new-course` §1: its bullet for a new Personal Mythology culture still describes the history family's `inputs/syllabus.html` and an audit unit, against P71 and S-NOAUDIT | none |
 | P-EG5 | Remove Egypt from `planned` in `catalog.toml` and add `egypt` to `course_order` after `rome` | none |
 | P-EG6 | The ten outlines the course starts with (`new-course` §5b): the Narmer Palette, the Step Pyramid, the Great Pyramid, the Sphinx, an obelisk, the mask of Tutankhamun, the bust of Nefertiti, the Rosetta Stone, a canopic jar, a scarab; with the ankh, the wedjat eye and a shabti as spares | none |
-| P-EG7 | Each chat schedules the next one itself, so that Pedro pastes the setup prompt and nothing after it unless a chat stops. Whether a scheduled chat can be pinned to Sonnet 5.5 inside the Project was not checked, so a scheduled chat that is not on Sonnet 5.5 stops before it does any work (prompts §5b) | ⚠ unattended publishing of Academy |
+| P-EG7 | Each chat schedules the next one itself, so that the owner pastes the setup prompt and nothing after it unless a chat stops. Whether a scheduled chat can be pinned to Sonnet 5.5 inside the Project was not checked, so a scheduled chat that is not on Sonnet 5.5 stops before it does any work (prompts §5b) | ⚠ unattended publishing of Academy |
 
 Flags that open `courses/egypt/notes/syllabus-flags.md`:
 
@@ -251,7 +251,18 @@ Flags that open `courses/egypt/notes/syllabus-flags.md`:
 | F2 | every module | A standard book that cannot be opened carries no claim. The writer uses an opened reporter or omits the name, and lists the book in its notes under Needs so the seed bibliography records what was closed |
 | F3 | EG4 to EG57 | Cross-references to Greece and Rome use the dotted codes of those courses; the packet holds their title index, and the writer opens the module before pointing |
 | F4 | EG18, EG46, DD-EG5 | These rest on results that were announced or published recently; the writer searches for their current publication status and grades by it |
-| F5 | EG23, EG28, EG56, DD-EG10, DD-EG21 | Faith and identity: evidence and named positions only (Part 9) |
+| F5 | EG23, EG28, EG56, DD-EG10, DD-EG21 | Faith and identity: evidence and named positions only (Part 12) |
+
+
+**Done by row S-EG0 (23 Nov 2026).** The registrar worked P-EG2 to P-EG6 under override 2 of the row (no kit `.py` file edited but the one `QUEUE` entry; no outlines at setup):
+
+- **P-EG2, carried.** The pack's reading page does not render the history forms: run on the same Markdown, `kit/mdcourse.py` `render_md` gives the dispute box as a plain paragraph, the Self-test's answers as open paragraphs in a plain list and Carry forward without its class, where `history_html` gives `<aside class="dispute">`, `<ol class="quiz">` with closed `<details>` and `<ol class="carry">`. Adding them is a shared-renderer change, so it is row P-EG2 under Carried proposals in `docs/BACKLOG.md`, to be worked before EG1 is filed. `python3 kit/baseline.py --check` after the registration: no page of another course changed but each course's How it was built page (the new Part 12, by `kit/howbuilt.py`'s known match on "Part 1", proposal P-AIE8) and the home.
+- **P-EG3, worked.** Part 12 (section 6 above, its 21 items word for word) added to `docs/sourcing-standard.md`; an Egypt section added to `kit/AGENT-SPEC.md`.
+- **P-EG4, worked.** `skills/new-course` §1's bullet for a new Personal Mythology culture now describes a markdown course (P71, S-NOAUDIT), with `courses/egypt/course.toml` as its example.
+- **P-EG5, worked.** Egypt removed from the History track's `planned` in `catalog.toml` (its `planned_note` now begins with Persia) and `egypt` added to `course_order` after `rome`.
+- **P-EG6, waived at setup.** No outline added and `reliefs` not set; the ten objects and three spares, each with the module expected to discuss it, are row G-R-EG under Proposed in `docs/BACKLOG.md`.
+- **The seed bibliography** (decision D14) checked for existence: of 70 entries, checked in full 30, checked in part 40 (not counted as checked), not opened 0, struck 0 (`courses/egypt/notes/bibliography.md`).
+- **Flags.** F1 to F5 opened `courses/egypt/notes/syllabus-flags.md`, F2's "every module" written as the codes; S-EG0 added F6 (the briefs' Egyptian name forms against the Greek course's) and F7 (Ma'at and Maat in the design).
 
 ## 10 · What was checked and what was not
 
