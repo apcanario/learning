@@ -890,6 +890,7 @@ details.clog[open]>summary::after{content:"–"}
   /* stat tiles stay 3 or 4 across (two columns would orphan a tile) */
   .stats[data-n="4"]{grid-template-columns:repeat(4,1fr)}
   .panel.root>.hlinks:not([data-one]){grid-template-columns:repeat(3,1fr)}
+  .panel.root>.hlinks[data-n="4"]{grid-template-columns:repeat(2,1fr)}   /* S-NEXT1: four site links (Coming next joined them) two by two, not three and an orphan; data-n="4" is set by build.py (no :has(), which cost the animated home frame time) */
   /* P92: from 768 px an area's header holds its "Track" label, its name, its one-paragraph lede and its count (P90, P91) */
   .panel.root .thead .cname,.panel.root .thead p{display:block}
   .panel.root .tmeta{display:inline}

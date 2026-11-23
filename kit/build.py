@@ -1010,12 +1010,6 @@ changelog = f"""
   </header>
   {cl_body}
 </section>"""
-# P91 (4 Nov 2026): the home's other site pages (the backlog; the figure kinds, which has no drawer row; the changelog,
-# which joins them) sit above New since, so What's new is the one link under it
-site_links = ''.join(([] if 'backlog' in OMIT else [f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>What comes next, in order and by area</b></a>'])
-                  + ([] if 'figures' in OMIT else [f'<a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a>'])
-                  + ([] if 'changelog' in OMIT else [f'<a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>What has been done, by area, newest first</b></a>']))
-site_links = f'<div class="hlinks">{site_links}</div>' if site_links else ''
 
 # the backlog page (S-PAGES): the overall order first, then one table per area, from docs/site-log.md's Next alone
 bl_order = sl_table(('c-n', 'c-code', 'c-area', 'c-text'), ('#', 'Code', 'Area', 'What it is'),
@@ -1238,6 +1232,78 @@ else:
     tracks = f"""
   <div class="cgrid areas">{area_tiles}</div>"""
 
+# S-NEXT1 (23 Nov 2026) · the Coming next page (#coming), built like the Backlog page (S-PAGES): every course not yet
+# complete, in three sections, an empty one left out: In progress (a registered course with some units written: "n of
+# N"), Ready to write (a registered course with none, the build's status 'coming soon': "0 of N", syllabus and prompts
+# filed) and Planned (every row of every track's `planned`: theme chosen); then one line, how many courses are complete.
+# Every value is the build's own: a history course's units complete of its card units and its status (as its tile shows
+# them), a markdown sub-course's units written of its units and its status (md_courses), PLANNED. A registered course in
+# `course_order` (COURSES; a markdown course's sub-courses in its data file's order) links to its home; a planned row,
+# by track in catalog order and each track's own order, to its track's planned list. No date is given.
+def coming_rows():
+    """(registered, planned): registered [(state, name, track id, home id, scope, done, total)] in course order, state
+    'complete', 'progress' or 'ready'; planned [(name, track id, anchor, scope)] by track, then the track's order."""
+    reg = []
+    for c in COURSES:
+        if c['family'] == 'history':
+            st = 'complete' if c['status'] == 'available' else ('progress' if c['nrep'] else 'ready')
+            # edge case (none today): reports filed but no unit complete reads "0 of N" under In progress
+            reg.append((st, c['name'], c['theme'], c['home_id'], c['tile'], c['units_complete'], c['card_units']))
+        else:
+            for m in MD:
+                if m['parent'] is c:
+                    st = {'available': 'complete', 'in progress': 'progress', 'coming soon': 'ready'}[m['status']]
+                    reg.append((st, m['name'], m['theme'], m['home_id'], m['tile'], m['nwritten'], m['nunits']))
+    plan = [(name, t['id'], t.get('planned_anchor', 'planned-' + t['id']), scope) for t in THEMES for short, name, col, scope, spine in PLANNED[t['id']]]
+    return reg, plan
+
+
+CM_REG, CM_PLAN = coming_rows()
+if 'coming' not in OMIT and not CM_PLAN and all(r[0] == 'complete' for r in CM_REG):
+    OMIT.add('coming')   # no course to list: the page and its site link are left out, as an edition's omit would
+CM_SECTIONS = [('progress', 'In progress', 'Some units written; the rest are next.', 'var(--gold)'),
+               ('ready', 'Ready to write', 'Syllabus and prompts filed; no unit written yet.', 'var(--orange)'),
+               ('planned', 'Planned', 'The theme is chosen; each area\'s courses in their intended order.', 'var(--muted)')]
+
+
+def cm_row(name, tid, target, scope, status):
+    t = THEME[tid]
+    return (f'<a href="#{target}" data-target="{target}"><strong>{html.escape(name)}</strong></a><br>{html.escape(scope)}',
+            f'<span class="sla" style="--c:{t["color"]}">{html.escape(t["name"])}</span>', status)
+
+
+cm_body, cm_count = '', {}
+for key, head, held, tone in CM_SECTIONS:
+    if key == 'planned':
+        rows = [cm_row(n, tid, a, s, '<span class="sld">theme chosen</span>') for n, tid, a, s in CM_PLAN]
+    else:
+        rows = [cm_row(n, tid, h, s, f'<span class="slc">{d} of {tot}</span>' + ('<span class="sld">syllabus and prompts filed</span>' if key == 'ready' else ''))
+                for st, n, tid, h, s, d, tot in CM_REG if st == key]
+    cm_count[key] = len(rows)
+    if rows:
+        cm_body += (f'<section class="howto slarea" data-coming="{key}" style="--hc:{tone}"><h2>{head}</h2><p class="slheld">{held}</p>'
+                    + sl_table(('c-text', 'c-area', 'c-area'), ('Course', 'Area', 'Status'), rows) + '</section>')
+cm_done = sum(1 for r in CM_REG if r[0] == 'complete')
+cm_bl = '' if 'backlog' in OMIT else ' What is next for the site itself is in the <a href="#backlog" data-target="backlog">Backlog</a>.'
+coming = f"""
+<section class="panel log slog" id="coming" data-ctx="root" data-kind="coming" data-t="Coming next" data-u="{html.escape(SITE_NAME.upper())}" data-c="var(--teal)" hidden>
+  <header class="hero">
+    {crumbs((SITE_NAME, 'home'), ('Coming next', None))}
+    <div class="eyebrow"><span class="u" style="--c:var(--teal)">COMING NEXT</span>{''.join(f' · {cm_count[k]} {w}' for k, w in (('progress', 'in progress'), ('ready', 'ready to write'), ('planned', 'planned')) if cm_count[k])}</div>
+    <h1>Coming next</h1>
+    <p class="lede">Every course not yet complete: first those being written, then those whose syllabus and prompts are filed, then those whose theme is chosen.{cm_bl}</p>
+  </header>
+  {cm_body}
+  <p class="hnote" data-coming="done">{cm_done} course{"s are" if cm_done != 1 else " is"} complete; every course is reached from the <a href="#home" data-target="home">home</a>.</p>
+</section>"""
+# P91 (4 Nov 2026): the home's other site pages (the backlog; the figure kinds, which has no drawer row; the changelog,
+# which joins them) sit above New since, so What's new is the one link under it
+site_links = ''.join(([] if 'backlog' in OMIT else [f'<a class="hbtn alt" href="#backlog" data-target="backlog"><span>Backlog</span><b>What comes next, in order and by area</b></a>'])
+                  + ([] if 'coming' in OMIT else [f'<a class="hbtn alt" href="#coming" data-target="coming"><span>Coming next</span><b>Every course not yet complete, by how far it has come</b></a>'])   # S-NEXT1
+                  + ([] if 'figures' in OMIT else [f'<a class="hbtn alt" href="#viz-examples" data-target="viz-examples"><span>Figure kinds</span><b>Every figure a unit can declare, with its block</b></a>'])
+                  + ([] if 'changelog' in OMIT else [f'<a class="hbtn alt" href="#changelog" data-target="changelog"><span>Changelog</span><b>What has been done, by area, newest first</b></a>']))
+site_links = f'<div class="hlinks"{" data-n=\"4\"" if site_links.count("<a ") == 4 else ""}>{site_links}</div>' if site_links else ''   # S-NEXT1: data-n="4" lets theme.css set four links two by two without :has() (a :has() on the home cost frame time)
+
 # What's new (P91): every unit filed and every course started, newest first, grouped by day; and its first six rows
 # as New since at the foot of the home
 def _model(m):
@@ -1360,7 +1426,7 @@ for c in HISTORY:
 for m in MD:
     m['panels'].append(howbuilt.markdown_page(m, crumbs, THEME, md_inline, md_blocks))
 
-panels = [roothome, *AREA_PANELS, changelog, backlog]   # S-NAV1 step B: the area pages, in the shell (no fetch), after the home
+panels = [roothome, *AREA_PANELS, changelog, backlog, coming]   # S-NEXT1: the Coming next page beside the Backlog; S-NAV1 step B: the area pages, in the shell (no fetch), after the home
 for c in HISTORY:
     panels += [course_home(c), c['built'], syllabus(c)] + c['report_panels']
 for m in MD:
@@ -1528,7 +1594,7 @@ if OLD.exists():
 # the size table in README.md (between the markers), regenerated on every build; verify.py checks it against the files
 def kb(n):
     return f'{n / 1024:,.0f} KB' if n < 1024 * 1024 else f'{n / 1024 / 1024:.2f} MB'
-rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, the build pages of the markdown courses, backlog')]
+rows = [('Shell (`index.html`)', 1, len(page.encode()), len(page.encode()), 'home, drawer, the build pages of the markdown courses, backlog, coming next')]
 for ctx, name in [(c['id'], c['short']) for c in HISTORY] + [(m['id'], m['short']) for m in MD]:
     fs = [len(v.encode()) for k, v in REPORTS.items() if k.startswith(ctx + '/')]
     big = max(((len(v.encode()), k) for k, v in REPORTS.items() if k.startswith(ctx + '/')), default=(0, ''))

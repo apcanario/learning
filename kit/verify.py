@@ -808,7 +808,7 @@ def check_home(pg, label, fails, expect, motion=False):
     pg.evaluate("location.hash = 'home'"); ready(pg); pg.evaluate('window.scrollTo(0, 0)'); pg.wait_for_timeout(160)
     # a theme switched by the test fades the tiles' colours (section 7's .15 s transitions): read the page once they are done
     pg.wait_for_function("() => !document.getAnimations().some(a => typeof CSSTransition !== 'undefined' && a instanceof CSSTransition && a.playState === 'running')", timeout=5000)
-    r = pg.evaluate(HOME_JS, [[a['color'] for a in expect['areas']], {'planned': 'planned' not in OMIT, 'site': any(k not in OMIT for k in ('backlog', 'figures', 'changelog')), 'tracks': {t['id']: {'extra': t.get('extra'), 'plan': t.get('planned_anchor', 'planned-' + t['id']) if t.get('planned') else None} for t in THEMES}, 'areas': MULTI}])
+    r = pg.evaluate(HOME_JS, [[a['color'] for a in expect['areas']], {'planned': 'planned' not in OMIT, 'site': any(k not in OMIT for k in ('backlog', 'coming', 'figures', 'changelog')), 'tracks': {t['id']: {'extra': t.get('extra'), 'plan': t.get('planned_anchor', 'planned-' + t['id']) if t.get('planned') else None} for t in THEMES}, 'areas': MULTI}])
     fails += [f'home {label}: {b}' for b in r['bad']]
     names = [a['name'] for a in expect['areas']]
     if [w for w, _ in r.get('words', [])] != names: fails.append(f'home {label}: the area line reads {[w for w, _ in r.get("words", [])]}, THEMES gives {names}')
@@ -854,7 +854,7 @@ def check_home(pg, label, fails, expect, motion=False):
     old6 = expect['rows'][:6][-1] if expect['rows'] else None   # S-DEC4: the oldest of the (at most) six rows, as build.py's RECENT[-1]; an edition with fewer filings lists fewer
     if old6 and r.get('since') != f"New since {int(old6['date'][8:])} {MON3[int(old6['date'][5:7]) - 1]}":
         fails.append(f'home {label}: New since\'s heading reads {r.get("since")!r}, its oldest row is {old6["date"]}')
-    want_site = [x for x, k in (('#backlog', 'backlog'), ('#viz-examples', 'figures'), ('#changelog', 'changelog')) if k not in OMIT]
+    want_site = [x for x, k in (('#backlog', 'backlog'), ('#coming', 'coming'), ('#viz-examples', 'figures'), ('#changelog', 'changelog')) if k not in OMIT]   # S-NEXT1: Coming next beside the Backlog
     if r.get('site') != want_site: fails.append(f'home {label}: the site links above New since are {r.get("site")}, expected {want_site}')
     an = r.get('anims', [])
     if motion:
@@ -1342,7 +1342,7 @@ def check_contrast(pg, fails):
     firsts = pg.evaluate("""() => { const seen = {}, out = []; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => {
       const c = p.getAttribute('data-ctx'); if (!seen[c]) { seen[c] = 1; out.push(p.id); } }); return out; }""")
     homes = pg.evaluate("[...document.querySelectorAll('.panel[data-kind=\"course\"]')].map(p => p.id)")
-    pids = SCOPE.only([x for x in ['home', 'new', 'changelog', 'backlog'] if x not in OMIT] + AREA_IDS + homes + firsts)   # S-NAV1 step B: the area pages   # P91: What's new   # S-DEC4: the run's pages
+    pids = SCOPE.only([x for x in ['home', 'new', 'changelog', 'backlog', 'coming'] if x not in OMIT] + AREA_IDS + homes + firsts)   # S-NAV1 step B: the area pages   # P91: What's new   # S-DEC4: the run's pages
     worst, total = [99, ''], 0
     for pid in pids:
         pg.evaluate(f"location.hash = '{pid}'"); ready(pg); pg.wait_for_timeout(40)
@@ -2987,6 +2987,115 @@ def check_site_log(br, fails):
     print(f'site log (S-PAGES): {len(nxt)} next and {len(done)} done in docs/site-log.md; Backlog and Changelog checked {seen} times at '
           f'{", ".join(str(x[1]) for x in SL_WIDTHS)} px, dark and light (plain words, private terms, order, areas, no sideways scroll); {len(bad)} faults')
 
+# S-NEXT1 (23 Nov 2026) · the Coming next page (#coming, in the shell beside the Backlog): every course not yet complete,
+# from the sources as build.py reads them. In progress: a registered course with some units written ("n of N", a history
+# course's units complete of its card units, a markdown sub-course's units filed of its units); Ready to write: one with
+# none (its build status 'coming soon'; a history course with no report), "0 of N" and "syllabus and prompts filed";
+# Planned: every row of every track's `planned` ('planned' not in OMIT), "theme chosen". Each in course_order (planned:
+# tracks in catalog order, then each track's own), exactly once, in its section and with its count, its track's name in
+# the track's colour, its link (a course's home; a planned row its track's planned list); no complete course is a row;
+# an empty section is left out; the closing line counts the complete courses and links to the home. At 390 px, dark and
+# light: no sideways scroll of the page, a table or a cell, and nothing past the right edge.
+def coming_expect():
+    """(registered [(state, name, track, home id, done, total)] in course order, planned [(name, track, anchor)])."""
+    from howbuilt import front
+    reg = []
+    for c in COURSES:
+        if c['family'] == 'history':
+            syl = cpath(c, 'syllabus').read_text()
+            idx = json.load(open(cpath(c, 'prompts')))
+            units = [(u, re.findall(r'data-id="([\d.]+)">', body)) for u, body in re.findall(r'<section class="unit" id="u(\d+)"[^>]*>(.*?)</section>', syl, re.S)]
+            done = sum(1 for u, ms in units if u != c['audit_unit'] and all(m in idx for m in ms))
+            started = any(m in idx for _, ms in units for m in ms)
+            # 'complete' reads the course.toml's typed status, the same value the build reads, so it is not checked independently
+            reg.append(('complete' if c['status'] == 'available' else 'progress' if started else 'ready', c['name'], c['theme'], c['home_id'], done, c['card_units']))
+        else:
+            d = pack.load(c)
+            v = R.parent / c['vault']
+            codes = {front(f).get('code') for f in (sorted(v.glob('*.md')) if v.is_dir() else [])}
+            for sc in d.COURSES:
+                tr, _ = c['tracks'][sc['key']]
+                n, N = sum(1 for u in sc['units'] if u[0] in codes), len(sc['units'])
+                reg.append(('complete' if n == N else 'progress' if n else 'ready', sc['name'], tr, f"{c.get('prefix', c['id'])}-{sc['key'].lower()}", n, N))
+    plan = [] if 'planned' in OMIT else [(row[1], t['id'], t.get('planned_anchor', 'planned-' + t['id'])) for t in THEMES for row in t.get('planned', [])]
+    return reg, plan
+
+# with no course to list (every registered course complete, no planned row) the build leaves the page and its site link
+# out, as an edition's omit would; the checks that read OMIT then expect neither
+COMING_EMPTY = 'coming' not in OMIT and (lambda r, p: not p and all(x[0] == 'complete' for x in r))(*coming_expect())
+if COMING_EMPTY: OMIT.add('coming')
+
+COMING_JS = r"""() => { const p = document.getElementById('coming'), vw = document.documentElement.clientWidth;
+  const txt = (r, s) => { const e = r.querySelector(s); return e ? e.textContent.trim() : null; };
+  return {sw: document.documentElement.scrollWidth, cw: vw,
+    over: [...p.querySelectorAll('.sltbl, table, td, th')].filter(e => e.scrollWidth > e.clientWidth + 1).length,
+    past: [...p.querySelectorAll('*')].filter(e => { const b = e.getBoundingClientRect(); return b.width && b.right > vw + 0.5; }).length,
+    secs: [...p.querySelectorAll(':scope > section[data-coming]')].map(s => ({key: s.dataset.coming, head: txt(s, 'h2'),
+      rows: [...s.querySelectorAll('table.sl tbody tr')].map(r => ({target: (r.querySelector('a[data-target]') || {dataset: {}}).dataset.target,
+        name: txt(r, 'a[data-target] strong'), area: txt(r, '.sla'), tone: (r.querySelector('.sla') || {style: {}}).style.getPropertyValue('--c').trim(),
+        count: txt(r, '.slc'), note: txt(r, '.sld')}))})),
+    done: txt(p, ':scope > [data-coming="done"]'), home: !!p.querySelector(':scope > [data-coming="done"] a[data-target="home"][href="#home"]')}; }"""
+
+def check_coming(br, fails):
+    if COMING_EMPTY:
+        sh = (SITE / 'index.html').read_text()
+        if re.search(r'id="coming"', sh) or re.search(r'href="#coming"', sh):
+            fails.append(f'coming next: edition {EDITION} has no course to list, yet the Coming next page or its link is built')
+        else: print(f'coming next: edition {EDITION} has no course to list; the page and its link are left out')
+        return
+    if 'coming' in OMIT:
+        print(f'coming next: edition {EDITION} leaves out the Coming next page'); return
+    reg, plan = coming_expect()
+    TH = {t['id']: t for t in THEMES}
+    want = {'progress': [], 'ready': [], 'planned': []}
+    for st, name, tr, home, n, N in reg:
+        if st == 'complete': continue
+        want[st].append(dict(target=home, name=name, area=TH[tr]['name'], tone=TH[tr]['color'], count=f'{n} of {N}',
+                             note='syllabus and prompts filed' if st == 'ready' else None))
+    for name, tr, anchor in plan:
+        want['planned'].append(dict(target=anchor, name=name, area=TH[tr]['name'], tone=TH[tr]['color'], count=None, note='theme chosen'))
+    heads = {'progress': 'In progress', 'ready': 'Ready to write', 'planned': 'Planned'}
+    complete = [r for r in reg if r[0] == 'complete']
+    bad = []
+    if not re.search(r'<section class="panel log slog" id="coming"', (SITE / 'index.html').read_text()):
+        bad.append('coming next: the Coming next panel (.panel.log.slog#coming) is not in the shell')
+    for theme in ('dark', 'light'):
+        errs = []
+        ctx, pg, _ = new_page(None, br, errs, 'phone', 390, 844, True)
+        if theme == 'light':
+            pg.evaluate(f"localStorage.setItem('{THEME_KEY}', 'light'); document.documentElement.setAttribute('data-theme', 'light')")
+        pg.evaluate("location.hash = 'coming'"); ready(pg); pg.wait_for_timeout(80)
+        r = pg.evaluate(COMING_JS)
+        where = f'390 px {theme}'
+        if r['sw'] > r['cw']: bad.append(f'coming next at {where}: the page scrolls sideways ({r["sw"]} > {r["cw"]})')
+        if r['over']: bad.append(f'coming next at {where}: {r["over"]} table(s) or cell(s) overflow')
+        if r['past']: bad.append(f'coming next at {where}: {r["past"]} element(s) stand past the right edge')
+        wk = [k for k in ('progress', 'ready', 'planned') if want[k]]
+        if [s['key'] for s in r['secs']] != wk: bad.append(f'coming next at {where}: sections {[s["key"] for s in r["secs"]]}, expected {wk} (an empty one left out)')
+        got_all = [(x['target'], x['name']) for s in r['secs'] for x in s['rows']]
+        for k in wk:
+            s = next((s for s in r['secs'] if s['key'] == k), None)
+            if not s: continue
+            if s['head'] != heads[k]: bad.append(f'coming next at {where}: section {k} is headed {s["head"]!r}, not {heads[k]!r}')
+            if s['rows'] != want[k]:
+                miss = [x['name'] for x in want[k] if x not in s['rows']]
+                extra = [x['name'] for x in s['rows'] if x not in want[k]]
+                bad.append(f'coming next at {where}: {heads[k]} lists {len(s["rows"])} rows, expected {len(want[k])} in order'
+                           + (f'; missing or different {miss}' if miss else '') + (f'; not expected {extra}' if extra else ''))
+        for x in [x for k in want for x in want[k]]:
+            n = got_all.count((x['target'], x['name']))
+            if n != 1: bad.append(f'coming next at {where}: {x["name"]} appears {n} times, expected once')
+        for st, name, tr, home, n, N in complete:
+            if any(t == home for t, _ in got_all): bad.append(f'coming next at {where}: the complete course {name} is listed as a row')
+        k = len(complete)
+        if not (r['done'] or '').startswith(f'{k} course{"s are" if k != 1 else " is"} complete') or not r['home']:
+            bad.append(f'coming next at {where}: the closing line reads {r["done"]!r} (home link {r["home"]}), expected {k} complete and a link to the home')
+        if errs: bad.append(f'coming next {where}: console errors: ' + ' | '.join(errs[:3]))
+        ctx.close()
+    fails += bad
+    print(f'coming next (S-NEXT1): {len(want["progress"])} in progress, {len(want["ready"])} ready to write, {len(want["planned"])} planned, '
+          f'{len(complete)} complete; checked at 390 px, dark and light (sections, order, counts, links, tones, no sideways scroll); {len(bad)} faults')
+
 # S-NAV1 (21 Nov 2026), step A: history. Every move is a real history entry (shell.js go() pushes '#'+id), so a back swipe
 # walks the site instead of leaving it; popstate restores the panel and the scroll its entry kept; the first load pushes
 # nothing. At 390 px: a fresh load holds as many entries as a plain page (no push); home -> area (step B: an edition of
@@ -3230,7 +3339,7 @@ def check_debug(br, fails):
 # under it. What's new, the Changelog and the Backlog are links at the home's foot, in neither nav.
 NAV_JS = '''() => { const mains = [...document.querySelectorAll('nav.main-nav')], subs = [...document.querySelectorAll('nav.sub-nav')];
   const m = mains[0], s = subs[0], vis = s ? [...s.querySelectorAll('[data-navctx]')].filter(g => !g.hidden) : [];
-  const site = ['#new', '#changelog', '#backlog'];
+  const site = ['#new', '#changelog', '#backlog', '#coming'];
   return {nMain: mains.length, nSub: subs.length, inPanels: document.querySelectorAll('.panel nav.main-nav, .panel nav.sub-nav').length,
     inDrawer: !!(m && s && m.parentElement === s.parentElement && m.closest('#drawer')),
     order: m && s ? !!(m.compareDocumentPosition(s) & Node.DOCUMENT_POSITION_FOLLOWING) : false,
@@ -3289,7 +3398,7 @@ def check_nav(br, fails, w=390, h=844, theme='dark', motion=False, label=None):
     pg.on('pageerror', lambda e: errs.append(str(e)))
     pg.on('console', lambda m: errs.append(m.text) if m.type == 'error' else None)
     pg.goto(URL + '#home'); ready(pg)
-    roots = ['home', 'new'] + [x for x in ('changelog', 'backlog') if x not in OMIT] + ([] if 'figures' in OMIT else ['viz-examples'])
+    roots = ['home', 'new'] + [x for x in ('changelog', 'backlog', 'coming') if x not in OMIT] + ([] if 'figures' in OMIT else ['viz-examples'])
     firsts = pg.evaluate("""() => { const o = {}; document.querySelectorAll('.panel[data-kind="report"]').forEach(p => { const c = p.getAttribute('data-ctx'); if (!o[c]) o[c] = p.id; }); return o; }""")
     pages = [(x, 'root') for x in roots] + [(a, 'area') for a in AREA_IDS]
     for cx, (tr, home) in sec.items():
@@ -3755,6 +3864,7 @@ def main():
         check_swell(br, fails)   # S-NAV1 step D
         check_pause(br, fails)   # S-NAV1 step G: a drawing out of view holds still
         check_site_log(br, fails)   # S-PAGES
+        check_coming(br, fails)   # S-NEXT1
         check_history(br, fails)   # S-NAV1 step A
         check_debug(br, fails)   # S-NAV2 step B (Fix 2): the ?debug history readout
         check_nav(br, fails)   # S-NAV1 step C: phone, dark
@@ -4098,7 +4208,7 @@ def main():
         # reduced motion: each page's topography and tiles against the sources (check_topo, check_tiles), two history
         # unit tiles opened (their rows, their line whole); the home's tiles too
         TOPO_ALL = [x for x in SAMPLE if x in HIST_HOMES or x in EXPECT['courses']] + AREA_IDS + ['new']   # S-DEC4: course.toml `verify_sample` (every course where the edition holds none); S-NAV1 step B: every area page
-        NONE_ALL = [x for x in ('changelog', 'backlog', 'viz-examples') if (x != 'viz-examples' or 'figures' not in OMIT) and (x not in ('changelog', 'backlog') or x not in OMIT)]
+        NONE_ALL = [x for x in ('changelog', 'backlog', 'coming', 'viz-examples') if (x != 'viz-examples' or 'figures' not in OMIT) and (x not in ('changelog', 'backlog', 'coming') or x not in OMIT)]   # S-NEXT1: Coming next
         TOPO_PAGES, NONE_PAGES = SCOPE.only(TOPO_ALL), SCOPE.only(NONE_ALL)   # S-DEC4: the run's pages (the shots and the LCP pages below take every sampled one)
         for name, w, h, mobile in HOME_WIDTHS + VIEWPORTS + NEW_VIEWPORTS:   # S-NAV2 step D: and 1024 x 768, 1920 x 1080
             ctx, pg, _ = new_page(p, br, errors, name + ' pages', w, h, mobile)

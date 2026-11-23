@@ -316,3 +316,4 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-11-15 | P112 | Academy | The project's working copies of the queue and this record brought up to date. |
 | 2026-11-15 | S-PAGES | Academy | The Backlog and Changelog pages redrawn as this plain overview by area. |
 | 2026-11-15 | S-BW1 | AI | The writing rules of the public AI course tightened before its first unit (honest source titles, quotations credited to the speaker, figures cited to the page that states them), the lesson carried back into course A, and the course's writing sessions made leaner. |
+| 2026-11-23 | S-NEXT1 | Academy | A Coming next page lists every course still to be written or planned, grouped by how far along it is. |
