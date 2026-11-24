@@ -1107,8 +1107,11 @@ def check_topo(pg, pid, label, fails, expect, motion=False, phase=True):
                     iv = new_interval(top[1] or 0)
                     if (top[1] or 0) >= 10:   # P93's 10 to 25 levels; P-DEC15: every edition, at its own scale
                         if not 10 <= top[2] <= 25: fails.append(f'{pid} {label}: its largest day ({top[0]}) stands {top[2]} levels, not 10 to 25')
-                    if top[2] != int((top[1] or 0) // iv): fails.append(f'{pid} {label}: its largest day ({top[0]}, {top[1]} words) stands {top[2]} levels, not {int((top[1] or 0) // iv)} (a level every {iv:,} words, build.py new_interval)')
-                    if iv != NEW_INTERVAL and not _NEW_SAID:
+                    if (top[1] or 0) >= 10 * NEW_INTERVAL: iv = None   # P-HK2: the interval is derived from a byte budget (build.py new_fit), between NEW_INTERVAL and a tenth of the largest day
+                    if iv is None:
+                        if top[2] > int((top[1] or 0) // NEW_INTERVAL): fails.append(f'{pid} {label}: its largest day stands {top[2]} levels, more than NEW_INTERVAL allows')
+                    elif top[2] != int((top[1] or 0) // iv): fails.append(f'{pid} {label}: its largest day ({top[0]}, {top[1]} words) stands {top[2]} levels, not {int((top[1] or 0) // iv)} (a level every {iv:,} words, build.py new_interval)')
+                    if iv is not None and iv != NEW_INTERVAL and not _NEW_SAID:
                         _NEW_SAID.append(1)
                         print(f"What's new: edition {EDITION}'s largest day ({top[0]}, {top[1] or 0:,} words) is under {10 * NEW_INTERVAL:,} words, so it is drawn at its own scale, "
                               f"a level every {iv:,} words (build.py new_interval, not NEW_INTERVAL's {NEW_INTERVAL:,}), {int((top[1] or 0) // iv)} levels")

@@ -1349,7 +1349,28 @@ def _day_tone(xs):
             by[x['color']] = by.get(x['color'], 0) + x['words']
     return _TONE[max(by, key=by.get)]
 NEW_TONES = [_day_tone(xs) for d, xs in reversed(_days)]
-new_layer = hero_layer(NEW_DAYS, NEW_TONES, new_interval(max(w for _, w in NEW_DAYS)), NEW_TOPO) if NEW_DAYS else ''
+# P-HK2 (24 Nov 2026): the layer grows by a rise per filing day, so the interval is derived from a budget as the home
+# hero's is (hero_interval): the floor is new_interval (NEW_INTERVAL where the largest day reaches 10 levels at it), and
+# where the layer there is over NEW_BUDGET bytes the smallest whole hundred of words above it at which it fits, no
+# higher than a tenth of the largest day (so the largest day keeps 10 levels, verify.py's 10 to 25). An edition drawn
+# at its own scale (largest day under 10 x NEW_INTERVAL) keeps new_interval, unchanged. At the first fitting interval
+# the layer is 19 KB at most; growth: one rise a day, about 0.35 KB at the floor, the interval rising with it.
+NEW_BUDGET = 19 * 1024   # bytes of What's new's layer as verify.py measures it (outerHTML), 1.4 KB under its 20 KB
+def new_fit(days, tones):
+    top = max(w for _, w in days)
+    iv = new_interval(top)
+    layer = hero_layer(days, tones, iv, NEW_TOPO)
+    if top < 10 * NEW_INTERVAL or sep_bytes(layer) <= NEW_BUDGET:
+        return iv, layer
+    for iv in range(NEW_INTERVAL + 100, int(top) // 10 + 1, 100):
+        try:
+            layer = hero_layer(days, tones, iv, NEW_TOPO)
+        except SystemExit:   # ct_fit finds no spread at this interval (some rise cannot close its rings): not a fit
+            continue
+        if sep_bytes(layer) <= NEW_BUDGET:
+            return iv, layer
+    raise SystemExit(f"What's new's layer is {sep_bytes(layer):,} bytes at {iv:,} words a level, over NEW_BUDGET ({NEW_BUDGET:,}): no interval keeps it in budget")
+NEW_IV, new_layer = new_fit(NEW_DAYS, NEW_TONES) if NEW_DAYS else (NEW_INTERVAL, '')
 whatsnew = f"""
 <section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="{html.escape(SITE_NAME.upper())}" data-c="var(--gold)" hidden>
   <header class="hero has-topo">
