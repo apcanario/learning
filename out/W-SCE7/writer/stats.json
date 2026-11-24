@@ -1,0 +1,17 @@
+{
+ "unit": {
+  "words": 10082,
+  "figures": 4,
+  "sources": 25,
+  "front_matter": true
+ },
+ "unsure": {
+  "claims": 10,
+  "object_line": true
+ },
+ "notes": {
+  "Source errors": 0,
+  "Contradictions": 5,
+  "Needs": 10
+ }
+}
