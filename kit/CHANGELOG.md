@@ -183,6 +183,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 
 
+## 24 Nov 2026 · Session W-SCE6 · SCE6 filed
+
+SCE6 · The warehouse system as a product was written (search on), fresh-checked, corrected and filed; main chat Sonnet 5.5, thin; writer, fresh checker, applier, corrections checker and filer each a fresh Opus 5.5 agent. Fresh check fix: 0 errors, 7 should-fix, 7 minor; all 14 applied. In the same row, a corrections check of C-SCE5-1 to C-SCE5-9: 9 passed (C-SCE5-3 amended), 0 failed, 9 applied to SCE1 with the checker's 4 New items. kit/private_terms.py was not run in the packet (F1): the build runs it on SCE6 §8's 2022 vendor list. No kit code changed. 3 case facts added; 10 syllabus flags raised (F53 to F62); 3 corrections to SCE1 carried to the BACKLOG's Corrections, not applied. 6 of 20 written. The queue stops for gate P-SCE6.
+
 ## 24 Nov 2026 · Session W-SCE5 · SCE5 filed
 
 SCE5 · The floor: people, devices and machines was written (search off), fresh-checked, quality-reviewed (F46), corrected and filed; main chat Sonnet 5.5, thin; writer, fresh checker, quality reviewer, appliers and filer each a fresh Opus 5.5 agent. Fresh check fix: 2 errors, 8 should-fix, 5 minor; all 15 applied, plus 12 extra fixes (X1 to X12). Quality review fix: 0 errors, 4 should-fix, 14 minor; 17 applied by the applier, f2 (the unsure list) merged into the unit's Unsure list by hand. Kit: P-HK7 (`new_fit` in kit/build.py: a floor interval where `ct_fit` finds no spread now counts as no fit, so the upward scan runs; What's new is at 13,100 words a level). 13 case facts added; 6 syllabus flags raised; 9 corrections to SCE1 carried to the BACKLOG's Corrections, not applied. 5 of 20 written.
