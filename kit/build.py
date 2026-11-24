@@ -1147,7 +1147,7 @@ def hero_interval(topo, step=100):
 
 
 def hero_spread(topo, layer):
-    """P-HK3 (24 Nov 2026): the hero's layouts at their declared spread when every written rise closes min(2, its
+    """P-HK6 (24 Nov 2026): the hero's layouts at their declared spread when every written rise closes min(2, its
     levels) rings of its own there (P92, verify.py checks it); else each failing layout's spread narrowed by a tenth at a
     time, as ct_fit does, until it does. A rise just over one level standing on a larger neighbour's skirt (W-SCE4: Supply
     Chain, 31,508 words at 24,600, 1.28 levels, beside Technology in the tall layout and History in the wide) has its one
@@ -1166,7 +1166,7 @@ def hero_spread(topo, layer):
 
 HERO_INTERVAL, hero_topo = hero_interval(HERO_TOPO)
 HERO_TOPO['interval'] = HERO_INTERVAL
-hero_topo = hero_spread(HERO_TOPO, hero_topo)   # P-HK3
+hero_topo = hero_spread(HERO_TOPO, hero_topo)   # P-HK6
 if sep_bytes(hero_topo) > HERO_BUDGET:
     raise SystemExit(f'build.py hero_spread: the narrowed hero layer is {sep_bytes(hero_topo):,} bytes, over HERO_BUDGET ({HERO_BUDGET:,})')
 def track_body(t, ph):
