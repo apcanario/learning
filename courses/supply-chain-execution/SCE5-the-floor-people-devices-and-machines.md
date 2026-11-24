@@ -164,7 +164,7 @@ The review literature describes the machines; it says less about the people next
 
 | # | Claim as it circulates | What this unit found | Grade of the best evidence |
 |---|---|---|---|
-| C3 | Labour is the largest cost in a warehouse. | US Census data, 2012: payroll about a third of warehousing firms' total expense, payroll with benefits about 41%; other lines not opened; no source ranks all lines (section 8). | independent (partial) |
+| C3 | Labour is the largest cost in a warehouse. | US Census data, 2012: payroll about a third of warehousing firms' total expense, payroll with benefits about 41%; of the other lines only "all other operating expenses" ($4,388 million) was opened, the remaining $9,625 million was not; no source ranks all lines (section 8). | independent (partial) |
 | C5 | Voice picking brings accuracy to 99.9% or raises productivity by a fixed percentage. | One field experiment (101 participants): voice performed better than RF terminals, no percentage in the abstract; no source opened gives 99.9% (section 3). No independent source found for either number. | independent (abstract) |
 | C6 | Gamification raises warehouse productivity by a stated percentage. | One vendor's "up to 7%", no basis; independent work is exploratory (eight managers; 17 pickers); an incentive experiment shows competition helps or hurts by picking method (sections 4, 5). No independent source found for a percentage. | vendor-reported |
 
@@ -196,7 +196,7 @@ The review literature describes the machines; it says less about the people next
 7. **How does an AMR differ from an AGV system for the software above it?**
    In an AGV system a central unit schedules, routes and dispatches; AMRs negotiate independently and decentralise decisions (section 6; Fragapane et al., abstract).
 8. **A colleague says labour is the largest cost in a warehouse. What do you answer?**
-   In US Census data for 2012, payroll was about a third of warehousing firms' total expense; payroll with benefits was about 41%; the other lines were not opened, so "largest" is not shown (section 8).
+   In US Census data for 2012, payroll was about a third of warehousing firms' total expense; payroll with benefits was about 41%; of the other lines only "all other operating expenses" ($4,388 million) was opened, the remaining $9,625 million was not, so "largest" is not shown (section 8).
 
 ## Deliverable
 
@@ -366,7 +366,7 @@ All addresses opened on 24 November 2026; the source log (sources.md) gives what
 2. de Vries et al. (2016, POMS): the published abstract reports no effects on quality, while the working paper's tables, as extracted, show error rates differing by condition; which holds in the published full text is not known.
 3. de Vries et al. (2016, IJPR): "performs better" is from the abstract; the size of the voice advantage and whether it held for each picking method were not read.
 4. BLS: resolved at the fresh check. The release's 4.4 (4.6 in 2024) for warehousing and storage is the injury-only rate; the Industries at a Glance page gives 4.5 total recordable cases (injuries and illnesses) per 100 full-time workers for 2025. The unit sets IAG's 4.5 against the release's private-industry total recordable rate of 2.3; both are from the Survey of Occupational Injuries and Illnesses.
-5. Census Service Annual Survey via FRED: the 2012 figures (total expense, payroll, employer's cost for fringe benefits); the "all other operating expenses" figure ($4,388 million) could not be re-fetched at the quality review, so the $9,625 million by subtraction rests on the first fetch; the FRED pages carry no notes, and the Census table itself was not opened.
+5. Census Service Annual Survey via FRED: the 2012 figures (total expense, payroll, employer's cost for fringe benefits); the "all other operating expenses" figure ($4,388 million) was re-read on FRED on 24 Nov 2026 by the W-SCE6 corrections check; the $9,625 million is this unit's subtraction; the FRED pages carry no notes, and the Census table itself was not opened.
 6. Gartner glossary definition: read at a gcom.pdo.aws.gartner.com host whose page showed no title; that it is the current Gartner glossary entry is assumed, and the Sources title is the course's label.
 7. Scriven (Interact Analysis, 2023): whether the author was Interact Analysis staff is not stated on the page; the article is graded analyst on its byline.
 8. ISO 6780:2003 sizes were read in a reseller's sample of the standard, not on ISO's own page; the "confirmed 2026" status is from ISO's page.
@@ -380,3 +380,5 @@ Object: the handheld scanner (RF terminal), section 3
 
 Fresh check 2026-11-24 (claude-opus-5-5): fix · 2 errors, 8 should-fix, 5 minor; report audits/supply-chain-execution/fresh-check-SCE5.md
 Quality review 2026-11-24 (claude-opus-5-5): fix · 0 errors, 4 should-fix, 14 minor; report audits/supply-chain-execution/quality-review-SCE5-2026-11-24.md
+
+Correction 24 Nov 2026, found by the W-SCE6 corrections check: the "other lines not opened" wording in section 9 and Self-check 8 now says that only "all other operating expenses" ($4,388 million) was opened and $9,625 million was not; unsure item 5 updated. Report audits/supply-chain-execution/corrections-2026-11-24-C-SCE5.md.
