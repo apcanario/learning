@@ -1,0 +1,10 @@
+academy/index.html
+academy/new.html
+academy/supply-chain-execution-sce/bibliography.html
+academy/supply-chain-execution-sce/briefs.html
+academy/supply-chain-execution-sce/built.html
+academy/supply-chain-execution-sce/home.html
+academy/supply-chain-execution-sce/read-sce1.html
+academy/supply-chain-execution-sce/read-sce5.html
+academy/supply-chain-execution-sce/read-sce6.html
+README.md
