@@ -21,7 +21,7 @@ Bartholdi and Hackman open with the question "Why have a warehouse?" (§1.1) and
 - **To match supply with demand.** A warehouse holds stock against seasonal surges, unreliable transport, unreliable demand or price increases; in their words, warehouses can buffer the supply chain against collapsing demand (§1.1) [practice].
 - **To consolidate.** A distributor may consolidate shipments from vendors into large shipments for downstream customers, which reduces transport cost (§1.1) [practice].
 
-They add two further uses: **postponement**, holding product undifferentiated until nearer the customer, and centralising tasks such as price labelling (§1.1) [practice]. And they describe the **crossdock** (in this course, cross-dock), where each facility receives product from many vendors, sorts it, and prepares loads for each store (§1.1) [practice]. A cross-dock is a warehouse that consolidates without storing.
+They add two further uses: **postponement**, holding product undifferentiated until nearer the customer, and centralising tasks such as price labelling (§1.1) [practice]. And they describe the **crossdock** (in this course, cross-dock), where each facility receives product from many vendors, sorts it, and prepares loads for each store (§1.1) [practice]. A cross-dock, in this unit's summary, is a warehouse that consolidates without storing.
 
 What this means for software, as this unit's inference: a warehouse system is judged on two things that pull apart. It must keep an accurate record of goods that wait (the buffer), and it must move goods through fast (the consolidation). Inbound is where both start: a pallet that is received wrongly is wrong in the record for as long as it waits, and a pallet that waits on the dock delays every order that needs it.
 
@@ -39,14 +39,14 @@ Bartholdi and Hackman's types of warehouse (§1.2) matter for this unit in one p
 
 Their reasoning for why the change from one unit to another is where labour goes is one sentence: "In general, the smaller the handling unit, the greater the handling cost" (ch. 3 introduction) [practice]. A pallet is moved once with one truck trip; the same goods as forty cases are forty handlings; as several hundred eaches, several hundred. Every place where a larger unit is broken into smaller ones (a pallet opened to pick cases, a case opened to pick eaches) multiplies the handlings that follow. This unit opened no study that measures the multiplier; the direction is the textbook's, and the arithmetic is this unit's illustration.
 
-The two case operations sit at different points on that ladder. Ostrel Foods (fictional), a food distributor, picks by the case onto roll cages; Corvane (fictional) replenishes stores by carton and by single item and ships web orders of one to three items (case register). Corvane therefore breaks units twice (pallet to carton, carton to each); Ostrel once (pallet to case). This is this unit's reading of the register, and it is why later units treat their picking differently (SCE3).
+The two case operations sit at different points on that ladder. Ostrel Foods (fictional), a food distributor, picks by the case onto roll cages; Corvane (fictional) replenishes stores by carton and by single item and ships web orders of one to three items (case register). Corvane therefore breaks units twice (pallet to carton, carton to each); Ostrel once (pallet to case). That suppliers deliver both operations by the pallet is a fact this unit adds, listed for the case register; the rest is this unit's reading of the register, and it is why later units treat their picking differently (SCE3).
 
 ## 3. The inbound sequence, step by step
 
 Bartholdi and Hackman's inbound processes are **receiving** and **put-away**, before order-picking, checking, packing and shipping (ch. 3) [practice]. The brief's sequence below splits receiving into the steps a product team will meet as separate screens. For each: the physical event, the people, what the system does, how it fails, and its measure. Section 8 gives the measures' sources; section 7 gathers the system's work and data.
 
 ```viz
-{"kind": "flow", "title": "Inbound, from order to location", "per_row": 4, "steps": [{"label": "Purchase order and advance notice", "note": "what is coming"}, {"label": "Appointment and dock", "note": "when, which door"}, {"label": "Unload", "note": "staged for put-away"}, {"label": "Check and count", "note": "exceptions noted"}, {"label": "Quality hold", "note": "where inspection applies"}, {"label": "Label", "note": "SSCC on the logistic unit"}, {"label": "Cross-dock or store", "note": "to shipping, or to put-away", "tone": 3}, {"label": "Put away", "note": "location chosen, location scanned", "tone": 2}], "caption": "The inbound steps of section 3 of this unit, in order. Step names follow the course brief; the notes come from Bartholdi and Hackman, Warehouse & Distribution Science, release 0.98 (2017), sections 1.1, 3.1, 3.2 and 4.3, and GS1's Logistic Label Guideline, release 1.3 (July 2019), as cited in section 3."}
+{"kind": "flow", "title": "Inbound, from order to location", "per_row": 4, "steps": [{"label": "Purchase order and advance notice", "note": "what is coming"}, {"label": "Appointment and dock", "note": "when, which door"}, {"label": "Unload", "note": "staged for put-away"}, {"label": "Check and count", "note": "exceptions noted"}, {"label": "Quality hold", "note": "where inspection applies"}, {"label": "Label", "note": "SSCC on the logistic unit"}, {"label": "Cross-dock or store", "note": "to shipping, or to put-away", "tone": 3}, {"label": "Put away", "note": "location chosen, location scanned", "tone": 2}], "caption": "The inbound steps of section 3 of this unit, in order. Step names follow the course brief; the notes come from Bartholdi and Hackman, Warehouse & Distribution Science, release 0.98 (2017), sections 1.1, 3.1, 3.2 and 4.3, and GS1's Logistic Label Guideline, release 1.3 (July 2019), as cited in section 3; the quality-hold note is this unit's working description (section 3.5)."}
 ```
 
 ### 3.1 The purchase order and the advance notice
@@ -87,6 +87,8 @@ Bartholdi and Hackman's inbound processes are **receiving** and **put-away**, be
 
 **Common failure.** Goods left in staging are in the building but not in a location the record knows (this unit's inference from §4.2).
 
+**Measure.** Dock-to-stock cycle time starts when the delivery is received from the supplier (APQC, section 8) [practice].
+
 ### 3.4 Checking and counting
 
 **Physical event.** Product is inspected and exceptions noted, "such as damage, incorrect counts, wrong descriptions" (§3.1) [practice]. It "is likely to be scanned to register its arrival so that ownership is assumed" (§3.1) [practice]: the moment of receipt is the moment the goods become the buyer's on the record.
@@ -117,7 +119,7 @@ Bartholdi and Hackman's inbound processes are **receiving** and **put-away**, be
 
 **Physical event.** Each pallet or case is given a label the warehouse can scan, if the supplier's label is missing or unusable.
 
-**What the sources say.** GS1 defines a **logistic unit** as any combination of trade items packaged together for storage and/or transport, such as a case, pallet or parcel, and the **SSCC** (Serial Shipping Container Code) as the number that identifies it ([GS1, SSCC page](https://www.gs1.org/standards/id-keys/sscc)) [independent]. The GS1 Logistic Label Guideline says the label allows each logistic unit to be identified uniquely, and that the one mandatory element is that unique serial number (release 1.3) [independent]. A label can carry only one batch number and only one date value; best-before, expiry and sell-by dates are optional, and where used must relate to the trade item on the label (same guideline) [independent].
+**What the sources say.** GS1 defines a **logistic unit** as any combination of trade items packaged together for storage and/or transport, such as a case, pallet or parcel, and the **SSCC** (Serial Shipping Container Code) as the number that identifies it ([GS1, SSCC page](https://www.gs1.org/standards/id-keys/sscc)) [independent]. The GS1 Logistic Label Guideline says the label allows each logistic unit to be identified uniquely, and that the one mandatory element is that unique serial number (release 1.3) [independent]. A label can carry only one batch number and only one date value; where applicable, one of the guideline's date types (among them best-before, expiry and sell-by) should be given, and it always relates to the trade item identified on the label (same guideline) [independent].
 
 **People.** Receiving staff, where the site relabels.
 
@@ -125,13 +127,19 @@ Bartholdi and Hackman's inbound processes are **receiving** and **put-away**, be
 
 **Common failure.** A pallet whose trade items carry different dates or batches cannot show them on one GS1 label: rules [4-20] and [4-24] allow one date value and one batch number per label, and rule [4-21], a best practice, says that where items with several best-before dates are loaded together the earliest date is used on the label and on the despatch advice (same guideline) [independent]; mixed-batch pallets are therefore split or labelled by the site's own scheme (this unit's inference).
 
+**Measure.** No inbound benchmark for labels was found in the sources opened; the flow map uses WERC's correct-documents measure (section 8) as the nearest, because the labels must match the notice (this unit's inference).
+
 ### 3.7 Cross-docking: the alternative to storing
 
 **Physical event.** Goods go from the receiving dock to the shipping dock without being put away. Section 1 gives the textbook's description (§1.1) [practice].
 
+**People.** Whoever decides at the dock whether goods go to shipping or to storage; neither register names one.
+
 **System.** Bartholdi and Hackman list flow-through processing among a WMS's high-end features (§4.3) [practice]. To cross-dock, the system must know at receipt which outbound order or destination the goods are for, which means the outbound demand has to be in the system before the truck is unloaded (this unit's inference).
 
 **Common failure.** Goods arrive for which no outbound load is ready, and so are stored after all, or wait on the dock. Named, not measured.
+
+**Measure.** No inbound benchmark for cross-docking was found in the sources opened.
 
 **Where it fits the case.** Ostrel's work starts in the evening for delivery the next morning, and Corvane replenishes 60 stores (case register). Whether either cross-docks is not in the register.
 
@@ -196,7 +204,7 @@ What this means for software, as this unit's inference: a system that supports a
 
 **Why it matters.** Stockouts at the forward location can disrupt order-picking, which is the reason for carrying safety stock forward (§8.5.2) [practice]. One of the textbook's exercises states a rule of at least two pallets forward for any SKU, to avoid stockouts while waiting for replenishment (exercise 7.20) [practice]; it is an exercise's premise, not a finding.
 
-**At the case operation.** At Ostrel Foods (fictional), Bram does put-away and replenishment on nights, and picking starts in the evening (case register). Both the put-away and the replenishment work therefore compete for the same driver in the same hours (this unit's reading of the register). Pairing a put-away with a retrieval from reserve on one trip is the textbook's interleaving of put-aways and retrievals, which cuts deadheading (§6.2.1) [practice]; whether it eases Bram's nights is this unit's inference.
+**At the case operation.** At Ostrel Foods (fictional), Bram does put-away and replenishment on nights, and work starts in the evening for delivery the next morning (case register). Both the put-away and the replenishment work therefore compete for the same driver in the same hours (this unit's reading of the register). Pairing a put-away with a retrieval from reserve on one trip is the textbook's interleaving of put-aways and retrievals, which cuts deadheading (§6.2.1) [practice]; whether it eases Bram's nights is this unit's inference.
 
 **System.** Bartholdi and Hackman list replenishment among high-end WMS features (§4.3) [practice]. The system computes the trigger, creates the task, directs the driver to the reserve location and then to the forward location, and asks for a scan at each (this unit's inference from §4.2's directed tasks).
 
@@ -235,7 +243,7 @@ The tolerance and zone fields are this unit's inference from the steps, not list
 
 The survey document gives no definitions (they appear in pop-ups in the online tool, which this unit did not open), no sample and no values; its profile questions ask respondents' region, with North America, Europe and Asia among the options. The grade is practice because no sample is stated in what was read. The 2026 report with values is paid or members-only and was not opened, so **no value is given here**.
 
-**Definitions.** APQC, a benchmarking organisation, describes the measure as the average dock-to-stock cycle time in hours for supplier deliveries: the cycle begins when the business receives the delivery from the supplier and continues until the goods are put away in inventory after being recorded in its inventory management system; the page shows no formula and no values ([APQC, measure page](https://www.apqc.org/what-we-do/benchmarking/open-standards-benchmarking/measures/dock-stock-cycle-time-hours-supplier)) [practice]. The working definitions below are this course's own, written so that a team can compute each from a warehouse system's records; they are not WERC's wording.
+**Definitions.** APQC, a benchmarking organisation, describes the measure as the average dock-to-stock cycle time in hours for supplier deliveries: the cycle begins when the business receives the delivery from the supplier and continues until the goods are put away in inventory after being recorded in its inventory management system; the page shows no formula, and its benchmark values are shown only to users with access ([APQC, measure page](https://www.apqc.org/what-we-do/benchmarking/open-standards-benchmarking/measures/dock-stock-cycle-time-hours-supplier)) [practice]. The working definitions below are this course's own, written so that a team can compute each from a warehouse system's records; they are not WERC's wording, and WERC's own definitions (in its online tool) were not opened, so of the five only dock-to-stock is set against a published description (APQC's, above).
 
 | Measure (WERC's name) | Working definition | Data it needs from the system |
 |---|---|---|
@@ -260,7 +268,7 @@ Ostrel Foods (fictional) carries about 4,500 items, chilled, frozen and ambient,
 
 So a system that blocks expired stock must know which kind of date it holds; the GS1 label carries one date value, normally of the same type as the date on the product (GS1 guideline) [independent]. Which dates an operation may sell past, and when, is a legal question: put it to the operation's quality or legal team, or to the national food authority.
 
-**Traceability: the batch.** FSAI states that Regulation (EC) No 178/2002 requires every food business to have a traceability system, with a legal minimum of one-up-one-down (what you received and from whom; what you dispatched and to whom); that "It is not necessary in law to trace to the batch level"; and that recording batch codes and quantities at goods inwards and dispatch is best practice ([FSAI, "Traceability - FAQ"](https://www.fsai.ie/business-advice/starting-a-food-business/traceability/traceability)) [practice]. For the warehouse system, recording the batch at receipt is what makes a recall of one batch possible without pulling every pallet of the item (this unit's inference).
+**Traceability: the batch.** FSAI states that Regulation (EC) No 178/2002 requires every food business to have a traceability system, with a legal minimum of one-up-one-down (what you received and from whom; what you dispatched and to whom); that "It is not necessary in law to trace to the batch level"; and that best practice is to be able to say which batches, and what quantity, went to which customer, with the goods inwards area and the point of dispatch the best places to record it ([FSAI, "Traceability - FAQ"](https://www.fsai.ie/business-advice/starting-a-food-business/traceability/traceability)) [practice]. For the warehouse system, recording the batch at receipt is what makes a recall of one batch possible without pulling every pallet of the item (this unit's inference).
 
 **Temperature.** In the UK, GOV.UK's business guidance states: "Chilled food must be kept at 8°C or below," a legal requirement in England, Wales and Northern Ireland and a recommendation in Scotland; it advises putting frozen food in the freezer as soon as it is delivered ([GOV.UK, "Food hygiene for businesses: Chilling and freezing", last updated 25 Jun 2026](https://www.gov.uk/food-hygiene-businesses/chilling-and-freezing)) [practice]. The EU's hygiene regulation and the US federal rules for food warehousing could not be opened here (source log), so this unit states no rule for the EU or the US. For the inbound sequence, the consequence is this unit's inference: chilled and frozen goods cannot wait in an ambient staging lane, so the step order shortens, and the system needs each item's temperature zone and each location's zone so that it never directs a frozen pallet to an ambient location. Which temperature rule binds a given site is a legal question for the site's food safety authority.
 
@@ -317,7 +325,7 @@ Ostrel Foods (fictional): a food distributor buying from producers and deliverin
 | 6 | Label | Receiving staff, where Ostrel relabels; not in the register | Reads the producer's SSCC or prints a label (3.6) | One batch and one date per logistic unit (GS1, 3.6) | Mixed pallet with two dates or batches (3.6) | Percent with correct documents (8) |
 | 7 | Cross-dock or store | Not in the register | Flow-through processing where used (3.7) | Next morning's route demand, known before receipt (3.7) | No outbound load ready; whether Ostrel cross-docks is not in the register (3.7) | No benchmark found |
 | 8 | Put away | Bram, reach-truck driver, nights (register) | Directed put-away by zone; scan of the location (3.8, 9) | Locations with zone, type, dimensions; FEFO rule (3.8, 9) | Wrong location; frozen pallet to a wrong zone (3.8, 9) | Dock-to-stock time; lines received and put away per hour (8) |
-| 9 | Replenish forward | Bram, nights (register); Ilse, team lead, chilled picking (register), whose pickers depend on it (this unit's reading) | Trigger, task, scan at reserve and forward (6) | Forward location per item, capacity, trigger, dates for FEFO (6, 9) | Forward empty when picking starts in the evening; put-away and replenishment compete for one driver (6, reading of register) | No WERC inbound measure; stockouts at the pick face (6) |
+| 9 | Replenish forward | Bram, nights (register); Ilse, team lead, chilled picking (register), whose pickers depend on it (this unit's reading) | Trigger, task, scan at reserve and forward (6) | Forward location per item, capacity, trigger, dates for FEFO (6, 9) | Forward empty when the evening's work starts; put-away and replenishment compete for one driver (6, reading of register) | No WERC inbound measure; stockouts at the pick face (6) |
 
 Known trouble mapped to the rows (case register): short-dated stock found too late touches rows 4, 8 and 9, as this unit's reading (section 9).
 
@@ -335,7 +343,7 @@ Corvane (fictional): a fashion retailer with 60 stores in four European countrie
 | 6 | Label | Not in the register | Reads supplier SSCC or prints a label (3.6) | Logistic unit and contents (3.6) | Label not linked to contents (3.6, inference) | Percent with correct documents (8) |
 | 7 | Cross-dock or store | Not in the register | Flow-through for store replenishment where used (3.7) | Store demand by destination before receipt (3.7) | No store load ready; whether Corvane cross-docks is not in the register (3.7) | No benchmark found |
 | 8 | Put away | Not in the register; Carla answers for the record (register) | Directed put-away; scan of the location (3.8) | Locations; dedicated or shared rule (3.8, 7) | Goods put where the record does not say; known trouble: stock the centre cannot find (register, as this unit's reading) | Dock-to-stock time; lines received and put away per hour (8) |
-| 9 | Replenish forward | Not in the register; web pickers such as Mina, operator (register), depend on it | Trigger, task, scan (6) | Forward location per size and colour, capacity, trigger (6) | Forward location empty when a web pick arrives (6) | No WERC inbound measure; stockouts at the pick face (6) |
+| 9 | Replenish forward | Not in the register; Mina, operator, picks web orders (register); her picks depend on it (this unit's reading) | Trigger, task, scan (6) | Forward location per size and colour, capacity, trigger (6) | Forward location empty when a web pick arrives (6) | No WERC inbound measure; stockouts at the pick face (6) |
 
 Corvane breaks units twice, pallet to carton and carton to each (section 2), so rows 8 and 9 carry more locations per item than at Ostrel; that is this unit's reading of the register.
 
@@ -392,6 +400,13 @@ Added to SCE1's working glossary; each term as this unit uses it.
 | Use by; best before | In EU law as FSAI states it: unsafe after use-by; may be sold after best-before if fully acceptable | FSAI [practice] |
 | One-up-one-down | The legal minimum of EU food traceability as FSAI states it: what came in from whom, what went out to whom | FSAI [practice] |
 
+## Notes: facts for the case register
+
+- Corvane: suppliers deliver by the pallet, so the centre breaks units pallet to carton and carton to each (section 2; this unit's assumption).
+- Ostrel Foods: producers deliver by the pallet, so the warehouse breaks units pallet to case (section 2; this unit's assumption).
+- Ostrel Foods: Ilse's chilled pickers depend on Bram's replenishment (section 6, deliverable A row 9; this unit's reading).
+- Corvane: Mina's web picks depend on replenishment of forward locations (deliverable B row 9; this unit's reading).
+
 ## Sources
 
 All addresses opened on 21 November 2026; the source log (sources.md) gives what was read at each.
@@ -418,10 +433,12 @@ All addresses opened on 21 November 2026; the source log (sources.md) gives what
 5. The "two pallets forward" rule is from exercise 7.20 of the textbook, as extracted; it is an exercise's premise.
 6. The Staudt et al. (2015) abstract was read at an informahealthcare.com address whose extraction did not show the publisher, authors, journal or DOI; the bibliographic details are the seed's Crossref record.
 7. The WERC survey document (2025) lists the five inbound measures under "2024 Level of Performance"; that the 2026 report uses the same names was not checked.
-8. GOV.UK page: "updated 22 October 2026" is the page's timestamp as extracted.
+8. GOV.UK page: the page's public date is 25 June 2026 (metadata public-updated-at 2026-06-25); the metadata also carries an internal updated-at of 22 October 2026, which is not the public date.
 9. FSAI pages are undated (footer copyright 2026 only); their statement of Article 24(1) of Reg. (EU) 1169/2011 was not checked against the regulation's text, which could not be read.
 10. The GS1 Logistic Label Guideline was read at its landing page; whether the quoted rules (one batch number, one date value per label; Despatch Advice / ASN gives each unit's SSCC) are the guideline's normative text or its summary was not confirmed.
 
 Object: the pallet, as it moves from trailer to storage location (sections 2, 3.3 to 3.8 and 4)
 
-Fresh check 2026-11-21 (Opus 5.5): fix · 1 errors, 10 should-fix, 16 minor; report `audits/supply-chain-execution/fresh-check-SCE2.md`
+Fresh check 2026-11-21 (Opus 5.5): fix · 1 error, 10 should-fix, 16 minor; all applied; report `audits/supply-chain-execution/fresh-check-SCE2.md`
+
+Correction 24 Nov 2026, found by the quality review (W-SCE4; report audits/supply-chain-execution/quality-review-SCE1-2026-11-24.md and quality-review-SCE2-2026-11-24.md; checked in audits/supply-chain-execution/corrections-2026-11-24-QR-SCE1-SCE2.md)
