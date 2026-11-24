@@ -169,3 +169,16 @@ Empty until the first unit is filed. One row per fact: unit, operation, fact.
 | SCE4 | Ostrel Foods | Scheduled counts run in the daytime, before evening picking; trigger counts run within the shift (deliverable B; assumption). |
 | SCE4 | Ostrel Foods | A counter did not pick or put away the location that day; adjustments above a limit are approved by Aart or someone he names (deliverable B; assumption). |
 | SCE4 | Ostrel Foods | Aart reviews count results weekly (deliverable B; assumption). |
+| SCE5 | Corvane | Mina is measured on picks per person-hour against a standard and on picking accuracy (card 1; working, from B&H §3.3). |
+| SCE5 | Corvane | Mina uses a handheld scanner showing a sequence of locations (card 1; from SCE3 deliverable C, working). |
+| SCE5 | Ostrel Foods | Ilse is measured on routes picked complete by departure and on picking accuracy by case (card 2; working). |
+| SCE5 | Ostrel Foods | Ilse's pickers use handhelds or voice; Ilse watches the route backlog on a desktop or handheld (card 2; working, the register names no device). |
+| SCE5 | Ostrel Foods | Ilse moves pickers between routes and reports shorts and substitutes to Nuno (card 2; working). |
+| SCE5 | Corvane | Carla uses a desktop for reports and adjustments and a handheld for counts (card 3; working). |
+| SCE5 | Ostrel Foods | Sofia's route plan is the warehouse's release plan; she re-plans late orders and tells Ilse which routes moved (card 4; this unit's reading of the register and SCE3's register note). |
+| SCE5 | Corvane | Marek is measured on cost per unit handled, on-time and accurate shipments, injuries and staff turnover, and sets standards and any bonus scheme (card 5; working). |
+| SCE5 | Corvane | Marek answers to Edda (card 5; working placement; the register does not say who the site manager reports to). |
+| SCE5 | Corvane | Corvane's distribution centre has no record in the register of automation; section 7 places Halvern's Automation Connect (fictional) only as a register module, not at Corvane. |
+| SCE5 | Corvane | Carla reports to Marek (card 3; working placement). |
+| SCE5 | Ostrel Foods | Sofia works at a desk between the cut-off and the evening start on the routing tool and the ERP, is measured on routes built by the time picking starts and vehicles used, hands routes to Ilse's team and Nuno, and sometimes changes routes after picking has begun (card 4; working). |
+| SCE5 | Corvane | Marek staffs the peak, approves workarounds and prepares the warehouse-system replacement (card 5; working) |

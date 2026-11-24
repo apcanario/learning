@@ -1380,9 +1380,14 @@ NEW_BUDGET = 19 * 1024   # bytes of What's new's layer as verify.py measures it 
 def new_fit(days, tones):
     top = max(w for _, w in days)
     iv = new_interval(top)
-    layer = hero_layer(days, tones, iv, NEW_TOPO)
-    if top < 10 * NEW_INTERVAL or sep_bytes(layer) <= NEW_BUDGET:
-        return iv, layer
+    if top < 10 * NEW_INTERVAL:   # an edition drawn at its own scale: verify.py holds it to new_interval exactly
+        return iv, hero_layer(days, tones, iv, NEW_TOPO)
+    try:   # P-HK7: at the floor too, an interval at which ct_fit finds no spread is not a fit; scan upward as for bytes
+        layer = hero_layer(days, tones, iv, NEW_TOPO)
+        if sep_bytes(layer) <= NEW_BUDGET:
+            return iv, layer
+    except SystemExit:
+        layer = ''
     for iv in range(NEW_INTERVAL + 100, int(top) // 10 + 1, 100):
         try:
             layer = hero_layer(days, tones, iv, NEW_TOPO)
@@ -1390,7 +1395,7 @@ def new_fit(days, tones):
             continue
         if sep_bytes(layer) <= NEW_BUDGET:
             return iv, layer
-    raise SystemExit(f"What's new's layer is {sep_bytes(layer):,} bytes at {iv:,} words a level, over NEW_BUDGET ({NEW_BUDGET:,}): no interval keeps it in budget")
+    raise SystemExit(f"What's new's layer: no interval from {NEW_INTERVAL:,} to {int(top) // 10:,} words a level lets ct_fit close every rise's rings and keeps it within NEW_BUDGET ({NEW_BUDGET:,})" + (f" (last fitted: {sep_bytes(layer):,} bytes)" if layer else ''))
 NEW_IV, new_layer = new_fit(NEW_DAYS, NEW_TONES) if NEW_DAYS else (NEW_INTERVAL, '')
 whatsnew = f"""
 <section class="panel log" id="new" data-ctx="root" data-kind="new" data-t="What's new" data-u="{html.escape(SITE_NAME.upper())}" data-c="var(--gold)" hidden>
