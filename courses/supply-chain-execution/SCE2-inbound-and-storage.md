@@ -105,7 +105,7 @@ Bartholdi and Hackman's inbound processes are **receiving** and **put-away**, be
 
 **Physical event.** Goods that must be inspected before use are set aside and may not be picked until released.
 
-**What the sources say.** Bartholdi and Hackman list quality assurance among a WMS's basic features (§4.3) [practice], without describing it. This unit opened no source that describes a quality hold as a process, so what follows is a working description, not a claim: a **hold** is a status on stock that keeps it in the record but blocks it from being allocated to orders until someone releases it.
+**What the sources say.** Bartholdi and Hackman list quality assurance among a WMS's basic features (§4.3) [practice], without describing it. This unit opened no source that describes a quality hold as a process, so what follows is a working description, not a claim: a **hold** is a status on stock that keeps it in the record but blocks it from being allocated to orders until someone releases it. SCE4 §3 sources the process for one regulated setting, US drug manufacturing, where incoming components, containers and closures are stored under quarantine until tested or examined and released by the quality control unit (21 CFR 211.82(b), 211.84(a)) [independent]; for other goods, and for finished stock in a distribution warehouse, this remains a working description.
 
 **People.** Whoever has authority to release; neither register names one.
 
@@ -190,7 +190,7 @@ In the simplest layout, for picking cases from pallets, the forward area is the 
 
 On how much, the textbook tests two rules commonly used: give every SKU the same space (Equal Space), or the same number of days of supply (Equal Time). It shows that Equal Time requires the same total restocks as Equal Space, contrary to the belief that it reduces them, and that neither is optimal (§8.3.2, Theorem 8.3) [practice]; for two warehouses it reports that Equal Time needed about 1.45 times the restocks of the optimal allocation for 6,000 fast-moving SKUs of a major drug-store chain, and about 2.44 times for 4,000 SKUs of a telecommunications company (§8.3.3) [practice]. This unit did not read the data behind the two ratios, so they are graded practice; they show the size of the difference the rule can make, not a figure to expect.
 
-What this means for software, as this unit's inference: a system that supports a forward area must hold two kinds of location for one SKU (forward and reserve), a capacity for each forward location, and a rule for which SKUs are assigned forward. The assignment itself is **slotting**; Halvern Warehouse (fictional) sells it as a separate Slotting module, and Kestrow WMS (fictional) lists no such module (case register). Both are facts of the case register, graded nothing, and say nothing about real products.
+What this means for software, as this unit's inference: a system that supports a forward area must hold two kinds of location for one SKU (forward and reserve), a capacity for each forward location, and a rule for which SKUs are assigned forward. The assignment itself is **slotting** (the research literature's **storage assignment**: SCE4 §6); Halvern Warehouse (fictional) sells it as a separate Slotting module, and Kestrow WMS (fictional) lists no such module (case register). Both are facts of the case register, graded nothing, and say nothing about real products.
 
 ## 6. Replenishment and what triggers it
 
@@ -383,7 +383,7 @@ Added to SCE1's working glossary; each term as this unit uses it.
 | Serial Shipping Container Code (SSCC) | The GS1 number that identifies one logistic unit | GS1 SSCC page [independent] |
 | Dock door | A loading bay where a trailer backs up to the building | Course term |
 | Staging | Setting goods down in a marked area near the dock until the next step | Course term; Bartholdi & Hackman §3.1 [practice] |
-| Quality hold | A status that keeps stock in the record but blocks it from orders until released | Working description; not sourced |
+| Quality hold | A status that keeps stock in the record but blocks it from orders until released | Working description; sourced for incoming components in US drug manufacturing in SCE4 §3 (21 CFR 211.82, 211.84) [independent] |
 | Directed task | A task the system assigns with its location, confirmed by scan | Bartholdi & Hackman §4.2 [practice] |
 | Dedicated and shared storage | A location reserved for one product; or a product stored in several locations, each reassignable when empty | Bartholdi & Hackman §2.4 [practice] |
 | Honeycombing | Lane space lost to other SKUs while a lane empties | Bartholdi & Hackman §5.1.1 [practice] |
@@ -392,7 +392,7 @@ Added to SCE1's working glossary; each term as this unit uses it.
 | Automated storage and retrieval system (AS/RS) | Machines that store and fetch loads | Bartholdi & Hackman ch. 5 [practice]; SCE5 |
 | Reserve; bulk | Where most stock is held in large units | Bartholdi & Hackman §8.1 [practice] |
 | Forward pick area; fast-pick area | A convenient area holding small amounts of popular SKUs, replenished from reserve | Bartholdi & Hackman ch. 7, §8.1 [practice] |
-| Slotting | Assigning SKUs to locations, including which go forward | Course term |
+| Slotting | Assigning SKUs to locations, including which go forward | Course term; see storage assignment (SCE4 §6) |
 | Replenishment; restock | Moving stock from reserve to a forward location | Bartholdi & Hackman ch. 7, §8.2 [practice] |
 | Task interleaving | Pairing a put-away with a retrieval to cut empty travel | Bartholdi & Hackman ch. 6, §4.3 [practice] |
 | Dock-to-stock cycle time | Time from a delivery's arrival to its goods being stored and available | Named by WERC and APQC [practice]; wording the course's |
@@ -442,3 +442,5 @@ Object: the pallet, as it moves from trailer to storage location (sections 2, 3.
 Fresh check 2026-11-21 (Opus 5.5): fix · 1 error, 10 should-fix, 16 minor; all applied; report `audits/supply-chain-execution/fresh-check-SCE2.md`
 
 Correction 24 Nov 2026, found by the quality review (W-SCE4; report audits/supply-chain-execution/quality-review-SCE1-2026-11-24.md and quality-review-SCE2-2026-11-24.md; checked in audits/supply-chain-execution/corrections-2026-11-24-QR-SCE1-SCE2.md)
+
+Correction 2026-11-24, found by the SCE4 fresh check and quality review
