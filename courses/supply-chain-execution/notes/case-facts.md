@@ -158,3 +158,14 @@ Empty until the first unit is filed. One row per fact: unit, operation, fact.
 | SCE3 | Corvane | Whether the distribution centre has a sorter, carts or a put wall is not in the register; deliverable B leaves it open (a register row only if a later unit needs it). |
 | SCE3 | Ostrel Foods | Picking is released by route after the late-afternoon order cut-off, and the parts of a customer's order picked in the three temperature zones are consolidated by stop at staging (working description in deliverable C). |
 | SCE3 | Ostrel Foods | Roll cages are staged by route and loaded in reverse order of delivery (deliverables B and C; textbook practice applied to the register). |
+| SCE2 | Corvane | Suppliers deliver by the pallet, so the centre breaks units pallet to carton and carton to each (section 2; this unit's assumption). |
+| SCE2 | Ostrel Foods | Producers deliver by the pallet, so the warehouse breaks units pallet to case (section 2; this unit's assumption). |
+| SCE2 | Ostrel Foods | Ilse's chilled pickers depend on Bram's replenishment (section 6, deliverable A row 9; this unit's reading). |
+| SCE2 | Corvane | Mina's web picks depend on replenishment of forward locations (deliverable B row 9; this unit's reading). |
+| SCE4 | Corvane | When a picker reports a short pick on a web order, the order system can re-source the missing line to a store, where Freya ships it, so the customer receives two parcels (section 9; worked chain, this unit's inference). |
+| SCE4 | Corvane | Jonas also answers customers about items missing from web orders (section 9). |
+| SCE4 | Corvane | Carla counts locations after short picks and after re-slots (deliverable A; assumption). |
+| SCE4 | Corvane | Each season brings many SKUs needing new locations (section 6; this unit's reading of the two seasons and the one-third carry-over). |
+| SCE4 | Ostrel Foods | Scheduled counts run in the daytime, before evening picking; trigger counts run within the shift (deliverable B; assumption). |
+| SCE4 | Ostrel Foods | A counter did not pick or put away the location that day; adjustments above a limit are approved by Aart or someone he names (deliverable B; assumption). |
+| SCE4 | Ostrel Foods | Aart reviews count results weekly (deliverable B; assumption). |

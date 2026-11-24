@@ -1146,8 +1146,29 @@ def hero_interval(topo, step=100):
     return k * step, drawn[k]
 
 
+def hero_spread(topo, layer):
+    """P-HK3 (24 Nov 2026): the hero's layouts at their declared spread when every written rise closes min(2, its
+    levels) rings of its own there (P92, verify.py checks it); else each failing layout's spread narrowed by a tenth at a
+    time, as ct_fit does, until it does. A rise just over one level standing on a larger neighbour's skirt (W-SCE4: Supply
+    Chain, 31,508 words at 24,600, 1.28 levels, beside Technology in the tall layout and History in the wide) has its one
+    level-1 line joined into the neighbour's, so no ring of its own; a narrower spread lowers the saddle between them under
+    the level. The interval stays hero_interval's, from the layer at the declared spread; the narrowed layer is drawn and must
+    stay within HERO_BUDGET. Returns the layer (`layer`, hero_interval's, byte for byte, where the declared spread holds)."""
+    for i in range(24):
+        rr = viz.contours_rings(topo)
+        bad = [l for l in topo['layouts'] if not all(own >= min(2, lv) for _, lv, own, _ in rr[l['name']])]
+        if not bad:
+            return layer if i == 0 else viz.render(topo)
+        for l in bad:
+            l['spread'] = round(l['spread'] * .9, 5)
+    raise SystemExit(f'build.py hero_spread: no spread lets every rise of the home hero close its own rings ({[l["name"] for l in bad]})')
+
+
 HERO_INTERVAL, hero_topo = hero_interval(HERO_TOPO)
 HERO_TOPO['interval'] = HERO_INTERVAL
+hero_topo = hero_spread(HERO_TOPO, hero_topo)   # P-HK3
+if sep_bytes(hero_topo) > HERO_BUDGET:
+    raise SystemExit(f'build.py hero_spread: the narrowed hero layer is {sep_bytes(hero_topo):,} bytes, over HERO_BUDGET ({HERO_BUDGET:,})')
 def track_body(t, ph):
     """A track's course tiles, its own copy and its folded planned courses, and its count line, each drawing taking the
     next phase of ph in page order (its history courses' tiles, its planned courses' ghosts, its markdown courses'

@@ -1,0 +1,779 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#track-supply-chain" data-target="track-supply-chain">Supply Chain</a><span class="sep" aria-hidden="true">›</span><a href="#supply-chain-execution-sce" data-target="supply-chain-execution-sce">Course SCE · Supply chain execution · public</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">SCE4</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--gold)">SUPPLY CHAIN EXECUTION · PUBLIC</span> · SCE4 <span class="pill live">SCE4</span></div>
+    <h1>Inventory and control</h1>
+    <p class="scope">How the record and the building come to disagree, and what sites do about it: locations, lots, counting, slotting and returns.</p>
+  </header>
+  <div class="stepbar" data-n="14"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 14</span><span class="stt">1. Inventory at the level of a location</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-sce4-0" data-step="0"><span class="n">01</span><span class="t">1. Inventory at the level of a location</span></a></li><li><a href="#read-sce4-1" data-step="1"><span class="n">02</span><span class="t">2. Rotation rules built on dates</span></a></li><li><a href="#read-sce4-2" data-step="2"><span class="n">03</span><span class="t">3. Stock statuses: holds and quarantine</span></a></li><li><a href="#read-sce4-3" data-step="3"><span class="n">04</span><span class="t">4. How the record goes wrong</span></a></li><li><a href="#read-sce4-4" data-step="4"><span class="n">05</span><span class="t">5. Counting</span></a></li><li><a href="#read-sce4-5" data-step="5"><span class="n">06</span><span class="t">6. Slotting</span></a></li><li><a href="#read-sce4-6" data-step="6"><span class="n">07</span><span class="t">7. Returns</span></a></li><li><a href="#read-sce4-7" data-step="7"><span class="n">08</span><span class="t">8. Traceability and recalls</span></a></li><li><a href="#read-sce4-8" data-step="8"><span class="n">09</span><span class="t">9. How one inventory error travels: Corvane (fictional)</span></a></li><li><a href="#read-sce4-9" data-step="9"><span class="n">10</span><span class="t">10. The inventory measures the benchmark surveys report</span></a></li><li><a href="#read-sce4-10" data-step="10"><span class="n">11</span><span class="t">On a site visit</span></a></li><li><a href="#read-sce4-11" data-step="11"><span class="n">12</span><span class="t">Self-check</span></a></li><li><a href="#read-sce4-12" data-step="12"><span class="n">13</span><span class="t">Deliverable</span></a></li><li><a href="#read-sce4-13" data-step="13"><span class="n">14</span><span class="t">Notes: facts for the case register</span></a></li></ol><div class="secx"><a href="#read-sce4-sources" data-acc>Sources</a><a href="#read-sce4-note" data-acc>The writer's opening note</a><a href="#read-sce4-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-sce4-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">1. Inventory at the level of a location</span></span></h2>
+<p><strong>The record.</strong> A warehouse system holds stock as quantities of a SKU (SCE2 §2) at a <strong>location</strong>. A location is an addressed place where goods can be: a rack position, a shelf bin, a staging lane, a forklift. Bartholdi and Hackman's standard is that "a good WMS will track every place that product can be, down to and including the forks of individual forklift trucks" (§4.2) [practice]. This continuously updated record is the <strong>perpetual inventory</strong>, also called <strong>book inventory</strong>. What is actually there is the <strong>physical inventory</strong>. The rest of this unit is about the gap between the two.</p>
+<p><strong>The attributes that travel with it.</strong> One quantity at one location is not enough. Each record also carries attributes. Which of them a site needs depends on its goods and its rules:</p>
+<ul>
+<li><strong>Lot (batch)</strong>: the production or receipt group a unit belongs to. US drug rules require a lot or control number on the product that "permits determination of the history of the manufacture and control of the batch" (<a target="_blank" rel="noopener" href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-211">21 CFR 211.130(c)</a>) [independent]. In EU food law, as Ireland's food safety authority states it, the legal minimum is one step up and one step down, and recording the batch is best practice (SCE2 §9).</li>
+<li><strong>Serial number</strong>: an identifier for one unit. GS1 states that an individual trade item may be identified uniquely by combining its Global Trade Item Number (GTIN) with a serial number, and that serialisation makes it possible to trace individual products through the supply chain (<a target="_blank" rel="noopener" href="https://support.gs1.org/support/solutions/articles/43000734238-how-does-serialisation-differ-from-unique-identification-in-the-gs1-system-">GS1 support, modified 28 Aug 2024</a>) [independent]. GS1's SSCC serialises a logistic unit, not an item (SCE2 §3.6).</li>
+<li><strong>Expiry date</strong>: the date by which the product must be used. Drug products must bear an expiration date set by stability testing (<a target="_blank" rel="noopener" href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-211">21 CFR 211.137</a>) [independent]. What food dates mean differs between the EU and the US (SCE2 §9).</li>
+<li><strong>Status</strong>: whether the stock may be allocated to orders (section 3).</li>
+<li><strong>Owner</strong>: whose goods they are. In a multi-client warehouse such as Tandric Logistics' (fictional) site, with nine clients on one shared warehouse system (case register), the same SKU can belong to different clients. That needs an owner on every record. This is a working description; no source on owner as an attribute was opened.</li>
+</ul>
+<p>The system therefore keys stock on SKU, location, lot, date, status and owner, and every transaction (receipt, move, pick, adjustment) must say which combination it changes (this unit's inference). A record that is right on quantity but wrong on lot or status is still wrong for a recall or a hold.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="103" data-rings="5" style="--o:280px 88px"><path style="--d:.82;--o:337px 89px" d="M232 40l-72 2-32 3-24 4-16 4-16 5-10 6-2 8 8 8 34 16 12 8 14 13 8 5 15 6 17 5 40 6 32 3 32 1 40-1 32-1 56-8 64-12 24-4 160-9 24-2 13-2 18-8-4-8-19-5-16-3-24-2-32-1-56 3-24 0-24-5-40-14-48-10-88-8-96-3"/><path style="--d:.75" d="M160 56l-24 4-14 4-12 8 4 8 32 16 14 12 8 6 17 6 31 6 32 3 32 1 32 0 40-4 32-5 36-9 24-8 14-8-2-8-7-8-13-8-28-8-24-4-56-6-64-3-56 1z"/><path style="--d:.5" d="M184 63l-16 4-16 5-2 8 29 16 8 8 13 7 16 4 24 4 24 1 32 1 32-2 24-4 16-3 22-8 13-8 7-8-2-8-18-8-46-8-40-3-48-2-40 1z"/><path style="--d:.25" d="M208 71l-8 1-15 8 36 24 19 5 16 2 40 1 40-5 16-5 11-6 10-8-4-8-17-5-24-4-64-4-32 1z"/><path d="M240 79l-7 1 1 8 12 8 18 4 24 0 16-1 15-3 11-8-10-6-8-3-40-2z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="32" data-rings="1"><circle class="ct-spot" cx="600" cy="96" r="8"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="51" data-rings="2" style="--o:920px 80px"><path style="--d:1" d="M856 55l-32 5-21 4-23 8-5 8 14 8 43 13 24 6 32 4 32 2 24 0 32-2 24-4 12-3 13-8 2-8 6-8 10-8-1-8-10-5-16-4-24-3-32-2-32 0-40 2z"/><path d="M912 64l-32 3-28 5-7 8 19 9 16 4 16 4 32 1 32-2 8-2 11-6 3-8 6-8-12-5-16-2-24-2z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-sce4-1" data-step="1"><span>Next · 2 of 14</span><b>2. Rotation rules built on dates</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-sce4-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">2. Rotation rules built on dates</span></span></h2>
+<p>A <strong>rotation rule</strong> decides which unit of a SKU leaves first. SCE2 §9 defined the two common ones from Bartholdi and Hackman: <strong>FIFO</strong> (first in, first out: oldest receipt first) and <strong>FEFO</strong> (first expired, first out: earliest date first) [practice]. US drug rules require "a procedure whereby the oldest approved stock of a drug product is distributed first", and "Deviation from this requirement is permitted if such deviation is temporary and appropriate" (<a target="_blank" rel="noopener" href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-211">21 CFR 211.150(a)</a>) [independent]. "Approved" matters: stock on hold does not count as the oldest, whatever its date.</p>
+<p>What the system needs for this, as this unit's inference: the date on every location record, captured at receipt (SCE2 §9). It needs a rule per SKU or owner saying FIFO or FEFO, and pick directions that name the location holding the right date. A picker who takes the nearest pallet instead of the directed one breaks rotation, and splits the record too, because two locations are now wrong (section 4). Ostrel Foods' (fictional) known trouble, short-dated stock found too late (case register), is the failure this rule exists to prevent. The register does not say whether its dates are missing, unrotated or unreported.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.417"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="92" data-rings="4" style="--o:360px 88px"><path style="--d:.67" d="M192 63l-16 4-15 5-1 8 18 8 78 16 48 12 32 4 32 3 64-1 32-3 32-5 32-9 21-9 15-8 3-8-40-8-39-5-128-8-48-2-48 0-40 2z"/><path style="--d:.33" d="M232 71l-8 1-13 8 15 8 46 9 40 10 40 6 48 1 28-2 20-3 24-5 8-3 10-5 6-8-10-8-14-3-31-5-33-3-64-3-40-1-40 2z"/><path d="M272 79l-4 1 7 8 61 13 24 3 32 0 24-3 21-5 8-8-18-8-59-5-56-1-24 2z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="104" data-rings="5" style="--o:840px 96px"><path style="--d:1;--o:605px 92px" d="M216 48l-64 4-23 4-17 4-13 4-9 8 6 8 24 9 40 8 40 7 72 19 40 7 40 4 64 1 56-2 56-7 56-8 24-2 24 3 56 15 48 7 72 5 72 0 80-6 64-9 32-7 24-7 13-5 10-8-2-8-14-8-39-10-160-25-72-6-48-2-56 0-56 4-78 7-34 1-48-1-192-9-88 1"/><path style="--d:.75" d="M664 64l-40 8-21 8 20 8 32 8 24 8 17 11 16 7 24 5 32 5 40 2 40 1 40-2 40-3 40-5 32-6 26-7 15-8 0-8-16-8-9-2-48-9-104-16-48-3-56-1-48 2z"/><path style="--d:.5" d="M704 72l-23 8 4 8 35 15 13 9 11 4 16 4 32 4 32 2 32 0 40-2 32-4 48-9 17-7 3-8-19-8-17-3-80-13-40-4-40-2-32 0-32 2z"/><path style="--d:.25" d="M744 78l-8 2-8 8 32 17 15 7 33 5 48 0 56-5 35-8 6-8-24-8-57-9-32-3-48-2-24 1z"/><path d="M784 87l-3 1 6 8 14 8 23 3 32 0 29-3 17-8-36-8-26-3-32 0z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-0" data-step="0"><span>Previous · 1 of 14</span><b>1. Inventory at the level of a location</b></a><a class="snext" href="#read-sce4-2" data-step="2"><span>Next · 3 of 14</span><b>3. Stock statuses: holds and quarantine</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-sce4-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">3. Stock statuses: holds and quarantine</span></span></h2>
+<p>SCE2 §3.5 left the quality hold as a working description because no source describing it as a process had been opened (flag F23). US drug rules describe it as one. 21 CFR Part 211 governs the manufacture of finished drugs; its quarantine sections (211.82 to 211.89) cover incoming components, containers and closures, and holding and distribution are in 211.142 and 211.150. They are a regulated setting, so applying them to food or fashion, or to a distribution warehouse, is this unit's inference.</p>
+<p><strong>The process in 21 CFR Part 211</strong> (<a target="_blank" rel="noopener" href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-211">eCFR, up to date as of 16 June 2026</a>):</p>
+<ol>
+<li><strong>At receipt</strong>, each container is examined before acceptance for labelling, damage, broken seals and contamination (211.82(a)) [independent].</li>
+<li><strong>Quarantine</strong>: received components "shall be stored under quarantine until they have been tested or examined", and are then released (211.82(b)) [independent]. Each lot is "withheld from use" until the quality control unit has sampled, tested or examined it and released it (211.84(a)) [independent].</li>
+<li><strong>Release or reject.</strong> Rejected material "shall be identified and controlled under a quarantine system" designed to prevent its use (211.89) [independent].</li>
+<li><strong>Retest.</strong> Approved material is retested or re-examined when necessary, for example after long storage or exposure to heat, and approved or rejected again (211.87) [independent].</li>
+<li><strong>In the warehouse</strong>, written procedures must cover "Quarantine of drug products before release by the quality control unit" and storage conditions of temperature, humidity and light (211.142) [independent].</li>
+<li><strong>Returns</strong> are "identified as such and held" (211.204; section 7) [independent].</li>
+</ol>
+<p><strong>What this means for the record.</strong> A <strong>status</strong> is an attribute that keeps stock in the record while controlling whether it can be allocated. This course's working list of statuses is: available, quarantine (awaiting test or inspection), rejected, damaged, returned awaiting grading, expired. Only quarantine, rejected and returned-held come from the regulation; the rest are working terms. A status change is a transaction. The regulation's "released by the quality control unit" means the system must record who changed it and when (this unit's inference). Bartholdi and Hackman list quality assurance among a WMS's basic features (§4.3) [practice] but do not describe it.</p>
+<figure class="viz viz-states"><div class="viz-scroll"><svg viewBox="0 0 700 166.5" width="700" height="166.5" data-x0="5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="states"><path class="viz-link" d="M269.8,67.0 L269.8,83.2 L112.2,83.2 L112.2,92.5"/><path class="viz-head" d="M112.2,99.5 L108.2,92.5 L116.2,92.5 z"/><g data-box=""><rect class="viz-lblbg" x="172.2" y="75.0" width="37.6" height="16.5"/><text class="viz-linklabel" x="191.0" y="87.0" text-anchor="middle">reject</text></g><path class="viz-link" d="M288.2,99.5 L288.2,83.2 L445.8,83.2 L445.8,67.8"/><path class="viz-head" d="M445.8,60.8 L449.8,67.8 L441.8,67.8 z"/><g data-box=""><rect class="viz-lblbg" x="338.5" y="75.0" width="57.1" height="16.5"/><text class="viz-linklabel" x="367.0" y="87.0" text-anchor="middle">proven fit</text></g><path class="viz-link" d="M161.0,37.5 L214.0,37.5"/><path class="viz-head" d="M221.0,37.5 L214.0,41.5 L214.0,33.5 z"/><text class="viz-linklabel" x="191.0" y="30.0" text-anchor="middle">store</text><path class="viz-link" d="M337.0,30.5 L390.0,30.5"/><path class="viz-head" d="M397.0,30.5 L390.0,34.5 L390.0,26.5 z"/><text class="viz-linklabel" x="367.0" y="23.0" text-anchor="middle">release</text><path class="viz-link" d="M397.0,44.5 L344.0,44.5"/><path class="viz-head" d="M337.0,44.5 L344.0,40.5 L344.0,48.5 z"/><text class="viz-linklabel" x="367.0" y="59.5" text-anchor="middle">retest</text><path class="viz-link" d="M513.0,37.5 L566.0,37.5"/><path class="viz-head" d="M573.0,37.5 L566.0,41.5 L566.0,33.5 z"/><text class="viz-linklabel" x="543.0" y="30.0" text-anchor="middle">pick, ship</text><path class="viz-link" d="M337.0,129.0 L390.0,129.0"/><path class="viz-head" d="M397.0,129.0 L390.0,133.0 L390.0,125.0 z"/><text class="viz-linklabel" x="367.0" y="121.5" text-anchor="middle">doubt</text><circle class="viz-start" cx="18.0" cy="37.5" r="5"/><path class="viz-link" d="M24.0,37.5 L38.0,37.5"/><path class="viz-head" d="M45.0,37.5 L38.0,41.5 L38.0,33.5 z"/><g data-box=""><rect class="viz-node viz-t3" x="45.0" y="8.0" width="116" height="59.0" rx="10"/><text class="viz-nodelabel" x="103.0" y="28.3" text-anchor="middle">Received</text><text class="viz-small" x="103.0" y="42.9" text-anchor="middle">examined at</text><text class="viz-small" x="103.0" y="55.4" text-anchor="middle">receipt</text></g><g data-box=""><rect class="viz-node viz-t4" x="221.0" y="8.0" width="116" height="59.0" rx="10"/><text class="viz-nodelabel" x="279.0" y="28.3" text-anchor="middle">Quarantine</text><text class="viz-small" x="279.0" y="42.9" text-anchor="middle">withheld until</text><text class="viz-small" x="279.0" y="55.4" text-anchor="middle">tested</text></g><g data-box=""><rect class="viz-node viz-t2" x="397.0" y="14.2" width="116" height="46.5" rx="10"/><text class="viz-nodelabel" x="455.0" y="34.6" text-anchor="middle">Available</text><text class="viz-small" x="455.0" y="49.1" text-anchor="middle">may be allocated</text></g><g data-box=""><rect class="viz-node viz-t2" x="573.0" y="8.0" width="116" height="59.0" rx="10"/><rect class="viz-endring viz-t2" x="576.0" y="11.0" width="110" height="53.0" rx="7"/><text class="viz-nodelabel" x="631.0" y="28.3" text-anchor="middle">Shipped</text><text class="viz-small" x="631.0" y="42.9" text-anchor="middle">lot on the</text><text class="viz-small" x="631.0" y="55.4" text-anchor="middle">record</text></g><g data-box=""><rect class="viz-node viz-t5" x="45.0" y="99.5" width="116" height="59.0" rx="10"/><text class="viz-nodelabel" x="103.0" y="119.8" text-anchor="middle">Rejected</text><text class="viz-small" x="103.0" y="134.3" text-anchor="middle">controlled under</text><text class="viz-small" x="103.0" y="146.8" text-anchor="middle">quarantine</text></g><g data-box=""><rect class="viz-node viz-t4" x="221.0" y="99.5" width="116" height="59.0" rx="10"/><text class="viz-nodelabel" x="279.0" y="119.8" text-anchor="middle">Returned, held</text><text class="viz-small" x="279.0" y="134.3" text-anchor="middle">identified as</text><text class="viz-small" x="279.0" y="146.8" text-anchor="middle">such</text></g><g data-box=""><rect class="viz-node viz-t5" x="397.0" y="99.5" width="116" height="59.0" rx="10"/><rect class="viz-endring viz-t5" x="400.0" y="102.5" width="110" height="53.0" rx="7"/><text class="viz-nodelabel" x="455.0" y="119.8" text-anchor="middle">Destroyed</text><text class="viz-small" x="455.0" y="134.3" text-anchor="middle">unless proven</text><text class="viz-small" x="455.0" y="146.8" text-anchor="middle">fit</text></g></svg></div><figcaption>Stock statuses as US drug rules describe them, from sections 3, 7 and 8 of this unit: 21 CFR 211.82, 211.84, 211.87, 211.89, 211.150, 211.196 and 211.204 (eCFR, up to date as of 16 June 2026). The retest path back to quarantine is this unit's reading of 211.87. A returned product goes back to stock only if examination proves it meets standards (section 7). A regulated setting, written for drug manufacturers; using it for other goods or in a distribution warehouse is this unit's inference.</figcaption></figure>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.833"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="82" data-rings="4" style="--o:280px 88px"><path style="--d:1" d="M200 56l-32 3-32 6-18 7-6 4-6 4-5 8 1 8 2 3 5 5 11 6 24 7 32 5 32 2 40 0 168-15 36-5 37-8 18-8-11-8-23-8-25-5-32-5-40-3-120-4z"/><path style="--d:.67" d="M232 64l-32 3-27 5-17 8-7 8 2 8 12 8 21 6 16 3 24 1 32 0 117-10 27-4 19-4 14-8-5-8-28-8-16-2-48-4-80-2z"/><path style="--d:.33" d="M240 71l-16 2-24 6-3 1-8 8 3 8 16 6 16 3 40 1 88-8 16-2 19-8-9-8-26-4-80-5z"/><path d="M256 80l-8 2-14 6 6 5 8 3 16 1 21-1 49-8-14-4-16-3z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="18" data-rings="0"><path d="M560 87l-5 1-2 8 23 3 40 2 8-1 11-4-24-8-11-2-16 0z"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="102" data-rings="5" style="--o:920px 80px"><path style="--d:1" d="M824 40l-48 3-32 7-18 6-6 4-6 4-4 8 2 8 6 8 10 8 16 6 16 5 48 9 40 3 56 0 64-3 96-7 40-5 34-8 17-8 6-8-6-8-19-8-24-6-32-4-40-3-69-3-83-7z"/><path style="--d:.75" d="M792 55l-26 9-7 8 1 8 9 8 23 11 24 6 32 4 32 2 40-1 120-9 32-5 16-4 10-4 7-8-7-8-18-6-16-3-32-4-72-4-56-5-32-1-40 1z"/><path style="--d:.5" d="M864 56l-24 2-24 4-7 2-13 8 1 8 9 8 20 8 30 5 24 2 32 0 96-6 24-4 22-5 9-8-10-8-37-7-120-9z"/><path style="--d:.25" d="M864 64l-16 2-16 6-1 8 11 8 14 4 22 4 42 1 64-5 27-4 13-8-15-8-17-2-88-7z"/><path d="M888 71l-8 2-9 7 17 7 8 1 42 0 22-3 17-5-17-4-34-4-22-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-1" data-step="1"><span>Previous · 2 of 14</span><b>2. Rotation rules built on dates</b></a><a class="snext" href="#read-sce4-3" data-step="3"><span>Next · 4 of 14</span><b>4. How the record goes wrong</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-sce4-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">4. How the record goes wrong</span></span></h2>
+<p><strong>The empirical research.</strong> The study the seed bibliography names for this unit is DeHoratius and Raman (<a target="_blank" rel="noopener" href="https://doi.org/10.1287/mnsc.1070.0789">2008</a>), read here in abstract only (flag F12). <strong>Sample and setting</strong>: nearly 370,000 inventory records from 37 stores of one retailer. <strong>Design</strong>: an empirical analysis using hierarchical linear modelling, which splits the variance between levels. <strong>Findings</strong>: 65% of the records were inaccurate. 26.4% of the variance in <strong>inventory record inaccuracy</strong> (IRI: the record differing from what is physically there) lay between product categories and 2.7% between stores. Inventory auditing practices were associated with lower inaccuracy, and store complexity and distribution structure with higher. The covariates explain 67.6% and 69.0% of the variance across stores and categories [independent]. These are correlations, in stores; the abstract does not say how "inaccurate" was thresholded.</p>
+<p>Two later store studies give comparable shapes:</p>
+<ul>
+<li><strong>ECR Community report</strong> (Rekik, Syntetos &amp; Glock, <a target="_blank" rel="noopener" href="https://orca.cardiff.ac.uk/142664/1/84486%20ECR%20Inventory%20Inaccuracy%20Report.pdf">October 2019</a>). Seven European retailers in four countries, 91 stores, 233,318 SKUs analysed, with stocktake audits (full counts, section 5) as the reference. About 59.54% of audited SKUs did not match the system: 63.39% in grocery and general merchandise, 54.08% in fashion, and from 6.20% to 73.33% by retailer [independent]. Any difference "even if the difference is just a single unit" counted; there was no tolerance band [independent].</li>
+<li><strong>DeHoratius, Holzapfel, Kuhn, Mersereau and Sternbeck</strong> (<a target="_blank" rel="noopener" href="https://doi.org/10.1287/msom.2022.1119">2023</a>, full text). Ten stores of one European drugstore chain, about 500 items in nine categories, counted by student teams in spring 2017. In the week-3 count, 31% of items had non-zero discrepancies, with stores ranging from 19% to 45% [independent].</li>
+</ul>
+<figure class="viz viz-compare"><div class="viz-scroll" data-alt=""><svg viewBox="0 0 700 132" width="700" height="132" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="246.4" y="25.3" text-anchor="end">DeHoratius &amp; Raman 2008: 37 stores,</text><text class="viz-label" x="246.4" y="39.3" text-anchor="end">one retailer</text><rect class="viz-track" x="256.38367999999997" y="21.0" width="383.1" height="14"/><rect class="viz-bar viz-t4" x="256.38367999999997" y="21.0" width="249.0" height="14"/><text class="viz-value" x="513.4" y="31.8">65%</text><text class="viz-label" x="246.4" y="65.3" text-anchor="end">ECR report 2019: 91 stores, seven</text><text class="viz-label" x="246.4" y="79.3" text-anchor="end">retailers</text><rect class="viz-track" x="256.38367999999997" y="61.0" width="383.1" height="14"/><rect class="viz-bar viz-t4" x="256.38367999999997" y="61.0" width="228.1" height="14"/><text class="viz-value" x="492.5" y="71.8">59.54%</text><text class="viz-label" x="246.4" y="105.3" text-anchor="end">DeHoratius et al. 2023: 10 stores, week-3</text><text class="viz-label" x="246.4" y="119.3" text-anchor="end">count</text><rect class="viz-track" x="256.38367999999997" y="101.0" width="383.1" height="14"/><rect class="viz-bar viz-t3" x="256.38367999999997" y="101.0" width="118.7" height="14"/><text class="viz-value" x="383.1" y="111.8">31%</text></svg><svg class="viz-alt" viewBox="0 0 258 166" width="258" height="166" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="compare"><text class="viz-label" x="8.0" y="19.3" text-anchor="start">DeHoratius &amp; Raman 2008: 37 stores, one</text><text class="viz-label" x="8.0" y="33.3" text-anchor="start">retailer</text><rect class="viz-track" x="8" y="38.0" width="189.4" height="14"/><rect class="viz-bar viz-t4" x="8" y="38.0" width="123.1" height="14"/><text class="viz-value" x="139.1" y="48.8">65%</text><text class="viz-label" x="8.0" y="75.3" text-anchor="start">ECR report 2019: 91 stores, seven retailers</text><rect class="viz-track" x="8" y="80.0" width="189.4" height="14"/><rect class="viz-bar viz-t4" x="8" y="80.0" width="112.8" height="14"/><text class="viz-value" x="128.8" y="90.8">59.54%</text><text class="viz-label" x="8.0" y="117.3" text-anchor="start">DeHoratius et al. 2023: 10 stores, week-3</text><text class="viz-label" x="8.0" y="131.3" text-anchor="start">count</text><rect class="viz-track" x="8" y="136.0" width="189.4" height="14"/><rect class="viz-bar viz-t3" x="8" y="136.0" width="58.7" height="14"/><text class="viz-value" x="74.7" y="146.8">31%</text></svg></div><figcaption>Share of store inventory records found not to match the shelf in three studies, from section 4 of this unit: DeHoratius and Raman (2008, abstract), Rekik, Syntetos and Glock for ECR (2019), DeHoratius et al. (2023). All three are retail stores, not warehouses, and their samples, periods and thresholds differ, so the bars are not a trend or a benchmark.</figcaption></figure>
+<p><strong>Which way the record is wrong.</strong> DeHoratius et al. (2023) define a discrepancy as "system inventory recorded minus actual inventory found". The record showing more than the shelf is <strong>phantom inventory</strong>; the record showing less is <strong>hidden inventory</strong>. An <strong>unknown out-of-stock</strong> is a shelf that is empty while the system shows stock [independent]. The ECR report signs it the other way round: positive when the physical stock is higher than the record [independent]. Check the sign convention before comparing two figures.</p>
+<p><strong>The causes named.</strong> The ECR report lists "incorrect manual adjustments of stock records, employee or customer theft, damage or spoilage", plus wrong shipments, check-out errors and misplacement [practice]. In one retailer's data it found that manually removing stock from the record "seems to lead to positive inventory discrepancies over time", and adding stock the opposite [independent: one retailer]. Fleisch and Tellkamp's simulation of a three-echelon (three-tier: for example supplier, warehouse, store) retail chain builds its model on records drifting through "low process quality, theft, and items becoming unsaleable" (<a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.ijpe.2004.02.003">2005, abstract</a>) [practice: a model premise, not a measurement]. For warehouses, Bartholdi and Hackman name one mechanism: with shared storage, order-pickers take product from convenient locations, "creating discrepancies between book and physical inventory at two locations" (§2.4) [practice].</p>
+<p><strong>Where each enters a warehouse</strong> (this unit's inference, from SCE2, SCE3 and the causes above). Each cause enters at a step and shows up later:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Cause</th>
+<th>Enters at</th>
+<th>Shows as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Miscount or wrong item at receipt</td>
+<td>Check and count (SCE2 §3.4)</td>
+<td>Phantom or hidden stock from the first day</td>
+</tr>
+<tr>
+<td>Put to a location other than the one recorded</td>
+<td>Put-away (SCE2 §3.8)</td>
+<td>Two wrong locations: one phantom, one hidden</td>
+</tr>
+<tr>
+<td>Taken from the wrong location</td>
+<td>Picking or replenishment (SCE2 §6, SCE3 §3)</td>
+<td>As above, and broken rotation</td>
+</tr>
+<tr>
+<td><strong>Short pick</strong> (less at the location than the line asks for, SCE3 §10) confirmed as full</td>
+<td>Picking (SCE3 §10)</td>
+<td>Phantom stock of what was ordered persists while the order ships short</td>
+</tr>
+<tr>
+<td><strong>Wrong pick</strong> (wrong item or size taken)</td>
+<td>Picking (SCE3 §10)</td>
+<td>Hidden stock of what was ordered; phantom stock of what was taken (section 9)</td>
+</tr>
+<tr>
+<td>Damage or spoilage not recorded</td>
+<td>Anywhere</td>
+<td>Phantom stock</td>
+</tr>
+<tr>
+<td>Theft</td>
+<td>Anywhere</td>
+<td>Phantom stock</td>
+</tr>
+<tr>
+<td>Return put back without a transaction</td>
+<td>Returns (section 7)</td>
+<td>Hidden stock</td>
+</tr>
+<tr>
+<td>Wrong adjustment</td>
+<td>Counting (section 5)</td>
+<td>Either direction</td>
+</tr>
+</tbody>
+</table></div>
+<p>No study opened here measures how often each cause occurs in a warehouse.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.25"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="132" data-rings="5" style="--o:200px 88px"><path style="--d:1;--o:468px 84px" d="M152 39l-40 4-32 8-11 5-10 8-2 8 8 16 1 8-2 8 0 8 5 8 12 8 15 5 24 6 24 2 48 1 40-3 32-7 67-20 37-3 24 1 125 10 75 9 32 1 24-1 48-5 48-12 32-6 32-1 40 1 16-2 8-2 8-5 6-9-1-8-4-8-7-8-18-10-16-5-24-5-56-5-48-2-80-1-48 1-40 2-48 6-24 6-37 13-27 5-16 1-24-3-56-15-48-8-64-5-48 0"/><path style="--d:.75" d="M128 54l-16 4-14 6-8 8 2 8 4 8 0 8-1 8 3 8 14 8 24 7 24 2 24 1 24-1 24-3 24-6 48-17 28-7 14-8-9-8-14-8-11-4-24-7-32-6-32-3-40-2-32 1z"/><path style="--d:.5" d="M136 64l-18 8-3 8 5 8-1 16 11 8 22 6 16 2 24 0 24-2 16-2 24-8 30-12 15-8-1-8-14-8-38-9-32-3-32-1-24 1z"/><path style="--d:.25" d="M152 71l-8 4-6 5 4 8-1 8 5 8 22 6 24 1 32-3 16-5 31-15-2-8-21-7-16-3-24-3-24 0-16 1z"/><path d="M176 79l-6 1-2 8 2 8 14 4 16 0 16-2 6-2 16-8-6-6-8-3-24-2z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="7" data-rings="0"><circle class="ct-spot" cx="360" cy="96" r="5"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="83" data-rings="3"><circle class="ct-spot" cx="520" cy="80" r="10"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="128" data-rings="5"><path style="--d:.74;--o:628px 80px" d="M568 48l-40 3-32 6-40 14-32 9-17 8 8 8 46 8 75 6 64 8 32 1 24-1 32-3 64-15 56-5 16-3 12-4 3-8-4-8-10-8-23-8-26-5-32-2-64-3-64 0-48 2"/><path style="--d:.5;--o:625px 80px" d="M568 55l-40 4-23 5-42 16-5 8 23 8 103 12 48 3 24-1 24-2 16-3 40-10 50-7 16-8-3-8-16-8-15-4-24-3-32-2-56-2-88 2"/><path style="--d:.25;--o:627px 80px" d="M568 63l-24 3-27 6-16 8 6 8 47 8 54 6 40 2 32-3 59-13 28-8-3-8-20-6-24-4-40-2-40 0-72 3"/><path d="M584 72l-29 8 11 8 58 8 24 0 24-2 16-3 41-11-9-8-48-5-40 0-48 5"/><circle class="ct-spot" cx="680" cy="80" r="12"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="25" data-rings="1"><circle class="ct-spot" cx="840" cy="96" r="7"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="13" data-rings="0"><circle class="ct-spot" cx="1000" cy="88" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-2" data-step="2"><span>Previous · 3 of 14</span><b>3. Stock statuses: holds and quarantine</b></a><a class="snext" href="#read-sce4-4" data-step="4"><span>Next · 5 of 14</span><b>5. Counting</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-sce4-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">5. Counting</span></span></h2>
+<p><strong>Two kinds of count.</strong> A <strong>full count</strong> (physical inventory; the ECR report's "stocktake") counts every location at once. A <strong>cycle count</strong> counts a selected part of the stock on a schedule or a trigger while the site keeps working. Bartholdi and Hackman list cycle counting among a WMS's high-end features (§4.3) [practice]. Their book names it only as a topic of chapter 18, which is headed "In preparation": "Cycle-counting: What to count and when, to reconcile book and physical inventories" (ch. 18) [practice]. Whether a site's financial statements need a full count, and when, is a question for its auditors and finance team.</p>
+<p><strong>Why counts are not done once.</strong> Records drift after a count. In the ECR report's second experiment, run at one retailer, a first stocktake was corrected and the later ones were recorded without correcting the records. The report found that "negative inaccuracies clearly accumulate over time" (in its sign: physical below record), while positive ones stayed fairly stable [independent]. In its first experiment, test stores that were counted mid-study and had their records corrected to the count had higher sales over the following 12 weeks than control stores whose records were not corrected: from 3.83% to 8.38% by retailer, a simple average of 5.98% [independent]. These are stores; for a warehouse, the result would show as fewer short picks, which is this unit's inference.</p>
+<p><strong>What to count.</strong> DeHoratius et al. (2023) compared rules for choosing which items to count. They worked at a set <strong>counting depth</strong>, the share of items counted. Seven rules ranked items by one index each: sales since the last count; recorded stock, highest first or lowest first; past error; forecast sales; days since the last sale relative to the forecast; and days since the last count. Two more ranked them by a model of the true stock [independent]. High-activity rules, which favour items with high sales, high recorded stock or past errors, detected discrepancies best: the best policies uncovered "over twice the discrepancies detected by random selection". A low-activity rule, ranking items by low recorded stock, found over eight times the unknown out-of-stocks that random selection found [independent]. The ECR report's immediate advice is to "concentrate on high discrepancy fast movers" [independent]. Kök and Shang's model counts when the recorded quantity falls below a threshold, and finds that policy near optimal in a numerical study (<a target="_blank" rel="noopener" href="https://doi.org/10.1287/msom.1060.0136">2007, abstract</a>) [independent: a model]. DeHoratius et al. also describe <strong>zero-balance walks</strong>, in which store staff walk the aisles noting empty locations. Citing Mosconi et al. (2004), which was not opened here, they say such walks can bias records towards negative discrepancies [practice: origin not opened].</p>
+<p><strong>Triggers a warehouse system can raise</strong>, as this unit's working list built from the above: on a schedule (by sales or activity class); when the recorded quantity reaches zero or a threshold (Kök and Shang); when a picker reports a short pick, which checks the location while the error is fresh; and after an exception, a move or a <strong>re-slot</strong> (moving SKUs to new locations, section 6). The short-pick and move triggers are this unit's inference; no source opened tests them.</p>
+<p><strong>Who counts, and what an adjustment is.</strong> An <strong>adjustment</strong> is a transaction that changes the record to match a count, with a reason code saying why. No source opened here says who should count or who may approve an adjustment. The ECR report names manual adjustments as a cause and, in one retailer's data, found discrepancies following them [independent]; that is why the question matters. A common working arrangement, unsourced, is to separate the person who counts from the person who approves. Above a value or quantity limit, a supervisor or the inventory controller approves, and the system logs every adjustment by user. Which approvals a company's own controls require is a question for its finance team and auditors.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.667"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="103" data-rings="2"><circle class="ct-spot" cx="216" cy="88" r="9"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="124" data-rings="3"><circle class="ct-spot" cx="408" cy="96" r="10"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="215" data-rings="5"><path style="--d:1;--o:585px 86px" d="M472 40l-48 4-77 12-51 6-32 1-64-4-40 0-40 3-11 2-13 4-8 4 1 8 15 8 20 8 12 8 16 7 32 8 56 8 56 3 56 1 56-5 48-6 40-2 47 2 41 5 48 4 56 2 128-6 216-4 40-3 32-5 22-9 8-8-2-8-11-8-25-8-32-4-40-2-80 3-32-1-112-13-96-13-64-6-88-1-80 5"/><path style="--d:.66;--o:614px 88px" d="M512 48l-64 5-104 15-40 5-48 1-64-2-16 0-16 3-14 5 8 8 30 15 32 7 56 6 48 3 40 1 40-3 56-6 48-1 40 2 72 6 48 1 40-1 88-6 120 1 96-1 24-2 24-4 10-2 10-8-4-8-24-8-16-2-32-1-64 3-40-1-128-17-72-11-56-5-64-1-64 3"/><path style="--d:.38;--o:635px 87px" d="M504 56l-56 6-136 21-83 5 10 8 46 8 43 4 48 2 64-5 64-1 32 1 72 5 48 1 40-2 56-7 24-2 64 1 74 3 30 0 48-4 22-4-14-6-8-1-64 1-72-5-152-25-48-5-32-2-40-1-80 4"/><path style="--d:.35;--o:562px 84px" d="M496 64l-58 8-42 8-28 8 2 8 22 2 128 1 88 5 44 0 44-4 48-10 9-2 1-8-32-8-42-8-40-4-32-1-40 0-72 5"/><path style="--d:.19;--o:590px 81px" d="M496 71l-40 9-4 8 28 3 72 3 48 4 40-1 32-3 28-6 1-8-25-8-28-5-24-2-64 1-64 5"/><path d="M520 80l8 2 16 2 40 5 24 1 30-2 10-8-24-6-24-1-40 1z"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="82" data-rings="2"><circle class="ct-spot" cx="792" cy="80" r="9"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="119" data-rings="3"><circle class="ct-spot" cx="984" cy="96" r="10"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-3" data-step="3"><span>Previous · 4 of 14</span><b>4. How the record goes wrong</b></a><a class="snext" href="#read-sce4-5" data-step="5"><span>Next · 6 of 14</span><b>6. Slotting</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-sce4-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">6. Slotting</span></span></h2>
+<p><strong>What it is.</strong> Bartholdi and Hackman: "Slotting refers to the careful placement of individual cases within the warehouse"; it "may be thought of as layout in the small" (ch. 9) [practice]. A detailed layout, "usually called a 'slotting'", accounts for the geometry of storage (§8.1) [practice]. SCE2's glossary used the word more broadly, for assigning SKUs to locations, including which go forward (SCE2 §5); Bartholdi and Hackman also use it that way, reporting that they "slotted over 6,000 SKUs" when sizing a forward area (§8.6) [practice]. The research literature treats that broader decision as <strong>storage assignment</strong>: "a set of rules which can be used to assign products to storage locations" (de Koster et al. <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.ejor.2006.07.009">2007, §4</a>) [practice].</p>
+<p><strong>What it is meant to save.</strong> Bartholdi and Hackman's aims are to "Squeeze more product into available space" and to put popular or heavy items at waist level (ch. 9) [practice]. They report that their own slotting of over 6,000 SKUs for a major chain retailer cut the flow rack its national distribution centre needed from 325 to 285 bays (§8.6) [practice: a textbook report, no measurement design given]. Storing product by family can help, and it also "creates some possible inefficiencies" (§9.3) [practice].</p>
+<p><strong>How the literature treats the policies.</strong> De Koster et al. (§4) [practice] set out the policies:</p>
+<ul>
+<li><strong>Random storage</strong>: high space utilisation (a low space requirement), at the cost of more travel; it works only under computer control.</li>
+<li><strong>Closest open location</strong>.</li>
+<li><strong>Dedicated storage</strong>: the lowest space utilisation of all policies, because a location stays reserved for its product even when that product is out of stock.</li>
+<li><strong>Full turnover</strong>: fast movers nearest the depot. Its weakness is that "demand rates vary constantly and the product assortment changes frequently", so each change means "a large amount of reshuffling of stock".</li>
+<li><strong>Class-based storage</strong>: classes by activity, each in its own area, random within it.</li>
+</ul>
+<p>They cite Petersen et al. (2004), a simulation finding full turnover better than class-based storage on travel distance, and Roll and Rosenblatt (1983) finding that grouped storage needs more space. Neither origin was opened here.</p>
+<p><strong>Why it belongs in a unit on control.</strong> Every re-slot is a move transaction for each unit moved, and moves are where a location record can split (section 4) (this unit's inference). Corvane (fictional) has two main seasons a year, and about a third of its range carries over between them (case register). Each season therefore brings many SKUs needing new locations (this unit's reading). A slotting change that is not followed by a count of the moved locations moves the errors along with the stock (this unit's inference). Halvern Warehouse (fictional) sells Slotting as a module (case register); that fact is graded nothing and says nothing about real products.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.083"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="119" data-rings="5"><path style="--d:1;--o:299px 91px" d="M176 48l-32 5-24 7-24 8-32 14-11 6-8 8-3 8 4 8 10 6 24 8 32 4 24 2 32-1 72-8 24-1 40 3 48 8 32 4 24 1 24-1 24-3 24-8 9-6 11-16 4-3 8-5 24-13 8-3-5-8-24-8-27-6-24-3-32-1-80-1-120-8-32 1-24 2"/><path style="--d:.72;--o:293px 91px" d="M200 56l-32 4-32 8-24 9-16 8-5 3-8 8 0 8 11 8 18 5 24 4 40 0 64-6 24-1 48 2 72 9 24 1 24-1 21-5 11-6 3-2 5-8 20-16 2-8-14-8-16-4-24-3-88-1-104-8-24-1-24 1"/><path style="--d:.44;--o:290px 91px" d="M200 63l-24 4-16 4-25 9-16 8-7 8 5 8 19 7 16 2 32 1 56-6 32 0 48 2 64 6 32 0 24-4 8-6 18-18-7-8-19-5-16-2-80-1-104-9-40 0"/><path style="--d:.18;--o:269px 90px" d="M192 72l-29 8-17 8-5 8 15 8 20 2 24 0 40-4 48 0 32 1 64 4 24 0 16-3 9-8 2-8-11-4-16-2-80-3-88-9-24-1-24 3"/><path d="M200 79l-23 9 2 8 13 2 64-2 16-2 23-6-37-8-10-1-24-1z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="84" data-rings="3"><circle class="ct-spot" cx="408" cy="96" r="11"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="16" data-rings="0"><circle class="ct-spot" cx="600" cy="80" r="6"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="35" data-rings="1"><circle class="ct-spot" cx="792" cy="80" r="8"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="110" data-rings="5" style="--o:984px 96px"><path style="--d:.7;--o:927px 91px" d="M952 48l-32 4-40 10-24 4-56 2-40-1-16 2-16 3-2 8 21 8 21 5 24 3 32 2 8 2 7 4 4 16 8 8 13 6 16 5 24 3 24 2 32-1 32-2 48-10 32-7 32-10 17-10 6-8-2-8-7-8-14-9-24-10-24-7-24-4-32-3-24-1-24 2"/><path style="--d:.67" d="M936 62l-16 4-15 6-9 8-2 8-16 16-2 8 7 8 21 8 24 4 24 0 24-1 32-4 59-15 18-8 7-8-2-8-10-8-24-11-24-6-24-3-24-2-24 1z"/><path style="--d:.33" d="M944 72l-8 2-11 6-4 8-17 16 1 8 7 4 12 4 20 3 16 0 36-3 28-6 24-7 9-3 8-8-3-8-6-4-16-7-17-5-15-3-24-1-24 1z"/><path d="M960 79l-8 2-8 6-15 17 7 5 6 3 26 2 24-2 34-8 13-8-6-8-22-8-27-3z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-4" data-step="4"><span>Previous · 5 of 14</span><b>5. Counting</b></a><a class="snext" href="#read-sce4-6" data-step="6"><span>Next · 7 of 14</span><b>7. Returns</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-sce4-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class="bt">7. Returns</span></span></h2>
+<p><strong>Volume.</strong> Bartholdi and Hackman: returns "run about 5% in retail", and in e-commerce "returns run 25–30%" (§3.7) [practice: no source given]. They also say returns "are expensive to handle (up to ten times the cost of shipping the product out)" (§3.4) [practice]. Neither figure has a measurement behind it in the text read. Guide, Souza, Van Wassenhove and Blackburn put US commercial returns (any reason, within 90 days of sale) above US$100 billion a year. They argue that much of a returned product's value erodes through long processing delays, and model this as a queueing network that includes the marginal value of time (<a target="_blank" rel="noopener" href="https://doi.org/10.1287/mnsc.1060.0522">2006, abstract</a>) [practice: the origin of the figure is not stated in the abstract].</p>
+<p><strong>Receiving a return.</strong> The return arrives as a parcel from a customer or a carton from a store. Corvane (fictional) handles both (case register). The system matches it to the original order where it can, records the item and quantity, and puts it into a held status until graded (working description, unsourced). US drug rules require returned products to be "identified as such and held". The return record holds the name, the lot number, the reason, the quantity and the disposition (<a target="_blank" rel="noopener" href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-211">21 CFR 211.204</a>) [independent].</p>
+<p><strong>Grading.</strong> <strong>Grading</strong> means inspecting a return and assigning a condition, and from it a <strong>disposition</strong> (where the item goes next). For drugs, the rule is strict: if the conditions of storage or shipping cast doubt on the product, it "shall be destroyed unless examination, testing, or other investigations prove" that it meets standards (211.204) [independent]. Products exposed to improper storage in disasters or accidents "shall not be salvaged and returned to the marketplace" (211.208) [independent].</p>
+<p><strong>The routes.</strong> No general source on disposition routes was opened here. As this course's working list, a returned item can go:</p>
+<ul>
+<li>back to sellable stock;</li>
+<li>to stock at a lower grade or price;</li>
+<li>back to the supplier;</li>
+<li>to repair or repacking;</li>
+<li>to a liquidator;</li>
+<li>to recycling or destruction.</li>
+</ul>
+<p>Each route is a status change and, where the item is put back, a put-away. For two fashion retailers whose positive discrepancies (physical above record, in its sign) exceeded the negative, the ECR report suggests this "may be attributed to product returns" [independent: stores; an explanation offered, not tested]. A return put on a shelf without its transaction creates hidden stock (section 4).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.5"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="119" data-rings="5"><path style="--d:.92;--o:582px 89px" d="M112 40l-16 2-16 5-17 9-6 8-1 8 5 8 18 24 10 8 7 4 16 6 16 4 24 5 32 3 80 1 168-3 56-6 79-14 33-4 80-2 96-6 40 1 48 12 40 6 136-1 24-2 23-4 16-8 3-8-6-8-20-10-24-6-32-3-40 0-72 8-40 1-72-7-168-20-48-3-64 2-121 14-39 1-18-1-38-6-56-14-40-6-48-2-24 1-24 3"/><path style="--d:.75;--o:401px 87px" d="M168 48l-32 3-24 5-15 8-5 8 3 8 18 24 14 8 17 5 16 3 40 5 88 1 120-2 32-2 32-4 90-14 30-4 82-4 40-8 13-8-27-8-68-11-32-3-24-1-32 2-144 13-32 0-72-6-14-2-42-10-24-4-48-2"/><path style="--d:.52;--o:381px 87px" d="M136 63l-8 4-7 5-1 8 11 16 9 8 20 7 16 3 24 3 32 2 80 0 120-4 24-2 64-11 72-9 59-5 11-8-24-8-30-5-24-1-40 1-160 11-92-6-60-12-32-3-32 0-16 2-16 4"/><path style="--d:.3;--o:386px 89px" d="M152 71l-8 9 9 16 14 8 33 6 56 3 80 0 88-4 35-5 61-12 45-4 30-8-19-2-24-1-168 6-104-7-56-10-24-1-24 1-24 5"/><path style="--d:.2;--o:305px 92px" d="M176 78l-4 2 0 8 5 8 23 7 24 2 56 2 72-1 32-2 47-8-15-4-152-13-48-6-24 1-16 4"/><path d="M208 87l-2 1 14 8 20 2 40 1 44-3-20-4-13-4-67-4-16 3"/><circle class="ct-spot" cx="216" cy="88" r="12"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="87" data-rings="4"><circle class="ct-spot" cx="408" cy="96" r="11"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="75" data-rings="3"><circle class="ct-spot" cx="600" cy="80" r="10"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="21" data-rings="0"><circle class="ct-spot" cx="792" cy="80" r="7"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="63" data-rings="2"><path d="M992 80l-67 8-26 8 7 8 30 5 72 0 32-3 9-2 7-8-9-8-15-4-16-3z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-5" data-step="5"><span>Previous · 6 of 14</span><b>6. Slotting</b></a><a class="snext" href="#read-sce4-7" data-step="7"><span>Next · 8 of 14</span><b>8. Traceability and recalls</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-sce4-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">8. Traceability and recalls</span></span></h2>
+<p>A <strong>recall</strong> is the withdrawal of a lot from customers and from stock. <strong>Traceability</strong> is the ability to say where a lot came from and where it went. At the level of what the system must answer, the sources opened give these requirements:</p>
+<ul>
+<li><strong>Where did each lot go?</strong> US drug distribution records must hold the product, the consignee's (receiver's) name and address, the date and quantity shipped, and the lot or control number (211.196) [independent]. There must be "a system by which the distribution of each lot of drug product can be readily determined", "to facilitate its recall if necessary" (211.150(b)) [independent].</li>
+<li><strong>Where did it come from, and where did it go next?</strong> For food in the EU, the legal minimum is one step up and one step down, as SCE2 §9 sets out from Ireland's food safety authority [practice].</li>
+<li><strong>How fast, and in what form?</strong> FDA's food traceability rule, for foods on its list, requires records of <strong>key data elements</strong> (KDEs) for <strong>critical tracking events</strong> (CTEs). The events include shipping, receiving and transformation. It requires a <strong>traceability lot code</strong> (TLC), "a descriptor, often alphanumeric, used to uniquely identify a traceability lot", and a traceability plan. Records go to FDA within 24 hours of a request, or within a reasonable time FDA agrees to. In an outbreak, a recall or another threat, an electronic sortable spreadsheet must be sent within 24 hours (<a target="_blank" rel="noopener" href="https://fda.gov/food/food-safety-modernization-act-fsma/fsma-final-rule-requirements-additional-traceability-records-certain-foods">FDA rule page, modified 4 November 2026</a>) [practice: the regulator's summary, not the rule text]. On the compliance date, the page states that the original date was 20 January 2026 and that FDA proposed a 30-month extension to 20 July 2028. It says Congress directed FDA not to enforce the rule before that date. Another section of the page still gives January 2026. Whether and when the rule binds an operation is a question for its regulatory counsel.</li>
+</ul>
+<p>What this asks of the warehouse record, as this unit's inference: the lot must be captured at receipt (section 1, SCE2 §9) and carried on every move. Lots must be recorded at pick and ship, because a lot inferred from the FIFO rule is wrong whenever a picker takes another pallet (section 2). The system must answer three queries quickly: by lot, every location and status now; by lot, every shipment out; by lot, the receipt it came in on. A record that is accurate on quantity but mixed on lot cannot answer the first query without a count.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.917"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="43" data-rings="2"><path d="M328 79l-16 3-17 6 6 8 19 2 40 0 89-10-17-7-8-1-48-2z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="99" data-rings="5" style="--o:840px 96px"><path style="--d:1;--o:668px 93px" d="M824 56l-104 8-136 9-32 0-80-5-48-1-72-1-48 2-40 4-32 8-15 8-3 8 11 8 15 4 31 4 33 1 56-2 80-8 56-2 32 0 16 2 16 3 48 16 32 8 56 10 40 3 56 3 40-1 48-2 32-3 40-7 69-21 71-16 23-8 10-8-2-8-17-8-18-4-32-5-40-4-48-1-48 0-48 2-48 4"/><path style="--d:.75" d="M848 63l-136 11-48 6-34 8-7 8 9 8 24 10 32 9 40 6 40 4 48 1 40-1 40-3 32-6 40-12 66-16 21-8 5-8-13-8-7-2-24-4-32-4-64-2z"/><path style="--d:.5" d="M832 72l-112 10-31 6-12 8 6 8 20 8 33 7 32 4 32 2 32 0 32-1 24-3 24-4 42-13 36-8 19-8-3-8-22-6-24-3-64-2z"/><path style="--d:.25" d="M824 79l-84 9-17 8 8 8 21 6 16 3 32 3 40 1 40-4 69-17 14-8-17-8-26-3-48 0z"/><path d="M824 88l-24 3-24 5 16 8 40 3 32-2 35-9 2-8-37-2z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-6" data-step="6"><span>Previous · 7 of 14</span><b>7. Returns</b></a><a class="snext" href="#read-sce4-8" data-step="8"><span>Next · 9 of 14</span><b>9. How one inventory error travels: Corvane (fictional)</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-sce4-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class="bt">9. How one inventory error travels: Corvane (fictional)</span></span></h2>
+<p>SCE3 §10 left two errors at the start of this chain: the <strong>short pick</strong> (less at the location than the line asks for) and the wrong pick. Corvane is a fashion retailer with one distribution centre and 60 stores. A web order can be filled from either the centre or a store. Its known trouble is web orders promised from stock the centre cannot find (case register). The steps follow; each says whose action it is and what the record does.</p>
+<ol>
+<li><strong>The promise.</strong> The order system promises a customer's two-item web order from the centre's stock. The centre's record shows two units of one size at a pick location; the shelf holds none. The record is phantom stock (section 4).</li>
+<li><strong>The short pick.</strong> Mina, who picks web orders (case register), finds the location empty and reports the line short. The other item is picked. A good system now counts the location (section 5) and corrects the record, so that the next order is not promised the same phantom units (this unit's inference).</li>
+<li><strong>The split shipment.</strong> A <strong>split shipment</strong> sends one order in more than one delivery. The order system can re-source the missing line to a store. Freya, a store associate, ships web orders from a store with no process for it (case register). The customer receives two parcels at two times, and Corvane pays two shipments (this unit's inference).</li>
+<li><strong>The broken promise.</strong> If no store has the size, the line is cancelled or backordered. The <strong>backorder</strong> is the line waiting for stock (WERC's measure, section 10). The promise made at step 1 is broken.</li>
+<li><strong>The service call.</strong> The customer calls. Jonas, the customer service agent, answers customers about shipments in transit (case register), and here the call is about a missing item. He sees the order system's record, and the order system was told the stock was there (this unit's inference).</li>
+</ol>
+<p><strong>The wrong pick.</strong> If Mina takes the adjacent size instead, the record of the ordered size drops while its units stay on the shelf (hidden stock). The record of the size taken stays high while its unit leaves (phantom stock). The packing check may catch it (SCE3 §6). If it does not, the customer gets the wrong size, and the return comes back through section 7, where its grading decides whether the item returns to stock. One wrong pick has made two record errors, a return and probably a service call (this unit's inference).</p>
+<p><strong>What it costs.</strong> No public figure was found for the cost of one short or wrong pick in a warehouse. The evidence is indirect: from stores, from a textbook, and from one study of a retailer's distribution-centre records which gives no cost per error:</p>
+<ul>
+<li>Correcting store records to a count raised sales in the ECR report's first experiment (section 5) [independent].</li>
+<li>Kull, Barratt, Sodero and Rabinovich, writing about multichannel retailers that fill store and direct orders "from their distribution centers", found, in one distribution centre serving both channels of a midsize US apparel retailer (540 observations of 27 SKUs in each channel over 10 consecutive business days) and a simulation built on those data, that daily variation in record inaccuracy "increases inventory levels while also decreasing service levels", and that store and direct channels are affected differently (<a target="_blank" rel="noopener" href="https://doi.org/10.1111/jbl.12019">2013</a>, author's version, full text) [independent]. The paper measures inaccuracy as a percentage of each SKU's actual on-hand stock and reports no share of records wrong and no cost per error.</li>
+<li>Bartholdi and Hackman's returns cost is a textbook bound (section 7) [practice].</li>
+</ul>
+<figure class="viz viz-flow"><div class="viz-scroll"><svg viewBox="0 0 870 165" width="870" height="165" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="flow"><g data-box=""><rect class="viz-node viz-t4" x="8" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="20.0" y="31.3" text-anchor="start">Phantom stock</text><text class="viz-note" x="20.0" y="48.3" text-anchor="start">record 2, shelf 0</text></g><path class="viz-arrow" d="M162,42.0 L178,42.0"/><g data-box=""><rect class="viz-node viz-t1" x="184" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="196.0" y="31.3" text-anchor="start">Promise</text><text class="viz-note" x="196.0" y="48.3" text-anchor="start">order system, from</text><text class="viz-note" x="196.0" y="61.3" text-anchor="start">the record</text></g><path class="viz-arrow" d="M338,42.0 L354,42.0"/><g data-box=""><rect class="viz-node viz-t4" x="360" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="372.0" y="31.3" text-anchor="start">Short pick</text><text class="viz-note" x="372.0" y="48.3" text-anchor="start">Mina reports the</text><text class="viz-note" x="372.0" y="61.3" text-anchor="start">line</text></g><path class="viz-arrow" d="M514,42.0 L530,42.0"/><g data-box=""><rect class="viz-node viz-t2" x="536" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="548.0" y="31.3" text-anchor="start">Count and adjust</text><text class="viz-note" x="548.0" y="48.3" text-anchor="start">location checked,</text><text class="viz-note" x="548.0" y="61.3" text-anchor="start">record corrected</text></g><path class="viz-arrow" d="M690,42.0 L706,42.0"/><g data-box=""><rect class="viz-node viz-t1" x="712" y="8" width="150" height="68" rx="2"/><text class="viz-nodelabel" x="724.0" y="31.3" text-anchor="start">Split shipment</text><text class="viz-note" x="724.0" y="48.3" text-anchor="start">line re-sourced to</text><text class="viz-note" x="724.0" y="61.3" text-anchor="start">a store</text></g><path class="viz-arrow" d="M787.0,78 L787.0,89.0 L83.0,89.0 L83.0,98"/><g data-box=""><rect class="viz-node viz-t1" x="8" y="102" width="150" height="55" rx="2"/><text class="viz-nodelabel" x="20.0" y="125.3" text-anchor="start">Backorder or cancel</text><text class="viz-note" x="20.0" y="142.3" text-anchor="start">if no store has it</text></g><path class="viz-arrow" d="M162,129.5 L178,129.5"/><g data-box=""><rect class="viz-node viz-t5" x="184" y="102" width="150" height="55" rx="2"/><text class="viz-nodelabel" x="196.0" y="125.3" text-anchor="start">Service call</text><text class="viz-note" x="196.0" y="142.3" text-anchor="start">Jonas answers</text></g><defs><marker id="vizhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="viz-head" d="M0,0 L10,5 L0,10 z"/></marker></defs></svg></div><figcaption>One error's path through Corvane (fictional), from section 9 of this unit: the case register's people and its known trouble, SCE3 section 10's short pick, and section 5's count on a short pick. The path and the order of steps are this unit's inference; no step is measured.</figcaption></figure>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.333"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="81" data-rings="4"><path style="--d:1;--o:552px 89px" d="M184 48l-56 4-40 7-17 5-11 8 2 8 16 8 60 16 38 15 24 7 24 5 24 4 72 5 136 1 152 4 40-1 48-2 32-4 32-7 16-5 27-14 29-7 24-2 40-2 88 0 40-2 21-3 19-6 6-2 3-8-13-8-20-6-24-5-24-3-48-3-88 3-32-1-18-1-86-11-40-3-40 0-48 1-104 11-32 2-160-9-56-1-56 2"/><path d="M216 79l-5 1 1 8 44 14 24 4 40 2 48-3 14-1 3-8-37-16-28-4-56-2-24 1z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="94" data-rings="5" style="--o:600px 96px"><path style="--d:.54;--o:558px 89px" d="M592 56l-40 3-64 10-32 1-24-1-64-7-48-4-56-1-56 1-32 2-32 5-23 7-5 8 13 8 55 16 32 11 24 6 32 4 48 3 128 1 136 5 64-1 40-3 32-6 15-4 9-4 24-14 24-6 40-4 136-2 19-2 12-8-18-8-37-4-24-1-64 3-40 0-32-2-64-9-40-4-40-1-48 2"/><path style="--d:.42;--o:454px 92px" d="M608 64l-48 4-66 12-38 4-32-2-54-10-26-3-64-4-40 1-40 2-23 4-17 8 10 8 30 8 32 12 24 5 24 3 48 2 112 0 128 7 64 0 48-4 16-4 16-5 11-8 8-8 15-8 6-8-23-8-33-5-40-3-48 0"/><path style="--d:.25" d="M616 72l-48 4-99 20-8 8 48 8 67 5 56 0 38-5 19-8 3-8 10-8-4-8-34-6z"/><path d="M568 87l-35 9 10 8 25 3 32 1 24-1 23-3 12-16-19-5-24-1-24 1z"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="44" data-rings="2"><circle class="ct-spot" cx="920" cy="80" r="9"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-7" data-step="7"><span>Previous · 8 of 14</span><b>8. Traceability and recalls</b></a><a class="snext" href="#read-sce4-9" data-step="9"><span>Next · 10 of 14</span><b>10. The inventory measures the benchmark surveys report</b></a></nav></section><section class="sec" data-step="9"><h2 id="read-sce4-9" class="band"><span class="bn" aria-hidden="true">10</span><span class="bh"><span class="bt">10. The inventory measures the benchmark surveys report</span></span></h2>
+<p>WERC's 2025 survey asks for 2024 performance on the measures below; the names are exactly WERC's (<a target="_blank" rel="noopener" href="https://wercmetrics.werc.org/WERC-DC-Measures-Survey-2025.pdf">WERC DC Measures Survey - 2025</a>) [practice]. As SCE2 §8 and SCE3 §12 found, the document gives no definitions (they sit in pop-ups in WERC's online tool), no sample and no values. Two further searches on 24 Nov 2026 found no WERC definitions page (flags F20, F28). <strong>No WERC value is given here</strong>, and the definitions below are the course's own. A vendor's description exists for one of them: a 2025 infographic by Hyster-Yale Materials Handling, Inc., attributing its metrics to WERC's 2025 DC Measures Report, defines inventory count accuracy by location as "The accuracy, by location, of the physical inventory compared to the reported inventory" and gives best in class as at or above 99.5%; it states no sample (<a target="_blank" rel="noopener" href="https://www.yale.com/globalassets/coms/yale/north-america/documents/white-papers/snack-drawer/YALE-1520_WERC-DC-Metrics-infographic.pdf">Hyster-Yale, "Top 12 distribution center metrics", 2025</a>) [vendor-reported]. It is a vendor's page, not WERC's.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Measure (WERC's name)</th>
+<th>Working definition (course's)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventory Count (Percent by Location)</td>
+<td>Locations whose count matched the record, over locations counted</td>
+</tr>
+<tr>
+<td>Days on Hand - Finished Goods Inventory</td>
+<td>Finished-goods stock divided by average daily shipments</td>
+</tr>
+<tr>
+<td>Inventory Days of Supply</td>
+<td>Inventory divided by average daily cost of goods sold (WERC's cash-to-cash block)</td>
+</tr>
+<tr>
+<td>Backorders as a Percentage of Total Lines</td>
+<td>Lines not shipped for lack of stock, over all lines ordered (as SCE3 §12)</td>
+</tr>
+<tr>
+<td>Order Picking Accuracy</td>
+<td>Orders or lines picked with no error, over all picked (as SCE3 §12)</td>
+</tr>
+<tr>
+<td>Average and Peak Warehouse Capacity Used; Cube Utilization; Pallets Per Square Feet; Honeycomb Percentage</td>
+<td>Space measures: positions or volume occupied, over available; honeycombing as SCE2 §4 defines it</td>
+</tr>
+</tbody>
+</table></div>
+<p>APQC, a benchmarking organisation, defines <strong>inventory accuracy</strong> as the absolute value of the sum of the variance between physical inventory and perpetual inventory, in percent. Its page shows a sample of 4,283 and no values (<a target="_blank" rel="noopener" href="https://www.apqc.org/what-we-do/benchmarking/open-standards-benchmarking/measures/inventory-accuracy">APQC, "Inventory accuracy"</a>) [practice]. Note that the two definitions measure different things. WERC's name counts locations; APQC's sums variances. A summed variance lets overs cancel unders, while a location count does not (this unit's inference).</p>
+<p><strong>Common claim C4: "Good sites run at 99.9% inventory accuracy."</strong> As it circulates, the claim gives one number without a definition. What the evidence opened here shows:</p>
+<ul>
+<li>No independent source opened here reports the share of warehouse records that match the shelf, at 99.9% or any other level. Kull et al. (2013), in one apparel retailer's distribution centre (27 SKUs per channel, 10 business days), measured inaccuracy as a percentage of each SKU's on-hand stock: average bias of −2.27% in the direct channel and −0.71% in the store channel, and average daily variability of 5.78% and 12.04% [independent]. That is a different measure from a share of accurate records.</li>
+<li>A 2025 infographic by Hyster-Yale Materials Handling, Inc., presenting WERC's 2025 report, gives best in class for inventory count accuracy by location as at or above 99.5%, with no sample stated (section 10) [vendor-reported].</li>
+<li>The store studies opened here that report a rate found 65%, about 59.54% and 31% of records not matching. They used different samples, periods and thresholds (section 4) [independent].</li>
+<li>The ECR report counts a one-unit difference as an error [independent]. A figure computed with a tolerance band, by value, or with overs netted against unders is not the same measure.</li>
+</ul>
+<p>Before comparing a quoted accuracy figure, ask four things: by location, by SKU or by value; with what tolerance; netted or absolute; counted how (this unit's inference). No independent source found supports the claim as stated.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.75"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="156" data-rings="5" style="--o:240px 88px"><path style="--d:1;--o:309px 90px" d="M112 48l-32 6-16 6-8 4-6 8 3 8 21 16 13 16 9 7 8 5 16 6 16 4 24 5 24 3 56 1 48-2 48-7 40-8 24-3 88 4 32 0 24-2 22-5 15-8 4-16 7-8-6-8-42-10-152-20-56-6-64-3-64 0-56 2-40 5"/><path style="--d:.67;--o:321px 91px" d="M152 55l-24 4-19 5-14 8 0 8 19 16 15 16 23 10 32 6 40 3 40-1 48-6 48-13 24-4 32-1 48 6 24 1 24-2 8-2 13-5 1-16-14-5-13-3-59-7-88-14-56-6-48-2-56 1-48 3"/><path style="--d:.48;--o:248px 88px" d="M168 63l-16 3-19 6-6 8 17 16 7 8 9 6 16 5 32 5 40 1 40-4 24-5 40-12 71-12-7-2-12-6-29-8-31-5-32-4-40-3-40-1-32 1-32 3"/><path style="--d:.25" d="M176 72l-18 8 5 8 13 11 6 5 10 3 32 5 40-1 32-6 47-17 4-8-30-8-45-4-56 0z"/><path d="M208 79l-7 1-3 8 8 8 18 4 24 1 16-2 13-3 19-8-4-8-12-2-40-1z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="72" data-rings="2"><circle class="ct-spot" cx="480" cy="96" r="9"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="27" data-rings="0"><circle class="ct-spot" cx="720" cy="80" r="7"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="36" data-rings="1"><path d="M920 72l-2 0 0 8 2 2 11 6 13 2 32 0 24-2 9-8-33-9-16-2-24 0z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-8" data-step="8"><span>Previous · 9 of 14</span><b>9. How one inventory error travels: Corvane (fictional)</b></a><a class="snext" href="#read-sce4-10" data-step="10"><span>Next · 11 of 14</span><b>On a site visit</b></a></nav></section><section class="sec" data-step="10"><h2 id="read-sce4-10" class="band"><span class="bn" aria-hidden="true">11</span><span class="bh"><span class="bt">On a site visit</span></span></h2>
+<p>At the stock and the counting desk, look for and ask:</p>
+<ul>
+<li><strong>Pick one location and read its record.</strong> Does the record show SKU, quantity, lot, date, status and owner? Compare it with the shelf (section 1).</li>
+<li><strong>What is on hold now, since when, and who released the last lot?</strong> Is quarantine stock physically apart or only flagged (section 3)?</li>
+<li><strong>Does the handheld direct the picker to a dated location, and what happens if the picker takes another?</strong> (Section 2.)</li>
+<li><strong>What triggers a count here?</strong> Ask for a schedule, a zero or low balance, a short pick, a re-slot. Who counts, and are they the people who picked (section 5)?</li>
+<li><strong>Show me last week's adjustments by reason code and by user.</strong> Who approves an adjustment, and above what limit (section 5)?</li>
+<li><strong>When was the last re-slot, and were the moved locations counted afterwards?</strong> (Section 6.)</li>
+<li><strong>Follow one return from the dock to its disposition.</strong> Ask where it waits, who grades it, and how long it takes (section 7).</li>
+<li><strong>Name a lot and ask for every location and every customer shipment that holds it.</strong> Time the answer (section 8).</li>
+<li><strong>Which of WERC's inventory measures does the site report, by whose definition, and does it net overs against unders?</strong> (Section 10.)</li>
+</ul>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.167"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="11" data-rings="5" style="--o:600px 88px"><path style="--d:1" d="M496 48l-72 4-56 5-39 7-28 8-11 8 4 8 19 8 47 9 40 4 120 10 104 13 40 2 48 1 64-2 56-7 23-6 9-4 8-4 4-8-5-8-13-8-26-11-48-15-48-8-40-5-72-3-64 0z"/><path style="--d:.75" d="M560 56l-56 2-48 3-40 4-32 6-21 9 1 8 22 8 57 8 93 8 80 9 48 3 48 0 48-4 38-8 14-8-1-8-12-8-39-15-32-8-32-5-40-3-48-1z"/><path style="--d:.5" d="M544 64l-40 2-40 4-17 2-23 6-5 2-1 8 26 8 100 10 64 7 56 3 40-2 32-3 24-7 4-8-10-8-20-8-28-8-18-3-32-4-32-2z"/><path style="--d:.25" d="M536 72l-32 3-30 5-6 8 34 8 58 5 48 5 40 2 32-1 22-3 17-8-7-8-22-8-34-7-48-3z"/><path d="M560 80l-16 2-16 6 72 9 32 1 27-2 2-8-29-8-32-2z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-9" data-step="9"><span>Previous · 10 of 14</span><b>10. The inventory measures the benchmark surveys report</b></a><a class="snext" href="#read-sce4-11" data-step="11"><span>Next · 12 of 14</span><b>Self-check</b></a></nav></section><section class="sec" data-step="11"><h2 id="read-sce4-11" class="band"><span class="bn" aria-hidden="true">12</span><span class="bh"><span class="bt">Self-check</span></span></h2>
+<ol>
+<li><strong>What did DeHoratius and Raman (2008) find, and in what setting?</strong>
+   Nearly 370,000 records from 37 stores of one retailer; 65% inaccurate. Auditing practices were associated with lower inaccuracy, and store complexity and distribution structure with higher. These are correlations from an abstract (section 4).</li>
+<li><strong>What does "phantom inventory" mean in DeHoratius et al. (2023), and why check the sign before comparing two studies?</strong>
+   The record shows more than the shelf. The ECR report signs discrepancies the other way round (section 4).</li>
+<li><strong>What do US drug rules require before received material may be used?</strong>
+   It is stored under quarantine until tested or examined and released by the quality control unit. Rejected material is controlled under a quarantine system (section 3).</li>
+<li><strong>What happened to store records after a count in the ECR experiment?</strong>
+   Negative inaccuracies (physical below record) accumulated over time; positive ones stayed fairly stable (section 5).</li>
+<li><strong>Which count-selection rules beat random selection in DeHoratius et al. (2023), and by how much?</strong>
+   High-activity rules, such as ranking by sales, found the most discrepancies, the best over twice what random selection found. A rule ranking by low recorded stock found over eight times the unknown out-of-stocks (section 5).</li>
+<li><strong>What weakness of full-turnover storage do de Koster et al. name?</strong>
+   Demand and the assortment keep changing, so each change means reshuffling stock (section 6).</li>
+<li><strong>What must a US drug distribution record hold for a recall?</strong>
+   The product, the consignee's name and address, the date and quantity shipped, and the lot or control number. The distribution of each lot must be readily determinable (section 8).</li>
+<li><strong>A colleague says good warehouses run at 99.9% accuracy. What do you answer?</strong>
+   No independent source opened here reports a warehouse rate. Measured store studies found 31% to 65% of records wrong. Ask by what unit, with what tolerance, and whether overs are netted against unders (section 10).</li>
+</ol>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-10" data-step="10"><span>Previous · 11 of 14</span><b>On a site visit</b></a><a class="snext" href="#read-sce4-12" data-step="12"><span>Next · 13 of 14</span><b>Deliverable</b></a></nav></section><section class="sec" data-step="12"><h2 id="read-sce4-12" class="band"><span class="bn" aria-hidden="true">13</span><span class="bh"><span class="bt">Deliverable</span></span></h2>
+<h3>A. Cause tree for inventory errors: Corvane (fictional)</h3>
+<p>Corvane (fictional) is a fashion retailer with 60 stores in four European countries and one website. It has one 28,000 m² distribution centre and about 18,000 items, counting size and colour separately. Its flows are store replenishment by carton and single item, web orders of one to three items, and returns from web and stores. It has about 140 staff in a normal week and about 260 in peak, the difference from agencies. Its warehouse system is about twelve years old and near the end of its vendor's support. Known trouble: web orders promised from stock the centre cannot find (case register). People: Carla, inventory controller, answers for the stock record at receiving and put-away; Mina picks web orders; Tobias supervises outbound; Jonas works in customer service; Freya ships web orders from a store (case register).</p>
+<p>The tree has four branches, one per stage where an error can enter. Each row is a cause to look for at Corvane, not a finding that it occurs there. "Finds it" names who notices first in the chain of section 9; where the register names no one, the cell says so.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Cause</th>
+<th>Where it enters</th>
+<th>Where it shows in the system</th>
+<th>Who finds it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Inbound</strong></td>
+<td>1.1 Carton count accepted unchecked, or the wrong size or colour recorded (SCE2 §3.4)</td>
+<td>Check and count</td>
+<td>Phantom stock of one size, hidden stock of another, from the first day</td>
+<td>Mina at a short pick; Carla at a count (assumption)</td>
+</tr>
+<tr>
+<td></td>
+<td>1.2 Carton put to a location other than the one scanned (SCE2 §3.8)</td>
+<td>Put-away</td>
+<td>Two wrong locations</td>
+<td>Mina at a short pick; whoever counts the second location</td>
+</tr>
+<tr>
+<td></td>
+<td>1.3 Goods left in staging the record does not know (SCE2 §3.3)</td>
+<td>Unload</td>
+<td>Stock received but at no location</td>
+<td>Not in the register</td>
+</tr>
+<tr>
+<td><strong>2. Storage and moves</strong></td>
+<td>2.1 Forward location restocked from the wrong reserve location (SCE2 §6)</td>
+<td>Replenishment</td>
+<td>Reserve location phantom; forward location over</td>
+<td>Not in the register</td>
+</tr>
+<tr>
+<td></td>
+<td>2.2 Seasonal re-slot moves stock without a count afterwards (section 6)</td>
+<td>Re-slotting</td>
+<td>Errors carried to new locations</td>
+<td>Carla, if moved locations are counted (assumption)</td>
+</tr>
+<tr>
+<td></td>
+<td>2.3 Picker takes from a convenient location, not the directed one (B&amp;H §2.4)</td>
+<td>Picking</td>
+<td>Two locations wrong</td>
+<td>Next picker at either location</td>
+</tr>
+<tr>
+<td><strong>3. Picking and packing</strong></td>
+<td>3.1 Short pick confirmed as full (SCE3 §10)</td>
+<td>Picking</td>
+<td>Phantom stock persists; order ships short</td>
+<td>Customer, then Jonas</td>
+</tr>
+<tr>
+<td></td>
+<td>3.2 Wrong size or colour taken (section 9)</td>
+<td>Picking</td>
+<td>Ordered size hidden, taken size phantom</td>
+<td>Packer, if checked (SCE3 §6); else the customer</td>
+</tr>
+<tr>
+<td></td>
+<td>3.3 Damaged unit set aside without a status change (section 3)</td>
+<td>Picking or packing</td>
+<td>Phantom stock</td>
+<td>Not in the register</td>
+</tr>
+<tr>
+<td><strong>4. Returns and adjustments</strong></td>
+<td>4.1 Web or store return put back to a shelf without a transaction (section 7)</td>
+<td>Returns</td>
+<td>Hidden stock</td>
+<td>A count; the ECR report suggests fashion overs may come from returns (section 7)</td>
+</tr>
+<tr>
+<td></td>
+<td>4.2 Return put back at the wrong grade or location (section 7)</td>
+<td>Grading</td>
+<td>Wrong status or location</td>
+<td>Not in the register</td>
+</tr>
+<tr>
+<td></td>
+<td>4.3 Adjustment made to match a miscount (section 5)</td>
+<td>Counting</td>
+<td>Correct record made wrong</td>
+<td>Next count of the location</td>
+</tr>
+<tr>
+<td></td>
+<td>4.4 Theft (section 4)</td>
+<td>Anywhere</td>
+<td>Phantom stock</td>
+<td>A count</td>
+</tr>
+</tbody>
+</table></div>
+<p>How the known trouble maps: "promised from stock the centre cannot find" is phantom stock. The phantom-stock causes are 1.1, 1.2, 2.1, 2.3, 3.1, 3.2, 3.3 and 4.4 (this unit's reading of the register). Which of them dominates at Corvane is not in the register. A count by reason code at the locations of short picks would show it (section 5).</p>
+<h3>B. Count plan: Ostrel Foods (fictional)</h3>
+<p>Ostrel Foods (fictional) is a food distributor with about 4,500 items, chilled, frozen and ambient, most of them dated. It has one warehouse with three temperature zones, picks by the case onto roll cages, and starts work in the evening for delivery the next morning. Its systems are an ERP with a warehouse module. Known trouble: short-dated stock found too late; substitutions agreed by phone and not recorded; drivers returning with refused goods. People: Bram, reach-truck driver for put-away and replenishment on nights; Ilse, team lead for chilled picking; Aart, operations director (case register). Chilled items have shelf lives counted in days, and demand is a few hundred fast items and a long tail of slow ones (case register, from Supply Chain Planning).</p>
+<p>Every choice below is a design decision for the case, drawn from sections 2, 3 and 5. The count windows and the roles assigned are this unit's assumptions (listed in the notes).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Plan</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What a count records</td>
+<td>Case quantity, lot and date at each location; each count records zone and status</td>
+<td>Sections 1, 2; dates are what Ostrel's trouble turns on</td>
+</tr>
+<tr>
+<td>Discrepancy rule</td>
+<td>Any difference of one case, or any date or lot mismatch, is a discrepancy; no tolerance</td>
+<td>ECR's no-tolerance definition (section 4)</td>
+</tr>
+<tr>
+<td>Sign</td>
+<td>Record minus physical: positive is phantom</td>
+<td>DeHoratius et al. 2023 (section 4)</td>
+</tr>
+<tr>
+<td>Scheduled counts: chilled</td>
+<td>Fast chilled items counted by rotation, at a set depth each day, ranked by recent sales and past error</td>
+<td>Section 5 (DeHoratius et al. 2023; ECR fast movers)</td>
+</tr>
+<tr>
+<td>Scheduled counts: frozen and ambient</td>
+<td>Long-tail items ranked by days since last count</td>
+<td>Section 5 (DeHoratius et al. 2023: days since the last count)</td>
+</tr>
+<tr>
+<td>Trigger: date</td>
+<td>Any location whose earliest date falls within the item's shelf-life window, counted and checked for date</td>
+<td>Section 2; Ostrel's known trouble</td>
+</tr>
+<tr>
+<td>Trigger: zero or low balance</td>
+<td>Location counted when the record reaches zero or a threshold</td>
+<td>Section 5 (Kök and Shang, a model; DeHoratius et al. 2023, citing Mosconi et al. 2004, say zero-balance walks can bias records towards negative discrepancies)</td>
+</tr>
+<tr>
+<td>Trigger: short pick</td>
+<td>Location counted the same night when a picker reports a short case</td>
+<td>Section 5 (inference), section 9</td>
+</tr>
+<tr>
+<td>Trigger: substitution</td>
+<td>Where a phoned substitution was shipped, both items' locations counted next window</td>
+<td>Ostrel's known trouble; section 4 (wrong pick)</td>
+</tr>
+<tr>
+<td>Trigger: refused goods</td>
+<td>Goods a driver brings back held as returned, graded, then put away with a transaction; location counted</td>
+<td>Sections 3, 7; Ostrel's known trouble</td>
+</tr>
+<tr>
+<td>When</td>
+<td>Scheduled counts in the daytime, before picking starts in the evening; trigger counts within the shift</td>
+<td>Assumption; register: work starts in the evening</td>
+</tr>
+<tr>
+<td>Who counts</td>
+<td>A counter who did not pick or put away the location that day; not Bram for his own put-aways</td>
+<td>Section 5 (working arrangement, unsourced)</td>
+</tr>
+<tr>
+<td>Adjustments</td>
+<td>Each with a reason code (miscount at receipt, put-away error, pick error, damage, expiry, theft, unknown); above a limit, approval by Aart or someone he names who neither picks nor puts away (assumption); all logged by user</td>
+<td>Section 5; who approves is Ostrel's control decision for its finance team</td>
+</tr>
+<tr>
+<td>Holds</td>
+<td>Expired or doubtful stock moved to a held status at the count, never adjusted out unrecorded</td>
+<td>Section 3 (US drug rules applied to food: this unit's inference)</td>
+</tr>
+<tr>
+<td>Measures</td>
+<td>WERC's Inventory Count (Percent by Location) and Backorders as a Percentage of Total Lines, with the course's definitions; discrepancies by reason code and zone</td>
+<td>Section 10</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>Aart reviews weekly: discrepancies by reason, short picks, short-dated stock found by date trigger versus at the customer</td>
+<td>Register (Aart, operations director); measures from section 10</td>
+</tr>
+</tbody>
+</table></div>
+<h3>C. Template: cause tree for inventory errors</h3>
+<p>Fill one row per cause for a real operation, or for a product by naming the screen or transaction where each cause enters and shows. Mark each cell's grade (independent, analyst, vendor-reported, practice) or "observed".</p>
+<p>Operation or product: <strong><em>_</em>_ (name; kind of company; region) · Goods: </strong><strong><em>_ (eaches, cases, pallets; dated; serialised; owners) · Date filled: </em></strong><strong><em> · Sources used: </em></strong>___ (each with its grade)</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Cause</th>
+<th>Where it enters</th>
+<th>Where it shows in the system</th>
+<th>Who finds it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Inbound</td>
+<td>______ (miscount, wrong item, wrong location, unrecorded staging)</td>
+<td>______ (the step and its screen)</td>
+<td>______ (phantom, hidden, wrong lot, wrong status)</td>
+<td>______ (the role that notices first)</td>
+</tr>
+<tr>
+<td>2. Storage and moves</td>
+<td>______ (replenishment, re-slot, convenient-location picks)</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+<tr>
+<td>3. Picking and packing</td>
+<td>______ (short pick confirmed, wrong pick, damage unrecorded)</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+<tr>
+<td>4. Returns and adjustments</td>
+<td>______ (returns without transaction, wrong grade, wrong adjustment, theft)</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+</tbody>
+</table></div>
+<p>Below the table: the operation's known trouble and which causes produce it (<strong><em>_</em>_); the evidence of which cause dominates, with its grade (</strong><strong><em>_, or "not known"); the count that would find out (</em></strong>___).</p>
+<h3>D. Template: count plan</h3>
+<p>Operation: <strong><em>_</em>_ (name; kind; region) · Items and zones: </strong><strong><em>_ · Shifts and quiet windows: </em></strong><strong><em> · Date filled: </em></strong>___</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Plan</th>
+<th>Basis (source and grade, or "assumption")</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What a count records</td>
+<td>______ (quantity; lot; date; status; owner)</td>
+<td>______</td>
+</tr>
+<tr>
+<td>Discrepancy rule</td>
+<td>______ (tolerance or none; by unit, case or value)</td>
+<td>______</td>
+</tr>
+<tr>
+<td>Sign convention</td>
+<td>______ (record minus physical, or the reverse)</td>
+<td>______</td>
+</tr>
+<tr>
+<td>Scheduled counts</td>
+<td>______ (which items, at what depth, ranked by what)</td>
+<td>______</td>
+</tr>
+<tr>
+<td>Triggers</td>
+<td>______ (zero or low balance; short pick; date; move or re-slot; exception)</td>
+<td>______</td>
+</tr>
+<tr>
+<td>When</td>
+<td>______ (windows outside picking; full count date, if any, and who requires it)</td>
+<td>______</td>
+</tr>
+<tr>
+<td>Who counts</td>
+<td>______ (role; separated from whom)</td>
+<td>______</td>
+</tr>
+<tr>
+<td>Adjustments</td>
+<td>______ (reason codes; approval limits; who approves; log)</td>
+<td>______ (the company's finance team and auditors decide approvals)</td>
+</tr>
+<tr>
+<td>Holds</td>
+<td>______ (what goes on hold at a count, who releases)</td>
+<td>______</td>
+</tr>
+<tr>
+<td>Measures</td>
+<td>______ (WERC name; whose definition; netted or absolute)</td>
+<td>______</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>______ (who, how often, what they look at)</td>
+<td>______</td>
+</tr>
+</tbody>
+</table></div>
+<h3>E. Glossary lines</h3>
+<p>Added to SCE1's, SCE2's and SCE3's working glossary; each term as this unit uses it.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Working definition</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Location</td>
+<td>An addressed place where goods can be, down to a forklift's forks</td>
+<td>B&amp;H §4.2 [practice]</td>
+</tr>
+<tr>
+<td>Perpetual (book) inventory; physical inventory</td>
+<td>The continuously updated record; what is actually there</td>
+<td>Course terms; B&amp;H ch. 18 names book and physical [practice]</td>
+</tr>
+<tr>
+<td>Lot; batch</td>
+<td>The production or receipt group a unit belongs to</td>
+<td>21 CFR 211.130 [independent]</td>
+</tr>
+<tr>
+<td>Serial number</td>
+<td>An identifier for one unit; with a GTIN, it identifies one trade item</td>
+<td>GS1 support page [independent]</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>An attribute controlling whether stock may be allocated</td>
+<td>Course term; 21 CFR 211.82–211.89 [independent] for quarantine and rejected</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Whose goods a record holds, in a multi-client site</td>
+<td>Course term; not sourced</td>
+</tr>
+<tr>
+<td>Rotation rule; FIFO; FEFO</td>
+<td>Which unit leaves first: oldest receipt, or earliest date</td>
+<td>SCE2 §9; 21 CFR 211.150(a) [independent]</td>
+</tr>
+<tr>
+<td>Quarantine; hold</td>
+<td>Stock kept in the record but withheld from use until released</td>
+<td>21 CFR 211.82(b), 211.84(a) [independent]</td>
+</tr>
+<tr>
+<td>Inventory record inaccuracy (IRI)</td>
+<td>The record differing from what is physically there</td>
+<td>DeHoratius &amp; Raman 2008 [independent]</td>
+</tr>
+<tr>
+<td>Phantom inventory; hidden inventory</td>
+<td>Record above physical; record below physical</td>
+<td>DeHoratius et al. 2023 [independent]</td>
+</tr>
+<tr>
+<td>Unknown out-of-stock</td>
+<td>Empty shelf while the system shows stock</td>
+<td>DeHoratius et al. 2023 [independent]</td>
+</tr>
+<tr>
+<td>Full count; stocktake; physical inventory</td>
+<td>Every location counted at once</td>
+<td>Course term; ECR report [independent]</td>
+</tr>
+<tr>
+<td>Cycle count</td>
+<td>A selected part of the stock counted on a schedule or trigger</td>
+<td>Course term; B&amp;H §4.3 [practice]</td>
+</tr>
+<tr>
+<td>Counting depth</td>
+<td>The share of items counted</td>
+<td>DeHoratius et al. 2023 [independent]</td>
+</tr>
+<tr>
+<td>Zero-balance walk</td>
+<td>Staff walk the aisles noting empty locations</td>
+<td>DeHoratius et al. 2023 [practice]</td>
+</tr>
+<tr>
+<td>Adjustment</td>
+<td>A transaction changing the record to match a count, with a reason</td>
+<td>Course term</td>
+</tr>
+<tr>
+<td>Slotting</td>
+<td>Careful placement of cases in locations; "layout in the small"; B&amp;H also use it for assigning SKUs to locations (§8.6)</td>
+<td>B&amp;H ch. 9, §8.6 [practice]</td>
+</tr>
+<tr>
+<td>Storage assignment; random, dedicated, full-turnover, class-based</td>
+<td>Rules assigning products to locations, and the main policies</td>
+<td>de Koster et al. 2007 §4 [practice]</td>
+</tr>
+<tr>
+<td>Wrong pick</td>
+<td>A pick that takes the wrong item or size</td>
+<td>Course term</td>
+</tr>
+<tr>
+<td>Split shipment</td>
+<td>One order sent in more than one delivery</td>
+<td>Course term</td>
+</tr>
+<tr>
+<td>Backorder</td>
+<td>An ordered line waiting for stock</td>
+<td>Course term; WERC names the measure [practice]</td>
+</tr>
+<tr>
+<td>Grading; disposition</td>
+<td>Inspecting a return and assigning its condition; where it goes next</td>
+<td>Course terms; 21 CFR 211.204 records disposition [independent]</td>
+</tr>
+<tr>
+<td>Recall; traceability</td>
+<td>Withdrawing a lot; saying where a lot came from and went</td>
+<td>Course terms; 21 CFR 211.150(b) [independent]</td>
+</tr>
+<tr>
+<td>Traceability lot code (TLC); key data elements (KDEs); critical tracking events (CTEs)</td>
+<td>FDA food rule's lot identifier, the data recorded, and the events they are recorded at</td>
+<td>FDA rule page [practice]</td>
+</tr>
+<tr>
+<td>Inventory accuracy (APQC)</td>
+<td>Absolute value of the summed variance between physical and perpetual inventory, percent</td>
+<td>APQC [practice]</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.583"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="136" data-rings="5"><path style="--d:.65;--o:462px 85px" d="M400 32l-40 6-24 6-40 13-8 1-16-1-48-18-16-4-16-2-24 0-24 1-16 3-16 5-13 6-12 8-14 16-16 16-6 8 0 8 5 8 16 9 32 9 24 3 32 2 40 0 144-9 96 3 32-3 40-6 112-11 16-3 32-9 32-5 24-1 40 4 40 8 24 2 32-2 46-7 10-7 4-1-36-4-16-4-24-8-24-2-40 1-48-3-64 2-32 2-32 6-16 0-8-1-13-5-35-19-16-8-32-10-40-5-24 0-24 2"/><path style="--d:.7;--o:324px 85px" d="M144 48l-16 3-16 8-7 5-23 24-5 8 3 8 11 8 21 7 24 4 32 2 32 0 80-6 64-7 16 0 56 5 32 0 115-13 30-8-25-9-32-19-32-15-24-7-16-3-16-1-24 0-40 5-24 5-16 6-15 6-17 11-8 2-8 0-16-2-15-3-41-18-16-5-16-3-16-1-16 0-16 3"/><path style="--d:.47;--o:187px 90px" d="M160 55l-16 3-17 6-11 8-15 16-3 8 5 8 17 7 24 4 32 2 32-1 56-4 16-3 20-5 3-8-20-8-35-10-27-14-13-5-24-4-24 0"/><path style="--d:.24;--o:173px 88px" d="M160 64l-16 4-8 3-17 17-2 8 13 8 14 3 24 3 40 0 43-6 12-8-15-8-20-8-13-8-15-5-16-3-24 0"/><path d="M152 76l-6 4-8 8 2 8 12 4 24 3 24 1 16-3 16-5-10-8-30-14-8-1-16-1z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="52" data-rings="2"><circle class="ct-spot" cx="264" cy="96" r="9"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="61" data-rings="2"><circle class="ct-spot" cx="360" cy="80" r="9"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="123" data-rings="4"><path style="--d:.47;--o:438px 80px" d="M392 56l-26 8-14 8-12 16 10 8 30 8 36 5 40-1 80-12 7-8-8-8-15-8-24-11-24-7-16-2-24-1-24 2-16 3"/><path style="--d:.23;--o:449px 80px" d="M408 63l-8 4-18 13-3 8 12 8 9 2 24 3 24 0 38-5 28-8-2-8-15-8-25-9-16-3-16 0-16 1-16 2"/><path d="M432 71l-5 1-3 2-13 14 13 4 24 0 24-4 11-8-19-8-16-2z"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="32" data-rings="1"><circle class="ct-spot" cx="552" cy="96" r="7"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="35" data-rings="1"><circle class="ct-spot" cx="648" cy="88" r="8"/></g><g class="ct-rise ct-t6" data-label="¶7" data-words="30" data-rings="1"><circle class="ct-spot" cx="744" cy="80" r="7"/></g><g class="ct-rise ct-t6" data-label="¶8" data-words="37" data-rings="1"><circle class="ct-spot" cx="840" cy="88" r="8"/></g><g class="ct-rise ct-t6" data-label="¶9" data-words="20" data-rings="0"><circle class="ct-spot" cx="936" cy="88" r="6"/></g><g class="ct-rise ct-t6" data-label="¶10" data-words="15" data-rings="0"><circle class="ct-spot" cx="1032" cy="80" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-11" data-step="11"><span>Previous · 12 of 14</span><b>Self-check</b></a><a class="snext" href="#read-sce4-13" data-step="13"><span>Next · 14 of 14</span><b>Notes: facts for the case register</b></a></nav></section><section class="sec" data-step="13"><h2 id="read-sce4-13" class="band"><span class="bn" aria-hidden="true">14</span><span class="bh"><span class="bt">Notes: facts for the case register</span></span></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Operation</th>
+<th>Fact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCE4</td>
+<td>Corvane</td>
+<td>When a picker reports a short pick on a web order, the order system can re-source the missing line to a store, where Freya ships it, so the customer receives two parcels (section 9; worked chain, this unit's inference).</td>
+</tr>
+<tr>
+<td>SCE4</td>
+<td>Corvane</td>
+<td>Jonas also answers customers about items missing from web orders (section 9).</td>
+</tr>
+<tr>
+<td>SCE4</td>
+<td>Corvane</td>
+<td>Carla counts locations after short picks and after re-slots (deliverable A; assumption).</td>
+</tr>
+<tr>
+<td>SCE4</td>
+<td>Corvane</td>
+<td>Each season brings many SKUs needing new locations (section 6; this unit's reading of the two seasons and the one-third carry-over).</td>
+</tr>
+<tr>
+<td>SCE4</td>
+<td>Ostrel Foods</td>
+<td>Scheduled counts run in the daytime, before evening picking; trigger counts run within the shift (deliverable B; assumption).</td>
+</tr>
+<tr>
+<td>SCE4</td>
+<td>Ostrel Foods</td>
+<td>A counter did not pick or put away the location that day; adjustments above a limit are approved by Aart or someone he names (deliverable B; assumption).</td>
+</tr>
+<tr>
+<td>SCE4</td>
+<td>Ostrel Foods</td>
+<td>Aart reviews count results weekly (deliverable B; assumption).</td>
+</tr>
+</tbody>
+</table></div>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce4-12" data-step="12"><span>Previous · 13 of 14</span><b>Deliverable</b></a><a class="snext send" href="#read-sce4-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-sce4-sources"><summary><span class="at" id="read-sce4-14">Sources</span><span class="an">15</span></summary><div class="accb">
+<p>All addresses opened on 24 November 2026; the source log (sources.md) gives what was read at each.</p>
+<ul>
+<li>Bartholdi, J. J., III &amp; Hackman, S. T. <em>Warehouse &amp; Distribution Science</em>, release 0.98, revised 28 August 2017. Chapters 2, 3, 4, 8, 9, 18. https://<wbr>www2<wbr>.isye<wbr>.gatech<wbr>.edu/<wbr>~jjb/<wbr>wh/<wbr>book/<wbr>editions/<wbr>wh-sci-0<wbr>.98<wbr>.pdf</li>
+<li>Guide, V. D. R., Jr., Souza, G. C., Van Wassenhove, L. N. &amp; Blackburn, J. D. (2006). Time Value of Commercial Product Returns. <em>Management Science</em> 52(8), 1200–1214. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1287/<wbr>mnsc<wbr>.1060<wbr>.0522 (abstract, read at https://<wbr>econpapers<wbr>.repec<wbr>.org/<wbr>RePEc:inm:ormnsc:v:52:y:2006:i:8:p:1200-1214; a 2005 working-paper version is at https://<wbr>drum<wbr>.lib<wbr>.umd<wbr>.edu/<wbr>items/<wbr>76d3af97-f39a-4e91-9e7e-19fceb1806f1/<wbr>full)</li>
+<li>de Koster, R., Le-Duc, T. &amp; Roodbergen, K. J. (2007). Design and control of warehouse order picking: A literature review. <em>European Journal of Operational Research</em> 182(2), 481–501. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1016/<wbr>j<wbr>.ejor<wbr>.2006<wbr>.07<wbr>.009 (read in the version of record at https://<wbr>pure<wbr>.eur<wbr>.nl/<wbr>ws/<wbr>portalfiles/<wbr>portal/<wbr>46713708/<wbr>DesignandControl_2007<wbr>.pdf)</li>
+<li>DeHoratius, N. &amp; Raman, A. (2008). Inventory Record Inaccuracy: An Empirical Analysis. <em>Management Science</em> 54(4), 627–641. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1287/<wbr>mnsc<wbr>.1070<wbr>.0789 (abstract, read at https://<wbr>pubsonline<wbr>.informs<wbr>.org/<wbr>doi/<wbr>fpi/<wbr>10<wbr>.1287/<wbr>mnsc<wbr>.1070<wbr>.0789)</li>
+<li>DeHoratius, N., Holzapfel, A., Kuhn, H., Mersereau, A. J. &amp; Sternbeck, M. (2023). Evaluating Count Prioritization Procedures for Improving Inventory Accuracy in Retail Stores. <em>Manufacturing &amp; Service Operations Management</em> 25(1), 288–306. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1287/<wbr>msom<wbr>.2022<wbr>.1119 (full text, read at https://<wbr>pubsonline<wbr>.informs<wbr>.org/<wbr>stoken/<wbr>default+domain/<wbr>IAC-INNOVATION-IN-RETAIL/<wbr>full/<wbr>10<wbr>.1287/<wbr>msom<wbr>.2022<wbr>.1119)</li>
+<li>Fleisch, E. &amp; Tellkamp, C. (2005). Inventory Inaccuracy and Supply Chain Performance: A Simulation Study of a Retail Supply Chain. <em>International Journal of Production Economics</em> 95(3), 373–385. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1016/<wbr>j<wbr>.ijpe<wbr>.2004<wbr>.02<wbr>.003 (abstract, read at https://<wbr>www<wbr>.alexandria<wbr>.unisg<wbr>.ch/<wbr>21602/<wbr>)</li>
+<li>Kök, A. G. &amp; Shang, K. H. (2007). Inspection and Replenishment Policies for Systems with Inventory Record Inaccuracy. <em>Manufacturing &amp; Service Operations Management</em> 9(2), 185–205. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1287/<wbr>msom<wbr>.1060<wbr>.0136 (abstract, read at https://<wbr>pubsonline<wbr>.informs<wbr>.org/<wbr>doi/<wbr>fpi/<wbr>10<wbr>.1287/<wbr>msom<wbr>.1060<wbr>.0136)</li>
+<li>Kull, T. J., Barratt, M., Sodero, A. C. &amp; Rabinovich, E. (2013). Investigating the Effects of Daily Inventory Record Inaccuracy in Multichannel Retailing. <em>Journal of Business Logistics</em> 34(3), 189–208. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1111/<wbr>jbl<wbr>.12019 (author's version, full text, read at https://<wbr>core<wbr>.ac<wbr>.uk/<wbr>download/<wbr>213060804<wbr>.pdf; record at https://<wbr>epublications<wbr>.marquette<wbr>.edu/<wbr>mgmt_fac/<wbr>252)</li>
+<li>Rekik, Y., Syntetos, A. A. &amp; Glock, C. H. <em>Inventory Inaccuracy in Retailing: Does it Matter?</em> ECR Community Shrinkage &amp; On-Shelf Availability Group, October 2019. https://<wbr>orca<wbr>.cardiff<wbr>.ac<wbr>.uk/<wbr>142664/<wbr>1/<wbr>84486%20ECR%20Inventory%20Inaccuracy%20Report<wbr>.pdf</li>
+<li>APQC. "Inventory accuracy". Open Standards Benchmarking measure page, undated. https://<wbr>www<wbr>.apqc<wbr>.org/<wbr>what-we-do/<wbr>benchmarking/<wbr>open-standards-benchmarking/<wbr>measures/<wbr>inventory-accuracy</li>
+<li>United States. Code of Federal Regulations, Title 21, Part 211, "Current Good Manufacturing Practice for Finished Pharmaceuticals", §§ 211.82, 211.84, 211.87, 211.89, 211.130, 211.137, 211.142, 211.150, 211.196, 211.204, 211.208. eCFR, up to date as of 16 June 2026. https://<wbr>www<wbr>.ecfr<wbr>.gov/<wbr>current/<wbr>title-21/<wbr>chapter-I/<wbr>subchapter-C/<wbr>part-211</li>
+<li>US Food and Drug Administration. "FSMA Final Rule on Requirements for Additional Traceability Records for Certain Foods". Modified 4 November 2026. https://<wbr>fda<wbr>.gov/<wbr>food/<wbr>food-safety-modernization-act-fsma/<wbr>fsma-final-rule-requirements-additional-traceability-records-certain-foods</li>
+<li>WERC. "WERC DC Measures Survey - 2025". https://<wbr>wercmetrics<wbr>.werc<wbr>.org/<wbr>WERC-DC-Measures-Survey-2025<wbr>.pdf</li>
+<li>GS1. "How does 'serialisation' differ from 'unique identification' in the GS1 System?" GS1 support article, modified 28 August 2024. https://<wbr>support<wbr>.gs1<wbr>.org/<wbr>support/<wbr>solutions/<wbr>articles/<wbr>43000734238-how-does-serialisation-differ-from-unique-identification-in-the-gs1-system-</li>
+<li>Hyster-Yale Materials Handling, Inc. "Top 12 distribution center metrics" (infographic, from WERC's 2025 DC Measures Report), © 2025. Vendor-reported. https://<wbr>www<wbr>.yale<wbr>.com/<wbr>globalassets/<wbr>coms/<wbr>yale/<wbr>north-america/<wbr>documents/<wbr>white-papers/<wbr>snack-drawer/<wbr>YALE-1520_WERC-DC-Metrics-infographic<wbr>.pdf</li>
+</ul>
+</div></details><details class="acc note" id="read-sce4-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>Every claim that carries a number, a mechanism or a recommendation ends with a grade from SCE1's key (SCE1 §10): [independent], [analyst], [vendor-reported] or [practice]. Lines marked as this unit's inference carry no grade. One point holds throughout: every study this unit could open that reports how many records were wrong was carried out in <strong>retail stores</strong>; the one distribution-centre study, Kull et al. (2013, section 9), read in full in the author's version, measures inaccuracy as a percentage of on-hand stock and gives no share of records wrong. Applying a store finding to a warehouse is this unit's inference, and the unit says so each time.</p>
+</div></details><details class="acc made" id="read-sce4-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>SCE4 covers the stock record. It sets out inventory held by location and the attributes stored with it (lot, serial number, expiry date, status, owner), rotation by date, holds and quarantine as a regulated process, what the research on inventory record inaccuracy found and in which settings, counting, slotting, returns, traceability and recalls, and one error followed through a fictional case from short pick to service call. It ends with the inventory measures WERC names. Its deliverable is a cause tree for inventory errors at Corvane (fictional), a count plan for Ostrel Foods (fictional), the templates for both, and glossary lines. Written 24 Nov 2026 by Opus 5.5 with search off (references still opened live, all on 24 Nov 2026), then given a fresh check (fix: 3 errors, 18 should-fix, 12 minor) and a quality review (fix: 2 errors, 14 should-fix, 10 minor) by separate Opus 5.5 agents, their findings applied: all 33 of the fresh check's, with 4 extra fixes, and 25 of the quality review's 26. Held: the quality review's f25, that the unit depends on facts that change (FDA's food traceability compliance dates, the eCFR version date) and could be search on; it stays off as the course's convention, left to a syllabus decision (flag F41). Known gaps: the empirical studies of record inaccuracy that could be opened and that report a share of records wrong are all of retail stores; the one distribution-centre study (Kull et al. 2013, read in full in the author's version) measures inaccuracy as a percentage of on-hand stock instead. DeHoratius and Raman (2008), Kök and Shang (2007), Fleisch and Tellkamp (2005) and Guide et al. (2006) on returns were read in abstract only. The quarantine and returns process is sourced from US drug regulation only. No source was opened on who may make an adjustment or on the general routes a returned item can take. WERC's definitions were not found, so its measures carry the course's working definitions; one has a vendor's description (Hyster-Yale, 2025, vendor-reported).</p><h3 id="read-sce4-15">Unsure list</h3>
+<h1>Unsure: SCE4</h1>
+<ol>
+<li>The ECR Community report (Rekik, Syntetos &amp; Glock, 2019) is graded independent as an association report with its sample stated; it was commissioned by an industry group whose members are retailers and suppliers, and it was read at Cardiff University's repository, not on ECR's own page.</li>
+<li>ECR Experiment I: the "benefit resulting from the stocktake" of 3.83% to 8.38% (average 5.98%) is given in the unit as higher sales in counted test stores than in uncounted control stores; the exact comparison basis was read through an extraction and not confirmed in the report's tables.</li>
+<li>DeHoratius et al. (2023): the list of count-selection rules (sales, recorded decreases or increases, past error, forecast sales, days since last count, two model-based) is the unit's paraphrase of rule names read through an extraction.</li>
+<li>DeHoratius &amp; Raman (2008): which of 67.6% and 69.0% is "across stores" and which "across categories" follows the abstract's order as extracted.</li>
+<li>Every Bartholdi &amp; Hackman quotation (§2.4 "creating discrepancies between book and physical inventory at two locations"; §4.2; ch. 9 "Slotting refers to..."; §3.4 "up to ten times"; §3.7 "about 5% in retail", "25–30%"; ch. 18) and the §8.6 figure of 325 to 285 bays came from a fetch tool's extraction and were not re-read against the PDF.</li>
+<li>The title of 21 CFR Part 211, "Current Good Manufacturing Practice for Finished Pharmaceuticals", was taken from search-result addresses, not read as a heading on the eCFR page.</li>
+<li>Fleisch &amp; Tellkamp (2005) is graded practice because the causes are the model's premise, not a measurement; a reader of SCE1's key could grade it independent.</li>
+<li>The FDA traceability page is internally inconsistent on the compliance date (2028 proposed and enforcement-deferred; January 2026 still stated elsewhere on the page); the unit reports both.</li>
+<li>Kull et al. (2013): read in full in the author's version (core.ac.uk); the study is of one distribution centre of a midsize US apparel retailer, as the unit now says. The sign convention of its bias figures (Equation 1) was not checked.</li>
+<li>Blackburn, Guide, Souza &amp; Van Wassenhove (2005): the repository's metadata lists Blackburn alone and its page lists four authors in another order; the unit lists all four alphabetically.</li>
+</ol>
+<p>Object: the inventory record of one storage location (SKU, quantity, lot, date, status, owner), sections 1 and 4</p>
+<h3>Fresh check</h3><p>Fresh check 2026-11-24 (claude-opus-5-5): fix · 3 errors, 18 should-fix, 12 minor; report audits/supply-chain-execution/fresh-check-SCE4.md</p><h3>The brief</h3><div class="pbox"><pre>Aim: explain how inventory records go wrong, how sites find it, and what one error costs downstream
+Takes: SCE2, SCE3.
+Gives: the error chain SCE9&#x27;s promise depends on and DD-SCE2&#x27;s exceptions draw from.
+
+Unit SCE4, Inventory and control. Cover: inventory at the level of a location, and the attributes that travel with it (lot, serial number, expiry date, status, owner); rotation rules built on dates; holds and quarantine; how the record goes wrong, from the empirical research on inventory record inaccuracy, with its sample and setting; counting (cycle counts against a full count, what triggers a count, who counts, what an adjustment is and who may make one); slotting: what it is, what it is meant to save and how the literature treats it; returns: receiving them, grading them, and the routes a returned item can take; traceability and recalls at the level of what the system must be able to answer; how one inventory error travels (a short pick, a split shipment, a broken promise, a service call), traced on the case; the inventory measures the benchmark surveys report, by definition. Deliverable: a cause tree for inventory errors (cause, where it enters, where it shows in the system, who finds it), built for Corvane; a count plan for Ostrel Foods; then the templates.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>
