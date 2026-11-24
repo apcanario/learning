@@ -1,0 +1,11 @@
+# W-SCE4: SCE4 filed, SCE1 and SCE2 corrections, P-HK3 hero spread
+academy/index.html
+academy/new.html
+academy/supply-chain-execution-sce/bibliography.html
+academy/supply-chain-execution-sce/briefs.html
+academy/supply-chain-execution-sce/built.html
+academy/supply-chain-execution-sce/home.html
+academy/supply-chain-execution-sce/read-sce1.html
+academy/supply-chain-execution-sce/read-sce2.html
+academy/supply-chain-execution-sce/read-sce4.html
+README.md
