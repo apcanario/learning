@@ -153,3 +153,8 @@ Empty until the first unit is filed. One row per fact: unit, operation, fact.
 | from Supply Chain Planning | Ostrel Foods | Marta: commercial manager, plans promotions. |
 | from Supply Chain Planning | Ostrel Foods | Joris: finance director. |
 | from Supply Chain Planning | Varnby Software | Planning line: Varnby Planning, sold with the ERP: a demand forecasting module, requirements planning, and a planning workbench; no separate retail planning. |
+| SCE3 | Corvane | A store replenishment order covers many items across the range (assumption in deliverable B; the register gives no lines per store order). |
+| SCE3 | Corvane | Stores on one route or carrier share a departure time (assumption in deliverable B). |
+| SCE3 | Corvane | Whether the distribution centre has a sorter, carts or a put wall is not in the register; deliverable B leaves it open (a register row only if a later unit needs it). |
+| SCE3 | Ostrel Foods | Picking is released by route after the late-afternoon order cut-off, and the parts of a customer's order picked in the three temperature zones are consolidated by stop at staging (working description in deliverable C). |
+| SCE3 | Ostrel Foods | Roll cages are staged by route and loaded in reverse order of delivery (deliverables B and C; textbook practice applied to the register). |
