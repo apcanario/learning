@@ -1,0 +1,10 @@
+# W-SCE3: SCE3 filed, What's new hero (P-HK2)
+academy/supply-chain-execution-sce/read-sce3.html
+README.md
+academy/changelog.html
+academy/index.html
+academy/new.html
+academy/supply-chain-execution-sce/bibliography.html
+academy/supply-chain-execution-sce/briefs.html
+academy/supply-chain-execution-sce/built.html
+academy/supply-chain-execution-sce/home.html
