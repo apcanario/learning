@@ -1,0 +1,52 @@
+[
+ {
+  "id": "X1",
+  "decision": "apply",
+  "reason": "Repaired f7: same wording, with the status page linked (search-returned and fetched 25 Nov 2026) and graded independent as a treaty depositary record."
+ },
+ {
+  "id": "X2",
+  "decision": "apply",
+  "reason": "Sources entry for the UN status page added by X1, in alphabetical place after the UNECE entry."
+ },
+ {
+  "id": "X3",
+  "decision": "apply",
+  "reason": "Could-not-verify item: the GS1 IFTSTA page (fetched 25 Nov 2026) gives 'REFERENCE DIRECTORY : D.01B' but does not say UN/EDIFACT; the EANCOM Part I page that might say so was refused and is not checked. Marked unverified."
+ },
+ {
+  "id": "X4",
+  "decision": "apply",
+  "reason": "As X3, §7 table."
+ },
+ {
+  "id": "X5",
+  "decision": "apply",
+  "reason": "As X3, glossary row."
+ },
+ {
+  "id": "X6",
+  "decision": "apply",
+  "reason": "Writer's-contradiction item 4: 'FTL' for Europe is the unit's unsourced working term (§2 table says so) and should not read as Sheffi's."
+ },
+ {
+  "id": "X7",
+  "decision": "apply",
+  "reason": "Keeps the opening note true after f4/f6 and X1/X2 add sources opened on 25 Nov 2026."
+ },
+ {
+  "id": "X8",
+  "decision": "apply",
+  "reason": "As X7, Sources intro."
+ },
+ {
+  "id": "X9",
+  "decision": "apply",
+  "reason": "Keeps the Unsure list in line with X1 (f7 repaired)."
+ },
+ {
+  "id": "X10",
+  "decision": "apply",
+  "reason": "Keeps the Unsure list in line with f8."
+ }
+]

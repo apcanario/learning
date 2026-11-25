@@ -125,7 +125,8 @@ def sources(takes):
 
 
 def flags(r):
-    """Open and carried rows of the course's syllabus-flags.md whose Affects cell names this unit, alone or inside a range.
+    """Open and carried rows of the course's syllabus-flags.md whose Affects cell names this unit, alone or inside a range, or
+    contains the words "every unit" (P-SCP1, 24 Nov 2026).
     A carried row is passed too (Pedro, 17 Nov 2026): it was carried by an earlier unit, and a unit not yet written that it
     names still has to follow it (F8, the grade key; F14, the interim rule-2 grading)."""
     f = pack.data_dir(r['c']) / 'syllabus-flags.md'
@@ -138,6 +139,7 @@ def flags(r):
         for a, b in re.findall(r'((?:DD-)?[A-Z]+\d+) to ((?:DD-)?[A-Z]+\d+)', aff):
             if a in order and b in order and order.index(a) <= order.index(r['code']) <= order.index(b): hit = True
         if r['code'] in re.findall(r'(?:DD-)?[A-Z]+\d+', re.sub(r'(?:DD-)?[A-Z]+\d+ to (?:DD-)?[A-Z]+\d+', '', aff)): hit = True
+        if re.search(r'\bevery unit\b', aff, re.I): hit = True   # P-SCP1: "every unit" names every unit of the course
         if hit: out.append(f'{cells[0]} ({cells[1]}, raised by {cells[2]}{", carried" if cells[6] == "carried" else ""}): {cells[4]}. Proposed: {cells[5]}.')
     return out
 

@@ -1,0 +1,82 @@
+[
+ {
+  "id": "X1",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§6 step 12",
+  "current": "This unit read only the 1956 text and did not check whether a later instrument changed the cap's unit or amount.",
+  "fix": "This unit read only the 1956 text; a Protocol of 5 July 1978, in force since 28 December 1980, amended Art. 23 for the countries party to it ([UN Treaty Collection, status of the Protocol](https://treaties.un.org/doc/Publication/MTDSG/Volume%20I/Chapter%20XI/XI-B-11-a.en.pdf)) [independent], and its text was not read here, so the amended cap is not given."
+ },
+ {
+  "id": "X2",
+  "severity": "minor",
+  "kind": "attribution",
+  "where": "Sources",
+  "current": "- United States. Code of Federal Regulations, Title 49, Part 377,",
+  "fix": "- United Nations Treaty Collection. Status of the Protocol to the Convention on the Contract for the International Carriage of Goods by Road (CMR), Geneva, 5 July 1978, chapter XI.B-11(a). https://treaties.un.org/doc/Publication/MTDSG/Volume%20I/Chapter%20XI/XI-B-11-a.en.pdf\n- United States. Code of Federal Regulations, Title 49, Part 377,"
+ },
+ {
+  "id": "X3",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§6 step 7",
+  "current": "One standard message for this is UN/EDIFACT's IFTSTA, which in GS1's EANCOM subset reports",
+  "fix": "One standard message for this is IFTSTA, the international multimodal status report message (that it is a UN/EDIFACT message is unverified here: the page read gives only its reference directory, D.01B), which in GS1's EANCOM subset reports"
+ },
+ {
+  "id": "X4",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§7 table",
+  "current": "| Status report (IFTSTA) | UN/EDIFACT, in GS1's EANCOM subset; regional use not sourced |",
+  "fix": "| Status report (IFTSTA) | GS1's EANCOM subset, reference directory D.01B (UN/EDIFACT unverified); regional use not sourced |"
+ },
+ {
+  "id": "X5",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "Deliverable D",
+  "current": "| IFTSTA | UN/EDIFACT status report message for transport events | UN/EDIFACT; regional use not sourced |",
+  "fix": "| IFTSTA | International multimodal status report message for transport events | GS1 EANCOM (UN/EDIFACT unverified); regional use not sourced |"
+ },
+ {
+  "id": "X6",
+  "severity": "minor",
+  "kind": "label",
+  "where": "Deliverable D",
+  "current": "| FTL Europe, TL US | Sheffi 2004 [practice]; replaces SCE1's course term |",
+  "fix": "| FTL Europe (working term), TL US | Sheffi 2004 [practice]; replaces SCE1's course term |"
+ },
+ {
+  "id": "X7",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "Opening note",
+  "current": "Every reference was opened on 24 November 2026; the source log gives what was read at each.",
+  "fix": "Every reference was opened on 24 November 2026, except two added at the fresh check and opened on 25 November 2026 (ICAO's 2024 revised limits; the UN Treaty Collection's status page for the 1978 CMR Protocol); the source log gives what was read at each."
+ },
+ {
+  "id": "X8",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "Sources",
+  "current": "All addresses opened on 24 November 2026; the source log",
+  "fix": "All addresses opened on 24 November 2026, except ICAO's 2024 revised limits and the UN Treaty Collection's status page for the 1978 CMR Protocol, opened on 25 November 2026; the source log"
+ },
+ {
+  "id": "X9",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "Unsure list",
+  "current": "whether a later protocol changed the unit or amount, and for which countries, was not checked, and the unit says so.",
+  "fix": "a Protocol of 5 July 1978 amends Art. 23 for its parties (UN Treaty Collection status page); its text, amount and parties were not read, and the unit says so."
+ },
+ {
+  "id": "X10",
+  "severity": "minor",
+  "kind": "figure",
+  "where": "Unsure list",
+  "current": "ATRI's 16.7% empty miles for 2024: the release does not state the sample or how",
+  "fix": "ATRI's 16.7% empty miles: the release does not state the year measured, the sample or how"
+ }
+]

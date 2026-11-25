@@ -100,7 +100,7 @@ def sourcing_parts(family, part=None):
     txt = (REPO / HB['sourcing']).read_text(encoding='utf-8')
     out = []
     for m in re.finditer(r'^## (Part \d[^\n]*)\n(.*?)(?=^## |\Z)', txt, re.S | re.M):
-        if m.group(1).startswith(('Part 1', part or HB['sourcing_parts'][family])):
+        if m.group(1).split(' ·')[0] in ('Part 1', part or HB['sourcing_parts'][family]):   # P-AIE8: exact, so Part 10 is not Part 1
             out.append((m.group(1), [ln.replace('- [ ] ', '- ') for ln in m.group(2).split('\n')]))
     return out
 
@@ -129,8 +129,10 @@ def method_section(family, md_inline, cadence=None):
     rows = ''.join(f'<tr><td>{md_inline(t)}</td><td>{md_inline(a)}</td><td>{md_inline(cadence if cadence is not None and t == CADENCE_TOPIC else b)}</td></tr>'
                    for t, a, b in method_rows(family))
     picks = ''.join(f'<li><strong>{md_inline(n)}.</strong> Pick: {md_inline(p)} <em>Override if:</em> {md_inline(o)}</li>' for n, p, o in method_decisions())
+    own = (f' The common rule of the {e(CADENCE_TOPIC)} row is this course\'s own, its <code>audit_cadence</code>, not {e(doc)}\'s.'
+           if cadence is not None else '')   # P-HK3: that cell is the course's (P-DEC21), not the method doc's
     return (f'<details class="howto rules"><summary><h2>The method in force</h2><span>{e(doc)} §1</span></summary>'
-            f'<p class="hnote">From {gh(HB["method"])} §1: where {e(col)}\'s own method differed from the other course family\'s, and the common rule that holds now. Units written before the merge stay valid as they were written.</p>'
+            f'<p class="hnote">From {gh(HB["method"])} §1: where {e(col)}\'s own method differed from the other course family\'s, and the common rule that holds now. Units written before the merge stay valid as they were written.{own}</p>'
             f'<div class="report"><div class="tbl"><table><thead><tr><th>Topic</th><th>{e(col)} before the merge</th><th>Common rule, in force</th></tr></thead>'
             f'<tbody>{rows}</tbody></table></div></div>'
             f'<details class="prompt"><summary>The decisions and their overrides</summary><div class="report"><ul>{picks}</ul></div></details></details>')
