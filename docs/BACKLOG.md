@@ -564,9 +564,6 @@ Corrections to filed units or records left open by an earlier chat. From W-PB7 o
 
 | # | Correction | Why |
 |---|---|---|
-| C-SCE6-1 | SCE1 §11 row C8: replace per C-SCE6-1 in `audits/supply-chain-execution/corrections-needed-by-SCE6-2026-11-24.md` (target SCE1 file; Current counted once). | SCE6 §10 tested C8; the row says "Not searched here". |
-| C-SCE6-2 | SCE1 intro claims sentence: replace per C-SCE6-2 in the same file. | SCE6 tests C8, so the count of claims left to other units changes ("other six"). |
-| C-SCE6-3 | SCE1 Sources: add the four entries per C-SCE6-3 in the same file. | SCE1's C8 row now cites them. |
 
 ## Carried proposals (appended to the next prompt and worked in that chat unless Pedro removes them)
 
