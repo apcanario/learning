@@ -1,0 +1,146 @@
+[
+ {
+  "id": "f1",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§1",
+  "current": "the CMR Convention, which governs international road carriage between its contracting countries, requires",
+  "fix": "the CMR Convention, which governs international road carriage for reward where the places of taking over and delivery are in two countries, at least one of them a contracting country (Art. 1(1)), requires"
+ },
+ {
+  "id": "f2",
+  "severity": "should-fix",
+  "kind": "label",
+  "where": "§3",
+  "current": "to offer or accept a load\" ([2017, abstract](https://doi.org/10.1287/trsc.2016.0677)) [independent]",
+  "fix": "to offer or accept a load\" ([2017, abstract](https://doi.org/10.1287/trsc.2016.0677)) [practice: the abstract's description of the market]"
+ },
+ {
+  "id": "f3",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§10",
+  "current": "Lead time is a variable in Acocella et al.; its effect is not reported in what this unit read",
+  "fix": "Lead time is a variable in Acocella et al.; it was not a significant predictor of tight-market acceptance [independent]"
+ },
+ {
+  "id": "f4",
+  "severity": "should-fix",
+  "kind": "figure",
+  "where": "§7",
+  "current": "cargo liability limited to 17 Special Drawing Rights per kilogram unless value is declared (Art. 22(3))",
+  "fix": "cargo liability limited in the 1999 text to 17 Special Drawing Rights per kilogram unless value is declared (Art. 22(3)); under the five-yearly review of Art. 24, ICAO gives the revised cargo limit as 26 SDR from 28 December 2024 [independent]"
+ },
+ {
+  "id": "f5",
+  "severity": "minor",
+  "kind": "figure",
+  "where": "§7",
+  "current": "Convention [independent], as published in 2001; later revisions of the limit not checked",
+  "fix": "Convention [independent], as published in 2001; ICAO's 2024 revised limits [independent]"
+ },
+ {
+  "id": "f6",
+  "severity": "minor",
+  "kind": "attribution",
+  "where": "Sources",
+  "current": "- Kearney. 2026 State of Logistics key takeaways.",
+  "fix": "- International Civil Aviation Organization. \"2024 Revised Limits of Liability Under the Montreal Convention of 1999\". https://www.icao.int/sites/default/files/secretariat/legal/LEB%20Treaty%20Collection%20Documents/2024_Revised_Limits_of_Liability_Under_the_Montreal_Convention_of_1999_en.pdf\n- Kearney. 2026 State of Logistics key takeaways."
+ },
+ {
+  "id": "f7",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§7",
+  "current": "This unit read only the 1956 text and did not check whether a later instrument changed the cap's unit or amount.",
+  "fix": "This unit read only the 1956 text; a Protocol of 5 July 1978, in force since 28 December 1980, amended Art. 23 for the countries party to it (UN Treaty Collection status page), and its text was not read here, so the amended cap is not given."
+ },
+ {
+  "id": "f8",
+  "severity": "minor",
+  "kind": "figure",
+  "where": "§13",
+  "current": "reported that empty miles rose to an average of 16.7% in 2024 (",
+  "fix": "reported in July 2025 that empty miles rose to an average of 16.7%, without stating the year measured ("
+ },
+ {
+  "id": "f9",
+  "severity": "minor",
+  "kind": "figure",
+  "where": "Self-check",
+  "current": "ATRI reported 16.7% empty miles in the US in 2024, sample not stated",
+  "fix": "ATRI reported in July 2025 that US empty miles averaged 16.7%, year measured and sample not stated"
+ },
+ {
+  "id": "f10",
+  "severity": "minor",
+  "kind": "label",
+  "where": "§3",
+  "current": "a load in the opposite direction, a **backhaul**, balances the equipment",
+  "fix": "a load in the opposite direction (Sheffi's back-and-forth movement; **backhaul** is the course's term) balances the equipment"
+ },
+ {
+  "id": "f11",
+  "severity": "minor",
+  "kind": "label",
+  "where": "Deliverable D",
+  "current": "| Backhaul | A load in the opposite direction that saves an empty return | Both | Sheffi 2004 [practice] |",
+  "fix": "| Backhaul | A load in the opposite direction that saves an empty return | Both | Course term; the idea from Sheffi 2004 [practice] |"
+ },
+ {
+  "id": "f12",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§2",
+  "current": "(published 1990 to 2009, mainly Scandinavian,",
+  "fix": "(published 1990 to 2009 in English or Scandinavian languages,"
+ },
+ {
+  "id": "f13",
+  "severity": "minor",
+  "kind": "attribution",
+  "where": "Deliverable B",
+  "current": "| Client's order, through the client portal (register) |",
+  "fix": "| Client's order, through the client portal (reading of register) |"
+ },
+ {
+  "id": "f14",
+  "severity": "minor",
+  "kind": "style",
+  "where": "§13",
+  "current": "and the part of the 2026 report the fetch tool returned had no empty-mile figure.",
+  "fix": "and the excerpt of ATRI's 2026 report that this unit could read had no empty-mile figure."
+ },
+ {
+  "id": "f15",
+  "severity": "minor",
+  "kind": "attribution",
+  "where": "§12",
+  "current": "Kearney's published summary of the 2026 report gives no cost figures",
+  "fix": "[Kearney's published summary of the 2026 report](https://www.kearney.com/documents/d/asset-library-291362522/2026-state-of-logistics-key-takeaways) gives no cost figures"
+ },
+ {
+  "id": "f16",
+  "severity": "minor",
+  "kind": "label",
+  "where": "§11",
+  "current": "| Backup premium | Average accepted price when the primary rejects, over the average when it accepts | Acocella et al. 2020 |",
+  "fix": "| Backup premium | Average accepted price when the primary rejects, over the average when it accepts | Acocella et al. 2020 [practice: the paper's definition] |"
+ },
+ {
+  "id": "f17",
+  "severity": "minor",
+  "kind": "label",
+  "where": "§11",
+  "current": "| Dwell time | Hours a driver waits at origin or destination | Acocella et al. 2020 |",
+  "fix": "| Dwell time | Hours a driver waits at origin or destination | Acocella et al. 2020 [practice: the paper's definition] |"
+ },
+ {
+  "id": "f18",
+  "severity": "minor",
+  "kind": "attribution",
+  "where": "Sources",
+  "current": "*Interfaces* 34(4), 245–252. (read in full",
+  "fix": "*Interfaces* 34(4), 245–252. https://doi.org/10.1287/inte.1040.0075 (read in full"
+ }
+]
