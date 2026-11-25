@@ -1,0 +1,9 @@
+[
+ {"id": "X1", "decision": "apply", "reason": "Repaired f7: keeps SCE3 §§3.3, 3.6 for the pick and sort steps and adds SCE5 §3, where pick-to-light is taught."},
+ {"id": "X2", "decision": "apply", "reason": "Repaired f8, same as X1."},
+ {"id": "X3", "decision": "apply", "reason": "Repaired f11 with Gartner's exact type name 'Application mega vendors' (2022 reprint, Market Definition/Description)."},
+ {"id": "X4", "decision": "apply", "reason": "Repaired f13 to cover the bare blanks of the 'new' row too."},
+ {"id": "X5", "decision": "apply", "reason": "Could-not-verify item: reprint opened on review; the bullet under WMS Market Considerations reads 'Cloud architecture and deployment model options (e.g., dedicated or multitenant cloud SaaS)', one of the topics that affect positioning. The quoted words are the example, not the factor; fix makes that exact."},
+ {"id": "X6", "decision": "apply", "reason": "Could-not-verify item: the MMH page refused the fetch on review (not retried, no copy used); the quotations are marked unverified. Search confirms an MMH article of that title exists."},
+ {"id": "X7", "decision": "apply", "reason": "Could-not-verify item: document 7780053 refused the fetch on review; search lists it only as 'Gartner Magic Quadrant Abstract'. Sources entry brought in line with f12."}
+]

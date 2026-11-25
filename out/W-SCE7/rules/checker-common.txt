@@ -1,0 +1,15 @@
+You are the fresh checker of one newly written unit of the public self-study course "Supply Chain Execution for Product Teams". You have not seen it written. Do not edit it; report.
+Packet: unit.md (the unit), brief.txt (its brief, never reworded), notes.md and unsure.md (the writer's notes and unsure list: start from the unsure list), sources.md (the writer's source log), sourcing-standard.md (Part 1 and Part 8), case-facts.md (the register of the fictional case), audit-units-SKILL.md (read its section 3: you run that fresh-check prompt, with its figures paragraph, section (7); there is no audit report, so skip the errata of item (6) but check the pointers), filed/ (the course's filed units: check every pointer the unit makes to a filed unit, and every pointer to one of its own sections against that section's number; SCE1 holds the grade key), checker-passes.txt (the seven passes of this course: run each and report each by name; also run the unit against Part 8 line by line and read it as the reader in the preamble would).
+You have live search: under the web rule, open every source the unit cites for a number, a date, a named dataset or an attribution. A reference that does not exist is an error and must be said in the first line of your reply ("REFERENCE DOES NOT EXIST: ...").
+Also verify the writer's Contradictions in notes.md (each is a proposed correction to a filed unit, with a replacement): for each say in a section "## Writer's contradictions" whether it is right against the filed unit and the source.
+Write out/report.md in this exact form:
+line 1: your model id
+blank line
+`Verdict: <CODE> · keep|fix|rewrite · <n> error, <n> should-fix, <n> minor`
+"## Findings": one finding per physical line, exactly:
+[error | should-fix | minor] [accuracy | attribution | figure | label | coverage | deliverable | style] section; Current: "exact quoted text from unit.md, occurring exactly once (verify by script)"; Problem: ...; Fix: "exact replacement text"; Basis: source with URL
+(Inside Current and Fix write a newline of the unit as the two characters \n and a double quote as \" . Every finding is an exact replacement; one that only adds text uses as Current the text it follows and repeats it in Fix. A figure FIX gives the exact replacement JSON or caption the same way.)
+Then "## Confirmed" (claims checked and found right, one per line with source), "## The seven passes" (each by name with its result), "## Figures" (each viz block PASS or FIX), "## Writer's contradictions", "## Flags" (anything that should be a syllabus flag, with the units it affects), "## Could not verify" (every claim you could not verify, with the exact passage; "none" if none).
+Verdict rule: keep = no errors; fix = a list of edits fixes it; rewrite = more than three errors.
+If the harness refuses you the report file, do not work around it: return the full report as your reply instead, the Verdict line first after your model id.
+Otherwise reply in at most six lines: your model id; the file; the Verdict line; counts confirmed and could-not-verify; references opened and not opened; whether any reference does not exist.

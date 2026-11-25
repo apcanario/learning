@@ -1,0 +1,110 @@
+diff --git a/docs/public-courses.md b/docs/public-courses.md
+index d26dab9..20807b7 100644
+--- a/docs/public-courses.md
++++ b/docs/public-courses.md
+@@ -1,6 +1,6 @@
+ # The public courses
+ 
+-Two courses written to be shared with anyone, adapted from the private courses Brand + AI A and B. Decided by Pedro on 11 Nov 2026 (backlog row G-0). A third, Sport Psychology for Coaches (SP), adapted from nothing, was designed on 16 Nov 2026 and registered by row S-SP0; its syllabus is `docs/sport-psychology-syllabus.md` and the prompts of its rows `docs/sport-psychology-prompts.md`. A fourth, Supply Chain Execution for Product Teams (SCE), adapted from nothing and the first course of the Supply Chain track, was designed on 19 Nov 2026 and registered by row S-SCE0; its syllabus is `docs/supply-chain-execution-syllabus.md` and the prompts of its rows `docs/supply-chain-execution-prompts.md`. A sixth, AI in Supply Chain Execution (AIE), adapted from nothing and the third course of the Supply Chain track, was designed on 21 Nov 2026 and registered by row S-AIE0; its syllabus is `docs/ai-in-supply-chain-execution-syllabus.md` and the prompts of its rows `docs/ai-in-supply-chain-execution-prompts.md`. A seventh, Managing an Athlete's Career (AC), adapted from nothing and the second course of the Sports track, was designed on 21 Nov 2026 and registered by row S-AC0; its syllabus is `docs/athlete-career-syllabus.md` and the prompts of its rows `docs/athlete-career-prompts.md`. This file holds the decisions and the rules of the rows that write them; `kit/next_prompt.py` prints each row's paste-ready prompt from it and from the course data.
++Two courses written to be shared with anyone, adapted from the private courses Brand + AI A and B. Decided by Pedro on 11 Nov 2026 (backlog row G-0). A third, Sport Psychology for Coaches (SP), adapted from nothing, was designed on 16 Nov 2026 and registered by row S-SP0; its syllabus is `docs/sport-psychology-syllabus.md` and the prompts of its rows `docs/sport-psychology-prompts.md`. A fourth, Supply Chain Execution for Product Teams (SCE), adapted from nothing and the first course of the Supply Chain track, was designed on 19 Nov 2026 and registered by row S-SCE0; its syllabus is `docs/supply-chain-execution-syllabus.md` and the prompts of its rows `docs/supply-chain-execution-prompts.md`. A fifth, Supply Chain Planning for Product Teams (SCP), adapted from nothing and the second course of the Supply Chain track, was designed on 21 Nov 2026 and registered by row S-SCP0; its syllabus is `docs/supply-chain-planning-syllabus.md` and the prompts of its rows `docs/supply-chain-planning-prompts.md`. A sixth, AI in Supply Chain Execution (AIE), adapted from nothing and the third course of the Supply Chain track, was designed on 21 Nov 2026 and registered by row S-AIE0; its syllabus is `docs/ai-in-supply-chain-execution-syllabus.md` and the prompts of its rows `docs/ai-in-supply-chain-execution-prompts.md`. A seventh, Managing an Athlete's Career (AC), adapted from nothing and the second course of the Sports track, was designed on 21 Nov 2026 and registered by row S-AC0; its syllabus is `docs/athlete-career-syllabus.md` and the prompts of its rows `docs/athlete-career-prompts.md`. This file holds the decisions and the rules of the rows that write them; `kit/next_prompt.py` prints each row's paste-ready prompt from it and from the course data.
+ 
+ ## 1 · What was decided
+ 
+@@ -31,6 +31,19 @@ Two courses written to be shared with anyone, adapted from the private courses B
+ | SCE · D10 · Reliefs wait for a later row, as rule 10 of the public courses | Stands unless vetoed | Proposed 19 Nov 2026 in the course's syllabus (`docs/supply-chain-execution-syllabus.md` §8), registered by row S-SCE0; override: Register ten outlines in the setup row |
+ | SCE · D11 · Unit codes start at SCE1, one above the plan page's | Stands unless vetoed | Proposed 19 Nov 2026 in the course's syllabus (`docs/supply-chain-execution-syllabus.md` §8), registered by row S-SCE0; override: Keep SCE0, if the kit accepts it |
+ | SCE · D12 · Four courses are listed in Academy as coming soon in the track, with a teaser each: planning, automation and robotics, AI in execution, last mile and omni-channel (Pedro, 19 Nov 2026). A course on the logistics provider's business is left off: it is promised only if DD-SCE1 proves too thin | Decided by Pedro, 19 Nov 2026 | Proposed 19 Nov 2026 in the course's syllabus (`docs/supply-chain-execution-syllabus.md` §8), registered by row S-SCE0; override: List none until each has a syllabus |
++| SCP · D1 · Centre of gravity: demand and inventory | Decided by the owner, 21 Nov 2026 | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D2 · Concepts only: no formula and no worked calculation in any unit | Decided by the owner, 21 Nov 2026 | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D3 · Statistical forecasting, machine learning and optimisation are in, as methods judged on published evidence. Generative AI, assistants, agents and vendors' AI branding are out | Decided by the owner, 21 Nov 2026 | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D4 · The commercial side is compressed to what differs from execution software: one unit on the product, one on users, one on buying | Decided by the owner, 21 Nov 2026 | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D5 · Sixteen core units and two deep dives | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D6 · Standalone: assumes no other course; it shares the Execution course's world (Corvane, Ostrel Foods), its four evidence grades, its vendor rule and its fictional-vendor rule | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D7 · A third case company, Pellward, a manufacturer; Tandric Logistics is left out | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D8 · Three fictional vendors, one per kind of planning vendor: Lathmoor and Ebbfield are new; the third is Varnby Software, the Execution course's ERP vendor, given a planning line | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D9 · The grade key adds one requirement: every finding states its kind of evidence (competition, field experiment, laboratory experiment, simulation, case study, survey) | Accepted by the owner, 21 Nov 2026, with D10 | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D10 · Real companies may appear as documented cases from peer-reviewed or published accounts, labelled where the company co-wrote them; confined to operating companies, the vendor rule unchanged | Accepted by the owner, 21 Nov 2026, with D9 | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D11 · Search on for SCP1, SCP13, SCP15, DD-SCP1 and DD-SCP2 only | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D12 · Deep dives: the comparables (DD-SCP1, published company accounts) and the hard numbers (DD-SCP2); no third | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
++| SCP · D13 · Lessons of the Execution course's first two units are built into the briefs | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/supply-chain-planning-syllabus.md` §8), registered by row S-SCP0; override: none named there |
+ | AIE · D1 · A public course in the Supply Chain track, keeping the title and promise the track's listing already shows | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/ai-in-supply-chain-execution-syllabus.md` §8), registered by row S-AIE0; override: A private course |
+ | AIE · D2 · Thirteen core units and one deep dive | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/ai-in-supply-chain-execution-syllabus.md` §8), registered by row S-AIE0; override: Ten and two: merge AIE7 with AIE8, drop AIE12 into AIE11, split AIE5 back into a deep dive |
+ | AIE · D3 · Four technique families, with generative models and agents as one of them | Stands unless vetoed | Proposed 21 Nov 2026 in the course's syllabus (`docs/ai-in-supply-chain-execution-syllabus.md` §8), registered by row S-AIE0; override: A course on generative AI and agents only |
+@@ -59,18 +72,18 @@ Two courses written to be shared with anyone, adapted from the private courses B
+ 
+ ## 2 · The courses
+ 
+-| | PB · Building a Personal Brand on Instagram and YouTube | BW · Building with AI | SP · Sport Psychology for Coaches | SCE · Supply Chain Execution for Product Teams | AIE · AI in Supply Chain Execution | AC · Managing an Athlete's Career |
+-|---|---|---|---|---|---|---|
+-| course entry (`courses/<id>/course.toml`) | `personal-brand` | `building-with-ai` | `sport-psychology` | `supply-chain-execution` | `ai-in-supply-chain-execution` | `athlete-career` |
+-| Data | `courses/personal-brand/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/building-with-ai/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/sport-psychology/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/supply-chain-execution/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/ai-in-supply-chain-execution/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/athlete-career/course.toml` (`[pack]`), `briefs.md`, `notes/` |
+-| Vault | `courses/personal-brand/` | `courses/building-with-ai/` | `courses/sport-psychology/` | `courses/supply-chain-execution/` | `courses/ai-in-supply-chain-execution/` | `courses/athlete-career/` |
+-| Fresh checks | `audits/personal-brand/` | `audits/building-with-ai/` | `audits/sport-psychology/` (and `safety-read-<code>.md` for SP9, DD-SP1, DD-SP2) | `audits/supply-chain-execution/` (no safety reader) | `audits/ai-in-supply-chain-execution/` (no safety reader) | `audits/athlete-career/` (no safety reader) |
+-| Sourcing | `sourcing-standard.md` Parts 1 and 5 | Parts 1 and 6 | Parts 1 and 7 | Parts 1 and 8 | Parts 1 and 10 | Parts 1 and 11 |
+-| Units | 10 core in four parts, 2 deep dives | 10 core in three parts, 3 deep dives | 10 core in four parts, 3 deep dives | 18 core in an opening and three parts, 2 deep dives | 13 core in an opening and three parts, 1 deep dive | 15 core in five parts, 3 deep dives |
+-| Adapted from | Course A; each unit's Takes line names its source units | Course B; each unit's Takes line names its source units | Nothing: no source units; a seed bibliography, `bibliography.md` | Nothing: no source units; a seed bibliography, `bibliography.md` | Nothing: no source units; a seed bibliography, `bibliography.md` | Nothing: no source units; a seed bibliography, `bibliography.md` |
+-| Case | Mara Venn, fictional: `case-facts.md` | Academy, real: `case-academy.md` | Dani, Milan and Sara, fictional: `case-facts.md` | Corvane, Ostrel Foods and Tandric Logistics, fictional operations, and Halvern Systems, Varnby Software and Kestrow, fictional vendors: `case-facts.md` | The track's case, reused: Corvane, Ostrel Foods and Tandric Logistics, fictional operations, and Halvern Systems, Varnby Software and Kestrow, fictional vendors, with fictional AI features and six fictional claims: `case-facts.md` | Sport Psychology's case, reused: Sara, Dani and Milan, fictional, with their coaches and a commercial layer (fictional sponsors, clubs and agents): `case-facts.md` |
+-| Track | Marketing | Technology | Coaching (new) | Supply Chain (new) | Supply Chain | Sports |
+-| Flags | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` |
++| | PB · Building a Personal Brand on Instagram and YouTube | BW · Building with AI | SP · Sport Psychology for Coaches | SCE · Supply Chain Execution for Product Teams | SCP · Supply Chain Planning for Product Teams | AIE · AI in Supply Chain Execution | AC · Managing an Athlete's Career |
++|---|---|---|---|---|---|---|---|
++| course entry (`courses/<id>/course.toml`) | `personal-brand` | `building-with-ai` | `sport-psychology` | `supply-chain-execution` | `supply-chain-planning` | `ai-in-supply-chain-execution` | `athlete-career` |
++| Data | `courses/personal-brand/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/building-with-ai/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/sport-psychology/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/supply-chain-execution/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/supply-chain-planning/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/ai-in-supply-chain-execution/course.toml` (`[pack]`), `briefs.md`, `notes/` | `courses/athlete-career/course.toml` (`[pack]`), `briefs.md`, `notes/` |
++| Vault | `courses/personal-brand/` | `courses/building-with-ai/` | `courses/sport-psychology/` | `courses/supply-chain-execution/` | `courses/supply-chain-planning/` | `courses/ai-in-supply-chain-execution/` | `courses/athlete-career/` |
++| Fresh checks | `audits/personal-brand/` | `audits/building-with-ai/` | `audits/sport-psychology/` (and `safety-read-<code>.md` for SP9, DD-SP1, DD-SP2) | `audits/supply-chain-execution/` (no safety reader) | `audits/supply-chain-planning/` (no safety reader) | `audits/ai-in-supply-chain-execution/` (no safety reader) | `audits/athlete-career/` (no safety reader) |
++| Sourcing | `sourcing-standard.md` Parts 1 and 5 | Parts 1 and 6 | Parts 1 and 7 | Parts 1 and 8 | Parts 1 and 9 | Parts 1 and 10 | Parts 1 and 11 |
++| Units | 10 core in four parts, 2 deep dives | 10 core in three parts, 3 deep dives | 10 core in four parts, 3 deep dives | 18 core in an opening and three parts, 2 deep dives | 16 core in an opening and four parts, 2 deep dives | 13 core in an opening and three parts, 1 deep dive | 15 core in five parts, 3 deep dives |
++| Adapted from | Course A; each unit's Takes line names its source units | Course B; each unit's Takes line names its source units | Nothing: no source units; a seed bibliography, `bibliography.md` | Nothing: no source units; a seed bibliography, `bibliography.md` | Nothing: no source units; a seed bibliography, `bibliography.md` | Nothing: no source units; a seed bibliography, `bibliography.md` | Nothing: no source units; a seed bibliography, `bibliography.md` |
++| Case | Mara Venn, fictional: `case-facts.md` | Academy, real: `case-academy.md` | Dani, Milan and Sara, fictional: `case-facts.md` | Corvane, Ostrel Foods and Tandric Logistics, fictional operations, and Halvern Systems, Varnby Software and Kestrow, fictional vendors: `case-facts.md` | The Execution course's Corvane and Ostrel Foods and a new manufacturer, Pellward, fictional operations, and Lathmoor, Ebbfield and Varnby Software (the Execution course's, given a planning line), fictional vendors: `case-facts.md` | The track's case, reused: Corvane, Ostrel Foods and Tandric Logistics, fictional operations, and Halvern Systems, Varnby Software and Kestrow, fictional vendors, with fictional AI features and six fictional claims: `case-facts.md` | Sport Psychology's case, reused: Sara, Dani and Milan, fictional, with their coaches and a commercial layer (fictional sponsors, clubs and agents): `case-facts.md` |
++| Track | Marketing | Technology | Coaching (new) | Supply Chain (new) | Supply Chain | Supply Chain | Sports |
++| Flags | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` | `syllabus-flags.md` |
+ 
+ The reader of each is the persona in its preamble (the `. `reader.md` is unchanged. With the User Experience family these are the Project's exceptions to its single-reader rule.
+ 
+diff --git a/kit/howbuilt.py b/kit/howbuilt.py
+index a71add6..07cc0dd 100644
+--- a/kit/howbuilt.py
++++ b/kit/howbuilt.py
+@@ -100,7 +100,7 @@ def sourcing_parts(family, part=None):
+     txt = (REPO / HB['sourcing']).read_text(encoding='utf-8')
+     out = []
+     for m in re.finditer(r'^## (Part \d[^\n]*)\n(.*?)(?=^## |\Z)', txt, re.S | re.M):
+-        if m.group(1).startswith(('Part 1', part or HB['sourcing_parts'][family])):
++        if m.group(1).split(' ·')[0] in ('Part 1', part or HB['sourcing_parts'][family]):   # P-AIE8: exact, so Part 10 is not Part 1
+             out.append((m.group(1), [ln.replace('- [ ] ', '- ') for ln in m.group(2).split('\n')]))
+     return out
+ 
+@@ -129,8 +129,10 @@ def method_section(family, md_inline, cadence=None):
+     rows = ''.join(f'<tr><td>{md_inline(t)}</td><td>{md_inline(a)}</td><td>{md_inline(cadence if cadence is not None and t == CADENCE_TOPIC else b)}</td></tr>'
+                    for t, a, b in method_rows(family))
+     picks = ''.join(f'<li><strong>{md_inline(n)}.</strong> Pick: {md_inline(p)} <em>Override if:</em> {md_inline(o)}</li>' for n, p, o in method_decisions())
++    own = (f' The common rule of the {e(CADENCE_TOPIC)} row is this course\'s own, its <code>audit_cadence</code>, not {e(doc)}\'s.'
++           if cadence is not None else '')   # P-HK3: that cell is the course's (P-DEC21), not the method doc's
+     return (f'<details class="howto rules"><summary><h2>The method in force</h2><span>{e(doc)} §1</span></summary>'
+-            f'<p class="hnote">From {gh(HB["method"])} §1: where {e(col)}\'s own method differed from the other course family\'s, and the common rule that holds now. Units written before the merge stay valid as they were written.</p>'
++            f'<p class="hnote">From {gh(HB["method"])} §1: where {e(col)}\'s own method differed from the other course family\'s, and the common rule that holds now. Units written before the merge stay valid as they were written.{own}</p>'
+             f'<div class="report"><div class="tbl"><table><thead><tr><th>Topic</th><th>{e(col)} before the merge</th><th>Common rule, in force</th></tr></thead>'
+             f'<tbody>{rows}</tbody></table></div></div>'
+             f'<details class="prompt"><summary>The decisions and their overrides</summary><div class="report"><ul>{picks}</ul></div></details></details>')
+diff --git a/kit/next_prompt.py b/kit/next_prompt.py
+index 0962bd7..951cbe3 100644
+--- a/kit/next_prompt.py
++++ b/kit/next_prompt.py
+@@ -125,7 +125,8 @@ def sources(takes):
+ 
+ 
+ def flags(r):
+-    """Open and carried rows of the course's syllabus-flags.md whose Affects cell names this unit, alone or inside a range.
++    """Open and carried rows of the course's syllabus-flags.md whose Affects cell names this unit, alone or inside a range, or
++    contains the words "every unit" (P-SCP1, 24 Nov 2026).
+     A carried row is passed too (Pedro, 17 Nov 2026): it was carried by an earlier unit, and a unit not yet written that it
+     names still has to follow it (F8, the grade key; F14, the interim rule-2 grading)."""
+     f = pack.data_dir(r['c']) / 'syllabus-flags.md'
+@@ -138,6 +139,7 @@ def flags(r):
+         for a, b in re.findall(r'((?:DD-)?[A-Z]+\d+) to ((?:DD-)?[A-Z]+\d+)', aff):
+             if a in order and b in order and order.index(a) <= order.index(r['code']) <= order.index(b): hit = True
+         if r['code'] in re.findall(r'(?:DD-)?[A-Z]+\d+', re.sub(r'(?:DD-)?[A-Z]+\d+ to (?:DD-)?[A-Z]+\d+', '', aff)): hit = True
++        if re.search(r'\bevery unit\b', aff, re.I): hit = True   # P-SCP1: "every unit" names every unit of the course
+         if hit: out.append(f'{cells[0]} ({cells[1]}, raised by {cells[2]}{", carried" if cells[6] == "carried" else ""}): {cells[4]}. Proposed: {cells[5]}.')
+     return out
+ 
