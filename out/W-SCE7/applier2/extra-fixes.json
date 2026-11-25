@@ -1,0 +1,42 @@
+[
+ {
+  "id": "X1",
+  "severity": "should-fix",
+  "kind": "coverage",
+  "where": "§6 opening (repair of f5)",
+  "current": "Twelve steps, from plan to claim, for a bought road shipment. For each: the physical event, the people, what the system does, how it commonly fails, and the measure.",
+  "fix": "Twelve steps, from plan to claim, for a bought road shipment. For each: the physical event, the people, what the system does, how it commonly fails, and the measure, where a source or the case register gives them. Where a step below leaves one out, section 10 gives every step's common failure, section 11 defines the measures, and the deliverable's maps give each step's party, system touchpoint and measure, or say that none is sourced."
+ },
+ {
+  "id": "X2",
+  "severity": "minor",
+  "kind": "figure",
+  "where": "§6 swimlanes caption (repair of f8)",
+  "current": "the notes come from the sources cited in sections 6 and 7: X12's 990 page,",
+  "fix": "the notes come from the sources cited in sections 3, 6 and 7: Acocella, Caplice and Sheffi (2020) for the routing guide, X12's 990 page,"
+ },
+ {
+  "id": "X3",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§13 European Union bullet",
+  "current": "A later Eurostat news item could not be opened, so 2020 is the latest year given here.",
+  "fix": "No later Eurostat figure for the empty share was found (the later Eurostat news items on road freight that were opened give none), so 2020 is the latest year given here."
+ },
+ {
+  "id": "X4",
+  "severity": "minor",
+  "kind": "attribution",
+  "where": "§10 table, row 1",
+  "current": "| 1 Plan | Shipment built after the carrier's cut-off | SCE3 §8 (Kim's field study) [practice]; no transport-side source |",
+  "fix": "| 1 Plan | Shipment built after the carrier's cut-off | SCE3 §8 (Kim's field study on cut-offs [practice]; the missed cut-off is SCE3's working description); no transport-side source |"
+ },
+ {
+  "id": "X5",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§5, after the system's record",
+  "current": "and SCE1's working placement of settlement in the ERP stands until then.",
+  "fix": "and SCE1's working placement of payment in the ERP stands until then."
+ }
+]

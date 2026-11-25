@@ -1,0 +1,21 @@
+[
+ {"id": "f1", "decision": "apply", "reason": "Verified live: the 10 Dec 2021 news item has none of haulier, hauliers, haulage or carrier; the road_go metadata says questionnaires go 'to a sample of hauliers'. Fix is accurate and keeps the grade."},
+ {"id": "f2", "decision": "apply", "reason": "Verified live (CMR consolidated text, Art. 30(1)): taking delivery without checking or reservation is prima facie evidence of receipt in the described condition; reservation at delivery for apparent, in writing within seven days, Sundays and public holidays excepted, for non-apparent. 'Must' overstated the article; fix matches it."},
+ {"id": "f3", "decision": "apply", "reason": "Verified live: FMCSA page (last updated 3 Oct 2025) has neither 'free time' nor 'agreed'; it describes delays in the start of loading and unloading and reports the 2014 study's 1.4 hours beyond the 2-hour standard."},
+ {"id": "f4", "decision": "apply", "reason": "Verified against filed SCE1 §3 TMS row ('tendering is not named in the definition'), the matrix ('working' under Tender) and Self-check 5. The unit's own §5 says Gartner does not name tendering. Fix wording matches SCE1's row."},
+ {"id": "f5", "decision": "hold", "reason": "Problem is real but the fix says each missing measure is in section 11, which defines measures and does not assign them per step, and does not cover the missing system entries (steps 5 and 12). Repaired as X1."},
+ {"id": "f6", "decision": "apply", "reason": "Verified live: ICAO's 2024 revised limits give 26 SDR for Art. 22(3) from 28 December 2024. The link equals the Sources entry and source log row 28."},
+ {"id": "f7", "decision": "apply", "reason": "Verified live: the news item has no 3.5 t threshold; road_go metadata excludes vehicles below 3.5 t loading capacity and was last updated 22 July 2026."},
+ {"id": "f8", "decision": "hold", "reason": "Problem is real, but the fix credits Sheffi (2004) for the routing guide; the paper does not use the phrase (checked live) and the unit's §3 sources it to Acocella et al. (2020) only. Repaired as X2."},
+ {"id": "f9", "decision": "apply", "reason": "Filed SCE1 §3 now has the sourced TMS row citing SCE7 §5; 'left as a working placement' is out of date. f4's added sentence keeps tendering as SCE1's working placement."},
+ {"id": "f10", "decision": "apply", "reason": "Filed SCE1 glossary has the Truckload row with the same definition from Sheffi 2004 (SCE7 §2); 'replaces' is out of date."},
+ {"id": "f11", "decision": "apply", "reason": "Filed SCE1 glossary has the Lane (freight) row with the same definition from Sheffi 2004 (SCE7 §3)."},
+ {"id": "f12", "decision": "apply", "reason": "Filed SCE1 glossary Tender row reads 'The offer of one load to one carrier, which accepts or rejects it' from Acocella et al. 2020; the unit's §3 states the same. Fix aligns the two."},
+ {"id": "f13", "decision": "apply", "reason": "Filed SCE1 glossary TMS row has the identical definition citing SCE7 §5."},
+ {"id": "f14", "decision": "apply", "reason": "Filed SCE3 deliverable C row 6 gives 're-keyed by hand from a portal' as a reading of the register about labels; the register (as SCE1 and SCE3 report it) says only that carriers are booked in each carrier's portal. Fix labels the reading."},
+ {"id": "f15", "decision": "apply", "reason": "Filed SCE3 gives Tobias as outbound shift supervisor answering for release and pack and ship; that his shift books the dock is a reading. Fix only adds a label."},
+ {"id": "f16", "decision": "apply", "reason": "Filed SCE1 and SCE6 tie Tandric's disputed invoices to per-activity billing; applying it to freight invoices is a reading. Fix only adds a label."},
+ {"id": "f17", "decision": "apply", "reason": "Applying §13102(2) to a fictional desk is the unit's reading; the label is needed next to the open legal question. §13102(2) text verified live (Cornell copy)."},
+ {"id": "f18", "decision": "apply", "reason": "Filed SCE2: §3.1 is the purchase order and advance notice (flow-map row 1); §3.2 is the appointment and dock (row 2). Fix is correct."},
+ {"id": "f19", "decision": "apply", "reason": "Verified live (EUR-Lex OJ text, Art. 4(2)): another means preserving a record of the carriage may be substituted, and the carrier delivers a cargo receipt to the consignor if so requested. Fix matches."}
+]

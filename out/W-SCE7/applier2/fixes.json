@@ -1,0 +1,154 @@
+[
+ {
+  "id": "f1",
+  "severity": "error",
+  "kind": "attribution",
+  "where": "§1 Carrier",
+  "current": "Eurostat's news writing calls the carrier a **haulier** ([Eurostat, 10 Dec 2021](https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20211210-1)) [independent].",
+  "fix": "Eurostat's survey metadata calls the carriers it samples **hauliers** ([Eurostat, road_go metadata](https://ec.europa.eu/eurostat/cache/metadata/en/road_go_esms.htm)) [independent]."
+ },
+ {
+  "id": "f2",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§6 step 8",
+  "current": "and the consignee who finds apparent loss or damage must make a reservation at delivery; for loss or damage that is not apparent, a written reservation within seven days, Sundays and public holidays excluded (Art. 30(1)) [independent].",
+  "fix": "and if the consignee takes delivery without checking the goods with the carrier or without a reservation (at delivery for apparent loss or damage; in writing within seven days, Sundays and public holidays excepted, for loss or damage that is not apparent), taking delivery is prima facie evidence that the goods arrived in the condition the note describes (Art. 30(1)) [independent]."
+ },
+ {
+  "id": "f3",
+  "severity": "should-fix",
+  "kind": "attribution",
+  "where": "§11 table",
+  "current": "| Detention | Delay in the start of loading or unloading beyond an agreed free time; FMCSA's study uses a 2-hour standard | FMCSA [practice] |",
+  "fix": "| Detention | Delay in the start of loading or unloading; FMCSA's 2014 study reports detention as time beyond a 2-hour standard | FMCSA [practice] |"
+ },
+ {
+  "id": "f4",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§5",
+  "current": "So the transport system's own record, on this definition, is the carrier contract and its rates, the shipment plan, the tender and the carrier's answer, the tracking events, and the expected charge that settlement checks the invoice against.",
+  "fix": "So the transport system's own record, on this definition, is the carrier sourcing and its rates, the shipment plan, the carrier communications that execute it, the tracking events, and the expected charge that settlement checks the invoice against. Holding the tender and the carrier's answer there is this unit's reading of \"communications with carriers\"; the definition does not name tendering, and SCE1 §3 keeps it a working placement."
+ },
+ {
+  "id": "f5",
+  "severity": "should-fix",
+  "kind": "coverage",
+  "where": "§6 opening",
+  "current": "Twelve steps, from plan to claim, for a bought road shipment. For each: the physical event, the people, what the system does, how it commonly fails, and the measure.",
+  "fix": "Twelve steps, from plan to claim, for a bought road shipment. For each: the physical event, the people, what the system does, how it commonly fails, and the measure, where a source or the case register gives them; where a step below names none, its failure is in section 10, its measure in section 11 and its party in the deliverable's Party column."
+ },
+ {
+  "id": "f6",
+  "severity": "should-fix",
+  "kind": "attribution",
+  "where": "§7 air waybill row",
+  "current": "ICAO gives the revised cargo limit as 26 SDR from 28 December 2024 [independent]",
+  "fix": "ICAO gives the revised cargo limit as 26 SDR from 28 December 2024 ([ICAO, 2024 revised limits](https://www.icao.int/sites/default/files/secretariat/legal/LEB%20Treaty%20Collection%20Documents/2024_Revised_Limits_of_Liability_Under_the_Montreal_Convention_of_1999_en.pdf)) [independent]"
+ },
+ {
+  "id": "f7",
+  "severity": "should-fix",
+  "kind": "figure",
+  "where": "§13 figure caption",
+  "current": "Source: Eurostat, 'A fifth of road freight kilometres by empty vehicles', 10 December 2021; vehicles of 3.5 t load capacity and over, Malta not reporting, Italy and Romania without data.",
+  "fix": "Source: Eurostat, 'A fifth of road freight kilometres by empty vehicles', 10 December 2021 (Malta not reporting, Italy and Romania without data); coverage of vehicles of 3.5 t load capacity and over from Eurostat's road_go metadata (last updated 22 July 2026)."
+ },
+ {
+  "id": "f8",
+  "severity": "minor",
+  "kind": "figure",
+  "where": "§6 swimlanes caption",
+  "current": "the notes come from the sources cited in sections 6 and 7: X12's 990 page,",
+  "fix": "the notes come from the sources cited in sections 3, 6 and 7: Acocella, Caplice and Sheffi (2020) and Sheffi (2004) for the routing guide, X12's 990 page,"
+ },
+ {
+  "id": "f9",
+  "severity": "minor",
+  "kind": "style",
+  "where": "§5 opening",
+  "current": "SCE1 left the transport system's row as a working placement (flag F6).",
+  "fix": "SCE1 §3 places the transport system's row on the definition opened here (flag F6)."
+ },
+ {
+  "id": "f10",
+  "severity": "minor",
+  "kind": "style",
+  "where": "Deliverable D, Full truckload row",
+  "current": "| FTL Europe (working term), TL US | Sheffi 2004 [practice]; replaces SCE1's course term |",
+  "fix": "| FTL Europe (working term), TL US | Sheffi 2004 [practice]; as in SCE1's glossary |"
+ },
+ {
+  "id": "f11",
+  "severity": "minor",
+  "kind": "style",
+  "where": "Deliverable D, Lane row",
+  "current": "| Both | Sheffi 2004 [practice]; replaces SCE1's course term |",
+  "fix": "| Both | Sheffi 2004 [practice]; as in SCE1's glossary |"
+ },
+ {
+  "id": "f12",
+  "severity": "minor",
+  "kind": "style",
+  "where": "Deliverable D, Tender row",
+  "current": "| Tender | The offer of one load to one carrier | Both | Acocella et al. 2020 [practice]; replaces SCE1's course term |",
+  "fix": "| Tender | The offer of one load to one carrier, which accepts or rejects it | Both | Acocella et al. 2020 [practice]; as in SCE1's glossary |"
+ },
+ {
+  "id": "f13",
+  "severity": "minor",
+  "kind": "style",
+  "where": "Deliverable D, TMS row",
+  "current": "Gartner TMS definition [analyst]; replaces SCE1's working row |",
+  "fix": "Gartner TMS definition [analyst]; as in SCE1's glossary |"
+ },
+ {
+  "id": "f14",
+  "severity": "minor",
+  "kind": "label",
+  "where": "Deliverable A row 3",
+  "current": "Each carrier's portal, keyed by hand (register; SCE3 C, row 6)",
+  "fix": "Each carrier's portal (register); keyed by hand is this unit's reading, as SCE3 C, row 6 reads labels"
+ },
+ {
+  "id": "f15",
+  "severity": "minor",
+  "kind": "label",
+  "where": "Deliverable A row 5",
+  "current": "Tobias's outbound shift (register) at the centre; store not in the register",
+  "fix": "Tobias's outbound shift at the centre (reading of register: he supervises outbound); store not in the register"
+ },
+ {
+  "id": "f16",
+  "severity": "minor",
+  "kind": "label",
+  "where": "Deliverable B row 9",
+  "current": "Client invoice disputed because activity was not recorded (register: known trouble)",
+  "fix": "Client invoice disputed because activity was not recorded (register: known trouble, stated for invoices generally; its reach to freight is this unit's reading)"
+ },
+ {
+  "id": "f17",
+  "severity": "minor",
+  "kind": "label",
+  "where": "§1 Logistics provider",
+  "current": "In US terms that desk does what §13102(2) calls brokering;",
+  "fix": "In US terms that desk does what §13102(2) calls brokering (this unit's reading);"
+ },
+ {
+  "id": "f18",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§9 opening",
+  "current": "and where the warehouse's first step (SCE2 §3.2, the appointment) meets the inbound carrier.",
+  "fix": "and where the warehouse's inbound appointment (SCE2 §3.2, the second step of SCE2's flow map) meets the inbound carrier."
+ },
+ {
+  "id": "f19",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§7 air waybill row",
+  "current": "Delivered for the carriage of cargo, or replaced by another record with a cargo receipt (Art. 4)",
+  "fix": "Delivered for the carriage of cargo, or replaced by another record of the carriage, with a cargo receipt to the consignor on request (Art. 4)"
+ }
+]
