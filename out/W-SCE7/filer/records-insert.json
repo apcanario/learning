@@ -1,0 +1,271 @@
+{
+ "row": "W-SCE7",
+ "code": "SCE7",
+ "course": "supply-chain-execution",
+ "date": "2026-11-25 00:37",
+ "reading": {
+  "id": "read-sce7",
+  "course": "SCE",
+  "title": "Transportation in practice",
+  "covers": [
+   "SCE7"
+  ],
+  "name": "SCE7 · Transportation in practice",
+  "intro": "Who moves freight and how they are paid, and one road shipment followed from plan to payment: the parties and their US and European names, the modes, how truckload capacity is bought and why carriers refuse loads, what the transport system holds, the documents by region, and the shipment lifecycle map built for two fictional operations."
+ },
+ "status": "written 24 Nov",
+ "next_unit": "SCE8",
+ "version": "v8 · 25 Nov 2026",
+ "hub_changelog": "v8. SCE7 Transportation in practice written (Opus 5.5) and filed (row W-SCE7): the parties and what each sells (shipper, consignee, carrier, broker, freight forwarder, logistics provider, private fleet), each with its US and European term; the modes (full truckload, LTL or groupage, parcel, intermodal, ocean, air) and what decides the choice; buying truckload capacity by annual bid, routing guide and spot; why carriers refuse loads (Acocella, Caplice and Sheffi 2020); what the transport system holds, on Gartner's TMS definition (April 2026); one road shipment in twelve steps from plan to claim; the documents that travel with it, by region (CMR consignment note, e-CMR, eFTI, bill of lading, freight bill, X12 and EANCOM messages, air waybill); own fleets and the vehicle routing problem; the yard and the dock; how each step commonly fails; the transport measures by definition; national logistics cost figures (CSCMP); common claim C12 set against the evidence; with the deliverable (the shipment lifecycle map built for a Corvane store delivery and for a load Tandric arranges for a client, the template, glossary lines). Search off; 4 figures; 27 Sources entries; 10 unsure items; 10,954 words by script (whole unit). Fresh check: keep (0 error, 4 should-fix, 14 minor); 17 applied, 1 held (f7, repaired as X1), plus 10 extra fixes (X1 to X10), all applied. Quality review: fix (1 error, 7 should-fix, 12 minor by its verdict line; 19 findings listed); 17 applied, 2 held (f5, f8, repaired as X1 and X2), plus 5 extra fixes (X1 to X5), all applied; audits/supply-chain-execution/quality-review-SCE7-2026-11-25.md. Before writing (step 1b): corrections check of SCE6's corrections to SCE1 (C-SCE6-1 to C-SCE6-3, audits/supply-chain-execution/corrections-2026-11-24-C-SCE6.md): 5 changes and 2 new, all passed and applied; quality review of SCE6 as filed (F63): keep (0 error, 3 should-fix, 10 minor), 16 exact replacements applied, audits/supply-chain-execution/quality-review-SCE6-2026-11-24.md; F63 resolved. Corrections check of SCE7's five contradictions to SCE1 (audits/supply-chain-execution/corrections-2026-11-25-C-SCE7.md): 13 changes and 5 new, all passed (Changes 1, 2, 4 and 7 as narrowed; Change 2's Tender cell not passed and left working) and applied. 10 case facts added; 23 syllabus flags raised (F64 to F86: F83 the quality review of SCE7, resolved; F84 to F86 the quality reviews of SCE8, SCE9 and SCE16); F6 resolved except the Tender cell (carried to SCE8 as F64); F8, F9 and F18 carried; F19 carried, partly met; F44's SCE7 part done; F2 (C12 tested) carried. Carried proposals P-SCP1, P-AIE8, P-AIE9 and P-HK3 applied (kit/doc change). 7 of 20 written.",
+ "case_lines": [
+  "| SCE7 | Corvane | With one distribution centre serving stores in four European countries, some store deliveries cross a border, so the CMR applies to those where its conditions are met (deliverable A; this unit's inference; the register does not say where the centre is). |",
+  "| SCE7 | Corvane | One store's replenishment goes as one shipment with a contracted road carrier, booked in that carrier's portal (deliverable A; assumption). |",
+  "| SCE7 | Corvane | Who plans and books store transport, who checks carrier invoices, and who files claims are not in the register; deliverable A leaves them open (a register row only if a later unit needs it). |",
+  "| SCE7 | Corvane | Carrier invoices are received, checked and paid in the ERP, Helene answering for the financial record (deliverable A rows 9 to 11; repeats SCE1's working placement). |",
+  "| SCE7 | Tandric Logistics | The load in deliverable B is a full load for one of the seven pallet-storing clients, from Tandric's warehouse to that client's customer (assumption). |",
+  "| SCE7 | Tandric Logistics | Client orders for freight arrive through the client portal, and Olu answers clients' tracking questions from the transport system and the portal (deliverable B rows 1 and 7; this unit's reading). |",
+  "| SCE7 | Tandric Logistics | Tandric invoices the client the freight price after delivery, and pays the carrier itself; how the client is billed for freight is otherwise not in the register (deliverable B rows 9 and 11; reading of \"paid at a margin\"). |",
+  "| SCE7 | Tandric Logistics | The register does not give Tandric's region, so deliverable B gives both regions' documents; a register row on region would let later units choose. |",
+  "| SCE7 | Ostrel Foods | Ostrel's deliveries are own-account transport in European terms and private carriage in US terms; its region is not in the register (section 8; reading). |",
+  "| SCE7 | Halvern Systems | On the lifecycle steps, Rating and Tendering sits at steps 2 to 4, Tracking at step 7, Freight Audit at steps 10 and 11, Claims at step 12, Fleet Routing in own-fleet routing (section 5; this unit's placement, not a register fact). |"
+ ],
+ "flag_rows": [
+  {
+   "id": "F64",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE1, SCE8, SCE10",
+   "flag": "F6 remainder: where tendering sits is still a working placement. Gartner's TMS definition (Peer Insights, features updated April 2026) names no tendering capability; the corrections check of SCE7's contradictions (audits/supply-chain-execution/corrections-2026-11-25-C-SCE7.md, Change 2) passed Track \"holds\" and Settle \"check\" in SCE1's matrix but not Tender \"holds\", so SCE1's Tender cell stays \"working\"; SCE7 §5 calls holding the tender in the TMS its reading of \"communications with carriers\" (quality review of SCE7; applier 2's notes).",
+   "proposed": "SCE8, whose brief covers the transport system as a product, sources where the tender and the carrier's answer are held; if it does, SCE1's Tender cell and SCE7 §5 are corrected by the correction route, and SCE10 places the tender on its system-of-record table.",
+   "status": "open"
+  },
+  {
+   "id": "F65",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7; the course's search flags",
+   "flag": "SCE7 should be search-on for its staleness check: it rests on facts that change (Gartner's TMS definition, the eFTI dates, the currency of 49 CFR Part 377 and 49 U.S.C. §13102, the CSCMP, ATRI and Montreal figures, and a newer Eurostat empty share), while the writing order sets it off (quality review of SCE7, Flags; applier 2's notes). See F41 for the same question on SCE4.",
+   "proposed": "At a syllabus review the owner confirms: SCE7's search flag becomes on (course.toml writing order, its courses-index row, its front matter), so it enters the six-month staleness check; or it stays off under F41's option (2). Proposed; not applied.",
+   "status": "open"
+  },
+  {
+   "id": "F66",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE10",
+   "flag": "CMR 1978 Protocol unread. The UN Treaty Collection status page lists a Protocol to the CMR of 5 July 1978, in force 28 December 1980, amending Art. 23 for its parties; SCE7 §7 names it (fresh check f7, repaired as X1) but no source for its text, amount or parties was opened, so the amended cap is not given (fresh check, Flags; applier 1's notes).",
+   "proposed": "A later row (SCE10, or SCE7's next revision) opens the Protocol's text at the UN Treaty Collection and its list of parties, and states the amended Art. 23 cap with the countries it applies to.",
+   "status": "open"
+  },
+  {
+   "id": "F67",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE8",
+   "flag": "Montreal Convention limits are revised every five years (Art. 24). The 1999 text gives 17 SDR per kilogram for cargo; ICAO gives 22 SDR from 28 December 2019 and 26 SDR from 28 December 2024. SCE7 §7 now states both (fresh check f4 to f6); any later unit on air carriage or documents meets the same staleness (fresh check, Flags; applier 1's notes).",
+   "proposed": "SCE8 and any later unit that states an air cargo limit takes it from ICAO's latest revised-limits page, dated, and says the limit is reviewed every five years.",
+   "status": "open"
+  },
+  {
+   "id": "F68",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE10",
+   "flag": "IFTSTA as a UN/EDIFACT message is unverified. SCE7 §6 step 7, the §7 table and the glossary name IFTSTA from GS1's EANCOM page (reference directory D.01B), which does not say UN/EDIFACT; the EANCOM Part I page was refused (applier 1's notes, X3 to X5; fresh check, could not verify).",
+   "proposed": "SCE10 confirms on UN/EDIFACT's or UNECE's own page that IFTSTA is a UN/EDIFACT message, and removes \"(UN/EDIFACT unverified)\" from SCE7 by the correction route if it is.",
+   "status": "open"
+  },
+  {
+   "id": "F69",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE2, SCE7, SCE9",
+   "flag": "SCE2's flow-map columns. SCE2 says its six flow-map columns are \"fixed here for SCE3, SCE7 and SCE9\"; SCE7's brief sets Party and Document, and SCE7's deliverable uses Party in place of People and Document in place of Data needed (fresh check, Flags; applier 1's notes).",
+   "proposed": "SCE2's sentence is reworded by the correction route to allow a unit's brief to rename columns, or the exception is recorded beside it; SCE9 keeps SCE2's columns unless its brief names others. No brief is reworded.",
+   "status": "open"
+  },
+  {
+   "id": "F70",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE16",
+   "flag": "CSCMP's figures without a measurement year. CSCMP's State of Logistics page gives $2.4 trillion and 7.8% for the 2026 report and $2.6 trillion and 8.7% \"in 2025\" without saying which calendar year each measures; SCE7 §12 reports them as the reports' figures and says so (unsure item 3; fresh check, Flags; applier 1's notes).",
+   "proposed": "SCE16, if it uses a national logistics cost figure, opens the report itself or a CSCMP page that states the year measured, and dates the figure by that year.",
+   "status": "open"
+  },
+  {
+   "id": "F71",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE8, SCE10",
+   "flag": "The routing guide must not be credited to Sheffi (2004). The paper does not use the phrase (author's copy, checked live by applier 2); SCE7 §3 sources the routing guide to Acocella, Caplice and Sheffi (2020) only (quality review f8, repaired as X2), and SCE1 rests it on MIT FreightLab and Acocella et al.",
+   "proposed": "Later units credit the routing guide to Acocella, Caplice and Sheffi (2020) or another source that uses the term, never to Sheffi (2004). No unit changes.",
+   "status": "open"
+  },
+  {
+   "id": "F72",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE16",
+   "flag": "Vendor rule and service providers. SCE7 §12 names Kearney and Penske Logistics, a real logistics provider, only as the producer and presenter of CSCMP's report, as CSCMP's page states; the course's rule that no real vendor is assessed does not say whether it covers service providers (quality review, Flags; applier 2's notes).",
+   "proposed": "At a syllabus review the owner says whether the vendor rule covers real service providers (logistics providers, carriers, consultancies); SCE16 and DD-SCE1 follow the decision. Any change to a brief or the preamble is proposed only, not applied.",
+   "status": "open"
+  },
+  {
+   "id": "F73",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE8",
+   "flag": "No standard transport textbook was opened (the seed's lead, Coyle, Novack and Gibson, edition not checked), so the step-by-step lifecycle in SCE7 §6 is in large part the course's working description (SCE7 notes, need 1).",
+   "proposed": "SCE8 opens one transport textbook by edition and chapter and grades the step descriptions it confirms.",
+   "status": "open"
+  },
+  {
+   "id": "F74",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE16",
+   "flag": "No European national logistics cost figure was opened; SCE7 §12 gives only CSCMP's US figure (SCE7 notes, need 2).",
+   "proposed": "SCE16 searches for a European or national report that publishes such a figure, and states none if none is found.",
+   "status": "open"
+  },
+  {
+   "id": "F75",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE1, SCE7, SCE8; the seed bibliography (T1, T2)",
+   "flag": "Seeds T1 (Caplice & Sheffi 2003) and T2 (Caplice 2007) were not opened: the author's addresses redirected. MIT FreightLab's page, cited in SCE1, also now redirects to ctl.mit.edu (SCE7 notes, need 3).",
+   "proposed": "The bibliography marks T1 and T2 \"redirect, not opened by SCE7\"; add as seeds Acocella, Caplice & Sheffi (2020), https://doi.org/10.1016/j.tre.2020.102073, and Sheffi (2004), Interfaces 34(4), 245–252, https://doi.org/10.1287/inte.1040.0075, both read in full by SCE7 at sheffi.mit.edu; SCE8 checks whether SCE1's FreightLab citation is still reachable.",
+   "status": "open"
+  },
+  {
+   "id": "F76",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE10, SCE16",
+   "flag": "No source was opened on freight invoice error rates, freight audit practice, or carrier payment in Europe (the EU late-payment directive's EUR-Lex page served no text); SCE7 states no European rule (SCE7 notes, need 4; quality review, Flags, Needs 1 to 7 stand).",
+   "proposed": "SCE10 or SCE16 searches for an independent study and a European payment rule; until then \"no independent source found\".",
+   "status": "open"
+  },
+  {
+   "id": "F77",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE8",
+   "flag": "No association definitions of transport measures were opened (APQC's transport cost page returned an error); most of SCE7 §11 is the course's own (SCE7 notes, need 5).",
+   "proposed": "SCE8 tries APQC's logistics measures and WERC's survey for transport measures, and SCE7 §11 is corrected by the correction route where they are found.",
+   "status": "open"
+  },
+  {
+   "id": "F78",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7; the seed bibliography",
+   "flag": "No source was opened on ocean carriage or the ocean bill of lading, on national road consignment notes inside European countries, on the term \"groupage\", or on intermodal definitions (the Eurostat, ITF and UNECE Glossary for transport statistics, 5th edition, 2019, was not returned at the issuing body's address) (SCE7 notes, need 6).",
+   "proposed": "A later row opens the glossary at Eurostat and one ocean convention text; add the glossary to the bibliography.",
+   "status": "open"
+  },
+  {
+   "id": "F79",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE10",
+   "flag": "Which regions use X12 and which UN/EDIFACT for transport messages was not sourced; SCE7 §7 says \"regional use not sourced\" (SCE7 notes, need 7; fresh check, Flags).",
+   "proposed": "SCE10 sources it from the standards bodies' own pages.",
+   "status": "open"
+  },
+  {
+   "id": "F80",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7, SCE10; flag F19",
+   "flag": "Route to EU texts (F19): EUR-Lex served the text of the Montreal Convention at https://eur-lex.europa.eu/eli/convention/2001/539/oj/eng but no text for Directive 2011/7/EU at https://eur-lex.europa.eu/eli/dir/2011/7/oj/eng (SCE7 notes, need 8).",
+   "proposed": "Record in F19 that the ELI \"convention\" address served text and the \"dir\" address did not, so the next row that needs an EU act tries its ELI address and records the result.",
+   "status": "open"
+  },
+  {
+   "id": "F81",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "the seed bibliography; SCE7",
+   "flag": "References read by SCE7 that the seed bibliography lacks or lists only as leads (SCE7 notes, need 9): Scott, Parker & Craighead (2017), read in abstract (T3; metadata confirmed at IDEAS); Laporte (2009), Transportation Science 43(4), 408–416, https://doi.org/10.1287/trsc.1090.0301 (abstract); Flodén, Bärthel & Sorkina (2010), WCTR proceedings (abstract; peer review of the proceedings not confirmed); ATRI's 2025 and 2026 releases; Eurostat news of 10 Dec 2021 and the road_go metadata; CSCMP's State of Logistics page; and, from the fresh check, ICAO's 2024 revised limits and the UN Treaty Collection status page of the 1978 CMR Protocol.",
+   "proposed": "Add them to the seed bibliography with SCE7 in the Units column; add SCE7 to T3's Units column.",
+   "status": "open"
+  },
+  {
+   "id": "F82",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "none (filing); every writer packet",
+   "flag": "Hand-in format: the agent rules require the model id as the first line of the main output file, so line 1 of the writer's unit.md is \"claude-opus-5-5\" and the front matter begins on line 2 (SCE7 notes, need 10).",
+   "proposed": "The filer removes line 1 before filing; thin.py could strip a leading model-id line when it takes a unit in. No unit changes.",
+   "status": "open"
+  },
+  {
+   "id": "F83",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE7",
+   "flag": "Quality review: SCE7 was named by 9 flags raised before it was written; reviewed 25 Nov 2026 by a fresh Opus 5.5 agent (fix, 1 error, 7 should-fix, 12 minor by its verdict line; 19 findings listed), report audits/supply-chain-execution/quality-review-SCE7-2026-11-25.md, findings applied in W-SCE7: 17 applied, 2 held (f5, f8, repaired as extra fixes X1 and X2), plus 5 extra fixes (X1 to X5), all applied; resolved.",
+   "proposed": "None; a resolved row restarts the count for SCE7.",
+   "status": "resolved"
+  },
+  {
+   "id": "F84",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE8",
+   "flag": "Quality review: SCE8 is named by 12 flags raised before it is written (over the rule's 5, and with this row's flags over 8; counted from the Affects cells after this row's flags). After step 5 and before step 8 of W-SCE8, run the review on SCE8 as corrected.",
+   "proposed": "One fresh Opus agent with live search, not shown the writing, runs the seven passes; set this row resolved.",
+   "status": "open"
+  },
+  {
+   "id": "F85",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE9",
+   "flag": "Quality review: SCE9 is named by 6 flags raised before it is written (over the rule's 5; counted from the Affects cells after this row's flags). After step 5 and before step 8 of W-SCE9, run the review on SCE9 as corrected.",
+   "proposed": "One fresh Opus agent with live search, not shown the writing, runs the seven passes; set this row resolved.",
+   "status": "open"
+  },
+  {
+   "id": "F86",
+   "date": "25 Nov 2026",
+   "raised_by": "SCE7",
+   "affects": "SCE16",
+   "flag": "Quality review: SCE16 is named by 10 flags raised before it is written (over the rule's 5, and with this row's flags over 8; counted from the Affects cells after this row's flags). After step 5 and before step 8 of W-SCE16, run the review on SCE16 as corrected.",
+   "proposed": "One fresh Opus agent with live search, not shown the writing, runs the seven passes; set this row resolved.",
+   "status": "open"
+  }
+ ],
+ "flags_carried": [
+  "F2",
+  "F6",
+  "F8",
+  "F9",
+  "F18",
+  "F19",
+  "F44"
+ ],
+ "index_edits": [
+  {
+   "old": "Eighteen core units in an opening and three parts, and two deep dives, in the Supply Chain track, the first of its courses. 6 of 20 written.",
+   "new": "Eighteen core units in an opening and three parts, and two deep dives, in the Supply Chain track, the first of its courses. 7 of 20 written."
+  },
+  {
+   "old": "| 7 | SCE7 | SCE | Transportation in practice | not written | Opus 5.5 | off | `courses/supply-chain-execution/SCE7-transportation-in-practice.md` |",
+   "new": "| 7 | SCE7 | SCE | Transportation in practice | written 24 Nov 2026 (W-SCE7; fresh check `audits/supply-chain-execution/fresh-check-SCE7.md`, keep: 17 edits applied, 1 held) | Opus 5.5 | off | `courses/supply-chain-execution/SCE7-transportation-in-practice.md` |"
+  }
+ ],
+ "changelog_row": {
+  "date": "25 Nov 2026",
+  "chat": "https://claude.ai/code/session_01KMmgR2zN3zdwKd5vPwQksF (first part of the bundle, gate, step 1b, writer and checks: https://claude.ai/code/session_01KMmgQybcUu1JUJPgWwtVtt)",
+  "model": "claude-sonnet-5-5 (thin main chat; the writer, checkers, appliers, filer and corrections checker claude-opus-5-5); the first part of the bundle (gate, step 1b, writer, checks) ran in an earlier chat as claude-fable-5-2, per the row's handover (https://claude.ai/code/session_01KMmgQybcUu1JUJPgWwtVtt)",
+  "result": "W-SCE7: SCE7 Transportation in practice written and filed (fresh check keep, 17 applied, 1 held and repaired; quality review fix, 17 applied, 2 held and repaired); SCE6 corrections and quality review and SCE7's corrections to SCE1 applied; F64 to F86 raised (F83 resolved); P-SCP1, P-AIE8, P-AIE9, P-HK3 applied; 7 of 20 written."
+ },
+ "kit_bullet": "- **25 Nov 2026 (W-SCE7): carried proposals P-SCP1, P-AIE8, P-AIE9 and P-HK3 applied as one kit/doc change.** What each changes is in its BACKLOG row; the filer's packet does not hold their text.",
+ "kit_session": {
+  "heading": "25 Nov 2026 · Session [number not in the filer's packet] · W-SCE7: four carried proposals applied",
+  "body": "Row W-SCE7, filing SCE7 Transportation in practice, applied the four carried proposals P-SCP1, P-AIE8, P-AIE9 and P-HK3 as a kit/doc change. Their content is in their BACKLOG rows; the filer's packet does not hold it, so it is not restated here."
+ }
+}

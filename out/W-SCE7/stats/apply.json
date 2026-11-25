@@ -1,0 +1,92 @@
+[
+ {
+  "id": "f1",
+  "decision": "apply",
+  "reason": "Right: CMR Art. 1(1) covers carriage for reward where taking over and delivery are in two countries, at least one a contracting country; the unit's own §7 says so. Fix matches the treaty text."
+ },
+ {
+  "id": "f2",
+  "decision": "apply",
+  "reason": "Right: the quoted sentence is the abstract's description of the market, not a study finding; SCE1's key and the unit's own grading of the parallel Acocella statement make it practice."
+ },
+ {
+  "id": "f3",
+  "decision": "apply",
+  "reason": "Right: the author's copy (search-returned, fetched 25 Nov 2026) shows tender lead time not significant in Table 6 (tight market), and not in Table 5 (soft) either; the unit read the paper in full. Fix is accurate and grading is the study's own result."
+ },
+ {
+  "id": "f4",
+  "decision": "apply",
+  "reason": "Right: ICAO's 2024 revised limits table gives Art. 22(3) as 17, 22 (28 Dec 2019) and 26 SDR effective 28 Dec 2024 (fetched 25 Nov 2026). The page does not say per kilogram; the fix avoids the unit for 26 SDR, which is correct."
+ },
+ {
+  "id": "f5",
+  "decision": "apply",
+  "reason": "Right: follows f4; the revision has now been checked."
+ },
+ {
+  "id": "f6",
+  "decision": "apply",
+  "reason": "Right: f4 adds ICAO as a source; it must be listed. Alphabetical order (International before Kearney) holds. sources.md cannot be edited here; see notes."
+ },
+ {
+  "id": "f7",
+  "decision": "hold",
+  "reason": "Hold: the finding is right (UN Treaty Collection status page, fetched 25 Nov 2026: Protocol adopted Geneva 5 July 1978, in force 28 December 1980, adds paragraphs to Art. 23), but the fix names the status page without a link and adds no Sources entry. Repaired as X1, with the link, and X2 adds the Sources entry."
+ },
+ {
+  "id": "f8",
+  "decision": "apply",
+  "reason": "Right: the 1 July 2025 release (fetched 25 Nov 2026) gives 'empty miles rose to an average of 16.7 percent' with no year attached; only the cost figure is tied to 2024."
+ },
+ {
+  "id": "f9",
+  "decision": "apply",
+  "reason": "Right: keeps the Self-check in line with f8."
+ },
+ {
+  "id": "f10",
+  "decision": "apply",
+  "reason": "Right: Sheffi (2004), author's copy (fetched 25 Nov 2026), never uses 'backhaul'; it has 'back-and-forth movement' and the closed loop. Fix credits the term to the course."
+ },
+ {
+  "id": "f11",
+  "decision": "apply",
+  "reason": "Right: same as f10, glossary row."
+ },
+ {
+  "id": "f12",
+  "decision": "apply",
+  "reason": "Right: the Chalmers record (fetched 25 Nov 2026) gives the scope as studies in the English and Scandinavian languages after 1990, with non-peer-reviewed Scandinavian reports added; 'mainly Scandinavian' is not stated."
+ },
+ {
+  "id": "f13",
+  "decision": "apply",
+  "reason": "Right as far as can be checked here: case-facts.md and notes.md are not in the packet, but the report cites the writer's own note calling the portal route 'this unit's reading', and the fix only weakens the label to match the unit's other 'reading of register' cells."
+ },
+ {
+  "id": "f14",
+  "decision": "apply",
+  "reason": "Right: removes a process remark about the writer's tool; the wording adds no claim."
+ },
+ {
+  "id": "f15",
+  "decision": "apply",
+  "reason": "Right: the Kearney address is the one in Sources; the link is due where the source is used."
+ },
+ {
+  "id": "f16",
+  "decision": "apply",
+  "reason": "Right: PAR row above is graded; this definition is the paper's and gets the same grade."
+ },
+ {
+  "id": "f17",
+  "decision": "apply",
+  "reason": "Right: as f16."
+ },
+ {
+  "id": "f18",
+  "decision": "apply",
+  "reason": "Right: the DOI 10.1287/inte.1040.0075 is printed on Sheffi's author's copy and matches the IDEAS record (search-returned, fetched 25 Nov 2026)."
+ }
+]

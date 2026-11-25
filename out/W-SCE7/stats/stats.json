@@ -1,0 +1,28 @@
+{
+ "unit": {
+  "words": 10954,
+  "figures": 4,
+  "sources": 27,
+  "front_matter": true
+ },
+ "unsure": {
+  "claims": 10,
+  "object_line": true
+ },
+ "notes": {
+  "Source errors": 0,
+  "Contradictions": 5,
+  "Needs": 10
+ },
+ "report": {
+  "error": 0,
+  "should_fix": 4,
+  "minor": 14,
+  "verdict": "keep",
+  "model": "claude-opus-5-5"
+ },
+ "apply": {
+  "apply": 17,
+  "hold": 1
+ }
+}
