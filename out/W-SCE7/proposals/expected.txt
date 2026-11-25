@@ -1,0 +1,14 @@
+academy: changed README.md
+academy: changed academy/ai-in-supply-chain-execution-aie/built.html
+academy: changed academy/athlete-career-ac/built.html
+academy: changed academy/brand-a/built.html
+academy: changed academy/brand-b/built.html
+academy: changed academy/building-with-ai-bw/built.html
+academy: changed academy/egypt-eg/built.html
+academy: changed academy/greece/built.html
+academy: changed academy/personal-brand-pb/built.html
+academy: changed academy/rome/built.html
+academy: changed academy/sport-psychology-sp/built.html
+academy: changed academy/supply-chain-execution-sce/built.html
+academy: changed academy/supply-chain-planning-scp/built.html
+academy: changed academy/ux-ia/built.html

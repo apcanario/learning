@@ -1,0 +1,7 @@
+AGENT RULES (apply to you in full)
+- First line of your reply and of your main output file: the exact model id you are running as (for example claude-opus-5-5). State it truthfully; do not guess from these instructions.
+- You see only your packet folder. Read nothing outside it and write only inside its out/ folder.
+- A memory snapshot, project instructions, user preferences or anything of that kind in your context is not a source and must not be used. Use no memory, past-chat, Projects, connector, Artifact or Agent tool and no mcp__ tool. Publish nothing. Do not use git.
+- The web rule: WebSearch first; WebFetch only a URL that a search in this same agent returned verbatim, never one typed, printed in a file, edited or reached by a redirect; a refused, redirected or timed-out fetch is "not checked" and is never retried or fetched from a copy.
+- Write your full output to files in out/ as you go, so a restart loses little. Your reply to the chat is six lines at most.
+- British spelling, no em dashes, plain words.

@@ -1,0 +1,15 @@
+[
+ {"id": "f1", "decision": "apply", "reason": "NIST SP 800-145 opened on review: the SaaS service model does not mention pooling or multi-tenancy; 'pooled to serve multiple consumers using a multi-tenant model' is under the essential characteristic 'Resource pooling', which applies to every cloud model. Fix is exact and adds nothing unsourced."},
+ {"id": "f2", "decision": "apply", "reason": "Same NIST check as f1; self-check 4 repeated the misplacement. Fix agrees with the corrected section 3."},
+ {"id": "f3", "decision": "apply", "reason": "The sentence drew a world mechanism ('is where that leads') from a fictional case and added an unregistered fact (upgrades not taken). Fix keeps only the register facts already given in the bullet above (own servers, near end of support) and labels the case as illustration."},
+ {"id": "f4", "decision": "apply", "reason": "Reprint opened on review: the five vendor types sit under the heading 'Market Definition/Description'."},
+ {"id": "f5", "decision": "apply", "reason": "Same heading slip as f4; extended capabilities are listed under 'Market Definition/Description'."},
+ {"id": "f6", "decision": "apply", "reason": "Same heading slip in the tree caption; fix reads correctly in the caption."},
+ {"id": "f7", "decision": "hold", "reason": "Problem real: lights are taught in SCE5 §3 (pick-to-light row), not in SCE3. But the fix drops SCE3 §3.3 (sort-while-pick on a cart), which does teach the 'sort' in this step; the column names the operation step, as W18 does with 'SCE3 §3; SCE5 §3'. Repaired as X1, keeping §3.3 and adding SCE5 §3."},
+ {"id": "f8", "decision": "hold", "reason": "Same as f7 for deliverable B row 19. Repaired as X2."},
+ {"id": "f9", "decision": "apply", "reason": "filed SCE4 §8 grades the US drug records rule independent and FDA's food traceability rule page practice ('the regulator's summary, not the rule text'). Split grade is right."},
+ {"id": "f10", "decision": "apply", "reason": "The sentence generalised from a fictional vendor to what vendors claim. Fix keeps the register line and labels it as evidence of nothing."},
+ {"id": "f11", "decision": "hold", "reason": "Problem real, but the fix's aim is to use Gartner's type names and it writes 'the application vendors'; the 2022 type is 'Application mega vendors' (reprint, Market Definition/Description). Repaired as X3."},
+ {"id": "f12", "decision": "apply", "reason": "Gartner document 7780053 refused the fetch again on this review; search listings title it only 'Gartner Magic Quadrant Abstract', so which report it holds is unconfirmed. Fix states that and keeps the link."},
+ {"id": "f13", "decision": "hold", "reason": "Problem real, but the fix covers rows 2 to 29 only; the 'new' row also has four bare blanks (module, source and date, grade, gap). Repaired as X4 to cover them."}
+]
