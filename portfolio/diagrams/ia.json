@@ -1,0 +1,28 @@
+{
+  "kind": "sitemap",
+  "caption": "Academy's pages. Every course has the same seven pages, built from its folder.",
+  "source": "docs/courses-index.md (Hubs), docs/method.md §7 and §8, catalog.toml, 27 Nov 2026",
+  "root": {
+    "label": "Home",
+    "note": "contour map, six areas",
+    "state": "live",
+    "children": [
+      {"label": "Area", "note": "History, Marketing, Technology, User Experience, Sports, Supply Chain", "state": "live", "children": [
+        {"label": "Course", "note": "13 designed, 8 finished", "state": "live", "children": [
+          {"label": "Syllabus", "state": "live"},
+          {"label": "Unit or report", "note": "239 written; ends in a deliverable or a self-test", "state": "live"},
+          {"label": "Briefs", "note": "the contract each unit is written from", "state": "live"},
+          {"label": "Build order", "state": "live"},
+          {"label": "Bibliography", "state": "live"},
+          {"label": "How it was built", "state": "live"},
+          {"label": "Course changelog", "state": "live"}
+        ]}
+      ]},
+      {"label": "What's new", "note": "every unit filed, by day", "state": "live"},
+      {"label": "Coming next", "note": "planned courses and their state", "state": "live"},
+      {"label": "Backlog and Changelog", "note": "a plain overview by area", "state": "live"},
+      {"label": "Figure kinds", "note": "one example of each", "state": "live"},
+      {"label": "Audit pages", "note": "removed when the audits stopped", "state": "cut"}
+    ]
+  }
+}

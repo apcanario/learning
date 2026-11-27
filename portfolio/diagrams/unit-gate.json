@@ -1,0 +1,18 @@
+{
+  "kind": "decision",
+  "caption": "What stands between a draft and the site.",
+  "source": "docs/method.md §3 and §5, and the write-unit prompts' one-rewrite rule, 27 Nov 2026",
+  "tree": {
+    "ask": "Is a rewrite verdict open on an earlier unit?",
+    "yes": {"end": "Stop", "note": "that unit is rewritten first"},
+    "no": {
+      "ask": "Did the fresh checker, who never saw it written, return rewrite?",
+      "yes": {"end": "Discard the draft", "note": "written again from the brief, once"},
+      "no": {
+        "ask": "Does each finding hold against the source?",
+        "yes": {"end": "Apply and file", "note": "exact replacements, report saved, site rebuilt and verified"},
+        "no": {"end": "Finding set aside", "note": "recorded, not applied"}
+      }
+    }
+  }
+}

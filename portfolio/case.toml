@@ -1,0 +1,264 @@
+id = "academy"
+name = "Academy"
+kind = "Learning system"
+accent = "teal"
+line = "A school with one student, built around what I want to know and what I am missing."
+why = "No course knew what I already knew or what I was missing."
+summary = "I merged two diverging course projects into one platform with a written method, an independent check on every unit and a budget, and used it to write 239 sourced units in six subject areas."
+status = "live"
+started = 2026-10-28
+updated = 2026-11-27
+
+[links]
+live = "https://apcanario.github.io/academy/"
+
+[role]
+me = "Curriculum owner, product owner and the reader. I choose the subjects, approve each syllabus, set the rules, and veto."
+ai = "One model designs courses. A cheaper one runs each session. Fresh agents write, check, correct and file each unit."
+stack = "Markdown units in a repo, a Python builder, one theme file. Published as a static site on every change."
+state = "Live. Eight courses complete, one in progress, four designed and queued."
+
+[outcome]
+result = "I read it. Eight finished courses on my phone, each unit ending in something I can use, each claim with a source I can open."
+evidence = "The site and its records: 239 units filed, each with its check report (docs/courses-index.md and audits/). One reader: me."
+not_measured = "Whether anyone else reads the public courses, and whether I retain more than from an ordinary course. The site has no accounts and no tracking, by choice."
+next = "Finish Supply Chain Execution, then decide which of the four designed courses is written first."
+
+[[stats]]
+value = "239"
+label = "sourced units and reports written and checked"
+source = "unit files under courses/, counted 27 Nov 2026; docs/courses-index.md"
+
+[[stats]]
+value = "13"
+label = "courses designed, 8 of them finished"
+source = "docs/courses-index.md and docs/courses-index-archive.md"
+
+[[stats]]
+value = "6"
+label = "areas: History, Marketing, Technology, UX, Sports, Supply Chain"
+source = "catalog.toml, tracks"
+
+[[stats]]
+value = "30"
+label = "re-checks scheduled for units whose facts will age"
+source = "docs/courses-index.md, Staleness checks due"
+
+[[timeline]]
+at = "Before 28 Oct"
+text = "Two separate efforts. Greece complete at 78 reports, Rome at 59 of 79. Brand and AI in its own hub."
+
+[[timeline]]
+at = "28 Oct"
+text = "Review, five decisions, one repo, one method. Academy published and deployed the same day."
+
+[[timeline]]
+at = "29 Oct"
+text = "User Experience added: a course written for other designers."
+
+[[timeline]]
+at = "1 to 3 Nov"
+text = "Rome complete at 79 reports. Both brand and AI courses complete."
+
+[[timeline]]
+at = "4 Nov"
+text = "I reject the new home page and have it rebuilt."
+
+[[timeline]]
+at = "10 to 16 Nov"
+text = "Information architecture finished. Two public courses written: 25 units."
+
+[[timeline]]
+at = "15 Nov"
+text = "Model split. Expensive audits stopped. Veto replaces approval."
+
+[[timeline]]
+at = "16 to 21 Nov"
+text = "Sport psychology for coaches: 13 units."
+
+[[timeline]]
+at = "19 to 23 Nov"
+text = "Supply Chain area opened. Four more courses designed in one day."
+
+[[timeline]]
+at = "20 to 22 Nov"
+text = "Content separated from the frontend. A course is now a folder. Parallel sessions land safely. Tablet and desktop layouts."
+
+[[orchestration]]
+role = "Design"
+model = "Fable"
+why = "Syllabi and briefs only. The most capable model decides what a course is and writes none of it."
+
+[[orchestration]]
+role = "Run"
+model = "Sonnet 5.5"
+why = "Runs a session of up to four units without opening one: it stages packets, launches agents and reads their six-line replies."
+
+[[orchestration]]
+role = "Write, check, apply, file"
+model = "Opus 5.5, a fresh agent each"
+why = "The checker has not seen the unit written. Leaked context is how a course starts repeating itself."
+
+[[checks]]
+name = "Fresh check"
+what = "Every cited claim against its source and the deliverable against the brief, before filing. A source that will not open is not a pass."
+
+[[checks]]
+name = "Index and private-terms checks"
+what = "Every unit row, count and re-check date against the files; no private term on a public page."
+
+[[checks]]
+name = "Layout suite"
+what = "Headless browser at phone, tablet and desktop sizes: 35 checks, including every figure inside its frame."
+
+[[checks]]
+name = "Publish read-back"
+what = "After publishing, each file's hash is read back and compared."
+
+[[evidence]]
+label = "The method"
+url = "https://github.com/apcanario/learning/blob/main/docs/method.md"
+
+[[evidence]]
+label = "The sourcing standard"
+url = "https://github.com/apcanario/learning/blob/main/docs/sourcing-standard.md"
+
+[[evidence]]
+label = "Changelog: every session, with the model that ran"
+url = "https://github.com/apcanario/learning/blob/main/docs/CHANGELOG.md"
+
+[[evidence]]
+label = "Check reports, one per unit"
+url = "https://github.com/apcanario/learning/tree/main/audits"
+
+[shows]
+strategy = "Merged two diverging efforts into one platform in a day, then turned a private tool into public courses for audiences I know."
+product = "Defined the reader, the unit and the standard. Every unit ends in a deliverable the reader can use."
+design = "One theme, figures drawn from data, layouts verified on phone, tablet and desktop. Rejected a shipped page on taste."
+ai = "A written method, a sourcing standard and independent checks. Rules changed on measured results."
+planning = "Architecture decisions made before they hurt: a course as a folder, content that outlives the site."
+delivery = "Seven courses finished and five more designed in four weeks, each change published twice and logged."
+
+[method]
+started_as = "Two efforts with conflicting rules"
+first_working = "The same day"
+biggest_cut = "Audits on the most expensive model"
+memory = "Method, sourcing standard, backlog, changelog, index"
+review = "A fresh check on every unit"
+judge = "Index, layout and publish checks"
+my_test = "By reading"
+
+# Decisions in review
+
+[[decisions]]
+title = "One site, one method, one standard"
+key = true
+verdict = "held"
+section = "Strategy"
+what = "Two course projects with different rules were merged into one repo, one written method and one site, in a day."
+tradeoff = "The history courses had to be converted to the common format, and the second hub was retired."
+evidence = "Every course since has been added as a folder under the same rules: 13 courses, 239 units (docs/method.md §1; docs/courses-index.md)."
+insight = "When two efforts start to contradict each other, the merge is cheapest on the day it is noticed."
+
+[[decisions]]
+title = "An independent check on every unit"
+key = true
+verdict = "held"
+section = "Quality"
+what = "No unit is filed until an agent that never saw it written has checked every cited claim."
+tradeoff = "Roughly twice the agents per unit, and drafts that get thrown away."
+evidence = "History reports scored 4.28 without a checker and 4.8 with one. The first audit of the brand course failed 23 of 91 sampled claims; the rule was extended that day. A later unit's first draft was rejected with four errors (docs/method.md §1 and §5)."
+insight = "I let a measurement set the rule, and the rule has since caught what I would have read past."
+
+[[decisions]]
+title = "Split the models by cost"
+key = false
+verdict = "held"
+section = "Orchestration"
+what = "The top model designs only. A cheap model runs the session. Mid-tier agents do the writing and checking."
+tradeoff = "The top model no longer audits finished units."
+evidence = "33 units written under the split since 15 Nov, each with its check report (docs/method.md §4; audits/)."
+insight = "Managing AI is managing a budget. The saving came from what the expensive model stopped reading."
+
+[[decisions]]
+title = "A course is a folder"
+key = false
+verdict = "held"
+section = "Planning ahead"
+what = "Content was separated from the builder before more units were written."
+tradeoff = "Unit writing stopped until the refactoring was finished."
+evidence = "Four courses registered since without editing a file of the builder (docs/courses-index.md: Supply Chain Planning, AI in Supply Chain Execution, Athlete's Career, Egypt)."
+insight = "Paying for the architecture before the fifth course was cheaper than after the tenth."
+
+[[decisions]]
+title = "Facts that age carry a date"
+key = false
+verdict = "held"
+section = "Quality"
+what = "A unit that rests on prices, platform rules or model lineups is flagged, searched before writing, and re-checked six months on."
+tradeoff = "A standing maintenance bill: 30 re-checks already owed."
+evidence = "The dates are in the index and the first falls due on 28 Apr 2027. Untested until then."
+insight = "A course on a moving subject is a subscription. Better to price that in on the day it is written."
+
+[[decisions]]
+title = "Veto, not approve"
+key = false
+verdict = "held"
+section = "Orchestration"
+what = "Proposals are listed, flagged if they disrupt anything, and worked in the next session unless I remove them."
+tradeoff = "Work goes ahead on proposals I may not have read closely."
+evidence = "The queue stopped waiting on me: sessions of four units run unattended from one two-line starter (docs/method.md §8)."
+insight = "My approval was the bottleneck. A veto keeps the control and removes the wait."
+
+[[decisions]]
+title = "Design outran writing"
+key = true
+verdict = "needs work"
+section = "Product"
+what = "Four new courses were designed in one day, on top of one in progress."
+tradeoff = "Breadth of plan was bought with a queue that grows faster than it is worked."
+evidence = "141 units are designed and unwritten against 239 written: 13 left in Supply Chain Execution, then 18, 14, 18 and 78 (docs/courses-index.md, 27 Nov 2026)."
+insight = "Designing a course is the enjoyable part and costs a day. I need a limit on designed-but-unwritten courses, as I would on any roadmap."
+
+[[decisions]]
+title = "A page that passed every check and failed on sight"
+key = false
+verdict = "needs work"
+section = "Where it went wrong"
+what = "A new home page was specified, built, checked by two independent agents and shipped."
+tradeoff = "None intended. The process had no step where I looked."
+evidence = "I rejected it from a screenshot on 4 Nov and had it rebuilt."
+insight = "A checker verifies the spec. For anything visual, my look belongs before the release, not after."
+
+[[decisions]]
+title = "Expensive audits before the cost was understood"
+key = false
+verdict = "needs work"
+section = "Orchestration"
+what = "Finished units were audited by the most capable model, with the session chat reading everything."
+tradeoff = "Quality assurance was bought at a price nobody had estimated."
+evidence = "One audit run was cut off by a spend limit on 27 Oct, leaving six reports unchecked; the audits were stopped on 15 Nov (docs/method.md §1, Audit cadence)."
+insight = "Estimate the cost of a review process before making it a rule."
+
+[[decisions]]
+title = "The records outgrew their readers"
+key = false
+verdict = "needs work"
+section = "Planning ahead"
+what = "Every session is logged in full in one backlog and one changelog."
+tradeoff = "Completeness was bought with files no session can afford to read whole."
+evidence = "The backlog is 135 KB and the changelog 285 KB after one month (docs/, 27 Nov 2026). The courses index was already split in two on 17 Nov."
+insight = "A record needs an archive rule from the start, or the memory becomes the cost."
+
+[[decisions]]
+title = "No reader but me is measured"
+key = false
+verdict = "needs work"
+section = "Product"
+what = "Five courses were written for other readers: coaches, designers, product teams."
+tradeoff = "No accounts and no tracking keeps the site simple and private."
+evidence = "The records hold no reader data of any kind."
+insight = "A product for others needs one signal from them. A public course without it is still a private one."
+
+[cleared]
+people = []

@@ -1,0 +1,16 @@
+{
+  "kind": "system",
+  "caption": "Content in, site out. Adding a course touches only the first lane.",
+  "source": "docs/method.md §7, docs/courses-index.md (Hubs), 27 Nov 2026",
+  "lanes": [
+    {"name": "Content", "nodes": [{"id": "toml", "label": "course.toml and briefs"}, {"id": "units", "label": "units in Markdown"}]},
+    {"name": "Engine", "nodes": [{"id": "build", "label": "build.py"}, {"id": "viz", "label": "figures from data"}, {"id": "theme", "label": "one theme file"}]},
+    {"name": "Checks", "nodes": [{"id": "index", "label": "index and private terms"}, {"id": "verify", "label": "layout suite"}]},
+    {"name": "Published", "nodes": [{"id": "site", "label": "site, twice"}, {"id": "epub", "label": "ebook"}]}
+  ],
+  "edges": [
+    {"from": "toml", "to": "build"}, {"from": "units", "to": "build"}, {"from": "units", "to": "viz", "label": "figure blocks"},
+    {"from": "viz", "to": "build"}, {"from": "theme", "to": "build"}, {"from": "build", "to": "index"},
+    {"from": "index", "to": "verify"}, {"from": "verify", "to": "site", "label": "hash read back"}, {"from": "build", "to": "epub"}
+  ]
+}

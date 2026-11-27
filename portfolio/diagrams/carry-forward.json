@@ -1,0 +1,14 @@
+{
+  "kind": "decision",
+  "caption": "Where a problem goes once it is found, by anyone, at any time.",
+  "source": "docs/method.md §9, the carry-forward rule, 27 Nov 2026",
+  "tree": {
+    "ask": "Is it about the unit being written now?",
+    "yes": {"end": "Fix it in this session", "note": "or cut the claim and mark it unverified"},
+    "no": {
+      "ask": "Is the unit already filed?",
+      "yes": {"end": "Into the next session's prompt", "note": "fixed first, checked by a fresh agent"},
+      "no": {"end": "A flag on the units it affects", "note": "printed in each of their prompts"}
+    }
+  }
+}

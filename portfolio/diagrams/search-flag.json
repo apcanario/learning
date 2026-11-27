@@ -1,0 +1,10 @@
+{
+  "kind": "decision",
+  "caption": "The flag every unit carries before it is written.",
+  "source": "docs/method.md §4 (Live-search flag) and §6, 27 Nov 2026",
+  "tree": {
+    "ask": "Does the unit rest on facts that change: prices, platform rules, model lineups, regulation?",
+    "no": {"end": "Search off", "note": "written from knowledge; a search only to verify a doubtful point"},
+    "yes": {"end": "Search on", "note": "search first, date each fact, re-check in six months: current, patch or rewrite"}
+  }
+}

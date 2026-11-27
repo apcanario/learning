@@ -1,0 +1,14 @@
+{
+  "kind": "loop",
+  "caption": "How one unit is written. The session chat never opens a unit.",
+  "source": "docs/method.md §4 (Models, the thin main chat) and §5, 27 Nov 2026",
+  "roles": [
+    {"who": "Me", "job": "Choose the subject, approve the syllabus, veto"},
+    {"who": "Design chat", "job": "Syllabus and briefs, on the most capable model"},
+    {"who": "Run chat", "job": "Stages packets, launches agents, reads six-line replies"},
+    {"who": "Writer", "job": "One unit from its brief, with its deliverable"},
+    {"who": "Fresh checker", "job": "Every cited claim against its source; never saw the writing"},
+    {"who": "Applier and filer", "job": "Exact replacements, then the vault, the index, the site"},
+    {"who": "Scripts", "job": "Index, private terms, layouts, publish read-back"}
+  ]
+}
